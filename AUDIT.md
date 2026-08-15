@@ -131,3 +131,41 @@ This revision adds `Zeta23/XiPrime/` (comparator topic `XiPrime`, six statements
 ```
 
 * Comparator (statement equality against the trusted files + kernel replay, with the independent `nanoda` kernel enabled): `config.json` — "Your solution is okay!" (343 s); `config-multiplicity.json` — okay (335 s); `config-xiprime.json` — okay (345 s).
+
+## Revision note: ChallengeDeps minimized to the statements' dependency closure
+
+This revision removes from `comparator/ChallengeDeps.lean` the four counting functions that no
+challenge statement depends on (`N0`, `Nsimple`, `N0L`, `NsimpleL` — previously kept for
+block-parity with the Zeta23 statement layer) and updates the README notes accordingly.
+`Challenge.lean`, `Challenge/Multiplicity.lean` and `Challenge/XiPrime.lean` are unchanged byte
+for byte, nothing under `Zeta23/` changes, and the removed names were outside every statement's
+dependency closure, so the three comparator configurations are unaffected. The checks above were
+re-run on exactly these sources:
+
+* `lake build` (default target): completed successfully (9016 jobs, counting the Mathlib
+  dependency closure); no errors and no `sorry` warnings.
+* `lake build Solution Solution.Multiplicity Solution.XiPrime Challenge Challenge.Multiplicity
+  Challenge.XiPrime ChallengeDeps ChallengeDeps.XiPrime`: complete, with `declaration uses 'sorry'`
+  warnings **only** in the trusted statement files (`comparator/Challenge.lean`: 15,
+  `comparator/Challenge/Multiplicity.lean`: 12, `comparator/Challenge/XiPrime.lean`: 6). One
+  informational lint surfaced during the Solution build in an untouched library file
+  (`Zeta23/XiPrime/ExplicitFormula/EntryError.lean:121`: "Variable name `hb` is not explicitly
+  referenced"), unrelated to this revision; no other warnings and no errors.
+* Occurrences of the `sorry` token outside comments: **33**, all in the three trusted challenge
+  files (15 + 12 + 6); none under `Zeta23/` and none in any `Solution` file. Declarations of new
+  axioms (`axiom ...`), counted the same way: **0**.
+* `#print axioms`: all 15 + 12 + 6 comparator statements print exactly
+  `[propext, Classical.choice, Quot.sound]`; the PairCeiling list matches the previous revision
+  verbatim, including its two deliberate exceptions (`LawN256_check`: `[propext]`;
+  `LawN256_edge`: no axioms).
+* Comparator (statement equality against the trusted files + axiom audit + kernel replay of the
+  solution): `config.json` — "Your solution is okay!" (220 s); `config-multiplicity.json` — okay
+  (209 s); `config-xiprime.json` — okay (214 s). Run-mode caveats for this revision's runs: executed
+  without the landrun sandbox (a pass-through stub) and with `enable_nanoda` set to false; the
+  comparator binary and a matching `lean4export` were rebuilt under this repository's toolchain
+  (v4.33.0-rc2), which required a one-line update to comparator's `Lean4Checker` dependency for a
+  kernel-API signature change (`Kernel.Environment.addDeclCore` gained a `maxRecDepth` parameter;
+  set to Lean's default, 512). The comparator test suite (11 projects, including every negative
+  case — statement mismatches, illegal axioms, kind mismatches, olean tampering — all correctly
+  rejected) passes under this rebuild. A fully sandboxed run with nanoda enabled, on an era-matched
+  comparator build, remains the authoritative check.
