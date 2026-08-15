@@ -21,8 +21,8 @@ Write N(T₁,T₂) for the number of zeros ρ of ζ with 0 < Re ρ < 1 and T₁ 
 multiplicity; N₀*(T₁,T₂) for the number of *distinct* such zeros on the critical line Re ρ = 1/2;
 N₀ˢ for those that are on the line and *simple*; N_d for the number of distinct zeros; N(T) := N(0,T) etc.
 All of these are defined directly from Mathlib's `riemannZeta` and `analyticOrderAt`
-([`comparator/ChallengeDeps.lean`](comparator/ChallengeDeps.lean), ≈60 lines, is the complete list of
-definitions the statements depend on). "liminf_{T→∞} X(T)/N(T) ≥ c" is formalized in the ε-form
+([`comparator/ChallengeDeps.lean`](comparator/ChallengeDeps.lean), 15 definitions, is the complete list
+of definitions the statements depend on — nothing else). "liminf_{T→∞} X(T)/N(T) ≥ c" is formalized in the ε-form
 `∀ ε > 0, ∃ T₀, ∀ T ≥ T₀, (c − ε)·N(T) ≤ X(T)`. Here c₁* = √2·tan ϑ/(1+ϑ·tan ϑ), ϑ = 1/√2 (= 0.75329…) is the
 Montgomery–Taylor constant of Theorem D.
 

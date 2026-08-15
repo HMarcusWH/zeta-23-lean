@@ -9,7 +9,7 @@ axioms `propext`, `Classical.choice`, `Quot.sound`, and replays the solution thr
 
 | file | role | trusted? |
 |---|---|---|
-| `ChallengeDeps.lean` | the counting functions (nontrivial zeros of Mathlib's `riemannZeta` / `DirichletCharacter.LFunction`, multiplicity via `analyticOrderAt`, N, N₀*, N₀ˢ, N_d) and the Theorem-D constant c₁*, **defined from Mathlib alone** | yes — read it (≈60 lines of mathematics) |
+| `ChallengeDeps.lean` | the counting functions (nontrivial zeros of Mathlib's `riemannZeta` / `DirichletCharacter.LFunction`, multiplicity via `analyticOrderAt`, N, N₀*, N₀ˢ, N_d) and the Theorem-D constant c₁*, **defined from Mathlib alone** — exactly the definitions the challenge statements depend on, nothing else | yes — read it (15 definitions) |
 | `Challenge.lean` | fifteen theorem statements (Theorems A–E in the Cauchy–Schwarz forms: 2/3 on-line, 1/2 simple, 3/4 distinct, and the corresponding D/E constants), proofs `sorry` | yes — read it |
 | `Challenge/Multiplicity.lean` | twelve statements: Theorems B–E with the constants stated in the paper (2/3 simple, 5/6 distinct, 2 − 1/c₁*, (3 − 1/c₁*)/2, and the Dirichlet analogues), proofs `sorry` | yes — read it |
 | `ChallengeDeps/XiPrime.lean`, `Challenge/XiPrime.lean` | the counting functions for the zeros of ξ′ (defined from Mathlib alone) and six statements about them (all zeros in the open strip; Re ξ′/ξ > 0 on Re s ≥ 1; ≥ 0.85838 simple and on the line, ≥ 0.92919 distinct, and the quartic-window constants), proofs `sorry` | yes — read it |
@@ -84,7 +84,9 @@ unique and descriptive (`five_sixths_distinct`, not `thmC_mult`); (3) constants 
 the solution side; (4) statements are the ε-forms `∀ ε > 0, ∃ T₀, ∀ T ≥ T₀, (c − ε)·N ≤ X` over the counting functions of
 `ChallengeDeps`, with every hypothesis of the Zeta23 theorem (e.g. `1 < q`, `χ.IsPrimitive`) as an explicit binder;
 (5) a statement enters a challenge file only when the Zeta23 theorem it delegates to is sorry-free with
-`#print axioms` = the standard three. The lakefile needs no change: the three `[[lean_lib]]` stanzas with
+`#print axioms` = the standard three; (6) a deps module contains exactly the definitions in the dependency closure of its challenge
+statements — nothing is kept for parity or convenience, so every line a challenge auditor reads
+is load-bearing. The lakefile needs no change: the three `[[lean_lib]]` stanzas with
 `srcDir = "comparator"` cover the submodules `Challenge.*`, `Solution.*`, `ChallengeDeps.*`.
 Check a topic with `lake build Solution.<Topic> && lake env lean comparator/PrintAxioms/<Topic>.lean`; run comparator with
 `lake env /path/to/comparator comparator/config-<topic>.json`. This repository ships each topic's files together with the
