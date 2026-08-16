@@ -7,16 +7,12 @@ SPDX-License-Identifier: Apache-2.0
 Challenge.lean — the TRUSTED comparator challenge module: WHAT IS CLAIMED.
 
 Seventeen theorem statements about the zeros of Mathlib's `riemannZeta` and of Mathlib's
-`DirichletCharacter.LFunction`, each with proof `sorry`. They are the ε-forms of the headline
-("in particular") assertions of Theorems A–E of the paper "More than two thirds of the zeros of the
-Riemann zeta function lie on the critical line", each at the constant STATED in the paper (for
-Theorems B–E these are the multiplicity-aware constants, obtained via the rank–trace inequality of
-the paper's §3; the strictly weaker Cauchy–Schwarz forms 1/2, 3/4, 2c₁* − 1, c₁*, stated separately
-in earlier revisions of this directory, are each implied by the statement below with the same
-counting function and a larger constant): writing N(T₁,T₂) for the number of nontrivial zeros
-with T₁ < Im ρ ≤ T₂ counted with multiplicity, N₀* / N₀ˢ / N_d for the distinct on-line / simple
-on-line / distinct counts (all defined from Mathlib alone in ChallengeDeps.lean, inlined below), and
-"liminf_{T→∞} X(T)/N(T) ≥ c" as "∀ ε > 0, ∃ T₀, ∀ T ≥ T₀, (c − ε)·N(T) ≤ X(T)":
+`DirichletCharacter.LFunction`, each with proof `sorry`: the ε-forms of the headline assertions of
+Theorems A–E of the paper "More than two thirds of the zeros of the Riemann zeta function are simple and on the critical line", each at the constant stated in the paper. Writing N(T₁,T₂)
+for the number of nontrivial zeros with T₁ < Im ρ ≤ T₂ counted with multiplicity, N₀* / N₀ˢ / N_d
+for the distinct on-line / simple on-line / distinct counts (all defined from Mathlib alone in
+ChallengeDeps.lean, inlined below), and "liminf_{T→∞} X(T)/N(T) ≥ c" as
+"∀ ε > 0, ∃ T₀, ∀ T ≥ T₀, (c − ε)·N(T) ≤ X(T)":
   * Theorem A: N₀*/N ≥ 2/3 (dyadic windows (T,2T] and cumulative windows (0,T]);
   * Theorem B: N₀ˢ/N ≥ 2/3 (both forms);   * Theorem C: N_d/N ≥ 5/6 (both forms);
   * Theorem D: with the Montgomery–Taylor constant c₁* = `cMT` (§3 below), on dyadic windows
@@ -118,8 +114,8 @@ end Dirichlet
 /-- c₁* := √2·tan ϑ / (1 + ϑ·tan ϑ) at ϑ = 1/√2 — the paper's closed form for the optimal-window
 constant c*_λ = √2·tan ϑ/(1 + ϑ·tan ϑ), ϑ = λ/√2, at λ = 1. Numerically c₁* = 0.7532960…
 (= 2·tan(1/√2)/(√2 + tan(1/√2)); 1/c₁* = 1/2 + 2^{-1/2}·cot(2^{-1/2}) is the Montgomery–Taylor
-constant). Theorem D's three proportions are 2 − 1/c₁* = 0.67250…, 2c₁* − 1 = 0.50659… and
-c₁* = 0.75329…; the decimals are NOT part of the formal statements. -/
+constant). Theorem D's proportions here are 2 − 1/c₁* = 0.67250… (for N₀* and N₀ˢ) and
+(3 − 1/c₁*)/2 = 0.83625… (for N_d); the decimals are NOT part of the formal statements. -/
 def cMT : ℝ :=
   Real.sqrt 2 * Real.tan (1 / Real.sqrt 2) / (1 + 1 / Real.sqrt 2 * Real.tan (1 / Real.sqrt 2))
 
@@ -169,8 +165,7 @@ theorem montgomery_taylor_on_critical_line :
   sorry
 
 /-- **Theorem D**, simple zeros: with the optimal window, at least 2 − 1/c₁* (= 0.67250…) of the zeros are
-*simple and* on the critical line (the same constant as for N₀*; the Cauchy–Schwarz form gives 2c₁* − 1 =
-0.50659… for N₀ˢ). -/
+*simple and* on the critical line (the same constant as for N₀*). -/
 theorem montgomery_taylor_simple_on_critical_line_mult :
     ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (2 - 1 / cMT - ε) * (Ncount T (2 * T) : ℝ) ≤ N0simple T (2 * T) := by
   sorry
@@ -180,8 +175,7 @@ theorem montgomery_taylor_simple_on_critical_line_mult_cumulative :
     ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (2 - 1 / cMT - ε) * (Ncount 0 T : ℝ) ≤ N0simple 0 T := by
   sorry
 
-/-- **Theorem D**, distinct zeros: at least (3 − 1/c₁*)/2 (= 0.83625…) of the zeros are distinct (the
-Cauchy–Schwarz form gives c₁* = 0.75329…). -/
+/-- **Theorem D**, distinct zeros: at least (3 − 1/c₁*)/2 (= 0.83625…) of the zeros are distinct. -/
 theorem montgomery_taylor_distinct_mult :
     ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (3 / 2 - cMT⁻¹ / 2 - ε) * (Ncount T (2 * T) : ℝ) ≤ Ndist T (2 * T) := by
   sorry

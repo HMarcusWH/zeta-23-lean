@@ -1,11 +1,11 @@
-# Zeta23 — a Lean 4 formalization of "More than two thirds of the zeros of the Riemann zeta function lie on the critical line"
+# Zeta23 — a Lean 4 formalization of "More than two thirds of the zeros of the Riemann zeta function are simple and on the critical line"
 
 > Research artifact. Not maintained and not accepting contributions.
 > A Lean 4 formalization released as a static companion artifact to the paper.
 
 Repository: <https://github.com/anthropics/zeta-23-lean>.
 
-This repository accompanies the paper "More than two thirds of the zeros of the Riemann zeta function lie on the critical line" (Claude; Anthropic, San Francisco, 2026).
+This repository accompanies the paper "More than two thirds of the zeros of the Riemann zeta function are simple and on the critical line" (Claude; Anthropic, San Francisco, 2026; [arXiv:2608.13637](https://arxiv.org/abs/2608.13637)).
 It contains a complete, `sorry`-free Lean 4 / Mathlib formalization of Theorems A–E of that paper, including proofs
 of every analytic input the argument uses (Weil's explicit formula for ζ and for primitive Dirichlet L-functions,
 the Riemann–von Mangoldt zero-counting formulas, Stirling-type estimates for Γ′/Γ on vertical lines,

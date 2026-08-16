@@ -230,3 +230,18 @@ The checks above were re-run on exactly these sources:
   on): both configurations "Your solution is okay!", exit 0; all 23 `#print axioms` lines
   standard-three; per-name theorem-type comparison against the previous revision identical for all
   seventeen statements.
+
+## Revision note: comment simplification; arXiv citation
+
+Comment- and README-only; no statement, definition, or import bytes change (checked mechanically:
+the Lean sources with all comments stripped are byte-identical before and after this revision).
+`comparator/Challenge.lean`'s module header and two Theorem-D doc comments drop the
+Cauchy–Schwarz-constant mentions (those forms are no longer stated in this file), the header is
+tightened, and the quoted paper title — with the README's title and citation — is updated to the
+arXiv version, "More than two thirds of the zeros of the Riemann zeta function are simple and on
+the critical line" (arXiv:2608.13637). The cMT docstring edit is applied identically in
+`comparator/ChallengeDeps.lean`, keeping the inlined definition layer a character-for-character
+copy. Because the comment-stripped sources are byte-identical to the previous revision, that
+revision's recorded results — the build, `#print axioms` (23/23 standard-three) and the comparator
+runs on both configurations — carry over to these sources unchanged; the pull request that carried
+this revision additionally records an independent warm-cache build of them.
