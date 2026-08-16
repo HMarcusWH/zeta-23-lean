@@ -9,16 +9,15 @@ axioms `propext`, `Classical.choice`, `Quot.sound`, and replays the solution thr
 
 | file | role | trusted? |
 |---|---|---|
-| `ChallengeDeps.lean` | the counting functions (nontrivial zeros of Mathlib's `riemannZeta` / `DirichletCharacter.LFunction`, multiplicity via `analyticOrderAt`, N, N₀*, N₀ˢ, N_d) and the Theorem-D constant c₁*, **defined from Mathlib alone** — exactly the definitions the challenge statements depend on, nothing else | yes — read it (15 definitions) |
-| `Challenge.lean` | fifteen theorem statements (Theorems A–E in the Cauchy–Schwarz forms: 2/3 on-line, 1/2 simple, 3/4 distinct, and the corresponding D/E constants), proofs `sorry` | yes — read it |
-| `Challenge/Multiplicity.lean` | twelve statements: Theorems B–E with the constants stated in the paper (2/3 simple, 5/6 distinct, 2 − 1/c₁*, (3 − 1/c₁*)/2, and the Dirichlet analogues), proofs `sorry` | yes — read it |
+| `ChallengeDeps.lean` | the counting functions (nontrivial zeros of Mathlib's `riemannZeta` / `DirichletCharacter.LFunction`, multiplicity via `analyticOrderAt`, N, N₀*, N₀ˢ, N_d) and the Theorem-D constant c₁*, **defined from Mathlib alone** — exactly the definitions the challenge statements depend on, nothing else; inlined character-for-character into `Challenge.lean` (likewise `ChallengeDeps/XiPrime.lean` into `Challenge/XiPrime.lean`), so that each challenge module imports only Mathlib and can be read on its own | yes — read it (15 definitions) |
+| `Challenge.lean` | seventeen theorem statements: Theorems A–E, each at the constant stated in the paper (2/3 on-line, 2/3 simple, 5/6 distinct, the optimal-window constants 2 − 1/c₁* and (3 − 1/c₁*)/2, and the Dirichlet analogues), proofs `sorry`; imports only Mathlib (the definition layer is inlined) | yes — read it |
 | `ChallengeDeps/XiPrime.lean`, `Challenge/XiPrime.lean` | the counting functions for the zeros of ξ′ (defined from Mathlib alone) and six statements about them (all zeros in the open strip; Re ξ′/ξ > 0 on Re s ≥ 1; ≥ 0.85838 simple and on the line, ≥ 0.92919 distinct, and the quartic-window constants), proofs `sorry` | yes — read it |
-| `Solution.lean` | the same fifteen statements, proved by delegating to the `Zeta23` library | no (checked by comparator) |
+| `Solution.lean` | the same seventeen statements, proved by delegating to the `Zeta23` library | no (checked by comparator) |
 | `config.json` | comparator configuration (theorem names, permitted axioms) | yes |
-| `PrintAxioms.lean`, `PrintAxioms/Multiplicity.lean`, `PrintAxioms/XiPrime.lean`, `PrintAxioms/PairCeiling.lean` | `#print axioms` for the statements — the quick check without comparator (`PairCeiling` has no trusted statement file: its theorems carry the displayed hypothesis `EnclOK`, see the top-level README) | — |
+| `PrintAxioms.lean`, `PrintAxioms/XiPrime.lean`, `PrintAxioms/PairCeiling.lean` | `#print axioms` for the statements — the quick check without comparator (`PairCeiling` has no trusted statement file: its theorems carry the displayed hypothesis `EnclOK`, see the top-level README) | — |
 
 What a skeptical reader has to trust: Mathlib's definitions of `riemannZeta`, `DirichletCharacter.LFunction`,
-`analyticOrderAt`, `Set.ncard`, `finsum`; the two trusted files above; the Lean kernel; and comparator's own
+`analyticOrderAt`, `Set.ncard`, `finsum`; the trusted challenge files above; the Lean kernel; and comparator's own
 assumptions (its README). Nothing under `Zeta23/` needs to be read to know *what* is proved.
 
 Reading notes for the statements: N(T₁,T₂) on the LEFT of every inequality counts zeros **with
@@ -30,7 +29,7 @@ solution side, not assumed. Windows are T₁ < Im ρ ≤ T₂ (positive ordinate
 ## Quick check (no extra tooling)
 
 ```bash
-lake build Solution                      # builds the Zeta23 cone the fifteen theorems need (+ Mathlib)
+lake build Solution                      # builds the Zeta23 cone the seventeen theorems need (+ Mathlib)
 lake env lean comparator/PrintAxioms.lean
 # every line must read:  '<name>' depends on axioms: [propext, Classical.choice, Quot.sound]
 ```
@@ -66,13 +65,13 @@ release of the same era as `../lean-toolchain`.
 
 ## Layout convention: one topic per file (how to add a theorem)
 
-The base set is `Challenge.lean` / `Solution.lean` / `config.json` / `PrintAxioms.lean` (Theorems A–E in their
-Cauchy–Schwarz forms: 2/3, 1/2, 3/4 and the corresponding Theorem-D/E constants); these four files are not edited to add
+The base set is `Challenge.lean` / `Solution.lean` / `config.json` / `PrintAxioms.lean` (Theorems A–E, each at the
+constant stated in the paper); these four files are not edited to add
 results. Every further group of results is a **topic** with its own files:
 
 | file | module | content |
 |---|---|---|
-| `comparator/Challenge/<Topic>.lean` | `Challenge.<Topic>` | `import ChallengeDeps` (+ `ChallengeDeps.<Topic>` if needed); the statements, each `:= by sorry` — **trusted** |
+| `comparator/Challenge/<Topic>.lean` | `Challenge.<Topic>` | `import Mathlib` only, with the definition layer (`ChallengeDeps.lean`, + `ChallengeDeps/<Topic>.lean` if needed) inlined verbatim as a complete block; the statements, each `:= by sorry` — **trusted** |
 | `comparator/ChallengeDeps/<Topic>.lean` | `ChallengeDeps.<Topic>` | only if the statements need notions beyond `ChallengeDeps.lean`: Mathlib-only definitions, each a character-for-character copy of the corresponding definition in the Zeta23 statement layer (root namespace) — **trusted** |
 | `comparator/Solution/<Topic>.lean` | `Solution.<Topic>` | the same statements byte-for-byte, proved by delegating to Zeta23 (may import `Solution` to reuse bridging lemmas such as `cStar_one_eq_cMT`) — untrusted |
 | `comparator/config-<topic>.json` | — | `{"challenge_module": "Challenge.<Topic>", "solution_module": "Solution.<Topic>", "theorem_names": [...], "permitted_axioms": ["propext","Quot.sound","Classical.choice"], "enable_nanoda": true}` |
@@ -93,15 +92,13 @@ Check a topic with `lake build Solution.<Topic> && lake env lean comparator/Prin
 Zeta23 import-closure of its `Solution/<Topic>.lean`; challenge and solution statements coincide textually, and every
 `ChallengeDeps` definition is verbatim the corresponding definition of the Zeta23 statement layer.
 
-Worked example: topic **Multiplicity** (`Challenge/Multiplicity.lean`, twelve statements: ≥ 2/3 simple-and-on-line and ≥ 5/6
-distinct for ζ, their optimal-window versions 2 − 1/c₁* and (3 − 1/c₁*)/2, and the four Dirichlet analogues — i.e.
-Theorems B–E of the paper with the constants as stated there).
+Worked example: topic **XiPrime** (`Challenge/XiPrime.lean`, six statements about the zeros of ξ′, with its own
+Mathlib-only definition layer in `ChallengeDeps/XiPrime.lean` and config `comparator/config-xiprime.json`).
 
 Topics currently in the tree (each `config-<topic>.json` runs independently; the trusted files to read for a topic are
-`ChallengeDeps.lean`, any `ChallengeDeps/<X>.lean` its challenge imports, and `Challenge/<Topic>.lean`):
+`ChallengeDeps.lean`, any `ChallengeDeps/<X>.lean` whose content its challenge inlines, and `Challenge/<Topic>.lean`):
 
 | topic | what | trusted deps beyond ChallengeDeps.lean |
 |---|---|---|
-| Multiplicity | ζ and L(s,χ): ≥ 2/3 simple-and-on-line, ≥ 5/6 distinct, Montgomery–Taylor-window versions (12) | — |
 | XiPrime | zeros of ξ′: all in the open critical strip; Re ξ′/ξ > 0 on Re s ≥ 1; ≥ 0.85838 simple and on the line, ≥ 0.92919 distinct (flat window), 0.86864 / 0.93432 (quartic window) (6) | ChallengeDeps/XiPrime.lean |
 

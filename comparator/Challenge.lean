@@ -6,20 +6,21 @@ SPDX-License-Identifier: Apache-2.0
 /-
 Challenge.lean — the TRUSTED comparator challenge module: WHAT IS CLAIMED.
 
-Fifteen theorem statements about the zeros of Mathlib's `riemannZeta` and of Mathlib's
+Seventeen theorem statements about the zeros of Mathlib's `riemannZeta` and of Mathlib's
 `DirichletCharacter.LFunction`, each with proof `sorry`. They are the ε-forms of the headline
 ("in particular") assertions of Theorems A–E of the paper "More than two thirds of the zeros of the
-Riemann zeta function lie on the critical line", with Theorems B–E in their Cauchy–Schwarz forms (1/2
-simple, 3/4 distinct, 2c₁* − 1 and c₁* with the optimal window; the paper states the multiplicity-aware
-constants 2/3, 5/6, 2 − 1/c₁*, (3 − 1/c₁*)/2, which are the subject of Challenge/Multiplicity.lean):
-writing N(T₁,T₂) for the number of nontrivial zeros
+Riemann zeta function lie on the critical line", each at the constant STATED in the paper (for
+Theorems B–E these are the multiplicity-aware constants, obtained via the rank–trace inequality of
+the paper's §3; the strictly weaker Cauchy–Schwarz forms 1/2, 3/4, 2c₁* − 1, c₁*, stated separately
+in earlier revisions of this directory, are each implied by the statement below with the same
+counting function and a larger constant): writing N(T₁,T₂) for the number of nontrivial zeros
 with T₁ < Im ρ ≤ T₂ counted with multiplicity, N₀* / N₀ˢ / N_d for the distinct on-line / simple
-on-line / distinct counts (all defined from Mathlib alone in ChallengeDeps.lean), and
+on-line / distinct counts (all defined from Mathlib alone in ChallengeDeps.lean, inlined below), and
 "liminf_{T→∞} X(T)/N(T) ≥ c" as "∀ ε > 0, ∃ T₀, ∀ T ≥ T₀, (c − ε)·N(T) ≤ X(T)":
   * Theorem A: N₀*/N ≥ 2/3 (dyadic windows (T,2T] and cumulative windows (0,T]);
-  * Theorem B (Cauchy–Schwarz form): N₀ˢ/N ≥ 1/2 (both forms);   * Theorem C (Cauchy–Schwarz form): N_d/N ≥ 3/4;
-  * Theorem D: with the Montgomery–Taylor constant c₁* = `cMT` (ChallengeDeps §3), on dyadic windows
-    N₀*/N ≥ 2 − 1/c₁*,  N₀ˢ/N ≥ 2c₁* − 1,  N_d/N ≥ c₁*;
+  * Theorem B: N₀ˢ/N ≥ 2/3 (both forms);   * Theorem C: N_d/N ≥ 5/6 (both forms);
+  * Theorem D: with the Montgomery–Taylor constant c₁* = `cMT` (§3 below), on dyadic windows
+    N₀*/N ≥ 2 − 1/c₁*, and — dyadic and cumulative — N₀ˢ/N ≥ 2 − 1/c₁* and N_d/N ≥ (3 − 1/c₁*)/2;
   * Theorem E: for every primitive Dirichlet character χ mod q > 1, the analogues of A, B, C (dyadic)
     for the zeros of L(s,χ), and ("Theorem D holds likewise") the three Theorem-D bounds for L(s,χ).
 Solution.lean (untrusted) proves exactly these statements by delegating to the Zeta23 library;
@@ -140,25 +141,25 @@ theorem two_thirds_on_critical_line_cumulative :
     ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (2 / 3 - ε) * (Ncount 0 T : ℝ) ≤ N0star 0 T := by
   sorry
 
-/-- **Theorem B — at least 1/2 of the zeros are simple and on the critical line** (dyadic windows).
--/
-theorem half_simple_on_critical_line :
-    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (1 / 2 - ε) * (Ncount T (2 * T) : ℝ) ≤ N0simple T (2 * T) := by
+/-- **Theorem B**: at least 2/3 of the nontrivial zeros of ζ are *simple and* on the critical
+line (dyadic windows). -/
+theorem two_thirds_simple_on_critical_line :
+    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (2 / 3 - ε) * (Ncount T (2 * T) : ℝ) ≤ N0simple T (2 * T) := by
   sorry
 
-/-- **Theorem B**, cumulative form: liminf_{T→∞} N₀ˢ(T)/N(T) ≥ 1/2. -/
-theorem half_simple_on_critical_line_cumulative :
-    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (1 / 2 - ε) * (Ncount 0 T : ℝ) ≤ N0simple 0 T := by
+/-- cumulative form: liminf_{T→∞} N₀ˢ(T)/N(T) ≥ 2/3. -/
+theorem two_thirds_simple_on_critical_line_cumulative :
+    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (2 / 3 - ε) * (Ncount 0 T : ℝ) ≤ N0simple 0 T := by
   sorry
 
-/-- **Theorem C — at least 3/4 of the zeros are distinct** (dyadic windows). -/
-theorem three_quarters_distinct :
-    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (3 / 4 - ε) * (Ncount T (2 * T) : ℝ) ≤ Ndist T (2 * T) := by
+/-- **Theorem C**: at least 5/6 of the nontrivial zeros of ζ are distinct (dyadic windows). -/
+theorem five_sixths_distinct :
+    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (5 / 6 - ε) * (Ncount T (2 * T) : ℝ) ≤ Ndist T (2 * T) := by
   sorry
 
-/-- **Theorem C**, cumulative form: liminf_{T→∞} N_d(T)/N(T) ≥ 3/4. -/
-theorem three_quarters_distinct_cumulative :
-    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (3 / 4 - ε) * (Ncount 0 T : ℝ) ≤ Ndist 0 T := by
+/-- cumulative form: liminf_{T→∞} N_d(T)/N(T) ≥ 5/6. -/
+theorem five_sixths_distinct_cumulative :
+    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (5 / 6 - ε) * (Ncount 0 T : ℝ) ≤ Ndist 0 T := by
   sorry
 
 /-- **Theorem D — the optimal (Montgomery–Taylor) window**: liminf_{T→∞} N₀*(T,2T)/N(T,2T) ≥ 2 −
@@ -167,15 +168,27 @@ theorem montgomery_taylor_on_critical_line :
     ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (2 - 1 / cMT - ε) * (Ncount T (2 * T) : ℝ) ≤ N0star T (2 * T) := by
   sorry
 
-/-- **Theorem D**, simple zeros on the line: liminf_{T→∞} N₀ˢ(T,2T)/N(T,2T) ≥ 2c₁* − 1 (= 0.50659…).
--/
-theorem montgomery_taylor_simple_on_critical_line :
-    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (2 * cMT - 1 - ε) * (Ncount T (2 * T) : ℝ) ≤ N0simple T (2 * T) := by
+/-- **Theorem D**, simple zeros: with the optimal window, at least 2 − 1/c₁* (= 0.67250…) of the zeros are
+*simple and* on the critical line (the same constant as for N₀*; the Cauchy–Schwarz form gives 2c₁* − 1 =
+0.50659… for N₀ˢ). -/
+theorem montgomery_taylor_simple_on_critical_line_mult :
+    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (2 - 1 / cMT - ε) * (Ncount T (2 * T) : ℝ) ≤ N0simple T (2 * T) := by
   sorry
 
-/-- **Theorem D**, distinct zeros: liminf_{T→∞} N_d(T,2T)/N(T,2T) ≥ c₁* (= 0.75329…). -/
-theorem montgomery_taylor_distinct :
-    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (cMT - ε) * (Ncount T (2 * T) : ℝ) ≤ Ndist T (2 * T) := by
+/-- cumulative form: liminf_{T→∞} N₀ˢ(T)/N(T) ≥ 2 − 1/c₁*. -/
+theorem montgomery_taylor_simple_on_critical_line_mult_cumulative :
+    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (2 - 1 / cMT - ε) * (Ncount 0 T : ℝ) ≤ N0simple 0 T := by
+  sorry
+
+/-- **Theorem D**, distinct zeros: at least (3 − 1/c₁*)/2 (= 0.83625…) of the zeros are distinct (the
+Cauchy–Schwarz form gives c₁* = 0.75329…). -/
+theorem montgomery_taylor_distinct_mult :
+    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (3 / 2 - cMT⁻¹ / 2 - ε) * (Ncount T (2 * T) : ℝ) ≤ Ndist T (2 * T) := by
+  sorry
+
+/-- cumulative form: liminf_{T→∞} N_d(T)/N(T) ≥ (3 − 1/c₁*)/2. -/
+theorem montgomery_taylor_distinct_mult_cumulative :
+    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (3 / 2 - cMT⁻¹ / 2 - ε) * (Ncount 0 T : ℝ) ≤ Ndist 0 T := by
   sorry
 
 /-- **Theorem E — Dirichlet L-functions**: for every primitive Dirichlet character χ modulo q > 1,
@@ -186,18 +199,18 @@ theorem dirichlet_two_thirds_on_critical_line
     ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (2 / 3 - ε) * (NcountL χ T (2 * T) : ℝ) ≤ N0starL χ T (2 * T) := by
   sorry
 
-/-- **Theorem E**: at least 1/2 of the nontrivial zeros of L(s,χ) are simple and on the critical
-line (χ primitive mod q > 1; dyadic windows). -/
-theorem dirichlet_half_simple_on_critical_line
+/-- **Theorem E**: for every primitive Dirichlet character χ mod q > 1, at least 2/3 of the
+nontrivial zeros of L(s,χ) are simple and on the critical line (dyadic windows). -/
+theorem dirichlet_two_thirds_simple_on_critical_line
     {q : ℕ} [NeZero q] (χ : DirichletCharacter ℂ q) (hq : 1 < q) (hχ : χ.IsPrimitive) :
-    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (1 / 2 - ε) * (NcountL χ T (2 * T) : ℝ) ≤ N0simpleL χ T (2 * T) := by
+    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (2 / 3 - ε) * (NcountL χ T (2 * T) : ℝ) ≤ N0simpleL χ T (2 * T) := by
   sorry
 
-/-- **Theorem E**: at least 3/4 of the nontrivial zeros of L(s,χ) are distinct (χ primitive mod q >
-1; dyadic windows). -/
-theorem dirichlet_three_quarters_distinct
+/-- **Theorem E**: at least 5/6 of the nontrivial zeros of L(s,χ) are distinct (χ primitive
+mod q > 1; dyadic windows). -/
+theorem dirichlet_five_sixths_distinct
     {q : ℕ} [NeZero q] (χ : DirichletCharacter ℂ q) (hq : 1 < q) (hχ : χ.IsPrimitive) :
-    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (3 / 4 - ε) * (NcountL χ T (2 * T) : ℝ) ≤ NdistL χ T (2 * T) := by
+    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (5 / 6 - ε) * (NcountL χ T (2 * T) : ℝ) ≤ NdistL χ T (2 * T) := by
   sorry
 
 /-- **Theorem E, "Theorem D holds likewise"**: for χ primitive mod q > 1, liminf_{T→∞}
@@ -207,16 +220,18 @@ theorem dirichlet_montgomery_taylor_on_critical_line
     ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (2 - 1 / cMT - ε) * (NcountL χ T (2 * T) : ℝ) ≤ N0starL χ T (2 * T) := by
   sorry
 
-/-- **Theorem E, "Theorem D holds likewise"**, simple zeros on the line: ≥ 2c₁* − 1 (= 0.50659…). -/
-theorem dirichlet_montgomery_taylor_simple_on_critical_line
+/-- **Theorem E (optimal window)**: at least 2 − 1/c₁* (= 0.67250…) of the zeros of L(s,χ)
+are simple and on the critical line. -/
+theorem dirichlet_montgomery_taylor_simple_on_critical_line_mult
     {q : ℕ} [NeZero q] (χ : DirichletCharacter ℂ q) (hq : 1 < q) (hχ : χ.IsPrimitive) :
-    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (2 * cMT - 1 - ε) * (NcountL χ T (2 * T) : ℝ) ≤ N0simpleL χ T (2 * T) := by
+    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (2 - 1 / cMT - ε) * (NcountL χ T (2 * T) : ℝ) ≤ N0simpleL χ T (2 * T) := by
   sorry
 
-/-- **Theorem E, "Theorem D holds likewise"**, distinct zeros: ≥ c₁* (= 0.75329…). -/
-theorem dirichlet_montgomery_taylor_distinct
+/-- **Theorem E (optimal window)**: at least (3 − 1/c₁*)/2 (= 0.83625…) of the zeros of
+L(s,χ) are distinct. -/
+theorem dirichlet_montgomery_taylor_distinct_mult
     {q : ℕ} [NeZero q] (χ : DirichletCharacter ℂ q) (hq : 1 < q) (hχ : χ.IsPrimitive) :
-    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (cMT - ε) * (NcountL χ T (2 * T) : ℝ) ≤ NdistL χ T (2 * T) := by
+    ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (3 / 2 - cMT⁻¹ / 2 - ε) * (NcountL χ T (2 * T) : ℝ) ≤ NdistL χ T (2 * T) := by
   sorry
 
 end
