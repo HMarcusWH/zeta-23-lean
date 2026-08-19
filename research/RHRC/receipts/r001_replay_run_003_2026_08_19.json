@@ -1,0 +1,81 @@
+{
+  "schema_version": "RHRC-replay-1",
+  "run_id": "R001_REPLAY_RUN_003",
+  "date_utc": "2026-08-19",
+  "phase": "DISCOVERY_REPLAY",
+  "claim_cap": "FINITE_NUMERICAL_SYNTHETIC_DIAGNOSTIC_ONLY",
+  "input_archive": {
+    "name": "zeta-23-lean-main (2).zip",
+    "sha256": "b3ccaa7da2c375c3e73c6a0e49f0fc79f04729ee5fbc0fad9a7331f459759266"
+  },
+  "preflight": {
+    "rhrc_claim_lint": "PASS",
+    "ffbbp_v1_5_tests": "15/15 PASS",
+    "ool_v2_7_6_tests": "13/13 PASS",
+    "total_python_regression_tests": "28/28 PASS"
+  },
+  "native_script_replay": {
+    "configuration": {"zeros": 150, "grid": 1400},
+    "result": "PASS",
+    "all_gates": true,
+    "baseline_local_slope": -0.00011936363523281848,
+    "online_double_local_slope": -0.000046887199250146276,
+    "offline_local_slopes": {
+      "0.005": 0.0009629070789725617,
+      "0.010": 0.005701147682609178,
+      "0.020": 0.029020041993802374,
+      "0.050": 0.09909115790257682,
+      "0.100": 0.19998022645651456
+    },
+    "null_max_local_slope": 0.00027067732906766383,
+    "cancellation_worst_truth_local_slope": 0.07634377816069807,
+    "commutation_abs_delta": 0.00017335020055672667,
+    "runtime_seconds": 17.174553394317627
+  },
+  "exact_configuration_replay": {
+    "method": "independent vectorized evaluator of the same residual formula and masks; base residual cached per aperture to avoid repeated recomputation",
+    "configuration": {"zeros": 200, "grid": 5400, "apertures": [3,4,5,6,8,10,12,16,20,25,30,40,50,60,70,80,90,100]},
+    "result": "PASS",
+    "all_gates": true,
+    "baseline_local_slope": 0.00002941411260741429,
+    "online_double_local_slope": 0.0000496508815312045,
+    "offline_local_slopes": {
+      "0.005": 0.0014607288385076983,
+      "0.010": 0.007320517143954963,
+      "0.020": 0.031057515506358584,
+      "0.050": 0.09923166395198034,
+      "0.100": 0.19997871338165518
+    },
+    "gamma_transfer_local_slopes": {
+      "40": 0.09921120441149735,
+      "80": 0.09920724444571626,
+      "120": 0.09910292761757299,
+      "150": 0.09913621830496096
+    },
+    "null_max_local_slope": 0.0001230723549840261,
+    "cancellation_worst_spacing": 0.02,
+    "cancellation_worst_truth_local_slope": 0.07699269147410734,
+    "commutation_100_vs_200_abs_delta": 0.0000279314553228438,
+    "max_abs_difference_from_run_002_key_results": 2.7755575615628914e-17,
+    "reproduction_classification": "MACHINE_PRECISION_REPRODUCTION"
+  },
+  "incomplete_attempt": {
+    "configuration": {"zeros": 200, "grid": 5400},
+    "method": "unmodified repository run_experiment.py on cold cache",
+    "status": "INCOMPLETE_RUNTIME_TIMEOUT",
+    "runtime_limit_seconds": 120,
+    "interpretation": "No result claimed from timed-out process. Exact configuration was then replayed with an independently vectorized equivalent evaluator."
+  },
+  "bounded_claim": {
+    "result": "PASS",
+    "certificate_status": "VALID",
+    "authority": "EXPERIMENTAL_EVIDENCE",
+    "statement": "The R001 finite exceptional-zero diagnostic reproduced on a second native-script configuration and reproduced the prior 200-zero/5400-grid key outputs to machine precision under an independently vectorized evaluator."
+  },
+  "open_obligations": [
+    "R001_ZERO_GROWTH remains OPEN.",
+    "R001_PRIME_UPPER remains OPEN.",
+    "This reproduction is not RH evidence, proof, convergence evidence, or finite-to-infinite transfer.",
+    "Mathematical theorem authority remains Lean/comparator."
+  ]
+}
