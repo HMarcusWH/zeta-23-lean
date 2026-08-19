@@ -1,0 +1,18 @@
+{
+  "schema_version": "RHRC-boundary-1",
+  "boundary_id": "B0_RH_2026_08_19",
+  "terminal_claim_id": "C_RH",
+  "terminal_claim": "Every nontrivial zero rho of the Riemann zeta function satisfies Re(rho) = 1/2.",
+  "allowed_statuses": ["PROVED_UNCONDITIONAL","PROVED_CONDITIONAL","NUMERICAL","SYNTHETIC","HEURISTIC","CONJECTURE","OPEN","REFUTED"],
+  "unconditional_admission": ["PROVED_UNCONDITIONAL"],
+  "conditional_inputs": ["PROVED_CONDITIONAL", "CONJECTURE"],
+  "diagnostic_only": ["NUMERICAL", "SYNTHETIC", "HEURISTIC"],
+  "forbidden_promotions": [
+    "PROVED_CONDITIONAL->PROVED_UNCONDITIONAL without independent discharge",
+    "CONJECTURE->PROVED_UNCONDITIONAL",
+    "NUMERICAL->PROVED_UNCONDITIONAL",
+    "SYNTHETIC->PROVED_UNCONDITIONAL",
+    "HEURISTIC->PROVED_UNCONDITIONAL",
+    "unknown dependency->assumed true"
+  ]
+}
