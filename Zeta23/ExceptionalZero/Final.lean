@@ -3,6 +3,7 @@ import Zeta23.ExceptionalZero.ScaleRate
 import Zeta23.ExceptionalZero.RMSGrowth
 import Zeta23.ExceptionalZero.Cancellation
 import Zeta23.ExceptionalZero.ProbeFamily
+import Zeta23.ExceptionalZero.LaplacePole
 import Zeta23.ExceptionalZero.ConditionalClosure
 import Zeta23.ExceptionalZero.WeilBridge
 import Zeta23.ExceptionalZero.PrimeUpper
