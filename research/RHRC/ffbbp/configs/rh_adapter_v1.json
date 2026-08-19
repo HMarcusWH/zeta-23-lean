@@ -1,0 +1,33 @@
+{
+  "profile": "RHRC_FFBBP_RH_V1",
+  "role": "research calibration profile, not mathematical constants",
+  "association": {
+    "certificate_uses_target": false,
+    "holdout_uses_target": false,
+    "truth_uses_target": false
+  },
+  "known_null": {
+    "multi_seed_required": true,
+    "run38_reference_mean_amplitude_max": 0.045,
+    "run38_reference_individual_amplitude_max": 0.070
+  },
+  "selection": {
+    "calibration_fraction": 0.50,
+    "validation_fraction": 0.25,
+    "lockbox_fraction": 0.25,
+    "lockbox_refit_allowed": false
+  },
+  "required_gates": [
+    "source_target_firewall",
+    "known_null",
+    "best_legal_null",
+    "candidate_aligned_ablation",
+    "commutation",
+    "transfer"
+  ],
+  "forbidden_interpretation": [
+    "posterior_as_probability_RH_true",
+    "synthetic_success_as_RH_evidence",
+    "numerical_candidate_as_theorem"
+  ]
+}
