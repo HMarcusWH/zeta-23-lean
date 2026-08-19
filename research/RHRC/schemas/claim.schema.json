@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RHRC claim",
+  "type": "object",
+  "required": ["id", "statement", "status", "dependencies", "promotion_cap"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "statement": {"type": "string", "minLength": 1},
+    "status": {"enum": ["PROVED_UNCONDITIONAL", "PROVED_CONDITIONAL", "NUMERICAL", "SYNTHETIC", "HEURISTIC", "CONJECTURE", "OPEN", "REFUTED"]},
+    "dependencies": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "promotion_cap": {"enum": ["PROVED_UNCONDITIONAL", "PROVED_CONDITIONAL", "NUMERICAL", "SYNTHETIC", "HEURISTIC", "CONJECTURE", "OPEN", "REFUTED"]}
+  }
+}
