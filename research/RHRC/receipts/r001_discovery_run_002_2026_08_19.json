@@ -1,0 +1,108 @@
+{
+  "schema_version": "RHRC-receipt-1",
+  "run_id": "R001_DISCOVERY_RUN_002_GRID5400",
+  "phase": "DISCOVERY",
+  "date_utc": "2026-08-19",
+  "claim_cap": "FINITE_NUMERICAL_SYNTHETIC_DIAGNOSTIC_ONLY",
+  "source_formula": "Z_a(xi)=sum_rho exp(2a(rho-s))/(rho-s), s=1/2+i xi",
+  "source_reference": "Kim et al., arXiv:2607.24830v2, R6",
+  "input": {
+    "zero_count": 200,
+    "last_zero_ordinate": 396.3818542225922,
+    "zero_source": "mpmath.zetazero finite numerical input",
+    "xi_grid_size": 5400,
+    "xi_range": [10.0, 390.0],
+    "pole_exclusion": 0.15,
+    "apertures": [3,4,5,6,8,10,12,16,20,25,30,40,50,60,70,80,90,100],
+    "anchor_zero_index": 60,
+    "anchor_gamma": 163.030709687182,
+    "late_slope_fit_min_a": 30.0
+  },
+  "binding_hashes": {
+    "boundary_sha256": "11636f8ae704470605767fddf8838a5a3d2d81a9e348c381ddf414ae9df64581",
+    "claim_registry_sha256": "e81df0a9345748fe9be61002f7671e31ec2ff29e9c7f541b1abd697d1e0f9102",
+    "route_registry_sha256": "51564c42124f183c85f778398148163518973d99993f380740f7205e5c45b5fc",
+    "ffbbp_reference_sha256": "44e77e07abe19f79c848d3698d297c82674fbe26d8439b58bc9ec688e8d90297",
+    "ool_reference_sha256": "796ed32d9e3c46a2308c73089a202b6cb96ad711b4de58b0f0f837c7aacc47dd",
+    "local_experiment_script_sha256": "2110d266c1241acad48af4afb18a80aa838b45e1419989a30661ad921ae76c71",
+    "local_raw_output_sha256": "63306e16987bcd86a563c97c34380de3c562bbea1cbe644d2ade2cd8c8a219c0"
+  },
+  "new_information_channel": "multi-aperture evolution of the zero-sum residual norm; not a scalar function of TightMult trace/Frobenius/index data",
+  "key_results": {
+    "baseline_local_late_slope": 0.000029414112607427956,
+    "online_double_local_late_slope": 0.0000496508815312045,
+    "max_online_double_null_local_late_slope": 0.00012307235498402677,
+    "offline_pair_local_late_slopes": {
+      "delta_0.005": 0.0014607288385076976,
+      "delta_0.010": 0.00732051714395496,
+      "delta_0.020": 0.0310575155063586,
+      "delta_0.050": 0.09923166395198033,
+      "delta_0.100": 0.19997871338165518
+    },
+    "predicted_asymptotic_rates_2delta": {
+      "delta_0.005": 0.01,
+      "delta_0.010": 0.02,
+      "delta_0.020": 0.04,
+      "delta_0.050": 0.10,
+      "delta_0.100": 0.20
+    },
+    "candidate_aligned_delta_to_zero_slope_drop": 0.09918201307044912,
+    "gamma_transfer_delta_0.05_local_slopes": [0.09921120441149733,0.09920724444571623,0.09910292761757299,0.09913621830496096],
+    "two_pair_cancellation_worst_spacing": 0.02,
+    "two_pair_cancellation_truth_replay_local_slope": 0.07699269147410734,
+    "commutation_100_vs_200_zero_local_slope_abs_delta": 0.000027931455322829923
+  },
+  "dense_aperture_followups": {
+    "a_30_100_step_1": {
+      "delta_0.05_ordinary": 0.09938752387630519,
+      "delta_0.05_upper_envelope": 0.09966743490017392,
+      "delta_0.02_ordinary": 0.031095022277710965,
+      "delta_0.02_upper_envelope": 0.03267370661111866,
+      "delta_0.01_ordinary": 0.007011231765016908,
+      "delta_0.01_upper_envelope": 0.007306786115119361,
+      "two_pair_delta_0.05_spacing_0.02_ordinary": 0.07275311775637286,
+      "two_pair_delta_0.05_spacing_0.02_upper_envelope": 0.08472279170811407,
+      "online_double_ordinary": 0.000020883507024349023
+    },
+    "a_60_200_step_2": {
+      "delta_0.01_ordinary": 0.01588555820853518,
+      "delta_0.01_upper_envelope": 0.016634697097186017,
+      "delta_0.02_ordinary": 0.039297773038271096,
+      "delta_0.02_upper_envelope": 0.03957614902024564,
+      "two_pair_delta_0.05_spacing_0.02_ordinary": 0.11478593118309643,
+      "two_pair_delta_0.05_spacing_0.02_upper_envelope": 0.11080942441923566,
+      "online_double_ordinary": -0.00001710445330549207
+    },
+    "a_80_300_step_4": {
+      "delta_0.005_ordinary": 0.0059535208401013135,
+      "delta_0.01_ordinary": 0.018542885349936
+    }
+  },
+  "gates": {
+    "source_target_firewall": "PASS",
+    "tightmult_extra_channel_declared": "PASS",
+    "best_online_null_separated_for_delta_ge_0.02": "PASS",
+    "candidate_aligned_ablation": "PASS",
+    "gamma_transfer": "PASS",
+    "scanned_two_pair_cancellation_attack": "PASS",
+    "commutation": "PASS"
+  },
+  "bounded_claim": {
+    "statement": "Within this finite synthetic/numerical configuration, the declared multi-aperture residual channel separates tested off-line pairs with delta in {0.02,0.05,0.10} from on-line-double controls, survives gamma transfer and the scanned two-pair cancellation attack, and loses the growth signal under delta->0 ablation.",
+    "claim_result": "PASS",
+    "certificate_status": "VALID",
+    "evaluation_mode": "EXPERIMENTAL_EVIDENCE"
+  },
+  "principal_new_observation": "Near-degenerate two-pair interference creates large aperture oscillations. The proof-search target should therefore be formulated as a limsup/upper-envelope exponential growth invariant rather than a monotone fitted slope at every aperture.",
+  "attempted_higher_fidelity_replay": {
+    "400_zero_replay": "NOT_COMPLETED_RUNTIME_LIMIT",
+    "250_zero_replay": "NOT_COMPLETED_RUNTIME_LIMIT",
+    "substitution_performed": false
+  },
+  "open_obligations": [
+    "R001_ZERO_GROWTH remains OPEN: finite synthetic separation is not the general zero-side theorem.",
+    "R001_PRIME_UPPER remains OPEN: no unconditional prime-side subexponential bound is proved here.",
+    "No inference from a finite set of numerically on-line zeros to all zeta zeros is permitted.",
+    "No FFBBP/OoL numerical certificate has mathematical theorem authority; Lean/comparator remains the promotion gate."
+  ]
+}
