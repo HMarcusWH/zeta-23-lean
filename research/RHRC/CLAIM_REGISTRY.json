@@ -1,5 +1,15 @@
 {
-  "schema_version": "RHRC-claims-1",
+  "schema_version": "RHRC-claims-1.1",
+  "runtime_binding": {
+    "kernel": "OoL-MVS",
+    "version": "2.7.6",
+    "research_evaluation_mode": "EXPERIMENTAL_EVIDENCE",
+    "evidence_values": ["PASS", "FAIL", "NA"],
+    "logic": "strong_Kleene",
+    "certificate_status_values": ["VALID", "INCOMPLETE", "INVALID"],
+    "claim_status_is_separate_from_runtime_evidence_result": true,
+    "mathematical_theorem_authority": "Lean/comparator, not RHRC evidence certificates"
+  },
   "claims": [
     {"id":"C_RH","statement":"Every nontrivial zero rho of zeta satisfies Re(rho)=1/2.","status":"OPEN","dependencies":["R001_ZERO_GROWTH","R001_PRIME_UPPER"],"route":"R001_exceptional_zero","promotion_cap":"OPEN"},
     {"id":"OBS_TIGHTMULT","statement":"The existing c=2 trace/Frobenius/positive-index certificate is simultaneously extremal on online doubles and tight off-line pairs and cannot be improved using only those quantities.","status":"PROVED_UNCONDITIONAL","dependencies":[],"source":"Zeta23/ZeroSide/TightMult.lean","promotion_cap":"PROVED_UNCONDITIONAL"},
