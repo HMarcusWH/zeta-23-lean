@@ -1,0 +1,73 @@
+{
+  "overlay_id": "OOL_ROUTE_ARCHITECTURE_2026_08_20",
+  "status": "ARCHITECTURAL_HARDENING_OVER_EXISTING_V2_7_6_KERNEL_AND_2026_08_19_CLEAN_RELEASE",
+  "binary_release_changed": false,
+  "clean_release_outer_zip_sha256": "3fa2d68e6ade43822021444af6573b5fa722d81af80370b26e7abf1f44b30ce3",
+  "embedded_kernel_version": "2.7.6",
+  "embedded_kernel_sha256": "35eef74477b97cfa0f0c5367b51747022ba78c4df16e54869c41614d99e184f2",
+  "programme_hierarchy": {
+    "Experiment_A": {
+      "name": "Transition-Core Validation",
+      "route": "activated nonliving feed -> generated ensemble -> endogenous RE -> same-core PCS",
+      "claim": "validates the chemistry-to-Darwinian transition core without supplying a replicator",
+      "does_not_claim": "raw-geochemistry-to-protolife closure"
+    },
+    "Experiment_B": {
+      "name": "Full Route-Closure Experiment",
+      "route": "F0 geochemical sources -> B1 -> B2 -> B3 activation -> B4 generated ensemble -> B5 -> endogenous RE -> same-core PCS",
+      "claim": "flagship laboratory route for declared dead geochemical matter -> Darwinian protolife, continuously and without substitution",
+      "status": "requires physical qualification and freeze of the integrated upstream route before definitive confirmation"
+    }
+  },
+  "integrated_route_qualification": {
+    "required_sequence": [
+      "module qualification",
+      "physical integration",
+      "U-1...U-6",
+      "FULL-ROUTE FREEZE",
+      "blinded confirmatory run"
+    ],
+    "pre_freeze_requirement": "actual output must physically cross every declared interface F0 -> B1 -> B2 -> B3 -> B4 -> B5 under one governed route",
+    "independent_module_success_is_insufficient": true,
+    "claim_bearing_lineage": "the same material history must continue through endogenous RE and same-hereditary-core PCS"
+  },
+  "boundary_debt_hierarchy": {
+    "Tier_A": {
+      "name": "Transition closure",
+      "external_debt": "canonical activated monomer feed permitted",
+      "claim_cap": "nonliving chemistry -> endogenous heredity -> Darwinian crossing"
+    },
+    "Tier_B": {
+      "name": "Deep-source / full laboratory closure",
+      "external_debt": "only declared environmental reservoirs/materials; no indispensable activated-feed rescue",
+      "claim_cap": "geochemical boundary -> Darwinian protolife"
+    },
+    "Tier_C": {
+      "name": "Natural closure",
+      "additional_requirement": "an early-Earth environment can instantiate the boundary/operators"
+    },
+    "Tier_D": {
+      "name": "Historical inference",
+      "additional_requirement": "evidence that this route actually occurred on Earth"
+    }
+  },
+  "preserved_laws": [
+    "generated ensemble -> endogenous RE",
+    "RE and PCS must be genealogically linked",
+    "RE requires Copy + Release/Retemplate + heredity + recursive amplification",
+    "PCS requires de novo inherited variation + causal differential success",
+    "post-PCS establishment remains a separate stochastic event",
+    "laboratory closure, natural closure, and historical occurrence remain separate claims",
+    "actual-output doctrine remains locked; clean-feed benchmarks, synthetic reconstructions, and rescue experiments are diagnostics only",
+    "route freeze remains mandatory before confirmatory execution"
+  ],
+  "rh_import": {
+    "scope": "domain-neutral route-closure semantics only",
+    "transplanted_rule": "A theorem route may freeze for confirmation only after every declared dependency/interface has been qualified in the actual route and the same admitted provenance lineage traverses the route; independent local lemmas do not by themselves establish end-to-end closure.",
+    "not_imported": [
+      "abiogenesis chemistry as an RH premise",
+      "the empirical truth of Experiment A or B",
+      "natural-history claims"
+    ]
+  }
+}
