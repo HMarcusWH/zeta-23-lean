@@ -1,25 +1,31 @@
 {
-  "schema_version": "RHRC-boundary-1.2",
-  "boundary_id": "B0_RH_2026_08_19",
+  "schema_version": "RHRC-boundary-1.3",
+  "boundary_id": "B0_RH_2026_08_20",
   "terminal_claim_id": "C_RH",
   "terminal_claim": "Every nontrivial zero rho of the Riemann zeta function satisfies Re(rho) = 1/2.",
   "diagnostic_engine": {
     "name": "FFBBP",
-    "reference_architecture_version": "1.5.1+implementation_closure_overlay",
-    "qualified_profile": "RUN42B_A0_CORE::RH_R001_ADAPTER_V2",
+    "reference_architecture_version": "1.5.1+RUN42C_inductive_firewall_closure_overlay",
+    "qualified_profile": "RUN42C_A0_INDUCTIVE_FIREWALL::RH_R001_ADAPTER",
+    "superseded_profile": "RUN42B_A0_DEVELOPMENT_ONLY",
     "qualification_scope": "finite_synthetic_unknown_field_diagnostic_only",
-    "domain_adapter_status": "freeze_required_before_real_zeta_run"
+    "domain_adapter_status": "freeze_required_before_real_zeta_run",
+    "confirm_source_rows_may_influence_construction": false
   },
   "route_closure_engine": {
     "name": "OoL-MVS operational semantics",
     "kernel_version": "2.7.6",
     "reference": "research/RHRC/ool/OOL_REFERENCE.json",
+    "architecture_overlay": "research/RHRC/ool/OOL_ARCHITECTURE_OVERLAY_2026_08_20.json",
     "import_scope": "operational_semantics_and_governance_only",
     "formal_complete_world_mode": "TRUE_FALSE_for_complete_synthetic_or_adversarial_worlds_only",
     "experimental_evidence_mode": "strong_Kleene_PASS_FAIL_NA",
     "missing_or_unresolved_evidence": "NA",
     "claim_result_separate_from_certificate_integrity": true,
     "confirmatory_requires_frozen_route_and_boundary_digests": true,
+    "integrated_route_qualification_required_before_freeze": true,
+    "independent_module_success_is_not_end_to_end_closure": true,
+    "claim_bearing_lineage_must_be_continuous": true,
     "post_unblinding_claim_bearing_change": "new_route_digest_required"
   },
   "unconditional_source_boundary": {
@@ -38,18 +44,9 @@
     "OPEN",
     "REFUTED"
   ],
-  "unconditional_admission": [
-    "PROVED_UNCONDITIONAL"
-  ],
-  "conditional_inputs": [
-    "PROVED_CONDITIONAL",
-    "CONJECTURE"
-  ],
-  "diagnostic_only": [
-    "NUMERICAL",
-    "SYNTHETIC",
-    "HEURISTIC"
-  ],
+  "unconditional_admission": ["PROVED_UNCONDITIONAL"],
+  "conditional_inputs": ["PROVED_CONDITIONAL", "CONJECTURE"],
+  "diagnostic_only": ["NUMERICAL", "SYNTHETIC", "HEURISTIC"],
   "forbidden_promotions": [
     "PROVED_CONDITIONAL->PROVED_UNCONDITIONAL without independent discharge",
     "CONJECTURE->PROVED_UNCONDITIONAL",
@@ -61,6 +58,8 @@
     "unknown dependency->assumed true",
     "missing evidence->FAIL",
     "unknown provenance->admitted provenance",
-    "route label change without route_spec_digest change->same confirmatory route"
+    "route label change without route_spec_digest change->same confirmatory route",
+    "independent local lemma success->global route closure without interface/provenance closure",
+    "RUN42B development profile->confirmatory FFBBP authority"
   ]
 }
