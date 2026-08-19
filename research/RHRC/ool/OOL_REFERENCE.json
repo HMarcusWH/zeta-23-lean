@@ -1,0 +1,62 @@
+{
+  "kernel": "OoL_MVS_Kernel",
+  "version": "2.7.6",
+  "release_date": "2026-08-19",
+  "source_archive": {
+    "name": "OoL_MVS_Kernel_v2.7.6 (1).zip",
+    "sha256": "35eef74477b97cfa0f0c5367b51747022ba78c4df16e54869c41614d99e184f2"
+  },
+  "canonical_authority": {
+    "unified_spec": "OoL_MVS_Kernel_v2.7.6_Mathematically_Unified.md",
+    "claim_registry": "claim_registry_v2_7_6.json",
+    "claim_registry_file_sha256": "5bead5e14603e56a3c68e2be17df2f7761da8aa65544529041c2ca35784d1732",
+    "claim_registry_semantic_hash": "22dfbf6413b8317ab3ef7400b3e966da4d52d2b60868932b0b5adba509aafe9f",
+    "runtime": "claim_registry_runtime_v2_7_6.py"
+  },
+  "packaged_validation": {
+    "formal_claim_algebra": "50/50 PASS",
+    "finite_identity_ancestry_worlds": 256,
+    "evidence_semantics": "84/84 PASS",
+    "end_to_end": "95/95 PASS",
+    "numerical_math": "56/56 PASS",
+    "structural_source_scope_stress": "233/233 PASS",
+    "hardening": "12/12 PASS",
+    "counted_total": "530/530 PASS"
+  },
+  "local_reverification_2026_08_19": {
+    "executed_from_supplied_archive": true,
+    "formal_claim_algebra": 50,
+    "evidence_semantics": 84,
+    "end_to_end": 95,
+    "numerical_math": 56,
+    "structural_source_scope_stress": 233,
+    "hardening": 12,
+    "total": 530,
+    "failures": 0
+  },
+  "rh_import_scope": "operational_semantics_and_governance_only",
+  "not_imported": [
+    "the 24 origin-of-life physical claims as RH premises",
+    "abiogenesis-specific chemistry or natural-history conclusions",
+    "empirical claims outside their stated source scope"
+  ],
+  "imported_semantics": [
+    "FORMAL_COMPLETE_WORLD is two-valued TRUE/FALSE and cannot issue a scientific certificate",
+    "EXPERIMENTAL_EVIDENCE is strong-Kleene PASS/FAIL/NA",
+    "missing or unresolved experimental evidence remains NA",
+    "ClaimResult and CertificateStatus are separate",
+    "a well-supported FAIL may have a VALID certificate",
+    "claim-bearing evidence must bind to raw evidence receipts and exact support digests",
+    "unknown provenance is not admitted provenance",
+    "absence claims require a complete declared search/provenance domain",
+    "confirmatory execution requires frozen route and boundary digests",
+    "claim-bearing route changes after unblinding require a new route digest",
+    "route-specific protocols instantiate and may not weaken the governing kernel",
+    "complete evidence must conservatively collapse PASS/FAIL to the underlying two-valued claim algebra"
+  ],
+  "rh_adaptation": {
+    "natural_boundary_analogue": "An unconditional RH route must realize every theorem-relevant entrance assumption from admitted unconditional roots; conditional or unknown ancestry cannot be relabeled as unconditional by downstream transformation.",
+    "route_freeze_scope": "diagnostic/confirmatory runs and frozen proof-search experiments; discovery remains adaptive",
+    "certificate_scope": "research evidence integrity only; mathematical theorem authority remains Lean/comparator"
+  }
+}
