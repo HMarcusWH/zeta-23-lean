@@ -1,0 +1,39 @@
+name: RHRC research and Lean checks
+
+on:
+  push:
+    branches: ["research/exceptional-zero-rhrc"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  python-rhrc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Claim lint
+        run: python research/RHRC/tools/claim_lint.py
+      - name: RHRC regression and gauntlet tests
+        run: python -m unittest discover -s research/RHRC/ffbbp/tests -p 'test_*.py' -v
+
+  lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          build: true
+          test: false
+          lint: false
+      - name: Build exceptional-zero foundation explicitly
+        run: lake build Zeta23.ExceptionalZero
+      - name: Reject sorry/project axioms in promoted subtree
+        run: |
+          if grep -R -n -E '\bsorry\b|^[[:space:]]*axiom[[:space:]]' Zeta23/ExceptionalZero Zeta23/ExceptionalZero.lean; then
+            echo 'Forbidden sorry/axiom detected'
+            exit 1
+          fi
