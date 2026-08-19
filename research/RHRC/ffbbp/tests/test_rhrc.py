@@ -1,3 +1,4 @@
+import json
 import sys
 import unittest
 from pathlib import Path
@@ -6,7 +7,7 @@ RHRC = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(RHRC))
 
 from ffbbp.adapter import Observation, associate_source_only
-from ffbbp.gates import collapse_gate
+from ffbbp.gates import collapse_gate, unknown_field_admission_gate
 from ffbbp.nulls import assess_known_null
 from ffbbp.ablation import candidate_aligned_ablation
 from ffbbp.commutation import assess as assess_commutation
@@ -17,6 +18,30 @@ from tools.claim_lint import lint
 from interventions.intervention import InterventionSpec, run
 
 class RHRCTests(unittest.TestCase):
+    def test_ffbbp_reference_is_v1_5(self):
+        ref = json.loads((RHRC / "ffbbp" / "FFBBP_REFERENCE.json").read_text())
+        self.assertEqual(ref["reference_architecture_version"], "1.5")
+        self.assertEqual(ref["qualified_profile"]["name"], "RUN42B_A0")
+        self.assertEqual(ref["unknown_field_admission"]["claim_cap"], "diagnostic_only")
+
+    def test_run42b_profile_is_exactly_bound(self):
+        profile = json.loads((RHRC / "ffbbp" / "configs" / "run42b_a0_v1_5_qualified_profile.json").read_text())
+        self.assertEqual(profile["fresh_seeds"], [83, 101, 127, 149, 173])
+        self.assertEqual(profile["benchmark"]["split"], {"calibration": 0.60, "validation": 0.20, "lockbox": 0.20})
+        self.assertEqual(profile["association"]["temperature"], 0.015)
+        self.assertTrue(profile["material_change_requires_requalification"])
+
+    def test_unknown_field_admission_is_two_sided(self):
+        blocked = unknown_field_admission_gate(
+            known_null_pass=True, known_positive_pass=False, matched_artifact_pass=True,
+            firewall_pass=True, profile_frozen=True, domain_adapter_frozen=True)
+        self.assertFalse(blocked.passed)
+        self.assertIn("V06P_KNOWN_POSITIVE_FAIL", blocked.blockers)
+        admitted = unknown_field_admission_gate(
+            known_null_pass=True, known_positive_pass=True, matched_artifact_pass=True,
+            firewall_pass=True, profile_frozen=True, domain_adapter_frozen=True)
+        self.assertTrue(admitted.passed)
+
     def test_source_target_firewall(self):
         prototypes = [(0.0, 0.0), (10.0, 10.0)]
         a = associate_source_only(Observation((0.1, 0.2), target=1e9), prototypes)
@@ -31,7 +56,7 @@ class RHRCTests(unittest.TestCase):
         w = build_worlds()
         self.assertTrue(positive_log_slope(w["G06"].multiscale_probe))
 
-    def test_null_admission(self):
+    def test_run38_null_regression_remains_clean(self):
         res = assess_known_null([0.00045, 0.00030, 0.00044, 0.00035, 0.00060, 0.00045], mean_max=0.045, individual_max=0.070)
         self.assertTrue(res.passed)
 
@@ -53,10 +78,10 @@ class RHRCTests(unittest.TestCase):
     def test_commutation(self):
         self.assertTrue(assess_commutation(0.00400, 0.00401, scale=0.004, absolute_max=0.00002, relative_max=0.01).passed)
 
-    def test_frozen_split(self):
-        split = deterministic_split(tuple(range(100)))
+    def test_run42b_frozen_split(self):
+        split = deterministic_split(tuple(range(100)), calibration_fraction=0.60, validation_fraction=0.20)
         assert_lockbox_disjoint(split)
-        self.assertEqual((len(split.calibration), len(split.validation), len(split.lockbox)), (50,25,25))
+        self.assertEqual((len(split.calibration), len(split.validation), len(split.lockbox)), (60,20,20))
 
     def test_transfer_fails_closed_on_missing_relock(self):
         result = require_positive_lift({"middle_to_late": 0.01, "late_to_late": None}, ("middle_to_late","late_to_late"))
