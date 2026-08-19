@@ -1,8 +1,12 @@
 {
   "profile_id": "RUN42B_A0_V1_5",
+  "status": "SUPERSEDED_DEVELOPMENT_ONLY",
+  "superseded_by": "RUN42C_A0_INDUCTIVE_FIREWALL",
+  "root_cause": "CONFIRM_COVARIATE_TRANSDUCTION",
+  "supersession_note": "RUN42B is preserved for development lineage only. Its Sinkhorn balancing included CONFIRM source rows, so it is not accepted as confirmatory authority after the RUN42C inductive-firewall audit.",
   "reference_architecture": "FFBBP v1.5",
-  "profile_type": "finite_synthetic_qualified_profile_not_universal_default",
-  "claim_cap": "unknown_field_diagnostic_only",
+  "profile_type": "finite_synthetic_development_profile_not_confirmatory_authority",
+  "claim_cap": "historical_development_diagnostic_only",
   "material_change_requires_requalification": true,
   "fresh_seeds": [83, 101, 127, 149, 173],
   "benchmark": {
@@ -16,7 +20,8 @@
     "backend": "sinkhorn_A0",
     "iterations": 80,
     "temperature": 0.015,
-    "certificate_information_set": "source_only"
+    "certificate_information_set": "source_only",
+    "historical_confirm_source_rows_entered_balancing_fit": true
   },
   "field": {
     "graph_smooth_lambda": 0.15,
@@ -59,5 +64,5 @@
     "run42b_output_zip_sha256": "8e90730b3fec1a85f37f98f9884ed689bc7f6fa871727afd6976820f1c62773d",
     "run42_final_qualification_dossier_sha256": "704e2096c28c6b046ed1e0c0646cd77b8483978b25e9b9f66222277b95e4b94e"
   },
-  "terminal_status": "FFBBP_KNOWN_TRUTH_QUALIFICATION_PASS_UNKNOWN_FIELD_SEARCH_READY_DIAGNOSTIC_ONLY"
+  "historical_terminal_status": "FFBBP_KNOWN_TRUTH_QUALIFICATION_PASS_UNKNOWN_FIELD_SEARCH_READY_DIAGNOSTIC_ONLY"
 }
