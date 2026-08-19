@@ -26,8 +26,12 @@ theorem laplaceZeroKernel_partialFraction (w z : ℂ)
     calc
       w - z / 2 = -(z - 2 * w) / 2 := by ring
       _ = 0 := by rw [h]; norm_num
+  have hden' : z - w * 2 ≠ 0 := by
+    simpa [mul_comm] using hden
   unfold laplaceZeroKernel
   field_simp [hw, hz, hwz, hden]
+  rw [show -z + w * 2 = -(z - w * 2) by ring, inv_neg]
+  field_simp [hden']
   ring
 
 /-- A single mode has the expected Laplace transform whenever the Laplace variable lies
@@ -65,6 +69,6 @@ theorem integral_laplace_zeroMode {w z : ℂ} (hw : w ≠ 0)
   simp only [Complex.ofReal_zero, mul_zero, Complex.exp_zero]
   unfold laplaceZeroKernel
   field_simp [hw, hcoef]
-  ring
+  rw [show -(w * 2) + z = -(w * 2 - z) by ring, inv_neg]
 
 end Zeta23.ExceptionalZero
