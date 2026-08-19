@@ -1,0 +1,41 @@
+{
+  "overlay_id": "FFBBP_IMPLEMENTATION_CLOSURE_2026_08_19",
+  "status": "ENFORCED_IN_RHRC_PENDING_CANONICAL_V1_5_2_DOCUMENT",
+  "canonical_theory_document": "FFBBP Reference Solver Architecture v1.5.1 - consolidated preservation release",
+  "run42b_protocol_sha256": "5b21194b41e84821b8af90ab97cd14c9e090d4b64d07525a9d265a7cc7c03fee",
+  "run42b_output_zip_sha256": "8e90730b3fec1a85f37f98f9884ed689bc7f6fa871727afd6976820f1c62773d",
+  "rules": {
+    "notation": {
+      "field_temporal_structure": "T_temporal",
+      "context_covariate": "kappa_i_t",
+      "projected_recall": "z_i"
+    },
+    "information_partitions": ["I_train", "I_select", "I_confirm", "I_audit"],
+    "I_build_definition": "I_train union I_select",
+    "hard_firewall": "I_confirm -> construction FORBIDDEN",
+    "orthogonal_axes": ["time_window", "evidence_partition"],
+    "fidelity_mode": ["FAST", "HYBRID", "REFERENCE"],
+    "run_phase": ["TRAIN", "SELECT", "CONFIRM", "UNKNOWN_DIAGNOSTIC", "PILOT"],
+    "lift_validation": "1 - RMSE_model / RMSE_zero, evaluated on SELECT before existence shrinkage",
+    "w_exist_lifecycle": [
+      "fit F_raw on TRAIN",
+      "score F_raw on SELECT",
+      "compute Lift_validation",
+      "compute w_exist",
+      "shrink F_raw -> F_certificate",
+      "freeze family and w_exist",
+      "one no-refit CONFIRM evaluation"
+    ],
+    "missingness_uncertainty": {
+      "backend_contract": "consume uncertainty/missingness explicitly or declare qualification limitation",
+      "default_metric": "masked renormalized distance p/|M_ij| times observed-coordinate sum",
+      "minimum_overlap_gate": true
+    },
+    "ablation_refit": "remove/replace nominated mechanism; freeze protocol/preprocessing/hyperparameters/family-selection/evaluation surfaces; refit ordinary model parameters on TRAIN",
+    "null_lifecycle": ["fit TRAIN", "select_or_calibrate SELECT if predeclared", "freeze", "score CONFIRM"],
+    "knockoff_ledger_required": ["preserved", "destroyed", "generation_partition", "refit_semantics", "seed"],
+    "qualification_identity": "CoreProfileID x DomainAdapterID",
+    "qualification_levels": ["CORE_RUNTIME_QUALIFIED", "DOMAIN_ADAPTER_DIAGNOSTIC_ADMITTED"],
+    "online_note": "RUN42B validation-shrink is an offline/reference A0 qualification mechanism, not an automatic streaming existence estimator"
+  }
+}
