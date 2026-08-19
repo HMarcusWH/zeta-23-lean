@@ -14,10 +14,12 @@ from ool.semantics import (
     EvidenceValue,
     LeafEvaluationReceipt,
     RouteBinding,
+    RouteInterfaceQualification,
     absence_result,
     confirmatory_binding_status,
     exists_result,
     forall_result,
+    integrated_route_freeze_status,
     issue_certificate,
     k_and,
     k_not,
@@ -35,6 +37,15 @@ class OoL276RuntimeTests(unittest.TestCase):
         self.assertEqual(ref["canonical_authority"]["claim_registry_semantic_hash"], "22dfbf6413b8317ab3ef7400b3e966da4d52d2b60868932b0b5adba509aafe9f")
         self.assertEqual(ref["local_reverification_2026_08_19"]["total"], 530)
         self.assertEqual(ref["local_reverification_2026_08_19"]["failures"], 0)
+        self.assertEqual(ref["clean_release_package"]["sha256"], "3fa2d68e6ade43822021444af6573b5fa722d81af80370b26e7abf1f44b30ce3")
+
+    def test_architecture_overlay_promotes_full_route_experiment(self):
+        overlay = json.loads((RHRC / "ool" / "OOL_ARCHITECTURE_OVERLAY_2026_08_20.json").read_text())
+        self.assertFalse(overlay["binary_release_changed"])
+        self.assertEqual(overlay["programme_hierarchy"]["Experiment_A"]["name"], "Transition-Core Validation")
+        self.assertEqual(overlay["programme_hierarchy"]["Experiment_B"]["name"], "Full Route-Closure Experiment")
+        self.assertTrue(overlay["integrated_route_qualification"]["independent_module_success_is_insufficient"])
+        self.assertEqual(list(overlay["boundary_debt_hierarchy"]), ["Tier_A", "Tier_B", "Tier_C", "Tier_D"])
 
     def test_strong_kleene_core(self):
         self.assertEqual(k_not(EvidenceValue.NA), EvidenceValue.NA)
@@ -95,6 +106,31 @@ class OoL276RuntimeTests(unittest.TestCase):
         self.assertEqual(absence_result(forbidden_observed=False, search_domain_complete=True), EvidenceValue.PASS)
         self.assertEqual(absence_result(forbidden_observed=True, search_domain_complete=False), EvidenceValue.FAIL)
 
+    def test_integrated_route_freeze_requires_actual_output_and_lineage(self):
+        interfaces = [
+            RouteInterfaceQualification("A->B", EvidenceValue.PASS, True, True),
+            RouteInterfaceQualification("B->C", EvidenceValue.PASS, True, True),
+        ]
+        self.assertEqual(integrated_route_freeze_status(interfaces), "FULL_ROUTE_FREEZE_ELIGIBLE")
+
+        supplied_rescue = [
+            RouteInterfaceQualification("A->B", EvidenceValue.PASS, True, True),
+            RouteInterfaceQualification("B->C", EvidenceValue.PASS, False, True),
+        ]
+        self.assertEqual(integrated_route_freeze_status(supplied_rescue), "NOT_READY_FOR_FREEZE")
+
+        broken_lineage = [
+            RouteInterfaceQualification("A->B", EvidenceValue.PASS, True, True),
+            RouteInterfaceQualification("B->C", EvidenceValue.PASS, True, False),
+        ]
+        self.assertEqual(integrated_route_freeze_status(broken_lineage), "NOT_READY_FOR_FREEZE")
+
+        unresolved = [
+            RouteInterfaceQualification("A->B", EvidenceValue.PASS, True, True),
+            RouteInterfaceQualification("B->C", EvidenceValue.NA, True, True),
+        ]
+        self.assertEqual(integrated_route_freeze_status(unresolved), "NOT_READY_FOR_FREEZE")
+
     def test_route_registry_stays_discovery_until_real_freeze(self):
         reg = json.loads((RHRC / "routes" / "ROUTE_REGISTRY.json").read_text())
         self.assertEqual(reg["ool_kernel_version"], "2.7.6")
@@ -108,6 +144,8 @@ class OoL276RuntimeTests(unittest.TestCase):
         self.assertEqual(b["route_closure_engine"]["kernel_version"], "2.7.6")
         self.assertEqual(b["route_closure_engine"]["missing_or_unresolved_evidence"], "NA")
         self.assertTrue(b["route_closure_engine"]["claim_result_separate_from_certificate_integrity"])
+        self.assertTrue(b["route_closure_engine"]["integrated_route_qualification_required_before_freeze"])
+        self.assertTrue(b["route_closure_engine"]["claim_bearing_lineage_must_be_continuous"])
 
 
 if __name__ == "__main__":
