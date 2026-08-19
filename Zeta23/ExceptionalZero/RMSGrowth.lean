@@ -1,4 +1,7 @@
 import Zeta23.ExceptionalZero.Defs
+import Mathlib.Algebra.Order.BigOperators.Group.Finset
+
+open scoped BigOperators
 
 namespace Zeta23.ExceptionalZero
 
