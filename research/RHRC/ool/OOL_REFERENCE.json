@@ -58,5 +58,11 @@
     "natural_boundary_analogue": "An unconditional RH route must realize every theorem-relevant entrance assumption from admitted unconditional roots; conditional or unknown ancestry cannot be relabeled as unconditional by downstream transformation.",
     "route_freeze_scope": "diagnostic/confirmatory runs and frozen proof-search experiments; discovery remains adaptive",
     "certificate_scope": "research evidence integrity only; mathematical theorem authority remains Lean/comparator"
+  },
+  "clean_release_package": {
+    "name": "OoL_MVS_Clean_Submission_and_Laboratory_Release.zip",
+    "sha256": "3fa2d68e6ade43822021444af6573b5fa722d81af80370b26e7abf1f44b30ce3",
+    "embedded_kernel_sha256": "35eef74477b97cfa0f0c5367b51747022ba78c4df16e54869c41614d99e184f2",
+    "release_readiness": "READY_FOR_EXTERNAL_SCIENTIFIC_REVIEW_AND_LAB_HANDOFF_WITHIN_CLAIM_BOUNDARY"
   }
 }
