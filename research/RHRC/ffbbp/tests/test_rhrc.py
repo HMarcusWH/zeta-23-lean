@@ -8,6 +8,10 @@ sys.path.insert(0, str(RHRC))
 from ffbbp.adapter import Observation, associate_source_only
 from ffbbp.gates import collapse_gate
 from ffbbp.nulls import assess_known_null
+from ffbbp.ablation import candidate_aligned_ablation
+from ffbbp.commutation import assess as assess_commutation
+from ffbbp.replay import deterministic_split, assert_lockbox_disjoint
+from ffbbp.transfer import require_positive_lift
 from synthetic.gauntlet import build_worlds, distinguish_from_tightmult_only, positive_log_slope
 from tools.claim_lint import lint
 from interventions.intervention import InterventionSpec, run
@@ -42,6 +46,24 @@ class RHRCTests(unittest.TestCase):
         state = {"delta": 0.01, "gamma": 100.0}
         out = run(spec, state, lambda s: s.__setitem__("delta", 0.02), lambda s: s["delta"] * 2)
         self.assertNotEqual(out.before, out.after)
+
+    def test_candidate_aligned_ablation(self):
+        self.assertTrue(candidate_aligned_ablation(0.0040, 0.0042).passed)
+
+    def test_commutation(self):
+        self.assertTrue(assess_commutation(0.00400, 0.00401, scale=0.004, absolute_max=0.00002, relative_max=0.01).passed)
+
+    def test_frozen_split(self):
+        split = deterministic_split(tuple(range(100)))
+        assert_lockbox_disjoint(split)
+        self.assertEqual((len(split.calibration), len(split.validation), len(split.lockbox)), (50,25,25))
+
+    def test_transfer_fails_closed_on_missing_relock(self):
+        result = require_positive_lift({"middle_to_late": 0.01, "late_to_late": None}, ("middle_to_late","late_to_late"))
+        self.assertFalse(result.passed)
+
+    def test_full_gauntlet_fixture_ids(self):
+        self.assertEqual(set(build_worlds()), {f"G{i:02d}" for i in range(12)})
 
     def test_claim_registry(self):
         registry = RHRC / "CLAIM_REGISTRY.json"
