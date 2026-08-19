@@ -17,20 +17,33 @@ from synthetic.gauntlet import build_worlds, distinguish_from_tightmult_only, po
 from tools.claim_lint import lint
 from interventions.intervention import InterventionSpec, run
 
+
 class RHRCTests(unittest.TestCase):
-    def test_ffbbp_reference_is_v1_5_1_with_closure_overlay(self):
+    def test_ffbbp_reference_is_run42c_closed(self):
         ref = json.loads((RHRC / "ffbbp" / "FFBBP_REFERENCE.json").read_text())
-        self.assertEqual(ref["reference_architecture_version"], "1.5.1")
-        self.assertEqual(ref["implementation_closure_overlay"], "research/RHRC/ffbbp/IMPLEMENTATION_CLOSURE_OVERLAY.json")
-        self.assertEqual(ref["qualified_profile"]["name"], "RUN42B_A0")
+        self.assertIn("RUN42C", ref["reference_architecture_version"])
+        self.assertEqual(ref["qualified_profile"]["name"], "RUN42C_A0_INDUCTIVE_FIREWALL")
+        self.assertEqual(ref["qualified_profile"]["protocol_sha256"], "c562a770a37521589742909f75aa522bdb76233c6f9206bd70039afb85e74622")
+        self.assertEqual(ref["superseded_development_profile"]["status"], "SUPERSEDED_DEVELOPMENT_ONLY_NOT_CONFIRMATORY_AUTHORITY")
+        self.assertTrue(ref["local_reexecution_2026_08_20"]["semantic_gate_result_reproduced"])
+        self.assertFalse(ref["local_reexecution_2026_08_20"]["byte_identical_to_supplied_manifest_zip"])
         self.assertEqual(ref["unknown_field_admission"]["claim_cap"], "diagnostic_only")
 
-    def test_run42b_profile_is_exactly_bound(self):
-        profile = json.loads((RHRC / "ffbbp" / "configs" / "run42b_a0_v1_5_qualified_profile.json").read_text())
-        self.assertEqual(profile["fresh_seeds"], [83, 101, 127, 149, 173])
-        self.assertEqual(profile["benchmark"]["split"], {"calibration": 0.60, "validation": 0.20, "lockbox": 0.20})
+    def test_run42c_profile_is_exactly_bound(self):
+        profile = json.loads((RHRC / "ffbbp" / "configs" / "run42c_a0_inductive_firewall_qualified_profile.json").read_text())
+        self.assertEqual(profile["fresh_seeds"], [191, 211, 233, 257, 281])
+        self.assertEqual(profile["benchmark"]["split"], {"train": 0.60, "select": 0.20, "confirm": 0.20})
         self.assertEqual(profile["association"]["temperature"], 0.015)
+        self.assertEqual(profile["association"]["fit_partition"], "TRAIN_ONLY")
+        self.assertFalse(profile["association"]["confirm_may_influence_construction"])
+        self.assertFalse(profile["field_existence"]["confirm_refit_allowed"])
         self.assertTrue(profile["material_change_requires_requalification"])
+
+    def test_run42b_is_quarantined_as_development_lineage(self):
+        profile = json.loads((RHRC / "ffbbp" / "configs" / "run42b_a0_v1_5_qualified_profile.json").read_text())
+        self.assertEqual(profile["status"], "SUPERSEDED_DEVELOPMENT_ONLY")
+        self.assertEqual(profile["superseded_by"], "RUN42C_A0_INDUCTIVE_FIREWALL")
+        self.assertEqual(profile["root_cause"], "CONFIRM_COVARIATE_TRANSDUCTION")
 
     def test_unknown_field_admission_is_two_sided(self):
         blocked = unknown_field_admission_gate(
@@ -79,13 +92,13 @@ class RHRCTests(unittest.TestCase):
     def test_commutation(self):
         self.assertTrue(assess_commutation(0.00400, 0.00401, scale=0.004, absolute_max=0.00002, relative_max=0.01).passed)
 
-    def test_run42b_frozen_split(self):
+    def test_run42c_frozen_split_shape(self):
         split = deterministic_split(tuple(range(100)), calibration_fraction=0.60, validation_fraction=0.20)
         assert_lockbox_disjoint(split)
-        self.assertEqual((len(split.calibration), len(split.validation), len(split.lockbox)), (60,20,20))
+        self.assertEqual((len(split.calibration), len(split.validation), len(split.lockbox)), (60, 20, 20))
 
     def test_transfer_fails_closed_on_missing_relock(self):
-        result = require_positive_lift({"middle_to_late": 0.01, "late_to_late": None}, ("middle_to_late","late_to_late"))
+        result = require_positive_lift({"middle_to_late": 0.01, "late_to_late": None}, ("middle_to_late", "late_to_late"))
         self.assertFalse(result.passed)
 
     def test_full_gauntlet_fixture_ids(self):
@@ -94,6 +107,7 @@ class RHRCTests(unittest.TestCase):
     def test_claim_registry(self):
         registry = RHRC / "CLAIM_REGISTRY.json"
         self.assertEqual(lint(registry), [])
+
 
 if __name__ == "__main__":
     unittest.main()
