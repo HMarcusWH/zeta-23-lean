@@ -30,7 +30,8 @@ theorem laplaceZeroKernel_partialFraction (w z : ℂ)
     simpa [mul_comm] using hden
   unfold laplaceZeroKernel
   field_simp [hw, hz, hwz, hden]
-  rw [show -z + w * 2 = -(z - w * 2) by ring, inv_neg]
+  rw [show w * 2 - z = -(z - w * 2) by ring]
+  simp only [div_neg, sub_neg_eq_add]
   field_simp [hden']
   ring
 
@@ -69,6 +70,7 @@ theorem integral_laplace_zeroMode {w z : ℂ} (hw : w ≠ 0)
   simp only [Complex.ofReal_zero, mul_zero, Complex.exp_zero]
   unfold laplaceZeroKernel
   field_simp [hw, hcoef]
-  rw [show -(w * 2) + z = -(w * 2 - z) by ring, inv_neg]
+  rw [show z - w * 2 = -(w * 2 - z) by ring]
+  simp
 
 end Zeta23.ExceptionalZero
