@@ -1,0 +1,33 @@
+{
+  "run_id": "R004_HIDDEN_JACOBI_COMMUTATOR_GAUNTLET",
+  "date": "2026-08-20",
+  "phase": "DISCOVERY",
+  "claim_cap": "FINITE_NUMERICAL_DIAGNOSTIC_ONLY",
+  "source_notebook_sha256": "aa6004b432f8baa3c9dc5c919b0f8df78621a84747f45bfda9fffc79a1d2e24d",
+  "configuration": {"lambdas": [2,3,5,7,10], "Ns": [5,8,12,20], "nulls_per_case": 30, "seed": 20260820},
+  "cases": [
+    {"lambda":2,"N":5,"residual":0.004234668835678791,"null_min":0.1003763541371242,"null_median":0.13110859135738429,"ratio":0.032298942364010735},
+    {"lambda":2,"N":8,"residual":0.0032570248912456514,"null_min":0.11559461068299742,"null_median":0.14443437481542815,"ratio":0.022550205900830636},
+    {"lambda":2,"N":12,"residual":0.002309480456383619,"null_min":0.10427590235931138,"null_median":0.12057536739998702,"ratio":0.019153833043878143},
+    {"lambda":2,"N":20,"residual":0.001459387431985478,"null_min":0.07564409042074664,"null_median":0.08466503431685116,"ratio":0.017237191761168533},
+    {"lambda":3,"N":5,"residual":0.0003672429652251478,"null_min":0.009029211485058936,"null_median":0.023513935300337088,"ratio":0.015618098822440968},
+    {"lambda":3,"N":8,"residual":0.0011169451684099048,"null_min":0.03512985807941592,"null_median":0.0943387855476018,"ratio":0.011839723841328365},
+    {"lambda":3,"N":12,"residual":0.0009289365562856109,"null_min":0.07132847590535954,"null_median":0.13911297600050576,"ratio":0.006677569433078864},
+    {"lambda":3,"N":20,"residual":0.0006170464439069428,"null_min":0.11715869770183285,"null_median":0.12759470729564903,"ratio":0.004835987769282527},
+    {"lambda":5,"N":5,"residual":5.261116931220763e-06,"null_min":8.84848747483806e-05,"null_median":0.0004911168395390379,"ratio":0.010712556580545773},
+    {"lambda":5,"N":8,"residual":0.0001875018268151207,"null_min":0.003831563061739438,"null_median":0.01219951039807489,"ratio":0.015369619000833749},
+    {"lambda":5,"N":12,"residual":0.0003441499164690569,"null_min":0.026485164882963843,"null_median":0.062420432432237646,"ratio":0.005513417691276956},
+    {"lambda":5,"N":20,"residual":0.0002762336444941254,"null_min":0.07525771530029854,"null_median":0.11432687998935034,"ratio":0.002416174083643819},
+    {"lambda":7,"N":5,"residual":9.55519354789669e-07,"null_min":2.3798836422596777e-05,"null_median":0.00011128143797804377,"ratio":0.008586511570583735},
+    {"lambda":7,"N":8,"residual":2.7531314693473958e-05,"null_min":0.0003004305908907426,"null_median":0.003559006386502724,"ratio":0.007735674428088831},
+    {"lambda":7,"N":12,"residual":9.783826486722512e-05,"null_min":0.0019792764249643748,"null_median":0.008120609735955575,"ratio":0.012048142694756925},
+    {"lambda":7,"N":20,"residual":0.00016941236595643646,"null_min":0.07989480941003586,"null_median":0.10178226892508595,"ratio":0.001664458532370975},
+    {"lambda":10,"N":5,"residual":2.237222112588271e-07,"null_min":1.3877171648064146e-05,"null_median":7.547700831923699e-05,"ratio":0.002964110743666115},
+    {"lambda":10,"N":8,"residual":3.3716729291295518e-06,"null_min":0.00015218845226381043,"null_median":0.00043754056908300505,"ratio":0.007705966411745279},
+    {"lambda":10,"N":12,"residual":8.104072811771213e-05,"null_min":0.0046712313506728186,"null_median":0.0110875993495676,"ratio":0.007309132081948162},
+    {"lambda":10,"N":20,"residual":0.00013908076189109967,"null_min":0.04100502787873502,"null_median":0.06199084212635529,"ratio":0.002243569487370615}
+  ],
+  "summary": {"max_residual_to_null_median_ratio":0.032298942364010735,"median_residual_to_null_median_ratio":0.008161092999336282,"all_candidate_residuals_below_null_min":true},
+  "bounded_claim": {"result":"PASS","certificate_status":"VALID","statement":"Across tested finite CCM matrices, a recovered traceless Jacobi generator commutes substantially better than eigenvalue-preserving random-basis nulls."},
+  "nonclaims": ["Generator not identified with prolate operator.","No asymptotic commutator-decay theorem proved.","No eigenvector/spectral convergence theorem proved.","Not RH evidence or proof."]
+}
