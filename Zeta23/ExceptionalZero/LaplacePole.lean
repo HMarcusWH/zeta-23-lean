@@ -70,6 +70,7 @@ theorem integral_laplace_zeroMode {w z : ℂ} (hw : w ≠ 0)
   simp only [Complex.ofReal_zero, mul_zero, Complex.exp_zero]
   unfold laplaceZeroKernel
   field_simp [hw, hcoef]
-  rw [show z - w * 2 = -(w * 2 - z) by ring, inv_neg]
+  rw [show z - w * 2 = -(w * 2 - z) by ring]
+  simp only [one_div, inv_neg]
 
 end Zeta23.ExceptionalZero
