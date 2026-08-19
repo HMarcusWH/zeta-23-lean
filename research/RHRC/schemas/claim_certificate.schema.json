@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RHRC research claim certificate (OoL-MVS v2.7.6 adapted)",
+  "type": "object",
+  "required": ["claim_id", "physical_witness_ref", "claim_result", "certificate_status", "registry_hash", "evaluation_mode"],
+  "properties": {
+    "claim_id": {"type": "string", "minLength": 1},
+    "physical_witness_ref": {"type": "string", "minLength": 1},
+    "evidence_bundle_id": {"type": "string"},
+    "claim_result": {"enum": ["PASS", "FAIL", "NA"]},
+    "certificate_status": {"enum": ["VALID", "INCOMPLETE", "INVALID"]},
+    "registry_hash": {"type": "string", "minLength": 1},
+    "route_spec_digest": {"type": ["string", "null"]},
+    "boundary_digest": {"type": ["string", "null"]},
+    "evaluation_mode": {"enum": ["EXPERIMENTAL_EVIDENCE", "FORMAL_COMPLETE_WORLD", "TEST_FIXTURE_UNSAFE"]},
+    "reason_codes": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}
