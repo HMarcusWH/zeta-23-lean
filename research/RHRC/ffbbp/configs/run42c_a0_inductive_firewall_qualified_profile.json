@@ -1,0 +1,58 @@
+{
+  "profile": "RUN42C_A0_INDUCTIVE_FIREWALL_QUALIFIED",
+  "status": "QUALIFIED_FINITE_SYNTHETIC_DIAGNOSTIC_ONLY",
+  "run_id": "RUN_42C",
+  "claim_cap": "FINITE VALIDATION ONLY",
+  "protocol_sha256": "c562a770a37521589742909f75aa522bdb76233c6f9206bd70039afb85e74622",
+  "source_script_sha256": "5f5b1ebea75929b63b6ea4e9d07aaf2124516251fe8d91188b233188749f2f18",
+  "supplied_output_zip_sha256_manifest_attested": "e33f43dfe367ff25c7e7496d7080d405ea87044c2aa3609c549dcc97da9d8e46",
+  "fresh_seeds": [191, 211, 233, 257, 281],
+  "benchmark": {
+    "n_nodes": 72,
+    "n_times": 48,
+    "split": {"train": 0.60, "select": 0.20, "confirm": 0.20},
+    "all_time_regimes_in_every_partition": true
+  },
+  "association": {
+    "temperature": 0.015,
+    "sinkhorn_iterations": 80,
+    "fit_partition": "TRAIN_ONLY",
+    "prototypes_fit_partition": "TRAIN_ONLY",
+    "column_scaling_fit_partition": "TRAIN_ONLY",
+    "select_transform": "INDUCTIVE_ROW_NORMALIZED_FROZEN_TRAIN_GEOMETRY",
+    "confirm_transform": "INDUCTIVE_ROW_NORMALIZED_FROZEN_TRAIN_GEOMETRY",
+    "confirm_may_influence_construction": false,
+    "target_derived_lure_features_in_certificate_geometry": false
+  },
+  "field_existence": {
+    "field_fit_partition": "TRAIN_ONLY",
+    "selection_partition": "SELECT_ONLY",
+    "lift_threshold": 0.12,
+    "logistic_slope": 24.0,
+    "minimum_shrink": 0.02,
+    "freeze_before_confirm": true,
+    "confirm_refit_allowed": false
+  },
+  "positive_gate": {
+    "required_passes_of_5": 4,
+    "observed": "5/5 for each planted-field scenario"
+  },
+  "negative_gate": {
+    "required_rejections_of_5": 5,
+    "observed": "5/5 rejection for W96 artifact and no-field"
+  },
+  "local_reexecution_2026_08_20": {
+    "semantic_gate_outcomes_reproduced": true,
+    "byte_identical_archive_reproduced": false,
+    "generated_zip_sha256": "35096467be27358f3915b0be92c6bec1569c26fad3f52c4eb4dd81cf70741710",
+    "serialization_caveat": "Parallel completion ordering and created_utc are not canonicalized in the supplied script."
+  },
+  "material_change_requires_requalification": true,
+  "unknown_field_use": "DIAGNOSTIC_ONLY",
+  "forbidden_promotions": [
+    "RUN42C_to_RH_evidence",
+    "RUN42C_to_mathematical_theorem",
+    "finite_synthetic_qualification_to_operational_validation",
+    "diagnostic_candidate_to_real_field_exists"
+  ]
+}
