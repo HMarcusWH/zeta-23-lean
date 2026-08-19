@@ -5,8 +5,8 @@
   "terminal_claim": "Every nontrivial zero rho of the Riemann zeta function satisfies Re(rho) = 1/2.",
   "diagnostic_engine": {
     "name": "FFBBP",
-    "reference_architecture_version": "1.5",
-    "qualified_profile": "RUN42B_A0_V1_5",
+    "reference_architecture_version": "1.5.1+implementation_closure_overlay",
+    "qualified_profile": "RUN42B_A0_CORE::RH_R001_ADAPTER_V2",
     "qualification_scope": "finite_synthetic_unknown_field_diagnostic_only",
     "domain_adapter_status": "freeze_required_before_real_zeta_run"
   },
@@ -28,10 +28,28 @@
     "unknown_ancestry": "NA_not_assumed_admitted",
     "absence_claims": "PASS only over a declared complete dependency/provenance search domain"
   },
-  "allowed_statuses": ["PROVED_UNCONDITIONAL","PROVED_CONDITIONAL","NUMERICAL","SYNTHETIC","HEURISTIC","CONJECTURE","OPEN","REFUTED"],
-  "unconditional_admission": ["PROVED_UNCONDITIONAL"],
-  "conditional_inputs": ["PROVED_CONDITIONAL", "CONJECTURE"],
-  "diagnostic_only": ["NUMERICAL", "SYNTHETIC", "HEURISTIC"],
+  "allowed_statuses": [
+    "PROVED_UNCONDITIONAL",
+    "PROVED_CONDITIONAL",
+    "NUMERICAL",
+    "SYNTHETIC",
+    "HEURISTIC",
+    "CONJECTURE",
+    "OPEN",
+    "REFUTED"
+  ],
+  "unconditional_admission": [
+    "PROVED_UNCONDITIONAL"
+  ],
+  "conditional_inputs": [
+    "PROVED_CONDITIONAL",
+    "CONJECTURE"
+  ],
+  "diagnostic_only": [
+    "NUMERICAL",
+    "SYNTHETIC",
+    "HEURISTIC"
+  ],
   "forbidden_promotions": [
     "PROVED_CONDITIONAL->PROVED_UNCONDITIONAL without independent discharge",
     "CONJECTURE->PROVED_UNCONDITIONAL",

@@ -18,9 +18,10 @@ from tools.claim_lint import lint
 from interventions.intervention import InterventionSpec, run
 
 class RHRCTests(unittest.TestCase):
-    def test_ffbbp_reference_is_v1_5(self):
+    def test_ffbbp_reference_is_v1_5_1_with_closure_overlay(self):
         ref = json.loads((RHRC / "ffbbp" / "FFBBP_REFERENCE.json").read_text())
-        self.assertEqual(ref["reference_architecture_version"], "1.5")
+        self.assertEqual(ref["reference_architecture_version"], "1.5.1")
+        self.assertEqual(ref["implementation_closure_overlay"], "research/RHRC/ffbbp/IMPLEMENTATION_CLOSURE_OVERLAY.json")
         self.assertEqual(ref["qualified_profile"]["name"], "RUN42B_A0")
         self.assertEqual(ref["unknown_field_admission"]["claim_cap"], "diagnostic_only")
 

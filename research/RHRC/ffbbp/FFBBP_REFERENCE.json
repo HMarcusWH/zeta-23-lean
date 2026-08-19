@@ -1,6 +1,6 @@
 {
   "document": "FFBBP Reference Solver Architecture",
-  "reference_architecture_version": "1.5",
+  "reference_architecture_version": "1.5.1",
   "document_date": "2026-08-19",
   "supersedes": "1.4.2",
   "source_pdf_sha256": "fed1d92e1c881a5be5a93261b29b813055c629679da3ddc8a2ed3502a09175ac",
@@ -14,7 +14,11 @@
     "qualification_dossier_sha256": "704e2096c28c6b046ed1e0c0646cd77b8483978b25e9b9f66222277b95e4b94e"
   },
   "unknown_field_admission": {
-    "required": ["V06N_known_null_immunity", "V06P_known_positive_recovery", "V06X_relevant_matched_artifact_rejection"],
+    "required": [
+      "V06N_known_null_immunity",
+      "V06P_known_positive_recovery",
+      "V06X_relevant_matched_artifact_rejection"
+    ],
     "claim_cap": "diagnostic_only",
     "domain_candidate_validation_begins_at": "V09_frozen_external_no_refit_replay"
   },
@@ -34,5 +38,9 @@
     "FFBBP_output_to_RH_evidence",
     "FFBBP_output_to_mathematical_theorem",
     "profile_specific_numbers_to_universal_constants"
-  ]
+  ],
+  "canonical_document": "FFBBP Reference Solver Architecture v1.5.1 - consolidated preservation release",
+  "canonical_document_hash_status": "binary hash not attested by the currently supplied 33-page v1.5 PDF; implementation closure is enforced via overlay pending canonical v1.5.2 binary",
+  "implementation_closure_overlay": "research/RHRC/ffbbp/IMPLEMENTATION_CLOSURE_OVERLAY.json",
+  "supplied_v1_5_pdf_sha256_2026_08_19": "d2b06629444144d546821ed930387464e47f2ede9fcaeb7e00ee83d3f1abea15"
 }
