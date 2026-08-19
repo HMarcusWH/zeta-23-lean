@@ -1,0 +1,51 @@
+import sys
+import unittest
+from pathlib import Path
+
+RHRC = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(RHRC))
+
+from ffbbp.adapter import Observation, associate_source_only
+from ffbbp.gates import collapse_gate
+from ffbbp.nulls import assess_known_null
+from synthetic.gauntlet import build_worlds, distinguish_from_tightmult_only, positive_log_slope
+from tools.claim_lint import lint
+from interventions.intervention import InterventionSpec, run
+
+class RHRCTests(unittest.TestCase):
+    def test_source_target_firewall(self):
+        prototypes = [(0.0, 0.0), (10.0, 10.0)]
+        a = associate_source_only(Observation((0.1, 0.2), target=1e9), prototypes)
+        b = associate_source_only(Observation((0.1, 0.2), target=-1e9), prototypes)
+        self.assertEqual(a, b)
+
+    def test_tightmult_sanity(self):
+        w = build_worlds()
+        self.assertEqual(distinguish_from_tightmult_only(w["G03"], w["G04"]), "INSUFFICIENT_INFORMATION")
+
+    def test_new_channel_can_change_information(self):
+        w = build_worlds()
+        self.assertTrue(positive_log_slope(w["G06"].multiscale_probe))
+
+    def test_null_admission(self):
+        res = assess_known_null([0.00045, 0.00030, 0.00044, 0.00035, 0.00060, 0.00045], mean_max=0.045, individual_max=0.070)
+        self.assertTrue(res.passed)
+
+    def test_best_null_gate_fails_closed(self):
+        res = collapse_gate(candidate_rmse=0.00410, null_rmses={"adversarial": 0.00408}, known_null_pass=True,
+                            firewall_pass=True, ablation_pass=True, transfer_pass=True, commutation_pass=True)
+        self.assertFalse(res.passed)
+        self.assertIn("BEST_NULL_NOT_BEATEN", res.blockers)
+
+    def test_intervention_enforces_hold_fixed(self):
+        spec = InterventionSpec("J_delta", "delta", ("gamma",), "growth", "diagnostic only")
+        state = {"delta": 0.01, "gamma": 100.0}
+        out = run(spec, state, lambda s: s.__setitem__("delta", 0.02), lambda s: s["delta"] * 2)
+        self.assertNotEqual(out.before, out.after)
+
+    def test_claim_registry(self):
+        registry = RHRC / "CLAIM_REGISTRY.json"
+        self.assertEqual(lint(registry), [])
+
+if __name__ == "__main__":
+    unittest.main()
