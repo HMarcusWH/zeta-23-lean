@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parents[1]; REPO=ROOT.parents[1]
 def run(cmd): print('+',' '.join(map(str,cmd)),flush=True); subprocess.run(list(map(str,cmd)),cwd=REPO,check=True)
 
 def main():
-    p=argparse.ArgumentParser(); p.add_argument('--zeros',type=int,default=200); p.add_argument('--grid',type=int,default=5400); p.add_argument('--aperture-max',type=float,default=300); p.add_argument('--output-dir',type=Path,default=REPO/'rhrc_final_output'); args=p.parse_args(); args.output_dir.mkdir(parents=True,exist_ok=True)
+    p=argparse.ArgumentParser(); p.add_argument('--zeros',type=int,default=100); p.add_argument('--grid',type=int,default=5400); p.add_argument('--aperture-max',type=float,default=300); p.add_argument('--output-dir',type=Path,default=REPO/'rhrc_final_output'); args=p.parse_args(); args.output_dir.mkdir(parents=True,exist_ok=True)
     run([sys.executable,ROOT/'tools'/'run_suite.py'])
     r001=args.output_dir/'R001_RESULT.json'; run([sys.executable,ROOT/'routes'/'R001_exceptional_zero'/'run_experiment_cached.py','--zeros',args.zeros,'--grid',args.grid,'--aperture-max',args.aperture_max,'--output',r001])
     lean='NOT_RUN'
