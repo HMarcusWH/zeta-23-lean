@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RHRC raw evidence receipt (OoL-MVS v2.7.6 adapted)",
+  "type": "object",
+  "required": ["evidence_id", "input_digest"],
+  "properties": {
+    "evidence_id": {"type": "string", "minLength": 1},
+    "witness_refs": {"type": "array", "items": {"type": "string"}},
+    "raw_measurement_refs": {"type": "array", "items": {"type": "string"}},
+    "provenance_refs": {"type": "array", "items": {"type": "string"}},
+    "model_input_refs": {"type": "array", "items": {"type": "string"}},
+    "input_digest": {"type": "string", "minLength": 1},
+    "claim_cap": {"type": "string"}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,65 @@
+{
+  "profile": "RHRC_FFBBP_RH_V1_5_ADAPTER",
+  "reference_architecture": "FFBBP v1.5",
+  "qualified_solver_profile_ref": "configs/run42b_a0_v1_5_qualified_profile.json",
+  "role": "unknown-field research adapter under diagnostic-only claim cap",
+  "solver_profile_status": "RUN42B_A0_QUALIFIED_FINITE_SYNTHETIC",
+  "domain_adapter_status": "FREEZE_REQUIRED_BEFORE_REAL_ZETA_RUN",
+  "unknown_field_admission_status": "QUALIFIED_PROFILE_AVAILABLE_ADAPTER_FREEZE_REQUIRED",
+  "material_solver_profile_change_requires_requalification": true,
+  "association": {
+    "certificate_information_set": "source_only",
+    "certificate_uses_target": false,
+    "holdout_uses_target": false,
+    "truth_uses_target_for_association": false
+  },
+  "provenance": {
+    "required_feature_tags": ["source_side", "target_derived", "nuisance", "audit_only"],
+    "target_derived_certificate_geometry": "forbidden",
+    "lockbox_family_selection": "forbidden"
+  },
+  "qualification": {
+    "V06N_known_null_immunity": "passed_by_named_RUN42B_profile",
+    "V06P_known_positive_recovery": "passed_by_named_RUN42B_profile",
+    "V06X_matched_artifact_rejection": "passed_by_named_RUN42B_profile_for_W96_control",
+    "unknown_field_claim_cap": "diagnostic_only",
+    "domain_candidate_validation_begins_at": "V09_frozen_external_no_refit_replay"
+  },
+  "selection": {
+    "calibration_fraction": 0.60,
+    "validation_fraction": 0.20,
+    "lockbox_fraction": 0.20,
+    "family_selection_surface": "validation_only",
+    "projection_consistent_oracle_required_for_transformed_synthetic_truth": true,
+    "lockbox_refit_allowed": false
+  },
+  "required_gates_before_unknown_field_search": [
+    "source_target_firewall",
+    "known_null_V06N",
+    "known_positive_V06P",
+    "relevant_matched_artifact_V06X",
+    "profile_frozen",
+    "domain_adapter_frozen"
+  ],
+  "required_candidate_gates": [
+    "best_legal_null",
+    "candidate_aligned_ablation",
+    "knockoff_control",
+    "commutation",
+    "transfer_or_relock_where_applicable",
+    "no_refit_lockbox"
+  ],
+  "regression_only_not_admission_constants": {
+    "RUN38_reference_mean_null_amplitude": 0.000434,
+    "RUN38_reference_max_null_amplitude": 0.000601,
+    "note": "RUN38 remains a pathology/regression reference; v1.5 unknown-field admission is governed by RUN42B two-sided qualification, not RUN38 alone."
+  },
+  "forbidden_interpretation": [
+    "posterior_as_probability_RH_true",
+    "synthetic_qualification_as_operational_validation",
+    "synthetic_success_as_RH_evidence",
+    "unknown_field_candidate_as_real_field_exists",
+    "numerical_candidate_as_theorem",
+    "RUN42B_profile_numbers_as_universal_constants"
+  ]
+}

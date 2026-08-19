@@ -1,0 +1,16 @@
+{
+  "schema_version": "RHRC-baseline-1",
+  "repository": "HMarcusWH/zeta-23-lean",
+  "upstream_repository": "anthropics/zeta-23-lean",
+  "fork_main_commit": "cec57f919ccf34e5fa5372b4ba332f7c848bbb6e",
+  "fork_main_tree": "ef319d3bef0025824ae06eb611433470a1fa2cdd",
+  "captured_utc": "2026-08-19T19:44:00Z",
+  "lean_project": "Zeta23",
+  "mathlib_revision": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "policy": {
+    "upstream_core_modified": false,
+    "experimental_code_is_theorem_dependency": false,
+    "promoted_lean_allows_sorry": false,
+    "promoted_lean_allows_project_axioms": false
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "document": "FFBBP Reference Solver Architecture",
+  "reference_architecture_version": "1.5",
+  "document_date": "2026-08-19",
+  "supersedes": "1.4.2",
+  "source_pdf_sha256": "fed1d92e1c881a5be5a93261b29b813055c629679da3ddc8a2ed3502a09175ac",
+  "status": "architecture specification plus finite synthetic implementation-qualification evidence for one FFBBP-A0 profile",
+  "default_claim_cap": "architecture / finite synthetic qualification only",
+  "qualified_profile": {
+    "name": "RUN42B_A0",
+    "terminal_status": "FFBBP_KNOWN_TRUTH_QUALIFICATION_PASS_UNKNOWN_FIELD_SEARCH_READY_DIAGNOSTIC_ONLY",
+    "protocol_sha256": "5b21194b41e84821b8af90ab97cd14c9e090d4b64d07525a9d265a7cc7c03fee",
+    "output_zip_sha256": "8e90730b3fec1a85f37f98f9884ed689bc7f6fa871727afd6976820f1c62773d",
+    "qualification_dossier_sha256": "704e2096c28c6b046ed1e0c0646cd77b8483978b25e9b9f66222277b95e4b94e"
+  },
+  "unknown_field_admission": {
+    "required": ["V06N_known_null_immunity", "V06P_known_positive_recovery", "V06X_relevant_matched_artifact_rejection"],
+    "claim_cap": "diagnostic_only",
+    "domain_candidate_validation_begins_at": "V09_frozen_external_no_refit_replay"
+  },
+  "architectural_laws_added_or_hardened_in_v1_5": [
+    "source_target_firewall_is_first_class",
+    "target_leakage_is_distinct_from_source_side_false_field_bias",
+    "field_existence_is_distinct_from_field_fit",
+    "calibration_validation_lockbox_separation",
+    "candidate_aligned_ablation",
+    "projection_consistent_oracle_scoring",
+    "local_evolving_regime_switching_and_multi_shadow_source_support",
+    "two_sided_known_truth_qualification_before_unknown_field_search"
+  ],
+  "forbidden_promotions": [
+    "synthetic_qualification_to_operational_validation",
+    "unknown_field_diagnostic_to_real_field_exists",
+    "FFBBP_output_to_RH_evidence",
+    "FFBBP_output_to_mathematical_theorem",
+    "profile_specific_numbers_to_universal_constants"
+  ]
+}

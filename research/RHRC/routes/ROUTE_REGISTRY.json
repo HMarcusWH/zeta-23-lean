@@ -1,0 +1,38 @@
+{
+  "schema_version": "RHRC-routes-1.0",
+  "ool_kernel_version": "2.7.6",
+  "boundary_id": "B0_RH_2026_08_19",
+  "lifecycle_law": {
+    "DISCOVERY": "adaptation allowed and must be logged",
+    "CONFIRMATORY_FROZEN": "boundary and route specification digests required",
+    "post_unblinding_claim_bearing_change": "new route id/spec digest and fresh confirmatory execution required",
+    "causally_inert_measurement_change": "allowed only if logged and demonstrated irrelevant to the claim-bearing computation"
+  },
+  "routes": [
+    {
+      "route_id": "R001_exceptional_zero",
+      "phase": "DISCOVERY",
+      "claim_ids": ["R001_ZERO_GROWTH", "R001_PRIME_UPPER", "C_RH"],
+      "route_spec_digest": null,
+      "boundary_digest": null,
+      "confirmatory_execution_authorized": false
+    },
+    {
+      "route_id": "R002_multi_probe",
+      "phase": "DISCOVERY",
+      "claim_ids": ["R002_MULTI_PROBE_SEPARATION"],
+      "route_spec_digest": null,
+      "boundary_digest": null,
+      "confirmatory_execution_authorized": false
+    },
+    {
+      "route_id": "R003_ccm_bridge",
+      "phase": "DISCOVERY",
+      "claim_ids": ["R003_CCM_BRIDGE"],
+      "route_spec_digest": null,
+      "boundary_digest": null,
+      "confirmatory_execution_authorized": false
+    }
+  ],
+  "note": "These routes are intentionally not frozen yet. A frozen digest would be false precision while the analytic objects are still being defined."
+}

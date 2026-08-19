@@ -1,0 +1,63 @@
+{
+  "profile_id": "RUN42B_A0_V1_5",
+  "reference_architecture": "FFBBP v1.5",
+  "profile_type": "finite_synthetic_qualified_profile_not_universal_default",
+  "claim_cap": "unknown_field_diagnostic_only",
+  "material_change_requires_requalification": true,
+  "fresh_seeds": [83, 101, 127, 149, 173],
+  "benchmark": {
+    "nodes": 72,
+    "time_steps": 48,
+    "split": {"calibration": 0.60, "validation": 0.20, "lockbox": 0.20},
+    "truth_field_cells": 96,
+    "fast_field_cells": 64
+  },
+  "association": {
+    "backend": "sinkhorn_A0",
+    "iterations": 80,
+    "temperature": 0.015,
+    "certificate_information_set": "source_only"
+  },
+  "field": {
+    "graph_smooth_lambda": 0.15,
+    "ridge_lambda": 0.10,
+    "existence_lift_threshold": 0.12,
+    "existence_logistic_slope": 24.0,
+    "existence_minimum_shrink": 0.02
+  },
+  "audit": {
+    "target_proxy_correlation_threshold": 0.25,
+    "projection_consistent_oracle": true,
+    "family_selection_surface": "validation_only",
+    "lockbox_refit_allowed": false
+  },
+  "artifact_control": {
+    "W96_period": 96,
+    "W96_alpha": 1.8
+  },
+  "source_families": ["spatial_core", "phase_core", "local_regime", "cross_trace"],
+  "cross_trace_pairs": [[1,1], [2,1], [3,2], [5,-1]],
+  "positive_control_gates": {
+    "latent_lockbox_abs_corr_min": 0.7,
+    "median_channel_oracle_corr_min": 0.6,
+    "hidden_rmse_ratio_vs_zero_max": 0.7,
+    "multishadow_support_fraction_min": 0.6,
+    "knockoff_latent_corr_drop_min": 0.1,
+    "commutation_latent_corr_delta_max": 0.15,
+    "model_must_beat_selected_fixed_null_on_lockbox": true
+  },
+  "negative_control_gates": {
+    "multishadow_support_fraction_max": 0.34,
+    "validation_field_exists_posterior_max_for_no_field": 0.2,
+    "hidden_prediction_rms_to_noise_max_for_no_field": 0.15,
+    "W96_null_must_beat_model_on_artifact": true
+  },
+  "artifacts": {
+    "run42a_protocol_sha256": "98db766c586fd71ef454029d7cefefcc74ee3c43d2f767c6048e3615b2f16251",
+    "run42a_output_zip_sha256": "a250dcd9a03ac58ac1714de9d3ab76c1a69ac5687982842511a301e7c9b2cd37",
+    "run42b_protocol_sha256": "5b21194b41e84821b8af90ab97cd14c9e090d4b64d07525a9d265a7cc7c03fee",
+    "run42b_output_zip_sha256": "8e90730b3fec1a85f37f98f9884ed689bc7f6fa871727afd6976820f1c62773d",
+    "run42_final_qualification_dossier_sha256": "704e2096c28c6b046ed1e0c0646cd77b8483978b25e9b9f66222277b95e4b94e"
+  },
+  "terminal_status": "FFBBP_KNOWN_TRUTH_QUALIFICATION_PASS_UNKNOWN_FIELD_SEARCH_READY_DIAGNOSTIC_ONLY"
+}

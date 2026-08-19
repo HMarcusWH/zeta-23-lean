@@ -1,0 +1,25 @@
+{
+  "schema_version": "RHRC-receipt-ool-1",
+  "receipt_type": "UPSTREAM_KERNEL_SOURCE_REVERIFICATION",
+  "date_utc": "2026-08-19",
+  "kernel": "OoL_MVS_Kernel_v2.7.6",
+  "source_archive_sha256": "35eef74477b97cfa0f0c5367b51747022ba78c4df16e54869c41614d99e184f2",
+  "canonical_registry_file_sha256": "5bead5e14603e56a3c68e2be17df2f7761da8aa65544529041c2ca35784d1732",
+  "canonical_registry_semantic_hash": "22dfbf6413b8317ab3ef7400b3e966da4d52d2b60868932b0b5adba509aafe9f",
+  "execution": {
+    "formal_claim_algebra_tests_v2_7_6.py": {"return_code": 0, "passed": 50, "total": 50, "finite_worlds_checked": 256},
+    "evidence_semantics_tests_v2_7_6.py": {"return_code": 0, "passed": 84, "total": 84},
+    "kernel_end_to_end_tests_v2_7_6.py": {"return_code": 0, "passed": 95, "total": 95},
+    "kernel_numerical_math_tests_v2_7_6.py": {"return_code": 0, "passed": 56, "total": 56},
+    "kernel_stress_tests_v2_7_6.py": {"return_code": 0, "passed": 233, "total": 233},
+    "kernel_hardening_tests_v2_7_6.py": {"return_code": 0, "passed": 12, "total": 12}
+  },
+  "counted_total": {"passed": 530, "total": 530, "failures": 0},
+  "claim_cap": "SOFTWARE_FORMAL_NUMERICAL_KERNEL_REVERIFICATION_ONLY",
+  "non_claims": [
+    "This does not import the 24 origin-of-life physical claims into RH.",
+    "This is not empirical validation of abiogenesis.",
+    "This is not RH evidence or a mathematical proof.",
+    "The RH transplant uses only domain-neutral evidence/governance semantics."
+  ]
+}

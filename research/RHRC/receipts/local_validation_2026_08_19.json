@@ -1,0 +1,43 @@
+{
+  "schema_version": "RHRC-receipt-1",
+  "receipt_type": "LOCAL_RESEARCH_SUITE",
+  "date_utc": "2026-08-19",
+  "branch": "research/exceptional-zero-rhrc",
+  "claim_cap": "RESEARCH_INFRASTRUCTURE_VALIDATION_ONLY",
+  "python": {
+    "version": "3.13.5",
+    "claim_lint": "PASS",
+    "unittest_count": 12,
+    "unittest_failures": 0,
+    "unittest_errors": 0,
+    "status": "PASS"
+  },
+  "covered_controls": [
+    "source_target_firewall",
+    "tightmult_insufficient_information_sanity",
+    "new_multiscale_channel_fixture",
+    "known_null_admission",
+    "best_legal_null_fail_closed",
+    "candidate_aligned_ablation",
+    "fast_truth_commutation",
+    "frozen_calibration_validation_lockbox_split",
+    "transfer_fail_closed_on_missing_relock",
+    "declared_intervention_held_fixed_enforcement",
+    "G00_G11_fixture_registry",
+    "claim_registry_lint"
+  ],
+  "lean_local": {
+    "status": "NOT_RUN",
+    "reason": "authoring container has no lean/lake/elan executable"
+  },
+  "lean_ci": {
+    "workflow": "RHRC research and Lean checks",
+    "status_at_receipt": "QUEUED",
+    "authority_rule": "Lean compilation is accepted only after the GitHub-hosted job reports success"
+  },
+  "non_claims": [
+    "This receipt is not RH evidence.",
+    "This receipt is not a proof of any open analytic lemma.",
+    "Synthetic-gauntlet success does not promote a zeta theorem."
+  ]
+}
