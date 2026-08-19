@@ -1,8 +1,6 @@
 name: RHRC research and Lean checks
 
 on:
-  push:
-    branches: ["research/exceptional-zero-rhrc"]
   pull_request:
     branches: ["main"]
   workflow_dispatch:
@@ -15,10 +13,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-      - name: Claim lint
-        run: python research/RHRC/tools/claim_lint.py
-      - name: RHRC regression and gauntlet tests
-        run: python -m unittest discover -s research/RHRC/ffbbp/tests -p 'test_*.py' -v
+      - name: RHRC claim and regression suite
+        run: python research/RHRC/tools/run_suite.py
 
   lean:
     runs-on: ubuntu-latest
@@ -26,10 +22,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: leanprover/lean-action@v1
         with:
-          build: true
+          auto-config: false
+          build: false
           test: false
           lint: false
-      - name: Build exceptional-zero foundation explicitly
+          use-mathlib-cache: true
+      - name: Build exceptional-zero foundation
         run: lake build Zeta23.ExceptionalZero
       - name: Reject sorry/project axioms in promoted subtree
         run: |
