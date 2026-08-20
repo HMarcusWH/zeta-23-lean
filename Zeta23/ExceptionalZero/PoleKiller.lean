@@ -19,15 +19,10 @@ theorem paperFT_translateRight (f : ℝ → ℂ) (t : ℝ) (z : ℂ) :
   rw [← integral_add_right_eq_self
     (μ := volume) (fun x : ℝ => f (x - t) * cexp (I * z * x)) t]
   simp only [add_sub_cancel_right]
-  have hexp : ∀ x : ℝ,
-      cexp (I * z * (x + t)) = cexp (I * z * t) * cexp (I * z * x) := by
-    intro x
-    rw [show I * z * (x + t) = I * z * t + I * z * x by push_cast; ring,
-      Complex.exp_add]
-    ring
-  simp_rw [hexp]
   rw [← integral_const_mul_C]
   congr 1 with x
+  rw [show I * z * (x + t) = I * z * t + I * z * x by push_cast; ring,
+    Complex.exp_add]
   ring
 
 end Zeta23.ExceptionalZero
