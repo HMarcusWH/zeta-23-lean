@@ -39,8 +39,10 @@ theorem continuousOn_filteredZeroFamily_Icc
           (norm_filteredZeroExp_le hc ρ ha.1) (norm_nonneg _)
       _ ≤ ‖zeroFilterCoeff φ ρ‖ * Real.exp A :=
         mul_le_mul_of_nonneg_left (Real.exp_le_exp.mpr ha.2) (norm_nonneg _)
-  simpa [filteredZeroFamily] using
-    (continuousOn_tsum hterm_cont hu hterm_bound)
+  change ContinuousOn
+    (fun x : ℝ => ∑' ρ : zetaZeroConfig.carrier, filteredZeroTerm φ c ρ x)
+    (Set.Icc 0 A)
+  exact continuousOn_tsum hterm_cont hu hterm_bound
 
 /-- The absolutely summable filtered zero family is continuous at every positive aperture.  The
 proof localizes to `[0,a+1]`, where the zero series is uniformly summable. -/
