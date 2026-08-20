@@ -21,8 +21,11 @@ theorem paperFT_translateRight (f : ℝ → ℂ) (t : ℝ) (z : ℂ) :
   simp only [add_sub_cancel_right]
   rw [← integral_const_mul_C]
   congr 1 with x
-  rw [show I * z * (x + t) = I * z * t + I * z * x by push_cast; ring,
-    Complex.exp_add]
+  have harg :
+      I * z * ((x + t : ℝ) : ℂ) = I * z * (t : ℂ) + I * z * (x : ℂ) := by
+    push_cast
+    ring
+  rw [harg, Complex.exp_add]
   ring
 
 end Zeta23.ExceptionalZero
