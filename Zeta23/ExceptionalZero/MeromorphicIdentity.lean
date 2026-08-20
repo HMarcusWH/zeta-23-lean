@@ -33,6 +33,6 @@ theorem meromorphic_eventuallyEq_nhdsNE_of_isPreconnected
   have hyzero : (f - g) =ᶠ[𝓝[≠] y] 0 :=
     meromorphicOrderAt_eq_top_iff.mp hyord
   filter_upwards [hyzero] with z hz
-  simpa using hz
+  exact sub_eq_zero.mp (by simpa only [Pi.sub_apply] using hz)
 
 end Zeta23.ExceptionalZero
