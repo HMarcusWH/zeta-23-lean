@@ -21,7 +21,8 @@ theorem filteredLaplaceTransform_eq_resolvent_safe
     {φ : ZeroFilter} (hφ : AbsolutelySummableZeroFilter φ)
     {c z : ℂ} (hc : c.re = 1 / 2) (hz : 1 < z.re) :
     filteredLaplaceTransform φ c z = filteredResolvent φ c z := by
-  exact integral_laplace_filteredZeroFamily hφ hc hz
+  simpa [filteredLaplaceTransform] using
+    (integral_laplace_filteredZeroFamily hφ hc hz)
 
 /-- If the filtered zero family is subexponential, its Laplace kernel is genuinely integrable at
 every point of the open right half-plane.  The proof uses the global epsilon-envelope with
@@ -38,7 +39,7 @@ theorem integrableOn_laplace_filteredZeroFamily_of_subexponential
   have hε : 0 < ε := by
     dsimp [ε]
     linarith
-  obtain ⟨C, hC, hglobal⟩ :=
+  obtain ⟨C, _hC, hglobal⟩ :=
     exists_global_exp_bound_of_subexponential_filteredZeroFamily hφ hc hsub hε
   have hfam_cont := continuousOn_filteredZeroFamily_Ioi hφ hc
   have hkernel_cont : ContinuousOn
@@ -65,15 +66,18 @@ theorem integrableOn_laplace_filteredZeroFamily_of_subexponential
     Real.exp (-z * (a : ℂ)).re * ‖filteredZeroFamily φ c a‖ ≤
         Real.exp (-z * (a : ℂ)).re * (C * Real.exp (ε * a)) :=
       mul_le_mul_of_nonneg_left hfa (Real.exp_pos _).le
+    _ = C * (Real.exp (-z * (a : ℂ)).re * Real.exp (ε * a)) := by
+      ring
+    _ = C * Real.exp ((-z * (a : ℂ)).re + ε * a) := by
+      rw [Real.exp_add]
     _ = C * Real.exp (-ε * a) := by
       have hzε : z.re = 2 * ε := by
         dsimp [ε]
         ring
-      rw [show (-z * (a : ℂ)).re = -z.re * a by
-        simp [Complex.mul_re]]
-      rw [hzε]
-      rw [← Real.exp_add]
-      congr 1
+      have hre : (-z * (a : ℂ)).re = -z.re * a := by
+        simp [Complex.mul_re]
+      rw [hre, hzε]
+      congr 2
       ring
 
 end Zeta23.ExceptionalZero
