@@ -1,5 +1,5 @@
 {
-  "schema_version": "RHRC-claims-1.1",
+  "schema_version": "RHRC-claims-1.2",
   "runtime_binding": {
     "kernel": "OoL-MVS",
     "version": "2.7.6",
@@ -12,9 +12,10 @@
   },
   "claims": [
     {"id":"C_RH","statement":"Every nontrivial zero rho of zeta satisfies Re(rho)=1/2.","status":"OPEN","dependencies":["R001_ZERO_GROWTH","R001_PRIME_UPPER"],"route":"R001_exceptional_zero","promotion_cap":"OPEN"},
-    {"id":"OBS_TIGHTMULT","statement":"The existing c=2 trace/Frobenius/positive-index certificate is simultaneously extremal on online doubles and tight off-line pairs and cannot be improved using only those quantities.","status":"PROVED_UNCONDITIONAL","dependencies":[],"source":"Zeta23/ZeroSide/TightMult.lean","promotion_cap":"PROVED_UNCONDITIONAL"},
-    {"id":"R001_ZERO_GROWTH","statement":"For a rigorously defined exceptional-zero residual family, existence of an off-line zero of depth delta>0 forces positive upper exponential growth rate.","status":"OPEN","dependencies":["OBS_TIGHTMULT"],"route":"R001_exceptional_zero","promotion_cap":"OPEN"},
-    {"id":"R001_PRIME_UPPER","statement":"The same residual family has nonpositive upper exponential growth rate from unconditional arithmetic/prime-side estimates.","status":"OPEN","dependencies":[],"route":"R001_exceptional_zero","promotion_cap":"OPEN"},
+    {"id":"OBS_TIGHTMULT","statement":"The existing c=2 trace/Frobenius/positive-index certificate is simultaneously extremal on online doubles and tight off-line pairs and cannot be improved using only those quantities.","status":"PROVED_UNCONDITIONAL","dependencies":[],"source":"Zeta23/ZeroSide/TightMult.lean","theorem":"Zeta23.ZeroSide.TightMult.lemmaR_tight_two","promotion_cap":"PROVED_UNCONDITIONAL"},
+    {"id":"R001_FILTERED_ZERO_POLE","statement":"For an absolutely summable spectral zero filter, any off-line zero with nonzero filter coefficient forces the corresponding filtered zero family to fail the subexponential bound.","status":"OPEN","dependencies":[],"route":"R001_exceptional_zero","promotion_cap":"OPEN"},
+    {"id":"R001_ZERO_GROWTH","statement":"For the frozen Weil-admissible R001 filter and exact arithmetic residual, existence of an off-line zero forces failure of the subexponential bound.","status":"OPEN","dependencies":["OBS_TIGHTMULT","R001_FILTERED_ZERO_POLE"],"route":"R001_exceptional_zero","promotion_cap":"OPEN"},
+    {"id":"R001_PRIME_UPPER","statement":"The same frozen Weil-admissible R001 residual family is subexponential from unconditional arithmetic/prime-side estimates.","status":"OPEN","dependencies":[],"route":"R001_exceptional_zero","promotion_cap":"OPEN"},
     {"id":"R002_MULTI_PROBE_SEPARATION","statement":"A predeclared multi-probe family separates a tight off-line pair from an online double in a theorem-relevant way not reducible to TightMult-visible data.","status":"OPEN","dependencies":["OBS_TIGHTMULT"],"route":"R002_multi_probe","promotion_cap":"OPEN"},
     {"id":"R003_CCM_BRIDGE","statement":"A finite CCM object is connected to the Weil/aperture object by an exact identity, intertwiner, or controlled convergence theorem sufficient for route closure.","status":"OPEN","dependencies":[],"route":"R003_ccm_bridge","promotion_cap":"OPEN"}
   ]
