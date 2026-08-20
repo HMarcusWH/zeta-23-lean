@@ -113,6 +113,9 @@ theorem summable_laplaceZeroKernel {s z : ℂ} (hz : z ≠ 0)
     Summable (fun ρ : zetaZeroConfig.carrier =>
       (zeroMult ρ : ℂ) * laplaceZeroKernel ((ρ : ℂ) - s) z) := by
   obtain ⟨C, hC⟩ := norm_laplaceZeroKernel_le_zero hz hsXi htXi
-  exact Zeta23.XiPrime.ZeroFree.summable_mult_mul hC
+  exact Zeta23.XiPrime.ZeroFree.summable_mult_mul
+    (φ := fun ρ : ℂ => laplaceZeroKernel (ρ - s) z)
+    (C := C)
+    hC
 
 end Zeta23.ExceptionalZero
