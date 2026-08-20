@@ -80,18 +80,18 @@ theorem integral_laplace_filteredZeroTerm
     intro h
     rw [h] at hkneg
     norm_num at hkneg
-  have hk' : 2 * ((ρ : ℂ) - c) - z ≠ 0 := by
-    simpa [k] using hk
   simp only [Complex.ofReal_zero, mul_zero, Complex.exp_zero]
   unfold filteredResolventTerm
-  dsimp [k]
-  field_simp [hk']
-  ring
+  have hden_eq : z - 2 * ((ρ : ℂ) - c) = -k := by
+    dsimp [k]
+    ring
+  rw [hden_eq]
+  simp [div_eq_mul_inv]
 
 /-- The safe-half-plane Laplace integrand has a zero-independent exponential envelope.  This is the
 claim-bearing domination estimate used to justify exchanging the zero `tsum` with the integral. -/
 theorem norm_laplace_filteredZeroTerm_le
-    {φ : ZeroFilter} {c z : ℂ} (hc : c.re = 1 / 2) (hz : 1 < z.re)
+    {φ : ZeroFilter} {c z : ℂ} (hc : c.re = 1 / 2) (_hz : 1 < z.re)
     (ρ : zetaZeroConfig.carrier) {a : ℝ} (ha : 0 ≤ a) :
     ‖Complex.exp (-z * (a : ℂ)) * filteredZeroTerm φ c ρ a‖ ≤
       ‖zeroFilterCoeff φ ρ‖ * Real.exp (-(z.re - 1) * a) := by
@@ -179,9 +179,8 @@ theorem integral_laplace_filteredZeroFamily
       (fun ρ : zetaZeroConfig.carrier => filteredResolventTerm φ c ρ z)
       (∫ a : ℝ in Set.Ioi 0,
         Complex.exp (-z * (a : ℂ)) * filteredZeroFamily φ c a) := by
-    apply hseries.congr
-    intro ρ
-    simpa [F] using integral_laplace_filteredZeroTerm (φ := φ) hc hz ρ
+    exact hseries.congr (fun ρ : zetaZeroConfig.carrier => by
+      simpa [F] using integral_laplace_filteredZeroTerm (φ := φ) hc hz ρ)
   have hres : HasSum
       (fun ρ : zetaZeroConfig.carrier => filteredResolventTerm φ c ρ z)
       (filteredResolvent φ c z) := by
