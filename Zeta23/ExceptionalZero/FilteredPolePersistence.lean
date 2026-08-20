@@ -6,7 +6,7 @@ noncomputable section
 
 namespace Zeta23.ExceptionalZero
 
-open Complex Metric Set
+open Complex Metric Set Filter Topology
 
 /-- Pole location associated to one filtered zero. -/
 def filteredPolePoint (c : ℂ) (ρ : zetaZeroConfig.carrier) : ℂ :=
@@ -101,6 +101,36 @@ theorem norm_filteredResolventRemainderTerm_le
         div_le_div_of_nonneg_left (norm_nonneg _) hr hden.le
       _ = (1 / r) * ‖zeroFilterCoeff φ ρ‖ := by ring
 
+/-- Pointwise summability of the deleted remainder on its isolation ball. -/
+theorem summable_filteredResolventRemainderTerm
+    {φ : ZeroFilter} (hφ : AbsolutelySummableZeroFilter φ)
+    {c : ℂ} {ρ₀ : zetaZeroConfig.carrier} {r : ℝ}
+    (hr : 0 < r)
+    (hiso : ∀ ρ : zetaZeroConfig.carrier, ρ ≠ ρ₀ →
+      r ≤ ‖(ρ : ℂ) - (ρ₀ : ℂ)‖)
+    {z : ℂ} (hz : z ∈ ball (filteredPolePoint c ρ₀) r) :
+    Summable (fun ρ : zetaZeroConfig.carrier =>
+      filteredResolventRemainderTerm φ c ρ₀ ρ z) := by
+  unfold AbsolutelySummableZeroFilter at hφ
+  exact Summable.of_norm_bounded
+    (hφ.mul_left (1 / r))
+    (fun ρ => norm_filteredResolventRemainderTerm_le hr hiso ρ hz)
+
+/-- The full resolvent is summable on the isolation ball because it differs from the summable
+remainder at exactly one index. -/
+theorem summable_filteredResolventTerm_of_mem_isolationBall
+    {φ : ZeroFilter} (hφ : AbsolutelySummableZeroFilter φ)
+    {c : ℂ} {ρ₀ : zetaZeroConfig.carrier} {r : ℝ}
+    (hr : 0 < r)
+    (hiso : ∀ ρ : zetaZeroConfig.carrier, ρ ≠ ρ₀ →
+      r ≤ ‖(ρ : ℂ) - (ρ₀ : ℂ)‖)
+    {z : ℂ} (hz : z ∈ ball (filteredPolePoint c ρ₀) r) :
+    Summable (fun ρ : zetaZeroConfig.carrier => filteredResolventTerm φ c ρ z) := by
+  have hrem := summable_filteredResolventRemainderTerm hφ hr hiso hz
+  apply hrem.congr_cofinite
+  filter_upwards [eventually_cofinite_ne ρ₀] with ρ hρ
+  simp [filteredResolventRemainderTerm, hρ]
+
 /-- After deleting one target zero, the full infinite filtered resolvent is holomorphic throughout
 its isolation ball.  This is the local anti-cancellation seam: every other zero contributes only a
 holomorphic remainder near the target pole. -/
@@ -122,5 +152,68 @@ theorem differentiableOn_filteredResolventRemainder
     (fun ρ => differentiableOn_filteredResolventRemainderTerm hr hiso ρ)
     isOpen_ball
     (fun ρ z hz => norm_filteredResolventRemainderTerm_le hr hiso ρ hz)
+
+/-- On the isolation ball, the legal infinite sum splits into the distinguished principal part plus
+the holomorphic deleted remainder. -/
+theorem filteredResolvent_eq_target_add_remainder
+    {φ : ZeroFilter} (hφ : AbsolutelySummableZeroFilter φ)
+    {c : ℂ} {ρ₀ : zetaZeroConfig.carrier} {r : ℝ}
+    (hr : 0 < r)
+    (hiso : ∀ ρ : zetaZeroConfig.carrier, ρ ≠ ρ₀ →
+      r ≤ ‖(ρ : ℂ) - (ρ₀ : ℂ)‖)
+    {z : ℂ} (hz : z ∈ ball (filteredPolePoint c ρ₀) r) :
+    filteredResolvent φ c z =
+      filteredResolventTerm φ c ρ₀ z + filteredResolventRemainder φ c ρ₀ z := by
+  classical
+  have hsum := summable_filteredResolventTerm_of_mem_isolationBall hφ hr hiso hz
+  have hsplit := hsum.tsum_eq_add_tsum_ite ρ₀
+  unfold filteredResolvent filteredResolventRemainder
+  simpa [filteredResolventRemainderTerm] using hsplit
+
+/-- The distinguished zero is the exact principal part of the full filtered resolvent.  Multiplying
+by `z-z₀` and approaching through the punctured plane recovers its multiplicity-weighted filter
+coefficient.  A nonzero coefficient therefore cannot be cancelled by the rest of the zero family. -/
+theorem filteredResolvent_principalPart_limit
+    {φ : ZeroFilter} (hφ : AbsolutelySummableZeroFilter φ)
+    {c : ℂ} {ρ₀ : zetaZeroConfig.carrier} {r : ℝ}
+    (hr : 0 < r)
+    (hiso : ∀ ρ : zetaZeroConfig.carrier, ρ ≠ ρ₀ →
+      r ≤ ‖(ρ : ℂ) - (ρ₀ : ℂ)‖) :
+    Tendsto
+      (fun z : ℂ => (z - filteredPolePoint c ρ₀) * filteredResolvent φ c z)
+      (𝓝[≠] filteredPolePoint c ρ₀)
+      (𝓝 (zeroFilterCoeff φ ρ₀)) := by
+  let z₀ := filteredPolePoint c ρ₀
+  have hz₀ : z₀ ∈ ball z₀ r := mem_ball_self hr
+  have hdiff := differentiableOn_filteredResolventRemainder hφ hr hiso
+  have hrem_cont : ContinuousAt (filteredResolventRemainder φ c ρ₀) z₀ := by
+    have hwithin := hdiff z₀ hz₀
+    exact (hwithin.differentiableAt (isOpen_ball.mem_nhds hz₀)).continuousAt
+  have hrem_tend : Tendsto (filteredResolventRemainder φ c ρ₀)
+      (𝓝[≠] z₀) (𝓝 (filteredResolventRemainder φ c ρ₀ z₀)) :=
+    hrem_cont.tendsto.mono_left nhdsWithin_le_nhds
+  have hsub_tend : Tendsto (fun z : ℂ => z - z₀) (𝓝[≠] z₀) (𝓝 0) := by
+    have h := (continuousAt_id.sub continuousAt_const).tendsto
+    simpa using h.mono_left nhdsWithin_le_nhds
+  have hprod_tend : Tendsto
+      (fun z : ℂ => (z - z₀) * filteredResolventRemainder φ c ρ₀ z)
+      (𝓝[≠] z₀) (𝓝 0) := by
+    simpa using hsub_tend.mul hrem_tend
+  have hmodel : Tendsto
+      (fun z : ℂ => zeroFilterCoeff φ ρ₀ +
+        (z - z₀) * filteredResolventRemainder φ c ρ₀ z)
+      (𝓝[≠] z₀) (𝓝 (zeroFilterCoeff φ ρ₀)) := by
+    simpa using tendsto_const_nhds.add hprod_tend
+  refine hmodel.congr' ?_
+  have hball : ball z₀ r ∈ 𝓝 z₀ := isOpen_ball.mem_nhds hz₀
+  filter_upwards [mem_nhdsWithin_of_mem_nhds hball, self_mem_nhdsWithin]
+    with z hz hzne
+  have hdecomp := filteredResolvent_eq_target_add_remainder hφ hr hiso hz
+  rw [hdecomp]
+  have hden : z - z₀ ≠ 0 := sub_ne_zero.mpr hzne
+  unfold filteredResolventTerm filteredPolePoint at hdecomp ⊢
+  dsimp [z₀] at hden ⊢
+  field_simp [hden]
+  ring
 
 end Zeta23.ExceptionalZero
