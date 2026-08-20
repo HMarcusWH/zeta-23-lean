@@ -36,9 +36,10 @@ theorem norm_filteredZeroExp_le {c : ℂ} (hc : c.re = 1 / 2) (ρ : zetaZeroConf
   rw [Complex.norm_exp]
   apply Real.exp_le_exp.mpr
   have hρ : (ρ : ℂ).re < 1 := ρ.2.2.2
-  simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, Complex.sub_re,
-    Complex.sub_im, Complex.ofNat_re, Complex.ofNat_im]
-  rw [hc]
+  have hre : (((2 : ℂ) * ((ρ : ℂ) - c)) * (a : ℂ)).re =
+      2 * ((ρ : ℂ).re - c.re) * a := by
+    simp [Complex.mul_re]
+  rw [hre, hc]
   nlinarith
 
 /-- Absolute coefficient summability is preserved by every fixed nonnegative aperture.  This is the
