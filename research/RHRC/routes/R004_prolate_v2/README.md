@@ -1,6 +1,6 @@
 # R004-v2 — commutator stress test and displacement-structure audit
 
-Status: **DISCOVERY / FINITE NUMERICAL DIAGNOSTIC ONLY**.
+Status: **DISCOVERY**. The commutator/null results remain finite numerical diagnostics. The index-displacement formula below is now an **exact symbolic identity for the implemented finite CCM entry formula**, but it is not a finite-to-infinite theorem and not RH evidence.
 
 ## Purpose
 
@@ -12,7 +12,7 @@ That was a useful signal, but it left two dangerous alternative explanations ope
 2. a small commutator is not perturbatively useful if the recovered `J` has collapsing spectral gaps.
 
 R004-v2 therefore reports absolute and gap-normalized metrics, adds a locality-preserving null, and
-audits the exact index-displacement structure of the CCM matrix.
+audits the index-displacement structure of the CCM matrix.
 
 ## Locked finite object
 
@@ -66,20 +66,80 @@ coherent index alignment.
 
 This is a substantially harsher locality control than a fully randomized eigenbasis.
 
-## Displacement audit
+## Exact index-displacement identity
 
 Let
 
 `D = diag(-N, ..., 0, ..., N)`.
 
-R004-v2 computes the singular values of
+For Fourier indices `n,m`, the implemented CCM matrix has
 
-`[D,M] = D M - M D`
+`M_nm = Pole_nm - Arch_nm - Prime_nm`.
 
-and reports the Frobenius residual after the best rank-two approximation.
+Write
 
-This is motivated by the divided-difference form of the CCM entries: an exact rank-two displacement
-identity would be theorem-relevant algebra, unlike visual resemblance of recovered Jacobi coefficients.
+`kappa = 16*pi^2`,
+
+`C_L = 32*L*sinh(L/4)^2`,
+
+`d_n = L^2 + kappa*n^2`.
+
+The pole entry is
+
+`Pole_nm = C_L * (L^2 - kappa*m*n) / (d_m*d_n)`.
+
+For `n != m`, direct algebra gives
+
+`(n-m) Pole_nm = C_L * (n/d_n - m/d_m)`.
+
+Indeed,
+
+`n*d_m - m*d_n = (n-m)(L^2 - kappa*m*n)`.
+
+The off-diagonal archimedean channel is
+
+`Arch_nm = (alpha_m - alpha_n)/(n-m)`,
+
+so
+
+`(n-m)(-Arch_nm) = alpha_n - alpha_m`.
+
+The prime channel is a weighted sum of divided differences. Define the scalar prime sequence
+
+`prime_n = sum_k Lambda(k) k^(-1/2) sin(2*pi*n*log(k)/L) / pi`
+
+over the same finite prime-power range used by the matrix construction. Then
+
+`(n-m)(-Prime_nm) = prime_n - prime_m`.
+
+Therefore, with
+
+`g_n = C_L*n/d_n + alpha_n + prime_n`,
+
+we obtain the exact entrywise identity
+
+`(n-m) M_nm = g_n - g_m`.
+
+On the diagonal both sides are zero. Hence for every entry,
+
+`[D,M]_nm = g_n - g_m`,
+
+or in matrix form
+
+`[D,M] = g 1^T - 1 g^T`.
+
+Consequently
+
+`rank([D,M]) <= 2`
+
+**exactly for the implemented finite CCM formula**.
+
+The symbolic certificate `derive_exact_displacement.py` verifies the only nontrivial rational
+algebra independently of the numerical matrix builder. This explains the `~1e-15` rank-two residual
+seen in RUN 002: that residual was floating-point roundoff around an exact displacement structure.
+
+This result is theorem-relevant finite algebra, but it does **not** establish operator convergence,
+identify a limiting Jacobi/prolate operator, or transfer finite spectral information to Xi.
 
 ## RUN 002 finite result
 
@@ -111,20 +171,21 @@ Therefore the v1 route `small normalized commutator -> spectral-gap estimate -> 
 convergence` is **not supported by this recovered generator** without a different analytically
 identified operator and a separate gap theorem.
 
-The rank-two displacement diagnostic is much more rigid: across every tested case, `[D,M]` is
-numerically rank two to floating-point precision. This elevates the exact displacement identity to
-the primary analytic target.
-
 ## Revised proof-search ladder
 
 `J0` — anomalous finite tridiagonal commutant relative to eigenvalue and band-profile nulls.
 **NUMERICAL PASS.**
 
-`J1-D` — derive the exact displacement identity for `[D,M_{lambda,N}]` from the CCM entry formula,
-including the explicit two generating vectors. **PRIMARY OPEN TARGET.**
+`J1-D` — exact finite displacement identity
+`[D,M] = g 1^T - 1 g^T`. **ALGEBRAICALLY CLOSED FOR THE IMPLEMENTED FINITE FORMULA.**
 
-`J1-J` — derive an analytically specified Jacobi/prolate generator from `J1-D` or another exact CCM
-identity. The numerical minimizer by itself is not an identification theorem. **OPEN.**
+`J1-D-formal` — bind the exact identity to a theorem-authoritative formal definition of the CCM
+matrix (Lean or equivalent comparator-grade source), rather than the Python implementation alone.
+**OPEN.**
+
+`J1-J` — derive an analytically specified Jacobi/prolate generator from the displacement identity or
+another exact CCM identity. The numerical minimizer by itself is not an identification theorem.
+**OPEN.**
 
 `J2` — prove an absolute commutator estimate for that explicit generator, not merely a residual
 normalized by `||M||`. **OPEN.**
@@ -134,24 +195,27 @@ generator. **OPEN; current fitted-generator finite gaps are a warning signal.**
 
 `J4` — only after J2+J3, derive eigenspace convergence by a self-adjoint perturbation theorem. **OPEN.**
 
-`J5` — connect the limiting concentrated mode to the frozen R001 translated pole-killing prime
-statistic / localized Weil minimizer. **OPEN.**
+`J5` — connect the limiting concentrated mode to the exact R001 / localized Weil observable.
+**OPEN.**
 
 `J6` — close the finite-to-infinite normalization and limit-identification seam. **OPEN.**
 
 ## Dumbassery checks
 
-- The identity direction is excluded by the traceless generator space.
+- The identity direction is excluded by the traceless fitted-generator space.
 - Eigenvalue-preserving nulls preserve the exact candidate spectrum.
 - Band-profile nulls preserve each matrix diagonal's value multiset.
 - Absolute commutator values are reported; normalized decay is not called convergence.
 - Gap-normalized quantities are reported; small commutator alone is not called eigenvector control.
 - The recovered tridiagonal generator is not called prolate.
-- Rank-two displacement is a finite numerical observation here until derived symbolically.
+- The exact displacement identity is explicitly limited to the implemented finite CCM formula.
+- No finite-to-infinite theorem follows from rank-two displacement alone.
 - No numerical trend is promoted to an asymptotic theorem.
-- This run is not RH evidence or proof.
+- This route is not RH evidence or proof.
 
 ## Reproduction
+
+Numerical gauntlet:
 
 ```bash
 pip install -r research/RHRC/routes/R004_prolate_v2/requirements.txt
@@ -161,4 +225,10 @@ python research/RHRC/routes/R004_prolate_v2/run_commutator_gauntlet_v2.py \
   --nulls 10 \
   --seed 20260820 \
   --output r004_v2_result.json
+```
+
+Exact symbolic displacement derivation:
+
+```bash
+python research/RHRC/routes/R004_prolate_v2/derive_exact_displacement.py
 ```
