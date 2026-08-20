@@ -28,6 +28,8 @@ def lint(path: Path) -> list[str]:
     seen: set[str] = set()
     claims: list[Claim] = []
     caps: dict[str, str] = {}
+    by_id: dict[str, dict] = {}
+
     for item in raw:
         cid = item.get("id")
         status = item.get("status")
@@ -37,6 +39,7 @@ def lint(path: Path) -> list[str]:
             errors.append(f"invalid/duplicate id: {cid!r}")
             continue
         seen.add(cid)
+        by_id[cid] = item
         if status not in ALLOWED:
             errors.append(f"{cid}: invalid status {status!r}")
         if cap not in ALLOWED:
@@ -53,13 +56,32 @@ def lint(path: Path) -> list[str]:
         except RouteError as exc:
             errors.append(str(exc))
             continue
+
         ancestors = [x for x in closure if x.id != c.id]
+        item = by_id[c.id]
+
         if c.status == "PROVED_UNCONDITIONAL":
             bad = [x.id for x in ancestors if x.status != "PROVED_UNCONDITIONAL"]
             if bad:
                 errors.append(f"{c.id}: unconditional claim depends on non-unconditional {bad}")
+
+            source = item.get("source")
+            theorem = item.get("theorem")
+            if not isinstance(source, str) or not source:
+                errors.append(f"{c.id}: unconditional claim requires a Lean source path")
+            elif source.startswith("research/") or not source.endswith(".lean"):
+                errors.append(f"{c.id}: unconditional theorem source must be a non-research .lean file")
+            if not isinstance(theorem, str) or not theorem:
+                errors.append(f"{c.id}: unconditional claim requires a Lean theorem identifier")
+
         if caps[c.id] == "PROVED_UNCONDITIONAL" and c.status != "PROVED_UNCONDITIONAL":
             errors.append(f"{c.id}: unconditional promotion cap requires unconditional current status")
+
+        if c.id == "C_RH" and c.status != "OPEN":
+            bad = [x.id for x in ancestors if x.status != "PROVED_UNCONDITIONAL"]
+            if bad:
+                errors.append(f"C_RH: cannot leave OPEN while dependencies are not unconditional: {bad}")
+
     return errors
 
 
