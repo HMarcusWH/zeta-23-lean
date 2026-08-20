@@ -210,9 +210,10 @@ theorem filteredResolvent_principalPart_limit
   have hrem_tend : Tendsto (filteredResolventRemainder φ c ρ₀)
       (𝓝[≠] z₀) (𝓝 (filteredResolventRemainder φ c ρ₀ z₀)) :=
     hrem_cont.tendsto.mono_left nhdsWithin_le_nhds
+  have hsub_cont : ContinuousAt (fun z : ℂ => z - z₀) z₀ :=
+    continuousAt_id.sub (continuousAt_const : ContinuousAt (fun _ : ℂ => z₀) z₀)
   have hsub_tend : Tendsto (fun z : ℂ => z - z₀) (𝓝[≠] z₀) (𝓝 0) := by
-    have h := (continuousAt_id.sub continuousAt_const).tendsto
-    simpa using h.mono_left nhdsWithin_le_nhds
+    simpa using hsub_cont.tendsto.mono_left nhdsWithin_le_nhds
   have hprod_tend : Tendsto
       (fun z : ℂ => (z - z₀) * filteredResolventRemainder φ c ρ₀ z)
       (𝓝[≠] z₀) (𝓝 0) := by
