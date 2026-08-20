@@ -19,7 +19,7 @@ theorem meromorphic_eventuallyEq_nhdsNE_of_isPreconnected
     (hseed : f =ᶠ[𝓝 x] g) :
     ∀ y ∈ U, f =ᶠ[𝓝[≠] y] g := by
   have hdiff : MeromorphicOn (f - g) U := hf.sub hg
-  have hxzero : (f - g) =ᶠ[𝓝[≠] x] 0 := by
+  have hxzero : (f - g) =ᶠ[𝓝[≠] x] (fun _ => (0 : ℂ)) := by
     filter_upwards [hseed.filter_mono nhdsWithin_le_nhds] with z hz
     simp [hz]
   have hxord : meromorphicOrderAt (f - g) x = ⊤ :=
@@ -30,7 +30,7 @@ theorem meromorphic_eventuallyEq_nhdsNE_of_isPreconnected
     have hxfinite := hdiff.meromorphicOrderAt_ne_top_of_isPreconnected
       (x := y) (y := x) hU hy hx hyfinite
     exact hxfinite hxord
-  have hyzero : (f - g) =ᶠ[𝓝[≠] y] 0 :=
+  have hyzero : (f - g) =ᶠ[𝓝[≠] y] (fun _ => (0 : ℂ)) :=
     meromorphicOrderAt_eq_top_iff.mp hyord
   filter_upwards [hyzero] with z hz
   exact sub_eq_zero.mp (by simpa only [Pi.sub_apply] using hz)
