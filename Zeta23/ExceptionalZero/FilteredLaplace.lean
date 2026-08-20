@@ -175,12 +175,18 @@ theorem integral_laplace_filteredZeroFamily
   have hseries := hasSum_integral_of_dominated_convergence
     (μ := volume.restrict (Set.Ioi 0))
     bound hF_meas hbound hbound_summable hbound_integrable hlim
+  have hterm_eq :
+      (fun ρ : zetaZeroConfig.carrier =>
+        ∫ a : ℝ, F ρ a ∂(volume.restrict (Set.Ioi 0))) =
+      (fun ρ : zetaZeroConfig.carrier => filteredResolventTerm φ c ρ z) := by
+    funext ρ
+    simpa [F] using integral_laplace_filteredZeroTerm (φ := φ) hc hz ρ
+  rw [hterm_eq] at hseries
   have hseries' : HasSum
       (fun ρ : zetaZeroConfig.carrier => filteredResolventTerm φ c ρ z)
       (∫ a : ℝ in Set.Ioi 0,
         Complex.exp (-z * (a : ℂ)) * filteredZeroFamily φ c a) := by
-    exact hseries.congr (fun ρ : zetaZeroConfig.carrier => by
-      simpa [F] using integral_laplace_filteredZeroTerm (φ := φ) hc hz ρ)
+    simpa using hseries
   have hres : HasSum
       (fun ρ : zetaZeroConfig.carrier => filteredResolventTerm φ c ρ z)
       (filteredResolvent φ c z) := by
