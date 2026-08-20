@@ -85,17 +85,16 @@ theorem laplaceZeroKernel_eq_reciprocalDiff {s z ρ : ℂ}
       simp only [one_div, inv_neg]
       ring
 
-/-- Away from the two evaluation-point zero sets, the full multiplicity-weighted transformed
-zero family is absolutely summable.  This is the infinite-family convergence seam needed by
-the Laplace pole route. -/
-theorem summable_laplaceZeroKernel {s z : ℂ} (hz : z ≠ 0)
+/-- Pointwise inverse-square bound for the transformed zero kernel.  Keeping this estimate
+separate from the summability wrapper mirrors the upstream `norm_wt_le_zero` ->
+`summable_mult_mul` proof shape and avoids forcing Lean to normalize the full subtype sum while
+constructing the bound. -/
+theorem norm_laplaceZeroKernel_le_zero {s z : ℂ} (hz : z ≠ 0)
     (hsXi : xi s ≠ 0) (htXi : xi (s + z / 2) ≠ 0) :
-    Summable (fun ρ : zetaZeroConfig.carrier =>
-      (zeroMult ρ : ℂ) * laplaceZeroKernel ((ρ : ℂ) - s) z) := by
+    ∃ C : ℝ, ∀ ρ : ℂ, IsNontrivialZero ρ →
+      ‖laplaceZeroKernel (ρ - s) z‖ ≤ C / (1 + Complex.normSq (gammaOf ρ)) := by
   obtain ⟨C, hC⟩ := norm_reciprocalDiff_le_zero hsXi htXi
-  apply Zeta23.XiPrime.ZeroFree.summable_mult_mul
-    (C := ‖(1 / z : ℂ)‖ * C)
-  intro ρ hρ
+  refine ⟨‖(1 / z : ℂ)‖ * C, fun ρ hρ => ?_⟩
   have hzero : xi ρ = 0 := (Zeta23.XiPrime.ZeroFree.xi_eq_zero_iff ρ).mpr hρ
   have hs : s ≠ ρ := fun e => hsXi (e ▸ hzero)
   have ht : s + z / 2 ≠ ρ := fun e => htXi (e ▸ hzero)
@@ -105,5 +104,18 @@ theorem summable_laplaceZeroKernel {s z : ℂ} (hz : z ≠ 0)
         ≤ ‖(1 / z : ℂ)‖ * (C / (1 + Complex.normSq (gammaOf ρ))) :=
       mul_le_mul_of_nonneg_left (hC ρ hρ) (norm_nonneg _)
     _ = (‖(1 / z : ℂ)‖ * C) / (1 + Complex.normSq (gammaOf ρ)) := by ring
+
+/-- Away from the two evaluation-point zero sets, the full multiplicity-weighted transformed
+zero family is absolutely summable.  This is the infinite-family convergence seam needed by
+the Laplace pole route. -/
+theorem summable_laplaceZeroKernel {s z : ℂ} (hz : z ≠ 0)
+    (hsXi : xi s ≠ 0) (htXi : xi (s + z / 2) ≠ 0) :
+    Summable (fun ρ : zetaZeroConfig.carrier =>
+      (zeroMult ρ : ℂ) * laplaceZeroKernel ((ρ : ℂ) - s) z) := by
+  obtain ⟨C, hC⟩ := norm_laplaceZeroKernel_le_zero hz hsXi htXi
+  exact Zeta23.XiPrime.ZeroFree.summable_mult_mul
+    (φ := fun ρ : ℂ => laplaceZeroKernel (ρ - s) z)
+    (C := C)
+    hC
 
 end Zeta23.ExceptionalZero
