@@ -27,7 +27,7 @@ theorem meromorphic_eventuallyEq_nhdsNE_of_isPreconnected
   have hyord : meromorphicOrderAt (f - g) y = ⊤ := by
     by_contra hyfinite
     have hxfinite := hdiff.meromorphicOrderAt_ne_top_of_isPreconnected
-      hU hy hx hyfinite
+      (x := y) (y := x) hU hy hx hyfinite
     exact hxfinite hxord
   have hyzero : (f - g) =ᶠ[𝓝[≠] y] 0 :=
     meromorphicOrderAt_eq_top_iff.mp hyord
