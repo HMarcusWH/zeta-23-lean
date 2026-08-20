@@ -6,6 +6,7 @@ import Zeta23.ExceptionalZero.ProbeFamily
 import Zeta23.ExceptionalZero.LaplacePole
 import Zeta23.ExceptionalZero.LaplaceZeroFamily
 import Zeta23.ExceptionalZero.FilteredZeroFamily
+import Zeta23.ExceptionalZero.ZeroIsolation
 import Zeta23.ExceptionalZero.ConditionalClosure
 import Zeta23.ExceptionalZero.WeilBridge
 import Zeta23.ExceptionalZero.PrimeUpper
