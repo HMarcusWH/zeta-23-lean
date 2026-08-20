@@ -187,3 +187,34 @@ def absence_result(*, forbidden_observed: bool, search_domain_complete: bool) ->
     if not search_domain_complete:
         return EvidenceValue.NA
     return EvidenceValue.PASS
+
+
+@dataclass(frozen=True)
+class RouteInterfaceQualification:
+    interface_id: str
+    result: EvidenceValue
+    actual_output_bound: bool
+    provenance_continuous: bool
+
+
+def integrated_route_freeze_status(
+    interfaces: Iterable[RouteInterfaceQualification],
+) -> str:
+    """Domain-neutral full-route freeze gate.
+
+    Independent module success is insufficient. Every declared interface must be positively
+    qualified, claim-bearing evidence must use actual route output, and provenance must remain
+    continuous through the integrated route before confirmatory freeze is eligible.
+    """
+    vals = tuple(interfaces)
+    if not vals:
+        return "INCOMPLETE"
+    if any(x.result is EvidenceValue.FAIL for x in vals):
+        return "QUALIFICATION_FAILED"
+    if any(x.result is EvidenceValue.NA for x in vals):
+        return "NOT_READY_FOR_FREEZE"
+    if any(not x.actual_output_bound for x in vals):
+        return "NOT_READY_FOR_FREEZE"
+    if any(not x.provenance_continuous for x in vals):
+        return "NOT_READY_FOR_FREEZE"
+    return "FULL_ROUTE_FREEZE_ELIGIBLE"

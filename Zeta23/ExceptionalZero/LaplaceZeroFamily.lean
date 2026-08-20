@@ -28,7 +28,7 @@ theorem norm_reciprocalDiff_le_zero {p q : ℂ} (hpXi : xi p ≠ 0) (hqXi : xi q
   obtain ⟨c, hc, hpdist⟩ := Zeta23.XiPrime.ZeroFree.exists_normSq_sub_ge hpXi
   obtain ⟨c', hc', hqdist⟩ := Zeta23.XiPrime.ZeroFree.exists_normSq_sub_ge hqXi
   refine ⟨‖q - p‖ / 2 * (1 / c + 1 / c'), fun ρ hρ => ?_⟩
-  have hzero : xi ρ = 0 := (xi_eq_zero_iff ρ).mpr hρ
+  have hzero : xi ρ = 0 := (Zeta23.XiPrime.ZeroFree.xi_eq_zero_iff ρ).mpr hρ
   have hp : p - ρ ≠ 0 := sub_ne_zero.mpr (fun e => hpXi (e ▸ hzero))
   have hq : q - ρ ≠ 0 := sub_ne_zero.mpr (fun e => hqXi (e ▸ hzero))
   set N : ℝ := 1 + Complex.normSq (gammaOf ρ) with hNdef
@@ -66,9 +66,24 @@ theorem laplaceZeroKernel_eq_reciprocalDiff {s z ρ : ℂ}
     (hz : z ≠ 0) (hs : s ≠ ρ) (ht : s + z / 2 ≠ ρ) :
     laplaceZeroKernel (ρ - s) z =
       -(1 / z) * reciprocalDiff s (s + z / 2) ρ := by
-  unfold laplaceZeroKernel reciprocalDiff
-  field_simp [hz, sub_ne_zero.mpr hs, sub_ne_zero.mpr ht, sub_ne_zero.mpr (Ne.symm hs)]
-  ring
+  have hw : ρ - s ≠ 0 := sub_ne_zero.mpr (Ne.symm hs)
+  have hwz : (ρ - s) - z / 2 ≠ 0 := by
+    intro h
+    apply ht
+    have heq : ρ - s = z / 2 := sub_eq_zero.mp h
+    calc
+      s + z / 2 = s + (ρ - s) := by rw [heq]
+      _ = ρ := by ring
+  calc
+    laplaceZeroKernel (ρ - s) z =
+        (1 / z) * (1 / (ρ - s) - 1 / ((ρ - s) - z / 2)) :=
+      laplaceZeroKernel_partialFraction (ρ - s) z hw hz hwz
+    _ = -(1 / z) * reciprocalDiff s (s + z / 2) ρ := by
+      unfold reciprocalDiff
+      rw [show s - ρ = -(ρ - s) by ring,
+        show s + z / 2 - ρ = -((ρ - s) - z / 2) by ring]
+      simp only [one_div, inv_neg]
+      ring
 
 /-- Away from the two evaluation-point zero sets, the full multiplicity-weighted transformed
 zero family is absolutely summable.  This is the infinite-family convergence seam needed by
@@ -81,7 +96,7 @@ theorem summable_laplaceZeroKernel {s z : ℂ} (hz : z ≠ 0)
   apply Zeta23.XiPrime.ZeroFree.summable_mult_mul
     (C := ‖(1 / z : ℂ)‖ * C)
   intro ρ hρ
-  have hzero : xi ρ = 0 := (xi_eq_zero_iff ρ).mpr hρ
+  have hzero : xi ρ = 0 := (Zeta23.XiPrime.ZeroFree.xi_eq_zero_iff ρ).mpr hρ
   have hs : s ≠ ρ := fun e => hsXi (e ▸ hzero)
   have ht : s + z / 2 ≠ ρ := fun e => htXi (e ▸ hzero)
   rw [laplaceZeroKernel_eq_reciprocalDiff hz hs ht, norm_mul, norm_neg]

@@ -1,41 +1,55 @@
 {
-  "overlay_id": "FFBBP_IMPLEMENTATION_CLOSURE_2026_08_19",
-  "status": "ENFORCED_IN_RHRC_PENDING_CANONICAL_V1_5_2_DOCUMENT",
+  "overlay_id": "FFBBP_IMPLEMENTATION_CLOSURE_RUN42C_2026_08_20",
+  "status": "ENFORCED_RUN42C_INDUCTIVE_FIREWALL_CLOSURE_PENDING_CANONICAL_V1_5_3_DOCUMENT",
   "canonical_theory_document": "FFBBP Reference Solver Architecture v1.5.1 - consolidated preservation release",
-  "run42b_protocol_sha256": "5b21194b41e84821b8af90ab97cd14c9e090d4b64d07525a9d265a7cc7c03fee",
-  "run42b_output_zip_sha256": "8e90730b3fec1a85f37f98f9884ed689bc7f6fa871727afd6976820f1c62773d",
+  "supersedes_overlay": "FFBBP_IMPLEMENTATION_CLOSURE_2026_08_19",
+  "run42c_protocol_sha256": "c562a770a37521589742909f75aa522bdb76233c6f9206bd70039afb85e74622",
+  "run42c_source_script_sha256": "5f5b1ebea75929b63b6ea4e9d07aaf2124516251fe8d91188b233188749f2f18",
+  "run42c_supplied_output_zip_sha256_manifest_attested": "e33f43dfe367ff25c7e7496d7080d405ea87044c2aa3609c549dcc97da9d8e46",
+  "run42b_disposition": {
+    "status": "SUPERSEDED_DEVELOPMENT_ONLY",
+    "root_cause": "CONFIRM_COVARIATE_TRANSDUCTION",
+    "failure_mode": "RUN42B Sinkhorn membership balancing included CONFIRM source rows; CONFIRM source geometry could therefore change TRAIN memberships, fitted field coefficients, and SELECT calibration.",
+    "repair": "Fit prototypes and Sinkhorn column scaling on TRAIN only; freeze them; transform SELECT and CONFIRM independently by row-normalized kernels under frozen TRAIN-derived scaling."
+  },
   "rules": {
-    "notation": {
-      "field_temporal_structure": "T_temporal",
-      "context_covariate": "kappa_i_t",
-      "projected_recall": "z_i"
-    },
     "information_partitions": ["I_train", "I_select", "I_confirm", "I_audit"],
     "I_build_definition": "I_train union I_select",
     "hard_firewall": "I_confirm -> construction FORBIDDEN",
-    "orthogonal_axes": ["time_window", "evidence_partition"],
-    "fidelity_mode": ["FAST", "HYBRID", "REFERENCE"],
-    "run_phase": ["TRAIN", "SELECT", "CONFIRM", "UNKNOWN_DIAGNOSTIC", "PILOT"],
-    "lift_validation": "1 - RMSE_model / RMSE_zero, evaluated on SELECT before existence shrinkage",
-    "w_exist_lifecycle": [
+    "membership_fit": "TRAIN-only Sinkhorn balancing",
+    "membership_transform": {
+      "TRAIN": "fit column multiplier v from TRAIN rows only",
+      "SELECT": "row_normalize((exp(-C_select/tau)+eps)*v_frozen)",
+      "CONFIRM": "row_normalize((exp(-C_confirm/tau)+eps)*v_frozen)",
+      "cross_partition_balancing": "FORBIDDEN"
+    },
+    "field_existence_lifecycle": [
       "fit F_raw on TRAIN",
       "score F_raw on SELECT",
-      "compute Lift_validation",
-      "compute w_exist",
+      "compute Lift_validation = 1 - RMSE_model/RMSE_zero",
+      "compute w_exist from SELECT only",
       "shrink F_raw -> F_certificate",
       "freeze family and w_exist",
       "one no-refit CONFIRM evaluation"
     ],
-    "missingness_uncertainty": {
-      "backend_contract": "consume uncertainty/missingness explicitly or declare qualification limitation",
-      "default_metric": "masked renormalized distance p/|M_ij| times observed-coordinate sum",
-      "minimum_overlap_gate": true
-    },
-    "ablation_refit": "remove/replace nominated mechanism; freeze protocol/preprocessing/hyperparameters/family-selection/evaluation surfaces; refit ordinary model parameters on TRAIN",
-    "null_lifecycle": ["fit TRAIN", "select_or_calibrate SELECT if predeclared", "freeze", "score CONFIRM"],
-    "knockoff_ledger_required": ["preserved", "destroyed", "generation_partition", "refit_semantics", "seed"],
+    "oracle_scoring": "projection-consistent; apply the same TRAIN-only background projection to planted truth before closure/recovery scoring",
+    "source_target_firewall": "target-derived lure features prohibited from certificate geometry",
+    "negative_controls": ["adversarial_W96_window_artifact", "no_field_world"],
+    "positive_controls": [
+      "global_stationary_field",
+      "local_evolving_field",
+      "post_boot_emerging_field",
+      "regime_switching_field",
+      "periodic_geodesic_multishadow_field"
+    ],
     "qualification_identity": "CoreProfileID x DomainAdapterID",
     "qualification_levels": ["CORE_RUNTIME_QUALIFIED", "DOMAIN_ADAPTER_DIAGNOSTIC_ADMITTED"],
-    "online_note": "RUN42B validation-shrink is an offline/reference A0 qualification mechanism, not an automatic streaming existence estimator"
-  }
+    "online_note": "RUN42C existence shrink is an offline/reference finite-synthetic qualification mechanism, not an automatic streaming existence estimator."
+  },
+  "local_replay_note": {
+    "semantic_gate_outcomes_reproduced": true,
+    "byte_reproducibility": "NOT_ESTABLISHED",
+    "reason": "Parallel as_completed ledger accumulation plus a fresh created_utc field makes the provided archive serialization noncanonical. Deterministic sorting and fixed/canonical timestamps are required before a byte-reproducibility claim."
+  },
+  "remaining_fixture_gap": "RUN42C lineage explicitly requires a future canonical v1.5.3 document to disclose/freeze the full synthetic scenario generator, noise, and background fixture contract."
 }

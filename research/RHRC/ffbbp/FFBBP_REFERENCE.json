@@ -1,46 +1,73 @@
 {
   "document": "FFBBP Reference Solver Architecture",
-  "reference_architecture_version": "1.5.1",
-  "document_date": "2026-08-19",
-  "supersedes": "1.4.2",
-  "source_pdf_sha256": "fed1d92e1c881a5be5a93261b29b813055c629679da3ddc8a2ed3502a09175ac",
-  "status": "architecture specification plus finite synthetic implementation-qualification evidence for one FFBBP-A0 profile",
+  "reference_architecture_version": "1.5.1 + RUN42C inductive-firewall closure overlay",
+  "closure_date": "2026-08-20",
+  "public_reference_provenance": {
+    "version": "1.4.2",
+    "date": "2026-06-22",
+    "uploaded_pdf_sha256": "f11106b5c135e907d98512a310bc362376824c170aa8cd61daa84662d4577d3d",
+    "scope": "architecture/reference-solver specification only; no operational validation claim"
+  },
+  "canonical_theory": {
+    "version": "1.5.1",
+    "name": "FFBBP Reference Solver Architecture v1.5.1 - consolidated preservation release",
+    "status": "preserved theory reference; later implementation audit/closure is carried by machine-readable overlays",
+    "supplied_v1_5_pdf_sha256_2026_08_19": "d2b06629444144d546821ed930387464e47f2ede9fcaeb7e00ee83d3f1abea15"
+  },
+  "status": "architecture specification plus finite synthetic implementation qualification for one FFBBP-A0 profile",
   "default_claim_cap": "architecture / finite synthetic qualification only",
-  "qualified_profile": {
+  "superseded_development_profile": {
     "name": "RUN42B_A0",
-    "terminal_status": "FFBBP_KNOWN_TRUTH_QUALIFICATION_PASS_UNKNOWN_FIELD_SEARCH_READY_DIAGNOSTIC_ONLY",
+    "status": "SUPERSEDED_DEVELOPMENT_ONLY_NOT_CONFIRMATORY_AUTHORITY",
     "protocol_sha256": "5b21194b41e84821b8af90ab97cd14c9e090d4b64d07525a9d265a7cc7c03fee",
     "output_zip_sha256": "8e90730b3fec1a85f37f98f9884ed689bc7f6fa871727afd6976820f1c62773d",
-    "qualification_dossier_sha256": "704e2096c28c6b046ed1e0c0646cd77b8483978b25e9b9f66222277b95e4b94e"
+    "root_cause": "CONFIRM_COVARIATE_TRANSDUCTION: Sinkhorn balancing used TRAIN+SELECT+CONFIRM source rows, so CONFIRM geometry could alter construction/calibration despite the intended frozen-confirmation firewall."
+  },
+  "qualified_profile": {
+    "name": "RUN42C_A0_INDUCTIVE_FIREWALL",
+    "run_id": "RUN_42C",
+    "terminal_status": "FFBBP_KNOWN_TRUTH_QUALIFICATION_PASS_UNKNOWN_FIELD_SEARCH_READY_DIAGNOSTIC_ONLY",
+    "protocol_sha256": "c562a770a37521589742909f75aa522bdb76233c6f9206bd70039afb85e74622",
+    "source_script_sha256": "5f5b1ebea75929b63b6ea4e9d07aaf2124516251fe8d91188b233188749f2f18",
+    "supplied_detached_manifest_sha256": "b88e4b247b2ba6cbaa26507f892f8ef38bbae405a69cfbce008312e55e103522",
+    "supplied_output_zip_sha256_manifest_attested": "e33f43dfe367ff25c7e7496d7080d405ea87044c2aa3609c549dcc97da9d8e46",
+    "fresh_confirmatory_seeds": [191, 211, 233, 257, 281],
+    "positive_scenarios": "5/5 seeds passed for each of five planted-field scenarios",
+    "negative_scenarios": "5/5 rejection for adversarial_W96_window_artifact and no_field_world"
+  },
+  "local_reexecution_2026_08_20": {
+    "executed_from_supplied_protocol_and_script": true,
+    "semantic_gate_result_reproduced": true,
+    "positive_control_gate_pass": true,
+    "negative_control_gate_pass": true,
+    "generated_output_zip_sha256": "35096467be27358f3915b0be92c6bec1569c26fad3f52c4eb4dd81cf70741710",
+    "byte_identical_to_supplied_manifest_zip": false,
+    "nonidentity_reason": "The supplied script accumulates several ledgers through ProcessPoolExecutor.as_completed() without a final canonical sort and embeds a fresh created_utc timestamp; gate outcomes reproduce but archive serialization is not bit-deterministic."
   },
   "unknown_field_admission": {
     "required": [
       "V06N_known_null_immunity",
       "V06P_known_positive_recovery",
-      "V06X_relevant_matched_artifact_rejection"
+      "V06X_relevant_matched_artifact_rejection",
+      "TRAIN_only_membership_fit",
+      "inductive_SELECT_transform",
+      "inductive_CONFIRM_transform",
+      "source_target_firewall",
+      "profile_frozen",
+      "domain_adapter_frozen"
     ],
     "claim_cap": "diagnostic_only",
     "domain_candidate_validation_begins_at": "V09_frozen_external_no_refit_replay"
   },
-  "architectural_laws_added_or_hardened_in_v1_5": [
-    "source_target_firewall_is_first_class",
-    "target_leakage_is_distinct_from_source_side_false_field_bias",
-    "field_existence_is_distinct_from_field_fit",
-    "calibration_validation_lockbox_separation",
-    "candidate_aligned_ablation",
-    "projection_consistent_oracle_scoring",
-    "local_evolving_regime_switching_and_multi_shadow_source_support",
-    "two_sided_known_truth_qualification_before_unknown_field_search"
-  ],
   "forbidden_promotions": [
     "synthetic_qualification_to_operational_validation",
     "unknown_field_diagnostic_to_real_field_exists",
     "FFBBP_output_to_RH_evidence",
     "FFBBP_output_to_mathematical_theorem",
-    "profile_specific_numbers_to_universal_constants"
+    "profile_specific_numbers_to_universal_constants",
+    "RUN42B_to_confirmatory_authority"
   ],
-  "canonical_document": "FFBBP Reference Solver Architecture v1.5.1 - consolidated preservation release",
-  "canonical_document_hash_status": "binary hash not attested by the currently supplied 33-page v1.5 PDF; implementation closure is enforced via overlay pending canonical v1.5.2 binary",
   "implementation_closure_overlay": "research/RHRC/ffbbp/IMPLEMENTATION_CLOSURE_OVERLAY.json",
-  "supplied_v1_5_pdf_sha256_2026_08_19": "d2b06629444144d546821ed930387464e47f2ede9fcaeb7e00ee83d3f1abea15"
+  "qualified_profile_ref": "research/RHRC/ffbbp/configs/run42c_a0_inductive_firewall_qualified_profile.json",
+  "remaining_documentation_gap": "The RUN42C lineage notes that a canonical v1.5.3 document should freeze and disclose the full synthetic scenario-generator/noise/background fixture contract; no such canonical binary is asserted here."
 }
