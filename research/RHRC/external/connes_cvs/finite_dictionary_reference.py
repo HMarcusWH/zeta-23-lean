@@ -36,6 +36,22 @@ active `mp.eps`, rather than to a fixed term count.
 import mpmath as mp
 
 
+def _is_finite(value) -> bool:
+    """Finiteness predicate for real or complex mpmath values."""
+    return bool(mp.isfinite(mp.re(value)) and mp.isfinite(mp.im(value)))
+
+
+def _max_finite_residual(values, label: str):
+    """Return max(values), but reject NaN/Inf before Python's `max` can mask it."""
+    residuals = list(values)
+    if not residuals:
+        raise ValueError(f"{label} requires at least one residual")
+    for index, value in enumerate(residuals):
+        if not _is_finite(value):
+            raise ArithmeticError(f"{label} probe {index} is non-finite: {value}")
+    return max(residuals)
+
+
 class TestFn:
     """Finite dictionary test function in the pinned Groskin convention."""
 
@@ -171,13 +187,25 @@ class TestFn:
 
 
 def regression_guards(c, N, v):
-    """Return independent closed-form-vs-integral residuals for K and g."""
+    """Return independent closed-form-vs-integral residuals for K and g.
+
+    Every individual probe is checked for finiteness before aggregation so a
+    later NaN/Inf cannot be hidden by Python's `max` comparison semantics.
+    """
     tf = TestFn(c, N, v)
-    k_residual = max(
-        abs(tf.K(mp.mpf(w)) - tf.K_quad(mp.mpf(w))) for w in ("0.3", "0.77")
+    k_residual = _max_finite_residual(
+        (
+            abs(tf.K(mp.mpf(w)) - tf.K_quad(mp.mpf(w)))
+            for w in ("0.3", "0.77")
+        ),
+        "K closed-vs-quadrature",
     )
-    g_residual = max(
-        abs(tf.g(mp.mpf(r)) - tf.g_quad(mp.mpf(r))) for r in ("0.9", "14.2")
+    g_residual = _max_finite_residual(
+        (
+            abs(tf.g(mp.mpf(r)) - tf.g_quad(mp.mpf(r)))
+            for r in ("0.9", "14.2")
+        ),
+        "g closed-vs-quadrature",
     )
     return {
         "K_closed_vs_quad": k_residual,
