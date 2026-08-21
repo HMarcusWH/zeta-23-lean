@@ -5,6 +5,10 @@ on:
     branches: ["main"]
   workflow_dispatch:
 
+concurrency:
+  group: rhrc-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   python-rhrc:
     runs-on: ubuntu-latest
@@ -27,11 +31,14 @@ jobs:
           test: false
           lint: false
           use-mathlib-cache: true
+      - name: Build CCM formalization
+        run: lake build Zeta23.CCM
       - name: Build exceptional-zero foundation
         run: lake build Zeta23.ExceptionalZero
-      - name: Reject sorry/project axioms in promoted subtree
+      - name: Reject forbidden placeholders in promoted subtrees
         run: |
-          if grep -R -n -E '\bsorry\b|^[[:space:]]*axiom[[:space:]]' Zeta23/ExceptionalZero Zeta23/ExceptionalZero.lean; then
-            echo 'Forbidden sorry/axiom detected'
+          if grep -R -n -E '\bsorry\b|^[[:space:]]*axiom[[:space:]]' \
+              Zeta23/ExceptionalZero Zeta23/ExceptionalZero.lean Zeta23/CCM Zeta23/CCM.lean; then
+            echo 'Forbidden placeholder detected'
             exit 1
           fi
