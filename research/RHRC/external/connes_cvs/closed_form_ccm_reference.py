@@ -14,6 +14,8 @@ MIT license: see sibling LICENSE.
 """
 from __future__ import annotations
 
+from functools import lru_cache
+
 import mpmath as mp
 
 
@@ -55,13 +57,16 @@ class CutoffFreeCCM:
         self.PP = prime_powers(self.c)
         self.idx = range(-self.N, self.N + 1)
 
+    @lru_cache(maxsize=None)
     def a_n(self, n: int):
         return mp.mpf(1) / 4 + self.PI * 1j * n / self.L
 
+    @lru_cache(maxsize=None)
     def F(self, n: int):
         a = self.a_n(n)
         return mp.hyp2f1(1, a, a + 1, self.z)
 
+    @lru_cache(maxsize=None)
     def alpha_L(self, n: int):
         a = self.a_n(n)
         L, PI = self.L, self.PI
@@ -70,6 +75,7 @@ class CutoffFreeCCM:
             + mp.mpf(1) / 2 * mp.im(mp.digamma(a))
         ) / PI
 
+    @lru_cache(maxsize=None)
     def beta_L(self, n: int):
         a = self.a_n(n)
         L, PI = self.L, self.PI
@@ -78,6 +84,7 @@ class CutoffFreeCCM:
         t3 = mp.mpf(1) / 4 * mp.re(mp.polygamma(1, a))
         return (t1 + t2 + t3) / L
 
+    @lru_cache(maxsize=1)
     def c_w(self):
         L, PI = self.L, self.PI
         return (
@@ -88,6 +95,7 @@ class CutoffFreeCCM:
             + mp.mpf(1) / 2 * mp.log(8 * PI)
         )
 
+    @lru_cache(maxsize=None)
     def gamma_L(self, n: int):
         a = self.a_n(n)
         L = self.L
@@ -98,6 +106,7 @@ class CutoffFreeCCM:
             + self.c_w()
         )
 
+    @lru_cache(maxsize=None)
     def prime_source(self, m: int):
         L, PI = self.L, self.PI
         return -(1 / PI) * mp.fsum(
@@ -105,6 +114,7 @@ class CutoffFreeCCM:
             for q, lp in self.PP
         )
 
+    @lru_cache(maxsize=None)
     def prime_source_derivative(self, m: int):
         L, PI = self.L, self.PI
         return -2 * mp.fsum(
@@ -113,10 +123,12 @@ class CutoffFreeCCM:
             for q, lp in self.PP
         )
 
+    @lru_cache(maxsize=None)
     def C(self, m: int):
         L, PI = self.L, self.PI
         return mp.sinh(L / 4) / mp.sqrt(L) / (mp.mpf(1) / 4 + (2 * PI * m / L) ** 2)
 
+    @lru_cache(maxsize=None)
     def S(self, m: int):
         L, PI = self.L, self.PI
         return (
@@ -124,9 +136,11 @@ class CutoffFreeCCM:
             / (mp.mpf(1) / 4 + (2 * PI * m / L) ** 2)
         )
 
+    @lru_cache(maxsize=None)
     def pole_entry(self, m: int, n: int):
         return 2 * (self.C(m) * self.C(n) - self.S(m) * self.S(n))
 
+    @lru_cache(maxsize=None)
     def entry(self, m: int, n: int):
         """Full centered-frequency cutoff-free Q_infty entry."""
         pole = self.pole_entry(m, n)
