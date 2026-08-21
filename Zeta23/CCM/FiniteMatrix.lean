@@ -1,5 +1,5 @@
 import Zeta23.CCM.Components
-import Mathlib.LinearAlgebra.Matrix
+import Mathlib.Data.Matrix.Mul
 
 noncomputable section
 
