@@ -12,7 +12,11 @@
     {
       "route_id": "R001_exceptional_zero",
       "phase": "DISCOVERY",
-      "claim_ids": ["R001_ZERO_GROWTH", "R001_PRIME_UPPER", "C_RH"],
+      "claim_ids": [
+        "R001_ZERO_GROWTH",
+        "R001_PRIME_UPPER",
+        "C_RH"
+      ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false
@@ -20,7 +24,10 @@
     {
       "route_id": "R002_multi_probe",
       "phase": "DISCOVERY",
-      "claim_ids": ["R002_MULTI_PROBE_SEPARATION"],
+      "claim_ids": [
+        "R002_MULTI_PROBE_SEPARATION",
+        "R002_WINDOWED_VISIBILITY"
+      ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false
@@ -28,10 +35,22 @@
     {
       "route_id": "R003_ccm_bridge",
       "phase": "DISCOVERY",
-      "claim_ids": ["R003_CCM_BRIDGE"],
+      "claim_ids": [
+        "R003_CCM_BRIDGE",
+        "R003_DISPLACEMENT_TRANSFER"
+      ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false
+    },
+    {
+      "route_id": "R004_prolate_v2",
+      "phase": "DISCOVERY",
+      "claim_ids": [],
+      "route_spec_digest": null,
+      "boundary_digest": null,
+      "confirmatory_execution_authorized": false,
+      "note": "Finite CCM displacement lane. Registered 2026-08-21 to close a governance gap: it was previously unregistered. Carries no claim id; its algebraic displacement identity feeds R003_DISPLACEMENT_TRANSFER as an input, not as a claim."
     }
   ],
   "note": "These routes are intentionally not frozen yet. A frozen digest would be false precision while the analytic objects are still being defined."

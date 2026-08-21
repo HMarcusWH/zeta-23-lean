@@ -70,6 +70,16 @@ formula (`2γ_L(n) − 2β_L(n)`) instead of the off-diagonal divided difference
 and exactly the part of `M` that the displacement identity leaves unconstrained
 (`[D,M]` vanishes on the diagonal identically).
 
+**Resolved 2026-08-21 (see `routes/R003_ccm_bridge/`).** The answer is yes, at
+least numerically: the residual is `c(L)·δ_{nm}` with `c(L) = 4·c_correction(L)`,
+and the diagonal-only structure is *structural* — `K_{nm}(0) = 2δ_{nm}` is what
+meets the logarithmic singularity of the archimedean kernel, so only the diagonal
+needs the regularization constants. The corrected conjecture is therefore
+`M = ½·(WeilGram − c(L)·I)`, and since `[D, c·I] = 0` the displacement identity
+transfers regardless of `c(L)`. The transfer algebra is now proved in Lean
+(`Zeta23/ExceptionalZero/DisplacementTransfer.lean`); the identity itself remains
+numerical, blocked by the `C¹` regularity of `K_{nm}`.
+
 Sharpened R003 question, now well posed: *is there a diagonal normalization
 making `M_{λ,N}` exactly `½·(Weil zero-side Gram)` in this basis?* An
 affirmative answer turns `[D,M] = g1ᵀ − 1gᵀ` into an exact explicit-formula
