@@ -81,7 +81,7 @@ scalar shift, and `M` has the R004 displacement structure, then `A` has the same
 structure up to that scaling — in particular its displacement still has rank at
 most two.
 
-Applied with `A` the Weil Gram, `k = 2` and `c = -c(L)`, this is exactly the
+Applied with `A` the Weil Gram, `k = 2` and `c = c(L)`, this is exactly the
 step that would carry R004's exact identity onto the Weil quadratic form.  The
 hypothesis `hA` is supplied by nothing in this file; it is an assumption. -/
 theorem displacement_eq_of_eq_smul_add_scalar
