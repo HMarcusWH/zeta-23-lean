@@ -2,23 +2,44 @@
 
 Status: **DISCOVERY**. RH remains open.
 
-This README is the **active route SSOT** after the Connes/CvS/Groskin normalization audit and the generic divided-difference refactor. The pre-literature transform-first roadmap is preserved in `PRE_GROSKIN_ROADMAP_2026_08_21.md` for historical context and fallback lemmas, but it is **not** the active implementation order.
+This README is the **active route SSOT** after the Connes/CvS/Groskin normalization audit, the generic divided-difference refactor, and the first theorem-authoritative finite dictionary slice. The pre-literature transform-first roadmap is preserved in `PRE_GROSKIN_ROADMAP_2026_08_21.md` for historical context and fallback lemmas, but it is **not** the active implementation order.
 
 ## Current theorem boundary
 
-The finite fork-owned CCM object is theorem-authoritative in `Zeta23.CCM`.
+The finite fork-owned CCM/source machinery is theorem-authoritative in `Zeta23.CCM`.
 
 Compiler-checked Lean facts already include:
 
 - the formal finite CCM matrix `Zeta23.CCM.finiteMatrix L N`;
 - the exact source wrapper `finiteMatrixOfLambda lam N` with `L = 2 * log lam`;
-- continuity, compact support, integrability and real-valuedness of the CCM kernel for `0 < L`;
+- continuity, compact support, integrability and real-valuedness of the original CCM kernel for `0 < L`;
 - the generic divided-difference matrix class with independent diagonal data;
 - exact generic displacement `D Q - Q D = psi 1^T - 1 psi^T` and rank at most two;
 - exact diagonal-independence of divided-difference displacement;
 - the elementary single-frequency source matrix;
 - the exact convention bridge `sourceEntry (1-y/L,n,m) = qBasis(n,m,y,L)`;
 - the concrete CCM identification as a generic divided-difference matrix;
+- the full-grid finite source contraction
+
+```text
+K_u(omega) = <u, sourceMatrix(omega) u>;
+```
+
+- the exact quadratic source/CCM bridge
+
+```text
+K_u(1-y/L)
+  = sum_{i,j} conj(u_i) qBasis(i,j,y,L) u_j;
+```
+
+- the compact physical dictionary test
+
+```text
+k_{u,L}(y) = 1/2 K_u(1-|y|/L)  for |y| <= L,
+           = 0                   otherwise;
+```
+
+- the canonical dictionary transform `g_{u,L}(z) = Zeta23.paperFT(k_{u,L})(z)`;
 - exact finite index displacement
 
 ```text
@@ -27,7 +48,7 @@ Compiler-checked Lean facts already include:
 rank([D,M]) <= 2.
 ```
 
-The displacement theorem is retained as a structural theorem. PR #34 makes the interpretation precise: low displacement rank is a **generic Loewner/divided-difference chassis property**, not RH-specific evidence.
+The displacement theorem is a structural theorem. Low displacement rank is a **generic Loewner/divided-difference chassis property**, not RH-specific evidence.
 
 The following claims remain open:
 
@@ -39,7 +60,7 @@ R003_WEIL_DISPLACEMENT
 C_RH
 ```
 
-No finite numerical/source audit promotes any of these claims.
+No numerical/source audit promotes any of these claims.
 
 ## Post-paper normalization lock
 
@@ -56,7 +77,7 @@ The reference audit separates three conventions:
 ```text
 M        fork-owned formal CCM matrix
 Q_inf    cutoff-free CvS/CCM Galerkin matrix in Groskin's dictionary
-WeilGram inherited explicit-formula normalization used by the earlier R003 diagnostics
+WeilGram inherited explicit-formula normalization used by the earlier R003 diagnostic
 ```
 
 Across the frozen audit grid, the independent source formulas identify
@@ -65,36 +86,36 @@ Across the frozen audit grid, the independent source formulas identify
 Q_inf = M + 2*cCorrection(L)*I
 ```
 
-and, combined with PR #29's earlier finite diagnostic
+and the older PR #29 diagnostic used
 
 ```text
-WeilGram = 2*M + 4*cCorrection(L)*I,
+WeilGram = 2*M + 4*cCorrection(L)*I = 2*Q_inf.
 ```
 
-the current formalization target is
-
-```text
-WeilGram = 2*Q_inf.
-```
-
-This remains a target for Lean formalization, not a promoted theorem.
+**Do not import that factor two into the new dictionary theorem by name.** The current dictionary test contains an explicit factor `1/2`, so the exact relation between `literatureRHS(k_{u,L})` and the finite matrix must be proved channel by channel in Lean. The normalization lock remains a source/formula target and falsifier, not theorem authority.
 
 ## Active mathematical architecture
 
 ```text
-formal CCM matrix / generic divided-difference source calculus
+formal CCM / generic source calculus
         |
         v
-finite Guinand–Weil dictionary objects
+finite dictionary core                     [#35 merged]
         |
         v
-explicit-formula admissibility adapter
+finite dictionary closure                  [#36 current]
         |
         v
-exact zeta zero-side / CCM matrix identity
+analytic control + EF admissibility         [#37]
+        |
+        v
+deterministic explicit-formula RHS         [#38]
+        |
+        v
+exact zero-side finite matrix bridge        [#39]
 ```
 
-Only after that finite bridge is theorem-closed do we build the spectral/entire-function machinery needed to decide which finite-to-infinite route is genuinely attackable.
+Only after the finite bridge is theorem-closed do we return to information-loss, arithmetic cutoff flow, finite spectral machinery, and then a finite-to-infinite route-selection gate.
 
 ## Active implementation sequence
 
@@ -112,61 +133,138 @@ Delivered exact generic divided-difference displacement/rank, diagonal-independe
 sourceEntry(1-y/L,n,m) = qBasis(n,m,y,L),
 ```
 
-and the concrete CCM matrix factored through the generic class. Exact-head run `32529011638` was green after the final documentation polish.
+and the concrete CCM matrix factored through the generic class.
 
-Detailed theorem boundary: `PR34_GENERIC_SOURCE_CALCULUS.md`.
+### PR #35 — finite Guinand–Weil dictionary core
 
-### PR #35 — finite Guinand–Weil dictionary objects
+**MERGED** at `0f35cf61b6d5787a387caa613444f72a1f8c7d30` from exact green head `43aaf26beedfa471e95c82ac39e0da9fb06fd11e`. No RHRC claim promoted.
 
-**CURRENT PR. READY FOR REVIEW. Formal finite-dictionary work; no RHRC claim promotion.**
-
-Primary Lean module:
+Delivered:
 
 ```text
-Zeta23/CCM/FiniteDictionary.lean
+sourceContract / K_u
+K_u(0) = 0
+K_u(1-y/L) = quadratic qBasis contraction
+dictionaryTest k_{u,L}
+dictionaryTransform = Zeta23.paperFT(k_{u,L})
 ```
 
-Preferred architecture:
+and a hardened external finite-dictionary oracle with fail-closed domain, precision, complex-transform and non-finite regression guards.
+
+The Volterra/trigonometric representation is now **nonblocking explanatory equivalence**: prove it later only if it remains cheap or becomes useful for analysis. It is not a prerequisite for the finite bridge.
+
+### PR #36 — finite dictionary closure
+
+**CURRENT PR. Formal finite algebra/topology only; no explicit formula and no RHRC claim promotion.**
+
+Primary goals:
 
 ```text
-paper even-sector vector v
-  -> symmetric centered coefficients u
-  -> source contraction K_u(omega) = <u, sourceMatrix(omega) u>
-  -> compact physical-space test k_{u,L}(y)
-  -> g_{u,L}(z) = Zeta23.paperFT(k_{u,L})(z)
+reusable quadraticForm convention
+sourceMatrix(1) = 2I
+K_u(1) = 2 * coefficientMass(u)
+k_{u,L}(0) = coefficientMass(u)
+k_{u,L}(+/-L) = 0
+k_{u,L}(-y) = k_{u,L}(y)
+support(k_{u,L}) subset [-L,L]
+HasCompactSupport(k_{u,L})
+Continuous(k_{u,L}) for L > 0
 ```
 
-Then prove equivalence with the Groskin representation
+The preferred continuity proof uses the clamped coordinate
 
 ```text
-u -> T_v -> Volterra K_v -> ghat_v -> g_v.
+omega_L(y) = max(0, 1-|y|/L)
 ```
 
-`paperFT` is defined in the root `Zeta23` namespace (`Zeta23.paperFT`); `EF_lit` and `literatureRHS` live under `Zeta23.EF`. The root `paperFT` definition is canonical internally. The physically preserved `finite_dictionary_reference.py` is an external oracle/falsifier only and must remain outside the Lean dependency graph.
+and the already-proved endpoint identity `K_u(0)=0`, avoiding a brittle direct proof across the piecewise aperture boundary.
 
-The first implementation slice defines the full-grid source contraction, proves its zero-frequency vanishing, lifts PR #34's convention bridge to quadratic contractions, defines the compact physical-space dictionary test, and defines the canonical `Zeta23.paperFT` dictionary transform. The even-sector embedding, endpoint normalization, support/continuity, Volterra equivalence, and Groskin Fourier-convention bridge remain to be proved inside this PR.
+Do **not** claim global `C^1` or `C^2` here. The raw dictionary test is expected to have derivative seams and the next PR must diagnose them explicitly.
 
-The first Codex review found four P2 issues confined to the external Python oracle: narrow-strip complex values were projected to the real axis, import mutated global `mpmath` precision, the constructor admitted `c <= 1`, and coefficient-band mismatches were not rejected. All four are fixed, guarded in `check_finite_dictionary_reference.py`, replied to, and resolved. These changes harden the oracle only; they do not alter the finite dictionary theorem statements or promote any mathematical claim.
+The paper even-sector embedding `v -> u` is optional/nonblocking in this PR; do not let finite-index bureaucracy delay the full-grid bridge.
 
-### PR #36 — explicit-formula admissibility seam
+### PR #37 — dictionary analytic control + explicit-formula admissibility
 
-Run two bounded proof spikes and keep only the smaller production route:
+First formalize the seam rather than trying to prove false smoothness. For generic `u`, derive the endpoint/source derivative behavior and show why the folded compact test is generally continuous but not globally `C^1`.
 
-1. broaden the inherited explicit-formula interface to the admissibility class used by the finite dictionary; or
-2. use the existing explicit `C^2` smoothing/mollifier adapter downstream of `EF_lit`.
-
-### PR #37 — exact finite zero-side / CCM bridge
-
-Prove the formal finite Guinand–Weil identity and reconcile it with the fork-owned CCM normalization locked by PR #33. Define `zeroSideEntry` / `zeroSideMatrix` (not `Gram` before positivity is proved) and promote registered bridge claims only if their exact Lean statements are discharged.
-
-Expected convention target:
+Then prove the transform decay required by the zero sum, preferably from the smooth half-interval representation:
 
 ```text
-zero-side / inherited Weil matrix = 2*Q_inf
-Q_inf = M + 2*cCorrection(L)*I
+|g_{u,L}(z)| <= C/(1+|Re z|^2)  on |Im z| <= 1/2.
 ```
 
-### PR #38 — exact finite source quotient + information-loss API
+Run two bounded proof spikes:
+
+1. **preferred:** derive an adapter from the existing `EF_lit` by approximating this finite dictionary family with `C_c^2` tests and proving convergence of pole, prime, archimedean and zero-side channels;
+2. **escape hatch:** formalize the exact broader literature admissibility theorem used by the finite dictionary, with explicit citation/assumptions and no claim that it follows from the current `EF_lit` definition.
+
+Kill the mollifier route if it starts requiring a broad general analysis library rather than a finite-family adapter.
+
+### PR #38 — deterministic explicit-formula RHS / normalization theorem
+
+**No zeros in this PR.** Feed `k_{u,L}` into `Zeta23.EF.literatureRHS` and prove the result channel by channel.
+
+Targets:
+
+```text
+pole RHS  = quadratic pole channel
+prime RHS = - quadratic primeComponent
+arch RHS  = - quadratic archComponent + diagonal correction
+```
+
+The prime normalization has a built-in acceptance check:
+
+```text
+k(log n) + k(-log n) = 2*k(log n)
+k(log n) = 1/2 * <u, qBasis(log n,L) u>
+```
+
+so the two factors must cancel exactly.
+
+Define a neutral theorem object such as
+
+```text
+dictionaryMatrix(L,N) := M(L,N) + 2*cCorrection(L)*I
+```
+
+only as a definition. The theorem
+
+```text
+literatureRHS(k_{u,L}) = <u, dictionaryMatrix(L,N) u>
+```
+
+is what identifies it with the finite Guinand–Weil/CvS operator. Do not force a factor two from the old `WeilGram` diagnostic.
+
+If discharged, this is the natural point to promote `R003_CCM_RHS_IDENTITY` at the exact statement proved.
+
+### PR #39 — exact zero-side finite matrix bridge + polarization
+
+Apply the #37 admissibility result to the #38 deterministic identity:
+
+```text
+sum_rho m_rho * dictionaryTransform(u,L,gamma_rho)
+  = <u, dictionaryMatrix(L,N) u>.
+```
+
+Use **real polarization** for the real symmetric finite matrices unless complex polarization becomes necessary:
+
+```text
+A_ij = (Q(e_i+e_j) - Q(e_i) - Q(e_j))/2.
+```
+
+Define `zeroSideMatrix`, not `Gram`, before positivity is proved. Then recover the full matrix identity and transfer the scalar-diagonal-invariant displacement theorem.
+
+Only here consider promotion of:
+
+```text
+R003_KERNEL_EF_EXTENSION
+R003_CCM_BRIDGE
+R003_WEIL_DISPLACEMENT
+```
+
+and only if the exact registered Lean statements are discharged.
+
+### PR #40 — exact finite source quotient + information-loss API
 
 Formalize the `2N+1`-dimensional source quotient through
 
@@ -176,33 +274,40 @@ int sin(2*pi*k*omega) dmu
 int omega*cos(2*pi*k*omega) dmu, 1 <= k <= N.
 ```
 
-### PR #39 — prime-cutoff / von Mangoldt matrix flow
+This theorem records exactly what fixed finite CCM data cannot see.
 
-Formalize
+### PR #41 — prime-cutoff / von Mangoldt matrix flow
+
+Formalize at prime-power cutoff events
 
 ```text
-Delta Q'_N = -2*Lambda(q)/(sqrt(q)*log(q)) * 11^T
+Delta Q'_N = -2*Lambda(q)/(sqrt(q)*log(q)) * 11^T.
 ```
 
-at prime-power events, initially only as exact finite event/sign/rank statements.
+Initial claims are exact finite event/sign/rank/parity statements only. This arithmetic event structure is distinct from the generic static rank-two displacement chassis.
 
-### PR #40 — parity + extremal spectral API
+### PR #42 — parity + extremal spectral API
 
-Formalize reversal symmetry, even/odd block decomposition and the precise finite reduction of the CCM even-simple gate.
+Formalize reversal symmetry, even/odd block decomposition and the precise finite reduction of the CCM even-simple gate. Do not globally assert that the even ground state always wins.
 
-### PR #41 — finite characteristic / XiHat API
+### PR #43 — finite characteristic / XiHat API
 
 Formalize the pole-cancelled entire function built from a finite extremal eigenvector, including removable singularities, node interpolation and parity.
 
-### PR #42 — barycentric eigenvector equation
+### PR #44 — barycentric eigenvector equation
 
-Derive the exact arithmetic interpolation identity from the CCM eigenvector equation and divided-difference law. Any previously written formula remains schematic until Lean fixes all signs and scales.
+Derive the exact arithmetic interpolation identity from the CCM eigenvector equation and divided-difference law. Any pre-existing formula remains schematic until Lean fixes all signs and scales.
 
-After #42, freeze implementation and run a route-selection gate before committing to another theorem sequence.
+After #44, freeze implementation and run a route-selection gate before committing to another theorem sequence.
 
-## Post-#42 route-selection gate
+## Post-#44 finite-to-infinite route-selection gate
 
-Candidate campaigns include fixed-`L` Galerkin convergence, aperture convergence, an R002-style finite off-line obstruction, and a Suzuki-style localized self-adjoint control route.
+Candidate campaigns:
+
+1. fixed-`L`, `N -> infinity` Galerkin/operator convergence;
+2. aperture `L -> infinity` and normalized finite characteristic-function convergence toward `Xi`;
+3. an R002-style finite off-line obstruction/signature failure;
+4. a Suzuki/de Branges localized self-adjoint control route.
 
 Every proposed route must identify:
 
@@ -212,15 +317,19 @@ Every proposed route must identify:
 4. a cheap falsifier/negative control;
 5. the smallest theorem that would materially advance the route.
 
-## Preserved fallback analysis
+## Standing dumbassery gates
 
-`PRE_GROSKIN_ROADMAP_2026_08_21.md` preserves derivative-jump calculations, transform-decay proof spikes, prime/pole specializations, the archimedean scalar-shift calculation, explicit `C^2` mollification and channel-specific limits, closed-form transform diagnostics, and the superseded transform-first implementation sequence.
-
-Those calculations remain useful as lemmas or fallback proof routes. Their old PR numbering and ordering are superseded.
+- Green CI is not explicit-formula admissibility.
+- Do not prove or assume false global smoothness for the folded raw dictionary test.
+- Do not restrict to `sum u_i = 0` merely to erase a derivative seam; that discards a finite direction and is not the full bridge.
+- Do not make the Volterra/Groskin representation load-bearing unless a later proof actually needs it.
+- Do not call the unconditional zero-side object a `Gram` matrix before positivity.
+- Do not turn the definition `M + 2*cCorrection*I` into a literature identification without the RHS theorem.
+- Use real polarization when real symmetric quadratic forms suffice.
+- External Python remains an oracle/falsifier, never theorem authority.
+- After the finite bridge, do not smuggle finite-to-infinite convergence through the word “therefore.” That limit theorem is likely where the hard mathematics lives.
 
 ## Naming and authority discipline
-
-Before RH, do not call the unconditional zero-side finite matrix a `Gram` matrix merely because it resembles one: off-line zeros make the transformed ordinates complex and positivity has not been established.
 
 Authority hierarchy:
 
@@ -235,4 +344,4 @@ Nothing promotes itself.
 
 ## Immediate next step
 
-Continue **PR #35** in this order: full-grid source contraction and canonical test (started), reversal-even `v -> u` embedding, endpoint normalization, compact-support/continuity proofs, Volterra/trigonometric representation, then the `ghat`/`Zeta23.paperFT` convention bridge. Do not invoke `EF_lit` until PR #36.
+Finish **PR #36** at the finite/topological boundary: endpoint identities, reusable quadratic-form convention, evenness, compact support and continuity. Then open #37 specifically for analytic seam/decay/admissibility work. Do not invoke `EF_lit` in #36.
