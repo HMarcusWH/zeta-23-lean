@@ -4,7 +4,7 @@ Compares the fork-owned executable CCM model (which mirrors `Zeta23.CCM`) agains
 the pinned cutoff-free CCM/CvS closed-form implementation adapted from Groskin's
 finite Guinand--Weil verification package.
 
-This script has no theorem authority.  Its job is to prevent the next Lean proof
+This script has no theorem authority. Its job is to prevent the next Lean proof
 from targeting the wrong normalization.
 
 Expected convention map, to be TESTED rather than assumed:
@@ -12,12 +12,16 @@ Expected convention map, to be TESTED rather than assumed:
     Q_inf = M + 2*cCorrection(L)*I
 
 where `M` is the fork-owned CCM matrix and `Q_inf` is the cutoff-free
-Connes--van Suijlekom / CCM Galerkin matrix.  Combined with the pre-existing R003
+Connes--van Suijlekom / CCM Galerkin matrix. Combined with the pre-existing R003
 finite explicit-formula diagnostic
 
     WeilGram = 2*M + 4*cCorrection(L)*I,
 
 this predicts that the inherited `WeilGram` convention is `2*Q_inf`.
+
+The checked-in `CCM_NORMALIZATION_LOCK_v1.json` is a curated provenance/route
+lock. This script intentionally does NOT regenerate or overwrite that file; its
+runtime output is a detailed reproducibility artifact with a separate schema.
 
 No RH evidence and no theorem promotion follows from this numerical/source audit.
 """
@@ -35,6 +39,8 @@ HERE = Path(__file__).resolve().parent
 RHRC = HERE.parents[1]
 R004 = RHRC / "routes" / "R004_prolate_v2"
 EXT = RHRC / "external" / "connes_cvs"
+CURATED_LOCK = HERE / "CCM_NORMALIZATION_LOCK_v1.json"
+DEFAULT_AUDIT_OUTPUT = HERE / "CCM_NORMALIZATION_AUDIT_latest.json"
 sys.path.insert(0, str(R004))
 sys.path.insert(0, str(EXT))
 
@@ -109,11 +115,7 @@ def run_case(c: int, indices: list[int]) -> dict:
         alpha_res = float(ref.alpha_L(n)) - float(ours_alpha_L(n, L))
         beta_res = float(ref.beta_L(n)) - float(ours_beta_L(n, L))
         # Source-formula prediction: gamma_ref = gamma_ours - cCorrection(L).
-        gamma_res = (
-            float(ref.gamma_L(n))
-            - float(ours_gamma_L(n, L))
-            + cc
-        )
+        gamma_res = float(ref.gamma_L(n)) - float(ours_gamma_L(n, L)) + cc
         max_alpha_residual = max(max_alpha_residual, abs(alpha_res))
         max_beta_residual = max(max_beta_residual, abs(beta_res))
         max_gamma_shift_residual = max(max_gamma_shift_residual, abs(gamma_res))
@@ -159,12 +161,21 @@ def main() -> int:
     ap.add_argument(
         "--output",
         type=Path,
-        default=HERE / "CCM_NORMALIZATION_LOCK_v1.json",
+        default=DEFAULT_AUDIT_OUTPUT,
+        help=(
+            "Detailed reproducibility artifact. Defaults to "
+            "CCM_NORMALIZATION_AUDIT_latest.json; the curated lock is never regenerated here."
+        ),
     )
     args = ap.parse_args()
 
     if not args.indices:
         raise SystemExit("need at least one index")
+    if args.output.resolve() == CURATED_LOCK.resolve():
+        raise SystemExit(
+            "refusing to overwrite curated CCM_NORMALIZATION_LOCK_v1.json; "
+            "write the detailed audit to a separate path"
+        )
     mp.mp.dps = 60
 
     cases = [run_case(c, args.indices) for c in args.c]
@@ -181,7 +192,7 @@ def main() -> int:
     passed = all(v <= tol for v in metrics.values())
 
     payload = {
-        "schema_version": "CCM_NORMALIZATION_LOCK_v1",
+        "schema_version": "CCM_NORMALIZATION_AUDIT_v1",
         "status": "PASS" if passed else "FAIL",
         "phase": "DISCOVERY_AUDIT",
         "claim_cap": "FINITE_NUMERICAL_AND_SOURCE_FORMULA_AUDIT_ONLY",
@@ -193,10 +204,10 @@ def main() -> int:
                 "alpha_reference = alpha_ours",
                 "beta_reference = beta_ours",
                 "gamma_reference = gamma_ours - cCorrection(L)",
-                "pole_reference = pole_ours"
+                "pole_reference = pole_ours",
             ],
             "preexisting_R003_diagnostic": "WeilGram = 2*M + 4*cCorrection(L)*I",
-            "implied_normalization_if_both_relations_hold": "WeilGram = 2*Q_inf"
+            "implied_normalization_if_both_relations_hold": "WeilGram = 2*Q_inf",
         },
         "configuration": {
             "c_values": args.c,
@@ -210,7 +221,7 @@ def main() -> int:
             "No RH evidence or proof.",
             "No external Python result promotes an RHRC theorem claim.",
             "The exact bridge still requires a Lean proof in the fork normalization.",
-            "The pre-existing WeilGram relation remains a finite diagnostic until formalized."
+            "The pre-existing WeilGram relation remains a finite diagnostic until formalized.",
         ],
     }
 
