@@ -38,7 +38,6 @@ theorem qBasis_displacement {n m : ℤ} (h : n ≠ m) (y L : ℝ) :
     ring
   rw [hdiff]
   field_simp [hnmR, Real.pi_ne_zero]
-  ring
 
 /-- Exact pole-channel divided-difference identity. -/
 theorem poleComponent_displacement {n m : ℤ} {L : ℝ} (hL : 0 < L) :
