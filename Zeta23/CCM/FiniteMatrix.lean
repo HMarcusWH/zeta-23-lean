@@ -25,6 +25,9 @@ def indexMatrix (N : ℕ) : Matrix (Fin (2 * N + 1)) (Fin (2 * N + 1)) ℂ :=
 
 @[simp] theorem indexMatrix_apply (N : ℕ) (i j : Fin (2 * N + 1)) :
     indexMatrix N i j = if i = j then ((centeredIndex N i : ℤ) : ℂ) else 0 := by
-  simp [indexMatrix]
+  by_cases h : i = j
+  · subst j
+    simp [indexMatrix]
+  · simp [indexMatrix, h]
 
 end Zeta23.CCM
