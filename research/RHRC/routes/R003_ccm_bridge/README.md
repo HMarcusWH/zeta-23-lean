@@ -1,133 +1,189 @@
 # R003 — CCM / Weil / aperture bridge
 
-The earlier finite-prime CCM program remains a separate finite-validation lane.
-A formal `CCMBridge.lean` should not be created merely because two constructions
-look similar. Promotion requires an exact identity, intertwiner, or
-quantitatively controlled convergence/limit theorem sufficient for the claim
-being consumed.
+Status: **DISCOVERY**.  RH remains open.
+
+The finite CCM matrix is now theorem-authoritative in `Zeta23.CCM`, and PR #30 proved its exact
+finite index-displacement identity in Lean.  The remaining R003 bridge is deliberately split into
+two different mathematical obligations:
+
+1. **deterministic RHS identity** — prove the literature explicit-formula RHS evaluated on the CCM
+   kernel equals the formal finite CCM matrix up to the observed scalar shift;
+2. **explicit-formula regularity extension** — prove that the actual zeta zero-side sum equals that
+   literature RHS for the continuous, compactly supported but non-`C_c²` CCM kernel.
+
+These arrows must not be conflated:
+
+```text
+formal CCM matrix M
+    |
+    |  R003_CCM_RHS_IDENTITY
+    v
+EF.literatureRHS(K)
+    ^
+    |  R003_KERNEL_EF_EXTENSION
+    |
+actual zeta zero-side matrix G
+```
+
+Only when both arrows are proved may `R003_CCM_BRIDGE` be promoted.
 
 ## Locked objects
 
-- **CCM matrix** (R004): `M_{λ,N}(n,m) = Pole − Arch − Prime` over Fourier
-  indices `n,m ∈ [−N,N]`, `L = 2 log λ`, prime powers `k ≤ e^L`.
-- **Index operator**: `D = diag(−N,…,N)`; R004's algebraically closed
-  displacement identity is `D M − M D = g 1ᵀ − 1 gᵀ`, hence
-  `rank(DM − MD) ≤ 2` (sympy-certified, float-verified to 1.75e-15).
-- **Weil object**: the explicit-formula zero-side sum `Σ_ρ m_ρ h_{nm}(γ_ρ)` for
-  the even two-sided truncated-character correlation
-  `K_{nm}(y) = q_basis(n,m,|y|,L)`, `supp K = [−L,L]`.
+- **CCM matrix**: `Zeta23.CCM.finiteMatrix L N`, with source-level wrapper
+  `finiteMatrixOfLambda lam N` using the exact conversion `L = 2 log lam`.
+- **Index operator**: `Zeta23.CCM.indexMatrix N`.
+- **Formal finite displacement theorem**:
+  `Zeta23.CCM.finiteMatrix_displacement` and
+  `Zeta23.CCM.rank_finiteMatrix_displacement_le_two`.
+- **CCM/Weil test**:
+  `Zeta23.CCM.kernel n m L y = qBasis n m |y| L` on `|y| <= L`, zero outside.
+- **Deterministic target object**: `EF.literatureRHS (kernel n m L)`; this is not yet called the
+  zero-side Weil Gram because `kernel` is not an admissible `C_c²` test for the current `EF_lit`
+  theorem.
 
-## The reduction that makes the comparison exact
+## Exact finite displacement result now closed
 
-The literature explicit formula is
-`WeilGram = [h(i/2)+h(−i/2)] − PrimeSum + ArchLit`. The pole and prime channels
-match the CCM construction exactly with a uniform factor 2, so in
-`WeilGram − 2M` they cancel identically and
+For positive aperture `L`, the formal CCM entry satisfies
 
-```
-WeilGram(n,m) − 2·M(n,m)  =  ArchLit(n,m) + 2·arch_component(n,m).
-```
-
-This is a purely **archimedean** statement — no zero sums, hence no slowly
-converging zero tail. `check_diagonal_shift.py` measures it directly.
-
-## Closed form for `h` (derived, and validated to 1e-16)
-
-With `a = 2πm/L`, `b = 2πn/L` (so `aL, bL ∈ 2πZ`):
-
-```
-n ≠ m :  h(r) = (2/(π(n−m))) (1 − cos rL) [ a/(a²−r²) − b/(b²−r²) ]
-n = m :  h(r) = (2/L) (1 − cos rL) [ 1/(b+r)² + 1/(b−r)² ]
+```text
+(n-m) M_nm = g_n - g_m,
 ```
 
-Both are even and entire (the apparent poles are removable: `1 − cos rL` has a
-double zero there). Specializing to `r = i/2` reproduces
-`h(i/2) + h(−i/2) = 2·pole_component(n,m,L)` **analytically** — the pole channel
-is now a derivation, not just a numerical match.
+with the exact formal sequence
 
-## Why the diagonal is special (structural explanation of the shift)
+```text
+g_n = poleSeq n L + alphaL n L + primeSeq n L.
+```
 
-For `n ≠ m`, `K_{nm}(0) = 0`, so `∫K_{nm}·ρ` converges outright and
-`arch_component` off-diagonal is exactly that integral, with no added constant.
-For `n = m`, `K_{nn}(0) = 2 ≠ 0`, the archimedean density
-`ρ(x) = e^{x/2}/(e^x−e^{−x}) = e^{−x/2}/(1−e^{−2x})` (the classical kernel) makes
-the integral logarithmically divergent at `0`, and R004 regularizes it with the
-**index-independent** constants `c_correction(L) + w_correction(L)` inside
-`gamma_L`. Every non-cancelling term is therefore proportional to `K(0)`, which
-vanishes off the diagonal — so the CCM/Weil discrepancy *must* be a multiple of
-the identity. That is hypothesis **H**, and it is structural rather than
-accidental.
+Consequently, on the centered finite grid,
+
+```text
+[D,M] = g 1^T - 1 g^T,
+rank([D,M]) <= 2.
+```
+
+This is now compiler-checked Lean mathematics for the actual formal CCM matrix, not merely a
+Python/SymPy identity.  It is registered as `R004_CCM_DISPLACEMENT_FORMAL`.
+
+## The deterministic scalar-shift target
+
+The literature RHS is
+
+```text
+RHS(K) = PoleLit(K) - PrimeLit(K) + ArchLit(K).
+```
+
+The working candidate, supported by the finite diagnostics, is
+
+```text
+RHS(K_nm) = 2*M_nm + 4*cCorrection(L)*delta_nm.
+```
+
+Equivalently, after exact pole and prime cancellation, the only nontrivial identity is
+
+```text
+ArchLit(n,m,L) + 2*archComponent(n,m,L)
+  = 4*cCorrection(L)*delta_nm.
+```
+
+This statement is purely deterministic analysis.  It can be proved before the non-`C_c²`
+regularity seam is solved.
+
+## Why the diagonal is special
+
+The formal kernel already satisfies
+
+```text
+K_nm(0) = 2*delta_nm.
+```
+
+Off diagonal, `K_nm(0)=0`, so the singular archimedean contact channel is cancelled by the test
+itself.  On the diagonal, `K_nn(0)=2`, and the finite CCM formula carries index-independent
+regularization constants through `gammaL`.
+
+This gives a structural mechanism for a scalar diagonal shift, but it is **not itself a proof**
+that the full gamma-side residual equals `4*cCorrection(L)*I`.  That exact identity remains the
+central analytic theorem of `R003_CCM_RHS_IDENTITY`.
+
+## Closed form for the transform — discovery evidence
+
+With `a = 2πm/L`, `b = 2πn/L`, the diagnostic derivation gives
+
+```text
+n != m:
+  h(r) = (2/(π(n-m))) (1-cos(rL))
+         * [a/(a^2-r^2) - b/(b^2-r^2)]
+
+n = m:
+  h(r) = (2/L) (1-cos(rL))
+         * [1/(b+r)^2 + 1/(b-r)^2].
+```
+
+The apparent poles are removable.  Specialization to `r = +/- i/2` reproduces the factor-two pole
+channel numerically and by paper derivation; the next formalization wave will turn the pole and
+prime channels into Lean theorems before attacking the archimedean channel.
+
+## Numerical scalar-shift diagnostic
+
+`confirm_closed_form.py`, `mp.dps = 20`:
+
+| lambda | c_raw | offdiag systematic | corrected c | `4*cCorrection(L)` | abs diff | diag spread |
+|---|---:|---:|---:|---:|---:|---:|
+| 2 | 1.076281434379 | 2.48e-07 | 1.076281186271 | 1.076281186271 | 5.6e-15 | 4.5e-09 |
+| 3 | 1.408303228758 | -1.05e-07 | 1.408303333375 | 1.408303333375 | 1.3e-15 | 1.1e-09 |
+| 5 | 1.616560903218 | 4.93e-08 | 1.616560853940 | 1.616560853940 | 2.2e-16 | 3.6e-10 |
+| 7 | 1.681430174226 | -5.57e-08 | 1.681430229916 | 1.681430229916 | 2.2e-16 | 2.1e-10 |
+
+This is discovery evidence only.  The corrected machine-precision agreement is not theorem
+authority and is not used as a proof premise.
 
 ## Proof-search ladder
 
 | step | statement | status |
 |---|---|---|
-| J1-D | exact finite displacement identity `[D,M] = g1ᵀ − 1gᵀ` | CLOSED (R004, algebraic) |
-| B0 | closed form for `h_{nm}`, and the pole channel `2h(i/2) = 2·pole_component` | **DERIVED + validated to 1e-16** |
-| B1 | prime channel `PrimeSum = 2·prime_component` | verified to 10 digits (even-extension convention) |
-| B2 | `WeilGram − 2M = ArchLit + 2·arch` (pole/prime cancel) | **exact reduction** |
-| B3 | H: the residual is `c(L)·δ_{nm}` | **numerically confirmed** (diag spread 4.5e-9 … 2.1e-10); structurally explained above |
-| B4 | closed form `c(L) = 4·c_correction(L)` | **numerically confirmed to machine precision**, four λ (table below) |
-| J5 | transfer: `[D, WeilGram] = 2(g1ᵀ − 1gᵀ)`, rank ≤ 2 | **algebra proved in Lean**, conditional on B3 as an explicit hypothesis |
-| J6 | finite→infinite normalization / limit | OPEN |
+| J1-D-formal | exact `[D,M] = g1^T - 1g^T`, rank <= 2 for formal CCM matrix | **PROVED IN LEAN** |
+| K0 | continuity/compact support/integrability of CCM kernel | **IN FORMALIZATION** |
+| B0 | exact pole-channel identity | OPEN |
+| B1 | exact prime-channel identity | OPEN |
+| B2 | deterministic reduction to the archimedean channel | OPEN until B0+B1 are Lean-closed |
+| B3 | exact archimedean scalar-shift identity | OPEN |
+| B4 | `RHSMatrix = 2*M + 4*cCorrection(L)*I` | OPEN |
+| E1 | extend zeta `EF_lit` from `C_c²` approximants to the CCM kernel | OPEN |
+| J5 | actual zero-side matrix `G = 2*M + 4*cCorrection(L)*I` | OPEN |
+| J5-D | exact `[D,G] = 2(g1^T - 1g^T)`, rank <= 2 | OPEN |
+| J6 | finite-to-infinite operator/normalization seam | OPEN |
 
-Lean: `Zeta23/ExceptionalZero/DisplacementTransfer.lean` proves the transfer
-algebra — `displacement_add_scalar`, `displacement_eq_of_eq_smul_add_scalar`,
-`rank_displacement_le_two_of_eq_smul_add_scalar` — sorry-free, standard axioms.
-Every statement carries the CCM/Weil relation as an **explicit hypothesis**;
-none of them asserts it.
+## Regularity seam
 
-## Measured result
+The current zeta literature explicit formula is already proved for every `C_c²` test.  The CCM
+kernel is continuous and compactly supported but has the `|y|` corner at zero, so the intended route
+is downstream approximation, not modification of the trusted `EF_lit` theorem:
 
-`confirm_closed_form.py`, `mp.dps = 20`. `c_raw` is the mean diagonal residual;
-`offdiag sys` is the mean off-diagonal residual, which H predicts to be exactly
-zero and which is a common systematic of the archimedean quadrature tail, so
-subtracting it removes that systematic from both:
-
-| λ | `c_raw` (diagonal) | off-diag systematic | `c` corrected | `4·c_correction(L)` | \|diff\| | diag spread |
-|---|---|---|---|---|---|---|
-| 2 | 1.076281434379 | 2.48e-07 | 1.076281186271 | 1.076281186271 | 5.6e-15 | 4.5e-09 |
-| 3 | 1.408303228758 | −1.05e-07 | 1.408303333375 | 1.408303333375 | 1.3e-15 | 1.1e-09 |
-| 5 | 1.616560903218 | 4.93e-08 | 1.616560853940 | 1.616560853940 | 2.2e-16 | 3.6e-10 |
-| 7 | 1.681430174226 | −5.57e-08 | 1.681430229916 | 1.681430229916 | 2.2e-16 | 2.1e-10 |
-
-So, numerically and at machine precision on four values of λ:
-
-```
-WeilGram(n,m)  =  2 · M_{λ,N}(n,m)  +  4·c_correction(L) · δ_{nm},
-c_correction(L) = ∫₀^L (1 − e^{−x/2}) / (e^x − e^{−x}) dx.
+```text
+K_epsilon in C_c²
+EF_lit(K_epsilon)
+limits of zero / pole / prime / arch channels
+-------------------------------
+EF identity for K
 ```
 
-Because `[D, c·I] = 0`, this is exactly the shape that transfers R004's
-displacement identity — see `DisplacementTransfer.lean` and step J5.
+The current intended approximation is a normalized compactly supported smooth mollifier, with a
+uniform transform bound strong enough to justify zero-side and archimedean dominated convergence.
 
-## The remaining obstacle to a Lean identity
+## Claim boundary
 
-`K_{nm}` is continuous but only piecewise `C¹` (a corner at `y = 0`), so it is
-**not** an admissible `C_c²` test for `EF_lit`. Formalizing B1–B3 therefore needs
-a mollified family plus a limit, or an EF strengthened to `C¹`-with-bounded-
-variation tests. Until then B3/B4 remain numerical and `R003_CCM_BRIDGE` stays
-OPEN.
+- `R003_CCM_RHS_IDENTITY`: OPEN.
+- `R003_KERNEL_EF_EXTENSION`: OPEN.
+- `R003_CCM_BRIDGE`: OPEN and depends on both claims above.
+- `R003_WEIL_DISPLACEMENT`: OPEN.
+- RH: OPEN.
 
-## Dumbassery checks
-
-- B3/B4 are numerics at finitely many `(λ, n, m)`; they are not the identity.
-- The Lean transfer theorems are conditional; reading them as establishing the
-  bridge would be exactly the "module A passes, module B passes" error the OoL
-  discipline forbids.
-- `rank ≤ 2` for a finite matrix says nothing about any infinite operator; J6 is
-  untouched.
-- No RH consequence is claimed anywhere in this route.
+No finite-to-infinite theorem, RH implication, or new prime-side upper bound is claimed.
 
 ## Reproduction
 
+```bash
+pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+python research/RHRC/routes/R003_ccm_bridge/check_diagonal_shift.py --lambdas 2 3 5 --ns -3 -2 -1 0 1 2 3
+python research/RHRC/routes/R003_ccm_bridge/confirm_closed_form.py
 ```
-pip install -r requirements.txt
-python3 check_diagonal_shift.py --lambdas 2 3 5 --ns -3 -2 -1 0 1 2 3
-```
-
-## Non-claims
-
-- No CCM identity, no intertwiner, no limit theorem.
-- No RH evidence, no RH route closure.
-- Finite numerics have no theorem authority; Lean/comparator is the gate.

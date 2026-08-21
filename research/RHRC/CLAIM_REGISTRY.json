@@ -119,8 +119,18 @@
       "note": "Feasibility bookkeeping (routes/R002_multi_probe/MULTI_PROBE_GRAM_OPERATOR_FEASIBILITY_2026_08_21.md) gives visibility iff delta*L >~ sqrt(6/lambda), with every-delta detection in the oversampled regime lambda>1; the price is X=e^L>T on the prime side."
     },
     {
+      "id": "R004_CCM_DISPLACEMENT_FORMAL",
+      "statement": "For the theorem-authoritative finite CCM matrix on centered Fourier indices and positive aperture L, the index commutator is exactly g 1^T - 1 g^T and therefore has rank at most two.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [],
+      "source": "Zeta23/CCM/Displacement.lean",
+      "theorem": "Zeta23.CCM.rank_finiteMatrix_displacement_le_two",
+      "route": "R004_prolate_v2",
+      "promotion_cap": "PROVED_UNCONDITIONAL"
+    },
+    {
       "id": "R003_DISPLACEMENT_TRANSFER",
-      "statement": "Displacement transfer algebra over C: D*M - M*D is unchanged by adding a scalar matrix c*I, hence if A = k*M + c*I and D*M - M*D = g 1^T - 1 g^T then D*A - A*D = k*(g 1^T - 1 g^T) and rank(D*A - A*D) <= 2. This is what would carry R004's exact finite displacement identity onto the Weil Gram IF the CCM/Weil diagonal-shift relation held; that relation is supplied as an EXPLICIT HYPOTHESIS and is NOT proved here (it is numerically supported only, see routes/R003_ccm_bridge/README.md).",
+      "statement": "Displacement transfer algebra over C: D*M - M*D is unchanged by adding a scalar matrix c*I, hence if A = k*M + c*I and D*M - M*D = g 1^T - 1 g^T then D*A - A*D = k*(g 1^T - 1 g^T) and rank(D*A - A*D) <= 2. This is what carries the exact finite CCM displacement identity onto a target matrix once an exact scaled-scalar-shift identity is supplied; that identity is an explicit hypothesis here.",
       "status": "PROVED_UNCONDITIONAL",
       "dependencies": [],
       "source": "Zeta23/ExceptionalZero/DisplacementTransfer.lean",
@@ -129,13 +139,46 @@
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
-      "id": "R003_CCM_BRIDGE",
-      "statement": "A finite CCM object is connected to the Weil/aperture object by an exact identity, intertwiner, or controlled convergence theorem sufficient for route closure.",
+      "id": "R003_CCM_RHS_IDENTITY",
+      "statement": "For the CCM truncated-character kernel, the deterministic literature explicit-formula RHS matrix equals 2 times the formal finite CCM matrix plus the scalar correction 4*cCorrection(L)*I.",
       "status": "OPEN",
       "dependencies": [],
       "route": "R003_ccm_bridge",
       "promotion_cap": "OPEN",
-      "note": "Progress 2026-08-21: the pole and prime channels of the CCM matrix match the Weil literature form exactly (factor 2; the pole channel is now DERIVED in closed form, not merely observed), so WeilGram - 2M = ArchLit + 2*arch_component identically. That purely archimedean residual is numerically c(L)*delta_{nm} with c(L) = 4*c_correction(L), and the diagonal-only structure is explained by K_{nm}(0) = 2*delta_{nm} meeting the logarithmic singularity of the archimedean kernel. Still OPEN: the identity itself is numerical, because K_{nm} is only piecewise C^1 and hence not an admissible C_c^2 test for EF_lit."
+      "note": "This is a deterministic analytic identity about EF.literatureRHS evaluated on the CCM kernel. It does not require the kernel itself to satisfy EF_lit's C_c^2 admissibility hypothesis. Pole/prime matching is structurally understood; the exact archimedean identity remains to be formalized."
+    },
+    {
+      "id": "R003_KERNEL_EF_EXTENSION",
+      "statement": "The concrete zeta literature explicit formula extends from admissible C_c^2 tests to the continuous compactly supported CCM kernel, identifying its zero-side sum with EF.literatureRHS(kernel).",
+      "status": "OPEN",
+      "dependencies": [],
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "OPEN",
+      "note": "The intended route is a C_c^2 mollified family plus a channel-by-channel limit, leaving the existing EF_lit theorem and trust boundary unchanged."
+    },
+    {
+      "id": "R003_CCM_BRIDGE",
+      "statement": "The finite CCM matrix is connected to the actual zeta zero-side Weil/aperture matrix by the exact scalar-shift identity G = 2*M + 4*cCorrection(L)*I.",
+      "status": "OPEN",
+      "dependencies": [
+        "R003_CCM_RHS_IDENTITY",
+        "R003_KERNEL_EF_EXTENSION"
+      ],
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "OPEN",
+      "note": "Post-#30 decomposition: the deterministic CCM-to-literatureRHS identity and the regularity/explicit-formula extension are separate proof obligations. Finite numerics support the scalar shift but have no theorem authority."
+    },
+    {
+      "id": "R003_WEIL_DISPLACEMENT",
+      "statement": "The actual finite zeta zero-side CCM/Weil matrix has exact index displacement 2*(g 1^T - 1 g^T) and displacement rank at most two.",
+      "status": "OPEN",
+      "dependencies": [
+        "R003_CCM_BRIDGE",
+        "R004_CCM_DISPLACEMENT_FORMAL",
+        "R003_DISPLACEMENT_TRANSFER"
+      ],
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "OPEN"
     }
   ]
 }
