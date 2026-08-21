@@ -1,6 +1,6 @@
 import Zeta23.CCM.Kernel
 import Zeta23.ExplicitFormula
-import Mathlib.MeasureTheory.Integral.IntervalIntegral
+import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
 import Mathlib.Analysis.SpecialFunctions.Gamma.Deriv
 import Mathlib.NumberTheory.Harmonic.EulerMascheroni
 
