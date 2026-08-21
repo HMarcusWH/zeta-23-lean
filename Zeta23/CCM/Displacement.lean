@@ -32,7 +32,7 @@ theorem qBasis_displacement {n m : ℤ} (h : n ≠ m) (y L : ℝ) :
   have hnmZ : n - m ≠ 0 := sub_ne_zero.mpr h
   have hnmR : (((n - m : ℤ) : ℝ)) ≠ 0 := by exact_mod_cast hnmZ
   unfold qBasis
-  rw [dif_neg h]
+  rw [if_neg h]
   have hdiff : (((m - n : ℤ) : ℝ)) = -(((n - m : ℤ) : ℝ)) := by
     push_cast
     ring
@@ -123,8 +123,13 @@ theorem finiteMatrix_displacement {L : ℝ} (hL : 0 < L) (N : ℕ) :
       vecMulVec (displacementVector L N) (fun _ => 1)
         - vecMulVec (fun _ => 1) (displacementVector L N) := by
   ext i j
-  simp only [Pi.sub_apply, indexMatrix, finiteMatrix, Matrix.diagonal_mul, Matrix.mul_diagonal,
-    displacementVector, Matrix.vecMulVec_apply, Pi.one_apply]
+  change
+    (indexMatrix N * finiteMatrix L N) i j -
+        (finiteMatrix L N * indexMatrix N) i j =
+      vecMulVec (displacementVector L N) (fun _ => 1) i j -
+        vecMulVec (fun _ => 1) (displacementVector L N) i j
+  simp only [indexMatrix, Matrix.diagonal_mul, Matrix.mul_diagonal, finiteMatrix_apply,
+    displacementVector, Matrix.vecMulVec_apply, mul_one, one_mul]
   have hreal := entry_displacement
     (n := centeredIndex N i) (m := centeredIndex N j) hL
   have hcomplex := congrArg (fun x : ℝ => (x : ℂ)) hreal
