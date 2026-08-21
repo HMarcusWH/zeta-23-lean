@@ -75,7 +75,7 @@ RH imports governance/evidence semantics only. Origin-of-life chemistry, empiric
 
 ## Main routes
 
-- `R001_exceptional_zero`: seek a multi-scale observable for which one off-line zero forces positive exponential growth and seek an unconditional prime-side upper bound. The sorry-free Laplace-pole foundation is now merged.
+- `R001_exceptional_zero`: seek a multi-scale observable for which one off-line zero forces positive exponential growth and seek an unconditional prime-side upper bound. The zero side is now closed sorry-free in Lean (exposed-pole detector, exact Weil/translation bridge, pole-killer, target-adaptive visibility, reflection assembly), and the scalar prime-side target is proved logically equivalent to RH itself (`arithmeticSideSubexponential_iff_criticalLine`; OBS-008). Terminal state: RH_OPEN with exactly one remaining theorem.
 - `R002_multi_probe`: test whether a family of probes separates structures that one finite compression cannot distinguish.
 - `R003_ccm_bridge`: require an exact identity/intertwining/controlled limit before connecting finite CCM objects to Weil/Suzuki-style objects.
 

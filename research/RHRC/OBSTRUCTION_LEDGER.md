@@ -31,3 +31,28 @@ RUN_37 removed target leakage but still generated a field in a known-null world.
 ## OBS-007 — Window artifact
 
 RUN_41 rejected `curvature_gap` because it lost to a matched W96 adversarial null and failed the predeclared evolving-transfer condition. Window-local lift is not enough.
+
+## OBS-008 — Scalar prime-upper equivalence wall
+
+**Status:** FORMAL / UNCONDITIONAL (Lean).
+
+The R001 scalar prime-side target — `ArithmeticSideSubexponential`, i.e. subexponentiality of
+the translated pole-killed literature-RHS residual for every admissible C² test — is logically
+**equivalent** to RH:
+
+    Zeta23.ExceptionalZero.arithmeticSideSubexponential_iff_criticalLine
+    (Zeta23/ExceptionalZero/ArithmeticReduction.lean, sorry-free, standard axioms only).
+
+Forward: exposed-pole detector + target-adaptive pole-killed visibility + reflection.
+Converse: on the critical line every filtered mode has unit modulus, so the family is bounded.
+
+Consequences. (1) `R001_PRIME_UPPER` is not "one more prime estimate"; closing it in this
+observable class IS proving RH. (2) For any replacement observable `O`, once the zero-side leg
+"off-line zero ⇒ ¬Subexponential O" is proved, the corresponding upper-bound leg is again
+RH-strength; observable-engineering can only reorganize where the RH-strength difficulty sits
+(cf. Weil positivity ⇔ RH).
+
+**Escape requirement:** a named new information channel must come with a *new, weaker-looking
+but sufficient* zero-side leg whose matching upper bound is provable by an identified
+unconditional mechanism — and the pair must be exhibited before terminal coding, per the
+feasibility-gate discipline.
