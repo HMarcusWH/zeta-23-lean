@@ -1,12 +1,12 @@
 # PR #35 — finite Guinand--Weil dictionary objects
 
-Status: **implementation started; no RHRC claim promotion**.
+Status: **implementation started; ready for review; no RHRC claim promotion**.
 
 Base: merged PR #34 at `756d074c325a555de2afb1ef8306c4dc0bb793e2`.
 
 ## Objective
 
-Formalize the exact finite dictionary on top of the theorem-authoritative elementary source matrix, while using the inherited `EF.paperFT` convention as the canonical internal transform from the start.
+Formalize the exact finite dictionary on top of the theorem-authoritative elementary source matrix, while using the inherited `Zeta23.paperFT` convention as the canonical internal transform from the start.
 
 Target architecture:
 
@@ -15,7 +15,7 @@ paper even-sector vector v
   -> symmetric centered coefficients u
   -> K_u(omega) = <u, sourceMatrix(omega) u>
   -> compact physical-space test k_{u,L}(y)
-  -> g_{u,L}(z) = EF.paperFT(k_{u,L})(z)
+  -> g_{u,L}(z) = Zeta23.paperFT(k_{u,L})(z)
 ```
 
 Then prove equivalence with the paper/reference representation
@@ -47,6 +47,15 @@ license:    MIT
 The local adapter preserves only `v/u`, `T`, `K`, `K_quad`, `ghat`, `g`, `g_quad`, and finite regression guards. Zero-side and archimedean-tail routines are intentionally excluded.
 
 External Python remains an oracle/falsifier only and must not enter the Lean import graph.
+
+The first Codex review found four oracle/API issues, all now repaired and regression-guarded:
+
+- non-real transform inputs preserve their imaginary part (real projection occurs only on the real axis);
+- importing the oracle does not mutate the caller's global `mpmath` precision;
+- the constructor enforces the paper domain `c > 1`;
+- the constructor enforces `N >= 0` and exactly `N+1` coefficients.
+
+`check_finite_dictionary_reference.py` exercises those guards and the closed-form-vs-quadrature dictionary identities in CI. These checks remain diagnostic only.
 
 ## Lean work packages
 
@@ -121,7 +130,7 @@ Do not claim `C^2`; the raw test has the interface-regularity issue deferred to 
 Define
 
 ```text
-g_{u,L}(z) := EF.paperFT(k_{u,L})(z).
+g_{u,L}(z) := Zeta23.paperFT(k_{u,L})(z).
 ```
 
 Prove the even-test cosine representation
@@ -194,8 +203,9 @@ lake build Zeta23.CCM
 lake build Zeta23.ExceptionalZero
 python research/RHRC/tools/run_suite.py
 python research/RHRC/routes/R003_ccm_bridge/compare_ccm_normalizations.py --output /tmp/CCM_NORMALIZATION_AUDIT.json
+python research/RHRC/routes/R003_ccm_bridge/check_finite_dictionary_reference.py
 ```
 
 plus the external-reference firewall and forbidden-placeholder gate.
 
-A finite-dictionary Python regression may compare the preserved external closed-form and integral representations, but such checks remain diagnostic only.
+The finite-dictionary Python regression compares the preserved external closed-form and integral representations and exercises API/domain guards, but such checks remain diagnostic only.
