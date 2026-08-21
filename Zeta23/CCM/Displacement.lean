@@ -1,4 +1,4 @@
-import Zeta23.CCM.FiniteMatrix
+import Zeta23.CCM.DividedDifference
 import Zeta23.ExceptionalZero.DisplacementTransfer
 
 noncomputable section
@@ -23,6 +23,12 @@ def primeSeq (n : ℤ) (L : ℝ) : ℝ :=
 /-- Scalar sequence whose divided differences generate the off-diagonal CCM entries. -/
 def displacementSeq (n : ℤ) (L : ℝ) : ℝ :=
   poleSeq n L + alphaL n L + primeSeq n L
+
+/-- Complex source potential underlying the concrete finite CCM divided-difference matrix. -/
+def ccmPotential (L : ℝ) (n : ℤ) : ℂ := (displacementSeq n L : ℂ)
+
+/-- Concrete CCM diagonal data, deliberately separated from the off-diagonal source potential. -/
+def ccmDiagonal (L : ℝ) (n : ℤ) : ℂ := (entry n n L : ℂ)
 
 /-- The off-diagonal truncated-character kernel is an exact divided difference. -/
 theorem qBasis_displacement {n m : ℤ} (h : n ≠ m) (y L : ℝ) :
@@ -112,33 +118,48 @@ theorem entry_displacement {n m : ℤ} {L : ℝ} (hL : 0 < L) :
       _ = (poleSeq n L + alphaL n L + primeSeq n L)
             - (poleSeq m L + alphaL m L + primeSeq m L) := by ring
 
+/-- The concrete CCM scalar entry is exactly an instance of the generic
+divided-difference class.  The channel lemmas above provide the zeta-specific
+content; all subsequent matrix displacement algebra is generic. -/
+theorem entry_eq_dividedDifferenceEntry {L : ℝ} (hL : 0 < L) (n m : ℤ) :
+    (entry n m L : ℂ) = dividedDifferenceEntry (ccmPotential L) (ccmDiagonal L) n m := by
+  by_cases h : n = m
+  · subst m
+    simp [ccmDiagonal]
+  · rw [dividedDifferenceEntry_of_ne _ _ h]
+    have hnmZ : n - m ≠ 0 := sub_ne_zero.mpr h
+    have hnmC : (((n - m : ℤ) : ℂ)) ≠ 0 := by exact_mod_cast hnmZ
+    have hreal := entry_displacement (n := n) (m := m) hL
+    have hcomplex := congrArg (fun x : ℝ => (x : ℂ)) hreal
+    push_cast at hcomplex
+    apply (eq_div_iff hnmC).2
+    simpa [ccmPotential, mul_comm] using hcomplex
+
 /-- Complex-valued displacement vector on the centered finite Fourier grid. -/
 def displacementVector (L : ℝ) (N : ℕ) : Fin (2 * N + 1) → ℂ :=
-  fun i => (displacementSeq (centeredIndex N i) L : ℂ)
+  dividedDifferenceVector (ccmPotential L) N
 
-/-- The canonical finite CCM matrix has exact displacement rank at most two. -/
+/-- The formal finite CCM matrix is a centered generic divided-difference matrix. -/
+theorem finiteMatrix_eq_dividedDifferenceMatrix {L : ℝ} (hL : 0 < L) (N : ℕ) :
+    finiteMatrix L N = dividedDifferenceMatrix (ccmPotential L) (ccmDiagonal L) N := by
+  ext i j
+  rw [finiteMatrix_apply, dividedDifferenceMatrix_apply]
+  exact entry_eq_dividedDifferenceEntry hL _ _
+
+/-- The canonical finite CCM matrix has exact displacement rank at most two.
+This now follows from the generic divided-difference chassis after the concrete
+zeta-specific entry has been identified with that class. -/
 theorem finiteMatrix_displacement {L : ℝ} (hL : 0 < L) (N : ℕ) :
     indexMatrix N * finiteMatrix L N - finiteMatrix L N * indexMatrix N =
       vecMulVec (displacementVector L N) (fun _ => 1)
         - vecMulVec (fun _ => 1) (displacementVector L N) := by
-  ext i j
-  change
-    (indexMatrix N * finiteMatrix L N) i j -
-        (finiteMatrix L N * indexMatrix N) i j =
-      vecMulVec (displacementVector L N) (fun _ => 1) i j -
-        vecMulVec (fun _ => 1) (displacementVector L N) i j
-  simp only [indexMatrix, Matrix.diagonal_mul, Matrix.mul_diagonal, finiteMatrix_apply,
-    displacementVector, Matrix.vecMulVec_apply, mul_one, one_mul]
-  have hreal := entry_displacement
-    (n := centeredIndex N i) (m := centeredIndex N j) hL
-  have hcomplex := congrArg (fun x : ℝ => (x : ℂ)) hreal
-  push_cast at hcomplex
-  linear_combination hcomplex
+  rw [finiteMatrix_eq_dividedDifferenceMatrix hL N]
+  exact dividedDifferenceMatrix_displacement _ _ _
 
 /-- Rank form of the exact finite displacement theorem. -/
 theorem rank_finiteMatrix_displacement_le_two {L : ℝ} (hL : 0 < L) (N : ℕ) :
     (indexMatrix N * finiteMatrix L N - finiteMatrix L N * indexMatrix N).rank ≤ 2 := by
-  rw [finiteMatrix_displacement hL N]
-  exact Zeta23.ExceptionalZero.rank_vecMulVec_sub_le_two _ _
+  rw [finiteMatrix_eq_dividedDifferenceMatrix hL N]
+  exact rank_dividedDifferenceMatrix_displacement_le_two _ _ _
 
 end Zeta23.CCM
