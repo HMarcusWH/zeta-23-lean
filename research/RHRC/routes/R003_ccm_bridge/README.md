@@ -114,38 +114,66 @@ Only after that finite bridge is theorem-closed do we build the spectral/entire-
 
 ### PR #33 — reference transplant + normalization audit
 
-**Current PR. Reference/audit only. No claim promotion.**
+**MERGED** at `adad73d06cc539a09e527f935a669e0c60fdb362`. Reference/audit only; no mathematical claim promoted.
 
-Deliver:
+Delivered:
 
 - pinned external provenance and MIT license;
 - cutoff-free CCM reference oracle;
 - fail-closed normalization audit;
 - curated normalization lock;
 - CI firewall preventing external Python from entering the Lean theorem graph;
-- this route SSOT correction.
+- post-Groskin route SSOT correction.
 
-Merge gate: exact-head RHRC, normalization audit, Lean CCM/ExceptionalZero builds, and placeholder gate all green.
+The exact-head RHRC, normalization audit, Lean CCM/ExceptionalZero builds, and placeholder gate were green before merge.
 
 ### PR #34 — generic divided-difference / source calculus
 
-Create approximately:
+**CURRENT PR. Formal structural theorem work; no RHRC claim promotion.**
+
+Create:
 
 ```text
 Zeta23/CCM/DividedDifference.lean
 Zeta23/CCM/SourceMatrix.lean
 ```
 
-Formalize the generic matrix
+The generic entry deliberately separates source values from diagonal data:
 
 ```text
-Q_psi(m,n) = (psi(m)-psi(n))/(m-n)   for m != n
-Q_psi(n,n) = psi'(n)
+Q_psi,d(n,m) = d(n)                         if n = m
+             = (psi(n)-psi(m))/(n-m)        if n != m.
 ```
 
-and prove the generic displacement identity. Then specialize the single-frequency source calculus used in the finite dictionary.
+This avoids importing differentiability into the algebraic chassis. A later analytic specialization may set `d(n)=psi'(n)`, but the displacement theorem does not require that identification.
 
-Purpose: formally separate the universal divided-difference chassis from zeta-specific information.
+Prove exactly:
+
+```text
+(n-m) Q_psi,d(n,m) = psi(n)-psi(m)
+[D,Q_psi,d] = psi 1^T - 1 psi^T
+rank([D,Q_psi,d]) <= 2
+[D,Q_psi,d1] = [D,Q_psi,d2].
+```
+
+Then specialize the elementary source atom
+
+```text
+psi_omega(n) = sin(2*pi*n*omega)/pi
+d_omega(n)   = 2*omega*cos(2*pi*n*omega)
+```
+
+and prove the exact convention bridge
+
+```text
+sourceEntry(1-y/L,n,m) = qBasis(n,m,y,L).
+```
+
+Finally identify the fork-owned CCM scalar entry with the generic class using the existing zeta-specific channel lemmas, and derive the public finite displacement/rank theorems through the generic matrix theorem.
+
+Purpose: formally separate the universal divided-difference chassis from zeta-specific information and give PR #35 a sign-locked source API.
+
+Detailed PR theorem boundary: `PR34_GENERIC_SOURCE_CALCULUS.md`.
 
 ### PR #35 — finite Guinand–Weil dictionary objects
 
@@ -287,6 +315,6 @@ finite numerics                     diagnostic only
 
 Nothing promotes itself.
 
-## Immediate next step after PR #33
+## Immediate next step
 
-Once PR #33 is exact-head green and merged, begin **PR #34: generic divided-difference/source calculus**. Do not restart the superseded transform-first #33 plan.
+Finish **PR #34: generic divided-difference/source calculus** under exact-head CI. Once it is merged, begin **PR #35: finite Guinand–Weil dictionary objects and the finite source-contraction identity**. Do not restart the superseded transform-first sequence.
