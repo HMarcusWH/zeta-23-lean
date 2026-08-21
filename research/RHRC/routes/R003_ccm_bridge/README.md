@@ -13,6 +13,12 @@ Compiler-checked Lean facts already include:
 - the formal finite CCM matrix `Zeta23.CCM.finiteMatrix L N`;
 - the exact source wrapper `finiteMatrixOfLambda lam N` with `L = 2 * log lam`;
 - continuity, compact support, integrability and real-valuedness of the CCM kernel for `0 < L`;
+- the generic divided-difference matrix class with independent diagonal data;
+- exact generic displacement `D Q - Q D = psi 1^T - 1 psi^T` and rank at most two;
+- exact diagonal-independence of divided-difference displacement;
+- the elementary single-frequency source matrix;
+- the exact convention bridge `sourceEntry (1-y/L,n,m) = qBasis(n,m,y,L)`;
+- the concrete CCM identification as a generic divided-difference matrix;
 - exact finite index displacement
 
 ```text
@@ -21,7 +27,7 @@ Compiler-checked Lean facts already include:
 rank([D,M]) <= 2.
 ```
 
-The displacement theorem is retained as a structural theorem. After comparison with the divided-difference literature, low displacement rank is treated as a **generic Loewner/divided-difference chassis property**, not as RH-specific evidence.
+The displacement theorem is retained as a structural theorem. PR #34 makes the interpretation precise: low displacement rank is a **generic Loewner/divided-difference chassis property**, not RH-specific evidence.
 
 The following claims remain open:
 
@@ -114,40 +120,34 @@ Only after that finite bridge is theorem-closed do we build the spectral/entire-
 
 ### PR #33 — reference transplant + normalization audit
 
-**Current PR. Reference/audit only. No claim promotion.**
+**MERGED** at `adad73d06cc539a09e527f935a669e0c60fdb362`. Reference/audit only; no mathematical claim promoted.
 
-Deliver:
-
-- pinned external provenance and MIT license;
-- cutoff-free CCM reference oracle;
-- fail-closed normalization audit;
-- curated normalization lock;
-- CI firewall preventing external Python from entering the Lean theorem graph;
-- this route SSOT correction.
-
-Merge gate: exact-head RHRC, normalization audit, Lean CCM/ExceptionalZero builds, and placeholder gate all green.
+Delivered pinned external provenance, the cutoff-free CCM reference oracle, fail-closed normalization audit, curated normalization lock, CI firewall, and the post-Groskin route correction.
 
 ### PR #34 — generic divided-difference / source calculus
 
-Create approximately:
+**EXACT-HEAD GREEN; READY TO MERGE. No RHRC claim promotion.**
+
+Delivered:
 
 ```text
 Zeta23/CCM/DividedDifference.lean
 Zeta23/CCM/SourceMatrix.lean
 ```
 
-Formalize the generic matrix
+with exact generic divided-difference displacement/rank, diagonal-independence, the elementary source atom, the sign-locked bridge
 
 ```text
-Q_psi(m,n) = (psi(m)-psi(n))/(m-n)   for m != n
-Q_psi(n,n) = psi'(n)
+sourceEntry(1-y/L,n,m) = qBasis(n,m,y,L),
 ```
 
-and prove the generic displacement identity. Then specialize the single-frequency source calculus used in the finite dictionary.
+and the concrete CCM matrix factored through the generic class. Exact-head run `32527178035` passed RHRC, normalization audit, CCM build, ExceptionalZero build, and the forbidden-placeholder gate.
 
-Purpose: formally separate the universal divided-difference chassis from zeta-specific information.
+Detailed theorem boundary: `PR34_GENERIC_SOURCE_CALCULUS.md`.
 
 ### PR #35 — finite Guinand–Weil dictionary objects
+
+**NEXT ACTIVE BUILD after #34 merges.**
 
 Create approximately:
 
@@ -155,19 +155,22 @@ Create approximately:
 Zeta23/CCM/FiniteDictionary.lean
 ```
 
-Formalize the exact finite chain
+The preferred Lean-native architecture is now:
 
 ```text
-v -> symmetric coefficients u
-  -> T_v
-  -> K_v
-  -> ghat_v
-  -> g_v
+v -> symmetric centered coefficients u
+  -> source contraction K_u(omega) = <u, sourceMatrix(omega) u>
+  -> compact physical-space dictionary test k_{u,L}(y)
+  -> g_{u,L}(z) = EF.paperFT(k_{u,L})(z)
 ```
 
-and prove the finite source-contraction identity before invoking the zeta explicit formula.
+Then prove equivalence with the Groskin paper representation
 
-The pinned Groskin implementation is an external oracle only; Lean owns the theorem.
+```text
+u -> T_v -> Volterra K_v -> ghat_v -> g_v.
+```
+
+Use the inherited `EF.paperFT` as the canonical transform from the start, rather than introducing a competing Fourier normalization. The pinned Groskin implementation remains an external oracle only; Lean owns the theorem.
 
 ### PR #36 — explicit-formula admissibility seam
 
@@ -260,15 +263,7 @@ The former README has been archived verbatim as
 PRE_GROSKIN_ROADMAP_2026_08_21.md
 ```
 
-It contains the detailed pre-paper analysis of:
-
-- derivative jumps at `-L, 0, +L`;
-- two transform-decay proof spikes;
-- prime and pole channel specializations;
-- the archimedean scalar-shift calculation;
-- explicit `C^2` mollification and channel-specific limits;
-- closed-form transform diagnostics;
-- the older #33–#36 transform-first implementation sequence.
+It contains the detailed pre-paper analysis of derivative jumps at `-L, 0, +L`, transform-decay proof spikes, prime/pole specializations, the archimedean scalar-shift calculation, explicit `C^2` mollification and channel-specific limits, closed-form transform diagnostics, and the superseded transform-first implementation sequence.
 
 Those calculations remain useful as lemmas or fallback proof routes. The archived PR numbering and ordering are **superseded** and must not be treated as active authorization.
 
@@ -287,6 +282,6 @@ finite numerics                     diagnostic only
 
 Nothing promotes itself.
 
-## Immediate next step after PR #33
+## Immediate next step
 
-Once PR #33 is exact-head green and merged, begin **PR #34: generic divided-difference/source calculus**. Do not restart the superseded transform-first #33 plan.
+Merge exact-head-green **PR #34**, then begin **PR #35: finite Guinand–Weil dictionary objects**, using the source-contraction-first / inherited-`paperFT` architecture above. Do not restart the superseded transform-first sequence.
