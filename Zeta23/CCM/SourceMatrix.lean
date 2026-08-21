@@ -61,6 +61,69 @@ theorem sourceEntry_symmetric (ω : ℝ) (n m : ℤ) :
     push_cast
     ring
 
+/-- At the left dictionary endpoint `ω = 0`, the source potential vanishes. -/
+@[simp] theorem sourcePotential_zero (n : ℤ) : sourcePotential 0 n = 0 := by
+  simp [sourcePotential]
+
+/-- At the left dictionary endpoint `ω = 0`, the diagonal data vanish. -/
+@[simp] theorem sourceDiagonal_zero (n : ℤ) : sourceDiagonal 0 n = 0 := by
+  simp [sourceDiagonal]
+
+/-- At `ω = 1`, integer Fourier periodicity kills the source potential. -/
+@[simp] theorem sourcePotential_one (n : ℤ) : sourcePotential 1 n = 0 := by
+  unfold sourcePotential
+  norm_cast
+  rw [show 2 * Real.pi * (n : ℝ) * 1 = (n : ℝ) * (2 * Real.pi) by ring]
+  have hsin : Real.sin ((n : ℝ) * (2 * Real.pi)) = 0 := by
+    simpa using Real.sin_add_int_mul_two_pi 0 n
+  rw [hsin]
+  simp
+
+/-- At `ω = 1`, every diagonal source value is exactly `2`. -/
+@[simp] theorem sourceDiagonal_one (n : ℤ) : sourceDiagonal 1 n = 2 := by
+  unfold sourceDiagonal
+  norm_cast
+  rw [show 2 * Real.pi * (n : ℝ) * 1 = (n : ℝ) * (2 * Real.pi) by ring]
+  rw [Real.cos_int_mul_two_pi]
+  ring
+
+/-- The elementary source entry at `ω = 0` is zero. -/
+@[simp] theorem sourceEntry_zero (n m : ℤ) : sourceEntry 0 n m = 0 := by
+  simp [sourceEntry, dividedDifferenceEntry]
+
+/-- The elementary source entry at `ω = 1` is `2` on the diagonal and zero off it. -/
+@[simp] theorem sourceEntry_one (n m : ℤ) :
+    sourceEntry 1 n m = if n = m then 2 else 0 := by
+  by_cases h : n = m
+  · subst m
+    simp
+  · rw [sourceEntry_of_ne 1 h]
+    simp [h]
+
+/-- Centered Fourier indexing is injective. -/
+theorem centeredIndex_injective (N : ℕ) : Function.Injective (centeredIndex N) := by
+  intro i j hij
+  apply Fin.ext
+  dsimp [centeredIndex] at hij
+  omega
+
+/-- At `ω = 0` the whole source matrix vanishes. -/
+@[simp] theorem sourceMatrix_zero (N : ℕ) :
+    sourceMatrix 0 N = 0 := by
+  ext i j
+  simp [sourceMatrix_apply]
+
+/-- At `ω = 1` the source matrix is exactly twice the identity. -/
+@[simp] theorem sourceMatrix_one (N : ℕ) :
+    sourceMatrix 1 N = (2 : ℂ) • (1 : Matrix (Fin (2 * N + 1)) (Fin (2 * N + 1)) ℂ) := by
+  ext i j
+  by_cases h : i = j
+  · subst j
+    simp [sourceMatrix_apply]
+  · have hc : centeredIndex N i ≠ centeredIndex N j := by
+      exact fun hidx => h ((centeredIndex_injective N) hidx)
+    simp [sourceMatrix_apply, hc, h]
+
 /-- Periodicity conversion for the source potential at `ω = 1-y/L`. -/
 theorem sourcePotential_one_sub (n : ℤ) (y L : ℝ) :
     sourcePotential (1 - y / L) n =
