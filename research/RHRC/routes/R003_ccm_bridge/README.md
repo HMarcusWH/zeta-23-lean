@@ -118,7 +118,7 @@ Detailed theorem boundary: `PR34_GENERIC_SOURCE_CALCULUS.md`.
 
 ### PR #35 — finite Guinand–Weil dictionary objects
 
-**CURRENT PR. Formal finite-dictionary work; no RHRC claim promotion.**
+**CURRENT PR. READY FOR REVIEW. Formal finite-dictionary work; no RHRC claim promotion.**
 
 Primary Lean module:
 
@@ -133,7 +133,7 @@ paper even-sector vector v
   -> symmetric centered coefficients u
   -> source contraction K_u(omega) = <u, sourceMatrix(omega) u>
   -> compact physical-space test k_{u,L}(y)
-  -> g_{u,L}(z) = EF.paperFT(k_{u,L})(z)
+  -> g_{u,L}(z) = Zeta23.paperFT(k_{u,L})(z)
 ```
 
 Then prove equivalence with the Groskin representation
@@ -142,9 +142,11 @@ Then prove equivalence with the Groskin representation
 u -> T_v -> Volterra K_v -> ghat_v -> g_v.
 ```
 
-The inherited `EF.paperFT` is canonical internally. The physically preserved `finite_dictionary_reference.py` is an external oracle/falsifier only and must remain outside the Lean dependency graph.
+`paperFT` is defined in the root `Zeta23` namespace (`Zeta23.paperFT`); `EF_lit` and `literatureRHS` live under `Zeta23.EF`. The root `paperFT` definition is canonical internally. The physically preserved `finite_dictionary_reference.py` is an external oracle/falsifier only and must remain outside the Lean dependency graph.
 
-The first implementation slice now defines the full-grid source contraction, proves its zero-frequency vanishing, lifts PR #34's convention bridge to quadratic contractions, defines the compact physical-space dictionary test, and defines the canonical `EF.paperFT` dictionary transform. The even-sector embedding, endpoint normalization, support/continuity, Volterra equivalence, and Groskin Fourier-convention bridge remain to be proved inside this PR.
+The first implementation slice defines the full-grid source contraction, proves its zero-frequency vanishing, lifts PR #34's convention bridge to quadratic contractions, defines the compact physical-space dictionary test, and defines the canonical `Zeta23.paperFT` dictionary transform. The even-sector embedding, endpoint normalization, support/continuity, Volterra equivalence, and Groskin Fourier-convention bridge remain to be proved inside this PR.
+
+The first Codex review found four P2 issues confined to the external Python oracle: narrow-strip complex values were projected to the real axis, import mutated global `mpmath` precision, the constructor admitted `c <= 1`, and coefficient-band mismatches were not rejected. All four are fixed, guarded in `check_finite_dictionary_reference.py`, replied to, and resolved. These changes harden the oracle only; they do not alter the finite dictionary theorem statements or promote any mathematical claim.
 
 ### PR #36 — explicit-formula admissibility seam
 
@@ -233,4 +235,4 @@ Nothing promotes itself.
 
 ## Immediate next step
 
-Continue **PR #35** in this order: full-grid source contraction and canonical test (started), reversal-even `v -> u` embedding, endpoint normalization, compact-support/continuity proofs, Volterra/trigonometric representation, then the `ghat`/`EF.paperFT` convention bridge. Do not invoke `EF_lit` until PR #36.
+Continue **PR #35** in this order: full-grid source contraction and canonical test (started), reversal-even `v -> u` embedding, endpoint normalization, compact-support/continuity proofs, Volterra/trigonometric representation, then the `ghat`/`Zeta23.paperFT` convention bridge. Do not invoke `EF_lit` until PR #36.
