@@ -25,22 +25,39 @@ It preserves the finite dictionary chain used by the source verification code:
 The zero-side and archimedean-tail routines from the upstream three-route script
 are deliberately omitted here: PR #35 uses this module only to regression-test
 the finite dictionary objects and transform convention.
+
+Precision is caller-owned: importing this module never mutates mpmath's global
+working precision.  The reference construction is defined only for the paper's
+positive-aperture domain c > 1 and for a coefficient vector of exactly N+1
+entries.
 """
 
 import mpmath as mp
-
-mp.mp.dps = 40
 
 
 class TestFn:
     """Finite dictionary test function in the pinned Groskin convention."""
 
     def __init__(self, c, N, v):
-        self.c = c
+        if not isinstance(N, int) or isinstance(N, bool) or N < 0:
+            raise ValueError("N must be a nonnegative integer")
+
+        values = list(v)
+        if len(values) != N + 1:
+            raise ValueError(
+                f"coefficient vector must have exactly N+1={N + 1} entries; "
+                f"got {len(values)}"
+            )
+
+        c_mp = mp.mpf(c)
+        if not c_mp > 1:
+            raise ValueError("c must satisfy c > 1 so L=log(c) is a positive aperture")
+
+        self.c = c_mp
         self.N = N
-        self.L = mp.log(c)
+        self.L = mp.log(c_mp)
         self.Delta = self.L / (2 * mp.pi)
-        self.v = [mp.mpf(x) for x in v]
+        self.v = [mp.mpf(x) for x in values]
 
         u = {0: self.v[0]}
         for k in range(1, N + 1):
@@ -101,6 +118,7 @@ class TestFn:
 
     def g(self, z):
         """Exact finite closed form for g_v(z)."""
+        z = mp.mpc(z)
         th = z * self.L
         tot = mp.mpc(0)
         for k in self.u:
@@ -116,10 +134,13 @@ class TestFn:
                 * self._int_poly_exp(al, be, 2 * mp.pi * k + th)
             )
         val = 2 * mp.pi * self.Delta * tot
-        return mp.re(val) if abs(mp.im(z)) < mp.mpf(10) ** -30 else val
+        # On the real axis the exact transform is real by evenness.  Away from
+        # the real axis preserve the full complex value so the oracle remains
+        # holomorphic and can expose complex-normalization errors.
+        return mp.re(val) if mp.im(z) == 0 else val
 
     def g_quad(self, r):
-        """Physical-space representation used to lock the EF.paperFT convention."""
+        """Physical-space representation used to lock the paperFT convention."""
         return mp.quad(lambda y: self.K(1 - y / self.L) * mp.cos(r * y), [0, self.L])
 
 
@@ -139,7 +160,9 @@ def regression_guards(c, N, v):
 
 
 if __name__ == "__main__":
-    # Worked-example-sized guard only; theorem authority remains Lean.
-    result = regression_guards(13, 4, [1, 2, -1, 3, 2])
-    for key, value in result.items():
-        print(f"{key}: {mp.nstr(value, 8)}")
+    # Match the source script's historical working precision only for the
+    # standalone smoke test; importing the module never changes caller state.
+    with mp.workdps(40):
+        result = regression_guards(13, 4, [1, 2, -1, 3, 2])
+        for key, value in result.items():
+            print(f"{key}: {mp.nstr(value, 8)}")
