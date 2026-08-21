@@ -13,8 +13,11 @@
       "route_id": "R001_exceptional_zero",
       "phase": "DISCOVERY",
       "claim_ids": [
+        "R001_FILTERED_ZERO_POLE",
+        "R001_WEIL_BRIDGE",
         "R001_ZERO_GROWTH",
         "R001_PRIME_UPPER",
+        "R001_PRIME_UPPER_EQUIV_RH",
         "C_RH"
       ],
       "route_spec_digest": null,
