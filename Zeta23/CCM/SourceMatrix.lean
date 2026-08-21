@@ -70,7 +70,6 @@ theorem sourcePotential_one_sub (n : ℤ) (y L : ℝ) :
   rw [show 2 * Real.pi * (n : ℝ) * (1 - y / L) =
       (n : ℝ) * (2 * Real.pi) - 2 * Real.pi * (n : ℝ) * y / L by ring]
   rw [Real.sin_int_mul_two_pi_sub]
-  ring
 
 /-- Periodicity conversion for the diagonal source data at `ω = 1-y/L`. -/
 theorem sourceDiagonal_one_sub (n : ℤ) (y L : ℝ) :
