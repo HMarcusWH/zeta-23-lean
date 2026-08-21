@@ -31,10 +31,10 @@ jobs:
           test: false
           lint: false
           use-mathlib-cache: true
-      - name: Build exceptional-zero foundation
-        run: lake build Zeta23.ExceptionalZero
       - name: Build CCM formalization
         run: lake build Zeta23.CCM
+      - name: Build exceptional-zero foundation
+        run: lake build Zeta23.ExceptionalZero
       - name: Reject forbidden placeholders in promoted subtrees
         run: |
           if grep -R -n -E '\bsorry\b|^[[:space:]]*axiom[[:space:]]' \
