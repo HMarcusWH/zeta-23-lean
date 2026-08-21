@@ -7,6 +7,11 @@
     "source_notebook_sha256": "aa6004b432f8baa3c9dc5c919b0f8df78621a84747f45bfda9fffc79a1d2e24d"
   },
   "formal_root": "Zeta23/CCM.lean",
+  "parameter_conventions": {
+    "source_lambda_to_aperture": "L = 2 * log(lam)",
+    "formal_lambda_wrapper": "Zeta23.CCM.finiteMatrixOfLambda",
+    "formal_aperture_core": "Zeta23.CCM.finiteMatrix"
+  },
   "mapping": {
     "q_basis": "Zeta23.CCM.qBasis",
     "rho": "Zeta23.CCM.archDensity",
@@ -18,7 +23,7 @@
     "pole_component": "Zeta23.CCM.poleComponent",
     "arch_component": "Zeta23.CCM.archComponent",
     "prime_component": "Zeta23.CCM.primeComponent",
-    "build_ccm_matrix": "Zeta23.CCM.finiteMatrix"
+    "build_ccm_matrix": "Zeta23.CCM.finiteMatrixOfLambda"
   },
   "claim_boundary": {
     "status": "FORMAL_PORT_IN_PROGRESS",
