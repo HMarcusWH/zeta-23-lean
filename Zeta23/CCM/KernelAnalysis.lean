@@ -1,5 +1,5 @@
 import Zeta23.CCM.Kernel
-import Mathlib.MeasureTheory.Integral.Bochner.Basic
+import Mathlib.MeasureTheory.Integral.CompactlySupported
 
 noncomputable section
 
@@ -34,11 +34,16 @@ theorem qBasis_aperture_eq_zero {L : ℝ} (hL : L ≠ 0) (n m : ℤ) :
       field_simp [hL]
       push_cast
       ring
-    rw [hn, hm]
-    simp
+    have hnum :
+        Real.sin (2 * Real.pi * (n : ℝ) * L / L) -
+            Real.sin (2 * Real.pi * (m : ℝ) * L / L) = 0 := by
+      rw [hn, hm]
+      simp
+    rw [hnum]
+    exact zero_div _
 
 /-- The pointwise support of the two-sided CCM kernel is contained in its closed aperture. -/
-theorem kernel_support_subset {L : ℝ} (hL : 0 ≤ L) (n m : ℤ) :
+theorem kernel_support_subset {L : ℝ} (n m : ℤ) :
     Function.support (kernel n m L) ⊆ Set.Icc (-L) L := by
   intro y hy
   have habs : |y| ≤ L := by
@@ -47,8 +52,8 @@ theorem kernel_support_subset {L : ℝ} (hL : 0 ≤ L) (n m : ℤ) :
     exact hy (kernel_eq_zero_of_lt_abs (n := n) (m := m) (L := L) (y := y) hlt)
   exact abs_le.mp habs
 
-/-- The CCM kernel has compact support for every nonnegative aperture. -/
-theorem kernel_hasCompactSupport {L : ℝ} (hL : 0 ≤ L) (n m : ℤ) :
+/-- The CCM kernel has compact support for every aperture. -/
+theorem kernel_hasCompactSupport {L : ℝ} (n m : ℤ) :
     HasCompactSupport (kernel n m L) := by
   refine HasCompactSupport.intro (isCompact_Icc : IsCompact (Set.Icc (-L) L)) ?_
   intro y hy
@@ -72,11 +77,12 @@ theorem kernel_continuous {L : ℝ} (hL : 0 < L) (n m : ℤ) :
     rw [hy]
     simp [qBasis_aperture_eq_zero hL0]
 
-/-- Continuous compact support makes every positive-aperture CCM kernel Bochner-integrable. -/
+/-- Continuous compact support makes every positive-aperture CCM kernel integrable against
+Lebesgue measure. -/
 theorem kernel_integrable {L : ℝ} (hL : 0 < L) (n m : ℤ) :
-    Integrable (kernel n m L) :=
+    Integrable (kernel n m L) MeasureTheory.volume :=
   (kernel_continuous hL n m).integrable_of_hasCompactSupport
-    (kernel_hasCompactSupport hL.le n m)
+    (kernel_hasCompactSupport n m)
 
 /-- The CCM kernel is real-valued even though it is represented as a complex-valued Weil test. -/
 @[simp] theorem kernel_im (n m : ℤ) (L y : ℝ) :
