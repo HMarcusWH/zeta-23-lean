@@ -29,7 +29,8 @@ the finite dictionary objects and transform convention.
 Precision is caller-owned: importing this module never mutates mpmath's global
 working precision.  The reference construction is defined only for the paper's
 positive-aperture domain c > 1 and for a coefficient vector of exactly N+1
-entries.
+entries.  The removable-singularity series is also summed to the caller's
+active `mp.eps`, rather than to a fixed term count.
 """
 
 import mpmath as mp
@@ -103,15 +104,40 @@ class TestFn:
 
     @staticmethod
     def _int_poly_exp(al, be, a):
-        """Integral_0^1 (al + be*w) exp(i*a*w) dw, complex a allowed."""
+        """Integral_0^1 (al + be*w) exp(i*a*w) dw, complex a allowed.
+
+        Near the removable singularity at `a = 0`, evaluate the two elementary
+        integrals by their convergent Taylor series and continue until the
+        active mpmath precision is reached.  This avoids both cancellation in
+        the closed formula and the fixed-25-term precision ceiling of the
+        upstream reference script.
+        """
+        a = mp.mpc(a)
         if abs(a) < mp.mpf(10) ** -8:
+            ia = 1j * a
             tot_a = mp.mpc(0)
             tot_b = mp.mpc(0)
-            for j in range(25):
-                cj = (1j * a) ** j
-                tot_a += cj / mp.factorial(j + 1)
-                tot_b += cj / mp.factorial(j) * (mp.mpf(1) / (j + 2))
+            power = mp.mpc(1)  # (i*a)^j
+            fact_j = mp.mpf(1)  # j!
+            j = 0
+            while True:
+                # int_0^1 exp(i*a*w) dw
+                term_a = power / (fact_j * (j + 1))
+                # int_0^1 w*exp(i*a*w) dw
+                term_b = power / (fact_j * (j + 2))
+                tot_a += term_a
+                tot_b += term_b
+
+                scale = max(mp.mpf(1), abs(tot_a), abs(tot_b))
+                if j > 0 and max(abs(term_a), abs(term_b)) <= mp.eps * scale:
+                    break
+
+                j += 1
+                power *= ia
+                fact_j *= j
+
             return al * tot_a + be * tot_b
+
         ia = 1j * a
         e = mp.exp(ia)
         return al * (e - 1) / ia + be * ((e * (ia - 1) + 1) / (ia ** 2))
