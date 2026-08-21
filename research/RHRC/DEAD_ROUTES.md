@@ -5,5 +5,7 @@ A route is listed here when it fails for a reusable reason. Failure is a valid r
 - **DR-001:** improve RH by a new scalar inequality consuming only the TightMult-visible single-compression statistics. Blocked by OBS-001.
 - **DR-002:** fixed local-ordinal zeta mapping as a bridge from finite CCM objects to zeta zeros. Rejected in the earlier CCM campaign.
 - **DR-003:** `curvature_gap` W96 as a hidden RH field. Rejected by matched adversarial null and transfer failure.
+- **DR-004:** close `R001_PRIME_UPPER` by ξ-modulation averaging plus the Montgomery–Vaughan mean value ("MV gives square-root cancellation"). Rejected by exponent bookkeeping: for window `T = e^{2βa}` the provable prime-side RMS is `max(√a, e^{(1−β)a}√a)` while the depth-δ exceptional RMS is `e^{(2δ−β)a}`; detection requires `δ > 1/2` in every regime, and the dilution deficit `e^{(2δ−1)a}` is window-independent. See `routes/R001_exceptional_zero/PRIME_SIDE_FEASIBILITY_2026_08_20.md`. A revival must remove the MV additive `Σ n|c_n|²` penalty at `T ≪ X` — itself zero-density/RH-strength information.
+- **DR-005:** close `R001_PRIME_UPPER` as an independent scalar arithmetic estimate at all. Blocked by OBS-008 (formal): the scalar target is a Lean-proved equivalent of RH, so "apply PNT harder" cannot terminate the route.
 
 Do not silently resurrect a dead route. A revival must state which blocking premise has changed.
