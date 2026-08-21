@@ -1,0 +1,53 @@
+{
+  "schema_version": "CONNES_CVS_REFERENCE_v1",
+  "captured_utc": "2026-08-21T19:49:00Z",
+  "purpose": "Reference-only external implementation and theorem-source map for the R003 CCM normalization and finite Guinand-Weil dictionary audit.",
+  "upstream": {
+    "canonical_repository": "akivag613/connes-cvs-",
+    "working_fork": "HMarcusWH/connes-cvs-",
+    "working_fork_commit": "5a66d0cd177ef8b8ad1c2c93165b8d56ca40292c",
+    "license": "MIT",
+    "license_file": "research/RHRC/external/connes_cvs/LICENSE"
+  },
+  "pinned_sources": [
+    {
+      "path": "papers/2_guinand_weil_dictionary_tail_order/scripts/verify_dictionary_threeroute.py",
+      "blob_sha": "90576ea92835fff2f9dd2e3aa63ad99829bd17e5",
+      "role": "Cutoff-free CCM closed-form assembly and finite dictionary reference."
+    },
+    {
+      "path": "papers/2_guinand_weil_dictionary_tail_order/scripts/audit_full_matrix_source_quotient.py",
+      "blob_sha": "61ef2494805b86cbc3687b8028fd704762f47956",
+      "role": "Exact 2N+1 finite source quotient reference."
+    },
+    {
+      "path": "papers/3_matrix_von_mangoldt_measure/scripts/check_canonical_scale.py",
+      "blob_sha": "360a2b8bc5b6dd32f160b9dd2e31446783426952",
+      "role": "Prime-power cutoff-flow rank-one jump reference."
+    },
+    {
+      "path": "connes_cvs/operator.py",
+      "blob_sha": "07dde0ca2f2811ebbf80fc4d2e2fff6869d4e7fa",
+      "role": "Parity-safe numerical ground-state and zero-extraction implementation reference."
+    }
+  ],
+  "papers": [
+    {
+      "arxiv": "2607.02828v3",
+      "title": "A finite Guinand-Weil dictionary and archimedean tail order for the truncated Weil quadratic form",
+      "version_date": "2026-08-14"
+    },
+    {
+      "title": "A matrix-valued von Mangoldt measure in the finite Connes-van Suijlekom path",
+      "version": "corrected v2",
+      "source": "papers/3_matrix_von_mangoldt_measure"
+    }
+  ],
+  "policy": {
+    "reference_code_is_theorem_dependency": false,
+    "reference_numerics_can_promote_claims": false,
+    "lean_and_comparator_remain_theorem_authority": true,
+    "external_code_must_remain_outside_Zeta23": true,
+    "normalization_lock_required_before_R003_bridge_proof": true
+  }
+}

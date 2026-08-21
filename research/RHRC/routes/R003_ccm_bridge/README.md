@@ -1,546 +1,292 @@
-# R003 — CCM / explicit-formula / zero-side aperture bridge
+# R003 — CCM / finite Guinand–Weil / zero-side bridge
 
 Status: **DISCOVERY**. RH remains open.
 
-The finite CCM matrix is theorem-authoritative in `Zeta23.CCM`. PR #30 proved its exact finite
-index-displacement identity in Lean, and PR #31 closed the analytic kernel foundation for positive
-aperture: continuity, compact support, integrability, and real-valuedness are compiler-checked.
+This README is the **active route SSOT** after PR #33's Connes/CvS/Groskin normalization audit. The pre-literature transform-first roadmap has been preserved verbatim in `PRE_GROSKIN_ROADMAP_2026_08_21.md` for historical context and fallback lemmas, but it is **not** the active implementation order.
 
-The remaining bridge is deliberately split into two different mathematical obligations:
+## Current theorem boundary
 
-1. **deterministic RHS identity** — prove the literature explicit-formula RHS evaluated on the CCM
-   kernel equals the formal finite CCM matrix up to the scalar shift;
-2. **explicit-formula regularity extension** — prove that the actual zeta zero-side sum equals that
-   literature RHS for the continuous, compactly supported, piecewise-smooth CCM kernel.
+The finite fork-owned CCM object is theorem-authoritative in `Zeta23.CCM`.
 
-These arrows must not be conflated:
+Compiler-checked Lean facts already include:
 
-```text
-formal CCM matrix M
-    |
-    |  R003_CCM_RHS_IDENTITY
-    v
-EF.literatureRHS(K)
-    ^
-    |  R003_KERNEL_EF_EXTENSION
-    |
-actual zeta zero-side matrix G
-```
-
-Only when both arrows are proved may `R003_CCM_BRIDGE` be promoted.
-
-## Locked objects
-
-- **CCM matrix**: `Zeta23.CCM.finiteMatrix L N`, with source-level wrapper
-  `finiteMatrixOfLambda lam N` using the exact conversion `L = 2 log lam`.
-- **Index operator**: `Zeta23.CCM.indexMatrix N`.
-- **Formal finite displacement theorem**:
-  `Zeta23.CCM.finiteMatrix_displacement` and
-  `Zeta23.CCM.rank_finiteMatrix_displacement_le_two`.
-- **CCM test kernel**:
-  `Zeta23.CCM.kernel n m L y = qBasis n m |y| L` on `|y| <= L`, zero outside.
-- **Deterministic target object**: `EF.literatureRHS (kernel n m L)`; this is not yet called a
-  zero-side Gram matrix because `kernel` is not an admissible `C_c²` test for the current `EF_lit`
-  theorem, and off-line zeros give complex `gammaOf` values.
-
-All bridge theorems in this route are stated for **positive aperture `0 < L`**.
-
-## Exact finite displacement result closed
-
-For positive aperture `L`, the formal CCM entry satisfies
+- the formal finite CCM matrix `Zeta23.CCM.finiteMatrix L N`;
+- the exact source wrapper `finiteMatrixOfLambda lam N` with `L = 2 * log lam`;
+- continuity, compact support, integrability and real-valuedness of the CCM kernel for `0 < L`;
+- exact finite index displacement
 
 ```text
-(n-m) M_nm = g_n - g_m,
-```
-
-with
-
-```text
-g_n = poleSeq n L + alphaL n L + primeSeq n L.
-```
-
-Consequently, on the centered finite grid,
-
-```text
-[D,M] = g 1^T - 1 g^T,
+(n-m) M_nm = g_n - g_m
+[D,M] = g 1^T - 1 g^T
 rank([D,M]) <= 2.
 ```
 
-This is compiler-checked Lean mathematics for the actual formal CCM matrix, not merely a
-Python/SymPy identity. It is registered as `R004_CCM_DISPLACEMENT_FORMAL`.
+The displacement theorem is retained as a structural theorem. After comparison with the divided-difference literature, low displacement rank is treated as a **generic Loewner/divided-difference chassis property**, not as RH-specific evidence.
 
-## Kernel foundation closed
-
-PR #31 proved in Lean, for `0 < L`:
+The following claims remain open:
 
 ```text
-qBasis_continuous
-qBasis_aperture_eq_zero
-kernel_support_subset
-kernel_hasCompactSupport
-kernel_continuous
-kernel_integrable
-kernel_im
+R003_CCM_RHS_IDENTITY
+R003_KERNEL_EF_EXTENSION
+R003_CCM_BRIDGE
+R003_WEIL_DISPLACEMENT
+C_RH
 ```
 
-Thus the CCM kernel is a real-valued element of `C_c(ℝ)` supported in `[-L,L]`.
+No finite numerical/source audit promotes any of these claims.
 
-### Exact regularity diagnosis
+## Post-paper normalization lock
 
-The remaining regularity seam is **not only the `|y|` cusp at zero**. The kernel is continuous but
-has derivative jumps at all three interfaces
+PR #33 pins an independent cutoff-free Connes–van Suijlekom / Connes–Consani–Moscovici implementation from the Groskin finite Guinand–Weil verification package under
 
 ```text
-y = -L, 0, +L.
+research/RHRC/external/connes_cvs/
 ```
 
-For every Fourier pair `n,m` and `L > 0`, the one-sided basis derivative satisfies
+and keeps it outside the Lean theorem dependency graph.
+
+The reference audit separates three conventions:
 
 ```text
-qBasis'(0) = -2/L,
-qBasis'(L) = -2/L.
+M        fork-owned formal CCM matrix
+Q_inf    cutoff-free CvS/CCM Galerkin matrix in Groskin's dictionary
+WeilGram inherited explicit-formula normalization used by the earlier R003 diagnostics
 ```
 
-Because `kernel(y) = qBasis(|y|)` inside the aperture and is zero outside, its one-sided derivatives
-are therefore
+Across the frozen audit grid, the independent source formulas identify
 
 ```text
-K'(-L-) = 0,       K'(-L+) = +2/L,
-K'(0-)  = +2/L,    K'(0+)  = -2/L,
-K'(+L-) = -2/L,    K'(+L+) = 0.
+Q_inf = M + 2*cCorrection(L)*I
 ```
 
-Any integration-by-parts proof of transform decay must carry the boundary contributions from these
-three derivative jumps. It is invalid to integrate only across the two smooth half-intervals and
-silently discard the `±L` endpoint terms.
-
-The regularization step smooths all three corners simultaneously; it is not merely a repair of the
-origin cusp.
-
-## Reuse the existing App-A machinery
-
-Do **not** re-prove the generic explicit-formula normalization. `Zeta23/ExplicitFormula.lean`
-already provides the reusable infrastructure:
+with primitive map
 
 ```text
-EF.prime_summand_eq_zero
-EF.prime_term
-EF.pole_term
-EF.gamma_term
-EF.literatureRHS_eq_integral_nu
-EF.weilTest_contDiff
-EF.weilTest_hasCompactSupport
-EF.paperFT_weilTest
+alpha_reference = alpha_ours
+beta_reference  = beta_ours
+gamma_reference = gamma_ours - cCorrection(L)
+pole_reference  = pole_ours.
 ```
 
-The CCM formalization should specialize those theorems wherever possible rather than rebuild
-support truncation, Fourier inversion, Fubini, pole-weight transforms, or App-A channel assembly.
-
-## Deterministic scalar-shift target
-
-The literature RHS is
+Combined with PR #29's earlier finite diagnostic
 
 ```text
-RHS(K) = PoleLit(K) - PrimeLit(K) + ArchLit(K).
+WeilGram = 2*M + 4*cCorrection(L)*I,
 ```
 
-The working candidate, supported by finite diagnostics but not yet theorem-authoritative, is
+the current **normalization target** is
 
 ```text
-RHS(K_nm) = 2*M_nm + 4*cCorrection(L)*delta_nm.
+WeilGram = 2*Q_inf.
 ```
 
-Equivalently, after exact pole and prime matching, the central analytic identity is
+This is a target for Lean formalization, not a promoted theorem.
+
+### Audit artifacts
+
+- `CCM_NORMALIZATION_LOCK_v1.json` — curated, reviewed provenance/route lock. It is not generated automatically.
+- `compare_ccm_normalizations.py` — reproducible falsification/normalization audit.
+- `CCM_NORMALIZATION_AUDIT_latest.json` — generated local detailed audit artifact; not theorem authority and not required to be committed.
+- `NORMALIZATION_AUDIT_2026_08_21.md` — human-readable convention analysis and reproduction instructions.
+
+The audit script deliberately refuses to overwrite the curated lock.
+
+## Active mathematical architecture
+
+The route is now split into four finite obligations before any finite-to-infinite campaign:
 
 ```text
-ArchLit(n,m,L) + 2*archComponent(n,m,L)
-  = 4*cCorrection(L)*delta_nm.
+formal CCM matrix / generic divided-difference source calculus
+        |
+        v
+finite Guinand–Weil dictionary objects
+        |
+        v
+explicit-formula admissibility adapter
+        |
+        v
+exact zeta zero-side / CCM matrix identity
 ```
 
-This is deterministic analysis and can be proved before the non-`C_c²` regularity seam is solved.
+Only after that finite bridge is theorem-closed do we build the spectral/entire-function machinery needed to decide which finite-to-infinite route is genuinely attackable.
 
-## Transform control moves forward
+## Active implementation sequence
 
-Transform decay is needed before regularization. The deterministic archimedean analysis already
-needs the real-axis facts
+### PR #33 — reference transplant + normalization audit
 
-```text
-|paperFT(K)(r)| <= C / (1 + r^2)
-paperFT(K) in L^1(ℝ)
-paperFT(K) * mu in L^1(ℝ).
-```
-
-The later zero-side limit additionally needs the strip version
-
-```text
-|paperFT(K)(z)| <= C / (1 + |z|^2),   |Im z| <= 1/2.
-```
-
-### Transform proof spike A — closed form
-
-Formalize the already-derived closed transform, prove the apparent poles are removable, and obtain
-real-axis and strip bounds from the rational expression.
-
-### Transform proof spike B — piecewise integration by parts
-
-Work on the two interior smooth pieces `[-L,0]` and `[0,L]`, but explicitly preserve all boundary
-terms. The first integration by parts uses `K(±L)=0`; the `K(0)` contributions cancel between the two
-pieces. The second integration by parts produces finite boundary terms from the one-sided derivative
-values at `-L`, `0`, and `+L`, plus integrals of the piecewise second derivative.
-
-The proof obligation is therefore to formalize, for the explicit `qBasis` pieces:
-
-```text
-qBasis'(0) = -2/L
-qBasis'(L) = -2/L
-piecewise K'' is integrable on [-L,0] and [0,L]
-```
-
-and then derive `O(|z|^-2)`. For the strip bound, the same calculation carries an extra bounded
-factor `exp(L/2)` from `|Im z| <= 1/2`. For small `|z|`, use the trivial compact-support/L1 bound;
-for large `|z|`, use the twice-integrated formula. This yields the desired
-`C/(1+|z|^2)` form without pretending the derivative jumps vanish.
-
-Keep whichever spike is materially smaller in Lean. The closed-form and integration-by-parts paths
-are alternatives, not cumulative requirements.
-
-## Exact prime channel — specialize, do not rebuild
-
-`EF.prime_summand_eq_zero` already proves that a test supported in `[-L,L]` has no literature prime
-contribution above `floor(exp L)`. The CCM-specific proof only needs to:
-
-1. provide the kernel support bound;
-2. use kernel evenness;
-3. identify `kernel(log k)` with `qBasis(log k)` inside the aperture;
-4. remove the `k=1` term (`Λ(1)=0`);
-5. identify the finite result with `2 * primeComponent`.
-
-Target:
-
-```text
-PrimeLit(K_nm) = 2*primeComponent(n,m,L).
-```
-
-No PNT or new arithmetic estimate enters this step.
-
-## Exact pole channel — choose the shorter specialization
-
-`EF.pole_term` already owns the generic inversion/Fubini/pole-weight calculation. Compare two CCM
-proof spikes:
-
-- direct evaluation of `paperFT K (±i/2)` from the explicit basis; or
-- specialization of `EF.pole_term` followed by evaluation against `PiX`.
-
-Keep whichever produces the smaller formal proof. Target:
-
-```text
-paperFT(K_nm)(i/2) + paperFT(K_nm)(-i/2)
-  = 2*poleComponent(n,m,L).
-```
-
-## Archimedean identity
-
-After pole and prime channels are formally closed, prove
-
-```text
-ArchLit(n,m,L) + 2*archComponent(n,m,L)
-  = 4*cCorrection(L)*delta_nm.
-```
-
-Split immediately.
-
-### Off diagonal
-
-For `n != m`, `K_nm(0)=0`:
-
-```text
-ArchLit(n,m,L) = -2*archComponent(n,m,L).
-```
-
-### Diagonal
-
-For `n = m`, `K_nn(0)=2`:
-
-```text
-ArchLit(n,n,L) + 2*archComponent(n,n,L)
-  = 4*cCorrection(L).
-```
-
-The diagonal theorem must prove cancellation of all index-dependent terms. Numerical scalar-shift
-agreement is discovery evidence only and may not be used as a proof premise.
-
-Use `EF.gamma_term` and `EF.literatureRHS_eq_integral_nu` where they reduce normalization work.
-The `gammaBracket` / `mu` normalization is already owned by App A.
-
-## Regularity adapter: explicit C² mollifier
-
-The existing `EF_lit` theorem remains unchanged. Extend it downstream with a concrete compactly
-supported `C²` approximate identity.
-
-Use
-
-```text
-eta(x) = (35/32) * (1-x^2)^3   for |x| <= 1,
-         0                      otherwise.
-```
-
-At `x = ±1`, the function and its first two derivatives vanish, and
-
-```text
-integral_{-1}^1 (1-x^2)^3 dx = 32/35,
-```
-
-so `eta` is exactly normalized. Scale by
-
-```text
-eta_eps(x) = eps^-1 * eta(x/eps),   eps > 0.
-```
-
-Define
-
-```text
-K_eps := EF.weilTest eta_eps K.
-```
-
-For the real-even CCM kernel, prove `EF.tilde K = K`; then reuse
-
-```text
-EF.weilTest_contDiff
-EF.weilTest_hasCompactSupport
-EF.paperFT_weilTest
-```
-
-to obtain `K_eps in C_c²` and the transform multiplier formula. This convolution smooths the origin
-and both aperture endpoints at once.
-
-## Limits needed for the adapter
-
-Use channel-specific limits; do not require a global uniform approximate-identity theorem unless it
-turns out to be shorter in Lean.
-
-### Prime channel
-
-For `eps <= 1`, all `K_eps` are supported in `[-L-1,L+1]`, so every prime term lies in one fixed
-finite set. Pointwise convergence at those finitely many `±log n` values is enough.
-
-### Pole channel
-
-Use fixed-point transform convergence at `z = ±i/2`.
-
-### Archimedean channel
-
-For real `r`, nonnegativity and normalization of `eta_eps` give
-
-```text
-|paperFT(eta_eps)(r)| <= 1,
-```
-
-hence
-
-```text
-|paperFT(K_eps)(r)| <= |paperFT(K)(r)|.
-```
-
-The real-axis `paperFT(K)*mu` integrability established during deterministic analysis is the
-majorant for dominated convergence.
-
-### Zero side
-
-For zeta zeros, `|Im gammaOf(rho)| <= 1/2`. For `eps <= 1`, prove
-
-```text
-|paperFT(eta_eps)(gammaOf rho)| <= exp(1/2),
-```
-
-and therefore
-
-```text
-|paperFT(K_eps)(gammaOf rho)|
-  <= exp(1/2) * |paperFT(K)(gammaOf rho)|.
-```
-
-Combine the strip `O(|z|^-2)` bound with the existing weighted zero-count summability. No uniform
-control of second derivatives of `K_eps` is required.
-
-Endpoint theorem:
-
-```text
-sum_rho m_rho * paperFT(K)(gammaOf rho)
-  = EF.literatureRHS(K).
-```
-
-## Naming discipline
-
-Before RH, do not call
-
-```text
-sum_rho m_rho * paperFT(K_nm)(gammaOf rho)
-```
-
-a `Gram` matrix: off-line zeros make `gammaOf rho` complex and positivity has not been established.
-Use `zeroSideEntry` / `zeroSideMatrix` (or `weilZeroEntry` / `weilZeroMatrix`). Reserve `Gram`
-terminology for a theorem that establishes an actual Gram interpretation under suitable on-line
-hypotheses.
-
-## Corrected implementation sequence after this roadmap PR
-
-PR #32 is this architecture/governance correction. The mathematical implementation resumes at
-**PR #33**.
-
-### PR #33 — transform control + exact easy channels
-
-Create:
-
-```text
-Zeta23/CCM/KernelTransform.lean
-Zeta23/CCM/WeilRHS.lean
-```
-
-First formalize the interface derivative facts needed by the fallback integration-by-parts route:
-
-```text
-qBasis_deriv_zero
-qBasis_deriv_aperture
-```
-
-or equivalent `HasDerivAt` statements proving the common value `-2/L`.
-
-Then deliver:
-
-```text
-real-axis O(r^-2) transform bound
-paperFT(K) in L^1
-exact prime channel
-exact pole channel
-deterministic rhsEntry / rhsMatrix objects
-```
-
-If the closed-form route wins, the derivative lemmas remain useful regularity documentation but the
-transform proof need not use them.
-
-### PR #34 — exact archimedean scalar shift
-
-Create:
-
-```text
-Zeta23/CCM/ArchimedeanBridge.lean
-Zeta23/CCM/RHSBridge.lean
-```
+**Current PR. Reference/audit only. No claim promotion.**
 
 Deliver:
 
-```text
-paperFT(K)*mu in L^1
-ArchLit + 2*archComponent = 4*cCorrection(L)*delta_nm
-rhsMatrix = 2*finiteMatrix + 4*cCorrection(L)*I
-[D,rhsMatrix] = 2*(g1^T - 1g^T)
-rank([D,rhsMatrix]) <= 2
-```
+- pinned external provenance and MIT license;
+- cutoff-free CCM reference oracle;
+- fail-closed normalization audit;
+- curated normalization lock;
+- CI firewall preventing external Python from entering the Lean theorem graph;
+- this route SSOT correction.
 
-Only then promote `R003_CCM_RHS_IDENTITY`.
+Merge gate: exact-head RHRC, normalization audit, Lean CCM/ExceptionalZero builds, and placeholder gate all green.
 
-### PR #35 — explicit-formula regularity adapter
+### PR #34 — generic divided-difference / source calculus
 
-Create:
-
-```text
-Zeta23/CCM/Mollifier.lean
-Zeta23/CCM/Regularization.lean
-```
-
-Deliver the strip transform bound if not already available, the explicit polynomial `C²` mollifier,
-`weilTest` smoothing, channel-by-channel limits, and
+Create approximately:
 
 ```text
-zero-side sum(K) = EF.literatureRHS(K).
+Zeta23/CCM/DividedDifference.lean
+Zeta23/CCM/SourceMatrix.lean
 ```
 
-Only then promote `R003_KERNEL_EF_EXTENSION`.
-
-### PR #36 — final finite zero-side assembly
-
-Create:
+Formalize the generic matrix
 
 ```text
-Zeta23/CCM/WeilBridge.lean
+Q_psi(m,n) = (psi(m)-psi(n))/(m-n)   for m != n
+Q_psi(n,n) = psi'(n)
 ```
 
-Define `zeroSideEntry` / `zeroSideMatrix`, then prove
+and prove the generic displacement identity. Then specialize the single-frequency source calculus used in the finite dictionary.
+
+Purpose: formally separate the universal divided-difference chassis from zeta-specific information.
+
+### PR #35 — finite Guinand–Weil dictionary objects
+
+Create approximately:
 
 ```text
-zeroSideMatrix = rhsMatrix
-zeroSideMatrix = 2*finiteMatrix + 4*cCorrection(L)*I
-[D,zeroSideMatrix] = 2*(g1^T - 1g^T)
-rank([D,zeroSideMatrix]) <= 2
+Zeta23/CCM/FiniteDictionary.lean
 ```
 
-Only then promote `R003_CCM_BRIDGE` and `R003_WEIL_DISPLACEMENT`.
-
-## Closed-form transform — discovery evidence
-
-With `a = 2πm/L`, `b = 2πn/L`, the diagnostic derivation gives
+Formalize the exact finite chain
 
 ```text
-n != m:
-  h(r) = (2/(π(n-m))) (1-cos(rL))
-         * [a/(a^2-r^2) - b/(b^2-r^2)]
-
-n = m:
-  h(r) = (2/L) (1-cos(rL))
-         * [1/(b+r)^2 + 1/(b-r)^2].
+v -> symmetric coefficients u
+  -> T_v
+  -> K_v
+  -> ghat_v
+  -> g_v
 ```
 
-The apparent poles are removable. This remains discovery guidance until formalized.
+and prove the finite source-contraction identity before invoking the zeta explicit formula.
 
-## Numerical scalar-shift diagnostic
+The pinned Groskin implementation is an external oracle only; Lean owns the theorem.
 
-`confirm_closed_form.py`, `mp.dps = 20`:
+### PR #36 — explicit-formula admissibility seam
 
-| lambda | c_raw | offdiag systematic | corrected c | `4*cCorrection(L)` | abs diff | diag spread |
-|---|---:|---:|---:|---:|---:|---:|
-| 2 | 1.076281434379 | 2.48e-07 | 1.076281186271 | 1.076281186271 | 5.6e-15 | 4.5e-09 |
-| 3 | 1.408303228758 | -1.05e-07 | 1.408303333375 | 1.408303333375 | 1.3e-15 | 1.1e-09 |
-| 5 | 1.616560903218 | 4.93e-08 | 1.616560853940 | 1.616560853940 | 2.2e-16 | 3.6e-10 |
-| 7 | 1.681430174226 | -5.57e-08 | 1.681430229916 | 1.681430229916 | 2.2e-16 | 2.1e-10 |
+Run two bounded proof spikes and keep only the smaller production route:
 
-This is discovery evidence only. The corrected machine-precision agreement is not theorem
-authority and is not used as a proof premise.
+1. broaden the inherited explicit-formula interface to the admissibility class used by the finite dictionary; or
+2. use the existing explicit `C^2` smoothing/mollifier adapter downstream of `EF_lit`.
 
-## Proof-search ladder
+The old transform-decay, interface-jump and mollifier analysis in `PRE_GROSKIN_ROADMAP_2026_08_21.md` remains valid fallback material for this PR, but no longer dictates the ordering.
 
-| step | statement | status |
-|---|---|---|
-| J1-D-formal | exact `[D,M] = g1^T - 1g^T`, rank <= 2 for formal CCM matrix | **PROVED IN LEAN** |
-| K0 | continuity/compact support/integrability/real-valuedness of CCM kernel | **PROVED IN LEAN** |
-| K1 | derivative/interface data at `-L,0,+L` used by piecewise transform analysis | OPEN |
-| T0 | real-axis `O(r^-2)` transform control and Fourier integrability | OPEN |
-| B0 | exact pole-channel identity | OPEN |
-| B1 | exact prime-channel identity | OPEN |
-| B2 | deterministic reduction to the archimedean channel | OPEN until B0+B1 are Lean-closed |
-| B3 | exact archimedean scalar-shift identity | OPEN |
-| B4 | `RHSMatrix = 2*M + 4*cCorrection(L)*I` | OPEN |
-| E0 | strip `O(|z|^-2)` transform control for `|Im z| <= 1/2` | OPEN |
-| E1 | extend zeta `EF_lit` from `C_c²` approximants to the CCM kernel | OPEN |
-| J5 | actual zero-side matrix `G = 2*M + 4*cCorrection(L)*I` | OPEN |
-| J5-D | exact `[D,G] = 2(g1^T - 1g^T)`, rank <= 2 | OPEN |
-| J6 | finite-to-infinite operator/normalization seam | OPEN |
+### PR #37 — exact finite zero-side / CCM bridge
 
-## Claim boundary
+Prove the formal finite Guinand–Weil identity and reconcile it with the fork-owned CCM normalization locked by PR #33.
 
-- `R004_CCM_DISPLACEMENT_FORMAL`: PROVED_UNCONDITIONAL.
-- `R003_CCM_RHS_IDENTITY`: OPEN.
-- `R003_KERNEL_EF_EXTENSION`: OPEN.
-- `R003_CCM_BRIDGE`: OPEN and depends on both claims above.
-- `R003_WEIL_DISPLACEMENT`: OPEN.
-- RH: OPEN.
+Define `zeroSideEntry` / `zeroSideMatrix` (not `Gram` before positivity is proved) and close the registered finite bridge claims only if their exact Lean statements are discharged.
 
-No finite-to-infinite theorem, RH implication, new prime-side upper bound, or zero-side positivity
-theorem is claimed.
+Expected convention target:
 
-## Reproduction
-
-```bash
-pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
-python research/RHRC/routes/R003_ccm_bridge/check_diagonal_shift.py --lambdas 2 3 5 --ns -3 -2 -1 0 1 2 3
-python research/RHRC/routes/R003_ccm_bridge/confirm_closed_form.py
+```text
+zero-side / inherited Weil matrix = 2*Q_inf
+Q_inf = M + 2*cCorrection(L)*I
 ```
+
+The audit cannot be cited as proof; the convention map must be established in Lean.
+
+### PR #38 — exact finite source quotient + information-loss API
+
+Formalize the `2N+1`-dimensional source quotient through the coordinates
+
+```text
+int omega dmu
+int sin(2*pi*k*omega) dmu
+int omega*cos(2*pi*k*omega) dmu, 1 <= k <= N.
+```
+
+Purpose: make explicit exactly what finite CCM compression can and cannot see, and use this as an information-loss gate for later RH routes.
+
+### PR #39 — prime-cutoff / von Mangoldt matrix flow
+
+Formalize the cutoff path in `u = log c` and the prime-power event law
+
+```text
+Delta Q'_N = -2*Lambda(q)/(sqrt(q)*log(q)) * 11^T.
+```
+
+Keep this initially to exact finite event, sign and rank statements. Do not promote stronger string/resolvent interpretations without their missing hypotheses.
+
+### PR #40 — parity + extremal spectral API
+
+Formalize reversal symmetry, even/odd block decomposition and a precise reduction of the CCM even-simple gate. Integrate the cutoff-flow consequence that prime-event rank-one shocks live in the even sector.
+
+This does not by itself prove the global ground state is simple and even.
+
+### PR #41 — finite characteristic / XiHat API
+
+Formalize the pole-cancelled entire function built from a finite extremal eigenvector, including removable singularities, node interpolation and parity.
+
+Bind it to the finite self-adjoint/real-spectrum construction only as far as the literature theorem and Lean dependencies justify.
+
+### PR #42 — barycentric eigenvector equation
+
+Derive, rather than assume, the exact arithmetic interpolation identity obtained by combining the CCM eigenvector equation with the divided-difference law.
+
+The previously proposed formula is schematic until Lean derives its exact signs and scales.
+
+After #42, **freeze implementation and run a route-selection gate** before committing to another theorem sequence.
+
+## Post-#42 route-selection gate
+
+Candidate campaigns include:
+
+- fixed-`L`, `N -> infinity` Galerkin convergence;
+- aperture `L -> infinity` after fixed-aperture control;
+- an R002-style finite off-line obstruction using exact zero-side finite operators;
+- a Suzuki-style localized self-adjoint / compact-uniform convergence route as an independent control architecture.
+
+Every proposed route must identify:
+
+1. the exact missing theorem;
+2. why it is weaker than RH rather than RH rewritten;
+3. which already-formal finite structure attacks it;
+4. a cheap falsifier/negative control;
+5. the smallest theorem that would materially advance the route.
+
+## Preserved fallback analysis
+
+The former README has been archived verbatim as
+
+```text
+PRE_GROSKIN_ROADMAP_2026_08_21.md
+```
+
+It contains the detailed pre-paper analysis of:
+
+- derivative jumps at `-L, 0, +L`;
+- two transform-decay proof spikes;
+- prime and pole channel specializations;
+- the archimedean scalar-shift calculation;
+- explicit `C^2` mollification and channel-specific limits;
+- closed-form transform diagnostics;
+- the older #33–#36 transform-first implementation sequence.
+
+Those calculations remain useful as lemmas or fallback proof routes. The archived PR numbering and ordering are **superseded** and must not be treated as active authorization.
+
+## Naming and authority discipline
+
+Before RH, do not call the unconditional zero-side finite matrix a `Gram` matrix merely because it resembles one: off-line zeros make the transformed ordinates complex and positivity has not been established.
+
+Authority hierarchy:
+
+```text
+Lean / comparator theorem checks   mathematical authority
+RHRC receipts                       provenance / governance
+external connes-cvs Python          oracle / falsifier only
+finite numerics                     diagnostic only
+```
+
+Nothing promotes itself.
+
+## Immediate next step after PR #33
+
+Once PR #33 is exact-head green and merged, begin **PR #34: generic divided-difference/source calculus**. Do not restart the superseded transform-first #33 plan.

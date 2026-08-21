@@ -20,6 +20,26 @@ jobs:
       - name: RHRC claim and regression suite
         run: python research/RHRC/tools/run_suite.py
 
+  r003-normalization-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install R003 numerical audit requirements
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Re-run cutoff-free CCM normalization lock
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/compare_ccm_normalizations.py \
+            --output /tmp/CCM_NORMALIZATION_AUDIT.json
+      - name: Reject external reference code as a Lean dependency
+        run: |
+          if grep -R -n -E 'external[/\.]connes_cvs|connes_cvs' Zeta23 --include='*.lean'; then
+            echo 'External connes-cvs reference code must not enter the Lean theorem dependency graph'
+            exit 1
+          fi
+
   lean:
     runs-on: ubuntu-latest
     steps:
