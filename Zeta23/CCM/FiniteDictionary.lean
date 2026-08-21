@@ -52,9 +52,11 @@ theorem sourceContract_one (N : ℕ) (u : Fin (2 * N + 1) → ℂ) :
     sourceContract N u 1 = 2 * coefficientMass N u := by
   rw [sourceContract, sourceMatrix_one]
   unfold quadraticForm coefficientMass
-  simp only [smul_apply, one_apply]
   calc
-    (∑ i, ∑ j, (starRingEnd ℂ) (u i) * ((2 : ℂ) * if i = j then 1 else 0) * u j) =
+    (∑ i, ∑ j,
+        (starRingEnd ℂ) (u i) *
+          (((2 : ℂ) • (1 : Matrix (Fin (2 * N + 1)) (Fin (2 * N + 1)) ℂ)) i j) *
+          u j) =
         ∑ i, (starRingEnd ℂ) (u i) * 2 * u i := by
           apply Finset.sum_congr rfl
           intro i hi
@@ -124,7 +126,6 @@ theorem dictionaryTest_zero
     (N : ℕ) (u : Fin (2 * N + 1) → ℂ) {L : ℝ} (hL : 0 < L) :
     dictionaryTest N u L 0 = coefficientMass N u := by
   simp [dictionaryTest, hL.le, dictionaryKernel_one]
-  ring
 
 /-- The right aperture endpoint vanishes exactly. -/
 @[simp] theorem dictionaryTest_right_endpoint
@@ -153,7 +154,7 @@ theorem dictionaryTest_support_subset
 theorem dictionaryTest_hasCompactSupport
     (N : ℕ) (u : Fin (2 * N + 1) → ℂ) (L : ℝ) :
     HasCompactSupport (dictionaryTest N u L) := by
-  refine HasCompactSupport.intro isCompact_Icc ?_
+  refine HasCompactSupport.intro (K := Icc (-L) L) isCompact_Icc ?_
   intro y hy
   by_contra hzero
   exact hy (dictionaryTest_support_subset N u L hzero)
@@ -201,7 +202,8 @@ theorem dictionaryTest_hasCompactSupport
 @[fun_prop] theorem continuous_dictionaryKernel
     (N : ℕ) (u : Fin (2 * N + 1) → ℂ) :
     Continuous (dictionaryKernel N u) := by
-  simpa [dictionaryKernel] using continuous_sourceContract N u
+  unfold dictionaryKernel
+  exact continuous_sourceContract N u
 
 /-- Continuous clamped source coordinate used to remove the piecewise boundary
 from the continuity proof. -/
