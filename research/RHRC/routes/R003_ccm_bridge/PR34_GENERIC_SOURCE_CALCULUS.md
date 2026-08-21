@@ -1,8 +1,8 @@
 # PR #34 — generic divided-difference / source calculus
 
-Status: **implementation in progress; no RHRC claim promotion**.
+Status: **exact-head green; ready to merge; no RHRC claim promotion**.
 
-This PR implements the first theorem layer after PR #33's normalization lock.  Its purpose is to separate the universal finite divided-difference chassis from the zeta-specific channel formulas before the finite Guinand--Weil dictionary is formalized.
+This PR implements the first theorem layer after PR #33's normalization lock. Its purpose is to separate the universal finite divided-difference chassis from the zeta-specific channel formulas before the finite Guinand--Weil dictionary is formalized.
 
 ## Scope
 
@@ -26,7 +26,7 @@ Q_psi,d(n,m) = d(n)                         if n = m
 
 The diagonal is deliberately independent of `psi`: the displacement calculation does not use it.
 
-Target theorems:
+Proved theorems:
 
 ```text
 (n-m) Q_psi,d(n,m) = psi(n)-psi(m)
@@ -35,7 +35,7 @@ rank([D,Q_psi,d]) <= 2
 [D,Q_psi,d1] = [D,Q_psi,d2].
 ```
 
-This formally records that low displacement rank is a divided-difference/Loewner class property.  `R004_CCM_DISPLACEMENT_FORMAL` remains a proved unconditional theorem, but its rank-two conclusion is not treated as an RH-specific discriminator.
+This formally records that low displacement rank is a divided-difference/Loewner class property. `R004_CCM_DISPLACEMENT_FORMAL` remains a proved unconditional theorem, but its rank-two conclusion is not treated as an RH-specific discriminator.
 
 ## Elementary single-frequency source
 
@@ -46,13 +46,13 @@ psi_omega(n) = sin(2*pi*n*omega)/pi
 d_omega(n)   = 2*omega*cos(2*pi*n*omega).
 ```
 
-The resulting centered matrix is a specialization of the generic class.  The sign/parameter acceptance theorem for the next dictionary PR is
+The resulting centered matrix is a specialization of the generic class. The sign/parameter acceptance theorem for the next dictionary PR is proved exactly:
 
 ```text
 sourceEntry(1-y/L,n,m) = qBasis(n,m,y,L).
 ```
 
-This is an exact theorem target, not a numerical convention check.
+This is a compiler-checked convention bridge, not a numerical convention check.
 
 ## Concrete CCM specialization
 
@@ -71,7 +71,7 @@ They identify the concrete source potential
 g_n = poleSeq(n,L) + alphaL(n,L) + primeSeq(n,L)
 ```
 
-and prove that the formal CCM scalar entry is an instance of `Q_psi,d`, with `d(n)=entry(n,n,L)`.  The finite CCM displacement and rank theorems are then specialized from the generic matrix theorem.
+and prove that the formal CCM scalar entry is an instance of `Q_psi,d`, with `d(n)=entry(n,n,L)`. The finite CCM displacement and rank theorems are then specialized from the generic matrix theorem.
 
 ## Deliberate non-scope
 
@@ -96,13 +96,14 @@ C_RH
 
 ## Merge gate
 
-Require exact-head:
+Exact-head run `32527178035` passed:
 
 ```text
-lake build Zeta23.CCM.DividedDifference
-lake build Zeta23.CCM.SourceMatrix
-lake build Zeta23.CCM
-lake build Zeta23.ExceptionalZero
+RHRC claim and regression suite                     PASS
+PR #33 cutoff-free normalization regression         PASS
+lake build Zeta23.CCM                               PASS
+lake build Zeta23.ExceptionalZero                   PASS
+forbidden sorry / project-axiom gate               PASS
 ```
 
-plus the existing RHRC suite, PR #33 normalization audit, and no-forbidden-placeholder gate.
+The new `DividedDifference` and `SourceMatrix` modules are included in the successful `Zeta23.CCM` build. No mathematical claim is promoted by this PR.
