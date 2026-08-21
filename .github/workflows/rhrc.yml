@@ -33,6 +33,8 @@ jobs:
         run: |
           python research/RHRC/routes/R003_ccm_bridge/compare_ccm_normalizations.py \
             --output /tmp/CCM_NORMALIZATION_AUDIT.json
+      - name: Check finite dictionary external oracle guards
+        run: python research/RHRC/routes/R003_ccm_bridge/check_finite_dictionary_reference.py
       - name: Reject external reference code as a Lean dependency
         run: |
           if grep -R -n -E 'external[/\.]connes_cvs|connes_cvs' Zeta23 --include='*.lean'; then
