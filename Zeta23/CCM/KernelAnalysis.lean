@@ -1,4 +1,5 @@
 import Zeta23.CCM.Kernel
+import Zeta23.ExplicitFormula
 import Mathlib.MeasureTheory.Integral.CompactlySupported
 
 noncomputable section
@@ -26,21 +27,24 @@ theorem qBasis_aperture_eq_zero {L : ℝ} (hL : L ≠ 0) (n m : ℤ) :
     simp [qBasis, hL]
   · unfold qBasis
     rw [if_neg h]
-    have hn : 2 * Real.pi * (n : ℝ) * L / L = (((2 * n : ℤ) : ℝ) * Real.pi) := by
+    have hn : 2 * Real.pi * (n : ℝ) * L / L = 2 * (n : ℝ) * Real.pi := by
       field_simp [hL]
-      push_cast
       ring
-    have hm : 2 * Real.pi * (m : ℝ) * L / L = (((2 * m : ℤ) : ℝ) * Real.pi) := by
+    have hm : 2 * Real.pi * (m : ℝ) * L / L = 2 * (m : ℝ) * Real.pi := by
       field_simp [hL]
-      push_cast
       ring
-    have hnum :
-        Real.sin (2 * Real.pi * (n : ℝ) * L / L) -
-            Real.sin (2 * Real.pi * (m : ℝ) * L / L) = 0 := by
-      rw [hn, hm]
-      simp
-    rw [hnum]
-    exact zero_div _
+    have hsinn : Real.sin (2 * (n : ℝ) * Real.pi) = 0 := by
+      rw [show 2 * (n : ℝ) * Real.pi = (((2 * n : ℤ) : ℝ) * Real.pi) by
+        push_cast
+        ring]
+      exact Real.sin_int_mul_pi (2 * n)
+    have hsinm : Real.sin (2 * (m : ℝ) * Real.pi) = 0 := by
+      rw [show 2 * (m : ℝ) * Real.pi = (((2 * m : ℤ) : ℝ) * Real.pi) by
+        push_cast
+        ring]
+      exact Real.sin_int_mul_pi (2 * m)
+    rw [hn, hm, hsinn, hsinm]
+    simp
 
 /-- The pointwise support of the two-sided CCM kernel is contained in its closed aperture. -/
 theorem kernel_support_subset {L : ℝ} (n m : ℤ) :
@@ -77,10 +81,9 @@ theorem kernel_continuous {L : ℝ} (hL : 0 < L) (n m : ℤ) :
     rw [hy]
     simp [qBasis_aperture_eq_zero hL0]
 
-/-- Continuous compact support makes every positive-aperture CCM kernel integrable against
-Lebesgue measure. -/
+/-- Continuous compact support makes every positive-aperture CCM kernel Lebesgue-integrable. -/
 theorem kernel_integrable {L : ℝ} (hL : 0 < L) (n m : ℤ) :
-    Integrable (kernel n m L) MeasureTheory.volume :=
+    Integrable (kernel n m L) :=
   (kernel_continuous hL n m).integrable_of_hasCompactSupport
     (kernel_hasCompactSupport n m)
 
