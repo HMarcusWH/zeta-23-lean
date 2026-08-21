@@ -2,16 +2,16 @@
 
 Status: **DISCOVERY**. RH remains open.
 
-The finite CCM matrix is theorem-authoritative in `Zeta23.CCM`, PR #30 proved its exact finite
+The finite CCM matrix is theorem-authoritative in `Zeta23.CCM`. PR #30 proved its exact finite
 index-displacement identity in Lean, and PR #31 closed the analytic kernel foundation for positive
-aperture: continuity, compact support, integrability, and real-valuedness are now compiler-checked.
+aperture: continuity, compact support, integrability, and real-valuedness are compiler-checked.
 
 The remaining bridge is deliberately split into two different mathematical obligations:
 
 1. **deterministic RHS identity** — prove the literature explicit-formula RHS evaluated on the CCM
-   kernel equals the formal finite CCM matrix up to the observed scalar shift;
+   kernel equals the formal finite CCM matrix up to the scalar shift;
 2. **explicit-formula regularity extension** — prove that the actual zeta zero-side sum equals that
-   literature RHS for the continuous, compactly supported but non-`C_c²` CCM kernel.
+   literature RHS for the continuous, compactly supported, piecewise-smooth CCM kernel.
 
 These arrows must not be conflated:
 
@@ -43,9 +43,9 @@ Only when both arrows are proved may `R003_CCM_BRIDGE` be promoted.
   zero-side Gram matrix because `kernel` is not an admissible `C_c²` test for the current `EF_lit`
   theorem, and off-line zeros give complex `gammaOf` values.
 
-All bridge theorems in this route are to be stated for **positive aperture `0 < L`**.
+All bridge theorems in this route are stated for **positive aperture `0 < L`**.
 
-## Exact finite displacement result now closed
+## Exact finite displacement result closed
 
 For positive aperture `L`, the formal CCM entry satisfies
 
@@ -53,7 +53,7 @@ For positive aperture `L`, the formal CCM entry satisfies
 (n-m) M_nm = g_n - g_m,
 ```
 
-with the exact formal sequence
+with
 
 ```text
 g_n = poleSeq n L + alphaL n L + primeSeq n L.
@@ -69,7 +69,7 @@ rank([D,M]) <= 2.
 This is compiler-checked Lean mathematics for the actual formal CCM matrix, not merely a
 Python/SymPy identity. It is registered as `R004_CCM_DISPLACEMENT_FORMAL`.
 
-## Kernel foundation now closed
+## Kernel foundation closed
 
 PR #31 proved in Lean, for `0 < L`:
 
@@ -83,13 +83,44 @@ kernel_integrable
 kernel_im
 ```
 
-Thus the CCM kernel is a real-valued element of `C_c(ℝ)` with support in `[-L,L]`. The remaining
-regularity seam is specifically the lack of global `C²` regularity at the `|y|` corner.
+Thus the CCM kernel is a real-valued element of `C_c(ℝ)` supported in `[-L,L]`.
+
+### Exact regularity diagnosis
+
+The remaining regularity seam is **not only the `|y|` cusp at zero**. The kernel is continuous but
+has derivative jumps at all three interfaces
+
+```text
+y = -L, 0, +L.
+```
+
+For every Fourier pair `n,m` and `L > 0`, the one-sided basis derivative satisfies
+
+```text
+qBasis'(0) = -2/L,
+qBasis'(L) = -2/L.
+```
+
+Because `kernel(y) = qBasis(|y|)` inside the aperture and is zero outside, its one-sided derivatives
+are therefore
+
+```text
+K'(-L-) = 0,       K'(-L+) = +2/L,
+K'(0-)  = +2/L,    K'(0+)  = -2/L,
+K'(+L-) = -2/L,    K'(+L+) = 0.
+```
+
+Any integration-by-parts proof of transform decay must carry the boundary contributions from these
+three derivative jumps. It is invalid to integrate only across the two smooth half-intervals and
+silently discard the `±L` endpoint terms.
+
+The regularization step smooths all three corners simultaneously; it is not merely a repair of the
+origin cusp.
 
 ## Reuse the existing App-A machinery
 
 Do **not** re-prove the generic explicit-formula normalization. `Zeta23/ExplicitFormula.lean`
-already provides the reusable infrastructure we need:
+already provides the reusable infrastructure:
 
 ```text
 EF.prime_summand_eq_zero
@@ -102,7 +133,7 @@ EF.weilTest_hasCompactSupport
 EF.paperFT_weilTest
 ```
 
-The CCM formalization should specialize those theorems wherever possible rather than rebuild the
+The CCM formalization should specialize those theorems wherever possible rather than rebuild
 support truncation, Fourier inversion, Fubini, pole-weight transforms, or App-A channel assembly.
 
 ## Deterministic scalar-shift target
@@ -113,26 +144,25 @@ The literature RHS is
 RHS(K) = PoleLit(K) - PrimeLit(K) + ArchLit(K).
 ```
 
-The working candidate, supported by the finite diagnostics, is
+The working candidate, supported by finite diagnostics but not yet theorem-authoritative, is
 
 ```text
 RHS(K_nm) = 2*M_nm + 4*cCorrection(L)*delta_nm.
 ```
 
-Equivalently, after exact pole and prime matching, the only nontrivial identity is
+Equivalently, after exact pole and prime matching, the central analytic identity is
 
 ```text
 ArchLit(n,m,L) + 2*archComponent(n,m,L)
   = 4*cCorrection(L)*delta_nm.
 ```
 
-This statement is purely deterministic analysis. It can be proved before the non-`C_c²`
-regularity seam is solved.
+This is deterministic analysis and can be proved before the non-`C_c²` regularity seam is solved.
 
 ## Transform control moves forward
 
-Transform decay is not only a regularization concern. The deterministic archimedean analysis
-already needs the real-axis facts
+Transform decay is needed before regularization. The deterministic archimedean analysis already
+needs the real-axis facts
 
 ```text
 |paperFT(K)(r)| <= C / (1 + r^2)
@@ -140,23 +170,44 @@ paperFT(K) in L^1(ℝ)
 paperFT(K) * mu in L^1(ℝ).
 ```
 
-Therefore the real-axis transform theorem belongs in the next implementation wave, before the
-archimedean scalar-shift proof. The later zero-side limit additionally needs the strip version
+The later zero-side limit additionally needs the strip version
 
 ```text
 |paperFT(K)(z)| <= C / (1 + |z|^2),   |Im z| <= 1/2.
 ```
 
-The implementation should spike two routes and retain whichever is cheaper in Lean:
+### Transform proof spike A — closed form
 
-1. formalize the already-derived closed transform and handle its removable apparent poles; or
-2. prove `r^-2` decay by integration by parts on the two smooth half-intervals, including the finite
-   derivative jump at zero.
+Formalize the already-derived closed transform, prove the apparent poles are removable, and obtain
+real-axis and strip bounds from the rational expression.
+
+### Transform proof spike B — piecewise integration by parts
+
+Work on the two interior smooth pieces `[-L,0]` and `[0,L]`, but explicitly preserve all boundary
+terms. The first integration by parts uses `K(±L)=0`; the `K(0)` contributions cancel between the two
+pieces. The second integration by parts produces finite boundary terms from the one-sided derivative
+values at `-L`, `0`, and `+L`, plus integrals of the piecewise second derivative.
+
+The proof obligation is therefore to formalize, for the explicit `qBasis` pieces:
+
+```text
+qBasis'(0) = -2/L
+qBasis'(L) = -2/L
+piecewise K'' is integrable on [-L,0] and [0,L]
+```
+
+and then derive `O(|z|^-2)`. For the strip bound, the same calculation carries an extra bounded
+factor `exp(L/2)` from `|Im z| <= 1/2`. For small `|z|`, use the trivial compact-support/L1 bound;
+for large `|z|`, use the twice-integrated formula. This yields the desired
+`C/(1+|z|^2)` form without pretending the derivative jumps vanish.
+
+Keep whichever spike is materially smaller in Lean. The closed-form and integration-by-parts paths
+are alternatives, not cumulative requirements.
 
 ## Exact prime channel — specialize, do not rebuild
 
 `EF.prime_summand_eq_zero` already proves that a test supported in `[-L,L]` has no literature prime
-contribution above `floor(exp L)`. The CCM-specific proof therefore only needs to:
+contribution above `floor(exp L)`. The CCM-specific proof only needs to:
 
 1. provide the kernel support bound;
 2. use kernel evenness;
@@ -174,35 +225,33 @@ No PNT or new arithmetic estimate enters this step.
 
 ## Exact pole channel — choose the shorter specialization
 
-`EF.pole_term` already owns the generic inversion/Fubini/pole-weight calculation. For the CCM
-kernel, compare two proof spikes:
+`EF.pole_term` already owns the generic inversion/Fubini/pole-weight calculation. Compare two CCM
+proof spikes:
 
 - direct evaluation of `paperFT K (±i/2)` from the explicit basis; or
 - specialization of `EF.pole_term` followed by evaluation against `PiX`.
 
-Keep whichever produces the smaller proof. Target:
+Keep whichever produces the smaller formal proof. Target:
 
 ```text
 paperFT(K_nm)(i/2) + paperFT(K_nm)(-i/2)
   = 2*poleComponent(n,m,L).
 ```
 
-Do not rebuild generic pole Fourier analysis already present in `ExplicitFormula.lean`.
-
 ## Archimedean identity
 
-After the pole and prime channels are formally closed, prove exactly
+After pole and prime channels are formally closed, prove
 
 ```text
 ArchLit(n,m,L) + 2*archComponent(n,m,L)
   = 4*cCorrection(L)*delta_nm.
 ```
 
-Split the theorem immediately.
+Split immediately.
 
 ### Off diagonal
 
-For `n != m`, `K_nm(0)=0`, so the target is
+For `n != m`, `K_nm(0)=0`:
 
 ```text
 ArchLit(n,m,L) = -2*archComponent(n,m,L).
@@ -210,25 +259,25 @@ ArchLit(n,m,L) = -2*archComponent(n,m,L).
 
 ### Diagonal
 
-For `n = m`, `K_nn(0)=2`, so the target is
+For `n = m`, `K_nn(0)=2`:
 
 ```text
 ArchLit(n,n,L) + 2*archComponent(n,n,L)
   = 4*cCorrection(L).
 ```
 
-The diagonal theorem must prove the cancellation of all index-dependent terms. The numerical
-scalar-shift experiment is discovery evidence only and may not be used as a proof premise.
+The diagonal theorem must prove cancellation of all index-dependent terms. Numerical scalar-shift
+agreement is discovery evidence only and may not be used as a proof premise.
 
 Use `EF.gamma_term` and `EF.literatureRHS_eq_integral_nu` where they reduce normalization work.
-The exact `gammaBracket` / `mu` normalization is already owned by App A.
+The `gammaBracket` / `mu` normalization is already owned by App A.
 
-## Regularity adapter: explicit C² mollifier, not abstract C∞ machinery
+## Regularity adapter: explicit C² mollifier
 
-The existing `EF_lit` theorem remains unchanged. Extend it downstream to the CCM kernel with a
-concrete compactly supported `C²` approximate identity.
+The existing `EF_lit` theorem remains unchanged. Extend it downstream with a concrete compactly
+supported `C²` approximate identity.
 
-Use the normalized polynomial bump
+Use
 
 ```text
 eta(x) = (35/32) * (1-x^2)^3   for |x| <= 1,
@@ -241,21 +290,19 @@ At `x = ±1`, the function and its first two derivatives vanish, and
 integral_{-1}^1 (1-x^2)^3 dx = 32/35,
 ```
 
-so this is exactly normalized and requires no abstract smooth-bump existence theorem.
-
-Scale by
+so `eta` is exactly normalized. Scale by
 
 ```text
 eta_eps(x) = eps^-1 * eta(x/eps),   eps > 0.
 ```
 
-Define the smoothed kernel through the existing convolution object
+Define
 
 ```text
 K_eps := EF.weilTest eta_eps K.
 ```
 
-For the real-even CCM kernel, prove `EF.tilde K = K`, so this is ordinary convolution. Then reuse
+For the real-even CCM kernel, prove `EF.tilde K = K`; then reuse
 
 ```text
 EF.weilTest_contDiff
@@ -263,18 +310,18 @@ EF.weilTest_hasCompactSupport
 EF.paperFT_weilTest
 ```
 
-to obtain `K_eps in C_c²` and the transform multiplier formula. Do not create a parallel generic
-convolution library.
+to obtain `K_eps in C_c²` and the transform multiplier formula. This convolution smooths the origin
+and both aperture endpoints at once.
 
 ## Limits needed for the adapter
 
-Do not prove a giant uniform approximate-identity theorem unless Lean makes it cheaper than the
-pointwise route. The required limits can be channel-specific.
+Use channel-specific limits; do not require a global uniform approximate-identity theorem unless it
+turns out to be shorter in Lean.
 
 ### Prime channel
 
 For `eps <= 1`, all `K_eps` are supported in `[-L-1,L+1]`, so every prime term lies in one fixed
-finite set. Pointwise convergence `K_eps(x) -> K(x)` at those finitely many `±log n` values is enough.
+finite set. Pointwise convergence at those finitely many `±log n` values is enough.
 
 ### Pole channel
 
@@ -288,13 +335,13 @@ For real `r`, nonnegativity and normalization of `eta_eps` give
 |paperFT(eta_eps)(r)| <= 1,
 ```
 
-hence the multiplier representation gives
+hence
 
 ```text
 |paperFT(K_eps)(r)| <= |paperFT(K)(r)|.
 ```
 
-The real-axis `paperFT(K)*mu` integrability proved during deterministic analysis is then the
+The real-axis `paperFT(K)*mu` integrability established during deterministic analysis is the
 majorant for dominated convergence.
 
 ### Zero side
@@ -312,10 +359,10 @@ and therefore
   <= exp(1/2) * |paperFT(K)(gammaOf rho)|.
 ```
 
-Combine the strip `r^-2` bound with the existing weighted zero-count summability. No uniform control
-of second derivatives of `K_eps` is required.
+Combine the strip `O(|z|^-2)` bound with the existing weighted zero-count summability. No uniform
+control of second derivatives of `K_eps` is required.
 
-The endpoint theorem is
+Endpoint theorem:
 
 ```text
 sum_rho m_rho * paperFT(K)(gammaOf rho)
@@ -331,13 +378,16 @@ sum_rho m_rho * paperFT(K_nm)(gammaOf rho)
 ```
 
 a `Gram` matrix: off-line zeros make `gammaOf rho` complex and positivity has not been established.
-Use `zeroSideEntry` / `zeroSideMatrix` (or `weilZeroEntry` / `weilZeroMatrix`) in the formal API.
-Reserve `Gram` terminology for a theorem that actually establishes the Gram interpretation under
-appropriate on-line hypotheses.
+Use `zeroSideEntry` / `zeroSideMatrix` (or `weilZeroEntry` / `weilZeroMatrix`). Reserve `Gram`
+terminology for a theorem that establishes an actual Gram interpretation under suitable on-line
+hypotheses.
 
-## Corrected implementation sequence
+## Corrected implementation sequence after this roadmap PR
 
-### PR #32 — transform control + exact easy channels
+PR #32 is this architecture/governance correction. The mathematical implementation resumes at
+**PR #33**.
+
+### PR #33 — transform control + exact easy channels
 
 Create:
 
@@ -346,7 +396,16 @@ Zeta23/CCM/KernelTransform.lean
 Zeta23/CCM/WeilRHS.lean
 ```
 
-Deliver:
+First formalize the interface derivative facts needed by the fallback integration-by-parts route:
+
+```text
+qBasis_deriv_zero
+qBasis_deriv_aperture
+```
+
+or equivalent `HasDerivAt` statements proving the common value `-2/L`.
+
+Then deliver:
 
 ```text
 real-axis O(r^-2) transform bound
@@ -356,9 +415,10 @@ exact pole channel
 deterministic rhsEntry / rhsMatrix objects
 ```
 
-Also update this ladder so K0 is closed.
+If the closed-form route wins, the derivative lemmas remain useful regularity documentation but the
+transform proof need not use them.
 
-### PR #33 — exact archimedean scalar shift
+### PR #34 — exact archimedean scalar shift
 
 Create:
 
@@ -379,7 +439,7 @@ rank([D,rhsMatrix]) <= 2
 
 Only then promote `R003_CCM_RHS_IDENTITY`.
 
-### PR #34 — explicit-formula regularity adapter
+### PR #35 — explicit-formula regularity adapter
 
 Create:
 
@@ -389,7 +449,7 @@ Zeta23/CCM/Regularization.lean
 ```
 
 Deliver the strip transform bound if not already available, the explicit polynomial `C²` mollifier,
-`weilTest` smoothing, the channel-by-channel limits, and
+`weilTest` smoothing, channel-by-channel limits, and
 
 ```text
 zero-side sum(K) = EF.literatureRHS(K).
@@ -397,7 +457,7 @@ zero-side sum(K) = EF.literatureRHS(K).
 
 Only then promote `R003_KERNEL_EF_EXTENSION`.
 
-### PR #35 — final finite zero-side assembly
+### PR #36 — final finite zero-side assembly
 
 Create:
 
@@ -452,6 +512,7 @@ authority and is not used as a proof premise.
 |---|---|---|
 | J1-D-formal | exact `[D,M] = g1^T - 1g^T`, rank <= 2 for formal CCM matrix | **PROVED IN LEAN** |
 | K0 | continuity/compact support/integrability/real-valuedness of CCM kernel | **PROVED IN LEAN** |
+| K1 | derivative/interface data at `-L,0,+L` used by piecewise transform analysis | OPEN |
 | T0 | real-axis `O(r^-2)` transform control and Fourier integrability | OPEN |
 | B0 | exact pole-channel identity | OPEN |
 | B1 | exact prime-channel identity | OPEN |
@@ -473,8 +534,8 @@ authority and is not used as a proof premise.
 - `R003_WEIL_DISPLACEMENT`: OPEN.
 - RH: OPEN.
 
-No finite-to-infinite theorem, RH implication, new prime-side upper bound, or zero-side positivity theorem
-is claimed.
+No finite-to-infinite theorem, RH implication, new prime-side upper bound, or zero-side positivity
+theorem is claimed.
 
 ## Reproduction
 
