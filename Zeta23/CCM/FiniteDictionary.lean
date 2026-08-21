@@ -50,23 +50,16 @@ def dictionaryKernel (N : ℕ) (u : Fin (2 * N + 1) → ℂ) (ω : ℝ) : ℂ :=
 coefficient mass because `sourceMatrix 1 = 2I`. -/
 theorem sourceContract_one (N : ℕ) (u : Fin (2 * N + 1) → ℂ) :
     sourceContract N u 1 = 2 * coefficientMass N u := by
-  rw [sourceContract, sourceMatrix_one]
-  unfold quadraticForm coefficientMass
-  calc
-    (∑ i, ∑ j,
-        (starRingEnd ℂ) (u i) *
-          (((2 : ℂ) • (1 : Matrix (Fin (2 * N + 1)) (Fin (2 * N + 1)) ℂ)) i j) *
-          u j) =
-        ∑ i, (starRingEnd ℂ) (u i) * 2 * u i := by
-          apply Finset.sum_congr rfl
-          intro i hi
-          simp
-    _ = ∑ i, 2 * ((starRingEnd ℂ) (u i) * u i) := by
-          apply Finset.sum_congr rfl
-          intro i hi
-          ring
-    _ = 2 * ∑ i, (starRingEnd ℂ) (u i) * u i := by
-          rw [Finset.mul_sum]
+  unfold sourceContract quadraticForm coefficientMass
+  simp_rw [sourceMatrix_apply, sourceEntry_one]
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro i hi
+  have hinj (j : Fin (2 * N + 1)) :
+      centeredIndex N i = centeredIndex N j ↔ i = j :=
+    (centeredIndex_injective N).eq_iff
+  simp [hinj]
+  ring
 
 @[simp] theorem dictionaryKernel_one (N : ℕ) (u : Fin (2 * N + 1) → ℂ) :
     dictionaryKernel N u 1 = 2 * coefficientMass N u := by
