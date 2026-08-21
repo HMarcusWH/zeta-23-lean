@@ -29,10 +29,8 @@ theorem qBasis_aperture_eq_zero {L : ℝ} (hL : L ≠ 0) (n m : ℤ) :
     rw [if_neg h]
     have hn : 2 * Real.pi * (n : ℝ) * L / L = 2 * (n : ℝ) * Real.pi := by
       field_simp [hL]
-      ring
     have hm : 2 * Real.pi * (m : ℝ) * L / L = 2 * (m : ℝ) * Real.pi := by
       field_simp [hL]
-      ring
     have hsinn : Real.sin (2 * (n : ℝ) * Real.pi) = 0 := by
       simpa only [Int.cast_mul, Int.cast_ofNat] using (Real.sin_int_mul_pi (2 * n))
     have hsinm : Real.sin (2 * (m : ℝ) * Real.pi) = 0 := by
