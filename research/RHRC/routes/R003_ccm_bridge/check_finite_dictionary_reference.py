@@ -38,6 +38,17 @@ def expect_value_error(fn, label: str) -> None:
     raise AssertionError(f"expected ValueError for {label}")
 
 
+def is_finite(value) -> bool:
+    """Fail-closed finiteness predicate for real or complex mpmath values."""
+    return bool(mp.isfinite(mp.re(value)) and mp.isfinite(mp.im(value)))
+
+
+def require_finite_within(value, tol, label: str) -> None:
+    """Require a finite residual inside tolerance; NaN/Inf can never pass."""
+    if not is_finite(value) or not (abs(value) <= tol):
+        raise AssertionError(f"{label} residual {value} is non-finite or exceeds {tol}")
+
+
 def main() -> None:
     mp.mp.dps = 70
     oracle = load_oracle()
@@ -56,8 +67,7 @@ def main() -> None:
     residuals = oracle.regression_guards(13, 4, [1, 2, -1, 3, 2])
     tol = mp.mpf("1e-50")
     for name, value in residuals.items():
-        if abs(value) > tol:
-            raise AssertionError(f"{name} residual {value} exceeds {tol}")
+        require_finite_within(value, tol, name)
 
     # The closed-form transform must preserve the complex value arbitrarily
     # close to, but not on, the real axis.  Also check Schwarz reflection for
@@ -67,12 +77,28 @@ def main() -> None:
     gz = tf.g(z)
     if not isinstance(gz, mp.mpc):
         raise AssertionError("non-real transform input was projected to a real scalar")
+    if not is_finite(gz):
+        raise AssertionError(f"non-real transform returned non-finite value {gz}")
     if mp.im(gz) == 0:
         raise AssertionError("non-real transform input lost its imaginary part")
     reflection_error = abs(tf.g(mp.conj(z)) - mp.conj(gz))
-    if reflection_error > tol:
-        raise AssertionError(
-            f"complex transform reflection residual {reflection_error} exceeds {tol}"
+    require_finite_within(reflection_error, tol, "complex transform reflection")
+
+    # Exercise the removable-singularity path beyond the old fixed 25-term
+    # precision ceiling.  The adaptive series must track caller precision.
+    with mp.workdps(300):
+        a = mp.mpf("9e-9")
+        al = mp.mpc("1.2", "0.3")
+        be = mp.mpc("-0.7", "0.2")
+        series_value = oracle.TestFn._int_poly_exp(al, be, a)
+        quad_value = mp.quad(
+            lambda w: (al + be * w) * mp.exp(1j * a * w), [0, 1]
+        )
+        high_precision_error = abs(series_value - quad_value)
+        require_finite_within(
+            high_precision_error,
+            mp.mpf("1e-280"),
+            "300-dps removable-singularity series",
         )
 
     # The guard itself must leave caller precision untouched.
@@ -83,6 +109,7 @@ def main() -> None:
     for name, value in residuals.items():
         print(f"  {name}: {mp.nstr(value, 8)}")
     print(f"  complex reflection residual: {mp.nstr(reflection_error, 8)}")
+    print(f"  300-dps series residual: {mp.nstr(high_precision_error, 8)}")
 
 
 if __name__ == "__main__":
