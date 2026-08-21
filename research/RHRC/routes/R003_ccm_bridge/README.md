@@ -2,7 +2,7 @@
 
 Status: **DISCOVERY**. RH remains open.
 
-This README is the **active route SSOT** after PR #33's Connes/CvS/Groskin normalization audit. The pre-literature transform-first roadmap has been preserved verbatim in `PRE_GROSKIN_ROADMAP_2026_08_21.md` for historical context and fallback lemmas, but it is **not** the active implementation order.
+This README is the **active route SSOT** after the Connes/CvS/Groskin normalization audit and the generic divided-difference refactor. The pre-literature transform-first roadmap is preserved in `PRE_GROSKIN_ROADMAP_2026_08_21.md` for historical context and fallback lemmas, but it is **not** the active implementation order.
 
 ## Current theorem boundary
 
@@ -65,41 +65,21 @@ Across the frozen audit grid, the independent source formulas identify
 Q_inf = M + 2*cCorrection(L)*I
 ```
 
-with primitive map
-
-```text
-alpha_reference = alpha_ours
-beta_reference  = beta_ours
-gamma_reference = gamma_ours - cCorrection(L)
-pole_reference  = pole_ours.
-```
-
-Combined with PR #29's earlier finite diagnostic
+and, combined with PR #29's earlier finite diagnostic
 
 ```text
 WeilGram = 2*M + 4*cCorrection(L)*I,
 ```
 
-the current **normalization target** is
+the current formalization target is
 
 ```text
 WeilGram = 2*Q_inf.
 ```
 
-This is a target for Lean formalization, not a promoted theorem.
-
-### Audit artifacts
-
-- `CCM_NORMALIZATION_LOCK_v1.json` — curated, reviewed provenance/route lock. It is not generated automatically.
-- `compare_ccm_normalizations.py` — reproducible falsification/normalization audit.
-- `CCM_NORMALIZATION_AUDIT_latest.json` — generated local detailed audit artifact; not theorem authority and not required to be committed.
-- `NORMALIZATION_AUDIT_2026_08_21.md` — human-readable convention analysis and reproduction instructions.
-
-The audit script deliberately refuses to overwrite the curated lock.
+This remains a target for Lean formalization, not a promoted theorem.
 
 ## Active mathematical architecture
-
-The route is now split into four finite obligations before any finite-to-infinite campaign:
 
 ```text
 formal CCM matrix / generic divided-difference source calculus
@@ -122,55 +102,51 @@ Only after that finite bridge is theorem-closed do we build the spectral/entire-
 
 **MERGED** at `adad73d06cc539a09e527f935a669e0c60fdb362`. Reference/audit only; no mathematical claim promoted.
 
-Delivered pinned external provenance, the cutoff-free CCM reference oracle, fail-closed normalization audit, curated normalization lock, CI firewall, and the post-Groskin route correction.
-
 ### PR #34 — generic divided-difference / source calculus
 
-**EXACT-HEAD GREEN; READY TO MERGE. No RHRC claim promotion.**
+**MERGED** at `756d074c325a555de2afb1ef8306c4dc0bb793e2`. No RHRC claim promoted.
 
-Delivered:
-
-```text
-Zeta23/CCM/DividedDifference.lean
-Zeta23/CCM/SourceMatrix.lean
-```
-
-with exact generic divided-difference displacement/rank, diagonal-independence, the elementary source atom, the sign-locked bridge
+Delivered exact generic divided-difference displacement/rank, diagonal-independence, the elementary source atom, the exact sign/parameter bridge
 
 ```text
 sourceEntry(1-y/L,n,m) = qBasis(n,m,y,L),
 ```
 
-and the concrete CCM matrix factored through the generic class. Exact-head run `32527178035` passed RHRC, normalization audit, CCM build, ExceptionalZero build, and the forbidden-placeholder gate.
+and the concrete CCM matrix factored through the generic class. Exact-head run `32529011638` was green after the final documentation polish.
 
 Detailed theorem boundary: `PR34_GENERIC_SOURCE_CALCULUS.md`.
 
 ### PR #35 — finite Guinand–Weil dictionary objects
 
-**NEXT ACTIVE BUILD after #34 merges.**
+**CURRENT PR. READY FOR REVIEW. Formal finite-dictionary work; no RHRC claim promotion.**
 
-Create approximately:
+Primary Lean module:
 
 ```text
 Zeta23/CCM/FiniteDictionary.lean
 ```
 
-The preferred Lean-native architecture is now:
+Preferred architecture:
 
 ```text
-v -> symmetric centered coefficients u
+paper even-sector vector v
+  -> symmetric centered coefficients u
   -> source contraction K_u(omega) = <u, sourceMatrix(omega) u>
-  -> compact physical-space dictionary test k_{u,L}(y)
-  -> g_{u,L}(z) = EF.paperFT(k_{u,L})(z)
+  -> compact physical-space test k_{u,L}(y)
+  -> g_{u,L}(z) = Zeta23.paperFT(k_{u,L})(z)
 ```
 
-Then prove equivalence with the Groskin paper representation
+Then prove equivalence with the Groskin representation
 
 ```text
 u -> T_v -> Volterra K_v -> ghat_v -> g_v.
 ```
 
-Use the inherited `EF.paperFT` as the canonical transform from the start, rather than introducing a competing Fourier normalization. The pinned Groskin implementation remains an external oracle only; Lean owns the theorem.
+`paperFT` is defined in the root `Zeta23` namespace (`Zeta23.paperFT`); `EF_lit` and `literatureRHS` live under `Zeta23.EF`. The root `paperFT` definition is canonical internally. The physically preserved `finite_dictionary_reference.py` is an external oracle/falsifier only and must remain outside the Lean dependency graph.
+
+The first implementation slice defines the full-grid source contraction, proves its zero-frequency vanishing, lifts PR #34's convention bridge to quadratic contractions, defines the compact physical-space dictionary test, and defines the canonical `Zeta23.paperFT` dictionary transform. The even-sector embedding, endpoint normalization, support/continuity, Volterra equivalence, and Groskin Fourier-convention bridge remain to be proved inside this PR.
+
+The first Codex review found four P2 issues confined to the external Python oracle: narrow-strip complex values were projected to the real axis, import mutated global `mpmath` precision, the constructor admitted `c <= 1`, and coefficient-band mismatches were not rejected. All four are fixed, guarded in `check_finite_dictionary_reference.py`, replied to, and resolved. These changes harden the oracle only; they do not alter the finite dictionary theorem statements or promote any mathematical claim.
 
 ### PR #36 — explicit-formula admissibility seam
 
@@ -179,13 +155,9 @@ Run two bounded proof spikes and keep only the smaller production route:
 1. broaden the inherited explicit-formula interface to the admissibility class used by the finite dictionary; or
 2. use the existing explicit `C^2` smoothing/mollifier adapter downstream of `EF_lit`.
 
-The old transform-decay, interface-jump and mollifier analysis in `PRE_GROSKIN_ROADMAP_2026_08_21.md` remains valid fallback material for this PR, but no longer dictates the ordering.
-
 ### PR #37 — exact finite zero-side / CCM bridge
 
-Prove the formal finite Guinand–Weil identity and reconcile it with the fork-owned CCM normalization locked by PR #33.
-
-Define `zeroSideEntry` / `zeroSideMatrix` (not `Gram` before positivity is proved) and close the registered finite bridge claims only if their exact Lean statements are discharged.
+Prove the formal finite Guinand–Weil identity and reconcile it with the fork-owned CCM normalization locked by PR #33. Define `zeroSideEntry` / `zeroSideMatrix` (not `Gram` before positivity is proved) and promote registered bridge claims only if their exact Lean statements are discharged.
 
 Expected convention target:
 
@@ -194,11 +166,9 @@ zero-side / inherited Weil matrix = 2*Q_inf
 Q_inf = M + 2*cCorrection(L)*I
 ```
 
-The audit cannot be cited as proof; the convention map must be established in Lean.
-
 ### PR #38 — exact finite source quotient + information-loss API
 
-Formalize the `2N+1`-dimensional source quotient through the coordinates
+Formalize the `2N+1`-dimensional source quotient through
 
 ```text
 int omega dmu
@@ -206,46 +176,33 @@ int sin(2*pi*k*omega) dmu
 int omega*cos(2*pi*k*omega) dmu, 1 <= k <= N.
 ```
 
-Purpose: make explicit exactly what finite CCM compression can and cannot see, and use this as an information-loss gate for later RH routes.
-
 ### PR #39 — prime-cutoff / von Mangoldt matrix flow
 
-Formalize the cutoff path in `u = log c` and the prime-power event law
+Formalize
 
 ```text
-Delta Q'_N = -2*Lambda(q)/(sqrt(q)*log(q)) * 11^T.
+Delta Q'_N = -2*Lambda(q)/(sqrt(q)*log(q)) * 11^T
 ```
 
-Keep this initially to exact finite event, sign and rank statements. Do not promote stronger string/resolvent interpretations without their missing hypotheses.
+at prime-power events, initially only as exact finite event/sign/rank statements.
 
 ### PR #40 — parity + extremal spectral API
 
-Formalize reversal symmetry, even/odd block decomposition and a precise reduction of the CCM even-simple gate. Integrate the cutoff-flow consequence that prime-event rank-one shocks live in the even sector.
-
-This does not by itself prove the global ground state is simple and even.
+Formalize reversal symmetry, even/odd block decomposition and the precise finite reduction of the CCM even-simple gate.
 
 ### PR #41 — finite characteristic / XiHat API
 
 Formalize the pole-cancelled entire function built from a finite extremal eigenvector, including removable singularities, node interpolation and parity.
 
-Bind it to the finite self-adjoint/real-spectrum construction only as far as the literature theorem and Lean dependencies justify.
-
 ### PR #42 — barycentric eigenvector equation
 
-Derive, rather than assume, the exact arithmetic interpolation identity obtained by combining the CCM eigenvector equation with the divided-difference law.
+Derive the exact arithmetic interpolation identity from the CCM eigenvector equation and divided-difference law. Any previously written formula remains schematic until Lean fixes all signs and scales.
 
-The previously proposed formula is schematic until Lean derives its exact signs and scales.
-
-After #42, **freeze implementation and run a route-selection gate** before committing to another theorem sequence.
+After #42, freeze implementation and run a route-selection gate before committing to another theorem sequence.
 
 ## Post-#42 route-selection gate
 
-Candidate campaigns include:
-
-- fixed-`L`, `N -> infinity` Galerkin convergence;
-- aperture `L -> infinity` after fixed-aperture control;
-- an R002-style finite off-line obstruction using exact zero-side finite operators;
-- a Suzuki-style localized self-adjoint / compact-uniform convergence route as an independent control architecture.
+Candidate campaigns include fixed-`L` Galerkin convergence, aperture convergence, an R002-style finite off-line obstruction, and a Suzuki-style localized self-adjoint control route.
 
 Every proposed route must identify:
 
@@ -257,15 +214,9 @@ Every proposed route must identify:
 
 ## Preserved fallback analysis
 
-The former README has been archived verbatim as
+`PRE_GROSKIN_ROADMAP_2026_08_21.md` preserves derivative-jump calculations, transform-decay proof spikes, prime/pole specializations, the archimedean scalar-shift calculation, explicit `C^2` mollification and channel-specific limits, closed-form transform diagnostics, and the superseded transform-first implementation sequence.
 
-```text
-PRE_GROSKIN_ROADMAP_2026_08_21.md
-```
-
-It contains the detailed pre-paper analysis of derivative jumps at `-L, 0, +L`, transform-decay proof spikes, prime/pole specializations, the archimedean scalar-shift calculation, explicit `C^2` mollification and channel-specific limits, closed-form transform diagnostics, and the superseded transform-first implementation sequence.
-
-Those calculations remain useful as lemmas or fallback proof routes. The archived PR numbering and ordering are **superseded** and must not be treated as active authorization.
+Those calculations remain useful as lemmas or fallback proof routes. Their old PR numbering and ordering are superseded.
 
 ## Naming and authority discipline
 
@@ -284,4 +235,4 @@ Nothing promotes itself.
 
 ## Immediate next step
 
-Merge exact-head-green **PR #34**, then begin **PR #35: finite Guinand–Weil dictionary objects**, using the source-contraction-first / inherited-`paperFT` architecture above. Do not restart the superseded transform-first sequence.
+Continue **PR #35** in this order: full-grid source contraction and canonical test (started), reversal-even `v -> u` embedding, endpoint normalization, compact-support/continuity proofs, Volterra/trigonometric representation, then the `ghat`/`Zeta23.paperFT` convention bridge. Do not invoke `EF_lit` until PR #36.

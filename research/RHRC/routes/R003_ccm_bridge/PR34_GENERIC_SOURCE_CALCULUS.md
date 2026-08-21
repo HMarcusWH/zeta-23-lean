@@ -1,6 +1,6 @@
 # PR #34 — generic divided-difference / source calculus
 
-Status: **exact-head green; ready to merge; no RHRC claim promotion**.
+Status: **MERGED at `756d074c325a555de2afb1ef8306c4dc0bb793e2`; no RHRC claim promotion**.
 
 This PR implements the first theorem layer after PR #33's normalization lock. Its purpose is to separate the universal finite divided-difference chassis from the zeta-specific channel formulas before the finite Guinand--Weil dictionary is formalized.
 
@@ -96,7 +96,7 @@ C_RH
 
 ## Merge gate
 
-Exact-head run `32527178035` passed:
+Final exact-head run `32529011638` passed:
 
 ```text
 RHRC claim and regression suite                     PASS
@@ -106,4 +106,4 @@ lake build Zeta23.ExceptionalZero                   PASS
 forbidden sorry / project-axiom gate               PASS
 ```
 
-The new `DividedDifference` and `SourceMatrix` modules are included in the successful `Zeta23.CCM` build. No mathematical claim is promoted by this PR.
+The new `DividedDifference` and `SourceMatrix` modules were included in the successful `Zeta23.CCM` build. No mathematical claim was promoted by this PR.
