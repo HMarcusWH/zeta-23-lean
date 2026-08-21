@@ -56,3 +56,38 @@ RH-strength; observable-engineering can only reorganize where the RH-strength di
 but sufficient* zero-side leg whose matching upper bound is provable by an identified
 unconditional mechanism — and the pair must be exhibited before terminal coding, per the
 feasibility-gate discipline.
+
+## OBS-009 — Band-limited Weil positivity wall (R002 arithmetic leg)
+
+**Status:** CLASSICAL (Weil's criterion), not formalized. Recorded as a design
+constraint, not as a Lean theorem.
+
+The R002-A observable is the negative index of the windowed Gram `G̃(T)`. By the
+unconditional zero-side/prime-side identity (`ZeroConfig.Gz_eq_Gp` +
+`paperInputs_zeta`), the Hermitian form at any real `w` is *exactly*
+
+    wᵀ G w = ∫ |W(τ)|² ν_X(τ) dτ,   W(τ) = Σ_k w_k φ̂(τ − τ_k).
+
+So the property "`G̃(T)` has no negative direction" **is** Weil positivity
+restricted to band-limited tests of bandwidth `L = λ·l` localized at height `T`.
+RH implies it (on-line contributions are PSD; `ZeroSide.blockA_decomp`), and
+positivity for the whole family `∀(T, λ>1)` restores Weil's criterion, hence RH.
+
+Consequence. R002-A **relocates** the R001/OBS-008 difficulty rather than
+removing it — but into a better-posed statement: a positivity assertion about an
+explicitly given quadratic form, with no δ-threshold and no exponent race
+(in the oversampled regime `λ > 1` every depth `δ > 0` is detectable; see the
+feasibility certificate §3). The exchange rate is explicit: detecting shallower
+zeros requires larger `λ`, i.e. `X = e^L = (T/2π)^λ > T`, a longer Dirichlet
+polynomial on the prime side.
+
+**Escape requirement:** an unconditional band-limited positivity theorem at some
+bandwidth/height regime in which the zero-side leg is also non-vacuous — i.e. a
+regime pair `(λ > 1, T)` where `∫|W|²ν_X ≥ −θ` is provable by a named mechanism
+(MV quadratic form, Chebyshev, μ-part positivity, `Tail.prop_tail`). No such
+regime is currently identified; §5 of the feasibility certificate grades what is
+and is not available.
+
+**What is NOT blocked by this entry:** the block-level separation
+(`R002_MULTI_PROBE_SEPARATION`, proved), which is pure linear algebra and makes
+no arithmetic claim.
