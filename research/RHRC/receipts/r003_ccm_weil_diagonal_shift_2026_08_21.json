@@ -1,0 +1,91 @@
+{
+  "schema_version": "RHRC-receipt-1",
+  "run_id": "R003_CCM_WEIL_DIAGONAL_SHIFT_001",
+  "phase": "DISCOVERY",
+  "date_utc": "2026-08-21",
+  "claim_cap": "FINITE_NUMERICAL_DIAGNOSTIC_ONLY",
+  "new_information_channel": "exact archimedean-channel comparison between the finite CCM matrix and the Weil explicit-formula Gram of the truncated-character family; the pole and prime channels cancel identically, so no zero sums and no zero tail enter the measurement",
+  "source_formula": "WeilGram - 2M = ArchLit + 2*arch_component, with closed-form h_{nm}(r) derived and validated against direct quadrature; K_{nm}(y) = q_basis(n,m,|y|,L)",
+  "binding_hashes": {
+    "claim_registry_sha256": "38e05c5660ed00334325e60cfdbb816ca897e3df39c26516446eb0f45cfa801d",
+    "route_registry_sha256": "a59609544ffffcf279b5bfa9c71d37783c11ac7220fe951c82541f755bb305e1",
+    "boundary_sha256": "76a0995692e576a09d8bbcde1c20180d376bd9fe3a078959deabb31a56baaa83",
+    "diagnostic_script_sha256": "7b1ed473128d29f25478e8cdb6ed50cfcddd99376f9b698238078a6754209986",
+    "confirm_script_sha256": "9f71ce40a3c9f17adb9ffb2698b73fd0b9618b00dc1f6996cf87e268b8e1aac7",
+    "r004_source_sha256": "5c632c667ddc74dc01d6e42e7987f32f04a3244e9194edbefca2e79be5da72f3"
+  },
+  "input": {
+    "lambdas": [
+      2.0,
+      3.0,
+      5.0,
+      7.0
+    ],
+    "diagonal_n": [
+      -1,
+      0,
+      1
+    ],
+    "offdiagonal_pairs": [
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        -1
+      ]
+    ],
+    "mp_dps": 20,
+    "arch_quadrature": "finite window R=3000, 240 panels, plus analytic non-oscillatory tail (4/L)(log(R/2pi)+1)/R"
+  },
+  "key_results": {
+    "closed_form_h_validated": "h_closed matches direct quadrature; pole channel 2h(i/2) = 2*pole_component to 1e-16..1e-18 (DERIVED, not merely observed)",
+    "diagonal_index_independence": {
+      "lambda_2": 4.5e-09,
+      "lambda_3": 1.1e-09,
+      "lambda_5": 3.6e-10,
+      "lambda_7": 2.1e-10
+    },
+    "offdiagonal_systematic": {
+      "lambda_2": 2.48e-07,
+      "lambda_3": -1.05e-07,
+      "lambda_5": 4.93e-08,
+      "lambda_7": -5.57e-08
+    },
+    "c_of_L_vs_4_c_correction_absdiff": {
+      "lambda_2": 5.6e-15,
+      "lambda_3": 1.3e-15,
+      "lambda_5": 2.2e-16,
+      "lambda_7": 2.2e-16
+    },
+    "closed_form": "WeilGram(n,m) = 2*M(n,m) + 4*c_correction(L)*delta_{nm}",
+    "structural_explanation": "K_{nm}(0) = 2*delta_{nm}; the archimedean kernel e^{-x/2}/(1-e^{-2x}) is logarithmically singular at 0, so only the diagonal needs regularization, and R004 supplies it with the index-independent constants c_correction(L) + w_correction(L). The shift is therefore structural, not accidental."
+  },
+  "gates": {
+    "source_target_firewall": "PASS",
+    "pole_channel_derived_in_closed_form": "PASS",
+    "diagonal_shift_index_independent": "PASS",
+    "closed_form_for_c_of_L_identified": "PASS",
+    "transfer_algebra_formalized_in_lean": "PASS",
+    "ccm_weil_identity_proved": "FAIL",
+    "finite_to_infinite_bridge": "NA"
+  },
+  "bounded_claim": {
+    "statement": "For the truncated-character test family, the Weil explicit-formula Gram and the R004 finite CCM matrix differ, numerically and to machine precision at four values of lambda, by exactly the scalar matrix 4*c_correction(L)*I: WeilGram = 2M + 4*c_correction(L)*I. The pole channel of this comparison is derived in closed form rather than merely observed. No identity is proved and no RH consequence follows.",
+    "result": "PASS",
+    "certificate_status": "VALID",
+    "evaluation_mode": "EXPERIMENTAL_EVIDENCE"
+  },
+  "nonclaims": [
+    "No CCM/Weil identity is proved; the relation is numerical at finitely many (lambda, n, m).",
+    "No RH evidence, no RH route closure, no promotion of C_RH.",
+    "The Lean transfer theorems are CONDITIONAL: they carry the relation as an explicit hypothesis.",
+    "rank <= 2 for a finite matrix implies nothing about any infinite operator (J6 untouched)."
+  ],
+  "open_obligations": [
+    "Prove the relation. Blocked: K_{nm} is only piecewise C^1, hence not an admissible C_c^2 test for EF_lit; a mollified family plus a limit would be required.",
+    "Establish the finite-to-infinite normalization/limit (R004 ladder step J6).",
+    "No FFBBP/OoL numerical certificate has mathematical theorem authority; Lean/comparator remains the promotion gate."
+  ]
+}
