@@ -1,6 +1,8 @@
 # R004-v2 — commutator stress test and displacement-structure audit
 
-Status: **DISCOVERY**. The commutator/null results remain finite numerical diagnostics. The index-displacement formula below is now an **exact symbolic identity for the implemented finite CCM entry formula**, but it is not a finite-to-infinite theorem and not RH evidence.
+Status: **DISCOVERY**. The fitted commutator/null results remain finite numerical diagnostics. The
+index-displacement formula is now an **exact theorem-authoritative Lean identity for the formal
+finite CCM matrix**. It is not a finite-to-infinite theorem and not RH evidence.
 
 ## Purpose
 
@@ -26,7 +28,14 @@ Source notebook SHA-256:
 
 `aa6004b432f8baa3c9dc5c919b0f8df78621a84747f45bfda9fffc79a1d2e24d`
 
-No source matrix formula is changed relative to R004-v1.
+The formal port is now owned by `Zeta23.CCM`:
+
+- `Zeta23.CCM.entry` — exact scalar finite CCM entry;
+- `Zeta23.CCM.finiteMatrix` — aperture-level finite matrix;
+- `Zeta23.CCM.finiteMatrixOfLambda` — source-level wrapper with `L = 2 log lambda`;
+- `Zeta23.CCM.indexMatrix` — centered Fourier index operator.
+
+The source mapping is frozen in `CCM_FORMAL_PORT_MANIFEST.json`.
 
 ## Candidate generator
 
@@ -64,79 +73,42 @@ For every diagonal offset `d`, independently permute the values on the `d`-th up
 restore symmetry. This preserves the empirical value multiset on every matrix band while destroying
 coherent index alignment.
 
-This is a substantially harsher locality control than a fully randomized eigenbasis.
-
-## Exact index-displacement identity
+## Exact theorem-authoritative index displacement identity
 
 Let
 
 `D = diag(-N, ..., 0, ..., N)`.
 
-For Fourier indices `n,m`, the implemented CCM matrix has
+For Fourier indices `n,m`, the formal CCM matrix has
 
 `M_nm = Pole_nm - Arch_nm - Prime_nm`.
 
-Write
+The Lean development defines the exact scalar sequence
 
-`kappa = 16*pi^2`,
+`g_n = poleSeq n L + alphaL n L + primeSeq n L`
 
-`C_L = 32*L*sinh(L/4)^2`,
-
-`d_n = L^2 + kappa*n^2`.
-
-The pole entry is
-
-`Pole_nm = C_L * (L^2 - kappa*m*n) / (d_m*d_n)`.
-
-For `n != m`, direct algebra gives
-
-`(n-m) Pole_nm = C_L * (n/d_n - m/d_m)`.
-
-Indeed,
-
-`n*d_m - m*d_n = (n-m)(L^2 - kappa*m*n)`.
-
-The off-diagonal archimedean channel is
-
-`Arch_nm = (alpha_m - alpha_n)/(n-m)`,
-
-so
-
-`(n-m)(-Arch_nm) = alpha_n - alpha_m`.
-
-The prime channel is a weighted sum of divided differences. Define the scalar prime sequence
-
-`prime_n = sum_k Lambda(k) k^(-1/2) sin(2*pi*n*log(k)/L) / pi`
-
-over the same finite prime-power range used by the matrix construction. Then
-
-`(n-m)(-Prime_nm) = prime_n - prime_m`.
-
-Therefore, with
-
-`g_n = C_L*n/d_n + alpha_n + prime_n`,
-
-we obtain the exact entrywise identity
+and proves, for positive aperture `L`,
 
 `(n-m) M_nm = g_n - g_m`.
 
-On the diagonal both sides are zero. Hence for every entry,
+Therefore on the centered finite grid:
 
-`[D,M]_nm = g_n - g_m`,
+`[D,M] = g 1^T - 1 g^T`
 
-or in matrix form
+and
 
-`[D,M] = g 1^T - 1 g^T`.
+`rank([D,M]) <= 2`.
 
-Consequently
+The theorem-authoritative sources are:
 
-`rank([D,M]) <= 2`
+```text
+Zeta23.CCM.entry_displacement
+Zeta23.CCM.finiteMatrix_displacement
+Zeta23.CCM.rank_finiteMatrix_displacement_le_two
+```
 
-**exactly for the implemented finite CCM formula**.
-
-The symbolic certificate `derive_exact_displacement.py` verifies the only nontrivial rational
-algebra independently of the numerical matrix builder. This explains the `~1e-15` rank-two residual
-seen in RUN 002: that residual was floating-point roundoff around an exact displacement structure.
+The Python/SymPy certificate `derive_exact_displacement.py` remains an independent reproduction aid,
+not theorem authority.
 
 This result is theorem-relevant finite algebra, but it does **not** establish operator convergence,
 identify a limiting Jacobi/prolate operator, or transfer finite spectral information to Xi.
@@ -177,11 +149,11 @@ identified operator and a separate gap theorem.
 **NUMERICAL PASS.**
 
 `J1-D` — exact finite displacement identity
-`[D,M] = g 1^T - 1 g^T`. **ALGEBRAICALLY CLOSED FOR THE IMPLEMENTED FINITE FORMULA.**
+`[D,M] = g 1^T - 1 g^T`. **CLOSED.**
 
 `J1-D-formal` — bind the exact identity to a theorem-authoritative formal definition of the CCM
-matrix (Lean or equivalent comparator-grade source), rather than the Python implementation alone.
-**OPEN.**
+matrix. **CLOSED / PROVED IN LEAN** by `Zeta23.CCM.finiteMatrix_displacement` and
+`Zeta23.CCM.rank_finiteMatrix_displacement_le_two`.
 
 `J1-J` — derive an analytically specified Jacobi/prolate generator from the displacement identity or
 another exact CCM identity. The numerical minimizer by itself is not an identification theorem.
@@ -195,8 +167,9 @@ generator. **OPEN; current fitted-generator finite gaps are a warning signal.**
 
 `J4` — only after J2+J3, derive eigenspace convergence by a self-adjoint perturbation theorem. **OPEN.**
 
-`J5` — connect the limiting concentrated mode to the exact R001 / localized Weil observable.
-**OPEN.**
+`J5` — connect the exact finite CCM structure to the actual zero-side Weil object. This responsibility
+has moved to R003's two-part bridge: deterministic RHS identity plus the explicit-formula regularity
+extension. **OPEN.**
 
 `J6` — close the finite-to-infinite normalization and limit-identification seam. **OPEN.**
 
@@ -208,8 +181,8 @@ generator. **OPEN; current fitted-generator finite gaps are a warning signal.**
 - Absolute commutator values are reported; normalized decay is not called convergence.
 - Gap-normalized quantities are reported; small commutator alone is not called eigenvector control.
 - The recovered tridiagonal generator is not called prolate.
-- The exact displacement identity is explicitly limited to the implemented finite CCM formula.
-- No finite-to-infinite theorem follows from rank-two displacement alone.
+- The exact displacement theorem is finite-dimensional; rank <= 2 does not imply an infinite
+  operator theorem.
 - No numerical trend is promoted to an asymptotic theorem.
 - This route is not RH evidence or proof.
 
@@ -227,7 +200,7 @@ python research/RHRC/routes/R004_prolate_v2/run_commutator_gauntlet_v2.py \
   --output r004_v2_result.json
 ```
 
-Exact symbolic displacement derivation:
+Exact symbolic displacement reproduction:
 
 ```bash
 python research/RHRC/routes/R004_prolate_v2/derive_exact_displacement.py
