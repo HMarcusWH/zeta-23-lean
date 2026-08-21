@@ -36,8 +36,11 @@
       "route_id": "R003_ccm_bridge",
       "phase": "DISCOVERY",
       "claim_ids": [
+        "R003_DISPLACEMENT_TRANSFER",
+        "R003_CCM_RHS_IDENTITY",
+        "R003_KERNEL_EF_EXTENSION",
         "R003_CCM_BRIDGE",
-        "R003_DISPLACEMENT_TRANSFER"
+        "R003_WEIL_DISPLACEMENT"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
@@ -46,11 +49,13 @@
     {
       "route_id": "R004_prolate_v2",
       "phase": "DISCOVERY",
-      "claim_ids": [],
+      "claim_ids": [
+        "R004_CCM_DISPLACEMENT_FORMAL"
+      ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "Finite CCM displacement lane. Registered 2026-08-21 to close a governance gap: it was previously unregistered. Carries no claim id; its algebraic displacement identity feeds R003_DISPLACEMENT_TRANSFER as an input, not as a claim."
+      "note": "Finite CCM displacement lane. The exact finite displacement identity is now theorem-authoritative in Zeta23/CCM/Displacement.lean. Finite-to-infinite and Jacobi/prolate consequences remain open."
     }
   ],
   "note": "These routes are intentionally not frozen yet. A frozen digest would be false precision while the analytic objects are still being defined."
