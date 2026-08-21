@@ -1,0 +1,108 @@
+{
+  "schema_version": "RHRC-receipt-1",
+  "run_id": "R002_NEGINDEX_MASKING_AND_CCM_CHANNEL_MATCH_001",
+  "phase": "DISCOVERY",
+  "date_utc": "2026-08-21",
+  "claim_cap": "FINITE_NUMERICAL_SYNTHETIC_DIAGNOSTIC_ONLY",
+  "new_information_channel": "negative index (eigenvalue sign / forbidden direction) of the windowed zero-side Gram; not a function of the TightMult trace/Frobenius/on-line-atom/positive-index data",
+  "source_formula": "G_kl = sum_rho m_rho phihat(gamma_rho-tau_k) phihat(gamma_rho-tau_l); off-line pair block = 2m(x x^T - y y^T) (Zeta23.ZeroSide.ZeroBlockData.pair_term)",
+  "binding_hashes": {
+    "claim_registry_sha256": "067046c565b5848ff3bc458230c8f21b6c15f9db4319c3c2e2ed0dfd40b3ca5c",
+    "route_registry_sha256": "51564c42124f183c85f778398148163518973d99993f380740f7205e5c45b5fc",
+    "boundary_sha256": "76a0995692e576a09d8bbcde1c20180d376bd9fe3a078959deabb31a56baaa83",
+    "masking_script_sha256": "81966621043ba35200934ca646b3947bf3d7abd7aa3750fe834d349d32d11dbe",
+    "bridge_script_sha256": "144318ecb7b622882c8539cf72bcb5901fb7ab6ea50322d9aa7f35013924c8b1",
+    "feasibility_doc_sha256": "3dc33f80958b7ba22b07436d097b1f1124e8914d4775243b91f54e341cec62e8"
+  },
+  "input": {
+    "masking": {
+      "l": 12.0,
+      "taper": "flat indicator on [-L/2,L/2]",
+      "lambdas": [
+        0.5,
+        1.0,
+        2.0
+      ],
+      "deltas": [
+        0.0,
+        0.01,
+        0.03,
+        0.06,
+        0.1,
+        0.2,
+        0.4
+      ],
+      "on_line_model": "deterministic lattice at mean spacing 2pi/l with uniform jitter, seed 0",
+      "measured": "exact lambda_min of Ghat = G/(a L^2)"
+    },
+    "ccm_bridge": {
+      "lambdas": [
+        2.0,
+        3.0
+      ],
+      "N": 2,
+      "L": "2 log lambda",
+      "tests": [
+        "(0,0)",
+        "(1,0)",
+        "(1,1)",
+        "(2,1)",
+        "(-1,1)",
+        "(2,-2)"
+      ],
+      "channels_checked": [
+        "pole",
+        "prime",
+        "archimedean",
+        "assembly-vs-200-zeros"
+      ],
+      "arch_quadrature": "finite window R=400, 80 panels; truncation tail ~ log R / R"
+    }
+  },
+  "key_results": {
+    "masking_threshold_predicted": "delta*L >~ sqrt(6/lambda)",
+    "masking_observed": {
+      "lambda_0.5": "lambda_min > 0 at delta*L = 2.40 (predicted threshold 3.46)",
+      "lambda_1.0": "crossover between delta*L = 1.20 (+0.594) and 2.40 (-0.268); predicted 2.45",
+      "lambda_2.0": "negative already at delta*L = 0.24; lambda_min = -0.0000 at delta = 0 (bulk singular, d > N)"
+    },
+    "oversampled_regime_finding": "for lambda > 1 the probe grid oversamples (d/N = lambda > 1), the on-line Gram is PSD of rank <= N < d, and every delta > 0 produces a strictly negative eigenvalue in the synthetic model",
+    "ccm_channel_match": {
+      "pole": "h(i/2)+h(-i/2) = 2 * pole_component, agreement to 10 digits, all tested (n,m), both lambdas",
+      "prime": "sum_k Lambda(k) k^-1/2 (K(log k)+K(-log k)) = 2 * prime_component, agreement to 10 digits, all tested (n,m)",
+      "archimedean_offdiagonal": "ratio to arch_component = -1.90..-1.97, consistent with -2 within the R=400 truncation tail for |arch|~0.23",
+      "archimedean_diagonal": "ratio = -1.5907/-1.5852 at (0,0) and -0.7483/-1.0626 at (1,1); NOT consistent with -2 (truncation moves these by <=0.006)",
+      "assembly": "off-diagonal (1,0): 2M=0.14257 vs zero-sum(200)=0.12991, diff -0.0127 (right size/sign for the unaccounted positive zero tail); diagonals (0,0) and (1,1) off by a near-constant 1.064",
+      "verdict": "conjecture M = (1/2)*Weil-Gram is REFUTED as stated; the discrepancy is localized to the diagonal archimedean term, which is also the part left unconstrained by the R004 displacement identity"
+    }
+  },
+  "gates": {
+    "source_target_firewall": "PASS",
+    "tightmult_extra_channel_declared": "PASS",
+    "block_level_separation_formalized_in_lean": "PASS",
+    "windowed_visibility_established": "FAIL",
+    "arithmetic_leg_unconditional_mechanism_identified": "FAIL",
+    "ccm_bridge_complete": "FAIL",
+    "ccm_gap_localized_to_single_channel": "PASS"
+  },
+  "bounded_claim": {
+    "statement": "In a finite synthetic model of a probe window, the negative index of the zero-side Gram separates an injected off-line pair from on-line configurations, with visibility threshold delta*L ~ sqrt(6/lambda) and detection at every delta > 0 in the oversampled regime lambda > 1. Separately, the R004 CCM matrix matches the Weil literature form exactly (factor 2) on the pole and prime channels and on the off-diagonal archimedean channel, but NOT on the diagonal archimedean term: the identity conjecture is refuted as stated and the gap is localized to one channel.",
+    "result": "PASS",
+    "certificate_status": "VALID",
+    "evaluation_mode": "EXPERIMENTAL_EVIDENCE"
+  },
+  "nonclaims": [
+    "No RH evidence, no RH route closure.",
+    "The masking diagnostic uses a synthetic on-line zero lattice, not the zeros of zeta.",
+    "No windowed-visibility theorem is claimed; only the block-level separation is proved (in Lean).",
+    "The arithmetic leg is RH-equivalent by Weil's criterion (OBS-009) and is not advanced here.",
+    "The off-diagonal archimedean agreement is 'consistent with' at the achieved quadrature accuracy, not an asserted match.",
+    "No CCM identity is claimed; the conjecture as stated is refuted."
+  ],
+  "open_obligations": [
+    "Re-run the archimedean channel with a tail-corrected or contour-deformed quadrature to assert or refute the off-diagonal factor -2.",
+    "Determine whether a diagonal normalization exists making M exactly (1/2)*(Weil zero-side Gram) in this basis.",
+    "Decide the windowed-visibility question (R002_WINDOWED_VISIBILITY) or record it as a wall.",
+    "No FFBBP/OoL numerical certificate has mathematical theorem authority; Lean/comparator remains the promotion gate."
+  ]
+}
