@@ -29,14 +29,20 @@
     "mp_dps_reference": 60,
     "comparison_tolerance": 2e-9
   },
+  "ci_rerun": {
+    "workflow_run": 32521193263,
+    "job": "r003-normalization-audit",
+    "job_id": 96893586666,
+    "conclusion": "success"
+  },
   "summary_metrics": {
-    "max_entry_residual_after_Q_inf_minus_M_minus_2cI": 1.12e-16,
-    "max_offdiagonal_abs_Q_inf_minus_M": 0.0,
-    "max_diagonal_shift_spread": 1.12e-16,
-    "max_pole_residual": 0.0,
-    "max_alpha_residual": 3.9e-62,
-    "max_beta_residual": 2.4e-61,
-    "max_gamma_reference_minus_ours_plus_cCorrection": 3.6e-61
+    "max_entry_residual_after_Q_inf_minus_M_minus_2cI": 3.3306690738754696e-15,
+    "max_offdiagonal_abs_Q_inf_minus_M": 7.251144129583054e-16,
+    "max_diagonal_shift_spread": 3.219646771412954e-15,
+    "max_pole_residual": 1.7763568394002505e-15,
+    "max_alpha_residual": 2.220446049250313e-16,
+    "max_beta_residual": 1.5092094240998222e-16,
+    "max_gamma_reference_minus_ours_plus_cCorrection": 3.885780586188048e-16
   },
   "diagonal_shift_samples": [
     {"c": 4, "cCorrection": 0.2690702965677290, "Q_inf_minus_M_diag": 0.5381405931354581},
@@ -47,7 +53,7 @@
     {"c": 100, "cCorrection": 0.4294909350040544, "Q_inf_minus_M_diag": 0.8589818700081089}
   ],
   "interpretation": [
-    "The off-diagonal fork-owned CCM entries already match the cutoff-free CCM/CvS reference convention.",
+    "The off-diagonal fork-owned CCM entries already match the cutoff-free CCM/CvS reference convention to the float-versus-mpmath audit tolerance.",
     "The only direct M-to-Q_inf discrepancy found is an index-independent diagonal term 2*cCorrection(L).",
     "The earlier factor-two R003 WeilGram relation is therefore consistent with the inherited explicit-formula matrix being normalized as 2*Q_inf, rather than with Q_inf itself being 2*M.",
     "This removes the apparent conflict between PR #29 and Groskin Lemma 2.1 at the reference/formula level."
