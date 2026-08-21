@@ -37,12 +37,10 @@ theorem qBasis_aperture_eq_zero {L : ℝ} (hL : L ≠ 0) (n m : ℤ) :
       rw [show 2 * (n : ℝ) * Real.pi = (((2 * n : ℤ) : ℝ) * Real.pi) by
         push_cast
         ring]
-      exact Real.sin_int_mul_pi (2 * n)
     have hsinm : Real.sin (2 * (m : ℝ) * Real.pi) = 0 := by
       rw [show 2 * (m : ℝ) * Real.pi = (((2 * m : ℤ) : ℝ) * Real.pi) by
         push_cast
         ring]
-      exact Real.sin_int_mul_pi (2 * m)
     rw [hn, hm, hsinn, hsinm]
     simp
 
