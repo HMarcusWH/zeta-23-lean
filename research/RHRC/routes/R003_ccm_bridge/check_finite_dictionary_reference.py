@@ -38,6 +38,14 @@ def expect_value_error(fn, label: str) -> None:
     raise AssertionError(f"expected ValueError for {label}")
 
 
+def expect_arithmetic_error(fn, label: str) -> None:
+    try:
+        fn()
+    except ArithmeticError:
+        return
+    raise AssertionError(f"expected ArithmeticError for {label}")
+
+
 def is_finite(value) -> bool:
     """Fail-closed finiteness predicate for real or complex mpmath values."""
     return bool(mp.isfinite(mp.re(value)) and mp.isfinite(mp.im(value)))
@@ -61,6 +69,21 @@ def main() -> None:
     expect_value_error(lambda: oracle.TestFn(13, -1, []), "negative N")
     expect_value_error(lambda: oracle.TestFn(13, 2, [1, 2]), "short coefficient vector")
     expect_value_error(lambda: oracle.TestFn(13, 1, [1, 2, 3]), "long coefficient vector")
+
+    # Python's max can mask a later NaN.  Exercise the oracle's own aggregation
+    # helper directly so every probe must be finite before a maximum is formed.
+    expect_arithmetic_error(
+        lambda: oracle._max_finite_residual(
+            [mp.mpf("1e-80"), mp.nan], "synthetic non-finite residual"
+        ),
+        "per-probe NaN rejection before max",
+    )
+    expect_arithmetic_error(
+        lambda: oracle._max_finite_residual(
+            [mp.mpf("1e-80"), mp.inf], "synthetic non-finite residual"
+        ),
+        "per-probe Inf rejection before max",
+    )
 
     # Exact finite dictionary regression: source closed form vs independent
     # Volterra / physical-space quadrature, at higher caller-selected precision.
