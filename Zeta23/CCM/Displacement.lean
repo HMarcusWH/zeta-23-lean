@@ -30,12 +30,14 @@ theorem qBasis_displacement {n m : ℤ} (h : n ≠ m) (y L : ℝ) :
       (Real.sin (2 * Real.pi * (n : ℝ) * y / L)
         - Real.sin (2 * Real.pi * (m : ℝ) * y / L)) / Real.pi := by
   have hnmZ : n - m ≠ 0 := sub_ne_zero.mpr h
-  have hmnZ : m - n ≠ 0 := sub_ne_zero.mpr (Ne.symm h)
   have hnmR : (((n - m : ℤ) : ℝ)) ≠ 0 := by exact_mod_cast hnmZ
-  have hmnR : (((m - n : ℤ) : ℝ)) ≠ 0 := by exact_mod_cast hmnZ
-  simp [qBasis, h]
-  field_simp [hnmR, hmnR, Real.pi_ne_zero]
-  push_cast
+  unfold qBasis
+  rw [dif_neg h]
+  have hdiff : (((m - n : ℤ) : ℝ)) = -(((n - m : ℤ) : ℝ)) := by
+    push_cast
+    ring
+  rw [hdiff]
+  field_simp [hnmR, Real.pi_ne_zero]
   ring
 
 /-- Exact pole-channel divided-difference identity. -/
@@ -61,7 +63,8 @@ theorem archComponent_displacement {n m : ℤ} (h : n ≠ m) (L : ℝ) :
     (((n - m : ℤ) : ℝ)) * (-archComponent n m L) = alphaL n L - alphaL m L := by
   have hnmZ : n - m ≠ 0 := sub_ne_zero.mpr h
   have hnmR : (((n - m : ℤ) : ℝ)) ≠ 0 := by exact_mod_cast hnmZ
-  simp [archComponent, h]
+  unfold archComponent
+  rw [if_neg h]
   field_simp [hnmR]
   ring
 
@@ -120,25 +123,13 @@ theorem finiteMatrix_displacement {L : ℝ} (hL : 0 < L) (N : ℕ) :
       vecMulVec (displacementVector L N) (fun _ => 1)
         - vecMulVec (fun _ => 1) (displacementVector L N) := by
   ext i j
-  simp only [indexMatrix, finiteMatrix, Matrix.diagonal_mul, Matrix.mul_diagonal,
+  simp only [Pi.sub_apply, indexMatrix, finiteMatrix, Matrix.diagonal_mul, Matrix.mul_diagonal,
     displacementVector, Matrix.vecMulVec_apply, Pi.one_apply]
   have hreal := entry_displacement
     (n := centeredIndex N i) (m := centeredIndex N j) hL
   have hcomplex := congrArg (fun x : ℝ => (x : ℂ)) hreal
   push_cast at hcomplex
-  calc
-    ((centeredIndex N i : ℤ) : ℂ) *
-          (entry (centeredIndex N i) (centeredIndex N j) L : ℂ)
-        - (entry (centeredIndex N i) (centeredIndex N j) L : ℂ) *
-          ((centeredIndex N j : ℤ) : ℂ)
-        = ((((centeredIndex N i - centeredIndex N j : ℤ) : ℝ) : ℂ)) *
-          (entry (centeredIndex N i) (centeredIndex N j) L : ℂ) := by
-            push_cast
-            ring
-    _ = ((displacementSeq (centeredIndex N i) L
-          - displacementSeq (centeredIndex N j) L : ℝ) : ℂ) := hcomplex
-    _ = (displacementSeq (centeredIndex N i) L : ℂ)
-          - (displacementSeq (centeredIndex N j) L : ℂ) := by push_cast
+  linear_combination hcomplex
 
 /-- Rank form of the exact finite displacement theorem. -/
 theorem rank_finiteMatrix_displacement_le_two {L : ℝ} (hL : 0 < L) (N : ℕ) :
