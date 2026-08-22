@@ -49,7 +49,8 @@ def dictionaryTent (L : ℝ) : ℝ → ℂ :=
 
 @[simp] theorem dictionaryTent_left_endpoint {L : ℝ} (hL : 0 < L) :
     dictionaryTent L (-L) = 0 := by
-  simpa using dictionaryTent_right_endpoint hL
+  rw [dictionaryTent_neg]
+  exact dictionaryTent_right_endpoint hL
 
 /-- Inside a positive aperture the clamped coordinate is the ordinary affine tent. -/
 theorem dictionaryTent_eq_one_sub_abs_div_of_abs_le
