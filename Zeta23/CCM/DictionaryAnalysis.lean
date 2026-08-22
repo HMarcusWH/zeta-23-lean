@@ -78,9 +78,13 @@ theorem hasDerivAt_sourceDiagonalReal (ω : ℝ) (n : ℤ) :
       (2 * Real.pi * (n : ℝ)) ω := by
     simpa using (hasDerivAt_id ω).const_mul (2 * Real.pi * (n : ℝ))
   have hcos := hlin.cos
-  have hid : HasDerivAt (fun t : ℝ => 2 * t) 2 ω := by
-    simpa using (hasDerivAt_id ω).const_mul 2
-  simpa [sourceDiagonalReal, sourceDiagonalDerivative] using hid.mul hcos
+  have hprod : HasDerivAt
+      (fun t : ℝ => t * Real.cos (2 * Real.pi * (n : ℝ) * t))
+      (Real.cos (2 * Real.pi * (n : ℝ) * ω)
+        + ω * (-Real.sin (2 * Real.pi * (n : ℝ) * ω) * (2 * Real.pi * (n : ℝ)))) ω := by
+    simpa using (hasDerivAt_id ω).mul hcos
+  have hscaled := hprod.const_mul 2
+  simpa [sourceDiagonalReal, sourceDiagonalDerivative, mul_add, mul_assoc] using hscaled
 
 /-- Exact derivative of every real source entry. -/
 theorem hasDerivAt_sourceEntryReal (ω : ℝ) (n m : ℤ) :
@@ -98,7 +102,6 @@ theorem hasDerivAt_sourceEntryReal (ω : ℝ) (n m : ℤ) :
   unfold sourcePotentialDerivative
   simp
   field_simp [Real.pi_ne_zero]
-  ring
 
 @[simp] theorem sourcePotentialDerivative_one (n : ℤ) :
     sourcePotentialDerivative 1 n = 2 * (n : ℝ) := by
@@ -106,7 +109,6 @@ theorem hasDerivAt_sourceEntryReal (ω : ℝ) (n m : ℤ) :
   rw [show 2 * Real.pi * (n : ℝ) * 1 = (n : ℝ) * (2 * Real.pi) by ring]
   rw [Real.cos_int_mul_two_pi]
   field_simp [Real.pi_ne_zero]
-  ring
 
 @[simp] theorem sourceDiagonalDerivative_zero (n : ℤ) :
     sourceDiagonalDerivative 0 n = 2 := by
