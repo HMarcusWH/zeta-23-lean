@@ -2,8 +2,6 @@ import Zeta23.CCM.DictionaryTent
 
 noncomputable section
 
-set_option backward.isDefEq.respectTransparency false
-
 namespace Zeta23.CCM
 
 open Complex MeasureTheory Set
@@ -16,7 +14,7 @@ The proof stays in the project's native complex-frequency convention
 `paperFT f z = ∫ y, f y * exp (I*z*y)`.
 
 For `z ≠ 0` we split at the fold `y=0` and integrate the two affine-exponential
-branches.  The value at `z=0` is proved separately from the geometric area; no
+branches. The value at `z=0` is proved separately from the geometric area; no
 removable-singularity shortcut is used.
 -/
 
@@ -29,16 +27,22 @@ private def negativeTentAffine (L : ℝ) (y : ℝ) : ℂ :=
 private theorem hasDerivAt_positiveTentAffine
     {L : ℝ} (hL : 0 < L) (y : ℝ) :
     HasDerivAt (positiveTentAffine L) (-(1 / (L : ℂ))) y := by
-  have hr : HasDerivAt (fun t : ℝ => 1 - t / L) (-(1 / L)) y := by
-    simpa using (hasDerivAt_const y (1 : ℝ)).sub ((hasDerivAt_id y).div_const L)
-  simpa [positiveTentAffine] using hr.ofReal_comp
+  change HasDerivAt
+    (fun t : ℝ => 1 - (t : ℂ) / (L : ℂ)) (-(1 / (L : ℂ))) y
+  have hdiv : HasDerivAt (fun t : ℝ => (t : ℂ) / (L : ℂ)) (1 / (L : ℂ)) y := by
+    simpa only [mul_one] using
+      (((hasDerivAt_id (y : ℂ)).div_const (L : ℂ)).comp_ofReal)
+  exact HasDerivAt.const_sub (1 : ℂ) hdiv
 
 private theorem hasDerivAt_negativeTentAffine
     {L : ℝ} (hL : 0 < L) (y : ℝ) :
     HasDerivAt (negativeTentAffine L) (1 / (L : ℂ)) y := by
-  have hr : HasDerivAt (fun t : ℝ => 1 + t / L) (1 / L) y := by
-    simpa using (hasDerivAt_const y (1 : ℝ)).add ((hasDerivAt_id y).div_const L)
-  simpa [negativeTentAffine] using hr.ofReal_comp
+  change HasDerivAt
+    (fun t : ℝ => 1 + (t : ℂ) / (L : ℂ)) (1 / (L : ℂ)) y
+  have hdiv : HasDerivAt (fun t : ℝ => (t : ℂ) / (L : ℂ)) (1 / (L : ℂ)) y := by
+    simpa only [mul_one] using
+      (((hasDerivAt_id (y : ℂ)).div_const (L : ℂ)).comp_ofReal)
+  exact hdiv.const_add (1 : ℂ)
 
 private theorem hasDerivAt_exp_mul_div
     {c : ℂ} (hc : c ≠ 0) (y : ℝ) :
@@ -78,8 +82,7 @@ private theorem intervalIntegral_positiveTent_exp
   rw [hparts, hlast]
   unfold positiveTentAffine
   simp
-  field_simp [hL0, hc]
-  ring
+  field_simp [hL0, hc] <;> ring
 
 private theorem intervalIntegral_negativeTent_exp
     {L : ℝ} (hL : 0 < L) {c : ℂ} (hc : c ≠ 0) :
@@ -112,12 +115,7 @@ private theorem intervalIntegral_negativeTent_exp
   rw [hparts, hlast]
   unfold negativeTentAffine
   simp
-  have hexp : Complex.exp (c * (-(L : ℂ))) = Complex.exp (-(c * (L : ℂ))) := by
-    congr 1
-    ring
-  rw [hexp]
-  field_simp [hL0, hc]
-  ring
+  field_simp [hL0, hc] <;> ring
 
 private theorem hasDerivAt_positiveTentAreaPrimitive
     {L : ℝ} (hL : 0 < L) (y : ℝ) :
@@ -129,9 +127,10 @@ private theorem hasDerivAt_positiveTentAreaPrimitive
     have h := (hasDerivAt_id y).sub
       (((hasDerivAt_id y).pow 2).div_const (2 * L))
     convert h using 1
-    · ring
-    · field_simp [hL.ne']
-      ring
+    · funext t
+      rfl
+    · simp only [id_eq, Nat.cast_ofNat, Nat.reduceSubDiff]
+      field_simp [hL.ne'] <;> ring
   exact hr.ofReal_comp
 
 private theorem hasDerivAt_negativeTentAreaPrimitive
@@ -144,9 +143,10 @@ private theorem hasDerivAt_negativeTentAreaPrimitive
     have h := (hasDerivAt_id y).add
       (((hasDerivAt_id y).pow 2).div_const (2 * L))
     convert h using 1
-    · ring
-    · field_simp [hL.ne']
-      ring
+    · funext t
+      rfl
+    · simp only [id_eq, Nat.cast_ofNat, Nat.reduceSubDiff]
+      field_simp [hL.ne'] <;> ring
   exact hr.ofReal_comp
 
 private theorem intervalIntegral_positiveTent_area
@@ -164,8 +164,7 @@ private theorem intervalIntegral_positiveTent_area
   have hL0 : L ≠ 0 := hL.ne'
   rw [h]
   push_cast
-  field_simp [hL0]
-  ring
+  field_simp [hL0] <;> ring
 
 private theorem intervalIntegral_negativeTent_area
     {L : ℝ} (hL : 0 < L) :
@@ -182,8 +181,7 @@ private theorem intervalIntegral_negativeTent_area
   have hL0 : L ≠ 0 := hL.ne'
   rw [h]
   push_cast
-  field_simp [hL0]
-  ring
+  field_simp [hL0] <;> ring
 
 private theorem tentExp_support_subset_Ioc
     {L : ℝ} (hL : 0 < L) (z : ℂ) :
@@ -194,7 +192,8 @@ private theorem tentExp_support_subset_Ioc
   have ht : dictionaryTent L y ≠ 0 := by
     intro hzero
     apply hy
-    simp [hzero]
+    change dictionaryTent L y * Complex.exp (I * z * y) = 0
+    rw [hzero, zero_mul]
   have hmem := dictionaryTent_support_subset_Ioo hL ht
   exact ⟨hmem.1, hmem.2.le⟩
 
@@ -229,7 +228,7 @@ theorem paperFT_dictionaryTent_zero
     intro y hy
     rw [dictionaryTent_eq_one_sub_div_of_mem_Icc hL]
     simpa [uIcc_of_le hL.le] using hy
-  simp only [mul_zero, I_mul, zero_mul, Complex.exp_zero, mul_one]
+  simp only [mul_zero, zero_mul, Complex.exp_zero, mul_one]
   rw [← hsplit, hleft, hright,
     intervalIntegral_negativeTent_area hL,
     intervalIntegral_positiveTent_area hL]
@@ -255,6 +254,8 @@ theorem paperFT_dictionaryTent_of_ne_zero
         ∫ y in -L..0, negativeTentAffine L y * Complex.exp (c * y) := by
     apply intervalIntegral.integral_congr (μ := volume)
     intro y hy
+    change dictionaryTent L y * Complex.exp (c * y) =
+      negativeTentAffine L y * Complex.exp (c * y)
     rw [dictionaryTent_eq_one_add_div_of_mem_Icc hL]
     · unfold negativeTentAffine
       push_cast
@@ -264,6 +265,8 @@ theorem paperFT_dictionaryTent_of_ne_zero
         ∫ y in 0..L, positiveTentAffine L y * Complex.exp (c * y) := by
     apply intervalIntegral.integral_congr (μ := volume)
     intro y hy
+    change dictionaryTent L y * Complex.exp (c * y) =
+      positiveTentAffine L y * Complex.exp (c * y)
     rw [dictionaryTent_eq_one_sub_div_of_mem_Icc hL]
     · unfold positiveTentAffine
       push_cast
@@ -283,11 +286,10 @@ theorem paperFT_dictionaryTent_of_ne_zero
     intervalIntegral_positiveTent_exp hL hc]
   rw [harg, hc_sq]
   unfold Complex.cos
-  have hargneg : -(c * (L : ℂ)) =
-      -(((L : ℂ) * z) * I) := by rw [harg]
-  rw [hargneg]
-  field_simp [hL0, hz]
-  ring
+  have hnegI : -(((L : ℂ) * z) * I) = (-(L : ℂ) * z) * I := by
+    ring
+  rw [hnegI]
+  field_simp [hL0, hz] <;> ring
 
 def dictionaryTentTransformClosed (L : ℝ) (z : ℂ) : ℂ :=
   if z = 0 then (L : ℂ)
