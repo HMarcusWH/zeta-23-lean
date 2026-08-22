@@ -76,13 +76,17 @@ theorem norm_paperFT_dictionaryTent_mul_sq_le
     have hden : ‖(L : ℂ) * z ^ 2‖ = L * ‖z‖ ^ 2 := by
       rw [norm_mul, norm_pow]
       simp [abs_of_pos hL]
+    have hbase := norm_one_sub_cos_L_mul_le hL hstrip
     have hnum :
         ‖(2 : ℂ) * ((1 : ℂ) - Complex.cos ((L : ℂ) * z))‖
           ≤ 2 * (1 + Real.exp (L / 2)) := by
-      rw [norm_mul]
-      norm_num
-      exact mul_le_mul_of_nonneg_left
-        (norm_one_sub_cos_L_mul_le hL hstrip) (by norm_num)
+      calc
+        ‖(2 : ℂ) * ((1 : ℂ) - Complex.cos ((L : ℂ) * z))‖
+            = 2 * ‖(1 : ℂ) - Complex.cos ((L : ℂ) * z)‖ := by
+                rw [norm_mul]
+                norm_num
+        _ ≤ 2 * (1 + Real.exp (L / 2)) := by
+              exact mul_le_mul_of_nonneg_left hbase (show (0 : ℝ) ≤ 2 by norm_num)
     rw [norm_div, hden]
     calc
       ‖(2 : ℂ) * ((1 : ℂ) - Complex.cos ((L : ℂ) * z))‖ /
