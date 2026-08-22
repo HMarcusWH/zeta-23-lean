@@ -12,11 +12,11 @@ open scoped BigOperators
 
 /-! # Analytic control for the finite dictionary
 
-PR #37 begins by isolating the first-order seam of the compact dictionary test.
-The finite source matrix is real-valued, so the derivative calculation is made
-in a real shadow that is proved entrywise equal to the existing complex source
-matrix.  This keeps ordinary one-variable `HasDerivAt` available while retaining
-the theorem-authoritative PR #34/#35 source object.
+PR #37 isolates the first-order seam of the compact dictionary test.  The finite
+source matrix is real-valued, so the derivative calculation is made in a real
+shadow that is proved entrywise equal to the existing complex source matrix.
+This keeps ordinary one-variable `HasDerivAt` available while retaining the
+theorem-authoritative PR #34/#35 source object.
 
 No explicit formula is invoked in this module.
 -/
@@ -210,5 +210,78 @@ theorem sourceContractRealDerivative_one
     sourceContractRealDerivative N u 1 =
       ∑ i, ∑ j, u i * 2 * u j := by
   simp [sourceContractRealDerivative]
+
+/-- Sum of the real centered-grid coefficients.  This single linear functional
+carries the complete first-order seam of the folded dictionary. -/
+def coefficientSumReal (N : ℕ) (u : Fin (2 * N + 1) → ℝ) : ℝ :=
+  ∑ i, u i
+
+/-- The raw endpoint double sum is exactly the rank-one coefficient-sum mode. -/
+theorem endpointDoubleSum_eq_two_coefficientSum_sq
+    (N : ℕ) (u : Fin (2 * N + 1) → ℝ) :
+    (∑ i, ∑ j, u i * 2 * u j) = 2 * (coefficientSumReal N u) ^ 2 := by
+  unfold coefficientSumReal
+  calc
+    (∑ i, ∑ j, u i * 2 * u j)
+        = ∑ i, (u i * 2) * (∑ j, u j) := by
+            apply Finset.sum_congr rfl
+            intro i hi
+            rw [Finset.mul_sum]
+    _ = (∑ i, u i * 2) * (∑ j, u j) := by
+          rw [Finset.sum_mul]
+    _ = ((∑ i, u i) * 2) * (∑ j, u j) := by
+          rw [Finset.sum_mul]
+    _ = 2 * (∑ i, u i) ^ 2 := by ring
+
+/-- Endpoint derivative at `ω = 0`, in its canonical rank-one form. -/
+theorem sourceContractRealDerivative_zero_eq_two_coefficientSum_sq
+    (N : ℕ) (u : Fin (2 * N + 1) → ℝ) :
+    sourceContractRealDerivative N u 0 = 2 * (coefficientSumReal N u) ^ 2 := by
+  rw [sourceContractRealDerivative_zero,
+    endpointDoubleSum_eq_two_coefficientSum_sq]
+
+/-- Endpoint derivative at `ω = 1`, in the same canonical rank-one form. -/
+theorem sourceContractRealDerivative_one_eq_two_coefficientSum_sq
+    (N : ℕ) (u : Fin (2 * N + 1) → ℝ) :
+    sourceContractRealDerivative N u 1 = 2 * (coefficientSumReal N u) ^ 2 := by
+  rw [sourceContractRealDerivative_one,
+    endpointDoubleSum_eq_two_coefficientSum_sq]
+
+/-- The real source contraction is exactly the theorem-authoritative complex
+contraction after coercing the coefficient vector. -/
+theorem sourceContract_eq_ofReal
+    (N : ℕ) (u : Fin (2 * N + 1) → ℝ) (ω : ℝ) :
+    sourceContract N (fun i => (u i : ℂ)) ω = (sourceContractReal N u ω : ℂ) := by
+  unfold sourceContract quadraticForm sourceContractReal
+  simp_rw [sourceMatrix_apply, sourceEntry_eq_ofReal]
+  push_cast
+
+/-- Subtract the universal rank-one linear source mode.  Its derivative vanishes
+at both source endpoints by the preceding theorems. -/
+def sourceContractRealResidual
+    (N : ℕ) (u : Fin (2 * N + 1) → ℝ) (ω : ℝ) : ℝ :=
+  sourceContractReal N u ω - 2 * (coefficientSumReal N u) ^ 2 * ω
+
+/-- Physical-space residual after removing the universal tent mode.  The
+already-existing clamped aperture coordinate is exactly the standard tent. -/
+def dictionaryResidualReal
+    (N : ℕ) (u : Fin (2 * N + 1) → ℝ) (L y : ℝ) : ℝ :=
+  (1 / 2 : ℝ) *
+    sourceContractRealResidual N u (dictionaryApertureCoord L y)
+
+/-- Exact seam decomposition for real coefficient vectors:
+`dictionaryTest = coefficientSum^2 * tent + residual`.
+No smoothness is claimed here; that is the next analytic gate. -/
+theorem dictionaryTest_ofReal_eq_tent_add_residual
+    (N : ℕ) (u : Fin (2 * N + 1) → ℝ) {L : ℝ} (hL : 0 < L) (y : ℝ) :
+    dictionaryTest N (fun i => (u i : ℂ)) L y =
+      (((coefficientSumReal N u) ^ 2 * dictionaryApertureCoord L y
+          + dictionaryResidualReal N u L y : ℝ) : ℂ) := by
+  rw [dictionaryTest_eq_clamped N (fun i => (u i : ℂ)) hL y]
+  simp only [dictionaryKernel]
+  rw [sourceContract_eq_ofReal]
+  unfold dictionaryResidualReal sourceContractRealResidual
+  push_cast
+  ring
 
 end Zeta23.CCM
