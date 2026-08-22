@@ -112,7 +112,7 @@ theorem pathLaw_prefix_zero
     (pathLaw mu0 K).map (Preorder.frestrictLe 0) =
       mu0.map (MeasurableEquiv.piUnique (fun _ : Iic 0 => S × X)).symm := by
   unfold pathLaw Kernel.trajMeasure
-  rw [Measure.map_comp _ _ (measurable_frestrictLe 0)]
+  rw [Measure.map_comp _ _ (by fun_prop)]
   rw [Kernel.traj_map_frestrictLe]
   simp
 
