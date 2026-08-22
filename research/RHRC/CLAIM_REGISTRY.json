@@ -4,17 +4,9 @@
     "kernel": "OoL-MVS",
     "version": "2.7.6",
     "research_evaluation_mode": "EXPERIMENTAL_EVIDENCE",
-    "evidence_values": [
-      "PASS",
-      "FAIL",
-      "NA"
-    ],
+    "evidence_values": ["PASS", "FAIL", "NA"],
     "logic": "strong_Kleene",
-    "certificate_status_values": [
-      "VALID",
-      "INCOMPLETE",
-      "INVALID"
-    ],
+    "certificate_status_values": ["VALID", "INCOMPLETE", "INVALID"],
     "claim_status_is_separate_from_runtime_evidence_result": true,
     "mathematical_theorem_authority": "Lean/comparator, not RHRC evidence certificates"
   },
@@ -23,10 +15,7 @@
       "id": "C_RH",
       "statement": "Every nontrivial zero rho of zeta satisfies Re(rho)=1/2.",
       "status": "OPEN",
-      "dependencies": [
-        "R001_ZERO_GROWTH",
-        "R001_PRIME_UPPER"
-      ],
+      "dependencies": ["R001_ZERO_GROWTH", "R001_PRIME_UPPER"],
       "route": "R001_exceptional_zero",
       "promotion_cap": "OPEN"
     },
@@ -63,10 +52,7 @@
       "id": "R001_ZERO_GROWTH",
       "statement": "For every hypothetical zeta zero strictly to the right of the critical line there exists an admissible pole-killed C^2 compactly supported Weil test (target-adaptive modulated bump through the pole-killer q'' - q/4) whose translated literature-RHS residual fails the subexponential bound.",
       "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "R001_FILTERED_ZERO_POLE",
-        "R001_WEIL_BRIDGE"
-      ],
+      "dependencies": ["R001_FILTERED_ZERO_POLE", "R001_WEIL_BRIDGE"],
       "source": "Zeta23/ExceptionalZero/WeilFilter.lean",
       "theorem": "Zeta23.ExceptionalZero.exists_poleKilled_test_not_subexponential_of_right_zero",
       "route": "R001_exceptional_zero",
@@ -86,9 +72,7 @@
       "id": "R001_PRIME_UPPER_EQUIV_RH",
       "statement": "The scalar-class R001 prime-side target ArithmeticSideSubexponential is logically equivalent to RH for the zeta zero configuration: it implies RH via the exposed-pole detector with reflection, and RH implies it via unit-modulus critical-line modes.",
       "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "R001_ZERO_GROWTH"
-      ],
+      "dependencies": ["R001_ZERO_GROWTH"],
       "source": "Zeta23/ExceptionalZero/ArithmeticReduction.lean",
       "theorem": "Zeta23.ExceptionalZero.arithmeticSideSubexponential_iff_criticalLine",
       "route": "R001_exceptional_zero",
@@ -98,9 +82,7 @@
       "id": "R002_MULTI_PROBE_SEPARATION",
       "statement": "Block-level separation via the negative-index channel: the exact off-line pair block c*(x x^T - y y^T) of ZeroSide.pair_term, with positive weight and transverse real parts (nonzero Gram determinant), admits an explicit direction on which its Hermitian form is strictly negative (value exactly -c*gramDet^2), and is therefore not equal to any nonnegatively weighted sum of real rank-one blocks - the shape of every on-line configuration and of the TightMult extremal mock. The separating quantity is not a function of the trace/Frobenius/on-line-atom/positive-index data of OBS-001.",
       "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "OBS_TIGHTMULT"
-      ],
+      "dependencies": ["OBS_TIGHTMULT"],
       "source": "Zeta23/ExceptionalZero/ProbeGramNegativity.lean",
       "theorem": "Zeta23.ExceptionalZero.not_onLineCombination_of_pairBlock",
       "route": "R002_multi_probe",
@@ -111,9 +93,7 @@
       "id": "R002_WINDOWED_VISIBILITY",
       "statement": "The negative direction of an off-line pair block survives the positive-semidefinite on-line bulk in a full probe window, so that lambda_min of the windowed Gram is negative whenever an off-line zero lies in the window.",
       "status": "OPEN",
-      "dependencies": [
-        "R002_MULTI_PROBE_SEPARATION"
-      ],
+      "dependencies": ["R002_MULTI_PROBE_SEPARATION"],
       "route": "R002_multi_probe",
       "promotion_cap": "OPEN",
       "note": "Feasibility bookkeeping (routes/R002_multi_probe/MULTI_PROBE_GRAM_OPERATOR_FEASIBILITY_2026_08_21.md) gives visibility iff delta*L >~ sqrt(6/lambda), with every-delta detection in the oversampled regime lambda>1; the price is X=e^L>T on the prime side."
@@ -150,13 +130,24 @@
       "note": "This proves admissibility only for the smooth residual r_{u,L}. The full dictionary also contains the canonical tent sigma(u)^2*tau_L, whose explicit-formula extension remains open. No restriction sum(u)=0 is used."
     },
     {
+      "id": "R003_TENT_ANALYTICS",
+      "statement": "For every L>0, the canonical tent tau_L has its exact paperFT closed form with removable value L, obeys theorem-authoritative quadratic decay on |Im z|<=1/2 in multiplied form, and its transform is absolutely summable over the concrete zeta zero configuration with multiplicity.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [],
+      "source": "Zeta23/CCM/DictionaryTentZeroSummability.lean",
+      "theorem": "Zeta23.CCM.dictionaryTent_analytic_package",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "Transform, strip decay and zero-side summability only. This does not extend EF_lit to the nonsmooth tent and does not identify the tent zero sum with literatureRHS."
+    },
+    {
       "id": "R003_TENT_EF_EXTENSION",
       "statement": "For the canonical tent tau_L(y)=max(0,1-|y|/L), the concrete zeta explicit formula is justified by a C_c^2 approximation/limit argument, with zero-side limit exchange controlled by theorem-authoritative transform decay and the inherited zeta weighted zero summability theorem.",
       "status": "OPEN",
-      "dependencies": [],
+      "dependencies": ["R003_TENT_ANALYTICS"],
       "route": "R003_ccm_bridge",
       "promotion_cap": "OPEN",
-      "note": "Preferred target is zeta-specific using EF_lit_zetaZeroConfig and the existing zero_sum_inv_sq theorem. Do not introduce a new explicit-formula assumption or duplicate weighted-zero-summability gate."
+      "note": "Preferred target is zeta-specific using Zeta23.WeilEF.EF_lit_zeta and the existing zero_sum_inv_sq theorem. Do not introduce a new explicit-formula assumption or duplicate the weighted-zero-summability gate."
     },
     {
       "id": "R003_CCM_RHS_IDENTITY",
@@ -171,10 +162,7 @@
       "id": "R003_KERNEL_EF_EXTENSION",
       "statement": "For every real finite dictionary coefficient vector u and L>0, the concrete zeta zero-side sum of dictionaryTransform(u,L,.) equals literatureRHS of the full tent-plus-residual dictionary test.",
       "status": "OPEN",
-      "dependencies": [
-        "R003_RESIDUAL_C2",
-        "R003_TENT_EF_EXTENSION"
-      ],
+      "dependencies": ["R003_RESIDUAL_C2", "R003_TENT_EF_EXTENSION"],
       "route": "R003_ccm_bridge",
       "promotion_cap": "OPEN",
       "note": "The smooth residual now satisfies the inherited EF_lit hypotheses directly. The remaining nonsmooth obligation is the canonical tent extension; a generic EF_lit Z -> EF_tent Z theorem is not assumed."
@@ -183,10 +171,7 @@
       "id": "R003_CCM_BRIDGE",
       "statement": "The actual finite zeta zero-side dictionary matrix equals finiteMatrix(L,N)+2*cCorrection(L)*I, obtained from the exact full-dictionary explicit-formula identity and real polarization.",
       "status": "OPEN",
-      "dependencies": [
-        "R003_CCM_RHS_IDENTITY",
-        "R003_KERNEL_EF_EXTENSION"
-      ],
+      "dependencies": ["R003_CCM_RHS_IDENTITY", "R003_KERNEL_EF_EXTENSION"],
       "route": "R003_ccm_bridge",
       "promotion_cap": "OPEN",
       "note": "This is the production finite bridge. The older doubled WeilGram relation is retained only as a historical normalization diagnostic and must not be substituted for this statement."
@@ -195,11 +180,7 @@
       "id": "R003_WEIL_DISPLACEMENT",
       "statement": "The actual finite zeta zero-side dictionary matrix has the same exact index displacement g 1^T - 1 g^T as the formal finite CCM matrix and therefore has displacement rank at most two.",
       "status": "OPEN",
-      "dependencies": [
-        "R003_CCM_BRIDGE",
-        "R004_CCM_DISPLACEMENT_FORMAL",
-        "R003_DISPLACEMENT_TRANSFER"
-      ],
+      "dependencies": ["R003_CCM_BRIDGE", "R004_CCM_DISPLACEMENT_FORMAL", "R003_DISPLACEMENT_TRANSFER"],
       "route": "R003_ccm_bridge",
       "promotion_cap": "OPEN",
       "note": "The scalar correction 2*cCorrection(L)*I commutes with the index diagonal, so no extra factor two appears in the production displacement statement."
