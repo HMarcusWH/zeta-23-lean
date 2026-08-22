@@ -49,8 +49,8 @@ theorem jointKernel_isMarkov
     [IsMarkovKernel α] [IsMarkovKernel P] [IsMarkovKernel U] :
     IsMarkovKernel (jointKernel α P U) := by
   unfold jointKernel
-  haveI : IsMarkovKernel (α ⊗ₖ P) := inferInstance
-  haveI : IsMarkovKernel ((α ⊗ₖ P) ⊗ₖ U) := inferInstance
+  letI : IsMarkovKernel (α ⊗ₖ P) := inferInstance
+  letI : IsMarkovKernel ((α ⊗ₖ P) ⊗ₖ U) := inferInstance
   exact Kernel.IsMarkovKernel.map _ (by fun_prop)
 
 /-- The stationary one-step kernel lifted to a kernel on finite histories by reading only
@@ -68,27 +68,32 @@ instance stationaryHistoryKernel_isMarkov
 
 /-- The canonical path law obtained from Ionescu--Tulcea by iterating the induced stationary kernel. -/
 noncomputable def pathLaw
-    (λ₀ : Measure (S × X))
+    (mu0 : Measure (S × X))
     (K : Kernel (S × X) (S × X))
-    [IsProbabilityMeasure λ₀] [IsMarkovKernel K] :
+    [IsProbabilityMeasure mu0] [IsMarkovKernel K] :
     Measure (ℕ → (S × X)) :=
-  Kernel.trajMeasure λ₀ (fun n => stationaryHistoryKernel K n)
+  Kernel.trajMeasure mu0 (fun n => stationaryHistoryKernel K n)
 
 instance pathLaw_isProbability
-    (λ₀ : Measure (S × X))
+    (mu0 : Measure (S × X))
     (K : Kernel (S × X) (S × X))
-    [IsProbabilityMeasure λ₀] [IsMarkovKernel K] :
-    IsProbabilityMeasure (pathLaw λ₀ K) := by
+    [IsProbabilityMeasure mu0] [IsMarkovKernel K] :
+    IsProbabilityMeasure (pathLaw mu0 K) := by
   unfold pathLaw
   infer_instance
 
-#check Kernel.trajMeasure
-#check Kernel.condDistrib_trajMeasure
-#check Kernel.map_frestrictLe_trajMeasure_compProd_eq_map_trajMeasure
-#check Kernel.traj_map_frestrictLe
-#check Kernel.traj_map_frestrictLe_of_le
-#check MeasureTheory.isProjectiveLimit_nat_iff
-#check ProbabilityTheory.isProjectiveLimit_map
-#check ProbabilityTheory.condDistrib_ae_eq_iff_measure_eq_compProd
+/-- Under the canonical path law, the regular conditional distribution of the next
+joint state given the whole finite history is the stationary one-step kernel evaluated
+at the most recent state.  This is the Markov transition statement in Theorem 3.1. -/
+theorem pathLaw_has_transition
+    [StandardBorelSpace S] [StandardBorelSpace X] [Nonempty S] [Nonempty X]
+    (mu0 : Measure (S × X))
+    (K : Kernel (S × X) (S × X))
+    [IsProbabilityMeasure mu0] [IsMarkovKernel K] (n : ℕ) :
+    condDistrib (fun w : ℕ → (S × X) => w (n + 1)) (Preorder.frestrictLe n) (pathLaw mu0 K)
+      =ᵐ[(pathLaw mu0 K).map (Preorder.frestrictLe n)] stationaryHistoryKernel K n := by
+  simpa [pathLaw] using
+    (Kernel.condDistrib_trajMeasure
+      (mu0 := mu0) (κ := fun k => stationaryHistoryKernel K k) (a := n))
 
 end Permansson
