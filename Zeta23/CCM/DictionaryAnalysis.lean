@@ -54,10 +54,10 @@ kept in the exact algebraic shape produced by `HasDerivAt.sin`. -/
 def sourcePotentialDerivative (ω : ℝ) (n : ℤ) : ℝ :=
   Real.cos (2 * Real.pi * (n : ℝ) * ω) * (2 * Real.pi * (n : ℝ)) / Real.pi
 
-/-- Derivative of the diagonal source datum, in product-rule normal form. -/
+/-- Derivative of the diagonal source datum, in the scalar-action product-rule shape. -/
 def sourceDiagonalDerivative (ω : ℝ) (n : ℤ) : ℝ :=
-  2 * Real.cos (2 * Real.pi * (n : ℝ) * ω)
-    + 2 * ω * (-Real.sin (2 * Real.pi * (n : ℝ) * ω) * (2 * Real.pi * (n : ℝ)))
+  2 * (ω * (-Real.sin (2 * Real.pi * (n : ℝ) * ω) * (2 * Real.pi * (n : ℝ)))
+    + Real.cos (2 * Real.pi * (n : ℝ) * ω))
 
 /-- Entrywise source derivative. -/
 def sourceEntryDerivative (ω : ℝ) (n m : ℤ) : ℝ :=
@@ -81,12 +81,12 @@ theorem hasDerivAt_sourceDiagonalReal (ω : ℝ) (n : ℤ) :
     simpa using (hasDerivAt_id ω).const_mul (2 * Real.pi * (n : ℝ))
   have hcos := hlin.cos
   have hprod : HasDerivAt
-      (fun t : ℝ => t * Real.cos (2 * Real.pi * (n : ℝ) * t))
-      (Real.cos (2 * Real.pi * (n : ℝ) * ω)
-        + ω * (-Real.sin (2 * Real.pi * (n : ℝ) * ω) * (2 * Real.pi * (n : ℝ)))) ω := by
-    simpa using (hasDerivAt_id ω).mul hcos
-  have hscaled := hprod.const_mul 2
-  simpa [sourceDiagonalReal, sourceDiagonalDerivative, mul_add, mul_assoc] using hscaled
+      (fun t : ℝ => t • Real.cos (2 * Real.pi * (n : ℝ) * t))
+      (ω • (-Real.sin (2 * Real.pi * (n : ℝ) * ω) * (2 * Real.pi * (n : ℝ)))
+        + (1 : ℝ) • Real.cos (2 * Real.pi * (n : ℝ) * ω)) ω := by
+    exact (hasDerivAt_id ω).smul hcos
+  have hscaled := hprod.const_smul (2 : ℝ)
+  simpa [sourceDiagonalReal, sourceDiagonalDerivative, smul_eq_mul, mul_assoc] using hscaled
 
 /-- Exact derivative of every real source entry. -/
 theorem hasDerivAt_sourceEntryReal (ω : ℝ) (n m : ℤ) :
