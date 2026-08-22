@@ -29,16 +29,16 @@ private def negativeTentAffine (L : ℝ) (y : ℝ) : ℂ :=
 private theorem hasDerivAt_positiveTentAffine
     {L : ℝ} (hL : 0 < L) (y : ℝ) :
     HasDerivAt (positiveTentAffine L) (-(1 / (L : ℂ))) y := by
-  have hone : HasDerivAt (fun _ : ℝ => (1 : ℂ)) 0 y := hasDerivAt_const y 1
-  have hdiv := ((hasDerivAt_id y).ofReal_comp).div_const (L : ℂ)
-  simpa [positiveTentAffine] using hone.sub hdiv
+  have hr : HasDerivAt (fun t : ℝ => 1 - t / L) (-(1 / L)) y := by
+    simpa using (hasDerivAt_const y (1 : ℝ)).sub ((hasDerivAt_id y).div_const L)
+  simpa [positiveTentAffine] using hr.ofReal_comp
 
 private theorem hasDerivAt_negativeTentAffine
     {L : ℝ} (hL : 0 < L) (y : ℝ) :
     HasDerivAt (negativeTentAffine L) (1 / (L : ℂ)) y := by
-  have hone : HasDerivAt (fun _ : ℝ => (1 : ℂ)) 0 y := hasDerivAt_const y 1
-  have hdiv := ((hasDerivAt_id y).ofReal_comp).div_const (L : ℂ)
-  simpa [negativeTentAffine] using hone.add hdiv
+  have hr : HasDerivAt (fun t : ℝ => 1 + t / L) (1 / L) y := by
+    simpa using (hasDerivAt_const y (1 : ℝ)).add ((hasDerivAt_id y).div_const L)
+  simpa [negativeTentAffine] using hr.ofReal_comp
 
 private theorem hasDerivAt_exp_mul_div
     {c : ℂ} (hc : c ≠ 0) (y : ℝ) :
@@ -72,12 +72,12 @@ private theorem intervalIntegral_positiveTent_exp
   have hlast :
       (∫ y in 0..L, (-(1 / (L : ℂ))) * (Complex.exp (c * y) / c)) =
         (-(1 / (L : ℂ)) / c) * ((Complex.exp (c * L) - 1) / c) := by
-    rw [hfun, intervalIntegral.integral_const_mul,
-      intervalIntegral.integral_exp_mul_complex hc]
+    rw [hfun, intervalIntegral.integral_const_mul, integral_exp_mul_complex hc]
     simp
   have hL0 : (L : ℂ) ≠ 0 := by exact_mod_cast hL.ne'
   rw [hparts, hlast]
   unfold positiveTentAffine
+  simp
   field_simp [hL0, hc]
   ring
 
@@ -103,8 +103,7 @@ private theorem intervalIntegral_negativeTent_exp
   have hlast :
       (∫ y in -L..0, (1 / (L : ℂ)) * (Complex.exp (c * y) / c)) =
         ((1 / (L : ℂ)) / c) * ((1 - Complex.exp (-(c * L))) / c) := by
-    rw [hfun, intervalIntegral.integral_const_mul,
-      intervalIntegral.integral_exp_mul_complex hc]
+    rw [hfun, intervalIntegral.integral_const_mul, integral_exp_mul_complex hc]
     congr 2
     · simp
     · congr 2
@@ -112,6 +111,11 @@ private theorem intervalIntegral_negativeTent_exp
   have hL0 : (L : ℂ) ≠ 0 := by exact_mod_cast hL.ne'
   rw [hparts, hlast]
   unfold negativeTentAffine
+  simp
+  have hexp : Complex.exp (c * (-(L : ℂ))) = Complex.exp (-(c * (L : ℂ))) := by
+    congr 1
+    ring
+  rw [hexp]
   field_simp [hL0, hc]
   ring
 
@@ -124,7 +128,10 @@ private theorem hasDerivAt_positiveTentAreaPrimitive
       (1 - y / L) y := by
     have h := (hasDerivAt_id y).sub
       (((hasDerivAt_id y).pow 2).div_const (2 * L))
-    convert h using 1 <;> field_simp [hL.ne'] <;> ring
+    convert h using 1
+    · ring
+    · field_simp [hL.ne']
+      ring
   exact hr.ofReal_comp
 
 private theorem hasDerivAt_negativeTentAreaPrimitive
@@ -136,7 +143,10 @@ private theorem hasDerivAt_negativeTentAreaPrimitive
       (1 + y / L) y := by
     have h := (hasDerivAt_id y).add
       (((hasDerivAt_id y).pow 2).div_const (2 * L))
-    convert h using 1 <;> field_simp [hL.ne'] <;> ring
+    convert h using 1
+    · ring
+    · field_simp [hL.ne']
+      ring
   exact hr.ofReal_comp
 
 private theorem intervalIntegral_positiveTent_area
@@ -183,7 +193,8 @@ private theorem tentExp_support_subset_Ioc
   intro y hy
   have ht : dictionaryTent L y ≠ 0 := by
     intro hzero
-    exact hy (by rw [hzero]; simp)
+    apply hy
+    simp [hzero]
   have hmem := dictionaryTent_support_subset_Ioo hL ht
   exact ⟨hmem.1, hmem.2.le⟩
 
@@ -202,6 +213,7 @@ theorem paperFT_dictionaryTent_zero
   have hcont : Continuous (fun y : ℝ => dictionaryTent L y) :=
     continuous_dictionaryTent L
   have hsplit := intervalIntegral.integral_add_adjacent_intervals
+    (μ := volume)
     (hcont.intervalIntegrable (-L) 0) (hcont.intervalIntegrable 0 L)
   have hleft :
       (∫ y in -L..0, dictionaryTent L y) =
@@ -236,6 +248,7 @@ theorem paperFT_dictionaryTent_of_ne_zero
     dsimp [c]
     fun_prop
   have hsplit := intervalIntegral.integral_add_adjacent_intervals
+    (μ := volume)
     (hcont.intervalIntegrable (-L) 0) (hcont.intervalIntegrable 0 L)
   have hleft :
       (∫ y in -L..0, dictionaryTent L y * Complex.exp (c * y)) =
