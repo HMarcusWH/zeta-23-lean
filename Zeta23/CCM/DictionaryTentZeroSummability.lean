@@ -19,7 +19,7 @@ the nonsmooth tent and does not identify the zero sum with `literatureRHS`.
 -/
 
 /-- Generic zero-configuration version: local zero counting plus the strip
-axiom and tent quadratic decay imply absolute convergence of the tent zero
+condition and tent quadratic decay imply absolute convergence of the tent zero
 sum. -/
 theorem dictionaryTent_zero_sum_summable_gen
     (Z : ZeroConfig) {A₀ : ℝ} (hA₀ : 1 ≤ A₀)
