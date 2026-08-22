@@ -5,4 +5,5 @@ import Zeta23.CCM.FiniteMatrix
 import Zeta23.CCM.DividedDifference
 import Zeta23.CCM.SourceMatrix
 import Zeta23.CCM.FiniteDictionary
+import Zeta23.CCM.DictionaryAnalysis
 import Zeta23.CCM.Displacement
