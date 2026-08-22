@@ -4,8 +4,6 @@ import Mathlib.Analysis.SpecialFunctions.Integrals.Basic
 
 noncomputable section
 
-set_option backward.isDefEq.respectTransparency false
-
 namespace Zeta23.CCM
 
 open Complex MeasureTheory Set
