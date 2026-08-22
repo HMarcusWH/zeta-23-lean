@@ -54,10 +54,11 @@ kept in the exact algebraic shape produced by `HasDerivAt.sin`. -/
 def sourcePotentialDerivative (ω : ℝ) (n : ℤ) : ℝ :=
   Real.cos (2 * Real.pi * (n : ℝ) * ω) * (2 * Real.pi * (n : ℝ)) / Real.pi
 
-/-- Derivative of the diagonal source datum, in the scalar-action product-rule shape. -/
+/-- Canonical derivative of the diagonal source datum.  Defining this through
+`deriv` keeps the theorem statement on Lean's canonical real normed-space
+instance; the closed formula is proved separately below. -/
 def sourceDiagonalDerivative (ω : ℝ) (n : ℤ) : ℝ :=
-  2 * (ω * (-Real.sin (2 * Real.pi * (n : ℝ) * ω) * (2 * Real.pi * (n : ℝ)))
-    + Real.cos (2 * Real.pi * (n : ℝ) * ω))
+  deriv (fun t : ℝ => sourceDiagonalReal t n) ω
 
 /-- Entrywise source derivative. -/
 def sourceEntryDerivative (ω : ℝ) (n m : ℤ) : ℝ :=
@@ -73,20 +74,39 @@ theorem hasDerivAt_sourcePotentialReal (ω : ℝ) (n : ℤ) :
   have hsin := hlin.sin
   simpa [sourcePotentialReal, sourcePotentialDerivative] using hsin.div_const Real.pi
 
-/-- Exact derivative of the real diagonal source datum. -/
+/-- The diagonal datum is differentiable everywhere. -/
+theorem differentiableAt_sourceDiagonalReal (ω : ℝ) (n : ℤ) :
+    DifferentiableAt ℝ (fun t : ℝ => sourceDiagonalReal t n) ω := by
+  unfold sourceDiagonalReal
+  fun_prop
+
+/-- Exact derivative of the real diagonal source datum, by the canonical
+`deriv` chosen above. -/
 theorem hasDerivAt_sourceDiagonalReal (ω : ℝ) (n : ℤ) :
     HasDerivAt (fun t : ℝ => sourceDiagonalReal t n) (sourceDiagonalDerivative ω n) ω := by
-  have hlin : HasDerivAt (fun t : ℝ => 2 * Real.pi * (n : ℝ) * t)
+  exact (differentiableAt_sourceDiagonalReal ω n).hasDerivAt
+
+/-- Closed product-rule formula for the diagonal derivative. -/
+theorem sourceDiagonalDerivative_formula (ω : ℝ) (n : ℤ) :
+    sourceDiagonalDerivative ω n =
+      2 * Real.cos (2 * Real.pi * (n : ℝ) * ω)
+        + 2 * ω *
+          (-Real.sin (2 * Real.pi * (n : ℝ) * ω) * (2 * Real.pi * (n : ℝ))) := by
+  unfold sourceDiagonalDerivative sourceDiagonalReal
+  have hleft : DifferentiableAt ℝ (fun t : ℝ => 2 * t) ω := by fun_prop
+  have harg : HasDerivAt (fun t : ℝ => 2 * Real.pi * (n : ℝ) * t)
       (2 * Real.pi * (n : ℝ)) ω := by
     simpa using (hasDerivAt_id ω).const_mul (2 * Real.pi * (n : ℝ))
-  have hcos := hlin.cos
-  have hprod : HasDerivAt
-      (fun t : ℝ => t • Real.cos (2 * Real.pi * (n : ℝ) * t))
-      (ω • (-Real.sin (2 * Real.pi * (n : ℝ) * ω) * (2 * Real.pi * (n : ℝ)))
-        + (1 : ℝ) • Real.cos (2 * Real.pi * (n : ℝ) * ω)) ω := by
-    exact (hasDerivAt_id ω).smul hcos
-  have hscaled := hprod.const_smul (2 : ℝ)
-  simpa [sourceDiagonalReal, sourceDiagonalDerivative, smul_eq_mul, mul_assoc] using hscaled
+  have hright : DifferentiableAt ℝ
+      (fun t : ℝ => Real.cos (2 * Real.pi * (n : ℝ) * t)) ω := harg.cos.differentiableAt
+  rw [deriv_fun_mul hleft hright]
+  have hleftDeriv : deriv (fun t : ℝ => 2 * t) ω = 2 := by
+    simpa using ((hasDerivAt_id ω).const_mul 2).deriv
+  have hrightDeriv :
+      deriv (fun t : ℝ => Real.cos (2 * Real.pi * (n : ℝ) * t)) ω =
+        -Real.sin (2 * Real.pi * (n : ℝ) * ω) * (2 * Real.pi * (n : ℝ)) := by
+    exact harg.cos.deriv
+  rw [hleftDeriv, hrightDeriv]
 
 /-- Exact derivative of every real source entry. -/
 theorem hasDerivAt_sourceEntryReal (ω : ℝ) (n m : ℤ) :
@@ -114,11 +134,12 @@ theorem hasDerivAt_sourceEntryReal (ω : ℝ) (n m : ℤ) :
 
 @[simp] theorem sourceDiagonalDerivative_zero (n : ℤ) :
     sourceDiagonalDerivative 0 n = 2 := by
-  simp [sourceDiagonalDerivative]
+  rw [sourceDiagonalDerivative_formula]
+  simp
 
 @[simp] theorem sourceDiagonalDerivative_one (n : ℤ) :
     sourceDiagonalDerivative 1 n = 2 := by
-  unfold sourceDiagonalDerivative
+  rw [sourceDiagonalDerivative_formula]
   rw [show 2 * Real.pi * (n : ℝ) * 1 = (n : ℝ) * (2 * Real.pi) by ring]
   rw [Real.cos_int_mul_two_pi]
   have hsin : Real.sin ((n : ℝ) * (2 * Real.pi)) = 0 := by
