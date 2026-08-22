@@ -7,4 +7,5 @@ import Zeta23.CCM.SourceMatrix
 import Zeta23.CCM.FiniteDictionary
 import Zeta23.CCM.DictionaryAnalysis
 import Zeta23.CCM.DictionaryRegularity
+import Zeta23.CCM.DictionaryResidualBranches
 import Zeta23.CCM.Displacement
