@@ -17,6 +17,7 @@ jobs:
           test: false
           lint: false
           use-mathlib-cache: true
+          use-github-cache: false
       - name: Check Permansson measurable-space formalization
         run: lake env lean Zeta23/Permansson/GeneralFramework.lean
       - name: Reject placeholders and extra axioms
