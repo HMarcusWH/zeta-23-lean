@@ -82,9 +82,43 @@ instance pathLaw_isProbability
   unfold pathLaw
   infer_instance
 
+/-- Finite-history transition identity: the joint law of the history through `n` and the
+next state is obtained by composing the history marginal with the stationary history kernel. -/
+def HasTransitionPair
+    (mu : Measure (ℕ → (S × X)))
+    (K : Kernel (S × X) (S × X)) : Prop :=
+  ∀ n : ℕ,
+    (mu.map (Preorder.frestrictLe n)) ⊗ₘ stationaryHistoryKernel K n =
+      mu.map (fun w : ℕ → (S × X) => (Preorder.frestrictLe n w, w (n + 1)))
+
+/-- The Ionescu--Tulcea path law satisfies the finite-history transition identity. -/
+theorem pathLaw_has_transition_pair
+    (mu0 : Measure (S × X))
+    (K : Kernel (S × X) (S × X))
+    [IsProbabilityMeasure mu0] [IsMarkovKernel K] :
+    HasTransitionPair (pathLaw mu0 K) K := by
+  intro n
+  simpa [pathLaw] using
+    (Kernel.map_frestrictLe_trajMeasure_compProd_eq_map_trajMeasure
+      (X := fun _ : ℕ => S × X)
+      (κ := fun k => stationaryHistoryKernel K k) (μ₀ := mu0) (a := n))
+
+/-- The zeroth finite-history marginal of the canonical path law is exactly the initial law,
+written in the singleton-product representation used by Ionescu--Tulcea. -/
+theorem pathLaw_prefix_zero
+    (mu0 : Measure (S × X))
+    (K : Kernel (S × X) (S × X))
+    [IsProbabilityMeasure mu0] [IsMarkovKernel K] :
+    (pathLaw mu0 K).map (Preorder.frestrictLe 0) =
+      mu0.map (MeasurableEquiv.piUnique (fun _ : Iic 0 => S × X)).symm := by
+  unfold pathLaw Kernel.trajMeasure
+  rw [Measure.map_comp]
+  rw [Kernel.traj_map_frestrictLe]
+  simp
+
 /-- Under the canonical path law, the regular conditional distribution of the next
 joint state given the whole finite history is the stationary one-step kernel evaluated
-at the most recent state.  This is the Markov transition statement in Theorem 3.1. -/
+at the most recent state. This is the Markov transition statement in Theorem 3.1. -/
 theorem pathLaw_has_transition
     [StandardBorelSpace S] [StandardBorelSpace X] [Nonempty S] [Nonempty X]
     (mu0 : Measure (S × X))
@@ -94,6 +128,7 @@ theorem pathLaw_has_transition
       =ᵐ[(pathLaw mu0 K).map (Preorder.frestrictLe n)] stationaryHistoryKernel K n := by
   simpa [pathLaw] using
     (Kernel.condDistrib_trajMeasure
-      (mu0 := mu0) (κ := fun k => stationaryHistoryKernel K k) (a := n))
+      (X := fun _ : ℕ => S × X)
+      (κ := fun k => stationaryHistoryKernel K k) (μ₀ := mu0) (a := n))
 
 end Permansson
