@@ -1,4 +1,5 @@
-import Zeta23.CCM.DictionaryResidualFirstOrderGluing
+import Zeta23.CCM.DictionaryResidualDerivativeIdentities
+import Mathlib.Analysis.Complex.RealDeriv
 
 noncomputable section
 
@@ -7,7 +8,7 @@ set_option backward.isDefEq.respectTransparency false
 namespace Zeta23.CCM
 
 open Set Filter
-open scoped Topology
+open scoped Topology ContDiff
 
 /-! ## Global second derivative -/
 
@@ -95,13 +96,17 @@ private theorem hasDerivAt_dictionaryResidualRealDerivative_zero
     (N : ℕ) (u : Fin (2 * N + 1) → ℝ) {L : ℝ} (hL : 0 < L) :
     HasDerivAt (dictionaryResidualRealDerivative N u L)
       (dictionaryResidualNegativeBranchSecondDerivative N u L 0) 0 := by
-  have hneg := (hasDerivAt_dictionaryResidualNegativeBranchDerivative N u L 0).hasDerivWithinAt
-  have hneg' : HasDerivWithinAt (dictionaryResidualRealDerivative N u L)
+  have hneg0 : HasDerivWithinAt (dictionaryResidualNegativeBranchDerivative N u L)
       (dictionaryResidualNegativeBranchSecondDerivative N u L 0) (Icc (-L) 0) 0 :=
-    hneg.congr_of_mem
+    (hasDerivAt_dictionaryResidualNegativeBranchDerivative N u L 0).hasDerivWithinAt
+  have hneg : HasDerivWithinAt (dictionaryResidualRealDerivative N u L)
+      (dictionaryResidualNegativeBranchSecondDerivative N u L 0) (Icc (-L) 0) 0 :=
+    hneg0.congr_of_mem
       (fun y hy => dictionaryResidualRealDerivative_eq_negativeBranchDerivative N u hL hy.1 hy.2)
       (by constructor <;> linarith)
-  have hpos0 := hasDerivAt_dictionaryResidualPositiveBranchDerivative N u L 0
+  have hpos0 : HasDerivAt (dictionaryResidualPositiveBranchDerivative N u L)
+      (dictionaryResidualPositiveBranchSecondDerivative N u L 0) 0 :=
+    hasDerivAt_dictionaryResidualPositiveBranchDerivative N u L 0
   have hpos0' : HasDerivAt (dictionaryResidualPositiveBranchDerivative N u L)
       (dictionaryResidualNegativeBranchSecondDerivative N u L 0) 0 := by
     rw [dictionaryResidualBranchSecondDerivatives_agree_zero N u L]
@@ -117,7 +122,7 @@ private theorem hasDerivAt_dictionaryResidualRealDerivative_zero
     by_cases h : y ≤ 0
     · exact Or.inl ⟨le_of_lt hy.1, h⟩
     · exact Or.inr ⟨le_of_not_ge h, le_of_lt hy.2⟩
-  exact (hneg'.union hpos).hasDerivAt hmem
+  exact (hneg.union hpos).hasDerivAt hmem
 
 private theorem hasDerivAt_dictionaryResidualRealDerivative_right_endpoint
     (N : ℕ) (u : Fin (2 * N + 1) → ℝ) {L : ℝ} (hL : 0 < L) :
@@ -211,7 +216,8 @@ private theorem continuousAt_dictionaryResidualRealSecondDerivative_left_endpoin
     hext0.congr_of_mem
       (fun y hy => dictionaryResidualRealSecondDerivative_eq_zero_of_left N u hy)
       (by simp)
-  have hint0 :=
+  have hint0 : ContinuousWithinAt (dictionaryResidualNegativeBranchSecondDerivative N u L)
+      (Icc (-L) 0) (-L) :=
     (continuous_dictionaryResidualNegativeBranchSecondDerivative N u L).continuousAt.continuousWithinAt
   have hint : ContinuousWithinAt (dictionaryResidualRealSecondDerivative N u L) (Icc (-L) 0) (-L) :=
     hint0.congr_of_mem
@@ -228,13 +234,15 @@ private theorem continuousAt_dictionaryResidualRealSecondDerivative_left_endpoin
 private theorem continuousAt_dictionaryResidualRealSecondDerivative_zero
     (N : ℕ) (u : Fin (2 * N + 1) → ℝ) {L : ℝ} (hL : 0 < L) :
     ContinuousAt (dictionaryResidualRealSecondDerivative N u L) 0 := by
-  have hneg0 :=
+  have hneg0 : ContinuousWithinAt (dictionaryResidualNegativeBranchSecondDerivative N u L)
+      (Icc (-L) 0) 0 :=
     (continuous_dictionaryResidualNegativeBranchSecondDerivative N u L).continuousAt.continuousWithinAt
   have hneg : ContinuousWithinAt (dictionaryResidualRealSecondDerivative N u L) (Icc (-L) 0) 0 :=
     hneg0.congr_of_mem
       (fun y hy => dictionaryResidualRealSecondDerivative_eq_negativeBranchSecondDerivative N u hL hy.1 hy.2)
       (by constructor <;> linarith)
-  have hpos0 :=
+  have hpos0 : ContinuousWithinAt (dictionaryResidualPositiveBranchSecondDerivative N u L)
+      (Icc 0 L) 0 :=
     (continuous_dictionaryResidualPositiveBranchSecondDerivative N u L).continuousAt.continuousWithinAt
   have hpos : ContinuousWithinAt (dictionaryResidualRealSecondDerivative N u L) (Icc 0 L) 0 :=
     hpos0.congr_of_mem
@@ -251,7 +259,8 @@ private theorem continuousAt_dictionaryResidualRealSecondDerivative_zero
 private theorem continuousAt_dictionaryResidualRealSecondDerivative_right_endpoint
     (N : ℕ) (u : Fin (2 * N + 1) → ℝ) {L : ℝ} (hL : 0 < L) :
     ContinuousAt (dictionaryResidualRealSecondDerivative N u L) L := by
-  have hint0 :=
+  have hint0 : ContinuousWithinAt (dictionaryResidualPositiveBranchSecondDerivative N u L)
+      (Icc 0 L) L :=
     (continuous_dictionaryResidualPositiveBranchSecondDerivative N u L).continuousAt.continuousWithinAt
   have hint : ContinuousWithinAt (dictionaryResidualRealSecondDerivative N u L) (Icc 0 L) L :=
     hint0.congr_of_mem
@@ -332,11 +341,11 @@ private theorem continuousAt_dictionaryResidualRealSecondDerivative_right_endpoi
     rw [contDiff_one_iff_deriv]
     rw [hderiv1]
     exact ⟨hdiff1, continuous_dictionaryResidualRealSecondDerivative N u hL⟩
-  have hcd2 : ContDiff ℝ (1 + 1) (dictionaryResidualReal N u L) := by
-    refine (contDiff_succ_iff_deriv).2 ⟨hdiff, ?_, ?_⟩
-    · simp
-    · simpa [hderiv] using hcd1
-  simpa using hcd2
+  rw [show (2 : ℕ∞ω) = 1 + 1 from rfl]
+  refine (contDiff_succ_iff_deriv).2 ⟨hdiff, ?_, ?_⟩
+  · simp
+  · rw [hderiv]
+    exact hcd1
 
 /-! ## Compact support and complex adapter -/
 
@@ -369,8 +378,9 @@ def dictionaryResidualTest
 theorem contDiff_two_dictionaryResidualTest
     (N : ℕ) (u : Fin (2 * N + 1) → ℝ) {L : ℝ} (hL : 0 < L) :
     ContDiff ℝ 2 (dictionaryResidualTest N u L) := by
-  unfold dictionaryResidualTest
-  fun_prop
+  have hreal := contDiff_two_dictionaryResidualReal N u hL
+  simpa [dictionaryResidualTest, Function.comp_def] using
+    Complex.ofRealCLM.contDiff.comp hreal
 
 /-- The complex residual wrapper is compactly supported in the same aperture. -/
 theorem dictionaryResidualTest_hasCompactSupport
