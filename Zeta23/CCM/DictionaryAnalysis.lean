@@ -255,6 +255,7 @@ theorem sourceContract_eq_ofReal
   unfold sourceContract quadraticForm sourceContractReal
   simp_rw [sourceMatrix_apply, sourceEntry_eq_ofReal, Complex.conj_ofReal]
   push_cast
+  rfl
 
 /-- Subtract the universal rank-one linear source mode.  Its derivative vanishes
 at both source endpoints by the preceding theorems. -/
