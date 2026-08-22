@@ -57,6 +57,7 @@ theorem dictionaryBasisTest_pair_of_mem_aperture
     dictionaryBasisTest n m L y + dictionaryBasisTest n m L (-y) =
       (qBasis n m y L : ℂ) := by
   simp [dictionaryBasisTest, kernel, abs_of_nonneg hy0, hyL]
+  ring
 
 /-- The same normalization smoke test specialized to a prime-power logarithm once
 that logarithm is known to lie in the aperture. -/
@@ -108,7 +109,7 @@ theorem literatureRHS_eq_dictionaryChannels (k : ℝ → ℂ) :
 This is the normalization crash test: evenness contributes `2` and the dictionary
 basis contributes `1/2`, leaving no residual factor. -/
 theorem dictionaryPrimeRHS_basis
-    {L : ℝ} (hL : 0 < L) (n m : ℤ) :
+    {L : ℝ} (_hL : 0 < L) (n m : ℤ) :
     dictionaryPrimeRHS (dictionaryBasisTest n m L) =
       -((primeComponent n m L : ℝ) : ℂ) := by
   unfold dictionaryPrimeRHS primeComponent
