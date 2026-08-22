@@ -1,5 +1,6 @@
 import Zeta23.CCM.FiniteDictionary
 import Zeta23.CCM.FiniteMatrix
+import Zeta23.CCM.KernelAnalysis
 import Zeta23.ExplicitFormula
 
 noncomputable section
@@ -35,6 +36,19 @@ theorem dictionaryBasisTest_eq_zero_of_lt_abs
     {n m : ℤ} {L y : ℝ} (hy : L < |y|) :
     dictionaryBasisTest n m L y = 0 := by
   simp [dictionaryBasisTest, kernel_eq_zero_of_lt_abs hy]
+
+/-- Pointwise support of the production basis test stays inside the same aperture. -/
+theorem dictionaryBasisTest_support_subset {L : ℝ} (n m : ℤ) :
+    Function.support (dictionaryBasisTest n m L) ⊆ Icc (-L) L := by
+  intro y hy
+  apply kernel_support_subset n m
+  intro hzero
+  exact hy (by simp [dictionaryBasisTest, hzero])
+
+/-- Topological support of the production basis test stays inside the closed aperture. -/
+theorem dictionaryBasisTest_tsupport_subset {L : ℝ} (n m : ℤ) :
+    tsupport (dictionaryBasisTest n m L) ⊆ Icc (-L) L := by
+  exact closure_minimal (dictionaryBasisTest_support_subset n m) isClosed_Icc
 
 /-- The factor-two smoke test for the prime channel: evenness contributes a factor
 `2`, which cancels the production `1/2` exactly. -/
@@ -89,5 +103,45 @@ theorem literatureRHS_eq_dictionaryChannels (k : ℝ → ℂ) :
     Zeta23.EF.literatureRHS k =
       dictionaryPoleRHS k + dictionaryPrimeRHS k + dictionaryArchRHS k := by
   rfl
+
+/-- The production prime channel is exactly minus the fork-owned `primeComponent`.
+This is the normalization crash test: evenness contributes `2` and the dictionary
+basis contributes `1/2`, leaving no residual factor. -/
+theorem dictionaryPrimeRHS_basis
+    {L : ℝ} (hL : 0 < L) (n m : ℤ) :
+    dictionaryPrimeRHS (dictionaryBasisTest n m L) =
+      -((primeComponent n m L : ℝ) : ℂ) := by
+  unfold dictionaryPrimeRHS primeComponent
+  let S := Finset.Icc 2 ⌊Real.exp L⌋₊
+  have hks : tsupport (dictionaryBasisTest n m L) ⊆ Icc (-L) L :=
+    dictionaryBasisTest_tsupport_subset n m
+  rw [tsum_eq_sum (s := S)]
+  · simp only [S]
+    push_cast
+    congr 1
+    refine Finset.sum_congr rfl ?_
+    intro q hq
+    have hqmem := Finset.mem_Icc.mp hq
+    have hqposNat : 0 < q := lt_of_lt_of_le (by norm_num : 0 < 2) hqmem.1
+    have hqpos : (0 : ℝ) < q := by exact_mod_cast hqposNat
+    have hqexp : (q : ℝ) ≤ Real.exp L :=
+      (Nat.le_floor_iff (Real.exp_pos L).le).mp hqmem.2
+    have hlogL : Real.log q ≤ L := by
+      rw [← Real.log_exp L]
+      exact Real.log_le_log hqpos hqexp
+    rw [dictionaryBasisTest_prime_pair_of_log_mem n m q
+      (Real.log_natCast_nonneg q) hlogL]
+  · intro q hq
+    by_cases hsmall : q < 2
+    · interval_cases q <;> simp
+    · have hq2 : 2 ≤ q := Nat.le_of_not_gt hsmall
+      have hqgt : ⌊Real.exp L⌋₊ < q := by
+        by_contra hnot
+        have hqle : q ≤ ⌊Real.exp L⌋₊ := Nat.le_of_not_gt hnot
+        exact hq (by simpa [S, Finset.mem_Icc] using And.intro hq2 hqle)
+      apply Zeta23.EF.prime_summand_eq_zero hks
+      simp only [Finset.mem_Ioc, not_and, not_le]
+      intro _
+      exact hqgt
 
 end Zeta23.CCM
