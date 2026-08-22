@@ -108,9 +108,8 @@ private theorem hasDerivAt_dictionaryResidualRealDerivative_zero
       (dictionaryResidualPositiveBranchSecondDerivative N u L 0) 0 :=
     hasDerivAt_dictionaryResidualPositiveBranchDerivative N u L 0
   have hpos0' : HasDerivAt (dictionaryResidualPositiveBranchDerivative N u L)
-      (dictionaryResidualNegativeBranchSecondDerivative N u L 0) 0 := by
-    rw [dictionaryResidualBranchSecondDerivatives_agree_zero N u L]
-    exact hpos0
+      (dictionaryResidualNegativeBranchSecondDerivative N u L 0) 0 :=
+    hpos0.congr_deriv (dictionaryResidualBranchSecondDerivatives_agree_zero N u L)
   have hpos : HasDerivWithinAt (dictionaryResidualRealDerivative N u L)
       (dictionaryResidualNegativeBranchSecondDerivative N u L 0) (Icc 0 L) 0 :=
     hpos0'.hasDerivWithinAt.congr_of_mem
@@ -378,9 +377,8 @@ def dictionaryResidualTest
 theorem contDiff_two_dictionaryResidualTest
     (N : ℕ) (u : Fin (2 * N + 1) → ℝ) {L : ℝ} (hL : 0 < L) :
     ContDiff ℝ 2 (dictionaryResidualTest N u L) := by
-  have hreal := contDiff_two_dictionaryResidualReal N u hL
-  simpa [dictionaryResidualTest, Function.comp_def] using
-    Complex.ofRealCLM.contDiff.comp hreal
+  change ContDiff ℝ 2 (fun y : ℝ => (dictionaryResidualReal N u L y : ℂ))
+  exact Complex.ofRealCLM.contDiff.comp (contDiff_two_dictionaryResidualReal N u hL)
 
 /-- The complex residual wrapper is compactly supported in the same aperture. -/
 theorem dictionaryResidualTest_hasCompactSupport
