@@ -7,6 +7,7 @@ set_option backward.isDefEq.respectTransparency false
 namespace Zeta23.CCM
 
 open Set Filter
+open scoped Topology
 
 /-! ## Exterior zero identities -/
 
@@ -49,7 +50,7 @@ private theorem dictionaryResidualRealDerivative_eq_negativeBranchDerivative
       dictionaryResidualNegativeBranchDerivative N u L y := by
   by_cases hEq : y = -L
   · subst y
-    simp [dictionaryResidualRealDerivative, hL.le,
+    simp [dictionaryResidualRealDerivative,
       dictionaryResidualNegativeBranchDerivative_left_endpoint N u hL]
   · have hgt : -L < y := lt_of_le_of_ne hyL (Ne.symm hEq)
     simp [dictionaryResidualRealDerivative, not_le.mpr hgt, hy0]
@@ -61,11 +62,16 @@ private theorem dictionaryResidualRealDerivative_eq_positiveBranchDerivative
       dictionaryResidualPositiveBranchDerivative N u L y := by
   by_cases h0 : y = 0
   · subst y
-    simp [dictionaryResidualRealDerivative]
+    have hnleft : ¬ (0 : ℝ) ≤ -L := by linarith
+    simp [dictionaryResidualRealDerivative, hnleft,
+      dictionaryResidualNegativeBranchDerivative_zero,
+      dictionaryResidualPositiveBranchDerivative_zero]
   by_cases hEq : y = L
   · subst y
-    simp [dictionaryResidualRealDerivative, hL.le,
-      dictionaryResidualPositiveBranchDerivative_right_endpoint N u hL]
+    have hnleft : ¬ L ≤ -L := by linarith
+    have hnzero : ¬ L ≤ 0 := by linarith
+    rw [dictionaryResidualPositiveBranchDerivative_right_endpoint N u hL]
+    simp [dictionaryResidualRealDerivative, hnleft, hnzero]
   · have hypos : 0 < y := lt_of_le_of_ne hy0 (Ne.symm h0)
     have hylt : y < L := lt_of_le_of_ne hyL hEq
     have hnleft : ¬ y ≤ -L := by linarith
@@ -88,17 +94,17 @@ private theorem dictionaryResidualRealDerivative_eq_zero_of_right
 private theorem hasDerivAt_dictionaryResidualReal_left_endpoint
     (N : ℕ) (u : Fin (2 * N + 1) → ℝ) {L : ℝ} (hL : 0 < L) :
     HasDerivAt (dictionaryResidualReal N u L) 0 (-L) := by
-  have hext0 : HasDerivWithinAt (fun _ : ℝ => 0) 0 (Iic (-L)) (-L) :=
+  have hext0 : HasDerivWithinAt (fun _ : ℝ => (0 : ℝ)) (0 : ℝ) (Iic (-L)) (-L) :=
     (hasDerivAt_const (-L) (0 : ℝ)).hasDerivWithinAt
   have hext : HasDerivWithinAt (dictionaryResidualReal N u L) 0 (Iic (-L)) (-L) :=
     hext0.congr_of_mem
-      (fun y hy => (dictionaryResidualReal_eq_zero_of_left N u hL hy).symm)
+      (fun y hy => dictionaryResidualReal_eq_zero_of_left N u hL hy)
       (by simp)
   have hint0 : HasDerivAt (dictionaryResidualNegativeBranch N u L) 0 (-L) := by
     simpa using hasDerivAt_dictionaryResidualNegativeBranch N u L (-L)
   have hint : HasDerivWithinAt (dictionaryResidualReal N u L) 0 (Icc (-L) 0) (-L) :=
     hint0.hasDerivWithinAt.congr_of_mem
-      (fun y hy => (dictionaryResidualReal_eq_negativeBranch N u hL hy.1 hy.2).symm)
+      (fun y hy => dictionaryResidualReal_eq_negativeBranch N u hL hy.1 hy.2)
       (by constructor <;> linarith)
   have hmem : Iic (-L) ∪ Icc (-L) 0 ∈ 𝓝 (-L) := by
     apply mem_of_superset (Iio_mem_nhds (show -L < 0 by linarith))
@@ -115,13 +121,13 @@ private theorem hasDerivAt_dictionaryResidualReal_zero
     simpa using hasDerivAt_dictionaryResidualNegativeBranch N u L 0
   have hneg : HasDerivWithinAt (dictionaryResidualReal N u L) 0 (Icc (-L) 0) 0 :=
     hneg0.hasDerivWithinAt.congr_of_mem
-      (fun y hy => (dictionaryResidualReal_eq_negativeBranch N u hL hy.1 hy.2).symm)
+      (fun y hy => dictionaryResidualReal_eq_negativeBranch N u hL hy.1 hy.2)
       (by constructor <;> linarith)
   have hpos0 : HasDerivAt (dictionaryResidualPositiveBranch N u L) 0 0 := by
     simpa using hasDerivAt_dictionaryResidualPositiveBranch N u L 0
   have hpos : HasDerivWithinAt (dictionaryResidualReal N u L) 0 (Icc 0 L) 0 :=
     hpos0.hasDerivWithinAt.congr_of_mem
-      (fun y hy => (dictionaryResidualReal_eq_positiveBranch N u hL hy.1 hy.2).symm)
+      (fun y hy => dictionaryResidualReal_eq_positiveBranch N u hL hy.1 hy.2)
       (by constructor <;> linarith)
   have hmem : Icc (-L) 0 ∪ Icc 0 L ∈ 𝓝 (0 : ℝ) := by
     apply mem_of_superset (Ioo_mem_nhds (show -L < 0 by linarith) hL)
@@ -135,16 +141,17 @@ private theorem hasDerivAt_dictionaryResidualReal_right_endpoint
     (N : ℕ) (u : Fin (2 * N + 1) → ℝ) {L : ℝ} (hL : 0 < L) :
     HasDerivAt (dictionaryResidualReal N u L) 0 L := by
   have hint0 : HasDerivAt (dictionaryResidualPositiveBranch N u L) 0 L := by
-    simpa using hasDerivAt_dictionaryResidualPositiveBranch N u L L
+    exact (hasDerivAt_dictionaryResidualPositiveBranch N u L L).congr_deriv
+      (dictionaryResidualPositiveBranchDerivative_right_endpoint N u hL)
   have hint : HasDerivWithinAt (dictionaryResidualReal N u L) 0 (Icc 0 L) L :=
     hint0.hasDerivWithinAt.congr_of_mem
-      (fun y hy => (dictionaryResidualReal_eq_positiveBranch N u hL hy.1 hy.2).symm)
+      (fun y hy => dictionaryResidualReal_eq_positiveBranch N u hL hy.1 hy.2)
       (by constructor <;> linarith)
-  have hext0 : HasDerivWithinAt (fun _ : ℝ => 0) 0 (Ici L) L :=
+  have hext0 : HasDerivWithinAt (fun _ : ℝ => (0 : ℝ)) (0 : ℝ) (Ici L) L :=
     (hasDerivAt_const L (0 : ℝ)).hasDerivWithinAt
   have hext : HasDerivWithinAt (dictionaryResidualReal N u L) 0 (Ici L) L :=
     hext0.congr_of_mem
-      (fun y hy => (dictionaryResidualReal_eq_zero_of_right N u hL hy).symm)
+      (fun y hy => dictionaryResidualReal_eq_zero_of_right N u hL hy)
       (by simp)
   have hmem : Icc 0 L ∪ Ici L ∈ 𝓝 L := by
     apply mem_of_superset (Ioi_mem_nhds hL)
@@ -163,7 +170,7 @@ theorem hasDerivAt_dictionaryResidualReal
   · have hev : dictionaryResidualReal N u L =ᶠ[𝓝 y] (fun _ : ℝ => 0) := by
       filter_upwards [Iio_mem_nhds hleft] with z hz
       exact dictionaryResidualReal_eq_zero_of_left N u hL (le_of_lt hz)
-    have h := (hasDerivAt_const y (0 : ℝ)).congr_of_eventuallyEq hev.symm
+    have h := (hasDerivAt_const y (0 : ℝ)).congr_of_eventuallyEq hev
     simpa [dictionaryResidualRealDerivative, le_of_lt hleft] using h
   by_cases hleftEq : y = -L
   · subst y
@@ -175,12 +182,13 @@ theorem hasDerivAt_dictionaryResidualReal
         dictionaryResidualNegativeBranch N u L := by
       filter_upwards [Ioo_mem_nhds hgtLeft hneg] with z hz
       exact dictionaryResidualReal_eq_negativeBranch N u hL (le_of_lt hz.1) (le_of_lt hz.2)
-    have h := (hasDerivAt_dictionaryResidualNegativeBranch N u L y).congr_of_eventuallyEq hev.symm
+    have h := (hasDerivAt_dictionaryResidualNegativeBranch N u L y).congr_of_eventuallyEq hev
     have hnleft : ¬ y ≤ -L := not_le.mpr hgtLeft
     simpa [dictionaryResidualRealDerivative, hnleft, le_of_lt hneg] using h
   by_cases hzero : y = 0
   · subst y
-    simpa [dictionaryResidualRealDerivative, hL.le] using
+    have hnleft : ¬ (0 : ℝ) ≤ -L := by linarith
+    simpa [dictionaryResidualRealDerivative, hnleft] using
       hasDerivAt_dictionaryResidualReal_zero N u hL
   have hypos : 0 < y := lt_of_le_of_ne (le_of_not_gt hneg) (Ne.symm hzero)
   by_cases hpos : y < L
@@ -188,19 +196,21 @@ theorem hasDerivAt_dictionaryResidualReal
         dictionaryResidualPositiveBranch N u L := by
       filter_upwards [Ioo_mem_nhds hypos hpos] with z hz
       exact dictionaryResidualReal_eq_positiveBranch N u hL (le_of_lt hz.1) (le_of_lt hz.2)
-    have h := (hasDerivAt_dictionaryResidualPositiveBranch N u L y).congr_of_eventuallyEq hev.symm
+    have h := (hasDerivAt_dictionaryResidualPositiveBranch N u L y).congr_of_eventuallyEq hev
     have hnleft : ¬ y ≤ -L := by linarith
     have hnzero : ¬ y ≤ 0 := not_le.mpr hypos
     simpa [dictionaryResidualRealDerivative, hnleft, hnzero, hpos] using h
   by_cases hrightEq : y = L
   · subst y
-    simpa [dictionaryResidualRealDerivative, hL.le] using
+    have hnleft : ¬ L ≤ -L := by linarith
+    have hnzero : ¬ L ≤ 0 := by linarith
+    simpa [dictionaryResidualRealDerivative, hnleft, hnzero] using
       hasDerivAt_dictionaryResidualReal_right_endpoint N u hL
   · have hright : L < y := lt_of_le_of_ne (le_of_not_gt hpos) (Ne.symm hrightEq)
     have hev : dictionaryResidualReal N u L =ᶠ[𝓝 y] (fun _ : ℝ => 0) := by
       filter_upwards [Ioi_mem_nhds hright] with z hz
       exact dictionaryResidualReal_eq_zero_of_right N u hL (le_of_lt hz)
-    have h := (hasDerivAt_const y (0 : ℝ)).congr_of_eventuallyEq hev.symm
+    have h := (hasDerivAt_const y (0 : ℝ)).congr_of_eventuallyEq hev
     have hnleft : ¬ y ≤ -L := by linarith
     have hnzero : ¬ y ≤ 0 := by linarith
     have hnlt : ¬ y < L := by linarith
