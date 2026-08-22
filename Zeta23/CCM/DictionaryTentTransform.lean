@@ -1,4 +1,5 @@
 import Zeta23.CCM.DictionaryTent
+import Zeta23.CCM.ComplexMomentIntegral
 
 noncomputable section
 
@@ -13,62 +14,12 @@ The proof stays in the project's native complex-frequency convention
 
 `paperFT f z = ∫ y, f y * exp (I*z*y)`.
 
-The affine branches are expanded into the zeroth and first exponential moments.
-The first moment is evaluated from the explicit primitive
-
-`((y/c) - 1/c^2) * exp(c*y)`.
-
-The pinned Mathlib revision exposes two definitionally equal real module paths
-on `ℂ` once inner-product imports are present.  The primitive derivative pins
-`Module.complexToReal ℂ` locally so both the expected derivative type and
-`comp_ofReal` use the same module structure.  The value at `z=0` is computed
-separately from the real triangle area and then coerced to `ℂ`.
+The affine branches are expanded into zeroth and first exponential moments.
+The first moment is supplied by `ComplexMomentIntegral`, whose calculus proof is
+kept outside the wider CCM import graph so no real-module instance diamond can
+enter the `HasDerivAt` elaboration.  The value at `z=0` is computed separately
+from the real triangle area and then coerced to `ℂ`.
 -/
-
-private def mulExpPrimitive (c : ℂ) (y : ℝ) : ℂ :=
-  ((y : ℂ) / c - 1 / c ^ 2) * Complex.exp (c * y)
-
-private theorem hasDerivAt_mulExpPrimitive
-    {c : ℂ} (hc : c ≠ 0) (y : ℝ) :
-    HasDerivAt (mulExpPrimitive c)
-      ((y : ℂ) * Complex.exp (c * y)) y := by
-  letI : Module ℝ ℂ := Module.complexToReal ℂ
-  have hdiv : HasDerivAt (fun t : ℝ => (t : ℂ) / c) (1 / c) y := by
-    simpa only [mul_one] using
-      (((hasDerivAt_id (y : ℂ)).div_const c).comp_ofReal)
-  have hleft : HasDerivAt
-      (fun t : ℝ => (t : ℂ) / c - 1 / c ^ 2) (1 / c) y :=
-    hdiv.sub_const _
-  have hlin : HasDerivAt (fun t : ℝ => c * (t : ℂ)) c y := by
-    simpa only [mul_one] using
-      (((hasDerivAt_id (y : ℂ)).const_mul c).comp_ofReal)
-  have hexp : HasDerivAt (fun t : ℝ => Complex.exp (c * t))
-      (c * Complex.exp (c * y)) y := by
-    simpa [Function.comp_def, mul_comm] using
-      ((Complex.hasDerivAt_exp (c * (y : ℂ))).comp y hlin)
-  have hprod : HasDerivAt
-      (fun t : ℝ => ((t : ℂ) / c - 1 / c ^ 2) * Complex.exp (c * t))
-      ((1 / c) * Complex.exp (c * y) +
-        ((y : ℂ) / c - 1 / c ^ 2) * (c * Complex.exp (c * y))) y :=
-    hleft.mul hexp
-  change HasDerivAt
-    (fun t : ℝ => ((t : ℂ) / c - 1 / c ^ 2) * Complex.exp (c * t))
-    ((y : ℂ) * Complex.exp (c * y)) y
-  convert hprod using 1
-  field_simp [hc] <;> ring
-
-private theorem intervalIntegral_mul_exp
-    {a b : ℝ} {c : ℂ} (hc : c ≠ 0) :
-    (∫ y in a..b, (y : ℂ) * Complex.exp (c * y)) =
-      mulExpPrimitive c b - mulExpPrimitive c a := by
-  have hint : IntervalIntegrable
-      (fun y : ℝ => (y : ℂ) * Complex.exp (c * y)) volume a b := by
-    apply Continuous.intervalIntegrable
-    fun_prop
-  exact intervalIntegral.integral_eq_sub_of_hasDerivAt
-    (f := mulExpPrimitive c)
-    (f' := fun y : ℝ => (y : ℂ) * Complex.exp (c * y))
-    (fun y _ => hasDerivAt_mulExpPrimitive hc y) hint
 
 private theorem intervalIntegral_positiveTent_exp
     {L : ℝ} (hL : 0 < L) {c : ℂ} (hc : c ≠ 0) :
@@ -91,8 +42,8 @@ private theorem intervalIntegral_positiveTent_exp
     push_cast
     field_simp [hL0, hLc0] <;> ring
   rw [hdecomp, integral_exp_mul_complex hc,
-    intervalIntegral.integral_const_mul, intervalIntegral_mul_exp hc]
-  simp [mulExpPrimitive]
+    intervalIntegral.integral_const_mul, intervalIntegral_mul_exp_complex hc]
+  simp [complexMulExpPrimitive]
   field_simp [hL0, hLc0, hc] <;> ring
 
 private theorem intervalIntegral_negativeTent_exp
@@ -116,8 +67,8 @@ private theorem intervalIntegral_negativeTent_exp
     push_cast
     field_simp [hL0, hLc0] <;> ring
   rw [hdecomp, integral_exp_mul_complex hc,
-    intervalIntegral.integral_const_mul, intervalIntegral_mul_exp hc]
-  simp [mulExpPrimitive]
+    intervalIntegral.integral_const_mul, intervalIntegral_mul_exp_complex hc]
+  simp [complexMulExpPrimitive]
   field_simp [hL0, hLc0, hc] <;> ring
 
 private theorem intervalIntegral_positiveTent_area_real
