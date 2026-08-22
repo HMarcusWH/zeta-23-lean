@@ -13,5 +13,6 @@ import Zeta23.CCM.DictionaryResidualGluing
 import Zeta23.CCM.DictionaryResidualFirstOrderGluing
 import Zeta23.CCM.DictionaryResidualSecondOrderGluing
 import Zeta23.CCM.DictionaryTent
+import Zeta23.CCM.DictionaryTentTransform
 import Zeta23.CCM.Displacement
 import Zeta23.CCM.ClaimBindings
