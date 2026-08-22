@@ -33,6 +33,7 @@ private theorem intervalIntegral_positiveTent_exp
     {L : ℝ} (hL : 0 < L) {c : ℂ} (hc : c ≠ 0) :
     (∫ y in 0..L, ((1 - y / L : ℝ) : ℂ) * Complex.exp (c * y)) =
       -1 / c + (Complex.exp (c * L) - 1) / ((L : ℂ) * c ^ 2) := by
+  letI : NormedSpace ℝ ℝ := NormedAlgebra.toNormedSpace ℝ
   have hExpCont : Continuous (fun y : ℝ => Complex.exp (c * y)) := by fun_prop
   have hparts := intervalIntegral.integral_smul_deriv_eq_deriv_smul
     (a := (0 : ℝ)) (b := L)
@@ -71,6 +72,7 @@ private theorem intervalIntegral_negativeTent_exp
     {L : ℝ} (hL : 0 < L) {c : ℂ} (hc : c ≠ 0) :
     (∫ y in -L..0, ((1 + y / L : ℝ) : ℂ) * Complex.exp (c * y)) =
       1 / c + (Complex.exp (-(c * L)) - 1) / ((L : ℂ) * c ^ 2) := by
+  letI : NormedSpace ℝ ℝ := NormedAlgebra.toNormedSpace ℝ
   have hExpCont : Continuous (fun y : ℝ => Complex.exp (c * y)) := by fun_prop
   have hparts := intervalIntegral.integral_smul_deriv_eq_deriv_smul
     (a := -L) (b := (0 : ℝ))
@@ -95,15 +97,9 @@ private theorem intervalIntegral_negativeTent_exp
             intro y hy
             ring
       _ = (((1 / L : ℝ) : ℂ) / c) *
-          ((Complex.exp (c * 0) - Complex.exp (c * (-L))) / c) := by
-            rw [intervalIntegral.integral_const_mul, integral_exp_mul_complex hc]
-      _ = (((1 / L : ℝ) : ℂ) / c) *
           ((1 - Complex.exp (-(c * L))) / c) := by
-            congr 1
-            congr 1
-            · simp
-            · congr 1
-              ring
+            rw [intervalIntegral.integral_const_mul, integral_exp_mul_complex hc]
+            simp [mul_neg, neg_mul]
   have hL0 : L ≠ 0 := hL.ne'
   have hLc0 : (L : ℂ) ≠ 0 := by exact_mod_cast hL0
   rw [hparts, hlast]
@@ -136,12 +132,12 @@ private theorem intervalIntegral_negativeTent_area_real
 private theorem intervalIntegral_positiveTent_area
     {L : ℝ} (hL : 0 < L) :
     (∫ y in 0..L, ((1 - y / L : ℝ) : ℂ)) = (L / 2 : ℝ) := by
-  rw [Complex.integral_ofReal, intervalIntegral_positiveTent_area_real hL]
+  rw [intervalIntegral.integral_ofReal, intervalIntegral_positiveTent_area_real hL]
 
 private theorem intervalIntegral_negativeTent_area
     {L : ℝ} (hL : 0 < L) :
     (∫ y in -L..0, ((1 + y / L : ℝ) : ℂ)) = (L / 2 : ℝ) := by
-  rw [Complex.integral_ofReal, intervalIntegral_negativeTent_area_real hL]
+  rw [intervalIntegral.integral_ofReal, intervalIntegral_negativeTent_area_real hL]
 
 private theorem tentExp_support_subset_Ioc
     {L : ℝ} (hL : 0 < L) (z : ℂ) :
@@ -220,8 +216,7 @@ theorem paperFT_dictionaryTent_of_ne_zero
     change dictionaryTent L y * Complex.exp (c * y) =
       ((1 + y / L : ℝ) : ℂ) * Complex.exp (c * y)
     rw [dictionaryTent_eq_one_add_div_of_mem_Icc hL]
-    · rfl
-    · simpa [uIcc_of_le (by linarith : -L ≤ (0 : ℝ))] using hy
+    simpa [uIcc_of_le (by linarith : -L ≤ (0 : ℝ))] using hy
   have hright :
       (∫ y in 0..L, dictionaryTent L y * Complex.exp (c * y)) =
         ∫ y in 0..L, ((1 - y / L : ℝ) : ℂ) * Complex.exp (c * y) := by
@@ -230,8 +225,7 @@ theorem paperFT_dictionaryTent_of_ne_zero
     change dictionaryTent L y * Complex.exp (c * y) =
       ((1 - y / L : ℝ) : ℂ) * Complex.exp (c * y)
     rw [dictionaryTent_eq_one_sub_div_of_mem_Icc hL]
-    · rfl
-    · simpa [uIcc_of_le hL.le] using hy
+    simpa [uIcc_of_le hL.le] using hy
   have hL0 : (L : ℂ) ≠ 0 := by exact_mod_cast hL.ne'
   have harg : c * (L : ℂ) = ((L : ℂ) * z) * I := by
     dsimp [c]
