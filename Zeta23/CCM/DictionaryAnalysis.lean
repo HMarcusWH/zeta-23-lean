@@ -228,9 +228,9 @@ theorem endpointDoubleSum_eq_two_coefficientSum_sq
             intro i hi
             rw [Finset.mul_sum]
     _ = (∑ i, u i * 2) * (∑ j, u j) := by
-          rw [Finset.sum_mul]
+          rw [← Finset.sum_mul]
     _ = ((∑ i, u i) * 2) * (∑ j, u j) := by
-          rw [Finset.sum_mul]
+          rw [← Finset.sum_mul]
     _ = 2 * (∑ i, u i) ^ 2 := by ring
 
 /-- Endpoint derivative at `ω = 0`, in its canonical rank-one form. -/
@@ -253,7 +253,7 @@ theorem sourceContract_eq_ofReal
     (N : ℕ) (u : Fin (2 * N + 1) → ℝ) (ω : ℝ) :
     sourceContract N (fun i => (u i : ℂ)) ω = (sourceContractReal N u ω : ℂ) := by
   unfold sourceContract quadraticForm sourceContractReal
-  simp_rw [sourceMatrix_apply, sourceEntry_eq_ofReal]
+  simp_rw [sourceMatrix_apply, sourceEntry_eq_ofReal, Complex.conj_ofReal]
   push_cast
 
 /-- Subtract the universal rank-one linear source mode.  Its derivative vanishes
