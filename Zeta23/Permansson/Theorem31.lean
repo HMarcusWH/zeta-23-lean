@@ -98,7 +98,7 @@ theorem measure_eq_of_prefix_maps_eq
     dsimp [fam]
     apply ProbabilityTheory.isProjectiveMeasureFamily_map_restrict
     intro t
-    fun_prop
+    exact (measurable_pi_apply t).aemeasurable
   have hmu : IsProjectiveLimit (α := fun _ : ℕ => S × X) mu fam := by
     intro I
     rfl
@@ -142,12 +142,13 @@ theorem pathLaw_existsUnique
   refine ⟨pathLaw mu0 K, pathLaw_spec mu0 K, ?_⟩
   intro nu hnu
   letI : IsProbabilityMeasure nu := hnu.1
-  symmetry
-  apply measure_eq_of_prefix_maps_eq (pathLaw mu0 K) nu
-  apply prefix_maps_eq_of_initial_and_transition K
-  · exact (pathLaw_prefix_zero mu0 K).trans hnu.2.1.symm
-  · exact pathLaw_has_transition_pair mu0 K
-  · exact hnu.2.2
+  have hEq : pathLaw mu0 K = nu := by
+    apply measure_eq_of_prefix_maps_eq (pathLaw mu0 K) nu
+    apply prefix_maps_eq_of_initial_and_transition K
+    · exact (pathLaw_prefix_zero mu0 K).trans hnu.2.1.symm
+    · exact pathLaw_has_transition_pair mu0 K
+    · exact hnu.2.2
+  exact hEq.symm
 
 /-- Theorem 3.1, machine form: the typed composition `α → P → U` induces a
 Markov kernel, and every initial probability law induces one and only one probability
