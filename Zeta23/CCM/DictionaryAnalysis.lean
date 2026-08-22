@@ -46,16 +46,16 @@ theorem sourceEntry_eq_ofReal (ω : ℝ) (n m : ℤ) :
     simp [sourceEntryReal]
   · rw [sourceEntry_of_ne ω h]
     simp [sourceEntryReal, h, sourcePotentialReal]
-    norm_cast
 
-/-- Derivative of the source potential with respect to the source coordinate. -/
+/-- Derivative of the source potential with respect to the source coordinate,
+kept in the exact algebraic shape produced by `HasDerivAt.sin`. -/
 def sourcePotentialDerivative (ω : ℝ) (n : ℤ) : ℝ :=
-  2 * (n : ℝ) * Real.cos (2 * Real.pi * (n : ℝ) * ω)
+  Real.cos (2 * Real.pi * (n : ℝ) * ω) * (2 * Real.pi * (n : ℝ)) / Real.pi
 
-/-- Derivative of the diagonal source datum. -/
+/-- Derivative of the diagonal source datum, in product-rule normal form. -/
 def sourceDiagonalDerivative (ω : ℝ) (n : ℤ) : ℝ :=
   2 * Real.cos (2 * Real.pi * (n : ℝ) * ω)
-    - 4 * Real.pi * (n : ℝ) * ω * Real.sin (2 * Real.pi * (n : ℝ) * ω)
+    + 2 * ω * (-Real.sin (2 * Real.pi * (n : ℝ) * ω) * (2 * Real.pi * (n : ℝ)))
 
 /-- Entrywise source derivative. -/
 def sourceEntryDerivative (ω : ℝ) (n m : ℤ) : ℝ :=
@@ -67,27 +67,20 @@ theorem hasDerivAt_sourcePotentialReal (ω : ℝ) (n : ℤ) :
     HasDerivAt (fun t : ℝ => sourcePotentialReal t n) (sourcePotentialDerivative ω n) ω := by
   have hlin : HasDerivAt (fun t : ℝ => 2 * Real.pi * (n : ℝ) * t)
       (2 * Real.pi * (n : ℝ)) ω := by
-    convert (hasDerivAt_id ω).const_mul (2 * Real.pi * (n : ℝ)) using 1 <;> ring
+    simpa using (hasDerivAt_id ω).const_mul (2 * Real.pi * (n : ℝ))
   have hsin := hlin.sin
-  convert hsin.div_const Real.pi using 1
-  · rfl
-  · unfold sourcePotentialDerivative
-    field_simp [Real.pi_ne_zero]
-    ring
+  simpa [sourcePotentialReal, sourcePotentialDerivative] using hsin.div_const Real.pi
 
 /-- Exact derivative of the real diagonal source datum. -/
 theorem hasDerivAt_sourceDiagonalReal (ω : ℝ) (n : ℤ) :
     HasDerivAt (fun t : ℝ => sourceDiagonalReal t n) (sourceDiagonalDerivative ω n) ω := by
   have hlin : HasDerivAt (fun t : ℝ => 2 * Real.pi * (n : ℝ) * t)
       (2 * Real.pi * (n : ℝ)) ω := by
-    convert (hasDerivAt_id ω).const_mul (2 * Real.pi * (n : ℝ)) using 1 <;> ring
+    simpa using (hasDerivAt_id ω).const_mul (2 * Real.pi * (n : ℝ))
   have hcos := hlin.cos
   have hid : HasDerivAt (fun t : ℝ => 2 * t) 2 ω := by
-    convert (hasDerivAt_id ω).const_mul 2 using 1 <;> ring
-  convert hid.mul hcos using 1
-  · rfl
-  · unfold sourceDiagonalDerivative
-    ring
+    simpa using (hasDerivAt_id ω).const_mul 2
+  simpa [sourceDiagonalReal, sourceDiagonalDerivative] using hid.mul hcos
 
 /-- Exact derivative of every real source entry. -/
 theorem hasDerivAt_sourceEntryReal (ω : ℝ) (n m : ℤ) :
@@ -102,13 +95,17 @@ theorem hasDerivAt_sourceEntryReal (ω : ℝ) (n m : ℤ) :
 
 @[simp] theorem sourcePotentialDerivative_zero (n : ℤ) :
     sourcePotentialDerivative 0 n = 2 * (n : ℝ) := by
-  simp [sourcePotentialDerivative]
+  unfold sourcePotentialDerivative
+  simp
+  field_simp [Real.pi_ne_zero]
+  ring
 
 @[simp] theorem sourcePotentialDerivative_one (n : ℤ) :
     sourcePotentialDerivative 1 n = 2 * (n : ℝ) := by
   unfold sourcePotentialDerivative
   rw [show 2 * Real.pi * (n : ℝ) * 1 = (n : ℝ) * (2 * Real.pi) by ring]
   rw [Real.cos_int_mul_two_pi]
+  field_simp [Real.pi_ne_zero]
   ring
 
 @[simp] theorem sourceDiagonalDerivative_zero (n : ℤ) :
@@ -172,7 +169,7 @@ theorem hasDerivAt_sourceContractReal
   apply HasDerivAt.fun_sum
   intro j hj
   have hentry := hasDerivAt_sourceEntryReal ω (centeredIndex N i) (centeredIndex N j)
-  convert (hentry.const_mul (u i)).mul_const (u j) using 1 <;> ring
+  simpa [mul_assoc] using (hentry.const_mul (u i)).mul_const (u j)
 
 /-- Endpoint derivative of the real quadratic source contraction, before
 factorization into the square of the coefficient sum. -/
