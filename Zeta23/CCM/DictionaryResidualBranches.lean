@@ -30,9 +30,9 @@ theorem dictionaryApertureCoord_eq_zero_of_lt_abs
   have hdiv : 1 < |y| / L := (one_lt_div hL).2 hy
   rw [max_eq_left (le_of_lt (sub_neg.mpr hdiv))]
 
-@[simp] theorem dictionaryApertureCoord_zero {L : ℝ} (hL : 0 < L) :
+@[simp] theorem dictionaryApertureCoord_zero (L : ℝ) :
     dictionaryApertureCoord L 0 = 1 := by
-  simp [dictionaryApertureCoord, hL.ne']
+  simp [dictionaryApertureCoord]
 
 @[simp] theorem dictionaryApertureCoord_right_endpoint {L : ℝ} (hL : 0 < L) :
     dictionaryApertureCoord L L = 0 := by
@@ -119,14 +119,16 @@ theorem hasDerivAt_dictionaryResidualPositiveBranch
     (N : ℕ) (u : Fin (2 * N + 1) → ℝ) (L y : ℝ) :
     HasDerivAt (dictionaryResidualPositiveBranch N u L)
       (dictionaryResidualPositiveBranchDerivative N u L y) y := by
-  have hinner0 :=
-    (hasDerivAt_const (x := y) (c := (1 : ℝ))).sub ((hasDerivAt_id y).div_const L)
+  unfold dictionaryResidualPositiveBranch dictionaryResidualPositiveBranchDerivative
+  have hdiv : HasDerivAt (fun t : ℝ => t / L) (1 / L) y := by
+    simpa using (hasDerivAt_id y).div_const L
+  have hinner0 := hdiv.neg
+  have hinner1 := hinner0.const_add (1 : ℝ)
   have hinner : HasDerivAt (fun t : ℝ => 1 - t / L) (-1 / L) y := by
-    simpa only [Pi.sub_apply, zero_sub] using hinner0
+    simpa [sub_eq_add_neg] using hinner1
   have hcomp :=
     (hasDerivAt_sourceContractRealResidual N u (1 - y / L)).comp y hinner
-  simpa [dictionaryResidualPositiveBranch, dictionaryResidualPositiveBranchDerivative] using
-    hcomp.const_mul (1 / 2 : ℝ)
+  simpa using hcomp.const_mul (1 / 2 : ℝ)
 
 /-- The negative physical branch is differentiable with the opposite inner
 orientation. -/
@@ -134,14 +136,15 @@ theorem hasDerivAt_dictionaryResidualNegativeBranch
     (N : ℕ) (u : Fin (2 * N + 1) → ℝ) (L y : ℝ) :
     HasDerivAt (dictionaryResidualNegativeBranch N u L)
       (dictionaryResidualNegativeBranchDerivative N u L y) y := by
-  have hinner0 :=
-    (hasDerivAt_const (x := y) (c := (1 : ℝ))).add ((hasDerivAt_id y).div_const L)
+  unfold dictionaryResidualNegativeBranch dictionaryResidualNegativeBranchDerivative
+  have hdiv : HasDerivAt (fun t : ℝ => t / L) (1 / L) y := by
+    simpa using (hasDerivAt_id y).div_const L
+  have hinner0 := hdiv.const_add (1 : ℝ)
   have hinner : HasDerivAt (fun t : ℝ => 1 + t / L) (1 / L) y := by
-    simpa only [Pi.add_apply, zero_add] using hinner0
+    simpa using hinner0
   have hcomp :=
     (hasDerivAt_sourceContractRealResidual N u (1 + y / L)).comp y hinner
-  simpa [dictionaryResidualNegativeBranch, dictionaryResidualNegativeBranchDerivative] using
-    hcomp.const_mul (1 / 2 : ℝ)
+  simpa using hcomp.const_mul (1 / 2 : ℝ)
 
 /-- The positive branch has zero derivative at the center seam. -/
 @[simp] theorem dictionaryResidualPositiveBranchDerivative_zero
@@ -161,7 +164,9 @@ exterior at `y=L`. -/
     (N : ℕ) (u : Fin (2 * N + 1) → ℝ) {L : ℝ} (hL : 0 < L) :
     dictionaryResidualPositiveBranchDerivative N u L L = 0 := by
   have hL0 : L ≠ 0 := hL.ne'
-  have harg : 1 - L / L = (0 : ℝ) := by field_simp
+  have harg : 1 - L / L = (0 : ℝ) := by
+    rw [div_self hL0]
+    norm_num
   rw [dictionaryResidualPositiveBranchDerivative, harg,
     sourceContractRealResidualDerivative_zero]
   ring
@@ -172,7 +177,9 @@ exterior at `y=L`. -/
     (N : ℕ) (u : Fin (2 * N + 1) → ℝ) {L : ℝ} (hL : 0 < L) :
     dictionaryResidualNegativeBranchDerivative N u L (-L) = 0 := by
   have hL0 : L ≠ 0 := hL.ne'
-  have harg : 1 + (-L) / L = (0 : ℝ) := by field_simp
+  have harg : 1 + (-L) / L = (0 : ℝ) := by
+    rw [neg_div, div_self hL0]
+    norm_num
   rw [dictionaryResidualNegativeBranchDerivative, harg,
     sourceContractRealResidualDerivative_zero]
   ring
