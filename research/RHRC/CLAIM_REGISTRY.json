@@ -139,26 +139,49 @@
       "promotion_cap": "PROVED_UNCONDITIONAL"
     },
     {
-      "id": "R003_CCM_RHS_IDENTITY",
-      "statement": "For the CCM truncated-character kernel, the deterministic literature explicit-formula RHS matrix equals 2 times the formal finite CCM matrix plus the scalar correction 4*cCorrection(L)*I.",
+      "id": "R003_RESIDUAL_C2",
+      "statement": "For every N, every real centered-grid coefficient vector u and every aperture L>0, the rank-one-regularized finite-dictionary residual has a complex-valued wrapper that is C^2 and compactly supported, exactly satisfying the regularity hypotheses used by EF_lit.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [],
+      "source": "Zeta23/CCM/DictionaryResidualSecondOrderGluing.lean",
+      "theorem": "Zeta23.CCM.dictionaryResidualTest_admissible",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "This proves admissibility only for the smooth residual r_{u,L}. The full dictionary also contains the canonical tent sigma(u)^2*tau_L, whose explicit-formula extension remains open. No restriction sum(u)=0 is used."
+    },
+    {
+      "id": "R003_TENT_EF_EXTENSION",
+      "statement": "For the canonical tent tau_L(y)=max(0,1-|y|/L), the concrete zeta explicit formula is justified by a C_c^2 approximation/limit argument, with zero-side limit exchange controlled by theorem-authoritative transform decay and the inherited zeta weighted zero summability theorem.",
       "status": "OPEN",
       "dependencies": [],
       "route": "R003_ccm_bridge",
       "promotion_cap": "OPEN",
-      "note": "This is a deterministic analytic identity about EF.literatureRHS evaluated on the CCM kernel. It does not require the kernel itself to satisfy EF_lit's C_c^2 admissibility hypothesis. Pole/prime matching is structurally understood; the exact archimedean identity remains to be formalized."
+      "note": "Preferred target is zeta-specific using EF_lit_zetaZeroConfig and the existing zero_sum_inv_sq theorem. Do not introduce a new explicit-formula assumption or duplicate weighted-zero-summability gate."
+    },
+    {
+      "id": "R003_CCM_RHS_IDENTITY",
+      "statement": "For the full real finite dictionary test k_{u,L}, the deterministic literature explicit-formula RHS equals the quadratic form of dictionaryMatrix(L,N)=finiteMatrix(L,N)+2*cCorrection(L)*I on the real coefficient vector embedded in C.",
+      "status": "OPEN",
+      "dependencies": [],
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "OPEN",
+      "note": "This is a zero-free deterministic analytic identity and must be proved channel by channel. The production dictionary carries a factor 1/2, so the older diagnostic normalization 2*M+4*cCorrection(L)*I is not the target theorem."
     },
     {
       "id": "R003_KERNEL_EF_EXTENSION",
-      "statement": "The concrete zeta literature explicit formula extends from admissible C_c^2 tests to the continuous compactly supported CCM kernel, identifying its zero-side sum with EF.literatureRHS(kernel).",
+      "statement": "For every real finite dictionary coefficient vector u and L>0, the concrete zeta zero-side sum of dictionaryTransform(u,L,.) equals literatureRHS of the full tent-plus-residual dictionary test.",
       "status": "OPEN",
-      "dependencies": [],
+      "dependencies": [
+        "R003_RESIDUAL_C2",
+        "R003_TENT_EF_EXTENSION"
+      ],
       "route": "R003_ccm_bridge",
       "promotion_cap": "OPEN",
-      "note": "The intended route is a C_c^2 mollified family plus a channel-by-channel limit, leaving the existing EF_lit theorem and trust boundary unchanged."
+      "note": "The smooth residual now satisfies the inherited EF_lit hypotheses directly. The remaining nonsmooth obligation is the canonical tent extension; a generic EF_lit Z -> EF_tent Z theorem is not assumed."
     },
     {
       "id": "R003_CCM_BRIDGE",
-      "statement": "The finite CCM matrix is connected to the actual zeta zero-side Weil/aperture matrix by the exact scalar-shift identity G = 2*M + 4*cCorrection(L)*I.",
+      "statement": "The actual finite zeta zero-side dictionary matrix equals finiteMatrix(L,N)+2*cCorrection(L)*I, obtained from the exact full-dictionary explicit-formula identity and real polarization.",
       "status": "OPEN",
       "dependencies": [
         "R003_CCM_RHS_IDENTITY",
@@ -166,11 +189,11 @@
       ],
       "route": "R003_ccm_bridge",
       "promotion_cap": "OPEN",
-      "note": "Post-#30 decomposition: the deterministic CCM-to-literatureRHS identity and the regularity/explicit-formula extension are separate proof obligations. Finite numerics support the scalar shift but have no theorem authority."
+      "note": "This is the production finite bridge. The older doubled WeilGram relation is retained only as a historical normalization diagnostic and must not be substituted for this statement."
     },
     {
       "id": "R003_WEIL_DISPLACEMENT",
-      "statement": "The actual finite zeta zero-side CCM/Weil matrix has exact index displacement 2*(g 1^T - 1 g^T) and displacement rank at most two.",
+      "statement": "The actual finite zeta zero-side dictionary matrix has the same exact index displacement g 1^T - 1 g^T as the formal finite CCM matrix and therefore has displacement rank at most two.",
       "status": "OPEN",
       "dependencies": [
         "R003_CCM_BRIDGE",
@@ -178,7 +201,8 @@
         "R003_DISPLACEMENT_TRANSFER"
       ],
       "route": "R003_ccm_bridge",
-      "promotion_cap": "OPEN"
+      "promotion_cap": "OPEN",
+      "note": "The scalar correction 2*cCorrection(L)*I commutes with the index diagonal, so no extra factor two appears in the production displacement statement."
     }
   ]
 }
