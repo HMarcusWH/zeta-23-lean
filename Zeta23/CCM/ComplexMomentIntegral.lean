@@ -9,10 +9,12 @@ open scoped Interval
 
 /-! # Complex exponential first moment
 
-This helper is intentionally isolated from the wider CCM import graph.  In the
-minimal Mathlib calculus environment, the canonical real module structure on
-`ℂ` is the one used by `comp_ofReal`, avoiding the competing inner-product
-derived module instance that appears after the full CCM stack is imported.
+This helper isolates the first complex exponential moment used by the canonical
+dictionary tent transform.  The pinned Mathlib revision exposes multiple
+propositionally equivalent real-module proofs on `ℂ`; following Mathlib's own
+`integral_exp_mul_complex` implementation, the `comp_ofReal` steps use
+`simpa ... using!` so dependent typeclass arguments are reconciled rather than
+required to be definitionally identical.
 -/
 
 /-- Primitive for the first exponential moment `y * exp(c*y)`. -/
@@ -24,17 +26,17 @@ private theorem hasDerivAt_complexMulExpPrimitive
     HasDerivAt (complexMulExpPrimitive c)
       ((y : ℂ) * Complex.exp (c * y)) y := by
   have hdiv : HasDerivAt (fun t : ℝ => (t : ℂ) / c) (1 / c) y := by
-    simpa only [mul_one] using
+    simpa only [mul_one] using!
       (((hasDerivAt_id (y : ℂ)).div_const c).comp_ofReal)
   have hleft : HasDerivAt
       (fun t : ℝ => (t : ℂ) / c - 1 / c ^ 2) (1 / c) y :=
     hdiv.sub_const _
   have hlin : HasDerivAt (fun t : ℝ => c * (t : ℂ)) c y := by
-    simpa only [mul_one] using
+    simpa only [mul_one] using!
       (((hasDerivAt_id (y : ℂ)).const_mul c).comp_ofReal)
   have hexp : HasDerivAt (fun t : ℝ => Complex.exp (c * t))
       (c * Complex.exp (c * y)) y := by
-    simpa [Function.comp_def, mul_comm] using
+    simpa [Function.comp_def, mul_comm] using!
       ((Complex.hasDerivAt_exp (c * (y : ℂ))).comp y hlin)
   have hprod : HasDerivAt
       (fun t : ℝ => ((t : ℂ) / c - 1 / c ^ 2) * Complex.exp (c * t))
