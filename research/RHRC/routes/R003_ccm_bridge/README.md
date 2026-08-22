@@ -2,7 +2,7 @@
 
 Status: **DISCOVERY**. RH remains **OPEN**.
 
-This file is the active route SSOT. It supersedes the earlier transform-first ordering and records the theorem boundary after PRs #35–#37 and the current PR #38 residual-gluing work.
+This file is the active route SSOT. It records the theorem boundary after merged PR #38 and the current PR #39 tent-analytics work.
 
 ## Authority and proof-status discipline
 
@@ -43,16 +43,25 @@ sigma(u) = sum_i u_i,
 tau_L(y) = max(0, 1-|y|/L);
 ```
 
-- exact first-order seam factorization
+- exact first-order seam factorization `K'_u(0) = K'_u(1) = 2*sigma(u)^2`;
+- first and second residual branch jets at `-L`, `0`, and `L`;
+- the smooth residual is globally glued into a complex-valued `C_c^2` test for every real `u` and `L>0` (`R003_RESIDUAL_C2`);
+- the canonical tent is exactly the existing aperture coordinate, has compact support for `L>0`, and has theorem-authoritative native-`paperFT` transform
 
 ```text
-K'_u(0) = K'_u(1) = 2 * sigma(u)^2;
+hat(tau_L)(0) = L,
+hat(tau_L)(z) = 2*(1-cos(L*z))/(L*z^2)       z != 0;
 ```
 
-- first and second residual branch jets at `-L`, `0`, and `L`;
-- in PR #38, the smooth residual is globally glued into a `C_c^2` test for every real `u` and `L>0`, with a complex-valued wrapper satisfying exactly the `ContDiff ℝ 2` and `HasCompactSupport` hypotheses used by `EF_lit`.
+- on `|Im z| <= 1/2`, the tent obeys the compiled multiplied quadratic bound
 
-The raw dictionary itself is not claimed to be globally `C^1`: its universal tent channel carries the first-derivative seam. The residual is the smooth part; the tent is the remaining nonsmooth part.
+```text
+|hat(tau_L)(z)| * |z|^2 <= 2*(1+exp(L/2))/L;
+```
+
+- the multiplicity-weighted tent transform is absolutely summable over the concrete zeta zero configuration, reusing the inherited local zero count and `zero_sum_inv_sq` machinery (`R003_TENT_ANALYTICS`).
+
+The raw dictionary itself is not claimed to be globally `C^1`: its universal tent channel carries the first-derivative seam. The residual is the smooth part; the tent is the remaining nonsmooth part. **Tent transform/decay/summability is not the tent explicit-formula extension.**
 
 ## Normalization lock
 
@@ -104,7 +113,7 @@ M2e deterministic finite RHS identity  OPEN
 M2f exact zero-side / CCM bridge       OPEN
 ```
 
-PR #38 closes the **residual** `C_c^2` obligation inside M2d. M2d itself remains open until the canonical tent has a theorem-authoritative transform/decay package and a justified zeta explicit-formula extension.
+PR #38 closed the residual `C_c^2` obligation. PR #39 closes the separate tent transform/decay/zero-summability obligation. M2d itself remains open until the canonical tent has a justified zeta explicit-formula extension.
 
 ## Active implementation sequence
 
@@ -118,66 +127,48 @@ PR #38 closes the **residual** `C_c^2` obligation inside M2d. M2d itself remains
 
 ### PR #37 — analytic seam isolation
 
-**MERGED.** Delivered the exact coefficient-sum seam channel, tent-plus-residual decomposition, residual first-order endpoint/center jets, source/residual second-order calculus, outer residual second-derivative vanishing, and center second-derivative agreement.
-
-No explicit formula, zero-side bridge or RH claim was obtained.
+**MERGED.** Delivered the exact coefficient-sum seam channel, tent-plus-residual decomposition, residual first-order endpoint/center jets, source/residual second-order calculus, outer residual second-derivative vanishing, and center second-derivative agreement. No explicit formula, zero-side bridge or RH claim was obtained.
 
 ### PR #38 — global residual `C_c^2` closure
 
-**CURRENT PR.** Scope is deliberately narrow.
-
-Targets now implemented in Lean:
+**MERGED.** Compiler-checked targets:
 
 ```text
 contDiff_two_dictionaryResidualReal
-
 dictionaryResidualReal_hasCompactSupport
-
 contDiff_two_dictionaryResidualTest
-
 dictionaryResidualTest_hasCompactSupport
-
 dictionaryResidualTest_admissible
 ```
 
-The complex wrapper `dictionaryResidualTest` is exactly the smooth residual in the codomain expected by the inherited explicit-formula interface.
+The complex wrapper `dictionaryResidualTest` is exactly the smooth residual in the codomain expected by the inherited explicit-formula interface. No tent EF theorem, deterministic RHS identity, zero-side bridge, `sum u_i=0` restriction, `C^3` claim, or RH claim was obtained.
 
-Non-claims:
+### PR #39 — canonical tent transform + strip decay + zero summability
 
-- no tent transform theorem;
-- no explicit-formula extension for the tent;
-- no deterministic RHS identity;
-- no zero-side matrix bridge;
-- no restriction `sum u_i = 0`;
-- no `C^3` claim;
-- no RH evidence or RH claim.
-
-### PR #39 — canonical tent transform + strip decay
-
-Formalize the universal tent
+**CURRENT PR.** Formalizes the universal tent
 
 ```text
 tau_L(y) = max(0, 1-|y|/L)
 ```
 
-and its `paperFT` exactly. Mathematical target:
+with no competing normalization. The theorem-authoritative analytic package is bound as
 
 ```text
-hat(tau_L)(z) = 2*(1-cos(L*z))/(L*z^2)      z != 0,
-hat(tau_L)(0) = L.
+Zeta23.CCM.dictionaryTent_analytic_package
 ```
 
-Prefer the strip estimate in the existing zero-summability geometry:
+and includes:
 
 ```text
-|hat(tau_L)(z)| <= C_L / (1 + Complex.normSq z)
+hat(tau_L)(0) = L,
+hat(tau_L)(z) = 2*(1-cos(L*z))/(L*z^2)       z != 0,
+|hat(tau_L)(z)|*|z|^2 <= 2*(1+exp(L/2))/L   for |Im z| <= 1/2,
+Summable (m_rho * hat(tau_L)(gamma_rho))     for the concrete zeta zeros.
 ```
 
-for `|Im z| <= 1/2`.
+The summability theorem reuses `Zeta23.WeilEF.zero_sum_inv_sq_gen`; there is no duplicate zero-count assumption.
 
-Then derive absolute zeta zero-side summability from the already-proved inherited `zero_sum_inv_sq`. Do **not** introduce a duplicate weighted-zero-summability hypothesis.
-
-No explicit-formula identity is claimed in #39.
+**Non-claims:** no `EF_lit` extension to the nonsmooth tent, no equality with `literatureRHS`, no deterministic matrix identity, no zero-side matrix bridge, and no RH claim.
 
 ### PR #40 — deterministic dictionary RHS / normalization theorem
 
@@ -215,7 +206,7 @@ Any sign/factor/diagonal mismatch stops the PR and reopens the normalization aud
 
 ### PR #41 — tent-specific zeta explicit-formula extension
 
-Use the inherited concrete zeta theorem `EF_lit_zetaZeroConfig`; do not add a new explicit-formula assumption.
+Use the inherited concrete zeta theorem `Zeta23.WeilEF.EF_lit_zeta`; do not add a new explicit-formula assumption.
 
 The residual component already satisfies the current `EF_lit` regularity hypotheses by #38. The remaining work is the canonical tent:
 
@@ -293,7 +284,7 @@ Every post-#47 route must state:
 - `I != J`.
 - Green CI != explicit-formula admissibility.
 - Residual `C_c^2` != tent admissibility.
-- Tent transform decay != explicit-formula limit exchange.
+- Tent transform decay/summability != explicit-formula limit exchange.
 - Finite bridge != finite-to-infinite convergence.
 - Real-`u` seam theorem != an arbitrary complex-coefficient theorem.
 - Do not restrict to `sum u_i = 0` to erase the seam for the full bridge.
@@ -306,4 +297,4 @@ Every post-#47 route must state:
 
 ## Immediate next step
 
-Finish and merge **PR #38** only after the exact theorem head and governance checks are green. Then begin **PR #39** with the canonical tent transform and strip-decay package. Do not invoke a new explicit-formula assumption and do not start the deterministic RHS work before the tent normalization surface is fixed.
+Finish PR #39 only after its exact theorem head, claim binding, RHRC suite, normalization audit, and no-placeholder CCM build are green. Then begin **PR #40** with the deterministic channel-by-channel RHS identity. Do not invoke a new explicit-formula assumption, and do not start the zero-side matrix bridge before #40 and #41 are separately compiled.
