@@ -3,6 +3,8 @@ import Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv
 
 noncomputable section
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace Zeta23.CCM
 
 open Matrix Set
