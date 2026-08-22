@@ -110,6 +110,5 @@ theorem dictionaryResidualBranchSecondDerivatives_agree_zero
   unfold dictionaryResidualPositiveBranchSecondDerivative
     dictionaryResidualNegativeBranchSecondDerivative
   simp
-  ring
 
 end Zeta23.CCM
