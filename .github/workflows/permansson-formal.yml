@@ -18,8 +18,8 @@ jobs:
           lint: false
           use-mathlib-cache: true
           use-github-cache: false
-      - name: Check Permansson measurable-space formalization
-        run: lake env lean Zeta23/Permansson/GeneralFramework.lean
+      - name: Check Permansson Theorem 3.1 measurable-space formalization
+        run: lake env lean Zeta23/Permansson/Theorem31.lean
       - name: Reject placeholders and extra axioms
         run: |
           if grep -R -n -E '\bsorry\b|^[[:space:]]*axiom[[:space:]]' Zeta23/Permansson --include='*.lean'; then
