@@ -34,7 +34,7 @@ private theorem norm_cos_le_exp_abs_im (z : ℂ) :
   have htwo : 2 * ‖Complex.cos z‖ ≤ 2 * Real.exp |z.im| := by
     calc
       2 * ‖Complex.cos z‖ = ‖(2 : ℂ) * Complex.cos z‖ := by
-        simp [norm_mul]
+        simp
       _ = ‖Complex.exp (z * I) + Complex.exp (-z * I)‖ := by
         rw [Complex.two_cos]
       _ ≤ ‖Complex.exp (z * I)‖ + ‖Complex.exp (-z * I)‖ := norm_add_le _ _
@@ -83,16 +83,13 @@ theorem norm_paperFT_dictionaryTent_mul_sq_le
       norm_num
       exact mul_le_mul_of_nonneg_left
         (norm_one_sub_cos_L_mul_le hL hstrip) (by norm_num)
-    have hdenpos : 0 < L * ‖z‖ ^ 2 := by
-      positivity
     rw [norm_div, hden]
     calc
       ‖(2 : ℂ) * ((1 : ℂ) - Complex.cos ((L : ℂ) * z))‖ /
               (L * ‖z‖ ^ 2) * ‖z‖ ^ 2
-          ≤ (2 * (1 + Real.exp (L / 2))) /
-              (L * ‖z‖ ^ 2) * ‖z‖ ^ 2 := by
-            gcongr
-      _ = 2 * (1 + Real.exp (L / 2)) / L := by
-            field_simp [hL.ne', hzNorm]
+          = ‖(2 : ℂ) * ((1 : ℂ) - Complex.cos ((L : ℂ) * z))‖ / L := by
+              field_simp [hL.ne', hzNorm]
+      _ ≤ 2 * (1 + Real.exp (L / 2)) / L :=
+        div_le_div_of_nonneg_right hnum hL.le
 
 end Zeta23.CCM
