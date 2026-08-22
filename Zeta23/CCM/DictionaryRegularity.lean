@@ -15,9 +15,10 @@ open scoped BigOperators
 
 The first-order calculation in `DictionaryAnalysis` shows that both source
 endpoints have derivative matrix `2 * 1 1ᵀ`.  This file records the next jet
-needed for the compact dictionary: the source derivative has zero derivative at
-`ω = 0`, so after subtracting the universal linear rank-one mode the residual
-has vanishing value, first derivative and second derivative at the cutoff end.
+needed for the compact dictionary.  We deliberately use Lean's canonical
+`deriv` for the diagonal and residual derivatives: direct `HasDerivAt`
+subtraction can elaborate the real normed-space instance through two different
+paths in this toolchain.
 
 No explicit formula is invoked here.
 -/
@@ -27,10 +28,9 @@ def sourcePotentialSecondDerivative (ω : ℝ) (n : ℤ) : ℝ :=
   -Real.sin (2 * Real.pi * (n : ℝ) * ω)
     * (2 * Real.pi * (n : ℝ)) * (2 * Real.pi * (n : ℝ)) / Real.pi
 
-/-- Second derivative of the real diagonal source datum. -/
+/-- Canonical second derivative of the diagonal source datum. -/
 def sourceDiagonalSecondDerivative (ω : ℝ) (n : ℤ) : ℝ :=
-  let a := 2 * Real.pi * (n : ℝ)
-  -4 * Real.sin (a * ω) * a - 2 * ω * Real.cos (a * ω) * a ^ 2
+  deriv (fun t : ℝ => sourceDiagonalDerivative t n) ω
 
 /-- Entrywise second source derivative. -/
 def sourceEntrySecondDerivative (ω : ℝ) (n m : ℤ) : ℝ :=
@@ -51,33 +51,24 @@ theorem hasDerivAt_sourcePotentialDerivative (ω : ℝ) (n : ℤ) :
   have hquot := hscaled.div_const Real.pi
   simpa [sourcePotentialDerivative, sourcePotentialSecondDerivative, mul_assoc] using hquot
 
-/-- Exact derivative of `sourceDiagonalDerivative`. -/
+/-- The diagonal derivative is differentiable everywhere. -/
+theorem differentiableAt_sourceDiagonalDerivative (ω : ℝ) (n : ℤ) :
+    DifferentiableAt ℝ (fun t : ℝ => sourceDiagonalDerivative t n) ω := by
+  have hfun : (fun t : ℝ => sourceDiagonalDerivative t n) =
+      fun t =>
+        2 * Real.cos (2 * Real.pi * (n : ℝ) * t)
+          + 2 * t *
+            (-Real.sin (2 * Real.pi * (n : ℝ) * t) * (2 * Real.pi * (n : ℝ))) := by
+    funext t
+    exact sourceDiagonalDerivative_formula t n
+  rw [hfun]
+  fun_prop
+
+/-- Exact derivative of the diagonal derivative, by the canonical `deriv`. -/
 theorem hasDerivAt_sourceDiagonalDerivative (ω : ℝ) (n : ℤ) :
     HasDerivAt (fun t : ℝ => sourceDiagonalDerivative t n)
       (sourceDiagonalSecondDerivative ω n) ω := by
-  let a : ℝ := 2 * Real.pi * (n : ℝ)
-  have harg : HasDerivAt (fun t : ℝ => a * t) a ω := by
-    simpa [a] using (hasDerivAt_id ω).const_mul a
-  have hcos : HasDerivAt (fun t : ℝ => Real.cos (a * t))
-      (-Real.sin (a * ω) * a) ω := by
-    simpa using harg.cos
-  have hsin : HasDerivAt (fun t : ℝ => Real.sin (a * t))
-      (Real.cos (a * ω) * a) ω := by
-    simpa using harg.sin
-  have hfirst := hcos.const_mul (2 : ℝ)
-  have hleft : HasDerivAt (fun t : ℝ => 2 * t) 2 ω := by
-    simpa using (hasDerivAt_id ω).const_mul (2 : ℝ)
-  have hright := hsin.neg.mul_const a
-  have hsecond := hleft.mul hright
-  have hsum := hfirst.add hsecond
-  have hfun : (fun t : ℝ => sourceDiagonalDerivative t n) =
-      fun t => 2 * Real.cos (a * t) + 2 * t * (-Real.sin (a * t) * a) := by
-    funext t
-    rw [sourceDiagonalDerivative_formula]
-    simp [a, mul_assoc]
-  rw [hfun]
-  convert hsum using 1 <;>
-    simp [sourceDiagonalSecondDerivative, a] <;> ring
+  exact (differentiableAt_sourceDiagonalDerivative ω n).hasDerivAt
 
 /-- Exact derivative of every source-entry derivative. -/
 theorem hasDerivAt_sourceEntryDerivative (ω : ℝ) (n m : ℤ) :
@@ -96,9 +87,32 @@ theorem hasDerivAt_sourceEntryDerivative (ω : ℝ) (n m : ℤ) :
     sourcePotentialSecondDerivative 0 n = 0 := by
   simp [sourcePotentialSecondDerivative]
 
+/-- The diagonal source datum has zero second derivative at `ω = 0`. -/
 @[simp] theorem sourceDiagonalSecondDerivative_zero (n : ℤ) :
     sourceDiagonalSecondDerivative 0 n = 0 := by
-  simp [sourceDiagonalSecondDerivative]
+  unfold sourceDiagonalSecondDerivative
+  let a : ℝ := 2 * Real.pi * (n : ℝ)
+  have hfun : (fun t : ℝ => sourceDiagonalDerivative t n) =
+      fun t => 2 * Real.cos (a * t) + 2 * t * (-Real.sin (a * t) * a) := by
+    funext t
+    rw [sourceDiagonalDerivative_formula]
+    simp [a, mul_assoc]
+  rw [hfun]
+  have harg : HasDerivAt (fun t : ℝ => a * t) a 0 := by
+    simpa using (hasDerivAt_id (0 : ℝ)).const_mul a
+  have hcos : HasDerivAt (fun t : ℝ => Real.cos (a * t)) 0 0 := by
+    convert harg.cos using 1 <;> simp
+  have hfirst : HasDerivAt (fun t : ℝ => 2 * Real.cos (a * t)) 0 0 := by
+    convert hcos.const_mul (2 : ℝ) using 1 <;> simp
+  have hsin : HasDerivAt (fun t : ℝ => Real.sin (a * t)) a 0 := by
+    convert harg.sin using 1 <;> simp
+  have hright : HasDerivAt (fun t : ℝ => -Real.sin (a * t) * a) (-a ^ 2) 0 := by
+    convert hsin.neg.mul_const a using 1 <;> ring
+  have hleft : HasDerivAt (fun t : ℝ => 2 * t) 2 0 := by
+    simpa using (hasDerivAt_id (0 : ℝ)).const_mul (2 : ℝ)
+  have hsecond : HasDerivAt (fun t : ℝ => 2 * t * (-Real.sin (a * t) * a)) 0 0 := by
+    convert hleft.mul hright using 1 <;> simp
+  exact (hfirst.add hsecond).deriv
 
 /-- Every source entry has zero second derivative at the cutoff endpoint. -/
 @[simp] theorem sourceEntrySecondDerivative_zero (n m : ℤ) :
@@ -141,22 +155,37 @@ theorem hasDerivAt_sourceContractRealDerivative
   unfold sourceContractReal sourceEntryReal sourcePotentialReal sourceDiagonalReal
   simp
 
-/-- Derivative of the rank-one-regularized source contraction. -/
+/-- Canonical derivative of the rank-one-regularized source contraction. -/
 def sourceContractRealResidualDerivative
     (N : ℕ) (u : Fin (2 * N + 1) → ℝ) (ω : ℝ) : ℝ :=
-  sourceContractRealDerivative N u ω - 2 * (coefficientSumReal N u) ^ 2
+  deriv (sourceContractRealResidual N u) ω
 
-/-- Exact derivative of the regularized source contraction. -/
-theorem hasDerivAt_sourceContractRealResidual
+/-- The regularized source contraction is differentiable everywhere. -/
+theorem differentiableAt_sourceContractRealResidual
     (N : ℕ) (u : Fin (2 * N + 1) → ℝ) (ω : ℝ) :
-    HasDerivAt (sourceContractRealResidual N u)
-      (sourceContractRealResidualDerivative N u ω) ω := by
+    DifferentiableAt ℝ (sourceContractRealResidual N u) ω := by
+  unfold sourceContractRealResidual
+  exact (hasDerivAt_sourceContractReal N u ω).differentiableAt.sub (by fun_prop)
+
+/-- Closed first-derivative formula for the regularized source contraction. -/
+theorem sourceContractRealResidualDerivative_formula
+    (N : ℕ) (u : Fin (2 * N + 1) → ℝ) (ω : ℝ) :
+    sourceContractRealResidualDerivative N u ω =
+      sourceContractRealDerivative N u ω - 2 * (coefficientSumReal N u) ^ 2 := by
+  unfold sourceContractRealResidualDerivative sourceContractRealResidual
   have hlin : HasDerivAt
       (fun t : ℝ => 2 * (coefficientSumReal N u) ^ 2 * t)
       (2 * (coefficientSumReal N u) ^ 2) ω := by
     simpa using (hasDerivAt_id ω).const_mul (2 * (coefficientSumReal N u) ^ 2)
-  simpa [sourceContractRealResidual, sourceContractRealResidualDerivative] using
-    (hasDerivAt_sourceContractReal N u ω).sub hlin
+  have h := (hasDerivAt_sourceContractReal N u ω).sub hlin
+  exact h.deriv
+
+/-- Exact derivative of the regularized source contraction, by canonical `deriv`. -/
+theorem hasDerivAt_sourceContractRealResidual
+    (N : ℕ) (u : Fin (2 * N + 1) → ℝ) (ω : ℝ) :
+    HasDerivAt (sourceContractRealResidual N u)
+      (sourceContractRealResidualDerivative N u ω) ω := by
+  exact (differentiableAt_sourceContractRealResidual N u ω).hasDerivAt
 
 @[simp] theorem sourceContractRealResidual_zero
     (N : ℕ) (u : Fin (2 * N + 1) → ℝ) :
@@ -167,7 +196,7 @@ theorem hasDerivAt_sourceContractRealResidual
 @[simp] theorem sourceContractRealResidualDerivative_zero
     (N : ℕ) (u : Fin (2 * N + 1) → ℝ) :
     sourceContractRealResidualDerivative N u 0 = 0 := by
-  rw [sourceContractRealResidualDerivative,
+  rw [sourceContractRealResidualDerivative_formula,
     sourceContractRealDerivative_zero_eq_two_coefficientSum_sq]
   ring
 
@@ -175,19 +204,50 @@ theorem hasDerivAt_sourceContractRealResidual
 @[simp] theorem sourceContractRealResidualDerivative_one
     (N : ℕ) (u : Fin (2 * N + 1) → ℝ) :
     sourceContractRealResidualDerivative N u 1 = 0 := by
-  rw [sourceContractRealResidualDerivative,
+  rw [sourceContractRealResidualDerivative_formula,
     sourceContractRealDerivative_one_eq_two_coefficientSum_sq]
   ring
 
-/-- The regularized source derivative has zero derivative at the cutoff endpoint. -/
-theorem hasDerivAt_sourceContractRealResidualDerivative_zero
-    (N : ℕ) (u : Fin (2 * N + 1) → ℝ) :
-    HasDerivAt (sourceContractRealResidualDerivative N u) 0 0 := by
-  have hK := hasDerivAt_sourceContractRealDerivative N u 0
+/-- Canonical second derivative of the regularized source contraction. -/
+def sourceContractRealResidualSecondDerivative
+    (N : ℕ) (u : Fin (2 * N + 1) → ℝ) (ω : ℝ) : ℝ :=
+  deriv (sourceContractRealResidualDerivative N u) ω
+
+/-- The regularized source derivative is differentiable everywhere. -/
+theorem differentiableAt_sourceContractRealResidualDerivative
+    (N : ℕ) (u : Fin (2 * N + 1) → ℝ) (ω : ℝ) :
+    DifferentiableAt ℝ (sourceContractRealResidualDerivative N u) ω := by
+  have hfun : sourceContractRealResidualDerivative N u =
+      fun t => sourceContractRealDerivative N u t - 2 * (coefficientSumReal N u) ^ 2 := by
+    funext t
+    exact sourceContractRealResidualDerivative_formula N u t
+  rw [hfun]
+  exact (hasDerivAt_sourceContractRealDerivative N u ω).differentiableAt.sub (by fun_prop)
+
+/-- The residual second derivative equals the source second derivative: subtracting
+a linear mode changes no second derivative. -/
+theorem sourceContractRealResidualSecondDerivative_formula
+    (N : ℕ) (u : Fin (2 * N + 1) → ℝ) (ω : ℝ) :
+    sourceContractRealResidualSecondDerivative N u ω =
+      sourceContractRealSecondDerivative N u ω := by
+  unfold sourceContractRealResidualSecondDerivative
+  have hfun : sourceContractRealResidualDerivative N u =
+      fun t => sourceContractRealDerivative N u t - 2 * (coefficientSumReal N u) ^ 2 := by
+    funext t
+    exact sourceContractRealResidualDerivative_formula N u t
+  rw [hfun]
   have hconst : HasDerivAt
-      (fun _ : ℝ => 2 * (coefficientSumReal N u) ^ 2) 0 0 := by
-    simpa using hasDerivAt_const (x := (0 : ℝ))
+      (fun _ : ℝ => 2 * (coefficientSumReal N u) ^ 2) 0 ω := by
+    simpa using hasDerivAt_const (x := ω)
       (c := 2 * (coefficientSumReal N u) ^ 2)
-  simpa [sourceContractRealResidualDerivative] using hK.sub hconst
+  exact ((hasDerivAt_sourceContractRealDerivative N u ω).sub hconst).deriv
+
+/-- After removing the universal tent mode, the residual also has vanishing
+second derivative at the cutoff endpoint. -/
+@[simp] theorem sourceContractRealResidualSecondDerivative_zero
+    (N : ℕ) (u : Fin (2 * N + 1) → ℝ) :
+    sourceContractRealResidualSecondDerivative N u 0 = 0 := by
+  rw [sourceContractRealResidualSecondDerivative_formula,
+    sourceContractRealSecondDerivative_zero]
 
 end Zeta23.CCM
