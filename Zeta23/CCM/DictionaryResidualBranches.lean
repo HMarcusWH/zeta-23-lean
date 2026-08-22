@@ -105,7 +105,7 @@ theorem dictionaryResidualReal_eq_zero_of_lt_abs
 def dictionaryResidualPositiveBranchDerivative
     (N : ℕ) (u : Fin (2 * N + 1) → ℝ) (L y : ℝ) : ℝ :=
   (1 / 2 : ℝ) *
-    (sourceContractRealResidualDerivative N u (1 - y / L) * (-1 / L))
+    (sourceContractRealResidualDerivative N u (1 - y / L) * (-(1 / L)))
 
 /-- Exact derivative of the negative residual branch. -/
 def dictionaryResidualNegativeBranchDerivative
@@ -124,7 +124,7 @@ theorem hasDerivAt_dictionaryResidualPositiveBranch
     simpa using (hasDerivAt_id y).div_const L
   have hinner0 := hdiv.neg
   have hinner1 := hinner0.const_add (1 : ℝ)
-  have hinner : HasDerivAt (fun t : ℝ => 1 - t / L) (-1 / L) y := by
+  have hinner : HasDerivAt (fun t : ℝ => 1 - t / L) (-(1 / L)) y := by
     simpa [sub_eq_add_neg] using hinner1
   have hcomp :=
     (hasDerivAt_sourceContractRealResidual N u (1 - y / L)).comp y hinner
