@@ -4,7 +4,7 @@ import Zeta23.Permansson.GeneralFramework
 # Permansson v0.1.6 — Theorem 3.1
 
 Machine formalization of the existence-and-uniqueness part of the paper's
-`Joint-process well-posedness` theorem.  The transition-law condition is encoded by
+`Joint-process well-posedness` theorem. The transition-law condition is encoded by
 `HasTransitionPair`, the finite-history joint-law identity equivalent (on standard
 Borel state spaces) to saying that the canonical coordinate process has one-step
 transition kernel `K`.
@@ -30,11 +30,10 @@ theorem measurable_appendPrefix (n : ℕ) :
     Measurable (appendPrefix (S := S) (X := X) n) := by
   refine measurable_pi_lambda _ fun i => ?_
   by_cases h : i.1 ≤ n
-  · simpa [appendPrefix, h] using
-      (measurable_pi_apply (⟨i.1, mem_Iic.mpr h⟩ : Iic n)).comp measurable_fst
-  · simpa [appendPrefix, h] using
-      (measurable_snd : Measurable
-        (fun z : ((i : Iic n) → (S × X)) × (S × X) => z.2))
+  · simp only [appendPrefix, dif_pos h]
+    exact (measurable_pi_apply (⟨i.1, mem_Iic.mpr h⟩ : Iic n)).comp measurable_fst
+  · simp only [appendPrefix, dif_neg h]
+    exact measurable_snd
 
 /-- Appending the `(n+1)`-st coordinate to the prefix through `n` recovers the
 prefix through `n+1`. -/
@@ -48,7 +47,7 @@ theorem appendPrefix_pair (n : ℕ) (w : ℕ → (S × X)) :
   · have hi : i.1 = n + 1 := by
       have hle : i.1 ≤ n + 1 := mem_Iic.mp i.2
       omega
-    simp [appendPrefix, h, hi]
+    simp [appendPrefix, hi]
 
 /-- Two laws with the same zeroth prefix and the same transition-pair identities
 have the same finite-prefix law at every time. -/
@@ -72,7 +71,7 @@ theorem prefix_maps_eq_of_initial_and_transition
             (mu.map (fun w : ℕ → (S × X) =>
               (Preorder.frestrictLe n w, w (n + 1)))).map
                 (appendPrefix (S := S) (X := X) n) := by
-          rw [Measure.map_map (by fun_prop) (measurable_appendPrefix (S := S) (X := X) n)]
+          rw [Measure.map_map (measurable_appendPrefix (S := S) (X := X) n) (by fun_prop)]
           apply Measure.map_congr
           filter_upwards [] with w
           exact (appendPrefix_pair (S := S) (X := X) n w).symm
@@ -80,7 +79,7 @@ theorem prefix_maps_eq_of_initial_and_transition
               (Preorder.frestrictLe n w, w (n + 1)))).map
                 (appendPrefix (S := S) (X := X) n) := by rw [hpair]
         _ = nu.map (Preorder.frestrictLe (n + 1)) := by
-          rw [Measure.map_map (by fun_prop) (measurable_appendPrefix (S := S) (X := X) n)]
+          rw [Measure.map_map (measurable_appendPrefix (S := S) (X := X) n) (by fun_prop)]
           apply Measure.map_congr
           filter_upwards [] with w
           exact appendPrefix_pair (S := S) (X := X) n w
@@ -93,17 +92,17 @@ theorem measure_eq_of_prefix_maps_eq
     (h : ∀ n : ℕ,
       mu.map (Preorder.frestrictLe n) = nu.map (Preorder.frestrictLe n)) :
     mu = nu := by
-  let fam : (I : Finset ℕ) → Measure ((i : I) → (S × X)) :=
+  let fam : (I : Finset ℕ) → Measure ((i : I) → (fun _ : ℕ => S × X) i) :=
     fun I => mu.map (fun w : ℕ → (S × X) => I.restrict w)
-  have hfam : IsProjectiveMeasureFamily fam := by
+  have hfam : IsProjectiveMeasureFamily (α := fun _ : ℕ => S × X) fam := by
     dsimp [fam]
     apply ProbabilityTheory.isProjectiveMeasureFamily_map_restrict
     intro t
     fun_prop
-  have hmu : IsProjectiveLimit mu fam := by
+  have hmu : IsProjectiveLimit (α := fun _ : ℕ => S × X) mu fam := by
     intro I
     rfl
-  have hnu : IsProjectiveLimit nu fam := by
+  have hnu : IsProjectiveLimit (α := fun _ : ℕ => S × X) nu fam := by
     rw [MeasureTheory.isProjectiveLimit_nat_iff hfam]
     intro n
     change nu.map (Preorder.frestrictLe n) = mu.map (Preorder.frestrictLe n)
@@ -113,7 +112,7 @@ theorem measure_eq_of_prefix_maps_eq
     infer_instance
   exact hmu.unique hnu
 
-/-- Exact machine-level specification of the probability law in Theorem 3.1.  The
+/-- Exact machine-level specification of the probability law in Theorem 3.1. The
 zeroth-prefix equality is the singleton-product representation of the initial law used
 by mathlib's Ionescu--Tulcea theorem. -/
 def MarkovPathLawSpec
@@ -143,6 +142,7 @@ theorem pathLaw_existsUnique
   refine ⟨pathLaw mu0 K, pathLaw_spec mu0 K, ?_⟩
   intro nu hnu
   letI : IsProbabilityMeasure nu := hnu.1
+  symmetry
   apply measure_eq_of_prefix_maps_eq (pathLaw mu0 K) nu
   apply prefix_maps_eq_of_initial_and_transition K
   · exact (pathLaw_prefix_zero mu0 K).trans hnu.2.1.symm
