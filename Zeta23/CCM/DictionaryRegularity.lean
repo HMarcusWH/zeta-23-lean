@@ -101,18 +101,18 @@ theorem hasDerivAt_sourceEntryDerivative (ω : ℝ) (n m : ℤ) :
   have harg : HasDerivAt (fun t : ℝ => a * t) a 0 := by
     simpa using (hasDerivAt_id (0 : ℝ)).const_mul a
   have hcos : HasDerivAt (fun t : ℝ => Real.cos (a * t)) 0 0 := by
-    convert harg.cos using 1 <;> simp
+    simpa using harg.cos
   have hfirst : HasDerivAt (fun t : ℝ => 2 * Real.cos (a * t)) 0 0 := by
-    convert hcos.const_mul (2 : ℝ) using 1 <;> simp
+    simpa using hcos.const_mul (2 : ℝ)
   have hsin : HasDerivAt (fun t : ℝ => Real.sin (a * t)) a 0 := by
-    convert harg.sin using 1 <;> simp
+    simpa using harg.sin
   have hright : HasDerivAt (fun t : ℝ => -Real.sin (a * t) * a) (-a ^ 2) 0 := by
-    convert hsin.neg.mul_const a using 1 <;> ring
+    simpa [pow_two] using hsin.neg.mul_const a
   have hleft : HasDerivAt (fun t : ℝ => 2 * t) 2 0 := by
     simpa using (hasDerivAt_id (0 : ℝ)).const_mul (2 : ℝ)
   have hsecond : HasDerivAt (fun t : ℝ => 2 * t * (-Real.sin (a * t) * a)) 0 0 := by
-    convert hleft.mul hright using 1 <;> simp
-  exact (hfirst.add hsecond).deriv
+    simpa using hleft.mul hright
+  simpa only [Pi.add_apply, zero_add] using (hfirst.add hsecond).deriv
 
 /-- Every source entry has zero second derivative at the cutoff endpoint. -/
 @[simp] theorem sourceEntrySecondDerivative_zero (n m : ℤ) :
@@ -240,7 +240,8 @@ theorem sourceContractRealResidualSecondDerivative_formula
       (fun _ : ℝ => 2 * (coefficientSumReal N u) ^ 2) 0 ω := by
     simpa using hasDerivAt_const (x := ω)
       (c := 2 * (coefficientSumReal N u) ^ 2)
-  exact ((hasDerivAt_sourceContractRealDerivative N u ω).sub hconst).deriv
+  simpa only [Pi.sub_apply, sub_zero] using
+    ((hasDerivAt_sourceContractRealDerivative N u ω).sub hconst).deriv
 
 /-- After removing the universal tent mode, the residual also has vanishing
 second derivative at the cutoff endpoint. -/
