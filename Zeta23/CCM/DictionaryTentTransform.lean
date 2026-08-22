@@ -13,36 +13,11 @@ The proof stays in the project's native complex-frequency convention
 
 `paperFT f z = ∫ y, f y * exp (I*z*y)`.
 
-For `z ≠ 0` we split at the fold `y=0` and integrate the two affine-exponential
-branches. The value at `z=0` is proved separately from the geometric area; no
-removable-singularity shortcut is used.
+The affine tent factor is kept real throughout integration by parts. This avoids
+an unnecessary `ℝ → ℂ` derivative and, more importantly, follows the scalar
+integration-by-parts API natively. The value at `z=0` is computed from the real
+triangle area and then coerced to `ℂ`.
 -/
-
-private def positiveTentAffine (L : ℝ) (y : ℝ) : ℂ :=
-  1 - (y : ℂ) / (L : ℂ)
-
-private def negativeTentAffine (L : ℝ) (y : ℝ) : ℂ :=
-  1 + (y : ℂ) / (L : ℂ)
-
-private theorem hasDerivAt_positiveTentAffine
-    {L : ℝ} (hL : 0 < L) (y : ℝ) :
-    HasDerivAt (positiveTentAffine L) (-(1 / (L : ℂ))) y := by
-  change HasDerivAt
-    (fun t : ℝ => 1 - (t : ℂ) / (L : ℂ)) (-(1 / (L : ℂ))) y
-  have hdiv : HasDerivAt (fun t : ℝ => (t : ℂ) / (L : ℂ)) (1 / (L : ℂ)) y := by
-    simpa only [mul_one] using
-      (((hasDerivAt_id (y : ℂ)).div_const (L : ℂ)).comp_ofReal)
-  exact HasDerivAt.const_sub (1 : ℂ) hdiv
-
-private theorem hasDerivAt_negativeTentAffine
-    {L : ℝ} (hL : 0 < L) (y : ℝ) :
-    HasDerivAt (negativeTentAffine L) (1 / (L : ℂ)) y := by
-  change HasDerivAt
-    (fun t : ℝ => 1 + (t : ℂ) / (L : ℂ)) (1 / (L : ℂ)) y
-  have hdiv : HasDerivAt (fun t : ℝ => (t : ℂ) / (L : ℂ)) (1 / (L : ℂ)) y := by
-    simpa only [mul_one] using
-      (((hasDerivAt_id (y : ℂ)).div_const (L : ℂ)).comp_ofReal)
-  exact hdiv.const_add (1 : ℂ)
 
 private theorem hasDerivAt_exp_mul_div
     {c : ℂ} (hc : c ≠ 0) (y : ℝ) :
@@ -56,132 +31,117 @@ private theorem hasDerivAt_exp_mul_div
 
 private theorem intervalIntegral_positiveTent_exp
     {L : ℝ} (hL : 0 < L) {c : ℂ} (hc : c ≠ 0) :
-    (∫ y in 0..L, positiveTentAffine L y * Complex.exp (c * y)) =
+    (∫ y in 0..L, ((1 - y / L : ℝ) : ℂ) * Complex.exp (c * y)) =
       -1 / c + (Complex.exp (c * L) - 1) / ((L : ℂ) * c ^ 2) := by
   have hExpCont : Continuous (fun y : ℝ => Complex.exp (c * y)) := by fun_prop
-  have hparts := intervalIntegral.integral_mul_deriv_eq_deriv_mul
+  have hparts := intervalIntegral.integral_smul_deriv_eq_deriv_smul
     (a := (0 : ℝ)) (b := L)
-    (u := positiveTentAffine L) (u' := fun _ : ℝ => -(1 / (L : ℂ)))
+    (u := fun y : ℝ => 1 - y / L)
+    (u' := fun _ : ℝ => -(1 / L))
     (v := fun y : ℝ => Complex.exp (c * y) / c)
     (v' := fun y : ℝ => Complex.exp (c * y))
-    (fun y _ => hasDerivAt_positiveTentAffine hL y)
+    (fun y _ => by
+      simpa only [one_div] using
+        (HasDerivAt.const_sub (1 : ℝ) ((hasDerivAt_id y).div_const L)))
     (fun y _ => hasDerivAt_exp_mul_div hc y)
     (intervalIntegrable_const)
     (hExpCont.intervalIntegrable 0 L)
-  have hfun :
-      (fun y : ℝ => (-(1 / (L : ℂ))) * (Complex.exp (c * y) / c)) =
-        fun y : ℝ => (-(1 / (L : ℂ)) / c) * Complex.exp (c * y) := by
-    funext y
-    ring
+  simp only [Complex.real_smul] at hparts
   have hlast :
-      (∫ y in 0..L, (-(1 / (L : ℂ))) * (Complex.exp (c * y) / c)) =
-        (-(1 / (L : ℂ)) / c) * ((Complex.exp (c * L) - 1) / c) := by
-    rw [hfun, intervalIntegral.integral_const_mul, integral_exp_mul_complex hc]
-    simp
-  have hL0 : (L : ℂ) ≠ 0 := by exact_mod_cast hL.ne'
+      (∫ y in 0..L, ((-(1 / L) : ℝ) : ℂ) * (Complex.exp (c * y) / c)) =
+        (((-(1 / L) : ℝ) : ℂ) / c) * ((Complex.exp (c * L) - 1) / c) := by
+    calc
+      (∫ y in 0..L, ((-(1 / L) : ℝ) : ℂ) * (Complex.exp (c * y) / c)) =
+          ∫ y in 0..L, (((( -(1 / L) : ℝ) : ℂ) / c) * Complex.exp (c * y)) := by
+            apply intervalIntegral.integral_congr (μ := volume)
+            intro y hy
+            ring
+      _ = (((-(1 / L) : ℝ) : ℂ) / c) *
+          ((Complex.exp (c * L) - 1) / c) := by
+            rw [intervalIntegral.integral_const_mul, integral_exp_mul_complex hc]
+            simp
+  have hL0 : L ≠ 0 := hL.ne'
+  have hLc0 : (L : ℂ) ≠ 0 := by exact_mod_cast hL0
   rw [hparts, hlast]
-  unfold positiveTentAffine
+  push_cast
   simp
-  field_simp [hL0, hc] <;> ring
+  field_simp [hL0, hLc0, hc] <;> ring
 
 private theorem intervalIntegral_negativeTent_exp
     {L : ℝ} (hL : 0 < L) {c : ℂ} (hc : c ≠ 0) :
-    (∫ y in -L..0, negativeTentAffine L y * Complex.exp (c * y)) =
+    (∫ y in -L..0, ((1 + y / L : ℝ) : ℂ) * Complex.exp (c * y)) =
       1 / c + (Complex.exp (-(c * L)) - 1) / ((L : ℂ) * c ^ 2) := by
   have hExpCont : Continuous (fun y : ℝ => Complex.exp (c * y)) := by fun_prop
-  have hparts := intervalIntegral.integral_mul_deriv_eq_deriv_mul
+  have hparts := intervalIntegral.integral_smul_deriv_eq_deriv_smul
     (a := -L) (b := (0 : ℝ))
-    (u := negativeTentAffine L) (u' := fun _ : ℝ => 1 / (L : ℂ))
+    (u := fun y : ℝ => 1 + y / L)
+    (u' := fun _ : ℝ => 1 / L)
     (v := fun y : ℝ => Complex.exp (c * y) / c)
     (v' := fun y : ℝ => Complex.exp (c * y))
-    (fun y _ => hasDerivAt_negativeTentAffine hL y)
+    (fun y _ => by
+      simpa only [one_div] using
+        (((hasDerivAt_id y).div_const L).const_add (1 : ℝ)))
     (fun y _ => hasDerivAt_exp_mul_div hc y)
     (intervalIntegrable_const)
     (hExpCont.intervalIntegrable (-L) 0)
-  have hfun :
-      (fun y : ℝ => (1 / (L : ℂ)) * (Complex.exp (c * y) / c)) =
-        fun y : ℝ => ((1 / (L : ℂ)) / c) * Complex.exp (c * y) := by
-    funext y
-    ring
+  simp only [Complex.real_smul] at hparts
   have hlast :
-      (∫ y in -L..0, (1 / (L : ℂ)) * (Complex.exp (c * y) / c)) =
-        ((1 / (L : ℂ)) / c) * ((1 - Complex.exp (-(c * L))) / c) := by
-    rw [hfun, intervalIntegral.integral_const_mul, integral_exp_mul_complex hc]
-    congr 2
-    · simp
-    · congr 2
-      ring
-  have hL0 : (L : ℂ) ≠ 0 := by exact_mod_cast hL.ne'
+      (∫ y in -L..0, (((1 / L : ℝ) : ℂ) * (Complex.exp (c * y) / c))) =
+        (((1 / L : ℝ) : ℂ) / c) * ((1 - Complex.exp (-(c * L))) / c) := by
+    calc
+      (∫ y in -L..0, (((1 / L : ℝ) : ℂ) * (Complex.exp (c * y) / c))) =
+          ∫ y in -L..0, ((((1 / L : ℝ) : ℂ) / c) * Complex.exp (c * y)) := by
+            apply intervalIntegral.integral_congr (μ := volume)
+            intro y hy
+            ring
+      _ = (((1 / L : ℝ) : ℂ) / c) *
+          ((Complex.exp (c * 0) - Complex.exp (c * (-L))) / c) := by
+            rw [intervalIntegral.integral_const_mul, integral_exp_mul_complex hc]
+      _ = (((1 / L : ℝ) : ℂ) / c) *
+          ((1 - Complex.exp (-(c * L))) / c) := by
+            congr 1
+            congr 1
+            · simp
+            · congr 1
+              ring
+  have hL0 : L ≠ 0 := hL.ne'
+  have hLc0 : (L : ℂ) ≠ 0 := by exact_mod_cast hL0
   rw [hparts, hlast]
-  unfold negativeTentAffine
+  push_cast
   simp
-  field_simp [hL0, hc] <;> ring
+  field_simp [hL0, hLc0, hc] <;> ring
 
-private theorem hasDerivAt_positiveTentAreaPrimitive
-    {L : ℝ} (hL : 0 < L) (y : ℝ) :
-    HasDerivAt
-      (fun t : ℝ => ((t - t ^ 2 / (2 * L) : ℝ) : ℂ))
-      ((1 - y / L : ℝ) : ℂ) y := by
-  have hr : HasDerivAt (fun t : ℝ => t - t ^ 2 / (2 * L))
-      (1 - y / L) y := by
-    have h := (hasDerivAt_id y).sub
-      (((hasDerivAt_id y).pow 2).div_const (2 * L))
-    convert h using 1
-    · funext t
-      rfl
-    · simp only [id_eq, Nat.cast_ofNat, Nat.reduceSubDiff]
-      field_simp [hL.ne'] <;> ring
-  exact hr.ofReal_comp
+private theorem intervalIntegral_positiveTent_area_real
+    {L : ℝ} (hL : 0 < L) :
+    (∫ y in 0..L, (1 - y / L : ℝ)) = L / 2 := by
+  have hdiv : IntervalIntegrable (fun y : ℝ => y / L) volume 0 L := by
+    apply Continuous.intervalIntegrable
+    fun_prop
+  rw [intervalIntegral.integral_sub intervalIntegrable_const hdiv,
+    integral_one, intervalIntegral.integral_div, integral_id]
+  field_simp [hL.ne']
+  ring
 
-private theorem hasDerivAt_negativeTentAreaPrimitive
-    {L : ℝ} (hL : 0 < L) (y : ℝ) :
-    HasDerivAt
-      (fun t : ℝ => ((t + t ^ 2 / (2 * L) : ℝ) : ℂ))
-      ((1 + y / L : ℝ) : ℂ) y := by
-  have hr : HasDerivAt (fun t : ℝ => t + t ^ 2 / (2 * L))
-      (1 + y / L) y := by
-    have h := (hasDerivAt_id y).add
-      (((hasDerivAt_id y).pow 2).div_const (2 * L))
-    convert h using 1
-    · funext t
-      rfl
-    · simp only [id_eq, Nat.cast_ofNat, Nat.reduceSubDiff]
-      field_simp [hL.ne'] <;> ring
-  exact hr.ofReal_comp
+private theorem intervalIntegral_negativeTent_area_real
+    {L : ℝ} (hL : 0 < L) :
+    (∫ y in -L..0, (1 + y / L : ℝ)) = L / 2 := by
+  have hdiv : IntervalIntegrable (fun y : ℝ => y / L) volume (-L) 0 := by
+    apply Continuous.intervalIntegrable
+    fun_prop
+  rw [intervalIntegral.integral_add intervalIntegrable_const hdiv,
+    integral_one, intervalIntegral.integral_div, integral_id]
+  field_simp [hL.ne']
+  ring
 
 private theorem intervalIntegral_positiveTent_area
     {L : ℝ} (hL : 0 < L) :
     (∫ y in 0..L, ((1 - y / L : ℝ) : ℂ)) = (L / 2 : ℝ) := by
-  have hint : IntervalIntegrable
-      (fun y : ℝ => ((1 - y / L : ℝ) : ℂ)) volume 0 L := by
-    apply Continuous.intervalIntegrable
-    fun_prop
-  have h := intervalIntegral.integral_eq_sub_of_hasDerivAt
-    (a := (0 : ℝ)) (b := L)
-    (f := fun t : ℝ => ((t - t ^ 2 / (2 * L) : ℝ) : ℂ))
-    (f' := fun t : ℝ => ((1 - t / L : ℝ) : ℂ))
-    (fun y _ => hasDerivAt_positiveTentAreaPrimitive hL y) hint
-  have hL0 : L ≠ 0 := hL.ne'
-  rw [h]
-  push_cast
-  field_simp [hL0] <;> ring
+  rw [Complex.integral_ofReal, intervalIntegral_positiveTent_area_real hL]
 
 private theorem intervalIntegral_negativeTent_area
     {L : ℝ} (hL : 0 < L) :
     (∫ y in -L..0, ((1 + y / L : ℝ) : ℂ)) = (L / 2 : ℝ) := by
-  have hint : IntervalIntegrable
-      (fun y : ℝ => ((1 + y / L : ℝ) : ℂ)) volume (-L) 0 := by
-    apply Continuous.intervalIntegrable
-    fun_prop
-  have h := intervalIntegral.integral_eq_sub_of_hasDerivAt
-    (a := -L) (b := (0 : ℝ))
-    (f := fun t : ℝ => ((t + t ^ 2 / (2 * L) : ℝ) : ℂ))
-    (f' := fun t : ℝ => ((1 + t / L : ℝ) : ℂ))
-    (fun y _ => hasDerivAt_negativeTentAreaPrimitive hL y) hint
-  have hL0 : L ≠ 0 := hL.ne'
-  rw [h]
-  push_cast
-  field_simp [hL0] <;> ring
+  rw [Complex.integral_ofReal, intervalIntegral_negativeTent_area_real hL]
 
 private theorem tentExp_support_subset_Ioc
     {L : ℝ} (hL : 0 < L) (z : ℂ) :
@@ -197,6 +157,7 @@ private theorem tentExp_support_subset_Ioc
   have hmem := dictionaryTent_support_subset_Ioo hL ht
   exact ⟨hmem.1, hmem.2.le⟩
 
+/-- Whole-line paper transform reduced exactly to the aperture interval. -/
 theorem paperFT_dictionaryTent_eq_interval
     {L : ℝ} (hL : 0 < L) (z : ℂ) :
     Zeta23.paperFT (dictionaryTent L) z =
@@ -205,6 +166,7 @@ theorem paperFT_dictionaryTent_eq_interval
   exact (intervalIntegral.integral_eq_integral_of_support_subset
     (tentExp_support_subset_Ioc hL z)).symm
 
+/-- Exact transform value at the removable node `z=0`, proved from the triangle area. -/
 theorem paperFT_dictionaryTent_zero
     {L : ℝ} (hL : 0 < L) :
     Zeta23.paperFT (dictionaryTent L) 0 = (L : ℂ) := by
@@ -235,6 +197,7 @@ theorem paperFT_dictionaryTent_zero
   push_cast
   ring
 
+/-- Exact complex-frequency transform away from the removable node. -/
 theorem paperFT_dictionaryTent_of_ne_zero
     {L : ℝ} (hL : 0 < L) {z : ℂ} (hz : z ≠ 0) :
     Zeta23.paperFT (dictionaryTent L) z =
@@ -251,25 +214,23 @@ theorem paperFT_dictionaryTent_of_ne_zero
     (hcont.intervalIntegrable (-L) 0) (hcont.intervalIntegrable 0 L)
   have hleft :
       (∫ y in -L..0, dictionaryTent L y * Complex.exp (c * y)) =
-        ∫ y in -L..0, negativeTentAffine L y * Complex.exp (c * y) := by
+        ∫ y in -L..0, ((1 + y / L : ℝ) : ℂ) * Complex.exp (c * y) := by
     apply intervalIntegral.integral_congr (μ := volume)
     intro y hy
     change dictionaryTent L y * Complex.exp (c * y) =
-      negativeTentAffine L y * Complex.exp (c * y)
+      ((1 + y / L : ℝ) : ℂ) * Complex.exp (c * y)
     rw [dictionaryTent_eq_one_add_div_of_mem_Icc hL]
-    · unfold negativeTentAffine
-      push_cast
+    · rfl
     · simpa [uIcc_of_le (by linarith : -L ≤ (0 : ℝ))] using hy
   have hright :
       (∫ y in 0..L, dictionaryTent L y * Complex.exp (c * y)) =
-        ∫ y in 0..L, positiveTentAffine L y * Complex.exp (c * y) := by
+        ∫ y in 0..L, ((1 - y / L : ℝ) : ℂ) * Complex.exp (c * y) := by
     apply intervalIntegral.integral_congr (μ := volume)
     intro y hy
     change dictionaryTent L y * Complex.exp (c * y) =
-      positiveTentAffine L y * Complex.exp (c * y)
+      ((1 - y / L : ℝ) : ℂ) * Complex.exp (c * y)
     rw [dictionaryTent_eq_one_sub_div_of_mem_Icc hL]
-    · unfold positiveTentAffine
-      push_cast
+    · rfl
     · simpa [uIcc_of_le hL.le] using hy
   have hL0 : (L : ℂ) ≠ 0 := by exact_mod_cast hL.ne'
   have harg : c * (L : ℂ) = ((L : ℂ) * z) * I := by
@@ -291,10 +252,12 @@ theorem paperFT_dictionaryTent_of_ne_zero
   rw [hnegI]
   field_simp [hL0, hz] <;> ring
 
+/-- Total closed form, with the removable node represented explicitly. -/
 def dictionaryTentTransformClosed (L : ℝ) (z : ℂ) : ℂ :=
   if z = 0 then (L : ℂ)
   else 2 * (1 - Complex.cos ((L : ℂ) * z)) / ((L : ℂ) * z ^ 2)
 
+/-- The canonical tent transform equals its explicit total closed form. -/
 theorem paperFT_dictionaryTent
     {L : ℝ} (hL : 0 < L) (z : ℂ) :
     Zeta23.paperFT (dictionaryTent L) z =
