@@ -101,7 +101,8 @@ private theorem hasDerivAt_dictionaryResidualReal_left_endpoint
       (fun y hy => dictionaryResidualReal_eq_zero_of_left N u hL hy)
       (by simp)
   have hint0 : HasDerivAt (dictionaryResidualNegativeBranch N u L) 0 (-L) := by
-    simpa using hasDerivAt_dictionaryResidualNegativeBranch N u L (-L)
+    exact (hasDerivAt_dictionaryResidualNegativeBranch N u L (-L)).congr_deriv
+      (dictionaryResidualNegativeBranchDerivative_left_endpoint N u hL)
   have hint : HasDerivWithinAt (dictionaryResidualReal N u L) 0 (Icc (-L) 0) (-L) :=
     hint0.hasDerivWithinAt.congr_of_mem
       (fun y hy => dictionaryResidualReal_eq_negativeBranch N u hL hy.1 hy.2)
