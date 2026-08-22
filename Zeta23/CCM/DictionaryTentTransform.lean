@@ -18,9 +18,11 @@ The first moment is evaluated from the explicit primitive
 
 `((y/c) - 1/c^2) * exp(c*y)`.
 
-This avoids the `ℝ → ℝ` derivative-instance diamond in Mathlib's scalar
-integration-by-parts API entirely. The value at `z=0` is computed separately
-from the real triangle area and then coerced to `ℂ`.
+The pinned Mathlib revision exposes two definitionally equal real scalar-action
+paths on `ℂ` once inner-product imports are present.  The primitive derivative is
+therefore elaborated under `with_reducible_and_instances`, exactly as Mathlib's
+own instance-diamond regression tests do.  The value at `z=0` is computed
+separately from the real triangle area and then coerced to `ℂ`.
 -/
 
 private def mulExpPrimitive (c : ℂ) (y : ℝ) : ℂ :=
@@ -31,24 +33,30 @@ private theorem hasDerivAt_mulExpPrimitive
     HasDerivAt (mulExpPrimitive c)
       ((y : ℂ) * Complex.exp (c * y)) y := by
   have hdiv : HasDerivAt (fun t : ℝ => (t : ℂ) / c) (1 / c) y := by
-    simpa only [mul_one] using
-      (((hasDerivAt_id (y : ℂ)).div_const c).comp_ofReal)
+    with_reducible_and_instances
+      simpa only [mul_one] using
+        (((hasDerivAt_id (y : ℂ)).div_const c).comp_ofReal)
   have hleft : HasDerivAt
       (fun t : ℝ => (t : ℂ) / c - 1 / c ^ 2) (1 / c) y :=
     hdiv.sub_const _
   have hlin : HasDerivAt (fun t : ℝ => c * (t : ℂ)) c y := by
-    simpa only [mul_one] using
-      (((hasDerivAt_id (y : ℂ)).const_mul c).comp_ofReal)
+    with_reducible_and_instances
+      simpa only [mul_one] using
+        (((hasDerivAt_id (y : ℂ)).const_mul c).comp_ofReal)
   have hexp : HasDerivAt (fun t : ℝ => Complex.exp (c * t))
       (c * Complex.exp (c * y)) y := by
-    convert (Complex.hasDerivAt_exp (c * (y : ℂ))).comp y hlin using 1 <;> ring
+    with_reducible_and_instances
+      convert (Complex.hasDerivAt_exp (c * (y : ℂ))).comp y hlin using 1
+      · ring
+      · ring
   have hprod := hleft.mul hexp
   change HasDerivAt
     (fun t : ℝ => ((t : ℂ) / c - 1 / c ^ 2) * Complex.exp (c * t))
     ((y : ℂ) * Complex.exp (c * y)) y
-  convert hprod using 1
-  field_simp [hc]
-  ring
+  with_reducible_and_instances
+    convert hprod using 1
+    field_simp [hc]
+    ring
 
 private theorem intervalIntegral_mul_exp
     {a b : ℝ} {c : ℂ} (hc : c ≠ 0) :
@@ -88,7 +96,6 @@ private theorem intervalIntegral_positiveTent_exp
     intervalIntegral.integral_const_mul, intervalIntegral_mul_exp hc]
   simp [mulExpPrimitive]
   field_simp [hL0, hLc0, hc]
-  ring
 
 private theorem intervalIntegral_negativeTent_exp
     {L : ℝ} (hL : 0 < L) {c : ℂ} (hc : c ≠ 0) :
@@ -115,7 +122,6 @@ private theorem intervalIntegral_negativeTent_exp
     intervalIntegral.integral_const_mul, intervalIntegral_mul_exp hc]
   simp [mulExpPrimitive]
   field_simp [hL0, hLc0, hc]
-  ring
 
 private theorem intervalIntegral_positiveTent_area_real
     {L : ℝ} (hL : 0 < L) :
@@ -254,8 +260,7 @@ theorem paperFT_dictionaryTent_of_ne_zero
   have hnegI : -(((L : ℂ) * z) * I) = (-(L : ℂ) * z) * I := by
     ring
   rw [hnegI]
-  field_simp [hL0, hz]
-  ring
+  field_simp [hL0, hz] <;> ring
 
 /-- Total closed form, with the removable node represented explicitly. -/
 def dictionaryTentTransformClosed (L : ℝ) (z : ℂ) : ℂ :=
