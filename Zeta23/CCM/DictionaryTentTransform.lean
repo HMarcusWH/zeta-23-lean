@@ -33,7 +33,6 @@ private theorem intervalIntegral_positiveTent_exp
     {L : ℝ} (hL : 0 < L) {c : ℂ} (hc : c ≠ 0) :
     (∫ y in 0..L, ((1 - y / L : ℝ) : ℂ) * Complex.exp (c * y)) =
       -1 / c + (Complex.exp (c * L) - 1) / ((L : ℂ) * c ^ 2) := by
-  letI : NormedSpace ℝ ℝ := NormedAlgebra.toNormedSpace ℝ
   have hExpCont : Continuous (fun y : ℝ => Complex.exp (c * y)) := by fun_prop
   have hparts := intervalIntegral.integral_smul_deriv_eq_deriv_smul
     (a := (0 : ℝ)) (b := L)
@@ -41,9 +40,7 @@ private theorem intervalIntegral_positiveTent_exp
     (u' := fun _ : ℝ => -(1 / L))
     (v := fun y : ℝ => Complex.exp (c * y) / c)
     (v' := fun y : ℝ => Complex.exp (c * y))
-    (fun y _ => by
-      simpa only [one_div] using
-        (HasDerivAt.const_sub (1 : ℝ) ((hasDerivAt_id y).div_const L)))
+    (fun y _ => by fun_prop)
     (fun y _ => hasDerivAt_exp_mul_div hc y)
     (intervalIntegrable_const)
     (hExpCont.intervalIntegrable 0 L)
@@ -72,7 +69,6 @@ private theorem intervalIntegral_negativeTent_exp
     {L : ℝ} (hL : 0 < L) {c : ℂ} (hc : c ≠ 0) :
     (∫ y in -L..0, ((1 + y / L : ℝ) : ℂ) * Complex.exp (c * y)) =
       1 / c + (Complex.exp (-(c * L)) - 1) / ((L : ℂ) * c ^ 2) := by
-  letI : NormedSpace ℝ ℝ := NormedAlgebra.toNormedSpace ℝ
   have hExpCont : Continuous (fun y : ℝ => Complex.exp (c * y)) := by fun_prop
   have hparts := intervalIntegral.integral_smul_deriv_eq_deriv_smul
     (a := -L) (b := (0 : ℝ))
@@ -80,9 +76,7 @@ private theorem intervalIntegral_negativeTent_exp
     (u' := fun _ : ℝ => 1 / L)
     (v := fun y : ℝ => Complex.exp (c * y) / c)
     (v' := fun y : ℝ => Complex.exp (c * y))
-    (fun y _ => by
-      simpa only [one_div] using
-        (((hasDerivAt_id y).div_const L).const_add (1 : ℝ)))
+    (fun y _ => by fun_prop)
     (fun y _ => hasDerivAt_exp_mul_div hc y)
     (intervalIntegrable_const)
     (hExpCont.intervalIntegrable (-L) 0)
@@ -99,7 +93,7 @@ private theorem intervalIntegral_negativeTent_exp
       _ = (((1 / L : ℝ) : ℂ) / c) *
           ((1 - Complex.exp (-(c * L))) / c) := by
             rw [intervalIntegral.integral_const_mul, integral_exp_mul_complex hc]
-            simp [mul_neg, neg_mul]
+            simp [mul_neg]
   have hL0 : L ≠ 0 := hL.ne'
   have hLc0 : (L : ℂ) ≠ 0 := by exact_mod_cast hL0
   rw [hparts, hlast]
