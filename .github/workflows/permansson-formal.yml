@@ -1,0 +1,28 @@
+name: Permansson v0.1.6 formal verification
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  lean-permansson:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+          use-github-cache: false
+      - name: Check Permansson Theorem 3.1 measurable-space formalization
+        run: lake build Zeta23.Permansson.Theorem31
+      - name: Reject placeholders and extra axioms
+        run: |
+          if grep -R -n -E '\bsorry\b|^[[:space:]]*axiom[[:space:]]' Zeta23/Permansson --include='*.lean'; then
+            echo 'Forbidden placeholder or axiom detected'
+            exit 1
+          fi
