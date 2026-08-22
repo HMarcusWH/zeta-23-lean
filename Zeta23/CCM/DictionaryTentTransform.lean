@@ -13,93 +13,109 @@ The proof stays in the project's native complex-frequency convention
 
 `paperFT f z = ∫ y, f y * exp (I*z*y)`.
 
-The affine tent factor is kept real throughout integration by parts. This avoids
-an unnecessary `ℝ → ℂ` derivative and, more importantly, follows the scalar
-integration-by-parts API natively. The value at `z=0` is computed from the real
-triangle area and then coerced to `ℂ`.
+The affine branches are expanded into the zeroth and first exponential moments.
+The first moment is evaluated from the explicit primitive
+
+`((y/c) - 1/c^2) * exp(c*y)`.
+
+This avoids the `ℝ → ℝ` derivative-instance diamond in Mathlib's scalar
+integration-by-parts API entirely. The value at `z=0` is computed separately
+from the real triangle area and then coerced to `ℂ`.
 -/
 
-private theorem hasDerivAt_exp_mul_div
+private def mulExpPrimitive (c : ℂ) (y : ℝ) : ℂ :=
+  ((y : ℂ) / c - 1 / c ^ 2) * Complex.exp (c * y)
+
+private theorem hasDerivAt_mulExpPrimitive
     {c : ℂ} (hc : c ≠ 0) (y : ℝ) :
-    HasDerivAt (fun t : ℝ => Complex.exp (c * t) / c)
-      (Complex.exp (c * y)) y := by
-  conv => congr
-  rw [← mul_div_cancel_right₀ (Complex.exp (c * y)) hc]
-  apply ((Complex.hasDerivAt_exp _).comp y _).div_const c
-  simpa only [mul_one] using!
-    ((hasDerivAt_id (y : ℂ)).const_mul _).comp_ofReal
+    HasDerivAt (mulExpPrimitive c)
+      ((y : ℂ) * Complex.exp (c * y)) y := by
+  have hdiv : HasDerivAt (fun t : ℝ => (t : ℂ) / c) (1 / c) y := by
+    simpa only [mul_one] using
+      (((hasDerivAt_id (y : ℂ)).div_const c).comp_ofReal)
+  have hleft : HasDerivAt
+      (fun t : ℝ => (t : ℂ) / c - 1 / c ^ 2) (1 / c) y :=
+    hdiv.sub_const _
+  have hlin : HasDerivAt (fun t : ℝ => c * (t : ℂ)) c y := by
+    simpa only [mul_one] using
+      (((hasDerivAt_id (y : ℂ)).const_mul c).comp_ofReal)
+  have hexp : HasDerivAt (fun t : ℝ => Complex.exp (c * t))
+      (c * Complex.exp (c * y)) y := by
+    convert (Complex.hasDerivAt_exp (c * (y : ℂ))).comp y hlin using 1 <;> ring
+  have hprod := hleft.mul hexp
+  change HasDerivAt
+    (fun t : ℝ => ((t : ℂ) / c - 1 / c ^ 2) * Complex.exp (c * t))
+    ((y : ℂ) * Complex.exp (c * y)) y
+  convert hprod using 1
+  field_simp [hc]
+  ring
+
+private theorem intervalIntegral_mul_exp
+    {a b : ℝ} {c : ℂ} (hc : c ≠ 0) :
+    (∫ y in a..b, (y : ℂ) * Complex.exp (c * y)) =
+      mulExpPrimitive c b - mulExpPrimitive c a := by
+  have hint : IntervalIntegrable
+      (fun y : ℝ => (y : ℂ) * Complex.exp (c * y)) volume a b := by
+    apply Continuous.intervalIntegrable
+    fun_prop
+  exact intervalIntegral.integral_eq_sub_of_hasDerivAt
+    (f := mulExpPrimitive c)
+    (f' := fun y : ℝ => (y : ℂ) * Complex.exp (c * y))
+    (fun y _ => hasDerivAt_mulExpPrimitive hc y) hint
 
 private theorem intervalIntegral_positiveTent_exp
     {L : ℝ} (hL : 0 < L) {c : ℂ} (hc : c ≠ 0) :
     (∫ y in 0..L, ((1 - y / L : ℝ) : ℂ) * Complex.exp (c * y)) =
       -1 / c + (Complex.exp (c * L) - 1) / ((L : ℂ) * c ^ 2) := by
-  have hExpCont : Continuous (fun y : ℝ => Complex.exp (c * y)) := by fun_prop
-  have hparts := intervalIntegral.integral_smul_deriv_eq_deriv_smul
-    (a := (0 : ℝ)) (b := L)
-    (u := fun y : ℝ => 1 - y / L)
-    (u' := fun _ : ℝ => -(1 / L))
-    (v := fun y : ℝ => Complex.exp (c * y) / c)
-    (v' := fun y : ℝ => Complex.exp (c * y))
-    (fun y _ => by fun_prop)
-    (fun y _ => hasDerivAt_exp_mul_div hc y)
-    (intervalIntegrable_const)
-    (hExpCont.intervalIntegrable 0 L)
-  simp only [Complex.real_smul] at hparts
-  have hlast :
-      (∫ y in 0..L, ((-(1 / L) : ℝ) : ℂ) * (Complex.exp (c * y) / c)) =
-        (((-(1 / L) : ℝ) : ℂ) / c) * ((Complex.exp (c * L) - 1) / c) := by
-    calc
-      (∫ y in 0..L, ((-(1 / L) : ℝ) : ℂ) * (Complex.exp (c * y) / c)) =
-          ∫ y in 0..L, (((( -(1 / L) : ℝ) : ℂ) / c) * Complex.exp (c * y)) := by
-            apply intervalIntegral.integral_congr (μ := volume)
-            intro y hy
-            ring
-      _ = (((-(1 / L) : ℝ) : ℂ) / c) *
-          ((Complex.exp (c * L) - 1) / c) := by
-            rw [intervalIntegral.integral_const_mul, integral_exp_mul_complex hc]
-            simp
   have hL0 : L ≠ 0 := hL.ne'
   have hLc0 : (L : ℂ) ≠ 0 := by exact_mod_cast hL0
-  rw [hparts, hlast]
-  push_cast
-  simp
-  field_simp [hL0, hLc0, hc] <;> ring
+  have hExpCont : Continuous (fun y : ℝ => Complex.exp (c * y)) := by fun_prop
+  have hMulCont : Continuous
+      (fun y : ℝ => (y : ℂ) * Complex.exp (c * y)) := by fun_prop
+  have hdecomp :
+      (∫ y in 0..L, ((1 - y / L : ℝ) : ℂ) * Complex.exp (c * y)) =
+        (∫ y in 0..L, Complex.exp (c * y)) -
+          ∫ y in 0..L, (1 / (L : ℂ)) * ((y : ℂ) * Complex.exp (c * y)) := by
+    rw [← intervalIntegral.integral_sub
+      (hExpCont.intervalIntegrable 0 L)
+      ((hMulCont.const_mul (1 / (L : ℂ))).intervalIntegrable 0 L)]
+    apply intervalIntegral.integral_congr (μ := volume)
+    intro y hy
+    push_cast
+    field_simp [hL0, hLc0]
+    ring
+  rw [hdecomp, integral_exp_mul_complex hc,
+    intervalIntegral.integral_const_mul, intervalIntegral_mul_exp hc]
+  simp [mulExpPrimitive]
+  field_simp [hL0, hLc0, hc]
+  ring
 
 private theorem intervalIntegral_negativeTent_exp
     {L : ℝ} (hL : 0 < L) {c : ℂ} (hc : c ≠ 0) :
     (∫ y in -L..0, ((1 + y / L : ℝ) : ℂ) * Complex.exp (c * y)) =
       1 / c + (Complex.exp (-(c * L)) - 1) / ((L : ℂ) * c ^ 2) := by
-  have hExpCont : Continuous (fun y : ℝ => Complex.exp (c * y)) := by fun_prop
-  have hparts := intervalIntegral.integral_smul_deriv_eq_deriv_smul
-    (a := -L) (b := (0 : ℝ))
-    (u := fun y : ℝ => 1 + y / L)
-    (u' := fun _ : ℝ => 1 / L)
-    (v := fun y : ℝ => Complex.exp (c * y) / c)
-    (v' := fun y : ℝ => Complex.exp (c * y))
-    (fun y _ => by fun_prop)
-    (fun y _ => hasDerivAt_exp_mul_div hc y)
-    (intervalIntegrable_const)
-    (hExpCont.intervalIntegrable (-L) 0)
-  simp only [Complex.real_smul] at hparts
-  have hlast :
-      (∫ y in -L..0, (((1 / L : ℝ) : ℂ) * (Complex.exp (c * y) / c))) =
-        (((1 / L : ℝ) : ℂ) / c) * ((1 - Complex.exp (-(c * L))) / c) := by
-    calc
-      (∫ y in -L..0, (((1 / L : ℝ) : ℂ) * (Complex.exp (c * y) / c))) =
-          ∫ y in -L..0, ((((1 / L : ℝ) : ℂ) / c) * Complex.exp (c * y)) := by
-            apply intervalIntegral.integral_congr (μ := volume)
-            intro y hy
-            ring
-      _ = (((1 / L : ℝ) : ℂ) / c) *
-          ((1 - Complex.exp (-(c * L))) / c) := by
-            rw [intervalIntegral.integral_const_mul, integral_exp_mul_complex hc]
-            simp [mul_neg]
   have hL0 : L ≠ 0 := hL.ne'
   have hLc0 : (L : ℂ) ≠ 0 := by exact_mod_cast hL0
-  rw [hparts, hlast]
-  push_cast
-  simp
-  field_simp [hL0, hLc0, hc] <;> ring
+  have hExpCont : Continuous (fun y : ℝ => Complex.exp (c * y)) := by fun_prop
+  have hMulCont : Continuous
+      (fun y : ℝ => (y : ℂ) * Complex.exp (c * y)) := by fun_prop
+  have hdecomp :
+      (∫ y in -L..0, ((1 + y / L : ℝ) : ℂ) * Complex.exp (c * y)) =
+        (∫ y in -L..0, Complex.exp (c * y)) +
+          ∫ y in -L..0, (1 / (L : ℂ)) * ((y : ℂ) * Complex.exp (c * y)) := by
+    rw [← intervalIntegral.integral_add
+      (hExpCont.intervalIntegrable (-L) 0)
+      ((hMulCont.const_mul (1 / (L : ℂ))).intervalIntegrable (-L) 0)]
+    apply intervalIntegral.integral_congr (μ := volume)
+    intro y hy
+    push_cast
+    field_simp [hL0, hLc0]
+    ring
+  rw [hdecomp, integral_exp_mul_complex hc,
+    intervalIntegral.integral_const_mul, intervalIntegral_mul_exp hc]
+  simp [mulExpPrimitive]
+  field_simp [hL0, hLc0, hc]
+  ring
 
 private theorem intervalIntegral_positiveTent_area_real
     {L : ℝ} (hL : 0 < L) :
@@ -238,7 +254,8 @@ theorem paperFT_dictionaryTent_of_ne_zero
   have hnegI : -(((L : ℂ) * z) * I) = (-(L : ℂ) * z) * I := by
     ring
   rw [hnegI]
-  field_simp [hL0, hz] <;> ring
+  field_simp [hL0, hz]
+  ring
 
 /-- Total closed form, with the removable node represented explicitly. -/
 def dictionaryTentTransformClosed (L : ℝ) (z : ℂ) : ℂ :=
