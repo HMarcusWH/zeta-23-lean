@@ -30,7 +30,14 @@ theorem dictionaryBasisTest_diag_eq_tent_cos
         rw [show dictionaryFrequency n L * -y = -(dictionaryFrequency n L * y) by ring,
           Real.cos_neg]
     rw [dictionaryTent_eq_one_sub_abs_div_of_abs_le hL hy]
-    simp [dictionaryBasisTest, kernel, qBasis, hy, dictionaryFrequency, hcos]
+    change
+      (1 / 2 : ℂ) *
+          ((2 * (1 - |y| / L) *
+            Real.cos (dictionaryFrequency n L * |y|) : ℝ) : ℂ) =
+        ((1 - |y| / L : ℝ) : ℂ) *
+          ((Real.cos (dictionaryFrequency n L * y) : ℝ) : ℂ)
+    rw [hcos]
+    push_cast
     ring
   · have hlt : L < |y| := lt_of_not_ge hy
     rw [dictionaryBasisTest_eq_zero_of_lt_abs hlt,
@@ -86,8 +93,20 @@ theorem paperFT_dictionaryTent_mul_cos
       congr 1
       push_cast
       ring
-    rw [mul_div_assoc, add_mul, hplus, hminus]
-    ring
+    calc
+      dictionaryTent L y *
+            ((Complex.exp (((a * y : ℝ) : ℂ) * I) +
+              Complex.exp (-(((a * y : ℝ) : ℂ)) * I)) / 2) *
+            Complex.exp (I * z * y) =
+          (1 / 2 : ℂ) * dictionaryTent L y *
+            (Complex.exp (((a * y : ℝ) : ℂ) * I) * Complex.exp (I * z * y) +
+              Complex.exp (-(((a * y : ℝ) : ℂ)) * I) * Complex.exp (I * z * y)) := by
+            ring
+      _ = (1 / 2 : ℂ) *
+          (dictionaryTent L y * Complex.exp (I * (z + (a : ℂ)) * y) +
+            dictionaryTent L y * Complex.exp (I * (z - (a : ℂ)) * y)) := by
+            rw [hplus, hminus]
+            ring
   calc
     (∫ y : ℝ,
         (dictionaryTent L y * ((Real.cos (a * y) : ℝ) : ℂ)) *
