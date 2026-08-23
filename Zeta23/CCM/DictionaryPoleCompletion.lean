@@ -74,6 +74,11 @@ private theorem one_sub_cosh_half_eq_neg_two_sinh_sq (L : ℝ) :
   rw [show 2 * (L / 4) = L / 2 by ring] at h1
   nlinarith
 
+private theorem I_half_sq : (Complex.I / 2) ^ 2 = -(1 / 4 : ℂ) := by
+  field_simp
+  rw [Complex.I_sq]
+  ring
+
 private theorem shifted_reciprocal_sq_sum (a : ℝ) :
     ((Complex.I / 2 + (a : ℂ)) ^ 2)⁻¹ +
         ((Complex.I / 2 - (a : ℂ)) ^ 2)⁻¹ =
@@ -96,7 +101,7 @@ private theorem shifted_reciprocal_sq_sum (a : ℝ) :
           (Complex.I / 2 - (a : ℂ)) ^ 2 =
           2 * (Complex.I / 2) ^ 2 + 2 * (a : ℂ) ^ 2 := by ring
       _ = 2 * ((a : ℂ) ^ 2 - 1 / 4) := by
-        rw [Complex.I_sq]
+        rw [I_half_sq]
         ring
   have hprodBase :
       (Complex.I / 2 + (a : ℂ)) *
@@ -107,7 +112,7 @@ private theorem shifted_reciprocal_sq_sum (a : ℝ) :
           (Complex.I / 2 - (a : ℂ)) =
           (Complex.I / 2) ^ 2 - (a : ℂ) ^ 2 := by ring
       _ = -((a : ℂ) ^ 2 + 1 / 4) := by
-        rw [Complex.I_sq]
+        rw [I_half_sq]
         ring
   have hprod :
       (Complex.I / 2 + (a : ℂ)) ^ 2 *
