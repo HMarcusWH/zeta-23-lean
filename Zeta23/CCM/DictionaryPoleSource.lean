@@ -17,9 +17,6 @@ uses the compiler-checked source divided-difference identity to close every
 off-diagonal matrix entry.
 -/
 
-/-- The two complex pole samples are the two elementary physical exponential
-weights.  This is the normalization-only part of `EF.pole_term`; it uses neither
-Fourier inversion nor any explicit-formula hypothesis. -/
 private theorem dictionaryPoleRHS_eq_spatial_weights
     {k : ℝ → ℂ} (hk : Continuous k) (hkc : HasCompactSupport k) :
     dictionaryPoleRHS k =
@@ -73,26 +70,21 @@ private theorem hasDerivAt_sinExpPrimitive
     HasDerivAt (sinExpPrimitive a b)
       (Real.sin (a * y) * Real.exp (b * y)) y := by
   have ha : HasDerivAt (fun x : ℝ => a * x) a y := by
-    convert (hasDerivAt_const y a).mul (hasDerivAt_id y) using 1 <;> ring
+    simpa using (hasDerivAt_id y).const_mul a
   have hb : HasDerivAt (fun x : ℝ => b * x) b y := by
-    convert (hasDerivAt_const y b).mul (hasDerivAt_id y) using 1 <;> ring
+    simpa using (hasDerivAt_id y).const_mul b
   have hsin : HasDerivAt (fun x : ℝ => Real.sin (a * x))
-      (Real.cos (a * y) * a) y := by
-    simpa only [Function.comp_apply] using
-      (Real.hasDerivAt_sin (a * y)).comp y ha
+      (Real.cos (a * y) * a) y := ha.sin
   have hcos : HasDerivAt (fun x : ℝ => Real.cos (a * x))
-      (-Real.sin (a * y) * a) y := by
-    simpa only [Function.comp_apply] using
-      (Real.hasDerivAt_cos (a * y)).comp y ha
+      (-Real.sin (a * y) * a) y := ha.cos
   have hexp : HasDerivAt (fun x : ℝ => Real.exp (b * x))
-      (Real.exp (b * y) * b) y := by
-    simpa only [Function.comp_apply] using
-      (Real.hasDerivAt_exp (b * y)).comp y hb
+      (Real.exp (b * y) * b) y := hb.exp
   have hinner : HasDerivAt
       (fun x : ℝ => b * Real.sin (a * x) - a * Real.cos (a * x))
       (b * (Real.cos (a * y) * a) - a * (-Real.sin (a * y) * a)) y :=
     (hsin.const_mul b).sub (hcos.const_mul a)
   have hprod := hexp.mul hinner
+  have hdiv := hprod.div_const (a ^ 2 + b ^ 2)
   have hcalc :
       (Real.exp (b * y) * b *
           (b * Real.sin (a * y) - a * Real.cos (a * y)) +
@@ -102,9 +94,7 @@ private theorem hasDerivAt_sinExpPrimitive
         Real.sin (a * y) * Real.exp (b * y) := by
     field_simp [hden]
     ring
-  unfold sinExpPrimitive
-  convert hprod.div_const (a ^ 2 + b ^ 2) using 1
-  exact hcalc
+  simpa only [sinExpPrimitive, hcalc] using hdiv
 
 private theorem intervalIntegral_sin_mul_exp
     {a b A B : ℝ} (hden : a ^ 2 + b ^ 2 ≠ 0) :
@@ -190,7 +180,10 @@ private theorem two_sub_exp_half_sub_exp_neg_half (L : ℝ) :
       -4 * Real.sinh (L / 4) ^ 2 := by
   have hcosh :
       Real.exp (L / 2) + Real.exp (-L / 2) = 2 * Real.cosh (L / 2) := by
-    rw [← Real.two_cosh]
+    change Real.exp (L / 2) + Real.exp (-L / 2) =
+      2 * ((Real.exp (L / 2) + Real.exp (-(L / 2))) / 2)
+    rw [show -(L / 2) = -L / 2 by ring]
+    ring
   have h1 := Real.cosh_two_mul (L / 4)
   have h2 := Real.cosh_sq_sub_sinh_sq (L / 4)
   rw [show 2 * (L / 4) = L / 2 by ring] at h1
@@ -257,12 +250,12 @@ theorem dictionaryPoleRHS_sourceTest
     rw [← h2, h1]
     norm_num
   rw [hleft]
+  let X : ℝ :=
+    dictionaryFrequency n L *
+      (2 - Real.exp (L / 2) - Real.exp (-L / 2)) /
+      (dictionaryFrequency n L ^ 2 + 1 / 4)
   have hpos :
-      (∫ y in (0 : ℝ)..L, G y) =
-        (((-1 / (2 * Real.pi)) *
-          (dictionaryFrequency n L *
-            (2 - Real.exp (L / 2) - Real.exp (-L / 2)) /
-            (dictionaryFrequency n L ^ 2 + 1 / 4)) : ℝ) : ℂ) := by
+      (∫ y in (0 : ℝ)..L, G y) = (((-1 / (2 * Real.pi)) * X : ℝ) : ℂ) := by
     have hfun : ∀ y ∈ Set.uIcc (0 : ℝ) L,
         G y =
           (((-1 / (2 * Real.pi)) *
@@ -273,12 +266,15 @@ theorem dictionaryPoleRHS_sourceTest
       have hy0 : 0 ≤ y := hy.1
       have hyL : y ≤ L := hy.2
       have habs : |y| ≤ L := by simpa [abs_of_nonneg hy0] using hyL
+      change dictionarySourceTest n L y *
+          ((Real.exp (-|y| / 2) : ℂ) + (Real.exp (|y| / 2) : ℂ)) = _
       rw [dictionarySourceTest_eq_sine_of_abs_le hL habs n]
-      simp [G, abs_of_nonneg hy0, dictionaryFrequency]
+      simp [abs_of_nonneg hy0, dictionaryFrequency]
       push_cast
       ring
     rw [intervalIntegral.integral_congr hfun]
-    rw [← intervalIntegral.integral_ofReal]
+    rw [intervalIntegral.integral_ofReal]
+    apply Complex.ofReal_injective
     have hsinNeg : IntervalIntegrable
         (fun y : ℝ => Real.sin (dictionaryFrequency n L * y) * Real.exp (-y / 2))
         volume 0 L := by
@@ -293,12 +289,17 @@ theorem dictionaryPoleRHS_sourceTest
     rw [← intervalIntegral.integral_add hsinNeg hsinPos]
     rw [intervalIntegral_source_sin_exp_neg_half hL n,
       intervalIntegral_source_sin_exp_pos_half hL n]
-    push_cast
+    dsimp [X]
     ring
   rw [hpos]
-  push_cast
-  have hreal := sourcePole_real_algebra hL n
-  exact_mod_cast hreal
+  rw [← Complex.ofReal_add]
+  apply Complex.ofReal_injective
+  calc
+    (-1 / (2 * Real.pi)) * X + (-1 / (2 * Real.pi)) * X =
+        -(1 / Real.pi) * X := by ring
+    _ = poleSeq n L := by
+      dsimp [X]
+      exact sourcePole_real_algebra hL n
 
 /-- Off the diagonal, the literature pole channel satisfies exactly the same
 one-index displacement law as the fork-owned finite pole component. -/
