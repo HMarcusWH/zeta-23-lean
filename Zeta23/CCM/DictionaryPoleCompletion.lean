@@ -79,6 +79,11 @@ private theorem I_half_sq : (Complex.I / 2) ^ 2 = -(1 / 4 : ℂ) := by
   rw [Complex.I_sq]
   ring
 
+private theorem inv_add_inv_eq_add_div_mul
+    {x y : ℂ} (hx : x ≠ 0) (hy : y ≠ 0) :
+    x⁻¹ + y⁻¹ = (y + x) / (x * y) := by
+  field_simp [hx, hy]
+
 private theorem shifted_reciprocal_sq_sum (a : ℝ) :
     ((Complex.I / 2 + (a : ℂ)) ^ 2)⁻¹ +
         ((Complex.I / 2 - (a : ℂ)) ^ 2)⁻¹ =
@@ -92,6 +97,8 @@ private theorem shifted_reciprocal_sq_sum (a : ℝ) :
     intro h
     have hi := congrArg Complex.im h
     norm_num at hi
+  have hp2 : (Complex.I / 2 + (a : ℂ)) ^ 2 ≠ 0 := pow_ne_zero _ hp
+  have hm2 : (Complex.I / 2 - (a : ℂ)) ^ 2 ≠ 0 := pow_ne_zero _ hm
   have hsum :
       (Complex.I / 2 + (a : ℂ)) ^ 2 +
           (Complex.I / 2 - (a : ℂ)) ^ 2 =
@@ -126,11 +133,19 @@ private theorem shifted_reciprocal_sq_sum (a : ℝ) :
       ((Complex.I / 2 - (a : ℂ)) ^ 2 +
           (Complex.I / 2 + (a : ℂ)) ^ 2) /
         ((Complex.I / 2 + (a : ℂ)) ^ 2 *
-          (Complex.I / 2 - (a : ℂ)) ^ 2) := by
-      field_simp [hp, hm] <;> ring
+          (Complex.I / 2 - (a : ℂ)) ^ 2) :=
+      inv_add_inv_eq_add_div_mul hp2 hm2
     _ = 2 * ((a : ℂ) ^ 2 - 1 / 4) /
         (((a : ℂ) ^ 2 + 1 / 4) ^ 2) := by
       rw [add_comm, hsum, hprod]
+
+private theorem scaled_shifted_tent_term
+    (L s : ℝ) (z : ℂ) (hL : L ≠ 0) (hz : z ≠ 0) :
+    2 * ((-2 * s ^ 2 : ℝ) : ℂ) / ((L : ℂ) * z ^ 2) =
+      (-4 * (s : ℂ) ^ 2 / (L : ℂ)) * (z ^ 2)⁻¹ := by
+  have hLC : (L : ℂ) ≠ 0 := by exact_mod_cast hL
+  have hz2 : z ^ 2 ≠ 0 := pow_ne_zero _ hz
+  field_simp [hLC, hz2] <;> ring
 
 private theorem shifted_tent_pole_algebra
     (L a s : ℝ) (hL : L ≠ 0) :
@@ -155,7 +170,9 @@ private theorem shifted_tent_pole_algebra
         (-4 * (s : ℂ) ^ 2 / (L : ℂ)) *
           (((Complex.I / 2 + (a : ℂ)) ^ 2)⁻¹ +
             ((Complex.I / 2 - (a : ℂ)) ^ 2)⁻¹) := by
-      field_simp [hL, hp, hm] <;> ring
+      rw [scaled_shifted_tent_term L s _ hL hp,
+        scaled_shifted_tent_term L s _ hL hm]
+      ring
     _ = (-4 * (s : ℂ) ^ 2 / (L : ℂ)) *
         (2 * ((a : ℂ) ^ 2 - 1 / 4) /
           (((a : ℂ) ^ 2 + 1 / 4) ^ 2)) := by
@@ -216,6 +233,21 @@ theorem dictionaryPoleRHS_basis_diag
         ((-2 * Real.sinh (L / 4) ^ 2 : ℝ) : ℂ) := by
     exact_mod_cast one_sub_cosh_half_eq_neg_two_sinh_sq L
   rw [hhyper]
+  have havg :
+      (2 * ((-2 * Real.sinh (L / 4) ^ 2 : ℝ) : ℂ) /
+            ((L : ℂ) * (Complex.I / 2 + (dictionaryFrequency n L : ℂ)) ^ 2) +
+        2 * ((-2 * Real.sinh (L / 4) ^ 2 : ℝ) : ℂ) /
+            ((L : ℂ) * (Complex.I / 2 - (dictionaryFrequency n L : ℂ)) ^ 2)) / 2 +
+      (2 * ((-2 * Real.sinh (L / 4) ^ 2 : ℝ) : ℂ) /
+            ((L : ℂ) * (Complex.I / 2 - (dictionaryFrequency n L : ℂ)) ^ 2) +
+        2 * ((-2 * Real.sinh (L / 4) ^ 2 : ℝ) : ℂ) /
+            ((L : ℂ) * (Complex.I / 2 + (dictionaryFrequency n L : ℂ)) ^ 2)) / 2 =
+      2 * ((-2 * Real.sinh (L / 4) ^ 2 : ℝ) : ℂ) /
+          ((L : ℂ) * (Complex.I / 2 + (dictionaryFrequency n L : ℂ)) ^ 2) +
+      2 * ((-2 * Real.sinh (L / 4) ^ 2 : ℝ) : ℂ) /
+          ((L : ℂ) * (Complex.I / 2 - (dictionaryFrequency n L : ℂ)) ^ 2) := by
+    ring
+  rw [havg]
   calc
     2 * ((-2 * Real.sinh (L / 4) ^ 2 : ℝ) : ℂ) /
           ((L : ℂ) * (Complex.I / 2 + (dictionaryFrequency n L : ℂ)) ^ 2) +
