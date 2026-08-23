@@ -54,12 +54,12 @@ theorem mu_sub_mu_zero_eq_archDigammaSeries (τ : ℝ) :
   have hT := Zeta23.MuFields.re_digamma_vertical
     (a := (1 / 4 : ℝ)) (by norm_num) (by norm_num) (τ / 2)
   have h0 := Zeta23.MuFields.re_digamma_vertical
-    (a := (1 / 4 : ℝ)) (by norm_num) (by norm_num) 0
+    (a := (1 / 4 : ℝ)) (by norm_num) (by norm_num) ((0 : ℝ) / 2)
   rw [hT, h0]
   have hsT := Zeta23.MuFields.summable_re_terms
     (a := (1 / 4 : ℝ)) (by norm_num) (by norm_num) (τ / 2)
   have hs0 := Zeta23.MuFields.summable_re_terms
-    (a := (1 / 4 : ℝ)) (by norm_num) (by norm_num) 0
+    (a := (1 / 4 : ℝ)) (by norm_num) (by norm_num) ((0 : ℝ) / 2)
   rw [← hsT.tsum_sub hs0]
   have htail :
       (fun n : ℕ =>
@@ -68,7 +68,7 @@ theorem mu_sub_mu_zero_eq_archDigammaSeries (τ : ℝ) :
               (((n : ℝ) + 1 + 1 / 4) ^ 2 + (τ / 2) ^ 2)) -
           (1 / ((n : ℝ) + 1) -
             ((n : ℝ) + 1 + 1 / 4) /
-              (((n : ℝ) + 1 + 1 / 4) ^ 2 + (0 : ℝ) ^ 2))) =
+              (((n : ℝ) + 1 + 1 / 4) ^ 2 + ((0 : ℝ) / 2) ^ 2))) =
         archDigammaTailTerm (τ / 2) := by
     funext n
     unfold archDigammaTailTerm
