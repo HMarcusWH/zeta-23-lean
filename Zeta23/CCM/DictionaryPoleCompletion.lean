@@ -74,6 +74,59 @@ private theorem one_sub_cosh_half_eq_neg_two_sinh_sq (L : ℝ) :
   rw [show 2 * (L / 4) = L / 2 by ring] at h1
   nlinarith
 
+private theorem shifted_reciprocal_sq_sum (a : ℝ) :
+    ((Complex.I / 2 + (a : ℂ)) ^ 2)⁻¹ +
+        ((Complex.I / 2 - (a : ℂ)) ^ 2)⁻¹ =
+      2 * ((a : ℂ) ^ 2 - 1 / 4) /
+        (((a : ℂ) ^ 2 + 1 / 4) ^ 2) := by
+  have hp : Complex.I / 2 + (a : ℂ) ≠ 0 := by
+    intro h
+    have hi := congrArg Complex.im h
+    norm_num at hi
+  have hm : Complex.I / 2 - (a : ℂ) ≠ 0 := by
+    intro h
+    have hi := congrArg Complex.im h
+    norm_num at hi
+  have hsum :
+      (Complex.I / 2 + (a : ℂ)) ^ 2 +
+          (Complex.I / 2 - (a : ℂ)) ^ 2 =
+        2 * ((a : ℂ) ^ 2 - 1 / 4) := by
+    calc
+      (Complex.I / 2 + (a : ℂ)) ^ 2 +
+          (Complex.I / 2 - (a : ℂ)) ^ 2 =
+          2 * (Complex.I / 2) ^ 2 + 2 * (a : ℂ) ^ 2 := by ring
+      _ = 2 * ((a : ℂ) ^ 2 - 1 / 4) := by
+        rw [Complex.I_sq]
+        ring
+  have hprodBase :
+      (Complex.I / 2 + (a : ℂ)) *
+          (Complex.I / 2 - (a : ℂ)) =
+        -((a : ℂ) ^ 2 + 1 / 4) := by
+    calc
+      (Complex.I / 2 + (a : ℂ)) *
+          (Complex.I / 2 - (a : ℂ)) =
+          (Complex.I / 2) ^ 2 - (a : ℂ) ^ 2 := by ring
+      _ = -((a : ℂ) ^ 2 + 1 / 4) := by
+        rw [Complex.I_sq]
+        ring
+  have hprod :
+      (Complex.I / 2 + (a : ℂ)) ^ 2 *
+          (Complex.I / 2 - (a : ℂ)) ^ 2 =
+        ((a : ℂ) ^ 2 + 1 / 4) ^ 2 := by
+    rw [← mul_pow, hprodBase]
+    ring
+  calc
+    ((Complex.I / 2 + (a : ℂ)) ^ 2)⁻¹ +
+        ((Complex.I / 2 - (a : ℂ)) ^ 2)⁻¹ =
+      ((Complex.I / 2 - (a : ℂ)) ^ 2 +
+          (Complex.I / 2 + (a : ℂ)) ^ 2) /
+        ((Complex.I / 2 + (a : ℂ)) ^ 2 *
+          (Complex.I / 2 - (a : ℂ)) ^ 2) := by
+      field_simp [hp, hm] <;> ring
+    _ = 2 * ((a : ℂ) ^ 2 - 1 / 4) /
+        (((a : ℂ) ^ 2 + 1 / 4) ^ 2) := by
+      rw [add_comm, hsum, hprod]
+
 private theorem shifted_tent_pole_algebra
     (L a s : ℝ) (hL : L ≠ 0) :
     2 * ((-2 * s ^ 2 : ℝ) : ℂ) /
@@ -89,10 +142,38 @@ private theorem shifted_tent_pole_algebra
     intro h
     have hi := congrArg Complex.im h
     norm_num at hi
-  have hdR : a ^ 2 + (1 / 4 : ℝ) ≠ 0 := by positivity
-  have hdC : (a : ℂ) ^ 2 + (1 / 4 : ℂ) ≠ 0 := by
-    exact_mod_cast hdR
-  field_simp [hL, hp, hm, hdC, Complex.I_sq] <;> push_cast <;> ring
+  calc
+    2 * ((-2 * s ^ 2 : ℝ) : ℂ) /
+          ((L : ℂ) * (Complex.I / 2 + (a : ℂ)) ^ 2) +
+      2 * ((-2 * s ^ 2 : ℝ) : ℂ) /
+          ((L : ℂ) * (Complex.I / 2 - (a : ℂ)) ^ 2) =
+        (-4 * (s : ℂ) ^ 2 / (L : ℂ)) *
+          (((Complex.I / 2 + (a : ℂ)) ^ 2)⁻¹ +
+            ((Complex.I / 2 - (a : ℂ)) ^ 2)⁻¹) := by
+      field_simp [hL, hp, hm] <;> ring
+    _ = (-4 * (s : ℂ) ^ 2 / (L : ℂ)) *
+        (2 * ((a : ℂ) ^ 2 - 1 / 4) /
+          (((a : ℂ) ^ 2 + 1 / 4) ^ 2)) := by
+      rw [shifted_reciprocal_sq_sum a]
+    _ = ((8 * s ^ 2 / L * (1 / 4 - a ^ 2) /
+          (a ^ 2 + 1 / 4) ^ 2 : ℝ) : ℂ) := by
+      push_cast
+      ring
+
+private theorem diagonal_pole_real_algebra
+    {L : ℝ} (hL : 0 < L) (n : ℤ) :
+    8 * Real.sinh (L / 4) ^ 2 / L *
+        (1 / 4 - dictionaryFrequency n L ^ 2) /
+        (dictionaryFrequency n L ^ 2 + 1 / 4) ^ 2 =
+      poleComponent n n L := by
+  have hd :
+      0 < L ^ 2 + 16 * Real.pi ^ 2 * (n : ℝ) ^ 2 := by
+    have hLsq : 0 < L ^ 2 := sq_pos_of_pos hL
+    positivity
+  unfold dictionaryFrequency poleComponent
+  dsimp
+  push_cast
+  field_simp [hL.ne', ne_of_gt hd] <;> ring
 
 /-- The diagonal pole channel is exactly the existing finite CCM pole component.
 This is the first exact normalization gate after the shifted-tent reduction. -/
@@ -130,16 +211,17 @@ theorem dictionaryPoleRHS_basis_diag
         ((-2 * Real.sinh (L / 4) ^ 2 : ℝ) : ℂ) := by
     exact_mod_cast one_sub_cosh_half_eq_neg_two_sinh_sq L
   rw [hhyper]
-  rw [shifted_tent_pole_algebra L (dictionaryFrequency n L)
-    (Real.sinh (L / 4)) hL.ne']
-  norm_cast
-  have hd :
-      0 < L ^ 2 + 16 * Real.pi ^ 2 * (n : ℝ) ^ 2 := by
-    have hLsq : 0 < L ^ 2 := sq_pos_of_pos hL
-    positivity
-  unfold dictionaryFrequency poleComponent
-  dsimp
-  field_simp [hL.ne', ne_of_gt hd]
-  ring
+  calc
+    2 * ((-2 * Real.sinh (L / 4) ^ 2 : ℝ) : ℂ) /
+          ((L : ℂ) * (Complex.I / 2 + (dictionaryFrequency n L : ℂ)) ^ 2) +
+      2 * ((-2 * Real.sinh (L / 4) ^ 2 : ℝ) : ℂ) /
+          ((L : ℂ) * (Complex.I / 2 - (dictionaryFrequency n L : ℂ)) ^ 2) =
+        ((8 * Real.sinh (L / 4) ^ 2 / L *
+          (1 / 4 - dictionaryFrequency n L ^ 2) /
+          (dictionaryFrequency n L ^ 2 + 1 / 4) ^ 2 : ℝ) : ℂ) :=
+      shifted_tent_pole_algebra L (dictionaryFrequency n L)
+        (Real.sinh (L / 4)) hL.ne'
+    _ = ((poleComponent n n L : ℝ) : ℂ) := by
+      exact_mod_cast diagonal_pole_real_algebra hL n
 
 end Zeta23.CCM
