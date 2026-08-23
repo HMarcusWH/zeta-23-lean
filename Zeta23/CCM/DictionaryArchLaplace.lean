@@ -72,7 +72,7 @@ theorem integral_exp_neg_mul_one_sub_cos_Ioi
     ring
   rw [hSplit, integral_exp_mul_Ioi (a := -a) (by linarith) 0,
     integral_exp_neg_mul_cos_Ioi ha t]
-  simp [ha.ne']
+  simp
 
 /-- Physical-space summand normalized so that no later `x ↦ 2x` substitution is
 needed: its integral is exactly the digamma summand at `τ/2`. -/
@@ -82,8 +82,10 @@ def archPhysicalSeriesTerm (τ : ℝ) (m : ℕ) (x : ℝ) : ℝ :=
 /-- Each physical summand is nonnegative. -/
 theorem archPhysicalSeriesTerm_nonneg (τ : ℝ) (m : ℕ) (x : ℝ) :
     0 ≤ archPhysicalSeriesTerm τ m x := by
+  have hcos : Real.cos (τ * x) ≤ 1 := Real.cos_le_one (τ * x)
+  have hsub : 0 ≤ 1 - Real.cos (τ * x) := sub_nonneg.mpr hcos
   unfold archPhysicalSeriesTerm
-  positivity
+  exact mul_nonneg (mul_nonneg (by norm_num) (Real.exp_pos _).le) hsub
 
 /-- Each physical summand is integrable on the positive half-line. -/
 theorem integrableOn_archPhysicalSeriesTerm (τ : ℝ) (m : ℕ) :
@@ -145,7 +147,6 @@ theorem integral_archPhysicalSeriesTerm_Ioi (τ : ℝ) (m : ℕ) :
       have hden2 :
           ((m : ℝ) + 1 / 4) ^ 2 + (τ / 2) ^ 2 ≠ 0 := by positivity
       field_simp [hb, hden1, hden2]
-      ring
 
 /-- Norm integrals equal the same digamma terms because the physical summands are
 pointwise nonnegative. -/
