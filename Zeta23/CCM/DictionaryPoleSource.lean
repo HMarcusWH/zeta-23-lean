@@ -94,7 +94,19 @@ private theorem hasDerivAt_sinExpPrimitive
         Real.sin (a * y) * Real.exp (b * y) := by
     field_simp [hden]
     ring
-  simpa only [sinExpPrimitive, hcalc] using hdiv
+  have hderiv := hdiv.deriv
+  change deriv (sinExpPrimitive a b) y =
+      (Real.exp (b * y) * b *
+          (b * Real.sin (a * y) - a * Real.cos (a * y)) +
+        Real.exp (b * y) *
+          (b * (Real.cos (a * y) * a) - a * (-Real.sin (a * y) * a))) /
+          (a ^ 2 + b ^ 2) at hderiv
+  have hdiff : DifferentiableAt ℝ (sinExpPrimitive a b) y := by
+    unfold sinExpPrimitive
+    fun_prop
+  have hcanonical := hdiff.hasDerivAt
+  rw [hderiv, hcalc] at hcanonical
+  exact hcanonical
 
 private theorem intervalIntegral_sin_mul_exp
     {a b A B : ℝ} (hden : a ^ 2 + b ^ 2 ≠ 0) :
@@ -178,12 +190,10 @@ private theorem intervalIntegral_source_sin_exp_neg_half
 private theorem two_sub_exp_half_sub_exp_neg_half (L : ℝ) :
     2 - Real.exp (L / 2) - Real.exp (-L / 2) =
       -4 * Real.sinh (L / 4) ^ 2 := by
-  have hcosh :
-      Real.exp (L / 2) + Real.exp (-L / 2) = 2 * Real.cosh (L / 2) := by
-    change Real.exp (L / 2) + Real.exp (-L / 2) =
-      2 * ((Real.exp (L / 2) + Real.exp (-(L / 2))) / 2)
-    rw [show -(L / 2) = -L / 2 by ring]
-    ring
+  have hcomplex := Complex.two_cosh (((L / 2 : ℝ) : ℂ))
+  have hcosh := congrArg Complex.re hcomplex
+  simp only [Complex.ofReal_re, Complex.cosh_ofReal_re, Complex.exp_ofReal_re,
+    Complex.ofReal_neg] at hcosh
   have h1 := Real.cosh_two_mul (L / 4)
   have h2 := Real.cosh_sq_sub_sinh_sq (L / 4)
   rw [show 2 * (L / 4) = L / 2 by ring] at h1
@@ -274,7 +284,7 @@ theorem dictionaryPoleRHS_sourceTest
       ring
     rw [intervalIntegral.integral_congr hfun]
     rw [intervalIntegral.integral_ofReal]
-    apply Complex.ofReal_injective
+    norm_cast
     have hsinNeg : IntervalIntegrable
         (fun y : ℝ => Real.sin (dictionaryFrequency n L * y) * Real.exp (-y / 2))
         volume 0 L := by
@@ -293,7 +303,7 @@ theorem dictionaryPoleRHS_sourceTest
     ring
   rw [hpos]
   rw [← Complex.ofReal_add]
-  apply Complex.ofReal_injective
+  norm_cast
   calc
     (-1 / (2 * Real.pi)) * X + (-1 / (2 * Real.pi)) * X =
         -(1 / Real.pi) * X := by ring
