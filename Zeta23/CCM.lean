@@ -17,6 +17,7 @@ import Zeta23.CCM.DictionaryTentTransform
 import Zeta23.CCM.DictionaryTentDecay
 import Zeta23.CCM.DictionaryTentZeroSummability
 import Zeta23.CCM.DictionaryDeterministicRHS
+import Zeta23.CCM.DictionarySourceTest
 import Zeta23.CCM.DictionaryPole
 import Zeta23.CCM.DictionaryPoleCompletion
 import Zeta23.CCM.Displacement
