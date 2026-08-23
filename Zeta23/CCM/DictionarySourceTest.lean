@@ -33,6 +33,7 @@ theorem dictionarySourceTest_eq_zero_of_lt_abs
     dictionarySourceTest n L y = 0 := by
   unfold dictionarySourceTest
   rw [dictionaryApertureCoord_eq_zero_of_lt_abs hL hy]
+  rw [sourcePotential_zero]
   simp
 
 /-- Scalar source tests are supported in the same closed aperture as the full dictionary. -/
@@ -72,7 +73,6 @@ theorem dictionarySourceTest_eq_sine_of_abs_le
     sourcePotential_one_sub]
   push_cast
   field_simp [Real.pi_ne_zero]
-  ring
 
 /-- Every production basis test is exactly one half of the elementary source entry
 at the clamped physical source coordinate. -/
@@ -101,6 +101,5 @@ theorem dictionaryBasisTest_displacement_eq_sourceTest_sub
   have hnmZ : n - m ≠ 0 := sub_ne_zero.mpr hnm
   have hnmC : (((n - m : ℤ) : ℂ)) ≠ 0 := by exact_mod_cast hnmZ
   field_simp [hnmC]
-  ring
 
 end Zeta23.CCM
