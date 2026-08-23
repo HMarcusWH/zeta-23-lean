@@ -60,24 +60,39 @@ theorem mu_sub_mu_zero_eq_archDigammaSeries (τ : ℝ) :
     (a := (1 / 4 : ℝ)) (by norm_num) (by norm_num) (τ / 2)
   have hs0 := Zeta23.MuFields.summable_re_terms
     (a := (1 / 4 : ℝ)) (by norm_num) (by norm_num) ((0 : ℝ) / 2)
-  rw [← hsT.tsum_sub hs0]
-  have htail :
-      (fun n : ℕ =>
-        (1 / ((n : ℝ) + 1) -
-            ((n : ℝ) + 1 + 1 / 4) /
-              (((n : ℝ) + 1 + 1 / 4) ^ 2 + (τ / 2) ^ 2)) -
-          (1 / ((n : ℝ) + 1) -
-            ((n : ℝ) + 1 + 1 / 4) /
-              (((n : ℝ) + 1 + 1 / 4) ^ 2 + ((0 : ℝ) / 2) ^ 2))) =
-        archDigammaTailTerm (τ / 2) := by
+  let fT : ℕ → ℝ := fun n =>
+    1 / ((n : ℝ) + 1) -
+      ((n : ℝ) + 1 + 1 / 4) /
+        (((n : ℝ) + 1 + 1 / 4) ^ 2 + (τ / 2) ^ 2)
+  let f0 : ℕ → ℝ := fun n =>
+    1 / ((n : ℝ) + 1) -
+      ((n : ℝ) + 1 + 1 / 4) /
+        (((n : ℝ) + 1 + 1 / 4) ^ 2 + ((0 : ℝ) / 2) ^ 2)
+  have hsT' : Summable fT := by simpa [fT] using hsT
+  have hs0' : Summable f0 := by simpa [f0] using hs0
+  have htail : (fun n : ℕ => fT n - f0 n) = archDigammaTailTerm (τ / 2) := by
     funext n
-    unfold archDigammaTailTerm
+    unfold fT f0 archDigammaTailTerm
     have hb : (n : ℝ) + 1 + 1 / 4 ≠ 0 := by positivity
     field_simp [hb]
     ring
-  rw [htail]
-  unfold archDigammaBaseTerm
-  field_simp [Real.pi_ne_zero]
-  ring
+  calc
+    1 / (2 * Real.pi) *
+          (-Real.eulerMascheroniConstant - 1 / 4 / ((1 / 4) ^ 2 + (τ / 2) ^ 2) + ∑' n, fT n) -
+        Real.log Real.pi / (2 * Real.pi) -
+      (1 / (2 * Real.pi) *
+          (-Real.eulerMascheroniConstant - 1 / 4 / ((1 / 4) ^ 2 + ((0 : ℝ) / 2) ^ 2) + ∑' n, f0 n) -
+        Real.log Real.pi / (2 * Real.pi)) =
+        (1 / (2 * Real.pi)) *
+          (archDigammaBaseTerm (τ / 2) + ((∑' n, fT n) - ∑' n, f0 n)) := by
+            unfold archDigammaBaseTerm
+            norm_num
+            ring
+    _ = (1 / (2 * Real.pi)) *
+          (archDigammaBaseTerm (τ / 2) + ∑' n, (fT n - f0 n)) := by
+            rw [hsT'.tsum_sub hs0']
+    _ = (1 / (2 * Real.pi)) *
+          (archDigammaBaseTerm (τ / 2) + ∑' n, archDigammaTailTerm (τ / 2) n) := by
+            rw [htail]
 
 end Zeta23.CCM
