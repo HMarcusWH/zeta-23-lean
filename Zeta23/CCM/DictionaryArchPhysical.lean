@@ -51,6 +51,8 @@ theorem dictionaryArchPhysicalRHS_sourceTest
     rw [← intervalIntegral.integral_ofReal]
     apply intervalIntegral.integral_congr
     intro x hx
+    change dictionarySourceTest n L x * (archDensity x : ℂ) =
+      (((-1 / (2 * Real.pi) : ℝ) * s x : ℝ) : ℂ)
     rw [uIcc_of_le hL.le] at hx
     have hx0 : 0 ≤ x := hx.1
     have habs : |x| ≤ L := by simpa [abs_of_nonneg hx0] using hx.2
