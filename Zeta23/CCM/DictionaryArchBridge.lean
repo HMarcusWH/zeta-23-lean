@@ -95,4 +95,41 @@ theorem mu_sub_mu_zero_eq_archDigammaSeries (τ : ℝ) :
           (archDigammaBaseTerm (τ / 2) + ∑' n, archDigammaTailTerm (τ / 2) n) := by
             rw [htail]
 
+/-- Uniform positive-abscissa form of the digamma difference terms.  The zero
+index is the isolated base term above; successor indices are exactly the tail. -/
+def archDigammaAllTerm (t : ℝ) (m : ℕ) : ℝ :=
+  1 / ((m : ℝ) + 1 / 4) -
+    ((m : ℝ) + 1 / 4) / (((m : ℝ) + 1 / 4) ^ 2 + t ^ 2)
+
+@[simp] theorem archDigammaAllTerm_zero (t : ℝ) :
+    archDigammaAllTerm t 0 = archDigammaBaseTerm t := by
+  unfold archDigammaAllTerm archDigammaBaseTerm
+  norm_num
+
+@[simp] theorem archDigammaAllTerm_succ (t : ℝ) (n : ℕ) :
+    archDigammaAllTerm t (n + 1) = archDigammaTailTerm t n := by
+  unfold archDigammaAllTerm archDigammaTailTerm
+  push_cast
+  ring
+
+/-- The uniform positive-abscissa series is summable. -/
+theorem summable_archDigammaAllTerm (t : ℝ) :
+    Summable (archDigammaAllTerm t) := by
+  rw [← summable_nat_add_iff 1]
+  simpa using summable_archDigammaTailTerm t
+
+/-- Reinsert the isolated zero index into the digamma tail. -/
+theorem archDigammaBase_add_tail_eq_all_tsum (t : ℝ) :
+    archDigammaBaseTerm t + ∑' n : ℕ, archDigammaTailTerm t n =
+      ∑' m : ℕ, archDigammaAllTerm t m := by
+  have h := (summable_archDigammaAllTerm t).sum_add_tsum_nat_add 1
+  simpa using h.symm
+
+/-- Exact positive-abscissa series representation of the gamma density difference. -/
+theorem mu_sub_mu_zero_eq_archDigammaAllSeries (τ : ℝ) :
+    Zeta23.mu τ - Zeta23.mu 0 =
+      (1 / (2 * Real.pi)) * ∑' m : ℕ, archDigammaAllTerm (τ / 2) m := by
+  rw [mu_sub_mu_zero_eq_archDigammaSeries,
+    archDigammaBase_add_tail_eq_all_tsum]
+
 end Zeta23.CCM
