@@ -191,9 +191,16 @@ private theorem two_sub_exp_half_sub_exp_neg_half (L : ℝ) :
     2 - Real.exp (L / 2) - Real.exp (-L / 2) =
       -4 * Real.sinh (L / 4) ^ 2 := by
   have hcomplex := Complex.two_cosh (((L / 2 : ℝ) : ℂ))
-  have hcosh := congrArg Complex.re hcomplex
-  simp only [Complex.ofReal_re, Complex.cosh_ofReal_re, Complex.exp_ofReal_re,
-    Complex.ofReal_neg] at hcosh
+  have hcoshC :
+      (((2 * Real.cosh (L / 2) : ℝ)) : ℂ) =
+        (((Real.exp (L / 2) + Real.exp (-L / 2) : ℝ)) : ℂ) := by
+    push_cast
+    rw [Complex.ofReal_cosh, Complex.ofReal_exp, Complex.ofReal_exp]
+    convert hcomplex using 1 <;> ring
+  have hcosh :
+      2 * Real.cosh (L / 2) =
+        Real.exp (L / 2) + Real.exp (-L / 2) := by
+    exact_mod_cast hcoshC
   have h1 := Real.cosh_two_mul (L / 4)
   have h2 := Real.cosh_sq_sub_sinh_sq (L / 4)
   rw [show 2 * (L / 4) = L / 2 by ring] at h1
@@ -295,21 +302,25 @@ theorem dictionaryPoleRHS_sourceTest
         volume 0 L := by
       apply Continuous.intervalIntegrable
       fun_prop
-    rw [intervalIntegral.integral_const_mul]
-    rw [← intervalIntegral.integral_add hsinNeg hsinPos]
-    rw [intervalIntegral_source_sin_exp_neg_half hL n,
+    have hsplitIntegrand :
+        (fun y : ℝ => Real.sin (dictionaryFrequency n L * y) *
+          (Real.exp (-y / 2) + Real.exp (y / 2))) =
+        fun y =>
+          Real.sin (dictionaryFrequency n L * y) * Real.exp (-y / 2) +
+          Real.sin (dictionaryFrequency n L * y) * Real.exp (y / 2) := by
+      funext y
+      ring
+    rw [hsplitIntegrand, intervalIntegral.integral_add hsinNeg hsinPos,
+      intervalIntegral_source_sin_exp_neg_half hL n,
       intervalIntegral_source_sin_exp_pos_half hL n]
     dsimp [X]
     ring
   rw [hpos]
   rw [← Complex.ofReal_add]
   norm_cast
-  calc
-    (-1 / (2 * Real.pi)) * X + (-1 / (2 * Real.pi)) * X =
-        -(1 / Real.pi) * X := by ring
-    _ = poleSeq n L := by
-      dsimp [X]
-      exact sourcePole_real_algebra hL n
+  have hreal := sourcePole_real_algebra hL n
+  dsimp [X] at hreal ⊢
+  convert hreal using 1 <;> ring
 
 /-- Off the diagonal, the literature pole channel satisfies exactly the same
 one-index displacement law as the fork-owned finite pole component. -/
