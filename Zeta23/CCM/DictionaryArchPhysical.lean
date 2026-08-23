@@ -38,30 +38,40 @@ theorem dictionaryArchPhysicalRHS_sourceTest
     dictionaryArchPhysicalRHS (dictionarySourceTest n L) L =
       ((alphaL n L : ℝ) : ℂ) := by
   rw [dictionaryArchPhysicalRHS, dictionarySourceTest_zero hL n]
-  simp only [zero_mul, sub_zero]
+  simp only [zero_mul, mul_zero, sub_zero]
   unfold alphaL
-  have hInt :
+  let s : ℝ → ℝ := fun x =>
+    Real.sin (2 * Real.pi * (n : ℝ) * x / L) * archDensity x
+  have hSource :
       (∫ x in (0 : ℝ)..L,
         dictionarySourceTest n L x * (archDensity x : ℂ)) =
       (((-1 / (2 * Real.pi) : ℝ) *
-        ∫ x in (0 : ℝ)..L,
-          (if x = 0 then
-            if n = 0 then 0 else Real.pi * (n : ℝ) / L
-          else
-            Real.sin (2 * Real.pi * (n : ℝ) * x / L) * archDensity x) : ℝ) : ℂ) := by
+        ∫ x in (0 : ℝ)..L, s x : ℝ) : ℂ) := by
     rw [← intervalIntegral.integral_const_mul]
     rw [← intervalIntegral.integral_ofReal]
     apply intervalIntegral.integral_congr
     intro x hx
-    rw [uIoc_of_le hL.le] at hx
-    have hx0 : 0 ≤ x := le_of_lt hx.1
-    have hxne : x ≠ 0 := ne_of_gt hx.1
+    rw [uIcc_of_le hL.le] at hx
+    have hx0 : 0 ≤ x := hx.1
     have habs : |x| ≤ L := by simpa [abs_of_nonneg hx0] using hx.2
     rw [dictionarySourceTest_eq_sine_of_abs_le hL habs n]
-    simp [abs_of_nonneg hx0, hxne]
+    dsimp [s]
+    simp [abs_of_nonneg hx0]
     push_cast
     ring
-  rw [hInt]
+  have hAlpha :
+      (∫ x in (0 : ℝ)..L, s x) =
+        ∫ x in (0 : ℝ)..L,
+          (if x = 0 then
+            if n = 0 then 0 else Real.pi * (n : ℝ) / L
+          else
+            Real.sin (2 * Real.pi * (n : ℝ) * x / L) * archDensity x) := by
+    apply intervalIntegral.integral_congr_uIoo
+    intro x hx
+    rw [uIoo_of_le hL.le] at hx
+    have hxne : x ≠ 0 := ne_of_gt hx.1
+    simp [s, hxne]
+  rw [hSource, hAlpha]
   push_cast
   ring
 
