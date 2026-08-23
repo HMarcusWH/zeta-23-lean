@@ -23,11 +23,11 @@ def dictionaryArchPhysicalRHS (k : ℝ → ℂ) (L : ℝ) : ℂ :=
     - ((2 * wCorrection L : ℝ) : ℂ) * k 0
 
 @[simp] theorem dictionarySourceTest_zero
-    {L : ℝ} (hL : 0 < L) (n : ℤ) :
+    {L : ℝ} (_hL : 0 < L) (n : ℤ) :
     dictionarySourceTest n L 0 = 0 := by
   unfold dictionarySourceTest
   have hcoord : dictionaryApertureCoord L 0 = 1 := by
-    simp [dictionaryApertureCoord, hL.ne']
+    simp [dictionaryApertureCoord]
   rw [hcoord, sourcePotential_one]
   simp
 
@@ -40,7 +40,6 @@ theorem dictionaryArchPhysicalRHS_sourceTest
   rw [dictionaryArchPhysicalRHS, dictionarySourceTest_zero hL n]
   simp only [zero_mul, sub_zero]
   unfold alphaL
-  rw [intervalIntegral.integral_ofReal]
   have hInt :
       (∫ x in (0 : ℝ)..L,
         dictionarySourceTest n L x * (archDensity x : ℂ)) =
