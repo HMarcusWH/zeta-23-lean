@@ -20,7 +20,12 @@ theorem dictionaryBasisTest_diag_eq_tent_cos
     dictionaryBasisTest n n L y =
       dictionaryTent L y * ((Real.cos (dictionaryFrequency n L * y) : ℝ) : ℂ) := by
   by_cases hy : |y| ≤ L
-  · have hcos :
+  · have hfreq :
+        2 * Real.pi * (n : ℝ) * |y| / L = dictionaryFrequency n L * |y| := by
+      unfold dictionaryFrequency
+      field_simp [hL.ne']
+      ring
+    have hcos :
         Real.cos (dictionaryFrequency n L * |y|) =
           Real.cos (dictionaryFrequency n L * y) := by
       by_cases hy0 : 0 ≤ y
@@ -30,13 +35,8 @@ theorem dictionaryBasisTest_diag_eq_tent_cos
         rw [show dictionaryFrequency n L * -y = -(dictionaryFrequency n L * y) by ring,
           Real.cos_neg]
     rw [dictionaryTent_eq_one_sub_abs_div_of_abs_le hL hy]
-    change
-      (1 / 2 : ℂ) *
-          ((2 * (1 - |y| / L) *
-            Real.cos (dictionaryFrequency n L * |y|) : ℝ) : ℂ) =
-        ((1 - |y| / L : ℝ) : ℂ) *
-          ((Real.cos (dictionaryFrequency n L * y) : ℝ) : ℂ)
-    rw [hcos]
+    simp only [dictionaryBasisTest, kernel, hy, if_pos, qBasis]
+    rw [hfreq, hcos]
     push_cast
     ring
   · have hlt : L < |y| := lt_of_not_ge hy
