@@ -27,8 +27,6 @@ theorem integral_exp_neg_mul_cos_Ioi
   have hcomplex := integral_exp_mul_complex_Ioi (a := z) hz 0
   have hint : IntegrableOn (fun x : ℝ => Complex.exp (z * x)) (Ioi 0) :=
     integrableOn_exp_mul_complex_Ioi hz 0
-  have hre := congrArg Complex.re hcomplex
-  rw [integral_re hint] at hre
   have hleft :
       (fun x : ℝ => (Complex.exp (z * x)).re) =
         fun x : ℝ => Real.exp (-a * x) * Real.cos (t * x) := by
@@ -36,15 +34,20 @@ theorem integral_exp_neg_mul_cos_Ioi
     rw [Complex.exp_re]
     dsimp [z]
     simp [Complex.mul_re, Complex.mul_im]
-  rw [hleft] at hre
   have hright : (-Complex.exp (z * (0 : ℝ)) / z).re =
       a / (a ^ 2 + t ^ 2) := by
     dsimp [z]
     rw [Complex.exp_zero]
     simp [Complex.div_re, Complex.normSq_apply]
     ring
-  rw [hright] at hre
-  exact hre
+  calc
+    (∫ x : ℝ in Ioi 0, Real.exp (-a * x) * Real.cos (t * x)) =
+        ∫ x : ℝ in Ioi 0, (Complex.exp (z * x)).re := by rw [hleft]
+    _ = (∫ x : ℝ in Ioi 0, Complex.exp (z * x)).re := by
+        rw [integral_re]
+        exact hint
+    _ = (-Complex.exp (z * (0 : ℝ)) / z).re := by rw [hcomplex]
+    _ = a / (a ^ 2 + t ^ 2) := hright
 
 /-- Integral form of one positive-abscissa digamma difference term. -/
 theorem integral_exp_neg_mul_one_sub_cos_Ioi
@@ -72,6 +75,5 @@ theorem integral_exp_neg_mul_one_sub_cos_Ioi
     integral_exp_neg_mul_cos_Ioi ha t]
   simp
   field_simp [ha.ne']
-  ring
 
 end Zeta23.CCM
