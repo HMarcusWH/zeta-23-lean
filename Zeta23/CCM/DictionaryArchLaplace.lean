@@ -37,15 +37,12 @@ theorem integral_exp_neg_mul_cos_Ioi
   have hright : (-Complex.exp (z * (0 : ℝ)) / z).re =
       a / (a ^ 2 + t ^ 2) := by
     dsimp [z]
-    rw [Complex.exp_zero]
     simp [Complex.div_re, Complex.normSq_apply]
     ring
   calc
     (∫ x : ℝ in Ioi 0, Real.exp (-a * x) * Real.cos (t * x)) =
         ∫ x : ℝ in Ioi 0, (Complex.exp (z * x)).re := by rw [hleft]
-    _ = (∫ x : ℝ in Ioi 0, Complex.exp (z * x)).re := by
-        rw [integral_re]
-        exact hint
+    _ = (∫ x : ℝ in Ioi 0, Complex.exp (z * x)).re := integral_re hint
     _ = (-Complex.exp (z * (0 : ℝ)) / z).re := by rw [hcomplex]
     _ = a / (a ^ 2 + t ^ 2) := hright
 
@@ -73,7 +70,6 @@ theorem integral_exp_neg_mul_one_sub_cos_Ioi
     ring
   rw [hSplit, integral_exp_mul_Ioi (a := -a) (by linarith) 0,
     integral_exp_neg_mul_cos_Ioi ha t]
-  simp
-  field_simp [ha.ne']
+  simp [ha.ne']
 
 end Zeta23.CCM
