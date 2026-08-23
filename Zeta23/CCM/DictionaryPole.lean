@@ -24,7 +24,6 @@ theorem dictionaryBasisTest_diag_eq_tent_cos
         2 * Real.pi * (n : ℝ) * |y| / L = dictionaryFrequency n L * |y| := by
       unfold dictionaryFrequency
       field_simp [hL.ne']
-      ring
     have hcos :
         Real.cos (dictionaryFrequency n L * |y|) =
           Real.cos (dictionaryFrequency n L * y) := by
