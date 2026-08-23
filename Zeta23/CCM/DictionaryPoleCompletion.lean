@@ -145,7 +145,7 @@ private theorem scaled_shifted_tent_term
       (-4 * (s : ℂ) ^ 2 / (L : ℂ)) * (z ^ 2)⁻¹ := by
   have hLC : (L : ℂ) ≠ 0 := by exact_mod_cast hL
   have hz2 : z ^ 2 ≠ 0 := pow_ne_zero _ hz
-  field_simp [hLC, hz2] <;> ring
+  field_simp [hLC, hz2] <;> push_cast <;> ring
 
 private theorem shifted_tent_pole_algebra
     (L a s : ℝ) (hL : L ≠ 0) :
