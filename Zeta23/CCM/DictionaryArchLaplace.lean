@@ -1,11 +1,13 @@
 import Zeta23.CCM.DictionaryArchBridge
 import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
+import Mathlib.MeasureTheory.Integral.DominatedConvergence
 
 noncomputable section
 
 namespace Zeta23.CCM
 
 open Complex MeasureTheory Set
+open scoped BigOperators
 
 /-! # Laplace representation of the archimedean digamma summands
 
@@ -71,5 +73,102 @@ theorem integral_exp_neg_mul_one_sub_cos_Ioi
   rw [hSplit, integral_exp_mul_Ioi (a := -a) (by linarith) 0,
     integral_exp_neg_mul_cos_Ioi ha t]
   simp [ha.ne']
+
+/-- Physical-space summand normalized so that no later `x ↦ 2x` substitution is
+needed: its integral is exactly the digamma summand at `τ/2`. -/
+def archPhysicalSeriesTerm (τ : ℝ) (m : ℕ) (x : ℝ) : ℝ :=
+  2 * Real.exp (-(2 * ((m : ℝ) + 1 / 4)) * x) * (1 - Real.cos (τ * x))
+
+/-- Each physical summand is nonnegative. -/
+theorem archPhysicalSeriesTerm_nonneg (τ : ℝ) (m : ℕ) (x : ℝ) :
+    0 ≤ archPhysicalSeriesTerm τ m x := by
+  unfold archPhysicalSeriesTerm
+  positivity
+
+/-- Each physical summand is integrable on the positive half-line. -/
+theorem integrableOn_archPhysicalSeriesTerm (τ : ℝ) (m : ℕ) :
+    IntegrableOn (archPhysicalSeriesTerm τ m) (Ioi 0) := by
+  let a : ℝ := 2 * ((m : ℝ) + 1 / 4)
+  have ha : 0 < a := by
+    dsimp [a]
+    positivity
+  have hExp : IntegrableOn (fun x : ℝ => Real.exp (-a * x)) (Ioi 0) := by
+    simpa [neg_mul] using integrableOn_exp_mul_Ioi (a := -a) (by linarith) 0
+  have hCos : IntegrableOn
+      (fun x : ℝ => Real.exp (-a * x) * Real.cos (τ * x)) (Ioi 0) := by
+    refine hExp.mul_bdd (c := 1) (by fun_prop) ?_
+    filter_upwards with x
+    simpa [Real.norm_eq_abs] using Real.abs_cos_le_one (τ * x)
+  have hSub : IntegrableOn
+      (fun x : ℝ => Real.exp (-a * x) * (1 - Real.cos (τ * x))) (Ioi 0) := by
+    have heq :
+        (fun x : ℝ => Real.exp (-a * x) * (1 - Real.cos (τ * x))) =
+          fun x => Real.exp (-a * x) - Real.exp (-a * x) * Real.cos (τ * x) := by
+      funext x
+      ring
+    rw [heq]
+    exact hExp.sub hCos
+  have heq : archPhysicalSeriesTerm τ m =
+      fun x => 2 * (Real.exp (-a * x) * (1 - Real.cos (τ * x))) := by
+    funext x
+    dsimp [archPhysicalSeriesTerm, a]
+    ring
+  rw [heq]
+  exact hSub.const_mul 2
+
+/-- The integral of one physical summand is the corresponding positive-abscissa
+digamma term. -/
+theorem integral_archPhysicalSeriesTerm_Ioi (τ : ℝ) (m : ℕ) :
+    (∫ x : ℝ in Ioi 0, archPhysicalSeriesTerm τ m x) =
+      archDigammaAllTerm (τ / 2) m := by
+  let a : ℝ := 2 * ((m : ℝ) + 1 / 4)
+  have ha : 0 < a := by
+    dsimp [a]
+    positivity
+  have h := integral_exp_neg_mul_one_sub_cos_Ioi ha τ
+  have hscaled :
+      (∫ x : ℝ in Ioi 0,
+        2 * (Real.exp (-a * x) * (1 - Real.cos (τ * x)))) =
+        2 * (1 / a - a / (a ^ 2 + τ ^ 2)) := by
+    rw [integral_const_mul, h]
+  rw [← hscaled]
+  apply integral_congr_ae
+  filter_upwards with x
+  dsimp [archPhysicalSeriesTerm, a]
+  ring
+  all_goals
+    unfold archDigammaAllTerm
+    dsimp [a]
+    have hb : (m : ℝ) + 1 / 4 ≠ 0 := by positivity
+    field_simp [hb]
+    ring
+
+/-- Norm integrals equal the same digamma terms because the physical summands are
+pointwise nonnegative. -/
+theorem integral_norm_archPhysicalSeriesTerm_Ioi (τ : ℝ) (m : ℕ) :
+    (∫ x : ℝ in Ioi 0, ‖archPhysicalSeriesTerm τ m x‖) =
+      archDigammaAllTerm (τ / 2) m := by
+  calc
+    (∫ x : ℝ in Ioi 0, ‖archPhysicalSeriesTerm τ m x‖) =
+        ∫ x : ℝ in Ioi 0, archPhysicalSeriesTerm τ m x := by
+      apply integral_congr_ae
+      filter_upwards with x
+      rw [Real.norm_eq_abs, abs_of_nonneg (archPhysicalSeriesTerm_nonneg τ m x)]
+    _ = archDigammaAllTerm (τ / 2) m := integral_archPhysicalSeriesTerm_Ioi τ m
+
+/-- Absolute integrals of the physical summands form a summable family. -/
+theorem summable_integral_norm_archPhysicalSeriesTerm (τ : ℝ) :
+    Summable (fun m : ℕ => ∫ x : ℝ in Ioi 0, ‖archPhysicalSeriesTerm τ m x‖) := by
+  refine (summable_archDigammaAllTerm (τ / 2)).congr ?_
+  intro m
+  exact (integral_norm_archPhysicalSeriesTerm_Ioi τ m).symm
+
+/-- Certified Tonelli/Fubini gate for the physical digamma series. -/
+theorem tsum_integral_archPhysicalSeriesTerm_eq_integral_tsum (τ : ℝ) :
+    (∑' m : ℕ, ∫ x : ℝ in Ioi 0, archPhysicalSeriesTerm τ m x) =
+      ∫ x : ℝ in Ioi 0, ∑' m : ℕ, archPhysicalSeriesTerm τ m x := by
+  exact MeasureTheory.integral_tsum_of_summable_integral_norm
+    (fun m => integrableOn_archPhysicalSeriesTerm τ m)
+    (summable_integral_norm_archPhysicalSeriesTerm τ)
 
 end Zeta23.CCM
