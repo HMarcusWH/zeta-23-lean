@@ -126,22 +126,22 @@ theorem integral_archPhysicalSeriesTerm_Ioi (τ : ℝ) (m : ℕ) :
     dsimp [a]
     positivity
   have h := integral_exp_neg_mul_one_sub_cos_Ioi ha τ
-  have hscaled :
-      (∫ x : ℝ in Ioi 0,
-        2 * (Real.exp (-a * x) * (1 - Real.cos (τ * x)))) =
-        2 * (1 / a - a / (a ^ 2 + τ ^ 2)) := by
-    rw [integral_const_mul, h]
-  rw [← hscaled]
-  apply integral_congr_ae
-  filter_upwards with x
-  dsimp [archPhysicalSeriesTerm, a]
-  ring
-  all_goals
-    unfold archDigammaAllTerm
-    dsimp [a]
-    have hb : (m : ℝ) + 1 / 4 ≠ 0 := by positivity
-    field_simp [hb]
-    ring
+  calc
+    (∫ x : ℝ in Ioi 0, archPhysicalSeriesTerm τ m x) =
+        ∫ x : ℝ in Ioi 0,
+          2 * (Real.exp (-a * x) * (1 - Real.cos (τ * x))) := by
+      apply integral_congr_ae
+      filter_upwards with x
+      dsimp [archPhysicalSeriesTerm, a]
+      ring
+    _ = 2 * (1 / a - a / (a ^ 2 + τ ^ 2)) := by
+      rw [integral_const_mul, h]
+    _ = archDigammaAllTerm (τ / 2) m := by
+      unfold archDigammaAllTerm
+      dsimp [a]
+      have hb : (m : ℝ) + 1 / 4 ≠ 0 := by positivity
+      field_simp [hb]
+      ring
 
 /-- Norm integrals equal the same digamma terms because the physical summands are
 pointwise nonnegative. -/
