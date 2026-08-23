@@ -140,7 +140,11 @@ theorem integral_archPhysicalSeriesTerm_Ioi (τ : ℝ) (m : ℕ) :
       unfold archDigammaAllTerm
       dsimp [a]
       have hb : (m : ℝ) + 1 / 4 ≠ 0 := by positivity
-      field_simp [hb]
+      have hden1 :
+          (2 * ((m : ℝ) + 1 / 4)) ^ 2 + τ ^ 2 ≠ 0 := by positivity
+      have hden2 :
+          ((m : ℝ) + 1 / 4) ^ 2 + (τ / 2) ^ 2 ≠ 0 := by positivity
+      field_simp [hb, hden1, hden2]
       ring
 
 /-- Norm integrals equal the same digamma terms because the physical summands are
