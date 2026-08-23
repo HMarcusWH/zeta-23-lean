@@ -123,7 +123,7 @@ theorem archDigammaBase_add_tail_eq_all_tsum (t : ℝ) :
     archDigammaBaseTerm t + ∑' n : ℕ, archDigammaTailTerm t n =
       ∑' m : ℕ, archDigammaAllTerm t m := by
   have h := (summable_archDigammaAllTerm t).sum_add_tsum_nat_add 1
-  simpa using h.symm
+  simpa using h
 
 /-- Exact positive-abscissa series representation of the gamma density difference. -/
 theorem mu_sub_mu_zero_eq_archDigammaAllSeries (τ : ℝ) :
