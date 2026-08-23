@@ -57,8 +57,6 @@ private theorem dictionaryPoleRHS_eq_spatial_weights
   · rw [abs_of_nonneg hu, neg_div]
   · rw [abs_of_nonpos hu, neg_neg, add_comm, neg_div]
 
-/-- A volume integral can be restricted to a closed real interval once the
-integrand support is contained there. -/
 private theorem intervalIntegral_eq_integral_of_support_subset_Icc
     {a b : ℝ} (hab : a ≤ b) {f : ℝ → ℂ}
     (h : Function.support f ⊆ Icc a b) :
@@ -66,7 +64,6 @@ private theorem intervalIntegral_eq_integral_of_support_subset_Icc
   rw [intervalIntegral.integral_of_le hab, ← integral_Icc_eq_integral_Ioc,
     ← integral_indicator measurableSet_Icc, indicator_eq_self.2 h]
 
-/-- Primitive for `sin(a y) exp(b y)`. -/
 private def sinExpPrimitive (a b y : ℝ) : ℝ :=
   Real.exp (b * y) *
     (b * Real.sin (a * y) - a * Real.cos (a * y)) / (a ^ 2 + b ^ 2)
@@ -76,27 +73,38 @@ private theorem hasDerivAt_sinExpPrimitive
     HasDerivAt (sinExpPrimitive a b)
       (Real.sin (a * y) * Real.exp (b * y)) y := by
   have ha : HasDerivAt (fun x : ℝ => a * x) a y := by
-    simpa using (hasDerivAt_id y).const_mul a
+    convert (hasDerivAt_const y a).mul (hasDerivAt_id y) using 1 <;> ring
   have hb : HasDerivAt (fun x : ℝ => b * x) b y := by
-    simpa using (hasDerivAt_id y).const_mul b
+    convert (hasDerivAt_const y b).mul (hasDerivAt_id y) using 1 <;> ring
   have hsin : HasDerivAt (fun x : ℝ => Real.sin (a * x))
       (Real.cos (a * y) * a) y := by
-    simpa using (Real.hasDerivAt_sin (a * y)).comp y ha
+    simpa only [Function.comp_apply] using
+      (Real.hasDerivAt_sin (a * y)).comp y ha
   have hcos : HasDerivAt (fun x : ℝ => Real.cos (a * x))
       (-Real.sin (a * y) * a) y := by
-    simpa using (Real.hasDerivAt_cos (a * y)).comp y ha
+    simpa only [Function.comp_apply] using
+      (Real.hasDerivAt_cos (a * y)).comp y ha
   have hexp : HasDerivAt (fun x : ℝ => Real.exp (b * x))
       (Real.exp (b * y) * b) y := by
-    simpa using (Real.hasDerivAt_exp (b * y)).comp y hb
+    simpa only [Function.comp_apply] using
+      (Real.hasDerivAt_exp (b * y)).comp y hb
   have hinner : HasDerivAt
       (fun x : ℝ => b * Real.sin (a * x) - a * Real.cos (a * x))
       (b * (Real.cos (a * y) * a) - a * (-Real.sin (a * y) * a)) y :=
     (hsin.const_mul b).sub (hcos.const_mul a)
   have hprod := hexp.mul hinner
+  have hcalc :
+      (Real.exp (b * y) * b *
+          (b * Real.sin (a * y) - a * Real.cos (a * y)) +
+        Real.exp (b * y) *
+          (b * (Real.cos (a * y) * a) - a * (-Real.sin (a * y) * a))) /
+          (a ^ 2 + b ^ 2) =
+        Real.sin (a * y) * Real.exp (b * y) := by
+    field_simp [hden]
+    ring
   unfold sinExpPrimitive
   convert hprod.div_const (a ^ 2 + b ^ 2) using 1
-  field_simp [hden]
-  ring
+  exact hcalc
 
 private theorem intervalIntegral_sin_mul_exp
     {a b A B : ℝ} (hden : a ^ 2 + b ^ 2 ≠ 0) :
@@ -140,7 +148,13 @@ private theorem intervalIntegral_source_sin_exp_pos_half
   have h := intervalIntegral_sin_mul_exp
     (a := dictionaryFrequency n L) (b := (1 / 2 : ℝ))
     (A := 0) (B := L) hden
-  rw [h]
+  have h' :
+      (∫ y in (0 : ℝ)..L,
+        Real.sin (dictionaryFrequency n L * y) * Real.exp (y / 2)) =
+        sinExpPrimitive (dictionaryFrequency n L) (1 / 2) L -
+          sinExpPrimitive (dictionaryFrequency n L) (1 / 2) 0 := by
+    convert h using 1 <;> ring
+  rw [h']
   unfold sinExpPrimitive
   rw [sin_dictionaryFrequency_L_source hL n,
     cos_dictionaryFrequency_L_source hL n]
@@ -158,7 +172,13 @@ private theorem intervalIntegral_source_sin_exp_neg_half
   have h := intervalIntegral_sin_mul_exp
     (a := dictionaryFrequency n L) (b := (-1 / 2 : ℝ))
     (A := 0) (B := L) hden
-  rw [h]
+  have h' :
+      (∫ y in (0 : ℝ)..L,
+        Real.sin (dictionaryFrequency n L * y) * Real.exp (-y / 2)) =
+        sinExpPrimitive (dictionaryFrequency n L) (-1 / 2) L -
+          sinExpPrimitive (dictionaryFrequency n L) (-1 / 2) 0 := by
+    convert h using 1 <;> ring
+  rw [h']
   unfold sinExpPrimitive
   rw [sin_dictionaryFrequency_L_source hL n,
     cos_dictionaryFrequency_L_source hL n]
@@ -170,10 +190,7 @@ private theorem two_sub_exp_half_sub_exp_neg_half (L : ℝ) :
       -4 * Real.sinh (L / 4) ^ 2 := by
   have hcosh :
       Real.exp (L / 2) + Real.exp (-L / 2) = 2 * Real.cosh (L / 2) := by
-    change Real.exp (L / 2) + Real.exp (-L / 2) =
-      2 * ((Real.exp (L / 2) + Real.exp (-(L / 2))) / 2)
-    rw [show -(L / 2) = -L / 2 by ring]
-    ring
+    rw [← Real.two_cosh]
   have h1 := Real.cosh_two_mul (L / 4)
   have h2 := Real.cosh_sq_sub_sinh_sq (L / 4)
   rw [show 2 * (L / 4) = L / 2 by ring] at h1
@@ -212,6 +229,7 @@ theorem dictionaryPoleRHS_sourceTest
       (fun y : ℝ => dictionarySourceTest n L y * (Real.exp (|y| / 2) : ℂ)) :=
     (hk.mul (by fun_prop)).integrable_of_hasCompactSupport hkc.mul_right
   rw [← integral_add hA hB]
+  simp_rw [← mul_add]
   change (∫ y : ℝ, G y) = _
   have hGsupp : Function.support G ⊆ Icc (-L) L := by
     intro y hy
@@ -251,10 +269,9 @@ theorem dictionaryPoleRHS_sourceTest
             (Real.sin (dictionaryFrequency n L * y) *
               (Real.exp (-y / 2) + Real.exp (y / 2))) : ℝ) : ℂ) := by
       intro y hy
-      have hy0 : 0 ≤ y := by
-        simpa [Set.uIcc_of_le hL.le] using hy.1
-      have hyL : y ≤ L := by
-        simpa [Set.uIcc_of_le hL.le] using hy.2
+      rw [Set.uIcc_of_le hL.le] at hy
+      have hy0 : 0 ≤ y := hy.1
+      have hyL : y ≤ L := hy.2
       have habs : |y| ≤ L := by simpa [abs_of_nonneg hy0] using hyL
       rw [dictionarySourceTest_eq_sine_of_abs_le hL habs n]
       simp [G, abs_of_nonneg hy0, dictionaryFrequency]
@@ -296,15 +313,8 @@ theorem dictionaryPoleRHS_basis_of_ne
         fun y => dictionarySourceTest n L y - dictionarySourceTest m L y := by
     funext y
     exact dictionaryBasisTest_displacement_eq_sourceTest_sub hL hnm y
-  have hkBasis : Continuous (dictionaryBasisTest n m L) := by
-    unfold dictionaryBasisTest
-    fun_prop
   have hkN := continuous_dictionarySourceTest n L
   have hkM := continuous_dictionarySourceTest m L
-  have hkcBasis : HasCompactSupport (dictionaryBasisTest n m L) := by
-    refine HasCompactSupport.intro (K := Icc (-L) L) isCompact_Icc ?_
-    intro y hy
-    exact hy (dictionaryBasisTest_support_subset n m)
   have hkcN := dictionarySourceTest_hasCompactSupport hL n
   have hkcM := dictionarySourceTest_hasCompactSupport hL m
   have hlin_smul :
@@ -313,7 +323,19 @@ theorem dictionaryPoleRHS_basis_of_ne
         (((n - m : ℤ) : ℂ)) * dictionaryPoleRHS (dictionaryBasisTest n m L) := by
     unfold dictionaryPoleRHS
     simp_rw [Zeta23.paperFT_def]
-    rw [Zeta23.integral_const_mul_C, Zeta23.integral_const_mul_C]
+    have hp : (fun u : ℝ => (((n - m : ℤ) : ℂ)) * dictionaryBasisTest n m L u *
+        Complex.exp (I * (I / 2) * u)) =
+        fun u => (((n - m : ℤ) : ℂ)) *
+          (dictionaryBasisTest n m L u * Complex.exp (I * (I / 2) * u)) := by
+      funext u
+      ring
+    have hm : (fun u : ℝ => (((n - m : ℤ) : ℂ)) * dictionaryBasisTest n m L u *
+        Complex.exp (I * (-I / 2) * u)) =
+        fun u => (((n - m : ℤ) : ℂ)) *
+          (dictionaryBasisTest n m L u * Complex.exp (I * (-I / 2) * u)) := by
+      funext u
+      ring
+    rw [hp, hm, Zeta23.integral_const_mul_C, Zeta23.integral_const_mul_C]
     ring
   have hlin_sub :
       dictionaryPoleRHS
@@ -334,7 +356,21 @@ theorem dictionaryPoleRHS_basis_of_ne
     have hmM : Integrable
         (fun y : ℝ => dictionarySourceTest m L y * Complex.exp (I * (-I / 2) * y)) :=
       (hkM.mul (by fun_prop)).integrable_of_hasCompactSupport hkcM.mul_right
-    rw [integral_sub hpN hpM, integral_sub hmN hmM]
+    have hp : (fun u : ℝ =>
+        (dictionarySourceTest n L u - dictionarySourceTest m L u) *
+          Complex.exp (I * (I / 2) * u)) =
+        fun u => dictionarySourceTest n L u * Complex.exp (I * (I / 2) * u) -
+          dictionarySourceTest m L u * Complex.exp (I * (I / 2) * u) := by
+      funext u
+      ring
+    have hm : (fun u : ℝ =>
+        (dictionarySourceTest n L u - dictionarySourceTest m L u) *
+          Complex.exp (I * (-I / 2) * u)) =
+        fun u => dictionarySourceTest n L u * Complex.exp (I * (-I / 2) * u) -
+          dictionarySourceTest m L u * Complex.exp (I * (-I / 2) * u) := by
+      funext u
+      ring
+    rw [hp, hm, integral_sub hpN hpM, integral_sub hmN hmM]
     ring
   have hdisp :
       (((n - m : ℤ) : ℂ)) * dictionaryPoleRHS (dictionaryBasisTest n m L) =
