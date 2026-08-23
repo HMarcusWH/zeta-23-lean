@@ -190,12 +190,11 @@ private theorem intervalIntegral_source_sin_exp_neg_half
 private theorem two_sub_exp_half_sub_exp_neg_half (L : ℝ) :
     2 - Real.exp (L / 2) - Real.exp (-L / 2) =
       -4 * Real.sinh (L / 4) ^ 2 := by
-  have hcomplex := Complex.two_cosh (((L / 2 : ℝ) : ℂ))
+  have hcomplex := Complex.two_cosh ((L : ℂ) / 2)
   have hcoshC :
       (((2 * Real.cosh (L / 2) : ℝ)) : ℂ) =
         (((Real.exp (L / 2) + Real.exp (-L / 2) : ℝ)) : ℂ) := by
     push_cast
-    rw [Complex.ofReal_cosh, Complex.ofReal_exp, Complex.ofReal_exp]
     convert hcomplex using 1 <;> ring
   have hcosh :
       2 * Real.cosh (L / 2) =
@@ -292,6 +291,7 @@ theorem dictionaryPoleRHS_sourceTest
     rw [intervalIntegral.integral_congr hfun]
     rw [intervalIntegral.integral_ofReal]
     norm_cast
+    rw [intervalIntegral.integral_const_mul]
     have hsinNeg : IntervalIntegrable
         (fun y : ℝ => Real.sin (dictionaryFrequency n L * y) * Real.exp (-y / 2))
         volume 0 L := by
