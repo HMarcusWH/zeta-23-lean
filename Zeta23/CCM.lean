@@ -27,4 +27,5 @@ import Zeta23.CCM.DictionaryArchBridge
 import Zeta23.CCM.DictionaryArchLaplace
 import Zeta23.CCM.DictionaryArchCompletion
 import Zeta23.CCM.DictionaryArchFourier
+import Zeta23.CCM.DictionaryArchSourceFourier
 import Zeta23.CCM.ClaimBindings
