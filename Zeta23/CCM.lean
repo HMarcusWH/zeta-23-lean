@@ -33,4 +33,5 @@ import Zeta23.CCM.DictionaryArchSourceDecay
 import Zeta23.CCM.DictionaryArchWeight
 import Zeta23.CCM.DictionaryArchMuGrowth
 import Zeta23.CCM.DictionaryArchSourceMuIntegrability
+import Zeta23.CCM.DictionaryArchSourceSeries
 import Zeta23.CCM.ClaimBindings
