@@ -115,12 +115,12 @@ theorem integral_archExpWeight_mul
       (1 : ℂ) / ((a : ℂ) - I * (τ : ℂ)) -
           (1 : ℂ) / (-(a : ℂ) - I * (τ : ℂ)) =
         (((2 * a) / (a ^ 2 + τ ^ 2) : ℝ) : ℂ) := by
-    field_simp [h1, h2, hdenC]
     push_cast
+    field_simp [h1, h2, hdenC]
     ring_nf
     rw [Complex.I_sq]
     ring
-  exact halg
+  simpa [sub_eq_add_neg] using halg
 
 /-- Positive abscissa attached to the `m`-th digamma summand. -/
 def archSeriesAbscissa (m : ℕ) : ℝ :=
