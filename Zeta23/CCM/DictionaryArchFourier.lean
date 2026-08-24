@@ -201,9 +201,10 @@ private theorem hasDerivAt_sinCosPrimitive
         Real.cos ((a - r) * x) / (a - r)))
     (Real.sin (a * y) * Real.cos (r * y)) y
   convert hscaled using 1
-  field_simp [hplus, hminus]
-  rw [Real.sin_add, Real.sin_sub]
-  ring
+  · rfl
+  · field_simp [hplus, hminus]
+    rw [Real.sin_add, Real.sin_sub]
+    ring
 
 private theorem dictionaryFrequency_mul_L_fourier
     {L : ℝ} (hL : 0 < L) (n : ℤ) :
@@ -253,12 +254,15 @@ private theorem intervalIntegral_source_sin_cos
       cos_dictionaryFrequency_L_fourier hL n,
       sin_dictionaryFrequency_L_fourier hL n]
     ring
+  have hden : a ^ 2 - r ^ 2 ≠ 0 := by
+    rw [sq_sub_sq]
+    exact mul_ne_zero (by simpa [a] using hminus) (by simpa [a] using hplus)
   rw [hprim]
   unfold sinCosPrimitive
   rw [hcosPlus, hcosMinus]
   norm_num
-  dsimp [a]
-  field_simp [hplus, hminus]
+  change _ = a * (1 - Real.cos (r * L)) / (a ^ 2 - r ^ 2)
+  field_simp [hplus, hminus, hden]
   ring
 
 private theorem paperFT_dictionarySourceTest_tail_formula
@@ -280,9 +284,8 @@ private theorem paperFT_dictionarySourceTest_tail_formula
     simp [G, hzero]
   rw [← intervalIntegral_eq_integral_of_support_subset_Icc_fourier
     (by linarith : -L ≤ L) hGsupp]
-  have hGcont : Continuous G := by
-    dsimp [G]
-    fun_prop
+  have hGcont : Continuous G :=
+    (continuous_dictionarySourceTest n L).mul (by fun_prop)
   have hsplit := intervalIntegral.integral_add_adjacent_intervals
     (μ := volume)
     (hGcont.intervalIntegrable (-L) 0) (hGcont.intervalIntegrable 0 L)
@@ -292,9 +295,10 @@ private theorem paperFT_dictionarySourceTest_tail_formula
     have h := intervalIntegral.integral_comp_neg (a := (0 : ℝ)) (b := L) G
     simpa using h.symm
   rw [hleft]
-  rw [← intervalIntegral.integral_add
-    ((hGcont.comp continuous_neg).intervalIntegrable 0 L)
-    (hGcont.intervalIntegrable 0 L)]
+  have hnegInt : IntervalIntegrable (fun y : ℝ => G (-y)) volume 0 L :=
+    (hGcont.comp continuous_neg).intervalIntegrable
+  have hposInt : IntervalIntegrable G volume 0 L := hGcont.intervalIntegrable 0 L
+  rw [← intervalIntegral.integral_add hnegInt hposInt]
   have hfun : ∀ y ∈ Set.uIcc (0 : ℝ) L,
       G (-y) + G y =
         (((-1 / Real.pi) *
