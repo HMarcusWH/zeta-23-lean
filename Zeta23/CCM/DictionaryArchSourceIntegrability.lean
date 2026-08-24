@@ -108,7 +108,7 @@ theorem integrable_fourier_dictionarySourceTest
   let B : ℝ := max (A * R ^ 2) T
   have hB : 0 ≤ B := by
     dsimp [B]
-    exact max_nonneg (mul_nonneg hA (sq_nonneg R)) hT
+    exact (mul_nonneg hA (sq_nonneg R)).trans (le_max_left _ _)
   have hsq : ∀ r : ℝ,
       ‖Zeta23.paperFT (dictionarySourceTest n L) (r : ℂ)‖ * r ^ 2 ≤ B := by
     intro r
@@ -136,8 +136,8 @@ theorem integrable_fourier_dictionarySourceTest
         rw [hre] at h2a
         nlinarith [abs_nonneg a]
       have hs : (2 * |a|) ^ 2 < r ^ 2 := by
-        rw [sq_lt_sq]
-        simpa [abs_of_nonneg (mul_nonneg (by norm_num) (abs_nonneg a))] using h2a
+        rw [sq_lt_sq, abs_of_nonneg (mul_nonneg (by norm_num) (abs_nonneg a))]
+        exact h2a
       have hsquare : 4 * a ^ 2 < r ^ 2 := by
         have haabs := sq_abs a
         nlinarith
@@ -156,7 +156,6 @@ theorem integrable_fourier_dictionarySourceTest
         rw [hform]
         simp only [Complex.norm_real, Real.norm_eq_abs, abs_div, abs_mul]
         rw [abs_of_nonneg hc0, abs_of_pos Real.pi_pos, abs_of_pos hdenpos]
-        rfl
       have hnum : |a| * (1 - Real.cos (r * L)) ≤ 2 * |a| := by
         nlinarith [abs_nonneg a]
       have hden : 0 < Real.pi * (r ^ 2 - a ^ 2) :=
@@ -185,8 +184,8 @@ theorem integrable_fourier_dictionarySourceTest
               field_simp [Real.pi_ne_zero]
             rw [hcancel]
             have hm := mul_le_mul_of_nonneg_left hhalf
-              (mul_nonneg (by norm_num) (abs_nonneg a))
-            nlinarith
+              (mul_nonneg (by norm_num : (0 : ℝ) ≤ 4) (abs_nonneg a))
+            convert hm using 1 <;> ring
           _ = T := by rfl
       exact htail.trans (le_max_right _ _)
   have hpaper : Integrable
