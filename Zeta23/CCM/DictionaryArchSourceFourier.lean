@@ -142,8 +142,8 @@ private theorem intervalIntegral_source_sin_cos_sourceFourier
   change sourceSinCosPrimitive a r L - sourceSinCosPrimitive a r 0 =
     a * (1 - Real.cos (r * L)) / (a ^ 2 - r ^ 2)
   unfold sourceSinCosPrimitive
-  rw [hcosPlus, hcosMinus, Real.cos_zero]
-  simp only [div_eq_mul_inv, hpInv, hmInv]
+  rw [hcosPlus, hcosMinus]
+  simp only [mul_zero, Real.cos_zero, div_eq_mul_inv, hpInv, hmInv]
   field_simp [hden]
   ring
 
