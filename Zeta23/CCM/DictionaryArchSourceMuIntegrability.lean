@@ -130,6 +130,7 @@ theorem integrable_norm_paperFT_dictionarySourceTest_mul_sqrt
         ring
       _ ≤ C * (2 * (1 + |τ|) ^ (-(3 / 2 : ℝ))) := hc
       _ = (2 * C) * (1 + |τ|) ^ (-(3 / 2 : ℝ)) := by ring
-  simpa [Real.norm_eq_abs] using hfirst.trans hsecond
+  simpa [Real.norm_eq_abs, abs_of_nonneg (Real.sqrt_nonneg _)] using
+    hfirst.trans hsecond
 
 end Zeta23.CCM
