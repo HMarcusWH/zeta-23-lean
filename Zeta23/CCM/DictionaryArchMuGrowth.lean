@@ -41,8 +41,8 @@ theorem summable_archHalfWeight : Summable archHalfWeight := by
     have ha := archSeriesAbscissa_pos n
     positivity
   dsimp [archHalfWeight]
-  rw [abs_inv, abs_of_pos hposa]
-  exact inv_le_inv₀ hposn.le hr
+  rw [abs_inv, abs_of_pos hposa, ← one_div, ← one_div]
+  exact one_div_le_one_div_of_le hposn hr
 
 /-- Algebraic positive form of one digamma difference summand. -/
 theorem archDigammaAllTerm_eq_sq_div
@@ -102,11 +102,13 @@ theorem archDigammaAllTerm_le_sqrt_weight
         _ = ((Real.sqrt |t|) ^ 2) ^ 2 := by rw [hsqtt]
         _ = (Real.sqrt |t|) ^ 4 := by ring
     have ha3 : a * Real.sqrt a = (Real.sqrt a) ^ 3 := by
-      rw [← hsqta]
-      ring
+      calc
+        a * Real.sqrt a = (Real.sqrt a) ^ 2 * Real.sqrt a := by rw [hsqta]
+        _ = (Real.sqrt a) ^ 3 := by ring
     have ha6 : a * a ^ 2 = (Real.sqrt a) ^ 6 := by
-      rw [← hsqta]
-      ring
+      calc
+        a * a ^ 2 = (Real.sqrt a) ^ 2 * ((Real.sqrt a) ^ 2) ^ 2 := by rw [hsqta]
+        _ = (Real.sqrt a) ^ 6 := by ring
     have hfac : 0 ≤ Real.sqrt |t| * (Real.sqrt a) ^ 3 :=
       mul_nonneg hsqrt (pow_nonneg hasqrt.le 3)
     have hmul := mul_le_mul_of_nonneg_left hcubic hfac
