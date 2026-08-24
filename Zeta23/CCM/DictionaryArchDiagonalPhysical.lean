@@ -179,6 +179,18 @@ theorem dictionaryArchRHS_basis_diag_eq_physical
     apply intervalIntegral.integral_congr
     intro x _hx
     ring
+  have hreferenceCast :
+      (∫ x : ℝ in Ioi 0,
+        (((1 - Real.exp (-x / 2)) * archDensity x : ℝ) : ℂ)) =
+        (((∫ x : ℝ in Ioi 0,
+          (1 - Real.exp (-x / 2)) * archDensity x) : ℝ) : ℂ) := by
+    exact integral_ofReal
+  have htailCast :
+      (∫ x : ℝ in Ioi L,
+        ((Real.exp (-x / 2) * archDensity x : ℝ) : ℂ)) =
+        (((∫ x : ℝ in Ioi L,
+          Real.exp (-x / 2) * archDensity x) : ℝ) : ℂ) := by
+    exact integral_ofReal
   have hconstant :
       ((2 * Real.pi * Zeta23.mu 0 : ℝ) : ℂ) +
           (2 : ℂ) * (∫ x : ℝ in Ioi 0,
@@ -186,7 +198,7 @@ theorem dictionaryArchRHS_basis_diag_eq_physical
           (2 : ℂ) * (∫ x : ℝ in Ioi L,
             ((Real.exp (-x / 2) * archDensity x : ℝ) : ℂ)) =
         -((2 * wCorrection L : ℝ) : ℂ) := by
-    rw [integral_ofReal, integral_ofReal]
+    rw [hreferenceCast, htailCast]
     exact_mod_cast mu_zero_reference_tail_eq_neg_two_wCorrection hL
   change dictionaryArchRHS k = dictionaryArchPhysicalRHS k L
   calc
@@ -194,13 +206,20 @@ theorem dictionaryArchRHS_basis_diag_eq_physical
         (((2 * Real.pi * Zeta23.mu 0 : ℝ) : ℂ) * k 0) +
           (2 : ℂ) * ∫ x : ℝ in Ioi 0,
             (k 0 - k x) * (archDensity x : ℂ) := hgeneric
+    _ = (((2 * Real.pi * Zeta23.mu 0 : ℝ) : ℂ) * k 0) +
+          (2 : ℂ) *
+            ((∫ x : ℝ in Ioi 0,
+                (((1 - Real.exp (-x / 2)) * archDensity x : ℝ) : ℂ)) +
+              ∫ x : ℝ in Ioi 0,
+                ((Real.exp (-x / 2) : ℂ) - k x) *
+                  (archDensity x : ℂ)) := by rw [honeSplit]
     _ = ((2 * Real.pi * Zeta23.mu 0 : ℝ) : ℂ) +
           (2 : ℂ) *
             ((∫ x : ℝ in Ioi 0,
                 (((1 - Real.exp (-x / 2)) * archDensity x : ℝ) : ℂ)) +
               ∫ x : ℝ in Ioi 0,
                 ((Real.exp (-x / 2) : ℂ) - k x) *
-                  (archDensity x : ℂ)) := by rw [hk0, mul_one, honeSplit]
+                  (archDensity x : ℂ)) := by rw [hk0, mul_one]
     _ = ((2 * Real.pi * Zeta23.mu 0 : ℝ) : ℂ) +
           (2 : ℂ) *
             ((∫ x : ℝ in Ioi 0,
@@ -224,6 +243,7 @@ theorem dictionaryArchRHS_basis_diag_eq_physical
       rw [hfiniteNeg, hk0]
       ring
     _ = dictionaryArchPhysicalRHS k L := by
-      simp [dictionaryArchPhysicalRHS, hk0]
+      rw [dictionaryArchPhysicalRHS, hk0]
+      ring
 
 end Zeta23.CCM
