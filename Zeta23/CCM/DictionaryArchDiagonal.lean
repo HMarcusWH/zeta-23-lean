@@ -512,4 +512,340 @@ theorem mu_zero_reference_tail_eq_neg_two_wCorrection
   rw [hlogFour]
   ring
 
+/-! ## Square-root weighted diagonal Fourier integrability -/
+
+private theorem continuous_paperFT_real_of_integrable
+    {k : ℝ → ℂ} (hk : Integrable k) :
+    Continuous (fun r : ℝ => Zeta23.paperFT k (r : ℂ)) := by
+  have hF : Continuous (𝓕 k) :=
+    VectorFourier.fourierIntegral_continuous Real.continuous_fourierChar
+      (innerSL ℝ).continuous₂ hk
+  have heq :
+      (fun r : ℝ => Zeta23.paperFT k (r : ℂ)) =
+        fun r : ℝ => 𝓕 k (-r / (2 * Real.pi)) := by
+    funext r
+    exact Zeta23.paperFT_ofReal_eq_fourier k r
+  rw [heq]
+  exact hF.comp (by fun_prop)
+
+private theorem sqrt_div_one_add_sq_le_two_mul_rpow_diag
+    {x : ℝ} (hx : 0 ≤ x) :
+    Real.sqrt x / (1 + x ^ 2) ≤
+      2 * (1 + x) ^ (-(3 / 2 : ℝ)) := by
+  have h1 : 0 < 1 + x := by linarith
+  have hs1 : 0 < Real.sqrt (1 + x) := Real.sqrt_pos.2 h1
+  have hsle : Real.sqrt x ≤ Real.sqrt (1 + x) :=
+    Real.sqrt_le_sqrt (by linarith)
+  have hsq1 : (Real.sqrt (1 + x)) ^ 2 = 1 + x := by
+    simpa using Real.sq_sqrt h1.le
+  have hmul :
+      Real.sqrt x * ((1 + x) * Real.sqrt (1 + x)) ≤
+        (1 + x) ^ 2 := by
+    calc
+      Real.sqrt x * ((1 + x) * Real.sqrt (1 + x)) ≤
+          Real.sqrt (1 + x) * ((1 + x) * Real.sqrt (1 + x)) := by
+        exact mul_le_mul_of_nonneg_right hsle
+          (mul_nonneg h1.le hs1.le)
+      _ = (1 + x) ^ 2 := by
+        calc
+          Real.sqrt (1 + x) * ((1 + x) * Real.sqrt (1 + x)) =
+              (1 + x) * (Real.sqrt (1 + x)) ^ 2 := by ring
+          _ = (1 + x) * (1 + x) := by rw [hsq1]
+          _ = (1 + x) ^ 2 := by ring
+  have hpoly : (1 + x) ^ 2 ≤ 2 * (1 + x ^ 2) := by
+    nlinarith [sq_nonneg (x - 1)]
+  have hcross := hmul.trans hpoly
+  have hden1 : 0 < 1 + x ^ 2 := by positivity
+  have hden2 : 0 < (1 + x) * Real.sqrt (1 + x) :=
+    mul_pos h1 hs1
+  have hfrac :
+      Real.sqrt x / (1 + x ^ 2) ≤
+        2 / ((1 + x) * Real.sqrt (1 + x)) := by
+    rw [div_le_div_iff₀ hden1 hden2]
+    exact hcross
+  have hp :
+      (1 + x) ^ (3 / 2 : ℝ) =
+        (1 + x) * Real.sqrt (1 + x) := by
+    rw [show (3 / 2 : ℝ) = 1 + 1 / 2 by norm_num,
+      Real.rpow_add h1]
+    simp [Real.sqrt_eq_rpow]
+  rw [Real.rpow_neg h1.le, hp]
+  simpa [div_eq_mul_inv] using hfrac
+
+private theorem exists_paperFT_dictionaryTent_inv_quad_bound
+    {L : ℝ} (hL : 0 < L) :
+    ∃ C : ℝ, 0 ≤ C ∧ ∀ τ : ℝ,
+      ‖Zeta23.paperFT (dictionaryTent L) (τ : ℂ)‖ ≤
+        C * (1 + τ ^ 2)⁻¹ := by
+  have hki : Integrable (dictionaryTent L) := integrable_dictionaryTent hL
+  have hsupp : ∀ u : ℝ, dictionaryTent L u ≠ 0 → |u| ≤ L := by
+    intro u hu
+    exact abs_le.mpr (dictionaryTent_support_subset_Icc hL hu)
+  let A : ℝ := ∫ u : ℝ, ‖dictionaryTent L u‖
+  let B : ℝ := 2 * (1 + Real.exp (L / 2)) / L
+  let C : ℝ := 2 * (A + B)
+  have hA : 0 ≤ A := integral_nonneg fun _ => norm_nonneg _
+  have hB : 0 ≤ B := by dsimp [B]; positivity
+  have hC : 0 ≤ C := by dsimp [C]; nlinarith
+  refine ⟨C, hC, fun τ => ?_⟩
+  have hunif : ‖Zeta23.paperFT (dictionaryTent L) (τ : ℂ)‖ ≤ A := by
+    have h := Zeta23.norm_paperFT_le hki hsupp (τ : ℂ)
+    simpa [A] using h
+  have hsq :
+      ‖Zeta23.paperFT (dictionaryTent L) (τ : ℂ)‖ * τ ^ 2 ≤ B := by
+    have h := norm_paperFT_dictionaryTent_mul_sq_le hL (τ : ℂ) (by simp)
+    simpa [B, Real.norm_eq_abs, sq_abs] using h
+  have hτsq : 0 ≤ τ ^ 2 := sq_nonneg τ
+  have hden : 0 < 1 + τ ^ 2 := by positivity
+  rw [← div_eq_mul_inv, le_div_iff₀ hden]
+  by_cases hsmall : τ ^ 2 ≤ 1
+  · dsimp [C]
+    nlinarith
+  · have hlarge : 1 < τ ^ 2 := lt_of_not_ge hsmall
+    have hnorm : 0 ≤ ‖Zeta23.paperFT (dictionaryTent L) (τ : ℂ)‖ :=
+      norm_nonneg _
+    dsimp [C]
+    nlinarith
+
+/-- The canonical tent transform is integrable with the exact square-root
+weight used by the proved `mu - mu 0` growth estimate. -/
+theorem integrable_norm_paperFT_dictionaryTent_mul_sqrt
+    {L : ℝ} (hL : 0 < L) :
+    Integrable (fun τ : ℝ =>
+      ‖Zeta23.paperFT (dictionaryTent L) (τ : ℂ)‖ *
+        Real.sqrt |τ / 2|) := by
+  obtain ⟨C, hC, hdecay⟩ :=
+    exists_paperFT_dictionaryTent_inv_quad_bound hL
+  have hbase : Integrable
+      (fun τ : ℝ => (1 + ‖τ‖) ^ (-(3 / 2 : ℝ))) := by
+    apply integrable_one_add_norm
+    norm_num
+  have hmajorInt : Integrable
+      (fun τ : ℝ => (2 * C) * (1 + ‖τ‖) ^ (-(3 / 2 : ℝ))) :=
+    hbase.const_mul (2 * C)
+  have hcont : Continuous (fun τ : ℝ =>
+      ‖Zeta23.paperFT (dictionaryTent L) (τ : ℂ)‖ *
+        Real.sqrt |τ / 2|) := by
+    exact (continuous_paperFT_real_of_integrable
+      (integrable_dictionaryTent hL)).norm.mul (by fun_prop)
+  refine hmajorInt.mono' hcont.aestronglyMeasurable ?_
+  filter_upwards with τ
+  have habs : |τ / 2| ≤ |τ| := by
+    rw [abs_div]
+    norm_num
+  have hsqrt : Real.sqrt |τ / 2| ≤ Real.sqrt |τ| :=
+    Real.sqrt_le_sqrt habs
+  have hright0 : 0 ≤ C * (1 + τ ^ 2)⁻¹ :=
+    mul_nonneg hC (inv_nonneg.2 (by positivity))
+  have hfirst :
+      ‖Zeta23.paperFT (dictionaryTent L) (τ : ℂ)‖ *
+          Real.sqrt |τ / 2| ≤
+        (C * (1 + τ ^ 2)⁻¹) * Real.sqrt |τ| := by
+    exact mul_le_mul (hdecay τ) hsqrt (Real.sqrt_nonneg _) hright0
+  have hkernel :=
+    sqrt_div_one_add_sq_le_two_mul_rpow_diag
+      (x := |τ|) (abs_nonneg τ)
+  have hsecond :
+      (C * (1 + τ ^ 2)⁻¹) * Real.sqrt |τ| ≤
+        (2 * C) * (1 + |τ|) ^ (-(3 / 2 : ℝ)) := by
+    have hsquare : |τ| ^ 2 = τ ^ 2 := sq_abs τ
+    have hc := mul_le_mul_of_nonneg_left hkernel hC
+    rw [hsquare] at hc
+    calc
+      (C * (1 + τ ^ 2)⁻¹) * Real.sqrt |τ| =
+          C * (Real.sqrt |τ| / (1 + τ ^ 2)) := by
+        rw [div_eq_mul_inv]
+        ring
+      _ ≤ C * (2 * (1 + |τ|) ^ (-(3 / 2 : ℝ))) := hc
+      _ = (2 * C) * (1 + |τ|) ^ (-(3 / 2 : ℝ)) := by ring
+  simpa [Real.norm_eq_abs, abs_of_nonneg (Real.sqrt_nonneg _)] using
+    hfirst.trans hsecond
+
+private theorem sqrt_add_le_add_sqrt
+    {x y : ℝ} (hx : 0 ≤ x) (hy : 0 ≤ y) :
+    Real.sqrt (x + y) ≤ Real.sqrt x + Real.sqrt y := by
+  rw [Real.sqrt_le_iff]
+  constructor
+  · positivity
+  · nlinarith [Real.sq_sqrt hx, Real.sq_sqrt hy,
+      mul_nonneg (Real.sqrt_nonneg x) (Real.sqrt_nonneg y)]
+
+private theorem sqrt_abs_sub_div_two_le
+    (s a : ℝ) :
+    Real.sqrt |(s - a) / 2| ≤
+      Real.sqrt |s / 2| + Real.sqrt |a / 2| := by
+  have habs : |(s - a) / 2| ≤ |s / 2| + |a / 2| := by
+    calc
+      |(s - a) / 2| = |s - a| / 2 := by rw [abs_div]; norm_num
+      _ ≤ (|s| + |a|) / 2 := by
+        exact div_le_div_of_nonneg_right (abs_sub s a) (by norm_num)
+      _ = |s / 2| + |a / 2| := by
+        rw [abs_div, abs_div]
+        norm_num
+        ring
+  exact (Real.sqrt_le_sqrt habs).trans
+    (sqrt_add_le_add_sqrt (abs_nonneg _) (abs_nonneg _))
+
+private theorem integrable_norm_paperFT_dictionaryTent_add_mul_sqrt
+    {L : ℝ} (hL : 0 < L) (a : ℝ) :
+    Integrable (fun τ : ℝ =>
+      ‖Zeta23.paperFT (dictionaryTent L) ((τ : ℂ) + (a : ℂ))‖ *
+        Real.sqrt |τ / 2|) := by
+  have hw := integrable_norm_paperFT_dictionaryTent_mul_sqrt hL
+  have ht := (integrable_paperFT_dictionaryTent hL).norm
+  have hmajor : Integrable (fun s : ℝ =>
+      ‖Zeta23.paperFT (dictionaryTent L) (s : ℂ)‖ * Real.sqrt |s / 2| +
+        ‖Zeta23.paperFT (dictionaryTent L) (s : ℂ)‖ * Real.sqrt |a / 2|) :=
+    hw.add (ht.mul_const (Real.sqrt |a / 2|))
+  have hcont : Continuous (fun s : ℝ =>
+      ‖Zeta23.paperFT (dictionaryTent L) (s : ℂ)‖ *
+        Real.sqrt |(s - a) / 2|) := by
+    exact (continuous_paperFT_real_of_integrable
+      (integrable_dictionaryTent hL)).norm.mul (by fun_prop)
+  have hg : Integrable (fun s : ℝ =>
+      ‖Zeta23.paperFT (dictionaryTent L) (s : ℂ)‖ *
+        Real.sqrt |(s - a) / 2|) := by
+    refine hmajor.mono_nonneg hcont.aestronglyMeasurable
+      (Filter.Eventually.of_forall fun s =>
+        mul_nonneg (norm_nonneg _) (Real.sqrt_nonneg _)) ?_
+    filter_upwards with s
+    calc
+      ‖Zeta23.paperFT (dictionaryTent L) (s : ℂ)‖ *
+          Real.sqrt |(s - a) / 2| ≤
+        ‖Zeta23.paperFT (dictionaryTent L) (s : ℂ)‖ *
+          (Real.sqrt |s / 2| + Real.sqrt |a / 2|) :=
+        mul_le_mul_of_nonneg_left (sqrt_abs_sub_div_two_le s a)
+          (norm_nonneg _)
+      _ = ‖Zeta23.paperFT (dictionaryTent L) (s : ℂ)‖ *
+            Real.sqrt |s / 2| +
+          ‖Zeta23.paperFT (dictionaryTent L) (s : ℂ)‖ *
+            Real.sqrt |a / 2| := by ring
+  have htranslated := hg.comp_add_right a
+  simpa only [Complex.ofReal_add, add_sub_cancel_right] using htranslated
+
+/-- The diagonal basis transform is integrable after multiplication by the
+square-root weight.  This is the analytic gate missing from the source-only
+development. -/
+theorem integrable_norm_paperFT_dictionaryBasisTest_diag_mul_sqrt
+    {L : ℝ} (hL : 0 < L) (n : ℤ) :
+    Integrable (fun τ : ℝ =>
+      ‖Zeta23.paperFT (dictionaryBasisTest n n L) (τ : ℂ)‖ *
+        Real.sqrt |τ / 2|) := by
+  let a : ℝ := dictionaryFrequency n L
+  have hp := integrable_norm_paperFT_dictionaryTent_add_mul_sqrt hL a
+  have hm : Integrable (fun τ : ℝ =>
+      ‖Zeta23.paperFT (dictionaryTent L) ((τ : ℂ) - (a : ℂ))‖ *
+        Real.sqrt |τ / 2|) := by
+    simpa only [sub_eq_add_neg, Complex.ofReal_neg] using
+      integrable_norm_paperFT_dictionaryTent_add_mul_sqrt hL (-a)
+  have hmajor : Integrable (fun τ : ℝ =>
+      (1 / 2 : ℝ) *
+        (‖Zeta23.paperFT (dictionaryTent L) ((τ : ℂ) + (a : ℂ))‖ *
+            Real.sqrt |τ / 2| +
+          ‖Zeta23.paperFT (dictionaryTent L) ((τ : ℂ) - (a : ℂ))‖ *
+            Real.sqrt |τ / 2|)) :=
+    (hp.add hm).const_mul (1 / 2 : ℝ)
+  have hki : Integrable (dictionaryBasisTest n n L) := by
+    change Integrable (fun x : ℝ => (1 / 2 : ℂ) * kernel n n L x)
+    exact (kernel_integrable hL n n).const_mul (1 / 2 : ℂ)
+  have hcont : Continuous (fun τ : ℝ =>
+      ‖Zeta23.paperFT (dictionaryBasisTest n n L) (τ : ℂ)‖ *
+        Real.sqrt |τ / 2|) := by
+    exact (continuous_paperFT_real_of_integrable hki).norm.mul (by fun_prop)
+  refine hmajor.mono_nonneg hcont.aestronglyMeasurable
+    (Filter.Eventually.of_forall fun τ =>
+      mul_nonneg (norm_nonneg _) (Real.sqrt_nonneg _)) ?_
+  filter_upwards with τ
+  rw [paperFT_dictionaryBasisTest_diag hL n (τ : ℂ)]
+  dsimp [a]
+  have htri := norm_add_le
+    (Zeta23.paperFT (dictionaryTent L)
+      ((τ : ℂ) + (dictionaryFrequency n L : ℂ)))
+    (Zeta23.paperFT (dictionaryTent L)
+      ((τ : ℂ) - (dictionaryFrequency n L : ℂ)))
+  rw [norm_div]
+  norm_num
+  have hs := mul_le_mul_of_nonneg_right htri (Real.sqrt_nonneg |τ / 2|)
+  calc
+    ‖Zeta23.paperFT (dictionaryTent L)
+          ((τ : ℂ) + (dictionaryFrequency n L : ℂ)) +
+        Zeta23.paperFT (dictionaryTent L)
+          ((τ : ℂ) - (dictionaryFrequency n L : ℂ))‖ /
+          2 * Real.sqrt |τ / 2| =
+        (1 / 2 : ℝ) *
+          (‖Zeta23.paperFT (dictionaryTent L)
+              ((τ : ℂ) + (dictionaryFrequency n L : ℂ)) +
+            Zeta23.paperFT (dictionaryTent L)
+              ((τ : ℂ) - (dictionaryFrequency n L : ℂ))‖ *
+            Real.sqrt |τ / 2|) := by ring
+    _ ≤ (1 / 2 : ℝ) *
+          ((‖Zeta23.paperFT (dictionaryTent L)
+              ((τ : ℂ) + (dictionaryFrequency n L : ℂ))‖ +
+            ‖Zeta23.paperFT (dictionaryTent L)
+              ((τ : ℂ) - (dictionaryFrequency n L : ℂ))‖) *
+            Real.sqrt |τ / 2|) :=
+      mul_le_mul_of_nonneg_left hs (by norm_num)
+    _ = (1 / 2 : ℝ) *
+        (‖Zeta23.paperFT (dictionaryTent L)
+            ((τ : ℂ) + (dictionaryFrequency n L : ℂ))‖ *
+            Real.sqrt |τ / 2| +
+          ‖Zeta23.paperFT (dictionaryTent L)
+            ((τ : ℂ) - (dictionaryFrequency n L : ℂ))‖ *
+            Real.sqrt |τ / 2|) := by ring
+
+/-- Absolute integrability of the diagonal transform against `mu - mu 0`. -/
+theorem integrable_paperFT_dictionaryBasisTest_diag_mul_mu_sub_mu_zero
+    {L : ℝ} (hL : 0 < L) (n : ℤ) :
+    Integrable (fun τ : ℝ =>
+      Zeta23.paperFT (dictionaryBasisTest n n L) (τ : ℂ) *
+        ((Zeta23.mu τ - Zeta23.mu 0 : ℝ) : ℂ)) := by
+  let Cmu : ℝ :=
+    (1 / (2 * Real.pi)) * ∑' m : ℕ, archHalfWeight m
+  have hCmu : 0 ≤ Cmu := by
+    dsimp [Cmu]
+    exact mul_nonneg (by positivity)
+      (tsum_nonneg fun m => by
+        dsimp [archHalfWeight]
+        exact inv_nonneg.mpr
+          (Real.rpow_nonneg (archSeriesAbscissa_pos m).le _))
+  have hW := integrable_norm_paperFT_dictionaryBasisTest_diag_mul_sqrt hL n
+  have hmajor : Integrable (fun τ : ℝ =>
+      Cmu *
+        (‖Zeta23.paperFT (dictionaryBasisTest n n L) (τ : ℂ)‖ *
+          Real.sqrt |τ / 2|)) :=
+    hW.const_mul Cmu
+  have hki : Integrable (dictionaryBasisTest n n L) := by
+    change Integrable (fun x : ℝ => (1 / 2 : ℂ) * kernel n n L x)
+    exact (kernel_integrable hL n n).const_mul (1 / 2 : ℂ)
+  have hmeasFT : Measurable (fun τ : ℝ =>
+      Zeta23.paperFT (dictionaryBasisTest n n L) (τ : ℂ)) :=
+    (continuous_paperFT_real_of_integrable hki).measurable
+  have hmuCont : Continuous (fun τ : ℝ => Zeta23.mu τ - Zeta23.mu 0) :=
+    Zeta23.mu_smooth.continuous.sub continuous_const
+  have hmeasMu : Measurable (fun τ : ℝ =>
+      ((Zeta23.mu τ - Zeta23.mu 0 : ℝ) : ℂ)) :=
+    Complex.continuous_ofReal.measurable.comp hmuCont.measurable
+  refine hmajor.mono' (hmeasFT.mul hmeasMu).aestronglyMeasurable ?_
+  filter_upwards with τ
+  have hmu0 := mu_sub_mu_zero_nonneg τ
+  have hmule := mu_sub_mu_zero_le_sqrt τ
+  have hnorm0 :
+      0 ≤ ‖Zeta23.paperFT (dictionaryBasisTest n n L) (τ : ℂ)‖ :=
+    norm_nonneg _
+  have hmul := mul_le_mul_of_nonneg_left hmule hnorm0
+  rw [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg hmu0]
+  dsimp [Cmu]
+  simpa [mul_assoc, mul_left_comm, mul_comm] using hmul
+
+/-- Public full-`mu` integrability gate required by the finite arch-channel
+linearity lift. -/
+theorem integrable_paperFT_dictionaryBasisTest_diag_mul_mu
+    {L : ℝ} (hL : 0 < L) (n : ℤ) :
+    Integrable (fun τ : ℝ =>
+      Zeta23.paperFT (dictionaryBasisTest n n L) (τ : ℂ) *
+        (Zeta23.mu τ : ℂ)) := by
+  have hF := integrable_fourier_dictionaryBasisTest_diag hL n
+  exact integrable_paperFT_mul_mu hF
+    (integrable_paperFT_dictionaryBasisTest_diag_mul_mu_sub_mu_zero hL n)
+
 end Zeta23.CCM

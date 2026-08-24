@@ -708,8 +708,17 @@ private theorem integrable_norm_paperFT_dictionaryTent_add_mul_sqrt
       (Filter.Eventually.of_forall fun s =>
         mul_nonneg (norm_nonneg _) (Real.sqrt_nonneg _)) ?_
     filter_upwards with s
-    exact mul_le_mul_of_nonneg_left (sqrt_abs_sub_div_two_le s a)
-      (show 0 ≤ ‖Zeta23.paperFT (dictionaryTent L) (s : ℂ)‖ from norm_nonneg _)
+    calc
+      ‖Zeta23.paperFT (dictionaryTent L) (s : ℂ)‖ *
+          Real.sqrt |(s - a) / 2| ≤
+        ‖Zeta23.paperFT (dictionaryTent L) (s : ℂ)‖ *
+          (Real.sqrt |s / 2| + Real.sqrt |a / 2|) :=
+        mul_le_mul_of_nonneg_left (sqrt_abs_sub_div_two_le s a)
+          (norm_nonneg _)
+      _ = ‖Zeta23.paperFT (dictionaryTent L) (s : ℂ)‖ *
+            Real.sqrt |s / 2| +
+          ‖Zeta23.paperFT (dictionaryTent L) (s : ℂ)‖ *
+            Real.sqrt |a / 2| := by ring
   have htranslated := hg.comp_add_right a
   simpa only [Complex.ofReal_add, add_sub_cancel_right] using htranslated
 
