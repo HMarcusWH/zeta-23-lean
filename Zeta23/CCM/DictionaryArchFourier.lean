@@ -201,7 +201,8 @@ private theorem hasDerivAt_sinCosPrimitive
         Real.cos ((a - r) * x) / (a - r)))
     (Real.sin (a * y) * Real.cos (r * y)) y
   convert hscaled using 1
-  · rfl
+  · funext x
+    rfl
   · field_simp [hplus, hminus]
     rw [Real.sin_add, Real.sin_sub]
     ring
@@ -256,14 +257,14 @@ private theorem intervalIntegral_source_sin_cos
     ring
   have hden : a ^ 2 - r ^ 2 ≠ 0 := by
     rw [sq_sub_sq]
-    exact mul_ne_zero (by simpa [a] using hminus) (by simpa [a] using hplus)
+    exact mul_ne_zero (by simpa [a] using hplus) (by simpa [a] using hminus)
   rw [hprim]
   unfold sinCosPrimitive
   rw [hcosPlus, hcosMinus]
   norm_num
   change _ = a * (1 - Real.cos (r * L)) / (a ^ 2 - r ^ 2)
   field_simp [hplus, hminus, hden]
-  ring
+  ring_nf
 
 private theorem paperFT_dictionarySourceTest_tail_formula
     {L r : ℝ} (hL : 0 < L) (n : ℤ)
@@ -295,8 +296,10 @@ private theorem paperFT_dictionarySourceTest_tail_formula
     have h := intervalIntegral.integral_comp_neg (a := (0 : ℝ)) (b := L) G
     simpa using h.symm
   rw [hleft]
+  have hcneg : Continuous (fun y : ℝ => G (-y)) := by
+    simpa [Function.comp_def] using hGcont.comp continuous_neg
   have hnegInt : IntervalIntegrable (fun y : ℝ => G (-y)) volume 0 L :=
-    (hGcont.comp continuous_neg).intervalIntegrable
+    hcneg.intervalIntegrable 0 L
   have hposInt : IntervalIntegrable G volume 0 L := hGcont.intervalIntegrable 0 L
   rw [← intervalIntegral.integral_add hnegInt hposInt]
   have hfun : ∀ y ∈ Set.uIcc (0 : ℝ) L,
@@ -333,7 +336,11 @@ private theorem paperFT_dictionarySourceTest_tail_formula
   norm_cast
   rw [intervalIntegral.integral_const_mul]
   rw [intervalIntegral_source_sin_cos hL n hplus hminus]
-  field_simp [Real.pi_ne_zero, hplus, hminus]
+  have hden : dictionaryFrequency n L ^ 2 - r ^ 2 ≠ 0 := by
+    rw [sq_sub_sq]
+    exact mul_ne_zero hplus hminus
+  norm_cast
+  field_simp [Real.pi_ne_zero, hden]
   ring
 
 end Zeta23.CCM
