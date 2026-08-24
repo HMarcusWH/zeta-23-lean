@@ -56,6 +56,7 @@ theorem integrableOn_dictionaryBasisTest_diag_sub_exp_mul_archDensity_Ioi
   refine hdifference.congr ?_
   filter_upwards with x
   rw [dictionaryBasisTest_diag_zero_physical hL n]
+  simp only [Pi.sub_apply]
   push_cast
   ring
 
@@ -98,6 +99,7 @@ theorem dictionaryArchRHS_basis_diag_eq_physical
       (Ioi 0) := by
     refine hp.neg.congr ?_
     filter_upwards with x
+    simp only [Pi.neg_apply]
     ring
   have hone : IntegrableOn (fun x : ℝ =>
       (k 0 - k x) * (archDensity x : ℂ)) (Ioi 0) :=
@@ -184,7 +186,7 @@ theorem dictionaryArchRHS_basis_diag_eq_physical
           (2 : ℂ) * (∫ x : ℝ in Ioi L,
             ((Real.exp (-x / 2) * archDensity x : ℝ) : ℂ)) =
         -((2 * wCorrection L : ℝ) : ℂ) := by
-    rw [MeasureTheory.integral_ofReal, MeasureTheory.integral_ofReal]
+    rw [integral_ofReal, integral_ofReal]
     exact_mod_cast mu_zero_reference_tail_eq_neg_two_wCorrection hL
   change dictionaryArchRHS k = dictionaryArchPhysicalRHS k L
   calc
@@ -198,7 +200,7 @@ theorem dictionaryArchRHS_basis_diag_eq_physical
                 (((1 - Real.exp (-x / 2)) * archDensity x : ℝ) : ℂ)) +
               ∫ x : ℝ in Ioi 0,
                 ((Real.exp (-x / 2) : ℂ) - k x) *
-                  (archDensity x : ℂ)) := by rw [hk0, one_mul, honeSplit]
+                  (archDensity x : ℂ)) := by rw [hk0, mul_one, honeSplit]
     _ = ((2 * Real.pi * Zeta23.mu 0 : ℝ) : ℂ) +
           (2 : ℂ) *
             ((∫ x : ℝ in Ioi 0,
@@ -222,6 +224,6 @@ theorem dictionaryArchRHS_basis_diag_eq_physical
       rw [hfiniteNeg, hk0]
       ring
     _ = dictionaryArchPhysicalRHS k L := by
-      rfl
+      simp [dictionaryArchPhysicalRHS, hk0]
 
 end Zeta23.CCM
