@@ -41,7 +41,7 @@ theorem summable_archHalfWeight : Summable archHalfWeight := by
     have ha := archSeriesAbscissa_pos n
     positivity
   dsimp [archHalfWeight]
-  rw [Real.norm_eq_abs, abs_of_pos hposa, Real.norm_eq_abs, abs_of_pos hposn]
+  rw [abs_inv, abs_of_pos hposa]
   exact inv_le_inv₀ hposn.le hr
 
 /-- Algebraic positive form of one digamma difference summand. -/
@@ -96,12 +96,31 @@ theorem archDigammaAllTerm_le_sqrt_weight
       exact pow_le_pow_left₀ hsqrt hroot 3
     have hdena : 0 < a * a ^ 2 := by positivity
     have hdenr : 0 < a * Real.sqrt a := by positivity
+    have htq4 : t ^ 2 = (Real.sqrt |t|) ^ 4 := by
+      calc
+        t ^ 2 = |t| ^ 2 := ht2
+        _ = ((Real.sqrt |t|) ^ 2) ^ 2 := by rw [hsqtt]
+        _ = (Real.sqrt |t|) ^ 4 := by ring
+    have ha3 : a * Real.sqrt a = (Real.sqrt a) ^ 3 := by
+      rw [← hsqta]
+      ring
+    have ha6 : a * a ^ 2 = (Real.sqrt a) ^ 6 := by
+      rw [← hsqta]
+      ring
+    have hfac : 0 ≤ Real.sqrt |t| * (Real.sqrt a) ^ 3 :=
+      mul_nonneg hsqrt (pow_nonneg hasqrt.le 3)
+    have hmul := mul_le_mul_of_nonneg_left hcubic hfac
+    have hcross :
+        t ^ 2 * (a * Real.sqrt a) ≤
+          Real.sqrt |t| * (a * a ^ 2) := by
+      rw [htq4, ha3, ha6]
+      nlinarith [hmul]
     have hgoal :
         t ^ 2 / (a * a ^ 2) ≤ Real.sqrt |t| * (a * Real.sqrt a)⁻¹ := by
       rw [show Real.sqrt |t| * (a * Real.sqrt a)⁻¹ =
         Real.sqrt |t| / (a * Real.sqrt a) by rw [div_eq_mul_inv]]
       rw [div_le_div_iff₀ hdena hdenr]
-      nlinarith [hcubic, hsqta, hsqtt, sq_abs t]
+      exact hcross
     exact hsimple.trans hgoal
   · have hat : a ≤ |t| := le_of_not_ge hta
     have hdenpos : 0 < a * (a ^ 2 + t ^ 2) := by positivity
@@ -139,7 +158,9 @@ theorem tsum_archDigammaAllTerm_le_sqrt
 theorem mu_sub_mu_zero_nonneg (τ : ℝ) :
     0 ≤ Zeta23.mu τ - Zeta23.mu 0 := by
   rw [mu_sub_mu_zero_eq_archDigammaAllSeries]
-  positivity
+  apply mul_nonneg
+  · positivity
+  · exact tsum_nonneg fun m => archDigammaAllTerm_nonneg (τ / 2) m
 
 /-- Sublinear square-root growth of the gamma-density difference. -/
 theorem mu_sub_mu_zero_le_sqrt (τ : ℝ) :
