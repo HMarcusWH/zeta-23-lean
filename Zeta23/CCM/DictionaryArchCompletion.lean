@@ -73,22 +73,23 @@ theorem tsum_archPhysicalSeriesTerm_eq_archDensity
     rw [← Real.exp_add, ← Real.exp_add]
     congr 1
     ring
-  have hA' : Real.exp (-(x / 2)) * Real.exp x = Real.exp (x / 2) := by
-    convert hA using 1 <;> ring
-  have hB' :
-      Real.exp (-(x / 2)) * Real.exp (-x) =
-        Real.exp (x / 2) * Real.exp (-2 * x) := by
-    convert hB using 1 <;> ring
   have hdensity :
       Real.exp (-x / 2) * (1 - Real.exp (-2 * x))⁻¹ = archDensity x := by
     unfold archDensity
-    field_simp [hdenne]
-    have htwo : Real.exp (-(x * 2)) = Real.exp (-2 * x) := by
-      congr 1
-      ring
-    rw [htwo, mul_sub, hA', hB']
-    field_simp [hqne]
-    ring
+    rw [div_eq_iff hdenne]
+    calc
+      Real.exp (-x / 2) * (1 - Real.exp (-2 * x))⁻¹ *
+          (Real.exp x - Real.exp (-x)) =
+        (Real.exp (-x / 2) * (Real.exp x - Real.exp (-x))) *
+          (1 - Real.exp (-2 * x))⁻¹ := by ring
+      _ = (Real.exp (x / 2) -
+          Real.exp (x / 2) * Real.exp (-2 * x)) *
+          (1 - Real.exp (-2 * x))⁻¹ := by
+        rw [mul_sub, hA, hB]
+      _ = Real.exp (x / 2) * (1 - Real.exp (-2 * x)) *
+          (1 - Real.exp (-2 * x))⁻¹ := by ring
+      _ = Real.exp (x / 2) := by
+        rw [mul_assoc, mul_inv_cancel₀ hqne, mul_one]
   rw [hseries, hgeom]
   calc
     (2 * Real.exp (-x / 2) * (1 - Real.cos (τ * x))) *
