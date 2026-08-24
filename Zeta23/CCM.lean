@@ -37,4 +37,5 @@ import Zeta23.CCM.DictionaryArchDensityBridge
 import Zeta23.CCM.DictionaryArchSourceBridge
 import Zeta23.CCM.DictionaryArchOffDiagonal
 import Zeta23.CCM.DictionaryArchDiagonal
+import Zeta23.CCM.DictionaryArchDiagonalPhysical
 import Zeta23.CCM.ClaimBindings
