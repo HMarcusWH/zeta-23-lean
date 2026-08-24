@@ -26,7 +26,7 @@ theorem summable_archHalfWeight : Summable archHalfWeight := by
   have hp : Summable (fun n : ℕ => ((n : ℝ) ^ (3 / 2 : ℝ))⁻¹) := by
     rw [Real.summable_nat_rpow_inv]
     norm_num
-  refine Summable.of_norm_bounded_eventually hp ?_
+  refine Summable.of_norm_bounded_eventually_nat hp ?_
   filter_upwards [eventually_ge_atTop 1] with n hn
   have hn0 : (0 : ℝ) ≤ n := by positivity
   have hna : (n : ℝ) ≤ archSeriesAbscissa n := by
@@ -35,9 +35,10 @@ theorem summable_archHalfWeight : Summable archHalfWeight := by
   have hp0 : (0 : ℝ) ≤ (3 / 2 : ℝ) := by norm_num
   have hr := Real.rpow_le_rpow hn0 hna hp0
   have hposn : 0 < (n : ℝ) ^ (3 / 2 : ℝ) := by
+    have hnpos : (0 : ℝ) < n := by exact_mod_cast hn
     positivity
   have hposa : 0 < archSeriesAbscissa n ^ (3 / 2 : ℝ) := by
-    have := archSeriesAbscissa_pos n
+    have ha := archSeriesAbscissa_pos n
     positivity
   dsimp [archHalfWeight]
   rw [Real.norm_eq_abs, abs_of_pos hposa, Real.norm_eq_abs, abs_of_pos hposn]
@@ -59,7 +60,11 @@ theorem archDigammaAllTerm_eq_sq_div
 theorem archDigammaAllTerm_nonneg (t : ℝ) (m : ℕ) :
     0 ≤ archDigammaAllTerm t m := by
   rw [archDigammaAllTerm_eq_sq_div]
-  positivity
+  have ha := archSeriesAbscissa_pos m
+  have hden :
+      0 < archSeriesAbscissa m * (archSeriesAbscissa m ^ 2 + t ^ 2) := by
+    positivity
+  exact div_nonneg (sq_nonneg t) hden.le
 
 /-- Interpolation bound `x²/(1+x²) ≤ √x` in the normalization needed by the
 positive-abscissa series. -/
@@ -76,7 +81,7 @@ theorem archDigammaAllTerm_le_sqrt_weight
   rw [archDigammaAllTerm_eq_sq_div]
   dsimp [archHalfWeight]
   have ha32 : a ^ (3 / 2 : ℝ) = a * Real.sqrt a := by
-    rw [show (3 / 2 : ℝ) = 1 + 1 / 2 by norm_num, Real.rpow_add ha.le]
+    rw [show (3 / 2 : ℝ) = 1 + 1 / 2 by norm_num, Real.rpow_add ha]
     simp [Real.sqrt_eq_rpow]
   rw [ha32]
   by_cases hta : |t| ≤ a
@@ -89,13 +94,13 @@ theorem archDigammaAllTerm_le_sqrt_weight
     have hroot : Real.sqrt |t| ≤ Real.sqrt a := Real.sqrt_le_sqrt hta
     have hcubic : (Real.sqrt |t|) ^ 3 ≤ (Real.sqrt a) ^ 3 := by
       exact pow_le_pow_left₀ hsqrt hroot 3
+    have hdena : 0 < a * a ^ 2 := by positivity
+    have hdenr : 0 < a * Real.sqrt a := by positivity
     have hgoal :
         t ^ 2 / (a * a ^ 2) ≤ Real.sqrt |t| * (a * Real.sqrt a)⁻¹ := by
-      rw [div_eq_mul_inv]
-      have hdena : 0 < a * a ^ 2 := by positivity
-      have hdenr : 0 < a * Real.sqrt a := by positivity
-      rw [← le_div_iff₀ hdena]
-      field_simp [ha.ne', hasqrt.ne']
+      rw [show Real.sqrt |t| * (a * Real.sqrt a)⁻¹ =
+        Real.sqrt |t| / (a * Real.sqrt a) by rw [div_eq_mul_inv]]
+      rw [div_le_div_iff₀ hdena hdenr]
       nlinarith [hcubic, hsqta, hsqtt, sq_abs t]
     exact hsimple.trans hgoal
   · have hat : a ≤ |t| := le_of_not_ge hta
@@ -103,15 +108,15 @@ theorem archDigammaAllTerm_le_sqrt_weight
     have hleone :
         t ^ 2 / (a * (a ^ 2 + t ^ 2)) ≤ 1 / a := by
       rw [div_le_iff₀ hdenpos]
-      have ha2 : 0 < a := ha
       field_simp [ha.ne']
       nlinarith [sq_nonneg t, sq_nonneg a]
     have hroot : Real.sqrt a ≤ Real.sqrt |t| := Real.sqrt_le_sqrt hat
+    have hden : 0 < a * Real.sqrt a := by positivity
     have hright : 1 / a ≤ Real.sqrt |t| * (a * Real.sqrt a)⁻¹ := by
-      have hden : 0 < a * Real.sqrt a := by positivity
-      rw [le_mul_inv_iff₀ hden]
-      field_simp [ha.ne', hasqrt.ne']
-      nlinarith [hroot, hsqta]
+      rw [show Real.sqrt |t| * (a * Real.sqrt a)⁻¹ =
+        Real.sqrt |t| / (a * Real.sqrt a) by rw [div_eq_mul_inv]]
+      rw [div_le_div_iff₀ ha hden]
+      nlinarith [hroot]
     exact hleone.trans hright
 
 /-- The whole positive-abscissa series grows at most like `sqrt |t|`. -/
@@ -122,13 +127,19 @@ theorem tsum_archDigammaAllTerm_le_sqrt
   have hs := summable_archDigammaAllTerm t
   have hw := summable_archHalfWeight
   have hmul : Summable (fun m : ℕ => Real.sqrt |t| * archHalfWeight m) :=
-    hw.const_mul _
+    hw.mul_left _
   calc
     (∑' m : ℕ, archDigammaAllTerm t m) ≤
         ∑' m : ℕ, Real.sqrt |t| * archHalfWeight m :=
       hs.tsum_le_tsum (fun m => archDigammaAllTerm_le_sqrt_weight t m) hmul
     _ = Real.sqrt |t| * ∑' m : ℕ, archHalfWeight m := by
       rw [tsum_mul_left]
+
+/-- The gamma-density difference is nonnegative on the real axis. -/
+theorem mu_sub_mu_zero_nonneg (τ : ℝ) :
+    0 ≤ Zeta23.mu τ - Zeta23.mu 0 := by
+  rw [mu_sub_mu_zero_eq_archDigammaAllSeries]
+  positivity
 
 /-- Sublinear square-root growth of the gamma-density difference. -/
 theorem mu_sub_mu_zero_le_sqrt (τ : ℝ) :
