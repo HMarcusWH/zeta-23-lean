@@ -72,7 +72,6 @@ theorem integral_archExpWeight_mul
     ∫ u : ℝ, archExpWeight a u * cexp (-I * τ * u) =
       (((2 * a) / (a ^ 2 + τ ^ 2) : ℝ) : ℂ) := by
   have h1 := archExp_pos_sub_I_ne_zero ha τ
-  have h2 := archExp_neg_sub_I_ne_zero ha τ
   have hIic : IntegrableOn
       (fun u : ℝ => cexp (((a : ℂ) - I * τ) * u)) (Iic 0) :=
     integrableOn_exp_mul_complex_Iic (by simpa using ha) 0
@@ -109,18 +108,20 @@ theorem integral_archExpWeight_mul
     integral_exp_mul_complex_Iic (by simpa using ha) 0,
     integral_exp_mul_complex_Ioi (by simpa using neg_lt_zero.mpr ha) 0]
   simp only [Complex.ofReal_zero, mul_zero, Complex.exp_zero]
-  have hdenR : (a ^ 2 + τ ^ 2 : ℝ) ≠ 0 := by positivity
-  have hdenC : (((a ^ 2 + τ ^ 2 : ℝ) : ℂ)) ≠ 0 := by exact_mod_cast hdenR
-  have halg :
-      (1 : ℂ) / ((a : ℂ) - I * (τ : ℂ)) -
-          (1 : ℂ) / (-(a : ℂ) - I * (τ : ℂ)) =
-        (((2 * a) / (a ^ 2 + τ ^ 2) : ℝ) : ℂ) := by
-    push_cast
-    field_simp [h1, h2, hdenC]
-    ring_nf
-    rw [Complex.I_sq]
+  have hp : (a : ℂ) + I * (τ : ℂ) ≠ 0 := by
+    intro h
+    have hre := congrArg Complex.re h
+    simp at hre
+    linarith
+  have hneg :
+      (-(a : ℂ) - I * (τ : ℂ)) = -((a : ℂ) + I * (τ : ℂ)) := by
     ring
-  simpa [sub_eq_add_neg] using halg
+  rw [hneg]
+  simp only [div_neg, neg_neg, sub_neg_eq_add]
+  push_cast
+  field_simp [h1, hp]
+  rw [Complex.I_sq]
+  ring
 
 /-- Positive abscissa attached to the `m`-th digamma summand. -/
 def archSeriesAbscissa (m : ℕ) : ℝ :=
