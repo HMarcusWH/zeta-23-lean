@@ -86,9 +86,12 @@ theorem tsum_archPhysicalSeriesTerm_eq_archDensity
     have htwo : Real.exp (-(x * 2)) = Real.exp (-2 * x) := by
       congr 1
       ring
+    have hqne' : 1 - Real.exp (-(x * 2)) ≠ 0 := by
+      rw [htwo]
+      exact hqne
     rw [htwo, mul_sub, hA', hB']
-    field_simp [hqne]
-    ring
+    rw [← mul_sub]
+    field_simp [hqne']
   rw [hseries, hgeom]
   calc
     (2 * Real.exp (-x / 2) * (1 - Real.cos (τ * x))) *
