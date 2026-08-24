@@ -48,9 +48,8 @@ theorem integrable_archExpWeight
       (fun u : ℝ => cexp ((a : ℂ) * u)) (Iic 0) := by
     intro u hu
     simp only [mem_Iic] at hu
-    unfold archExpWeight
-    rw [abs_of_nonpos hu]
-    rw [← Complex.ofReal_exp]
+    change ((Real.exp (-a * |u|) : ℝ) : ℂ) = cexp ((a : ℂ) * (u : ℂ))
+    rw [abs_of_nonpos hu, Complex.ofReal_exp]
     congr 1
     push_cast
     ring
@@ -58,9 +57,8 @@ theorem integrable_archExpWeight
       (fun u : ℝ => cexp (-(a : ℂ) * u)) (Ioi 0) := by
     intro u hu
     simp only [mem_Ioi] at hu
-    unfold archExpWeight
-    rw [abs_of_pos hu]
-    rw [← Complex.ofReal_exp]
+    change ((Real.exp (-a * |u|) : ℝ) : ℂ) = cexp (-(a : ℂ) * (u : ℂ))
+    rw [abs_of_pos hu, Complex.ofReal_exp]
     congr 1
     push_cast
     ring
@@ -86,8 +84,9 @@ theorem integral_archExpWeight_mul
       (fun u : ℝ => cexp (((a : ℂ) - I * τ) * u)) (Iic 0) := by
     intro u hu
     simp only [mem_Iic] at hu
-    unfold archExpWeight
-    rw [abs_of_nonpos hu, ← Complex.ofReal_exp, ← Complex.exp_add]
+    change ((Real.exp (-a * |u|) : ℝ) : ℂ) * cexp (-I * (τ : ℂ) * (u : ℂ)) =
+      cexp (((a : ℂ) - I * (τ : ℂ)) * (u : ℂ))
+    rw [abs_of_nonpos hu, Complex.ofReal_exp, ← Complex.exp_add]
     congr 1
     push_cast
     ring
@@ -96,8 +95,9 @@ theorem integral_archExpWeight_mul
       (fun u : ℝ => cexp ((-(a : ℂ) - I * τ) * u)) (Ioi 0) := by
     intro u hu
     simp only [mem_Ioi] at hu
-    unfold archExpWeight
-    rw [abs_of_pos hu, ← Complex.ofReal_exp, ← Complex.exp_add]
+    change ((Real.exp (-a * |u|) : ℝ) : ℂ) * cexp (-I * (τ : ℂ) * (u : ℂ)) =
+      cexp ((-(a : ℂ) - I * (τ : ℂ)) * (u : ℂ))
+    rw [abs_of_pos hu, Complex.ofReal_exp, ← Complex.exp_add]
     congr 1
     push_cast
     ring
@@ -109,12 +109,18 @@ theorem integral_archExpWeight_mul
     integral_exp_mul_complex_Iic (by simpa using ha) 0,
     integral_exp_mul_complex_Ioi (by simpa using neg_lt_zero.mpr ha) 0]
   simp only [Complex.ofReal_zero, mul_zero, Complex.exp_zero]
-  have hden : (((a ^ 2 + τ ^ 2 : ℝ) : ℂ)) ≠ 0 := by
-    exact_mod_cast (by positivity : a ^ 2 + τ ^ 2 ≠ 0)
-  field_simp [h1, h2, hden]
-  ring_nf
-  rw [Complex.I_sq]
-  ring
+  have hdenR : (a ^ 2 + τ ^ 2 : ℝ) ≠ 0 := by positivity
+  have hdenC : (((a ^ 2 + τ ^ 2 : ℝ) : ℂ)) ≠ 0 := by exact_mod_cast hdenR
+  have halg :
+      (1 : ℂ) / ((a : ℂ) - I * (τ : ℂ)) -
+          (1 : ℂ) / (-(a : ℂ) - I * (τ : ℂ)) =
+        (((2 * a) / (a ^ 2 + τ ^ 2) : ℝ) : ℂ) := by
+    field_simp [h1, h2, hdenC]
+    push_cast
+    ring_nf
+    rw [Complex.I_sq]
+    ring
+  exact halg
 
 /-- Positive abscissa attached to the `m`-th digamma summand. -/
 def archSeriesAbscissa (m : ℕ) : ℝ :=
@@ -124,7 +130,8 @@ def archSeriesAbscissa (m : ℕ) : ℝ :=
 def archSeriesWeight (m : ℕ) : ℝ → ℂ :=
   archExpWeight (2 * archSeriesAbscissa m)
 
-private theorem archSeriesAbscissa_pos (m : ℕ) :
+/-- Every positive abscissa is strictly positive. -/
+theorem archSeriesAbscissa_pos (m : ℕ) :
     0 < archSeriesAbscissa m := by
   unfold archSeriesAbscissa
   positivity
@@ -141,15 +148,21 @@ theorem integral_archSeriesWeight_mul (m : ℕ) (τ : ℝ) :
   have hden1 : (2 * archSeriesAbscissa m) ^ 2 + τ ^ 2 ≠ 0 := by positivity
   have hden2 : (archSeriesAbscissa m) ^ 2 + (τ / 2) ^ 2 ≠ 0 := by positivity
   field_simp [hden1, hden2]
-  ring
 
 /-- The constant part of a digamma summand is the zero-frequency transform of
 its even exponential weight. -/
 theorem integral_archSeriesWeight_mul_zero (m : ℕ) :
     ∫ u : ℝ, archSeriesWeight m u =
       (((1 / archSeriesAbscissa m : ℝ)) : ℂ) := by
+  have ha := archSeriesAbscissa_pos m
   have h := integral_archSeriesWeight_mul m 0
-  simpa [archSeriesWeight, archSeriesAbscissa] using h
+  calc
+    (∫ u : ℝ, archSeriesWeight m u) =
+        (((archSeriesAbscissa m / archSeriesAbscissa m ^ 2 : ℝ)) : ℂ) := by
+      simpa using h
+    _ = (((1 / archSeriesAbscissa m : ℝ)) : ℂ) := by
+      congr 1
+      field_simp [ha.ne']
 
 /-- One all-term digamma difference is zero-frequency weight transform minus
 its transform at `τ`. -/
