@@ -202,7 +202,7 @@ theorem dictionaryArchRHS_basis_diag_eq_physical
     have hreal := congrArg (fun r : ℝ => (r : ℂ))
       (mu_zero_reference_tail_eq_neg_two_wCorrection hL)
     push_cast at hreal ⊢
-    exact hreal
+    simpa only [neg_mul] using hreal
   change dictionaryArchRHS k = dictionaryArchPhysicalRHS k L
   calc
     dictionaryArchRHS k =
@@ -246,15 +246,7 @@ theorem dictionaryArchRHS_basis_diag_eq_physical
       rw [hfiniteNeg, hk0]
       ring
     _ = dictionaryArchPhysicalRHS k L := by
-      change
-        (-2 : ℂ) * (∫ x : ℝ in (0 : ℝ)..L,
-          (k x - (Real.exp (-x / 2) : ℂ)) *
-            (archDensity x : ℂ)) -
-          ((2 * wCorrection L : ℝ) : ℂ) * k 0 =
-        (-2 : ℂ) * (∫ x : ℝ in (0 : ℝ)..L,
-          (k x - k 0 * (Real.exp (-x / 2) : ℂ)) *
-            (archDensity x : ℂ)) -
-          ((2 * wCorrection L : ℝ) : ℂ) * k 0
+      unfold dictionaryArchPhysicalRHS
       rw [hk0]
       simp only [one_mul, mul_one]
 
