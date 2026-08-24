@@ -40,7 +40,6 @@ private theorem sqrt_div_one_add_sq_le_two_mul_rpow
     Real.sqrt x / (1 + x ^ 2) ≤
       2 * (1 + x) ^ (-(3 / 2 : ℝ)) := by
   have h1 : 0 < 1 + x := by linarith
-  have hsx : 0 ≤ Real.sqrt x := Real.sqrt_nonneg _
   have hs1 : 0 < Real.sqrt (1 + x) := Real.sqrt_pos.2 h1
   have hsle : Real.sqrt x ≤ Real.sqrt (1 + x) :=
     Real.sqrt_le_sqrt (by linarith)
@@ -55,8 +54,11 @@ private theorem sqrt_div_one_add_sq_le_two_mul_rpow
         exact mul_le_mul_of_nonneg_right hsle
           (mul_nonneg h1.le hs1.le)
       _ = (1 + x) ^ 2 := by
-        rw [← hsq1]
-        ring
+        calc
+          Real.sqrt (1 + x) * ((1 + x) * Real.sqrt (1 + x)) =
+              (1 + x) * (Real.sqrt (1 + x)) ^ 2 := by ring
+          _ = (1 + x) * (1 + x) := by rw [hsq1]
+          _ = (1 + x) ^ 2 := by ring
   have hpoly : (1 + x) ^ 2 ≤ 2 * (1 + x ^ 2) := by
     nlinarith [sq_nonneg (x - 1)]
   have hcross :
@@ -104,14 +106,15 @@ theorem integrable_norm_paperFT_dictionarySourceTest_mul_sqrt
   have habs : |τ / 2| ≤ |τ| := by
     rw [abs_div]
     norm_num
-    nlinarith [abs_nonneg τ]
   have hsqrt : Real.sqrt |τ / 2| ≤ Real.sqrt |τ| :=
     Real.sqrt_le_sqrt habs
+  have hright0 : 0 ≤ C * (1 + τ ^ 2)⁻¹ :=
+    mul_nonneg hC (inv_nonneg.2 (by positivity))
   have hfirst :
       ‖Zeta23.paperFT (dictionarySourceTest n L) (τ : ℂ)‖ *
           Real.sqrt |τ / 2| ≤
         (C * (1 + τ ^ 2)⁻¹) * Real.sqrt |τ| := by
-    exact mul_le_mul (hdecay τ) hsqrt (Real.sqrt_nonneg _) hC
+    exact mul_le_mul (hdecay τ) hsqrt (Real.sqrt_nonneg _) hright0
   have hkernel :=
     sqrt_div_one_add_sq_le_two_mul_rpow (x := |τ|) (abs_nonneg τ)
   have hsecond :
@@ -120,16 +123,13 @@ theorem integrable_norm_paperFT_dictionarySourceTest_mul_sqrt
     have hsquare : |τ| ^ 2 = τ ^ 2 := sq_abs τ
     have hc := mul_le_mul_of_nonneg_left hkernel hC
     rw [hsquare] at hc
-    convert hc using 1 <;> ring
-  have hnonneg :
-      0 ≤ ‖Zeta23.paperFT (dictionarySourceTest n L) (τ : ℂ)‖ *
-        Real.sqrt |τ / 2| :=
-    mul_nonneg (norm_nonneg _) (Real.sqrt_nonneg _)
-  have hmajnonneg :
-      0 ≤ (2 * C) * (1 + ‖τ‖) ^ (-(3 / 2 : ℝ)) := by
-    positivity
-  rw [Real.norm_eq_abs, abs_of_nonneg hnonneg,
-    Real.norm_eq_abs, abs_of_nonneg hmajnonneg]
+    calc
+      (C * (1 + τ ^ 2)⁻¹) * Real.sqrt |τ| =
+          C * (Real.sqrt |τ| / (1 + τ ^ 2)) := by
+        rw [div_eq_mul_inv]
+        ring
+      _ ≤ C * (2 * (1 + |τ|) ^ (-(3 / 2 : ℝ))) := hc
+      _ = (2 * C) * (1 + |τ|) ^ (-(3 / 2 : ℝ)) := by ring
   simpa [Real.norm_eq_abs] using hfirst.trans hsecond
 
 end Zeta23.CCM
