@@ -25,4 +25,5 @@ import Zeta23.CCM.DictionaryPoleSource
 import Zeta23.CCM.DictionaryArchPhysical
 import Zeta23.CCM.DictionaryArchBridge
 import Zeta23.CCM.DictionaryArchLaplace
+import Zeta23.CCM.DictionaryArchCompletion
 import Zeta23.CCM.ClaimBindings
