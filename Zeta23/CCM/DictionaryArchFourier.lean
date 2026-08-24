@@ -203,18 +203,31 @@ private theorem hasDerivAt_sinCosPrimitive
         (-Real.sin ((a + r) * y) * (a + r) / (a + r) +
           -Real.sin ((a - r) * y) * (a - r) / (a - r))) y := by
     simpa only [Pi.add_apply] using hscaled
+  have hpCancel :
+      -Real.sin ((a + r) * y) * (a + r) / (a + r) =
+        -Real.sin ((a + r) * y) := by
+    field_simp [hplus]
+  have hmCancel :
+      -Real.sin ((a - r) * y) * (a - r) / (a - r) =
+        -Real.sin ((a - r) * y) := by
+    field_simp [hminus]
   have hder :
       (-1 / 2) *
         (-Real.sin ((a + r) * y) * (a + r) / (a + r) +
           -Real.sin ((a - r) * y) * (a - r) / (a - r)) =
         Real.sin (a * y) * Real.cos (r * y) := by
-    field_simp [hplus, hminus]
+    rw [hpCancel, hmCancel]
     rw [show (a + r) * y = a * y + r * y by ring,
       show (a - r) * y = a * y - r * y by ring,
       Real.sin_add, Real.sin_sub]
     ring
   rw [hder] at hscaled'
-  simpa [sinCosPrimitive] using hscaled'
+  change HasDerivAt
+    (fun x : ℝ => (-1 / 2) *
+      (Real.cos ((a + r) * x) / (a + r) +
+        Real.cos ((a - r) * x) / (a - r)))
+    (Real.sin (a * y) * Real.cos (r * y)) y
+  exact hscaled'
 
 private theorem dictionaryFrequency_mul_L_fourier
     {L : ℝ} (hL : 0 < L) (n : ℤ) :
@@ -268,12 +281,14 @@ private theorem intervalIntegral_source_sin_cos
     rw [sq_sub_sq]
     exact mul_ne_zero (by simpa [a] using hplus) (by simpa [a] using hminus)
   have hpInv : (a + r)⁻¹ = (a - r) / (a ^ 2 - r ^ 2) := by
-    field_simp [hplus, hminus, hden]
-    ring
+    rw [show a ^ 2 - r ^ 2 = (a - r) * (a + r) by ring]
+    field_simp [hplus, hminus]
   have hmInv : (a - r)⁻¹ = (a + r) / (a ^ 2 - r ^ 2) := by
-    field_simp [hplus, hminus, hden]
-    ring
+    rw [show a ^ 2 - r ^ 2 = (a - r) * (a + r) by ring]
+    field_simp [hplus, hminus]
   rw [hprim]
+  change sinCosPrimitive a r L - sinCosPrimitive a r 0 =
+    a * (1 - Real.cos (r * L)) / (a ^ 2 - r ^ 2)
   unfold sinCosPrimitive
   rw [hcosPlus, hcosMinus]
   simp only [div_eq_mul_inv, hpInv, hmInv]
