@@ -77,7 +77,13 @@ theorem tsum_archPhysicalSeriesTerm_eq_archDensity
       Real.exp (-x / 2) * (1 - Real.exp (-2 * x))⁻¹ = archDensity x := by
     unfold archDensity
     field_simp [hqne, hdenne]
-    rw [mul_sub, mul_sub, mul_one, hA, hB]
+    rw [hA, hB]
+    have htwo : Real.exp (-(x * 2)) = Real.exp (-2 * x) := by
+      congr 1
+      ring
+    rw [htwo]
+    field_simp [hqne]
+    ring
   rw [hseries, hgeom]
   calc
     (2 * Real.exp (-x / 2) * (1 - Real.cos (τ * x))) *
@@ -101,8 +107,8 @@ theorem mu_sub_mu_zero_eq_archDensity_integral (τ : ℝ) :
       (∫ x : ℝ in Ioi 0, ∑' m : ℕ, archPhysicalSeriesTerm τ m x) =
         ∫ x : ℝ in Ioi 0,
           2 * archDensity x * (1 - Real.cos (τ * x)) := by
-    apply integral_congr_ae
-    filter_upwards with x hx
+    refine integral_congr_ae ?_
+    filter_upwards [ae_restrict_mem measurableSet_Ioi] with x hx
     exact tsum_archPhysicalSeriesTerm_eq_archDensity τ hx
   rw [hclosed]
   have hfactor :
