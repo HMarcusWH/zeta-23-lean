@@ -195,17 +195,26 @@ private theorem hasDerivAt_sinCosPrimitive
   have hp := hpLin.cos.div_const (a + r)
   have hm := hmLin.cos.div_const (a - r)
   have hscaled := (hp.add hm).const_mul (-1 / 2)
-  change HasDerivAt
-    (fun x : ℝ => (-1 / 2) *
-      (Real.cos ((a + r) * x) / (a + r) +
-        Real.cos ((a - r) * x) / (a - r)))
-    (Real.sin (a * y) * Real.cos (r * y)) y
-  convert hscaled using 1
-  · funext x
-    rfl
-  · field_simp [hplus, hminus]
-    rw [Real.sin_add, Real.sin_sub]
+  have hscaled' : HasDerivAt
+      (fun x : ℝ => (-1 / 2) *
+        (Real.cos ((a + r) * x) / (a + r) +
+          Real.cos ((a - r) * x) / (a - r)))
+      ((-1 / 2) *
+        (-Real.sin ((a + r) * y) * (a + r) / (a + r) +
+          -Real.sin ((a - r) * y) * (a - r) / (a - r))) y := by
+    simpa only [Pi.add_apply] using hscaled
+  have hder :
+      (-1 / 2) *
+        (-Real.sin ((a + r) * y) * (a + r) / (a + r) +
+          -Real.sin ((a - r) * y) * (a - r) / (a - r)) =
+        Real.sin (a * y) * Real.cos (r * y) := by
+    field_simp [hplus, hminus]
+    rw [show (a + r) * y = a * y + r * y by ring,
+      show (a - r) * y = a * y - r * y by ring,
+      Real.sin_add, Real.sin_sub]
     ring
+  rw [hder] at hscaled'
+  simpa [sinCosPrimitive] using hscaled'
 
 private theorem dictionaryFrequency_mul_L_fourier
     {L : ℝ} (hL : 0 < L) (n : ℤ) :
@@ -258,13 +267,18 @@ private theorem intervalIntegral_source_sin_cos
   have hden : a ^ 2 - r ^ 2 ≠ 0 := by
     rw [sq_sub_sq]
     exact mul_ne_zero (by simpa [a] using hplus) (by simpa [a] using hminus)
+  have hpInv : (a + r)⁻¹ = (a - r) / (a ^ 2 - r ^ 2) := by
+    field_simp [hplus, hminus, hden]
+    ring
+  have hmInv : (a - r)⁻¹ = (a + r) / (a ^ 2 - r ^ 2) := by
+    field_simp [hplus, hminus, hden]
+    ring
   rw [hprim]
   unfold sinCosPrimitive
   rw [hcosPlus, hcosMinus]
-  norm_num
-  change _ = a * (1 - Real.cos (r * L)) / (a ^ 2 - r ^ 2)
-  field_simp [hplus, hminus, hden]
-  ring_nf
+  simp only [div_eq_mul_inv, hpInv, hmInv]
+  field_simp [hden]
+  ring
 
 private theorem paperFT_dictionarySourceTest_tail_formula
     {L r : ℝ} (hL : 0 < L) (n : ℤ)
@@ -339,8 +353,18 @@ private theorem paperFT_dictionarySourceTest_tail_formula
   have hden : dictionaryFrequency n L ^ 2 - r ^ 2 ≠ 0 := by
     rw [sq_sub_sq]
     exact mul_ne_zero hplus hminus
-  norm_cast
-  field_simp [Real.pi_ne_zero, hden]
-  ring
+  have hden' : r ^ 2 - dictionaryFrequency n L ^ 2 ≠ 0 := by
+    intro hzero
+    apply hden
+    nlinarith
+  have hreal :
+      (-1 / Real.pi) *
+          (dictionaryFrequency n L * (1 - Real.cos (r * L)) /
+            (dictionaryFrequency n L ^ 2 - r ^ 2)) =
+        dictionaryFrequency n L * (1 - Real.cos (r * L)) /
+          (Real.pi * (r ^ 2 - dictionaryFrequency n L ^ 2)) := by
+    field_simp [Real.pi_ne_zero, hden, hden']
+    ring
+  exact_mod_cast hreal
 
 end Zeta23.CCM
