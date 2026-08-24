@@ -45,13 +45,6 @@ theorem integrable_paperFT_dictionarySourceTest_mul_mu_sub_mu_zero
         ((Zeta23.mu τ - Zeta23.mu 0 : ℝ) : ℂ)) := by
   let Cmu : ℝ :=
     (1 / (2 * Real.pi)) * ∑' m : ℕ, archHalfWeight m
-  have hCmu0 : 0 ≤ Cmu := by
-    dsimp [Cmu]
-    apply mul_nonneg
-    · positivity
-    · exact tsum_nonneg fun m => by
-        unfold archHalfWeight
-        positivity
   have hW := integrable_norm_paperFT_dictionarySourceTest_mul_sqrt hL n
   have hmajor : Integrable (fun τ : ℝ =>
       Cmu *
