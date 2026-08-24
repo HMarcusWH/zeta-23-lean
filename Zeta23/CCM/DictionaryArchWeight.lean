@@ -127,7 +127,7 @@ theorem integral_archExpWeight_mul
         ring
       _ = (((a ^ 2 + τ ^ 2 : ℝ)) : ℂ) := by push_cast; ring
   rw [hneg]
-  simp only [div_neg, neg_neg]
+  simp only [div_neg, neg_div, neg_neg]
   calc
     (1 : ℂ) / ((a : ℂ) - I * (τ : ℂ)) +
         1 / ((a : ℂ) + I * (τ : ℂ)) =
