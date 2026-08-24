@@ -76,7 +76,7 @@ theorem tsum_archPhysicalSeriesTerm_eq_archDensity
   have hdensity :
       Real.exp (-x / 2) * (1 - Real.exp (-2 * x))⁻¹ = archDensity x := by
     unfold archDensity
-    rw [div_eq_iff hdenne]
+    rw [eq_div_iff hdenne]
     calc
       Real.exp (-x / 2) * (1 - Real.exp (-2 * x))⁻¹ *
           (Real.exp x - Real.exp (-x)) =
