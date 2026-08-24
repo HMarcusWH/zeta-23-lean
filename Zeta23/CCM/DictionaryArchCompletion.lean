@@ -76,12 +76,11 @@ theorem tsum_archPhysicalSeriesTerm_eq_archDensity
   have hdensity :
       Real.exp (-x / 2) * (1 - Real.exp (-2 * x))⁻¹ = archDensity x := by
     unfold archDensity
-    field_simp [hqne, hdenne]
-    rw [hA, hB]
+    field_simp [hdenne]
     have htwo : Real.exp (-(x * 2)) = Real.exp (-2 * x) := by
       congr 1
       ring
-    rw [htwo]
+    rw [htwo, mul_sub, hA, hB]
     field_simp [hqne]
     ring
   rw [hseries, hgeom]
