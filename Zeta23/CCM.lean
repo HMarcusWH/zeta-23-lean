@@ -35,4 +35,5 @@ import Zeta23.CCM.DictionaryArchMuGrowth
 import Zeta23.CCM.DictionaryArchSourceMuIntegrability
 import Zeta23.CCM.DictionaryArchDensityBridge
 import Zeta23.CCM.DictionaryArchSourceBridge
+import Zeta23.CCM.DictionaryArchOffDiagonal
 import Zeta23.CCM.ClaimBindings
