@@ -116,12 +116,28 @@ theorem integral_archExpWeight_mul
   have hneg :
       (-(a : ℂ) - I * (τ : ℂ)) = -((a : ℂ) + I * (τ : ℂ)) := by
     ring
+  have hprod :
+      ((a : ℂ) - I * (τ : ℂ)) * ((a : ℂ) + I * (τ : ℂ)) =
+        (((a ^ 2 + τ ^ 2 : ℝ)) : ℂ) := by
+    calc
+      ((a : ℂ) - I * (τ : ℂ)) * ((a : ℂ) + I * (τ : ℂ)) =
+          (a : ℂ) ^ 2 - (I * (τ : ℂ)) ^ 2 := by ring
+      _ = ((a : ℂ) ^ 2 + (τ : ℂ) ^ 2) := by
+        rw [mul_pow, Complex.I_sq]
+        ring
+      _ = (((a ^ 2 + τ ^ 2 : ℝ)) : ℂ) := by push_cast; ring
   rw [hneg]
-  simp only [div_neg, neg_neg, sub_neg_eq_add]
-  push_cast
-  field_simp [h1, hp]
-  rw [Complex.I_sq]
-  ring
+  simp only [div_neg]
+  calc
+    (1 : ℂ) / ((a : ℂ) - I * (τ : ℂ)) -
+        -(1 / ((a : ℂ) + I * (τ : ℂ))) =
+      ((a : ℂ) + I * (τ : ℂ) + ((a : ℂ) - I * (τ : ℂ))) /
+        (((a : ℂ) - I * (τ : ℂ)) * ((a : ℂ) + I * (τ : ℂ))) := by
+          field_simp [h1, hp]
+    _ = (((2 * a) / (a ^ 2 + τ ^ 2) : ℝ) : ℂ) := by
+      rw [hprod]
+      push_cast
+      ring
 
 /-- Positive abscissa attached to the `m`-th digamma summand. -/
 def archSeriesAbscissa (m : ℕ) : ℝ :=
