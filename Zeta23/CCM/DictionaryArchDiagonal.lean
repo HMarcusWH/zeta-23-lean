@@ -109,7 +109,6 @@ private theorem digamma_quarter_sub_three_quarters :
   have hsin : Complex.sin ((Real.pi : ℂ) * q) ≠ 0 := by
     rw [show (Real.pi : ℂ) * q = (((Real.pi / 4 : ℝ) : ℂ)) by
       simp [q]
-      push_cast
       ring]
     exact complex_sin_pi_div_four_ne_zero
   have hright :
@@ -122,7 +121,6 @@ private theorem digamma_quarter_sub_three_quarters :
     simp only [logDeriv_const, Pi.zero_apply, zero_sub]
     rw [show (Real.pi : ℂ) * q = (((Real.pi / 4 : ℝ) : ℂ)) by
       simp [q]
-      push_cast
       ring, complex_cot_pi_div_four]
     ring
   have hfun :
@@ -133,7 +131,8 @@ private theorem digamma_quarter_sub_three_quarters :
     exact Complex.Gamma_mul_Gamma_one_sub z
   have heq := congrArg (fun f : ℂ → ℂ => logDeriv f q) hfun
   rw [hleft, hright] at heq
-  convert heq using 1 <;> norm_num [q]
+  convert heq using 1
+  all_goals norm_num [q]
 
 private theorem logDeriv_two_cpow_one_sub_two_mul (z : ℂ) :
     logDeriv (fun w : ℂ => (2 : ℂ) ^ (1 - 2 * w)) z =
@@ -264,7 +263,8 @@ private theorem archDensity_eq_exp_neg_half_div_one_sub_pow_four
   unfold archDensity
   apply (div_eq_div_iff hden hgeom).2
   simp only [mul_sub, mul_one, ← Real.exp_nat_mul, ← Real.exp_add]
-  congr 1 <;> ring
+  congr 1
+  all_goals ring
 
 private theorem hasDerivAt_archReferencePrimitive
     {x : ℝ} (hx : 0 < x) :
@@ -276,8 +276,8 @@ private theorem hasDerivAt_archReferencePrimitive
     dsimp [t]
     exact Real.exp_lt_one_iff.mpr (by linarith)
   have ht : HasDerivAt (fun y : ℝ => Real.exp (-y / 2)) (-t / 2) x := by
-    convert ((hasDerivAt_id x).neg.div_const 2).exp using 1 <;>
-      simp [t] <;> ring
+    convert ((hasDerivAt_id x).neg.div_const 2).exp using 1
+    all_goals simp [t]
   have h1t : 1 + t ≠ 0 := by positivity
   have h1t2 : 1 + t ^ 2 ≠ 0 := by positivity
   have hlogOne : HasDerivAt
@@ -357,8 +357,8 @@ theorem integrableOn_one_sub_exp_mul_archDensity_Ioi :
       (Ioi 0) :=
   integrableOn_Ioi_deriv_of_nonneg
     continuousWithinAt_archReferencePrimitive_zero
-    (fun x hx => hasDerivAt_archReferencePrimitive hx)
-    (fun x hx => archReferenceIntegrand_nonneg hx)
+    (fun _ hx => hasDerivAt_archReferencePrimitive hx)
+    (fun _ hx => archReferenceIntegrand_nonneg hx)
     tendsto_archReferencePrimitive_atTop
 
 theorem integral_one_sub_exp_mul_archDensity_Ioi :
@@ -472,8 +472,8 @@ theorem integrableOn_exp_neg_half_mul_archDensity_Ioi
       (fun x : ℝ => Real.exp (-x / 2) * archDensity x)
       (Ioi L) :=
   integrableOn_Ioi_deriv_of_nonneg'
-    (fun x hx => hasDerivAt_archTailPrimitive (hL.trans_le hx))
-    (fun x hx => archTailIntegrand_nonneg (hL.trans hx))
+    (fun _ hx => hasDerivAt_archTailPrimitive (hL.trans_le hx))
+    (fun _ hx => archTailIntegrand_nonneg (hL.trans hx))
     tendsto_archTailPrimitive_atTop
 
 theorem integral_exp_neg_half_mul_archDensity_Ioi
