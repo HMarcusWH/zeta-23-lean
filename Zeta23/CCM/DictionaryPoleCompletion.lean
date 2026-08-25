@@ -65,8 +65,7 @@ private theorem cos_dictionaryPole_shift_minus
     ring
   have h := cos_dictionaryPole_shift_plus hL (-n)
   rw [hfreq] at h
-  simp [sub_eq_add_neg] at h
-  exact h
+  simpa [sub_eq_add_neg] using h
 
 private theorem one_sub_cosh_half_eq_neg_two_sinh_sq (L : ℝ) :
     1 - Real.cosh (L / 2) = -2 * Real.sinh (L / 4) ^ 2 := by
