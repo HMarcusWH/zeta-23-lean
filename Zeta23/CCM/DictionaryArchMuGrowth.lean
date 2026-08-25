@@ -76,7 +76,7 @@ theorem archDigammaAllTerm_le_sqrt_weight
   have hs : 0 ≤ |t| := abs_nonneg t
   have hsqrt : 0 ≤ Real.sqrt |t| := Real.sqrt_nonneg _
   have hasqrt : 0 < Real.sqrt a := Real.sqrt_pos.2 ha
-  have hsqta : (Real.sqrt a) ^ 2 = a := by simpa using Real.sq_sqrt ha.le
+  have hsqta : (Real.sqrt a) ^ 2 = a := Real.sq_sqrt ha.le
   have hsqtt : (Real.sqrt |t|) ^ 2 = |t| := by simpa using Real.sq_sqrt hs
   rw [archDigammaAllTerm_eq_sq_div]
   dsimp [archHalfWeight]
