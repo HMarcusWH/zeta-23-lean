@@ -25,7 +25,7 @@ open scoped BigOperators
 /-!
 # X0: two-translate Weil algebra
 
-This file is deliberately algebraic.  It proves the sign/conjugation package for
+This file is deliberately algebraic. It proves the sign/conjugation package for
 `ZeroConfig.W` in the repository's exact Fourier convention before any exposed-pole
 growth argument is attempted.
 -/
@@ -43,10 +43,10 @@ theorem translate_phase_cancel (z : ℂ) (t : ℝ) :
         (starRingEnd ℂ)
           (Complex.exp (Complex.I * (starRingEnd ℂ) z * (t : ℂ))) = 1 := by
   change Complex.exp (Complex.I * z * (t : ℂ)) *
-      Complex.conj (Complex.exp (Complex.I * Complex.conj z * (t : ℂ))) = 1
+      conj (Complex.exp (Complex.I * conj z * (t : ℂ))) = 1
   rw [← Complex.exp_conj]
   have harg :
-      Complex.conj (Complex.I * Complex.conj z * (t : ℂ)) =
+      conj (Complex.I * conj z * (t : ℂ)) =
         -(Complex.I * z * (t : ℂ)) := by
     simp only [map_mul, Complex.conj_I, Complex.conj_conj, Complex.conj_ofReal]
     ring
@@ -61,16 +61,38 @@ theorem W_translateRight_both (Z : ZeroConfig) (f g : ℝ → ℂ) (t : ℝ) :
   refine tsum_congr fun ρ => ?_
   unfold ZeroConfig.Wsummand
   rw [paperFT_translateRight, paperFT_translateRight, map_mul]
-  rw [translate_phase_cancel (gammaOf (ρ : ℂ)) t]
-  ring
+  have hp := translate_phase_cancel (gammaOf (ρ : ℂ)) t
+  calc
+    (Z.mult (ρ : ℂ) : ℂ) *
+          (Complex.exp (Complex.I * gammaOf (ρ : ℂ) * (t : ℂ)) *
+            paperFT f (gammaOf (ρ : ℂ))) *
+          ((starRingEnd ℂ)
+              (Complex.exp
+                (Complex.I * (starRingEnd ℂ) (gammaOf (ρ : ℂ)) * (t : ℂ))) *
+            (starRingEnd ℂ)
+              (paperFT g ((starRingEnd ℂ) (gammaOf (ρ : ℂ))))) =
+        (Complex.exp (Complex.I * gammaOf (ρ : ℂ) * (t : ℂ)) *
+            (starRingEnd ℂ)
+              (Complex.exp
+                (Complex.I * (starRingEnd ℂ) (gammaOf (ρ : ℂ)) * (t : ℂ)))) *
+          ((Z.mult (ρ : ℂ) : ℂ) * paperFT f (gammaOf (ρ : ℂ)) *
+            (starRingEnd ℂ)
+              (paperFT g ((starRingEnd ℂ) (gammaOf (ρ : ℂ))))) := by
+      ring
+    _ = (Z.mult (ρ : ℂ) : ℂ) * paperFT f (gammaOf (ρ : ℂ)) *
+          (starRingEnd ℂ) (paperFT g ((starRingEnd ℂ) (gammaOf (ρ : ℂ)))) := by
+      rw [hp]
+      ring
 
 /-- The exact `ZeroConfig.W` convention is Hermitian under the zero reflection involution. -/
 theorem W_star_swap (Z : ZeroConfig) (f g : ℝ → ℂ) :
     (starRingEnd ℂ) (Z.W f g) = Z.W g f := by
   unfold ZeroConfig.W
+  change star (∑' ρ : Z.carrier, Z.Wsummand f g ρ) =
+    ∑' ρ : Z.carrier, Z.Wsummand g f ρ
   rw [tsum_star]
   calc
-    (∑' ρ : Z.carrier, (starRingEnd ℂ) (Z.Wsummand f g ρ)) =
+    (∑' ρ : Z.carrier, star (Z.Wsummand f g ρ)) =
         ∑' ρ : Z.carrier, Z.Wsummand g f (Z.reflectEquiv ρ) := by
       refine tsum_congr fun ρ => ?_
       have hm : Z.mult (reflect (ρ : ℂ)) = Z.mult (ρ : ℂ) :=
