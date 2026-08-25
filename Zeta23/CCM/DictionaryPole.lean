@@ -124,4 +124,35 @@ theorem paperFT_dictionaryTent_mul_cos
           ∫ y : ℝ, dictionaryTent L y * Complex.exp (I * (z - (a : ℂ)) * y)) / 2 := by
           ring
 
+/-- The diagonal basis transform is the symmetric pair of shifted tent transforms. -/
+theorem paperFT_dictionaryBasisTest_diag
+    {L : ℝ} (hL : 0 < L) (n : ℤ) (z : ℂ) :
+    Zeta23.paperFT (dictionaryBasisTest n n L) z =
+      (Zeta23.paperFT (dictionaryTent L) (z + (dictionaryFrequency n L : ℂ)) +
+        Zeta23.paperFT (dictionaryTent L) (z - (dictionaryFrequency n L : ℂ))) / 2 := by
+  have hfun : dictionaryBasisTest n n L =
+      fun y : ℝ => dictionaryTent L y *
+        ((Real.cos (dictionaryFrequency n L * y) : ℝ) : ℂ) := by
+    funext y
+    exact dictionaryBasisTest_diag_eq_tent_cos hL n y
+  rw [hfun]
+  exact paperFT_dictionaryTent_mul_cos hL (dictionaryFrequency n L) z
+
+/-- Before simplifying the closed form, the diagonal pole channel is exactly the
+sum of four shifted canonical-tent transform values. -/
+theorem dictionaryPoleRHS_basis_diag_eq_tent_shifts
+    {L : ℝ} (hL : 0 < L) (n : ℤ) :
+    dictionaryPoleRHS (dictionaryBasisTest n n L) =
+      (Zeta23.paperFT (dictionaryTent L)
+          (Complex.I / 2 + (dictionaryFrequency n L : ℂ)) +
+        Zeta23.paperFT (dictionaryTent L)
+          (Complex.I / 2 - (dictionaryFrequency n L : ℂ))) / 2 +
+      (Zeta23.paperFT (dictionaryTent L)
+          (-Complex.I / 2 + (dictionaryFrequency n L : ℂ)) +
+        Zeta23.paperFT (dictionaryTent L)
+          (-Complex.I / 2 - (dictionaryFrequency n L : ℂ))) / 2 := by
+  unfold dictionaryPoleRHS
+  rw [paperFT_dictionaryBasisTest_diag hL n (Complex.I / 2),
+    paperFT_dictionaryBasisTest_diag hL n (-Complex.I / 2)]
+
 end Zeta23.CCM

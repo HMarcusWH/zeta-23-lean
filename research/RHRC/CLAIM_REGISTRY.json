@@ -152,11 +152,13 @@
     {
       "id": "R003_CCM_RHS_IDENTITY",
       "statement": "For the full real finite dictionary test k_{u,L}, the deterministic literature explicit-formula RHS equals the quadratic form of dictionaryMatrix(L,N)=finiteMatrix(L,N)+2*cCorrection(L)*I on the real coefficient vector embedded in C.",
-      "status": "OPEN",
+      "status": "PROVED_UNCONDITIONAL",
       "dependencies": [],
+      "source": "Zeta23/CCM/DictionaryRHSIdentity.lean",
+      "theorem": "Zeta23.CCM.literatureRHS_dictionaryTest_eq_quadraticForm",
       "route": "R003_ccm_bridge",
-      "promotion_cap": "OPEN",
-      "note": "This is a zero-free deterministic analytic identity and must be proved channel by channel. The production dictionary carries a factor 1/2, so the older diagnostic normalization 2*M+4*cCorrection(L)*I is not the target theorem."
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "Zero-free deterministic analytic identity proved channel by channel. The production dictionary carries a factor 1/2, so the theorem target is finiteMatrix(L,N)+2*cCorrection(L)*I, not the older doubled diagnostic normalization. This does not prove the tent explicit-formula extension, any zero-side matrix identity, positivity, a finite-to-infinite theorem, or RH."
     },
     {
       "id": "R003_KERNEL_EF_EXTENSION",
