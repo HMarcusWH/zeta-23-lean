@@ -177,8 +177,7 @@ theorem paperFT_dictionarySourceTest_of_ne_frequency
   have hleft :
       (∫ y in -L..(0 : ℝ), G y) = ∫ y in (0 : ℝ)..L, G (-y) := by
     have h := intervalIntegral.integral_comp_neg (a := (0 : ℝ)) (b := L) G
-    norm_num at h
-    exact h.symm
+    simpa using h.symm
   rw [hleft]
   have hcneg : Continuous (fun y : ℝ => G (-y)) := by
     simpa [Function.comp_def] using hGcont.comp continuous_neg
