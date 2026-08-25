@@ -89,7 +89,7 @@ private theorem cos_dictionaryFrequency_L_sourceFourier
     {L : ℝ} (hL : 0 < L) (n : ℤ) :
     Real.cos (dictionaryFrequency n L * L) = 1 := by
   rw [dictionaryFrequency_mul_L_sourceFourier hL n]
-  simpa using Real.cos_int_mul_two_pi n
+  exact Real.cos_int_mul_two_pi n
 
 private theorem intervalIntegral_source_sin_cos_sourceFourier
     {L r : ℝ} (hL : 0 < L) (n : ℤ)
@@ -177,7 +177,8 @@ theorem paperFT_dictionarySourceTest_of_ne_frequency
   have hleft :
       (∫ y in -L..(0 : ℝ), G y) = ∫ y in (0 : ℝ)..L, G (-y) := by
     have h := intervalIntegral.integral_comp_neg (a := (0 : ℝ)) (b := L) G
-    simpa using h.symm
+    norm_num at h
+    exact h.symm
   rw [hleft]
   have hcneg : Continuous (fun y : ℝ => G (-y)) := by
     simpa [Function.comp_def] using hGcont.comp continuous_neg
@@ -212,7 +213,6 @@ theorem paperFT_dictionarySourceTest_of_ne_frequency
       ring
     rw [hepos, heneg, Complex.exp_ofReal_mul_I, Complex.exp_ofReal_mul_I]
     simp [Real.cos_neg, Real.sin_neg, abs_of_nonneg hy0, dictionaryFrequency]
-    push_cast
     ring
   rw [intervalIntegral.integral_congr hfun]
   rw [intervalIntegral.integral_ofReal]
