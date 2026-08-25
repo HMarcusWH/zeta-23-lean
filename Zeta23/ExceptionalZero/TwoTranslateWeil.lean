@@ -20,7 +20,7 @@ end Zeta23.ZeroConfig
 namespace Zeta23.ExceptionalZero
 
 open Complex
-open scoped BigOperators
+open scoped BigOperators ComplexConjugate
 
 /-!
 # X0: two-translate Weil algebra
@@ -97,9 +97,11 @@ theorem W_star_swap (Z : ZeroConfig) (f g : ℝ → ℂ) :
       refine tsum_congr fun ρ => ?_
       have hm : Z.mult (reflect (ρ : ℂ)) = Z.mult (ρ : ℂ) :=
         Z.mult_reflect (ρ : ℂ) ρ.2
-      simp only [ZeroConfig.Wsummand, ZeroConfig.reflectEquiv, Equiv.coe_fn_mk,
-        hm, gammaOf_reflect_weil, map_mul, map_natCast, star_star]
-      ring
+      change
+        (starRingEnd ℂ) (Z.Wsummand f g (ρ : ℂ)) =
+          Z.Wsummand g f (Z.reflectEquiv ρ)
+      simp [ZeroConfig.Wsummand, ZeroConfig.reflectEquiv, hm,
+        gammaOf_reflect_weil] <;> ring
     _ = ∑' ρ : Z.carrier, Z.Wsummand g f ρ :=
       Equiv.tsum_eq (Z.reflectEquiv) (fun ρ : Z.carrier => Z.Wsummand g f ρ)
 
