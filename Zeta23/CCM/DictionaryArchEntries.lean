@@ -1,3 +1,4 @@
+import Zeta23.CCM.DictionaryArchOffDiagonal
 import Zeta23.CCM.DictionaryArchDiagonalEvaluation
 
 noncomputable section
