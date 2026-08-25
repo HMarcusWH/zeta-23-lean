@@ -249,6 +249,5 @@ theorem dictionaryArchRHS_basis_diag_eq_physical
       unfold dictionaryArchPhysicalRHS
       rw [hk0]
       simp only [one_mul, mul_one]
-      ring
 
 end Zeta23.CCM
