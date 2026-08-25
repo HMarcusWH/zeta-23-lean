@@ -124,7 +124,8 @@ theorem exists_paperFT_dictionarySourceTest_inv_quad_bound
             rw [hcancel]
             have hm := mul_le_mul_of_nonneg_left hhalf
               (mul_nonneg (by norm_num : (0 : ℝ) ≤ 4) (abs_nonneg a))
-            convert hm using 1 <;> ring
+            convert hm using 1
+            all_goals ring
           _ = T := by rfl
       exact htail.trans (le_max_right _ _)
   let C : ℝ := 2 * (A + B)
