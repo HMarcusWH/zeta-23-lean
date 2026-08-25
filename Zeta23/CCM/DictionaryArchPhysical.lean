@@ -18,8 +18,8 @@ lock the source and diagonal normalization independently of that analytic bridge
 The subtraction by `k 0 * exp (-x/2)` is the finite-part regularization at the
 origin; `wCorrection` is the remaining aperture-dependent constant. -/
 def dictionaryArchPhysicalRHS (k : ℝ → ℂ) (L : ℝ) : ℂ :=
-  (-2 : ℂ) * ∫ x in (0 : ℝ)..L,
-      (k x - k 0 * (Real.exp (-x / 2) : ℂ)) * (archDensity x : ℂ)
+  (-2 : ℂ) * (∫ x in (0 : ℝ)..L,
+      (k x - k 0 * (Real.exp (-x / 2) : ℂ)) * (archDensity x : ℂ))
     - ((2 * wCorrection L : ℝ) : ℂ) * k 0
 
 @[simp] theorem dictionarySourceTest_zero
