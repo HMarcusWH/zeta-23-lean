@@ -72,7 +72,8 @@ theorem dictionaryArchRHS_basis_diag_eq_physical
   have hki : Integrable k := by
     simpa [k] using integrable_dictionaryBasisTest_diag_physical hL n
   have hFk : Integrable (𝓕 k) := by
-    simpa [k] using integrable_fourier_dictionaryBasisTest_diag hL n
+    change Integrable (𝓕 (dictionaryBasisTest n n L))
+    exact integrable_fourier_dictionaryBasisTest_diag hL n
   have heven : ∀ x : ℝ, k (-x) = k x := by
     intro x
     simpa [k] using dictionaryBasisTest_neg n n L x
