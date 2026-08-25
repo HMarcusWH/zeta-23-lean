@@ -34,8 +34,7 @@ theorem dictionaryRHS_dictionaryTest_eq_quadraticForm
   intro j hj
   rw [dictionaryMatrix_apply, finiteMatrix_apply]
   unfold entry
-  push_cast
-  ring
+  by_cases hij : i = j <;> simp [hij] <;> ring
 
 /-- Advertised real-coefficient R003 endpoint. -/
 theorem literatureRHS_dictionaryTest_eq_quadraticForm
