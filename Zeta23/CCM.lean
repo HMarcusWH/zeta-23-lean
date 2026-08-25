@@ -46,4 +46,6 @@ import Zeta23.CCM.DictionaryPrimeLift
 import Zeta23.CCM.DictionaryArchLift
 import Zeta23.CCM.DictionaryRHSIdentity
 import Zeta23.CCM.DictionarySmoothCoreBridge
+import Zeta23.CCM.DictionarySymmetry
+import Zeta23.CCM.DictionarySmoothCorePolarization
 import Zeta23.CCM.ClaimBindings
