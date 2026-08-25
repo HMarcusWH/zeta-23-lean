@@ -276,8 +276,8 @@ private theorem hasDerivAt_archReferencePrimitive
     dsimp [t]
     exact Real.exp_lt_one_iff.mpr (by linarith)
   have ht : HasDerivAt (fun y : ℝ => Real.exp (-y / 2)) (-t / 2) x := by
-    convert ((hasDerivAt_id x).neg.div_const 2).exp using 1
-    all_goals simp [t]
+    convert ((hasDerivAt_id x).neg.div_const 2).exp using 1 <;>
+      simp [t] <;> ring
   have h1t : 1 + t ≠ 0 := by positivity
   have h1t2 : 1 + t ^ 2 ≠ 0 := by positivity
   have hlogOne : HasDerivAt
