@@ -40,4 +40,5 @@ import Zeta23.CCM.DictionaryArchDiagonal
 import Zeta23.CCM.DictionaryArchDiagonalPhysical
 import Zeta23.CCM.DictionaryArchDiagonalEvaluation
 import Zeta23.CCM.DictionaryArchEntries
+import Zeta23.CCM.DictionaryFiniteExpansion
 import Zeta23.CCM.ClaimBindings
