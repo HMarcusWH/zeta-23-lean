@@ -137,7 +137,7 @@ private theorem cos_dictionaryFrequency_L_source
     {L : ℝ} (hL : 0 < L) (n : ℤ) :
     Real.cos (dictionaryFrequency n L * L) = 1 := by
   rw [dictionaryFrequency_mul_L_source hL n]
-  simpa using Real.cos_int_mul_two_pi n
+  exact Real.cos_int_mul_two_pi n
 
 private theorem intervalIntegral_source_sin_exp_pos_half
     {L : ℝ} (hL : 0 < L) (n : ℤ) :
@@ -155,7 +155,8 @@ private theorem intervalIntegral_source_sin_exp_pos_half
         Real.sin (dictionaryFrequency n L * y) * Real.exp (y / 2)) =
         sinExpPrimitive (dictionaryFrequency n L) (1 / 2) L -
           sinExpPrimitive (dictionaryFrequency n L) (1 / 2) 0 := by
-    convert h using 1 <;> ring
+    convert h using 1
+    all_goals ring
   rw [h']
   unfold sinExpPrimitive
   rw [sin_dictionaryFrequency_L_source hL n,
@@ -179,7 +180,8 @@ private theorem intervalIntegral_source_sin_exp_neg_half
         Real.sin (dictionaryFrequency n L * y) * Real.exp (-y / 2)) =
         sinExpPrimitive (dictionaryFrequency n L) (-1 / 2) L -
           sinExpPrimitive (dictionaryFrequency n L) (-1 / 2) 0 := by
-    convert h using 1 <;> ring
+    convert h using 1
+    all_goals ring
   rw [h']
   unfold sinExpPrimitive
   rw [sin_dictionaryFrequency_L_source hL n,
@@ -195,7 +197,8 @@ private theorem two_sub_exp_half_sub_exp_neg_half (L : ℝ) :
       (((2 * Real.cosh (L / 2) : ℝ)) : ℂ) =
         (((Real.exp (L / 2) + Real.exp (-L / 2) : ℝ)) : ℂ) := by
     push_cast
-    convert hcomplex using 1 <;> ring
+    convert hcomplex using 1
+    all_goals ring
   have hcosh :
       2 * Real.cosh (L / 2) =
         Real.exp (L / 2) + Real.exp (-L / 2) := by
@@ -286,7 +289,6 @@ theorem dictionaryPoleRHS_sourceTest
           ((Real.exp (-|y| / 2) : ℂ) + (Real.exp (|y| / 2) : ℂ)) = _
       rw [dictionarySourceTest_eq_sine_of_abs_le hL habs n]
       simp [abs_of_nonneg hy0, dictionaryFrequency]
-      push_cast
       ring
     rw [intervalIntegral.integral_congr hfun]
     rw [intervalIntegral.integral_ofReal]
@@ -320,7 +322,8 @@ theorem dictionaryPoleRHS_sourceTest
   norm_cast
   have hreal := sourcePole_real_algebra hL n
   dsimp [X] at hreal ⊢
-  convert hreal using 1 <;> ring
+  convert hreal using 1
+  all_goals ring
 
 /-- Off the diagonal, the literature pole channel satisfies exactly the same
 one-index displacement law as the fork-owned finite pole component. -/
