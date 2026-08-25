@@ -83,7 +83,6 @@ theorem paperFT_dictionaryTest_eq_basis_sum
     simp_rw [Finset.sum_mul]
     apply Finset.sum_congr rfl
     intro i hi
-    simp_rw [Finset.sum_mul]
     apply Finset.sum_congr rfl
     intro j hj
     ring
