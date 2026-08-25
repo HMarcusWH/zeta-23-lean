@@ -21,7 +21,16 @@ theorem qBasis_comm (n m : ℤ) (y L : ℝ) :
   · subst m
     rfl
   · have h' : m ≠ n := Ne.symm h
+    have hnmZ : n - m ≠ 0 := sub_ne_zero.mpr h
+    have hmnZ : m - n ≠ 0 := sub_ne_zero.mpr h'
+    have hnmR : (((n - m : ℤ) : ℝ)) ≠ 0 := by exact_mod_cast hnmZ
+    have hmnR : (((m - n : ℤ) : ℝ)) ≠ 0 := by exact_mod_cast hmnZ
+    have hden_nm : Real.pi * (((n - m : ℤ) : ℝ)) ≠ 0 :=
+      mul_ne_zero Real.pi_ne_zero hnmR
+    have hden_mn : Real.pi * (((m - n : ℤ) : ℝ)) ≠ 0 :=
+      mul_ne_zero Real.pi_ne_zero hmnR
     rw [qBasis, if_neg h, qBasis, if_neg h']
+    field_simp [hden_nm, hden_mn]
     push_cast
     ring
 
@@ -39,7 +48,12 @@ theorem archComponent_comm (n m : ℤ) (L : ℝ) :
   · subst m
     rfl
   · have h' : m ≠ n := Ne.symm h
+    have hnmZ : n - m ≠ 0 := sub_ne_zero.mpr h
+    have hmnZ : m - n ≠ 0 := sub_ne_zero.mpr h'
+    have hnmR : (((n - m : ℤ) : ℝ)) ≠ 0 := by exact_mod_cast hnmZ
+    have hmnR : (((m - n : ℤ) : ℝ)) ≠ 0 := by exact_mod_cast hmnZ
     rw [archComponent, if_neg h, archComponent, if_neg h']
+    field_simp [hnmR, hmnR]
     push_cast
     ring
 
@@ -61,7 +75,6 @@ theorem finiteMatrix_apply_comm
     (L : ℝ) (N : ℕ) (i j : Fin (2 * N + 1)) :
     finiteMatrix L N i j = finiteMatrix L N j i := by
   simp only [finiteMatrix_apply]
-  push_cast
   exact_mod_cast entry_comm (centeredIndex N i) (centeredIndex N j) L
 
 /-- The production dictionary matrix is symmetric entrywise. -/
