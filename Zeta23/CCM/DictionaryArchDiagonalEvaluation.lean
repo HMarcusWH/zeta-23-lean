@@ -140,6 +140,7 @@ theorem dictionaryArchPhysicalRHS_basis_diag
   have hk0basis : dictionaryBasisTest n n L 0 = 1 := by
     simpa [k] using hk0
   rw [dictionaryArchPhysicalRHS, hk0basis]
+  simp only [one_mul, mul_one]
   change (-2 : ℂ) * (∫ x : ℝ in (0 : ℝ)..L, p x) -
       ((2 * wCorrection L : ℝ) : ℂ) =
     -((archComponent n n L : ℝ) : ℂ) +
