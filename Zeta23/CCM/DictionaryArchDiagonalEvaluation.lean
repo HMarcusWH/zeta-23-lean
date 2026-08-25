@@ -56,6 +56,7 @@ theorem dictionaryArchPhysicalRHS_basis_diag
         2 * Real.pi * (n : ℝ) * x / L := by
       unfold dictionaryFrequency
       ring
+    simp only [Pi.sub_apply]
     rw [hfreq]
     dsimp [g]
     push_cast
@@ -136,7 +137,9 @@ theorem dictionaryArchPhysicalRHS_basis_diag
       rw [uIoo_of_le hL.le] at hx
       exact ne_of_gt hx.1
     simp [b, hxne]
-  rw [dictionaryArchPhysicalRHS, hk0]
+  have hk0basis : dictionaryBasisTest n n L 0 = 1 := by
+    simpa [k] using hk0
+  rw [dictionaryArchPhysicalRHS, hk0basis]
   change (-2 : ℂ) * (∫ x : ℝ in (0 : ℝ)..L, p x) -
       ((2 * wCorrection L : ℝ) : ℂ) =
     -((archComponent n n L : ℝ) : ℂ) +
