@@ -102,3 +102,5 @@ theorem zeroSum_dictionaryTest_zero_sum_eq_quadraticForm
       literatureRHS_dictionaryTest_eq_quadraticForm N u hL
 
 end Zeta23.CCM
+
+#print axioms Zeta23.CCM.zeroSum_dictionaryTest_zero_sum_eq_quadraticForm
