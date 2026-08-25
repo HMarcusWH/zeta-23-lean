@@ -35,7 +35,7 @@ private theorem cos_dictionaryFrequency_period
     {L : ℝ} (hL : 0 < L) (n : ℤ) :
     Real.cos (L * dictionaryFrequency n L) = 1 := by
   rw [dictionaryFrequency_mul_L hL n]
-  simpa using Real.cos_int_mul_two_pi n
+  exact Real.cos_int_mul_two_pi n
 
 private theorem cos_dictionaryPole_shift_plus
     {L : ℝ} (hL : 0 < L) (n : ℤ) :
@@ -65,7 +65,8 @@ private theorem cos_dictionaryPole_shift_minus
     ring
   have h := cos_dictionaryPole_shift_plus hL (-n)
   rw [hfreq] at h
-  simpa [sub_eq_add_neg] using h
+  simp [sub_eq_add_neg] at h
+  exact h
 
 private theorem one_sub_cosh_half_eq_neg_two_sinh_sq (L : ℝ) :
     1 - Real.cosh (L / 2) = -2 * Real.sinh (L / 4) ^ 2 := by
@@ -145,7 +146,9 @@ private theorem scaled_shifted_tent_term
       (-4 * (s : ℂ) ^ 2 / (L : ℂ)) * (z ^ 2)⁻¹ := by
   have hLC : (L : ℂ) ≠ 0 := by exact_mod_cast hL
   have hz2 : z ^ 2 ≠ 0 := pow_ne_zero _ hz
-  field_simp [hLC, hz2] <;> push_cast <;> ring
+  field_simp [hLC, hz2]
+  all_goals push_cast
+  all_goals ring
 
 private theorem shifted_tent_pole_algebra
     (L a s : ℝ) (hL : L ≠ 0) :
@@ -195,7 +198,8 @@ private theorem diagonal_pole_real_algebra
   unfold dictionaryFrequency poleComponent
   dsimp
   push_cast
-  field_simp [hL.ne', ne_of_gt hd] <;> ring
+  field_simp [hL.ne', ne_of_gt hd]
+  all_goals ring
 
 /-- The diagonal pole channel is exactly the existing finite CCM pole component.
 This is the first exact normalization gate after the shifted-tent reduction. -/
