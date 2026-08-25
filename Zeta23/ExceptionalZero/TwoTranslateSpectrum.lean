@@ -37,12 +37,12 @@ theorem twoTranslateWeilMatrix_star_apply
 /-- The characteristic determinant factors at the two real spectral offsets.
 This is the elementary 2x2 computation behind `d ± |C_f(t)|`. -/
 theorem twoTranslateWeilMatrix_det_sub_smul_one_factor
-    (Z : ZeroConfig) (f : ℝ → ℂ) (t : ℝ) (λ : ℂ) :
+    (Z : ZeroConfig) (f : ℝ → ℂ) (t : ℝ) (z : ℂ) :
     Matrix.det
         (twoTranslateWeilMatrix Z f t -
-          λ • (1 : Matrix (Fin 2) (Fin 2) ℂ)) =
-      ((Z.W f f - λ) - (‖weilRelativeCorrelation Z f t‖ : ℂ)) *
-        ((Z.W f f - λ) + (‖weilRelativeCorrelation Z f t‖ : ℂ)) := by
+          z • (1 : Matrix (Fin 2) (Fin 2) ℂ)) =
+      ((Z.W f f - z) - (‖weilRelativeCorrelation Z f t‖ : ℂ)) *
+        ((Z.W f f - z) + (‖weilRelativeCorrelation Z f t‖ : ℂ)) := by
   rw [Matrix.det_fin_two]
   simp [twoTranslateWeilMatrix]
   rw [← Complex.normSq_eq_conj_mul_self]
@@ -51,14 +51,14 @@ theorem twoTranslateWeilMatrix_det_sub_smul_one_factor
   ring
 
 /-- Exact characteristic spectrum of the two-translate matrix:
-`λ` is a characteristic root iff `λ = d + |C_f(t)|` or `λ = d - |C_f(t)|`. -/
+`z` is a characteristic root iff `z = d + |C_f(t)|` or `z = d - |C_f(t)|`. -/
 theorem twoTranslateWeilMatrix_eigenvalue_iff
-    (Z : ZeroConfig) (f : ℝ → ℂ) (t : ℝ) (λ : ℂ) :
+    (Z : ZeroConfig) (f : ℝ → ℂ) (t : ℝ) (z : ℂ) :
     Matrix.det
           (twoTranslateWeilMatrix Z f t -
-            λ • (1 : Matrix (Fin 2) (Fin 2) ℂ)) = 0 ↔
-      λ = Z.W f f + (‖weilRelativeCorrelation Z f t‖ : ℂ) ∨
-        λ = Z.W f f - (‖weilRelativeCorrelation Z f t‖ : ℂ) := by
+            z • (1 : Matrix (Fin 2) (Fin 2) ℂ)) = 0 ↔
+      z = Z.W f f + (‖weilRelativeCorrelation Z f t‖ : ℂ) ∨
+        z = Z.W f f - (‖weilRelativeCorrelation Z f t‖ : ℂ) := by
   rw [twoTranslateWeilMatrix_det_sub_smul_one_factor]
   constructor
   · intro h
