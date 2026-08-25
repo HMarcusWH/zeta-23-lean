@@ -59,7 +59,6 @@ theorem dictionaryArchPhysicalRHS_sourceTest
     rw [dictionarySourceTest_eq_sine_of_abs_le hL habs n]
     dsimp [s]
     simp [abs_of_nonneg hx0]
-    push_cast
     ring
   have hAlpha :
       (∫ x in (0 : ℝ)..L, s x) =
