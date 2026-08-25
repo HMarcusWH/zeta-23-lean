@@ -115,6 +115,7 @@ theorem paperFT_dictionaryTest_eq_basis_sum
   rw [integral_finsetSum _ (fun j _ => hint i j)]
   apply Finset.sum_congr rfl
   intro j hj
-  rw [Zeta23.integral_mul_const_C, Zeta23.integral_const_mul_C]
+  rw [Zeta23.integral_mul_const_C, Zeta23.integral_const_mul_C,
+    Zeta23.paperFT_def]
 
 end Zeta23.CCM
