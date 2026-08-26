@@ -1,6 +1,7 @@
 import Zeta23.ExceptionalZero.WeilFilter
 import Mathlib.Analysis.Calculus.BumpFunction.Convolution
 import Mathlib.Analysis.Calculus.Deriv.Shift
+import Mathlib.Analysis.Complex.RealDeriv
 
 noncomputable section
 
@@ -13,13 +14,15 @@ open scoped Convolution
 # X1: real-even target-adaptive visibility
 
 The existing exceptional-zero stack already contains the pole-killing operator
-`poleKilled` and its exact Fourier multiplier.  X1 therefore starts by producing,
-for an arbitrary complex spectral target, a real-even smooth compactly supported
-bump whose paper Fourier transform is nonzero at that target.
+`poleKilled` and its exact Fourier multiplier. X1 therefore produces, for an
+arbitrary complex spectral target, a real-even smooth compactly supported bump
+whose paper Fourier transform is nonzero at that target, and then applies the
+existing pole killer.
 
-The construction uses a normalized bump as an approximate identity.  A sufficiently
-small real-even bump has Fourier response close to `1` at the fixed target, hence
-cannot vanish there.  No zero location is hard-coded into the test family.
+The seed construction uses a normalized bump as an approximate identity. A
+sufficiently small real-even bump has Fourier response close to `1` at the fixed
+target, hence cannot vanish there. No zero location is hard-coded into the test
+family.
 -/
 
 /-- Every complex spectral target is visible to a real-even `C⁴` compactly supported test. -/
@@ -88,6 +91,107 @@ theorem exists_realEven_contDiff_visible_test (w : ℂ) :
     simp
   exact ⟨q, hq4, hqc, hqeven, hqreal, hqvis⟩
 
+/-- The first derivative of an even function is odd. This statement is purely algebraic because
+`deriv` is totalized in Mathlib. -/
+theorem deriv_odd_of_even {q : ℝ → ℂ} (hq : Function.Even q) :
+    Function.Odd (deriv q) := by
+  have hfun : (fun y : ℝ => q (-y)) = q := by
+    funext y
+    exact hq y
+  intro x
+  have h := congrArg (fun f : ℝ → ℂ => deriv f x) hfun
+  rw [deriv_comp_neg] at h
+  exact neg_eq_iff_eq_neg.mp h
+
+/-- Two derivatives preserve evenness. -/
+theorem deriv_deriv_even_of_even {q : ℝ → ℂ} (hq : Function.Even q) :
+    Function.Even (deriv (deriv q)) := by
+  have hodd : Function.Odd (deriv q) := deriv_odd_of_even hq
+  have hfun : (fun y : ℝ => deriv q (-y)) = -deriv q := by
+    funext y
+    exact hodd y
+  intro x
+  have h := congrArg (fun f : ℝ → ℂ => deriv f x) hfun
+  rw [deriv_comp_neg, deriv.neg] at h
+  exact neg_injective h
+
+/-- A differentiable complex-valued function that is pointwise real has a pointwise real derivative. -/
+theorem deriv_im_eq_zero_of_real {q : ℝ → ℂ}
+    (hq : Differentiable ℝ q) (hreal : ∀ x : ℝ, (q x).im = 0) (x : ℝ) :
+    (deriv q x).im = 0 := by
+  have hqAt : HasDerivAt q (deriv q x) x := (hq x).hasDerivAt
+  have him : HasDerivAt (fun y : ℝ => (q y).im) ((deriv q x).im) x := by
+    have h := Complex.imCLM.hasFDerivAt.comp_hasDerivAt x hqAt
+    simpa [Function.comp_apply] using h
+  have hfun : (fun y : ℝ => (q y).im) = fun _ : ℝ => 0 := by
+    funext y
+    exact hreal y
+  rw [hfun] at him
+  have hzero : HasDerivAt (fun _ : ℝ => (0 : ℝ)) 0 x := hasDerivAt_const x 0
+  exact him.unique hzero
+
+/-- The pole-killing operator preserves evenness. -/
+theorem poleKilled_even {q : ℝ → ℂ} (hq : Function.Even q) :
+    Function.Even (poleKilled q) := by
+  have hdd : Function.Even (deriv (deriv q)) := deriv_deriv_even_of_even hq
+  intro x
+  unfold poleKilled
+  rw [hdd x, hq x]
+
+/-- On a `C⁴` real-valued seed, the pole-killing operator remains real-valued. -/
+theorem poleKilled_im_eq_zero {q : ℝ → ℂ}
+    (hq4 : ContDiff ℝ 4 q) (hreal : ∀ x : ℝ, (q x).im = 0) :
+    ∀ x : ℝ, (poleKilled q x).im = 0 := by
+  have hqdiff : Differentiable ℝ q := hq4.differentiable (by norm_num)
+  have hdreal : ∀ x : ℝ, (deriv q x).im = 0 :=
+    fun x => deriv_im_eq_zero_of_real hqdiff hreal x
+  have hd3 : ContDiff ℝ 3 (deriv q) := hq4.deriv'
+  have hddiff : Differentiable ℝ (deriv q) := hd3.differentiable (by norm_num)
+  have hddreal : ∀ x : ℝ, (deriv (deriv q) x).im = 0 :=
+    fun x => deriv_im_eq_zero_of_real hddiff hdreal x
+  intro x
+  simp [poleKilled, hddreal x, hreal x]
+
+/-- **X1 endpoint.** Every nontrivial zeta zero is visible to an admissible real-even
+pole-neutral Weil test. The test is target-adaptive but uses no assumption that the zero is
+off the critical line. -/
+theorem exists_realEven_poleKilled_visible_test
+    (ρ₀ : zetaZeroConfig.carrier) :
+    ∃ k : ℝ → ℂ,
+      ContDiff ℝ 2 k ∧ HasCompactSupport k ∧ Function.Even k ∧
+        (∀ x : ℝ, (k x).im = 0) ∧
+        paperFT k (I / 2) = 0 ∧ paperFT k (-I / 2) = 0 ∧
+        paperFT k (gammaOf (ρ₀ : ℂ)) ≠ 0 := by
+  obtain ⟨q, hq4, hqc, hqeven, hqreal, hqvis⟩ :=
+    exists_realEven_contDiff_visible_test (gammaOf (ρ₀ : ℂ))
+  have hq2 : ContDiff ℝ 2 q := hq4.of_le (by norm_num)
+  refine ⟨poleKilled q,
+    contDiff_poleKilled hq4,
+    hasCompactSupport_poleKilled hqc,
+    poleKilled_even hqeven,
+    poleKilled_im_eq_zero hq4 hqreal,
+    paperFT_poleKilled_I_half hq2 hqc,
+    paperFT_poleKilled_neg_I_half hq2 hqc,
+    ?_⟩
+  exact paperFT_poleKilled_ne_zero_at_zero hq2 hqc ρ₀ hqvis
+
+/-- X1/R001 handoff: a hypothetical right-half zero admits a real-even, pole-neutral test whose
+translated arithmetic explicit-formula side violates every subexponential bound. -/
+theorem exists_realEven_poleKilled_test_not_subexponential_of_right_zero
+    (ρ₀ : zetaZeroConfig.carrier) (hright : 1 / 2 < (ρ₀ : ℂ).re) :
+    ∃ k : ℝ → ℂ,
+      ContDiff ℝ 2 k ∧ HasCompactSupport k ∧ Function.Even k ∧
+        (∀ x : ℝ, (k x).im = 0) ∧
+        paperFT k (I / 2) = 0 ∧ paperFT k (-I / 2) = 0 ∧
+        ¬ Subexponential
+          (fun a => ‖Zeta23.EF.literatureRHS (translateRight k (2 * a))‖) := by
+  obtain ⟨k, hk2, hkc, hkeven, hkreal, hkp, hkn, hkvis⟩ :=
+    exists_realEven_poleKilled_visible_test ρ₀
+  refine ⟨k, hk2, hkc, hkeven, hkreal, hkp, hkn, ?_⟩
+  exact not_subexponential_weilLiteratureRHS_of_right_zero hk2 hkc ρ₀ hright hkvis
+
 #print axioms Zeta23.ExceptionalZero.exists_realEven_contDiff_visible_test
+#print axioms Zeta23.ExceptionalZero.exists_realEven_poleKilled_visible_test
+#print axioms Zeta23.ExceptionalZero.exists_realEven_poleKilled_test_not_subexponential_of_right_zero
 
 end Zeta23.ExceptionalZero
