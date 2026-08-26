@@ -74,10 +74,7 @@ theorem exists_realEven_contDiff_visible_test (w : ℂ) :
           ∫ u : ℝ, (q u * Complex.exp (I * w * (u : ℂ))).re := by
         apply integral_congr_ae
         filter_upwards with x
-        have harg : -(I * w * ((-x : ℝ) : ℂ)) = I * w * (x : ℂ) := by
-          push_cast
-          ring
-        simp [q, g, lsmul_apply, harg, Complex.mul_re]
+        simp [q, g, lsmul_apply, Complex.mul_re]
       _ = (∫ u : ℝ, q u * Complex.exp (I * w * (u : ℂ))).re := by
         exact integral_re hint
   have hqvis_re : (paperFT q w).re ≠ 0 := by
@@ -120,15 +117,20 @@ theorem deriv_im_eq_zero_of_real {q : ℝ → ℂ}
     (hq : Differentiable ℝ q) (hreal : ∀ x : ℝ, (q x).im = 0) (x : ℝ) :
     (deriv q x).im = 0 := by
   have hqAt : HasDerivAt q (deriv q x) x := (hq x).hasDerivAt
-  have him : HasDerivAt (fun y : ℝ => (q y).im) ((deriv q x).im) x := by
-    have h := Complex.imCLM.hasFDerivAt.comp_hasDerivAt x hqAt
-    simpa [Function.comp_apply] using h
-  have hfun : (fun y : ℝ => (q y).im) = fun _ : ℝ => 0 := by
+  have hconjDeriv :
+      deriv (fun y : ℝ => conj (q y)) x = conj (deriv q x) := by
+    have h := Complex.conjCLE.hasFDerivAt.comp_hasDerivAt x hqAt
+    simpa [Function.comp_apply] using h.deriv
+  have hfun : (fun y : ℝ => conj (q y)) = q := by
     funext y
-    exact hreal y
-  rw [hfun] at him
-  have hzero : HasDerivAt (fun _ : ℝ => (0 : ℝ)) 0 x := hasDerivAt_const x 0
-  exact him.unique hzero
+    apply Complex.ext
+    · simp
+    · simp [hreal y]
+  have hderiv := congrArg (fun f : ℝ → ℂ => deriv f x) hfun
+  rw [hconjDeriv] at hderiv
+  have him := congrArg Complex.im hderiv
+  simp only [Complex.conj_im] at him
+  linarith
 
 /-- The pole-killing operator preserves evenness. -/
 theorem poleKilled_even {q : ℝ → ℂ} (hq : Function.Even q) :
