@@ -118,18 +118,21 @@ theorem deriv_im_eq_zero_of_real {q : ℝ → ℂ}
     (deriv q x).im = 0 := by
   have hqAt : HasDerivAt q (deriv q x) x := (hq x).hasDerivAt
   have hconjDeriv :
-      deriv (fun y : ℝ => conj (q y)) x = conj (deriv q x) := by
+      deriv (fun y : ℝ => Complex.conjCLE (q y)) x =
+        Complex.conjCLE (deriv q x) := by
     have h := Complex.conjCLE.hasFDerivAt.comp_hasDerivAt x hqAt
-    simpa [Function.comp_apply] using h.deriv
-  have hfun : (fun y : ℝ => conj (q y)) = q := by
+    simpa only [Function.comp_apply] using h.deriv
+  have hfun : (fun y : ℝ => Complex.conjCLE (q y)) = q := by
     funext y
+    rw [Complex.conjCLE_apply]
     apply Complex.ext
     · simp
     · simp [hreal y]
   have hderiv := congrArg (fun f : ℝ → ℂ => deriv f x) hfun
   rw [hconjDeriv] at hderiv
-  have him := congrArg Complex.im hderiv
-  simp only [Complex.conj_im] at him
+  have him : -(deriv q x).im = (deriv q x).im := by
+    simpa only [Complex.conjCLE_apply, Complex.conj_im] using
+      congrArg Complex.im hderiv
   linarith
 
 /-- The pole-killing operator preserves evenness. -/
