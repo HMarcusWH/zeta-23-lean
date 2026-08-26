@@ -30,8 +30,9 @@ theorem exists_realEven_contDiff_visible_test (w : ℂ) :
   let g : ℝ → ℝ := fun x => (Complex.exp (-(I * w * (x : ℂ)))).re
   have hg : Continuous g := by
     fun_prop
+  have hg0 : ContinuousAt g 0 := hg.continuousAt
   obtain ⟨δ, hδ, hclose⟩ :=
-    (Metric.continuousAt_iff.1 hg.continuousAt) (1 / 2 : ℝ) (by norm_num)
+    (Metric.continuousAt_iff.1 hg0) (1 / 2 : ℝ) (by norm_num)
   let φ : ContDiffBump (0 : ℝ) :=
     ⟨δ / 2, δ, by positivity, by linarith⟩
   have hconv :
@@ -40,7 +41,7 @@ theorem exists_realEven_contDiff_visible_test (w : ℂ) :
           (g 0) ≤ (1 / 2 : ℝ) := by
     apply φ.dist_normed_convolution_le hg.aestronglyMeasurable
     intro x hx
-    exact le_of_lt (hclose x (by simpa [φ] using hx))
+    exact le_of_lt (hclose (by simpa [φ] using hx))
   have hconv_ne : ((φ.normed volume ⋆[lsmul ℝ ℝ, volume] g) 0) ≠ 0 := by
     intro hzero
     rw [hzero] at hconv
@@ -65,13 +66,17 @@ theorem exists_realEven_contDiff_visible_test (w : ℂ) :
   have hconv_re :
       ((φ.normed volume ⋆[lsmul ℝ ℝ, volume] g) 0) = (paperFT q w).re := by
     unfold MeasureTheory.convolution paperFT
-    rw [← integral_re hint]
-    apply integral_congr_ae
-    filter_upwards with x
-    have harg : -(I * w * ((-x : ℝ) : ℂ)) = I * w * (x : ℂ) := by
-      push_cast
-      ring
-    simp [q, g, lsmul_apply, harg, Complex.mul_re]
+    calc
+      (∫ t : ℝ, ((lsmul ℝ ℝ) (φ.normed volume t)) (g (0 - t))) =
+          ∫ u : ℝ, (q u * Complex.exp (I * w * (u : ℂ))).re := by
+        apply integral_congr_ae
+        filter_upwards with x
+        have harg : -(I * w * ((-x : ℝ) : ℂ)) = I * w * (x : ℂ) := by
+          push_cast
+          ring
+        simp [q, g, lsmul_apply, harg, Complex.mul_re]
+      _ = (∫ u : ℝ, q u * Complex.exp (I * w * (u : ℂ))).re := by
+        exact integral_re hint
   have hqvis_re : (paperFT q w).re ≠ 0 := by
     intro hzero
     apply hconv_ne
