@@ -86,9 +86,10 @@ theorem star_paperFT_star_eq_paperFT_of_real_even {k : ℝ → ℂ}
     paperFT_neg_eq_paperFT_of_even heven z]
 
 /-- **X2 legality gate.**  The squared natural Weil filter is absolutely summable under exactly the
-usual `C²` compact-support hypotheses.  No new zero-counting estimate is used: the ordinary
-multiplicity-weighted norm series is summable, its product with itself is summable, and the diagonal
-majorizes the squared-filter coefficient because every zero multiplicity is at least one. -/
+usual `C²` compact-support hypotheses. No new zero-counting estimate is used: the ordinary
+multiplicity-weighted norm series is summable; each coefficient norm is bounded by its total
+ℓ¹ mass; because every zero multiplicity is at least one, the squared-filter coefficient is
+dominated by that fixed mass times the original summable coefficient family. -/
 theorem absolutelySummableZeroFilter_squaredWeil {k : ℝ → ℂ}
     (hk : ContDiff ℝ 2 k) (hkc : HasCompactSupport k) :
     AbsolutelySummableZeroFilter (squaredWeilZeroFilter k) := by
