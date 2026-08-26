@@ -118,12 +118,12 @@ theorem deriv_im_eq_zero_of_real {q : ℝ → ℂ}
     (deriv q x).im = 0 := by
   have hqAt : HasDerivAt q (deriv q x) x := (hq x).hasDerivAt
   have hconjDeriv :
-      deriv (fun y : ℝ => Complex.conjCLE (q y)) x =
+      deriv (Complex.conjCLE ∘ q) x =
         Complex.conjCLE (deriv q x) := by
-    have h := Complex.conjCLE.hasFDerivAt.comp_hasDerivAt x hqAt
-    simpa only [Function.comp_apply] using h.deriv
-  have hfun : (fun y : ℝ => Complex.conjCLE (q y)) = q := by
+    exact (Complex.conjCLE.hasFDerivAt.comp_hasDerivAt x hqAt).deriv
+  have hfun : (Complex.conjCLE ∘ q) = q := by
     funext y
+    change Complex.conjCLE (q y) = q y
     rw [Complex.conjCLE_apply]
     apply Complex.ext
     · simp
