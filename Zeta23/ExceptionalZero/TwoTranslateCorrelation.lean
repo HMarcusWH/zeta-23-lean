@@ -101,7 +101,7 @@ theorem absolutelySummableZeroFilter_squaredWeil {k : ℝ → ℂ}
       ‖zeroFilterCoeff (weilZeroFilter k) ρ‖ ≤ B := by
     intro ρ
     have hsingle := hb.sum_le_tsum {ρ} (fun σ _ => norm_nonneg _)
-    simpa [B] using hsingle
+    simpa only [Finset.sum_singleton, B] using hsingle
   have hmajor : Summable (fun ρ : zetaZeroConfig.carrier =>
       B * ‖zeroFilterCoeff (weilZeroFilter k) ρ‖) :=
     hb.mul_left B
