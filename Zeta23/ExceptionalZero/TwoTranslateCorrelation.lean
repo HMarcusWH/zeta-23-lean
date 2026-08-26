@@ -93,18 +93,17 @@ theorem absolutelySummableZeroFilter_squaredWeil {k : ℝ → ℂ}
     (hk : ContDiff ℝ 2 k) (hkc : HasCompactSupport k) :
     AbsolutelySummableZeroFilter (squaredWeilZeroFilter k) := by
   classical
-  have hb0 := absolutelySummableZeroFilter_weil hk hkc
-  unfold AbsolutelySummableZeroFilter at hb0 ⊢
-  let b : zetaZeroConfig.carrier → ℝ :=
-    fun ρ => ‖zeroFilterCoeff (weilZeroFilter k) ρ‖
-  have hb : Summable b := by
-    simpa [b] using hb0
-  let B : ℝ := ∑' ρ : zetaZeroConfig.carrier, b ρ
-  have hb_le_B : ∀ ρ : zetaZeroConfig.carrier, b ρ ≤ B := by
+  have hb := absolutelySummableZeroFilter_weil hk hkc
+  unfold AbsolutelySummableZeroFilter at hb ⊢
+  let B : ℝ :=
+    ∑' ρ : zetaZeroConfig.carrier, ‖zeroFilterCoeff (weilZeroFilter k) ρ‖
+  have hcoeff_le_B : ∀ ρ : zetaZeroConfig.carrier,
+      ‖zeroFilterCoeff (weilZeroFilter k) ρ‖ ≤ B := by
     intro ρ
     have hsingle := hb.sum_le_tsum {ρ} (fun σ _ => norm_nonneg _)
     simpa [B] using hsingle
-  have hmajor : Summable (fun ρ : zetaZeroConfig.carrier => B * b ρ) :=
+  have hmajor : Summable (fun ρ : zetaZeroConfig.carrier =>
+      B * ‖zeroFilterCoeff (weilZeroFilter k) ρ‖) :=
     hb.mul_left B
   refine hmajor.of_nonneg_of_le (fun ρ => norm_nonneg _) ?_
   intro ρ
@@ -114,11 +113,26 @@ theorem absolutelySummableZeroFilter_squaredWeil {k : ℝ → ℂ}
     exact_mod_cast hmNat
   have hm : (1 : ℝ) ≤ ‖((zeroMult (ρ : ℂ) : ℂ))‖ := by
     simpa using hmR
-  have ha : 0 ≤ ‖paperFT k (gammaOf (ρ : ℂ))‖ := norm_nonneg _
-  have hbound := hb_le_B ρ
-  simp only [b, zeroFilterCoeff, squaredWeilZeroFilter, weilZeroFilter,
+  have ha0 : 0 ≤ ‖paperFT k (gammaOf (ρ : ℂ))‖ := norm_nonneg _
+  have hbound := hcoeff_le_B ρ
+  simp only [zeroFilterCoeff, squaredWeilZeroFilter, weilZeroFilter,
     norm_mul, norm_pow] at hbound ⊢
-  nlinarith
+  have ha_le_coeff :
+      ‖paperFT k (gammaOf (ρ : ℂ))‖ ≤
+        ‖((zeroMult (ρ : ℂ) : ℂ))‖ * ‖paperFT k (gammaOf (ρ : ℂ))‖ := by
+    nlinarith
+  have ha_le_B :
+      ‖paperFT k (gammaOf (ρ : ℂ))‖ ≤ B :=
+    ha_le_coeff.trans hbound
+  calc
+    ‖((zeroMult (ρ : ℂ) : ℂ))‖ * ‖paperFT k (gammaOf (ρ : ℂ))‖ ^ 2
+        = ‖paperFT k (gammaOf (ρ : ℂ))‖ *
+            (‖((zeroMult (ρ : ℂ) : ℂ))‖ *
+              ‖paperFT k (gammaOf (ρ : ℂ))‖) := by ring
+    _ ≤ B * (‖((zeroMult (ρ : ℂ) : ℂ))‖ *
+          ‖paperFT k (gammaOf (ρ : ℂ))‖) := by
+      exact mul_le_mul_of_nonneg_right ha_le_B
+        (mul_nonneg (norm_nonneg _) ha0)
 
 /-- **X2 endpoint.**  For every real-even test and every real aperture, the complete relative Weil
 correlation at translation `2a` is literally the generic R001 filtered exponential family of the
@@ -136,7 +150,14 @@ theorem weilRelativeCorrelation_two_mul_eq_filteredZeroFamily_squared
   rw [paperFT_translateRight_gammaOf k a (ρ : ℂ)]
   rw [star_paperFT_star_eq_paperFT_of_real_even hreal heven]
   simp only [zeroFilterCoeff, squaredWeilZeroFilter, weilZeroFilter]
-  simp only [zetaZeroConfig]
+  show
+    (zeroMult (ρ : ℂ) : ℂ) *
+        (Complex.exp ((2 * ((ρ : ℂ) - (1 / 2 : ℂ))) * (a : ℂ)) *
+          paperFT k (gammaOf (ρ : ℂ))) *
+        paperFT k (gammaOf (ρ : ℂ)) =
+      (zeroMult (ρ : ℂ) : ℂ) *
+        (paperFT k (gammaOf (ρ : ℂ))) ^ 2 *
+        Complex.exp ((2 * ((ρ : ℂ) - (1 / 2 : ℂ))) * (a : ℂ))
   ring
 
 #print axioms Zeta23.ExceptionalZero.star_paperFT_star_eq_paperFT_of_real_even
