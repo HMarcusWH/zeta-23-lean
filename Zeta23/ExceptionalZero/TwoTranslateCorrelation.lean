@@ -106,7 +106,9 @@ theorem absolutelySummableZeroFilter_squaredWeil {k : ℝ → ℂ}
         (fun ρ : zetaZeroConfig.carrier => (ρ, ρ)) := by
       intro ρ σ h
       exact congrArg Prod.fst h
-    simpa using hprod.comp_injective hι
+    have hdiagComp :=
+      hprod.comp_injective hι
+    simpa only [Function.comp_apply] using hdiagComp
   refine hdiag.of_nonneg_of_le (fun ρ => norm_nonneg _) ?_
   intro ρ
   have hmNat : 1 ≤ zeroMult (ρ : ℂ) :=
@@ -136,6 +138,13 @@ theorem weilRelativeCorrelation_two_mul_eq_filteredZeroFamily_squared
   rw [paperFT_translateRight_gammaOf k a (ρ : ℂ)]
   rw [star_paperFT_star_eq_paperFT_of_real_even hreal heven]
   simp only [zeroFilterCoeff, squaredWeilZeroFilter, weilZeroFilter]
+  change
+    (zeroMult (ρ : ℂ) : ℂ) *
+        Complex.exp ((2 * ((ρ : ℂ) - (1 / 2 : ℂ))) * (a : ℂ)) *
+        (paperFT k (gammaOf (ρ : ℂ))) ^ 2 =
+      Complex.exp ((2 * ((ρ : ℂ) - (1 / 2 : ℂ))) * (a : ℂ)) *
+        (paperFT k (gammaOf (ρ : ℂ))) ^ 2 *
+        (zeroMult (ρ : ℂ) : ℂ)
   ring
 
 #print axioms Zeta23.ExceptionalZero.star_paperFT_star_eq_paperFT_of_real_even
