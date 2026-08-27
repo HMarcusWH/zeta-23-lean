@@ -195,7 +195,10 @@ theorem squaredWeilZeroFilter_coeffMass_eq_W_re_of_criticalLine
   have hzero :=
     weilRelativeCorrelation_two_mul_eq_filteredZeroFamily_squared
       hreal heven 0
-  have htranslate : translateRight k 0 = k := by
+  change
+    zetaZeroConfig.W (translateRight k (2 * 0)) k =
+      filteredZeroFamily (squaredWeilZeroFilter k) (1 / 2 : ℂ) 0 at hzero
+  have htranslate : translateRight k (2 * 0) = k := by
     funext x
     simp [translateRight]
   rw [htranslate] at hzero
@@ -203,7 +206,7 @@ theorem squaredWeilZeroFilter_coeffMass_eq_W_re_of_criticalLine
       zetaZeroConfig.W k k =
         ∑' ρ : zetaZeroConfig.carrier,
           zeroFilterCoeff (squaredWeilZeroFilter k) ρ := by
-    simpa [weilRelativeCorrelation, filteredZeroFamily, filteredZeroTerm] using hzero
+    simpa [filteredZeroFamily, filteredZeroTerm] using hzero
   rw [hself, Complex.re_tsum hsum]
   exact tsum_congr (fun ρ =>
     norm_squaredWeilZeroFilter_coeff_eq_re_of_criticalLine
