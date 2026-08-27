@@ -141,9 +141,10 @@ theorem squaredWeilZeroFilter_coeff_re_nonneg_of_criticalLine
     0 ≤ (zeroFilterCoeff (squaredWeilZeroFilter k) ρ).re := by
   have him :=
     paperFT_im_eq_zero_at_criticalLine_of_real_even hreal heven ρ hline
+  have hm : (0 : ℝ) ≤ (zeroMult (ρ : ℂ) : ℝ) := Nat.cast_nonneg _
   rw [zeroFilterCoeff_squaredWeilZeroFilter]
   simp [pow_two, Complex.mul_re, him]
-  positivity
+  exact mul_nonneg hm (mul_self_nonneg _)
 
 /-- The same critical-line coefficient has zero imaginary part. -/
 theorem squaredWeilZeroFilter_coeff_im_eq_zero_of_criticalLine
@@ -194,12 +195,15 @@ theorem squaredWeilZeroFilter_coeffMass_eq_W_re_of_criticalLine
   have hzero :=
     weilRelativeCorrelation_two_mul_eq_filteredZeroFamily_squared
       hreal heven 0
+  have htranslate : translateRight k 0 = k := by
+    funext x
+    simp [translateRight]
+  rw [htranslate] at hzero
   have hself :
       zetaZeroConfig.W k k =
         ∑' ρ : zetaZeroConfig.carrier,
           zeroFilterCoeff (squaredWeilZeroFilter k) ρ := by
-    simpa [weilRelativeCorrelation, translateRight,
-      filteredZeroFamily, filteredZeroTerm] using hzero
+    simpa [weilRelativeCorrelation, filteredZeroFamily, filteredZeroTerm] using hzero
   rw [hself, Complex.re_tsum hsum]
   exact tsum_congr (fun ρ =>
     norm_squaredWeilZeroFilter_coeff_eq_re_of_criticalLine
