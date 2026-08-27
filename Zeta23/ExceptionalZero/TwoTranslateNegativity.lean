@@ -47,24 +47,22 @@ theorem twoTranslatePhaseWitness_value
           weilRelativeCorrelation Z f t =
         (‖weilRelativeCorrelation Z f t‖ : ℂ) ^ 2 := by
     rw [← Complex.normSq_eq_conj_mul_self, Complex.normSq_eq_norm_sq]
-    rfl
-  have hnorm_weighted :
-      (‖weilRelativeCorrelation Z f t‖ : ℂ) *
-          (starRingEnd ℂ) (weilRelativeCorrelation Z f t) *
-          weilRelativeCorrelation Z f t =
-        (‖weilRelativeCorrelation Z f t‖ : ℂ) ^ 3 := by
-    rw [mul_assoc, hnorm]
-    ring
-  have hnorm_diagonal :
-      Z.W f f *
-          (starRingEnd ℂ) (weilRelativeCorrelation Z f t) *
-          weilRelativeCorrelation Z f t =
-        Z.W f f * (‖weilRelativeCorrelation Z f t‖ : ℂ) ^ 2 := by
-    rw [mul_assoc, hnorm]
+    push_cast
   simp [twoTranslatePhaseWitness, twoTranslateWeilMatrix, Matrix.mulVec, dotProduct,
     Fin.sum_univ_two]
-  rw [hnorm_weighted, hnorm_diagonal]
-  ring
+  calc
+    _ = 2 * (‖weilRelativeCorrelation Z f t‖ : ℂ) ^ 2 * Z.W f f -
+          2 * (‖weilRelativeCorrelation Z f t‖ : ℂ) *
+            ((starRingEnd ℂ) (weilRelativeCorrelation Z f t) *
+              weilRelativeCorrelation Z f t) := by
+        ring
+    _ = 2 * (‖weilRelativeCorrelation Z f t‖ : ℂ) ^ 2 * Z.W f f -
+          2 * (‖weilRelativeCorrelation Z f t‖ : ℂ) *
+            (‖weilRelativeCorrelation Z f t‖ : ℂ) ^ 2 := by
+        rw [hnorm]
+    _ = 2 * (‖weilRelativeCorrelation Z f t‖ : ℂ) ^ 2 *
+          (Z.W f f - (‖weilRelativeCorrelation Z f t‖ : ℂ)) := by
+        ring
 
 /-- If the complete relative correlation strictly dominates the norm of the fixed diagonal, the
 explicit phase witness has a strictly negative real quadratic value. -/
