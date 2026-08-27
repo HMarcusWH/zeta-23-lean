@@ -181,8 +181,12 @@ theorem exists_canonicalSeed_radius_visible (w : ℂ) :
   let r : PositiveRadius := ⟨δ, hδ⟩
   have hφ : φ = canonicalRadiusBump r := by
     rfl
+  have hq : q = canonicalSeedTest r := by
+    funext x
+    simp [q, canonicalSeedTest, hφ]
   refine ⟨r, ?_⟩
-  simpa [canonicalSeedTest, q, hφ] using hqvis
+  rw [← hq]
+  exact hqvis
 
 /-- Every nontrivial zeta zero is visible to some member of the canonical radius-indexed,
 real-even, pole-neutral detector family. -/
