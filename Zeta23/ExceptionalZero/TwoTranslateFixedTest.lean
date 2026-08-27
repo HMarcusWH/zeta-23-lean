@@ -61,7 +61,9 @@ abbrev PositiveRadius := {r : ℝ // 0 < r}
 
 /-- Canonical normalized real bump with inner radius r/2 and outer radius r. -/
 def canonicalRadiusBump (r : PositiveRadius) : ContDiffBump (0 : ℝ) :=
-  ⟨(r : ℝ) / 2, (r : ℝ), by positivity, by
+  ⟨(r : ℝ) / 2, (r : ℝ), by
+    have hr : 0 < (r : ℝ) := r.2
+    linarith, by
     have hr : 0 < (r : ℝ) := r.2
     linarith⟩
 
@@ -133,15 +135,15 @@ theorem exists_canonicalSeed_radius_visible (w : ℂ) :
   have hg0 : ContinuousAt g 0 := hg.continuousAt
   obtain ⟨δ, hδ, hclose⟩ :=
     (Metric.continuousAt_iff.1 hg0) (1 / 2 : ℝ) (by norm_num)
-  let r : PositiveRadius := ⟨δ, hδ⟩
-  let φ : ContDiffBump (0 : ℝ) := canonicalRadiusBump r
+  let φ : ContDiffBump (0 : ℝ) :=
+    ⟨δ / 2, δ, by positivity, by linarith⟩
   have hconv :
       dist
           ((φ.normed volume ⋆[lsmul ℝ ℝ, volume] g) 0)
           (g 0) ≤ (1 / 2 : ℝ) := by
     apply φ.dist_normed_convolution_le hg.aestronglyMeasurable
     intro x hx
-    exact le_of_lt (hclose (by simpa [φ, r, canonicalRadiusBump] using hx))
+    exact le_of_lt (hclose (by simpa [φ] using hx))
   have hconv_ne : ((φ.normed volume ⋆[lsmul ℝ ℝ, volume] g) 0) ≠ 0 := by
     intro hzero
     rw [hzero] at hconv
@@ -176,8 +178,11 @@ theorem exists_canonicalSeed_radius_visible (w : ℂ) :
     apply hqvis_re
     rw [hzero]
     simp
+  let r : PositiveRadius := ⟨δ, hδ⟩
+  have hφ : φ = canonicalRadiusBump r := by
+    rfl
   refine ⟨r, ?_⟩
-  simpa [q, φ, r, canonicalSeedTest, canonicalRadiusBump] using hqvis
+  simpa [canonicalSeedTest, q, hφ] using hqvis
 
 /-- Every nontrivial zeta zero is visible to some member of the canonical radius-indexed,
 real-even, pole-neutral detector family. -/
