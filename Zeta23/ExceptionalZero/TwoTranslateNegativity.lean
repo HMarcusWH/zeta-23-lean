@@ -48,15 +48,20 @@ theorem twoTranslatePhaseWitness_value
         (‖weilRelativeCorrelation Z f t‖ : ℂ) ^ 2 := by
     rw [← Complex.normSq_eq_conj_mul_self, Complex.normSq_eq_norm_sq]
     push_cast
+    ring
   simp [twoTranslatePhaseWitness, twoTranslateWeilMatrix, Matrix.mulVec, dotProduct,
     Fin.sum_univ_two]
   calc
-    _ = 2 * (‖weilRelativeCorrelation Z f t‖ : ℂ) ^ 2 * Z.W f f -
+    _ = (‖weilRelativeCorrelation Z f t‖ : ℂ) ^ 2 * Z.W f f +
+          Z.W f f *
+            ((starRingEnd ℂ) (weilRelativeCorrelation Z f t) *
+              weilRelativeCorrelation Z f t) -
           2 * (‖weilRelativeCorrelation Z f t‖ : ℂ) *
             ((starRingEnd ℂ) (weilRelativeCorrelation Z f t) *
               weilRelativeCorrelation Z f t) := by
         ring
-    _ = 2 * (‖weilRelativeCorrelation Z f t‖ : ℂ) ^ 2 * Z.W f f -
+    _ = (‖weilRelativeCorrelation Z f t‖ : ℂ) ^ 2 * Z.W f f +
+          Z.W f f * (‖weilRelativeCorrelation Z f t‖ : ℂ) ^ 2 -
           2 * (‖weilRelativeCorrelation Z f t‖ : ℂ) *
             (‖weilRelativeCorrelation Z f t‖ : ℂ) ^ 2 := by
         rw [hnorm]
