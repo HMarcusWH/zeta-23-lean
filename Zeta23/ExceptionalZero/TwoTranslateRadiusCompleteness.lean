@@ -1,11 +1,12 @@
 import Zeta23.ExceptionalZero.TwoTranslateFixedTest
+import Mathlib.Analysis.SpecificLimits.Basic
 
 noncomputable section
 
 namespace Zeta23.ExceptionalZero
 
-open Complex MeasureTheory ContinuousLinearMap
-open scoped Convolution
+open Complex MeasureTheory ContinuousLinearMap Filter Set
+open scoped Convolution Topology
 
 /-!
 # Eventual completeness of the canonical radius family
@@ -109,5 +110,60 @@ theorem eventually_canonicalPoleKilled_visible_at_zero
   have hq2 : ContDiff ℝ 2 (canonicalSeedTest r) := hq4.of_le (by norm_num)
   have hqc := canonicalSeedTest_hasCompactSupport r
   exact paperFT_poleKilled_ne_zero_at_zero hq2 hqc ρ₀ (hvis r hrε)
+
+/-- Explicit countable sequence of positive canonical radii tending to zero. -/
+def canonicalRadiusSequence (n : ℕ) : PositiveRadius :=
+  ⟨1 / ((n : ℝ) + 1), by positivity⟩
+
+/-- The explicit canonical radius sequence converges to zero. -/
+theorem canonicalRadiusSequence_tendsto_zero :
+    Tendsto (fun n : ℕ => (canonicalRadiusSequence n : ℝ)) atTop (𝓝 0) := by
+  simpa [canonicalRadiusSequence] using
+    (tendsto_one_div_add_atTop_nhds_zero_nat (𝕜 := ℝ))
+
+/-- Every nontrivial zeta zero is visible to all sufficiently late detectors in the
+explicit countable radius bank. -/
+theorem eventually_canonicalPoleKilledSequence_visible_at_zero
+    (ρ₀ : zetaZeroConfig.carrier) :
+    ∃ N : ℕ, ∀ n : ℕ, N ≤ n →
+      paperFT
+        (canonicalPoleKilledTest (canonicalRadiusSequence n))
+        (gammaOf (ρ₀ : ℂ)) ≠ 0 := by
+  obtain ⟨ε, hε, hvis⟩ := eventually_canonicalPoleKilled_visible_at_zero ρ₀
+  have hsmall :
+      ∀ᶠ n : ℕ in atTop, (canonicalRadiusSequence n : ℝ) < ε :=
+    canonicalRadiusSequence_tendsto_zero.eventually (Iio_mem_nhds hε)
+  obtain ⟨N, hN⟩ := eventually_atTop.1 hsmall
+  refine ⟨N, ?_⟩
+  intro n hn
+  exact hvis (canonicalRadiusSequence n) (hN n hn)
+
+/-- Countable-bank X4.6 endpoint: every hypothetical off-line zero forces a negative
+complete two-translate determinant for some explicitly indexed canonical detector. -/
+theorem exists_canonicalRadiusSequence_negativeDeterminant_of_offLine_zero
+    (ρ₀ : zetaZeroConfig.carrier)
+    (hoff : (ρ₀ : ℂ).re ≠ 1 / 2) :
+    ∃ n : ℕ, ∃ a : ℝ,
+      0 ≤ a ∧
+        twoTranslateDeterminantGap zetaZeroConfig
+          (canonicalPoleKilledTest (canonicalRadiusSequence n)) (2 * a) < 0 := by
+  obtain ⟨ρR, _hprov, hright⟩ :=
+    exists_rightHalf_reflection_of_offLine ρ₀ hoff
+  obtain ⟨N, hvis⟩ :=
+    eventually_canonicalPoleKilledSequence_visible_at_zero ρR
+  obtain ⟨hk, hkc, heven, hreal⟩ :=
+    canonicalPoleKilledTest_admissible (canonicalRadiusSequence N)
+  have hnot :=
+    not_subexponential_weilRelativeCorrelation_of_right_zero
+      hk hkc hreal heven ρR hright (hvis N le_rfl)
+  obtain ⟨a, ha, hgt⟩ :=
+    exists_nonneg_gt_of_not_subexponential
+      hnot
+      ‖zetaZeroConfig.W
+        (canonicalPoleKilledTest (canonicalRadiusSequence N))
+        (canonicalPoleKilledTest (canonicalRadiusSequence N))‖
+  refine ⟨N, a, ha, ?_⟩
+  exact twoTranslateDeterminantGap_neg_of_diagonal_norm_lt
+    zetaZeroConfig (canonicalPoleKilledTest (canonicalRadiusSequence N)) (2 * a) hgt
 
 end Zeta23.ExceptionalZero
