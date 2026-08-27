@@ -97,4 +97,17 @@ theorem eventually_canonicalSeed_visible (w : ℂ) :
   rw [← hq]
   exact hqvis
 
+/-- Every sufficiently small canonical pole-killed radius sees a fixed nontrivial zeta zero. -/
+theorem eventually_canonicalPoleKilled_visible_at_zero
+    (ρ₀ : zetaZeroConfig.carrier) :
+    ∃ ε : ℝ, 0 < ε ∧ CanonicalPoleKilledVisibleBelowAtZero ρ₀ ε := by
+  obtain ⟨ε, hε, hvis⟩ :=
+    eventually_canonicalSeed_visible (gammaOf (ρ₀ : ℂ))
+  refine ⟨ε, hε, ?_⟩
+  intro r hrε
+  have hq4 := canonicalSeedTest_contDiff_four r
+  have hq2 : ContDiff ℝ 2 (canonicalSeedTest r) := hq4.of_le (by norm_num)
+  have hqc := canonicalSeedTest_hasCompactSupport r
+  exact paperFT_poleKilled_ne_zero_at_zero hq2 hqc ρ₀ (hvis r hrε)
+
 end Zeta23.ExceptionalZero
