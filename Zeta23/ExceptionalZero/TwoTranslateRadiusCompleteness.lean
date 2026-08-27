@@ -14,7 +14,7 @@ open scoped Convolution Topology
 This module strengthens the single-radius visibility theorem from
 `TwoTranslateFixedTest`: a fixed spectral target is visible at every sufficiently
 small positive radius.  It then transfers that uniformity through the existing
-pole-killing operator and, optionally, to a countable radius sequence.
+pole-killing operator and specializes it to a countable radius sequence.
 
 No positivity statement is made for any detector family.
 -/
@@ -165,5 +165,11 @@ theorem exists_canonicalRadiusSequence_negativeDeterminant_of_offLine_zero
   refine ⟨N, a, ha, ?_⟩
   exact twoTranslateDeterminantGap_neg_of_diagonal_norm_lt
     zetaZeroConfig (canonicalPoleKilledTest (canonicalRadiusSequence N)) (2 * a) hgt
+
+#print axioms Zeta23.ExceptionalZero.eventually_canonicalSeed_visible
+#print axioms Zeta23.ExceptionalZero.eventually_canonicalPoleKilled_visible_at_zero
+#print axioms Zeta23.ExceptionalZero.canonicalRadiusSequence_tendsto_zero
+#print axioms Zeta23.ExceptionalZero.eventually_canonicalPoleKilledSequence_visible_at_zero
+#print axioms Zeta23.ExceptionalZero.exists_canonicalRadiusSequence_negativeDeterminant_of_offLine_zero
 
 end Zeta23.ExceptionalZero
