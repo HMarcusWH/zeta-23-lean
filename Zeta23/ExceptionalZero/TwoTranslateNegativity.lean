@@ -42,11 +42,16 @@ theorem twoTranslatePhaseWitness_value
           twoTranslatePhaseWitness (weilRelativeCorrelation Z f t)) =
       ((2 * ‖weilRelativeCorrelation Z f t‖ ^ 2 : ℝ) : ℂ) *
         (Z.W f f - (‖weilRelativeCorrelation Z f t‖ : ℂ)) := by
+  have hnorm :
+      (starRingEnd ℂ) (weilRelativeCorrelation Z f t) *
+          weilRelativeCorrelation Z f t =
+        (‖weilRelativeCorrelation Z f t‖ : ℂ) ^ 2 := by
+    rw [← Complex.normSq_eq_conj_mul_self, Complex.normSq_eq_norm_sq]
+    push_cast
   simp [twoTranslatePhaseWitness, twoTranslateWeilMatrix, Matrix.mulVec, dotProduct,
     Fin.sum_univ_two]
-  rw [← Complex.normSq_eq_conj_mul_self, Complex.normSq_eq_norm_sq]
-  push_cast
-  ring
+  linear_combination
+    (Z.W f f - (‖weilRelativeCorrelation Z f t‖ : ℂ)) * hnorm
 
 /-- If the complete relative correlation strictly dominates the norm of the fixed diagonal, the
 explicit phase witness has a strictly negative real quadratic value. -/
@@ -105,7 +110,8 @@ theorem exists_nonneg_gt_of_not_subexponential
   calc
     R a ≤ M := hbound a ha0
     _ ≤ 1 + ε * a := hM
-    _ ≤ Real.exp (ε * a) := Real.add_one_le_exp (ε * a)
+    _ ≤ Real.exp (ε * a) := by
+      simpa [add_comm] using Real.add_one_le_exp (ε * a)
 
 /-- X2 plus generic R001 handoff: a visible right-half zero makes the genuine complete relative
 correlation non-subexponential. -/
@@ -131,6 +137,8 @@ theorem not_subexponential_weilRelativeCorrelation_of_right_zero
   intro ε hε
   obtain ⟨A, hA⟩ := hsub ε hε
   refine ⟨A, fun a ha => ?_⟩
+  change ‖filteredZeroFamily (squaredWeilZeroFilter k) (1 / 2 : ℂ) a‖ ≤
+    Real.exp (ε * a)
   rw [← weilRelativeCorrelation_two_mul_eq_filteredZeroFamily_squared hreal heven a]
   exact hA a ha
 
