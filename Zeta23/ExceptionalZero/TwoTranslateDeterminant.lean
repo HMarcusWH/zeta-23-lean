@@ -221,7 +221,9 @@ theorem norm_weilRelativeCorrelation_le_diagonal_of_criticalLine
   rw [← weilRelativeCorrelation_two_mul_eq_filteredZeroFamily_squared hreal heven a] at hbound
   rw [squaredWeilZeroFilter_coeffMass_eq_W_re_of_criticalLine
       hk hkc hreal heven hline] at hbound
-  exact hbound.trans (Complex.re_le_norm _)
+  exact hbound.trans
+    (le_trans (le_abs_self (zetaZeroConfig.W k k).re)
+      (Complex.abs_re_le_norm (zetaZeroConfig.W k k)))
 
 /-- Critical-line placement therefore implies universal nonnegativity of the X4 determinant gap. -/
 theorem universalRealEvenTwoTranslateDeterminantNonnegative_of_criticalLine
