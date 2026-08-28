@@ -35,9 +35,12 @@ theorem paperFT_eq_tilt_re (f : ℝ → ℂ) (z : ℂ) :
   apply integral_congr_ae
   filter_upwards with x
   unfold paperFTTilt
-  rw [mul_assoc, ← Complex.exp_add]
-  congr 1
-  apply Complex.ext <;> simp [Complex.mul_re, Complex.mul_im] <;> ring
+  have harg :
+      I * (z * (x : ℂ)) =
+        -(z.im : ℂ) * (x : ℂ) + I * (z.re : ℂ) * (x : ℂ) := by
+    apply Complex.ext <;> simp [Complex.mul_re, Complex.mul_im] <;> ring
+  rw [harg, Complex.exp_add]
+  ring
 
 /-- Exponential tilting commutes exactly with convolution. -/
 theorem paperFTTilt_convolution
@@ -58,6 +61,12 @@ theorem paperFTTilt_convolution
     push_cast
     ring
   rw [hexp]
+  change
+    (f t * g (x - t)) *
+        Complex.exp (-(b : ℂ) * (t : ℂ)) *
+        Complex.exp (-(b : ℂ) * ((x - t : ℝ) : ℂ)) =
+      (Complex.exp (-(b : ℂ) * (t : ℂ)) * f t) *
+        (Complex.exp (-(b : ℂ) * ((x - t : ℝ) : ℂ)) * g (x - t))
   ring
 
 /-- Tilting preserves continuity. -/
