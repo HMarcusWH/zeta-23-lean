@@ -80,6 +80,45 @@ def dictionaryRealUnit
     {ι : Type*} [DecidableEq ι] (i : ι) : ι → ℝ :=
   fun k => if k = i then 1 else 0
 
+/-- Complex-valued coordinate unit matching `dictionaryRealUnit`. -/
+private def dictionaryRealUnitComplex
+    {ι : Type*} [DecidableEq ι] (i : ι) : ι → ℂ :=
+  fun k => if k = i then 1 else 0
+
+private theorem ofReal_dictionaryRealUnit
+    {ι : Type*} [DecidableEq ι] (i : ι) :
+    (fun k => (dictionaryRealUnit i k : ℂ)) =
+      dictionaryRealUnitComplex i := by
+  funext k
+  by_cases hki : k = i <;>
+    simp [dictionaryRealUnit, dictionaryRealUnitComplex, hki]
+
+private theorem mulVec_dictionaryRealUnitComplex
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (A : Matrix ι ι ℂ) (j : ι) :
+    A.mulVec (dictionaryRealUnitComplex j) = fun r => A r j := by
+  funext r
+  unfold Matrix.mulVec dotProduct dictionaryRealUnitComplex
+  simp
+
+private theorem dictionaryRealUnitComplex_dot
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (i : ι) (w : ι → ℂ) :
+    dictionaryRealUnitComplex i ⬝ᵥ w = w i := by
+  unfold dotProduct dictionaryRealUnitComplex
+  simp
+
+/-- Coordinate units read off one entry of H2a's real pairing. -/
+theorem codimOneRealPairing_dictionaryRealUnit
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (A : Matrix ι ι ℂ) (i j : ι) :
+    codimOneRealPairing A (dictionaryRealUnit i) (dictionaryRealUnit j) =
+      A i j := by
+  unfold codimOneRealPairing
+  rw [ofReal_dictionaryRealUnit, ofReal_dictionaryRealUnit,
+    mulVec_dictionaryRealUnitComplex]
+  rw [dictionaryRealUnitComplex_dot]
+
 /-- Pointwise real polarization of the finite spectral quadratic form. -/
 theorem dictionarySpectralMatrix_real_polarization
     (N : ℕ)
@@ -124,10 +163,12 @@ theorem dictionarySpectralMatrix_apply_eq_realPolarization
             (fun k =>
               ((dictionaryRealUnit i k - dictionaryRealUnit j k : ℝ) : ℂ))
             L z) := by
-  symm
-  simpa using
+  have h :=
     dictionarySpectralMatrix_real_polarization N
       (dictionaryRealUnit i) (dictionaryRealUnit j) hL z
+  rw [← codimOneRealPairing_eq_realMatrixPairing,
+    codimOneRealPairing_dictionaryRealUnit] at h
+  simpa using h.symm
 
 /-- Entrywise legality theorem: every matrix-entry zero series is absolutely
 summable. The proof uses polarization of already-summable full dictionaries;
