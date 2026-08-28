@@ -5,7 +5,7 @@ noncomputable section
 namespace Zeta23.CCM
 
 open Complex MeasureTheory Set Filter ContinuousLinearMap
-open scoped Convolution Topology
+open scoped Convolution Topology Pointwise
 
 /-!
 # Common support and convergence for the mollified dictionary tent
