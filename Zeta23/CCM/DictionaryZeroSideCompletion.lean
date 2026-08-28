@@ -70,9 +70,9 @@ theorem zeroSideDiscrepancy_basisDiff_pairing_eq_zero
   let u : Fin (2 * N + 1) → ℝ := codimOneBasisDiff p i
   let v : Fin (2 * N + 1) → ℝ := codimOneBasisDiff p j
   have hu : coefficientSumReal N u = 0 := by
-    simpa [coefficientSumReal, u] using sum_codimOneBasisDiff p i
+    simp [coefficientSumReal, u]
   have hv : coefficientSumReal N v = 0 := by
-    simpa [coefficientSumReal, v] using sum_codimOneBasisDiff p j
+    simp [coefficientSumReal, v]
   have hZ :=
     zeroSideMatrix_basisDiff_pairing_eq_smoothCoreZeroPolarization
       hs N p i j hL
