@@ -53,4 +53,5 @@ import Zeta23.CCM.DictionarySymmetry
 import Zeta23.CCM.DictionarySmoothCorePolarization
 import Zeta23.CCM.CodimOneMatrixCompletion
 import Zeta23.CCM.DictionaryZeroSideSummability
+import Zeta23.CCM.DictionaryZeroSideMatrix
 import Zeta23.CCM.ClaimBindings
