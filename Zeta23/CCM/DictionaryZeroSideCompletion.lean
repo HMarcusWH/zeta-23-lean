@@ -11,28 +11,16 @@ open scoped BigOperators
 /-!
 # H2b completion: localize the actual zero-side discrepancy
 
-The actual finite zero-side matrix is now available entrywise.  H1 identifies
-its real pairing with the production dictionary matrix on the coefficient-sum
-zero hyperplane.  H2a then forces the whole discrepancy into the unique
+The actual finite zero-side matrix is available entrywise with absolute
+summability. H1 identifies its pivoted basis-difference pairings with the
+production dictionary matrix on the coefficient-sum-zero hyperplane. The
+minimum-input H2a theorem then forces the whole discrepancy into the unique
 two-sided coefficient-sum seam.
 
 This does not prove that the discrepancy vanishes.
 -/
 
-/-- Compatibility between the H1 pairing notation and the H2a pairing notation. -/
-theorem codimOneRealPairing_eq_realMatrixPairing
-    {ι : Type*} [Fintype ι]
-    (A : Matrix ι ι ℂ) (u v : ι → ℝ) :
-    codimOneRealPairing A u v = realMatrixPairing A u v := by
-  unfold codimOneRealPairing realMatrixPairing Matrix.mulVec dotProduct
-  apply Finset.sum_congr rfl
-  intro i hi
-  rw [Finset.mul_sum]
-  apply Finset.sum_congr rfl
-  intro j hj
-  ring
-
-/-- Real matrix pairing is additive in the matrix argument. -/
+/-- Real matrix pairing is additive under matrix subtraction. -/
 theorem realMatrixPairing_sub
     {ι : Type*} [Fintype ι]
     (A B : Matrix ι ι ℂ) (u v : ι → ℝ) :
@@ -41,6 +29,17 @@ theorem realMatrixPairing_sub
   unfold realMatrixPairing
   simp_rw [Matrix.sub_apply, mul_sub, sub_mul, Finset.sum_sub_distrib]
   ring
+
+/-- H2a's pairing notation is additive under matrix subtraction. -/
+theorem codimOneRealPairing_sub
+    {ι : Type*} [Fintype ι]
+    (A B : Matrix ι ι ℂ) (u v : ι → ℝ) :
+    codimOneRealPairing (A - B) u v =
+      codimOneRealPairing A u v - codimOneRealPairing B u v := by
+  rw [codimOneRealPairing_eq_realMatrixPairing,
+    codimOneRealPairing_eq_realMatrixPairing,
+    codimOneRealPairing_eq_realMatrixPairing,
+    realMatrixPairing_sub]
 
 /-- The actual finite zero-side discrepancy from the deterministic production
 matrix. -/
@@ -60,25 +59,39 @@ theorem zeroSideDiscrepancy_apply_comm
   rw [zeroSideMatrix_apply_comm hs N L i j,
     dictionaryMatrix_apply_comm L N i j]
 
-/-- H1 instantiated on the legally constructed zero-side matrix: the actual
-discrepancy pairing vanishes on the coefficient-sum-zero hyperplane. -/
-theorem zeroSideDiscrepancy_pairing_eq_zero
+/-- H1 on exactly the probes needed by H2a: every pivoted basis-difference
+pairing of the actual discrepancy vanishes. -/
+theorem zeroSideDiscrepancy_basisDiff_pairing_eq_zero
     (hs : ZetaSeam)
     (N : ℕ)
-    (u v : Fin (2 * N + 1) → ℝ)
-    {L : ℝ} (hL : 0 < L)
-    (hu : coefficientSumReal N u = 0)
-    (hv : coefficientSumReal N v = 0) :
-    codimOneRealPairing (zeroSideDiscrepancy hs N L) u v = 0 := by
-  rw [codimOneRealPairing_eq_realMatrixPairing,
-    zeroSideDiscrepancy, realMatrixPairing_sub,
-    realMatrixPairing_zeroSideMatrix_eq_smoothCoreZeroPolarization hs N u v hL,
-    smoothCoreZeroPolarization_eq_realMatrixPairing hs N u v hL hu hv,
-    sub_self]
+    (p i j : Fin (2 * N + 1))
+    {L : ℝ} (hL : 0 < L) :
+    codimOneRealPairing (zeroSideDiscrepancy hs N L)
+        (codimOneBasisDiff p i) (codimOneBasisDiff p j) = 0 := by
+  let u : Fin (2 * N + 1) → ℝ := codimOneBasisDiff p i
+  let v : Fin (2 * N + 1) → ℝ := codimOneBasisDiff p j
+  have hu : coefficientSumReal N u = 0 := by
+    simpa [coefficientSumReal, u] using sum_codimOneBasisDiff p i
+  have hv : coefficientSumReal N v = 0 := by
+    simpa [coefficientSumReal, v] using sum_codimOneBasisDiff p j
+  have hZ :=
+    zeroSideMatrix_basisDiff_pairing_eq_smoothCoreZeroPolarization
+      hs N p i j hL
+  have hH1 :=
+    smoothCoreZeroPolarization_eq_realMatrixPairing
+      hs N u v hL hu hv
+  unfold zeroSideDiscrepancy
+  rw [codimOneRealPairing_sub]
+  rw [show
+      codimOneRealPairing (zeroSideMatrix hs N L) u v =
+        smoothCoreZeroPolarization hs N L u v by
+      simpa [u, v] using hZ]
+  rw [hH1]
+  rw [codimOneRealPairing_eq_realMatrixPairing]
+  exact sub_self _
 
-/-- Canonical H2b seam vector.  It is explicit in the pivot column of the
-actual discrepancy and is the object to be tested by H2+ parity/displacement
-arguments. -/
+/-- Canonical H2b seam vector. It is explicit in the pivot column of the actual
+discrepancy and is the object to be tested by H2+ parity/displacement arguments. -/
 def zeroSideCompletionVector
     (hs : ZetaSeam) (N : ℕ) (L : ℝ) :
     Fin (2 * N + 1) → ℂ :=
@@ -95,11 +108,13 @@ theorem zeroSideDiscrepancy_eq_completion
       vecMulVec (fun _ => (1 : ℂ)) (zeroSideCompletionVector hs N L) +
         vecMulVec (zeroSideCompletionVector hs N L) (fun _ => (1 : ℂ)) := by
   simpa [zeroSideCompletionVector] using
-    ccmCodimOneMatrixCompletion N
+    codimOneMatrixCompletion_of_basisDiff
       (zeroSideDiscrepancy hs N L)
+      (0 : Fin (2 * N + 1))
       (zeroSideDiscrepancy_apply_comm hs N L)
-      (fun u v hu hv =>
-        zeroSideDiscrepancy_pairing_eq_zero hs N u v hL hu hv)
+      (fun i j =>
+        zeroSideDiscrepancy_basisDiff_pairing_eq_zero
+          hs N (0 : Fin (2 * N + 1)) i j hL)
 
 /-- H2b rank consequence for the actual zeta-dependent discrepancy. -/
 theorem rank_zeroSideDiscrepancy_le_two
@@ -107,11 +122,13 @@ theorem rank_zeroSideDiscrepancy_le_two
     (N : ℕ)
     {L : ℝ} (hL : 0 < L) :
     (zeroSideDiscrepancy hs N L).rank ≤ 2 := by
-  exact rank_ccmCodimOneMatrixCompletion_le_two N
+  exact rank_codimOneMatrixCompletion_of_basisDiff_le_two
     (zeroSideDiscrepancy hs N L)
+    (0 : Fin (2 * N + 1))
     (zeroSideDiscrepancy_apply_comm hs N L)
-    (fun u v hu hv =>
-      zeroSideDiscrepancy_pairing_eq_zero hs N u v hL hu hv)
+    (fun i j =>
+      zeroSideDiscrepancy_basisDiff_pairing_eq_zero
+        hs N (0 : Fin (2 * N + 1)) i j hL)
 
 /-- Equivalent additive presentation: the actual zero-side matrix is the
 production dictionary matrix plus the canonical two-sided seam. -/
@@ -125,11 +142,11 @@ theorem zeroSideMatrix_eq_dictionaryMatrix_add_completion
           vecMulVec (zeroSideCompletionVector hs N L) (fun _ => (1 : ℂ))) := by
   have h := zeroSideDiscrepancy_eq_completion hs N hL
   unfold zeroSideDiscrepancy at h
-  apply sub_eq_iff_eq_add.mp at h
-  simpa [add_comm, add_left_comm, add_assoc] using h
+  have h' := sub_eq_iff_eq_add.mp h
+  simpa [add_comm, add_left_comm, add_assoc] using h'
 
 end Zeta23.CCM
 
-#print axioms Zeta23.CCM.zeroSideDiscrepancy_pairing_eq_zero
+#print axioms Zeta23.CCM.zeroSideDiscrepancy_basisDiff_pairing_eq_zero
 #print axioms Zeta23.CCM.zeroSideDiscrepancy_eq_completion
 #print axioms Zeta23.CCM.rank_zeroSideDiscrepancy_le_two
