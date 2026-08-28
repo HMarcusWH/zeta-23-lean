@@ -67,6 +67,7 @@ theorem dictionaryTest_dictionaryRealUnit_eq_basisTest
       dictionaryBasisTest (centeredIndex N i) (centeredIndex N i) L := by
   funext y
   rw [dictionaryTest_eq_basis_sum]
+  push_cast
   simp [dictionaryRealUnit]
 
 /-- Physical test obtained by subtracting the common zero-frequency diagonal
@@ -93,7 +94,7 @@ theorem dictionaryDiagonalDifferenceTest_eq_residual
   simp at h
   unfold dictionaryDiagonalDifferenceTest
   rw [dictionaryBasisTest_zero_zero_eq_tent hL]
-  rw [h]
+  rw [h, dictionaryTent_apply]
   ring
 
 /-- Fourier transform is linear on the subtraction of two continuous compactly
@@ -178,8 +179,9 @@ private theorem summable_dictionaryPrimeSeries_of_hasCompactSupport
             (fun u => k (-u)) (Real.log n)) :=
       hsummable_gen (fun u => k (-u)) (by
         intro u hu
-        have h := hB (-u) hu
-        simpa [abs_neg] using h.trans (le_max_left _ _))
+        have h : |u| ≤ B := by
+          simpa [abs_neg] using hB (-u) hu
+        exact h.trans (le_max_left _ _))
     simpa using hneg
   simpa [mul_add] using hp.add hm
 
@@ -257,7 +259,7 @@ private theorem dictionaryArchRHS_dictionaryBasisTest_sub
               dictionaryBasisTest n m L y -
                 dictionaryBasisTest p q L y) (τ : ℂ) *
           (Zeta23.mu τ : ℂ)) =
-      fun τ =>
+      fun τ : ℝ =>
         Zeta23.paperFT (dictionaryBasisTest n m L) (τ : ℂ) *
             (Zeta23.mu τ : ℂ) -
           Zeta23.paperFT (dictionaryBasisTest p q L) (τ : ℂ) *
@@ -410,7 +412,8 @@ theorem literatureRHS_dictionaryDiagonalDifferenceTest_eq_dictionaryMatrix_sub
   have hc :=
     literatureRHS_dictionaryBasisTest_eq_dictionaryMatrix_apply
       N (dictionaryCenterIndex N) (dictionaryCenterIndex N) hL
-  simpa using hc
+  simp only [centeredIndex_dictionaryCenterIndex] at hc
+  rw [hc]
 
 /-- H2+ diagonal rigidity: the actual zero-side discrepancy has one common
 value on the entire diagonal. -/
