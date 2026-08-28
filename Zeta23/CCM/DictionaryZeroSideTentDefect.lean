@@ -50,7 +50,7 @@ theorem dictionaryBasisTest_zero_zero_eq_tent
   · have hlt : L < |y| := lt_of_not_ge hy
     have hnonpos : 1 - |y| / L ≤ 0 :=
       le_of_lt (sub_neg.mpr ((one_lt_div hL).2 hlt))
-    simp [dictionaryBasisTest, kernel, qBasis, dictionaryTent,
+    simp [dictionaryBasisTest, kernel, dictionaryTent,
       dictionaryApertureCoord, hy, max_eq_left hnonpos]
 
 /-- A real coordinate unit has coefficient sum one. -/
@@ -67,8 +67,29 @@ theorem dictionaryTest_dictionaryRealUnit_eq_basisTest
       dictionaryBasisTest (centeredIndex N i) (centeredIndex N i) L := by
   funext y
   rw [dictionaryTest_eq_basis_sum]
-  push_cast
-  simp [dictionaryRealUnit]
+  let A : Matrix (Fin (2 * N + 1)) (Fin (2 * N + 1)) ℂ :=
+    fun r s =>
+      dictionaryBasisTest (centeredIndex N r) (centeredIndex N s) L y
+  have hunit := codimOneRealPairing_dictionaryRealUnit A i i
+  unfold codimOneRealPairing Matrix.mulVec dotProduct at hunit
+  simp only [Complex.conj_ofReal]
+  change
+    (∑ x, ∑ j,
+      (dictionaryRealUnit i x : ℂ) * A x j *
+        (dictionaryRealUnit i j : ℂ)) = A i i
+  calc
+    (∑ x, ∑ j,
+      (dictionaryRealUnit i x : ℂ) * A x j *
+        (dictionaryRealUnit i j : ℂ)) =
+        ∑ x, (dictionaryRealUnit i x : ℂ) *
+          (∑ j, A x j * (dictionaryRealUnit i j : ℂ)) := by
+            apply Finset.sum_congr rfl
+            intro x hx
+            rw [Finset.mul_sum]
+            apply Finset.sum_congr rfl
+            intro j hj
+            ring
+    _ = A i i := hunit
 
 /-- Physical test obtained by subtracting the common zero-frequency diagonal
 basis test from one diagonal basis test. -/
