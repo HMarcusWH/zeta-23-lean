@@ -128,6 +128,22 @@ theorem codimOne_entry_identity
   rw [codimOneRealPairing_basisDiff] at h
   linear_combination h
 
+/-- The basis-difference form of the entry identity.  This is the actual
+minimum hypothesis used by the completion argument: it is enough to know that
+all pivoted probes `e_i-e_p`, `e_j-e_p` pair to zero. -/
+theorem codimOne_entry_identity_of_basisDiff
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (A : Matrix ι ι ℂ) (p : ι)
+    (hprobe :
+      ∀ i j : ι,
+        codimOneRealPairing A
+          (codimOneBasisDiff p i) (codimOneBasisDiff p j) = 0)
+    (i j : ι) :
+    A i j = A i p + A p j - A p p := by
+  have h := hprobe i j
+  rw [codimOneRealPairing_basisDiff] at h
+  linear_combination h
+
 /-- Canonical completion vector associated with a pivot coordinate. -/
 def codimOneCompletionVector
     {ι : Type*} (A : Matrix ι ι ℂ) (p : ι) : ι → ℂ :=
@@ -170,6 +186,27 @@ theorem codimOneMatrixCompletion
   simp only [Matrix.add_apply, Matrix.vecMulVec_apply, one_mul, mul_one]
   simpa [add_comm] using h
 
+/-- H2a in its minimum probe form: symmetric vanishing on the pivoted
+basis-difference pairs already forces the full two-sided coefficient-sum
+channel.  This is strictly weaker as an input interface than quantifying over
+all zero-sum vectors, and is the form used by H2b. -/
+theorem codimOneMatrixCompletion_of_basisDiff
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (A : Matrix ι ι ℂ) (p : ι)
+    (hA : ∀ i j, A i j = A j i)
+    (hprobe :
+      ∀ i j : ι,
+        codimOneRealPairing A
+          (codimOneBasisDiff p i) (codimOneBasisDiff p j) = 0) :
+    A =
+      vecMulVec (fun _ => (1 : ℂ)) (codimOneCompletionVector A p) +
+        vecMulVec (codimOneCompletionVector A p) (fun _ => (1 : ℂ)) := by
+  ext i j
+  rw [codimOne_entry_identity_of_basisDiff A p hprobe i j, hA p j]
+  unfold codimOneCompletionVector
+  simp only [Matrix.add_apply, Matrix.vecMulVec_apply, one_mul, mul_one]
+  ring
+
 /-- A two-column factor whose product with `codimOneRankRight` realizes
 `1 aᵀ + a 1ᵀ`. -/
 private def codimOneRankLeft
@@ -208,6 +245,27 @@ theorem rank_codimOneMatrixCompletion_le_two
   have hrepr :
       A = vecMulVec (fun _ => (1 : ℂ)) a + vecMulVec a (fun _ => (1 : ℂ)) := by
     simpa [a] using codimOneMatrixCompletion A p hA hzero
+  have hfactor :
+      A = codimOneRankLeft a * codimOneRankRight a := by
+    rw [hrepr, codimOneRankLeft_mul_right]
+  rw [hfactor]
+  exact (Matrix.rank_mul_le_left _ _).trans (by
+    simpa using Matrix.rank_le_card_width (codimOneRankLeft a))
+
+/-- Rank consequence of the minimum pivoted-probe H2a interface. -/
+theorem rank_codimOneMatrixCompletion_of_basisDiff_le_two
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (A : Matrix ι ι ℂ) (p : ι)
+    (hA : ∀ i j, A i j = A j i)
+    (hprobe :
+      ∀ i j : ι,
+        codimOneRealPairing A
+          (codimOneBasisDiff p i) (codimOneBasisDiff p j) = 0) :
+    A.rank ≤ 2 := by
+  let a := codimOneCompletionVector A p
+  have hrepr :
+      A = vecMulVec (fun _ => (1 : ℂ)) a + vecMulVec a (fun _ => (1 : ℂ)) := by
+    simpa [a] using codimOneMatrixCompletion_of_basisDiff A p hA hprobe
   have hfactor :
       A = codimOneRankLeft a * codimOneRankRight a := by
     rw [hrepr, codimOneRankLeft_mul_right]
@@ -260,4 +318,6 @@ theorem rank_ccmCodimOneMatrixCompletion_le_two
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.codimOneMatrixCompletion
+#print axioms Zeta23.CCM.codimOneMatrixCompletion_of_basisDiff
+#print axioms Zeta23.CCM.rank_codimOneMatrixCompletion_of_basisDiff_le_two
 #print axioms Zeta23.CCM.rank_ccmCodimOneMatrixCompletion_le_two
