@@ -36,8 +36,6 @@ theorem dictionaryTest_ofReal_eq_tent_smul_add_residual
   funext y
   rw [dictionaryTest_ofReal_eq_tent_add_residual N u hL y]
   simp [dictionaryTent, dictionaryResidualTest]
-  push_cast
-  ring
 
 /-- Exact transform decomposition of the full real dictionary into its literal
 canonical tent transform and its smooth residual transform. -/
@@ -50,20 +48,18 @@ theorem dictionaryTransform_ofReal_eq_tent_add_residual
         Zeta23.paperFT (dictionaryResidualTest N u L) z := by
   rw [dictionaryTransform, dictionaryTest_ofReal_eq_tent_smul_add_residual N u hL]
   unfold Zeta23.paperFT
+  let c0 : ℂ := ((coefficientSumReal N u) ^ 2 : ℂ)
   have ht : Integrable
       (fun y : ℝ =>
-        (((coefficientSumReal N u) ^ 2 : ℂ) * dictionaryTent L y) *
-          Complex.exp (Complex.I * z * y)) := by
+        dictionaryTent L y * Complex.exp (Complex.I * z * y)) := by
     have hc : Continuous
         (fun y : ℝ =>
-          (((coefficientSumReal N u) ^ 2 : ℂ) * dictionaryTent L y) *
-            Complex.exp (Complex.I * z * y)) := by
-      fun_prop
+          dictionaryTent L y * Complex.exp (Complex.I * z * y)) := by
+      exact (continuous_dictionaryTent L).mul (by fun_prop)
     have hs : HasCompactSupport
         (fun y : ℝ =>
-          (((coefficientSumReal N u) ^ 2 : ℂ) * dictionaryTent L y) *
-            Complex.exp (Complex.I * z * y)) := by
-      exact (dictionaryTent_hasCompactSupport hL).mul_left.mul_right
+          dictionaryTent L y * Complex.exp (Complex.I * z * y)) :=
+      (dictionaryTent_hasCompactSupport hL).mul_right
     exact hc.integrable_of_hasCompactSupport hs
   have hr : Integrable
       (fun y : ℝ =>
@@ -80,19 +76,19 @@ theorem dictionaryTransform_ofReal_eq_tent_add_residual
             Complex.exp (Complex.I * z * y)) :=
       (dictionaryResidualTest_hasCompactSupport N u hL).mul_right
     exact hc.integrable_of_hasCompactSupport hs
-  rw [show
+  have hsplit :
       (fun y : ℝ =>
         ((((coefficientSumReal N u) ^ 2 : ℂ) * dictionaryTent L y +
             dictionaryResidualTest N u L y) *
           Complex.exp (Complex.I * z * y))) =
       fun y =>
-        ((((coefficientSumReal N u) ^ 2 : ℂ) * dictionaryTent L y) *
-            Complex.exp (Complex.I * z * y)) +
+        c0 * (dictionaryTent L y * Complex.exp (Complex.I * z * y)) +
           dictionaryResidualTest N u L y *
-            Complex.exp (Complex.I * z * y)) by
-        funext y
-        ring]
-  rw [integral_add ht hr, Zeta23.integral_const_mul_C]
+            Complex.exp (Complex.I * z * y) := by
+    funext y
+    simp only [c0]
+    ring
+  rw [hsplit, integral_add (ht.const_mul c0) hr, Zeta23.integral_const_mul_C]
   rfl
 
 /-- The smooth residual contribution is absolutely summable over the concrete
