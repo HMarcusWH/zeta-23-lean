@@ -55,4 +55,5 @@ import Zeta23.CCM.CodimOneMatrixCompletion
 import Zeta23.CCM.DictionaryZeroSideSummability
 import Zeta23.CCM.DictionaryZeroSideMatrix
 import Zeta23.CCM.DictionaryZeroSideCompletion
+import Zeta23.CCM.DictionaryZeroSideTentDefect
 import Zeta23.CCM.ClaimBindings
