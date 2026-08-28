@@ -57,7 +57,14 @@ private theorem ofReal_codimOneBasisDiff
     (fun k => (codimOneBasisDiff p i k : ℂ)) =
       Pi.single i 1 - Pi.single p 1 := by
   funext k
-  simp [codimOneBasisDiff]
+  by_cases hki : k = i
+  · by_cases hkp : k = p
+    · subst k
+      simp [codimOneBasisDiff]
+    · simp [codimOneBasisDiff, hki, hkp]
+  · by_cases hkp : k = p
+    · simp [codimOneBasisDiff, hki, hkp]
+    · simp [codimOneBasisDiff, hki, hkp]
 
 /-- Pairing two pivoted basis-difference probes extracts the corresponding
 four-entry second difference of the matrix. -/
