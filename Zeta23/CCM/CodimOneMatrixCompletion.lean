@@ -41,7 +41,7 @@ def codimOneRealPairing {ι : Type*} [Fintype ι]
 /-- The zero-sum probe `e_i - e_p` based at a chosen pivot coordinate `p`. -/
 def codimOneBasisDiff {ι : Type*} [DecidableEq ι]
     (p i : ι) : ι → ℝ :=
-  Pi.single i 1 - Pi.single p 1
+  fun k => (if k = i then 1 else 0) - (if k = p then 1 else 0)
 
 /-- Every pivoted basis-difference probe has coefficient sum zero. -/
 @[simp] theorem sum_codimOneBasisDiff
@@ -50,21 +50,31 @@ def codimOneBasisDiff {ι : Type*} [DecidableEq ι]
     (∑ k, codimOneBasisDiff p i k) = 0 := by
   simp [codimOneBasisDiff, Finset.sum_sub_distrib]
 
+/-- Complex-valued copy of the pivoted basis-difference probe. -/
+private def codimOneBasisDiffComplex
+    {ι : Type*} [DecidableEq ι]
+    (p i : ι) : ι → ℂ :=
+  fun k => (if k = i then 1 else 0) - (if k = p then 1 else 0)
+
 /-- Complexification of a real pivoted basis-difference probe. -/
 private theorem ofReal_codimOneBasisDiff
     {ι : Type*} [DecidableEq ι]
     (p i : ι) :
     (fun k => (codimOneBasisDiff p i k : ℂ)) =
+      codimOneBasisDiffComplex p i := by
+  funext k
+  simp [codimOneBasisDiff, codimOneBasisDiffComplex]
+
+/-- The complex basis-difference probe is the difference of two coordinate
+singletons. -/
+private theorem codimOneBasisDiffComplex_eq_single
+    {ι : Type*} [DecidableEq ι]
+    (p i : ι) :
+    codimOneBasisDiffComplex p i =
       Pi.single i 1 - Pi.single p 1 := by
   funext k
-  by_cases hki : k = i
-  · by_cases hkp : k = p
-    · subst k
-      simp [codimOneBasisDiff]
-    · simp [codimOneBasisDiff, hki, hkp]
-  · by_cases hkp : k = p
-    · simp [codimOneBasisDiff, hki, hkp]
-    · simp [codimOneBasisDiff, hki, hkp]
+  by_cases hki : k = i <;> by_cases hkp : k = p <;>
+    simp [codimOneBasisDiffComplex, hki, hkp]
 
 /-- Pairing two pivoted basis-difference probes extracts the corresponding
 four-entry second difference of the matrix. -/
@@ -74,9 +84,9 @@ theorem codimOneRealPairing_basisDiff
     codimOneRealPairing A (codimOneBasisDiff p i) (codimOneBasisDiff p j) =
       A i j - A i p - A p j + A p p := by
   unfold codimOneRealPairing
-  rw [ofReal_codimOneBasisDiff, ofReal_codimOneBasisDiff]
-  simp [Matrix.mulVec_sub, Matrix.mulVec_single_one,
-    sub_dotProduct, dotProduct_sub, single_one_dotProduct]
+  rw [ofReal_codimOneBasisDiff, ofReal_codimOneBasisDiff,
+    codimOneBasisDiffComplex_eq_single, codimOneBasisDiffComplex_eq_single]
+  simp [Matrix.mulVec_sub, sub_dotProduct, dotProduct_sub]
   ring
 
 /-- Vanishing on the coefficient-sum-zero hyperplane forces the entry identity
