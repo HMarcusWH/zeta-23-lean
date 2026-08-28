@@ -80,15 +80,6 @@ def dictionaryRealUnit
     {ι : Type*} [DecidableEq ι] (i : ι) : ι → ℝ :=
   fun k => if k = i then 1 else 0
 
-/-- A real matrix pairing on coordinate vectors reads off one entry. -/
-@[simp] theorem realMatrixPairing_dictionaryRealUnit
-    {ι : Type*} [Fintype ι] [DecidableEq ι]
-    (A : Matrix ι ι ℂ) (i j : ι) :
-    realMatrixPairing A (dictionaryRealUnit i) (dictionaryRealUnit j) =
-      A i j := by
-  unfold realMatrixPairing dictionaryRealUnit
-  simp
-
 /-- Pointwise real polarization of the finite spectral quadratic form. -/
 theorem dictionarySpectralMatrix_real_polarization
     (N : ℕ)
@@ -156,11 +147,22 @@ theorem dictionarySpectralMatrix_zero_entry_summable
   have hp := dictionaryTransform_zero_sum_summable hs N up hL
   have hm := dictionaryTransform_zero_sum_summable hs N um hL
   have h := (hp.sub hm).mul_left (1 / 4 : ℂ)
-  convert h using 1
-  funext ρ
-  rw [dictionarySpectralMatrix_apply_eq_realPolarization N i j hL]
-  simp only [up, um]
-  ring
+  have heq :
+      (fun ρ : (zetaZeros hs).carrier =>
+        ((zetaZeros hs).mult ρ : ℂ) *
+          dictionarySpectralMatrix N L (gammaOf ρ) i j) =
+      (fun ρ : (zetaZeros hs).carrier =>
+        (1 / 4 : ℂ) *
+          ((((zetaZeros hs).mult ρ : ℂ) *
+              dictionaryTransform N (fun k => (up k : ℂ)) L (gammaOf ρ)) -
+            (((zetaZeros hs).mult ρ : ℂ) *
+              dictionaryTransform N (fun k => (um k : ℂ)) L (gammaOf ρ)))) := by
+    funext ρ
+    rw [dictionarySpectralMatrix_apply_eq_realPolarization N i j hL]
+    simp only [up, um]
+    ring
+  rw [heq]
+  exact h
 
 /-- The actual finite zeta zero-side dictionary matrix, defined only after
 entrywise absolute summability has been established above. -/
@@ -259,8 +261,24 @@ theorem zeroSideMatrix_basisDiff_pairing_eq_smoothCoreZeroPolarization
         codimOneRealPairing_eq_realMatrixPairing]
       simpa [u, v, up, um] using hpol.symm
     unfold F
-    rw [hentry]
-    ring
+    let m : ℂ := ((zetaZeros hs).mult ρ : ℂ)
+    calc
+      m * dictionarySpectralMatrix N L (gammaOf ρ) i j -
+            m * dictionarySpectralMatrix N L (gammaOf ρ) i p -
+          m * dictionarySpectralMatrix N L (gammaOf ρ) p j +
+        m * dictionarySpectralMatrix N L (gammaOf ρ) p p =
+          m * (dictionarySpectralMatrix N L (gammaOf ρ) i j -
+            dictionarySpectralMatrix N L (gammaOf ρ) i p -
+            dictionarySpectralMatrix N L (gammaOf ρ) p j +
+            dictionarySpectralMatrix N L (gammaOf ρ) p p) := by ring
+      _ = m * ((1 / 4 : ℂ) *
+            (dictionaryTransform N (fun k => (up k : ℂ)) L (gammaOf ρ) -
+              dictionaryTransform N (fun k => (um k : ℂ)) L (gammaOf ρ))) := by
+            rw [hentry]
+      _ = (1 / 4 : ℂ) *
+            (m * dictionaryTransform N (fun k => (up k : ℂ)) L (gammaOf ρ) -
+              m * dictionaryTransform N (fun k => (um k : ℂ)) L (gammaOf ρ)) := by
+            ring
 
   have hentries' :
       HasSum
@@ -276,7 +294,7 @@ theorem zeroSideMatrix_basisDiff_pairing_eq_smoothCoreZeroPolarization
           zeroSideMatrix hs N L p p) := by
     convert hentries using 1
     funext ρ
-    exact hpoint ρ
+    exact (hpoint ρ).symm
 
   rw [codimOneRealPairing_basisDiff]
   exact hentries'.unique hpolar
