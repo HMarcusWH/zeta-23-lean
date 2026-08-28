@@ -2,7 +2,7 @@
 
 Status: **ACTIVE / PARTIAL CLOSURE**. RH remains **OPEN**.
 
-This file is the active route SSOT. It records the theorem boundary after the deterministic dictionary-RHS completion in PR #42. Lean and the RHRC claim registry remain the authority for theorem status; this route document records sequencing and non-claim discipline.
+This file is the active route SSOT for R003. Lean and the RHRC claim registry are theorem authority; this route document records sequencing, architecture decisions, and claim boundaries.
 
 ## Authority and proof-status discipline
 
@@ -15,7 +15,7 @@ external connes-cvs Python               oracle / falsifier only
 finite numerics                          diagnostic only
 ```
 
-Nothing promotes itself. Green CI does not imply an explicit-formula theorem, a deterministic RHS identity does not imply a zero-side bridge, a finite bridge does not imply a finite-to-infinite theorem, and none of the finite CCM results are RH evidence by themselves.
+Nothing promotes itself. Green CI does not imply a tent explicit-formula theorem, a deterministic RHS identity does not imply a zero-side bridge, a finite bridge does not imply a finite-to-infinite theorem, and none of the finite CCM results are RH evidence by themselves.
 
 ## Current theorem boundary
 
@@ -27,39 +27,71 @@ Compiler-checked facts include:
 - generic divided-difference/source calculus and rank-at-most-two index displacement;
 - the exact source/physical-coordinate dictionary bridge;
 - the finite dictionary test
-
-```text
-k_{u,L}(y) = 1/2 K_u(1-|y|/L)   for |y| <= L,
-           = 0                    otherwise;
-```
-
+  ```text
+  k_{u,L}(y) = 1/2 K_u(1-|y|/L)   for |y| <= L,
+             = 0                    otherwise;
+  ```
 - `sourceMatrix(1) = 2I` and `K_u(1) = 2*coefficientMass(u)`;
 - compact support, continuity, endpoint values and evenness of the raw dictionary;
 - for real `u`, the exact rank-one seam decomposition
+  ```text
+  k_{u,L}(y) = sigma(u)^2 * tau_L(y) + r_{u,L}(y),
+  sigma(u) = sum_i u_i,
+  tau_L(y) = max(0, 1-|y|/L);
+  ```
+- exact first-order seam factorization and the first/second residual branch jets;
+- the residual is globally `C_c^2` for every real `u` and `L>0` (`R003_RESIDUAL_C2`);
+- the canonical tent has exact `paperFT`, critical-strip quadratic decay, and concrete zeta zero-side absolute summability (`R003_TENT_ANALYTICS`);
+- the deterministic literature explicit-formula RHS of the full real dictionary is exactly the production quadratic form (`R003_CCM_RHS_IDENTITY`);
+- the zero-sum dictionary case is already a concrete zeta explicit-formula theorem:
+  `Zeta23.CCM.zeroSum_dictionaryTest_zero_sum_eq_quadraticForm`;
+- smooth-core polarization on the coefficient-sum-zero hyperplane is compiler-proved:
+  `Zeta23.CCM.smoothCoreZeroPolarization_eq_realMatrixPairing`;
+- Route M M0–M3 is compiler-proved as a local adapter around the literal tent:
+  `Zeta23.CCM.dictionaryTent_mollifier_architecture_package`.
 
-```text
-k_{u,L}(y) = sigma(u)^2 * tau_L(y) + r_{u,L}(y),
-sigma(u) = sum_i u_i,
-tau_L(y) = max(0, 1-|y|/L);
-```
+The deterministic RHS identity remains zero-free and was proved channel by channel. The prime channel truncates the raw prime `tsum` to common finite support **before** coefficient-sum reordering. The archimedean channel includes the diagonal scalar correction `2*cCorrection(L)` and requires no `sum_i u_i = 0` restriction.
 
-- exact first-order seam factorization `K'_u(0) = K'_u(1) = 2*sigma(u)^2`;
-- first and second residual branch jets at `-L`, `0`, and `L`;
-- the smooth residual is globally glued into a complex-valued `C_c^2` test for every real `u` and `L>0` (`R003_RESIDUAL_C2`);
-- the canonical tent has compact support, exact native-`paperFT` transform, strip decay, and multiplicity-weighted zero-side absolute summability (`R003_TENT_ANALYTICS`);
-- the deterministic literature explicit-formula RHS of the **full real dictionary** is exactly the production quadratic form (`R003_CCM_RHS_IDENTITY`):
+The raw dictionary itself is not globally `C^1`: its universal tent channel carries the first-derivative seam. The residual is the smooth part; the tent is the remaining nonsmooth part.
 
-```text
-literatureRHS(dictionaryTest N (ofReal u) L)
-  = quadraticForm(dictionaryMatrix(L,N), ofReal u),
+**Tent transform/decay/summability + mollifier architecture is still not the tent explicit-formula extension.**
 
-dictionaryMatrix(L,N)
-  = finiteMatrix(L,N) + 2*cCorrection(L)*I.
-```
+## Route-M architecture now proved
 
-The deterministic identity is zero-free and was proved channel by channel: pole, prime, and archimedean. The prime channel truncates the raw prime `tsum` to common finite support **before** any coefficient-sum reordering. The archimedean channel includes the diagonal scalar correction `2*cCorrection(L)` and requires no `sum_i u_i = 0` restriction.
+For `L>0`, the canonical mollifier family has:
 
-The raw dictionary itself is not claimed to be globally `C^1`: its universal tent channel carries the first-derivative seam. The residual is the smooth part; the tent is the remaining nonsmooth part. **Tent transform/decay/summability is not the tent explicit-formula extension.**
+1. normalized shrinking positive radius `1/(n+1)`;
+2. `C²` mollified tents;
+3. compact support;
+4. pointwise convergence to the literal existing `dictionaryTent`;
+5. exact complex-frequency factorization
+   ```text
+   paperFT(mollified tent)(z)
+     = mollifierTransform(n,z) * paperFT(literal tent)(z);
+   ```
+6. a uniform critical-strip bound on the mollifier transform;
+7. inherited uniform quadratic strip decay;
+8. one common physical support envelope independent of `n`:
+   ```text
+   support(dictionaryTentMollified L n) ⊆ [-(L+1), L+1].
+   ```
+
+The neutral helper `Zeta23.paperFT_mul_convolution_eq_of_continuous_compactSupport` obtains complex-frequency convolution factorization by exponential tilting and the existing real Fourier convolution theorem. No central `WeilEF` interface was weakened or rewritten.
+
+This closes the **M0–M3 architecture gate only**.
+
+## Route-G disposition
+
+The direct-tent Guinand–Weil spike (Route G) produced useful local-only evidence, but it required broad surgery around the central `ContDiff ℝ 2` explicit-formula interface and is **REJECTED as the production architecture**.
+
+Its status must remain truthful:
+
+- the original scratch source was not recoverable from live repository history;
+- no reconstructed source may be presented as the original compiler object;
+- the archival evidence branch is `archive/t1-route-g-evidence-20260828`;
+- Route M is now the production route.
+
+The successful M2 factorization is especially important here: it shows that the feared need for a new complex Fourier / direct nonsmooth EF interface did not materialize.
 
 ## Normalization lock
 
@@ -85,11 +117,7 @@ while the older diagnostic used
 WeilGram = 2*M + 4*cCorrection(L)*I = 2*Q_inf.
 ```
 
-**Do not import the old factor two into the production dictionary theorem.** The production dictionary contains an explicit factor `1/2`, and the compiled deterministic theorem targets
-
-```text
-dictionaryMatrix(L,N) := M(L,N) + 2*cCorrection(L)*I.
-```
+**Do not import the old factor two into the production dictionary theorem.**
 
 Also keep the two low-rank objects separate:
 
@@ -98,156 +126,213 @@ I = identity matrix                 scalar normalization channel
 J = 1 1^T                           rank-one coefficient-sum seam channel
 ```
 
-`I != J`. The first-order seam theorem concerns `J`; the finite Guinand–Weil normalization concerns `I`.
+`I != J`.
 
 ## Milestones
 
 ```text
-M2a finite dictionary core             REACHED
-M2b finite topology / normalization    REACHED
-M2c analytic seam isolation            REACHED
-M2d admissible full dictionary family  OPEN
-M2e deterministic finite RHS identity  REACHED
-M2f exact zero-side / CCM bridge       OPEN
+M2a finite dictionary core                 REACHED
+M2b finite topology / normalization        REACHED
+M2c analytic seam isolation                REACHED
+M2d-0 tent transform/decay/summability     REACHED
+M2d-1 Route-M M0-M3 adapter architecture   REACHED
+M2d-2 literal tent explicit formula M4-M8  OPEN
+M2e deterministic finite RHS identity      REACHED
+H0 zero-sum concrete zeta EF bridge        REACHED
+H1 smooth-core polarization                 REACHED
+H2a codim-one matrix completion             OPEN
+H2b actual zero-side matrix / rank<=2 gap   OPEN
+H2+ displacement-collapse attempt           OPEN
+V0/V1 finite off-line visibility            OPEN
+full finite zero-side bridge                 OPEN
+finite-to-infinite closure                   OPEN
 ```
 
-`M2d` remains open because the canonical nonsmooth tent still needs a justified zeta explicit-formula extension. `M2e` is now compiler-proved independently of zeros. `M2f` cannot be promoted until the full dictionary zero-side explicit-formula identity is compiled.
+`R003_TENT_EF_EXTENSION` remains OPEN. M0–M3 prove that mollification is a viable adapter into the inherited `C²` EF machinery; they do not perform the limit passage.
 
-## Implemented chronology
+## Implemented chronology relevant to the live frontier
 
-### PR #35 — finite Guinand–Weil dictionary core
+### PR #35–#39 — dictionary core, residual, and tent analytics
 
-**MERGED.** Delivered `sourceContract`, the exact source/qBasis contraction bridge, `dictionaryTest`, and `dictionaryTransform = Zeta23.paperFT(dictionaryTest)`.
+**MERGED.** These PRs built the finite dictionary, seam decomposition, globally `C_c^2` residual, exact tent transform/decay, and concrete zero-side tent summability.
 
-### PR #36 — finite dictionary topology / normalization
+### PR #41–#42 — deterministic RHS normalization and completion
 
-**MERGED.** Delivered the reusable quadratic-form convention, `sourceMatrix(1)=2I`, coefficient mass, endpoint/center identities, evenness, compact support, and continuity.
-
-### PR #37 — analytic seam isolation
-
-**MERGED.** Delivered the exact coefficient-sum seam channel, tent-plus-residual decomposition, residual endpoint/center jets, second-order calculus, and center second-derivative agreement.
-
-### PR #38 — global residual `C_c^2` closure
-
-**MERGED.** Compiler-checked `dictionaryResidualTest_admissible` and the supporting global residual regularity/compact-support theorems. This is the smooth residual only, not the nonsmooth tent.
-
-### PR #39 — canonical tent transform + strip decay + zero summability
-
-**MERGED.** Compiler-checked `dictionaryTent_analytic_package`, including the exact transform, multiplied quadratic strip bound, and concrete zeta zero-side absolute summability. This did **not** prove the tent explicit-formula limit passage.
-
-### PR #40 — unrelated repository work
-
-PR #40 was not the deterministic R003 step anticipated by an older version of this route document. Do not use the obsolete numbering as proof-state authority.
-
-### PR #41 — deterministic RHS foundation
-
-**MERGED.** Began the zero-free deterministic RHS/normalization program and established the initial production normalization surface, but did not yet prove the full advertised dictionary identity.
-
-### PR #42 — deterministic dictionary RHS completion
-
-**CURRENT CLOSURE PR.** Proves and RHRC-binds
+**MERGED.** The production theorem is
 
 ```text
 Zeta23.CCM.literatureRHS_dictionaryTest_eq_quadraticForm
 ```
 
-for real coefficients and `L>0`, with
+with
 
 ```text
 dictionaryMatrix(L,N) = finiteMatrix(L,N) + 2*cCorrection(L)*I.
 ```
 
-The theorem is compiler-bound in `ClaimBindings.lean`; its theorem-level axiom audit reports only
+### Subsequent H0/H1 work
+
+The repository now also proves the zero-sum concrete zeta EF identity and smooth-core polarization. These facts materially change the route: the full tent EF extension is no longer the only useful next move.
+
+### PR #53 — Route-M canonical tent mollifier architecture
+
+**CURRENT CLOSURE PR.** M0–M3 compiler-close the mollification adapter. The promoted endpoint is
+
+```text
+Zeta23.CCM.dictionaryTent_mollifier_architecture_package
+```
+
+and its theorem-level axiom audit reports only
 
 ```text
 [propext, Classical.choice, Quot.sound].
 ```
 
-No project-added axiom or `sorry` is introduced. `R003_CCM_RHS_IDENTITY` is `PROVED_UNCONDITIONAL`; the tent EF extension, kernel EF extension, zero-side bridge, positivity, finite-to-infinite closure, and RH remain open.
+This is **not** `R003_TENT_EF_EXTENSION`.
 
-## Next theorem sequence — no fabricated PR numbers
+### PR #54 — countable two-translate detector consequences
 
-Future work is named by theorem obligation until an actual PR exists.
+**MERGED.** Tail negativity and the explicit countable-bank critical-line criterion are now formal theorems in `TwoTranslateCountableCriterion.lean`.
 
-### A. Tent-specific zeta explicit-formula extension
+These are useful structural facts but the countable-bank positivity statement remains RH-equivalent. The X-lane is therefore **STOPPED as an attack route**: do not create an X4.7 that merely repackages the same RH-strength burden.
 
-Target claim: `R003_TENT_EF_EXTENSION`.
+## Next theorem sequence
 
-Use the inherited concrete zeta theorem `Zeta23.WeilEF.EF_lit_zeta`; do not add a new explicit-formula assumption. The residual component already satisfies the inherited regularity hypotheses. The remaining work is the canonical tent:
+The next production sequence is no longer “finish tent EF first at all costs.”
 
-1. construct a bounded `C_c^2` approximation family;
-2. prove pole convergence;
-3. prove prime convergence with a common finite prime support;
-4. prove archimedean dominated convergence;
-5. prove zero-side limit exchange using the compiled tent decay/summability and inherited weighted zero summability.
+### H2a — codimension-one matrix completion
 
-A generic theorem `EF_lit Z -> EF_tent Z` is not the default target because `EF_lit` alone does not encode the uniform domination needed for the limit exchange.
+Prove the finite linear-algebra theorem:
 
-### B. Full dictionary kernel explicit-formula extension
-
-Target claim: `R003_KERNEL_EF_EXTENSION`.
-
-Combine the already-admissible smooth residual with the tent-specific extension to identify the concrete zeta zero-side sum of `dictionaryTransform` with `literatureRHS` of the full dictionary. Do not re-prove the deterministic RHS algebra here; consume `R003_CCM_RHS_IDENTITY`.
-
-### C. Exact zero-side finite matrix bridge
-
-Target claim: `R003_CCM_BRIDGE`.
-
-Combine `R003_KERNEL_EF_EXTENSION` with `R003_CCM_RHS_IDENTITY` and recover the matrix identity by **real polarization** unless complex polarization becomes genuinely necessary.
-
-Target normalization:
+If a symmetric matrix `A` satisfies
 
 ```text
-zeroSideMatrix(L,N) = finiteMatrix(L,N) + 2*cCorrection(L)*I.
+uᵀ A v = 0
 ```
 
-Call the unconditional object `zeroSideMatrix`, not `Gram`, until positivity is proved. Only after this exact identity is compiled may the scalar-shift displacement theorem be transferred to the actual zero-side matrix.
-
-### D. Finite structural engine
-
-After the exact zero-side bridge, continue the already-motivated finite structural work—information-loss/source quotient, prime-cutoff/von Mangoldt flow, parity/extremal spectral structure, finite characteristic objects, and barycentric/eigenvector identities—without inventing PR numbers in advance.
-
-### E. Finite-to-infinite route-selection gate
-
-Do not automatically continue from finite structure to an RH claim. Run the route-selection gate once the finite engine is mature.
-
-## Finite-to-infinite firewall
-
-Even after the exact finite bridge and finite spectral engine are complete, RH remains open. The hard wall must still be attacked by a theorem such as
+for all real `u,v` in the coefficient-sum-zero hyperplane `1⊥`, then there exists a vector `a` such that
 
 ```text
-normalized finite characteristic objects
-  -> local uniform convergence to a nonzero Xi object
-  -> sufficient real-root transfer,
+A = 1 aᵀ + a 1ᵀ,
 ```
 
-or by a genuinely weaker finite obstruction theorem forcing an off-critical zero to violate a proved finite spectral property.
+hence `rank A <= 2`.
 
-Every finite-to-infinite route must state:
+Preferred proof: pivot at coordinate 0, test `e_i-e_0` and `e_j-e_0`, derive the entry identity, then package the representation before the rank wrapper.
 
-1. the exact missing theorem;
-2. why it is weaker than RH rather than RH rewritten;
-3. which already-formal finite structure attacks it;
-4. a cheap falsifier / negative control;
-5. the smallest theorem that would materially advance the route.
+### H2b — actual zero-side matrix, legally
+
+Do **not** treat `dictionaryTransform` as linear in coefficients; it is quadratic.
+
+Safe route:
+
+1. use the exact tent+residual decomposition to prove arbitrary-real-`u` zero-side summability;
+2. define the zero-side quadratic functional `Q_Z(u)`;
+3. polarize `Q_Z` to a symmetric bilinear form `B_Z(u,v)`;
+4. define the finite `zeroSideMatrix` from basis values/polarization;
+5. use H1 on `1⊥`;
+6. set
+   ```text
+   A = zeroSideMatrix - dictionaryMatrix;
+   ```
+7. apply H2a to obtain
+   ```text
+   A = 1 aᵀ + a 1ᵀ
+   ```
+   and rank at most two.
+
+Use the name `zeroSideMatrix`, not `Gram`, until positivity is actually proved.
+
+### H2+ — bounded collapse attempt
+
+Test whether parity/reflection and any **legally proved** zero-side displacement identity force the rank-two discrepancy from H2b to collapse further.
+
+Do not assume displacement inheritance. If no cheap proof exists, stop and retain the honest rank-at-most-two discrepancy theorem.
+
+### V0/V1 — finite visibility
+
+Then test the smallest exact finite visibility problem.
+
+For `N=1`, use explicit coefficient-sum-zero probes and an off-critical zero `ρ`, write the visible transform vector as `v=x+iy`, and investigate
+
+```text
+GramDet(x,y) = ||x||² ||y||² - <x,y>².
+```
+
+First perform symbolic/adversarial degeneracy checks. Only if they survive should this become a Lean theorem target.
+
+If visibility is obtained, the pair block has the already-known signed form
+
+```text
+B_ρ = c (x xᵀ - y yᵀ),   c > 0,
+```
+
+with explicit negative direction. Immediately run the finite-family moustache test before treating any positivity statement as a plausible weaker target.
+
+## Deferred Route-M completion: M4–M8
+
+Finish the literal tent EF only when it becomes load-bearing.
+
+Remaining stages:
+
+- **M4** pole evaluations converge;
+- **M5** prime channel: common finite truncation **first**, then termwise limit;
+- **M6** archimedean dominated convergence;
+- **M7** varying-family zero-side DCT/Tannery; fixed-test `ZeroSumLimit` is not enough;
+- **M8** apply `EF_lit_zeta` to each mollified test, pass all channels separately, assemble the literal tent EF.
+
+Only M8 can promote `R003_TENT_EF_EXTENSION`.
+
+## Downstream finite-to-infinite program
+
+After H2/V work clarifies the finite obstruction space, revisit the hard finite-to-infinite routes.
+
+### Bombieri branch
+
+The hard issue is not finite negativity but whether the negative eigenvalue can collapse to zero as `N→∞`. Any route must attack that limit directly and should compose with the now-formal tail-complete detector bank rather than re-prove detector selection.
+
+### Connes / FTI branch
+
+A genuine RH-closing chain still needs something like:
+
+```text
+normalization map
+  -> controlled finite ground state / minimizer
+  -> strong approximation of the analytic proxy
+  -> local-uniform Fourier convergence to Xi
+  -> real-zero transfer (e.g. Hurwitz)
+```
+
+The hard points remain the spectral/minimizer control and the finite-to-infinite passage.
 
 ## Standing dumbassery gates
 
 - `I != J`.
-- Green CI != explicit-formula admissibility.
+- Green CI != tent explicit-formula admissibility.
 - Residual `C_c^2` != tent admissibility.
 - Tent transform decay/summability != explicit-formula limit exchange.
+- Mollifier M0–M3 architecture != M4–M8 EF limit passage.
 - Deterministic RHS identity != zero-side bridge.
-- Finite bridge != finite-to-infinite convergence.
-- Real-`u` seam theorem != an arbitrary complex-coefficient theorem.
-- Do not restrict to `sum u_i = 0` to erase the seam for the full bridge.
+- H1 on `1⊥` != full matrix equality.
+- `dictionaryTransform` is quadratic in coefficients, not linear.
+- Real-`u` seam theorem != arbitrary complex-coefficient theorem.
+- Do not erase the full bridge by imposing `sum u_i = 0`.
 - Do not side-quest into `C^3`.
 - Do not call an unconditional zero-side object `Gram` before positivity.
-- Do not turn an external numerical/source oracle into theorem authority.
-- Do not smuggle normalization in from the old doubled `WeilGram` diagnostic.
-- Do not call the all-ones channel an RH mode.
+- R002 off-line pair block is `c(xxᵀ-yyᵀ)`, not a Hermitian outer product.
+- Common translation cancels exactly in the Weil form; amplification needs relative translation/nontrivial deformation.
+- Finite negative inertia does not imply infinite negativity; a finite negative eigenvalue may tend to zero.
+- No finite dictionary completeness assumption.
+- Rank-two displacement is generic divided-difference structure, not RH evidence.
+- X4 / universal countable-bank positivity is RH-strength.
+- Numerics are only EXPERIMENTAL SIGNAL.
+- Run the moustache test before universal positivity/boundedness/subexponentiality claims.
+- LOCAL-COMPILED != LIVE.
+- Yielded output != green; completed compiler/process gates are authority.
 - RH remains OPEN until an exact theorem chain proves it.
 
 ## Immediate next step
 
-Close PR #42 only after its cleanup head re-passes the exact RHRC, normalization, `Zeta23.CCM`, `Zeta23.ExceptionalZero`, theorem-axiom, and no-placeholder gates. Then attack `R003_TENT_EF_EXTENSION`; after that, prove `R003_KERNEL_EF_EXTENSION`, and only then construct the exact zero-side finite matrix bridge.
+After PR #53 itself re-passes the promoted claim binding, RHRC registry, normalization, `Zeta23.CCM`, `Zeta23.ExceptionalZero`, theorem-axiom, and no-placeholder gates, merge it.
+
+Then start **H2a codimension-one matrix completion**, followed by **H2b actual zero-side matrix construction**. Do not automatically spend the next PR on M4–M8 unless H2/V work makes the literal tent EF extension load-bearing.
