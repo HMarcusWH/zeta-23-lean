@@ -140,8 +140,8 @@ M2d-2 literal tent explicit formula M4-M8  OPEN
 M2e deterministic finite RHS identity      REACHED
 H0 zero-sum concrete zeta EF bridge        REACHED
 H1 smooth-core polarization                 REACHED
-H2a codim-one matrix completion             OPEN
-H2b actual zero-side matrix / rank<=2 gap   OPEN
+H2a codim-one matrix completion             REACHED
+H2b actual zero-side matrix / rank<=2 gap   REACHED
 H2+ displacement-collapse attempt           OPEN
 V0/V1 finite off-line visibility            OPEN
 full finite zero-side bridge                 OPEN
@@ -176,7 +176,7 @@ The repository now also proves the zero-sum concrete zeta EF identity and smooth
 
 ### PR #53 — Route-M canonical tent mollifier architecture
 
-**CURRENT CLOSURE PR.** M0–M3 compiler-close the mollification adapter. The promoted endpoint is
+**MERGED.** M0–M3 compiler-close the mollification adapter. The promoted endpoint is
 
 ```text
 Zeta23.CCM.dictionaryTent_mollifier_architecture_package
@@ -196,13 +196,44 @@ This is **not** `R003_TENT_EF_EXTENSION`.
 
 These are useful structural facts but the countable-bank positivity statement remains RH-equivalent. The X-lane is therefore **STOPPED as an attack route**: do not create an X4.7 that merely repackages the same RH-strength burden.
 
-## Next theorem sequence
+### PR #55 — H2a codimension-one matrix completion
+
+**MERGED.** The pure finite-dimensional theorem now proves that a symmetric complex matrix whose real pairing vanishes on the coefficient-sum-zero hyperplane has the canonical form
+
+```text
+A = 1 aᵀ + a 1ᵀ
+```
+
+with explicit pivot witness `a_i = A_i0 - A_00/2`, hence rank at most two. The minimum pivoted-basis-difference interface is also formalized and is the interface consumed by H2b.
+
+### PR #56 — H2b actual zero-side matrix and seam localization
+
+**CURRENT CLOSURE PR.** The finite zeta zero-side matrix is now constructed entrywise only after absolute summability is proved. The production endpoints are
+
+```text
+Zeta23.CCM.dictionaryTransform_zero_sum_summable
+Zeta23.CCM.dictionarySpectralMatrix_zero_entry_summable
+Zeta23.CCM.zeroSideMatrix_basisDiff_pairing_eq_smoothCoreZeroPolarization
+Zeta23.CCM.zeroSideDiscrepancy_eq_completion
+Zeta23.CCM.rank_zeroSideDiscrepancy_le_two
+```
+
+and establish, for the actual zeta-dependent finite zero-side matrix,
+
+```text
+zeroSideMatrix - dictionaryMatrix = 1 aᵀ + a 1ᵀ
+rank (zeroSideMatrix - dictionaryMatrix) <= 2.
+```
+
+This does **not** prove the discrepancy vanishes. `R003_CCM_BRIDGE`, the literal tent EF extension M4–M8, finite-to-infinite closure, and RH all remain OPEN.
+
+## Current theorem sequence
 
 The next production sequence is no longer “finish tent EF first at all costs.”
 
-### H2a — codimension-one matrix completion
+### H2a — codimension-one matrix completion — REACHED
 
-Prove the finite linear-algebra theorem:
+PR #55 proves the finite linear-algebra theorem:
 
 If a symmetric matrix `A` satisfies
 
@@ -220,28 +251,27 @@ hence `rank A <= 2`.
 
 Preferred proof: pivot at coordinate 0, test `e_i-e_0` and `e_j-e_0`, derive the entry identity, then package the representation before the rank wrapper.
 
-### H2b — actual zero-side matrix, legally
+### H2b — actual zero-side matrix, legally — REACHED
 
-Do **not** treat `dictionaryTransform` as linear in coefficients; it is quadratic.
+PR #56 implements the legal route without treating `dictionaryTransform` as linear in coefficients.
 
-Safe route:
+What is now formal:
 
-1. use the exact tent+residual decomposition to prove arbitrary-real-`u` zero-side summability;
-2. define the zero-side quadratic functional `Q_Z(u)`;
-3. polarize `Q_Z` to a symmetric bilinear form `B_Z(u,v)`;
-4. define the finite `zeroSideMatrix` from basis values/polarization;
-5. use H1 on `1⊥`;
-6. set
+1. exact tent+residual decomposition gives arbitrary-real-`u` zero-side absolute summability;
+2. finite quadratic polarization gives entrywise spectral-matrix summability;
+3. `zeroSideMatrix` is defined entrywise from those absolutely convergent zero sums;
+4. pivoted basis-difference pairings agree with the H1 smooth-core polarization;
+5. for
    ```text
    A = zeroSideMatrix - dictionaryMatrix;
    ```
-7. apply H2a to obtain
+   H2a gives
    ```text
    A = 1 aᵀ + a 1ᵀ
    ```
    and rank at most two.
 
-Use the name `zeroSideMatrix`, not `Gram`, until positivity is actually proved.
+No unrestricted complex-coefficient bridge, positivity, or full matrix equality is claimed. Use the name `zeroSideMatrix`, not `Gram`, until positivity is actually proved.
 
 ### H2+ — bounded collapse attempt
 
@@ -333,6 +363,13 @@ The hard points remain the spectral/minimizer control and the finite-to-infinite
 
 ## Immediate next step
 
-After PR #53 itself re-passes the promoted claim binding, RHRC registry, normalization, `Zeta23.CCM`, `Zeta23.ExceptionalZero`, theorem-axiom, and no-placeholder gates, merge it.
+After PR #56 re-passes the RHRC registry/regression suite, R003 normalization/oracle guards, full `Zeta23.CCM`, full `Zeta23.ExceptionalZero`, theorem-axiom, no-placeholder/project-axiom, and Permansson gates on the exact synthetic merge tree, merge it.
 
-Then start **H2a codimension-one matrix completion**, followed by **H2b actual zero-side matrix construction**. Do not automatically spend the next PR on M4–M8 unless H2/V work makes the literal tent EF extension load-bearing.
+Then start **H2+** as a falsification-first structural pass:
+
+1. prove or disprove centered reflection inheritance for the actual `zeroSideMatrix`;
+2. derive the corresponding constraint on the explicit `zeroSideCompletionVector`;
+3. independently test whether any zero-side displacement identity is legally available;
+4. only if both survive, attempt the affine/parity collapse toward `A = cJ`.
+
+Do not assume displacement inheritance. If it fails, retain the honest rank-at-most-two H2b theorem and continue to V0/V1. Do not automatically spend the next PR on M4–M8 unless H2/V work makes the literal tent EF extension load-bearing.
