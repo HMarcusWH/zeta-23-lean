@@ -89,7 +89,6 @@ theorem dictionaryTransform_ofReal_eq_tent_add_residual
     simp only [c0]
     ring
   rw [hsplit, integral_add (ht.const_mul c0) hr, Zeta23.integral_const_mul_C]
-  rfl
 
 /-- The smooth residual contribution is absolutely summable over the concrete
 zeta zeros for every real coefficient vector. -/
