@@ -41,7 +41,7 @@ theorem dictionaryTentMollified_support_abs_le
   have hvabs : |v| ≤ L := abs_le.mpr hvIcc
   rw [← huv]
   calc
-    |u + v| ≤ |u| + |v| := abs_add u v
+    |u + v| ≤ |u| + |v| := abs_add_le u v
     _ ≤ 1 + L := add_le_add huabs hvabs
     _ = L + 1 := by ring
 
