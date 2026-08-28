@@ -58,7 +58,8 @@ theorem codimOneRealPairing_basisDiff
     codimOneRealPairing A (codimOneBasisDiff p i) (codimOneBasisDiff p j) =
       A i j - A i p - A p j + A p p := by
   unfold codimOneRealPairing codimOneBasisDiff
-  simp_rw [sub_mul, mul_sub, Finset.sum_sub_distrib]
+  push_cast
+  simp only [sub_mul, mul_sub, Finset.sum_sub_distrib]
   simp
   ring
 
@@ -140,8 +141,8 @@ private theorem codimOneRankLeft_mul_right
     codimOneRankLeft a * codimOneRankRight a =
       vecMulVec (fun _ => (1 : ℂ)) a + vecMulVec a (fun _ => (1 : ℂ)) := by
   ext i j
-  simp [Matrix.mul_apply, codimOneRankLeft, codimOneRankRight, Fin.sum_univ_two]
-  ring
+  simp [Matrix.mul_apply, codimOneRankLeft, codimOneRankRight,
+    Fin.sum_univ_two, Matrix.vecMulVec_apply]
 
 /-- Rank consequence of H2a: the invisible symmetric discrepancy has rank at
 most two.  The proof factors the matrix through a two-dimensional space rather
