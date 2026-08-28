@@ -36,7 +36,7 @@ theorem paperFT_eq_tilt_re (f : ℝ → ℂ) (z : ℂ) :
   filter_upwards with x
   unfold paperFTTilt
   have harg :
-      I * (z * (x : ℂ)) =
+      I * z * (x : ℂ) =
         -(z.im : ℂ) * (x : ℂ) + I * (z.re : ℂ) * (x : ℂ) := by
     apply Complex.ext <;> simp [Complex.mul_re, Complex.mul_im] <;> ring
   rw [harg, Complex.exp_add]
@@ -61,12 +61,7 @@ theorem paperFTTilt_convolution
     push_cast
     ring
   rw [hexp]
-  change
-    (f t * g (x - t)) *
-        Complex.exp (-(b : ℂ) * (t : ℂ)) *
-        Complex.exp (-(b : ℂ) * ((x - t : ℝ) : ℂ)) =
-      (Complex.exp (-(b : ℂ) * (t : ℂ)) * f t) *
-        (Complex.exp (-(b : ℂ) * ((x - t : ℝ) : ℂ)) * g (x - t))
+  simp only [ContinuousLinearMap.mul_apply']
   ring
 
 /-- Tilting preserves continuity. -/
