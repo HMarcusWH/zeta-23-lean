@@ -66,7 +66,8 @@ theorem integrable_dictionaryTentMollifierComplex (n : ℕ) :
 theorem dictionaryTentMollifierRadius_le_one (n : ℕ) :
     dictionaryTentMollifierRadius n ≤ 1 := by
   rw [dictionaryTentMollifierRadius, div_le_one (by positivity)]
-  positivity
+  have hn : 0 ≤ (n : ℝ) := Nat.cast_nonneg n
+  linarith
 
 /-- Uniform physical support bound for the complex mollifier. -/
 theorem dictionaryTentMollifierComplex_support_abs_le_one
