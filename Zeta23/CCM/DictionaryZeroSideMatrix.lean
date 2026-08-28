@@ -1,6 +1,7 @@
 import Zeta23.CCM.DictionaryZeroSideSummability
 import Zeta23.CCM.DictionaryFiniteExpansion
 import Zeta23.CCM.DictionarySmoothCorePolarization
+import Zeta23.CCM.CodimOneMatrixCompletion
 
 noncomputable section
 
@@ -13,10 +14,14 @@ open scoped BigOperators
 # The actual finite zeta zero-side matrix
 
 The matrix is defined entrywise from absolutely convergent zero sums of the
-finite dictionary basis transforms.  Entrywise summability is proved before the
+finite dictionary basis transforms. Entrywise summability is proved before the
 matrix is used.
 
-No positivity statement is made.  The name is deliberately
+H2b deliberately needs only pivoted basis-difference pairings. This avoids an
+unnecessary general finite-sum/tsum interchange theorem while still supplying
+the exact minimum input consumed by the strengthened H2a interface.
+
+No positivity statement is made. The name is deliberately
 `zeroSideMatrix`, not `Gram`.
 -/
 
@@ -48,7 +53,7 @@ theorem dictionarySpectralMatrix_apply_comm
   rw [dictionaryBasisTest_comm]
 
 /-- The full dictionary transform is exactly the quadratic form of its spectral
-matrix.  This is finite algebra; it is not linearity in the coefficient vector. -/
+matrix. This is finite algebra; it is not linearity in the coefficient vector. -/
 theorem dictionaryTransform_eq_quadraticForm_spectralMatrix
     (N : ℕ) (u : Fin (2 * N + 1) → ℂ)
     {L : ℝ} (hL : 0 < L) (z : ℂ) :
@@ -56,6 +61,19 @@ theorem dictionaryTransform_eq_quadraticForm_spectralMatrix
       quadraticForm (dictionarySpectralMatrix N L z) u := by
   rw [dictionaryTransform, paperFT_dictionaryTest_eq_basis_sum N u hL z]
   rfl
+
+/-- Compatibility of the two real matrix-pairing notations used by H1 and H2a. -/
+theorem codimOneRealPairing_eq_realMatrixPairing
+    {ι : Type*} [Fintype ι]
+    (A : Matrix ι ι ℂ) (u v : ι → ℝ) :
+    codimOneRealPairing A u v = realMatrixPairing A u v := by
+  unfold codimOneRealPairing realMatrixPairing Matrix.mulVec dotProduct
+  apply Finset.sum_congr rfl
+  intro i hi
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro j hj
+  ring
 
 /-- Real coordinate basis vector used only for finite polarization. -/
 def dictionaryRealUnit
@@ -121,7 +139,7 @@ theorem dictionarySpectralMatrix_apply_eq_realPolarization
       (dictionaryRealUnit i) (dictionaryRealUnit j) hL z
 
 /-- Entrywise legality theorem: every matrix-entry zero series is absolutely
-summable.  The proof uses polarization of already-summable full dictionaries;
+summable. The proof uses polarization of already-summable full dictionaries;
 it never applies the C² explicit-formula theorem directly to a nonsmooth basis
 test. -/
 theorem dictionarySpectralMatrix_zero_entry_summable
@@ -164,114 +182,106 @@ theorem zeroSideMatrix_apply_comm
   intro ρ
   rw [dictionarySpectralMatrix_apply_comm]
 
-/-- The quadratic form of the zero-side matrix on a real coefficient vector is
-the absolutely convergent full-dictionary zero sum. -/
-theorem quadraticForm_zeroSideMatrix_eq_zeroSum
-    (hs : ZetaSeam)
-    (N : ℕ) (u : Fin (2 * N + 1) → ℝ)
-    {L : ℝ} (hL : 0 < L) :
-    quadraticForm (zeroSideMatrix hs N L) (fun i => (u i : ℂ)) =
-      ∑' ρ : (zetaZeros hs).carrier,
-        ((zetaZeros hs).mult ρ : ℂ) *
-          dictionaryTransform N (fun i => (u i : ℂ)) L (gammaOf ρ) := by
-  have hentry :
-      ∀ i j : Fin (2 * N + 1),
-        Summable (fun ρ : (zetaZeros hs).carrier =>
-          ((u i : ℂ) *
-            (((zetaZeros hs).mult ρ : ℂ) *
-              dictionarySpectralMatrix N L (gammaOf ρ) i j)) *
-            (u j : ℂ)) := by
-    intro i j
-    exact ((dictionarySpectralMatrix_zero_entry_summable hs N i j hL).mul_left
-      (u i : ℂ)).mul_right (u j : ℂ)
-  unfold quadraticForm zeroSideMatrix
-  simp only [Complex.conj_ofReal]
-  rw [show
-      (∑ i, ∑ j,
-        (u i : ℂ) *
-          (∑' ρ : (zetaZeros hs).carrier,
-            ((zetaZeros hs).mult ρ : ℂ) *
-              dictionarySpectralMatrix N L (gammaOf ρ) i j) *
-          (u j : ℂ)) =
-      ∑ i, ∑ j,
-        ∑' ρ : (zetaZeros hs).carrier,
-          (u i : ℂ) *
-            (((zetaZeros hs).mult ρ : ℂ) *
-              dictionarySpectralMatrix N L (gammaOf ρ) i j) *
-            (u j : ℂ) by
-        apply Finset.sum_congr rfl
-        intro i hi
-        apply Finset.sum_congr rfl
-        intro j hj
-        rw [tsum_mul_left, tsum_mul_right]
-        rfl]
-  have hswap1 :
-      (∑ i, ∑ j,
-        ∑' ρ : (zetaZeros hs).carrier,
-          (u i : ℂ) *
-            (((zetaZeros hs).mult ρ : ℂ) *
-              dictionarySpectralMatrix N L (gammaOf ρ) i j) *
-            (u j : ℂ)) =
-      ∑' ρ : (zetaZeros hs).carrier,
-        ∑ i, ∑ j,
-          (u i : ℂ) *
-            (((zetaZeros hs).mult ρ : ℂ) *
-              dictionarySpectralMatrix N L (gammaOf ρ) i j) *
-            (u j : ℂ)) := by
-    rw [← (Summable.tsum_finsetSum
-      (s := Finset.univ)
-      (fun i _ =>
-        Summable.tsum_finsetSum
-          (s := Finset.univ)
-          (fun j _ => hentry i j)))]
-    simp
-  rw [hswap1]
-  apply tsum_congr
-  intro ρ
-  rw [dictionaryTransform_eq_quadraticForm_spectralMatrix N
-      (fun i => (u i : ℂ)) hL (gammaOf ρ)]
-  unfold quadraticForm realMatrixPairing
-  simp only [Complex.conj_ofReal]
-  rw [Finset.mul_sum]
-  apply Finset.sum_congr rfl
-  intro i hi
-  rw [Finset.mul_sum]
-  apply Finset.sum_congr rfl
-  intro j hj
-  ring
+/-- Minimum H2b realization theorem. For pivoted basis-difference probes, the
+pairing of the legally constructed zero-side matrix is exactly the H1 zero-side
+polarization.
 
-/-- Exact unrestricted real-pairing realization of the zero-side polarization.
-This is a finite-dimensional consequence of the entrywise construction, not an
-extra explicit-formula assertion. -/
-theorem realMatrixPairing_zeroSideMatrix_eq_smoothCoreZeroPolarization
+This uses only four entrywise absolutely convergent series and the two full
+dictionary series appearing in the polarization. No unrestricted
+finite-sum/tsum interchange is required. -/
+theorem zeroSideMatrix_basisDiff_pairing_eq_smoothCoreZeroPolarization
     (hs : ZetaSeam)
     (N : ℕ)
-    (u v : Fin (2 * N + 1) → ℝ)
+    (p i j : Fin (2 * N + 1))
     {L : ℝ} (hL : 0 < L) :
-    realMatrixPairing (zeroSideMatrix hs N L) u v =
-      smoothCoreZeroPolarization hs N L u v := by
-  have hpol :=
-    quadraticForm_real_polarization (zeroSideMatrix hs N L) u v
-  have hsym :=
-    realMatrixPairing_comm_of_symmetric
-      (zeroSideMatrix hs N L)
-      (zeroSideMatrix_apply_comm hs N L) v u
-  have hpol' :
-      realMatrixPairing (zeroSideMatrix hs N L) u v =
+    codimOneRealPairing (zeroSideMatrix hs N L)
+        (codimOneBasisDiff p i) (codimOneBasisDiff p j) =
+      smoothCoreZeroPolarization hs N L
+        (codimOneBasisDiff p i) (codimOneBasisDiff p j) := by
+  let u : Fin (2 * N + 1) → ℝ := codimOneBasisDiff p i
+  let v : Fin (2 * N + 1) → ℝ := codimOneBasisDiff p j
+  let up : Fin (2 * N + 1) → ℝ := fun k => u k + v k
+  let um : Fin (2 * N + 1) → ℝ := fun k => u k - v k
+  let F := fun (a b : Fin (2 * N + 1)) (ρ : (zetaZeros hs).carrier) =>
+    ((zetaZeros hs).mult ρ : ℂ) *
+      dictionarySpectralMatrix N L (gammaOf ρ) a b
+
+  have hij := dictionarySpectralMatrix_zero_entry_summable hs N i j hL
+  have hip := dictionarySpectralMatrix_zero_entry_summable hs N i p hL
+  have hpj := dictionarySpectralMatrix_zero_entry_summable hs N p j hL
+  have hpp := dictionarySpectralMatrix_zero_entry_summable hs N p p hL
+
+  have hentries :
+      HasSum (fun ρ => F i j ρ - F i p ρ - F p j ρ + F p p ρ)
+        (zeroSideMatrix hs N L i j -
+          zeroSideMatrix hs N L i p -
+          zeroSideMatrix hs N L p j +
+          zeroSideMatrix hs N L p p) := by
+    simpa [F, zeroSideMatrix] using
+      (((hij.hasSum.sub hip.hasSum).sub hpj.hasSum).add hpp.hasSum)
+
+  have hplus := dictionaryTransform_zero_sum_summable hs N up hL
+  have hminus := dictionaryTransform_zero_sum_summable hs N um hL
+  have hpolar :
+      HasSum
+        (fun ρ : (zetaZeros hs).carrier =>
+          (1 / 4 : ℂ) *
+            ((((zetaZeros hs).mult ρ : ℂ) *
+                dictionaryTransform N (fun k => (up k : ℂ)) L (gammaOf ρ)) -
+              (((zetaZeros hs).mult ρ : ℂ) *
+                dictionaryTransform N (fun k => (um k : ℂ)) L (gammaOf ρ))))
+        (smoothCoreZeroPolarization hs N L u v) := by
+    unfold smoothCoreZeroPolarization
+    simpa [up, um, u, v] using
+      (hplus.hasSum.sub hminus.hasSum).mul_left (1 / 4 : ℂ)
+
+  have hpoint :
+      ∀ ρ : (zetaZeros hs).carrier,
+        F i j ρ - F i p ρ - F p j ρ + F p p ρ =
+          (1 / 4 : ℂ) *
+            ((((zetaZeros hs).mult ρ : ℂ) *
+                dictionaryTransform N (fun k => (up k : ℂ)) L (gammaOf ρ)) -
+              (((zetaZeros hs).mult ρ : ℂ) *
+                dictionaryTransform N (fun k => (um k : ℂ)) L (gammaOf ρ))) := by
+    intro ρ
+    have hpol :=
+      dictionarySpectralMatrix_real_polarization N u v hL (gammaOf ρ)
+    have hentry :
+        dictionarySpectralMatrix N L (gammaOf ρ) i j -
+          dictionarySpectralMatrix N L (gammaOf ρ) i p -
+          dictionarySpectralMatrix N L (gammaOf ρ) p j +
+          dictionarySpectralMatrix N L (gammaOf ρ) p p =
         (1 / 4 : ℂ) *
-          (quadraticForm (zeroSideMatrix hs N L)
-              (fun i => ((u i + v i : ℝ) : ℂ)) -
-            quadraticForm (zeroSideMatrix hs N L)
-              (fun i => ((u i - v i : ℝ) : ℂ))) := by
-    rw [hsym] at hpol
-    linear_combination hpol
-  rw [hpol',
-    quadraticForm_zeroSideMatrix_eq_zeroSum hs N (fun i => u i + v i) hL,
-    quadraticForm_zeroSideMatrix_eq_zeroSum hs N (fun i => u i - v i) hL]
-  rfl
+          (dictionaryTransform N (fun k => (up k : ℂ)) L (gammaOf ρ) -
+            dictionaryTransform N (fun k => (um k : ℂ)) L (gammaOf ρ)) := by
+      rw [← codimOneRealPairing_basisDiff
+        (dictionarySpectralMatrix N L (gammaOf ρ)) p i j,
+        codimOneRealPairing_eq_realMatrixPairing]
+      simpa [u, v, up, um] using hpol.symm
+    unfold F
+    rw [hentry]
+    ring
+
+  have hentries' :
+      HasSum
+        (fun ρ : (zetaZeros hs).carrier =>
+          (1 / 4 : ℂ) *
+            ((((zetaZeros hs).mult ρ : ℂ) *
+                dictionaryTransform N (fun k => (up k : ℂ)) L (gammaOf ρ)) -
+              (((zetaZeros hs).mult ρ : ℂ) *
+                dictionaryTransform N (fun k => (um k : ℂ)) L (gammaOf ρ))))
+        (zeroSideMatrix hs N L i j -
+          zeroSideMatrix hs N L i p -
+          zeroSideMatrix hs N L p j +
+          zeroSideMatrix hs N L p p) := by
+    convert hentries using 1
+    funext ρ
+    exact hpoint ρ
+
+  rw [codimOneRealPairing_basisDiff]
+  exact hentries'.unique hpolar
 
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.dictionarySpectralMatrix_zero_entry_summable
-#print axioms Zeta23.CCM.quadraticForm_zeroSideMatrix_eq_zeroSum
-#print axioms Zeta23.CCM.realMatrixPairing_zeroSideMatrix_eq_smoothCoreZeroPolarization
+#print axioms Zeta23.CCM.zeroSideMatrix_basisDiff_pairing_eq_smoothCoreZeroPolarization
