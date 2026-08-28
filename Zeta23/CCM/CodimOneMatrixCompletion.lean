@@ -36,12 +36,12 @@ positivity statement, and no finite-to-infinite claim.
 /-- Real-coefficient bilinear pairing against a complex matrix. -/
 def codimOneRealPairing {ι : Type*} [Fintype ι]
     (A : Matrix ι ι ℂ) (u v : ι → ℝ) : ℂ :=
-  ∑ i, ∑ j, (u i : ℂ) * A i j * (v j : ℂ)
+  (fun i => (u i : ℂ)) ⬝ᵥ A.mulVec (fun j => (v j : ℂ))
 
 /-- The zero-sum probe `e_i - e_p` based at a chosen pivot coordinate `p`. -/
 def codimOneBasisDiff {ι : Type*} [DecidableEq ι]
     (p i : ι) : ι → ℝ :=
-  fun k => (if k = i then 1 else 0) - (if k = p then 1 else 0)
+  Pi.single i 1 - Pi.single p 1
 
 /-- Every pivoted basis-difference probe has coefficient sum zero. -/
 @[simp] theorem sum_codimOneBasisDiff
@@ -50,6 +50,15 @@ def codimOneBasisDiff {ι : Type*} [DecidableEq ι]
     (∑ k, codimOneBasisDiff p i k) = 0 := by
   simp [codimOneBasisDiff, Finset.sum_sub_distrib]
 
+/-- Complexification of a real pivoted basis-difference probe. -/
+private theorem ofReal_codimOneBasisDiff
+    {ι : Type*} [DecidableEq ι]
+    (p i : ι) :
+    (fun k => (codimOneBasisDiff p i k : ℂ)) =
+      Pi.single i 1 - Pi.single p 1 := by
+  funext k
+  simp [codimOneBasisDiff]
+
 /-- Pairing two pivoted basis-difference probes extracts the corresponding
 four-entry second difference of the matrix. -/
 theorem codimOneRealPairing_basisDiff
@@ -57,10 +66,10 @@ theorem codimOneRealPairing_basisDiff
     (A : Matrix ι ι ℂ) (p i j : ι) :
     codimOneRealPairing A (codimOneBasisDiff p i) (codimOneBasisDiff p j) =
       A i j - A i p - A p j + A p p := by
-  unfold codimOneRealPairing codimOneBasisDiff
-  push_cast
-  simp only [sub_mul, mul_sub, Finset.sum_sub_distrib]
-  simp
+  unfold codimOneRealPairing
+  rw [ofReal_codimOneBasisDiff, ofReal_codimOneBasisDiff]
+  simp [Matrix.mulVec_sub, Matrix.mulVec_single_one,
+    sub_dotProduct, dotProduct_sub, single_one_dotProduct]
   ring
 
 /-- Vanishing on the coefficient-sum-zero hyperplane forces the entry identity
