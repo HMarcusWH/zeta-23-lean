@@ -53,7 +53,8 @@ def dictionaryTentMollifierBump (n : ℕ) : ContDiffBump (0 : ℝ) :=
 /-- The canonical mollifier radii tend to zero. -/
 theorem dictionaryTentMollifierRadius_tendsto_zero :
     Tendsto dictionaryTentMollifierRadius atTop (𝓝 0) := by
-  simpa [dictionaryTentMollifierRadius] using
+  change Tendsto (fun n : ℕ => 1 / ((n : ℝ) + 1)) atTop (𝓝 0)
+  simpa only [one_div] using
     (tendsto_one_div_add_atTop_nhds_zero_nat (𝕜 := ℝ))
 
 /-- Equivalent `rOut` form consumed by Mathlib's approximate-identity theorem. -/
@@ -100,7 +101,7 @@ theorem dictionaryTentMollifier_hasCompactSupport (n : ℕ) :
 /-- M0: convolution with the smooth compactly supported mollifier upgrades the
 real tent to a `C²` function without changing the target object. -/
 theorem contDiff_two_dictionaryTentMollifiedReal
-    {L : ℝ} (hL : 0 < L) (n : ℕ) :
+    (L : ℝ) (n : ℕ) :
     ContDiff ℝ 2 (dictionaryTentMollifiedReal L n) := by
   have hloc : LocallyIntegrable (dictionaryApertureCoord L) volume :=
     (continuous_dictionaryApertureCoord L).locallyIntegrable
@@ -109,17 +110,17 @@ theorem contDiff_two_dictionaryTentMollifiedReal
 
 /-- M0, complex wrapper form used by the existing explicit-formula interface. -/
 theorem contDiff_two_dictionaryTentMollified
-    {L : ℝ} (hL : 0 < L) (n : ℕ) :
+    (L : ℝ) (n : ℕ) :
     ContDiff ℝ 2 (dictionaryTentMollified L n) := by
   exact Complex.ofRealCLM.contDiff.comp
-    (contDiff_two_dictionaryTentMollifiedReal hL n)
+    (contDiff_two_dictionaryTentMollifiedReal L n)
 
 /-- M0: the real mollified tent remains compactly supported. -/
 theorem dictionaryTentMollifiedReal_hasCompactSupport
     {L : ℝ} (hL : 0 < L) (n : ℕ) :
     HasCompactSupport (dictionaryTentMollifiedReal L n) := by
   exact (dictionaryTentMollifier_hasCompactSupport n).convolution
-    (dictionaryApertureCoord_hasCompactSupport hL)
+    (lsmul ℝ ℝ) (dictionaryApertureCoord_hasCompactSupport hL)
 
 /-- M0, complex wrapper compact-support form. -/
 theorem dictionaryTentMollified_hasCompactSupport
