@@ -63,8 +63,16 @@ private theorem ofReal_codimOneBasisDiff
     (fun k => (codimOneBasisDiff p i k : ℂ)) =
       codimOneBasisDiffComplex p i := by
   funext k
-  by_cases hki : k = i <;> by_cases hkp : k = p <;>
-    simp [codimOneBasisDiff, codimOneBasisDiffComplex, hki, hkp]
+  by_cases hki : k = i
+  · subst k
+    by_cases hip : i = p
+    · subst p
+      simp [codimOneBasisDiff, codimOneBasisDiffComplex]
+    · simp [codimOneBasisDiff, codimOneBasisDiffComplex, hip]
+  · by_cases hkp : k = p
+    · subst k
+      simp [codimOneBasisDiff, codimOneBasisDiffComplex, hki]
+    · simp [codimOneBasisDiff, codimOneBasisDiffComplex, hki, hkp]
 
 /-- Matrix-vector multiplication by a basis-difference probe extracts a
 column difference. -/
