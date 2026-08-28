@@ -28,7 +28,6 @@ theorem realMatrixPairing_sub
       realMatrixPairing A u v - realMatrixPairing B u v := by
   unfold realMatrixPairing
   simp_rw [Matrix.sub_apply, mul_sub, sub_mul, Finset.sum_sub_distrib]
-  ring
 
 /-- H2a's pairing notation is additive under matrix subtraction. -/
 theorem codimOneRealPairing_sub
