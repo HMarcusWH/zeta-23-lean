@@ -63,18 +63,31 @@ private theorem ofReal_codimOneBasisDiff
     (fun k => (codimOneBasisDiff p i k : ℂ)) =
       codimOneBasisDiffComplex p i := by
   funext k
-  simp [codimOneBasisDiff, codimOneBasisDiffComplex]
-
-/-- The complex basis-difference probe is the difference of two coordinate
-singletons. -/
-private theorem codimOneBasisDiffComplex_eq_single
-    {ι : Type*} [DecidableEq ι]
-    (p i : ι) :
-    codimOneBasisDiffComplex p i =
-      Pi.single i 1 - Pi.single p 1 := by
-  funext k
   by_cases hki : k = i <;> by_cases hkp : k = p <;>
-    simp [codimOneBasisDiffComplex, hki, hkp]
+    simp [codimOneBasisDiff, codimOneBasisDiffComplex, hki, hkp]
+
+/-- Matrix-vector multiplication by a basis-difference probe extracts a
+column difference. -/
+private theorem mulVec_codimOneBasisDiffComplex
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (A : Matrix ι ι ℂ) (p j : ι) :
+    A.mulVec (codimOneBasisDiffComplex p j) =
+      fun r => A r j - A r p := by
+  funext r
+  unfold Matrix.mulVec dotProduct codimOneBasisDiffComplex
+  simp_rw [mul_sub]
+  rw [Finset.sum_sub_distrib]
+  simp
+
+/-- Dotting with a basis-difference probe extracts a coordinate difference. -/
+private theorem codimOneBasisDiffComplex_dot
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (p i : ι) (w : ι → ℂ) :
+    codimOneBasisDiffComplex p i ⬝ᵥ w = w i - w p := by
+  unfold dotProduct codimOneBasisDiffComplex
+  simp_rw [sub_mul]
+  rw [Finset.sum_sub_distrib]
+  simp
 
 /-- Pairing two pivoted basis-difference probes extracts the corresponding
 four-entry second difference of the matrix. -/
@@ -85,8 +98,8 @@ theorem codimOneRealPairing_basisDiff
       A i j - A i p - A p j + A p p := by
   unfold codimOneRealPairing
   rw [ofReal_codimOneBasisDiff, ofReal_codimOneBasisDiff,
-    codimOneBasisDiffComplex_eq_single, codimOneBasisDiffComplex_eq_single]
-  simp [Matrix.mulVec_sub, sub_dotProduct, dotProduct_sub]
+    mulVec_codimOneBasisDiffComplex]
+  rw [codimOneBasisDiffComplex_dot]
   ring
 
 /-- Vanishing on the coefficient-sum-zero hyperplane forces the entry identity
