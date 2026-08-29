@@ -49,7 +49,7 @@ private theorem dictionaryTentMollifierTransform_eq_convolution_zero
     Complex.real_smul]
   congr 1
   push_cast
-  ring
+  ring_nf
 
 /-- M3.5: the transform of the normalized shrinking mollifier tends to one at
 every fixed complex frequency. -/
