@@ -48,7 +48,12 @@ Compiler-checked facts include:
 - smooth-core polarization on the coefficient-sum-zero hyperplane is compiler-proved:
   `Zeta23.CCM.smoothCoreZeroPolarization_eq_realMatrixPairing`;
 - Route M M0–M3 is compiler-proved as a local adapter around the literal tent:
-  `Zeta23.CCM.dictionaryTent_mollifier_architecture_package`.
+  `Zeta23.CCM.dictionaryTent_mollifier_architecture_package`;
+- fixed-complex-frequency mollifier convergence is compiler-proved:
+  `Zeta23.CCM.dictionaryTentMollifierTransform_tendsto_one` and
+  `Zeta23.CCM.paperFT_dictionaryTentMollified_tendsto`;
+- Route-M M4 pole convergence and M5 truncate-first prime convergence are compiler-proved:
+  `Zeta23.CCM.dictionaryTent_pole_prime_limit_package`.
 
 The deterministic RHS identity remains zero-free and was proved channel by channel. The prime channel truncates the raw prime `tsum` to common finite support **before** coefficient-sum reordering. The archimedean channel includes the diagonal scalar correction `2*cCorrection(L)` and requires no `sum_i u_i = 0` restriction.
 
@@ -78,7 +83,7 @@ For `L>0`, the canonical mollifier family has:
 
 The neutral helper `Zeta23.paperFT_mul_convolution_eq_of_continuous_compactSupport` obtains complex-frequency convolution factorization by exponential tilting and the existing real Fourier convolution theorem. No central `WeilEF` interface was weakened or rewritten.
 
-This closes the **M0–M3 architecture gate only**.
+M0–M3 close the adapter architecture. M3.5 now proves the normalized mollifier transform tends to one at every fixed complex frequency, and M4–M5 separately close the pole and prime limit channels. The literal-tent explicit formula is still open because M6, M7 and M8 remain.
 
 ## Route-G disposition
 
@@ -136,7 +141,12 @@ M2b finite topology / normalization        REACHED
 M2c analytic seam isolation                REACHED
 M2d-0 tent transform/decay/summability     REACHED
 M2d-1 Route-M M0-M3 adapter architecture   REACHED
-M2d-2 literal tent explicit formula M4-M8  OPEN
+M2d-1.5 fixed-frequency mollifier limit     REACHED
+M2d-2 M4 pole limit                         REACHED
+M2d-3 M5 prime truncate-first limit         REACHED
+M2d-4 M6 archimedean DCT                    OPEN
+M2d-5 M7 varying-family zero-side DCT       OPEN
+M2d-6 M8 literal tent EF assembly           OPEN
 M2e deterministic finite RHS identity      REACHED
 H0 zero-sum concrete zeta EF bridge        REACHED
 H1 smooth-core polarization                 REACHED
@@ -148,7 +158,7 @@ full finite zero-side bridge                 OPEN
 finite-to-infinite closure                   OPEN
 ```
 
-`R003_TENT_EF_EXTENSION` remains OPEN. M0–M3 prove that mollification is a viable adapter into the inherited `C²` EF machinery; they do not perform the limit passage.
+`R003_TENT_EF_EXTENSION` remains OPEN. M0–M3 prove the adapter, M3.5 proves fixed-frequency transform convergence, and M4–M5 prove the pole/prime channel limits. M6 archimedean dominated convergence, M7 varying-family zero-side dominated convergence/Tannery, and M8 assembly remain open.
 
 ## Implemented chronology relevant to the live frontier
 
@@ -229,7 +239,7 @@ This does **not** prove the discrepancy vanishes. `R003_CCM_BRIDGE`, the literal
 
 ### PR #57 — H2+ collapse to the literal-tent defect
 
-**CURRENT CLOSURE PR.** Smooth diagonal differences remove the common nonsmooth tent seam and lie in the inherited `C_c^2` explicit-formula class. Combining that diagonal rigidity with H2b forces the full actual discrepancy to be one scalar multiple of the all-ones matrix:
+**MERGED.** Smooth diagonal differences remove the common nonsmooth tent seam and lie in the inherited `C_c^2` explicit-formula class. Combining that diagonal rigidity with H2b forces the full actual discrepancy to be one scalar multiple of the all-ones matrix:
 
 ```text
 zeroSideDiscrepancy = dictionaryTentDefect(hs,L) • J
@@ -255,6 +265,36 @@ Zeta23.CCM.zeroSideMatrix_eq_dictionaryMatrix_iff_tentDefect_eq_zero
 The defect definition has no finite-size parameter `N`. Thus the finite matrix problem is now reduced, for every `N`, to the same literal-tent scalar obstruction. This does **not** prove that obstruction vanishes.
 
 No reflection theorem or zero-side displacement inheritance is used. `R003_TENT_EF_EXTENSION`, `R003_CCM_BRIDGE`, finite-to-infinite closure, and RH remain OPEN.
+
+### PR #58 — Route-M M3.5, M4 and M5
+
+**CURRENT CLOSURE PR.** The fixed-frequency and first two channel limit passages are now compiler-checked.
+
+Production endpoints:
+
+```text
+Zeta23.CCM.dictionaryTentMollifierTransform_tendsto_one
+Zeta23.CCM.paperFT_dictionaryTentMollified_tendsto
+Zeta23.CCM.dictionaryPoleRHS_dictionaryTentMollified_tendsto
+Zeta23.CCM.dictionaryPrimeRHS_dictionaryTentMollified_tendsto
+Zeta23.CCM.dictionaryTent_pole_prime_limit_package
+```
+
+The generic truncate-first theorem
+
+```text
+Zeta23.CCM.dictionaryPrimeRHS_eq_finset
+```
+
+is now upstream in `DictionaryDeterministicRHS.lean` and reused by the finite dictionary and Route M. For the mollified family the common support envelope is `[-(L+1), L+1]`, so the common finite prime range is controlled by `exp(L+1)`; truncating prematurely at `exp L` would be invalid.
+
+Axiom audits for the new endpoint theorems report only
+
+```text
+[propext, Classical.choice, Quot.sound].
+```
+
+No explicit-formula hypothesis is used in M3.5–M5. `R003_TENT_EF_EXTENSION`, `R003_CCM_BRIDGE`, finite-to-infinite closure, and RH remain OPEN.
 
 ## Current theorem sequence
 
@@ -343,17 +383,19 @@ B_ρ = c (x xᵀ - y yᵀ),   c > 0,
 
 with explicit negative direction. Immediately run the finite-family moustache test before treating any positivity statement as a plausible weaker target.
 
-## Active Route-M completion: M4–M8
+## Active Route-M completion: M6–M8
 
 PR #57 makes the literal tent EF load-bearing: killing the single `dictionaryTentDefect(hs,L)` scalar closes the finite zero-side matrix bridge for every finite dictionary size.
 
-Remaining stages:
+PR #58 now removes the fixed-frequency, pole and prime limit obligations. The remaining stages are:
 
-- **M4** pole evaluations converge;
-- **M5** prime channel: common finite truncation **first**, then termwise limit;
 - **M6** archimedean dominated convergence;
 - **M7** varying-family zero-side DCT/Tannery; fixed-test `ZeroSumLimit` is not enough;
 - **M8** apply `EF_lit_zeta` to each mollified test, pass all channels separately, assemble the literal tent EF.
+
+For M7, reuse the exact factorization and the uniform critical-strip mollifier bound to dominate the varying family by a fixed multiple of the already-summable literal tent zero series. Do not rebuild the inherited weighted zero-counting machinery.
+
+For M6, prove one fixed integrable archimedean dominator; do not manufacture a global `1/t^2` bound with an artificial singularity at `t=0`.
 
 Only M8 can promote `R003_TENT_EF_EXTENSION`.
 
@@ -407,9 +449,9 @@ The hard points remain the spectral/minimizer control and the finite-to-infinite
 
 ## Immediate next step
 
-After PR #57 re-passes the RHRC registry/regression suite, R003 normalization/oracle guards, full `Zeta23.CCM`, full `Zeta23.ExceptionalZero`, theorem-axiom, no-placeholder/project-axiom, and Permansson gates on the exact synthetic merge tree, merge it.
+PR #58 has compiler-closed M3.5, M4 and M5 on its current exact synthetic merge. Keep the claim firewall unchanged: no RHRC claim is promoted by these channel-limit theorems.
 
-Then make **M4–M8 literal tent EF closure** the active mathematical frontier. The target is now sharply isolated:
+The active mathematical target remains
 
 ```text
 dictionaryTentDefect(hs,L) = 0
@@ -417,4 +459,6 @@ dictionaryTentDefect(hs,L) = 0
 
 for every positive aperture `L`.
 
-Proceed channel-by-channel: M4 pole limits, M5 prime truncation before limit, M6 archimedean dominated convergence, M7 varying-family zero-side DCT/Tannery, and M8 assembly. Do not promote `R003_TENT_EF_EXTENSION` or `R003_CCM_BRIDGE` before the exact final theorem compiles. A tiny displacement falsification spike is permissible only if it can legally force the same scalar to vanish without smuggling in the tent EF.
+Highest-information next move: attempt **M7 zero-side varying-family dominated convergence** first, because the new fixed-frequency convergence plus the already-proved uniform critical-strip mollifier bound and literal-tent zero-side absolute summability give a direct domination candidate. Then close **M6 archimedean dominated convergence**, and finally **M8 assembly**.
+
+Do not promote `R003_TENT_EF_EXTENSION` or `R003_CCM_BRIDGE` before the exact final M8 theorem compiles.
