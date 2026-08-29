@@ -142,7 +142,7 @@ H0 zero-sum concrete zeta EF bridge        REACHED
 H1 smooth-core polarization                 REACHED
 H2a codim-one matrix completion             REACHED
 H2b actual zero-side matrix / rank<=2 gap   REACHED
-H2+ displacement-collapse attempt           OPEN
+H2+ literal-tent defect / rank<=1 collapse   REACHED
 V0/V1 finite off-line visibility            OPEN
 full finite zero-side bridge                 OPEN
 finite-to-infinite closure                   OPEN
@@ -208,7 +208,7 @@ with explicit pivot witness `a_i = A_i0 - A_00/2`, hence rank at most two. The m
 
 ### PR #56 — H2b actual zero-side matrix and seam localization
 
-**CURRENT CLOSURE PR.** The finite zeta zero-side matrix is now constructed entrywise only after absolute summability is proved. The production endpoints are
+**MERGED.** The finite zeta zero-side matrix is now constructed entrywise only after absolute summability is proved. The production endpoints are
 
 ```text
 Zeta23.CCM.dictionaryTransform_zero_sum_summable
@@ -226,6 +226,35 @@ rank (zeroSideMatrix - dictionaryMatrix) <= 2.
 ```
 
 This does **not** prove the discrepancy vanishes. `R003_CCM_BRIDGE`, the literal tent EF extension M4–M8, finite-to-infinite closure, and RH all remain OPEN.
+
+### PR #57 — H2+ collapse to the literal-tent defect
+
+**CURRENT CLOSURE PR.** Smooth diagonal differences remove the common nonsmooth tent seam and lie in the inherited `C_c^2` explicit-formula class. Combining that diagonal rigidity with H2b forces the full actual discrepancy to be one scalar multiple of the all-ones matrix:
+
+```text
+zeroSideDiscrepancy = dictionaryTentDefect(hs,L) • J
+rank zeroSideDiscrepancy <= 1
+```
+
+with
+
+```text
+dictionaryTentDefect(hs,L)
+  = literal tent zero side - literatureRHS(literal tent).
+```
+
+The production endpoints are
+
+```text
+Zeta23.CCM.zeroSideDiscrepancy_diagonal_eq_center
+Zeta23.CCM.zeroSideDiscrepancy_eq_tentDefect_smul_ones
+Zeta23.CCM.rank_zeroSideDiscrepancy_le_one
+Zeta23.CCM.zeroSideMatrix_eq_dictionaryMatrix_iff_tentDefect_eq_zero
+```
+
+The defect definition has no finite-size parameter `N`. Thus the finite matrix problem is now reduced, for every `N`, to the same literal-tent scalar obstruction. This does **not** prove that obstruction vanishes.
+
+No reflection theorem or zero-side displacement inheritance is used. `R003_TENT_EF_EXTENSION`, `R003_CCM_BRIDGE`, finite-to-infinite closure, and RH remain OPEN.
 
 ## Current theorem sequence
 
@@ -273,11 +302,26 @@ What is now formal:
 
 No unrestricted complex-coefficient bridge, positivity, or full matrix equality is claimed. Use the name `zeroSideMatrix`, not `Gram`, until positivity is actually proved.
 
-### H2+ — bounded collapse attempt
+### H2+ — literal-tent scalar collapse — REACHED
 
-Test whether parity/reflection and any **legally proved** zero-side displacement identity force the rank-two discrepancy from H2b to collapse further.
+PR #57 proves the stronger production form
 
-Do not assume displacement inheritance. If no cheap proof exists, stop and retain the honest rank-at-most-two discrepancy theorem.
+```text
+A = zeroSideMatrix - dictionaryMatrix
+  = dictionaryTentDefect(hs,L) • J,
+```
+
+hence `rank A <= 1`.
+
+The key route is not displacement: all diagonal basis tests share the same literal tent seam, and subtracting the centered zero-frequency diagonal leaves an already-proved smooth residual. The inherited `C_c^2` explicit formula therefore makes every diagonal discrepancy equal; H2b then forces the completion vector to be constant.
+
+The exact finite bridge is now equivalent to
+
+```text
+dictionaryTentDefect(hs,L) = 0.
+```
+
+Reflection is superseded for this collapse. Do not infer zero-side displacement inheritance from the deterministic matrix.
 
 ### V0/V1 — finite visibility
 
@@ -299,9 +343,9 @@ B_ρ = c (x xᵀ - y yᵀ),   c > 0,
 
 with explicit negative direction. Immediately run the finite-family moustache test before treating any positivity statement as a plausible weaker target.
 
-## Deferred Route-M completion: M4–M8
+## Active Route-M completion: M4–M8
 
-Finish the literal tent EF only when it becomes load-bearing.
+PR #57 makes the literal tent EF load-bearing: killing the single `dictionaryTentDefect(hs,L)` scalar closes the finite zero-side matrix bridge for every finite dictionary size.
 
 Remaining stages:
 
@@ -315,7 +359,7 @@ Only M8 can promote `R003_TENT_EF_EXTENSION`.
 
 ## Downstream finite-to-infinite program
 
-After H2/V work clarifies the finite obstruction space, revisit the hard finite-to-infinite routes.
+After the literal-tent defect is settled and the full finite bridge closes, revisit the hard finite-to-infinite routes.
 
 ### Bombieri branch
 
@@ -363,13 +407,14 @@ The hard points remain the spectral/minimizer control and the finite-to-infinite
 
 ## Immediate next step
 
-After PR #56 re-passes the RHRC registry/regression suite, R003 normalization/oracle guards, full `Zeta23.CCM`, full `Zeta23.ExceptionalZero`, theorem-axiom, no-placeholder/project-axiom, and Permansson gates on the exact synthetic merge tree, merge it.
+After PR #57 re-passes the RHRC registry/regression suite, R003 normalization/oracle guards, full `Zeta23.CCM`, full `Zeta23.ExceptionalZero`, theorem-axiom, no-placeholder/project-axiom, and Permansson gates on the exact synthetic merge tree, merge it.
 
-Then start **H2+** as a falsification-first structural pass:
+Then make **M4–M8 literal tent EF closure** the active mathematical frontier. The target is now sharply isolated:
 
-1. prove or disprove centered reflection inheritance for the actual `zeroSideMatrix`;
-2. derive the corresponding constraint on the explicit `zeroSideCompletionVector`;
-3. independently test whether any zero-side displacement identity is legally available;
-4. only if both survive, attempt the affine/parity collapse toward `A = cJ`.
+```text
+dictionaryTentDefect(hs,L) = 0
+```
 
-Do not assume displacement inheritance. If it fails, retain the honest rank-at-most-two H2b theorem and continue to V0/V1. Do not automatically spend the next PR on M4–M8 unless H2/V work makes the literal tent EF extension load-bearing.
+for every positive aperture `L`.
+
+Proceed channel-by-channel: M4 pole limits, M5 prime truncation before limit, M6 archimedean dominated convergence, M7 varying-family zero-side DCT/Tannery, and M8 assembly. Do not promote `R003_TENT_EF_EXTENSION` or `R003_CCM_BRIDGE` before the exact final theorem compiles. A tiny displacement falsification spike is permissible only if it can legally force the same scalar to vanish without smuggling in the tent EF.
