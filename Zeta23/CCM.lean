@@ -24,6 +24,7 @@ import Zeta23.CCM.DictionaryTentZeroLimit
 import Zeta23.CCM.DictionaryTentArchLimit
 import Zeta23.CCM.DictionaryDeterministicRHS
 import Zeta23.CCM.DictionaryTentPolePrimeLimit
+import Zeta23.CCM.DictionaryTentEFExtension
 import Zeta23.CCM.DictionarySourceTest
 import Zeta23.CCM.DictionaryPole
 import Zeta23.CCM.DictionaryPoleCompletion
