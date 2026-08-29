@@ -183,7 +183,7 @@
       ],
       "route": "R003_ccm_bridge",
       "promotion_cap": "OPEN",
-      "note": "Route M M0-M3 is compiler-closed by R003_TENT_MOLLIFIER_ARCHITECTURE. M3.5 fixed-frequency mollifier-transform convergence and the M4 pole / M5 truncate-first prime channel limits are compiler-closed in PR #58. The remaining obligation is M6 archimedean dominated convergence, M7 varying-family zero-side dominated convergence/Tannery, and M8 assembly of the literal-tent explicit formula. Do not introduce a new explicit-formula assumption or duplicate the inherited weighted-zero-summability gate."
+      "note": "Route M M0-M3 is compiler-closed by R003_TENT_MOLLIFIER_ARCHITECTURE. M3.5 fixed-frequency mollifier-transform convergence and the M4 pole / M5 truncate-first prime channel limits are compiler-closed in PR #58. M7 varying-family zero-side dominated convergence/Tannery is compiler-closed in PR #59. The remaining obligation is M6 archimedean dominated convergence and M8 assembly of the literal-tent explicit formula. Do not introduce a new explicit-formula assumption or duplicate the inherited weighted-zero-summability gate."
     },
     {
       "id": "R003_CCM_RHS_IDENTITY",
