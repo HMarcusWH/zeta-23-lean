@@ -7,7 +7,7 @@ noncomputable section
 namespace Zeta23.CCM
 
 open Complex MeasureTheory Set Filter
-open scoped BigOperators ArithmeticFunction
+open scoped BigOperators ArithmeticFunction Topology
 
 /-!
 # Route-M M4--M5: pole and prime limit passages
