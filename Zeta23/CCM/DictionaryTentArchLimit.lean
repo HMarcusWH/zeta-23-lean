@@ -84,7 +84,7 @@ private theorem exists_paperFT_dictionaryTent_inv_quad_bound
     nlinarith
 
 /-- The literal tent transform is integrable on the real spectral axis. -/
-theorem integrable_paperFT_dictionaryTent
+theorem integrable_paperFT_dictionaryTent_realAxis
     {L : ℝ} (hL : 0 < L) :
     Integrable (fun r : ℝ =>
       Zeta23.paperFT (dictionaryTent L) (r : ℂ)) := by
@@ -229,7 +229,7 @@ private theorem measurable_mu_tent : Measurable Zeta23.mu := by
 
 /-- The literal tent transform times the exact vertical gamma-density
 difference is integrable. -/
-theorem integrable_paperFT_dictionaryTent_mul_mu_sub_mu_zero
+theorem integrable_paperFT_dictionaryTent_realAxis_mul_mu_sub_mu_zero
     {L : ℝ} (hL : 0 < L) :
     Integrable (fun τ : ℝ =>
       Zeta23.paperFT (dictionaryTent L) (τ : ℂ) *
@@ -261,18 +261,23 @@ theorem integrable_paperFT_dictionaryTent_mul_mu_sub_mu_zero
   simpa [mul_assoc, mul_left_comm, mul_comm] using hmul
 
 /-- The complete literal-tent archimedean integrand is absolutely integrable. -/
-theorem integrable_paperFT_dictionaryTent_mul_mu
+theorem integrable_paperFT_dictionaryTent_realAxis_mul_mu
     {L : ℝ} (hL : 0 < L) :
     Integrable (fun τ : ℝ =>
       Zeta23.paperFT (dictionaryTent L) (τ : ℂ) *
         (Zeta23.mu τ : ℂ)) := by
-  have hpaper := integrable_paperFT_dictionaryTent hL
+  have hpaper := integrable_paperFT_dictionaryTent_realAxis hL
   have hconst : Integrable (fun τ : ℝ =>
       Zeta23.paperFT (dictionaryTent L) (τ : ℂ) *
         (Zeta23.mu 0 : ℂ)) :=
     hpaper.mul_const _
-  have hdiff := integrable_paperFT_dictionaryTent_mul_mu_sub_mu_zero hL
+  have hdiff := integrable_paperFT_dictionaryTent_realAxis_mul_mu_sub_mu_zero hL
   refine (hconst.add hdiff).congr (Eventually.of_forall fun τ => ?_)
+  change
+    Zeta23.paperFT (dictionaryTent L) (τ : ℂ) * (Zeta23.mu 0 : ℂ) +
+        Zeta23.paperFT (dictionaryTent L) (τ : ℂ) *
+          ((Zeta23.mu τ - Zeta23.mu 0 : ℝ) : ℂ) =
+      Zeta23.paperFT (dictionaryTent L) (τ : ℂ) * (Zeta23.mu τ : ℂ)
   push_cast
   ring
 
@@ -294,16 +299,17 @@ theorem dictionaryArchRHS_dictionaryTentMollified_tendsto
     Real.exp (1 / 2 : ℝ) * ‖f τ‖
   have hboundInt : Integrable bound := by
     dsimp [bound, f]
-    exact (integrable_paperFT_dictionaryTent_mul_mu hL).norm.const_mul
+    exact (integrable_paperFT_dictionaryTent_realAxis_mul_mu hL).norm.const_mul
       (Real.exp (1 / 2 : ℝ))
   have hmeasMu : Measurable (fun τ : ℝ => (Zeta23.mu τ : ℂ)) :=
     Complex.continuous_ofReal.measurable.comp measurable_mu_tent
   have hFmeas : ∀ n : ℕ, AEStronglyMeasurable (F n) := by
     intro n
-    have hk : Integrable (dictionaryTentMollified L n) :=
+    have hk_cont : Continuous (dictionaryTentMollified L n) :=
       (contDiff_two_dictionaryTentMollified L n).continuous
-        .integrable_of_hasCompactSupport
-          (dictionaryTentMollified_hasCompactSupport hL n)
+    have hk : Integrable (dictionaryTentMollified L n) :=
+      hk_cont.integrable_of_hasCompactSupport
+        (dictionaryTentMollified_hasCompactSupport hL n)
     have hft : Measurable (fun τ : ℝ =>
         Zeta23.paperFT (dictionaryTentMollified L n) (τ : ℂ)) :=
       (continuous_paperFT_real_of_integrable hk).measurable
@@ -333,15 +339,9 @@ theorem dictionaryArchRHS_dictionaryTentMollified_tendsto
   have hDCT :=
     MeasureTheory.tendsto_integral_of_dominated_convergence
       bound hFmeas hboundInt hdom hlim
-  rw [show (fun n : ℕ => dictionaryArchRHS (dictionaryTentMollified L n)) =
-      fun n : ℕ => ∫ τ : ℝ, F n τ by
-        funext n
-        rw [dictionaryArchRHS_eq_integral_mu]
-        rfl]
-  rw [dictionaryArchRHS_eq_integral_mu]
-  simpa [f] using hDCT
+  simpa [F, f, dictionaryArchRHS_eq_integral_mu] using hDCT
 
 end Zeta23.CCM
 
-#print axioms Zeta23.CCM.integrable_paperFT_dictionaryTent_mul_mu
+#print axioms Zeta23.CCM.integrable_paperFT_dictionaryTent_realAxis_mul_mu
 #print axioms Zeta23.CCM.dictionaryArchRHS_dictionaryTentMollified_tendsto
