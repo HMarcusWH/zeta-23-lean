@@ -20,7 +20,7 @@ multiplication by the square-root weight dictated by the already-proved
 `mu - mu 0` growth estimate.  The exact mollifier-transform factorization
 then gives one fixed integrable majorant for the full gamma-density integrand.
 
-No explicit-formula identity is used here.
+No explicit-formula identity or zero-side theorem is used here.
 -/
 
 private theorem continuous_paperFT_real_of_integrable
