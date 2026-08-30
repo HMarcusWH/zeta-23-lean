@@ -208,19 +208,22 @@
       ],
       "route": "R003_ccm_bridge",
       "promotion_cap": "OPEN",
-      "note": "The smooth residual now satisfies the inherited EF_lit hypotheses directly. The remaining nonsmooth obligation is the canonical tent extension; a generic EF_lit Z -> EF_tent Z theorem is not assumed."
+      "note": "The literal tent extension is now proved. This remaining claim is the full arbitrary-real-coefficient dictionary explicit-formula identity, assembled from the exact tent-plus-smooth-residual decomposition. It is no longer a blocker for R003_CCM_BRIDGE because H2+ reduced the actual finite matrix discrepancy directly to the N-independent literal-tent defect, which M8 kills."
     },
     {
       "id": "R003_CCM_BRIDGE",
-      "statement": "The actual finite zeta zero-side dictionary matrix equals finiteMatrix(L,N)+2*cCorrection(L)*I, obtained from the exact full-dictionary explicit-formula identity and real polarization.",
-      "status": "OPEN",
+      "statement": "For every finite N and L>0, the actual finite zeta zero-side dictionary matrix equals finiteMatrix(L,N)+2*cCorrection(L)*I.",
+      "status": "PROVED_UNCONDITIONAL",
       "dependencies": [
         "R003_CCM_RHS_IDENTITY",
-        "R003_KERNEL_EF_EXTENSION"
+        "R003_TENT_EF_EXTENSION"
       ],
       "route": "R003_ccm_bridge",
-      "promotion_cap": "OPEN",
-      "note": "This is the production finite bridge. The older doubled WeilGram relation is retained only as a historical normalization diagnostic and must not be substituted for this statement."
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "Production finite bridge. H2+ proves that zeroSideMatrix-dictionaryMatrix is the N-independent literal-tent defect times J; M8 proves the literal-tent zero side equals its deterministic literature RHS, so that defect vanishes and the bridge closes simultaneously for every finite N. The normalization remains exactly finiteMatrix(L,N)+2*cCorrection(L)*I. This does not prove R003_KERNEL_EF_EXTENSION, R003_WEIL_DISPLACEMENT, positivity, finite-to-infinite closure, or RH.",
+      "source": "Zeta23/CCM/DictionaryZeroSideBridge.lean",
+      "theorem": "Zeta23.CCM.zeroSideMatrix_eq_finiteMatrix_add_correction",
+      "adaptation_note": "Post-H2+/M8 dependency compression: the original route through R003_KERNEL_EF_EXTENSION and full-dictionary real polarization is no longer required for this matrix identity. H2+ proves that the complete finite matrix discrepancy is the N-independent literal-tent defect times J, and R003_TENT_EF_EXTENSION proves that defect vanishes. The mathematical bridge claim is unchanged; only its theorem-authoritative proof route has shortened."
     },
     {
       "id": "R003_WEIL_DISPLACEMENT",
