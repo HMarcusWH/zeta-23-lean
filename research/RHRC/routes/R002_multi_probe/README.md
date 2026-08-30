@@ -113,13 +113,74 @@ basis/parameter map. P3 masking therefore remains untouched.
   on-line bulk can mask the negative direction (P3).
 - `n₋ ≥ 1` at block level does **not** imply RH; the arithmetic leg (P4) is
   RH-equivalent, per OBS-009.
-- The `λ > 1` every-δ result buys detection at the price of `X > T`, i.e. a
-  longer Dirichlet polynomial — the difficulty is exchanged, not removed.
+- The historical `λ > 1` every-δ oversampling signal is **outside the current
+  production `Params.Valid` envelope**, which theoremically requires
+  `λ ≤ 1`. PR #66 makes this firewall explicit. The old experiment remains an
+  experimental route-design signal, not a theorem about the current valid
+  production family.
 - Numerical `λ_min < 0` in the synthetic diagnostic is a finite computation on a
   synthetic zero lattice; it is not evidence about ζ.
 - The old finite numerical factor-two diagnostic is now superseded by the exact
   raw-kernel theorem above. That theorem does not upgrade the general taper-grid
   visibility problem or provide positivity.
+
+
+## D0-R — R002 taper-grid versus canonical CCM: specialization only
+
+PR #65 made the canonical finite CCM object theorem-authoritative:
+
+```text
+zeroSideMatrix
+  = cutoffFreeMatrix
+  = finiteMatrix + 2*cCorrection(L)*I.
+```
+
+PR #66 then audits whether the general R002-A taper-grid object is actually the
+same object in another basis.
+
+The answer is **specialization only**.
+
+The theorem-level firewalls are:
+
+```text
+Gz = Az + Ez
+Gz = Az  <->  Ez = 0
+1 < P.lam  ->  not P.Valid
+tau_k = T + k*hgrid
+```
+
+and a supplied response-coordinate map acts on each symmetric rank-one R002
+atom by transpose congruence.
+
+The companion falsifier
+`compare_r002_ccm_probe_families.py` confirms the useful positive part of the
+old intuition: the current CCM `qBasis` is exactly the elementary closed form
+of the real-symmetrized shifted correlation of **hard-window Fourier
+characters**. Direct quadrature agrees.
+
+However, replacing the hard window by an R002-style smooth plateau/ramp taper
+changes the entries. More importantly, the production R002 and CCM objects
+still differ theorem-visibly in index type, carrier, taper, zero truncation, and
+parameter set.
+
+Therefore PR #66 does **not** promote
+
+```text
+G-tilde(T) = zeroSideMatrix
+```
+
+or any universal congruence/compression theorem.
+
+The correct D0-R settlement is:
+
+```text
+SPECIALIZATION_ONLY
+generic R002 masking remains an R002-side obligation
+and is not a CCM critical-path bottleneck.
+```
+
+See `D0_R_R002_CCM_MAP_AUDIT_2026_08_30.md` for the exact object table,
+proof/experiment labels, and claim firewall.
 
 ## Route-specification adaptation — 2026-08-21 (DISCOVERY phase, logged)
 
@@ -134,7 +195,8 @@ claim registry carries the corresponding `adaptation_note`.
 
 - No RH evidence, no RH route closure, no promotion of `C_RH`.
 - No windowed-visibility theorem, no arithmetic upper bound.
-- The corrected raw truncated-character kernel/CCM identity is theorem-backed;
-  no identity with the full R002-A taper-grid `G̃(T)` is claimed.
+- The corrected raw truncated-character kernel/CCM identity is theorem-backed.
+  PR #66 classifies the hard-window character relation as specialization-only;
+  no identity with the full smooth-taper R002-A `G̃(T)` is claimed.
 - Historical finite numerical diagnostics remain evidence only; the promoted
   corrected bridge is the Lean theorem named above.
