@@ -40,8 +40,6 @@ theorem paperFT_kernel_eq_two_mul_dictionarySpectralMatrix_apply
     Zeta23.paperFT
         (kernel (centeredIndex N i) (centeredIndex N j) L) z =
       2 * dictionarySpectralMatrix N L z i j := by
-  have hk :=
-    kernel_integrable hL (centeredIndex N i) (centeredIndex N j)
   rw [Zeta23.paperFT_def]
   unfold dictionarySpectralMatrix
   rw [Zeta23.paperFT_def]
@@ -58,7 +56,6 @@ theorem paperFT_kernel_eq_two_mul_dictionarySpectralMatrix_apply
     rw [kernel_eq_two_mul_dictionaryBasisTest]
     ring
   rw [hfun, Zeta23.integral_const_mul_C]
-  exact hk
 
 /-- Every historical raw-kernel zero-side entry is absolutely summable.
 
@@ -123,7 +120,6 @@ theorem rawKernelZeroSideMatrix_eq_two_smul_zeroSideMatrix
       (2 : ℂ) • zeroSideMatrix hs N L := by
   ext i j
   unfold rawKernelZeroSideMatrix zeroSideMatrix
-  have hraw := rawKernel_zero_entry_summable hs N i j hL
   have hprod := dictionarySpectralMatrix_zero_entry_summable hs N i j hL
   rw [Matrix.smul_apply, smul_eq_mul]
   rw [← hprod.tsum_mul_left]
