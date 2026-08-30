@@ -660,13 +660,13 @@ zeroSideMatrix
 
 The project must not jump directly from this equality to a Hilbert-space Galerkin or finite-to-infinite claim.  The next moves are object-map audits:
 
-1. **D0-R — R002 map-or-separate.** Determine whether the generic taper-grid/windowed-probe `G-tilde(T)` object admits an exact change-of-basis, compression, or congruence map to the canonical CCM finite object. If no exact generic map exists, record a clean negative classification and remove R002 masking language from the CCM critical path.
-2. **D0-B — Bombieri correspondence.** Extract the exact finite truncation, parity, basis, aperture, and normalization conventions. Prove equality/congruence/compression if available; otherwise classify the mismatch. Do not transfer negative-inertia conclusions before this map is theorem-authoritative.
+1. **D0-R — R002 map-or-separate: SETTLED BY PR #66.** The hard-window truncated-character geometry underlying `qBasis` is a real specialization-level connection, but no generic production theorem identifies the smooth-taper R002 `Gz/G-tilde(T)` family with the canonical CCM finite object. The exact R002 decomposition `Gz = Az + Ez`, the current `lambda <= 1` validity envelope, carrier shift, dynamic dimension, and taper dependence remain distinct. Therefore R002 masking stays on the R002 side and is no longer a CCM critical-path bottleneck.
+2. **D0-B — Bombieri correspondence: NEXT.** Extract the exact finite truncation, parity, basis, aperture, and normalization conventions. Prove equality/congruence/compression if available; otherwise classify the mismatch. Do not transfer negative-inertia conclusions before this map is theorem-authoritative.
 3. **G0/G1 — localized Weil restriction.** Only after the finite object maps are settled, define the actual finite function subspace and prove that the theorem-authoritative matrix is the restriction of the localized Weil quadratic form in the intended basis.
 4. **G2/G3 — form core and Rayleigh-Ritz.** The decisive finite-to-infinite question is density in the **form norm**, not merely L2 density. Prove or falsify form-core density, then seek bottom-of-spectrum convergence.
 5. Revisit prolate/Jacobi structure only after a named operator/restriction topology exists. The old small-commutator-to-eigenvector route remains falsified by spectral-gap collapse.
 
-The full centered `2N+1` cutoff-free matrix is theorem-authoritative after PR #65. The reversal-even `N+1` compression is still a separate map and must not be silently identified with the full object.
+The full centered `2N+1` cutoff-free matrix is theorem-authoritative after PR #65. PR #66 also prevents the generic smooth-taper R002 windowed object from being silently substituted for it. The reversal-even `N+1` compression is still a separate map and must not be silently identified with the full object.
 
 Rank-two displacement remains generic divided-difference structure, not RH evidence. No finite matrix equality implies positivity, form-core density, finite-to-infinite persistence, or RH.
 
