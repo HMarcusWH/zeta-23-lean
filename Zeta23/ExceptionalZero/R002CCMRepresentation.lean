@@ -34,6 +34,7 @@ variable {α β : Type*} [Fintype α] [Fintype β]
 def mapResponse (C : Matrix β α ℂ) (v : α → ℂ) : β → ℂ :=
   fun i => ∑ j, C i j * v j
 
+omit [Fintype β] in
 @[simp] theorem mapResponse_apply
     (C : Matrix β α ℂ) (v : α → ℂ) (i : β) :
     mapResponse C v i = ∑ j, C i j * v j := rfl
@@ -49,8 +50,10 @@ theorem vecMulVec_mapResponse
   ext i j
   simp only [vecMulVec_apply, mapResponse_apply, Matrix.mul_apply,
     Matrix.transpose_apply]
-  simp_rw [Finset.mul_sum, Finset.sum_mul]
-  rw [Finset.sum_comm]
+  rw [Finset.sum_mul]
+  simp_rw [Finset.mul_sum]
+  simp_rw [Finset.sum_mul]
+  conv_rhs => rw [Finset.sum_comm]
   apply Finset.sum_congr rfl
   intro a ha
   apply Finset.sum_congr rfl
