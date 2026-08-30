@@ -1,5 +1,4 @@
 import Zeta23.ZeroSide
-import Zeta23.CCM.CutoffFreeMatrix
 
 noncomputable section
 
