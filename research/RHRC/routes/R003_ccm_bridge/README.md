@@ -1,6 +1,6 @@
 # R003 — CCM / finite Guinand–Weil / zero-side bridge
 
-Status: **ACTIVE / PARTIAL CLOSURE**. RH remains **OPEN**.
+Status: **FINITE CLOSURE REACHED / D0 REPRESENTATION AUDIT ACTIVE**. RH remains **OPEN**.
 
 This file is the active route SSOT for R003. Lean and the RHRC claim registry are theorem authority; this route document records sequencing, architecture decisions, and claim boundaries.
 
@@ -55,7 +55,12 @@ Compiler-checked facts include:
 - Route-M M4 pole convergence and M5 truncate-first prime convergence are compiler-proved:
   `Zeta23.CCM.dictionaryTent_pole_prime_limit_package`;
 - Route-M M7 varying-family zero-side convergence is compiler-proved by Tannery:
-  `Zeta23.CCM.dictionaryTent_zero_sum_mollified_tendsto`.
+  `Zeta23.CCM.dictionaryTent_zero_sum_mollified_tendsto`;
+- PR #64's historical raw-kernel reconciliation is theorem-authoritative:
+  `rawKernelZeroSideMatrix = 2*zeroSideMatrix = 2*finiteMatrix + 4*cCorrection(L)*I`;
+- D0-C / PR #65 independently defines the cutoff-free CCM/CvS source convention and proves
+  `zeroSideMatrix = cutoffFreeMatrix = finiteMatrix + 2*cCorrection(L)*I` on the full centered `2N+1` basis;
+- PR #65 also theorem-locks the source parameter map `c = lambda^2`, equivalently `log c = 2*log lambda` for positive `lambda`.
 
 The deterministic RHS identity remains zero-free and was proved channel by channel. The prime channel truncates the raw prime `tsum` to common finite support **before** coefficient-sum reordering. The archimedean channel includes the diagonal scalar correction `2*cCorrection(L)` and requires no `sum_i u_i = 0` restriction.
 
@@ -573,7 +578,7 @@ PR #57 makes the literal tent EF load-bearing: killing the single `dictionaryTen
 
 PR #58 closes the fixed-frequency, pole, and prime limit obligations; PR #59 closes the varying-family zero-side limit; PR #60 closes the archimedean dominated-convergence limit; and PR #61 composes those channels with the smooth inherited explicit formula to close M8.
 
-Current R003 theorem state after the PR #63 theorem checkpoint:
+Current R003 theorem state after the PR #65 D0-C representation checkpoint:
 
 ```text
 PROVED:
@@ -585,10 +590,15 @@ PROVED:
   full real dictionary zero side = literatureRHS(dictionaryTest)
   [indexMatrix, zeroSideMatrix] = g 1^T - 1 g^T
   rank([indexMatrix, zeroSideMatrix]) <= 2
-  for every finite N and positive L
+  rawKernelZeroSideMatrix = 2*zeroSideMatrix
+  rawKernelZeroSideMatrix = 2*finiteMatrix + 4*cCorrection(L)*I
+  cutoffFreeMatrix = finiteMatrix + 2*cCorrection(L)*I
+  zeroSideMatrix = cutoffFreeMatrix
+  cutoffFreeMatrixOfCutoff(lambda^2) = cutoffFreeMatrixOfLambda(lambda), lambda>0
+  for every finite N and positive L where required
 ```
 
-Route M M0–M8 remains complete. PR #62 cashes M8 out through H2+ into the exact finite CCM bridge. PR #63 then recovers the full real dictionary EF by finite contraction and transfers the formal CCM displacement onto the actual zero-side matrix. The remaining hard work is no longer bridge construction.
+Route M M0–M8 remains complete. PR #62 cashes M8 out through H2+ into the exact finite CCM bridge. PR #63 then recovers the full real dictionary EF by finite contraction and transfers the formal CCM displacement onto the actual zero-side matrix. PR #64 reconciles the historical doubled raw-kernel convention. PR #65 removes the remaining finite cutoff-free source-convention ambiguity by proving an exact independently defined matrix map. The remaining hard work is no longer finite bridge construction or normalization; it is object correspondence beyond this finite source formula and the finite-to-infinite topology.
 
 ## Downstream finite-to-infinite program
 
@@ -638,17 +648,26 @@ The hard points remain the spectral/minimizer control and the finite-to-infinite
 - Yielded output != green; completed compiler/process gates are authority.
 - RH remains OPEN until an exact theorem chain proves it.
 
-## Immediate next step
+## Immediate next step — D0 representation audit
 
-After the final promoted PR #63 head passes the complete synthetic-merge gate, the R003 finite bridge theorem program is closed and the roadmap should be rewritten around the new obstruction/persistence frontier.
+PR #64 closes the historical raw-kernel normalization question and PR #65 closes D0-C at the finite source-formula level:
 
-Highest-information next moves:
+```text
+zeroSideMatrix
+  = cutoffFreeMatrix
+  = finiteMatrix + 2*cCorrection(L)*I.
+```
 
-1. revisit R002-D normalization archaeology and determine exactly how the historical doubled diagnostic `WeilGram` relates to the theorem-authoritative production `zeroSideMatrix`;
-2. run the smallest dictionary-specific V0 transversality falsification test at `N=1`, keeping the old `1⊥` two-probe test as a baseline while also checking what the now-full finite bridge makes possible outside that historical restriction;
-3. if finite pair visibility survives, attack masking in the full finite matrix rather than treating block negativity as global negativity;
-4. if masking is beaten, seek quantitative negative persistence—a uniform negative margin along a controlled cofinal sequence—before invoking Bombieri/Connes finite-to-infinite mechanisms.
+The project must not jump directly from this equality to a Hilbert-space Galerkin or finite-to-infinite claim.  The next moves are object-map audits:
 
-Rank-two displacement is generic divided-difference structure and should be adversarially tested for any genuinely new zero-location content before it is used as an RH-directed clue.
+1. **D0-R — R002 map-or-separate.** Determine whether the generic taper-grid/windowed-probe `G-tilde(T)` object admits an exact change-of-basis, compression, or congruence map to the canonical CCM finite object. If no exact generic map exists, record a clean negative classification and remove R002 masking language from the CCM critical path.
+2. **D0-B — Bombieri correspondence.** Extract the exact finite truncation, parity, basis, aperture, and normalization conventions. Prove equality/congruence/compression if available; otherwise classify the mismatch. Do not transfer negative-inertia conclusions before this map is theorem-authoritative.
+3. **G0/G1 — localized Weil restriction.** Only after the finite object maps are settled, define the actual finite function subspace and prove that the theorem-authoritative matrix is the restriction of the localized Weil quadratic form in the intended basis.
+4. **G2/G3 — form core and Rayleigh-Ritz.** The decisive finite-to-infinite question is density in the **form norm**, not merely L2 density. Prove or falsify form-core density, then seek bottom-of-spectrum convergence.
+5. Revisit prolate/Jacobi structure only after a named operator/restriction topology exists. The old small-commutator-to-eigenvector route remains falsified by spectral-gap collapse.
 
-Do not infer positivity, finite-to-infinite persistence, or RH from the R003 closure. RH remains OPEN.
+The full centered `2N+1` cutoff-free matrix is theorem-authoritative after PR #65. The reversal-even `N+1` compression is still a separate map and must not be silently identified with the full object.
+
+Rank-two displacement remains generic divided-difference structure, not RH evidence. No finite matrix equality implies positivity, form-core density, finite-to-infinite persistence, or RH.
+
+RH remains **OPEN**.
