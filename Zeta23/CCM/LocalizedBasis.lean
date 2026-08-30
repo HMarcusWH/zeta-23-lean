@@ -80,14 +80,12 @@ theorem hardWindowCharacterCorrelation_eq_qBasis
   · subst m
     simp only [hardWindowCharacterCorrelation, qBasis, if_pos, sub_self, Int.cast_zero,
       zero_mul, zero_sub]
-    have hconst :
-        (∫ _x in (0 : ℝ)..(L - y),
-            Real.cos (2 * Real.pi * (-(n : ℝ) * y / L))) =
-          (L - y) * Real.cos (2 * Real.pi * ((n : ℝ) * y / L)) := by
-      rw [intervalIntegral.integral_const]
-      rw [show -(n : ℝ) * y / L = -((n : ℝ) * y / L) by ring]
-      simp [Real.cos_neg]
-    rw [hconst]
+    rw [intervalIntegral.integral_const]
+    have hphaseDiag :
+        2 * Real.pi * (-(n : ℝ) * y / L) =
+          -(2 * Real.pi * (n : ℝ) * y / L) := by
+      ring
+    rw [hphaseDiag, Real.cos_neg]
     field_simp [hL0]
     ring
   · have hnmZ : n - m ≠ 0 := sub_ne_zero.mpr hnm
@@ -99,16 +97,16 @@ theorem hardWindowCharacterCorrelation_eq_qBasis
     have ha : a ≠ 0 := by
       dsimp [a]
       exact div_ne_zero (mul_ne_zero (mul_ne_zero (by norm_num) Real.pi_ne_zero) hnmR) hL0
-    have hphase :
-        (fun x : ℝ =>
-          2 * Real.pi *
-            ((((n - m : ℤ) : ℝ) * x - (m : ℝ) * y) / L)) =
-        fun x => a * x + b := by
-      funext x
+    have hphase (x : ℝ) :
+        2 * Real.pi *
+            ((((n - m : ℤ) : ℝ) * x - (m : ℝ) * y) / L) =
+          a * x + b := by
       dsimp [a, b]
       field_simp [hL0]
       ring
-    rw [hardWindowCharacterCorrelation, hphase, integral_cos_affine a b 0 (L - y) ha]
+    rw [hardWindowCharacterCorrelation]
+    simp_rw [hphase]
+    rw [integral_cos_affine a b 0 (L - y) ha]
     have hend :
         a * (L - y) + b =
           (((n - m : ℤ) : ℝ) * (2 * Real.pi)) -
@@ -154,7 +152,6 @@ theorem two_mul_dictionaryBasisTest_eq_kernel
     (n m : ℤ) (L y : ℝ) :
     2 * dictionaryBasisTest n m L y = kernel n m L y := by
   simp [dictionaryBasisTest]
-  ring
 
 end Zeta23.CCM
 
