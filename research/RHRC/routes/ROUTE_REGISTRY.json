@@ -48,11 +48,13 @@
         "R003_CCM_RHS_IDENTITY",
         "R003_KERNEL_EF_EXTENSION",
         "R003_CCM_BRIDGE",
+        "R003_CUTOFF_FREE_MATRIX_MAP",
         "R003_WEIL_DISPLACEMENT"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
-      "confirmatory_execution_authorized": false
+      "confirmatory_execution_authorized": false,
+      "note": "Finite R003 construction/explicit-formula/zero-side/displacement program is closed through PR #64. D0 representation audit is active: PR #65 formalizes the cutoff-free CCM/CvS full centered finite matrix map; Hilbert-space Galerkin restriction, form-core density, finite-to-infinite convergence, positivity, and RH remain open."
     },
     {
       "route_id": "R004_prolate_v2",

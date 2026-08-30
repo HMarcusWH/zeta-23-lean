@@ -90,33 +90,61 @@ Blob SHA:
 
 Formal parity/extremal-spectrum work remains deferred to planned PR #40. The implementation explicitly checks exact centrosymmetry before projecting to the reversal-even sector.
 
-## Normalization lock inherited from PR #33
+## Normalization lock inherited from PR #33 and formalized by PR #65
 
 There are three objects/conventions in play:
 
 1. fork-owned CCM matrix `M`, implemented formally in `Zeta23.CCM`;
-2. Groskin/CCM cutoff-free finite matrix `Q_inf`;
+2. the cutoff-free finite source convention `Q_inf`;
 3. inherited explicit-formula `WeilGram` normalization used by earlier R003 diagnostics.
 
-PR #33's independent audit identified the target convention
+PR #33's independent audit identified
 
 ```text
 Q_inf = M + 2*cCorrection(L)*I
 ```
 
-and, combined with PR #29's earlier finite diagnostic,
+with primitive map
 
 ```text
-WeilGram = 2*M + 4*cCorrection(L)*I,
+alpha_reference = alpha_ours
+beta_reference  = beta_ours
+gamma_reference = gamma_ours - cCorrection(L)
+pole_reference  = pole_ours.
 ```
 
-yields the current formalization target
+PR #65 formalizes that source convention independently in
+`Zeta23/CCM/CutoffFreeMatrix.lean` and proves
+
+```text
+cutoffFreeMatrix = finiteMatrix + 2*cCorrection(L)*I
+cutoffFreeMatrix = dictionaryMatrix
+zeroSideMatrix   = cutoffFreeMatrix       (for L > 0).
+```
+
+The source cutoff/lambda convention is also theorem-locked:
+
+```text
+L = log c = 2*log(lambda),  c = lambda^2
+```
+
+for positive `lambda`.
+
+The earlier PR #29 finite diagnostic
+
+```text
+WeilGram = 2*M + 4*cCorrection(L)*I
+```
+
+therefore remains consistent with
 
 ```text
 WeilGram = 2*Q_inf.
 ```
 
-These remain audit targets until Lean proves the corresponding identities.
+The last displayed `WeilGram` equality is **not** promoted by this source-map
+note unless separately bound to a Lean theorem.  PR #65's theorem authority is
+the finite cutoff-free source-convention map listed above.
 
 ## Authority boundary
 

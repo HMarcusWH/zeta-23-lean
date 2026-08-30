@@ -6,6 +6,7 @@ import Zeta23.CCM.DictionaryZeroSideBridge
 import Zeta23.CCM.DictionaryKernelEFExtension
 import Zeta23.CCM.DictionaryZeroSideDisplacement
 import Zeta23.CCM.RawKernelZeroSideBridge
+import Zeta23.CCM.CutoffFreeMatrix
 import Zeta23.CCM.DictionaryRHSIdentity
 import Zeta23.ExceptionalZero.DisplacementTransfer
 
@@ -43,6 +44,16 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.CCM.zeroSideMatrix_displacement
 #check Zeta23.CCM.rank_zeroSideMatrix_displacement_le_two
 #print axioms Zeta23.CCM.rank_zeroSideMatrix_displacement_le_two
+
+
+#check Zeta23.CCM.cutoffFreeMatrix_eq_dictionaryMatrix
+#print axioms Zeta23.CCM.cutoffFreeMatrix_eq_dictionaryMatrix
+#check Zeta23.CCM.cutoffFreeMatrix_eq_finiteMatrix_add_correction
+#print axioms Zeta23.CCM.cutoffFreeMatrix_eq_finiteMatrix_add_correction
+#check Zeta23.CCM.cutoffFreeMatrixOfCutoff_sq_eq_of_pos
+#print axioms Zeta23.CCM.cutoffFreeMatrixOfCutoff_sq_eq_of_pos
+#check Zeta23.CCM.zeroSideMatrix_eq_cutoffFreeMatrix
+#print axioms Zeta23.CCM.zeroSideMatrix_eq_cutoffFreeMatrix
 
 #check Zeta23.CCM.rawKernel_zero_entry_summable
 #print axioms Zeta23.CCM.rawKernel_zero_entry_summable
