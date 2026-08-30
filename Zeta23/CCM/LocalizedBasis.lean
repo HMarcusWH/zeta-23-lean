@@ -91,7 +91,9 @@ theorem hardWindowCharacterCorrelation_eq_qBasis
     field_simp [hL0]
     ring
   · have hnmZ : n - m ≠ 0 := sub_ne_zero.mpr hnm
+    have hmnZ : m - n ≠ 0 := sub_ne_zero.mpr (Ne.symm hnm)
     have hnmR : (((n - m : ℤ) : ℝ)) ≠ 0 := by exact_mod_cast hnmZ
+    have hmnR : (((m - n : ℤ) : ℝ)) ≠ 0 := by exact_mod_cast hmnZ
     let a : ℝ := 2 * Real.pi * (((n - m : ℤ) : ℝ)) / L
     let b : ℝ := -(2 * Real.pi * (m : ℝ) * y / L)
     have ha : a ≠ 0 := by
@@ -130,7 +132,7 @@ theorem hardWindowCharacterCorrelation_eq_qBasis
     rw [hsinEnd, Real.sin_neg]
     simp only [qBasis, if_neg hnm]
     dsimp [a]
-    field_simp [hL0, hnmR, Real.pi_ne_zero]
+    field_simp [hL0, hnmR, hmnR, Real.pi_ne_zero]
     push_cast
     ring
 
