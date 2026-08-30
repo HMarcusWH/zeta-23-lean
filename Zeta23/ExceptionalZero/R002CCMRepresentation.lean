@@ -58,6 +58,25 @@ theorem vecMulVec_mapResponse
   intro b hb
   ring
 
+/-- Certificate for an exact response-family change of coordinates.  This is
+intentionally stronger than a fitted matrix congruence: the same fixed
+coordinate map must carry every response vector in the family. -/
+structure ExactResponseMap
+    {ι : Type*} (source : ι → α → ℂ) (target : ι → β → ℂ) where
+  changeOfBasis : Matrix β α ℂ
+  response_eq : ∀ z, target z = mapResponse changeOfBasis (source z)
+
+/-- An exact response-family map automatically gives transpose congruence for
+every rank-one response atom. -/
+theorem ExactResponseMap.atom_congruence
+    {ι : Type*} {source : ι → α → ℂ} {target : ι → β → ℂ}
+    (M : ExactResponseMap source target) (z : ι) :
+    vecMulVec (target z) (target z) =
+      M.changeOfBasis * vecMulVec (source z) (source z) *
+        M.changeOfBasis.transpose := by
+  rw [M.response_eq z]
+  exact vecMulVec_mapResponse M.changeOfBasis (source z)
+
 end ResponseMap
 
 namespace R002CCM
@@ -104,6 +123,7 @@ end R002CCM
 end Zeta23.ExceptionalZero
 
 #print axioms Zeta23.ExceptionalZero.vecMulVec_mapResponse
+#print axioms Zeta23.ExceptionalZero.ExactResponseMap.atom_congruence
 #print axioms Zeta23.ExceptionalZero.R002CCM.Gz_eq_Az_add_Ez
 #print axioms Zeta23.ExceptionalZero.R002CCM.Gz_eq_Az_iff_Ez_eq_zero
 #print axioms Zeta23.ExceptionalZero.R002CCM.not_valid_of_one_lt_lam
