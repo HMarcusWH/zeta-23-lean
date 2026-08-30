@@ -125,8 +125,8 @@ theorem hardWindowCharacterCorrelation_eq_qBasis
               2 * Real.pi * (n : ℝ) * y / L) =
           -Real.sin (2 * Real.pi * (n : ℝ) * y / L) := by
       simpa using
-        (Real.sin_int_mul_two_pi_sub (n - m)
-          (2 * Real.pi * (n : ℝ) * y / L))
+        (Real.sin_int_mul_two_pi_sub
+          (2 * Real.pi * (n : ℝ) * y / L) (n - m))
     rw [hsinEnd, Real.sin_neg]
     simp only [qBasis, if_neg hnm]
     dsimp [a]
