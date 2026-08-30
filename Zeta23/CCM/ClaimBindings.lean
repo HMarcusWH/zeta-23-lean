@@ -3,6 +3,8 @@ import Zeta23.CCM.DictionaryTentZeroSummability
 import Zeta23.CCM.DictionaryTentMollifierSupport
 import Zeta23.CCM.DictionaryTentEFExtension
 import Zeta23.CCM.DictionaryZeroSideBridge
+import Zeta23.CCM.DictionaryKernelEFExtension
+import Zeta23.CCM.DictionaryZeroSideDisplacement
 import Zeta23.CCM.DictionaryRHSIdentity
 import Zeta23.ExceptionalZero.DisplacementTransfer
 
@@ -29,4 +31,14 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.CCM.zeroSideMatrix_eq_finiteMatrix_add_correction
 #check Zeta23.CCM.literatureRHS_dictionaryTest_eq_quadraticForm
 #print axioms Zeta23.CCM.literatureRHS_dictionaryTest_eq_quadraticForm
+#check Zeta23.CCM.dictionaryTransform_zero_sum_eq_quadraticForm_zeroSideMatrix
+#print axioms Zeta23.CCM.dictionaryTransform_zero_sum_eq_quadraticForm_zeroSideMatrix
+#check Zeta23.CCM.dictionaryTransform_zero_sum_eq_literatureRHS
+#print axioms Zeta23.CCM.dictionaryTransform_zero_sum_eq_literatureRHS
+#check Zeta23.CCM.dictionaryTransform_explicitFormula
+#print axioms Zeta23.CCM.dictionaryTransform_explicitFormula
 #check Zeta23.ExceptionalZero.rank_displacement_le_two_of_eq_smul_add_scalar
+#check Zeta23.CCM.zeroSideMatrix_displacement
+#print axioms Zeta23.CCM.zeroSideMatrix_displacement
+#check Zeta23.CCM.rank_zeroSideMatrix_displacement_le_two
+#print axioms Zeta23.CCM.rank_zeroSideMatrix_displacement_le_two
