@@ -73,7 +73,7 @@ theorem integral_cos_affine
 /-- The normalized hard-window Fourier-character overlap is exactly the
 existing CCM `qBasis` entry formula. -/
 theorem hardWindowCharacterCorrelation_eq_qBasis
-    (n m : ℤ) {L y : ℝ} (hL : 0 < L) (hy0 : 0 ≤ y) (hyL : y ≤ L) :
+    (n m : ℤ) {L y : ℝ} (hL : 0 < L) (_hy0 : 0 ≤ y) (_hyL : y ≤ L) :
     hardWindowCharacterCorrelation n m y L = qBasis n m y L := by
   have hL0 : L ≠ 0 := ne_of_gt hL
   by_cases hnm : n = m
