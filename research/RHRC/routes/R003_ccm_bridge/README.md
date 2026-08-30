@@ -156,7 +156,7 @@ H2a codim-one matrix completion             REACHED
 H2b actual zero-side matrix / rank<=2 gap   REACHED
 H2+ literal-tent defect / rank<=1 collapse   REACHED
 V0/V1 finite off-line visibility            OPEN
-full finite zero-side bridge                 OPEN
+full finite zero-side bridge                 REACHED
 finite-to-infinite closure                   OPEN
 ```
 
@@ -339,7 +339,7 @@ No explicit-formula identity, zero-side theorem, critical-line assumption, or ne
 
 ### PR #61 — Route-M M8 literal-tent EF assembly
 
-**GREEN / SETTLEMENT PENDING.**
+**MERGED.** Permanent main merge: `7362cecb1988604d32d26d59b8a1d82b1e4ea4d5`. Its Git tree `be24e0d0b43224117ddeb01378f4a868210e1323` is exactly the same tree as the final CI-tested synthetic merge `ead0e0ae902c6056726b7a68e84ac836018db013`.
 
 Production endpoints:
 
@@ -366,6 +366,35 @@ and the new endpoints depend only on
 ```
 
 No new zero-counting result, gamma asymptotic, mollifier estimate, regularity assumption, critical-line assumption, or direct nonsmooth application of `EF_lit_zeta` was introduced.
+
+### PR #62 — exact finite zero-side CCM bridge
+
+**SUBSTANTIVE BRIDGE GREEN; final settlement validation required before merge.**
+
+Production endpoints:
+
+```text
+Zeta23.CCM.dictionaryTentDefect_eq_zero
+Zeta23.CCM.zeroSideDiscrepancy_eq_zero
+Zeta23.CCM.zeroSideMatrix_eq_dictionaryMatrix
+Zeta23.CCM.zeroSideMatrix_eq_finiteMatrix_add_correction
+```
+
+The proof consumes the post-#57/#61 compressed route directly:
+
+```text
+literal-tent zero side = literatureRHS(literal tent)   (#61 / M8)
+                         ↓
+dictionaryTentDefect(hs,L) = 0
+                         ↓
+zeroSideMatrix = dictionaryMatrix                      (#57 / H2+)
+                         ↓
+zeroSideMatrix = finiteMatrix + 2*cCorrection(L)*I
+```
+
+The first compiler checkpoint deliberately contained only the load-bearing defect-zero and exact-matrix-equality theorems. `lake build Zeta23.CCM` passed on that checkpoint before claim promotion was added.
+
+This closes the same production bridge claim for every finite `N`; it does not prove the arbitrary-real full kernel EF, zero-side displacement, positivity, finite-to-infinite persistence, or RH. The registry records the proof-route adaptation explicitly: the mathematical claim is unchanged, but `R003_KERNEL_EF_EXTENSION` is no longer a prerequisite because H2+ reduced the full finite discrepancy to the single N-independent tent defect.
 
 ## Current theorem sequence
 
@@ -426,13 +455,19 @@ hence `rank A <= 1`.
 
 The key route is not displacement: all diagonal basis tests share the same literal tent seam, and subtracting the centered zero-frequency diagonal leaves an already-proved smooth residual. The inherited `C_c^2` explicit formula therefore makes every diagonal discrepancy equal; H2b then forces the completion vector to be constant.
 
-The exact finite bridge is now equivalent to
+The exact finite bridge was reduced to
 
 ```text
 dictionaryTentDefect(hs,L) = 0.
 ```
 
-Reflection is superseded for this collapse. Do not infer zero-side displacement inheritance from the deterministic matrix.
+PR #62 now consumes M8 to prove that scalar vanishes, hence the entire finite discrepancy vanishes and
+
+```text
+zeroSideMatrix hs N L = dictionaryMatrix L N
+```
+
+for every finite `N`. Reflection remains superseded for this collapse. Zero-side displacement is still a separate downstream theorem and must be proved from the exact bridge rather than assumed.
 
 ### V0/V1 — finite visibility
 
@@ -460,25 +495,22 @@ PR #57 makes the literal tent EF load-bearing: killing the single `dictionaryTen
 
 PR #58 closes the fixed-frequency, pole, and prime limit obligations; PR #59 closes the varying-family zero-side limit; PR #60 closes the archimedean dominated-convergence limit; and PR #61 composes those channels with the smooth inherited explicit formula to close M8.
 
-Current status:
+Current status after the #62 substantive checkpoint:
 
 ```text
 PROVED:
   literal tent zero side = literatureRHS(literal tent)
-
-DERIVED, not yet separately formalized:
   dictionaryTentDefect(hs,L) = 0
-
-DERIVED via PR #57, not yet separately formalized:
+  zeroSideDiscrepancy hs N L = 0
   zeroSideMatrix hs N L = dictionaryMatrix L N
   for every finite N
 ```
 
-Route M M0–M8 is complete. `R003_TENT_EF_EXTENSION` is the only claim promoted by PR #61.
+Route M M0–M8 remains complete. PR #62 cashes that result out through H2+ into the exact finite CCM bridge; `R003_KERNEL_EF_EXTENSION` remains a separate completion theorem rather than a bridge prerequisite.
 
 ## Downstream finite-to-infinite program
 
-After the literal-tent defect is settled and the full finite bridge closes, revisit the hard finite-to-infinite routes.
+With the literal-tent defect killed and the full finite bridge theorem now substantive-green, the next research work can consume the actual zero-side matrix directly. The hard finite-to-infinite routes remain open.
 
 ### Bombieri branch
 
@@ -526,13 +558,11 @@ The hard points remain the spectral/minimizer control and the finite-to-infinite
 
 ## Immediate next step
 
-PR #61 compiler-closes M8 and promotes only `R003_TENT_EF_EXTENSION` after exact settlement validation.
+PR #62 closes the substantive exact finite zero-side matrix bridge. After the final settlement head passes the complete synthetic-merge gate, the highest-information next moves are:
 
-Highest-information next move after PR #61 merges:
+1. prove the actual zero-side displacement identity and rank bound from the exact bridge plus the already-proved formal CCM displacement theorem;
+2. revisit R002-D, whose old CCM/Weil-Gram identification was blocked by the same nonsmooth dictionary seam that Route M has now eliminated;
+3. run the smallest dictionary-specific V0 transversality falsification test, starting at `N=1`, reusing the already-proved generic pair-block negativity machinery rather than rebuilding it;
+4. keep `R003_KERNEL_EF_EXTENSION` on a completion lane unless a downstream theorem actually requires it.
 
-1. formalize `dictionaryTentDefect_eq_zero` directly from the M8 literal-tent equality;
-2. consume `zeroSideMatrix_eq_dictionaryMatrix_iff_tentDefect_eq_zero` to obtain exact finite zero-side matrix equality for every `N`;
-3. reconcile the older `R003_CCM_BRIDGE` dependency description with the shorter theorem route discovered by H2+;
-4. keep `R003_KERNEL_EF_EXTENSION` as an independent completion theorem unless compiler evidence shows it is required downstream.
-
-Do not promote `R003_CCM_BRIDGE`, finite-to-infinite closure, or RH in PR #61.
+Do not infer positivity, finite-to-infinite persistence, or RH from the finite bridge. RH remains OPEN.
