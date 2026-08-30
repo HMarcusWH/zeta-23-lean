@@ -34,7 +34,8 @@
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
-      "confirmatory_execution_authorized": false
+      "confirmatory_execution_authorized": false,
+      "note": "D0-R settled by PR #66 as SPECIALIZATION_ONLY: the CCM qBasis has the hard-window truncated-character correlation geometry, but no generic theorem identifies the smooth-taper production R002 Gz/G-tilde(T) family with the canonical CCM finite object. Exact firewalls: Gz=Az+Ez; Gz=Az iff Ez=0; current Params.Valid requires lambda<=1; the R002 grid carries a common T translation. R002_WINDOWED_VISIBILITY remains open only on the R002 side."
     },
     {
       "route_id": "R003_ccm_bridge",
@@ -54,7 +55,7 @@
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "Finite R003 construction/explicit-formula/zero-side/displacement program is closed through PR #64. D0 representation audit is active: PR #65 formalizes the cutoff-free CCM/CvS full centered finite matrix map; Hilbert-space Galerkin restriction, form-core density, finite-to-infinite convergence, positivity, and RH remain open."
+      "note": "Finite R003 construction and D0-C are closed through PR #65. D0-R is settled by PR #66 as specialization-only, so generic R002 masking is not a CCM critical-path bottleneck. D0-B Bombieri correspondence is next; Hilbert-space Galerkin restriction, form-core density, finite-to-infinite convergence, positivity, and RH remain open."
     },
     {
       "route_id": "R004_prolate_v2",

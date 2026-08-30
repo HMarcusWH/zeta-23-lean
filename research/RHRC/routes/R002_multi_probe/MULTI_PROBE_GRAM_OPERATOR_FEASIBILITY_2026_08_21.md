@@ -6,6 +6,14 @@ channel must come with a *new, weaker-looking but sufficient* zero-side leg
 whose matching upper bound is provable by an identified unconditional
 mechanism — and the pair must be exhibited before terminal coding").
 
+> **Post-PR #66 D0-R status note (2026-08-30).** This file is retained as the
+> historical 2026-08-21 feasibility certificate. Its `lambda > 1` oversampling
+> discussion is an EXPERIMENTAL route-design signal, not a theorem about the
+> current production-valid R002 family: the current Lean definition
+> `Params.Valid` includes `lam_le_one : P.lam <= 1`. PR #66 also classifies
+> the generic smooth-taper R002-to-CCM relation as **SPECIALIZATION_ONLY**; see
+> `D0_R_R002_CCM_MAP_AUDIT_2026_08_30.md`.
+
 Status legend for every assertion below:
 `[LEAN]` proved in this repository (name given) · `[CLASSICAL]` standard
 unconditional mathematics · `[DERIVED]` computed here, elementary, not yet
