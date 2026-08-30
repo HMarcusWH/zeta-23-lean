@@ -155,12 +155,15 @@ H1 smooth-core polarization                 REACHED
 H2a codim-one matrix completion             REACHED
 H2b actual zero-side matrix / rank<=2 gap   REACHED
 H2+ literal-tent defect / rank<=1 collapse   REACHED
-V0/V1 finite off-line visibility            OPEN
 full finite zero-side bridge                 REACHED
-finite-to-infinite closure                   OPEN
+full real dictionary EF extension             REACHED
+actual zero-side displacement                 REACHED
+R003 finite theorem program                   REACHED
+V0/V1 finite off-line visibility              OPEN
+finite-to-infinite closure                    OPEN
 ```
 
-`R003_TENT_EF_EXTENSION` is REACHED. Route M M0–M8 is compiler-closed. The next production step is to consume the newly proved literal-tent equality into `dictionaryTentDefect(hs,L) = 0` and then through the existing H2+ iff theorem to the exact finite zero-side matrix bridge. The full finite bridge, finite-to-infinite closure, and RH remain OPEN.
+`R003_TENT_EF_EXTENSION` and `R003_CCM_BRIDGE` are REACHED. PR #63 closes the two remaining theorem-level R003 obligations downstream of that bridge: the full arbitrary-real finite-dictionary explicit-formula identity and the actual production zero-side displacement identity/rank bound. Finite visibility, masking, negative persistence, finite-to-infinite closure, and RH remain OPEN.
 
 ## Implemented chronology relevant to the live frontier
 
@@ -369,7 +372,7 @@ No new zero-counting result, gamma asymptotic, mollifier estimate, regularity as
 
 ### PR #62 — exact finite zero-side CCM bridge
 
-**SUBSTANTIVE BRIDGE GREEN; final settlement validation required before merge.**
+**MERGED.** Permanent main merge: `5288c90c0fa0175bed2428ed69682fa0e9b3aa1b`. Its Git tree `8bebadfa128d04d49cd850af8c2ea27d950bb017` is exactly the same tree as the final CI-tested synthetic merge `f498c2a69c34569bae952c1404e004150432fdc5`.
 
 Production endpoints:
 
@@ -394,7 +397,54 @@ zeroSideMatrix = finiteMatrix + 2*cCorrection(L)*I
 
 The first compiler checkpoint deliberately contained only the load-bearing defect-zero and exact-matrix-equality theorems. `lake build Zeta23.CCM` passed on that checkpoint before claim promotion was added.
 
-This closes the same production bridge claim for every finite `N`; it does not prove the arbitrary-real full kernel EF, zero-side displacement, positivity, finite-to-infinite persistence, or RH. The registry records the proof-route adaptation explicitly: the mathematical claim is unchanged, but `R003_KERNEL_EF_EXTENSION` is no longer a prerequisite because H2+ reduced the full finite discrepancy to the single N-independent tent defect.
+This closes the same production bridge claim for every finite `N`; it does not by itself prove the arbitrary-real full kernel EF, zero-side displacement, positivity, finite-to-infinite persistence, or RH. The registry records the proof-route adaptation explicitly: the mathematical claim is unchanged, but `R003_KERNEL_EF_EXTENSION` is no longer a prerequisite because H2+ reduced the full finite discrepancy to the single N-independent tent defect.
+
+### PR #63 — final R003 kernel EF and production displacement closure
+
+**IMPLEMENTED IN THIS PR; theorem checkpoint green before claim promotion.**
+
+The pre-promotion checkpoint head
+
+```text
+89ef51add8ac4f5987661e388bb59e45c989d5eb
+```
+
+passed `Build CCM formalization` with both new theorem files imported by `Zeta23.CCM`.
+
+Production endpoints:
+
+```text
+Zeta23.CCM.dictionaryTransform_zero_sum_eq_quadraticForm_zeroSideMatrix
+Zeta23.CCM.dictionaryTransform_zero_sum_eq_literatureRHS
+Zeta23.CCM.dictionaryTransform_explicitFormula
+Zeta23.CCM.zeroSideMatrix_displacement
+Zeta23.CCM.rank_zeroSideMatrix_displacement_le_two
+```
+
+The kernel-EF proof direction is now the reverse of the original build plan:
+
+```text
+entrywise absolutely summable spectral zero side
+                         ↓ finite contraction
+quadraticForm(zeroSideMatrix,u)
+                         ↓ #62
+quadraticForm(dictionaryMatrix,u)
+                         ↓ deterministic RHS identity
+literatureRHS(dictionaryTest(u)).
+```
+
+Thus no new nonsmooth explicit-formula limit passage is needed for the full real dictionary once the exact basis matrix bridge is theorem-authoritative.
+
+For displacement, PR #63 instantiates the already-proved generic transfer theorem with
+
+```text
+A = zeroSideMatrix
+M = finiteMatrix
+k = 1
+c = 2*cCorrection(L).
+```
+
+The scalar correction disappears from the commutator, so the production zero-side displacement is exactly the formal CCM displacement with **no factor two**. This does not identify the older doubled R002 diagnostic `WeilGram` object; that normalization archaeology remains a separate downstream task.
 
 ## Current theorem sequence
 
@@ -467,7 +517,7 @@ PR #62 now consumes M8 to prove that scalar vanishes, hence the entire finite di
 zeroSideMatrix hs N L = dictionaryMatrix L N
 ```
 
-for every finite `N`. Reflection remains superseded for this collapse. Zero-side displacement is still a separate downstream theorem and must be proved from the exact bridge rather than assumed.
+for every finite `N`. Reflection remains superseded for this collapse. PR #63 then proves the actual zero-side displacement downstream from this exact bridge by consuming the generic scalar-shift transfer theorem with production scale `k = 1`.
 
 ### V0/V1 — finite visibility
 
@@ -495,7 +545,7 @@ PR #57 makes the literal tent EF load-bearing: killing the single `dictionaryTen
 
 PR #58 closes the fixed-frequency, pole, and prime limit obligations; PR #59 closes the varying-family zero-side limit; PR #60 closes the archimedean dominated-convergence limit; and PR #61 composes those channels with the smooth inherited explicit formula to close M8.
 
-Current status after the #62 substantive checkpoint:
+Current R003 theorem state after the PR #63 theorem checkpoint:
 
 ```text
 PROVED:
@@ -503,10 +553,14 @@ PROVED:
   dictionaryTentDefect(hs,L) = 0
   zeroSideDiscrepancy hs N L = 0
   zeroSideMatrix hs N L = dictionaryMatrix L N
-  for every finite N
+  zeroSideMatrix hs N L = finiteMatrix L N + 2*cCorrection(L)*I
+  full real dictionary zero side = literatureRHS(dictionaryTest)
+  [indexMatrix, zeroSideMatrix] = g 1^T - 1 g^T
+  rank([indexMatrix, zeroSideMatrix]) <= 2
+  for every finite N and positive L
 ```
 
-Route M M0–M8 remains complete. PR #62 cashes that result out through H2+ into the exact finite CCM bridge; `R003_KERNEL_EF_EXTENSION` remains a separate completion theorem rather than a bridge prerequisite.
+Route M M0–M8 remains complete. PR #62 cashes M8 out through H2+ into the exact finite CCM bridge. PR #63 then recovers the full real dictionary EF by finite contraction and transfers the formal CCM displacement onto the actual zero-side matrix. The remaining hard work is no longer bridge construction.
 
 ## Downstream finite-to-infinite program
 
@@ -558,11 +612,15 @@ The hard points remain the spectral/minimizer control and the finite-to-infinite
 
 ## Immediate next step
 
-PR #62 closes the substantive exact finite zero-side matrix bridge. After the final settlement head passes the complete synthetic-merge gate, the highest-information next moves are:
+After the final promoted PR #63 head passes the complete synthetic-merge gate, the R003 finite bridge theorem program is closed and the roadmap should be rewritten around the new obstruction/persistence frontier.
 
-1. prove the actual zero-side displacement identity and rank bound from the exact bridge plus the already-proved formal CCM displacement theorem;
-2. revisit R002-D, whose old CCM/Weil-Gram identification was blocked by the same nonsmooth dictionary seam that Route M has now eliminated;
-3. run the smallest dictionary-specific V0 transversality falsification test, starting at `N=1`, reusing the already-proved generic pair-block negativity machinery rather than rebuilding it;
-4. keep `R003_KERNEL_EF_EXTENSION` on a completion lane unless a downstream theorem actually requires it.
+Highest-information next moves:
 
-Do not infer positivity, finite-to-infinite persistence, or RH from the finite bridge. RH remains OPEN.
+1. revisit R002-D normalization archaeology and determine exactly how the historical doubled diagnostic `WeilGram` relates to the theorem-authoritative production `zeroSideMatrix`;
+2. run the smallest dictionary-specific V0 transversality falsification test at `N=1`, keeping the old `1⊥` two-probe test as a baseline while also checking what the now-full finite bridge makes possible outside that historical restriction;
+3. if finite pair visibility survives, attack masking in the full finite matrix rather than treating block negativity as global negativity;
+4. if masking is beaten, seek quantitative negative persistence—a uniform negative margin along a controlled cofinal sequence—before invoking Bombieri/Connes finite-to-infinite mechanisms.
+
+Rank-two displacement is generic divided-difference structure and should be adversarially tested for any genuinely new zero-location content before it is used as an RH-directed clue.
+
+Do not infer positivity, finite-to-infinite persistence, or RH from the R003 closure. RH remains OPEN.
