@@ -55,7 +55,7 @@
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "Finite R003 construction and D0-C are closed through PR #65. D0-R is settled by PR #66 as specialization-only. D0-B is now settled as DISTINCT_TRUNCATIONS: Bombieri's finite matrices H(Gamma_N;t) are indexed by zeta-zero parameters with Gamma_N={gamma: |gamma|<=N}, whereas CCM uses a deterministic centered Fourier-character band of size 2*N+1. No direct equality/congruence/compression or inertia transfer is promoted. G0/G1 localized Weil restriction is next; form-core density, finite-to-infinite convergence, positivity, and RH remain open."
+      "note": "Finite R003 construction and D0-C are closed through PR #65; D0-R is settled by #66 and D0-B by #67. G0-A now formalizes the normalized centered Fourier-character overlap and targets exact equality with qBasis, while preserving the production firewall 2*dictionaryBasisTest=kernel. G1 localized Weil-form restriction remains next; form-core density, Rayleigh-Ritz convergence, positivity, finite negative persistence, and RH remain open."
     },
     {
       "route_id": "R004_prolate_v2",
