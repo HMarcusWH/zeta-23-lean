@@ -1,6 +1,6 @@
 # R003 — CCM / finite Guinand–Weil / zero-side bridge
 
-Status: **FINITE CLOSURE REACHED / D0 REPRESENTATION AUDIT ACTIVE**. RH remains **OPEN**.
+Status: **FINITE CLOSURE REACHED / D0 REPRESENTATION AUDIT SETTLED / G0-G1 NEXT**. RH remains **OPEN**.
 
 This file is the active route SSOT for R003. Lean and the RHRC claim registry are theorem authority; this route document records sequencing, architecture decisions, and claim boundaries.
 
@@ -606,7 +606,7 @@ With the literal-tent defect killed and the full finite bridge theorem now subst
 
 ### Bombieri branch
 
-The hard issue is not finite negativity but whether the negative eigenvalue can collapse to zero as `N→∞`. Any route must attack that limit directly and should compose with the now-formal tail-complete detector bank rather than re-prove detector selection.
+D0-B now records that Bombieri's published finite matrices are zero-indexed height truncations `H(Gamma_N;t)`, not the deterministic centered CCM Fourier band. His exact finite inertia theorem therefore does not transfer directly to the canonical CCM matrix. The potentially useful future connection is operator-level duality between zero-coordinate truncation and test-function Galerkin restriction; revisit it only after G0/G1 supplies a named ambient form and restriction map.
 
 ### Connes / FTI branch
 
@@ -661,8 +661,8 @@ zeroSideMatrix
 The project must not jump directly from this equality to a Hilbert-space Galerkin or finite-to-infinite claim.  The next moves are object-map audits:
 
 1. **D0-R — R002 map-or-separate: SETTLED BY PR #66.** The hard-window truncated-character geometry underlying `qBasis` is a real specialization-level connection, but no generic production theorem identifies the smooth-taper R002 `Gz/G-tilde(T)` family with the canonical CCM finite object. The exact R002 decomposition `Gz = Az + Ez`, the current `lambda <= 1` validity envelope, carrier shift, dynamic dimension, and taper dependence remain distinct. Therefore R002 masking stays on the R002 side and is no longer a CCM critical-path bottleneck.
-2. **D0-B — Bombieri correspondence: NEXT.** Extract the exact finite truncation, parity, basis, aperture, and normalization conventions. Prove equality/congruence/compression if available; otherwise classify the mismatch. Do not transfer negative-inertia conclusions before this map is theorem-authoritative.
-3. **G0/G1 — localized Weil restriction.** Only after the finite object maps are settled, define the actual finite function subspace and prove that the theorem-authoritative matrix is the restriction of the localized Weil quadratic form in the intended basis.
+2. **D0-B — Bombieri correspondence: SETTLED AS DISTINCT TRUNCATIONS.** The 2000 memoir truncates the zero-index multiset `Gamma_N={gamma: |gamma|<=N}` and studies `H(Gamma_N;t)`, whose dimension is `#Gamma_N`. The CCM object instead truncates a deterministic centered Fourier-character dictionary `-N,...,N`, of dimension `2*N+1`. No direct equality, congruence, compression, or parameter map is established, and Bombieri's inertia theorem is therefore not transferred to CCM. See `D0_B_BOMBIERI_CORRESPONDENCE_2026_08_30.md` and `../../external/bombieri/SOURCE_MAP.md`.
+3. **G0/G1 — localized Weil restriction: NEXT.** With D0-C, D0-R and D0-B settled, define the actual ambient localized quadratic form and named finite test-function subspace, then prove or falsify that the theorem-authoritative `cutoffFreeMatrix` is exactly its matrix in the centered basis.
 4. **G2/G3 — form core and Rayleigh-Ritz.** The decisive finite-to-infinite question is density in the **form norm**, not merely L2 density. Prove or falsify form-core density, then seek bottom-of-spectrum convergence.
 5. Revisit prolate/Jacobi structure only after a named operator/restriction topology exists. The old small-commutator-to-eigenvector route remains falsified by spectral-gap collapse.
 
