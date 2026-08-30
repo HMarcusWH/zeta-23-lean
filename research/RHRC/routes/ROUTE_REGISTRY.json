@@ -29,7 +29,8 @@
       "phase": "DISCOVERY",
       "claim_ids": [
         "R002_MULTI_PROBE_SEPARATION",
-        "R002_WINDOWED_VISIBILITY"
+        "R002_WINDOWED_VISIBILITY",
+        "R002_KERNEL_ZERO_SIDE_BRIDGE"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,

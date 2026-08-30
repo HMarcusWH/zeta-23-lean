@@ -5,11 +5,12 @@ import Zeta23.CCM.DictionaryTentEFExtension
 import Zeta23.CCM.DictionaryZeroSideBridge
 import Zeta23.CCM.DictionaryKernelEFExtension
 import Zeta23.CCM.DictionaryZeroSideDisplacement
+import Zeta23.CCM.RawKernelZeroSideBridge
 import Zeta23.CCM.DictionaryRHSIdentity
 import Zeta23.ExceptionalZero.DisplacementTransfer
 
 /-!
-# R003 promoted-claim theorem bindings
+# Promoted CCM / R002 / R003 theorem bindings
 
 This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 `lake build Zeta23.CCM` checks the promoted theorem surface transitively.
@@ -42,3 +43,14 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.CCM.zeroSideMatrix_displacement
 #check Zeta23.CCM.rank_zeroSideMatrix_displacement_le_two
 #print axioms Zeta23.CCM.rank_zeroSideMatrix_displacement_le_two
+
+#check Zeta23.CCM.rawKernel_zero_entry_summable
+#print axioms Zeta23.CCM.rawKernel_zero_entry_summable
+#check Zeta23.CCM.rawKernelZeroSideMatrix_eq_two_smul_zeroSideMatrix
+#print axioms Zeta23.CCM.rawKernelZeroSideMatrix_eq_two_smul_zeroSideMatrix
+#check Zeta23.CCM.rawKernelZeroSideMatrix_eq_two_finiteMatrix_add_four_correction
+#print axioms Zeta23.CCM.rawKernelZeroSideMatrix_eq_two_finiteMatrix_add_four_correction
+#check Zeta23.CCM.rawKernelZeroSideMatrix_displacement
+#print axioms Zeta23.CCM.rawKernelZeroSideMatrix_displacement
+#check Zeta23.CCM.rank_rawKernelZeroSideMatrix_displacement_le_two
+#print axioms Zeta23.CCM.rank_rawKernelZeroSideMatrix_displacement_le_two

@@ -26,10 +26,13 @@ Promotion condition: an exact separation theorem, not a classifier score.
 | P2 | the two are therefore not equal — block-level separation | **CLOSED** (`not_onLineCombination_of_pairBlock`) |
 | P3 | windowed visibility: the negative direction survives the PSD on-line bulk | **OPEN** — masking; visible iff `δL ≳ √(6/λ)`, and unconditionally at `λ > 1` where the grid oversamples (§3 of the feasibility certificate) |
 | P4 | arithmetic leg: `∫\|W\|²ν_X ≥ −θ` for all band-limited `W` | **OPEN and RH-equivalent** in the `∀(T, λ>1)` limit (Weil's criterion) — see OBS-009 |
-| P5 | CCM identification: `M_{λ,N}` is the same Weil–Gram object | **OPEN, partially verified** — see R002-D below |
+| P5-original | naive CCM identity `M_{λ,N} = ½·WeilGram` with no diagonal correction | **REFUTED AS STATED** — the diagonal archimedean correction is real |
+| P5-corrected | exact normalized CCM ↔ raw truncated-character kernel zero side: `rawKernelZeroSideMatrix = 2·M + 4·cCorrection(L)·I` | **CLOSED / PROVED IN LEAN** — `R002_KERNEL_ZERO_SIDE_BRIDGE` |
 
 P0–P2 are proved in `Zeta23/ExceptionalZero/ProbeGramNegativity.lean`
-(sorry-free, standard axioms only). P3–P5 are not claimed.
+(sorry-free, standard axioms only). P3 remains open and P4 remains RH-equivalent.
+The original P5 statement remains refuted; the corrected raw-kernel normalization
+is now theorem-backed by `Zeta23/CCM/RawKernelZeroSideBridge.lean`.
 
 ## Feasibility certificate
 
@@ -44,7 +47,7 @@ coherence — collapses to OBS-008 by linearity plus Cauchy–Schwarz), **R002-F
 (full-diagonal majorization — δ-insensitive at leading order). Both kills are
 recorded as DR-006.
 
-## R002-D — the CCM ≡ Weil–Gram bridge: conjecture refuted, gap localized
+## R002-D — raw truncated-character kernel bridge: original conjecture refuted, corrected normalization proved
 
 Numerical result obtained 2026-08-21 (claim cap
 `FINITE_NUMERICAL_DIAGNOSTIC_ONLY`, script `check_ccm_weil_bridge.py`): for the
@@ -70,23 +73,39 @@ formula (`2γ_L(n) − 2β_L(n)`) instead of the off-diagonal divided difference
 and exactly the part of `M` that the displacement identity leaves unconstrained
 (`[D,M]` vanishes on the diagonal identically).
 
-**Resolved 2026-08-21 (see `routes/R003_ccm_bridge/`).** The answer is yes, at
-least numerically: the residual is `c(L)·δ_{nm}` with `c(L) = 4·c_correction(L)`,
-and the diagonal-only structure is *structural* — `K_{nm}(0) = 2δ_{nm}` is what
-meets the logarithmic singularity of the archimedean kernel, so only the diagonal
-needs the regularization constants. The corrected conjecture is therefore
-`M = ½·(WeilGram − c(L)·I)`, and since `[D, c·I] = 0` the displacement identity
-transfers regardless of `c(L)`. The transfer algebra is now proved in Lean
-(`Zeta23/ExceptionalZero/DisplacementTransfer.lean`); the identity itself remains
-numerical, blocked by the `C¹` regularity of `K_{nm}`.
+**Historical state on 2026-08-21.** Numerical archaeology found the residual
+`c(L)·δ_{nm}` with `c(L) = 4·c_correction(L)`; the diagonal-only structure was
+recognized as structural because `K_{nm}(0)=2δ_{nm}`. At that point the corrected
+statement `M = ½·(WeilGram-c(L)I)` was still only numerical, and the direct route
+was blocked by the piecewise-`C¹` raw kernel.
 
-Sharpened R003 question, now well posed: *is there a diagonal normalization
-making `M_{λ,N}` exactly `½·(Weil zero-side Gram)` in this basis?* An
-affirmative answer turns `[D,M] = g1ᵀ − 1gᵀ` into an exact explicit-formula
-statement (R004 ladder step **J5**). Obstacles: a higher-accuracy archimedean
-quadrature is needed to assert (rather than merely observe) the off-diagonal
-match; and `K_{nm}` is only piecewise `C¹`, so it is not a legal `C_c²` test for
-`EF_lit` — formalization would need a mollified family and a limit.
+**Current theorem state after PR #64.** The direct-`EF_lit` obstruction is no
+longer relevant. The production dictionary basis satisfies exactly
+
+```text
+dictionaryBasisTest = 1/2 * kernel.
+```
+
+Its entrywise zero side was legalized independently in R003, and #62 proves the
+exact production bridge. PR #64 scales that theorem-authoritative object back to
+the original raw `qBasis/kernel` convention and proves
+
+```text
+rawKernelZeroSideMatrix
+  = 2 * zeroSideMatrix
+  = 2 * finiteMatrix + 4*cCorrection(L)*I.
+```
+
+The theorem-authoritative source is
+`Zeta23.CCM.rawKernelZeroSideMatrix_eq_two_finiteMatrix_add_four_correction`.
+Thus the **original no-correction identity remains refuted**, while its corrected
+diagonal-shift successor is **PROVED**. No new mollifier, archimedean quadrature,
+or direct nonsmooth explicit-formula application is needed.
+
+Scope firewall: this closes the R002-D **centered truncated-character
+`qBasis/kernel` bridge**. It does **not** identify `finiteMatrix` with the general
+taper-grid `G̃(T)` used by R002-A; that would require an additional exact
+basis/parameter map. P3 masking therefore remains untouched.
 
 ## Dumbassery checks
 
@@ -98,8 +117,9 @@ match; and `K_{nm}` is only piecewise `C¹`, so it is not a legal `C_c²` test f
   longer Dirichlet polynomial — the difficulty is exchanged, not removed.
 - Numerical `λ_min < 0` in the synthetic diagnostic is a finite computation on a
   synthetic zero lattice; it is not evidence about ζ.
-- The R002-D factor-2 match is numerical at one `(λ, N)`; it is not an identity
-  until the archimedean channel is verified and the whole thing is proved.
+- The old finite numerical factor-two diagnostic is now superseded by the exact
+  raw-kernel theorem above. That theorem does not upgrade the general taper-grid
+  visibility problem or provide positivity.
 
 ## Route-specification adaptation — 2026-08-21 (DISCOVERY phase, logged)
 
@@ -114,6 +134,7 @@ claim registry carries the corresponding `adaptation_note`.
 
 - No RH evidence, no RH route closure, no promotion of `C_RH`.
 - No windowed-visibility theorem, no arithmetic upper bound.
-- No CCM identity — only a partial numerical channel match.
-- Finite numerical diagnostics have no theorem authority; Lean/comparator
-  remains the promotion gate.
+- The corrected raw truncated-character kernel/CCM identity is theorem-backed;
+  no identity with the full R002-A taper-grid `G̃(T)` is claimed.
+- Historical finite numerical diagnostics remain evidence only; the promoted
+  corrected bridge is the Lean theorem named above.
