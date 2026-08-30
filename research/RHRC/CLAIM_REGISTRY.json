@@ -119,6 +119,20 @@
       "note": "Feasibility bookkeeping (routes/R002_multi_probe/MULTI_PROBE_GRAM_OPERATOR_FEASIBILITY_2026_08_21.md) gives visibility iff delta*L >~ sqrt(6/lambda), with every-delta detection in the oversampled regime lambda>1; the price is X=e^L>T on the prime side."
     },
     {
+      "id": "R002_KERNEL_ZERO_SIDE_BRIDGE",
+      "statement": "For the original even two-sided CCM qBasis/kernel on centered finite indices and every positive aperture L, the exact concrete zeta raw-kernel zero-side matrix equals twice the production zeroSideMatrix, hence equals 2*finiteMatrix(L,N)+4*cCorrection(L)*I.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_CCM_BRIDGE"
+      ],
+      "source": "Zeta23/CCM/RawKernelZeroSideBridge.lean",
+      "theorem": "Zeta23.CCM.rawKernelZeroSideMatrix_eq_two_finiteMatrix_add_four_correction",
+      "route": "R002_multi_probe",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "This is the corrected theorem successor to the historical R002-D diagnostic. It concerns the centered truncated-character qBasis/kernel family only. It does not identify the general R002-A taper-grid G-tilde(T), prove positivity, solve masking, establish persistence, supply a finite-to-infinite theorem, or imply RH.",
+      "adaptation_note": "The original statement M = 1/2*WeilGram was numerically refuted as stated because of a diagonal archimedean correction. Numerical archaeology then isolated the correction 4*cCorrection(L)*I. PRs #55-#63 legalized and exactly identified the production half-normalized basis zero-side matrix without applying EF_lit directly to the piecewise-C1 raw kernel. PR #64 lifts that theorem-authoritative production bridge back to the original raw qBasis/kernel convention by the exact identity kernel = 2*dictionaryBasisTest. The original false statement remains refuted; the corrected scalar-shift normalization is what is promoted here."
+    },
+    {
       "id": "R004_CCM_DISPLACEMENT_FORMAL",
       "statement": "For the theorem-authoritative finite CCM matrix on centered Fourier indices and positive aperture L, the index commutator is exactly g 1^T - 1 g^T and therefore has rank at most two.",
       "status": "PROVED_UNCONDITIONAL",
