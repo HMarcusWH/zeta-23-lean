@@ -444,7 +444,35 @@ k = 1
 c = 2*cCorrection(L).
 ```
 
-The scalar correction disappears from the commutator, so the production zero-side displacement is exactly the formal CCM displacement with **no factor two**. This does not identify the older doubled R002 diagnostic `WeilGram` object; that normalization archaeology remains a separate downstream task.
+The scalar correction disappears from the commutator, so the production zero-side displacement is exactly the formal CCM displacement with **no factor two**. At the #63 freeze this did not yet identify the older doubled R002 diagnostic raw-kernel convention.
+
+### PR #64 — downstream historical raw-kernel reconciliation
+
+**THEOREM CHECKPOINT GREEN before claim/document promotion.**
+
+PR #64 consumes the already-proved production bridge rather than reopening any
+explicit-formula channel. The historical R002-D test is exactly the unhalved
+`kernel`, while `dictionaryBasisTest = 1/2 * kernel`. Lean therefore proves
+
+```text
+rawKernelZeroSideMatrix
+  = 2 * zeroSideMatrix
+  = 2 * finiteMatrix + 4*cCorrection(L)*I,
+```
+
+and correspondingly
+
+```text
+[indexMatrix, rawKernelZeroSideMatrix]
+  = 2*(g 1^T - 1 g^T),
+rank <= 2.
+```
+
+This closes the corrected historical normalization that the old numerical audit
+predicted. The original statement `M = 1/2*WeilGram` **remains refuted as
+stated**; #64 proves its diagonal-shift successor. The result concerns the
+centered truncated-character `qBasis/kernel` convention only and does not
+identify the general R002-A taper-grid `G̃(T)`.
 
 ## Current theorem sequence
 
