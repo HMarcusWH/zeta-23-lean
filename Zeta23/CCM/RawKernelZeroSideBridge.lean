@@ -27,7 +27,6 @@ theorem kernel_eq_two_mul_dictionaryBasisTest
     (n m : ℤ) (L y : ℝ) :
     kernel n m L y = 2 * dictionaryBasisTest n m L y := by
   simp [dictionaryBasisTest]
-  ring
 
 /-- The paper transform of the historical raw kernel is exactly twice the
 corresponding production spectral-matrix entry.
@@ -36,7 +35,7 @@ The positive-aperture hypothesis keeps this statement on the production
 legality domain of the compactly supported kernel. -/
 theorem paperFT_kernel_eq_two_mul_dictionarySpectralMatrix_apply
     (N : ℕ) (i j : Fin (2 * N + 1))
-    {L : ℝ} (hL : 0 < L) (z : ℂ) :
+    {L : ℝ} (_hL : 0 < L) (z : ℂ) :
     Zeta23.paperFT
         (kernel (centeredIndex N i) (centeredIndex N j) L) z =
       2 * dictionarySpectralMatrix N L z i j := by
@@ -118,16 +117,44 @@ theorem rawKernelZeroSideMatrix_eq_two_smul_zeroSideMatrix
     {L : ℝ} (hL : 0 < L) :
     rawKernelZeroSideMatrix hs N L =
       (2 : ℂ) • zeroSideMatrix hs N L := by
-  ext i j
-  unfold rawKernelZeroSideMatrix zeroSideMatrix
-  have hprod := dictionarySpectralMatrix_zero_entry_summable hs N i j hL
-  rw [Matrix.smul_apply, smul_eq_mul]
-  rw [← hprod.tsum_mul_left]
-  apply tsum_congr
-  intro ρ
-  rw [paperFT_kernel_eq_two_mul_dictionarySpectralMatrix_apply
-    N i j hL (gammaOf ρ)]
-  ring
+  funext i j
+  change
+    (∑' ρ : (zetaZeros hs).carrier,
+      ((zetaZeros hs).mult ρ : ℂ) *
+        Zeta23.paperFT
+          (kernel
+            (centeredIndex N i)
+            (centeredIndex N j) L)
+          (gammaOf ρ)) =
+      2 *
+        (∑' ρ : (zetaZeros hs).carrier,
+          ((zetaZeros hs).mult ρ : ℂ) *
+            dictionarySpectralMatrix N L (gammaOf ρ) i j)
+  have hscaled :=
+    (dictionarySpectralMatrix_zero_entry_summable hs N i j hL).hasSum.mul_left
+      (2 : ℂ)
+  calc
+    (∑' ρ : (zetaZeros hs).carrier,
+      ((zetaZeros hs).mult ρ : ℂ) *
+        Zeta23.paperFT
+          (kernel
+            (centeredIndex N i)
+            (centeredIndex N j) L)
+          (gammaOf ρ)) =
+        ∑' ρ : (zetaZeros hs).carrier,
+          (2 : ℂ) *
+            (((zetaZeros hs).mult ρ : ℂ) *
+              dictionarySpectralMatrix N L (gammaOf ρ) i j) := by
+          apply tsum_congr
+          intro ρ
+          rw [paperFT_kernel_eq_two_mul_dictionarySpectralMatrix_apply
+            N i j hL (gammaOf ρ)]
+          ring
+    _ = 2 *
+        (∑' ρ : (zetaZeros hs).carrier,
+          ((zetaZeros hs).mult ρ : ℂ) *
+            dictionarySpectralMatrix N L (gammaOf ρ) i j) :=
+      hscaled.tsum_eq
 
 /-- The raw-kernel zero side is twice the deterministic production dictionary
 matrix. -/
