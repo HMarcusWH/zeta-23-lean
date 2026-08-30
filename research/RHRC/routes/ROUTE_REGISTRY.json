@@ -50,12 +50,13 @@
         "R003_KERNEL_EF_EXTENSION",
         "R003_CCM_BRIDGE",
         "R003_CUTOFF_FREE_MATRIX_MAP",
-        "R003_WEIL_DISPLACEMENT"
+        "R003_WEIL_DISPLACEMENT",
+        "R003_LOCALIZED_BASIS_CORRELATION"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "Finite R003 construction and D0-C are closed through PR #65; D0-R is settled by #66 and D0-B by #67. G0-A now formalizes the normalized centered Fourier-character overlap and targets exact equality with qBasis, while preserving the production firewall 2*dictionaryBasisTest=kernel. G1 localized Weil-form restriction remains next; form-core density, Rayleigh-Ritz convergence, positivity, finite negative persistence, and RH remain open."
+      "note": "Finite R003 construction and D0-C are closed through PR #65; D0-R is settled by #66 and D0-B by #67. G0-A / PR #68 now theorem-locks the normalized hard-window centered Fourier-character correlation as exactly qBasis and separately theorem-locks 2*dictionaryBasisTest=kernel. G1 localized Weil-form restriction is next; form-core density, Rayleigh-Ritz convergence, positivity, finite negative persistence, and RH remain open."
     },
     {
       "route_id": "R004_prolate_v2",
