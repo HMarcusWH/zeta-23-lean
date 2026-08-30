@@ -176,14 +176,16 @@
     {
       "id": "R003_TENT_EF_EXTENSION",
       "statement": "For the canonical tent tau_L(y)=max(0,1-|y|/L), the concrete zeta explicit formula is justified by a C_c^2 approximation/limit argument, with zero-side limit exchange controlled by theorem-authoritative transform decay and the inherited zeta weighted zero summability theorem.",
-      "status": "OPEN",
+      "status": "PROVED_UNCONDITIONAL",
       "dependencies": [
         "R003_TENT_ANALYTICS",
         "R003_TENT_MOLLIFIER_ARCHITECTURE"
       ],
       "route": "R003_ccm_bridge",
-      "promotion_cap": "OPEN",
-      "note": "Route M M0-M3 is compiler-closed by R003_TENT_MOLLIFIER_ARCHITECTURE. M3.5 fixed-frequency mollifier-transform convergence and the M4 pole / M5 truncate-first prime channel limits are compiler-closed in PR #58. M6 archimedean dominated convergence is compiler-closed in PR #60 and M7 varying-family zero-side dominated convergence/Tannery is compiler-closed in PR #59. The remaining obligation is M8 assembly of the literal-tent explicit formula. Do not introduce a new explicit-formula assumption or duplicate the inherited weighted-zero-summability gate."
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "Route M M0-M8 is compiler-closed. The literal canonical tent explicit formula is proved by applying EF_lit_zeta only to the C² compactly supported mollified tents, using the separately proved pole, truncate-first prime, archimedean, and zero-side convergence theorems, and identifying the limiting zero-side and literature-RHS values by uniqueness of limits. The production theorem also includes absolute summability of the literal-tent zero series. This does not by itself promote R003_KERNEL_EF_EXTENSION, R003_CCM_BRIDGE, R003_WEIL_DISPLACEMENT, finite-to-infinite closure, or RH.",
+      "source": "Zeta23/CCM/DictionaryTentEFExtension.lean",
+      "theorem": "Zeta23.CCM.dictionaryTent_explicitFormula"
     },
     {
       "id": "R003_CCM_RHS_IDENTITY",
