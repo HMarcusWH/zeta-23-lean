@@ -75,7 +75,7 @@ theorem cutoffFreeArchComponent_eq_archComponent_sub_two_correction
   · subst m
     simp [cutoffFreeArchComponent, cutoffFreeGammaL, archComponent]
     ring
-  · simp [cutoffFreeArchComponent, cutoffFreeGammaL, archComponent, h]
+  · simp [cutoffFreeArchComponent, archComponent, h]
 
 /-- Entrywise normalization map from the fork-owned finite CCM convention to
 the cutoff-free convention. -/
@@ -90,14 +90,6 @@ theorem cutoffFreeEntry_eq_entry_add_two_correction
   · simp [h]
     ring
   · simp [h]
-
-/-- Centering the finite Fourier index is injective. -/
-theorem centeredIndex_injective (N : ℕ) :
-    Function.Injective (centeredIndex N) := by
-  intro i j h
-  apply Fin.ext
-  dsimp [centeredIndex] at h
-  omega
 
 /-- Exact full-matrix normalization theorem:
 `Q_inf = M + 2*cCorrection(L)*I`. -/
