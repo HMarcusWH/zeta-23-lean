@@ -167,9 +167,29 @@ generator. **OPEN; current fitted-generator finite gaps are a warning signal.**
 
 `J4` — only after J2+J3, derive eigenspace convergence by a self-adjoint perturbation theorem. **OPEN.**
 
-`J5` — connect the exact finite CCM structure to the actual zero-side Weil object. This responsibility
-has moved to R003's two-part bridge: deterministic RHS identity plus the explicit-formula regularity
-extension. **OPEN.**
+`J5` — connect the exact finite CCM structure to an actual zeta zero-side object.
+**CLOSED / PROVED IN LEAN on the production object by #62/#63.** The theorem-authoritative
+production identities are
+
+```text
+zeroSideMatrix = finiteMatrix + 2*cCorrection(L)*I
+[indexMatrix, zeroSideMatrix] = g 1^T - 1 g^T
+rank([indexMatrix, zeroSideMatrix]) <= 2.
+```
+
+PR #64 additionally settles the historical doubled R002-D raw-`qBasis/kernel` convention:
+
+```text
+rawKernelZeroSideMatrix = 2*finiteMatrix + 4*cCorrection(L)*I
+[indexMatrix, rawKernelZeroSideMatrix] = 2*(g 1^T - 1 g^T)
+rank([indexMatrix, rawKernelZeroSideMatrix]) <= 2.
+```
+
+Sources: `Zeta23.CCM.zeroSideMatrix_eq_finiteMatrix_add_correction`,
+`Zeta23.CCM.zeroSideMatrix_displacement`,
+`Zeta23.CCM.rawKernelZeroSideMatrix_eq_two_finiteMatrix_add_four_correction`, and
+`Zeta23.CCM.rawKernelZeroSideMatrix_displacement`. This does not identify the
+general R002-A taper-grid `G̃(T)`, prove positivity, or address J6.
 
 `J6` — close the finite-to-infinite normalization and limit-identification seam. **OPEN.**
 
