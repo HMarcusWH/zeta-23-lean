@@ -62,4 +62,6 @@ import Zeta23.CCM.DictionaryZeroSideMatrix
 import Zeta23.CCM.DictionaryZeroSideCompletion
 import Zeta23.CCM.DictionaryZeroSideTentDefect
 import Zeta23.CCM.DictionaryZeroSideBridge
+import Zeta23.CCM.DictionaryKernelEFExtension
+import Zeta23.CCM.DictionaryZeroSideDisplacement
 import Zeta23.CCM.ClaimBindings

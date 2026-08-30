@@ -147,7 +147,7 @@
       "theorem": "Zeta23.CCM.dictionaryResidualTest_admissible",
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "This proves admissibility only for the smooth residual r_{u,L}. The full dictionary also contains the canonical tent sigma(u)^2*tau_L, whose explicit-formula extension remains open. No restriction sum(u)=0 is used."
+      "note": "This proves admissibility only for the smooth residual r_{u,L}. No restriction sum(u)=0 is used. The separate literal-tent EF extension was later closed by Route M M8; the residual theorem itself does not apply EF_lit directly to the nonsmooth tent."
     },
     {
       "id": "R003_TENT_ANALYTICS",
@@ -171,7 +171,7 @@
       "theorem": "Zeta23.CCM.dictionaryTent_mollifier_architecture_package",
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "This is the Route-M M0-M3 adapter architecture only. It does not pass EF_lit_zeta to the nonsmooth literal tent and proves no pole, prime, archimedean, or varying-family zero-side limit exchange. R003_TENT_EF_EXTENSION remains OPEN."
+      "note": "This is the Route-M M0-M3 adapter architecture only. It does not itself pass EF_lit_zeta to the nonsmooth literal tent and proves no pole, prime, archimedean, or varying-family zero-side limit exchange. Those downstream M4-M8 obligations were later compiler-closed in PRs #58-#61."
     },
     {
       "id": "R003_TENT_EF_EXTENSION",
@@ -201,14 +201,17 @@
     {
       "id": "R003_KERNEL_EF_EXTENSION",
       "statement": "For every real finite dictionary coefficient vector u and L>0, the concrete zeta zero-side sum of dictionaryTransform(u,L,.) equals literatureRHS of the full tent-plus-residual dictionary test.",
-      "status": "OPEN",
+      "status": "PROVED_UNCONDITIONAL",
       "dependencies": [
-        "R003_RESIDUAL_C2",
-        "R003_TENT_EF_EXTENSION"
+        "R003_CCM_BRIDGE",
+        "R003_CCM_RHS_IDENTITY"
       ],
       "route": "R003_ccm_bridge",
-      "promotion_cap": "OPEN",
-      "note": "The literal tent extension is now proved. This remaining claim is the full arbitrary-real-coefficient dictionary explicit-formula identity, assembled from the exact tent-plus-smooth-residual decomposition. It is no longer a blocker for R003_CCM_BRIDGE because H2+ reduced the actual finite matrix discrepancy directly to the N-independent literal-tent defect, which M8 kills."
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "Post-#62 closure: for arbitrary real finite dictionary coefficients, entrywise absolute zero-side summability permits finite quadratic contraction of the spectral matrix into zeroSideMatrix. The exact finite bridge then replaces zeroSideMatrix by dictionaryMatrix, and the deterministic RHS identity identifies that quadratic form with literatureRHS. No new analytic limit argument or direct nonsmooth EF application is needed.",
+      "source": "Zeta23/CCM/DictionaryKernelEFExtension.lean",
+      "theorem": "Zeta23.CCM.dictionaryTransform_zero_sum_eq_literatureRHS",
+      "adaptation_note": "Post-H2+/M8/#62 dependency reversal: this claim was originally expected to precede R003_CCM_BRIDGE via direct tent-plus-smooth-residual EF assembly. The exact finite bridge was instead proved independently from the N-independent literal-tent defect. The full real kernel EF is now recovered downstream by finite quadratic contraction of that exact matrix identity together with R003_CCM_RHS_IDENTITY. The mathematical claim is unchanged; its proof direction has reversed."
     },
     {
       "id": "R003_CCM_BRIDGE",
@@ -228,15 +231,18 @@
     {
       "id": "R003_WEIL_DISPLACEMENT",
       "statement": "The actual finite zeta zero-side dictionary matrix has the same exact index displacement g 1^T - 1 g^T as the formal finite CCM matrix and therefore has displacement rank at most two.",
-      "status": "OPEN",
+      "status": "PROVED_UNCONDITIONAL",
       "dependencies": [
         "R003_CCM_BRIDGE",
         "R004_CCM_DISPLACEMENT_FORMAL",
         "R003_DISPLACEMENT_TRANSFER"
       ],
       "route": "R003_ccm_bridge",
-      "promotion_cap": "OPEN",
-      "note": "The scalar correction 2*cCorrection(L)*I commutes with the index diagonal, so no extra factor two appears in the production displacement statement."
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "The production theorem is about the actual zeroSideMatrix, not the older doubled diagnostic WeilGram convention. PR #63 instantiates the already-proved generic displacement transfer with k=1 and c=2*cCorrection(L), so the scalar correction disappears from the commutator and the exact production displacement has no factor two. The exact identity is Zeta23.CCM.zeroSideMatrix_displacement; the registered rank endpoint is its <=2 consequence. This is generic finite divided-difference structure, not positivity, a zero-location restriction, finite-to-infinite closure, or RH.",
+      "source": "Zeta23/CCM/DictionaryZeroSideDisplacement.lean",
+      "theorem": "Zeta23.CCM.rank_zeroSideMatrix_displacement_le_two",
+      "adaptation_note": "Historical naming firewall: R003_WEIL_DISPLACEMENT predates the production zeroSideMatrix normalization. Closure here formalizes displacement of the theorem-authoritative actual finite zeta zero-side matrix supplied by R003_CCM_BRIDGE. It does not by itself formalize the old doubled R002 diagnostic WeilGram object or its factor-two normalization."
     }
   ]
 }
