@@ -43,7 +43,33 @@ theorem zeroSideMatrix_eq_dictionaryMatrix
       hs N hL).2
       (dictionaryTentDefect_eq_zero hs hL)
 
+/-- The complete H2+/M8 finite discrepancy now vanishes identically. -/
+theorem zeroSideDiscrepancy_eq_zero
+    (hs : ZetaSeam)
+    (N : ℕ)
+    {L : ℝ} (hL : 0 < L) :
+    zeroSideDiscrepancy hs N L = 0 := by
+  rw [zeroSideDiscrepancy_eq_tentDefect_smul_ones hs N hL,
+    dictionaryTentDefect_eq_zero hs hL]
+  simp
+
+/-- Registry-facing production normalization of the exact finite bridge. -/
+theorem zeroSideMatrix_eq_finiteMatrix_add_correction
+    (hs : ZetaSeam)
+    (N : ℕ)
+    {L : ℝ} (hL : 0 < L) :
+    zeroSideMatrix hs N L =
+      finiteMatrix L N +
+        ((2 * cCorrection L : ℝ) : ℂ) •
+          (1 : Matrix
+            (Fin (2 * N + 1))
+            (Fin (2 * N + 1)) ℂ) := by
+  simpa [dictionaryMatrix] using
+    zeroSideMatrix_eq_dictionaryMatrix hs N hL
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.dictionaryTentDefect_eq_zero
 #print axioms Zeta23.CCM.zeroSideMatrix_eq_dictionaryMatrix
+#print axioms Zeta23.CCM.zeroSideDiscrepancy_eq_zero
+#print axioms Zeta23.CCM.zeroSideMatrix_eq_finiteMatrix_add_correction
