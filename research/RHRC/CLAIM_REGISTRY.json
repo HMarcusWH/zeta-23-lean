@@ -116,7 +116,8 @@
       ],
       "route": "R002_multi_probe",
       "promotion_cap": "OPEN",
-      "note": "Feasibility bookkeeping (routes/R002_multi_probe/MULTI_PROBE_GRAM_OPERATOR_FEASIBILITY_2026_08_21.md) gives visibility iff delta*L >~ sqrt(6/lambda), with every-delta detection in the oversampled regime lambda>1; the price is X=e^L>T on the prime side."
+      "note": "Feasibility bookkeeping (routes/R002_multi_probe/MULTI_PROBE_GRAM_OPERATOR_FEASIBILITY_2026_08_21.md) gives the historical visibility scale delta*L >~ sqrt(6/lambda) and an every-delta oversampling signal for lambda>1. PR #66 theoremically records that current production Params.Valid requires lambda<=1, so lambda>1 is outside the present valid formal envelope. D0-R also settles the CCM relation as specialization-only: this masking obligation remains open on the R002 smooth-taper route and is not a canonical CCM bottleneck.",
+      "adaptation_note": "Post-PR #66 D0-R correction: the old lambda>1 oversampling experiment remains EXPERIMENTAL SIGNAL only under the current code because Params.Valid includes lam_le_one. No production-valid windowed-visibility theorem is promoted."
     },
     {
       "id": "R002_KERNEL_ZERO_SIDE_BRIDGE",
@@ -129,8 +130,8 @@
       "theorem": "Zeta23.CCM.rawKernelZeroSideMatrix_eq_two_finiteMatrix_add_four_correction",
       "route": "R002_multi_probe",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "This is the corrected theorem successor to the historical R002-D diagnostic. It concerns the centered truncated-character qBasis/kernel family only. It does not identify the general R002-A taper-grid G-tilde(T), prove positivity, solve masking, establish persistence, supply a finite-to-infinite theorem, or imply RH.",
-      "adaptation_note": "The original statement M = 1/2*WeilGram was numerically refuted as stated because of a diagonal archimedean correction. Numerical archaeology then isolated the correction 4*cCorrection(L)*I. PRs #55-#63 legalized and exactly identified the production half-normalized basis zero-side matrix without applying EF_lit directly to the piecewise-C1 raw kernel. PR #64 lifts that theorem-authoritative production bridge back to the original raw qBasis/kernel convention by the exact identity kernel = 2*dictionaryBasisTest. The original false statement remains refuted; the corrected scalar-shift normalization is what is promoted here."
+      "note": "This is the corrected theorem successor to the historical R002-D diagnostic. It concerns the centered truncated-character qBasis/kernel family only. PR #66 confirms a specialization-level hard-window character-correlation interpretation for qBasis, while leaving the generic smooth-taper R002-A G-tilde(T) family distinct. It does not prove generic taper-grid equality, positivity, masking, persistence, finite-to-infinite closure, or RH.",
+      "adaptation_note": "The original statement M = 1/2*WeilGram was numerically refuted as stated because of a diagonal archimedean correction. Numerical archaeology then isolated the correction 4*cCorrection(L)*I. PRs #55-#63 legalized and exactly identified the production half-normalized basis zero-side matrix without applying EF_lit directly to the piecewise-C1 raw kernel. PR #64 lifts that theorem-authoritative production bridge back to the original raw qBasis/kernel convention by the exact identity kernel = 2*dictionaryBasisTest. The original false statement remains refuted; the corrected scalar-shift normalization is what is promoted here. PR #66 subsequently classifies the relationship to generic R002-A as SPECIALIZATION_ONLY: the qBasis hard-window character geometry is genuine, but the production smooth-taper/window/carrier object is not promoted as the same matrix family."
     },
     {
       "id": "R004_CCM_DISPLACEMENT_FORMAL",
@@ -253,7 +254,7 @@
       "theorem": "Zeta23.CCM.zeroSideMatrix_eq_cutoffFreeMatrix",
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "D0-C representation bridge only. The cutoff-free matrix is defined independently from finiteMatrix, dictionaryMatrix, and zeroSideMatrix by the pinned primitive source convention gamma_reference = gamma_ours - cCorrection(L), with the other primitive channels unchanged. Lean proves the full centered matrix normalization exactly. This does not prove that the matrix is a Hilbert-space/form-domain Galerkin restriction, positivity, form-core density, finite-to-infinite convergence, or RH.",
+      "note": "D0-C representation bridge only. The cutoff-free matrix is defined independently from finiteMatrix, dictionaryMatrix, and zeroSideMatrix by the pinned primitive source convention gamma_reference = gamma_ours - cCorrection(L), with the other primitive channels unchanged. Lean proves the full centered matrix normalization exactly. PR #66 additionally prevents the generic smooth-taper R002 Gz/G-tilde(T) object from being silently identified with this canonical finite matrix: that relation is specialization-only, not a promoted generic map. This does not prove a Hilbert-space/form-domain Galerkin restriction, positivity, form-core density, finite-to-infinite convergence, or RH.",
       "adaptation_note": "Post-#64 representation audit: the #33 external normalization lock identified Q_inf = M + 2*cCorrection(L)*I numerically/source-formula-wise. PR #65 makes that convention theorem-authoritative by defining the cutoff-free source matrix independently in Lean and proving the exact matrix equality, then composing it with the already-proved zeta zero-side bridge."
     },
     {
