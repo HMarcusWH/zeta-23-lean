@@ -243,6 +243,20 @@
       "adaptation_note": "Post-H2+/M8 dependency compression: the original route through R003_KERNEL_EF_EXTENSION and full-dictionary real polarization is no longer required for this matrix identity. H2+ proves that the complete finite matrix discrepancy is the N-independent literal-tent defect times J, and R003_TENT_EF_EXTENSION proves that defect vanishes. The mathematical bridge claim is unchanged; only its theorem-authoritative proof route has shortened."
     },
     {
+      "id": "R003_CUTOFF_FREE_MATRIX_MAP",
+      "statement": "For every finite N and positive aperture L, the actual zeta zero-side matrix equals the independently defined cutoff-free CCM/CvS source-convention matrix on the full centered Fourier basis -N,...,N; equivalently that cutoff-free matrix equals finiteMatrix(L,N)+2*cCorrection(L)*I.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_CCM_BRIDGE"
+      ],
+      "source": "Zeta23/CCM/CutoffFreeMatrix.lean",
+      "theorem": "Zeta23.CCM.zeroSideMatrix_eq_cutoffFreeMatrix",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "D0-C representation bridge only. The cutoff-free matrix is defined independently from finiteMatrix, dictionaryMatrix, and zeroSideMatrix by the pinned primitive source convention gamma_reference = gamma_ours - cCorrection(L), with the other primitive channels unchanged. Lean proves the full centered matrix normalization exactly. This does not prove that the matrix is a Hilbert-space/form-domain Galerkin restriction, positivity, form-core density, finite-to-infinite convergence, or RH.",
+      "adaptation_note": "Post-#64 representation audit: the #33 external normalization lock identified Q_inf = M + 2*cCorrection(L)*I numerically/source-formula-wise. PR #65 makes that convention theorem-authoritative by defining the cutoff-free source matrix independently in Lean and proving the exact matrix equality, then composing it with the already-proved zeta zero-side bridge."
+    },
+    {
       "id": "R003_WEIL_DISPLACEMENT",
       "statement": "The actual finite zeta zero-side dictionary matrix has the same exact index displacement g 1^T - 1 g^T as the formal finite CCM matrix and therefore has displacement rank at most two.",
       "status": "PROVED_UNCONDITIONAL",
