@@ -24,7 +24,7 @@ Promotion condition: an exact separation theorem, not a classifier score.
 | P0 | off-line pair block has a strictly negative direction, with an explicit witness and an exact value | **CLOSED** (`dotProduct_pairBlock_orthoWitness`, `..._neg`) |
 | P1 | on-line configurations and the TightMult mock have no such direction | **CLOSED** (`dotProduct_nonneg_of_onLineCombination`) |
 | P2 | the two are therefore not equal — block-level separation | **CLOSED** (`not_onLineCombination_of_pairBlock`) |
-| P3 | windowed visibility: the negative direction survives the PSD on-line bulk | **OPEN** — masking; visible iff `δL ≳ √(6/λ)`, and unconditionally at `λ > 1` where the grid oversamples (§3 of the feasibility certificate) |
+| P3 | windowed visibility: the negative direction survives the PSD on-line bulk | **OPEN** — masking; historical bookkeeping gives `δL ≳ √(6/λ)` and an experimental oversampling signal at `λ > 1`, but `λ > 1` is outside current production `Params.Valid` (§3 plus PR #66 D0-R audit) |
 | P4 | arithmetic leg: `∫\|W\|²ν_X ≥ −θ` for all band-limited `W` | **OPEN and RH-equivalent** in the `∀(T, λ>1)` limit (Weil's criterion) — see OBS-009 |
 | P5-original | naive CCM identity `M_{λ,N} = ½·WeilGram` with no diagonal correction | **REFUTED AS STATED** — the diagonal archimedean correction is real |
 | P5-corrected | exact normalized CCM ↔ raw truncated-character kernel zero side: `rawKernelZeroSideMatrix = 2·M + 4·cCorrection(L)·I` | **CLOSED / PROVED IN LEAN** — `R002_KERNEL_ZERO_SIDE_BRIDGE` |
