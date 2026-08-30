@@ -1,6 +1,6 @@
 # R003 — CCM / finite Guinand–Weil / zero-side bridge
 
-Status: **FINITE CLOSURE REACHED / D0 REPRESENTATION AUDIT SETTLED / G0-G1 NEXT**. RH remains **OPEN**.
+Status: **FINITE CLOSURE REACHED / D0 SETTLED / G0-A LOCALIZED BASIS MAP IN PROGRESS**. RH remains **OPEN**.
 
 This file is the active route SSOT for R003. Lean and the RHRC claim registry are theorem authority; this route document records sequencing, architecture decisions, and claim boundaries.
 
@@ -662,9 +662,10 @@ The project must not jump directly from this equality to a Hilbert-space Galerki
 
 1. **D0-R — R002 map-or-separate: SETTLED BY PR #66.** The hard-window truncated-character geometry underlying `qBasis` is a real specialization-level connection, but no generic production theorem identifies the smooth-taper R002 `Gz/G-tilde(T)` family with the canonical CCM finite object. The exact R002 decomposition `Gz = Az + Ez`, the current `lambda <= 1` validity envelope, carrier shift, dynamic dimension, and taper dependence remain distinct. Therefore R002 masking stays on the R002 side and is no longer a CCM critical-path bottleneck.
 2. **D0-B — Bombieri correspondence: SETTLED AS DISTINCT TRUNCATIONS.** The 2000 memoir truncates the zero-index multiset `Gamma_N={gamma: |gamma|<=N}` and studies `H(Gamma_N;t)`, whose dimension is `#Gamma_N`. The CCM object instead truncates a deterministic centered Fourier-character dictionary `-N,...,N`, of dimension `2*N+1`. No direct equality, congruence, compression, or parameter map is established, and Bombieri's inertia theorem is therefore not transferred to CCM. See `D0_B_BOMBIERI_CORRESPONDENCE_2026_08_30.md` and `../../external/bombieri/SOURCE_MAP.md`.
-3. **G0/G1 — localized Weil restriction: NEXT.** With D0-C, D0-R and D0-B settled, define the actual ambient localized quadratic form and named finite test-function subspace, then prove or falsify that the theorem-authoritative `cutoffFreeMatrix` is exactly its matrix in the centered basis.
-4. **G2/G3 — form core and Rayleigh-Ritz.** The decisive finite-to-infinite question is density in the **form norm**, not merely L2 density. Prove or falsify form-core density, then seek bottom-of-spectrum convergence.
-5. Revisit prolate/Jacobi structure only after a named operator/restriction topology exists. The old small-commutator-to-eigenvector route remains falsified by spectral-gap collapse.
+3. **G0-A — localized Fourier basis map: THIS PR.** Define the normalized interval characters and finite centered combinations, then prove their real symmetrized hard-window overlap is exactly the existing `qBasis` formula. The production factor-two firewall `2*dictionaryBasisTest = kernel` is theorem-locked. See `G0_LOCALIZED_BASIS_MAP_2026_08_30.md`.
+4. **G1 — localized Weil restriction: NEXT AFTER G0-A.** Define the actual localized Weil quadratic form and prove or falsify that its restriction to the named finite Fourier space has matrix `cutoffFreeMatrix` under the exact production normalization.
+5. **G2/G3 — form core and Rayleigh-Ritz.** The decisive finite-to-infinite question is density in the **form norm**, not merely L2 density. Prove or falsify form-core density, then seek bottom-of-spectrum convergence.
+6. Revisit prolate/Jacobi structure only after a named operator/restriction topology exists. The old small-commutator-to-eigenvector route remains falsified by spectral-gap collapse.
 
 The full centered `2N+1` cutoff-free matrix is theorem-authoritative after PR #65. PR #66 also prevents the generic smooth-taper R002 windowed object from being silently substituted for it. The reversal-even `N+1` compression is still a separate map and must not be silently identified with the full object.
 
