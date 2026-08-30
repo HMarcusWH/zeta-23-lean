@@ -1,6 +1,6 @@
 # G0-A localized Fourier basis map — 2026-08-30
 
-Status: **IMPLEMENTED / COMPILER VALIDATION PENDING**
+Status: **REACHED — COMPILER-VALIDATED G0-A BASIS/CORRELATION MAP**
 
 RH status: **OPEN**.
 
@@ -66,6 +66,12 @@ Accordingly this PR theorem-locks
 ```
 
 G1 must not silently identify `dictionaryBasisTest` with the full character correlation.
+
+## Green checkpoint
+
+The repaired theorem checkpoint compiled on the exact PR tree. The promoted endpoints report only `[propext, Classical.choice, Quot.sound]`; no `sorryAx` or project axiom remains. The full CCM build, ExceptionalZero build, RHRC regression suite, R003 normalization audit and Permansson verification all passed before claim promotion.
+
+The proof revealed that the interval identity is algebraic in the shift; the `0 <= y <= L` assumptions are retained in the public theorem because they are the physical hard-window overlap regime used by G0/G1.
 
 ## Claim firewall
 
