@@ -272,6 +272,17 @@
       "source": "Zeta23/CCM/DictionaryZeroSideDisplacement.lean",
       "theorem": "Zeta23.CCM.rank_zeroSideMatrix_displacement_le_two",
       "adaptation_note": "Historical naming firewall: R003_WEIL_DISPLACEMENT predates the production zeroSideMatrix normalization. Closure here formalizes displacement of the theorem-authoritative actual finite zeta zero-side matrix supplied by R003_CCM_BRIDGE. It does not by itself formalize the old doubled R002 diagnostic WeilGram object or its factor-two normalization."
+    },
+    {
+      "id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "statement": "For every positive aperture L, centered Fourier indices and shift 0<=y<=L, the normalized hard-window Fourier-character correlation is exactly the production qBasis entry formula; under the existing dictionary convention, 2*dictionaryBasisTest equals the full kernel.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [],
+      "source": "Zeta23/CCM/LocalizedBasis.lean",
+      "theorem": "Zeta23.CCM.hardWindowCharacterCorrelation_eq_qBasis",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "G0-A function-space geometry only. The proof is an exact interval-integral calculation with separate diagonal/off-diagonal branches and has axiom surface [propext, Classical.choice, Quot.sound]. The centered Fin(2N+1) wrapper is Zeta23.CCM.hardWindowCharacterCorrelation_centered_eq_qBasis, and the production normalization firewall is Zeta23.CCM.two_mul_dictionaryBasisTest_eq_kernel. This does not yet identify cutoffFreeMatrix as the restriction of the localized Weil form, and it proves no positivity, form-core, Rayleigh-Ritz, finite-to-infinite, or RH statement."
     }
   ]
 }
