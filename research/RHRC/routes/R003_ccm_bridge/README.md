@@ -61,7 +61,7 @@ The deterministic RHS identity remains zero-free and was proved channel by chann
 
 The raw dictionary itself is not globally `C^1`: its universal tent channel carries the first-derivative seam. The residual is the smooth part; the tent is the remaining nonsmooth part.
 
-**Tent transform/decay/summability + mollifier architecture is still not the tent explicit-formula extension.**
+**Tent transform/decay/summability and M0–M7 alone were not the tent explicit-formula extension. PR #61 now completes M8 and compiler-proves the literal-tent explicit formula.**
 
 ## Route-M architecture now proved
 
@@ -85,7 +85,7 @@ For `L>0`, the canonical mollifier family has:
 
 The neutral helper `Zeta23.paperFT_mul_convolution_eq_of_continuous_compactSupport` obtains complex-frequency convolution factorization by exponential tilting and the existing real Fourier convolution theorem. No central `WeilEF` interface was weakened or rewritten.
 
-M0–M3 close the adapter architecture. M3.5 proves the normalized mollifier transform tends to one at every fixed complex frequency, M4–M5 separately close the pole and prime limit channels, M6 closes the archimedean dominated-convergence channel, and M7 closes the varying-family zero-side limit by Tannery using the existing literal-tent zero-side summability theorem. The literal-tent explicit formula is still open because M8 assembly remains.
+M0–M3 close the adapter architecture. M3.5 proves the normalized mollifier transform tends to one at every fixed complex frequency, M4–M5 separately close the pole and prime limit channels, M6 closes the archimedean dominated-convergence channel, and M7 closes the varying-family zero-side limit by Tannery using the existing literal-tent zero-side summability theorem. PR #61 now completes M8 by composing those already-closed channels with `EF_lit_zeta` on the smooth mollified family and uniqueness of limits. Route M M0–M8 is therefore complete.
 
 ## Route-G disposition
 
@@ -148,7 +148,7 @@ M2d-2 M4 pole limit                         REACHED
 M2d-3 M5 prime truncate-first limit         REACHED
 M2d-4 M6 archimedean DCT                    REACHED
 M2d-5 M7 varying-family zero-side DCT       REACHED
-M2d-6 M8 literal tent EF assembly           OPEN
+M2d-6 M8 literal tent EF assembly           REACHED
 M2e deterministic finite RHS identity      REACHED
 H0 zero-sum concrete zeta EF bridge        REACHED
 H1 smooth-core polarization                 REACHED
@@ -160,7 +160,7 @@ full finite zero-side bridge                 OPEN
 finite-to-infinite closure                   OPEN
 ```
 
-`R003_TENT_EF_EXTENSION` remains OPEN. M0–M3 prove the adapter, M3.5 proves fixed-frequency transform convergence, M4–M5 prove the pole/prime channel limits, M6 proves the archimedean dominated-convergence limit, and M7 proves the varying-family zero-side dominated convergence/Tannery limit. Only M8 assembly remains open.
+`R003_TENT_EF_EXTENSION` is REACHED. Route M M0–M8 is compiler-closed. The next production step is to consume the newly proved literal-tent equality into `dictionaryTentDefect(hs,L) = 0` and then through the existing H2+ iff theorem to the exact finite zero-side matrix bridge. The full finite bridge, finite-to-infinite closure, and RH remain OPEN.
 
 ## Implemented chronology relevant to the live frontier
 
@@ -319,7 +319,7 @@ No new zero counting, reflection pairing, critical-line assumption, or explicit-
 
 ### PR #60 — Route-M M6 archimedean dominated-convergence limit
 
-**CURRENT CLOSURE PR.** The archimedean varying-family limit is compiler-checked.
+**MERGED.** The archimedean varying-family limit is compiler-checked.
 
 Production endpoint:
 
@@ -336,6 +336,36 @@ The theorem-level axiom audit reports only
 ```
 
 No explicit-formula identity, zero-side theorem, critical-line assumption, or new gamma asymptotic is introduced. This closes M6 only. `R003_TENT_EF_EXTENSION`, `R003_CCM_BRIDGE`, finite-to-infinite closure, and RH remain OPEN.
+
+### PR #61 — Route-M M8 literal-tent EF assembly
+
+**GREEN / SETTLEMENT PENDING.**
+
+Production endpoints:
+
+```text
+Zeta23.CCM.literatureRHS_dictionaryTentMollified_tendsto
+Zeta23.CCM.dictionaryTent_zero_sum_eq_literatureRHS
+Zeta23.CCM.dictionaryTent_explicitFormula
+```
+
+M8 applies `EF_lit_zeta` only to each smooth compactly supported mollified tent. PR #58 supplies pole and truncate-first prime convergence, PR #60 supplies archimedean dominated convergence, and PR #59 supplies zero-side Tannery convergence.
+
+The mollified zero-side and literature-RHS sequences are exactly equal termwise; uniqueness of limits then gives the literal-tent explicit formula.
+
+The first exact tested synthetic merge was
+
+```text
+77afd6a428f6e720221abdd40e8e6a9abe2c625a
+```
+
+and the new endpoints depend only on
+
+```text
+[propext, Classical.choice, Quot.sound].
+```
+
+No new zero-counting result, gamma asymptotic, mollifier estimate, regularity assumption, critical-line assumption, or direct nonsmooth application of `EF_lit_zeta` was introduced.
 
 ## Current theorem sequence
 
@@ -424,17 +454,27 @@ B_ρ = c (x xᵀ - y yᵀ),   c > 0,
 
 with explicit negative direction. Immediately run the finite-family moustache test before treating any positivity statement as a plausible weaker target.
 
-## Active Route-M completion: M8
+## Route-M completion — M0–M8 REACHED
 
 PR #57 makes the literal tent EF load-bearing: killing the single `dictionaryTentDefect(hs,L)` scalar closes the finite zero-side matrix bridge for every finite dictionary size.
 
-PR #58 removes the fixed-frequency, pole and prime limit obligations, PR #59 removes the varying-family zero-side limit obligation, and PR #60 removes the archimedean dominated-convergence obligation. The remaining stage is:
+PR #58 closes the fixed-frequency, pole, and prime limit obligations; PR #59 closes the varying-family zero-side limit; PR #60 closes the archimedean dominated-convergence limit; and PR #61 composes those channels with the smooth inherited explicit formula to close M8.
 
-- **M8** apply `EF_lit_zeta` to each mollified test, pass all channels separately, and assemble the literal tent EF.
+Current status:
 
-M6 and M7 are now closed with fixed domination arguments: M6 uses an integrable literal-tent gamma-density majorant, while M7 uses the already-summable literal-tent zero series. No new gamma asymptotic or weighted zero-counting machinery was needed.
+```text
+PROVED:
+  literal tent zero side = literatureRHS(literal tent)
 
-Only M8 can promote `R003_TENT_EF_EXTENSION`.
+DERIVED, not yet separately formalized:
+  dictionaryTentDefect(hs,L) = 0
+
+DERIVED via PR #57, not yet separately formalized:
+  zeroSideMatrix hs N L = dictionaryMatrix L N
+  for every finite N
+```
+
+Route M M0–M8 is complete. `R003_TENT_EF_EXTENSION` is the only claim promoted by PR #61.
 
 ## Downstream finite-to-infinite program
 
@@ -486,16 +526,13 @@ The hard points remain the spectral/minimizer control and the finite-to-infinite
 
 ## Immediate next step
 
-PR #60 compiler-closes M6 archimedean dominated convergence, completing the four separate Route-M limit channels M4–M7. Keep the claim firewall unchanged: no RHRC claim is promoted before M8 assembly.
+PR #61 compiler-closes M8 and promotes only `R003_TENT_EF_EXTENSION` after exact settlement validation.
 
-The active mathematical target remains
+Highest-information next move after PR #61 merges:
 
-```text
-dictionaryTentDefect(hs,L) = 0
-```
+1. formalize `dictionaryTentDefect_eq_zero` directly from the M8 literal-tent equality;
+2. consume `zeroSideMatrix_eq_dictionaryMatrix_iff_tentDefect_eq_zero` to obtain exact finite zero-side matrix equality for every `N`;
+3. reconcile the older `R003_CCM_BRIDGE` dependency description with the shorter theorem route discovered by H2+;
+4. keep `R003_KERNEL_EF_EXTENSION` as an independent completion theorem unless compiler evidence shows it is required downstream.
 
-for every positive aperture `L`.
-
-Highest-information next move: perform **M8 assembly** of the literal-tent explicit formula from the already-closed pole, prime, archimedean, and zero-side channel limits. Only after the exact M8 theorem compiles should the tent defect be discharged and the finite bridge consumed.
-
-Do not promote `R003_TENT_EF_EXTENSION` or `R003_CCM_BRIDGE` before the exact final M8 theorem compiles.
+Do not promote `R003_CCM_BRIDGE`, finite-to-infinite closure, or RH in PR #61.
