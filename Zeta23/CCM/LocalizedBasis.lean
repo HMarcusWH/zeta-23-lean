@@ -1,5 +1,4 @@
-import Zeta23.CCM.Kernel
-import Zeta23.CCM.FiniteMatrix
+import Zeta23.CCM.DictionaryDeterministicRHS
 import Mathlib.Analysis.SpecialFunctions.Integrals.Basic
 
 noncomputable section
