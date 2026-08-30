@@ -82,7 +82,7 @@ theorem hardWindowCharacterCorrelation_eq_qBasis
       zero_mul, zero_sub]
     rw [intervalIntegral.integral_const]
     have hphaseDiag :
-        2 * Real.pi * (-(n : ℝ) * y / L) =
+        2 * Real.pi * (-((n : ℝ) * y) / L) =
           -(2 * Real.pi * (n : ℝ) * y / L) := by
       ring
     rw [hphaseDiag, Real.cos_neg]
