@@ -118,6 +118,30 @@ theorem cutoffFreeMatrix_eq_finiteMatrix_add_correction
             (Fin (2 * N + 1)) ℂ) := by
   simpa [dictionaryMatrix] using cutoffFreeMatrix_eq_dictionaryMatrix L N
 
+/-- Cutoff-parameter wrapper used by the pinned cutoff-free CCM/CvS source,
+where the physical aperture is `L = log c`. -/
+def cutoffFreeMatrixOfCutoff (c : ℝ) (N : ℕ) :
+    Matrix (Fin (2 * N + 1)) (Fin (2 * N + 1)) ℂ :=
+  cutoffFreeMatrix (Real.log c) N
+
+/-- Lambda-parameter wrapper matching the fork-owned R004 convention
+`L = 2 * log lambda`.  Hence the source cutoff is `c = lambda^2`. -/
+def cutoffFreeMatrixOfLambda (lam : ℝ) (N : ℕ) :
+    Matrix (Fin (2 * N + 1)) (Fin (2 * N + 1)) ℂ :=
+  cutoffFreeMatrix (2 * Real.log lam) N
+
+/-- Exact parameter lock between the cutoff convention and the historical
+lambda convention: for positive `lambda`, `c = lambda^2` gives the same
+full centered finite matrix. -/
+theorem cutoffFreeMatrixOfCutoff_sq_eq_of_pos
+    (lam : ℝ) (N : ℕ) (hlam : 0 < lam) :
+    cutoffFreeMatrixOfCutoff (lam ^ 2) N =
+      cutoffFreeMatrixOfLambda lam N := by
+  have hlog : Real.log (lam ^ 2) = 2 * Real.log lam := by
+    rw [pow_two, Real.log_mul (ne_of_gt hlam) (ne_of_gt hlam)]
+    ring
+  simp [cutoffFreeMatrixOfCutoff, cutoffFreeMatrixOfLambda, hlog]
+
 /-- Actual zeta zero-side matrix equals the independently defined cutoff-free
 finite CCM matrix for every finite size and positive aperture. -/
 theorem zeroSideMatrix_eq_cutoffFreeMatrix
@@ -134,4 +158,5 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.cutoffFreeEntry_eq_entry_add_two_correction
 #print axioms Zeta23.CCM.cutoffFreeMatrix_eq_dictionaryMatrix
 #print axioms Zeta23.CCM.cutoffFreeMatrix_eq_finiteMatrix_add_correction
+#print axioms Zeta23.CCM.cutoffFreeMatrixOfCutoff_sq_eq_of_pos
 #print axioms Zeta23.CCM.zeroSideMatrix_eq_cutoffFreeMatrix
