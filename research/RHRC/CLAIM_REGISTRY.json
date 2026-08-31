@@ -349,6 +349,17 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "G1-B1A finite coordinate/source-sector bridge merged in PR #72. Companion theorems lock sourceLength positivity, coordinate inverses and interval transport, V_n=kappa(U_n), arbitrary-complex finite coefficient transport, sourceFiniteVector support/compact support, and membership in the source finite Fourier sector. This claim does NOT include the multiplicative Haar measure d*u, the bundled L2 isometry from Proposition 3.2(i), PsiSharp, ambient QW_lambda, QW_lambda|E_N = canonicalSourceMatrix, form-core/Rayleigh-Ritz, positivity, Suzuki, finite-negative exclusion, or RH."
+    },
+    {
+      "id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "statement": "For arbitrary complex-valued f,g with f C^2 and compactly supported and g continuous and compactly supported, the concrete zeta Weil summand family is summable and the genuine pair form satisfies zetaZeroConfig.W f g = EF.literatureRHS (EF.weilTest f g), with the exact paperFT conjugation convention.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [],
+      "source": "Zeta23/ExceptionalZero/WeilLiteratureBridge.lean",
+      "theorem": "Zeta23.ExceptionalZero.zeta_W_literatureRHS_package",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "W2-A. Exact-head CI on PR #77 theorem head 509645ad2b30288d175ff2ef5a6651839991649e proves the pairwise summability/equality package with axiom surface [propext, Classical.choice, Quot.sound]. The regularity is stronger than originally planned in one leg: g need only be continuous, not C^2. This does not prove literatureRHS reflection/evenization, W(f,f)=localizedWeilAdditiveRHS(f,f), the two-translate matrix-to-single-test contraction, finite approximation, QW_lambda, F1, or RH."
     }
   ]
 }
