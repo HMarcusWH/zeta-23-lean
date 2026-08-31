@@ -59,8 +59,9 @@ def localizedFiniteVector
       Complex.I * (((2 * Real.pi * (n : ℝ) * x / L : ℝ) : ℂ)) =
         (((2 * Real.pi * (n : ℝ) * x / L : ℝ) : ℂ)) * Complex.I := by
     ring
-  rw [hphase]
-  simp [Complex.mul_re, Complex.exp_ofReal_mul_I_re]
+  rw [hphase, Complex.mul_re]
+  simp only [Complex.ofReal_re, Complex.ofReal_im, zero_mul, sub_zero]
+  rw [Complex.exp_ofReal_mul_I_re]
 
 /-- Imaginary part of a normalized localized Fourier mode. -/
 @[simp] theorem localizedMode_im
@@ -73,8 +74,16 @@ def localizedFiniteVector
       Complex.I * (((2 * Real.pi * (n : ℝ) * x / L : ℝ) : ℂ)) =
         (((2 * Real.pi * (n : ℝ) * x / L : ℝ) : ℂ)) * Complex.I := by
     ring
-  rw [hphase]
-  simp [Complex.mul_im, Complex.exp_ofReal_mul_I_im]
+  rw [hphase, Complex.mul_im]
+  simp only [Complex.ofReal_re, Complex.ofReal_im, zero_mul, add_zero]
+  rw [Complex.exp_ofReal_mul_I_im]
+
+/-- Each normalized localized mode is continuous on the ambient real line. -/
+@[fun_prop] theorem continuous_localizedMode
+    (L : ℝ) (n : ℤ) :
+    Continuous (localizedMode L n) := by
+  unfold localizedMode
+  fun_prop
 
 /-- The real part of one shifted basis overlap is the cosine integrand used by
 G0-A.  The apparent sign is removed by cosine evenness. -/
@@ -382,10 +391,13 @@ theorem localizedNegativeOverlap_eq_reflected
         conj (localizedMode L m (x + y)) * localizedMode L n x := by
       apply intervalIntegral.integral_congr
       intro x hx
-      have harg : ((L - y) - x) + y = L - x := by ring
+      change
+        localizedMode L m (L - y - x) *
+            conj (localizedMode L n (L - y - x + y)) =
+          conj (localizedMode L m (x + y)) * localizedMode L n x
+      have harg : L - y - x + y = L - x := by ring
       rw [harg]
-      simpa [sub_eq_add_neg] using
-        (localizedMode_reflection_product n m (L := L) (y := y) (x := x) hL)
+      exact localizedMode_reflection_product n m (L := L) (y := y) (x := x) hL
 
 /-- The actual source symmetrized convolution of two zero-extended localized
 basis modes is exactly the hard-window correlation computed in G0-A. -/
