@@ -675,3 +675,35 @@ The full centered `2N+1` cutoff-free matrix is theorem-authoritative after PR #6
 Rank-two displacement remains generic divided-difference structure, not RH evidence. No finite matrix equality implies positivity, form-core density, finite-to-infinite persistence, or RH.
 
 RH remains **OPEN**.
+
+
+## Source-normalization repair after PR #71
+
+Primary-source equation (4.4) and the independent dictionary/zero-side routes now
+agree on the same finite matrix:
+
+```text
+canonicalSourceMatrix
+  = sourceEq44Matrix
+  = cutoffFreeMatrix
+  = dictionaryMatrix
+  = zeroSideMatrix   (under the existing zeta seam hypotheses).
+```
+
+The old `cCorrection`, `gammaL`, `entry`, and `finiteMatrix` definitions
+are frozen as the literal printed-(4.11)/(4.14) normalization.  They are not
+redefined in place.  Lean theorem-locks
+
+```text
+canonicalSourceMatrix
+  = legacyPrintedMatrix + 2*legacyPrintedCorrection(L)*I.
+```
+
+The corrected integrated equation-(4.11) rewrite uses
+`sourceEq411DerivedCorrection`, obtained from the correction integrand
+`(1-exp(-x/2))*rho(x)`.  The printed correction remains a historical source
+transcription and must not be used to identify an ambient `QW_lambda`
+restriction.
+
+This is a semantic/source repair, not a withdrawal of the zero-side/dictionary
+theorem chain.  RH remains OPEN.
