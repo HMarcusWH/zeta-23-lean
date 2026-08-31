@@ -1,4 +1,22 @@
-# R004-v2 — commutator stress test and displacement-structure audit
+# R004-v2 — finite displacement / structural route
+
+> **Current normalization authority**
+>
+> The canonical direct-source finite object is
+>
+> ```text
+> canonicalSourceMatrix = cutoffFreeMatrix = sourceEq44Matrix = dictionaryMatrix.
+> ```
+>
+> The Python `build_ccm_matrix` executable and Lean `finiteMatrix` use the historical printed normalization. They differ from the canonical matrix by a scalar identity shift.
+>
+> R004 conclusions are therefore split:
+>
+> **shift-invariant and transportable:** commutators, displacement, eigenvectors/eigenspaces, eigenvalue gaps/order;
+>
+> **shift-sensitive and canonical-only:** absolute eigenvalues, PSD/positivity, inertia, lower bounds, trace, determinant.
+>
+> No R004 numerical output may be used as canonical spectral-sign evidence unless the canonical normalization is computed or an explicit scalar-shift theorem is applied.
 
 Status: **DISCOVERY**. The fitted commutator/null results remain finite numerical diagnostics. The
 index-displacement formula is now an **exact theorem-authoritative Lean identity for the formal
