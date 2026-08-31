@@ -60,7 +60,7 @@ Blob SHA:
 
 `61ef2494805b86cbc3687b8028fd704762f47956`
 
-Formal port remains deferred to planned PR #38. The source audit verifies that the finite divided-difference source map factors through exactly `2N+1` coordinates: `omega`, `sin(2*pi*k*omega)`, and `omega*cos(2*pi*k*omega)` for `1 <= k <= N`.
+Historical plan note: this item was once assigned a predicted PR number. PR numbering is no longer a roadmap authority; the source quotient is a dormant semantic work package unless reactivated by the current route. The source audit verifies that the finite divided-difference source map factors through exactly `2N+1` coordinates: `omega`, `sin(2*pi*k*omega)`, and `omega*cos(2*pi*k*omega)` for `1 <= k <= N`.
 
 ### 4. Prime-power cutoff-flow rank-one jump
 
@@ -72,7 +72,7 @@ Blob SHA:
 
 `360a2b8bc5b6dd32f160b9dd2e31446783426952`
 
-Formal port remains deferred to planned PR #39. The external guard checks the prime-path event law
+Historical plan note: this prime-event-flow item is dormant. Any revival must use the current canonical source normalization and a semantic work-package ID, not an old predicted PR number. The external guard checks the prime-path event law
 
 `Delta Q'_N = -2 Lambda(q)/(sqrt(q) log(q)) * 11^T`
 
@@ -88,7 +88,7 @@ Blob SHA:
 
 `07dde0ca2f2811ebbf80fc4d2e2fff6869d4e7fa`
 
-Formal parity/extremal-spectrum work remains deferred to planned PR #40. The implementation explicitly checks exact centrosymmetry before projecting to the reversal-even sector.
+Historical plan note: parity/extremal-spectrum work is dormant. It becomes relevant only after a canonical finite spectral-sign obstruction is theorem-backed. The implementation explicitly checks exact centrosymmetry before projecting to the reversal-even sector.
 
 ## Normalization lock inherited from PR #33 and formalized by PR #65
 
@@ -243,3 +243,20 @@ After PR #71, source authority is split explicitly:
 
 No source map may identify `finiteMatrix` directly with the ambient external
 `QW_lambda|E_N`.  That correspondence remains a separate open bridge.
+
+
+## Current source-port frontier after the normalization repair
+
+The source-facing route is intentionally split into separate obligations:
+
+```text
+finite additive localized space
+  -> finite kappa/source-sector identification
+  -> multiplicative Haar / L2 source interface
+  -> PsiSharp / QW pullback identity
+  -> actual QW_lambda|E_N = canonicalSourceMatrix.
+```
+
+The direct finite matrix formula is already canonicalized. The ambient source functional correspondence is not.
+
+No external executable, source display, or numerical agreement may collapse these interfaces.
