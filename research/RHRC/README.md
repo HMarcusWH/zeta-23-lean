@@ -11,6 +11,15 @@ It does four things without conflating them:
 
 The terminal target is unconditional RH. RHRC itself is not evidence for RH.
 
+## Living research-control SSOTs
+
+Two files carry the continuously updated research state above the route-specific level:
+
+- **RESEARCH_LEADS.md** — complete accumulated research inventory. It retains active, testing, blocked, dormant, promoted, refuted and quarantined leads, their formal status, evidence, blockers, composition opportunities and cheapest falsification tests.
+- **CURRENT_RESEARCH_PLAN.md** — current execution order from merged theorem truth, including parallel lanes, decision gates, stop conditions and the post-F1 program.
+
+The lead ledger is memory; the plan is priority. Neither is theorem authority.
+
 ## Status labels
 
 Use these meanings consistently:
@@ -44,7 +53,7 @@ See `routes/R002_multi_probe/`, OBS-009 and D0-R.
 
 ### R003 — CCM / finite Weil bridge
 
-This is the present critical route.
+This remains the active finite/source route. The post-#75 research pass moved the immediate global implementation priority to W2-A/B/C because the existing explicit-formula proof appears to contain the direct W -> literatureRHS bridge almost verbatim. G1-B1B remains the parallel source-faithful lane.
 
 Merged theorem state through the #71-#74 sequence includes:
 
@@ -68,13 +77,22 @@ The remaining source-facing chain on merged main is:
 d*u / L2 source interface
   -> PsiSharp / QW pullback
   -> QW_lambda|E_N = canonicalSourceMatrix
-  -> canonical high-frequency falsifier
-  -> source form-core / minimum-eigenvalue transfer
-  -> fixed-aperture obstruction
-  -> canonical finite-negative exclusion
+  -> source form-core / minimum-eigenvalue transfer if needed
+  -> F1 canonical finite obstruction
 ```
 
-An open green PR is still branch state, not merged theorem state.
+The competing internal lane is:
+
+```text
+W2-A direct W/literatureRHS extraction
+  -> W2-B reflection/evenization
+  -> W2-C W self-value = localized additive RHS
+  -> W0/W1 negative test + recentering
+  -> F0-B finite additive/Fourier approximation
+  -> F1 canonical finite obstruction
+```
+
+The current implementation queue is maintained in CURRENT_RESEARCH_PLAN.md. An open green PR is still branch state, not merged theorem state.
 
 See `routes/R003_ccm_bridge/README.md`.
 
@@ -138,6 +156,11 @@ Pinned references live under `ffbbp/` and `ool/`.
 - `routes/ROUTE_REGISTRY.json` — route state;
 - `BOUNDARY.json` — terminal-claim and governance boundary.
 
+Living research state:
+
+- `RESEARCH_LEADS.md` — complete research option/status memory;
+- `CURRENT_RESEARCH_PLAN.md` — current execution order.
+
 These must describe merged repository truth, not merely a green external branch.
 
 ## Documentation authority
@@ -150,6 +173,7 @@ Short version:
 live compiler/CI
   > merged declarations + registries
   > active route README
+  > living research leads + current plan
   > current external handover/build plan
   > historical settlements
   > receipts / old plans
