@@ -296,6 +296,21 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "G0-B finite-function realization. Full complex Fin(2N+1) sector on [0,L], zero extension, inherited EF.weilTest convention, exact conjugation/order and factor-two production normalization. The zero-shift endpoint is Zeta23.CCM.localizedWeilCorrelation_finiteVector_zero. This does not identify the actual CCM localized Weil form QW_lambda, prove a Galerkin restriction theorem, form-core density, Rayleigh-Ritz convergence, positivity, or RH."
+    },
+    {
+      "id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "statement": "For every positive aperture L, finite N, and arbitrary complex centered coefficient vector u, the repository additive half-correlation explicit-formula RHS evaluated on the actual localized finite vector equals the quadratic form of the independently defined cutoffFreeMatrix(L,N). The lambda wrapper uses exactly L=2*log(lambda).",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+        "R003_CCM_RHS_IDENTITY",
+        "R003_CUTOFF_FREE_MATRIX_MAP"
+      ],
+      "source": "Zeta23/CCM/LocalizedWeilRestriction.lean",
+      "theorem": "Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_cutoffFreeQuadraticForm",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "G1-A additive finite restriction only. localizedWeilAdditiveRHS is EF.literatureRHS applied to half of the actual symmetrized localized correlation. Lean proves half-correlation=dictionaryTest, then composes the existing arbitrary-complex dictionary RHS theorem with dictionaryMatrix=cutoffFreeMatrix. The source-facing wrapper locks L=2*log(lambda). This does NOT identify localizedWeilAdditiveRHS with the external Connes--Consani--Moscovici QW_lambda/PsiSharp form. That kappa/PsiSharp source correspondence is the separate G1-B obligation. No form-core, Rayleigh-Ritz, positivity, Suzuki, finite-to-infinite, or RH claim is promoted."
     }
   ]
 }
