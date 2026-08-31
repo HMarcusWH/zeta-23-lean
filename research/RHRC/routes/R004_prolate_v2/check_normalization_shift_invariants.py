@@ -32,10 +32,6 @@ from run_commutator_gauntlet_v2 import build_ccm_matrix, c_correction
 DEFAULT_CASES = [(2.0, 2), (2.0, 4), (3.0, 2), (3.0, 4), (5.0, 2), (5.0, 4)]
 
 
-def projector_columns(v: np.ndarray) -> list[np.ndarray]:
-    return [np.outer(v[:, j], v[:, j]) for j in range(v.shape[1])]
-
-
 def run_case(lam: float, N: int) -> dict:
     legacy = build_ccm_matrix(lam, N)
     L = 2.0 * math.log(lam)
@@ -48,10 +44,17 @@ def run_case(lam: float, N: int) -> dict:
     comm_canonical = D @ canonical - canonical @ D
 
     eval_legacy, evec_legacy = np.linalg.eigh(legacy)
-    eval_canonical, evec_canonical = np.linalg.eigh(canonical)
+    eval_canonical = np.linalg.eigvalsh(canonical)
 
-    proj_legacy = projector_columns(evec_legacy)
-    proj_canonical = projector_columns(evec_canonical)
+    # Do not compare independently returned LAPACK eigenvector bases here:
+    # repeated or numerically clustered eigenvalues permit arbitrary rotations
+    # inside an eigenspace.  Scalar-shift invariance is tested directly by
+    # applying the canonical matrix to the legacy eigenbasis.
+    canonical_on_legacy_basis = canonical @ evec_legacy
+    shifted_legacy_action = evec_legacy * (eval_legacy + shift)[None, :]
+    eigenvector_equation_residual = np.linalg.norm(
+        canonical_on_legacy_basis - shifted_legacy_action, ord="fro"
+    )
 
     gap_legacy = np.diff(eval_legacy)
     gap_canonical = np.diff(eval_canonical)
@@ -73,11 +76,8 @@ def run_case(lam: float, N: int) -> dict:
         "max_gap_delta": float(np.max(np.abs(gap_canonical - gap_legacy)))
         if gap_legacy.size
         else 0.0,
-        "max_eigenvector_projector_delta": float(
-            max(
-                np.linalg.norm(a - b, ord="fro")
-                for a, b in zip(proj_legacy, proj_canonical)
-            )
+        "legacy_eigenbasis_canonical_equation_residual": float(
+            eigenvector_equation_residual
         ),
         "trace_shift_residual": float(
             abs((np.trace(canonical) - np.trace(legacy)) - trace_expected)
@@ -101,8 +101,8 @@ def main() -> int:
             c["max_eigenvalue_shift_residual"] for c in cases
         ),
         "max_gap_delta": max(c["max_gap_delta"] for c in cases),
-        "max_eigenvector_projector_delta": max(
-            c["max_eigenvector_projector_delta"] for c in cases
+        "max_legacy_eigenbasis_canonical_equation_residual": max(
+            c["legacy_eigenbasis_canonical_equation_residual"] for c in cases
         ),
         "max_trace_shift_residual": max(c["trace_shift_residual"] for c in cases),
     }
