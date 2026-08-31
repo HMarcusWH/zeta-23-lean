@@ -62,7 +62,7 @@ Exact block-level off-critical separation has been proved. Generic windowed visi
 
 ### R003 — CCM / finite Weil bridge
 
-This remains the active finite-to-source route. After the post-#75 research pass, however, the current **global execution priority** is the internal W2 additive bridge because the live explicit-formula proof already contains most of the required W -> literatureRHS theorem internally. G1-B1B continues in parallel as the source-faithful route.
+This remains the active finite-to-source route. PR #77 theorem-locks W2-A, the direct genuine-Weil/literature-RHS pair bridge together with pairwise W-summand summability. That changes the **global execution priority**: W0, the two-translate matrix-to-single-negative-test contraction, is now the highest-leverage next package. G1-B1B continues in parallel as the source-faithful route; W2-B/C remain the internal additive lane after W0/W1.
 
 Merged work through the #71-#74 sequence has established, among other things:
 
