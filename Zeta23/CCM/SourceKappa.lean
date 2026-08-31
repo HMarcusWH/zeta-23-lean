@@ -146,8 +146,9 @@ theorem sourceExpCoordinate_mem_Icc
     simpa using h
   have hLexp : Real.exp (sourceLength lam) = lam * lam := by
     unfold sourceLength
-    rw [show 2 * Real.log lam = Real.log lam + Real.log lam by ring]
-    rw [Real.exp_add, Real.exp_log hlam0, Real.exp_log hlam0]
+    rw [show 2 * Real.log lam = Real.log lam + Real.log lam by ring,
+      Real.exp_add]
+    simp [Real.exp_log hlam0]
   have hexpUpper : Real.exp x ≤ lam * lam := by
     have h := Real.exp_le_exp.mpr hx.2
     rw [hLexp] at h
@@ -227,7 +228,7 @@ def sourceMultiplicativeMode
 additive mode to the source formula-level `V_n`.  The equality is
 definition-level because the source itself defines `V_n = kappa(U_n)`. -/
 theorem sourceKappa_localizedMode_eq_sourceMultiplicativeMode
-    {lam : ℝ} (hlam : 1 < lam) (n : ℤ) :
+    {lam : ℝ} (_hlam : 1 < lam) (n : ℤ) :
     sourceKappa lam (localizedMode (sourceLength lam) n) =
       sourceMultiplicativeMode lam n := by
   rfl
@@ -247,7 +248,7 @@ def sourceFiniteFourierFunction
 exactly to the corresponding source formula, with the same centered
 coefficients. -/
 theorem sourceKappa_localizedFiniteFunction_eq_sourceFiniteFourierFunction
-    {lam : ℝ} (hlam : 1 < lam)
+    {lam : ℝ} (_hlam : 1 < lam)
     (N : ℕ)
     (coeff : Fin (2 * N + 1) → ℂ) :
     sourceKappa lam
