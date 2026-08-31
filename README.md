@@ -64,7 +64,7 @@ Exact block-level off-critical separation has been proved. Generic windowed visi
 
 This remains the active finite-to-source route. PR #77 theorem-locks W2-A, the direct genuine-Weil/literature-RHS pair bridge together with pairwise W-summand summability. That changes the **global execution priority**: W0, the two-translate matrix-to-single-negative-test contraction, is now the highest-leverage next package. G1-B1B continues in parallel as the source-faithful route; W2-B/C remain the internal additive lane after W0/W1.
 
-Merged work through the #71-#74 sequence has established, among other things:
+Validated theorem work through the #71-#77 sequence has established, among other things:
 
 - finite Guinand--Weil dictionary identities;
 - the literal-tent explicit-formula extension;
