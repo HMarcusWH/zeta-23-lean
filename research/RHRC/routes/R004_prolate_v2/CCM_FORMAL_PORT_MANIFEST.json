@@ -9,26 +9,32 @@
   "formal_root": "Zeta23/CCM.lean",
   "parameter_conventions": {
     "source_lambda_to_aperture": "L = 2 * log(lam)",
-    "formal_lambda_wrapper": "Zeta23.CCM.finiteMatrixOfLambda",
-    "formal_aperture_core": "Zeta23.CCM.finiteMatrix"
+    "formal_lambda_wrapper": "Zeta23.CCM.cutoffFreeMatrixOfLambda",
+    "formal_aperture_core": "Zeta23.CCM.canonicalSourceMatrix",
+    "legacy_printed_lambda_wrapper": "Zeta23.CCM.finiteMatrixOfLambda",
+    "legacy_printed_aperture_core": "Zeta23.CCM.finiteMatrix"
   },
   "mapping": {
     "q_basis": "Zeta23.CCM.qBasis",
     "rho": "Zeta23.CCM.archDensity",
-    "c_correction": "Zeta23.CCM.cCorrection",
+    "c_correction": "Zeta23.CCM.legacyPrintedCorrection",
     "w_correction": "Zeta23.CCM.wCorrection",
     "alpha_L": "Zeta23.CCM.alphaL",
     "beta_L": "Zeta23.CCM.betaL",
-    "gamma_L": "Zeta23.CCM.gammaL",
+    "gamma_L": "Zeta23.CCM.legacyPrintedGammaL",
     "pole_component": "Zeta23.CCM.poleComponent",
     "arch_component": "Zeta23.CCM.archComponent",
     "prime_component": "Zeta23.CCM.primeComponent",
-    "build_ccm_matrix": "Zeta23.CCM.finiteMatrixOfLambda"
+    "build_ccm_matrix": "Zeta23.CCM.canonicalSourceMatrix",
+    "direct_source_matrix": "Zeta23.CCM.sourceEq44Matrix",
+    "canonical_source_matrix": "Zeta23.CCM.canonicalSourceMatrix",
+    "legacy_printed_matrix": "Zeta23.CCM.legacyPrintedMatrix"
   },
   "claim_boundary": {
-    "status": "FORMAL_PORT_IN_PROGRESS",
+    "status": "CANONICAL_SOURCE_NORMALIZATION_REPAIRED",
     "promotes_r003_ccm_bridge": false,
     "promotes_r004_displacement": false,
-    "note": "This manifest binds definitions only. Equality with the Python implementation and theorem promotion require compiler-checked lemmas and route-level audit."
+    "note": "This manifest binds definitions only. Equality with the Python implementation and theorem promotion require compiler-checked lemmas and route-level audit.",
+    "normalization_note": "The historical finiteMatrix/gammaL/cCorrection definitions are frozen as the literal printed-(4.11)/(4.14) convention. Direct source equation (4.4) is canonical and equals canonicalSourceMatrix = cutoffFreeMatrix. No ambient QW_lambda restriction identification is claimed."
   }
 }
