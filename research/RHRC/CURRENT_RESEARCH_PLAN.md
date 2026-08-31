@@ -331,7 +331,19 @@ Compose with
 exists_canonicalRadiusSequence_negativeDeterminant_of_offLine_zero
 ~~~
 
-and `canonicalPoleKilledTest_admissible` to prove the production endpoint:
+and `canonicalPoleKilledTest_admissible` to prove the strongest natural production endpoint first:
+
+~~~text
+theorem exists_negativeWeilTest_of_offLine_zero
+    (rho0 : zetaZeroConfig.carrier)
+    (hoff : (rho0 : C).re != 1/2) :
+    exists h : R -> C,
+      ContDiff R 2 h
+      and HasCompactSupport h
+      and Re (zetaZeroConfig.W h h) < 0.
+~~~
+
+Then expose the existential corollary needed by the roadmap:
 
 ~~~text
 (exists rho : zetaZeroConfig.carrier, (rho : C).re != 1/2)
@@ -341,7 +353,7 @@ and `canonicalPoleKilledTest_admissible` to prove the production endpoint:
        and Re (zetaZeroConfig.W h h) < 0.
 ~~~
 
-Prefer an endpoint that also retains the concrete detector radius/aperture witness if that costs almost nothing; otherwise keep the public theorem minimal and expose a stronger companion theorem.
+Retain the concrete detector radius/aperture witness in a stronger companion theorem if that costs almost nothing. The pointwise endpoint is preferred because it composes better with future counterexample-local arguments.
 
 ### Files
 
