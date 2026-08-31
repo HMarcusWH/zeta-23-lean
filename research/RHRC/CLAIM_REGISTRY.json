@@ -336,6 +336,19 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "This repairs source labels and preserves historical theorem semantics. It does not identify external QW_lambda/PsiSharp with the finite matrix, prove positivity, form-core convergence, or RH."
+    },
+    {
+      "id": "R003_SOURCE_KAPPA_FINITE_SECTOR",
+      "statement": "For every lambda > 1, finite N, and arbitrary complex centered coefficient vector, the source logarithmic coordinate x = log(lambda*u) and reverse coordinate u = lambda^-1*exp(x) are theorem-locked on the source intervals, the source convention V_n = kappa(U_n) is preserved, and the zero-extended kappa image of the repository finite Fourier formula is exactly the corresponding actual sourceFiniteVector on [lambda^-1,lambda].",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_LOCALIZED_FINITE_SPACE_CORRELATION"
+      ],
+      "source": "Zeta23/CCM/SourceKappa.lean",
+      "theorem": "Zeta23.CCM.sourceKappaFiniteVector_eq_sourceFiniteVector",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "G1-B1A finite coordinate/source-sector bridge merged in PR #72. Companion theorems lock sourceLength positivity, coordinate inverses and interval transport, V_n=kappa(U_n), arbitrary-complex finite coefficient transport, sourceFiniteVector support/compact support, and membership in the source finite Fourier sector. This claim does NOT include the multiplicative Haar measure d*u, the bundled L2 isometry from Proposition 3.2(i), PsiSharp, ambient QW_lambda, QW_lambda|E_N = canonicalSourceMatrix, form-core/Rayleigh-Ritz, positivity, Suzuki, finite-negative exclusion, or RH."
     }
   ]
 }
