@@ -8,6 +8,8 @@ import Zeta23.CCM.DictionaryZeroSideDisplacement
 import Zeta23.CCM.RawKernelZeroSideBridge
 import Zeta23.CCM.CutoffFreeMatrix
 import Zeta23.CCM.LocalizedBasis
+import Zeta23.CCM.LocalizedFiniteSpace
+import Zeta23.CCM.LocalizedWeilRestriction
 import Zeta23.CCM.DictionaryRHSIdentity
 import Zeta23.ExceptionalZero.DisplacementTransfer
 
@@ -74,3 +76,29 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.CCM.hardWindowCharacterCorrelation_centered_eq_qBasis
 #check Zeta23.CCM.two_mul_dictionaryBasisTest_eq_kernel
 #print axioms Zeta23.CCM.two_mul_dictionaryBasisTest_eq_kernel
+
+
+#check Zeta23.CCM.localizedFiniteVector_eq_indicator
+#print axioms Zeta23.CCM.localizedFiniteVector_eq_indicator
+#check Zeta23.CCM.localizedFiniteVector_memLp_two
+#print axioms Zeta23.CCM.localizedFiniteVector_memLp_two
+#check Zeta23.CCM.localizedWeilCorrelation_basis_eq_qBasis
+#print axioms Zeta23.CCM.localizedWeilCorrelation_basis_eq_qBasis
+#check Zeta23.CCM.localizedWeilCorrelation_finiteVector_eq_basis_sum
+#print axioms Zeta23.CCM.localizedWeilCorrelation_finiteVector_eq_basis_sum
+#check Zeta23.CCM.localizedWeilCorrelation_finiteVector_eq_two_mul_dictionaryTest
+#print axioms Zeta23.CCM.localizedWeilCorrelation_finiteVector_eq_two_mul_dictionaryTest
+#check Zeta23.CCM.localizedWeilCorrelation_finiteVector_zero
+#print axioms Zeta23.CCM.localizedWeilCorrelation_finiteVector_zero
+
+
+#check Zeta23.CCM.localizedWeilHalfTest_finiteVector_eq_dictionaryTest
+#print axioms Zeta23.CCM.localizedWeilHalfTest_finiteVector_eq_dictionaryTest
+#check Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_dictionaryQuadraticForm
+#print axioms Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_dictionaryQuadraticForm
+#check Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_cutoffFreeQuadraticForm
+#print axioms Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_cutoffFreeQuadraticForm
+#check Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_cutoffFreeQuadraticForm_ofLambda
+#print axioms Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_cutoffFreeQuadraticForm_ofLambda
+#check Zeta23.CCM.finiteRestriction_eq_cutoffFreeQuadraticForm_of_matches
+#print axioms Zeta23.CCM.finiteRestriction_eq_cutoffFreeQuadraticForm_of_matches
