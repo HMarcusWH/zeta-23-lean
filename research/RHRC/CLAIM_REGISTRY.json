@@ -314,16 +314,16 @@
     },
     {
       "id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
-      "statement": "For the independently formalized Section-4 source expressions, the equation-(4.11) left-hand integrand decomposes pointwise into the equation-(4.4) cos-minus-one integrand plus a derived correction, and that derived correction is exactly exp(x/2) times the repository's printed cCorrectionIntegrand. The equation-(4.11)-left-hand gamma/archimedean/full finite convention is exactly cutoffFreeMatrix, while the raw equation-(4.4) matrix remains a distinct named object with no promoted equality to cutoffFreeMatrix or the external ambient QW_lambda form.",
+      "statement": "Direct substitution of the source diagonal q(U_n,U_n) formula into Section-4 equation (4.4) yields a finite source matrix exactly equal to cutoffFreeMatrix. Separately, the printed equation-(4.11) rewrite has a theorem-locked correction-factor seam: the correction forced pointwise by the rho-weighted algebra is exactly exp(x/2) times the repository transcription of the printed cCorrectionIntegrand. Thus the direct equation-(4.4) production matrix is settled while the later printed (4.11)/(4.14) simplification remains suspect/non-load-bearing.",
       "status": "PROVED_UNCONDITIONAL",
       "dependencies": [
         "R003_CUTOFF_FREE_MATRIX_MAP"
       ],
       "source": "Zeta23/CCM/SourceWeilMatrixReconciliation.lean",
-      "theorem": "Zeta23.CCM.sourceEq411DerivedCorrectionIntegrand_eq_exp_mul_cCorrectionIntegrand",
+      "theorem": "Zeta23.CCM.sourceEq44Matrix_eq_cutoffFreeMatrix",
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "G1-B0 normalization firewall only. Companion theorems are sourceEq411_integrand_decomposition, sourceEq411LhsGammaL_eq_cutoffFreeGammaL, gammaL_eq_sourceEq411LhsGammaL_add_correction, sourceEq411LhsArchComponent_eq_cutoffFreeArchComponent, sourceEq411LhsEntry_eq_cutoffFreeEntry, and sourceEq411LhsMatrix_eq_cutoffFreeMatrix. SourceEq411CorrectionIdentity is deliberately only a Prop encoding the unresolved printed equation-(4.11) integrated correction claim; no theorem proves it. This claim does NOT identify sourceEq44Matrix with cutoffFreeMatrix, does not formalize kappa/PsiSharp/QW_lambda, form-core/Rayleigh-Ritz, positivity, Suzuki, or RH."
+      "note": "G1-B0 corrected source-normalization result. Companion theorems: sourceEq44GammaL_eq_cutoffFreeGammaL, sourceEq44ArchComponent_eq_cutoffFreeArchComponent, sourceEq44Entry_eq_cutoffFreeEntry, sourceEq411_integrand_decomposition, sourceEq411DerivedCorrectionIntegrand_eq_exp_mul_cCorrectionIntegrand, sourceEq411LhsGammaL_eq_cutoffFreeGammaL, gammaL_eq_sourceEq411LhsGammaL_add_correction, sourceEq411LhsArchComponent_eq_cutoffFreeArchComponent, sourceEq411LhsEntry_eq_cutoffFreeEntry, and sourceEq411LhsMatrix_eq_cutoffFreeMatrix. SourceEq411CorrectionIdentity remains deliberately unproved and represents only the suspect printed (4.11) correction rewrite. This claim still does NOT formalize the external ambient kappa/PsiSharp/QW_lambda correspondence, form-core/Rayleigh-Ritz, positivity, Suzuki, or RH."
     }
   ]
 }
