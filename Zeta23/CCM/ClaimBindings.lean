@@ -11,6 +11,7 @@ import Zeta23.CCM.LocalizedBasis
 import Zeta23.CCM.LocalizedFiniteSpace
 import Zeta23.CCM.LocalizedWeilRestriction
 import Zeta23.CCM.SourceWeilMatrixReconciliation
+import Zeta23.CCM.SourceNormalizationRepair
 import Zeta23.CCM.DictionaryRHSIdentity
 import Zeta23.ExceptionalZero.DisplacementTransfer
 
@@ -130,3 +131,19 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.CCM.sourceEq411LhsEntry_eq_cutoffFreeEntry
 #check Zeta23.CCM.sourceEq411LhsMatrix_eq_cutoffFreeMatrix
 #print axioms Zeta23.CCM.sourceEq411LhsMatrix_eq_cutoffFreeMatrix
+
+
+#check Zeta23.CCM.sourceEq411_corrected_integrated_rewrite
+#print axioms Zeta23.CCM.sourceEq411_corrected_integrated_rewrite
+#check Zeta23.CCM.canonicalSourceGammaL_eq_rhs_add_derivedCorrection
+#print axioms Zeta23.CCM.canonicalSourceGammaL_eq_rhs_add_derivedCorrection
+#check Zeta23.CCM.canonicalSourceMatrix_eq_sourceEq44Matrix
+#print axioms Zeta23.CCM.canonicalSourceMatrix_eq_sourceEq44Matrix
+#check Zeta23.CCM.canonicalSourceMatrix_eq_dictionaryMatrix
+#print axioms Zeta23.CCM.canonicalSourceMatrix_eq_dictionaryMatrix
+#check Zeta23.CCM.canonicalSourceMatrix_eq_legacyPrintedMatrix_add_correction
+#print axioms Zeta23.CCM.canonicalSourceMatrix_eq_legacyPrintedMatrix_add_correction
+#check Zeta23.CCM.canonicalSourceMatrix_displacement
+#print axioms Zeta23.CCM.canonicalSourceMatrix_displacement
+#check Zeta23.CCM.rank_canonicalSourceMatrix_displacement_le_two
+#print axioms Zeta23.CCM.rank_canonicalSourceMatrix_displacement_le_two
