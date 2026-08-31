@@ -47,8 +47,8 @@ theorem localizedFiniteVector_eq_indicator
       (Icc (0 : ℝ) L).indicator (localizedFiniteFunction L N u) := by
   ext x
   by_cases hx : x ∈ Icc (0 : ℝ) L
-  · simp [localizedFiniteVector, localizedZeroExtendedMode, hx]
   · simp [localizedFiniteVector, localizedZeroExtendedMode, localizedFiniteFunction, hx]
+  · simp [localizedFiniteVector, localizedZeroExtendedMode, hx]
 
 /-- Pointwise support of a zero-extended mode stays in the source interval. -/
 theorem localizedZeroExtendedMode_support_subset
@@ -97,14 +97,15 @@ theorem localizedFiniteVector_memLp_two
   have hmeas : AEStronglyMeasurable (localizedFiniteVector L N u) volume := by
     rw [localizedFiniteVector_eq_indicator]
     exact hcont.aestronglyMeasurable.indicator measurableSet_Icc
-  have hbound : ∀ᵐ x : ℝ ∂volume, ‖localizedFiniteVector L N u x‖ ≤ C := by
+  let B : ℝ := max C 0
+  have hbound : ∀ᵐ x : ℝ ∂volume, ‖localizedFiniteVector L N u x‖ ≤ B := by
     filter_upwards with x
     by_cases hx : x ∈ Icc (0 : ℝ) L
     · rw [localizedFiniteVector_eq_indicator, Set.indicator_of_mem hx]
-      exact hC x hx
+      exact (hC x hx).trans (le_max_left C 0)
     · rw [localizedFiniteVector_eq_indicator, Set.indicator_of_notMem hx]
-      simp
-  exact (localizedFiniteVector_hasCompactSupport L N u).memLp_of_bound hmeas C hbound
+      exact norm_zero.trans_le (le_max_right C 0)
+  exact (localizedFiniteVector_hasCompactSupport L N u).memLp_of_bound hmeas B hbound
 
 /-- Source symmetrized correlation in repository convolution conventions.
 
