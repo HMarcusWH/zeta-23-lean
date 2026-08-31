@@ -638,11 +638,18 @@ theorem localizedWeilCorrelation_finiteVector_eq_basis_sum
     · apply Finset.sum_congr rfl
       intro j hj
       rw [intervalIntegral.integral_finsetSum]
-      intro i hi
-      exact hpos i j
+      · apply Finset.sum_congr rfl
+        intro i hi
+        rw [intervalIntegral.integral_mul_const,
+          intervalIntegral.integral_const_mul]
+      · intro i hi
+        exact hpos i j
     · intro j hj
-      simpa only [Finset.sum_apply] using
-        (IntervalIntegrable.sum Finset.univ fun i hi => hpos i j)
+      exact (by fun_prop : Continuous
+        (fun x : ℝ => ∑ i,
+          conj (u i) *
+            (localizedMode L (centeredIndex N j) (x + y) *
+              conj (localizedMode L (centeredIndex N i) x)) * u j)).intervalIntegrable _ _
   have hnegExp :
       (∫ x in 0..(L - y),
         localizedFiniteFunction L N u x *
@@ -657,11 +664,18 @@ theorem localizedWeilCorrelation_finiteVector_eq_basis_sum
     · apply Finset.sum_congr rfl
       intro j hj
       rw [intervalIntegral.integral_finsetSum]
-      intro i hi
-      exact hneg i j
+      · apply Finset.sum_congr rfl
+        intro i hi
+        rw [intervalIntegral.integral_mul_const,
+          intervalIntegral.integral_const_mul]
+      · intro i hi
+        exact hneg i j
     · intro j hj
-      simpa only [Finset.sum_apply] using
-        (IntervalIntegrable.sum Finset.univ fun i hi => hneg i j)
+      exact (by fun_prop : Continuous
+        (fun x : ℝ => ∑ i,
+          conj (u i) *
+            (localizedMode L (centeredIndex N j) x *
+              conj (localizedMode L (centeredIndex N i) (x + y))) * u j)).intervalIntegrable _ _
   rw [hposExp, hnegExp, ← Finset.sum_add_distrib]
   apply Finset.sum_congr rfl
   intro j hj
