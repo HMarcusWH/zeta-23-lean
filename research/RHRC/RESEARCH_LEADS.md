@@ -4,14 +4,18 @@
 >
 > This is a living research inventory, not a theorem registry. A lead may be promising, blocked, dormant, refuted, or promoted. Formal authority remains Lean/compiler/CI plus the machine claim and route registries.
 
-Last full review against merged main:
+Last full theorem/promotion review:
 
 ~~~text
-main = 09d55e93ddcb6f6765b32505309f177c9024f0cd
-tree = abfce5a33d2f2562ee1e0a4b292b2cd356be5033
+base main before PR #77 = 2ac1dccbefba01a4d3d4b0672fe87935ab159801
+W2-A theorem-green head = 509645ad2b30288d175ff2ef5a6651839991649e
+W2-A final promoted/synchronized head = cd20d84e30038a7d14da1e8ee1d2ca1920d344fd
+final #77 workflow state = GREEN
 date = 2026-09-01
-merged through = PR #75
+RH = OPEN
 ~~~
+
+Live GitHub main remains authoritative for the eventual merge commit SHA.
 
 This file answers one persistent question:
 
