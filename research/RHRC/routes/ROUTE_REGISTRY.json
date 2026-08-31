@@ -53,12 +53,13 @@
         "R003_WEIL_DISPLACEMENT",
         "R003_LOCALIZED_BASIS_CORRELATION",
         "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
-        "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION"
+        "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+        "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "Finite R003/D0/G0 are closed. PR #69 theorem-locks the actual zero-extended full-complex finite space and global inherited Weil autocorrelation = 2*dictionaryTest. G1-A / PR #70 now theorem-locks the repository additive half-correlation explicit-formula RHS on that finite space as exactly quadraticForm(cutoffFreeMatrix,u), with the source convention L=2*log(lambda). The remaining G1-B obligation is explicitly isolated: prove the external Connes--Consani--Moscovici QW_lambda/kappa/PsiSharp source form matches this additive pullback on the finite sector. Do not promote actual QW restriction before that identification. Form-core/Rayleigh-bottom transfer, positivity, finite negative persistence, Suzuki closure, and RH remain open."
+      "note": "Finite R003/D0/G0 and G1-A are closed. PR #71 / G1-B0 theorem-locks a source-normalization firewall: the independently formalized equation-(4.11) left-hand convention equals cutoffFreeMatrix, while the correction forced pointwise by the source rho-weighted algebra is exp(x/2) times the repository's printed cCorrectionIntegrand. The raw equation-(4.4) matrix remains a separate named object and is NOT promoted equal to cutoffFreeMatrix or external QW_lambda. Resolve the Section-4 source correction/notation seam before kappa/PsiSharp, form-core/Rayleigh-bottom transfer, Suzuki, or any RH-directed spectral conclusion."
     },
     {
       "route_id": "R004_prolate_v2",
