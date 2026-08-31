@@ -35,6 +35,10 @@ jobs:
             --output /tmp/CCM_NORMALIZATION_AUDIT.json
       - name: Check finite dictionary external oracle guards
         run: python research/RHRC/routes/R003_ccm_bridge/check_finite_dictionary_reference.py
+      - name: Check source normalization semantic firewall
+        run: python research/RHRC/routes/R003_ccm_bridge/check_source_normalization_firewall.py
+      - name: Audit R004 scalar-shift invariants
+        run: python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
       - name: Reject external reference code as a Lean dependency
         run: |
           if grep -R -n -E 'external[/\.]connes_cvs|connes_cvs' Zeta23 --include='*.lean'; then

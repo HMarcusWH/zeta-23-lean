@@ -7,9 +7,9 @@ namespace Zeta23.CCM
 open Matrix
 
 /-!
-# Cutoff-free CCM finite matrix
+# Canonical direct-source / cutoff-free CCM finite matrix
 
-This module formalizes the cutoff-free finite CCM/CvS source convention
+This module formalizes the finite direct-source equation-(4.4) / cutoff-free CCM convention
 independently from `finiteMatrix`, `dictionaryMatrix`, and `zeroSideMatrix`.
 
 The pinned external normalization audit identified the primitive convention map
@@ -52,7 +52,7 @@ def cutoffFreeArchComponent (n m : ℤ) (L : ℝ) : ℝ :=
 def cutoffFreeEntry (n m : ℤ) (L : ℝ) : ℝ :=
   poleComponent n m L - cutoffFreeArchComponent n m L - primeComponent n m L
 
-/-- Full cutoff-free finite matrix on centered Fourier indices `-N,...,N`. -/
+/-- Full canonical direct-source finite matrix on centered Fourier indices `-N,...,N`, prior to the semantic alias introduced by `SourceNormalizationRepair`. -/
 def cutoffFreeMatrix (L : ℝ) (N : ℕ) :
     Matrix (Fin (2 * N + 1)) (Fin (2 * N + 1)) ℂ :=
   fun i j =>

@@ -225,3 +225,26 @@ Exact symbolic displacement reproduction:
 ```bash
 python research/RHRC/routes/R004_prolate_v2/derive_exact_displacement.py
 ```
+
+
+## Normalization repair after PR #71
+
+The old `finiteMatrix` theorem remains mathematically valid but is now explicitly
+classified as the historical literal printed-(4.14) normalization.  The direct
+source authority is
+
+```text
+canonicalSourceMatrix
+  = cutoffFreeMatrix
+  = sourceEq44Matrix
+  = dictionaryMatrix
+  = finiteMatrix + 2*cCorrection(L)*I.
+```
+
+Therefore the exact displacement law and its rank-at-most-two consequence are
+now promoted on `canonicalSourceMatrix`.  The legacy theorem remains available
+for history and because scalar identity shifts leave the commutator unchanged.
+
+Absolute eigenvalues, positivity, lower bounds, trace, determinant, and inertia
+are not scalar-shift invariant and must use the canonical source normalization.
+No external `QW_lambda` restriction identification is claimed here.

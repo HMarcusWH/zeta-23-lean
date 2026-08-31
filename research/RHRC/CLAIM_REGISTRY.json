@@ -135,13 +135,14 @@
     },
     {
       "id": "R004_CCM_DISPLACEMENT_FORMAL",
-      "statement": "For the theorem-authoritative finite CCM matrix on centered Fourier indices and positive aperture L, the index commutator is exactly g 1^T - 1 g^T and therefore has rank at most two.",
+      "statement": "For the canonical direct-source finite CCM matrix on centered Fourier indices and positive aperture L, the index commutator is exactly g 1^T - 1 g^T and therefore has rank at most two. The historical printed-normalization finiteMatrix differs only by a scalar identity and has the same commutator.",
       "status": "PROVED_UNCONDITIONAL",
       "dependencies": [],
-      "source": "Zeta23/CCM/Displacement.lean",
-      "theorem": "Zeta23.CCM.rank_finiteMatrix_displacement_le_two",
+      "source": "Zeta23/CCM/SourceNormalizationRepair.lean",
+      "theorem": "Zeta23.CCM.rank_canonicalSourceMatrix_displacement_le_two",
       "route": "R004_prolate_v2",
-      "promotion_cap": "PROVED_UNCONDITIONAL"
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "Normalization repair after PR #71: finiteMatrix remains a valid legacy printed-normalization object, but canonicalSourceMatrix = cutoffFreeMatrix = sourceEq44Matrix is the direct source authority. Scalar-shift invariance transfers the exact displacement law."
     },
     {
       "id": "R003_DISPLACEMENT_TRANSFER",
@@ -324,6 +325,17 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "G1-B0 corrected source-normalization result. Companion theorems: sourceEq44GammaL_eq_cutoffFreeGammaL, sourceEq44ArchComponent_eq_cutoffFreeArchComponent, sourceEq44Entry_eq_cutoffFreeEntry, sourceEq411_integrand_decomposition, sourceEq411DerivedCorrectionIntegrand_eq_exp_mul_cCorrectionIntegrand, sourceEq411LhsGammaL_eq_cutoffFreeGammaL, gammaL_eq_sourceEq411LhsGammaL_add_correction, sourceEq411LhsArchComponent_eq_cutoffFreeArchComponent, sourceEq411LhsEntry_eq_cutoffFreeEntry, and sourceEq411LhsMatrix_eq_cutoffFreeMatrix. SourceEq411CorrectionIdentity remains deliberately unproved and represents only the suspect printed (4.11) correction rewrite. This claim still does NOT formalize the external ambient kappa/PsiSharp/QW_lambda correspondence, form-core/Rayleigh-Ritz, positivity, Suzuki, or RH."
+    },
+    {
+      "id": "R003_SOURCE_NORMALIZATION_REPAIR",
+      "statement": "The direct Section-4 equation-(4.4) finite source matrix is the canonicalSourceMatrix = cutoffFreeMatrix = dictionaryMatrix. The historical printed-normalization finiteMatrix is preserved unchanged and differs from the canonical source matrix by exactly 2*cCorrection(L)*I. The correction forced by the rho-weighted algebra of equation (4.11) is sourceEq411DerivedCorrection, not the frozen printed cCorrection.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [],
+      "source": "Zeta23/CCM/SourceNormalizationRepair.lean",
+      "theorem": "Zeta23.CCM.canonicalSourceMatrix_eq_legacyPrintedMatrix_add_correction",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "This repairs source labels and preserves historical theorem semantics. It does not identify external QW_lambda/PsiSharp with the finite matrix, prove positivity, form-core convergence, or RH."
     }
   ]
 }
