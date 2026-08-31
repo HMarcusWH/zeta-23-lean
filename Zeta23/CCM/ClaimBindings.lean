@@ -10,6 +10,7 @@ import Zeta23.CCM.CutoffFreeMatrix
 import Zeta23.CCM.LocalizedBasis
 import Zeta23.CCM.LocalizedFiniteSpace
 import Zeta23.CCM.LocalizedWeilRestriction
+import Zeta23.CCM.SourceWeilMatrixReconciliation
 import Zeta23.CCM.DictionaryRHSIdentity
 import Zeta23.ExceptionalZero.DisplacementTransfer
 
@@ -102,3 +103,19 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_cutoffFreeQuadraticForm_ofLambda
 #check Zeta23.CCM.finiteRestriction_eq_cutoffFreeQuadraticForm_of_matches
 #print axioms Zeta23.CCM.finiteRestriction_eq_cutoffFreeQuadraticForm_of_matches
+
+
+#check Zeta23.CCM.sourceEq44GammaL_eq_cutoffFreeGammaL
+#print axioms Zeta23.CCM.sourceEq44GammaL_eq_cutoffFreeGammaL
+#check Zeta23.CCM.gammaL_eq_sourceEq44GammaL_add_correction
+#print axioms Zeta23.CCM.gammaL_eq_sourceEq44GammaL_add_correction
+#check Zeta23.CCM.sourceEq44ArchComponent_eq_cutoffFreeArchComponent
+#print axioms Zeta23.CCM.sourceEq44ArchComponent_eq_cutoffFreeArchComponent
+#check Zeta23.CCM.archComponent_eq_sourceEq44ArchComponent_add_two_correction
+#print axioms Zeta23.CCM.archComponent_eq_sourceEq44ArchComponent_add_two_correction
+#check Zeta23.CCM.sourceEq44ReconciledMatrix_eq_cutoffFreeMatrix
+#print axioms Zeta23.CCM.sourceEq44ReconciledMatrix_eq_cutoffFreeMatrix
+#check Zeta23.CCM.sourceEq44ReconciledMatrix_eq_finiteMatrix_add_correction
+#print axioms Zeta23.CCM.sourceEq44ReconciledMatrix_eq_finiteMatrix_add_correction
+#check Zeta23.CCM.sourceEq44ReconciledMatrixOfLambda_eq_cutoffFreeMatrixOfLambda
+#print axioms Zeta23.CCM.sourceEq44ReconciledMatrixOfLambda_eq_cutoffFreeMatrixOfLambda
