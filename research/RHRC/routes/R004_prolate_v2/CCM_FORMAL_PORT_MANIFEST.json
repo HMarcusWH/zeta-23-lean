@@ -25,16 +25,17 @@
     "pole_component": "Zeta23.CCM.poleComponent",
     "arch_component": "Zeta23.CCM.archComponent",
     "prime_component": "Zeta23.CCM.primeComponent",
-    "build_ccm_matrix": "Zeta23.CCM.canonicalSourceMatrix",
+    "build_ccm_matrix": "Zeta23.CCM.finiteMatrixOfLambda",
     "direct_source_matrix": "Zeta23.CCM.sourceEq44Matrix",
     "canonical_source_matrix": "Zeta23.CCM.canonicalSourceMatrix",
-    "legacy_printed_matrix": "Zeta23.CCM.legacyPrintedMatrix"
+    "legacy_printed_matrix": "Zeta23.CCM.legacyPrintedMatrix",
+    "build_ccm_matrix_semantics": "legacy printed-normalization executable; gamma_L includes c_correction"
   },
   "claim_boundary": {
     "status": "CANONICAL_SOURCE_NORMALIZATION_REPAIRED",
     "promotes_r003_ccm_bridge": false,
     "promotes_r004_displacement": false,
     "note": "This manifest binds definitions only. Equality with the Python implementation and theorem promotion require compiler-checked lemmas and route-level audit.",
-    "normalization_note": "The historical finiteMatrix/gammaL/cCorrection definitions are frozen as the literal printed-(4.11)/(4.14) convention. Direct source equation (4.4) is canonical and equals canonicalSourceMatrix = cutoffFreeMatrix. No ambient QW_lambda restriction identification is claimed."
+    "normalization_note": "The Python run_commutator_gauntlet_v2.py build_ccm_matrix(lam,N) remains the legacy printed-normalization executable and maps to finiteMatrixOfLambda. The canonical direct-source convention is canonicalSourceMatrix = cutoffFreeMatrix, with cutoffFreeMatrixOfLambda as its lambda wrapper. No ambient QW_lambda restriction identification is claimed."
   }
 }
