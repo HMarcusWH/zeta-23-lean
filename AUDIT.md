@@ -83,6 +83,14 @@ Those files describe the preserved upstream formalization layer.
 
 G1-B1A is merged and registered: the finite source coordinate transport and zero-extended `kappa` image are theorem-locked. This does not include multiplicative-Haar/L2 or ambient source-functional semantics.
 
+W2-A has passed exact-head Lean/CI and is promoted in PR #77: for the concrete zeta configuration, admissible pairs satisfy both W-summand summability and
+
+~~~text
+W(f,g) = EF.literatureRHS (EF.weilTest f g).
+~~~
+
+The theorem requires `f` to be C² compactly supported and `g` only continuous compactly supported. The audited axiom surface is `[propext, Classical.choice, Quot.sound]`. This does not yet prove W2-B reflection/evenization, W2-C diagonal additive identification, W0 contraction, F1, or RH.
+
 As of the merged state above, the repository does **not** claim:
 
 - the ambient external `QW_lambda/PsiSharp` correspondence;
