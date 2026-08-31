@@ -638,12 +638,11 @@ theorem localizedWeilCorrelation_finiteVector_eq_basis_sum
     · apply Finset.sum_congr rfl
       intro j hj
       rw [intervalIntegral.integral_finsetSum]
-      · simp_rw [intervalIntegral.integral_const_mul,
-          intervalIntegral.integral_mul_const]
-      · intro i hi
-        exact hpos i j
+      intro i hi
+      exact hpos i j
     · intro j hj
-      exact (IntervalIntegrable.sum Finset.univ fun i hi => hpos i j)
+      simpa only [Finset.sum_apply] using
+        (IntervalIntegrable.sum Finset.univ fun i hi => hpos i j)
   have hnegExp :
       (∫ x in 0..(L - y),
         localizedFiniteFunction L N u x *
@@ -658,12 +657,11 @@ theorem localizedWeilCorrelation_finiteVector_eq_basis_sum
     · apply Finset.sum_congr rfl
       intro j hj
       rw [intervalIntegral.integral_finsetSum]
-      · simp_rw [intervalIntegral.integral_const_mul,
-          intervalIntegral.integral_mul_const]
-      · intro i hi
-        exact hneg i j
+      intro i hi
+      exact hneg i j
     · intro j hj
-      exact (IntervalIntegrable.sum Finset.univ fun i hi => hneg i j)
+      simpa only [Finset.sum_apply] using
+        (IntervalIntegrable.sum Finset.univ fun i hi => hneg i j)
   rw [hposExp, hnegExp, ← Finset.sum_add_distrib]
   apply Finset.sum_congr rfl
   intro j hj
