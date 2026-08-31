@@ -4,7 +4,6 @@ noncomputable section
 
 namespace Zeta23.ExceptionalZero
 
-open Complex
 
 /-- **W2-A, generic form.**  The literature explicit formula applied to the exact
 convolution test `weilTest f g = f ⋆ g̃` supplies both absolute zero-side
@@ -32,7 +31,8 @@ theorem W_literatureRHS_package_of_lit
     hEF (Zeta23.EF.weilTest f g) hkd hkc
   have hfac : ∀ z : ℂ,
       paperFT (Zeta23.EF.weilTest f g) z =
-        paperFT f z * conj (paperFT g (conj z)) :=
+        paperFT f z *
+          (starRingEnd ℂ) (paperFT g ((starRingEnd ℂ) z)) :=
     Zeta23.EF.paperFT_weilTest hf.continuous hg hfc hgc
   have hterm :
       (fun ρ : Z.carrier =>
