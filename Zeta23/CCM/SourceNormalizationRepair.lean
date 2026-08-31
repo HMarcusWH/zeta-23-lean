@@ -115,7 +115,6 @@ theorem sourceEq411_corrected_integrated_rewrite
         freq * x = 2 * Real.pi * (n : ℝ) * x / L := by
       dsimp [freq]
       field_simp [hL.ne']
-      ring
     simp [sourceEq411RhsCosMinusOneIntegrand, hxne, hfreq]
     ring
   calc
@@ -145,7 +144,6 @@ theorem canonicalSourceGammaL_eq_rhs_add_derivedCorrection
         sourceEq411DerivedCorrection L + wCorrection L := by
   unfold canonicalSourceGammaL sourceEq44GammaL
   rw [sourceEq411_corrected_integrated_rewrite n hL]
-  ring
 
 /-- Direct source equation-(4.4) matrix, with the independently audited
 cutoff-free convention as its canonical repository representation. -/
