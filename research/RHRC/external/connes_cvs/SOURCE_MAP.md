@@ -146,6 +146,80 @@ The last displayed `WeilGram` equality is **not** promoted by this source-map
 note unless separately bound to a Lean theorem.  PR #65's theorem authority is
 the finite cutoff-free source-convention map listed above.
 
+
+## G1-B0 Section-4 normalization firewall — PR #71
+
+A post-G1-A source audit found that the Section-4 formulas must not be
+collapsed into a single finite-QW convention without an explicit reconciliation.
+
+The source paper has three relevant displays:
+
+1. equation (4.4), which gives the archimedean Weil contribution directly in
+   terms of `omega=q(U_n,U_m)` and the density
+   `rho(x)=exp(x/2)/(exp(x)-exp(-x))`;
+2. equation (4.11), which rewrites the diagonal integral
+   `(cos-exp(-x/2))*rho` as `(cos-1)*rho + c(L)`;
+3. equation (4.14), which defines a lighter-notation gamma using the
+   equation-(4.11) left-hand integral plus an additional explicit
+   `c(L)+w(L)`.
+
+The repository now formalizes these expressions without silently choosing a
+winner.  In `Zeta23/CCM/SourceWeilMatrixReconciliation.lean`, Lean proves the
+pointwise algebra
+
+```text
+sourceEq411LhsIntegrand
+  = sourceEq44CosMinusOneIntegrand
+    + sourceEq411DerivedCorrectionIntegrand
+```
+
+and, critically,
+
+```text
+sourceEq411DerivedCorrectionIntegrand(x)
+  = exp(x/2) * cCorrectionIntegrand(x).
+```
+
+Thus the correction forced by the paper's own rho-weighted integrands differs
+from the repository transcription of the printed `c(L)` integrand by the
+explicit `exp(x/2)` factor.  Lean also proves that the equation-(4.11)
+**left-hand** convention, before adding the printed correction again, is
+exactly the independently audited cutoff-free convention:
+
+```text
+sourceEq411LhsGammaL  = cutoffFreeGammaL
+sourceEq411LhsMatrix = cutoffFreeMatrix.
+```
+
+The raw equation-(4.4) matrix is separately named `sourceEq44Matrix`; there is
+currently **no promoted theorem** identifying it with `cutoffFreeMatrix` or
+with the external ambient `QW_lambda` form.
+
+The unresolved printed equation-(4.11) integrated correction is represented by
+the deliberately unproved proposition
+
+```text
+SourceEq411CorrectionIdentity.
+```
+
+### Executable-source evidence
+
+The pinned external script
+`papers/2_guinand_weil_dictionary_tail_order/scripts/verify_dictionary_threeroute.py`
+labels its Route-1 matrix "cutoff-free" and uses a combined `c_w()` term in
+its closed-form `gamma_L`.  Independent source inspection/numerical
+falsification indicates that this executable convention follows the
+rho-derived correction rather than the printed correction integrand taken
+literally.
+
+This executable observation is **source/oracle evidence only**.  It does not
+promote the raw equation-(4.4) / equation-(4.11) / equation-(4.14) source
+correspondence to a theorem.
+
+The next source task is therefore to resolve the manuscript/TeX/executable
+normalization seam before formalizing `kappa`, `PsiSharp`, or the actual
+external `QW_lambda` finite restriction.
+
 ## Authority boundary
 
 - External Python: reference and falsification oracle only.
