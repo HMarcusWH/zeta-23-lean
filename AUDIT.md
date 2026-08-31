@@ -4,15 +4,15 @@ This file is the audit entry point for the active HMWH fork.
 
 The pre-fork-facing Zeta23 audit is preserved verbatim in [UPSTREAM_AUDIT.md](UPSTREAM_AUDIT.md). It remains provenance for the inherited paper formalization; it is not a complete audit of the later RH research extensions.
 
-## Current merged baseline for this documentation reset
+## Current merged baseline
 
 ```text
 repository: HMarcusWH/zeta-23-lean
-main: faca0e88ab84bdc70c19c6af757eabf508bff54f
-merged through: PR #73
+main: f62171c3610c27190d9d3165a9c692ad08985077
+merged through: PR #74
 ```
 
-PR #73 repaired source-normalization semantics and passed the project RHRC/CCM validation gates before merge. The exact compiler/CI evidence for individual PRs is authoritative over this summary.
+PR #73 repaired source-normalization semantics. PR #72 then merged the G1-B1A finite `kappa`/source-sector theorem layer on top of that repair, and PR #74 reset the living repository documentation. The exact compiler/CI evidence for individual PR heads is authoritative over this summary.
 
 ## Fork audit surfaces
 
@@ -50,7 +50,7 @@ python research/RHRC/routes/R003_ccm_bridge/check_source_normalization_firewall.
 
 This prevents direct semantic collapse of the legacy printed `finiteMatrix` into the canonical external source restriction.
 
-The current canonical object map is:
+The current canonical object map is recorded in `research/RHRC/routes/R003_ccm_bridge/CCM_CANONICAL_OBJECT_MAP_v3.json` and retains the matrix equalities:
 
 ```text
 canonicalSourceMatrix
@@ -80,6 +80,8 @@ The inherited paper theorem surface remains comparator-audited exactly as docume
 Those files describe the preserved upstream formalization layer.
 
 ## Current claim firewall
+
+G1-B1A is merged and registered: the finite source coordinate transport and zero-extended `kappa` image are theorem-locked. This does not include multiplicative-Haar/L2 or ambient source-functional semantics.
 
 As of the merged state above, the repository does **not** claim:
 

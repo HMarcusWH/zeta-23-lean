@@ -57,7 +57,7 @@ Exact block-level off-critical separation has been proved. Generic windowed visi
 
 This is the current critical finite-to-source route.
 
-Merged work through PR #73 has established, among other things:
+Merged work through the #71-#74 sequence has established, among other things:
 
 - finite Guinand--Weil dictionary identities;
 - the literal-tent explicit-formula extension;
@@ -67,9 +67,10 @@ Merged work through PR #73 has established, among other things:
 - the actual full-complex zero-extended additive finite space;
 - the additive localized Weil RHS restriction;
 - the direct Section-4 source matrix;
-- canonical source-normalization repair.
+- canonical source-normalization repair;
+- the finite source `kappa` coordinate/source-sector bridge, including actual zero-extended source finite vectors.
 
-The next source-facing obligations are the finite `kappa` / source-sector map, then the actual `d*u` / `PsiSharp` / `QW_lambda` correspondence, and finally the theorem
+The next source-facing obligations are the actual `d*u` / `PsiSharp` / `QW_lambda` correspondence, and then the theorem
 
 ```text
 QW_lambda restricted to E_N = canonicalSourceMatrix.
@@ -137,7 +138,7 @@ finite dictionary / zero-side bridge                 CLOSED
   -> G0 localized basis + finite space               CLOSED
   -> G1-A additive finite restriction                CLOSED
   -> direct source normalization/firewall            CLOSED
-  -> finite kappa/source-sector bridge               OPEN ON MERGED MAIN
+  -> finite kappa/source-sector bridge               CLOSED
   -> G1-B1B d*u / PsiSharp / QW correspondence       OPEN
   -> G1-final QW_lambda|E_N = canonical matrix       OPEN
   -> canonical high-frequency falsifier              OPEN

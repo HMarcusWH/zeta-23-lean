@@ -1,0 +1,74 @@
+{
+  "schema_version": "CCM_CANONICAL_OBJECT_MAP_v3",
+  "date_utc": "2026-08-31",
+  "authority": "Lean theorem map on current merged main after PR #74; G1-B1A theorem layer merged in PR #72",
+  "merged_main": "f62171c3610c27190d9d3165a9c692ad08985077",
+  "canonical_object": "Zeta23.CCM.canonicalSourceMatrix",
+  "equalities": [
+    {
+      "lhs": "Zeta23.CCM.canonicalSourceMatrix",
+      "rhs": "Zeta23.CCM.sourceEq44Matrix",
+      "theorem": "Zeta23.CCM.canonicalSourceMatrix_eq_sourceEq44Matrix"
+    },
+    {
+      "lhs": "Zeta23.CCM.canonicalSourceMatrix",
+      "rhs": "Zeta23.CCM.dictionaryMatrix",
+      "theorem": "Zeta23.CCM.canonicalSourceMatrix_eq_dictionaryMatrix"
+    },
+    {
+      "lhs": "Zeta23.CCM.zeroSideMatrix",
+      "rhs": "Zeta23.CCM.cutoffFreeMatrix",
+      "theorem": "Zeta23.CCM.zeroSideMatrix_eq_cutoffFreeMatrix",
+      "hypotheses": "positive aperture"
+    },
+    {
+      "lhs": "Zeta23.CCM.canonicalSourceMatrix",
+      "rhs": "Zeta23.CCM.legacyPrintedMatrix + 2*legacyPrintedCorrection(L)*I",
+      "theorem": "Zeta23.CCM.canonicalSourceMatrix_eq_legacyPrintedMatrix_add_correction"
+    }
+  ],
+  "source_finite_sector": {
+    "aperture": "Zeta23.CCM.sourceLength(lam) = 2*log(lam)",
+    "log_coordinate": "Zeta23.CCM.sourceLogCoordinate",
+    "inverse_coordinate": "Zeta23.CCM.sourceExpCoordinate",
+    "kappa": "Zeta23.CCM.sourceKappa",
+    "formula_mode": "Zeta23.CCM.sourceMultiplicativeMode",
+    "formula_finite_combination": "Zeta23.CCM.sourceFiniteFourierFunction",
+    "zero_extended_mode": "Zeta23.CCM.sourceZeroExtendedMode",
+    "zero_extended_finite_vector": "Zeta23.CCM.sourceFiniteVector",
+    "production_theorem": "Zeta23.CCM.sourceKappaFiniteVector_eq_sourceFiniteVector",
+    "sector_membership_theorem": "Zeta23.CCM.sourceKappa_localizedFiniteFunction_isSourceFiniteFourierVector",
+    "source_interval": "[lam^-1, lam]",
+    "hypotheses": "lam > 1 for the source-valid coordinate/production theorems"
+  },
+  "legacy": {
+    "matrix": "Zeta23.CCM.legacyPrintedMatrix = Zeta23.CCM.finiteMatrix",
+    "correction": "Zeta23.CCM.legacyPrintedCorrection = Zeta23.CCM.cCorrection",
+    "gamma": "Zeta23.CCM.legacyPrintedGammaL = Zeta23.CCM.gammaL"
+  },
+  "shift_invariant": [
+    "commutator",
+    "displacement rank",
+    "eigenvectors/eigenspaces",
+    "eigenvalue gaps/order"
+  ],
+  "shift_sensitive": [
+    "absolute eigenvalues",
+    "PSD/positivity",
+    "inertia",
+    "lower bounds",
+    "trace",
+    "determinant"
+  ],
+  "closed_interfaces": [
+    "finite kappa/source-sector map"
+  ],
+  "open_interfaces": [
+    "multiplicative Haar/L2 source interface",
+    "PsiSharp",
+    "ambient QW_lambda pullback",
+    "QW_lambda|E_N = canonicalSourceMatrix"
+  ],
+  "forbidden_identification": "legacy finiteMatrix = ambient QW_lambda|E_N",
+  "claim_boundary": "G1-B1A closes finite coordinate/source-sector transport only. It does not establish multiplicative-Haar/L2 isometry, PsiSharp, ambient QW_lambda, form-core/minimum-eigenvalue transfer, positivity, finite-negative exclusion, or RH."
+}
