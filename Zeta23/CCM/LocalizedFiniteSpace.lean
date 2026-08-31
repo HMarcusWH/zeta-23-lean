@@ -38,6 +38,68 @@ def localizedFiniteVector
     (L : ℝ) (N : ℕ) (u : Fin (2 * N + 1) → ℂ) : ℝ → ℂ :=
   fun x => ∑ i, u i * localizedZeroExtendedMode L (centeredIndex N i) x
 
+/-- Negating the real coordinate conjugates a normalized localized Fourier mode. -/
+@[simp] theorem localizedMode_neg
+    (L : ℝ) (n : ℤ) (x : ℝ) :
+    localizedMode L n (-x) = conj (localizedMode L n x) := by
+  simp only [localizedMode, map_mul, Complex.conj_ofReal, ← Complex.exp_conj,
+    Complex.conj_I]
+  congr 1
+  push_cast
+  ring
+
+/-- Integer Fourier modes are periodic with the source interval length.
+The positivity/source-validity hypothesis used downstream supplies the required
+nonzero denominator. -/
+theorem localizedMode_add_period
+    (L : ℝ) (n : ℤ) (x : ℝ) (hL : L ≠ 0) :
+    localizedMode L n (x + L) = localizedMode L n x := by
+  unfold localizedMode
+  congr 1
+  have hphase :
+      Complex.I * (((2 * Real.pi * (n : ℝ) * (x + L) / L : ℝ) : ℂ)) =
+        Complex.I * (((2 * Real.pi * (n : ℝ) * x / L : ℝ) : ℂ)) +
+          (n : ℂ) * (2 * (Real.pi : ℂ) * Complex.I) := by
+    push_cast
+    field_simp [hL]
+    ring
+  rw [hphase, Complex.exp_add]
+  have hperiod :
+      Complex.exp ((n : ℂ) * (2 * (Real.pi : ℂ) * Complex.I)) = 1 := by
+    simpa using Complex.exp_int_mul_two_pi_mul_I n
+  rw [hperiod, mul_one]
+
+/-- Reflection across the overlap interval turns the negative-shift basis
+integrand into the conjugate of the positive-shift integrand.  This is the
+periodicity step that makes the source symmetrization real. -/
+theorem localizedMode_reflection_product
+    (n m : ℤ) {L y x : ℝ} (hL : 0 < L) :
+    localizedMode L m (L - y - x) *
+        conj (localizedMode L n (L - x)) =
+      conj (localizedMode L m (x + y)) * localizedMode L n x := by
+  have hm :
+      localizedMode L m (L - y - x) =
+        conj (localizedMode L m (x + y)) := by
+    calc
+      localizedMode L m (L - y - x) =
+          localizedMode L m (-(x + y) + L) := by
+            congr 2 <;> ring
+      _ = localizedMode L m (-(x + y)) := by
+            simpa [add_comm] using
+              localizedMode_add_period L m (-(x + y)) hL.ne'
+      _ = conj (localizedMode L m (x + y)) :=
+            localizedMode_neg L m (x + y)
+  have hn :
+      localizedMode L n (L - x) = conj (localizedMode L n x) := by
+    calc
+      localizedMode L n (L - x) =
+          localizedMode L n (-x + L) := by
+            congr 2 <;> ring
+      _ = localizedMode L n (-x) := by
+            simpa [add_comm] using localizedMode_add_period L n (-x) hL.ne'
+      _ = conj (localizedMode L n x) := localizedMode_neg L n x
+  rw [hm, hn, conj_conj]
+
 /-- The finite vector is exactly the indicator of the formula-level finite Fourier
 combination introduced in G0-A.  This is the main representation firewall between
 the global character formula and the actual source-supported function. -/
