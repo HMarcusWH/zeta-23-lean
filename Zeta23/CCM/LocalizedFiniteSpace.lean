@@ -689,6 +689,186 @@ theorem localizedWeilCorrelation_finiteVector_eq_basis_sum
       (centeredIndex N i) (centeredIndex N j) hy0 hyL]
   ring
 
+
+
+/-- If a positive shift exceeds the source interval length, the positive-shift
+inherited Weil convolution of a localized finite vector vanishes by direct
+support separation. -/
+theorem weilTest_localizedFiniteVector_pos_eq_zero_of_lt
+    (N : ℕ) (u : Fin (2 * N + 1) → ℂ)
+    {L y : ℝ} (hy : L < y) :
+    Zeta23.EF.weilTest
+        (localizedFiniteVector L N u)
+        (localizedFiniteVector L N u) y = 0 := by
+  simp only [Zeta23.EF.weilTest, convolution_def,
+    ContinuousLinearMap.mul_apply', Zeta23.EF.tilde]
+  have hfun :
+      (fun t : ℝ =>
+        localizedFiniteVector L N u t *
+          conj (localizedFiniteVector L N u (-(y - t)))) =
+        fun _ : ℝ => 0 := by
+    funext t
+    have harg : -(y - t) = t - y := by ring
+    rw [harg]
+    by_cases ht : t ∈ Icc (0 : ℝ) L
+    · have hty : t - y ∉ Icc (0 : ℝ) L := by
+        intro hmem
+        linarith [ht.2, hmem.1, hy]
+      simp [localizedFiniteVector_eq_indicator, ht, hty]
+    · simp [localizedFiniteVector_eq_indicator, ht]
+  rw [hfun]
+  simp
+
+/-- If a positive shift exceeds the source interval length, the complementary
+negative-shift inherited Weil convolution also vanishes by direct support
+separation. -/
+theorem weilTest_localizedFiniteVector_neg_eq_zero_of_lt
+    (N : ℕ) (u : Fin (2 * N + 1) → ℂ)
+    {L y : ℝ} (hy : L < y) :
+    Zeta23.EF.weilTest
+        (localizedFiniteVector L N u)
+        (localizedFiniteVector L N u) (-y) = 0 := by
+  simp only [Zeta23.EF.weilTest, convolution_def,
+    ContinuousLinearMap.mul_apply', Zeta23.EF.tilde]
+  have hfun :
+      (fun t : ℝ =>
+        localizedFiniteVector L N u t *
+          conj (localizedFiniteVector L N u (-((-y) - t)))) =
+        fun _ : ℝ => 0 := by
+    funext t
+    have harg : -((-y) - t) = t + y := by ring
+    rw [harg]
+    by_cases ht : t ∈ Icc (0 : ℝ) L
+    · have hty : t + y ∉ Icc (0 : ℝ) L := by
+        intro hmem
+        linarith [ht.1, hmem.2, hy]
+      simp [localizedFiniteVector_eq_indicator, ht, hty]
+    · simp [localizedFiniteVector_eq_indicator, ht]
+  rw [hfun]
+  simp
+
+/-- Outside the positive aperture, the complete symmetrized localized
+finite-vector correlation is zero. -/
+theorem localizedWeilCorrelation_finiteVector_eq_zero_of_lt
+    (N : ℕ) (u : Fin (2 * N + 1) → ℂ)
+    {L y : ℝ} (hy : L < y) :
+    localizedWeilCorrelation
+        (localizedFiniteVector L N u)
+        (localizedFiniteVector L N u) y = 0 := by
+  rw [localizedWeilCorrelation,
+    weilTest_localizedFiniteVector_pos_eq_zero_of_lt N u hy,
+    weilTest_localizedFiniteVector_neg_eq_zero_of_lt N u hy]
+  simp
+
+/-- On the nonnegative aperture, the actual finite-vector inherited Weil
+correlation is exactly twice the production finite dictionary test.
+
+This is the factor-two normalization bridge from the raw qBasis correlation
+to the half-normalized explicit-formula dictionary convention. -/
+theorem localizedWeilCorrelation_finiteVector_eq_two_mul_dictionaryTest_of_nonneg
+    (N : ℕ) (u : Fin (2 * N + 1) → ℂ)
+    {L y : ℝ} (hL : 0 < L) (hy0 : 0 ≤ y) (hyL : y ≤ L) :
+    localizedWeilCorrelation
+        (localizedFiniteVector L N u)
+        (localizedFiniteVector L N u) y =
+      2 * dictionaryTest N u L y := by
+  rw [localizedWeilCorrelation_finiteVector_eq_basis_sum N u hy0 hyL]
+  simp_rw [localizedWeilCorrelation_basis_eq_qBasis
+    (L := L) (y := y) hL hy0 hyL]
+  have habs : |y| ≤ L := by
+    simpa [abs_of_nonneg hy0] using hyL
+  rw [dictionaryTest_eq_qBasisContract_of_abs_le N u habs,
+    abs_of_nonneg hy0]
+  rw [Finset.sum_comm]
+  ring
+
+/-- G0-B production endpoint. For every positive aperture and every full
+complex centered coefficient vector, the actual zero-extended localized finite
+function has inherited symmetrized Weil autocorrelation exactly equal to twice
+the theorem-authoritative finite dictionary test, globally in the shift.
+
+There is no reality, even-coefficient, zero-sum, positivity, form-core, or RH
+hypothesis. -/
+theorem localizedWeilCorrelation_finiteVector_eq_two_mul_dictionaryTest
+    (N : ℕ)
+    (u : Fin (2 * N + 1) → ℂ)
+    {L : ℝ}
+    (hL : 0 < L) :
+    localizedWeilCorrelation
+      (localizedFiniteVector L N u)
+      (localizedFiniteVector L N u) =
+    fun y => 2 * dictionaryTest N u L y := by
+  funext y
+  by_cases habs : |y| ≤ L
+  · by_cases hy0 : 0 ≤ y
+    · have hyL : y ≤ L := by
+        simpa [abs_of_nonneg hy0] using habs
+      exact
+        localizedWeilCorrelation_finiteVector_eq_two_mul_dictionaryTest_of_nonneg
+          N u hL hy0 hyL
+    · have hyneg : y < 0 := lt_of_not_ge hy0
+      have hny0 : 0 ≤ -y := neg_nonneg.mpr hyneg.le
+      have hnyL : -y ≤ L := by
+        simpa [abs_of_neg hyneg] using habs
+      calc
+        localizedWeilCorrelation
+            (localizedFiniteVector L N u)
+            (localizedFiniteVector L N u) y =
+          localizedWeilCorrelation
+            (localizedFiniteVector L N u)
+            (localizedFiniteVector L N u) (-y) := by
+              symm
+              exact localizedWeilCorrelation_neg
+                (localizedFiniteVector L N u)
+                (localizedFiniteVector L N u) y
+        _ = 2 * dictionaryTest N u L (-y) :=
+          localizedWeilCorrelation_finiteVector_eq_two_mul_dictionaryTest_of_nonneg
+            N u hL hny0 hnyL
+        _ = 2 * dictionaryTest N u L y := by
+          rw [dictionaryTest_neg]
+  · have hlt : L < |y| := lt_of_not_ge habs
+    by_cases hy0 : 0 ≤ y
+    · have hy : L < y := by
+        simpa [abs_of_nonneg hy0] using hlt
+      rw [localizedWeilCorrelation_finiteVector_eq_zero_of_lt N u hy,
+        dictionaryTest_eq_zero_of_lt_abs N u L y hlt]
+      simp
+    · have hyneg : y < 0 := lt_of_not_ge hy0
+      have hny : L < -y := by
+        simpa [abs_of_neg hyneg] using hlt
+      calc
+        localizedWeilCorrelation
+            (localizedFiniteVector L N u)
+            (localizedFiniteVector L N u) y =
+          localizedWeilCorrelation
+            (localizedFiniteVector L N u)
+            (localizedFiniteVector L N u) (-y) := by
+              symm
+              exact localizedWeilCorrelation_neg
+                (localizedFiniteVector L N u)
+                (localizedFiniteVector L N u) y
+        _ = 0 :=
+          localizedWeilCorrelation_finiteVector_eq_zero_of_lt N u hny
+        _ = 2 * dictionaryTest N u L y := by
+          rw [dictionaryTest_eq_zero_of_lt_abs N u L y hlt]
+          simp
+
+/-- Zero-shift normalization smoke test for the completed G0-B bridge. -/
+theorem localizedWeilCorrelation_finiteVector_zero
+    (N : ℕ)
+    (u : Fin (2 * N + 1) → ℂ)
+    {L : ℝ}
+    (hL : 0 < L) :
+    localizedWeilCorrelation
+      (localizedFiniteVector L N u)
+      (localizedFiniteVector L N u) 0 =
+    2 * coefficientMass N u := by
+  have h :=
+    congrFun
+      (localizedWeilCorrelation_finiteVector_eq_two_mul_dictionaryTest
+        N u hL) 0
+  simpa [dictionaryTest_zero N u hL] using h
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.localizedFiniteVector_eq_indicator
@@ -696,3 +876,8 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.localizedFiniteVector_hasCompactSupport
 #print axioms Zeta23.CCM.localizedFiniteVector_memLp_two
 #print axioms Zeta23.CCM.localizedWeilCorrelation_neg
+#print axioms Zeta23.CCM.localizedWeilCorrelation_basis_eq_hardWindow
+#print axioms Zeta23.CCM.localizedWeilCorrelation_basis_eq_qBasis
+#print axioms Zeta23.CCM.localizedWeilCorrelation_finiteVector_eq_basis_sum
+#print axioms Zeta23.CCM.localizedWeilCorrelation_finiteVector_eq_two_mul_dictionaryTest
+#print axioms Zeta23.CCM.localizedWeilCorrelation_finiteVector_zero
