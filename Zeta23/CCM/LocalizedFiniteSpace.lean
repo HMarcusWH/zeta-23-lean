@@ -267,6 +267,170 @@ def localizedWeilCorrelation (f g : ℝ → ℂ) : ℝ → ℂ :=
     localizedWeilCorrelation f g (-y) = localizedWeilCorrelation f g y := by
   simp [localizedWeilCorrelation, add_comm]
 
+/-- For a nonnegative shift inside the aperture, the actual inherited Weil
+convolution of two zero-extended basis modes is the overlap integral on
+`[0,L-y]`. -/
+theorem weilTest_localizedZeroExtendedMode_pos
+    (n m : ℤ) {L y : ℝ} (hy0 : 0 ≤ y) (hyL : y ≤ L) :
+    Zeta23.EF.weilTest
+        (localizedZeroExtendedMode L m)
+        (localizedZeroExtendedMode L n) y =
+      ∫ x in 0..(L - y),
+        localizedMode L m (x + y) * conj (localizedMode L n x) := by
+  simp only [Zeta23.EF.weilTest, convolution_def,
+    ContinuousLinearMap.mul_apply', Zeta23.EF.tilde]
+  have hfun :
+      (fun t : ℝ =>
+        localizedZeroExtendedMode L m t *
+          conj (localizedZeroExtendedMode L n (-(y - t)))) =
+        (Icc y L).indicator
+          (fun t : ℝ =>
+            localizedMode L m t * conj (localizedMode L n (t - y))) := by
+    funext t
+    have harg : -(y - t) = t - y := by ring
+    rw [harg]
+    by_cases ht : t ∈ Icc y L
+    · have ht0 : t ∈ Icc (0 : ℝ) L := ⟨hy0.trans ht.1, ht.2⟩
+      have hty : t - y ∈ Icc (0 : ℝ) L := by
+        constructor
+        · exact sub_nonneg.mpr ht.1
+        · linarith [ht.2, hy0]
+      simp [localizedZeroExtendedMode, ht, ht0, hty]
+    · by_cases ht0 : t ∈ Icc (0 : ℝ) L
+      · have hlt : t < y := by
+          by_contra h
+          exact ht ⟨le_of_not_gt h, ht0.2⟩
+        have hty : t - y ∉ Icc (0 : ℝ) L := by
+          intro hmem
+          exact (not_lt_of_ge hmem.1) (sub_neg.mpr hlt)
+        simp [localizedZeroExtendedMode, ht, ht0, hty]
+      · simp [localizedZeroExtendedMode, ht, ht0]
+  rw [hfun, integral_indicator measurableSet_Icc,
+    integral_Icc_eq_integral_Ioc, ← intervalIntegral.integral_of_le hyL]
+  have hshift :=
+    intervalIntegral.integral_comp_add_right
+      (f := fun t : ℝ =>
+        localizedMode L m t * conj (localizedMode L n (t - y)))
+      (a := 0) (b := L - y) y
+  simpa using hshift.symm
+
+/-- The negative shift has the complementary overlap orientation on the same
+interval `[0,L-y]`. -/
+theorem weilTest_localizedZeroExtendedMode_neg
+    (n m : ℤ) {L y : ℝ} (hy0 : 0 ≤ y) (hyL : y ≤ L) :
+    Zeta23.EF.weilTest
+        (localizedZeroExtendedMode L m)
+        (localizedZeroExtendedMode L n) (-y) =
+      ∫ x in 0..(L - y),
+        localizedMode L m x * conj (localizedMode L n (x + y)) := by
+  simp only [Zeta23.EF.weilTest, convolution_def,
+    ContinuousLinearMap.mul_apply', Zeta23.EF.tilde]
+  have hLy0 : 0 ≤ L - y := sub_nonneg.mpr hyL
+  have hfun :
+      (fun t : ℝ =>
+        localizedZeroExtendedMode L m t *
+          conj (localizedZeroExtendedMode L n (-((-y) - t)))) =
+        (Icc (0 : ℝ) (L - y)).indicator
+          (fun t : ℝ =>
+            localizedMode L m t * conj (localizedMode L n (t + y))) := by
+    funext t
+    have harg : -((-y) - t) = t + y := by ring
+    rw [harg]
+    by_cases ht : t ∈ Icc (0 : ℝ) (L - y)
+    · have ht0 : t ∈ Icc (0 : ℝ) L := by
+        constructor
+        · exact ht.1
+        · linarith [ht.2, hy0]
+      have hty : t + y ∈ Icc (0 : ℝ) L := by
+        constructor
+        · linarith [ht.1, hy0]
+        · linarith [ht.2]
+      simp [localizedZeroExtendedMode, ht, ht0, hty]
+    · by_cases ht0 : t ∈ Icc (0 : ℝ) L
+      · have hgt : L - y < t := by
+          by_contra h
+          exact ht ⟨ht0.1, le_of_not_gt h⟩
+        have hty : t + y ∉ Icc (0 : ℝ) L := by
+          intro hmem
+          linarith [hmem.2]
+        simp [localizedZeroExtendedMode, ht, ht0, hty]
+      · simp [localizedZeroExtendedMode, ht, ht0]
+  rw [hfun, integral_indicator measurableSet_Icc,
+    integral_Icc_eq_integral_Ioc, ← intervalIntegral.integral_of_le hLy0]
+
+/-- Reflection on the finite overlap interval identifies the negative-shift
+basis overlap with the conjugate positive-shift integrand. -/
+theorem localizedNegativeOverlap_eq_reflected
+    (n m : ℤ) {L y : ℝ} (hL : 0 < L) :
+    (∫ x in 0..(L - y),
+        localizedMode L m x * conj (localizedMode L n (x + y))) =
+      ∫ x in 0..(L - y),
+        conj (localizedMode L m (x + y)) * localizedMode L n x := by
+  have hcomp :=
+    intervalIntegral.integral_comp_sub_left
+      (f := fun t : ℝ =>
+        localizedMode L m t * conj (localizedMode L n (t + y)))
+      (a := 0) (b := L - y) (d := L - y)
+  calc
+    (∫ x in 0..(L - y),
+        localizedMode L m x * conj (localizedMode L n (x + y))) =
+      ∫ x in 0..(L - y),
+        localizedMode L m ((L - y) - x) *
+          conj (localizedMode L n (((L - y) - x) + y)) := by
+            simpa using hcomp.symm
+    _ = ∫ x in 0..(L - y),
+        conj (localizedMode L m (x + y)) * localizedMode L n x := by
+      apply intervalIntegral.integral_congr
+      intro x hx
+      have harg : ((L - y) - x) + y = L - x := by ring
+      rw [harg]
+      simpa [sub_eq_add_neg] using
+        (localizedMode_reflection_product n m (L := L) (y := y) (x := x) hL)
+
+/-- The actual source symmetrized convolution of two zero-extended localized
+basis modes is exactly the hard-window correlation computed in G0-A. -/
+theorem localizedWeilCorrelation_basis_eq_hardWindow
+    (n m : ℤ) {L y : ℝ} (hL : 0 < L) (hy0 : 0 ≤ y) (hyL : y ≤ L) :
+    localizedWeilCorrelation
+        (localizedZeroExtendedMode L n)
+        (localizedZeroExtendedMode L m) y =
+      (hardWindowCharacterCorrelation n m y L : ℂ) := by
+  rw [localizedWeilCorrelation,
+    weilTest_localizedZeroExtendedMode_pos n m hy0 hyL,
+    weilTest_localizedZeroExtendedMode_neg n m hy0 hyL,
+    localizedNegativeOverlap_eq_reflected n m hL]
+  have hpos : IntervalIntegrable
+      (fun x : ℝ =>
+        localizedMode L m (x + y) * conj (localizedMode L n x))
+      volume 0 (L - y) :=
+    (by fun_prop : Continuous
+      (fun x : ℝ =>
+        localizedMode L m (x + y) * conj (localizedMode L n x))).intervalIntegrable _ _
+  have href : IntervalIntegrable
+      (fun x : ℝ =>
+        conj (localizedMode L m (x + y)) * localizedMode L n x)
+      volume 0 (L - y) :=
+    (by fun_prop : Continuous
+      (fun x : ℝ =>
+        conj (localizedMode L m (x + y)) * localizedMode L n x)).intervalIntegrable _ _
+  rw [← intervalIntegral.integral_add hpos href]
+  simp_rw [localizedMode_symmetrized_product_eq n m hL]
+  rw [intervalIntegral.integral_ofReal]
+  congr 1
+  rw [hardWindowCharacterCorrelation, intervalIntegral.integral_const_mul]
+
+/-- The G0-B basis theorem: the actual inherited `EF.weilTest` correlation is
+the theorem-authoritative CCM `qBasis` entry, not merely a formula-level
+surrogate. -/
+theorem localizedWeilCorrelation_basis_eq_qBasis
+    (n m : ℤ) {L y : ℝ} (hL : 0 < L) (hy0 : 0 ≤ y) (hyL : y ≤ L) :
+    localizedWeilCorrelation
+        (localizedZeroExtendedMode L n)
+        (localizedZeroExtendedMode L m) y =
+      (qBasis n m y L : ℂ) := by
+  rw [localizedWeilCorrelation_basis_eq_hardWindow n m hL hy0 hyL,
+    hardWindowCharacterCorrelation_eq_qBasis n m hL hy0 hyL]
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.localizedFiniteVector_eq_indicator
