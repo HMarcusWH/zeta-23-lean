@@ -61,8 +61,7 @@ theorem localizedMode_add_period
         Complex.I * (((2 * Real.pi * (n : ℝ) * x / L : ℝ) : ℂ)) +
           (n : ℂ) * (2 * (Real.pi : ℂ) * Complex.I) := by
     push_cast
-    field_simp [hL]
-    ring
+    field_simp [hL] <;> ring
   rw [hphase, Complex.exp_add]
   have hperiod :
       Complex.exp ((n : ℂ) * (2 * (Real.pi : ℂ) * Complex.I)) = 1 := by
