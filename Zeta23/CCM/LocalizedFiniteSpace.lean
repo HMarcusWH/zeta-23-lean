@@ -48,6 +48,91 @@ def localizedFiniteVector
   push_cast
   ring
 
+/-- Real part of a normalized localized Fourier mode. -/
+@[simp] theorem localizedMode_re
+    (L : ℝ) (n : ℤ) (x : ℝ) :
+    (localizedMode L n x).re =
+      (1 / Real.sqrt L) *
+        Real.cos (2 * Real.pi * (n : ℝ) * x / L) := by
+  unfold localizedMode
+  have hphase :
+      Complex.I * (((2 * Real.pi * (n : ℝ) * x / L : ℝ) : ℂ)) =
+        (((2 * Real.pi * (n : ℝ) * x / L : ℝ) : ℂ)) * Complex.I := by
+    ring
+  rw [hphase]
+  simp [Complex.mul_re, Complex.exp_ofReal_mul_I_re]
+
+/-- Imaginary part of a normalized localized Fourier mode. -/
+@[simp] theorem localizedMode_im
+    (L : ℝ) (n : ℤ) (x : ℝ) :
+    (localizedMode L n x).im =
+      (1 / Real.sqrt L) *
+        Real.sin (2 * Real.pi * (n : ℝ) * x / L) := by
+  unfold localizedMode
+  have hphase :
+      Complex.I * (((2 * Real.pi * (n : ℝ) * x / L : ℝ) : ℂ)) =
+        (((2 * Real.pi * (n : ℝ) * x / L : ℝ) : ℂ)) * Complex.I := by
+    ring
+  rw [hphase]
+  simp [Complex.mul_im, Complex.exp_ofReal_mul_I_im]
+
+/-- The real part of one shifted basis overlap is the cosine integrand used by
+G0-A.  The apparent sign is removed by cosine evenness. -/
+theorem localizedMode_overlap_re
+    (n m : ℤ) {L y x : ℝ} (hL : 0 < L) :
+    (localizedMode L m (x + y) * conj (localizedMode L n x)).re =
+      (1 / L) *
+        Real.cos
+          (2 * Real.pi *
+            ((((n - m : ℤ) : ℝ) * x - (m : ℝ) * y) / L)) := by
+  simp only [Complex.mul_re, Complex.conj_re, Complex.conj_im,
+    localizedMode_re, localizedMode_im]
+  let a : ℝ := 1 / Real.sqrt L
+  let A : ℝ := 2 * Real.pi * (m : ℝ) * (x + y) / L
+  let B : ℝ := 2 * Real.pi * (n : ℝ) * x / L
+  change
+    (a * Real.cos A) * (a * Real.cos B) -
+        (a * Real.sin A) * (-(a * Real.sin B)) =
+      (1 / L) *
+        Real.cos
+          (2 * Real.pi *
+            ((((n - m : ℤ) : ℝ) * x - (m : ℝ) * y) / L))
+  rw [show
+      (a * Real.cos A) * (a * Real.cos B) -
+          (a * Real.sin A) * (-(a * Real.sin B)) =
+        (a * a) *
+          (Real.cos A * Real.cos B + Real.sin A * Real.sin B) by ring]
+  rw [← Real.cos_sub]
+  have hscale : a * a = 1 / L := by
+    dsimp [a]
+    rw [one_div_mul_one_div, ← pow_two, Real.sq_sqrt hL.le]
+  rw [hscale]
+  have hphase :
+      A - B =
+        -(2 * Real.pi *
+          ((((n - m : ℤ) : ℝ) * x - (m : ℝ) * y) / L)) := by
+    dsimp [A, B]
+    field_simp [hL.ne'] <;> push_cast <;> ring
+  rw [hphase, Real.cos_neg]
+
+/-- Symmetrizing one shifted overlap produces the real hard-window cosine
+integrand with the production normalization. -/
+theorem localizedMode_symmetrized_product_eq
+    (n m : ℤ) {L y x : ℝ} (hL : 0 < L) :
+    localizedMode L m (x + y) * conj (localizedMode L n x) +
+        conj (localizedMode L m (x + y)) * localizedMode L n x =
+      (((2 / L) *
+        Real.cos
+          (2 * Real.pi *
+            ((((n - m : ℤ) : ℝ) * x - (m : ℝ) * y) / L)) : ℝ) : ℂ) := by
+  have hconj :
+      conj (localizedMode L m (x + y) * conj (localizedMode L n x)) =
+        conj (localizedMode L m (x + y)) * localizedMode L n x := by
+    simp
+  rw [← hconj, Complex.add_conj, localizedMode_overlap_re n m hL]
+  push_cast
+  ring
+
 /-- Integer Fourier modes are periodic with the source interval length.
 The positivity/source-validity hypothesis used downstream supplies the required
 nonzero denominator. -/
