@@ -9,11 +9,13 @@ Current validation baseline:
 ~~~text
 base main before PR #77 = 2ac1dccbefba01a4d3d4b0672fe87935ab159801
 W2-A theorem-green head = 509645ad2b30288d175ff2ef5a6651839991649e
+W2-A final promoted/synchronized head = cd20d84e30038a7d14da1e8ee1d2ca1920d344fd
+final #77 workflow state = GREEN
 date = 2026-09-01
 RH = OPEN
 ~~~
 
-Live GitHub main remains authoritative for merge status. The theorem-green head above is the exact object used for the W2-A post-green research pass.
+The final promoted head passed both repository workflows. Live GitHub main remains authoritative for the eventual merge commit SHA; this plan uses the exact validated #77 theorem/promotion state.
 
 Current theorem frontier:
 
@@ -209,61 +211,173 @@ Immediately reassess whether G1-B1B/G23 remain necessary for the shortest F1 rou
 
 ### P3 — W0-CONTRACTION: one negative function-level Weil test
 
-**Priority:** IMMEDIATE / HIGHEST-LEVERAGE
+**Priority:** IMMEDIATE / HIGHEST-LEVERAGE  
+**Primary file:** `Zeta23/ExceptionalZero/TwoTranslateContraction.lean`
 
-Suggested file:
+### Exact proved inputs to consume
+
+Do not rebuild detector or matrix infrastructure. Reuse:
 
 ~~~text
-Zeta23/ExceptionalZero/TwoTranslateContraction.lean
+exists_canonicalRadiusSequence_negativeDeterminant_of_offLine_zero
+canonicalPoleKilledTest_admissible
+twoTranslatePhaseWitness
+twoTranslatePhaseWitness_value
+twoTranslatePhaseWitness_neg_of_diagonal_norm_lt
+twoTranslateWeilMatrix
+W_star_swap
+W_translateRight_both
+W_f_translateRight_eq_star_relativeCorrelation
+zeta_Wsummand_summable
 ~~~
 
-Inputs:
+The canonical X4.6 endpoint already supplies a concrete radius-indexed detector and a negative determinant gap. W2-A supplies the missing pairwise `Summable` certificates.
 
-- `exists_canonicalRadiusSequence_negativeDeterminant_of_offLine_zero`;
-- exact two-translate phase witness and matrix quadratic identity;
-- W hermitian/common-translation algebra;
-- P0/W2-A pairwise summability package.
+### Build contract
 
-Implementation shape:
+#### W0-A — determinant-gap converse
 
-1. theoremize the elementary converse `twoTranslateDeterminantGap < 0 -> ‖W(k,k)‖ < ‖C‖` if needed;
-2. prove C²/compact-support preservation for the one translate actually used;
-3. obtain summability for the four basis pairs `(k,k)`, `(k,Tk)`, `(Tk,k)`, `(Tk,Tk)` from W2-A;
-4. prove the specialized two-term contraction, not a general-purpose sesquilinear API;
-5. instantiate `z=(|C|,-C)`, hence `h=|C|k-conj(C)Tk`;
-6. compose with the canonical countable detector endpoint.
-
-Target endpoint:
+Add the small real-algebra theorem
 
 ~~~text
-off-line zero
+twoTranslateDeterminantGap Z k t < 0
+  -> ‖Z.W k k‖ < ‖weilRelativeCorrelation Z k t‖.
+~~~
+
+The forward direction already exists as
+`twoTranslateDeterminantGap_neg_of_diagonal_norm_lt`; W0 needs the converse to consume the canonical negative-determinant endpoint directly.
+
+No zero theory belongs in this lemma.
+
+#### W0-B — translate admissibility
+
+For the exact translated detector `T_t k = translateRight k t`, theorem-lock only what W2-A and the final endpoint consume:
+
+~~~text
+ContDiff R 2 k
+  -> ContDiff R 2 (translateRight k t)
+
+HasCompactSupport k
+  -> HasCompactSupport (translateRight k t).
+~~~
+
+Reuse Mathlib/existing translation lemmas if already available; do not introduce a new translation abstraction.
+
+#### W0-C — four legal pair sums
+
+For `Tk = translateRight k t`, obtain from W2-A:
+
+~~~text
+Summable Wsummand(k,k)
+Summable Wsummand(k,Tk)
+Summable Wsummand(Tk,k)
+Summable Wsummand(Tk,Tk).
+~~~
+
+These certificates must be established before any `tsum_add`, subtraction or scalar-distribution step.
+
+#### W0-D — specialized two-term contraction
+
+Prove a theorem specialized to the two-translate basis rather than a general sesquilinear API.
+
+For coefficients `a,b : C`, define
+
+~~~text
+h = conj(a) * k + conj(b) * Tk.
+~~~
+
+Then prove, under the four explicit summability certificates,
+
+~~~text
+W(h,h)
+ =
+star (![a,b]) dot
+  (twoTranslateWeilMatrix Z k t *ᵥ ![a,b]).
+~~~
+
+The coefficient/conjugation orientation is load-bearing because repository `W` is linear in the first slot and conjugate-linear in the second.
+
+#### W0-E — phase-witness specialization
+
+Instantiate
+
+~~~text
+a = ‖C‖
+b = -C
+C = weilRelativeCorrelation Z k t.
+~~~
+
+The physical function is exactly
+
+~~~text
+h = ‖C‖ * k - conj(C) * Tk.
+~~~
+
+Do not use `-C * Tk`.
+
+Compose W0-A with the already-proved
+`twoTranslatePhaseWitness_neg_of_diagonal_norm_lt`
+and W0-D to obtain
+
+~~~text
+Re (Z.W h h) < 0.
+~~~
+
+#### W0-F — canonical off-line-zero endpoint
+
+Compose with
+
+~~~text
+exists_canonicalRadiusSequence_negativeDeterminant_of_offLine_zero
+~~~
+
+and `canonicalPoleKilledTest_admissible` to prove the production endpoint:
+
+~~~text
+(exists rho : zetaZeroConfig.carrier, (rho : C).re != 1/2)
   -> exists h : R -> C,
        ContDiff R 2 h
        and HasCompactSupport h
        and Re (zetaZeroConfig.W h h) < 0.
 ~~~
 
-Coefficient firewall:
+Prefer an endpoint that also retains the concrete detector radius/aperture witness if that costs almost nothing; otherwise keep the public theorem minimal and expose a stronger companion theorem.
+
+### Files
+
+Create:
 
 ~~~text
-z=(|C|,-C)
-h=|C| k - conj(C) T_t k.
+Zeta23/ExceptionalZero/TwoTranslateContraction.lean
 ~~~
 
-#### Green gate
+Modify only as needed:
 
-- all finite W expansions summability-safe;
-- exact negative real value follows from the already-proved 2x2 witness;
-- no new positivity or RH statement.
+~~~text
+Zeta23/ExceptionalZero.lean
+Zeta23/CCM/ClaimBindings.lean
+~~~
 
-#### Smoke tests
+Do not touch claim/route registries until the exact theorem head is green. Post-green promotion and documentation synchronization are Stage B.
 
-- z=(1,0);
-- z=(0,1);
-- C=0;
-- t=0;
-- C real positive;
-- C real negative.
+### Dumbassery / falsification gates
+
+- no finite `W` linearity before summability;
+- no coefficient-conjugation reversal;
+- no hidden positivity assumption;
+- no use of the RH-equivalent universal determinant inequality;
+- no fallback from canonical radius detector to an arbitrary detector unless Lean exposes a real blocker;
+- no general sesquilinear API unless the specialized two-term proof demonstrably duplicates more code than it saves;
+- smoke-test `b=0`, `a=0`, `t=0`, `C=0`, and real positive/negative `C`.
+
+### Green gate
+
+The exact endpoint above compiles, is sorry-free, introduces no project axiom, and is registered only after exact-head CI.
+
+### Post-green question
+
+If W0 closes, immediately ask whether W1 recentering can be theoremized with only compact-support transport and `W_translateRight_both`, and whether the resulting single explicit negative test makes the source route or internal additive route materially cheaper.
+
 
 ---
 
