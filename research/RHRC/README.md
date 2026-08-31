@@ -53,7 +53,7 @@ See `routes/R002_multi_probe/`, OBS-009 and D0-R.
 
 ### R003 — CCM / finite Weil bridge
 
-This remains the active finite/source route. The post-#75 research pass moved the immediate global implementation priority to W2-A/B/C because the existing explicit-formula proof appears to contain the direct W -> literatureRHS bridge almost verbatim. G1-B1B remains the parallel source-faithful lane.
+This remains the active finite/source route. PR #77 theorem-locks W2-A: genuine zeta `W(f,g)` equals `literatureRHS(weilTest f g)` on the exact admissible pair class, with the W-summand family proved summable. That removes W0's principal legality blocker. The immediate global priority is therefore W0, while G1-B1B remains the parallel source-faithful lane and W2-B/C remain the internal additive lane after W0/W1.
 
 Merged theorem state through the #71-#74 sequence includes:
 
