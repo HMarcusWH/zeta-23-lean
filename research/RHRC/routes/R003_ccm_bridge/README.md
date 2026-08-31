@@ -43,6 +43,8 @@ canonicalSourceMatrix
 
 No route document may identify `finiteMatrix` directly with ambient `QW_lambda|E_N`.
 
+Machine-readable current map: `CCM_CANONICAL_OBJECT_MAP_v3.json`. Version 2 is retained as the historical post-#73 snapshot.
+
 ## Why the normalization firewall exists
 
 The route history matters.
@@ -120,23 +122,21 @@ canonicalSourceMatrix = sourceEq44Matrix = cutoffFreeMatrix = dictionaryMatrix.
 
 The canonical displacement theorem and rank-at-most-two theorem are exported on `canonicalSourceMatrix`.
 
+### G1-B1A finite source kappa / source-sector bridge
+
+Closed in merged PR #72:
+
+- `sourceLength lam = 2 * log lam` is positive for `lam > 1`;
+- `u -> log(lam*u)` and `x -> lam^-1 * exp(x)` are theorem-locked inverse coordinates on the source-valid domains;
+- interval transport `[lam^-1,lam] <-> [0,sourceLength lam]` is theorem-locked;
+- source equation-(3.21) `V_n = kappa(U_n)` is preserved at formula level;
+- arbitrary complex centered finite combinations transport with unchanged coefficients;
+- `sourceFiniteVector` is the actual zero-extended source vector on `[lam^-1,lam]`;
+- `sourceKappaFiniteVector_eq_sourceFiniteVector` is the production endpoint.
+
+This closes only the finite coordinate/source-sector layer. It does not provide the multiplicative-Haar measure, bundled L2 isometry, `PsiSharp`, or ambient `QW_lambda` correspondence.
+
 ## Current open gates on merged main
-
-### G1-B1A — finite source kappa / source-sector map
-
-**OPEN ON MERGED MAIN.**
-
-Required source-valid content:
-
-- `L = 2 log lambda > 0`;
-- coordinate map `u -> log(lambda*u)`;
-- explicit reverse map `x -> lambda^-1 exp(x)`;
-- interval correspondence `[lambda^-1,lambda] <-> [0,L]`;
-- source equation-(3.21) convention `V_n = kappa(U_n)`;
-- arbitrary complex centered finite combinations;
-- zero-extended source vectors on the actual multiplicative interval.
-
-This gate must not silently treat a global real function as the source `E_N` vector.
 
 ### G1-B1B — source Hilbert/functional bridge
 
@@ -223,8 +223,8 @@ Potentially useful after canonical finite negativity becomes exact:
 4. **G0-B — actual finite localized space: REACHED IN PR #69.** The full complex centered `Fin (2*N+1)` sector is realized as actual zero-extended compactly supported L2 functions. Their inherited symmetrized `EF.weilTest` autocorrelation is globally exactly `2*dictionaryTest`, with no reality/evenness/zero-sum/positivity/RH restriction, and the zero-shift endpoint is exactly `2*coefficientMass`. See `G0_B_LOCALIZED_FINITE_SPACE_SETTLEMENT_2026_08_31.md`.
 5. **G1-A — additive source-functional restriction firewall: REACHED IN PR #70.** The repository additive half-correlation RHS is compiler-proved, on every actual full-complex localized finite vector, to equal `quadraticForm (cutoffFreeMatrix L N) u`. The factor-half comes directly from #69's global `correlation = 2*dictionaryTest`; the proof then consumes the existing arbitrary-complex deterministic RHS theorem and `dictionaryMatrix = cutoffFreeMatrix`. A lambda wrapper theorem locks `L = 2*log(lambda)`. This is not yet promoted as the external CCM `QW_lambda` restriction.
 6. **G1-B0 — Section-4 source-normalization firewall: REACHED IN PR #71.** After the post-green source reread, the direct equation-(4.4) diagonal was corrected: substituting the source formula `q(U_n,U_n)(y)=2(1-y/L)cos(2*pi*n*y/L)` gives the `(cos-exp(-x/2))*rho + w(L)` primitive, and Lean now proves the resulting source equation-(4.4) matrix is exactly the independently audited `cutoffFreeMatrix`. Separately, the printed equation-(4.11) rewrite is theorem-locked as suspect: its algebraically forced correction is `exp(x/2) * cCorrectionIntegrand`. The open proposition `SourceEq411CorrectionIdentity` now refers only to that printed rewrite; it is not used to justify the production matrix.
-7. **G1-B1A — finite kappa coordinate/source-sector bridge: IN PR #72.** Formalize `L=2*log(lambda)`, the source logarithmic coordinate and its explicit inverse, and theorem-lock the source equation-(3.21) convention `V_n=kappa(U_n)`. Distinguish formula-level source modes from the actual zero-extended `E_N` test vectors on `[lambda^-1,lambda]`, preserve arbitrary complex centered coefficients, and prove the localized kappa image is exactly that finite source vector. The multiplicative-Haar L2 isometry from Proposition 3.2(i) is not silently inferred.
-8. **G1-B1B — kappa/PsiSharp/QW source correspondence: NEXT AFTER #72.** Port the remaining source-facing analytic interface, beginning with any still-needed `d*u`/L2-isometry infrastructure from Proposition 3.2(i), then theorem-lock Proposition 3.2(ii): `QW(kappa f,kappa g)=PsiSharp(F)`, `F(u)=q(f,g)(log u)`, specialized first to the existing finite Fourier sector. Only this step earns the phrase "actual localized Weil-form restriction".
+7. **G1-B1A — finite kappa coordinate/source-sector bridge: REACHED IN PR #72.** `sourceKappaFiniteVector_eq_sourceFiniteVector` theorem-locks the production endpoint for arbitrary complex centered coefficients; companion theorems lock `L=2*log(lambda)`, the logarithmic coordinate and inverse, interval transport, equation-(3.21) `V_n=kappa(U_n)`, source support, and finite-sector membership. The multiplicative-Haar L2 isometry from Proposition 3.2(i) is deliberately not inferred.
+8. **G1-B1B — kappa/PsiSharp/QW source correspondence: NEXT.** Port the remaining source-facing analytic interface, beginning with any still-needed `d*u`/L2-isometry infrastructure from Proposition 3.2(i), then theorem-lock Proposition 3.2(ii): `QW(kappa f,kappa g)=PsiSharp(F)`, `F(u)=q(f,g)(log u)`, specialized first to the existing finite Fourier sector. Only this step earns the phrase "actual localized Weil-form restriction".
 9. **G2/G3 source-port / finite-to-infinite layer: OPEN.** After the actual `QW_lambda` finite restriction is theorem-locked through G1-B1B, port the exact form-core/Rayleigh-bottom theorem needed by the fixed-aperture route rather than re-proving a larger spectral theory from scratch.
 10. Revisit prolate/Jacobi structure only after the source restriction topology is theorem-locked. The old small-commutator-to-eigenvector route remains falsified by spectral-gap collapse.
 
@@ -243,9 +243,9 @@ See `../../DEAD_ROUTES.md`.
 
 ## Claim firewall
 
-**PROVED on merged main:** finite/dictionary/zero-side/cutoff-free matrix identities, G0 localized finite-space geometry, G1-A additive restriction, direct Section-4 matrix normalization, canonical source normalization, canonical finite displacement.
+**PROVED on merged main:** finite/dictionary/zero-side/cutoff-free matrix identities, G0 localized finite-space geometry, G1-A additive restriction, direct Section-4 matrix normalization, canonical source normalization, G1-B1A finite `kappa`/source-sector transport, canonical finite displacement.
 
-**OPEN:** source `kappa` finite-sector theorem on merged main, multiplicative-Haar L2 interface, `PsiSharp`, ambient `QW_lambda`, actual restriction theorem, form-core/minimum-eigenvalue transfer, fixed-aperture negative-bottom implication, finite-negative exclusion, RH.
+**OPEN:** multiplicative-Haar L2 interface, `PsiSharp`, ambient `QW_lambda`, actual restriction theorem, form-core/minimum-eigenvalue transfer, fixed-aperture negative-bottom implication, finite-negative exclusion, RH.
 
 ## Next-move rule
 
