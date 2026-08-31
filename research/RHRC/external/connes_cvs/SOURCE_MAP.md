@@ -222,3 +222,24 @@ The later printed equation-(4.11)/(4.14) normalization seam is now non-load-bear
 - RHRC receipts: evidence/provenance only.
 - Lean/comparator: theorem authority.
 - No file in this directory may be imported by `Zeta23`.
+
+
+## Canonical source-normalization repair
+
+After PR #71, source authority is split explicitly:
+
+- `legacyPrintedCorrection = cCorrection`, `legacyPrintedGammaL = gammaL`,
+  and `legacyPrintedMatrix = finiteMatrix` preserve the literal later printed
+  normalization.
+- `sourceEq411DerivedCorrection` is the integrated correction forced by the
+  rho-weighted algebra of (4.11).
+- `canonicalSourceMatrix = cutoffFreeMatrix` is the direct equation-(4.4)
+  source normalization.
+- Lean proves
+  `canonicalSourceMatrix = sourceEq44Matrix = dictionaryMatrix` and
+  `canonicalSourceMatrix = legacyPrintedMatrix + 2*cCorrection(L)*I`.
+- The canonical R004 displacement theorem is exported on
+  `canonicalSourceMatrix`.
+
+No source map may identify `finiteMatrix` directly with the ambient external
+`QW_lambda|E_N`.  That correspondence remains a separate open bridge.
