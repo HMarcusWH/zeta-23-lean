@@ -37,6 +37,13 @@ The fork adds theorem-bearing Lean code under, among other places:
 
 Research governance, discovery tooling, source maps, falsifiers, route registries, and evidence receipts live under `research/RHRC/`.
 
+Two living research-control SSOTs are maintained there:
+
+- [RESEARCH_LEADS.md](research/RHRC/RESEARCH_LEADS.md) — the complete accumulated lead inventory: active, testing, blocked, dormant, promoted, refuted and quarantined ideas, with formal status, evidence, blockers, composition opportunities and cheapest falsifiers;
+- [CURRENT_RESEARCH_PLAN.md](research/RHRC/CURRENT_RESEARCH_PLAN.md) — the current execution order from the exact merged theorem state, including parallel lanes, decision gates, stop conditions and post-F1 work.
+
+The distinction is deliberate: the lead ledger remembers the whole research option space; the current plan says what to build next. Neither overrides Lean/compiler/CI or the machine claim/route registries.
+
 The rule is strict:
 
 > Research tooling may suggest or falsify. Lean/compiler/CI determines theoremhood.
@@ -55,7 +62,7 @@ Exact block-level off-critical separation has been proved. Generic windowed visi
 
 ### R003 — CCM / finite Weil bridge
 
-This is the current critical finite-to-source route.
+This remains the active finite-to-source route. After the post-#75 research pass, however, the current **global execution priority** is the internal W2 additive bridge because the live explicit-formula proof already contains most of the required W -> literatureRHS theorem internally. G1-B1B continues in parallel as the source-faithful route.
 
 Merged work through the #71-#74 sequence has established, among other things:
 
@@ -130,25 +137,44 @@ Any downstream spectral-sign argument must therefore identify the canonical matr
 
 ## Current critical path
 
-The stable work-package names, not historical PR numbers, define the mathematical route:
+The stable work-package names, not historical PR numbers, define the mathematics.
+
+Merged shared infrastructure:
 
 ```text
+canonical countable detector bank                    CLOSED
 finite dictionary / zero-side bridge                 CLOSED
-  -> cutoff-free/canonical finite source matrix      CLOSED
-  -> G0 localized basis + finite space               CLOSED
-  -> G1-A additive finite restriction                CLOSED
-  -> direct source normalization/firewall            CLOSED
-  -> finite kappa/source-sector bridge               CLOSED
-  -> G1-B1B d*u / PsiSharp / QW correspondence       OPEN
-  -> G1-final QW_lambda|E_N = canonical matrix       OPEN
-  -> canonical high-frequency falsifier              OPEN
-  -> source form-core / lowest-eigenvalue transfer   OPEN
-  -> fixed-aperture negative-bottom source theorem   OPEN
-  -> canonical finite-negative exclusion             OPEN
-  -> RH                                               OPEN
+cutoff-free/canonical finite source matrix            CLOSED
+G0 localized basis + finite space                    CLOSED
+G1-A additive finite restriction                     CLOSED
+direct source normalization/firewall                 CLOSED
+G1-B1A finite kappa/source-sector bridge              CLOSED
 ```
 
-The detailed execution plan is maintained outside this README. This file states repository identity and merged theorem state; it is not a substitute for the current build-plan / handover document.
+Current execution priority:
+
+```text
+W2-A  W = literatureRHS(weilTest)                     OPEN
+ -> W2-B reflection/evenization                       OPEN
+ -> W2-C W(h,h) = localizedWeilAdditiveRHS(h,h)       OPEN
+ -> W0 one negative function-level Weil test          OPEN
+ -> W1 support/recentering                            OPEN
+ -> F0-B finite additive/Fourier approximation        OPEN
+ -> F1 negative canonical finite quadratic form       OPEN
+```
+
+Parallel source-faithful lane:
+
+```text
+G1-B1B d*u / L2 / PsiSharp / QW correspondence       OPEN
+ -> G1-final QW_lambda|E_N = canonical matrix         OPEN
+ -> G23 source core / negative finite transfer        OPEN
+ -> F1 negative canonical finite quadratic form       OPEN
+```
+
+After F1, the planned finite-wall program is K0 parity -> K1 first singularity/prime events -> K2 kernel/displacement/resolvent rigidity -> K3 arithmetic crossing exclusion. F1 is not RH; it triggers another full post-green research pass.
+
+See [CURRENT_RESEARCH_PLAN.md](research/RHRC/CURRENT_RESEARCH_PLAN.md) for the exact execution queue and [RESEARCH_LEADS.md](research/RHRC/RESEARCH_LEADS.md) for the complete lead inventory.
 
 ## Evidence and authority order
 
@@ -157,9 +183,10 @@ When documents disagree, use this order:
 1. live GitHub head, Lean compiler, and CI;
 2. `research/RHRC/CLAIM_REGISTRY.json` and `research/RHRC/routes/ROUTE_REGISTRY.json`;
 3. the active route README, especially `research/RHRC/routes/R003_ccm_bridge/README.md`;
-4. the current external build-plan / handover SSOT;
-5. PR-specific settlement documents;
-6. older route plans, numerical receipts, and historical audits.
+4. the living research-control SSOTs — `RESEARCH_LEADS.md` for option/status memory and `CURRENT_RESEARCH_PLAN.md` for execution order;
+5. the current external build-plan / handover SSOT;
+6. PR-specific settlement documents;
+7. older route plans, numerical receipts, and historical audits.
 
 See [research/RHRC/DOCUMENTATION_AUTHORITY.md](research/RHRC/DOCUMENTATION_AUTHORITY.md).
 
@@ -175,7 +202,8 @@ After every meaningful green result the project:
 - searches upstream and downstream implications;
 - revisits previously failed routes whose prerequisites changed;
 - tries to falsify new RH-relevant clues;
-- updates route state without upgrading claims beyond what Lean proved.
+- updates route state without upgrading claims beyond what Lean proved;
+- updates the living lead ledger and current plan whenever a lead is promoted, killed, resurrected, blocked, or reprioritized.
 
 RH remains OPEN unless the exact terminal RH theorem passes the full proof and claim-validation gates.
 
@@ -187,6 +215,8 @@ Zeta23/                          Lean mathematics
 Zeta23/ExceptionalZero/          R001/R002 theorem-bearing fork work
 Zeta23/CCM/                      R003/R004 finite CCM/Weil formalization
 research/RHRC/                   route control plane, source maps, audits, falsifiers, receipts
+research/RHRC/RESEARCH_LEADS.md   living complete research-lead inventory
+research/RHRC/CURRENT_RESEARCH_PLAN.md living execution plan from merged theorem state
 research/RHRC/routes/R001_*      exceptional-zero route
 research/RHRC/routes/R002_*      multi-probe route
 research/RHRC/routes/R003_*      CCM / finite Weil bridge
