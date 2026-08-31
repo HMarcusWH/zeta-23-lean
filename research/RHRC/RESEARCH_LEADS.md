@@ -61,7 +61,7 @@ After every meaningful green result:
 5. update CURRENT_RESEARCH_PLAN.md if execution order changed;
 6. keep historical settlement documents historical.
 
-All entries below were re-audited against main 09d55e93ddcb6f6765b32505309f177c9024f0cd.
+Last full theorem audit: PR #77 W2-A theorem head `509645ad2b30288d175ff2ef5a6651839991649e`, based on merged main `2ac1dccbefba01a4d3d4b0672fe87935ab159801`. The promotion/synchronization edits in this PR remain subordinate to the final exact-head CI and merge state.
 
 ---
 
@@ -69,7 +69,7 @@ All entries below were re-audited against main 09d55e93ddcb6f6765b32505309f177c9
 
 ## L-W0-01 — canonical two-translate contraction
 
-**Research status:** ACTIVE  
+**Research status:** ACTIVE / HIGHEST-LEVERAGE IMMEDIATE TARGET  
 **Formal status:** OPEN, with strong PROVED inputs  
 **Origin:** X3/X4/X4.5/X4.6 two-translate program.
 
@@ -109,11 +109,11 @@ PROVED inputs include:
 
 ### Main blocker
 
-Finite sesquilinear contraction must be summability-safe because ZeroConfig.W is a tsum. Do not expand divergent totalized sums by algebra alone.
+The former summability blocker is now removed by PROVED claim `R003_WEIL_PAIR_LITERATURE_BRIDGE`: every required admissible pair has a theorem-authoritative `Summable` W-summand family. The remaining obligation is finite two-term sesquilinear contraction with the repository's exact coefficient convention, plus a tiny determinant-gap-to-norm-gap step if the canonical X4.6 endpoint is used directly.
 
 ### Composition
 
-L-W2-01 can expose the needed summability certificate from EF_lit. L-W1-01 then recenters the negative test inside a finite aperture.
+Use the W2-A summability certificates to justify the four pairwise tsums for the basis `[k, T_t k]`, prove the matrix quadratic equals `W(h,h)` for `h = |C| k - conj(C) T_t k`, and then compose with the canonical countable detector theorem. L-W1-01 can then recenter the resulting negative test inside a finite aperture.
 
 ### Fastest falsification / test
 
@@ -149,45 +149,56 @@ From a compact negative h formed by finitely many detector translates, extract a
 
 ## L-W2-01 — direct W to literatureRHS(weilTest) extraction
 
-**Research status:** ACTIVE / HIGHEST-LEVERAGE IMMEDIATE TARGET  
-**Formal status:** LEAD WITH STRONG EXISTING PROOF SUPPORT
+**Research status:** PROMOTED  
+**Formal status:** PROVED  
+**Claim ID:** `R003_WEIL_PAIR_LITERATURE_BRIDGE`  
+**Theorem:** `Zeta23.ExceptionalZero.zeta_W_literatureRHS_package`
 
-### Target
+### What is now formally true
 
-For the exact C2 compact-support class,
+For arbitrary complex-valued `f,g`, with `f` C² and compactly supported and `g` merely continuous and compactly supported,
 
 ~~~text
-Z.W f g = EF.literatureRHS (EF.weilTest f g)
+Summable (fun rho => zetaZeroConfig.Wsummand f g rho)
 ~~~
 
-together with the Summable certificate for the W summand family.
+and
 
-### Why this lead strengthened after PR #75
+~~~text
+zetaZeroConfig.W f g
+  = EF.literatureRHS (EF.weilTest f g).
+~~~
 
-The live proof of Zeta23.EF.prop_EF_of_lit already performs the essential work internally:
+The asymmetric regularity is stronger than the original plan: the second leg does not need C².
 
-- proves EF.weilTest f g is C2 and compactly supported;
-- obtains EF_lit's zero-side summability and literatureRHS equality;
-- proves paperFT_weilTest;
-- identifies the literature zero summand termwise with Z.Wsummand f g.
+### Exact green evidence
 
-Only later does prop_EF_of_lit introduce the heavier L, nuX and real-line integral package.
+PR #77 theorem head:
 
-This is therefore mostly theorem extraction, not new analytic theory.
+~~~text
+509645ad2b30288d175ff2ef5a6651839991649e
+~~~
 
-### Strategic value
+passed the CCM build, ExceptionalZero build, no-placeholder gate, RHRC regression suite, normalization/source firewalls, and axiom audit. The theorem surface depends only on `propext`, `Classical.choice`, and `Quot.sound`.
 
-If green, it gives a clean summability interface for L-W0-01 and starts the shortest internal route toward F1.
+### What changed
 
-### Fastest falsification / test
+The proof extracted the first half of `EF.prop_EF_of_lit` without aperture `L`, `nuX`, `hFk`, `hmu`, real/even hypotheses, or source `QW`. This is dependency compression: a previously buried proof fragment is now a reusable theorem and a legal summability interface.
 
-Extract the theorem without any aperture L, hFk or hmu assumptions. If those assumptions unexpectedly reappear, identify exactly which internal equality actually needs them.
+### Downstream effect
+
+W0 no longer has to invent or assume summability for the four pairwise two-translate terms. This is why W0 now outranks W2-B as the immediate global target.
+
+### New lead
+
+The one-sided regularity may be useful later for mixed smooth/continuous approximation arguments. This is only a LEAD; arbitrary zero-extended localized finite vectors are not generally continuous, so W2-A does not by itself close F0-B.
+
 
 ---
 
 ## L-W2-02 — literatureRHS reflection/evenization invariance
 
-**Research status:** ACTIVE  
+**Research status:** ACTIVE / INTERNAL-LANE NEXT AFTER W0/W1  
 **Formal status:** OPEN
 
 ### Target
