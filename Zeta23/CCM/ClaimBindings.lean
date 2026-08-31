@@ -105,6 +105,17 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.CCM.finiteRestriction_eq_cutoffFreeQuadraticForm_of_matches
 
 
+
+
+#check Zeta23.CCM.sourceEq44GammaL_eq_cutoffFreeGammaL
+#print axioms Zeta23.CCM.sourceEq44GammaL_eq_cutoffFreeGammaL
+#check Zeta23.CCM.sourceEq44ArchComponent_eq_cutoffFreeArchComponent
+#print axioms Zeta23.CCM.sourceEq44ArchComponent_eq_cutoffFreeArchComponent
+#check Zeta23.CCM.sourceEq44Entry_eq_cutoffFreeEntry
+#print axioms Zeta23.CCM.sourceEq44Entry_eq_cutoffFreeEntry
+#check Zeta23.CCM.sourceEq44Matrix_eq_cutoffFreeMatrix
+#print axioms Zeta23.CCM.sourceEq44Matrix_eq_cutoffFreeMatrix
+
 #check Zeta23.CCM.sourceEq411_integrand_decomposition
 #print axioms Zeta23.CCM.sourceEq411_integrand_decomposition
 #check Zeta23.CCM.sourceEq411DerivedCorrectionIntegrand_eq_exp_mul_cCorrectionIntegrand
