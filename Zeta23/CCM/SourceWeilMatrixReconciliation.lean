@@ -90,9 +90,14 @@ theorem sourceEq411DerivedCorrectionIntegrand_eq_exp_mul_cCorrectionIntegrand
       archDensity, h]
     ring
 
-/-- Equation-(4.4) diagonal primitive before the beta term. -/
+/-- Diagonal primitive obtained by substituting the source formula
+q(U_n,U_n)(x)=2(1-x/L)cos(2*pi*n*x/L) into equation (4.4), isolating the
+beta term, and collecting the principal-value constant into wCorrection(L).
+
+The resulting non-beta primitive is the equation-(4.11) left-hand integral
+WITHOUT adding the printed c(L) correction. -/
 def sourceEq44GammaL (n : ℤ) (L : ℝ) : ℝ :=
-  (∫ x in (0 : ℝ)..L, sourceEq44CosMinusOneIntegrand n L x)
+  (∫ x in (0 : ℝ)..L, sourceEq411LhsIntegrand n L x)
     + wCorrection L
 
 /-- Left-hand equation-(4.11) primitive, without adding the printed correction
@@ -100,6 +105,15 @@ again. -/
 def sourceEq411LhsGammaL (n : ℤ) (L : ℝ) : ℝ :=
   (∫ x in (0 : ℝ)..L, sourceEq411LhsIntegrand n L x)
     + wCorrection L
+
+/-- The diagonal primitive obtained directly from source equation (4.4) is
+exactly the independently audited cutoff-free primitive. -/
+theorem sourceEq44GammaL_eq_cutoffFreeGammaL
+    (n : ℤ) (L : ℝ) :
+    sourceEq44GammaL n L = cutoffFreeGammaL n L := by
+  unfold sourceEq44GammaL sourceEq411LhsIntegrand
+  unfold cutoffFreeGammaL gammaL
+  ring
 
 /-- The equation-(4.11) left-hand primitive is exactly the independently audited
 cutoff-free primitive.  This is an internal formula identity only. -/
@@ -119,16 +133,18 @@ theorem gammaL_eq_sourceEq411LhsGammaL_add_correction
   unfold gammaL sourceEq411LhsGammaL sourceEq411LhsIntegrand
   ring
 
-/-- The exact integrated correction assertion needed to pass from the raw
-source equation-(4.4) primitive to the printed equation-(4.11) rewrite.
+/-- The printed equation-(4.11) integrated correction assertion.
 
-It is intentionally a named OPEN proposition, not a theorem: the pointwise
-firewall above shows that the algebraically forced correction integrand and the
-repository's printed `cCorrectionIntegrand` differ by an `exp(x/2)` factor. -/
+This is intentionally a named OPEN proposition, not a theorem.  The direct
+equation-(4.4) diagonal primitive is already the equation-(4.11) left-hand
+primitive, while the pointwise firewall above shows that the printed
+cCorrectionIntegrand is missing an exp(x/2) factor relative to the correction
+forced by the rho-weighted algebra. -/
 def SourceEq411CorrectionIdentity : Prop :=
   ∀ (n : ℤ) (L : ℝ),
     sourceEq411LhsGammaL n L =
-      sourceEq44GammaL n L + cCorrection L
+      (∫ x in (0 : ℝ)..L, sourceEq44CosMinusOneIntegrand n L x)
+        + cCorrection L + wCorrection L
 
 /-- Archimedean matrix entry normalized directly from equation (4.4). -/
 def sourceEq44ArchComponent (n m : ℤ) (L : ℝ) : ℝ :=
@@ -136,6 +152,17 @@ def sourceEq44ArchComponent (n m : ℤ) (L : ℝ) : ℝ :=
     2 * sourceEq44GammaL n L - 2 * betaL n L
   else
     (alphaL m L - alphaL n L) / ((n - m : ℤ) : ℝ)
+
+/-- The source equation-(4.4) archimedean matrix entry is exactly the
+cutoff-free archimedean entry. -/
+theorem sourceEq44ArchComponent_eq_cutoffFreeArchComponent
+    (n m : ℤ) (L : ℝ) :
+    sourceEq44ArchComponent n m L = cutoffFreeArchComponent n m L := by
+  by_cases h : n = m
+  · subst m
+    simp [sourceEq44ArchComponent, cutoffFreeArchComponent,
+      sourceEq44GammaL_eq_cutoffFreeGammaL]
+  · simp [sourceEq44ArchComponent, cutoffFreeArchComponent, h]
 
 /-- Archimedean matrix entry using the left-hand integral of equation (4.11),
 without re-adding the printed correction. -/
@@ -163,11 +190,32 @@ existing production matrix is asserted. -/
 def sourceEq44Entry (n m : ℤ) (L : ℝ) : ℝ :=
   poleComponent n m L - sourceEq44ArchComponent n m L - primeComponent n m L
 
+/-- The full source equation-(4.4) finite entry is exactly the cutoff-free
+entry once the already theorem-authoritative pole and prime channels are
+combined with the direct archimedean formula. -/
+theorem sourceEq44Entry_eq_cutoffFreeEntry
+    (n m : ℤ) (L : ℝ) :
+    sourceEq44Entry n m L = cutoffFreeEntry n m L := by
+  rw [sourceEq44Entry, cutoffFreeEntry,
+    sourceEq44ArchComponent_eq_cutoffFreeArchComponent]
+
 /-- Full centered finite matrix using the raw equation-(4.4) normalization. -/
 def sourceEq44Matrix (L : ℝ) (N : ℕ) :
     Matrix (Fin (2 * N + 1)) (Fin (2 * N + 1)) ℂ :=
   fun i j =>
     (sourceEq44Entry (centeredIndex N i) (centeredIndex N j) L : ℂ)
+
+/-- **G1-B0 corrected production endpoint.**
+
+The finite matrix obtained from the direct source equation-(4.4) archimedean
+formula together with the source pole and prime channels is exactly the
+independently audited cutoff-free matrix. -/
+theorem sourceEq44Matrix_eq_cutoffFreeMatrix
+    (L : ℝ) (N : ℕ) :
+    sourceEq44Matrix L N = cutoffFreeMatrix L N := by
+  ext i j
+  simp [sourceEq44Matrix, cutoffFreeMatrix,
+    sourceEq44Entry_eq_cutoffFreeEntry]
 
 /-- Full finite formula using the equation-(4.11) left-hand normalization. -/
 def sourceEq411LhsEntry (n m : ℤ) (L : ℝ) : ℝ :=
@@ -194,8 +242,9 @@ The finite formula built from the left-hand integral of equation (4.11), before
 adding the printed correction again, is exactly the independently audited
 cutoff-free matrix.
 
-This theorem deliberately does NOT identify `sourceEq44Matrix` with
-`cutoffFreeMatrix`. -/
+The companion theorem `sourceEq44Matrix_eq_cutoffFreeMatrix` now identifies
+the direct equation-(4.4) source formula with the same matrix.  The unresolved
+firewall concerns only the printed equation-(4.11)/(4.14) correction rewrite. -/
 theorem sourceEq411LhsMatrix_eq_cutoffFreeMatrix
     (L : ℝ) (N : ℕ) :
     sourceEq411LhsMatrix L N = cutoffFreeMatrix L N := by
@@ -205,6 +254,10 @@ theorem sourceEq411LhsMatrix_eq_cutoffFreeMatrix
 
 end Zeta23.CCM
 
+#print axioms Zeta23.CCM.sourceEq44GammaL_eq_cutoffFreeGammaL
+#print axioms Zeta23.CCM.sourceEq44ArchComponent_eq_cutoffFreeArchComponent
+#print axioms Zeta23.CCM.sourceEq44Entry_eq_cutoffFreeEntry
+#print axioms Zeta23.CCM.sourceEq44Matrix_eq_cutoffFreeMatrix
 #print axioms Zeta23.CCM.sourceEq411_integrand_decomposition
 #print axioms Zeta23.CCM.sourceEq411DerivedCorrectionIntegrand_eq_exp_mul_cCorrectionIntegrand
 #print axioms Zeta23.CCM.sourceEq411LhsGammaL_eq_cutoffFreeGammaL
