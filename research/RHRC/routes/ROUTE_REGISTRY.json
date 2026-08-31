@@ -52,12 +52,13 @@
         "R003_CUTOFF_FREE_MATRIX_MAP",
         "R003_WEIL_DISPLACEMENT",
         "R003_LOCALIZED_BASIS_CORRELATION",
-        "R003_LOCALIZED_FINITE_SPACE_CORRELATION"
+        "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+        "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "Finite R003 construction and D0-C are closed through PR #65; D0-R is settled by #66 and D0-B by #67. G0-A / PR #68 theorem-locks the hard-window centered Fourier-character geometry. G0-B / PR #69 theorem-locks the actual zero-extended full-complex finite space and its global inherited Weil autocorrelation as exactly 2*dictionaryTest, including the zero-shift coefficient-mass endpoint. G1 must now identify the correct source localized Weil functional/restriction without defining that identification into existence; form-core density, Rayleigh-Ritz convergence, positivity, finite negative persistence, and RH remain open."
+      "note": "Finite R003/D0/G0 are closed. PR #69 theorem-locks the actual zero-extended full-complex finite space and global inherited Weil autocorrelation = 2*dictionaryTest. G1-A / PR #70 now theorem-locks the repository additive half-correlation explicit-formula RHS on that finite space as exactly quadraticForm(cutoffFreeMatrix,u), with the source convention L=2*log(lambda). The remaining G1-B obligation is explicitly isolated: prove the external Connes--Consani--Moscovici QW_lambda/kappa/PsiSharp source form matches this additive pullback on the finite sector. Do not promote actual QW restriction before that identification. Form-core/Rayleigh-bottom transfer, positivity, finite negative persistence, Suzuki closure, and RH remain open."
     },
     {
       "route_id": "R004_prolate_v2",
