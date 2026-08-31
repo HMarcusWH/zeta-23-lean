@@ -773,8 +773,7 @@ theorem localizedWeilCorrelation_finiteVector_eq_two_mul_dictionaryTest_of_nonne
         (localizedFiniteVector L N u) y =
       2 * dictionaryTest N u L y := by
   rw [localizedWeilCorrelation_finiteVector_eq_basis_sum N u hy0 hyL]
-  simp_rw [localizedWeilCorrelation_basis_eq_qBasis
-    (L := L) (y := y) hL hy0 hyL]
+  simp_rw [localizedWeilCorrelation_basis_eq_qBasis _ _ hL hy0 hyL]
   have habs : |y| ≤ L := by
     simpa [abs_of_nonneg hy0] using hyL
   rw [dictionaryTest_eq_qBasisContract_of_abs_le N u habs,
