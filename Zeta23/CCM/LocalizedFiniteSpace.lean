@@ -450,7 +450,7 @@ theorem localizedFiniteFunction_overlap_eq_basis_sum
     (L : ℝ) (N : ℕ) (u : Fin (2 * N + 1) → ℂ) (x y : ℝ) :
     localizedFiniteFunction L N u (x + y) *
         conj (localizedFiniteFunction L N u x) =
-      ∑ i, ∑ j,
+      ∑ j, ∑ i,
         conj (u i) *
           (localizedMode L (centeredIndex N j) (x + y) *
             conj (localizedMode L (centeredIndex N i) x)) * u j := by
@@ -463,8 +463,7 @@ theorem localizedFiniteFunction_overlap_eq_basis_sum
   rw [Finset.mul_sum]
   apply Finset.sum_congr rfl
   intro i hi
-  ring_nf
-  rw [Finset.sum_comm]
+  ring
 
 /-- Negative finite-vector overlap expanded in the same centered basis and
 coefficient convention. -/
@@ -472,7 +471,7 @@ theorem localizedFiniteFunction_reverseOverlap_eq_basis_sum
     (L : ℝ) (N : ℕ) (u : Fin (2 * N + 1) → ℂ) (x y : ℝ) :
     localizedFiniteFunction L N u x *
         conj (localizedFiniteFunction L N u (x + y)) =
-      ∑ i, ∑ j,
+      ∑ j, ∑ i,
         conj (u i) *
           (localizedMode L (centeredIndex N j) x *
             conj (localizedMode L (centeredIndex N i) (x + y))) * u j := by
@@ -485,8 +484,7 @@ theorem localizedFiniteFunction_reverseOverlap_eq_basis_sum
   rw [Finset.mul_sum]
   apply Finset.sum_congr rfl
   intro i hi
-  ring_nf
-  rw [Finset.sum_comm]
+  ring
 
 /-- For a nonnegative shift inside the aperture, the actual finite vector
 Weil test is the overlap of the formula-level finite Fourier functions. -/
@@ -593,7 +591,7 @@ theorem localizedWeilCorrelation_finiteVector_eq_basis_sum
     localizedWeilCorrelation
         (localizedFiniteVector L N u)
         (localizedFiniteVector L N u) y =
-      ∑ i, ∑ j,
+      ∑ j, ∑ i,
         conj (u i) *
           localizedWeilCorrelation
             (localizedZeroExtendedMode L (centeredIndex N i))
@@ -630,7 +628,7 @@ theorem localizedWeilCorrelation_finiteVector_eq_basis_sum
       (∫ x in 0..(L - y),
         localizedFiniteFunction L N u (x + y) *
           conj (localizedFiniteFunction L N u x)) =
-        ∑ i, ∑ j,
+        ∑ j, ∑ i,
           conj (u i) *
             (∫ x in 0..(L - y),
               localizedMode L (centeredIndex N j) (x + y) *
@@ -638,19 +636,19 @@ theorem localizedWeilCorrelation_finiteVector_eq_basis_sum
     simp_rw [localizedFiniteFunction_overlap_eq_basis_sum]
     rw [intervalIntegral.integral_finsetSum]
     · apply Finset.sum_congr rfl
-      intro i hi
+      intro j hj
       rw [intervalIntegral.integral_finsetSum]
       · simp_rw [intervalIntegral.integral_const_mul,
           intervalIntegral.integral_mul_const]
-      · intro j hj
+      · intro i hi
         exact hpos i j
-    · intro i hi
-      exact (IntervalIntegrable.sum Finset.univ fun j hj => hpos i j)
+    · intro j hj
+      exact (IntervalIntegrable.sum Finset.univ fun i hi => hpos i j)
   have hnegExp :
       (∫ x in 0..(L - y),
         localizedFiniteFunction L N u x *
           conj (localizedFiniteFunction L N u (x + y))) =
-        ∑ i, ∑ j,
+        ∑ j, ∑ i,
           conj (u i) *
             (∫ x in 0..(L - y),
               localizedMode L (centeredIndex N j) x *
@@ -658,20 +656,20 @@ theorem localizedWeilCorrelation_finiteVector_eq_basis_sum
     simp_rw [localizedFiniteFunction_reverseOverlap_eq_basis_sum]
     rw [intervalIntegral.integral_finsetSum]
     · apply Finset.sum_congr rfl
-      intro i hi
+      intro j hj
       rw [intervalIntegral.integral_finsetSum]
       · simp_rw [intervalIntegral.integral_const_mul,
           intervalIntegral.integral_mul_const]
-      · intro j hj
+      · intro i hi
         exact hneg i j
-    · intro i hi
-      exact (IntervalIntegrable.sum Finset.univ fun j hj => hneg i j)
+    · intro j hj
+      exact (IntervalIntegrable.sum Finset.univ fun i hi => hneg i j)
   rw [hposExp, hnegExp, ← Finset.sum_add_distrib]
   apply Finset.sum_congr rfl
-  intro i hi
+  intro j hj
   rw [← Finset.sum_add_distrib]
   apply Finset.sum_congr rfl
-  intro j hj
+  intro i hi
   rw [localizedWeilCorrelation,
     weilTest_localizedZeroExtendedMode_pos
       (centeredIndex N i) (centeredIndex N j) hy0 hyL,
