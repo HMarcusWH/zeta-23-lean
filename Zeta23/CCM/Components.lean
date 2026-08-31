@@ -20,7 +20,7 @@ def cCorrectionIntegrand (x : ℝ) : ℝ :=
   if x = 0 then 1 / 4 else
     (1 - Real.exp (-x / 2)) / (Real.exp x - Real.exp (-x))
 
-/-- R004's index-independent `c_correction(L)`. -/
+/-- Historical printed equation-(4.11) correction integral.  This definition is frozen for theorem compatibility; PR #71 showed that the correction forced by the rho-weighted algebra differs by an `exp(x/2)` factor pointwise. -/
 def cCorrection (L : ℝ) : ℝ :=
   ∫ x in (0 : ℝ)..L, cCorrectionIntegrand x
 
@@ -43,7 +43,7 @@ def betaL (n : ℤ) (L : ℝ) : ℝ :=
     (if x = 0 then 1 / 2
     else x * Real.cos (2 * Real.pi * (n : ℝ) * x / L) * archDensity x)
 
-/-- Diagonal regularized term `gamma_L(n)`. -/
+/-- Historical literal printed-(4.14) diagonal primitive.  This definition is frozen for theorem compatibility and is not the canonical direct equation-(4.4) source primitive. -/
 def gammaL (n : ℤ) (L : ℝ) : ℝ :=
   (∫ x in (0 : ℝ)..L,
     (if x = 0 then 1 / 4
@@ -70,7 +70,7 @@ def primeComponent (n m : ℤ) (L : ℝ) : ℝ :=
   ∑ k ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
     (Λ k / Real.sqrt k : ℝ) * qBasis n m (Real.log k) L
 
-/-- Exact scalar entry of the R004 finite CCM matrix. -/
+/-- Exact scalar entry of the historical printed-normalization finite matrix.  The canonical direct-source entry is `cutoffFreeEntry` / `sourceEq44Entry`. -/
 def entry (n m : ℤ) (L : ℝ) : ℝ :=
   poleComponent n m L - archComponent n m L - primeComponent n m L
 
