@@ -191,11 +191,9 @@ sourceEq411LhsGammaL  = cutoffFreeGammaL
 sourceEq411LhsMatrix = cutoffFreeMatrix.
 ```
 
-The raw equation-(4.4) matrix is separately named `sourceEq44Matrix`; there is
-currently **no promoted theorem** identifying it with `cutoffFreeMatrix` or
-with the external ambient `QW_lambda` form.
+After the post-green correction, the direct equation-(4.4) diagonal is represented by `sourceEq44GammaL`, obtained by substituting the source diagonal `q(U_n,U_n)` formula into (4.4). Lean proves `sourceEq44GammaL = cutoffFreeGammaL` and lifts this to the promoted theorem `sourceEq44Matrix = cutoffFreeMatrix`. The external ambient `QW_lambda` / `kappa` / `PsiSharp` correspondence remains separate.
 
-The unresolved printed equation-(4.11) integrated correction is represented by
+The unresolved printed equation-(4.11) integrated rewrite is represented by
 the deliberately unproved proposition
 
 ```text
@@ -216,9 +214,7 @@ This executable observation is **source/oracle evidence only**.  It does not
 promote the raw equation-(4.4) / equation-(4.11) / equation-(4.14) source
 correspondence to a theorem.
 
-The next source task is therefore to resolve the manuscript/TeX/executable
-normalization seam before formalizing `kappa`, `PsiSharp`, or the actual
-external `QW_lambda` finite restriction.
+The later printed equation-(4.11)/(4.14) normalization seam is now non-load-bearing for the direct finite source matrix. The next substantive source task is therefore to formalize or theorem-lock the external `kappa` / `PsiSharp` / `QW_lambda` correspondence, using the direct equation-(4.4) route as the finite matrix authority.
 
 ## Authority boundary
 
