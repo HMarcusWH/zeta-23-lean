@@ -47,7 +47,7 @@ theorem localizedFiniteVector_eq_indicator
       (Icc (0 : ℝ) L).indicator (localizedFiniteFunction L N u) := by
   ext x
   by_cases hx : x ∈ Icc (0 : ℝ) L
-  · simp [localizedFiniteVector, localizedZeroExtendedMode, localizedFiniteFunction, hx]
+  · simp [localizedFiniteVector, localizedZeroExtendedMode, hx]
   · simp [localizedFiniteVector, localizedZeroExtendedMode, localizedFiniteFunction, hx]
 
 /-- Pointwise support of a zero-extended mode stays in the source interval. -/
@@ -89,7 +89,7 @@ The proof uses only continuity of the finite Fourier combination, its boundednes
 on the compact source interval, and the zero-extension support certificate. -/
 theorem localizedFiniteVector_memLp_two
     (L : ℝ) (N : ℕ) (u : Fin (2 * N + 1) → ℂ) :
-    MemLp (localizedFiniteVector L N u) (2 : ℝ≥0∞) volume := by
+    MemLp (localizedFiniteVector L N u) (2 : ENNReal) volume := by
   have hcont : Continuous (localizedFiniteFunction L N u) :=
     continuous_localizedFiniteFunction L N u
   obtain ⟨C, hC⟩ :=
