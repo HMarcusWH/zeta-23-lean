@@ -10,6 +10,7 @@ import Zeta23.CCM.CutoffFreeMatrix
 import Zeta23.CCM.LocalizedBasis
 import Zeta23.CCM.LocalizedFiniteSpace
 import Zeta23.CCM.LocalizedWeilRestriction
+import Zeta23.CCM.SourceWeilMatrixReconciliation
 import Zeta23.CCM.DictionaryRHSIdentity
 import Zeta23.ExceptionalZero.DisplacementTransfer
 
@@ -102,3 +103,30 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_cutoffFreeQuadraticForm_ofLambda
 #check Zeta23.CCM.finiteRestriction_eq_cutoffFreeQuadraticForm_of_matches
 #print axioms Zeta23.CCM.finiteRestriction_eq_cutoffFreeQuadraticForm_of_matches
+
+
+
+
+#check Zeta23.CCM.sourceEq44GammaL_eq_cutoffFreeGammaL
+#print axioms Zeta23.CCM.sourceEq44GammaL_eq_cutoffFreeGammaL
+#check Zeta23.CCM.sourceEq44ArchComponent_eq_cutoffFreeArchComponent
+#print axioms Zeta23.CCM.sourceEq44ArchComponent_eq_cutoffFreeArchComponent
+#check Zeta23.CCM.sourceEq44Entry_eq_cutoffFreeEntry
+#print axioms Zeta23.CCM.sourceEq44Entry_eq_cutoffFreeEntry
+#check Zeta23.CCM.sourceEq44Matrix_eq_cutoffFreeMatrix
+#print axioms Zeta23.CCM.sourceEq44Matrix_eq_cutoffFreeMatrix
+
+#check Zeta23.CCM.sourceEq411_integrand_decomposition
+#print axioms Zeta23.CCM.sourceEq411_integrand_decomposition
+#check Zeta23.CCM.sourceEq411DerivedCorrectionIntegrand_eq_exp_mul_cCorrectionIntegrand
+#print axioms Zeta23.CCM.sourceEq411DerivedCorrectionIntegrand_eq_exp_mul_cCorrectionIntegrand
+#check Zeta23.CCM.sourceEq411LhsGammaL_eq_cutoffFreeGammaL
+#print axioms Zeta23.CCM.sourceEq411LhsGammaL_eq_cutoffFreeGammaL
+#check Zeta23.CCM.gammaL_eq_sourceEq411LhsGammaL_add_correction
+#print axioms Zeta23.CCM.gammaL_eq_sourceEq411LhsGammaL_add_correction
+#check Zeta23.CCM.sourceEq411LhsArchComponent_eq_cutoffFreeArchComponent
+#print axioms Zeta23.CCM.sourceEq411LhsArchComponent_eq_cutoffFreeArchComponent
+#check Zeta23.CCM.sourceEq411LhsEntry_eq_cutoffFreeEntry
+#print axioms Zeta23.CCM.sourceEq411LhsEntry_eq_cutoffFreeEntry
+#check Zeta23.CCM.sourceEq411LhsMatrix_eq_cutoffFreeMatrix
+#print axioms Zeta23.CCM.sourceEq411LhsMatrix_eq_cutoffFreeMatrix

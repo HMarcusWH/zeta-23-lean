@@ -311,6 +311,19 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "G1-A additive finite restriction only. localizedWeilAdditiveRHS is EF.literatureRHS applied to half of the actual symmetrized localized correlation. Lean proves half-correlation=dictionaryTest, then composes the existing arbitrary-complex dictionary RHS theorem with dictionaryMatrix=cutoffFreeMatrix. The source-facing wrapper locks L=2*log(lambda). This does NOT identify localizedWeilAdditiveRHS with the external Connes--Consani--Moscovici QW_lambda/PsiSharp form. That kappa/PsiSharp source correspondence is the separate G1-B obligation. No form-core, Rayleigh-Ritz, positivity, Suzuki, finite-to-infinite, or RH claim is promoted."
+    },
+    {
+      "id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+      "statement": "Direct substitution of the source diagonal q(U_n,U_n) formula into Section-4 equation (4.4) yields a finite source matrix exactly equal to cutoffFreeMatrix. Separately, the printed equation-(4.11) rewrite has a theorem-locked correction-factor seam: the correction forced pointwise by the rho-weighted algebra is exactly exp(x/2) times the repository transcription of the printed cCorrectionIntegrand. Thus the direct equation-(4.4) production matrix is settled while the later printed (4.11)/(4.14) simplification remains suspect/non-load-bearing.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_CUTOFF_FREE_MATRIX_MAP"
+      ],
+      "source": "Zeta23/CCM/SourceWeilMatrixReconciliation.lean",
+      "theorem": "Zeta23.CCM.sourceEq44Matrix_eq_cutoffFreeMatrix",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "G1-B0 corrected source-normalization result. Companion theorems: sourceEq44GammaL_eq_cutoffFreeGammaL, sourceEq44ArchComponent_eq_cutoffFreeArchComponent, sourceEq44Entry_eq_cutoffFreeEntry, sourceEq411_integrand_decomposition, sourceEq411DerivedCorrectionIntegrand_eq_exp_mul_cCorrectionIntegrand, sourceEq411LhsGammaL_eq_cutoffFreeGammaL, gammaL_eq_sourceEq411LhsGammaL_add_correction, sourceEq411LhsArchComponent_eq_cutoffFreeArchComponent, sourceEq411LhsEntry_eq_cutoffFreeEntry, and sourceEq411LhsMatrix_eq_cutoffFreeMatrix. SourceEq411CorrectionIdentity remains deliberately unproved and represents only the suspect printed (4.11) correction rewrite. This claim still does NOT formalize the external ambient kappa/PsiSharp/QW_lambda correspondence, form-core/Rayleigh-Ritz, positivity, Suzuki, or RH."
     }
   ]
 }
