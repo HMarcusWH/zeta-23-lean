@@ -2,7 +2,7 @@
 
 Status: **ACTIVE DISCOVERY ROUTE. RH OPEN.**
 
-**Scope note after merged PR #75:** G1-B1B remains the next open gate **inside the source-faithful R003 lane**. The repository-wide CURRENT_RESEARCH_PLAN.md currently schedules W2-A/B/C first because the internal additive bridge may reach F1 with a smaller theorem surface. These statements are complementary, not competing: this README governs R003 route-local state; CURRENT_RESEARCH_PLAN.md governs global execution priority.
+**Scope note after green W2-A / PR #77:** G1-B1B remains the next open gate **inside the source-faithful R003 lane**. Repository-wide, W2-A is now theorem-locked and the immediate priority has moved to W0: convert the canonical negative two-translate matrix witness into one negative compact C² Weil test using the newly available pairwise summability certificates. W2-B/C remain the internal additive lane after W0/W1. These statements are complementary, not competing: this README governs R003 route-local state; CURRENT_RESEARCH_PLAN.md governs global execution priority.
 
 This README is the living route SSOT for the merged repository. PR-specific settlement files in this directory are historical records; they do not override live Lean/CI or this current route state.
 
@@ -138,7 +138,56 @@ Closed in merged PR #72:
 
 This closes only the finite coordinate/source-sector layer. It does not provide the multiplicative-Haar measure, bundled L2 isometry, `PsiSharp`, or ambient `QW_lambda` correspondence.
 
-## Current open gates on merged main
+## Current gates from the validated post-W2-A state
+
+### W2-A — genuine W / literature-RHS pair bridge
+
+**CLOSED / PROVED.**
+
+Claim: `R003_WEIL_PAIR_LITERATURE_BRIDGE`.
+
+For arbitrary complex-valued `f,g`, with `f` C² and compactly supported and `g` continuous and compactly supported, Lean proves
+
+~~~text
+Summable (fun rho => zetaZeroConfig.Wsummand f g rho)
+~~~
+
+and
+
+~~~text
+zetaZeroConfig.W f g
+  = EF.literatureRHS (EF.weilTest f g).
+~~~
+
+The theorem is `Zeta23.ExceptionalZero.zeta_W_literatureRHS_package`. The exact theorem-green PR #77 head `509645ad2b30288d175ff2ef5a6651839991649e` passed the CCM and ExceptionalZero builds, no-placeholder gate, RHRC suite, normalization/source firewalls and axiom audit. The theorem uses only `propext`, `Classical.choice`, and `Quot.sound`.
+
+This closes the previous summability legality blocker for the finite two-translate contraction. It does **not** prove W2-B reflection/evenization, W2-C diagonal additive identification, W0 contraction itself, F0 approximation, source QW, F1, or RH.
+
+### W0 — canonical two-translate contraction
+
+**OPEN / IMMEDIATE GLOBAL TARGET.**
+
+W2-A removed the former summability legality blocker. The remaining route-general obligation is to convert the canonical negative two-translate determinant into one actual compact C² test
+
+~~~text
+h = ‖C‖ * k - conj(C) * translateRight k t
+~~~
+
+with
+
+~~~text
+Re (zetaZeroConfig.W h h) < 0.
+~~~
+
+Use the existing canonical radius detector endpoint, phase witness, matrix value, translation/Hermitian identities and W2-A pairwise summability. Do not rebuild detector infrastructure and do not use the RH-equivalent universal determinant inequality.
+
+Primary implementation file:
+
+~~~text
+Zeta23/ExceptionalZero/TwoTranslateContraction.lean
+~~~
+
+The exact subpackage contract lives in `../../CURRENT_RESEARCH_PLAN.md`.
 
 ### G1-B1B — source Hilbert/functional bridge
 
@@ -205,15 +254,32 @@ No source result may be upgraded beyond its literal hypotheses.
 
 ### Canonical finite obstruction
 
-Only after G1 + G23 + S0 may the project claim a route of the form
+There are now two distinct legitimate routes to F1. Their prerequisites must not be conflated.
+
+**Internal additive route:**
 
 ```text
-not RH
-  -> eventual negative minimum eigenvalue
-     of canonicalSourceMatrix(lambda,N).
+W0/W1 negative compact test
+  -> W2-A [PROVED]
+  -> W2-B/W2-C
+  -> F0-B finite additive/Fourier approximation
+  -> G1-A [PROVED]
+  -> F1 canonical finite obstruction.
 ```
 
-That would still not prove RH. A separate finite-negative exclusion theorem would remain necessary.
+**Source-faithful route:**
+
+```text
+W0/W1 negative compact test
+  -> G1-B1B
+  -> G1-final
+  -> G23 / exact fixed-aperture negative transfer
+  -> F1 canonical finite obstruction.
+```
+
+Therefore G1-B1B/G1-final/G23 are prerequisites for the **source proof of F1**, not universal prerequisites for F1 itself. Whichever route closes with the smaller exact theorem surface may become primary; independent closure by both routes would be valuable cross-validation.
+
+F1 would still not prove RH. A separate finite-negative exclusion theorem remains necessary.
 
 ## Dormant / composition tools
 
@@ -245,7 +311,7 @@ See `../../DEAD_ROUTES.md`.
 
 ## Claim firewall
 
-**PROVED on merged main:** finite/dictionary/zero-side/cutoff-free matrix identities, G0 localized finite-space geometry, G1-A additive restriction, direct Section-4 matrix normalization, canonical source normalization, G1-B1A finite `kappa`/source-sector transport, canonical finite displacement.
+**PROVED on the validated post-W2-A state:** finite/dictionary/zero-side/cutoff-free matrix identities, G0 localized finite-space geometry, G1-A additive restriction, direct Section-4 matrix normalization, canonical source normalization, G1-B1A finite `kappa`/source-sector transport, canonical finite displacement, and W2-A pairwise W/literatureRHS bridge with summability.
 
 **OPEN:** multiplicative-Haar L2 interface, `PsiSharp`, ambient `QW_lambda`, actual restriction theorem, form-core/minimum-eigenvalue transfer, fixed-aperture negative-bottom implication, finite-negative exclusion, RH.
 

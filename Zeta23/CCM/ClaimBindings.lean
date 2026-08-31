@@ -15,6 +15,7 @@ import Zeta23.CCM.SourceNormalizationRepair
 import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.DictionaryRHSIdentity
 import Zeta23.ExceptionalZero.DisplacementTransfer
+import Zeta23.ExceptionalZero.WeilLiteratureBridge
 
 /-!
 # Promoted CCM / R002 / R003 theorem bindings
@@ -182,3 +183,13 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.CCM.sourceKappaFiniteVector_eq_sourceFiniteVector
 #check Zeta23.CCM.sourceKappa_localizedFiniteFunction_isSourceFiniteFourierVector
 #print axioms Zeta23.CCM.sourceKappa_localizedFiniteFunction_isSourceFiniteFourierVector
+
+
+#check Zeta23.ExceptionalZero.W_literatureRHS_package_of_lit
+#print axioms Zeta23.ExceptionalZero.W_literatureRHS_package_of_lit
+#check Zeta23.ExceptionalZero.zeta_W_literatureRHS_package
+#print axioms Zeta23.ExceptionalZero.zeta_W_literatureRHS_package
+#check Zeta23.ExceptionalZero.zeta_W_eq_literatureRHS_weilTest
+#print axioms Zeta23.ExceptionalZero.zeta_W_eq_literatureRHS_weilTest
+#check Zeta23.ExceptionalZero.zeta_W_self_eq_literatureRHS_weilTest
+#print axioms Zeta23.ExceptionalZero.zeta_W_self_eq_literatureRHS_weilTest

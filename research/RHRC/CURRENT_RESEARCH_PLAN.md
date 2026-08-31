@@ -4,41 +4,65 @@
 >
 > This is the living execution plan. It does not define theorem truth; Lean/compiler/CI plus the machine registries do that. This document answers what the project should do next, in what order, and why.
 
-Current baseline:
+Current validation baseline:
 
 ~~~text
-main = 09d55e93ddcb6f6765b32505309f177c9024f0cd
-tree = abfce5a33d2f2562ee1e0a4b292b2cd356be5033
+base main before PR #77 = 2ac1dccbefba01a4d3d4b0672fe87935ab159801
+W2-A theorem-green head = 509645ad2b30288d175ff2ef5a6651839991649e
+W2-A final promoted/synchronized head = cd20d84e30038a7d14da1e8ee1d2ca1920d344fd
+final #77 workflow state = GREEN
 date = 2026-09-01
-merged through = PR #75
 RH = OPEN
 ~~~
+
+The final promoted head passed both repository workflows. Live GitHub main remains authoritative for the eventual merge commit SHA; this plan uses the exact validated #77 theorem/promotion state.
 
 Current theorem frontier:
 
 ~~~text
 G1-B1A finite kappa/source-sector bridge = CLOSED / REGISTERED
 G1-B1B Haar/L2/PsiSharp/QW bridge         = OPEN
-W2 direct W/literatureRHS bridge          = OPEN
+W2-A direct W/literatureRHS bridge        = CLOSED / REGISTERED
+W0 single negative Weil-test contraction  = OPEN
 F1 canonical finite obstruction           = OPEN
 ~~~
 
 The complete option inventory and historical status of individual ideas lives in RESEARCH_LEADS.md.
 
-## 1. Plan delta after PR #75
+## 1. Plan delta after green W2-A / PR #77
 
-The v1.7 handover placed W0-CONTRACTION before W2-A/B/C in the semantic build order.
+W2-A closed exactly as hoped, but with one useful strengthening: the second pair leg `g` needs only continuity plus compact support, not C².
 
-The post-green review of merged #75 exposed a better execution order:
+The green theorem now exposes:
 
-- the proof of Zeta23.EF.prop_EF_of_lit already contains almost all of W2-A internally;
-- W2-A can expose a clean Summable certificate for Z.Wsummand;
-- that summability package is useful for making W0-CONTRACTION legal rather than relying on unsafe tsum algebra;
-- W2-B/C may collapse the shortest path to F1 onto the already-proved additive finite restriction, potentially bypassing the heavy ambient QW/form-core source chain.
+~~~text
+Summable (fun rho => zetaZeroConfig.Wsummand f g rho)
+~~~
 
-Therefore the **current implementation priority** is W2-A first.
+and
 
-This is an execution-order optimization, not a change in logical meaning. The detector-to-obstruction semantic chain still begins with the canonical two-translate detector.
+~~~text
+zetaZeroConfig.W f g
+  = EF.literatureRHS (EF.weilTest f g)
+~~~
+
+without aperture `L`, `nuX`, `hFk`, `hmu`, real/even assumptions, or source `QW`.
+
+This changes execution priority again.
+
+Before W2-A, W0 was blocked by the legality of expanding `ZeroConfig.W` across a two-term combination because `W` is a `tsum`. W2-A now gives the pairwise summability certificates needed for all four basis pairs in the two-translate sector. By contrast, W2-B still contains a genuinely open reflection/gamma-term obligation.
+
+Therefore the **current highest-leverage implementation target is W0**, not W2-B.
+
+Reason:
+
+- W0 is required by both the internal additive route and the source-faithful route;
+- its principal analytic legality blocker has disappeared;
+- the remaining work is finite two-term sesquilinear contraction plus a small determinant-gap-to-norm-gap bridge if the canonical X4.6 endpoint is used directly;
+- W2-B/C remain necessary only for the internal additive route.
+
+After W0, W1 support/recentering is the next route-general package. W2-B/C and G1-B1B can then progress as parallel internal/source lanes.
+
 
 ## 2. Current high-level architecture
 
@@ -51,7 +75,7 @@ off-line zero
   -> canonical countable detector negative determinant          [PROVED]
   -> one negative compact C2 Weil test                          [W0 OPEN]
   -> support recentering                                        [W1 OPEN]
-  -> W = literatureRHS(weilTest)                                [W2-A OPEN]
+  -> W = literatureRHS(weilTest)                                [W2-A PROVED]
   -> literatureRHS reflection/evenization                       [W2-B OPEN]
   -> W(h,h) = localizedWeilAdditiveRHS(h,h)                     [W2-C OPEN]
   -> finite additive approximation / continuity                 [F0-B OPEN]
@@ -80,63 +104,43 @@ Semantic package IDs are authoritative. Do not reserve future PR numbers.
 
 ### P0 — W2-A direct W/literatureRHS extraction
 
-**Priority:** IMMEDIATE  
-**Information gain:** very high  
-**Expected implementation risk:** low
+**Status:** CLOSED / PROVED  
+**Claim:** `R003_WEIL_PAIR_LITERATURE_BRIDGE`  
+**Theorem:** `Zeta23.ExceptionalZero.zeta_W_literatureRHS_package`
 
-Suggested file:
-
-~~~text
-Zeta23/ExceptionalZero/WeilLiteratureBridge.lean
-~~~
-
-Possible theorem shape:
+Exact theorem-green head:
 
 ~~~text
-theorem W_eq_literatureRHS_weilTest_of_lit
-    (Z : ZeroConfig)
-    (hEF : EF.EF_lit Z)
-    {f g : R -> C}
-    (hf : ContDiff R 2 f)
-    (hg : ContDiff R 2 g)
-    (hfc : HasCompactSupport f)
-    (hgc : HasCompactSupport g) :
-    Summable (fun rho : Z.carrier => Z.Wsummand f g rho)
-      /\
-    Z.W f g = EF.literatureRHS (EF.weilTest f g)
+509645ad2b30288d175ff2ef5a6651839991649e
 ~~~
 
-Exact theorem name may change; semantic content must not.
+What Lean established:
 
-#### Reuse rather than reprove
+~~~text
+f : C² + compact support
+g : continuous + compact support
 
-Extract from the existing prop_EF_of_lit proof:
+=> Summable (zeta Wsummand f g)
+and
+   W(f,g) = literatureRHS(weilTest f g).
+~~~
 
-- weilTest_contDiff;
-- weilTest_hasCompactSupport;
-- paperFT_weilTest;
-- EF_lit zero-side summability;
-- termwise equality between the literature zero summand and Wsummand.
+Axiom surface:
 
-#### Green gate
+~~~text
+[propext, Classical.choice, Quot.sound]
+~~~
 
-- exact theorem compiles;
-- no unnecessary L / nuX / hFk / hmu assumptions survive;
-- #print axioms remains at the intended project trust boundary;
-- ClaimBindings/registry promotion only if this becomes a claim-bearing theorem.
+No aperture, `nuX`, Fourier-integrability side hypotheses, reality/evenness, or source `QW` assumptions survived.
 
-#### Dumbassery checks
+The result is stronger than the planned interface in the second leg and supplies the exact summability package needed by P3/W0.
 
-- no divergent tsum linearity;
-- no accidental use of EF_paper instead of EF_lit;
-- no hidden real/even restriction;
-- exact conjugation argument in Wsummand preserved.
 
 ---
 
 ### P1 — W2-B literatureRHS reflection/evenization
 
-**Priority:** NEXT IF P0 GREEN
+**Priority:** ACTIVE INTERNAL-LANE PACKAGE AFTER W0/W1
 
 Suggested location:
 
@@ -169,7 +173,7 @@ No prose-only "gamma is even" step remains.
 
 ### P2 — W2-C diagonal W/additive bridge
 
-**Priority:** DIRECTLY AFTER P1
+**Priority:** DIRECTLY AFTER P1 ON THE INTERNAL LANE
 
 Suggested file:
 
@@ -207,52 +211,185 @@ Immediately reassess whether G1-B1B/G23 remain necessary for the shortest F1 rou
 
 ### P3 — W0-CONTRACTION: one negative function-level Weil test
 
-**Priority:** AFTER P0-P2 unless a proof-engineering reason justifies swapping P2/P3
+**Priority:** IMMEDIATE / HIGHEST-LEVERAGE  
+**Primary file:** `Zeta23/ExceptionalZero/TwoTranslateContraction.lean`
 
-Suggested file:
+### Exact proved inputs to consume
+
+Do not rebuild detector or matrix infrastructure. Reuse:
 
 ~~~text
-Zeta23/ExceptionalZero/TwoTranslateContraction.lean
+exists_canonicalRadiusSequence_negativeDeterminant_of_offLine_zero
+canonicalPoleKilledTest_admissible
+twoTranslatePhaseWitness
+twoTranslatePhaseWitness_value
+twoTranslatePhaseWitness_neg_of_diagonal_norm_lt
+twoTranslateWeilMatrix
+W_star_swap
+W_translateRight_both
+W_f_translateRight_eq_star_relativeCorrelation
+zeta_Wsummand_summable
 ~~~
 
-Inputs:
+The canonical X4.6 endpoint already supplies a concrete radius-indexed detector and a negative determinant gap. W2-A supplies the missing pairwise `Summable` certificates.
 
-- exists_canonicalRadiusSequence_negativeDeterminant_of_offLine_zero;
-- exact two-translate phase witness;
-- W hermitian/sesquilinear algebra;
-- P0 summability package.
+### Build contract
 
-Target endpoint:
+#### W0-A — determinant-gap converse
+
+Add the small real-algebra theorem
 
 ~~~text
-off-line zero
+twoTranslateDeterminantGap Z k t < 0
+  -> ‖Z.W k k‖ < ‖weilRelativeCorrelation Z k t‖.
+~~~
+
+The forward direction already exists as
+`twoTranslateDeterminantGap_neg_of_diagonal_norm_lt`; W0 needs the converse to consume the canonical negative-determinant endpoint directly.
+
+No zero theory belongs in this lemma.
+
+#### W0-B — translate admissibility
+
+For the exact translated detector `T_t k = translateRight k t`, theorem-lock only what W2-A and the final endpoint consume:
+
+~~~text
+ContDiff R 2 k
+  -> ContDiff R 2 (translateRight k t)
+
+HasCompactSupport k
+  -> HasCompactSupport (translateRight k t).
+~~~
+
+Reuse Mathlib/existing translation lemmas if already available; do not introduce a new translation abstraction.
+
+#### W0-C — four legal pair sums
+
+For `Tk = translateRight k t`, obtain from W2-A:
+
+~~~text
+Summable Wsummand(k,k)
+Summable Wsummand(k,Tk)
+Summable Wsummand(Tk,k)
+Summable Wsummand(Tk,Tk).
+~~~
+
+These certificates must be established before any `tsum_add`, subtraction or scalar-distribution step.
+
+#### W0-D — specialized two-term contraction
+
+Prove a theorem specialized to the two-translate basis rather than a general sesquilinear API.
+
+For coefficients `a,b : C`, define
+
+~~~text
+h = conj(a) * k + conj(b) * Tk.
+~~~
+
+Then prove, under the four explicit summability certificates,
+
+~~~text
+W(h,h)
+ =
+star (![a,b]) dot
+  (twoTranslateWeilMatrix Z k t *ᵥ ![a,b]).
+~~~
+
+The coefficient/conjugation orientation is load-bearing because repository `W` is linear in the first slot and conjugate-linear in the second.
+
+#### W0-E — phase-witness specialization
+
+Instantiate
+
+~~~text
+a = ‖C‖
+b = -C
+C = weilRelativeCorrelation Z k t.
+~~~
+
+The physical function is exactly
+
+~~~text
+h = ‖C‖ * k - conj(C) * Tk.
+~~~
+
+Do not use `-C * Tk`.
+
+Compose W0-A with the already-proved
+`twoTranslatePhaseWitness_neg_of_diagonal_norm_lt`
+and W0-D to obtain
+
+~~~text
+Re (Z.W h h) < 0.
+~~~
+
+#### W0-F — canonical off-line-zero endpoint
+
+Compose with
+
+~~~text
+exists_canonicalRadiusSequence_negativeDeterminant_of_offLine_zero
+~~~
+
+and `canonicalPoleKilledTest_admissible` to prove the strongest natural production endpoint first:
+
+~~~text
+theorem exists_negativeWeilTest_of_offLine_zero
+    (rho0 : zetaZeroConfig.carrier)
+    (hoff : (rho0 : C).re != 1/2) :
+    exists h : R -> C,
+      ContDiff R 2 h
+      and HasCompactSupport h
+      and Re (zetaZeroConfig.W h h) < 0.
+~~~
+
+Then expose the existential corollary needed by the roadmap:
+
+~~~text
+(exists rho : zetaZeroConfig.carrier, (rho : C).re != 1/2)
   -> exists h : R -> C,
        ContDiff R 2 h
        and HasCompactSupport h
        and Re (zetaZeroConfig.W h h) < 0.
 ~~~
 
-Coefficient firewall:
+Retain the concrete detector radius/aperture witness in a stronger companion theorem if that costs almost nothing. The pointwise endpoint is preferred because it composes better with future counterexample-local arguments.
+
+### Files
+
+Create:
 
 ~~~text
-z=(|C|,-C)
-h=|C| k - conj(C) T_t k.
+Zeta23/ExceptionalZero/TwoTranslateContraction.lean
 ~~~
 
-#### Green gate
+Modify only as needed:
 
-- all finite W expansions summability-safe;
-- exact negative real value follows from the already-proved 2x2 witness;
-- no new positivity or RH statement.
+~~~text
+Zeta23/ExceptionalZero.lean
+Zeta23/CCM/ClaimBindings.lean
+~~~
 
-#### Smoke tests
+Do not touch claim/route registries until the exact theorem head is green. Post-green promotion and documentation synchronization are Stage B.
 
-- z=(1,0);
-- z=(0,1);
-- C=0;
-- t=0;
-- C real positive;
-- C real negative.
+### Dumbassery / falsification gates
+
+- no finite `W` linearity before summability;
+- no coefficient-conjugation reversal;
+- no hidden positivity assumption;
+- no use of the RH-equivalent universal determinant inequality;
+- no fallback from canonical radius detector to an arbitrary detector unless Lean exposes a real blocker;
+- no general sesquilinear API unless the specialized two-term proof demonstrably duplicates more code than it saves;
+- smoke-test `b=0`, `a=0`, `t=0`, `C=0`, and real positive/negative `C`.
+
+### Green gate
+
+The exact endpoint above compiles, is sorry-free, introduces no project axiom, and is registered only after exact-head CI.
+
+### Post-green question
+
+If W0 closes, immediately ask whether W1 recentering can be theoremized with only compact-support transport and `W_translateRight_both`, and whether the resulting single explicit negative test makes the source route or internal additive route materially cheaper.
+
 
 ---
 
@@ -735,20 +872,25 @@ Do not rewrite historical settlements merely to make them current.
 # 12. Current one-screen plan
 
 ~~~text
+DONE
+  P0 W2-A direct W -> literatureRHS + pairwise summability
+
 NOW
-  P0 W2-A direct W -> literatureRHS extraction
-  P1 W2-B reflection/evenization
-  P2 W2-C W(h,h) -> localizedWeilAdditiveRHS
+  P3 W0 contraction -> one negative compact C² Weil test
 
 THEN
-  P3 W0 contraction -> one negative W test
-  P4 W0 smoothness/support/recentering
-  P5 bounded F0-B2/F0-B1 feasibility spike
+  P4 W1 support/recentering
 
-PARALLEL
-  P6 G1-B1B Haar/L2/PsiSharp/QW
-  P7 G1-final actual source restriction
-  P8 G23 minimum negative-transfer theorem if needed
+PARALLEL AFTER W0/W1
+  INTERNAL:
+    P1 W2-B reflection/evenization
+    P2 W2-C W(h,h) -> localizedWeilAdditiveRHS
+    P5 bounded F0-B2/F0-B1 feasibility spike
+
+  SOURCE:
+    P6 G1-B1B Haar/L2/PsiSharp/QW
+    P7 G1-final actual source restriction
+    P8 G23 minimum negative-transfer theorem if needed
 
 DECISION
   choose internal route / source route / both

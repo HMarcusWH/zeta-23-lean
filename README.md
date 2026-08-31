@@ -62,9 +62,9 @@ Exact block-level off-critical separation has been proved. Generic windowed visi
 
 ### R003 — CCM / finite Weil bridge
 
-This remains the active finite-to-source route. After the post-#75 research pass, however, the current **global execution priority** is the internal W2 additive bridge because the live explicit-formula proof already contains most of the required W -> literatureRHS theorem internally. G1-B1B continues in parallel as the source-faithful route.
+This remains the active finite-to-source route. PR #77 theorem-locks W2-A, the direct genuine-Weil/literature-RHS pair bridge together with pairwise W-summand summability. That changes the **global execution priority**: W0, the two-translate matrix-to-single-negative-test contraction, is now the highest-leverage next package. G1-B1B continues in parallel as the source-faithful route; W2-B/C remain the internal additive lane after W0/W1.
 
-Merged work through the #71-#74 sequence has established, among other things:
+Validated theorem work through the #71-#77 sequence has established, among other things:
 
 - finite Guinand--Weil dictionary identities;
 - the literal-tent explicit-formula extension;
@@ -83,7 +83,7 @@ The next source-facing obligations are the actual `d*u` / `PsiSharp` / `QW_lambd
 QW_lambda restricted to E_N = canonicalSourceMatrix.
 ```
 
-A validated green PR is not part of merged theorem state until it is actually merged and registered.
+The final validated PR #77 head `cd20d84e30038a7d14da1e8ee1d2ca1920d344fd` passed the full promotion/synchronization gate. Live GitHub merge metadata remains the authority for the eventual merge commit SHA.
 
 ### R004 — finite displacement / structural route
 
@@ -139,38 +139,46 @@ Any downstream spectral-sign argument must therefore identify the canonical matr
 
 The stable work-package names, not historical PR numbers, define the mathematics.
 
-Merged shared infrastructure:
+Validated shared infrastructure:
 
 ```text
 canonical countable detector bank                    CLOSED
 finite dictionary / zero-side bridge                 CLOSED
-cutoff-free/canonical finite source matrix            CLOSED
+cutoff-free/canonical finite source matrix           CLOSED
 G0 localized basis + finite space                    CLOSED
 G1-A additive finite restriction                     CLOSED
 direct source normalization/firewall                 CLOSED
-G1-B1A finite kappa/source-sector bridge              CLOSED
+G1-B1A finite kappa/source-sector bridge             CLOSED
+W2-A genuine W/literatureRHS bridge + summability    CLOSED
 ```
 
 Current execution priority:
 
 ```text
-W2-A  W = literatureRHS(weilTest)                     OPEN
- -> W2-B reflection/evenization                       OPEN
- -> W2-C W(h,h) = localizedWeilAdditiveRHS(h,h)       OPEN
- -> W0 one negative function-level Weil test          OPEN
- -> W1 support/recentering                            OPEN
- -> F0-B finite additive/Fourier approximation        OPEN
- -> F1 negative canonical finite quadratic form       OPEN
+W0 two-translate matrix -> one negative compact C² Weil test    OPEN / IMMEDIATE
+ -> W1 support/recentering                                      OPEN
 ```
 
-Parallel source-faithful lane:
+Internal additive lane after W0/W1:
 
 ```text
-G1-B1B d*u / L2 / PsiSharp / QW correspondence       OPEN
- -> G1-final QW_lambda|E_N = canonical matrix         OPEN
- -> G23 source core / negative finite transfer        OPEN
- -> F1 negative canonical finite quadratic form       OPEN
+W2-B reflection/evenization                                    OPEN
+ -> W2-C W(h,h) = localizedWeilAdditiveRHS(h,h)                 OPEN
+ -> F0-B finite additive/Fourier approximation                  OPEN
+ -> G1-A canonical finite additive restriction                  CLOSED
+ -> F1 negative canonical finite quadratic form                 OPEN
 ```
+
+Parallel source-faithful lane after W0/W1:
+
+```text
+G1-B1B d*u / L2 / PsiSharp / QW correspondence                 OPEN
+ -> G1-final QW_lambda|E_N = canonical matrix                   OPEN
+ -> G23 source core / negative finite transfer                  OPEN
+ -> F1 negative canonical finite quadratic form                 OPEN
+```
+
+W0 is route-general: both the internal additive route and the source-faithful route need the same concrete negative function-level Weil test. W2-A removed W0's former summability legality blocker, so W0 outranks W2-B as the next theorem package.
 
 After F1, the planned finite-wall program is K0 parity -> K1 first singularity/prime events -> K2 kernel/displacement/resolvent rigidity -> K3 arithmetic crossing exclusion. F1 is not RH; it triggers another full post-green research pass.
 

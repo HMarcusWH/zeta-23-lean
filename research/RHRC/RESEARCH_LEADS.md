@@ -4,14 +4,18 @@
 >
 > This is a living research inventory, not a theorem registry. A lead may be promising, blocked, dormant, refuted, or promoted. Formal authority remains Lean/compiler/CI plus the machine claim and route registries.
 
-Last full review against merged main:
+Last full theorem/promotion review:
 
 ~~~text
-main = 09d55e93ddcb6f6765b32505309f177c9024f0cd
-tree = abfce5a33d2f2562ee1e0a4b292b2cd356be5033
+base main before PR #77 = 2ac1dccbefba01a4d3d4b0672fe87935ab159801
+W2-A theorem-green head = 509645ad2b30288d175ff2ef5a6651839991649e
+W2-A final promoted/synchronized head = cd20d84e30038a7d14da1e8ee1d2ca1920d344fd
+final #77 workflow state = GREEN
 date = 2026-09-01
-merged through = PR #75
+RH = OPEN
 ~~~
+
+Live GitHub main remains authoritative for the eventual merge commit SHA.
 
 This file answers one persistent question:
 
@@ -61,7 +65,7 @@ After every meaningful green result:
 5. update CURRENT_RESEARCH_PLAN.md if execution order changed;
 6. keep historical settlement documents historical.
 
-All entries below were re-audited against main 09d55e93ddcb6f6765b32505309f177c9024f0cd.
+Last full theorem audit: PR #77 W2-A theorem head `509645ad2b30288d175ff2ef5a6651839991649e`, based on merged main `2ac1dccbefba01a4d3d4b0672fe87935ab159801`. The promotion/synchronization edits in this PR remain subordinate to the final exact-head CI and merge state.
 
 ---
 
@@ -69,55 +73,103 @@ All entries below were re-audited against main 09d55e93ddcb6f6765b32505309f177c9
 
 ## L-W0-01 — canonical two-translate contraction
 
-**Research status:** ACTIVE  
+**Research status:** ACTIVE / HIGHEST-LEVERAGE IMMEDIATE TARGET  
 **Formal status:** OPEN, with strong PROVED inputs  
 **Origin:** X3/X4/X4.5/X4.6 two-translate program.
 
 ### Statement / idea
 
-Use the explicit countable canonical detector bank and convert its strict negative 2x2 Weil determinant/witness into one compactly supported C2 test h satisfying
+Convert the canonical negative two-translate determinant into one explicit compactly supported C² test `h` satisfying
 
 ~~~text
 Re (zetaZeroConfig.W h h) < 0.
 ~~~
 
-For the repository's sesquilinearity convention, if the matrix coefficient vector is z, the matching physical test is
+The exact coefficient convention is
 
 ~~~text
-h = sum_i conj(z_i) f_i.
+z = (a,b)
+h = conj(a) * k + conj(b) * T_t k.
 ~~~
 
-For the existing phase witness z=(|C|,-C),
+For the existing phase witness
 
 ~~~text
-h = |C| k - conj(C) T_t k.
+z = (‖C‖,-C)
+C = weilRelativeCorrelation zetaZeroConfig k t,
+~~~
+
+the physical function is
+
+~~~text
+h = ‖C‖ * k - conj(C) * T_t k.
 ~~~
 
 ### Why it matters
 
-A single negative function-level Weil test is portable. It can feed either the internal additive finite-approximation route or the external source QW/form-core route.
+This is the first route-general function-level obstruction. Both the internal additive route and the source-faithful QW route can consume the same negative compact test.
 
-### Current evidence
+### PROVED inputs
 
-PROVED inputs include:
+Use rather than rebuild:
 
-- Zeta23.ExceptionalZero.exists_canonicalRadiusSequence_negativeDeterminant_of_offLine_zero;
-- exact two-translate matrix spectrum and determinant gap;
-- exact phase witness;
-- W hermitian symmetry and common-translation invariance;
-- canonical detector C2 compact support and visibility.
+- `exists_canonicalRadiusSequence_negativeDeterminant_of_offLine_zero`;
+- `canonicalPoleKilledTest_admissible`;
+- `twoTranslatePhaseWitness`;
+- `twoTranslatePhaseWitness_value`;
+- `twoTranslatePhaseWitness_neg_of_diagonal_norm_lt`;
+- `twoTranslateWeilMatrix`;
+- `W_star_swap`;
+- `W_translateRight_both`;
+- `W_f_translateRight_eq_star_relativeCorrelation`;
+- `zeta_Wsummand_summable` from promoted W2-A.
 
 ### Main blocker
 
-Finite sesquilinear contraction must be summability-safe because ZeroConfig.W is a tsum. Do not expand divergent totalized sums by algebra alone.
+The former analytic legality blocker is gone: W2-A supplies pairwise W-summand `Summable` certificates.
+
+The remaining work is finite and explicit:
+
+1. prove the converse
+   ~~~text
+   twoTranslateDeterminantGap < 0
+     -> ‖W(k,k)‖ < ‖C‖;
+   ~~~
+2. theorem-lock C² and compact-support preservation under the one translation used;
+3. obtain the four pairwise summability certificates for `(k,k)`, `(k,Tk)`, `(Tk,k)`, `(Tk,Tk)`;
+4. prove the specialized two-term contraction;
+5. instantiate the phase witness;
+6. compose with the canonical radius-sequence endpoint.
 
 ### Composition
 
-L-W2-01 can expose the needed summability certificate from EF_lit. L-W1-01 then recenters the negative test inside a finite aperture.
+W0 + W1 produces one negative compact C² test in a strict finite aperture. Then:
+
+~~~text
+internal:
+  W2-B -> W2-C -> F0-B -> G1-A -> F1
+
+source:
+  G1-B1B -> G1-final -> G23 -> F1.
+~~~
+
+This is why W0 outranks W2-B despite W2-B being numerically earlier in the old package ordering.
 
 ### Fastest falsification / test
 
-Formalize the finite two-term contraction with explicit Summable hypotheses and smoke-test z=(1,0), z=(0,1), t=0, C=0, and real positive/negative C.
+Build only the specialized two-term contraction and smoke-test:
+
+~~~text
+(a,b)=(1,0)
+(a,b)=(0,1)
+t=0
+C=0
+C real positive
+C real negative.
+~~~
+
+Fail immediately if any proof step requires the RH-equivalent universal determinant nonnegativity theorem or manipulates `ZeroConfig.W` before summability is established.
+
 
 ---
 
@@ -149,45 +201,56 @@ From a compact negative h formed by finitely many detector translates, extract a
 
 ## L-W2-01 — direct W to literatureRHS(weilTest) extraction
 
-**Research status:** ACTIVE / HIGHEST-LEVERAGE IMMEDIATE TARGET  
-**Formal status:** LEAD WITH STRONG EXISTING PROOF SUPPORT
+**Research status:** PROMOTED  
+**Formal status:** PROVED  
+**Claim ID:** `R003_WEIL_PAIR_LITERATURE_BRIDGE`  
+**Theorem:** `Zeta23.ExceptionalZero.zeta_W_literatureRHS_package`
 
-### Target
+### What is now formally true
 
-For the exact C2 compact-support class,
+For arbitrary complex-valued `f,g`, with `f` C² and compactly supported and `g` merely continuous and compactly supported,
 
 ~~~text
-Z.W f g = EF.literatureRHS (EF.weilTest f g)
+Summable (fun rho => zetaZeroConfig.Wsummand f g rho)
 ~~~
 
-together with the Summable certificate for the W summand family.
+and
 
-### Why this lead strengthened after PR #75
+~~~text
+zetaZeroConfig.W f g
+  = EF.literatureRHS (EF.weilTest f g).
+~~~
 
-The live proof of Zeta23.EF.prop_EF_of_lit already performs the essential work internally:
+The asymmetric regularity is stronger than the original plan: the second leg does not need C².
 
-- proves EF.weilTest f g is C2 and compactly supported;
-- obtains EF_lit's zero-side summability and literatureRHS equality;
-- proves paperFT_weilTest;
-- identifies the literature zero summand termwise with Z.Wsummand f g.
+### Exact green evidence
 
-Only later does prop_EF_of_lit introduce the heavier L, nuX and real-line integral package.
+PR #77 theorem head:
 
-This is therefore mostly theorem extraction, not new analytic theory.
+~~~text
+509645ad2b30288d175ff2ef5a6651839991649e
+~~~
 
-### Strategic value
+passed the CCM build, ExceptionalZero build, no-placeholder gate, RHRC regression suite, normalization/source firewalls, and axiom audit. The theorem surface depends only on `propext`, `Classical.choice`, and `Quot.sound`.
 
-If green, it gives a clean summability interface for L-W0-01 and starts the shortest internal route toward F1.
+### What changed
 
-### Fastest falsification / test
+The proof extracted the first half of `EF.prop_EF_of_lit` without aperture `L`, `nuX`, `hFk`, `hmu`, real/even hypotheses, or source `QW`. This is dependency compression: a previously buried proof fragment is now a reusable theorem and a legal summability interface.
 
-Extract the theorem without any aperture L, hFk or hmu assumptions. If those assumptions unexpectedly reappear, identify exactly which internal equality actually needs them.
+### Downstream effect
+
+W0 no longer has to invent or assume summability for the four pairwise two-translate terms. This is why W0 now outranks W2-B as the immediate global target.
+
+### New lead
+
+The one-sided regularity may be useful later for mixed smooth/continuous approximation arguments. This is only a LEAD; arbitrary zero-extended localized finite vectors are not generally continuous, so W2-A does not by itself close F0-B.
+
 
 ---
 
 ## L-W2-02 — literatureRHS reflection/evenization invariance
 
-**Research status:** ACTIVE  
+**Research status:** ACTIVE / INTERNAL-LANE NEXT AFTER W0/W1  
 **Formal status:** OPEN
 
 ### Target

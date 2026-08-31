@@ -4,15 +4,27 @@ This file is the audit entry point for the active HMWH fork.
 
 The pre-fork-facing Zeta23 audit is preserved verbatim in [UPSTREAM_AUDIT.md](UPSTREAM_AUDIT.md). It remains provenance for the inherited paper formalization; it is not a complete audit of the later RH research extensions.
 
-## Current merged baseline
+## Current validation baseline
 
 ```text
 repository: HMarcusWH/zeta-23-lean
-main: f62171c3610c27190d9d3165a9c692ad08985077
-merged through: PR #74
+base main before PR #77: 2ac1dccbefba01a4d3d4b0672fe87935ab159801
+PR #77 theorem-green head: 509645ad2b30288d175ff2ef5a6651839991649e
+PR #77 final promoted/synchronized head: cd20d84e30038a7d14da1e8ee1d2ca1920d344fd
+final #77 workflow state: GREEN
 ```
 
-PR #73 repaired source-normalization semantics. PR #72 then merged the G1-B1A finite `kappa`/source-sector theorem layer on top of that repair, and PR #74 reset the living repository documentation. The exact compiler/CI evidence for individual PR heads is authoritative over this summary.
+The final #77 head passed the RHRC claim/regression suite, R003 normalization/source firewall, R004 scalar-shift audit, CCM build, ExceptionalZero build, no-placeholder gate, and the independent verification workflow. Live GitHub `main` and merge metadata remain authoritative for the eventual merge commit SHA; this audit records the exact validated theorem/promotion object.
+
+Recent documentation history:
+
+- PR #73 repaired source-normalization semantics;
+- PR #72 theorem-locked G1-B1A finite `kappa`/source-sector transport;
+- PR #74 reset the living repository documentation;
+- PR #75 synchronized the merged G1-B1A state;
+- PR #76 added the living lead ledger and current-plan SSOTs;
+- PR #77 theorem-locked and promoted W2-A.
+
 
 ## Fork audit surfaces
 
@@ -83,7 +95,15 @@ Those files describe the preserved upstream formalization layer.
 
 G1-B1A is merged and registered: the finite source coordinate transport and zero-extended `kappa` image are theorem-locked. This does not include multiplicative-Haar/L2 or ambient source-functional semantics.
 
-As of the merged state above, the repository does **not** claim:
+W2-A has passed exact-head Lean/CI and is promoted in PR #77: for the concrete zeta configuration, admissible pairs satisfy both W-summand summability and
+
+~~~text
+W(f,g) = EF.literatureRHS (EF.weilTest f g).
+~~~
+
+The theorem requires `f` to be C² compactly supported and `g` only continuous compactly supported. The audited axiom surface is `[propext, Classical.choice, Quot.sound]`. This does not yet prove W2-B reflection/evenization, W2-C diagonal additive identification, W0 contraction, F1, or RH.
+
+The repository does **not** claim:
 
 - the ambient external `QW_lambda/PsiSharp` correspondence;
 - `QW_lambda|E_N = canonicalSourceMatrix`;
@@ -92,7 +112,7 @@ As of the merged state above, the repository does **not** claim:
 - canonical finite-negative exclusion;
 - RH.
 
-Green work on a branch is not part of merged theorem state until it is merged and registered.
+Validated branch heads are evidence for the exact checked object; merged repository truth is determined by live GitHub main plus the machine registries.
 
 ## Audit authority
 

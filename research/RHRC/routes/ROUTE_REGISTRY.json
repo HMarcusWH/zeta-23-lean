@@ -56,12 +56,13 @@
         "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
         "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
         "R003_SOURCE_NORMALIZATION_REPAIR",
-        "R003_SOURCE_KAPPA_FINITE_SECTOR"
+        "R003_SOURCE_KAPPA_FINITE_SECTOR",
+        "R003_WEIL_PAIR_LITERATURE_BRIDGE"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "Merged R003/D0/G0, G1-A, G1-B0 and G1-B1A are closed on current main. PR #72 theorem-locked the finite kappa/source-sector bridge after the PR #73 canonical source-normalization repair; PR #74 then reset repository documentation. The next merged-main gate is G1-B1B: the multiplicative-Haar/L2, PsiSharp and QW_lambda source correspondence. Only after that may the route claim an actual QW_lambda|E_N = canonicalSourceMatrix restriction theorem. Form-core/minimum-eigenvalue transfer, fixed-aperture source closure, finite-negative exclusion and RH remain open."
+      "note": "R003/D0/G0, G1-A, G1-B0, G1-B1A and W2-A are theorem-locked on the validated #77 line. W2-A now gives the genuine zeta W(f,g)=literatureRHS(weilTest f g) identity together with pairwise zero-side summability on the minimal asymmetric regularity class. G1-B1B remains the next open gate inside the source-faithful lane. Globally, the newly available W-summability removes the principal legality blocker from W0, so the current highest-leverage next package is the two-translate matrix-to-single-negative-test contraction. W2-B/C, G1-final, form-core/minimum transfer, F1, finite-negative exclusion and RH remain open."
     },
     {
       "route_id": "R004_prolate_v2",
