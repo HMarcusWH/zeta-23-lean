@@ -12,6 +12,7 @@ import Zeta23.CCM.LocalizedFiniteSpace
 import Zeta23.CCM.LocalizedWeilRestriction
 import Zeta23.CCM.SourceWeilMatrixReconciliation
 import Zeta23.CCM.SourceNormalizationRepair
+import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.DictionaryRHSIdentity
 import Zeta23.ExceptionalZero.DisplacementTransfer
 
@@ -147,3 +148,37 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.CCM.canonicalSourceMatrix_displacement
 #check Zeta23.CCM.rank_canonicalSourceMatrix_displacement_le_two
 #print axioms Zeta23.CCM.rank_canonicalSourceMatrix_displacement_le_two
+
+
+#check Zeta23.CCM.sourceLength_pos
+#print axioms Zeta23.CCM.sourceLength_pos
+#check Zeta23.CCM.sourceLogCoordinate_inv
+#print axioms Zeta23.CCM.sourceLogCoordinate_inv
+#check Zeta23.CCM.sourceLogCoordinate_self
+#print axioms Zeta23.CCM.sourceLogCoordinate_self
+#check Zeta23.CCM.sourceLogCoordinate_mem_Icc
+#print axioms Zeta23.CCM.sourceLogCoordinate_mem_Icc
+#check Zeta23.CCM.sourceLogCoordinate_sourceExpCoordinate
+#print axioms Zeta23.CCM.sourceLogCoordinate_sourceExpCoordinate
+#check Zeta23.CCM.sourceExpCoordinate_sourceLogCoordinate
+#print axioms Zeta23.CCM.sourceExpCoordinate_sourceLogCoordinate
+#check Zeta23.CCM.sourceExpCoordinate_mem_Icc
+#print axioms Zeta23.CCM.sourceExpCoordinate_mem_Icc
+#check Zeta23.CCM.contDiff_localizedMode
+#print axioms Zeta23.CCM.contDiff_localizedMode
+#check Zeta23.CCM.contDiff_localizedFiniteFunction
+#print axioms Zeta23.CCM.contDiff_localizedFiniteFunction
+#check Zeta23.CCM.sourceKappa_localizedMode_eq_sourceMultiplicativeMode
+#print axioms Zeta23.CCM.sourceKappa_localizedMode_eq_sourceMultiplicativeMode
+#check Zeta23.CCM.sourceKappa_localizedFiniteFunction_eq_sourceFiniteFourierFunction
+#print axioms Zeta23.CCM.sourceKappa_localizedFiniteFunction_eq_sourceFiniteFourierFunction
+#check Zeta23.CCM.sourceFiniteVector_eq_sum_zeroExtendedModes
+#print axioms Zeta23.CCM.sourceFiniteVector_eq_sum_zeroExtendedModes
+#check Zeta23.CCM.sourceFiniteVector_support_subset
+#print axioms Zeta23.CCM.sourceFiniteVector_support_subset
+#check Zeta23.CCM.sourceFiniteVector_hasCompactSupport
+#print axioms Zeta23.CCM.sourceFiniteVector_hasCompactSupport
+#check Zeta23.CCM.sourceKappaFiniteVector_eq_sourceFiniteVector
+#print axioms Zeta23.CCM.sourceKappaFiniteVector_eq_sourceFiniteVector
+#check Zeta23.CCM.sourceKappa_localizedFiniteFunction_isSourceFiniteFourierVector
+#print axioms Zeta23.CCM.sourceKappa_localizedFiniteFunction_isSourceFiniteFourierVector
