@@ -75,49 +75,97 @@ Last full theorem audit: PR #77 W2-A theorem head `509645ad2b30288d175ff2ef5a665
 
 ### Statement / idea
 
-Use the explicit countable canonical detector bank and convert its strict negative 2x2 Weil determinant/witness into one compactly supported C2 test h satisfying
+Convert the canonical negative two-translate determinant into one explicit compactly supported C² test `h` satisfying
 
 ~~~text
 Re (zetaZeroConfig.W h h) < 0.
 ~~~
 
-For the repository's sesquilinearity convention, if the matrix coefficient vector is z, the matching physical test is
+The exact coefficient convention is
 
 ~~~text
-h = sum_i conj(z_i) f_i.
+z = (a,b)
+h = conj(a) * k + conj(b) * T_t k.
 ~~~
 
-For the existing phase witness z=(|C|,-C),
+For the existing phase witness
 
 ~~~text
-h = |C| k - conj(C) T_t k.
+z = (‖C‖,-C)
+C = weilRelativeCorrelation zetaZeroConfig k t,
+~~~
+
+the physical function is
+
+~~~text
+h = ‖C‖ * k - conj(C) * T_t k.
 ~~~
 
 ### Why it matters
 
-A single negative function-level Weil test is portable. It can feed either the internal additive finite-approximation route or the external source QW/form-core route.
+This is the first route-general function-level obstruction. Both the internal additive route and the source-faithful QW route can consume the same negative compact test.
 
-### Current evidence
+### PROVED inputs
 
-PROVED inputs include:
+Use rather than rebuild:
 
-- Zeta23.ExceptionalZero.exists_canonicalRadiusSequence_negativeDeterminant_of_offLine_zero;
-- exact two-translate matrix spectrum and determinant gap;
-- exact phase witness;
-- W hermitian symmetry and common-translation invariance;
-- canonical detector C2 compact support and visibility.
+- `exists_canonicalRadiusSequence_negativeDeterminant_of_offLine_zero`;
+- `canonicalPoleKilledTest_admissible`;
+- `twoTranslatePhaseWitness`;
+- `twoTranslatePhaseWitness_value`;
+- `twoTranslatePhaseWitness_neg_of_diagonal_norm_lt`;
+- `twoTranslateWeilMatrix`;
+- `W_star_swap`;
+- `W_translateRight_both`;
+- `W_f_translateRight_eq_star_relativeCorrelation`;
+- `zeta_Wsummand_summable` from promoted W2-A.
 
 ### Main blocker
 
-The former summability blocker is now removed by PROVED claim `R003_WEIL_PAIR_LITERATURE_BRIDGE`: every required admissible pair has a theorem-authoritative `Summable` W-summand family. The remaining obligation is finite two-term sesquilinear contraction with the repository's exact coefficient convention, plus a tiny determinant-gap-to-norm-gap step if the canonical X4.6 endpoint is used directly.
+The former analytic legality blocker is gone: W2-A supplies pairwise W-summand `Summable` certificates.
+
+The remaining work is finite and explicit:
+
+1. prove the converse
+   ~~~text
+   twoTranslateDeterminantGap < 0
+     -> ‖W(k,k)‖ < ‖C‖;
+   ~~~
+2. theorem-lock C² and compact-support preservation under the one translation used;
+3. obtain the four pairwise summability certificates for `(k,k)`, `(k,Tk)`, `(Tk,k)`, `(Tk,Tk)`;
+4. prove the specialized two-term contraction;
+5. instantiate the phase witness;
+6. compose with the canonical radius-sequence endpoint.
 
 ### Composition
 
-Use the W2-A summability certificates to justify the four pairwise tsums for the basis `[k, T_t k]`, prove the matrix quadratic equals `W(h,h)` for `h = |C| k - conj(C) T_t k`, and then compose with the canonical countable detector theorem. L-W1-01 can then recenter the resulting negative test inside a finite aperture.
+W0 + W1 produces one negative compact C² test in a strict finite aperture. Then:
+
+~~~text
+internal:
+  W2-B -> W2-C -> F0-B -> G1-A -> F1
+
+source:
+  G1-B1B -> G1-final -> G23 -> F1.
+~~~
+
+This is why W0 outranks W2-B despite W2-B being numerically earlier in the old package ordering.
 
 ### Fastest falsification / test
 
-Formalize the finite two-term contraction with explicit Summable hypotheses and smoke-test z=(1,0), z=(0,1), t=0, C=0, and real positive/negative C.
+Build only the specialized two-term contraction and smoke-test:
+
+~~~text
+(a,b)=(1,0)
+(a,b)=(0,1)
+t=0
+C=0
+C real positive
+C real negative.
+~~~
+
+Fail immediately if any proof step requires the RH-equivalent universal determinant nonnegativity theorem or manipulates `ZeroConfig.W` before summability is established.
+
 
 ---
 
