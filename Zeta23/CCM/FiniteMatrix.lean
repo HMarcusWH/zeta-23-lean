@@ -11,11 +11,11 @@ open Matrix
 def centeredIndex (N : ℕ) (i : Fin (2 * N + 1)) : ℤ :=
   (i.1 : ℤ) - (N : ℤ)
 
-/-- Canonical finite CCM matrix on Fourier indices `-N,...,N`, parameterized by aperture `L`. -/
+/-- Historical printed-normalization finite matrix on Fourier indices `-N,...,N`.  Kept unchanged for theorem history; the canonical direct-source matrix is `canonicalSourceMatrix = cutoffFreeMatrix`. -/
 def finiteMatrix (L : ℝ) (N : ℕ) : Matrix (Fin (2 * N + 1)) (Fin (2 * N + 1)) ℂ :=
   fun i j => (entry (centeredIndex N i) (centeredIndex N j) L : ℂ)
 
-/-- Source-level wrapper matching `build_ccm_matrix(lam, N)`, where `L = 2 * log(lam)`. -/
+/-- Historical lambda wrapper for the printed-normalization matrix, with `L = 2 * log(lam)`.  Do not identify this directly with the ambient external `QW_lambda` restriction. -/
 def finiteMatrixOfLambda (lam : ℝ) (N : ℕ) :
     Matrix (Fin (2 * N + 1)) (Fin (2 * N + 1)) ℂ :=
   finiteMatrix (2 * Real.log lam) N
