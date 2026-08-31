@@ -73,7 +73,7 @@ The fork currently tracks:
 - **R003** CCM / finite Weil bridge;
 - **R004** finite displacement / prolate-structure investigation.
 
-The present critical path is R003 source identification and fixed-aperture variational transfer. R001 and R002 remain mathematically useful but are not currently treated as the shortest terminal route. R004 is retained as structural support and a dormant composition source.
+The present critical path is the route-general W0/W1 function-level obstruction: convert the canonical negative two-translate determinant into one explicit compact C² test with negative Weil self-value, then recenter it into a strict finite aperture. After that, the program splits into the internal additive lane (W2-B/W2-C/F0-B/G1-A) and the source-faithful lane (G1-B1B/G1-final/G23), both targeting the same F1 canonical finite obstruction. R001 and R002 remain mathematically useful but are not currently treated as the shortest terminal route. R004 is retained as structural support and a dormant composition source.
 
 ## FFBBP / OoL boundary
 
