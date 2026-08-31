@@ -77,6 +77,35 @@ theorem localizedFiniteVector_hasCompactSupport
   by_contra hzero
   exact hx (localizedFiniteVector_support_subset L N u hzero)
 
+/-- The formula-level finite Fourier combination is continuous on the real line. -/
+@[fun_prop] theorem continuous_localizedFiniteFunction
+    (L : ℝ) (N : ℕ) (u : Fin (2 * N + 1) → ℂ) :
+    Continuous (localizedFiniteFunction L N u) := by
+  unfold localizedFiniteFunction localizedMode
+  fun_prop
+
+/-- Every zero-extended finite localized vector is an actual L² function.
+The proof uses only continuity of the finite Fourier combination, its boundedness
+on the compact source interval, and the zero-extension support certificate. -/
+theorem localizedFiniteVector_memLp_two
+    (L : ℝ) (N : ℕ) (u : Fin (2 * N + 1) → ℂ) :
+    MemLp (localizedFiniteVector L N u) (2 : ℝ≥0∞) volume := by
+  have hcont : Continuous (localizedFiniteFunction L N u) :=
+    continuous_localizedFiniteFunction L N u
+  obtain ⟨C, hC⟩ :=
+    isCompact_Icc.exists_bound_of_continuousOn hcont.continuousOn
+  have hmeas : AEStronglyMeasurable (localizedFiniteVector L N u) volume := by
+    rw [localizedFiniteVector_eq_indicator]
+    exact hcont.aestronglyMeasurable.indicator measurableSet_Icc
+  have hbound : ∀ᵐ x : ℝ ∂volume, ‖localizedFiniteVector L N u x‖ ≤ C := by
+    filter_upwards with x
+    by_cases hx : x ∈ Icc (0 : ℝ) L
+    · rw [localizedFiniteVector_eq_indicator, Set.indicator_of_mem hx]
+      exact hC x hx
+    · rw [localizedFiniteVector_eq_indicator, Set.indicator_of_notMem hx]
+      simp
+  exact (localizedFiniteVector_hasCompactSupport L N u).memLp_of_bound hmeas C hbound
+
 /-- Source symmetrized correlation in repository convolution conventions.
 
 The argument order is intentional: `EF.weilTest g f = g ⋆ f̃`, the commuted
@@ -96,4 +125,5 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.localizedFiniteVector_eq_indicator
 #print axioms Zeta23.CCM.localizedFiniteVector_support_subset
 #print axioms Zeta23.CCM.localizedFiniteVector_hasCompactSupport
+#print axioms Zeta23.CCM.localizedFiniteVector_memLp_two
 #print axioms Zeta23.CCM.localizedWeilCorrelation_neg
