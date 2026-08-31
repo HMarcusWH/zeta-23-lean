@@ -60,7 +60,7 @@
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "Finite R003/D0/G0 and G1-A are closed. PR #71 theorem-locks the direct Section-4 equation-(4.4) finite source matrix as cutoffFreeMatrix. The normalization-repair layer now promotes canonicalSourceMatrix = cutoffFreeMatrix = sourceEq44Matrix while freezing finiteMatrix/gammaL/cCorrection as the historical printed-(4.11)/(4.14) convention. The corrected integrated (4.11) rewrite uses sourceEq411DerivedCorrection. The next substantive gate remains the external kappa/PsiSharp/QW_lambda correspondence; form-core/Rayleigh-bottom transfer, Suzuki, and RH remain open."
+      "note": "Merged R003/D0/G0 and G1-A are closed through PR #73, including direct Section-4 equation-(4.4) source normalization and canonicalSourceMatrix = cutoffFreeMatrix = sourceEq44Matrix = dictionaryMatrix. finiteMatrix/gammaL/cCorrection remain frozen historical printed-(4.11)/(4.14) objects. The next merged-main gate is G1-B1A: finite kappa/source-sector identification; after that G1-B1B must close the multiplicative-Haar/L2, PsiSharp and QW_lambda source correspondence before any actual QW_lambda|E_N restriction claim. Form-core/minimum-eigenvalue transfer, fixed-aperture source closure, finite-negative exclusion and RH remain open."
     },
     {
       "route_id": "R004_prolate_v2",
@@ -71,7 +71,7 @@
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "Finite CCM displacement lane. The exact finite displacement identity is now theorem-authoritative in Zeta23/CCM/Displacement.lean. Finite-to-infinite and Jacobi/prolate consequences remain open."
+      "note": "Finite displacement lane. The exact displacement/rank<=2 theorem is promoted on canonicalSourceMatrix; legacy finiteMatrix remains usable only for scalar-shift-invariant structure. The fitted-tridiagonal eigenvector route is quarantined because tested generator gaps collapse. Absolute spectral-sign claims must use the canonical normalization."
     }
   ],
   "note": "These routes are intentionally not frozen yet. A frozen digest would be false precision while the analytic objects are still being defined."
