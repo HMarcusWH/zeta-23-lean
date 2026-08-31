@@ -1,6 +1,6 @@
 # G1-B0 source Weil normalization firewall — 2026-08-31
 
-Status: **PROVED FOR THE NORMALIZATION FIREWALL / SOURCE CONSISTENCY STILL OPEN.**
+Status: **PROVED FOR DIRECT EQUATION-(4.4) FINITE SOURCE MATRIX + NORMALIZATION FIREWALL.**
 
 RH remains **OPEN**.
 
@@ -67,10 +67,10 @@ The PR was therefore rewritten to fail closed.
 
 ## What became formally true
 
-The raw equation-(4.4)-side regularized diagonal integrand is named
+The printed equation-(4.11) RHS cos-minus-one integrand is named
 
 ```lean
-sourceEq44CosMinusOneIntegrand
+sourceEq411RhsCosMinusOneIntegrand
 ```
 
 and the equation-(4.11) left-hand integrand is named
@@ -123,7 +123,7 @@ sourceEq411LhsMatrix        = cutoffFreeMatrix.
 
 ## What remains deliberately open
 
-The raw equation-(4.4) objects are separately named:
+The direct equation-(4.4) objects are named:
 
 ```lean
 sourceEq44GammaL
@@ -132,11 +132,16 @@ sourceEq44Entry
 sourceEq44Matrix.
 ```
 
-There is **no theorem**
+After correcting the post-green source transcription, Lean now proves:
 
-```text
+```lean
+sourceEq44GammaL = cutoffFreeGammaL
+sourceEq44ArchComponent = cutoffFreeArchComponent
+sourceEq44Entry = cutoffFreeEntry
 sourceEq44Matrix = cutoffFreeMatrix.
 ```
+
+Thus the direct primary Section-4 finite formula is now theorem-locked to the production cutoff-free matrix.
 
 The printed equation-(4.11) integrated correction is represented by the
 unproved proposition
@@ -147,8 +152,7 @@ SourceEq411CorrectionIdentity.
 
 No theorem proves this proposition.
 
-Therefore G1-B0 does not identify the actual external `QW_lambda` finite
-restriction with any repository matrix.
+Therefore G1-B0 identifies the direct Section-4 finite source formula with `cutoffFreeMatrix`, but it still does not formalize the ambient external `QW_lambda` / `kappa` / `PsiSharp` correspondence.
 
 ## Executable-source evidence
 
@@ -166,13 +170,7 @@ This is **EXPERIMENTAL/SOURCE SIGNAL**, not Lean theorem authority.
 Before G1-B0, the remaining G1 problem was described as primarily a
 `kappa/PsiSharp` source-map port.
 
-After G1-B0, there is a strictly earlier obligation:
-
-> resolve the Section-4 normalization seam and determine the intended finite
-> `QW_lambda` convention.
-
-The finite matrix algebra remains closed, but the external source provenance
-cannot yet be promoted.
+After the corrected post-green pass, the intended direct Section-4 finite matrix is no longer ambiguous: equation (4.4) lands on `cutoffFreeMatrix`. The printed equation-(4.11)/(4.14) simplification remains internally inconsistent but is no longer load-bearing. The remaining source provenance obligation is the ambient `kappa/PsiSharp/QW_lambda` correspondence.
 
 ## Upstream implications
 
@@ -186,18 +184,7 @@ independently source-audited, but its final semantic label as the actual
 
 ## Downstream implications
 
-Do not start form-core, Rayleigh--Ritz, Suzuki, or finite-negative persistence
-from an assumed `QW_lambda = cutoffFreeMatrix` correspondence.
-
-The next source pass should determine which of the following carries the
-manuscript normalization defect:
-
-1. the displayed `c(L)` integrand;
-2. equation (4.11);
-3. equation (4.14);
-4. or some convention not yet represented in the repository.
-
-Only after that should the project formalize `kappa` / `PsiSharp`.
+Do not start form-core, Rayleigh--Ritz, Suzuki, or finite-negative persistence until the ambient `QW_lambda` pullback is theorem-identified with the already-settled direct finite source formula. The suspect printed (4.11)/(4.14) rewrite should remain documented and non-load-bearing.
 
 ## Resurrected routes
 
@@ -230,24 +217,17 @@ Fastest checks:
 
 ## Highest-leverage next move
 
-G1-B1 should be a **source consistency PR**, not a `kappa` PR.
-
-Its target is to settle the intended Section-4 finite `QW_lambda`
-normalization from independent source evidence and an explicit derivation.
-
-Only after G1-B1 closes should G1-B2 formalize the source
-`QW(kappa f,kappa g)=PsiSharp(q(f,g))` correspondence.
+G1-B1 should now be the **kappa/PsiSharp/QW source-correspondence PR**. The direct finite Section-4 matrix is already settled. The next target is to theorem-lock `QW(kappa f,kappa g)=PsiSharp(q(f,g))` with `L=2*log(lambda)`, specialized first to the existing finite Fourier sector.
 
 ## Claim firewall
 
-**PROVED:** exact normalization firewall and equation-(4.11)-left-hand
-convention = `cutoffFreeMatrix`.
+**PROVED:** direct equation-(4.4) finite source matrix = `cutoffFreeMatrix`.
+
+**PROVED:** exact printed equation-(4.11) normalization firewall and equation-(4.11)-left-hand convention = `cutoffFreeMatrix`.
 
 **OPEN:** printed equation-(4.11) integrated correction identity.
 
-**OPEN:** raw equation-(4.4) finite matrix correspondence.
-
-**OPEN:** actual external `QW_lambda` finite restriction.
+**OPEN:** ambient external `QW_lambda` / `kappa` / `PsiSharp` finite restriction correspondence.
 
 **OPEN:** form-core/Rayleigh-bottom port.
 
