@@ -2,7 +2,7 @@
 
 Status: **ACTIVE DISCOVERY ROUTE. RH OPEN.**
 
-**Scope note after merged PR #75:** G1-B1B remains the next open gate **inside the source-faithful R003 lane**. The repository-wide CURRENT_RESEARCH_PLAN.md currently schedules W2-A/B/C first because the internal additive bridge may reach F1 with a smaller theorem surface. These statements are complementary, not competing: this README governs R003 route-local state; CURRENT_RESEARCH_PLAN.md governs global execution priority.
+**Scope note after green W2-A / PR #77:** G1-B1B remains the next open gate **inside the source-faithful R003 lane**. Repository-wide, W2-A is now theorem-locked and the immediate priority has moved to W0: convert the canonical negative two-translate matrix witness into one negative compact C² Weil test using the newly available pairwise summability certificates. W2-B/C remain the internal additive lane after W0/W1. These statements are complementary, not competing: this README governs R003 route-local state; CURRENT_RESEARCH_PLAN.md governs global execution priority.
 
 This README is the living route SSOT for the merged repository. PR-specific settlement files in this directory are historical records; they do not override live Lean/CI or this current route state.
 
@@ -139,6 +139,29 @@ Closed in merged PR #72:
 This closes only the finite coordinate/source-sector layer. It does not provide the multiplicative-Haar measure, bundled L2 isometry, `PsiSharp`, or ambient `QW_lambda` correspondence.
 
 ## Current open gates on merged main
+
+### W2-A — genuine W / literature-RHS pair bridge
+
+**CLOSED / PROVED.**
+
+Claim: `R003_WEIL_PAIR_LITERATURE_BRIDGE`.
+
+For arbitrary complex-valued `f,g`, with `f` C² and compactly supported and `g` continuous and compactly supported, Lean proves
+
+~~~text
+Summable (fun rho => zetaZeroConfig.Wsummand f g rho)
+~~~
+
+and
+
+~~~text
+zetaZeroConfig.W f g
+  = EF.literatureRHS (EF.weilTest f g).
+~~~
+
+The theorem is `Zeta23.ExceptionalZero.zeta_W_literatureRHS_package`. The exact theorem-green PR #77 head `509645ad2b30288d175ff2ef5a6651839991649e` passed the CCM and ExceptionalZero builds, no-placeholder gate, RHRC suite, normalization/source firewalls and axiom audit. The theorem uses only `propext`, `Classical.choice`, and `Quot.sound`.
+
+This closes the previous summability legality blocker for the finite two-translate contraction. It does **not** prove W2-B reflection/evenization, W2-C diagonal additive identification, W0 contraction itself, F0 approximation, source QW, F1, or RH.
 
 ### G1-B1B — source Hilbert/functional bridge
 
