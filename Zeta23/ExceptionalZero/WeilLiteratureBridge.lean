@@ -4,6 +4,8 @@ noncomputable section
 
 namespace Zeta23.ExceptionalZero
 
+open Complex
+
 /-- **W2-A, generic form.**  The literature explicit formula applied to the exact
 convolution test `weilTest f g = f ⋆ g̃` supplies both absolute zero-side
 summability and the genuine Weil-pair identity.
