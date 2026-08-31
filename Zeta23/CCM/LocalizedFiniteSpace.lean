@@ -443,6 +443,242 @@ theorem localizedWeilCorrelation_basis_eq_qBasis
   rw [localizedWeilCorrelation_basis_eq_hardWindow n m hL hy0 hyL,
     hardWindowCharacterCorrelation_eq_qBasis n m hL hy0 hyL]
 
+
+/-- Positive finite-vector overlap expanded in the centered Fourier basis with
+the project's conjugate-linear first coefficient convention. -/
+theorem localizedFiniteFunction_overlap_eq_basis_sum
+    (L : ℝ) (N : ℕ) (u : Fin (2 * N + 1) → ℂ) (x y : ℝ) :
+    localizedFiniteFunction L N u (x + y) *
+        conj (localizedFiniteFunction L N u x) =
+      ∑ i, ∑ j,
+        conj (u i) *
+          (localizedMode L (centeredIndex N j) (x + y) *
+            conj (localizedMode L (centeredIndex N i) x)) * u j := by
+  unfold localizedFiniteFunction
+  rw [map_sum]
+  simp_rw [map_mul]
+  rw [Finset.sum_mul]
+  apply Finset.sum_congr rfl
+  intro j hj
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro i hi
+  ring_nf
+  rw [Finset.sum_comm]
+
+/-- Negative finite-vector overlap expanded in the same centered basis and
+coefficient convention. -/
+theorem localizedFiniteFunction_reverseOverlap_eq_basis_sum
+    (L : ℝ) (N : ℕ) (u : Fin (2 * N + 1) → ℂ) (x y : ℝ) :
+    localizedFiniteFunction L N u x *
+        conj (localizedFiniteFunction L N u (x + y)) =
+      ∑ i, ∑ j,
+        conj (u i) *
+          (localizedMode L (centeredIndex N j) x *
+            conj (localizedMode L (centeredIndex N i) (x + y))) * u j := by
+  unfold localizedFiniteFunction
+  rw [map_sum]
+  simp_rw [map_mul]
+  rw [Finset.sum_mul]
+  apply Finset.sum_congr rfl
+  intro j hj
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro i hi
+  ring_nf
+  rw [Finset.sum_comm]
+
+/-- For a nonnegative shift inside the aperture, the actual finite vector
+Weil test is the overlap of the formula-level finite Fourier functions. -/
+theorem weilTest_localizedFiniteVector_pos
+    (N : ℕ) (u : Fin (2 * N + 1) → ℂ)
+    {L y : ℝ} (hy0 : 0 ≤ y) (hyL : y ≤ L) :
+    Zeta23.EF.weilTest
+        (localizedFiniteVector L N u)
+        (localizedFiniteVector L N u) y =
+      ∫ x in 0..(L - y),
+        localizedFiniteFunction L N u (x + y) *
+          conj (localizedFiniteFunction L N u x) := by
+  simp only [Zeta23.EF.weilTest, convolution_def,
+    ContinuousLinearMap.mul_apply', Zeta23.EF.tilde]
+  have hfun :
+      (fun t : ℝ =>
+        localizedFiniteVector L N u t *
+          conj (localizedFiniteVector L N u (-(y - t)))) =
+        (Icc y L).indicator
+          (fun t : ℝ =>
+            localizedFiniteFunction L N u t *
+              conj (localizedFiniteFunction L N u (t - y))) := by
+    funext t
+    have harg : -(y - t) = t - y := by ring
+    rw [harg]
+    by_cases ht : t ∈ Icc y L
+    · have ht0 : t ∈ Icc (0 : ℝ) L := ⟨hy0.trans ht.1, ht.2⟩
+      have hty : t - y ∈ Icc (0 : ℝ) L := by
+        constructor
+        · exact sub_nonneg.mpr ht.1
+        · linarith [ht.2, hy0]
+      simp [localizedFiniteVector_eq_indicator, ht, ht0, hty]
+    · by_cases ht0 : t ∈ Icc (0 : ℝ) L
+      · have hlt : t < y := by
+          by_contra h
+          exact ht ⟨le_of_not_gt h, ht0.2⟩
+        have hty : t - y ∉ Icc (0 : ℝ) L := by
+          intro hmem
+          exact (not_lt_of_ge hmem.1) (sub_neg.mpr hlt)
+        simp [localizedFiniteVector_eq_indicator, ht, ht0, hty]
+      · simp [localizedFiniteVector_eq_indicator, ht, ht0]
+  rw [hfun, integral_indicator measurableSet_Icc,
+    integral_Icc_eq_integral_Ioc, ← intervalIntegral.integral_of_le hyL]
+  have hshift :=
+    intervalIntegral.integral_comp_add_right
+      (f := fun t : ℝ =>
+        localizedFiniteFunction L N u t *
+          conj (localizedFiniteFunction L N u (t - y)))
+      (a := 0) (b := L - y) y
+  simpa using hshift.symm
+
+/-- The negative shift of the actual finite vector has the complementary
+overlap orientation on the same interval. -/
+theorem weilTest_localizedFiniteVector_neg
+    (N : ℕ) (u : Fin (2 * N + 1) → ℂ)
+    {L y : ℝ} (hy0 : 0 ≤ y) (hyL : y ≤ L) :
+    Zeta23.EF.weilTest
+        (localizedFiniteVector L N u)
+        (localizedFiniteVector L N u) (-y) =
+      ∫ x in 0..(L - y),
+        localizedFiniteFunction L N u x *
+          conj (localizedFiniteFunction L N u (x + y)) := by
+  simp only [Zeta23.EF.weilTest, convolution_def,
+    ContinuousLinearMap.mul_apply', Zeta23.EF.tilde]
+  have hLy0 : 0 ≤ L - y := sub_nonneg.mpr hyL
+  have hfun :
+      (fun t : ℝ =>
+        localizedFiniteVector L N u t *
+          conj (localizedFiniteVector L N u (-((-y) - t)))) =
+        (Icc (0 : ℝ) (L - y)).indicator
+          (fun t : ℝ =>
+            localizedFiniteFunction L N u t *
+              conj (localizedFiniteFunction L N u (t + y))) := by
+    funext t
+    have harg : -((-y) - t) = t + y := by ring
+    rw [harg]
+    by_cases ht : t ∈ Icc (0 : ℝ) (L - y)
+    · have ht0 : t ∈ Icc (0 : ℝ) L := by
+        constructor
+        · exact ht.1
+        · linarith [ht.2, hy0]
+      have hty : t + y ∈ Icc (0 : ℝ) L := by
+        constructor
+        · linarith [ht.1, hy0]
+        · linarith [ht.2]
+      simp [localizedFiniteVector_eq_indicator, ht, ht0, hty]
+    · by_cases ht0 : t ∈ Icc (0 : ℝ) L
+      · have hgt : L - y < t := by
+          by_contra h
+          exact ht ⟨ht0.1, le_of_not_gt h⟩
+        have hty : t + y ∉ Icc (0 : ℝ) L := by
+          intro hmem
+          linarith [hmem.2]
+        simp [localizedFiniteVector_eq_indicator, ht, ht0, hty]
+      · simp [localizedFiniteVector_eq_indicator, ht, ht0]
+  rw [hfun, integral_indicator measurableSet_Icc,
+    integral_Icc_eq_integral_Ioc, ← intervalIntegral.integral_of_le hLy0]
+
+/-- Inside the nonnegative aperture, the actual finite-vector correlation is
+the finite sesquilinear contraction of the actual basis correlations. -/
+theorem localizedWeilCorrelation_finiteVector_eq_basis_sum
+    (N : ℕ) (u : Fin (2 * N + 1) → ℂ)
+    {L y : ℝ} (hy0 : 0 ≤ y) (hyL : y ≤ L) :
+    localizedWeilCorrelation
+        (localizedFiniteVector L N u)
+        (localizedFiniteVector L N u) y =
+      ∑ i, ∑ j,
+        conj (u i) *
+          localizedWeilCorrelation
+            (localizedZeroExtendedMode L (centeredIndex N i))
+            (localizedZeroExtendedMode L (centeredIndex N j)) y *
+          u j := by
+  rw [localizedWeilCorrelation,
+    weilTest_localizedFiniteVector_pos N u hy0 hyL,
+    weilTest_localizedFiniteVector_neg N u hy0 hyL]
+  have hpos (i j : Fin (2 * N + 1)) :
+      IntervalIntegrable
+        (fun x : ℝ =>
+          conj (u i) *
+            (localizedMode L (centeredIndex N j) (x + y) *
+              conj (localizedMode L (centeredIndex N i) x)) * u j)
+        volume 0 (L - y) :=
+    (by fun_prop : Continuous
+      (fun x : ℝ =>
+        conj (u i) *
+          (localizedMode L (centeredIndex N j) (x + y) *
+            conj (localizedMode L (centeredIndex N i) x)) * u j)).intervalIntegrable _ _
+  have hneg (i j : Fin (2 * N + 1)) :
+      IntervalIntegrable
+        (fun x : ℝ =>
+          conj (u i) *
+            (localizedMode L (centeredIndex N j) x *
+              conj (localizedMode L (centeredIndex N i) (x + y))) * u j)
+        volume 0 (L - y) :=
+    (by fun_prop : Continuous
+      (fun x : ℝ =>
+        conj (u i) *
+          (localizedMode L (centeredIndex N j) x *
+            conj (localizedMode L (centeredIndex N i) (x + y))) * u j)).intervalIntegrable _ _
+  have hposExp :
+      (∫ x in 0..(L - y),
+        localizedFiniteFunction L N u (x + y) *
+          conj (localizedFiniteFunction L N u x)) =
+        ∑ i, ∑ j,
+          conj (u i) *
+            (∫ x in 0..(L - y),
+              localizedMode L (centeredIndex N j) (x + y) *
+                conj (localizedMode L (centeredIndex N i) x)) * u j := by
+    simp_rw [localizedFiniteFunction_overlap_eq_basis_sum]
+    rw [intervalIntegral.integral_finsetSum]
+    · apply Finset.sum_congr rfl
+      intro i hi
+      rw [intervalIntegral.integral_finsetSum]
+      · simp_rw [intervalIntegral.integral_const_mul,
+          intervalIntegral.integral_mul_const]
+      · intro j hj
+        exact hpos i j
+    · intro i hi
+      exact (IntervalIntegrable.sum Finset.univ fun j hj => hpos i j)
+  have hnegExp :
+      (∫ x in 0..(L - y),
+        localizedFiniteFunction L N u x *
+          conj (localizedFiniteFunction L N u (x + y))) =
+        ∑ i, ∑ j,
+          conj (u i) *
+            (∫ x in 0..(L - y),
+              localizedMode L (centeredIndex N j) x *
+                conj (localizedMode L (centeredIndex N i) (x + y))) * u j := by
+    simp_rw [localizedFiniteFunction_reverseOverlap_eq_basis_sum]
+    rw [intervalIntegral.integral_finsetSum]
+    · apply Finset.sum_congr rfl
+      intro i hi
+      rw [intervalIntegral.integral_finsetSum]
+      · simp_rw [intervalIntegral.integral_const_mul,
+          intervalIntegral.integral_mul_const]
+      · intro j hj
+        exact hneg i j
+    · intro i hi
+      exact (IntervalIntegrable.sum Finset.univ fun j hj => hneg i j)
+  rw [hposExp, hnegExp, ← Finset.sum_add_distrib]
+  apply Finset.sum_congr rfl
+  intro i hi
+  rw [← Finset.sum_add_distrib]
+  apply Finset.sum_congr rfl
+  intro j hj
+  rw [localizedWeilCorrelation,
+    weilTest_localizedZeroExtendedMode_pos
+      (centeredIndex N i) (centeredIndex N j) hy0 hyL,
+    weilTest_localizedZeroExtendedMode_neg
+      (centeredIndex N i) (centeredIndex N j) hy0 hyL]
+  ring
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.localizedFiniteVector_eq_indicator
