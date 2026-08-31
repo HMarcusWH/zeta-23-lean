@@ -22,20 +22,26 @@ Connes--Consani--Moscovici Section 4 formulas.
 The repository already has the printed-(4.14) convention as `gammaL` and the
 independently audited convention `cutoffFreeGammaL = gammaL-cCorrection`.
 
-This module does NOT silently identify the equation-(4.4) primitive with either
-one.  Instead it formalizes all three ingredients independently and theorem-
-locks the exact pointwise correction-factor discrepancy visible between the
-algebraic subtraction implied by rho(x) and the printed `c(L)` integrand.
+Direct substitution of the diagonal q(U_n,U_n) formula into equation (4.4)
+reduces its non-beta primitive to the equation-(4.11) LEFT-HAND integral plus
+w(L).  This module theorem-locks that direct equation-(4.4) convention as the
+independently audited cutoff-free matrix.
 
-Claim firewall: no theorem below identifies the external ambient QW_lambda
-restriction with `cutoffFreeMatrix`.  That remains open until the source
-normalization seam is resolved.
+Separately, it formalizes the printed equation-(4.11) RHS rewrite and
+equation-(4.14) notation and theorem-locks the exact pointwise correction-factor
+discrepancy between the algebra forced by rho(x) and the printed c(L)
+integrand.
+
+Claim firewall: the direct Section-4 finite source formula is identified with
+cutoffFreeMatrix, but the external ambient QW_lambda / kappa / PsiSharp object
+correspondence is still separate.  The printed (4.11)/(4.14) simplification is
+not used to justify the production matrix equality.
 -/
 
-/-- Regularized integrand appearing in the equation-(4.4) diagonal after
-substituting `q(U_n,U_n)(x)=2(1-x/L)cos(2*pi*n*x/L)`: the non-beta part uses
-`(cos-1)*rho`. -/
-def sourceEq44CosMinusOneIntegrand
+/-- Cos-minus-one integrand appearing on the RIGHT-HAND side of the printed
+equation-(4.11) rewrite.  It is not the direct equation-(4.4) diagonal
+primitive. -/
+def sourceEq411RhsCosMinusOneIntegrand
     (n : ℤ) (L x : ℝ) : ℝ :=
   if x = 0 then 0
   else
@@ -64,13 +70,13 @@ correction forced by the two displayed rho-weighted integrands themselves. -/
 theorem sourceEq411_integrand_decomposition
     (n : ℤ) (L x : ℝ) :
     sourceEq411LhsIntegrand n L x =
-      sourceEq44CosMinusOneIntegrand n L x +
+      sourceEq411RhsCosMinusOneIntegrand n L x +
         sourceEq411DerivedCorrectionIntegrand x := by
   by_cases h : x = 0
   · subst x
-    simp [sourceEq411LhsIntegrand, sourceEq44CosMinusOneIntegrand,
+    simp [sourceEq411LhsIntegrand, sourceEq411RhsCosMinusOneIntegrand,
       sourceEq411DerivedCorrectionIntegrand]
-  · simp [sourceEq411LhsIntegrand, sourceEq44CosMinusOneIntegrand,
+  · simp [sourceEq411LhsIntegrand, sourceEq411RhsCosMinusOneIntegrand,
       sourceEq411DerivedCorrectionIntegrand, h]
     ring
 
@@ -143,7 +149,7 @@ forced by the rho-weighted algebra. -/
 def SourceEq411CorrectionIdentity : Prop :=
   ∀ (n : ℤ) (L : ℝ),
     sourceEq411LhsGammaL n L =
-      (∫ x in (0 : ℝ)..L, sourceEq44CosMinusOneIntegrand n L x)
+      (∫ x in (0 : ℝ)..L, sourceEq411RhsCosMinusOneIntegrand n L x)
         + cCorrection L + wCorrection L
 
 /-- Archimedean matrix entry normalized directly from equation (4.4). -/
