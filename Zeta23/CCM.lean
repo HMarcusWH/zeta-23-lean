@@ -70,4 +70,5 @@ import Zeta23.CCM.LocalizedBasis
 import Zeta23.CCM.LocalizedFiniteSpace
 import Zeta23.CCM.LocalizedWeilRestriction
 import Zeta23.CCM.SourceWeilMatrixReconciliation
+import Zeta23.CCM.SourceNormalizationRepair
 import Zeta23.CCM.ClaimBindings
