@@ -311,6 +311,19 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "G1-A additive finite restriction only. localizedWeilAdditiveRHS is EF.literatureRHS applied to half of the actual symmetrized localized correlation. Lean proves half-correlation=dictionaryTest, then composes the existing arbitrary-complex dictionary RHS theorem with dictionaryMatrix=cutoffFreeMatrix. The source-facing wrapper locks L=2*log(lambda). This does NOT identify localizedWeilAdditiveRHS with the external Connes--Consani--Moscovici QW_lambda/PsiSharp form. That kappa/PsiSharp source correspondence is the separate G1-B obligation. No form-core, Rayleigh-Ritz, positivity, Suzuki, finite-to-infinite, or RH claim is promoted."
+    },
+    {
+      "id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+      "statement": "For the independently formalized Section-4 source expressions, the equation-(4.11) left-hand integrand decomposes pointwise into the equation-(4.4) cos-minus-one integrand plus a derived correction, and that derived correction is exactly exp(x/2) times the repository's printed cCorrectionIntegrand. The equation-(4.11)-left-hand gamma/archimedean/full finite convention is exactly cutoffFreeMatrix, while the raw equation-(4.4) matrix remains a distinct named object with no promoted equality to cutoffFreeMatrix or the external ambient QW_lambda form.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_CUTOFF_FREE_MATRIX_MAP"
+      ],
+      "source": "Zeta23/CCM/SourceWeilMatrixReconciliation.lean",
+      "theorem": "Zeta23.CCM.sourceEq411DerivedCorrectionIntegrand_eq_exp_mul_cCorrectionIntegrand",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "G1-B0 normalization firewall only. Companion theorems are sourceEq411_integrand_decomposition, sourceEq411LhsGammaL_eq_cutoffFreeGammaL, gammaL_eq_sourceEq411LhsGammaL_add_correction, sourceEq411LhsArchComponent_eq_cutoffFreeArchComponent, sourceEq411LhsEntry_eq_cutoffFreeEntry, and sourceEq411LhsMatrix_eq_cutoffFreeMatrix. SourceEq411CorrectionIdentity is deliberately only a Prop encoding the unresolved printed equation-(4.11) integrated correction claim; no theorem proves it. This claim does NOT identify sourceEq44Matrix with cutoffFreeMatrix, does not formalize kappa/PsiSharp/QW_lambda, form-core/Rayleigh-Ritz, positivity, Suzuki, or RH."
     }
   ]
 }
