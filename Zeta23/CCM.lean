@@ -67,4 +67,5 @@ import Zeta23.CCM.DictionaryZeroSideDisplacement
 import Zeta23.CCM.RawKernelZeroSideBridge
 import Zeta23.CCM.CutoffFreeMatrix
 import Zeta23.CCM.LocalizedBasis
+import Zeta23.CCM.LocalizedFiniteSpace
 import Zeta23.CCM.ClaimBindings
