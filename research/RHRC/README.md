@@ -46,7 +46,7 @@ See `routes/R002_multi_probe/`, OBS-009 and D0-R.
 
 This is the present critical route.
 
-Merged state through PR #73 includes:
+Merged theorem state through the #71-#74 sequence includes:
 
 ```text
 finite divided-difference/source calculus
@@ -59,13 +59,13 @@ finite divided-difference/source calculus
   -> additive localized Weil RHS restriction
   -> direct Section-4 source matrix
   -> source-normalization repair
+  -> finite kappa/source-sector bridge
 ```
 
 The remaining source-facing chain on merged main is:
 
 ```text
-finite kappa/source-sector map
-  -> d*u / L2 source interface
+d*u / L2 source interface
   -> PsiSharp / QW pullback
   -> QW_lambda|E_N = canonicalSourceMatrix
   -> canonical high-frequency falsifier
