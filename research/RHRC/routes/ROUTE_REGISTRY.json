@@ -54,12 +54,13 @@
         "R003_LOCALIZED_BASIS_CORRELATION",
         "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
         "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
-        "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL"
+        "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+        "R003_SOURCE_NORMALIZATION_REPAIR"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "Finite R003/D0/G0 and G1-A are closed. PR #71 / corrected G1-B0 now theorem-locks the direct Section-4 equation-(4.4) finite source matrix as exactly cutoffFreeMatrix. Independently, Lean proves that the correction forced pointwise by the printed equation-(4.11) rho-weighted rewrite is exp(x/2) times the repository transcription of the printed cCorrectionIntegrand, isolating the later (4.11)/(4.14) simplification as a non-load-bearing manuscript normalization seam. The next substantive gate is the external kappa/PsiSharp/QW_lambda source correspondence; form-core/Rayleigh-bottom transfer, Suzuki, and RH remain open."
+      "note": "Finite R003/D0/G0 and G1-A are closed. PR #71 theorem-locks the direct Section-4 equation-(4.4) finite source matrix as cutoffFreeMatrix. The normalization-repair layer now promotes canonicalSourceMatrix = cutoffFreeMatrix = sourceEq44Matrix while freezing finiteMatrix/gammaL/cCorrection as the historical printed-(4.11)/(4.14) convention. The corrected integrated (4.11) rewrite uses sourceEq411DerivedCorrection. The next substantive gate remains the external kappa/PsiSharp/QW_lambda correspondence; form-core/Rayleigh-bottom transfer, Suzuki, and RH remain open."
     },
     {
       "route_id": "R004_prolate_v2",
