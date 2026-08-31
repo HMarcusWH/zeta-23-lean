@@ -230,7 +230,7 @@ Each must be re-audited against the canonical normalization before use in a spec
 
 Do not silently revive:
 
-- `finiteMatrix = QW_lambda|E_N`;
+- forbidden direct identification of `finiteMatrix` with `QW_lambda|E_N`;
 - generic R002 smooth-taper `G-tilde(T)` = canonical CCM;
 - Bombieri zero-index truncation = deterministic CCM Fourier truncation;
 - fitted-small-commutator -> eigenvector convergence without an explicit generator and gap theorem.
