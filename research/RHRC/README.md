@@ -55,7 +55,7 @@ See `routes/R002_multi_probe/`, OBS-009 and D0-R.
 
 This remains the active finite/source route. PR #77 theorem-locks W2-A: genuine zeta `W(f,g)` equals `literatureRHS(weilTest f g)` on the exact admissible pair class, with the W-summand family proved summable. That removes W0's principal legality blocker. The immediate global priority is therefore W0, while G1-B1B remains the parallel source-faithful lane and W2-B/C remain the internal additive lane after W0/W1.
 
-Merged theorem state through the #71-#74 sequence includes:
+Validated theorem state through the #71-#77 sequence includes:
 
 ```text
 finite divided-difference/source calculus
@@ -71,7 +71,17 @@ finite divided-difference/source calculus
   -> finite kappa/source-sector bridge
 ```
 
-The remaining source-facing chain on merged main is:
+The route-general next package is:
+
+```text
+W0 canonical two-translate contraction
+  -> one negative compact C² Weil test
+  -> W1 support/recentering
+```
+
+After W0/W1, the program splits.
+
+Source-facing lane:
 
 ```text
 d*u / L2 source interface
@@ -81,18 +91,18 @@ d*u / L2 source interface
   -> F1 canonical finite obstruction
 ```
 
-The competing internal lane is:
+Internal additive lane:
 
 ```text
-W2-A direct W/literatureRHS extraction
+W2-A direct W/literatureRHS + summability          PROVED
   -> W2-B reflection/evenization
   -> W2-C W self-value = localized additive RHS
-  -> W0/W1 negative test + recentering
   -> F0-B finite additive/Fourier approximation
+  -> G1-A canonical finite additive restriction    PROVED
   -> F1 canonical finite obstruction
 ```
 
-The current implementation queue is maintained in CURRENT_RESEARCH_PLAN.md. An open green PR is still branch state, not merged theorem state.
+The exact W0 theorem/file contract is maintained in CURRENT_RESEARCH_PLAN.md.
 
 See `routes/R003_ccm_bridge/README.md`.
 
