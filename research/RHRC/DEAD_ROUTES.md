@@ -2,15 +2,84 @@
 
 A route is listed here when it fails for a reusable reason. Failure is a valid research output.
 
-- **DR-001:** improve RH by a new scalar inequality consuming only the TightMult-visible single-compression statistics. Blocked by OBS-001.
-- **DR-002:** fixed local-ordinal zeta mapping as a bridge from finite CCM objects to zeta zeros. Rejected in the earlier CCM campaign.
-- **DR-003:** `curvature_gap` W96 as a hidden RH field. Rejected by matched adversarial null and transfer failure.
-- **DR-004:** close `R001_PRIME_UPPER` by ξ-modulation averaging plus the Montgomery–Vaughan mean value ("MV gives square-root cancellation"). Rejected by exponent bookkeeping: for window `T = e^{2βa}` the provable prime-side RMS is `max(√a, e^{(1−β)a}√a)` while the depth-δ exceptional RMS is `e^{(2δ−β)a}`; detection requires `δ > 1/2` in every regime, and the dilution deficit `e^{(2δ−1)a}` is window-independent. See `routes/R001_exceptional_zero/PRIME_SIDE_FEASIBILITY_2026_08_20.md`. A revival must remove the MV additive `Σ n|c_n|²` penalty at `T ≪ X` — itself zero-density/RH-strength information.
-- **DR-005:** close `R001_PRIME_UPPER` as an independent scalar arithmetic estimate at all. Blocked by OBS-008 (formal): the scalar target is a Lean-proved equivalent of RH, so "apply PNT harder" cannot terminate the route.
-- **DR-006:** three R002 observable families, killed in `routes/R002_multi_probe/MULTI_PROBE_GRAM_OPERATOR_FEASIBILITY_2026_08_21.md`.
-  - *R002-B, odd moment `tr G̃³`*: the bulk is `≍ N λ^{-3}` with `N ≍ Tl/2π` while a visible negative eigenvalue moves the cubic by `O(1)`; detection needs the cubic main term to relative precision `1/N`, i.e. a power-saving asymptotic for the ternary correlation `Σ Λ(n)Λ(m)Λ(l)(nml)^{-1/2}W` on the near-multiplicative diagonal `l ≈ nm`. No unconditional mechanism at that strength; the two proven moments do not extend to the third.
-  - *R002-E, L² aperture coherence*: collapses to OBS-008. `paperFT`/`weilZeroFilter`/`literatureRHS` are linear in the test, so the matrix `G_ij(A) = (1/A)∫F_i conj(F_j)` is exactly the scalar family over the probe span; and L²-subexponentiality still gives Laplace holomorphy on `Re z > 0` (split into unit blocks, Cauchy–Schwarz), so the `ExposedPole` contradiction runs verbatim and the property is RH-equivalent. Its arithmetic side is the DR-004 wall.
-  - *R002-F, full-diagonal majorization*: the retained diagonal `{m_j‖v_j‖²}` is δ-insensitive at leading order — `‖v_j‖²` is pinned by the frame identity `Σ_k φ̂(γ−τ_k)² = aL²` independently of `δ`.
-  A revival of B needs ternary-correlation technology that does not exist; a revival of E needs an escape from OBS-008 that is not a repackaging; a revival of F needs a δ-sensitive diagonal functional.
+Do not silently resurrect a dead route. A revival must state **which blocking premise changed** and why that change is theorem-relevant.
 
-Do not silently resurrect a dead route. A revival must state which blocking premise has changed.
+## DR-001 — TightMult-visible scalar improvement
+
+Improve RH by a new scalar inequality consuming only the TightMult-visible single-compression statistics.
+
+**Blocked by:** OBS-001.
+
+## DR-002 — fixed local-ordinal zeta mapping
+
+Use a fixed local-ordinal map as a bridge from finite CCM objects to zeta zeros.
+
+**Status:** rejected in the earlier CCM campaign.
+
+## DR-003 — curvature_gap W96 hidden field
+
+Treat `curvature_gap` W96 as an RH field.
+
+**Status:** rejected by matched adversarial null and transfer failure.
+
+## DR-004 — MV square-root-cancellation shortcut for R001
+
+Close `R001_PRIME_UPPER` by xi-modulation averaging plus Montgomery--Vaughan mean value.
+
+**Blocked by:** exponent bookkeeping; detection still requires delta > 1/2. Reviving this route requires removing the MV additive `sum n|c_n|^2` penalty at the needed scale, which is already RH/zero-density-strength information.
+
+## DR-005 — independent scalar arithmetic closure of R001
+
+Treat `R001_PRIME_UPPER` as "one more prime estimate."
+
+**Blocked by:** OBS-008. The exact scalar target is Lean-proved RH-equivalent.
+
+## DR-006 — killed R002 observable families
+
+Killed in `routes/R002_multi_probe/MULTI_PROBE_GRAM_OPERATOR_FEASIBILITY_2026_08_21.md`:
+
+- odd moment `tr G-tilde^3` — requires unavailable ternary Lambda-correlation precision;
+- L2 aperture coherence — collapses to OBS-008;
+- full-diagonal majorization — delta-insensitive at leading order.
+
+## DR-007 — naïve finiteMatrix = ambient QW restriction
+
+Identify the historical printed-normalization `finiteMatrix` directly with the external finite restriction `QW_lambda|E_N`.
+
+**Status:** forbidden.
+
+PRs #71/#73 showed that the direct Section-4 source authority is the canonical cutoff-free object, while `finiteMatrix` is the frozen later printed normalization. The objects differ by a scalar identity shift.
+
+A future actual `QW_lambda|E_N` theorem must land on `canonicalSourceMatrix` through an independently defined source functional.
+
+## DR-008 — generic R002 taper-grid = canonical CCM
+
+Treat the production R002 smooth-taper `G-tilde(T)` as merely the canonical CCM finite matrix in another basis.
+
+**Status:** refuted as a generic identity / classified SPECIALIZATION_ONLY by D0-R (#66).
+
+Hard-window character geometry matches the CCM basis specialization; the production objects differ in taper, carrier, index set, parameter regime and zero truncation.
+
+## DR-009 — Bombieri finite truncation = deterministic CCM Fourier band
+
+Directly identify Bombieri's finite zero-index matrix `H(Gamma_N;t)` with the deterministic centered Fourier-mode CCM matrix.
+
+**Status:** not supported by the source audit / quarantined.
+
+The finite coordinates, dimensions and truncation laws are different. Any revival requires an actual theorem giving a change of basis, compression, congruence or inertia transfer.
+
+## DR-010 — fitted small commutator -> eigenvector convergence
+
+Infer useful eigenvector convergence from the numerically fitted symmetric tridiagonal generator because its normalized commutator with the finite CCM matrix is small.
+
+**Status:** falsified as a route in its present form.
+
+Finite fitted-generator spectral gaps collapse badly in tested cases. A revival requires an analytically specified generator plus separate absolute commutator and spectral-gap theorems.
+
+## DR-011 — legacy absolute spectrum as canonical source spectrum
+
+Use absolute eigenvalues, inertia, PSD, trace, determinant or lower bounds computed from the legacy printed `finiteMatrix` as if they were canonical source spectral data.
+
+**Status:** forbidden semantic shortcut.
+
+The canonical and legacy matrices differ by a scalar identity shift. Only shift-invariant information transports automatically.

@@ -1,6 +1,15 @@
-# RHRC one-command terminal runner
+# RHRC terminal-status runner
 
-The runner is designed to **finish with a legally bounded answer**, not merely a plot or score.
+This directory contains the original one-command RHRC status runner.
+
+It is **not** an executor for the current R003 CCM/source critical path.
+
+Its role is narrower:
+
+- run RHRC registry/regression checks;
+- execute the retained R001 finite diagnostic;
+- optionally build selected Lean targets;
+- emit a fail-closed terminal status.
 
 ```bash
 python research/RHRC/runner/run_all.py \
@@ -8,13 +17,24 @@ python research/RHRC/runner/run_all.py \
   --output-dir rhrc_final_output
 ```
 
-It runs RHRC regression/claim checks, executes the cached/vectorized R001 finite diagnostic, optionally builds `Zeta23.ExceptionalZero` when `lake` is installed, and writes:
+Outputs include:
 
-- `R001_RESULT.json`
-- `FORMAL_BUILD_STATUS.json`
-- `FINAL_ANSWER.json`
-- `FINAL_ANSWER.txt`
+- `R001_RESULT.json`;
+- `FORMAL_BUILD_STATUS.json`;
+- `FINAL_ANSWER.json`;
+- `FINAL_ANSWER.txt`.
 
-`FINAL_ANSWER` is deliberately fail-closed. A finite diagnostic PASS can produce `RH_OPEN` with a research signal, but it cannot produce `RH_PROVED_TRUE`. The latter is emitted only when `C_RH` and every theorem-relevant dependency are registered `PROVED_UNCONDITIONAL` through the Lean/comparator promotion path.
+## Claim firewall
 
-For larger Colab/HPC runs the R001 runner first attempts to bootstrap verified finite zero ordinates from Andrew Odlyzko's public `zeros1` table (first 100,000 zeros, stated accuracy 3e-9), caches them locally, and falls back to `mpmath.zetazero` if that source is unavailable. The zero source is recorded in `R001_RESULT.json`.
+A finite diagnostic PASS can never emit `RH_PROVED_TRUE`.
+
+The terminal result may become proved only when `C_RH` and every theorem-relevant dependency are registered `PROVED_UNCONDITIONAL` through the formal promotion path.
+
+The active CCM/G1 route is developed and validated through Lean/CI and the R003 route machinery, not through this runner.
+
+For current route state see:
+
+- `../README.md`;
+- `../routes/R003_ccm_bridge/README.md`;
+- `../CLAIM_REGISTRY.json`;
+- `../routes/ROUTE_REGISTRY.json`.

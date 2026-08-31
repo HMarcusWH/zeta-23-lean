@@ -27,7 +27,7 @@ Promotion condition: an exact separation theorem, not a classifier score.
 | P3 | windowed visibility: the negative direction survives the PSD on-line bulk | **OPEN** — masking; historical bookkeeping gives `δL ≳ √(6/λ)` and an experimental oversampling signal at `λ > 1`, but `λ > 1` is outside current production `Params.Valid` (§3 plus PR #66 D0-R audit) |
 | P4 | arithmetic leg: `∫\|W\|²ν_X ≥ −θ` for all band-limited `W` | **OPEN and RH-equivalent** in the `∀(T, λ>1)` limit (Weil's criterion) — see OBS-009 |
 | P5-original | naive CCM identity `M_{λ,N} = ½·WeilGram` with no diagonal correction | **REFUTED AS STATED** — the diagonal archimedean correction is real |
-| P5-corrected | exact normalized CCM ↔ raw truncated-character kernel zero side: `rawKernelZeroSideMatrix = 2·M + 4·cCorrection(L)·I` | **CLOSED / PROVED IN LEAN** — `R002_KERNEL_ZERO_SIDE_BRIDGE` |
+| P5-corrected | exact normalized CCM ↔ raw truncated-character kernel zero side: `rawKernelZeroSideMatrix = 2·canonicalSourceMatrix = 2·M + 4·cCorrection(L)·I` | **CLOSED / PROVED IN LEAN** — `R002_KERNEL_ZERO_SIDE_BRIDGE` |
 
 P0–P2 are proved in `Zeta23/ExceptionalZero/ProbeGramNegativity.lean`
 (sorry-free, standard axioms only). P3 remains open and P4 remains RH-equivalent.
@@ -93,6 +93,7 @@ the original raw `qBasis/kernel` convention and proves
 ```text
 rawKernelZeroSideMatrix
   = 2 * zeroSideMatrix
+  = 2 * canonicalSourceMatrix
   = 2 * finiteMatrix + 4*cCorrection(L)*I.
 ```
 
@@ -131,6 +132,7 @@ PR #65 made the canonical finite CCM object theorem-authoritative:
 
 ```text
 zeroSideMatrix
+  = canonicalSourceMatrix
   = cutoffFreeMatrix
   = finiteMatrix + 2*cCorrection(L)*I.
 ```

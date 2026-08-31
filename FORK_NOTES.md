@@ -1,48 +1,101 @@
-# HMWH Zeta23 fork: research boundary
+# HMWH Zeta23 fork — research boundary and provenance
 
-This fork preserves the inherited Anthropic Zeta23 formalization as a trusted baseline and adds an explicitly separated research program for exceptional-zero detection.
+This file defines the fork-level boundary. It supersedes the earlier description of the fork as only an "exceptional-zero detection" extension.
 
-## Boundary
+## Preserved upstream baseline
 
-Baseline main commit: `cec57f919ccf34e5fa5372b4ba332f7c848bbb6e`.
+The fork baseline is pinned in `UPSTREAM_BASELINE.json`:
 
-Everything under `research/RHRC/` is discovery, falsification, provenance, or experiment infrastructure. It is **not** a theorem dependency and cannot promote a mathematical claim by itself.
+```text
+upstream: anthropics/zeta-23-lean
+baseline fork commit: cec57f919ccf34e5fa5372b4ba332f7c848bbb6e
+```
 
-Everything under `Zeta23/ExceptionalZero/` is intended to remain ordinary Lean mathematics. Files in that subtree must contain no `sorry` and no project-declared axioms. Open research obligations live in `research/RHRC/CLAIM_REGISTRY.json`, not as Lean axioms.
+The inherited Zeta23 paper formalization remains a preserved foundation. The fork does not rewrite its historical provenance.
 
-## FFBBP solver boundary
+The old root README and audit are retained as `UPSTREAM_README.md` and `UPSTREAM_AUDIT.md`.
 
-RHRC targets **FFBBP Reference Solver Architecture v1.5 (2026-08-19)**, which supersedes v1.4.2. The supplied v1.5 PDF is attested in `research/RHRC/ffbbp/FFBBP_REFERENCE.json` with SHA-256 `fed1d92e1c881a5be5a93261b29b813055c629679da3ddc8a2ed3502a09175ac`.
+## Fork theorem-bearing mathematics
 
-The named RUN42B A0 implementation profile is finite-synthetic qualified for unknown-field **diagnostic-only** interrogation after two-sided known-truth qualification. RHRC therefore treats V06N known-null immunity, V06P known-positive recovery, and relevant V06X artifact rejection as admission prerequisites. RUN38 remains a regression/pathology reference, not sufficient admission evidence by itself.
+Fork-owned formal mathematics now extends well beyond `Zeta23/ExceptionalZero/`.
 
-RUN42B profile values are reproducibility data, not universal constants. Material solver-profile changes require requalification, and the RH domain adapter must be frozen before a real zeta run.
+Major theorem-bearing areas include:
 
-## OoL-MVS route-closure boundary
+- `Zeta23/ExceptionalZero/` — exceptional-zero amplification, two-translate detectors, multi-probe separation and related exact mathematics;
+- `Zeta23/CCM/` — finite CCM matrix calculus, finite Guinand--Weil dictionary, explicit-formula extension, zero-side bridge, localized finite Fourier spaces, source normalization and displacement structure;
+- supporting fork additions used by those routes.
 
-RHRC now targets **OoL-MVS Kernel v2.7.6 (2026-08-19)** for operational route-closure semantics. The supplied release archive is attested in `research/RHRC/ool/OOL_REFERENCE.json` with SHA-256 `35eef74477b97cfa0f0c5367b51747022ba78c4df16e54869c41614d99e184f2`.
+All promoted fork mathematics must remain sorry-free and may not introduce project-specific axioms.
 
-Only the domain-neutral governance layer is transplanted. The 24 origin-of-life physical claims are not RH premises. The imported contract is:
+Open obligations belong in the claim/route registries and route documents, not as Lean axioms.
 
-- complete formal worlds use `TRUE/FALSE`; partial experimental/research evidence uses strong-Kleene `PASS/FAIL/NA`;
-- missing or unresolved evidence is `NA`, not silent `FAIL`;
-- claim outcome is separate from certificate integrity, so `FAIL + VALID` is legal;
-- claim-bearing evidence must bind to raw evidence, exact support receipts, witness identity and frozen registry/route/boundary identity;
-- unknown provenance is not unconditional provenance; explicit conditional/conjectural ancestry blocks unconditional route closure;
-- absence/clean-ancestry claims require a complete declared search domain;
-- discovery may adapt, but confirmatory execution requires frozen route/boundary digests;
-- claim-bearing changes after result/lockbox exposure require a new route digest and fresh confirmatory execution;
-- route-specific protocols instantiate but may not weaken the governing semantics.
+## Research control plane
 
-The supplied v2.7.6 package was independently executed in the authoring environment: all six packaged suites passed, **530/530 checks**. This verifies the package's software/formal/numerical consistency only; it is not RH evidence.
+Everything under `research/RHRC/` is one of:
+
+- discovery tooling;
+- source/provenance mapping;
+- falsification and countermodels;
+- route governance;
+- numerical diagnostics;
+- evidence receipts;
+- machine-readable claim and route state.
+
+These materials may guide proof search but are not theorem authority.
+
+## Canonical CCM naming rule
+
+The canonical direct-source finite object is
+
+```text
+canonicalSourceMatrix
+  = cutoffFreeMatrix
+  = sourceEq44Matrix
+  = dictionaryMatrix.
+```
+
+The historical literal printed normalization is
+
+```text
+legacyPrintedMatrix = finiteMatrix.
+```
+
+The two differ by a scalar identity shift. The legacy object must never be silently relabelled as the ambient source restriction `QW_lambda|E_N`.
+
+Any claim about absolute spectrum, PSD, inertia, lower bounds, trace or determinant must state which normalization it uses.
+
+## Route state
+
+The fork currently tracks:
+
+- **R001** exceptional-zero amplification;
+- **R002** multi-probe / negative-index observables;
+- **R003** CCM / finite Weil bridge;
+- **R004** finite displacement / prolate-structure investigation.
+
+The present critical path is R003 source identification and fixed-aperture variational transfer. R001 and R002 remain mathematically useful but are not currently treated as the shortest terminal route. R004 is retained as structural support and a dormant composition source.
+
+## FFBBP / OoL boundary
+
+FFBBP and OoL-MVS contribute research-process and discovery/governance semantics only.
+
+The currently qualified FFBBP lineage is RUN42C with the inductive firewall; RUN42B is historical/quarantined development lineage.
+
+OoL-MVS v2.7.6 remains a route-governance reference only. Origin-of-life claims are not RH premises.
+
+Neither FFBBP nor OoL-MVS can promote a mathematical theorem.
 
 ## Permanent rules
 
-1. Research machinery does not become a theorem dependency.
-2. Synthetic zeta-like worlds calibrate the solver; they are never counterexamples to zeta unless realizability is independently proved.
-3. A candidate does not escape `Zeta23.ZeroSide.TightMult` merely by computing another scalar function of the same compression data. It must state the additional information channel it uses.
-4. Conditional, numerical, heuristic, and synthetic ancestry is transitive. It cannot be laundered into `PROVED_UNCONDITIONAL` by composition.
-5. FFBBP unknown-field admission is diagnostic only. No FFBBP posterior, qualification result, field recovery, or collapse decision is RH evidence or a theorem.
-6. OoL evidence/certificate semantics govern research-route integrity but do not replace Lean/comparator as the authority for mathematical theoremhood.
-7. Current R001/R002/R003 remain `DISCOVERY`; confirmatory digests are issued only after their claim-bearing mathematical objects and protocols are actually frozen.
-8. The fork may search aggressively and must promote conservatively.
+1. **Lean/compiler/CI is theorem authority.**
+2. **Research machinery is not a theorem dependency.**
+3. **RH stays OPEN until the exact terminal theorem is proved and claim-validated.**
+4. **A finite formula identity is not automatically an ambient Hilbert/form restriction theorem.**
+5. **A function-level source representative is not automatically a bundled L2/form-domain object.**
+6. **Normalization, parameterization, carrier space, measure, functional, and restriction map are separate interfaces and must be closed separately.**
+7. **Scalar-shift-invariant evidence cannot be upgraded into scalar-shift-sensitive spectral claims.**
+8. **Synthetic worlds and numerical experiments are discovery/falsification evidence only.**
+9. **Conditional, numerical, heuristic and synthetic ancestry cannot be laundered into unconditional theorem status.**
+10. **Dead routes may be revisited only when the blocking premise has changed and that change is stated explicitly.**
+11. **Green triggers a post-green research pass; it does not terminate investigation.**
+12. **The fork may search aggressively and must promote conservatively.**

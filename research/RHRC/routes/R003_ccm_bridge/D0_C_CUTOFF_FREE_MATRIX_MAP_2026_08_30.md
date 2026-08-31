@@ -1,6 +1,6 @@
 # D0-C — cutoff-free CCM finite matrix map — 2026-08-30
 
-Status: **THEOREM IMPLEMENTED / FINAL PR VALIDATION REQUIRED**.
+Status: **MERGED / PROVED IN LEAN**. Historical D0-C settlement from PR #65; current canonical source semantics are governed by SourceNormalizationRepair and the active R003 README.
 
 Repository: `HMarcusWH/zeta-23-lean`
 

@@ -1,0 +1,57 @@
+{
+  "schema_version": "CCM_CANONICAL_OBJECT_MAP_v2",
+  "date_utc": "2026-08-31",
+  "authority": "Lean theorem map on merged main after PR #73",
+  "merged_main": "faca0e88ab84bdc70c19c6af757eabf508bff54f",
+  "canonical_object": "Zeta23.CCM.canonicalSourceMatrix",
+  "equalities": [
+    {
+      "lhs": "Zeta23.CCM.canonicalSourceMatrix",
+      "rhs": "Zeta23.CCM.sourceEq44Matrix",
+      "theorem": "Zeta23.CCM.canonicalSourceMatrix_eq_sourceEq44Matrix"
+    },
+    {
+      "lhs": "Zeta23.CCM.canonicalSourceMatrix",
+      "rhs": "Zeta23.CCM.dictionaryMatrix",
+      "theorem": "Zeta23.CCM.canonicalSourceMatrix_eq_dictionaryMatrix"
+    },
+    {
+      "lhs": "Zeta23.CCM.zeroSideMatrix",
+      "rhs": "Zeta23.CCM.cutoffFreeMatrix",
+      "theorem": "Zeta23.CCM.zeroSideMatrix_eq_cutoffFreeMatrix",
+      "hypotheses": "positive aperture"
+    },
+    {
+      "lhs": "Zeta23.CCM.canonicalSourceMatrix",
+      "rhs": "Zeta23.CCM.legacyPrintedMatrix + 2*legacyPrintedCorrection(L)*I",
+      "theorem": "Zeta23.CCM.canonicalSourceMatrix_eq_legacyPrintedMatrix_add_correction"
+    }
+  ],
+  "legacy": {
+    "matrix": "Zeta23.CCM.legacyPrintedMatrix = Zeta23.CCM.finiteMatrix",
+    "correction": "Zeta23.CCM.legacyPrintedCorrection = Zeta23.CCM.cCorrection",
+    "gamma": "Zeta23.CCM.legacyPrintedGammaL = Zeta23.CCM.gammaL"
+  },
+  "shift_invariant": [
+    "commutator",
+    "displacement rank",
+    "eigenvectors/eigenspaces",
+    "eigenvalue gaps/order"
+  ],
+  "shift_sensitive": [
+    "absolute eigenvalues",
+    "PSD/positivity",
+    "inertia",
+    "lower bounds",
+    "trace",
+    "determinant"
+  ],
+  "forbidden_identification": "legacy finiteMatrix = ambient QW_lambda|E_N",
+  "open_interfaces": [
+    "finite kappa/source-sector map on merged main",
+    "multiplicative Haar/L2 source interface",
+    "PsiSharp",
+    "ambient QW_lambda pullback",
+    "QW_lambda|E_N = canonicalSourceMatrix"
+  ]
+}
