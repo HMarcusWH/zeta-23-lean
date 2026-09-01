@@ -16,6 +16,7 @@ import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.DictionaryRHSIdentity
 import Zeta23.ExceptionalZero.DisplacementTransfer
 import Zeta23.ExceptionalZero.WeilLiteratureBridge
+import Zeta23.ExceptionalZero.TwoTranslateContraction
 
 /-!
 # Promoted CCM / R002 / R003 theorem bindings
@@ -193,3 +194,11 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.ExceptionalZero.zeta_W_eq_literatureRHS_weilTest
 #check Zeta23.ExceptionalZero.zeta_W_self_eq_literatureRHS_weilTest
 #print axioms Zeta23.ExceptionalZero.zeta_W_self_eq_literatureRHS_weilTest
+
+
+#check Zeta23.ExceptionalZero.zeta_W_twoTranslateCombination_eq_matrixQuadratic
+#print axioms Zeta23.ExceptionalZero.zeta_W_twoTranslateCombination_eq_matrixQuadratic
+#check Zeta23.ExceptionalZero.exists_poleNeutral_negativeWeilTest_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_poleNeutral_negativeWeilTest_of_offLine_zero
+#check Zeta23.ExceptionalZero.exists_negativeWeilTest_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_negativeWeilTest_of_offLine_zero
