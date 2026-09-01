@@ -326,4 +326,38 @@ theorem zeta_mult_reflect : ∀ ρ, IsNontrivialZero ρ → zeroMult (reflect ρ
   unfold zeroMult
   rw [hrefl_eq, analyticOrderAt_zeta_conj h1subne, analyticOrderAt_zeta_one_sub h0 h1]
 
+
+/-! ### 5. Concrete Schwarz / one-sub symmetry helpers
+
+These are unconditional zeta facts used by the zero-side evenization route.  They are
+kept here, upstream of any exceptional-zero argument.
+-/
+
+/-- Schwarz conjugation preserves the concrete set of nontrivial zeta zeros. -/
+theorem zeta_conj_zero {ρ : ℂ} (hρ : IsNontrivialZero ρ) :
+    IsNontrivialZero (conj ρ) := by
+  rcases hρ with ⟨hzero, h0, h1⟩
+  have hρne1 : ρ ≠ 1 := by
+    intro h
+    rw [h] at h1
+    simp at h1
+  refine ⟨?_, ?_, ?_⟩
+  · rw [riemannZeta_conj hρne1, hzero]
+    simp
+  · simpa only [Complex.conj_re] using h0
+  · simpa only [Complex.conj_re] using h1
+
+/-- The direct involution ρ ↦ 1 − ρ preserves concrete nontrivial zeta zeros. -/
+theorem zeta_one_sub_zero {ρ : ℂ} (hρ : IsNontrivialZero ρ) :
+    IsNontrivialZero (1 - ρ) := by
+  have h := zeta_reflect_zero (conj ρ) (zeta_conj_zero hρ)
+  simpa [reflect] using h
+
+/-- Multiplicity is preserved by the direct involution ρ ↦ 1 − ρ in the open strip. -/
+theorem zeta_mult_one_sub {ρ : ℂ} (hρ : IsNontrivialZero ρ) :
+    zeroMult (1 - ρ) = zeroMult ρ := by
+  rcases hρ with ⟨_, h0, h1⟩
+  unfold zeroMult
+  rw [analyticOrderAt_zeta_one_sub h0 h1]
+
 end Zeta23

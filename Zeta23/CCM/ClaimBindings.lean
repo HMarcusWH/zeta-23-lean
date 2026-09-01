@@ -18,6 +18,7 @@ import Zeta23.ExceptionalZero.DisplacementTransfer
 import Zeta23.ExceptionalZero.WeilLiteratureBridge
 import Zeta23.ExceptionalZero.TwoTranslateContraction
 import Zeta23.ExceptionalZero.NegativeWeilTestSupport
+import Zeta23.ExceptionalZero.WeilZeroSideEvenization
 
 /-!
 # Promoted CCM / R002 / R003 theorem bindings
@@ -213,3 +214,24 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero
 #check Zeta23.ExceptionalZero.exists_strictAperture_negativeWeilTest_of_offLine_zero
 #print axioms Zeta23.ExceptionalZero.exists_strictAperture_negativeWeilTest_of_offLine_zero
+
+
+#check Zeta23.zeta_conj_zero
+#print axioms Zeta23.zeta_conj_zero
+#check Zeta23.zeta_one_sub_zero
+#print axioms Zeta23.zeta_one_sub_zero
+#check Zeta23.zeta_mult_one_sub
+#print axioms Zeta23.zeta_mult_one_sub
+#check Zeta23.ExceptionalZero.zetaOneSubEquiv
+#check Zeta23.ExceptionalZero.gammaOf_one_sub
+#print axioms Zeta23.ExceptionalZero.gammaOf_one_sub
+#check Zeta23.ExceptionalZero.paperFT_zeroSideReflectTest
+#print axioms Zeta23.ExceptionalZero.paperFT_zeroSideReflectTest
+#check Zeta23.ExceptionalZero.zeta_literatureRHS_halfEven_eq
+#print axioms Zeta23.ExceptionalZero.zeta_literatureRHS_halfEven_eq
+#check Zeta23.ExceptionalZero.zeta_W_self_eq_localizedWeilAdditiveRHS
+#print axioms Zeta23.ExceptionalZero.zeta_W_self_eq_localizedWeilAdditiveRHS
+#check Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeLocalizedWeilAdditiveRHS_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeLocalizedWeilAdditiveRHS_of_offLine_zero
+#check Zeta23.ExceptionalZero.exists_strictAperture_negativeLocalizedWeilAdditiveRHS_of_exists_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_strictAperture_negativeLocalizedWeilAdditiveRHS_of_exists_offLine_zero
