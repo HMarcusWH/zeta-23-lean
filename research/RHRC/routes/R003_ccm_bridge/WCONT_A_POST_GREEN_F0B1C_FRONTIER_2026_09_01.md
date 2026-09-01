@@ -236,27 +236,50 @@ The next theorem package should therefore focus on **approximation + projection 
 
 ## Resurrected routes
 
-### Stone-Weierstrass / second-derivative-first construction
+### Existing AddCircle Fourier span / second-derivative-first construction
 
-**Status: LEAD / HIGH PRIORITY INVESTIGATION.**
+**Status: LEAD / HIGHEST-PRIORITY INVESTIGATION.**
 
-Pinned Mathlib does contain the RCLike Stone-Weierstrass theorem:
+A deeper pinned-Mathlib inventory after WCONT-A found that `Mathlib/Analysis/Fourier/AddCircle.lean` already proves the route-specific density theorem:
 
 ~~~text
-ContinuousMap.starSubalgebra_topologicalClosure_eq_top_of_separatesPoints
+AddCircle.span_fourier_closure_eq_top
 ~~~
 
-This changes the earlier “no ready Fejer theorem” assessment. It does not give the desired finite localized Fourier approximation for free, but it suggests a potentially smaller route:
+for the exact characters
 
-1. view the strict-collar witness as a C² periodic function on the circle;
-2. uniformly approximate its continuous second derivative by a finite trigonometric/Laurent polynomial;
-3. remove the zero Fourier mode so the approximating second derivative has mean zero;
-4. integrate twice in the finite Fourier sector, choosing the constant mode to match the witness mean;
-5. derive control of the first derivative and function by periodic Poincare-type estimates.
+~~~text
+AddCircle.fourier n (x : AddCircle L)
+  = exp(2*pi*i*n*x/L).
+~~~
 
-This may avoid formalizing Fejer kernels entirely.
+This phase agrees with `localizedMode L n`; the repository adds only `1/sqrt L`.
 
-Nothing in this paragraph is yet proved in the repository.
+The same Mathlib file also provides:
+
+~~~text
+AddCircle.fourierCoeff_eq_intervalIntegral
+AddCircle.fourierCoeffOn_eq_integral
+AddCircle.fourierCoeffOn_of_hasDerivAt
+AddCircle.hasDerivAt_fourier
+~~~
+
+So the project does not need to rebuild Stone-Weierstrass or Fejer merely to obtain uniform finite trigonometric approximation.
+
+Preferred experiment:
+
+1. descend the strict-collar witness to a C² periodic object;
+2. uniformly approximate h'' by an element of the finite Fourier span;
+3. prove mean(h'')=0 from h'(L)=h'(0), and subtract the approximant's constant mode;
+4. integrate nonzero modes twice using frequency `2*pi*i*n/L`;
+5. choose the constant mode to match mean(h);
+6. use fixed-L periodic integration estimates to control q'-h' and q-h;
+7. use uniform h'' approximation to control q''(0), while the lower-jet bounds control q'(0),q(0);
+8. feed those residuals through #88.
+
+The theorem `AddCircle.hasSum_fourier_series_L2` was also found, but L² convergence alone is insufficient for the primary projector route because point evaluation q''(0) is not L²-continuous.
+
+The earlier generic Stone-Weierstrass packaging lead is therefore superseded.
 
 ### F0-B2 direct localized-additive continuity
 
@@ -313,7 +336,7 @@ That structure should be preserved into the post-F1 displacement/Krylov investig
 4. **Raw approximants:** an unprojected hard-window trigonometric polynomial need not be globally C².
 5. **Correction alone:** the three-mode correction is not generally boundary-flat and cannot be treated as an independent admissible W test.
 6. **Derivative decomposition:** future proofs must justify how interior trigonometric derivatives control the classical derivative of the complete projected hard-window function; endpoint sets are measure-zero but the global C² legal object must be the projected vector.
-7. **Stone-Weierstrass:** generic density does not by itself produce the exact centered finite coefficient representation, zero-mean second derivative, or integrated coefficient bounds.
+7. **AddCircle finite-span extraction:** the density theorem is already available, but it still does not by itself produce the exact repository centered coefficient vector, zero-mean second derivative, or twice-integrated coefficient map.
 8. **Mean mode:** solving `q''=r` in a periodic finite Fourier sector requires zero mean for `r`; this must be enforced explicitly.
 9. **Poincare constants:** any lower-jet recovery must have constants depending only on fixed L, not N.
 10. **Strict sign:** convergence must be quantitative enough to beat the actual negative margin of the W1 witness; do not replace this with mere nonpositivity.
@@ -324,7 +347,7 @@ That structure should be preserved into the post-F1 displacement/Krylov investig
 
 1. Finish #89 Stage-B registry/documentation promotion on the exact green head.
 2. Merge #89 when desired and verify permanent main SHA/tree.
-3. Before coding F0-B1C, prototype the second-derivative-first Stone-Weierstrass route against the exact localized finite basis.
+3. Before coding F0-B1C, prototype the `AddCircle.span_fourier_closure_eq_top` extraction/integration-back bridge against the exact localized finite basis.
 4. If that route is formally economical, theorem-lock only the minimal periodic approximation package it requires.
 5. Prove explicit three-mode correction coefficient and interior derivative bounds.
 6. Combine those bounds with WCONT-A to obtain one strict-negative legal finite vector.
