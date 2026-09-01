@@ -81,7 +81,6 @@ def periodicSecondDerivMap
     (hh : ContDiff ℝ 2 h)
     (hs : tsupport h ⊆ Ioo 0 L) :
     C(AddCircle L, ℂ) := by
-  letI : Fact (0 < L) := ⟨hL⟩
   have hj := strictSupport_endpoint_jet_package (L := L) (h := h) hs
   have hdd : Continuous (deriv (deriv h)) := by
     have hd : ContDiff ℝ 1 (deriv h) := by
@@ -180,7 +179,7 @@ theorem localizedFiniteFirstJet_zeroMode_single
   intro i hi
   by_cases hiz : i = centeredZeroIndex N
   · subst i
-    simp
+    simp [localizedFrequency, localizedBaseFrequency]
   · simp [hiz]
 
 /-- The zero mode contributes no second formula-level jet. -/
@@ -379,7 +378,7 @@ theorem exists_zeroModeFree_addCircleFourierPolynomial_norm_sub_lt
 This is the fundamental theorem of calculus plus the strict-collar first-jet
 seam condition. -/
 theorem periodicSecondDerivMap_fourierCoeff_zero
-    {L : ℝ} {h : ℝ → ℂ}
+    {L : ℝ} [Fact (0 < L)] {h : ℝ → ℂ}
     (hL : 0 < L)
     (hh : ContDiff ℝ 2 h)
     (hs : tsupport h ⊆ Ioo 0 L) :
@@ -399,7 +398,7 @@ theorem periodicSecondDerivMap_fourierCoeff_zero
       (∫ x in (0 : ℝ)..L, deriv (deriv h) x)
           = deriv h L - deriv h 0 := by
               exact intervalIntegral.integral_deriv_eq_sub
-                (fun x _ => (hd x).hasDerivAt)
+                (fun x _ => (hd x).differentiableAt)
                 (hdd.intervalIntegrable 0 L)
       _ = 0 := by rw [hj.2.2.1, hj.2.2.2.1, sub_self]
   have hOn :
@@ -415,7 +414,7 @@ theorem periodicSecondDerivMap_fourierCoeff_zero
 /-- A strict-collar C² function has a zero-mode-free finite Fourier polynomial
 uniformly approximating its periodic second derivative. -/
 theorem exists_zeroModeFree_secondDeriv_fourierPolynomial
-    {L : ℝ} {h : ℝ → ℂ}
+    {L : ℝ} [Fact (0 < L)] {h : ℝ → ℂ}
     (hL : 0 < L)
     (hh : ContDiff ℝ 2 h)
     (hs : tsupport h ⊆ Ioo 0 L)
@@ -424,7 +423,6 @@ theorem exists_zeroModeFree_secondDeriv_fourierPolynomial
       c 0 = 0 ∧
       ‖addCircleFourierPolynomial c -
           periodicSecondDerivMap L h hL hh hs‖ < 2 * δ := by
-  letI : Fact (0 < L) := ⟨hL⟩
   exact exists_zeroModeFree_addCircleFourierPolynomial_norm_sub_lt
     (periodicSecondDerivMap L h hL hh hs)
     (periodicSecondDerivMap_fourierCoeff_zero hL hh hs)
@@ -465,8 +463,7 @@ theorem sum_centeredIndex_eq_finsupp_sum
           intro i hi hnot
           have hnotmem : centeredIndex N i ∉ c.support := by
             intro hmem
-            apply hnot
-            simp [s, hmem]
+            exact hnot (Finset.mem_filter.mpr ⟨Finset.mem_univ _, hmem⟩)
           rw [Finsupp.notMem_support_iff.mp hnotmem, zero_mul]
     _ = ∑ n ∈ c.support, c n * g n := by
           apply Finset.sum_bij
@@ -480,7 +477,8 @@ theorem sum_centeredIndex_eq_finsupp_sum
             obtain ⟨i, hi⟩ :=
               exists_centeredIndex_eq_of_bounds hb.1 hb.2
             refine ⟨i, ?_, hi⟩
-            simp [s, hi, hn]
+            exact Finset.mem_filter.mpr
+              ⟨Finset.mem_univ _, hi ▸ hn⟩
           · intro i hi
             rfl
     _ = c.sum fun n a => a * g n := rfl
@@ -643,7 +641,7 @@ theorem localizedFiniteFirstJet_anchor
   intro i hi
   by_cases hiz : i = centeredZeroIndex N
   · subst i
-    simp
+    simp [localizedFrequency, localizedBaseFrequency]
   · simp [hiz]
 
 /-- Anchoring changes only the zero-frequency coefficient, hence the second
@@ -657,7 +655,7 @@ theorem localizedFiniteSecondJet_anchor
   intro i hi
   by_cases hiz : i = centeredZeroIndex N
   · subst i
-    simp
+    simp [localizedFrequency, localizedBaseFrequency]
   · simp [hiz]
 
 /-- The anchored finite Fourier function also vanishes at the right endpoint
@@ -803,7 +801,7 @@ theorem firstJet_error_norm_le_of_secondJet_error
         (∫ x in (0 : ℝ)..L, f x) =
           (localizedFiniteFunction L N u L - h L) -
             (localizedFiniteFunction L N u 0 - h 0) := by
-      exact intervalIntegral.integral_deriv_eq_sub
+      exact intervalIntegral.integral_eq_sub_of_hasDerivAt
         (fun x _ =>
           (hasDerivAt_localizedFiniteFunction L N u x).sub
             ((hhdiff x).hasDerivAt))
