@@ -413,6 +413,20 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "Strong W1+W2-ZS cash-out from PR #83. The exact theorem preserves L=4r, C^2 regularity, compact support, tsupport inside (r,3r) and (0,L), both pole-killing Fourier zeros at +/-i/2, and strict negativity of the existing localizedWeilAdditiveRHS. Companion theorems exists_strictAperture_negativeLocalizedWeilAdditiveRHS_of_offLine_zero and exists_strictAperture_negativeLocalizedWeilAdditiveRHS_of_exists_offLine_zero expose the minimal F0-B/F1-roadmap input. This is not F0-B itself: no finite approximation or continuity theorem is proved. Source QW, F1, finite-negative exclusion and RH remain open."
+    },
+    {
+      "id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "statement": "For every positive aperture L, finite N, and arbitrary complex centered coefficient vector u whose centered moments of orders 0, 1, and 2 vanish, the actual hard-window localized finite vector is globally C^2 and compactly supported, and its genuine concrete-zeta diagonal Weil value equals the canonicalSourceMatrix(L,N) quadratic form.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+        "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION"
+      ],
+      "source": "Zeta23/ExceptionalZero/BoundaryFlatFiniteWeil.lean",
+      "theorem": "Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "F0-B1A. PR #86 exact theorem head e44cc5b8539b24fa24066c98c7ff013fb83b1001 passed RHRC #605 and Permansson #378 and merged as 6d5eb5b5673b6754dda4926c41a60a5b85626a44 (tree a633de6504b0e2105d3e3f33b2f1728c1219dad5). Production axiom surface [propext, Classical.choice, Quot.sound]. Supporting declarations include Zeta23.CCM.contDiff_localizedFiniteVector_of_boundaryFlat, Zeta23.CCM.boundaryKillerCoefficients_boundaryFlat, Zeta23.CCM.boundaryKillerCoefficients_ne_zero, and Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_cutoffFreeQuadraticForm. The legal sector is nontrivial and is defined by centered moments 0,1,2=0. This does not prove the exact projection/density theorem, family-level W continuity, F0-B as a whole, F1, ambient source QW_lambda, finite-negative exclusion, K0-K3, or RH."
     }
   ]
 }
