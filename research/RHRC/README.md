@@ -80,10 +80,10 @@ W1:
 Merged baseline:
 
 ~~~text
-main = 1a6a286cc4aae76ef6335b85b1022ec3998614df
-tree = 1d49b9dc4fbee4054d18ce5059b40c2d7ccbc3cf
-merged through = PR #81
-final validated PR #81 head = 191e34ece05739122f362d097f9e4393cd5b9ce3
+main = 5134e81c0ce3fa37ef593eb96125d8e4d5aa09b8
+tree = ec9fe4aac0b82b4684fa549f9509ffd2bffb2cb7
+merged through = PR #82
+final validated PR #82 head = d272e447c5270a287488ee015dbf589f3942d68d
 ~~~
 
 The W1 production theorem is
@@ -114,11 +114,13 @@ I1 mu/gamma reflection evenness
 I2 weighted gamma-channel integrability
 ~~~
 
-Source work remains active in parallel:
+Source work remains active in parallel, but its infrastructure and sign entry are separate obligations:
 
 ~~~text
-S0 lambda = exp(L/2), 1<lambda, sourceLength lambda = L
-S1 exact d*u/L²/kappa/q/PsiSharp/QW premise lock
+S-GEOM lambda = exp(L/2), 1<lambda, sourceLength lambda = L
+S-IFACE exact d*u/L²/kappa/q/PsiSharp/QW premise lock
+S-NEG independent fixed-aperture negative-QW theorem, or an exact
+      W/localized-additive/QW sign-carrying composition
 ~~~
 
 If W2-ZS closes cleanly:
@@ -136,8 +138,13 @@ I0/I1/I2 -> W2-B -> W2-C -> F0-B -> G1-A [PROVED] -> F1.
 The source alternate remains:
 
 ~~~text
-G1-B1B -> G1-final -> G23 -> F1.
+G1-B1B -> G1-final
++
+theorem-backed negative-QW entry (S-NEG or exact W/localized/QW composition)
+-> G23 -> F1.
 ~~~
+
+G1-B1B/G1-final do not themselves transfer the W1 negative sign into QW.
 
 The preferred post-F1 K0-K3 finite-wall program remains a **planned research route**, not yet a theorem-backed terminal reduction.
 
