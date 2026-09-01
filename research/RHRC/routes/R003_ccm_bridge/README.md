@@ -7,20 +7,20 @@ Status: **ACTIVE DISCOVERY ROUTE. RH OPEN.**
 ### Merged main
 
 ~~~text
-main = 1ad066f0a263725ea7b84447a637fcebda78e9ca
-tree = 41f9febd6a02282e746714c2f62407fb51ac8b30
-merged through = PR #87
+main = 879eb6d356d8f62bbe0b9241596b15892498ea64
+tree = 9225c993bb9ac680a0f673efc13d191bebc5fd28
+merged through = PR #88
 RH = OPEN
 ~~~
 
-### Exact green F0-B1B theorem candidate
+### Exact green WCONT-A theorem candidate
 
 ~~~text
-PR #88 head = 5e943d8cd6825c3c649198c52d90d1ed5d8d8b47
-synthetic merge = 9eb9281394684600b35a58ce2cb3c757d06379cc
-synthetic merge tree = d10e7b1e575624ab39fb445297f43168b1867ed1
-RHRC #609 = SUCCESS
-Permansson #382 = SUCCESS
+PR #89 head = 4bcd49e0b8029ac7381c7829a18fefea11f20ba1
+synthetic merge = 725a562d88a3af654a7050397031cd33b2bcda21
+synthetic merge tree = f56b3a200d0ac70df3219a158f6c77c85fc34108
+RHRC #619 = SUCCESS
+Permansson #392 = SUCCESS
 status at documentation time = OPEN / NOT MERGED
 RH = OPEN
 ~~~
@@ -38,120 +38,99 @@ off-line zero
   -> strict negative localized-additive witness              [PROVED]
   -> G1-A finite additive restriction                        [PROVED]
   -> F0-B1A boundary-flat legal finite carrier               [PROVED]
-  -> F0-B1B exact boundary-flat projection                   [PROVED ON GREEN #88 HEAD]
+  -> F0-B1B exact boundary-flat projection                   [PROVED / MERGED]
+  -> WCONT-A quantitative genuine-W continuity package       [PROVED ON GREEN #89 HEAD]
 ~~~
 
-F0-B1B gives arbitrary finite coefficients with N>=1 an exact -1,0,+1 correction, exact moment cancellation, fixed-point/idempotence and endpoint jet/moment identities.
-
-Registered production claims on the #88 branch:
+WCONT-A gives:
 
 ~~~text
-R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION
-R003_BOUNDARY_FLAT_PROJECTION
+fixed support envelope
+  -> global weighted paperFT estimate
+  -> fixed inverse-square zeta-zero majorant
+  -> quantitative W(f,g) bound
+  -> exact summability-safe diagonal cross-term identity
+  -> quantitative W(p,p)-W(h,h) bound.
 ~~~
 
-## F0-B1B exact theorem state
-
-For m0,m1,m2 the centered moments of u:
+Registered branch claim:
 
 ~~~text
-c_-1 = (m1-m2)/2
-c_0  = m2-m0
-c_+1 = -(m1+m2)/2.
+R003_WEIL_COMMON_SUPPORT_BOUND
 ~~~
 
-Lean proves
+## Current internal frontier — F0-B1C
 
 ~~~text
-M0(c)=-m0
-M1(c)=-m1
-M2(c)=-m2
+F0-B1C WCONT-matched legal finite approximation       [NOW / OPEN]
+  -> quantitative three-mode correction bounds       [OPEN]
+  -> projection-smallness                             [OPEN]
+  -> strict finite sign transfer                      [OPEN]
+  -> F1 canonical finite negative obstruction         [OPEN]
 ~~~
 
-and
+### Exact approximation target
+
+For the strict-collar W1 witness h, one fixed L should support boundary-flat finite p with
 
 ~~~text
-BoundaryFlatCoefficients N (boundaryFlatProject N hN u).
+integral ||p-h|| -> 0
+integral ||p''-h''|| -> 0.
 ~~~
 
-It also proves:
+Endpoint value/first-jet/second-jet control is auxiliary data for the #88 projector, not an extra WCONT norm component.
+
+## Preferred construction lead — pinned AddCircle Fourier span
+
+Pinned Mathlib already proves the exact finite Fourier density needed at the periodic level:
 
 ~~~text
-boundaryFlatProject_eq_self_of_boundaryFlat
-boundaryFlatProject_idempotent
+AddCircle.span_fourier_closure_eq_top
 ~~~
 
-plus exact endpoint value/first-jet/second-jet formulas in terms of M0/M1/M2.
-
-N=0 remains explicitly degenerate.
-
-### Projection caveat
-
-The correction c=P(u)-u is not generally boundary-flat. Therefore the zero-extended correction is not automatically an independent global-C² test.
-
-The full projected finite vector is the legal object. No quantitative correction norm estimate is yet proved.
-
-## Current internal frontier — WCONT-A
+and gives the exact character formula
 
 ~~~text
-WCONT-A quantitative genuine-W bound                    [NOW / OPEN]
-  -> quadratic continuity                              [OPEN]
-  -> matched finite approximation                      [OPEN]
-  -> moment/endpoint residual control                  [OPEN]
-  -> projection-smallness                              [OPEN]
-  -> strict finite sign transfer                       [OPEN]
-  -> F1 canonical finite negative obstruction          [OPEN]
+AddCircle.fourier n (x : AddCircle L)
+  = exp(2*pi*i*n*x/L).
 ~~~
 
-F0-B2 direct localized-additive continuity and boundary-killer multiplication remain fallbacks.
+This matches the phase/sign of `localizedMode L n`; only the fixed repository normalization `1/sqrt L` differs.
 
-### WCONT-A lead
-
-W2-A already permits:
+It also supplies
 
 ~~~text
-first argument: C² + compact support
-second argument: continuous + compact support.
+AddCircle.fourierCoeffOn_of_hasDerivAt
+AddCircle.hasDerivAt_fourier
 ~~~
 
-Together with
+for the integration-by-parts/frequency calculus.
+
+Preferred route:
 
 ~~~text
-Zeta23.WeilEF.zero_sum_inv_sq_gen
-Zeta23.WeilEF.EF_zero_sum_summable_gen
+strict-collar C² h
+  -> periodic h''
+  -> uniform finite AddCircle Fourier polynomial r approx h''
+  -> remove mean mode
+  -> integrate nonzero modes twice
+  -> fix constant mode by mean(h)
+  -> q with small q-h, q'-h', q''-h''
+  -> endpoint jets small
+  -> #88 three-moment projection
+  -> WCONT-A
+  -> negative finite vector.
 ~~~
 
-this suggests one inverse-square-decaying Fourier leg may be enough.
+Do not rebuild Stone-Weierstrass. L² Fourier convergence alone is not enough because q''(0) is a load-bearing #88 endpoint coordinate; use uniform density for h''.
 
-Candidate theorem:
+Direct Fejer and boundary-killer multiplication remain fallbacks.
 
-~~~text
-|W(f,g)|
-  <= K_Λ * (||f||_1 + ||f''||_1) * ||g||_1.
-~~~
+## Projection caveat
 
-This is **LEAD / OPEN**, not a current theorem.
+The correction c=P(u)-u is generally not boundary-flat. Its hard-window extension is not automatically global C².
 
-If proved, use cross terms to obtain diagonal continuity. Do not rely on per-approximant summability as a substitute for a uniform bound.
-
-## Approximation target after WCONT-A
-
-~~~text
-strict-collar compact C² h
-  -> raw finite Fourier q_N
-  -> q_N -> h in WCONT-A topology
-  -> endpoint jets of q_N -> 0
-  -> M0,M1,M2 -> 0 by exact #88 formulas
-  -> p_N = boundaryFlatProject(q_N)
-  -> correction -> 0
-  -> p_N -> h
-  -> W(p_N,p_N) -> W(h,h)
-  -> one finite negative p_N
-  -> F0-B1A
-  -> F1
-~~~
-
-Pinned Mathlib does not currently provide a ready load-bearing Fejer theorem.
+Use the correction only inside quantitative coefficient/interior estimates. The complete projected vector is the legal W test.
 
 ## Source-faithful route remains parallel
 
@@ -186,19 +165,23 @@ canonicalSourceMatrix
 legacyPrintedMatrix = finiteMatrix.
 ~~~
 
-PR #88 does not change this object map.
-
 ## Structural clue retained for post-F1
+
+A primary-route F1 witness should retain
 
 ~~~text
 1^T u = 0
 1^T D u = 0
-1^T D²u = 0
+1^T D²u = 0,
+~~~
 
+while the canonical matrix satisfies
+
+~~~text
 D M - M D = g 1^T - 1 g^T.
 ~~~
 
-Possible simplification along u,Du,D²u is **LEAD / HYPOTHESIS** only. Preserve the constraints in a future F1 theorem.
+Possible Krylov/displacement simplification remains **LEAD / HYPOTHESIS**.
 
 ## Historical settlements
 
@@ -206,7 +189,8 @@ Possible simplification along u,Du,D²u is **LEAD / HYPOTHESIS** only. Preserve 
 - W2_ZS_POST_GREEN_F0B_FRONTIER_2026_09_01.md
 - F0_B1A_POST_GREEN_PROJECTION_CONTINUITY_FRONTIER_2026_09_01.md
 - F0_B1B_POST_GREEN_WCONT_FRONTIER_2026_09_01.md
+- WCONT_A_POST_GREEN_F0B1C_FRONTIER_2026_09_01.md
 
-Historical settlement files remain frozen records; this README is the living R003 route SSOT below live GitHub/Lean/CI and machine registries.
+Historical settlement files remain frozen records.
 
 RH remains OPEN.

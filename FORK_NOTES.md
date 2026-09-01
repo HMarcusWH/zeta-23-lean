@@ -9,19 +9,20 @@ The fork is an active Lean-backed RH research program, not a solved-conjecture b
 ### Merged main
 
 ~~~text
-main = 1ad066f0a263725ea7b84447a637fcebda78e9ca
-tree = 41f9febd6a02282e746714c2f62407fb51ac8b30
-merged through = PR #87
+main = 879eb6d356d8f62bbe0b9241596b15892498ea64
+tree = 9225c993bb9ac680a0f673efc13d191bebc5fd28
+merged through = PR #88
 RH = OPEN
 ~~~
 
 ### Green theorem candidate
 
 ~~~text
-PR #88 theorem head = 5e943d8cd6825c3c649198c52d90d1ed5d8d8b47
-synthetic merge = 9eb9281394684600b35a58ce2cb3c757d06379cc
-RHRC #609 = SUCCESS
-Permansson #382 = SUCCESS
+PR #89 head = 4bcd49e0b8029ac7381c7829a18fefea11f20ba1
+synthetic merge = 725a562d88a3af654a7050397031cd33b2bcda21
+synthetic merge tree = f56b3a200d0ac70df3219a158f6c77c85fc34108
+RHRC #619 = SUCCESS
+Permansson #392 = SUCCESS
 status = OPEN / NOT MERGED at documentation time
 ~~~
 
@@ -52,13 +53,16 @@ F0-B1A boundary-flat legal finite carrier
 F0-B1B exact three-mode projection into that carrier
         + fixed-point/idempotence
         + endpoint jet/moment identities
+WCONT-A quantitative common-support genuine-W bound
+        + fixed inverse-square zero majorant
+        + exact cross-term identity
+        + diagonal perturbation bound
 ~~~
 
-F0-B1B is proved on exact green PR #88 head. The current primary frontier is
+F0-B1B is merged. WCONT-A is proved on exact green PR #89 head. The current primary frontier is
 
 ~~~text
-WCONT-A quantitative genuine-W bound
-  -> matched finite approximation
+F0-B1C WCONT-matched finite approximation
   -> projection-smallness
   -> strict finite sign transfer
   -> F1 canonical finite negative obstruction.
@@ -110,13 +114,13 @@ Possible post-F1 Krylov/displacement simplification is a **LEAD / HYPOTHESIS** o
 - Green support infrastructure is not RH.
 - Numerical signals are not theorem claims.
 - Source interface does not imply source negativity.
-- Per-member summability is not uniform dominated convergence.
+- Per-member summability is not uniform dominated convergence; WCONT-A now supplies the required explicit family-independent majorant.
 - The #88 correction alone is not automatically a globally admissible hard-window test.
 - Historical failed/obsolete routes remain useful only when a named blocking premise changes.
 
 ## Current post-green settlement
 
-research/RHRC/routes/R003_ccm_bridge/F0_B1B_POST_GREEN_WCONT_FRONTIER_2026_09_01.md
+research/RHRC/routes/R003_ccm_bridge/WCONT_A_POST_GREEN_F0B1C_FRONTIER_2026_09_01.md
 
 The next major roadmap version remains reserved for a green F1 or an equivalently large dependency-graph event.
 
