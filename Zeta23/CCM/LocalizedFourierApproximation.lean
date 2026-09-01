@@ -234,7 +234,7 @@ theorem addCircleFourierPolynomial_apply
     t (by rfl) (by intro f g; rfl)]
   apply Finsupp.sum_congr
   intro n hn
-  simp only [smul_eq_mul]
+  rfl
 
 /-- Evaluation of the bundled finite AddCircle polynomial on a real point. -/
 theorem addCircleFourierPolynomial_coe_apply
