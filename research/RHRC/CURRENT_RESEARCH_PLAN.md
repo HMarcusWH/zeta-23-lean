@@ -7,33 +7,35 @@
 Current merged validation baseline:
 
 ~~~text
-main = 3e39ce86d27a4c642a1e0364f1954968ce22f1f4
-tree = 6935902fbbb950847e1cdd16a61d95704e3a760d
-merged through = PR #79
-W0 theorem-green head = c8112f0ad12e0b2c2f1261cea3ba7726aa04be54
+main = 8960b80b4a871bd86f94509dfa872ecc6939b0cd
+tree = 956601c77d1e9f32bab339dbbb81130296d1b5c7
+merged through = PR #80
+W1 Stage-A theorem-green head = 7abdaaf88f0e157c11049a0e65ebcb2c48fa86e2
 date = 2026-09-01
 RH = OPEN
 ~~~
 
-PR #79 merged the exact W0 theorem tree that passed the CCM build, ExceptionalZero build, no-placeholder gate, RHRC regression suite, normalization/source firewalls, and independent verification workflow.
+The W1 Stage-A theorem head passed both repository workflows: CCM build, ExceptionalZero build, no-placeholder gate, RHRC regression suite, normalization/source firewalls and independent Permansson verification. The promotion/documentation head in PR #81 must pass the same exact-head gate before merge.
 
 Current theorem frontier:
 
 ~~~text
 W2-A genuine W/literatureRHS + pairwise summability = CLOSED / REGISTERED
 W0 off-line zero -> compact C² pole-neutral negative W test = CLOSED / REGISTERED
-W1 strict finite-aperture support/recentering = OPEN / IMMEDIATE
+W1 strict finite-aperture support/recentering = CLOSED / PROVED ON #81 STAGE-A
 
-INTERNAL AFTER W1
-  W2-B reflection/evenization                 = OPEN
-  W2-C genuine W self -> localized additive   = OPEN
-  F0-B finite approximation                   = OPEN
-  G1-A finite additive restriction            = CLOSED / REGISTERED
+NOW — BOUNDED ROUTE COMPARISON
+  INTERNAL:
+    I0 pole neutrality -> weilTest(h,h) pole neutrality
+    I1 mu/gamma reflection/evenness
+    I2 weighted gamma-channel integrability
+    then W2-B/W2-C if bounded
+  SOURCE:
+    S0 exact L <-> lambda bridge
+    S1 G1-B1B premise/normalization lock
+    then G1-B1B/G1-final/G23 if bounded
 
-SOURCE AFTER W1
-  G1-B1B Haar/L²/PsiSharp/QW                  = OPEN
-  G1-final actual source restriction          = OPEN
-  G23 negative finite transfer                = OPEN
+G1-A finite additive restriction            = CLOSED / REGISTERED
 
 F1 canonical finite obstruction               = OPEN
 RH                                             = OPEN
@@ -41,54 +43,96 @@ RH                                             = OPEN
 
 The complete option inventory and historical status of individual ideas lives in RESEARCH_LEADS.md.
 
-## 1. Plan delta after green W0 / PR #79
+## 1. Plan delta after green W1 / PR #81 Stage A
 
-W0 closed with a stronger and cleaner endpoint than the pre-implementation roadmap expected.
+W1 closed the entire route-general front end with a stronger geometric object than the roadmap minimum.
 
 Lean now proves, for every concrete off-line zeta zero `rho0`,
 
 ~~~text
 (rho0 : C).re != 1/2
   ->
-exists h : R -> C,
-  ContDiff R 2 h
+exists L > 0, r > 0, h,
+  L = 4*r
+  and ContDiff R 2 h
   and HasCompactSupport h
+  and tsupport h ⊆ Ioo r (3*r)
+  and tsupport h ⊆ Ioo 0 L
   and paperFT h ( I/2) = 0
   and paperFT h (-I/2) = 0
   and Re (zetaZeroConfig.W h h) < 0.
 ~~~
 
-The physical contraction is theorem-authoritatively
+The proof is purely geometric/transport:
 
 ~~~text
-h = ‖C‖ * k - conj(C) * translateRight k t,
-C = weilRelativeCorrelation zetaZeroConfig k t,
+compact tsupport h
+  -> bounded
+  -> choose r>0 with tsupport h ⊂ (-r,r)
+  -> translateRight by 2r
+  -> tsupport ⊂ (r,3r)
+  -> choose L=4r
+  -> tsupport ⊂ (0,L).
 ~~~
 
-with the coefficient orientation forced by the repository convention that `W` is linear in its first slot and conjugate-linear in its second.
+Existing `contDiff_translateRight`, `hasCompactSupport_translateRight`,
+`paperFT_translateRight` and `W_translateRight_both` preserve every load-bearing
+W0 property.
 
-### What changed versus the old W0 plan
+### What changed
 
-The proof did **not** need the X4.6 canonical negative-determinant endpoint or a determinant-gap converse. It used the already-proved X3 strict correlation-over-diagonal witness directly.
+The shared front end is no longer a research bottleneck. Both the internal and source
+routes now receive the same theorem-backed object with:
 
-The proof also did **not** need new translation regularity lemmas; `contDiff_translateRight` and `hasCompactSupport_translateRight` already existed.
+- finite positive aperture;
+- strict boundary margin;
+- C² regularity;
+- compact closed support;
+- both pole-killing Fourier zeros;
+- strict negative genuine Weil self-value.
 
-The load-bearing new work was:
+The explicit margin `(r,3r)` is stronger than merely `(0,L)` and may materially
+simplify boundary-flat finite Fourier approximation.
 
-- exact Fourier linearity for the physical two-translate combination;
-- four W2-A pairwise summability certificates;
-- pointwise Wsummand expansion;
-- legal `tsum` recombination;
-- exact equality with the existing 2x2 matrix quadratic;
-- preservation of the pole-killing Fourier zeros.
+### New route-selection correction
 
-This compresses the dependency graph and makes W1 the unique route-general next package.
+The internal lane is **not** yet known to be cheaper merely because pole neutrality
+kills the pole term.
 
-### New structural consequence
+The existing explicit-formula proof makes a separate legal-analysis requirement explicit:
 
-A hypothetical off-line zero now yields an **actual function-level obstruction**, not merely a negative matrix direction. The obstruction is already pole-neutral, which removes the pole terms from the later specialized explicit-formula reflection/evenization analysis.
+~~~text
+Integrable (
+  fun tau =>
+    paperFT (EF.weilTest h h) tau * (mu tau : C)
+).
+~~~
 
-The X4.6 canonical detector bank remains mathematically valuable for countable RH-equivalent criteria and reproducible detector architecture, but it is not required on the shortest W0 -> F1 path.
+Bochner `integral_add` requires integrability. Therefore W2-B/C must not repeat the
+old tsum mistake at the integral level.
+
+The bounded internal probe is now:
+
+~~~text
+I0  pole zeros of h -> pole zeros of EF.weilTest h h
+I1  mu/gamma reflection evenness
+I2  weighted gamma-channel integrability
+~~~
+
+Only if I1+I2 are bounded should the project commit to W2-B/W2-C as the primary lane.
+
+In parallel the source probe should freeze the exact W1 aperture-to-source interface:
+
+~~~text
+lambda = exp(L/2)
+1 < lambda
+sourceLength lambda = L
+d*u = du/u
+L² normalization
+q argument order
+PsiSharp/QW normalization
+factor-of-two convention.
+~~~
 
 ## 2. Current high-level architecture
 
@@ -97,7 +141,7 @@ The shared route-general front end is now:
 ~~~text
 off-line zero
   -> W0 compact C² pole-neutral h with Re W(h,h)<0       [PROVED]
-  -> W1 translate/recenter h into strict (0,L) support   [OPEN / NEXT]
+  -> W1 strict (0,L) support with explicit margin         [PROVED]
 ~~~
 
 After W1 the program deliberately branches.
@@ -115,7 +159,7 @@ W1 strict finite-aperture negative test
   -> F1 canonical finite negative obstruction            [OPEN]
 ~~~
 
-Because the W0 test is pole-neutral, W2-B should first be attempted on the actual pole-neutral diagonal class before proving a maximally general reflection theorem. The prime term is structurally symmetric; the remaining analytic core is the gamma-bracket reflection/change-of-variable step.
+Because the W1 test is pole-neutral, W2-B should first be attempted on the actual pole-neutral diagonal class. But reflection symmetry is not the only gate: legal weighted gamma/mu integrability must also be theoremized before splitting/averaging the Bochner integral. The internal route begins with I0/I1/I2 above, not with an assumed generic literatureRHS linearity theorem.
 
 ### Source-faithful route
 
@@ -323,141 +367,157 @@ W2-A was cashed out through four explicit pairwise `Summable` certificates befor
 
 ### P4 — W1 support/recentering into a strict finite aperture
 
-**Priority:** IMMEDIATE / ROUTE-GENERAL NEXT PACKAGE
+**Status:** CLOSED / PROVED ON EXACT STAGE-A HEAD  
+**Claim:** `R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST`  
+**Primary theorem:** `Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero`  
+**Source:** `Zeta23/ExceptionalZero/NegativeWeilTestSupport.lean`
 
-Suggested file:
+Exact Stage-A theorem-green head:
 
 ~~~text
-Zeta23/ExceptionalZero/NegativeWeilTestSupport.lean
+7abdaaf88f0e157c11049a0e65ebcb2c48fa86e2
 ~~~
 
-### Input
-
-Consume the strong W0 endpoint:
+Axiom surface:
 
 ~~~text
-C² h
-HasCompactSupport h
-paperFT h (±I/2) = 0
-Re W(h,h) < 0.
+[propext, Classical.choice, Quot.sound]
 ~~~
 
-### Target
+### Exact proved endpoint
 
-Prove a pointwise off-line-zero endpoint of the form
+For each concrete off-line zero:
 
 ~~~text
-(rho0 : C).re != 1/2
-  ->
-exists L : R, 0 < L
-and exists h : R -> C,
-  ContDiff R 2 h
+exists L > 0, r > 0, h,
+  L = 4*r
+  and ContDiff R 2 h
+  and HasCompactSupport h
+  and tsupport h ⊆ Ioo r (3*r)
   and tsupport h ⊆ Ioo 0 L
   and paperFT h ( I/2) = 0
   and paperFT h (-I/2) = 0
-  and Re (zetaZeroConfig.W h h) < 0.
+  and Re W(h,h) < 0.
 ~~~
 
-Use a strict interior interval, not merely `Icc 0 L`, so endpoint jets vanish automatically for the recentered test and both downstream routes receive the strongest clean domain object.
-
-### Build contract
-
-1. extract a finite two-sided bound on `tsupport h` from `HasCompactSupport h`;
-2. choose a translation amount and an `L>0` with explicit positive margin;
-3. theoremize the translated support inclusion under the repository's exact `translateRight k t = k(x-t)` convention;
-4. use `contDiff_translateRight` and `hasCompactSupport_translateRight`;
-5. use `paperFT_translateRight` to preserve both pole zeros;
-6. use `W_translateRight_both` to preserve the negative W self-value.
-
-### Dumbassery / falsification gates
-
-- verify the sign of the support translation explicitly;
-- do not infer strict interior support from compactness without choosing a positive margin;
-- do not lose pole neutrality during recentering;
-- do not replace `tsupport` by ordinary support silently;
-- do not add stronger smoothness than C² unless a downstream theorem actually needs it.
-
-### Green gate
-
-One theorem-backed object simultaneously satisfies the exact finite-aperture/domain hypotheses needed to start both the internal additive and source-faithful lanes.
-
-### Post-green route decision
-
-After W1 green, run a bounded comparison:
+### Exact geometry
 
 ~~~text
-INTERNAL:
-  specialized pole-neutral W2-B
-  -> W2-C
-  -> F0-B
-
-SOURCE:
-  G1-B1B
-  -> G1-final
-  -> G23.
+tsupport h0 ⊂ (-r,r)
+translateRight h0 (2r)
+  -> tsupport ⊂ (r,3r)
+L = 4r.
 ~~~
 
-Do not commit to one branch before measuring actual theorem surface.
+The proof uses exact `tsupport_comp_eq_preimage` transport; it does not silently replace
+closed support by ordinary support.
+
+### Post-green implications
+
+- W0+W1 now form a complete route-general front end.
+- The explicit positive boundary margin is available to F0-B1.
+- Pole neutrality survives recentering.
+- W negativity is unchanged exactly by common translation.
+- The next task is route comparison, not more support infrastructure.
 
 ---
 
-### P5 — bounded F0-B feasibility spike
+### P5 — bounded post-W1 route-comparison pass
 
-**Priority:** HIGHEST INFORMATION-GAIN FORK DECISION
+**Priority:** IMMEDIATE / HIGHEST INFORMATION GAIN
 
-Do not overbuild before determining which internal approximation route is genuinely cheaper.
+Do not commit to either route before falsifying its first hidden premise.
 
-#### F0-B2 first: direct additive continuity
+#### INTERNAL-I0 — pole-neutrality transfer to the Weil test
 
-Try to prove enough continuity for legal localized finite vectors v_N:
-
-~~~text
-localizedWeilAdditiveRHS(v_N,v_N)
-  -> localizedWeilAdditiveRHS(h,h)
-  = W(h,h).
-~~~
-
-Study channel by channel:
-
-- pole evaluations;
-- prime sum;
-- archimedean gamma integral;
-- Fourier/autocorrelation convergence.
-
-Reuse Route-M convergence patterns where exact hypotheses align.
-
-#### F0-B1 fallback: boundary-flat finite Fourier approximation
-
-Construct centered finite trigonometric approximants with endpoint constraints
+For the actual W1 object `h`, theoremize cheaply:
 
 ~~~text
-sum u_n = 0
-sum n u_n = 0
-sum n^2 u_n = 0.
+paperFT h ( I/2) = 0
+paperFT h (-I/2) = 0
+  ->
+paperFT (EF.weilTest h h) ( I/2) = 0
+paperFT (EF.weilTest h h) (-I/2) = 0.
 ~~~
 
-Use a fixed three-mode correction block and prove convergence in a W-controlling topology.
+Use the already-proved `paperFT_weilTest` factorization.
 
-#### Stop rule
+#### INTERNAL-I1 — reflection weight
 
-If the internal continuity theorem becomes a full weighted Sobolev/form-core theory larger than the exact source theorem, stop and move primary effort to P6/P8.
+Prefer the existing density `mu` through `EF.gamma_term`.
 
-#### Output
+Target:
 
-The spike may legitimately end with:
+~~~text
+mu (-r) = mu r.
+~~~
 
-- INTERNAL_ROUTE_CHEAPER;
-- SOURCE_ROUTE_CHEAPER;
-- BOTH_VIABLE;
-- INTERNAL_BLOCKED_EXACT_REASON.
+Do not reopen a duplicate gammaBracket theory unless the mu formulation is harder.
 
-A negative feasibility result is useful research output.
+#### INTERNAL-I2 — weighted gamma-channel integrability
+
+The load-bearing legal requirement is:
+
+~~~text
+Integrable (
+  fun r =>
+    paperFT (EF.weilTest h h) r * (mu r : C)
+).
+~~~
+
+This is separate from evenness. It is required before legal use of `integral_add`
+or reflected-average splitting.
+
+Use the existing C² compact-support Fourier decay machinery if the theorem surface is
+bounded. If proving this becomes a large special-function/weighted-Fourier project, stop.
+
+#### INTERNAL continuation if I0-I2 are bounded
+
+Then prove the specialized pole-neutral diagonal W2-B/W2-C bridge and only afterward
+start F0-B.
+
+F0-B2 first: direct additive continuity.
+
+Fallback F0-B1: boundary-flat Fourier approximation. The W1 margin
+`tsupport h ⊂ (r,3r) ⊂ (0,4r)` is now a theorem-backed asset for endpoint-flat
+constructions.
+
+#### SOURCE-S0 — aperture/source parameter bridge
+
+For `L>0`, target:
+
+~~~text
+lambda := exp(L/2)
+1 < lambda
+sourceLength lambda = L.
+~~~
+
+Keep this in the source lane; do not contaminate W1 with source semantics.
+
+#### SOURCE-S1 — G1-B1B premise lock
+
+Before implementation freeze:
+
+- source interval;
+- Haar measure `d*u = du/u`;
+- exact L² normalization;
+- kappa direction;
+- q argument order;
+- PsiSharp normalization;
+- QW normalization;
+- factor two;
+- regularity/domain class.
+
+#### Decision rule
+
+Choose INTERNAL when I1/I2 close locally and F0-B remains smaller than source G23.
+
+Choose SOURCE when gamma/mu integrability or internal continuity balloons while
+G1-B1B/G23 remain local.
+
+Keep both if both are clean.
 
 ---
-
-## 4. Parallel source lane
-
-The source lane should progress independently enough that the project is not single-threaded on F0-B.
 
 ### P6 — G1-B1B source Hilbert/functional bridge
 
@@ -868,21 +928,29 @@ Do not rewrite historical settlements merely to make them current.
 DONE
   W2-A genuine W -> literatureRHS + summability
   W0 off-line zero -> one negative compact C² pole-neutral Weil test
+  W1 -> same negative test in strict finite aperture with explicit margin
 
-NOW
-  W1 support/recentering into a strict finite aperture
-
-THEN / PARALLEL
+NOW — BOUNDED ROUTE COMPARISON
   INTERNAL:
-    W2-B reflection/evenization
-    W2-C genuine W self-value -> localized additive RHS
-    F0-B finite approximation
-    G1-A finite additive restriction [already proved]
+    I0 pole neutrality -> weilTest pole neutrality
+    I1 mu/gamma reflection evenness
+    I2 weighted gamma-channel integrability
+    if bounded:
+      W2-B
+      W2-C
+      F0-B
+      G1-A [already proved]
 
   SOURCE:
-    G1-B1B Haar/L²/PsiSharp/QW
-    G1-final actual source restriction
-    G23 negative finite transfer
+    S0 L <-> lambda exact bridge
+    S1 G1-B1B premise/normalization lock
+    if bounded:
+      G1-B1B Haar/L²/PsiSharp/QW
+      G1-final actual source restriction
+      G23 negative finite transfer
+
+DECIDE PRIMARY ROUTE
+  by exact theorem surface and information gain
 
 TARGET
   F1:
