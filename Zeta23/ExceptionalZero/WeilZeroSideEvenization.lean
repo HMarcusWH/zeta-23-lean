@@ -246,7 +246,7 @@ private theorem zetaLiteratureZeroSummand_halfEven
         (zetaLiteratureZeroSummand k ρ +
           zetaLiteratureZeroSummand (zeroSideReflectTest k) ρ) := by
   unfold zetaLiteratureZeroSummand
-  rw [paperFT_zeroSideHalfEvenTest hk hkc]
+  rw [paperFT_zeroSideHalfEvenTest hk hkc, paperFT_zeroSideReflectTest]
   ring
 
 /-- Concrete-zeta half-evenization leaves the literature RHS unchanged.
