@@ -71,6 +71,7 @@ import Zeta23.CCM.LocalizedFiniteSpace
 import Zeta23.CCM.BoundaryFlatFiniteSpace
 import Zeta23.CCM.LocalizedFourierApproximation
 import Zeta23.CCM.BoundaryFlatProjection
+import Zeta23.CCM.BoundaryFlatApproximation
 import Zeta23.CCM.LocalizedWeilRestriction
 import Zeta23.CCM.SourceWeilMatrixReconciliation
 import Zeta23.CCM.SourceNormalizationRepair
