@@ -2,9 +2,54 @@
 
 Status: **ACTIVE DISCOVERY ROUTE. RH OPEN.**
 
-**Scope note after green W1 / PR #81 Stage A:** W2-A, W0 and W1 are theorem-locked on the validated branch line. The shared route-general front end is closed: every hypothetical off-line zero yields one compact C² pole-neutral negative Weil test with closed support in an explicit strict margin `(r,3r)` inside aperture `L=4r`. Repository-wide, the immediate priority is now a bounded route-comparison pass. Internal: pole-neutrality transfer to `weilTest h h`, mu/gamma reflection, and weighted gamma-channel integrability. Source: exact `L <-> lambda` plus G1-B1B premise/normalization lock. These statements are complementary, not competing: this README governs R003 route-local state; CURRENT_RESEARCH_PLAN.md governs global execution priority.
+**Scope note after merged green W1 / PR #81:** W2-A, W0 and W1 are theorem-locked on merged main `1a6a286cc4aae76ef6335b85b1022ec3998614df` (tree `1d49b9dc4fbee4054d18ce5059b40c2d7ccbc3cf`). The route-general front end is closed: every hypothetical off-line zero yields one compact C² pole-neutral negative Weil test with closed support in an explicit strict margin `(r,3r)` inside aperture `L=4r`.
+
+The W1 post-green pass changed the immediate internal priority. Before opening the gamma/digamma integral, test the **concrete-zeta zero-side evenization shortcut**: combine Schwarz conjugation with the existing functional-equation reflection to theoremize `rho -> 1-rho` on the concrete carrier, prove `gammaOf(1-rho)=-gammaOf(rho)`, prove Fourier reflection, and reindex the `EF_lit` zero sum under explicit Summable certificates. If this closes, the desired diagonal W/additive bridge may follow without proving mu/gamma evenness or weighted gamma-integrability. This is a **LEAD / HYPOTHESIS**, not a theorem.
+
+The previous I0/I1/I2 analytic route remains the fallback. Source S0/S1 remains active in parallel. CURRENT_RESEARCH_PLAN.md governs global execution order; this README governs R003 route-local state.
 
 This README is the living route SSOT for the merged repository. PR-specific settlement files in this directory are historical records; they do not override live Lean/CI or this current route state.
+
+Post-green settlement for the W1 route correction: [`W1_POST_GREEN_ZERO_SIDE_EVENIZATION_2026_09_01.md`](W1_POST_GREEN_ZERO_SIDE_EVENIZATION_2026_09_01.md).
+
+## Post-W1 zero-side evenization spike
+
+Highest-information-gain internal package:
+
+~~~text
+ZS0  concrete conjugation preserves zero carrier + multiplicity
+ZS1  rho -> 1-rho as a genuine involutive carrier equivalence
+ZS2  gammaOf(1-rho) = -gammaOf(rho)
+ZS3  paperFT(k(-·))(z) = paperFT(k)(-z)
+ZS4  Equiv.tsum_eq reindex under EF_lit Summable evidence
+ZS5  literatureRHS(halfEven k) = literatureRHS(k)
+ZS6  W(h,h) = localizedWeilAdditiveRHS(h,h)
+~~~
+
+Claim firewall:
+
+- the shortcut is concrete-zeta-specific unless the abstract ZeroConfig interface is explicitly extended;
+- no `tsum` reindex/add/smul step is legal without its exact summability theorem;
+- no gamma/digamma conclusion is claimed merely because the route may bypass it;
+- the direct diagonal bridge remains OPEN;
+- F0-B, F1, the first-crossing reduction, finite-negative exclusion and RH remain OPEN.
+
+Fallback internal package:
+
+~~~text
+I0 pole-neutrality transfer
+I1 mu/gamma reflection evenness
+I2 weighted gamma-channel integrability
+-> W2-B/W2-C
+~~~
+
+Parallel source package:
+
+~~~text
+S0 L <-> lambda
+S1 d*u/L²/kappa/q/PsiSharp/QW premise lock
+-> G1-B1B -> G1-final -> G23
+~~~
 
 ## Objective
 
@@ -339,10 +384,17 @@ There are now two distinct legitimate routes to F1. Their prerequisites must not
 ```text
 W0/W1 negative compact test
   -> W2-A [PROVED]
-  -> W2-B/W2-C
+  -> W2-ZS zero-side evenization [OPEN / NEXT LEAD]
+  -> direct W = localized additive RHS [OPEN]
   -> F0-B finite additive/Fourier approximation
   -> G1-A [PROVED]
   -> F1 canonical finite obstruction.
+```
+
+Fallback:
+
+```text
+I0/I1/I2 -> W2-B/W2-C -> F0-B -> G1-A [PROVED] -> F1.
 ```
 
 **Source-faithful route:**
@@ -389,9 +441,9 @@ See `../../DEAD_ROUTES.md`.
 
 ## Claim firewall
 
-**PROVED on merged main through PR #80 plus the validated PR #81 Stage-A theorem head:** finite/dictionary/zero-side/cutoff-free matrix identities, G0 localized finite-space geometry, G1-A additive restriction, direct Section-4 matrix normalization, canonical source normalization, G1-B1A finite `kappa`/source-sector transport, canonical finite displacement, W2-A pairwise W/literatureRHS bridge with summability, W0 off-line-zero -> compact C² pole-neutral negative Weil-test contraction, and W1 strict finite-aperture recentering with explicit support margin.
+**PROVED on merged main through PR #81:** finite/dictionary/zero-side/cutoff-free matrix identities, G0 localized finite-space geometry, G1-A additive restriction, direct Section-4 matrix normalization, canonical source normalization, G1-B1A finite `kappa`/source-sector transport, canonical finite displacement, W2-A pairwise W/literatureRHS bridge with summability, W0 off-line-zero -> compact C² pole-neutral negative Weil-test contraction, and W1 strict finite-aperture recentering with explicit support margin.
 
-**OPEN:** internal mu/gamma reflection and weighted gamma-channel integrability, W2-B/C, F0-B, multiplicative-Haar L2 interface, `PsiSharp`, ambient `QW_lambda`, actual restriction theorem, form-core/minimum-eigenvalue transfer, F1, first-crossing reduction, finite-negative exclusion, RH.
+**OPEN:** W2-ZS concrete-zeta zero-side evenization, the direct diagonal W/additive bridge, fallback internal mu/gamma reflection and weighted gamma-channel integrability, W2-B/C, F0-B, multiplicative-Haar L2 interface, `PsiSharp`, ambient `QW_lambda`, actual restriction theorem, form-core/minimum-eigenvalue transfer, F1, first-crossing reduction, finite-negative exclusion, RH.
 
 ## Next-move rule
 

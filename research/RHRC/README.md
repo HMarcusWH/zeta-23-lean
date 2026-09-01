@@ -51,11 +51,12 @@ The generic windowed-visibility and arithmetic legs remain open. PR #66 establis
 
 See `routes/R002_multi_probe/`, OBS-009 and D0-R.
 
+
 ### R003 — CCM / finite Weil bridge
 
 This remains the active finite/source route.
 
-Validated theorem state now closes the entire shared function-level front end:
+Merged theorem state now closes the entire shared function-level front end:
 
 ~~~text
 W2-A:
@@ -76,15 +77,36 @@ W1:
     -> Re W(h,h) < 0 preserved.
 ~~~
 
+Merged baseline:
+
+~~~text
+main = 1a6a286cc4aae76ef6335b85b1022ec3998614df
+tree = 1d49b9dc4fbee4054d18ce5059b40c2d7ccbc3cf
+merged through = PR #81
+final validated PR #81 head = 191e34ece05739122f362d097f9e4393cd5b9ce3
+~~~
+
 The W1 production theorem is
 `Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero`.
-Its exact Stage-A theorem-green head is
-`7abdaaf88f0e157c11049a0e65ebcb2c48fa86e2`, with axiom surface
-`[propext, Classical.choice, Quot.sound]`.
+Its axiom surface is `[propext, Classical.choice, Quot.sound]`.
 
-The immediate global task is now a **bounded route-comparison pass**, not more route-general infrastructure.
+The W1 geometry directly yields the **DERIVED** collar `tsupport h ⊂ (L/4,3L/4)`. Under `lambda=exp(L/2)`, this is centered around source coordinate `u=1` and maps to the derived multiplicative subinterval `(lambda^(-1/2),lambda^(1/2))`.
 
-Internal probe:
+The immediate global internal task is now the **W2-ZS concrete-zeta zero-side evenization spike**:
+
+~~~text
+ZS0 conjugation preserves concrete zeta zero carrier + multiplicity
+ZS1 package rho -> 1-rho as an involutive carrier equivalence
+ZS2 gammaOf(1-rho) = -gammaOf(rho)
+ZS3 paperFT(k(-·))(z) = paperFT(k)(-z)
+ZS4 reindex EF_lit zero sums under Summable + Equiv.tsum_eq
+ZS5 literatureRHS(halfEven k) = literatureRHS(k)
+ZS6 W(h,h) = localizedWeilAdditiveRHS(h,h)
+~~~
+
+This is a **LEAD / HYPOTHESIS**, not theorem state. It is concrete-zeta-specific because abstract `ZeroConfig` does not carry Schwarz conjugation symmetry.
+
+The previous analytic internal probe remains fallback:
 
 ~~~text
 I0 pole zeros of h -> pole zeros of EF.weilTest h h
@@ -92,36 +114,34 @@ I1 mu/gamma reflection evenness
 I2 weighted gamma-channel integrability
 ~~~
 
-The weighted integrability condition is independent of symmetry and is required before legal
-Bochner integral splitting/averaging.
-
-Source probe:
+Source work remains active in parallel:
 
 ~~~text
 S0 lambda = exp(L/2), 1<lambda, sourceLength lambda = L
 S1 exact d*u/L²/kappa/q/PsiSharp/QW premise lock
 ~~~
 
-If I0-I2 are bounded, continue:
+If W2-ZS closes cleanly:
 
 ~~~text
-W2-B -> W2-C -> F0-B -> G1-A [PROVED] -> F1.
+W2-ZS -> F0-B -> G1-A [PROVED] -> F1.
 ~~~
 
-If the gamma/mu channel balloons while the source interface remains local, continue:
+If it fails but the analytic route is bounded:
+
+~~~text
+I0/I1/I2 -> W2-B -> W2-C -> F0-B -> G1-A [PROVED] -> F1.
+~~~
+
+The source alternate remains:
 
 ~~~text
 G1-B1B -> G1-final -> G23 -> F1.
 ~~~
 
-Keep both if both close cleanly.
+The preferred post-F1 K0-K3 finite-wall program remains a **planned research route**, not yet a theorem-backed terminal reduction.
 
-The explicit W1 margin `(r,3r)` is a theorem-backed asset for the boundary-flat F0-B1 fallback.
-
-The preferred post-F1 K0-K3 finite-wall program remains a **planned research route**, not yet a theorem-backed terminal reduction. K1 must first prove that an F1 negative finite value yields a first canonical singular crossing for the same finite sector before crossing exclusion can be composed to RH.
-
-See `routes/R003_ccm_bridge/README.md` and `CURRENT_RESEARCH_PLAN.md`.
-
+See `routes/R003_ccm_bridge/README.md`, `CURRENT_RESEARCH_PLAN.md` and `RESEARCH_LEADS.md`.
 
 ### R004 — finite displacement / structural route
 

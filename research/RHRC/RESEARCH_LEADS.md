@@ -7,10 +7,10 @@
 Last full theorem/promotion review:
 
 ~~~text
-main = 8960b80b4a871bd86f94509dfa872ecc6939b0cd
-tree = 956601c77d1e9f32bab339dbbb81130296d1b5c7
-merged through = PR #80
-W1 Stage-A theorem-green head = 7abdaaf88f0e157c11049a0e65ebcb2c48fa86e2
+main = 1a6a286cc4aae76ef6335b85b1022ec3998614df
+tree = 1d49b9dc4fbee4054d18ce5059b40c2d7ccbc3cf
+merged through = PR #81
+PR #81 final validated head = 191e34ece05739122f362d097f9e4393cd5b9ce3
 date = 2026-09-01
 RH = OPEN
 ~~~
@@ -137,16 +137,25 @@ Pole neutrality survives the contraction. This removes the explicit-formula pole
 
 ---
 
-## L-W0-02 — promote stronger canonical detector regularity only if required
 
-**Research status:** READY SUPPORT  
+## L-W0-02 — strengthen constructed detector regularity if F0-B needs it
+
+**Research status:** READY SUPPORT
 **Formal status:** LEAD / HYPOTHESIS
 
-The Mathlib canonical bump is smooth, while the current theorem package only exports canonicalSeedTest as C4 and canonicalPoleKilledTest as C2 because that was sufficient for X1-X4. If the source route requires stronger regularity, theoremize only the exact finite regularity required by the source theorem.
+The normalized `ContDiffBump` is smooth at arbitrary finite order, while the current X1/W0 interfaces intentionally export only C⁴ for the seed and C² after the second-order pole killer because that was the minimum required at the time.
 
-**Stop condition:** if C-infinity plumbing is disproportionately expensive, keep C2 and prefer the internal additive route or prove only the source-required finite order.
+The W1 post-green pass therefore identifies the current C² endpoint as likely an interface truncation rather than an intrinsic limitation of the constructed witness.
 
----
+Potential downstream value:
+
+- stronger Fourier decay for F0-B;
+- cleaner endpoint-flat Fourier approximation;
+- possible weighted-channel domination if the analytic fallback is revived.
+
+Do not upgrade the existing W0/W1 claims without Lean proof. The next priority is W2-ZS, not regularity plumbing.
+
+**Activation rule:** theoremize only the finite regularity order actually demanded by F0-B or another live theorem. Avoid a gratuitous C∞ abstraction layer.
 
 ## L-W1-01 — support recentering into one strict interior aperture
 
@@ -171,10 +180,22 @@ exists L > 0, r > 0, h,
   and Re W(h,h) < 0.
 ~~~
 
-Exact Stage-A theorem-green head:
+Exact theorem declaration head:
 
 ~~~text
 7abdaaf88f0e157c11049a0e65ebcb2c48fa86e2
+~~~
+
+Final validated PR #81 head:
+
+~~~text
+191e34ece05739122f362d097f9e4393cd5b9ce3
+~~~
+
+Merged main:
+
+~~~text
+1a6a286cc4aae76ef6335b85b1022ec3998614df
 ~~~
 
 Axiom surface:
@@ -263,35 +284,24 @@ The one-sided regularity may be useful later for mixed smooth/continuous approxi
 
 ---
 
+
 ## L-W2-02 — pole-neutral reflection/evenization and gamma-channel legality
 
-**Research status:** ACTIVE / INTERNAL ROUTE PROBE  
+**Research status:** READY FALLBACK / INTERNAL ANALYTIC ROUTE
 **Formal status:** OPEN
 
-### Corrected post-W1 target
+This was the immediate post-W1 plan before the zero-side reindexing shortcut was identified. It remains mathematically valid as the fallback if L-W2-05 fails.
 
-Do not treat reflection symmetry as the only remaining analytic gate.
-
-For the actual W1 witness `h`, first prove:
+For the actual W1 witness `h`:
 
 ~~~text
 I0:
 paperFT h (±I/2)=0
   -> paperFT (EF.weilTest h h) (±I/2)=0.
-~~~
 
-Then isolate the archimedean channel through the existing density `mu`.
-
-Target:
-
-~~~text
 I1:
 mu (-r) = mu r.
-~~~
 
-But also prove the separate legality condition:
-
-~~~text
 I2:
 Integrable (
   fun r =>
@@ -299,47 +309,54 @@ Integrable (
 ).
 ~~~
 
-### Why I2 matters
+I2 remains a real legality requirement for any proof that opens and splits the Bochner gamma integral. Pole neutrality does not remove it.
 
-The existing explicit-formula proof carries this weighted integrability hypothesis
-explicitly. Bochner `integral_add` requires integrability. Reflection/evenization must
-not reproduce the old totalized-tsum mistake at the integral level.
+### Why demoted
 
-### What pole neutrality does close
+The concrete zeta carrier may permit reflection/evenization at the zero-sum level through `rho -> 1-rho`, using `EF_lit` summability directly. If that works, opening the gamma/digamma channel is unnecessary for W2-C.
 
-The pole contribution vanishes on the load-bearing class.
+### Reactivate when
 
-The prime term is structurally reflection invariant because it occurs as
+- L-W2-05 is falsified or becomes larger than expected; or
+- independent analytic closure is desired as cross-validation.
 
-~~~text
-k(log n) + k(-log n).
-~~~
-
-### Fastest falsification
-
-Attempt I1 and I2 before building generic literatureRHS linearity.
-
-If weighted gamma/mu integrability requires a large new special-function/Fourier-decay
-theory, downgrade the internal route and compare directly against G1-B1B/G23.
-
-
----
 
 ## L-W2-03 — diagonal W equals localizedWeilAdditiveRHS
 
-**Research status:** ACTIVE  
+**Research status:** ACTIVE / NEXT BRIDGE TARGET
 **Formal status:** OPEN
 
 ### Target
 
-On the exact admissible class,
+Prefer the generic concrete-zeta diagonal theorem:
 
 ~~~text
 zetaZeroConfig.W f f
-  = Zeta23.CCM.localizedWeilAdditiveRHS f f.
+  = Zeta23.CCM.localizedWeilAdditiveRHS f f
 ~~~
 
-On the diagonal, localizedWeilHalfTest is half the evenization of EF.weilTest f f. L-W2-01 plus L-W2-02 should therefore supply the bridge.
+for every C² compactly supported `f`, if no extra hypothesis is actually needed.
+
+### Primary route
+
+L-W2-01 plus the new zero-side reindexing lead L-W2-05:
+
+~~~text
+W(f,f)
+  = literatureRHS(weilTest f f)                [L-W2-01 PROVED]
+
+literatureRHS(
+  1/2 * (weilTest f f + reflected weilTest f f)
+)
+  = literatureRHS(weilTest f f)                [L-W2-05 OPEN]
+
+localizedWeilHalfTest f f
+  = that exact half-evenization                 [definition/algebra]
+~~~
+
+### Fallback route
+
+L-W2-02 opens the pole/prime/gamma channels and proves reflection/evenization analytically.
 
 ### Why it matters
 
@@ -352,9 +369,7 @@ localizedWeilAdditiveRHS(localizedFiniteVector u,
   = quadraticForm(canonicalSourceMatrix) u.
 ~~~
 
-If L-W2-03 closes, ambient QW may no longer be mandatory on the shortest route to F1.
-
----
+If this closes, ambient source `QW_lambda` is no longer mandatory on the shortest route to F1. The next internal bottleneck becomes F0-B.
 
 ## L-W2-04 — actual-zeta conjugation symmetry parity simplifier
 
@@ -364,6 +379,89 @@ If L-W2-03 closes, ambient QW may no longer be mandatory on the shortest route t
 Actual zeta has conjugation symmetry in addition to the reflection already built into ZeroConfig. If theoremized with multiplicity, it may force the real-even detector relative correlation to be real, simplifying the phase witness to a parity-pure real combination after recentering.
 
 **Do not block W0 on this.** The current ZeroConfig abstraction does not carry this symmetry.
+
+
+---
+
+## L-W2-05 — concrete-zeta one-sub zero-side evenization shortcut
+
+**Research status:** ACTIVE / HIGHEST-LEVERAGE SPIKE
+**Formal status:** LEAD / HYPOTHESIS
+
+### Core observation
+
+Concrete zeta has more symmetry than abstract `ZeroConfig` exposes.
+
+Repository inputs already available:
+
+~~~text
+riemannZeta_conj
+analyticOrderAt_zeta_conj
+zetaZeroConfig.reflectEquiv    -- rho -> 1-conj(rho)
+~~~
+
+For a concrete nontrivial zero, conjugation followed by `reflectEquiv` should give
+
+~~~text
+rho -> 1-rho
+~~~
+
+with multiplicity preserved. Algebraically,
+
+~~~text
+gammaOf(1-rho) = -gammaOf(rho).
+~~~
+
+### Intended proof package
+
+1. theoremize conjugation on `zetaZeroConfig.carrier` with multiplicity;
+2. package `rho -> 1-rho` as an involutive subtype equivalence;
+3. prove the `gammaOf` sign identity;
+4. prove `paperFT (fun x => k (-x)) z = paperFT k (-z)`;
+5. apply concrete `EF_lit` to `k`, its reflection and their half-evenization;
+6. use the carrier equivalence and `Equiv.tsum_eq` only under the supplied Summable certificates;
+7. conclude
+
+~~~text
+literatureRHS (halfEven k) = literatureRHS k.
+~~~
+
+With `k = EF.weilTest f f`, this should feed L-W2-03 directly.
+
+### Why this could be qualitatively stronger
+
+It avoids proving `mu`/`gammaBracket` evenness and avoids splitting the weighted gamma Bochner integral. The explicit formula is used as a black-box equality on legal tests, while the symmetry is discharged on the summable zero side where zeta already has the required functional-equation and Schwarz symmetries.
+
+### Claim firewall
+
+This is **not** currently a theorem.
+
+Do not claim:
+
+- generic `ZeroConfig` symmetry under `rho -> 1-rho`;
+- `literatureRHS` reflection invariance without the EF_lit hypotheses;
+- arbitrary `tsum` linearity/reindexing without summability;
+- W2-B/C closure until Lean proves the exact declarations.
+
+### Fast falsification
+
+Check, in order:
+
+~~~text
+conj carrier membership
+conj multiplicity
+oneSub involution
+gammaOf sign
+paperFT reflection convention
+half-test exact normalization
+Summable-preserving reindex
+~~~
+
+Any conjugation, sign, factor-two or totalized-sum mismatch kills the shortcut as stated.
+
+### Composition with W1 geometry
+
+W1 is not logically required for the generic diagonal identity if L-W2-05 closes, but its strict collar remains essential downstream for F0-B and source localization.
 
 ---
 
