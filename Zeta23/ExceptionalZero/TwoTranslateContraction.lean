@@ -244,7 +244,8 @@ theorem zeta_W_twoTranslateCombination_eq_matrixQuadratic
   rw [zeta_W_twoTranslateCombination_expansion hk hkc]
   rw [W_f_translateRight_eq_star_relativeCorrelation,
     W_translateRight_self]
-  simp [twoTranslateWeilMatrix, Matrix.mulVec, dotProduct, Fin.sum_univ_two]
+  simp [twoTranslateWeilMatrix, weilRelativeCorrelation,
+    Matrix.mulVec, dotProduct, Fin.sum_univ_two]
   ring
 
 /-- The phase test realizes the already-proved matrix phase witness exactly. -/
