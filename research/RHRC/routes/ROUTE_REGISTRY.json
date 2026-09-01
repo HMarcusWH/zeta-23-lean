@@ -12,14 +12,7 @@
     {
       "route_id": "R001_exceptional_zero",
       "phase": "DISCOVERY",
-      "claim_ids": [
-        "R001_FILTERED_ZERO_POLE",
-        "R001_WEIL_BRIDGE",
-        "R001_ZERO_GROWTH",
-        "R001_PRIME_UPPER",
-        "R001_PRIME_UPPER_EQUIV_RH",
-        "C_RH"
-      ],
+      "claim_ids": ["R001_FILTERED_ZERO_POLE", "R001_WEIL_BRIDGE", "R001_ZERO_GROWTH", "R001_PRIME_UPPER", "R001_PRIME_UPPER_EQUIV_RH", "C_RH"],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false
@@ -27,15 +20,11 @@
     {
       "route_id": "R002_multi_probe",
       "phase": "DISCOVERY",
-      "claim_ids": [
-        "R002_MULTI_PROBE_SEPARATION",
-        "R002_WINDOWED_VISIBILITY",
-        "R002_KERNEL_ZERO_SIDE_BRIDGE"
-      ],
+      "claim_ids": ["R002_MULTI_PROBE_SEPARATION", "R002_WINDOWED_VISIBILITY", "R002_KERNEL_ZERO_SIDE_BRIDGE"],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "D0-R settled by PR #66 as SPECIALIZATION_ONLY: the CCM qBasis has the hard-window truncated-character correlation geometry, but no generic theorem identifies the smooth-taper production R002 Gz/G-tilde(T) family with the canonical CCM finite object. Exact firewalls: Gz=Az+Ez; Gz=Az iff Ez=0; current Params.Valid requires lambda<=1; the R002 grid carries a common T translation. R002_WINDOWED_VISIBILITY remains open only on the R002 side."
+      "note": "D0-R settled by PR #66 as SPECIALIZATION_ONLY: the CCM qBasis has the hard-window truncated-character correlation geometry, but no generic theorem identifies the smooth-taper production R002 family with the canonical CCM finite object. R002_WINDOWED_VISIBILITY remains open only on the R002 side."
     },
     {
       "route_id": "R003_ccm_bridge",
@@ -61,24 +50,23 @@
         "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
         "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
         "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
-        "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS"
+        "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+        "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "R003/D0/G0, G1-A, G1-B0, G1-B1A, W2-A, W0, W1, W2-ZS and the direct diagonal W2-C endpoint are theorem-locked on merged main 9e899ca322116e28a56a4412d48aef0052b86fbe through PR #84; PR #83 merged the W2-ZS theorem package as 7b8e0cc9abbaeff97d88ec67ada40734619a8d07 and PR #84 then cleaned the authority/source-route state. PR #83 also theorem-locks the strict-aperture negative localized-additive witness that is the F0-B input. The old I0/I1/I2 analytic W2-B route remains open/dormant as an independent cross-check; proving the endpoint by W2-ZS does not prove that historical route. The primary internal frontier is now F0-B finite approximation/continuity before G1-A yields F1. Source work remains split by OBS-015: S-GEOM/S-IFACE plus G1-B1B/G1-final establish source coordinates/interfaces/restriction, while strict source negativity is a separate S-NEG or exact W/localized-additive/QW sign-composition obligation before G23 can feed F1. F0-B, source interface/sign/transfer, F1, K0-K3, finite-negative exclusion and RH remain open."
+      "note": "R003 is theorem-locked through PR #86 on merged main 6d5eb5b5673b6754dda4926c41a60a5b85626a44 (tree a633de6504b0e2105d3e3f33b2f1728c1219dad5). PR #86 proves F0-B1A: the three centered moments 0,1,2 define a nontrivial finite sector whose hard-window localized vectors are global C² tests and whose genuine concrete-zeta diagonal Weil value equals the canonicalSourceMatrix quadratic form. The primary internal frontier is now F0-B1B exact boundary-flat projection, followed by a family-level W-continuity/topology theorem and finite approximation/sign transfer. F0-B2 direct localized-additive continuity remains a fallback, not the co-primary route. Source work remains split by OBS-015: S-GEOM/S-IFACE/G1-B1B/G1-final establish source coordinates/interfaces/restriction, while strict source negativity is a separate S-NEG or exact sign-composition obligation before G23. F0-B, F1, K0-K3, finite-negative exclusion and RH remain open."
     },
     {
       "route_id": "R004_prolate_v2",
       "phase": "DISCOVERY",
-      "claim_ids": [
-        "R004_CCM_DISPLACEMENT_FORMAL"
-      ],
+      "claim_ids": ["R004_CCM_DISPLACEMENT_FORMAL"],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "Finite displacement lane. The exact displacement/rank<=2 theorem is promoted on canonicalSourceMatrix; legacy finiteMatrix remains usable only for scalar-shift-invariant structure. The fitted-tridiagonal eigenvector route is quarantined because tested generator gaps collapse. Absolute spectral-sign claims must use the canonical normalization."
+      "note": "Finite displacement lane. Exact displacement/rank<=2 is promoted on canonicalSourceMatrix; legacy finiteMatrix is usable only for scalar-shift-invariant structure. Absolute spectral-sign claims must use the canonical normalization."
     }
   ],
-  "note": "These routes are intentionally not frozen yet. A frozen digest would be false precision while the analytic objects are still being defined."
+  "note": "These routes are intentionally not frozen yet. A frozen digest would be false precision while analytic objects are still being defined."
 }
