@@ -293,4 +293,84 @@ theorem norm_fourierCoeff_le_norm
         exact ContinuousMap.norm_coe_le_norm F t)
   simpa using h
 
+
+/-- Fourier coefficients respect subtraction for continuous AddCircle maps. -/
+theorem fourierCoeff_sub
+    {L : ℝ} [Fact (0 < L)]
+    (F G : C(AddCircle L, ℂ)) :
+    AddCircle.fourierCoeff (F - G) =
+      AddCircle.fourierCoeff F - AddCircle.fourierCoeff G := by
+  have hFi :
+      Integrable F (@AddCircle.haarAddCircle L inferInstance) :=
+    F.continuous.integrable_of_hasCompactSupport
+      (HasCompactSupport.of_compactSpace _)
+  have hGi :
+      Integrable G (@AddCircle.haarAddCircle L inferInstance) :=
+    G.continuous.integrable_of_hasCompactSupport
+      (HasCompactSupport.of_compactSpace _)
+  ext n
+  unfold AddCircle.fourierCoeff
+  simp only [ContinuousMap.sub_apply, smul_sub]
+  rw [integral_sub (hFi.fourier_smul (-n)) (hGi.fourier_smul (-n))]
+  rfl
+
+/-- Removing the integer zero coefficient removes exactly the constant Fourier
+mode. -/
+theorem addCircleFourierPolynomial_erase_zero
+    {L : ℝ} (c : ℤ →₀ ℂ) :
+    addCircleFourierPolynomial (L := L) (c.erase 0) =
+      addCircleFourierPolynomial c - c 0 • AddCircle.fourier 0 := by
+  have h := congrArg (addCircleFourierPolynomial (L := L))
+    (Finsupp.erase_add_single 0 c)
+  rw [addCircleFourierPolynomial_add,
+    addCircleFourierPolynomial_single] at h
+  exact eq_sub_of_add_eq h
+
+/-- Uniform approximation of a zero-mean target may be chosen with the finite
+Fourier polynomial's zero mode removed, losing at most a factor two. -/
+theorem exists_zeroModeFree_addCircleFourierPolynomial_norm_sub_lt
+    {L : ℝ} [Fact (0 < L)]
+    (F : C(AddCircle L, ℂ))
+    (hF0 : AddCircle.fourierCoeff F 0 = 0)
+    {δ : ℝ} (hδ : 0 < δ) :
+    ∃ c : ℤ →₀ ℂ,
+      c 0 = 0 ∧
+      ‖addCircleFourierPolynomial c - F‖ < 2 * δ := by
+  obtain ⟨d, hd⟩ :=
+    exists_addCircleFourierPolynomial_norm_sub_lt F hδ
+  let c : ℤ →₀ ℂ := d.erase 0
+  have hc0 : c 0 = 0 := by
+    simp [c]
+  have hcoeff0 :
+      AddCircle.fourierCoeff
+          (addCircleFourierPolynomial d - F) 0 = d 0 := by
+    rw [fourierCoeff_sub, fourierCoeff_addCircleFourierPolynomial, hF0]
+    simp
+  have hd0le : ‖d 0‖ ≤ ‖addCircleFourierPolynomial d - F‖ := by
+    have h :=
+      norm_fourierCoeff_le_norm
+        (addCircleFourierPolynomial d - F) 0
+    rwa [hcoeff0] at h
+  have hd0lt : ‖d 0‖ < δ :=
+    lt_of_le_of_lt hd0le hd
+  refine ⟨c, hc0, ?_⟩
+  rw [show addCircleFourierPolynomial c =
+      addCircleFourierPolynomial d - d 0 • AddCircle.fourier 0 by
+        simpa [c] using
+          addCircleFourierPolynomial_erase_zero (L := L) d]
+  calc
+    ‖(addCircleFourierPolynomial d - d 0 • AddCircle.fourier 0) - F‖
+        = ‖(addCircleFourierPolynomial d - F) -
+            d 0 • AddCircle.fourier 0‖ := by
+            congr 1
+            abel
+    _ ≤ ‖addCircleFourierPolynomial d - F‖ +
+          ‖d 0 • AddCircle.fourier (T := L) 0‖ :=
+      norm_sub_le _ _
+    _ = ‖addCircleFourierPolynomial d - F‖ + ‖d 0‖ := by
+      rw [norm_smul, AddCircle.fourier_norm]
+      simp
+    _ < δ + δ := add_lt_add hd hd0lt
+    _ = 2 * δ := by ring
+
 end Zeta23.CCM
