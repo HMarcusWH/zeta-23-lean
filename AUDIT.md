@@ -9,28 +9,28 @@ This file records the current high-level validation state. Detailed theorem trut
 ### Current merged baseline
 
 ~~~text
-main = 1ad066f0a263725ea7b84447a637fcebda78e9ca
-tree = 41f9febd6a02282e746714c2f62407fb51ac8b30
-merged through = PR #87
+main = 879eb6d356d8f62bbe0b9241596b15892498ea64
+tree = 9225c993bb9ac680a0f673efc13d191bebc5fd28
+merged through = PR #88
 RH = OPEN
 ~~~
 
-### Exact green F0-B1B candidate
+### Exact green WCONT-A candidate
 
 ~~~text
-PR #88 theorem head = 5e943d8cd6825c3c649198c52d90d1ed5d8d8b47
-base = 1ad066f0a263725ea7b84447a637fcebda78e9ca
-synthetic merge = 9eb9281394684600b35a58ce2cb3c757d06379cc
-synthetic merge tree = d10e7b1e575624ab39fb445297f43168b1867ed1
-RHRC #609 = SUCCESS
-Permansson #382 = SUCCESS
+PR #89 head = 4bcd49e0b8029ac7381c7829a18fefea11f20ba1
+base = 879eb6d356d8f62bbe0b9241596b15892498ea64
+synthetic merge = 725a562d88a3af654a7050397031cd33b2bcda21
+synthetic merge tree = f56b3a200d0ac70df3219a158f6c77c85fc34108
+RHRC #619 = SUCCESS
+Permansson #392 = SUCCESS
 PR state at documentation time = OPEN / NOT MERGED
 RH = OPEN
 ~~~
 
-## Exact #88 validation
+## Exact #89 validation
 
-The exact theorem head passed:
+The exact WCONT-A head passed:
 
 - Build CCM formalization;
 - Build exceptional-zero foundation;
@@ -100,7 +100,7 @@ R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION
 
 ### F0-B1B — exact boundary-flat projection
 
-**PROVED ON EXACT GREEN PR #88 HEAD; NOT YET MERGED AT DOCUMENTATION TIME.**
+**PROVED / MERGED IN PR #88.**
 
 For N>=1, the exact three-mode correction on centered modes -1,0,+1 cancels centered moments 0,1,2 for arbitrary u.
 
@@ -131,34 +131,37 @@ The N=0 sector is explicitly outside the construction.
 ## Current open frontier
 
 ~~~text
-WCONT-A quantitative common-support genuine-W bound         OPEN / NOW
-quadratic W continuity corollary                            OPEN
-finite approximation in the selected topology              OPEN
-projection-smallness / moment-residual control              OPEN
-strict finite sign transfer                                 OPEN
-F1 canonical finite negative obstruction                    OPEN
-K0-K3                                                       OPEN
-RH                                                          OPEN
+WCONT-A quantitative common-support genuine-W bound          PROVED ON GREEN #89 HEAD
+exact diagonal cross-term identity                           PROVED ON GREEN #89 HEAD
+quantitative self-form perturbation bound                    PROVED ON GREEN #89 HEAD
+F0-B1C WCONT-matched finite approximation                    OPEN / NOW
+projection-smallness / moment-residual control               OPEN
+strict finite sign transfer                                  OPEN
+F1 canonical finite negative obstruction                     OPEN
+K0-K3                                                        OPEN
+RH                                                           OPEN
 ~~~
 
-## WCONT-A research target
+## WCONT-A exact theorem state
 
-Existing theorem-backed ingredients:
+Production declarations:
 
 ~~~text
-Zeta23.WeilEF.zero_sum_inv_sq_gen
-Zeta23.WeilEF.EF_zero_sum_summable_gen
-Zeta23.ExceptionalZero.zeta_W_literatureRHS_package
+Zeta23.norm_paperFT_mul_one_add_normSq_le
+Zeta23.ExceptionalZero.zeta_invSqZeroWeight_summable
+Zeta23.ExceptionalZero.norm_zeta_Wsummand_le_commonSupport
+Zeta23.ExceptionalZero.zeta_W_norm_le_commonSupport
+Zeta23.ExceptionalZero.zeta_W_self_sub_self_eq_cross
+Zeta23.ExceptionalZero.zeta_W_self_sub_self_norm_le_commonSupport
 ~~~
 
-The post-#88 lead is to exploit asymmetric W2-A regularity and seek a common-support estimate of schematic form
+All promoted declarations print only
 
 ~~~text
-|W(f,g)|
-  <= K_Λ * (||f||_1 + ||f''||_1) * ||g||_1.
+[propext, Classical.choice, Quot.sound]
 ~~~
 
-This is **OPEN / LEAD**, not a registered theorem.
+No sorryAx survives.
 
 ## Continuity and projection firewalls
 
@@ -189,6 +192,6 @@ G1-B1A finite source transport is proved, but Haar/L²/PsiSharp/QW interface, G1
 
 ## Current post-green settlement
 
-research/RHRC/routes/R003_ccm_bridge/F0_B1B_POST_GREEN_WCONT_FRONTIER_2026_09_01.md
+research/RHRC/routes/R003_ccm_bridge/WCONT_A_POST_GREEN_F0B1C_FRONTIER_2026_09_01.md
 
 **RH remains OPEN.**
