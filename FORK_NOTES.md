@@ -2,31 +2,26 @@
 
 > **RH remains OPEN.**
 
-The fork is an active Lean-backed RH research program, not a solved-conjecture branch. Its purpose is to shrink the admissible counterexample space through formally validated detector, explicit-formula, finite-matrix and rigidity constraints while keeping a strict claim firewall.
+This fork is an active Lean-backed RH research program. Its purpose is to shrink the admissible counterexample space through theorem-backed explicit-formula, finite-matrix, approximation and rigidity constraints while maintaining a strict claim firewall.
 
 ## Authority snapshot
 
-### Merged main
-
 ~~~text
-main = 879eb6d356d8f62bbe0b9241596b15892498ea64
-tree = 9225c993bb9ac680a0f673efc13d191bebc5fd28
-merged through = PR #88
+main = bab94aed54298de6fc6676808a0b0e46c2db6046
+tree = f98b3051ca789ef0d134934fc01d97ac7497d4ca
+merged through = PR #91
 RH = OPEN
 ~~~
 
-### Green theorem candidate
+Recent permanent theorem packages:
 
 ~~~text
-PR #89 head = 4bcd49e0b8029ac7381c7829a18fefea11f20ba1
-synthetic merge = 725a562d88a3af654a7050397031cd33b2bcda21
-synthetic merge tree = f56b3a200d0ac70df3219a158f6c77c85fc34108
-RHRC #619 = SUCCESS
-Permansson #392 = SUCCESS
-status = OPEN / NOT MERGED at documentation time
+#88 F0-B1B exact boundary-flat projection
+#89 WCONT-A quantitative genuine-W continuity
+#91 F0-B1C-A raw uniform localized C² approximation
 ~~~
 
-## Current canonical finite object
+## Canonical finite object
 
 ~~~text
 canonicalSourceMatrix
@@ -37,9 +32,9 @@ canonicalSourceMatrix
 legacyPrintedMatrix = finiteMatrix.
 ~~~
 
-The scalar identity correction between the canonical and historical printed normalization remains theorem-locked.
+The two normalizations differ by a theorem-locked scalar identity shift. Absolute spectral-sign claims do not transfer through that shift automatically.
 
-## Internal theorem-backed route
+## Current internal theorem-backed route
 
 ~~~text
 W2-A   genuine W / literature-RHS pair bridge
@@ -49,79 +44,73 @@ W2-ZS  concrete-zeta zero-side evenization
 W2-C   diagonal W = localized additive RHS
 G1-A   finite localized-additive restriction
 F0-B1A boundary-flat legal finite carrier
-        + exact genuine W = canonical finite quadratic form
-F0-B1B exact three-mode projection into that carrier
+        + genuine W = canonical finite quadratic form
+F0-B1B exact -1,0,+1 projection
         + fixed-point/idempotence
         + endpoint jet/moment identities
-WCONT-A quantitative common-support genuine-W bound
+WCONT-A fixed-support genuine-W bound
         + fixed inverse-square zero majorant
         + exact cross-term identity
-        + diagonal perturbation bound
+        + diagonal perturbation estimate
+F0-B1C-A uniform raw finite Fourier approximation
+        + exact q(0)=0 anchor
+        + uniform q,q',q'' approximation
 ~~~
 
-F0-B1B is merged. WCONT-A is proved on exact green PR #89 head. The current primary frontier is
+The primary frontier is now
 
 ~~~text
-F0-B1C WCONT-matched finite approximation
-  -> projection-smallness
+F0-B1C-B quantitative projection stability
   -> strict finite sign transfer
   -> F1 canonical finite negative obstruction.
 ~~~
 
-F0-B2 direct localized-additive continuity and boundary-killer multiplication remain fallbacks.
+## What #91 changes
 
-## Why #88 changes the approximation problem
+The Fourier-density question is no longer open on the primary route.
 
-The legality correction uses only centered modes -1,0,+1. Its algebra is controlled entirely by the three centered moments M0,M1,M2. The exact endpoint identities now show those moments are scalar-equivalent to the value/first-jet/second-jet of the unwindowed finite trigonometric polynomial at the endpoint.
+Pinned Mathlib's exact root declaration span_fourier_closure_eq_top was sufficient, together with explicit Finsupp extraction, zero-mode removal, twice integration and centered-coordinate reconstruction.
 
-**DERIVED / not separately formalized:** the correction changes only three coefficient coordinates, independent of N.
+**DERIVED:** because #91 anchors q(0)=0, #88 gives M0=0 exactly. The next projection theorem only needs quantitative M1,M2 control.
 
-Do not upgrade that observation into a norm estimate until the inequalities are proved.
-
-## Source-faithful route
-
-OBS-015 remains binding:
-
-~~~text
-source interface is not source negativity.
-~~~
-
-The multiplicative Haar/L²/PsiSharp/QW interface, actual QW_lambda|E_N restriction, source sign entry and G23 remain open.
-
-## Boundary-flat structural clue
-
-A future F1 vector on the projected carrier retains
-
-~~~text
-1^T u = 0
-1^T D u = 0
-1^T D² u = 0,
-~~~
-
-while the canonical matrix has
-
-~~~text
-D M - M D = g 1^T - 1 g^T.
-~~~
-
-Possible post-F1 Krylov/displacement simplification is a **LEAD / HYPOTHESIS** only.
+Expected correction constants depend on fixed L, not N.
 
 ## Research boundary rules
 
-- Compiler/CI evidence is authoritative for formal validity.
-- Exact checked theorem heads may be PROVED before merge, but merged-main claims must state merge status correctly.
-- Machine registries on a PR branch become permanent only when that branch is merged.
-- Green support infrastructure is not RH.
+- Compiler/CI evidence is authoritative.
+- Merged-main truth must track exact merge state and tree.
+- Green infrastructure is not RH.
 - Numerical signals are not theorem claims.
 - Source interface does not imply source negativity.
-- Per-member summability is not uniform dominated convergence; WCONT-A now supplies the required explicit family-independent majorant.
-- The #88 correction alone is not automatically a globally admissible hard-window test.
-- Historical failed/obsolete routes remain useful only when a named blocking premise changes.
+- Raw formula-level approximation does not imply legal hard-window C² admissibility.
+- The three-mode correction alone is not a legal W test.
+- WCONT-A, not per-approximant summability, is the accepted family-level continuity seam.
+- Historical failed/superseded routes may be revisited only when a named premise changes.
+
+## Source-faithful route
+
+OBS-015 remains binding.
+
+The Haar/L²/PsiSharp/QW interface, actual QW_lambda|E_N restriction, source sign entry and G23 remain OPEN.
+
+## Boundary-flat structural clue
+
+A future F1 witness produced by this route retains
+
+1^T u = 0,
+1^T D u = 0,
+1^T D^2 u = 0,
+
+while the canonical matrix satisfies
+
+D M - M D = g 1^T - 1 g^T.
+
+Possible post-F1 Krylov/displacement simplification remains a **LEAD / HYPOTHESIS**.
 
 ## Current post-green settlement
 
-research/RHRC/routes/R003_ccm_bridge/WCONT_A_POST_GREEN_F0B1C_FRONTIER_2026_09_01.md
+research/RHRC/routes/R003_ccm_bridge/F0_B1C_A_POST_GREEN_PROJECTION_STABILITY_FRONTIER_2026_09_02.md
 
-The next major roadmap version remains reserved for a green F1 or an equivalently large dependency-graph event.
+The next major external roadmap version remains reserved for green F1 or an equivalently large dependency-graph event.
 
 **RH remains OPEN.**
