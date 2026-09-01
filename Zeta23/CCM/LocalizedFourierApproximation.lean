@@ -672,4 +672,32 @@ theorem localizedFiniteFunction_anchor_right_zero
       L N (anchorLocalizedCoefficients N u) 0 hL.ne'
   simpa using hp.trans (localizedFiniteFunction_anchor_zero L N u)
 
+
+/-- On the closed aperture, the periodic second-derivative map agrees with the
+ordinary second derivative of the strict-collar function. -/
+theorem periodicSecondDerivMap_coe_eq
+    {L : ℝ} {h : ℝ → ℂ}
+    (hL : 0 < L)
+    (hh : ContDiff ℝ 2 h)
+    (hs : tsupport h ⊆ Ioo 0 L)
+    {x : ℝ} (hx : x ∈ Icc 0 L) :
+    periodicSecondDerivMap L h hL hh hs (x : AddCircle L) =
+      deriv (deriv h) x := by
+  letI : Fact (0 < L) := ⟨hL⟩
+  have hj := strictSupport_endpoint_jet_package (L := L) (h := h) hs
+  by_cases hx0 : x = 0
+  · subst x
+    change AddCircle.liftIoc L 0 (deriv (deriv h)) (0 : AddCircle L) =
+      deriv (deriv h) 0
+    have hcircle : (0 : AddCircle L) = (L : AddCircle L) := by
+      simpa using (AddCircle.coe_add_period L (0 : ℝ)).symm
+    rw [hcircle]
+    rw [AddCircle.liftIoc_zero_coe_apply]
+    · rw [hj.2.2.2.2.1, hj.2.2.2.2.2]
+    · exact ⟨hL, le_rfl⟩
+  · change AddCircle.liftIoc L 0 (deriv (deriv h)) (x : AddCircle L) =
+      deriv (deriv h) x
+    rw [AddCircle.liftIoc_zero_coe_apply]
+    exact ⟨lt_of_le_of_ne hx.1 (Ne.symm hx0), hx.2⟩
+
 end Zeta23.CCM
