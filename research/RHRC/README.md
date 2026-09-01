@@ -55,7 +55,7 @@ See `routes/R002_multi_probe/`, OBS-009 and D0-R.
 
 This remains the active finite/source route.
 
-Merged theorem state through PR #79 now includes both of the shared function-level bridges:
+Validated theorem state now closes the entire shared function-level front end:
 
 ~~~text
 W2-A:
@@ -66,65 +66,59 @@ W2-A:
 W0:
   off-line zero
     -> compact C² pole-neutral h
-    -> Re W(h,h) < 0.
-~~~
+    -> Re W(h,h) < 0
 
-The promoted W0 theorem is
-`Zeta23.ExceptionalZero.exists_poleNeutral_negativeWeilTest_of_offLine_zero`.
-Its theorem-green head `c8112f0ad12e0b2c2f1261cea3ba7726aa04be54` passed the full Lean/CI gate and merged via PR #79.
-
-Validated theorem state now includes:
-
-~~~text
-finite divided-difference/source calculus
-  -> finite Guinand-Weil dictionary
-  -> literal-tent explicit-formula extension
-  -> exact finite zero-side matrix
-  -> cutoff-free/canonical source matrix
-  -> localized hard-window Fourier basis
-  -> actual zero-extended full-complex finite space
-  -> additive localized Weil RHS restriction
-  -> direct Section-4 source matrix
-  -> source-normalization repair
-  -> finite kappa/source-sector bridge
-  -> W2-A genuine W/literatureRHS + summability
-  -> W0 negative pole-neutral physical Weil test
-~~~
-
-The route-general next package is now:
-
-~~~text
 W1:
-  compact C² pole-neutral negative h
-    -> translate/recenter into strict support inside (0,L)
-    -> preserve pole zeros
-    -> preserve Re W(h,h)<0.
+  same obstruction
+    -> exists L>0, r>0 with L=4r
+    -> closed support inside (r,3r) ⊂ (0,L)
+    -> pole zeros preserved
+    -> Re W(h,h) < 0 preserved.
 ~~~
 
-After W1, the program splits.
+The W1 production theorem is
+`Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero`.
+Its exact Stage-A theorem-green head is
+`7abdaaf88f0e157c11049a0e65ebcb2c48fa86e2`, with axiom surface
+`[propext, Classical.choice, Quot.sound]`.
 
-Source-facing lane:
+The immediate global task is now a **bounded route-comparison pass**, not more route-general infrastructure.
+
+Internal probe:
 
 ~~~text
-G1-B1B d*u / L² / PsiSharp / QW
-  -> G1-final QW_lambda|E_N = canonicalSourceMatrix
-  -> G23 strict negative finite transfer
-  -> F1 canonical finite obstruction.
+I0 pole zeros of h -> pole zeros of EF.weilTest h h
+I1 mu/gamma reflection evenness
+I2 weighted gamma-channel integrability
 ~~~
 
-Internal additive lane:
+The weighted integrability condition is independent of symmetry and is required before legal
+Bochner integral splitting/averaging.
+
+Source probe:
 
 ~~~text
-W2-B reflection/evenization
-  -> W2-C W self-value = localized additive RHS
-  -> F0-B finite additive/Fourier approximation
-  -> G1-A canonical finite additive restriction    PROVED
-  -> F1 canonical finite obstruction.
+S0 lambda = exp(L/2), 1<lambda, sourceLength lambda = L
+S1 exact d*u/L²/kappa/q/PsiSharp/QW premise lock
 ~~~
 
-Because the W0 witness is pole-neutral, the first W2-B attempt should be specialized to that class: the pole term already vanishes, the prime term is structurally symmetric, and the concentrated analytic obligation is gamma-bracket reflection/change of variable.
+If I0-I2 are bounded, continue:
 
-The preferred post-F1 K0-K3 finite-wall program remains a **planned research route**, not yet a theorem-backed terminal reduction. K1 must first prove that an F1 negative finite value yields a first canonical singular crossing for the same finite sector before a terminal crossing-exclusion theorem can be composed to RH.
+~~~text
+W2-B -> W2-C -> F0-B -> G1-A [PROVED] -> F1.
+~~~
+
+If the gamma/mu channel balloons while the source interface remains local, continue:
+
+~~~text
+G1-B1B -> G1-final -> G23 -> F1.
+~~~
+
+Keep both if both close cleanly.
+
+The explicit W1 margin `(r,3r)` is a theorem-backed asset for the boundary-flat F0-B1 fallback.
+
+The preferred post-F1 K0-K3 finite-wall program remains a **planned research route**, not yet a theorem-backed terminal reduction. K1 must first prove that an F1 negative finite value yields a first canonical singular crossing for the same finite sector before crossing exclusion can be composed to RH.
 
 See `routes/R003_ccm_bridge/README.md` and `CURRENT_RESEARCH_PLAN.md`.
 
