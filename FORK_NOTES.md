@@ -1,116 +1,105 @@
 # HMWH Zeta23 fork — research boundary and provenance
 
-This file defines the fork-level boundary. It supersedes the earlier description of the fork as only an "exceptional-zero detection" extension.
+> **RH remains OPEN.**
 
-## Preserved upstream baseline
+The fork is an active Lean-backed RH research program, not a solved-conjecture branch. Its current purpose is to shrink the admissible counterexample space through formally validated detector, explicit-formula, finite-matrix and rigidity constraints while keeping a strict claim firewall.
 
-The fork baseline is pinned in `UPSTREAM_BASELINE.json`:
+## Current merged state
 
-```text
-upstream: anthropics/zeta-23-lean
-baseline fork commit: cec57f919ccf34e5fa5372b4ba332f7c848bbb6e
-```
+~~~text
+main = 6d5eb5b5673b6754dda4926c41a60a5b85626a44
+tree = a633de6504b0e2105d3e3f33b2f1728c1219dad5
+merged through = PR #86
+RH = OPEN
+~~~
 
-The inherited Zeta23 paper formalization remains a preserved foundation. The fork does not rewrite its historical provenance.
+## Current canonical finite object
 
-The old root README and audit are retained as `UPSTREAM_README.md` and `UPSTREAM_AUDIT.md`.
+The direct source finite matrix authority is
 
-## Fork theorem-bearing mathematics
-
-Fork-owned formal mathematics now extends well beyond `Zeta23/ExceptionalZero/`.
-
-Major theorem-bearing areas include:
-
-- `Zeta23/ExceptionalZero/` — exceptional-zero amplification, two-translate detectors, multi-probe separation and related exact mathematics;
-- `Zeta23/CCM/` — finite CCM matrix calculus, finite Guinand--Weil dictionary, explicit-formula extension, zero-side bridge, localized finite Fourier spaces, source normalization and displacement structure;
-- supporting fork additions used by those routes.
-
-All promoted fork mathematics must remain sorry-free and may not introduce project-specific axioms.
-
-Open obligations belong in the claim/route registries and route documents, not as Lean axioms.
-
-## Research control plane
-
-Everything under `research/RHRC/` is one of:
-
-- discovery tooling;
-- source/provenance mapping;
-- falsification and countermodels;
-- route governance;
-- numerical diagnostics;
-- evidence receipts;
-- machine-readable claim and route state.
-
-These materials may guide proof search but are not theorem authority.
-
-## Canonical CCM naming rule
-
-The canonical direct-source finite object is
-
-```text
+~~~text
 canonicalSourceMatrix
   = cutoffFreeMatrix
   = sourceEq44Matrix
   = dictionaryMatrix.
-```
-
-The historical literal printed normalization is
-
-```text
-legacyPrintedMatrix = finiteMatrix.
-```
-
-The two differ by a scalar identity shift. The legacy object must never be silently relabelled as the ambient source restriction `QW_lambda|E_N`.
-
-Any claim about absolute spectrum, PSD, inertia, lower bounds, trace or determinant must state which normalization it uses.
-
-
-## Route state
-
-The current merged main is `9e899ca322116e28a56a4412d48aef0052b86fbe` (tree `ad636143768dcaa4dbeb23a0ea295d7b2d6b1c9b`), through PR #84.
-
-PR #83 theorem-locked the concrete-zeta W2-ZS route on exact head `556be6c2b42e912c58751988c580ab4e0091822d` and merged it as `7b8e0cc9abbaeff97d88ec67ada40734619a8d07`. The theorem surface now includes:
-
-~~~text
-W2-A  W = literatureRHS(weilTest) + summability
-W0    one compact C² pole-neutral negative Weil test
-W1    strict finite aperture / explicit margin
-W2-ZS concrete rho -> 1-rho zero-side evenization
-W2-C  direct diagonal W(h,h)=localizedWeilAdditiveRHS(h,h)
-      strict-aperture negative localized-additive witness
-G1-A  finite localized additive restriction
 ~~~
 
-The primary internal frontier is therefore **F0-B finite approximation / strict-negativity transfer**. Two bounded candidates remain live: boundary-flat globally C² finite Fourier approximants plus W continuity, and direct localized-additive continuity on the existing legal finite vectors. Do not select between them until the topology burden is theoremically inspected.
+The historical printed-normalization matrix remains
 
-The old pole-neutrality + mu/gamma + weighted-integrability W2-B route remains open/dormant as an independent analytic cross-check. Proving the diagonal endpoint through W2-ZS does not prove that historical route.
+~~~text
+legacyPrintedMatrix = finiteMatrix
+~~~
 
-On the source side, `S-GEOM` owns the exact `L <-> lambda` bridge and `S-IFACE` owns the d*u/L²/kappa/q/PsiSharp/QW interface before G1-B1B/G1-final. Neither supplies strict source negativity. Feeding G23 additionally requires `S-NEG` or an exact theorem carrying the negative W/localized-additive value into QW. OBS-015 is the permanent firewall.
+and differs by the theorem-locked scalar identity correction. The distinction is permanent provenance, not cosmetic naming.
 
-The preferred K0-K3 finite-wall program after F1 remains planned, not theorem-backed. F1, K0-K3 and RH remain OPEN.
+## Internal theorem-backed route
 
+The current internal route has closed:
 
-## FFBBP / OoL boundary
+~~~text
+W2-A  genuine W / literature-RHS pair bridge
+W0    one compact C² pole-neutral negative W test
+W1    strict finite-aperture support collar
+W2-ZS concrete-zeta zero-side evenization
+W2-C  diagonal W = localized additive RHS
+G1-A  finite localized-additive restriction
+F0-B1A boundary-flat legal finite carrier
+       + exact genuine W = canonical finite quadratic form
+~~~
 
-FFBBP and OoL-MVS contribute research-process and discovery/governance semantics only.
+PR #86 changes the F0 fork ranking. Boundary-flat global-C² finite vectors are no longer speculative infrastructure; they are a proved, nontrivial carrier. Therefore the primary internal frontier is now:
 
-The currently qualified FFBBP lineage is RUN42C with the inductive firewall; RUN42B is historical/quarantined development lineage.
+~~~text
+F0-B1B exact three-mode projection
+  -> WCONT family-level W continuity
+  -> finite approximation / sign transfer
+  -> F1 canonical finite negative obstruction.
+~~~
 
-OoL-MVS v2.7.6 remains a route-governance reference only. Origin-of-life claims are not RH premises.
+F0-B2 direct localized-additive continuity remains a fallback.
 
-Neither FFBBP nor OoL-MVS can promote a mathematical theorem.
+## Source-faithful route
 
-## Permanent rules
+Source work remains parallel and subject to OBS-015:
 
-1. **Lean/compiler/CI is theorem authority.**
-2. **Research machinery is not a theorem dependency.**
-3. **RH stays OPEN until the exact final RH theorem is proved and claim-validated; a planned first-crossing route is not a terminal reduction until its intermediate implications are theorem-backed.**
-4. **A finite formula identity is not automatically an ambient Hilbert/form restriction theorem.**
-5. **A function-level source representative is not automatically a bundled L2/form-domain object.**
-6. **Normalization, parameterization, carrier space, measure, functional, and restriction map are separate interfaces and must be closed separately.**
-7. **Scalar-shift-invariant evidence cannot be upgraded into scalar-shift-sensitive spectral claims.**
-8. **Synthetic worlds and numerical experiments are discovery/falsification evidence only.**
-9. **Conditional, numerical, heuristic and synthetic ancestry cannot be laundered into unconditional theorem status.**
-10. **Dead routes may be revisited only when the blocking premise has changed and that change is stated explicitly.**
-11. **Green triggers a post-green research pass; it does not terminate investigation.**
-12. **The fork may search aggressively and must promote conservatively.**
+~~~text
+source interface is not source negativity.
+~~~
+
+G1-B1A finite kappa/source-sector transport is already theorem-locked. The multiplicative Haar/L²/PsiSharp/QW interface, actual `QW_lambda|E_N` restriction, source sign entry and G23 remain open.
+
+## Boundary-flat structural clue
+
+PR #86 gives finite vectors satisfying the coefficient moments
+
+~~~text
+1^T u = 0
+1^T D u = 0
+1^T D² u = 0
+~~~
+
+while the canonical finite matrix has the proved displacement identity
+
+~~~text
+D M - M D = g 1^T - 1 g^T.
+~~~
+
+A future negative F1 vector that retains these constraints may simplify the post-F1 Krylov/displacement analysis. This is a **LEAD / HYPOTHESIS**, not a current theorem consequence.
+
+## Research boundary rules
+
+- Compiler/CI evidence is authoritative for formal validity.
+- Machine claim/route registries follow merged theorem state.
+- Green support infrastructure is not RH.
+- Numerical signals are not theorem claims.
+- Source matrix agreement is not an ambient source-form theorem.
+- Per-member summability is not uniform dominated convergence.
+- Historical failed/obsolete routes remain useful only when a named blocking premise changes.
+
+## Current post-green settlement
+
+`research/RHRC/routes/R003_ccm_bridge/F0_B1A_POST_GREEN_PROJECTION_CONTINUITY_FRONTIER_2026_09_01.md`
+
+The next major roadmap version remains reserved for a green F1 or an equivalently large dependency-graph event.
+
+**RH remains OPEN.**
