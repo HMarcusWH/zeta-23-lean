@@ -10,6 +10,7 @@ import Zeta23.CCM.CutoffFreeMatrix
 import Zeta23.CCM.LocalizedBasis
 import Zeta23.CCM.LocalizedFiniteSpace
 import Zeta23.CCM.BoundaryFlatFiniteSpace
+import Zeta23.CCM.BoundaryFlatProjection
 import Zeta23.CCM.LocalizedWeilRestriction
 import Zeta23.CCM.SourceWeilMatrixReconciliation
 import Zeta23.CCM.SourceNormalizationRepair
@@ -240,6 +241,18 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 
 
 #check Zeta23.CCM.BoundaryFlatCoefficients
+#check Zeta23.CCM.boundaryFlatProject_boundaryFlat
+#print axioms Zeta23.CCM.boundaryFlatProject_boundaryFlat
+#check Zeta23.CCM.boundaryFlatProject_eq_self_of_boundaryFlat
+#print axioms Zeta23.CCM.boundaryFlatProject_eq_self_of_boundaryFlat
+#check Zeta23.CCM.boundaryFlatProject_idempotent
+#print axioms Zeta23.CCM.boundaryFlatProject_idempotent
+#check Zeta23.CCM.localizedFiniteFunction_zero_eq_centeredMoment_zero
+#print axioms Zeta23.CCM.localizedFiniteFunction_zero_eq_centeredMoment_zero
+#check Zeta23.CCM.localizedFiniteFirstJet_zero_eq_centeredMoment_one
+#print axioms Zeta23.CCM.localizedFiniteFirstJet_zero_eq_centeredMoment_one
+#check Zeta23.CCM.localizedFiniteSecondJet_zero_eq_centeredMoment_two
+#print axioms Zeta23.CCM.localizedFiniteSecondJet_zero_eq_centeredMoment_two
 #check Zeta23.CCM.contDiff_localizedFiniteVector_of_boundaryFlat
 #print axioms Zeta23.CCM.contDiff_localizedFiniteVector_of_boundaryFlat
 #check Zeta23.CCM.boundaryKillerCoefficients_boundaryFlat
