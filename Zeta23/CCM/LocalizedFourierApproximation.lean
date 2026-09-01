@@ -209,8 +209,7 @@ theorem localizedFiniteSecondJet_zeroMode_single
     addCircleFourierPolynomial (L := L) (Finsupp.single n a) =
       a • fourier n := by
   unfold addCircleFourierPolynomial
-  rw [Finsupp.sum_single_index]
-  simp
+  rw [Finsupp.sum_single_index (by simp)]
 
 theorem addCircleFourierPolynomial_add
     {L : ℝ} (c d : ℤ →₀ ℂ) :
@@ -218,12 +217,7 @@ theorem addCircleFourierPolynomial_add
       addCircleFourierPolynomial (L := L) c +
         addCircleFourierPolynomial (L := L) d := by
   unfold addCircleFourierPolynomial
-  rw [Finsupp.sum_add_index]
-  · rfl
-  · intro n
-    simp
-  · intro n a b
-    exact add_smul a b (fourier n)
+  rw [Finsupp.sum_add_index (by simp) (by simp [add_smul])]
 
 /-- Every finite-span AddCircle approximant may be represented by an explicit
 integer Finsupp coefficient vector. -/
@@ -328,7 +322,8 @@ mode. -/
 theorem addCircleFourierPolynomial_erase_zero
     {L : ℝ} (c : ℤ →₀ ℂ) :
     addCircleFourierPolynomial (L := L) (c.erase 0) =
-      addCircleFourierPolynomial c - c 0 • fourier 0 := by
+      addCircleFourierPolynomial (L := L) c -
+        c 0 • (fourier (T := L) 0) := by
   have h := congrArg (addCircleFourierPolynomial (L := L))
     (Finsupp.erase_add_single 0 c)
   rw [addCircleFourierPolynomial_add,
@@ -363,12 +358,14 @@ theorem exists_zeroModeFree_addCircleFourierPolynomial_norm_sub_lt
   have hd0lt : ‖d 0‖ < δ :=
     lt_of_le_of_lt hd0le hd
   refine ⟨c, hc0, ?_⟩
-  rw [show addCircleFourierPolynomial c =
-      addCircleFourierPolynomial d - d 0 • fourier 0 by
+  rw [show addCircleFourierPolynomial (L := L) c =
+      addCircleFourierPolynomial (L := L) d -
+        d 0 • (fourier (T := L) 0) by
         simpa [c] using
           addCircleFourierPolynomial_erase_zero (L := L) d]
   calc
-    ‖(addCircleFourierPolynomial d - d 0 • fourier 0) - F‖
+    ‖(addCircleFourierPolynomial (L := L) d -
+        d 0 • (fourier (T := L) 0)) - F‖
         = ‖(addCircleFourierPolynomial (L := L) d - F) -
             d 0 • fourier 0‖ := by
             congr 1
