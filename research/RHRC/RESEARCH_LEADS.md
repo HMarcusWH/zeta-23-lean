@@ -7,10 +7,12 @@
 Last full theorem/promotion review:
 
 ~~~text
-main = 5134e81c0ce3fa37ef593eb96125d8e4d5aa09b8
-tree = ec9fe4aac0b82b4684fa549f9509ffd2bffb2cb7
-merged through = PR #82
-PR #82 final validated head = d272e447c5270a287488ee015dbf589f3942d68d
+main = 9e899ca322116e28a56a4412d48aef0052b86fbe
+tree = ad636143768dcaa4dbeb23a0ea295d7b2d6b1c9b
+merged through = PR #84
+PR #83 theorem head = 556be6c2b42e912c58751988c580ab4e0091822d
+PR #83 merge = 7b8e0cc9abbaeff97d88ec67ada40734619a8d07
+PR #84 final validated head = 1a518c9ebd408fa559c5eff281eafe5ff3b2af48
 date = 2026-09-01
 RH = OPEN
 ~~~
@@ -65,7 +67,7 @@ After every meaningful green result:
 5. update CURRENT_RESEARCH_PLAN.md if execution order changed;
 6. keep historical settlement documents historical.
 
-Last full theorem audit: PR #79 W0 theorem head `c8112f0ad12e0b2c2f1261cea3ba7726aa04be54`, merged to main as `3e39ce86d27a4c642a1e0364f1954968ce22f1f4`. Exact-head CI passed the CCM and ExceptionalZero builds, no-placeholder gate, RHRC suite, normalization/source firewalls and independent verification workflow.
+Last full theorem/promotion audit: PR #83 theorem head `556be6c2b42e912c58751988c580ab4e0091822d` passed both repository workflows and merged as `7b8e0cc9abbaeff97d88ec67ada40734619a8d07`; PR #84 then cleaned the authority/source-route state and its exact head `1a518c9ebd408fa559c5eff281eafe5ff3b2af48` passed both workflows before merging to current main `9e899ca322116e28a56a4412d48aef0052b86fbe`.
 
 ---
 
@@ -128,7 +130,7 @@ W2-A supplied the four pairwise summability certificates required before legal `
 
 ### Downstream effect
 
-W1 is now the unique route-general frontier. The internal and source-faithful routes can both consume the same concrete negative function-level obstruction after recentering.
+W1 subsequently closed, and PR #83 then identified the negative W value exactly with the localized additive RHS. The current internal frontier is F0-B finite approximation/continuity; the source-faithful route remains a parallel cross-check under OBS-015.
 
 ### New structural clue
 
@@ -153,7 +155,9 @@ Potential downstream value:
 - cleaner endpoint-flat Fourier approximation;
 - possible weighted-channel domination if the analytic fallback is revived.
 
-Do not upgrade the existing W0/W1 claims without Lean proof. The next priority is W2-ZS, not regularity plumbing.
+Do not upgrade the existing W0/W1 claims without Lean proof. W2-ZS is now proved; regularity plumbing should be activated only if the live F0-B topology actually needs it.
+
+The current source exposes `canonicalSeedTest` as C⁴ and `contDiff_poleKilled : C⁴ -> C²`, so the existing pole-killer interface costs two derivatives. If F0-B genuinely needs a C⁴ final pole-killed witness, the natural upstream target is therefore at least C⁶ seed regularity. This is a LEAD / HYPOTHESIS, not a theorem.
 
 **Activation rule:** theoremize only the finite regularity order actually demanded by F0-B or another live theorem. Avoid a gratuitous C∞ abstraction layer.
 
@@ -287,10 +291,10 @@ The one-sided regularity may be useful later for mixed smooth/continuous approxi
 
 ## L-W2-02 — pole-neutral reflection/evenization and gamma-channel legality
 
-**Research status:** READY FALLBACK / INTERNAL ANALYTIC ROUTE
+**Research status:** DORMANT INDEPENDENT ANALYTIC CROSS-CHECK
 **Formal status:** OPEN
 
-This was the immediate post-W1 plan before the zero-side reindexing shortcut was identified. It remains mathematically valid as the fallback if L-W2-05 fails.
+This was the immediate post-W1 plan before the zero-side reindexing shortcut was identified. PR #83 proved the required diagonal endpoint without opening this channel. The route remains mathematically valid only as an independent analytic cross-check unless a future dependency specifically needs its pole/prime/gamma decomposition.
 
 For the actual W1 witness `h`:
 
@@ -313,63 +317,57 @@ I2 remains a real legality requirement for any proof that opens and splits the B
 
 ### Why demoted
 
-The concrete zeta carrier may permit reflection/evenization at the zero-sum level through `rho -> 1-rho`, using `EF_lit` summability directly. If that works, opening the gamma/digamma channel is unnecessary for W2-C.
+PR #83 proved the concrete-zeta zero-side route and the generic diagonal W/localized-additive identity. Opening the gamma/digamma channel is therefore unnecessary on the shortest route to F1.
 
 ### Reactivate when
 
-- L-W2-05 is falsified or becomes larger than expected; or
-- independent analytic closure is desired as cross-validation.
+- an independent analytic proof is desired as cross-validation; or
+- a later theorem needs the explicit pole/prime/gamma decomposition rather than only the already-proved diagonal identity.
 
 
 ## L-W2-03 — diagonal W equals localizedWeilAdditiveRHS
 
-**Research status:** ACTIVE / NEXT BRIDGE TARGET
-**Formal status:** OPEN
+**Research status:** PROMOTED  
+**Formal status:** PROVED  
+**Claim ID:** `R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE`  
+**Theorem:** `Zeta23.ExceptionalZero.zeta_W_self_eq_localizedWeilAdditiveRHS`
 
-### Target
-
-Prefer the generic concrete-zeta diagonal theorem:
+PR #83 proves for every compact C² concrete-zeta test `f`:
 
 ~~~text
 zetaZeroConfig.W f f
-  = Zeta23.CCM.localizedWeilAdditiveRHS f f
+  = Zeta23.CCM.localizedWeilAdditiveRHS f f.
 ~~~
 
-for every C² compactly supported `f`, if no extra hypothesis is actually needed.
-
-### Primary route
-
-L-W2-01 plus the new zero-side reindexing lead L-W2-05:
+Exact theorem head:
 
 ~~~text
-W(f,f)
-  = literatureRHS(weilTest f f)                [L-W2-01 PROVED]
-
-literatureRHS(
-  1/2 * (weilTest f f + reflected weilTest f f)
-)
-  = literatureRHS(weilTest f f)                [L-W2-05 OPEN]
-
-localizedWeilHalfTest f f
-  = that exact half-evenization                 [definition/algebra]
+556be6c2b42e912c58751988c580ab4e0091822d
 ~~~
 
-### Fallback route
+merged as PR #83 commit `7b8e0cc9abbaeff97d88ec67ada40734619a8d07`.
 
-L-W2-02 opens the pole/prime/gamma channels and proves reflection/evenization analytically.
-
-### Why it matters
-
-G1-A is already PROVED:
+The theorem has axiom surface
 
 ~~~text
-localizedWeilAdditiveRHS(localizedFiniteVector u,
-                         localizedFiniteVector u)
-  = quadraticForm(cutoffFreeMatrix) u
-  = quadraticForm(canonicalSourceMatrix) u.
+[propext, Classical.choice, Quot.sound].
 ~~~
 
-If this closes, ambient source `QW_lambda` is no longer mandatory on the shortest route to F1. The next internal bottleneck becomes F0-B.
+### What changed
+
+The generic diagonal identity needs only C² compact support. No aperture, pole-neutrality, `mu` evenness, gamma-channel splitting or weighted gamma-integrability hypothesis survives in the theorem statement.
+
+The proof composes W2-A with the concrete-zeta zero-side evenization package L-W2-05. The old analytic route L-W2-02 remains open/dormant as an independent proof route, not as a prerequisite.
+
+### Downstream effect
+
+Composed with W1, PR #83 also proves a strict-aperture compact C² witness with
+
+~~~text
+Re(localizedWeilAdditiveRHS h h) < 0.
+~~~
+
+Therefore ambient source `QW_lambda` is no longer mandatory on the shortest route to F1. The primary internal bottleneck is F0-B.
 
 ## L-W2-04 — actual-zeta conjugation symmetry parity simplifier
 
@@ -385,91 +383,57 @@ Actual zeta has conjugation symmetry in addition to the reflection already built
 
 ## L-W2-05 — concrete-zeta one-sub zero-side evenization shortcut
 
-**Research status:** ACTIVE / HIGHEST-LEVERAGE SPIKE
-**Formal status:** LEAD / HYPOTHESIS
+**Research status:** PROMOTED  
+**Formal status:** PROVED  
+**Consumed by claim:** `R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE`
 
-### Core observation
-
-Concrete zeta has more symmetry than abstract `ZeroConfig` exposes.
-
-Repository inputs already available:
+PR #83 theoremized the entire intended zero-side package on the concrete zeta carrier:
 
 ~~~text
-riemannZeta_conj
-analyticOrderAt_zeta_conj
-zetaZeroConfig.reflectEquiv    -- rho -> 1-conj(rho)
+zeta_conj_zero
+zeta_one_sub_zero
+zeta_mult_one_sub
+
+zetaOneSubEquiv
+zetaOneSubEquiv_mult
+gammaOf_one_sub
+gammaOf_zetaOneSubEquiv
+
+paperFT_zeroSideReflectTest
+zetaLiteratureZeroTsum_reflect_eq
+zeta_literatureRHS_halfEven_eq
 ~~~
 
-For a concrete nontrivial zero, conjugation followed by `reflectEquiv` should give
+The proof uses the actual carrier equivalence `rho -> 1-rho`, multiplicity preservation, exact `gammaOf` sign reversal, Fourier reflection, and `Equiv.tsum_eq` only after explicit `Summable` evidence is available.
 
-~~~text
-rho -> 1-rho
-~~~
+### What became stronger than the lead
 
-with multiplicity preserved. Algebraically,
+The explicit formula remains a black box; the proof does not need to establish `mu`/gamma evenness or split the weighted gamma integral.
 
-~~~text
-gammaOf(1-rho) = -gammaOf(rho).
-~~~
-
-### Intended proof package
-
-1. theoremize conjugation on `zetaZeroConfig.carrier` with multiplicity;
-2. package `rho -> 1-rho` as an involutive subtype equivalence;
-3. prove the `gammaOf` sign identity;
-4. prove `paperFT (fun x => k (-x)) z = paperFT k (-z)`;
-5. apply concrete `EF_lit` to `k`, its reflection and their half-evenization;
-6. use the carrier equivalence and `Equiv.tsum_eq` only under the supplied Summable certificates;
-7. conclude
-
-~~~text
-literatureRHS (halfEven k) = literatureRHS k.
-~~~
-
-With `k = EF.weilTest f f`, this should feed L-W2-03 directly.
-
-### Why this could be qualitatively stronger
-
-It avoids proving `mu`/`gammaBracket` evenness and avoids splitting the weighted gamma Bochner integral. The explicit formula is used as a black-box equality on legal tests, while the symmetry is discharged on the summable zero side where zeta already has the required functional-equation and Schwarz symmetries.
+The result stays concrete-zeta-specific. No stronger generic `ZeroConfig` symmetry was introduced.
 
 ### Claim firewall
 
-This is **not** currently a theorem.
+This promotion does **not** prove the historical analytic W2-B route. It proves the zero-side route and the resulting diagonal endpoint.
 
-Do not claim:
-
-- generic `ZeroConfig` symmetry under `rho -> 1-rho`;
-- `literatureRHS` reflection invariance without the EF_lit hypotheses;
-- arbitrary `tsum` linearity/reindexing without summability;
-- W2-B/C closure until Lean proves the exact declarations.
-
-### Fast falsification
-
-Check, in order:
+### Downstream composition
 
 ~~~text
-conj carrier membership
-conj multiplicity
-oneSub involution
-gammaOf sign
-paperFT reflection convention
-half-test exact normalization
-Summable-preserving reindex
+W1 strict negative W witness
+  + L-W2-03 / L-W2-05
+  -> strict negative localized additive witness
+  -> F0-B
+  -> G1-A [PROVED]
+  -> F1 [OPEN].
 ~~~
 
-Any conjugation, sign, factor-two or totalized-sum mismatch kills the shortcut as stated.
 
-### Composition with W1 geometry
-
-W1 is not logically required for the generic diagonal identity if L-W2-05 closes, but its strict collar remains essential downstream for F0-B and source localization.
-
----
 
 # B. Finite-obstruction fork
 
 ## L-F0B1-01 — boundary-flat finite Fourier approximation
 
-**Research status:** TESTING CANDIDATE  
+**Research status:** ACTIVE CANDIDATE / BOUNDED F0-B SPIKE  
 **Formal status:** OPEN
 
 ### Idea
@@ -496,7 +460,9 @@ The constrained subspace has codimension three, and the low-mode jet matrix for 
 
 ### Main blocker
 
-Need convergence in a topology strong enough that W(p_N,p_N) -> W(h,h), not merely L2 convergence.
+Need convergence in a topology strong enough that W(p_N,p_N) -> W(h,h), not merely L2 convergence. PR #83 now guarantees that every approximant which is genuinely compact C² satisfies localizedWeilAdditiveRHS(p_N,p_N)=W(p_N,p_N), so no separate explicit-formula decomposition is needed on that family.
+
+**Family-level firewall:** Summable(Wsummand(p_N,p_N)) for every N does not imply a uniform summable majorant in N. Any dominated-convergence proof must theoremize uniform domination or use another quantitative continuity estimate.
 
 ### Composition
 
@@ -510,7 +476,7 @@ Kill this route if endpoint correction fails to converge in the W-controlling to
 
 ## L-F0B2-01 — direct additive-functional continuity on legal finite vectors
 
-**Research status:** TESTING / CURRENTLY PREFERRED F0 SPIKE  
+**Research status:** ACTIVE CANDIDATE / BOUNDED F0-B SPIKE  
 **Formal status:** OPEN
 
 ### Idea
@@ -521,10 +487,10 @@ Target convergence only at the additive functional level:
 
 ~~~text
 localizedWeilAdditiveRHS(v_N,v_N)
-  -> zetaZeroConfig.W(h,h)
+  -> localizedWeilAdditiveRHS(h,h)
 ~~~
 
-for finite Fourier approximants v_N -> h in a suitable topology.
+for finite Fourier approximants v_N -> h in a suitable topology. By PR #83 the target value equals W(h,h) and is already strictly negative for the W1 witness.
 
 ### Potential advantage
 
@@ -542,7 +508,7 @@ If this balloons into weighted Sobolev/form-core theory larger than G23, prefer 
 
 ## L-WCONT-01 — continuity topology for W / literatureRHS
 
-**Research status:** BLOCKED ON CHOOSING F0 ROUTE  
+**Research status:** ACTIVE / LOAD-BEARING F0-B TOPOLOGY GATE  
 **Formal status:** OPEN
 
 Find the weakest common-support topology that yields
@@ -561,6 +527,8 @@ Candidate approaches:
 - reuse of Route-M mollifier/tent convergence patterns.
 
 **T22 warning:** high-frequency approximants can converge in a weak norm while the gamma/log-weighted channel remains uncontrolled.
+
+**PR #83 warning:** pointwise summability for each approximant is not family-level domination. Prove a uniform summable majorant, a quantitative common-support estimate, or another continuity theorem before moving strict negativity through the limit.
 
 ---
 
