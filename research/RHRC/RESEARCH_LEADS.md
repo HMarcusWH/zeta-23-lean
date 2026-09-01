@@ -7,10 +7,10 @@
 Last full theorem/promotion review:
 
 ~~~text
-main = 3e39ce86d27a4c642a1e0364f1954968ce22f1f4
-tree = 6935902fbbb950847e1cdd16a61d95704e3a760d
-merged through = PR #79
-W0 theorem-green head = c8112f0ad12e0b2c2f1261cea3ba7726aa04be54
+main = 8960b80b4a871bd86f94509dfa872ecc6939b0cd
+tree = 956601c77d1e9f32bab339dbbb81130296d1b5c7
+merged through = PR #80
+W1 Stage-A theorem-green head = 7abdaaf88f0e157c11049a0e65ebcb2c48fa86e2
 date = 2026-09-01
 RH = OPEN
 ~~~
@@ -150,41 +150,66 @@ The Mathlib canonical bump is smooth, while the current theorem package only exp
 
 ## L-W1-01 — support recentering into one strict interior aperture
 
-**Research status:** ACTIVE / IMMEDIATE  
-**Formal status:** DERIVED geometry; exact packaging OPEN
+**Research status:** PROMOTED  
+**Formal status:** PROVED  
+**Claim ID:** `R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST`  
+**Theorem:** `Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero`
 
-Starting from the PROVED W0 object, translate the negative pole-neutral compact C² test into a strict positive aperture:
+### What is now formally true
+
+For every concrete off-line zeta zero, Lean proves
 
 ~~~text
-exists L > 0, exists h,
-  ContDiff R 2 h
+exists L > 0, r > 0, h,
+  L = 4*r
+  and ContDiff R 2 h
+  and HasCompactSupport h
+  and tsupport h ⊆ Ioo r (3*r)
   and tsupport h ⊆ Ioo 0 L
   and paperFT h ( I/2) = 0
   and paperFT h (-I/2) = 0
   and Re W(h,h) < 0.
 ~~~
 
-### Why it matters
+Exact Stage-A theorem-green head:
 
-This is the shared handoff object for both routes. Strict interior support gives endpoint margin for source-domain work and for any boundary-flat finite Fourier approximation.
+~~~text
+7abdaaf88f0e157c11049a0e65ebcb2c48fa86e2
+~~~
 
-### PROVED inputs
+Axiom surface:
 
-- `R003_NEGATIVE_WEIL_TEST_CONTRACTION`;
-- `contDiff_translateRight`;
-- `hasCompactSupport_translateRight`;
-- `paperFT_translateRight`;
-- `W_translateRight_both`.
+~~~text
+[propext, Classical.choice, Quot.sound]
+~~~
 
-### Main proof obligation
+### What changed
 
-Extract a finite two-sided bound from compact `tsupport h`, choose an explicit positive margin, and verify the sign of the repository convention `translateRight h t = h(x-t)` when transporting the support into `Ioo 0 L`.
+The proof did not need endpoint extrema. Compact closed support was enclosed in a
+symmetric open ball, then translated by twice its radius.
 
-### Falsification gates
+~~~text
+tsupport h0 ⊂ (-r,r)
+  -> tsupport (translateRight h0 (2r)) ⊂ (r,3r)
+  -> with L=4r, support lies strictly in (0,L).
+~~~
 
-- do not silently replace `tsupport` by ordinary support;
-- do not infer strict interior support without a chosen positive margin;
-- preserve both pole zeros and W negativity theoremically.
+The explicit margin is stronger than the roadmap minimum.
+
+### Downstream effect
+
+The route-general front end is now closed. Both internal and source lanes receive the
+same theorem-backed finite-aperture negative pole-neutral test.
+
+The positive margin is a new asset for F0-B1 boundary-flat approximation.
+
+### Falsification survived
+
+- exact closed `tsupport`, not ordinary support;
+- correct sign for `translateRight h t = h(x-t)`;
+- strict positive margin, not a boundary-touching interval;
+- both Fourier zeros preserved;
+- W negativity preserved by exact common-translation invariance.
 
 
 ---
@@ -238,50 +263,64 @@ The one-sided regularity may be useful later for mixed smooth/continuous approxi
 
 ---
 
-## L-W2-02 — literatureRHS reflection/evenization invariance
+## L-W2-02 — pole-neutral reflection/evenization and gamma-channel legality
 
-**Research status:** ACTIVE / INTERNAL-LANE FIRST PACKAGE AFTER W1  
+**Research status:** ACTIVE / INTERNAL ROUTE PROBE  
 **Formal status:** OPEN
 
-### Preferred target order
+### Corrected post-W1 target
 
-First prove the theorem on the actual W0/W1 pole-neutral diagonal class; generalize only if the proof cost is negligible.
+Do not treat reflection symmetry as the only remaining analytic gate.
 
-For `kR(y)=k(-y)`, target
-
-~~~text
-EF.literatureRHS kR = EF.literatureRHS k
-~~~
-
-and hence the half-evenization corollary.
-
-### What W0 changed
-
-For the actual negative witness:
+For the actual W1 witness `h`, first prove:
 
 ~~~text
-paperFT h ( I/2) = 0
-paperFT h (-I/2) = 0.
+I0:
+paperFT h (±I/2)=0
+  -> paperFT (EF.weilTest h h) (±I/2)=0.
 ~~~
 
-Therefore the pole term is already zero on the load-bearing class.
+Then isolate the archimedean channel through the existing density `mu`.
 
-The prime term is structurally invariant because it already appears as
+Target:
+
+~~~text
+I1:
+mu (-r) = mu r.
+~~~
+
+But also prove the separate legality condition:
+
+~~~text
+I2:
+Integrable (
+  fun r =>
+    paperFT (EF.weilTest h h) r * (mu r : C)
+).
+~~~
+
+### Why I2 matters
+
+The existing explicit-formula proof carries this weighted integrability hypothesis
+explicitly. Bochner `integral_add` requires integrability. Reflection/evenization must
+not reproduce the old totalized-tsum mistake at the integral level.
+
+### What pole neutrality does close
+
+The pole contribution vanishes on the load-bearing class.
+
+The prime term is structurally reflection invariant because it occurs as
 
 ~~~text
 k(log n) + k(-log n).
 ~~~
 
-The concentrated analytic obstruction is now:
+### Fastest falsification
 
-- theorem-lock `gammaBracket(-r)=gammaBracket(r)`;
-- prove the real-line gamma-integral reflection/change-of-variable legally.
+Attempt I1 and I2 before building generic literatureRHS linearity.
 
-No existing Mathlib `digamma_conj` theorem was found in the post-W0 audit, so gamma evenness remains genuine work.
-
-### Falsification check
-
-Do not infer gammaBracket evenness from intuition or from real-valuedness alone. If the digamma route balloons, compare immediately against the source G1-B1B route rather than overbuilding.
+If weighted gamma/mu integrability requires a large new special-function/Fourier-decay
+theory, downgrade the internal route and compare directly against G1-B1B/G23.
 
 
 ---
