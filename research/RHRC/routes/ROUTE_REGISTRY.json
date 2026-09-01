@@ -1,7 +1,7 @@
 {
   "schema_version": "RHRC-routes-1.0",
   "ool_kernel_version": "2.7.6",
-  "boundary_id": "B0_RH_2026_08_19",
+  "boundary_id": "B0_RH_2026_08_20",
   "lifecycle_law": {
     "DISCOVERY": "adaptation allowed and must be logged",
     "CONFIRMATORY_FROZEN": "boundary and route specification digests required",
@@ -64,7 +64,7 @@
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "R003/D0/G0, G1-A, G1-B0, G1-B1A, W2-A, W0 and W1 are theorem-locked on merged main 1a6a286cc4aae76ef6335b85b1022ec3998614df through PR #81. W1 closes the shared route-general front end: every hypothetical off-line zero yields a compact C^2 pole-neutral negative Weil test with closed support in an explicit strict margin (r,3r) inside aperture L=4r. Post-green priority is W2-ZS, a concrete-zeta zero-side evenization LEAD: theoremize conjugation zero/multiplicity transport, package rho->1-rho as a carrier equivalence, prove gammaOf sign reversal and paperFT reflection, then reindex the EF_lit zero sum under explicit Summable evidence. If green, target direct W(h,h)=localizedWeilAdditiveRHS(h,h) and move to F0-B. This shortcut is not yet a claim. The previous I0/I1/I2 mu/gamma + weighted-integrability path remains fallback. Source S0/S1 and G1-B1B/G1-final/G23 remain active in parallel. F1, first-crossing reduction, finite-negative exclusion and RH remain open."
+      "note": "R003/D0/G0, G1-A, G1-B0, G1-B1A, W2-A, W0 and W1 are theorem-locked on merged main 5134e81c0ce3fa37ef593eb96125d8e4d5aa09b8 through PR #82; PR #82 changed documentation/research priority only. W1 closes the shared route-general front end. Post-green priority is W2-ZS, a concrete-zeta zero-side evenization LEAD; the previous I0/I1/I2 analytic path remains fallback. Source work is split explicitly: S-GEOM/S-IFACE plus G1-B1B/G1-final establish source coordinates/interfaces/restriction, while strict source negativity is a separate S-NEG or exact W/localized-additive/QW sign-composition obligation before G23 can feed F1. G1-B1B/G1-final alone do not theoremize W<0 -> QW<0. F1, first-crossing reduction, finite-negative exclusion and RH remain open."
     },
     {
       "route_id": "R004_prolate_v2",
