@@ -203,8 +203,8 @@ theorem paperFT_zeroSideHalfEvenTest
     (z : ℂ) :
     paperFT (zeroSideHalfEvenTest k) z =
       (1 / 2 : ℂ) * (paperFT k z + paperFT k (-z)) := by
-  have hrcont : Continuous (zeroSideReflectTest k) :=
-    (zeroSideReflectTest_contDiff (n := 0) hk.contDiff).continuous
+  have hrcont : Continuous (zeroSideReflectTest k) := by
+    simpa [zeroSideReflectTest, Function.comp_def] using hk.comp continuous_neg
   have hrsupp : HasCompactSupport (zeroSideReflectTest k) :=
     zeroSideReflectTest_hasCompactSupport hkc
   have hki :=
