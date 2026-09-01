@@ -1,5 +1,6 @@
 import Zeta23.CCM.DictionaryDeterministicRHS
 import Mathlib.Analysis.SpecialFunctions.Integrals.Basic
+import Mathlib.Analysis.SpecialFunctions.ExpDeriv
 
 noncomputable section
 
@@ -40,6 +41,51 @@ def localizedMode (L : ℝ) (n : ℤ) (x : ℝ) : ℂ :=
 def localizedFiniteFunction
     (L : ℝ) (N : ℕ) (u : Fin (2 * N + 1) → ℂ) (x : ℝ) : ℂ :=
   ∑ i, u i * localizedMode L (centeredIndex N i) x
+
+
+/-- The repository additive Fourier mode is smooth before zero extension.
+
+This regularity is purely additive Fourier infrastructure and deliberately
+lives upstream of the source-kappa lane. -/
+@[fun_prop] theorem contDiff_localizedMode
+    (L : ℝ) (n : ℤ) :
+    ContDiff ℝ ⊤ (localizedMode L n) := by
+  unfold localizedMode
+  have hreal :
+      ContDiff ℝ ⊤
+        (fun x : ℝ => 2 * Real.pi * (n : ℝ) * x / L) := by
+    fun_prop
+  have hcast :
+      ContDiff ℝ ⊤
+        (fun x : ℝ =>
+          (((2 * Real.pi * (n : ℝ) * x / L : ℝ)) : ℂ)) := by
+    change ContDiff ℝ ⊤
+      (Complex.ofRealCLM ∘
+        (fun x : ℝ => 2 * Real.pi * (n : ℝ) * x / L))
+    exact Complex.ofRealCLM.contDiff.comp hreal
+  have hphase :
+      ContDiff ℝ ⊤
+        (fun x : ℝ =>
+          Complex.I *
+            (((2 * Real.pi * (n : ℝ) * x / L : ℝ)) : ℂ)) :=
+    contDiff_const.mul hcast
+  have hexp :
+      ContDiff ℝ ⊤
+        (fun x : ℝ =>
+          Complex.exp
+            (Complex.I *
+              (((2 * Real.pi * (n : ℝ) * x / L : ℝ)) : ℂ))) :=
+    hphase.cexp
+  exact contDiff_const.mul hexp
+
+/-- Every formula-level finite Fourier combination is smooth before zero
+extension.  The hard zero extension is handled separately. -/
+@[fun_prop] theorem contDiff_localizedFiniteFunction
+    (L : ℝ) (N : ℕ)
+    (u : Fin (2 * N + 1) → ℂ) :
+    ContDiff ℝ ⊤ (localizedFiniteFunction L N u) := by
+  unfold localizedFiniteFunction
+  fun_prop
 
 /-- Real symmetrized normalized hard-window character overlap.
 

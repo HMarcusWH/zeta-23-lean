@@ -9,6 +9,7 @@ import Zeta23.CCM.RawKernelZeroSideBridge
 import Zeta23.CCM.CutoffFreeMatrix
 import Zeta23.CCM.LocalizedBasis
 import Zeta23.CCM.LocalizedFiniteSpace
+import Zeta23.CCM.BoundaryFlatFiniteSpace
 import Zeta23.CCM.LocalizedWeilRestriction
 import Zeta23.CCM.SourceWeilMatrixReconciliation
 import Zeta23.CCM.SourceNormalizationRepair
@@ -19,6 +20,7 @@ import Zeta23.ExceptionalZero.WeilLiteratureBridge
 import Zeta23.ExceptionalZero.TwoTranslateContraction
 import Zeta23.ExceptionalZero.NegativeWeilTestSupport
 import Zeta23.ExceptionalZero.WeilZeroSideEvenization
+import Zeta23.ExceptionalZero.BoundaryFlatFiniteWeil
 
 /-!
 # Promoted CCM / R002 / R003 theorem bindings
@@ -235,3 +237,16 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeLocalizedWeilAdditiveRHS_of_offLine_zero
 #check Zeta23.ExceptionalZero.exists_strictAperture_negativeLocalizedWeilAdditiveRHS_of_exists_offLine_zero
 #print axioms Zeta23.ExceptionalZero.exists_strictAperture_negativeLocalizedWeilAdditiveRHS_of_exists_offLine_zero
+
+
+#check Zeta23.CCM.BoundaryFlatCoefficients
+#check Zeta23.CCM.contDiff_localizedFiniteVector_of_boundaryFlat
+#print axioms Zeta23.CCM.contDiff_localizedFiniteVector_of_boundaryFlat
+#check Zeta23.CCM.boundaryKillerCoefficients_boundaryFlat
+#print axioms Zeta23.CCM.boundaryKillerCoefficients_boundaryFlat
+#check Zeta23.CCM.boundaryKillerCoefficients_ne_zero
+#print axioms Zeta23.CCM.boundaryKillerCoefficients_ne_zero
+#check Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_cutoffFreeQuadraticForm
+#print axioms Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_cutoffFreeQuadraticForm
+#check Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm
+#print axioms Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm

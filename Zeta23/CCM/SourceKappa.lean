@@ -163,48 +163,6 @@ theorem sourceExpCoordinate_mem_Icc
       _ = (lam⁻¹ * lam) * lam := by ring
       _ = lam := by simp [hne]
 
-/-- The repository additive Fourier mode is smooth before zero extension. -/
-@[fun_prop] theorem contDiff_localizedMode
-    (L : ℝ) (n : ℤ) :
-    ContDiff ℝ ⊤ (localizedMode L n) := by
-  unfold localizedMode
-  have hreal :
-      ContDiff ℝ ⊤
-        (fun x : ℝ => 2 * Real.pi * (n : ℝ) * x / L) := by
-    fun_prop
-  have hcast :
-      ContDiff ℝ ⊤
-        (fun x : ℝ =>
-          (((2 * Real.pi * (n : ℝ) * x / L : ℝ)) : ℂ)) := by
-    change ContDiff ℝ ⊤
-      (Complex.ofRealCLM ∘
-        (fun x : ℝ => 2 * Real.pi * (n : ℝ) * x / L))
-    exact Complex.ofRealCLM.contDiff.comp hreal
-  have hphase :
-      ContDiff ℝ ⊤
-        (fun x : ℝ =>
-          Complex.I *
-            (((2 * Real.pi * (n : ℝ) * x / L : ℝ)) : ℂ)) :=
-    contDiff_const.mul hcast
-  have hexp :
-      ContDiff ℝ ⊤
-        (fun x : ℝ =>
-          Complex.exp
-            (Complex.I *
-              (((2 * Real.pi * (n : ℝ) * x / L : ℝ)) : ℂ))) :=
-    hphase.cexp
-  exact contDiff_const.mul hexp
-
-/-- Every formula-level finite Fourier combination is smooth before zero
-extension.  This is the correct source-domain formula object; the zero-extended
-`localizedFiniteVector` is not asserted smooth at the endpoints. -/
-@[fun_prop] theorem contDiff_localizedFiniteFunction
-    (L : ℝ) (N : ℕ)
-    (u : Fin (2 * N + 1) → ℂ) :
-    ContDiff ℝ ⊤ (localizedFiniteFunction L N u) := by
-  unfold localizedFiniteFunction
-  fun_prop
-
 /-- Literal source kappa coordinate pullback.  This raw formula is total as a
 Lean function on `ℝ`; promoted source statements below impose `lambda > 1`
 and localize to `[lambda⁻¹,lambda]`.  No measure or Hilbert-space structure is
