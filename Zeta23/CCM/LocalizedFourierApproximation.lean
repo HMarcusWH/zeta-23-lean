@@ -499,7 +499,7 @@ theorem localizedFiniteFunction_centeredCoefficientsOfFinsupp_eq
     (x : ℝ) :
     localizedFiniteFunction L N
         (centeredCoefficientsOfFinsupp L N c) x =
-      addCircleFourierPolynomial c (x : AddCircle L) := by
+      addCircleFourierPolynomial (L := L) c (x : AddCircle L) := by
   have hsqrt : Real.sqrt L ≠ 0 :=
     Real.sqrt_ne_zero'.mpr hL
   unfold localizedFiniteFunction centeredCoefficientsOfFinsupp
@@ -530,7 +530,7 @@ theorem localizedFiniteFunction_centeredCoefficientsOfFinsupp_eq
         a * fourier n (x : AddCircle L) :=
       sum_centeredIndex_eq_finsupp_sum c hbound
         (fun n => fourier n (x : AddCircle L))
-    _ = addCircleFourierPolynomial c (x : AddCircle L) := by
+    _ = addCircleFourierPolynomial (L := L) c (x : AddCircle L) := by
       simp [addCircleFourierPolynomial, fourier_coe_apply, smul_eq_mul]
 
 /-- Coefficients whose second formula-level jet is a prescribed zero-mode-free
@@ -555,7 +555,7 @@ theorem localizedFiniteSecondJet_twicePrimitive_eq
     (x : ℝ) :
     localizedFiniteSecondJet L N
         (localizedTwicePrimitiveCoefficients L N c) x =
-      addCircleFourierPolynomial c (x : AddCircle L) := by
+      addCircleFourierPolynomial (L := L) c (x : AddCircle L) := by
   unfold localizedFiniteSecondJet localizedTwicePrimitiveCoefficients
   calc
     (∑ i : Fin (2 * N + 1),
@@ -594,7 +594,7 @@ theorem localizedFiniteSecondJet_twicePrimitive_eq
         a * fourier n (x : AddCircle L) :=
       sum_centeredIndex_eq_finsupp_sum c hbound
         (fun n => fourier n (x : AddCircle L))
-    _ = addCircleFourierPolynomial c (x : AddCircle L) := by
+    _ = addCircleFourierPolynomial (L := L) c (x : AddCircle L) := by
       simp [addCircleFourierPolynomial, fourier_coe_apply, smul_eq_mul]
 
 
@@ -939,12 +939,12 @@ theorem exists_localizedFinite_uniform_C2_approx
     intro x hx
     have hpoint :=
       ContinuousMap.norm_coe_le_norm
-        (addCircleFourierPolynomial c -
+        (addCircleFourierPolynomial (L := L) c -
           periodicSecondDerivMap L h hL hh hs)
         (x : AddCircle L)
     have hpoly :
         localizedFiniteSecondJet L N u x =
-          addCircleFourierPolynomial c (x : AddCircle L) := by
+          addCircleFourierPolynomial (L := L) c (x : AddCircle L) := by
       rw [show localizedFiniteSecondJet L N u x =
           localizedFiniteSecondJet L N u0 x by
             simpa [u] using
