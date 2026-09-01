@@ -1,6 +1,7 @@
 import Zeta23.CCM.BoundaryFlatFiniteSpace
 import Mathlib.Analysis.Fourier.AddCircle
 import Mathlib.Analysis.Calculus.Deriv.Support
+import Mathlib.Analysis.Calculus.MeanValue
 import Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus
 import Mathlib.LinearAlgebra.Finsupp.LinearCombination
 
@@ -699,5 +700,162 @@ theorem periodicSecondDerivMap_coe_eq
       deriv (deriv h) x
     rw [AddCircle.liftIoc_zero_coe_apply]
     exact ⟨lt_of_le_of_ne hx.1 (Ne.symm hx0), hx.2⟩
+
+
+/-- A complex-valued function on `[0,L]` with zero integral and derivative
+bounded by `η` is uniformly bounded by `2*L*η`. This is a vector-valued
+estimate; no scalar intermediate-value or mean-value zero is used. -/
+theorem norm_le_two_mul_length_mul_of_integral_eq_zero
+    {L η : ℝ} (hL : 0 < L) (hη : 0 ≤ η)
+    {f f' : ℝ → ℂ}
+    (hf : ∀ x : ℝ, HasDerivAt f (f' x) x)
+    (hbound : ∀ x ∈ Icc (0 : ℝ) L, ‖f' x‖ ≤ η)
+    (hint : (∫ x in (0 : ℝ)..L, f x) = 0) :
+    ∀ x ∈ Icc (0 : ℝ) L, ‖f x‖ ≤ 2 * L * η := by
+  have hcont : Continuous f :=
+    continuous_of_forall_continuousAt fun x => (hf x).continuousAt
+  have hosc :
+      ∀ x ∈ Icc (0 : ℝ) L, ‖f x - f 0‖ ≤ η * L := by
+    intro x hx
+    have hmv :=
+      norm_image_sub_le_of_norm_deriv_le_segment'
+        (a := (0 : ℝ)) (b := L)
+        (f := f) (f' := f') (C := η)
+        (fun y hy => (hf y).hasDerivWithinAt)
+        (fun y hy => hbound y (Ico_subset_Icc_self hy))
+        x hx
+    have hxL : x ≤ L := hx.2
+    have hx0 : 0 ≤ x := hx.1
+    calc
+      ‖f x - f 0‖ ≤ η * (x - 0) := hmv
+      _ = η * x := by ring
+      _ ≤ η * L := mul_le_mul_of_nonneg_left hxL hη
+  have hfint : IntervalIntegrable f volume 0 L :=
+    hcont.intervalIntegrable 0 L
+  have hIntSub :
+      (∫ t in (0 : ℝ)..L, (f 0 - f t)) = (L : ℝ) • f 0 := by
+    rw [intervalIntegral.integral_sub intervalIntegrable_const hfint,
+      intervalIntegral.integral_const, hint]
+    simp
+  have hnormInt :
+      ‖(L : ℝ) • f 0‖ ≤ (η * L) * L := by
+    rw [← hIntSub]
+    have hi :=
+      intervalIntegral.norm_integral_le_of_norm_le_const
+        (f := fun t : ℝ => f 0 - f t)
+        (a := (0 : ℝ)) (b := L)
+        (C := η * L)
+        (fun t ht => by
+          have ht' : t ∈ Icc (0 : ℝ) L := by
+            have htIoc : t ∈ Ioc (0 : ℝ) L := by
+              simpa [uIoc_of_le hL.le] using ht
+            exact ⟨htIoc.1.le, htIoc.2⟩
+          simpa [norm_sub_rev] using hosc t ht')
+    simpa [abs_of_pos hL] using hi
+  have hf0 : ‖f 0‖ ≤ L * η := by
+    have hnormsmul :
+        ‖(L : ℝ) • f 0‖ = L * ‖f 0‖ := by
+      rw [norm_smul, Real.norm_eq_abs, abs_of_pos hL]
+    rw [hnormsmul] at hnormInt
+    nlinarith [norm_nonneg (f 0)]
+  intro x hx
+  calc
+    ‖f x‖ ≤ ‖f x - f 0‖ + ‖f 0‖ := by
+      simpa [sub_add_cancel] using
+        norm_add_le (f x - f 0) (f 0)
+    _ ≤ η * L + L * η := add_le_add (hosc x hx) hf0
+    _ = 2 * L * η := by ring
+
+/-- Uniform second-jet control plus zero endpoint values controls the first-jet
+error with a fixed-`L` constant. -/
+theorem firstJet_error_norm_le_of_secondJet_error
+    {L η : ℝ} (hL : 0 < L) (hη : 0 ≤ η)
+    {N : ℕ} {u : Fin (2 * N + 1) → ℂ}
+    {h : ℝ → ℂ}
+    (hh : ContDiff ℝ 2 h)
+    (hs : tsupport h ⊆ Ioo 0 L)
+    (hq0 : localizedFiniteFunction L N u 0 = 0)
+    (hqL : localizedFiniteFunction L N u L = 0)
+    (hsecond :
+      ∀ x ∈ Icc (0 : ℝ) L,
+        ‖localizedFiniteSecondJet L N u x -
+            deriv (deriv h) x‖ ≤ η) :
+    ∀ x ∈ Icc (0 : ℝ) L,
+      ‖localizedFiniteFirstJet L N u x - deriv h x‖ ≤
+        2 * L * η := by
+  let f : ℝ → ℂ :=
+    fun x => localizedFiniteFirstJet L N u x - deriv h x
+  let f' : ℝ → ℂ :=
+    fun x => localizedFiniteSecondJet L N u x - deriv (deriv h) x
+  have hfderiv : ∀ x : ℝ, HasDerivAt f (f' x) x := by
+    intro x
+    exact (hasDerivAt_localizedFiniteFirstJet L N u x).sub
+      ((hh.differentiable_deriv_two x).hasDerivAt)
+  have hfirstInt : (∫ x in (0 : ℝ)..L, f x) = 0 := by
+    have hhdiff : Differentiable ℝ h := hh.differentiable (by norm_num)
+    have hqcont : Continuous (localizedFiniteFunction L N u) :=
+      (contDiff_localizedFiniteFunction L N u).continuous
+    have hhcont : Continuous h := hh.continuous
+    have hecont :
+        Continuous (fun x => localizedFiniteFunction L N u x - h x) :=
+      hqcont.sub hhcont
+    have hfcont : Continuous f :=
+      continuous_of_forall_continuousAt fun x => (hfderiv x).continuousAt
+    have hFTC :
+        (∫ x in (0 : ℝ)..L, f x) =
+          (localizedFiniteFunction L N u L - h L) -
+            (localizedFiniteFunction L N u 0 - h 0) := by
+      exact intervalIntegral.integral_deriv_eq_sub
+        (fun x _ =>
+          (hasDerivAt_localizedFiniteFunction L N u x).sub
+            ((hhdiff x).hasDerivAt))
+        (hfcont.intervalIntegrable 0 L)
+    have hj := strictSupport_endpoint_jet_package (L := L) (h := h) hs
+    rw [hFTC, hqL, hq0, hj.2.1, hj.1]
+    simp
+  apply norm_le_two_mul_length_mul_of_integral_eq_zero
+    hL hη hfderiv
+  · intro x hx
+    exact hsecond x hx
+  · exact hfirstInt
+
+/-- Once the function error is anchored at zero, uniform first-jet control
+gives a fixed-`L` uniform function bound. -/
+theorem function_error_norm_le_of_firstJet_error
+    {L B : ℝ} (hL : 0 < L) (hB : 0 ≤ B)
+    {N : ℕ} {u : Fin (2 * N + 1) → ℂ}
+    {h : ℝ → ℂ}
+    (hh : ContDiff ℝ 2 h)
+    (hq0 : localizedFiniteFunction L N u 0 = h 0)
+    (hfirst :
+      ∀ x ∈ Icc (0 : ℝ) L,
+        ‖localizedFiniteFirstJet L N u x - deriv h x‖ ≤ B) :
+    ∀ x ∈ Icc (0 : ℝ) L,
+      ‖localizedFiniteFunction L N u x - h x‖ ≤ L * B := by
+  let e : ℝ → ℂ := fun x => localizedFiniteFunction L N u x - h x
+  let e' : ℝ → ℂ := fun x => localizedFiniteFirstJet L N u x - deriv h x
+  have hhdiff : Differentiable ℝ h := hh.differentiable (by norm_num)
+  have hederiv : ∀ x : ℝ, HasDerivAt e (e' x) x := by
+    intro x
+    exact (hasDerivAt_localizedFiniteFunction L N u x).sub
+      ((hhdiff x).hasDerivAt)
+  have hmv :=
+    norm_image_sub_le_of_norm_deriv_le_segment'
+      (a := (0 : ℝ)) (b := L)
+      (f := e) (f' := e') (C := B)
+      (fun x hx => (hederiv x).hasDerivWithinAt)
+      (fun x hx => hfirst x (Ico_subset_Icc_self hx))
+  intro x hx
+  have hxL : x ≤ L := hx.2
+  have hx0 : 0 ≤ x := hx.1
+  have he0 : e 0 = 0 := by
+    simp [e, hq0]
+  calc
+    ‖localizedFiniteFunction L N u x - h x‖
+        = ‖e x - e 0‖ := by simp [e, he0]
+    _ ≤ B * (x - 0) := hmv x hx
+    _ = B * x := by ring
+    _ ≤ B * L := mul_le_mul_of_nonneg_left hxL hB
+    _ = L * B := by ring
 
 end Zeta23.CCM
