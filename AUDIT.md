@@ -21,7 +21,7 @@ RH: OPEN
 
 PR #83 exact theorem head `556be6c2b42e912c58751988c580ab4e0091822d` passed both repository workflows and merged as `7b8e0cc9abbaeff97d88ec67ada40734619a8d07`. PR #84 exact head `1a518c9ebd408fa559c5eff281eafe5ff3b2af48` then passed both repository workflows and merged as current main `9e899ca322116e28a56a4412d48aef0052b86fbe`, preserving the #83 theorem files while cleaning the route/source governance state.
 
-The headline W1 theorems have axiom surface
+The headline W1 and PR #83 W2-ZS theorem surfaces have axiom surface
 
 ~~~text
 [propext, Classical.choice, Quot.sound]
