@@ -160,8 +160,7 @@ theorem zeta_Wsummand_twoTranslateCombination
   unfold ZeroConfig.Wsummand
   rw [paperFT_twoTranslateCombination hk hkc,
     paperFT_twoTranslateCombination hk hkc]
-  simp only [map_add, map_mul, map_neg, map_ofReal, map_natCast,
-    Complex.conj_conj]
+  simp only [map_add, map_mul, Complex.conj_conj]
   ring
 
 /-- Summability-safe finite sesquilinear expansion of the genuine zeta Weil form
