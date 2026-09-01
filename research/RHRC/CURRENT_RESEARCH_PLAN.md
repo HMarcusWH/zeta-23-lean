@@ -7,15 +7,15 @@
 Current merged validation baseline:
 
 ~~~text
-main = 1a6a286cc4aae76ef6335b85b1022ec3998614df
-tree = 1d49b9dc4fbee4054d18ce5059b40c2d7ccbc3cf
-merged through = PR #81
-PR #81 final validated head = 191e34ece05739122f362d097f9e4393cd5b9ce3
+main = 5134e81c0ce3fa37ef593eb96125d8e4d5aa09b8
+tree = ec9fe4aac0b82b4684fa549f9509ffd2bffb2cb7
+merged through = PR #82
+PR #82 final validated head = d272e447c5270a287488ee015dbf589f3942d68d
 date = 2026-09-01
 RH = OPEN
 ~~~
 
-The final PR #81 head passed the full repository validation surface: CCM build, ExceptionalZero build, no-placeholder gate, RHRC regression suite, normalization/source firewalls and independent Permansson verification. GitHub main now contains that head via merge commit `1a6a286c...`.
+The final PR #82 head `d272e447c5270a287488ee015dbf589f3942d68d` passed the full repository validation surface: CCM build, ExceptionalZero build, no-placeholder gate, RHRC regression suite, normalization/source firewalls and independent Permansson verification. GitHub main contains it through merge commit `5134e81c...`. PR #82 changed documentation/research priority only; the theorem frontier remains W1 while W2-ZS is a lead on merged main.
 
 Current theorem frontier:
 
@@ -33,9 +33,13 @@ NOW — W2-ZS CONCRETE-ZETA ZERO-SIDE EVENIZATION SPIKE
   ZS5 half-evenized literatureRHS equality
   ZS6 direct W self = localizedWeilAdditiveRHS
 
-PARALLEL SOURCE
-  S0 exact L <-> lambda bridge
-  S1 G1-B1B premise/normalization lock
+PARALLEL SOURCE INFRASTRUCTURE
+  S-GEOM exact L <-> lambda bridge
+  S-IFACE G1-B1B premise/normalization lock
+
+SOURCE SIGN ENTRY
+  S-NEG independent fixed-aperture negative-QW theorem, or
+  exact W/localized-additive/QW sign-carrying composition
 
 FALLBACK INTERNAL
   I0 pole-neutrality transfer
@@ -161,20 +165,35 @@ If any of the carrier-equivalence, transform-reflection or `tsum` legality gates
 
 ### Source-faithful route
 
+The source lane has two independent prerequisite branches. They must not be drawn as one automatic sign-preserving chain.
+
 ~~~text
-W1 strict finite-aperture negative test
-  -> kappa/source finite sector                          [G1-B1A PROVED]
-  -> d*u / L² / PsiSharp / QW correspondence            [G1-B1B OPEN]
-  -> QW_lambda|E_N = canonicalSourceMatrix              [G1-final OPEN]
-  -> source core / strict negative finite transfer      [G23 OPEN]
+SOURCE INTERFACE
+  S-GEOM exact aperture coordinates                     [OPEN]
+  -> G1-B1A finite source sector                        [PROVED]
+  -> S-IFACE / G1-B1B Haar-L²-PsiSharp-QW interface     [OPEN]
+  -> G1-final QW_lambda|E_N = canonicalSourceMatrix     [OPEN]
+
+SOURCE NEGATIVITY ENTRY
+  either S-NEG:
+    off-line zero -> exists fixed lambda > 1,
+      inf QW_lambda < 0                                 [OPEN]
+  or prove an exact W/localized-additive/QW composition
+    that carries the W1 strict negative value into QW   [OPEN]
+
+COMMON CASH-OUT
+  negative ambient QW + source finite restriction
+  -> G23 strict negative finite transfer                [OPEN]
   -> F1 canonical finite negative obstruction           [OPEN]
 ~~~
 
-The two routes should progress in parallel after W1. Select the primary F1 proof by theorem size, hypothesis cleanliness and information gain, not by historical ordering.
+G1-B1B/G1-final are interface/restriction theorems; they do not themselves prove `Re W(h,h)<0 -> QW<0`. The two global routes should progress in parallel after W1. Select the primary F1 proof by theorem size, hypothesis cleanliness and information gain, not by historical ordering.
 
 ## 3. Exact execution queue
 
 Semantic package IDs are authoritative. Do not reserve future PR numbers.
+
+**Queue-order firewall:** the numeric `P` labels below are historical package identifiers, not priority. Current priority is P5/W2-ZS. P1/P2 are fallback analytic packages unless W2-ZS fails or an independent analytic cross-check is deliberately requested.
 
 ### P0 — W2-A direct W/literatureRHS extraction
 
@@ -212,9 +231,9 @@ The result is stronger than the planned interface in the second leg and supplies
 
 ---
 
-### P1 — W2-B literatureRHS reflection/evenization
+### P1 — W2-B explicit analytic literatureRHS reflection/evenization
 
-**Priority:** ACTIVE INTERNAL-LANE PACKAGE AFTER W0/W1
+**Priority:** DORMANT FALLBACK. ACTIVATE ONLY IF W2-ZS FAILS OR FOR INDEPENDENT ANALYTIC CROSS-CHECK.
 
 Suggested location:
 
@@ -245,9 +264,9 @@ No prose-only "gamma is even" step remains.
 
 ---
 
-### P2 — W2-C diagonal W/additive bridge
+### P2 — analytic-path W2-C diagonal W/additive bridge
 
-**Priority:** DIRECTLY AFTER P1 ON THE INTERNAL LANE
+**Priority:** CONDITIONAL FALLBACK AFTER P1. NOT NEXT ON THE PRIMARY INTERNAL LANE.
 
 Suggested file:
 
@@ -552,23 +571,28 @@ Integrable (
 
 Only after I1+I2 are theoremized may the explicit gamma-channel reflection proof split or average Bochner integrals.
 
-#### Source parallel — S0/S1
+#### Source parallel — S-GEOM/S-IFACE plus a separate sign entry
 
 In parallel, preserve the source-faithful option:
 
 ~~~text
-S0:
+S-GEOM:
 lambda := exp(L/2)
 1 < lambda
 sourceLength lambda = L
 
-S1:
+S-IFACE:
 lock d*u, L² normalization, kappa direction,
 q argument order, PsiSharp/QW normalization,
 factor two and exact domain class.
+
+S-NEG:
+independent fixed-aperture negative-QW theorem,
+or an exact W/localized-additive/QW theorem that carries
+the W1 strict negative value into the source form.
 ~~~
 
-The derived W1 collar around `u=1` may be useful, but keep it marked DERIVED until separately theoremized.
+S-GEOM/S-IFACE are infrastructure. They do not imply S-NEG. The derived W1 collar around `u=1` may be useful, but keep it marked DERIVED until separately theoremized.
 
 #### Decision rule
 
@@ -576,7 +600,7 @@ Choose the zero-side internal route when ZS0-ZS6 close locally and expose F0-B a
 
 Choose the analytic fallback when the one-sub reindexing route fails but I1/I2 are local.
 
-Choose the source route when either internal proof surface balloons while G1-B1B/G23 remain source-local.
+Choose the source route when either internal proof surface balloons while G1-B1B/G1-final, a theorem-backed source negativity entry, and G23 remain source-local.
 
 Keep independent routes if more than one closes cleanly.
 
@@ -661,6 +685,25 @@ Independently defined ambient and finite objects are compared. No theorem by con
 
 ---
 
+### Source sign gate — S-NEG or exact W/localized/QW composition
+
+Before G23 can be used in an F1 proof, establish a theorem-backed negative ambient source value by one of two legal entries:
+
+~~~text
+A. S-NEG:
+   off-line zero
+     -> exists fixed lambda > 1 with inf QW_lambda < 0
+
+B. sign-carrying identification:
+   W1 negative W value
+     -> exact W/localized-additive/QW composition
+     -> negative QW value
+~~~
+
+G1-B1B and G1-final do not imply either entry merely by defining or restricting QW.
+
+---
+
 ### P8 — G23 minimum source core / negative transfer, only if needed
 
 Preferred minimal theorem:
@@ -703,6 +746,8 @@ After P5 and enough source inspection to compare theorem size, select the primar
 ### Choose source route when
 
 - G1-B1B maps cleanly to independently defined source objects;
+- G1-final closes the actual finite source restriction;
+- S-NEG or an exact W/localized-additive/QW composition supplies strict ambient source negativity;
 - G23 is available with matching domain hypotheses;
 - either internal route requires a larger bespoke theory.
 
@@ -1008,9 +1053,12 @@ NOW
     ZS6 W self -> localized additive RHS
 
 PARALLEL
-  SOURCE:
-    S0 L <-> lambda
-    S1 d*u/L²/kappa/q/PsiSharp/QW premise lock
+  SOURCE INFRASTRUCTURE:
+    S-GEOM L <-> lambda
+    S-IFACE d*u/L²/kappa/q/PsiSharp/QW premise lock
+
+  SOURCE SIGN ENTRY:
+    S-NEG negative-QW theorem or exact W/localized/QW composition
 
 FALLBACK
   INTERNAL ANALYTIC:
@@ -1024,7 +1072,9 @@ THEN
   G1-A finite additive restriction [PROVED]
 
 SOURCE ALTERNATE
-  G1-B1B -> G1-final -> G23
+  G1-B1B -> G1-final
+  + theorem-backed negative-QW entry
+  -> G23
 
 TARGET
   F1:
