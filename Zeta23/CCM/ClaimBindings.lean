@@ -18,6 +18,7 @@ import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.DictionaryRHSIdentity
 import Zeta23.ExceptionalZero.DisplacementTransfer
 import Zeta23.ExceptionalZero.WeilLiteratureBridge
+import Zeta23.ExceptionalZero.WeilContinuity
 import Zeta23.ExceptionalZero.TwoTranslateContraction
 import Zeta23.ExceptionalZero.NegativeWeilTestSupport
 import Zeta23.ExceptionalZero.WeilZeroSideEvenization
@@ -189,6 +190,18 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.CCM.sourceKappaFiniteVector_eq_sourceFiniteVector
 #check Zeta23.CCM.sourceKappa_localizedFiniteFunction_isSourceFiniteFourierVector
 #print axioms Zeta23.CCM.sourceKappa_localizedFiniteFunction_isSourceFiniteFourierVector
+
+
+#check Zeta23.ExceptionalZero.zeta_invSqZeroWeight_summable
+#print axioms Zeta23.ExceptionalZero.zeta_invSqZeroWeight_summable
+#check Zeta23.ExceptionalZero.norm_zeta_Wsummand_le_commonSupport
+#print axioms Zeta23.ExceptionalZero.norm_zeta_Wsummand_le_commonSupport
+#check Zeta23.ExceptionalZero.zeta_W_norm_le_commonSupport
+#print axioms Zeta23.ExceptionalZero.zeta_W_norm_le_commonSupport
+#check Zeta23.ExceptionalZero.zeta_W_self_sub_self_eq_cross
+#print axioms Zeta23.ExceptionalZero.zeta_W_self_sub_self_eq_cross
+#check Zeta23.ExceptionalZero.zeta_W_self_sub_self_norm_le_commonSupport
+#print axioms Zeta23.ExceptionalZero.zeta_W_self_sub_self_norm_le_commonSupport
 
 
 #check Zeta23.ExceptionalZero.W_literatureRHS_package_of_lit
