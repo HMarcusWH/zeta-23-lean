@@ -209,7 +209,8 @@ theorem localizedFiniteSecondJet_zeroMode_single
     addCircleFourierPolynomial (L := L) (Finsupp.single n a) =
       a • fourier n := by
   unfold addCircleFourierPolynomial
-  rw [Finsupp.sum_single_index (by simp)]
+  exact Finsupp.sum_single_index
+    (zero_smul ℂ (fourier (T := L) n))
 
 theorem addCircleFourierPolynomial_add
     {L : ℝ} (c d : ℤ →₀ ℂ) :
@@ -217,7 +218,25 @@ theorem addCircleFourierPolynomial_add
       addCircleFourierPolynomial (L := L) c +
         addCircleFourierPolynomial (L := L) d := by
   unfold addCircleFourierPolynomial
-  rw [Finsupp.sum_add_index (by simp) (by simp [add_smul])]
+  exact Finsupp.sum_add_index'
+    (fun n => zero_smul ℂ (fourier (T := L) n))
+    (fun n a b => add_smul a b (fourier (T := L) n))
+
+/-- Evaluation of the bundled finite AddCircle polynomial on a real point. -/
+theorem addCircleFourierPolynomial_coe_apply
+    {L : ℝ} (c : ℤ →₀ ℂ) (x : ℝ) :
+    addCircleFourierPolynomial (L := L) c (x : AddCircle L) =
+      c.sum fun n a =>
+        a * Complex.exp
+          (2 * (Real.pi : ℂ) * Complex.I * (n : ℂ) * (x : ℂ) / (L : ℂ)) := by
+  unfold addCircleFourierPolynomial
+  rw [Finsupp.sum_apply'' c
+    (fun n a => a • fourier (T := L) n)
+    (x : AddCircle L) (by rfl) (by intro f g; rfl)]
+  apply Finsupp.sum_congr
+  intro n hn
+  rw [fourier_coe_apply]
+  simp only [smul_eq_mul]
 
 /-- Every finite-span AddCircle approximant may be represented by an explicit
 integer Finsupp coefficient vector. -/
@@ -264,13 +283,24 @@ theorem fourierCoeff_addCircleFourierPolynomial
             (@AddCircle.haarAddCircle L inferInstance) :=
         (addCircleFourierPolynomial (L := L) d).continuous.integrable_of_hasCompactSupport
           (HasCompactSupport.of_compactSpace _)
-      rw [fourierCoeff.add hci hdi, hc, hd]
-      rfl
+      calc
+        fourierCoeff
+            (⇑(addCircleFourierPolynomial (L := L) c +
+                addCircleFourierPolynomial (L := L) d)) =
+            fourierCoeff
+                (⇑(addCircleFourierPolynomial (L := L) c)) +
+              fourierCoeff
+                (⇑(addCircleFourierPolynomial (L := L) d)) := by
+                  simpa using fourierCoeff.add hci hdi
+        _ = ⇑c + ⇑d := by rw [hc, hd]
+        _ = ⇑(c + d) := rfl
   | single n a =>
-      rw [addCircleFourierPolynomial_single,
-        fourierCoeff.const_smul,
-        fourierCoeff_fourier]
+      rw [addCircleFourierPolynomial_single]
       ext m
+      change fourierCoeff
+          (fun x : AddCircle L => a * fourier (T := L) n x) m =
+        (Finsupp.single n a) m
+      rw [fourierCoeff.const_mul, fourierCoeff_fourier]
       by_cases hmn : m = n
       · subst m
         simp
@@ -348,8 +378,9 @@ theorem exists_zeroModeFree_addCircleFourierPolynomial_norm_sub_lt
   have hcoeff0 :
       fourierCoeff
           (addCircleFourierPolynomial (L := L) d - F) 0 = d 0 := by
-    rw [fourierCoeff_sub, fourierCoeff_addCircleFourierPolynomial (L := L), hF0]
-    simp
+    rw [fourierCoeff_sub, fourierCoeff_addCircleFourierPolynomial (L := L)]
+    change d 0 - fourierCoeff F 0 = d 0
+    rw [hF0, sub_zero]
   have hd0le : ‖d 0‖ ≤ ‖addCircleFourierPolynomial (L := L) d - F‖ := by
     have h :=
       norm_fourierCoeff_le_norm
@@ -415,7 +446,8 @@ theorem periodicSecondDerivMap_fourierCoeff_zero
     simp
   change fourierCoeff
       (AddCircle.liftIoc L 0 (deriv (deriv h))) 0 = 0
-  simpa [fourierCoeffOn, sub_zero] using hOn
+  rw [fourierCoeff_liftIoc_eq]
+  simpa using hOn
 
 /-- A strict-collar C² function has a zero-mode-free finite Fourier polynomial
 uniformly approximating its periodic second derivative. -/
@@ -516,22 +548,16 @@ theorem localizedFiniteFunction_centeredCoefficientsOfFinsupp_eq
           rw [localizedMode_eq_addCircle_fourier]
           have hsqrtC : (((Real.sqrt L : ℝ) : ℂ)) ≠ 0 := by
             exact ofReal_ne_zero.mpr hsqrt
-          calc
-            (((Real.sqrt L : ℝ) : ℂ) * c (centeredIndex N i)) *
-                (((Real.sqrt L : ℝ) : ℂ))⁻¹
-                =
-              c (centeredIndex N i) *
-                ((((Real.sqrt L : ℝ) : ℂ)) *
-                  (((Real.sqrt L : ℝ) : ℂ))⁻¹) := by ring
-            _ = c (centeredIndex N i) := by
-              rw [mul_inv_cancel₀ hsqrtC, mul_one]
+          rw [one_div, Complex.ofReal_inv]
+          field_simp [hsqrtC]
     _ =
       c.sum fun n a =>
         a * fourier n (x : AddCircle L) :=
       sum_centeredIndex_eq_finsupp_sum c hbound
         (fun n => fourier n (x : AddCircle L))
     _ = addCircleFourierPolynomial (L := L) c (x : AddCircle L) := by
-      simp [addCircleFourierPolynomial, fourier_coe_apply, smul_eq_mul]
+      symm
+      exact addCircleFourierPolynomial_coe_apply c x
 
 /-- Coefficients whose second formula-level jet is a prescribed zero-mode-free
 Fourier Finsupp. -/
@@ -579,23 +605,16 @@ theorem localizedFiniteSecondJet_twicePrimitive_eq
               localizedFrequency_ne_zero hL hn
             have hsqrt : (((Real.sqrt L : ℝ) : ℂ)) ≠ 0 := by
               exact ofReal_ne_zero.mpr (Real.sqrt_ne_zero'.mpr hL)
-            field_simp [hfreq]
-            calc
-              (((Real.sqrt L : ℝ) : ℂ) * c (centeredIndex N i)) *
-                  (((Real.sqrt L : ℝ) : ℂ))⁻¹
-                  =
-                c (centeredIndex N i) *
-                  ((((Real.sqrt L : ℝ) : ℂ)) *
-                    (((Real.sqrt L : ℝ) : ℂ))⁻¹) := by ring
-              _ = c (centeredIndex N i) := by
-                rw [mul_inv_cancel₀ hsqrt, mul_one]
+            rw [one_div, Complex.ofReal_inv]
+            field_simp [hfreq, hsqrt]
     _ =
       c.sum fun n a =>
         a * fourier n (x : AddCircle L) :=
       sum_centeredIndex_eq_finsupp_sum c hbound
         (fun n => fourier n (x : AddCircle L))
     _ = addCircleFourierPolynomial (L := L) c (x : AddCircle L) := by
-      simp [addCircleFourierPolynomial, fourier_coe_apply, smul_eq_mul]
+      symm
+      exact addCircleFourierPolynomial_coe_apply c x
 
 
 /-- Replace only the zero-frequency coefficient so that the finite Fourier
