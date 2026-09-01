@@ -4,87 +4,85 @@
 >
 > This repository contains formalized research infrastructure and theorem-backed constraints relevant to the Riemann Hypothesis. Compiler/CI validity of supporting results must never be upgraded into a claim that RH is proved.
 
-## Current merged baseline
+## Authority snapshot
+
+### Current merged baseline
 
 ~~~text
-main = 6d5eb5b5673b6754dda4926c41a60a5b85626a44
-tree = a633de6504b0e2105d3e3f33b2f1728c1219dad5
-merged through = PR #86
-PR #86 theorem head = e44cc5b8539b24fa24066c98c7ff013fb83b1001
-RHRC #605 = SUCCESS
-Permansson #378 = SUCCESS
+main = 1ad066f0a263725ea7b84447a637fcebda78e9ca
+tree = 41f9febd6a02282e746714c2f62407fb51ac8b30
+merged through = PR #87
+PR #87 head = 6b6c2605408da8f87b63ac86c1d2afabbd011dfd
+RHRC #606 = SUCCESS
+Permansson #379 = SUCCESS
 RH = OPEN
 ~~~
 
-Live GitHub/Lean/CI is authoritative if this file becomes stale.
+### Current green promotion candidate
+
+~~~text
+PR #88 = F0-B1B exact boundary-flat projection
+theorem head = 5e943d8cd6825c3c649198c52d90d1ed5d8d8b47
+synthetic merge = 9eb9281394684600b35a58ce2cb3c757d06379cc
+synthetic merge tree = d10e7b1e575624ab39fb445297f43168b1867ed1
+RHRC #609 = SUCCESS
+Permansson #382 = SUCCESS
+PR state at documentation time = OPEN / NOT MERGED
+RH = OPEN
+~~~
+
+Live GitHub/Lean/CI is authoritative if this file becomes stale. The distinction between merged main and a green unmerged theorem head is intentional.
 
 ## Current RH-directed theorem ladder
 
-The shortest internal CCM route now has the following theorem-backed front end:
-
 ~~~text
 off-line zeta zero
-  -> one compact C² pole-neutral test with Re W(h,h)<0       [PROVED]
-  -> strict aperture collar, L=4r                           [PROVED]
-  -> concrete-zeta zero-side evenization                     [PROVED]
-  -> W(h,h)=localizedWeilAdditiveRHS(h,h)                   [PROVED]
-  -> strict negative localized-additive witness              [PROVED]
-  -> finite additive restriction / canonical matrix          [PROVED]
-  -> boundary-flat finite carrier                            [PROVED]
-       centered moments 0,1,2 = 0
+  -> one compact C² pole-neutral test with Re W(h,h)<0          [PROVED]
+  -> strict aperture collar, L=4r                              [PROVED]
+  -> concrete-zeta zero-side evenization                       [PROVED]
+  -> W(h,h)=localizedWeilAdditiveRHS(h,h)                     [PROVED]
+  -> strict negative localized-additive witness                [PROVED]
+  -> finite additive restriction / canonical matrix            [PROVED]
+  -> F0-B1A boundary-flat finite carrier                       [PROVED]
+       moments 0,1,2 = 0
        -> hard-window vector is global C²
        -> W(v,v)=quadraticForm(canonicalSourceMatrix)u
-  -> exact projection / approximation / W continuity         [OPEN]
-  -> F1 canonical finite negative obstruction                [OPEN]
-  -> K0-K3 finite-negative exclusion                         [OPEN]
-  -> RH                                                       [OPEN]
+  -> F0-B1B exact three-mode boundary-flat projection          [PROVED ON GREEN #88 HEAD]
+       arbitrary u, N>=1
+       -> exact correction on modes -1,0,+1
+       -> moments 0,1,2 vanish
+       -> fixed-point + idempotence
+       -> exact endpoint value/jet <-> moment identities
+  -> WCONT-A quantitative genuine-W bound                      [OPEN / NEXT]
+  -> matched finite approximation + projection-smallness       [OPEN]
+  -> strict finite sign transfer                               [OPEN]
+  -> F1 canonical finite negative obstruction                  [OPEN]
+  -> K0-K3 finite-negative exclusion                           [OPEN]
+  -> RH                                                        [OPEN]
 ~~~
 
-## PR #86 — F0-B1A
+## F0-B1A + F0-B1B finite legality package
 
-PR #86 theorem-locks a nontrivial finite sector on which the genuine concrete-zeta Weil form is already the canonical finite CCM quadratic form.
-
-Production theorem:
+PR #86 theorem-locks the legal finite carrier. For positive L and centered coefficients u satisfying
 
 ~~~text
-Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm
+M0(u)=M1(u)=M2(u)=0,
 ~~~
 
-Supporting legality theorem:
+the hard-window vector is global C² and
 
 ~~~text
-Zeta23.CCM.contDiff_localizedFiniteVector_of_boundaryFlat
+zetaZeroConfig.W(v,v)
+  = quadraticForm(canonicalSourceMatrix L N) u.
 ~~~
 
-Boundary-flat coefficients satisfy
-
-~~~text
-sum u_n = 0
-sum n*u_n = 0
-sum n^2*u_n = 0.
-~~~
-
-The legal sector is nonzero: Lean proves the five-mode vector `[1/4,-1,3/2,-1,1/4]` satisfies the constraints and is not zero.
-
-Registered claim:
+Production claim:
 
 ~~~text
 R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION
 ~~~
 
-Axiom surface for the production results is the normal project surface:
-
-~~~text
-[propext, Classical.choice, Quot.sound]
-~~~
-
-The no-placeholder/no-project-axiom gate passed.
-
-## Immediate internal frontier
-
-The next mathematical package is **F0-B1B exact boundary-flat projection**.
-
-For `N>=1`, if `m0,m1,m2` are the three centered moments of an arbitrary coefficient vector, the candidate correction on modes `-1,0,+1` is
+PR #88 theorem-locks an exact algebraic projection into that carrier for N>=1. If m0,m1,m2 are the three centered moments, the correction supported on centered modes -1,0,+1 is
 
 ~~~text
 c_-1 = (m1-m2)/2
@@ -92,11 +90,76 @@ c_0  = m2-m0
 c_+1 = -(m1+m2)/2.
 ~~~
 
-The next theorem should prove this cancels all three moments exactly and define a fixed-point/idempotent projection onto the #86 legal carrier.
+Lean proves
 
-Then the load-bearing analytic gate is **WCONT**: prove a family-level common-support continuity theorem for W strong enough to preserve the existing strict negative margin.
+~~~text
+M0(c) = -m0
+M1(c) = -m1
+M2(c) = -m2
+~~~
 
-Permanent warning:
+and therefore boundaryFlatProject N hN u is boundary-flat. It also proves that boundary-flat vectors are fixed and that the projection is idempotent.
+
+Primary theorem:
+
+~~~text
+Zeta23.CCM.boundaryFlatProject_boundaryFlat
+~~~
+
+Supporting production surface:
+
+~~~text
+Zeta23.CCM.boundaryFlatProject_eq_self_of_boundaryFlat
+Zeta23.CCM.boundaryFlatProject_idempotent
+Zeta23.CCM.localizedFiniteFunction_zero_eq_centeredMoment_zero
+Zeta23.CCM.localizedFiniteFirstJet_zero_eq_centeredMoment_one
+Zeta23.CCM.localizedFiniteSecondJet_zero_eq_centeredMoment_two
+~~~
+
+The production axiom surface is
+
+~~~text
+[propext, Classical.choice, Quot.sound]
+~~~
+
+with no sorryAx.
+
+The N=0 sector is genuinely degenerate and is explicitly excluded from the three-mode projection by 1 <= N.
+
+## Immediate internal frontier — WCONT-A
+
+Projection is no longer the open seam. The next load-bearing theorem should be a quantitative common-support bound for the genuine Weil form.
+
+The promising target, still **OPEN / LEAD**, uses the asymmetric regularity already present in W2-A:
+
+~~~text
+first W argument:
+  compact support + C²
+  -> inverse-square Fourier decay
+
+second W argument:
+  compact support + continuity
+  -> plain L¹ Fourier bound
+~~~
+
+Combined with the proved inverse-square zero weight
+
+~~~text
+Zeta23.WeilEF.zero_sum_inv_sq_gen
+~~~
+
+the candidate is a bound of schematic form
+
+~~~text
+|W(f,g)|
+  <= K_Λ * (||f||_1 + ||f''||_1) * ||g||_1
+~~~
+
+for tests in one fixed support envelope. The exact norm statement and constants are not yet theoremized.
+
+If this closes, diagonal continuity should be attacked through cross terms rather than a fresh dominated-convergence proof for every approximation sequence.
+
+Permanent firewall:
 
 ~~~text
 per-approximant Summable
@@ -104,7 +167,19 @@ per-approximant Summable
 one summable majorant for the approximation family.
 ~~~
 
-The repository already contains inverse-square zero-summability machinery (`zero_sum_inv_sq_gen`, `EF_zero_sum_summable_gen`) that should be tested before building new zero-density theory.
+## Projection-smallness firewall
+
+The correction c=P(u)-u is generally **not itself boundary-flat**. Its hard-window realization must not automatically be treated as an independently global-C² admissible Weil test.
+
+The safe object is the complete projected vector
+
+~~~text
+localizedFiniteVector L N (boundaryFlatProject N hN u),
+~~~
+
+which is boundary-flat and therefore legal by F0-B1A.
+
+PR #88 does not yet prove quantitative norm bounds for the correction.
 
 ## Canonical finite object
 
@@ -117,17 +192,15 @@ canonicalSourceMatrix
   = dictionaryMatrix.
 ~~~
 
-The historical printed-normalization object is retained separately:
+The historical printed-normalization object remains separate:
 
 ~~~text
 legacyPrintedMatrix = finiteMatrix.
 ~~~
 
-The theorem-locked scalar identity shift between the two does not change the displacement commutator. No file should relabel `finiteMatrix` as the canonical source matrix.
+No file should relabel finiteMatrix as the canonical source matrix.
 
 ## Parallel source route
-
-The source-faithful route remains active, but source interface and source sign are separate obligations.
 
 ~~~text
 S-GEOM -> G1-B1A [PROVED] -> S-IFACE/G1-B1B -> G1-final
@@ -145,36 +218,41 @@ OBS-015: **source interface is not source negativity.**
 
 ~~~text
 PRIMARY INTERNAL
-  F0-B1B projection
-  -> WCONT
-  -> finite approximation/sign transfer
+  WCONT-A quantitative genuine-W bound
+  -> matched finite approximation
+  -> projection-smallness
+  -> strict sign transfer
   -> F1
 
 FALLBACK INTERNAL
   F0-B2 direct localized-additive continuity
+  boundary-killer multiplication
   old analytic W2-B route as independent cross-check
 
 PARALLEL SOURCE
   S-GEOM / S-IFACE / G1-final / S-NEG / G23
 ~~~
 
-Pinned Mathlib does not currently supply a ready Fejer theorem. Do not hide a load-bearing density argument behind “standard Fourier approximation”; formalize only the approximation theorem required by the selected W topology.
+Pinned Mathlib does not currently supply a ready Fejer theorem. Do not hide a load-bearing density argument behind “standard Fourier approximation.”
 
 ## Post-F1 boundary
 
-A green F1 is the next major dependency-graph event. It must trigger a full Post-Green Research Pass before K0-K3 are implemented. The external handover version `v2.0` is reserved for green F1 or an equivalently large theorem-state change.
+A green F1 is the next major dependency-graph event. It must trigger a full Post-Green Research Pass before K0-K3 are implemented. The external handover version v2.0 remains reserved for green F1 or an equivalently large theorem-state change.
 
 ## Research control plane
 
 See:
 
-- `research/RHRC/README.md`
-- `research/RHRC/CURRENT_RESEARCH_PLAN.md`
-- `research/RHRC/RESEARCH_LEADS.md`
-- `research/RHRC/CLAIM_REGISTRY.json`
-- `research/RHRC/routes/ROUTE_REGISTRY.json`
-- `research/RHRC/routes/R003_ccm_bridge/README.md`
-- `research/RHRC/routes/R003_ccm_bridge/F0_B1A_POST_GREEN_PROJECTION_CONTINUITY_FRONTIER_2026_09_01.md`
+- research/RHRC/README.md
+- research/RHRC/CURRENT_RESEARCH_PLAN.md
+- research/RHRC/RESEARCH_LEADS.md
+- research/RHRC/RESEARCH_LEADS_POST_88_DELTA.md
+- research/RHRC/CLAIM_REGISTRY.json
+- research/RHRC/routes/ROUTE_REGISTRY.json
+- research/RHRC/routes/R003_ccm_bridge/README.md
+- research/RHRC/routes/R003_ccm_bridge/F0_B1B_POST_GREEN_WCONT_FRONTIER_2026_09_01.md
+
+Historical post-green settlements remain frozen records of earlier theorem states.
 
 Formal status labels are intentionally strict: PROVED / DERIVED / LEAD-HYPOTHESIS / EXPERIMENTAL SIGNAL / OPEN.
 
