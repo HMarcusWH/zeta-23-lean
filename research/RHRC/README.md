@@ -71,7 +71,7 @@ The WCONT claim becomes permanent only after #89 merges.
 ## Current execution priority
 
 1. Build F0-B1C: the smallest finite approximation theorem matching the exact WCONT-A error norm.
-2. Investigate the second-derivative-first Stone-Weierstrass construction before committing to Fejer machinery.
+2. Use pinned Mathlib's existing `AddCircle.span_fourier_closure_eq_top` to prototype uniform finite Fourier approximation of the periodic second derivative; do not rebuild Stone-Weierstrass or Fejer unless this direct bridge fails.
 3. Prove explicit fixed-L bounds for the three correction coefficients and their interior function/second derivative.
 4. Apply boundaryFlatProject without treating the correction alone as a globally admissible hard-window test.
 5. Use WCONT-A to transfer the strict negative W1 margin to one legal finite vector.
