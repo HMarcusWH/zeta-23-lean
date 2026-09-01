@@ -2,11 +2,11 @@
 
 Status: **ACTIVE DISCOVERY ROUTE. RH OPEN.**
 
-**Scope note after merged green W1 / PR #81:** W2-A, W0 and W1 are theorem-locked on merged main `1a6a286cc4aae76ef6335b85b1022ec3998614df` (tree `1d49b9dc4fbee4054d18ce5059b40c2d7ccbc3cf`). The route-general front end is closed: every hypothetical off-line zero yields one compact C² pole-neutral negative Weil test with closed support in an explicit strict margin `(r,3r)` inside aperture `L=4r`.
+**Scope note after merged green W1 and documentation sync through PR #82:** W2-A, W0 and W1 are theorem-locked on merged main `5134e81c0ce3fa37ef593eb96125d8e4d5aa09b8` (tree `ec9fe4aac0b82b4684fa549f9509ffd2bffb2cb7`). The route-general front end is closed: every hypothetical off-line zero yields one compact C² pole-neutral negative Weil test with closed support in an explicit strict margin `(r,3r)` inside aperture `L=4r`.
 
 The W1 post-green pass changed the immediate internal priority. Before opening the gamma/digamma integral, test the **concrete-zeta zero-side evenization shortcut**: combine Schwarz conjugation with the existing functional-equation reflection to theoremize `rho -> 1-rho` on the concrete carrier, prove `gammaOf(1-rho)=-gammaOf(rho)`, prove Fourier reflection, and reindex the `EF_lit` zero sum under explicit Summable certificates. If this closes, the desired diagonal W/additive bridge may follow without proving mu/gamma evenness or weighted gamma-integrability. This is a **LEAD / HYPOTHESIS**, not a theorem.
 
-The previous I0/I1/I2 analytic route remains the fallback. Source S0/S1 remains active in parallel. CURRENT_RESEARCH_PLAN.md governs global execution order; this README governs R003 route-local state.
+The previous I0/I1/I2 analytic route remains the fallback. Source infrastructure `S-GEOM`/`S-IFACE` remains active in parallel, while strict source negativity is a separate `S-NEG`/sign-composition gate. CURRENT_RESEARCH_PLAN.md governs global execution order; this README governs R003 route-local state.
 
 This README is the living route SSOT for the merged repository. PR-specific settlement files in this directory are historical records; they do not override live Lean/CI or this current route state.
 
@@ -46,9 +46,14 @@ I2 weighted gamma-channel integrability
 Parallel source package:
 
 ~~~text
-S0 L <-> lambda
-S1 d*u/L²/kappa/q/PsiSharp/QW premise lock
--> G1-B1B -> G1-final -> G23
+S-GEOM L <-> lambda
+S-IFACE d*u/L²/kappa/q/PsiSharp/QW premise lock
+-> G1-B1B -> G1-final
+
+SEPARATE SIGN ENTRY
+S-NEG independent negative-QW theorem
+or exact W/localized-additive/QW sign-carrying composition
+-> G23
 ~~~
 
 ## Objective
@@ -306,9 +311,11 @@ I2 is load-bearing because Bochner `integral_add` requires integrability.
 In parallel the source lane should lock:
 
 ~~~text
-S0  lambda = exp(L/2), 1<lambda, sourceLength lambda = L
-S1  d*u/L²/kappa/q/PsiSharp/QW normalizations and domain class.
+S-GEOM  lambda = exp(L/2), 1<lambda, sourceLength lambda = L
+S-IFACE d*u/L²/kappa/q/PsiSharp/QW normalizations and domain class.
 ~~~
+
+These are source-interface obligations only; they do not supply a negative QW value.
 
 
 
@@ -361,9 +368,9 @@ and
 minEig(QW_lambda|E_N) -> inf QW_lambda.
 ```
 
-### S0 — fixed-aperture source lock
+### S-NEG — fixed-aperture source negative-bottom lock
 
-The next source theorem must be pinned exactly before formalization:
+The independent source-negativity theorem must be pinned exactly before formalization:
 
 ```text
 not RH
@@ -400,14 +407,23 @@ I0/I1/I2 -> W2-B/W2-C -> F0-B -> G1-A [PROVED] -> F1.
 **Source-faithful route:**
 
 ```text
-W0/W1 negative compact test
-  -> G1-B1B
-  -> G1-final
-  -> G23 / exact fixed-aperture negative transfer
-  -> F1 canonical finite obstruction.
+SOURCE INTERFACE:
+  G1-B1A [PROVED]
+    -> S-IFACE / G1-B1B
+    -> G1-final
+
+SOURCE NEGATIVITY ENTRY:
+  S-NEG
+  or exact W/localized-additive/QW sign-carrying composition
+
+COMMON:
+  negative ambient QW
+    -> G23
+    -> G1-final finite identification
+    -> F1 canonical finite obstruction.
 ```
 
-Therefore G1-B1B/G1-final/G23 are prerequisites for the **source proof of F1**, not universal prerequisites for F1 itself. Whichever route closes with the smaller exact theorem surface may become primary; independent closure by both routes would be valuable cross-validation.
+G1-B1B/G1-final do not themselves transport `Re W(h,h)<0` into QW negativity. Therefore G1-B1B/G1-final, a theorem-backed source sign entry, and G23 are prerequisites for the **source proof of F1**, not universal prerequisites for F1 itself. Whichever route closes with the smaller exact theorem surface may become primary; independent closure by both routes would be valuable cross-validation.
 
 F1 would still not prove RH. A separate finite-negative exclusion theorem remains necessary.
 
