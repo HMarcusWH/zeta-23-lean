@@ -147,3 +147,20 @@ into a strict negative value of the independently defined source `QW`.
 2. an exact theorem composing the genuine W/localized-additive value with the independently defined source QW so strict negativity is preserved.
 
 G1-B1B/G1-final alone do not discharge this obstruction.
+
+
+## OBS-016 — raw periodic approximation is not hard-window legality
+
+**Status:** PROJECT FIREWALL.
+
+PR #91 proves uniform formula-level approximation by periodic finite localized Fourier functions on one fixed aperture. It does **not** prove that the raw zero extension outside [0,L] is globally C².
+
+**Origin:** F0-B1C-A / PR #91.
+
+**Consequence:** do not apply the genuine Weil form to the raw hard-window approximant merely because its interior formula is smooth and uniformly close to the strict-collar target.
+
+The #88 correction by itself is also generally not boundary-flat and therefore is not an independently legal hard-window C² test.
+
+**Escape requirement:** apply the exact #88 projection to the full coefficient vector, use F0-B1A to obtain a global C² compactly supported hard-window vector, and theorem-lock the quantitative projection stability needed by WCONT-A.
+
+This is the active F0-B1C-B obligation.

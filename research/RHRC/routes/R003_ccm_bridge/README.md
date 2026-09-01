@@ -4,135 +4,149 @@ Status: **ACTIVE DISCOVERY ROUTE. RH OPEN.**
 
 ## Current authority
 
-### Merged main
-
 ~~~text
-main = 879eb6d356d8f62bbe0b9241596b15892498ea64
-tree = 9225c993bb9ac680a0f673efc13d191bebc5fd28
-merged through = PR #88
+main = bab94aed54298de6fc6676808a0b0e46c2db6046
+tree = f98b3051ca789ef0d134934fc01d97ac7497d4ca
+merged through = PR #91
 RH = OPEN
 ~~~
 
-### Exact green WCONT-A theorem candidate
+Recent exact green/merged packages:
 
 ~~~text
-PR #89 head = 4bcd49e0b8029ac7381c7829a18fefea11f20ba1
-synthetic merge = 725a562d88a3af654a7050397031cd33b2bcda21
-synthetic merge tree = f56b3a200d0ac70df3219a158f6c77c85fc34108
-RHRC #619 = SUCCESS
-Permansson #392 = SUCCESS
-status at documentation time = OPEN / NOT MERGED
-RH = OPEN
-~~~
+#88 F0-B1B
+  head fe5fe1c75668e1265482db3119d256997e31f32a
+  RHRC #617 / Permansson #390
+  merge 879eb6d356d8f62bbe0b9241596b15892498ea64
 
-Live GitHub/Lean/CI overrides this README if later state diverges.
+#89 WCONT-A
+  head 8680b379e695278d1688b02f3f01b075620c4b07
+  RHRC #636 / Permansson #409
+  merge f6e79fcf7b4daac7ed29bd90f24321229a9addd1
+
+#91 F0-B1C-A
+  head cf1c9b6536264deb8773fa8b0bb3650b07fcff40
+  RHRC #660 / Permansson #433
+  merge bab94aed54298de6fc6676808a0b0e46c2db6046
+~~~
 
 ## Closed internal theorem ladder
 
 ~~~text
 off-line zero
-  -> W0 one compact C² pole-neutral negative W test          [PROVED]
-  -> W1 strict support collar, L=4r                          [PROVED]
-  -> W2-ZS / direct diagonal bridge                          [PROVED]
-       W(h,h)=localizedWeilAdditiveRHS(h,h)
-  -> strict negative localized-additive witness              [PROVED]
-  -> G1-A finite additive restriction                        [PROVED]
-  -> F0-B1A boundary-flat legal finite carrier               [PROVED]
-  -> F0-B1B exact boundary-flat projection                   [PROVED / MERGED]
-  -> WCONT-A quantitative genuine-W continuity package       [PROVED ON GREEN #89 HEAD]
+  -> W0 compact C² pole-neutral negative W test                 PROVED
+  -> W1 strict support collar                                   PROVED
+  -> W2-ZS / diagonal W bridge                                  PROVED
+  -> strict negative localized-additive witness                 PROVED
+  -> G1-A finite additive restriction                           PROVED
+  -> F0-B1A legal boundary-flat finite carrier                  PROVED
+  -> F0-B1B exact three-mode projection                         PROVED
+  -> WCONT-A quantitative genuine-W continuity                  PROVED
+  -> F0-B1C-A raw uniform localized C² approximation            PROVED
 ~~~
 
-WCONT-A gives:
+Current frontier:
 
 ~~~text
-fixed support envelope
-  -> global weighted paperFT estimate
-  -> fixed inverse-square zeta-zero majorant
-  -> quantitative W(f,g) bound
-  -> exact summability-safe diagonal cross-term identity
-  -> quantitative W(p,p)-W(h,h) bound.
+F0-B1C-B quantitative projection stability             NOW / OPEN
+  -> strict finite sign transfer                        OPEN
+  -> F1 canonical finite negative obstruction           OPEN
 ~~~
 
-Registered branch claim:
+## F0-B1C-A production surface
+
+Primary theorem:
 
 ~~~text
-R003_WEIL_COMMON_SUPPORT_BOUND
+Zeta23.CCM.exists_localizedFinite_uniform_C2_approx
 ~~~
 
-## Current internal frontier — F0-B1C
+For a positive fixed aperture and a complex C² strict-collar target, it produces N>=1 and centered finite coefficients with
 
 ~~~text
-F0-B1C WCONT-matched legal finite approximation       [NOW / OPEN]
-  -> quantitative three-mode correction bounds       [OPEN]
-  -> projection-smallness                             [OPEN]
-  -> strict finite sign transfer                      [OPEN]
-  -> F1 canonical finite negative obstruction         [OPEN]
+q(0)=0
+sup ||q-h|| < epsilon
+sup ||q'-h'|| < epsilon
+sup ||q''-h''|| < epsilon
 ~~~
 
-### Exact approximation target
+on [0,L].
 
-For the strict-collar W1 witness h, one fixed L should support boundary-flat finite p with
+Production axiom surface:
 
 ~~~text
-integral ||p-h|| -> 0
-integral ||p''-h''|| -> 0.
+[propext, Classical.choice, Quot.sound]
 ~~~
 
-Endpoint value/first-jet/second-jet control is auxiliary data for the #88 projector, not an extra WCONT norm component.
+with no sorryAx.
 
-## Preferred construction lead — pinned AddCircle Fourier span
+The exact pinned Mathlib Fourier density declaration is span_fourier_closure_eq_top at root. Earlier AddCircle-qualified wording was an API-description error and is superseded.
 
-Pinned Mathlib already proves the exact finite Fourier density needed at the periodic level:
+## F0-B1C-B specialization
+
+**DERIVED / not yet theorem-locked.**
+
+#91 + #88 gives
 
 ~~~text
-AddCircle.span_fourier_closure_eq_top
+M0 = 0
 ~~~
 
-and gives the exact character formula
+exactly.
+
+Thus the correction is
 
 ~~~text
-AddCircle.fourier n (x : AddCircle L)
-  = exp(2*pi*i*n*x/L).
+a_- = (M1-M2)/2
+a_0 = M2
+a_+ = -(M1+M2)/2.
 ~~~
 
-This matches the phase/sign of `localizedMode L n`; only the fixed repository normalization `1/sqrt L` differs.
-
-It also supplies
+Endpoint identities yield
 
 ~~~text
-AddCircle.fourierCoeffOn_of_hasDerivAt
-AddCircle.hasDerivAt_fourier
+|M1| = L^(3/2)/(2*pi)   |q'(0)|
+|M2| = L^(5/2)/(4*pi^2) |q''(0)|.
 ~~~
 
-for the integration-by-parts/frequency calculus.
-
-Preferred route:
+The intended fixed-L estimates are
 
 ~~~text
-strict-collar C² h
-  -> periodic h''
-  -> uniform finite AddCircle Fourier polynomial r approx h''
-  -> remove mean mode
-  -> integrate nonzero modes twice
-  -> fix constant mode by mean(h)
-  -> q with small q-h, q'-h', q''-h''
-  -> endpoint jets small
-  -> #88 three-moment projection
-  -> WCONT-A
-  -> negative finite vector.
+integral_0^L |correction|
+  <= L^2/(2*pi) |q'(0)|
+   + L^3/(2*pi^2) |q''(0)|
+
+integral_0^L |correction''|
+  <= 2*pi |q'(0)| + L |q''(0)|.
 ~~~
 
-Do not rebuild Stone-Weierstrass. L² Fourier convergence alone is not enough because q''(0) is a load-bearing #88 endpoint coordinate; use uniform density for h''.
+No constant depends on N.
 
-Direct Fejer and boundary-killer multiplication remain fallbacks.
+The final F0-B1C-B theorem should package these into a legal boundary-flat hard-window approximation in the WCONT topology.
 
-## Projection caveat
+## Projection / legality firewall
 
-The correction c=P(u)-u is generally not boundary-flat. Its hard-window extension is not automatically global C².
+OBS-016:
 
-Use the correction only inside quantitative coefficient/interior estimates. The complete projected vector is the legal W test.
+Raw periodic finite formulas are not automatically globally C² after hard zero extension.
 
-## Source-faithful route remains parallel
+The correction by itself is generally not boundary-flat.
+
+The legal object is
+
+~~~text
+localizedFiniteVector L N (boundaryFlatProject N hN u).
+~~~
+
+Use F0-B1A for global C² legality of that complete vector.
+
+## WCONT-A
+
+WCONT-A is permanently merged and gives the fixed support estimate needed after F0-B1C-B.
+
+There is no longer a family dominated-convergence bottleneck on the primary route.
+
+## Source-faithful route
 
 OBS-015 is permanent:
 
@@ -141,18 +155,14 @@ source interface is not source negativity.
 ~~~
 
 ~~~text
-S-GEOM
-  -> G1-B1A finite source sector                  [PROVED]
-  -> S-IFACE/G1-B1B                              [OPEN]
-  -> G1-final QW_lambda|E_N=canonicalSourceMatrix[OPEN]
-
-separately:
-S-NEG or exact sign-carrying W/localized/QW bridge[OPEN]
-
-then:
-G23 negative ambient QW -> finite negative sector [OPEN]
-  -> F1                                           [OPEN]
+S-GEOM / G1-B1A                               PROVED
+S-IFACE / G1-B1B                              OPEN
+G1-final QW_lambda|E_N=canonicalSourceMatrix  OPEN
+S-NEG                                         OPEN
+G23                                           OPEN
 ~~~
+
+Internal F0-B work does not promote any of these source claims.
 
 ## Canonical normalization firewall
 
@@ -165,14 +175,22 @@ canonicalSourceMatrix
 legacyPrintedMatrix = finiteMatrix.
 ~~~
 
+## Fallback classification
+
+- generic Stone-Weierstrass rebuild — superseded;
+- direct Fejer — dormant fallback;
+- boundary-killer multiplication — ready fallback;
+- F0-B2 direct additive continuity — fallback;
+- old analytic W2-B — cross-check only.
+
 ## Structural clue retained for post-F1
 
-A primary-route F1 witness should retain
+A projected F1 vector retains
 
 ~~~text
 1^T u = 0
 1^T D u = 0
-1^T D²u = 0,
+1^T D^2 u = 0
 ~~~
 
 while the canonical matrix satisfies
@@ -181,16 +199,13 @@ while the canonical matrix satisfies
 D M - M D = g 1^T - 1 g^T.
 ~~~
 
-Possible Krylov/displacement simplification remains **LEAD / HYPOTHESIS**.
+Possible Krylov/displacement simplification remains LEAD / HYPOTHESIS.
 
-## Historical settlements
+## Current post-green records
 
-- W1_POST_GREEN_ZERO_SIDE_EVENIZATION_2026_09_01.md
-- W2_ZS_POST_GREEN_F0B_FRONTIER_2026_09_01.md
-- F0_B1A_POST_GREEN_PROJECTION_CONTINUITY_FRONTIER_2026_09_01.md
-- F0_B1B_POST_GREEN_WCONT_FRONTIER_2026_09_01.md
-- WCONT_A_POST_GREEN_F0B1C_FRONTIER_2026_09_01.md
+- F0_B1C_A_POST_GREEN_PROJECTION_STABILITY_FRONTIER_2026_09_02.md
+- ../../RESEARCH_LEADS_POST_91_DELTA.md
 
-Historical settlement files remain frozen records.
+Historical settlement files remain frozen.
 
-RH remains OPEN.
+**RH remains OPEN.**

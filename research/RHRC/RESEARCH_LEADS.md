@@ -433,102 +433,126 @@ W1 strict negative W witness
 
 ## L-F0B1-01 — boundary-flat finite Fourier approximation
 
-**Research status:** ACTIVE CANDIDATE / BOUNDED F0-B SPIKE  
-**Formal status:** OPEN
+**Research status:** PARTIALLY PROMOTED / ACTIVE F0-B1C-B  
+**Formal status:** F0-B1C-A PROVED; F0-B1C-B OPEN  
+**Production claim:** R003_LOCALIZED_UNIFORM_C2_APPROXIMATION
 
-### Idea
+### What #91 proved
 
-For
-
-~~~text
-p(x) = sum_n u_n exp(2*pi*i*n*x/L),
-~~~
-
-global C2 zero extension requires periodic endpoint value and first two derivatives to vanish, yielding the three coefficient moment constraints
+For every positive aperture L, every complex-valued C² target h with tsupport strictly inside (0,L), and every epsilon>0, Lean now produces N>=1 and centered finite coefficients u such that the formula-level finite Fourier function q satisfies
 
 ~~~text
-sum_n u_n       = 0
-sum_n n u_n     = 0
-sum_n n^2 u_n   = 0.
+q(0)=0
+sup_[0,L] ||q-h|| < epsilon
+sup_[0,L] ||q'-h'|| < epsilon
+sup_[0,L] ||q''-h''|| < epsilon.
 ~~~
 
-For a smooth h supported strictly inside (0,L), approximate h by a centered trigonometric polynomial and correct the three small endpoint jet errors with a fixed three-mode correction block.
+The AddCircle/Finsupp/centered-coordinate construction is theorem-backed. The exact pinned density theorem used in production is the root declaration span_fourier_closure_eq_top.
 
-### Why plausible
+Generic Stone-Weierstrass packaging and a Fejer-first construction are no longer live requirements for raw approximation.
 
-The constrained subspace has codimension three, and the low-mode jet matrix for modes -1,0,1 is algebraically invertible for L>0.
+### Current subgate — F0-B1C-B
 
-### Main blocker
+Convert the raw approximant into the exact #88 boundary-flat carrier while preserving the WCONT topology.
 
-Need convergence in a topology strong enough that W(p_N,p_N) -> W(h,h), not merely L2 convergence. PR #83 now guarantees that every approximant which is genuinely compact C² satisfies localizedWeilAdditiveRHS(p_N,p_N)=W(p_N,p_N), so no separate explicit-formula decomposition is needed on that family.
+**DERIVED / not yet formalized:**
 
-**Family-level firewall:** Summable(Wsummand(p_N,p_N)) for every N does not imply a uniform summable majorant in N. Any dominated-convergence proof must theoremize uniform domination or use another quantitative continuity estimate.
+Because q(0)=0 exactly and L>0,
 
-### Composition
+~~~text
+M0=0.
+~~~
 
-Resurrects only the minimal E3 finite moment/jet algebra.
+Then
+
+~~~text
+|M1| = L^(3/2)/(2*pi)   |q'(0)|
+|M2| = L^(5/2)/(4*pi^2) |q''(0)|.
+~~~
+
+The intended three-mode correction estimates are
+
+~~~text
+integral_0^L |c|
+  <= L^2/(2*pi) |q'(0)|
+   + L^3/(2*pi^2) |q''(0)|
+
+integral_0^L |c''|
+  <= 2*pi |q'(0)| + L |q''(0)|.
+~~~
+
+All constants depend only on the fixed aperture, not N.
+
+### Remaining blocker
+
+The complete projected hard-window vector must be connected theorem-authoritatively to these interior formula-level estimates. Raw periodic approximation is not global hard-window C² legality.
+
+See OBS-016.
 
 ### Stop condition
 
-Kill this route if endpoint correction fails to converge in the W-controlling topology or if the required analytic theory becomes larger than the source G23 theorem.
+Only reopen the raw Fourier approximation architecture if the explicit fixed three-mode projection estimates fail for a structural reason. Do not rebuild density first.
 
 ---
 
 ## L-F0B2-01 — direct additive-functional continuity on legal finite vectors
 
-**Research status:** ACTIVE CANDIDATE / BOUNDED F0-B SPIKE  
+**Research status:** FALLBACK / DEPRIORITIZED  
 **Formal status:** OPEN
 
 ### Idea
 
-Avoid requiring localizedFiniteVector itself to be globally C2. G1-A already proves the canonical matrix identity on these legal finite vectors using the legalized dictionaryTest.
+Avoid using genuine-W continuity and target convergence directly at localizedWeilAdditiveRHS.
 
-Target convergence only at the additive functional level:
+### Current classification
+
+WCONT-A and #91 jointly make this route longer than the primary F0-B1 path:
 
 ~~~text
-localizedWeilAdditiveRHS(v_N,v_N)
-  -> localizedWeilAdditiveRHS(h,h)
+#91 raw uniform C² approximation
+  -> #88 projection
+  -> WCONT-A
 ~~~
 
-for finite Fourier approximants v_N -> h in a suitable topology. By PR #83 the target value equals W(h,h) and is already strictly negative for the W1 witness.
+is now theorem-backed up to one finite-dimensional projection-stability package.
 
-### Potential advantage
+### Revival condition
 
-Could bypass the entire boundary-flat C2 zero-extension construction.
-
-### Burden
-
-Control the pole evaluations, finite prime term and archimedean gamma-weighted Fourier integral along the special dictionary/autocorrelation family.
-
-### Stop condition
-
-If this balloons into weighted Sobolev/form-core theory larger than G23, prefer the source route.
+Revive F0-B2 only if F0-B1C-B fails at the hard-window derivative/legalization seam in a way that cannot be repaired locally.
 
 ---
 
 ## L-WCONT-01 — continuity topology for W / literatureRHS
 
-**Research status:** ACTIVE / LOAD-BEARING F0-B TOPOLOGY GATE  
-**Formal status:** OPEN
+**Research status:** PROMOTED  
+**Formal status:** PROVED  
+**Claim ID:** R003_WEIL_COMMON_SUPPORT_BOUND
 
-Find the weakest common-support topology that yields
+PR #89 theorem-locks the fixed-support quantitative genuine-W estimate
 
 ~~~text
-W(p_N,p_N) -> W(h,h)
+||W(f,g)||
+  <= exp(Lambda) * zetaInvSqZeroMass
+     * (||f||_1 + ||f''||_1) * ||g||_1
 ~~~
 
-with a quantitative enough bound to preserve a fixed negative margin.
+and the summability-safe diagonal cross-term / self-form perturbation package.
 
-Candidate approaches:
+### What changed
 
-- C2/common-support explicit-formula estimate;
-- weighted Fourier decay;
-- direct dominated convergence on the zero sum;
-- reuse of Route-M mollifier/tent convergence patterns.
+The route no longer needs a family dominated-convergence theorem. The exact approximation topology is
 
-**T22 warning:** high-frequency approximants can converge in a weak norm while the gamma/log-weighted channel remains uncontrolled.
+~~~text
+L1 function error
++ L1 second-derivative error
+~~~
 
-**PR #83 warning:** pointwise summability for each approximant is not family-level domination. Prove a uniform summable majorant, a quantitative common-support estimate, or another continuity theorem before moving strict negativity through the limit.
+on one fixed support envelope.
+
+### Permanent warning
+
+Per-approximant Summable evidence is still not family domination; use the theorem-backed WCONT-A bound.
 
 ---
 

@@ -64,12 +64,13 @@
         "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
         "R003_BOUNDARY_FLAT_PROJECTION",
-        "R003_WEIL_COMMON_SUPPORT_BOUND"
+        "R003_WEIL_COMMON_SUPPORT_BOUND",
+        "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "R003 merged main is currently through PR #88 at 879eb6d356d8f62bbe0b9241596b15892498ea64 (tree 9225c993bb9ac680a0f673efc13d191bebc5fd28). PR #89 WCONT-A exact theorem head 4bcd49e0b8029ac7381c7829a18fefea11f20ba1 is green under RHRC #619 and Permansson #392 with synthetic merge 725a562d88a3af654a7050397031cd33b2bcda21 (tree f56b3a200d0ac70df3219a158f6c77c85fc34108), but was still open/unmerged at documentation time. F0-B1A proves the nontrivial boundary-flat finite C^2 carrier and genuine-W = canonicalSourceMatrix quadratic form. F0-B1B proves the exact N>=1 three-mode projection, fixed-point/idempotence, and endpoint jet/moment identities. WCONT-A now proves the family-independent common-support genuine-W bound, exact summability-safe diagonal cross-term identity, and self-form perturbation estimate. The primary internal frontier is F0-B1C: a minimal fixed-support finite approximation/projection-stability theorem in the exact L1 + second-derivative L1 topology, with endpoint jets supplying the three correction moments. Pinned Mathlib's existing AddCircle.span_fourier_closure_eq_top now supplies the preferred second-derivative-first uniform finite Fourier-span density route; generic Stone-Weierstrass packaging is superseded. Direct Fejer, F0-B2, and boundary-killer multiplication remain fallbacks. Source work remains split by OBS-015. F1, K0-K3, finite-negative exclusion and RH remain open."
+      "note": "R003 merged main is current through PR #91 at bab94aed54298de6fc6676808a0b0e46c2db6046 (tree f98b3051ca789ef0d134934fc01d97ac7497d4ca). PR #89/WCONT-A is permanently merged and closes the fixed-support genuine-W continuity seam. PR #91/F0-B1C-A proves raw centered finite Fourier approximation of every strict-collar C^2 target uniformly in value, first jet, and second jet, with q(0)=0 exactly, using the exact pinned AddCircle Fourier span and explicit Finsupp-to-centered-coordinate reconstruction. F0-B1A remains the legal boundary-flat hard-window carrier and F0-B1B the exact N>=1 three-mode projection. The primary internal frontier is now F0-B1C-B: theorem-lock fixed-L, N-independent quantitative projection stability in the WCONT-relevant L1 + second-derivative L1 topology. Post-#91 analysis derives M0=0 exactly for the raw approximants and reduces the correction to M1,M2; explicit correction bounds are a DERIVED target until separately formalized. Then strict finite sign transfer and strengthened F1 remain open. OBS-015 keeps the source sign lane separate, and the raw-periodic-versus-hard-window legality firewall remains binding. K0-K3 and RH remain open."
     },
     {
       "route_id": "R004_prolate_v2",
