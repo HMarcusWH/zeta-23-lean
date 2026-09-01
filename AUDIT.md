@@ -8,25 +8,32 @@ The pre-fork-facing Zeta23 audit is preserved verbatim in [UPSTREAM_AUDIT.md](UP
 
 ~~~text
 repository: HMarcusWH/zeta-23-lean
-main: 3e39ce86d27a4c642a1e0364f1954968ce22f1f4
-tree: 6935902fbbb950847e1cdd16a61d95704e3a760d
-merged through: PR #79
-W0 theorem-green head: c8112f0ad12e0b2c2f1261cea3ba7726aa04be54
+main before PR #81: 8960b80b4a871bd86f94509dfa872ecc6939b0cd
+tree before PR #81: 956601c77d1e9f32bab339dbbb81130296d1b5c7
+merged through: PR #80
+W1 Stage-A theorem-green head: 7abdaaf88f0e157c11049a0e65ebcb2c48fa86e2
 date: 2026-09-01
 RH: OPEN
 ~~~
 
-The exact W0 head passed the RHRC claim/regression suite, R003 normalization/source firewall, R004 scalar-shift audit, CCM build, ExceptionalZero build, no-placeholder gate, and the independent verification workflow. The headline W0 theorems have axiom surface `[propext, Classical.choice, Quot.sound]`.
+The exact W1 Stage-A head passed both repository workflows: RHRC claim/regression suite, R003 normalization/source firewall, R004 scalar-shift audit, CCM build, ExceptionalZero build, no-placeholder gate, and independent Permansson verification.
+
+The headline W1 theorems have axiom surface
+
+~~~text
+[propext, Classical.choice, Quot.sound]
+~~~
+
+and prove exact closed-support transport plus the pointwise off-line-zero strict-aperture negative-test endpoint.
 
 Recent state history:
 
-- PR #73 repaired source-normalization semantics;
-- PR #75 synchronized G1-B1A;
-- PR #76 added living research-control SSOTs;
 - PR #77 theorem-locked W2-A;
-- PR #78 synchronized the post-W2-A plan;
-- PR #79 theorem-locked W0: off-line zero -> one compact C² pole-neutral negative genuine Weil test.
+- PR #79 theorem-locked W0: off-line zero -> compact C² pole-neutral negative Weil test;
+- PR #80 promoted W0 and moved the roadmap frontier to W1;
+- PR #81 Stage A theorem-locks W1: the same obstruction can be recentered into an explicit strict margin `(r,3r)` inside aperture `L=4r`, preserving both pole zeros and negative W self-value.
 
+The PR #81 promotion/documentation head must pass the same exact-head gates before merge.
 
 ## Fork audit surfaces
 
@@ -102,39 +109,46 @@ W2-A is merged and registered:
 ~~~text
 Summable Wsummand(f,g)
 and
-W(f,g) = EF.literatureRHS(EF.weilTest f g)
+W(f,g) = EF.literatureRHS(EF.weilTest f g).
 ~~~
 
-on the exact asymmetric compact-support regularity class.
-
-W0 is now merged and registered as `R003_NEGATIVE_WEIL_TEST_CONTRACTION`. For every concrete off-line zero, Lean proves a compact C² test `h` with
+W0 is merged and registered:
 
 ~~~text
-paperFT h ( I/2) = 0
-paperFT h (-I/2) = 0
-Re (zetaZeroConfig.W h h) < 0.
+off-line zero
+  -> compact C² pole-neutral h
+  -> Re W(h,h) < 0.
 ~~~
 
-The physical contraction uses the exact coefficient convention
+W1 is theorem-green on the exact PR #81 Stage-A head and promoted on the branch as `R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST`:
 
 ~~~text
-h = ‖C‖ * k - conj(C) * translateRight k t.
+off-line zero
+  ->
+exists L>0, r>0, h,
+  L = 4r
+  and tsupport h ⊆ Ioo r (3r)
+  and tsupport h ⊆ Ioo 0 L
+  and paperFT h (±I/2)=0
+  and Re W(h,h)<0.
 ~~~
 
-This does **not** prove W1 recentering, W2-B reflection/evenization, W2-C additive identification, F0-B finite approximation, G1-B1B/G1-final/G23, F1, a first canonical crossing theorem, finite-negative exclusion, or RH.
+This does **not** prove:
 
-The repository does **not** claim:
-
-- the ambient external `QW_lambda/PsiSharp` correspondence;
-- `QW_lambda|E_N = canonicalSourceMatrix`;
-- source form-core / strict negative finite transfer;
+- pole-neutrality transfer from `h` to `EF.weilTest h h`;
+- mu/gamma reflection evenness;
+- weighted gamma-channel integrability;
+- W2-B/W2-C;
+- F0-B;
+- G1-B1B/G1-final/G23;
 - F1;
-- a theorem-backed K0-K3 terminal reduction;
-- canonical finite-negative exclusion;
+- a first canonical crossing theorem;
+- finite-negative exclusion;
 - RH.
 
-Merged repository truth is determined by live GitHub main plus the machine registries and exact Lean declarations.
+The repository does **not** claim the ambient external `QW_lambda/PsiSharp` correspondence, `QW_lambda|E_N = canonicalSourceMatrix`, a theorem-backed K0-K3 terminal reduction, or RH.
 
+Merged repository truth remains determined by live GitHub main plus the machine registries and exact Lean declarations; the final PR #81 head must be green before merge.
 
 ## Audit authority
 
