@@ -19,19 +19,20 @@ Formal mathematical authority is:
 ### Merged main
 
 ~~~text
-main = 1ad066f0a263725ea7b84447a637fcebda78e9ca
-tree = 41f9febd6a02282e746714c2f62407fb51ac8b30
-merged through = PR #87
+main = 879eb6d356d8f62bbe0b9241596b15892498ea64
+tree = 9225c993bb9ac680a0f673efc13d191bebc5fd28
+merged through = PR #88
 RH = OPEN
 ~~~
 
-### Green F0-B1B theorem head
+### Green WCONT-A theorem head
 
 ~~~text
-PR #88 head = 5e943d8cd6825c3c649198c52d90d1ed5d8d8b47
-synthetic merge = 9eb9281394684600b35a58ce2cb3c757d06379cc
-RHRC #609 = SUCCESS
-Permansson #382 = SUCCESS
+PR #89 head = 4bcd49e0b8029ac7381c7829a18fefea11f20ba1
+synthetic merge = 725a562d88a3af654a7050397031cd33b2bcda21
+synthetic merge tree = f56b3a200d0ac70df3219a158f6c77c85fc34108
+RHRC #619 = SUCCESS
+Permansson #392 = SUCCESS
 PR status at documentation time = OPEN / NOT MERGED
 RH = OPEN
 ~~~
@@ -46,77 +47,56 @@ W2-ZS / direct diagonal W identity                   PROVED
 strict negative localized-additive witness           PROVED
 G1-A finite additive restriction                     PROVED
 F0-B1A boundary-flat legal finite carrier            PROVED
-F0-B1B exact boundary-flat projection                 PROVED ON GREEN #88 HEAD
+F0-B1B exact boundary-flat projection                PROVED / MERGED
+WCONT-A common-support quantitative W bound           PROVED ON GREEN #89 HEAD
+WCONT-A exact cross-term / self perturbation          PROVED ON GREEN #89 HEAD
 
-WCONT-A quantitative genuine-W bound                  OPEN / NEXT
-matched finite approximation                          OPEN
+F0-B1C matched legal finite approximation             OPEN / NEXT
 projection-smallness                                  OPEN
 strict finite sign transfer                           OPEN
 F1 canonical finite negative obstruction             OPEN
 RH                                                    OPEN
 ~~~
 
-F0-B1B theorem state:
-
-~~~text
-N>=1
-arbitrary finite centered coefficients
-  -> exact -1,0,+1 correction
-  -> moments 0,1,2 vanish
-  -> fixed-point + idempotent projection
-  -> endpoint jets = scalar multiples of M0,M1,M2
-~~~
-
-Registered production claims on the #88 branch include:
+Registered production claims on the #89 branch include:
 
 ~~~text
 R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION
 R003_BOUNDARY_FLAT_PROJECTION
+R003_WEIL_COMMON_SUPPORT_BOUND
 ~~~
 
-The second entry is not part of permanent main until #88 is merged.
+The WCONT claim becomes permanent only after #89 merges.
 
 ## Current execution priority
 
-1. Prove WCONT-A: the weakest useful quantitative common-support bound for genuine W.
-2. Prefer the asymmetric W2-A route: inverse-square decay on the first C² leg, plain L¹ control on the second continuous leg.
-3. Derive a quadratic continuity corollary from cross terms rather than rebuilding dominated convergence per sequence.
-4. Build finite Fourier approximation in exactly the norm/topology WCONT-A actually requires.
-5. Prove the raw approximants have small M0/M1/M2 residuals; use the exact endpoint jet/moment identities from #88.
-6. Apply boundaryFlatProject and prove the fixed three-mode correction is negligible in the selected topology.
-7. Transfer the existing strict negative value to one finite boundary-flat vector.
-8. Cash out through F0-B1A to the canonicalSourceMatrix F1 obstruction.
-9. Stop at green F1 for a fresh Post-Green Research Pass before K0-K3.
+1. Build F0-B1C: the smallest finite approximation theorem matching the exact WCONT-A error norm.
+2. Investigate the second-derivative-first Stone-Weierstrass construction before committing to Fejer machinery.
+3. Prove explicit fixed-L bounds for the three correction coefficients and their interior function/second derivative.
+4. Apply boundaryFlatProject without treating the correction alone as a globally admissible hard-window test.
+5. Use WCONT-A to transfer the strict negative W1 margin to one legal finite vector.
+6. Cash out immediately through F0-B1A into strengthened boundary-flat F1.
+7. Stop and perform a full Post-Green Research Pass before K0-K3.
 
-Do not build a larger Fourier-density library before WCONT-A fixes the real analytic burden.
+## WCONT-A firewall
 
-## Permanent F0-B continuity firewalls
+The accepted theorem is quantitative and family-independent:
 
 ~~~text
-per-member Summable
-  !=
-uniform summable domination for the family.
+||W(f,g)||
+  <= exp(Lambda) * zetaInvSqZeroMass
+     * (||f||_1 + ||f''||_1) * ||g||_1.
 ~~~
 
-Also:
+Do not replace it by the weaker statement “each approximant's W series is summable.”
 
-- the correction P(u)-u is generally not boundary-flat;
-- therefore its hard-window realization is not automatically an independently global-C² admissible test;
-- the complete projected vector is the legal object;
-- PR #88 proves no quantitative correction norm estimate;
-- the candidate WCONT-A norm is still OPEN.
+## Approximation firewall
 
-Existing leverage includes zero_sum_inv_sq_gen, EF_zero_sum_summable_gen, and the asymmetric zeta_W_literatureRHS_package.
+Raw hard-window finite vectors need not be C². Only the complete boundary-flat projected vector is automatically legal.
 
-## Fallback internal routes
+The next proof may use raw periodic finite functions internally, but all final W applications must use theorem-backed global C² compact tests.
 
-F0-B2 direct continuity of localizedWeilAdditiveRHS remains ready but is no longer co-primary.
-
-Boundary-killer multiplication by the five-mode (1-cos θ)^2 pattern remains a serious approximation fallback if the exact projection interacts badly with the eventual topology.
-
-The old analytic I0/I1/I2 -> W2-B path remains DORMANT as an independent cross-check. W2-ZS proves the endpoint, not that historical proof route.
-
-## Parallel source route
+## Source route
 
 OBS-015 remains binding:
 
@@ -124,37 +104,31 @@ OBS-015 remains binding:
 source interface is not source negativity.
 ~~~
 
-G1-B1A finite source transport is already PROVED. Remaining source work is split between:
+Internal F0-B work does not silently promote G1-final, S-NEG, G23, or source QW claims.
 
-- S-GEOM / S-IFACE / G1-B1B / G1-final for the actual ambient QW_lambda interface and restriction;
-- S-NEG or an exact sign-carrying composition for negativity;
-- G23 for finite negative transfer.
+## Canonical normalization
 
-No internal F0-B theorem identifies ambient source QW_lambda.
+~~~text
+canonicalSourceMatrix
+  = cutoffFreeMatrix
+  = sourceEq44Matrix
+  = dictionaryMatrix.
 
-## Governance files
+legacyPrintedMatrix = finiteMatrix.
+~~~
 
-- BOUNDARY.json — terminal claim and governance boundary.
-- CLAIM_REGISTRY.json — machine claim state on the checked ref.
-- routes/ROUTE_REGISTRY.json — route/claim binding.
-- CURRENT_RESEARCH_PLAN.md — living execution order.
-- RESEARCH_LEADS.md — full historical lead inventory.
-- RESEARCH_LEADS_POST_88_DELTA.md — current delta after F0-B1B.
-- OBSTRUCTION_LEDGER.md — obstruction history.
-- routes/R003_ccm_bridge/README.md — active CCM route SSOT.
-- routes/R003_ccm_bridge/F0_B1B_POST_GREEN_WCONT_FRONTIER_2026_09_01.md — current post-green settlement.
+## Current research records
 
-Historical settlement files are intentionally not rewritten when a later theorem changes the frontier.
+Living:
 
-## Claim discipline
+- CURRENT_RESEARCH_PLAN.md
+- RESEARCH_LEADS_POST_89_DELTA.md
+- routes/R003_ccm_bridge/README.md
 
-- Green infrastructure is not RH.
-- Green supporting lemmas are not RH.
-- A green unmerged theorem head is not merged main.
-- Numerical agreement is not a theorem.
-- Source interface does not imply source sign.
-- Per-member summability does not imply dominated convergence.
-- A theorem proved by W2-ZS does not retroactively prove the old analytic W2-B route.
-- A DERIVED finite-dimensional observation is not PROVED until separately theoremized.
+Current post-green settlement:
 
-RH remains OPEN.
+- routes/R003_ccm_bridge/WCONT_A_POST_GREEN_F0B1C_FRONTIER_2026_09_01.md
+
+Historical settlements and earlier delta files remain frozen.
+
+**RH remains OPEN.**
