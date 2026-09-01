@@ -61,7 +61,10 @@ def zetaOneSubEquiv :
       zetaZeroConfig.mult ρ := by
   have hρ : IsNontrivialZero (ρ : ℂ) := by
     simpa using ρ.property
-  simpa [zetaZeroConfig_mult] using zeta_mult_one_sub hρ
+  change zeroMult ((zetaOneSubEquiv ρ : zetaZeroConfig.carrier) : ℂ) =
+    zeroMult (ρ : ℂ)
+  rw [zetaOneSubEquiv_coe]
+  exact zeta_mult_one_sub hρ
 
 /-- The direct one-sub involution reverses the `gammaOf` spectral coordinate. -/
 @[simp] theorem gammaOf_one_sub (ρ : ℂ) :
@@ -72,7 +75,9 @@ def zetaOneSubEquiv :
 @[simp] theorem gammaOf_zetaOneSubEquiv
     (ρ : zetaZeroConfig.carrier) :
     gammaOf (zetaOneSubEquiv ρ) = -gammaOf ρ := by
-  simpa using gammaOf_one_sub (ρ : ℂ)
+  rw [show ((zetaOneSubEquiv ρ : zetaZeroConfig.carrier) : ℂ) =
+      1 - (ρ : ℂ) from zetaOneSubEquiv_coe ρ]
+  exact gammaOf_one_sub (ρ : ℂ)
 
 /-! ## 2. Reflection of physical tests -/
 
@@ -84,14 +89,15 @@ theorem zeroSideReflectTest_contDiff
     {k : ℝ → ℂ}
     (hk : ContDiff ℝ 2 k) :
     ContDiff ℝ 2 (zeroSideReflectTest k) := by
-  simpa [zeroSideReflectTest, Function.comp_def] using hk.comp contDiff_neg
+  change ContDiff ℝ 2 (fun x : ℝ => k (-x))
+  exact hk.comp contDiff_neg
 
 theorem zeroSideReflectTest_hasCompactSupport
     {k : ℝ → ℂ}
     (hkc : HasCompactSupport k) :
     HasCompactSupport (zeroSideReflectTest k) := by
-  simpa [zeroSideReflectTest, Function.comp_def] using
-    hkc.comp_homeomorph (Homeomorph.neg ℝ)
+  change HasCompactSupport (fun x : ℝ => k (-x))
+  exact hkc.comp_homeomorph (Homeomorph.neg ℝ)
 
 /-- Exact paper-Fourier convention under reflection:
 `paperFT(k(-·))(z) = paperFT(k)(-z)`. -/
@@ -104,7 +110,7 @@ theorem paperFT_zeroSideReflectTest
   funext u
   simp only [neg_neg, Complex.ofReal_neg]
   congr 1
-  ring
+  ring_nf
 
 /-! ## 3. Zero-side summand and reindexing -/
 
@@ -119,7 +125,9 @@ theorem zetaLiteratureZeroSummand_reflect
     (ρ : zetaZeroConfig.carrier) :
     zetaLiteratureZeroSummand (zeroSideReflectTest k) ρ =
       zetaLiteratureZeroSummand k (zetaOneSubEquiv ρ) := by
-  simp [zetaLiteratureZeroSummand, paperFT_zeroSideReflectTest]
+  unfold zetaLiteratureZeroSummand
+  rw [paperFT_zeroSideReflectTest, zetaOneSubEquiv_mult,
+    gammaOf_zetaOneSubEquiv]
 
 /-- Bijective reindexing of the concrete zeta zero side under `rho |-> 1-rho`.
 This step is a pure equivalence reindex; additive `tsum` distribution is handled
@@ -143,6 +151,7 @@ theorem zetaLiteratureZeroTsum_reflect_eq
       ∑' ρ : zetaZeroConfig.carrier,
         zetaLiteratureZeroSummand k ρ :=
       Equiv.tsum_eq zetaOneSubEquiv
+        (fun ρ => zetaLiteratureZeroSummand k ρ)
 
 /-! ## 4. Half-evenization and legal Fourier linearity -/
 
@@ -159,7 +168,9 @@ theorem zeroSideHalfEvenTest_contDiff
   have hadd : ContDiff ℝ 2 (fun x => k x + zeroSideReflectTest k x) :=
     hk.add hr
   have hconst : ContDiff ℝ 2 (fun _ : ℝ => (1 / 2 : ℂ)) := contDiff_const
-  simpa [zeroSideHalfEvenTest, zeroSideReflectTest] using hconst.mul hadd
+  change ContDiff ℝ 2
+    (fun x => (1 / 2 : ℂ) * (k x + zeroSideReflectTest k x))
+  exact hconst.mul hadd
 
 theorem zeroSideHalfEvenTest_hasCompactSupport
     {k : ℝ → ℂ}
@@ -167,13 +178,15 @@ theorem zeroSideHalfEvenTest_hasCompactSupport
     HasCompactSupport (zeroSideHalfEvenTest k) := by
   have hr : HasCompactSupport (zeroSideReflectTest k) :=
     zeroSideReflectTest_hasCompactSupport hkc
-  have hadd : HasCompactSupport (fun x => k x + zeroSideReflectTest k x) := by
-    simpa only [Pi.add_apply] using hkc.add hr
+  have hadd : HasCompactSupport (k + zeroSideReflectTest k) :=
+    hkc.add hr
   have hmul :=
     hadd.comp_left
       (g := fun w : ℂ => (1 / 2 : ℂ) * w)
       (by simp)
-  simpa [zeroSideHalfEvenTest, zeroSideReflectTest] using hmul
+  change HasCompactSupport
+    ((fun w : ℂ => (1 / 2 : ℂ) * w) ∘ (k + zeroSideReflectTest k))
+  exact hmul
 
 /-- A continuous compactly supported test has an integrable paper-FT integrand
 at every complex spectral argument. -/
@@ -204,7 +217,8 @@ theorem paperFT_zeroSideHalfEvenTest
     paperFT (zeroSideHalfEvenTest k) z =
       (1 / 2 : ℂ) * (paperFT k z + paperFT k (-z)) := by
   have hrcont : Continuous (zeroSideReflectTest k) := by
-    simpa [zeroSideReflectTest, Function.comp_def] using hk.comp continuous_neg
+    change Continuous (fun x : ℝ => k (-x))
+    exact hk.comp continuous_neg
   have hrsupp : HasCompactSupport (zeroSideReflectTest k) :=
     zeroSideReflectTest_hasCompactSupport hkc
   have hki :=
