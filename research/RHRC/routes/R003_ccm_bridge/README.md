@@ -417,9 +417,8 @@ SOURCE NEGATIVITY ENTRY:
   or exact W/localized-additive/QW sign-carrying composition
 
 COMMON:
-  negative ambient QW
+  negative ambient QW + G1-final finite restriction
     -> G23
-    -> G1-final finite identification
     -> F1 canonical finite obstruction.
 ```
 
