@@ -96,7 +96,7 @@ def periodicSecondDerivMap
 def addCircleFourierPolynomial
     {L : ℝ} (c : ℤ →₀ ℂ) :
     C(AddCircle L, ℂ) :=
-  c.sum fun n a => a • AddCircle.fourier n
+  c.sum fun n a => a • fourier n
 
 /-- The normalized repository mode is Mathlib's AddCircle character multiplied
 by the fixed `L^{-1/2}` normalization. -/
@@ -104,8 +104,8 @@ theorem localizedMode_eq_addCircle_fourier
     {L : ℝ} (n : ℤ) (x : ℝ) :
     localizedMode L n x =
       ((1 / Real.sqrt L : ℝ) : ℂ) *
-        AddCircle.fourier n (x : AddCircle L) := by
-  rw [AddCircle.fourier_coe_apply]
+        fourier n (x : AddCircle L) := by
+  rw [fourier_coe_apply]
   unfold localizedMode
   congr 2
   push_cast
@@ -149,8 +149,6 @@ theorem exists_centeredIndex_eq_of_bounds
     dsimp [k]
     rw [Int.toNat_of_nonneg hk0]
   have hklt : k < 2 * N + 1 := by
-    rw [← Int.ofNat_lt]
-    simp only [Int.natCast_add, Int.natCast_mul, Int.ofNat_ofNat]
     omega
   refine ⟨⟨k, hklt⟩, ?_⟩
   simp [centeredIndex, k, hkcast]
@@ -209,7 +207,7 @@ theorem localizedFiniteSecondJet_zeroMode_single
 @[simp] theorem addCircleFourierPolynomial_single
     {L : ℝ} (n : ℤ) (a : ℂ) :
     addCircleFourierPolynomial (L := L) (Finsupp.single n a) =
-      a • AddCircle.fourier n := by
+      a • fourier n := by
   ext x
   simp [addCircleFourierPolynomial]
 
@@ -229,8 +227,8 @@ theorem exists_addCircleFourierPolynomial_norm_sub_lt
     ∃ c : ℤ →₀ ℂ,
       ‖addCircleFourierPolynomial c - F‖ < δ := by
   have hmem :
-      F ∈ (Submodule.span ℂ (Set.range (@AddCircle.fourier L))).topologicalClosure := by
-    rw [AddCircle.span_fourier_closure_eq_top]
+      F ∈ (Submodule.span ℂ (Set.range (@fourier L))).topologicalClosure := by
+    rw [span_fourier_closure_eq_top]
     simp
   obtain ⟨r, hrspan, hdist⟩ :=
     (Metric.mem_closure_iff.mp hmem) δ hδ
@@ -247,11 +245,11 @@ its Finsupp coefficients. -/
 theorem fourierCoeff_addCircleFourierPolynomial
     {L : ℝ} [Fact (0 < L)]
     (c : ℤ →₀ ℂ) :
-    AddCircle.fourierCoeff (addCircleFourierPolynomial c) = c := by
+    fourierCoeff (addCircleFourierPolynomial c) = c := by
   induction c using Finsupp.induction_linear with
   | zero =>
       ext m
-      simp [addCircleFourierPolynomial, AddCircle.fourierCoeff]
+      simp [addCircleFourierPolynomial, fourierCoeff]
   | add c d hc hd =>
       rw [addCircleFourierPolynomial_add]
       have hci :
@@ -264,12 +262,12 @@ theorem fourierCoeff_addCircleFourierPolynomial
             (@AddCircle.haarAddCircle L inferInstance) :=
         (addCircleFourierPolynomial d).continuous.integrable_of_hasCompactSupport
           (HasCompactSupport.of_compactSpace _)
-      rw [AddCircle.fourierCoeff.add hci hdi, hc, hd]
+      rw [fourierCoeff.add hci hdi, hc, hd]
       rfl
   | single n a =>
       rw [addCircleFourierPolynomial_single,
-        AddCircle.fourierCoeff.const_smul,
-        AddCircle.fourierCoeff_fourier]
+        fourierCoeff.const_smul,
+        fourierCoeff_fourier]
       ext m
       by_cases hmn : m = n
       · subst m
@@ -281,17 +279,17 @@ uniform norm. -/
 theorem norm_fourierCoeff_le_norm
     {L : ℝ} [Fact (0 < L)]
     (F : C(AddCircle L, ℂ)) (n : ℤ) :
-    ‖AddCircle.fourierCoeff F n‖ ≤ ‖F‖ := by
-  unfold AddCircle.fourierCoeff
+    ‖fourierCoeff F n‖ ≤ ‖F‖ := by
+  unfold fourierCoeff
   have h :=
     norm_integral_le_of_norm_le_const
       (μ := @AddCircle.haarAddCircle L inferInstance)
-      (f := fun t : AddCircle L => AddCircle.fourier (-n) t • F t)
+      (f := fun t : AddCircle L => fourier (-n) t • F t)
       (C := ‖F‖)
       (Filter.Eventually.of_forall fun t => by
         rw [norm_smul]
-        have hfourier : ‖AddCircle.fourier (-n) t‖ = 1 := by
-          rw [AddCircle.fourier_apply, Circle.norm_coe]
+        have hfourier : ‖fourier (-n) t‖ = 1 := by
+          rw [fourier_apply, Circle.norm_coe]
         rw [hfourier, one_mul]
         exact ContinuousMap.norm_coe_le_norm F t)
   simpa using h
@@ -301,8 +299,8 @@ theorem norm_fourierCoeff_le_norm
 theorem fourierCoeff_sub
     {L : ℝ} [Fact (0 < L)]
     (F G : C(AddCircle L, ℂ)) :
-    AddCircle.fourierCoeff (F - G) =
-      AddCircle.fourierCoeff F - AddCircle.fourierCoeff G := by
+    fourierCoeff (F - G) =
+      fourierCoeff F - fourierCoeff G := by
   have hFi :
       Integrable F (@AddCircle.haarAddCircle L inferInstance) :=
     F.continuous.integrable_of_hasCompactSupport
@@ -312,7 +310,7 @@ theorem fourierCoeff_sub
     G.continuous.integrable_of_hasCompactSupport
       (HasCompactSupport.of_compactSpace _)
   ext n
-  unfold AddCircle.fourierCoeff
+  unfold fourierCoeff
   simp only [ContinuousMap.sub_apply, smul_sub]
   rw [integral_sub (hFi.fourier_smul (-n)) (hGi.fourier_smul (-n))]
   rfl
@@ -322,7 +320,7 @@ mode. -/
 theorem addCircleFourierPolynomial_erase_zero
     {L : ℝ} (c : ℤ →₀ ℂ) :
     addCircleFourierPolynomial (L := L) (c.erase 0) =
-      addCircleFourierPolynomial c - c 0 • AddCircle.fourier 0 := by
+      addCircleFourierPolynomial c - c 0 • fourier 0 := by
   have h := congrArg (addCircleFourierPolynomial (L := L))
     (Finsupp.erase_add_single 0 c)
   rw [addCircleFourierPolynomial_add,
@@ -334,7 +332,7 @@ Fourier polynomial's zero mode removed, losing at most a factor two. -/
 theorem exists_zeroModeFree_addCircleFourierPolynomial_norm_sub_lt
     {L : ℝ} [Fact (0 < L)]
     (F : C(AddCircle L, ℂ))
-    (hF0 : AddCircle.fourierCoeff F 0 = 0)
+    (hF0 : fourierCoeff F 0 = 0)
     {δ : ℝ} (hδ : 0 < δ) :
     ∃ c : ℤ →₀ ℂ,
       c 0 = 0 ∧
@@ -345,7 +343,7 @@ theorem exists_zeroModeFree_addCircleFourierPolynomial_norm_sub_lt
   have hc0 : c 0 = 0 := by
     simp [c]
   have hcoeff0 :
-      AddCircle.fourierCoeff
+      fourierCoeff
           (addCircleFourierPolynomial d - F) 0 = d 0 := by
     rw [fourierCoeff_sub, fourierCoeff_addCircleFourierPolynomial, hF0]
     simp
@@ -358,20 +356,20 @@ theorem exists_zeroModeFree_addCircleFourierPolynomial_norm_sub_lt
     lt_of_le_of_lt hd0le hd
   refine ⟨c, hc0, ?_⟩
   rw [show addCircleFourierPolynomial c =
-      addCircleFourierPolynomial d - d 0 • AddCircle.fourier 0 by
+      addCircleFourierPolynomial d - d 0 • fourier 0 by
         simpa [c] using
           addCircleFourierPolynomial_erase_zero (L := L) d]
   calc
-    ‖(addCircleFourierPolynomial d - d 0 • AddCircle.fourier 0) - F‖
+    ‖(addCircleFourierPolynomial d - d 0 • fourier 0) - F‖
         = ‖(addCircleFourierPolynomial d - F) -
-            d 0 • AddCircle.fourier 0‖ := by
+            d 0 • fourier 0‖ := by
             congr 1
             abel
     _ ≤ ‖addCircleFourierPolynomial d - F‖ +
-          ‖d 0 • AddCircle.fourier (T := L) 0‖ :=
+          ‖d 0 • fourier (T := L) 0‖ :=
       norm_sub_le _ _
     _ = ‖addCircleFourierPolynomial d - F‖ + ‖d 0‖ := by
-      rw [norm_smul, AddCircle.fourier_norm]
+      rw [norm_smul, fourier_norm]
       simp
     _ < δ + δ := add_lt_add hd hd0lt
     _ = 2 * δ := by ring
@@ -385,7 +383,7 @@ theorem periodicSecondDerivMap_fourierCoeff_zero
     (hL : 0 < L)
     (hh : ContDiff ℝ 2 h)
     (hs : tsupport h ⊆ Ioo 0 L) :
-    AddCircle.fourierCoeff
+    fourierCoeff
       (periodicSecondDerivMap L h hL hh hs) 0 = 0 := by
   letI : Fact (0 < L) := ⟨hL⟩
   have hj := strictSupport_endpoint_jet_package (L := L) (h := h) hs
@@ -405,14 +403,14 @@ theorem periodicSecondDerivMap_fourierCoeff_zero
                 (hdd.intervalIntegrable 0 L)
       _ = 0 := by rw [hj.2.2.1, hj.2.2.2.1, sub_self]
   have hOn :
-      AddCircle.fourierCoeffOn hL (deriv (deriv h)) 0 = 0 := by
-    rw [AddCircle.fourierCoeffOn_eq_integral]
-    simp only [neg_zero, AddCircle.fourier_zero, one_smul]
+      fourierCoeffOn hL (deriv (deriv h)) 0 = 0 := by
+    rw [fourierCoeffOn_eq_integral]
+    simp only [neg_zero, fourier_zero, one_smul]
     rw [hFTC]
     simp
-  change AddCircle.fourierCoeff
+  change fourierCoeff
       (AddCircle.liftIoc L 0 (deriv (deriv h))) 0 = 0
-  simpa [AddCircle.fourierCoeffOn] using hOn
+  simpa [fourierCoeffOn] using hOn
 
 /-- A strict-collar C² function has a zero-mode-free finite Fourier polynomial
 uniformly approximating its periodic second derivative. -/
@@ -508,7 +506,7 @@ theorem localizedFiniteFunction_centeredCoefficientsOfFinsupp_eq
         =
       ∑ i : Fin (2 * N + 1),
         c (centeredIndex N i) *
-          AddCircle.fourier (centeredIndex N i) (x : AddCircle L) := by
+          fourier (centeredIndex N i) (x : AddCircle L) := by
           apply Finset.sum_congr rfl
           intro i hi
           rw [localizedMode_eq_addCircle_fourier]
@@ -518,9 +516,9 @@ theorem localizedFiniteFunction_centeredCoefficientsOfFinsupp_eq
           ring
     _ =
       c.sum fun n a =>
-        a * AddCircle.fourier n (x : AddCircle L) :=
+        a * fourier n (x : AddCircle L) :=
       sum_centeredIndex_eq_finsupp_sum c hbound
-        (fun n => AddCircle.fourier n (x : AddCircle L))
+        (fun n => fourier n (x : AddCircle L))
     _ = addCircleFourierPolynomial c (x : AddCircle L) := by
       simp [addCircleFourierPolynomial, smul_eq_mul]
 
@@ -559,7 +557,7 @@ theorem localizedFiniteSecondJet_twicePrimitive_eq
         =
       ∑ i : Fin (2 * N + 1),
         c (centeredIndex N i) *
-          AddCircle.fourier (centeredIndex N i) (x : AddCircle L) := by
+          fourier (centeredIndex N i) (x : AddCircle L) := by
           apply Finset.sum_congr rfl
           intro i hi
           by_cases hn : centeredIndex N i = 0
@@ -574,9 +572,9 @@ theorem localizedFiniteSecondJet_twicePrimitive_eq
             ring
     _ =
       c.sum fun n a =>
-        a * AddCircle.fourier n (x : AddCircle L) :=
+        a * fourier n (x : AddCircle L) :=
       sum_centeredIndex_eq_finsupp_sum c hbound
-        (fun n => AddCircle.fourier n (x : AddCircle L))
+        (fun n => fourier n (x : AddCircle L))
     _ = addCircleFourierPolynomial c (x : AddCircle L) := by
       simp [addCircleFourierPolynomial, smul_eq_mul]
 
@@ -713,7 +711,7 @@ theorem norm_le_two_mul_length_mul_of_integral_eq_zero
     (hint : (∫ x in (0 : ℝ)..L, f x) = 0) :
     ∀ x ∈ Icc (0 : ℝ) L, ‖f x‖ ≤ 2 * L * η := by
   have hcont : Continuous f :=
-    continuous_of_forall_continuousAt fun x => (hf x).continuousAt
+    continuous_iff_continuousAt.mpr fun x => (hf x).continuousAt
   have hosc :
       ∀ x ∈ Icc (0 : ℝ) L, ‖f x - f 0‖ ≤ η * L := by
     intro x hx
@@ -800,7 +798,7 @@ theorem firstJet_error_norm_le_of_secondJet_error
         Continuous (fun x => localizedFiniteFunction L N u x - h x) :=
       hqcont.sub hhcont
     have hfcont : Continuous f :=
-      continuous_of_forall_continuousAt fun x => (hfderiv x).continuousAt
+      continuous_iff_continuousAt.mpr fun x => (hfderiv x).continuousAt
     have hFTC :
         (∫ x in (0 : ℝ)..L, f x) =
           (localizedFiniteFunction L N u L - h L) -
