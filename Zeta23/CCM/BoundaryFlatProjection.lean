@@ -31,7 +31,7 @@ def boundaryFlatZeroIndex (N : ℕ) : Fin (2 * N + 1) :=
   ⟨N, by omega⟩
 
 /-- Reserved coefficient index carrying centered Fourier mode `1`. -/
-def boundaryFlatOneIndex (N : ℕ) : Fin (2 * N + 1) :=
+def boundaryFlatOneIndex (N : ℕ) (hN : 1 ≤ N) : Fin (2 * N + 1) :=
   ⟨N + 1, by omega⟩
 
 @[simp] theorem centeredIndex_boundaryFlatNegOneIndex
@@ -46,8 +46,8 @@ def boundaryFlatOneIndex (N : ℕ) : Fin (2 * N + 1) :=
   simp [boundaryFlatZeroIndex, centeredIndex]
 
 @[simp] theorem centeredIndex_boundaryFlatOneIndex
-    (N : ℕ) :
-    centeredIndex N (boundaryFlatOneIndex N) = 1 := by
+    (N : ℕ) (hN : 1 ≤ N) :
+    centeredIndex N (boundaryFlatOneIndex N hN) = 1 := by
   simp [boundaryFlatOneIndex, centeredIndex]
 
 theorem boundaryFlatNegOneIndex_ne_zeroIndex
@@ -58,40 +58,93 @@ theorem boundaryFlatNegOneIndex_ne_zeroIndex
   simp [boundaryFlatNegOneIndex, boundaryFlatZeroIndex] at hv
   omega
 
+theorem boundaryFlatZeroIndex_ne_negOneIndex
+    (N : ℕ) (hN : 1 ≤ N) :
+    boundaryFlatZeroIndex N ≠ boundaryFlatNegOneIndex N hN :=
+  Ne.symm (boundaryFlatNegOneIndex_ne_zeroIndex N hN)
+
 theorem boundaryFlatNegOneIndex_ne_oneIndex
     (N : ℕ) (hN : 1 ≤ N) :
-    boundaryFlatNegOneIndex N hN ≠ boundaryFlatOneIndex N := by
+    boundaryFlatNegOneIndex N hN ≠ boundaryFlatOneIndex N hN := by
   intro h
   have hv := congrArg Fin.val h
   simp [boundaryFlatNegOneIndex, boundaryFlatOneIndex] at hv
   omega
 
+theorem boundaryFlatOneIndex_ne_negOneIndex
+    (N : ℕ) (hN : 1 ≤ N) :
+    boundaryFlatOneIndex N hN ≠ boundaryFlatNegOneIndex N hN :=
+  Ne.symm (boundaryFlatNegOneIndex_ne_oneIndex N hN)
+
 theorem boundaryFlatZeroIndex_ne_oneIndex
-    (N : ℕ) :
-    boundaryFlatZeroIndex N ≠ boundaryFlatOneIndex N := by
+    (N : ℕ) (hN : 1 ≤ N) :
+    boundaryFlatZeroIndex N ≠ boundaryFlatOneIndex N hN := by
   intro h
   have hv := congrArg Fin.val h
   simp [boundaryFlatZeroIndex, boundaryFlatOneIndex] at hv
 
-/-- Three-mode correction cancelling centered moments 0, 1, and 2.
+theorem boundaryFlatOneIndex_ne_zeroIndex
+    (N : ℕ) (hN : 1 ≤ N) :
+    boundaryFlatOneIndex N hN ≠ boundaryFlatZeroIndex N :=
+  Ne.symm (boundaryFlatZeroIndex_ne_oneIndex N hN)
 
-If `m_k = centeredMoment N k u`, the correction values are
-`(m₁-m₂)/2` at mode `-1`, `m₂-m₀` at mode `0`, and
-`-(m₁+m₂)/2` at mode `1`.
--/
+/-- Single-coordinate coefficient vector. -/
+def coefficientSingle
+    {N : ℕ}
+    (j : Fin (2 * N + 1)) (z : ℂ) :
+    Fin (2 * N + 1) → ℂ :=
+  fun i => if i = j then z else 0
+
+@[simp] theorem coefficientSingle_apply_self
+    {N : ℕ} (j : Fin (2 * N + 1)) (z : ℂ) :
+    coefficientSingle j z j = z := by
+  simp [coefficientSingle]
+
+@[simp] theorem coefficientSingle_apply_of_ne
+    {N : ℕ} (j i : Fin (2 * N + 1)) (z : ℂ)
+    (hij : i ≠ j) :
+    coefficientSingle j z i = 0 := by
+  simp [coefficientSingle, hij]
+
+/-- Centered moments are additive in the coefficient vector. -/
+theorem centeredMoment_add
+    (N : ℕ) (k : ℕ)
+    (u v : Fin (2 * N + 1) → ℂ) :
+    centeredMoment N k (fun i => u i + v i) =
+      centeredMoment N k u + centeredMoment N k v := by
+  unfold centeredMoment
+  simp_rw [mul_add]
+  exact Finset.sum_add_distrib
+
+/-- Centered moment of a single-coordinate coefficient vector. -/
+theorem centeredMoment_coefficientSingle
+    (N : ℕ) (k : ℕ)
+    (j : Fin (2 * N + 1)) (z : ℂ) :
+    centeredMoment N k (coefficientSingle j z) =
+      (centeredIndex N j : ℂ) ^ k * z := by
+  classical
+  unfold centeredMoment coefficientSingle
+  rw [Finset.sum_eq_single j]
+  · simp
+  · intro b hb hbj
+    simp [hbj]
+  · simp
+
+/-- Three-mode correction cancelling centered moments 0, 1, and 2. -/
 def boundaryFlatCorrection
     (N : ℕ) (hN : 1 ≤ N)
     (u : Fin (2 * N + 1) → ℂ) :
     Fin (2 * N + 1) → ℂ :=
   fun i =>
-    if i = boundaryFlatNegOneIndex N hN then
-      (centeredMoment N 1 u - centeredMoment N 2 u) / 2
-    else if i = boundaryFlatZeroIndex N then
-      centeredMoment N 2 u - centeredMoment N 0 u
-    else if i = boundaryFlatOneIndex N then
-      -(centeredMoment N 1 u + centeredMoment N 2 u) / 2
-    else
-      0
+    coefficientSingle
+      (boundaryFlatNegOneIndex N hN)
+      ((centeredMoment N 1 u - centeredMoment N 2 u) / 2) i +
+    coefficientSingle
+      (boundaryFlatZeroIndex N)
+      (centeredMoment N 2 u - centeredMoment N 0 u) i +
+    coefficientSingle
+      (boundaryFlatOneIndex N hN)
+      (-(centeredMoment N 1 u + centeredMoment N 2 u) / 2) i
 
 /-- Projection into the exact boundary-flat coefficient sector. -/
 def boundaryFlatProject
@@ -105,34 +158,27 @@ def boundaryFlatProject
     (u : Fin (2 * N + 1) → ℂ) :
     boundaryFlatCorrection N hN u (boundaryFlatNegOneIndex N hN) =
       (centeredMoment N 1 u - centeredMoment N 2 u) / 2 := by
-  simp [boundaryFlatCorrection]
+  simp [boundaryFlatCorrection,
+    boundaryFlatNegOneIndex_ne_zeroIndex N hN,
+    boundaryFlatNegOneIndex_ne_oneIndex N hN]
 
 @[simp] theorem boundaryFlatCorrection_apply_zero
     (N : ℕ) (hN : 1 ≤ N)
     (u : Fin (2 * N + 1) → ℂ) :
     boundaryFlatCorrection N hN u (boundaryFlatZeroIndex N) =
       centeredMoment N 2 u - centeredMoment N 0 u := by
-  simp [boundaryFlatCorrection, boundaryFlatNegOneIndex_ne_zeroIndex N hN]
+  simp [boundaryFlatCorrection,
+    boundaryFlatZeroIndex_ne_negOneIndex N hN,
+    boundaryFlatZeroIndex_ne_oneIndex N hN]
 
 @[simp] theorem boundaryFlatCorrection_apply_one
     (N : ℕ) (hN : 1 ≤ N)
     (u : Fin (2 * N + 1) → ℂ) :
-    boundaryFlatCorrection N hN u (boundaryFlatOneIndex N) =
+    boundaryFlatCorrection N hN u (boundaryFlatOneIndex N hN) =
       -(centeredMoment N 1 u + centeredMoment N 2 u) / 2 := by
   simp [boundaryFlatCorrection,
-    boundaryFlatNegOneIndex_ne_oneIndex N hN,
-    boundaryFlatZeroIndex_ne_oneIndex N]
-
-/-- A correction coefficient vanishes away from the three reserved modes. -/
-theorem boundaryFlatCorrection_eq_zero_of_other
-    (N : ℕ) (hN : 1 ≤ N)
-    (u : Fin (2 * N + 1) → ℂ)
-    (i : Fin (2 * N + 1))
-    (hneg : i ≠ boundaryFlatNegOneIndex N hN)
-    (hzero : i ≠ boundaryFlatZeroIndex N)
-    (hone : i ≠ boundaryFlatOneIndex N) :
-    boundaryFlatCorrection N hN u i = 0 := by
-  simp [boundaryFlatCorrection, hneg, hzero, hone]
+    boundaryFlatOneIndex_ne_negOneIndex N hN,
+    boundaryFlatOneIndex_ne_zeroIndex N hN]
 
 /-- Generic centered moment of the three-mode correction. -/
 theorem centeredMoment_boundaryFlatCorrection
@@ -145,64 +191,13 @@ theorem centeredMoment_boundaryFlatCorrection
           (centeredMoment N 2 u - centeredMoment N 0 u) +
         ((1 : ℂ) ^ k) *
           (-(centeredMoment N 1 u + centeredMoment N 2 u) / 2) := by
-  classical
-  unfold centeredMoment
-  let a := boundaryFlatNegOneIndex N hN
-  let b := boundaryFlatZeroIndex N
-  let c := boundaryFlatOneIndex N
-  have hab : a ≠ b := boundaryFlatNegOneIndex_ne_zeroIndex N hN
-  have hac : a ≠ c := boundaryFlatNegOneIndex_ne_oneIndex N hN
-  have hbc : b ≠ c := boundaryFlatZeroIndex_ne_oneIndex N
-  calc
-    ∑ i, (centeredIndex N i : ℂ) ^ k * boundaryFlatCorrection N hN u i =
-        (centeredIndex N a : ℂ) ^ k * boundaryFlatCorrection N hN u a +
-        ∑ i ∈ Finset.univ.erase a,
-          (centeredIndex N i : ℂ) ^ k * boundaryFlatCorrection N hN u i := by
-            rw [← Finset.sum_erase_add _ _ (Finset.mem_univ a)]
-            ring
-    _ =
-        (centeredIndex N a : ℂ) ^ k * boundaryFlatCorrection N hN u a +
-        ((centeredIndex N b : ℂ) ^ k * boundaryFlatCorrection N hN u b +
-        ∑ i ∈ (Finset.univ.erase a).erase b,
-          (centeredIndex N i : ℂ) ^ k * boundaryFlatCorrection N hN u i) := by
-            rw [← Finset.sum_erase_add _ _]
-            · ring
-            · simp [hab]
-    _ =
-        (centeredIndex N a : ℂ) ^ k * boundaryFlatCorrection N hN u a +
-        ((centeredIndex N b : ℂ) ^ k * boundaryFlatCorrection N hN u b +
-        ((centeredIndex N c : ℂ) ^ k * boundaryFlatCorrection N hN u c +
-        ∑ i ∈ ((Finset.univ.erase a).erase b).erase c,
-          (centeredIndex N i : ℂ) ^ k * boundaryFlatCorrection N hN u i)) := by
-            rw [← Finset.sum_erase_add _ _]
-            · ring
-            · simp [hac, hbc]
-    _ =
-        (centeredIndex N a : ℂ) ^ k * boundaryFlatCorrection N hN u a +
-        ((centeredIndex N b : ℂ) ^ k * boundaryFlatCorrection N hN u b +
-        ((centeredIndex N c : ℂ) ^ k * boundaryFlatCorrection N hN u c + 0)) := by
-            congr 1
-            congr 1
-            congr 1
-            apply Finset.sum_eq_zero
-            intro i hi
-            have hia : i ≠ a := by
-              exact Finset.ne_of_mem_erase
-                (Finset.mem_of_mem_erase (Finset.mem_of_mem_erase hi))
-            have hib : i ≠ b := by
-              exact Finset.ne_of_mem_erase (Finset.mem_of_mem_erase hi)
-            have hic : i ≠ c := Finset.ne_of_mem_erase hi
-            rw [boundaryFlatCorrection_eq_zero_of_other N hN u i hia hib hic]
-            simp
-    _ =
-      ((-1 : ℂ) ^ k) *
-          ((centeredMoment N 1 u - centeredMoment N 2 u) / 2) +
-        ((0 : ℂ) ^ k) *
-          (centeredMoment N 2 u - centeredMoment N 0 u) +
-        ((1 : ℂ) ^ k) *
-          (-(centeredMoment N 1 u + centeredMoment N 2 u) / 2) := by
-            simp [a, b, c]
-            ring
+  unfold boundaryFlatCorrection
+  rw [centeredMoment_add]
+  rw [centeredMoment_add]
+  simp only [centeredMoment_coefficientSingle,
+    centeredIndex_boundaryFlatNegOneIndex,
+    centeredIndex_boundaryFlatZeroIndex,
+    centeredIndex_boundaryFlatOneIndex]
 
 theorem centeredMoment_zero_boundaryFlatCorrection
     (N : ℕ) (hN : 1 ≤ N)
@@ -237,14 +232,23 @@ theorem boundaryFlatProject_boundaryFlat
     (u : Fin (2 * N + 1) → ℂ) :
     BoundaryFlatCoefficients N (boundaryFlatProject N hN u) := by
   refine ⟨?_, ?_, ?_⟩
-  · unfold centeredMoment boundaryFlatProject
-    rw [Finset.sum_add_distrib, centeredMoment_zero_boundaryFlatCorrection]
+  · rw [show centeredMoment N 0 (boundaryFlatProject N hN u) =
+        centeredMoment N 0 u +
+          centeredMoment N 0 (boundaryFlatCorrection N hN u) by
+      exact centeredMoment_add N 0 u (boundaryFlatCorrection N hN u)]
+    rw [centeredMoment_zero_boundaryFlatCorrection]
     ring
-  · unfold centeredMoment boundaryFlatProject
-    rw [Finset.sum_add_distrib, centeredMoment_one_boundaryFlatCorrection]
+  · rw [show centeredMoment N 1 (boundaryFlatProject N hN u) =
+        centeredMoment N 1 u +
+          centeredMoment N 1 (boundaryFlatCorrection N hN u) by
+      exact centeredMoment_add N 1 u (boundaryFlatCorrection N hN u)]
+    rw [centeredMoment_one_boundaryFlatCorrection]
     ring
-  · unfold centeredMoment boundaryFlatProject
-    rw [Finset.sum_add_distrib, centeredMoment_two_boundaryFlatCorrection]
+  · rw [show centeredMoment N 2 (boundaryFlatProject N hN u) =
+        centeredMoment N 2 u +
+          centeredMoment N 2 (boundaryFlatCorrection N hN u) by
+      exact centeredMoment_add N 2 u (boundaryFlatCorrection N hN u)]
+    rw [centeredMoment_two_boundaryFlatCorrection]
     ring
 
 /-- Boundary-flat vectors are fixed by the projection. -/
@@ -254,11 +258,10 @@ theorem boundaryFlatProject_eq_self_of_boundaryFlat
     (hflat : BoundaryFlatCoefficients N u) :
     boundaryFlatProject N hN u = u := by
   funext i
-  unfold boundaryFlatProject boundaryFlatCorrection
   have h0 := hflat.1
   have h1 := hflat.2.1
   have h2 := hflat.2.2
-  simp [h0, h1, h2]
+  simp [boundaryFlatProject, boundaryFlatCorrection, h0, h1, h2]
 
 /-- The projection is idempotent. -/
 theorem boundaryFlatProject_idempotent
