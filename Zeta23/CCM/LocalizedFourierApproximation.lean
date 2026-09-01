@@ -222,6 +222,20 @@ theorem addCircleFourierPolynomial_add
     (fun n => zero_smul ℂ (fourier (T := L) n))
     (fun n a b => add_smul a b (fourier (T := L) n))
 
+/-- Evaluation of the bundled finite AddCircle polynomial is the scalar
+Finsupp sum of its characters. -/
+theorem addCircleFourierPolynomial_apply
+    {L : ℝ} (c : ℤ →₀ ℂ) (t : AddCircle L) :
+    addCircleFourierPolynomial (L := L) c t =
+      c.sum fun n a => a * fourier (T := L) n t := by
+  unfold addCircleFourierPolynomial
+  rw [Finsupp.sum_apply'' c
+    (fun n a => a • fourier (T := L) n)
+    t (by rfl) (by intro f g; rfl)]
+  apply Finsupp.sum_congr
+  intro n hn
+  simp only [smul_eq_mul]
+
 /-- Evaluation of the bundled finite AddCircle polynomial on a real point. -/
 theorem addCircleFourierPolynomial_coe_apply
     {L : ℝ} (c : ℤ →₀ ℂ) (x : ℝ) :
@@ -229,14 +243,10 @@ theorem addCircleFourierPolynomial_coe_apply
       c.sum fun n a =>
         a * Complex.exp
           (2 * (Real.pi : ℂ) * Complex.I * (n : ℂ) * (x : ℂ) / (L : ℂ)) := by
-  unfold addCircleFourierPolynomial
-  rw [Finsupp.sum_apply'' c
-    (fun n a => a • fourier (T := L) n)
-    (x : AddCircle L) (by rfl) (by intro f g; rfl)]
+  rw [addCircleFourierPolynomial_apply]
   apply Finsupp.sum_congr
   intro n hn
   rw [fourier_coe_apply]
-  simp only [smul_eq_mul]
 
 /-- Every finite-span AddCircle approximant may be represented by an explicit
 integer Finsupp coefficient vector. -/
@@ -549,7 +559,7 @@ theorem localizedFiniteFunction_centeredCoefficientsOfFinsupp_eq
           have hsqrtC : (((Real.sqrt L : ℝ) : ℂ)) ≠ 0 := by
             exact ofReal_ne_zero.mpr hsqrt
           rw [one_div, Complex.ofReal_inv]
-          field_simp [hsqrtC]
+          field_simp [hsqrtC] <;> ring
     _ =
       c.sum fun n a =>
         a * fourier n (x : AddCircle L) :=
@@ -557,7 +567,7 @@ theorem localizedFiniteFunction_centeredCoefficientsOfFinsupp_eq
         (fun n => fourier n (x : AddCircle L))
     _ = addCircleFourierPolynomial (L := L) c (x : AddCircle L) := by
       symm
-      exact addCircleFourierPolynomial_coe_apply c x
+      exact addCircleFourierPolynomial_apply c (x : AddCircle L)
 
 /-- Coefficients whose second formula-level jet is a prescribed zero-mode-free
 Fourier Finsupp. -/
@@ -606,7 +616,7 @@ theorem localizedFiniteSecondJet_twicePrimitive_eq
             have hsqrt : (((Real.sqrt L : ℝ) : ℂ)) ≠ 0 := by
               exact ofReal_ne_zero.mpr (Real.sqrt_ne_zero'.mpr hL)
             rw [one_div, Complex.ofReal_inv]
-            field_simp [hfreq, hsqrt]
+            field_simp [hfreq, hsqrt] <;> ring
     _ =
       c.sum fun n a =>
         a * fourier n (x : AddCircle L) :=
@@ -614,7 +624,7 @@ theorem localizedFiniteSecondJet_twicePrimitive_eq
         (fun n => fourier n (x : AddCircle L))
     _ = addCircleFourierPolynomial (L := L) c (x : AddCircle L) := by
       symm
-      exact addCircleFourierPolynomial_coe_apply c x
+      exact addCircleFourierPolynomial_apply c (x : AddCircle L)
 
 
 /-- Replace only the zero-frequency coefficient so that the finite Fourier
