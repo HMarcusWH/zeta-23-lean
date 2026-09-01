@@ -429,4 +429,59 @@ theorem exists_zeroModeFree_secondDeriv_fourierPolynomial
     (periodicSecondDerivMap_fourierCoeff_zero hL hh hs)
     hδ
 
+
+/-- A natAbs bound is exactly the pair of centered integer bounds needed by
+`centeredIndex`. -/
+theorem int_bounds_of_natAbs_le
+    {N : ℕ} {n : ℤ}
+    (h : Int.natAbs n ≤ N) :
+    -(N : ℤ) ≤ n ∧ n ≤ (N : ℤ) := by
+  have habs : |n| ≤ (N : ℤ) := by
+    rw [Int.abs_eq_natAbs]
+    exact Int.ofNat_le.mpr h
+  exact abs_le.mp habs
+
+/-- Reindex a bounded integer Finsupp sum through the repository's exact
+centered `Fin (2*N+1)` coordinates. -/
+theorem sum_centeredIndex_eq_finsupp_sum
+    {N : ℕ} (c : ℤ →₀ ℂ)
+    (hbound : ∀ n ∈ c.support, Int.natAbs n ≤ N)
+    (g : ℤ → ℂ) :
+    (∑ i : Fin (2 * N + 1),
+        c (centeredIndex N i) * g (centeredIndex N i)) =
+      c.sum fun n a => a * g n := by
+  classical
+  let s : Finset (Fin (2 * N + 1)) :=
+    Finset.univ.filter fun i => centeredIndex N i ∈ c.support
+  calc
+    (∑ i : Fin (2 * N + 1),
+        c (centeredIndex N i) * g (centeredIndex N i))
+        =
+      ∑ i ∈ s,
+        c (centeredIndex N i) * g (centeredIndex N i) := by
+          symm
+          apply Finset.sum_subset (Finset.filter_subset _ _)
+          intro i hi hnot
+          have hnotmem : centeredIndex N i ∉ c.support := by
+            intro hmem
+            apply hnot
+            simp [s, hmem]
+          rw [Finsupp.notMem_support_iff.mp hnotmem, zero_mul]
+    _ = ∑ n ∈ c.support, c n * g n := by
+          apply Finset.sum_bij
+            (fun i _ => centeredIndex N i)
+          · intro i hi
+            exact (Finset.mem_filter.mp hi).2
+          · intro i₁ hi₁ i₂ hi₂ heq
+            exact centeredIndex_injective N heq
+          · intro n hn
+            have hb := int_bounds_of_natAbs_le (hbound n hn)
+            obtain ⟨i, hi⟩ :=
+              exists_centeredIndex_eq_of_bounds hb.1 hb.2
+            refine ⟨i, ?_, hi⟩
+            simp [s, hi, hn]
+          · intro i hi
+            rfl
+    _ = c.sum fun n a => a * g n := rfl
+
 end Zeta23.CCM
