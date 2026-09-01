@@ -195,4 +195,102 @@ theorem localizedFiniteSecondJet_zeroMode_single
     simp
   · simp [hiz]
 
+
+/-- Basic algebra for the finite AddCircle Fourier polynomial. -/
+@[simp] theorem addCircleFourierPolynomial_zero
+    {L : ℝ} :
+    addCircleFourierPolynomial (L := L) 0 = 0 := by
+  ext x
+  simp [addCircleFourierPolynomial]
+
+@[simp] theorem addCircleFourierPolynomial_single
+    {L : ℝ} (n : ℤ) (a : ℂ) :
+    addCircleFourierPolynomial (L := L) (Finsupp.single n a) =
+      a • AddCircle.fourier n := by
+  ext x
+  simp [addCircleFourierPolynomial]
+
+theorem addCircleFourierPolynomial_add
+    {L : ℝ} (c d : ℤ →₀ ℂ) :
+    addCircleFourierPolynomial (L := L) (c + d) =
+      addCircleFourierPolynomial c + addCircleFourierPolynomial d := by
+  ext x
+  simp [addCircleFourierPolynomial, Finsupp.sum_add_index]
+
+/-- Every finite-span AddCircle approximant may be represented by an explicit
+integer Finsupp coefficient vector. -/
+theorem exists_addCircleFourierPolynomial_norm_sub_lt
+    {L : ℝ} [Fact (0 < L)]
+    (F : C(AddCircle L, ℂ))
+    {δ : ℝ} (hδ : 0 < δ) :
+    ∃ c : ℤ →₀ ℂ,
+      ‖addCircleFourierPolynomial c - F‖ < δ := by
+  have hmem :
+      F ∈ (Submodule.span ℂ (Set.range (@AddCircle.fourier L))).topologicalClosure := by
+    rw [AddCircle.span_fourier_closure_eq_top]
+    simp
+  obtain ⟨r, hrspan, hdist⟩ :=
+    (Metric.mem_closure_iff.mp hmem) δ hδ
+  obtain ⟨c, hc⟩ :=
+    (Finsupp.mem_span_range_iff_exists_finsupp (R := ℂ)).mp hrspan
+  refine ⟨c, ?_⟩
+  have hpoly : addCircleFourierPolynomial c = r := by
+    simpa [addCircleFourierPolynomial] using hc
+  rw [hpoly]
+  simpa [dist_eq_norm, norm_sub_rev] using hdist
+
+/-- Fourier coefficients of one finite AddCircle Fourier polynomial are exactly
+its Finsupp coefficients. -/
+theorem fourierCoeff_addCircleFourierPolynomial
+    {L : ℝ} [Fact (0 < L)]
+    (c : ℤ →₀ ℂ) :
+    AddCircle.fourierCoeff (addCircleFourierPolynomial c) = c := by
+  induction c using Finsupp.induction_linear with
+  | zero =>
+      ext m
+      simp [addCircleFourierPolynomial, AddCircle.fourierCoeff]
+  | add c d hc hd =>
+      rw [addCircleFourierPolynomial_add]
+      have hci :
+          Integrable (addCircleFourierPolynomial c)
+            (@AddCircle.haarAddCircle L inferInstance) :=
+        (addCircleFourierPolynomial c).continuous.integrable_of_hasCompactSupport
+          (HasCompactSupport.of_compactSpace _)
+      have hdi :
+          Integrable (addCircleFourierPolynomial d)
+            (@AddCircle.haarAddCircle L inferInstance) :=
+        (addCircleFourierPolynomial d).continuous.integrable_of_hasCompactSupport
+          (HasCompactSupport.of_compactSpace _)
+      rw [AddCircle.fourierCoeff.add hci hdi, hc, hd]
+      rfl
+  | single n a =>
+      rw [addCircleFourierPolynomial_single,
+        AddCircle.fourierCoeff.const_smul,
+        AddCircle.fourierCoeff_fourier]
+      ext m
+      by_cases hmn : m = n
+      · subst m
+        simp
+      · simp [hmn]
+
+/-- A Fourier coefficient of a continuous AddCircle function is bounded by its
+uniform norm. -/
+theorem norm_fourierCoeff_le_norm
+    {L : ℝ} [Fact (0 < L)]
+    (F : C(AddCircle L, ℂ)) (n : ℤ) :
+    ‖AddCircle.fourierCoeff F n‖ ≤ ‖F‖ := by
+  unfold AddCircle.fourierCoeff
+  have h :=
+    norm_integral_le_of_norm_le_const
+      (μ := @AddCircle.haarAddCircle L inferInstance)
+      (f := fun t : AddCircle L => AddCircle.fourier (-n) t • F t)
+      (C := ‖F‖)
+      (Filter.Eventually.of_forall fun t => by
+        rw [norm_smul]
+        have hfourier : ‖AddCircle.fourier (-n) t‖ = 1 := by
+          rw [AddCircle.fourier_apply, Circle.norm_coe]
+        rw [hfourier, one_mul]
+        exact ContinuousMap.norm_coe_le_norm F t)
+  simpa using h
+
 end Zeta23.CCM
