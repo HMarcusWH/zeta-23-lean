@@ -69,7 +69,6 @@ theorem boundaryFlatNegOneIndex_ne_oneIndex
   intro h
   have hv := congrArg Fin.val h
   simp [boundaryFlatNegOneIndex, boundaryFlatOneIndex] at hv
-  omega
 
 theorem boundaryFlatOneIndex_ne_negOneIndex
     (N : ℕ) (hN : 1 ≤ N) :
@@ -194,10 +193,7 @@ theorem centeredMoment_boundaryFlatCorrection
   unfold boundaryFlatCorrection
   rw [centeredMoment_add]
   rw [centeredMoment_add]
-  simp only [centeredMoment_coefficientSingle,
-    centeredIndex_boundaryFlatNegOneIndex,
-    centeredIndex_boundaryFlatZeroIndex,
-    centeredIndex_boundaryFlatOneIndex]
+  simpa [centeredMoment_coefficientSingle]
 
 theorem centeredMoment_zero_boundaryFlatCorrection
     (N : ℕ) (hN : 1 ≤ N)
@@ -261,7 +257,7 @@ theorem boundaryFlatProject_eq_self_of_boundaryFlat
   have h0 := hflat.1
   have h1 := hflat.2.1
   have h2 := hflat.2.2
-  simp [boundaryFlatProject, boundaryFlatCorrection, h0, h1, h2]
+  simp [boundaryFlatProject, boundaryFlatCorrection, coefficientSingle, h0, h1, h2]
 
 /-- The projection is idempotent. -/
 theorem boundaryFlatProject_idempotent
