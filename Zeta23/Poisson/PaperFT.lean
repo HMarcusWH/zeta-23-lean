@@ -152,6 +152,54 @@ theorem norm_paperFT_mul_sq_le {f : ℝ → ℂ} {Λ : ℝ} (hf : ContDiff ℝ 2
   rw [paperFT_deriv_deriv hf hcs, norm_mul, norm_neg, norm_pow, mul_comm] at this
   exact this
 
+/-- Global weighted form of [eq:hfbound].  Adding the zeroth- and second-order
+estimates before dividing gives a bound with denominator `1 + ‖z‖²`, so there is no
+exceptional `z = 0` case. -/
+theorem norm_paperFT_mul_one_add_normSq_le {f : ℝ → ℂ} {Λ : ℝ}
+    (hf : ContDiff ℝ 2 f)
+    (hsupp : ∀ u, f u ≠ 0 → |u| ≤ Λ) (z : ℂ) :
+    ‖paperFT f z‖ * (1 + Complex.normSq z) ≤
+      Real.exp (|z.im| * Λ) *
+        ((∫ u, ‖f u‖) + ∫ u, ‖deriv (deriv f) u‖) := by
+  have hcs : HasCompactSupport f := hasCompactSupport_of_support_subset_abs hsupp
+  have hfi : Integrable f := hf.continuous.integrable_of_hasCompactSupport hcs
+  have h0 := norm_paperFT_le hfi hsupp z
+  have h2 := norm_paperFT_mul_sq_le hf hsupp z
+  rw [Complex.normSq_eq_norm_sq]
+  calc
+    ‖paperFT f z‖ * (1 + ‖z‖ ^ 2)
+        = ‖paperFT f z‖ + ‖paperFT f z‖ * ‖z‖ ^ 2 := by ring
+    _ ≤ Real.exp (|z.im| * Λ) * (∫ u, ‖f u‖) +
+        Real.exp (|z.im| * Λ) * (∫ u, ‖deriv (deriv f) u‖) :=
+      add_le_add h0 h2
+    _ = Real.exp (|z.im| * Λ) *
+        ((∫ u, ‖f u‖) + ∫ u, ‖deriv (deriv f) u‖) := by ring
+
+/-- The paper Fourier transform commutes with subtraction for continuous compactly
+supported functions.  Integrability of both oscillatory integrands is established
+before invoking linearity of the Bochner integral. -/
+theorem paperFT_sub {f g : ℝ → ℂ}
+    (hf : Continuous f) (hg : Continuous g)
+    (hfc : HasCompactSupport f) (hgc : HasCompactSupport g)
+    (z : ℂ) :
+    paperFT (f - g) z = paperFT f z - paperFT g z := by
+  have hphase : Continuous (fun x : ℝ => cexp (I * z * (x : ℂ))) := by
+    fun_prop
+  have hfi : Integrable (fun x : ℝ => f x * cexp (I * z * (x : ℂ))) :=
+    (hf.mul hphase).integrable_of_hasCompactSupport hfc.mul_right
+  have hgi : Integrable (fun x : ℝ => g x * cexp (I * z * (x : ℂ))) :=
+    (hg.mul hphase).integrable_of_hasCompactSupport hgc.mul_right
+  unfold paperFT
+  have hfun :
+      (fun x : ℝ => (f - g) x * cexp (I * z * (x : ℂ))) =
+        fun x : ℝ =>
+          f x * cexp (I * z * (x : ℂ)) -
+            g x * cexp (I * z * (x : ℂ)) := by
+    funext x
+    simp only [Pi.sub_apply]
+    ring
+  rw [hfun, integral_sub hfi hgi]
+
 /-- [eq:hfbound] in the paper's form for `z ≠ 0`: `‖h_f(z)‖ ≤ e^{|Im z|Λ} ‖f''‖₁ / ‖z‖²`. -/
 theorem norm_paperFT_le_div {f : ℝ → ℂ} {Λ : ℝ} (hf : ContDiff ℝ 2 f)
     (hsupp : ∀ u, f u ≠ 0 → |u| ≤ Λ) {z : ℂ} (hz : z ≠ 0) :
