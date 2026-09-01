@@ -262,6 +262,7 @@ AddCircle.fourierCoeff_eq_intervalIntegral
 AddCircle.fourierCoeffOn_eq_integral
 AddCircle.fourierCoeffOn_of_hasDerivAt
 AddCircle.hasDerivAt_fourier
+Finsupp.mem_span_range_iff_exists_finsupp
 ~~~
 
 So the project does not need to rebuild Stone-Weierstrass or Fejer merely to obtain uniform finite trigonometric approximation.
@@ -270,12 +271,13 @@ Preferred experiment:
 
 1. descend the strict-collar witness to a C² periodic object;
 2. uniformly approximate h'' by an element of the finite Fourier span;
-3. prove mean(h'')=0 from h'(L)=h'(0), and subtract the approximant's constant mode;
-4. integrate nonzero modes twice using frequency `2*pi*i*n/L`;
-5. choose the constant mode to match mean(h);
-6. use fixed-L periodic integration estimates to control q'-h' and q-h;
-7. use uniform h'' approximation to control q''(0), while the lower-jet bounds control q'(0),q(0);
-8. feed those residuals through #88.
+3. extract that span element as explicit finite coefficients `c : ℤ →₀ ℂ` using `Finsupp.mem_span_range_iff_exists_finsupp`;
+4. prove mean(h'')=0 from h'(L)=h'(0), and subtract the approximant's constant mode;
+5. integrate nonzero modes twice using frequency `2*pi*i*n/L`;
+6. choose the constant mode to match mean(h);
+7. use fixed-L periodic integration estimates to control q'-h' and q-h;
+8. use uniform h'' approximation to control q''(0), while the lower-jet bounds control q'(0),q(0);
+9. feed those residuals through #88.
 
 The theorem `AddCircle.hasSum_fourier_series_L2` was also found, but L² convergence alone is insufficient for the primary projector route because point evaluation q''(0) is not L²-continuous.
 
@@ -336,7 +338,7 @@ That structure should be preserved into the post-F1 displacement/Krylov investig
 4. **Raw approximants:** an unprojected hard-window trigonometric polynomial need not be globally C².
 5. **Correction alone:** the three-mode correction is not generally boundary-flat and cannot be treated as an independent admissible W test.
 6. **Derivative decomposition:** future proofs must justify how interior trigonometric derivatives control the classical derivative of the complete projected hard-window function; endpoint sets are measure-zero but the global C² legal object must be the projected vector.
-7. **AddCircle finite-span extraction:** the density theorem is already available, but it still does not by itself produce the exact repository centered coefficient vector, zero-mean second derivative, or twice-integrated coefficient map.
+7. **Centered-coordinate bridge:** Mathlib already extracts span membership as `ℤ →₀ ℂ`; the remaining representation risk is padding that finite integer support into the repository's centered `Fin (2*N+1)` coordinates, together with the zero-mean/twice-integrated coefficient map.
 8. **Mean mode:** solving `q''=r` in a periodic finite Fourier sector requires zero mean for `r`; this must be enforced explicitly.
 9. **Poincare constants:** any lower-jet recovery must have constants depending only on fixed L, not N.
 10. **Strict sign:** convergence must be quantitative enough to beat the actual negative margin of the W1 witness; do not replace this with mere nonpositivity.
