@@ -17,6 +17,7 @@ import Zeta23.CCM.DictionaryRHSIdentity
 import Zeta23.ExceptionalZero.DisplacementTransfer
 import Zeta23.ExceptionalZero.WeilLiteratureBridge
 import Zeta23.ExceptionalZero.TwoTranslateContraction
+import Zeta23.ExceptionalZero.NegativeWeilTestSupport
 
 /-!
 # Promoted CCM / R002 / R003 theorem bindings
@@ -202,3 +203,13 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.ExceptionalZero.exists_poleNeutral_negativeWeilTest_of_offLine_zero
 #check Zeta23.ExceptionalZero.exists_negativeWeilTest_of_offLine_zero
 #print axioms Zeta23.ExceptionalZero.exists_negativeWeilTest_of_offLine_zero
+
+
+#check Zeta23.ExceptionalZero.tsupport_translateRight
+#print axioms Zeta23.ExceptionalZero.tsupport_translateRight
+#check Zeta23.ExceptionalZero.exists_translateRight_strict_aperture
+#print axioms Zeta23.ExceptionalZero.exists_translateRight_strict_aperture
+#check Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero
+#check Zeta23.ExceptionalZero.exists_strictAperture_negativeWeilTest_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_strictAperture_negativeWeilTest_of_offLine_zero

@@ -2,7 +2,7 @@
 
 Status: **ACTIVE DISCOVERY ROUTE. RH OPEN.**
 
-**Scope note after merged W0 / PR #79:** W2-A and W0 are theorem-locked. Repository-wide, the immediate route-general priority is W1: translate the proved compact C² pole-neutral negative Weil test into one strict positive finite aperture while preserving pole neutrality and W negativity. After W1, G1-B1B remains the next open gate inside the source-faithful lane, while W2-B/C/F0-B form the internal additive lane. These statements are complementary, not competing: this README governs R003 route-local state; CURRENT_RESEARCH_PLAN.md governs global execution priority.
+**Scope note after green W1 / PR #81 Stage A:** W2-A, W0 and W1 are theorem-locked on the validated branch line. The shared route-general front end is closed: every hypothetical off-line zero yields one compact C² pole-neutral negative Weil test with closed support in an explicit strict margin `(r,3r)` inside aperture `L=4r`. Repository-wide, the immediate priority is now a bounded route-comparison pass. Internal: pole-neutrality transfer to `weilTest h h`, mu/gamma reflection, and weighted gamma-channel integrability. Source: exact `L <-> lambda` plus G1-B1B premise/normalization lock. These statements are complementary, not competing: this README governs R003 route-local state; CURRENT_RESEARCH_PLAN.md governs global execution priority.
 
 This README is the living route SSOT for the merged repository. PR-specific settlement files in this directory are historical records; they do not override live Lean/CI or this current route state.
 
@@ -202,20 +202,69 @@ Pole neutrality survives the contraction.
 
 ### W1 — strict finite-aperture recentering
 
-**OPEN / IMMEDIATE GLOBAL TARGET.**
+**CLOSED / PROVED ON EXACT STAGE-A HEAD.**
 
-Starting from the proved W0 object, theoremize a common translation into a strict positive aperture:
+Claim: `R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST`.
+
+For every concrete off-line zeta zero, Lean proves
 
 ~~~text
-exists L > 0, exists h,
-  ContDiff R 2 h
+exists L > 0, r > 0, h,
+  L = 4*r
+  and ContDiff R 2 h
+  and HasCompactSupport h
+  and tsupport h ⊆ Ioo r (3*r)
   and tsupport h ⊆ Ioo 0 L
   and paperFT h ( I/2) = 0
   and paperFT h (-I/2) = 0
   and Re (zetaZeroConfig.W h h) < 0.
 ~~~
 
-Use compactness of `tsupport`, an explicit positive margin, `paperFT_translateRight`, and `W_translateRight_both`. Verify the sign of `translateRight h t = h(x-t)` explicitly.
+The theorem is
+`Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero`.
+
+Exact Stage-A theorem-green head:
+
+~~~text
+7abdaaf88f0e157c11049a0e65ebcb2c48fa86e2
+~~~
+
+It passed both repository workflows. The headline theorem depends only on
+`[propext, Classical.choice, Quot.sound]`.
+
+The support proof is exact at the `tsupport` level:
+
+~~~text
+tsupport h0 ⊂ (-r,r)
+translateRight h0 (2r)
+  -> tsupport ⊂ (r,3r)
+L = 4r
+  -> tsupport ⊂ (0,L).
+~~~
+
+Pole neutrality and W negativity are preserved theoremically by
+`paperFT_translateRight` and `W_translateRight_both`.
+
+### Post-W1 bounded route comparison
+
+The internal lane must not assume reflection symmetry is the only remaining analytic gate.
+Before W2-B/C, audit:
+
+~~~text
+I0  pole zeros of h -> pole zeros of EF.weilTest h h
+I1  mu(-r)=mu(r)
+I2  Integrable (paperFT (EF.weilTest h h) * mu)
+~~~
+
+I2 is load-bearing because Bochner `integral_add` requires integrability.
+
+In parallel the source lane should lock:
+
+~~~text
+S0  lambda = exp(L/2), 1<lambda, sourceLength lambda = L
+S1  d*u/L²/kappa/q/PsiSharp/QW normalizations and domain class.
+~~~
+
 
 
 ### G1-B1B — source Hilbert/functional bridge
@@ -340,9 +389,9 @@ See `../../DEAD_ROUTES.md`.
 
 ## Claim firewall
 
-**PROVED on merged main through PR #79:** finite/dictionary/zero-side/cutoff-free matrix identities, G0 localized finite-space geometry, G1-A additive restriction, direct Section-4 matrix normalization, canonical source normalization, G1-B1A finite `kappa`/source-sector transport, canonical finite displacement, W2-A pairwise W/literatureRHS bridge with summability, and W0 off-line-zero -> compact C² pole-neutral negative Weil-test contraction.
+**PROVED on merged main through PR #80 plus the validated PR #81 Stage-A theorem head:** finite/dictionary/zero-side/cutoff-free matrix identities, G0 localized finite-space geometry, G1-A additive restriction, direct Section-4 matrix normalization, canonical source normalization, G1-B1A finite `kappa`/source-sector transport, canonical finite displacement, W2-A pairwise W/literatureRHS bridge with summability, W0 off-line-zero -> compact C² pole-neutral negative Weil-test contraction, and W1 strict finite-aperture recentering with explicit support margin.
 
-**OPEN:** multiplicative-Haar L2 interface, `PsiSharp`, ambient `QW_lambda`, actual restriction theorem, form-core/minimum-eigenvalue transfer, fixed-aperture negative-bottom implication, finite-negative exclusion, RH.
+**OPEN:** internal mu/gamma reflection and weighted gamma-channel integrability, W2-B/C, F0-B, multiplicative-Haar L2 interface, `PsiSharp`, ambient `QW_lambda`, actual restriction theorem, form-core/minimum-eigenvalue transfer, F1, first-crossing reduction, finite-negative exclusion, RH.
 
 ## Next-move rule
 

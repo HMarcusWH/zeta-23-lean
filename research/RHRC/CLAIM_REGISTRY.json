@@ -373,6 +373,19 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "W0. Exact theorem head c8112f0ad12e0b2c2f1261cea3ba7726aa04be54 passed the CCM build, ExceptionalZero build, no-placeholder gate, RHRC regression suite, normalization/source firewalls, and independent verification workflow with axiom surface [propext, Classical.choice, Quot.sound]. The proof uses the existing X3 strict correlation-over-diagonal witness directly, not the X4.6 canonical determinant endpoint; it preserves the two pole-killing Fourier zeros under the physical phase contraction h=||C||*k-conj(C)*T_t k. This does not prove W1 recentering, W2-B/C, F0-B, G1-B1B/G1-final/G23, F1, finite-negative exclusion, or RH."
+    },
+    {
+      "id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "statement": "For every concrete zeta zero rho0 off the critical line, there exist L>0, r>0 with L=4r and a compactly supported C^2 test h whose closed support lies in the strict interior margin (r,3r) and hence in (0,L), with paperFT h (i/2)=paperFT h (-i/2)=0 and Re(zetaZeroConfig.W h h)<0.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_NEGATIVE_WEIL_TEST_CONTRACTION"
+      ],
+      "source": "Zeta23/ExceptionalZero/NegativeWeilTestSupport.lean",
+      "theorem": "Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "W1. Exact Stage-A theorem head 7abdaaf88f0e157c11049a0e65ebcb2c48fa86e2 passed the CCM build, ExceptionalZero build, no-placeholder gate, RHRC regression suite, normalization/source firewalls, and independent Permansson verification. Axiom surface [propext, Classical.choice, Quot.sound]. The proof is purely geometric/transport: compact tsupport is enclosed in a symmetric ball (-r,r), translateRight by 2r moves tsupport into (r,3r), L is set to 4r, paperFT_translateRight preserves the two zero values, and W_translateRight_both preserves the negative diagonal Weil value. This does not prove W2-B/C, gamma/mu weighted integrability, F0-B, G1-B1B/G1-final/G23, F1, finite-negative exclusion, or RH."
     }
   ]
 }

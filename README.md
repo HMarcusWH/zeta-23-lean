@@ -62,39 +62,54 @@ Exact block-level off-critical separation has been proved. Generic windowed visi
 
 ### R003 — CCM / finite Weil bridge
 
-This remains the active finite-to-source route. W2-A and W0 are now theorem-authoritative on merged main.
+This remains the active finite-to-source route. W2-A and W0 are theorem-authoritative on merged main, and W1 is theorem-authoritative on the validated PR #81 Stage-A head.
 
-PR #77 established the genuine-Weil/literature-RHS pair bridge and pairwise summability. PR #79 then contracts the existing two-translate off-line-zero witness into one actual physical test. For every concrete off-line zeta zero, Lean now proves the existence of a compact C² test `h` with
+The shared function-level front end is now:
 
 ~~~text
-paperFT h ( I/2) = 0
-paperFT h (-I/2) = 0
-Re (zetaZeroConfig.W h h) < 0.
+off-line zero
+  -> W0 compact C² pole-neutral h with Re W(h,h)<0
+  -> W1 exists L>0, r>0, L=4r,
+       tsupport h ⊂ (r,3r) ⊂ (0,L),
+       same pole zeros,
+       same negative W self-value.
 ~~~
 
-The exact physical phase contraction is
+The W1 production theorem is
 
 ~~~text
-h = ‖C‖ * k - conj(C) * translateRight k t.
+Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero
 ~~~
 
-The current global execution priority is W1: translate/recenter this proved negative pole-neutral test into strict support inside one finite positive aperture while preserving the pole zeros and W negativity.
-
-After W1 the route splits:
+with exact Stage-A theorem-green head
 
 ~~~text
-INTERNAL
-  W2-B reflection/evenization
-  -> W2-C genuine W self-value = localized additive RHS
-  -> F0-B finite approximation
-  -> G1-A finite additive restriction [PROVED]
-  -> F1
+7abdaaf88f0e157c11049a0e65ebcb2c48fa86e2.
+~~~
 
-SOURCE
-  G1-B1B Haar/L²/PsiSharp/QW
-  -> G1-final actual source restriction
-  -> G23 negative finite transfer
-  -> F1.
+The next global task is a bounded route comparison, not more shared support infrastructure.
+
+~~~text
+INTERNAL PROBE
+  I0 pole neutrality -> EF.weilTest h h pole neutrality
+  I1 mu/gamma reflection evenness
+  I2 weighted gamma-channel integrability
+
+SOURCE PROBE
+  S0 lambda = exp(L/2), 1<lambda, sourceLength lambda = L
+  S1 exact d*u/L²/kappa/q/PsiSharp/QW premise lock
+~~~
+
+If the internal probe is bounded:
+
+~~~text
+W2-B -> W2-C -> F0-B -> G1-A [PROVED] -> F1.
+~~~
+
+If gamma/mu integrability balloons while the source interface remains local:
+
+~~~text
+G1-B1B -> G1-final -> G23 -> F1.
 ~~~
 
 The source-facing target remains
@@ -103,10 +118,10 @@ The source-facing target remains
 QW_lambda restricted to E_N = canonicalSourceMatrix.
 ~~~
 
-Merged main after PR #79:
+Merged main before PR #81:
 
 ~~~text
-3e39ce86d27a4c642a1e0364f1954968ce22f1f4
+8960b80b4a871bd86f94509dfa872ecc6939b0cd
 ~~~
 
 The preferred K0-K3 finite-wall program after F1 is still a planned research route. It is not yet a theorem-backed terminal reduction: K1 must first prove that an F1 negative finite value forces a first canonical singular crossing for the same finite sector.
@@ -178,27 +193,34 @@ direct source normalization/firewall                      CLOSED
 G1-B1A finite kappa/source-sector bridge                  CLOSED
 W2-A genuine W/literatureRHS bridge + summability         CLOSED
 W0 off-line zero -> compact C² pole-neutral negative h    CLOSED
+W1 strict finite-aperture recentering with margin         CLOSED / #81 STAGE-A
 ~~~
 
 Current execution priority:
 
 ~~~text
-W1 support/recentering into strict support inside (0,L)   OPEN / IMMEDIATE
-~~~
+BOUNDED ROUTE COMPARISON
 
-Then / parallel:
-
-~~~text
 INTERNAL
-  W2-B reflection/evenization                              OPEN
-  W2-C genuine W self -> localized additive RHS            OPEN
-  F0-B finite additive/Fourier approximation               OPEN
-  G1-A finite additive restriction                         CLOSED
+  I0 pole neutrality -> weilTest pole neutrality           OPEN
+  I1 mu/gamma reflection evenness                          OPEN
+  I2 weighted gamma-channel integrability                  OPEN
 
 SOURCE
-  G1-B1B d*u / L² / PsiSharp / QW                         OPEN
-  G1-final QW_lambda|E_N = canonical matrix                OPEN
-  G23 strict negative finite transfer                      OPEN
+  S0 exact L <-> lambda bridge                              OPEN
+  S1 G1-B1B premise/normalization lock                      OPEN
+~~~
+
+Continuation if INTERNAL is bounded:
+
+~~~text
+W2-B -> W2-C -> F0-B -> G1-A [CLOSED] -> F1.
+~~~
+
+Continuation if SOURCE is bounded/cheaper:
+
+~~~text
+G1-B1B -> G1-final -> G23 -> F1.
 ~~~
 
 Shared target:
