@@ -110,4 +110,40 @@ Different displays or derived rewrites in a source may encode distinct normaliza
 
 Roadmaps repeatedly diverged from predicted PR numbering as proof results compressed or split dependencies.
 
-**Consequence:** stable route documentation must use semantic work-package IDs (G1-B1B, G23, S0, etc.). PR numbers are historical execution references only.
+**Consequence:** stable route documentation must use semantic work-package IDs (G1-B1B, G23, S-GEOM, S-NEG, etc.). PR numbers are historical execution references only.
+
+
+## OBS-015 — source interface is not source negativity
+
+**Status:** PROJECT FIREWALL.
+
+A theorem defining or identifying the source functional, such as
+
+```text
+QW(kappa f,kappa g) = PsiSharp(F)
+```
+
+or the finite restriction
+
+```text
+QW_lambda|E_N = canonicalSourceMatrix
+```
+
+does not by itself transport the project theorem
+
+```text
+Re W(h,h) < 0
+```
+
+into a strict negative value of the independently defined source `QW`.
+
+**Origin:** repeated Codex review findings on the R003 source lane (#76/#78), preserved after the post-W1 route split.
+
+**Consequence:** every source-faithful path to G23/F1 must display a separate sign entry.
+
+**Escape requirement:** prove either
+
+1. an independent fixed-aperture source theorem producing `inf QW_lambda < 0` from an off-line zero (`S-NEG`), or
+2. an exact theorem composing the genuine W/localized-additive value with the independently defined source QW so strict negativity is preserved.
+
+G1-B1B/G1-final alone do not discharge this obstruction.

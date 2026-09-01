@@ -9,15 +9,15 @@ The pre-fork-facing Zeta23 audit is preserved verbatim in [UPSTREAM_AUDIT.md](UP
 
 ~~~text
 repository: HMarcusWH/zeta-23-lean
-main: 1a6a286cc4aae76ef6335b85b1022ec3998614df
-tree: 1d49b9dc4fbee4054d18ce5059b40c2d7ccbc3cf
-merged through: PR #81
-PR #81 final validated head: 191e34ece05739122f362d097f9e4393cd5b9ce3
+main: 5134e81c0ce3fa37ef593eb96125d8e4d5aa09b8
+tree: ec9fe4aac0b82b4684fa549f9509ffd2bffb2cb7
+merged through: PR #82
+PR #82 final validated head: d272e447c5270a287488ee015dbf589f3942d68d
 date: 2026-09-01
 RH: OPEN
 ~~~
 
-The exact final PR #81 head passed both repository workflows: RHRC claim/regression suite, R003 normalization/source firewall, R004 scalar-shift audit, CCM build, ExceptionalZero build, no-placeholder gate, and independent Permansson verification.
+The exact final PR #82 head `d272e447c5270a287488ee015dbf589f3942d68d` passed both repository workflows: RHRC claim/regression suite, R003 normalization/source firewall, R004 scalar-shift audit, CCM build, ExceptionalZero build, no-placeholder gate, and independent Permansson verification. PR #82 changed documentation/research priority only; it promoted no new mathematical theorem.
 
 The headline W1 theorems have axiom surface
 
@@ -33,7 +33,7 @@ Recent state history:
 - PR #79 theorem-locked W0: off-line zero -> compact C² pole-neutral negative Weil test;
 - PR #80 promoted W0 and moved the roadmap frontier to W1;
 - PR #81 theorem-locked, promoted and merged W1: the same obstruction can be recentered into an explicit strict margin `(r,3r)` inside aperture `L=4r`, preserving both pole zeros and negative W self-value;
-- the post-W1 research pass reprioritized the next internal spike to concrete-zeta zero-side evenization. That reprioritization is research state, not a new theorem.
+- PR #82 synchronized the post-W1 documentation and selected concrete-zeta zero-side evenization as the next research spike; no new mathematical claim was promoted.
 
 ## Fork audit surfaces
 
@@ -104,6 +104,8 @@ Those files describe the preserved upstream formalization layer.
 ## Current claim firewall
 
 G1-B1A remains merged and registered: finite source coordinate transport and zero-extended `kappa` image are theorem-locked. This does not include multiplicative-Haar/L² or ambient source-functional semantics.
+
+**Source-sign firewall:** G1-B1B/G1-final are interface and restriction obligations. They do not by themselves theoremize `Re W(h,h)<0 -> QW<0`. A source proof of F1 still requires either an independent fixed-aperture negative-QW theorem (`S-NEG`) or an exact W/localized-additive/QW composition theorem.
 
 W2-A is merged and registered:
 

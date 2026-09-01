@@ -74,11 +74,11 @@ The fork currently tracks:
 - **R003** CCM / finite Weil bridge;
 - **R004** finite displacement / prolate-structure investigation.
 
-Merged main `1a6a286cc4aae76ef6335b85b1022ec3998614df` is theorem-locked through W1: every hypothetical off-line zero yields one compact C² pole-neutral negative Weil test, then a common translation places its closed support in an explicit strict margin `(r,3r)` inside aperture `L=4r` while preserving both pole zeros and the exact negative Weil self-value.
+Merged main `5134e81c0ce3fa37ef593eb96125d8e4d5aa09b8` (through PR #82) is theorem-locked through W1: every hypothetical off-line zero yields one compact C² pole-neutral negative Weil test, then a common translation places its closed support in an explicit strict margin `(r,3r)` inside aperture `L=4r` while preserving both pole zeros and the exact negative Weil self-value.
 
 The post-W1 investigation changed the next internal priority. The first spike is now concrete-zeta zero-side evenization: use Schwarz conjugation plus the existing `rho -> 1-conj(rho)` functional-equation symmetry to test a theorem-authoritative `rho -> 1-rho` carrier equivalence, spectral sign reversal, Fourier reflection and summability-safe `EF_lit` reindex. If this closes, W2-B/C may compress to a direct diagonal W/additive theorem. This is a **LEAD**, not formal truth.
 
-The previous pole-neutrality + mu/gamma + weighted-integrability route remains fallback. The exact `L <-> lambda` and d*u/L²/kappa/q/PsiSharp/QW source interface remains active in parallel before G1-B1B. Whichever route reaches F1 with the smaller clean theorem surface becomes primary; independent closure by more than one route remains valuable.
+The previous pole-neutrality + mu/gamma + weighted-integrability route remains fallback. On the source side, `S-GEOM` owns the exact `L <-> lambda` bridge and `S-IFACE` owns the d*u/L²/kappa/q/PsiSharp/QW interface before G1-B1B. Neither supplies strict source negativity. Feeding G23 additionally requires `S-NEG` (an independent fixed-aperture negative-QW theorem) or an exact theorem carrying the negative W/localized-additive value into QW. Whichever route reaches F1 with the smaller clean theorem surface becomes primary; independent closure by more than one route remains valuable.
 
 The preferred K0-K3 finite-wall program after F1 remains planned, not theorem-backed; K1 must still establish the same-sector positive-anchor/first-crossing mechanism. R001 and R002 remain mathematically useful alternates. R004 is retained as structural support and a dormant composition source.
 

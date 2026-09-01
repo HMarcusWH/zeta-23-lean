@@ -15,6 +15,19 @@ def lint() -> list[str]:
     errors: list[str] = []
     claim_data = _load(ROOT / "CLAIM_REGISTRY.json")
     route_data = _load(ROOT / "routes" / "ROUTE_REGISTRY.json")
+    boundary_data = _load(ROOT / "BOUNDARY.json")
+
+    boundary_id = boundary_data.get("boundary_id")
+    route_boundary_id = route_data.get("boundary_id")
+    if not isinstance(boundary_id, str) or not boundary_id:
+        errors.append(f"invalid BOUNDARY.json boundary_id: {boundary_id!r}")
+    if not isinstance(route_boundary_id, str) or not route_boundary_id:
+        errors.append(f"invalid ROUTE_REGISTRY boundary_id: {route_boundary_id!r}")
+    if boundary_id != route_boundary_id:
+        errors.append(
+            "boundary_id mismatch: "
+            f"BOUNDARY.json={boundary_id!r}, ROUTE_REGISTRY.json={route_boundary_id!r}"
+        )
 
     claims = claim_data.get("claims", [])
     routes = route_data.get("routes", [])

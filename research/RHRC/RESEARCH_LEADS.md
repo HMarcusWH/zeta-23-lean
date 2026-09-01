@@ -7,10 +7,10 @@
 Last full theorem/promotion review:
 
 ~~~text
-main = 1a6a286cc4aae76ef6335b85b1022ec3998614df
-tree = 1d49b9dc4fbee4054d18ce5059b40c2d7ccbc3cf
-merged through = PR #81
-PR #81 final validated head = 191e34ece05739122f362d097f9e4393cd5b9ce3
+main = 5134e81c0ce3fa37ef593eb96125d8e4d5aa09b8
+tree = ec9fe4aac0b82b4684fa549f9509ffd2bffb2cb7
+merged through = PR #82
+PR #82 final validated head = d272e447c5270a287488ee015dbf589f3942d68d
 date = 2026-09-01
 RH = OPEN
 ~~~
@@ -614,7 +614,7 @@ Proved inputs already available:
 
 ## L-G23-01 — minimum source core / negative-value transfer theorem
 
-**Research status:** BLOCKED UNTIL SOURCE INTERFACE MATCHES  
+**Research status:** BLOCKED UNTIL SOURCE INTERFACE AND SIGN ENTRY MATCH  
 **Formal status:** LEAD / OPEN
 
 Port only the minimum exact source theorem needed for F1:
@@ -634,11 +634,15 @@ expose it, but do not build a larger spectral library merely for completeness.
 
 **Critical firewall:** lower semicontinuity alone does not transport strict negativity to approximants. Need genuine form-core/form-norm approximation or the exact source minimum theorem.
 
+### Source-sign firewall
+
+G1-B1B and G1-final can identify the ambient source functional and its finite restriction, but they do **not** by themselves establish a negative ambient QW value from W1's `Re W(h,h)<0`. Before G23 can feed F1, the source lane needs either L-SNEG-01 below or an exact W/localized-additive/QW composition theorem.
+
 ---
 
-## L-S0-01 — fixed-aperture source negative-bottom theorem
+## L-SNEG-01 — fixed-aperture source negative-bottom theorem
 
-**Research status:** DORMANT / SOURCE-CROSS-CHECK  
+**Research status:** READY / SOURCE-CROSS-CHECK SIGN GATE  
 **Formal status:** OPEN
 
 Pin the exact source theorem before use:
@@ -676,7 +680,7 @@ No legacy finiteMatrix, numerical surrogate, hidden QW definition, or normalizat
 ### Possible proof routes
 
 - internal: W0/W1 + W2 + F0-B + G1-A;
-- source: W0/W1 + G1-B1B + G1-final + G23;
+- source: theorem-backed source negativity entry (L-SNEG-01 or exact W/localized/QW composition) + G1-B1B + G1-final + G23;
 - independent Suzuki/source route if exact hypotheses match.
 
 A second independent proof of F1 would be unusually valuable.

@@ -63,15 +63,15 @@ Exact block-level off-critical separation has been proved. Generic windowed visi
 
 ### R003 — CCM / finite Weil bridge
 
-This remains the active finite-obstruction route. W2-A, W0 and W1 are theorem-authoritative on merged main through PR #81.
+This remains the active finite-obstruction route. W2-A, W0 and W1 are theorem-authoritative; the current merged documentation baseline is through PR #82.
 
 Merged state:
 
 ~~~text
-main = 1a6a286cc4aae76ef6335b85b1022ec3998614df
-tree = 1d49b9dc4fbee4054d18ce5059b40c2d7ccbc3cf
-merged through = PR #81
-PR #81 final validated head = 191e34ece05739122f362d097f9e4393cd5b9ce3
+main = 5134e81c0ce3fa37ef593eb96125d8e4d5aa09b8
+tree = ec9fe4aac0b82b4684fa549f9509ffd2bffb2cb7
+merged through = PR #82
+PR #82 final validated head = d272e447c5270a287488ee015dbf589f3942d68d
 RH = OPEN
 ~~~
 
@@ -125,10 +125,17 @@ FALLBACK INTERNAL
 The source-faithful lane remains active in parallel:
 
 ~~~text
-SOURCE
-  S0 lambda = exp(L/2), 1<lambda, sourceLength lambda = L
-  S1 d*u/L²/kappa/q/PsiSharp/QW premise lock
-  -> G1-B1B -> G1-final -> G23 -> F1
+SOURCE INFRASTRUCTURE — PARALLEL
+  S-GEOM lambda = exp(L/2), 1<lambda, sourceLength lambda = L
+  S-IFACE d*u/L²/kappa/q/PsiSharp/QW premise lock
+  -> G1-B1B -> G1-final
+
+SOURCE NEGATIVITY ENTRY — OPEN
+  either S-NEG:
+    off-line zero -> exists fixed lambda > 1 with inf QW_lambda < 0
+  or an exact theorem carrying the W1 negative W value through the
+    localized-additive/source interface to a negative QW value
+  -> G23 -> F1
 ~~~
 
 If W2-ZS closes, the shortest internal route becomes:
@@ -237,8 +244,9 @@ INTERNAL FALLBACK
   I2 weighted gamma-channel integrability                  OPEN
 
 SOURCE — PARALLEL
-  S0 exact L <-> lambda bridge                             OPEN
-  S1 G1-B1B premise/normalization lock                     OPEN
+  S-GEOM exact L <-> lambda bridge                        OPEN
+  S-IFACE G1-B1B premise/normalization lock                OPEN
+  S-NEG negative-QW entry or exact W/localized/QW bridge   OPEN
 ~~~
 
 Continuation if W2-ZS is green:
@@ -256,8 +264,13 @@ I0/I1/I2 -> W2-B -> W2-C -> F0-B -> G1-A [CLOSED] -> F1.
 Source continuation:
 
 ~~~text
-G1-B1B -> G1-final -> G23 -> F1.
+G1-B1B -> G1-final
+plus a theorem-backed negative-QW entry
+  (S-NEG or an exact W/localized-additive/QW composition)
+-> G23 -> F1.
 ~~~
+
+The source interface theorems do not themselves transport the W1 sign. This is a permanent route firewall, not a prose convention.
 
 Shared target:
 
