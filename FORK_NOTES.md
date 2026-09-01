@@ -67,20 +67,28 @@ Any claim about absolute spectrum, PSD, inertia, lower bounds, trace or determin
 
 ## Route state
 
-The fork currently tracks:
+The current merged main is `9e899ca322116e28a56a4412d48aef0052b86fbe` (tree `ad636143768dcaa4dbeb23a0ea295d7b2d6b1c9b`), through PR #84.
 
-- **R001** exceptional-zero amplification;
-- **R002** multi-probe / negative-index observables;
-- **R003** CCM / finite Weil bridge;
-- **R004** finite displacement / prolate-structure investigation.
+PR #83 theorem-locked the concrete-zeta W2-ZS route on exact head `556be6c2b42e912c58751988c580ab4e0091822d` and merged it as `7b8e0cc9abbaeff97d88ec67ada40734619a8d07`. The theorem surface now includes:
 
-Merged main `5134e81c0ce3fa37ef593eb96125d8e4d5aa09b8` (through PR #82) is theorem-locked through W1: every hypothetical off-line zero yields one compact C² pole-neutral negative Weil test, then a common translation places its closed support in an explicit strict margin `(r,3r)` inside aperture `L=4r` while preserving both pole zeros and the exact negative Weil self-value.
+~~~text
+W2-A  W = literatureRHS(weilTest) + summability
+W0    one compact C² pole-neutral negative Weil test
+W1    strict finite aperture / explicit margin
+W2-ZS concrete rho -> 1-rho zero-side evenization
+W2-C  direct diagonal W(h,h)=localizedWeilAdditiveRHS(h,h)
+      strict-aperture negative localized-additive witness
+G1-A  finite localized additive restriction
+~~~
 
-The post-W1 investigation changed the next internal priority. The first spike is now concrete-zeta zero-side evenization: use Schwarz conjugation plus the existing `rho -> 1-conj(rho)` functional-equation symmetry to test a theorem-authoritative `rho -> 1-rho` carrier equivalence, spectral sign reversal, Fourier reflection and summability-safe `EF_lit` reindex. If this closes, W2-B/C may compress to a direct diagonal W/additive theorem. This is a **LEAD**, not formal truth.
+The primary internal frontier is therefore **F0-B finite approximation / strict-negativity transfer**. Two bounded candidates remain live: boundary-flat globally C² finite Fourier approximants plus W continuity, and direct localized-additive continuity on the existing legal finite vectors. Do not select between them until the topology burden is theoremically inspected.
 
-The previous pole-neutrality + mu/gamma + weighted-integrability route remains fallback. On the source side, `S-GEOM` owns the exact `L <-> lambda` bridge and `S-IFACE` owns the d*u/L²/kappa/q/PsiSharp/QW interface before G1-B1B. Neither supplies strict source negativity. Feeding G23 additionally requires `S-NEG` (an independent fixed-aperture negative-QW theorem) or an exact theorem carrying the negative W/localized-additive value into QW. Whichever route reaches F1 with the smaller clean theorem surface becomes primary; independent closure by more than one route remains valuable.
+The old pole-neutrality + mu/gamma + weighted-integrability W2-B route remains open/dormant as an independent analytic cross-check. Proving the diagonal endpoint through W2-ZS does not prove that historical route.
 
-The preferred K0-K3 finite-wall program after F1 remains planned, not theorem-backed; K1 must still establish the same-sector positive-anchor/first-crossing mechanism. R001 and R002 remain mathematically useful alternates. R004 is retained as structural support and a dormant composition source.
+On the source side, `S-GEOM` owns the exact `L <-> lambda` bridge and `S-IFACE` owns the d*u/L²/kappa/q/PsiSharp/QW interface before G1-B1B/G1-final. Neither supplies strict source negativity. Feeding G23 additionally requires `S-NEG` or an exact theorem carrying the negative W/localized-additive value into QW. OBS-015 is the permanent firewall.
+
+The preferred K0-K3 finite-wall program after F1 remains planned, not theorem-backed. F1, K0-K3 and RH remain OPEN.
+
 
 ## FFBBP / OoL boundary
 

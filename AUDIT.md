@@ -9,17 +9,19 @@ The pre-fork-facing Zeta23 audit is preserved verbatim in [UPSTREAM_AUDIT.md](UP
 
 ~~~text
 repository: HMarcusWH/zeta-23-lean
-main: 5134e81c0ce3fa37ef593eb96125d8e4d5aa09b8
-tree: ec9fe4aac0b82b4684fa549f9509ffd2bffb2cb7
-merged through: PR #82
-PR #82 final validated head: d272e447c5270a287488ee015dbf589f3942d68d
+main: 9e899ca322116e28a56a4412d48aef0052b86fbe
+tree: ad636143768dcaa4dbeb23a0ea295d7b2d6b1c9b
+merged through: PR #84
+PR #83 theorem head: 556be6c2b42e912c58751988c580ab4e0091822d
+PR #83 merge: 7b8e0cc9abbaeff97d88ec67ada40734619a8d07
+PR #84 final validated head: 1a518c9ebd408fa559c5eff281eafe5ff3b2af48
 date: 2026-09-01
 RH: OPEN
 ~~~
 
-The exact final PR #82 head `d272e447c5270a287488ee015dbf589f3942d68d` passed both repository workflows: RHRC claim/regression suite, R003 normalization/source firewall, R004 scalar-shift audit, CCM build, ExceptionalZero build, no-placeholder gate, and independent Permansson verification. PR #82 changed documentation/research priority only; it promoted no new mathematical theorem.
+PR #83 exact theorem head `556be6c2b42e912c58751988c580ab4e0091822d` passed both repository workflows and merged as `7b8e0cc9abbaeff97d88ec67ada40734619a8d07`. PR #84 exact head `1a518c9ebd408fa559c5eff281eafe5ff3b2af48` then passed both repository workflows and merged as current main `9e899ca322116e28a56a4412d48aef0052b86fbe`, preserving the #83 theorem files while cleaning the route/source governance state.
 
-The headline W1 theorems have axiom surface
+The headline W1 and PR #83 W2-ZS theorem surfaces have axiom surface
 
 ~~~text
 [propext, Classical.choice, Quot.sound]
@@ -33,7 +35,9 @@ Recent state history:
 - PR #79 theorem-locked W0: off-line zero -> compact C² pole-neutral negative Weil test;
 - PR #80 promoted W0 and moved the roadmap frontier to W1;
 - PR #81 theorem-locked, promoted and merged W1: the same obstruction can be recentered into an explicit strict margin `(r,3r)` inside aperture `L=4r`, preserving both pole zeros and negative W self-value;
-- PR #82 synchronized the post-W1 documentation and selected concrete-zeta zero-side evenization as the next research spike; no new mathematical claim was promoted.
+- PR #82 synchronized the post-W1 documentation and selected concrete-zeta zero-side evenization as the next research spike;
+- PR #83 theorem-locked W2-ZS, the generic diagonal `W = localizedWeilAdditiveRHS` identity, and the strict-aperture negative localized-additive witness;
+- PR #84 cleaned the living authority/source-route state, fixed the boundary-ID lint hole, and made source negativity a separate OBS-015 gate.
 
 ## Fork audit surfaces
 
@@ -115,49 +119,64 @@ and
 W(f,g) = EF.literatureRHS(EF.weilTest f g).
 ~~~
 
-W0 is merged and registered:
+W0 and W1 are merged and registered, giving a compact C² pole-neutral test with strict negative W self-value and an explicit strict aperture margin.
+
+PR #83 is merged and the Stage-B promotion records two new claims.
+
+### R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE
+
+For every compact C² concrete-zeta test `h`:
 
 ~~~text
-off-line zero
-  -> compact C² pole-neutral h
-  -> Re W(h,h) < 0.
+zetaZeroConfig.W h h
+  = Zeta23.CCM.localizedWeilAdditiveRHS h h.
 ~~~
 
-W1 is merged and registered as `R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST`:
+Theorem:
 
 ~~~text
-off-line zero
-  ->
+Zeta23.ExceptionalZero.zeta_W_self_eq_localizedWeilAdditiveRHS
+~~~
+
+Exact theorem head:
+
+~~~text
+556be6c2b42e912c58751988c580ab4e0091822d
+~~~
+
+The supporting W2-ZS proof package theoremizes concrete-zeta conjugation, the actual `rho -> 1-rho` carrier equivalence with multiplicity, `gammaOf` sign reversal, Fourier reflection, and summability-safe zero-sum reindexing. The proof does not open the pole/prime/gamma decomposition and has axiom surface `[propext, Classical.choice, Quot.sound]`.
+
+### R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS
+
+Every concrete off-line zeta zero yields
+
+~~~text
 exists L>0, r>0, h,
-  L = 4r
-  and tsupport h ⊆ Ioo r (3r)
+  L=4r
+  and ContDiff R 2 h
+  and HasCompactSupport h
+  and tsupport h ⊆ Ioo r (3*r)
   and tsupport h ⊆ Ioo 0 L
   and paperFT h (±I/2)=0
-  and Re W(h,h)<0.
+  and Re(localizedWeilAdditiveRHS h h)<0.
 ~~~
 
-The following post-green observation is only **DERIVED**:
+This is the theorem-backed F0-B input.
 
-~~~text
-L=4r and tsupport h ⊂ (r,3r)
-  -> tsupport h ⊂ (L/4,3L/4).
-~~~
+The repository does **not** yet prove:
 
-The active W2-ZS plan is **LEAD / HYPOTHESIS** only. The repository does **not** yet prove:
-
-- concrete-zeta `rho -> 1-rho` packaged as the required carrier equivalence;
-- the summability-safe EF_lit reflection/evenization theorem;
-- `W(h,h)=localizedWeilAdditiveRHS(h,h)`;
-- fallback mu/gamma reflection or weighted gamma-channel integrability;
-- W2-B/W2-C;
-- F0-B;
-- G1-B1B/G1-final/G23;
+- F0-B finite approximation / strict-negativity transfer;
+- a family-level W-continuity or uniform zero-side domination theorem for finite approximants;
+- direct localized-additive continuity on the existing finite vectors;
+- the old analytic W2-B reflection/gamma route;
+- G1-B1B/G1-final/S-NEG/G23;
 - F1;
 - a first canonical crossing theorem;
+- K0-K3 terminal exclusion;
 - finite-negative exclusion;
 - RH.
 
-The repository also does **not** claim the ambient external `QW_lambda/PsiSharp` correspondence, `QW_lambda|E_N = canonicalSourceMatrix`, a theorem-backed K0-K3 terminal reduction, or RH.
+The old analytic W2-B route remains OPEN / DORMANT. Proving its intended diagonal conclusion by W2-ZS does not prove that historical proof route.
 
 Merged repository truth remains determined by live GitHub main plus the machine registries and exact Lean declarations.
 

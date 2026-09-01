@@ -54,101 +54,83 @@ See `routes/R002_multi_probe/`, OBS-009 and D0-R.
 
 ### R003 — CCM / finite Weil bridge
 
-This remains the active finite/source route.
-
-Merged theorem state now closes the entire shared function-level front end:
-
-~~~text
-W2-A:
-  admissible pair
-    -> pairwise Wsummand Summable
-    -> genuine W(f,g) = literatureRHS(weilTest f g)
-
-W0:
-  off-line zero
-    -> compact C² pole-neutral h
-    -> Re W(h,h) < 0
-
-W1:
-  same obstruction
-    -> exists L>0, r>0 with L=4r
-    -> closed support inside (r,3r) ⊂ (0,L)
-    -> pole zeros preserved
-    -> Re W(h,h) < 0 preserved.
-~~~
+This remains the active finite-obstruction route.
 
 Merged baseline:
 
 ~~~text
-main = 5134e81c0ce3fa37ef593eb96125d8e4d5aa09b8
-tree = ec9fe4aac0b82b4684fa549f9509ffd2bffb2cb7
-merged through = PR #82
-final validated PR #82 head = d272e447c5270a287488ee015dbf589f3942d68d
+main = 9e899ca322116e28a56a4412d48aef0052b86fbe
+tree = ad636143768dcaa4dbeb23a0ea295d7b2d6b1c9b
+merged through = PR #84
+PR #83 theorem head = 556be6c2b42e912c58751988c580ab4e0091822d
+PR #83 merge = 7b8e0cc9abbaeff97d88ec67ada40734619a8d07
+PR #84 final validated head = 1a518c9ebd408fa559c5eff281eafe5ff3b2af48
+RH = OPEN
 ~~~
 
-The W1 production theorem is
-`Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero`.
-Its axiom surface is `[propext, Classical.choice, Quot.sound]`.
-
-The W1 geometry directly yields the **DERIVED** collar `tsupport h ⊂ (L/4,3L/4)`. Under `lambda=exp(L/2)`, this is centered around source coordinate `u=1` and maps to the derived multiplicative subinterval `(lambda^(-1/2),lambda^(1/2))`.
-
-The immediate global internal task is now the **W2-ZS concrete-zeta zero-side evenization spike**:
+The theorem-backed function-level chain is now:
 
 ~~~text
-ZS0 conjugation preserves concrete zeta zero carrier + multiplicity
-ZS1 package rho -> 1-rho as an involutive carrier equivalence
-ZS2 gammaOf(1-rho) = -gammaOf(rho)
-ZS3 paperFT(k(-·))(z) = paperFT(k)(-z)
-ZS4 reindex EF_lit zero sums under Summable + Equiv.tsum_eq
-ZS5 literatureRHS(halfEven k) = literatureRHS(k)
-ZS6 W(h,h) = localizedWeilAdditiveRHS(h,h)
+off-line zero
+  -> W0 negative compact C² pole-neutral W witness
+  -> W1 strict finite aperture / margin
+  -> W2-ZS direct diagonal identity
+       W(h,h)=localizedWeilAdditiveRHS(h,h)
+  -> strict negative localized additive witness.
 ~~~
 
-This is a **LEAD / HYPOTHESIS**, not theorem state. It is concrete-zeta-specific because abstract `ZeroConfig` does not carry Schwarz conjugation symmetry.
-
-The previous analytic internal probe remains fallback:
+Registered #83 claims:
 
 ~~~text
-I0 pole zeros of h -> pole zeros of EF.weilTest h h
-I1 mu/gamma reflection evenness
-I2 weighted gamma-channel integrability
+R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE
+R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS
 ~~~
 
-Source work remains active in parallel, but its infrastructure and sign entry are separate obligations:
+The W2-ZS proof is concrete-zeta-specific and uses the actual `rho -> 1-rho` carrier equivalence with multiplicity, exact Fourier reflection and summability-safe zero-sum reindexing. It does not require the old analytic mu/gamma-evenness or weighted gamma-integrability route.
+
+The immediate global internal task is now **F0-B finite approximation / strict-negativity transfer**:
 
 ~~~text
-S-GEOM lambda = exp(L/2), 1<lambda, sourceLength lambda = L
-S-IFACE exact d*u/L²/kappa/q/PsiSharp/QW premise lock
-S-NEG independent fixed-aperture negative-QW theorem, or an exact
-      W/localized-additive/QW sign-carrying composition
+F0-B1:
+  boundary-flat globally C² finite Fourier approximants
+  + W continuity
+
+F0-B2:
+  direct localized-additive continuity
+  on the existing legal finite vectors
+
+WCONT:
+  family-level topology / domination gate
 ~~~
 
-If W2-ZS closes cleanly:
+No candidate is promoted until the bounded topology spike decides it. Individual Summable certificates do not imply a uniform summable majorant.
+
+The previous analytic W2-B route remains a dormant independent cross-check.
+
+Source work remains active in parallel and preserves the #84 sign firewall:
 
 ~~~text
-W2-ZS -> F0-B -> G1-A [PROVED] -> F1.
+S-GEOM L <-> lambda
+S-IFACE d*u/L²/kappa/q/PsiSharp/QW
+-> G1-B1B -> G1-final
+
+S-NEG or exact W/localized/QW sign composition
+-> G23
+-> F1
 ~~~
 
-If it fails but the analytic route is bounded:
+G1-B1B/G1-final do not themselves transfer the strict negative sign into QW.
+
+The shortest internal continuation is now
 
 ~~~text
-I0/I1/I2 -> W2-B -> W2-C -> F0-B -> G1-A [PROVED] -> F1.
+F0-B -> G1-A [PROVED] -> F1.
 ~~~
 
-The source alternate remains:
+The preferred post-F1 K0-K3 finite-wall program remains planned research, not a theorem-backed terminal reduction.
 
-~~~text
-G1-B1B -> G1-final
-+
-theorem-backed negative-QW entry (S-NEG or exact W/localized/QW composition)
--> G23 -> F1.
-~~~
+See `routes/R003_ccm_bridge/README.md`, `CURRENT_RESEARCH_PLAN.md`, `RESEARCH_LEADS.md` and the post-green W2-ZS settlement.
 
-G1-B1B/G1-final do not themselves transfer the W1 negative sign into QW.
-
-The preferred post-F1 K0-K3 finite-wall program remains a **planned research route**, not yet a theorem-backed terminal reduction.
-
-See `routes/R003_ccm_bridge/README.md`, `CURRENT_RESEARCH_PLAN.md` and `RESEARCH_LEADS.md`.
 
 ### R004 — finite displacement / structural route
 

@@ -59,12 +59,14 @@
         "R003_SOURCE_KAPPA_FINITE_SECTOR",
         "R003_WEIL_PAIR_LITERATURE_BRIDGE",
         "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
-        "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST"
+        "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+        "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+        "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "R003/D0/G0, G1-A, G1-B0, G1-B1A, W2-A, W0 and W1 are theorem-locked on merged main 5134e81c0ce3fa37ef593eb96125d8e4d5aa09b8 through PR #82; PR #82 changed documentation/research priority only. W1 closes the shared route-general front end. Post-green priority is W2-ZS, a concrete-zeta zero-side evenization LEAD; the previous I0/I1/I2 analytic path remains fallback. Source work is split explicitly: S-GEOM/S-IFACE plus G1-B1B/G1-final establish source coordinates/interfaces/restriction, while strict source negativity is a separate S-NEG or exact W/localized-additive/QW sign-composition obligation before G23 can feed F1. G1-B1B/G1-final alone do not theoremize W<0 -> QW<0. F1, first-crossing reduction, finite-negative exclusion and RH remain open."
+      "note": "R003/D0/G0, G1-A, G1-B0, G1-B1A, W2-A, W0, W1, W2-ZS and the direct diagonal W2-C endpoint are theorem-locked on merged main 9e899ca322116e28a56a4412d48aef0052b86fbe through PR #84; PR #83 merged the W2-ZS theorem package as 7b8e0cc9abbaeff97d88ec67ada40734619a8d07 and PR #84 then cleaned the authority/source-route state. PR #83 also theorem-locks the strict-aperture negative localized-additive witness that is the F0-B input. The old I0/I1/I2 analytic W2-B route remains open/dormant as an independent cross-check; proving the endpoint by W2-ZS does not prove that historical route. The primary internal frontier is now F0-B finite approximation/continuity before G1-A yields F1. Source work remains split by OBS-015: S-GEOM/S-IFACE plus G1-B1B/G1-final establish source coordinates/interfaces/restriction, while strict source negativity is a separate S-NEG or exact W/localized-additive/QW sign-composition obligation before G23 can feed F1. F0-B, source interface/sign/transfer, F1, K0-K3, finite-negative exclusion and RH remain open."
     },
     {
       "route_id": "R004_prolate_v2",

@@ -63,99 +63,94 @@ Exact block-level off-critical separation has been proved. Generic windowed visi
 
 ### R003 — CCM / finite Weil bridge
 
-This remains the active finite-obstruction route. W2-A, W0 and W1 are theorem-authoritative; the current merged documentation baseline is through PR #82.
+This remains the active finite-obstruction route. The merged theorem state now includes W2-A, W0, W1, W2-ZS, the direct diagonal W/localized-additive identity, and the strict-aperture negative localized-additive witness.
 
 Merged state:
 
 ~~~text
-main = 5134e81c0ce3fa37ef593eb96125d8e4d5aa09b8
-tree = ec9fe4aac0b82b4684fa549f9509ffd2bffb2cb7
-merged through = PR #82
-PR #82 final validated head = d272e447c5270a287488ee015dbf589f3942d68d
+main = 9e899ca322116e28a56a4412d48aef0052b86fbe
+tree = ad636143768dcaa4dbeb23a0ea295d7b2d6b1c9b
+merged through = PR #84
+PR #83 theorem head = 556be6c2b42e912c58751988c580ab4e0091822d
+PR #83 merge = 7b8e0cc9abbaeff97d88ec67ada40734619a8d07
+PR #84 final validated head = 1a518c9ebd408fa559c5eff281eafe5ff3b2af48
 RH = OPEN
 ~~~
 
-The shared function-level front end is closed:
+The shared function-level obstruction is now theorem-locked all the way to the repository localized additive functional:
 
 ~~~text
 off-line zero
   -> W0 compact C² pole-neutral h with Re W(h,h)<0
-  -> W1 exists L>0, r>0, L=4r,
-       tsupport h ⊂ (r,3r) ⊂ (0,L),
-       same pole zeros,
-       same negative W self-value.
+  -> W1 strict aperture:
+       L=4r,
+       tsupport h ⊂ (r,3r) ⊂ (0,L)
+  -> W2-ZS / direct diagonal bridge:
+       W(h,h)=localizedWeilAdditiveRHS(h,h)
+  -> Re(localizedWeilAdditiveRHS(h,h))<0.
 ~~~
 
-The W1 production theorem is
+The generic bridge theorem is
 
 ~~~text
-Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero
+Zeta23.ExceptionalZero.zeta_W_self_eq_localizedWeilAdditiveRHS
 ~~~
 
-and the explicit geometry also gives the direct derived collar
+and the strong F0-B input is
 
 ~~~text
-tsupport h ⊂ (L/4, 3L/4).
+Zeta23.ExceptionalZero.
+exists_strictAperture_poleNeutral_negativeLocalizedWeilAdditiveRHS_of_offLine_zero.
 ~~~
 
-Under the source change of variables `lambda = exp(L/2)`, this centers the support around `u=1` and places it inside the derived multiplicative subinterval `(lambda^(-1/2), lambda^(1/2))` of the full source aperture `(lambda^-1, lambda)`.
+PR #83 proves the concrete-zeta zero-side route by theoremizing `rho -> 1-rho` on the actual zero carrier with multiplicity, exact `gammaOf` sign reversal, Fourier reflection, and summability-safe zero-sum reindexing. It does not need the old analytic `mu`/gamma reflection or weighted gamma-integrability route.
 
-The immediate internal priority changed in the W1 post-green pass. Before opening the gamma/digamma channel, test the concrete-zeta zero-side evenization shortcut:
+Therefore the shortest internal route is now:
 
 ~~~text
-W2-ZS / NEXT LEAD
-  ZS0  conjugation preserves concrete zeta zeros + multiplicity
-  ZS1  build the carrier involution rho |-> 1-rho
-  ZS2  gammaOf(1-rho) = -gammaOf(rho)
-  ZS3  paperFT(k(-·))(z) = paperFT(k)(-z)
-  ZS4  reindex the EF_lit zero sum legally using Summable + Equiv.tsum_eq
-  ZS5  prove literatureRHS(half-evenization k) = literatureRHS(k)
-  ZS6  conclude W(h,h) = localizedWeilAdditiveRHS(h,h)
+negative localized-additive witness
+  -> F0-B finite approximation / continuity             [OPEN]
+  -> G1-A finite additive restriction                    [PROVED]
+  -> F1 canonical finite negative obstruction           [OPEN].
 ~~~
 
-This is a **LEAD / HYPOTHESIS**, not a proved bridge. It is concrete-zeta-specific because `ZeroConfig` itself carries only `rho -> 1-conj(rho)` symmetry. The existing mu/gamma route remains the fallback if any ZS subgate fails:
+F0-B has two live bounded candidates:
 
 ~~~text
-FALLBACK INTERNAL
-  I0 pole neutrality -> EF.weilTest h h pole neutrality
-  I1 mu/gamma reflection evenness
-  I2 weighted gamma-channel integrability
+F0-B1:
+  boundary-flat globally C² finite Fourier approximants
+  + W continuity
+
+F0-B2:
+  direct localized-additive continuity
+  on the existing legal finite vectors.
 ~~~
+
+No route is selected until the topology/continuity burden is theoremically inspected. Pointwise summability for each approximant is not a uniform family-level domination theorem.
+
+The old analytic W2-B route remains OPEN / DORMANT as an independent cross-check; proving the diagonal endpoint via W2-ZS does not prove that historical route.
 
 The source-faithful lane remains active in parallel:
 
 ~~~text
-SOURCE INFRASTRUCTURE — PARALLEL
-  S-GEOM lambda = exp(L/2), 1<lambda, sourceLength lambda = L
-  S-IFACE d*u/L²/kappa/q/PsiSharp/QW premise lock
+SOURCE INFRASTRUCTURE
+  S-GEOM L <-> lambda
+  S-IFACE d*u/L²/kappa/q/PsiSharp/QW
   -> G1-B1B -> G1-final
 
-SOURCE NEGATIVITY ENTRY — OPEN
-  either S-NEG:
-    off-line zero -> exists fixed lambda > 1 with inf QW_lambda < 0
-  or an exact theorem carrying the W1 negative W value through the
-    localized-additive/source interface to a negative QW value
-  -> G23 -> F1
-~~~
+SOURCE NEGATIVITY ENTRY
+  S-NEG independent fixed-aperture negative-QW theorem
+  or exact W/localized/QW sign composition
 
-If W2-ZS closes, the shortest internal route becomes:
-
-~~~text
-W0/W1 [PROVED]
-  -> W2-A [PROVED]
-  -> W2-ZS direct diagonal additive bridge [OPEN / NEXT]
-  -> F0-B
-  -> G1-A [PROVED]
+COMMON
+  negative ambient QW + finite restriction
+  -> G23
   -> F1.
 ~~~
 
-The source-facing target remains
+By OBS-015, the source interface theorems do not themselves transport the W1/#83 strict negative sign into QW.
 
-~~~text
-QW_lambda restricted to E_N = canonicalSourceMatrix.
-~~~
-
-The preferred K0-K3 finite-wall program after F1 is still planned research, not a theorem-backed terminal reduction.
+The preferred K0-K3 finite-wall program after F1 remains planned research, not a theorem-backed terminal reduction.
 
 ### R004 — finite displacement / structural route
 
@@ -224,53 +219,50 @@ direct source normalization/firewall                      CLOSED
 G1-B1A finite kappa/source-sector bridge                  CLOSED
 W2-A genuine W/literatureRHS bridge + summability         CLOSED
 W0 off-line zero -> compact C² pole-neutral negative h    CLOSED
-W1 strict finite-aperture recentering with margin         CLOSED / MERGED #81
+W1 strict finite-aperture recentering with margin         CLOSED
+W2-ZS zero-side evenization                               CLOSED
+direct diagonal W2-C endpoint                             CLOSED
+negative localized-additive strict-aperture witness       CLOSED
 ~~~
 
 Current execution priority:
 
 ~~~text
-INTERNAL — HIGHEST INFORMATION GAIN
-  W2-ZS concrete-zeta zero-side evenization spike          OPEN / LEAD
-    rho -> 1-rho carrier equivalence
-    gammaOf sign reversal
-    paperFT reflection
-    summability-safe zero-sum reindex
-    direct W self = localized additive RHS
+INTERNAL — NOW
+  F0-B finite approximation / strict-negativity transfer  OPEN
+    F0-B1 boundary-flat global C² approximants
+      + W continuity
+    F0-B2 direct localized-additive continuity
+    WCONT topology / family-level domination gate
 
-INTERNAL FALLBACK
+INTERNAL FALLBACK / CROSS-CHECK
   I0 pole-neutrality transfer                              OPEN
   I1 mu/gamma reflection evenness                          OPEN
   I2 weighted gamma-channel integrability                  OPEN
+  old analytic W2-B / analytic W2-C proof route            OPEN
 
 SOURCE — PARALLEL
-  S-GEOM exact L <-> lambda bridge                        OPEN
+  S-GEOM exact L <-> lambda bridge                         OPEN
   S-IFACE G1-B1B premise/normalization lock                OPEN
+  G1-final actual source restriction                       OPEN
   S-NEG negative-QW entry or exact W/localized/QW bridge   OPEN
+  G23 negative finite transfer                             OPEN
 ~~~
 
-Continuation if W2-ZS is green:
+Primary internal continuation:
 
 ~~~text
-W2-ZS -> F0-B -> G1-A [CLOSED] -> F1.
-~~~
-
-Continuation if the zero-side shortcut fails but the analytic channel stays bounded:
-
-~~~text
-I0/I1/I2 -> W2-B -> W2-C -> F0-B -> G1-A [CLOSED] -> F1.
+F0-B -> G1-A [CLOSED] -> F1.
 ~~~
 
 Source continuation:
 
 ~~~text
 G1-B1B -> G1-final
-plus a theorem-backed negative-QW entry
-  (S-NEG or an exact W/localized-additive/QW composition)
++
+theorem-backed negative-QW entry
 -> G23 -> F1.
 ~~~
-
-The source interface theorems do not themselves transport the W1 sign. This is a permanent route firewall, not a prose convention.
 
 Shared target:
 
@@ -281,7 +273,7 @@ off-line zero
      Re(quadraticForm(canonicalSourceMatrix L N) u) < 0.
 ~~~
 
-F1 is not RH. W2-ZS is not yet a theorem. RH remains OPEN.
+F1 is not RH. RH remains OPEN.
 
 ## Evidence and authority order
 
