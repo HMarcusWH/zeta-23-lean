@@ -80,13 +80,14 @@ def periodicSecondDerivMap
     (hh : ContDiff ℝ 2 h)
     (hs : tsupport h ⊆ Ioo 0 L) :
     C(AddCircle L, ℂ) := by
+  letI : Fact (0 < L) := ⟨hL⟩
   have hj := strictSupport_endpoint_jet_package (L := L) (h := h) hs
   have hdd : Continuous (deriv (deriv h)) := by
     have hd : ContDiff ℝ 1 (deriv h) := by
       simpa using hh.deriv'
     exact hd.continuous_deriv_one
   exact ⟨AddCircle.liftIoc L 0 (deriv (deriv h)),
-    AddCircle.liftIoc_zero_continuous hL hj.2.2.2.2.2 hdd.continuousOn⟩
+    AddCircle.liftIoc_zero_continuous hj.2.2.2.2.2 hdd.continuousOn⟩
 
 /-- Finite AddCircle Fourier polynomial encoded by a Finsupp coefficient vector. -/
 def addCircleFourierPolynomial
