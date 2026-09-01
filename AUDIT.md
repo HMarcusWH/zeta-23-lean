@@ -6,24 +6,26 @@ The pre-fork-facing Zeta23 audit is preserved verbatim in [UPSTREAM_AUDIT.md](UP
 
 ## Current validation baseline
 
-```text
+~~~text
 repository: HMarcusWH/zeta-23-lean
-base main before PR #77: 2ac1dccbefba01a4d3d4b0672fe87935ab159801
-PR #77 theorem-green head: 509645ad2b30288d175ff2ef5a6651839991649e
-PR #77 final promoted/synchronized head: cd20d84e30038a7d14da1e8ee1d2ca1920d344fd
-final #77 workflow state: GREEN
-```
+main: 3e39ce86d27a4c642a1e0364f1954968ce22f1f4
+tree: 6935902fbbb950847e1cdd16a61d95704e3a760d
+merged through: PR #79
+W0 theorem-green head: c8112f0ad12e0b2c2f1261cea3ba7726aa04be54
+date: 2026-09-01
+RH: OPEN
+~~~
 
-The final #77 head passed the RHRC claim/regression suite, R003 normalization/source firewall, R004 scalar-shift audit, CCM build, ExceptionalZero build, no-placeholder gate, and the independent verification workflow. Live GitHub `main` and merge metadata remain authoritative for the eventual merge commit SHA; this audit records the exact validated theorem/promotion object.
+The exact W0 head passed the RHRC claim/regression suite, R003 normalization/source firewall, R004 scalar-shift audit, CCM build, ExceptionalZero build, no-placeholder gate, and the independent verification workflow. The headline W0 theorems have axiom surface `[propext, Classical.choice, Quot.sound]`.
 
-Recent documentation history:
+Recent state history:
 
 - PR #73 repaired source-normalization semantics;
-- PR #72 theorem-locked G1-B1A finite `kappa`/source-sector transport;
-- PR #74 reset the living repository documentation;
-- PR #75 synchronized the merged G1-B1A state;
-- PR #76 added the living lead ledger and current-plan SSOTs;
-- PR #77 theorem-locked and promoted W2-A.
+- PR #75 synchronized G1-B1A;
+- PR #76 added living research-control SSOTs;
+- PR #77 theorem-locked W2-A;
+- PR #78 synchronized the post-W2-A plan;
+- PR #79 theorem-locked W0: off-line zero -> one compact C² pole-neutral negative genuine Weil test.
 
 
 ## Fork audit surfaces
@@ -93,26 +95,46 @@ Those files describe the preserved upstream formalization layer.
 
 ## Current claim firewall
 
-G1-B1A is merged and registered: the finite source coordinate transport and zero-extended `kappa` image are theorem-locked. This does not include multiplicative-Haar/L2 or ambient source-functional semantics.
+G1-B1A remains merged and registered: finite source coordinate transport and zero-extended `kappa` image are theorem-locked. This does not include multiplicative-Haar/L² or ambient source-functional semantics.
 
-W2-A has passed exact-head Lean/CI and is promoted in PR #77: for the concrete zeta configuration, admissible pairs satisfy both W-summand summability and
+W2-A is merged and registered:
 
 ~~~text
-W(f,g) = EF.literatureRHS (EF.weilTest f g).
+Summable Wsummand(f,g)
+and
+W(f,g) = EF.literatureRHS(EF.weilTest f g)
 ~~~
 
-The theorem requires `f` to be C² compactly supported and `g` only continuous compactly supported. The audited axiom surface is `[propext, Classical.choice, Quot.sound]`. This does not yet prove W2-B reflection/evenization, W2-C diagonal additive identification, W0 contraction, F1, or RH.
+on the exact asymmetric compact-support regularity class.
+
+W0 is now merged and registered as `R003_NEGATIVE_WEIL_TEST_CONTRACTION`. For every concrete off-line zero, Lean proves a compact C² test `h` with
+
+~~~text
+paperFT h ( I/2) = 0
+paperFT h (-I/2) = 0
+Re (zetaZeroConfig.W h h) < 0.
+~~~
+
+The physical contraction uses the exact coefficient convention
+
+~~~text
+h = ‖C‖ * k - conj(C) * translateRight k t.
+~~~
+
+This does **not** prove W1 recentering, W2-B reflection/evenization, W2-C additive identification, F0-B finite approximation, G1-B1B/G1-final/G23, F1, a first canonical crossing theorem, finite-negative exclusion, or RH.
 
 The repository does **not** claim:
 
 - the ambient external `QW_lambda/PsiSharp` correspondence;
 - `QW_lambda|E_N = canonicalSourceMatrix`;
-- source form-core / Rayleigh-bottom convergence;
-- fixed-aperture Suzuki closure;
+- source form-core / strict negative finite transfer;
+- F1;
+- a theorem-backed K0-K3 terminal reduction;
 - canonical finite-negative exclusion;
 - RH.
 
-Validated branch heads are evidence for the exact checked object; merged repository truth is determined by live GitHub main plus the machine registries.
+Merged repository truth is determined by live GitHub main plus the machine registries and exact Lean declarations.
+
 
 ## Audit authority
 
