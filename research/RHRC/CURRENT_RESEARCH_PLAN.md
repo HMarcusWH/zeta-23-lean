@@ -406,9 +406,9 @@ W2-A was cashed out through four explicit pairwise `Summable` certificates befor
 
 ### Post-green implications
 
-- W1 is now the route-general frontier.
-- Pole neutrality survives the contraction.
-- The internal W2-B package can be specialized to the actual pole-neutral negative test class.
+- W1 subsequently closed and PR #83 then closed the zero-side diagonal bridge; F0-B is now the route-general internal frontier.
+- Pole neutrality survives the contraction and is preserved by the stronger #83 localized-additive cash-out.
+- The internal analytic W2-B package remains available only as a dormant independent cross-check.
 - X4.6 remains an independent canonical/countable detector criterion, not a required dependency for F1.
 - No reality/evenness property is claimed for the contracted `h`.
 
@@ -1117,7 +1117,5 @@ F0-B2:
 ~~~
 
 
-
-RH remains OPEN.
 
 RH remains OPEN.
