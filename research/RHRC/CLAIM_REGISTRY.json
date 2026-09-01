@@ -440,6 +440,20 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "F0-B1B. PR #88 exact theorem head 5e943d8cd6825c3c649198c52d90d1ed5d8d8b47 and synthetic merge 9eb9281394684600b35a58ce2cb3c757d06379cc passed RHRC #609 and Permansson #382. Production axiom surface [propext, Classical.choice, Quot.sound]. Supporting declarations include centeredMoment_boundaryFlatCorrection, boundaryFlatProject_eq_self_of_boundaryFlat, boundaryFlatProject_idempotent, localizedFiniteFunction_zero_eq_centeredMoment_zero, localizedFiniteFirstJet_zero_eq_centeredMoment_one, and localizedFiniteSecondJet_zero_eq_centeredMoment_two. The production construction explicitly requires 1<=N; N=0 is degenerate. This claim proves exact algebraic projection only. It does not prove quantitative correction norm bounds, finite Fourier density, W continuity, strict sign transfer, F1, ambient QW_lambda, finite-negative exclusion, K0-K3, or RH. At documentation time PR #88 was green but not yet merged; this registry entry is therefore branch-local until the PR is merged."
+    },
+    {
+      "id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "statement": "For the concrete zeta zero configuration and one fixed support radius Lambda>=0, if f is C^2 and g is continuous with both supports inside |x|<=Lambda, then the genuine Weil form satisfies ||W(f,g)|| <= exp(Lambda) * zetaInvSqZeroMass * (integral ||f|| + integral ||f''||) * integral ||g||. The exact diagonal cross-term identity and self-form perturbation bound are also theorem-locked with summability justified before tsum algebra.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+        "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST"
+      ],
+      "source": "Zeta23/ExceptionalZero/WeilContinuity.lean",
+      "theorem": "Zeta23.ExceptionalZero.zeta_W_norm_le_commonSupport",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "WCONT-A. PR #89 exact theorem head 4bcd49e0b8029ac7381c7829a18fefea11f20ba1 and synthetic merge 725a562d88a3af654a7050397031cd33b2bcda21 (tree f56b3a200d0ac70df3219a158f6c77c85fc34108) passed RHRC #619 and Permansson #392. Production axiom surface [propext, Classical.choice, Quot.sound]. Supporting declarations include Zeta23.norm_paperFT_mul_one_add_normSq_le, Zeta23.ExceptionalZero.zeta_invSqZeroWeight_summable, Zeta23.ExceptionalZero.norm_zeta_Wsummand_le_commonSupport, Zeta23.ExceptionalZero.zeta_W_self_sub_self_eq_cross, and Zeta23.ExceptionalZero.zeta_W_self_sub_self_norm_le_commonSupport. This closes the family-independent genuine-W continuity seam on a fixed support envelope. It does not prove finite Fourier approximation, projection-smallness, strict finite sign transfer, F1, ambient QW_lambda, finite-negative exclusion, K0-K3, or RH. At documentation time PR #89 was green but not yet merged; this registry entry is branch-local until merge."
     }
   ]
 }
