@@ -373,4 +373,60 @@ theorem exists_zeroModeFree_addCircleFourierPolynomial_norm_sub_lt
     _ < δ + δ := add_lt_add hd hd0lt
     _ = 2 * δ := by ring
 
+
+/-- The periodic second derivative has zero Fourier coefficient at index zero.
+This is the fundamental theorem of calculus plus the strict-collar first-jet
+seam condition. -/
+theorem periodicSecondDerivMap_fourierCoeff_zero
+    {L : ℝ} {h : ℝ → ℂ}
+    (hL : 0 < L)
+    (hh : ContDiff ℝ 2 h)
+    (hs : tsupport h ⊆ Ioo 0 L) :
+    AddCircle.fourierCoeff
+      (periodicSecondDerivMap L h hL hh hs) 0 = 0 := by
+  letI : Fact (0 < L) := ⟨hL⟩
+  have hj := strictSupport_endpoint_jet_package (L := L) (h := h) hs
+  have hd : Differentiable ℝ (deriv h) :=
+    hh.differentiable_deriv_two
+  have hdd : Continuous (deriv (deriv h)) := by
+    have hd1 : ContDiff ℝ 1 (deriv h) := by
+      simpa using hh.deriv'
+    exact hd1.continuous_deriv_one
+  have hFTC :
+      (∫ x in (0 : ℝ)..L, deriv (deriv h) x) = 0 := by
+    calc
+      (∫ x in (0 : ℝ)..L, deriv (deriv h) x)
+          = deriv h L - deriv h 0 := by
+              exact intervalIntegral.integral_deriv_eq_sub
+                (fun x _ => (hd x).hasDerivAt)
+                (hdd.intervalIntegrable 0 L)
+      _ = 0 := by rw [hj.2.2.1, hj.2.2.2.1, sub_self]
+  have hOn :
+      AddCircle.fourierCoeffOn hL (deriv (deriv h)) 0 = 0 := by
+    rw [AddCircle.fourierCoeffOn_eq_integral]
+    simp only [neg_zero, AddCircle.fourier_zero, one_smul]
+    rw [hFTC]
+    simp
+  change AddCircle.fourierCoeff
+      (AddCircle.liftIoc L 0 (deriv (deriv h))) 0 = 0
+  simpa [AddCircle.fourierCoeffOn] using hOn
+
+/-- A strict-collar C² function has a zero-mode-free finite Fourier polynomial
+uniformly approximating its periodic second derivative. -/
+theorem exists_zeroModeFree_secondDeriv_fourierPolynomial
+    {L : ℝ} {h : ℝ → ℂ}
+    (hL : 0 < L)
+    (hh : ContDiff ℝ 2 h)
+    (hs : tsupport h ⊆ Ioo 0 L)
+    {δ : ℝ} (hδ : 0 < δ) :
+    ∃ c : ℤ →₀ ℂ,
+      c 0 = 0 ∧
+      ‖addCircleFourierPolynomial c -
+          periodicSecondDerivMap L h hL hh hs‖ < 2 * δ := by
+  letI : Fact (0 < L) := ⟨hL⟩
+  exact exists_zeroModeFree_addCircleFourierPolynomial_norm_sub_lt
+    (periodicSecondDerivMap L h hL hh hs)
+    (periodicSecondDerivMap_fourierCoeff_zero hL hh hs)
+    hδ
+
 end Zeta23.CCM
