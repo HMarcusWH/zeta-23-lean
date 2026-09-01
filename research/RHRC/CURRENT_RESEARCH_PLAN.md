@@ -206,6 +206,7 @@ AddCircle.fourierCoeff_eq_intervalIntegral
 AddCircle.fourierCoeffOn_eq_integral
 AddCircle.fourierCoeffOn_of_hasDerivAt
 AddCircle.hasDerivAt_fourier
+Finsupp.mem_span_range_iff_exists_finsupp
 ~~~
 
 Therefore do **not** rebuild Stone-Weierstrass and do not start with Fejer.
@@ -215,14 +216,15 @@ Preferred F0-B1C construction:
 1. use the W1 strict collar to regard h as a C² periodic function across the 0/L seam;
 2. regard h'' as a continuous map on `AddCircle L`;
 3. use `span_fourier_closure_eq_top` to choose a finite trigonometric polynomial r uniformly close to h'';
-4. prove `integral_0^L h'' = h'(L)-h'(0)=0`, then subtract the constant/mean mode of r, preserving finite Fourier span and increasing the uniform error by only a fixed factor;
-5. integrate every nonzero Fourier mode of the mean-zero polynomial twice, using the exact frequency `2*pi*i*n/L`;
-6. choose the constant mode of q to match the mean of h;
-7. prove q'' equals the corrected polynomial exactly;
-8. recover q' and q from q''-h'' by fixed-L periodic integration/Poincare estimates;
-9. obtain endpoint q'', q', q residuals; the strict collar gives h(0)=h'(0)=h''(0)=0;
-10. convert endpoint residuals to M0,M1,M2 with #88 and apply `boundaryFlatProject`;
-11. prove the fixed three-mode correction is small in the WCONT-A norm.
+4. extract the finite span element as explicit coefficients `c : ℤ →₀ ℂ` via `Finsupp.mem_span_range_iff_exists_finsupp`;
+5. prove `integral_0^L h'' = h'(L)-h'(0)=0`, then subtract the constant/mean mode, preserving finite support and increasing the uniform error by only a fixed factor;
+6. integrate every nonzero Fourier mode of the mean-zero polynomial twice, using the exact frequency `2*pi*i*n/L`;
+7. choose the constant mode of q to match the mean of h;
+8. prove q'' equals the corrected polynomial exactly;
+9. recover q' and q from q''-h'' by fixed-L periodic integration/Poincare estimates;
+10. obtain endpoint q'', q', q residuals; the strict collar gives h(0)=h'(0)=h''(0)=0;
+11. convert endpoint residuals to M0,M1,M2 with #88 and apply `boundaryFlatProject`;
+12. prove the fixed three-mode correction is small in the WCONT-A norm.
 
 ### Why this is smaller than the previous Stone-Weierstrass lead
 
@@ -234,7 +236,7 @@ Mathlib has already proved that the finite span of the exact Fourier characters 
 
 ### Fast falsifiers
 
-- extracting a concrete finite coefficient vector from membership in the Fourier span is unexpectedly expensive;
+- converting the already-extracted finite `ℤ →₀ ℂ` support into the repository's centered `Fin (2*N+1)` coordinates is unexpectedly expensive;
 - mean-zero removal is awkward under the exact continuous-map representation;
 - the twice-integrated finite polynomial does not align cleanly with `localizedMode/centeredIndex`;
 - fixed-L periodic integration estimates are harder than the boundary-killer fallback.
