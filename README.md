@@ -148,7 +148,7 @@ Therefore the next load-bearing theorem is not another Weil-form theorem. It is 
 
 Endpoint value/first-jet/second-jet control remains necessary only to make the exact #88 three-mode projection quantitatively small.
 
-A high-priority lead is to use pinned Mathlib's RCLike Stone-Weierstrass theorem to approximate the periodic second derivative first, enforce zero mean, and integrate twice into the finite Fourier sector. This is a LEAD, not yet a repository theorem.
+A high-priority lead is now more specific than generic Stone-Weierstrass: pinned Mathlib's `Mathlib/Analysis/Fourier/AddCircle.lean` already theorem-locks the exact circle Fourier characters, `AddCircle.span_fourier_closure_eq_top` (uniform density of their finite linear span), and `AddCircle.fourierCoeffOn_of_hasDerivAt` (integration-by-parts control of Fourier coefficients). The preferred F0-B1C experiment is therefore to uniformly approximate the periodic second derivative directly in that existing Fourier span, enforce zero mean, and integrate twice into the repository's centered finite sector. This is a LEAD, not yet a repository theorem.
 
 ## Projection-smallness firewall
 
@@ -215,7 +215,7 @@ PARALLEL SOURCE
   S-GEOM / S-IFACE / G1-final / S-NEG / G23
 ~~~
 
-Pinned Mathlib does not currently supply a ready Fejer theorem. Do not hide a load-bearing density argument behind “standard Fourier approximation.”
+Pinned Mathlib does not need to supply a Fejer theorem for the preferred route: `AddCircle.span_fourier_closure_eq_top` already gives the needed uniform finite-span density on the periodic circle. Direct Fejer remains a fallback, not the default.
 
 ## Post-F1 boundary
 
