@@ -86,8 +86,10 @@ def periodicSecondDerivMap
     have hd : ContDiff ℝ 1 (deriv h) := by
       simpa using hh.deriv'
     exact hd.continuous_deriv_one
+  have hseam : deriv (deriv h) 0 = deriv (deriv h) L := by
+    rw [hj.2.2.2.2.1, hj.2.2.2.2.2]
   exact ⟨AddCircle.liftIoc L 0 (deriv (deriv h)),
-    AddCircle.liftIoc_zero_continuous hj.2.2.2.2.2 hdd.continuousOn⟩
+    AddCircle.liftIoc_zero_continuous hseam hdd.continuousOn⟩
 
 /-- Finite AddCircle Fourier polynomial encoded by a Finsupp coefficient vector. -/
 def addCircleFourierPolynomial
