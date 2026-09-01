@@ -12,7 +12,14 @@
     {
       "route_id": "R001_exceptional_zero",
       "phase": "DISCOVERY",
-      "claim_ids": ["R001_FILTERED_ZERO_POLE", "R001_WEIL_BRIDGE", "R001_ZERO_GROWTH", "R001_PRIME_UPPER", "R001_PRIME_UPPER_EQUIV_RH", "C_RH"],
+      "claim_ids": [
+        "R001_FILTERED_ZERO_POLE",
+        "R001_WEIL_BRIDGE",
+        "R001_ZERO_GROWTH",
+        "R001_PRIME_UPPER",
+        "R001_PRIME_UPPER_EQUIV_RH",
+        "C_RH"
+      ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false
@@ -20,7 +27,11 @@
     {
       "route_id": "R002_multi_probe",
       "phase": "DISCOVERY",
-      "claim_ids": ["R002_MULTI_PROBE_SEPARATION", "R002_WINDOWED_VISIBILITY", "R002_KERNEL_ZERO_SIDE_BRIDGE"],
+      "claim_ids": [
+        "R002_MULTI_PROBE_SEPARATION",
+        "R002_WINDOWED_VISIBILITY",
+        "R002_KERNEL_ZERO_SIDE_BRIDGE"
+      ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
@@ -51,17 +62,20 @@
         "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
         "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
         "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
-        "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION"
+        "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_BOUNDARY_FLAT_PROJECTION"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "R003 is theorem-locked through PR #86 on merged main 6d5eb5b5673b6754dda4926c41a60a5b85626a44 (tree a633de6504b0e2105d3e3f33b2f1728c1219dad5). PR #86 proves F0-B1A: the three centered moments 0,1,2 define a nontrivial finite sector whose hard-window localized vectors are global C² tests and whose genuine concrete-zeta diagonal Weil value equals the canonicalSourceMatrix quadratic form. The primary internal frontier is now F0-B1B exact boundary-flat projection, followed by a family-level W-continuity/topology theorem and finite approximation/sign transfer. F0-B2 direct localized-additive continuity remains a fallback, not the co-primary route. Source work remains split by OBS-015: S-GEOM/S-IFACE/G1-B1B/G1-final establish source coordinates/interfaces/restriction, while strict source negativity is a separate S-NEG or exact sign-composition obligation before G23. F0-B, F1, K0-K3, finite-negative exclusion and RH remain open."
+      "note": "R003 merged main is currently through PR #87 at 1ad066f0a263725ea7b84447a637fcebda78e9ca (tree 41f9febd6a02282e746714c2f62407fb51ac8b30). PR #88 F0-B1B exact theorem head 5e943d8cd6825c3c649198c52d90d1ed5d8d8b47 is green under RHRC #609 and Permansson #382 with synthetic merge 9eb9281394684600b35a58ce2cb3c757d06379cc, but was still open/unmerged at documentation time. F0-B1A proves the nontrivial boundary-flat finite C² carrier and genuine-W = canonicalSourceMatrix quadratic form. F0-B1B now proves an exact N>=1 three-mode projection into that carrier, fixed-point/idempotence, and endpoint jet/moment identities. The primary internal frontier is WCONT-A: a quantitative family-independent common-support genuine-W bound, preferably exploiting the asymmetric W2-A regularity with inverse-square decay on only one Fourier leg. Then come matched finite approximation, endpoint/moment residual control, projection-smallness, strict sign transfer and F1. F0-B2 and boundary-killer multiplication remain fallbacks. Source work remains split by OBS-015: S-GEOM/S-IFACE/G1-B1B/G1-final establish source coordinates/interfaces/restriction, while strict source negativity is a separate S-NEG or exact sign-composition obligation before G23. F1, K0-K3, finite-negative exclusion and RH remain open."
     },
     {
       "route_id": "R004_prolate_v2",
       "phase": "DISCOVERY",
-      "claim_ids": ["R004_CCM_DISPLACEMENT_FORMAL"],
+      "claim_ids": [
+        "R004_CCM_DISPLACEMENT_FORMAL"
+      ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,

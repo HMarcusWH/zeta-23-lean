@@ -69,6 +69,7 @@ import Zeta23.CCM.CutoffFreeMatrix
 import Zeta23.CCM.LocalizedBasis
 import Zeta23.CCM.LocalizedFiniteSpace
 import Zeta23.CCM.BoundaryFlatFiniteSpace
+import Zeta23.CCM.BoundaryFlatProjection
 import Zeta23.CCM.LocalizedWeilRestriction
 import Zeta23.CCM.SourceWeilMatrixReconciliation
 import Zeta23.CCM.SourceNormalizationRepair

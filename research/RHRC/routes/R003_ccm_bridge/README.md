@@ -2,13 +2,26 @@
 
 Status: **ACTIVE DISCOVERY ROUTE. RH OPEN.**
 
-## Current merged authority
+## Current authority
+
+### Merged main
 
 ~~~text
-main = 6d5eb5b5673b6754dda4926c41a60a5b85626a44
-tree = a633de6504b0e2105d3e3f33b2f1728c1219dad5
-merged through = PR #86
-PR #86 theorem head = e44cc5b8539b24fa24066c98c7ff013fb83b1001
+main = 1ad066f0a263725ea7b84447a637fcebda78e9ca
+tree = 41f9febd6a02282e746714c2f62407fb51ac8b30
+merged through = PR #87
+RH = OPEN
+~~~
+
+### Exact green F0-B1B theorem candidate
+
+~~~text
+PR #88 head = 5e943d8cd6825c3c649198c52d90d1ed5d8d8b47
+synthetic merge = 9eb9281394684600b35a58ce2cb3c757d06379cc
+synthetic merge tree = d10e7b1e575624ab39fb445297f43168b1867ed1
+RHRC #609 = SUCCESS
+Permansson #382 = SUCCESS
+status at documentation time = OPEN / NOT MERGED
 RH = OPEN
 ~~~
 
@@ -25,36 +38,21 @@ off-line zero
   -> strict negative localized-additive witness              [PROVED]
   -> G1-A finite additive restriction                        [PROVED]
   -> F0-B1A boundary-flat legal finite carrier               [PROVED]
-       moments 0,1,2 = 0
-       -> hard-window vector global C²
-       -> W(v,v)=quadraticForm(canonicalSourceMatrix)u
+  -> F0-B1B exact boundary-flat projection                   [PROVED ON GREEN #88 HEAD]
 ~~~
 
-Registered #86 production claim:
+F0-B1B gives arbitrary finite coefficients with N>=1 an exact -1,0,+1 correction, exact moment cancellation, fixed-point/idempotence and endpoint jet/moment identities.
+
+Registered production claims on the #88 branch:
 
 ~~~text
 R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION
+R003_BOUNDARY_FLAT_PROJECTION
 ~~~
 
-PR #86 also proves the legal sector is nontrivial through the explicit five-mode coefficients `[1/4,-1,3/2,-1,1/4]`.
+## F0-B1B exact theorem state
 
-## Current internal frontier
-
-The primary internal route is now:
-
-~~~text
-F0-B1B exact three-mode boundary-flat projection       [NOW / OPEN]
-  -> WCONT family-level quantitative continuity        [OPEN]
-  -> finite approximation in the chosen topology      [OPEN]
-  -> strict finite sign transfer                       [OPEN]
-  -> F1 canonical finite negative obstruction          [OPEN]
-~~~
-
-F0-B2 direct localized-additive continuity remains a fallback. Its main previous advantage — avoiding the hard global-C² finite carrier problem — was removed by PR #86.
-
-### F0-B1B target
-
-For `N>=1` and moments `m0,m1,m2`, correct only centered modes `-1,0,+1`:
+For m0,m1,m2 the centered moments of u:
 
 ~~~text
 c_-1 = (m1-m2)/2
@@ -62,24 +60,98 @@ c_0  = m2-m0
 c_+1 = -(m1+m2)/2.
 ~~~
 
-The next theorem should prove the correction cancels moments 0,1,2 exactly, define an idempotent/fixed-point projection onto `BoundaryFlatCoefficients`, and expose quantitative correction bounds if they are cheap.
+Lean proves
 
-`N=0` is a real degenerate case and must stay explicit.
+~~~text
+M0(c)=-m0
+M1(c)=-m1
+M2(c)=-m2
+~~~
 
-### WCONT firewall
+and
 
-Per-family-member summability is insufficient. A successful WCONT theorem needs one uniform family majorant or another quantitative continuity argument.
+~~~text
+BoundaryFlatCoefficients N (boundaryFlatProject N hN u).
+~~~
 
-Existing leverage:
+It also proves:
+
+~~~text
+boundaryFlatProject_eq_self_of_boundaryFlat
+boundaryFlatProject_idempotent
+~~~
+
+plus exact endpoint value/first-jet/second-jet formulas in terms of M0/M1/M2.
+
+N=0 remains explicitly degenerate.
+
+### Projection caveat
+
+The correction c=P(u)-u is not generally boundary-flat. Therefore the zero-extended correction is not automatically an independent global-C² test.
+
+The full projected finite vector is the legal object. No quantitative correction norm estimate is yet proved.
+
+## Current internal frontier — WCONT-A
+
+~~~text
+WCONT-A quantitative genuine-W bound                    [NOW / OPEN]
+  -> quadratic continuity                              [OPEN]
+  -> matched finite approximation                      [OPEN]
+  -> moment/endpoint residual control                  [OPEN]
+  -> projection-smallness                              [OPEN]
+  -> strict finite sign transfer                       [OPEN]
+  -> F1 canonical finite negative obstruction          [OPEN]
+~~~
+
+F0-B2 direct localized-additive continuity and boundary-killer multiplication remain fallbacks.
+
+### WCONT-A lead
+
+W2-A already permits:
+
+~~~text
+first argument: C² + compact support
+second argument: continuous + compact support.
+~~~
+
+Together with
 
 ~~~text
 Zeta23.WeilEF.zero_sum_inv_sq_gen
 Zeta23.WeilEF.EF_zero_sum_summable_gen
 ~~~
 
-These supply the inverse-square zero weight and compact-C² Fourier decay. Test whether common support plus a family-uniform second-derivative bound closes the zero-side dominated-convergence gate.
+this suggests one inverse-square-decaying Fourier leg may be enough.
 
-Do not formalize a generic Fejer/Cesaro library before the required W topology is known.
+Candidate theorem:
+
+~~~text
+|W(f,g)|
+  <= K_Λ * (||f||_1 + ||f''||_1) * ||g||_1.
+~~~
+
+This is **LEAD / OPEN**, not a current theorem.
+
+If proved, use cross terms to obtain diagonal continuity. Do not rely on per-approximant summability as a substitute for a uniform bound.
+
+## Approximation target after WCONT-A
+
+~~~text
+strict-collar compact C² h
+  -> raw finite Fourier q_N
+  -> q_N -> h in WCONT-A topology
+  -> endpoint jets of q_N -> 0
+  -> M0,M1,M2 -> 0 by exact #88 formulas
+  -> p_N = boundaryFlatProject(q_N)
+  -> correction -> 0
+  -> p_N -> h
+  -> W(p_N,p_N) -> W(h,h)
+  -> one finite negative p_N
+  -> F0-B1A
+  -> F1
+~~~
+
+Pinned Mathlib does not currently provide a ready load-bearing Fejer theorem.
 
 ## Source-faithful route remains parallel
 
@@ -88,8 +160,6 @@ OBS-015 is permanent:
 ~~~text
 source interface is not source negativity.
 ~~~
-
-Source route:
 
 ~~~text
 S-GEOM
@@ -105,50 +175,37 @@ G23 negative ambient QW -> finite negative sector [OPEN]
   -> F1                                           [OPEN]
 ~~~
 
-No internal #86 theorem identifies ambient `QW_lambda` or proves source negativity.
-
 ## Canonical normalization firewall
-
-The direct source finite matrix authority remains
 
 ~~~text
 canonicalSourceMatrix
   = cutoffFreeMatrix
   = sourceEq44Matrix
   = dictionaryMatrix.
+
+legacyPrintedMatrix = finiteMatrix.
 ~~~
 
-Historical printed normalization remains
-
-~~~text
-legacyPrintedMatrix = finiteMatrix
-~~~
-
-with the theorem-locked scalar identity shift. No new #86 theorem changes this object map.
+PR #88 does not change this object map.
 
 ## Structural clue retained for post-F1
-
-Boundary-flat moments translate to the coefficient annihilations
 
 ~~~text
 1^T u = 0
 1^T D u = 0
 1^T D²u = 0
-~~~
 
-while the canonical matrix obeys
-
-~~~text
 D M - M D = g 1^T - 1 g^T.
 ~~~
 
-Possible simplification along the Krylov chain `u,Du,D²u` is **LEAD / HYPOTHESIS** only. Preserve the constraints in a future F1 theorem so this can be tested after F1 becomes real.
+Possible simplification along u,Du,D²u is **LEAD / HYPOTHESIS** only. Preserve the constraints in a future F1 theorem.
 
 ## Historical settlements
 
-- `W1_POST_GREEN_ZERO_SIDE_EVENIZATION_2026_09_01.md`
-- `W2_ZS_POST_GREEN_F0B_FRONTIER_2026_09_01.md`
-- `F0_B1A_POST_GREEN_PROJECTION_CONTINUITY_FRONTIER_2026_09_01.md`
+- W1_POST_GREEN_ZERO_SIDE_EVENIZATION_2026_09_01.md
+- W2_ZS_POST_GREEN_F0B_FRONTIER_2026_09_01.md
+- F0_B1A_POST_GREEN_PROJECTION_CONTINUITY_FRONTIER_2026_09_01.md
+- F0_B1B_POST_GREEN_WCONT_FRONTIER_2026_09_01.md
 
 Historical settlement files remain frozen records; this README is the living R003 route SSOT below live GitHub/Lean/CI and machine registries.
 
