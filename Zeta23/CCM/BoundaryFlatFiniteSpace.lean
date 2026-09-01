@@ -7,7 +7,7 @@ noncomputable section
 
 namespace Zeta23.CCM
 
-open Complex Set
+open Complex Set Filter
 open scoped BigOperators
 
 /-!
@@ -80,17 +80,22 @@ theorem hasDerivAt_localizedMode
       (localizedFrequency L n * localizedMode L n x) x := by
   let c : ℂ := ((1 / Real.sqrt L : ℝ) : ℂ)
   let a : ℂ := localizedFrequency L n
+  have hphase : HasDerivAt (fun z : ℂ => a * z) a (x : ℂ) := by
+    simpa using (hasDerivAt_id (x : ℂ)).const_mul a
   have hcomplex :
       HasDerivAt
         (fun z : ℂ => c * Complex.exp (a * z))
         (a * (c * Complex.exp (a * (x : ℂ)))) (x : ℂ) := by
-    have hphase : HasDerivAt (fun z : ℂ => a * z) a (x : ℂ) := by
-      simpa using (hasDerivAt_id (x : ℂ)).const_mul a
-    have hexp := hphase.cexp
-    have hscaled := hexp.const_mul c
-    convert hscaled using 1 <;> ring
+    simpa only [mul_comm, mul_left_comm, mul_assoc] using
+      hphase.cexp.const_mul c
   have hreal := hcomplex.comp_ofReal
-  simpa [c, a, localizedMode_eq_frequency_exp] using hreal
+  have hrepr :
+      localizedMode L n =
+        fun y : ℝ => c * Complex.exp (a * (y : ℂ)) := by
+    funext y
+    simp only [c, a, localizedMode_eq_frequency_exp]
+  rw [hrepr]
+  simpa only [c, a, mul_comm, mul_left_comm, mul_assoc] using hreal
 
 /-- The explicit first jet is the derivative of the finite Fourier formula. -/
 theorem hasDerivAt_localizedFiniteFunction
@@ -98,7 +103,8 @@ theorem hasDerivAt_localizedFiniteFunction
     HasDerivAt
       (localizedFiniteFunction L N u)
       (localizedFiniteFirstJet L N u x) x := by
-  simpa [localizedFiniteFunction, localizedFiniteFirstJet, mul_assoc] using
+  unfold localizedFiniteFunction localizedFiniteFirstJet
+  simpa only [mul_assoc] using
     (HasDerivAt.fun_sum
       (u := Finset.univ)
       (fun i _ =>
@@ -110,7 +116,8 @@ theorem hasDerivAt_localizedFiniteFirstJet
     HasDerivAt
       (localizedFiniteFirstJet L N u)
       (localizedFiniteSecondJet L N u x) x := by
-  simpa [localizedFiniteFirstJet, localizedFiniteSecondJet, pow_two, mul_assoc] using
+  unfold localizedFiniteFirstJet localizedFiniteSecondJet
+  simpa only [pow_two, mul_assoc] using
     (HasDerivAt.fun_sum
       (u := Finset.univ)
       (fun i _ =>
@@ -270,96 +277,99 @@ theorem hasDerivAt_indicator_Icc_of_endpoint_jets_zero
     HasDerivAt
       ((Icc (0 : ℝ) L).indicator f)
       ((Icc (0 : ℝ) L).indicator f₁ x) x := by
-  by_cases hx0 : x < 0
+  by_cases hxlt0 : x < 0
   · have hxmem : x ∉ Icc (0 : ℝ) L := by
       intro hx
-      exact (not_lt_of_ge hx.1) hx0
+      exact (not_lt_of_ge hx.1) hxlt0
     rw [Set.indicator_of_notMem hxmem]
     refine (hasDerivAt_const x (0 : ℂ)).congr_of_eventuallyEq ?_
-    filter_upwards [Iio_mem_nhds hx0] with y hy
+    filter_upwards [Iio_mem_nhds hxlt0] with y hy
     have hymem : y ∉ Icc (0 : ℝ) L := by
       intro h
       exact (not_lt_of_ge h.1) hy
-    simp [Set.indicator_of_notMem hymem]
-  · have hx0le : 0 ≤ x := le_of_not_gt hx0
-    by_cases hxL : L < x
+    exact Set.indicator_of_notMem hymem f
+  · have hx0 : 0 ≤ x := le_of_not_gt hxlt0
+    by_cases hxgtL : L < x
     · have hxmem : x ∉ Icc (0 : ℝ) L := by
         intro hx
-        exact (not_lt_of_ge hx.2) hxL
+        exact (not_lt_of_ge hx.2) hxgtL
       rw [Set.indicator_of_notMem hxmem]
       refine (hasDerivAt_const x (0 : ℂ)).congr_of_eventuallyEq ?_
-      filter_upwards [Ioi_mem_nhds hxL] with y hy
+      filter_upwards [Ioi_mem_nhds hxgtL] with y hy
       have hymem : y ∉ Icc (0 : ℝ) L := by
         intro h
         exact (not_lt_of_ge h.2) hy
-      simp [Set.indicator_of_notMem hymem]
-    · have hxLle : x ≤ L := le_of_not_gt hxL
-      rcases hx0le.eq_or_lt with rfl | hx0pos
-      · have hleft :
+      exact Set.indicator_of_notMem hymem f
+    · have hxL : x ≤ L := le_of_not_gt hxgtL
+      by_cases hxzero : x = 0
+      · subst x
+        have hleft :
             HasDerivWithinAt
               ((Icc (0 : ℝ) L).indicator f) 0 (Iic (0 : ℝ)) 0 := by
           refine (hasDerivWithinAt_const (x := (0 : ℝ)) (s := Iic (0 : ℝ))
             (c := (0 : ℂ))).congr ?_ ?_
           · intro y hy
-            by_cases hy0 : y = 0
+            by_cases hyzero : y = 0
             · subst y
-              simp [hf0]
-            · have hylt : y < 0 := lt_of_le_of_ne hy hy0
+              simpa [Set.indicator_apply, hf0, hL.le]
+            · have hylt : y < 0 := lt_of_le_of_ne hy hyzero
               have hymem : y ∉ Icc (0 : ℝ) L := by
                 intro h
                 exact (not_lt_of_ge h.1) hylt
-              simp [Set.indicator_of_notMem hymem]
-          · simp [hf0]
+              exact Set.indicator_of_notMem hymem f
+          · simpa [Set.indicator_apply, hf0, hL.le]
         have hright :
             HasDerivWithinAt
               ((Icc (0 : ℝ) L).indicator f) 0 (Icc (0 : ℝ) L) 0 := by
-          have h := (hf 0).hasDerivWithinAt
+          have h := (hf 0).hasDerivWithinAt (s := Icc (0 : ℝ) L)
           rw [hf10] at h
           refine h.congr ?_ ?_
           · intro y hy
-            simp [Set.indicator_of_mem hy]
-          · simp
+            exact Set.indicator_of_mem hy f
+          · simpa [Set.indicator_apply, hf0, hL.le]
         have hu := hleft.union hright
         rw [Iic_union_Icc_eq_Iic hL.le] at hu
         have hat := hu.hasDerivAt (Iic_mem_nhds hL)
-        simpa [hf10] using hat
-      · rcases hxLle.eq_or_lt with rfl | hxLlt
-        · have hleft :
+        simpa [Set.indicator_apply, hf10, hL.le] using hat
+      · by_cases hxright : x = L
+        · subst x
+          have hleft :
               HasDerivWithinAt
                 ((Icc (0 : ℝ) L).indicator f) 0 (Icc (0 : ℝ) L) L := by
-            have h := (hf L).hasDerivWithinAt
+            have h := (hf L).hasDerivWithinAt (s := Icc (0 : ℝ) L)
             rw [hf1L] at h
             refine h.congr ?_ ?_
             · intro y hy
-              simp [Set.indicator_of_mem hy]
-            · simp
+              exact Set.indicator_of_mem hy f
+            · simpa [Set.indicator_apply, hfL, hL.le]
           have hright :
               HasDerivWithinAt
                 ((Icc (0 : ℝ) L).indicator f) 0 (Ici L) L := by
             refine (hasDerivWithinAt_const (x := L) (s := Ici L)
               (c := (0 : ℂ))).congr ?_ ?_
             · intro y hy
-              by_cases hyL : y = L
+              by_cases hyeq : y = L
               · subst y
-                simp [hfL]
-              · have hygt : L < y := lt_of_le_of_ne hy (Ne.symm hyL)
+                simpa [Set.indicator_apply, hfL, hL.le]
+              · have hygt : L < y := lt_of_le_of_ne hy (Ne.symm hyeq)
                 have hymem : y ∉ Icc (0 : ℝ) L := by
                   intro h
                   exact (not_lt_of_ge h.2) hygt
-                simp [Set.indicator_of_notMem hymem]
-            · simp [hfL]
+                exact Set.indicator_of_notMem hymem f
+            · simpa [Set.indicator_apply, hfL, hL.le]
           have hu := hleft.union hright
           rw [Icc_union_Ici_eq_Ici hL.le] at hu
           have hat := hu.hasDerivAt (Ici_mem_nhds hL)
-          simpa [hf1L] using hat
-        · have hxmem : x ∈ Icc (0 : ℝ) L := ⟨hx0pos.le, hxLlt.le⟩
-          have h := hf x
+          simpa [Set.indicator_apply, hf1L, hL.le] using hat
+        · have hx0pos : 0 < x := lt_of_le_of_ne hx0 (Ne.symm hxzero)
+          have hxLlt : x < L := lt_of_le_of_ne hxL hxright
+          have hxmem : x ∈ Icc (0 : ℝ) L := ⟨hx0pos.le, hxLlt.le⟩
           have heq :
               ((Icc (0 : ℝ) L).indicator f) =ᶠ[𝓝 x] f := by
             filter_upwards [Ioo_mem_nhds hx0pos hxLlt] with y hy
-            simp [Set.indicator_of_mem ⟨hy.1.le, hy.2.le⟩]
-          have h' := h.congr_of_eventuallyEq heq
-          simpa [Set.indicator_of_mem hxmem] using h'
+            exact Set.indicator_of_mem ⟨hy.1.le, hy.2.le⟩ f
+          have h' := (hf x).congr_of_eventuallyEq heq
+          simpa [Set.indicator_apply, hxmem] using h'
 
 /-- Continuous hard zero extension of a continuous function vanishing at both
 endpoints. -/
@@ -370,13 +380,15 @@ theorem continuous_indicator_Icc_of_endpoint_zero
     (hf0 : f 0 = 0) (hfL : f L = 0) :
     Continuous ((Icc (0 : ℝ) L).indicator f) := by
   classical
-  rw [Set.indicator]
-  exact continuous_piecewise
-    (fun x hx => by
-      rw [frontier_Icc hL.le] at hx
-      rcases hx with rfl | rfl <;> simp [hf0, hfL])
-    hf.continuousOn
-    continuousOn_const
+  have hboundary :
+      ∀ x ∈ frontier (Icc (0 : ℝ) L), f x = (0 : ℝ → ℂ) x := by
+    intro x hx
+    rw [frontier_Icc hL.le] at hx
+    rcases hx with rfl | rfl <;> simp [hf0, hfL]
+  have hpiece :
+      Continuous (Set.piecewise (Icc (0 : ℝ) L) f (0 : ℝ → ℂ)) :=
+    hf.piecewise hboundary continuous_const
+  simpa only [Set.piecewise_eq_indicator] using hpiece
 
 /-- Second-order hard-window gluing from explicit derivative witnesses. -/
 theorem contDiff_two_indicator_Icc_of_endpoint_jets_zero
@@ -405,9 +417,10 @@ theorem contDiff_two_indicator_Icc_of_endpoint_jets_zero
       continuous_indicator_Icc_of_endpoint_zero hL hf₂ hf20 hf2L
   have hderivF : deriv F = F₁ := deriv_eq hF
   have hderivF₁ : deriv F₁ = F₂ := deriv_eq hF₁
-  rw [show (2 : ℕ∞ω) = 1 + 1 by norm_num, contDiff_succ_iff_deriv]
+  rw [show (2 : ℕ∞ω) = 1 + 1 from rfl, contDiff_succ_iff_deriv]
   refine ⟨fun x => (hF x).differentiableAt, ?_, ?_⟩
-  · norm_num
+  · intro h
+    norm_num at h
   · rw [hderivF, contDiff_one_iff_deriv]
     refine ⟨fun x => (hF₁ x).differentiableAt, ?_⟩
     rw [hderivF₁]
