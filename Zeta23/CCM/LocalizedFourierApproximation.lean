@@ -72,24 +72,21 @@ theorem strictSupport_endpoint_jet_package
     value_eq_zero_of_not_mem_tsupport hddLnot⟩
 
 /-- Continuous periodic incarnation of the second derivative of a strict-collar
-C² function. -/
+C² function. The positive-aperture and seam hypotheses are explicit: this
+object is not defined by inventing behavior for nonpositive periods. -/
 def periodicSecondDerivMap
-    (L : ℝ) (h : ℝ → ℂ) :
-    C(AddCircle L, ℂ) :=
-  ⟨AddCircle.liftIoc L 0 (deriv (deriv h)), by
-    by_cases hL : 0 < L
-    · have hj := strictSupport_endpoint_jet_package
-        (L := L) (h := h)
-        (hs := fun _ hx => by
-          exfalso
-          exact (not_lt_of_ge (le_of_not_gt hL)) (lt_trans (show 0 < (0 : ℝ) + L by simpa using hL) hx.2))
-      exact AddCircle.liftIoc_zero_continuous hL hj.2.2.2.2.2
-        (by
-          have hh : Continuous (deriv (deriv h)) := by
-            exact continuous_of_forall_continuousAt fun x =>
-              continuousAt_of_eq (by rfl) continuousAt_const
-          exact hh.continuousOn)
-    · exact continuous_of_discreteTopology⟩
+    (L : ℝ) (h : ℝ → ℂ)
+    (hL : 0 < L)
+    (hh : ContDiff ℝ 2 h)
+    (hs : tsupport h ⊆ Ioo 0 L) :
+    C(AddCircle L, ℂ) := by
+  have hj := strictSupport_endpoint_jet_package (L := L) (h := h) hs
+  have hdd : Continuous (deriv (deriv h)) := by
+    have hd : ContDiff ℝ 1 (deriv h) := by
+      simpa using hh.deriv'
+    exact hd.continuous_deriv_one
+  exact ⟨AddCircle.liftIoc L 0 (deriv (deriv h)),
+    AddCircle.liftIoc_zero_continuous hL hj.2.2.2.2.2 hdd.continuousOn⟩
 
 /-- Finite AddCircle Fourier polynomial encoded by a Finsupp coefficient vector. -/
 def addCircleFourierPolynomial
@@ -124,13 +121,7 @@ theorem localizedFrequency_ne_zero
     {L : ℝ} (hL : 0 < L) {n : ℤ} (hn : n ≠ 0) :
     localizedFrequency L n ≠ 0 := by
   rw [localizedFrequency_eq_addCircle_frequency]
-  apply div_ne_zero
-  · exact mul_ne_zero
-      (mul_ne_zero
-        (ofReal_ne_zero.mpr (mul_ne_zero two_ne_zero Real.pi_ne_zero))
-        Complex.I_ne_zero)
-      (Int.cast_ne_zero.mpr hn)
-  · exact ofReal_ne_zero.mpr hL.ne'
+  simp [hL.ne', Real.pi_ne_zero, hn, Complex.I_ne_zero]
 
 /-- The coordinate slot centered at zero. -/
 def centeredZeroIndex (N : ℕ) : Fin (2 * N + 1) :=
