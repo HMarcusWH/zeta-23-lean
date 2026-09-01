@@ -579,4 +579,97 @@ theorem localizedFiniteSecondJet_twicePrimitive_eq
     _ = addCircleFourierPolynomial c (x : AddCircle L) := by
       simp [addCircleFourierPolynomial, smul_eq_mul]
 
+
+/-- Replace only the zero-frequency coefficient so that the finite Fourier
+function is anchored to vanish at the left endpoint. -/
+def anchorLocalizedCoefficients
+    (N : ℕ) (u : Fin (2 * N + 1) → ℂ) :
+    Fin (2 * N + 1) → ℂ :=
+  fun i =>
+    if i = centeredZeroIndex N then
+      -∑ j ∈ Finset.univ.erase (centeredZeroIndex N), u j
+    else
+      u i
+
+/-- The anchored coefficient vector has total coefficient sum zero. -/
+theorem sum_anchorLocalizedCoefficients
+    (N : ℕ) (u : Fin (2 * N + 1) → ℂ) :
+    ∑ i, anchorLocalizedCoefficients N u i = 0 := by
+  classical
+  let z : Fin (2 * N + 1) := centeredZeroIndex N
+  rw [← Finset.sum_erase_add _ _ (Finset.mem_univ z)]
+  simp only [anchorLocalizedCoefficients]
+  have hz :
+      (if z = centeredZeroIndex N then
+          -∑ j ∈ Finset.univ.erase (centeredZeroIndex N), u j
+        else u z)
+        =
+      -∑ j ∈ Finset.univ.erase z, u j := by
+    simp [z]
+  rw [hz]
+  have hrest :
+      ∑ x ∈ Finset.univ.erase z,
+        (if x = centeredZeroIndex N then
+            -∑ j ∈ Finset.univ.erase (centeredZeroIndex N), u j
+          else u x)
+        =
+      ∑ x ∈ Finset.univ.erase z, u x := by
+    apply Finset.sum_congr rfl
+    intro x hx
+    have hxz : x ≠ z := by
+      exact Finset.ne_of_mem_erase hx
+    simp [z, hxz]
+  rw [hrest]
+  abel
+
+/-- Anchoring the zero mode forces the formula-level finite Fourier function
+to vanish at the left endpoint. -/
+theorem localizedFiniteFunction_anchor_zero
+    (L : ℝ) (N : ℕ) (u : Fin (2 * N + 1) → ℂ) :
+    localizedFiniteFunction L N (anchorLocalizedCoefficients N u) 0 = 0 := by
+  unfold localizedFiniteFunction
+  simp_rw [localizedMode_zero]
+  rw [← Finset.sum_mul]
+  rw [sum_anchorLocalizedCoefficients]
+  simp
+
+/-- Anchoring changes only the zero-frequency coefficient, hence the first
+formula-level jet is unchanged. -/
+theorem localizedFiniteFirstJet_anchor
+    (L : ℝ) (N : ℕ) (u : Fin (2 * N + 1) → ℂ) (x : ℝ) :
+    localizedFiniteFirstJet L N (anchorLocalizedCoefficients N u) x =
+      localizedFiniteFirstJet L N u x := by
+  unfold localizedFiniteFirstJet anchorLocalizedCoefficients
+  apply Finset.sum_congr rfl
+  intro i hi
+  by_cases hiz : i = centeredZeroIndex N
+  · subst i
+    simp
+  · simp [hiz]
+
+/-- Anchoring changes only the zero-frequency coefficient, hence the second
+formula-level jet is unchanged. -/
+theorem localizedFiniteSecondJet_anchor
+    (L : ℝ) (N : ℕ) (u : Fin (2 * N + 1) → ℂ) (x : ℝ) :
+    localizedFiniteSecondJet L N (anchorLocalizedCoefficients N u) x =
+      localizedFiniteSecondJet L N u x := by
+  unfold localizedFiniteSecondJet anchorLocalizedCoefficients
+  apply Finset.sum_congr rfl
+  intro i hi
+  by_cases hiz : i = centeredZeroIndex N
+  · subst i
+    simp
+  · simp [hiz]
+
+/-- The anchored finite Fourier function also vanishes at the right endpoint
+by periodicity. -/
+theorem localizedFiniteFunction_anchor_right_zero
+    {L : ℝ} (hL : 0 < L)
+    (N : ℕ) (u : Fin (2 * N + 1) → ℂ) :
+    localizedFiniteFunction L N (anchorLocalizedCoefficients N u) L = 0 := by
+  have hp :=
+    localizedFiniteFunction_add_period
+      L N (anchorLocalizedCoefficients N u) 0 hL.ne'
+  simpa using hp.trans (localizedFiniteFunction_anchor_zero L N u)
+
 end Zeta23.CCM
