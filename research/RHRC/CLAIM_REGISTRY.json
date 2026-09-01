@@ -359,7 +359,7 @@
       "theorem": "Zeta23.ExceptionalZero.zeta_W_literatureRHS_package",
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "W2-A. Exact-head CI on PR #77 theorem head 509645ad2b30288d175ff2ef5a6651839991649e proves the pairwise summability/equality package with axiom surface [propext, Classical.choice, Quot.sound]. The regularity is stronger than originally planned in one leg: g need only be continuous, not C^2. This does not prove literatureRHS reflection/evenization, W(f,f)=localizedWeilAdditiveRHS(f,f), the two-translate matrix-to-single-test contraction, finite approximation, QW_lambda, F1, or RH."
+      "note": "W2-A. Exact-head CI on PR #77 theorem head 509645ad2b30288d175ff2ef5a6651839991649e proves the pairwise summability/equality package with axiom surface [propext, Classical.choice, Quot.sound]. The regularity is stronger than originally planned in one leg: g need only be continuous, not C^2. This claim itself does not prove zero-side reflection/evenization or the diagonal localized-additive identity; those are now separately theorem-locked by PR #83 under R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE. It also does not prove finite approximation, ambient QW_lambda, F1, or RH."
     },
     {
       "id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
@@ -372,7 +372,7 @@
       "theorem": "Zeta23.ExceptionalZero.exists_poleNeutral_negativeWeilTest_of_offLine_zero",
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "W0. Exact theorem head c8112f0ad12e0b2c2f1261cea3ba7726aa04be54 passed the CCM build, ExceptionalZero build, no-placeholder gate, RHRC regression suite, normalization/source firewalls, and independent verification workflow with axiom surface [propext, Classical.choice, Quot.sound]. The proof uses the existing X3 strict correlation-over-diagonal witness directly, not the X4.6 canonical determinant endpoint; it preserves the two pole-killing Fourier zeros under the physical phase contraction h=||C||*k-conj(C)*T_t k. This does not prove W1 recentering, W2-B/C, F0-B, G1-B1B/G1-final/G23, F1, finite-negative exclusion, or RH."
+      "note": "W0. Exact theorem head c8112f0ad12e0b2c2f1261cea3ba7726aa04be54 passed the CCM build, ExceptionalZero build, no-placeholder gate, RHRC regression suite, normalization/source firewalls, and independent verification workflow with axiom surface [propext, Classical.choice, Quot.sound]. The proof uses the existing X3 strict correlation-over-diagonal witness directly, not the X4.6 canonical determinant endpoint; it preserves the two pole-killing Fourier zeros under the physical phase contraction h=||C||*k-conj(C)*T_t k. This W0 claim itself does not prove W1 recentering or the #83 diagonal localized-additive bridge; those are separately registered. It does not prove F0-B, G1-B1B/G1-final/S-NEG/G23, F1, finite-negative exclusion, or RH."
     },
     {
       "id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
@@ -385,7 +385,34 @@
       "theorem": "Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero",
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "W1. Exact theorem declaration head 7abdaaf88f0e157c11049a0e65ebcb2c48fa86e2 and final promoted PR #81 head 191e34ece05739122f362d097f9e4393cd5b9ce3 passed the CCM build, ExceptionalZero build, no-placeholder gate, RHRC regression suite, normalization/source firewalls, and independent Permansson verification. PR #81 merged to main as 1a6a286cc4aae76ef6335b85b1022ec3998614df. Axiom surface [propext, Classical.choice, Quot.sound]. The proof is purely geometric/transport: compact tsupport is enclosed in a symmetric ball (-r,r), translateRight by 2r moves tsupport into (r,3r), L is set to 4r, paperFT_translateRight preserves the two zero values, and W_translateRight_both preserves the negative diagonal Weil value. The post-green W2-ZS one-sub zero-side evenization shortcut is research-only and is not promoted by this claim. This claim does not prove W2-ZS, W2-B/C, gamma/mu weighted integrability, F0-B, G1-B1B/G1-final/G23, F1, finite-negative exclusion, or RH."
+      "note": "W1. Exact theorem declaration head 7abdaaf88f0e157c11049a0e65ebcb2c48fa86e2 and final promoted PR #81 head 191e34ece05739122f362d097f9e4393cd5b9ce3 passed the CCM build, ExceptionalZero build, no-placeholder gate, RHRC regression suite, normalization/source firewalls, and independent Permansson verification. PR #81 merged to main as 1a6a286cc4aae76ef6335b85b1022ec3998614df. Axiom surface [propext, Classical.choice, Quot.sound]. The proof is purely geometric/transport: compact tsupport is enclosed in a symmetric ball (-r,r), translateRight by 2r moves tsupport into (r,3r), L is set to 4r, paperFT_translateRight preserves the two zero values, and W_translateRight_both preserves the negative diagonal Weil value. This W1 claim itself does not prove W2-ZS; PR #83 separately proves and registers the diagonal W/localized-additive bridge and its strict-aperture negative localized-additive cash-out. F0-B, G1-B1B/G1-final/S-NEG/G23, F1, finite-negative exclusion, and RH remain open."
+    },
+    {
+      "id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "statement": "For every complex-valued compactly supported C^2 test h, the concrete zeta genuine diagonal Weil form is exactly the repository localized additive explicit-formula RHS: zetaZeroConfig.W h h = Zeta23.CCM.localizedWeilAdditiveRHS h h.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_WEIL_PAIR_LITERATURE_BRIDGE"
+      ],
+      "source": "Zeta23/ExceptionalZero/WeilZeroSideEvenization.lean",
+      "theorem": "Zeta23.ExceptionalZero.zeta_W_self_eq_localizedWeilAdditiveRHS",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "W2-ZS / direct diagonal W2-C endpoint. PR #83 exact theorem head 556be6c2b42e912c58751988c580ab4e0091822d passed both repository workflows and merged as 7b8e0cc9abbaeff97d88ec67ada40734619a8d07. Axiom surface [propext, Classical.choice, Quot.sound]. Supporting proof surface: zeta_conj_zero, zeta_one_sub_zero, zeta_mult_one_sub, zetaOneSubEquiv with multiplicity transport, gammaOf_one_sub, exact paperFT reflection, summability-safe Equiv.tsum_eq reindexing, and zeta_literatureRHS_halfEven_eq. The proof is concrete-zeta-specific and never opens the pole/prime/gamma decomposition of literatureRHS. No aperture, pole-neutrality, mu/gamma-evenness or weighted-gamma-integrability hypothesis is required. This does not prove the old analytic W2-B route, F0-B, ambient QW_lambda, F1, finite-negative exclusion, or RH."
+    },
+    {
+      "id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "statement": "For every concrete zeta zero rho0 off the critical line, there exist L>0, r>0 with L=4r and a compactly supported C^2 pole-neutral test h whose closed support lies in (r,3r) and hence (0,L), with Re(localizedWeilAdditiveRHS h h)<0.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+        "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE"
+      ],
+      "source": "Zeta23/ExceptionalZero/WeilZeroSideEvenization.lean",
+      "theorem": "Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeLocalizedWeilAdditiveRHS_of_offLine_zero",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "Strong W1+W2-ZS cash-out from PR #83. The exact theorem preserves L=4r, C^2 regularity, compact support, tsupport inside (r,3r) and (0,L), both pole-killing Fourier zeros at +/-i/2, and strict negativity of the existing localizedWeilAdditiveRHS. Companion theorems exists_strictAperture_negativeLocalizedWeilAdditiveRHS_of_offLine_zero and exists_strictAperture_negativeLocalizedWeilAdditiveRHS_of_exists_offLine_zero expose the minimal F0-B/F1-roadmap input. This is not F0-B itself: no finite approximation or continuity theorem is proved. Source QW, F1, finite-negative exclusion and RH remain open."
     }
   ]
 }
