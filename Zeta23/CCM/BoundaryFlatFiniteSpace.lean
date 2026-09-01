@@ -8,7 +8,7 @@ noncomputable section
 namespace Zeta23.CCM
 
 open Complex Set Filter
-open scoped BigOperators
+open scoped BigOperators Topology
 
 /-!
 # F0-B1A: boundary-flat finite sector
@@ -417,7 +417,7 @@ theorem contDiff_two_indicator_Icc_of_endpoint_jets_zero
       continuous_indicator_Icc_of_endpoint_zero hL hf₂ hf20 hf2L
   have hderivF : deriv F = F₁ := deriv_eq hF
   have hderivF₁ : deriv F₁ = F₂ := deriv_eq hF₁
-  rw [show (2 : ℕ∞ω) = 1 + 1 from rfl, contDiff_succ_iff_deriv]
+  rw [show ((2 : ℕ) : WithTop ℕ∞) = 1 + 1 from rfl, contDiff_succ_iff_deriv]
   refine ⟨fun x => (hF x).differentiableAt, ?_, ?_⟩
   · intro h
     norm_num at h
