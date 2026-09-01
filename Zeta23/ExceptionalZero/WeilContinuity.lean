@@ -46,7 +46,9 @@ theorem zetaInvSqZeroMass_nonneg : 0 ≤ zetaInvSqZeroMass := by
   unfold zetaInvSqZeroMass
   exact tsum_nonneg fun ρ =>
     div_nonneg (Nat.cast_nonneg _)
-      (by positivity : 0 ≤ 1 + Complex.normSq (gammaOf (ρ : ℂ)))
+      (by
+        nlinarith [Complex.normSq_nonneg (gammaOf (ρ : ℂ))] :
+        0 ≤ 1 + Complex.normSq (gammaOf (ρ : ℂ)))
 
 /-- Pointwise common-support majorant for one genuine zeta Weil summand.
 
@@ -84,7 +86,7 @@ theorem norm_zeta_Wsummand_le_commonSupport
     integral_nonneg fun _ => norm_nonneg _
   have hG0 : 0 ≤ ∫ x, ‖g x‖ := integral_nonneg fun _ => norm_nonneg _
   have hden : 0 < 1 + Complex.normSq (gammaOf (ρ : ℂ)) := by
-    positivity
+    nlinarith [Complex.normSq_nonneg (gammaOf (ρ : ℂ))]
   have hfWeighted :=
     norm_paperFT_mul_one_add_normSq_le hf hfsupp (gammaOf (ρ : ℂ))
   have hfDiv :
@@ -147,7 +149,7 @@ theorem norm_zeta_Wsummand_le_commonSupport
         = (zetaZeroConfig.mult ρ : ℝ) *
             ‖paperFT f (gammaOf (ρ : ℂ))‖ *
             ‖paperFT g ((starRingEnd ℂ) (gammaOf (ρ : ℂ)))‖ := by
-          simp [ZeroConfig.Wsummand, Complex.norm_natCast, Complex.norm_conj]
+          simp [ZeroConfig.Wsummand]
     _ ≤ (zetaZeroConfig.mult ρ : ℝ) *
           (Real.exp (Λ / 2) *
               ((∫ x, ‖f x‖) + ∫ x, ‖deriv (deriv f) x‖) /
