@@ -76,36 +76,73 @@ A convenient construction may pass through raw periodic finite q_N plus endpoint
 
 Do not build a generic Sobolev/Fourier density library unless this minimal theorem genuinely requires it.
 
-## L-APPROX-SW-01 — second-derivative-first Stone-Weierstrass route
+## L-APPROX-ADDCIRCLE-01 — direct AddCircle Fourier-span approximation
 
-**Research status:** NEW / HIGH-PRIORITY LEAD  
+**Research status:** NEW / HIGHEST-PRIORITY LEAD  
 **Formal status:** LEAD / HYPOTHESIS
 
-Pinned Mathlib contains:
+Pinned Mathlib already proves the exact density statement needed on the periodic circle:
 
 ~~~text
-ContinuousMap.starSubalgebra_topologicalClosure_eq_top_of_separatesPoints
+AddCircle.span_fourier_closure_eq_top
 ~~~
 
-Potential route:
+with characters
 
 ~~~text
-approximate periodic h'' uniformly by finite trigonometric polynomial r
--> force mean(r)=0
--> integrate twice inside finite Fourier sector
--> choose constant mode to match mean(h)
--> recover q', q by periodic integration/Poincare bounds
--> endpoint jets small because h has a strict zero collar
--> apply boundaryFlatProject
+AddCircle.fourier n (x : AddCircle L)
+  = exp(2*pi*i*n*x/L).
+~~~
+
+These match the repository `localizedMode L n` phase/sign exactly, up to the fixed `1/sqrt L` normalization.
+
+The same file supplies:
+
+~~~text
+AddCircle.fourierCoeff_eq_intervalIntegral
+AddCircle.fourierCoeffOn_eq_integral
+AddCircle.fourierCoeffOn_of_hasDerivAt
+AddCircle.hasDerivAt_fourier
+~~~
+
+Preferred experiment:
+
+~~~text
+strict-collar C² h
+-> periodic h''
+-> uniform finite Fourier-span r approx h''
+-> subtract mean(r), using mean(h'')=0
+-> integrate every nonzero mode twice
+-> choose q constant mode to match mean(h)
+-> fixed-L integration estimates recover q',q
+-> q(0),q'(0),q''(0) -> 0
+-> #88 projector
 -> WCONT-A.
 ~~~
 
+This **supersedes the generic Stone-Weierstrass packaging lead**: Mathlib has already performed that density proof for the exact Fourier span.
+
 Fast falsifiers:
 
-- the finite trigonometric sector is expensive to package as a separating star subalgebra;
-- zero-mean correction destroys the required approximation bound;
-- integrating the finite sector does not line up cleanly with `localizedMode/centeredIndex`;
-- the periodic Poincare estimates are harder than a direct Fejer implementation.
+- finite-span membership is hard to extract into explicit centered coefficients;
+- mean-mode removal/integration-back causes large coercion or normalization friction;
+- periodic integration estimates dominate the proof;
+- the resulting coefficient map does not align cheaply with `localizedFiniteFunction`.
+
+Important negative result from the implication pass:
+
+~~~text
+AddCircle.hasSum_fourier_series_L2
+~~~
+
+is not by itself sufficient, because #88 needs q''(0) small and point evaluation is not L²-continuous. L² convergence remains supporting infrastructure, not the primary endpoint argument.
+
+## L-APPROX-SW-01 — generic Stone-Weierstrass packaging
+
+**Research status:** SUPERSEDED / DORMANT  
+**Formal status:** LEAD / HYPOTHESIS
+
+Do not rebuild a separating star subalgebra: `AddCircle.span_fourier_closure_eq_top` already gives the theorem required by the primary experiment.
 
 ## L-F0B1C-CORR-01 — quantitative three-mode correction bounds
 
@@ -129,7 +166,7 @@ Keep the firewall: the correction by itself is not generally a globally C² hard
 **Research status:** DORMANT / READY FALLBACK  
 **Formal status:** OPEN
 
-Pinned Mathlib still has no identified ready theorem matching the needed finite localized approximation. Build Fejer only if the Stone-Weierstrass/second-derivative route is worse in Lean.
+Pinned Mathlib has no need for a Fejer theorem on the preferred route because `AddCircle.span_fourier_closure_eq_top` already supplies uniform finite Fourier-span density. Build Fejer only if extraction/integration-back through that theorem is worse in Lean.
 
 ## L-BKILL-01 — boundary-killer multiplication
 
