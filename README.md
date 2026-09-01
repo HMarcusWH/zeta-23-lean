@@ -9,24 +9,21 @@
 ### Current merged baseline
 
 ~~~text
-main = 1ad066f0a263725ea7b84447a637fcebda78e9ca
-tree = 41f9febd6a02282e746714c2f62407fb51ac8b30
-merged through = PR #87
-PR #87 head = 6b6c2605408da8f87b63ac86c1d2afabbd011dfd
-RHRC #606 = SUCCESS
-Permansson #379 = SUCCESS
+main = 879eb6d356d8f62bbe0b9241596b15892498ea64
+tree = 9225c993bb9ac680a0f673efc13d191bebc5fd28
+merged through = PR #88
 RH = OPEN
 ~~~
 
 ### Current green promotion candidate
 
 ~~~text
-PR #88 = F0-B1B exact boundary-flat projection
-theorem head = 5e943d8cd6825c3c649198c52d90d1ed5d8d8b47
-synthetic merge = 9eb9281394684600b35a58ce2cb3c757d06379cc
-synthetic merge tree = d10e7b1e575624ab39fb445297f43168b1867ed1
-RHRC #609 = SUCCESS
-Permansson #382 = SUCCESS
+PR #89 = WCONT-A quantitative common-support genuine-W bound
+theorem head = 4bcd49e0b8029ac7381c7829a18fefea11f20ba1
+synthetic merge = 725a562d88a3af654a7050397031cd33b2bcda21
+synthetic merge tree = f56b3a200d0ac70df3219a158f6c77c85fc34108
+RHRC #619 = SUCCESS
+Permansson #392 = SUCCESS
 PR state at documentation time = OPEN / NOT MERGED
 RH = OPEN
 ~~~
@@ -47,14 +44,18 @@ off-line zeta zero
        moments 0,1,2 = 0
        -> hard-window vector is global C²
        -> W(v,v)=quadraticForm(canonicalSourceMatrix)u
-  -> F0-B1B exact three-mode boundary-flat projection          [PROVED ON GREEN #88 HEAD]
+  -> F0-B1B exact three-mode boundary-flat projection          [PROVED / MERGED]
        arbitrary u, N>=1
        -> exact correction on modes -1,0,+1
        -> moments 0,1,2 vanish
        -> fixed-point + idempotence
        -> exact endpoint value/jet <-> moment identities
-  -> WCONT-A quantitative genuine-W bound                      [OPEN / NEXT]
-  -> matched finite approximation + projection-smallness       [OPEN]
+  -> WCONT-A quantitative genuine-W bound                      [PROVED ON GREEN #89 HEAD]
+       fixed support envelope
+       -> explicit inverse-square zero majorant
+       -> exact cross-term identity
+       -> quantitative diagonal perturbation bound
+  -> F0-B1C matched finite approximation + projection-smallness[OPEN / NEXT]
   -> strict finite sign transfer                               [OPEN]
   -> F1 canonical finite negative obstruction                  [OPEN]
   -> K0-K3 finite-negative exclusion                           [OPEN]
@@ -126,46 +127,28 @@ with no sorryAx.
 
 The N=0 sector is genuinely degenerate and is explicitly excluded from the three-mode projection by 1 <= N.
 
-## Immediate internal frontier — WCONT-A
+## Immediate internal frontier — F0-B1C
 
-Projection is no longer the open seam. The next load-bearing theorem should be a quantitative common-support bound for the genuine Weil form.
-
-The promising target, still **OPEN / LEAD**, uses the asymmetric regularity already present in W2-A:
+WCONT-A is now theorem-backed on exact green PR #89 head. The family-level zero-side continuity seam is closed by
 
 ~~~text
-first W argument:
-  compact support + C²
-  -> inverse-square Fourier decay
-
-second W argument:
-  compact support + continuity
-  -> plain L¹ Fourier bound
+Zeta23.ExceptionalZero.zeta_W_norm_le_commonSupport
+Zeta23.ExceptionalZero.zeta_W_self_sub_self_eq_cross
+Zeta23.ExceptionalZero.zeta_W_self_sub_self_norm_le_commonSupport
 ~~~
 
-Combined with the proved inverse-square zero weight
+For one fixed support radius, the self-form error is controlled by the two first-leg quantities
 
 ~~~text
-Zeta23.WeilEF.zero_sum_inv_sq_gen
+integral ||p-h||
+integral ||(p-h)''||.
 ~~~
 
-the candidate is a bound of schematic form
+Therefore the next load-bearing theorem is not another Weil-form theorem. It is **F0-B1C**: construct boundary-flat finite localized vectors in one fixed aperture with those two errors tending to zero.
 
-~~~text
-|W(f,g)|
-  <= K_Λ * (||f||_1 + ||f''||_1) * ||g||_1
-~~~
+Endpoint value/first-jet/second-jet control remains necessary only to make the exact #88 three-mode projection quantitatively small.
 
-for tests in one fixed support envelope. The exact norm statement and constants are not yet theoremized.
-
-If this closes, diagonal continuity should be attacked through cross terms rather than a fresh dominated-convergence proof for every approximation sequence.
-
-Permanent firewall:
-
-~~~text
-per-approximant Summable
-  does not imply
-one summable majorant for the approximation family.
-~~~
+A high-priority lead is to use pinned Mathlib's RCLike Stone-Weierstrass theorem to approximate the periodic second derivative first, enforce zero mean, and integrate twice into the finite Fourier sector. This is a LEAD, not yet a repository theorem.
 
 ## Projection-smallness firewall
 
@@ -218,9 +201,8 @@ OBS-015: **source interface is not source negativity.**
 
 ~~~text
 PRIMARY INTERNAL
-  WCONT-A quantitative genuine-W bound
-  -> matched finite approximation
-  -> projection-smallness
+  F0-B1C WCONT-matched finite approximation
+  -> quantitative three-mode projection stability
   -> strict sign transfer
   -> F1
 
@@ -247,10 +229,12 @@ See:
 - research/RHRC/CURRENT_RESEARCH_PLAN.md
 - research/RHRC/RESEARCH_LEADS.md
 - research/RHRC/RESEARCH_LEADS_POST_88_DELTA.md
+- research/RHRC/RESEARCH_LEADS_POST_89_DELTA.md
 - research/RHRC/CLAIM_REGISTRY.json
 - research/RHRC/routes/ROUTE_REGISTRY.json
 - research/RHRC/routes/R003_ccm_bridge/README.md
 - research/RHRC/routes/R003_ccm_bridge/F0_B1B_POST_GREEN_WCONT_FRONTIER_2026_09_01.md
+- research/RHRC/routes/R003_ccm_bridge/WCONT_A_POST_GREEN_F0B1C_FRONTIER_2026_09_01.md
 
 Historical post-green settlements remain frozen records of earlier theorem states.
 
