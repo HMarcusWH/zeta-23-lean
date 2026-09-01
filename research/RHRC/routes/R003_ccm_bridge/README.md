@@ -2,7 +2,7 @@
 
 Status: **ACTIVE DISCOVERY ROUTE. RH OPEN.**
 
-**Scope note after green W2-A / PR #77:** G1-B1B remains the next open gate **inside the source-faithful R003 lane**. Repository-wide, W2-A is now theorem-locked and the immediate priority has moved to W0: convert the canonical negative two-translate matrix witness into one negative compact C² Weil test using the newly available pairwise summability certificates. W2-B/C remain the internal additive lane after W0/W1. These statements are complementary, not competing: this README governs R003 route-local state; CURRENT_RESEARCH_PLAN.md governs global execution priority.
+**Scope note after merged W0 / PR #79:** W2-A and W0 are theorem-locked. Repository-wide, the immediate route-general priority is W1: translate the proved compact C² pole-neutral negative Weil test into one strict positive finite aperture while preserving pole neutrality and W negativity. After W1, G1-B1B remains the next open gate inside the source-faithful lane, while W2-B/C/F0-B form the internal additive lane. These statements are complementary, not competing: this README governs R003 route-local state; CURRENT_RESEARCH_PLAN.md governs global execution priority.
 
 This README is the living route SSOT for the merged repository. PR-specific settlement files in this directory are historical records; they do not override live Lean/CI or this current route state.
 
@@ -163,31 +163,60 @@ The theorem is `Zeta23.ExceptionalZero.zeta_W_literatureRHS_package`. The exact 
 
 This closes the previous summability legality blocker for the finite two-translate contraction. It does **not** prove W2-B reflection/evenization, W2-C diagonal additive identification, W0 contraction itself, F0 approximation, source QW, F1, or RH.
 
-### W0 — canonical two-translate contraction
+### W0 — two-translate contraction to one physical negative Weil test
+
+**CLOSED / PROVED.**
+
+Claim: `R003_NEGATIVE_WEIL_TEST_CONTRACTION`.
+
+For every concrete zeta zero `rho0` off the critical line, Lean proves
+
+~~~text
+exists h : R -> C,
+  ContDiff R 2 h
+  and HasCompactSupport h
+  and paperFT h ( I/2) = 0
+  and paperFT h (-I/2) = 0
+  and Re (zetaZeroConfig.W h h) < 0.
+~~~
+
+The theorem is `Zeta23.ExceptionalZero.exists_poleNeutral_negativeWeilTest_of_offLine_zero`.
+
+The exact theorem-green head
+
+~~~text
+c8112f0ad12e0b2c2f1261cea3ba7726aa04be54
+~~~
+
+passed the CCM and ExceptionalZero builds, no-placeholder gate, RHRC suite, normalization/source firewalls and independent verification workflow with axiom surface `[propext, Classical.choice, Quot.sound]`, then merged through PR #79.
+
+The actual proof uses the existing X3 strict correlation-over-diagonal witness directly, plus W2-A pairwise summability and a summability-safe two-term contraction. The previously planned X4.6 determinant-converse route was unnecessary.
+
+The physical phase test is exactly
+
+~~~text
+h = ‖C‖ * k - conj(C) * translateRight k t.
+~~~
+
+Pole neutrality survives the contraction.
+
+### W1 — strict finite-aperture recentering
 
 **OPEN / IMMEDIATE GLOBAL TARGET.**
 
-W2-A removed the former summability legality blocker. The remaining route-general obligation is to convert the canonical negative two-translate determinant into one actual compact C² test
+Starting from the proved W0 object, theoremize a common translation into a strict positive aperture:
 
 ~~~text
-h = ‖C‖ * k - conj(C) * translateRight k t
+exists L > 0, exists h,
+  ContDiff R 2 h
+  and tsupport h ⊆ Ioo 0 L
+  and paperFT h ( I/2) = 0
+  and paperFT h (-I/2) = 0
+  and Re (zetaZeroConfig.W h h) < 0.
 ~~~
 
-with
+Use compactness of `tsupport`, an explicit positive margin, `paperFT_translateRight`, and `W_translateRight_both`. Verify the sign of `translateRight h t = h(x-t)` explicitly.
 
-~~~text
-Re (zetaZeroConfig.W h h) < 0.
-~~~
-
-Use the existing canonical radius detector endpoint, phase witness, matrix value, translation/Hermitian identities and W2-A pairwise summability. Do not rebuild detector infrastructure and do not use the RH-equivalent universal determinant inequality.
-
-Primary implementation file:
-
-~~~text
-Zeta23/ExceptionalZero/TwoTranslateContraction.lean
-~~~
-
-The exact subpackage contract lives in `../../CURRENT_RESEARCH_PLAN.md`.
 
 ### G1-B1B — source Hilbert/functional bridge
 
@@ -311,7 +340,7 @@ See `../../DEAD_ROUTES.md`.
 
 ## Claim firewall
 
-**PROVED on the validated post-W2-A state:** finite/dictionary/zero-side/cutoff-free matrix identities, G0 localized finite-space geometry, G1-A additive restriction, direct Section-4 matrix normalization, canonical source normalization, G1-B1A finite `kappa`/source-sector transport, canonical finite displacement, and W2-A pairwise W/literatureRHS bridge with summability.
+**PROVED on merged main through PR #79:** finite/dictionary/zero-side/cutoff-free matrix identities, G0 localized finite-space geometry, G1-A additive restriction, direct Section-4 matrix normalization, canonical source normalization, G1-B1A finite `kappa`/source-sector transport, canonical finite displacement, W2-A pairwise W/literatureRHS bridge with summability, and W0 off-line-zero -> compact C² pole-neutral negative Weil-test contraction.
 
 **OPEN:** multiplicative-Haar L2 interface, `PsiSharp`, ambient `QW_lambda`, actual restriction theorem, form-core/minimum-eigenvalue transfer, fixed-aperture negative-bottom implication, finite-negative exclusion, RH.
 

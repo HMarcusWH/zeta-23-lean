@@ -360,6 +360,19 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "W2-A. Exact-head CI on PR #77 theorem head 509645ad2b30288d175ff2ef5a6651839991649e proves the pairwise summability/equality package with axiom surface [propext, Classical.choice, Quot.sound]. The regularity is stronger than originally planned in one leg: g need only be continuous, not C^2. This does not prove literatureRHS reflection/evenization, W(f,f)=localizedWeilAdditiveRHS(f,f), the two-translate matrix-to-single-test contraction, finite approximation, QW_lambda, F1, or RH."
+    },
+    {
+      "id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "statement": "For every concrete zeta zero rho0 off the critical line, there exists a compactly supported C^2 test h with paperFT h (i/2)=0 and paperFT h (-i/2)=0 and Re(zetaZeroConfig.W h h)<0. The production theorem is obtained by summability-safe contraction of the proved two-translate phase witness into one physical test.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_WEIL_PAIR_LITERATURE_BRIDGE"
+      ],
+      "source": "Zeta23/ExceptionalZero/TwoTranslateContraction.lean",
+      "theorem": "Zeta23.ExceptionalZero.exists_poleNeutral_negativeWeilTest_of_offLine_zero",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "W0. Exact theorem head c8112f0ad12e0b2c2f1261cea3ba7726aa04be54 passed the CCM build, ExceptionalZero build, no-placeholder gate, RHRC regression suite, normalization/source firewalls, and independent verification workflow with axiom surface [propext, Classical.choice, Quot.sound]. The proof uses the existing X3 strict correlation-over-diagonal witness directly, not the X4.6 canonical determinant endpoint; it preserves the two pole-killing Fourier zeros under the physical phase contraction h=||C||*k-conj(C)*T_t k. This does not prove W1 recentering, W2-B/C, F0-B, G1-B1B/G1-final/G23, F1, finite-negative exclusion, or RH."
     }
   ]
 }

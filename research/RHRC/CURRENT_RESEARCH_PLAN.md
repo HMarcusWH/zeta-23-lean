@@ -4,99 +4,131 @@
 >
 > This is the living execution plan. It does not define theorem truth; Lean/compiler/CI plus the machine registries do that. This document answers what the project should do next, in what order, and why.
 
-Current validation baseline:
+Current merged validation baseline:
 
 ~~~text
-base main before PR #77 = 2ac1dccbefba01a4d3d4b0672fe87935ab159801
-W2-A theorem-green head = 509645ad2b30288d175ff2ef5a6651839991649e
-W2-A final promoted/synchronized head = cd20d84e30038a7d14da1e8ee1d2ca1920d344fd
-final #77 workflow state = GREEN
+main = 3e39ce86d27a4c642a1e0364f1954968ce22f1f4
+tree = 6935902fbbb950847e1cdd16a61d95704e3a760d
+merged through = PR #79
+W0 theorem-green head = c8112f0ad12e0b2c2f1261cea3ba7726aa04be54
 date = 2026-09-01
 RH = OPEN
 ~~~
 
-The final promoted head passed both repository workflows. Live GitHub main remains authoritative for the eventual merge commit SHA; this plan uses the exact validated #77 theorem/promotion state.
+PR #79 merged the exact W0 theorem tree that passed the CCM build, ExceptionalZero build, no-placeholder gate, RHRC regression suite, normalization/source firewalls, and independent verification workflow.
 
 Current theorem frontier:
 
 ~~~text
-G1-B1A finite kappa/source-sector bridge = CLOSED / REGISTERED
-G1-B1B Haar/L2/PsiSharp/QW bridge         = OPEN
-W2-A direct W/literatureRHS bridge        = CLOSED / REGISTERED
-W0 single negative Weil-test contraction  = OPEN
-F1 canonical finite obstruction           = OPEN
+W2-A genuine W/literatureRHS + pairwise summability = CLOSED / REGISTERED
+W0 off-line zero -> compact C² pole-neutral negative W test = CLOSED / REGISTERED
+W1 strict finite-aperture support/recentering = OPEN / IMMEDIATE
+
+INTERNAL AFTER W1
+  W2-B reflection/evenization                 = OPEN
+  W2-C genuine W self -> localized additive   = OPEN
+  F0-B finite approximation                   = OPEN
+  G1-A finite additive restriction            = CLOSED / REGISTERED
+
+SOURCE AFTER W1
+  G1-B1B Haar/L²/PsiSharp/QW                  = OPEN
+  G1-final actual source restriction          = OPEN
+  G23 negative finite transfer                = OPEN
+
+F1 canonical finite obstruction               = OPEN
+RH                                             = OPEN
 ~~~
 
 The complete option inventory and historical status of individual ideas lives in RESEARCH_LEADS.md.
 
-## 1. Plan delta after green W2-A / PR #77
+## 1. Plan delta after green W0 / PR #79
 
-W2-A closed exactly as hoped, but with one useful strengthening: the second pair leg `g` needs only continuity plus compact support, not C².
+W0 closed with a stronger and cleaner endpoint than the pre-implementation roadmap expected.
 
-The green theorem now exposes:
-
-~~~text
-Summable (fun rho => zetaZeroConfig.Wsummand f g rho)
-~~~
-
-and
+Lean now proves, for every concrete off-line zeta zero `rho0`,
 
 ~~~text
-zetaZeroConfig.W f g
-  = EF.literatureRHS (EF.weilTest f g)
+(rho0 : C).re != 1/2
+  ->
+exists h : R -> C,
+  ContDiff R 2 h
+  and HasCompactSupport h
+  and paperFT h ( I/2) = 0
+  and paperFT h (-I/2) = 0
+  and Re (zetaZeroConfig.W h h) < 0.
 ~~~
 
-without aperture `L`, `nuX`, `hFk`, `hmu`, real/even assumptions, or source `QW`.
+The physical contraction is theorem-authoritatively
 
-This changes execution priority again.
+~~~text
+h = ‖C‖ * k - conj(C) * translateRight k t,
+C = weilRelativeCorrelation zetaZeroConfig k t,
+~~~
 
-Before W2-A, W0 was blocked by the legality of expanding `ZeroConfig.W` across a two-term combination because `W` is a `tsum`. W2-A now gives the pairwise summability certificates needed for all four basis pairs in the two-translate sector. By contrast, W2-B still contains a genuinely open reflection/gamma-term obligation.
+with the coefficient orientation forced by the repository convention that `W` is linear in its first slot and conjugate-linear in its second.
 
-Therefore the **current highest-leverage implementation target is W0**, not W2-B.
+### What changed versus the old W0 plan
 
-Reason:
+The proof did **not** need the X4.6 canonical negative-determinant endpoint or a determinant-gap converse. It used the already-proved X3 strict correlation-over-diagonal witness directly.
 
-- W0 is required by both the internal additive route and the source-faithful route;
-- its principal analytic legality blocker has disappeared;
-- the remaining work is finite two-term sesquilinear contraction plus a small determinant-gap-to-norm-gap bridge if the canonical X4.6 endpoint is used directly;
-- W2-B/C remain necessary only for the internal additive route.
+The proof also did **not** need new translation regularity lemmas; `contDiff_translateRight` and `hasCompactSupport_translateRight` already existed.
 
-After W0, W1 support/recentering is the next route-general package. W2-B/C and G1-B1B can then progress as parallel internal/source lanes.
+The load-bearing new work was:
 
+- exact Fourier linearity for the physical two-translate combination;
+- four W2-A pairwise summability certificates;
+- pointwise Wsummand expansion;
+- legal `tsum` recombination;
+- exact equality with the existing 2x2 matrix quadratic;
+- preservation of the pole-killing Fourier zeros.
+
+This compresses the dependency graph and makes W1 the unique route-general next package.
+
+### New structural consequence
+
+A hypothetical off-line zero now yields an **actual function-level obstruction**, not merely a negative matrix direction. The obstruction is already pole-neutral, which removes the pole terms from the later specialized explicit-formula reflection/evenization analysis.
+
+The X4.6 canonical detector bank remains mathematically valuable for countable RH-equivalent criteria and reproducible detector architecture, but it is not required on the shortest W0 -> F1 path.
 
 ## 2. Current high-level architecture
 
-There are now two legitimate routes from a hypothetical off-line zero to the same canonical finite obstruction.
+The shared route-general front end is now:
+
+~~~text
+off-line zero
+  -> W0 compact C² pole-neutral h with Re W(h,h)<0       [PROVED]
+  -> W1 translate/recenter h into strict (0,L) support   [OPEN / NEXT]
+~~~
+
+After W1 the program deliberately branches.
 
 ### Internal additive route
 
 ~~~text
-off-line zero
-  -> canonical countable detector negative determinant          [PROVED]
-  -> one negative compact C2 Weil test                          [W0 OPEN]
-  -> support recentering                                        [W1 OPEN]
-  -> W = literatureRHS(weilTest)                                [W2-A PROVED]
-  -> literatureRHS reflection/evenization                       [W2-B OPEN]
-  -> W(h,h) = localizedWeilAdditiveRHS(h,h)                     [W2-C OPEN]
-  -> finite additive approximation / continuity                 [F0-B OPEN]
+W1 strict finite-aperture negative test
+  -> W2-A W = literatureRHS(weilTest)                    [PROVED]
+  -> W2-B reflection/evenization                         [OPEN]
+  -> W2-C W(h,h) = localizedWeilAdditiveRHS(h,h)         [OPEN]
+  -> finite additive approximation / continuity          [F0-B OPEN]
   -> localizedWeilAdditiveRHS(v_N,v_N)
-       = quadraticForm(canonicalSourceMatrix)                    [G1-A PROVED]
-  -> F1 canonical finite negative obstruction                   [OPEN]
+       = quadraticForm(canonicalSourceMatrix)             [G1-A PROVED]
+  -> F1 canonical finite negative obstruction            [OPEN]
 ~~~
+
+Because the W0 test is pole-neutral, W2-B should first be attempted on the actual pole-neutral diagonal class before proving a maximally general reflection theorem. The prime term is structurally symmetric; the remaining analytic core is the gamma-bracket reflection/change-of-variable step.
 
 ### Source-faithful route
 
 ~~~text
-off-line zero
-  -> one negative compact test                                  [W0/W1]
-  -> kappa/source finite sector                                 [G1-B1A PROVED]
-  -> d*u / L2 / PsiSharp / QW correspondence                    [G1-B1B OPEN]
-  -> QW_lambda|E_N = canonicalSourceMatrix                       [G1-final OPEN]
-  -> source core / minimum-eigenvalue negative transfer         [G23 OPEN]
-  -> F1 canonical finite negative obstruction                   [OPEN]
+W1 strict finite-aperture negative test
+  -> kappa/source finite sector                          [G1-B1A PROVED]
+  -> d*u / L² / PsiSharp / QW correspondence            [G1-B1B OPEN]
+  -> QW_lambda|E_N = canonicalSourceMatrix              [G1-final OPEN]
+  -> source core / strict negative finite transfer      [G23 OPEN]
+  -> F1 canonical finite negative obstruction           [OPEN]
 ~~~
 
-The two routes are independent enough that both are valuable. The project should choose the primary path by theorem size and hypothesis cleanliness, not sunk cost.
+The two routes should progress in parallel after W1. Select the primary F1 proof by theorem size, hypothesis cleanliness and information gain, not by historical ordering.
 
 ## 3. Exact execution queue
 
@@ -211,209 +243,161 @@ Immediately reassess whether G1-B1B/G23 remain necessary for the shortest F1 rou
 
 ### P3 — W0-CONTRACTION: one negative function-level Weil test
 
-**Priority:** IMMEDIATE / HIGHEST-LEVERAGE  
-**Primary file:** `Zeta23/ExceptionalZero/TwoTranslateContraction.lean`
+**Status:** CLOSED / PROVED / REGISTERED  
+**Claim:** `R003_NEGATIVE_WEIL_TEST_CONTRACTION`  
+**Primary theorem:** `Zeta23.ExceptionalZero.exists_poleNeutral_negativeWeilTest_of_offLine_zero`  
+**Source:** `Zeta23/ExceptionalZero/TwoTranslateContraction.lean`
 
-### Exact proved inputs to consume
-
-Do not rebuild detector or matrix infrastructure. Reuse:
-
-~~~text
-exists_canonicalRadiusSequence_negativeDeterminant_of_offLine_zero
-canonicalPoleKilledTest_admissible
-twoTranslatePhaseWitness
-twoTranslatePhaseWitness_value
-twoTranslatePhaseWitness_neg_of_diagonal_norm_lt
-twoTranslateWeilMatrix
-W_star_swap
-W_translateRight_both
-W_f_translateRight_eq_star_relativeCorrelation
-zeta_Wsummand_summable
-~~~
-
-The canonical X4.6 endpoint already supplies a concrete radius-indexed detector and a negative determinant gap. W2-A supplies the missing pairwise `Summable` certificates.
-
-### Build contract
-
-#### W0-A — determinant-gap converse
-
-Add the small real-algebra theorem
+Exact theorem-green head:
 
 ~~~text
-twoTranslateDeterminantGap Z k t < 0
-  -> ‖Z.W k k‖ < ‖weilRelativeCorrelation Z k t‖.
+c8112f0ad12e0b2c2f1261cea3ba7726aa04be54
 ~~~
 
-The forward direction already exists as
-`twoTranslateDeterminantGap_neg_of_diagonal_norm_lt`; W0 needs the converse to consume the canonical negative-determinant endpoint directly.
-
-No zero theory belongs in this lemma.
-
-#### W0-B — translate admissibility
-
-For the exact translated detector `T_t k = translateRight k t`, theorem-lock only what W2-A and the final endpoint consume:
+Merged via PR #79 into:
 
 ~~~text
-ContDiff R 2 k
-  -> ContDiff R 2 (translateRight k t)
-
-HasCompactSupport k
-  -> HasCompactSupport (translateRight k t).
+3e39ce86d27a4c642a1e0364f1954968ce22f1f4
 ~~~
 
-Reuse Mathlib/existing translation lemmas if already available; do not introduce a new translation abstraction.
-
-#### W0-C — four legal pair sums
-
-For `Tk = translateRight k t`, obtain from W2-A:
+Axiom surface:
 
 ~~~text
-Summable Wsummand(k,k)
-Summable Wsummand(k,Tk)
-Summable Wsummand(Tk,k)
-Summable Wsummand(Tk,Tk).
+[propext, Classical.choice, Quot.sound]
 ~~~
 
-These certificates must be established before any `tsum_add`, subtraction or scalar-distribution step.
+### Exact proved endpoint
 
-#### W0-D — specialized two-term contraction
-
-Prove a theorem specialized to the two-translate basis rather than a general sesquilinear API.
-
-For coefficients `a,b : C`, define
+For every concrete off-line zero:
 
 ~~~text
-h = conj(a) * k + conj(b) * Tk.
+(rho0 : C).re != 1/2
+  ->
+exists h : R -> C,
+  ContDiff R 2 h
+  and HasCompactSupport h
+  and paperFT h ( I/2) = 0
+  and paperFT h (-I/2) = 0
+  and Re (zetaZeroConfig.W h h) < 0.
 ~~~
 
-Then prove, under the four explicit summability certificates,
+The weaker route-composition endpoint without the pole-neutral clauses is also theorem-locked.
+
+### Exact contraction law
+
+For matrix coefficients `(a,b)`, the physical test is
 
 ~~~text
-W(h,h)
- =
-star (![a,b]) dot
-  (twoTranslateWeilMatrix Z k t *ᵥ ![a,b]).
+conj(a) * k + conj(b) * translateRight k t.
 ~~~
 
-The coefficient/conjugation orientation is load-bearing because repository `W` is linear in the first slot and conjugate-linear in the second.
-
-#### W0-E — phase-witness specialization
-
-Instantiate
+For the existing phase witness `(‖C‖,-C)`:
 
 ~~~text
-a = ‖C‖
-b = -C
-C = weilRelativeCorrelation Z k t.
+h = ‖C‖ * k - conj(C) * translateRight k t.
 ~~~
 
-The physical function is exactly
+Lean proves the genuine W self-value equals the existing two-translate matrix quadratic exactly.
+
+### Actual proof route
+
+The shortest proof used the X3 theorem
 
 ~~~text
-h = ‖C‖ * k - conj(C) * Tk.
+exists_realEven_poleKilled_twoTranslate_negativeWitness_of_offLine_zero
 ~~~
 
-Do not use `-C * Tk`.
+directly. It did not require the X4.6 canonical determinant endpoint, a determinant-gap converse, or new translation regularity infrastructure.
 
-Compose W0-A with the already-proved
-`twoTranslatePhaseWitness_neg_of_diagonal_norm_lt`
-and W0-D to obtain
+W2-A was cashed out through four explicit pairwise `Summable` certificates before any finite `tsum` algebra.
 
-~~~text
-Re (Z.W h h) < 0.
-~~~
+### Post-green implications
 
-#### W0-F — canonical off-line-zero endpoint
-
-Compose with
-
-~~~text
-exists_canonicalRadiusSequence_negativeDeterminant_of_offLine_zero
-~~~
-
-and `canonicalPoleKilledTest_admissible` to prove the strongest natural production endpoint first:
-
-~~~text
-theorem exists_negativeWeilTest_of_offLine_zero
-    (rho0 : zetaZeroConfig.carrier)
-    (hoff : (rho0 : C).re != 1/2) :
-    exists h : R -> C,
-      ContDiff R 2 h
-      and HasCompactSupport h
-      and Re (zetaZeroConfig.W h h) < 0.
-~~~
-
-Then expose the existential corollary needed by the roadmap:
-
-~~~text
-(exists rho : zetaZeroConfig.carrier, (rho : C).re != 1/2)
-  -> exists h : R -> C,
-       ContDiff R 2 h
-       and HasCompactSupport h
-       and Re (zetaZeroConfig.W h h) < 0.
-~~~
-
-Retain the concrete detector radius/aperture witness in a stronger companion theorem if that costs almost nothing. The pointwise endpoint is preferred because it composes better with future counterexample-local arguments.
-
-### Files
-
-Create:
-
-~~~text
-Zeta23/ExceptionalZero/TwoTranslateContraction.lean
-~~~
-
-Modify only as needed:
-
-~~~text
-Zeta23/ExceptionalZero.lean
-Zeta23/CCM/ClaimBindings.lean
-~~~
-
-Do not touch claim/route registries until the exact theorem head is green. Post-green promotion and documentation synchronization are Stage B.
-
-### Dumbassery / falsification gates
-
-- no finite `W` linearity before summability;
-- no coefficient-conjugation reversal;
-- no hidden positivity assumption;
-- no use of the RH-equivalent universal determinant inequality;
-- no fallback from canonical radius detector to an arbitrary detector unless Lean exposes a real blocker;
-- no general sesquilinear API unless the specialized two-term proof demonstrably duplicates more code than it saves;
-- smoke-test `b=0`, `a=0`, `t=0`, `C=0`, and real positive/negative `C`.
-
-### Green gate
-
-The exact endpoint above compiles, is sorry-free, introduces no project axiom, and is registered only after exact-head CI.
-
-### Post-green question
-
-If W0 closes, immediately ask whether W1 recentering can be theoremized with only compact-support transport and `W_translateRight_both`, and whether the resulting single explicit negative test makes the source route or internal additive route materially cheaper.
-
+- W1 is now the route-general frontier.
+- Pole neutrality survives the contraction.
+- The internal W2-B package can be specialized to the actual pole-neutral negative test class.
+- X4.6 remains an independent canonical/countable detector criterion, not a required dependency for F1.
+- No reality/evenness property is claimed for the contracted `h`.
 
 ---
 
-### P4 — W0-SMOOTH + W1 support/recentering
+### P4 — W1 support/recentering into a strict finite aperture
 
-**Priority:** SUPPORT PACKAGE BEFORE F0
+**Priority:** IMMEDIATE / ROUTE-GENERAL NEXT PACKAGE
 
-Possible files:
+Suggested file:
 
 ~~~text
-Zeta23/ExceptionalZero/CanonicalNegativeTest.lean
-Zeta23/ExceptionalZero/TwoTranslateSupport.lean
+Zeta23/ExceptionalZero/NegativeWeilTestSupport.lean
 ~~~
 
-Tasks:
+### Input
 
-1. promote only the exact stronger detector regularity needed downstream;
-2. theoremize support of the contracted test;
-3. choose a finite L with strict interior margin;
-4. use W_translateRight_both to recenter support inside (0,L).
+Consume the strong W0 endpoint:
 
-#### Green gate
+~~~text
+C² h
+HasCompactSupport h
+paperFT h (±I/2) = 0
+Re W(h,h) < 0.
+~~~
 
-The resulting negative h has the exact domain/regularity hypotheses consumed by both candidate F0 routes.
+### Target
+
+Prove a pointwise off-line-zero endpoint of the form
+
+~~~text
+(rho0 : C).re != 1/2
+  ->
+exists L : R, 0 < L
+and exists h : R -> C,
+  ContDiff R 2 h
+  and tsupport h ⊆ Ioo 0 L
+  and paperFT h ( I/2) = 0
+  and paperFT h (-I/2) = 0
+  and Re (zetaZeroConfig.W h h) < 0.
+~~~
+
+Use a strict interior interval, not merely `Icc 0 L`, so endpoint jets vanish automatically for the recentered test and both downstream routes receive the strongest clean domain object.
+
+### Build contract
+
+1. extract a finite two-sided bound on `tsupport h` from `HasCompactSupport h`;
+2. choose a translation amount and an `L>0` with explicit positive margin;
+3. theoremize the translated support inclusion under the repository's exact `translateRight k t = k(x-t)` convention;
+4. use `contDiff_translateRight` and `hasCompactSupport_translateRight`;
+5. use `paperFT_translateRight` to preserve both pole zeros;
+6. use `W_translateRight_both` to preserve the negative W self-value.
+
+### Dumbassery / falsification gates
+
+- verify the sign of the support translation explicitly;
+- do not infer strict interior support from compactness without choosing a positive margin;
+- do not lose pole neutrality during recentering;
+- do not replace `tsupport` by ordinary support silently;
+- do not add stronger smoothness than C² unless a downstream theorem actually needs it.
+
+### Green gate
+
+One theorem-backed object simultaneously satisfies the exact finite-aperture/domain hypotheses needed to start both the internal additive and source-faithful lanes.
+
+### Post-green route decision
+
+After W1 green, run a bounded comparison:
+
+~~~text
+INTERNAL:
+  specialized pole-neutral W2-B
+  -> W2-C
+  -> F0-B
+
+SOURCE:
+  G1-B1B
+  -> G1-final
+  -> G23.
+~~~
+
+Do not commit to one branch before measuring actual theorem surface.
 
 ---
 
@@ -642,7 +626,7 @@ When F1 is green:
 
 # 7. Post-F1 finite-wall program
 
-Do not commit to this as the primary terminal route until F1 is theorem-authoritative.
+This is the preferred **planned** post-F1 research program, not yet a theorem-backed terminal reduction. F1 must first become theorem-authoritative. K1 must then prove the positive-anchor/continuous-aperture mechanism that turns an F1 negative value into a first canonical singular crossing for the same finite sector before a terminal first-crossing contradiction is a legitimate target.
 
 ## P10 — K0 canonical parity package
 
@@ -753,18 +737,27 @@ Kill E7 immediately if it adds no information beyond M u=0.
 
 ---
 
-## P15 — terminal structural exclusion target
+## P15 — planned structural exclusion target
 
-Desired theorem shape:
+Conditional desired theorem shape, **after K1 has theoremized the first-crossing reduction**:
 
 ~~~text
-the first canonical zero-crossing state demanded by F1
-cannot satisfy the exact arithmetic + parity + displacement + resolvent laws.
+F1 negative canonical finite value
+  -> same finite sector has a first canonical singular crossing L*
+  -> every such first crossing obeys the K0/K1/K2/K3 laws
+  -> no state can obey all of those laws
+  -> contradiction.
 ~~~
 
-Do not replace this with a bald universal PSD assertion without acknowledging that such a theorem is likely RH-strength once the surrounding equivalences are in place.
+Only after those arrows are separately theorem-authoritative may the project compose
 
-RH remains OPEN until the exact terminal RH theorem itself passes proof and claim validation.
+~~~text
+off-line zero -> F1 -> impossible first crossing -> no off-line zero -> RH.
+~~~
+
+Do not replace this with a bald universal PSD assertion without acknowledging that such a theorem is RH-strength once the surrounding implications are in place.
+
+RH remains OPEN until the exact final RH theorem itself passes proof and claim validation.
 
 ---
 
@@ -873,41 +866,39 @@ Do not rewrite historical settlements merely to make them current.
 
 ~~~text
 DONE
-  P0 W2-A direct W -> literatureRHS + pairwise summability
+  W2-A genuine W -> literatureRHS + summability
+  W0 off-line zero -> one negative compact C² pole-neutral Weil test
 
 NOW
-  P3 W0 contraction -> one negative compact C² Weil test
+  W1 support/recentering into a strict finite aperture
 
-THEN
-  P4 W1 support/recentering
-
-PARALLEL AFTER W0/W1
+THEN / PARALLEL
   INTERNAL:
-    P1 W2-B reflection/evenization
-    P2 W2-C W(h,h) -> localizedWeilAdditiveRHS
-    P5 bounded F0-B2/F0-B1 feasibility spike
+    W2-B reflection/evenization
+    W2-C genuine W self-value -> localized additive RHS
+    F0-B finite approximation
+    G1-A finite additive restriction [already proved]
 
   SOURCE:
-    P6 G1-B1B Haar/L2/PsiSharp/QW
-    P7 G1-final actual source restriction
-    P8 G23 minimum negative-transfer theorem if needed
-
-DECISION
-  choose internal route / source route / both
+    G1-B1B Haar/L²/PsiSharp/QW
+    G1-final actual source restriction
+    G23 negative finite transfer
 
 TARGET
-  P9 F1:
+  F1:
   off-line zero -> negative canonical finite quadratic form
 
-POST-F1
-  P10 K0 parity
-  P11 K1 first singularity + canonical prime events
-  P12/P13 K2 kernel/displacement/resolvent rigidity
-  P14 K3 arithmetic crossing engine
-  P15 structural exclusion
+POST-F1 — PLANNED, NOT YET A TERMINAL REDUCTION
+  K0 parity
+  K1 aperture flow + positive anchor + first singularity + prime-event law
+  K2 kernel/displacement/resolvent rigidity
+  K3 arithmetic crossing exclusion
 
-TERMINAL
-  exact RH theorem only
+CONDITIONAL TERMINAL COMPOSITION
+  after K1 proves F1 -> first canonical crossing:
+  prove every demanded first canonical crossing impossible
+  -> no off-line zero
+  -> RH
 ~~~
 
 ## Standing priority question

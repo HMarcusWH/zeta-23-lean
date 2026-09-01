@@ -7,15 +7,15 @@
 Last full theorem/promotion review:
 
 ~~~text
-base main before PR #77 = 2ac1dccbefba01a4d3d4b0672fe87935ab159801
-W2-A theorem-green head = 509645ad2b30288d175ff2ef5a6651839991649e
-W2-A final promoted/synchronized head = cd20d84e30038a7d14da1e8ee1d2ca1920d344fd
-final #77 workflow state = GREEN
+main = 3e39ce86d27a4c642a1e0364f1954968ce22f1f4
+tree = 6935902fbbb950847e1cdd16a61d95704e3a760d
+merged through = PR #79
+W0 theorem-green head = c8112f0ad12e0b2c2f1261cea3ba7726aa04be54
 date = 2026-09-01
 RH = OPEN
 ~~~
 
-Live GitHub main remains authoritative for the eventual merge commit SHA.
+Live GitHub main remains authoritative.
 
 This file answers one persistent question:
 
@@ -65,110 +65,74 @@ After every meaningful green result:
 5. update CURRENT_RESEARCH_PLAN.md if execution order changed;
 6. keep historical settlement documents historical.
 
-Last full theorem audit: PR #77 W2-A theorem head `509645ad2b30288d175ff2ef5a6651839991649e`, based on merged main `2ac1dccbefba01a4d3d4b0672fe87935ab159801`. The promotion/synchronization edits in this PR remain subordinate to the final exact-head CI and merge state.
+Last full theorem audit: PR #79 W0 theorem head `c8112f0ad12e0b2c2f1261cea3ba7726aa04be54`, merged to main as `3e39ce86d27a4c642a1e0364f1954968ce22f1f4`. Exact-head CI passed the CCM and ExceptionalZero builds, no-placeholder gate, RHRC suite, normalization/source firewalls and independent verification workflow.
 
 ---
 
 # A. Active detector-to-additive bridge leads
 
-## L-W0-01 — canonical two-translate contraction
+## L-W0-01 — two-translate contraction to one negative Weil test
 
-**Research status:** ACTIVE / HIGHEST-LEVERAGE IMMEDIATE TARGET  
-**Formal status:** OPEN, with strong PROVED inputs  
-**Origin:** X3/X4/X4.5/X4.6 two-translate program.
+**Research status:** PROMOTED  
+**Formal status:** PROVED  
+**Claim ID:** `R003_NEGATIVE_WEIL_TEST_CONTRACTION`  
+**Theorem:** `Zeta23.ExceptionalZero.exists_poleNeutral_negativeWeilTest_of_offLine_zero`
 
-### Statement / idea
+### What is now formally true
 
-Convert the canonical negative two-translate determinant into one explicit compactly supported C² test `h` satisfying
+For every concrete zeta zero `rho0` off the critical line, Lean proves the existence of one test `h` with
 
 ~~~text
+ContDiff R 2 h
+HasCompactSupport h
+paperFT h ( I/2) = 0
+paperFT h (-I/2) = 0
 Re (zetaZeroConfig.W h h) < 0.
 ~~~
 
-The exact coefficient convention is
+Exact theorem-green head:
 
 ~~~text
-z = (a,b)
+c8112f0ad12e0b2c2f1261cea3ba7726aa04be54
+~~~
+
+merged through PR #79.
+
+Axiom surface:
+
+~~~text
+[propext, Classical.choice, Quot.sound]
+~~~
+
+### Exact contraction
+
+For matrix coefficients `(a,b)`, the physical test is
+
+~~~text
 h = conj(a) * k + conj(b) * T_t k.
 ~~~
 
-For the existing phase witness
-
-~~~text
-z = (‖C‖,-C)
-C = weilRelativeCorrelation zetaZeroConfig k t,
-~~~
-
-the physical function is
+For the existing phase witness `(‖C‖,-C)`,
 
 ~~~text
 h = ‖C‖ * k - conj(C) * T_t k.
 ~~~
 
-### Why it matters
+Lean proves the genuine W self-value equals the existing two-translate matrix quadratic.
 
-This is the first route-general function-level obstruction. Both the internal additive route and the source-faithful QW route can consume the same negative compact test.
+### What changed
 
-### PROVED inputs
+The shortest proof uses the X3 strict correlation-over-diagonal witness directly. The previously planned X4.6 determinant-converse step was unnecessary, and translation C²/support preservation already existed.
 
-Use rather than rebuild:
+W2-A supplied the four pairwise summability certificates required before legal `tsum` recombination.
 
-- `exists_canonicalRadiusSequence_negativeDeterminant_of_offLine_zero`;
-- `canonicalPoleKilledTest_admissible`;
-- `twoTranslatePhaseWitness`;
-- `twoTranslatePhaseWitness_value`;
-- `twoTranslatePhaseWitness_neg_of_diagonal_norm_lt`;
-- `twoTranslateWeilMatrix`;
-- `W_star_swap`;
-- `W_translateRight_both`;
-- `W_f_translateRight_eq_star_relativeCorrelation`;
-- `zeta_Wsummand_summable` from promoted W2-A.
+### Downstream effect
 
-### Main blocker
+W1 is now the unique route-general frontier. The internal and source-faithful routes can both consume the same concrete negative function-level obstruction after recentering.
 
-The former analytic legality blocker is gone: W2-A supplies pairwise W-summand `Summable` certificates.
+### New structural clue
 
-The remaining work is finite and explicit:
-
-1. prove the converse
-   ~~~text
-   twoTranslateDeterminantGap < 0
-     -> ‖W(k,k)‖ < ‖C‖;
-   ~~~
-2. theorem-lock C² and compact-support preservation under the one translation used;
-3. obtain the four pairwise summability certificates for `(k,k)`, `(k,Tk)`, `(Tk,k)`, `(Tk,Tk)`;
-4. prove the specialized two-term contraction;
-5. instantiate the phase witness;
-6. compose with the canonical radius-sequence endpoint.
-
-### Composition
-
-W0 + W1 produces one negative compact C² test in a strict finite aperture. Then:
-
-~~~text
-internal:
-  W2-B -> W2-C -> F0-B -> G1-A -> F1
-
-source:
-  G1-B1B -> G1-final -> G23 -> F1.
-~~~
-
-This is why W0 outranks W2-B despite W2-B being numerically earlier in the old package ordering.
-
-### Fastest falsification / test
-
-Build only the specialized two-term contraction and smoke-test:
-
-~~~text
-(a,b)=(1,0)
-(a,b)=(0,1)
-t=0
-C=0
-C real positive
-C real negative.
-~~~
-
-Fail immediately if any proof step requires the RH-equivalent universal determinant nonnegativity theorem or manipulates `ZeroConfig.W` before summability is established.
+Pole neutrality survives the contraction. This removes the explicit-formula pole contribution from a specialized W2-B analysis and suggests a broader witness-engineering program in which additional nuisance frequencies are killed while preserving detector visibility.
 
 
 ---
@@ -186,16 +150,42 @@ The Mathlib canonical bump is smooth, while the current theorem package only exp
 
 ## L-W1-01 — support recentering into one strict interior aperture
 
-**Research status:** ACTIVE SUPPORT  
+**Research status:** ACTIVE / IMMEDIATE  
 **Formal status:** DERIVED geometry; exact packaging OPEN
 
-From a compact negative h formed by finitely many detector translates, extract an explicit support interval [A,B], choose L>B-A with margin, and use common W-translation invariance to place support strictly inside (0,L).
+Starting from the PROVED W0 object, translate the negative pole-neutral compact C² test into a strict positive aperture:
 
-**Why it matters:** strict interior support gives zero endpoint jets for h itself and simplifies both source-domain and finite Fourier approximation arguments.
+~~~text
+exists L > 0, exists h,
+  ContDiff R 2 h
+  and tsupport h ⊆ Ioo 0 L
+  and paperFT h ( I/2) = 0
+  and paperFT h (-I/2) = 0
+  and Re W(h,h) < 0.
+~~~
 
-**Proved input:** Zeta23.ExceptionalZero.W_translateRight_both.
+### Why it matters
 
-**Fastest test:** theoremize support transport using the actual translateRight convention rather than relying on informal width estimates.
+This is the shared handoff object for both routes. Strict interior support gives endpoint margin for source-domain work and for any boundary-flat finite Fourier approximation.
+
+### PROVED inputs
+
+- `R003_NEGATIVE_WEIL_TEST_CONTRACTION`;
+- `contDiff_translateRight`;
+- `hasCompactSupport_translateRight`;
+- `paperFT_translateRight`;
+- `W_translateRight_both`.
+
+### Main proof obligation
+
+Extract a finite two-sided bound from compact `tsupport h`, choose an explicit positive margin, and verify the sign of the repository convention `translateRight h t = h(x-t)` when transporting the support into `Ioo 0 L`.
+
+### Falsification gates
+
+- do not silently replace `tsupport` by ordinary support;
+- do not infer strict interior support without a chosen positive margin;
+- preserve both pole zeros and W negativity theoremically.
+
 
 ---
 
@@ -250,33 +240,49 @@ The one-sided regularity may be useful later for mixed smooth/continuous approxi
 
 ## L-W2-02 — literatureRHS reflection/evenization invariance
 
-**Research status:** ACTIVE / INTERNAL-LANE NEXT AFTER W0/W1  
+**Research status:** ACTIVE / INTERNAL-LANE FIRST PACKAGE AFTER W1  
 **Formal status:** OPEN
 
-### Target
+### Preferred target order
 
-For kR(y)=k(-y),
+First prove the theorem on the actual W0/W1 pole-neutral diagonal class; generalize only if the proof cost is negligible.
+
+For `kR(y)=k(-y)`, target
 
 ~~~text
 EF.literatureRHS kR = EF.literatureRHS k
 ~~~
 
-and hence
+and hence the half-evenization corollary.
+
+### What W0 changed
+
+For the actual negative witness:
 
 ~~~text
-EF.literatureRHS (1/2 * (k + kR)) = EF.literatureRHS k.
+paperFT h ( I/2) = 0
+paperFT h (-I/2) = 0.
 ~~~
 
-### Why plausible
+Therefore the pole term is already zero on the load-bearing class.
 
-- pole evaluations swap;
-- the prime term already uses k(log n)+k(-log n);
-- the gamma bracket is expected to be even;
-- the final integral should follow by the real-line reflection substitution.
+The prime term is structurally invariant because it already appears as
+
+~~~text
+k(log n) + k(-log n).
+~~~
+
+The concentrated analytic obstruction is now:
+
+- theorem-lock `gammaBracket(-r)=gammaBracket(r)`;
+- prove the real-line gamma-integral reflection/change-of-variable legally.
+
+No existing Mathlib `digamma_conj` theorem was found in the post-W0 audit, so gamma evenness remains genuine work.
 
 ### Falsification check
 
-Do not assume gammaBracket evenness from intuition; prove it from the exact digamma/conjugation expression or use an already-proved equivalent even density theorem if one exists.
+Do not infer gammaBracket evenness from intuition or from real-valuedness alone. If the digamma route balloons, compare immediately against the source G1-B1B route rather than overbuilding.
+
 
 ---
 

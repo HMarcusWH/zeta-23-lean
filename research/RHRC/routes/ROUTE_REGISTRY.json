@@ -57,12 +57,13 @@
         "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
         "R003_SOURCE_NORMALIZATION_REPAIR",
         "R003_SOURCE_KAPPA_FINITE_SECTOR",
-        "R003_WEIL_PAIR_LITERATURE_BRIDGE"
+        "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+        "R003_NEGATIVE_WEIL_TEST_CONTRACTION"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "R003/D0/G0, G1-A, G1-B0, G1-B1A and W2-A are theorem-locked on the validated #77 line. W2-A now gives the genuine zeta W(f,g)=literatureRHS(weilTest f g) identity together with pairwise zero-side summability on the minimal asymmetric regularity class. G1-B1B remains the next open gate inside the source-faithful lane. Globally, the newly available W-summability removes the principal legality blocker from W0, so the current highest-leverage next package is the two-translate matrix-to-single-negative-test contraction. W2-B/C, G1-final, form-core/minimum transfer, F1, finite-negative exclusion and RH remain open."
+      "note": "R003/D0/G0, G1-A, G1-B0, G1-B1A, W2-A and W0 are theorem-locked on merged main through PR #79. W0 now converts every hypothetical off-line zeta zero into one actual compact C^2 pole-neutral test h with Re W(h,h)<0; the proof uses the existing X3 strict two-translate witness plus W2-A summability and does not require the X4.6 canonical detector endpoint. The immediate route-general frontier is W1 support/recentering into a strict finite aperture while preserving negativity and pole neutrality. After W1, the internal lane is W2-B/W2-C/F0-B/G1-A and the source lane is G1-B1B/G1-final/G23, both targeting F1. The post-F1 K0-K3 finite-wall program remains a planned route rather than a theorem-backed terminal reduction. F1, finite-negative exclusion and RH remain open."
     },
     {
       "route_id": "R004_prolate_v2",
