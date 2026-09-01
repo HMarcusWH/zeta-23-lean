@@ -53,11 +53,29 @@ See `routes/R002_multi_probe/`, OBS-009 and D0-R.
 
 ### R003 — CCM / finite Weil bridge
 
-This remains the active finite/source route. PR #77 theorem-locks W2-A: genuine zeta `W(f,g)` equals `literatureRHS(weilTest f g)` on the exact admissible pair class, with the W-summand family proved summable. That removes W0's principal legality blocker. The immediate global priority is therefore W0, while G1-B1B remains the parallel source-faithful lane and W2-B/C remain the internal additive lane after W0/W1.
+This remains the active finite/source route.
 
-Validated theorem state through the #71-#77 sequence includes:
+Merged theorem state through PR #79 now includes both of the shared function-level bridges:
 
-```text
+~~~text
+W2-A:
+  admissible pair
+    -> pairwise Wsummand Summable
+    -> genuine W(f,g) = literatureRHS(weilTest f g)
+
+W0:
+  off-line zero
+    -> compact C² pole-neutral h
+    -> Re W(h,h) < 0.
+~~~
+
+The promoted W0 theorem is
+`Zeta23.ExceptionalZero.exists_poleNeutral_negativeWeilTest_of_offLine_zero`.
+Its theorem-green head `c8112f0ad12e0b2c2f1261cea3ba7726aa04be54` passed the full Lean/CI gate and merged via PR #79.
+
+Validated theorem state now includes:
+
+~~~text
 finite divided-difference/source calculus
   -> finite Guinand-Weil dictionary
   -> literal-tent explicit-formula extension
@@ -69,42 +87,47 @@ finite divided-difference/source calculus
   -> direct Section-4 source matrix
   -> source-normalization repair
   -> finite kappa/source-sector bridge
-```
+  -> W2-A genuine W/literatureRHS + summability
+  -> W0 negative pole-neutral physical Weil test
+~~~
 
-The route-general next package is:
+The route-general next package is now:
 
-```text
-W0 canonical two-translate contraction
-  -> one negative compact C² Weil test
-  -> W1 support/recentering
-```
+~~~text
+W1:
+  compact C² pole-neutral negative h
+    -> translate/recenter into strict support inside (0,L)
+    -> preserve pole zeros
+    -> preserve Re W(h,h)<0.
+~~~
 
-After W0/W1, the program splits.
+After W1, the program splits.
 
 Source-facing lane:
 
-```text
-d*u / L2 source interface
-  -> PsiSharp / QW pullback
-  -> QW_lambda|E_N = canonicalSourceMatrix
-  -> source form-core / minimum-eigenvalue transfer if needed
-  -> F1 canonical finite obstruction
-```
+~~~text
+G1-B1B d*u / L² / PsiSharp / QW
+  -> G1-final QW_lambda|E_N = canonicalSourceMatrix
+  -> G23 strict negative finite transfer
+  -> F1 canonical finite obstruction.
+~~~
 
 Internal additive lane:
 
-```text
-W2-A direct W/literatureRHS + summability          PROVED
-  -> W2-B reflection/evenization
+~~~text
+W2-B reflection/evenization
   -> W2-C W self-value = localized additive RHS
   -> F0-B finite additive/Fourier approximation
   -> G1-A canonical finite additive restriction    PROVED
-  -> F1 canonical finite obstruction
-```
+  -> F1 canonical finite obstruction.
+~~~
 
-The exact W0 theorem/file contract is maintained in CURRENT_RESEARCH_PLAN.md.
+Because the W0 witness is pole-neutral, the first W2-B attempt should be specialized to that class: the pole term already vanishes, the prime term is structurally symmetric, and the concentrated analytic obligation is gamma-bracket reflection/change of variable.
 
-See `routes/R003_ccm_bridge/README.md`.
+The preferred post-F1 K0-K3 finite-wall program remains a **planned research route**, not yet a theorem-backed terminal reduction. K1 must first prove that an F1 negative finite value yields a first canonical singular crossing for the same finite sector before a terminal crossing-exclusion theorem can be composed to RH.
+
+See `routes/R003_ccm_bridge/README.md` and `CURRENT_RESEARCH_PLAN.md`.
+
 
 ### R004 — finite displacement / structural route
 
