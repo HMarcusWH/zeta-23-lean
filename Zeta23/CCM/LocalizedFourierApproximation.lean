@@ -81,6 +81,7 @@ def periodicSecondDerivMap
     (hh : ContDiff ℝ 2 h)
     (hs : tsupport h ⊆ Ioo 0 L) :
     C(AddCircle L, ℂ) := by
+  letI : Fact (0 < L) := ⟨hL⟩
   have hj := strictSupport_endpoint_jet_package (L := L) (h := h) hs
   have hdd : Continuous (deriv (deriv h)) := by
     have hd : ContDiff ℝ 1 (deriv h) := by
@@ -192,7 +193,7 @@ theorem localizedFiniteSecondJet_zeroMode_single
   intro i hi
   by_cases hiz : i = centeredZeroIndex N
   · subst i
-    simp
+    simp [localizedFrequency, localizedBaseFrequency]
   · simp [hiz]
 
 
