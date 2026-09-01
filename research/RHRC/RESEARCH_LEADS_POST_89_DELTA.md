@@ -103,6 +103,7 @@ AddCircle.fourierCoeff_eq_intervalIntegral
 AddCircle.fourierCoeffOn_eq_integral
 AddCircle.fourierCoeffOn_of_hasDerivAt
 AddCircle.hasDerivAt_fourier
+Finsupp.mem_span_range_iff_exists_finsupp
 ~~~
 
 Preferred experiment:
@@ -111,7 +112,8 @@ Preferred experiment:
 strict-collar C² h
 -> periodic h''
 -> uniform finite Fourier-span r approx h''
--> subtract mean(r), using mean(h'')=0
+-> extract explicit c : ℤ →₀ ℂ
+-> subtract the zero/mean mode, using mean(h'')=0
 -> integrate every nonzero mode twice
 -> choose q constant mode to match mean(h)
 -> fixed-L integration estimates recover q',q
@@ -124,7 +126,7 @@ This **supersedes the generic Stone-Weierstrass packaging lead**: Mathlib has al
 
 Fast falsifiers:
 
-- finite-span membership is hard to extract into explicit centered coefficients;
+- finite-span extraction to `ℤ →₀ ℂ` is already supplied by Mathlib; only the finite-support-to-centered-`Fin` coordinate bridge remains to be tested;
 - mean-mode removal/integration-back causes large coercion or normalization friction;
 - periodic integration estimates dominate the proof;
 - the resulting coefficient map does not align cheaply with `localizedFiniteFunction`.
