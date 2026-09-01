@@ -1,194 +1,152 @@
 # HMWH Zeta23 fork — current audit entry point
 
-This file is the audit entry point for the active HMWH fork.
+> **Claim firewall: RH remains OPEN.**
 
-The pre-fork-facing Zeta23 audit is preserved verbatim in [UPSTREAM_AUDIT.md](UPSTREAM_AUDIT.md). It remains provenance for the inherited paper formalization; it is not a complete audit of the later RH research extensions.
+This file records the current high-level validation state. Detailed theorem truth is determined by the merged Lean declarations, compiler/CI and machine registries.
 
-
-## Current validation baseline
+## Current merged baseline
 
 ~~~text
-repository: HMarcusWH/zeta-23-lean
-main: 9e899ca322116e28a56a4412d48aef0052b86fbe
-tree: ad636143768dcaa4dbeb23a0ea295d7b2d6b1c9b
-merged through: PR #84
-PR #83 theorem head: 556be6c2b42e912c58751988c580ab4e0091822d
-PR #83 merge: 7b8e0cc9abbaeff97d88ec67ada40734619a8d07
-PR #84 final validated head: 1a518c9ebd408fa559c5eff281eafe5ff3b2af48
-date: 2026-09-01
-RH: OPEN
+main = 6d5eb5b5673b6754dda4926c41a60a5b85626a44
+tree = a633de6504b0e2105d3e3f33b2f1728c1219dad5
+merged through = PR #86
+PR #86 theorem head = e44cc5b8539b24fa24066c98c7ff013fb83b1001
+PR #86 synthetic merge = a687d8142513b163b9755a18ddf9612901484cac
+PR #86 permanent merge = 6d5eb5b5673b6754dda4926c41a60a5b85626a44
+RHRC #605 = SUCCESS
+Permansson #378 = SUCCESS
+RH = OPEN
 ~~~
 
-PR #83 exact theorem head `556be6c2b42e912c58751988c580ab4e0091822d` passed both repository workflows and merged as `7b8e0cc9abbaeff97d88ec67ada40734619a8d07`. PR #84 exact head `1a518c9ebd408fa559c5eff281eafe5ff3b2af48` then passed both repository workflows and merged as current main `9e899ca322116e28a56a4412d48aef0052b86fbe`, preserving the #83 theorem files while cleaning the route/source governance state.
+## Exact #86 validation
 
-The headline W1 and PR #83 W2-ZS theorem surfaces have axiom surface
+The final #86 theorem head passed:
+
+- CCM formalization build;
+- ExceptionalZero build;
+- no-placeholder/no-project-axiom gate;
+- RHRC claim and route registry lint;
+- RHRC regression suite;
+- R003 source-normalization firewall;
+- R004 scalar-shift audit;
+- external-oracle guard;
+- independent Permansson verification.
+
+The production theorem axiom surfaces contain only:
 
 ~~~text
 [propext, Classical.choice, Quot.sound]
 ~~~
 
-and prove exact closed-support transport plus the pointwise off-line-zero strict-aperture negative-test endpoint.
+No `sorryAx` survived the final green build.
 
-Recent state history:
+## Formal theorem state through PR #86
 
-- PR #77 theorem-locked W2-A;
-- PR #79 theorem-locked W0: off-line zero -> compact C² pole-neutral negative Weil test;
-- PR #80 promoted W0 and moved the roadmap frontier to W1;
-- PR #81 theorem-locked, promoted and merged W1: the same obstruction can be recentered into an explicit strict margin `(r,3r)` inside aperture `L=4r`, preserving both pole zeros and negative W self-value;
-- PR #82 synchronized the post-W1 documentation and selected concrete-zeta zero-side evenization as the next research spike;
-- PR #83 theorem-locked W2-ZS, the generic diagonal `W = localizedWeilAdditiveRHS` identity, and the strict-aperture negative localized-additive witness;
-- PR #84 cleaned the living authority/source-route state, fixed the boundary-ID lint hole, and made source negativity a separate OBS-015 gate.
+### W2-A
 
-## Fork audit surfaces
+**PROVED / REGISTERED.**
 
-The active fork is checked on multiple layers.
+The genuine concrete-zeta pair form is summability-safe and equals the literature explicit-formula RHS of the inherited `weilTest` on the exact admissible class.
 
-### Lean theorem builds
+### W0
 
-```bash
-lake build
-lake build Zeta23.ExceptionalZero
-lake build Zeta23.CCM
-```
+**PROVED / REGISTERED.**
 
-Promoted fork theorem files are expected to contain:
+An off-line zero yields one compact C² pole-neutral physical test with strictly negative genuine W self-value.
 
-- no `sorry`;
-- no project-declared axioms;
-- no hidden dependency on external Python/source-oracle code.
+### W1
 
-Headline route theorems are audited with `#print axioms`; accepted fork theorem surfaces use only Lean's standard `propext`, `Classical.choice`, and `Quot.sound` unless explicitly documented otherwise.
+**PROVED / REGISTERED.**
 
-### RHRC regression and governance
+The negative test can be recentered into a strict interior aperture with `L=4r` and `tsupport h subset (r,3r) subset (0,L)` while preserving the two Fourier pole zeros and strict negativity.
 
-```bash
-python research/RHRC/tools/run_suite.py
-```
+### W2-ZS / direct diagonal W2-C
 
-The route/claim registry is fail-closed. Research evidence does not promote theorem status.
+**PROVED / REGISTERED.**
 
-### R003 normalization/source firewall
-
-```bash
-python research/RHRC/routes/R003_ccm_bridge/check_source_normalization_firewall.py
-```
-
-This prevents direct semantic collapse of the legacy printed `finiteMatrix` into the canonical external source restriction.
-
-The current canonical object map is recorded in `research/RHRC/routes/R003_ccm_bridge/CCM_CANONICAL_OBJECT_MAP_v3.json` and retains the matrix equalities:
-
-```text
-canonicalSourceMatrix
-  = cutoffFreeMatrix
-  = sourceEq44Matrix
-  = dictionaryMatrix
-```
-
-while `legacyPrintedMatrix = finiteMatrix`.
-
-### R004 scalar-shift invariants
-
-```bash
-python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
-```
-
-This guards the distinction between shift-invariant commutator/displacement structure and shift-sensitive absolute spectral claims.
-
-## Comparator / inherited paper audit
-
-The inherited paper theorem surface remains comparator-audited exactly as documented in:
-
-- [UPSTREAM_AUDIT.md](UPSTREAM_AUDIT.md);
-- [comparator/README.md](comparator/README.md);
-- [formalization.yaml](formalization.yaml).
-
-Those files describe the preserved upstream formalization layer.
-
-
-## Current claim firewall
-
-G1-B1A remains merged and registered: finite source coordinate transport and zero-extended `kappa` image are theorem-locked. This does not include multiplicative-Haar/L² or ambient source-functional semantics.
-
-**Source-sign firewall:** G1-B1B/G1-final are interface and restriction obligations. They do not by themselves theoremize `Re W(h,h)<0 -> QW<0`. A source proof of F1 still requires either an independent fixed-aperture negative-QW theorem (`S-NEG`) or an exact W/localized-additive/QW composition theorem.
-
-W2-A is merged and registered:
+For every compact C² concrete-zeta test:
 
 ~~~text
-Summable Wsummand(f,g)
-and
-W(f,g) = EF.literatureRHS(EF.weilTest f g).
+W(h,h)=localizedWeilAdditiveRHS(h,h).
 ~~~
 
-W0 and W1 are merged and registered, giving a compact C² pole-neutral test with strict negative W self-value and an explicit strict aperture margin.
+The old analytic W2-B proof route remains OPEN / DORMANT as an independent cross-check.
 
-PR #83 is merged and the Stage-B promotion records two new claims.
+### Strict negative localized-additive witness
 
-### R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE
+**PROVED / REGISTERED.**
 
-For every compact C² concrete-zeta test `h`:
+W1 + W2-ZS gives a strict-collar compact C² test with negative localized additive RHS.
+
+### G1-A
+
+**PROVED / REGISTERED.**
+
+On the existing finite localized vectors, the repository additive RHS equals the cutoff-free/canonical finite quadratic form.
+
+### F0-B1A — boundary-flat finite Weil restriction
+
+**PROVED / REGISTERED.**
+
+For positive `L`, finite `N` and arbitrary complex coefficients satisfying centered moments 0,1,2=0:
 
 ~~~text
-zetaZeroConfig.W h h
-  = Zeta23.CCM.localizedWeilAdditiveRHS h h.
+localizedFiniteVector L N u is global C²
+and compactly supported,
+
+W(v,v)
+  = localizedWeilAdditiveRHS(v,v)
+  = quadraticForm(canonicalSourceMatrix L N) u.
 ~~~
 
-Theorem:
+Production claim:
 
 ~~~text
-Zeta23.ExceptionalZero.zeta_W_self_eq_localizedWeilAdditiveRHS
+R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION
 ~~~
 
-Exact theorem head:
+The carrier is nontrivial by the proved five-mode witness `[1/4,-1,3/2,-1,1/4]`.
+
+## Current open frontier
 
 ~~~text
-556be6c2b42e912c58751988c580ab4e0091822d
+F0-B1B exact three-mode boundary-flat projection       OPEN / NOW
+WCONT family-level common-support W continuity         OPEN
+finite approximation in selected topology             OPEN
+strict finite sign transfer                            OPEN
+F1 canonical finite negative obstruction              OPEN
+K0-K3                                                  OPEN
+RH                                                     OPEN
 ~~~
 
-The supporting W2-ZS proof package theoremizes concrete-zeta conjugation, the actual `rho -> 1-rho` carrier equivalence with multiplicity, `gammaOf` sign reversal, Fourier reflection, and summability-safe zero-sum reindexing. The proof does not open the pole/prime/gamma decomposition and has axiom surface `[propext, Classical.choice, Quot.sound]`.
+F0-B2 direct localized-additive continuity remains a fallback, not the primary path.
 
-### R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS
+## Normalization firewall
 
-Every concrete off-line zeta zero yields
+Canonical direct-source authority remains:
 
 ~~~text
-exists L>0, r>0, h,
-  L=4r
-  and ContDiff R 2 h
-  and HasCompactSupport h
-  and tsupport h ⊆ Ioo r (3*r)
-  and tsupport h ⊆ Ioo 0 L
-  and paperFT h (±I/2)=0
-  and Re(localizedWeilAdditiveRHS h h)<0.
+canonicalSourceMatrix = cutoffFreeMatrix = sourceEq44Matrix = dictionaryMatrix.
 ~~~
 
-This is the theorem-backed F0-B input.
+Historical `finiteMatrix` remains the printed-normalization object. The exact scalar shift is theorem-locked. PR #86 does not alter this map.
 
-The repository does **not** yet prove:
+## Source-sign firewall
 
-- F0-B finite approximation / strict-negativity transfer;
-- a family-level W-continuity or uniform zero-side domination theorem for finite approximants;
-- direct localized-additive continuity on the existing finite vectors;
-- the old analytic W2-B reflection/gamma route;
-- G1-B1B/G1-final/S-NEG/G23;
-- F1;
-- a first canonical crossing theorem;
-- K0-K3 terminal exclusion;
-- finite-negative exclusion;
-- RH.
+OBS-015 remains binding:
 
-The old analytic W2-B route remains OPEN / DORMANT. Proving its intended diagonal conclusion by W2-ZS does not prove that historical proof route.
+~~~text
+source interface is not source negativity.
+~~~
 
-Merged repository truth remains determined by live GitHub main plus the machine registries and exact Lean declarations.
+G1-B1A finite source transport is proved, but Haar/L²/PsiSharp/QW interface, G1-final, source negativity and G23 remain OPEN.
 
-## Audit authority
+## Continuity firewall
 
-For current fork claims use, in order:
+Per-approximant summability must never be upgraded to family-level dominated convergence. The next WCONT work should test reuse of the existing inverse-square zero weight with one uniform approximation-family constant.
 
-1. live compiler/CI on the exact head;
-2. current merged Lean declarations;
-3. `research/RHRC/CLAIM_REGISTRY.json`;
-4. `research/RHRC/routes/ROUTE_REGISTRY.json`;
-5. active route README;
-6. historical settlements and receipts.
+## Current post-green settlement
 
-See [research/RHRC/DOCUMENTATION_AUTHORITY.md](research/RHRC/DOCUMENTATION_AUTHORITY.md).
+`research/RHRC/routes/R003_ccm_bridge/F0_B1A_POST_GREEN_PROJECTION_CONTINUITY_FRONTIER_2026_09_01.md`
+
+**RH remains OPEN.**
