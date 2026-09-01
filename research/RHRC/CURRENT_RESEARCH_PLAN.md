@@ -181,36 +181,65 @@ Equivalent sequential packaging is acceptable if easier in Lean.
 
 The theorem should preserve one fixed aperture L. No support constant may depend on N.
 
-## 4. Preferred construction lead — second derivative first
+## 4. Preferred construction lead — existing AddCircle Fourier span
 
-Pinned Mathlib contains the RCLike Stone-Weierstrass theorem
+Pinned Mathlib already contains a route-specific Fourier package in
 
 ~~~text
-ContinuousMap.starSubalgebra_topologicalClosure_eq_top_of_separatesPoints.
+Mathlib/Analysis/Fourier/AddCircle.lean
 ~~~
 
-This opens a potentially smaller route than Fejer:
+with the exact positive-sign characters
 
-1. use the W1 collar to regard h as a C² periodic function with zero value/first/second jets at the seam;
-2. uniformly approximate the periodic continuous function h'' by a finite trigonometric/Laurent polynomial r;
-3. remove the constant mode so integral r = 0;
-4. solve q''=r in the finite Fourier sector by dividing nonzero mode coefficients by the squared frequency;
-5. choose q's constant mode to match the mean of h;
-6. derive q' and q control from q''-h'' using periodic integration/Poincare inequalities;
-7. use endpoint q,q',q'' residuals to control M0,M1,M2;
-8. apply boundaryFlatProject;
-9. prove the three fixed correction modes preserve the selected error bound.
+~~~text
+AddCircle.fourier n (x : AddCircle L)
+  = exp(2*pi*i*n*x/L),
+~~~
 
-This is a **LEAD / HYPOTHESIS**, not a current theorem.
+matching `localizedMode L n` up to the repository's fixed `1/sqrt L` normalization.
+
+Load-bearing existing theorems include:
+
+~~~text
+AddCircle.span_fourier_closure_eq_top
+AddCircle.fourierCoeff_eq_intervalIntegral
+AddCircle.fourierCoeffOn_eq_integral
+AddCircle.fourierCoeffOn_of_hasDerivAt
+AddCircle.hasDerivAt_fourier
+~~~
+
+Therefore do **not** rebuild Stone-Weierstrass and do not start with Fejer.
+
+Preferred F0-B1C construction:
+
+1. use the W1 strict collar to regard h as a C² periodic function across the 0/L seam;
+2. regard h'' as a continuous map on `AddCircle L`;
+3. use `span_fourier_closure_eq_top` to choose a finite trigonometric polynomial r uniformly close to h'';
+4. prove `integral_0^L h'' = h'(L)-h'(0)=0`, then subtract the constant/mean mode of r, preserving finite Fourier span and increasing the uniform error by only a fixed factor;
+5. integrate every nonzero Fourier mode of the mean-zero polynomial twice, using the exact frequency `2*pi*i*n/L`;
+6. choose the constant mode of q to match the mean of h;
+7. prove q'' equals the corrected polynomial exactly;
+8. recover q' and q from q''-h'' by fixed-L periodic integration/Poincare estimates;
+9. obtain endpoint q'', q', q residuals; the strict collar gives h(0)=h'(0)=h''(0)=0;
+10. convert endpoint residuals to M0,M1,M2 with #88 and apply `boundaryFlatProject`;
+11. prove the fixed three-mode correction is small in the WCONT-A norm.
+
+### Why this is smaller than the previous Stone-Weierstrass lead
+
+Mathlib has already proved that the finite span of the exact Fourier characters is uniformly dense. We only need the extraction/integration-back bridge into `localizedFiniteFunction`, not a new density theorem or a new separating star-subalgebra proof.
+
+### Why L² Fourier convergence is not sufficient by itself
+
+`AddCircle.hasSum_fourier_series_L2` is useful supporting infrastructure, but #88 needs the second endpoint jet q''(0) to be small. Point evaluation is not continuous in L². Uniform approximation of h'' directly supplies that endpoint control.
 
 ### Fast falsifiers
 
-- packaging the finite trigonometric sector as a separating star subalgebra is larger than a direct Fejer proof;
-- integration back does not align cleanly with localizedMode/centeredIndex;
-- mean-zero bookkeeping becomes the dominant proof burden;
-- periodic Poincare estimates are harder than direct simultaneous approximation.
+- extracting a concrete finite coefficient vector from membership in the Fourier span is unexpectedly expensive;
+- mean-zero removal is awkward under the exact continuous-map representation;
+- the twice-integrated finite polynomial does not align cleanly with `localizedMode/centeredIndex`;
+- fixed-L periodic integration estimates are harder than the boundary-killer fallback.
 
-If any of these occurs, return to direct Fejer.
+If these occur, compare direct Fejer and the boundary-killer route before expanding infrastructure.
 
 ## 5. Quantitative projection-smallness package
 
