@@ -92,9 +92,14 @@ theorem localizedFiniteFunction_boundaryFlatProject
       localizedFiniteFunction L N u x +
         localizedFiniteFunction L N
           (boundaryFlatCorrection N hN u) x := by
-  simpa [boundaryFlatProject] using
-    localizedFiniteFunction_add_coefficients
-      L N u (boundaryFlatCorrection N hN u) x
+  change
+    localizedFiniteFunction L N
+        (fun i => u i + boundaryFlatCorrection N hN u i) x =
+      localizedFiniteFunction L N u x +
+        localizedFiniteFunction L N
+          (boundaryFlatCorrection N hN u) x
+  exact localizedFiniteFunction_add_coefficients
+    L N u (boundaryFlatCorrection N hN u) x
 
 /-- The exact projector is raw second jet plus the correction second jet. -/
 theorem localizedFiniteSecondJet_boundaryFlatProject
@@ -105,9 +110,14 @@ theorem localizedFiniteSecondJet_boundaryFlatProject
       localizedFiniteSecondJet L N u x +
         localizedFiniteSecondJet L N
           (boundaryFlatCorrection N hN u) x := by
-  simpa [boundaryFlatProject] using
-    localizedFiniteSecondJet_add_coefficients
-      L N u (boundaryFlatCorrection N hN u) x
+  change
+    localizedFiniteSecondJet L N
+        (fun i => u i + boundaryFlatCorrection N hN u i) x =
+      localizedFiniteSecondJet L N u x +
+        localizedFiniteSecondJet L N
+          (boundaryFlatCorrection N hN u) x
+  exact localizedFiniteSecondJet_add_coefficients
+    L N u (boundaryFlatCorrection N hN u) x
 
 /-- Explicit formula for the three-mode correction at function level. -/
 theorem localizedFiniteFunction_boundaryFlatCorrection_eq
@@ -536,7 +546,6 @@ theorem integral_norm_le_length_mul_of_support_Icc
     _ = L * B := by
       rw [intervalIntegral.integral_const]
       simp
-      ring
 
 /-- **F0-B1C-B production endpoint.**
 
@@ -688,8 +697,16 @@ theorem exists_boundaryFlatFinite_WCONT_approx
       _ <
         2 * (1 / Real.sqrt L) *
           ‖localizedBaseFrequency L‖ ^ 2 * δ := by
-        have hsnonneg : 0 ≤ 1 / Real.sqrt L := by positivity
-        have hbnonneg : 0 ≤ ‖localizedBaseFrequency L‖ ^ 2 := sq_nonneg _
+        have hsum :
+            ‖centeredMoment N 1 u‖ + ‖centeredMoment N 2 u‖ <
+              2 * δ := by
+          nlinarith
+        have hcoef :
+            0 <
+              (1 / Real.sqrt L) *
+                ‖localizedBaseFrequency L‖ ^ 2 := by
+          positivity
+        have hmul := mul_lt_mul_of_pos_left hsum hcoef
         nlinarith
       _ = 2 * s * b ^ 2 * δ := by rfl
 
