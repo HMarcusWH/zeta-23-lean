@@ -289,3 +289,23 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.CCM.exists_centeredIndex_eq_of_bounds
 #check Zeta23.CCM.exists_support_natAbs_bound
 #print axioms Zeta23.CCM.exists_support_natAbs_bound
+
+
+#check Zeta23.CCM.addCircleFourierPolynomial_apply
+#print axioms Zeta23.CCM.addCircleFourierPolynomial_apply
+#check Zeta23.CCM.fourierCoeff_addCircleFourierPolynomial
+#print axioms Zeta23.CCM.fourierCoeff_addCircleFourierPolynomial
+#check Zeta23.CCM.periodicSecondDerivMap_fourierCoeff_zero
+#print axioms Zeta23.CCM.periodicSecondDerivMap_fourierCoeff_zero
+#check Zeta23.CCM.exists_zeroModeFree_secondDeriv_fourierPolynomial
+#print axioms Zeta23.CCM.exists_zeroModeFree_secondDeriv_fourierPolynomial
+#check Zeta23.CCM.localizedFiniteFunction_centeredCoefficientsOfFinsupp_eq
+#print axioms Zeta23.CCM.localizedFiniteFunction_centeredCoefficientsOfFinsupp_eq
+#check Zeta23.CCM.localizedFiniteSecondJet_twicePrimitive_eq
+#print axioms Zeta23.CCM.localizedFiniteSecondJet_twicePrimitive_eq
+#check Zeta23.CCM.firstJet_error_norm_le_of_secondJet_error
+#print axioms Zeta23.CCM.firstJet_error_norm_le_of_secondJet_error
+#check Zeta23.CCM.function_error_norm_le_of_firstJet_error
+#print axioms Zeta23.CCM.function_error_norm_le_of_firstJet_error
+#check Zeta23.CCM.exists_localizedFinite_uniform_C2_approx
+#print axioms Zeta23.CCM.exists_localizedFinite_uniform_C2_approx
