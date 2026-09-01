@@ -4,415 +4,55 @@
     "kernel": "OoL-MVS",
     "version": "2.7.6",
     "research_evaluation_mode": "EXPERIMENTAL_EVIDENCE",
-    "evidence_values": [
-      "PASS",
-      "FAIL",
-      "NA"
-    ],
+    "evidence_values": ["PASS", "FAIL", "NA"],
     "logic": "strong_Kleene",
-    "certificate_status_values": [
-      "VALID",
-      "INCOMPLETE",
-      "INVALID"
-    ],
+    "certificate_status_values": ["VALID", "INCOMPLETE", "INVALID"],
     "claim_status_is_separate_from_runtime_evidence_result": true,
     "mathematical_theorem_authority": "Lean/comparator, not RHRC evidence certificates"
   },
   "claims": [
+    {"id":"C_RH","statement":"Every nontrivial zero rho of zeta satisfies Re(rho)=1/2.","status":"OPEN","dependencies":["R001_ZERO_GROWTH","R001_PRIME_UPPER"],"route":"R001_exceptional_zero","promotion_cap":"OPEN"},
+    {"id":"OBS_TIGHTMULT","statement":"The existing c=2 trace/Frobenius/positive-index certificate is simultaneously extremal on online doubles and tight off-line pairs and cannot be improved using only those quantities.","status":"PROVED_UNCONDITIONAL","dependencies":[],"source":"Zeta23/ZeroSide/TightMult.lean","theorem":"Zeta23.ZeroSide.TightMult.lemmaR_tight_two","promotion_cap":"PROVED_UNCONDITIONAL"},
+    {"id":"R001_FILTERED_ZERO_POLE","statement":"For an absolutely summable spectral zero filter with critical-line center, any zeta zero with Re(rho) > 1/2 and nonzero multiplicity-weighted filter coefficient forces the filtered zero family to fail the subexponential bound (exposed right-side Laplace pole). Left-side zeros are excluded downstream via the zeta reflection rho -> 1 - conj(rho), never by imposing reflection symmetry on generic filters.","status":"PROVED_UNCONDITIONAL","dependencies":[],"source":"Zeta23/ExceptionalZero/ExposedPole.lean","theorem":"Zeta23.ExceptionalZero.not_subexponential_filteredZeroFamily_of_right_zero","route":"R001_exceptional_zero","promotion_cap":"PROVED_UNCONDITIONAL"},
+    {"id":"R001_WEIL_BRIDGE","statement":"The filtered zero family of the natural Weil filter at center 1/2 equals, at every aperture a, the literature explicit-formula RHS of the right-translated test k(. - 2a), under exact C^2 compact-support hypotheses; absolute filter summability follows from EF_lit's summability clause.","status":"PROVED_UNCONDITIONAL","dependencies":[],"source":"Zeta23/ExceptionalZero/WeilFilter.lean","theorem":"Zeta23.ExceptionalZero.filteredZeroFamily_weilZeroFilter_eq_literatureRHS","route":"R001_exceptional_zero","promotion_cap":"PROVED_UNCONDITIONAL"},
+    {"id":"R001_ZERO_GROWTH","statement":"For every hypothetical zeta zero strictly to the right of the critical line there exists an admissible pole-killed C^2 compactly supported Weil test (target-adaptive modulated bump through the pole-killer q'' - q/4) whose translated literature-RHS residual fails the subexponential bound.","status":"PROVED_UNCONDITIONAL","dependencies":["R001_FILTERED_ZERO_POLE","R001_WEIL_BRIDGE"],"source":"Zeta23/ExceptionalZero/WeilFilter.lean","theorem":"Zeta23.ExceptionalZero.exists_poleKilled_test_not_subexponential_of_right_zero","route":"R001_exceptional_zero","promotion_cap":"PROVED_UNCONDITIONAL","adaptation_note":"DISCOVERY-phase route correction 2026-08-20: the frozen-universal-filter specification was replaced by the logically weaker target-adaptive pole-killed family, which is sufficient for RH; see routes/R001_exceptional_zero/README.md."},
+    {"id":"R001_PRIME_UPPER","statement":"The translated pole-killed Weil residual family is subexponential from unconditional arithmetic/prime-side estimates (scalar form: Zeta23.ExceptionalZero.ArithmeticSideSubexponential).","status":"OPEN","dependencies":[],"route":"R001_exceptional_zero","promotion_cap":"OPEN","note":"Proved logically equivalent to C_RH itself (see R001_PRIME_UPPER_EQUIV_RH and OBS-008). Must not be attacked as an independent arithmetic estimate; any closure is RH-strength by theorem."},
+    {"id":"R001_PRIME_UPPER_EQUIV_RH","statement":"The scalar-class R001 prime-side target ArithmeticSideSubexponential is logically equivalent to RH for the zeta zero configuration: it implies RH via the exposed-pole detector with reflection, and RH implies it via unit-modulus critical-line modes.","status":"PROVED_UNCONDITIONAL","dependencies":["R001_ZERO_GROWTH"],"source":"Zeta23/ExceptionalZero/ArithmeticReduction.lean","theorem":"Zeta23.ExceptionalZero.arithmeticSideSubexponential_iff_criticalLine","route":"R001_exceptional_zero","promotion_cap":"PROVED_UNCONDITIONAL"},
+    {"id":"R002_MULTI_PROBE_SEPARATION","statement":"Block-level separation via the negative-index channel: the exact off-line pair block c*(x x^T - y y^T) of ZeroSide.pair_term, with positive weight and transverse real parts (nonzero Gram determinant), admits an explicit direction on which its Hermitian form is strictly negative (value exactly -c*gramDet^2), and is therefore not equal to any nonnegatively weighted sum of real rank-one blocks - the shape of every on-line configuration and of the TightMult extremal mock.","status":"PROVED_UNCONDITIONAL","dependencies":["OBS_TIGHTMULT"],"source":"Zeta23/ExceptionalZero/ProbeGramNegativity.lean","theorem":"Zeta23.ExceptionalZero.not_onLineCombination_of_pairBlock","route":"R002_multi_probe","promotion_cap":"PROVED_UNCONDITIONAL","adaptation_note":"DISCOVERY-phase route specialization 2026-08-21: negative-index block separation is proved, but windowed visibility and RH remain open."},
+    {"id":"R002_WINDOWED_VISIBILITY","statement":"The negative direction of an off-line pair block survives the positive-semidefinite on-line bulk in a full probe window, so that lambda_min of the windowed Gram is negative whenever an off-line zero lies in the window.","status":"OPEN","dependencies":["R002_MULTI_PROBE_SEPARATION"],"route":"R002_multi_probe","promotion_cap":"OPEN","note":"Current production Params.Valid prevents promoting the historical lambda>1 visibility experiment; masking remains open on the R002 route."},
+    {"id":"R002_KERNEL_ZERO_SIDE_BRIDGE","statement":"For the original even two-sided CCM qBasis/kernel on centered finite indices and every positive aperture L, the exact concrete zeta raw-kernel zero-side matrix equals twice the production zeroSideMatrix, hence equals 2*finiteMatrix(L,N)+4*cCorrection(L)*I.","status":"PROVED_UNCONDITIONAL","dependencies":["R003_CCM_BRIDGE"],"source":"Zeta23/CCM/RawKernelZeroSideBridge.lean","theorem":"Zeta23.CCM.rawKernelZeroSideMatrix_eq_two_finiteMatrix_add_four_correction","route":"R002_multi_probe","promotion_cap":"PROVED_UNCONDITIONAL","note":"Corrected scalar-shift theorem for the centered qBasis/kernel family only; generic smooth-taper equality, positivity, masking, finite-to-infinite closure and RH remain open."},
+    {"id":"R004_CCM_DISPLACEMENT_FORMAL","statement":"For the canonical direct-source finite CCM matrix on centered Fourier indices and positive aperture L, the index commutator is exactly g 1^T - 1 g^T and therefore has rank at most two. The historical printed-normalization finiteMatrix differs only by a scalar identity and has the same commutator.","status":"PROVED_UNCONDITIONAL","dependencies":[],"source":"Zeta23/CCM/SourceNormalizationRepair.lean","theorem":"Zeta23.CCM.rank_canonicalSourceMatrix_displacement_le_two","route":"R004_prolate_v2","promotion_cap":"PROVED_UNCONDITIONAL","note":"Normalization repair after PR #71: canonicalSourceMatrix is the direct source authority."},
+    {"id":"R003_DISPLACEMENT_TRANSFER","statement":"Displacement transfer algebra over C: scalar identity shifts do not change D*M-M*D, and exact scaled-shift identities transfer the rank-two displacement law.","status":"PROVED_UNCONDITIONAL","dependencies":[],"source":"Zeta23/ExceptionalZero/DisplacementTransfer.lean","theorem":"Zeta23.ExceptionalZero.rank_displacement_le_two_of_eq_smul_add_scalar","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL"},
+    {"id":"R003_RESIDUAL_C2","statement":"For every N, real centered-grid coefficient vector u and aperture L>0, the rank-one-regularized finite-dictionary residual has a complex-valued C^2 compactly supported wrapper satisfying EF_lit regularity.","status":"PROVED_UNCONDITIONAL","dependencies":[],"source":"Zeta23/CCM/DictionaryResidualSecondOrderGluing.lean","theorem":"Zeta23.CCM.dictionaryResidualTest_admissible","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL","note":"Admissibility of the smooth residual only; no direct nonsmooth tent EF application."},
+    {"id":"R003_TENT_ANALYTICS","statement":"For every L>0, the canonical tent has its exact paperFT closed form, quadratic strip decay and absolute concrete-zeta zero-side summability.","status":"PROVED_UNCONDITIONAL","dependencies":[],"source":"Zeta23/CCM/DictionaryTentZeroSummability.lean","theorem":"Zeta23.CCM.dictionaryTent_analytic_package","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL"},
+    {"id":"R003_TENT_MOLLIFIER_ARCHITECTURE","statement":"For every aperture L>0, the canonical dictionary tent admits normalized shrinking C^2 mollifiers with a common support envelope, pointwise convergence, exact complex-frequency transform factorization and a uniform quadratic strip bound.","status":"PROVED_UNCONDITIONAL","dependencies":["R003_TENT_ANALYTICS"],"source":"Zeta23/CCM/DictionaryTentMollifierSupport.lean","theorem":"Zeta23.CCM.dictionaryTent_mollifier_architecture_package","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL"},
+    {"id":"R003_TENT_EF_EXTENSION","statement":"The concrete-zeta explicit formula for the canonical tent is justified by the theorem-locked C_c^2 mollifier limit architecture, including zero-side convergence.","status":"PROVED_UNCONDITIONAL","dependencies":["R003_TENT_ANALYTICS","R003_TENT_MOLLIFIER_ARCHITECTURE"],"source":"Zeta23/CCM/DictionaryTentEFExtension.lean","theorem":"Zeta23.CCM.dictionaryTent_explicitFormula","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL"},
+    {"id":"R003_CCM_RHS_IDENTITY","statement":"For the full real finite dictionary test, the deterministic literature RHS equals the dictionaryMatrix quadratic form in the production normalization.","status":"PROVED_UNCONDITIONAL","dependencies":[],"source":"Zeta23/CCM/DictionaryRHSIdentity.lean","theorem":"Zeta23.CCM.literatureRHS_dictionaryTest_eq_quadraticForm","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL"},
+    {"id":"R003_KERNEL_EF_EXTENSION","statement":"For every real finite dictionary coefficient vector and L>0, the concrete zeta zero-side dictionary transform sum equals literatureRHS of the full dictionary test.","status":"PROVED_UNCONDITIONAL","dependencies":["R003_CCM_BRIDGE","R003_CCM_RHS_IDENTITY"],"source":"Zeta23/CCM/DictionaryKernelEFExtension.lean","theorem":"Zeta23.CCM.dictionaryTransform_zero_sum_eq_literatureRHS","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL"},
+    {"id":"R003_CCM_BRIDGE","statement":"For every finite N and L>0, the actual finite zeta zero-side dictionary matrix equals finiteMatrix(L,N)+2*cCorrection(L)*I.","status":"PROVED_UNCONDITIONAL","dependencies":["R003_CCM_RHS_IDENTITY","R003_TENT_EF_EXTENSION"],"source":"Zeta23/CCM/DictionaryZeroSideBridge.lean","theorem":"Zeta23.CCM.zeroSideMatrix_eq_finiteMatrix_add_correction","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL"},
+    {"id":"R003_CUTOFF_FREE_MATRIX_MAP","statement":"For every finite N and positive aperture L, the actual zeta zero-side matrix equals the independently defined cutoff-free source-convention matrix; equivalently cutoffFreeMatrix = finiteMatrix + 2*cCorrection(L)*I.","status":"PROVED_UNCONDITIONAL","dependencies":["R003_CCM_BRIDGE"],"source":"Zeta23/CCM/CutoffFreeMatrix.lean","theorem":"Zeta23.CCM.zeroSideMatrix_eq_cutoffFreeMatrix","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL"},
+    {"id":"R003_WEIL_DISPLACEMENT","statement":"The actual finite zeta zero-side dictionary matrix has the same exact index displacement g 1^T - 1 g^T as the formal finite CCM matrix and therefore has displacement rank at most two.","status":"PROVED_UNCONDITIONAL","dependencies":["R003_CCM_BRIDGE","R004_CCM_DISPLACEMENT_FORMAL","R003_DISPLACEMENT_TRANSFER"],"source":"Zeta23/CCM/DictionaryZeroSideDisplacement.lean","theorem":"Zeta23.CCM.rank_zeroSideMatrix_displacement_le_two","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL"},
+    {"id":"R003_LOCALIZED_BASIS_CORRELATION","statement":"For every positive aperture L, centered Fourier indices and shift 0<=y<=L, the normalized hard-window Fourier-character correlation is exactly the production qBasis entry formula.","status":"PROVED_UNCONDITIONAL","dependencies":[],"source":"Zeta23/CCM/LocalizedBasis.lean","theorem":"Zeta23.CCM.hardWindowCharacterCorrelation_eq_qBasis","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL"},
+    {"id":"R003_LOCALIZED_FINITE_SPACE_CORRELATION","statement":"For every positive aperture L, finite N and arbitrary complex centered coefficient vector u, the actual zero-extended localized finite vector is compactly supported and L2 and its inherited symmetrized autocorrelation is exactly 2*dictionaryTest.","status":"PROVED_UNCONDITIONAL","dependencies":["R003_LOCALIZED_BASIS_CORRELATION"],"source":"Zeta23/CCM/LocalizedFiniteSpace.lean","theorem":"Zeta23.CCM.localizedWeilCorrelation_finiteVector_eq_two_mul_dictionaryTest","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL"},
+    {"id":"R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION","statement":"For every positive aperture L, finite N and arbitrary complex centered coefficient vector u, localizedWeilAdditiveRHS on the actual localized finite vector equals the cutoffFreeMatrix(L,N) quadratic form.","status":"PROVED_UNCONDITIONAL","dependencies":["R003_LOCALIZED_FINITE_SPACE_CORRELATION","R003_CCM_RHS_IDENTITY","R003_CUTOFF_FREE_MATRIX_MAP"],"source":"Zeta23/CCM/LocalizedWeilRestriction.lean","theorem":"Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_cutoffFreeQuadraticForm","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL","note":"G1-A internal additive restriction only; external QW_lambda/PsiSharp remains a separate source obligation."},
+    {"id":"R003_SOURCE_WEIL_NORMALIZATION_FIREWALL","statement":"Direct source equation-(4.4) substitution yields cutoffFreeMatrix while the later printed equation-(4.11) rewrite contains a theorem-locked correction-factor seam.","status":"PROVED_UNCONDITIONAL","dependencies":["R003_CUTOFF_FREE_MATRIX_MAP"],"source":"Zeta23/CCM/SourceWeilMatrixReconciliation.lean","theorem":"Zeta23.CCM.sourceEq44Matrix_eq_cutoffFreeMatrix","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL","note":"G1-B0 source-normalization result only; ambient kappa/PsiSharp/QW_lambda remains open."},
+    {"id":"R003_SOURCE_NORMALIZATION_REPAIR","statement":"The direct equation-(4.4) finite source matrix is canonicalSourceMatrix = cutoffFreeMatrix = dictionaryMatrix; historical finiteMatrix differs by exactly 2*cCorrection(L)*I.","status":"PROVED_UNCONDITIONAL","dependencies":[],"source":"Zeta23/CCM/SourceNormalizationRepair.lean","theorem":"Zeta23.CCM.canonicalSourceMatrix_eq_legacyPrintedMatrix_add_correction","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL"},
+    {"id":"R003_SOURCE_KAPPA_FINITE_SECTOR","statement":"For every lambda>1, finite N and arbitrary complex centered coefficient vector, the source logarithmic coordinates and zero-extended finite kappa image agree exactly with sourceFiniteVector on [lambda^-1,lambda].","status":"PROVED_UNCONDITIONAL","dependencies":["R003_LOCALIZED_FINITE_SPACE_CORRELATION"],"source":"Zeta23/CCM/SourceKappa.lean","theorem":"Zeta23.CCM.sourceKappaFiniteVector_eq_sourceFiniteVector","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL","note":"G1-B1A only; Haar/L2/PsiSharp/QW and source restriction remain open."},
+    {"id":"R003_WEIL_PAIR_LITERATURE_BRIDGE","statement":"For arbitrary complex-valued f,g with f C^2 compactly supported and g continuous compactly supported, the concrete-zeta Weil summand family is summable and W f g = EF.literatureRHS(EF.weilTest f g).","status":"PROVED_UNCONDITIONAL","dependencies":[],"source":"Zeta23/ExceptionalZero/WeilLiteratureBridge.lean","theorem":"Zeta23.ExceptionalZero.zeta_W_literatureRHS_package","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL"},
+    {"id":"R003_NEGATIVE_WEIL_TEST_CONTRACTION","statement":"Every concrete off-line zeta zero yields a compact C^2 pole-neutral test h with Re(zetaZeroConfig.W h h)<0.","status":"PROVED_UNCONDITIONAL","dependencies":["R003_WEIL_PAIR_LITERATURE_BRIDGE"],"source":"Zeta23/ExceptionalZero/TwoTranslateContraction.lean","theorem":"Zeta23.ExceptionalZero.exists_poleNeutral_negativeWeilTest_of_offLine_zero","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL"},
+    {"id":"R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST","statement":"Every concrete off-line zeta zero yields L>0,r>0,L=4r and a compact C^2 pole-neutral test supported in (r,3r) subset (0,L) with strictly negative genuine W self-value.","status":"PROVED_UNCONDITIONAL","dependencies":["R003_NEGATIVE_WEIL_TEST_CONTRACTION"],"source":"Zeta23/ExceptionalZero/NegativeWeilTestSupport.lean","theorem":"Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL"},
+    {"id":"R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE","statement":"For every complex-valued compactly supported C^2 test h, zetaZeroConfig.W h h = Zeta23.CCM.localizedWeilAdditiveRHS h h.","status":"PROVED_UNCONDITIONAL","dependencies":["R003_WEIL_PAIR_LITERATURE_BRIDGE"],"source":"Zeta23/ExceptionalZero/WeilZeroSideEvenization.lean","theorem":"Zeta23.ExceptionalZero.zeta_W_self_eq_localizedWeilAdditiveRHS","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL","note":"PR #83 W2-ZS/direct diagonal endpoint. Old analytic W2-B remains a separate dormant route."},
+    {"id":"R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS","statement":"Every concrete off-line zeta zero yields L>0,r>0,L=4r and a compact C^2 pole-neutral strict-collar test with Re(localizedWeilAdditiveRHS h h)<0.","status":"PROVED_UNCONDITIONAL","dependencies":["R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST","R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE"],"source":"Zeta23/ExceptionalZero/WeilZeroSideEvenization.lean","theorem":"Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeLocalizedWeilAdditiveRHS_of_offLine_zero","route":"R003_ccm_bridge","promotion_cap":"PROVED_UNCONDITIONAL","note":"Strong W1+W2-ZS F0-B input. Finite approximation/continuity, F1, source QW and RH remain open."},
     {
-      "id": "C_RH",
-      "statement": "Every nontrivial zero rho of zeta satisfies Re(rho)=1/2.",
-      "status": "OPEN",
-      "dependencies": [
-        "R001_ZERO_GROWTH",
-        "R001_PRIME_UPPER"
-      ],
-      "route": "R001_exceptional_zero",
-      "promotion_cap": "OPEN"
-    },
-    {
-      "id": "OBS_TIGHTMULT",
-      "statement": "The existing c=2 trace/Frobenius/positive-index certificate is simultaneously extremal on online doubles and tight off-line pairs and cannot be improved using only those quantities.",
+      "id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "statement": "For every positive aperture L, finite N and arbitrary complex centered coefficient vector u whose centered moments of orders 0,1,2 vanish, the actual hard-window localized finite vector is globally C^2 and compactly supported, and its genuine concrete-zeta diagonal Weil value equals the canonicalSourceMatrix(L,N) quadratic form.",
       "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [],
-      "source": "Zeta23/ZeroSide/TightMult.lean",
-      "theorem": "Zeta23.ZeroSide.TightMult.lemmaR_tight_two",
-      "promotion_cap": "PROVED_UNCONDITIONAL"
-    },
-    {
-      "id": "R001_FILTERED_ZERO_POLE",
-      "statement": "For an absolutely summable spectral zero filter with critical-line center, any zeta zero with Re(rho) > 1/2 and nonzero multiplicity-weighted filter coefficient forces the filtered zero family to fail the subexponential bound (exposed right-side Laplace pole). Left-side zeros are excluded downstream via the zeta reflection rho -> 1 - conj(rho), never by imposing reflection symmetry on generic filters.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [],
-      "source": "Zeta23/ExceptionalZero/ExposedPole.lean",
-      "theorem": "Zeta23.ExceptionalZero.not_subexponential_filteredZeroFamily_of_right_zero",
-      "route": "R001_exceptional_zero",
-      "promotion_cap": "PROVED_UNCONDITIONAL"
-    },
-    {
-      "id": "R001_WEIL_BRIDGE",
-      "statement": "The filtered zero family of the natural Weil filter at center 1/2 equals, at every aperture a, the literature explicit-formula RHS of the right-translated test k(. - 2a), under exact C^2 compact-support hypotheses; absolute filter summability follows from EF_lit's summability clause.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [],
-      "source": "Zeta23/ExceptionalZero/WeilFilter.lean",
-      "theorem": "Zeta23.ExceptionalZero.filteredZeroFamily_weilZeroFilter_eq_literatureRHS",
-      "route": "R001_exceptional_zero",
-      "promotion_cap": "PROVED_UNCONDITIONAL"
-    },
-    {
-      "id": "R001_ZERO_GROWTH",
-      "statement": "For every hypothetical zeta zero strictly to the right of the critical line there exists an admissible pole-killed C^2 compactly supported Weil test (target-adaptive modulated bump through the pole-killer q'' - q/4) whose translated literature-RHS residual fails the subexponential bound.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "R001_FILTERED_ZERO_POLE",
-        "R001_WEIL_BRIDGE"
-      ],
-      "source": "Zeta23/ExceptionalZero/WeilFilter.lean",
-      "theorem": "Zeta23.ExceptionalZero.exists_poleKilled_test_not_subexponential_of_right_zero",
-      "route": "R001_exceptional_zero",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "adaptation_note": "DISCOVERY-phase route correction 2026-08-20: the frozen-universal-filter specification was replaced by the logically weaker target-adaptive pole-killed family, which is sufficient for RH; see routes/R001_exceptional_zero/README.md."
-    },
-    {
-      "id": "R001_PRIME_UPPER",
-      "statement": "The translated pole-killed Weil residual family is subexponential from unconditional arithmetic/prime-side estimates (scalar form: Zeta23.ExceptionalZero.ArithmeticSideSubexponential).",
-      "status": "OPEN",
-      "dependencies": [],
-      "route": "R001_exceptional_zero",
-      "promotion_cap": "OPEN",
-      "note": "Proved logically equivalent to C_RH itself (see R001_PRIME_UPPER_EQUIV_RH and OBS-008). Must not be attacked as an independent arithmetic estimate; any closure is RH-strength by theorem."
-    },
-    {
-      "id": "R001_PRIME_UPPER_EQUIV_RH",
-      "statement": "The scalar-class R001 prime-side target ArithmeticSideSubexponential is logically equivalent to RH for the zeta zero configuration: it implies RH via the exposed-pole detector with reflection, and RH implies it via unit-modulus critical-line modes.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "R001_ZERO_GROWTH"
-      ],
-      "source": "Zeta23/ExceptionalZero/ArithmeticReduction.lean",
-      "theorem": "Zeta23.ExceptionalZero.arithmeticSideSubexponential_iff_criticalLine",
-      "route": "R001_exceptional_zero",
-      "promotion_cap": "PROVED_UNCONDITIONAL"
-    },
-    {
-      "id": "R002_MULTI_PROBE_SEPARATION",
-      "statement": "Block-level separation via the negative-index channel: the exact off-line pair block c*(x x^T - y y^T) of ZeroSide.pair_term, with positive weight and transverse real parts (nonzero Gram determinant), admits an explicit direction on which its Hermitian form is strictly negative (value exactly -c*gramDet^2), and is therefore not equal to any nonnegatively weighted sum of real rank-one blocks - the shape of every on-line configuration and of the TightMult extremal mock. The separating quantity is not a function of the trace/Frobenius/on-line-atom/positive-index data of OBS-001.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "OBS_TIGHTMULT"
-      ],
-      "source": "Zeta23/ExceptionalZero/ProbeGramNegativity.lean",
-      "theorem": "Zeta23.ExceptionalZero.not_onLineCombination_of_pairBlock",
-      "route": "R002_multi_probe",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "adaptation_note": "DISCOVERY-phase route specialization 2026-08-21: the observable is fixed to the negative-index channel of the windowed Gram and the claim is restated to the block-level statement actually proved, with the transversality hypothesis explicit. This is NOT a windowed-visibility theorem (masking is open, see route README step P3) and NOT an RH route (the arithmetic leg is RH-equivalent, OBS-009)."
-    },
-    {
-      "id": "R002_WINDOWED_VISIBILITY",
-      "statement": "The negative direction of an off-line pair block survives the positive-semidefinite on-line bulk in a full probe window, so that lambda_min of the windowed Gram is negative whenever an off-line zero lies in the window.",
-      "status": "OPEN",
-      "dependencies": [
-        "R002_MULTI_PROBE_SEPARATION"
-      ],
-      "route": "R002_multi_probe",
-      "promotion_cap": "OPEN",
-      "note": "Feasibility bookkeeping (routes/R002_multi_probe/MULTI_PROBE_GRAM_OPERATOR_FEASIBILITY_2026_08_21.md) gives the historical visibility scale delta*L >~ sqrt(6/lambda) and an every-delta oversampling signal for lambda>1. PR #66 theoremically records that current production Params.Valid requires lambda<=1, so lambda>1 is outside the present valid formal envelope. D0-R also settles the CCM relation as specialization-only: this masking obligation remains open on the R002 smooth-taper route and is not a canonical CCM bottleneck.",
-      "adaptation_note": "Post-PR #66 D0-R correction: the old lambda>1 oversampling experiment remains EXPERIMENTAL SIGNAL only under the current code because Params.Valid includes lam_le_one. No production-valid windowed-visibility theorem is promoted."
-    },
-    {
-      "id": "R002_KERNEL_ZERO_SIDE_BRIDGE",
-      "statement": "For the original even two-sided CCM qBasis/kernel on centered finite indices and every positive aperture L, the exact concrete zeta raw-kernel zero-side matrix equals twice the production zeroSideMatrix, hence equals 2*finiteMatrix(L,N)+4*cCorrection(L)*I.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "R003_CCM_BRIDGE"
-      ],
-      "source": "Zeta23/CCM/RawKernelZeroSideBridge.lean",
-      "theorem": "Zeta23.CCM.rawKernelZeroSideMatrix_eq_two_finiteMatrix_add_four_correction",
-      "route": "R002_multi_probe",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "This is the corrected theorem successor to the historical R002-D diagnostic. It concerns the centered truncated-character qBasis/kernel family only. PR #66 confirms a specialization-level hard-window character-correlation interpretation for qBasis, while leaving the generic smooth-taper R002-A G-tilde(T) family distinct. It does not prove generic taper-grid equality, positivity, masking, persistence, finite-to-infinite closure, or RH.",
-      "adaptation_note": "The original statement M = 1/2*WeilGram was numerically refuted as stated because of a diagonal archimedean correction. Numerical archaeology then isolated the correction 4*cCorrection(L)*I. PRs #55-#63 legalized and exactly identified the production half-normalized basis zero-side matrix without applying EF_lit directly to the piecewise-C1 raw kernel. PR #64 lifts that theorem-authoritative production bridge back to the original raw qBasis/kernel convention by the exact identity kernel = 2*dictionaryBasisTest. The original false statement remains refuted; the corrected scalar-shift normalization is what is promoted here. PR #66 subsequently classifies the relationship to generic R002-A as SPECIALIZATION_ONLY: the qBasis hard-window character geometry is genuine, but the production smooth-taper/window/carrier object is not promoted as the same matrix family."
-    },
-    {
-      "id": "R004_CCM_DISPLACEMENT_FORMAL",
-      "statement": "For the canonical direct-source finite CCM matrix on centered Fourier indices and positive aperture L, the index commutator is exactly g 1^T - 1 g^T and therefore has rank at most two. The historical printed-normalization finiteMatrix differs only by a scalar identity and has the same commutator.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [],
-      "source": "Zeta23/CCM/SourceNormalizationRepair.lean",
-      "theorem": "Zeta23.CCM.rank_canonicalSourceMatrix_displacement_le_two",
-      "route": "R004_prolate_v2",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "Normalization repair after PR #71: finiteMatrix remains a valid legacy printed-normalization object, but canonicalSourceMatrix = cutoffFreeMatrix = sourceEq44Matrix is the direct source authority. Scalar-shift invariance transfers the exact displacement law."
-    },
-    {
-      "id": "R003_DISPLACEMENT_TRANSFER",
-      "statement": "Displacement transfer algebra over C: D*M - M*D is unchanged by adding a scalar matrix c*I, hence if A = k*M + c*I and D*M - M*D = g 1^T - 1 g^T then D*A - A*D = k*(g 1^T - 1 g^T) and rank(D*A - A*D) <= 2. This is what carries the exact finite CCM displacement identity onto a target matrix once an exact scaled-scalar-shift identity is supplied; that identity is an explicit hypothesis here.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [],
-      "source": "Zeta23/ExceptionalZero/DisplacementTransfer.lean",
-      "theorem": "Zeta23.ExceptionalZero.rank_displacement_le_two_of_eq_smul_add_scalar",
-      "route": "R003_ccm_bridge",
-      "promotion_cap": "PROVED_UNCONDITIONAL"
-    },
-    {
-      "id": "R003_RESIDUAL_C2",
-      "statement": "For every N, every real centered-grid coefficient vector u and every aperture L>0, the rank-one-regularized finite-dictionary residual has a complex-valued wrapper that is C^2 and compactly supported, exactly satisfying the regularity hypotheses used by EF_lit.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [],
-      "source": "Zeta23/CCM/DictionaryResidualSecondOrderGluing.lean",
-      "theorem": "Zeta23.CCM.dictionaryResidualTest_admissible",
+      "dependencies": ["R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE", "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION"],
+      "source": "Zeta23/ExceptionalZero/BoundaryFlatFiniteWeil.lean",
+      "theorem": "Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm",
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "This proves admissibility only for the smooth residual r_{u,L}. No restriction sum(u)=0 is used. The separate literal-tent EF extension was later closed by Route M M8; the residual theorem itself does not apply EF_lit directly to the nonsmooth tent."
-    },
-    {
-      "id": "R003_TENT_ANALYTICS",
-      "statement": "For every L>0, the canonical tent tau_L has its exact paperFT closed form with removable value L, obeys theorem-authoritative quadratic decay on |Im z|<=1/2 in multiplied form, and its transform is absolutely summable over the concrete zeta zero configuration with multiplicity.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [],
-      "source": "Zeta23/CCM/DictionaryTentZeroSummability.lean",
-      "theorem": "Zeta23.CCM.dictionaryTent_analytic_package",
-      "route": "R003_ccm_bridge",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "Transform, strip decay and zero-side summability only. This does not extend EF_lit to the nonsmooth tent and does not identify the tent zero sum with literatureRHS."
-    },
-    {
-      "id": "R003_TENT_MOLLIFIER_ARCHITECTURE",
-      "statement": "For every aperture L>0, the canonical dictionary tent admits the repository's normalized shrinking mollifier family whose members are C^2, share a common physical support envelope independent of the mollifier index, converge pointwise to the literal canonical tent, satisfy an exact complex-frequency paperFT convolution factorization, and inherit a uniform quadratic transform bound on |Im z|<=1/2.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "R003_TENT_ANALYTICS"
-      ],
-      "source": "Zeta23/CCM/DictionaryTentMollifierSupport.lean",
-      "theorem": "Zeta23.CCM.dictionaryTent_mollifier_architecture_package",
-      "route": "R003_ccm_bridge",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "This is the Route-M M0-M3 adapter architecture only. It does not itself pass EF_lit_zeta to the nonsmooth literal tent and proves no pole, prime, archimedean, or varying-family zero-side limit exchange. Those downstream M4-M8 obligations were later compiler-closed in PRs #58-#61."
-    },
-    {
-      "id": "R003_TENT_EF_EXTENSION",
-      "statement": "For the canonical tent tau_L(y)=max(0,1-|y|/L), the concrete zeta explicit formula is justified by a C_c^2 approximation/limit argument, with zero-side limit exchange controlled by theorem-authoritative transform decay and the inherited zeta weighted zero summability theorem.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "R003_TENT_ANALYTICS",
-        "R003_TENT_MOLLIFIER_ARCHITECTURE"
-      ],
-      "route": "R003_ccm_bridge",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "Route M M0-M8 is compiler-closed. The literal canonical tent explicit formula is proved by applying EF_lit_zeta only to the C² compactly supported mollified tents, using the separately proved pole, truncate-first prime, archimedean, and zero-side convergence theorems, and identifying the limiting zero-side and literature-RHS values by uniqueness of limits. The production theorem also includes absolute summability of the literal-tent zero series. This does not by itself promote R003_KERNEL_EF_EXTENSION, R003_CCM_BRIDGE, R003_WEIL_DISPLACEMENT, finite-to-infinite closure, or RH.",
-      "source": "Zeta23/CCM/DictionaryTentEFExtension.lean",
-      "theorem": "Zeta23.CCM.dictionaryTent_explicitFormula"
-    },
-    {
-      "id": "R003_CCM_RHS_IDENTITY",
-      "statement": "For the full real finite dictionary test k_{u,L}, the deterministic literature explicit-formula RHS equals the quadratic form of dictionaryMatrix(L,N)=finiteMatrix(L,N)+2*cCorrection(L)*I on the real coefficient vector embedded in C.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [],
-      "source": "Zeta23/CCM/DictionaryRHSIdentity.lean",
-      "theorem": "Zeta23.CCM.literatureRHS_dictionaryTest_eq_quadraticForm",
-      "route": "R003_ccm_bridge",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "Zero-free deterministic analytic identity proved channel by channel. The production dictionary carries a factor 1/2, so the theorem target is finiteMatrix(L,N)+2*cCorrection(L)*I, not the older doubled diagnostic normalization. This does not prove the tent explicit-formula extension, any zero-side matrix identity, positivity, a finite-to-infinite theorem, or RH."
-    },
-    {
-      "id": "R003_KERNEL_EF_EXTENSION",
-      "statement": "For every real finite dictionary coefficient vector u and L>0, the concrete zeta zero-side sum of dictionaryTransform(u,L,.) equals literatureRHS of the full tent-plus-residual dictionary test.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "R003_CCM_BRIDGE",
-        "R003_CCM_RHS_IDENTITY"
-      ],
-      "route": "R003_ccm_bridge",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "Post-#62 closure: for arbitrary real finite dictionary coefficients, entrywise absolute zero-side summability permits finite quadratic contraction of the spectral matrix into zeroSideMatrix. The exact finite bridge then replaces zeroSideMatrix by dictionaryMatrix, and the deterministic RHS identity identifies that quadratic form with literatureRHS. No new analytic limit argument or direct nonsmooth EF application is needed.",
-      "source": "Zeta23/CCM/DictionaryKernelEFExtension.lean",
-      "theorem": "Zeta23.CCM.dictionaryTransform_zero_sum_eq_literatureRHS",
-      "adaptation_note": "Post-H2+/M8/#62 dependency reversal: this claim was originally expected to precede R003_CCM_BRIDGE via direct tent-plus-smooth-residual EF assembly. The exact finite bridge was instead proved independently from the N-independent literal-tent defect. The full real kernel EF is now recovered downstream by finite quadratic contraction of that exact matrix identity together with R003_CCM_RHS_IDENTITY. The mathematical claim is unchanged; its proof direction has reversed."
-    },
-    {
-      "id": "R003_CCM_BRIDGE",
-      "statement": "For every finite N and L>0, the actual finite zeta zero-side dictionary matrix equals finiteMatrix(L,N)+2*cCorrection(L)*I.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "R003_CCM_RHS_IDENTITY",
-        "R003_TENT_EF_EXTENSION"
-      ],
-      "route": "R003_ccm_bridge",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "Production finite bridge. H2+ proves that zeroSideMatrix-dictionaryMatrix is the N-independent literal-tent defect times J; M8 proves the literal-tent zero side equals its deterministic literature RHS, so that defect vanishes and the bridge closes simultaneously for every finite N. The normalization remains exactly finiteMatrix(L,N)+2*cCorrection(L)*I. This does not prove R003_KERNEL_EF_EXTENSION, R003_WEIL_DISPLACEMENT, positivity, finite-to-infinite closure, or RH.",
-      "source": "Zeta23/CCM/DictionaryZeroSideBridge.lean",
-      "theorem": "Zeta23.CCM.zeroSideMatrix_eq_finiteMatrix_add_correction",
-      "adaptation_note": "Post-H2+/M8 dependency compression: the original route through R003_KERNEL_EF_EXTENSION and full-dictionary real polarization is no longer required for this matrix identity. H2+ proves that the complete finite matrix discrepancy is the N-independent literal-tent defect times J, and R003_TENT_EF_EXTENSION proves that defect vanishes. The mathematical bridge claim is unchanged; only its theorem-authoritative proof route has shortened."
-    },
-    {
-      "id": "R003_CUTOFF_FREE_MATRIX_MAP",
-      "statement": "For every finite N and positive aperture L, the actual zeta zero-side matrix equals the independently defined cutoff-free CCM/CvS source-convention matrix on the full centered Fourier basis -N,...,N; equivalently that cutoff-free matrix equals finiteMatrix(L,N)+2*cCorrection(L)*I.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "R003_CCM_BRIDGE"
-      ],
-      "source": "Zeta23/CCM/CutoffFreeMatrix.lean",
-      "theorem": "Zeta23.CCM.zeroSideMatrix_eq_cutoffFreeMatrix",
-      "route": "R003_ccm_bridge",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "D0-C representation bridge only. The cutoff-free matrix is defined independently from finiteMatrix, dictionaryMatrix, and zeroSideMatrix by the pinned primitive source convention gamma_reference = gamma_ours - cCorrection(L), with the other primitive channels unchanged. Lean proves the full centered matrix normalization exactly. PR #66 additionally prevents the generic smooth-taper R002 Gz/G-tilde(T) object from being silently identified with this canonical finite matrix: that relation is specialization-only, not a promoted generic map. This does not prove a Hilbert-space/form-domain Galerkin restriction, positivity, form-core density, finite-to-infinite convergence, or RH.",
-      "adaptation_note": "Post-#64 representation audit: the #33 external normalization lock identified Q_inf = M + 2*cCorrection(L)*I numerically/source-formula-wise. PR #65 makes that convention theorem-authoritative by defining the cutoff-free source matrix independently in Lean and proving the exact matrix equality, then composing it with the already-proved zeta zero-side bridge."
-    },
-    {
-      "id": "R003_WEIL_DISPLACEMENT",
-      "statement": "The actual finite zeta zero-side dictionary matrix has the same exact index displacement g 1^T - 1 g^T as the formal finite CCM matrix and therefore has displacement rank at most two.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "R003_CCM_BRIDGE",
-        "R004_CCM_DISPLACEMENT_FORMAL",
-        "R003_DISPLACEMENT_TRANSFER"
-      ],
-      "route": "R003_ccm_bridge",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "The production theorem is about the actual zeroSideMatrix, not the older doubled diagnostic WeilGram convention. PR #63 instantiates the already-proved generic displacement transfer with k=1 and c=2*cCorrection(L), so the scalar correction disappears from the commutator and the exact production displacement has no factor two. The exact identity is Zeta23.CCM.zeroSideMatrix_displacement; the registered rank endpoint is its <=2 consequence. This is generic finite divided-difference structure, not positivity, a zero-location restriction, finite-to-infinite closure, or RH.",
-      "source": "Zeta23/CCM/DictionaryZeroSideDisplacement.lean",
-      "theorem": "Zeta23.CCM.rank_zeroSideMatrix_displacement_le_two",
-      "adaptation_note": "Historical naming firewall: R003_WEIL_DISPLACEMENT predates the production zeroSideMatrix normalization. Closure here formalizes displacement of the theorem-authoritative actual finite zeta zero-side matrix supplied by R003_CCM_BRIDGE. It does not by itself formalize the old doubled R002 diagnostic WeilGram object or its factor-two normalization."
-    },
-    {
-      "id": "R003_LOCALIZED_BASIS_CORRELATION",
-      "statement": "For every positive aperture L, centered Fourier indices and shift 0<=y<=L, the normalized hard-window Fourier-character correlation is exactly the production qBasis entry formula; under the existing dictionary convention, 2*dictionaryBasisTest equals the full kernel.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [],
-      "source": "Zeta23/CCM/LocalizedBasis.lean",
-      "theorem": "Zeta23.CCM.hardWindowCharacterCorrelation_eq_qBasis",
-      "route": "R003_ccm_bridge",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "G0-A function-space geometry only. The proof is an exact interval-integral calculation with separate diagonal/off-diagonal branches and has axiom surface [propext, Classical.choice, Quot.sound]. The centered Fin(2N+1) wrapper is Zeta23.CCM.hardWindowCharacterCorrelation_centered_eq_qBasis, and the production normalization firewall is Zeta23.CCM.two_mul_dictionaryBasisTest_eq_kernel. This does not yet identify cutoffFreeMatrix as the restriction of the localized Weil form, and it proves no positivity, form-core, Rayleigh-Ritz, finite-to-infinite, or RH statement."
-    },
-    {
-      "id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
-      "statement": "For every positive aperture L, finite N, and arbitrary complex centered coefficient vector u, the actual zero-extended localized finite vector is compactly supported and L2, and its inherited symmetrized EF.weilTest autocorrelation is globally exactly 2*dictionaryTest(N,u,L); at zero shift this equals 2*coefficientMass(N,u).",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "R003_LOCALIZED_BASIS_CORRELATION"
-      ],
-      "source": "Zeta23/CCM/LocalizedFiniteSpace.lean",
-      "theorem": "Zeta23.CCM.localizedWeilCorrelation_finiteVector_eq_two_mul_dictionaryTest",
-      "route": "R003_ccm_bridge",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "G0-B finite-function realization. Full complex Fin(2N+1) sector on [0,L], zero extension, inherited EF.weilTest convention, exact conjugation/order and factor-two production normalization. The zero-shift endpoint is Zeta23.CCM.localizedWeilCorrelation_finiteVector_zero. This does not identify the actual CCM localized Weil form QW_lambda, prove a Galerkin restriction theorem, form-core density, Rayleigh-Ritz convergence, positivity, or RH."
-    },
-    {
-      "id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
-      "statement": "For every positive aperture L, finite N, and arbitrary complex centered coefficient vector u, the repository additive half-correlation explicit-formula RHS evaluated on the actual localized finite vector equals the quadratic form of the independently defined cutoffFreeMatrix(L,N). The lambda wrapper uses exactly L=2*log(lambda).",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
-        "R003_CCM_RHS_IDENTITY",
-        "R003_CUTOFF_FREE_MATRIX_MAP"
-      ],
-      "source": "Zeta23/CCM/LocalizedWeilRestriction.lean",
-      "theorem": "Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_cutoffFreeQuadraticForm",
-      "route": "R003_ccm_bridge",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "G1-A additive finite restriction only. localizedWeilAdditiveRHS is EF.literatureRHS applied to half of the actual symmetrized localized correlation. Lean proves half-correlation=dictionaryTest, then composes the existing arbitrary-complex dictionary RHS theorem with dictionaryMatrix=cutoffFreeMatrix. The source-facing wrapper locks L=2*log(lambda). This does NOT identify localizedWeilAdditiveRHS with the external Connes--Consani--Moscovici QW_lambda/PsiSharp form. That kappa/PsiSharp source correspondence is the separate G1-B obligation. No form-core, Rayleigh-Ritz, positivity, Suzuki, finite-to-infinite, or RH claim is promoted."
-    },
-    {
-      "id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
-      "statement": "Direct substitution of the source diagonal q(U_n,U_n) formula into Section-4 equation (4.4) yields a finite source matrix exactly equal to cutoffFreeMatrix. Separately, the printed equation-(4.11) rewrite has a theorem-locked correction-factor seam: the correction forced pointwise by the rho-weighted algebra is exactly exp(x/2) times the repository transcription of the printed cCorrectionIntegrand. Thus the direct equation-(4.4) production matrix is settled while the later printed (4.11)/(4.14) simplification remains suspect/non-load-bearing.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "R003_CUTOFF_FREE_MATRIX_MAP"
-      ],
-      "source": "Zeta23/CCM/SourceWeilMatrixReconciliation.lean",
-      "theorem": "Zeta23.CCM.sourceEq44Matrix_eq_cutoffFreeMatrix",
-      "route": "R003_ccm_bridge",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "G1-B0 corrected source-normalization result. Companion theorems: sourceEq44GammaL_eq_cutoffFreeGammaL, sourceEq44ArchComponent_eq_cutoffFreeArchComponent, sourceEq44Entry_eq_cutoffFreeEntry, sourceEq411_integrand_decomposition, sourceEq411DerivedCorrectionIntegrand_eq_exp_mul_cCorrectionIntegrand, sourceEq411LhsGammaL_eq_cutoffFreeGammaL, gammaL_eq_sourceEq411LhsGammaL_add_correction, sourceEq411LhsArchComponent_eq_cutoffFreeArchComponent, sourceEq411LhsEntry_eq_cutoffFreeEntry, and sourceEq411LhsMatrix_eq_cutoffFreeMatrix. SourceEq411CorrectionIdentity remains deliberately unproved and represents only the suspect printed (4.11) correction rewrite. This claim still does NOT formalize the external ambient kappa/PsiSharp/QW_lambda correspondence, form-core/Rayleigh-Ritz, positivity, Suzuki, or RH."
-    },
-    {
-      "id": "R003_SOURCE_NORMALIZATION_REPAIR",
-      "statement": "The direct Section-4 equation-(4.4) finite source matrix is the canonicalSourceMatrix = cutoffFreeMatrix = dictionaryMatrix. The historical printed-normalization finiteMatrix is preserved unchanged and differs from the canonical source matrix by exactly 2*cCorrection(L)*I. The correction forced by the rho-weighted algebra of equation (4.11) is sourceEq411DerivedCorrection, not the frozen printed cCorrection.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [],
-      "source": "Zeta23/CCM/SourceNormalizationRepair.lean",
-      "theorem": "Zeta23.CCM.canonicalSourceMatrix_eq_legacyPrintedMatrix_add_correction",
-      "route": "R003_ccm_bridge",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "This repairs source labels and preserves historical theorem semantics. It does not identify external QW_lambda/PsiSharp with the finite matrix, prove positivity, form-core convergence, or RH."
-    },
-    {
-      "id": "R003_SOURCE_KAPPA_FINITE_SECTOR",
-      "statement": "For every lambda > 1, finite N, and arbitrary complex centered coefficient vector, the source logarithmic coordinate x = log(lambda*u) and reverse coordinate u = lambda^-1*exp(x) are theorem-locked on the source intervals, the source convention V_n = kappa(U_n) is preserved, and the zero-extended kappa image of the repository finite Fourier formula is exactly the corresponding actual sourceFiniteVector on [lambda^-1,lambda].",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "R003_LOCALIZED_FINITE_SPACE_CORRELATION"
-      ],
-      "source": "Zeta23/CCM/SourceKappa.lean",
-      "theorem": "Zeta23.CCM.sourceKappaFiniteVector_eq_sourceFiniteVector",
-      "route": "R003_ccm_bridge",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "G1-B1A finite coordinate/source-sector bridge merged in PR #72. Companion theorems lock sourceLength positivity, coordinate inverses and interval transport, V_n=kappa(U_n), arbitrary-complex finite coefficient transport, sourceFiniteVector support/compact support, and membership in the source finite Fourier sector. This claim does NOT include the multiplicative Haar measure d*u, the bundled L2 isometry from Proposition 3.2(i), PsiSharp, ambient QW_lambda, QW_lambda|E_N = canonicalSourceMatrix, form-core/Rayleigh-Ritz, positivity, Suzuki, finite-negative exclusion, or RH."
-    },
-    {
-      "id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
-      "statement": "For arbitrary complex-valued f,g with f C^2 and compactly supported and g continuous and compactly supported, the concrete zeta Weil summand family is summable and the genuine pair form satisfies zetaZeroConfig.W f g = EF.literatureRHS (EF.weilTest f g), with the exact paperFT conjugation convention.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [],
-      "source": "Zeta23/ExceptionalZero/WeilLiteratureBridge.lean",
-      "theorem": "Zeta23.ExceptionalZero.zeta_W_literatureRHS_package",
-      "route": "R003_ccm_bridge",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "W2-A. Exact-head CI on PR #77 theorem head 509645ad2b30288d175ff2ef5a6651839991649e proves the pairwise summability/equality package with axiom surface [propext, Classical.choice, Quot.sound]. The regularity is stronger than originally planned in one leg: g need only be continuous, not C^2. This claim itself does not prove zero-side reflection/evenization or the diagonal localized-additive identity; those are now separately theorem-locked by PR #83 under R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE. It also does not prove finite approximation, ambient QW_lambda, F1, or RH."
-    },
-    {
-      "id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
-      "statement": "For every concrete zeta zero rho0 off the critical line, there exists a compactly supported C^2 test h with paperFT h (i/2)=0 and paperFT h (-i/2)=0 and Re(zetaZeroConfig.W h h)<0. The production theorem is obtained by summability-safe contraction of the proved two-translate phase witness into one physical test.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "R003_WEIL_PAIR_LITERATURE_BRIDGE"
-      ],
-      "source": "Zeta23/ExceptionalZero/TwoTranslateContraction.lean",
-      "theorem": "Zeta23.ExceptionalZero.exists_poleNeutral_negativeWeilTest_of_offLine_zero",
-      "route": "R003_ccm_bridge",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "W0. Exact theorem head c8112f0ad12e0b2c2f1261cea3ba7726aa04be54 passed the CCM build, ExceptionalZero build, no-placeholder gate, RHRC regression suite, normalization/source firewalls, and independent verification workflow with axiom surface [propext, Classical.choice, Quot.sound]. The proof uses the existing X3 strict correlation-over-diagonal witness directly, not the X4.6 canonical determinant endpoint; it preserves the two pole-killing Fourier zeros under the physical phase contraction h=||C||*k-conj(C)*T_t k. This W0 claim itself does not prove W1 recentering or the #83 diagonal localized-additive bridge; those are separately registered. It does not prove F0-B, G1-B1B/G1-final/S-NEG/G23, F1, finite-negative exclusion, or RH."
-    },
-    {
-      "id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
-      "statement": "For every concrete zeta zero rho0 off the critical line, there exist L>0, r>0 with L=4r and a compactly supported C^2 test h whose closed support lies in the strict interior margin (r,3r) and hence in (0,L), with paperFT h (i/2)=paperFT h (-i/2)=0 and Re(zetaZeroConfig.W h h)<0.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "R003_NEGATIVE_WEIL_TEST_CONTRACTION"
-      ],
-      "source": "Zeta23/ExceptionalZero/NegativeWeilTestSupport.lean",
-      "theorem": "Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero",
-      "route": "R003_ccm_bridge",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "W1. Exact theorem declaration head 7abdaaf88f0e157c11049a0e65ebcb2c48fa86e2 and final promoted PR #81 head 191e34ece05739122f362d097f9e4393cd5b9ce3 passed the CCM build, ExceptionalZero build, no-placeholder gate, RHRC regression suite, normalization/source firewalls, and independent Permansson verification. PR #81 merged to main as 1a6a286cc4aae76ef6335b85b1022ec3998614df. Axiom surface [propext, Classical.choice, Quot.sound]. The proof is purely geometric/transport: compact tsupport is enclosed in a symmetric ball (-r,r), translateRight by 2r moves tsupport into (r,3r), L is set to 4r, paperFT_translateRight preserves the two zero values, and W_translateRight_both preserves the negative diagonal Weil value. This W1 claim itself does not prove W2-ZS; PR #83 separately proves and registers the diagonal W/localized-additive bridge and its strict-aperture negative localized-additive cash-out. F0-B, G1-B1B/G1-final/S-NEG/G23, F1, finite-negative exclusion, and RH remain open."
-    },
-    {
-      "id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
-      "statement": "For every complex-valued compactly supported C^2 test h, the concrete zeta genuine diagonal Weil form is exactly the repository localized additive explicit-formula RHS: zetaZeroConfig.W h h = Zeta23.CCM.localizedWeilAdditiveRHS h h.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "R003_WEIL_PAIR_LITERATURE_BRIDGE"
-      ],
-      "source": "Zeta23/ExceptionalZero/WeilZeroSideEvenization.lean",
-      "theorem": "Zeta23.ExceptionalZero.zeta_W_self_eq_localizedWeilAdditiveRHS",
-      "route": "R003_ccm_bridge",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "W2-ZS / direct diagonal W2-C endpoint. PR #83 exact theorem head 556be6c2b42e912c58751988c580ab4e0091822d passed both repository workflows and merged as 7b8e0cc9abbaeff97d88ec67ada40734619a8d07. Axiom surface [propext, Classical.choice, Quot.sound]. Supporting proof surface: zeta_conj_zero, zeta_one_sub_zero, zeta_mult_one_sub, zetaOneSubEquiv with multiplicity transport, gammaOf_one_sub, exact paperFT reflection, summability-safe Equiv.tsum_eq reindexing, and zeta_literatureRHS_halfEven_eq. The proof is concrete-zeta-specific and never opens the pole/prime/gamma decomposition of literatureRHS. No aperture, pole-neutrality, mu/gamma-evenness or weighted-gamma-integrability hypothesis is required. This does not prove the old analytic W2-B route, F0-B, ambient QW_lambda, F1, finite-negative exclusion, or RH."
-    },
-    {
-      "id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
-      "statement": "For every concrete zeta zero rho0 off the critical line, there exist L>0, r>0 with L=4r and a compactly supported C^2 pole-neutral test h whose closed support lies in (r,3r) and hence (0,L), with Re(localizedWeilAdditiveRHS h h)<0.",
-      "status": "PROVED_UNCONDITIONAL",
-      "dependencies": [
-        "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
-        "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE"
-      ],
-      "source": "Zeta23/ExceptionalZero/WeilZeroSideEvenization.lean",
-      "theorem": "Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeLocalizedWeilAdditiveRHS_of_offLine_zero",
-      "route": "R003_ccm_bridge",
-      "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "Strong W1+W2-ZS cash-out from PR #83. The exact theorem preserves L=4r, C^2 regularity, compact support, tsupport inside (r,3r) and (0,L), both pole-killing Fourier zeros at +/-i/2, and strict negativity of the existing localizedWeilAdditiveRHS. Companion theorems exists_strictAperture_negativeLocalizedWeilAdditiveRHS_of_offLine_zero and exists_strictAperture_negativeLocalizedWeilAdditiveRHS_of_exists_offLine_zero expose the minimal F0-B/F1-roadmap input. This is not F0-B itself: no finite approximation or continuity theorem is proved. Source QW, F1, finite-negative exclusion and RH remain open."
+      "note": "F0-B1A. PR #86 exact theorem head e44cc5b8539b24fa24066c98c7ff013fb83b1001 passed RHRC #605 and Permansson #378 and merged as 6d5eb5b5673b6754dda4926c41a60a5b85626a44 (tree a633de6504b0e2105d3e3f33b2f1728c1219dad5). Production axiom surface [propext, Classical.choice, Quot.sound]. Supporting declarations include Zeta23.CCM.contDiff_localizedFiniteVector_of_boundaryFlat, boundaryKillerCoefficients_boundaryFlat, boundaryKillerCoefficients_ne_zero, and the cutoff-free companion zeta_W_boundaryFlatFiniteVector_eq_cutoffFreeQuadraticForm. The legal sector is nontrivial and is defined by centered moments 0,1,2=0. This does not prove boundary-flat projection/density, family-level W continuity, F0-B as a whole, F1, ambient source QW_lambda, finite-negative exclusion, K0-K3 or RH."
     }
   ]
 }
