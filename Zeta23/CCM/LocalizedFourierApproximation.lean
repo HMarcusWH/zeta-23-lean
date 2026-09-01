@@ -261,14 +261,14 @@ theorem fourierCoeff_addCircleFourierPolynomial
   | add c d hc hd =>
       rw [addCircleFourierPolynomial_add]
       have hci :
-          Integrable (addCircleFourierPolynomial c)
+          Integrable (addCircleFourierPolynomial (L := L) c)
             (@AddCircle.haarAddCircle L inferInstance) :=
-        (addCircleFourierPolynomial c).continuous.integrable_of_hasCompactSupport
+        (addCircleFourierPolynomial (L := L) c).continuous.integrable_of_hasCompactSupport
           (HasCompactSupport.of_compactSpace _)
       have hdi :
-          Integrable (addCircleFourierPolynomial d)
+          Integrable (addCircleFourierPolynomial (L := L) d)
             (@AddCircle.haarAddCircle L inferInstance) :=
-        (addCircleFourierPolynomial d).continuous.integrable_of_hasCompactSupport
+        (addCircleFourierPolynomial (L := L) d).continuous.integrable_of_hasCompactSupport
           (HasCompactSupport.of_compactSpace _)
       rw [fourierCoeff.add hci hdi, hc, hd]
       rfl
@@ -519,7 +519,15 @@ theorem localizedFiniteFunction_centeredCoefficientsOfFinsupp_eq
           rw [localizedMode_eq_addCircle_fourier]
           have hsqrtC : (((Real.sqrt L : ℝ) : ℂ)) ≠ 0 := by
             exact ofReal_ne_zero.mpr hsqrt
-          rw [mul_assoc, mul_inv_cancel₀ hsqrtC, mul_one]
+          calc
+            (((Real.sqrt L : ℝ) : ℂ) * c (centeredIndex N i)) *
+                (((Real.sqrt L : ℝ) : ℂ))⁻¹
+                =
+              c (centeredIndex N i) *
+                ((((Real.sqrt L : ℝ) : ℂ)) *
+                  (((Real.sqrt L : ℝ) : ℂ))⁻¹) := by ring
+            _ = c (centeredIndex N i) := by
+              rw [mul_inv_cancel₀ hsqrtC, mul_one]
     _ =
       c.sum fun n a =>
         a * fourier n (x : AddCircle L) :=
@@ -575,7 +583,15 @@ theorem localizedFiniteSecondJet_twicePrimitive_eq
             have hsqrt : (((Real.sqrt L : ℝ) : ℂ)) ≠ 0 := by
               exact ofReal_ne_zero.mpr (Real.sqrt_ne_zero'.mpr hL)
             field_simp [hfreq]
-            rw [mul_assoc, mul_inv_cancel₀ hsqrt, mul_one]
+            calc
+              (((Real.sqrt L : ℝ) : ℂ) * c (centeredIndex N i)) *
+                  (((Real.sqrt L : ℝ) : ℂ))⁻¹
+                  =
+                c (centeredIndex N i) *
+                  ((((Real.sqrt L : ℝ) : ℂ)) *
+                    (((Real.sqrt L : ℝ) : ℂ))⁻¹) := by ring
+              _ = c (centeredIndex N i) := by
+                rw [mul_inv_cancel₀ hsqrt, mul_one]
     _ =
       c.sum fun n a =>
         a * fourier n (x : AddCircle L) :=
