@@ -484,4 +484,97 @@ theorem sum_centeredIndex_eq_finsupp_sum
             rfl
     _ = c.sum fun n a => a * g n := rfl
 
+
+/-- Exact normalization bridge from a bounded integer Finsupp polynomial to the
+repository's normalized centered finite Fourier function. -/
+theorem localizedFiniteFunction_centeredCoefficientsOfFinsupp_eq
+    {L : ℝ} (hL : 0 < L)
+    {N : ℕ} (c : ℤ →₀ ℂ)
+    (hbound : ∀ n ∈ c.support, Int.natAbs n ≤ N)
+    (x : ℝ) :
+    localizedFiniteFunction L N
+        (centeredCoefficientsOfFinsupp L N c) x =
+      addCircleFourierPolynomial c (x : AddCircle L) := by
+  have hsqrt : Real.sqrt L ≠ 0 :=
+    Real.sqrt_ne_zero'.mpr hL
+  unfold localizedFiniteFunction centeredCoefficientsOfFinsupp
+  calc
+    (∑ i : Fin (2 * N + 1),
+        (((Real.sqrt L : ℝ) : ℂ) * c (centeredIndex N i)) *
+          localizedMode L (centeredIndex N i) x)
+        =
+      ∑ i : Fin (2 * N + 1),
+        c (centeredIndex N i) *
+          AddCircle.fourier (centeredIndex N i) (x : AddCircle L) := by
+          apply Finset.sum_congr rfl
+          intro i hi
+          rw [localizedMode_eq_addCircle_fourier]
+          have hsqrtC : (((Real.sqrt L : ℝ) : ℂ)) ≠ 0 := by
+            exact ofReal_ne_zero.mpr hsqrt
+          field_simp [hsqrtC]
+          ring
+    _ =
+      c.sum fun n a =>
+        a * AddCircle.fourier n (x : AddCircle L) :=
+      sum_centeredIndex_eq_finsupp_sum c hbound
+        (fun n => AddCircle.fourier n (x : AddCircle L))
+    _ = addCircleFourierPolynomial c (x : AddCircle L) := by
+      simp [addCircleFourierPolynomial, smul_eq_mul]
+
+/-- Coefficients whose second formula-level jet is a prescribed zero-mode-free
+Fourier Finsupp. -/
+def localizedTwicePrimitiveCoefficients
+    (L : ℝ) (N : ℕ) (c : ℤ →₀ ℂ) :
+    Fin (2 * N + 1) → ℂ :=
+  fun i =>
+    let n := centeredIndex N i
+    if hn : n = 0 then 0
+    else
+      (((Real.sqrt L : ℝ) : ℂ) * c n) /
+        (localizedFrequency L n) ^ 2
+
+/-- The second jet of the twice-primitive coefficients is exactly the requested
+zero-mode-free AddCircle polynomial. -/
+theorem localizedFiniteSecondJet_twicePrimitive_eq
+    {L : ℝ} (hL : 0 < L)
+    {N : ℕ} (c : ℤ →₀ ℂ)
+    (hc0 : c 0 = 0)
+    (hbound : ∀ n ∈ c.support, Int.natAbs n ≤ N)
+    (x : ℝ) :
+    localizedFiniteSecondJet L N
+        (localizedTwicePrimitiveCoefficients L N c) x =
+      addCircleFourierPolynomial c (x : AddCircle L) := by
+  unfold localizedFiniteSecondJet localizedTwicePrimitiveCoefficients
+  calc
+    (∑ i : Fin (2 * N + 1),
+        (if hn : centeredIndex N i = 0 then 0
+          else
+            (((Real.sqrt L : ℝ) : ℂ) * c (centeredIndex N i)) /
+              localizedFrequency L (centeredIndex N i) ^ 2) *
+          localizedFrequency L (centeredIndex N i) ^ 2 *
+          localizedMode L (centeredIndex N i) x)
+        =
+      ∑ i : Fin (2 * N + 1),
+        c (centeredIndex N i) *
+          AddCircle.fourier (centeredIndex N i) (x : AddCircle L) := by
+          apply Finset.sum_congr rfl
+          intro i hi
+          by_cases hn : centeredIndex N i = 0
+          · rw [dif_pos hn, hn, hc0]
+            simp
+          · rw [dif_neg hn, localizedMode_eq_addCircle_fourier]
+            have hfreq : localizedFrequency L (centeredIndex N i) ≠ 0 :=
+              localizedFrequency_ne_zero hL hn
+            have hsqrt : (((Real.sqrt L : ℝ) : ℂ)) ≠ 0 := by
+              exact ofReal_ne_zero.mpr (Real.sqrt_ne_zero'.mpr hL)
+            field_simp [hfreq, hsqrt]
+            ring
+    _ =
+      c.sum fun n a =>
+        a * AddCircle.fourier n (x : AddCircle L) :=
+      sum_centeredIndex_eq_finsupp_sum c hbound
+        (fun n => AddCircle.fourier n (x : AddCircle L))
+    _ = addCircleFourierPolynomial c (x : AddCircle L) := by
+      simp [addCircleFourierPolynomial, smul_eq_mul]
+
 end Zeta23.CCM
