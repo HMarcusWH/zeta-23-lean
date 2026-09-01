@@ -858,4 +858,142 @@ theorem function_error_norm_le_of_firstJet_error
     _ ≤ B * L := mul_le_mul_of_nonneg_left hxL hB
     _ = L * B := by ring
 
+
+/-- **F0-B1C-A headline theorem.** Every C² function supported strictly inside
+a positive aperture admits a centered finite Fourier formula that vanishes at
+the left endpoint and approximates the function and its first two jets
+uniformly on the closed aperture.
+
+This is a formula-level periodic approximation theorem only. It does not claim
+that the raw hard-window zero extension is globally C². -/
+theorem exists_localizedFinite_uniform_C2_approx
+    {L : ℝ} (hL : 0 < L)
+    {h : ℝ → ℂ}
+    (hh : ContDiff ℝ 2 h)
+    (hs : tsupport h ⊆ Ioo 0 L)
+    {ε : ℝ} (hε : 0 < ε) :
+    ∃ N : ℕ, 1 ≤ N ∧
+      ∃ u : Fin (2 * N + 1) → ℂ,
+        localizedFiniteFunction L N u 0 = 0 ∧
+        (∀ x ∈ Icc (0 : ℝ) L,
+          ‖localizedFiniteFunction L N u x - h x‖ < ε) ∧
+        (∀ x ∈ Icc (0 : ℝ) L,
+          ‖localizedFiniteFirstJet L N u x - deriv h x‖ < ε) ∧
+        (∀ x ∈ Icc (0 : ℝ) L,
+          ‖localizedFiniteSecondJet L N u x -
+              deriv (deriv h) x‖ < ε) := by
+  let δ : ℝ :=
+    min (ε / 4)
+      (min (ε / (8 * L)) (ε / (8 * L ^ 2)))
+  have hδ : 0 < δ := by
+    dsimp [δ]
+    apply lt_min
+    · positivity
+    · apply lt_min <;> positivity
+  have hδ0 : δ ≤ ε / 4 := by
+    dsimp [δ]
+    exact min_le_left _ _
+  have hδ1 : δ ≤ ε / (8 * L) := by
+    dsimp [δ]
+    exact (min_le_right _ _).trans (min_le_left _ _)
+  have hδ2 : δ ≤ ε / (8 * L ^ 2) := by
+    dsimp [δ]
+    exact (min_le_right _ _).trans (min_le_right _ _)
+  letI : Fact (0 < L) := ⟨hL⟩
+  obtain ⟨c, hc0, hcapprox⟩ :=
+    exists_zeroModeFree_secondDeriv_fourierPolynomial
+      hL hh hs hδ
+  obtain ⟨N, hN, hbound⟩ :=
+    exists_support_natAbs_bound c
+  let u0 : Fin (2 * N + 1) → ℂ :=
+    localizedTwicePrimitiveCoefficients L N c
+  let u : Fin (2 * N + 1) → ℂ :=
+    anchorLocalizedCoefficients N u0
+  have hq0 : localizedFiniteFunction L N u 0 = 0 := by
+    simpa [u] using localizedFiniteFunction_anchor_zero L N u0
+  have hqL : localizedFiniteFunction L N u L = 0 := by
+    simpa [u] using
+      localizedFiniteFunction_anchor_right_zero hL N u0
+  have hj := strictSupport_endpoint_jet_package (L := L) (h := h) hs
+  have hsecond_lt :
+      ∀ x ∈ Icc (0 : ℝ) L,
+        ‖localizedFiniteSecondJet L N u x -
+            deriv (deriv h) x‖ < 2 * δ := by
+    intro x hx
+    have hpoint :=
+      ContinuousMap.norm_coe_le_norm
+        (addCircleFourierPolynomial c -
+          periodicSecondDerivMap L h hL hh hs)
+        (x : AddCircle L)
+    have hpoly :
+        localizedFiniteSecondJet L N u x =
+          addCircleFourierPolynomial c (x : AddCircle L) := by
+      rw [show localizedFiniteSecondJet L N u x =
+          localizedFiniteSecondJet L N u0 x by
+            simpa [u] using
+              localizedFiniteSecondJet_anchor L N u0 x]
+      simpa [u0] using
+        localizedFiniteSecondJet_twicePrimitive_eq
+          hL c hc0 hbound x
+    have htarget :
+        periodicSecondDerivMap L h hL hh hs (x : AddCircle L) =
+          deriv (deriv h) x :=
+      periodicSecondDerivMap_coe_eq hL hh hs hx
+    rw [hpoly, ← htarget]
+    exact lt_of_le_of_lt
+      (by
+        simpa using hpoint)
+      hcapprox
+  have hsecond_le :
+      ∀ x ∈ Icc (0 : ℝ) L,
+        ‖localizedFiniteSecondJet L N u x -
+            deriv (deriv h) x‖ ≤ 2 * δ :=
+    fun x hx => (hsecond_lt x hx).le
+  have hfirst_le :
+      ∀ x ∈ Icc (0 : ℝ) L,
+        ‖localizedFiniteFirstJet L N u x - deriv h x‖ ≤
+          2 * L * (2 * δ) :=
+    firstJet_error_norm_le_of_secondJet_error
+      hL (mul_nonneg (by norm_num) hδ.le)
+      hh hs hq0 hqL hsecond_le
+  have hfunc_le :
+      ∀ x ∈ Icc (0 : ℝ) L,
+        ‖localizedFiniteFunction L N u x - h x‖ ≤
+          L * (2 * L * (2 * δ)) := by
+    apply function_error_norm_le_of_firstJet_error
+      hL (by positivity) hh
+    · rw [hq0, hj.1]
+    · exact hfirst_le
+  have hsecond_budget : 2 * δ < ε := by
+    calc
+      2 * δ ≤ 2 * (ε / 4) :=
+        mul_le_mul_of_nonneg_left hδ0 (by norm_num)
+      _ = ε / 2 := by ring
+      _ < ε := by linarith
+  have hfirst_budget : 2 * L * (2 * δ) < ε := by
+    calc
+      2 * L * (2 * δ)
+          ≤ 2 * L * (2 * (ε / (8 * L))) := by
+            gcongr
+      _ = ε / 2 := by
+            field_simp [hL.ne']
+            ring
+      _ < ε := by linarith
+  have hfunc_budget : L * (2 * L * (2 * δ)) < ε := by
+    calc
+      L * (2 * L * (2 * δ))
+          ≤ L * (2 * L * (2 * (ε / (8 * L ^ 2)))) := by
+            gcongr
+      _ = ε / 2 := by
+            field_simp [hL.ne']
+            ring
+      _ < ε := by linarith
+  refine ⟨N, hN, u, hq0, ?_, ?_, ?_⟩
+  · intro x hx
+    exact lt_of_le_of_lt (hfunc_le x hx) hfunc_budget
+  · intro x hx
+    exact lt_of_le_of_lt (hfirst_le x hx) hfirst_budget
+  · intro x hx
+    exact lt_of_lt_of_le (hsecond_lt x hx) hsecond_budget.le
+
 end Zeta23.CCM
