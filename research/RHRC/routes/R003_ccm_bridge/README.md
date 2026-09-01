@@ -80,32 +80,51 @@ integral ||p''-h''|| -> 0.
 
 Endpoint value/first-jet/second-jet control is auxiliary data for the #88 projector, not an extra WCONT norm component.
 
-## Preferred construction lead
+## Preferred construction lead — pinned AddCircle Fourier span
 
-Pinned Mathlib contains
+Pinned Mathlib already proves the exact finite Fourier density needed at the periodic level:
 
 ~~~text
-ContinuousMap.starSubalgebra_topologicalClosure_eq_top_of_separatesPoints.
+AddCircle.span_fourier_closure_eq_top
 ~~~
 
-High-priority route to test:
+and gives the exact character formula
 
 ~~~text
-periodic h''
-  -> uniform finite trigonometric approximation r
-  -> remove constant mode / enforce mean zero
-  -> integrate twice in finite Fourier coefficients
-  -> fix q constant mode by mean(h)
-  -> recover q', q by periodic integration estimates
+AddCircle.fourier n (x : AddCircle L)
+  = exp(2*pi*i*n*x/L).
+~~~
+
+This matches the phase/sign of `localizedMode L n`; only the fixed repository normalization `1/sqrt L` differs.
+
+It also supplies
+
+~~~text
+AddCircle.fourierCoeffOn_of_hasDerivAt
+AddCircle.hasDerivAt_fourier
+~~~
+
+for the integration-by-parts/frequency calculus.
+
+Preferred route:
+
+~~~text
+strict-collar C² h
+  -> periodic h''
+  -> uniform finite AddCircle Fourier polynomial r approx h''
+  -> remove mean mode
+  -> integrate nonzero modes twice
+  -> fix constant mode by mean(h)
+  -> q with small q-h, q'-h', q''-h''
   -> endpoint jets small
-  -> boundaryFlatProject
+  -> #88 three-moment projection
   -> WCONT-A
   -> negative finite vector.
 ~~~
 
-This is **LEAD / HYPOTHESIS** only.
+Do not rebuild Stone-Weierstrass. L² Fourier convergence alone is not enough because q''(0) is a load-bearing #88 endpoint coordinate; use uniform density for h''.
 
-Direct Fejer remains the first fallback if the star-subalgebra or integration-back formalization is larger.
+Direct Fejer and boundary-killer multiplication remain fallbacks.
 
 ## Projection caveat
 
