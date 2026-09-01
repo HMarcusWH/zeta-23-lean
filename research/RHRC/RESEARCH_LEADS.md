@@ -279,7 +279,7 @@ The proof extracted the first half of `EF.prop_EF_of_lit` without aperture `L`, 
 
 ### Downstream effect
 
-W0 no longer has to invent or assume summability for the four pairwise two-translate terms. This is why W0 now outranks W2-B as the immediate global target.
+W0 no longer had to invent or assume summability for the four pairwise two-translate terms. Historically this moved W0 ahead of W2-B; W0, W1 and the #83 W2-ZS diagonal bridge are now all proved, so F0-B is the current frontier.
 
 ### New lead
 
@@ -374,9 +374,9 @@ Therefore ambient source `QW_lambda` is no longer mandatory on the shortest rout
 **Research status:** DORMANT SMALL SPIKE  
 **Formal status:** LEAD / HYPOTHESIS
 
-Actual zeta has conjugation symmetry in addition to the reflection already built into ZeroConfig. If theoremized with multiplicity, it may force the real-even detector relative correlation to be real, simplifying the phase witness to a parity-pure real combination after recentering.
+PR #83 now theoremizes concrete-zeta conjugation symmetry with multiplicity as part of W2-ZS. The additional *parity simplifier conclusion* remains a lead: the proved symmetry may force the real-even detector relative correlation to be real, simplifying the phase witness to a parity-pure real combination after recentering.
 
-**Do not block W0 on this.** The current ZeroConfig abstraction does not carry this symmetry.
+**Do not reopen W0 for this.** The supporting conjugation premise is proved, but the parity simplification itself is not.
 
 
 ---
