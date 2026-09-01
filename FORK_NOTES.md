@@ -64,6 +64,7 @@ The two differ by a scalar identity shift. The legacy object must never be silen
 
 Any claim about absolute spectrum, PSD, inertia, lower bounds, trace or determinant must state which normalization it uses.
 
+
 ## Route state
 
 The fork currently tracks:
@@ -73,7 +74,13 @@ The fork currently tracks:
 - **R003** CCM / finite Weil bridge;
 - **R004** finite displacement / prolate-structure investigation.
 
-The shared route-general front end is now theorem-locked through W1 on the validated PR #81 line: every hypothetical off-line zero yields one compact C² pole-neutral negative Weil test, then a common translation places its closed support in an explicit strict margin `(r,3r)` inside aperture `L=4r` while preserving both pole zeros and the exact negative Weil self-value. The immediate task is therefore a bounded route-comparison pass. Internal: transfer pole neutrality to `EF.weilTest h h`, prove mu/gamma reflection, and close the separate weighted gamma-channel integrability obligation before W2-B/W2-C. Source: lock the exact `L <-> lambda` map and the d*u/L²/kappa/q/PsiSharp/QW premise surface before G1-B1B. Whichever route reaches F1 with the smaller clean theorem surface becomes primary; keep both if both close independently. The preferred K0-K3 finite-wall program after F1 remains planned, not theorem-backed; K1 must still establish the same-sector positive-anchor/first-crossing mechanism. R001 and R002 remain mathematically useful alternates. R004 is retained as structural support and a dormant composition source.
+Merged main `1a6a286cc4aae76ef6335b85b1022ec3998614df` is theorem-locked through W1: every hypothetical off-line zero yields one compact C² pole-neutral negative Weil test, then a common translation places its closed support in an explicit strict margin `(r,3r)` inside aperture `L=4r` while preserving both pole zeros and the exact negative Weil self-value.
+
+The post-W1 investigation changed the next internal priority. The first spike is now concrete-zeta zero-side evenization: use Schwarz conjugation plus the existing `rho -> 1-conj(rho)` functional-equation symmetry to test a theorem-authoritative `rho -> 1-rho` carrier equivalence, spectral sign reversal, Fourier reflection and summability-safe `EF_lit` reindex. If this closes, W2-B/C may compress to a direct diagonal W/additive theorem. This is a **LEAD**, not formal truth.
+
+The previous pole-neutrality + mu/gamma + weighted-integrability route remains fallback. The exact `L <-> lambda` and d*u/L²/kappa/q/PsiSharp/QW source interface remains active in parallel before G1-B1B. Whichever route reaches F1 with the smaller clean theorem surface becomes primary; independent closure by more than one route remains valuable.
+
+The preferred K0-K3 finite-wall program after F1 remains planned, not theorem-backed; K1 must still establish the same-sector positive-anchor/first-crossing mechanism. R001 and R002 remain mathematically useful alternates. R004 is retained as structural support and a dormant composition source.
 
 ## FFBBP / OoL boundary
 

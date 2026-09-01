@@ -60,11 +60,22 @@ The zero-side exposed-pole / filtered-growth chain is formally strong, but the r
 
 Exact block-level off-critical separation has been proved. Generic windowed visibility and its arithmetic leg remain open; the latter is a band-limited Weil-positivity problem. PR #66 also proved that the generic smooth-taper R002 production object is **not** simply the canonical CCM finite object in another basis.
 
+
 ### R003 — CCM / finite Weil bridge
 
-This remains the active finite-to-source route. W2-A and W0 are theorem-authoritative on merged main, and W1 is theorem-authoritative on the validated PR #81 Stage-A head.
+This remains the active finite-obstruction route. W2-A, W0 and W1 are theorem-authoritative on merged main through PR #81.
 
-The shared function-level front end is now:
+Merged state:
+
+~~~text
+main = 1a6a286cc4aae76ef6335b85b1022ec3998614df
+tree = 1d49b9dc4fbee4054d18ce5059b40c2d7ccbc3cf
+merged through = PR #81
+PR #81 final validated head = 191e34ece05739122f362d097f9e4393cd5b9ce3
+RH = OPEN
+~~~
+
+The shared function-level front end is closed:
 
 ~~~text
 off-line zero
@@ -81,35 +92,54 @@ The W1 production theorem is
 Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero
 ~~~
 
-with exact Stage-A theorem-green head
+and the explicit geometry also gives the direct derived collar
 
 ~~~text
-7abdaaf88f0e157c11049a0e65ebcb2c48fa86e2.
+tsupport h ⊂ (L/4, 3L/4).
 ~~~
 
-The next global task is a bounded route comparison, not more shared support infrastructure.
+Under the source change of variables `lambda = exp(L/2)`, this centers the support around `u=1` and places it inside the derived multiplicative subinterval `(lambda^(-1/2), lambda^(1/2))` of the full source aperture `(lambda^-1, lambda)`.
+
+The immediate internal priority changed in the W1 post-green pass. Before opening the gamma/digamma channel, test the concrete-zeta zero-side evenization shortcut:
 
 ~~~text
-INTERNAL PROBE
+W2-ZS / NEXT LEAD
+  ZS0  conjugation preserves concrete zeta zeros + multiplicity
+  ZS1  build the carrier involution rho |-> 1-rho
+  ZS2  gammaOf(1-rho) = -gammaOf(rho)
+  ZS3  paperFT(k(-·))(z) = paperFT(k)(-z)
+  ZS4  reindex the EF_lit zero sum legally using Summable + Equiv.tsum_eq
+  ZS5  prove literatureRHS(half-evenization k) = literatureRHS(k)
+  ZS6  conclude W(h,h) = localizedWeilAdditiveRHS(h,h)
+~~~
+
+This is a **LEAD / HYPOTHESIS**, not a proved bridge. It is concrete-zeta-specific because `ZeroConfig` itself carries only `rho -> 1-conj(rho)` symmetry. The existing mu/gamma route remains the fallback if any ZS subgate fails:
+
+~~~text
+FALLBACK INTERNAL
   I0 pole neutrality -> EF.weilTest h h pole neutrality
   I1 mu/gamma reflection evenness
   I2 weighted gamma-channel integrability
+~~~
 
-SOURCE PROBE
+The source-faithful lane remains active in parallel:
+
+~~~text
+SOURCE
   S0 lambda = exp(L/2), 1<lambda, sourceLength lambda = L
-  S1 exact d*u/L²/kappa/q/PsiSharp/QW premise lock
+  S1 d*u/L²/kappa/q/PsiSharp/QW premise lock
+  -> G1-B1B -> G1-final -> G23 -> F1
 ~~~
 
-If the internal probe is bounded:
+If W2-ZS closes, the shortest internal route becomes:
 
 ~~~text
-W2-B -> W2-C -> F0-B -> G1-A [PROVED] -> F1.
-~~~
-
-If gamma/mu integrability balloons while the source interface remains local:
-
-~~~text
-G1-B1B -> G1-final -> G23 -> F1.
+W0/W1 [PROVED]
+  -> W2-A [PROVED]
+  -> W2-ZS direct diagonal additive bridge [OPEN / NEXT]
+  -> F0-B
+  -> G1-A [PROVED]
+  -> F1.
 ~~~
 
 The source-facing target remains
@@ -118,14 +148,7 @@ The source-facing target remains
 QW_lambda restricted to E_N = canonicalSourceMatrix.
 ~~~
 
-Merged main before PR #81:
-
-~~~text
-8960b80b4a871bd86f94509dfa872ecc6939b0cd
-~~~
-
-The preferred K0-K3 finite-wall program after F1 is still a planned research route. It is not yet a theorem-backed terminal reduction: K1 must first prove that an F1 negative finite value forces a first canonical singular crossing for the same finite sector.
-
+The preferred K0-K3 finite-wall program after F1 is still planned research, not a theorem-backed terminal reduction.
 
 ### R004 — finite displacement / structural route
 
@@ -177,6 +200,7 @@ They do **not** preserve:
 
 Any downstream spectral-sign argument must therefore identify the canonical matrix explicitly.
 
+
 ## Current critical path
 
 The stable work-package names, not historical PR numbers, define the mathematics.
@@ -193,31 +217,43 @@ direct source normalization/firewall                      CLOSED
 G1-B1A finite kappa/source-sector bridge                  CLOSED
 W2-A genuine W/literatureRHS bridge + summability         CLOSED
 W0 off-line zero -> compact C² pole-neutral negative h    CLOSED
-W1 strict finite-aperture recentering with margin         CLOSED / #81 STAGE-A
+W1 strict finite-aperture recentering with margin         CLOSED / MERGED #81
 ~~~
 
 Current execution priority:
 
 ~~~text
-BOUNDED ROUTE COMPARISON
+INTERNAL — HIGHEST INFORMATION GAIN
+  W2-ZS concrete-zeta zero-side evenization spike          OPEN / LEAD
+    rho -> 1-rho carrier equivalence
+    gammaOf sign reversal
+    paperFT reflection
+    summability-safe zero-sum reindex
+    direct W self = localized additive RHS
 
-INTERNAL
-  I0 pole neutrality -> weilTest pole neutrality           OPEN
+INTERNAL FALLBACK
+  I0 pole-neutrality transfer                              OPEN
   I1 mu/gamma reflection evenness                          OPEN
   I2 weighted gamma-channel integrability                  OPEN
 
-SOURCE
-  S0 exact L <-> lambda bridge                              OPEN
-  S1 G1-B1B premise/normalization lock                      OPEN
+SOURCE — PARALLEL
+  S0 exact L <-> lambda bridge                             OPEN
+  S1 G1-B1B premise/normalization lock                     OPEN
 ~~~
 
-Continuation if INTERNAL is bounded:
+Continuation if W2-ZS is green:
 
 ~~~text
-W2-B -> W2-C -> F0-B -> G1-A [CLOSED] -> F1.
+W2-ZS -> F0-B -> G1-A [CLOSED] -> F1.
 ~~~
 
-Continuation if SOURCE is bounded/cheaper:
+Continuation if the zero-side shortcut fails but the analytic channel stays bounded:
+
+~~~text
+I0/I1/I2 -> W2-B -> W2-C -> F0-B -> G1-A [CLOSED] -> F1.
+~~~
+
+Source continuation:
 
 ~~~text
 G1-B1B -> G1-final -> G23 -> F1.
@@ -232,30 +268,7 @@ off-line zero
      Re(quadraticForm(canonicalSourceMatrix L N) u) < 0.
 ~~~
 
-Post-F1 planned program:
-
-~~~text
-K0 parity
-K1 aperture flow + positive anchor + first singularity + prime-event law
-K2 kernel/displacement/resolvent rigidity
-K3 arithmetic crossing exclusion
-~~~
-
-Conditional terminal composition only after K1 theoremizes the first-crossing reduction:
-
-~~~text
-off-line zero
-  -> F1
-  -> demanded first canonical crossing
-  -> prove every such crossing impossible
-  -> no off-line zero
-  -> RH.
-~~~
-
-F1 is not RH, and the post-F1 arrows above remain OPEN until separately theorem-backed.
-
-See [CURRENT_RESEARCH_PLAN.md](research/RHRC/CURRENT_RESEARCH_PLAN.md) for the exact execution queue and [RESEARCH_LEADS.md](research/RHRC/RESEARCH_LEADS.md) for the complete lead inventory.
-
+F1 is not RH. W2-ZS is not yet a theorem. RH remains OPEN.
 
 ## Evidence and authority order
 

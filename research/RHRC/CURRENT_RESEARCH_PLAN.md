@@ -7,47 +7,54 @@
 Current merged validation baseline:
 
 ~~~text
-main = 8960b80b4a871bd86f94509dfa872ecc6939b0cd
-tree = 956601c77d1e9f32bab339dbbb81130296d1b5c7
-merged through = PR #80
-W1 Stage-A theorem-green head = 7abdaaf88f0e157c11049a0e65ebcb2c48fa86e2
+main = 1a6a286cc4aae76ef6335b85b1022ec3998614df
+tree = 1d49b9dc4fbee4054d18ce5059b40c2d7ccbc3cf
+merged through = PR #81
+PR #81 final validated head = 191e34ece05739122f362d097f9e4393cd5b9ce3
 date = 2026-09-01
 RH = OPEN
 ~~~
 
-The W1 Stage-A theorem head passed both repository workflows: CCM build, ExceptionalZero build, no-placeholder gate, RHRC regression suite, normalization/source firewalls and independent Permansson verification. The promotion/documentation head in PR #81 must pass the same exact-head gate before merge.
+The final PR #81 head passed the full repository validation surface: CCM build, ExceptionalZero build, no-placeholder gate, RHRC regression suite, normalization/source firewalls and independent Permansson verification. GitHub main now contains that head via merge commit `1a6a286c...`.
 
 Current theorem frontier:
 
 ~~~text
 W2-A genuine W/literatureRHS + pairwise summability = CLOSED / REGISTERED
 W0 off-line zero -> compact C² pole-neutral negative W test = CLOSED / REGISTERED
-W1 strict finite-aperture support/recentering = CLOSED / PROVED ON #81 STAGE-A
+W1 strict finite-aperture support/recentering = CLOSED / MERGED / REGISTERED
 
-NOW — BOUNDED ROUTE COMPARISON
-  INTERNAL:
-    I0 pole neutrality -> weilTest(h,h) pole neutrality
-    I1 mu/gamma reflection/evenness
-    I2 weighted gamma-channel integrability
-    then W2-B/W2-C if bounded
-  SOURCE:
-    S0 exact L <-> lambda bridge
-    S1 G1-B1B premise/normalization lock
-    then G1-B1B/G1-final/G23 if bounded
+NOW — W2-ZS CONCRETE-ZETA ZERO-SIDE EVENIZATION SPIKE
+  ZS0 conjugation zero/multiplicity transport
+  ZS1 rho |-> 1-rho carrier equivalence
+  ZS2 gammaOf sign reversal
+  ZS3 paperFT reflection
+  ZS4 summability-safe EF_lit zero-sum reindex
+  ZS5 half-evenized literatureRHS equality
+  ZS6 direct W self = localizedWeilAdditiveRHS
 
-G1-A finite additive restriction            = CLOSED / REGISTERED
+PARALLEL SOURCE
+  S0 exact L <-> lambda bridge
+  S1 G1-B1B premise/normalization lock
 
-F1 canonical finite obstruction               = OPEN
-RH                                             = OPEN
+FALLBACK INTERNAL
+  I0 pole-neutrality transfer
+  I1 mu/gamma reflection/evenness
+  I2 weighted gamma-channel integrability
+
+G1-A finite additive restriction = CLOSED / REGISTERED
+F0-B finite approximation = OPEN
+F1 canonical finite obstruction = OPEN
+RH = OPEN
 ~~~
 
 The complete option inventory and historical status of individual ideas lives in RESEARCH_LEADS.md.
 
-## 1. Plan delta after green W1 / PR #81 Stage A
+## 1. Plan delta after merged green W1 / PR #81
 
-W1 closed the entire route-general front end with a stronger geometric object than the roadmap minimum.
+W1 closed the route-general front end with a stronger geometric object than the roadmap minimum.
 
-Lean now proves, for every concrete off-line zeta zero `rho0`,
+Lean proves, for every concrete off-line zeta zero `rho0`,
 
 ~~~text
 (rho0 : C).re != 1/2
@@ -63,55 +70,49 @@ exists L > 0, r > 0, h,
   and Re (zetaZeroConfig.W h h) < 0.
 ~~~
 
-The proof is purely geometric/transport:
-
-~~~text
-compact tsupport h
-  -> bounded
-  -> choose r>0 with tsupport h ⊂ (-r,r)
-  -> translateRight by 2r
-  -> tsupport ⊂ (r,3r)
-  -> choose L=4r
-  -> tsupport ⊂ (0,L).
-~~~
-
-Existing `contDiff_translateRight`, `hasCompactSupport_translateRight`,
-`paperFT_translateRight` and `W_translateRight_both` preserve every load-bearing
-W0 property.
+The proof is purely geometric/transport. Existing `contDiff_translateRight`, `hasCompactSupport_translateRight`, `paperFT_translateRight` and `W_translateRight_both` preserve every load-bearing W0 property.
 
 ### What changed
 
-The shared front end is no longer a research bottleneck. Both the internal and source
-routes now receive the same theorem-backed object with:
+The shared front end is no longer a research bottleneck. Both internal and source routes now receive the same theorem-backed object with finite positive aperture, strict boundary margin, C² regularity, compact closed support, pole neutrality and a strict negative genuine Weil self-value.
 
-- finite positive aperture;
-- strict boundary margin;
-- C² regularity;
-- compact closed support;
-- both pole-killing Fourier zeros;
-- strict negative genuine Weil self-value.
-
-The explicit margin `(r,3r)` is stronger than merely `(0,L)` and may materially
-simplify boundary-flat finite Fourier approximation.
-
-### New route-selection correction
-
-The internal lane is **not** yet known to be cheaper merely because pole neutrality
-kills the pole term.
-
-The existing explicit-formula proof makes a separate legal-analysis requirement explicit:
+Because `L=4r`, the W1 theorem immediately yields the **DERIVED** stronger collar
 
 ~~~text
-Integrable (
-  fun tau =>
-    paperFT (EF.weilTest h h) tau * (mu tau : C)
-).
+tsupport h ⊂ (L/4, 3L/4).
 ~~~
 
-Bochner `integral_add` requires integrability. Therefore W2-B/C must not repeat the
-old tsum mistake at the integral level.
+Under `lambda = exp(L/2)` and `x = log(lambda*u)`, the midpoint `x=L/2` maps to `u=1` and the W1 support collar maps to the **DERIVED** multiplicative subinterval
 
-The bounded internal probe is now:
+~~~text
+(lambda^(-1/2), lambda^(1/2))
+~~~
+
+inside `(lambda^-1,lambda)`. This may simplify source-domain and finite-approximation arguments, but it is not a separately formalized theorem.
+
+### Post-green route correction: attack the zero sum before the gamma integral
+
+The previous plan treated mu/gamma reflection and weighted gamma-channel integrability as the next internal bottleneck. The W1 post-green pass found a smaller concrete-zeta route.
+
+The repository already contains unconditional concrete zeta Schwarz reflection and conjugation-invariance of analytic order (`riemannZeta_conj`, `analyticOrderAt_zeta_conj`), while `zetaZeroConfig` already carries the functional-equation reflection `rho -> 1-conj(rho)` with multiplicity.
+
+Composing these symmetries suggests the concrete carrier involution
+
+~~~text
+rho -> 1-rho
+~~~
+
+with
+
+~~~text
+gammaOf(1-rho) = -gammaOf(rho).
+~~~
+
+If theoremized, this can reindex the summably controlled zero side of `EF_lit` directly. For `k = EF.weilTest h h`, compare `k` with `kR(y)=k(-y)` and prove the zero sums equal by a carrier equivalence instead of splitting the archimedean Bochner integral.
+
+This is a **LEAD / HYPOTHESIS**. It is not yet W2-B or W2-C. Concrete-zeta conjugation is not a field of the abstract `ZeroConfig`, so no generic theorem may be claimed without extending the abstraction.
+
+The old analytic route remains a fallback:
 
 ~~~text
 I0  pole zeros of h -> pole zeros of EF.weilTest h h
@@ -119,20 +120,9 @@ I1  mu/gamma reflection evenness
 I2  weighted gamma-channel integrability
 ~~~
 
-Only if I1+I2 are bounded should the project commit to W2-B/W2-C as the primary lane.
+The source route remains live in parallel.
 
-In parallel the source probe should freeze the exact W1 aperture-to-source interface:
-
-~~~text
-lambda = exp(L/2)
-1 < lambda
-sourceLength lambda = L
-d*u = du/u
-L² normalization
-q argument order
-PsiSharp/QW normalization
-factor-of-two convention.
-~~~
+Detailed post-green settlement: `routes/R003_ccm_bridge/W1_POST_GREEN_ZERO_SIDE_EVENIZATION_2026_09_01.md`.
 
 ## 2. Current high-level architecture
 
@@ -146,20 +136,28 @@ off-line zero
 
 After W1 the program deliberately branches.
 
+
 ### Internal additive route
 
 ~~~text
-W1 strict finite-aperture negative test
-  -> W2-A W = literatureRHS(weilTest)                    [PROVED]
-  -> W2-B reflection/evenization                         [OPEN]
-  -> W2-C W(h,h) = localizedWeilAdditiveRHS(h,h)         [OPEN]
-  -> finite additive approximation / continuity          [F0-B OPEN]
+W1 strict finite-aperture negative test                    [PROVED]
+  -> W2-A W = literatureRHS(weilTest)                     [PROVED]
+  -> W2-ZS concrete-zeta zero-side evenization             [OPEN / NEXT LEAD]
+       rho -> 1-rho
+       gammaOf sign reversal
+       paperFT reflection
+       legal zero-sum reindex
+       half-evenized RHS equality
+  -> W2-C direct W(h,h) = localizedWeilAdditiveRHS(h,h)    [OPEN]
+  -> finite additive approximation / continuity            [F0-B OPEN]
   -> localizedWeilAdditiveRHS(v_N,v_N)
-       = quadraticForm(canonicalSourceMatrix)             [G1-A PROVED]
-  -> F1 canonical finite negative obstruction            [OPEN]
+       = quadraticForm(canonicalSourceMatrix)              [G1-A PROVED]
+  -> F1 canonical finite negative obstruction             [OPEN]
 ~~~
 
-Because the W1 test is pole-neutral, W2-B should first be attempted on the actual pole-neutral diagonal class. But reflection symmetry is not the only gate: legal weighted gamma/mu integrability must also be theoremized before splitting/averaging the Bochner integral. The internal route begins with I0/I1/I2 above, not with an assumed generic literatureRHS linearity theorem.
+The intended next theorem should be as strong and clean as the zero-side argument supports, preferably a direct diagonal identity for every C² compactly supported concrete-zeta test rather than a W1-specialized statement.
+
+If any of the carrier-equivalence, transform-reflection or `tsum` legality gates fails or grows unexpectedly, fall back to the explicit analytic route I0/I1/I2 -> W2-B -> W2-C. Do not silently assume `literatureRHS` linearity or gamma-integral reflection.
 
 ### Source-faithful route
 
@@ -422,102 +420,165 @@ closed support by ordinary support.
 
 ---
 
-### P5 — bounded post-W1 route-comparison pass
+
+### P5 — W2-ZS concrete-zeta zero-side evenization spike
 
 **Priority:** IMMEDIATE / HIGHEST INFORMATION GAIN
 
-Do not commit to either route before falsifying its first hidden premise.
+This is a bounded falsification-first spike. It attempts to bypass the explicit gamma/digamma reflection analysis by using the already-formalized concrete zeta zero symmetries and `EF_lit`'s own summability interface.
 
-#### INTERNAL-I0 — pole-neutrality transfer to the Weil test
+#### ZS0 — concrete conjugation transport
 
-For the actual W1 object `h`, theoremize cheaply:
+Theoremize the two concrete-zeta facts in the exact carrier form needed downstream:
 
 ~~~text
-paperFT h ( I/2) = 0
-paperFT h (-I/2) = 0
-  ->
-paperFT (EF.weilTest h h) ( I/2) = 0
-paperFT (EF.weilTest h h) (-I/2) = 0.
+rho in zetaZeroConfig.carrier
+  -> conj(rho) in zetaZeroConfig.carrier
+
+zeroMult(conj rho) = zeroMult(rho).
 ~~~
 
-Use the already-proved `paperFT_weilTest` factorization.
+Use `riemannZeta_conj` and `analyticOrderAt_zeta_conj`. Do not add conjugation symmetry to abstract `ZeroConfig` merely for this proof.
 
-#### INTERNAL-I1 — reflection weight
+#### ZS1 — one-sub carrier equivalence
 
-Prefer the existing density `mu` through `EF.gamma_term`.
-
-Target:
+Compose conjugation with the existing `reflectEquiv` to obtain an involutive equivalence
 
 ~~~text
-mu (-r) = mu r.
+zetaOneSubEquiv :
+  zetaZeroConfig.carrier ≃ zetaZeroConfig.carrier
+
+zetaOneSubEquiv rho = 1-rho
+zetaOneSubEquiv (zetaOneSubEquiv rho) = rho
+mult(zetaOneSubEquiv rho) = mult(rho).
 ~~~
 
-Do not reopen a duplicate gammaBracket theory unless the mu formulation is harder.
+This must be a genuine subtype equivalence so reindexing is theorem-authoritative.
 
-#### INTERNAL-I2 — weighted gamma-channel integrability
+#### ZS2 — spectral sign reversal
 
-The load-bearing legal requirement is:
+Prove exactly:
 
 ~~~text
+gammaOf (1-rho) = - gammaOf rho.
+~~~
+
+Smoke-test the sign convention. A sign error here invalidates the whole shortcut.
+
+#### ZS3 — Fourier reflection
+
+For `reflectTest k := fun y => k (-y)`, prove on the needed regularity class:
+
+~~~text
+paperFT (reflectTest k) z = paperFT k (-z).
+~~~
+
+Also theoremize preservation of C² and compact support. Use a legal whole-line change of variables.
+
+#### ZS4 — legal EF_lit zero-sum reindex
+
+For C² compactly supported `k`, obtain from concrete `EF_lit` the summability and equality packages for both `k` and `reflectTest k`.
+
+Then use `Equiv.tsum_eq zetaOneSubEquiv` plus ZS1-ZS3 to prove the two zero sums equal. No `tsum_add`, `tsum_smul` or reindexing without the required summability/equivalence facts.
+
+#### ZS5 — half-evenization through EF_lit
+
+For
+
+~~~text
+halfEven k := fun y => (1/2 : C) * (k y + k (-y)),
+~~~
+
+prove C² + compact support and apply `EF_lit` directly. Show its zero sum equals the zero sum of `k` using the summability certificates and ZS4. Conclude
+
+~~~text
+literatureRHS (halfEven k) = literatureRHS k.
+~~~
+
+This route intentionally avoids opening the pole/prime/gamma definition of `literatureRHS`.
+
+#### ZS6 — direct diagonal bridge
+
+Set
+
+~~~text
+k = EF.weilTest h h.
+~~~
+
+Use W2-A and the exact definition of `CCM.localizedWeilHalfTest` to prove, if the preceding gates close,
+
+~~~text
+theorem zeta_W_self_eq_localizedWeilAdditiveRHS
+    {h : R -> C}
+    (hh : ContDiff R 2 h)
+    (hhc : HasCompactSupport h) :
+    zetaZeroConfig.W h h
+      = CCM.localizedWeilAdditiveRHS h h.
+~~~
+
+Prefer this generic concrete-zeta diagonal theorem over a W1-only specialization if Lean permits it without extra assumptions.
+
+#### Dumbassery / falsification gates
+
+Kill or demote this shortcut immediately if any of the following occurs:
+
+- `rho -> 1-rho` fails to preserve the exact concrete carrier or multiplicity;
+- the map is not a clean involutive equivalence on the subtype;
+- `gammaOf` has the opposite sign convention;
+- Fourier reflection introduces conjugation or a convention factor not accounted for;
+- half-evenization does not match `localizedWeilHalfTest h h` exactly;
+- the proof requires illegal manipulation of divergent/totalized `tsum`s;
+- the route silently uses an RH-equivalent symmetry assumption;
+- theoremizing the concrete symmetry requires a larger theory than I1/I2 or the source route.
+
+#### Internal fallback — I0/I1/I2
+
+If W2-ZS fails for a substantive reason, return to the previous analytic plan:
+
+~~~text
+I0:
+paperFT h (±I/2)=0
+  -> paperFT (EF.weilTest h h) (±I/2)=0
+
+I1:
+mu (-r) = mu r
+
+I2:
 Integrable (
   fun r =>
     paperFT (EF.weilTest h h) r * (mu r : C)
 ).
 ~~~
 
-This is separate from evenness. It is required before legal use of `integral_add`
-or reflected-average splitting.
+Only after I1+I2 are theoremized may the explicit gamma-channel reflection proof split or average Bochner integrals.
 
-Use the existing C² compact-support Fourier decay machinery if the theorem surface is
-bounded. If proving this becomes a large special-function/weighted-Fourier project, stop.
+#### Source parallel — S0/S1
 
-#### INTERNAL continuation if I0-I2 are bounded
-
-Then prove the specialized pole-neutral diagonal W2-B/W2-C bridge and only afterward
-start F0-B.
-
-F0-B2 first: direct additive continuity.
-
-Fallback F0-B1: boundary-flat Fourier approximation. The W1 margin
-`tsupport h ⊂ (r,3r) ⊂ (0,4r)` is now a theorem-backed asset for endpoint-flat
-constructions.
-
-#### SOURCE-S0 — aperture/source parameter bridge
-
-For `L>0`, target:
+In parallel, preserve the source-faithful option:
 
 ~~~text
+S0:
 lambda := exp(L/2)
 1 < lambda
-sourceLength lambda = L.
+sourceLength lambda = L
+
+S1:
+lock d*u, L² normalization, kappa direction,
+q argument order, PsiSharp/QW normalization,
+factor two and exact domain class.
 ~~~
 
-Keep this in the source lane; do not contaminate W1 with source semantics.
-
-#### SOURCE-S1 — G1-B1B premise lock
-
-Before implementation freeze:
-
-- source interval;
-- Haar measure `d*u = du/u`;
-- exact L² normalization;
-- kappa direction;
-- q argument order;
-- PsiSharp normalization;
-- QW normalization;
-- factor two;
-- regularity/domain class.
+The derived W1 collar around `u=1` may be useful, but keep it marked DERIVED until separately theoremized.
 
 #### Decision rule
 
-Choose INTERNAL when I1/I2 close locally and F0-B remains smaller than source G23.
+Choose the zero-side internal route when ZS0-ZS6 close locally and expose F0-B as the next genuine bottleneck.
 
-Choose SOURCE when gamma/mu integrability or internal continuity balloons while
-G1-B1B/G23 remain local.
+Choose the analytic fallback when the one-sub reindexing route fails but I1/I2 are local.
 
-Keep both if both are clean.
+Choose the source route when either internal proof surface balloons while G1-B1B/G23 remain source-local.
 
----
+Keep independent routes if more than one closes cleanly.
 
 ### P6 — G1-B1B source Hilbert/functional bridge
 
@@ -621,28 +682,33 @@ Stress any claimed uniform norm equivalence or coercivity on high-frequency sour
 
 ---
 
+
 ## 5. Route-selection gate before F1
 
-After P5 and enough of P6-P8 to compare theorem size, select the primary proof of F1.
+After P5 and enough source inspection to compare theorem size, select the primary proof of F1.
 
-### Choose internal route when
+### Choose zero-side internal route when
 
-- P2 is green;
-- additive continuity is clean and local;
-- no heavy weighted Sobolev/form-domain machinery appears;
+- ZS0-ZS6 are green;
+- the direct diagonal identity is theorem-authoritative;
+- F0-B continuity/approximation remains smaller than source G23;
 - approximants live in exactly the centered spaces consumed by G1-A.
+
+### Choose analytic internal fallback when
+
+- the zero-side reindexing fails for a local convention/interface reason;
+- I1/I2 close with bounded special-function and Fourier-decay work;
+- W2-B/W2-C then reduce cleanly to F0-B.
 
 ### Choose source route when
 
-- G1-B1B maps cleanly to existing source theorems;
+- G1-B1B maps cleanly to independently defined source objects;
 - G23 is available with matching domain hypotheses;
-- internal continuity requires a larger bespoke theory.
+- either internal route requires a larger bespoke theory.
 
-### Keep both when
+### Keep multiple routes when
 
-Both close with clean independent hypotheses. Two independent proofs of F1 are high-value validation.
-
----
+More than one closes with clean independent hypotheses. Independent proofs of F1 are high-value validation.
 
 ## 6. P9 — F1 canonical finite obstruction
 
@@ -928,53 +994,54 @@ Do not rewrite historical settlements merely to make them current.
 DONE
   W2-A genuine W -> literatureRHS + summability
   W0 off-line zero -> one negative compact C² pole-neutral Weil test
-  W1 -> same negative test in strict finite aperture with explicit margin
+  W1 strict recentering -> support in (r,3r) inside L=4r
+     DERIVED collar: support in (L/4,3L/4)
 
-NOW — BOUNDED ROUTE COMPARISON
-  INTERNAL:
-    I0 pole neutrality -> weilTest pole neutrality
-    I1 mu/gamma reflection evenness
-    I2 weighted gamma-channel integrability
-    if bounded:
-      W2-B
-      W2-C
-      F0-B
-      G1-A [already proved]
+NOW
+  W2-ZS concrete-zeta zero-side evenization spike
+    ZS0 conjugation zero/multiplicity
+    ZS1 rho -> 1-rho carrier equivalence
+    ZS2 gammaOf sign reversal
+    ZS3 paperFT reflection
+    ZS4 summability-safe EF_lit reindex
+    ZS5 half-evenized RHS equality
+    ZS6 W self -> localized additive RHS
 
+PARALLEL
   SOURCE:
-    S0 L <-> lambda exact bridge
-    S1 G1-B1B premise/normalization lock
-    if bounded:
-      G1-B1B Haar/L²/PsiSharp/QW
-      G1-final actual source restriction
-      G23 negative finite transfer
+    S0 L <-> lambda
+    S1 d*u/L²/kappa/q/PsiSharp/QW premise lock
 
-DECIDE PRIMARY ROUTE
-  by exact theorem surface and information gain
+FALLBACK
+  INTERNAL ANALYTIC:
+    I0 pole-neutrality transfer
+    I1 mu/gamma evenness
+    I2 weighted gamma-channel integrability
+    then W2-B/W2-C
+
+THEN
+  F0-B finite approximation
+  G1-A finite additive restriction [PROVED]
+
+SOURCE ALTERNATE
+  G1-B1B -> G1-final -> G23
 
 TARGET
   F1:
   off-line zero -> negative canonical finite quadratic form
 
-POST-F1 — PLANNED, NOT YET A TERMINAL REDUCTION
+POST-F1
   K0 parity
-  K1 aperture flow + positive anchor + first singularity + prime-event law
+  K1 aperture flow + first singularity + prime events
   K2 kernel/displacement/resolvent rigidity
   K3 arithmetic crossing exclusion
 
-CONDITIONAL TERMINAL COMPOSITION
-  after K1 proves F1 -> first canonical crossing:
-  prove every demanded first canonical crossing impossible
-  -> no off-line zero
-  -> RH
+TERMINAL
+  prove the demanded first canonical negative crossing cannot occur
 ~~~
 
 ## Standing priority question
 
-At every green state ask:
+Given everything now formally true, the next experiment or lemma should maximize mathematical information gain. Right now that is the concrete-zeta zero-side evenization spike because it can either collapse W2-B/W2-C into one small reindexing theorem or falsify that shortcut quickly and send the project back to the analytic/source alternatives.
 
-> Which next theorem most reduces the admissible counterexample space per unit of new hypothesis and proof machinery?
-
-That question, not historical PR numbering, controls this plan.
-
-RH remains **OPEN**.
+RH remains OPEN.
