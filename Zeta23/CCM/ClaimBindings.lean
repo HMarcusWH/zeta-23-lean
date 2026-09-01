@@ -10,6 +10,7 @@ import Zeta23.CCM.CutoffFreeMatrix
 import Zeta23.CCM.LocalizedBasis
 import Zeta23.CCM.LocalizedFiniteSpace
 import Zeta23.CCM.BoundaryFlatFiniteSpace
+import Zeta23.CCM.LocalizedFourierApproximation
 import Zeta23.CCM.BoundaryFlatProjection
 import Zeta23.CCM.LocalizedWeilRestriction
 import Zeta23.CCM.SourceWeilMatrixReconciliation
@@ -276,3 +277,15 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_cutoffFreeQuadraticForm
 #check Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm
 #print axioms Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm
+
+
+#check Zeta23.CCM.strictSupport_endpoint_jet_package
+#print axioms Zeta23.CCM.strictSupport_endpoint_jet_package
+#check Zeta23.CCM.localizedMode_eq_addCircle_fourier
+#print axioms Zeta23.CCM.localizedMode_eq_addCircle_fourier
+#check Zeta23.CCM.localizedFrequency_ne_zero
+#print axioms Zeta23.CCM.localizedFrequency_ne_zero
+#check Zeta23.CCM.exists_centeredIndex_eq_of_bounds
+#print axioms Zeta23.CCM.exists_centeredIndex_eq_of_bounds
+#check Zeta23.CCM.exists_support_natAbs_bound
+#print axioms Zeta23.CCM.exists_support_natAbs_bound
