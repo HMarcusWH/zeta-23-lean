@@ -170,7 +170,7 @@ No sorryAx survives.
 3. The complete projected vector is the legal object.
 4. PR #88 does not prove quantitative correction norm bounds.
 5. No finite Fourier density theorem is yet load-bearing.
-6. Pinned Mathlib does not provide a ready theorem that may simply be cited as “standard Fejer approximation.”
+6. Pinned Mathlib already provides `AddCircle.span_fourier_closure_eq_top` for uniform finite Fourier-span density. This still requires an explicit bridge into repository centered coefficients and projection stability; do not hide that bridge behind “standard approximation.”
 
 ## Normalization firewall
 
