@@ -104,19 +104,16 @@ theorem quadraticForm_inv_norm_smul_re_neg
     (Zeta23.CCM.quadraticForm A
       ((‖u‖⁻¹ : ℂ) • u)).re < 0 := by
   have hnorm : 0 < ‖u‖ := norm_pos_iff.mpr hu
-  have hinv : 0 < ‖u‖⁻¹ := inv_pos.mpr hnorm
-  have hscale : 0 < ‖u‖⁻¹ * ‖u‖⁻¹ := mul_pos hinv hinv
-  have hscalar :
-      star ((‖u‖ : ℂ)⁻¹) * ((‖u‖ : ℂ)⁻¹) =
-        (((‖u‖⁻¹ * ‖u‖⁻¹ : ℝ) : ℂ)) := by
-    rw [← Complex.ofReal_inv]
-    rw [← Complex.ofReal_inv]
+  let r : ℝ := ‖u‖⁻¹
+  have hr : 0 < r := by
+    dsimp [r]
+    exact inv_pos.mpr hnorm
+  have hstar : star (r : ℂ) = (r : ℂ) := by
     rw [Complex.star_def, Complex.conj_ofReal]
-    rw [← Complex.ofReal_mul]
-  rw [Zeta23.CCM.quadraticForm_smul, hscalar]
-  simpa only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im,
-    zero_mul, sub_zero] using
-    mul_neg_of_pos_of_neg hscale hneg
+  rw [Zeta23.CCM.quadraticForm_smul]
+  change (star (r : ℂ) * (r : ℂ) * Zeta23.CCM.quadraticForm A u).re < 0
+  rw [hstar, ← Complex.ofReal_mul, Complex.re_ofReal_mul]
+  exact mul_neg_of_pos_of_neg (mul_pos hr hr) hneg
 
 /-- **Normalized constrained F1 obstruction.**
 
