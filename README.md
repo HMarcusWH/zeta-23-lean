@@ -7,174 +7,100 @@
 ## Current authority snapshot
 
 ~~~text
-main = bab94aed54298de6fc6676808a0b0e46c2db6046
-tree = f98b3051ca789ef0d134934fc01d97ac7497d4ca
-merged through = PR #91
+main = 8b54a72767c2703351990e2a67354511e9c9b83a
+tree = 0fca10d1904d85bd33763cc6728e22c1c5b9ef5d
+merged through = PR #94
+date = 2026-09-02
 RH = OPEN
 ~~~
 
-PR #91 final hardened theorem head:
+Recent theorem-bearing merges:
 
 ~~~text
-cf1c9b6536264deb8773fa8b0bb3650b07fcff40
-tree = f98b3051ca789ef0d134934fc01d97ac7497d4ca
-RHRC #660 = SUCCESS
-Permansson #433 = SUCCESS
+#91 F0-B1C-A raw uniform localized C² approximation
+#93 F0-B1C-B legal boundary-flat WCONT approximation
+#94 strict finite sign transfer + F1 finite canonical negative obstruction
 ~~~
 
-The final PR tree is exactly the permanent merge tree.
+Exact F1 validation:
+
+~~~text
+PR #94 head = d357c1511dba8678eb3a3a10944596c33a65fa11
+merge/main = 8b54a72767c2703351990e2a67354511e9c9b83a
+tree = 0fca10d1904d85bd33763cc6728e22c1c5b9ef5d
+RHRC #667 = SUCCESS
+Permansson #440 = SUCCESS
+axioms = [propext, Classical.choice, Quot.sound]
+sorryAx = absent
+~~~
 
 ## Current RH-directed theorem ladder
 
 ~~~text
 off-line zeta zero
-  -> compact C² pole-neutral h with Re W(h,h)<0                 PROVED
-  -> strict aperture collar tsupport h ⊂ (0,L)                 PROVED
-  -> concrete-zeta zero-side evenization                       PROVED
-  -> W(h,h)=localizedWeilAdditiveRHS(h,h)                      PROVED
-  -> finite additive restriction / canonical matrix            PROVED
-  -> F0-B1A legal boundary-flat finite carrier                 PROVED
-  -> F0-B1B exact -1,0,+1 boundary-flat projection             PROVED
-  -> WCONT-A fixed-support genuine-W perturbation bound         PROVED
-  -> F0-B1C-A raw localized uniform C² approximation            PROVED
-  -> F0-B1C-B quantitative projection stability                OPEN / NOW
-  -> strict finite sign transfer                               OPEN
-  -> F1 canonical finite negative obstruction                  OPEN
-  -> K0-K3 finite-negative exclusion                           OPEN
-  -> RH                                                        OPEN
+  -> compact C² pole-neutral h with Re W(h,h)<0                  PROVED
+  -> strict aperture collar tsupport h ⊂ (0,L)                  PROVED
+  -> legal boundary-flat finite approximation in WCONT topology PROVED
+  -> strict finite negative W value                              PROVED
+  -> finite canonical negative quadratic direction               PROVED / F1
+
+NOW
+  K0-F1 constrained canonical sector
+
+THEN
+  constrained negative compression / minimizer
+  exact displacement rigidity
+  aperture-flow / first-singularity only if still needed
+
+RH                                                         OPEN
 ~~~
 
-## F0-B1A + F0-B1B legality package
+## F1 — finite canonical negative obstruction
 
-For positive L, centered coefficients satisfying
+PR #94 proves `Zeta23.ExceptionalZero.exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_offLine_zero`.
 
-M0(u)=M1(u)=M2(u)=0
-
-produce a hard-window localized finite vector that is globally C², compactly supported, and satisfies
-
-W(v,v)=quadraticForm(canonicalSourceMatrix L N)u.
-
-PR #88 proves an exact projection for N>=1, correcting only centered modes -1,0,+1:
-
-c_-1=(M1-M2)/2,
-c_0=M2-M0,
-c_1=-(M1+M2)/2.
-
-It also theorem-locks exact endpoint value/first-jet/second-jet identities for M0,M1,M2.
-
-Production claims:
+For every hypothetical zeta zero off the critical line, there exist L>0, N>=1 and u such that
 
 ~~~text
-R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION
-R003_BOUNDARY_FLAT_PROJECTION
+BoundaryFlatCoefficients N u
+Re (quadraticForm (canonicalSourceMatrix L N) u) < 0.
 ~~~
 
-## WCONT-A
+Boundary-flat means exactly centered moments M0=M1=M2=0.
 
-PR #89 is permanently merged.
+This is a finite obstruction theorem. It is not canonical positivity and it is not RH.
 
-For one fixed support radius Lambda,
+## Post-F1 finite-wall frontier
 
-||W(f,g)||
-  <= exp(Lambda) * zetaInvSqZeroMass
-     * (||f||_1 + ||f''||_1) * ||g||_1.
+Let D=indexMatrix N, M=canonicalSourceMatrix L N and g=displacementVector L N.
 
-The exact diagonal cross-term identity and a quantitative self-form perturbation estimate are also proved with summability established before infinite-sum algebra.
-
-Production claim:
+Already PROVED:
 
 ~~~text
-R003_WEIL_COMMON_SUPPORT_BOUND
+D M - M D = g 1^T - 1 g^T.
 ~~~
 
-The family dominated-convergence seam is therefore closed on the primary route.
-
-## F0-B1C-A — raw finite approximation
-
-PR #91 proves
+For an F1 witness, the three moment constraints DERIVE
 
 ~~~text
-Zeta23.CCM.exists_localizedFinite_uniform_C2_approx
+1^T u     = 0
+1^T D u   = 0
+1^T D^2 u = 0.
 ~~~
 
-For every L>0, every complex-valued C² target with tsupport strictly inside (0,L), and every epsilon>0, there exist N>=1 and centered finite coefficients u such that the formula-level finite Fourier function q
+The exact constrained commutator collapse on u, Du and D²u is DERIVED/LEAD until theorem-locked.
 
-- satisfies q(0)=0 exactly;
-- approximates h uniformly on [0,L];
-- approximates the first jet uniformly;
-- approximates the second jet uniformly.
+The next theorem package is K0-F1:
 
-Final production axiom surface:
+- package the boundary-flat sector as finite linear algebra;
+- theorem-lock moment shift under D;
+- theorem-lock the descending moment flag;
+- expose canonical Hermitianity;
+- theorem-lock exact constrained displacement collapse.
 
-~~~text
-[propext, Classical.choice, Quot.sound]
-~~~
+Do not assume D preserves the full boundary-flat sector: M3(u)=0 is not available.
 
-with no sorryAx.
-
-The proof uses the exact pinned Mathlib declarations span_fourier_closure_eq_top, fourier, fourierCoeff, and fourierCoeffOn, then explicitly transports finite integer support into the repository's normalized centered coordinates.
-
-Production claim:
-
-~~~text
-R003_LOCALIZED_UNIFORM_C2_APPROXIMATION
-~~~
-
-### Firewall
-
-This is a formula-level periodic approximation theorem. It does not make the raw hard-window zero extension globally C². The complete projected vector remains the legal W object.
-
-## Immediate frontier — F0-B1C-B
-
-Post-#91 composition with #88 yields a useful simplification.
-
-**DERIVED / not yet separately formalized:**
-
-Since q(0)=0 exactly and L>0,
-
-M0(q)=0.
-
-Thus projection-smallness needs only M1,M2. From the exact endpoint identities,
-
-|M1| = L^(3/2)/(2*pi) * |q'(0)|,
-
-|M2| = L^(5/2)/(4*pi^2) * |q''(0)|.
-
-For the three-mode correction c, the next formalization target is
-
-integral_0^L |c|
-  <= L^2/(2*pi) * |q'(0)|
-   + L^3/(2*pi^2) * |q''(0)|,
-
-and
-
-integral_0^L |c''|
-  <= 2*pi*|q'(0)| + L*|q''(0)|.
-
-These constants depend on fixed L, never on N.
-
-The target F0-B1C-B theorem is therefore:
-
-~~~text
-strict-collar C² h
-epsilon > 0
-  -> exists N>=1,u
-       BoundaryFlatCoefficients N u
-       and legal p = localizedFiniteVector L N u
-       with
-       integral ||p-h|| < epsilon
-       integral ||p''-h''|| < epsilon.
-~~~
-
-## Projection firewall
-
-The correction boundaryFlatProject(u)-u is generally not itself boundary-flat. Its hard-window realization must not be treated as an independently admissible C² Weil test.
-
-Use only the complete projected vector.
-
-See OBS-016.
-
-## Canonical finite object
+## Canonical normalization firewall
 
 ~~~text
 canonicalSourceMatrix
@@ -185,58 +111,32 @@ canonicalSourceMatrix
 legacyPrintedMatrix = finiteMatrix.
 ~~~
 
-Absolute spectral-sign claims must use the canonical object.
+Absolute sign/inertia/spectral claims must use the canonical object or explicit scalar-shift bookkeeping.
 
-## Parallel source route
+## Parallel source-faithful route
 
-~~~text
-S-GEOM -> G1-B1A                         PROVED
-S-IFACE / G1-B1B                         OPEN
-G1-final QW_lambda|E_N = canonical matrix OPEN
-
-separate sign entry:
-S-NEG or exact sign-carrying composition  OPEN
-
-then:
-G23                                      OPEN
-~~~
+S-GEOM/G1-B1A is PROVED. S-IFACE/G1-B1B, G1-final, S-NEG and G23 remain OPEN.
 
 OBS-015 remains binding: source interface is not source negativity.
 
-## Fallback routes
+## Permanent firewalls
 
-- direct Fejer raw approximation — dormant after #91;
-- boundary-killer multiplication — ready fallback;
-- F0-B2 direct localized-additive continuity — fallback;
-- old analytic W2-B route — independent cross-check only.
+- OBS-016 remains a generic legality warning; #93 proves the primary R003 escape.
+- the correction vector alone is not a legal W test.
+- low displacement rank alone is not RH.
+- DR-010 fitted small-commutator/eigenvector convergence remains falsified.
+- green F1 is not RH.
 
-Generic Stone-Weierstrass infrastructure for F0-B1C-A is superseded by the exact pinned Fourier-span theorem already used in #91.
+## Living research records
 
-## Post-F1 boundary
+- `research/RHRC/CURRENT_RESEARCH_PLAN.md`
+- `research/RHRC/RESEARCH_LEADS.md`
+- `research/RHRC/CLAIM_REGISTRY.json`
+- `research/RHRC/routes/ROUTE_REGISTRY.json`
+- `research/RHRC/routes/R003_ccm_bridge/README.md`
+- `research/RHRC/RESEARCH_LEADS_POST_94_DELTA.md`
+- `research/RHRC/routes/R003_ccm_bridge/F1_POST_GREEN_FINITE_WALL_RESET_2026_09_02.md`
 
-A green F1 is the next major dependency-graph event. It must trigger a full Post-Green Research Pass before K0-K3.
-
-The external roadmap version v2.0 remains reserved for green F1 or a comparably large theorem-state change.
-
-## Current research control plane
-
-Living:
-
-- research/RHRC/README.md
-- research/RHRC/CURRENT_RESEARCH_PLAN.md
-- research/RHRC/RESEARCH_LEADS.md
-- research/RHRC/CLAIM_REGISTRY.json
-- research/RHRC/routes/ROUTE_REGISTRY.json
-- research/RHRC/routes/R003_ccm_bridge/README.md
-
-Latest delta:
-
-- research/RHRC/RESEARCH_LEADS_POST_91_DELTA.md
-
-Latest post-green settlement:
-
-- research/RHRC/routes/R003_ccm_bridge/F0_B1C_A_POST_GREEN_PROJECTION_STABILITY_FRONTIER_2026_09_02.md
-
-Historical settlements remain frozen records of earlier theorem states.
+Historical settlements remain frozen.
 
 **RH remains OPEN.**
