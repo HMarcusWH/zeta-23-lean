@@ -36,23 +36,29 @@ def centeredEmbedding
     dsimp at hval
     omega
 
+@[simp] theorem centeredEmbedding_val
+    (N M : ℕ) (hNM : N ≤ M)
+    (i : Fin (2 * N + 1)) :
+    (centeredEmbedding N M hNM i).val =
+      i.val + (M - N) := rfl
+
 @[simp] theorem centeredIndex_centeredEmbedding
     (N M : ℕ) (hNM : N ≤ M)
     (i : Fin (2 * N + 1)) :
     centeredIndex M (centeredEmbedding N M hNM i) =
       centeredIndex N i := by
-  unfold centeredIndex centeredEmbedding
-  simp only [Fin.val_mk]
+  unfold centeredIndex
+  rw [centeredEmbedding_val]
   rw [Int.ofNat_add, Int.ofNat_sub hNM]
   omega
 
 theorem centeredEmbedding_trans
     (N M K : ℕ) (hNM : N ≤ M) (hMK : M ≤ K) :
-    (centeredEmbedding M K hMK).comp (centeredEmbedding N M hNM) =
+    (centeredEmbedding N M hNM).trans (centeredEmbedding M K hMK) =
       centeredEmbedding N K (hNM.trans hMK) := by
   ext i
   apply Fin.ext
-  simp [centeredEmbedding]
+  simp only [Function.Embedding.trans_apply, centeredEmbedding_val]
   omega
 
 @[simp] theorem canonicalSourceMatrix_submatrix_centeredEmbedding
@@ -109,21 +115,25 @@ def centeredZeroExtendLinearMap
   map_add' := by
     intro u v
     ext j
+    change centeredZeroExtend hNM (u + v) j =
+      centeredZeroExtend hNM u j + centeredZeroExtend hNM v j
     by_cases hj : j ∈ Set.range (centeredEmbedding N M hNM)
     · obtain ⟨i, rfl⟩ := hj
       simp
-    · rw [centeredZeroExtend_apply_of_not_mem_range hNM (u + v) _ hj]
-      rw [centeredZeroExtend_apply_of_not_mem_range hNM u _ hj]
-      rw [centeredZeroExtend_apply_of_not_mem_range hNM v _ hj]
-      rfl
+    · rw [centeredZeroExtend_apply_of_not_mem_range hNM (u + v) j hj]
+      rw [centeredZeroExtend_apply_of_not_mem_range hNM u j hj]
+      rw [centeredZeroExtend_apply_of_not_mem_range hNM v j hj]
+      simp
   map_smul' := by
     intro c u
     ext j
+    change centeredZeroExtend hNM (c • u) j =
+      c • centeredZeroExtend hNM u j
     by_cases hj : j ∈ Set.range (centeredEmbedding N M hNM)
     · obtain ⟨i, rfl⟩ := hj
       simp
-    · rw [centeredZeroExtend_apply_of_not_mem_range hNM (c • u) _ hj]
-      rw [centeredZeroExtend_apply_of_not_mem_range hNM u _ hj]
+    · rw [centeredZeroExtend_apply_of_not_mem_range hNM (c • u) j hj]
+      rw [centeredZeroExtend_apply_of_not_mem_range hNM u j hj]
       simp
 
 @[simp] theorem centeredZeroExtendLinearMap_apply
@@ -230,7 +240,40 @@ theorem euclideanCenteredZeroExtendLinearMap_coordinates
         (euclideanCenteredZeroExtendLinearMap hNM x) =
       centeredZeroExtend hNM
         ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x) := by
-  simp [euclideanCenteredZeroExtendLinearMap]
+  change
+    WithLp.ofLp
+      (WithLp.toLp 2
+        (centeredZeroExtend hNM
+          ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x))) =
+      centeredZeroExtend hNM
+        ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x)
+  rfl
+
+@[simp] theorem
+    euclideanCenteredZeroExtendLinearMap_apply_centeredEmbedding
+    {N M : ℕ} (hNM : N ≤ M)
+    (x : EuclideanSpace ℂ (Fin (2 * N + 1)))
+    (i : Fin (2 * N + 1)) :
+    euclideanCenteredZeroExtendLinearMap hNM x
+        (centeredEmbedding N M hNM i) =
+      x i := by
+  change
+    centeredZeroExtend hNM
+      ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x)
+      (centeredEmbedding N M hNM i) =
+    (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x i
+  simp
+
+theorem euclideanCenteredZeroExtendLinearMap_apply_of_not_mem_range
+    {N M : ℕ} (hNM : N ≤ M)
+    (x : EuclideanSpace ℂ (Fin (2 * N + 1)))
+    (j : Fin (2 * M + 1))
+    (hj : j ∉ Set.range (centeredEmbedding N M hNM)) :
+    euclideanCenteredZeroExtendLinearMap hNM x j = 0 := by
+  change
+    centeredZeroExtend hNM
+      ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x) j = 0
+  exact centeredZeroExtend_apply_of_not_mem_range hNM _ j hj
 
 theorem inner_euclideanCenteredZeroExtendLinearMap
     {N M : ℕ} (hNM : N ≤ M)
@@ -240,8 +283,6 @@ theorem inner_euclideanCenteredZeroExtendLinearMap
         (euclideanCenteredZeroExtendLinearMap hNM y) =
       inner ℂ x y := by
   rw [PiLp.inner_apply, PiLp.inner_apply]
-  have hx := euclideanCenteredZeroExtendLinearMap_coordinates hNM x
-  have hy := euclideanCenteredZeroExtendLinearMap_coordinates hNM y
   rw [Fintype.sum_of_injective
     (centeredEmbedding N M hNM)
     (centeredEmbedding N M hNM).injective
@@ -251,16 +292,12 @@ theorem inner_euclideanCenteredZeroExtendLinearMap
         (euclideanCenteredZeroExtendLinearMap hNM x j)
         (euclideanCenteredZeroExtendLinearMap hNM y j))]
   · intro j hj
-    have hxj := congrFun hx j
-    have hyj := congrFun hy j
-    rw [hxj, hyj]
-    rw [centeredZeroExtend_apply_of_not_mem_range hNM _ j]
-    · simp
-    · simpa using hj
+    rw [euclideanCenteredZeroExtendLinearMap_apply_of_not_mem_range
+      hNM x j (by simpa using hj)]
+    rw [euclideanCenteredZeroExtendLinearMap_apply_of_not_mem_range
+      hNM y j (by simpa using hj)]
+    simp
   · intro i
-    have hxi := congrFun hx (centeredEmbedding N M hNM i)
-    have hyi := congrFun hy (centeredEmbedding N M hNM i)
-    rw [hxi, hyi]
     simp
 
 def euclideanCenteredZeroExtend
@@ -292,7 +329,10 @@ theorem euclideanCenteredZeroExtend_mem_euclideanBoundaryFlatSubspace
     euclideanCenteredZeroExtend hNM x ∈
       euclideanBoundaryFlatSubspace M := by
   rw [mem_euclideanBoundaryFlatSubspace_iff] at hx ⊢
-  rw [euclideanCenteredZeroExtend_coordinates]
+  change
+    centeredZeroExtend hNM
+      ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x) ∈
+      boundaryFlatSubspace M
   exact centeredZeroExtend_mem_boundaryFlatSubspace hNM hx
 
 theorem re_inner_canonicalSourceMatrix_euclideanCenteredZeroExtend
@@ -315,11 +355,56 @@ theorem re_inner_canonicalSourceMatrix_euclideanCenteredZeroExtend
   have hN :=
     quadraticForm_re_eq_re_inner_apply_self
       (canonicalSourceMatrix L N) x
-  rw [← hM, ← hN]
-  rw [euclideanCenteredZeroExtend_coordinates]
-  exact congrArg Complex.re
-    (quadraticForm_canonicalSourceMatrix_centeredZeroExtend
-      hL hNM ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x))
+  change
+    (quadraticForm
+      (canonicalSourceMatrix L M)
+      ((EuclideanSpace.equiv (Fin (2 * M + 1)) ℂ)
+        (euclideanCenteredZeroExtend hNM x))).re =
+      Complex.re
+        (inner ℂ
+          ((canonicalSourceMatrix L M).toEuclideanLin
+            (euclideanCenteredZeroExtend hNM x))
+          (euclideanCenteredZeroExtend hNM x)) at hM
+  change
+    (quadraticForm
+      (canonicalSourceMatrix L N)
+      ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x)).re =
+      Complex.re
+        (inner ℂ
+          ((canonicalSourceMatrix L N).toEuclideanLin x)
+          x) at hN
+  calc
+    Complex.re
+        (inner ℂ
+          ((canonicalSourceMatrix L M).toEuclideanLin
+            (euclideanCenteredZeroExtend hNM x))
+          (euclideanCenteredZeroExtend hNM x))
+        =
+      (quadraticForm
+        (canonicalSourceMatrix L M)
+        ((EuclideanSpace.equiv (Fin (2 * M + 1)) ℂ)
+          (euclideanCenteredZeroExtend hNM x))).re := by
+            symm
+            exact hM
+    _ =
+      (quadraticForm
+        (canonicalSourceMatrix L M)
+        (centeredZeroExtend hNM
+          ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x))).re := by
+            rw [euclideanCenteredZeroExtend_coordinates]
+    _ =
+      (quadraticForm
+        (canonicalSourceMatrix L N)
+        ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x)).re := by
+            exact congrArg Complex.re
+              (quadraticForm_canonicalSourceMatrix_centeredZeroExtend
+                hL hNM
+                ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x))
+    _ =
+      Complex.re
+        (inner ℂ
+          ((canonicalSourceMatrix L N).toEuclideanLin x)
+          x) := hN
 
 end Zeta23.CCM
 
