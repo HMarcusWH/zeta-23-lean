@@ -49,15 +49,14 @@ def centeredEmbedding
       centeredIndex N i := by
   unfold centeredIndex
   rw [centeredEmbedding_val]
-  rw [Int.ofNat_add, Int.ofNat_sub hNM]
-  omega
+  rw [Nat.cast_add, Nat.cast_sub hNM]
+  ring
 
 theorem centeredEmbedding_trans
     (N M K : ℕ) (hNM : N ≤ M) (hMK : M ≤ K) :
     (centeredEmbedding N M hNM).trans (centeredEmbedding M K hMK) =
       centeredEmbedding N K (hNM.trans hMK) := by
   ext i
-  apply Fin.ext
   simp only [Function.Embedding.trans_apply, centeredEmbedding_val]
   omega
 
