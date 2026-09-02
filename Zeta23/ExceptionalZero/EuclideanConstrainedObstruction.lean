@@ -54,10 +54,9 @@ theorem
         ∃ x : EuclideanSpace ℂ (Fin (2 * N + 1)),
           x ≠ 0 ∧
           x ∈ Zeta23.CCM.euclideanBoundaryFlatSubspace N ∧
-          Complex.re ⟪
-            (Zeta23.CCM.canonicalSourceMatrix L N).toEuclideanLin x,
-            x
-          ⟫_ℂ < 0 := by
+          Complex.re (inner ℂ
+            ((Zeta23.CCM.canonicalSourceMatrix L N).toEuclideanLin x)
+            x) < 0 := by
   obtain ⟨L, hL, N, hN2, u, hne, hmem, hneg⟩ :=
     exists_two_le_N_ne_zero_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero
       ρ₀ hoff
@@ -74,15 +73,13 @@ theorem
     rw [Zeta23.CCM.mem_euclideanBoundaryFlatSubspace_iff]
     simpa [x, e] using hmem
   have hxneg :
-      Complex.re ⟪
-        (Zeta23.CCM.canonicalSourceMatrix L N).toEuclideanLin x,
-        x
-      ⟫_ℂ < 0 := by
+      Complex.re (inner ℂ
+        ((Zeta23.CCM.canonicalSourceMatrix L N).toEuclideanLin x)
+        x) < 0 := by
     calc
-      Complex.re ⟪
-          (Zeta23.CCM.canonicalSourceMatrix L N).toEuclideanLin x,
-          x
-        ⟫_ℂ =
+      Complex.re (inner ℂ
+          ((Zeta23.CCM.canonicalSourceMatrix L N).toEuclideanLin x)
+          x) =
           (Zeta23.CCM.quadraticForm
             (Zeta23.CCM.canonicalSourceMatrix L N) u).re := by
               symm
@@ -103,10 +100,9 @@ theorem
         ∃ x : EuclideanSpace ℂ (Fin (2 * N + 1)),
           x ≠ 0 ∧
           x ∈ Zeta23.CCM.euclideanBoundaryFlatSubspace N ∧
-          Complex.re ⟪
-            (Zeta23.CCM.canonicalSourceMatrix L N).toEuclideanLin x,
-            x
-          ⟫_ℂ < 0 := by
+          Complex.re (inner ℂ
+            ((Zeta23.CCM.canonicalSourceMatrix L N).toEuclideanLin x)
+            x) < 0 := by
   obtain ⟨ρ₀, hρ₀⟩ := hoff
   exact
     exists_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero
