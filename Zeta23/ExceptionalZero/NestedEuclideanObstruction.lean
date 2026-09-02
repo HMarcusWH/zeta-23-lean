@@ -28,27 +28,30 @@ theorem negativeEuclideanConstrained_persists_of_le
       Complex.re (inner ℂ
         ((Zeta23.CCM.canonicalSourceMatrix L N).toEuclideanLin x)
         x) < 0) :
-    let y := Zeta23.CCM.euclideanCenteredZeroExtend hNM x
-    y ≠ 0 ∧
-      y ∈ Zeta23.CCM.euclideanBoundaryFlatSubspace M ∧
+    Zeta23.CCM.euclideanCenteredZeroExtend hNM x ≠ 0 ∧
+      Zeta23.CCM.euclideanCenteredZeroExtend hNM x ∈
+        Zeta23.CCM.euclideanBoundaryFlatSubspace M ∧
       Complex.re (inner ℂ
-        ((Zeta23.CCM.canonicalSourceMatrix L M).toEuclideanLin y)
-        y) < 0 := by
-  let y := Zeta23.CCM.euclideanCenteredZeroExtend hNM x
-  have hyne : y ≠ 0 := by
+        ((Zeta23.CCM.canonicalSourceMatrix L M).toEuclideanLin
+          (Zeta23.CCM.euclideanCenteredZeroExtend hNM x))
+        (Zeta23.CCM.euclideanCenteredZeroExtend hNM x)) < 0 := by
+  have hyne :
+      Zeta23.CCM.euclideanCenteredZeroExtend hNM x ≠ 0 := by
     intro hy
     apply hxne
     apply (Zeta23.CCM.euclideanCenteredZeroExtend hNM).injective
-    simpa [y] using hy
+    simpa using hy
   have hymem :
-      y ∈ Zeta23.CCM.euclideanBoundaryFlatSubspace M := by
+      Zeta23.CCM.euclideanCenteredZeroExtend hNM x ∈
+        Zeta23.CCM.euclideanBoundaryFlatSubspace M := by
     exact
       Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanBoundaryFlatSubspace
         hNM hxmem
   have hyneg :
       Complex.re (inner ℂ
-        ((Zeta23.CCM.canonicalSourceMatrix L M).toEuclideanLin y)
-        y) < 0 := by
+        ((Zeta23.CCM.canonicalSourceMatrix L M).toEuclideanLin
+          (Zeta23.CCM.euclideanCenteredZeroExtend hNM x))
+        (Zeta23.CCM.euclideanCenteredZeroExtend hNM x)) < 0 := by
     rw [Zeta23.CCM.re_inner_canonicalSourceMatrix_euclideanCenteredZeroExtend
       hL hNM x]
     exact hxneg
@@ -72,11 +75,12 @@ theorem
       ρ₀ hoff
   refine ⟨L, hL, N₀, hN₀, ?_⟩
   intro M hNM
-  let y := Zeta23.CCM.euclideanCenteredZeroExtend hNM x
   have hp :=
     negativeEuclideanConstrained_persists_of_le
       hL hNM hxne hxmem hxneg
-  exact ⟨y, hp.1, hp.2.1, hp.2.2⟩
+  exact
+    ⟨Zeta23.CCM.euclideanCenteredZeroExtend hNM x,
+      hp.1, hp.2.1, hp.2.2⟩
 
 theorem
     exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_exists_offLine_zero
