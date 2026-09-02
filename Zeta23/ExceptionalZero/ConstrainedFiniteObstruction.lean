@@ -108,7 +108,7 @@ theorem quadraticForm_inv_norm_smul_re_neg
   rw [Zeta23.CCM.quadraticForm_smul]
   simp only [Complex.star_def, Complex.conj_ofReal, ← Complex.ofReal_mul,
     Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, zero_mul, sub_zero]
-  exact mul_neg_of_pos_left hneg (mul_pos hinv hinv)
+  exact mul_neg_of_pos_of_neg (mul_pos hinv hinv) hneg
 
 /-- **Normalized constrained F1 obstruction.**
 
