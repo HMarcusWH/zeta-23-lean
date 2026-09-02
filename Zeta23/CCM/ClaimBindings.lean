@@ -17,6 +17,7 @@ import Zeta23.CCM.LocalizedWeilRestriction
 import Zeta23.CCM.SourceWeilMatrixReconciliation
 import Zeta23.CCM.SourceNormalizationRepair
 import Zeta23.CCM.ConstrainedCanonicalSector
+import Zeta23.CCM.ConstrainedEuclideanSector
 import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.DictionaryRHSIdentity
 import Zeta23.ExceptionalZero.DisplacementTransfer
@@ -28,6 +29,7 @@ import Zeta23.ExceptionalZero.WeilZeroSideEvenization
 import Zeta23.ExceptionalZero.BoundaryFlatFiniteWeil
 import Zeta23.ExceptionalZero.FiniteNegativeObstruction
 import Zeta23.ExceptionalZero.ConstrainedFiniteObstruction
+import Zeta23.ExceptionalZero.EuclideanConstrainedObstruction
 
 /-!
 # Promoted CCM / R002 / R003 theorem bindings
@@ -368,3 +370,33 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #check Zeta23.ExceptionalZero.exists_unit_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_exists_offLine_zero
 #print axioms Zeta23.ExceptionalZero.exists_unit_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_exists_offLine_zero
 
+
+
+#check Zeta23.CCM.boundaryMomentTripleMap_apply
+#print axioms Zeta23.CCM.boundaryMomentTripleMap_apply
+#check Zeta23.CCM.ker_boundaryMomentTripleMap
+#print axioms Zeta23.CCM.ker_boundaryMomentTripleMap
+#check Zeta23.CCM.boundaryMomentTripleMap_surjective
+#print axioms Zeta23.CCM.boundaryMomentTripleMap_surjective
+#check Zeta23.CCM.finrank_boundaryFlatSubspace
+#print axioms Zeta23.CCM.finrank_boundaryFlatSubspace
+#check Zeta23.CCM.boundaryFlatSubspace_one_eq_bot
+#print axioms Zeta23.CCM.boundaryFlatSubspace_one_eq_bot
+#check Zeta23.CCM.two_le_of_ne_zero_mem_boundaryFlatSubspace
+#print axioms Zeta23.CCM.two_le_of_ne_zero_mem_boundaryFlatSubspace
+#check Zeta23.CCM.mem_euclideanBoundaryFlatSubspace_iff_boundaryFlat
+#print axioms Zeta23.CCM.mem_euclideanBoundaryFlatSubspace_iff_boundaryFlat
+#check Zeta23.CCM.finrank_euclideanBoundaryFlatSubspace
+#print axioms Zeta23.CCM.finrank_euclideanBoundaryFlatSubspace
+#check Zeta23.CCM.canonicalSourceMatrix_toEuclideanLin_isSymmetric
+#print axioms Zeta23.CCM.canonicalSourceMatrix_toEuclideanLin_isSymmetric
+#check Zeta23.CCM.quadraticForm_eq_inner_toEuclideanLin
+#print axioms Zeta23.CCM.quadraticForm_eq_inner_toEuclideanLin
+#check Zeta23.CCM.quadraticForm_re_eq_re_inner_apply_self
+#print axioms Zeta23.CCM.quadraticForm_re_eq_re_inner_apply_self
+#check Zeta23.ExceptionalZero.exists_two_le_N_ne_zero_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_two_le_N_ne_zero_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero
+#check Zeta23.ExceptionalZero.exists_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero
+#check Zeta23.ExceptionalZero.exists_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_exists_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_exists_offLine_zero

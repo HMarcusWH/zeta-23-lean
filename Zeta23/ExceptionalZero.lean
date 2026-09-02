@@ -17,3 +17,4 @@ import Zeta23.ExceptionalZero.WeilZeroSideEvenization
 import Zeta23.ExceptionalZero.BoundaryFlatFiniteWeil
 import Zeta23.ExceptionalZero.FiniteNegativeObstruction
 import Zeta23.ExceptionalZero.ConstrainedFiniteObstruction
+import Zeta23.ExceptionalZero.EuclideanConstrainedObstruction
