@@ -16,6 +16,7 @@ def run(cmd: list[str]) -> None:
 def main() -> int:
     run([sys.executable, str(ROOT / "tools" / "claim_lint.py")])
     run([sys.executable, str(ROOT / "tools" / "registry_lint.py")])
+    run([sys.executable, str(ROOT / "tools" / "promoted_binding_lint.py")])
     run([sys.executable, str(ROOT / "routes" / "R002_multi_probe" / "compare_r002_ccm_probe_families.py")])
     run([sys.executable, "-m", "unittest", "discover", "-s", str(ROOT / "ffbbp" / "tests"), "-p", "test_*.py", "-v"])
     run([sys.executable, "-m", "unittest", "discover", "-s", str(ROOT / "ool" / "tests"), "-p", "test_*.py", "-v"])

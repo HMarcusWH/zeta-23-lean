@@ -7,31 +7,23 @@
 ## Current authority snapshot
 
 ~~~text
-theorem-state anchor = PR #96 merge 3712746a144d630ee41b89527b098e392822f2c6
-theorem tree = 1d43b31bf9750375189a1ccd2e65bc0a662fc7c4
-theorem-bearing merged through = PR #96
+theorem-state anchor = PR #98 merge 4f212e35fefb339646e294573dcb390dae2f6181
+theorem tree = 84a678327fffe6806e1e786ac2e159a5ce628f67
+theorem-bearing merged through = PR #98
 live GitHub main = authoritative
 date = 2026-09-02
 RH = OPEN
 ~~~
 
-Recent theorem-bearing merges:
+Exact PR #98 validation:
 
 ~~~text
-#93 F0-B1C-B legal boundary-flat WCONT approximation
-#94 strict finite sign transfer + F1 finite canonical negative obstruction
-#96 K0/K1-F1 constrained canonical finite-wall package
-~~~
-
-Exact #96 validation:
-
-~~~text
-PR #96 head = d628b7332e908701e85ef8ea33309e2bf548f2e5
-synthetic merge = 5830d75ec649f065925f5f3a1a7c823d8a5b42b9
-validated tree = 1d43b31bf9750375189a1ccd2e65bc0a662fc7c4
-merge/main = 3712746a144d630ee41b89527b098e392822f2c6
-RHRC #679 = SUCCESS
-Permansson #452 = SUCCESS
+final head = 723c63badb2ac787c3dfa78369909477af6bc6a4
+head tree = 84a678327fffe6806e1e786ac2e159a5ce628f67
+merge/main = 4f212e35fefb339646e294573dcb390dae2f6181
+merge tree = 84a678327fffe6806e1e786ac2e159a5ce628f67
+RHRC #685 = SUCCESS
+Permansson #458 = SUCCESS
 CCM build = SUCCESS
 ExceptionalZero build = SUCCESS
 forbidden-placeholder gate = SUCCESS
@@ -39,133 +31,83 @@ axioms = [propext, Classical.choice, Quot.sound]
 sorryAx = absent
 ~~~
 
-The successful synthetic merge and the merged main commit have the same tree.
+The exact theorem tree tested at the final PR head is the tree now merged on main.
 
 ## Current RH-directed theorem ladder
 
 ~~~text
 off-line zeta zero
-  -> compact C² pole-neutral h with Re W(h,h)<0                  PROVED
-  -> strict aperture collar tsupport h ⊂ (0,L)                  PROVED
-  -> legal boundary-flat finite approximation in WCONT topology PROVED
-  -> strict finite negative W value                              PROVED
-  -> finite canonical negative quadratic direction              PROVED / F1
-  -> constrained subspace + moment flag + Hermitianity           PROVED / K0-F1
-  -> exact one-channel displacement on u,Du,D²u                  PROVED / K0-F1
-  -> nonzero/unit constrained negative canonical witness         PROVED / #96
+  -> compact C² pole-neutral negative W test                       PROVED
+  -> strict aperture collar + legal finite approximation          PROVED
+  -> strict finite negative W value                               PROVED
+  -> finite canonical negative quadratic direction                PROVED / F1
+  -> constrained algebra + Hermitianity + displacement            PROVED / #96
+  -> exact moment rank; finrank = 2*N-2                            PROVED / #98
+  -> nonzero constrained witness forces N>=2                      PROVED / #98
+  -> Euclidean constrained sector + canonical symmetry            PROVED / #98
+  -> quadraticForm <-> Euclidean inner-self bridge                 PROVED / #98
+  -> constrained Euclidean negative direction                     PROVED / #98
 
-NOW
-  Euclidean/PiLp₂ constrained-sector transport
-  exact codimension/rank theorem
-  raw quadraticForm ↔ Euclidean inner-self bridge
+NEXT
+  exact centered finite-N nesting / zero-extension persistence
+  reversal/parity and parity-sector dimensions
+  constrained orthogonal compression + negative eigenmode
+  first bad parity size / one-dimensional new shell
+  scalar secular/KKT/displacement rigidity
 
-THEN
-  compressed self-adjoint canonical operator
-  negative constrained Rayleigh/eigenmode
+PARALLEL
+  source-faithful G1-B1B -> G1-final -> S-NEG -> G23
 
-NEXT DECISION
-  KKT + Krylov/Hankel rigidity
-  versus parity/reversal
-  versus aperture-flow / first-singularity
-
-RH                                                         OPEN
+RH                                                                 OPEN
 ~~~
 
-## F1 and #96 constrained finite obstruction
+## Exact #98 endpoint
 
-PR #94 proves `Zeta23.ExceptionalZero.exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_offLine_zero`.
+Lean proves that every hypothetical off-critical-line zero forces L>0, N>=2 and a nonzero x in EuclideanSpace ℂ (Fin (2*N+1)) with x in euclideanBoundaryFlatSubspace N and strictly negative real inner-self value for canonicalSourceMatrix.toEuclideanLin.
 
-PR #96 proves the stronger constrained packaging:
+This is a negative constrained direction, not yet a compressed eigenmode.
 
-`Zeta23.ExceptionalZero.exists_unit_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero`.
+## Next theorem program
 
-For every hypothetical off-line zeta zero there exist L>0, N>=1 and u such that
+Reopen the exact centered nesting program already designed in historical v0.8/v0.9:
 
 ~~~text
-u ∈ boundaryFlatSubspace N
-‖u‖ = 1
-Re (quadraticForm (canonicalSourceMatrix L N) u) < 0.
+iota_{N,M}(i).val = i.val + (M-N)
+centeredIndex M (iota i) = centeredIndex N i
+canonicalSourceMatrix L M restricted to the central block
+  = canonicalSourceMatrix L N
 ~~~
 
-The norm here is the norm of the raw function type `Fin (...) → ℂ`. It is a valid scale normalization, but it is **not** the Euclidean/PiLp₂ Hilbert normalization required by the planned Rayleigh step.
+Then build raw and Euclidean zero-extension maps, prove moment/subspace preservation, Euclidean inner/norm preservation, and exact quadratic preservation.
 
-## K0-F1 — formally closed by PR #96
-
-Let D=`indexMatrix N`, M=`canonicalSourceMatrix L N` and g=`displacementVector L N`.
-
-PR #96 theorem-locks:
-
-~~~text
-u ∈ boundaryFlatSubspace N
-  ↔ BoundaryFlatCoefficients N u
-
-M_k(Du) = M_{k+1}(u)
-
-u    kills M0,M1,M2
-Du   kills M0,M1
-D²u  kills M0
-
-Mᴴ = M
-~~~
-
-and, for every zero-moment v,
-
-~~~text
-[D,M] v = -1 * displacementPairing(L,N,v).
-~~~
-
-Hence for boundary-flat u the commutators on u, Du and D²u lie entirely in the all-ones channel.
-
-Do not assume D preserves the full boundary-flat sector: M3(u)=0 is not available.
-
-## Post-#96 derived leads
-
-The following are **DERIVED / not yet theorem-locked**:
-
-- for N>=1 the three moment constraints should have exact codimension 3;
-- therefore a nonzero F1/#96 witness should force N>=2;
-- the first 4×4 M-weighted Krylov block `<D^a u, M D^b u>` should be real Hankel.
-
-These are active targets/leads, not promoted claims.
+Do not use prefix Fin inclusion and do not identify the raw function-space norm with the Euclidean norm.
 
 ## Canonical normalization firewall
 
 ~~~text
-canonicalSourceMatrix
-  = cutoffFreeMatrix
-  = sourceEq44Matrix
-  = dictionaryMatrix.
-
-legacyPrintedMatrix = finiteMatrix.
+canonicalSourceMatrix = cutoffFreeMatrix = sourceEq44Matrix = dictionaryMatrix
+legacyPrintedMatrix = finiteMatrix
 ~~~
-
-Absolute sign/inertia/spectral claims must use the canonical object or explicit scalar-shift bookkeeping.
-
-## Parallel source-faithful route
-
-S-GEOM/G1-B1A is PROVED. S-IFACE/G1-B1B, G1-final, S-NEG and G23 remain OPEN.
-
-OBS-015 remains binding: source interface is not source negativity.
 
 ## Permanent firewalls
 
-- OBS-016 remains a generic legality warning; #93 proves the primary R003 escape.
-- raw function-space unit norm is not the Euclidean Rayleigh sphere; see OBS-017.
-- the correction vector alone is not a legal W test.
-- low displacement rank or one-channel collapse alone is not positivity or RH.
+- OBS-015: source interface is not source negativity.
+- OBS-017: PR #98 closes coordinate/subspace/quadratic transport; orthogonal compression remains open.
 - DR-010 fitted small-commutator/eigenvector convergence remains falsified.
-- green F1/K0-F1 is not RH.
+- exact low displacement rank alone does not imply positivity; the generic divided-difference displacement identity is diagonal-blind.
+- green F1/K0-F1/K0-F1E is not RH.
 
 ## Living research records
 
-- `research/RHRC/CURRENT_RESEARCH_PLAN.md`
-- `research/RHRC/RESEARCH_LEADS.md`
-- `research/RHRC/CLAIM_REGISTRY.json`
-- `research/RHRC/routes/ROUTE_REGISTRY.json`
-- `research/RHRC/routes/R003_ccm_bridge/README.md`
-- `research/RHRC/RESEARCH_LEADS_POST_96_DELTA.md`
-- `research/RHRC/routes/R003_ccm_bridge/K0F1_POST_GREEN_CONSTRAINED_FINITE_WALL_RESET_2026_09_02.md`
+- research/RHRC/CURRENT_RESEARCH_PLAN.md
+- research/RHRC/RESEARCH_LEADS.md
+- research/RHRC/CLAIM_REGISTRY.json
+- research/RHRC/R003_PROMOTED_BINDINGS.json
+- research/RHRC/routes/ROUTE_REGISTRY.json
+- research/RHRC/routes/R003_ccm_bridge/README.md
+- research/RHRC/RESEARCH_LEADS_POST_98_DELTA.md
+- research/RHRC/routes/R003_ccm_bridge/K0F1E_POST_GREEN_EUCLIDEAN_RESET_2026_09_02.md
 
-Historical settlements remain frozen.
+The external v1.7 handover has reached its own retirement condition. External v2.0 is due after this repository synchronization; it is not a repository artifact.
 
 **RH remains OPEN.**

@@ -32,6 +32,8 @@ import Zeta23.ExceptionalZero.ConstrainedFiniteObstruction
 import Zeta23.ExceptionalZero.EuclideanConstrainedObstruction
 
 /-!
+R003 promoted-claim completeness is machine-checked by research/RHRC/tools/promoted_binding_lint.py against research/RHRC/R003_PROMOTED_BINDINGS.json and CLAIM_REGISTRY.json. Supporting #check declarations may exist without registry promotion; every PROVED_UNCONDITIONAL R003 registry theorem must have both #check and #print axioms here.
+
 # Promoted CCM / R002 / R003 theorem bindings
 
 This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
@@ -39,7 +41,9 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 -/
 
 #check Zeta23.CCM.dictionaryResidualTest_admissible
+#print axioms Zeta23.CCM.dictionaryResidualTest_admissible
 #check Zeta23.CCM.dictionaryTent_analytic_package
+#print axioms Zeta23.CCM.dictionaryTent_analytic_package
 #check Zeta23.CCM.dictionaryTent_mollifier_architecture_package
 #print axioms Zeta23.CCM.dictionaryTent_mollifier_architecture_package
 #check Zeta23.CCM.dictionaryTent_zero_sum_eq_literatureRHS
@@ -61,6 +65,7 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #check Zeta23.CCM.dictionaryTransform_explicitFormula
 #print axioms Zeta23.CCM.dictionaryTransform_explicitFormula
 #check Zeta23.ExceptionalZero.rank_displacement_le_two_of_eq_smul_add_scalar
+#print axioms Zeta23.ExceptionalZero.rank_displacement_le_two_of_eq_smul_add_scalar
 #check Zeta23.CCM.zeroSideMatrix_displacement
 #print axioms Zeta23.CCM.zeroSideMatrix_displacement
 #check Zeta23.CCM.rank_zeroSideMatrix_displacement_le_two

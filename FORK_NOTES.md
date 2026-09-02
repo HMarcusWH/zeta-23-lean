@@ -5,9 +5,9 @@
 ## Authority snapshot
 
 ~~~text
-theorem-state anchor = PR #96 merge 3712746a144d630ee41b89527b098e392822f2c6
-theorem tree = 1d43b31bf9750375189a1ccd2e65bc0a662fc7c4
-theorem-bearing merged through = PR #96
+theorem-state anchor = PR #98 merge 4f212e35fefb339646e294573dcb390dae2f6181
+theorem tree = 84a678327fffe6806e1e786ac2e159a5ce628f67
+theorem-bearing merged through = PR #98
 live GitHub main = authoritative
 RH = OPEN
 ~~~
@@ -15,94 +15,44 @@ RH = OPEN
 ## Recent permanent theorem packages
 
 ~~~text
-#89 WCONT-A quantitative genuine-W continuity
-#91 F0-B1C-A raw uniform localized C² approximation
 #93 F0-B1C-B legal boundary-flat WCONT approximation
 #94 strict finite sign transfer + F1 canonical finite negative obstruction
-#96 constrained canonical finite-wall package
+#96 constrained canonical finite-wall algebra
+#98 Euclidean constrained sector + exact mode floor
 ~~~
 
-## What #96 closed
+## What #98 closed
 
-PR #96 turns the post-F1 moment/displacement observations into production finite linear algebra.
+PR #98 theorem-locks exact rank three for the moment constraints, finrank 2*N-2, the N>=2 nonzero-witness floor, the exact Euclidean constrained sector, canonical Euclidean symmetry, the quadraticForm/inner-self bridge, and off-line zero -> nonzero constrained Euclidean negative direction.
 
-PROVED:
-
-~~~text
-boundaryFlatSubspace N
-  = exact linear packaging of M0=M1=M2=0
-
-M_k(Du) = M_{k+1}(u)
-
-u    -> M0=M1=M2=0
-Du   -> M0=M1=0
-D²u  -> M0=0
-
-canonicalSourceMatrixᴴ = canonicalSourceMatrix
-
-[D,M]v = -1 * displacementPairing(v)
-for every zero-moment v
-~~~
-
-The collapse is specialized to u, Du and D²u for every boundary-flat u.
-
-PR #96 also proves that any hypothetical off-line zero forces a nonzero, norm-one vector in `boundaryFlatSubspace N` with strictly negative canonical quadratic value.
-
-## Exact #96 authority
-
-~~~text
-head = d628b7332e908701e85ef8ea33309e2bf548f2e5
-synthetic merge = 5830d75ec649f065925f5f3a1a7c823d8a5b42b9
-merge = 3712746a144d630ee41b89527b098e392822f2c6
-tree = 1d43b31bf9750375189a1ccd2e65bc0a662fc7c4
-RHRC #679 = SUCCESS
-Permansson #452 = SUCCESS
-axioms = [propext, Classical.choice, Quot.sound]
-sorryAx = absent
-~~~
+No orthogonal compression or constrained eigenmode is claimed.
 
 ## Current primary frontier
 
 ~~~text
-Euclidean/PiLp₂ transport of the constrained sector
-  -> exact codim(V₂)=3 and F1 witness N>=2
-  -> compressed self-adjoint canonical operator
-  -> negative constrained spectral mode
-  -> KKT / Krylov-Hankel rigidity
-  -> parity or aperture-flow only as demanded by the obstruction
+exact centered N->M embedding
+  -> principal-block nesting
+  -> raw/Euclidean zero extension
+  -> moment + quadratic preservation
+  -> reversal/parity
+  -> constrained compression + negative spectral mode
+  -> first bad parity size
+  -> one-dimensional new parity shell
+  -> scalar secular/KKT/displacement analysis
 ~~~
 
-The current `‖u‖=1` theorem uses the raw function-space norm. Do not feed it directly into Hilbert/Rayleigh APIs; the Euclidean bridge is a separate theorem obligation.
+The central embedding must shift by M-N. Prefix Fin inclusion is wrong.
 
-## Post-#96 structural clue
+## Guardrails
 
-With D=indexMatrix N and M=canonicalSourceMatrix L N, the exact commutator on the first F1 Krylov vectors lands in the all-ones channel, while u,Du,D²u have zero coefficient sum.
+- #98 coordinate transport does not identify the old raw function-space norm with the Euclidean norm.
+- total dimension growth by two does not prove one even + one odd new dimension; parity dimensions need their own theorem.
+- the historical ambient coordinate-shell Schur complement is not automatically the future constrained-subspace shell.
+- KKT residual form requires V-perp = span{1,d,d²}.
+- DR-010 remains dead; R002/Bombieri remain comparator lanes.
 
-DERIVED / OPEN TO FORMALIZATION:
+## External roadmap
 
-~~~text
-H_ab = <D^a u, M D^b u>, 0<=a,b<=3
-~~~
-
-should form a real Hankel 4×4 block.
-
-This is not positivity. It is a candidate rigidity structure to compose with the future constrained eigenmode.
-
-## Canonical finite object
-
-~~~text
-canonicalSourceMatrix
-  = cutoffFreeMatrix
-  = sourceEq44Matrix
-  = dictionaryMatrix.
-
-legacyPrintedMatrix = finiteMatrix.
-~~~
-
-Sign-sensitive finite claims must use `canonicalSourceMatrix`.
-
-## Dead-route clarification
-
-DR-010 remains falsified. #96 uses the exact analytic D and exact canonical commutator, not a fitted small-commutator generator or spectral-gap heuristic.
+The v1.7 handover explicitly reserved v2.0 for green F1 or a comparable dependency-graph change. That condition is satisfied. Produce external v2.0 after this repo sync; do not store it in this PR.
 
 **RH remains OPEN.**

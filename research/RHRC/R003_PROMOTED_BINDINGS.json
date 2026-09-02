@@ -1,0 +1,156 @@
+{
+  "schema_version": "RHRC-r003-promoted-bindings-1.0",
+  "claim_registry": "research/RHRC/CLAIM_REGISTRY.json",
+  "lean_binding_source": "Zeta23/CCM/ClaimBindings.lean",
+  "rule": "Every PROVED_UNCONDITIONAL R003 claim with a theorem must appear here with the exact theorem name and must have both #check and #print axioms in ClaimBindings.lean.",
+  "bindings": [
+    {
+      "id": "R003_DISPLACEMENT_TRANSFER",
+      "theorem": "Zeta23.ExceptionalZero.rank_displacement_le_two_of_eq_smul_add_scalar"
+    },
+    {
+      "id": "R003_RESIDUAL_C2",
+      "theorem": "Zeta23.CCM.dictionaryResidualTest_admissible"
+    },
+    {
+      "id": "R003_TENT_ANALYTICS",
+      "theorem": "Zeta23.CCM.dictionaryTent_analytic_package"
+    },
+    {
+      "id": "R003_TENT_MOLLIFIER_ARCHITECTURE",
+      "theorem": "Zeta23.CCM.dictionaryTent_mollifier_architecture_package"
+    },
+    {
+      "id": "R003_TENT_EF_EXTENSION",
+      "theorem": "Zeta23.CCM.dictionaryTent_explicitFormula"
+    },
+    {
+      "id": "R003_CCM_RHS_IDENTITY",
+      "theorem": "Zeta23.CCM.literatureRHS_dictionaryTest_eq_quadraticForm"
+    },
+    {
+      "id": "R003_KERNEL_EF_EXTENSION",
+      "theorem": "Zeta23.CCM.dictionaryTransform_zero_sum_eq_literatureRHS"
+    },
+    {
+      "id": "R003_CCM_BRIDGE",
+      "theorem": "Zeta23.CCM.zeroSideMatrix_eq_finiteMatrix_add_correction"
+    },
+    {
+      "id": "R003_CUTOFF_FREE_MATRIX_MAP",
+      "theorem": "Zeta23.CCM.zeroSideMatrix_eq_cutoffFreeMatrix"
+    },
+    {
+      "id": "R003_WEIL_DISPLACEMENT",
+      "theorem": "Zeta23.CCM.rank_zeroSideMatrix_displacement_le_two"
+    },
+    {
+      "id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "theorem": "Zeta23.CCM.hardWindowCharacterCorrelation_eq_qBasis"
+    },
+    {
+      "id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "theorem": "Zeta23.CCM.localizedWeilCorrelation_finiteVector_eq_two_mul_dictionaryTest"
+    },
+    {
+      "id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "theorem": "Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_cutoffFreeQuadraticForm"
+    },
+    {
+      "id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+      "theorem": "Zeta23.CCM.sourceEq44Matrix_eq_cutoffFreeMatrix"
+    },
+    {
+      "id": "R003_SOURCE_NORMALIZATION_REPAIR",
+      "theorem": "Zeta23.CCM.canonicalSourceMatrix_eq_legacyPrintedMatrix_add_correction"
+    },
+    {
+      "id": "R003_SOURCE_KAPPA_FINITE_SECTOR",
+      "theorem": "Zeta23.CCM.sourceKappaFiniteVector_eq_sourceFiniteVector"
+    },
+    {
+      "id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "theorem": "Zeta23.ExceptionalZero.zeta_W_literatureRHS_package"
+    },
+    {
+      "id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "theorem": "Zeta23.ExceptionalZero.exists_poleNeutral_negativeWeilTest_of_offLine_zero"
+    },
+    {
+      "id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "theorem": "Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero"
+    },
+    {
+      "id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "theorem": "Zeta23.ExceptionalZero.zeta_W_self_eq_localizedWeilAdditiveRHS"
+    },
+    {
+      "id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "theorem": "Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeLocalizedWeilAdditiveRHS_of_offLine_zero"
+    },
+    {
+      "id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "theorem": "Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm"
+    },
+    {
+      "id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "theorem": "Zeta23.CCM.boundaryFlatProject_boundaryFlat"
+    },
+    {
+      "id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "theorem": "Zeta23.ExceptionalZero.zeta_W_norm_le_commonSupport"
+    },
+    {
+      "id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "theorem": "Zeta23.CCM.exists_localizedFinite_uniform_C2_approx"
+    },
+    {
+      "id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "theorem": "Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx"
+    },
+    {
+      "id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "theorem": "Zeta23.ExceptionalZero.exists_boundaryFlatFinite_negativeW_of_strictAperture"
+    },
+    {
+      "id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "theorem": "Zeta23.ExceptionalZero.exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_offLine_zero"
+    },
+    {
+      "id": "R003_BOUNDARY_FLAT_MOMENT_FLAG",
+      "theorem": "Zeta23.CCM.boundaryFlat_moment_flag"
+    },
+    {
+      "id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "theorem": "Zeta23.CCM.canonicalSourceMatrix_isHermitian"
+    },
+    {
+      "id": "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
+      "theorem": "Zeta23.CCM.boundaryFlat_canonical_displacement_package"
+    },
+    {
+      "id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "theorem": "Zeta23.ExceptionalZero.exists_unit_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero"
+    },
+    {
+      "id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "theorem": "Zeta23.CCM.finrank_boundaryFlatSubspace"
+    },
+    {
+      "id": "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+      "theorem": "Zeta23.CCM.finrank_euclideanBoundaryFlatSubspace"
+    },
+    {
+      "id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "theorem": "Zeta23.CCM.canonicalSourceMatrix_toEuclideanLin_isSymmetric"
+    },
+    {
+      "id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "theorem": "Zeta23.CCM.quadraticForm_re_eq_re_inner_apply_self"
+    },
+    {
+      "id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "theorem": "Zeta23.ExceptionalZero.exists_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
+    }
+  ]
+}

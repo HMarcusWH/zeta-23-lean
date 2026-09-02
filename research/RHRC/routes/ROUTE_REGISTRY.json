@@ -72,12 +72,17 @@
         "R003_BOUNDARY_FLAT_MOMENT_FLAG",
         "R003_CANONICAL_SOURCE_HERMITIAN",
         "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
-        "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
+        "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+        "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+        "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+        "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+        "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+        "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "R003 internal route is theorem-backed through F1 and K0-F1 / PR #96. The theorem-state anchor is PR #96 merge 3712746a144d630ee41b89527b098e392822f2c6 with tree 1d43b31bf9750375189a1ccd2e65bc0a662fc7c4; RHRC #679 and Permansson #452 succeeded. PR #96 packages BoundaryFlatCoefficients as a complex subspace, proves the exact moment shift/descending flag, theorem-locks canonicalSourceMatrix Hermitianity, collapses the exact canonical commutator to the all-ones channel on every zero-moment vector and on u,Du,D^2u, and upgrades F1 to a nonzero/unit constrained negative canonical witness. The primary frontier is now Euclidean/PiLp_2 constrained transport and compressed self-adjoint spectral minimization. OBS-017 forbids treating the raw function-space norm-one theorem as a Euclidean Rayleigh-sphere theorem. OBS-015 keeps G1-B1B, G1-final, S-NEG and G23 separate as an independent source-faithful route. RH remains open."
+      "note": "R003 internal route is theorem-backed through F1, K0-F1 and K0-F1E / PR #98. The theorem-state anchor is PR #98 merge 4f212e35fefb339646e294573dcb390dae2f6181 with tree 84a678327fffe6806e1e786ac2e159a5ce628f67; RHRC #685 and Permansson #458 succeeded on final head 723c63badb2ac787c3dfa78369909477af6bc6a4, whose tree equals the merged tree. PR #98 proves exact rank of the three moment constraints, finrank 2*N-2, the N>=2 floor for nonzero constrained witnesses, the Euclidean/PiLp_2 constrained sector, canonical Euclidean symmetry, the quadraticForm/inner-self bridge, and off-line zero -> nonzero constrained Euclidean negative direction. The next theorem program is exact centered finite-N nesting, then reversal/parity, then orthogonal constrained compression and negative spectral extraction. OBS-017 now has items 1-3 closed and item 4 (compression) open. OBS-015 keeps G1-B1B, G1-final, S-NEG and G23 separate as an independent source-faithful route. RH remains open."
     },
     {
       "route_id": "R004_prolate_v2",
