@@ -182,9 +182,10 @@ theorem canonicalSourceMatrix_apply_star_self
     (i j : Fin (2 * N + 1)) :
     star (canonicalSourceMatrix L N i j) =
       canonicalSourceMatrix L N i j := by
-  change Complex.conj
+  change star
       ((cutoffFreeEntry (centeredIndex N i) (centeredIndex N j) L : ℝ) : ℂ) =
     ((cutoffFreeEntry (centeredIndex N i) (centeredIndex N j) L : ℝ) : ℂ)
+  rw [Complex.star_def]
   exact Complex.conj_ofReal _
 
 /-- Entrywise Hermitian symmetry of the canonical source matrix. -/
