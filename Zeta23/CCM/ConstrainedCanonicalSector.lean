@@ -37,7 +37,7 @@ def centeredMomentLinearMap
     simp [centeredMoment, mul_add, Finset.sum_add_distrib]
   map_smul' := by
     intro c u
-    simp only [centeredMoment, Pi.smul_apply, smul_eq_mul]
+    simp only [centeredMoment, Pi.smul_apply, smul_eq_mul, RingHom.id_apply]
     rw [Finset.mul_sum]
     apply Finset.sum_congr rfl
     intro i hi
@@ -182,8 +182,10 @@ theorem canonicalSourceMatrix_apply_star_self
     (i j : Fin (2 * N + 1)) :
     star (canonicalSourceMatrix L N i j) =
       canonicalSourceMatrix L N i j := by
-  rw [canonicalSourceMatrix_eq_dictionaryMatrix]
-  simp [dictionaryMatrix_apply, finiteMatrix_apply]
+  rw [canonicalSourceMatrix_eq_dictionaryMatrix, dictionaryMatrix_apply]
+  by_cases h : i = j
+  · simp [h, finiteMatrix_apply, starRingEnd_apply, Complex.star_def]
+  · simp [h, finiteMatrix_apply, starRingEnd_apply, Complex.star_def]
 
 /-- Entrywise Hermitian symmetry of the canonical source matrix. -/
 theorem canonicalSourceMatrix_star_apply_comm
@@ -235,8 +237,11 @@ theorem canonicalSourceMatrix_displacement_mulVec_of_moment_zero
     simpa [centeredMoment] using hv
   rw [canonicalSourceMatrix_displacement hL N]
   ext i
-  simp [Matrix.mulVec, Matrix.vecMulVec, displacementPairing,
-    Finset.sum_sub_distrib, Finset.mul_sum, hsum]
+  simp only [Matrix.mulVec, Matrix.vecMulVec, Matrix.dotProduct,
+    displacementPairing]
+  simp_rw [sub_mul]
+  rw [Finset.sum_sub_distrib, ← Finset.mul_sum, hsum]
+  simp
 
 /-- Exact constrained displacement collapse on a boundary-flat vector. -/
 theorem canonicalSourceMatrix_displacement_mulVec_boundaryFlat
@@ -322,7 +327,7 @@ theorem quadraticForm_smul
     quadraticForm A (c • u) =
       star c * c * quadraticForm A u := by
   unfold quadraticForm
-  simp only [Pi.smul_apply, smul_eq_mul, map_mul]
+  simp only [Pi.smul_apply, smul_eq_mul, map_mul, starRingEnd_apply]
   rw [Finset.mul_sum]
   apply Finset.sum_congr rfl
   intro i hi
