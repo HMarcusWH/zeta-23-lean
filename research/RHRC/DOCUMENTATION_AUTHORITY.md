@@ -56,6 +56,28 @@ Do not rewrite:
 
 Create a new versioned object if current semantics need a new machine-readable map.
 
+## Theorem-state anchors in living documents
+
+A living documentation PR cannot know its own future merge SHA. Therefore living prose must not create an endless docs-only hash chase.
+
+When recording repository state in living documents:
+
+- use **live GitHub main** as the authoritative current head;
+- record the last meaningful theorem-bearing merge as a **theorem-state anchor**;
+- record its validated theorem tree when useful;
+- do not open a follow-up PR merely to replace the anchor with the SHA of a docs-only merge;
+- advance the theorem-state anchor when theorem/claim state materially changes.
+
+Example:
+
+~~~text
+theorem-state anchor = PR #96 merge <sha>
+theorem tree = <tree>
+live GitHub main = authoritative
+~~~
+
+Machine registries and compiler/CI evidence still outrank the prose anchor.
+
 ## Update triggers
 
 After a post-green research pass, update documentation when any of these changes:

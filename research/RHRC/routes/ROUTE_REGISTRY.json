@@ -68,12 +68,16 @@
         "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
         "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
         "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
-        "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION"
+        "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+        "R003_BOUNDARY_FLAT_MOMENT_FLAG",
+        "R003_CANONICAL_SOURCE_HERMITIAN",
+        "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
+        "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "R003 internal route is merged through F1 / PR #94 at main 8b54a72767c2703351990e2a67354511e9c9b83a (tree 0fca10d1904d85bd33763cc6728e22c1c5b9ef5d). PR #93 closes F0-B1C-B with legal fixed-aperture boundary-flat approximation in exactly the L1 plus second-derivative-L1 topology consumed by WCONT-A. PR #94 closes strict finite sign transfer and F1: any hypothetical off-line zeta zero forces a negative quadratic direction of canonicalSourceMatrix satisfying BoundaryFlatCoefficients, hence centered moments M0=M1=M2=0. The primary internal frontier has moved to K0-F1, the constrained finite canonical sector. OBS-015 keeps G1-B1B, G1-final, S-NEG and G23 separate as an independent source-faithful route. RH remains open."
+      "note": "R003 internal route is theorem-backed through F1 and K0-F1 / PR #96. The theorem-state anchor is PR #96 merge 3712746a144d630ee41b89527b098e392822f2c6 with tree 1d43b31bf9750375189a1ccd2e65bc0a662fc7c4; RHRC #679 and Permansson #452 succeeded. PR #96 packages BoundaryFlatCoefficients as a complex subspace, proves the exact moment shift/descending flag, theorem-locks canonicalSourceMatrix Hermitianity, collapses the exact canonical commutator to the all-ones channel on every zero-moment vector and on u,Du,D^2u, and upgrades F1 to a nonzero/unit constrained negative canonical witness. The primary frontier is now Euclidean/PiLp_2 constrained transport and compressed self-adjoint spectral minimization. OBS-017 forbids treating the raw function-space norm-one theorem as a Euclidean Rayleigh-sphere theorem. OBS-015 keeps G1-B1B, G1-final, S-NEG and G23 separate as an independent source-faithful route. RH remains open."
     },
     {
       "route_id": "R004_prolate_v2",

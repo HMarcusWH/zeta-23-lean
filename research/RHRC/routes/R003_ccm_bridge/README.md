@@ -1,35 +1,36 @@
 # R003 — CCM / finite Weil bridge
 
-Status: **ACTIVE DISCOVERY ROUTE. INTERNAL F1 PROVED. RH OPEN.**
+Status: **ACTIVE DISCOVERY ROUTE. INTERNAL F1 + K0-F1 PROVED. RH OPEN.**
 
 ## Current authority
 
 ~~~text
-main = 8b54a72767c2703351990e2a67354511e9c9b83a
-tree = 0fca10d1904d85bd33763cc6728e22c1c5b9ef5d
-merged through = PR #94
+theorem-state anchor = PR #96 merge 3712746a144d630ee41b89527b098e392822f2c6
+theorem tree = 1d43b31bf9750375189a1ccd2e65bc0a662fc7c4
+theorem-bearing merged through = PR #96
+live GitHub main = authoritative
 RH = OPEN
 ~~~
 
 Recent exact green/merged packages:
 
 ~~~text
-#91 F0-B1C-A
-  head cf1c9b6536264deb8773fa8b0bb3650b07fcff40
-  RHRC #660 / Permansson #433
-  merge bab94aed54298de6fc6676808a0b0e46c2db6046
-
 #93 F0-B1C-B
   head 309c23f438be6e9b74383f1c164381ea68fef8a5
   RHRC #665 / Permansson #438
   merge c07d0f819b51fc85b18505e23fa061a6663e289d
-  tree 13c21db23ecdd5b4ed5bab9d39740ad09ede0c8e
 
 #94 strict finite sign transfer + F1
   head d357c1511dba8678eb3a3a10944596c33a65fa11
   RHRC #667 / Permansson #440
   merge 8b54a72767c2703351990e2a67354511e9c9b83a
-  tree 0fca10d1904d85bd33763cc6728e22c1c5b9ef5d
+
+#96 constrained canonical finite wall
+  head d628b7332e908701e85ef8ea33309e2bf548f2e5
+  synthetic merge 5830d75ec649f065925f5f3a1a7c823d8a5b42b9
+  RHRC #679 / Permansson #452
+  merge 3712746a144d630ee41b89527b098e392822f2c6
+  tree 1d43b31bf9750375189a1ccd2e65bc0a662fc7c4
 ~~~
 
 ## Closed internal theorem ladder
@@ -47,19 +48,67 @@ off-line zero
   -> F0-B1C-B legal boundary-flat WCONT approximation           PROVED
   -> strict finite negative W transfer                          PROVED
   -> F1 canonical finite negative obstruction                   PROVED
+  -> K0-F1 constrained subspace/moment flag                     PROVED
+  -> canonical Hermitianity                                     PROVED
+  -> one-channel displacement on u,Du,D²u                       PROVED
+  -> unit constrained negative witness                          PROVED
 ~~~
 
-Current frontier: **K0-F1 constrained canonical sector**.
+Current frontier: **Euclidean/Hilbert constrained compression**.
 
-## F1 production surface
+## K0-F1 production surface
 
-`Zeta23.ExceptionalZero.exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_offLine_zero` proves that an off-line zero forces L>0,N>=1,u with BoundaryFlatCoefficients N u and negative real quadratic form for canonicalSourceMatrix.
+PR #96 proves:
 
-## Post-F1 structural state
+~~~text
+u ∈ boundaryFlatSubspace N
+  <-> BoundaryFlatCoefficients N u
 
-BoundaryFlatCoefficients gives M0=M1=M2=0. The canonical displacement theorem gives [D,M]=g1^T-1g^T. The annihilations 1^T u=1^T Du=1^T D²u=0 are DERIVED and will be theorem-locked in K0-F1.
+M_k(Du)=M_{k+1}(u)
 
-Do not assume D preserves the full boundary-flat sector.
+u,Du,D²u descend through the three-moment flag
+
+canonicalSourceMatrixᴴ = canonicalSourceMatrix
+
+[D,M]v = -1 * displacementPairing(v)
+for every v with M0(v)=0
+~~~
+
+The last identity is specialized to u, Du and D²u.
+
+The normalized F1 endpoint is:
+
+`Zeta23.ExceptionalZero.exists_unit_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero`.
+
+## Next spectral bridge
+
+The next primary package must use the Hilbert type
+
+`EuclideanSpace ℂ (Fin (2*N+1))`
+
+and `Matrix.toEuclideanLin`.
+
+The raw function-space norm-one witness from #96 is not itself the Rayleigh-sphere theorem. See OBS-017.
+
+Target:
+
+~~~text
+off-line zero
+  -> negative Rayleigh direction in the Euclidean constrained sector
+  -> negative eigenvalue of the compressed self-adjoint canonical operator.
+~~~
+
+A constrained eigenvector is not automatically a full eigenvector of M.
+
+## Active derived leads
+
+Not yet formalized:
+
+~~~text
+codim V₂ = 3 for N>=1
+nonzero F1 witness -> N>=2
+first 4×4 M-weighted Krylov block is real Hankel
+~~~
 
 ## Source-faithful route
 
@@ -71,12 +120,12 @@ canonicalSourceMatrix = cutoffFreeMatrix = sourceEq44Matrix = dictionaryMatrix. 
 
 ## Dead-route firewall
 
-DR-010 remains dead. The exact constrained D/M/g route is distinct from the fitted small-commutator route.
+DR-010 remains dead. The exact constrained D/M/g route is theorem-backed and distinct from the fitted small-commutator route.
 
 ## Current post-green records
 
-- F1_POST_GREEN_FINITE_WALL_RESET_2026_09_02.md
-- ../../RESEARCH_LEADS_POST_94_DELTA.md
+- K0F1_POST_GREEN_CONSTRAINED_FINITE_WALL_RESET_2026_09_02.md
+- ../../RESEARCH_LEADS_POST_96_DELTA.md
 
 Earlier settlement files remain frozen.
 

@@ -509,6 +509,60 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "F1 / PR #94. The witness satisfies BoundaryFlatCoefficients, hence centered moments 0,1,2 vanish. This is not a positivity theorem for canonicalSourceMatrix and does not prove RH."
+    },
+    {
+      "id": "R003_BOUNDARY_FLAT_MOMENT_FLAG",
+      "statement": "For every finite centered coefficient vector satisfying BoundaryFlatCoefficients, boundaryFlatSubspace membership is equivalent to the same three centered moment equations, centeredMoment N k (D u)=centeredMoment N (k+1) u, and the first two D-iterates descend through the exact moment flag: u kills moments 0,1,2; D u kills 0,1; D^2 u kills 0.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION"
+      ],
+      "source": "Zeta23/CCM/ConstrainedCanonicalSector.lean",
+      "theorem": "Zeta23.CCM.boundaryFlat_moment_flag",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "K0-F1 / PR #96. Supporting declarations mem_boundaryFlatSubspace_iff and centeredMoment_indexMatrix_mulVec theorem-lock the subspace packaging and generic moment shift. Exact final head d628b7332e908701e85ef8ea33309e2bf548f2e5; synthetic merge 5830d75ec649f065925f5f3a1a7c823d8a5b42b9; merged tree 1d43b31bf9750375189a1ccd2e65bc0a662fc7c4; RHRC #679 and Permansson #452 success; axiom surface [propext, Classical.choice, Quot.sound], no sorryAx. This does not claim D preserves the full boundary-flat sector."
+    },
+    {
+      "id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "statement": "For every real aperture L and finite N, canonicalSourceMatrix L N is Hermitian: its conjugate transpose equals itself.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_CUTOFF_FREE_MATRIX_MAP"
+      ],
+      "source": "Zeta23/CCM/ConstrainedCanonicalSector.lean",
+      "theorem": "Zeta23.CCM.canonicalSourceMatrix_isHermitian",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "K0-F1 / PR #96. The proof uses the theorem-authoritative canonical source normalization and real/symmetric entry structure. Hermitianity is not positivity and does not imply RH."
+    },
+    {
+      "id": "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
+      "statement": "For positive aperture L, the exact canonical commutator [D,M] applied to any zero-moment vector v lies entirely in the all-ones channel with scalar -displacementPairing(L,N,v); for every boundary-flat u this specializes simultaneously to u, D u and D^2 u.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R004_CCM_DISPLACEMENT_FORMAL",
+        "R003_BOUNDARY_FLAT_MOMENT_FLAG"
+      ],
+      "source": "Zeta23/CCM/ConstrainedCanonicalSector.lean",
+      "theorem": "Zeta23.CCM.boundaryFlat_canonical_displacement_package",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "K0-F1 / PR #96. The scalar is the ordinary bilinear sum displacementPairing = sum_i g_i v_i, not a Hermitian inner product. This exact-D theorem is distinct from dead route DR-010 and makes no small-commutator or spectral-gap inference. One-channel collapse alone is not positivity or RH."
+    },
+    {
+      "id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "statement": "Every hypothetical nontrivial zeta zero off the critical line forces a positive aperture L, N>=1, and a unit-norm vector u in boundaryFlatSubspace N with strictly negative real quadratic form for canonicalSourceMatrix L N.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+        "R003_BOUNDARY_FLAT_MOMENT_FLAG"
+      ],
+      "source": "Zeta23/ExceptionalZero/ConstrainedFiniteObstruction.lean",
+      "theorem": "Zeta23.ExceptionalZero.exists_unit_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "K0/K1-F1 / PR #96. The proof theorem-locks nonzeroness and positive real rescaling of quadraticForm. The norm is the norm on the raw function type Fin (...) -> C; it is a scale normalization, not the Euclidean/PiLp_2 Rayleigh-sphere normalization. The Euclidean spectral transport remains open under OBS-017. This claim does not prove constrained spectral minimization, canonical positivity, finite-wall impossibility, or RH."
     }
   ]
 }

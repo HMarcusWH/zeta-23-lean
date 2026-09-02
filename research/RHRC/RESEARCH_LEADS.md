@@ -424,7 +424,7 @@ W1 strict negative W witness
   -> strict negative localized additive witness
   -> F0-B
   -> G1-A [PROVED]
-  -> F1 [OPEN].
+  -> F1 [PROVED by #94].
 ~~~
 
 
@@ -640,27 +640,172 @@ F1 is a one-way finite obstruction theorem. The finite impossibility theorem and
 
 ## L-K0F1-01 — constrained canonical sector
 
+**Research status:** PROMOTED / PRIMARY K0-F1 CLOSED  
+**Formal status:** PROVED  
+**Production PR:** #96
+
+PR #96 theorem-locks the post-F1 constrained finite algebra.
+
+PROVED package:
+
+~~~text
+u ∈ boundaryFlatSubspace N
+  <-> BoundaryFlatCoefficients N u
+
+M_k(Du)=M_{k+1}(u)
+
+u    kills M0,M1,M2
+Du   kills M0,M1
+D²u  kills M0
+
+canonicalSourceMatrixᴴ = canonicalSourceMatrix
+
+[D,M]v = -1 * displacementPairing(v)
+for every zero-moment v
+~~~
+
+The last identity is specialized to u, Du and D²u for boundary-flat u.
+
+Headline normalized obstruction:
+
+~~~text
+off-line zero
+  -> exists L>0,N>=1,u,
+       u ∈ boundaryFlatSubspace N
+       and ‖u‖=1
+       and Re quadraticForm(canonicalSourceMatrix L N,u)<0.
+~~~
+
+Primary declarations:
+
+~~~text
+Zeta23.CCM.mem_boundaryFlatSubspace_iff
+Zeta23.CCM.centeredMoment_indexMatrix_mulVec
+Zeta23.CCM.boundaryFlat_moment_flag
+Zeta23.CCM.canonicalSourceMatrix_isHermitian
+Zeta23.CCM.canonicalSourceMatrix_displacement_mulVec_of_moment_zero
+Zeta23.CCM.boundaryFlat_canonical_displacement_package
+Zeta23.ExceptionalZero.exists_unit_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero
+~~~
+
+Exact validation:
+
+~~~text
+head d628b7332e908701e85ef8ea33309e2bf548f2e5
+synthetic merge 5830d75ec649f065925f5f3a1a7c823d8a5b42b9
+merge 3712746a144d630ee41b89527b098e392822f2c6
+tree 1d43b31bf9750375189a1ccd2e65bc0a662fc7c4
+RHRC #679 SUCCESS
+Permansson #452 SUCCESS
+axioms [propext, Classical.choice, Quot.sound]
+sorryAx absent
+~~~
+
+Do not claim D preserves V₂. Do not infer positivity from Hermitianity or one-channel displacement.
+
+### Norm semantic firewall
+
+The norm-one witness in #96 lives on the raw function type `Fin (...) -> ℂ`. Its norm is not the Euclidean/PiLp₂ norm used by the finite-dimensional Rayleigh API. This is now tracked as OBS-017.
+
+---
+
+## L-K0F1-02 — Euclidean constrained compression / negative spectral mode
+
 **Research status:** ACTIVE / HIGHEST-LEVERAGE NEXT  
-**Formal status:** OPEN, with PROVED F1 and displacement inputs
+**Formal status:** OPEN
 
-F1 supplies a negative canonical direction satisfying M0=M1=M2=0. The canonical matrix separately satisfies [D,M]=g1^T-1g^T.
+The post-#96 spectral chassis should use
 
-Target package:
+~~~text
+EuclideanSpace ℂ (Fin (2*N+1))
+Matrix.toEuclideanLin
+Submodule orthogonal projection
+Mathlib.Analysis.InnerProductSpace.Rayleigh
+~~~
 
-1. package the three moment constraints as a reusable finite subspace without competing with BoundaryFlatCoefficients;
-2. theorem-lock M_k(Du)=M_{k+1}(u);
-3. theorem-lock the descending flag V2 --D--> V1 and V2 --D²--> V0;
-4. expose canonicalSourceMatrix as Hermitian;
-5. theorem-lock exact commutator mulVec collapse for zero-sum v;
-6. specialize to u, Du and D²u for boundary-flat u.
+### Required bridge
 
-Do not claim D preserves V2. Do not turn the constrained negative direction into a full eigenvector of M without a separate compression/minimizer theorem.
+1. Transport boundaryFlatSubspace to the Euclidean/PiLp₂ carrier.
+2. Prove the coordinate/moment equations are unchanged by that transport.
+3. Prove the exact quadratic-form / Euclidean inner-self identity with Lean's conjugation convention.
+4. Build the orthogonal compression of canonicalSourceMatrix to the constrained sector.
+5. Prove the compressed operator is self-adjoint.
+6. Transport the #96 negative direction to a negative Euclidean Rayleigh direction.
+7. Apply finite-dimensional Rayleigh theory to obtain a negative constrained eigenvalue/eigenvector.
 
-This supersedes the old parity-first K0 execution order; parity remains a live downstream tool.
+Target shape:
+
+~~~text
+off-line zero
+  -> exists L,N,lambda,u,
+       u != 0
+       and u in V₂
+       and compressedCanonical L N u = lambda • u
+       and lambda < 0.
+~~~
+
+This is a compressed eigenvector, not automatically a full eigenvector of M.
+
+### Likely Mathlib endpoint
+
+`LinearMap.IsSymmetric.hasEigenvalue_iInf_of_finiteDimensional` is already available. The missing work is the project-specific Euclidean carrier, subspace compression and quadratic-form bridge.
+
+---
+
+## L-K0F1-03 — exact codimension three / N>=2 floor
+
+**Research status:** ACTIVE CHEAP UPSTREAM STRENGTHENING  
+**Formal status:** DERIVED / OPEN FORMALIZATION
+
+For N>=1, the moment functionals M0,M1,M2 should be linearly independent because the centered grid contains -1,0,+1 and the corresponding degree-2 Vandermonde minor is nonsingular.
+
+Expected consequence:
+
+~~~text
+codim(boundaryFlatSubspace N)=3
+finrank(boundaryFlatSubspace N)=2*N-2.
+~~~
+
+Then N=1 gives the zero constrained subspace. Since #96 gives a nonzero constrained negative witness:
+
+~~~text
+off-line zero -> witness N>=2.
+~~~
+
+Do not record N>=2 as PROVED until Lean theorem-locks the rank/codimension argument.
+
+---
+
+## L-K0F1-04 — first constrained Krylov block is Hankel
+
+**Research status:** ACTIVE COMPOSITION LEAD  
+**Formal status:** DERIVED / OPEN FORMALIZATION
+
+For boundary-flat u, define
+
+~~~text
+H_ab = <D^a u, M D^b u>.
+~~~
+
+PR #96 proves that [D,M]D^b u lies in span{1} for b=0,1,2, while D^a u has zero coefficient sum for a=0,1,2.
+
+Using self-adjointness of D and M gives the derived recurrence
+
+~~~text
+H_(a+1,b)=H_(a,b+1),  0<=a,b<=2.
+~~~
+
+Together with Hermitian symmetry this suggests that the full 4×4 block 0<=a,b<=3 is real Hankel.
+
+This does **not** imply positivity. Real Hankel matrices may be indefinite.
+
+**Promotion test:** theorem-lock the recurrence and determine whether, after constrained compression, it yields a non-generic determinant/minor or truncated-moment restriction.
+
+---
 
 ## L-K1-01 — continuous aperture flow and first singularity
 
-**Research status:** DEFERRED PENDING K0-F1 POST-GREEN DECISION  
+**Research status:** DEFERRED PENDING K0-F1F CONSTRAINED-COMPRESSION RESULT  
 **Formal status:** OPEN
 
 For fixed N:
@@ -691,7 +836,7 @@ This is a LEAD until rederived on canonicalSourceMatrix.
 
 ## L-K2-01 — singular kernel/displacement rigidity
 
-**Research status:** DEFERRED PENDING K0-F1 / CONSTRAINED-COMPRESSION TEST  
+**Research status:** DEFERRED PENDING K0-F1F CONSTRAINED-COMPRESSION RESULT  
 **Formal status:** LEAD / OPEN
 
 PROVED structural input:
@@ -719,7 +864,7 @@ Do not assume one-dimensional kernel.
 
 ## L-K2-02 — parity-block distinguished resolvents
 
-**Research status:** DEFERRED PENDING K0-F1 / CONSTRAINED-COMPRESSION TEST  
+**Research status:** DEFERRED PENDING K0-F1F CONSTRAINED-COMPRESSION RESULT  
 **Formal status:** LEAD / HYPOTHESIS
 
 Candidate scalar resolvents:
@@ -777,7 +922,7 @@ The finite-wall mechanism may not be "low displacement rank proves RH." It may b
 
 ### Fastest test
 
-Theoremize K0 and the canonical E2 derivative jump, then derive the parity-block resolvent equations and check whether they imply anything stronger than a re-expression of M u=0.
+First build the Euclidean compressed negative spectral mode and theorem-lock/falsify the 4×4 Krylov-Hankel recurrence. Reopen the canonical E2 derivative jump only if the compressed object still lacks a sign/crossing restriction.
 
 ---
 
@@ -796,7 +941,7 @@ No theorem refuted the finite-information recovery idea; full 2N+1 source dimens
 
 ## L-E2-01 — prime cutoff / event flow
 
-**Research status:** READY / ACTIVE AT K1  
+**Research status:** DEFERRED UNTIL K0-F1F / ACTIVE WHEN K1 REOPENS  
 **Formal status:** LEAD
 
 Canonical normalization removed the old sign-authority ambiguity. Re-derive the prime-power derivative jump on canonicalSourceMatrix.
@@ -816,7 +961,7 @@ Use only the minimal moment algebra required by the codimension-three endpoint c
 
 ## L-E4-01 — parity / extremal spectrum
 
-**Research status:** ACTIVE DOWNSTREAM OF K0-F1  
+**Research status:** ACTIVE DOWNSTREAM OF K0-F1F  
 **Formal status:** LEAD
 
 Full complex finite space is now theorem-locked. Use parity to split channels and kernels.
