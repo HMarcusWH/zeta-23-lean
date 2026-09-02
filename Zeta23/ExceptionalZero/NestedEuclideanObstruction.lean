@@ -38,7 +38,8 @@ theorem negativeEuclideanConstrained_persists_of_le
   have hyne : y ≠ 0 := by
     intro hy
     apply hxne
-    exact (Zeta23.CCM.euclideanCenteredZeroExtend hNM).injective hy
+    apply (Zeta23.CCM.euclideanCenteredZeroExtend hNM).injective
+    simpa [y] using hy
   have hymem :
       y ∈ Zeta23.CCM.euclideanBoundaryFlatSubspace M := by
     exact
