@@ -211,8 +211,7 @@ theorem quadraticForm_eq_star_dotProduct_mulVec
   rw [Finset.mul_sum]
   apply Finset.sum_congr rfl
   intro j hj
-  simp only [Pi.star_apply]
-  ring
+  simpa only [Pi.star_apply, starRingEnd_apply, mul_comm, mul_left_comm, mul_assoc]
 
 /-- Exact bridge from the project quadratic form to the Euclidean inner
 product.  The inner-product convention is fixed by Mathlib, not guessed. -/
@@ -223,7 +222,7 @@ theorem quadraticForm_eq_inner_toEuclideanLin
     (A : Matrix ι ι ℂ)
     (x : EuclideanSpace ℂ ι) :
     quadraticForm A ((EuclideanSpace.equiv ι ℂ) x) =
-      ⟪x, A.toEuclideanLin x⟫_ℂ := by
+      inner ℂ x (A.toEuclideanLin x) := by
   rw [quadraticForm_eq_star_dotProduct_mulVec]
   rw [EuclideanSpace.inner_eq_star_dotProduct]
   rw [Matrix.ofLp_toLpLin, Matrix.toLin'_apply]
@@ -238,7 +237,7 @@ theorem quadraticForm_re_eq_re_inner_apply_self
     (A : Matrix ι ι ℂ)
     (x : EuclideanSpace ℂ ι) :
     (quadraticForm A ((EuclideanSpace.equiv ι ℂ) x)).re =
-      Complex.re ⟪A.toEuclideanLin x, x⟫_ℂ := by
+      Complex.re (inner ℂ (A.toEuclideanLin x) x) := by
   rw [quadraticForm_eq_inner_toEuclideanLin]
   exact inner_re_symm (𝕜 := ℂ) _ _
 
