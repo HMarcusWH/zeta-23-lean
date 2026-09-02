@@ -427,7 +427,11 @@ theorem displacementPairing_eq_zero_of_even
               simp only [reverseCoefficients] at hui
               rw [hui]
               ring
-  linarith
+  have hsum :
+      (∑ i, displacementVector L N i * u i) +
+          (∑ i, displacementVector L N i * u i) = 0 :=
+    (eq_neg_iff_add_eq_zero).mp hrev
+  linear_combination (1 / 2 : ℂ) * hsum
 
 /-- On an even boundary-flat vector, the exact one-channel canonical
 commutator collapses all the way to zero. -/
