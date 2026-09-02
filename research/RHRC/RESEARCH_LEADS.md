@@ -711,10 +711,10 @@ The norm-one witness in #96 lives on the raw function type `Fin (...) -> ℂ`. I
 
 ## L-K0F1-02 — Euclidean constrained compression / negative spectral mode
 
-**Research status:** ACTIVE / AFTER N-FLOW + PARITY  
-**Formal status:** PARTIALLY PROVED BY #98; COMPRESSION OPEN
+**Research status:** ACTIVE / AFTER PARITY  
+**Formal status:** PARTIALLY PROVED BY #98/#100; COMPRESSION OPEN
 
-PR #98 closes the project-specific Euclidean bridge:
+PR #98 closes the project-specific Euclidean bridge, and PR #100 adds exact Euclidean N-extension/isometry and quadratic persistence:
 
 ~~~text
 Euclidean constrained subspace                         PROVED
@@ -759,28 +759,29 @@ Do not continue to list codimension/rank or the N>=2 floor as derived/open.
 
 ## L-NFLOW-01 — exact centered finite-N nesting
 
-**Research status:** RESURRECTED / HIGHEST-LEVERAGE NEXT THEOREM SLICE  
-**Formal status:** OPEN
+**Research status:** PROMOTED  
+**Formal status:** PROVED / PR #100
 
-Historical v0.8/v0.9 already designed the exact centered embedding iota_{N,M}(i).val=i.val+(M-N).
+PR #100 theorem-locks the historical centered embedding iota_{N,M}(i).val=i.val+(M-N), exact centeredIndex preservation, coherent embedding composition, exact canonical principal-block nesting, raw central zero extension, preservation of every centered moment, preservation of the represented localized finite function, Euclidean isometric zero extension, constrained-sector transport and exact canonical quadratic preservation.
 
-Required first theorem:
+The kill condition was passed: exact nesting holds; no approximate substitute was needed.
+
+The production consequence is stronger than the original work-package target:
 
 ~~~text
-centeredIndex M (iota i) = centeredIndex N i.
+off-line zero
+  -> exists fixed L>0,N0>=2
+  -> for every M>=N0
+     exists a nonzero constrained Euclidean negative direction.
 ~~~
 
-Then prove the canonical principal-block identity, raw central zero extension, moment/boundary-flat preservation, Euclidean isometric zero extension, and exact quadratic preservation.
-
-**Kill condition:** if exact nesting fails, stop. Do not silently substitute approximate nesting.
-
-**Semantic firewall:** prefix Fin inclusion is wrong; raw function-space norm does not prove Euclidean isometry.
+**Semantic firewall:** prefix Fin inclusion remains wrong; raw function-space norm remains distinct from the Euclidean norm; principal-block/quadratic nesting does not imply full operator intertwining or literal compressed-operator nesting.
 
 ---
 
 ## L-PARITY-01 — reversal/parity constrained split
 
-**Research status:** ACTIVE AFTER N-FLOW  
+**Research status:** ACTIVE / HIGHEST-LEVERAGE NEXT THEOREM SLICE  
 **Formal status:** LEAD / OPEN
 
 Use Mathlib Fin.rev to target centeredIndex reversal, simultaneous matrix reversal invariance, oddness of displacementVector, moment parity, and invariance of V_N.
@@ -798,18 +799,20 @@ Promising composition: even boundary-flat u plus odd g should force [D,M]u=0. Th
 
 ---
 
-## L-NFLOW-02 — first bad parity size / one-dimensional new shell
+## L-NFLOW-02 — first bad finite size / parity refinement
 
 **Research status:** ACTIVE COMPOSITION LEAD  
-**Formal status:** OPEN
+**Formal status:** PARTIALLY DERIVED FROM #98/#100; OPEN FORMALIZATION
 
-After exact nesting, parity preservation and constrained spectral extraction, bad finite sizes should be upward closed. Well-ordering then gives the first bad parity size N*.
+PR #100 proves fixed-L persistence of negative constrained directions under every larger centered truncation. Therefore, for fixed L, global badness is upward closed and every nonempty bad-size set has a least global bad N*. This global first-bad existence does not require parity.
 
-If the parity dimension formula is proved, the orthogonal complement of the embedded previous parity sector inside the first-bad parity sector has finrank one.
+Together with PR #98's finrank V_N = 2*N-2 and #100's isometric constrained embedding, the total orthogonal new constrained shell from N to N+1 has finrank two. This is a DERIVED consequence to theorem-lock.
 
-At the negative eigenvalue lambda<0, the retained previous block A is nonnegative, hence A-lambda*I is strictly positive and invertible. This creates a scalar constrained secular equation.
+Parity remains essential for the sharper statement. Once exact parity dimensions are proved, the 2D increment should split into one even and one odd dimension. A first bad parity sector then has a one-dimensional new constrained shell.
 
-**Firewall:** this constrained parity shell is not automatically the historical ambient coordinate-shell Schur complement from FTI-C1.
+After constrained spectral extraction, at a negative eigenvalue lambda<0 the retained previous constrained block is nonnegative, hence A-lambda*I is strictly positive and invertible. This is the intended route to a scalar constrained secular equation.
+
+**Firewalls:** the constrained parity shell is not automatically the historical ambient coordinate-shell Schur complement from FTI-C1; #100 does not prove literal nesting of the compressed operators.
 
 ---
 
