@@ -5,9 +5,10 @@
 ## Current authority snapshot
 
 ~~~text
-theorem-state anchor = PR #98 merge 4f212e35fefb339646e294573dcb390dae2f6181
-theorem tree = 84a678327fffe6806e1e786ac2e159a5ce628f67
-theorem-bearing merged through = PR #98
+theorem-state anchor = PR #100 merge 4427e2a8c8d90dbb7d66d9d96f9a410cecb75df9
+validated theorem head = 497adcd6a746d49fd23654cabf4ed8f0c58db8a9
+theorem tree = 705ab8b88728a5b90d850eb4b51c01a66811f088
+theorem-bearing merged through = PR #100
 live GitHub main = authoritative
 RH = OPEN
 ~~~
@@ -24,34 +25,39 @@ K0-F1E exact finrank 2*N-2 and N>=2 floor             PROVED
 K0-F1E symmetric Euclidean canonical operator         PROVED
 K0-F1E quadraticForm / inner-self bridge              PROVED
 K0-F1E Euclidean constrained negative direction       PROVED
+N-FLOW exact centered finite nesting                   PROVED / #100
+N-FLOW every centered moment preserved                PROVED / #100
+N-FLOW Euclidean isometric constrained extension       PROVED / #100
+N-FLOW fixed-L persistent negative tail                PROVED / #100
 
-N-FLOW exact centered finite nesting                   OPEN / NEXT
 PARITY reversal/parity package                        OPEN / NEXT
+global first-bad-N / 2D shell formalization           DERIVED / OPEN FORMALIZATION
 K0-F1F constrained spectral compression               OPEN
+first bad parity / 1D shell                           OPEN
 RH                                                     OPEN
 ~~~
 
-## #98 promoted production surface
+## #100 promoted production surface
+
+The #98 Euclidean production claims remain promoted. PR #100 additionally promotes:
 
 ~~~text
-Zeta23.CCM.finrank_boundaryFlatSubspace
-Zeta23.CCM.finrank_euclideanBoundaryFlatSubspace
-Zeta23.CCM.canonicalSourceMatrix_toEuclideanLin_isSymmetric
-Zeta23.CCM.quadraticForm_re_eq_re_inner_apply_self
-Zeta23.ExceptionalZero.exists_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero
+Zeta23.CCM.canonicalSourceMatrix_submatrix_centeredEmbedding
+Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanBoundaryFlatSubspace
+Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero
 ~~~
+
+Supporting #100 theorems also prove preservation of every centered moment, the represented localized finite function, the Euclidean inner product, and the canonical quadratic value under centered extension.
 
 ## Current execution priority
 
-1. Exact centered finite-N embedding and principal-block nesting.
-2. Raw moment-preserving zero extension.
-3. Euclidean isometric zero extension proved directly in EuclideanSpace.
-4. Exact quadratic preservation and persistent negative directions.
-5. Reversal/parity and exact parity-sector dimensions.
-6. Constrained orthogonal compression and negative eigenmode.
-7. First bad parity size and one-dimensional new shell.
-8. Scalar secular equation, then KKT/Krylov.
-9. Open aperture/prime-event flow only if the finite route still needs arithmetic closure.
+1. Reversal/parity, embedding compatibility and exact parity-sector dimensions.
+2. Formalize fixed-L badness, upward closure, first bad N and the total two-dimensional new constrained shell.
+3. Build constrained orthogonal compression and extract a negative constrained eigenmode.
+4. Refine first badness by parity and theorem-lock the one-dimensional new parity shell.
+5. Prove the KKT normal-space identity.
+6. Derive the scalar constrained secular equation and compose it with exact displacement/Krylov structure.
+7. Open aperture/prime-event flow only if the fixed-L finite route still needs arithmetic closure.
 
 ## Control-plane completeness
 
@@ -63,10 +69,10 @@ S-GEOM/G1-B1A is proved. S-IFACE/G1-B1B, G1-final, S-NEG and G23 remain open as 
 
 ## Current records
 
-Latest delta: RESEARCH_LEADS_POST_98_DELTA.md.
+Latest delta: RESEARCH_LEADS_POST_100_DELTA.md.
 
-Latest settlement: routes/R003_ccm_bridge/K0F1E_POST_GREEN_EUCLIDEAN_RESET_2026_09_02.md.
+Latest Euclidean settlement: routes/R003_ccm_bridge/K0F1E_POST_GREEN_EUCLIDEAN_RESET_2026_09_02.md.
 
-External v1.7 has reached its retirement condition; external v2.0 is due after repository synchronization.
+External v1.7 has reached its retirement condition; external v2.0 should be written against the post-#100 repository state.
 
 **RH remains OPEN.**

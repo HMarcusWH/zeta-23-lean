@@ -76,7 +76,7 @@ Infer useful eigenvector convergence from the numerically fitted symmetric tridi
 
 Finite fitted-generator spectral gaps collapse badly in tested cases. A revival requires an analytically specified generator plus separate absolute commutator and spectral-gap theorems.
 
-**Post-#98 clarification:** K0-F1/K0-F1E is theorem-backed and is not a revival of DR-010. PR #96 uses the exact analytically defined centered-index operator D and exact canonical identity [D,M]=g1^T-1g^T; PR #98 supplies the exact Euclidean constrained carrier and negative Euclidean direction. No fitted-generator, small-commutator, spectral-gap or eigenvector-convergence inference is used. The next route proceeds through exact centered nesting, parity and an explicit constrained orthogonal compression.
+**Post-#100 clarification:** K0-F1/K0-F1E/N-FLOW is theorem-backed and is not a revival of DR-010. PR #96 uses the exact analytically defined centered-index operator D and exact canonical identity [D,M]=g1^T-1g^T; PR #98 supplies the exact Euclidean constrained carrier and negative Euclidean direction; PR #100 supplies exact centered finite-N nesting, Euclidean isometric constrained extension and fixed-L persistent negativity. No fitted-generator, small-commutator, spectral-gap or eigenvector-convergence inference is used. The next route proceeds through exact reversal/parity, first-bad constrained-shell geometry and an explicit constrained orthogonal compression.
 ## DR-011 — legacy absolute spectrum as canonical source spectrum
 
 Use absolute eigenvalues, inertia, PSD, trace, determinant or lower bounds computed from the legacy printed `finiteMatrix` as if they were canonical source spectral data.
