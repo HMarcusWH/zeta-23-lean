@@ -25,6 +25,7 @@ import Zeta23.ExceptionalZero.TwoTranslateContraction
 import Zeta23.ExceptionalZero.NegativeWeilTestSupport
 import Zeta23.ExceptionalZero.WeilZeroSideEvenization
 import Zeta23.ExceptionalZero.BoundaryFlatFiniteWeil
+import Zeta23.ExceptionalZero.FiniteNegativeObstruction
 
 /-!
 # Promoted CCM / R002 / R003 theorem bindings
@@ -318,3 +319,15 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.CCM.deriv_deriv_localizedFiniteVector_eq_indicator_secondJet
 #check Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx
 #print axioms Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx
+
+
+#check Zeta23.ExceptionalZero.integral_norm_le_integral_norm_sub_add
+#print axioms Zeta23.ExceptionalZero.integral_norm_le_integral_norm_sub_add
+#check Zeta23.ExceptionalZero.zeta_W_self_sub_self_norm_le_of_WCONT_errors
+#print axioms Zeta23.ExceptionalZero.zeta_W_self_sub_self_norm_le_of_WCONT_errors
+#check Zeta23.ExceptionalZero.exists_boundaryFlatFinite_negativeW_of_strictAperture
+#print axioms Zeta23.ExceptionalZero.exists_boundaryFlatFinite_negativeW_of_strictAperture
+#check Zeta23.ExceptionalZero.exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_offLine_zero
+#check Zeta23.ExceptionalZero.exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_exists_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_exists_offLine_zero
