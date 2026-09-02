@@ -182,14 +182,10 @@ theorem canonicalSourceMatrix_apply_star_self
     (i j : Fin (2 * N + 1)) :
     star (canonicalSourceMatrix L N i j) =
       canonicalSourceMatrix L N i j := by
-  rw [canonicalSourceMatrix_eq_dictionaryMatrix, dictionaryMatrix_apply]
-  by_cases h : i = j
-  · rw [if_pos h]
-    simp only [star_add, finiteMatrix_apply, starRingEnd_apply,
-      Complex.star_def, Complex.conj_ofReal]
-  · rw [if_neg h]
-    simp only [star_add, finiteMatrix_apply, starRingEnd_apply,
-      Complex.star_def, Complex.conj_ofReal, star_zero, add_zero]
+  change Complex.conj
+      ((cutoffFreeEntry (centeredIndex N i) (centeredIndex N j) L : ℝ) : ℂ) =
+    ((cutoffFreeEntry (centeredIndex N i) (centeredIndex N j) L : ℝ) : ℂ)
+  exact Complex.conj_ofReal _
 
 /-- Entrywise Hermitian symmetry of the canonical source matrix. -/
 theorem canonicalSourceMatrix_star_apply_comm
@@ -241,8 +237,9 @@ theorem canonicalSourceMatrix_displacement_mulVec_of_moment_zero
     simpa [centeredMoment] using hv
   rw [canonicalSourceMatrix_displacement hL N]
   ext i
-  simp only [Matrix.mulVec, Pi.sub_apply, Matrix.vecMulVec, dotProduct,
-    displacementPairing, mul_one, one_mul]
+  rw [Matrix.mulVec_apply_eq_sum]
+  simp only [Matrix.sub_apply, vecMulVec_apply, mul_one, one_mul,
+    displacementPairing]
   simp_rw [sub_mul]
   rw [Finset.sum_sub_distrib, ← Finset.mul_sum, hsum]
   simp
