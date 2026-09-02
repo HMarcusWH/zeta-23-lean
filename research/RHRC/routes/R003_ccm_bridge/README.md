@@ -1,132 +1,64 @@
 # R003 — CCM / finite Weil bridge
 
-Status: **ACTIVE DISCOVERY ROUTE. INTERNAL F1 + K0-F1 PROVED. RH OPEN.**
+Status: **ACTIVE DISCOVERY ROUTE. INTERNAL F1 + K0-F1 + K0-F1E PROVED. RH OPEN.**
 
 ## Current authority
 
 ~~~text
-theorem-state anchor = PR #96 merge 3712746a144d630ee41b89527b098e392822f2c6
-theorem tree = 1d43b31bf9750375189a1ccd2e65bc0a662fc7c4
-theorem-bearing merged through = PR #96
-live GitHub main = authoritative
+theorem-state anchor = PR #98 merge 4f212e35fefb339646e294573dcb390dae2f6181
+theorem tree = 84a678327fffe6806e1e786ac2e159a5ce628f67
+final validated head = 723c63badb2ac787c3dfa78369909477af6bc6a4
+RHRC #685 = SUCCESS
+Permansson #458 = SUCCESS
 RH = OPEN
 ~~~
 
-Recent exact green/merged packages:
+## Closed internal ladder
 
 ~~~text
-#93 F0-B1C-B
-  head 309c23f438be6e9b74383f1c164381ea68fef8a5
-  RHRC #665 / Permansson #438
-  merge c07d0f819b51fc85b18505e23fa061a6663e289d
-
-#94 strict finite sign transfer + F1
-  head d357c1511dba8678eb3a3a10944596c33a65fa11
-  RHRC #667 / Permansson #440
-  merge 8b54a72767c2703351990e2a67354511e9c9b83a
-
-#96 constrained canonical finite wall
-  head d628b7332e908701e85ef8ea33309e2bf548f2e5
-  synthetic merge 5830d75ec649f065925f5f3a1a7c823d8a5b42b9
-  RHRC #679 / Permansson #452
-  merge 3712746a144d630ee41b89527b098e392822f2c6
-  tree 1d43b31bf9750375189a1ccd2e65bc0a662fc7c4
+W0/W1/W2-ZS + G1-A                                    PROVED
+F0-B1A/B1B/WCONT/F0-B1C-A/B                           PROVED
+strict finite sign transfer + F1                      PROVED
+K0-F1 constrained algebra / Hermitianity / displacement PROVED
+K0-F1E rank, N>=2, Euclidean sector and quadratic bridge PROVED
+K0-F1E constrained Euclidean negative direction       PROVED
 ~~~
 
-## Closed internal theorem ladder
+## #98 production endpoint
 
-~~~text
-off-line zero
-  -> W0 compact C² negative W test                              PROVED
-  -> W1 strict support collar                                   PROVED
-  -> W2-ZS / diagonal W bridge                                  PROVED
-  -> G1-A finite additive restriction                           PROVED
-  -> F0-B1A legal boundary-flat finite carrier                  PROVED
-  -> F0-B1B exact projection                                    PROVED
-  -> WCONT-A quantitative W continuity                          PROVED
-  -> F0-B1C-A raw uniform localized C² approximation            PROVED
-  -> F0-B1C-B legal boundary-flat WCONT approximation           PROVED
-  -> strict finite negative W transfer                          PROVED
-  -> F1 canonical finite negative obstruction                   PROVED
-  -> K0-F1 constrained subspace/moment flag                     PROVED
-  -> canonical Hermitianity                                     PROVED
-  -> one-channel displacement on u,Du,D²u                       PROVED
-  -> unit constrained negative witness                          PROVED
-~~~
+Off-line zero -> L>0, N>=2 and a nonzero x in euclideanBoundaryFlatSubspace N with Re <M_N(L)x,x> < 0.
 
-Current frontier: **Euclidean/Hilbert constrained compression**.
+No compressed eigenmode, positivity theorem or RH theorem is asserted.
 
-## K0-F1 production surface
+## Next: exact centered nesting
 
-PR #96 proves:
+Use iota(i).val=i.val+(M-N), prove centeredIndex preservation and exact principal-block nesting, then raw/Euclidean zero-extension preservation and quadratic persistence.
 
-~~~text
-u ∈ boundaryFlatSubspace N
-  <-> BoundaryFlatCoefficients N u
+Exact nesting is an admission condition; approximate nesting is not a silent substitute.
 
-M_k(Du)=M_{k+1}(u)
+## Then: parity and constrained spectrum
 
-u,Du,D²u descend through the three-moment flag
+Use Fin.rev, prove exact parity dimensions, then build the constrained subtype operator with orthogonalProjectionOnto and extract a negative constrained eigenmode.
 
-canonicalSourceMatrixᴴ = canonicalSourceMatrix
+At the first bad parity size, the intended new constrained shell should be one-dimensional only after the parity dimension theorem is established.
 
-[D,M]v = -1 * displacementPairing(v)
-for every v with M0(v)=0
-~~~
+## Schur/secular firewall
 
-The last identity is specialized to u, Du and D²u.
+Historical FTI-C1 used an ambient coordinate-shell Schur complement. The post-#98 route uses the orthogonal complement of the embedded constrained parity sector inside the larger constrained parity sector. They are not identical without a theorem.
 
-The normalized F1 endpoint is:
+## KKT firewall
 
-`Zeta23.ExceptionalZero.exists_unit_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero`.
+Codimension three alone does not justify the residual equation. First prove V_N^perp = span{1,d,d²}.
 
-## Next spectral bridge
+## Source and dead-route firewalls
 
-The next primary package must use the Hilbert type
+OBS-015 remains permanent. G1-B1A is proved; G1-B1B/G1-final/S-NEG/G23 remain open.
 
-`EuclideanSpace ℂ (Fin (2*N+1))`
-
-and `Matrix.toEuclideanLin`.
-
-The raw function-space norm-one witness from #96 is not itself the Rayleigh-sphere theorem. See OBS-017.
-
-Target:
-
-~~~text
-off-line zero
-  -> negative Rayleigh direction in the Euclidean constrained sector
-  -> negative eigenvalue of the compressed self-adjoint canonical operator.
-~~~
-
-A constrained eigenvector is not automatically a full eigenvector of M.
-
-## Active derived leads
-
-Not yet formalized:
-
-~~~text
-codim V₂ = 3 for N>=1
-nonzero F1 witness -> N>=2
-first 4×4 M-weighted Krylov block is real Hankel
-~~~
-
-## Source-faithful route
-
-OBS-015 remains permanent. S-GEOM/G1-B1A is proved; S-IFACE/G1-B1B, G1-final, S-NEG and G23 remain open as an independent cross-check route.
-
-## Canonical normalization firewall
-
-canonicalSourceMatrix = cutoffFreeMatrix = sourceEq44Matrix = dictionaryMatrix. legacyPrintedMatrix = finiteMatrix.
-
-## Dead-route firewall
-
-DR-010 remains dead. The exact constrained D/M/g route is theorem-backed and distinct from the fitted small-commutator route.
+DR-010 remains dead. The generic divided-difference displacement identity is diagonal-blind, so low displacement rank alone cannot control absolute sign/inertia.
 
 ## Current post-green records
 
-- K0F1_POST_GREEN_CONSTRAINED_FINITE_WALL_RESET_2026_09_02.md
-- ../../RESEARCH_LEADS_POST_96_DELTA.md
-
-Earlier settlement files remain frozen.
+- K0F1E_POST_GREEN_EUCLIDEAN_RESET_2026_09_02.md
+- ../../RESEARCH_LEADS_POST_98_DELTA.md
 
 **RH remains OPEN.**

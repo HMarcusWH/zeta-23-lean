@@ -7,321 +7,178 @@
 ## Current theorem-state anchor
 
 ~~~text
-theorem-bearing merge through = PR #96
-PR #96 merge = 3712746a144d630ee41b89527b098e392822f2c6
-theorem tree = 1d43b31bf9750375189a1ccd2e65bc0a662fc7c4
+theorem-bearing merge through = PR #98
+final head = 723c63badb2ac787c3dfa78369909477af6bc6a4
+merge = 4f212e35fefb339646e294573dcb390dae2f6181
+theorem tree = 84a678327fffe6806e1e786ac2e159a5ce628f67
+RHRC #685 = SUCCESS
+Permansson #458 = SUCCESS
+axioms = [propext, Classical.choice, Quot.sound]
+sorryAx = absent
 date = 2026-09-02
 RH = OPEN
 ~~~
 
-### Exact #96 validation
-
-~~~text
-PR #96 final head = d628b7332e908701e85ef8ea33309e2bf548f2e5
-synthetic merge = 5830d75ec649f065925f5f3a1a7c823d8a5b42b9
-synthetic tree = 1d43b31bf9750375189a1ccd2e65bc0a662fc7c4
-merged tree = 1d43b31bf9750375189a1ccd2e65bc0a662fc7c4
-RHRC #679 = SUCCESS
-Permansson #452 = SUCCESS
-axioms = [propext, Classical.choice, Quot.sound]
-sorryAx = absent
-forbidden-placeholder gate = SUCCESS
-~~~
-
-## One-screen theorem frontier
+## One-screen frontier
 
 ~~~text
 DONE
-  W2-A genuine W -> literatureRHS + summability
-  W0 off-line zero -> compact C² pole-neutral negative W test
-  W1 strict support collar
-  W2-ZS concrete-zeta zero-side evenization
-  direct diagonal W identity
-  G1-A finite additive restriction
-  F0-B1A legal boundary-flat finite carrier
-  F0-B1B exact three-mode projection
-  WCONT-A quantitative genuine-W continuity
-  F0-B1C-A raw uniform localized C² approximation
-  F0-B1C-B legal boundary-flat WCONT approximation
+  W2-A / W0 / W1 / W2-ZS
+  G1-A
+  F0-B1A/B1B/WCONT/F0-B1C-A/B
   strict finite sign transfer
   F1 canonical finite negative obstruction
-  K0-F1 constrained subspace packaging
-  K0-F1 moment shift / descending flag
-  K0-F1 canonical Hermitianity
-  K0-F1 exact one-channel displacement collapse
-  K0-F1 normalized constrained negative witness
+  K0-F1 constrained algebra / Hermitianity / displacement
+  K0-F1E exact rank and finrank 2*N-2
+  K0-F1E N>=2 floor
+  K0-F1E Euclidean constrained sector
+  K0-F1E canonical Euclidean symmetry
+  K0-F1E quadraticForm <-> Euclidean inner-self
+  K0-F1E off-line zero -> Euclidean constrained negative direction
 
 NOW
-  K0-F1E Euclidean/PiLp₂ constrained-sector transport
-  K0-F1E exact rank/codimension of the moment constraints
-  K0-F1E raw quadraticForm <-> Euclidean inner-self bridge
+  N-FLOW-A exact centered finite-N nesting
+  N-FLOW-B raw + Euclidean zero-extension preservation
 
 THEN
-  K0-F1F compressed self-adjoint canonical operator
-  K0-F1F negative constrained Rayleigh/eigenmode
+  PARITY reversal invariance and parity dimensions
+  K0-F1F orthogonal constrained compression
+  K0-F1F negative constrained eigenmode
+  first bad parity size
+  one-dimensional new constrained shell
+  scalar constrained secular equation
+  KKT normal-space identity + Krylov/Hankel composition
 
-NEXT DECISION GATE
-  KKT + Krylov/Hankel rigidity
-  versus parity/reversal
-  versus aperture-flow / first-singularity
+IF NEEDED
+  K1 aperture flow / prime-event first crossing
 
 PARALLEL SOURCE
-  S-GEOM / G1-B1A [proved]
-  S-IFACE / G1-B1B
-  G1-final
-  S-NEG
-  G23
+  G1-B1B -> G1-final -> S-NEG -> G23
 
 RH OPEN
 ~~~
 
-## 1. What #96 made formally true
+## Exact #98 state
 
-Let
-
-~~~text
-D = indexMatrix N
-M = canonicalSourceMatrix L N
-g = displacementVector L N
-V₂ = boundaryFlatSubspace N.
-~~~
-
-PR #96 proves:
-
-~~~text
-u ∈ V₂
-  <-> BoundaryFlatCoefficients N u
-  <-> M0(u)=M1(u)=M2(u)=0.
-
-M_k(Du)=M_{k+1}(u).
-
-u    kills M0,M1,M2.
-Du   kills M0,M1.
-D²u  kills M0.
-
-Mᴴ=M.
-~~~
-
-The exact canonical displacement now collapses on every zero-moment vector:
-
-~~~text
-[D,M]v = -1 * displacementPairing(L,N,v)
-whenever M0(v)=0.
-~~~
-
-Therefore for every boundary-flat u:
-
-~~~text
-[D,M]u
-[D,M]Du
-[D,M]D²u
-~~~
-
-all lie in the one-dimensional all-ones forcing channel.
-
-The pairing is bilinear, not Hermitian.
-
-## 2. Exact normalized constrained F1 endpoint
-
-PR #96 proves:
+For V_N = euclideanBoundaryFlatSubspace N and M_N(L) = canonicalSourceMatrix.toEuclideanLin, PR #98 proves finrank V_N = 2*N-2 for N>=1, the N>=2 floor for nonzero constrained witnesses, symmetry of M_N(L), the exact quadraticForm/inner-self bridge, and:
 
 ~~~text
 off-line zero
-  -> exists L>0,N>=1,u,
-       u ∈ V₂
-       and ‖u‖=1
-       and Re quadraticForm(M,u)<0.
+  -> exists L>0,N>=2,x != 0,
+       x ∈ V_N
+       and Re <M_N(L)x,x> < 0.
 ~~~
 
-The witness is also theoremized as nonzero before normalization.
+This is a negative constrained direction, not a compressed eigenmode.
 
-**Norm firewall:** the displayed norm is the norm on the raw function type `Fin (...) -> ℂ`. It is a valid homogeneous normalization. It is not the Euclidean/PiLp₂ norm consumed by Mathlib's Rayleigh theory.
+## N-FLOW-A — exact centered finite nesting
 
-## 3. K0-F1E — Euclidean/Hilbert transport
+**OPEN / HIGHEST-LEVERAGE NEXT THEOREM SLICE.**
 
-**Status: OPEN / NOW.**
+Resurrect the exact finite algebraic slice from historical v0.8/v0.9.
 
-Use the existing Mathlib finite Hilbert chassis:
+For N<=M define:
 
 ~~~text
-EuclideanSpace ℂ (Fin (2*N+1))
-Matrix.toEuclideanLin
-Submodule orthogonal projection
-Analysis.InnerProductSpace.Rayleigh
+iota_{N,M}(i).val = i.val + (M-N).
 ~~~
 
-### K0-F1E-A — Euclidean sector packaging
-
-Transport the three moment kernels to a complex subspace of
+First prove centeredIndex preservation, then:
 
 ~~~text
-EuclideanSpace ℂ (Fin (2*N+1)).
+(canonicalSourceMatrix L M).submatrix iota iota
+  = canonicalSourceMatrix L N.
 ~~~
 
-The transport must preserve the coordinate equations exactly.
+**Kill condition:** if exact nesting fails, stop. Approximate nesting is not a silent substitute. Prefix Fin inclusion is wrong.
 
-### K0-F1E-B — exact rank and codimension
+## N-FLOW-B — raw and Euclidean extension
 
-For N>=1, theorem-lock linear independence of
+Define raw central zero extension independently of the Euclidean map.
+
+Prove M0/M1/M2 preservation and boundary-flat preservation.
+
+Then define the Euclidean extension and prove directly:
 
 ~~~text
-1, d, d²
+<extendE x,extendE y> = <x,y>
+||extendE x|| = ||x||
+extendE(V_N) <= V_M
+quadratic value is preserved.
 ~~~
 
-on the centered grid, for example through the -1,0,+1 coordinates / Vandermonde minor.
+Do not use the raw function-space norm to prove Euclidean isometry.
 
-Target:
+Consequence: a fixed-L negative constrained direction persists to every larger truncation. This is infrastructure, not by itself RH progress.
+
+## PARITY
+
+Use Fin.rev.
+
+Prove centered-index reversal, matrix reversal invariance, oddness of displacementVector, moment parity, and V_N invariance.
+
+Then theorem-lock parity dimensions rather than inferring them from total dimension growth. Expected for N>=2:
 
 ~~~text
-codim V₂ = 3
-finrank V₂ = 2*N-2.
+finrank V_N^even = N-1
+finrank V_N^odd  = N-1.
 ~~~
 
-This is currently DERIVED, not PROVED.
+Only after this may the project claim one new dimension per parity sector when N grows by one.
 
-### K0-F1E-C — strengthen the F1 mode floor
+## K0-F1F — constrained spectral extraction
 
-Composition target:
+Build the operator directly on the constrained subtype with:
 
 ~~~text
-nonzero u ∈ V₂ and N>=1
-  -> N>=2.
+V_N.orthogonalProjectionOnto ∘ M_N(L) ∘ V_N.subtypeL.
 ~~~
 
-This should strengthen the current existential witness from N>=1 to N>=2.
+Prove symmetry and equality of constrained and ambient inner-self values on V_N. Feed in #98 and Mathlib Rayleigh theory to obtain lambda<0 and a nonzero constrained eigenvector.
 
-Status: DERIVED / OPEN FORMALIZATION.
+Also prove the cheaper ambient negative-eigenvalue corollary as a spectral API sanity check.
 
-### K0-F1E-D — quadratic-form / Hilbert bridge
+## First bad parity size
 
-Prove the exact convention-compatible identity between
+Define badness by existence of a negative direction in a fixed parity constrained sector.
+
+After nesting/parity preservation, bad sizes are upward closed. Well-ordering gives the first bad N*.
+
+If parity dimensions are proved, the orthogonal complement of the embedded previous parity sector inside the first-bad parity sector has finrank one.
+
+At lambda<0 the previous retained block A is nonnegative, hence A-lambda I is positive and invertible. This creates a scalar constrained secular equation.
+
+**Firewall:** this is not automatically the historical ambient coordinate-shell Schur complement.
+
+## KKT
+
+Before asserting an ambient residual formula, prove:
 
 ~~~text
-quadraticForm M u
+V_N^perp = span_C {1,d,d²}.
 ~~~
 
-and the Euclidean inner-self value of
+Only then derive M u = lambda u + a0*1 + a1*d + a2*d². Parity may reduce the residual channels.
 
-~~~text
-M.toEuclideanLin.
-~~~
+## Krylov/Hankel
 
-Do not guess inner-product argument order or conjugation orientation; let Lean fix it.
+Theorem-lock the exact range of H_(a+1,b)=H_(a,b+1) implied by #96. Test whether the negative parity eigenmode + reduced KKT residual + exact displacement + Hankel recurrence creates a genuine finite obstruction. If not, demote it.
 
-## 4. K0-F1F — constrained compression and negative eigenmode
+## K1 remains deferred
 
-**Status: OPEN / NEXT.**
+Continuity in L, prime-power birth continuity, canonical derivative jump, positive anchor and first L crossing remain live. The prime-event jump must be rederived on canonicalSourceMatrix after #73. Do not confuse identity I with all-ones J.
 
-Let P_V be the orthogonal projection onto the Euclidean version of V₂.
+Open K1 only after the finite-N/parity/spectral state is explicit unless a positive fixed-N anchor appears independently.
 
-Build the compressed operator on V₂, conceptually
+## Parallel/dead lanes
 
-~~~text
-T_V = P_V M |_V.
-~~~
+- source-faithful G1-B1B/G1-final/S-NEG/G23 remains independent;
+- DR-010 remains dead;
+- R002/Bombieri remain comparator lanes without exact transfer;
+- low displacement rank alone is insufficient because the generic divided-difference displacement is diagonal-blind.
 
-Targets:
+## External roadmap
 
-1. T_V is self-adjoint.
-2. #96 supplies a negative Rayleigh direction after Euclidean transport.
-3. The finite-dimensional Rayleigh infimum is negative.
-4. Mathlib's `LinearMap.IsSymmetric.hasEigenvalue_iInf_of_finiteDimensional` or the equivalent minimizer theorem supplies a constrained eigenmode:
-
-~~~text
-T_V u = lambda u
-lambda < 0
-u != 0.
-~~~
-
-This is a compressed eigenvector, not automatically a full eigenvector of M.
-
-## 5. KKT ambient form
-
-After exact codimension three and the constrained eigenmode are proved, the expected ambient reformulation is
-
-~~~text
-M u = lambda u + a0*1 + a1*d + a2*d²
-with lambda < 0.
-~~~
-
-Status: LEAD / OPEN.
-
-Do not promote this merely from the existence of a constrained negative direction.
-
-## 6. Post-#96 Krylov/Hankel clue
-
-For a boundary-flat u define
-
-~~~text
-H_ab = <D^a u, M D^b u>.
-~~~
-
-Using the proved one-channel commutator collapse and zero sums of u,Du,D²u, the following is DERIVED for 0<=a,b<=2:
-
-~~~text
-H_(a+1,b) = H_(a,b+1).
-~~~
-
-Together with Hermitianity, this suggests the full 4×4 block for 0<=a,b<=3 is real Hankel.
-
-**Status: DERIVED / LEAD; not theorem-locked.**
-
-Promotion value: this may convert the first constrained Krylov sector into a truncated moment/Hankel object that can be composed with the future negative constrained eigenmode.
-
-## 7. Falsification checks
-
-- A real Hankel matrix can be indefinite.
-- One-channel commutator collapse does not imply positivity.
-- D does not preserve V₂; M3(u)=0 is unavailable.
-- A constrained eigenvector is not a full eigenvector of M.
-- Low displacement rank remains generic finite structure, not RH.
-- The raw #96 norm-one theorem is not a Euclidean Rayleigh theorem.
-- Global PSD of canonicalSourceMatrix would be substantially stronger than the currently proved constrained obstruction and must not be treated as a cheap lemma.
-- Source QW remains a separate lane under OBS-015.
-
-## 8. Deferred live routes
-
-### Parity/reversal
-
-Still live. It becomes more valuable after a constrained eigenmode exists because parity could split the compressed problem and may supply additional automatic odd-moment cancellation.
-
-### K1 aperture flow / first singularity
-
-Still live. Defer until the constrained spectral object is explicit unless a positive fixed-N anchor becomes independently available.
-
-### K2 singular kernel/displacement rigidity
-
-Still live downstream of compression/parity. Do not assume one-dimensional kernel.
-
-### Source-faithful route
-
-S-GEOM/G1-B1A is proved. S-IFACE/G1-B1B, G1-final, S-NEG and G23 remain OPEN as an independent cross-check.
-
-## 9. Dead/fallback classification
-
-DR-010 remains dead. The exact D/M/g route now has a theoremized constrained one-channel collapse but makes no fitted-generator, asymptotic-small-commutator or spectral-gap inference.
-
-Primary-route Fourier/legalization fallbacks remain demoted after #93/#94.
-
-## 10. Highest-leverage next implementation
-
-Primary theorem package:
-
-~~~text
-Euclidean constrained sector
-  -> exact codim/rank
-  -> N>=2 strengthening
-  -> quadratic-form/inner-product bridge
-  -> compressed self-adjoint operator
-  -> negative constrained eigenmode.
-~~~
-
-Do not mix parity, aperture flow, source-QW work or a global positivity claim into the first Euclidean bridge PR unless the compiler exposes a genuine dependency.
-
-## Current records
-
-Latest delta: `research/RHRC/RESEARCH_LEADS_POST_96_DELTA.md`.
-
-Latest settlement: `research/RHRC/routes/R003_ccm_bridge/K0F1_POST_GREEN_CONSTRAINED_FINITE_WALL_RESET_2026_09_02.md`.
+The v1.7 retirement condition has fired. Produce the external v2.0 handover after this repo synchronization; do not create it inside this PR.
 
 **RH remains OPEN.**

@@ -164,36 +164,20 @@ PR #91 proves uniform formula-level approximation by periodic finite localized F
 
 ## OBS-017 — raw function-space norm is not Euclidean Rayleigh normalization
 
-**Status:** PROJECT FIREWALL; NEXT PRIMARY ESCAPE OPEN.
+**Status:** PROJECT FIREWALL; PARTIAL ESCAPE PROVED BY PR #98; COMPRESSION REMAINS OPEN.
 
-PR #96 proves a unit constrained negative witness of type
+PR #96 proves a unit constrained negative witness on the raw function type. That norm remains a valid homogeneous scale normalization but is not the Euclidean/PiLp₂ norm used by Hilbert/Rayleigh APIs.
 
-~~~text
-u : Fin (2*N+1) -> ℂ
-‖u‖ = 1
-u ∈ boundaryFlatSubspace N
-Re quadraticForm(canonicalSourceMatrix L N,u) < 0.
-~~~
+PR #98 separately proves coordinate transport to EuclideanSpace, the Euclidean constrained subspace with the same three moments, the exact quadraticForm / Euclidean inner-self identity, and off-line zero -> nonzero Euclidean constrained negative direction.
 
-The displayed norm is the norm instance on the raw finite function type. It is a valid homogeneous scale normalization, but it is **not** the L²/inner-product norm on
+Still open:
 
 ~~~text
-EuclideanSpace ℂ (Fin (2*N+1))
-= PiLp 2 (fun _ => ℂ)
+orthogonal compression of canonicalSourceMatrix.toEuclideanLin to the constrained subtype
+finite-dimensional constrained Rayleigh/eigenmode extraction
 ~~~
 
-used by Mathlib's Rayleigh and self-adjoint spectral APIs.
+Do not use the raw #96 norm-one statement as a Euclidean sphere theorem. Conversely, do not continue to describe the coordinate/subspace/quadratic bridge as open after #98.
 
-**Consequence:** do not feed the #96 norm-one theorem directly into `Analysis.InnerProductSpace.Rayleigh`, do not call its unit sphere a Hilbert sphere, and do not infer a Rayleigh minimizer/eigenvector without an explicit Euclidean transport theorem.
-
-**Escape requirement:** theorem-lock all of:
-
-1. coordinate transport between the raw coefficient function and `EuclideanSpace`;
-2. the Euclidean constrained subspace carrying the same three moment equations;
-3. the exact `quadraticForm` / Euclidean inner-self identity for `Matrix.toEuclideanLin`;
-4. the compressed self-adjoint operator on that Euclidean subspace.
-
-Only after those are proved may the project use finite-dimensional Rayleigh theory to promote a negative constrained direction to a negative constrained spectral mode.
-
-This firewall is proof-engineering/semantic only; it does not weaken the #96 negative quadratic statement.
+Future finite-N zero-extension isometry must be proved directly in EuclideanSpace; the raw function-space norm is not a shortcut.
 

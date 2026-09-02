@@ -71,7 +71,7 @@ When recording repository state in living documents:
 Example:
 
 ~~~text
-theorem-state anchor = PR #96 merge <sha>
+theorem-state anchor = PR #<theorem-bearing PR> merge <sha>
 theorem tree = <tree>
 live GitHub main = authoritative
 ~~~
@@ -111,3 +111,13 @@ A green but unmerged PR remains branch evidence until merged and registered.
 Documentation may explain implications, but it may not promote a claim beyond the exact theorem surface.
 
 RH remains OPEN until the exact terminal theorem is proved and claim-validated.
+
+## Promoted theorem-binding completeness
+
+For R003, R003_PROMOTED_BINDINGS.json is the declared production binding surface. Every PROVED_UNCONDITIONAL R003 claim with a theorem must agree exactly across CLAIM_REGISTRY.json, R003_PROMOTED_BINDINGS.json, and the exact #check / #print axioms declarations in Zeta23/CCM/ClaimBindings.lean.
+
+The RHRC suite enforces this through promoted_binding_lint.py. Supporting theorem checks may exist without individual registry promotion, so CI does not equate every #check with a claim; promotion intent must be declared explicitly.
+
+## External handover transition after PR #98
+
+The external v1.7 handover contained its own retirement condition: write v2.0 once F1 is green/registered or another comparably large theorem changes the dependency graph. That condition has fired. Until external v2.0 is produced, the living repository SSOTs control execution. Do not create the external v2.0 document inside a repository PR unless explicitly requested.

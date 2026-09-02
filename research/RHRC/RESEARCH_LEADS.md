@@ -711,68 +711,105 @@ The norm-one witness in #96 lives on the raw function type `Fin (...) -> ℂ`. I
 
 ## L-K0F1-02 — Euclidean constrained compression / negative spectral mode
 
-**Research status:** ACTIVE / HIGHEST-LEVERAGE NEXT  
-**Formal status:** OPEN
+**Research status:** ACTIVE / AFTER N-FLOW + PARITY  
+**Formal status:** PARTIALLY PROVED BY #98; COMPRESSION OPEN
 
-The post-#96 spectral chassis should use
-
-~~~text
-EuclideanSpace ℂ (Fin (2*N+1))
-Matrix.toEuclideanLin
-Submodule orthogonal projection
-Mathlib.Analysis.InnerProductSpace.Rayleigh
-~~~
-
-### Required bridge
-
-1. Transport boundaryFlatSubspace to the Euclidean/PiLp₂ carrier.
-2. Prove the coordinate/moment equations are unchanged by that transport.
-3. Prove the exact quadratic-form / Euclidean inner-self identity with Lean's conjugation convention.
-4. Build the orthogonal compression of canonicalSourceMatrix to the constrained sector.
-5. Prove the compressed operator is self-adjoint.
-6. Transport the #96 negative direction to a negative Euclidean Rayleigh direction.
-7. Apply finite-dimensional Rayleigh theory to obtain a negative constrained eigenvalue/eigenvector.
-
-Target shape:
+PR #98 closes the project-specific Euclidean bridge:
 
 ~~~text
-off-line zero
-  -> exists L,N,lambda,u,
-       u != 0
-       and u in V₂
-       and compressedCanonical L N u = lambda • u
-       and lambda < 0.
+Euclidean constrained subspace                         PROVED
+same three boundary-flat equations                     PROVED
+finrank = 2*N-2 for N>=1                               PROVED
+nonzero constrained witness -> N>=2                    PROVED
+canonicalSourceMatrix.toEuclideanLin symmetric         PROVED
+quadraticForm / Euclidean inner-self bridge            PROVED
+off-line zero -> negative Euclidean constrained ray    PROVED
 ~~~
 
-This is a compressed eigenvector, not automatically a full eigenvector of M.
+Still open:
 
-### Likely Mathlib endpoint
+~~~text
+orthogonal compression to the constrained subtype
+compressed symmetry/self-adjointness
+negative constrained Rayleigh eigenmode
+~~~
 
-`LinearMap.IsSymmetric.hasEigenvalue_iInf_of_finiteDimensional` is already available. The missing work is the project-specific Euclidean carrier, subspace compression and quadratic-form bridge.
+Use Mathlib's subtype operator V.orthogonalProjectionOnto ∘ M ∘ V.subtypeL rather than treating the raw #96 norm-one witness as a Hilbert-sphere theorem.
+
+Cheap side theorem worth proving in the same spectral package:
+
+~~~text
+off-line zero -> some canonicalSourceMatrix has a negative ambient eigenvalue.
+~~~
+
+The constrained eigenmode remains the structurally important endpoint.
 
 ---
 
-## L-K0F1-03 — exact codimension three / N>=2 floor
+## L-K0F1-03 — exact dimension / N>=2 floor
 
-**Research status:** ACTIVE CHEAP UPSTREAM STRENGTHENING  
-**Formal status:** DERIVED / OPEN FORMALIZATION
+**Research status:** PROMOTED  
+**Formal status:** PROVED / PR #98
 
-For N>=1, the moment functionals M0,M1,M2 should be linearly independent because the centered grid contains -1,0,+1 and the corresponding degree-2 Vandermonde minor is nonsingular.
+PR #98 theorem-locks the rank-three moment map, finrank(boundaryFlatSubspace N)=2*N-2 for N>=1, boundaryFlatSubspace 1=bottom, the N>=2 floor for nonzero constrained witnesses, and the same exact Euclidean finrank.
 
-Expected consequence:
+Do not continue to list codimension/rank or the N>=2 floor as derived/open.
+
+---
+
+## L-NFLOW-01 — exact centered finite-N nesting
+
+**Research status:** RESURRECTED / HIGHEST-LEVERAGE NEXT THEOREM SLICE  
+**Formal status:** OPEN
+
+Historical v0.8/v0.9 already designed the exact centered embedding iota_{N,M}(i).val=i.val+(M-N).
+
+Required first theorem:
 
 ~~~text
-codim(boundaryFlatSubspace N)=3
-finrank(boundaryFlatSubspace N)=2*N-2.
+centeredIndex M (iota i) = centeredIndex N i.
 ~~~
 
-Then N=1 gives the zero constrained subspace. Since #96 gives a nonzero constrained negative witness:
+Then prove the canonical principal-block identity, raw central zero extension, moment/boundary-flat preservation, Euclidean isometric zero extension, and exact quadratic preservation.
+
+**Kill condition:** if exact nesting fails, stop. Do not silently substitute approximate nesting.
+
+**Semantic firewall:** prefix Fin inclusion is wrong; raw function-space norm does not prove Euclidean isometry.
+
+---
+
+## L-PARITY-01 — reversal/parity constrained split
+
+**Research status:** ACTIVE AFTER N-FLOW  
+**Formal status:** LEAD / OPEN
+
+Use Mathlib Fin.rev to target centeredIndex reversal, simultaneous matrix reversal invariance, oddness of displacementVector, moment parity, and invariance of V_N.
+
+Then theorem-lock exact even/odd constrained dimensions. Expected for N>=2:
 
 ~~~text
-off-line zero -> witness N>=2.
+finrank V_N^even = N-1
+finrank V_N^odd  = N-1.
 ~~~
 
-Do not record N>=2 as PROVED until Lean theorem-locks the rank/codimension argument.
+Do not infer the 1+1 parity growth merely from total finrank growth by two.
+
+Promising composition: even boundary-flat u plus odd g should force [D,M]u=0. This remains a lead until reversal and oddness are proved.
+
+---
+
+## L-NFLOW-02 — first bad parity size / one-dimensional new shell
+
+**Research status:** ACTIVE COMPOSITION LEAD  
+**Formal status:** OPEN
+
+After exact nesting, parity preservation and constrained spectral extraction, bad finite sizes should be upward closed. Well-ordering then gives the first bad parity size N*.
+
+If the parity dimension formula is proved, the orthogonal complement of the embedded previous parity sector inside the first-bad parity sector has finrank one.
+
+At the negative eigenvalue lambda<0, the retained previous block A is nonnegative, hence A-lambda*I is strictly positive and invertible. This creates a scalar constrained secular equation.
+
+**Firewall:** this constrained parity shell is not automatically the historical ambient coordinate-shell Schur complement from FTI-C1.
 
 ---
 
