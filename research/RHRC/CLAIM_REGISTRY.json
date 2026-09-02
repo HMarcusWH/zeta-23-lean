@@ -466,6 +466,49 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "F0-B1C-A. PR #91 final hardened head cf1c9b6536264deb8773fa8b0bb3650b07fcff40 passed RHRC #660 and Permansson #433 and merged as bab94aed54298de6fc6676808a0b0e46c2db6046 (tree f98b3051ca789ef0d134934fc01d97ac7497d4ca). The final ClaimBindings audit prints [propext, Classical.choice, Quot.sound] for the headline theorem and its load-bearing Fourier/Finsupp, zero-mode, twice-primitive, and lower-jet helpers, with no sorryAx. The construction uses pinned Mathlib AddCircle Fourier density, removes the zero Fourier mode before division by frequency, integrates nonzero modes twice, anchors the zero mode so q(0)=0 exactly, and derives fixed-L vector-valued lower-jet estimates. This is a formula-level periodic approximation theorem only: it does not claim the raw hard-window zero extension is globally C^2, does not apply boundaryFlatProject, and does not prove projection-smallness, strict finite sign transfer, F1, ambient QW_lambda, K0-K3, or RH."
+    },
+    {
+      "id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "statement": "For every positive fixed aperture L, every complex-valued C^2 target h with tsupport strictly inside (0,L), and every eta>0, there exist N>=1 and boundary-flat centered finite coefficients u such that the legal hard-window vector localizedFiniteVector L N u is within eta of h both in L1 norm and in L1 norm of the global second derivative difference.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+        "R003_BOUNDARY_FLAT_PROJECTION"
+      ],
+      "source": "Zeta23/CCM/BoundaryFlatApproximation.lean",
+      "theorem": "Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #93 / F0-B1C-B. This closes the primary-route escape from OBS-016. The theorem concerns the complete boundary-flat hard-window vector, never the raw periodic approximant or the correction alone."
+    },
+    {
+      "id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "statement": "Every strict-aperture compact C^2 concrete-zeta test with strictly negative diagonal Weil value admits a legal boundary-flat finite hard-window vector on the same aperture whose diagonal Weil value remains strictly negative.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+        "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_WEIL_COMMON_SUPPORT_BOUND"
+      ],
+      "source": "Zeta23/ExceptionalZero/FiniteNegativeObstruction.lean",
+      "theorem": "Zeta23.ExceptionalZero.exists_boundaryFlatFinite_negativeW_of_strictAperture",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #94. The proof controls the additional L1 norm of the approximant explicitly and preserves one fixed aperture."
+    },
+    {
+      "id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "statement": "Every hypothetical nontrivial zeta zero off the critical line forces a positive aperture L, N>=1, and boundary-flat finite coefficient vector u with strictly negative real quadratic form for canonicalSourceMatrix L N.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+        "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION"
+      ],
+      "source": "Zeta23/ExceptionalZero/FiniteNegativeObstruction.lean",
+      "theorem": "Zeta23.ExceptionalZero.exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_offLine_zero",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "F1 / PR #94. The witness satisfies BoundaryFlatCoefficients, hence centered moments 0,1,2 vanish. This is not a positivity theorem for canonicalSourceMatrix and does not prove RH."
     }
   ]
 }
