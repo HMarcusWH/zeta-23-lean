@@ -164,11 +164,13 @@ PR #91 proves uniform formula-level approximation by periodic finite localized F
 
 ## OBS-017 — raw function-space norm is not Euclidean Rayleigh normalization
 
-**Status:** PROJECT FIREWALL; PARTIAL ESCAPE PROVED BY PR #98; COMPRESSION REMAINS OPEN.
+**Status:** PROJECT FIREWALL; PARTIAL ESCAPE EXTENDED BY PR #100; COMPRESSION REMAINS OPEN.
 
 PR #96 proves a unit constrained negative witness on the raw function type. That norm remains a valid homogeneous scale normalization but is not the Euclidean/PiLp₂ norm used by Hilbert/Rayleigh APIs.
 
 PR #98 separately proves coordinate transport to EuclideanSpace, the Euclidean constrained subspace with the same three moments, the exact quadraticForm / Euclidean inner-self identity, and off-line zero -> nonzero Euclidean constrained negative direction.
+
+PR #100 additionally proves the finite-N zero-extension isometry directly in EuclideanSpace, transport of the Euclidean constrained sector to every larger centered truncation, and exact preservation of the canonical real inner-self value.
 
 Still open:
 
@@ -177,7 +179,7 @@ orthogonal compression of canonicalSourceMatrix.toEuclideanLin to the constraine
 finite-dimensional constrained Rayleigh/eigenmode extraction
 ~~~
 
-Do not use the raw #96 norm-one statement as a Euclidean sphere theorem. Conversely, do not continue to describe the coordinate/subspace/quadratic bridge as open after #98.
+Do not use the raw #96 norm-one statement as a Euclidean sphere theorem. Do not continue to describe Euclidean N-extension isometry or constrained transport as open after #100.
 
-Future finite-N zero-extension isometry must be proved directly in EuclideanSpace; the raw function-space norm is not a shortcut.
+The #100 isometry also does not imply full operator intertwining or literal nesting of the orthogonally compressed operators.
 
