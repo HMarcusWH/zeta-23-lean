@@ -203,7 +203,7 @@ theorem reverseCoefficients_indexMatrix_mulVec
     (n : ℤ) (L : ℝ) :
     alphaL (-n) L = - alphaL n L := by
   unfold alphaL
-  rw [← intervalIntegral.integral_neg]
+  rw [← mul_neg, ← intervalIntegral.integral_neg]
   congr 1
   funext x
   by_cases hx : x = 0
@@ -293,6 +293,10 @@ theorem reverseCoefficients_indexMatrix_mulVec
           ring]
     rw [Real.cos_neg]
   · have hneg : -n ≠ -m := by simpa using h
+    have hmnZ : m - n ≠ 0 := sub_ne_zero.mpr (Ne.symm h)
+    have hnmZ : n - m ≠ 0 := sub_ne_zero.mpr h
+    have hmnR : (((m - n : ℤ) : ℝ)) ≠ 0 := by exact_mod_cast hmnZ
+    have hnmR : (((n - m : ℤ) : ℝ)) ≠ 0 := by exact_mod_cast hnmZ
     rw [qBasis, if_neg hneg, qBasis, if_neg h]
     rw [show
       2 * Real.pi * ((-n : ℤ) : ℝ) * y / L =
@@ -305,6 +309,7 @@ theorem reverseCoefficients_indexMatrix_mulVec
           push_cast
           ring]
     rw [Real.sin_neg, Real.sin_neg]
+    field_simp [Real.pi_ne_zero, hmnR, hnmR]
     push_cast
     ring
 
@@ -324,8 +329,13 @@ theorem reverseCoefficients_indexMatrix_mulVec
   · subst m
     simp [archComponent]
   · have hneg : -n ≠ -m := by simpa using h
+    have hnmZ : n - m ≠ 0 := sub_ne_zero.mpr h
+    have hmnZ : m - n ≠ 0 := sub_ne_zero.mpr (Ne.symm h)
+    have hnmR : (((n - m : ℤ) : ℝ)) ≠ 0 := by exact_mod_cast hnmZ
+    have hmnR : (((m - n : ℤ) : ℝ)) ≠ 0 := by exact_mod_cast hmnZ
     rw [archComponent, if_neg hneg, archComponent, if_neg h]
     simp
+    field_simp [hnmR, hmnR]
     push_cast
     ring
 
@@ -359,9 +369,14 @@ theorem reverseCoefficients_indexMatrix_mulVec
   · subst m
     simp [cutoffFreeArchComponent]
   · have hneg : -n ≠ -m := by simpa using h
+    have hnmZ : n - m ≠ 0 := sub_ne_zero.mpr h
+    have hmnZ : m - n ≠ 0 := sub_ne_zero.mpr (Ne.symm h)
+    have hnmR : (((n - m : ℤ) : ℝ)) ≠ 0 := by exact_mod_cast hnmZ
+    have hmnR : (((m - n : ℤ) : ℝ)) ≠ 0 := by exact_mod_cast hmnZ
     rw [cutoffFreeArchComponent, if_neg hneg,
       cutoffFreeArchComponent, if_neg h]
     simp
+    field_simp [hnmR, hmnR]
     push_cast
     ring
 
