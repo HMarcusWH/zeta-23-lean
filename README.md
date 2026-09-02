@@ -7,9 +7,10 @@
 ## Current authority snapshot
 
 ~~~text
-main = 8b54a72767c2703351990e2a67354511e9c9b83a
-tree = 0fca10d1904d85bd33763cc6728e22c1c5b9ef5d
-merged through = PR #94
+theorem-state anchor = PR #96 merge 3712746a144d630ee41b89527b098e392822f2c6
+theorem tree = 1d43b31bf9750375189a1ccd2e65bc0a662fc7c4
+theorem-bearing merged through = PR #96
+live GitHub main = authoritative
 date = 2026-09-02
 RH = OPEN
 ~~~
@@ -17,22 +18,28 @@ RH = OPEN
 Recent theorem-bearing merges:
 
 ~~~text
-#91 F0-B1C-A raw uniform localized C² approximation
 #93 F0-B1C-B legal boundary-flat WCONT approximation
 #94 strict finite sign transfer + F1 finite canonical negative obstruction
+#96 K0/K1-F1 constrained canonical finite-wall package
 ~~~
 
-Exact F1 validation:
+Exact #96 validation:
 
 ~~~text
-PR #94 head = d357c1511dba8678eb3a3a10944596c33a65fa11
-merge/main = 8b54a72767c2703351990e2a67354511e9c9b83a
-tree = 0fca10d1904d85bd33763cc6728e22c1c5b9ef5d
-RHRC #667 = SUCCESS
-Permansson #440 = SUCCESS
+PR #96 head = d628b7332e908701e85ef8ea33309e2bf548f2e5
+synthetic merge = 5830d75ec649f065925f5f3a1a7c823d8a5b42b9
+validated tree = 1d43b31bf9750375189a1ccd2e65bc0a662fc7c4
+merge/main = 3712746a144d630ee41b89527b098e392822f2c6
+RHRC #679 = SUCCESS
+Permansson #452 = SUCCESS
+CCM build = SUCCESS
+ExceptionalZero build = SUCCESS
+forbidden-placeholder gate = SUCCESS
 axioms = [propext, Classical.choice, Quot.sound]
 sorryAx = absent
 ~~~
+
+The successful synthetic merge and the merged main commit have the same tree.
 
 ## Current RH-directed theorem ladder
 
@@ -42,63 +49,84 @@ off-line zeta zero
   -> strict aperture collar tsupport h ⊂ (0,L)                  PROVED
   -> legal boundary-flat finite approximation in WCONT topology PROVED
   -> strict finite negative W value                              PROVED
-  -> finite canonical negative quadratic direction               PROVED / F1
+  -> finite canonical negative quadratic direction              PROVED / F1
+  -> constrained subspace + moment flag + Hermitianity           PROVED / K0-F1
+  -> exact one-channel displacement on u,Du,D²u                  PROVED / K0-F1
+  -> nonzero/unit constrained negative canonical witness         PROVED / #96
 
 NOW
-  K0-F1 constrained canonical sector
+  Euclidean/PiLp₂ constrained-sector transport
+  exact codimension/rank theorem
+  raw quadraticForm ↔ Euclidean inner-self bridge
 
 THEN
-  constrained negative compression / minimizer
-  exact displacement rigidity
-  aperture-flow / first-singularity only if still needed
+  compressed self-adjoint canonical operator
+  negative constrained Rayleigh/eigenmode
+
+NEXT DECISION
+  KKT + Krylov/Hankel rigidity
+  versus parity/reversal
+  versus aperture-flow / first-singularity
 
 RH                                                         OPEN
 ~~~
 
-## F1 — finite canonical negative obstruction
+## F1 and #96 constrained finite obstruction
 
 PR #94 proves `Zeta23.ExceptionalZero.exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_offLine_zero`.
 
-For every hypothetical zeta zero off the critical line, there exist L>0, N>=1 and u such that
+PR #96 proves the stronger constrained packaging:
+
+`Zeta23.ExceptionalZero.exists_unit_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero`.
+
+For every hypothetical off-line zeta zero there exist L>0, N>=1 and u such that
 
 ~~~text
-BoundaryFlatCoefficients N u
+u ∈ boundaryFlatSubspace N
+‖u‖ = 1
 Re (quadraticForm (canonicalSourceMatrix L N) u) < 0.
 ~~~
 
-Boundary-flat means exactly centered moments M0=M1=M2=0.
+The norm here is the norm of the raw function type `Fin (...) → ℂ`. It is a valid scale normalization, but it is **not** the Euclidean/PiLp₂ Hilbert normalization required by the planned Rayleigh step.
 
-This is a finite obstruction theorem. It is not canonical positivity and it is not RH.
+## K0-F1 — formally closed by PR #96
 
-## Post-F1 finite-wall frontier
+Let D=`indexMatrix N`, M=`canonicalSourceMatrix L N` and g=`displacementVector L N`.
 
-Let D=indexMatrix N, M=canonicalSourceMatrix L N and g=displacementVector L N.
-
-Already PROVED:
+PR #96 theorem-locks:
 
 ~~~text
-D M - M D = g 1^T - 1 g^T.
+u ∈ boundaryFlatSubspace N
+  ↔ BoundaryFlatCoefficients N u
+
+M_k(Du) = M_{k+1}(u)
+
+u    kills M0,M1,M2
+Du   kills M0,M1
+D²u  kills M0
+
+Mᴴ = M
 ~~~
 
-For an F1 witness, the three moment constraints DERIVE
+and, for every zero-moment v,
 
 ~~~text
-1^T u     = 0
-1^T D u   = 0
-1^T D^2 u = 0.
+[D,M] v = -1 * displacementPairing(L,N,v).
 ~~~
 
-The exact constrained commutator collapse on u, Du and D²u is DERIVED/LEAD until theorem-locked.
-
-The next theorem package is K0-F1:
-
-- package the boundary-flat sector as finite linear algebra;
-- theorem-lock moment shift under D;
-- theorem-lock the descending moment flag;
-- expose canonical Hermitianity;
-- theorem-lock exact constrained displacement collapse.
+Hence for boundary-flat u the commutators on u, Du and D²u lie entirely in the all-ones channel.
 
 Do not assume D preserves the full boundary-flat sector: M3(u)=0 is not available.
+
+## Post-#96 derived leads
+
+The following are **DERIVED / not yet theorem-locked**:
+
+- for N>=1 the three moment constraints should have exact codimension 3;
+- therefore a nonzero F1/#96 witness should force N>=2;
+- the first 4×4 M-weighted Krylov block `<D^a u, M D^b u>` should be real Hankel.
+
+These are active targets/leads, not promoted claims.
 
 ## Canonical normalization firewall
 
@@ -122,10 +150,11 @@ OBS-015 remains binding: source interface is not source negativity.
 ## Permanent firewalls
 
 - OBS-016 remains a generic legality warning; #93 proves the primary R003 escape.
+- raw function-space unit norm is not the Euclidean Rayleigh sphere; see OBS-017.
 - the correction vector alone is not a legal W test.
-- low displacement rank alone is not RH.
+- low displacement rank or one-channel collapse alone is not positivity or RH.
 - DR-010 fitted small-commutator/eigenvector convergence remains falsified.
-- green F1 is not RH.
+- green F1/K0-F1 is not RH.
 
 ## Living research records
 
@@ -134,8 +163,8 @@ OBS-015 remains binding: source interface is not source negativity.
 - `research/RHRC/CLAIM_REGISTRY.json`
 - `research/RHRC/routes/ROUTE_REGISTRY.json`
 - `research/RHRC/routes/R003_ccm_bridge/README.md`
-- `research/RHRC/RESEARCH_LEADS_POST_94_DELTA.md`
-- `research/RHRC/routes/R003_ccm_bridge/F1_POST_GREEN_FINITE_WALL_RESET_2026_09_02.md`
+- `research/RHRC/RESEARCH_LEADS_POST_96_DELTA.md`
+- `research/RHRC/routes/R003_ccm_bridge/K0F1_POST_GREEN_CONSTRAINED_FINITE_WALL_RESET_2026_09_02.md`
 
 Historical settlements remain frozen.
 

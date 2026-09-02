@@ -160,3 +160,40 @@ PR #91 proves uniform formula-level approximation by periodic finite localized F
 **Primary-route escape:** PR #93 proves `Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx`, combining the exact #88 projection, F0-B1A legality, global derivative identities and fixed-aperture WCONT control.
 
 **Permanent warning:** this closes the R003 primary-route obligation only. Do not infer legality for unrelated raw periodic approximants or for the correction vector alone.
+
+
+## OBS-017 — raw function-space norm is not Euclidean Rayleigh normalization
+
+**Status:** PROJECT FIREWALL; NEXT PRIMARY ESCAPE OPEN.
+
+PR #96 proves a unit constrained negative witness of type
+
+~~~text
+u : Fin (2*N+1) -> ℂ
+‖u‖ = 1
+u ∈ boundaryFlatSubspace N
+Re quadraticForm(canonicalSourceMatrix L N,u) < 0.
+~~~
+
+The displayed norm is the norm instance on the raw finite function type. It is a valid homogeneous scale normalization, but it is **not** the L²/inner-product norm on
+
+~~~text
+EuclideanSpace ℂ (Fin (2*N+1))
+= PiLp 2 (fun _ => ℂ)
+~~~
+
+used by Mathlib's Rayleigh and self-adjoint spectral APIs.
+
+**Consequence:** do not feed the #96 norm-one theorem directly into `Analysis.InnerProductSpace.Rayleigh`, do not call its unit sphere a Hilbert sphere, and do not infer a Rayleigh minimizer/eigenvector without an explicit Euclidean transport theorem.
+
+**Escape requirement:** theorem-lock all of:
+
+1. coordinate transport between the raw coefficient function and `EuclideanSpace`;
+2. the Euclidean constrained subspace carrying the same three moment equations;
+3. the exact `quadraticForm` / Euclidean inner-self identity for `Matrix.toEuclideanLin`;
+4. the compressed self-adjoint operator on that Euclidean subspace.
+
+Only after those are proved may the project use finite-dimensional Rayleigh theory to promote a negative constrained direction to a negative constrained spectral mode.
+
+This firewall is proof-engineering/semantic only; it does not weaken the #96 negative quadratic statement.
+

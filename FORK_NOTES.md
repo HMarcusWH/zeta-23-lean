@@ -5,21 +5,88 @@
 ## Authority snapshot
 
 ~~~text
-main = 8b54a72767c2703351990e2a67354511e9c9b83a
-tree = 0fca10d1904d85bd33763cc6728e22c1c5b9ef5d
-merged through = PR #94
+theorem-state anchor = PR #96 merge 3712746a144d630ee41b89527b098e392822f2c6
+theorem tree = 1d43b31bf9750375189a1ccd2e65bc0a662fc7c4
+theorem-bearing merged through = PR #96
+live GitHub main = authoritative
 RH = OPEN
 ~~~
 
 ## Recent permanent theorem packages
 
 ~~~text
-#88 F0-B1B exact boundary-flat projection
 #89 WCONT-A quantitative genuine-W continuity
 #91 F0-B1C-A raw uniform localized C² approximation
 #93 F0-B1C-B legal boundary-flat WCONT approximation
 #94 strict finite sign transfer + F1 canonical finite negative obstruction
+#96 constrained canonical finite-wall package
 ~~~
+
+## What #96 closed
+
+PR #96 turns the post-F1 moment/displacement observations into production finite linear algebra.
+
+PROVED:
+
+~~~text
+boundaryFlatSubspace N
+  = exact linear packaging of M0=M1=M2=0
+
+M_k(Du) = M_{k+1}(u)
+
+u    -> M0=M1=M2=0
+Du   -> M0=M1=0
+D²u  -> M0=0
+
+canonicalSourceMatrixᴴ = canonicalSourceMatrix
+
+[D,M]v = -1 * displacementPairing(v)
+for every zero-moment v
+~~~
+
+The collapse is specialized to u, Du and D²u for every boundary-flat u.
+
+PR #96 also proves that any hypothetical off-line zero forces a nonzero, norm-one vector in `boundaryFlatSubspace N` with strictly negative canonical quadratic value.
+
+## Exact #96 authority
+
+~~~text
+head = d628b7332e908701e85ef8ea33309e2bf548f2e5
+synthetic merge = 5830d75ec649f065925f5f3a1a7c823d8a5b42b9
+merge = 3712746a144d630ee41b89527b098e392822f2c6
+tree = 1d43b31bf9750375189a1ccd2e65bc0a662fc7c4
+RHRC #679 = SUCCESS
+Permansson #452 = SUCCESS
+axioms = [propext, Classical.choice, Quot.sound]
+sorryAx = absent
+~~~
+
+## Current primary frontier
+
+~~~text
+Euclidean/PiLp₂ transport of the constrained sector
+  -> exact codim(V₂)=3 and F1 witness N>=2
+  -> compressed self-adjoint canonical operator
+  -> negative constrained spectral mode
+  -> KKT / Krylov-Hankel rigidity
+  -> parity or aperture-flow only as demanded by the obstruction
+~~~
+
+The current `‖u‖=1` theorem uses the raw function-space norm. Do not feed it directly into Hilbert/Rayleigh APIs; the Euclidean bridge is a separate theorem obligation.
+
+## Post-#96 structural clue
+
+With D=indexMatrix N and M=canonicalSourceMatrix L N, the exact commutator on the first F1 Krylov vectors lands in the all-ones channel, while u,Du,D²u have zero coefficient sum.
+
+DERIVED / OPEN TO FORMALIZATION:
+
+~~~text
+H_ab = <D^a u, M D^b u>, 0<=a,b<=3
+~~~
+
+should form a real Hankel 4×4 block.
+
+This is not positivity. It is a candidate rigidity structure to compose with the future constrained eigenmode.
 
 ## Canonical finite object
 
@@ -34,56 +101,8 @@ legacyPrintedMatrix = finiteMatrix.
 
 Sign-sensitive finite claims must use `canonicalSourceMatrix`.
 
-## What #93 closed
-
-`Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx` constructs legal boundary-flat finite hard-window vectors arbitrarily close to any strict-collar C² target in exactly the two L1 quantities consumed by WCONT-A.
-
-OBS-016 remains a general firewall, but its primary-route escape is now proved.
-
-## What #94 closed
-
-PR #94 proves strict finite sign transfer and F1:
-
-~~~text
-off-line zero
-  -> exists L>0,N>=1,u,
-       M0(u)=M1(u)=M2(u)=0
-       and Re quadraticForm(canonicalSourceMatrix L N) u < 0.
-~~~
-
-The approximation/legalization/sign-transfer phase is closed on the primary internal route.
-
-## Current primary frontier
-
-~~~text
-K0-F1 constrained canonical sector
-  -> constrained compression / negative minimizer
-  -> exact displacement rigidity
-  -> aperture-flow / crossing only if required.
-~~~
-
-The pre-F1 parity-first order is no longer binding because F1 supplies three exact moment annihilations on the dangerous vector.
-
-## Structural clue
-
-With D=indexMatrix N and M=canonicalSourceMatrix L N,
-
-~~~text
-[D,M] = g 1^T - 1 g^T
-~~~
-
-is PROVED, while
-
-~~~text
-1^T u = 0
-1^T D u = 0
-1^T D^2 u = 0
-~~~
-
-is DERIVED for an F1 witness. Exact collapse is not yet separately formalized.
-
 ## Dead-route clarification
 
-DR-010 remains falsified. K0-F1 uses the exact analytic D and exact canonical commutator, not a fitted small-commutator generator or spectral-gap heuristic.
+DR-010 remains falsified. #96 uses the exact analytic D and exact canonical commutator, not a fitted small-commutator generator or spectral-gap heuristic.
 
 **RH remains OPEN.**
