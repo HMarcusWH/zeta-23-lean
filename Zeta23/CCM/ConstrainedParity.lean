@@ -87,8 +87,16 @@ theorem centeredZeroExtend_reverseCoefficients
   by_cases hj : j ∈ Set.range (centeredEmbedding N M hNM)
   · obtain ⟨i, rfl⟩ := hj
     simp only [reverseCoefficients, centeredZeroExtend_apply_centeredEmbedding]
-    rw [← centeredEmbedding_rev N M hNM i]
-    simp
+    calc
+      u i.rev =
+          centeredZeroExtend hNM u
+            (centeredEmbedding N M hNM i.rev) := by
+              symm
+              exact centeredZeroExtend_apply_centeredEmbedding hNM u i.rev
+      _ =
+          centeredZeroExtend hNM u
+            ((centeredEmbedding N M hNM i).rev) := by
+              rw [centeredEmbedding_rev N M hNM i]
   · have hjrev :
         j.rev ∉ Set.range (centeredEmbedding N M hNM) := by
       intro h
