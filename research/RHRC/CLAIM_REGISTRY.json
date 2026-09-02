@@ -628,6 +628,48 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "K0-F1E / PR #98. This closes the Euclidean transport, exact mode-floor and negative-direction bridge. Orthogonal compression, constrained Rayleigh minimization/eigenmode, positivity and RH remain open."
+    },
+    {
+      "id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "statement": "For N<=M, the exact central index embedding i.val -> i.val+(M-N) preserves centered Fourier indices and identifies canonicalSourceMatrix L N with the central principal submatrix of canonicalSourceMatrix L M.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_CUTOFF_FREE_MATRIX_MAP"
+      ],
+      "source": "Zeta23/CCM/NestedFinite.lean",
+      "theorem": "Zeta23.CCM.canonicalSourceMatrix_submatrix_centeredEmbedding",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "N-FLOW-A / PR #100 candidate. Exact finite algebra only: no approximate nesting, convergence, positivity, compression, or RH."
+    },
+    {
+      "id": "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+      "statement": "For N<=M, centered zero extension lifts to an exact Euclidean linear isometry and maps euclideanBoundaryFlatSubspace N into euclideanBoundaryFlatSubspace M while preserving all centered moments and the canonical real inner-self value.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_EXACT_CENTERED_FINITE_NESTING",
+        "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+        "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE"
+      ],
+      "source": "Zeta23/CCM/NestedFinite.lean",
+      "theorem": "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanBoundaryFlatSubspace",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "N-FLOW-B / PR #100 candidate. Euclidean isometry is proved on the PiLp_2 carrier directly; it does not identify the older raw function-space norm with the Euclidean norm."
+    },
+    {
+      "id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "statement": "Every hypothetical off-critical-line zero forces one fixed positive aperture L and N0>=2 such that every centered truncation M>=N0 contains a nonzero exact Euclidean boundary-flat direction with strictly negative canonical real inner-self value.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+        "R003_EUCLIDEAN_CONSTRAINED_NESTING"
+      ],
+      "source": "Zeta23/ExceptionalZero/NestedEuclideanObstruction.lean",
+      "theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "N-FLOW-B / PR #100 candidate. The same fixed aperture is retained for the whole tail. This proves persistence of a negative direction, not a compressed eigenmode, first bad size, parity statement, positivity theorem, or RH."
     }
   ]
 }
