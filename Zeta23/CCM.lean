@@ -75,5 +75,6 @@ import Zeta23.CCM.BoundaryFlatApproximation
 import Zeta23.CCM.LocalizedWeilRestriction
 import Zeta23.CCM.SourceWeilMatrixReconciliation
 import Zeta23.CCM.SourceNormalizationRepair
+import Zeta23.CCM.ConstrainedCanonicalSector
 import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.ClaimBindings
