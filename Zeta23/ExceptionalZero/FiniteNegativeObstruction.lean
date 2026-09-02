@@ -104,9 +104,9 @@ theorem zeta_W_self_sub_self_norm_le_of_WCONT_errors
       (∫ x, ‖p x‖)
           ≤ (∫ x, ‖(p - h) x‖) + ∫ x, ‖h x‖ := hpNorm
       _ ≤ η + ∫ x, ‖h x‖ := by
-        exact add_le_add_right he0 _
+        nlinarith
       _ ≤ 1 + ∫ x, ‖h x‖ := by
-        exact add_le_add_right hη1 _
+        nlinarith
       _ = (∫ x, ‖h x‖) + 1 := by ring
 
   have hsumE :
@@ -295,11 +295,20 @@ theorem exists_boundaryFlatFinite_negativeW_of_strictAperture
     zeta_W_self_sub_self_norm_le_of_WCONT_errors
       hL hη.le hη1 hp hh hpsupp hhsupp he0' he2'
 
+  have hKeta :
+      K * η =
+        Real.exp L * zetaInvSqZeroMass * η *
+          (3 * (∫ x, ‖h x‖) +
+            (∫ x, ‖deriv (deriv h) x‖) + 2) := by
+    dsimp [K, H0, H2]
+    ring
+
   have hWdiff' :
       ‖zetaZeroConfig.W p p -
           zetaZeroConfig.W h h‖
         ≤ K * η := by
-    simpa [K, H0, H2, mul_assoc] using hWdiff
+    rw [hKeta]
+    exact hWdiff
 
   have hWnorm :
       ‖zetaZeroConfig.W p p -
