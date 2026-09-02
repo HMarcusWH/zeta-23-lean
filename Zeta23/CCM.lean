@@ -78,5 +78,6 @@ import Zeta23.CCM.SourceNormalizationRepair
 import Zeta23.CCM.ConstrainedCanonicalSector
 import Zeta23.CCM.ConstrainedEuclideanSector
 import Zeta23.CCM.NestedFinite
+import Zeta23.CCM.ConstrainedParity
 import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.ClaimBindings
