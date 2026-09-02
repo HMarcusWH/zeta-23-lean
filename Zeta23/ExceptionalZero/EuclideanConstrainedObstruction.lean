@@ -68,25 +68,31 @@ theorem
     apply hne
     have hxe : e x = e 0 := congrArg e hx
     simpa [x, e] using hxe
+  have hcoord : e x = u := by
+    dsimp [x]
+    exact e.apply_symm_apply u
   have hxmem :
       x ∈ Zeta23.CCM.euclideanBoundaryFlatSubspace N := by
     rw [Zeta23.CCM.mem_euclideanBoundaryFlatSubspace_iff]
-    simpa [x, e] using hmem
+    change e x ∈ Zeta23.CCM.boundaryFlatSubspace N
+    rw [hcoord]
+    exact hmem
   have hxneg :
       Complex.re (inner ℂ
         ((Zeta23.CCM.canonicalSourceMatrix L N).toEuclideanLin x)
         x) < 0 := by
-    calc
-      Complex.re (inner ℂ
+    have hbridge :=
+      Zeta23.CCM.quadraticForm_re_eq_re_inner_apply_self
+        (Zeta23.CCM.canonicalSourceMatrix L N) x
+    change
+      (Zeta23.CCM.quadraticForm
+        (Zeta23.CCM.canonicalSourceMatrix L N) (e x)).re =
+        Complex.re (inner ℂ
           ((Zeta23.CCM.canonicalSourceMatrix L N).toEuclideanLin x)
-          x) =
-          (Zeta23.CCM.quadraticForm
-            (Zeta23.CCM.canonicalSourceMatrix L N) u).re := by
-              symm
-              simpa [x, e] using
-                (Zeta23.CCM.quadraticForm_re_eq_re_inner_apply_self
-                  (Zeta23.CCM.canonicalSourceMatrix L N) x)
-      _ < 0 := hneg
+          x) at hbridge
+    rw [hcoord] at hbridge
+    rw [← hbridge]
+    exact hneg
   exact ⟨L, hL, N, hN2, x, hxne, hxmem, hxneg⟩
 
 /-- Existential wrapper for the Euclidean constrained obstruction. -/
