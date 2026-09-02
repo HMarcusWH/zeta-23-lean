@@ -16,6 +16,7 @@ import Zeta23.CCM.BoundaryFlatApproximation
 import Zeta23.CCM.LocalizedWeilRestriction
 import Zeta23.CCM.SourceWeilMatrixReconciliation
 import Zeta23.CCM.SourceNormalizationRepair
+import Zeta23.CCM.ConstrainedCanonicalSector
 import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.DictionaryRHSIdentity
 import Zeta23.ExceptionalZero.DisplacementTransfer
@@ -26,6 +27,7 @@ import Zeta23.ExceptionalZero.NegativeWeilTestSupport
 import Zeta23.ExceptionalZero.WeilZeroSideEvenization
 import Zeta23.ExceptionalZero.BoundaryFlatFiniteWeil
 import Zeta23.ExceptionalZero.FiniteNegativeObstruction
+import Zeta23.ExceptionalZero.ConstrainedFiniteObstruction
 
 /-!
 # Promoted CCM / R002 / R003 theorem bindings
@@ -331,3 +333,38 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.ExceptionalZero.exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_offLine_zero
 #check Zeta23.ExceptionalZero.exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_exists_offLine_zero
 #print axioms Zeta23.ExceptionalZero.exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_exists_offLine_zero
+
+#check Zeta23.CCM.centeredMomentLinearMap_apply
+#print axioms Zeta23.CCM.centeredMomentLinearMap_apply
+#check Zeta23.CCM.mem_boundaryFlatSubspace_iff
+#print axioms Zeta23.CCM.mem_boundaryFlatSubspace_iff
+#check Zeta23.CCM.indexMatrix_mulVec_apply
+#print axioms Zeta23.CCM.indexMatrix_mulVec_apply
+#check Zeta23.CCM.centeredMoment_indexMatrix_mulVec
+#print axioms Zeta23.CCM.centeredMoment_indexMatrix_mulVec
+#check Zeta23.CCM.boundaryFlat_moment_flag
+#print axioms Zeta23.CCM.boundaryFlat_moment_flag
+#check Zeta23.CCM.canonicalSourceMatrix_conjTranspose
+#print axioms Zeta23.CCM.canonicalSourceMatrix_conjTranspose
+#check Zeta23.CCM.canonicalSourceMatrix_isHermitian
+#print axioms Zeta23.CCM.canonicalSourceMatrix_isHermitian
+#check Zeta23.CCM.canonicalSourceMatrix_displacement_mulVec_of_moment_zero
+#print axioms Zeta23.CCM.canonicalSourceMatrix_displacement_mulVec_of_moment_zero
+#check Zeta23.CCM.boundaryFlat_canonical_displacement_package
+#print axioms Zeta23.CCM.boundaryFlat_canonical_displacement_package
+#check Zeta23.CCM.quadraticForm_smul
+#print axioms Zeta23.CCM.quadraticForm_smul
+
+#check Zeta23.ExceptionalZero.ne_zero_of_quadraticForm_re_neg
+#print axioms Zeta23.ExceptionalZero.ne_zero_of_quadraticForm_re_neg
+#check Zeta23.ExceptionalZero.exists_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero
+#check Zeta23.ExceptionalZero.exists_ne_zero_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_ne_zero_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero
+#check Zeta23.ExceptionalZero.quadraticForm_inv_norm_smul_re_neg
+#print axioms Zeta23.ExceptionalZero.quadraticForm_inv_norm_smul_re_neg
+#check Zeta23.ExceptionalZero.exists_unit_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_unit_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero
+#check Zeta23.ExceptionalZero.exists_unit_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_exists_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_unit_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_exists_offLine_zero
+
