@@ -86,7 +86,11 @@ theorem centeredZeroExtend_reverseCoefficients
   ext j
   by_cases hj : j ∈ Set.range (centeredEmbedding N M hNM)
   · obtain ⟨i, rfl⟩ := hj
-    simp [reverseCoefficients]
+    change
+      u i.rev =
+        centeredZeroExtend hNM u ((centeredEmbedding N M hNM i).rev)
+    rw [← centeredEmbedding_rev N M hNM i]
+    simp
   · have hjrev :
         j.rev ∉ Set.range (centeredEmbedding N M hNM) := by
       intro h
@@ -95,8 +99,8 @@ theorem centeredZeroExtend_reverseCoefficients
       refine ⟨i.rev, ?_⟩
       simpa using congrArg Fin.rev hi
     rw [centeredZeroExtend_apply_of_not_mem_range hNM _ j hj]
+    change 0 = centeredZeroExtend hNM u j.rev
     rw [centeredZeroExtend_apply_of_not_mem_range hNM _ j.rev hjrev]
-    rfl
 
 /-- Every centered moment has the expected reversal parity. -/
 theorem centeredMoment_reverseCoefficients
@@ -147,7 +151,8 @@ def evenCoefficientSubspace
     (N : ℕ)
     (u : Fin (2 * N + 1) → ℂ) :
     u ∈ evenCoefficientSubspace N ↔ reverseCoefficients N u = u := by
-  simp [evenCoefficientSubspace, reversalLinearMap, reverseCoefficients]
+  change reverseCoefficients N u - u = 0 ↔ reverseCoefficients N u = u
+  exact sub_eq_zero
 
 /-- Raw odd coefficient sector. -/
 def oddCoefficientSubspace
@@ -159,15 +164,18 @@ def oddCoefficientSubspace
     (N : ℕ)
     (u : Fin (2 * N + 1) → ℂ) :
     u ∈ oddCoefficientSubspace N ↔ reverseCoefficients N u = -u := by
+  change
+    (reversalLinearMap N + LinearMap.id) u = 0 ↔
+      reverseCoefficients N u = -u
   constructor
   · intro hu
-    change reversalLinearMap N u + u = 0 at hu
-    change reverseCoefficients N u = -u
-    simpa [eq_neg_iff_add_eq_zero] using hu
+    have hu' : reverseCoefficients N u + u = 0 := by
+      simpa [reversalLinearMap] using hu
+    exact (eq_neg_iff_add_eq_zero).2 hu'
   · intro hu
-    change reversalLinearMap N u + u = 0
-    change reverseCoefficients N u + u = 0
-    simpa [hu]
+    have hu' : reverseCoefficients N u + u = 0 :=
+      (eq_neg_iff_add_eq_zero).1 hu
+    simpa [reversalLinearMap] using hu'
 
 /-- Even constrained coefficient sector. -/
 def evenBoundaryFlatSubspace
@@ -205,7 +213,8 @@ theorem reverseCoefficients_indexMatrix_mulVec
   unfold alphaL
   rw [← mul_neg, ← intervalIntegral.integral_neg]
   congr 1
-  funext x
+  apply intervalIntegral.integral_congr
+  intro x hxmem
   by_cases hx : x = 0
   · subst x
     by_cases hn : n = 0
@@ -229,7 +238,8 @@ theorem reverseCoefficients_indexMatrix_mulVec
     betaL (-n) L = betaL n L := by
   unfold betaL
   congr 1
-  funext x
+  apply intervalIntegral.integral_congr
+  intro x hxmem
   by_cases hx : x = 0
   · simp [hx]
   · simp only [hx, if_false]
@@ -246,7 +256,8 @@ theorem reverseCoefficients_indexMatrix_mulVec
     gammaL (-n) L = gammaL n L := by
   unfold gammaL
   congr 2
-  funext x
+  apply intervalIntegral.integral_congr
+  intro x hxmem
   by_cases hx : x = 0
   · simp [hx]
   · simp only [hx, if_false]
@@ -277,7 +288,8 @@ theorem reverseCoefficients_indexMatrix_mulVec
 @[simp] theorem displacementSeq_neg
     (n : ℤ) (L : ℝ) :
     displacementSeq (-n) L = - displacementSeq n L := by
-  simp [displacementSeq]
+  simp only [displacementSeq, poleSeq_neg, alphaL_neg, primeSeq_neg]
+  ring
 
 /-- The concrete finite kernel is invariant under simultaneous index negation. -/
 @[simp] theorem qBasis_neg_neg
@@ -285,7 +297,7 @@ theorem reverseCoefficients_indexMatrix_mulVec
     qBasis (-n) (-m) y L = qBasis n m y L := by
   by_cases h : n = m
   · subst m
-    simp [qBasis]
+    rw [qBasis, if_pos rfl, qBasis, if_pos rfl]
     rw [show
       2 * Real.pi * ((-n : ℤ) : ℝ) * y / L =
         -(2 * Real.pi * (n : ℝ) * y / L) by
@@ -329,14 +341,12 @@ theorem reverseCoefficients_indexMatrix_mulVec
   · subst m
     simp [archComponent]
   · have hneg : -n ≠ -m := by simpa using h
-    have hnmZ : n - m ≠ 0 := sub_ne_zero.mpr h
-    have hmnZ : m - n ≠ 0 := sub_ne_zero.mpr (Ne.symm h)
-    have hnmR : (((n - m : ℤ) : ℝ)) ≠ 0 := by exact_mod_cast hnmZ
-    have hmnR : (((m - n : ℤ) : ℝ)) ≠ 0 := by exact_mod_cast hmnZ
     rw [archComponent, if_neg hneg, archComponent, if_neg h]
-    simp
-    field_simp [hnmR, hmnR]
+    simp only [alphaL_neg]
     push_cast
+    rw [show
+      -(n : ℝ) + (m : ℝ) = -((n : ℝ) - (m : ℝ)) by ring]
+    rw [inv_neg]
     ring
 
 /-- The finite prime-power matrix channel is invariant under simultaneous negation. -/
@@ -369,15 +379,13 @@ theorem reverseCoefficients_indexMatrix_mulVec
   · subst m
     simp [cutoffFreeArchComponent]
   · have hneg : -n ≠ -m := by simpa using h
-    have hnmZ : n - m ≠ 0 := sub_ne_zero.mpr h
-    have hmnZ : m - n ≠ 0 := sub_ne_zero.mpr (Ne.symm h)
-    have hnmR : (((n - m : ℤ) : ℝ)) ≠ 0 := by exact_mod_cast hnmZ
-    have hmnR : (((m - n : ℤ) : ℝ)) ≠ 0 := by exact_mod_cast hmnZ
     rw [cutoffFreeArchComponent, if_neg hneg,
       cutoffFreeArchComponent, if_neg h]
-    simp
-    field_simp [hnmR, hmnR]
+    simp only [alphaL_neg]
     push_cast
+    rw [show
+      -(n : ℝ) + (m : ℝ) = -((n : ℝ) - (m : ℝ)) by ring]
+    rw [inv_neg]
     ring
 
 /-- The canonical cutoff-free scalar entry is reversal invariant. -/
@@ -409,12 +417,16 @@ theorem canonicalSourceMatrix_mulVec_reverseCoefficients
     canonicalSourceMatrix L N *ᵥ reverseCoefficients N u =
       reverseCoefficients N (canonicalSourceMatrix L N *ᵥ u) := by
   ext i
+  change
+    (canonicalSourceMatrix L N *ᵥ reverseCoefficients N u) i =
+      (canonicalSourceMatrix L N *ᵥ u) i.rev
   rw [Matrix.mulVec_apply, Matrix.mulVec_apply]
   rw [← Equiv.sum_comp Fin.revPerm]
   simp only [Fin.revPerm_apply, reverseCoefficients, Fin.rev_rev]
   apply Finset.sum_congr rfl
   intro j hj
-  rw [← canonicalSourceMatrix_apply_rev_rev L N i j]
+  simpa using congrArg (fun z : ℂ => z * u j)
+    (canonicalSourceMatrix_apply_rev_rev L N i.rev j)
 
 /-- Even coefficient vectors annihilate the odd displacement vector in the
 ordinary bilinear pairing used by the exact commutator theorem. -/
@@ -430,7 +442,8 @@ theorem displacementPairing_eq_zero_of_even
         -(∑ i, displacementVector L N i * u i) := by
     calc
       (∑ i, displacementVector L N i * u i)
-          = ∑ i, displacementVector L N i.rev * u i.rev := by
+          = ∑ i : Fin (2 * N + 1),
+              displacementVector L N i.rev * u i.rev := by
               rw [← Equiv.sum_comp Fin.revPerm]
               simp
       _ = -(∑ i, displacementVector L N i * u i) := by
