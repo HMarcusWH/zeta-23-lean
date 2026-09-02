@@ -77,12 +77,15 @@
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
-        "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION"
+        "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+        "R003_EXACT_CENTERED_FINITE_NESTING",
+        "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+        "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "R003 internal route is theorem-backed through F1, K0-F1 and K0-F1E / PR #98. The theorem-state anchor is PR #98 merge 4f212e35fefb339646e294573dcb390dae2f6181 with tree 84a678327fffe6806e1e786ac2e159a5ce628f67; RHRC #685 and Permansson #458 succeeded on final head 723c63badb2ac787c3dfa78369909477af6bc6a4, whose tree equals the merged tree. PR #98 proves exact rank of the three moment constraints, finrank 2*N-2, the N>=2 floor for nonzero constrained witnesses, the Euclidean/PiLp_2 constrained sector, canonical Euclidean symmetry, the quadraticForm/inner-self bridge, and off-line zero -> nonzero constrained Euclidean negative direction. The next theorem program is exact centered finite-N nesting, then reversal/parity, then orthogonal constrained compression and negative spectral extraction. OBS-017 now has items 1-3 closed and item 4 (compression) open. OBS-015 keeps G1-B1B, G1-final, S-NEG and G23 separate as an independent source-faithful route. RH remains open."
+      "note": "R003 merged theorem authority remains through K0-F1E / PR #98 while PR #100 is under validation. The #100 branch promotes exact centered finite-N principal-block nesting, Euclidean constrained zero-extension, and the fixed-aperture nested negative obstruction. These branch claims become merged repository truth only after exact-head compiler/CI validation and merge. Parity, constrained compression/eigenmodes, first-bad size, Schur/secular analysis, source QW, positivity and RH remain open."
     },
     {
       "route_id": "R004_prolate_v2",
