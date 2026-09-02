@@ -151,6 +151,18 @@
     {
       "id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
       "theorem": "Zeta23.ExceptionalZero.exists_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
+    },
+    {
+      "id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "theorem": "Zeta23.CCM.canonicalSourceMatrix_submatrix_centeredEmbedding"
+    },
+    {
+      "id": "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+      "theorem": "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanBoundaryFlatSubspace"
+    },
+    {
+      "id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
     }
   ]
 }
