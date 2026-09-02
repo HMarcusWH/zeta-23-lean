@@ -17,6 +17,7 @@ import Zeta23.CCM.LocalizedWeilRestriction
 import Zeta23.CCM.SourceWeilMatrixReconciliation
 import Zeta23.CCM.SourceNormalizationRepair
 import Zeta23.CCM.ConstrainedCanonicalSector
+import Zeta23.CCM.ConstrainedEuclideanSector
 import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.DictionaryRHSIdentity
 import Zeta23.ExceptionalZero.DisplacementTransfer
@@ -28,6 +29,7 @@ import Zeta23.ExceptionalZero.WeilZeroSideEvenization
 import Zeta23.ExceptionalZero.BoundaryFlatFiniteWeil
 import Zeta23.ExceptionalZero.FiniteNegativeObstruction
 import Zeta23.ExceptionalZero.ConstrainedFiniteObstruction
+import Zeta23.ExceptionalZero.EuclideanConstrainedObstruction
 
 /-!
 # Promoted CCM / R002 / R003 theorem bindings
