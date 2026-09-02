@@ -71,7 +71,7 @@ When recording repository state in living documents:
 Example:
 
 ~~~text
-theorem-state anchor = PR #96 merge <sha>
+theorem-state anchor = PR #<theorem-bearing PR> merge <sha>
 theorem tree = <tree>
 live GitHub main = authoritative
 ~~~
