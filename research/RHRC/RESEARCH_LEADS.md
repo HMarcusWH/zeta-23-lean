@@ -433,68 +433,26 @@ W1 strict negative W witness
 
 ## L-F0B1-01 — boundary-flat finite Fourier approximation
 
-**Research status:** PARTIALLY PROMOTED / ACTIVE F0-B1C-B  
-**Formal status:** F0-B1C-A PROVED; F0-B1C-B OPEN  
-**Production claim:** R003_LOCALIZED_UNIFORM_C2_APPROXIMATION
+**Research status:** PROMOTED / PRIMARY ROUTE CLOSED  
+**Formal status:** F0-B1C-A PROVED; F0-B1C-B PROVED  
+**Production claims:** R003_LOCALIZED_UNIFORM_C2_APPROXIMATION; R003_BOUNDARY_FLAT_WCONT_APPROXIMATION
 
-### What #91 proved
-
-For every positive aperture L, every complex-valued C² target h with tsupport strictly inside (0,L), and every epsilon>0, Lean now produces N>=1 and centered finite coefficients u such that the formula-level finite Fourier function q satisfies
+PR #91 closes raw centered finite Fourier approximation. PR #93 closes legal hard-window approximation in the exact WCONT topology:
 
 ~~~text
-q(0)=0
-sup_[0,L] ||q-h|| < epsilon
-sup_[0,L] ||q'-h'|| < epsilon
-sup_[0,L] ||q''-h''|| < epsilon.
+Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx
 ~~~
 
-The AddCircle/Finsupp/centered-coordinate construction is theorem-backed. The exact pinned density theorem used in production is the root declaration span_fourier_closure_eq_top.
-
-Generic Stone-Weierstrass packaging and a Fejer-first construction are no longer live requirements for raw approximation.
-
-### Current subgate — F0-B1C-B
-
-Convert the raw approximant into the exact #88 boundary-flat carrier while preserving the WCONT topology.
-
-**DERIVED / not yet formalized:**
-
-Because q(0)=0 exactly and L>0,
+For every positive fixed aperture, strict-collar C² target and eta>0, Lean produces N>=1 and BoundaryFlatCoefficients u such that p=localizedFiniteVector L N u satisfies
 
 ~~~text
-M0=0.
+integral ||p-h|| < eta
+integral ||(p-h)''|| < eta.
 ~~~
 
-Then
+The complete projected vector is the legal object. OBS-016 remains a general firewall, but its primary R003 escape is PROVED.
 
-~~~text
-|M1| = L^(3/2)/(2*pi)   |q'(0)|
-|M2| = L^(5/2)/(4*pi^2) |q''(0)|.
-~~~
-
-The intended three-mode correction estimates are
-
-~~~text
-integral_0^L |c|
-  <= L^2/(2*pi) |q'(0)|
-   + L^3/(2*pi^2) |q''(0)|
-
-integral_0^L |c''|
-  <= 2*pi |q'(0)| + L |q''(0)|.
-~~~
-
-All constants depend only on the fixed aperture, not N.
-
-### Remaining blocker
-
-The complete projected hard-window vector must be connected theorem-authoritatively to these interior formula-level estimates. Raw periodic approximation is not global hard-window C² legality.
-
-See OBS-016.
-
-### Stop condition
-
-Only reopen the raw Fourier approximation architecture if the explicit fixed three-mode projection estimates fail for a structural reason. Do not rebuild density first.
-
----
+Do not reopen Fourier density or boundary legalization on the primary route unless a downstream theorem exposes a genuine missing hypothesis.
 
 ## L-F0B2-01 — direct additive-functional continuity on legal finite vectors
 
@@ -654,61 +612,55 @@ Do not silently strengthen source hypotheses or conclusions.
 
 ## L-F1-01 — off-line zero forces a negative canonical finite quadratic form
 
-**Research status:** BLOCKED BUT HIGHEST PRE-v2.0 TARGET  
-**Formal status:** OPEN
+**Research status:** PROMOTED / PRIMARY INTERNAL F1 CLOSED  
+**Formal status:** PROVED  
+**Claim ID:** R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION
 
-Exact intended theorem:
+PR #94 proves:
 
 ~~~text
-(exists rho : zetaZeroConfig.carrier, (rho : C).re != 1/2)
-  -> exists L : R, 0 < L
-     and exists N : Nat
-     and exists u : Fin (2*N+1) -> C,
-       Re (quadraticForm (canonicalSourceMatrix L N) u) < 0.
+Zeta23.ExceptionalZero.
+  exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_offLine_zero
 ~~~
 
-No legacy finiteMatrix, numerical surrogate, hidden QW definition, or normalization shortcut.
+Exact endpoint:
 
-### Possible proof routes
+~~~text
+rho off the critical line
+  -> exists L>0, N>=1, u,
+       BoundaryFlatCoefficients N u
+       and Re quadraticForm(canonicalSourceMatrix L N) u < 0.
+~~~
 
-- internal: W0/W1 + W2 + F0-B + G1-A;
-- source: theorem-backed source negativity entry (L-SNEG-01 or exact W/localized/QW composition) + G1-B1B + G1-final + G23;
-- independent Suzuki/source route if exact hypotheses match.
+The proof uses W1 + #93 + WCONT-A + F0-B1A. No source-QW interface or legacy finiteMatrix sign claim is used.
 
-A second independent proof of F1 would be unusually valuable.
-
-### Promotion rule
-
-When F1 becomes green, perform a full Post-Green Research Pass before beginning the terminal finite-wall program. F1 green is the threshold for a new external roadmap v2.0, not a proof of RH.
-
----
+F1 is a one-way finite obstruction theorem. The finite impossibility theorem and RH remain OPEN.
 
 # E. Post-F1 canonical finite-wall program
 
-## L-K0-01 — Hermitian / reversal / parity package
+## L-K0F1-01 — constrained canonical sector
 
-**Research status:** READY AFTER F1; cheap pieces may be explored earlier  
-**Formal status:** OPEN, with structural PROVED inputs
+**Research status:** ACTIVE / HIGHEST-LEVERAGE NEXT  
+**Formal status:** OPEN, with PROVED F1 and displacement inputs
+
+F1 supplies a negative canonical direction satisfying M0=M1=M2=0. The canonical matrix separately satisfies [D,M]=g1^T-1g^T.
 
 Target package:
 
-- canonical matrix real symmetric or Hermitian in the exact coefficient convention;
-- M_{-n,-m}=M_{n,m};
-- reversal operator R with RM=MR;
-- centered index D anticommutes with R;
-- canonical displacement vector g is odd;
-- all-ones vector 1 is even;
-- odd vectors have coefficient sum zero.
+1. package the three moment constraints as a reusable finite subspace without competing with BoundaryFlatCoefficients;
+2. theorem-lock M_k(Du)=M_{k+1}(u);
+3. theorem-lock the descending flag V2 --D--> V1 and V2 --D²--> V0;
+4. expose canonicalSourceMatrix as Hermitian;
+5. theorem-lock exact commutator mulVec collapse for zero-sum v;
+6. specialize to u, Du and D²u for boundary-flat u.
 
-### Why it matters
+Do not claim D preserves V2. Do not turn the constrained negative direction into a full eigenvector of M without a separate compression/minimizer theorem.
 
-Splits the finite space into parity sectors and turns the exact rank-two displacement relation into much smaller forcing channels.
-
----
+This supersedes the old parity-first K0 execution order; parity remains a live downstream tool.
 
 ## L-K1-01 — continuous aperture flow and first singularity
 
-**Research status:** BLOCKED UNTIL F1 / K0  
+**Research status:** DEFERRED PENDING K0-F1 POST-GREEN DECISION  
 **Formal status:** OPEN
 
 For fixed N:
@@ -739,7 +691,7 @@ This is a LEAD until rederived on canonicalSourceMatrix.
 
 ## L-K2-01 — singular kernel/displacement rigidity
 
-**Research status:** BLOCKED UNTIL K0/K1  
+**Research status:** DEFERRED PENDING K0-F1 / CONSTRAINED-COMPRESSION TEST  
 **Formal status:** LEAD / OPEN
 
 PROVED structural input:
@@ -767,7 +719,7 @@ Do not assume one-dimensional kernel.
 
 ## L-K2-02 — parity-block distinguished resolvents
 
-**Research status:** BLOCKED UNTIL K0/K1  
+**Research status:** DEFERRED PENDING K0-F1 / CONSTRAINED-COMPRESSION TEST  
 **Formal status:** LEAD / HYPOTHESIS
 
 Candidate scalar resolvents:
@@ -864,7 +816,7 @@ Use only the minimal moment algebra required by the codimension-three endpoint c
 
 ## L-E4-01 — parity / extremal spectrum
 
-**Research status:** ACTIVE AT K0  
+**Research status:** ACTIVE DOWNSTREAM OF K0-F1  
 **Formal status:** LEAD
 
 Full complex finite space is now theorem-locked. Use parity to split channels and kernels.

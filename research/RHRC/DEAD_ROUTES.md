@@ -76,6 +76,7 @@ Infer useful eigenvector convergence from the numerically fitted symmetric tridi
 
 Finite fitted-generator spectral gaps collapse badly in tested cases. A revival requires an analytically specified generator plus separate absolute commutator and spectral-gap theorems.
 
+**Post-F1 clarification:** K0-F1 is not a revival of DR-010. The new route uses the exact analytically defined centered-index operator D, the exact canonical identity [D,M]=g1^T-1g^T, and independently theorem-backed F1 moment constraints. It makes no small-commutator, fitted-generator or spectral-gap inference.
 ## DR-011 — legacy absolute spectrum as canonical source spectrum
 
 Use absolute eigenvalues, inertia, PSD, trace, determinant or lower bounds computed from the legacy printed `finiteMatrix` as if they were canonical source spectral data.

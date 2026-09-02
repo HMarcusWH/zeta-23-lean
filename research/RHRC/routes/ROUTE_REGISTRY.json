@@ -65,12 +65,15 @@
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
         "R003_BOUNDARY_FLAT_PROJECTION",
         "R003_WEIL_COMMON_SUPPORT_BOUND",
-        "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION"
+        "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+        "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+        "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "R003 merged main is current through PR #91 at bab94aed54298de6fc6676808a0b0e46c2db6046 (tree f98b3051ca789ef0d134934fc01d97ac7497d4ca). PR #89/WCONT-A is permanently merged and closes the fixed-support genuine-W continuity seam. PR #91/F0-B1C-A proves raw centered finite Fourier approximation of every strict-collar C^2 target uniformly in value, first jet, and second jet, with q(0)=0 exactly, using the exact pinned AddCircle Fourier span and explicit Finsupp-to-centered-coordinate reconstruction. F0-B1A remains the legal boundary-flat hard-window carrier and F0-B1B the exact N>=1 three-mode projection. The primary internal frontier is now F0-B1C-B: theorem-lock fixed-L, N-independent quantitative projection stability in the WCONT-relevant L1 + second-derivative L1 topology. Post-#91 analysis derives M0=0 exactly for the raw approximants and reduces the correction to M1,M2; explicit correction bounds are a DERIVED target until separately formalized. Then strict finite sign transfer and strengthened F1 remain open. OBS-015 keeps the source sign lane separate, and the raw-periodic-versus-hard-window legality firewall remains binding. K0-K3 and RH remain open."
+      "note": "R003 internal route is merged through F1 / PR #94 at main 8b54a72767c2703351990e2a67354511e9c9b83a (tree 0fca10d1904d85bd33763cc6728e22c1c5b9ef5d). PR #93 closes F0-B1C-B with legal fixed-aperture boundary-flat approximation in exactly the L1 plus second-derivative-L1 topology consumed by WCONT-A. PR #94 closes strict finite sign transfer and F1: any hypothetical off-line zeta zero forces a negative quadratic direction of canonicalSourceMatrix satisfying BoundaryFlatCoefficients, hence centered moments M0=M1=M2=0. The primary internal frontier has moved to K0-F1, the constrained finite canonical sector. OBS-015 keeps G1-B1B, G1-final, S-NEG and G23 separate as an independent source-faithful route. RH remains open."
     },
     {
       "route_id": "R004_prolate_v2",
