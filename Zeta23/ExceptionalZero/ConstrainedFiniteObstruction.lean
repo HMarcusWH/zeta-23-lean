@@ -107,10 +107,12 @@ theorem quadraticForm_inv_norm_smul_re_neg
   have hinv : 0 < ‖u‖⁻¹ := inv_pos.mpr hnorm
   have hscale : 0 < ‖u‖⁻¹ * ‖u‖⁻¹ := mul_pos hinv hinv
   have hscalar :
-      (starRingEnd ℂ) ((‖u‖ : ℂ)⁻¹) * ((‖u‖ : ℂ)⁻¹) =
+      star ((‖u‖ : ℂ)⁻¹) * ((‖u‖ : ℂ)⁻¹) =
         (((‖u‖⁻¹ * ‖u‖⁻¹ : ℝ) : ℂ)) := by
-    simp only [← Complex.ofReal_inv, starRingEnd_apply, Complex.star_def,
-      Complex.conj_ofReal, ← Complex.ofReal_mul]
+    rw [← Complex.ofReal_inv]
+    rw [← Complex.ofReal_inv]
+    rw [Complex.star_def, Complex.conj_ofReal]
+    rw [← Complex.ofReal_mul]
   rw [Zeta23.CCM.quadraticForm_smul, hscalar]
   simpa only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im,
     zero_mul, sub_zero] using
