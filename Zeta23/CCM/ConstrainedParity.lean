@@ -86,9 +86,7 @@ theorem centeredZeroExtend_reverseCoefficients
   ext j
   by_cases hj : j ∈ Set.range (centeredEmbedding N M hNM)
   · obtain ⟨i, rfl⟩ := hj
-    change
-      u i.rev =
-        centeredZeroExtend hNM u ((centeredEmbedding N M hNM i).rev)
+    simp only [reverseCoefficients, centeredZeroExtend_apply_centeredEmbedding]
     rw [← centeredEmbedding_rev N M hNM i]
     simp
   · have hjrev :
@@ -165,17 +163,12 @@ def oddCoefficientSubspace
     (u : Fin (2 * N + 1) → ℂ) :
     u ∈ oddCoefficientSubspace N ↔ reverseCoefficients N u = -u := by
   change
-    (reversalLinearMap N + LinearMap.id) u = 0 ↔
+    (reversalLinearMap N +
+      (LinearMap.id :
+        (Fin (2 * N + 1) → ℂ) →ₗ[ℂ] (Fin (2 * N + 1) → ℂ))) u = 0 ↔
       reverseCoefficients N u = -u
-  constructor
-  · intro hu
-    have hu' : reverseCoefficients N u + u = 0 := by
-      simpa [reversalLinearMap] using hu
-    exact (eq_neg_iff_add_eq_zero).2 hu'
-  · intro hu
-    have hu' : reverseCoefficients N u + u = 0 :=
-      (eq_neg_iff_add_eq_zero).1 hu
-    simpa [reversalLinearMap] using hu'
+  simp only [LinearMap.add_apply, LinearMap.id_apply, reversalLinearMap_apply]
+  exact eq_neg_iff_add_eq_zero.symm
 
 /-- Even constrained coefficient sector. -/
 def evenBoundaryFlatSubspace
@@ -344,10 +337,15 @@ theorem reverseCoefficients_indexMatrix_mulVec
     rw [archComponent, if_neg hneg, archComponent, if_neg h]
     simp only [alphaL_neg]
     push_cast
-    rw [show
-      -(n : ℝ) + (m : ℝ) = -((n : ℝ) - (m : ℝ)) by ring]
-    rw [inv_neg]
-    ring
+    have hnum :
+        -alphaL m L - -alphaL n L =
+          -(alphaL m L - alphaL n L) := by
+      ring
+    have hden :
+        -(n : ℝ) - -(m : ℝ) =
+          -((n : ℝ) - (m : ℝ)) := by
+      ring
+    rw [hnum, hden, neg_div_neg_eq]
 
 /-- The finite prime-power matrix channel is invariant under simultaneous negation. -/
 @[simp] theorem primeComponent_neg_neg
@@ -383,10 +381,15 @@ theorem reverseCoefficients_indexMatrix_mulVec
       cutoffFreeArchComponent, if_neg h]
     simp only [alphaL_neg]
     push_cast
-    rw [show
-      -(n : ℝ) + (m : ℝ) = -((n : ℝ) - (m : ℝ)) by ring]
-    rw [inv_neg]
-    ring
+    have hnum :
+        -alphaL m L - -alphaL n L =
+          -(alphaL m L - alphaL n L) := by
+      ring
+    have hden :
+        -(n : ℝ) - -(m : ℝ) =
+          -((n : ℝ) - (m : ℝ)) := by
+      ring
+    rw [hnum, hden, neg_div_neg_eq]
 
 /-- The canonical cutoff-free scalar entry is reversal invariant. -/
 @[simp] theorem cutoffFreeEntry_neg_neg
@@ -418,11 +421,11 @@ theorem canonicalSourceMatrix_mulVec_reverseCoefficients
       reverseCoefficients N (canonicalSourceMatrix L N *ᵥ u) := by
   ext i
   change
-    (canonicalSourceMatrix L N *ᵥ reverseCoefficients N u) i =
-      (canonicalSourceMatrix L N *ᵥ u) i.rev
-  rw [Matrix.mulVec_apply, Matrix.mulVec_apply]
+    (canonicalSourceMatrix L N).row i ⬝ᵥ reverseCoefficients N u =
+      (canonicalSourceMatrix L N).row i.rev ⬝ᵥ u
+  unfold dotProduct
   rw [← Equiv.sum_comp Fin.revPerm]
-  simp only [Fin.revPerm_apply, reverseCoefficients, Fin.rev_rev]
+  simp only [Fin.revPerm_apply, reverseCoefficients, Fin.rev_rev, Matrix.row_apply]
   apply Finset.sum_congr rfl
   intro j hj
   simpa using congrArg (fun z : ℂ => z * u j)
