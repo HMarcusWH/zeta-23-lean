@@ -260,7 +260,7 @@ theorem evenBoundaryFlat_normal_eq_evenNormalSubspace
       exact (euclideanEvenCoefficientSubspace N).sub_mem hreven hqeven
     have hsorth :
         s ∈ (euclideanEvenBoundaryFlatSubspace N)ᗮ := by
-      exact (euclideanEvenBoundaryFlatSubspace N)ᗮ.sub_mem hrorth hqorth
+      exact ((euclideanEvenBoundaryFlatSubspace N)ᗮ).sub_mem hrorth hqorth
     have hp0S : centeredPowerVector N 0 ∈ S := by
       exact
         (show ℂ ∙ centeredPowerVector N 0 ≤ S from le_sup_left)
@@ -339,7 +339,7 @@ theorem oddBoundaryFlat_normal_eq_oddNormalSubspace
       (euclideanOddCoefficientSubspace N).sub_mem hrodd hqodd
     have hsorth :
         s ∈ (euclideanOddBoundaryFlatSubspace N)ᗮ :=
-      (euclideanOddBoundaryFlatSubspace N)ᗮ.sub_mem hrorth hqorth
+      ((euclideanOddBoundaryFlatSubspace N)ᗮ).sub_mem hrorth hqorth
     have hp1S : centeredPowerVector N 1 ∈ S := by
       exact Submodule.mem_span_singleton_self (centeredPowerVector N 1)
     have hs1 :
@@ -526,7 +526,11 @@ theorem parityKKTResidual_of_eigenmode
       rcases hz with ⟨a2, rfl⟩
       refine ⟨a0, a2, ?_⟩
       dsimp [parityEigenResidual] at hyz
-      linear_combination hyz.symm
+      have hadd := congrArg
+        (fun t =>
+          t + (lam : ℂ) •
+            (v : EuclideanSpace ℂ (Fin (2 * N + 1)))) hyz.symm
+      simpa [add_assoc, add_left_comm, add_comm] using hadd
   | odd =>
       have hr :
           parityEigenResidual .odd L N lam v ∈
@@ -542,7 +546,11 @@ theorem parityKKTResidual_of_eigenmode
       rcases hr with ⟨a1, hr⟩
       refine ⟨a1, ?_⟩
       dsimp [parityEigenResidual] at hr
-      linear_combination hr.symm
+      have hadd := congrArg
+        (fun t =>
+          t + (lam : ℂ) •
+            (v : EuclideanSpace ℂ (Fin (2 * N + 1)))) hr.symm
+      simpa [add_assoc, add_left_comm, add_comm] using hadd
 
 end Zeta23.CCM
 
