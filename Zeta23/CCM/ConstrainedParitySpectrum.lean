@@ -169,18 +169,18 @@ theorem exists_negative_eigenmode_of_parityBad
   letI : Nontrivial V := nontrivial_of_ne x 0 hxne
   let lam : ℝ :=
     ⨅ z : {z : V // z ≠ 0},
-      Complex.re (inner ℂ (T z) z) / ‖(z : V)‖ ^ 2
+      RCLike.re (inner ℂ (T z) z) / ‖(z : V)‖ ^ 2
   have hbdd :
       BddBelow
         (Set.range fun z : {z : V // z ≠ 0} =>
-          Complex.re (inner ℂ (T z) z) / ‖(z : V)‖ ^ 2) := by
+          RCLike.re (inner ℂ (T z) z) / ‖(z : V)‖ ^ 2) := by
     refine ⟨-‖Tc‖, ?_⟩
     rintro _ ⟨z, rfl⟩
     have habs :=
       ContinuousLinearMap.rayleighQuotient_le_norm
         (𝕜 := ℂ) Tc (z : V)
     have habs' :
-        |Complex.re (inner ℂ (Tc (z : V)) (z : V)) / ‖(z : V)‖ ^ 2| ≤
+        |RCLike.re (inner ℂ (Tc (z : V)) (z : V)) / ‖(z : V)‖ ^ 2| ≤
           ‖Tc‖ := by
       simpa only [ContinuousLinearMap.rayleighQuotient,
         ContinuousLinearMap.reApplyInnerSelf_apply] using habs
@@ -188,25 +188,25 @@ theorem exists_negative_eigenmode_of_parityBad
     rw [hTcT] at habs'
     exact neg_le_of_abs_le habs'
   have hlamle :
-      lam ≤ Complex.re (inner ℂ (T x) x) / ‖(x : V)‖ ^ 2 := by
+      lam ≤ RCLike.re (inner ℂ (T x) x) / ‖(x : V)‖ ^ 2 := by
     exact ciInf_le hbdd ⟨x, hxne⟩
   have hden : 0 < ‖(x : V)‖ ^ 2 := by positivity
   have hxnegT :
-      Complex.re (inner ℂ (T x) x) < 0 := by
+      RCLike.re (inner ℂ (T x) x) < 0 := by
     change
-      Complex.re
+      RCLike.re
         (inner ℂ (parityCompressedCanonical p L N x) x) < 0
-    exact hxneg
+    simpa only [RCLike.re_to_complex] using hxneg
   have hrqneg :
-      Complex.re (inner ℂ (T x) x) / ‖(x : V)‖ ^ 2 < 0 := by
+      RCLike.re (inner ℂ (T x) x) / ‖(x : V)‖ ^ 2 < 0 := by
     exact div_neg_of_neg_of_pos hxnegT hden
   have hlamneg : lam < 0 := lt_of_le_of_lt hlamle hrqneg
   have hsym : LinearMap.IsSymmetric (𝕜 := ℂ) (E := V) T := by
     simpa only [T] using parityCompressedCanonical_isSymmetric p L N
-  have hlameig : Module.End.HasEigenvalue T (lam : ℂ) := by
-    simpa only [lam] using hsym.hasEigenvalue_iInf_of_finiteDimensional
+  have hlameig := hsym.hasEigenvalue_iInf_of_finiteDimensional
   obtain ⟨v, hv⟩ := hlameig.exists_hasEigenvector
-  exact ⟨lam, hlamneg, v, hv.2, hv.apply_eq_smul⟩
+  refine ⟨lam, hlamneg, v, hv.2, ?_⟩
+  simpa only [lam] using hv.apply_eq_smul
 
 theorem re_inner_successor_nonnegative_on_centeredImage
     (p : ReversalParity)
@@ -265,9 +265,9 @@ theorem negative_eigenmode_not_centeredImage
             (lam : ℂ) * inner ℂ v v := by
         simpa using
           (inner_smul_left (𝕜 := ℂ) v v (r := (lam : ℂ)))
-      rw [hinner, inner_self_eq_norm_sq_to_K, Complex.re_ofReal_mul]
-      simpa using
-        mul_neg_of_neg_of_pos hlam (show 0 < ‖v‖ ^ 2 by positivity)
+      rw [hinner, inner_self_eq_norm_sq_to_K, ← Complex.ofReal_pow,
+        Complex.re_ofReal_mul]
+      exact mul_neg_of_neg_of_pos hlam (show 0 < ‖v‖ ^ 2 by positivity)
     rw [re_inner_parityCompressedCanonical_self] at hcomp
     exact hcomp
   rw [← hxv] at hvneg
