@@ -5,17 +5,20 @@
 ## Current theorem-state anchor
 
 ~~~text
-theorem-state anchor = PR #107 merge b7d1022e33e2177c5597d008f593d3684d0ec720
-validated theorem head = cfcf397cc8c15dbb368fbee3a161b8733061b770
-validated synthetic merge = 19cd290510fe4fb1d253522c29644ff3e4563c03
-validated theorem tree = 719b45162fd0814581759661f12eab16c46e1201
-live main = b7d1022e33e2177c5597d008f593d3684d0ec720
-theorem-bearing merged through = PR #107
-RHRC #717 = SUCCESS
-Permansson #490 = SUCCESS
-axioms = [propext, Classical.choice, Quot.sound]
-sorryAx = absent
-date = 2026-09-03
+theorem-state anchor = PR #110 merge 07e0c845d128831b244b13503c9640b934bf4416
+validated theorem head = ca0c389827520e2005390637742389819dc97068
+validated theorem tree = f2e9985ac976c83ecfa7f5dbce64b1e0193680b0
+live main at sync start = 07e0c845d128831b244b13503c9640b934bf4416
+theorem-bearing merged through = PR #110
+RHRC #738 = SUCCESS
+Permansson #511 = SUCCESS
+CCM build = SUCCESS
+ExceptionalZero build = SUCCESS
+normalization/source firewall = SUCCESS
+forbidden-placeholder gate = SUCCESS
+#109 printed axiom surface = [propext, Classical.choice, Quot.sound]
+#110 promoted theorem-specific axiom surface = revalidated by this control-plane PR
+sorryAx/project axioms = absent by authoritative gates
 RH = OPEN
 ~~~
 
@@ -46,18 +49,36 @@ DONE
   predecessor nonnegativity transported into successor matrix
   negative successor eigenmode not inherited
   off-line zero -> first-bad negative spectral endpoint
-
-NOW — FIRST-BAD-RIGIDITY
-  internalize predecessor image W inside successor parity subtype V
-  prove dim(W^perp)=1 intrinsically in V
-  prove P_(W^perp) v != 0 for the #107 negative eigenmode
-  prove negative index = 1 / unique negative eigenline if cheap
-  prove parity-specific normal spaces
+  nonzero projection of the negative mode to the 1D ambient successor shell
+  exact parity normal spaces
     even residual normal = span{1,d²}
     odd residual normal = span{d}
-  derive exact parity KKT residual
-  derive shifted scalar Schur/Feshbach equation
-  compose even KKT with D/displacement commutator collapse
+  exact parity KKT residual
+  off-line zero -> first-bad shell + KKT endpoint
+  Euclidean algebraic D-equivalence V_N^+ ≃ V_N^- for N>=1
+  M(Du)=D(Mu) on the even constrained sector
+  explicit odd cubic channel g_N = P_- d³
+  g_N != 0 for N>=2
+  range(T_- D - D T_+) <= C g_N
+  finrank range(T_- D - D T_+) <= 1
+  finrank range(E^-1 T_- E - T_+) <= 1
+
+NOW — FIRST-BAD-RIGIDITY-D
+  internalize predecessor W inside the successor parity subtype V
+  build the native decomposition V = W ⊕ S with dim_C S = 1
+  write the first-bad eigenmode as w + alpha*s and theorem-lock alpha != 0
+  prove A - lam I invertible from A >= 0 and lam < 0
+  derive the shifted scalar Schur/Feshbach equation
+  strengthen the parity defect to an explicit rank-one factorization when possible
+    F_N = g_N ⊗ ell_N
+  pull the cubic channel back through E and compare it with the first-bad shell
+  theoremize the parity nullity-difference <= 1 consequence
+  package the common-resonance vs one-channel-resolvent dichotomy
+
+THEN
+  attack / classify simultaneous even-odd resonance at a first bad state
+  compose the scalar shell and scalar parity-defect channels
+  test whether the first-bad state is impossible
 
 PARALLEL SOURCE
   G1-B1B -> G1-final -> S-NEG -> G23
@@ -65,24 +86,31 @@ PARALLEL SOURCE
 RH OPEN
 ~~~
 
-## Why FIRST-BAD-RIGIDITY is next
+## Why FIRST-BAD-RIGIDITY-D is next
 
-#107 supplies the legal symmetric compressed operator and a genuine negative eigenmode at the
-successor size, while proving that eigenmode is not inherited from the codimension-one nonnegative
-predecessor. The remaining first-bad geometry is therefore one-channel.
+PR #109 closes the shell/KKT package in the ambient Euclidean formulation: the distinguished negative first-bad eigenmode has a nonzero projection to the already-proved one-dimensional successor shell, the parity normal spaces are exact, and the KKT residual is explicit.
 
-**DERIVED / OPEN FORMALIZATION:** nonzero shell projection and negative index exactly one.
+PR #110 then composes the even KKT-normal geometry with the exact even commutator collapse. After applying D, the even normal channel `span{1,d²}` becomes `span{d,d³}`; odd compression kills the `d` component, leaving only the projected cubic channel `g_N = P_- d³`. Lean proves the resulting even-to-odd compressed intertwining defect has range in `C g_N` and finrank at most one, and the same rank bound survives algebraic conjugation back to the even sector.
 
-## Ordering correction after #107
+The remaining first-bad problem is therefore not an arbitrary finite spectral problem. It has two one-dimensional structures available for composition: the successor N-flow shell and the parity-compression defect channel.
 
-Unique negative eigenline is no longer a prerequisite for KKT/Schur. #107 already gives a
-concrete eigenpair with `lam < 0` and a non-inherited component. Do not let multiplicity API work
-block the more informative parity-normal/KKT/Schur calculation.
+## Exact boundary on what #109 did not prove
+
+The successful #109 implementation keeps the predecessor/shell argument in the ambient Euclidean space. It does **not** yet provide the fully intrinsic successor-subtype block decomposition needed for a native Schur complement. That intrinsic block geometry remains part of FIRST-BAD-RIGIDITY-D.
+
+Negative index exactly one / uniqueness of the negative eigenline also remains **DERIVED / OPEN FORMALIZATION** unless separately theorem-locked.
+
+## Rank-one defect firewalls
+
+- `finrank <= 1` does not mean the defect is nonzero or has rank exactly one.
+- `g_N != 0` does not by itself prove the defect functional is nonzero.
+- the Euclidean D-equivalence is algebraic, not unitary or isometric.
+- conjugating the odd compression through D therefore does not automatically give a self-adjoint operator in the original even-sector inner product.
+- equal spectra, Hermitian rank-one interlacing and inertia transport do not follow from #110.
 
 ## Schur firewall
 
-The predecessor block may be semidefinite. The safe future equation uses `A - lam I` for
-`lam < 0`:
+The predecessor block may be semidefinite. The safe future equation uses `A - lam I` for `lam < 0`:
 
 ~~~text
 c - lam - b* (A - lam I)^(-1) b = 0
