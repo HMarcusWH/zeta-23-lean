@@ -5,13 +5,14 @@
 ## Authority snapshot
 
 ~~~text
-theorem-state anchor = PR #105 merge 5e19483c905c07cfe9fef0a97f834004e77b5fb9
-validated theorem head = 100fb03cccd44d1c09dadfc41cd104ba753308ee
-validated synthetic merge = 4411f6a5a5c679795e043968db70f44922c2a468
-theorem tree = 84ed44aaf5ff014a9352901ff1a1a31a29809b6e
-theorem-bearing merged through = PR #105
-RHRC #706 = SUCCESS
-Permansson #479 = SUCCESS
+theorem-state anchor = PR #107 merge b7d1022e33e2177c5597d008f593d3684d0ec720
+validated theorem head = cfcf397cc8c15dbb368fbee3a161b8733061b770
+validated synthetic merge = 19cd290510fe4fb1d253522c29644ff3e4563c03
+validated theorem tree = 719b45162fd0814581759661f12eab16c46e1201
+live main = b7d1022e33e2177c5597d008f593d3684d0ec720
+theorem-bearing merged through = PR #107
+RHRC #717 = SUCCESS
+Permansson #490 = SUCCESS
 axioms = [propext, Classical.choice, Quot.sound]
 sorryAx = absent
 date = 2026-09-03
@@ -28,25 +29,23 @@ RH = OPEN
 #102 exact reversal symmetry + even commutator collapse
 #103 exact parity geometry + D-equivalence
 #105 fixed-parity bad tail + least bad size + 1D successor shell
+#107 parity compression + genuine negative eigenmode + non-inheritance
 ~~~
 
 ## Current frontier
 
 ~~~text
-FIRST-BAD-SPECTRUM
-  parity-constrained Euclidean compression
-  compressed/self quadratic equality
-  compressed symmetry
-  negative Rayleigh eigenmode
-  unique negative eigenline at first bad size
-  nonzero shell component
-
-THEN
+FIRST-BAD-RIGIDITY
+  intrinsic predecessor subspace in successor parity space
+  nonzero orthogonal shell projection
+  negative index one / unique negative eigenline [derived, not yet formalized]
   parity-specific normal spaces
-  scalar Schur/Feshbach
-  KKT + D/displacement rigidity
+  KKT residual
+  shifted Schur/Feshbach
+  D/displacement rigidity
 ~~~
 
-#105 closes the former staged `ParityBadness.lean` seam. OBS-018 remains as a permanent validation rule, not a current theorem gap.
+#107 closes the former spectral-compression gap. OBS-017 is now escaped for constrained
+compression/eigenmode extraction; the raw-vs-Euclidean norm warning remains valid.
 
 **RH remains OPEN.**

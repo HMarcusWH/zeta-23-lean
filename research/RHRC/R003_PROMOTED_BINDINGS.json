@@ -203,6 +203,26 @@
     {
       "id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
       "theorem": "Zeta23.ExceptionalZero.exists_leastParityBad_oneDimShell_of_offLine_zero"
+    },
+    {
+      "id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "theorem": "Zeta23.CCM.parityCompressedCanonical_isSymmetric"
+    },
+    {
+      "id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+      "theorem": "Zeta23.CCM.exists_negative_eigenmode_of_parityBad"
+    },
+    {
+      "id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "theorem": "Zeta23.CCM.re_inner_successor_nonnegative_on_centeredImage"
+    },
+    {
+      "id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "theorem": "Zeta23.CCM.negative_eigenmode_not_centeredImage"
+    },
+    {
+      "id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "theorem": "Zeta23.ExceptionalZero.exists_firstBadParity_negativeEigenmode_of_offLine_zero"
     }
   ]
 }

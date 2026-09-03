@@ -5,20 +5,22 @@
 ## Current authority snapshot
 
 ~~~text
-theorem-state anchor = PR #105 merge 5e19483c905c07cfe9fef0a97f834004e77b5fb9
-validated theorem head = 100fb03cccd44d1c09dadfc41cd104ba753308ee
-validated synthetic merge = 4411f6a5a5c679795e043968db70f44922c2a468
-theorem tree = 84ed44aaf5ff014a9352901ff1a1a31a29809b6e
-theorem-bearing merged through = PR #105
-RHRC #706 = SUCCESS
-Permansson #479 = SUCCESS
+theorem-state anchor = PR #107 merge b7d1022e33e2177c5597d008f593d3684d0ec720
+validated theorem head = cfcf397cc8c15dbb368fbee3a161b8733061b770
+validated synthetic merge = 19cd290510fe4fb1d253522c29644ff3e4563c03
+validated theorem tree = 719b45162fd0814581759661f12eab16c46e1201
+live main = b7d1022e33e2177c5597d008f593d3684d0ec720
+theorem-bearing merged through = PR #107
+RHRC #717 = SUCCESS
+Permansson #490 = SUCCESS
 axioms = [propext, Classical.choice, Quot.sound]
 sorryAx = absent
 date = 2026-09-03
 RH = OPEN
 ~~~
 
-The exact synthetic-merge tree checked by CI is the same tree merged on main.
+PR #107 is merged. CI checked synthetic merge `19cd290510fe4fb1d253522c29644ff3e4563c03`,
+and merged `main` has the identical theorem tree `719b45162fd0814581759661f12eab16c46e1201`.
 
 ## Current RH-directed theorem ladder
 
@@ -32,26 +34,24 @@ off-line zeta zero
   -> exact centered N-flow / fixed-L negative tail                PROVED / #100
   -> exact reversal symmetry / even commutator collapse           PROVED / #102
   -> direct parity geometry / D : V+ ≃ V-                         PROVED / #103
-  -> D_M E = E D_N                                                PROVED / #105
-  -> exact quadratic parity split q(u)=q(u+)+q(u-)                PROVED / #105
-  -> negative witness -> one bad parity                           PROVED / #105
-  -> fixed parity bad tail                                        PROVED / #105
-  -> least bad parity size N*>=2                                  PROVED / #105
+  -> fixed parity bad tail + least bad size                       PROVED / #105
   -> predecessor parity sector nonnegative                        PROVED / #105
-  -> exact Euclidean successor parity shell has finrank 1         PROVED / #105
+  -> exact Euclidean successor parity shell finrank 1             PROVED / #105
+  -> parity-constrained Euclidean compression                     PROVED / #107
+  -> exact compressed/self quadratic agreement                    PROVED / #107
+  -> symmetric compressed canonical operator                      PROVED / #107
+  -> ParityBad -> genuine negative Rayleigh eigenmode             PROVED / #107
+  -> predecessor nonnegativity transported to successor matrix    PROVED / #107
+  -> negative first-bad eigenmode is not inherited                PROVED / #107
+  -> off-line zero -> first-bad negative spectral endpoint        PROVED / #107
 
-NEXT
-  parity-constrained Euclidean compression
-  exact compressed/self quadratic agreement
-  symmetric compressed operator
-  negative constrained Rayleigh eigenmode
-  first-bad unique negative eigenline
-  nonzero 1D-shell component of every negative eigenmode
-
-THEN
+NOW — FIRST-BAD-RIGIDITY
+  intrinsic predecessor subspace inside successor parity Hilbert space
+  explicit nonzero orthogonal shell projection
+  negative index exactly one / unique negative eigenline          DERIVED / OPEN FORMALIZATION
   parity-specific normal spaces
-  scalar Schur/Feshbach equation
   parity KKT residual
+  shifted Schur/Feshbach equation
   D/displacement rigidity
 
 PARALLEL
@@ -60,37 +60,38 @@ PARALLEL
 RH                                                                 OPEN
 ~~~
 
-## What #105 changed
+## What #107 changed
 
-`Zeta23/CCM/ParityBadness.lean` is now in the validated `Zeta23.CCM` import closure. The previous staged-source warning is retired as a current-state description; OBS-018 remains a permanent validation firewall.
+Lean now defines the parity-constrained orthogonal compression of `canonicalSourceMatrix`, proves
+exact compressed/self quadratic agreement and symmetry, and converts `ParityBad` into a genuine
+negative eigenpair. At the least bad size, predecessor nonnegativity is transported from size `N`
+to the exact centered image inside size `N+1`; the proof does not identify those matrices.
 
-The key endpoint is now theorem-backed:
+The ExceptionalZero endpoint now proves: fixed `L>0`, fixed parity, least bad successor,
+`lam<0`, `v!=0`, `Tv=lam v`, predecessor nonnegativity, `v` not inherited from the predecessor,
+and a one-complex-dimensional successor parity shell.
 
-[
-	ext{off-line zero}
-Rightarrow
-exists L>0,p,N_*:
-operatorname{ParityBad}(p,L,N_*),
-]
+## Immediate derived consequences
 
-with one fixed parity bad for all larger sizes, a least bad size (N_*ge2), a nonnegative predecessor parity sector, and a one-complex-dimensional Euclidean successor shell.
-
-The next phase is no longer “find a finite bad witness.” It is “classify the only way the first parity-resolved bad state can occur.”
+**DERIVED / not yet separately formalized:**
+- the #107 negative eigenmode has nonzero projection to the one-dimensional successor shell;
+- the first-bad compressed operator has negative index exactly one, hence one negative eigenline.
 
 ## Permanent firewalls
 
 - D-equivalence is algebraic, not unitary.
-- D commuting with N-flow does not imply D maps orthogonal shells to orthogonal shells.
-- least badness is for the selected parity only.
-- one-dimensional shell growth does not itself contradict negativity.
-- no compressed operator, negative eigenmode, KKT equation, positivity theorem, finite-to-infinite theorem, or RH theorem is proved yet.
+- `v ∉ predecessorImage` does not mean `v` lies purely in the shell.
+- the successor shell is not proved invariant.
+- use `A - lam I` for `lam < 0`; never assume `A⁻¹` for the semidefinite predecessor block.
+- unique negative eigenline, parity normal spaces, KKT, Schur/Feshbach, positivity,
+  finite-to-infinite closure and RH remain OPEN unless separately theorem-backed.
 
 ## Living research records
 
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`
 - `research/RHRC/RESEARCH_LEADS.md`
-- `research/RHRC/RESEARCH_LEADS_POST_105_DELTA.md`
-- `research/RHRC/routes/R003_ccm_bridge/PARITY_BAD_POST_GREEN_RESET_2026_09_03.md`
+- `research/RHRC/RESEARCH_LEADS_POST_107_DELTA.md`
+- `research/RHRC/routes/R003_ccm_bridge/README.md`
 - `research/RHRC/CLAIM_REGISTRY.json`
 - `research/RHRC/R003_PROMOTED_BINDINGS.json`
 
