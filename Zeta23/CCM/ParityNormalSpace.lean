@@ -116,6 +116,12 @@ theorem centeredMoment_zero_eq_zero_of_odd
     centeredMoment N 0 u = 0 := by
   have h := centeredMoment_reverseCoefficients N 0 u
   rw [(mem_oddCoefficientSubspace_iff N u).mp hu] at h
+  have hneg :
+      centeredMoment N 0 (-u) = -centeredMoment N 0 u := by
+    change centeredMomentLinearMap N 0 (-u) =
+      -centeredMomentLinearMap N 0 u
+    exact (centeredMomentLinearMap N 0).map_neg u
+  rw [hneg] at h
   norm_num at h
   linear_combination (-1 / 2 : ℂ) * h
 
@@ -125,6 +131,12 @@ theorem centeredMoment_two_eq_zero_of_odd
     centeredMoment N 2 u = 0 := by
   have h := centeredMoment_reverseCoefficients N 2 u
   rw [(mem_oddCoefficientSubspace_iff N u).mp hu] at h
+  have hneg :
+      centeredMoment N 2 (-u) = -centeredMoment N 2 u := by
+    change centeredMomentLinearMap N 2 (-u) =
+      -centeredMomentLinearMap N 2 u
+    exact (centeredMomentLinearMap N 2).map_neg u
+  rw [hneg] at h
   norm_num at h
   linear_combination (-1 / 2 : ℂ) * h
 
