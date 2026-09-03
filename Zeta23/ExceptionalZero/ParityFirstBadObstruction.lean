@@ -73,6 +73,11 @@ theorem exists_leastParityBad_oneDimShell_of_offLine_zero
           (∀ u : Fin (2 * Nprev + 1) → ℂ,
             u ∈ parityBoundaryFlatSubspace p Nprev →
               0 ≤ (quadraticForm (canonicalSourceMatrix L Nprev) u).re) ∧
+          (∀ x : EuclideanSpace ℂ (Fin (2 * Nprev + 1)),
+            x ∈ euclideanParityBoundaryFlatSubspace p Nprev →
+              0 ≤ Complex.re
+                (inner ℂ
+                  ((canonicalSourceMatrix L Nprev).toEuclideanLin x) x)) ∧
           (∀ M : ℕ, Nstar ≤ M → ParityBad p L M) ∧
           Module.finrank ℂ (euclideanParitySuccShell p Nprev) = 1 := by
   obtain ⟨L, hL, p, N0, hN0, hbad0, htail0⟩ :=
@@ -96,6 +101,15 @@ theorem exists_leastParityBad_oneDimShell_of_offLine_zero
     intro u humem
     exact nonnegative_of_lt_least_parityBad
       p L hmin hprevlt u humem
+  have hprevEuclideanNonneg :
+      ∀ x : EuclideanSpace ℂ (Fin (2 * Nprev + 1)),
+        x ∈ euclideanParityBoundaryFlatSubspace p Nprev →
+          0 ≤ Complex.re
+            (inner ℂ
+              ((canonicalSourceMatrix L Nprev).toEuclideanLin x) x) := by
+    intro x hx
+    exact euclidean_nonnegative_of_lt_least_parityBad
+      p L hmin hprevlt x hx
   have htailstar :
       ∀ M : ℕ, Nstar ≤ M → ParityBad p L M := by
     intro M hNM
@@ -104,7 +118,7 @@ theorem exists_leastParityBad_oneDimShell_of_offLine_zero
       Module.finrank ℂ (euclideanParitySuccShell p Nprev) = 1 :=
     finrank_euclideanParitySuccShell p Nprev hNprev
   exact ⟨L, hL, p, Nprev, Nstar, hNprev, hsucc, hbadstar,
-    hmin, hprevNonneg, htailstar, hshell⟩
+    hmin, hprevNonneg, hprevEuclideanNonneg, htailstar, hshell⟩
 
 /-- Existential off-line-zero wrapper for the least-bad one-dimensional-shell
 endpoint. -/
@@ -122,6 +136,11 @@ theorem exists_leastParityBad_oneDimShell_of_exists_offLine_zero
           (∀ u : Fin (2 * Nprev + 1) → ℂ,
             u ∈ parityBoundaryFlatSubspace p Nprev →
               0 ≤ (quadraticForm (canonicalSourceMatrix L Nprev) u).re) ∧
+          (∀ x : EuclideanSpace ℂ (Fin (2 * Nprev + 1)),
+            x ∈ euclideanParityBoundaryFlatSubspace p Nprev →
+              0 ≤ Complex.re
+                (inner ℂ
+                  ((canonicalSourceMatrix L Nprev).toEuclideanLin x) x)) ∧
           (∀ M : ℕ, Nstar ≤ M → ParityBad p L M) ∧
           Module.finrank ℂ (euclideanParitySuccShell p Nprev) = 1 := by
   obtain ⟨ρ₀, hρ₀⟩ := hoff
