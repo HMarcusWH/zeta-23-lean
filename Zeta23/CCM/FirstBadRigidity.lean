@@ -64,7 +64,7 @@ theorem finrank_parityEmbeddedPredecessorSubspace
     LinearMap.ker_eq_bot.mpr
       (parityEmbeddedPredecessorLinearMap_injective p N)
   have hdim := f.finrank_range_add_finrank_ker
-  rw [hker, Module.finrank_bot, add_zero] at hdim
+  rw [hker, finrank_bot, add_zero] at hdim
   change Module.finrank ℂ (LinearMap.range f) = N - 1
   rw [hdim]
   exact finrank_euclideanParityBoundaryFlatSubspace p N hN
@@ -164,7 +164,7 @@ theorem re_inner_parityCompressedCanonical_nonnegative_on_predecessor
     re_inner_successor_nonnegative_on_centeredImage
       p hL N hprev
       (x : EuclideanSpace ℂ (Fin (2 * N + 1))) x.property
-  rw [← congrArg Subtype.val hx] at hnonneg
+  rw [congrArg Subtype.val hx] at hnonneg
   exact hnonneg
 
 end Zeta23.CCM
