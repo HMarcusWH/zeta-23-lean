@@ -76,7 +76,7 @@ theorem inner_parityCompressedCanonical_self
         (x : EuclideanSpace ℂ (Fin (2 * N + 1))))
       (x : EuclideanSpace ℂ (Fin (2 * N + 1)))
   exact
-    inner_orthogonalProjectionOnto_eq_of_mem_right
+    Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right
       (K := euclideanParityBoundaryFlatSubspace p N) x _
 
 theorem re_inner_parityCompressedCanonical_self
@@ -93,7 +93,7 @@ theorem re_inner_parityCompressedCanonical_self
 
 theorem parityCompressedCanonical_isSymmetric
     (p : ReversalParity) (L : ℝ) (N : ℕ) :
-    (parityCompressedCanonical p L N).IsSymmetric := by
+    LinearMap.IsSymmetric (parityCompressedCanonical p L N) := by
   intro x y
   change
     inner ℂ
@@ -105,8 +105,8 @@ theorem parityCompressedCanonical_isSymmetric
         ((canonicalSourceMatrix L N).toEuclideanLin
           (y : EuclideanSpace ℂ (Fin (2 * N + 1)))))
   rw [
-    inner_orthogonalProjectionOnto_eq_of_mem_right,
-    inner_orthogonalProjectionOnto_eq_of_mem_left
+    Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right,
+    Submodule.inner_orthogonalProjectionOnto_eq_of_mem_left
   ]
   exact canonicalSourceMatrix_toEuclideanLin_isSymmetric L N
     (x : EuclideanSpace ℂ (Fin (2 * N + 1)))
@@ -133,9 +133,8 @@ theorem exists_negative_compressed_direction_of_parityBad
   have hx0ne : x0 ≠ 0 := by
     intro hx0
     apply hune
-    have h := congrArg
-      (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) hx0
-    simpa [x0] using h
+    rw [← hxcoords, hx0]
+    simp
   have hxne : x ≠ 0 := by
     intro hx
     apply hx0ne
