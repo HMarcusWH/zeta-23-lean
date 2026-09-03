@@ -122,10 +122,10 @@ theorem centeredMoment_zero_eq_zero_of_odd
       -centeredMomentLinearMap N 0 u
     exact (centeredMomentLinearMap N 0).map_neg u
   rw [hneg] at h
-  have hsum :
-      (∑ i, u i) = 0 :=
-    CharZero.neg_eq_self_iff.mp h
-  simpa [centeredMoment] using hsum
+  have hself :
+      -centeredMoment N 0 u = centeredMoment N 0 u := by
+    simpa using h
+  exact CharZero.neg_eq_self_iff.mp hself
 
 theorem centeredMoment_two_eq_zero_of_odd
     {N : ℕ} {u : Fin (2 * N + 1) → ℂ}
