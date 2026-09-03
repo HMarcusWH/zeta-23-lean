@@ -55,7 +55,7 @@ theorem exists_globalFirstBad_intrinsicShell_cubicFactorization_of_offLine_zero
               oddCubicCompressionVector (Nprev + 1) ≠ 0 ∧
               (∀ z : euclideanEvenBoundaryFlatSubspace (Nprev + 1),
                 evenOddCompressedIntertwiningDefect L (Nprev + 1) z =
-                  cubicDefectFunctional L (Nprev + 1) (by omega) z •
+                  cubicDefectFunctional L (Nprev + 1) z •
                     oddCubicCompressionVector (Nprev + 1)) := by
   obtain ⟨L, hL, N0, hN0, u, hune, hmem, hneg⟩ :=
     exists_ne_zero_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero
@@ -89,7 +89,7 @@ theorem exists_globalFirstBad_intrinsicShell_cubicFactorization_of_offLine_zero
   have hcubicFactor :
       ∀ z : euclideanEvenBoundaryFlatSubspace Nstar,
         evenOddCompressedIntertwiningDefect L Nstar z =
-          cubicDefectFunctional L Nstar hNstar2 z •
+          cubicDefectFunctional L Nstar z •
             oddCubicCompressionVector Nstar := by
     intro z
     exact evenOddCompressedIntertwiningDefect_eq_cubicFunctional_smul
@@ -151,7 +151,7 @@ theorem exists_globalFirstBad_intrinsicShell_cubicFactorization_of_exists_offLin
               oddCubicCompressionVector (Nprev + 1) ≠ 0 ∧
               (∀ z : euclideanEvenBoundaryFlatSubspace (Nprev + 1),
                 evenOddCompressedIntertwiningDefect L (Nprev + 1) z =
-                  cubicDefectFunctional L (Nprev + 1) (by omega) z •
+                  cubicDefectFunctional L (Nprev + 1) z •
                     oddCubicCompressionVector (Nprev + 1)) := by
   obtain ⟨ρ₀, hρ₀⟩ := hoff
   exact exists_globalFirstBad_intrinsicShell_cubicFactorization_of_offLine_zero
