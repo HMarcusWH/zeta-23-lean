@@ -93,7 +93,9 @@ theorem re_inner_parityCompressedCanonical_self
 
 theorem parityCompressedCanonical_isSymmetric
     (p : ReversalParity) (L : ℝ) (N : ℕ) :
-    LinearMap.IsSymmetric (parityCompressedCanonical p L N) := by
+    LinearMap.IsSymmetric (𝕜 := ℂ)
+      (E := euclideanParityBoundaryFlatSubspace p N)
+      (parityCompressedCanonical p L N) := by
   intro x y
   change
     inner ℂ
@@ -174,7 +176,9 @@ theorem exists_negative_eigenmode_of_parityBad
           Complex.re (inner ℂ (T z) z) / ‖(z : V)‖ ^ 2) := by
     refine ⟨-‖Tc‖, ?_⟩
     rintro _ ⟨z, rfl⟩
-    have habs := Tc.rayleighQuotient_le_norm (z : V)
+    have habs :=
+      ContinuousLinearMap.rayleighQuotient_le_norm
+        (𝕜 := ℂ) Tc (z : V)
     exact neg_le_of_abs_le (by
       simpa [ContinuousLinearMap.rayleighQuotient, T, Tc,
         parityCompressedCanonical, parityCompressedCanonicalCLM] using habs)
@@ -182,12 +186,18 @@ theorem exists_negative_eigenmode_of_parityBad
       lam ≤ Complex.re (inner ℂ (T x) x) / ‖(x : V)‖ ^ 2 := by
     exact ciInf_le hbdd ⟨x, hxne⟩
   have hden : 0 < ‖(x : V)‖ ^ 2 := by positivity
+  have hxnegT :
+      Complex.re (inner ℂ (T x) x) < 0 := by
+    change
+      Complex.re
+        (inner ℂ (parityCompressedCanonical p L N x) x) < 0
+    exact hxneg
   have hrqneg :
       Complex.re (inner ℂ (T x) x) / ‖(x : V)‖ ^ 2 < 0 := by
-    exact div_neg_of_neg_of_pos (by simpa [T] using hxneg) hden
+    exact div_neg_of_neg_of_pos hxnegT hden
   have hlamneg : lam < 0 := lt_of_le_of_lt hlamle hrqneg
-  have hsym : T.IsSymmetric := by
-    simpa [T] using parityCompressedCanonical_isSymmetric p L N
+  have hsym : LinearMap.IsSymmetric (𝕜 := ℂ) (E := V) T := by
+    simpa only [T] using parityCompressedCanonical_isSymmetric p L N
   have hlameig : T.HasEigenvalue (lam : ℂ) := by
     simpa [lam, T] using hsym.hasEigenvalue_iInf_of_finiteDimensional
   obtain ⟨v, hv⟩ := hlameig.exists_hasEigenvector
@@ -244,10 +254,9 @@ theorem negative_eigenmode_not_centeredImage
     have hcomp :
         Complex.re
           (inner ℂ (parityCompressedCanonical p L (N + 1) v) v) < 0 := by
-      rw [hveig]
-      have hnorm : 0 < ‖v‖ ^ 2 := by positivity
-      simpa [inner_smul_left, inner_self_eq_norm_sq] using
-        mul_neg_of_neg_of_pos hlam hnorm
+      rw [hveig, inner_smul_left, Complex.conj_ofReal,
+        Complex.re_ofReal_mul, inner_self_eq_norm_sq]
+      exact mul_neg_of_neg_of_pos hlam (by positivity)
     rw [re_inner_parityCompressedCanonical_self] at hcomp
     exact hcomp
   rw [← hxv] at hvneg
