@@ -21,11 +21,14 @@ not asserted to be nonzero, so this does not upgrade rank-at-most-one to exact
 rank one.  The D-equivalence remains algebraic, not unitary.
 -/
 
-/-- Canonical scalar coefficient of the parity defect along the nonzero cubic
-channel.  Mathlib's complex inner product is linear in the second argument,
-so this is a complex-linear functional of the even constrained input. -/
+/-- Canonical scalar coefficient of the parity defect along the cubic channel.
+The definition makes sense at every N; `N >= 2` is needed only when proving
+that the cubic generator is nonzero and hence that this coordinate recovers
+the defect exactly.  Mathlib's complex inner product is linear in the second
+argument, so this is a complex-linear functional of the even constrained
+input. -/
 def cubicDefectFunctional
-    (L : ℝ) (N : ℕ) (hN : 2 ≤ N) :
+    (L : ℝ) (N : ℕ) :
     euclideanEvenBoundaryFlatSubspace N →ₗ[ℂ] ℂ where
   toFun := fun v =>
     inner ℂ (oddCubicCompressionVector N)
@@ -46,7 +49,7 @@ theorem evenOddCompressedIntertwiningDefect_eq_cubicFunctional_smul
     (N : ℕ) (hN : 2 ≤ N)
     (v : euclideanEvenBoundaryFlatSubspace N) :
     evenOddCompressedIntertwiningDefect L N v =
-      cubicDefectFunctional L N hN v • oddCubicCompressionVector N := by
+      cubicDefectFunctional L N v • oddCubicCompressionVector N := by
   obtain ⟨a, ha⟩ :=
     exists_evenOddCompressedIntertwiningDefect_eq_smul_cubic hL N v
   have hg : oddCubicCompressionVector N ≠ 0 :=
@@ -57,7 +60,7 @@ theorem evenOddCompressedIntertwiningDefect_eq_cubicFunctional_smul
     intro hzero
     apply hg
     exact (inner_self_eq_zero.mp hzero)
-  have hcoeff : cubicDefectFunctional L N hN v = a := by
+  have hcoeff : cubicDefectFunctional L N v = a := by
     simp [cubicDefectFunctional, ha, hgg]
   rw [ha, hcoeff]
 
@@ -88,7 +91,7 @@ theorem conjugatedParityCompressionDefect_eq_cubicFunctional_smul
     (N : ℕ) (hN : 2 ≤ N)
     (v : euclideanEvenBoundaryFlatSubspace N) :
     conjugatedParityCompressionDefect L N (by omega) v =
-      cubicDefectFunctional L N hN v •
+      cubicDefectFunctional L N v •
         pulledBackCubicCompressionVector N hN := by
   let E := euclideanEvenOddBoundaryFlatLinearEquiv N (by omega)
   have hF :=
