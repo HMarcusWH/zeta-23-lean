@@ -155,7 +155,7 @@ theorem re_inner_successor_nonnegative_on_embeddedPredecessor
   have hnonneg :=
     re_inner_successor_nonnegative_on_centeredImage
       p hL N hprev x hx
-  rw [hxw] at hnonneg
+  rw [← hxw]
   exact hnonneg
 
 end Zeta23.CCM
