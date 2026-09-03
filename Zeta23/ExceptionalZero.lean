@@ -20,3 +20,4 @@ import Zeta23.ExceptionalZero.ConstrainedFiniteObstruction
 import Zeta23.ExceptionalZero.EuclideanConstrainedObstruction
 import Zeta23.ExceptionalZero.NestedEuclideanObstruction
 import Zeta23.ExceptionalZero.ParityFirstBadObstruction
+import Zeta23.ExceptionalZero.FirstBadParitySpectrum
