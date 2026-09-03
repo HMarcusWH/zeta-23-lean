@@ -740,6 +740,76 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "PARITY-FLOW / PR #103. Companion theorem euclideanCenteredZeroExtend_mem_euclideanEvenBoundaryFlatSubspace. Carrier transport only; no fixed-parity negativity or compressed nesting."
+    },
+    {
+      "id": "R003_PARITY_QUADRATIC_SPLIT",
+      "statement": "The canonical source quadratic form splits exactly across the reversal-even and reversal-odd parts of every coefficient vector: q(u)=q(evenPart u)+q(oddPart u).",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_CONSTRAINED_REVERSAL_SYMMETRY"
+      ],
+      "source": "Zeta23/CCM/ParityBadness.lean",
+      "theorem": "Zeta23.CCM.quadraticForm_evenPart_add_oddPart",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #105. Supporting theorems include canonical quadratic reversal invariance and parityBad_even_or_odd_of_negative. Axiom surface [propext, Classical.choice, Quot.sound]."
+    },
+    {
+      "id": "R003_PARITY_BAD_NFLOW",
+      "statement": "At fixed positive aperture, parity-resolved badness is upward closed under exact centered N-flow; the centered-index operator commutes exactly with centered zero extension.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+        "R003_PARITY_QUADRATIC_SPLIT"
+      ],
+      "source": "Zeta23/CCM/ParityBadness.lean",
+      "theorem": "Zeta23.CCM.parityBad_persists_of_le",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #105. Supporting theorem indexMatrix_mulVec_centeredZeroExtend proves D_M E = E D_N on all raw vectors. two_le_of_parityBad proves every parity-bad size is >=2."
+    },
+    {
+      "id": "R003_LEAST_PARITY_BAD_SHELL",
+      "statement": "A nonempty parity-bad size set has a least bad size; all smaller parity sectors are nonnegative, this transfers to the Euclidean inner-self form, and the exact Euclidean successor parity shell has complex finrank one.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_PARITY_BAD_NFLOW",
+        "R003_CONSTRAINED_PARITY_EXACT_DIMENSION"
+      ],
+      "source": "Zeta23/CCM/ParityBadness.lean",
+      "theorem": "Zeta23.CCM.finrank_euclideanParitySuccShell",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #105. Supporting declarations: exists_least_parityBad, nonnegative_of_lt_least_parityBad, euclidean_nonnegative_of_lt_least_parityBad."
+    },
+    {
+      "id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "statement": "Every hypothetical off-critical-line zeta zero forces one fixed positive aperture, one fixed reversal parity, and a finite N0>=2 such that the same parity is bad for every M>=N0.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+        "R003_PARITY_QUADRATIC_SPLIT",
+        "R003_PARITY_BAD_NFLOW"
+      ],
+      "source": "Zeta23/ExceptionalZero/ParityFirstBadObstruction.lean",
+      "theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_parityBad_tail_of_offLine_zero",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #105. This is fixed-parity persistence, not a compressed eigenmode or positivity theorem."
+    },
+    {
+      "id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "statement": "Every hypothetical off-critical-line zero forces one fixed parity with a least bad size Nstar=Nprev+1, Nprev>=1, predecessor nonnegativity in raw and Euclidean forms, persistent badness for all later sizes, and an exact one-dimensional Euclidean successor parity shell.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+        "R003_LEAST_PARITY_BAD_SHELL"
+      ],
+      "source": "Zeta23/ExceptionalZero/ParityFirstBadObstruction.lean",
+      "theorem": "Zeta23.ExceptionalZero.exists_leastParityBad_oneDimShell_of_offLine_zero",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #105 final RH-directed endpoint. No constrained compression, negative eigenmode, unique eigenline, Schur/KKT contradiction, positivity or RH theorem is claimed."
     }
   ]
 }

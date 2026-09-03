@@ -1,19 +1,17 @@
 # RHRC current research plan
 
 > **Claim firewall: RH remains OPEN.**
->
-> Live GitHub/compiler/CI evidence is authoritative. A documentation-only merge may advance main without changing the theorem-state anchor below.
 
 ## Current theorem-state anchor
 
 ~~~text
-theorem-bearing merge through = PR #103
-final validated head = af43242f55536a8170bf303b9c9558c6a0fccdcf
-synthetic merge tested = 16c5ebaa6d6d7e14df853e9a0771ab5ef3b07aba
-merge = c7129b1856ea03cdf8b831ae1424140f8a7d90a9
-theorem tree = 56d082947fac6eb4666d0e0666e2c8bcd3c0a7e8
-RHRC #704 = SUCCESS
-Permansson #477 = SUCCESS
+theorem-state anchor = PR #105 merge 5e19483c905c07cfe9fef0a97f834004e77b5fb9
+validated theorem head = 100fb03cccd44d1c09dadfc41cd104ba753308ee
+validated synthetic merge = 4411f6a5a5c679795e043968db70f44922c2a468
+theorem tree = 84ed44aaf5ff014a9352901ff1a1a31a29809b6e
+theorem-bearing merged through = PR #105
+RHRC #706 = SUCCESS
+Permansson #479 = SUCCESS
 axioms = [propext, Classical.choice, Quot.sound]
 sorryAx = absent
 date = 2026-09-03
@@ -24,43 +22,41 @@ RH = OPEN
 
 ~~~text
 DONE
-  W2-A / W0 / W1 / W2-ZS
-  G1-A
-  F0-B1A/B1B/WCONT/F0-B1C-A/B
-  strict finite sign transfer
+  W0/W1/W2-ZS + finite legal approximation
   F1 canonical finite negative obstruction
-  K0-F1 constrained algebra / Hermitianity / displacement
-  K0-F1E exact rank 2*N-2 + Euclidean constrained sector
-  N-FLOW exact centered embedding / principal-block nesting
-  N-FLOW Euclidean isometric constrained flow
-  N-FLOW off-line zero -> fixed-L negative constrained tail
-  PARITY centered-index reversal / embedding compatibility
-  PARITY moment parity / matrix reversal invariance
-  PARITY displacementVector odd / even commutator collapse
-  PARITY-FLOW V_N = V_N^+ direct-sum V_N^-
-  PARITY-FLOW D : V_N^+ ≃ₗ[ℂ] V_N^-
-  PARITY-FLOW exact finrank V_N^± = N-1
-  PARITY-FLOW Euclidean parity-preserving N-flow
+  constrained algebra / Hermitianity / displacement
+  Euclidean constrained sector
+  exact centered N-flow
+  fixed-L negative constrained tail
+  exact reversal symmetry
+  direct parity decomposition
+  D : V_N^+ ≃ V_N^-
+  exact parity dimensions N-1/N-1
+  D_M E = E D_N
+  exact parity quadratic split
+  negative witness -> one bad parity
+  fixed bad parity tail
+  least bad parity size >=2
+  predecessor parity sector nonnegative
+  exact 1D Euclidean successor parity shell
 
-NOW
-  import + compile ParityBadness.lean
-  theorem-lock D / centered-N-flow compatibility
-  theorem-lock exact quadratic parity splitting
-  off-line zero -> one fixed negative parity
-  fixed parity badness persistence
-  least bad parity size
-  exact one-dimensional parity successor shell
+NOW — FIRST-BAD-SPECTRUM
+  define parity-constrained Euclidean compression
+  prove compressed/self quadratic equality
+  prove compressed symmetry
+  extract negative constrained Rayleigh eigenmode
+  prove every negative first-bad eigenmode uses the shell
+  prove unique negative eigenline / negative index one
 
 THEN
-  constrained orthogonal compression
-  negative constrained Rayleigh/eigenmode
-  exact V_N^perp = span_C {1,d,d²}
-  parity-resolved KKT residual
-  scalar first-bad Schur/Feshbach equation
-  D/displacement/Krylov/Hankel composition
+  prove parity-specific normal spaces
+    even residual normal = span{1,d²}
+    odd residual normal = span{d}
+  derive scalar shifted Schur/Feshbach equation
+  combine KKT residual with D/displacement identities
 
 IF NEEDED
-  K1 aperture flow / prime-event first crossing
+  reopen aperture/prime-event first crossing
 
 PARALLEL SOURCE
   G1-B1B -> G1-final -> S-NEG -> G23
@@ -68,84 +64,18 @@ PARALLEL SOURCE
 RH OPEN
 ~~~
 
-## Exact #100 -> #103 state transition
+## Why FIRST-BAD-SPECTRUM is next
 
-PR #100 turns one finite Euclidean negative direction into a fixed-aperture negative constrained tail under exact centered N-flow.
+At the #105 least bad size (N_*), the predecessor parity sector is nonnegative and has codimension one in the bad parity sector. After legal compression, this should force at most one negative spectral direction; badness forces at least one. The expected result is therefore one negative eigenline.
 
-PR #102 proves the reversal chassis and exact even-channel commutator collapse.
+Do not infer this before compression is formalized.
 
-PR #103 proves the constrained parity decomposition and, more strongly,
+## D-flow consequence
 
-~~~text
-D : V_N^+ ≃ₗ[ℂ] V_N^-.
-~~~
+#105 proves (D_ME=ED_N) on all raw vectors. Together with #103, D should descend to an algebraic equivalence between the one-dimensional parity quotient increments. This does not imply orthogonal-shell equivalence because D is not unitary.
 
-The proof is structural. D has one ambient zero-index kernel; boundary-flat moment zero kills the remaining central coefficient when D u=0. Conversely, an odd vector has an explicit even primitive obtained by division by the noncentral centered index plus one central coefficient chosen to restore moment zero.
+## Schur firewall
 
-Therefore, for N>=1, both parity sectors have exact finrank N-1. Their Euclidean copies have the same dimensions and exact centered Euclidean extension preserves each sector.
-
-## Derived but not yet theorem-locked
-
-#100 gives global badness persistence and therefore a least global bad size when badness exists.
-
-Because #102 makes M commute with reversal, the next theorem should prove exact quadratic splitting
-
-~~~text
-q(u) = q(u_+) + q(u_-).
-~~~
-
-Then q(u)<0 forces a negative parity component. Choosing that parity and applying #103 parity-preserving N-flow should yield a fixed-parity negative tail.
-
-The staged `ParityBadness.lean` source expresses the intended persistence, least-bad and one-dimensional-shell API, but is outside the validated import closure.
-
-## Highest-value upstream theorem
-
-~~~text
-D_M (E_{N,M} u) = E_{N,M} (D_N u).
-~~~
-
-If true, D coherently identifies nested even and odd sectors and should pair their new one-dimensional successor quotients.
-
-Do not infer that D is unitary or that it conjugates future compressed parity operators.
-
-## First-bad parity shell
-
-After fixed-parity extraction, let N* be the least bad size in that parity. Minimality gives nonnegativity below N*. Exact parity dimensions leave one new complex direction at the successor step.
-
-This is the intended entry point for a scalar constrained Schur/Feshbach equation. The negative vector need not lie purely in the shell; coupling to the retained nonnegative block is exactly what the Schur complement must encode.
-
-## K0-F1F — constrained spectral extraction
-
-Build the operator on the constrained subtype using orthogonal projection of `canonicalSourceMatrix.toEuclideanLin`. Prove symmetry and equality of constrained/ambient inner-self values, then extract a negative eigenmode by finite-dimensional Rayleigh theory.
-
-Use variational monotonicity under exact isometric inclusion; do not claim literal nesting of compressed operators unless separately proved.
-
-## KKT / normal space
-
-Before asserting `M u = lambda u + a0*1 + a1*d + a2*d²`, prove
-
-~~~text
-V_N^perp = span_C {1,d,d²}.
-~~~
-
-Parity should then split residual channels: 1 and d² even, d odd.
-
-## D / displacement composition
-
-#102 proves [D,M]u=0 for even constrained u; #103 proves D : V_N^+ ≃ V_N^-.
-
-This does not yet imply compressed parity-block intertwining because M u may leave the constrained subspace. After the exact normal-space theorem, the failure of intertwining must pass through a small parity-resolved normal space. That is a high-value rigidity target.
-
-## Source and deferred lanes
-
-- G1-B1B/G1-final/S-NEG/G23 remains independent;
-- DR-010 remains dead;
-- R002/Bombieri remain comparator lanes;
-- finite-to-infinite convergence remains dormant;
-- K1 aperture/prime-event flow remains deferred unless fixed-L finite rigidity stalls.
-
-## Validation firewall
-
-A merged Lean file is not theorem authority unless it lies in the exact compiler-tested import/build closure or was separately built by an authoritative gate. `ParityBadness.lean` is the current example. See OBS-018 and `VALIDATION_PROTOCOL.md`.
+The predecessor block may be semidefinite. The safe future equation uses (A-lambda I) for a negative eigenvalue (lambda<0), not (A^{-1}) at zero.
 
 **RH remains OPEN.**

@@ -183,6 +183,26 @@
     {
       "id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
       "theorem": "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanOddBoundaryFlatSubspace"
+    },
+    {
+      "id": "R003_PARITY_QUADRATIC_SPLIT",
+      "theorem": "Zeta23.CCM.quadraticForm_evenPart_add_oddPart"
+    },
+    {
+      "id": "R003_PARITY_BAD_NFLOW",
+      "theorem": "Zeta23.CCM.parityBad_persists_of_le"
+    },
+    {
+      "id": "R003_LEAST_PARITY_BAD_SHELL",
+      "theorem": "Zeta23.CCM.finrank_euclideanParitySuccShell"
+    },
+    {
+      "id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_parityBad_tail_of_offLine_zero"
+    },
+    {
+      "id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "theorem": "Zeta23.ExceptionalZero.exists_leastParityBad_oneDimShell_of_offLine_zero"
     }
   ]
 }

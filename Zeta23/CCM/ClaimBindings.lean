@@ -21,6 +21,7 @@ import Zeta23.CCM.ConstrainedEuclideanSector
 import Zeta23.CCM.NestedFinite
 import Zeta23.CCM.ConstrainedParity
 import Zeta23.CCM.ConstrainedParityGeometry
+import Zeta23.CCM.ParityBadness
 import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.DictionaryRHSIdentity
 import Zeta23.ExceptionalZero.DisplacementTransfer
@@ -34,6 +35,7 @@ import Zeta23.ExceptionalZero.FiniteNegativeObstruction
 import Zeta23.ExceptionalZero.ConstrainedFiniteObstruction
 import Zeta23.ExceptionalZero.EuclideanConstrainedObstruction
 import Zeta23.ExceptionalZero.NestedEuclideanObstruction
+import Zeta23.ExceptionalZero.ParityFirstBadObstruction
 
 /-!
 R003 promoted-claim completeness is machine-checked by research/RHRC/tools/promoted_binding_lint.py against research/RHRC/R003_PROMOTED_BINDINGS.json and CLAIM_REGISTRY.json. Supporting #check declarations may exist without registry promotion; every PROVED_UNCONDITIONAL R003 registry theorem must have both #check and #print axioms here.
@@ -470,3 +472,28 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanEvenBoundaryFlatSubspace
 #check Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanOddBoundaryFlatSubspace
 #print axioms Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanOddBoundaryFlatSubspace
+
+#check Zeta23.CCM.indexMatrix_mulVec_centeredZeroExtend
+#print axioms Zeta23.CCM.indexMatrix_mulVec_centeredZeroExtend
+#check Zeta23.CCM.quadraticForm_canonicalSourceMatrix_reverseCoefficients
+#print axioms Zeta23.CCM.quadraticForm_canonicalSourceMatrix_reverseCoefficients
+#check Zeta23.CCM.quadraticForm_evenPart_add_oddPart
+#print axioms Zeta23.CCM.quadraticForm_evenPart_add_oddPart
+#check Zeta23.CCM.parityBad_even_or_odd_of_negative
+#print axioms Zeta23.CCM.parityBad_even_or_odd_of_negative
+#check Zeta23.CCM.two_le_of_parityBad
+#print axioms Zeta23.CCM.two_le_of_parityBad
+#check Zeta23.CCM.parityBad_persists_of_le
+#print axioms Zeta23.CCM.parityBad_persists_of_le
+#check Zeta23.CCM.exists_least_parityBad
+#print axioms Zeta23.CCM.exists_least_parityBad
+#check Zeta23.CCM.nonnegative_of_lt_least_parityBad
+#print axioms Zeta23.CCM.nonnegative_of_lt_least_parityBad
+#check Zeta23.CCM.euclidean_nonnegative_of_lt_least_parityBad
+#print axioms Zeta23.CCM.euclidean_nonnegative_of_lt_least_parityBad
+#check Zeta23.CCM.finrank_euclideanParitySuccShell
+#print axioms Zeta23.CCM.finrank_euclideanParitySuccShell
+#check Zeta23.ExceptionalZero.exists_fixedAperture_parityBad_tail_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_fixedAperture_parityBad_tail_of_offLine_zero
+#check Zeta23.ExceptionalZero.exists_leastParityBad_oneDimShell_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_leastParityBad_oneDimShell_of_offLine_zero
