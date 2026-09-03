@@ -76,8 +76,8 @@ theorem inner_parityCompressedCanonical_self
         (x : EuclideanSpace ℂ (Fin (2 * N + 1))))
       (x : EuclideanSpace ℂ (Fin (2 * N + 1)))
   exact
-    (euclideanParityBoundaryFlatSubspace p N)
-      .inner_orthogonalProjectionOnto_eq_of_mem_right x _
+    inner_orthogonalProjectionOnto_eq_of_mem_right
+      (K := euclideanParityBoundaryFlatSubspace p N) x _
 
 theorem re_inner_parityCompressedCanonical_self
     (p : ReversalParity) (L : ℝ) (N : ℕ)
@@ -105,10 +105,8 @@ theorem parityCompressedCanonical_isSymmetric
         ((canonicalSourceMatrix L N).toEuclideanLin
           (y : EuclideanSpace ℂ (Fin (2 * N + 1)))))
   rw [
-    (euclideanParityBoundaryFlatSubspace p N)
-      .inner_orthogonalProjectionOnto_eq_of_mem_right,
-    (euclideanParityBoundaryFlatSubspace p N)
-      .inner_orthogonalProjectionOnto_eq_of_mem_left
+    inner_orthogonalProjectionOnto_eq_of_mem_right,
+    inner_orthogonalProjectionOnto_eq_of_mem_left
   ]
   exact canonicalSourceMatrix_toEuclideanLin_isSymmetric L N
     (x : EuclideanSpace ℂ (Fin (2 * N + 1)))
@@ -124,9 +122,13 @@ theorem exists_negative_compressed_direction_of_parityBad
   obtain ⟨u, hune, humem, huneg⟩ := hbad
   let x0 : EuclideanSpace ℂ (Fin (2 * N + 1)) :=
     (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ).symm u
+  have hxcoords :
+      (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x0 = u := by
+    exact
+      (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ).apply_symm_apply u
   have hxmem : x0 ∈ euclideanParityBoundaryFlatSubspace p N := by
-    rw [mem_euclideanParityBoundaryFlatSubspace_iff]
-    simpa [x0] using humem
+    rw [mem_euclideanParityBoundaryFlatSubspace_iff, hxcoords]
+    exact humem
   let x : euclideanParityBoundaryFlatSubspace p N := ⟨x0, hxmem⟩
   have hx0ne : x0 ≠ 0 := by
     intro hx0
@@ -145,7 +147,8 @@ theorem exists_negative_compressed_direction_of_parityBad
           x0) < 0 := by
     rw [← quadraticForm_re_eq_re_inner_apply_self
       (canonicalSourceMatrix L N) x0]
-    simpa [x0] using huneg
+    rw [hxcoords]
+    exact huneg
   refine ⟨x, hxne, ?_⟩
   rw [re_inner_parityCompressedCanonical_self]
   exact hambneg
@@ -153,17 +156,17 @@ theorem exists_negative_compressed_direction_of_parityBad
 theorem exists_negative_eigenmode_of_parityBad
     {p : ReversalParity} {L : ℝ} {N : ℕ}
     (hbad : ParityBad p L N) :
-    ∃ λ : ℝ, λ < 0 ∧
+    ∃ lam : ℝ, lam < 0 ∧
       ∃ x : euclideanParityBoundaryFlatSubspace p N,
         x ≠ 0 ∧
-        parityCompressedCanonical p L N x = (λ : ℂ) • x := by
+        parityCompressedCanonical p L N x = (lam : ℂ) • x := by
   obtain ⟨x, hxne, hxneg⟩ :=
     exists_negative_compressed_direction_of_parityBad hbad
   let V := euclideanParityBoundaryFlatSubspace p N
   let T : V →ₗ[ℂ] V := parityCompressedCanonical p L N
   let Tc : V →L[ℂ] V := parityCompressedCanonicalCLM p L N
   letI : Nontrivial V := nontrivial_of_ne x 0 hxne
-  let λ : ℝ :=
+  let lam : ℝ :=
     ⨅ z : {z : V // z ≠ 0},
       Complex.re (inner ℂ (T z) z) / ‖(z : V)‖ ^ 2
   have hbdd :
@@ -176,20 +179,20 @@ theorem exists_negative_eigenmode_of_parityBad
     exact neg_le_of_abs_le (by
       simpa [ContinuousLinearMap.rayleighQuotient, T, Tc,
         parityCompressedCanonical, parityCompressedCanonicalCLM] using habs)
-  have hλle :
-      λ ≤ Complex.re (inner ℂ (T x) x) / ‖(x : V)‖ ^ 2 := by
+  have hlamle :
+      lam ≤ Complex.re (inner ℂ (T x) x) / ‖(x : V)‖ ^ 2 := by
     exact ciInf_le hbdd ⟨x, hxne⟩
   have hden : 0 < ‖(x : V)‖ ^ 2 := by positivity
   have hrqneg :
       Complex.re (inner ℂ (T x) x) / ‖(x : V)‖ ^ 2 < 0 := by
     exact div_neg_of_neg_of_pos (by simpa [T] using hxneg) hden
-  have hλneg : λ < 0 := lt_of_le_of_lt hλle hrqneg
+  have hlamneg : lam < 0 := lt_of_le_of_lt hlamle hrqneg
   have hsym : T.IsSymmetric := by
     simpa [T] using parityCompressedCanonical_isSymmetric p L N
-  have hλeig : T.HasEigenvalue (λ : ℂ) := by
-    simpa [λ, T] using hsym.hasEigenvalue_iInf_of_finiteDimensional
-  obtain ⟨v, hv⟩ := hλeig.exists_hasEigenvector
-  exact ⟨λ, hλneg, v, hv.2, hv.apply_eq_smul⟩
+  have hlameig : T.HasEigenvalue (lam : ℂ) := by
+    simpa [lam, T] using hsym.hasEigenvalue_iInf_of_finiteDimensional
+  obtain ⟨v, hv⟩ := hlameig.exists_hasEigenvector
+  exact ⟨lam, hlamneg, v, hv.2, hv.apply_eq_smul⟩
 
 theorem re_inner_successor_nonnegative_on_centeredImage
     (p : ReversalParity)
@@ -220,11 +223,11 @@ theorem negative_eigenmode_not_centeredImage
         x ∈ euclideanParityBoundaryFlatSubspace p N →
           0 ≤ Complex.re
             (inner ℂ ((canonicalSourceMatrix L N).toEuclideanLin x) x))
-    {λ : ℝ} (hλ : λ < 0)
+    {lam : ℝ} (hlam : lam < 0)
     {v : euclideanParityBoundaryFlatSubspace p (N + 1)}
     (hvne : v ≠ 0)
     (hveig :
-      parityCompressedCanonical p L (N + 1) v = (λ : ℂ) • v) :
+      parityCompressedCanonical p L (N + 1) v = (lam : ℂ) • v) :
     ¬ ∃ x : EuclideanSpace ℂ (Fin (2 * N + 1)),
       x ∈ euclideanParityBoundaryFlatSubspace p N ∧
       euclideanCenteredZeroExtend (Nat.le_succ N) x =
@@ -245,7 +248,7 @@ theorem negative_eigenmode_not_centeredImage
       rw [hveig]
       have hnorm : 0 < ‖v‖ ^ 2 := by positivity
       simpa [inner_smul_left, inner_self_eq_norm_sq] using
-        mul_neg_of_neg_of_pos hλ hnorm
+        mul_neg_of_neg_of_pos hlam hnorm
     rw [re_inner_parityCompressedCanonical_self] at hcomp
     exact hcomp
   rw [← hxv] at hvneg
