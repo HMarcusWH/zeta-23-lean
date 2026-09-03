@@ -26,11 +26,11 @@ theorem exists_firstBadParity_negativeEigenmode_of_offLine_zero
     ∃ L : ℝ, 0 < L ∧
       ∃ p : ReversalParity,
         ∃ Nprev : ℕ, 1 ≤ Nprev ∧
-          ∃ λ : ℝ, λ < 0 ∧
+          ∃ lam : ℝ, lam < 0 ∧
             ∃ v : euclideanParityBoundaryFlatSubspace p (Nprev + 1),
               v ≠ 0 ∧
               parityCompressedCanonical p L (Nprev + 1) v =
-                (λ : ℂ) • v ∧
+                (lam : ℂ) • v ∧
               (∀ x : EuclideanSpace ℂ (Fin (2 * Nprev + 1)),
                 x ∈ euclideanParityBoundaryFlatSubspace p Nprev →
                   0 ≤ Complex.re
@@ -46,12 +46,12 @@ theorem exists_firstBadParity_negativeEigenmode_of_offLine_zero
     hmin, hprevRaw, hprevEuclid, htail, hshell⟩ :=
     exists_leastParityBad_oneDimShell_of_offLine_zero ρ₀ hoff
   subst Nstar
-  obtain ⟨λ, hλ, v, hvne, hveig⟩ :=
+  obtain ⟨lam, hlam, v, hvne, hveig⟩ :=
     exists_negative_eigenmode_of_parityBad hbad
   have hnotInherited :=
     negative_eigenmode_not_centeredImage
-      p hL Nprev hprevEuclid hλ hvne hveig
-  exact ⟨L, hL, p, Nprev, hNprev, λ, hλ, v, hvne, hveig,
+      p hL Nprev hprevEuclid hlam hvne hveig
+  exact ⟨L, hL, p, Nprev, hNprev, lam, hlam, v, hvne, hveig,
     hprevEuclid, hnotInherited, hshell⟩
 
 theorem exists_firstBadParity_negativeEigenmode_of_exists_offLine_zero
@@ -61,11 +61,11 @@ theorem exists_firstBadParity_negativeEigenmode_of_exists_offLine_zero
     ∃ L : ℝ, 0 < L ∧
       ∃ p : ReversalParity,
         ∃ Nprev : ℕ, 1 ≤ Nprev ∧
-          ∃ λ : ℝ, λ < 0 ∧
+          ∃ lam : ℝ, lam < 0 ∧
             ∃ v : euclideanParityBoundaryFlatSubspace p (Nprev + 1),
               v ≠ 0 ∧
               parityCompressedCanonical p L (Nprev + 1) v =
-                (λ : ℂ) • v ∧
+                (lam : ℂ) • v ∧
               (∀ x : EuclideanSpace ℂ (Fin (2 * Nprev + 1)),
                 x ∈ euclideanParityBoundaryFlatSubspace p Nprev →
                   0 ≤ Complex.re
