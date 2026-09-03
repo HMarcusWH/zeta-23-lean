@@ -34,17 +34,19 @@ theorem exists_firstBadParity_shell_KKT_of_offLine_zero
                   0 ≤ Complex.re
                     (inner ℂ
                       ((canonicalSourceMatrix L Nprev).toEuclideanLin x) x)) ∧
-              intrinsicParitySuccProjection p Nprev v ≠ 0 ∧
-              Module.finrank ℂ (intrinsicParitySuccShell p Nprev) = 1 ∧
+              paritySuccShellProjection p Nprev
+                (v : EuclideanSpace ℂ
+                  (Fin (2 * (Nprev + 1) + 1))) ≠ 0 ∧
+              Module.finrank ℂ (euclideanParitySuccShell p Nprev) = 1 ∧
               ParityKKTResidual p L (Nprev + 1) lam v := by
   obtain ⟨L, hL, p, Nprev, hNprev, lam, hlam, v, hvne, hveig,
     hprev, hnotInherited, hshellAmbient⟩ :=
     exists_firstBadParity_negativeEigenmode_of_offLine_zero ρ₀ hoff
   have hshellProjection :=
-    negative_eigenmode_intrinsicShell_projection_ne_zero
+    negative_eigenmode_paritySuccShell_projection_ne_zero
       p hL Nprev hprev hlam hvne hveig
   have hshellDim :=
-    finrank_intrinsicParitySuccShell p Nprev hNprev
+    finrank_euclideanParitySuccShell p Nprev hNprev
   have hkkt :=
     parityKKTResidual_of_eigenmode
       p L (Nprev + 1) lam v hveig
@@ -68,8 +70,10 @@ theorem exists_firstBadParity_shell_KKT_of_exists_offLine_zero
                   0 ≤ Complex.re
                     (inner ℂ
                       ((canonicalSourceMatrix L Nprev).toEuclideanLin x) x)) ∧
-              intrinsicParitySuccProjection p Nprev v ≠ 0 ∧
-              Module.finrank ℂ (intrinsicParitySuccShell p Nprev) = 1 ∧
+              paritySuccShellProjection p Nprev
+                (v : EuclideanSpace ℂ
+                  (Fin (2 * (Nprev + 1) + 1))) ≠ 0 ∧
+              Module.finrank ℂ (euclideanParitySuccShell p Nprev) = 1 ∧
               ParityKKTResidual p L (Nprev + 1) lam v := by
   obtain ⟨ρ₀, hρ₀⟩ := hoff
   exact exists_firstBadParity_shell_KKT_of_offLine_zero ρ₀ hρ₀
