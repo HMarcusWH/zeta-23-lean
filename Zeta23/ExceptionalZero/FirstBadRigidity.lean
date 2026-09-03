@@ -34,7 +34,7 @@ theorem exists_firstBadParity_shell_KKT_of_offLine_zero
                   0 ≤ Complex.re
                     (inner ℂ
                       ((canonicalSourceMatrix L Nprev).toEuclideanLin x) x)) ∧
-              (intrinsicParitySuccShell p Nprev).orthogonalProjectionOnto v ≠ 0 ∧
+              intrinsicParitySuccProjection p Nprev v ≠ 0 ∧
               Module.finrank ℂ (intrinsicParitySuccShell p Nprev) = 1 ∧
               ParityKKTResidual p L (Nprev + 1) lam v := by
   obtain ⟨L, hL, p, Nprev, hNprev, lam, hlam, v, hvne, hveig,
@@ -68,7 +68,7 @@ theorem exists_firstBadParity_shell_KKT_of_exists_offLine_zero
                   0 ≤ Complex.re
                     (inner ℂ
                       ((canonicalSourceMatrix L Nprev).toEuclideanLin x) x)) ∧
-              (intrinsicParitySuccShell p Nprev).orthogonalProjectionOnto v ≠ 0 ∧
+              intrinsicParitySuccProjection p Nprev v ≠ 0 ∧
               Module.finrank ℂ (intrinsicParitySuccShell p Nprev) = 1 ∧
               ParityKKTResidual p L (Nprev + 1) lam v := by
   obtain ⟨ρ₀, hρ₀⟩ := hoff
