@@ -70,6 +70,9 @@ theorem exists_leastParityBad_oneDimShell_of_offLine_zero
           Nstar = Nprev + 1 ∧
           ParityBad p L Nstar ∧
           (∀ N : ℕ, N < Nstar → ¬ ParityBad p L N) ∧
+          (∀ u : Fin (2 * Nprev + 1) → ℂ,
+            u ∈ parityBoundaryFlatSubspace p Nprev →
+              0 ≤ (quadraticForm (canonicalSourceMatrix L Nprev) u).re) ∧
           (∀ M : ℕ, Nstar ≤ M → ParityBad p L M) ∧
           Module.finrank ℂ (euclideanParitySuccShell p Nprev) = 1 := by
   obtain ⟨L, hL, p, N0, hN0, hbad0, htail0⟩ :=
@@ -83,6 +86,16 @@ theorem exists_leastParityBad_oneDimShell_of_offLine_zero
   have hsucc : Nstar = Nprev + 1 := by
     dsimp [Nprev]
     omega
+  have hprevlt : Nprev < Nstar := by
+    rw [hsucc]
+    omega
+  have hprevNonneg :
+      ∀ u : Fin (2 * Nprev + 1) → ℂ,
+        u ∈ parityBoundaryFlatSubspace p Nprev →
+          0 ≤ (quadraticForm (canonicalSourceMatrix L Nprev) u).re := by
+    intro u humem
+    exact nonnegative_of_lt_least_parityBad
+      p L hmin hprevlt u humem
   have htailstar :
       ∀ M : ℕ, Nstar ≤ M → ParityBad p L M := by
     intro M hNM
@@ -91,7 +104,7 @@ theorem exists_leastParityBad_oneDimShell_of_offLine_zero
       Module.finrank ℂ (euclideanParitySuccShell p Nprev) = 1 :=
     finrank_euclideanParitySuccShell p Nprev hNprev
   exact ⟨L, hL, p, Nprev, Nstar, hNprev, hsucc, hbadstar,
-    hmin, htailstar, hshell⟩
+    hmin, hprevNonneg, htailstar, hshell⟩
 
 /-- Existential off-line-zero wrapper for the least-bad one-dimensional-shell
 endpoint. -/
@@ -106,6 +119,9 @@ theorem exists_leastParityBad_oneDimShell_of_exists_offLine_zero
           Nstar = Nprev + 1 ∧
           ParityBad p L Nstar ∧
           (∀ N : ℕ, N < Nstar → ¬ ParityBad p L N) ∧
+          (∀ u : Fin (2 * Nprev + 1) → ℂ,
+            u ∈ parityBoundaryFlatSubspace p Nprev →
+              0 ≤ (quadraticForm (canonicalSourceMatrix L Nprev) u).re) ∧
           (∀ M : ℕ, Nstar ≤ M → ParityBad p L M) ∧
           Module.finrank ℂ (euclideanParitySuccShell p Nprev) = 1 := by
   obtain ⟨ρ₀, hρ₀⟩ := hoff
