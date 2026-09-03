@@ -13,9 +13,10 @@ open scoped BigOperators ComplexConjugate
 # FIRST-BAD-RIGIDITY-D1: intrinsic predecessor / shell block
 
 The #105/#109 shell lives in the ambient Euclidean coefficient space.  This
-module internalizes the centered predecessor image as a submodule of the exact
-successor parity-constrained subtype and takes its orthogonal complement there.
-The resulting shell has complex dimension one.
+module internalizes both the centered predecessor image and its already-proved
+ambient orthogonal-intersection shell as submodules of the exact successor
+parity-constrained subtype.  The resulting native shell is linearly equivalent
+to the ambient shell and therefore has complex dimension one.
 
 No shell invariance, Schur/Feshbach formula, negative-index theorem,
 positivity theorem, finite-to-infinite theorem, or RH theorem is claimed.
@@ -77,37 +78,113 @@ theorem finrank_intrinsicParityPredecessorSubspace
       (intrinsicParityPredecessorEquivAmbient p N).finrank_eq
     _ = N - 1 := finrank_euclideanParityEmbeddedSuccSubspace p N hN
 
-/-- Native one-step shell inside the successor parity-constrained carrier. -/
+/-- Native one-step shell inside the successor parity-constrained carrier.
+It is the pullback of the already-proved ambient shell
+`Wᗮ ⊓ V` along the successor subtype inclusion. -/
 def intrinsicParitySuccShell
     (p : ReversalParity) (N : ℕ) :
     Submodule ℂ (euclideanParityBoundaryFlatSubspace p (N + 1)) :=
-  Submodule.orthogonal (𝕜 := ℂ) (intrinsicParityPredecessorSubspace p N)
+  (euclideanParitySuccShell p N).comap
+    (euclideanParityBoundaryFlatSubspace p (N + 1)).subtype
+
+@[simp] theorem mem_intrinsicParitySuccShell_iff
+    (p : ReversalParity) (N : ℕ)
+    (v : euclideanParityBoundaryFlatSubspace p (N + 1)) :
+    v ∈ intrinsicParitySuccShell p N ↔
+      (v : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) ∈
+        euclideanParitySuccShell p N := Iff.rfl
+
+/-- The native shell is linearly equivalent to the ambient one-step shell. -/
+def intrinsicParitySuccShellEquivAmbient
+    (p : ReversalParity) (N : ℕ) :
+    intrinsicParitySuccShell p N ≃ₗ[ℂ] euclideanParitySuccShell p N where
+  toFun := fun s =>
+    ⟨((s : euclideanParityBoundaryFlatSubspace p (N + 1)) :
+        EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))), s.property⟩
+  invFun := fun s =>
+    ⟨⟨(s : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))), by
+        have hs := s.property
+        change
+          (s : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) ∈
+            (euclideanParityEmbeddedSuccSubspace p N)ᗮ ⊓
+              euclideanParityBoundaryFlatSubspace p (N + 1) at hs
+        exact hs.2⟩,
+      s.property⟩
+  left_inv := by
+    intro s
+    apply Subtype.ext
+    apply Subtype.ext
+    rfl
+  right_inv := by
+    intro s
+    apply Subtype.ext
+    rfl
+  map_add' := by
+    intro x y
+    apply Subtype.ext
+    rfl
+  map_smul' := by
+    intro c x
+    apply Subtype.ext
+    rfl
 
 /-- The native successor shell is exactly one complex dimension. -/
 theorem finrank_intrinsicParitySuccShell
     (p : ReversalParity) (N : ℕ) (hN : 1 ≤ N) :
     Module.finrank ℂ (intrinsicParitySuccShell p N) = 1 := by
-  have hdim :=
-    Submodule.finrank_add_finrank_orthogonal
-      (𝕜 := ℂ) (intrinsicParityPredecessorSubspace p N)
-  have hdim' :
-      Module.finrank ℂ (intrinsicParityPredecessorSubspace p N) +
-          Module.finrank ℂ (intrinsicParitySuccShell p N) =
-        Module.finrank ℂ (euclideanParityBoundaryFlatSubspace p (N + 1)) := by
-    simpa only [intrinsicParitySuccShell] using hdim
-  rw [finrank_intrinsicParityPredecessorSubspace p N hN,
-    finrank_euclideanParityBoundaryFlatSubspace p (N + 1) (by omega)] at hdim'
-  omega
+  calc
+    Module.finrank ℂ (intrinsicParitySuccShell p N) =
+        Module.finrank ℂ (euclideanParitySuccShell p N) :=
+      (intrinsicParitySuccShellEquivAmbient p N).finrank_eq
+    _ = 1 := finrank_euclideanParitySuccShell p N hN
 
-/-- The intrinsic predecessor plus its orthogonal shell spans the full
-successor parity carrier. -/
+/-- The intrinsic predecessor plus its native orthogonal shell spans the full
+successor parity carrier.  The proof is transported through the ambient
+identity `W ⊔ (Wᗮ ⊓ V) = V`, avoiding any subtype-inner-product inference. -/
 theorem intrinsicPredecessor_sup_shell
     (p : ReversalParity) (N : ℕ) :
     intrinsicParityPredecessorSubspace p N ⊔
       intrinsicParitySuccShell p N = ⊤ := by
-  change intrinsicParityPredecessorSubspace p N ⊔
-      Submodule.orthogonal (𝕜 := ℂ) (intrinsicParityPredecessorSubspace p N) = ⊤
-  exact Submodule.sup_orthogonal_of_hasOrthogonalProjection
+  apply top_unique
+  intro v _hv
+  have hspan :
+      euclideanParityEmbeddedSuccSubspace p N ⊔
+          euclideanParitySuccShell p N =
+        euclideanParityBoundaryFlatSubspace p (N + 1) := by
+    change
+      euclideanParityEmbeddedSuccSubspace p N ⊔
+          ((euclideanParityEmbeddedSuccSubspace p N)ᗮ ⊓
+            euclideanParityBoundaryFlatSubspace p (N + 1)) =
+        euclideanParityBoundaryFlatSubspace p (N + 1)
+    exact Submodule.sup_orthogonal_inf_of_hasOrthogonalProjection
+      (euclideanParityEmbeddedSuccSubspace_le p N)
+  have hvAmbient :
+      (v : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) ∈
+        euclideanParityEmbeddedSuccSubspace p N ⊔
+          euclideanParitySuccShell p N := by
+    rw [hspan]
+    exact v.property
+  rw [Submodule.mem_sup] at hvAmbient
+  rcases hvAmbient with ⟨w, hw, s, hs, hws⟩
+  have hsCarrier :
+      s ∈ euclideanParityBoundaryFlatSubspace p (N + 1) := by
+    have hs' := hs
+    change
+      s ∈ (euclideanParityEmbeddedSuccSubspace p N)ᗮ ⊓
+        euclideanParityBoundaryFlatSubspace p (N + 1) at hs'
+    exact hs'.2
+  let wV : euclideanParityBoundaryFlatSubspace p (N + 1) :=
+    ⟨w, euclideanParityEmbeddedSuccSubspace_le p N hw⟩
+  let sV : euclideanParityBoundaryFlatSubspace p (N + 1) :=
+    ⟨s, hsCarrier⟩
+  have hwV : wV ∈ intrinsicParityPredecessorSubspace p N := by
+    exact hw
+  have hsV : sV ∈ intrinsicParitySuccShell p N := by
+    exact hs
+  rw [Submodule.mem_sup]
+  refine ⟨wV, hwV, sV, hsV, ?_⟩
+  apply Subtype.ext
+  exact hws
 
 /-- Every successor constrained vector decomposes as predecessor plus an
 orthogonal-shell vector. -/
