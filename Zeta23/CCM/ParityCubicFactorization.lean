@@ -58,8 +58,7 @@ theorem evenOddCompressedIntertwiningDefect_eq_cubicFunctional_smul
     apply hg
     exact (inner_self_eq_zero.mp hzero)
   have hcoeff : cubicDefectFunctional L N hN v = a := by
-    rw [ha]
-    simp [cubicDefectFunctional, hgg]
+    simp [cubicDefectFunctional, ha, hgg]
   rw [ha, hcoeff]
 
 /-- Cubic channel transported back to the even constrained carrier through
@@ -106,7 +105,7 @@ theorem conjugatedParityCompressionDefect_eq_cubicFunctional_smul
             E (evenCompressedCanonical L N v))
     rw [map_sub, E.symm_apply_apply]
   rw [hdef, hF, map_smul]
-  rfl
+  simp [pulledBackCubicCompressionVector, E]
 
 end Zeta23.CCM
 
