@@ -4,6 +4,21 @@
 >
 > This is a living research inventory, not a theorem registry. A lead may be promising, blocked, dormant, refuted, or promoted. Formal authority remains Lean/compiler/CI plus the machine claim and route registries.
 
+## Current incremental theorem/promotion authority
+
+~~~text
+main/theorem-state anchor = 07e0c845d128831b244b13503c9640b934bf4416
+validated theorem head = ca0c389827520e2005390637742389819dc97068
+theorem tree = f2e9985ac976c83ecfa7f5dbce64b1e0193680b0
+merged through = PR #110
+RHRC #738 = SUCCESS
+Permansson #511 = SUCCESS
+post-green delta = RESEARCH_LEADS_POST_110_DELTA.md
+RH = OPEN
+~~~
+
+The accumulated per-entry ledger below preserves the last full end-to-end inventory review at PR #107. `RESEARCH_LEADS_POST_110_DELTA.md` is the authoritative incremental lead/status update for PRs #109/#110 and **supersedes any post-#107 per-entry status below where the two conflict**. In particular, nonzero ambient successor-shell projection, exact parity normal spaces, exact parity KKT residuals, and the cubic rank-at-most-one parity-compression defect are now PROVED; the active frontier is FIRST-BAD-RIGIDITY-D scalar/block rigidity.
+
 Last full theorem/promotion review:
 
 ~~~text
@@ -70,7 +85,7 @@ After every meaningful green result:
 5. update CURRENT_RESEARCH_PLAN.md if execution order changed;
 6. keep historical settlement documents historical.
 
-Last full theorem/promotion audit: PR #107 theorem head `cfcf397cc8c15dbb368fbee3a161b8733061b770` passed both repository workflows on exact synthetic merge `19cd290510fe4fb1d253522c29644ff3e4563c03`, with theorem tree `719b45162fd0814581759661f12eab16c46e1201`, and merged to main as `b7d1022e33e2177c5597d008f593d3684d0ec720`. CCM, ExceptionalZero, no-placeholder, RHRC regression, normalization/source firewalls and production axiom checks all passed.
+Last full theorem/promotion audit: PR #107 theorem head `cfcf397cc8c15dbb368fbee3a161b8733061b770` passed both repository workflows on exact synthetic merge `19cd290510fe4fb1d253522c29644ff3e4563c03`, with theorem tree `719b45162fd0814581759661f12eab16c46e1201`, and merged to main as `b7d1022e33e2177c5597d008f593d3684d0ec720`. CCM, ExceptionalZero, no-placeholder, RHRC regression, normalization/source firewalls and production axiom checks all passed. For current post-#107 status use the incremental authority block and `RESEARCH_LEADS_POST_110_DELTA.md` above.
 
 ---
 
@@ -133,36 +148,32 @@ W2-A supplied the four pairwise summability certificates required before legal `
 
 ### Downstream effect
 
-W1 subsequently closed, and PR #83 then identified the negative W value exactly with the localized additive RHS. The current internal frontier is F0-B finite approximation/continuity; the source-faithful route remains a parallel cross-check under OBS-015.
+W1 subsequently closed, and PR #83 then identified the negative W value exactly with the localized additive RHS. The internal finite-approximation/F1 layer subsequently closed through PR #94; current internal authority is the post-#110 first-bad rigidity program. The source-faithful route remains a parallel cross-check under OBS-015.
 
 ### New structural clue
 
 Pole neutrality survives the contraction. This removes the explicit-formula pole contribution from a specialized W2-B analysis and suggests a broader witness-engineering program in which additional nuisance frequencies are killed while preserving detector visibility.
 
-
 ---
 
-
-## L-W0-02 — strengthen constructed detector regularity if F0-B needs it
+## L-W0-02 — strengthen constructed detector regularity if a live downstream theorem needs it
 
 **Research status:** READY SUPPORT
 **Formal status:** LEAD / HYPOTHESIS
 
 The normalized `ContDiffBump` is smooth at arbitrary finite order, while the current X1/W0 interfaces intentionally export only C⁴ for the seed and C² after the second-order pole killer because that was the minimum required at the time.
 
-The W1 post-green pass therefore identifies the current C² endpoint as likely an interface truncation rather than an intrinsic limitation of the constructed witness.
-
 Potential downstream value:
 
-- stronger Fourier decay for F0-B;
+- stronger Fourier decay for alternate approximation routes;
 - cleaner endpoint-flat Fourier approximation;
 - possible weighted-channel domination if the analytic fallback is revived.
 
-Do not upgrade the existing W0/W1 claims without Lean proof. W2-ZS is now proved; regularity plumbing should be activated only if the live F0-B topology actually needs it.
+Do not upgrade the existing W0/W1 claims without Lean proof. The primary F0-B/F1 route has already closed, so regularity plumbing should be activated only if a live later theorem actually needs it.
 
-The current source exposes `canonicalSeedTest` as C⁴ and `contDiff_poleKilled : C⁴ -> C²`, so the existing pole-killer interface costs two derivatives. If F0-B genuinely needs a C⁴ final pole-killed witness, the natural upstream target is therefore at least C⁶ seed regularity. This is a LEAD / HYPOTHESIS, not a theorem.
+The current source exposes `canonicalSeedTest` as C⁴ and `contDiff_poleKilled : C⁴ -> C²`, so the existing pole-killer interface costs two derivatives. If a later route genuinely needs a C⁴ final pole-killed witness, the natural upstream target is therefore at least C⁶ seed regularity. This is a LEAD / HYPOTHESIS, not a theorem.
 
-**Activation rule:** theoremize only the finite regularity order actually demanded by F0-B or another live theorem. Avoid a gratuitous C∞ abstraction layer.
+**Activation rule:** theoremize only the finite regularity order actually demanded by a live theorem. Avoid a gratuitous C∞ abstraction layer.
 
 ## L-W1-01 — support recentering into one strict interior aperture
 
@@ -213,8 +224,7 @@ Axiom surface:
 
 ### What changed
 
-The proof did not need endpoint extrema. Compact closed support was enclosed in a
-symmetric open ball, then translated by twice its radius.
+The proof did not need endpoint extrema. Compact closed support was enclosed in a symmetric open ball, then translated by twice its radius.
 
 ~~~text
 tsupport h0 ⊂ (-r,r)
@@ -226,10 +236,7 @@ The explicit margin is stronger than the roadmap minimum.
 
 ### Downstream effect
 
-The route-general front end is now closed. Both internal and source lanes receive the
-same theorem-backed finite-aperture negative pole-neutral test.
-
-The positive margin is a new asset for F0-B1 boundary-flat approximation.
+The route-general front end is closed and has already fed the theorem-backed internal F1 and first-bad finite-wall chain. The source lane receives the same fixed-aperture negative pole-neutral test as a parallel cross-check.
 
 ### Falsification survived
 
@@ -238,7 +245,6 @@ The positive margin is a new asset for F0-B1 boundary-flat approximation.
 - strict positive margin, not a boundary-touching interval;
 - both Fourier zeros preserved;
 - W negativity preserved by exact common-translation invariance.
-
 
 ---
 
@@ -282,15 +288,13 @@ The proof extracted the first half of `EF.prop_EF_of_lit` without aperture `L`, 
 
 ### Downstream effect
 
-W0 no longer had to invent or assume summability for the four pairwise two-translate terms. Historically this moved W0 ahead of W2-B; W0, W1 and the #83 W2-ZS diagonal bridge are now all proved, so F0-B is the current frontier.
+W0 no longer had to invent or assume summability for the four pairwise two-translate terms. Historically this moved W0 ahead of W2-B; W0, W1, W2-ZS, F0-B and F1 are now proved. The result remains reusable infrastructure for alternate/source routes.
 
 ### New lead
 
-The one-sided regularity may be useful later for mixed smooth/continuous approximation arguments. This is only a LEAD; arbitrary zero-extended localized finite vectors are not generally continuous, so W2-A does not by itself close F0-B.
-
+The one-sided regularity may be useful later for mixed smooth/continuous approximation arguments. This is only a LEAD; arbitrary zero-extended localized finite vectors are not generally continuous.
 
 ---
-
 
 ## L-W2-02 — pole-neutral reflection/evenization and gamma-channel legality
 
@@ -320,13 +324,12 @@ I2 remains a real legality requirement for any proof that opens and splits the B
 
 ### Why demoted
 
-PR #83 proved the concrete-zeta zero-side route and the generic diagonal W/localized-additive identity. Opening the gamma/digamma channel is therefore unnecessary on the shortest route to F1.
+PR #83 proved the concrete-zeta zero-side route and the generic diagonal W/localized-additive identity. Opening the gamma/digamma channel is therefore unnecessary on the shortest route.
 
 ### Reactivate when
 
 - an independent analytic proof is desired as cross-validation; or
 - a later theorem needs the explicit pole/prime/gamma decomposition rather than only the already-proved diagonal identity.
-
 
 ## L-W2-03 — diagonal W equals localizedWeilAdditiveRHS
 
@@ -364,23 +367,16 @@ The proof composes W2-A with the concrete-zeta zero-side evenization package L-W
 
 ### Downstream effect
 
-Composed with W1, PR #83 also proves a strict-aperture compact C² witness with
-
-~~~text
-Re(localizedWeilAdditiveRHS h h) < 0.
-~~~
-
-Therefore ambient source `QW_lambda` is no longer mandatory on the shortest route to F1. The primary internal bottleneck is F0-B.
+Composed with W1, PR #83 proves a strict-aperture compact C² witness with `Re(localizedWeilAdditiveRHS h h)<0`; the primary route later carried this through finite approximation to F1/#94.
 
 ## L-W2-04 — actual-zeta conjugation symmetry parity simplifier
 
 **Research status:** DORMANT SMALL SPIKE  
 **Formal status:** LEAD / HYPOTHESIS
 
-PR #83 now theoremizes concrete-zeta conjugation symmetry with multiplicity as part of W2-ZS. The additional *parity simplifier conclusion* remains a lead: the proved symmetry may force the real-even detector relative correlation to be real, simplifying the phase witness to a parity-pure real combination after recentering.
+PR #83 theoremizes concrete-zeta conjugation symmetry with multiplicity as part of W2-ZS. The additional *parity simplifier conclusion* remains a lead: the proved symmetry may force the real-even detector relative correlation to be real, simplifying the phase witness to a parity-pure real combination after recentering.
 
 **Do not reopen W0 for this.** The supporting conjugation premise is proved, but the parity simplification itself is not.
-
 
 ---
 
@@ -425,12 +421,9 @@ This promotion does **not** prove the historical analytic W2-B route. It proves 
 W1 strict negative W witness
   + L-W2-03 / L-W2-05
   -> strict negative localized additive witness
-  -> F0-B
-  -> G1-A [PROVED]
+  -> F0-B [PROVED]
   -> F1 [PROVED by #94].
 ~~~
-
-
 
 # B. Finite-obstruction fork
 
@@ -468,19 +461,11 @@ Avoid using genuine-W continuity and target convergence directly at localizedWei
 
 ### Current classification
 
-WCONT-A and #91 jointly make this route longer than the primary F0-B1 path:
-
-~~~text
-#91 raw uniform C² approximation
-  -> #88 projection
-  -> WCONT-A
-~~~
-
-is now theorem-backed up to one finite-dimensional projection-stability package.
+WCONT-A and #91 jointly made this route longer than the now-closed primary F0-B1 path.
 
 ### Revival condition
 
-Revive F0-B2 only if F0-B1C-B fails at the hard-window derivative/legalization seam in a way that cannot be repaired locally.
+Revive only if a new source/alternate route needs direct additive-functional continuity independently of the already-proved F1 chain.
 
 ---
 
@@ -570,26 +555,20 @@ Proved inputs already available:
 **Research status:** BLOCKED UNTIL SOURCE INTERFACE AND SIGN ENTRY MATCH  
 **Formal status:** LEAD / OPEN
 
-Port only the minimum exact source theorem needed for F1:
+Port only the minimum exact source theorem needed for an independent source-faithful finite obstruction cross-check:
 
 ~~~text
 strict negative ambient localized form value
   -> strict negative value on some finite E_N.
 ~~~
 
-If the source naturally gives
-
-~~~text
-minEig(E_N) -> inf QW,
-~~~
-
-expose it, but do not build a larger spectral library merely for completeness.
+If the source naturally gives `minEig(E_N) -> inf QW`, expose it, but do not build a larger spectral library merely for completeness.
 
 **Critical firewall:** lower semicontinuity alone does not transport strict negativity to approximants. Need genuine form-core/form-norm approximation or the exact source minimum theorem.
 
 ### Source-sign firewall
 
-G1-B1B and G1-final can identify the ambient source functional and its finite restriction, but they do **not** by themselves establish a negative ambient QW value from W1's `Re W(h,h)<0`. Before G23 can feed F1, the source lane needs either L-SNEG-01 below or an exact W/localized-additive/QW composition theorem.
+G1-B1B and G1-final can identify the ambient source functional and its finite restriction, but they do **not** by themselves establish a negative ambient QW value from W1's `Re W(h,h)<0`. Before G23 can reproduce the internal finite obstruction independently, the source lane needs either L-SNEG-01 below or an exact W/localized-additive/QW composition theorem.
 
 ---
 
@@ -708,7 +687,7 @@ Do not claim D preserves V₂. Do not infer positivity from Hermitianity or one-
 
 ### Norm semantic firewall
 
-The norm-one witness in #96 lives on the raw function type `Fin (...) -> ℂ`. Its norm is not the Euclidean/PiLp₂ norm used by the finite-dimensional Rayleigh API. This is now tracked as OBS-017.
+The norm-one witness in #96 lives on the raw function type `Fin (...) -> ℂ`. Its norm is not the Euclidean/PiLp₂ norm used by the finite-dimensional Rayleigh API. This is tracked as OBS-017.
 
 ---
 
@@ -729,7 +708,7 @@ ParityBad -> exists lam<0 and nonzero eigenvector v with T v = lam v
 
 The proof uses the finite-dimensional Rayleigh infimum. Once `ParityBad p L N` is available, the spectral extraction itself does not require the positive-aperture N-flow hypotheses.
 
-**Firewalls:** no unique negative eigenline, shell invariance, KKT, Schur, positivity or RH follows from this theorem alone.
+**Firewalls:** no unique negative eigenline, shell invariance, Schur, positivity or RH follows from this theorem alone. KKT and nonzero ambient shell projection are separately PROVED by #109.
 
 ---
 
@@ -768,8 +747,8 @@ off-line zero
 
 ## L-PARITY-01 — reversal/parity constrained split
 
-**Research status:** PROVED FOUNDATION / ACTIVE COMPOSITION
-**Formal status:** PROVED BY #102/#103; DOWNSTREAM FIXED-PARITY CONSEQUENCES OPEN
+**Research status:** PROMOTED FOUNDATION / ACTIVE COMPOSITION
+**Formal status:** PROVED BY #102/#103/#105
 
 PR #102 theorem-locks reversal/moment/matrix symmetry, displacementVector oddness and exact even constrained displacement/commutator collapse.
 
@@ -781,76 +760,79 @@ finrank V_N^+ = finrank V_N^- = N-1.
 ~~~
 Euclidean parity sectors have the same dimensions and exact centered Euclidean N-flow preserves each sector.
 
-The old composition "even u plus odd g kills the displacement pairing" is PROVED. The remaining bridge is exact quadratic parity splitting for a general negative witness.
+PR #105 closes the remaining quadratic parity split and fixed-parity badness consequences.
 
-**Firewalls:** D is not unitary; equal dimensions do not imply equal spectra; ambient commutator collapse does not imply compressed intertwining.
+**Firewalls:** D is not unitary; equal dimensions do not imply equal spectra; #110 proves a rank-at-most-one compressed parity defect, not exact compressed intertwining.
 
 ---
 
 ## L-PARITY-02 — D-equivalence and paired parity increments
 
-**Research status:** PROVED FOUNDATION / ACTIVE QUOTIENT LEAD
-**Formal status:** D-EQUIVALENCE #103 + D/N-FLOW COMPATIBILITY #105 PROVED
+**Research status:** PROMOTED FOUNDATION / CONSUMED BY #110
+**Formal status:** PROVED INPUTS; RANK-ONE COMPRESSED CONSEQUENCE PROVED #110
 
-#105 proves
-~~~text
-D_M E_{N,M} = E_{N,M} D_N
-~~~
-for every raw coefficient vector.
+#105 proves `D_M E_{N,M} = E_{N,M} D_N` for every raw coefficient vector. #110 lifts D to a Euclidean algebraic even/odd equivalence and proves the compressed even/odd operators fail to intertwine through at most one explicit cubic channel.
 
-Together with #103 this should induce an algebraic equivalence between the even and odd one-dimensional successor quotients.
-
-**Firewall:** D is not unitary. Do not infer that D maps the orthogonal Euclidean shell to the opposite orthogonal shell.
+**Firewall:** D is not unitary. Do not infer that D maps the orthogonal Euclidean N-flow shell to the opposite orthogonal shell or use Hermitian rank-one perturbation theory without a compatible metric theorem.
 
 ---
 
 ## L-NFLOW-02 — first bad finite size / parity refinement
 
-**Research status:** PROMOTED FOUNDATION / SPECTRAL CONSEQUENCES PROMOTED  
-**Formal status:** PROVED / PR #105 + #107
+**Research status:** PROMOTED FOUNDATION / FIRST-BAD RIGIDITY ACTIVE  
+**Formal status:** PROVED THROUGH #109; INTRINSIC BLOCK FOLLOW-UP OPEN
 
-#105 proves fixed-parity badness, least bad size, predecessor nonnegativity and the exact one-dimensional successor parity shell. #107 adds the legal parity compression, negative Rayleigh eigenmode, successor-level predecessor nonnegativity and proof that the negative mode is not inherited.
+#105 proves fixed-parity badness, least bad size, predecessor nonnegativity and the exact one-dimensional successor parity shell. #107 adds legal parity compression, a negative Rayleigh eigenmode, successor-level predecessor nonnegativity and proof that the negative mode is not inherited. #109 proves its projection onto the ambient one-dimensional successor shell is nonzero.
 
-**DERIVED / OPEN FORMALIZATION:** negative shell projection, negative index exactly one, unique negative eigenline.
+**DERIVED / OPEN FORMALIZATION:** negative index exactly one / unique negative eigenline.
+
+**OPEN:** fully intrinsic predecessor/shell decomposition inside the successor parity subtype and shell invariance.
 
 ---
 
-## L-FIRSTBAD-RIGIDITY-01 — intrinsic shell projection and negative index one
+## L-FIRSTBAD-RIGIDITY-01 — intrinsic shell block and negative index one
 
-**Research status:** ACTIVE  
-**Formal status:** DERIVED / OPEN FORMALIZATION
+**Research status:** ACTIVE / PARTLY PROMOTED  
+**Formal status:** AMBIENT SHELL PROJECTION PROVED #109; INTRINSIC BLOCK OPEN
 
-Let `V` be the successor parity subtype and `W` the exact centered predecessor image. Proved inputs give codimension one, `q|W >= 0`, and a negative eigenpair `Tv = lam v`, `lam<0`, with `v ∉ W`.
+Let `V` be the successor parity subtype and `W` the exact centered predecessor image. Proved inputs give codimension one, `q|W >= 0`, a negative eigenpair `Tv = lam v`, `lam<0`, `v ∉ W`, and #109 proves a nonzero projection onto the existing one-dimensional **ambient Euclidean** successor shell.
 
-Immediate theorem targets:
+Remaining theorem targets:
 ~~~text
-dim_C(W^perp) = 1
-P_(W^perp) v != 0
-negative index(T) = 1
-unique negative eigenline
+intrinsic W <= V and native V = W ⊕ S
+first-bad v = w + alpha*s with alpha != 0
+negative index(T) = 1 / unique negative eigenline if useful
 ~~~
 
-Any two-dimensional negative subspace would intersect codimension-one `W` nontrivially, contradicting `q|W >= 0`. Prove uniqueness if cheap, but do not let multiplicity API work block KKT/Schur.
+Any two-dimensional negative subspace would intersect codimension-one `W` nontrivially, contradicting `q|W >= 0`; this remains DERIVED until separately theoremized. Do not let multiplicity API work block the more informative shifted scalar calculation.
 
 ---
 
-## L-FIRSTBAD-KKT-01 — parity normal spaces and shifted Schur/Feshbach
+## L-FIRSTBAD-KKT-01 — parity normal spaces, cubic defect and shifted Schur/Feshbach
 
-**Research status:** ACTIVE COMPOSITION LEAD  
-**Formal status:** LEAD / HYPOTHESIS
+**Research status:** ACTIVE / PARTLY PROMOTED  
+**Formal status:** NORMAL/KKT + CUBIC RANK-ONE DEFECT PROVED; SHIFTED SCHUR OPEN
 
-#107 supplies the actual eigenpair needed for KKT. Target normal spaces are even `span{1,d²}` and odd `span{d}`. Expected residuals:
+#109 proves exact parity normal spaces and KKT residuals:
 ~~~text
 even: Mv = lam v + a0*1 + a2*d²
-odd:  Mv = lam v + a1*d
+odd:  Mv = lam v + a1*d.
 ~~~
 
-With `V = W ⊕ Cw`, predecessor block `A >= 0`, and `lam<0`, the safe Feshbach equation is
+#110 composes the even normal/KKT geometry with the proved even commutator collapse. Applying D sends `span{1,d²}` to `span{d,d³}`; odd compression kills `d`, leaving the explicit cubic channel
+~~~text
+g_N = P_- d³,
+range(T_- D - D T_+) <= C g_N,
+finrank <= 1.
+~~~
+After algebraic conjugation through D, the same-space parity defect also has finrank at most one.
+
+Remaining native first-bad target: with `V = W ⊕ Cw`, predecessor block `A >= 0`, and `lam<0`, prove `A-lam I` invertible and derive
 ~~~text
 c - lam - b* (A - lam I)^(-1) b = 0.
 ~~~
 
-Never use `A⁻¹` at zero. In the even branch, compose KKT with the proved `[D,M]v=0` and inspect the projected `d³` defect.
+Never use `A⁻¹` at zero. The next composition tests are the explicit defect functional, pulled-back cubic channel vs N-flow shell, parity-nullity difference and common-resonance/resolvent dichotomy. See `RESEARCH_LEADS_POST_110_DELTA.md`.
 
 ---
 
@@ -883,10 +865,10 @@ This does **not** imply positivity. Real Hankel matrices may be indefinite.
 
 ## L-K1-01 — continuous aperture flow and first singularity
 
-**Research status:** DEFERRED PENDING K0-F1F CONSTRAINED-COMPRESSION RESULT  
+**Research status:** READY BUT SECONDARY TO FIRST-BAD-RIGIDITY-D  
 **Formal status:** OPEN
 
-For fixed N:
+The constrained-compression prerequisite is now PROVED by #107. For fixed N, the remaining route would:
 
 1. prove continuity of canonicalSourceMatrix L N for L>0;
 2. prove prime-power birth terms vanish at entry L=log q, eliminating an apparent matrix jump;
@@ -896,26 +878,16 @@ For fixed N:
 
 ### E2 prediction
 
-The derivative jump is expected to be rank one in
+The derivative jump is expected to be rank one in `J = 1 1^T` with coefficient proportional to `-2 Lambda(q)/(sqrt(q) log q)`.
 
-~~~text
-J = 1 1^T
-~~~
-
-with coefficient proportional to
-
-~~~text
--2 Lambda(q)/(sqrt(q) log q).
-~~~
-
-This is a LEAD until rederived on canonicalSourceMatrix.
+This is a LEAD until rederived on canonicalSourceMatrix. The current fixed-N first-bad shell/parity route has higher information gain.
 
 ---
 
 ## L-K2-01 — singular kernel/displacement rigidity
 
-**Research status:** DEFERRED PENDING K0-F1F CONSTRAINED-COMPRESSION RESULT  
-**Formal status:** LEAD / OPEN
+**Research status:** READY / PARTLY CONSUMED BY #109/#110  
+**Formal status:** LEAD / OPEN BEYOND PROVED KKT/DEFECT PACKAGE
 
 PROVED structural input:
 
@@ -936,13 +908,13 @@ u even: g^T u = 0
 u odd:  1^T u = 0.
 ~~~
 
-Do not assume one-dimensional kernel.
+#109/#110 now supply stronger compressed KKT/defect information at a negative eigenvalue. Do not assume one-dimensional kernel or transfer shell invariance.
 
 ---
 
 ## L-K2-02 — parity-block distinguished resolvents
 
-**Research status:** DEFERRED PENDING K0-F1F CONSTRAINED-COMPRESSION RESULT  
+**Research status:** READY / HIGH-VALUE AFTER #110  
 **Formal status:** LEAD / HYPOTHESIS
 
 Candidate scalar resolvents:
@@ -952,15 +924,15 @@ m_even(z) = <1, (M_even-z)^(-1) 1>
 m_odd(z)  = <g, (M_odd-z)^(-1) g>.
 ~~~
 
-The displacement equation couples a zero mode in one sector to one distinguished forcing vector in the other.
+#110 sharpens this into a one-cubic-channel resolvent question: away from common even/odd resonance, an eigenvector should be forced into the opposite-parity resolvent of `g_N=P_-d³`.
 
-**Promotion test:** must create an actual sign/crossing restriction, not generic low-displacement-rank folklore.
+**Promotion test:** theoremize the common-resonance vs one-channel-resolvent dichotomy without using unitary/interlacing assumptions that #110 does not provide.
 
 ---
 
 ## L-K3-01 — arithmetic crossing engine
 
-**Research status:** DORMANT UNTIL K2  
+**Research status:** DORMANT UNTIL FIRST-BAD-RIGIDITY-D / K2 RESOLVENT PACKAGE  
 **Formal status:** LEAD / HYPOTHESIS
 
 Composition candidates:
@@ -973,34 +945,35 @@ Composition candidates:
 
 ### Terminal research question
 
-What structure does the **first** canonical zero crossing have that an arbitrary singular Hermitian matrix does not, and can prime-event, parity, displacement and resolvent laws make that state impossible?
+What structure does the **first** canonical bad/singular state have that an arbitrary singular Hermitian matrix does not, and can prime-event, parity, displacement, shell and resolvent laws make that state impossible?
 
 A bare universal theorem "canonicalSourceMatrix is PSD for all L,N" is likely RH-strength once F1 and the reverse direction are available. Do not misclassify that as a cheap finite lemma.
 
 ---
 
-# F. Distinguished all-ones channel
+# F. Distinguished all-ones / cubic channels
 
-## L-ONES-01 — dangerous motion may concentrate in the 1 / g channels
+## L-ONES-01 — dangerous motion may concentrate in the 1 / g / d³ channels
 
 **Research status:** ACTIVE COMPOSITION HYPOTHESIS  
 **Formal status:** mixed PROVED inputs + LEAD conclusion
 
-Repeated independent appearances of the all-ones direction:
+Repeated independent appearances of tiny distinguished channels:
 
 - H2/H2+ finite discrepancy collapsed to a scalar multiple of J=11^T before Route M killed the scalar defect;
 - canonical displacement is exactly g1^T-1g^T;
 - expected E2 prime births are rank one in J;
 - reversal parity makes 1 even and odd vectors orthogonal to it;
-- E5 naturally studies <1,(M-z)^-1 1>.
+- #109 proves parity normal spaces `span{1,d²}` / `span{d}`;
+- #110 proves the surviving compressed parity defect lies in the cubic channel `C(P_-d³)`.
 
 ### Current hypothesis
 
-The finite-wall mechanism may not be "low displacement rank proves RH." It may be that normalization history, prime births, parity and exact displacement concentrate the first dangerous spectral motion into a tiny distinguished channel.
+The finite-wall mechanism may not be "low displacement rank proves RH." It may be that normalization history, prime births, parity, exact displacement and first-bad shell geometry concentrate the first dangerous spectral motion into a small number of scalar channels.
 
 ### Fastest test
 
-First build the Euclidean compressed negative spectral mode and theorem-lock/falsify the 4×4 Krylov-Hankel recurrence. Reopen the canonical E2 derivative jump only if the compressed object still lacks a sign/crossing restriction.
+Theoremize or falsify whether the pulled-back cubic channel has nonzero projection to the first-bad N-flow shell, while independently deriving the safe shifted Schur equation.
 
 ---
 
@@ -1011,7 +984,7 @@ First build the Euclidean compressed negative spectral mode and theorem-lock/fal
 **Research status:** DORMANT-BUT-VALID  
 **Formal status:** LEAD / HYPOTHESIS
 
-No theorem refuted the finite-information recovery idea; full 2N+1 source dimension is now locked.
+No theorem refuted the finite-information recovery idea; full 2N+1 source dimension is locked.
 
 **Resume only if:** the obstruction becomes information sufficiency/recovery rather than sign transfer.
 
@@ -1019,10 +992,10 @@ No theorem refuted the finite-information recovery idea; full 2N+1 source dimens
 
 ## L-E2-01 — prime cutoff / event flow
 
-**Research status:** DEFERRED UNTIL K0-F1F / ACTIVE WHEN K1 REOPENS  
+**Research status:** DEFERRED UNTIL FIRST-BAD-RIGIDITY-D / ACTIVE WHEN K1 REOPENS  
 **Formal status:** LEAD
 
-Canonical normalization removed the old sign-authority ambiguity. Re-derive the prime-power derivative jump on canonicalSourceMatrix.
+Canonical normalization removed the old sign-authority ambiguity. Re-derive the prime-power derivative jump on canonicalSourceMatrix only if the fixed-first-bad scalar route needs aperture dynamics.
 
 **Kill any formula** that only holds for legacy finiteMatrix.
 
@@ -1030,30 +1003,30 @@ Canonical normalization removed the old sign-authority ambiguity. Re-derive the 
 
 ## L-E3-01 — finite jet / recurrence / Prony machinery
 
-**Research status:** ACTIVE SUPPORT FOR F0-B1  
+**Research status:** DORMANT SUPPORT / REACTIVATE IF SCALAR BLOCK ROUTE NEEDS IT  
 **Formal status:** LEAD
 
-Use only the minimal moment algebra required by the codimension-three endpoint constraints. Do not revive the full historical reconstruction program without additional leverage.
+The original F0-B endpoint role is consumed. Retain only the minimal moment algebra needed by the current first-bad/block problem; do not revive the full historical reconstruction program without additional leverage.
 
 ---
 
 ## L-E4-01 — parity / extremal spectrum
 
-**Research status:** ACTIVE DOWNSTREAM OF K0-F1F  
-**Formal status:** LEAD
+**Research status:** ACTIVE  
+**Formal status:** PARTLY PROVED / FURTHER SIGN CLAIMS OPEN
 
-Full complex finite space is now theorem-locked. Use parity to split channels and kernels.
+Parity decomposition, dimensions, fixed-parity badness, parity compression, normal spaces/KKT and the rank-at-most-one parity defect are now theorem-backed through #110.
 
-**Moustache warning:** universal odd-sector positivity is RH-strength territory; parity is a decomposition tool, not an assumed sign theorem.
+**Moustache warning:** universal odd-sector positivity is RH-strength territory; parity is a decomposition/rigidity tool, not an assumed sign theorem.
 
 ---
 
 ## L-E5-01 — resolvent / spectral measure / Weyl updates
 
-**Research status:** ACTIVE AT K2/K3  
+**Research status:** ACTIVE AT FIRST-BAD-RIGIDITY-D / K2  
 **Formal status:** LEAD
 
-Rank-one J events plus first singularity and distinguished displacement channels create an exact resolvent problem.
+#110's one-channel parity defect plus the first-bad shell makes a resolvent/secular formulation concrete. Prefer algebraic resolvent/rank-one identities unless a compatible transported inner product is separately proved.
 
 **Archive again if:** it yields only determinant identities with no sign/crossing restriction.
 
@@ -1066,7 +1039,7 @@ Rank-one J events plus first singularity and distinguished displacement channels
 
 Still coherent for a longer determinant/Hurwitz/Xi convergence route.
 
-**Resume only if:** the F1/finite-wall route stalls or a stable local-uniform finite entire-function convergence theorem appears.
+**Resume only if:** the finite-wall route stalls or a stable local-uniform finite entire-function convergence theorem appears.
 
 ---
 
@@ -1110,7 +1083,7 @@ A counterexample kills the candidate; ray survival is only an EXPERIMENTAL SIGNA
 **Research status:** SEPARATE ACTIVE DISCOVERY ROUTE  
 **Formal status:** block-level negativity PROVED; full window visibility OPEN
 
-PR #66 settled the generic smooth-taper R002 object as SPECIALIZATION_ONLY relative to canonical CCM. Pair-level signed off-line negativity remains a useful adversarial motif, but masking is an R002 problem, not an F1 prerequisite.
+PR #66 settled the generic smooth-taper R002 object as SPECIALIZATION_ONLY relative to canonical CCM. Pair-level signed off-line negativity remains a useful adversarial motif, but masking is an R002 problem, not a primary finite-wall prerequisite.
 
 ---
 
@@ -1141,7 +1114,7 @@ Resume only if the fixed-aperture finite-obstruction route stalls or new source 
 **Research status:** ACTIVE ALTERNATE / CROSS-CHECK  
 **Formal status:** exact project transfer OPEN
 
-Keep the exact Suzuki not-RH -> negative localized-bottom interface separately named. If Suzuki and the project's canonical detector route both independently imply F1 after G1/G23, that is strong architectural validation.
+Keep the exact Suzuki not-RH -> negative localized-bottom interface separately named. If Suzuki and the project's canonical detector route both independently reproduce the same finite obstruction after source closure, that is strong architectural validation.
 
 Do not silently merge Suzuki's operator with CCM without an exact map theorem.
 
@@ -1154,7 +1127,7 @@ Do not silently merge Suzuki's operator with CCM without an exact map theorem.
 
 X4.6 gives eventual visibility in an explicit radius sequence but still allows detector-dependent translation aperture.
 
-Quantify support width / required aperture if useful for choosing L,N in F0-B or relating detector complexity to finite Fourier bandwidth.
+Quantify support width / required aperture only if useful for a later complexity/bandwidth theorem; it is no longer needed to establish F1.
 
 ---
 
