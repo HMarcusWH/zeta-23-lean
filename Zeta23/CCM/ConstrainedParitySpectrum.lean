@@ -207,7 +207,13 @@ theorem exists_negative_eigenmode_of_parityBad
   obtain ⟨v, hv⟩ := hlameig.exists_hasEigenvector
   refine ⟨lam, hlamneg, v, hv.2, ?_⟩
   change T v = (lam : ℂ) • v
-  simpa only [lam] using hv.apply_eq_smul
+  have hlamdef :
+      (lam : ℂ) =
+        ((⨅ z : {z : V // z ≠ 0},
+          RCLike.re (inner ℂ (T z) z) / ‖(z : V)‖ ^ 2 : ℝ) : ℂ) := by
+    rfl
+  rw [hlamdef]
+  exact hv.apply_eq_smul
 
 theorem re_inner_successor_nonnegative_on_centeredImage
     (p : ReversalParity)
@@ -270,7 +276,8 @@ theorem negative_eigenmode_not_centeredImage
         zero_mul, sub_zero]
       have hvnorm :
           Complex.re (inner ℂ v v) = ‖v‖ ^ 2 := by
-        rw [← norm_sq_eq_re_inner (𝕜 := ℂ)]
+        simpa only [RCLike.re_to_complex] using
+          (norm_sq_eq_re_inner (𝕜 := ℂ) v).symm
       rw [hvnorm]
       exact mul_neg_of_neg_of_pos hlam (show 0 < ‖v‖ ^ 2 by positivity)
     rw [re_inner_parityCompressedCanonical_self] at hcomp
