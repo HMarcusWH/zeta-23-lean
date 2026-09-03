@@ -200,10 +200,19 @@ theorem evenCompressionResidual_mem_orthogonal
   let z :=
     (canonicalSourceMatrix L N).toEuclideanLin
       (v : EuclideanSpace ℂ (Fin (2 * N + 1)))
-  have h := V.sub_starProjection_mem_orthogonal z
-  simpa [evenCompressionResidual, evenCompressedCanonical,
-    parityCompressedCanonical_apply,
-    Submodule.coe_orthogonalProjectionOnto_apply, V, z] using h
+  have horth := V.sub_starProjection_mem_orthogonal z
+  have hproj :
+      V.starProjection z =
+        (evenCompressedCanonical L N v :
+          EuclideanSpace ℂ (Fin (2 * N + 1))) := by
+    change
+      ((V.orthogonalProjectionOnto z : V) :
+          EuclideanSpace ℂ (Fin (2 * N + 1))) =
+        (evenCompressedCanonical L N v :
+          EuclideanSpace ℂ (Fin (2 * N + 1)))
+    rfl
+  rw [hproj] at horth
+  simpa [evenCompressionResidual, z] using horth
 
 theorem evenCompressionResidual_mem_evenCoefficient
     (L : ℝ) (N : ℕ)
@@ -508,7 +517,8 @@ theorem finrank_range_conjugatedParityCompressionDefect_le_one
   have hdef :
       conjugatedParityCompressionDefect L N hN =
         E.symm.toLinearMap.comp F := by
-    ext v
+    apply LinearMap.ext
+    intro v
     change
       E.symm (oddCompressedCanonical L N (E v)) -
           evenCompressedCanonical L N v =
@@ -533,12 +543,3 @@ theorem finrank_range_conjugatedParityCompressionDefect_le_one
     _ ≤ 1 := by
       simpa [F] using
         finrank_range_evenOddCompressedIntertwiningDefect_le_one hL N
-
-end Zeta23.CCM
-
-#print axioms Zeta23.CCM.euclideanEvenOddBoundaryFlatLinearEquiv
-#print axioms Zeta23.CCM.evenCompressionResidual_mem_evenNormalSubspace
-#print axioms Zeta23.CCM.oddCubicCompressionVector_ne_zero
-#print axioms Zeta23.CCM.range_evenOddCompressedIntertwiningDefect_le
-#print axioms Zeta23.CCM.finrank_range_evenOddCompressedIntertwiningDefect_le_one
-#print axioms Zeta23.CCM.finrank_range_conjugatedParityCompressionDefect_le_one
