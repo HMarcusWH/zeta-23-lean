@@ -77,11 +77,10 @@ theorem pulledBackCubicCompressionVector_ne_zero
     (N : ℕ) (hN : 2 ≤ N) :
     pulledBackCubicCompressionVector N hN ≠ 0 := by
   intro hz
+  apply oddCubicCompressionVector_ne_zero N hN
   have hmap := congrArg
     (euclideanEvenOddBoundaryFlatLinearEquiv N (by omega)) hz
-  simpa [pulledBackCubicCompressionVector] using
-    (show oddCubicCompressionVector N ≠ 0 from
-      oddCubicCompressionVector_ne_zero N hN)
+  simpa [pulledBackCubicCompressionVector] using hmap
 
 /-- Same-space pointwise factorization after algebraically conjugating the odd
 compression back to the even carrier. -/
