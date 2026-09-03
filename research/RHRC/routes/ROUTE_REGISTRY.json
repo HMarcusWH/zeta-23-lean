@@ -90,12 +90,17 @@
         "R003_PARITY_BAD_NFLOW",
         "R003_LEAST_PARITY_BAD_SHELL",
         "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
-        "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL"
+        "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+        "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+        "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+        "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+        "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+        "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "R003 merged compiler-validated theorem authority is through PARITY-BAD / PR #105. #105 proves exact D/N-flow compatibility, quadratic parity splitting, fixed-parity badness persistence, least bad parity size with predecessor nonnegativity, and a one-dimensional Euclidean successor parity shell from a hypothetical off-line zero. FIRST-BAD-SPECTRUM constrained compression/eigenmode/unique-negative-line, parity-specific normal-space/Schur/KKT rigidity, source QW, positivity and RH remain open."
+      "note": "R003 merged compiler-validated theorem authority is through FIRST-BAD-SPECTRUM / PR #107. #105 proves fixed-parity least-bad geometry and the one-dimensional Euclidean successor shell; #107 proves exact parity-constrained compression, compressed symmetry/self-form agreement, a genuine negative Rayleigh eigenmode, successor-level predecessor nonnegativity, non-inheritance of the negative mode, and the off-line-zero first-bad spectral endpoint. Nonzero shell projection and negative-index-one are DERIVED / OPEN FORMALIZATION. Parity-specific normal-space/Schur/KKT rigidity, source QW closure, positivity and RH remain open."
     },
     {
       "route_id": "R004_prolate_v2",
