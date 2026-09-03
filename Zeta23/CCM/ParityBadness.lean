@@ -208,6 +208,15 @@ theorem quadraticForm_evenPart_add_oddPart
   norm_num at hpar ⊢
   linear_combination (1 / 4 : ℂ) * hpar
 
+/-- A negative canonical quadratic direction in one fixed parity sector. -/
+def ParityBad
+    (p : ReversalParity) (L : ℝ) (N : ℕ) : Prop :=
+  ∃ u : Fin (2 * N + 1) → ℂ,
+    u ≠ 0 ∧
+    u ∈ parityBoundaryFlatSubspace p N ∧
+    (quadraticForm (canonicalSourceMatrix L N) u).re < 0
+
+
 /-- Any negative boundary-flat canonical witness has a negative component in
 one of the two exact reversal parity sectors. -/
 theorem parityBad_even_or_odd_of_negative
@@ -247,15 +256,6 @@ theorem parityBad_even_or_odd_of_negative
       norm_num at hoddneg
     exact ⟨oddPart N u, hone,
       oddPart_mem_oddBoundaryFlatSubspace hmem, hoddneg⟩
-
-/-- A negative canonical quadratic direction in one fixed parity sector. -/
-def ParityBad
-    (p : ReversalParity) (L : ℝ) (N : ℕ) : Prop :=
-  ∃ u : Fin (2 * N + 1) → ℂ,
-    u ≠ 0 ∧
-    u ∈ parityBoundaryFlatSubspace p N ∧
-    (quadraticForm (canonicalSourceMatrix L N) u).re < 0
-
 
 /-- A nonzero vector in a parity-constrained sector cannot occur at N=0. -/
 theorem one_le_of_ne_zero_mem_parityBoundaryFlatSubspace
