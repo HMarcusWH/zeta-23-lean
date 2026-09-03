@@ -81,27 +81,22 @@ theorem finrank_intrinsicParityPredecessorSubspace
 def intrinsicParitySuccShell
     (p : ReversalParity) (N : ℕ) :
     Submodule ℂ (euclideanParityBoundaryFlatSubspace p (N + 1)) :=
-  (intrinsicParityPredecessorSubspace p N)ᗮ
+  Submodule.orthogonal (𝕜 := ℂ) (intrinsicParityPredecessorSubspace p N)
 
 /-- The native successor shell is exactly one complex dimension. -/
 theorem finrank_intrinsicParitySuccShell
     (p : ReversalParity) (N : ℕ) (hN : 1 ≤ N) :
     Module.finrank ℂ (intrinsicParitySuccShell p N) = 1 := by
-  let W := intrinsicParityPredecessorSubspace p N
-  let V := euclideanParityBoundaryFlatSubspace p (N + 1)
   have hdim :=
-    Submodule.finrank_add_inf_finrank_orthogonal
-      (show W ≤ (⊤ : Submodule ℂ V) from le_top)
-  have hW : Module.finrank ℂ W = N - 1 := by
-    simpa [W] using finrank_intrinsicParityPredecessorSubspace p N hN
-  have hV : Module.finrank ℂ V = N := by
-    have h := finrank_euclideanParityBoundaryFlatSubspace p (N + 1) (by omega)
-    simpa [V] using h
-  rw [hW, hV] at hdim
-  have hsimp :
-      Wᗮ ⊓ (⊤ : Submodule ℂ V) = Wᗮ := inf_top_eq _
-  rw [hsimp] at hdim
-  change N - 1 + Module.finrank ℂ (intrinsicParitySuccShell p N) = N at hdim
+    Submodule.finrank_add_finrank_orthogonal
+      (𝕜 := ℂ) (intrinsicParityPredecessorSubspace p N)
+  have hdim' :
+      Module.finrank ℂ (intrinsicParityPredecessorSubspace p N) +
+          Module.finrank ℂ (intrinsicParitySuccShell p N) =
+        Module.finrank ℂ (euclideanParityBoundaryFlatSubspace p (N + 1)) := by
+    simpa only [intrinsicParitySuccShell] using hdim
+  rw [finrank_intrinsicParityPredecessorSubspace p N hN,
+    finrank_euclideanParityBoundaryFlatSubspace p (N + 1) (by omega)] at hdim'
   omega
 
 /-- The intrinsic predecessor plus its orthogonal shell spans the full
@@ -110,13 +105,9 @@ theorem intrinsicPredecessor_sup_shell
     (p : ReversalParity) (N : ℕ) :
     intrinsicParityPredecessorSubspace p N ⊔
       intrinsicParitySuccShell p N = ⊤ := by
-  let W := intrinsicParityPredecessorSubspace p N
-  have h :=
-    Submodule.sup_orthogonal_inf_of_hasOrthogonalProjection
-      (show W ≤
-        (⊤ : Submodule ℂ (euclideanParityBoundaryFlatSubspace p (N + 1)))
-        from le_top)
-  simpa [intrinsicParitySuccShell, W] using h
+  change intrinsicParityPredecessorSubspace p N ⊔
+      Submodule.orthogonal (𝕜 := ℂ) (intrinsicParityPredecessorSubspace p N) = ⊤
+  exact Submodule.sup_orthogonal_of_hasOrthogonalProjection
 
 /-- Every successor constrained vector decomposes as predecessor plus an
 orthogonal-shell vector. -/
