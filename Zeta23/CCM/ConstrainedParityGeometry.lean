@@ -295,9 +295,11 @@ theorem evenToOddIndexLinearMap_injective
   by_cases hi : i = boundaryFlatZeroIndex N
   · subst i
     apply sub_eq_zero.mp
-    simpa [z] using hz0
+    change z (boundaryFlatZeroIndex N) = 0
+    exact hz0
   · apply sub_eq_zero.mp
-    simpa [z] using hnoncenter i hi
+    change z i = 0
+    exact hnoncenter i hi
 
 /-- Explicit primitive of an odd vector under the centered-index operator.
 The central coefficient is the unique correction that enforces moment zero. -/
@@ -343,22 +345,12 @@ theorem indexMatrix_mulVec_oddIndexPrimitive
   · subst i
     have hv0 : v (boundaryFlatZeroIndex N) = 0 := by
       have h := congrFun hvodd (boundaryFlatZeroIndex N)
-      simp [reverseCoefficients, boundaryFlatZeroIndex_rev] at h
-      have hsum : v (boundaryFlatZeroIndex N) +
-          v (boundaryFlatZeroIndex N) = 0 := by
-        calc
-          v (boundaryFlatZeroIndex N) + v (boundaryFlatZeroIndex N) =
-              -v (boundaryFlatZeroIndex N) + v (boundaryFlatZeroIndex N) := by
-                rw [h]
-          _ = 0 := by ring
-      have htwo : (2 : ℂ) * v (boundaryFlatZeroIndex N) = 0 := by
-        simpa [two_mul] using hsum
-      exact (mul_eq_zero.mp htwo).resolve_left (by norm_num)
+      simp only [reverseCoefficients, boundaryFlatZeroIndex_rev, Pi.neg_apply] at h
+      linear_combination (1 / 2 : ℂ) * h
     simp [oddIndexPrimitive, hv0]
   · have hd : ((centeredIndex N i : ℤ) : ℂ) ≠ 0 := by
       exact_mod_cast centeredIndex_ne_zero_of_ne_zeroIndex N hi
-    simp [oddIndexPrimitive, hi]
-    field_simp [hd]
+    simp [oddIndexPrimitive, hi, hd]
 
 theorem centeredMoment_zero_oddIndexPrimitive
     (N : ℕ) (v : Fin (2 * N + 1) → ℂ) :
@@ -548,7 +540,6 @@ theorem euclideanCenteredZeroExtend_mem_euclideanOddBoundaryFlatSubspace
   rw [euclideanCenteredZeroExtend_coordinates]
   rw [← centeredZeroExtend_reverseCoefficients hNM]
   rw [hxodd']
-  simp
 
 end Zeta23.CCM
 
