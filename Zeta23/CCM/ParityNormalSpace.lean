@@ -450,7 +450,7 @@ theorem parityEigenResidual_mem_orthogonal
           (v : EuclideanSpace ℂ (Fin (2 * N + 1)))
     exact congrArg Subtype.val hveig
   rw [hproj] at horth
-  exact horth
+  simpa [parityEigenResidual, y] using horth
 
 theorem parityEigenResidual_mem_parityCoefficient
     (p : ReversalParity) (L : ℝ) (N : ℕ) (lam : ℝ)
