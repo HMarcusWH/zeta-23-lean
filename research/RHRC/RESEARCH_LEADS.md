@@ -800,36 +800,43 @@ The old composition "even u plus odd g kills the displacement pairing" is PROVED
 
 ---
 
-## L-PARITY-02 — D-equivalence and paired parity shells
+## L-PARITY-02 — D-equivalence and paired parity increments
 
-**Research status:** ACTIVE / HIGH-LEVERAGE COMPOSITION LEAD
-**Formal status:** PROVED D-EQUIVALENCE + OPEN N-FLOW COMPATIBILITY
+**Research status:** PROVED FOUNDATION / ACTIVE QUOTIENT LEAD
+**Formal status:** D-EQUIVALENCE #103 + D/N-FLOW COMPATIBILITY #105 PROVED
 
-Target:
+#105 proves
 ~~~text
-D_M (E_{N,M} u) = E_{N,M} (D_N u).
+D_M E_{N,M} = E_{N,M} D_N
 ~~~
+for every raw coefficient vector.
 
-If proved, D coherently identifies the nested parity sectors and should pair the new one-dimensional even/odd successor quotient directions.
+Together with #103 this should induce an algebraic equivalence between the even and odd one-dimensional successor quotients.
 
-**Immediate falsifiers:** failure of exact D/E compatibility, normalization dependence, or reduction to a basis-change tautology.
+**Firewall:** D is not unitary. Do not infer that D maps the orthogonal Euclidean shell to the opposite orthogonal shell.
 
 ---
 
 ## L-NFLOW-02 — first bad finite size / parity refinement
 
-**Research status:** ACTIVE COMPOSITION LEAD
-**Formal status:** MIXED PROVED / DERIVED / STAGED
+**Research status:** PROMOTED FOUNDATION / SPECTRAL CONSEQUENCES ACTIVE
+**Formal status:** PROVED / PR #105
 
-#100 proves fixed-L persistence of general badness; least global bad N is DERIVED. #103 proves exact N-1/N-1 parity dimensions and parity-preserving Euclidean N-flow.
+#105 theorem-locks:
+~~~text
+negative constrained witness -> bad even or odd parity
+fixed L and fixed parity bad for every M>=N0
+ParityBad -> N>=2
+least bad parity size
+predecessor raw and Euclidean nonnegativity
+exact Euclidean successor parity shell finrank = 1
+~~~
 
-The missing bridge is exact quadratic parity splitting. Once a negative parity is selected, parity-preserving N-flow should give a fixed bad parity tail and a least bad parity size.
+The previous staged-source status is retired: `ParityBadness.lean` is in the authoritative CCM build closure.
 
-`ParityBadness.lean` contains candidate persistence, least-bad, previous-size-nonnegative and one-dimensional-shell declarations, but it was outside the validated #103 import closure and is **STAGED / NOT PROVED**.
+**DERIVED / NEXT:** after constructing the symmetric compressed parity operator, the codimension-one nonnegative predecessor should force a unique negative spectral direction at the first bad size.
 
-After spectral extraction, least-bad parity should reduce to a retained nonnegative block plus one new complex shell direction, giving the intended scalar Schur/Feshbach equation.
-
-**Firewalls:** the constrained parity shell is not the historical ambient coordinate shell; one-dimensional shell geometry is not itself a contradiction.
+**Firewalls:** the negative eigenvector need not lie purely in the shell; the opposite parity may already be bad; one-dimensional shell growth alone is not contradictory.
 
 ---
 
