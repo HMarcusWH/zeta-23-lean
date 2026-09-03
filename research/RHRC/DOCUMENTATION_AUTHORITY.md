@@ -16,7 +16,9 @@ When two sources disagree:
 
 The two living research-control SSOTs have different scopes and must not be used to overrule theorem truth: the lead ledger records hypotheses and research state; the current plan records priority and dependency decisions.
 
-A green but unmerged PR is branch evidence, not merged repository truth.\n\nA merged source file is also not automatically theorem authority: compiler validity attaches only to declarations in the exact successful import/build closure or a module separately built by an authoritative gate.
+A green but unmerged PR is branch evidence, not merged repository truth.
+
+A merged source file is also not automatically theorem authority: compiler validity attaches only to declarations in the exact successful import/build closure or a module separately built by an authoritative gate.
 
 ## Document classes
 
@@ -32,7 +34,8 @@ These must be updated when the underlying state changes:
 - active route README;
 - `research/RHRC/RESEARCH_LEADS.md`;
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`;
-- dead-route and obstruction ledgers;\n- `research/RHRC/VALIDATION_PROTOCOL.md` when validation semantics or gates change.
+- dead-route and obstruction ledgers;
+- `research/RHRC/VALIDATION_PROTOCOL.md` when validation semantics or gates change.
 
 ### Historical settlements
 
@@ -112,7 +115,9 @@ Repository presence, PR inclusion, merge inclusion and no-placeholder scanning a
 
 A theorem may be promoted only when its declaration is in the exact compiler-tested transitive import closure or its module was separately compiled by an authoritative successful gate. For production R003 promotion, the required `#check` / `#print axioms` surface must also be present.
 
-PR #103 is the canonical example: `ConstrainedParityGeometry.lean` was imported by `Zeta23.CCM`; `ParityBadness.lean` was merged but not imported.
+PR #103 is the canonical historical example: `ConstrainedParityGeometry.lean` was imported by `Zeta23.CCM`; `ParityBadness.lean` was merged but not imported. PR #105 later closed that gap by importing and compiling `ParityBadness.lean`.
+
+PR #110 supplies a second, different lesson: its final repair remained in the exact successful `Zeta23.CCM` import/build closure, so theorem validity is authoritative, but the repair removed the module-local `#print axioms` lines. Production promotion therefore requires restoring theorem-specific axiom inspection through `ClaimBindings.lean`; absence of those local print commands is not a theorem failure, but it is a control-plane audit gap.
 
 See `VALIDATION_PROTOCOL.md`.
 
@@ -124,19 +129,22 @@ RH remains OPEN until the exact terminal theorem is proved and claim-validated.
 
 ## Promoted theorem-binding completeness
 
-For R003, R003_PROMOTED_BINDINGS.json is the declared production binding surface. Every PROVED_UNCONDITIONAL R003 claim with a theorem must agree exactly across CLAIM_REGISTRY.json, R003_PROMOTED_BINDINGS.json, and the exact #check / #print axioms declarations in Zeta23/CCM/ClaimBindings.lean.
+For R003, `R003_PROMOTED_BINDINGS.json` is the declared production binding surface. Every `PROVED_UNCONDITIONAL` R003 claim with a theorem must agree exactly across `CLAIM_REGISTRY.json`, `R003_PROMOTED_BINDINGS.json`, and the exact `#check` / `#print axioms` declarations in `Zeta23/CCM/ClaimBindings.lean`.
 
-The RHRC suite enforces this through promoted_binding_lint.py. Supporting theorem checks may exist without individual registry promotion, so CI does not equate every #check with a claim; promotion intent must be declared explicitly.
+The RHRC suite enforces this through `promoted_binding_lint.py`. Supporting theorem checks may exist without individual registry promotion, so CI does not equate every `#check` with a claim; promotion intent must be declared explicitly.
 
-## External handover transition after PR #107
+## Current external handover transition after PR #110
 
-The external v1.7 retirement condition remains fired. Living repository SSOTs control execution. Any external v2.x handover must start from the merged #107 state:
+The external v1.7 retirement condition fired at F1 / PR #94. Living repository SSOTs control execution. Any external v2.x handover must now start from the merged #110 theorem state, not the stale #107 control-plane prose:
+
 ~~~text
-main = b7d1022e33e2177c5597d008f593d3684d0ec720
-theorem head = cfcf397cc8c15dbb368fbee3a161b8733061b770
-theorem tree = 719b45162fd0814581759661f12eab16c46e1201
+main/theorem-state anchor = 07e0c845d128831b244b13503c9640b934bf4416
+validated theorem head = ca0c389827520e2005390637742389819dc97068
+theorem tree = f2e9985ac976c83ecfa7f5dbce64b1e0193680b0
 FIRST-BAD-SPECTRUM = PROVED
-FIRST-BAD-RIGIDITY = NEXT
+FIRST-BAD ambient shell projection + parity KKT = PROVED / #109
+rank-at-most-one parity compression defect = PROVED / #110
+FIRST-BAD-RIGIDITY-D scalar/block rigidity = NEXT
 ~~~
 
 Do not create or update an external handover inside a repository PR unless explicitly requested.
