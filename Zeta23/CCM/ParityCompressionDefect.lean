@@ -289,7 +289,7 @@ theorem canonicalSourceMatrix_toEuclideanLin_commutes_index_on_even
   have hcomm :=
     canonicalSourceMatrix_displacement_mulVec_even_boundaryFlat
       hL N u hflat heven
-  simp only [sub_mulVec, mulVec_mulVec] at hcomm
+  rw [sub_mulVec, ← mulVec_mulVec, ← mulVec_mulVec] at hcomm
   exact (sub_eq_zero.mp hcomm).symm
 
 /-- The explicit surviving cubic odd compression channel. -/
@@ -397,23 +397,36 @@ theorem exists_evenOddCompressedIntertwiningDefect_eq_smul_cubic
     exact
       ((euclideanOddBoundaryFlatSubspace N).orthogonalProjectionOnto_eq_zero_iff).2
         (centeredPowerVector_one_mem_oddBoundaryFlat_orthogonal N)
+  let V := euclideanOddBoundaryFlatSubspace N
+  have hproj := congrArg V.orthogonalProjectionOnto hMD
+  have hproj' :
+      parityCompressedCanonical .odd L N
+          (euclideanEvenToOddIndexLinearMap N v) =
+        euclideanEvenToOddIndexLinearMap N
+            (parityCompressedCanonical .even L N v) +
+          a2 • oddCubicCompressionVector N := by
+    change
+      V.orthogonalProjectionOnto
+          ((canonicalSourceMatrix L N).toEuclideanLin
+            ((euclideanEvenToOddIndexLinearMap N v :
+                euclideanOddBoundaryFlatSubspace N) :
+              EuclideanSpace ℂ (Fin (2 * N + 1)))) =
+        euclideanEvenToOddIndexLinearMap N
+            (parityCompressedCanonical .even L N v) +
+          a2 • oddCubicCompressionVector N
+    rw [hMD]
+    simp only [map_add, map_smul]
+    rw [Submodule.orthogonalProjectionOnto_mem_subspace_eq_self, hp1]
+    simp [oddCubicCompressionVector, add_assoc]
   refine ⟨a2, ?_⟩
-  apply Subtype.ext
   change
-    (((euclideanOddBoundaryFlatSubspace N).orthogonalProjectionOnto
-      ((canonicalSourceMatrix L N).toEuclideanLin
-        ((euclideanEvenToOddIndexLinearMap N v :
-            euclideanOddBoundaryFlatSubspace N) :
-          EuclideanSpace ℂ (Fin (2 * N + 1))))) :
-        euclideanOddBoundaryFlatSubspace N) -
+    parityCompressedCanonical .odd L N
+        (euclideanEvenToOddIndexLinearMap N v) -
       euclideanEvenToOddIndexLinearMap N
-        (parityCompressedCanonical .even L N v) : 
-      euclideanOddBoundaryFlatSubspace N) =
+        (parityCompressedCanonical .even L N v) =
       a2 • oddCubicCompressionVector N
-  rw [hMD]
-  simp only [map_add, map_smul]
-  rw [Submodule.orthogonalProjectionOnto_mem_subspace_eq_self, hp1]
-  simp [oddCubicCompressionVector, add_assoc]
+  rw [hproj']
+  abel
 
 theorem evenOddCompressedIntertwiningDefect_mem_span
     {L : ℝ} (hL : 0 < L)
