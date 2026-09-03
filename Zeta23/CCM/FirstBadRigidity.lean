@@ -9,97 +9,36 @@ open Matrix Set
 open scoped BigOperators ComplexConjugate
 
 /-!
-# FIRST-BAD-RIGIDITY-A: intrinsic predecessor / shell geometry
+# FIRST-BAD-RIGIDITY-A: predecessor image and the existing parity shell
 
-This module internalizes the exact centered predecessor image inside the
-successor parity-constrained Euclidean subtype. It proves that the intrinsic
-orthogonal successor shell is one-dimensional, upgrades #107 non-inheritance
-to a nonzero orthogonal shell projection, and packages predecessor
-nonnegativity directly on the successor compressed operator.
+The project already has the exact ambient successor geometry:
+`euclideanParityEmbeddedSuccSubspace p N` is the centered predecessor image,
+`euclideanParitySuccShell p N` is its orthogonal complement inside the
+successor parity sector, and #105 proved that shell has complex finrank one.
+
+This module connects #107's negative first-bad eigenmode to that existing shell.
+In particular, "not inherited from the predecessor" is upgraded to a nonzero
+orthogonal projection onto the already-proved one-dimensional shell.
+
+Keeping the shell in the ambient Euclidean space avoids any artificial
+inner-product instance choices on the constrained subtype.
 
 No shell invariance, negative-index theorem, KKT equation, Schur/Feshbach
 formula, positivity theorem, finite-to-infinite theorem, or RH theorem is
 claimed here.
 -/
 
-/-- Exact centered predecessor inclusion between parity-constrained Euclidean
-subtypes. -/
-def parityEmbeddedPredecessorLinearMap
+/-- Orthogonal projection onto the already-proved ambient one-step parity
+shell. -/
+def paritySuccShellProjection
     (p : ReversalParity) (N : ℕ) :
-    euclideanParityBoundaryFlatSubspace p N →ₗ[ℂ]
-      euclideanParityBoundaryFlatSubspace p (N + 1) where
-  toFun := fun x =>
-    ⟨euclideanCenteredZeroExtend (Nat.le_succ N) x,
-      euclideanCenteredZeroExtend_mem_euclideanParityBoundaryFlatSubspace
-        p (Nat.le_succ N) x.property⟩
-  map_add' := by
-    intro x y
-    apply Subtype.ext
-    simp
-  map_smul' := by
-    intro c x
-    apply Subtype.ext
-    simp
+    EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)) →L[ℂ]
+      euclideanParitySuccShell p N :=
+  (euclideanParitySuccShell p N).orthogonalProjectionOnto
 
-theorem parityEmbeddedPredecessorLinearMap_injective
-    (p : ReversalParity) (N : ℕ) :
-    Function.Injective (parityEmbeddedPredecessorLinearMap p N) := by
-  intro x y hxy
-  apply Subtype.ext
-  apply (euclideanCenteredZeroExtend (Nat.le_succ N)).injective
-  exact congrArg Subtype.val hxy
-
-/-- The exact centered predecessor image, now internal to the successor parity
-Hilbert space. -/
-def parityEmbeddedPredecessorSubspace
-    (p : ReversalParity) (N : ℕ) :
-    Submodule ℂ (euclideanParityBoundaryFlatSubspace p (N + 1)) :=
-  LinearMap.range (parityEmbeddedPredecessorLinearMap p N)
-
-theorem finrank_parityEmbeddedPredecessorSubspace
-    (p : ReversalParity) (N : ℕ) (hN : 1 ≤ N) :
-    Module.finrank ℂ (parityEmbeddedPredecessorSubspace p N) = N - 1 := by
-  let f := parityEmbeddedPredecessorLinearMap p N
-  have hker : LinearMap.ker f = ⊥ :=
-    LinearMap.ker_eq_bot.mpr
-      (parityEmbeddedPredecessorLinearMap_injective p N)
-  have hdim := f.finrank_range_add_finrank_ker
-  rw [hker, finrank_bot, add_zero] at hdim
-  change Module.finrank ℂ (LinearMap.range f) = N - 1
-  rw [hdim]
-  exact finrank_euclideanParityBoundaryFlatSubspace p N hN
-
-/-- Intrinsic one-step parity shell inside the successor parity subtype. -/
-def intrinsicParitySuccShell
-    (p : ReversalParity) (N : ℕ) :
-    Submodule ℂ (euclideanParityBoundaryFlatSubspace p (N + 1)) :=
-  Submodule.orthogonal (𝕜 := ℂ) (parityEmbeddedPredecessorSubspace p N)
-
-/-- Orthogonal projection onto the intrinsic one-step parity shell, with the
-complex scalar fixed explicitly to avoid ambiguous RCLike inference on the
-parity subtype. -/
-def intrinsicParitySuccProjection
-    (p : ReversalParity) (N : ℕ) :
-    euclideanParityBoundaryFlatSubspace p (N + 1) →L[ℂ]
-      intrinsicParitySuccShell p N :=
-  (intrinsicParitySuccShell p N).orthogonalProjectionOnto
-
-theorem finrank_intrinsicParitySuccShell
-    (p : ReversalParity) (N : ℕ) (hN : 1 ≤ N) :
-    Module.finrank ℂ (intrinsicParitySuccShell p N) = 1 := by
-  have hdim :=
-    Submodule.finrank_add_finrank_orthogonal (𝕜 := ℂ)
-      (parityEmbeddedPredecessorSubspace p N)
-  rw [finrank_parityEmbeddedPredecessorSubspace p N hN,
-    finrank_euclideanParityBoundaryFlatSubspace p (N + 1) (by omega)] at hdim
-  change
-    N - 1 + Module.finrank ℂ (intrinsicParitySuccShell p N) =
-      N + 1 - 1 at hdim
-  omega
-
-/-- #107's ambient "not inherited" statement is exactly non-membership in the
-intrinsic predecessor range. -/
-theorem not_mem_parityEmbeddedPredecessorSubspace_of_not_centeredImage
+/-- #107's "not a centered predecessor image" is exactly non-membership in the
+ambient predecessor image already used to define the #105 successor shell. -/
+theorem not_mem_euclideanParityEmbeddedSuccSubspace_of_not_centeredImage
     (p : ReversalParity) (N : ℕ)
     {v : euclideanParityBoundaryFlatSubspace p (N + 1)}
     (hnot :
@@ -107,35 +46,74 @@ theorem not_mem_parityEmbeddedPredecessorSubspace_of_not_centeredImage
         x ∈ euclideanParityBoundaryFlatSubspace p N ∧
         euclideanCenteredZeroExtend (Nat.le_succ N) x =
           (v : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))) :
-    v ∉ parityEmbeddedPredecessorSubspace p N := by
+    (v : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) ∉
+      euclideanParityEmbeddedSuccSubspace p N := by
   intro hv
-  rcases hv with ⟨x, hx⟩
-  apply hnot
-  refine ⟨x, x.property, ?_⟩
-  exact congrArg Subtype.val hx
+  rcases hv with ⟨x, hx, hxv⟩
+  exact hnot ⟨x, hx, hxv⟩
 
-/-- A vector outside the predecessor has a nonzero projection to the intrinsic
-orthogonal successor shell. -/
-theorem orthogonalProjection_intrinsicParitySuccShell_ne_zero_of_not_mem
+/-- In the successor parity sector, a vector outside the centered predecessor
+image must have a nonzero orthogonal projection onto the existing successor
+shell.
+
+This is the precise ambient-space form of "the first-bad mode genuinely uses
+the one new parity direction." -/
+theorem paritySuccShellProjection_ne_zero_of_not_embedded
     (p : ReversalParity) (N : ℕ)
     {v : euclideanParityBoundaryFlatSubspace p (N + 1)}
-    (hv : v ∉ parityEmbeddedPredecessorSubspace p N) :
-    intrinsicParitySuccProjection p N v ≠ 0 := by
+    (hvnot :
+      (v : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) ∉
+        euclideanParityEmbeddedSuccSubspace p N) :
+    paritySuccShellProjection p N
+        (v : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) ≠ 0 := by
   intro hproj
+  let W := euclideanParityEmbeddedSuccSubspace p N
+  let V := euclideanParityBoundaryFlatSubspace p (N + 1)
+  let S := euclideanParitySuccShell p N
   have hvorth :
-      v ∈ Submodule.orthogonal (𝕜 := ℂ) (intrinsicParitySuccShell p N) := by
-    have hproj' :
-        (intrinsicParitySuccShell p N).orthogonalProjectionOnto v = 0 := by
+      (v : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) ∈ Sᗮ := by
+    have hproj' : S.orthogonalProjectionOnto
+        (v : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) = 0 := by
       exact hproj
-    exact
-      ((intrinsicParitySuccShell p N).orthogonalProjectionOnto_eq_zero_iff).mp
-        hproj'
-  have hvpred : v ∈ parityEmbeddedPredecessorSubspace p N := by
-    simpa [intrinsicParitySuccShell] using hvorth
-  exact hv hvpred
+    exact (S.orthogonalProjectionOnto_eq_zero_iff).mp hproj'
+  have hspan : W ⊔ S = V := by
+    dsimp [W, S, V]
+    exact Submodule.sup_orthogonal_inf_of_hasOrthogonalProjection
+      (euclideanParityEmbeddedSuccSubspace_le p N)
+  have hvSup :
+      (v : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) ∈ W ⊔ S := by
+    rw [hspan]
+    exact v.property
+  rw [Submodule.mem_sup] at hvSup
+  rcases hvSup with ⟨w, hw, s, hs, hws⟩
+  have hworth : w ∈ Sᗮ := by
+    rw [S.mem_orthogonal]
+    intro t ht
+    have htWorth : t ∈ Wᗮ := by
+      exact ht.1
+    exact Submodule.inner_left_of_mem_orthogonal hw htWorth
+  have hsorth : s ∈ Sᗮ := by
+    have hsub :
+        (v : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) - w ∈ Sᗮ :=
+      Sᗮ.sub_mem hvorth hworth
+    have hsEq :
+        (v : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) - w = s := by
+      rw [← hws]
+      abel
+    rwa [hsEq] at hsub
+  have hss : inner ℂ s s = 0 :=
+    (S.mem_orthogonal s).mp hsorth s hs
+  have hs0 : s = 0 := (inner_self_eq_zero).mp hss
+  have hwv :
+      w = (v : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) := by
+    rw [← hws, hs0, add_zero]
+  apply hvnot
+  rw [← hwv]
+  exact hw
 
-/-- Direct shell-projection form of the #107 non-inheritance theorem. -/
-theorem negative_eigenmode_intrinsicShell_projection_ne_zero
+/-- Direct shell-projection form of #107's negative-eigenmode
+non-inheritance theorem. -/
+theorem negative_eigenmode_paritySuccShell_projection_ne_zero
     (p : ReversalParity)
     {L : ℝ} (hL : 0 < L)
     (N : ℕ)
@@ -149,15 +127,16 @@ theorem negative_eigenmode_intrinsicShell_projection_ne_zero
     (hvne : v ≠ 0)
     (hveig :
       parityCompressedCanonical p L (N + 1) v = (lam : ℂ) • v) :
-    intrinsicParitySuccProjection p N v ≠ 0 := by
-  apply orthogonalProjection_intrinsicParitySuccShell_ne_zero_of_not_mem
-  apply not_mem_parityEmbeddedPredecessorSubspace_of_not_centeredImage
+    paritySuccShellProjection p N
+        (v : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) ≠ 0 := by
+  apply paritySuccShellProjection_ne_zero_of_not_embedded
+  apply not_mem_euclideanParityEmbeddedSuccSubspace_of_not_centeredImage
   exact negative_eigenmode_not_centeredImage
     p hL N hprev hlam hvne hveig
 
-/-- Predecessor nonnegativity, expressed directly on the successor compressed
-operator and the intrinsic predecessor subspace. -/
-theorem re_inner_parityCompressedCanonical_nonnegative_on_predecessor
+/-- Exact N-flow keeps the successor canonical quadratic form nonnegative on
+the ambient centered predecessor image. -/
+theorem re_inner_successor_nonnegative_on_embeddedPredecessor
     (p : ReversalParity)
     {L : ℝ} (hL : 0 < L)
     (N : ℕ)
@@ -166,24 +145,21 @@ theorem re_inner_parityCompressedCanonical_nonnegative_on_predecessor
         x ∈ euclideanParityBoundaryFlatSubspace p N →
           0 ≤ Complex.re
             (inner ℂ ((canonicalSourceMatrix L N).toEuclideanLin x) x))
-    (w : parityEmbeddedPredecessorSubspace p N) :
+    (w : euclideanParityEmbeddedSuccSubspace p N) :
     0 ≤ Complex.re
       (inner ℂ
-        (parityCompressedCanonical p L (N + 1)
-          (w : euclideanParityBoundaryFlatSubspace p (N + 1)))
-        (w : euclideanParityBoundaryFlatSubspace p (N + 1))) := by
-  rcases w.property with ⟨x, hx⟩
-  rw [re_inner_parityCompressedCanonical_self]
+        ((canonicalSourceMatrix L (N + 1)).toEuclideanLin
+          (w : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))))
+        (w : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))) := by
+  rcases w.property with ⟨x, hx, hxw⟩
   have hnonneg :=
     re_inner_successor_nonnegative_on_centeredImage
-      p hL N hprev
-      (x : EuclideanSpace ℂ (Fin (2 * N + 1))) x.property
-  rw [← congrArg Subtype.val hx]
+      p hL N hprev x hx
+  rw [hxw] at hnonneg
   exact hnonneg
 
 end Zeta23.CCM
 
-#print axioms Zeta23.CCM.finrank_parityEmbeddedPredecessorSubspace
-#print axioms Zeta23.CCM.finrank_intrinsicParitySuccShell
-#print axioms Zeta23.CCM.negative_eigenmode_intrinsicShell_projection_ne_zero
-#print axioms Zeta23.CCM.re_inner_parityCompressedCanonical_nonnegative_on_predecessor
+#print axioms Zeta23.CCM.paritySuccShellProjection_ne_zero_of_not_embedded
+#print axioms Zeta23.CCM.negative_eigenmode_paritySuccShell_projection_ne_zero
+#print axioms Zeta23.CCM.re_inner_successor_nonnegative_on_embeddedPredecessor
