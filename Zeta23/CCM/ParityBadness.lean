@@ -350,6 +350,32 @@ theorem nonnegative_of_lt_least_parityBad
     simpa using hneg
   exact (hmin N hN) ⟨u, hune, humem, hneg⟩
 
+
+/-- Minimality of a parity-bad size transfers to nonnegativity of the exact
+Euclidean inner-self form on every smaller parity sector. -/
+theorem euclidean_nonnegative_of_lt_least_parityBad
+    (p : ReversalParity) (L : ℝ)
+    {Nstar : ℕ}
+    (hmin : ∀ N : ℕ, N < Nstar → ¬ ParityBad p L N)
+    {N : ℕ} (hN : N < Nstar)
+    (x : EuclideanSpace ℂ (Fin (2 * N + 1)))
+    (hx : x ∈ euclideanParityBoundaryFlatSubspace p N) :
+    0 ≤ Complex.re
+      (inner ℂ ((canonicalSourceMatrix L N).toEuclideanLin x) x) := by
+  have hxraw :
+      (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x ∈
+        parityBoundaryFlatSubspace p N := by
+    cases p with
+    | even =>
+        exact (mem_euclideanEvenBoundaryFlatSubspace_iff N x).mp hx
+    | odd =>
+        exact (mem_euclideanOddBoundaryFlatSubspace_iff N x).mp hx
+  have hraw :=
+    nonnegative_of_lt_least_parityBad
+      p L hmin hN
+      ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x) hxraw
+  simpa only [quadraticForm_re_eq_re_inner_apply_self] using hraw
+
 /-- Image of the previous Euclidean parity sector inside the successor size. -/
 def euclideanParityEmbeddedSuccSubspace
     (p : ReversalParity) (N : ℕ) :
@@ -414,4 +440,5 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.parityBad_persists_of_le
 #print axioms Zeta23.CCM.exists_least_parityBad
 #print axioms Zeta23.CCM.nonnegative_of_lt_least_parityBad
+#print axioms Zeta23.CCM.euclidean_nonnegative_of_lt_least_parityBad
 #print axioms Zeta23.CCM.finrank_euclideanParitySuccShell
