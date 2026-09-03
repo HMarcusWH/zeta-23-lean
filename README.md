@@ -7,32 +7,35 @@
 ## Current authority snapshot
 
 ~~~text
-theorem-state anchor = PR #100 merge 4427e2a8c8d90dbb7d66d9d96f9a410cecb75df9
-validated theorem head = 497adcd6a746d49fd23654cabf4ed8f0c58db8a9
-theorem tree = 705ab8b88728a5b90d850eb4b51c01a66811f088
-theorem-bearing merged through = PR #100
+theorem-state anchor = PR #103 merge c7129b1856ea03cdf8b831ae1424140f8a7d90a9
+validated theorem head = af43242f55536a8170bf303b9c9558c6a0fccdcf
+validated synthetic merge = 16c5ebaa6d6d7e14df853e9a0771ab5ef3b07aba
+theorem tree = 56d082947fac6eb4666d0e0666e2c8bcd3c0a7e8
+theorem-bearing merged through = PR #103
 live GitHub main = authoritative
-date = 2026-09-02
+date = 2026-09-03
 RH = OPEN
 ~~~
 
-Exact PR #100 validation:
+Exact PR #103 validation:
 
 ~~~text
-final head = 497adcd6a746d49fd23654cabf4ed8f0c58db8a9
-head tree = 705ab8b88728a5b90d850eb4b51c01a66811f088
-merge/main = 4427e2a8c8d90dbb7d66d9d96f9a410cecb75df9
-merge tree = 705ab8b88728a5b90d850eb4b51c01a66811f088
-RHRC #691 = SUCCESS
-Permansson #464 = SUCCESS
+base = a434737c088ad2651491f0131b6dd6794c129f4c
+final head = af43242f55536a8170bf303b9c9558c6a0fccdcf
+synthetic merge tested = 16c5ebaa6d6d7e14df853e9a0771ab5ef3b07aba
+merge/main = c7129b1856ea03cdf8b831ae1424140f8a7d90a9
+validated/merged theorem tree = 56d082947fac6eb4666d0e0666e2c8bcd3c0a7e8
+RHRC #704 = SUCCESS
+Permansson #477 = SUCCESS
 CCM build = SUCCESS
 ExceptionalZero build = SUCCESS
+R003 normalization/source firewall = SUCCESS
 forbidden-placeholder gate = SUCCESS
 axioms = [propext, Classical.choice, Quot.sound]
 sorryAx = absent
 ~~~
 
-The exact theorem tree tested at the final PR head is the tree now merged on main.
+The exact synthetic-merge tree that passed CI is the tree merged on main.
 
 ## Current RH-directed theorem ladder
 
@@ -45,19 +48,25 @@ off-line zeta zero
   -> constrained algebra + Hermitianity + displacement            PROVED / #96
   -> exact moment rank; finrank = 2*N-2                            PROVED / #98
   -> Euclidean constrained sector + canonical symmetry            PROVED / #98
-  -> quadraticForm <-> Euclidean inner-self bridge                 PROVED / #98
   -> constrained Euclidean negative direction                     PROVED / #98
   -> exact centered principal-block nesting                       PROVED / #100
-  -> every centered moment + localized finite function preserved  PROVED / #100
-  -> Euclidean isometric constrained zero extension               PROVED / #100
+  -> Euclidean isometric constrained N-flow                       PROVED / #100
   -> fixed-L negative constrained tail for all M>=N0              PROVED / #100
+  -> exact centered reversal + matrix parity symmetry             PROVED / #102
+  -> displacementVector odd + even commutator collapse            PROVED / #102
+  -> V_N = V_N^+ direct-sum V_N^-                                 PROVED / #103
+  -> D : V_N^+ ≃ₗ[ℂ] V_N^-                                       PROVED / #103
+  -> finrank V_N^+ = finrank V_N^- = N-1                          PROVED / #103
+  -> Euclidean parity sectors + parity-preserving N-flow          PROVED / #103
 
 NEXT
-  reversal/parity and exact parity-sector dimensions
-  global first-bad-N / 2D constrained-shell formalization
+  compile/import parity-badness module
+  theorem-lock D / centered-N-flow compatibility
+  exact quadratic parity splitting
+  off-line zero -> one fixed bad parity tail
+  least bad parity size + one-dimensional successor shell
   constrained orthogonal compression + negative eigenmode
-  first bad parity size / one-dimensional new shell
-  scalar secular/KKT/displacement rigidity
+  normal-space / KKT / scalar Schur-Feshbach rigidity
 
 PARALLEL
   source-faithful G1-B1B -> G1-final -> S-NEG -> G23
@@ -65,21 +74,37 @@ PARALLEL
 RH                                                                 OPEN
 ~~~
 
-## Exact #100 endpoint
+## Validated source versus staged source
 
-Lean proves that every hypothetical off-critical-line zero forces one fixed L>0 and N0>=2 such that for every M>=N0 there is a nonzero x in euclideanBoundaryFlatSubspace M with strictly negative real inner-self value for canonicalSourceMatrix.toEuclideanLin.
+`Zeta23/CCM/ConstrainedParityGeometry.lean` is imported by `Zeta23.CCM` and was in the exact compiler-tested PR #103 import closure.
 
-The centered embedding is exact, preserves every centered moment and the represented localized finite function, and is bundled as a Euclidean linear isometry. This is persistent constrained negativity, not yet a compressed eigenmode or a proof of RH.
+`Zeta23/CCM/ParityBadness.lean` is present on main but is **not imported by `Zeta23.CCM`**. Its declarations are therefore staged source, not compiler-validated project theorems. Repository presence and the no-placeholder grep are not substitutes for Lean elaboration. See `research/RHRC/VALIDATION_PROTOCOL.md` and OBS-018.
+
+## What #102 and #103 changed
+
+PR #102 proves the exact reversal chassis: centered-index sign reversal, compatibility with the centered embedding, moment parity, simultaneous reversal invariance of the canonical source matrix, oddness of the displacement vector, matrix-action commutation with reversal, and exact vanishing of the canonical commutator on even boundary-flat vectors.
+
+PR #103 proves more than a parity dimension count. The centered-index operator itself induces a complex-linear equivalence
+
+~~~text
+D : V_N^+ ≃ₗ[ℂ] V_N^-.
+~~~
+
+The one ambient zero-index kernel of D is removed by boundary-flat moment zero; surjectivity is supplied by an explicit primitive of an odd vector with the central coefficient chosen to restore moment zero. Hence both parity sectors have exact finrank N-1, and exact centered Euclidean N-flow preserves each sector.
 
 ## Next theorem program
 
-The highest-leverage next slice is reversal/parity.
+The first task is to bring the staged parity-badness layer into the authoritative compiler closure. In the same slice, theorem-lock the exact quadratic parity split and use the #100 negative witness plus #102 matrix parity symmetry to extract one fixed bad parity. Exact parity-preserving N-flow should then give a fixed-parity bad tail.
 
-Use Fin.rev to prove centered-index reversal, simultaneous canonical-matrix reversal invariance, moment parity, displacement-vector oddness, invariance of the constrained sector, compatibility with the #100 embedding, and exact even/odd constrained dimensions.
+After that, take the least bad size in that parity and theorem-lock the one-dimensional new parity shell. Only then build the constrained orthogonal compression, extract a negative Rayleigh/eigenmode, prove the exact normal-space identity, and derive the scalar constrained Schur/Feshbach/KKT equation.
 
-#100 already implies that fixed-L badness is upward persistent. Therefore a nonempty bad-size set has a first bad N before parity is used. Combined with finrank V_N = 2*N-2, the new constrained shell at N->N+1 has total dimension two. Parity is expected to split that two-dimensional increment into one even and one odd dimension; this must be theorem-locked rather than inferred.
+A high-value upstream compatibility theorem is:
 
-Then build the constrained orthogonal compression and extract a negative constrained eigenmode using finite-dimensional Rayleigh theory.
+~~~text
+D_M (E_{N,M} u) = E_{N,M} (D_N u).
+~~~
+
+If true, D relates the one-dimensional even and odd successor quotients as well as the full constrained parity sectors.
 
 ## Canonical normalization firewall
 
@@ -88,14 +113,18 @@ canonicalSourceMatrix = cutoffFreeMatrix = sourceEq44Matrix = dictionaryMatrix
 legacyPrintedMatrix = finiteMatrix
 ~~~
 
+Scalar identity shifts preserve eigenvectors, commutators and eigenvalue gaps/order, but not PSD, inertia, absolute eigenvalues, trace or determinant.
+
 ## Permanent firewalls
 
 - OBS-015: source interface is not source negativity.
-- OBS-017: raw function-space norm is not Euclidean Rayleigh normalization; #100 separately proves the Euclidean zero-extension isometry, while constrained compression remains open.
+- OBS-017: raw function-space norm is not Euclidean Rayleigh normalization.
+- OBS-018: merged source presence is not compiler validation; only the exact tested import/build closure is theorem authority.
 - DR-010 fitted small-commutator/eigenvector convergence remains falsified.
-- exact low displacement rank alone does not imply positivity; the generic divided-difference displacement identity is diagonal-blind.
-- principal-block/quadratic nesting does not imply full operator intertwining or literal nesting of compressed operators.
-- green F1/K0-F1/K0-F1E/N-FLOW is not RH.
+- D-equivalence is algebraic, not proved unitary; equal parity dimensions do not imply equal spectra.
+- ambient commutator collapse does not imply intertwining of future orthogonally compressed operators.
+- one-dimensional first-bad shell geometry by itself is not a contradiction.
+- green supporting mathematics is not RH.
 
 ## Living research records
 
@@ -105,9 +134,10 @@ legacyPrintedMatrix = finiteMatrix
 - research/RHRC/R003_PROMOTED_BINDINGS.json
 - research/RHRC/routes/ROUTE_REGISTRY.json
 - research/RHRC/routes/R003_ccm_bridge/README.md
-- research/RHRC/RESEARCH_LEADS_POST_100_DELTA.md
-- research/RHRC/routes/R003_ccm_bridge/K0F1E_POST_GREEN_EUCLIDEAN_RESET_2026_09_02.md
+- research/RHRC/VALIDATION_PROTOCOL.md
+- research/RHRC/RESEARCH_LEADS_POST_102_DELTA.md
+- research/RHRC/RESEARCH_LEADS_POST_103_DELTA.md
 
-The external v1.7 handover has reached its retirement condition. External v2.0 should be written against the post-#100 repository state; it is not a repository artifact.
+External v2.0 should be written against the post-#103 validated repository state; it is not a repository artifact unless explicitly requested.
 
 **RH remains OPEN.**

@@ -5,10 +5,11 @@
 ## Current authority snapshot
 
 ~~~text
-theorem-state anchor = PR #100 merge 4427e2a8c8d90dbb7d66d9d96f9a410cecb75df9
-validated theorem head = 497adcd6a746d49fd23654cabf4ed8f0c58db8a9
-theorem tree = 705ab8b88728a5b90d850eb4b51c01a66811f088
-theorem-bearing merged through = PR #100
+theorem-state anchor = PR #103 merge c7129b1856ea03cdf8b831ae1424140f8a7d90a9
+validated theorem head = af43242f55536a8170bf303b9c9558c6a0fccdcf
+validated synthetic merge = 16c5ebaa6d6d7e14df853e9a0771ab5ef3b07aba
+theorem tree = 56d082947fac6eb4666d0e0666e2c8bcd3c0a7e8
+theorem-bearing merged through = PR #103
 live GitHub main = authoritative
 RH = OPEN
 ~~~
@@ -16,52 +17,40 @@ RH = OPEN
 ## Current theorem-backed internal route
 
 ~~~text
-W2-A/W0/W1/W2-ZS + G1-A                               PROVED
-F0-B1A/B1B/WCONT/F0-B1C-A/B                           PROVED
-strict finite sign transfer + F1                      PROVED
-K0-F1 constrained finite algebra                      PROVED
-K0-F1E Euclidean constrained sector                   PROVED
-K0-F1E exact finrank 2*N-2 and N>=2 floor             PROVED
-K0-F1E symmetric Euclidean canonical operator         PROVED
-K0-F1E quadraticForm / inner-self bridge              PROVED
-K0-F1E Euclidean constrained negative direction       PROVED
-N-FLOW exact centered finite nesting                   PROVED / #100
-N-FLOW every centered moment preserved                PROVED / #100
-N-FLOW Euclidean isometric constrained extension       PROVED / #100
-N-FLOW fixed-L persistent negative tail                PROVED / #100
+W2-A/W0/W1/W2-ZS + G1-A                                 PROVED
+F0-B1A/B1B/WCONT/F0-B1C-A/B                             PROVED
+strict finite sign transfer + F1                        PROVED
+K0-F1 / K0-F1E constrained finite + Euclidean algebra   PROVED
+N-FLOW exact centered nesting + fixed-L negative tail   PROVED / #100
+PARITY reversal/moment/matrix symmetry                   PROVED / #102
+PARITY even constrained commutator collapse              PROVED / #102
+PARITY direct even/odd constrained decomposition         PROVED / #103
+PARITY D-induced even/odd linear equivalence             PROVED / #103
+PARITY exact finrank N-1 / N-1                          PROVED / #103
+PARITY-preserving Euclidean N-flow                       PROVED / #103
 
-PARITY reversal/parity package                        OPEN / NEXT
-global first-bad-N / 2D shell formalization           DERIVED / OPEN FORMALIZATION
-K0-F1F constrained spectral compression               OPEN
-first bad parity / 1D shell                           OPEN
-RH                                                     OPEN
+global first-bad N                                       DERIVED
+general negative witness -> fixed negative parity        DERIVED / OPEN FORMALIZATION
+ParityBad/least-parity-bad/1D-shell source               STAGED / NOT VALIDATED
+K0-F1F constrained spectral compression                  OPEN
+normal-space / KKT / scalar secular rigidity             OPEN
+RH                                                        OPEN
 ~~~
 
-## #100 promoted production surface
+## Validated-import-closure firewall
 
-The #98 Euclidean production claims remain promoted. PR #100 additionally promotes:
-
-~~~text
-Zeta23.CCM.canonicalSourceMatrix_submatrix_centeredEmbedding
-Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanBoundaryFlatSubspace
-Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero
-~~~
-
-Supporting #100 theorems also prove preservation of every centered moment, the represented localized finite function, the Euclidean inner product, and the canonical quadratic value under centered extension.
+A merged Lean file is not automatically theorem authority. `ParityBadness.lean` exists on main but is not imported by `Zeta23.CCM`, so its declarations remain **STAGED / NOT VALIDATED**. See `VALIDATION_PROTOCOL.md` and OBS-018.
 
 ## Current execution priority
 
-1. Reversal/parity, embedding compatibility and exact parity-sector dimensions.
-2. Formalize fixed-L badness, upward closure, first bad N and the total two-dimensional new constrained shell.
-3. Build constrained orthogonal compression and extract a negative constrained eigenmode.
-4. Refine first badness by parity and theorem-lock the one-dimensional new parity shell.
-5. Prove the KKT normal-space identity.
-6. Derive the scalar constrained secular equation and compose it with exact displacement/Krylov structure.
-7. Open aperture/prime-event flow only if the fixed-L finite route still needs arithmetic closure.
-
-## Control-plane completeness
-
-R003_PROMOTED_BINDINGS.json is machine-checked against PROVED_UNCONDITIONAL R003 claims and exact #check + #print axioms bindings.
+1. Import and compile `ParityBadness.lean`.
+2. Theorem-lock `D_M E_{N,M} = E_{N,M} D_N`.
+3. Theorem-lock exact quadratic parity splitting.
+4. Extract one fixed negative parity from the #100 negative witness and propagate it by exact N-flow.
+5. Take the least bad parity size and validate the one-dimensional successor parity shell.
+6. Build constrained orthogonal compression and extract a negative constrained eigenmode.
+7. Prove the exact normal-space identity, then KKT and scalar Schur/Feshbach rigidity.
+8. Open aperture/prime-event first crossing only if fixed-L finite rigidity still needs arithmetic closure.
 
 ## Source route
 
@@ -69,10 +58,11 @@ S-GEOM/G1-B1A is proved. S-IFACE/G1-B1B, G1-final, S-NEG and G23 remain open as 
 
 ## Current records
 
-Latest delta: RESEARCH_LEADS_POST_100_DELTA.md.
+- `RESEARCH_LEADS_POST_102_DELTA.md`
+- `RESEARCH_LEADS_POST_103_DELTA.md`
+- `routes/R003_ccm_bridge/PARITY_POST_GREEN_RESET_2026_09_03.md`
+- `routes/R003_ccm_bridge/PARITY_FLOW_GEOMETRY_POST_GREEN_RESET_2026_09_03.md`
 
-Latest Euclidean settlement: routes/R003_ccm_bridge/K0F1E_POST_GREEN_EUCLIDEAN_RESET_2026_09_02.md.
-
-External v1.7 has reached its retirement condition; external v2.0 should be written against the post-#100 repository state.
+External v2.0 should be written against the post-#103 validated repository state.
 
 **RH remains OPEN.**

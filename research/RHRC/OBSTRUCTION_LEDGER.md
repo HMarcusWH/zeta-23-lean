@@ -183,3 +183,17 @@ Do not use the raw #96 norm-one statement as a Euclidean sphere theorem. Do not 
 
 The #100 isometry also does not imply full operator intertwining or literal nesting of the orthogonally compressed operators.
 
+## OBS-018 — merged source presence is not compiler validation
+
+**Status:** PROJECT VALIDATION FIREWALL.
+
+A `.lean` file existing, appearing in a PR, passing the no-placeholder grep, or being merged does not establish that its declarations elaborate.
+
+**Origin:** PR #103 merged `Zeta23/CCM/ParityBadness.lean`, but the validated `lake build Zeta23.CCM` imported `ConstrainedParityGeometry.lean` and did not import `ParityBadness.lean`.
+
+**Consequence:** declarations in an unbuilt/unimported file remain STAGED / NOT PROVED.
+
+**Escape requirement:** put the module in an authoritative compiler-tested import/build closure or explicitly build it in an authoritative gate, then inspect the axiom surface where production promotion requires it.
+
+The no-placeholder gate is syntactic hardening, not elaboration.
+

@@ -19,6 +19,8 @@ import Zeta23.CCM.SourceNormalizationRepair
 import Zeta23.CCM.ConstrainedCanonicalSector
 import Zeta23.CCM.ConstrainedEuclideanSector
 import Zeta23.CCM.NestedFinite
+import Zeta23.CCM.ConstrainedParity
+import Zeta23.CCM.ConstrainedParityGeometry
 import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.DictionaryRHSIdentity
 import Zeta23.ExceptionalZero.DisplacementTransfer
@@ -428,3 +430,43 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero
 #check Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_exists_offLine_zero
 #print axioms Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_exists_offLine_zero
+
+#check Zeta23.CCM.centeredIndex_rev
+#print axioms Zeta23.CCM.centeredIndex_rev
+#check Zeta23.CCM.centeredEmbedding_rev
+#print axioms Zeta23.CCM.centeredEmbedding_rev
+#check Zeta23.CCM.centeredMoment_reverseCoefficients
+#print axioms Zeta23.CCM.centeredMoment_reverseCoefficients
+#check Zeta23.CCM.canonicalSourceMatrix_apply_rev_rev
+#print axioms Zeta23.CCM.canonicalSourceMatrix_apply_rev_rev
+#check Zeta23.CCM.displacementVector_rev
+#print axioms Zeta23.CCM.displacementVector_rev
+#check Zeta23.CCM.canonicalSourceMatrix_mulVec_reverseCoefficients
+#print axioms Zeta23.CCM.canonicalSourceMatrix_mulVec_reverseCoefficients
+#check Zeta23.CCM.displacementPairing_eq_zero_of_even
+#print axioms Zeta23.CCM.displacementPairing_eq_zero_of_even
+#check Zeta23.CCM.canonicalSourceMatrix_displacement_mulVec_even_boundaryFlat
+#print axioms Zeta23.CCM.canonicalSourceMatrix_displacement_mulVec_even_boundaryFlat
+
+#check Zeta23.CCM.evenBoundaryFlatSubspace_inf_oddBoundaryFlatSubspace
+#print axioms Zeta23.CCM.evenBoundaryFlatSubspace_inf_oddBoundaryFlatSubspace
+#check Zeta23.CCM.evenBoundaryFlatSubspace_sup_oddBoundaryFlatSubspace
+#print axioms Zeta23.CCM.evenBoundaryFlatSubspace_sup_oddBoundaryFlatSubspace
+#check Zeta23.CCM.evenToOddIndexLinearMap_injective
+#print axioms Zeta23.CCM.evenToOddIndexLinearMap_injective
+#check Zeta23.CCM.evenToOddIndexLinearMap_surjective
+#print axioms Zeta23.CCM.evenToOddIndexLinearMap_surjective
+#check Zeta23.CCM.evenOddBoundaryFlatLinearEquiv
+#print axioms Zeta23.CCM.evenOddBoundaryFlatLinearEquiv
+#check Zeta23.CCM.finrank_evenBoundaryFlatSubspace
+#print axioms Zeta23.CCM.finrank_evenBoundaryFlatSubspace
+#check Zeta23.CCM.finrank_oddBoundaryFlatSubspace
+#print axioms Zeta23.CCM.finrank_oddBoundaryFlatSubspace
+#check Zeta23.CCM.finrank_euclideanEvenBoundaryFlatSubspace
+#print axioms Zeta23.CCM.finrank_euclideanEvenBoundaryFlatSubspace
+#check Zeta23.CCM.finrank_euclideanOddBoundaryFlatSubspace
+#print axioms Zeta23.CCM.finrank_euclideanOddBoundaryFlatSubspace
+#check Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanEvenBoundaryFlatSubspace
+#print axioms Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanEvenBoundaryFlatSubspace
+#check Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanOddBoundaryFlatSubspace
+#print axioms Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanOddBoundaryFlatSubspace

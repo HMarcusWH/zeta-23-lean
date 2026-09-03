@@ -80,12 +80,17 @@
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
         "R003_EXACT_CENTERED_FINITE_NESTING",
         "R003_EUCLIDEAN_CONSTRAINED_NESTING",
-        "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION"
+        "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+        "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+        "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+        "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+        "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+        "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "R003 merged theorem authority is through N-FLOW / PR #100. Exact centered finite-N principal-block nesting, preservation of every centered moment and the represented localized finite function, Euclidean constrained isometric zero-extension, and the fixed-aperture nested negative obstruction are merged and exact-head CI validated. Parity, constrained compression/eigenmodes, separate first-bad/shell theorem declarations, Schur/secular analysis, source QW, positivity and RH remain open."
+      "note": "R003 merged compiler-validated theorem authority is through PARITY-FLOW geometry / PR #103. #100 proves exact centered finite-N nesting and a fixed-aperture negative constrained tail; #102 proves reversal/moment/matrix parity symmetry and even constrained commutator collapse; #103 proves the direct constrained parity decomposition, D : V_N^+ ≃ V_N^-, exact N-1/N-1 dimensions, and parity-preserving Euclidean N-flow. ParityBadness.lean is present on main but is not in the validated CCM import closure and remains STAGED / NOT PROVED. Constrained compression/eigenmodes, fixed-parity negative tail, least-bad parity shell theorem authority, Schur/KKT rigidity, source QW, positivity and RH remain open."
     },
     {
       "route_id": "R004_prolate_v2",

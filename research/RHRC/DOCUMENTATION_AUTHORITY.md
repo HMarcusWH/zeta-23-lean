@@ -16,7 +16,7 @@ When two sources disagree:
 
 The two living research-control SSOTs have different scopes and must not be used to overrule theorem truth: the lead ledger records hypotheses and research state; the current plan records priority and dependency decisions.
 
-A green but unmerged PR is branch evidence, not merged repository truth.
+A green but unmerged PR is branch evidence, not merged repository truth.\n\nA merged source file is also not automatically theorem authority: compiler validity attaches only to declarations in the exact successful import/build closure or a module separately built by an authoritative gate.
 
 ## Document classes
 
@@ -32,7 +32,7 @@ These must be updated when the underlying state changes:
 - active route README;
 - `research/RHRC/RESEARCH_LEADS.md`;
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`;
-- dead-route and obstruction ledgers.
+- dead-route and obstruction ledgers;\n- `research/RHRC/VALIDATION_PROTOCOL.md` when validation semantics or gates change.
 
 ### Historical settlements
 
@@ -106,6 +106,16 @@ After every meaningful green result:
 
 A green but unmerged PR remains branch evidence until merged and registered.
 
+## Validated import-closure law
+
+Repository presence, PR inclusion, merge inclusion and no-placeholder scanning are weaker states than Lean elaboration.
+
+A theorem may be promoted only when its declaration is in the exact compiler-tested transitive import closure or its module was separately compiled by an authoritative successful gate. For production R003 promotion, the required `#check` / `#print axioms` surface must also be present.
+
+PR #103 is the canonical example: `ConstrainedParityGeometry.lean` was imported by `Zeta23.CCM`; `ParityBadness.lean` was merged but not imported.
+
+See `VALIDATION_PROTOCOL.md`.
+
 ## Claim rule
 
 Documentation may explain implications, but it may not promote a claim beyond the exact theorem surface.
@@ -118,8 +128,6 @@ For R003, R003_PROMOTED_BINDINGS.json is the declared production binding surface
 
 The RHRC suite enforces this through promoted_binding_lint.py. Supporting theorem checks may exist without individual registry promotion, so CI does not equate every #check with a claim; promotion intent must be declared explicitly.
 
-## External handover transition after PR #100
+## External handover transition after PR #103
 
-The external v1.7 handover contained its own retirement condition: write v2.0 once F1 is green/registered or another comparably large theorem changes the dependency graph. That condition fired before PR #100, and #100 changed the dependency graph again by theorem-locking exact finite-N nesting and fixed-aperture persistent constrained negativity.
-
-Until external v2.0 is produced, the living repository SSOTs control execution. External v2.0 should start from the merged post-#100 theorem state. Do not create the external v2.0 document inside a repository PR unless explicitly requested.
+The external v1.7 retirement condition has fired. PRs #100, #102 and #103 materially changed the dependency graph. Until external v2.0 is produced, living repository SSOTs control execution. External v2.0 should start from the validated post-#103 theorem state. Do not create it inside a repository PR unless explicitly requested.

@@ -1,15 +1,16 @@
 # R003 — CCM / finite Weil bridge
 
-Status: **ACTIVE DISCOVERY ROUTE. INTERNAL F1 + K0-F1 + K0-F1E + N-FLOW PROVED. RH OPEN.**
+Status: **ACTIVE DISCOVERY ROUTE. INTERNAL F1 + K0-F1 + K0-F1E + N-FLOW + PARITY + PARITY-FLOW GEOMETRY PROVED. RH OPEN.**
 
 ## Current authority
 
 ~~~text
-theorem-state anchor = PR #100 merge 4427e2a8c8d90dbb7d66d9d96f9a410cecb75df9
-theorem tree = 705ab8b88728a5b90d850eb4b51c01a66811f088
-final validated head = 497adcd6a746d49fd23654cabf4ed8f0c58db8a9
-RHRC #691 = SUCCESS
-Permansson #464 = SUCCESS
+theorem-state anchor = PR #103 merge c7129b1856ea03cdf8b831ae1424140f8a7d90a9
+validated theorem head = af43242f55536a8170bf303b9c9558c6a0fccdcf
+validated synthetic merge = 16c5ebaa6d6d7e14df853e9a0771ab5ef3b07aba
+theorem tree = 56d082947fac6eb4666d0e0666e2c8bcd3c0a7e8
+RHRC #704 = SUCCESS
+Permansson #477 = SUCCESS
 axioms = [propext, Classical.choice, Quot.sound]
 sorryAx = absent
 RH = OPEN
@@ -22,68 +23,52 @@ W0/W1/W2-ZS + G1-A                                      PROVED
 F0-B1A/B1B/WCONT/F0-B1C-A/B                             PROVED
 strict finite sign transfer + F1                        PROVED
 K0-F1 constrained algebra / Hermitianity / displacement PROVED
-K0-F1E rank, N>=2, Euclidean sector and quadratic bridge PROVED
-K0-F1E constrained Euclidean negative direction         PROVED
-N-FLOW exact centered principal-block nesting            PROVED
-N-FLOW all centered moments / finite function preserved  PROVED
-N-FLOW Euclidean constrained isometric zero extension    PROVED
-N-FLOW fixed-L persistent negative tail                  PROVED
+K0-F1E Euclidean sector + negative direction            PROVED
+N-FLOW exact centered nesting + negative tail            PROVED
+PARITY exact reversal/matrix/moment symmetry             PROVED / #102
+PARITY even constrained commutator collapse              PROVED / #102
+PARITY-FLOW direct even/odd decomposition                PROVED / #103
+PARITY-FLOW D : V+ ≃ₗ V-                                 PROVED / #103
+PARITY-FLOW exact N-1 / N-1 dimensions                   PROVED / #103
+PARITY-FLOW Euclidean parity-preserving N-flow           PROVED / #103
 ~~~
 
-## #100 production endpoint
+## Current finite obstruction state
 
-Off-line zero -> one fixed L>0 and N0>=2 such that every M>=N0 has a nonzero x in euclideanBoundaryFlatSubspace M with Re <M_M(L)x,x> < 0.
+Any hypothetical off-line zero forces one fixed L>0 and N0>=2 such that every M>=N0 has a nonzero negative vector in the exact Euclidean boundary-flat sector.
 
-No compressed eigenmode, parity theorem, positivity theorem, finite-to-infinite theorem or RH theorem is asserted.
+The constrained sector now decomposes exactly into even and odd reversal sectors, each of complex dimension N-1, and D gives a complex-linear equivalence from even to odd.
 
-## Immediate post-#100 consequence
+This is not yet a fixed-parity negative obstruction: the exact quadratic parity split and parity-selection theorem remain open.
 
-For fixed L, badness defined by existence of a negative constrained direction is upward persistent under N. Therefore a nonempty bad-size set has a least global bad N.
+## Staged parity-badness source
 
-Combined with finrank V_N = 2*N-2, the total new constrained shell from N to N+1 has dimension two. This is a derived consequence to theorem-lock; it is not yet a promoted project theorem.
+`Zeta23/CCM/ParityBadness.lean` is present on main but is not imported by `Zeta23.CCM`. Its parity-badness persistence, least-bad and one-dimensional-shell declarations are therefore **STAGED / NOT PROVED**.
 
-## Next: parity and constrained spectrum
+## Next: fixed parity and one-dimensional first-bad shell
 
-Use Fin.rev to prove centered-index reversal, simultaneous canonical-matrix reversal invariance, moment parity, displacement-vector oddness, constrained-sector invariance, compatibility with the #100 embedding, and exact parity dimensions.
+1. Prove D commutes with exact centered N-flow.
+2. Prove the even/odd quadratic cross term vanishes for canonicalSourceMatrix.
+3. Split any negative constrained witness into a negative even or odd component.
+4. Compose with #100/#103 to get one fixed bad parity tail.
+5. Compile/promote parity badness, least bad parity and one-dimensional successor shell.
+6. Build constrained symmetric compression and extract a negative eigenmode.
+7. Prove exact normal space and derive parity-resolved scalar Schur/Feshbach/KKT rigidity.
 
-Expected for N>=2:
+## Firewalls
 
-~~~text
-finrank V_N^even = N-1
-finrank V_N^odd  = N-1
-~~~
-
-Only after these dimension theorems may the total 2D increment be described as one even plus one odd new constrained dimension.
-
-Then build the constrained subtype operator with orthogonalProjectionOnto and extract a negative constrained eigenmode using finite-dimensional Rayleigh theory.
-
-## First bad shell
-
-Global first bad N is available before parity at the consequence level. Parity should refine the first bad state to a first bad parity sector with a one-dimensional new constrained shell.
-
-That one-dimensional shell is the intended entry point for a scalar constrained secular equation.
-
-## Schur/secular firewall
-
-Historical FTI-C1 used an ambient coordinate-shell Schur complement. The post-#100 route uses the orthogonal complement of an embedded constrained sector inside the larger constrained sector. They are not identical without a theorem.
-
-Principal-block nesting also does not imply full operator intertwining or literal nesting of the compressed operators.
-
-## KKT firewall
-
-Codimension three alone does not justify the residual equation. First prove V_N^perp = span{1,d,d²}.
-
-## Source and dead-route firewalls
-
-OBS-015 remains permanent. G1-B1A is proved; G1-B1B/G1-final/S-NEG/G23 remain open.
-
-DR-010 remains dead. The generic divided-difference displacement identity is diagonal-blind, so low displacement rank alone cannot control absolute sign/inertia.
-
-Finite-to-infinite convergence remains dormant: #100 proves exact finite nesting, not any infinite limiting theorem.
+- D-equivalence is not unitary and does not imply equal parity spectra.
+- ambient [D,M]u=0 does not imply future compressed parity blocks are intertwined.
+- the post-#103 shell is not automatically the historical ambient coordinate shell.
+- codimension three does not by itself prove V_N^perp = span{1,d,d²}.
+- OBS-015 remains permanent; source G1-B1B/G1-final/S-NEG/G23 stays open.
+- finite-to-infinite convergence remains dormant.
 
 ## Current post-green records
 
-- K0F1E_POST_GREEN_EUCLIDEAN_RESET_2026_09_02.md
-- ../../RESEARCH_LEADS_POST_100_DELTA.md
+- `PARITY_POST_GREEN_RESET_2026_09_03.md`
+- `PARITY_FLOW_GEOMETRY_POST_GREEN_RESET_2026_09_03.md`
+- `../../RESEARCH_LEADS_POST_102_DELTA.md`
+- `../../RESEARCH_LEADS_POST_103_DELTA.md`
 
 **RH remains OPEN.**
