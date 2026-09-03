@@ -670,6 +670,76 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "N-FLOW-B / PR #100 candidate. The same fixed aperture is retained for the whole tail. This proves persistence of a negative direction, not a compressed eigenmode, first bad size, parity statement, positivity theorem, or RH."
+    },
+    {
+      "id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "statement": "The production canonical finite CCM respects exact centered reversal: canonicalSourceMatrix matrix action commutes with coefficient reversal; supporting declarations theorem-lock centered-index/embedding reversal, moment parity, boundary-flat invariance, simultaneous matrix reversal invariance and displacementVector oddness.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_EXACT_CENTERED_FINITE_NESTING",
+        "R003_CANONICAL_SOURCE_HERMITIAN"
+      ],
+      "source": "Zeta23/CCM/ConstrainedParity.lean",
+      "theorem": "Zeta23.CCM.canonicalSourceMatrix_mulVec_reverseCoefficients",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PARITY / PR #102. Final validated head e765147092f1cac533f16dc562f01e0ced647217; merge a434737c088ad2651491f0131b6dd6794c129f4c; theorem tree 38a66adcdd3e3e7d228deacb526dca470989f87e; RHRC #698 and Permansson #471 success. Supporting: centeredIndex_rev, centeredEmbedding_rev, centeredMoment_reverseCoefficients, canonicalSourceMatrix_apply_rev_rev, displacementVector_rev. Axiom surface [propext, Classical.choice, Quot.sound]."
+    },
+    {
+      "id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+      "statement": "For positive aperture, every even boundary-flat vector annihilates the ordinary bilinear displacement pairing and the exact canonical commutator [D,M] applied to that vector is zero.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+        "R003_CONSTRAINED_CANONICAL_DISPLACEMENT"
+      ],
+      "source": "Zeta23/CCM/ConstrainedParity.lean",
+      "theorem": "Zeta23.CCM.canonicalSourceMatrix_displacement_mulVec_even_boundaryFlat",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PARITY / PR #102. Supporting theorem displacementPairing_eq_zero_of_even. Ambient exact commutator collapse does not prove constrained compression or future compressed intertwining."
+    },
+    {
+      "id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "statement": "The boundary-flat constrained space is the direct algebraic sum of its even and odd reversal sectors, and the centered-index operator restricts to a complex-linear equivalence from the even constrained sector to the odd constrained sector.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+        "R003_BOUNDARY_FLAT_MOMENT_FLAG"
+      ],
+      "source": "Zeta23/CCM/ConstrainedParityGeometry.lean",
+      "theorem": "Zeta23.CCM.evenOddBoundaryFlatLinearEquiv",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PARITY-FLOW / PR #103. Validated head af43242f55536a8170bf303b9c9558c6a0fccdcf; synthetic merge 16c5ebaa6d6d7e14df853e9a0771ab5ef3b07aba; merge c7129b1856ea03cdf8b831ae1424140f8a7d90a9; theorem tree 56d082947fac6eb4666d0e0666e2c8bcd3c0a7e8; RHRC #704 and Permansson #477 success. D is not proved unitary."
+    },
+    {
+      "id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "statement": "For every N>=1, the Euclidean even boundary-flat parity sector has complex finrank N-1; companion validated declarations give the same exact N-1 dimension for the odd, raw-even and raw-odd sectors.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+        "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR"
+      ],
+      "source": "Zeta23/CCM/ConstrainedParityGeometry.lean",
+      "theorem": "Zeta23.CCM.finrank_euclideanEvenBoundaryFlatSubspace",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PARITY-FLOW / PR #103. Companion declarations: finrank_evenBoundaryFlatSubspace, finrank_oddBoundaryFlatSubspace, finrank_euclideanOddBoundaryFlatSubspace. Exact dimensions do not imply equal spectra or positivity."
+    },
+    {
+      "id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "statement": "Exact centered Euclidean zero extension preserves the odd boundary-flat parity sector; the validated companion theorem gives the same preservation for the even sector.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+        "R003_EUCLIDEAN_CONSTRAINED_NESTING"
+      ],
+      "source": "Zeta23/CCM/ConstrainedParityGeometry.lean",
+      "theorem": "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanOddBoundaryFlatSubspace",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PARITY-FLOW / PR #103. Companion theorem euclideanCenteredZeroExtend_mem_euclideanEvenBoundaryFlatSubspace. Carrier transport only; no fixed-parity negativity or compressed nesting."
     }
   ]
 }

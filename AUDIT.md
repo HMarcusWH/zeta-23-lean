@@ -1,111 +1,142 @@
-# RHRC formal audit — merged through N-FLOW / PR #100
+# RHRC formal audit — merged through PARITY-FLOW geometry / PR #103
 
 > **RH remains OPEN.**
 
 ## Current merged authority
 
 ~~~text
-theorem-state anchor = PR #100 merge 4427e2a8c8d90dbb7d66d9d96f9a410cecb75df9
-validated theorem head = 497adcd6a746d49fd23654cabf4ed8f0c58db8a9
-theorem tree = 705ab8b88728a5b90d850eb4b51c01a66811f088
-theorem-bearing merged through = PR #100
+theorem-state anchor = PR #103 merge c7129b1856ea03cdf8b831ae1424140f8a7d90a9
+validated theorem head = af43242f55536a8170bf303b9c9558c6a0fccdcf
+validated synthetic merge = 16c5ebaa6d6d7e14df853e9a0771ab5ef3b07aba
+theorem tree = 56d082947fac6eb4666d0e0666e2c8bcd3c0a7e8
+theorem-bearing merged through = PR #103
 live GitHub main = authoritative
-date = 2026-09-02
+date = 2026-09-03
 ~~~
 
-## Exact PR #100 validation
+## Exact PR #103 validation
 
 ~~~text
-base = c37b701ef3e78b0446b82c4c606d5f64bc9245bd
-final head = 497adcd6a746d49fd23654cabf4ed8f0c58db8a9
-head tree = 705ab8b88728a5b90d850eb4b51c01a66811f088
-merge = 4427e2a8c8d90dbb7d66d9d96f9a410cecb75df9
-merge tree = 705ab8b88728a5b90d850eb4b51c01a66811f088
-RHRC #691 = SUCCESS
-Permansson #464 = SUCCESS
+base = a434737c088ad2651491f0131b6dd6794c129f4c
+final head = af43242f55536a8170bf303b9c9558c6a0fccdcf
+synthetic merge tested = 16c5ebaa6d6d7e14df853e9a0771ab5ef3b07aba
+merge/main = c7129b1856ea03cdf8b831ae1424140f8a7d90a9
+validated/merged tree = 56d082947fac6eb4666d0e0666e2c8bcd3c0a7e8
+Lean = 4.33.0-rc2
+RHRC #704 = SUCCESS
+Permansson #477 = SUCCESS
+python RHRC claim/regression suite = SUCCESS
+R003 normalization/source firewall = SUCCESS
 CCM build = SUCCESS
 ExceptionalZero build = SUCCESS
 forbidden-placeholder gate = SUCCESS
-axioms = [propext, Classical.choice, Quot.sound]
+production axiom surface = [propext, Classical.choice, Quot.sound]
 sorryAx = absent
 ~~~
 
-The exact theorem tree validated at the final head is the merged main tree. No Codex review was available because the code-review usage limit was reached; that is not a Lean/CI proof gate.
+The workflow explicitly checked out the synthetic merge above. The tree that passed is the tree now merged on main.
+
+## PR #102 validated parity chassis
+
+PR #102 final head `e765147092f1cac533f16dc562f01e0ced647217` and merge `a434737c088ad2651491f0131b6dd6794c129f4c` share theorem tree `38a66adcdd3e3e7d228deacb526dca470989f87e`. RHRC #698 and Permansson #471 succeeded.
+
+Production-support declarations:
+
+~~~text
+centeredIndex_rev
+centeredEmbedding_rev
+centeredMoment_reverseCoefficients
+canonicalSourceMatrix_apply_rev_rev
+displacementVector_rev
+canonicalSourceMatrix_mulVec_reverseCoefficients
+displacementPairing_eq_zero_of_even
+canonicalSourceMatrix_displacement_mulVec_even_boundaryFlat
+~~~
+
+**PROVED:** exact reversal/moment/matrix symmetry and exact canonical commutator collapse on even boundary-flat vectors.
+
+## PR #103 validated parity geometry
+
+The compiler-tested module is `Zeta23/CCM/ConstrainedParityGeometry.lean`.
+
+Production-support declarations:
+
+~~~text
+evenBoundaryFlatSubspace_inf_oddBoundaryFlatSubspace
+evenBoundaryFlatSubspace_sup_oddBoundaryFlatSubspace
+evenToOddIndexLinearMap_injective
+evenToOddIndexLinearMap_surjective
+evenOddBoundaryFlatLinearEquiv
+finrank_evenBoundaryFlatSubspace
+finrank_oddBoundaryFlatSubspace
+finrank_euclideanEvenBoundaryFlatSubspace
+finrank_euclideanOddBoundaryFlatSubspace
+euclideanCenteredZeroExtend_mem_euclideanEvenBoundaryFlatSubspace
+euclideanCenteredZeroExtend_mem_euclideanOddBoundaryFlatSubspace
+~~~
+
+**PROVED:**
+
+~~~text
+V_N = V_N^+ direct-sum V_N^-
+D : V_N^+ ≃ₗ[ℂ] V_N^-
+finrank V_N^+ = N-1
+finrank V_N^- = N-1
+Euclidean parity sectors have the same dimensions
+centered Euclidean N-flow preserves each parity sector.
+~~~
+
+The proof of the linear equivalence is stronger than a dimension count: moment zero removes D's central kernel and an explicit odd primitive proves surjectivity.
+
+## Merged source that is NOT theorem authority
+
+`Zeta23/CCM/ParityBadness.lean` was added by PR #103 but is not imported by `Zeta23.CCM.lean`. The #103 `lake build Zeta23.CCM` therefore did not elaborate it.
+
+These declarations are **STAGED / NOT PROVED**:
+
+~~~text
+ParityBad
+parityBad_persists_of_le
+exists_least_parityBad
+nonnegative_of_lt_least_parityBad
+finrank_euclideanParitySuccShell
+~~~
+
+The forbidden-placeholder gate scanned the source; that is not equivalent to compiler validation.
 
 ## Current formal theorem state
 
 ~~~text
-F1 canonical finite negative obstruction              PROVED
-K0-F1 constrained algebra / Hermitianity              PROVED
-K0-F1 exact one-channel displacement                  PROVED
-K0-F1E exact rank / finrank 2*N-2                     PROVED
-K0-F1E N>=2 floor                                     PROVED
-K0-F1E Euclidean constrained sector                   PROVED
-K0-F1E canonical Euclidean symmetry                   PROVED
-K0-F1E quadraticForm / inner-self bridge              PROVED
-K0-F1E Euclidean constrained negative direction       PROVED
-N-FLOW exact centered principal-block nesting         PROVED
-N-FLOW every centered moment preserved                PROVED
-N-FLOW Euclidean isometric constrained extension      PROVED
-N-FLOW fixed-L persistent negative tail               PROVED
+F1 canonical finite negative obstruction                     PROVED
+K0-F1 constrained algebra / Hermitianity / displacement      PROVED
+K0-F1E exact dimension 2*N-2 + Euclidean sector              PROVED
+N-FLOW exact centered nesting / persistent negative tail     PROVED / #100
+PARITY reversal/moment/matrix symmetry                       PROVED / #102
+PARITY even constrained commutator collapse                  PROVED / #102
+PARITY direct constrained decomposition                      PROVED / #103
+PARITY D : V+ ≃ₗ V-                                          PROVED / #103
+PARITY exact N-1 / N-1 dimensions                            PROVED / #103
+PARITY-preserving Euclidean N-flow                           PROVED / #103
 
-reversal/parity                                       OPEN / NEXT
-global first-bad-N / 2D shell theorem                 DERIVED / OPEN FORMALIZATION
-compressed negative constrained eigenmode             OPEN
-first-bad parity / 1D-shell impossibility              OPEN
-RH                                                    OPEN
+global badness upward persistence / least global bad N       DERIVED
+negative witness -> negative parity component                DERIVED / OPEN FORMALIZATION
+ParityBad machinery / least parity bad / 1D shell            STAGED / NOT PROVED
+D / centered-N-flow compatibility                            OPEN
+constrained compression / negative constrained eigenmode     OPEN
+normal-space / KKT / scalar Schur-Feshbach rigidity          OPEN
+RH                                                            OPEN
 ~~~
-
-## OBS-017 after #100
-
-Closed:
-
-~~~text
-coordinate transport
-Euclidean constrained subspace
-quadraticForm / inner-self identity
-Euclidean centered zero-extension isometry
-constrained membership preservation under N extension
-canonical quadratic-value preservation under N extension
-~~~
-
-Open:
-
-~~~text
-orthogonal compression to the constrained subtype
-finite-dimensional constrained Rayleigh/eigenmode extraction
-~~~
-
-The raw #96 norm-one theorem remains semantically distinct from Euclidean norm normalization.
-
-## Post-#100 structural consequence
-
-For fixed L, #100 makes existence of a negative constrained direction upward persistent in N. Together with #98's exact finrank formula this yields, at the mathematical consequence level:
-
-~~~text
-nonempty bad-size set -> least global bad N*
-dim V_(N+1) - dim V_N = 2
-~~~
-
-These consequences are not yet separately theorem-locked as project declarations. Parity is still required before claiming a one-dimensional new shell in either parity sector.
-
-## Promoted-binding hardening
-
-R003_PROMOTED_BINDINGS.json and promoted_binding_lint.py require every PROVED_UNCONDITIONAL R003 theorem claim to agree exactly across the claim registry, promoted binding manifest, #check, and #print axioms surfaces.
-
-PR #100 adds three promoted R003 production bindings for exact centered finite nesting, Euclidean constrained nesting, and the nested Euclidean negative obstruction.
-
-Promotion intent still has to be declared; the lint does not pretend every support #check is an individual claim.
 
 ## Permanent firewalls
 
 1. RH remains OPEN.
 2. canonicalSourceMatrix is sign-authoritative; finiteMatrix is legacy printed normalization.
-3. OBS-015 remains binding.
-4. DR-010 remains falsified.
-5. low displacement rank alone does not imply positivity or RH.
-6. exact finite-N nesting is structural infrastructure; its RH value comes from later first-failure rigidity.
-7. principal-block nesting does not imply full operator intertwining or compressed-operator nesting.
-8. #100 proves finite nesting, not finite-to-infinite convergence.
+3. source interface is not source negativity.
+4. raw function-space norm is not Euclidean normalization.
+5. repository/merge presence is not compiler validation.
+6. D-equivalence is algebraic, not unitary.
+7. ambient commutator collapse does not imply compressed-operator intertwining.
+8. finite nesting is not finite-to-infinite convergence.
+9. one-dimensional shell geometry is not itself a contradiction.
 
 **RH remains OPEN.**

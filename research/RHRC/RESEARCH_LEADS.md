@@ -781,38 +781,55 @@ off-line zero
 
 ## L-PARITY-01 — reversal/parity constrained split
 
-**Research status:** ACTIVE / HIGHEST-LEVERAGE NEXT THEOREM SLICE  
-**Formal status:** LEAD / OPEN
+**Research status:** PROVED FOUNDATION / ACTIVE COMPOSITION
+**Formal status:** PROVED BY #102/#103; DOWNSTREAM FIXED-PARITY CONSEQUENCES OPEN
 
-Use Mathlib Fin.rev to target centeredIndex reversal, simultaneous matrix reversal invariance, oddness of displacementVector, moment parity, and invariance of V_N.
+PR #102 theorem-locks reversal/moment/matrix symmetry, displacementVector oddness and exact even constrained displacement/commutator collapse.
 
-Then theorem-lock exact even/odd constrained dimensions. Expected for N>=2:
-
+PR #103 theorem-locks
 ~~~text
-finrank V_N^even = N-1
-finrank V_N^odd  = N-1.
+V_N = V_N^+ direct-sum V_N^-
+D : V_N^+ ≃ₗ[ℂ] V_N^-
+finrank V_N^+ = finrank V_N^- = N-1.
+~~~
+Euclidean parity sectors have the same dimensions and exact centered Euclidean N-flow preserves each sector.
+
+The old composition "even u plus odd g kills the displacement pairing" is PROVED. The remaining bridge is exact quadratic parity splitting for a general negative witness.
+
+**Firewalls:** D is not unitary; equal dimensions do not imply equal spectra; ambient commutator collapse does not imply compressed intertwining.
+
+---
+
+## L-PARITY-02 — D-equivalence and paired parity shells
+
+**Research status:** ACTIVE / HIGH-LEVERAGE COMPOSITION LEAD
+**Formal status:** PROVED D-EQUIVALENCE + OPEN N-FLOW COMPATIBILITY
+
+Target:
+~~~text
+D_M (E_{N,M} u) = E_{N,M} (D_N u).
 ~~~
 
-Do not infer the 1+1 parity growth merely from total finrank growth by two.
+If proved, D coherently identifies the nested parity sectors and should pair the new one-dimensional even/odd successor quotient directions.
 
-Promising composition: even boundary-flat u plus odd g should force [D,M]u=0. This remains a lead until reversal and oddness are proved.
+**Immediate falsifiers:** failure of exact D/E compatibility, normalization dependence, or reduction to a basis-change tautology.
 
 ---
 
 ## L-NFLOW-02 — first bad finite size / parity refinement
 
-**Research status:** ACTIVE COMPOSITION LEAD  
-**Formal status:** PARTIALLY DERIVED FROM #98/#100; OPEN FORMALIZATION
+**Research status:** ACTIVE COMPOSITION LEAD
+**Formal status:** MIXED PROVED / DERIVED / STAGED
 
-PR #100 proves fixed-L persistence of negative constrained directions under every larger centered truncation. Therefore, for fixed L, global badness is upward closed and every nonempty bad-size set has a least global bad N*. This global first-bad existence does not require parity.
+#100 proves fixed-L persistence of general badness; least global bad N is DERIVED. #103 proves exact N-1/N-1 parity dimensions and parity-preserving Euclidean N-flow.
 
-Together with PR #98's finrank V_N = 2*N-2 and #100's isometric constrained embedding, the total orthogonal new constrained shell from N to N+1 has finrank two. This is a DERIVED consequence to theorem-lock.
+The missing bridge is exact quadratic parity splitting. Once a negative parity is selected, parity-preserving N-flow should give a fixed bad parity tail and a least bad parity size.
 
-Parity remains essential for the sharper statement. Once exact parity dimensions are proved, the 2D increment should split into one even and one odd dimension. A first bad parity sector then has a one-dimensional new constrained shell.
+`ParityBadness.lean` contains candidate persistence, least-bad, previous-size-nonnegative and one-dimensional-shell declarations, but it was outside the validated #103 import closure and is **STAGED / NOT PROVED**.
 
-After constrained spectral extraction, at a negative eigenvalue lambda<0 the retained previous constrained block is nonnegative, hence A-lambda*I is strictly positive and invertible. This is the intended route to a scalar constrained secular equation.
+After spectral extraction, least-bad parity should reduce to a retained nonnegative block plus one new complex shell direction, giving the intended scalar Schur/Feshbach equation.
 
-**Firewalls:** the constrained parity shell is not automatically the historical ambient coordinate-shell Schur complement from FTI-C1; #100 does not prove literal nesting of the compressed operators.
+**Firewalls:** the constrained parity shell is not the historical ambient coordinate shell; one-dimensional shell geometry is not itself a contradiction.
 
 ---
 
@@ -1040,6 +1057,28 @@ Still coherent for a longer determinant/Hurwitz/Xi convergence route.
 Zero eigenvalue plus parity may make the equation more rigid than in its original generic form.
 
 **Immediate falsifier:** prove whether the proposed equation contains information beyond M u=0. Kill it if tautological.
+
+---
+
+## T21 — Constraint-Lock / Premise-Escape Audit
+
+**Research status:** RECOVERED PROJECT-HISTORY DISCOVERY TOOL
+**Formal status:** LEAD / TOOL; NO LEAN CLAIM
+
+Recovered from the earlier ESET theorem-groundwork cross-project review. For any proposed closure, identify which premise carries the real obstruction and test whether the route discharges it or merely relocates an equally strong premise.
+
+Use on fixed-parity, KKT, source-interface and positivity candidates to expose hidden RH-equivalent assumptions, vacuous coercivity hypotheses and circular sign conditions.
+
+---
+
+## T22 — Structured-Ray Coercivity/Inertia Falsifier
+
+**Research status:** RECOVERED PROJECT-HISTORY DISCOVERY TOOL
+**Formal status:** LEAD / TOOL; NO LEAN CLAIM
+
+Recovered from the earlier ESET theorem-groundwork cross-project review. Attack proposed universal positivity/coercivity/inertia claims on structured one-parameter or low-dimensional rays preserving the relevant constraints before expensive formalization.
+
+A counterexample kills the candidate; ray survival is only an EXPERIMENTAL SIGNAL.
 
 ---
 

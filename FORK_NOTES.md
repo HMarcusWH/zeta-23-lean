@@ -5,10 +5,11 @@
 ## Authority snapshot
 
 ~~~text
-theorem-state anchor = PR #100 merge 4427e2a8c8d90dbb7d66d9d96f9a410cecb75df9
-validated theorem head = 497adcd6a746d49fd23654cabf4ed8f0c58db8a9
-theorem tree = 705ab8b88728a5b90d850eb4b51c01a66811f088
-theorem-bearing merged through = PR #100
+theorem-state anchor = PR #103 merge c7129b1856ea03cdf8b831ae1424140f8a7d90a9
+validated theorem head = af43242f55536a8170bf303b9c9558c6a0fccdcf
+validated synthetic merge = 16c5ebaa6d6d7e14df853e9a0771ab5ef3b07aba
+theorem tree = 56d082947fac6eb4666d0e0666e2c8bcd3c0a7e8
+theorem-bearing merged through = PR #103
 live GitHub main = authoritative
 RH = OPEN
 ~~~
@@ -16,54 +17,60 @@ RH = OPEN
 ## Recent permanent theorem packages
 
 ~~~text
-#93 F0-B1C-B legal boundary-flat WCONT approximation
-#94 strict finite sign transfer + F1 canonical finite negative obstruction
-#96 constrained canonical finite-wall algebra
-#98 Euclidean constrained sector + exact mode floor
+#93  F0-B1C-B legal boundary-flat WCONT approximation
+#94  strict finite sign transfer + F1 canonical finite negative obstruction
+#96  constrained canonical finite-wall algebra
+#98  Euclidean constrained sector + exact mode floor
 #100 exact centered N-flow + persistent fixed-L negative tail
+#102 exact reversal symmetry + even constrained commutator collapse
+#103 exact parity geometry + D-induced even/odd equivalence
 ~~~
 
-## What #100 closed
+## What #102/#103 closed
 
-PR #100 theorem-locks the correct centered embedding, coherent embedding composition, exact canonical principal-block nesting, raw zero extension, preservation of every centered moment and the represented localized finite function, Euclidean isometric zero extension, constrained-sector nesting, exact canonical quadratic preservation, and:
+PR #102 theorem-locks reversal compatibility, moment parity, simultaneous canonical-matrix reversal invariance, oddness of displacementVector, matrix-action commutation with reversal, and exact collapse of the canonical commutator on even boundary-flat vectors.
+
+PR #103 theorem-locks
 
 ~~~text
-off-line zero
-  -> exists fixed L>0 and N0>=2
-  -> for every M>=N0
-     exists nonzero x_M in V_M
-     with Re <M_M(L)x_M,x_M> < 0.
+V_N = V_N^+ direct-sum V_N^-
+D : V_N^+ ≃ₗ[ℂ] V_N^-
+finrank V_N^+ = finrank V_N^- = N-1
+same Euclidean parity dimensions
+exact centered Euclidean N-flow preserves each parity sector.
 ~~~
 
-No constrained compression, constrained eigenmode, parity theorem, positivity theorem, finite-to-infinite theorem or RH theorem is claimed.
+The D-equivalence is structural: boundary-flat moment zero removes D's central ambient kernel, while an explicit odd primitive gives surjectivity.
 
 ## Current primary frontier
 
 ~~~text
-reversal/parity + exact parity dimensions
-  -> formal global first-bad N / total 2D constrained shell
-  -> constrained compression + negative spectral mode
-  -> first bad parity size
+import/compile ParityBadness.lean
+  -> D / centered-N-flow compatibility
+  -> exact quadratic parity split
+  -> off-line zero -> one fixed bad parity tail
+  -> least bad parity size
   -> one-dimensional new parity shell
-  -> scalar secular/KKT/displacement analysis
-  -> aperture/prime-event first crossing only if needed
+  -> constrained compression + negative spectral mode
+  -> exact normal space / KKT / scalar Schur-Feshbach rigidity
 ~~~
 
-#100 already makes fixed-L badness upward persistent. A least global bad N therefore exists whenever the bad-size set is nonempty. Parity is not needed for that existence statement; parity is needed to split the total two-dimensional N->N+1 constrained increment into one even and one odd dimension.
+## Staged-source firewall
+
+`Zeta23/CCM/ParityBadness.lean` is on main but was not imported by the validated #103 CCM build. Its `ParityBad`, least-bad and one-dimensional-shell declarations are **STAGED / NOT PROVED** until the module enters an authoritative compiler-tested import/build closure.
 
 ## Guardrails
 
-- #100 proves Euclidean zero-extension isometry directly; it does not identify the old raw function-space norm with the Euclidean norm.
-- principal-block and quadratic preservation do not imply full operator intertwining M_M E = E M_N.
-- orthogonally compressed operators need not literally nest because the projection changes with N.
-- total dimension growth by two does not prove one even + one odd new dimension; parity dimensions need their own theorem.
+- principal-block and quadratic preservation do not imply full operator intertwining.
+- D-equivalence is not a unitary equivalence and does not imply equal parity spectra.
 - the historical ambient coordinate-shell Schur complement is not automatically the future constrained-subspace shell.
-- KKT residual form requires V-perp = span{1,d,d²}.
+- KKT residual form requires an exact normal-space theorem, not codimension counting alone.
+- source-faithful G1-B1B/G1-final/S-NEG/G23 remains a parallel route.
 - DR-010 remains dead; R002/Bombieri remain comparator lanes.
 - RH remains OPEN.
 
 ## External roadmap
 
-The v1.7 handover retirement condition is satisfied. External v2.0 should be produced against the post-#100 theorem state after this repository sync; do not store it in this PR.
+External v2.0 should be produced against the post-#103 validated theorem state.
 
 **RH remains OPEN.**

@@ -163,6 +163,26 @@
     {
       "id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
+    },
+    {
+      "id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "theorem": "Zeta23.CCM.canonicalSourceMatrix_mulVec_reverseCoefficients"
+    },
+    {
+      "id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+      "theorem": "Zeta23.CCM.canonicalSourceMatrix_displacement_mulVec_even_boundaryFlat"
+    },
+    {
+      "id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "theorem": "Zeta23.CCM.evenOddBoundaryFlatLinearEquiv"
+    },
+    {
+      "id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "theorem": "Zeta23.CCM.finrank_euclideanEvenBoundaryFlatSubspace"
+    },
+    {
+      "id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "theorem": "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanOddBoundaryFlatSubspace"
     }
   ]
 }
