@@ -268,7 +268,10 @@ theorem evenToOddIndexLinearMap_injective
         (v : Fin (2 * N + 1) → ℂ)) = 0 := by
     ext i
     have hi := congrFun huv_val i
-    simpa [evenToOddIndexLinearMap, Matrix.mulVec_sub] using hi
+    change (indexMatrix N *ᵥ (u : Fin (2 * N + 1) → ℂ)) i =
+      (indexMatrix N *ᵥ (v : Fin (2 * N + 1) → ℂ)) i at hi
+    rw [Matrix.mulVec_sub]
+    exact sub_eq_zero.mpr hi
   let z : Fin (2 * N + 1) → ℂ :=
     (u : Fin (2 * N + 1) → ℂ) - (v : Fin (2 * N + 1) → ℂ)
   have hzflat : z ∈ boundaryFlatSubspace N :=
@@ -331,9 +334,6 @@ theorem oddIndexPrimitive_even
     have hvi := congrFun hvodd i
     simp only [reverseCoefficients, Pi.neg_apply] at hvi
     simp [reverseCoefficients, oddIndexPrimitive, hi, hirev, hvi]
-    rw [centeredIndex_rev]
-    push_cast
-    rw [div_neg, neg_div]
 
 theorem indexMatrix_mulVec_oddIndexPrimitive
     (N : ℕ) {v : Fin (2 * N + 1) → ℂ}
@@ -350,7 +350,10 @@ theorem indexMatrix_mulVec_oddIndexPrimitive
     simp [oddIndexPrimitive, hv0]
   · have hd : ((centeredIndex N i : ℤ) : ℂ) ≠ 0 := by
       exact_mod_cast centeredIndex_ne_zero_of_ne_zeroIndex N hi
-    simp [oddIndexPrimitive, hi, hd]
+    rw [show oddIndexPrimitive N v i =
+      v i / ((centeredIndex N i : ℤ) : ℂ) by
+        simp [oddIndexPrimitive, hi]]
+    field_simp [hd]
 
 theorem centeredMoment_zero_oddIndexPrimitive
     (N : ℕ) (v : Fin (2 * N + 1) → ℂ) :
@@ -540,6 +543,8 @@ theorem euclideanCenteredZeroExtend_mem_euclideanOddBoundaryFlatSubspace
   rw [euclideanCenteredZeroExtend_coordinates]
   rw [← centeredZeroExtend_reverseCoefficients hNM]
   rw [hxodd']
+  exact map_neg (centeredZeroExtendLinearMap hNM)
+    ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x)
 
 end Zeta23.CCM
 
