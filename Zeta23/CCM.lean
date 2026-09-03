@@ -84,5 +84,6 @@ import Zeta23.CCM.ParityBadness
 import Zeta23.CCM.ConstrainedParitySpectrum
 import Zeta23.CCM.FirstBadRigidity
 import Zeta23.CCM.ParityNormalSpace
+import Zeta23.CCM.ParityCompressionDefect
 import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.ClaimBindings
