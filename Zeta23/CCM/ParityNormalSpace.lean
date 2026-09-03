@@ -122,8 +122,10 @@ theorem centeredMoment_zero_eq_zero_of_odd
       -centeredMomentLinearMap N 0 u
     exact (centeredMomentLinearMap N 0).map_neg u
   rw [hneg] at h
-  norm_num at h
-  linear_combination (-1 / 2 : ℂ) * h
+  have hsum :
+      (∑ i, u i) = 0 :=
+    CharZero.neg_eq_self_iff.mp h
+  simpa [centeredMoment] using hsum
 
 theorem centeredMoment_two_eq_zero_of_odd
     {N : ℕ} {u : Fin (2 * N + 1) → ℂ}
@@ -163,7 +165,6 @@ theorem centeredPowerVector_two_mem_evenCoefficient
   apply (mem_evenCoefficientSubspace_iff N _).2
   ext i
   simp [reverseCoefficients, centeredPowerVector]
-  ring
 
 /-- The exact two-dimensional candidate normal channel in the even parity
 ambient sector. -/
@@ -200,7 +201,7 @@ theorem centeredPowerVector_zero_mem_evenBoundaryFlat_orthogonal
     centeredPowerVector N 0 ∈ (euclideanEvenBoundaryFlatSubspace N)ᗮ := by
   rw [(euclideanEvenBoundaryFlatSubspace N).mem_orthogonal]
   intro x hx
-  rw [inner_centeredPowerVector]
+  rw [inner_eq_zero_symm, inner_centeredPowerVector]
   have hflat :=
     ((mem_euclideanEvenBoundaryFlatSubspace_iff N x).mp hx).1
   exact ((mem_boundaryFlatSubspace_iff N _).mp hflat).1
@@ -210,7 +211,7 @@ theorem centeredPowerVector_two_mem_evenBoundaryFlat_orthogonal
     centeredPowerVector N 2 ∈ (euclideanEvenBoundaryFlatSubspace N)ᗮ := by
   rw [(euclideanEvenBoundaryFlatSubspace N).mem_orthogonal]
   intro x hx
-  rw [inner_centeredPowerVector]
+  rw [inner_eq_zero_symm, inner_centeredPowerVector]
   have hflat :=
     ((mem_euclideanEvenBoundaryFlatSubspace_iff N x).mp hx).1
   exact ((mem_boundaryFlatSubspace_iff N _).mp hflat).2.2
@@ -220,7 +221,7 @@ theorem centeredPowerVector_one_mem_oddBoundaryFlat_orthogonal
     centeredPowerVector N 1 ∈ (euclideanOddBoundaryFlatSubspace N)ᗮ := by
   rw [(euclideanOddBoundaryFlatSubspace N).mem_orthogonal]
   intro x hx
-  rw [inner_centeredPowerVector]
+  rw [inner_eq_zero_symm, inner_centeredPowerVector]
   have hflat :=
     ((mem_euclideanOddBoundaryFlatSubspace_iff N x).mp hx).1
   exact ((mem_boundaryFlatSubspace_iff N _).mp hflat).2.1
@@ -304,8 +305,7 @@ theorem evenBoundaryFlat_normal_eq_evenNormalSubspace
     have hsV : s ∈ euclideanEvenBoundaryFlatSubspace N := by
       rw [mem_euclideanEvenBoundaryFlatSubspace_iff]
       refine ⟨?_, hsevenRaw⟩
-      rw [mem_boundaryFlatSubspace_iff]
-      exact ⟨hs0, hs1, hs2⟩
+      exact (mem_boundaryFlatSubspace_iff N _).2 ⟨hs0, hs1, hs2⟩
     have hss : inner ℂ s s = 0 :=
       ((euclideanEvenBoundaryFlatSubspace N).mem_orthogonal s).mp
         hsorth s hsV
@@ -375,8 +375,7 @@ theorem oddBoundaryFlat_normal_eq_oddNormalSubspace
     have hsV : s ∈ euclideanOddBoundaryFlatSubspace N := by
       rw [mem_euclideanOddBoundaryFlatSubspace_iff]
       refine ⟨?_, hsoddRaw⟩
-      rw [mem_boundaryFlatSubspace_iff]
-      exact ⟨hs0, hs1, hs2⟩
+      exact (mem_boundaryFlatSubspace_iff N _).2 ⟨hs0, hs1, hs2⟩
     have hss : inner ℂ s s = 0 :=
       ((euclideanOddBoundaryFlatSubspace N).mem_orthogonal s).mp
         hsorth s hsV
