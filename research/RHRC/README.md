@@ -5,17 +5,19 @@
 ## Current authority snapshot
 
 ~~~text
-theorem-state anchor = PR #107 merge b7d1022e33e2177c5597d008f593d3684d0ec720
-validated theorem head = cfcf397cc8c15dbb368fbee3a161b8733061b770
-validated synthetic merge = 19cd290510fe4fb1d253522c29644ff3e4563c03
-validated theorem tree = 719b45162fd0814581759661f12eab16c46e1201
-live main = b7d1022e33e2177c5597d008f593d3684d0ec720
-theorem-bearing merged through = PR #107
-RHRC #717 = SUCCESS
-Permansson #490 = SUCCESS
-axioms = [propext, Classical.choice, Quot.sound]
-sorryAx = absent
-date = 2026-09-03
+theorem-state anchor = PR #110 merge 07e0c845d128831b244b13503c9640b934bf4416
+validated theorem head = ca0c389827520e2005390637742389819dc97068
+validated theorem tree = f2e9985ac976c83ecfa7f5dbce64b1e0193680b0
+live main at sync start = 07e0c845d128831b244b13503c9640b934bf4416
+theorem-bearing merged through = PR #110
+RHRC #738 = SUCCESS
+Permansson #511 = SUCCESS
+CCM build = SUCCESS
+ExceptionalZero build = SUCCESS
+normalization/source firewall = SUCCESS
+forbidden-placeholder gate = SUCCESS
+#109 printed axiom surface = [propext, Classical.choice, Quot.sound]
+#110 promoted theorem-specific axiom surface = revalidated by this control-plane PR
 RH = OPEN
 ~~~
 
@@ -36,28 +38,48 @@ negative constrained Rayleigh eigenmode                     PROVED / #107
 successor-level predecessor nonnegativity                   PROVED / #107
 negative eigenmode not inherited                            PROVED / #107
 off-line zero -> first-bad spectral endpoint                PROVED / #107
+nonzero projection to 1D ambient successor shell            PROVED / #109
+exact even/odd parity normal spaces                         PROVED / #109
+exact parity KKT residual                                   PROVED / #109
+off-line zero -> shell + KKT first-bad endpoint             PROVED / #109
+Euclidean algebraic D-equivalence                           PROVED / #110
+even ambient commutator lift M(Du)=D(Mu)                    PROVED / #110
+explicit cubic odd channel g_N=P_-d³, nonzero for N>=2     PROVED / #110
+range(T_-D-DT_+) <= C g_N                                  PROVED / #110
+compressed parity defect finrank <=1                        PROVED / #110
+conjugated same-space parity defect finrank <=1              PROVED / #110
 
-nonzero orthogonal shell projection                         DERIVED / OPEN FORMALIZATION
+intrinsic successor-subtype predecessor/shell block          OPEN
 negative index one / unique negative eigenline              DERIVED / OPEN FORMALIZATION
-normal-space / Schur / KKT rigidity                         OPEN
+shifted scalar Schur/Feshbach identity                      OPEN
+exact rank-one factorization / defect functional            OPEN
+simultaneous parity-resonance classification                OPEN
 RH                                                           OPEN
 ~~~
 
 ## Current execution priority
 
-1. Internalize the centered predecessor image as a submodule of the successor parity subtype.
-2. Prove its intrinsic orthogonal complement has complex dimension one.
-3. Upgrade #107 `not inherited` to an explicit nonzero orthogonal shell projection.
-4. Prove negative index exactly one / unique negative eigenline if the Mathlib route stays cheap.
-5. Theorem-lock parity-specific normal spaces: even `span{1,d²}`; odd `span{d}`.
-6. Derive the parity KKT residual for the #107 negative eigenmode.
-7. Derive the safe shifted Schur/Feshbach identity using `A - lam I`, `lam < 0`.
-8. Compose the even KKT branch with the proved D/displacement commutator collapse and inspect
-   the projected `d³` defect.
+1. Internalize the centered predecessor image as a submodule of the successor parity subtype and construct the native one-dimensional shell complement.
+2. Decompose the first-bad negative eigenmode as predecessor part plus a nonzero shell coefficient.
+3. Prove `A - lam I` invertible from predecessor nonnegativity and `lam < 0`.
+4. Derive the safe shifted scalar Schur/Feshbach identity.
+5. Strengthen #110's one-line range theorem to an explicit rank-one factorization if the scalar defect functional can be isolated without artificial choices.
+6. Pull the cubic channel back through the algebraic D-equivalence and compare it with the first-bad successor shell.
+7. Theoremize the rank-one parity nullity-difference consequence.
+8. Package the common-resonance versus one-channel-resolvent dichotomy.
+9. Attack or classify simultaneous parity resonance at the first bad state.
 
-Uniqueness is useful but no longer a prerequisite for KKT/Schur: #107 already supplies a specific
-negative eigenmode with `lam < 0` and a non-inherited component.
+Negative-index-one is useful but is not a prerequisite for the shifted Schur or parity-defect calculations.
 
 The source-faithful G1-B1B/G1-final/S-NEG/G23 lane remains parallel.
+
+## Claim firewalls added after #110
+
+- #109's nonzero shell projection is PROVED, but the fully intrinsic successor-subtype block decomposition is not.
+- #110 proves `finrank <= 1`, not exact rank one.
+- `oddCubicCompressionVector N != 0` for `N>=2` does not imply the operator defect is nonzero.
+- the Euclidean D-equivalence is algebraic, not unitary or isometric.
+- the conjugated odd compression is therefore not automatically self-adjoint in the original even-sector inner product.
+- no equal-spectrum, interlacing, inertia, positivity, finite-to-infinite or RH theorem follows from the rank-one defect alone.
 
 **RH remains OPEN.**

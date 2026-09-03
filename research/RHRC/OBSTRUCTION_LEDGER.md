@@ -112,7 +112,6 @@ Roadmaps repeatedly diverged from predicted PR numbering as proof results compre
 
 **Consequence:** stable route documentation must use semantic work-package IDs (G1-B1B, G23, S-GEOM, S-NEG, etc.). PR numbers are historical execution references only.
 
-
 ## OBS-015 — source interface is not source negativity
 
 **Status:** PROJECT FIREWALL.
@@ -148,7 +147,6 @@ into a strict negative value of the independently defined source `QW`.
 
 G1-B1B/G1-final alone do not discharge this obstruction.
 
-
 ## OBS-016 — raw periodic approximation is not hard-window legality
 
 **Status:** PROJECT FIREWALL; PRIMARY R003 ESCAPE PROVED.
@@ -161,14 +159,13 @@ PR #91 proves uniform formula-level approximation by periodic finite localized F
 
 **Permanent warning:** this closes the R003 primary-route obligation only. Do not infer legality for unrelated raw periodic approximants or for the correction vector alone.
 
-
 ## OBS-017 — raw function-space norm is not Euclidean Rayleigh normalization
 
 **Status:** PROJECT FIREWALL; PRIMARY ESCAPE CLOSED BY PR #107.
 
-PR #96's raw norm remains distinct from the Euclidean/PiLp₂ norm. PR #98 closes the Euclidean carrier/quadratic bridge; PR #100 closes exact Euclidean N-flow; PR #107 now proves orthogonal parity compression, exact compressed/self agreement, compressed symmetry and a negative constrained Rayleigh eigenmode.
+PR #96's raw norm remains distinct from the Euclidean/PiLp₂ norm. PR #98 closes the Euclidean carrier/quadratic bridge; PR #100 closes exact Euclidean N-flow; PR #107 proves orthogonal parity compression, exact compressed/self agreement, compressed symmetry and a negative constrained Rayleigh eigenmode.
 
-**Permanent warning:** do not use the raw #96 unit vector as a Euclidean sphere theorem. #100 isometry still does not imply full compressed-operator intertwining.
+**Permanent warning:** do not use the raw #96 unit vector as a Euclidean sphere theorem. #100 isometry still does not imply full compressed-operator intertwining; #110 later proves only a rank-at-most-one parity defect, not exact compressed intertwining.
 
 ## OBS-018 — merged source presence is not compiler validation
 
@@ -184,14 +181,54 @@ A `.lean` file existing, appearing in a PR, passing the no-placeholder grep, or 
 
 The no-placeholder gate is syntactic hardening, not elaboration.
 
-
+PR #110 illustrates a distinct follow-on rule: compiler validity and production axiom promotion are separate checks. Its final head was in the successful `Zeta23.CCM` import/build closure, but the last repair removed module-local `#print axioms` commands. The theorems are PROVED by compiler/CI; promoted claim registration still requires exact `#check/#print axioms` coverage in `ClaimBindings.lean`.
 
 ## OBS-019 — one-dimensional successor shell is not an invariant negative line
 
-**Status:** PROJECT FIREWALL; #107 PARTIAL ESCAPE.
+**Status:** PROJECT FIREWALL; AMBIENT SHELL PROJECTION ESCAPED BY PR #109.
 
-#105 proves the successor parity shell has complex finrank one. #107 proves a negative successor eigenmode is not inherited from the predecessor. This does not prove the eigenmode lies purely in the shell, shell invariance, orthogonal D-transport, or a theoremized unique negative eigenline.
+#105 proves the successor parity shell has complex finrank one. #107 proves a negative successor eigenmode is not inherited from the predecessor. #109 upgrades this to a theorem-backed nonzero orthogonal projection of the negative eigenmode onto the already-proved **ambient Euclidean** successor shell.
 
-**DERIVED / OPEN FORMALIZATION:** the negative eigenmode has nonzero shell projection and codimension-one predecessor nonnegativity forces negative index at most one.
+What remains unproved:
 
-**Escape requirement:** internalize the predecessor image in the successor subtype, theorem-lock nonzero shell projection, and formalize negative index one if useful.
+- the eigenmode is purely shell;
+- the shell is invariant under the compressed canonical operator;
+- a fully intrinsic predecessor/shell decomposition inside the successor parity subtype;
+- D transports the shell orthogonally;
+- negative index exactly one / unique negative eigenline as a separately formalized theorem.
+
+**DERIVED / OPEN FORMALIZATION:** predecessor nonnegativity plus one-complex-dimensional complement and one negative eigenvalue strongly constrain the negative index, but do not silently promote uniqueness.
+
+**Escape requirement:** build the native successor-subtype block geometry and theoremize whichever negative-index/uniqueness consequence is actually needed by the scalar rigidity argument.
+
+## OBS-020 — rank-at-most-one parity defect is not unitary rank-one perturbation theory
+
+**Status:** PROJECT FIREWALL; ORIGIN PR #110.
+
+PR #110 proves, for positive aperture,
+
+```text
+range(T_- D - D T_+) <= C g_N
+finrank range(T_- D - D T_+) <= 1
+```
+
+with explicit `g_N = P_- d^3`, and after algebraic conjugation through the Euclidean D-equivalence,
+
+```text
+finrank range(E^-1 T_- E - T_+) <= 1.
+```
+
+It also proves `g_N != 0` for `N>=2`.
+
+This does **not** prove:
+
+- the defect map is nonzero;
+- exact rank one;
+- an explicit outer-product factorization with a nonzero functional;
+- D or E is unitary/isometric;
+- the conjugated odd compression is self-adjoint in the original even-sector inner product;
+- Hermitian rank-one interlacing, equal spectra, inertia transfer or positivity.
+
+**Consequence:** downstream work must either stay in algebraic rank/resolvent/determinant language or explicitly transport/prove the compatible metric before using self-adjoint perturbation theory.
+
+**Escape requirement:** isolate the defect functional, prove exact factorization/nonzeroness if true, and separately establish whatever metric compatibility a spectral perturbation argument requires.

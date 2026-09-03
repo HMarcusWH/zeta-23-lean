@@ -1,83 +1,110 @@
-# RHRC formal audit — merged through FIRST-BAD-SPECTRUM / PR #107
+# RHRC formal audit — merged through FIRST-BAD-RIGIDITY-C / PR #110
 
 > **RH remains OPEN.**
 
 ## Current merged authority
 
 ~~~text
-theorem-state anchor = PR #107 merge b7d1022e33e2177c5597d008f593d3684d0ec720
-validated theorem head = cfcf397cc8c15dbb368fbee3a161b8733061b770
-validated synthetic merge = 19cd290510fe4fb1d253522c29644ff3e4563c03
-validated theorem tree = 719b45162fd0814581759661f12eab16c46e1201
-live main = b7d1022e33e2177c5597d008f593d3684d0ec720
-theorem-bearing merged through = PR #107
-RHRC #717 = SUCCESS
-Permansson #490 = SUCCESS
-axioms = [propext, Classical.choice, Quot.sound]
-sorryAx = absent
-date = 2026-09-03
-RH = OPEN
-~~~
-
-## Exact PR #107 validation
-
-~~~text
-base = 26975c00c1ab099aaa03c8179ad8a1c37b129700
-final theorem head = cfcf397cc8c15dbb368fbee3a161b8733061b770
-synthetic merge tested = 19cd290510fe4fb1d253522c29644ff3e4563c03
-merge/main = b7d1022e33e2177c5597d008f593d3684d0ec720
-validated/merged theorem tree = 719b45162fd0814581759661f12eab16c46e1201
+theorem-state anchor = PR #110 merge 07e0c845d128831b244b13503c9640b934bf4416
+validated theorem head = ca0c389827520e2005390637742389819dc97068
+validated theorem tree = f2e9985ac976c83ecfa7f5dbce64b1e0193680b0
+live main at sync start = 07e0c845d128831b244b13503c9640b934bf4416
+theorem-bearing merged through = PR #110
+RHRC #738 = SUCCESS
+Permansson #511 = SUCCESS
 Lean = 4.33.0-rc2
 python RHRC suite = SUCCESS
 R003 normalization/source firewall = SUCCESS
 CCM build = SUCCESS
 ExceptionalZero build = SUCCESS
 forbidden-placeholder gate = SUCCESS
-Permansson #490 = SUCCESS
+#109 printed axiom surface = [propext, Classical.choice, Quot.sound]
+#110 promoted theorem-specific axiom surface = revalidated by this control-plane PR
+RH = OPEN
 ~~~
 
-The CI checkout log confirms the Lean job compiled the exact synthetic merge. The merged main
-commit has the same theorem tree.
+## Exact PR #110 validation
 
-## PR #107 formally validated surface
+~~~text
+base/main = 8a67b9e3824cff2f408c9fbd48c7ce8d26c5dcb8
+final theorem head = ca0c389827520e2005390637742389819dc97068
+merge/main = 07e0c845d128831b244b13503c9640b934bf4416
+validated/merged theorem tree = f2e9985ac976c83ecfa7f5dbce64b1e0193680b0
+RHRC #738 = SUCCESS
+Permansson #511 = SUCCESS
+python RHRC suite = SUCCESS
+R003 normalization/source firewall = SUCCESS
+CCM build = SUCCESS
+ExceptionalZero build = SUCCESS
+forbidden-placeholder gate = SUCCESS
+~~~
+
+The final #110 repair changed only proof shape: it isolated the star-projection equality before rewriting and kept the conjugated-defect proof at `LinearMap.ext` subtype level. The theorem statements were not weakened. Both repository workflows then passed on exact head `ca0c3898...`, and merged main has the identical theorem tree.
+
+## PR #109 formally validated surface
 
 **PROVED:**
-- `parityCompressedCanonicalCLM` / `parityCompressedCanonical`;
-- exact compressed/self inner-product bridge;
-- `parityCompressedCanonical_isSymmetric`;
-- `exists_negative_compressed_direction_of_parityBad`;
-- `exists_negative_eigenmode_of_parityBad`;
-- `re_inner_successor_nonnegative_on_centeredImage`;
-- `negative_eigenmode_not_centeredImage`;
-- `exists_firstBadParity_negativeEigenmode_of_offLine_zero` and existential wrapper.
+- `paritySuccShellProjection_ne_zero_of_not_embedded`;
+- `negative_eigenmode_paritySuccShell_projection_ne_zero`;
+- `re_inner_successor_nonnegative_on_embeddedPredecessor`;
+- exact even normal `(V+)ᗮ ∩ E+ = span{1,d²}`;
+- exact odd normal `(V-)ᗮ ∩ E- = span{d}`;
+- `parityKKTResidual_of_eigenmode`;
+- `exists_firstBadParity_shell_KKT_of_offLine_zero` and existential wrapper.
 
-Every printed #107 production theorem depends only on `[propext, Classical.choice, Quot.sound]`;
-`sorryAx` is absent.
+The successful implementation keeps the successor shell in the ambient Euclidean space. It does not yet theoremize a fully intrinsic successor-subtype block decomposition.
+
+## PR #110 formally validated surface
+
+**PROVED:**
+- Euclidean centered-index linear map and restriction `V_N^+ -> V_N^-`;
+- injectivity and, for `N>=1`, surjectivity / algebraic `LinearEquiv`;
+- arbitrary even compression residual in the exact even normal channel `span{1,d²}`;
+- exact Euclidean lift `M(Du)=D(Mu)` on the even constrained sector;
+- explicit odd cubic compression vector `g_N = P_- d³`;
+- `g_N != 0` for `N>=2`;
+- pointwise defect values are scalar multiples of `g_N`;
+- `range(T_- D - D T_+) <= C g_N`;
+- `finrank range(T_- D - D T_+) <= 1`;
+- after algebraic conjugation through D, the same-space parity defect has finrank at most one.
+
+The final #110 source did not retain its earlier module-local `#print axioms` lines. This control-plane PR restores theorem-specific `#check/#print axioms` coverage through `Zeta23/CCM/ClaimBindings.lean`; those outputs become promotion authority only after this PR's Lean gate succeeds.
 
 ## Current formal state
 
 ~~~text
 least bad parity + predecessor nonnegative + 1D shell         PROVED / #105
 parity-constrained compression                                PROVED / #107
-compressed symmetry/self-form                                 PROVED / #107
 negative constrained eigenmode                                PROVED / #107
 negative first-bad eigenmode not inherited                    PROVED / #107
-off-line zero -> first-bad negative spectral endpoint         PROVED / #107
+nonzero ambient successor-shell projection                    PROVED / #109
+exact parity normal spaces                                    PROVED / #109
+exact parity KKT residual                                     PROVED / #109
+off-line zero -> first-bad shell + KKT endpoint               PROVED / #109
+Euclidean algebraic D-equivalence                             PROVED / #110
+explicit cubic odd compression channel                        PROVED / #110
+compressed parity intertwining defect finrank <= 1            PROVED / #110
+conjugated same-space parity defect finrank <= 1              PROVED / #110
 
-nonzero shell projection                                      DERIVED / OPEN FORMALIZATION
+intrinsic successor-subtype block decomposition               OPEN
 negative index one / unique negative eigenline                DERIVED / OPEN FORMALIZATION
-parity-specific normal-space/KKT                              OPEN
+exact nonzero rank-one factorization                          OPEN
 shifted scalar Schur/Feshbach rigidity                        OPEN
+simultaneous parity-resonance exclusion/classification        OPEN
 RH                                                             OPEN
 ~~~
 
 ## Permanent firewalls
 
-- `v ∉ predecessorImage` does not imply a pure shell vector.
-- the one-dimensional shell is not proved invariant.
-- D is not unitary and does not automatically transport orthogonal shells.
-- use `A - lam I` for `lam < 0`, not `A⁻¹`.
-- negative-index-one is derived but not yet theorem-locked.
-- no KKT contradiction, positivity theorem, finite-to-infinite theorem or RH theorem exists.
+- #109 proves nonzero projection to the ambient one-dimensional shell, not a pure-shell eigenvector or shell invariance.
+- the native successor-subtype predecessor/shell decomposition remains open.
+- D is algebraic, not unitary or isometric.
+- `finrank <= 1` does not prove the defect is nonzero or has rank exactly one.
+- `g_N != 0` does not prove the scalar defect functional is nonzero.
+- algebraic same-space conjugation does not automatically preserve self-adjointness in the original even-sector inner product.
+- equal spectra, Hermitian rank-one interlacing and inertia transport are not proved.
+- use `A - lam I` for `lam < 0`, not `A⁻¹` at zero.
+- negative-index-one remains derived, not theorem-locked.
+- no Schur/Feshbach contradiction, positivity theorem, finite-to-infinite theorem or RH theorem exists.
 
 **RH remains OPEN.**

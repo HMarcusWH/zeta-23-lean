@@ -23,6 +23,9 @@ import Zeta23.CCM.ConstrainedParity
 import Zeta23.CCM.ConstrainedParityGeometry
 import Zeta23.CCM.ParityBadness
 import Zeta23.CCM.ConstrainedParitySpectrum
+import Zeta23.CCM.FirstBadRigidity
+import Zeta23.CCM.ParityNormalSpace
+import Zeta23.CCM.ParityCompressionRankOne
 import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.DictionaryRHSIdentity
 import Zeta23.ExceptionalZero.DisplacementTransfer
@@ -38,6 +41,7 @@ import Zeta23.ExceptionalZero.EuclideanConstrainedObstruction
 import Zeta23.ExceptionalZero.NestedEuclideanObstruction
 import Zeta23.ExceptionalZero.ParityFirstBadObstruction
 import Zeta23.ExceptionalZero.FirstBadParitySpectrum
+import Zeta23.ExceptionalZero.FirstBadRigidity
 
 /-!
 R003 promoted-claim completeness is machine-checked by research/RHRC/tools/promoted_binding_lint.py against research/RHRC/R003_PROMOTED_BINDINGS.json and CLAIM_REGISTRY.json. Supporting #check declarations may exist without registry promotion; every PROVED_UNCONDITIONAL R003 registry theorem must have both #check and #print axioms here.
@@ -520,3 +524,39 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.ExceptionalZero.exists_firstBadParity_negativeEigenmode_of_offLine_zero
 #check Zeta23.ExceptionalZero.exists_firstBadParity_negativeEigenmode_of_exists_offLine_zero
 #print axioms Zeta23.ExceptionalZero.exists_firstBadParity_negativeEigenmode_of_exists_offLine_zero
+
+
+#check Zeta23.CCM.paritySuccShellProjection_ne_zero_of_not_embedded
+#print axioms Zeta23.CCM.paritySuccShellProjection_ne_zero_of_not_embedded
+#check Zeta23.CCM.negative_eigenmode_paritySuccShell_projection_ne_zero
+#print axioms Zeta23.CCM.negative_eigenmode_paritySuccShell_projection_ne_zero
+#check Zeta23.CCM.re_inner_successor_nonnegative_on_embeddedPredecessor
+#print axioms Zeta23.CCM.re_inner_successor_nonnegative_on_embeddedPredecessor
+#check Zeta23.CCM.evenBoundaryFlat_normal_eq_evenNormalSubspace
+#print axioms Zeta23.CCM.evenBoundaryFlat_normal_eq_evenNormalSubspace
+#check Zeta23.CCM.oddBoundaryFlat_normal_eq_oddNormalSubspace
+#print axioms Zeta23.CCM.oddBoundaryFlat_normal_eq_oddNormalSubspace
+#check Zeta23.CCM.parityKKTResidual_of_eigenmode
+#print axioms Zeta23.CCM.parityKKTResidual_of_eigenmode
+#check Zeta23.ExceptionalZero.exists_firstBadParity_shell_KKT_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_firstBadParity_shell_KKT_of_offLine_zero
+#check Zeta23.ExceptionalZero.exists_firstBadParity_shell_KKT_of_exists_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_firstBadParity_shell_KKT_of_exists_offLine_zero
+
+
+#check Zeta23.CCM.euclideanEvenOddBoundaryFlatLinearEquiv
+#print axioms Zeta23.CCM.euclideanEvenOddBoundaryFlatLinearEquiv
+#check Zeta23.CCM.evenCompressionResidual_mem_evenNormalSubspace
+#print axioms Zeta23.CCM.evenCompressionResidual_mem_evenNormalSubspace
+#check Zeta23.CCM.canonicalSourceMatrix_toEuclideanLin_commutes_index_on_even
+#print axioms Zeta23.CCM.canonicalSourceMatrix_toEuclideanLin_commutes_index_on_even
+#check Zeta23.CCM.oddCubicCompressionVector_ne_zero
+#print axioms Zeta23.CCM.oddCubicCompressionVector_ne_zero
+#check Zeta23.CCM.exists_evenOddCompressedIntertwiningDefect_eq_smul_cubic
+#print axioms Zeta23.CCM.exists_evenOddCompressedIntertwiningDefect_eq_smul_cubic
+#check Zeta23.CCM.range_evenOddCompressedIntertwiningDefect_le
+#print axioms Zeta23.CCM.range_evenOddCompressedIntertwiningDefect_le
+#check Zeta23.CCM.finrank_range_evenOddCompressedIntertwiningDefect_le_one
+#print axioms Zeta23.CCM.finrank_range_evenOddCompressedIntertwiningDefect_le_one
+#check Zeta23.CCM.finrank_range_conjugatedParityCompressionDefect_le_one
+#print axioms Zeta23.CCM.finrank_range_conjugatedParityCompressionDefect_le_one

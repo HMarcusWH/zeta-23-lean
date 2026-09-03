@@ -223,6 +223,22 @@
     {
       "id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
       "theorem": "Zeta23.ExceptionalZero.exists_firstBadParity_negativeEigenmode_of_offLine_zero"
+    },
+    {
+      "id": "R003_FIRST_BAD_SHELL_PROJECTION",
+      "theorem": "Zeta23.CCM.negative_eigenmode_paritySuccShell_projection_ne_zero"
+    },
+    {
+      "id": "R003_PARITY_NORMAL_KKT",
+      "theorem": "Zeta23.CCM.parityKKTResidual_of_eigenmode"
+    },
+    {
+      "id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "theorem": "Zeta23.ExceptionalZero.exists_firstBadParity_shell_KKT_of_offLine_zero"
+    },
+    {
+      "id": "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
+      "theorem": "Zeta23.CCM.finrank_range_conjugatedParityCompressionDefect_le_one"
     }
   ]
 }
