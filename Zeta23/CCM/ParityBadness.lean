@@ -171,12 +171,9 @@ theorem quadraticForm_add_add_sub
       2 * quadraticForm A u + 2 * quadraticForm A v := by
   unfold quadraticForm
   simp_rw [Finset.mul_sum]
-  rw [← Finset.sum_add_distrib]
-  rw [← Finset.sum_add_distrib]
+  simp_rw [← Finset.sum_add_distrib]
   apply Finset.sum_congr rfl
   intro i hi
-  rw [← Finset.sum_add_distrib]
-  rw [← Finset.sum_add_distrib]
   apply Finset.sum_congr rfl
   intro j hj
   simp only [Pi.add_apply, Pi.sub_apply, map_add, map_sub, starRingEnd_apply]
