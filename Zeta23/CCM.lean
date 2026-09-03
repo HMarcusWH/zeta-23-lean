@@ -81,9 +81,12 @@ import Zeta23.CCM.NestedFinite
 import Zeta23.CCM.ConstrainedParity
 import Zeta23.CCM.ConstrainedParityGeometry
 import Zeta23.CCM.ParityBadness
+import Zeta23.CCM.GlobalFirstBad
 import Zeta23.CCM.ConstrainedParitySpectrum
 import Zeta23.CCM.FirstBadRigidity
+import Zeta23.CCM.FirstBadIntrinsicBlock
 import Zeta23.CCM.ParityNormalSpace
 import Zeta23.CCM.ParityCompressionRankOne
+import Zeta23.CCM.ParityCubicFactorization
 import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.ClaimBindings
