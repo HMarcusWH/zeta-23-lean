@@ -179,14 +179,14 @@ theorem exists_negative_eigenmode_of_parityBad
     have habs :=
       ContinuousLinearMap.rayleighQuotient_le_norm
         (𝕜 := ℂ) Tc (z : V)
-    have hray :
-        ContinuousLinearMap.rayleighQuotient Tc (z : V) =
-          Complex.re (inner ℂ (T z) z) / ‖(z : V)‖ ^ 2 := by
-      rw [ContinuousLinearMap.rayleighQuotient,
-        ContinuousLinearMap.reApplyInnerSelf_apply]
-      rfl
-    rw [hray] at habs
-    exact neg_le_of_abs_le habs
+    have habs' :
+        |Complex.re (inner ℂ (Tc (z : V)) (z : V)) / ‖(z : V)‖ ^ 2| ≤
+          ‖Tc‖ := by
+      simpa only [ContinuousLinearMap.rayleighQuotient,
+        ContinuousLinearMap.reApplyInnerSelf_apply] using habs
+    have hTcT : Tc (z : V) = T z := rfl
+    rw [hTcT] at habs'
+    exact neg_le_of_abs_le habs'
   have hlamle :
       lam ≤ Complex.re (inner ℂ (T x) x) / ‖(x : V)‖ ^ 2 := by
     exact ciInf_le hbdd ⟨x, hxne⟩
@@ -203,7 +203,7 @@ theorem exists_negative_eigenmode_of_parityBad
   have hlamneg : lam < 0 := lt_of_le_of_lt hlamle hrqneg
   have hsym : LinearMap.IsSymmetric (𝕜 := ℂ) (E := V) T := by
     simpa only [T] using parityCompressedCanonical_isSymmetric p L N
-  have hlameig : HasEigenvalue T (lam : ℂ) := by
+  have hlameig : Module.End.HasEigenvalue T (lam : ℂ) := by
     simpa only [lam] using hsym.hasEigenvalue_iInf_of_finiteDimensional
   obtain ⟨v, hv⟩ := hlameig.exists_hasEigenvector
   exact ⟨lam, hlamneg, v, hv.2, hv.apply_eq_smul⟩
@@ -259,8 +259,14 @@ theorem negative_eigenmode_not_centeredImage
     have hcomp :
         Complex.re
           (inner ℂ (parityCompressedCanonical p L (N + 1) v) v) < 0 := by
-      rw [hveig, inner_smul_ofReal_left, inner_self_eq_norm_sq_to_K]
-      simpa [mul_comm] using
+      rw [hveig]
+      have hinner :
+          inner ℂ ((lam : ℂ) • v) v =
+            (lam : ℂ) * inner ℂ v v := by
+        simpa using
+          (inner_smul_left (𝕜 := ℂ) v v (r := (lam : ℂ)))
+      rw [hinner, inner_self_eq_norm_sq_to_K, Complex.re_ofReal_mul]
+      simpa using
         mul_neg_of_neg_of_pos hlam (show 0 < ‖v‖ ^ 2 by positivity)
     rw [re_inner_parityCompressedCanonical_self] at hcomp
     exact hcomp
