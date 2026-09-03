@@ -110,13 +110,22 @@ theorem euclideanEvenToOddIndexLinearMap_injective
     ⟨(EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ)
         (y : EuclideanSpace ℂ (Fin (2 * N + 1))),
       (mem_euclideanEvenBoundaryFlatSubspace_iff N _).mp y.property⟩
-  apply congrArg Subtype.val
-  apply evenToOddIndexLinearMap_injective N
-  apply Subtype.ext
   have hxy' := congrArg Subtype.val hxy
+  rw [coe_euclideanEvenToOddIndexLinearMap,
+    coe_euclideanEvenToOddIndexLinearMap] at hxy'
   have hcoords := congrArg
     (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) hxy'
-  simpa [xr, yr, euclideanIndexLinearMap_coordinates] using hcoords
+  rw [euclideanIndexLinearMap_coordinates,
+    euclideanIndexLinearMap_coordinates] at hcoords
+  have hraw :
+      evenToOddIndexLinearMap N xr =
+        evenToOddIndexLinearMap N yr := by
+    apply Subtype.ext
+    exact hcoords
+  have hxyr := evenToOddIndexLinearMap_injective N hraw
+  change (xr : Fin (2 * N + 1) → ℂ) =
+    (yr : Fin (2 * N + 1) → ℂ)
+  exact congrArg Subtype.val hxyr
 
 /-- The Euclidean D-restriction is surjective, by transport of the explicit
 raw odd primitive. -/
@@ -132,16 +141,25 @@ theorem euclideanEvenToOddIndexLinearMap_surjective
   let x0 : EuclideanSpace ℂ (Fin (2 * N + 1)) :=
     (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ).symm
       (xr : Fin (2 * N + 1) → ℂ)
+  have hxcoords :
+      (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x0 =
+        (xr : Fin (2 * N + 1) → ℂ) := by
+    exact
+      (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ).apply_symm_apply
+        (xr : Fin (2 * N + 1) → ℂ)
   have hx0 : x0 ∈ euclideanEvenBoundaryFlatSubspace N := by
-    rw [mem_euclideanEvenBoundaryFlatSubspace_iff]
-    simpa [x0] using xr.property
-  let x : euclideanEvenBoundaryFlatSubspace N := ⟨x0, hx0⟩
-  refine ⟨x, ?_⟩
+    rw [mem_euclideanEvenBoundaryFlatSubspace_iff, hxcoords]
+    exact xr.property
+  refine ⟨⟨x0, hx0⟩, ?_⟩
   apply Subtype.ext
   apply (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ).injective
   rw [coe_euclideanEvenToOddIndexLinearMap,
-    euclideanIndexLinearMap_coordinates]
-  simpa [x, x0, yr] using congrArg Subtype.val hxr
+    euclideanIndexLinearMap_coordinates, hxcoords]
+  have hxrval := congrArg Subtype.val hxr
+  change
+    indexMatrix N *ᵥ (xr : Fin (2 * N + 1) → ℂ) =
+      (yr : Fin (2 * N + 1) → ℂ) at hxrval
+  simpa [yr] using hxrval
 
 /-- Algebraic Euclidean D-equivalence.  This is deliberately not asserted to
 be an isometry or unitary equivalence. -/
@@ -243,7 +261,7 @@ theorem exists_evenCompressionResidual_coefficients
     ∃ a0 a2 : ℂ,
       (canonicalSourceMatrix L N).toEuclideanLin
           (v : EuclideanSpace ℂ (Fin (2 * N + 1))) =
-        (parityCompressedCanonical .even L N v :
+        (evenCompressedCanonical L N v :
           EuclideanSpace ℂ (Fin (2 * N + 1))) +
         a0 • centeredPowerVector N 0 +
         a2 • centeredPowerVector N 2 := by
@@ -258,7 +276,7 @@ theorem exists_evenCompressionResidual_coefficients
   dsimp [parityCompressionResidual] at hyz
   have hadd := congrArg
     (fun t =>
-      t + (parityCompressedCanonical .even L N v :
+      t + (evenCompressedCanonical L N v :
         EuclideanSpace ℂ (Fin (2 * N + 1)))) hyz.symm
   simpa [add_assoc, add_left_comm, add_comm] using hadd
 
@@ -344,15 +362,29 @@ theorem oddCubicCompressionVector_ne_zero
   rw [h1] at h2
   norm_num at h2
 
+/-- Explicitly typed even parity compression. -/
+def evenCompressedCanonical
+    (L : ℝ) (N : ℕ) :
+    euclideanEvenBoundaryFlatSubspace N →ₗ[ℂ]
+      euclideanEvenBoundaryFlatSubspace N := by
+  simpa using parityCompressedCanonical .even L N
+
+/-- Explicitly typed odd parity compression. -/
+def oddCompressedCanonical
+    (L : ℝ) (N : ℕ) :
+    euclideanOddBoundaryFlatSubspace N →ₗ[ℂ]
+      euclideanOddBoundaryFlatSubspace N := by
+  simpa using oddCompressedCanonical L N
+
 /-- Failure of compressed D-intertwining. -/
 def evenOddCompressedIntertwiningDefect
     (L : ℝ) (N : ℕ) :
     euclideanEvenBoundaryFlatSubspace N →ₗ[ℂ]
       euclideanOddBoundaryFlatSubspace N :=
-  (parityCompressedCanonical .odd L N).comp
+  (oddCompressedCanonical L N).comp
       (euclideanEvenToOddIndexLinearMap N) -
     (euclideanEvenToOddIndexLinearMap N).comp
-      (parityCompressedCanonical .even L N)
+      (evenCompressedCanonical L N)
 
 /-- Pointwise defect formula: every defect value is a scalar multiple of the
 single cubic odd compression vector. -/
@@ -363,15 +395,23 @@ theorem exists_evenOddCompressedIntertwiningDefect_eq_smul_cubic
     ∃ a2 : ℂ,
       evenOddCompressedIntertwiningDefect L N v =
         a2 • oddCubicCompressionVector N := by
-  obtain ⟨a0, a2, hres⟩ :=
+  obtain ⟨a0, a2, hres0⟩ :=
     exists_evenCompressionResidual_coefficients L N v
+  have hres :
+      (canonicalSourceMatrix L N).toEuclideanLin
+          (v : EuclideanSpace ℂ (Fin (2 * N + 1))) =
+        (evenCompressedCanonical L N v :
+          EuclideanSpace ℂ (Fin (2 * N + 1))) +
+        a0 • centeredPowerVector N 0 +
+        a2 • centeredPowerVector N 2 := by
+    simpa [evenCompressedCanonical] using hres0
   have hDres := congrArg (euclideanIndexLinearMap N) hres
   have hDres' :
       euclideanIndexLinearMap N
           ((canonicalSourceMatrix L N).toEuclideanLin
             (v : EuclideanSpace ℂ (Fin (2 * N + 1)))) =
         euclideanIndexLinearMap N
-            (parityCompressedCanonical .even L N v :
+            (evenCompressedCanonical L N v :
               EuclideanSpace ℂ (Fin (2 * N + 1))) +
           a0 • centeredPowerVector N 1 +
           a2 • centeredPowerVector N 3 := by
@@ -384,7 +424,7 @@ theorem exists_evenOddCompressedIntertwiningDefect_eq_smul_cubic
               euclideanOddBoundaryFlatSubspace N) :
             EuclideanSpace ℂ (Fin (2 * N + 1))) =
         euclideanIndexLinearMap N
-            (parityCompressedCanonical .even L N v :
+            (evenCompressedCanonical L N v :
               EuclideanSpace ℂ (Fin (2 * N + 1))) +
           a0 • centeredPowerVector N 1 +
           a2 • centeredPowerVector N 3 := by
@@ -400,10 +440,10 @@ theorem exists_evenOddCompressedIntertwiningDefect_eq_smul_cubic
   let V := euclideanOddBoundaryFlatSubspace N
   have hproj := congrArg V.orthogonalProjectionOnto hMD
   have hproj' :
-      parityCompressedCanonical .odd L N
+      oddCompressedCanonical L N
           (euclideanEvenToOddIndexLinearMap N v) =
         euclideanEvenToOddIndexLinearMap N
-            (parityCompressedCanonical .even L N v) +
+            (evenCompressedCanonical L N v) +
           a2 • oddCubicCompressionVector N := by
     change
       V.orthogonalProjectionOnto
@@ -412,18 +452,28 @@ theorem exists_evenOddCompressedIntertwiningDefect_eq_smul_cubic
                 euclideanOddBoundaryFlatSubspace N) :
               EuclideanSpace ℂ (Fin (2 * N + 1)))) =
         euclideanEvenToOddIndexLinearMap N
-            (parityCompressedCanonical .even L N v) +
+            (evenCompressedCanonical L N v) +
           a2 • oddCubicCompressionVector N
     rw [hMD]
     simp only [map_add, map_smul]
-    rw [Submodule.orthogonalProjectionOnto_mem_subspace_eq_self, hp1]
+    have hindex :
+        euclideanIndexLinearMap N
+            (evenCompressedCanonical L N v :
+              EuclideanSpace ℂ (Fin (2 * N + 1))) =
+          ((euclideanEvenToOddIndexLinearMap N
+              (evenCompressedCanonical L N v) :
+                euclideanOddBoundaryFlatSubspace N) :
+            EuclideanSpace ℂ (Fin (2 * N + 1))) :=
+      (coe_euclideanEvenToOddIndexLinearMap N
+        (evenCompressedCanonical L N v)).symm
+    rw [hindex, Submodule.orthogonalProjectionOnto_mem_subspace_eq_self, hp1]
     simp [oddCubicCompressionVector, add_assoc]
   refine ⟨a2, ?_⟩
   change
-    parityCompressedCanonical .odd L N
+    oddCompressedCanonical L N
         (euclideanEvenToOddIndexLinearMap N v) -
       euclideanEvenToOddIndexLinearMap N
-        (parityCompressedCanonical .even L N v) =
+        (evenCompressedCanonical L N v) =
       a2 • oddCubicCompressionVector N
   rw [hproj']
   abel
@@ -476,7 +526,7 @@ def oddCompressedCanonicalConjugated
     euclideanEvenBoundaryFlatSubspace N →ₗ[ℂ]
       euclideanEvenBoundaryFlatSubspace N :=
   (euclideanEvenOddBoundaryFlatLinearEquiv N).symm.toLinearMap.comp
-    ((parityCompressedCanonical .odd L N).comp
+    ((oddCompressedCanonical L N).comp
       (euclideanEvenOddBoundaryFlatLinearEquiv N).toLinearMap)
 
 /-- Same-space defect after conjugating the odd compression through D. -/
@@ -485,7 +535,7 @@ def conjugatedParityCompressionDefect
     euclideanEvenBoundaryFlatSubspace N →ₗ[ℂ]
       euclideanEvenBoundaryFlatSubspace N :=
   oddCompressedCanonicalConjugated L N -
-    parityCompressedCanonical .even L N
+    evenCompressedCanonical L N
 
 /-- The conjugated same-space parity defect also has finrank at most one. -/
 theorem finrank_range_conjugatedParityCompressionDefect_le_one
@@ -499,9 +549,13 @@ theorem finrank_range_conjugatedParityCompressionDefect_le_one
       conjugatedParityCompressionDefect L N =
         E.symm.toLinearMap.comp F := by
     ext v
-    simp [conjugatedParityCompressionDefect,
-      oddCompressedCanonicalConjugated,
-      evenOddCompressedIntertwiningDefect, E, F]
+    change
+      E.symm (oddCompressedCanonical L N (E v)) -
+          evenCompressedCanonical L N v =
+        E.symm
+          (oddCompressedCanonical L N (E v) -
+            E (evenCompressedCanonical L N v))
+    rw [map_sub, E.symm_apply_apply]
   rw [hdef]
   have hrange :
       LinearMap.range (E.symm.toLinearMap.comp F) ≤
