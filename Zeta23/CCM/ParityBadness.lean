@@ -81,14 +81,20 @@ theorem centeredZeroExtend_mem_parityBoundaryFlatSubspace
   | even =>
       rcases hu with ⟨hflat, heven⟩
       refine ⟨centeredZeroExtend_mem_boundaryFlatSubspace hNM hflat, ?_⟩
-      rw [mem_evenCoefficientSubspace_iff] at heven ⊢
-      rw [← centeredZeroExtend_reverseCoefficients hNM, heven]
+      have heven' : reverseCoefficients N u = u :=
+        (mem_evenCoefficientSubspace_iff N u).1 heven
+      apply (mem_evenCoefficientSubspace_iff M _).2
+      rw [← centeredZeroExtend_reverseCoefficients hNM, heven']
   | odd =>
       rcases hu with ⟨hflat, hodd⟩
       refine ⟨centeredZeroExtend_mem_boundaryFlatSubspace hNM hflat, ?_⟩
-      rw [mem_oddCoefficientSubspace_iff] at hodd ⊢
-      rw [← centeredZeroExtend_reverseCoefficients hNM, hodd]
-      simp
+      have hodd' : reverseCoefficients N u = -u :=
+        (mem_oddCoefficientSubspace_iff N u).1 hodd
+      apply (mem_oddCoefficientSubspace_iff M _).2
+      rw [← centeredZeroExtend_reverseCoefficients hNM, hodd']
+      change centeredZeroExtendLinearMap hNM (-u) =
+        -centeredZeroExtendLinearMap hNM u
+      exact (centeredZeroExtendLinearMap hNM).map_neg u
 
 theorem euclideanCenteredZeroExtend_mem_euclideanParityBoundaryFlatSubspace
     (p : ReversalParity)
