@@ -183,6 +183,20 @@ theorem euclideanIndexLinearMap_centeredPowerVector
   rw [indexMatrix_mulVec_apply]
   simp [centeredPowerVector_apply, pow_succ, mul_comm]
 
+/-- Explicitly typed even parity compression. -/
+def evenCompressedCanonical
+    (L : ℝ) (N : ℕ) :
+    euclideanEvenBoundaryFlatSubspace N →ₗ[ℂ]
+      euclideanEvenBoundaryFlatSubspace N := by
+  simpa using parityCompressedCanonical .even L N
+
+/-- Explicitly typed odd parity compression. -/
+def oddCompressedCanonical
+    (L : ℝ) (N : ℕ) :
+    euclideanOddBoundaryFlatSubspace N →ₗ[ℂ]
+      euclideanOddBoundaryFlatSubspace N := by
+  simpa using parityCompressedCanonical .odd L N
+
 /-- Arbitrary compression residual, before specializing to an eigenmode. -/
 def parityCompressionResidual
     (p : ReversalParity) (L : ℝ) (N : ℕ)
@@ -361,20 +375,6 @@ theorem oddCubicCompressionVector_ne_zero
   simp [centeredPowerVector_apply, hi1, hi2, smul_eq_mul] at h1 h2
   rw [h1] at h2
   norm_num at h2
-
-/-- Explicitly typed even parity compression. -/
-def evenCompressedCanonical
-    (L : ℝ) (N : ℕ) :
-    euclideanEvenBoundaryFlatSubspace N →ₗ[ℂ]
-      euclideanEvenBoundaryFlatSubspace N := by
-  simpa using parityCompressedCanonical .even L N
-
-/-- Explicitly typed odd parity compression. -/
-def oddCompressedCanonical
-    (L : ℝ) (N : ℕ) :
-    euclideanOddBoundaryFlatSubspace N →ₗ[ℂ]
-      euclideanOddBoundaryFlatSubspace N := by
-  simpa using oddCompressedCanonical L N
 
 /-- Failure of compressed D-intertwining. -/
 def evenOddCompressedIntertwiningDefect
