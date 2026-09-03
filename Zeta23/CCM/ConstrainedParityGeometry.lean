@@ -66,7 +66,13 @@ theorem evenPart_mem_boundaryFlatSubspace
       (1 / 2 : ℂ) • (u + reverseCoefficients N u) ∈
         boundaryFlatSubspace N :=
     (boundaryFlatSubspace N).smul_mem (1 / 2 : ℂ) hadd
-  simpa [evenPart, reverseCoefficients, Pi.smul_apply, smul_eq_mul] using hsmul
+  have heq :
+      evenPart N u =
+        (1 / 2 : ℂ) • (u + reverseCoefficients N u) := by
+    ext i
+    simp [evenPart, reverseCoefficients, Pi.smul_apply, smul_eq_mul]
+  rw [heq]
+  exact hsmul
 
 theorem oddPart_mem_boundaryFlatSubspace
     {N : ℕ} {u : Fin (2 * N + 1) → ℂ}
@@ -81,23 +87,29 @@ theorem oddPart_mem_boundaryFlatSubspace
       (1 / 2 : ℂ) • (u - reverseCoefficients N u) ∈
         boundaryFlatSubspace N :=
     (boundaryFlatSubspace N).smul_mem (1 / 2 : ℂ) hsub
-  simpa [oddPart, reverseCoefficients, Pi.smul_apply, smul_eq_mul] using hsmul
+  have heq :
+      oddPart N u =
+        (1 / 2 : ℂ) • (u - reverseCoefficients N u) := by
+    ext i
+    simp [oddPart, reverseCoefficients, Pi.smul_apply, smul_eq_mul]
+  rw [heq]
+  exact hsmul
 
 theorem evenPart_mem_evenBoundaryFlatSubspace
     {N : ℕ} {u : Fin (2 * N + 1) → ℂ}
     (hu : u ∈ boundaryFlatSubspace N) :
     evenPart N u ∈ evenBoundaryFlatSubspace N := by
   refine ⟨evenPart_mem_boundaryFlatSubspace hu, ?_⟩
-  rw [mem_evenCoefficientSubspace_iff]
-  exact reverseCoefficients_evenPart N u
+  exact (mem_evenCoefficientSubspace_iff N (evenPart N u)).2
+    (reverseCoefficients_evenPart N u)
 
 theorem oddPart_mem_oddBoundaryFlatSubspace
     {N : ℕ} {u : Fin (2 * N + 1) → ℂ}
     (hu : u ∈ boundaryFlatSubspace N) :
     oddPart N u ∈ oddBoundaryFlatSubspace N := by
   refine ⟨oddPart_mem_boundaryFlatSubspace hu, ?_⟩
-  rw [mem_oddCoefficientSubspace_iff]
-  exact reverseCoefficients_oddPart N u
+  exact (mem_oddCoefficientSubspace_iff N (oddPart N u)).2
+    (reverseCoefficients_oddPart N u)
 
 /-- Even and odd constrained sectors meet only at zero. -/
 theorem evenBoundaryFlatSubspace_inf_oddBoundaryFlatSubspace
@@ -114,12 +126,19 @@ theorem evenBoundaryFlatSubspace_inf_oddBoundaryFlatSubspace
     have huz : u = 0 := by
       have h : u = -u := hre.symm.trans hro
       ext i
-      have hi := congrFun h i
-      simp only [Pi.neg_apply, Pi.zero_apply]
-      linear_combination (1 / 2 : ℂ) * hi
+      have hi : u i = -u i := by
+        simpa only [Pi.neg_apply] using congrFun h i
+      have hsum : u i + u i = 0 :=
+        (eq_neg_iff_add_eq_zero.mp hi)
+      have htwo : (2 : ℂ) * u i = 0 := by
+        simpa [two_mul] using hsum
+      exact (mul_eq_zero.mp htwo).resolve_left (by norm_num)
     simpa [huz]
   · intro hu
-    simpa using hu
+    have huz : u = 0 := by simpa using hu
+    subst u
+    exact ⟨(evenBoundaryFlatSubspace N).zero_mem,
+      (oddBoundaryFlatSubspace N).zero_mem⟩
 
 /-- The full boundary-flat sector is the direct algebraic sum of its two
 reversal parity sectors. -/
@@ -132,11 +151,20 @@ theorem evenBoundaryFlatSubspace_sup_oddBoundaryFlatSubspace
   · intro u hu
     have he := evenPart_mem_evenBoundaryFlatSubspace hu
     have ho := oddPart_mem_oddBoundaryFlatSubspace hu
+    have he' :
+        evenPart N u ∈
+          evenBoundaryFlatSubspace N ⊔ oddBoundaryFlatSubspace N :=
+      (show evenBoundaryFlatSubspace N ≤
+        evenBoundaryFlatSubspace N ⊔ oddBoundaryFlatSubspace N from le_sup_left) he
+    have ho' :
+        oddPart N u ∈
+          evenBoundaryFlatSubspace N ⊔ oddBoundaryFlatSubspace N :=
+      (show oddBoundaryFlatSubspace N ≤
+        evenBoundaryFlatSubspace N ⊔ oddBoundaryFlatSubspace N from le_sup_right) ho
     have hsum :
         evenPart N u + oddPart N u ∈
           evenBoundaryFlatSubspace N ⊔ oddBoundaryFlatSubspace N :=
-      (evenBoundaryFlatSubspace N ⊔ oddBoundaryFlatSubspace N).add_mem
-        (le_sup_left he) (le_sup_right ho)
+      (evenBoundaryFlatSubspace N ⊔ oddBoundaryFlatSubspace N).add_mem he' ho'
     simpa using hsum
 
 @[simp] theorem centeredIndex_eq_zero_iff
@@ -197,7 +225,17 @@ def evenToOddIndexLinearMap
         simp [centeredMoment]
       rw [hneg] at hp
       norm_num at hp
-      linear_combination (1 / 2 : ℂ) * hp
+      let m := centeredMoment N 2 w
+      have hpm : -m = m := by simpa [m] using hp
+      have hsum : m + m = 0 := by
+        calc
+          m + m = -m + m := by rw [hpm]
+          _ = 0 := by ring
+      have htwo : (2 : ℂ) * m = 0 := by
+        simpa [two_mul] using hsum
+      have hm : m = 0 :=
+        (mul_eq_zero.mp htwo).resolve_left (by norm_num)
+      simpa [m] using hm
     have hwflat : w ∈ boundaryFlatSubspace N := by
       rw [mem_boundaryFlatSubspace_iff]
       exact ⟨hw0, hw1, hw2⟩
@@ -218,11 +256,18 @@ theorem evenToOddIndexLinearMap_injective
     Function.Injective (evenToOddIndexLinearMap N) := by
   intro u v huv
   apply Subtype.ext
+  have huv_val :
+      ((evenToOddIndexLinearMap N u : oddBoundaryFlatSubspace N) :
+        Fin (2 * N + 1) → ℂ) =
+      ((evenToOddIndexLinearMap N v : oddBoundaryFlatSubspace N) :
+        Fin (2 * N + 1) → ℂ) :=
+    congrArg (fun z : oddBoundaryFlatSubspace N =>
+      (z : Fin (2 * N + 1) → ℂ)) huv
   have hD :
       indexMatrix N *ᵥ ((u : Fin (2 * N + 1) → ℂ) -
         (v : Fin (2 * N + 1) → ℂ)) = 0 := by
     ext i
-    have hi := congrArg (fun z => (z : Fin (2 * N + 1) → ℂ) i) huv
+    have hi := congrFun huv_val i
     simpa [evenToOddIndexLinearMap, Matrix.mulVec_sub] using hi
   let z : Fin (2 * N + 1) → ℂ :=
     (u : Fin (2 * N + 1) → ℂ) - (v : Fin (2 * N + 1) → ℂ)
@@ -249,8 +294,10 @@ theorem evenToOddIndexLinearMap_injective
   ext i
   by_cases hi : i = boundaryFlatZeroIndex N
   · subst i
+    apply sub_eq_zero.mp
     simpa [z] using hz0
-  · simpa [z] using hnoncenter i hi
+  · apply sub_eq_zero.mp
+    simpa [z] using hnoncenter i hi
 
 /-- Explicit primitive of an odd vector under the centered-index operator.
 The central coefficient is the unique correction that enforces moment zero. -/
@@ -277,15 +324,14 @@ theorem oddIndexPrimitive_even
   · have hirev : i.rev ≠ boundaryFlatZeroIndex N := by
       intro h
       apply hi
-      have := congrArg Fin.rev h
-      simpa [boundaryFlatZeroIndex_rev] using this
+      have h' := congrArg Fin.rev h
+      simpa [boundaryFlatZeroIndex_rev] using h'
     have hvi := congrFun hvodd i
     simp only [reverseCoefficients, Pi.neg_apply] at hvi
     simp [reverseCoefficients, oddIndexPrimitive, hi, hirev, hvi]
     rw [centeredIndex_rev]
     push_cast
     rw [div_neg, neg_div]
-    ring
 
 theorem indexMatrix_mulVec_oddIndexPrimitive
     (N : ℕ) {v : Fin (2 * N + 1) → ℂ}
@@ -298,11 +344,21 @@ theorem indexMatrix_mulVec_oddIndexPrimitive
     have hv0 : v (boundaryFlatZeroIndex N) = 0 := by
       have h := congrFun hvodd (boundaryFlatZeroIndex N)
       simp [reverseCoefficients, boundaryFlatZeroIndex_rev] at h
-      linear_combination (1 / 2 : ℂ) * h
+      have hsum : v (boundaryFlatZeroIndex N) +
+          v (boundaryFlatZeroIndex N) = 0 := by
+        calc
+          v (boundaryFlatZeroIndex N) + v (boundaryFlatZeroIndex N) =
+              -v (boundaryFlatZeroIndex N) + v (boundaryFlatZeroIndex N) := by
+                rw [h]
+          _ = 0 := by ring
+      have htwo : (2 : ℂ) * v (boundaryFlatZeroIndex N) = 0 := by
+        simpa [two_mul] using hsum
+      exact (mul_eq_zero.mp htwo).resolve_left (by norm_num)
     simp [oddIndexPrimitive, hv0]
   · have hd : ((centeredIndex N i : ℤ) : ℂ) ≠ 0 := by
       exact_mod_cast centeredIndex_ne_zero_of_ne_zeroIndex N hi
-    simp [oddIndexPrimitive, hi, hd]
+    simp [oddIndexPrimitive, hi]
+    field_simp [hd]
 
 theorem centeredMoment_zero_oddIndexPrimitive
     (N : ℕ) (v : Fin (2 * N + 1) → ℂ) :
@@ -311,8 +367,16 @@ theorem centeredMoment_zero_oddIndexPrimitive
   let z := boundaryFlatZeroIndex N
   have hzmem : z ∈ (Finset.univ : Finset (Fin (2 * N + 1))) := by simp
   rw [← Finset.sum_erase_add _ _ hzmem]
+  have herase :
+      ∑ i ∈ (Finset.univ.erase z), oddIndexPrimitive N v i =
+        ∑ i ∈ (Finset.univ.erase z),
+          v i / ((centeredIndex N i : ℤ) : ℂ) := by
+    apply Finset.sum_congr rfl
+    intro i hi
+    have hiz : i ≠ z := Finset.ne_of_mem_erase hi
+    simp [oddIndexPrimitive, z, hiz]
+  rw [herase]
   simp [oddIndexPrimitive, z]
-  ring
 
 theorem oddIndexPrimitive_mem_boundaryFlatSubspace
     (N : ℕ) {v : Fin (2 * N + 1) → ℂ}
@@ -346,8 +410,8 @@ theorem evenToOddIndexLinearMap_surjective
     oddIndexPrimitive_mem_boundaryFlatSubspace N hvflat hvodd
   have hueven :
       u ∈ evenCoefficientSubspace N := by
-    rw [mem_evenCoefficientSubspace_iff]
-    exact oddIndexPrimitive_even N hvodd
+    exact (mem_evenCoefficientSubspace_iff N u).2
+      (oddIndexPrimitive_even N hvodd)
   refine ⟨⟨u, huflat, hueven⟩, ?_⟩
   apply Subtype.ext
   exact indexMatrix_mulVec_oddIndexPrimitive N hvodd
@@ -455,10 +519,15 @@ theorem euclideanCenteredZeroExtend_mem_euclideanEvenBoundaryFlatSubspace
   rw [mem_euclideanEvenBoundaryFlatSubspace_iff] at hx ⊢
   rcases hx with ⟨hxflat, hxeven⟩
   refine ⟨centeredZeroExtend_mem_boundaryFlatSubspace hNM hxflat, ?_⟩
-  rw [mem_evenCoefficientSubspace_iff] at hxeven ⊢
+  have hxeven' :
+      reverseCoefficients N
+          ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x) =
+        (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x :=
+    (mem_evenCoefficientSubspace_iff N _).1 hxeven
+  apply (mem_evenCoefficientSubspace_iff M _).2
   rw [euclideanCenteredZeroExtend_coordinates]
   rw [← centeredZeroExtend_reverseCoefficients hNM]
-  rw [hxeven]
+  rw [hxeven']
 
 /-- Exact centered Euclidean extension preserves the odd constrained sector. -/
 theorem euclideanCenteredZeroExtend_mem_euclideanOddBoundaryFlatSubspace
@@ -470,10 +539,15 @@ theorem euclideanCenteredZeroExtend_mem_euclideanOddBoundaryFlatSubspace
   rw [mem_euclideanOddBoundaryFlatSubspace_iff] at hx ⊢
   rcases hx with ⟨hxflat, hxodd⟩
   refine ⟨centeredZeroExtend_mem_boundaryFlatSubspace hNM hxflat, ?_⟩
-  rw [mem_oddCoefficientSubspace_iff] at hxodd ⊢
+  have hxodd' :
+      reverseCoefficients N
+          ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x) =
+        -((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x) :=
+    (mem_oddCoefficientSubspace_iff N _).1 hxodd
+  apply (mem_oddCoefficientSubspace_iff M _).2
   rw [euclideanCenteredZeroExtend_coordinates]
   rw [← centeredZeroExtend_reverseCoefficients hNM]
-  rw [hxodd]
+  rw [hxodd']
   simp
 
 end Zeta23.CCM
