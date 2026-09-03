@@ -164,24 +164,11 @@ PR #91 proves uniform formula-level approximation by periodic finite localized F
 
 ## OBS-017 — raw function-space norm is not Euclidean Rayleigh normalization
 
-**Status:** PROJECT FIREWALL; PARTIAL ESCAPE EXTENDED BY PR #100; COMPRESSION REMAINS OPEN.
+**Status:** PROJECT FIREWALL; PRIMARY ESCAPE CLOSED BY PR #107.
 
-PR #96 proves a unit constrained negative witness on the raw function type. That norm remains a valid homogeneous scale normalization but is not the Euclidean/PiLp₂ norm used by Hilbert/Rayleigh APIs.
+PR #96's raw norm remains distinct from the Euclidean/PiLp₂ norm. PR #98 closes the Euclidean carrier/quadratic bridge; PR #100 closes exact Euclidean N-flow; PR #107 now proves orthogonal parity compression, exact compressed/self agreement, compressed symmetry and a negative constrained Rayleigh eigenmode.
 
-PR #98 separately proves coordinate transport to EuclideanSpace, the Euclidean constrained subspace with the same three moments, the exact quadraticForm / Euclidean inner-self identity, and off-line zero -> nonzero Euclidean constrained negative direction.
-
-PR #100 additionally proves the finite-N zero-extension isometry directly in EuclideanSpace, transport of the Euclidean constrained sector to every larger centered truncation, and exact preservation of the canonical real inner-self value.
-
-Still open:
-
-~~~text
-orthogonal compression of canonicalSourceMatrix.toEuclideanLin to the constrained subtype
-finite-dimensional constrained Rayleigh/eigenmode extraction
-~~~
-
-Do not use the raw #96 norm-one statement as a Euclidean sphere theorem. Do not continue to describe Euclidean N-extension isometry or constrained transport as open after #100.
-
-The #100 isometry also does not imply full operator intertwining or literal nesting of the orthogonally compressed operators.
+**Permanent warning:** do not use the raw #96 unit vector as a Euclidean sphere theorem. #100 isometry still does not imply full compressed-operator intertwining.
 
 ## OBS-018 — merged source presence is not compiler validation
 
@@ -197,3 +184,14 @@ A `.lean` file existing, appearing in a PR, passing the no-placeholder grep, or 
 
 The no-placeholder gate is syntactic hardening, not elaboration.
 
+
+
+## OBS-019 — one-dimensional successor shell is not an invariant negative line
+
+**Status:** PROJECT FIREWALL; #107 PARTIAL ESCAPE.
+
+#105 proves the successor parity shell has complex finrank one. #107 proves a negative successor eigenmode is not inherited from the predecessor. This does not prove the eigenmode lies purely in the shell, shell invariance, orthogonal D-transport, or a theoremized unique negative eigenline.
+
+**DERIVED / OPEN FORMALIZATION:** the negative eigenmode has nonzero shell projection and codimension-one predecessor nonnegativity forces negative index at most one.
+
+**Escape requirement:** internalize the predecessor image in the successor subtype, theorem-lock nonzero shell projection, and formalize negative index one if useful.

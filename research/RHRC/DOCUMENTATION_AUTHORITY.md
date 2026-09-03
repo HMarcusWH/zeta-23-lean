@@ -128,6 +128,15 @@ For R003, R003_PROMOTED_BINDINGS.json is the declared production binding surface
 
 The RHRC suite enforces this through promoted_binding_lint.py. Supporting theorem checks may exist without individual registry promotion, so CI does not equate every #check with a claim; promotion intent must be declared explicitly.
 
-## External handover transition after PR #103
+## External handover transition after PR #107
 
-The external v1.7 retirement condition has fired. PRs #100, #102 and #103 materially changed the dependency graph. Until external v2.0 is produced, living repository SSOTs control execution. External v2.0 should start from the validated post-#103 theorem state. Do not create it inside a repository PR unless explicitly requested.
+The external v1.7 retirement condition remains fired. Living repository SSOTs control execution. Any external v2.x handover must start from the merged #107 state:
+~~~text
+main = b7d1022e33e2177c5597d008f593d3684d0ec720
+theorem head = cfcf397cc8c15dbb368fbee3a161b8733061b770
+theorem tree = 719b45162fd0814581759661f12eab16c46e1201
+FIRST-BAD-SPECTRUM = PROVED
+FIRST-BAD-RIGIDITY = NEXT
+~~~
+
+Do not create or update an external handover inside a repository PR unless explicitly requested.

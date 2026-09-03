@@ -810,6 +810,76 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "PR #105 final RH-directed endpoint. No constrained compression, negative eigenmode, unique eigenline, Schur/KKT contradiction, positivity or RH theorem is claimed."
+    },
+    {
+      "id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "statement": "For every reversal parity, aperture and size, the canonical Euclidean operator admits an exact orthogonal compression to the parity-constrained subtype; its self-inner value agrees exactly with the ambient canonical form and the compressed linear map is symmetric.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+        "R003_CANONICAL_EUCLIDEAN_SYMMETRIC"
+      ],
+      "source": "Zeta23/CCM/ConstrainedParitySpectrum.lean",
+      "theorem": "Zeta23.CCM.parityCompressedCanonical_isSymmetric",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "FIRST-BAD-SPECTRUM / PR #107. Supporting declarations: parityCompressedCanonicalCLM, parityCompressedCanonical, inner_parityCompressedCanonical_self and re_inner_parityCompressedCanonical_self. Validated head cfcf397cc8c15dbb368fbee3a161b8733061b770; synthetic merge 19cd290510fe4fb1d253522c29644ff3e4563c03; merged main b7d1022e33e2177c5597d008f593d3684d0ec720; tree 719b45162fd0814581759661f12eab16c46e1201; RHRC #717 and Permansson #490 success. Axiom surface [propext, Classical.choice, Quot.sound]."
+    },
+    {
+      "id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+      "statement": "Every parity-bad canonical finite problem has a real eigenvalue lam<0 and a nonzero eigenvector of the parity-constrained compressed canonical operator.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+        "R003_PARITY_QUADRATIC_SPLIT"
+      ],
+      "source": "Zeta23/CCM/ConstrainedParitySpectrum.lean",
+      "theorem": "Zeta23.CCM.exists_negative_eigenmode_of_parityBad",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #107. The proof extracts the bottom Rayleigh eigenvalue in finite dimension and proves it is negative. This is a constrained eigenmode theorem, not uniqueness, positivity or RH."
+    },
+    {
+      "id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "statement": "If the predecessor parity sector is nonnegative for canonicalSourceMatrix L N at positive aperture, exact centered Euclidean extension is nonnegative for canonicalSourceMatrix L (N+1) on the embedded predecessor image.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_EUCLIDEAN_CONSTRAINED_NESTING"
+      ],
+      "source": "Zeta23/CCM/ConstrainedParitySpectrum.lean",
+      "theorem": "Zeta23.CCM.re_inner_successor_nonnegative_on_centeredImage",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #107. Explicit matrix-size firewall: predecessor nonnegativity is transported by exact #100 N-flow before comparison with the successor spectral problem."
+    },
+    {
+      "id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "statement": "At positive aperture, a negative eigenmode of the successor parity-compressed canonical operator cannot be an exact centered extension of a predecessor vector if the predecessor parity sector is nonnegative.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+        "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
+      ],
+      "source": "Zeta23/CCM/ConstrainedParitySpectrum.lean",
+      "theorem": "Zeta23.CCM.negative_eigenmode_not_centeredImage",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #107. Non-inherited does not mean the eigenmode lies purely in the one-dimensional orthogonal shell and does not prove shell invariance."
+    },
+    {
+      "id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "statement": "Every hypothetical off-critical-line zeta zero forces a fixed positive aperture, fixed reversal parity and least-bad successor size with a genuine negative compressed eigenpair, a nonnegative predecessor sector, proof that the eigenmode is not inherited from the predecessor, and an exact one-dimensional successor parity shell.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+        "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+        "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED"
+      ],
+      "source": "Zeta23/ExceptionalZero/FirstBadParitySpectrum.lean",
+      "theorem": "Zeta23.ExceptionalZero.exists_firstBadParity_negativeEigenmode_of_offLine_zero",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #107 final RH-directed endpoint. Supporting wrapper handles existential off-line-zero input. No unique negative eigenline, KKT, Schur/Feshbach contradiction, positivity theorem, finite-to-infinite closure or RH theorem is claimed."
     }
   ]
 }

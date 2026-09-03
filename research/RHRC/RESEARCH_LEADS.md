@@ -7,13 +7,16 @@
 Last full theorem/promotion review:
 
 ~~~text
-main = 9e899ca322116e28a56a4412d48aef0052b86fbe
-tree = ad636143768dcaa4dbeb23a0ea295d7b2d6b1c9b
-merged through = PR #84
-PR #83 theorem head = 556be6c2b42e912c58751988c580ab4e0091822d
-PR #83 merge = 7b8e0cc9abbaeff97d88ec67ada40734619a8d07
-PR #84 final validated head = 1a518c9ebd408fa559c5eff281eafe5ff3b2af48
-date = 2026-09-01
+main = b7d1022e33e2177c5597d008f593d3684d0ec720
+theorem head = cfcf397cc8c15dbb368fbee3a161b8733061b770
+synthetic merge = 19cd290510fe4fb1d253522c29644ff3e4563c03
+theorem tree = 719b45162fd0814581759661f12eab16c46e1201
+merged through = PR #107
+RHRC #717 = SUCCESS
+Permansson #490 = SUCCESS
+axioms = [propext, Classical.choice, Quot.sound]
+sorryAx = absent
+date = 2026-09-03
 RH = OPEN
 ~~~
 
@@ -67,7 +70,7 @@ After every meaningful green result:
 5. update CURRENT_RESEARCH_PLAN.md if execution order changed;
 6. keep historical settlement documents historical.
 
-Last full theorem/promotion audit: PR #83 theorem head `556be6c2b42e912c58751988c580ab4e0091822d` passed both repository workflows and merged as `7b8e0cc9abbaeff97d88ec67ada40734619a8d07`; PR #84 then cleaned the authority/source-route state and its exact head `1a518c9ebd408fa559c5eff281eafe5ff3b2af48` passed both workflows before merging to current main `9e899ca322116e28a56a4412d48aef0052b86fbe`.
+Last full theorem/promotion audit: PR #107 theorem head `cfcf397cc8c15dbb368fbee3a161b8733061b770` passed both repository workflows on exact synthetic merge `19cd290510fe4fb1d253522c29644ff3e4563c03`, with theorem tree `719b45162fd0814581759661f12eab16c46e1201`, and merged to main as `b7d1022e33e2177c5597d008f593d3684d0ec720`. CCM, ExceptionalZero, no-placeholder, RHRC regression, normalization/source firewalls and production axiom checks all passed.
 
 ---
 
@@ -711,38 +714,22 @@ The norm-one witness in #96 lives on the raw function type `Fin (...) -> ℂ`. I
 
 ## L-K0F1-02 — Euclidean constrained compression / negative spectral mode
 
-**Research status:** ACTIVE / AFTER PARITY  
-**Formal status:** PARTIALLY PROVED BY #98/#100; COMPRESSION OPEN
+**Research status:** PROMOTED  
+**Formal status:** PROVED / PR #107  
+**Production claims:** `R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION`, `R003_PARITY_BAD_NEGATIVE_EIGENMODE`
 
-PR #98 closes the project-specific Euclidean bridge, and PR #100 adds exact Euclidean N-extension/isometry and quadratic persistence:
-
-~~~text
-Euclidean constrained subspace                         PROVED
-same three boundary-flat equations                     PROVED
-finrank = 2*N-2 for N>=1                               PROVED
-nonzero constrained witness -> N>=2                    PROVED
-canonicalSourceMatrix.toEuclideanLin symmetric         PROVED
-quadraticForm / Euclidean inner-self bridge            PROVED
-off-line zero -> negative Euclidean constrained ray    PROVED
-~~~
-
-Still open:
+PR #107 closes the constrained spectral layer.
 
 ~~~text
-orthogonal compression to the constrained subtype
-compressed symmetry/self-adjointness
-negative constrained Rayleigh eigenmode
+parity-constrained orthogonal compression P_V M|V
+exact compressed/self quadratic agreement
+compressed operator symmetric
+ParityBad -> exists lam<0 and nonzero eigenvector v with T v = lam v
 ~~~
 
-Use Mathlib's subtype operator V.orthogonalProjectionOnto ∘ M ∘ V.subtypeL rather than treating the raw #96 norm-one witness as a Hilbert-sphere theorem.
+The proof uses the finite-dimensional Rayleigh infimum. Once `ParityBad p L N` is available, the spectral extraction itself does not require the positive-aperture N-flow hypotheses.
 
-Cheap side theorem worth proving in the same spectral package:
-
-~~~text
-off-line zero -> some canonicalSourceMatrix has a negative ambient eigenvalue.
-~~~
-
-The constrained eigenmode remains the structurally important endpoint.
+**Firewalls:** no unique negative eigenline, shell invariance, KKT, Schur, positivity or RH follows from this theorem alone.
 
 ---
 
@@ -819,24 +806,51 @@ Together with #103 this should induce an algebraic equivalence between the even 
 
 ## L-NFLOW-02 — first bad finite size / parity refinement
 
-**Research status:** PROMOTED FOUNDATION / SPECTRAL CONSEQUENCES ACTIVE
-**Formal status:** PROVED / PR #105
+**Research status:** PROMOTED FOUNDATION / SPECTRAL CONSEQUENCES PROMOTED  
+**Formal status:** PROVED / PR #105 + #107
 
-#105 theorem-locks:
+#105 proves fixed-parity badness, least bad size, predecessor nonnegativity and the exact one-dimensional successor parity shell. #107 adds the legal parity compression, negative Rayleigh eigenmode, successor-level predecessor nonnegativity and proof that the negative mode is not inherited.
+
+**DERIVED / OPEN FORMALIZATION:** negative shell projection, negative index exactly one, unique negative eigenline.
+
+---
+
+## L-FIRSTBAD-RIGIDITY-01 — intrinsic shell projection and negative index one
+
+**Research status:** ACTIVE  
+**Formal status:** DERIVED / OPEN FORMALIZATION
+
+Let `V` be the successor parity subtype and `W` the exact centered predecessor image. Proved inputs give codimension one, `q|W >= 0`, and a negative eigenpair `Tv = lam v`, `lam<0`, with `v ∉ W`.
+
+Immediate theorem targets:
 ~~~text
-negative constrained witness -> bad even or odd parity
-fixed L and fixed parity bad for every M>=N0
-ParityBad -> N>=2
-least bad parity size
-predecessor raw and Euclidean nonnegativity
-exact Euclidean successor parity shell finrank = 1
+dim_C(W^perp) = 1
+P_(W^perp) v != 0
+negative index(T) = 1
+unique negative eigenline
 ~~~
 
-The previous staged-source status is retired: `ParityBadness.lean` is in the authoritative CCM build closure.
+Any two-dimensional negative subspace would intersect codimension-one `W` nontrivially, contradicting `q|W >= 0`. Prove uniqueness if cheap, but do not let multiplicity API work block KKT/Schur.
 
-**DERIVED / NEXT:** after constructing the symmetric compressed parity operator, the codimension-one nonnegative predecessor should force a unique negative spectral direction at the first bad size.
+---
 
-**Firewalls:** the negative eigenvector need not lie purely in the shell; the opposite parity may already be bad; one-dimensional shell growth alone is not contradictory.
+## L-FIRSTBAD-KKT-01 — parity normal spaces and shifted Schur/Feshbach
+
+**Research status:** ACTIVE COMPOSITION LEAD  
+**Formal status:** LEAD / HYPOTHESIS
+
+#107 supplies the actual eigenpair needed for KKT. Target normal spaces are even `span{1,d²}` and odd `span{d}`. Expected residuals:
+~~~text
+even: Mv = lam v + a0*1 + a2*d²
+odd:  Mv = lam v + a1*d
+~~~
+
+With `V = W ⊕ Cw`, predecessor block `A >= 0`, and `lam<0`, the safe Feshbach equation is
+~~~text
+c - lam - b* (A - lam I)^(-1) b = 0.
+~~~
+
+Never use `A⁻¹` at zero. In the even branch, compose KKT with the proved `[D,M]v=0` and inspect the projected `d³` defect.
 
 ---
 
