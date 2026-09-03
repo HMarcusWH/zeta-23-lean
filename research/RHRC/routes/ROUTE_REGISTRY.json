@@ -95,12 +95,16 @@
         "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
-        "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO"
+        "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+        "R003_FIRST_BAD_SHELL_PROJECTION",
+        "R003_PARITY_NORMAL_KKT",
+        "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+        "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "R003 merged compiler-validated theorem authority is through FIRST-BAD-SPECTRUM / PR #107. #105 proves fixed-parity least-bad geometry and the one-dimensional Euclidean successor shell; #107 proves exact parity-constrained compression, compressed symmetry/self-form agreement, a genuine negative Rayleigh eigenmode, successor-level predecessor nonnegativity, non-inheritance of the negative mode, and the off-line-zero first-bad spectral endpoint. Nonzero shell projection and negative-index-one are DERIVED / OPEN FORMALIZATION. Parity-specific normal-space/Schur/KKT rigidity, source QW closure, positivity and RH remain open."
+      "note": "R003 merged compiler-validated theorem authority is through FIRST-BAD-RIGIDITY-C / PR #110. #109 proves nonzero projection of the distinguished first-bad negative eigenmode onto the one-dimensional ambient successor shell, exact even/odd parity normal spaces, exact parity KKT residuals and the off-line-zero shell+KKT endpoint. #110 proves the Euclidean algebraic D-equivalence, exact even commutator lift, explicit nonzero cubic odd channel g_N=P_-d^3 for N>=2, range(T_-D-DT_+) contained in C g_N, and finrank<=1 both before and after algebraic same-space conjugation. The intrinsic successor-subtype block decomposition, negative-index-one theorem, exact nonzero rank-one factorization, shifted scalar Schur/Feshbach closure, simultaneous parity-resonance classification, source QW closure, positivity and RH remain open."
     },
     {
       "route_id": "R004_prolate_v2",
