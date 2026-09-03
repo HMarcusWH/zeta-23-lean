@@ -73,13 +73,23 @@ theorem finrank_parityEmbeddedPredecessorSubspace
 def intrinsicParitySuccShell
     (p : ReversalParity) (N : ℕ) :
     Submodule ℂ (euclideanParityBoundaryFlatSubspace p (N + 1)) :=
-  (parityEmbeddedPredecessorSubspace p N)ᗮ
+  Submodule.orthogonal (𝕜 := ℂ) (parityEmbeddedPredecessorSubspace p N)
+
+/-- Orthogonal projection onto the intrinsic one-step parity shell, with the
+complex scalar fixed explicitly to avoid ambiguous RCLike inference on the
+parity subtype. -/
+def intrinsicParitySuccProjection
+    (p : ReversalParity) (N : ℕ) :
+    euclideanParityBoundaryFlatSubspace p (N + 1) →L[ℂ]
+      intrinsicParitySuccShell p N :=
+  (intrinsicParitySuccShell p N).orthogonalProjectionOnto
 
 theorem finrank_intrinsicParitySuccShell
     (p : ReversalParity) (N : ℕ) (hN : 1 ≤ N) :
     Module.finrank ℂ (intrinsicParitySuccShell p N) = 1 := by
   have hdim :=
-    (parityEmbeddedPredecessorSubspace p N).finrank_add_finrank_orthogonal
+    Submodule.finrank_add_finrank_orthogonal (𝕜 := ℂ)
+      (parityEmbeddedPredecessorSubspace p N)
   rw [finrank_parityEmbeddedPredecessorSubspace p N hN,
     finrank_euclideanParityBoundaryFlatSubspace p (N + 1) (by omega)] at hdim
   change
@@ -110,12 +120,16 @@ theorem orthogonalProjection_intrinsicParitySuccShell_ne_zero_of_not_mem
     (p : ReversalParity) (N : ℕ)
     {v : euclideanParityBoundaryFlatSubspace p (N + 1)}
     (hv : v ∉ parityEmbeddedPredecessorSubspace p N) :
-    (intrinsicParitySuccShell p N).orthogonalProjectionOnto v ≠ 0 := by
+    intrinsicParitySuccProjection p N v ≠ 0 := by
   intro hproj
   have hvorth :
-      v ∈ (intrinsicParitySuccShell p N)ᗮ :=
-    ((intrinsicParitySuccShell p N).orthogonalProjectionOnto_eq_zero_iff).mp
-      hproj
+      v ∈ Submodule.orthogonal (𝕜 := ℂ) (intrinsicParitySuccShell p N) := by
+    have hproj' :
+        (intrinsicParitySuccShell p N).orthogonalProjectionOnto v = 0 := by
+      exact hproj
+    exact
+      ((intrinsicParitySuccShell p N).orthogonalProjectionOnto_eq_zero_iff).mp
+        hproj'
   have hvpred : v ∈ parityEmbeddedPredecessorSubspace p N := by
     simpa [intrinsicParitySuccShell] using hvorth
   exact hv hvpred
@@ -135,7 +149,7 @@ theorem negative_eigenmode_intrinsicShell_projection_ne_zero
     (hvne : v ≠ 0)
     (hveig :
       parityCompressedCanonical p L (N + 1) v = (lam : ℂ) • v) :
-    (intrinsicParitySuccShell p N).orthogonalProjectionOnto v ≠ 0 := by
+    intrinsicParitySuccProjection p N v ≠ 0 := by
   apply orthogonalProjection_intrinsicParitySuccShell_ne_zero_of_not_mem
   apply not_mem_parityEmbeddedPredecessorSubspace_of_not_centeredImage
   exact negative_eigenmode_not_centeredImage
@@ -164,7 +178,7 @@ theorem re_inner_parityCompressedCanonical_nonnegative_on_predecessor
     re_inner_successor_nonnegative_on_centeredImage
       p hL N hprev
       (x : EuclideanSpace ℂ (Fin (2 * N + 1))) x.property
-  rw [congrArg Subtype.val hx] at hnonneg
+  rw [← congrArg Subtype.val hx]
   exact hnonneg
 
 end Zeta23.CCM
