@@ -122,6 +122,89 @@ theorem centeredZeroExtend_ne_zero
   have hi := congrFun hz (centeredEmbedding N M hNM i)
   simpa using hi
 
+
+/-- The centered-index operator commutes exactly with centered zero extension.
+This is the raw D/N-flow compatibility needed to make the #103 parity
+equivalence coherent across truncation sizes. -/
+theorem indexMatrix_mulVec_centeredZeroExtend
+    {N M : ℕ} (hNM : N ≤ M)
+    (u : Fin (2 * N + 1) → ℂ) :
+    indexMatrix M *ᵥ centeredZeroExtend hNM u =
+      centeredZeroExtend hNM (indexMatrix N *ᵥ u) := by
+  ext j
+  rw [indexMatrix_mulVec_apply]
+  by_cases hj : j ∈ Set.range (centeredEmbedding N M hNM)
+  · obtain ⟨i, rfl⟩ := hj
+    rw [centeredZeroExtend_apply_centeredEmbedding]
+    rw [centeredZeroExtend_apply_centeredEmbedding]
+    rw [indexMatrix_mulVec_apply]
+    rw [centeredIndex_centeredEmbedding]
+  · rw [centeredZeroExtend_apply_of_not_mem_range hNM u j hj]
+    rw [centeredZeroExtend_apply_of_not_mem_range
+      hNM (indexMatrix N *ᵥ u) j hj]
+    simp
+
+/-- The canonical quadratic form is invariant under simultaneous coefficient
+reversal.  This is the scalar quadratic counterpart of the #102 matrix-action
+reversal theorem. -/
+theorem quadraticForm_canonicalSourceMatrix_reverseCoefficients
+    (L : ℝ) (N : ℕ)
+    (u : Fin (2 * N + 1) → ℂ) :
+    quadraticForm (canonicalSourceMatrix L N) (reverseCoefficients N u) =
+      quadraticForm (canonicalSourceMatrix L N) u := by
+  unfold quadraticForm
+  rw [← Equiv.sum_comp Fin.revPerm]
+  apply Finset.sum_congr rfl
+  intro i hi
+  rw [← Equiv.sum_comp Fin.revPerm]
+  apply Finset.sum_congr rfl
+  intro j hj
+  simp [reverseCoefficients]
+
+/-- Algebraic parallelogram identity for the project's sesquilinear quadratic
+form.  No Hermitianity hypothesis is needed. -/
+theorem quadraticForm_add_add_sub
+    {ι : Type*} [Fintype ι]
+    (A : Matrix ι ι ℂ)
+    (u v : ι → ℂ) :
+    quadraticForm A (u + v) + quadraticForm A (u - v) =
+      2 * quadraticForm A u + 2 * quadraticForm A v := by
+  unfold quadraticForm
+  simp_rw [Finset.mul_sum]
+  simp_rw [← Finset.sum_add_distrib]
+  apply Finset.sum_congr rfl
+  intro i hi
+  apply Finset.sum_congr rfl
+  intro j hj
+  simp only [Pi.add_apply, Pi.sub_apply, map_add, map_sub, starRingEnd_apply]
+  ring
+
+/-- Exact even/odd energy splitting for the canonical quadratic form. -/
+theorem quadraticForm_evenPart_add_oddPart
+    (L : ℝ) (N : ℕ)
+    (u : Fin (2 * N + 1) → ℂ) :
+    quadraticForm (canonicalSourceMatrix L N) (evenPart N u) +
+        quadraticForm (canonicalSourceMatrix L N) (oddPart N u) =
+      quadraticForm (canonicalSourceMatrix L N) u := by
+  have heven :
+      evenPart N u =
+        (1 / 2 : ℂ) • (u + reverseCoefficients N u) := by
+    ext i
+    simp [evenPart, reverseCoefficients, Pi.smul_apply, smul_eq_mul]
+  have hodd :
+      oddPart N u =
+        (1 / 2 : ℂ) • (u - reverseCoefficients N u) := by
+    ext i
+    simp [oddPart, reverseCoefficients, Pi.smul_apply, smul_eq_mul]
+  rw [heven, hodd]
+  rw [quadraticForm_smul, quadraticForm_smul]
+  have hpar :=
+    quadraticForm_add_add_sub
+      (canonicalSourceMatrix L N) u (reverseCoefficients N u)
+  rw [quadraticForm_canonicalSourceMatrix_reverseCoefficients L N u] at hpar
+  norm_num at hpar ⊢
+  linear_combination (1 / 4 : ℂ) * hpar
+
 /-- A negative canonical quadratic direction in one fixed parity sector. -/
 def ParityBad
     (p : ReversalParity) (L : ℝ) (N : ℕ) : Prop :=
@@ -129,6 +212,84 @@ def ParityBad
     u ≠ 0 ∧
     u ∈ parityBoundaryFlatSubspace p N ∧
     (quadraticForm (canonicalSourceMatrix L N) u).re < 0
+
+
+/-- Any negative boundary-flat canonical witness has a negative component in
+one of the two exact reversal parity sectors. -/
+theorem parityBad_even_or_odd_of_negative
+    {L : ℝ} {N : ℕ}
+    {u : Fin (2 * N + 1) → ℂ}
+    (hmem : u ∈ boundaryFlatSubspace N)
+    (hneg : (quadraticForm (canonicalSourceMatrix L N) u).re < 0) :
+    ParityBad .even L N ∨ ParityBad .odd L N := by
+  have hsplit :=
+    congrArg Complex.re
+      (quadraticForm_evenPart_add_oddPart L N u)
+  have hsplitRe :
+      (quadraticForm (canonicalSourceMatrix L N) (evenPart N u)).re +
+          (quadraticForm (canonicalSourceMatrix L N) (oddPart N u)).re =
+        (quadraticForm (canonicalSourceMatrix L N) u).re := by
+    simpa only [Complex.add_re] using hsplit
+  by_cases hevenneg :
+      (quadraticForm (canonicalSourceMatrix L N) (evenPart N u)).re < 0
+  · left
+    have hene : evenPart N u ≠ 0 := by
+      intro hz
+      rw [hz, quadraticForm_zero] at hevenneg
+      norm_num at hevenneg
+    exact ⟨evenPart N u, hene,
+      evenPart_mem_evenBoundaryFlatSubspace hmem, hevenneg⟩
+  · right
+    have hevennonneg :
+        0 ≤ (quadraticForm
+          (canonicalSourceMatrix L N) (evenPart N u)).re :=
+      le_of_not_gt hevenneg
+    have hoddneg :
+        (quadraticForm (canonicalSourceMatrix L N) (oddPart N u)).re < 0 := by
+      linarith
+    have hone : oddPart N u ≠ 0 := by
+      intro hz
+      rw [hz, quadraticForm_zero] at hoddneg
+      norm_num at hoddneg
+    exact ⟨oddPart N u, hone,
+      oddPart_mem_oddBoundaryFlatSubspace hmem, hoddneg⟩
+
+/-- A nonzero vector in a parity-constrained sector cannot occur at N=0. -/
+theorem one_le_of_ne_zero_mem_parityBoundaryFlatSubspace
+    (p : ReversalParity)
+    {N : ℕ}
+    {u : Fin (2 * N + 1) → ℂ}
+    (hne : u ≠ 0)
+    (hmem : u ∈ parityBoundaryFlatSubspace p N) :
+    1 ≤ N := by
+  by_contra hN
+  have hN0 : N = 0 := by omega
+  subst N
+  have hflat : u ∈ boundaryFlatSubspace 0 := by
+    cases p with
+    | even => exact hmem.1
+    | odd => exact hmem.1
+  have hmoment0 :=
+    ((mem_boundaryFlatSubspace_iff 0 u).mp hflat).1
+  apply hne
+  funext i
+  have hi : i = 0 := Fin.eq_zero i
+  subst i
+  simpa [centeredMoment] using hmoment0
+
+/-- Every parity-bad finite problem occurs at size N>=2. -/
+theorem two_le_of_parityBad
+    {p : ReversalParity} {L : ℝ} {N : ℕ}
+    (hbad : ParityBad p L N) :
+    2 ≤ N := by
+  obtain ⟨u, hne, hmem, hneg⟩ := hbad
+  have hN1 :=
+    one_le_of_ne_zero_mem_parityBoundaryFlatSubspace p hne hmem
+  have hflat : u ∈ boundaryFlatSubspace N := by
+    cases p with
+    | even => exact hmem.1
+    | odd => exact hmem.1
+  exact two_le_of_ne_zero_mem_boundaryFlatSubspace hN1 hflat hne
 
 /-- Parity-resolved finite badness is upward closed under the exact centered
 N-flow at fixed positive aperture. -/
@@ -158,6 +319,19 @@ theorem exists_least_parityBad
   intro N hN
   exact Nat.find_min hex hN
 
+
+/-- A nonempty parity-bad size set has a least bad size, and that least size is
+automatically at least two. -/
+theorem exists_least_parityBad_two_le
+    (p : ReversalParity) (L : ℝ)
+    (hex : ∃ N : ℕ, ParityBad p L N) :
+    ∃ Nstar : ℕ,
+      2 ≤ Nstar ∧
+      ParityBad p L Nstar ∧
+      ∀ N : ℕ, N < Nstar → ¬ ParityBad p L N := by
+  obtain ⟨Nstar, hbad, hmin⟩ := exists_least_parityBad p L hex
+  exact ⟨Nstar, two_le_of_parityBad hbad, hbad, hmin⟩
+
 /-- At a least bad size, every smaller parity sector is nonnegative. -/
 theorem nonnegative_of_lt_least_parityBad
     (p : ReversalParity) (L : ℝ)
@@ -175,6 +349,32 @@ theorem nonnegative_of_lt_least_parityBad
     subst u
     simpa using hneg
   exact (hmin N hN) ⟨u, hune, humem, hneg⟩
+
+
+/-- Minimality of a parity-bad size transfers to nonnegativity of the exact
+Euclidean inner-self form on every smaller parity sector. -/
+theorem euclidean_nonnegative_of_lt_least_parityBad
+    (p : ReversalParity) (L : ℝ)
+    {Nstar : ℕ}
+    (hmin : ∀ N : ℕ, N < Nstar → ¬ ParityBad p L N)
+    {N : ℕ} (hN : N < Nstar)
+    (x : EuclideanSpace ℂ (Fin (2 * N + 1)))
+    (hx : x ∈ euclideanParityBoundaryFlatSubspace p N) :
+    0 ≤ Complex.re
+      (inner ℂ ((canonicalSourceMatrix L N).toEuclideanLin x) x) := by
+  have hxraw :
+      (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x ∈
+        parityBoundaryFlatSubspace p N := by
+    cases p with
+    | even =>
+        exact (mem_euclideanEvenBoundaryFlatSubspace_iff N x).mp hx
+    | odd =>
+        exact (mem_euclideanOddBoundaryFlatSubspace_iff N x).mp hx
+  have hraw :=
+    nonnegative_of_lt_least_parityBad
+      p L hmin hN
+      ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x) hxraw
+  simpa only [quadraticForm_re_eq_re_inner_apply_self] using hraw
 
 /-- Image of the previous Euclidean parity sector inside the successor size. -/
 def euclideanParityEmbeddedSuccSubspace
@@ -230,8 +430,15 @@ theorem finrank_euclideanParitySuccShell
 
 end Zeta23.CCM
 
+#print axioms Zeta23.CCM.indexMatrix_mulVec_centeredZeroExtend
+#print axioms Zeta23.CCM.quadraticForm_canonicalSourceMatrix_reverseCoefficients
+#print axioms Zeta23.CCM.quadraticForm_add_add_sub
+#print axioms Zeta23.CCM.quadraticForm_evenPart_add_oddPart
+#print axioms Zeta23.CCM.parityBad_even_or_odd_of_negative
+#print axioms Zeta23.CCM.two_le_of_parityBad
 #print axioms Zeta23.CCM.finrank_parityBoundaryFlatSubspace
 #print axioms Zeta23.CCM.parityBad_persists_of_le
 #print axioms Zeta23.CCM.exists_least_parityBad
 #print axioms Zeta23.CCM.nonnegative_of_lt_least_parityBad
+#print axioms Zeta23.CCM.euclidean_nonnegative_of_lt_least_parityBad
 #print axioms Zeta23.CCM.finrank_euclideanParitySuccShell
