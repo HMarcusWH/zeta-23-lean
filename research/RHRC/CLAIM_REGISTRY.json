@@ -880,6 +880,64 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "PR #107 final RH-directed endpoint. Supporting wrapper handles existential off-line-zero input. No unique negative eigenline, KKT, Schur/Feshbach contradiction, positivity theorem, finite-to-infinite closure or RH theorem is claimed."
+    },
+    {
+      "id": "R003_FIRST_BAD_SHELL_PROJECTION",
+      "statement": "At positive aperture, if the predecessor parity sector is nonnegative and a successor parity-compressed eigenmode has real eigenvalue lam<0 and is nonzero, then its orthogonal projection onto the pre-existing one-dimensional ambient Euclidean successor parity shell is nonzero.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+        "R003_LEAST_PARITY_BAD_SHELL"
+      ],
+      "source": "Zeta23/CCM/FirstBadRigidity.lean",
+      "theorem": "Zeta23.CCM.negative_eigenmode_paritySuccShell_projection_ne_zero",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "FIRST-BAD-RIGIDITY-A / PR #109. This is an ambient-Euclidean shell-projection theorem. It does not prove the eigenmode is pure shell, shell invariance, an intrinsic successor-subtype block decomposition, negative index one, or RH."
+    },
+    {
+      "id": "R003_PARITY_NORMAL_KKT",
+      "statement": "The exact normal space of the even boundary-flat sector inside the even coefficient sector is span{1,d^2}, the odd normal space inside the odd coefficient sector is span{d}, and every parity-compressed canonical eigenmode has the corresponding exact ambient KKT residual.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+        "R003_CONSTRAINED_PARITY_EXACT_DIMENSION"
+      ],
+      "source": "Zeta23/CCM/ParityNormalSpace.lean",
+      "theorem": "Zeta23.CCM.parityKKTResidual_of_eigenmode",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "FIRST-BAD-RIGIDITY-B / PR #109. Supporting declarations theorem-lock the exact even/odd normal-space equalities. KKT is a residual identity, not a Schur/Feshbach contradiction, positivity theorem or RH theorem."
+    },
+    {
+      "id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "statement": "Every hypothetical off-critical-line zeta zero forces a fixed positive aperture and parity, a least-bad negative compressed eigenpair with nonnegative predecessor, nonzero projection onto the one-dimensional ambient successor parity shell, and the exact parity KKT residual.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+        "R003_FIRST_BAD_SHELL_PROJECTION",
+        "R003_PARITY_NORMAL_KKT"
+      ],
+      "source": "Zeta23/ExceptionalZero/FirstBadRigidity.lean",
+      "theorem": "Zeta23.ExceptionalZero.exists_firstBadParity_shell_KKT_of_offLine_zero",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #109 RH-directed endpoint. It packages the negative first-bad spectral witness, predecessor nonnegativity, nonzero one-dimensional ambient shell projection and parity KKT residual. No intrinsic block decomposition, negative-index uniqueness, Schur contradiction, positivity, finite-to-infinite closure or RH theorem is claimed."
+    },
+    {
+      "id": "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
+      "statement": "For positive aperture, the Euclidean centered-index restriction gives an algebraic equivalence between even and odd boundary-flat sectors; the even-to-odd compressed intertwining defect has range in the explicit cubic channel C*(P_- d^3) and complex finrank at most one, with P_- d^3 nonzero for N>=2; after algebraic conjugation to the even carrier the same-space parity defect also has finrank at most one.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_PARITY_NORMAL_KKT",
+        "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+        "R003_CONSTRAINED_PARITY_EXACT_DIMENSION"
+      ],
+      "source": "Zeta23/CCM/ParityCompressionRankOne.lean",
+      "theorem": "Zeta23.CCM.finrank_range_conjugatedParityCompressionDefect_le_one",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "FIRST-BAD-RIGIDITY-C / PR #110. Supporting theorems give the Euclidean algebraic D-equivalence, exact even compression residual span{1,d^2}, M(Du)=D(Mu), explicit cubic generator g_N=P_-d^3, g_N!=0 for N>=2, and range(T_-D-DT_+)<=C g_N. This proves rank at most one, not rank exactly one; D is not unitary/isometric; no equal-spectrum, interlacing, inertia, positivity or RH theorem is claimed."
     }
   ]
 }
