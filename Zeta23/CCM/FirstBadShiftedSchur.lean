@@ -398,14 +398,23 @@ theorem eigenmode_shiftedPredecessorBlock_eq
       intrinsicPredecessorBlock p L N w +
           intrinsicShellToPredecessor p L N s =
         (lam : ℂ) • w := by
-    change
-      intrinsicPredecessorPart p N
+    calc
+      intrinsicPredecessorBlock p L N w +
+          intrinsicShellToPredecessor p L N s =
+        intrinsicPredecessorPart p N
           (parityCompressedCanonical p L (N + 1)
-            (w + s)) =
-        (lam : ℂ) • w
-    rw [hrec]
-    rw [hveig, map_smul]
-    rfl
+            ((w : euclideanParityBoundaryFlatSubspace p (N + 1)) +
+              (s : euclideanParityBoundaryFlatSubspace p (N + 1)))) := by
+            simp [intrinsicPredecessorBlock, intrinsicShellToPredecessor,
+              map_add]
+      _ = intrinsicPredecessorPart p N
+          (parityCompressedCanonical p L (N + 1) v) := by
+            rw [hrec]
+      _ = intrinsicPredecessorPart p N ((lam : ℂ) • v) := by
+            rw [hveig]
+      _ = (lam : ℂ) • w := by
+            rw [map_smul]
+            rfl
   change
     intrinsicPredecessorBlock p L N w - (lam : ℂ) • w =
       - intrinsicShellToPredecessor p L N s
