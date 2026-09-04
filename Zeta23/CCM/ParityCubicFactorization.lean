@@ -41,8 +41,7 @@ def cubicDefectFunctional
     ring
   map_smul' := by
     intro c x
-    simp only [map_smul, inner_smul_right_eq_smul, smul_eq_mul]
-    ring
+    simp [inner_smul_right, div_eq_mul_inv, mul_assoc, mul_left_comm, mul_comm]
 
 /-- Exact pointwise factorization through the cubic channel.  No nonzeroness
 of the scalar functional is claimed. -/
@@ -68,8 +67,7 @@ theorem evenOddCompressedIntertwiningDefect_eq_cubicFunctional_smul
           (evenOddCompressedIntertwiningDefect L N v) /
         inner ℂ (oddCubicCompressionVector N)
           (oddCubicCompressionVector N) = a
-    rw [ha, inner_smul_right_eq_smul]
-    simp only [smul_eq_mul]
+    rw [ha, inner_smul_right]
     exact mul_div_cancel_right₀ a hgg
   rw [ha, hcoeff]
 
