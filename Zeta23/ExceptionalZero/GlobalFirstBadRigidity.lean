@@ -84,42 +84,50 @@ theorem exists_globalFirstBad_intrinsicShell_cubicFactorization_of_offLine_zero
     intro q x hx
     exact euclideanParity_nonnegative_of_lt_least_anyParityBad
       L hmin q hprevlt x hx
-  have hcubicNe : oddCubicCompressionVector Nstar ≠ 0 :=
-    oddCubicCompressionVector_ne_zero Nstar hNstar2
+  have hglobalSucc : AnyParityBad L (Nprev + 1) := by
+    rw [← hsucc]
+    exact hglobalStar
+  have hminSucc :
+      ∀ N : ℕ, N < Nprev + 1 → ¬ AnyParityBad L N := by
+    intro N hN
+    apply hmin N
+    rw [hsucc]
+    exact hN
+  have hNsucc2 : 2 ≤ Nprev + 1 := by
+    rw [← hsucc]
+    exact hNstar2
+  have hcubicNe : oddCubicCompressionVector (Nprev + 1) ≠ 0 :=
+    oddCubicCompressionVector_ne_zero (Nprev + 1) hNsucc2
   have hcubicFactor :
-      ∀ z : euclideanEvenBoundaryFlatSubspace Nstar,
-        evenOddCompressedIntertwiningDefect L Nstar z =
-          cubicDefectFunctional L Nstar z •
-            oddCubicCompressionVector Nstar := by
+      ∀ z : euclideanEvenBoundaryFlatSubspace (Nprev + 1),
+        evenOddCompressedIntertwiningDefect L (Nprev + 1) z =
+          cubicDefectFunctional L (Nprev + 1) z •
+            oddCubicCompressionVector (Nprev + 1) := by
     intro z
     exact evenOddCompressedIntertwiningDefect_eq_cubicFunctional_smul
-      hL Nstar hNstar2 z
-  rcases hglobalStar with heven | hodd
+      hL (Nprev + 1) hNsucc2 z
+  rcases hglobalSucc with heven | hodd
   · obtain ⟨lam, hlam, v, hvne, hveig⟩ :=
       exists_negative_eigenmode_of_parityBad heven
     have hshell :=
       negative_eigenmode_exists_intrinsic_shell_component
-        .even hL Nprev (hprevBoth .even) hlam hvne (by simpa [hsucc] using hveig)
+        .even hL Nprev (hprevBoth .even) hlam hvne hveig
     have hshellDim := finrank_intrinsicParitySuccShell .even Nprev hNprev
     have hkkt := parityKKTResidual_of_eigenmode
-      .even L Nstar lam v hveig
-    rw [hsucc] at heven hmin hcubicNe hcubicFactor hkkt
+      .even L (Nprev + 1) lam v hveig
     exact ⟨L, hL, Nprev, hNprev, .even, lam, hlam, v, hvne,
-      by simpa using hveig,
-      Or.inl heven, hmin, hprevBoth, hshell, hshellDim, hkkt,
+      hveig, Or.inl heven, hminSucc, hprevBoth, hshell, hshellDim, hkkt,
       hcubicNe, hcubicFactor⟩
   · obtain ⟨lam, hlam, v, hvne, hveig⟩ :=
       exists_negative_eigenmode_of_parityBad hodd
     have hshell :=
       negative_eigenmode_exists_intrinsic_shell_component
-        .odd hL Nprev (hprevBoth .odd) hlam hvne (by simpa [hsucc] using hveig)
+        .odd hL Nprev (hprevBoth .odd) hlam hvne hveig
     have hshellDim := finrank_intrinsicParitySuccShell .odd Nprev hNprev
     have hkkt := parityKKTResidual_of_eigenmode
-      .odd L Nstar lam v hveig
-    rw [hsucc] at hodd hmin hcubicNe hcubicFactor hkkt
+      .odd L (Nprev + 1) lam v hveig
     exact ⟨L, hL, Nprev, hNprev, .odd, lam, hlam, v, hvne,
-      by simpa using hveig,
-      Or.inr hodd, hmin, hprevBoth, hshell, hshellDim, hkkt,
+      hveig, Or.inr hodd, hminSucc, hprevBoth, hshell, hshellDim, hkkt,
       hcubicNe, hcubicFactor⟩
 
 /-- Existential off-line-zero wrapper. -/
