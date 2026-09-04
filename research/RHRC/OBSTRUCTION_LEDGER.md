@@ -183,52 +183,108 @@ The no-placeholder gate is syntactic hardening, not elaboration.
 
 PR #110 illustrates a distinct follow-on rule: compiler validity and production axiom promotion are separate checks. Its final head was in the successful `Zeta23.CCM` import/build closure, but the last repair removed module-local `#print axioms` commands. The theorems are PROVED by compiler/CI; promoted claim registration still requires exact `#check/#print axioms` coverage in `ClaimBindings.lean`.
 
+PRs #112/#113 reinforce the distinction: their declarations are compiler-authoritative because the exact CCM/ExceptionalZero build closure passed, while machine claim-promotion entries remain a separate control-plane action.
+
 ## OBS-019 — one-dimensional successor shell is not an invariant negative line
 
-**Status:** PROJECT FIREWALL; AMBIENT SHELL PROJECTION ESCAPED BY PR #109.
+**Status:** PROJECT FIREWALL; INTRINSIC BLOCK-GEOMETRY ESCAPE CLOSED BY #112/#113.
 
-#105 proves the successor parity shell has complex finrank one. #107 proves a negative successor eigenmode is not inherited from the predecessor. #109 upgrades this to a theorem-backed nonzero orthogonal projection of the negative eigenmode onto the already-proved **ambient Euclidean** successor shell.
+Historical progression:
 
-What remains unproved:
+- #105 proved the ambient successor parity shell has complex finrank one;
+- #107 proved a negative successor eigenmode is not inherited from the predecessor;
+- #109 proved nonzero ambient orthogonal shell projection;
+- #112 internalized predecessor W and shell S inside the exact successor parity subtype and proved `dim_C S=1` plus spanning;
+- #113 proved W and S are complementary, exposed canonical projections, and proved the negative first-bad eigenmode has nonzero **canonical** shell coordinate.
+
+Now PROVED:
+
+```text
+V = W ⊕ S,
+dim_C S = 1,
+intrinsicShellPart(v_bad) != 0,
+intrinsicShellPart(x)=0 <-> x∈W.
+```
+
+Still not proved:
 
 - the eigenmode is purely shell;
 - the shell is invariant under the compressed canonical operator;
-- a fully intrinsic predecessor/shell decomposition inside the successor parity subtype;
 - D transports the shell orthogonally;
 - negative index exactly one / unique negative eigenline as a separately formalized theorem.
 
-**DERIVED / OPEN FORMALIZATION:** predecessor nonnegativity plus one-complex-dimensional complement and one negative eigenvalue strongly constrain the negative index, but do not silently promote uniqueness.
+**Consequence:** use the canonical direct-sum coordinates from #113, but do not silently replace the full eigenmode by a pure shell vector or invoke invariant-subspace spectral theory.
 
-**Escape requirement:** build the native successor-subtype block geometry and theoremize whichever negative-index/uniqueness consequence is actually needed by the scalar rigidity argument.
+**Current escape target:** for shell-incidence questions, exploit `shellPart(x)=0 <-> x∈W`; prove non-membership in W rather than rebuilding ambient projection geometry.
 
-## OBS-020 — rank-at-most-one parity defect is not unitary rank-one perturbation theory
+## OBS-020 — exact one-channel parity factorization is not unitary rank-one perturbation theory
 
-**Status:** PROJECT FIREWALL; ORIGIN PR #110.
+**Status:** PROJECT FIREWALL; FACTORIZATION ESCAPE CLOSED BY PR #112, NONZERO/METRIC ESCAPES OPEN.
 
-PR #110 proves, for positive aperture,
+#110 proved
 
 ```text
 range(T_- D - D T_+) <= C g_N
 finrank range(T_- D - D T_+) <= 1
 ```
 
-with explicit `g_N = P_- d^3`, and after algebraic conjugation through the Euclidean D-equivalence,
+with explicit nonzero `g_N=P_-d^3` for `N>=2`, plus the corresponding same-space algebraic conjugation bound.
+
+#112 strengthens the operator description to an exact pointwise factorization
 
 ```text
-finrank range(E^-1 T_- E - T_+) <= 1.
+F_N(v) = ell_N(v) • g_N
 ```
 
-It also proves `g_N != 0` for `N>=2`.
+through the canonical `cubicDefectFunctional` and proves the algebraic pullback of the cubic generator is nonzero.
 
-This does **not** prove:
+This still does **not** prove:
 
+- `ell_N` is nonzero;
 - the defect map is nonzero;
-- exact rank one;
-- an explicit outer-product factorization with a nonzero functional;
-- D or E is unitary/isometric;
+- exact rank one rather than rank zero or one;
+- D or the induced equivalence is unitary/isometric;
 - the conjugated odd compression is self-adjoint in the original even-sector inner product;
 - Hermitian rank-one interlacing, equal spectra, inertia transfer or positivity.
 
-**Consequence:** downstream work must either stay in algebraic rank/resolvent/determinant language or explicitly transport/prove the compatible metric before using self-adjoint perturbation theory.
+**Consequence:** downstream work may use the exact one-channel algebraic identity, but must stay in algebraic rank/resolvent/kernel language unless a compatible metric theorem is separately established.
 
-**Escape requirement:** isolate the defect functional, prove exact factorization/nonzeroness if true, and separately establish whatever metric compatibility a spectral perturbation argument requires.
+**Escape requirement:** prove `ell_N` nonzero only if actually needed and true; separately establish any metric compatibility before importing self-adjoint perturbation theory.
+
+## OBS-021 — shifted Schur reduction is not a contradiction
+
+**Status:** PROJECT FIREWALL; ORIGIN PR #113.
+
+#113 proves the safe first-bad block reduction
+
+```text
+(A-lam I)w = -Bs,
+w = -(A-lam I)^(-1)Bs,
+<Ts,s> - lam<s,s> - <(A-lam I)^(-1)Bs,Bs> = 0
+```
+
+for the genuine negative first-bad eigenmode with `lam<0` and nonzero canonical shell coordinate.
+
+This is a substantial reduction, but ordinary finite-dimensional Hermitian block systems with negative eigenvalues satisfy Schur/Feshbach identities of this type. The identity alone therefore does **not** prove positivity or exclude a negative eigenvalue.
+
+What remains open:
+
+- projected predecessor-block symmetry as a separate native theorem;
+- quantitative shifted coercivity / resolvent positivity and monotonicity;
+- cubic generator non-membership in the centered predecessor image;
+- nonzero cubic intrinsic shell coordinate;
+- identification of the cubic shell line with the negative-mode shell line;
+- cubic-normalized scale-free secular rigidity;
+- common even/odd resonance classification or exclusion.
+
+**Current highest-value escape test:** cubic-shell incidence. Because #113 proves `intrinsicShellPart(x)=0 <-> x∈W`, show the cubic generator (and its algebraic even pullback) is not in W. A promising but unproved explicit route is the predicted formula
+
+```text
+g_K = d^3 - alpha_K d,
+alpha_K = (3K^2+3K-1)/5,
+(g_K)_(+K)=K(K-1)(2K-1)/5.
+```
+
+The formula must be derived from the exact repository projection/indexing conventions before use.
+
+**Permanent warning:** uniqueness or monotonicity of a negative secular root is still not absence of a negative root. Additional CCM-specific shell/cubic/parity structure is required for an RH-directed contradiction.
