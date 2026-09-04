@@ -5,20 +5,16 @@
 ## Current theorem-state anchor
 
 ~~~text
-theorem-state anchor = PR #110 merge 07e0c845d128831b244b13503c9640b934bf4416
-validated theorem head = ca0c389827520e2005390637742389819dc97068
-validated theorem tree = f2e9985ac976c83ecfa7f5dbce64b1e0193680b0
-live main at sync start = 07e0c845d128831b244b13503c9640b934bf4416
-theorem-bearing merged through = PR #110
-RHRC #738 = SUCCESS
-Permansson #511 = SUCCESS
+theorem-state anchor = PR #113 merge d3b62817711c4c97f0d817c8b4a4ac0bc646d733
+validated theorem head = 2da46eed0068613d904bc67e20790f46bc46818e
+validated theorem tree = 066f5f51041b302dfa1a66d84a024660a09acbf5
+theorem-bearing merged through = PR #113
+RHRC #761 = SUCCESS
+Permansson #534 = SUCCESS
 CCM build = SUCCESS
 ExceptionalZero build = SUCCESS
 normalization/source firewall = SUCCESS
 forbidden-placeholder gate = SUCCESS
-#109 printed axiom surface = [propext, Classical.choice, Quot.sound]
-#110 promoted theorem-specific axiom surface = revalidated by this control-plane PR
-sorryAx/project axioms = absent by authoritative gates
 RH = OPEN
 ~~~
 
@@ -28,57 +24,65 @@ RH = OPEN
 DONE
   W0/W1/W2-ZS + finite legal approximation
   F1 canonical finite negative obstruction
-  constrained algebra / Hermitianity / displacement
-  Euclidean constrained sector
-  exact centered N-flow
-  fixed-L negative constrained tail
-  exact reversal symmetry
-  direct parity decomposition
-  D : V_N^+ ≃ V_N^-
-  exact parity dimensions N-1/N-1
-  D_M E = E D_N
-  exact parity quadratic split
-  fixed bad parity tail
-  least bad parity size >=2
+  constrained algebra / Hermitianity / Euclidean sector
+  exact centered N-flow + fixed-L negative tail
+  exact reversal symmetry + even commutator collapse
+  direct parity decomposition + algebraic D-equivalence
+  fixed bad parity tail + least bad size
   predecessor parity sector nonnegative
   exact 1D Euclidean successor parity shell
   parity-constrained Euclidean compression
-  exact compressed/self quadratic equality
-  compressed symmetry
-  ParityBad -> negative Rayleigh eigenmode
-  predecessor nonnegativity transported into successor matrix
-  negative successor eigenmode not inherited
-  off-line zero -> first-bad negative spectral endpoint
-  nonzero projection of the negative mode to the 1D ambient successor shell
-  exact parity normal spaces
-    even residual normal = span{1,d²}
-    odd residual normal = span{d}
-  exact parity KKT residual
-  off-line zero -> first-bad shell + KKT endpoint
-  Euclidean algebraic D-equivalence V_N^+ ≃ V_N^- for N>=1
-  M(Du)=D(Mu) on the even constrained sector
-  explicit odd cubic channel g_N = P_- d³
-  g_N != 0 for N>=2
-  range(T_- D - D T_+) <= C g_N
-  finrank range(T_- D - D T_+) <= 1
-  finrank range(E^-1 T_- E - T_+) <= 1
+  genuine negative Rayleigh eigenmode
+  negative first-bad eigenmode not inherited
+  nonzero ambient shell projection
+  exact parity normal spaces + KKT residual
+  explicit nonzero cubic odd channel g_N=P_-d^3
+  parity compressed defect range in C g_N and finrank <=1
+  global least bad size with BOTH predecessor parities nonnegative
+  intrinsic predecessor W inside successor V
+  intrinsic one-dimensional shell S inside successor V
+  exact cubic defect functional and factorization F_N(v)=ell_N(v) g_N
+  canonical complement V = W ⊕ S
+  canonical predecessor/shell projections
+  shellPart(v)=0 iff v∈W
+  first-bad negative mode has canonical shellPart !=0
+  projected predecessor block A=P_W T|_W
+  predecessor nonnegativity descends to A
+  A-lam I bijective for every real lam<0
+  shifted resolvent R=(A-lam I)^(-1)
+  (A-lam I)w=-Bs and w=-R Bs
+  basis-free scalar shifted Schur identity
+  off-line zero -> same global-first-bad KKT+cubic+Schur finite state
 
-NOW — FIRST-BAD-RIGIDITY-D
-  internalize predecessor W inside the successor parity subtype V
-  build the native decomposition V = W ⊕ S with dim_C S = 1
-  write the first-bad eigenmode as w + alpha*s and theorem-lock alpha != 0
-  prove A - lam I invertible from A >= 0 and lam < 0
-  derive the shifted scalar Schur/Feshbach equation
-  strengthen the parity defect to an explicit rank-one factorization when possible
-    F_N = g_N ⊗ ell_N
-  pull the cubic channel back through E and compare it with the first-bad shell
-  theoremize the parity nullity-difference <= 1 consequence
-  package the common-resonance vs one-channel-resolvent dichotomy
+NOW — FIRST-BAD-RIGIDITY-E1: CUBIC-SHELL INCIDENCE
+  exploit shellPart(x)=0 iff x∈W
+  prove/falsify exact odd cubic projection formula
+  prove odd cubic generator at successor size is not in centered predecessor W
+  conclude canonical odd cubic shellPart !=0
+  pull cubic generator algebraically through D^-1 for the even carrier
+  prove corresponding even predecessor non-membership / shellPart !=0
 
-THEN
-  attack / classify simultaneous even-odd resonance at a first bad state
-  compose the scalar shell and scalar parity-defect channels
-  test whether the first-bad state is impossible
+THEN — E1b / E2
+  dim_C S=1 + two nonzero shell vectors
+    -> negative-mode shell coordinate = beta * cubic shell coordinate, beta!=0
+  transfer #113 Schur identity onto the canonical cubic shell line
+  normalize by shell norm / scalar scale
+  obtain a scale-free one-dimensional cubic-normalized secular equation
+
+THEN — E3
+  prove projected predecessor block A symmetric
+  strengthen A-lam I to quantitative shifted coercivity
+  derive positive-resolvent / norm-bound statements if Lean-cheap
+  establish scalar resolvent monotonicity if possible
+
+THEN — E4
+  theoremize parity nullity-difference <=1 algebraically
+  package common even/odd resonance vs one-channel opposite-parity resolvent
+  classify or exclude simultaneous first-bad resonance using KKT/displacement/cubic/shell data
+
+OPTIONAL / CHEAP IF AVAILABLE
+  codim-one predecessor nonnegative + negative successor mode
+    -> negative index exactly one / unique negative eigenline
 
 PARALLEL SOURCE
   G1-B1B -> G1-final -> S-NEG -> G23
@@ -86,36 +90,115 @@ PARALLEL SOURCE
 RH OPEN
 ~~~
 
-## Why FIRST-BAD-RIGIDITY-D is next
+## Why E1 is now the highest-leverage next theorem
 
-PR #109 closes the shell/KKT package in the ambient Euclidean formulation: the distinguished negative first-bad eigenmode has a nonzero projection to the already-proved one-dimensional successor shell, the parity normal spaces are exact, and the KKT residual is explicit.
+#112 and #113 completed the tasks that the post-#110 plan listed under FIRST-BAD-RIGIDITY-D: the native predecessor/shell geometry, exact cubic factorization, safe shifted inverse and scalar Schur identity are all theorem-backed.
 
-PR #110 then composes the even KKT-normal geometry with the exact even commutator collapse. After applying D, the even normal channel `span{1,d²}` becomes `span{d,d³}`; odd compression kills the `d` component, leaving only the projected cubic channel `g_N = P_- d³`. Lean proves the resulting even-to-odd compressed intertwining defect has range in `C g_N` and finrank at most one, and the same rank bound survives algebraic conjugation back to the even sector.
-
-The remaining first-bad problem is therefore not an arbitrary finite spectral problem. It has two one-dimensional structures available for composition: the successor N-flow shell and the parity-compression defect channel.
-
-## Exact boundary on what #109 did not prove
-
-The successful #109 implementation keeps the predecessor/shell argument in the ambient Euclidean space. It does **not** yet provide the fully intrinsic successor-subtype block decomposition needed for a native Schur complement. That intrinsic block geometry remains part of FIRST-BAD-RIGIDITY-D.
-
-Negative index exactly one / uniqueness of the negative eigenline also remains **DERIVED / OPEN FORMALIZATION** unless separately theorem-locked.
-
-## Rank-one defect firewalls
-
-- `finrank <= 1` does not mean the defect is nonzero or has rank exactly one.
-- `g_N != 0` does not by itself prove the defect functional is nonzero.
-- the Euclidean D-equivalence is algebraic, not unitary or isometric.
-- conjugating the odd compression through D therefore does not automatically give a self-adjoint operator in the original even-sector inner product.
-- equal spectra, Hermitian rank-one interlacing and inertia transport do not follow from #110.
-
-## Schur firewall
-
-The predecessor block may be semidefinite. The safe future equation uses `A - lam I` for `lam < 0`:
+The remaining first-bad problem now contains two independently constructed one-dimensional structures at the same finite state:
 
 ~~~text
-c - lam - b* (A - lam I)^(-1) b = 0
+S_N = intrinsic N-flow shell, dim_C S_N = 1
+g_N = explicit cubic parity-defect generator.
 ~~~
 
-Never replace this with an `A⁻¹` formula at zero without a separate invertibility theorem.
+The #113 theorem
+
+~~~text
+intrinsicShellPart p N x = 0
+  <-> x ∈ intrinsicParityPredecessorSubspace p N
+~~~
+
+changes the proof strategy. To show the cubic channel couples to the shell, it is enough to prove that the cubic generator is not a centered predecessor extension. This is substantially smaller than building another ambient projection-comparison layer.
+
+## E1 explicit route to test first
+
+For the odd carrier, the exact odd normal space is `span{d}` and `g_K` is the orthogonal projection of `d^3` to the odd boundary-flat sector. The current algebraic lead is
+
+~~~text
+g_K = d^3 - alpha_K d,
+alpha_K = <d,d^3>/<d,d>.
+~~~
+
+On the centered grid `-K,...,K`, power-sum algebra suggests
+
+~~~text
+alpha_K = (3 K^2 + 3 K - 1)/5,
+(g_K)_(+K) = K(K-1)(2K-1)/5.
+~~~
+
+For `K>=2` the predicted outer coefficient is nonzero, whereas exact centered predecessor extension has zero on the new outer coordinates. If the repository's exact `orthogonalProjectionOnto`, inner-product convention and size indexing yield this formula, non-membership in W follows immediately.
+
+**Status: LEAD / HYPOTHESIS.** The formula must be theoremized or falsified before any downstream use.
+
+## E2 composition target
+
+Suppose E1 gives a cubic vector `c` with
+
+~~~text
+intrinsicShellPart p N c != 0.
+~~~
+
+The first-bad negative eigenmode `v` already satisfies
+
+~~~text
+intrinsicShellPart p N v != 0,
+Module.finrank C S = 1.
+~~~
+
+Therefore the two shell coordinates are nonzero scalar multiples. The #113 Schur expression is homogeneous of degree two in the shell vector, so the scalar can be normalized away. The target is a scalar equation attached to the **canonical cubic shell line** rather than an arbitrary eigenvector normalization.
+
+This is the first intended direct composition of the N-flow shell and the parity cubic-defect channel.
+
+## E3 shifted-block target
+
+#113 proves only what is needed for safe inversion. The next useful strengthening is
+
+~~~text
+A symmetric,
+Re <A w,w> >= 0,
+lam < 0
+  -> Re <(A-lam I)w,w> >= (-lam)||w||^2.
+~~~
+
+This should support a resolvent norm bound and, through a resolvent identity, monotonicity of the scalar Schur correction. These are generic rigidity tools; they become RH-relevant only after composition with the special CCM shell/cubic/parity structure.
+
+## E4 resonance target
+
+After algebraically transporting the odd compression to the even carrier, #110/#112 give a rank-at-most-one / exact one-channel defect. Standard finite-dimensional algebra suggests a kernel/nullity difference of at most one at each scalar. For an eigenvector one obtains a dichotomy:
+
+~~~text
+lam common even/odd resonance
+OR
+D v lies in one opposite-parity resolvent channel generated by g_N.
+~~~
+
+Do not invoke Hermitian rank-one interlacing: D is not unitary.
+
+## Falsification gates
+
+Before building around E1/E2, require these checks:
+
+- derive the cubic projection formula from the exact repository projection rather than parity intuition;
+- keep predecessor size N and successor size N+1 explicit;
+- verify exact outer-coordinate behavior of centered zero extension;
+- for the even pullback use only algebraic D-equivalence, not metric compatibility;
+- remember `g_N !=0` does not imply `cubicDefectFunctional !=0`;
+- remember nonzero shell coordinate does not imply pure shell;
+- remember the scalar Schur equation can have negative roots in generic Hermitian systems;
+- remember uniqueness/monotonicity of a negative root is not absence;
+- keep simultaneous resonance open until excluded by theorem;
+- do not introduce an RH-equivalent arithmetic hypothesis as an auxiliary estimate.
+
+## Current claim boundary
+
+**PROVED:** intrinsic direct-sum block geometry, exact cubic factorization, safe shifted inverse, predecessor reconstruction and scalar Schur equation at the same global first-bad finite state forced by an off-line zero.
+
+**DERIVED / OPEN FORMALIZATION:** projected A symmetry, quantitative shifted coercivity, negative index exactly one, resolvent monotonicity, parity nullity difference, resonance/resolvent dichotomy.
+
+**LEAD / HYPOTHESIS:** cubic-shell incidence, explicit outer coefficient formula, cubic-normalized Schur rigidity and exclusion of the remaining first-bad state.
+
+**OPEN:** positivity / finite-to-infinite closure / RH.
+
+Detailed post-green reasoning: `RESEARCH_LEADS_POST_113_DELTA.md`.
 
 **RH remains OPEN.**
