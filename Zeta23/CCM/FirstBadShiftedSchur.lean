@@ -351,7 +351,7 @@ theorem shiftedIntrinsicPredecessorBlock_eq_zero_implies
           inner ℂ
             (w : euclideanParityBoundaryFlatSubspace p (N + 1))
             (w : euclideanParityBoundaryFlatSubspace p (N + 1)) := by
-    exact inner_smul_real_left
+    exact inner_smul_real_left (𝕜 := ℂ)
       (w : euclideanParityBoundaryFlatSubspace p (N + 1))
       (w : euclideanParityBoundaryFlatSubspace p (N + 1)) lam
   rw [hsmul] at hnonneg
@@ -360,7 +360,7 @@ theorem shiftedIntrinsicPredecessorBlock_eq_zero_implies
         (inner ℂ
           (w : euclideanParityBoundaryFlatSubspace p (N + 1))
           (w : euclideanParityBoundaryFlatSubspace p (N + 1))) := by
-    simpa only [RCLike.smul_re] using hnonneg
+    simpa only [Complex.smul_re, smul_eq_mul] using hnonneg
   have hnorm :
       Complex.re
         (inner ℂ
@@ -651,7 +651,7 @@ theorem eigenmode_shiftedSchur_identity
               ((w : euclideanParityBoundaryFlatSubspace p (N + 1)) +
                 (s : euclideanParityBoundaryFlatSubspace p (N + 1)))
               (s : euclideanParityBoundaryFlatSubspace p (N + 1)) := by
-                exact inner_smul_real_left
+                exact inner_smul_real_left (𝕜 := ℂ)
                   ((w : euclideanParityBoundaryFlatSubspace p (N + 1)) +
                     (s : euclideanParityBoundaryFlatSubspace p (N + 1)))
                   (s : euclideanParityBoundaryFlatSubspace p (N + 1)) lam
@@ -660,7 +660,7 @@ theorem eigenmode_shiftedSchur_identity
               (s : euclideanParityBoundaryFlatSubspace p (N + 1))
               (s : euclideanParityBoundaryFlatSubspace p (N + 1)) := by
               rw [inner_add_left, hws0, zero_add]
-              simp only [Algebra.smul_def]
+              simp only [RCLike.real_smul_eq_coe_mul]
     exact heigInner.trans hlaminner
   rw [hcross] at heq
   change
