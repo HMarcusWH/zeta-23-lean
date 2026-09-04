@@ -661,6 +661,7 @@ theorem eigenmode_shiftedSchur_identity
               (s : euclideanParityBoundaryFlatSubspace p (N + 1)) := by
               rw [inner_add_left, hws0, zero_add]
               simp only [RCLike.real_smul_eq_coe_mul]
+              rfl
     exact heigInner.trans hlaminner
   rw [hcross] at heq
   change
