@@ -37,6 +37,8 @@ These must be updated when the underlying state changes:
 - dead-route and obstruction ledgers;
 - `research/RHRC/VALIDATION_PROTOCOL.md` when validation semantics or gates change.
 
+Dated post-green delta files such as `RESEARCH_LEADS_POST_113_DELTA.md` are current research supplements until a later delta supersedes them. Older deltas remain historical evidence and should not be rewritten to make them look current.
+
 ### Historical settlements
 
 PR-specific settlement and dated audit files record what was known at that time. Do not rewrite their mathematical history merely to make them look current.
@@ -71,12 +73,15 @@ When recording repository state in living documents:
 - do not open a follow-up PR merely to replace the anchor with the SHA of a docs-only merge;
 - advance the theorem-state anchor when theorem/claim state materially changes.
 
-Example:
+Current theorem-state anchor for this synchronization:
 
 ~~~text
-theorem-state anchor = PR #<theorem-bearing PR> merge <sha>
-theorem tree = <tree>
-live GitHub main = authoritative
+theorem-state anchor = PR #113 merge d3b62817711c4c97f0d817c8b4a4ac0bc646d733
+validated theorem head = 2da46eed0068613d904bc67e20790f46bc46818e
+theorem tree = 066f5f51041b302dfa1a66d84a024660a09acbf5
+RHRC #761 = SUCCESS
+Permansson #534 = SUCCESS
+RH = OPEN
 ~~~
 
 Machine registries and compiler/CI evidence still outrank the prose anchor.
@@ -100,11 +105,11 @@ After a post-green research pass, update documentation when any of these changes
 After every meaningful green result:
 
 1. verify exact head, theorem declarations, assumptions, axioms and CI;
-2. update claim/route registries if formal truth changed;
+2. update claim/route registries if formal promotion state changed;
 3. update the active route README if the route state changed;
-4. update RESEARCH_LEADS.md if a lead was added, promoted, blocked, falsified, superseded, resurrected or composed;
-5. update CURRENT_RESEARCH_PLAN.md if execution order or a decision gate changed;
-6. update the root/RHRC README when the public critical path changed;
+4. update `RESEARCH_LEADS.md` or add a new dated post-green delta when a lead was added, promoted, blocked, falsified, superseded, resurrected or composed;
+5. update `CURRENT_RESEARCH_PLAN.md` if execution order or a decision gate changed;
+6. update the root/RHRC README and audit records when the public critical path changed;
 7. leave historical settlements untouched except for an authority banner when necessary.
 
 A green but unmerged PR remains branch evidence until merged and registered.
@@ -117,13 +122,23 @@ A theorem may be promoted only when its declaration is in the exact compiler-tes
 
 PR #103 is the canonical historical example: `ConstrainedParityGeometry.lean` was imported by `Zeta23.CCM`; `ParityBadness.lean` was merged but not imported. PR #105 later closed that gap by importing and compiling `ParityBadness.lean`.
 
-PR #110 supplies a second, different lesson: its final repair remained in the exact successful `Zeta23.CCM` import/build closure, so theorem validity is authoritative, but the repair removed the module-local `#print axioms` lines. Production promotion therefore requires restoring theorem-specific axiom inspection through `ClaimBindings.lean`; absence of those local print commands is not a theorem failure, but it is a control-plane audit gap.
+PR #110 supplies a second lesson: theorem validity was authoritative because the final repair remained in the exact successful `Zeta23.CCM` import/build closure, while production claim promotion still required theorem-specific binding/axiom inspection.
+
+PRs #112 and #113 add a third lesson: theorem validity can advance faster than the machine claim-promotion registry. The exact successful CCM/ExceptionalZero build closure through #113 is authoritative for the declarations it contains, but prose must not pretend that `CLAIM_REGISTRY.json` / `R003_PROMOTED_BINDINGS.json` contain entries that have not actually been added. A documentation-only synchronization can record theorem truth and research implications while leaving a clearly stated machine-promotion follow-up.
 
 See `VALIDATION_PROTOCOL.md`.
 
 ## Claim rule
 
 Documentation may explain implications, but it may not promote a claim beyond the exact theorem surface.
+
+Use the project labels consistently:
+
+- **PROVED** — exact statement established by Lean/CI;
+- **DERIVED** — straightforward consequence of proved results, not yet separately formalized;
+- **LEAD / HYPOTHESIS** — mathematically motivated route worth testing;
+- **EXPERIMENTAL SIGNAL** — numerical/discovery evidence only;
+- **OPEN** — not established.
 
 RH remains OPEN until the exact terminal theorem is proved and claim-validated.
 
@@ -133,18 +148,24 @@ For R003, `R003_PROMOTED_BINDINGS.json` is the declared production binding surfa
 
 The RHRC suite enforces this through `promoted_binding_lint.py`. Supporting theorem checks may exist without individual registry promotion, so CI does not equate every `#check` with a claim; promotion intent must be declared explicitly.
 
-## Current external handover transition after PR #110
+The #112/#113 theorem packages are compiler-authoritative whether or not their final endpoint claims have yet been added to the machine promotion surface. Until that promotion is performed, describe them as theorem-backed declarations, not as machine-registry entries.
 
-The external v1.7 retirement condition fired at F1 / PR #94. Living repository SSOTs control execution. Any external v2.x handover must now start from the merged #110 theorem state, not the stale #107 control-plane prose:
+## Current external handover transition after PR #113
+
+The external v1.7 retirement condition fired at F1 / PR #94. Living repository SSOTs control execution. Any external v2.x handover must start from the merged #113 theorem state:
 
 ~~~text
-main/theorem-state anchor = 07e0c845d128831b244b13503c9640b934bf4416
-validated theorem head = ca0c389827520e2005390637742389819dc97068
-theorem tree = f2e9985ac976c83ecfa7f5dbce64b1e0193680b0
+main/theorem-state anchor = d3b62817711c4c97f0d817c8b4a4ac0bc646d733
+validated theorem head = 2da46eed0068613d904bc67e20790f46bc46818e
+theorem tree = 066f5f51041b302dfa1a66d84a024660a09acbf5
 FIRST-BAD-SPECTRUM = PROVED
-FIRST-BAD ambient shell projection + parity KKT = PROVED / #109
-rank-at-most-one parity compression defect = PROVED / #110
-FIRST-BAD-RIGIDITY-D scalar/block rigidity = NEXT
+ambient shell projection + exact parity KKT = PROVED / #109
+cubic parity defect range/finrank <=1 = PROVED / #110
+global first bad + intrinsic one-dimensional shell = PROVED / #112
+exact cubic factorization = PROVED / #112
+canonical V=W⊕S + shifted Schur reduction = PROVED / #113
+FIRST-BAD-RIGIDITY-E cubic-shell composition = NEXT
+RH = OPEN
 ~~~
 
 Do not create or update an external handover inside a repository PR unless explicitly requested.
