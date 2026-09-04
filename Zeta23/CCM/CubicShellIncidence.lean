@@ -37,6 +37,13 @@ Firewalls:
   RH theorem is claimed.
 -/
 
+/-- The rightmost grid coordinate has centered index equal to the grid
+radius.  The generic helper keeps endpoint arithmetic out of downstream
+projection arguments. -/
+@[simp] theorem centeredIndex_finLast (K : ℕ) :
+    centeredIndex K (Fin.last (2 * K)) = (K : ℤ) := by
+  simp [centeredIndex] <;> omega
+
 /-- Rightmost coordinate in the successor grid for a one-step centered
 extension from size `N` to size `N+1`. -/
 def successorRightOuterIndex (N : ℕ) : Fin (2 * (N + 1) + 1) :=
@@ -44,7 +51,7 @@ def successorRightOuterIndex (N : ℕ) : Fin (2 * (N + 1) + 1) :=
 
 @[simp] theorem centeredIndex_successorRightOuterIndex (N : ℕ) :
     centeredIndex (N + 1) (successorRightOuterIndex N) = (N + 1 : ℤ) := by
-  simp [successorRightOuterIndex, centeredIndex]
+  simpa [successorRightOuterIndex] using centeredIndex_finLast (N + 1)
 
 /-- The new right outer coordinate is not in the range of the one-step
 centered predecessor embedding. -/
@@ -149,6 +156,19 @@ theorem sum_cubicOuterMomentTerm_neg
       exact ⟨i1, Finset.mem_univ i1, hstrict⟩
     _ = 0 := by simp
 
+/-- Pointwise real-part normalization for the first moment of
+`cubicOuterVanishingRaw`.  Keeping the complex-to-real coercion step local
+prevents the finite-sum proof from depending on fragile simplifier behavior. -/
+theorem re_cubicOuterVanishing_summand
+    (K : ℕ) (i : Fin (2 * K + 1)) :
+    Complex.re
+        ((centeredIndex K i : ℂ) *
+          ((centeredIndex K i : ℂ) ^ 3 -
+            (K : ℂ) ^ 2 * (centeredIndex K i : ℂ))) =
+      cubicOuterMomentTerm K i := by
+  simp [cubicOuterMomentTerm, Complex.mul_re]
+  ring
+
 /-- The raw vector `d^3-K^2 d` cannot satisfy the first boundary-flat moment
 when `K>=2`.  This is the arithmetic obstruction used instead of a stronger
 closed-form projection coefficient. -/
@@ -168,11 +188,9 @@ theorem centeredMoment_one_cubicOuterVanishingRaw_ne_zero
                 (K : ℂ) ^ 2 * (centeredIndex K i : ℂ))) = _
     rw [map_sum]
     apply Finset.sum_congr rfl
-    intro i hi
-    simp only [map_mul, Complex.reCLM_apply]
-    simp [cubicOuterMomentTerm]
-    push_cast
-    ring
+    intro i _
+    simpa only [Complex.reCLM_apply, pow_one] using
+      re_cubicOuterVanishing_summand K i
   intro hzero
   have hz : (∑ i : Fin (2 * K + 1), cubicOuterMomentTerm K i) = 0 := by
     rw [← hre, hzero]
@@ -235,7 +253,7 @@ theorem oddCubicCompressionVector_rightOuter_ne_zero
   rcases hnormal with ⟨a, ha⟩
   let ir : Fin (2 * K + 1) := Fin.last (2 * K)
   have hir : centeredIndex K ir = (K : ℤ) := by
-    simp [ir, centeredIndex]
+    simpa [ir] using centeredIndex_finLast K
   have hcoord := congrArg
     (fun x : EuclideanSpace ℂ (Fin (2 * K + 1)) => x ir) ha
   have houter' :
@@ -315,22 +333,21 @@ theorem euclideanIndexLinearMap_centeredZeroExtend
   exact indexMatrix_mulVec_centeredZeroExtend hNM
     ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x)
 
-/-- Algebraic D transport sends the even intrinsic predecessor image into the
-odd intrinsic predecessor image.  No metric property of D is used. -/
+/-- Algebraic D transport sends the native even predecessor image into the
+native odd predecessor image.  The theorem is deliberately stated in ambient
+Euclidean membership so no parity-subtype coercion is needed at the D API
+boundary.  No metric property of D is used. -/
 theorem evenIndex_mem_oddIntrinsicPredecessor_of_mem_evenIntrinsicPredecessor
     (N : ℕ)
-    (v : euclideanParityBoundaryFlatSubspace .even (N + 1))
-    (hv : v ∈ intrinsicParityPredecessorSubspace .even N) :
-    (euclideanEvenToOddIndexLinearMap (N + 1)
-      (v : euclideanEvenBoundaryFlatSubspace (N + 1)) :
-      euclideanParityBoundaryFlatSubspace .odd (N + 1)) ∈
-        intrinsicParityPredecessorSubspace .odd N := by
-  have hv' := hv
-  change
-    ((v : euclideanParityBoundaryFlatSubspace .even (N + 1)) :
+    (v : euclideanEvenBoundaryFlatSubspace (N + 1))
+    (hv :
+      (v : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) ∈
+        euclideanParityEmbeddedSuccSubspace .even N) :
+    ((euclideanEvenToOddIndexLinearMap (N + 1) v :
+        euclideanOddBoundaryFlatSubspace (N + 1)) :
       EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) ∈
-        euclideanParityEmbeddedSuccSubspace .even N at hv'
-  rcases hv' with ⟨x, hx, hxv⟩
+        euclideanParityEmbeddedSuccSubspace .odd N := by
+  rcases hv with ⟨x, hx, hxv⟩
   have hxEven : x ∈ euclideanEvenBoundaryFlatSubspace N := by
     simpa using hx
   let xEven : euclideanEvenBoundaryFlatSubspace N := ⟨x, hxEven⟩
@@ -340,12 +357,6 @@ theorem evenIndex_mem_oddIntrinsicPredecessor_of_mem_evenIntrinsicPredecessor
       (yOdd : EuclideanSpace ℂ (Fin (2 * N + 1))) ∈
         euclideanParityBoundaryFlatSubspace .odd N := by
     exact yOdd.property
-  change
-    ((euclideanEvenToOddIndexLinearMap (N + 1)
-      (v : euclideanEvenBoundaryFlatSubspace (N + 1)) :
-        euclideanOddBoundaryFlatSubspace (N + 1)) :
-      EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) ∈
-        euclideanParityEmbeddedSuccSubspace .odd N
   refine ⟨(yOdd : EuclideanSpace ℂ (Fin (2 * N + 1))), hyOdd, ?_⟩
   rw [coe_euclideanEvenToOddIndexLinearMap]
   rw [coe_euclideanEvenToOddIndexLinearMap]
@@ -380,18 +391,24 @@ theorem successorPulledBackCubicCompressionVector_not_mem_intrinsicPredecessor
       euclideanParityBoundaryFlatSubspace .even (N + 1)) ∉
         intrinsicParityPredecessorSubspace .even N := by
   intro hmem
+  have hmem' := hmem
+  change
+    ((successorPulledBackCubicCompressionVector N :
+        euclideanEvenBoundaryFlatSubspace (N + 1)) :
+      EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) ∈
+        euclideanParityEmbeddedSuccSubspace .even N at hmem'
   have htransport :=
     evenIndex_mem_oddIntrinsicPredecessor_of_mem_evenIntrinsicPredecessor
-      N
-      (successorPulledBackCubicCompressionVector N :
-        euclideanParityBoundaryFlatSubspace .even (N + 1)) hmem
+      N (successorPulledBackCubicCompressionVector N) hmem'
   have hmap := evenIndex_successorPulledBackCubicCompressionVector N
-  have hoddmem :
-      (oddCubicCompressionVector (N + 1) :
-        euclideanParityBoundaryFlatSubspace .odd (N + 1)) ∈
-          intrinsicParityPredecessorSubspace .odd N := by
-    simpa [hmap] using htransport
-  exact (oddCubicCompressionVector_not_mem_intrinsicPredecessor N hN) hoddmem
+  rw [hmap] at htransport
+  apply oddCubicCompressionVector_not_mem_intrinsicPredecessor N hN
+  change
+    ((oddCubicCompressionVector (N + 1) :
+        euclideanOddBoundaryFlatSubspace (N + 1)) :
+      EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) ∈
+        euclideanParityEmbeddedSuccSubspace .odd N
+  exact htransport
 
 /-- Parity-uniform cubic vector at a one-step successor.  Odd parity uses the
 native cubic generator; even parity uses only the algebraic D-pullback. -/
