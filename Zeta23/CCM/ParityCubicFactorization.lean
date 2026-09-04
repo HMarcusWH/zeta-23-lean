@@ -68,7 +68,16 @@ theorem evenOddCompressedIntertwiningDefect_eq_cubicFunctional_smul
         inner ℂ (oddCubicCompressionVector N)
           (oddCubicCompressionVector N) = a
     rw [ha]
-    rw [inner_smul_right]
+    have hinner :
+        inner ℂ (oddCubicCompressionVector N)
+            (a • oddCubicCompressionVector N) =
+          a * inner ℂ (oddCubicCompressionVector N)
+            (oddCubicCompressionVector N) :=
+      inner_smul_right
+        (oddCubicCompressionVector N)
+        (oddCubicCompressionVector N)
+        a
+    rw [hinner]
     exact mul_div_cancel_right₀ a hgg
   rw [ha, hcoeff]
 
