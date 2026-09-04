@@ -39,6 +39,11 @@ theorem intrinsicPredecessor_disjoint_shell
       (intrinsicParitySuccShell p N) := by
   rw [disjoint_iff_inf_le]
   rintro x ⟨hxW, hxS⟩
+  have hxW' := hxW
+  change
+    ((x : euclideanParityBoundaryFlatSubspace p (N + 1)) :
+        EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) ∈
+      euclideanParityEmbeddedSuccSubspace p N at hxW'
   have hxS' := hxS
   change
     ((x : euclideanParityBoundaryFlatSubspace p (N + 1)) :
@@ -47,25 +52,18 @@ theorem intrinsicPredecessor_disjoint_shell
         euclideanParityBoundaryFlatSubspace p (N + 1) at hxS'
   have hinner :
       inner ℂ
-          (((x : intrinsicParityPredecessorSubspace p N) :
-              euclideanParityBoundaryFlatSubspace p (N + 1)) :
+          ((x : euclideanParityBoundaryFlatSubspace p (N + 1)) :
             EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
-          (((x : intrinsicParityPredecessorSubspace p N) :
-              euclideanParityBoundaryFlatSubspace p (N + 1)) :
+          ((x : euclideanParityBoundaryFlatSubspace p (N + 1)) :
             EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) = 0 := by
-    exact Submodule.inner_left_of_mem_orthogonal hxW hxS'.1
+    exact Submodule.inner_left_of_mem_orthogonal hxW' hxS'.1
   have hx0Ambient :
-      (((x : intrinsicParityPredecessorSubspace p N) :
-          euclideanParityBoundaryFlatSubspace p (N + 1)) :
+      ((x : euclideanParityBoundaryFlatSubspace p (N + 1)) :
         EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) = 0 :=
     (inner_self_eq_zero).mp hinner
-  have hx0V :
-      (x : euclideanParityBoundaryFlatSubspace p (N + 1)) = 0 := by
-    apply Subtype.ext
-    exact hx0Ambient
   have hx0 : x = 0 := by
     apply Subtype.ext
-    exact hx0V
+    exact hx0Ambient
   simpa [hx0]
 
 /-- The intrinsic predecessor and intrinsic successor shell form a genuine
