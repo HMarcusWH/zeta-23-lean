@@ -309,20 +309,16 @@ theorem shiftedIntrinsicPredecessorBlock_eq_zero_implies
     exact sub_eq_zero.mp hshift
   have hnonneg :=
     re_inner_intrinsicPredecessorBlock_nonnegative p hL N hprev w
-  rw [hAw] at hnonneg
-  have hinner :
-      inner ℂ ((lam : ℂ) • w) w =
-        (lam : ℂ) * inner ℂ w w := by
-    simpa using (inner_smul_left (𝕜 := ℂ) w w (r := (lam : ℂ)))
-  rw [hinner, Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im,
-    zero_mul, sub_zero] at hnonneg
+  rw [hAw, inner_smul_real_left] at hnonneg
+  have hnonneg' : 0 ≤ lam * Complex.re (inner ℂ w w) := by
+    simpa [Algebra.smul_def, Complex.mul_re] using hnonneg
   have hnorm : Complex.re (inner ℂ w w) = ‖w‖ ^ 2 := by
     simpa only [RCLike.re_to_complex] using
       (norm_sq_eq_re_inner (𝕜 := ℂ) w).symm
-  rw [hnorm] at hnonneg
+  rw [hnorm] at hnonneg'
   have hneg : lam * ‖w‖ ^ 2 < 0 :=
     mul_neg_of_neg_of_pos hlam (show 0 < ‖w‖ ^ 2 by positivity)
-  exact (not_lt_of_ge hnonneg) hneg
+  exact (not_lt_of_ge hnonneg') hneg
 
 /-- `A - lam I` is injective for every `lam < 0`. -/
 theorem shiftedIntrinsicPredecessorBlock_injective
