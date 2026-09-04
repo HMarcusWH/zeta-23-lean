@@ -68,8 +68,8 @@ theorem evenOddCompressedIntertwiningDefect_eq_cubicFunctional_smul
         inner ℂ (oddCubicCompressionVector N)
           (oddCubicCompressionVector N) = a
     rw [ha]
-    simpa only [inner_smul_right] using
-      (mul_div_cancel_right₀ a hgg)
+    rw [inner_smul_right]
+    exact mul_div_cancel_right₀ a hgg
   rw [ha, hcoeff]
 
 /-- Cubic channel transported back to the even constrained carrier through
