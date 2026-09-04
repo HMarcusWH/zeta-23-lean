@@ -75,8 +75,14 @@ theorem exists_globalFirstBad_shiftedSchur_cubicFactorization_of_offLine_zero
                      (parityCompressedCanonical p L (Nprev + 1)
                        (s : euclideanParityBoundaryFlatSubspace p (Nprev + 1)))
                      (s : euclideanParityBoundaryFlatSubspace p (Nprev + 1)) -
-                   (lam : ℂ) * inner ℂ s s -
-                   inner ℂ (R b) b = 0) := by
+                   (lam : ℂ) *
+                     inner ℂ
+                       (s : euclideanParityBoundaryFlatSubspace p (Nprev + 1))
+                       (s : euclideanParityBoundaryFlatSubspace p (Nprev + 1)) -
+                   inner ℂ
+                     ((R b : intrinsicParityPredecessorSubspace p Nprev) :
+                       euclideanParityBoundaryFlatSubspace p (Nprev + 1))
+                     (b : euclideanParityBoundaryFlatSubspace p (Nprev + 1)) = 0) := by
   obtain ⟨L, hL, Nprev, hNprev, p, lam, hlam, v, hvne, hveig,
     hglobal, hmin, hprevBoth, _hshell, hshellDim, hkkt,
     hcubicNe, hcubicFactor⟩ :=
@@ -93,6 +99,11 @@ theorem exists_globalFirstBad_shiftedSchur_cubicFactorization_of_offLine_zero
       ∀ w : intrinsicParityPredecessorSubspace p Nprev,
         R (shiftedIntrinsicPredecessorBlock p L Nprev lam w) = w := by
     intro w
+    have hEapply :
+        E w = shiftedIntrinsicPredecessorBlock p L Nprev lam w := by
+      rfl
+    change E.symm (shiftedIntrinsicPredecessorBlock p L Nprev lam w) = w
+    rw [← hEapply]
     exact E.symm_apply_apply w
   have hresR :
       intrinsicPredecessorPart p Nprev v =
@@ -107,8 +118,14 @@ theorem exists_globalFirstBad_shiftedSchur_cubicFactorization_of_offLine_zero
            (parityCompressedCanonical p L (Nprev + 1)
              (s : euclideanParityBoundaryFlatSubspace p (Nprev + 1)))
            (s : euclideanParityBoundaryFlatSubspace p (Nprev + 1)) -
-         (lam : ℂ) * inner ℂ s s -
-         inner ℂ (R b) b = 0) := by
+         (lam : ℂ) *
+           inner ℂ
+             (s : euclideanParityBoundaryFlatSubspace p (Nprev + 1))
+             (s : euclideanParityBoundaryFlatSubspace p (Nprev + 1)) -
+         inner ℂ
+           ((R b : intrinsicParityPredecessorSubspace p Nprev) :
+             euclideanParityBoundaryFlatSubspace p (Nprev + 1))
+           (b : euclideanParityBoundaryFlatSubspace p (Nprev + 1)) = 0) := by
     simpa [R, E, shiftedIntrinsicPredecessorResolvent] using hschur
   exact ⟨L, hL, Nprev, hNprev, p, lam, hlam, v, hvne, hveig,
     hglobal, hmin, hprevBoth, hshellDim, hkkt, hcubicNe, hcubicFactor,
@@ -157,8 +174,14 @@ theorem exists_globalFirstBad_shiftedSchur_cubicFactorization_of_exists_offLine_
                      (parityCompressedCanonical p L (Nprev + 1)
                        (s : euclideanParityBoundaryFlatSubspace p (Nprev + 1)))
                      (s : euclideanParityBoundaryFlatSubspace p (Nprev + 1)) -
-                   (lam : ℂ) * inner ℂ s s -
-                   inner ℂ (R b) b = 0) := by
+                   (lam : ℂ) *
+                     inner ℂ
+                       (s : euclideanParityBoundaryFlatSubspace p (Nprev + 1))
+                       (s : euclideanParityBoundaryFlatSubspace p (Nprev + 1)) -
+                   inner ℂ
+                     ((R b : intrinsicParityPredecessorSubspace p Nprev) :
+                       euclideanParityBoundaryFlatSubspace p (Nprev + 1))
+                     (b : euclideanParityBoundaryFlatSubspace p (Nprev + 1)) = 0) := by
   obtain ⟨ρ₀, hρ₀⟩ := hoff
   exact exists_globalFirstBad_shiftedSchur_cubicFactorization_of_offLine_zero
     ρ₀ hρ₀
