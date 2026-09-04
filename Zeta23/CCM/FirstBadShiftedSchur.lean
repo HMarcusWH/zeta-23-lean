@@ -14,13 +14,13 @@ open scoped BigOperators ComplexConjugate
 
 PR #112 theorem-locked the intrinsic predecessor subspace `W`, the intrinsic
 one-step shell `S`, `W ⊔ S = ⊤`, `finrank S = 1`, and a first-bad negative
-eigenmode with nonzero shell content.  This module turns that geometry into the
+eigenmode with nonzero shell content. This module turns that geometry into the
 safe block reduction needed for a Schur/Feshbach argument.
 
 The predecessor block is the projected block `A = P_W T|_W`; no invariance of
-`W` or `S` under the compressed canonical operator is assumed.  For a negative
+`W` or `S` under the compressed canonical operator is assumed. For a negative
 first-bad eigenvalue `lam < 0`, predecessor nonnegativity implies that
-`A - lam I` is invertible.  The predecessor coordinates are therefore uniquely
+`A - lam I` is invertible. The predecessor coordinates are therefore uniquely
 resolved from the one-dimensional shell coordinate, and the eigenvalue equation
 reduces to a scalar shifted Schur identity.
 
@@ -185,7 +185,7 @@ theorem inner_intrinsicPredecessor_shell_eq_zero
         euclideanParityBoundaryFlatSubspace p (N + 1) at hs
   exact Submodule.inner_right_of_mem_orthogonal w.property hs.1
 
-/-- For a first-bad negative eigenmode, the *canonical* intrinsic shell
+/-- For a first-bad negative eigenmode, the canonical intrinsic shell
 coordinate is nonzero. -/
 theorem negative_eigenmode_intrinsicShellPart_ne_zero
     (p : ReversalParity)
@@ -214,7 +214,7 @@ theorem negative_eigenmode_intrinsicShellPart_ne_zero
   apply hnotIntrinsic
   exact (intrinsicShellPart_eq_zero_iff p N).mp hs0
 
-/-- Projected predecessor block `A = P_W T|_W`.  This definition does not
+/-- Projected predecessor block `A = P_W T|_W`. This definition does not
 assert that the compressed canonical operator preserves `W`. -/
 def intrinsicPredecessorBlock
     (p : ReversalParity) (L : ℝ) (N : ℕ) :
@@ -259,7 +259,21 @@ theorem inner_intrinsicPredecessorBlock_self
       (w : euclideanParityBoundaryFlatSubspace p (N + 1)) =
     inner ℂ y
       (w : euclideanParityBoundaryFlatSubspace p (N + 1))
-  rw [← hrec, inner_add_left, hort, add_zero]
+  calc
+    inner ℂ
+        ((intrinsicPredecessorPart p N y : intrinsicParityPredecessorSubspace p N) :
+          euclideanParityBoundaryFlatSubspace p (N + 1))
+        (w : euclideanParityBoundaryFlatSubspace p (N + 1)) =
+      inner ℂ
+        (((intrinsicPredecessorPart p N y : intrinsicParityPredecessorSubspace p N) :
+            euclideanParityBoundaryFlatSubspace p (N + 1)) +
+          ((intrinsicShellPart p N y : intrinsicParitySuccShell p N) :
+            euclideanParityBoundaryFlatSubspace p (N + 1)))
+        (w : euclideanParityBoundaryFlatSubspace p (N + 1)) := by
+          rw [inner_add_left, hort, add_zero]
+    _ = inner ℂ y
+        (w : euclideanParityBoundaryFlatSubspace p (N + 1)) := by
+          rw [hrec]
 
 /-- Predecessor nonnegativity descends to the projected predecessor block. -/
 theorem re_inner_intrinsicPredecessorBlock_nonnegative
@@ -327,13 +341,26 @@ theorem shiftedIntrinsicPredecessorBlock_eq_zero_implies
         (z : euclideanParityBoundaryFlatSubspace p (N + 1))) hAw
   have hnonneg :=
     re_inner_intrinsicPredecessorBlock_nonnegative p hL N hprev w
-  rw [hAwAmbient, inner_smul_real_left] at hnonneg
+  rw [hAwAmbient] at hnonneg
+  have hsmul :
+      inner ℂ
+          ((lam : ℂ) •
+            (w : euclideanParityBoundaryFlatSubspace p (N + 1)))
+          (w : euclideanParityBoundaryFlatSubspace p (N + 1)) =
+        lam •
+          inner ℂ
+            (w : euclideanParityBoundaryFlatSubspace p (N + 1))
+            (w : euclideanParityBoundaryFlatSubspace p (N + 1)) := by
+    exact inner_smul_real_left
+      (w : euclideanParityBoundaryFlatSubspace p (N + 1))
+      (w : euclideanParityBoundaryFlatSubspace p (N + 1)) lam
+  rw [hsmul] at hnonneg
   have hnonneg' :
       0 ≤ lam * Complex.re
         (inner ℂ
           (w : euclideanParityBoundaryFlatSubspace p (N + 1))
           (w : euclideanParityBoundaryFlatSubspace p (N + 1))) := by
-    simpa [Algebra.smul_def, Complex.mul_re] using hnonneg
+    simpa only [RCLike.smul_re] using hnonneg
   have hnorm :
       Complex.re
         (inner ℂ
@@ -499,7 +526,7 @@ theorem eigenmode_predecessorPart_eq_neg_resolvent_shell
   simpa [shiftedIntrinsicPredecessorResolvent, E] using happ
 
 /-- Basis-free scalar shifted Schur identity for a negative first-bad
-eigenmode.  The actual canonical shell component is used, so no arbitrary
+eigenmode. The actual canonical shell component is used, so no arbitrary
 normalization of the one-dimensional shell is required. -/
 theorem eigenmode_shiftedSchur_identity
     (p : ReversalParity)
@@ -613,10 +640,42 @@ theorem eigenmode_shiftedSchur_identity
             inner ℂ
               (s : euclideanParityBoundaryFlatSubspace p (N + 1))
               (s : euclideanParityBoundaryFlatSubspace p (N + 1)) := by
-      rw [inner_smul_left, inner_add_left, hws0, zero_add]
-      simp
+      calc
+        inner ℂ
+            ((lam : ℂ) •
+              ((w : euclideanParityBoundaryFlatSubspace p (N + 1)) +
+                (s : euclideanParityBoundaryFlatSubspace p (N + 1))))
+            (s : euclideanParityBoundaryFlatSubspace p (N + 1)) =
+          lam •
+            inner ℂ
+              ((w : euclideanParityBoundaryFlatSubspace p (N + 1)) +
+                (s : euclideanParityBoundaryFlatSubspace p (N + 1)))
+              (s : euclideanParityBoundaryFlatSubspace p (N + 1)) := by
+                exact inner_smul_real_left
+                  ((w : euclideanParityBoundaryFlatSubspace p (N + 1)) +
+                    (s : euclideanParityBoundaryFlatSubspace p (N + 1)))
+                  (s : euclideanParityBoundaryFlatSubspace p (N + 1)) lam
+        _ = (lam : ℂ) *
+            inner ℂ
+              (s : euclideanParityBoundaryFlatSubspace p (N + 1))
+              (s : euclideanParityBoundaryFlatSubspace p (N + 1)) := by
+              rw [inner_add_left, hws0, zero_add]
+              simp only [Algebra.smul_def]
     exact heigInner.trans hlaminner
   rw [hcross] at heq
+  change
+    inner ℂ
+        (parityCompressedCanonical p L (N + 1)
+          (s : euclideanParityBoundaryFlatSubspace p (N + 1)))
+        (s : euclideanParityBoundaryFlatSubspace p (N + 1)) -
+      (lam : ℂ) *
+        inner ℂ
+          (s : euclideanParityBoundaryFlatSubspace p (N + 1))
+          (s : euclideanParityBoundaryFlatSubspace p (N + 1)) -
+      inner ℂ
+        ((R b : intrinsicParityPredecessorSubspace p N) :
+          euclideanParityBoundaryFlatSubspace p (N + 1))
+        (b : euclideanParityBoundaryFlatSubspace p (N + 1)) = 0
   rw [← heq]
   ring
 
