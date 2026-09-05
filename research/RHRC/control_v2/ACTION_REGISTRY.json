@@ -1,5 +1,5 @@
 {
-  "schema_version": "RHRC-control-actions-1.0",
+  "schema_version": "RHRC-control-actions-1.1",
   "current_frontier": "FIRST_BAD_RIGIDITY_E2",
   "open_obligations": [
     "E2_CUBIC_NORMALIZED_SCHUR",
@@ -23,7 +23,7 @@
         "beta_N decay is unproved",
         "shell-gap tail lower bound is unproved",
         "summable infinite tail majorant is unproved",
-        "uniform L control is unproved"
+        "all-L certification / controlled L-dependence is unproved"
       ],
       "score_inputs": {
         "cost": 1.0,
@@ -36,7 +36,7 @@
       "first_breaks": [
         {"id": "DB-FB-01", "statement": "q_N-mu_N fails to remain usefully positive", "test_id": "probe_shell_gap", "estimated_cost": 1.0, "decisive_if_failed": true},
         {"id": "DB-FB-02", "statement": "beta_N fails to exhibit usable decay", "test_id": "probe_shell_coupling", "estimated_cost": 1.1, "decisive_if_failed": true},
-        {"id": "DB-FB-03", "statement": "no summable certified tail majorant is available", "test_id": "tail_majorant_test", "estimated_cost": 2.0, "decisive_if_failed": true}
+        {"id": "DB-FB-03", "statement": "beta_N^2/(q_N-mu_N) fails to support a summable certified tail majorant", "test_id": "tail_majorant_test", "estimated_cost": 2.0, "decisive_if_failed": true}
       ]
     },
     "E2_CUBIC_NORMALIZED_SCHUR": {

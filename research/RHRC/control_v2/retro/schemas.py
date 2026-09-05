@@ -31,6 +31,7 @@ class RetroSearchReceipt:
     search_scope: str
     search_complete: bool
     searched_sources: tuple[str, ...]
+    search_paths: tuple[str, ...]
     hits: tuple[HistoricalClue, ...]
 
     @property
@@ -43,6 +44,7 @@ class RetroSearchReceipt:
             "search_scope": self.search_scope,
             "search_complete": self.search_complete,
             "searched_sources": self.searched_sources,
+            "search_paths": self.search_paths,
             "hits": [h.to_dict() for h in self.hits],
         }
         raw = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
@@ -58,5 +60,6 @@ class RetroSearchReceipt:
             "search_scope": self.search_scope,
             "search_complete": self.search_complete,
             "searched_sources": list(self.searched_sources),
+            "search_paths": list(self.search_paths),
             "hits": [h.to_dict() for h in self.hits],
         }

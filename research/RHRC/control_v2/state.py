@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from control_v2.schemas import ResearchState, ResidualVector, TheoremAnchor
+from control_v2.schemas import ControlAnchor, ResearchState, ResidualVector, TheoremAnchor
 
 RHRC = Path(__file__).resolve().parents[1]
 
@@ -30,10 +30,24 @@ def load_research_state() -> ResearchState:
         status=str(raw_anchor["status"]),
     )
 
+    raw_control_anchor = control["merged_control_anchor"]
+    control_anchor = ControlAnchor(
+        pr=int(raw_control_anchor["pr"]),
+        merge_commit=str(raw_control_anchor["merge_commit"]),
+        tree=str(raw_control_anchor["tree"]),
+        status=str(raw_control_anchor["status"]),
+    )
+
+    if anchor.status != "MERGED_GREEN_THEOREM_STATE":
+        raise ValueError("theorem anchor must be a merged green theorem state")
+    if control_anchor.status != "MERGED_GREEN_CONTROL_STATE":
+        raise ValueError("control anchor must be a merged green control state")
+
     return ResearchState(
         boundary_id=control["boundary_id"],
         terminal_claim=control["terminal_claim"],
         anchor=anchor,
+        control_anchor=control_anchor,
         frontier_id=actions["current_frontier"],
         open_obligations=tuple(actions["open_obligations"]),
         residuals=ResidualVector(),

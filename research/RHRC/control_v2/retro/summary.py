@@ -19,6 +19,7 @@ def summarize_receipt(receipt: RetroSearchReceipt, *, top_k: int = 8) -> dict:
         "unique_clue_lines": len(unique_lines),
         "search_scope": receipt.search_scope,
         "search_complete": receipt.search_complete,
+        "search_paths": list(receipt.search_paths),
         "top_terms": term_counts.most_common(top_k),
         "top_paths": path_counts.most_common(top_k),
         "source_families": sorted(family_counts.items()),

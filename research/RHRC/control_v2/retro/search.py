@@ -8,21 +8,25 @@ from control_v2.retro.git_history import search_git_history
 from control_v2.retro.schemas import HistoricalClue, RetroSearchReceipt
 
 RETRO = Path(__file__).resolve().parent
+DEFAULT_GIT_SEARCH_PATHS = ("research/RHRC", "Zeta23")
 
 
 def search_concept(*, repo_root: Path, concept_id: str, as_of_ref: str,
                    archive_root: Path | None = None,
                    aliases_path: Path | None = None,
                    mode: str = "ARCHAEOLOGY",
-                   exhaustive: bool = True) -> RetroSearchReceipt:
+                   exhaustive: bool = True,
+                   git_search_paths: tuple[str, ...] = DEFAULT_GIT_SEARCH_PATHS) -> RetroSearchReceipt:
     """Search old implementations with vocabulary expansion.
 
-    Archaeology searches all Git refs whose commits predate the anchor, so old
-    unmerged branches are in scope. Counterfactual replay is deliberately
-    narrower: only commits reachable from the historical anchor are eligible.
-    `exhaustive=True` removes hit/commit caps and is required for claim-like
-    statements about having searched the declared historical domain.
+    Archaeology searches all Git refs whose commits predate the anchor, within
+    the explicitly declared Git search paths. Counterfactual replay is
+    deliberately narrower: only commits reachable from the historical anchor
+    are eligible. `exhaustive=True` removes hit/commit caps and is required for
+    claim-like statements about having searched that declared domain.
     """
+    if not git_search_paths:
+        raise ValueError("at least one Git search path is required")
     if aliases_path is None:
         aliases_path = RETRO / "CONCEPT_ALIAS_MAP.json"
     aliases = load_alias_map(aliases_path)
@@ -33,6 +37,7 @@ def search_concept(*, repo_root: Path, concept_id: str, as_of_ref: str,
         repo_root,
         terms,
         as_of_ref=as_of_ref,
+        paths=git_search_paths,
         all_refs_before_anchor=archaeology,
         max_commits_per_term=None if exhaustive else 25,
         max_hits=None if exhaustive else 200,
@@ -80,8 +85,9 @@ def search_concept(*, repo_root: Path, concept_id: str, as_of_ref: str,
         terms=terms,
         mode=mode,
         as_of_ref=as_of_ref,
-        search_scope="ALL_REFS_BEFORE_ANCHOR" if archaeology else "ANCHOR_REACHABLE_ONLY",
+        search_scope="ALL_REFS_BEFORE_ANCHOR_IN_DECLARED_PATHS" if archaeology else "ANCHOR_REACHABLE_ONLY_IN_DECLARED_PATHS",
         search_complete=exhaustive,
         searched_sources=tuple(searched),
+        search_paths=tuple(git_search_paths),
         hits=tuple(clues),
     )

@@ -31,6 +31,14 @@ class TheoremAnchor:
 
 
 @dataclass(frozen=True)
+class ControlAnchor:
+    pr: int
+    merge_commit: str
+    tree: str
+    status: str
+
+
+@dataclass(frozen=True)
 class ResidualVector:
     proof: float | None = None
     metric: float | None = None
@@ -48,6 +56,7 @@ class ResearchState:
     boundary_id: str
     terminal_claim: str
     anchor: TheoremAnchor
+    control_anchor: ControlAnchor
     frontier_id: str
     open_obligations: tuple[str, ...]
     residuals: ResidualVector = ResidualVector()
