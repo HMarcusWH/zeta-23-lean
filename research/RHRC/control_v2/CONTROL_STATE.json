@@ -6,7 +6,7 @@
     "pr": 115,
     "merge_commit": "a2fecffbef8fed1fdfba373aa5756acf2618e2a1",
     "tree": "47a2601e3464b0b4248e61c52b4560681f73c986",
-    "status": "MERGED_GREEN_THEOREM_BRANCH"
+    "status": "MERGED_GREEN_THEOREM_STATE"
   },
   "candidate_branch": null,
   "control_note": "E1 cubic-shell incidence is merged. Control v2 has no theorem/claim authority."

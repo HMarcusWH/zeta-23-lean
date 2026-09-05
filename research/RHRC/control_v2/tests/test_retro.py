@@ -1,3 +1,4 @@
+import json
 import subprocess
 import sys
 import tempfile
@@ -8,6 +9,7 @@ RHRC = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(RHRC))
 
 from control_v2.retro.aliases import expanded_terms, load_alias_map
+from control_v2.retro.archive import ArchiveManifestError
 from control_v2.retro.replay import assert_receipt_as_of, replay_concept
 from control_v2.retro.search import search_concept
 
@@ -65,6 +67,34 @@ class RetroTests(unittest.TestCase):
         a = search_concept(**kwargs)
         b = search_concept(**kwargs)
         self.assertEqual(a.receipt_id, b.receipt_id)
+
+    def test_external_counterfactual_requires_manifest(self):
+        td, repo, old, _ = self._fixture_repo()
+        self.addCleanup(td.cleanup)
+        with tempfile.TemporaryDirectory() as archive_dir:
+            archive = Path(archive_dir)
+            (archive / "old.txt").write_text("residual headroom\n", encoding="utf-8")
+            with self.assertRaises(ArchiveManifestError):
+                replay_concept(repo_root=repo, concept_id="deformation_budget", as_of_ref=old, archive_root=archive)
+
+    def test_external_counterfactual_excludes_future_source(self):
+        td, repo, old, _ = self._fixture_repo()
+        self.addCleanup(td.cleanup)
+        with tempfile.TemporaryDirectory() as archive_dir:
+            archive = Path(archive_dir)
+            (archive / "old.txt").write_text("residual headroom old\n", encoding="utf-8")
+            (archive / "future.txt").write_text("residual headroom future\n", encoding="utf-8")
+            manifest = {
+                "sources": [
+                    {"path": "old.txt", "available_from_utc": "2000-01-01T00:00:00Z"},
+                    {"path": "future.txt", "available_from_utc": "2099-01-01T00:00:00Z"}
+                ]
+            }
+            (archive / "RETRO_ARCHIVE_MANIFEST.json").write_text(json.dumps(manifest), encoding="utf-8")
+            receipt = replay_concept(repo_root=repo, concept_id="deformation_budget", as_of_ref=old, archive_root=archive)
+            paths = {hit.source_path for hit in receipt.hits if hit.source_commit is None}
+            self.assertIn("old.txt", paths)
+            self.assertNotIn("future.txt", paths)
 
 
 if __name__ == "__main__":

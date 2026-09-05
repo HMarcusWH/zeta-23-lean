@@ -12,7 +12,7 @@ Compiler validity attaches only to the exact object actually checked.
 
 ## Authoritative repository gates
 
-Current gates include:
+Current theorem/claim gates include:
 
 ~~~text
 python research/RHRC/tools/run_suite.py
@@ -27,13 +27,15 @@ Permansson independent formal verification
 
 A skipped downstream step is not a passed gate.
 
+`run_suite.py` also executes FFBBP and Control-v2 regression tests. These tests guard research-control semantics; they do not grant theorem authority to FFBBP or Control v2.
+
 ## Import/build closure law
 
 A `.lean` file existing in the repository, appearing in a PR, passing the no-placeholder scan, or being merged does **not** establish that its declarations elaborate.
 
 A declaration is compiler-validated project theorem authority only if its module lies in the transitive import closure of an exact successful authoritative build, or the module itself was explicitly built by an authoritative successful gate.
 
-PR #103 is the canonical example: `ConstrainedParityGeometry.lean` was imported by `Zeta23.CCM` and compiled; `ParityBadness.lean` was merged but not imported and remained staged source.
+PR #103 is the canonical example: `ConstrainedParityGeometry.lean` was imported by `Zeta23.CCM` and compiled; `ParityBadness.lean` was merged but not imported and remained staged source. PR #115 is the current theorem-state anchor: its E1 modules are imported into the CCM/ExceptionalZero umbrella closures and the PR merged green.
 
 ## Axiom inspection
 
@@ -58,6 +60,31 @@ Zeta23/CCM/ClaimBindings.lean
 
 `promoted_binding_lint.py` enforces set equality, theorem-name equality, and exact #check/#print-axioms presence.
 
+## Control-v2 validation law
+
+`research/RHRC/control_v2/` is diagnostic research infrastructure only. Its CI gates enforce:
+
+- no theorem/claim/terminal-answer authority;
+- deterministic route certificates and retro receipt hashes;
+- fail-closed missing retro-search / first-break requirements;
+- dead-route revival records when explicitly required;
+- `as_of` Git replay that cannot see future commits;
+- external time-travel replay that requires availability metadata;
+- no `PRUNE` from a missing infinite-tail bound;
+- no promotion from diagnostic commutation to decision commutation;
+- no horizon certificate from a small local residual alone.
+
+A Control-v2 recommendation is **not** a theorem, claim promotion, RH evidence, or a substitute for Lean.
+
+## FFBBP v1.6 assurance overlay
+
+The additive `ffbbp/v16_*` modules expose newer assurance contracts. They do not rewrite `FFBBP_REFERENCE.json`, `IMPLEMENTATION_CLOSURE_OVERLAY.json`, or the qualified RUN42C profile. In particular:
+
+- v1.6 theory does not inherit RUN42C operational qualification;
+- diagnostic commutation and decision commutation are separate gates;
+- horizon-bearing use requires a horizon certificate;
+- witness-bearing use requires visibility, perturbation margin and masking clearance.
+
 ## Vocabulary
 
 - **source present** — file exists.
@@ -79,6 +106,6 @@ Historical settlements and provenance snapshots remain historical.
 
 ## Claim firewall
 
-Green supporting mathematics, source interfaces, finite nesting, parity geometry and numerical agreement are not RH.
+Green supporting mathematics, source interfaces, finite nesting, parity geometry, research-control recommendations and numerical agreement are not RH.
 
 **RH remains OPEN unless the exact terminal RH theorem passes the complete proof and claim-validation gates.**

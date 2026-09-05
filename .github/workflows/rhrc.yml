@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
@@ -41,7 +43,7 @@ jobs:
         run: python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
       - name: Reject external reference code as a Lean dependency
         run: |
-          if grep -R -n -E 'external[/\.]connes_cvs|connes_cvs' Zeta23 --include='*.lean'; then
+          if grep -R -n -E 'external[/\\.]connes_cvs|connes_cvs' Zeta23 --include='*.lean'; then
             echo 'External connes-cvs reference code must not enter the Lean theorem dependency graph'
             exit 1
           fi
