@@ -7,14 +7,21 @@ This fork preserves the upstream Zeta23 theorem package while adding an opt-in R
 ## Current authority snapshot
 
 ~~~text
+live main after PR #116 = 8921572170e89d74216f0c5577b669696626219e
+live main tree = fc138b517c6835230515167386eafe3ef3495baf
+
 theorem-state anchor = PR #115 merge a2fecffbef8fed1fdfba373aa5756acf2618e2a1
 theorem tree = 47a2601e3464b0b4248e61c52b4560681f73c986
 theorem-bearing merged through = PR #115
 FIRST-BAD-RIGIDITY-E1 cubic-shell incidence = PROVED / MERGED
+
+control-plane anchor = PR #116 merge 8921572170e89d74216f0c5577b669696626219e
+Control v2 / FFBBP v1.6 assurance = MERGED GREEN CONTROL INFRASTRUCTURE
+
 RH = OPEN
 ~~~
 
-Live GitHub head + Lean compiler + CI remain authoritative over prose snapshots.
+Live GitHub head + Lean compiler + CI remain authoritative over prose snapshots. PR #116 changed no Lean theorem authority.
 
 ## Current RH-directed theorem ladder
 
@@ -46,11 +53,11 @@ NOW
 
 THEN
   E3 projected predecessor symmetry / shifted coercivity / resolvent
+  E2+E3 one-step certified deformation theorem if paper test survives
   E4 parity nullity / common-resonance vs one-channel resolvent
-  classify or exclude simultaneous first-bad resonance
 
 PARALLEL
-  deformation-budget paper/diagnostic lane
+  deformation-budget falsification lane
   source-faithful G1-B1B -> G1-final -> S-NEG -> G23
 
 RH                                                                 OPEN
@@ -78,53 +85,46 @@ alpha_K = (3 K^2 + 3 K - 1)/5
 
 was intentionally not made an E1 dependency and remains a lead unless separately theoremized.
 
-## Parallel deformation-budget research lens
+## What PR #116 changed
 
-The exact centered N-flow suggests a separate search-contraction question. For fixed aperture/parity, let the candidate diagnostic state carry
+PR #116 added a **non-authoritative research-control layer**, not a theorem result. Its validated tree was merged unchanged to main. It added deterministic route ranking, first-break contracts, FFBBP v1.6 assurance, real-history archaeology/replay and the deformation-budget diagnostic while preserving the theorem/claim firewall.
 
-~~~text
-mu_N       spectral-floor lower information
-q_N        new-shell stiffness information
-beta_N     shell/predecessor coupling information
-D_N        one-step downward-deformation upper bound
-R_N        complete remaining deformation upper bound
-H_N        headroom lower bound = mu_lower_N - R_upper_N
-~~~
+The first real-history controller run selected the deformation-budget paper test and chose failure of `q_N-mu_N` to remain usefully positive as the cheapest decisive first break. That is a research recommendation, not theorem evidence.
 
-A paper-level two-by-two comparison motivates the safe one-step form
+The post-green synthesis is stronger than the controller ranking itself:
 
 ~~~text
-D_N <= beta_upper_N^2 / gap_lower_N
+#115 cubic shell incidence
+  -> E2 cubic-normalized Schur
+  -> E3 shifted coercivity / resolvent
+  -> candidate certified one-step deformation theorem
 ~~~
 
-when a positive shell gap is independently certified. The useful global target is a rigorous infinite-tail majorant. `D_N -> 0` by itself is not enough: the floor could already be negative.
-
-A decision-bearing prune therefore requires
+The paper lane should therefore probe
 
 ~~~text
-certified mu_lower_N > certified R_upper_N.
+g_N = q_N-mu_N
+beta_N
+beta_N^2/g_N
 ~~~
 
-Point estimates, fitted tails and small local residuals cannot substitute for that inequality.
+for both parities and several fixed positive `L` values before any attempt at an analytic infinite-tail majorant.
 
-## RHRC Control v2
+Exact N-flow already proves upward persistence of badness. Consequently, a genuine positive rigidity horizon plus a complete future-deformation certificate would exclude the entire fixed-`(L,p)` N-axis, not merely reduce it to a finite search window. This remains a LEAD / OPEN certification target.
 
-PR #116 adds an **additive research-control layer** under `research/RHRC/control_v2/`. It has no theorem or claim-promotion authority.
+## Control-v2 hardening
 
-It combines:
+Control v2 now treats a complete deformation budget as a typed assured object:
 
-- deterministic RACR-style research-action ranking;
-- MCM-style first-break / cheapest-decisive-falsifier contracts;
-- FFBBP v1.6 assurance primitives for diagnostic vs decision commutation, residual horizons and witness masking;
-- a read-only PIRE-style monitor for route oscillation, evaluator monoculture, benchmark lock-in and complexity ratchets;
-- vocabulary-aware retroactive Git archaeology across historical refs;
-- strict `as_of` counterfactual replay restricted to the historical reachable DAG;
-- hash/availability-bound ingestion of external historical text snapshots;
-- dead-route revival records.
+- every finite-prefix step has an exact N index and prefixes must be sorted/contiguous;
+- a numeric tail is not certified without a passed FFBBP horizon certificate targeting the remaining deformation budget;
+- reduced-model decision-bearing `PRUNE` use requires decision commutation when declared;
+- archaeology receipts bind their declared Git search paths;
+- generic aliases such as `fold`, `rupture` and `slack` are removed from admission-quality deformation-budget archaeology;
+- theorem and control-plane anchors are explicit and separate;
+- deterministic route certificates expose the score formula and every candidate base score/blocker.
 
-The qualified RUN42C FFBBP implementation remains frozen and unchanged. The v1.6 assurance overlay does **not** inherit RUN42C qualification.
-
-Control v2 may recommend **where to look next**. Lean/CI still decides **what is proved**. The controller cannot write `BOUNDARY.json`, `CLAIM_REGISTRY.json`, `routes/ROUTE_REGISTRY.json`, or the terminal RH answer.
+None of these mechanisms can change theorem authority or the terminal RH answer.
 
 ## Permanent firewalls
 
@@ -139,6 +139,7 @@ Control v2 may recommend **where to look next**. Lean/CI still decides **what is
 - the shifted Schur identity is a reduction, not a contradiction.
 - negative index exactly one, resolvent monotonicity and simultaneous-resonance exclusion remain open/formalization targets.
 - the deformation-budget asymptotics/tail certificate are a lead, not a theorem.
+- a finite prefix, fitted tail, local residual or diagnostic 2x2 formula is not an infinite-horizon certificate.
 - generic R002 taper-grid and Bombieri zero-height truncations remain distinct from the canonical deterministic CCM finite family except where exact specialization/bridge theorems say otherwise.
 - the legacy printed `finiteMatrix` differs from the canonical source matrix by a scalar identity; absolute PSD/inertia claims must use the canonical source normalization.
 - positivity, finite-to-infinite closure and RH remain OPEN unless separately theorem-backed.
@@ -148,7 +149,7 @@ Control v2 may recommend **where to look next**. Lean/CI still decides **what is
 - `research/RHRC/README.md`
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`
 - `research/RHRC/RESEARCH_LEADS.md`
-- `research/RHRC/RESEARCH_LEADS_POST_115_DELTA.md`
+- `research/RHRC/RESEARCH_LEADS_POST_116_DELTA.md`
 - `research/RHRC/OBSTRUCTION_LEDGER.md`
 - `research/RHRC/DEAD_ROUTES.md`
 - `research/RHRC/control_v2/README.md`
