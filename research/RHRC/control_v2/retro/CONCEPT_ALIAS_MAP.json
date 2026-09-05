@@ -1,0 +1,46 @@
+{
+  "deformation_budget": [
+    "deformation budget",
+    "residual budget",
+    "residual headroom",
+    "detectability budget",
+    "unseen energy",
+    "remaining freedom",
+    "distortion schedule",
+    "rupture",
+    "fold",
+    "slack",
+    "evolving canvas"
+  ],
+  "cubic_normalized_schur": [
+    "cubic shell",
+    "shell line",
+    "scalar Schur",
+    "secular equation",
+    "one-dimensional shell",
+    "cubic defect"
+  ],
+  "shifted_coercivity": [
+    "shifted coercivity",
+    "resolvent norm",
+    "positive resolvent",
+    "A-lam I",
+    "spectral floor",
+    "moving floor"
+  ],
+  "parity_resonance": [
+    "parity resonance",
+    "nullity difference",
+    "simultaneous resonance",
+    "one-channel resolvent",
+    "even odd resonance"
+  ],
+  "reduction_equivalence": [
+    "reverse reduction",
+    "equivalence wall",
+    "commutation",
+    "representation bridge",
+    "projection residual",
+    "round-trip residual"
+  ]
+}

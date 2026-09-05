@@ -1,0 +1,14 @@
+{
+  "schema_version": "RHRC-control-boundary-1.0",
+  "name": "RHRC Control v2",
+  "authority": "RESEARCH_ROUTING_DIAGNOSTIC_ONLY",
+  "may_write_claim_registry": false,
+  "may_write_boundary": false,
+  "may_write_route_registry": false,
+  "may_emit_terminal_rh_status": false,
+  "may_promote_lean_theorem": false,
+  "may_rank_research_actions": true,
+  "may_emit_retro_search_receipts": true,
+  "may_emit_route_certificates": true,
+  "required_terminal_claim": "RH_OPEN"
+}

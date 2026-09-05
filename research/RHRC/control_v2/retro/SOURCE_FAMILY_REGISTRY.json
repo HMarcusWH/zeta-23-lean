@@ -1,0 +1,42 @@
+{
+  "schema_version": "RHRC-retro-sources-1.0",
+  "families": {
+    "RHRC_GIT": {
+      "kind": "git_history",
+      "authority": "REPOSITORY_HISTORY",
+      "ingested": true
+    },
+    "FFBBP": {
+      "kind": "external_version_family",
+      "versions": ["1.4.2", "1.5.1", "1.5.3", "1.6.0"],
+      "authority": "ARCHITECTURE_HISTORY",
+      "ingested": false
+    },
+    "ICW_NSG": {
+      "kind": "external_version_family",
+      "authority": "ARCHITECTURE_AND_IMPLEMENTATION_HISTORY",
+      "ingested": false
+    },
+    "RACR": {
+      "kind": "external_version_family",
+      "authority": "ARCHITECTURE_HISTORY",
+      "ingested": false
+    },
+    "MCM_HMWH": {
+      "kind": "external_version_family",
+      "authority": "ARCHITECTURE_HISTORY",
+      "ingested": false
+    },
+    "THEORY_UPGRADE_KIT": {
+      "kind": "external_version_family",
+      "versions": ["0.1", "0.2", "0.4"],
+      "authority": "RESEARCH_ARCHITECTURE_HISTORY",
+      "ingested": false
+    },
+    "PERMANSSON_PIRE": {
+      "kind": "external_version_family",
+      "authority": "FORMAL_AND_ARCHITECTURE_HISTORY",
+      "ingested": false
+    }
+  }
+}
