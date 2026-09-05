@@ -166,8 +166,7 @@ theorem re_cubicOuterVanishing_summand
           ((centeredIndex K i : ℂ) ^ 3 -
             (K : ℂ) ^ 2 * (centeredIndex K i : ℂ))) =
       cubicOuterMomentTerm K i := by
-  simp [cubicOuterMomentTerm, Complex.mul_re]
-  ring_nf
+  simp [cubicOuterMomentTerm, Complex.mul_re, pow_succ] <;> ring
 
 /-- The raw vector `d^3-K^2 d` cannot satisfy the first boundary-flat moment
 when `K>=2`.  This is the arithmetic obstruction used instead of a stronger
