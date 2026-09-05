@@ -21,6 +21,18 @@ jobs:
           python-version: '3.x'
       - name: RHRC claim and regression suite
         run: python research/RHRC/tools/run_suite.py
+      - name: Control v2 real-history smoke run
+        run: |
+          python research/RHRC/control_v2/run_control.py \
+            --output /tmp/RHRC_CONTROL_V2.json
+          python - <<'PY'
+          import json
+          p = json.load(open('/tmp/RHRC_CONTROL_V2.json'))
+          assert p['terminal_claim'] == 'RH_OPEN'
+          assert p['route_certificate']['theorem_authority'] is False
+          assert p['route_certificate']['terminal_claim_change'] is False
+          print('Control v2 smoke: PASS')
+          PY
 
   r003-normalization-audit:
     runs-on: ubuntu-latest
