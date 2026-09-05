@@ -233,29 +233,32 @@ theorem intrinsicCubicQuotientCoordinate_intertwiningDefect
     intrinsicCubicQuotientCoordinate .odd N
         (evenOddCompressedIntertwiningDefect L (N + 1) z) =
       cubicDefectFunctional L (N + 1) z := by
-  have hfac :=
+  have hfacNative :=
     evenOddCompressedIntertwiningDefect_eq_cubicFunctional_smul
       hL (N + 1) (by omega) z
-  have hmapped := congrArg
-    (fun w : euclideanOddBoundaryFlatSubspace (N + 1) =>
-      intrinsicCubicQuotientCoordinate .odd N w) hfac
-  have hg :
-      intrinsicCubicQuotientCoordinate .odd N
-        (oddCubicCompressionVector (N + 1)) = 1 := by
-    simpa [successorParityCubicVector] using
-      intrinsicCubicQuotientCoordinate_successorParityCubicVector .odd N hN
+  have hfacParity :
+      (evenOddCompressedIntertwiningDefect L (N + 1) z :
+        euclideanParityBoundaryFlatSubspace .odd (N + 1)) =
+      cubicDefectFunctional L (N + 1) z •
+        successorParityCubicVector .odd N := by
+    apply Subtype.ext
+    have hval := congrArg Subtype.val hfacNative
+    simpa [successorParityCubicVector] using hval
   calc
     intrinsicCubicQuotientCoordinate .odd N
         (evenOddCompressedIntertwiningDefect L (N + 1) z) =
       intrinsicCubicQuotientCoordinate .odd N
         (cubicDefectFunctional L (N + 1) z •
-          oddCubicCompressionVector (N + 1)) := hmapped
+          successorParityCubicVector .odd N) := by
+      exact congrArg (intrinsicCubicQuotientCoordinate .odd N) hfacParity
     _ = cubicDefectFunctional L (N + 1) z •
         intrinsicCubicQuotientCoordinate .odd N
-          (oddCubicCompressionVector (N + 1)) := by
-      rw [map_smul]
+          (successorParityCubicVector .odd N) := by
+      exact map_smul (intrinsicCubicQuotientCoordinate .odd N)
+        (cubicDefectFunctional L (N + 1) z)
+        (successorParityCubicVector .odd N)
     _ = cubicDefectFunctional L (N + 1) z := by
-      rw [hg]
+      rw [intrinsicCubicQuotientCoordinate_successorParityCubicVector .odd N hN]
       simp
 
 /-- A genuine negative first-bad eigenmode has nonzero canonical cubic quotient
