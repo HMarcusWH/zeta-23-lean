@@ -8,6 +8,8 @@ This document defines what "green", "proved", "validated" and "promoted" mean in
 
 For every theorem-bearing PR record the base, PR head, exact synthetic merge checked by GitHub Actions, theorem tree, eventual merged-main commit/tree, and Lean version.
 
+For control-only PRs record the exact control head/merge tree separately from the last theorem-bearing anchor. A control-only green must not advance theorem authority.
+
 Compiler validity attaches only to the exact object actually checked.
 
 ## Authoritative repository gates
@@ -35,7 +37,7 @@ A `.lean` file existing in the repository, appearing in a PR, passing the no-pla
 
 A declaration is compiler-validated project theorem authority only if its module lies in the transitive import closure of an exact successful authoritative build, or the module itself was explicitly built by an authoritative successful gate.
 
-PR #103 is the canonical example: `ConstrainedParityGeometry.lean` was imported by `Zeta23.CCM` and compiled; `ParityBadness.lean` was merged but not imported and remained staged source. PR #115 is the current theorem-state anchor: its E1 modules are imported into the CCM/ExceptionalZero umbrella closures and the PR merged green.
+PR #103 is the canonical example: `ConstrainedParityGeometry.lean` was imported by `Zeta23.CCM` and compiled; `ParityBadness.lean` was merged but not imported and remained staged source. PR #115 is the current theorem-state anchor: its E1 modules are imported into the CCM/ExceptionalZero umbrella closures and the PR merged green. PR #116 is a separate merged green control-plane anchor and did not change theorem authority.
 
 ## Axiom inspection
 
@@ -65,12 +67,18 @@ Zeta23/CCM/ClaimBindings.lean
 `research/RHRC/control_v2/` is diagnostic research infrastructure only. Its CI gates enforce:
 
 - no theorem/claim/terminal-answer authority;
-- deterministic route certificates and retro receipt hashes;
+- separate theorem and control-plane anchors;
+- deterministic route certificates and score diagnostics;
+- deterministic retro receipt hashes;
 - fail-closed missing retro-search / first-break requirements;
 - dead-route revival records when explicitly required;
 - `as_of` Git replay that cannot see future commits;
 - external time-travel replay that requires availability metadata;
-- no `PRUNE` from a missing infinite-tail bound;
+- retro receipts bound to their declared Git search paths;
+- no generic standalone alias flood as an admission-quality deformation-budget search surface;
+- exact sorted contiguous finite-prefix coverage for deformation budgets;
+- no `PRUNE` from a numeric tail without a passed horizon certificate targeting the remaining deformation budget;
+- no decision-bearing reduced-model `PRUNE` without decision commutation when that gate is required;
 - no promotion from diagnostic commutation to decision commutation;
 - no horizon certificate from a small local residual alone.
 
@@ -100,12 +108,12 @@ The additive `ffbbp/v16_*` modules expose newer assurance contracts. They do not
 
 ## Post-green synchronization
 
-After every meaningful green result: verify exact evidence; read the proof; compare history; analyze upstream/downstream implications; revisit dead routes; falsify clues; then synchronize registries, active route README, RESEARCH_LEADS, CURRENT_RESEARCH_PLAN and public summaries.
+After every meaningful green result: verify exact evidence; read the proof/control result; compare history; analyze upstream/downstream implications; revisit dead routes; falsify clues; then synchronize registries, active route README, research-lead deltas, CURRENT_RESEARCH_PLAN and public summaries.
 
 Historical settlements and provenance snapshots remain historical.
 
 ## Claim firewall
 
-Green supporting mathematics, source interfaces, finite nesting, parity geometry, research-control recommendations and numerical agreement are not RH.
+Green supporting mathematics, source interfaces, finite nesting, parity geometry, research-control recommendations, budget diagnostics and numerical agreement are not RH.
 
 **RH remains OPEN unless the exact terminal RH theorem passes the complete proof and claim-validation gates.**
