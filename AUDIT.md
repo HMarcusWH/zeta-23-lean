@@ -1,19 +1,33 @@
-# RHRC formal audit — merged through FIRST-BAD-RIGIDITY-E1 / PR #115
+# RHRC formal audit — theorem authority through PR #115; control authority through PR #116
 
 > **RH remains OPEN.**
 
-## Current merged authority
+## Current authority split
 
 ~~~text
+live main after #116 = 8921572170e89d74216f0c5577b669696626219e
+live main tree = fc138b517c6835230515167386eafe3ef3495baf
+
 theorem-state anchor = PR #115 merge a2fecffbef8fed1fdfba373aa5756acf2618e2a1
 theorem tree = 47a2601e3464b0b4248e61c52b4560681f73c986
 theorem-bearing merged through = PR #115
 FIRST-BAD-RIGIDITY-E1 cubic-shell incidence = PROVED / MERGED
-Lean = 4.33.0-rc2
+
+control-plane anchor = PR #116 merge 8921572170e89d74216f0c5577b669696626219e
+validated PR head = b5e09880b2996e41364b3abbcc35710399a0f262
+validated synthetic merge = a4d37c0fa0ce5a1e44e321924292a2b3a7920146
+validated tree = fc138b517c6835230515167386eafe3ef3495baf
+RHRC #776 = SUCCESS
+Permansson #549 = SUCCESS
+Lean CCM build = SUCCESS
+Lean ExceptionalZero build = SUCCESS
+forbidden-placeholder gate = SUCCESS
+R003 normalization/source audit = SUCCESS
+Python RHRC + Control-v2 real-history smoke = SUCCESS
 RH = OPEN
 ~~~
 
-Live GitHub head + exact Lean/CI build closure remain authoritative over this audit summary.
+The validated PR merge tree and the merged-main tree are identical. PR #116 changed no `Zeta23/**/*.lean` theorem file and does not advance mathematical theorem authority beyond PR #115.
 
 ## PR #112 — FIRST-BAD-RIGIDITY-D1
 
@@ -53,11 +67,6 @@ Live GitHub head + exact Lean/CI build closure remain authoritative over this au
 
 ## PR #115 — FIRST-BAD-RIGIDITY-E1
 
-~~~text
-merge/main = a2fecffbef8fed1fdfba373aa5756acf2618e2a1
-merged tree = 47a2601e3464b0b4248e61c52b4560681f73c986
-~~~
-
 **PROVED:**
 - every vector inherited from the centered intrinsic predecessor has zero coordinate on the new outer index;
 - the odd cubic compression vector has a nonzero new outer coordinate in the stated nontrivial range;
@@ -65,13 +74,7 @@ merged tree = 47a2601e3464b0b4248e61c52b4560681f73c986
 - Euclidean D/N-flow compatibility needed for the algebraic even pullback;
 - the corresponding even successor cubic vector is also not inherited;
 - parity-uniform `successorParityCubicVector` / canonical `intrinsicCubicShellPart`;
-- main E1 endpoint
-
-~~~text
-intrinsicCubicShellPart p N != 0
-~~~
-
-for every parity and the stated `N>=1` range;
+- main E1 endpoint `intrinsicCubicShellPart p N != 0` for every parity and the stated `N>=1` range;
 - ExceptionalZero endpoint adding that nonzero cubic shell coordinate to the same global-first-bad finite state already carrying #113's negative-mode shell coordinate and shifted Schur identity.
 
 **Deliberately not proved by #115:**
@@ -85,6 +88,22 @@ for every parity and the stated `N>=1` range;
 - resolvent monotonicity;
 - simultaneous parity-resonance exclusion;
 - positivity, finite-to-infinite closure, or RH.
+
+## PR #116 — Control v2 / FFBBP v1.6 assurance
+
+**CI-VERIFIED CONTROL INFRASTRUCTURE:**
+- Control-v2 authority firewall remains non-theorem and non-terminal;
+- deterministic route ranking and first-break selection run against real repository history;
+- FFBBP v1.6 assurance remains additive and does not inherit RUN42C qualification;
+- diagnostic commutation, decision commutation and horizon certification stay distinct;
+- counterfactual replay rejects future Git/source information;
+- external archive ingestion is hash/availability bound;
+- dead-route revival requires an explicit changed-premise record;
+- CCM, ExceptionalZero, normalization/source firewalls and forbidden-placeholder checks remained green on the exact #116 validation tree.
+
+**Observed post-green controller result:** the deformation-budget paper test ranked first under the configured deterministic score, and its cheapest first-break was failure of `q_N-mu_N` to remain usefully positive. This is a route recommendation, not theorem evidence.
+
+**Observed hardening signal:** the initial deformation-budget archaeology produced overwhelming generic `fold` matches. The hardened alias surface removes generic standalone `fold`/`rupture`/`slack`, binds search paths into receipts, and states archaeology scope as all refs in declared paths.
 
 ## Current formal state
 
@@ -104,45 +123,41 @@ scalar shifted Schur identity                                        PROVED / #1
 canonical cubic shell coordinate !=0                                 PROVED / #115
 off-line zero -> same global-first-bad Schur+cubic+E1 endpoint       PROVED / #115
 
+Control v2 / FFBBP v1.6 assurance                                   CI-VERIFIED CONTROL / #116
 cubic-normalized scale-free Schur equation                           DERIVED INTERFACE / OPEN FORMALIZATION
 projected predecessor block symmetric                                DERIVED / OPEN FORMALIZATION
+E2+E3 one-step deformation theorem                                   LEAD / OPEN FORMALIZATION
+shell-projected defect functional equivalence                        DERIVED / OPEN FORMALIZATION
 negative index exactly one / unique negative line                    DERIVED / OPEN FORMALIZATION
 shifted resolvent positivity / monotonicity                           DERIVED / OPEN FORMALIZATION
 parity nullity-difference <=1                                        DERIVED / OPEN FORMALIZATION
 common-resonance vs one-channel-resolvent dichotomy                  DERIVED / OPEN FORMALIZATION
 simultaneous parity-resonance exclusion/classification               OPEN
 deformation-budget asymptotics / infinite-tail certificate           LEAD / HYPOTHESIS
+whole-N rigidity horizon                                              LEAD / HYPOTHESIS
 positivity / finite-to-infinite closure                              OPEN
 RH                                                                    OPEN
 ~~~
 
 ## Current research frontier
 
-The next theorem target is E1b/E2. #113 and #115 now give two independently constructed nonzero vectors in the same one-dimensional intrinsic shell:
+The next theorem target remains E1b/E2. #113 and #115 give two independently constructed nonzero vectors in the same one-dimensional intrinsic shell. The immediate composition target is to identify them up to a nonzero scalar, transfer the shifted Schur identity to the canonical cubic shell line, and normalize away only scalar choice.
+
+E3 then targets projected symmetry, quantitative shifted coercivity and the safe resolvent estimate. If the paper test survives, E2+E3 should supply the theorem mechanism for the certified one-step deformation inequality.
+
+## Post-#116 deformation-budget strategy
+
+Use the theorem-backed cubic shell coordinate to define scale-free `q_N` and `beta_N` candidates, then probe
 
 ~~~text
-negative-mode shell coordinate != 0
-canonical cubic shell coordinate != 0
-dim_C S = 1
+g_N = q_N-mu_N
+beta_N
+beta_N^2/g_N
 ~~~
 
-The immediate composition target is to identify these vectors up to a nonzero scalar, transfer the shifted Schur identity to the canonical cubic shell line, and normalize away only scalar choice.
+before investing in an analytic infinite-tail majorant.
 
-E3 then targets projected symmetry, quantitative shifted coercivity and resolvent consequences. E4 targets algebraic parity nullity and the common-resonance versus one-channel-resolvent dichotomy.
-
-## Parallel deformation-budget diagnostic
-
-PR #116 adds research-control infrastructure for a separate paper-level search-contraction lead. It treats exact N-flow as a nested spectral process and distinguishes:
-
-~~~text
-local one-step deformation information
-complete remaining tail budget
-certified positive headroom
-~~~
-
-A small local deformation rate is not a tail theorem. A decision-bearing prune requires a certified positive lower margin and a certified upper bound for the entire remaining deformation budget.
-
-The supporting controller is explicitly non-authoritative: it cannot promote Lean theorems, write RH claim authority or emit the terminal RH answer.
+Exact N-flow already proves upward persistence of badness. Therefore a fully certified positive rigidity horizon for fixed `(L,p)` would exclude earlier badness by persistence and later badness by the complete remaining-deformation bound. The strong target is elimination of the entire fixed-`(L,p)` N-axis. All-`L` certification is eventually required, but one universal L-independent horizon is not assumed.
 
 ## Permanent firewalls
 
@@ -154,10 +169,12 @@ The supporting controller is explicitly non-authoritative: it cannot promote Lea
 - equal spectra, Hermitian interlacing and inertia transport through D are not proved.
 - use `A-lam I` for `lam<0`; never replace it by `A^-1` at zero without a separate theorem.
 - negative-index-one remains derived, not theorem-locked.
-- the shifted Schur identity by itself is not a contradiction; ordinary finite Hermitian systems can satisfy it with a negative eigenvalue.
+- the shifted Schur identity by itself is not a contradiction.
+- the 2x2 deformation formula is diagnostic until E2/E3 theoremize the operator bound.
+- a numeric tail, finite prefix, fitted decay or local residual is not a complete horizon certificate.
 - Control-v2 diagnostics, retroactive clues and route recommendations are not theorem evidence.
 - no positivity theorem, finite-to-infinite theorem or RH theorem exists.
 
-Detailed current research implications and falsification plan: `research/RHRC/RESEARCH_LEADS_POST_115_DELTA.md`.
+Detailed current research implications and falsification plan: `research/RHRC/RESEARCH_LEADS_POST_116_DELTA.md`.
 
 **RH remains OPEN.**
