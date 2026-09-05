@@ -26,12 +26,15 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="RHRC Control v2 diagnostic research router")
     parser.add_argument("--archive-root", type=Path)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--quick-retro", action="store_true",
+                        help="Bound retro search for interactive use; incomplete receipts cannot admit history-sensitive routes")
     args = parser.parse_args()
 
     state = load_research_state()
     actions = load_actions()
 
     receipt_ids: dict[str, str] = {}
+    receipt_complete: dict[str, bool] = {}
     receipt_summaries: list[dict] = []
     for action in actions:
         if not action.retro_search_required:
@@ -41,12 +44,16 @@ def main() -> int:
             concept_id=action.concept_id,
             as_of_ref=state.anchor.merge_commit,
             archive_root=args.archive_root,
+            exhaustive=not args.quick_retro,
         )
         receipt_ids[action.action_id] = receipt.receipt_id
+        receipt_complete[action.action_id] = receipt.search_complete
         receipt_summaries.append({
             "action_id": action.action_id,
             "receipt_id": receipt.receipt_id,
             "hit_count": len(receipt.hits),
+            "search_scope": receipt.search_scope,
+            "search_complete": receipt.search_complete,
             "searched_sources": list(receipt.searched_sources),
         })
 
@@ -54,11 +61,12 @@ def main() -> int:
         state,
         actions,
         retro_receipts=receipt_ids,
+        retro_complete=receipt_complete,
         first_break_counts=_first_break_counts(),
     )
 
     payload = {
-        "schema_version": "RHRC-control-run-1.0",
+        "schema_version": "RHRC-control-run-1.1",
         "terminal_claim": state.terminal_claim,
         "theorem_anchor": {
             "pr": state.anchor.pr,

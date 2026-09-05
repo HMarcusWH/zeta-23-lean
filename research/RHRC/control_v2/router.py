@@ -47,10 +47,13 @@ def action_score(action: ResearchAction) -> float:
 
 
 def _admissibility_blockers(action: ResearchAction, *, retro_receipt_id: str | None,
+                            retro_search_complete: bool | None,
                             first_break_count: int, revival_ids: set[str]) -> tuple[str, ...]:
     blockers: list[str] = []
     if action.retro_search_required and not retro_receipt_id:
         blockers.append("RETRO_SEARCH_RECEIPT_MISSING")
+    if action.retro_search_required and retro_search_complete is not True:
+        blockers.append("RETRO_SEARCH_INCOMPLETE")
     if action.first_break_required and first_break_count <= 0:
         blockers.append("FIRST_BREAK_CONTRACT_MISSING")
     uncovered_dead = set(action.dead_route_matches) - revival_ids
@@ -60,9 +63,10 @@ def _admissibility_blockers(action: ResearchAction, *, retro_receipt_id: str | N
 
 
 def recommend(state: ResearchState, actions: tuple[ResearchAction, ...], *,
-              retro_receipts: dict[str, str], first_break_counts: dict[str, int],
-              revival_ids: set[str] | None = None) -> RouteCertificate:
+              retro_receipts: dict[str, str], retro_complete: dict[str, bool] | None = None,
+              first_break_counts: dict[str, int], revival_ids: set[str] | None = None) -> RouteCertificate:
     revival_ids = revival_ids or set()
+    retro_complete = retro_complete or {}
     admissible: list[ResearchAction] = []
     rejected: list[str] = []
 
@@ -70,6 +74,7 @@ def recommend(state: ResearchState, actions: tuple[ResearchAction, ...], *,
         blockers = _admissibility_blockers(
             action,
             retro_receipt_id=retro_receipts.get(action.action_id),
+            retro_search_complete=retro_complete.get(action.action_id),
             first_break_count=first_break_counts.get(action.action_id, 0),
             revival_ids=revival_ids,
         )
@@ -93,7 +98,7 @@ def recommend(state: ResearchState, actions: tuple[ResearchAction, ...], *,
     ranked = sorted(admissible, key=lambda a: (-action_score(a), a.action_id))
     selected = ranked[0]
     rationale = (
-        f"selected highest deterministic information/falsification/closure score among admissible actions",
+        "selected highest deterministic information/falsification/closure score among admissible actions",
         f"score={action_score(selected):.3f}",
         *tuple(f"rejected {item}" for item in rejected),
     )

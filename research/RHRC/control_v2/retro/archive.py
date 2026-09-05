@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import datetime, timezone
+import hashlib
 import json
 from pathlib import Path
 import subprocess
@@ -23,6 +24,7 @@ class ArchiveEntry:
     source_version: str | None
     authority: str
     available_from_utc: datetime | None
+    sha256: str | None
 
 
 def _parse_utc(value: str | None) -> datetime | None:
@@ -32,6 +34,10 @@ def _parse_utc(value: str | None) -> datetime | None:
     if dt.tzinfo is None:
         dt = dt.replace(tzinfo=timezone.utc)
     return dt.astimezone(timezone.utc)
+
+
+def _sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def anchor_commit_time(repo_root: Path, as_of_ref: str) -> datetime:
@@ -60,13 +66,14 @@ def load_manifest(root: Path) -> tuple[ArchiveEntry, ...]:
             source_version=raw.get("source_version"),
             authority=str(raw.get("authority", "HISTORICAL_ARCHIVE")),
             available_from_utc=_parse_utc(raw.get("available_from_utc")),
+            sha256=raw.get("sha256"),
         ))
     return tuple(entries)
 
 
 def _scan_file(path: Path, *, root: Path, concept_id: str, terms: tuple[str, ...],
                family: str, version: str | None, authority: str,
-               max_hits: int) -> list[HistoricalClue]:
+               max_hits: int | None) -> list[HistoricalClue]:
     if path.suffix.lower() not in TEXT_SUFFIXES:
         return []
     try:
@@ -90,14 +97,14 @@ def _scan_file(path: Path, *, root: Path, concept_id: str, terms: tuple[str, ...
                     authority=authority,
                 ))
                 break
-        if len(hits) >= max_hits:
+        if max_hits is not None and len(hits) >= max_hits:
             break
     return hits
 
 
 def search_archive(root: Path, *, concept_id: str, terms: tuple[str, ...],
                    mode: str, repo_root: Path, as_of_ref: str,
-                   max_hits: int = 100) -> tuple[HistoricalClue, ...]:
+                   max_hits: int | None = None) -> tuple[HistoricalClue, ...]:
     if not root.exists():
         return ()
 
@@ -105,14 +112,21 @@ def search_archive(root: Path, *, concept_id: str, terms: tuple[str, ...],
     if mode == "COUNTERFACTUAL_REPLAY":
         cutoff = anchor_commit_time(repo_root, as_of_ref)
         for entry in load_manifest(root):
-            if entry.available_from_utc is None:
-                # Unknown historical availability is not admitted into a time-travel replay.
+            if entry.available_from_utc is None or entry.sha256 is None:
+                # Unknown availability/provenance is not admitted into time-travel replay.
                 continue
             if entry.available_from_utc > cutoff:
                 continue
-            path = root / entry.path
+            path = (root / entry.path).resolve()
+            try:
+                path.relative_to(root.resolve())
+            except ValueError as exc:
+                raise ArchiveManifestError(f"archive path escapes root: {entry.path}") from exc
             if not path.is_file():
                 continue
+            if _sha256(path) != entry.sha256:
+                raise ArchiveManifestError(f"archive hash mismatch: {entry.path}")
+            remaining = None if max_hits is None else max_hits - len(hits)
             hits.extend(_scan_file(
                 path,
                 root=root,
@@ -121,16 +135,17 @@ def search_archive(root: Path, *, concept_id: str, terms: tuple[str, ...],
                 family=entry.source_family,
                 version=entry.source_version,
                 authority=entry.authority,
-                max_hits=max_hits - len(hits),
+                max_hits=remaining,
             ))
-            if len(hits) >= max_hits:
+            if max_hits is not None and len(hits) >= max_hits:
                 break
     else:
-        # Archaeology may inspect the whole supplied archive.  Authority remains
+        # Archaeology may inspect the whole supplied archive. Authority remains
         # historical and every clue still requires revalidation.
         for path in sorted(root.rglob("*")):
             if path.name == MANIFEST_NAME or not path.is_file():
                 continue
+            remaining = None if max_hits is None else max_hits - len(hits)
             hits.extend(_scan_file(
                 path,
                 root=root,
@@ -139,9 +154,9 @@ def search_archive(root: Path, *, concept_id: str, terms: tuple[str, ...],
                 family="EXTERNAL_ARCHIVE",
                 version=None,
                 authority="HISTORICAL_ARCHIVE",
-                max_hits=max_hits - len(hits),
+                max_hits=remaining,
             ))
-            if len(hits) >= max_hits:
+            if max_hits is not None and len(hits) >= max_hits:
                 break
 
     return tuple(sorted(hits, key=lambda h: (h.source_family, h.source_path, h.line_number or 0, h.term)))

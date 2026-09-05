@@ -13,13 +13,30 @@ RETRO = Path(__file__).resolve().parent
 def search_concept(*, repo_root: Path, concept_id: str, as_of_ref: str,
                    archive_root: Path | None = None,
                    aliases_path: Path | None = None,
-                   mode: str = "ARCHAEOLOGY") -> RetroSearchReceipt:
+                   mode: str = "ARCHAEOLOGY",
+                   exhaustive: bool = True) -> RetroSearchReceipt:
+    """Search old implementations with vocabulary expansion.
+
+    Archaeology searches all Git refs whose commits predate the anchor, so old
+    unmerged branches are in scope. Counterfactual replay is deliberately
+    narrower: only commits reachable from the historical anchor are eligible.
+    `exhaustive=True` removes hit/commit caps and is required for claim-like
+    statements about having searched the declared historical domain.
+    """
     if aliases_path is None:
         aliases_path = RETRO / "CONCEPT_ALIAS_MAP.json"
     aliases = load_alias_map(aliases_path)
     terms = expanded_terms(concept_id, aliases)
 
-    git_hits = search_git_history(repo_root, terms, as_of_ref=as_of_ref)
+    archaeology = mode == "ARCHAEOLOGY"
+    git_hits = search_git_history(
+        repo_root,
+        terms,
+        as_of_ref=as_of_ref,
+        all_refs_before_anchor=archaeology,
+        max_commits_per_term=None if exhaustive else 25,
+        max_hits=None if exhaustive else 200,
+    )
     clues: list[HistoricalClue] = [
         HistoricalClue(
             concept_id=concept_id,
@@ -44,6 +61,7 @@ def search_concept(*, repo_root: Path, concept_id: str, as_of_ref: str,
             mode=mode,
             repo_root=repo_root,
             as_of_ref=as_of_ref,
+            max_hits=None if exhaustive else 200,
         ))
         searched.append("EXTERNAL_ARCHIVE")
 
@@ -62,6 +80,8 @@ def search_concept(*, repo_root: Path, concept_id: str, as_of_ref: str,
         terms=terms,
         mode=mode,
         as_of_ref=as_of_ref,
+        search_scope="ALL_REFS_BEFORE_ANCHOR" if archaeology else "ANCHOR_REACHABLE_ONLY",
+        search_complete=exhaustive,
         searched_sources=tuple(searched),
         hits=tuple(clues),
     )

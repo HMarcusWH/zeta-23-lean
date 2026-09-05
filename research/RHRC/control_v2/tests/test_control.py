@@ -29,9 +29,12 @@ class ControlV2Tests(unittest.TestCase):
         state = load_research_state()
         actions = load_actions()
         receipts = {a.action_id: "RETRO-test" for a in actions}
+        complete = {a.action_id: True for a in actions}
         first_break_counts = {a.action_id: 1 for a in actions}
-        a = recommend(state, actions, retro_receipts=receipts, first_break_counts=first_break_counts)
-        b = recommend(state, actions, retro_receipts=receipts, first_break_counts=first_break_counts)
+        a = recommend(state, actions, retro_receipts=receipts, retro_complete=complete,
+                      first_break_counts=first_break_counts)
+        b = recommend(state, actions, retro_receipts=receipts, retro_complete=complete,
+                      first_break_counts=first_break_counts)
         self.assertEqual(a.to_dict(), b.to_dict())
         self.assertFalse(a.theorem_authority)
         self.assertFalse(a.terminal_claim_change)
@@ -40,7 +43,17 @@ class ControlV2Tests(unittest.TestCase):
     def test_missing_retro_receipts_fail_closed(self):
         state = load_research_state()
         actions = load_actions()
-        cert = recommend(state, actions, retro_receipts={}, first_break_counts={a.action_id: 1 for a in actions})
+        cert = recommend(state, actions, retro_receipts={}, retro_complete={},
+                         first_break_counts={a.action_id: 1 for a in actions})
+        self.assertEqual(cert.disposition.value, "ABSTAIN")
+
+    def test_incomplete_retro_receipt_fails_closed(self):
+        state = load_research_state()
+        actions = load_actions()
+        receipts = {a.action_id: "RETRO-quick" for a in actions}
+        complete = {a.action_id: False for a in actions}
+        cert = recommend(state, actions, retro_receipts=receipts, retro_complete=complete,
+                         first_break_counts={a.action_id: 1 for a in actions})
         self.assertEqual(cert.disposition.value, "ABSTAIN")
 
     def test_score_inputs_are_finite(self):

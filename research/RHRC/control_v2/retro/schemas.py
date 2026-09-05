@@ -28,6 +28,8 @@ class RetroSearchReceipt:
     terms: tuple[str, ...]
     mode: str
     as_of_ref: str | None
+    search_scope: str
+    search_complete: bool
     searched_sources: tuple[str, ...]
     hits: tuple[HistoricalClue, ...]
 
@@ -38,6 +40,8 @@ class RetroSearchReceipt:
             "terms": self.terms,
             "mode": self.mode,
             "as_of_ref": self.as_of_ref,
+            "search_scope": self.search_scope,
+            "search_complete": self.search_complete,
             "searched_sources": self.searched_sources,
             "hits": [h.to_dict() for h in self.hits],
         }
@@ -51,6 +55,8 @@ class RetroSearchReceipt:
             "terms": list(self.terms),
             "mode": self.mode,
             "as_of_ref": self.as_of_ref,
+            "search_scope": self.search_scope,
+            "search_complete": self.search_complete,
             "searched_sources": list(self.searched_sources),
             "hits": [h.to_dict() for h in self.hits],
         }

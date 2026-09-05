@@ -23,7 +23,7 @@ The controller answers **where to look next**, never **what is mathematically tr
 - `router.py` — deterministic fail-closed action ranking.
 - `deformation_budget.py` — RH-native deformation-budget diagnostic with Decimal arithmetic and explicit tail certificates.
 - `first_break.py` — MCM-style cheapest-decisive-falsifier ordering.
-- `retro/` — vocabulary-aware Git archaeology, optional external archive search, as-of replay and dead-route revival law.
+- `retro/` — vocabulary-aware Git archaeology, optional external archive ingestion/search, as-of replay and dead-route revival law.
 
 ## FFBBP v1.6 assurance integration
 
@@ -59,29 +59,30 @@ and is available only when `gap_lower > 0` is itself certified. A `PRUNE` decisi
 
 ## Retro modes
 
-### Archaeology
+### Archaeology — exhaustive by default
 
-Searches all repository history reachable from the supplied anchor plus all text files in an optional archive. Historical hits remain clue provenance and require revalidation.
+Searches **all Git refs with commits predating the theorem anchor**, not only main-reachable history. This is deliberate: older unmerged implementation branches may contain useful clues. Concept aliases recover vocabulary drift such as `deformation budget -> residual headroom / detectability budget / distortion schedule / evolving canvas`.
+
+The normal controller uses exhaustive archaeology with no hit/commit cap. `--quick-retro` exists for interactive exploration, but its receipts are marked incomplete and therefore cannot admit history-sensitive routes.
 
 ### Counterfactual replay
 
-Searches only Git history reachable from the historical anchor. External archives additionally require `RETRO_ARCHIVE_MANIFEST.json`; files with unknown or later `available_from_utc` are excluded. This prevents hindsight leakage.
+Searches only Git history reachable from the historical anchor. External archives additionally require `RETRO_ARCHIVE_MANIFEST.json`; files with unknown/later `available_from_utc` or a mismatched SHA-256 are excluded/rejected. This prevents hindsight leakage and source mutation.
 
-Example external archive manifest:
+## External-history ingestion
 
-~~~json
-{
-  "sources": [
-    {
-      "path": "ICW_NSG_v1.txt",
-      "source_family": "ICW_NSG",
-      "source_version": "1.0",
-      "authority": "HISTORICAL_ARCHITECTURE",
-      "available_from_utc": "2026-08-01T00:00:00Z"
-    }
-  ]
-}
+CI cannot query private document libraries directly. Historical papers/implementation notes are first normalized to UTF-8 text/code, then ingested with a hash-bound availability manifest:
+
+~~~bash
+python research/RHRC/control_v2/retro/ingest.py ICW_NSG_v1.txt \
+  --archive-root /path/to/rhrc-history \
+  --source-family ICW_NSG \
+  --source-version 1.0 \
+  --authority HISTORICAL_ARCHITECTURE \
+  --available-from-utc 2026-08-01T00:00:00Z
 ~~~
+
+The ingestion tool copies the source under a SHA-prefixed name and maintains `RETRO_ARCHIVE_MANIFEST.json` deterministically.
 
 ## Usage
 
@@ -107,6 +108,6 @@ The output is a route certificate plus retro-search receipt IDs. It always carri
 
 ## CI
 
-`tools/run_suite.py` runs Control-v2 unit tests. The Python RHRC workflow checks out full Git history (`fetch-depth: 0`) so historical replay is actually available in CI. Router recommendations themselves are not assertion targets; only invariant failures are CI-fatal.
+`tools/run_suite.py` runs Control-v2 unit tests. The Python RHRC workflow checks out full Git history (`fetch-depth: 0`) and performs a real-history Control-v2 smoke run. Router recommendations themselves are not assertion targets; authority, completeness and leakage invariants are CI-fatal.
 
 **RH remains OPEN.**
