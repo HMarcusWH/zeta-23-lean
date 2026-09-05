@@ -56,8 +56,8 @@ def intrinsicCubicShellCoordinate
       inner ℂ
           (intrinsicCubicShellPart p N :
             euclideanParityBoundaryFlatSubspace p (N + 1))
-          (((x + y : intrinsicParitySuccShell p N) :
-            euclideanParityBoundaryFlatSubspace p (N + 1))) /
+          ((x : euclideanParityBoundaryFlatSubspace p (N + 1)) +
+            (y : euclideanParityBoundaryFlatSubspace p (N + 1))) /
         inner ℂ
           (intrinsicCubicShellPart p N :
             euclideanParityBoundaryFlatSubspace p (N + 1))
@@ -89,8 +89,7 @@ def intrinsicCubicShellCoordinate
       inner ℂ
           (intrinsicCubicShellPart p N :
             euclideanParityBoundaryFlatSubspace p (N + 1))
-          (((a • x : intrinsicParitySuccShell p N) :
-            euclideanParityBoundaryFlatSubspace p (N + 1))) /
+          (a • (x : euclideanParityBoundaryFlatSubspace p (N + 1))) /
         inner ℂ
           (intrinsicCubicShellPart p N :
             euclideanParityBoundaryFlatSubspace p (N + 1))
@@ -221,20 +220,16 @@ theorem intrinsicCubicQuotientCoordinate_intertwiningDefect
     intrinsicCubicQuotientCoordinate .odd N
         (evenOddCompressedIntertwiningDefect L (N + 1) z) =
       cubicDefectFunctional L (N + 1) z := by
-  change
-    (intrinsicCubicQuotientCoordinate .odd N :
-      euclideanOddBoundaryFlatSubspace (N + 1) →ₗ[ℂ] ℂ)
-        (evenOddCompressedIntertwiningDefect L (N + 1) z) =
-      cubicDefectFunctional L (N + 1) z
-  rw [evenOddCompressedIntertwiningDefect_eq_cubicFunctional_smul
-    hL (N + 1) (by omega) z, map_smul]
-  have hg :
-      (intrinsicCubicQuotientCoordinate .odd N :
-        euclideanOddBoundaryFlatSubspace (N + 1) →ₗ[ℂ] ℂ)
-          (oddCubicCompressionVector (N + 1)) = 1 := by
+  have hfac :
+      (evenOddCompressedIntertwiningDefect L (N + 1) z :
+        euclideanParityBoundaryFlatSubspace .odd (N + 1)) =
+      cubicDefectFunctional L (N + 1) z •
+        successorParityCubicVector .odd N := by
     simpa [successorParityCubicVector] using
-      intrinsicCubicQuotientCoordinate_successorParityCubicVector .odd N hN
-  rw [hg]
+      evenOddCompressedIntertwiningDefect_eq_cubicFunctional_smul
+        hL (N + 1) (by omega) z
+  rw [hfac, map_smul,
+    intrinsicCubicQuotientCoordinate_successorParityCubicVector .odd N hN]
   simp
 
 /-- A genuine negative first-bad eigenmode has nonzero canonical cubic quotient
