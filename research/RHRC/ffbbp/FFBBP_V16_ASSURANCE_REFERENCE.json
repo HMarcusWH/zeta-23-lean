@@ -1,0 +1,25 @@
+{
+  "schema_version": "FFBBP-v1.6-assurance-overlay-1.0",
+  "theory_version": "1.6.0",
+  "status": "THEORY_ASSURANCE_OVERLAY_ONLY",
+  "purpose": "Expose v1.6 reduction, commutation, horizon and witness assurance contracts to RHRC without rewriting the qualified RUN42C implementation lineage.",
+  "inherits_run42c_qualification": false,
+  "qualified_runtime_reference": "research/RHRC/ffbbp/FFBBP_REFERENCE.json",
+  "qualified_runtime_overlay": "research/RHRC/ffbbp/IMPLEMENTATION_CLOSURE_OVERLAY.json",
+  "modules": [
+    "research/RHRC/ffbbp/v16_contracts.py",
+    "research/RHRC/ffbbp/v16_commutation.py",
+    "research/RHRC/ffbbp/v16_horizon.py",
+    "research/RHRC/ffbbp/v16_witness.py",
+    "research/RHRC/ffbbp/v16_gates.py"
+  ],
+  "claim_cap": "diagnostic_and_research_control_only",
+  "forbidden_promotions": [
+    "v1.6 theory overlay -> RUN42C operational qualification",
+    "diagnostic commutation -> decision commutation",
+    "small local residual -> horizon safety",
+    "local witness separation -> full-system separation without masking clearance",
+    "FFBBP assurance output -> mathematical theorem",
+    "FFBBP assurance output -> RH evidence"
+  ]
+}

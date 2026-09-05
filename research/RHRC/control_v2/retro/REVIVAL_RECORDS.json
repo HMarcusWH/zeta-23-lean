@@ -1,0 +1,5 @@
+{
+  "schema_version": "RHRC-revival-records-1.0",
+  "records": [],
+  "rule": "A dead or quarantined route may not be silently resurrected. A revival must identify the original blocker, the changed premise, and evidence for that change."
+}

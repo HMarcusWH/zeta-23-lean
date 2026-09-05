@@ -1,0 +1,14 @@
+{
+  "schema_version": "RHRC-retro-baseline-1.0",
+  "status": "HUMAN_CURATED_SEED_REQUIRES_SOURCE_INGESTION_BEFORE_EVIDENCE_USE",
+  "concept": "deformation_budget",
+  "seed_clues": [
+    {"family": "ICW_NSG", "concept": "residual headroom and cross-rung stability"},
+    {"family": "ICW_HYBRID_SOLVER", "concept": "restriction/prolongation round-trip residual and distortion schedules"},
+    {"family": "THEORY_UPGRADE_KIT", "concept": "detectability budget"},
+    {"family": "THEORY_UPGRADE_KIT", "concept": "ReverseReductionAssessment / EquivalenceWallRecord"},
+    {"family": "RACR", "concept": "residual-aware computational routing"},
+    {"family": "FFBBP", "concept": "residual horizon and decision commutation"}
+  ],
+  "claim_cap": "IDEA_PROVENANCE_ONLY"
+}

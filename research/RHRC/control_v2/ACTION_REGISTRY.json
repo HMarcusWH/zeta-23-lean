@@ -1,0 +1,85 @@
+{
+  "schema_version": "RHRC-control-actions-1.0",
+  "current_frontier": "FIRST_BAD_RIGIDITY_E2",
+  "open_obligations": [
+    "E2_CUBIC_NORMALIZED_SCHUR",
+    "E3_PROJECTED_SYMMETRY",
+    "E3_SHIFTED_COERCIVITY",
+    "E3_RESOLVENT_MONOTONICITY",
+    "E4_PARITY_NULLITY",
+    "E4_SIMULTANEOUS_RESONANCE",
+    "DEFORMATION_BUDGET_PAPER_TEST"
+  ],
+  "actions": {
+    "DEFORMATION_BUDGET_PAPER_TEST": {
+      "kind": "DIAGNOSTIC_RESEARCH",
+      "concept_id": "deformation_budget",
+      "retro_search_required": true,
+      "first_break_required": true,
+      "decision_commutation_required": true,
+      "horizon_required_for_tail_claim": true,
+      "dead_route_matches": [],
+      "surviving_objections": [
+        "beta_N decay is unproved",
+        "shell-gap tail lower bound is unproved",
+        "summable infinite tail majorant is unproved",
+        "uniform L control is unproved"
+      ],
+      "score_inputs": {
+        "cost": 1.0,
+        "information_gain": 5.0,
+        "falsification_value": 5.0,
+        "closure_value": 4.0,
+        "residual_risk": 2.0,
+        "dependency_debt": 1.0
+      },
+      "first_breaks": [
+        {"id": "DB-FB-01", "statement": "q_N-mu_N fails to remain usefully positive", "test_id": "probe_shell_gap", "estimated_cost": 1.0, "decisive_if_failed": true},
+        {"id": "DB-FB-02", "statement": "beta_N fails to exhibit usable decay", "test_id": "probe_shell_coupling", "estimated_cost": 1.1, "decisive_if_failed": true},
+        {"id": "DB-FB-03", "statement": "no summable certified tail majorant is available", "test_id": "tail_majorant_test", "estimated_cost": 2.0, "decisive_if_failed": true}
+      ]
+    },
+    "E2_CUBIC_NORMALIZED_SCHUR": {
+      "kind": "THEOREM_ATTEMPT",
+      "concept_id": "cubic_normalized_schur",
+      "retro_search_required": true,
+      "first_break_required": true,
+      "decision_commutation_required": false,
+      "horizon_required_for_tail_claim": false,
+      "dead_route_matches": [],
+      "surviving_objections": ["scale-free normalization theorem not yet locked", "generic scalar Schur roots need not be excluded"],
+      "score_inputs": {"cost": 2.0, "information_gain": 5.0, "falsification_value": 4.0, "closure_value": 5.0, "residual_risk": 1.5, "dependency_debt": 1.0},
+      "first_breaks": [
+        {"id": "E2-FB-01", "statement": "the two nonzero shell vectors fail to produce the required scale-free invariant", "test_id": "shell_scalar_multiple_normalization", "estimated_cost": 1.0, "decisive_if_failed": true}
+      ]
+    },
+    "E3_SHIFTED_COERCIVITY": {
+      "kind": "THEOREM_ATTEMPT",
+      "concept_id": "shifted_coercivity",
+      "retro_search_required": true,
+      "first_break_required": true,
+      "decision_commutation_required": false,
+      "horizon_required_for_tail_claim": false,
+      "dead_route_matches": [],
+      "surviving_objections": ["resolvent monotonicity remains separate"],
+      "score_inputs": {"cost": 1.5, "information_gain": 4.0, "falsification_value": 3.0, "closure_value": 4.0, "residual_risk": 1.0, "dependency_debt": 0.5},
+      "first_breaks": [
+        {"id": "E3-FB-01", "statement": "projected predecessor symmetry cannot be established in the exact repository inner product", "test_id": "prove_projected_A_symmetric", "estimated_cost": 0.8, "decisive_if_failed": true}
+      ]
+    },
+    "E4_PARITY_NULLITY": {
+      "kind": "THEOREM_ATTEMPT",
+      "concept_id": "parity_resonance",
+      "retro_search_required": true,
+      "first_break_required": true,
+      "decision_commutation_required": false,
+      "horizon_required_for_tail_claim": false,
+      "dead_route_matches": [],
+      "surviving_objections": ["D is algebraic, not unitary", "simultaneous resonance remains open"],
+      "score_inputs": {"cost": 2.0, "information_gain": 4.0, "falsification_value": 4.0, "closure_value": 3.0, "residual_risk": 1.5, "dependency_debt": 1.0},
+      "first_breaks": [
+        {"id": "E4-FB-01", "statement": "rank-at-most-one algebra does not give the required kernel/nullity comparison", "test_id": "nullity_difference_lemma", "estimated_cost": 1.0, "decisive_if_failed": true}
+      ]
+    }
+  }
+}

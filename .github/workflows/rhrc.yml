@@ -14,11 +14,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
       - name: RHRC claim and regression suite
         run: python research/RHRC/tools/run_suite.py
+      - name: Control v2 real-history smoke run
+        run: |
+          python research/RHRC/control_v2/run_control.py \
+            --output /tmp/RHRC_CONTROL_V2.json
+          python - <<'PY'
+          import json
+          p = json.load(open('/tmp/RHRC_CONTROL_V2.json'))
+          assert p['terminal_claim'] == 'RH_OPEN'
+          assert p['route_certificate']['theorem_authority'] is False
+          assert p['route_certificate']['terminal_claim_change'] is False
+          print('Control v2 smoke: PASS')
+          PY
 
   r003-normalization-audit:
     runs-on: ubuntu-latest
@@ -41,7 +55,7 @@ jobs:
         run: python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
       - name: Reject external reference code as a Lean dependency
         run: |
-          if grep -R -n -E 'external[/\.]connes_cvs|connes_cvs' Zeta23 --include='*.lean'; then
+          if grep -R -n -E 'external[/\\.]connes_cvs|connes_cvs' Zeta23 --include='*.lean'; then
             echo 'External connes-cvs reference code must not enter the Lean theorem dependency graph'
             exit 1
           fi

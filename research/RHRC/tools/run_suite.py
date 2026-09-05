@@ -21,7 +21,9 @@ def main() -> int:
     run([sys.executable, "-m", "unittest", "discover", "-s", str(ROOT / "ffbbp" / "tests"), "-p", "test_*.py", "-v"])
     run([sys.executable, "-m", "unittest", "discover", "-s", str(ROOT / "ool" / "tests"), "-p", "test_*.py", "-v"])
     run([sys.executable, "-m", "unittest", "discover", "-s", str(ROOT / "runner" / "tests"), "-p", "test_*.py", "-v"])
+    run([sys.executable, "-m", "unittest", "discover", "-s", str(ROOT / "control_v2" / "tests"), "-p", "test_*.py", "-v"])
     return 0
+
 
 if __name__ == "__main__":
     raise SystemExit(main())

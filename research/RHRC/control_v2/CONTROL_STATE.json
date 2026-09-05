@@ -1,0 +1,13 @@
+{
+  "schema_version": "RHRC-control-state-1.0",
+  "boundary_id": "B0_RH_2026_08_20",
+  "terminal_claim": "RH_OPEN",
+  "merged_theorem_anchor": {
+    "pr": 115,
+    "merge_commit": "a2fecffbef8fed1fdfba373aa5756acf2618e2a1",
+    "tree": "47a2601e3464b0b4248e61c52b4560681f73c986",
+    "status": "MERGED_GREEN_THEOREM_STATE"
+  },
+  "candidate_branch": null,
+  "control_note": "E1 cubic-shell incidence is merged. Control v2 has no theorem/claim authority."
+}
