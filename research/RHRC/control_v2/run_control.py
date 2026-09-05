@@ -124,12 +124,17 @@ def main() -> int:
     regime = assess_regime(_load_history(args.history_jsonl))
 
     payload = {
-        "schema_version": "RHRC-control-run-1.2",
+        "schema_version": "RHRC-control-run-1.3",
         "terminal_claim": state.terminal_claim,
         "theorem_anchor": {
             "pr": state.anchor.pr,
             "merge_commit": state.anchor.merge_commit,
             "tree": state.anchor.tree,
+        },
+        "control_anchor": {
+            "pr": state.control_anchor.pr,
+            "merge_commit": state.control_anchor.merge_commit,
+            "tree": state.control_anchor.tree,
         },
         "supporting_stack": {
             "ffbbp": {
