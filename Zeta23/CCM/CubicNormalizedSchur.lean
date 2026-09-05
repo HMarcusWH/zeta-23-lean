@@ -254,6 +254,9 @@ theorem intrinsicCubicQuotientCoordinate_intertwiningDefect
       (evenOddCompressedIntertwiningDefect L (N + 1) z :
         euclideanParityBoundaryFlatSubspace .odd (N + 1)) = defectParity := by
     apply Subtype.ext
+    change
+      (evenOddCompressedIntertwiningDefect L (N + 1) z).1 =
+        (evenOddCompressedIntertwiningDefect L (N + 1) z).1
     rfl
   have hcubic :
       cubicParity = successorParityCubicVector .odd N := by
@@ -262,8 +265,15 @@ theorem intrinsicCubicQuotientCoordinate_intertwiningDefect
   have hfacParity :
       defectParity = cubicDefectFunctional L (N + 1) z • cubicParity := by
     apply Subtype.ext
-    have hval := congrArg Subtype.val hfacNative
-    simpa [defectParity, cubicParity] using hval
+    change
+      (evenOddCompressedIntertwiningDefect L (N + 1) z).1 =
+        cubicDefectFunctional L (N + 1) z •
+          (oddCubicCompressionVector (N + 1)).1
+    have hval :=
+      congrArg
+        (fun w : euclideanOddBoundaryFlatSubspace (N + 1) => w.1)
+        hfacNative
+    simpa using hval
   have hg :
       intrinsicCubicQuotientCoordinate .odd N cubicParity = 1 := by
     rw [hcubic]
