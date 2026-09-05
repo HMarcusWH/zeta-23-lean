@@ -83,7 +83,8 @@ A local or finite calculation is never an infinite-tail certificate. A decision-
 ## Current research records
 
 - `CURRENT_RESEARCH_PLAN.md` — execution order and gates.
-- `RESEARCH_LEADS.md` — accumulated lead ledger.
+- `RESEARCH_LEADS_POST_115_DELTA.md` — current post-green E2/deformation-budget lead delta; supersedes the post-#113 delta for current execution.
+- `RESEARCH_LEADS.md` — accumulated lead ledger and older option memory.
 - `OBSTRUCTION_LEDGER.md` — explicit open obstructions/firewalls.
 - `DEAD_ROUTES.md` — reusable route failures; revival requires a changed-premise record.
 - `control_v2/README.md` — adaptive/retro research-control semantics.
