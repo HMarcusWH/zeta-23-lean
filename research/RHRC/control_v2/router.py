@@ -6,6 +6,7 @@ from pathlib import Path
 from control_v2.schemas import Disposition, ResearchAction, ResearchState, RouteCertificate
 
 RHRC = Path(__file__).resolve().parents[1]
+SCORE_FORMULA_VERSION = "RACR_BASE_SCORE_V1: information_gain+falsification_value+closure_value-cost-residual_risk-dependency_debt"
 
 
 def load_actions(path: Path | None = None) -> tuple[ResearchAction, ...]:
@@ -69,6 +70,7 @@ def recommend(state: ResearchState, actions: tuple[ResearchAction, ...], *,
     retro_complete = retro_complete or {}
     admissible: list[ResearchAction] = []
     rejected: list[str] = []
+    diagnostics: list[str] = []
 
     for action in actions:
         blockers = _admissibility_blockers(
@@ -78,10 +80,16 @@ def recommend(state: ResearchState, actions: tuple[ResearchAction, ...], *,
             first_break_count=first_break_counts.get(action.action_id, 0),
             revival_ids=revival_ids,
         )
+        blocker_text = "NONE" if not blockers else ";".join(blockers)
+        diagnostics.append(
+            f"candidate {action.action_id}: base_score={action_score(action):.3f}; blockers={blocker_text}"
+        )
         if blockers:
             rejected.append(f"{action.action_id}: {';'.join(blockers)}")
         else:
             admissible.append(action)
+
+    diagnostic_lines = (SCORE_FORMULA_VERSION, *tuple(diagnostics))
 
     if not admissible:
         return RouteCertificate(
@@ -89,7 +97,7 @@ def recommend(state: ResearchState, actions: tuple[ResearchAction, ...], *,
             selected_action=None,
             score=None,
             disposition=Disposition.ABSTAIN,
-            rationale=("No admissible action survived fail-closed routing.", *rejected),
+            rationale=("No admissible action survived fail-closed routing.", *diagnostic_lines),
             retro_receipt_ids=tuple(sorted(set(retro_receipts.values()))),
             surviving_objections=(),
             required_relock=("establish missing control contracts",),
@@ -99,8 +107,8 @@ def recommend(state: ResearchState, actions: tuple[ResearchAction, ...], *,
     selected = ranked[0]
     rationale = (
         "selected highest deterministic information/falsification/closure score among admissible actions",
-        f"score={action_score(selected):.3f}",
-        *tuple(f"rejected {item}" for item in rejected),
+        f"selected_score={action_score(selected):.3f}",
+        *diagnostic_lines,
     )
     required_relock: list[str] = []
     if selected.decision_commutation_required:
