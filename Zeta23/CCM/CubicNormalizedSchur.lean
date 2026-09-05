@@ -41,15 +41,74 @@ def intrinsicCubicShellCoordinate
     (p : ReversalParity) (N : ℕ) :
     intrinsicParitySuccShell p N →ₗ[ℂ] ℂ where
   toFun := fun s =>
-    inner ℂ (intrinsicCubicShellPart p N) s /
-      inner ℂ (intrinsicCubicShellPart p N) (intrinsicCubicShellPart p N)
+    inner ℂ
+        (intrinsicCubicShellPart p N :
+          euclideanParityBoundaryFlatSubspace p (N + 1))
+        (s : euclideanParityBoundaryFlatSubspace p (N + 1)) /
+      inner ℂ
+        (intrinsicCubicShellPart p N :
+          euclideanParityBoundaryFlatSubspace p (N + 1))
+        (intrinsicCubicShellPart p N :
+          euclideanParityBoundaryFlatSubspace p (N + 1))
   map_add' := by
     intro x y
-    simp only [inner_add_right]
+    change
+      inner ℂ
+          (intrinsicCubicShellPart p N :
+            euclideanParityBoundaryFlatSubspace p (N + 1))
+          (((x + y : intrinsicParitySuccShell p N) :
+            euclideanParityBoundaryFlatSubspace p (N + 1))) /
+        inner ℂ
+          (intrinsicCubicShellPart p N :
+            euclideanParityBoundaryFlatSubspace p (N + 1))
+          (intrinsicCubicShellPart p N :
+            euclideanParityBoundaryFlatSubspace p (N + 1)) =
+      inner ℂ
+          (intrinsicCubicShellPart p N :
+            euclideanParityBoundaryFlatSubspace p (N + 1))
+          (x : euclideanParityBoundaryFlatSubspace p (N + 1)) /
+        inner ℂ
+          (intrinsicCubicShellPart p N :
+            euclideanParityBoundaryFlatSubspace p (N + 1))
+          (intrinsicCubicShellPart p N :
+            euclideanParityBoundaryFlatSubspace p (N + 1)) +
+      inner ℂ
+          (intrinsicCubicShellPart p N :
+            euclideanParityBoundaryFlatSubspace p (N + 1))
+          (y : euclideanParityBoundaryFlatSubspace p (N + 1)) /
+        inner ℂ
+          (intrinsicCubicShellPart p N :
+            euclideanParityBoundaryFlatSubspace p (N + 1))
+          (intrinsicCubicShellPart p N :
+            euclideanParityBoundaryFlatSubspace p (N + 1))
+    rw [inner_add_right]
     ring
   map_smul' := by
     intro a x
-    simp [inner_smul_right, div_eq_mul_inv, smul_eq_mul, mul_assoc]
+    change
+      inner ℂ
+          (intrinsicCubicShellPart p N :
+            euclideanParityBoundaryFlatSubspace p (N + 1))
+          (((a • x : intrinsicParitySuccShell p N) :
+            euclideanParityBoundaryFlatSubspace p (N + 1))) /
+        inner ℂ
+          (intrinsicCubicShellPart p N :
+            euclideanParityBoundaryFlatSubspace p (N + 1))
+          (intrinsicCubicShellPart p N :
+            euclideanParityBoundaryFlatSubspace p (N + 1)) =
+      a •
+        (inner ℂ
+            (intrinsicCubicShellPart p N :
+              euclideanParityBoundaryFlatSubspace p (N + 1))
+            (x : euclideanParityBoundaryFlatSubspace p (N + 1)) /
+          inner ℂ
+            (intrinsicCubicShellPart p N :
+              euclideanParityBoundaryFlatSubspace p (N + 1))
+            (intrinsicCubicShellPart p N :
+              euclideanParityBoundaryFlatSubspace p (N + 1)))
+    rw [inner_smul_right]
+    simp only [smul_eq_mul]
+    ring
 
 /-- The canonical cubic shell vector has coordinate one. -/
 theorem intrinsicCubicShellCoordinate_cubic
@@ -57,14 +116,33 @@ theorem intrinsicCubicShellCoordinate_cubic
     intrinsicCubicShellCoordinate p N (intrinsicCubicShellPart p N) = 1 := by
   have hc : intrinsicCubicShellPart p N ≠ 0 :=
     intrinsicCubicShellPart_ne_zero p N hN
-  have hcc :
-      inner ℂ (intrinsicCubicShellPart p N) (intrinsicCubicShellPart p N) ≠ 0 := by
+  have hcCarrier :
+      (intrinsicCubicShellPart p N :
+        euclideanParityBoundaryFlatSubspace p (N + 1)) ≠ 0 := by
     intro hzero
     apply hc
+    apply Subtype.ext
+    exact hzero
+  have hcc :
+      inner ℂ
+          (intrinsicCubicShellPart p N :
+            euclideanParityBoundaryFlatSubspace p (N + 1))
+          (intrinsicCubicShellPart p N :
+            euclideanParityBoundaryFlatSubspace p (N + 1)) ≠ 0 := by
+    intro hzero
+    apply hcCarrier
     exact inner_self_eq_zero.mp hzero
   change
-    inner ℂ (intrinsicCubicShellPart p N) (intrinsicCubicShellPart p N) /
-        inner ℂ (intrinsicCubicShellPart p N) (intrinsicCubicShellPart p N) = 1
+    inner ℂ
+        (intrinsicCubicShellPart p N :
+          euclideanParityBoundaryFlatSubspace p (N + 1))
+        (intrinsicCubicShellPart p N :
+          euclideanParityBoundaryFlatSubspace p (N + 1)) /
+      inner ℂ
+        (intrinsicCubicShellPart p N :
+          euclideanParityBoundaryFlatSubspace p (N + 1))
+        (intrinsicCubicShellPart p N :
+          euclideanParityBoundaryFlatSubspace p (N + 1)) = 1
   exact div_self hcc
 
 /-- Every vector in the one-dimensional intrinsic shell is reconstructed from
@@ -143,13 +221,19 @@ theorem intrinsicCubicQuotientCoordinate_intertwiningDefect
     intrinsicCubicQuotientCoordinate .odd N
         (evenOddCompressedIntertwiningDefect L (N + 1) z) =
       cubicDefectFunctional L (N + 1) z := by
+  change
+    (intrinsicCubicQuotientCoordinate .odd N :
+      euclideanOddBoundaryFlatSubspace (N + 1) →ₗ[ℂ] ℂ)
+        (evenOddCompressedIntertwiningDefect L (N + 1) z) =
+      cubicDefectFunctional L (N + 1) z
   rw [evenOddCompressedIntertwiningDefect_eq_cubicFunctional_smul
     hL (N + 1) (by omega) z, map_smul]
-  have hg :=
-    intrinsicCubicQuotientCoordinate_successorParityCubicVector .odd N hN
-  change
-    intrinsicCubicQuotientCoordinate .odd N
-      (oddCubicCompressionVector (N + 1)) = 1 at hg
+  have hg :
+      (intrinsicCubicQuotientCoordinate .odd N :
+        euclideanOddBoundaryFlatSubspace (N + 1) →ₗ[ℂ] ℂ)
+          (oddCubicCompressionVector (N + 1)) = 1 := by
+    simpa [successorParityCubicVector] using
+      intrinsicCubicQuotientCoordinate_successorParityCubicVector .odd N hN
   rw [hg]
   simp
 
@@ -200,7 +284,13 @@ theorem cubicNormalizedSuccessorVector_eigenmode
     parityCompressedCanonical p L (N + 1)
         (cubicNormalizedSuccessorVector p N v) =
       (lam : ℂ) • cubicNormalizedSuccessorVector p N v := by
-  simp [cubicNormalizedSuccessorVector, hveig, smul_smul, mul_comm]
+  change
+    parityCompressedCanonical p L (N + 1)
+        ((intrinsicCubicQuotientCoordinate p N v)⁻¹ • v) =
+      (lam : ℂ) •
+        ((intrinsicCubicQuotientCoordinate p N v)⁻¹ • v)
+  rw [map_smul, hveig, smul_smul, smul_smul]
+  exact congrArg (fun a : ℂ => a • v) (mul_comm _ _)
 
 /-- If the cubic quotient coordinate is nonzero, normalization makes the shell
 component exactly the canonical cubic shell vector. -/
