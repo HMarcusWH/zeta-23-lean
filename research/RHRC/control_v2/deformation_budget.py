@@ -116,6 +116,10 @@ class BudgetDecisionCertificate:
 
 def _validate_prefix_steps(*, start_n: int, prefix_end_n: int,
                            steps: tuple[StepUpperBound, ...]) -> None:
+    for step in steps:
+        if step.n < 0:
+            raise ValueError("step index must be nonnegative")
+        _finite_nonnegative(D(step.upper), name="step upper bound")
     expected = tuple(range(start_n, prefix_end_n))
     actual = tuple(step.n for step in steps)
     if actual != expected:
@@ -166,7 +170,7 @@ def make_tail_budget_certificate(*, start_n: int,
 
     steps = tuple(prefix_bounds)
     _validate_prefix_steps(start_n=start_n, prefix_end_n=prefix_end_n, steps=steps)
-    prefix = sum((step.upper for step in steps), D(0))
+    prefix = sum((D(step.upper) for step in steps), D(0))
     _finite_nonnegative(prefix, name="prefix upper bound")
 
     if not in_trust_region:
@@ -234,16 +238,27 @@ def certify_prune_decision(
             "COMPLETE_CERTIFIED_HORIZON_BUDGET_REQUIRED",
         )
 
-    if decision_commutation_required:
-        if decision_commutation is None:
-            return BudgetDecisionCertificate(
-                BudgetDecision.UNRESOLVED, headroom, horizon_passed, True, None,
-                "DECISION_COMMUTATION_CERTIFICATE_MISSING",
-            )
+    if decision_commutation_required and decision_commutation is None:
+        return BudgetDecisionCertificate(
+            BudgetDecision.UNRESOLVED, headroom, horizon_passed, True, None,
+            "DECISION_COMMUTATION_CERTIFICATE_MISSING",
+        )
+
+    if decision_commutation is not None:
         if not decision_commutation.passed:
             return BudgetDecisionCertificate(
-                BudgetDecision.UNRESOLVED, headroom, horizon_passed, True, False,
+                BudgetDecision.UNRESOLVED, headroom, horizon_passed,
+                decision_commutation_required, False,
                 "DECISION_COMMUTATION_FAILED",
+            )
+        if (
+            decision_commutation.reduced_decision is not BudgetDecision.PRUNE
+            or decision_commutation.reference_decision is not BudgetDecision.PRUNE
+        ):
+            return BudgetDecisionCertificate(
+                BudgetDecision.UNRESOLVED, headroom, horizon_passed,
+                decision_commutation_required, True,
+                "DECISION_COMMUTATION_DOES_NOT_SUPPORT_PRUNE",
             )
 
     if headroom > 0:
