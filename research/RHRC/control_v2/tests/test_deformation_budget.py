@@ -42,6 +42,18 @@ class DeformationBudgetTests(unittest.TestCase):
     def _step(self, n, upper):
         return StepUpperBound.make(n, Decimal(upper), (f"step-{n}",))
 
+    def _cert(self):
+        return make_tail_budget_certificate(
+            start_n=10,
+            prefix_bounds=[self._step(10, "0.1")],
+            prefix_end_n=11,
+            tail_upper=Decimal("0.2"),
+            in_trust_region=True,
+            method="analytic majorant",
+            provenance=("theorem-X",),
+            horizon_certificate=self._horizon(),
+        )
+
     def test_diagnostic_drop_is_nonnegative(self):
         self.assertGreaterEqual(diagnostic_two_by_two_drop(2, 5, Decimal("0.5")), 0)
 
@@ -107,60 +119,41 @@ class DeformationBudgetTests(unittest.TestCase):
         self.assertEqual(prune_decision(Decimal("1.0"), cert), BudgetDecision.PRUNE)
 
     def test_required_decision_commutation_missing_fails_closed(self):
-        cert = make_tail_budget_certificate(
-            start_n=10,
-            prefix_bounds=[self._step(10, "0.1")],
-            prefix_end_n=11,
-            tail_upper=Decimal("0.2"),
-            in_trust_region=True,
-            method="analytic majorant",
-            provenance=("theorem-X",),
-            horizon_certificate=self._horizon(),
-        )
         result = certify_prune_decision(
-            Decimal("1.0"), cert, decision_commutation_required=True
+            Decimal("1.0"), self._cert(), decision_commutation_required=True
         )
         self.assertEqual(result.decision, BudgetDecision.UNRESOLVED)
         self.assertEqual(result.reason, "DECISION_COMMUTATION_CERTIFICATE_MISSING")
 
     def test_failed_decision_commutation_fails_closed(self):
-        cert = make_tail_budget_certificate(
-            start_n=10,
-            prefix_bounds=[self._step(10, "0.1")],
-            prefix_end_n=11,
-            tail_upper=Decimal("0.2"),
-            in_trust_region=True,
-            method="analytic majorant",
-            provenance=("theorem-X",),
-            horizon_certificate=self._horizon(),
-        )
         mismatch = assess_decision(BudgetDecision.PRUNE, BudgetDecision.UNRESOLVED)
         self.assertEqual(
             prune_decision(
                 Decimal("1.0"),
-                cert,
+                self._cert(),
                 decision_commutation_required=True,
                 decision_commutation=mismatch,
             ),
             BudgetDecision.UNRESOLVED,
         )
 
-    def test_passed_decision_commutation_allows_prune(self):
-        cert = make_tail_budget_certificate(
-            start_n=10,
-            prefix_bounds=[self._step(10, "0.1")],
-            prefix_end_n=11,
-            tail_upper=Decimal("0.2"),
-            in_trust_region=True,
-            method="analytic majorant",
-            provenance=("theorem-X",),
-            horizon_certificate=self._horizon(),
+    def test_commutation_that_agrees_on_unresolved_does_not_authorize_prune(self):
+        unresolved_match = assess_decision(BudgetDecision.UNRESOLVED, BudgetDecision.UNRESOLVED)
+        result = certify_prune_decision(
+            Decimal("1.0"),
+            self._cert(),
+            decision_commutation_required=True,
+            decision_commutation=unresolved_match,
         )
+        self.assertEqual(result.decision, BudgetDecision.UNRESOLVED)
+        self.assertEqual(result.reason, "DECISION_COMMUTATION_DOES_NOT_SUPPORT_PRUNE")
+
+    def test_passed_prune_decision_commutation_allows_prune(self):
         match = assess_decision(BudgetDecision.PRUNE, BudgetDecision.PRUNE)
         self.assertEqual(
             prune_decision(
                 Decimal("1.0"),
-                cert,
+                self._cert(),
                 decision_commutation_required=True,
                 decision_commutation=match,
             ),
@@ -189,6 +182,20 @@ class DeformationBudgetTests(unittest.TestCase):
                 tail_upper=0,
                 in_trust_region=True,
                 method="duplicate",
+                provenance=("test",),
+                horizon_certificate=self._horizon(propagated=0, tolerance=0),
+            )
+
+    def test_direct_malformed_step_value_is_rejected(self):
+        bad = StepUpperBound(n=10, upper=Decimal("-1"), provenance=("bad",))
+        with self.assertRaises(ValueError):
+            make_tail_budget_certificate(
+                start_n=10,
+                prefix_bounds=[bad],
+                prefix_end_n=11,
+                tail_upper=0,
+                in_trust_region=True,
+                method="malformed-step",
                 provenance=("test",),
                 horizon_certificate=self._horizon(propagated=0, tolerance=0),
             )
