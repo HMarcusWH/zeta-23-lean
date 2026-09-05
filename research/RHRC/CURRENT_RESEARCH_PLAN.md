@@ -2,18 +2,22 @@
 
 > **Claim firewall: RH remains OPEN.**
 
-## Current theorem-state anchor
+## Current authority split
 
 ~~~text
 theorem-state anchor = PR #115 merge a2fecffbef8fed1fdfba373aa5756acf2618e2a1
 theorem tree = 47a2601e3464b0b4248e61c52b4560681f73c986
 theorem-bearing merged through = PR #115
 FIRST-BAD-RIGIDITY-E1 cubic-shell incidence = PROVED / MERGED
-CCM and ExceptionalZero import closure = PR #115 theorem surface
+
+control-plane anchor = PR #116 merge 8921572170e89d74216f0c5577b669696626219e
+control-plane tree = fc138b517c6835230515167386eafe3ef3495baf
+Control v2 / FFBBP v1.6 assurance = MERGED GREEN CONTROL INFRASTRUCTURE
+
 RH = OPEN
 ~~~
 
-Live GitHub head + Lean/CI remain authoritative over this prose anchor.
+Live GitHub head + Lean/CI remain authoritative over these prose anchors. PR #116 changed no Lean theorem authority.
 
 ## One-screen frontier
 
@@ -40,30 +44,39 @@ NOW — E1b / E2: CUBIC-NORMALIZED SCHUR
   dim_C S=1 + nonzero negative-mode shell coordinate + nonzero cubic shell coordinate
     -> identify the two shell vectors up to a nonzero scalar
   transfer the #113 shifted Schur identity to the canonical cubic shell line
-  normalize shell scale
+  prefer scale-free ratios built directly from c_N = intrinsicCubicShellPart p N
   obtain a scale-free one-dimensional cubic-normalized secular equation
 
-THEN — E3
-  prove projected predecessor block A symmetric
+THEN — E3: PROJECTED SYMMETRY / COERCIVITY / RESOLVENT
+  prove projected predecessor block A symmetric in the exact repository inner product
   prove quantitative shifted coercivity for A-lam I
-  derive resolvent norm/positivity consequences if Lean-cheap
-  establish scalar resolvent monotonicity if possible
+  derive the safe resolvent norm/positivity estimate
+  use E2 + E3 to theoremize a one-step deformation bound if the paper test survives
+  establish scalar resolvent monotonicity only if it materially helps
 
-THEN — E4
+THEN / PARALLEL — E4
   theoremize parity nullity-difference <=1 algebraically
   package common even/odd resonance vs one-channel opposite-parity resolvent
   classify/exclude simultaneous first-bad resonance
 
 PARALLEL PAPER/DIAGNOSTIC LANE — DEFORMATION BUDGET
-  define spectral-floor / shell-stiffness / coupling quantities without granting theorem status
-  derive certified one-step deformation upper bounds only from explicit lower/upper input bounds
-  require an actual infinite-tail majorant before any tail-pruning claim
-  use FFBBP v1.6 decision-commutation + horizon assurance
-  use RACR-style routing + MCM first-break tests
-  use retroactive archaeology before promoting a new branch
-  no Lean implementation until the paper/numerical route survives its first-break tests
+  use the theorem-backed cubic shell coordinate as the canonical shell direction
+  probe g_N = q_N-mu_N, beta_N, and beta_N^2/g_N for both parities and multiple fixed L
+  kill the route cheaply if the gap closes, coupling does not decay, or the ratio is not summable
+  require a complete certified infinite-tail majorant before any PRUNE
+  require decision commutation for reduced-model decision-bearing use
+  treat the desired L condition as all-L certification / controlled L-dependence; one universal Nstar is not assumed
+
+CONTROL HARDENING
+  numeric tail != horizon certificate
+  prefix steps must cover every N exactly once in sorted contiguous order
+  archaeology receipts bind the exact declared search paths
+  generic aliases do not count as admission-quality historical evidence
+  routing remains deterministic and exposes score formula + candidate base scores
+  theorem anchor and control-plane anchor stay separate
 
 OPTIONAL / CHEAP IF AVAILABLE
+  shell-projected cubic-defect zero iff cubicDefectFunctional zero
   negative index exactly one / unique negative eigenline
 
 PARALLEL SOURCE
@@ -74,7 +87,7 @@ RH OPEN
 
 ## What PR #115 changed
 
-E1 is no longer a lead. The repository now proves the smaller theorem actually needed downstream: the canonical cubic parity-defect direction is not inherited from the centered predecessor and therefore has nonzero canonical intrinsic shell coordinate. The explicit closed-form projection coefficient
+E1 is no longer a lead. The repository proves the smaller theorem actually needed downstream: the canonical cubic parity-defect direction is not inherited from the centered predecessor and therefore has nonzero canonical intrinsic shell coordinate. The explicit closed-form projection coefficient
 
 ~~~text
 alpha_K = (3 K^2 + 3 K - 1)/5
@@ -92,26 +105,84 @@ Module.finrank C S = 1
 
 E2 is the direct composition target.
 
-## Deformation-budget research lens
+## Post-#116 composition
 
-The new supporting Control-v2 layer tracks the paper-level idea that exact centered N-flow can be treated as a discrete deformation process. The candidate diagnostic state is
+PR #116 added no mathematical theorem, but its first real-history control run selected the deformation-budget paper test as the highest deterministic score among admissible actions and chose the shell-gap failure `q_N-mu_N` as the cheapest decisive first break. That recommendation is diagnostic only.
+
+The stronger mathematical synthesis is that E2/E3 and the deformation-budget idea are not independent theorem routes. The expected chain is
 
 ~~~text
-mu_N     spectral floor
-q_N      intrinsic shell stiffness
-beta_N   shell/predecessor coupling
-D_N      certified one-step downward-deformation upper bound
-R_N      certified remaining deformation upper bound
-H_N      certified headroom lower bound
+#115 cubic shell incidence
+  -> E2 cubic-normalized Schur
+  -> E3 shifted coercivity / resolvent
+  -> certified one-step deformation bound
 ~~~
 
-A point estimate, small local residual or fitted tail is never enough to prune. The only decision-bearing form is a certified lower bound for the current positive margin together with a certified upper bound for the complete remaining deformation budget. Control v2 is diagnostic/routing infrastructure only; Lean remains theorem authority.
+Writing
 
-## Control-v2 integration
+~~~text
+g_N = q_N - mu_N
+d_N = mu_N - lam
+~~~
 
-`research/RHRC/control_v2/` adds deterministic research routing, first-break declarations and retroactive research memory. `research/RHRC/ffbbp/v16_*` adds the newer assurance contracts without modifying or inheriting qualification from the frozen RUN42C implementation.
+the intended operator estimate is expected to imply
 
-Every serious new branch should carry a retro-search receipt. Dead routes may not be silently resurrected. Counterfactual replay is `as_of` bounded and external historical sources require availability metadata to prevent hindsight leakage.
+~~~text
+d_N (g_N + d_N) <= beta_N^2
+~~~
+
+and therefore the diagnostic two-by-two displacement bound, with the safe shortcut
+
+~~~text
+d_N <= beta_N^2 / g_N
+~~~
+
+when a strictly positive `g_N` lower bound is independently certified.
+
+This remains a LEAD / HYPOTHESIS until E2/E3 supply the exact theorem hypotheses.
+
+## Whole-N rigidity-horizon lead
+
+Exact centered N-flow already proves upward persistence of badness. Therefore, for fixed `(L,p)`, a fully certified positive headroom
+
+~~~text
+H_Nstar = mu_lower_Nstar - R_upper_Nstar > 0
+~~~
+
+would do more than reduce the infinite search to a finite window:
+
+- earlier badness would have persisted to `Nstar`, contradicting the positive floor there;
+- later badness would be excluded by the complete remaining deformation budget.
+
+So a genuine horizon would exclude the entire fixed-`(L,p)` N-axis. The required global target is all-`L` coverage, potentially with `Nstar=Nstar(L,p)`; a universal L-independent horizon is stronger than logically necessary.
+
+## Cheap projected-defect composition
+
+PR #112 proves `F_N(z)=ell_N(z) g_N`; PR #115 proves the canonical cubic shell coordinate is nonzero. Applying `intrinsicShellPart` should therefore give the cheap formalization target
+
+~~~text
+intrinsicShellPart (F_N z) = 0  <->  cubicDefectFunctional ... z = 0.
+~~~
+
+If theoremized, this identifies the cubic defect functional with visibility of the exact parity defect in the unique new N-flow quotient direction. It still does not prove the functional is nonzero on any specific vector.
+
+## Deformation-budget falsification gates
+
+- `q_N-mu_N` must remain usefully positive;
+- `beta_N` must exhibit useful decay;
+- the actual tail quantity `beta_N^2/(q_N-mu_N)` must admit a summable certified majorant, not merely tend to zero;
+- the result must survive the required L range and both parity carriers;
+- a local 2x2 comparison is diagnostic only; certification must come from the operator-theoretic E3 route;
+- decision-bearing reduced calculations require decision commutation;
+- a finite prefix, fitted tail or small residual is never an infinite-horizon certificate.
+
+## Control-v2 integration and hardening
+
+`research/RHRC/control_v2/` remains research-control infrastructure only. Its hardened semantics require explicit step coverage and separate horizon evidence before a complete budget can be certified. Retro receipts state the exact Git search paths, and archaeology wording must distinguish "all refs in declared paths" from "the whole repository".
+
+The routing score remains deliberately deterministic. Evidence completeness controls admissibility; the current router does not pretend that archaeology hit content probabilistically updates route value.
+
+Dead routes may not be silently resurrected. DR-010 remains dead: the current exact-N-flow route is not the old fitted-small-commutator/eigenvector-convergence shortcut.
 
 ## E2 falsification gates
 
@@ -129,10 +200,14 @@ Every serious new branch should carry a retro-search receipt. Dead routes may no
 
 **PROVED:** through PR #115, including intrinsic direct-sum geometry, exact cubic factorization, shifted Schur reduction and nonzero canonical cubic shell incidence at the same global first-bad state forced by an off-line zero.
 
-**DERIVED / OPEN FORMALIZATION:** projected A symmetry, quantitative shifted coercivity, negative index exactly one, resolvent monotonicity, parity nullity difference, resonance/resolvent dichotomy.
+**CI-VERIFIED CONTROL INFRASTRUCTURE:** PR #116 Control v2 / FFBBP v1.6 assurance / real-history archaeology, with no theorem authority.
 
-**LEAD / HYPOTHESIS:** cubic-normalized Schur rigidity, deformation-budget asymptotics/tail certification and exclusion of the remaining first-bad state.
+**DERIVED / OPEN FORMALIZATION:** projected A symmetry, quantitative shifted coercivity, canonical scale-free cubic shell quantities, shell-projected defect-functional equivalence, negative index exactly one, resolvent monotonicity, parity nullity difference, resonance/resolvent dichotomy.
+
+**LEAD / HYPOTHESIS:** cubic-normalized Schur rigidity, E2+E3 one-step deformation theorem, deformation-budget asymptotics/tail certification, whole-N rigidity horizon, and exclusion of the remaining first-bad state.
 
 **OPEN:** positivity / finite-to-infinite closure / RH.
+
+Detailed post-green lead delta: `RESEARCH_LEADS_POST_116_DELTA.md`.
 
 **RH remains OPEN.**
