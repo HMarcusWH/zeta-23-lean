@@ -13,7 +13,7 @@ from control_v2.retro.aliases import expanded_terms, load_alias_map
 from control_v2.retro.archive import ArchiveManifestError
 from control_v2.retro.ingest import ingest_text_source
 from control_v2.retro.replay import assert_receipt_as_of, replay_concept
-from control_v2.retro.search import search_concept
+from control_v2.retro.search import DEFAULT_GIT_SEARCH_PATHS, search_concept
 
 
 class RetroTests(unittest.TestCase):
@@ -39,20 +39,28 @@ class RetroTests(unittest.TestCase):
         new = self._git(repo, "rev-parse", "HEAD")
         return td, repo, old, new
 
-    def test_aliases_recover_old_vocabulary(self):
+    def test_aliases_recover_old_vocabulary_without_generic_noise(self):
         aliases = load_alias_map(RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json")
         terms = expanded_terms("deformation_budget", aliases)
         self.assertIn("residual headroom", terms)
         self.assertIn("detectability budget", terms)
+        self.assertNotIn("fold", terms)
+        self.assertNotIn("rupture", terms)
+        self.assertNotIn("slack", terms)
 
     def test_as_of_search_does_not_see_future_commit(self):
         td, repo, old, new = self._fixture_repo()
         self.addCleanup(td.cleanup)
-        receipt = search_concept(repo_root=repo, concept_id="deformation_budget", as_of_ref=old,
-                                 aliases_path=RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json",
-                                 mode="COUNTERFACTUAL_REPLAY")
+        receipt = search_concept(
+            repo_root=repo,
+            concept_id="deformation_budget",
+            as_of_ref=old,
+            aliases_path=RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json",
+            mode="COUNTERFACTUAL_REPLAY",
+        )
         assert_receipt_as_of(repo, receipt)
-        self.assertEqual(receipt.search_scope, "ANCHOR_REACHABLE_ONLY")
+        self.assertEqual(receipt.search_scope, "ANCHOR_REACHABLE_ONLY_IN_DECLARED_PATHS")
+        self.assertEqual(receipt.search_paths, DEFAULT_GIT_SEARCH_PATHS)
         self.assertTrue(all(hit.source_commit != new for hit in receipt.hits if hit.source_commit))
         self.assertTrue(any("residual headroom" in hit.excerpt for hit in receipt.hits))
 
@@ -65,13 +73,31 @@ class RetroTests(unittest.TestCase):
         self._git(repo, "add", ".")
         self._git(repo, "commit", "-m", "unmerged historical clue")
         branch_commit = self._git(repo, "rev-parse", "HEAD")
-        # Anchor after the branch commit so the archaeology time cutoff admits it.
         self._git(repo, "checkout", "master")
         anchor = self._git(repo, "rev-parse", "HEAD")
-        receipt = search_concept(repo_root=repo, concept_id="deformation_budget", as_of_ref=anchor,
-                                 aliases_path=RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json")
-        self.assertEqual(receipt.search_scope, "ALL_REFS_BEFORE_ANCHOR")
+        receipt = search_concept(
+            repo_root=repo,
+            concept_id="deformation_budget",
+            as_of_ref=anchor,
+            aliases_path=RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json",
+        )
+        self.assertEqual(receipt.search_scope, "ALL_REFS_BEFORE_ANCHOR_IN_DECLARED_PATHS")
+        self.assertEqual(receipt.search_paths, DEFAULT_GIT_SEARCH_PATHS)
         self.assertTrue(any(hit.source_commit == branch_commit for hit in receipt.hits))
+
+    def test_receipt_hash_binds_declared_paths(self):
+        td, repo, old, _ = self._fixture_repo()
+        self.addCleanup(td.cleanup)
+        common = dict(
+            repo_root=repo,
+            concept_id="deformation_budget",
+            as_of_ref=old,
+            aliases_path=RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json",
+            mode="COUNTERFACTUAL_REPLAY",
+        )
+        a = search_concept(**common, git_search_paths=("research/RHRC",))
+        b = search_concept(**common, git_search_paths=("research/RHRC", "Zeta23"))
+        self.assertNotEqual(a.receipt_id, b.receipt_id)
 
     def test_counterfactual_replay_enforces_anchor(self):
         td, repo, old, _ = self._fixture_repo()
@@ -83,9 +109,13 @@ class RetroTests(unittest.TestCase):
     def test_receipt_hash_is_deterministic(self):
         td, repo, old, _ = self._fixture_repo()
         self.addCleanup(td.cleanup)
-        kwargs = dict(repo_root=repo, concept_id="deformation_budget", as_of_ref=old,
-                      aliases_path=RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json",
-                      mode="COUNTERFACTUAL_REPLAY")
+        kwargs = dict(
+            repo_root=repo,
+            concept_id="deformation_budget",
+            as_of_ref=old,
+            aliases_path=RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json",
+            mode="COUNTERFACTUAL_REPLAY",
+        )
         a = search_concept(**kwargs)
         b = search_concept(**kwargs)
         self.assertEqual(a.receipt_id, b.receipt_id)
@@ -112,7 +142,7 @@ class RetroTests(unittest.TestCase):
             manifest = {
                 "sources": [
                     {"path": "old.txt", "available_from_utc": "2000-01-01T00:00:00Z", "sha256": hashlib.sha256(old_file.read_bytes()).hexdigest()},
-                    {"path": "future.txt", "available_from_utc": "2099-01-01T00:00:00Z", "sha256": hashlib.sha256(future_file.read_bytes()).hexdigest()}
+                    {"path": "future.txt", "available_from_utc": "2099-01-01T00:00:00Z", "sha256": hashlib.sha256(future_file.read_bytes()).hexdigest()},
                 ]
             }
             (archive / "RETRO_ARCHIVE_MANIFEST.json").write_text(json.dumps(manifest), encoding="utf-8")
