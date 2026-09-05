@@ -236,27 +236,52 @@ theorem intrinsicCubicQuotientCoordinate_intertwiningDefect
   have hfacNative :=
     evenOddCompressedIntertwiningDefect_eq_cubicFunctional_smul
       hL (N + 1) (by omega) z
-  have hfacParity :
+  let defectParity :
+      euclideanParityBoundaryFlatSubspace .odd (N + 1) :=
+    ⟨(evenOddCompressedIntertwiningDefect L (N + 1) z).1, by
+      change
+        (evenOddCompressedIntertwiningDefect L (N + 1) z).1 ∈
+          euclideanOddBoundaryFlatSubspace (N + 1)
+      exact (evenOddCompressedIntertwiningDefect L (N + 1) z).2⟩
+  let cubicParity :
+      euclideanParityBoundaryFlatSubspace .odd (N + 1) :=
+    ⟨(oddCubicCompressionVector (N + 1)).1, by
+      change
+        (oddCubicCompressionVector (N + 1)).1 ∈
+          euclideanOddBoundaryFlatSubspace (N + 1)
+      exact (oddCubicCompressionVector (N + 1)).2⟩
+  have hdefect :
       (evenOddCompressedIntertwiningDefect L (N + 1) z :
-        euclideanParityBoundaryFlatSubspace .odd (N + 1)) =
-      cubicDefectFunctional L (N + 1) z •
-        successorParityCubicVector .odd N := by
-    simpa [successorParityCubicVector] using hfacNative
+        euclideanParityBoundaryFlatSubspace .odd (N + 1)) = defectParity := by
+    apply Subtype.ext
+    rfl
+  have hcubic :
+      cubicParity = successorParityCubicVector .odd N := by
+    apply Subtype.ext
+    simp [cubicParity, successorParityCubicVector]
+  have hfacParity :
+      defectParity = cubicDefectFunctional L (N + 1) z • cubicParity := by
+    apply Subtype.ext
+    have hval := congrArg Subtype.val hfacNative
+    simpa [defectParity, cubicParity] using hval
+  have hg :
+      intrinsicCubicQuotientCoordinate .odd N cubicParity = 1 := by
+    rw [hcubic]
+    exact intrinsicCubicQuotientCoordinate_successorParityCubicVector .odd N hN
   calc
     intrinsicCubicQuotientCoordinate .odd N
         (evenOddCompressedIntertwiningDefect L (N + 1) z) =
-      intrinsicCubicQuotientCoordinate .odd N
-        (cubicDefectFunctional L (N + 1) z •
-          successorParityCubicVector .odd N) := by
+      intrinsicCubicQuotientCoordinate .odd N defectParity := by
+        exact congrArg (intrinsicCubicQuotientCoordinate .odd N) hdefect
+    _ = intrinsicCubicQuotientCoordinate .odd N
+        (cubicDefectFunctional L (N + 1) z • cubicParity) := by
       exact congrArg (intrinsicCubicQuotientCoordinate .odd N) hfacParity
     _ = cubicDefectFunctional L (N + 1) z •
-        intrinsicCubicQuotientCoordinate .odd N
-          (successorParityCubicVector .odd N) := by
+        intrinsicCubicQuotientCoordinate .odd N cubicParity := by
       exact map_smul (intrinsicCubicQuotientCoordinate .odd N)
-        (cubicDefectFunctional L (N + 1) z)
-        (successorParityCubicVector .odd N)
+        (cubicDefectFunctional L (N + 1) z) cubicParity
     _ = cubicDefectFunctional L (N + 1) z := by
-      rw [intrinsicCubicQuotientCoordinate_successorParityCubicVector .odd N hN]
+      rw [hg]
       simp
 
 /-- A genuine negative first-bad eigenmode has nonzero canonical cubic quotient
