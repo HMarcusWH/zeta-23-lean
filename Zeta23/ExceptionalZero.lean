@@ -24,3 +24,4 @@ import Zeta23.ExceptionalZero.FirstBadParitySpectrum
 import Zeta23.ExceptionalZero.FirstBadRigidity
 import Zeta23.ExceptionalZero.GlobalFirstBadRigidity
 import Zeta23.ExceptionalZero.GlobalFirstBadShiftedSchur
+import Zeta23.ExceptionalZero.GlobalFirstBadCubicShell
