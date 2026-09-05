@@ -90,5 +90,6 @@ import Zeta23.CCM.ParityCompressionRankOne
 import Zeta23.CCM.ParityCubicFactorization
 import Zeta23.CCM.FirstBadShiftedSchur
 import Zeta23.CCM.CubicShellIncidence
+import Zeta23.CCM.CubicNormalizedSchur
 import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.ClaimBindings
