@@ -86,7 +86,8 @@ theorem inner_intrinsicPredecessorBlock_kernel_cubicCoupling_eq
   have hBT :
       inner ℂ
           (z : euclideanParityBoundaryFlatSubspace p (N + 1))
-          y =
+          (parityCompressedCanonical p L (N + 1)
+            (c : euclideanParityBoundaryFlatSubspace p (N + 1))) =
         inner ℂ
           (z : euclideanParityBoundaryFlatSubspace p (N + 1))
           (b : euclideanParityBoundaryFlatSubspace p (N + 1)) := by
