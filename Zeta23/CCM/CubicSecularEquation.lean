@@ -222,13 +222,18 @@ theorem intrinsicPredecessorPart_cubicSecularResidual_eq_zero
     rw [show w = - R b by rfl, map_neg, hRright]
   have hshiftw' :
       intrinsicPredecessorBlock p L N w - (lam : ℂ) • w = -b := by
-    simpa [shiftedIntrinsicPredecessorBlock] using hshiftw
+    change intrinsicPredecessorBlock p L N w - (lam : ℂ) • w = -b at hshiftw
+    exact hshiftw
   change
     intrinsicPredecessorPart p N
       (parityCompressedCanonical p L (N + 1) u - (lam : ℂ) • u) = 0
   rw [map_sub, hTuPred, map_smul, huPred]
-  rw [← hshiftw']
-  abel
+  calc
+    intrinsicPredecessorBlock p L N w + b - (lam : ℂ) • w =
+        (intrinsicPredecessorBlock p L N w - (lam : ℂ) • w) + b := by
+          abel
+    _ = -b + b := by rw [hshiftw']
+    _ = 0 := by abel
 
 /-- E3-A secular scalar: the canonical #118 quotient coordinate of the full
 canonical residual. This is deliberately not defined as only a scalar inner
