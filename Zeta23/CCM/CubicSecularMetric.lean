@@ -175,14 +175,8 @@ theorem shiftedIntrinsicPredecessorBlock_isSymmetric
             (y : euclideanParityBoundaryFlatSubspace p (N + 1)))
   rw [inner_sub_left, inner_sub_right,
     intrinsicPredecessorBlock_isSymmetric p L N x y]
-  rw [inner_smul_real_left
-        (𝕜 := ℂ)
-        (x : euclideanParityBoundaryFlatSubspace p (N + 1))
-        (y : euclideanParityBoundaryFlatSubspace p (N + 1)) lam,
-      inner_smul_real_right
-        (𝕜 := ℂ)
-        (x : euclideanParityBoundaryFlatSubspace p (N + 1))
-        (y : euclideanParityBoundaryFlatSubspace p (N + 1)) lam]
+  rw [inner_smul_left, inner_smul_right]
+  simp
 
 /-- Quantitative shifted coercivity from predecessor nonnegativity. For a
 negative shift, `A - lam I` has a lower quadratic floor `-lam`. -/
