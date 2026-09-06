@@ -1,16 +1,214 @@
 {
   "schema_version": "RHRC-control-actions-1.1",
-  "current_frontier": "FIRST_BAD_RIGIDITY_E2",
+  "current_frontier": "FIRST_BAD_RIGIDITY_E3_B",
   "open_obligations": [
-    "E2_CUBIC_NORMALIZED_SCHUR",
-    "E3_PROJECTED_SYMMETRY",
-    "E3_SHIFTED_COERCIVITY",
-    "E3_RESOLVENT_MONOTONICITY",
-    "E4_PARITY_NULLITY",
-    "E4_SIMULTANEOUS_RESONANCE",
+    "E3_B1_PROJECTED_SYMMETRY_COERCIVITY",
+    "E3_B2_EXPLICIT_SECULAR_BRIDGE",
+    "E4_A_ZERO_RESONANCE_PARITY_NULLITY",
+    "E3_B3_PREDECESSOR_FLOOR_DEFORMATION",
+    "E3_C_RESOLVENT_MONOTONICITY",
+    "NEGATIVE_ROOT_EXCLUSION",
     "DEFORMATION_BUDGET_PAPER_TEST"
   ],
   "actions": {
+    "E3_B1_PROJECTED_SYMMETRY_COERCIVITY": {
+      "kind": "THEOREM_ATTEMPT",
+      "concept_id": "shifted_coercivity",
+      "retro_search_required": true,
+      "first_break_required": true,
+      "decision_commutation_required": false,
+      "horizon_required_for_tail_claim": false,
+      "dead_route_matches": [],
+      "surviving_objections": [
+        "predecessor nonnegativity is not strict positivity",
+        "zero resonance may make the resolvent singular near lambda=0"
+      ],
+      "score_inputs": {
+        "cost": 1.2,
+        "information_gain": 5.0,
+        "falsification_value": 4.0,
+        "closure_value": 5.0,
+        "residual_risk": 1.0,
+        "dependency_debt": 0.5
+      },
+      "first_breaks": [
+        {
+          "id": "E3B1-FB-01",
+          "statement": "projected predecessor symmetry fails in the exact repository inner product",
+          "test_id": "prove_intrinsic_predecessor_block_symmetric",
+          "estimated_cost": 0.6,
+          "decisive_if_failed": true
+        },
+        {
+          "id": "E3B1-FB-02",
+          "statement": "predecessor nonnegativity does not yield the intended negative-shift coercive norm bound",
+          "test_id": "prove_shifted_coercive_norm_bound",
+          "estimated_cost": 0.8,
+          "decisive_if_failed": true
+        }
+      ]
+    },
+    "E3_B2_EXPLICIT_SECULAR_BRIDGE": {
+      "kind": "THEOREM_ATTEMPT",
+      "concept_id": "reduction_equivalence",
+      "retro_search_required": true,
+      "first_break_required": true,
+      "decision_commutation_required": false,
+      "horizon_required_for_tail_claim": false,
+      "dead_route_matches": [],
+      "surviving_objections": [
+        "PR #119 secular scalar is a quotient coordinate of the full residual, not definitionally the old Schur inner-product expression",
+        "complex inner-product orientation must be handled exactly"
+      ],
+      "score_inputs": {
+        "cost": 1.4,
+        "information_gain": 5.0,
+        "falsification_value": 5.0,
+        "closure_value": 5.0,
+        "residual_risk": 1.0,
+        "dependency_debt": 0.5
+      },
+      "first_breaks": [
+        {
+          "id": "E3B2-FB-01",
+          "statement": "the #119 quotient secular scalar is not the expected normalized explicit Schur scalar under the exact repository conventions",
+          "test_id": "prove_pointwise_explicit_secular_identity",
+          "estimated_cost": 1.0,
+          "decisive_if_failed": true
+        }
+      ]
+    },
+    "E4_A_ZERO_RESONANCE_PARITY_NULLITY": {
+      "kind": "THEOREM_ATTEMPT",
+      "concept_id": "parity_resonance",
+      "retro_search_required": true,
+      "first_break_required": true,
+      "decision_commutation_required": false,
+      "horizon_required_for_tail_claim": false,
+      "dead_route_matches": [],
+      "surviving_objections": [
+        "D is algebraic, not unitary",
+        "ker A may be nontrivial",
+        "Bc-orthogonality to ker A is unproved",
+        "simultaneous parity resonance remains open"
+      ],
+      "score_inputs": {
+        "cost": 1.7,
+        "information_gain": 5.0,
+        "falsification_value": 5.0,
+        "closure_value": 4.5,
+        "residual_risk": 1.5,
+        "dependency_debt": 0.8
+      },
+      "first_breaks": [
+        {
+          "id": "E4A-FB-01",
+          "statement": "rank-at-most-one same-space parity defect does not yield the required shifted-nullity comparison",
+          "test_id": "prove_rank_one_shifted_nullity_difference",
+          "estimated_cost": 0.9,
+          "decisive_if_failed": true
+        },
+        {
+          "id": "E4A-FB-02",
+          "statement": "the canonical shell coupling has uncontrolled projection on the predecessor zero eigenspace",
+          "test_id": "probe_or_prove_kernel_coupling",
+          "estimated_cost": 1.2,
+          "decisive_if_failed": false
+        }
+      ]
+    },
+    "E3_B3_PREDECESSOR_FLOOR_DEFORMATION": {
+      "kind": "THEOREM_ATTEMPT",
+      "concept_id": "deformation_budget",
+      "retro_search_required": true,
+      "first_break_required": true,
+      "decision_commutation_required": false,
+      "horizon_required_for_tail_claim": false,
+      "dead_route_matches": [],
+      "surviving_objections": [
+        "a strictly positive predecessor floor is not available from first-bad minimality alone",
+        "the shell gap g_N=q_N-mu_N may fail to stay positive"
+      ],
+      "score_inputs": {
+        "cost": 2.0,
+        "information_gain": 5.0,
+        "falsification_value": 5.0,
+        "closure_value": 5.0,
+        "residual_risk": 1.5,
+        "dependency_debt": 1.0
+      },
+      "first_breaks": [
+        {
+          "id": "E3B3-FB-01",
+          "statement": "the exact resolvent estimate does not imply d_N(g_N+d_N) <= beta_N^2 under the stated lower-floor hypotheses",
+          "test_id": "prove_one_step_deformation_inequality",
+          "estimated_cost": 1.2,
+          "decisive_if_failed": true
+        }
+      ]
+    },
+    "E3_C_RESOLVENT_MONOTONICITY": {
+      "kind": "THEOREM_ATTEMPT",
+      "concept_id": "shifted_coercivity",
+      "retro_search_required": true,
+      "first_break_required": true,
+      "decision_commutation_required": false,
+      "horizon_required_for_tail_claim": false,
+      "dead_route_matches": [],
+      "surviving_objections": [
+        "must wait for the explicit scalar bridge",
+        "root uniqueness is weaker than root exclusion",
+        "zero resonance may alter near-zero behavior"
+      ],
+      "score_inputs": {
+        "cost": 2.0,
+        "information_gain": 4.0,
+        "falsification_value": 4.0,
+        "closure_value": 3.5,
+        "residual_risk": 2.0,
+        "dependency_debt": 1.0
+      },
+      "first_breaks": [
+        {
+          "id": "E3C-FB-01",
+          "statement": "the safe shifted resolvent identity does not yield useful scalar monotonicity in the exact explicit secular representation",
+          "test_id": "prove_resolvent_scalar_monotonicity",
+          "estimated_cost": 1.2,
+          "decisive_if_failed": false
+        }
+      ]
+    },
+    "NEGATIVE_ROOT_EXCLUSION": {
+      "kind": "THEOREM_ATTEMPT",
+      "concept_id": "cubic_normalized_schur",
+      "retro_search_required": true,
+      "first_break_required": true,
+      "decision_commutation_required": false,
+      "horizon_required_for_tail_claim": false,
+      "dead_route_matches": [],
+      "surviving_objections": [
+        "generic Hermitian Schur systems can have negative roots",
+        "uniqueness is not absence",
+        "CCM-specific shell/parity/KKT/N-flow structure must supply the contradiction"
+      ],
+      "score_inputs": {
+        "cost": 4.0,
+        "information_gain": 5.0,
+        "falsification_value": 5.0,
+        "closure_value": 5.0,
+        "residual_risk": 4.0,
+        "dependency_debt": 3.0
+      },
+      "first_breaks": [
+        {
+          "id": "NRE-FB-01",
+          "statement": "the accumulated CCM-specific constraints still admit a model negative secular root",
+          "test_id": "construct_or_exclude_constrained_block_countermodel",
+          "estimated_cost": 2.0,
+          "decisive_if_failed": true
+        }
+      ]
+    },
     "DEFORMATION_BUDGET_PAPER_TEST": {
       "kind": "DIAGNOSTIC_RESEARCH",
       "concept_id": "deformation_budget",
@@ -20,10 +218,11 @@
       "horizon_required_for_tail_claim": true,
       "dead_route_matches": [],
       "surviving_objections": [
+        "q_N-mu_N positivity is unproved",
         "beta_N decay is unproved",
-        "shell-gap tail lower bound is unproved",
-        "summable infinite tail majorant is unproved",
-        "all-L certification / controlled L-dependence is unproved"
+        "summable infinite-tail majorant is unproved",
+        "all-L certification / controlled L-dependence is unproved",
+        "diagnostic quantities must remain aligned with the theorem-backed E3 definitions"
       ],
       "score_inputs": {
         "cost": 1.0,
@@ -34,51 +233,27 @@
         "dependency_debt": 1.0
       },
       "first_breaks": [
-        {"id": "DB-FB-01", "statement": "q_N-mu_N fails to remain usefully positive", "test_id": "probe_shell_gap", "estimated_cost": 1.0, "decisive_if_failed": true},
-        {"id": "DB-FB-02", "statement": "beta_N fails to exhibit usable decay", "test_id": "probe_shell_coupling", "estimated_cost": 1.1, "decisive_if_failed": true},
-        {"id": "DB-FB-03", "statement": "beta_N^2/(q_N-mu_N) fails to support a summable certified tail majorant", "test_id": "tail_majorant_test", "estimated_cost": 2.0, "decisive_if_failed": true}
-      ]
-    },
-    "E2_CUBIC_NORMALIZED_SCHUR": {
-      "kind": "THEOREM_ATTEMPT",
-      "concept_id": "cubic_normalized_schur",
-      "retro_search_required": true,
-      "first_break_required": true,
-      "decision_commutation_required": false,
-      "horizon_required_for_tail_claim": false,
-      "dead_route_matches": [],
-      "surviving_objections": ["scale-free normalization theorem not yet locked", "generic scalar Schur roots need not be excluded"],
-      "score_inputs": {"cost": 2.0, "information_gain": 5.0, "falsification_value": 4.0, "closure_value": 5.0, "residual_risk": 1.5, "dependency_debt": 1.0},
-      "first_breaks": [
-        {"id": "E2-FB-01", "statement": "the two nonzero shell vectors fail to produce the required scale-free invariant", "test_id": "shell_scalar_multiple_normalization", "estimated_cost": 1.0, "decisive_if_failed": true}
-      ]
-    },
-    "E3_SHIFTED_COERCIVITY": {
-      "kind": "THEOREM_ATTEMPT",
-      "concept_id": "shifted_coercivity",
-      "retro_search_required": true,
-      "first_break_required": true,
-      "decision_commutation_required": false,
-      "horizon_required_for_tail_claim": false,
-      "dead_route_matches": [],
-      "surviving_objections": ["resolvent monotonicity remains separate"],
-      "score_inputs": {"cost": 1.5, "information_gain": 4.0, "falsification_value": 3.0, "closure_value": 4.0, "residual_risk": 1.0, "dependency_debt": 0.5},
-      "first_breaks": [
-        {"id": "E3-FB-01", "statement": "projected predecessor symmetry cannot be established in the exact repository inner product", "test_id": "prove_projected_A_symmetric", "estimated_cost": 0.8, "decisive_if_failed": true}
-      ]
-    },
-    "E4_PARITY_NULLITY": {
-      "kind": "THEOREM_ATTEMPT",
-      "concept_id": "parity_resonance",
-      "retro_search_required": true,
-      "first_break_required": true,
-      "decision_commutation_required": false,
-      "horizon_required_for_tail_claim": false,
-      "dead_route_matches": [],
-      "surviving_objections": ["D is algebraic, not unitary", "simultaneous resonance remains open"],
-      "score_inputs": {"cost": 2.0, "information_gain": 4.0, "falsification_value": 4.0, "closure_value": 3.0, "residual_risk": 1.5, "dependency_debt": 1.0},
-      "first_breaks": [
-        {"id": "E4-FB-01", "statement": "rank-at-most-one algebra does not give the required kernel/nullity comparison", "test_id": "nullity_difference_lemma", "estimated_cost": 1.0, "decisive_if_failed": true}
+        {
+          "id": "DB-FB-01",
+          "statement": "q_N-mu_N fails to remain usefully positive",
+          "test_id": "probe_shell_gap",
+          "estimated_cost": 1.0,
+          "decisive_if_failed": true
+        },
+        {
+          "id": "DB-FB-02",
+          "statement": "beta_N fails to exhibit usable decay",
+          "test_id": "probe_shell_coupling",
+          "estimated_cost": 1.1,
+          "decisive_if_failed": true
+        },
+        {
+          "id": "DB-FB-03",
+          "statement": "beta_N^2/(q_N-mu_N) fails to support a summable certified tail majorant",
+          "test_id": "tail_majorant_test",
+          "estimated_cost": 2.0,
+          "decisive_if_failed": true
+        }
       ]
     }
   }

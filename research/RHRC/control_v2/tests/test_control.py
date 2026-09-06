@@ -19,13 +19,21 @@ class ControlV2Tests(unittest.TestCase):
         self.assertFalse(boundary["may_emit_terminal_rh_status"])
         self.assertFalse(boundary["may_promote_lean_theorem"])
 
-    def test_state_has_separate_post_115_theorem_and_post_116_control_anchors(self):
+    def test_state_has_post_119_theorem_and_post_117_control_anchors(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 115)
-        self.assertEqual(state.control_anchor.pr, 116)
+        self.assertEqual(state.anchor.pr, 119)
+        self.assertEqual(
+            state.anchor.merge_commit,
+            "d4175d2bb305e62863f593824b3f40e921a46ee6",
+        )
+        self.assertEqual(state.control_anchor.pr, 117)
+        self.assertEqual(
+            state.control_anchor.merge_commit,
+            "19346f4c00d13bf33db95cbe5325233f86e54c12",
+        )
         self.assertNotEqual(state.anchor.merge_commit, state.control_anchor.merge_commit)
         self.assertEqual(state.terminal_claim, "RH_OPEN")
-        self.assertEqual(state.frontier_id, "FIRST_BAD_RIGIDITY_E2")
+        self.assertEqual(state.frontier_id, "FIRST_BAD_RIGIDITY_E3_B")
 
     def test_router_is_deterministic_non_authoritative_and_transparent(self):
         state = load_research_state()

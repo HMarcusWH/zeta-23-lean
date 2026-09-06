@@ -3,17 +3,17 @@
   "boundary_id": "B0_RH_2026_08_20",
   "terminal_claim": "RH_OPEN",
   "merged_theorem_anchor": {
-    "pr": 115,
-    "merge_commit": "a2fecffbef8fed1fdfba373aa5756acf2618e2a1",
-    "tree": "47a2601e3464b0b4248e61c52b4560681f73c986",
+    "pr": 119,
+    "merge_commit": "d4175d2bb305e62863f593824b3f40e921a46ee6",
+    "tree": "1985472ac470822af279044261fa365fb9bb5535",
     "status": "MERGED_GREEN_THEOREM_STATE"
   },
   "merged_control_anchor": {
-    "pr": 116,
-    "merge_commit": "8921572170e89d74216f0c5577b669696626219e",
-    "tree": "fc138b517c6835230515167386eafe3ef3495baf",
+    "pr": 117,
+    "merge_commit": "19346f4c00d13bf33db95cbe5325233f86e54c12",
+    "tree": "c0d28740806ec22b5b477b426a2a31e459672dd1",
     "status": "MERGED_GREEN_CONTROL_STATE"
   },
   "candidate_branch": null,
-  "control_note": "PR #115 remains the theorem anchor. PR #116 is the latest merged green control-plane anchor. Control v2 has no theorem/claim authority."
+  "control_note": "PR #119 is the merged theorem anchor: exact canonical negative secular root iff negative-shift eigenmode. PR #117 remains the latest merged Control-v2 anchor because #118/#119 changed theorem files but not control semantics. Current theorem frontier is E3-B projected metric/resolvent control plus the explicit secular bridge, with E4 zero-resonance/nullity in parallel. Control v2 has no theorem/claim authority. RH remains OPEN."
 }

@@ -16,31 +16,30 @@ When two sources disagree:
 
 Control-v2 route certificates and retro-search receipts sit inside level 4 as **diagnostic research-control artifacts only**. They do not outrank theorem declarations, machine claim surfaces, active route authority, or compiler evidence.
 
-The living research-control records have different scopes and must not be used to overrule theorem truth: the lead ledger/deltas record hypotheses and research state; the current plan records priority and dependency decisions.
-
 A green but unmerged PR is branch evidence, not merged repository truth.
 
-A merged source file is also not automatically theorem authority: compiler validity attaches only to declarations in the exact successful import/build closure or a module separately built by an authoritative gate.
+A merged source file is not automatically theorem authority: compiler validity attaches only to declarations in the exact successful import/build closure or a module separately built by an authoritative gate.
 
 ## Document classes
 
 ### Living SSOTs
 
-These must be updated when the underlying state changes:
+Update these when the underlying state changes:
 
 - root `README.md`;
 - `FORK_NOTES.md`;
 - `AUDIT.md`;
 - `research/RHRC/README.md`;
-- claim/route registries;
+- claim/route registries when formal promotion state actually changes;
 - active route README;
-- `research/RHRC/RESEARCH_LEADS.md` plus the newest post-green delta;
+- `research/RHRC/RESEARCH_LEADS.md` **or** a newer post-green delta when lead/status memory changes;
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`;
-- dead-route and obstruction ledgers;
-- `research/RHRC/VALIDATION_PROTOCOL.md` when validation semantics or gates change;
-- `research/RHRC/control_v2/CONTROL_STATE.json` when the merged theorem anchor, merged control anchor, or control frontier changes materially.
+- dead-route and obstruction ledgers when their classifications change;
+- `VALIDATION_PROTOCOL.md` when validation semantics change;
+- `control_v2/CONTROL_STATE.json` when theorem/control anchors or the control frontier change materially;
+- `control_v2/ACTION_REGISTRY.json` when the executable research frontier changes.
 
-Dated post-green delta files remain historical evidence and should not be rewritten to make them look current. A newer delta may explicitly supersede an older delta for current research priority without altering the older file.
+Dated post-green delta files remain historical evidence and must not be rewritten to look current. A newer delta may supersede older deltas for current priority without altering their historical content.
 
 ### Historical settlements
 
@@ -48,10 +47,10 @@ PR-specific settlement and dated audit files record what was known at that time.
 
 If necessary add a short banner:
 
-~~~text
+```text
 HISTORICAL SETTLEMENT
 Current authority: live Lean/CI + registries + active route README.
-~~~
+```
 
 ### Immutable provenance snapshots
 
@@ -63,32 +62,32 @@ Do not rewrite:
 - historical normalization locks;
 - qualified RUN42C FFBBP profile/reference objects.
 
-Create a new versioned object if current semantics need a new machine-readable map. This is why FFBBP v1.6 assurance is additive rather than a rewrite of the RUN42C reference.
+Create a new versioned object if semantics change.
 
-## Theorem-state anchors versus control-plane anchors
+## Theorem-state versus control-plane anchors
 
-A living documentation PR cannot know its own future merge SHA. Therefore living prose must not create an endless docs-only hash chase.
-
-The repository keeps two different anchors when needed:
+The repository keeps separate anchors when needed:
 
 - **theorem-state anchor** — last meaningful theorem-bearing merge whose Lean surface defines current mathematical authority;
 - **control-plane anchor** — last meaningful merged green research-control/assurance state.
 
-A control-only PR does not advance the theorem-state anchor. A theorem-bearing PR may advance both if it also changes the control state.
+A control-only PR does not advance theorem authority. A theorem-only PR does not automatically advance Control-v2 semantics.
 
-Current synchronized anchors:
+### Current synchronized anchors after PR #119
 
-~~~text
-theorem-state anchor = PR #115 merge a2fecffbef8fed1fdfba373aa5756acf2618e2a1
-theorem tree = 47a2601e3464b0b4248e61c52b4560681f73c986
-E1 cubic-shell incidence = PROVED / MERGED
+```text
+theorem-state anchor = PR #119 merge d4175d2bb305e62863f593824b3f40e921a46ee6
+theorem tree = 1985472ac470822af279044261fa365fb9bb5535
+E3-A exact canonical negative secular root/eigenmode equivalence = PROVED / MERGED
 
-control-plane anchor = PR #116 merge 8921572170e89d74216f0c5577b669696626219e
-control-plane tree = fc138b517c6835230515167386eafe3ef3495baf
-Control v2 / FFBBP v1.6 assurance = MERGED GREEN CONTROL INFRASTRUCTURE
+control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
+control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
+Control v2 / FFBBP v1.6 hardened research-control state = MERGED GREEN CONTROL INFRASTRUCTURE
 
 RH = OPEN
-~~~
+```
+
+PRs #118/#119 changed theorem files but did not change Control-v2 semantics. Therefore theorem authority advances to #119 while control-plane authority remains #117.
 
 Machine registries and compiler/CI evidence still outrank prose anchors.
 
@@ -96,16 +95,16 @@ Machine registries and compiler/CI evidence still outrank prose anchors.
 
 `research/RHRC/control_v2/CONTROL_BOUNDARY.json` is the explicit capability cap for the research controller. Control v2 may rank research actions and emit route/retro receipts. It may not:
 
-- write `CLAIM_REGISTRY.json`;
-- write `BOUNDARY.json`;
-- write `routes/ROUTE_REGISTRY.json`;
-- emit the terminal RH status;
+- write `CLAIM_REGISTRY.json` as a consequence of a research recommendation;
+- write `BOUNDARY.json` terminal status;
+- write `routes/ROUTE_REGISTRY.json` by inference;
+- emit the terminal RH answer;
 - promote a Lean theorem;
 - convert historical or numerical clues into theorem evidence.
 
-`runner/terminal_answer.py` must remain independent of Control v2. Historical clues are `requires_revalidation=true` by default. Counterfactual replay must be bounded by an `as_of` anchor, and external time-travel sources require availability metadata.
+`runner/terminal_answer.py` remains independent of Control v2. Historical clues are `requires_revalidation=true` by default. Counterfactual replay must be bounded by an `as_of` anchor, and external time-travel sources require availability metadata.
 
-Archaeology scope must be stated literally. `ALL_REFS_BEFORE_ANCHOR_IN_DECLARED_PATHS` means all historical refs in the declared Git search paths, not every repository byte. Search paths are part of the retro receipt identity.
+Archaeology scope must be stated literally. `ALL_REFS_BEFORE_ANCHOR_IN_DECLARED_PATHS` means all historical refs in the declared Git search paths, not every repository byte.
 
 ## Update triggers
 
@@ -127,27 +126,32 @@ After a post-green research pass, update documentation when any of these changes
 After every meaningful green result:
 
 1. verify exact head, declarations, assumptions, axioms and CI;
-2. update claim/route registries if formal promotion state changed;
-3. update the active route README if the route state changed;
+2. update claim/route registries only if formal promotion state changed;
+3. update the active route README if route state changed;
 4. update `RESEARCH_LEADS.md` or add a new dated post-green delta when a lead was added, promoted, blocked, falsified, superseded, resurrected or composed;
 5. update `CURRENT_RESEARCH_PLAN.md` if execution order or a decision gate changed;
-6. update Control-v2 state/action metadata if the research frontier or control anchor changed;
-7. update the root/RHRC README and audit records when the public critical path changed;
-8. leave historical settlements untouched except for an authority banner when necessary.
+6. update Control-v2 state/action metadata if the theorem frontier or control anchor changed;
+7. update root/RHRC README and audit records when the public critical path changed;
+8. update obstruction/dead-route ledgers when a reusable blocker changed;
+9. leave historical settlements untouched except for an authority banner when necessary.
 
-A green but unmerged PR remains branch evidence until merged and registered.
+A green but unmerged PR remains branch evidence until merged.
 
 ## Validated import-closure law
 
 Repository presence, PR inclusion, merge inclusion and no-placeholder scanning are weaker states than Lean elaboration.
 
-A theorem may be promoted only when its declaration is in the exact compiler-tested transitive import closure or its module was separately compiled by an authoritative successful gate. For production R003 promotion, the required `#check` / `#print axioms` surface must also be present.
+A theorem may be promoted only when its declaration is in the exact compiler-tested transitive import closure or its module was separately compiled by an authoritative successful gate. Production claim promotion may require theorem-specific `#check` / `#print axioms` coverage in addition to compilation.
 
-PR #103 is the canonical historical example: `ConstrainedParityGeometry.lean` was imported by `Zeta23.CCM`; `ParityBadness.lean` was merged but not imported. PR #105 later closed that gap by importing and compiling `ParityBadness.lean`.
+Historical examples:
 
-PR #110 supplies a second lesson: theorem validity was authoritative because the final repair remained in the exact successful `Zeta23.CCM` import/build closure, while production claim promotion still required theorem-specific binding/axiom inspection.
-
-PRs #112/#113 showed that theorem validity can advance faster than machine claim-promotion surfaces. PR #115 theoremized E1 in the authoritative CCM/ExceptionalZero umbrella closures. PR #116 then changed only supporting control infrastructure; it did not advance theorem authority.
+- PR #103 showed that a merged but unimported theorem file is not compiler authority.
+- PR #110 showed that compiler validity and machine claim promotion are separate checks.
+- PRs #112/#113 advanced theorem authority faster than machine claim-promotion surfaces.
+- PR #115 theoremized cubic shell incidence.
+- PR #117 hardened Control v2 without changing theorem declarations.
+- PR #118 theoremized the canonical cubic quotient coordinate and normalized Schur reduction.
+- PR #119 theoremized the exact negative secular root/eigenmode equivalence in the authoritative CCM/ExceptionalZero umbrella closures.
 
 See `VALIDATION_PROTOCOL.md`.
 
@@ -167,14 +171,27 @@ RH remains OPEN until the exact terminal theorem is proved and claim-validated.
 
 ## Promoted theorem-binding completeness
 
-For R003, `R003_PROMOTED_BINDINGS.json` is the declared production binding surface. Every `PROVED_UNCONDITIONAL` R003 claim with a theorem must agree exactly across `CLAIM_REGISTRY.json`, `R003_PROMOTED_BINDINGS.json`, and the exact `#check` / `#print axioms` declarations in `Zeta23/CCM/ClaimBindings.lean`.
+For R003, `R003_PROMOTED_BINDINGS.json` is the declared production binding surface. Every `PROVED_UNCONDITIONAL` R003 claim with a theorem must agree exactly across `CLAIM_REGISTRY.json`, `R003_PROMOTED_BINDINGS.json`, and the exact production binding/axiom surface.
 
-The RHRC suite enforces this through `promoted_binding_lint.py`. Supporting theorem checks may exist without individual registry promotion, so CI does not equate every `#check` with a claim; promotion intent must be declared explicitly.
+Supporting theorem checks may exist without individual registry promotion. CI does not equate every theorem with a promoted claim; promotion intent must be explicit.
 
-## Current transition after PR #116
+## Current transition after PR #119
 
-The theorem frontier remains E1b/E2: use the theorem-backed nonzero negative-mode shell coordinate and nonzero cubic shell coordinate inside the same one-dimensional intrinsic shell, transfer the shifted Schur identity to the canonical cubic shell line, and normalize scalar choice.
+The theorem frontier is **E3-B**, not E2.
 
-The post-#116 research composition is recorded in `RESEARCH_LEADS_POST_116_DELTA.md`: E2 and E3 are expected to supply the operator-theoretic mechanism for a certified one-step deformation bound, while the deformation-budget numerical/paper lane remains a parallel falsification route. A genuine positive rigidity horizon, combined with already-proved upward persistence of badness, would exclude the whole fixed-`(L,p)` N-axis rather than merely produce a finite search window. This remains a research strategy until separately theoremized and certified.
+PR #119 proves the exact canonical quotient-secular root/eigenmode equivalence. The next job is to establish the metric bridge:
+
+```text
+projected predecessor symmetry
+  -> shifted coercivity / safe resolvent bounds
+  -> resolvent realness/positivity
+  -> exact pointwise identity between #119 quotient scalar and the normalized explicit Schur scalar.
+```
+
+A separate parallel obstruction is now explicit: predecessor nonnegativity does not exclude `ker A`. Zero resonance may make the shifted resolvent singular near zero, so E4 parity-nullity/kernel-coupling analysis is promoted in priority.
+
+Only after the explicit scalar bridge and zero-resonance behavior are controlled should the project attempt resolvent monotonicity or negative-root uniqueness. Even a uniqueness theorem would remain weaker than negative-root exclusion.
+
+The post-#119 implications and falsification plan are recorded in `RESEARCH_LEADS_POST_119_DELTA.md`.
 
 **RH remains OPEN.**
