@@ -119,7 +119,21 @@ theorem cubicSecularScalar_eq_star_cubicExplicitSchurScalar_div
           (lam : ℂ) •
             ((w : euclideanParityBoundaryFlatSubspace p (N + 1)) +
               (c : euclideanParityBoundaryFlatSubspace p (N + 1))) := by
-    simp only [r, cubicSecularResidual, hu]
+    change
+      cubicSecularTrialVector p hL N hprev lam hlam =
+        (w : euclideanParityBoundaryFlatSubspace p (N + 1)) +
+          (c : euclideanParityBoundaryFlatSubspace p (N + 1)) at hu
+    change
+      parityCompressedCanonical p L (N + 1)
+          (cubicSecularTrialVector p hL N hprev lam hlam) -
+        (lam : ℂ) • cubicSecularTrialVector p hL N hprev lam hlam =
+      parityCompressedCanonical p L (N + 1)
+          ((w : euclideanParityBoundaryFlatSubspace p (N + 1)) +
+            (c : euclideanParityBoundaryFlatSubspace p (N + 1))) -
+        (lam : ℂ) •
+          ((w : euclideanParityBoundaryFlatSubspace p (N + 1)) +
+            (c : euclideanParityBoundaryFlatSubspace p (N + 1)))
+    rw [hu]
   have hcw :
       inner ℂ
           (c : euclideanParityBoundaryFlatSubspace p (N + 1))
@@ -178,6 +192,22 @@ theorem cubicSecularScalar_eq_star_cubicExplicitSchurScalar_div
           ((R b : intrinsicParityPredecessorSubspace p N) :
             euclideanParityBoundaryFlatSubspace p (N + 1)) := by
     simpa [w] using hcrossStar
+  have hlamInner :
+      inner ℂ
+          (c : euclideanParityBoundaryFlatSubspace p (N + 1))
+          ((lam : ℂ) •
+            ((w : euclideanParityBoundaryFlatSubspace p (N + 1)) +
+              (c : euclideanParityBoundaryFlatSubspace p (N + 1)))) =
+        (lam : ℂ) *
+          inner ℂ
+            (c : euclideanParityBoundaryFlatSubspace p (N + 1))
+            ((w : euclideanParityBoundaryFlatSubspace p (N + 1)) +
+              (c : euclideanParityBoundaryFlatSubspace p (N + 1))) := by
+    simpa only [RCLike.real_smul_eq_coe_mul] using
+      (inner_smul_real_right (𝕜 := ℂ)
+        (c : euclideanParityBoundaryFlatSubspace p (N + 1))
+        ((w : euclideanParityBoundaryFlatSubspace p (N + 1)) +
+          (c : euclideanParityBoundaryFlatSubspace p (N + 1))) lam)
   have hinnerResidual :
       inner ℂ
           (c : euclideanParityBoundaryFlatSubspace p (N + 1)) r =
@@ -193,7 +223,7 @@ theorem cubicSecularScalar_eq_star_cubicExplicitSchurScalar_div
             (b : euclideanParityBoundaryFlatSubspace p (N + 1))
             ((R b : intrinsicParityPredecessorSubspace p N) :
               euclideanParityBoundaryFlatSubspace p (N + 1)) := by
-    rw [hr, inner_sub_right, map_add, inner_add_right, inner_smul_right,
+    rw [hr, inner_sub_right, map_add, inner_add_right, hlamInner,
       inner_add_right, hcross, hcw]
     ring
   have hstarExplicit :
