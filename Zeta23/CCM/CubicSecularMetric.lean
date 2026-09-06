@@ -175,7 +175,14 @@ theorem shiftedIntrinsicPredecessorBlock_isSymmetric
             (y : euclideanParityBoundaryFlatSubspace p (N + 1)))
   rw [inner_sub_left, inner_sub_right,
     intrinsicPredecessorBlock_isSymmetric p L N x y]
-  rw [inner_smul_real_left, inner_smul_real_right]
+  rw [inner_smul_real_left
+        (𝕜 := ℂ)
+        (x : euclideanParityBoundaryFlatSubspace p (N + 1))
+        (y : euclideanParityBoundaryFlatSubspace p (N + 1)) lam,
+      inner_smul_real_right
+        (𝕜 := ℂ)
+        (x : euclideanParityBoundaryFlatSubspace p (N + 1))
+        (y : euclideanParityBoundaryFlatSubspace p (N + 1)) lam]
 
 /-- Quantitative shifted coercivity from predecessor nonnegativity. For a
 negative shift, `A - lam I` has a lower quadratic floor `-lam`. -/
@@ -335,8 +342,7 @@ theorem neg_mul_norm_resolvent_le
   let x := shiftedIntrinsicPredecessorResolvent p hL N hprev lam hlam b
   change (-lam) * ‖x‖ ≤ ‖b‖
   by_cases hx : x = 0
-  · rw [hx, norm_zero, mul_zero]
-    exact norm_nonneg b
+  · simpa [hx] using (norm_nonneg b)
   · have hxpos : 0 < ‖x‖ := norm_pos_iff.mpr hx
     have hlow :=
       neg_mul_norm_sq_resolvent_le_re_inner p hL N hprev hlam b
@@ -361,7 +367,7 @@ theorem neg_mul_norm_resolvent_le
       calc
         ‖x‖ * ((-lam) * ‖x‖) = (-lam) * ‖x‖ ^ 2 := by ring
         _ ≤ ‖x‖ * ‖b‖ := hcomb
-    exact (mul_le_mul_left hxpos).mp hmul
+    exact le_of_mul_le_mul_left hmul hxpos
 
 /-- Convenience quotient form of the resolvent norm estimate. -/
 theorem norm_resolvent_le_div
@@ -607,7 +613,7 @@ theorem star_cubicExplicitSchurScalar_eq
           euclideanParityBoundaryFlatSubspace p (N + 1))
         (b : euclideanParityBoundaryFlatSubspace p (N + 1))
   rw [star_sub, star_sub, star_mul, hTcstar, hccstar, hRstar]
-  simp [Complex.star_def]
+  simp [Complex.star_def] <;> ring
 
 /-- With E3-B1 metric realness available, the exact #121 bridge loses the
 conjugation: the quotient secular scalar is the explicit real Schur scalar
