@@ -1,180 +1,185 @@
-# RHRC formal audit — theorem authority through PR #115; control authority through PR #116
+# RHRC formal audit — theorem authority through PR #119; control authority through PR #117
 
 > **RH remains OPEN.**
 
 ## Current authority split
 
-~~~text
-live main after #116 = 8921572170e89d74216f0c5577b669696626219e
-live main tree = fc138b517c6835230515167386eafe3ef3495baf
+```text
+live main after #119 = d4175d2bb305e62863f593824b3f40e921a46ee6
+live main tree = 1985472ac470822af279044261fa365fb9bb5535
 
-theorem-state anchor = PR #115 merge a2fecffbef8fed1fdfba373aa5756acf2618e2a1
-theorem tree = 47a2601e3464b0b4248e61c52b4560681f73c986
-theorem-bearing merged through = PR #115
-FIRST-BAD-RIGIDITY-E1 cubic-shell incidence = PROVED / MERGED
+theorem-state anchor = PR #119 merge d4175d2bb305e62863f593824b3f40e921a46ee6
+theorem tree = 1985472ac470822af279044261fa365fb9bb5535
+theorem-bearing merged through = PR #119
+FIRST-BAD-RIGIDITY-E3-A exact canonical secular equation = PROVED / MERGED
 
-control-plane anchor = PR #116 merge 8921572170e89d74216f0c5577b669696626219e
-validated PR head = b5e09880b2996e41364b3abbcc35710399a0f262
-validated synthetic merge = a4d37c0fa0ce5a1e44e321924292a2b3a7920146
-validated tree = fc138b517c6835230515167386eafe3ef3495baf
-RHRC #776 = SUCCESS
-Permansson #549 = SUCCESS
-Lean CCM build = SUCCESS
-Lean ExceptionalZero build = SUCCESS
-forbidden-placeholder gate = SUCCESS
-R003 normalization/source audit = SUCCESS
-Python RHRC + Control-v2 real-history smoke = SUCCESS
+control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
+control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
+Control v2 / FFBBP v1.6 hardened research-control state = MERGED GREEN CONTROL INFRASTRUCTURE
+
 RH = OPEN
-~~~
+```
 
-The validated PR merge tree and the merged-main tree are identical. PR #116 changed no `Zeta23/**/*.lean` theorem file and does not advance mathematical theorem authority beyond PR #115.
+Live GitHub head + exact compiler/CI evidence outrank this prose. PRs #118/#119 changed theorem files and umbrella imports; they did not alter Control-v2 semantics or terminal RH authority.
 
 ## PR #112 — FIRST-BAD-RIGIDITY-D1
 
-**PROVED:**
-- `AnyParityBad` and a global least-bad finite size;
-- both parity sectors nonnegative at every smaller size, including the predecessor of the global first bad state;
-- intrinsic predecessor subspace inside the exact successor parity carrier;
-- intrinsic one-step shell of complex finrank one;
-- predecessor plus intrinsic shell spans the successor carrier;
-- first-bad negative eigenmode has a decomposition with nonzero intrinsic shell component;
-- canonical cubic defect functional;
-- exact pointwise factorization of the compressed parity defect through the explicit cubic generator;
-- nonzero cubic generator for `N>=2`;
-- nonzero algebraic pullback of the cubic generator through D;
-- ExceptionalZero endpoint packaging global first badness, KKT, intrinsic shell and exact cubic factorization at the same finite state forced by an off-line zero.
-
-**Not proved by #112:** the defect functional is nonzero, exact rank one, D-unitarity, shell invariance, shifted Schur closure, negative index exactly one, positivity, finite-to-infinite closure or RH.
+**PROVED:** global first badness; both predecessor parities nonnegative below the first bad size; intrinsic predecessor `W`; intrinsic one-step shell `S` with `finrank S=1`; predecessor plus shell spanning; first-bad negative eigenmode with nonzero shell content; exact cubic factorization of the parity defect; ExceptionalZero packaging at one common finite state.
 
 ## PR #113 — FIRST-BAD-RIGIDITY-D2
 
-**PROVED:**
-- intrinsic predecessor and successor shell are complementary;
-- canonical intrinsic direct-sum coordinates `W × S ≃ V`;
-- canonical `intrinsicPredecessorPart` and `intrinsicShellPart`;
-- exact reconstruction;
-- `intrinsicShellPart_eq_zero_iff`: shell coordinate vanishes exactly on W;
-- predecessor/shell orthogonality;
-- first-bad negative eigenmode has nonzero canonical shell coordinate;
-- projected predecessor block `A=P_W T|_W` and shell coupling `B=P_W T|_S` without W/S invariance assumptions;
-- predecessor nonnegativity descends to A's self-inner form;
-- for real `lam<0`, `A-lam I` is bijective;
-- safe shifted predecessor equivalence/resolvent;
-- first-bad block equation `(A-lam I)w=-Bs`;
-- exact predecessor reconstruction `w=-(A-lam I)^(-1)Bs`;
-- basis-free scalar shifted Schur identity;
-- ExceptionalZero endpoint putting global first badness, both predecessor parities nonnegative, negative eigenpair, intrinsic shell, KKT, exact cubic factorization and shifted Schur reduction at one common finite problem.
+**PROVED:** canonical complementary decomposition `V=W⊕S`; canonical predecessor/shell projections; predecessor/shell orthogonality; projected predecessor block `A=P_W T|_W`; shell coupling `B=P_W T|_S`; predecessor nonnegativity descends to `A`; for every real `lam<0`, `A-lam I` is bijective; canonical shifted resolvent; predecessor reconstruction; basis-free shifted Schur identity.
+
+**Not proved:** shell invariance, `A^-1` at zero, strict predecessor positivity, root exclusion, RH.
 
 ## PR #115 — FIRST-BAD-RIGIDITY-E1
 
+**PROVED:** parity-uniform canonical cubic successor direction is not inherited from the predecessor; `intrinsicCubicShellPart p N != 0` in the stated nontrivial range; the same global first-bad state forced by an off-line zero carries both a nonzero negative-mode shell coordinate and a nonzero canonical cubic shell coordinate.
+
+## PR #118 — FIRST-BAD-RIGIDITY-E2
+
 **PROVED:**
-- every vector inherited from the centered intrinsic predecessor has zero coordinate on the new outer index;
-- the odd cubic compression vector has a nonzero new outer coordinate in the stated nontrivial range;
-- the odd cubic generator is not a centered predecessor extension;
-- Euclidean D/N-flow compatibility needed for the algebraic even pullback;
-- the corresponding even successor cubic vector is also not inherited;
-- parity-uniform `successorParityCubicVector` / canonical `intrinsicCubicShellPart`;
-- main E1 endpoint `intrinsicCubicShellPart p N != 0` for every parity and the stated `N>=1` range;
-- ExceptionalZero endpoint adding that nonzero cubic shell coordinate to the same global-first-bad finite state already carrying #113's negative-mode shell coordinate and shifted Schur identity.
 
-**Deliberately not proved by #115:**
-- the optional closed form `alpha_K = (3K^2+3K-1)/5`;
-- cubic vector is pure shell;
-- shell invariance;
-- D is unitary/isometric;
-- `cubicDefectFunctional != 0`;
-- exact defect rank one;
-- cubic-normalized Schur rigidity;
-- resolvent monotonicity;
-- simultaneous parity-resonance exclusion;
-- positivity, finite-to-infinite closure, or RH.
+- canonical complex coordinate `intrinsicCubicShellCoordinate` on the one-dimensional shell;
+- exact shell reconstruction from that coordinate;
+- coordinate zero iff shell vector zero;
+- canonical quotient coordinate on the successor with kernel exactly the predecessor;
+- canonical successor cubic vector has quotient coordinate one;
+- on the odd carrier the exact cubic parity-defect functional equals the canonical quotient coordinate of the exact intertwining defect;
+- every genuine negative first-bad eigenmode has nonzero cubic quotient coordinate;
+- canonical whole-eigenvector normalization with shell part exactly `intrinsicCubicShellPart`;
+- canonical cubic-shell shifted Schur identity.
 
-## PR #116 — Control v2 / FFBBP v1.6 assurance
+**Deliberately not proved by #118:** shell invariance, D-unitarity, nonzero defect functional on a specific vector, exact defect rank one, secular converse, sign/monotonicity, positivity closure, RH.
 
-**CI-VERIFIED CONTROL INFRASTRUCTURE:**
-- Control-v2 authority firewall remains non-theorem and non-terminal;
-- deterministic route ranking and first-break selection run against real repository history;
-- FFBBP v1.6 assurance remains additive and does not inherit RUN42C qualification;
-- diagnostic commutation, decision commutation and horizon certification stay distinct;
-- counterfactual replay rejects future Git/source information;
-- external archive ingestion is hash/availability bound;
-- dead-route revival requires an explicit changed-premise record;
-- CCM, ExceptionalZero, normalization/source firewalls and forbidden-placeholder checks remained green on the exact #116 validation tree.
+## PR #119 — FIRST-BAD-RIGIDITY-E3-A
 
-**Observed post-green controller result:** the deformation-budget paper test ranked first under the configured deterministic score, and its cheapest first-break was failure of `q_N-mu_N` to remain usefully positive. This is a route recommendation, not theorem evidence.
+Exact theorem head: `2c18909710d9dab0a111849a7c6160be8736e541`.
 
-**Observed hardening signal:** the initial deformation-budget archaeology produced overwhelming generic `fold` matches. The hardened alias surface removes generic standalone `fold`/`rupture`/`slack`, binds search paths into receipts, and states archaeology scope as all refs in declared paths.
+Merged main: `d4175d2bb305e62863f593824b3f40e921a46ee6`.
+
+**PROVED:**
+
+1. the shifted predecessor resolvent is a right inverse as well as the previously available inverse structure;
+2. canonical trial vector at every safe negative shift
+
+   ```text
+   u_lam = -(A-lam I)^(-1) Bc + c;
+   ```
+
+3. exact predecessor and shell coordinates of that trial vector;
+4. trial vector quotient coordinate is one and hence the trial vector is nonzero;
+5. full eigenvalue residual
+
+   ```text
+   r_lam = T u_lam - lam u_lam;
+   ```
+
+6. `intrinsicPredecessorPart r_lam = 0`;
+7. canonical secular scalar
+
+   ```text
+   cubicSecularScalar(lam) = intrinsicCubicQuotientCoordinate(r_lam);
+   ```
+
+8. exact scalarization
+
+   ```text
+   cubicSecularScalar(lam)=0 <-> r_lam=0;
+   ```
+
+9. exact trial eigenmode criterion;
+10. any genuine negative eigenmode canonically normalizes to the same trial vector;
+11. main E3-A theorem
+
+   ```text
+   cubicSecularScalar(lam)=0
+     <-> exists nonzero v, parityCompressedCanonical v = lam • v;
+   ```
+
+12. ExceptionalZero endpoint: a hypothetical off-line zeta zero forces one global-first-bad finite state carrying an exact negative root of this secular scalar and the root/eigenmode equivalence at that same shift.
+
+**Critical claim boundary:** the #119 scalar is the canonical quotient coordinate of the full residual. The older #113/#118 explicit Schur expression is theorem-backed on actual eigenmodes, but its pointwise identity with `cubicSecularScalar` for arbitrary safe negative shifts is not yet formalized.
+
+## PR #117 — latest control-plane authority
+
+**CI-VERIFIED CONTROL INFRASTRUCTURE:** Control-v2 hardening, typed deformation-budget steps, horizon-certificate requirement, decision-commutation checks, archaeology-path binding, deterministic routing transparency, theorem/control anchor separation.
+
+PR #117 changed no `Zeta23/**/*.lean` theorem declaration and does not alter mathematical authority beyond the theorem anchor current at its own merge. After later #118/#119 theorem merges, the separate control-plane anchor remains #117.
 
 ## Current formal state
 
-~~~text
-least bad parity + predecessor nonnegative + 1D ambient shell        PROVED / #105
-parity-constrained compression + negative eigenmode                  PROVED / #107
-nonzero ambient successor-shell projection + exact KKT               PROVED / #109
-algebraic D-equivalence + cubic defect range/finrank <=1             PROVED / #110
-global first bad + both predecessor parities nonnegative             PROVED / #112
-intrinsic predecessor W + intrinsic shell S, dim_C S=1               PROVED / #112
-exact cubic factorization F_N(v)=ell_N(v) g_N                        PROVED / #112
-canonical direct sum V=W⊕S                                            PROVED / #113
-negative mode canonical shell coordinate !=0                         PROVED / #113
-A-lam I bijective for lam<0                                          PROVED / #113
-shifted predecessor reconstruction                                   PROVED / #113
-scalar shifted Schur identity                                        PROVED / #113
-canonical cubic shell coordinate !=0                                 PROVED / #115
-off-line zero -> same global-first-bad Schur+cubic+E1 endpoint       PROVED / #115
+```text
+least/global bad + predecessor nonnegative + 1d shell                 PROVED
+negative parity-compressed eigenmode                                  PROVED
+exact KKT / cubic one-channel factorization                           PROVED
+canonical V=W⊕S                                                       PROVED
+safe shifted predecessor resolvent for lam<0                          PROVED
+canonical cubic shell coordinate / quotient                           PROVED / #118
+canonical negative-mode normalization                                 PROVED / #118
+exact quotient-secular root <-> eigenmode                              PROVED / #119
+off-line zero -> same global-first-bad negative secular root          PROVED / #119
 
-Control v2 / FFBBP v1.6 assurance                                   CI-VERIFIED CONTROL / #116
-cubic-normalized scale-free Schur equation                           DERIVED INTERFACE / OPEN FORMALIZATION
-projected predecessor block symmetric                                DERIVED / OPEN FORMALIZATION
-E2+E3 one-step deformation theorem                                   LEAD / OPEN FORMALIZATION
-shell-projected defect functional equivalence                        DERIVED / OPEN FORMALIZATION
-negative index exactly one / unique negative line                    DERIVED / OPEN FORMALIZATION
-shifted resolvent positivity / monotonicity                           DERIVED / OPEN FORMALIZATION
-parity nullity-difference <=1                                        DERIVED / OPEN FORMALIZATION
-common-resonance vs one-channel-resolvent dichotomy                  DERIVED / OPEN FORMALIZATION
-simultaneous parity-resonance exclusion/classification               OPEN
-deformation-budget asymptotics / infinite-tail certificate           LEAD / HYPOTHESIS
-whole-N rigidity horizon                                              LEAD / HYPOTHESIS
-positivity / finite-to-infinite closure                              OPEN
-RH                                                                    OPEN
-~~~
+projected predecessor block symmetric                                 DERIVED / OPEN FORMALIZATION
+quantitative shifted coercivity / resolvent norm bound                DERIVED / OPEN FORMALIZATION
+resolvent quadratic realness / positivity                             DERIVED / OPEN FORMALIZATION
+#119 scalar = normalized explicit Schur scalar                         DERIVED / OPEN FORMALIZATION
+quantitative predecessor-floor one-step inequality                    LEAD / OPEN FORMALIZATION
+parity shifted-nullity difference <=1                                 DERIVED / OPEN FORMALIZATION
+zero-resonance / kernel-coupling classification                       OPEN
+resolvent monotonicity / root uniqueness                              OPEN
+negative-root exclusion                                               OPEN
+positivity / finite-to-infinite closure                               OPEN
+RH                                                                     OPEN
+```
 
 ## Current research frontier
 
-The next theorem target remains E1b/E2. #113 and #115 give two independently constructed nonzero vectors in the same one-dimensional intrinsic shell. The immediate composition target is to identify them up to a nonzero scalar, transfer the shifted Schur identity to the canonical cubic shell line, and normalize away only scalar choice.
+### E3-B — metric bridge
 
-E3 then targets projected symmetry, quantitative shifted coercivity and the safe resolvent estimate. If the paper test survives, E2+E3 should supply the theorem mechanism for the certified one-step deformation inequality.
+The next theorem layer should stay on the already-defined native objects:
 
-## Post-#116 deformation-budget strategy
+- prove `intrinsicPredecessorBlock` symmetric from full parity-compression symmetry plus predecessor/shell orthogonality;
+- prove quantitative coercivity of `A-lam I` for `lam<0`;
+- derive a safe resolvent norm estimate;
+- prove resolvent symmetry and real/nonnegative quadratic values;
+- identify the #119 quotient-coordinate secular scalar with the normalized explicit Schur expression.
 
-Use the theorem-backed cubic shell coordinate to define scale-free `q_N` and `beta_N` candidates, then probe
+Only after that pointwise bridge is theoremized should sign or monotonicity claims be attached to the #119 secular scalar.
 
-~~~text
-g_N = q_N-mu_N
-beta_N
-beta_N^2/g_N
-~~~
+### E4 — zero resonance / parity nullity
 
-before investing in an analytic infinite-tail majorant.
+Global-first-bad supplies `A>=0`, not `A>0`. A nontrivial `ker A` can make `(A-lam I)^(-1)` singular as `lam -> 0-`. This is now a direct first-bad obstruction, not a side issue.
 
-Exact N-flow already proves upward persistence of badness. Therefore a fully certified positive rigidity horizon for fixed `(L,p)` would exclude earlier badness by persistence and later badness by the complete remaining-deformation bound. The strong target is elimination of the entire fixed-`(L,p)` N-axis. All-`L` certification is eventually required, but one universal L-independent horizon is not assumed.
+The high-value questions are:
+
+```text
+Does Bc annihilate ker A?
+```
+
+and
+
+```text
+Can the rank-at-most-one parity defect theoremize a shifted-nullity difference <=1?
+```
+
+Both remain OPEN until separately proved.
 
 ## Permanent firewalls
 
-- `V=W⊕S` is proved; shell invariance is not.
-- nonzero shell coordinate does not imply the vector is pure shell.
-- D is algebraic, not unitary or isometric.
-- exact cubic factorization does not prove the scalar functional nonzero or the defect rank exactly one.
-- algebraic conjugation does not automatically preserve self-adjointness in the original even-sector metric.
-- equal spectra, Hermitian interlacing and inertia transport through D are not proved.
-- use `A-lam I` for `lam<0`; never replace it by `A^-1` at zero without a separate theorem.
-- negative-index-one remains derived, not theorem-locked.
-- the shifted Schur identity by itself is not a contradiction.
-- the 2x2 deformation formula is diagnostic until E2/E3 theoremize the operator bound.
-- a numeric tail, finite prefix, fitted decay or local residual is not a complete horizon certificate.
-- Control-v2 diagnostics, retroactive clues and route recommendations are not theorem evidence.
-- no positivity theorem, finite-to-infinite theorem or RH theorem exists.
+- compiler/CI validity is authoritative; repository presence alone is not;
+- supporting theorem checks do not automatically imply machine claim promotion;
+- `V=W⊕S` does not imply shell invariance;
+- D is algebraic, not unitary/isometric;
+- exact cubic factorization does not imply exact nonzero rank one;
+- predecessor nonnegative does not imply a positive spectral gap;
+- never replace `(A-lam I)^(-1)` for `lam<0` by `A^-1` at zero;
+- #119 secular equivalence is a reduction, not a contradiction;
+- pointwise equality between quotient and explicit Schur scalar remains to be proved;
+- root uniqueness, if later obtained, would not imply root absence;
+- no finite/fitted deformation tail is a complete proof certificate;
+- no source-normalization, promoted-binding, positivity, finite-to-infinite or RH change is implied by #118/#119.
 
-Detailed current research implications and falsification plan: `research/RHRC/RESEARCH_LEADS_POST_116_DELTA.md`.
+Detailed current post-green implications: `research/RHRC/RESEARCH_LEADS_POST_119_DELTA.md`.
 
 **RH remains OPEN.**
