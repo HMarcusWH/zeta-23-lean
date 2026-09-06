@@ -1,5 +1,5 @@
 {
-  "schema_version": "RHRC-control-actions-1.2",
+  "schema_version": "RHRC-control-actions-1.1",
   "current_frontier": "FIRST_BAD_RIGIDITY_E3_B",
   "open_obligations": [
     "E3_B1_PROJECTED_SYMMETRY_COERCIVITY",
@@ -13,7 +13,7 @@
   "actions": {
     "E3_B1_PROJECTED_SYMMETRY_COERCIVITY": {
       "kind": "THEOREM_ATTEMPT",
-      "concept_id": "shifted_predecessor_metric_control",
+      "concept_id": "shifted_coercivity",
       "retro_search_required": true,
       "first_break_required": true,
       "decision_commutation_required": false,
@@ -50,7 +50,7 @@
     },
     "E3_B2_EXPLICIT_SECULAR_BRIDGE": {
       "kind": "THEOREM_ATTEMPT",
-      "concept_id": "explicit_secular_bridge",
+      "concept_id": "reduction_equivalence",
       "retro_search_required": true,
       "first_break_required": true,
       "decision_commutation_required": false,
@@ -80,7 +80,7 @@
     },
     "E4_A_ZERO_RESONANCE_PARITY_NULLITY": {
       "kind": "THEOREM_ATTEMPT",
-      "concept_id": "zero_resonance_parity_nullity",
+      "concept_id": "parity_resonance",
       "retro_search_required": true,
       "first_break_required": true,
       "decision_commutation_required": false,
@@ -119,7 +119,7 @@
     },
     "E3_B3_PREDECESSOR_FLOOR_DEFORMATION": {
       "kind": "THEOREM_ATTEMPT",
-      "concept_id": "theorem_backed_deformation_step",
+      "concept_id": "deformation_budget",
       "retro_search_required": true,
       "first_break_required": true,
       "decision_commutation_required": false,
@@ -149,7 +149,7 @@
     },
     "E3_C_RESOLVENT_MONOTONICITY": {
       "kind": "THEOREM_ATTEMPT",
-      "concept_id": "secular_root_count",
+      "concept_id": "shifted_coercivity",
       "retro_search_required": true,
       "first_break_required": true,
       "decision_commutation_required": false,
@@ -180,7 +180,7 @@
     },
     "NEGATIVE_ROOT_EXCLUSION": {
       "kind": "THEOREM_ATTEMPT",
-      "concept_id": "first_bad_root_exclusion",
+      "concept_id": "cubic_normalized_schur",
       "retro_search_required": true,
       "first_break_required": true,
       "decision_commutation_required": false,
