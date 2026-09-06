@@ -203,11 +203,11 @@ theorem cubicSecularScalar_eq_star_cubicExplicitSchurScalar_div
             (c : euclideanParityBoundaryFlatSubspace p (N + 1))
             ((w : euclideanParityBoundaryFlatSubspace p (N + 1)) +
               (c : euclideanParityBoundaryFlatSubspace p (N + 1))) := by
-    simpa only [RCLike.real_smul_eq_coe_mul] using
-      (inner_smul_real_right (𝕜 := ℂ)
-        (c : euclideanParityBoundaryFlatSubspace p (N + 1))
-        ((w : euclideanParityBoundaryFlatSubspace p (N + 1)) +
-          (c : euclideanParityBoundaryFlatSubspace p (N + 1))) lam)
+    exact inner_smul_right
+      (c : euclideanParityBoundaryFlatSubspace p (N + 1))
+      ((w : euclideanParityBoundaryFlatSubspace p (N + 1)) +
+        (c : euclideanParityBoundaryFlatSubspace p (N + 1)))
+      (lam : ℂ)
   have hinnerResidual :
       inner ℂ
           (c : euclideanParityBoundaryFlatSubspace p (N + 1)) r =
