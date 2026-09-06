@@ -28,3 +28,4 @@ import Zeta23.ExceptionalZero.GlobalFirstBadCubicShell
 import Zeta23.ExceptionalZero.GlobalFirstBadCubicNormalizedSchur
 import Zeta23.ExceptionalZero.GlobalFirstBadCubicSecularEquation
 import Zeta23.ExceptionalZero.GlobalFirstBadCubicExplicitSecular
+import Zeta23.ExceptionalZero.GlobalFirstBadCubicMetricResonance
