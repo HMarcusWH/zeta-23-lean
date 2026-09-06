@@ -175,7 +175,7 @@ theorem shiftedIntrinsicPredecessorBlock_isSymmetric
             (y : euclideanParityBoundaryFlatSubspace p (N + 1)))
   rw [inner_sub_left, inner_sub_right,
     intrinsicPredecessorBlock_isSymmetric p L N x y]
-  simp
+  rw [inner_smul_real_left, inner_smul_real_right]
 
 /-- Quantitative shifted coercivity from predecessor nonnegativity. For a
 negative shift, `A - lam I` has a lower quadratic floor `-lam`. -/
@@ -232,8 +232,8 @@ theorem re_inner_shiftedIntrinsicPredecessorBlock_ge
     simpa only [RCLike.re_to_complex] using
       (norm_sq_eq_re_inner (𝕜 := ℂ)
         (w : euclideanParityBoundaryFlatSubspace p (N + 1))).symm
-  rw [hnorm]
-  linarith
+  rw [hnorm, smul_eq_mul]
+  nlinarith [hnonneg]
 
 /-- The resolvent quadratic value controls the squared resolvent norm from
 below at every safe negative shift. -/
@@ -333,21 +333,35 @@ theorem neg_mul_norm_resolvent_le
         ‖shiftedIntrinsicPredecessorResolvent p hL N hprev lam hlam b‖ ≤
       ‖b‖ := by
   let x := shiftedIntrinsicPredecessorResolvent p hL N hprev lam hlam b
+  change (-lam) * ‖x‖ ≤ ‖b‖
   by_cases hx : x = 0
-  · simp [x, hx]
+  · rw [hx, norm_zero, mul_zero]
+    exact norm_nonneg b
   · have hxpos : 0 < ‖x‖ := norm_pos_iff.mpr hx
     have hlow :=
       neg_mul_norm_sq_resolvent_le_re_inner p hL N hprev hlam b
     have hupp :=
       re_inner_resolvent_le_norm_mul_norm p hL N hprev hlam b
-    have hcomb : (-lam) * ‖x‖ ^ 2 ≤ ‖x‖ * ‖b‖ := by
-      exact le_trans (by simpa [x] using hlow) (by simpa [x] using hupp)
+    change
+      (-lam) * ‖x‖ ^ 2 ≤
+        Complex.re
+          (inner ℂ
+            (x : euclideanParityBoundaryFlatSubspace p (N + 1))
+            (b : euclideanParityBoundaryFlatSubspace p (N + 1))) at hlow
+    change
+      Complex.re
+          (inner ℂ
+            (x : euclideanParityBoundaryFlatSubspace p (N + 1))
+            (b : euclideanParityBoundaryFlatSubspace p (N + 1))) ≤
+        ‖x‖ * ‖b‖ at hupp
+    have hcomb : (-lam) * ‖x‖ ^ 2 ≤ ‖x‖ * ‖b‖ :=
+      le_trans hlow hupp
     have hmul :
         ‖x‖ * ((-lam) * ‖x‖) ≤ ‖x‖ * ‖b‖ := by
-      simpa [pow_two, mul_assoc, mul_left_comm, mul_comm] using hcomb
-    have hmain : (-lam) * ‖x‖ ≤ ‖b‖ :=
-      (mul_le_mul_left hxpos).mp hmul
-    simpa [x] using hmain
+      calc
+        ‖x‖ * ((-lam) * ‖x‖) = (-lam) * ‖x‖ ^ 2 := by ring
+        _ ≤ ‖x‖ * ‖b‖ := hcomb
+    exact (mul_le_mul_left hxpos).mp hmul
 
 /-- Convenience quotient form of the resolvent norm estimate. -/
 theorem norm_resolvent_le_div
@@ -592,8 +606,8 @@ theorem star_cubicExplicitSchurScalar_eq
         ((R b : intrinsicParityPredecessorSubspace p N) :
           euclideanParityBoundaryFlatSubspace p (N + 1))
         (b : euclideanParityBoundaryFlatSubspace p (N + 1))
-  rw [map_sub, map_sub, map_mul, hTcstar, hccstar, hRstar]
-  simp
+  rw [star_sub, star_sub, star_mul, hTcstar, hccstar, hRstar]
+  simp [Complex.star_def]
 
 /-- With E3-B1 metric realness available, the exact #121 bridge loses the
 conjugation: the quotient secular scalar is the explicit real Schur scalar
