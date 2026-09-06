@@ -2,17 +2,20 @@
 
 This ledger records reusable blockers that should shape future route design.
 
+> **Current theorem anchor:** merged PR #119, `d4175d2bb305e62863f593824b3f40e921a46ee6`.  
+> **Claim firewall:** RH remains OPEN.
+
 ## OBS-001 — TightMult information wall
 
 **Status:** FORMAL / UNCONDITIONAL.
 
-At c=2, the inherited Zeta23 certificate based on trace, Frobenius norm, on-line multiplicity atoms and a positive-index bound is simultaneously extremal for an on-line double zero and a tight off-line pair.
+At `c=2`, the inherited Zeta23 certificate based on trace, Frobenius norm, on-line multiplicity atoms and a positive-index bound is simultaneously extremal for an on-line double zero and a tight off-line pair.
 
 **Escape requirement:** introduce a genuinely new information channel.
 
 ## OBS-002 — density-one is not RH
 
-Any method insensitive to o(N) exceptional zeros cannot close RH.
+Any method insensitive to `o(N)` exceptional zeros cannot close RH.
 
 ## OBS-003 — conditional support > 1
 
@@ -40,7 +43,7 @@ RUN_41 `curvature_gap` lost to a matched W96 adversarial null and failed the pre
 
 The R001 scalar target `ArithmeticSideSubexponential` is logically equivalent to RH.
 
-**Consequence:** closing the remaining scalar arithmetic leg in that observable class is proving RH, not obtaining a cheap auxiliary estimate.
+**Consequence:** closing that scalar arithmetic leg in the same observable class is proving RH, not obtaining a cheap auxiliary estimate.
 
 ## OBS-009 — band-limited Weil-positivity wall
 
@@ -52,7 +55,7 @@ The R002 negative-index arithmetic leg is a band-limited Weil-positivity asserti
 
 **Status:** PROJECT FIREWALL.
 
-A theorem of the form
+A theorem
 
 ```text
 finite source formula = matrix M
@@ -68,8 +71,6 @@ The latter additionally requires the correct carrier/function space, measure, so
 
 **Origin:** repeated R003 source/normalization audits culminating in #71/#73.
 
-**Escape requirement:** independently define the ambient source objects and prove the restriction theorem.
-
 ## OBS-011 — scalar-normalization spectral-sign firewall
 
 **Status:** FORMAL STRUCTURAL CONSEQUENCE.
@@ -84,25 +85,19 @@ then commutators, eigenvectors/eigenspaces and eigenvalue gaps transport, but ab
 
 Therefore legacy `finiteMatrix` numerical inertia/PSD/lower-bound evidence cannot be promoted to canonical source spectral evidence.
 
-**Escape requirement:** run/prove sign-sensitive claims on `canonicalSourceMatrix` or transport them with an explicit proved scalar-shift theorem and threshold bookkeeping.
-
 ## OBS-012 — function-level E_N is not bundled L2/form-domain E_N
 
 **Status:** PROJECT FIREWALL.
 
-A formula-level or zero-extended function representing the finite source Fourier span is not automatically an element/subspace of the exact `L2(d*u)` or form domain used by the external source theorem.
-
-**Escape requirement:** close the measure/Hilbert/form-domain interface explicitly.
+A formula-level or zero-extended function representing the finite source Fourier span is not automatically an element/subspace of the exact `L2(d*u)` or form domain used by an external source theorem.
 
 ## OBS-013 — source-display reconciliation is a theorem obligation
 
 **Status:** PROJECT FIREWALL.
 
-Different displays or derived rewrites in a source may encode distinct normalizations. Agreement with one source formula, one executable, or one numerical oracle does not authorize relabeling another display.
+Different source displays can encode distinct normalizations. Agreement with one source formula, executable or numerical oracle does not authorize relabeling another display.
 
-**Origin:** the direct equation-(4.4) versus later printed equation-(4.11)/(4.14) CCM normalization seam.
-
-**Escape requirement:** pin the source convention, formalize both sides where material, prove the reconciliation or quarantine the suspect rewrite.
+**Origin:** direct equation-(4.4) versus later printed equation-(4.11)/(4.14) CCM normalization seam.
 
 ## OBS-014 — PR numbers are not mathematical dependencies
 
@@ -110,100 +105,58 @@ Different displays or derived rewrites in a source may encode distinct normaliza
 
 Roadmaps repeatedly diverged from predicted PR numbering as proof results compressed or split dependencies.
 
-**Consequence:** stable route documentation must use semantic work-package IDs (G1-B1B, G23, S-GEOM, S-NEG, etc.). PR numbers are historical execution references only.
+**Consequence:** stable route documentation should use semantic work-package IDs; PR numbers are execution history.
 
 ## OBS-015 — source interface is not source negativity
 
 **Status:** PROJECT FIREWALL.
 
-A theorem defining or identifying the source functional, such as
+A theorem defining or identifying the source functional does not by itself transport the project theorem `Re W(h,h)<0` into a strict negative value of an independently defined source `QW`.
 
-```text
-QW(kappa f,kappa g) = PsiSharp(F)
-```
-
-or the finite restriction
-
-```text
-QW_lambda|E_N = canonicalSourceMatrix
-```
-
-does not by itself transport the project theorem
-
-```text
-Re W(h,h) < 0
-```
-
-into a strict negative value of the independently defined source `QW`.
-
-**Origin:** repeated Codex review findings on the R003 source lane (#76/#78), preserved after the post-W1 route split.
-
-**Consequence:** every source-faithful path to G23/F1 must display a separate sign entry.
-
-**Escape requirement:** prove either
-
-1. an independent fixed-aperture source theorem producing `inf QW_lambda < 0` from an off-line zero (`S-NEG`), or
-2. an exact theorem composing the genuine W/localized-additive value with the independently defined source QW so strict negativity is preserved.
-
-G1-B1B/G1-final alone do not discharge this obstruction.
+**Escape requirement:** separately prove source negativity or an exact sign-preserving composition theorem.
 
 ## OBS-016 — raw periodic approximation is not hard-window legality
 
 **Status:** PROJECT FIREWALL; PRIMARY R003 ESCAPE PROVED.
 
-PR #91 proves uniform formula-level approximation by periodic finite localized Fourier functions on one fixed aperture. It does **not** by itself make the raw zero extension outside [0,L] globally C².
+PR #91 proves uniform formula-level approximation by periodic finite localized Fourier functions on one fixed aperture, but not global hard-window `C²` legality for the raw zero extension.
 
-**Consequence:** do not apply the genuine Weil form to a raw hard-window approximant merely because its interior formula is smooth and uniformly close to the strict-collar target. The #88 correction by itself is also not an independently legal hard-window C² test.
+PR #93 closes the primary route with `exists_boundaryFlatFinite_WCONT_approx`.
 
-**Primary-route escape:** PR #93 proves `Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx`, combining the exact #88 projection, F0-B1A legality, global derivative identities and fixed-aperture WCONT control.
-
-**Permanent warning:** this closes the R003 primary-route obligation only. Do not infer legality for unrelated raw periodic approximants or for the correction vector alone.
+**Permanent warning:** do not infer legality for unrelated raw periodic approximants or for the correction vector alone.
 
 ## OBS-017 — raw function-space norm is not Euclidean Rayleigh normalization
 
 **Status:** PROJECT FIREWALL; PRIMARY ESCAPE CLOSED BY PR #107.
 
-PR #96's raw norm remains distinct from the Euclidean/PiLp₂ norm. PR #98 closes the Euclidean carrier/quadratic bridge; PR #100 closes exact Euclidean N-flow; PR #107 proves orthogonal parity compression, exact compressed/self agreement, compressed symmetry and a negative constrained Rayleigh eigenmode.
+PR #98 closes the Euclidean carrier/quadratic bridge, #100 closes exact Euclidean N-flow, and #107 proves orthogonal parity compression, compressed/self agreement, symmetry and a negative constrained Rayleigh eigenmode.
 
-**Permanent warning:** do not use the raw #96 unit vector as a Euclidean sphere theorem. #100 isometry still does not imply full compressed-operator intertwining; #110 later proves only a rank-at-most-one parity defect, not exact compressed intertwining.
+**Permanent warning:** #100 isometry does not imply full compressed-operator intertwining; #110 proves only a rank-at-most-one parity defect.
 
 ## OBS-018 — merged source presence is not compiler validation
 
 **Status:** PROJECT VALIDATION FIREWALL.
 
-A `.lean` file existing, appearing in a PR, passing the no-placeholder grep, or being merged does not establish that its declarations elaborate.
+A `.lean` file existing, appearing in a PR, passing syntactic no-placeholder checks or being merged does not establish that its declarations elaborate.
 
-**Origin:** PR #103 merged `Zeta23/CCM/ParityBadness.lean`, but the validated `lake build Zeta23.CCM` imported `ConstrainedParityGeometry.lean` and did not import `ParityBadness.lean`.
+**Origin:** PR #103 merged `ParityBadness.lean` without putting it in the validated `Zeta23.CCM` import/build closure; #105 later closed that gap.
 
-**Consequence:** declarations in an unbuilt/unimported file remain STAGED / NOT PROVED.
-
-**Escape requirement:** put the module in an authoritative compiler-tested import/build closure or explicitly build it in an authoritative gate, then inspect the axiom surface where production promotion requires it.
-
-The no-placeholder gate is syntactic hardening, not elaboration.
-
-PR #110 illustrates a distinct follow-on rule: compiler validity and production axiom promotion are separate checks. Its final head was in the successful `Zeta23.CCM` import/build closure, but the last repair removed module-local `#print axioms` commands. The theorems are PROVED by compiler/CI; promoted claim registration still requires exact `#check/#print axioms` coverage in `ClaimBindings.lean`.
-
-PRs #112/#113 reinforce the distinction: their declarations are compiler-authoritative because the exact CCM/ExceptionalZero build closure passed, while machine claim-promotion entries remain a separate control-plane action.
+**Permanent rule:** theorem validity requires exact compiler-tested closure. Machine claim promotion is a separate surface and may require explicit binding/axiom checks.
 
 ## OBS-019 — one-dimensional successor shell is not an invariant negative line
 
-**Status:** PROJECT FIREWALL; INTRINSIC BLOCK-GEOMETRY ESCAPE CLOSED BY #112/#113.
-
-Historical progression:
-
-- #105 proved the ambient successor parity shell has complex finrank one;
-- #107 proved a negative successor eigenmode is not inherited from the predecessor;
-- #109 proved nonzero ambient orthogonal shell projection;
-- #112 internalized predecessor W and shell S inside the exact successor parity subtype and proved `dim_C S=1` plus spanning;
-- #113 proved W and S are complementary, exposed canonical projections, and proved the negative first-bad eigenmode has nonzero **canonical** shell coordinate.
+**Status:** PROJECT FIREWALL; INTRINSIC BLOCK-GEOMETRY ESCAPE CLOSED BY #112/#113, CANONICAL COORDINATE ESCAPE CLOSED BY #118.
 
 Now PROVED:
 
 ```text
-V = W ⊕ S,
-dim_C S = 1,
-intrinsicShellPart(v_bad) != 0,
-intrinsicShellPart(x)=0 <-> x∈W.
+V = W ⊕ S
+dim_C S = 1
+intrinsicShellPart(v_bad) != 0
+intrinsicShellPart(x)=0 <-> x in W
+canonical cubic shell vector c != 0
+canonical shell coordinate reconstructs every s in S
+canonical quotient coordinate vanishes exactly on W.
 ```
 
 Still not proved:
@@ -213,78 +166,113 @@ Still not proved:
 - D transports the shell orthogonally;
 - negative index exactly one / unique negative eigenline as a separately formalized theorem.
 
-**Consequence:** use the canonical direct-sum coordinates from #113, but do not silently replace the full eigenmode by a pure shell vector or invoke invariant-subspace spectral theory.
-
-**Current escape target:** for shell-incidence questions, exploit `shellPart(x)=0 <-> x∈W`; prove non-membership in W rather than rebuilding ambient projection geometry.
+**Consequence:** use canonical `W⊕S` and cubic quotient coordinates; do not silently invoke invariant-subspace spectral theory.
 
 ## OBS-020 — exact one-channel parity factorization is not unitary rank-one perturbation theory
 
-**Status:** PROJECT FIREWALL; FACTORIZATION ESCAPE CLOSED BY PR #112, NONZERO/METRIC ESCAPES OPEN.
+**Status:** PROJECT FIREWALL; FACTORIZATION CLOSED BY #112, CANONICAL QUOTIENT VISIBILITY PARTLY CLOSED BY #118, METRIC ESCAPES OPEN.
 
-#110 proved
+#110/#112 prove algebraic one-channel / rank-at-most-one parity defect structure and exact pointwise cubic factorization. #118 proves that on the odd successor carrier `cubicDefectFunctional` is literally the canonical quotient coordinate of the exact intertwining defect.
 
-```text
-range(T_- D - D T_+) <= C g_N
-finrank range(T_- D - D T_+) <= 1
-```
+Still not proved:
 
-with explicit nonzero `g_N=P_-d^3` for `N>=2`, plus the corresponding same-space algebraic conjugation bound.
+- `cubicDefectFunctional` is nonzero on a specific input;
+- exact defect rank one rather than rank zero-or-one;
+- D is unitary/isometric;
+- conjugated odd compression is self-adjoint in the original even-sector metric;
+- Hermitian rank-one interlacing, equal spectra or inertia transfer through D.
 
-#112 strengthens the operator description to an exact pointwise factorization
+**Current escape route:** use rank/kernel algebra for parity-nullity statements; establish metric compatibility separately before importing self-adjoint perturbation theory.
 
-```text
-F_N(v) = ell_N(v) • g_N
-```
+## OBS-021 — shifted Schur identity is not an exact secular criterion
 
-through the canonical `cubicDefectFunctional` and proves the algebraic pullback of the cubic generator is nonzero.
+**Status:** HISTORICAL BLOCKER CLOSED BY PR #119; PERMANENT GENERIC-SCHUR WARNING REMAINS.
 
-This still does **not** prove:
-
-- `ell_N` is nonzero;
-- the defect map is nonzero;
-- exact rank one rather than rank zero or one;
-- D or the induced equivalence is unitary/isometric;
-- the conjugated odd compression is self-adjoint in the original even-sector inner product;
-- Hermitian rank-one interlacing, equal spectra, inertia transfer or positivity.
-
-**Consequence:** downstream work may use the exact one-channel algebraic identity, but must stay in algebraic rank/resolvent/kernel language unless a compatible metric theorem is separately established.
-
-**Escape requirement:** prove `ell_N` nonzero only if actually needed and true; separately establish any metric compatibility before importing self-adjoint perturbation theory.
-
-## OBS-021 — shifted Schur reduction is not a contradiction
-
-**Status:** PROJECT FIREWALL; ORIGIN PR #113.
-
-#113 proves the safe first-bad block reduction
+PR #113 proved only the necessary first-bad identity
 
 ```text
-(A-lam I)w = -Bs,
-w = -(A-lam I)^(-1)Bs,
+(A-lam I)w = -Bs
+w = -(A-lam I)^(-1)Bs
 <Ts,s> - lam<s,s> - <(A-lam I)^(-1)Bs,Bs> = 0
 ```
 
-for the genuine negative first-bad eigenmode with `lam<0` and nonzero canonical shell coordinate.
+for a genuine negative first-bad eigenmode.
 
-This is a substantial reduction, but ordinary finite-dimensional Hermitian block systems with negative eigenvalues satisfy Schur/Feshbach identities of this type. The identity alone therefore does **not** prove positivity or exclude a negative eigenvalue.
+PR #118 canonically normalized the shell to the cubic direction.
 
-What remains open:
-
-- projected predecessor-block symmetry as a separate native theorem;
-- quantitative shifted coercivity / resolvent positivity and monotonicity;
-- cubic generator non-membership in the centered predecessor image;
-- nonzero cubic intrinsic shell coordinate;
-- identification of the cubic shell line with the negative-mode shell line;
-- cubic-normalized scale-free secular rigidity;
-- common even/odd resonance classification or exclusion.
-
-**Current highest-value escape test:** cubic-shell incidence. Because #113 proves `intrinsicShellPart(x)=0 <-> x∈W`, show the cubic generator (and its algebraic even pullback) is not in W. A promising but unproved explicit route is the predicted formula
+PR #119 closes the missing converse by constructing, for every safe `lam<0`, a canonical trial vector and full residual, then defining the secular scalar as the faithful quotient coordinate of that residual. It proves
 
 ```text
-g_K = d^3 - alpha_K d,
-alpha_K = (3K^2+3K-1)/5,
-(g_K)_(+K)=K(K-1)(2K-1)/5.
+cubicSecularScalar(lam)=0
+  <-> full residual = 0
+  <-> exists nonzero eigenmode at lam.
 ```
 
-The formula must be derived from the exact repository projection/indexing conventions before use.
+Therefore the historical blocker “Schur identity only necessary” is closed.
 
-**Permanent warning:** uniqueness or monotonicity of a negative secular root is still not absence of a negative root. Additional CCM-specific shell/cubic/parity structure is required for an RH-directed contradiction.
+**Permanent warning:** exact secular equivalence is still not a contradiction. Generic Hermitian block systems can have negative secular roots.
+
+## OBS-022 — quotient secular scalar is not yet the explicit Schur scalar
+
+**Status:** CURRENT FORMALIZATION OBSTRUCTION / POST-#119 FRONTIER.
+
+PR #119 defines
+
+```text
+F(lam)=intrinsicCubicQuotientCoordinate(T u_lam - lam u_lam)
+```
+
+for the canonical shifted-resolvent trial vector.
+
+The older canonical cubic-shell Schur expression is
+
+```text
+S(lam)=<Tc,c> - lam<c,c> - <R_lam Bc,Bc>.
+```
+
+Current Lean proves `S(lam)=0` for genuine negative eigenmodes and proves `F(lam)=0` iff a genuine eigenmode exists. It does **not yet** prove a pointwise identity between `F` and the correctly normalized `S` for every safe negative shift.
+
+**Escape requirement:**
+
+1. prove projected predecessor symmetry in the exact repository inner product;
+2. prove shifted resolvent symmetry / real quadratic values;
+3. handle Mathlib's complex inner-product orientation exactly;
+4. theoremize the pointwise normalized identity.
+
+**Consequence:** do not transfer sign, reality or monotonicity from the explicit Schur expression to `cubicSecularScalar` until this bridge is green.
+
+## OBS-023 — predecessor nonnegativity permits zero resonance
+
+**Status:** CURRENT STRUCTURAL OBSTRUCTION / POST-#119 FRONTIER.
+
+Global-first-bad gives
+
+```text
+Re <Aw,w> >= 0,
+```
+
+not a positive lower spectral gap.
+
+Thus `ker A` may be nontrivial. Although `A-lam I` is safely invertible for `lam<0`, the shifted resolvent can have a `1/(-lam)` singular component as `lam -> 0-`.
+
+**Fast structural test:** determine whether the canonical shell coupling `b=Bc` annihilates the zero eigenspace:
+
+```text
+z in ker A -> <z,b>=0 ?
+```
+
+If yes, the singular zero eigenspace decouples from the secular channel. If no, the resonant singular contribution may itself constrain negative roots.
+
+**Parallel escape route:** use the existing same-space parity defect with finrank at most one to theoremize shifted-nullity comparison and classify simultaneous/zero resonance without assuming D is unitary.
+
+## OBS-024 — root uniqueness is not root exclusion
+
+**Status:** PERMANENT CLAIM FIREWALL.
+
+Even if a later E3-C theorem proves the canonical real secular function is strictly monotone and has at most one negative root, a single negative root may still exist.
+
+**Escape requirement:** use additional CCM-specific information — shell/cubic/parity/KKT/N-flow structure, endpoint sign information, zero-resonance constraints, or an equivalent rigidity theorem — to exclude the remaining root.
+
+`at most one negative root` must never be documented as positivity or RH.
+
+**RH remains OPEN.**
