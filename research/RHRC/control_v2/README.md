@@ -17,17 +17,37 @@ The controller answers **where to look next**, never **what is mathematically tr
 
 `CONTROL_STATE.json` records two distinct anchors:
 
-~~~text
-theorem-state anchor = PR #115 merge a2fecffbef8fed1fdfba373aa5756acf2618e2a1
-control-plane anchor = PR #116 merge 8921572170e89d74216f0c5577b669696626219e
-~~~
+```text
+theorem-state anchor = PR #119 merge d4175d2bb305e62863f593824b3f40e921a46ee6
+control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
+```
 
-PR #116 is merged green control infrastructure. It does not advance theorem authority beyond #115.
+PR #119 is the current merged theorem authority: exact canonical negative secular root iff negative-shift eigenmode. PR #117 remains the latest merged green Control-v2 authority because #118/#119 changed theorem files but not control semantics.
+
+## Current routed frontier
+
+`ACTION_REGISTRY.json` now routes from `FIRST_BAD_RIGIDITY_E3_B`.
+
+Primary theorem actions:
+
+```text
+E3-B1 projected predecessor symmetry / shifted coercivity
+E3-B2 exact pointwise quotient-secular <-> explicit-Schur bridge
+E4-A zero resonance / parity shifted-nullity
+E3-B3 theorem-backed predecessor-floor deformation inequality
+E3-C resolvent monotonicity / root-count control
+negative-root exclusion only after the preceding structure is available
+```
+
+The deformation-budget paper test remains parallel diagnostic research.
+
+The controller must preserve one critical post-#119 distinction: the exact #119 `cubicSecularScalar` is the quotient coordinate of the full residual. It is not yet theorem-identified pointwise with the older explicit Schur inner-product expression. Sign/monotonicity work on the explicit scalar cannot be promoted to the exact #119 root detector until E3-B2 closes that bridge.
 
 ## Main objects
 
 - `ACTION_REGISTRY.json` — current research actions, deterministic score inputs, first-break declarations and control requirements.
 - `CONTROL_BOUNDARY.json` — physical authority cap for the controller.
+- `CONTROL_STATE.json` — separate merged theorem/control anchors.
 - `schemas.py` / `state.py` — typed theorem/control anchors and control state.
 - `router.py` — deterministic fail-closed action ranking with explicit score formula and candidate diagnostics.
 - `deformation_budget.py` — RH-native deformation-budget diagnostic with Decimal arithmetic, exact prefix coverage and assured tail certificates.
@@ -49,24 +69,24 @@ A small local residual is not a horizon certificate. Numerical closeness is not 
 
 The RH-native adapter tracks the proposed quantities
 
-~~~text
+```text
 mu_N       spectral-floor lower information
 q_N        new-shell stiffness information
 beta_N     shell/predecessor coupling information
 D_N        certified one-step downward-deformation upper bound
 R_N        certified remaining tail-deformation upper bound
 H_N        certified headroom lower bound = mu_lower - R_upper
-~~~
+```
 
 The safe one-step shortcut is
 
-~~~text
+```text
 D_N <= beta_upper^2 / gap_lower
-~~~
+```
 
 and is available only when `gap_lower > 0` is independently certified.
 
-A complete `TailBudgetCertificate` now requires:
+A complete `TailBudgetCertificate` requires:
 
 1. exact sorted contiguous prefix coverage `N, ..., M-1` with one typed `StepUpperBound` per step;
 2. an explicit numeric tail upper bound;
@@ -77,16 +97,45 @@ A positive numeric headroom is not enough by itself. `PRUNE` is produced only by
 
 A finite prefix sum, fitted tail or small local residual is not enough.
 
+## Post-#119 deformation alignment rule
+
+The deformation quantities must remain aligned with the theorem-backed E3 definitions.
+
+The expected theorem ancestry is now
+
+```text
+#119 exact secular equivalence
+  -> E3-B1 metric/resolvent control
+  -> E3-B2 explicit scalar bridge
+  -> E3-B3 certified predecessor-floor one-step inequality
+  -> only then decision-bearing deformation bounds.
+```
+
+If a future theorem uses a lower predecessor floor `mu`, the diagnostic gap must use the same theorem-backed `mu` and shell stiffness convention. The controller may not mix an empirical spectral floor with a theorem statement and call the result certified.
+
+## Zero-resonance routing rule
+
+Global-first-bad gives predecessor nonnegativity, not strict positivity. Therefore `ker A` may be nontrivial and the shifted resolvent may be singular as `lam -> 0-`.
+
+Control-v2 now treats these as high-information first breaks:
+
+```text
+prove shifted-nullity difference from rank-at-most-one parity defect
+probe/prove whether Bc is orthogonal to ker A
+```
+
+This is a theorem/discovery routing question only. No kernel-decoupling statement is currently proved.
+
 ## Retro modes
 
 ### Archaeology — exhaustive within the declared Git paths
 
 The normal archaeology mode searches **all Git refs with commits predating the theorem anchor within the declared search paths**. The default paths are
 
-~~~text
+```text
 research/RHRC
 Zeta23
-~~~
+```
 
 Those paths are recorded in the retro receipt and included in its hash. Therefore `ALL_REFS_BEFORE_ANCHOR_IN_DECLARED_PATHS` must not be paraphrased as "every repository byte".
 
@@ -102,14 +151,14 @@ Searches only Git history reachable from the historical anchor, again within the
 
 CI cannot query private document libraries directly. Historical papers/implementation notes are first normalized to UTF-8 text/code, then ingested with a hash-bound availability manifest:
 
-~~~bash
+```bash
 python research/RHRC/control_v2/retro/ingest.py ICW_NSG_v1.txt \
   --archive-root /path/to/rhrc-history \
   --source-family ICW_NSG \
   --source-version 1.0 \
   --authority HISTORICAL_ARCHITECTURE \
   --available-from-utc 2026-08-01T00:00:00Z
-~~~
+```
 
 The ingestion tool copies the source under a SHA-prefixed name and maintains `RETRO_ARCHIVE_MANIFEST.json` deterministically.
 
@@ -117,17 +166,17 @@ The ingestion tool copies the source under a SHA-prefixed name and maintains `RE
 
 From the repository root:
 
-~~~bash
+```bash
 python research/RHRC/control_v2/run_control.py
-~~~
+```
 
 With an ingested external history corpus:
 
-~~~bash
+```bash
 python research/RHRC/control_v2/run_control.py \
   --archive-root /path/to/rhrc-history \
   --output /tmp/RHRC_CONTROL_V2.json
-~~~
+```
 
 The output is a route certificate plus retro-search receipt IDs. It always carries `RH_OPEN`, theorem/control anchors and a no-theorem-authority firewall.
 
@@ -135,10 +184,12 @@ The output is a route certificate plus retro-search receipt IDs. It always carri
 
 `DEAD_ROUTES.md` remains authoritative historical failure memory. `retro/revival.py` encodes the existing rule: a dead/quarantined route cannot be silently resurrected. A `RevivalRecord` must state the original blocker, what premise changed and evidence for that change.
 
+DR-010 remains dead. The current exact N-flow / first-bad / secular route does not use fitted small commutators, spectral-gap heuristics or eigenvector convergence.
+
 ## CI
 
 `tools/run_suite.py` runs Control-v2 unit tests. The Python RHRC workflow checks out full Git history (`fetch-depth: 0`) and performs a real-history Control-v2 smoke run. Router recommendations themselves are not assertion targets; authority, completeness, leakage, exact interval coverage and assurance invariants are CI-fatal.
 
-Detailed post-#116 research implications: `../RESEARCH_LEADS_POST_116_DELTA.md`.
+Detailed current post-green research implications: `../RESEARCH_LEADS_POST_119_DELTA.md`.
 
 **RH remains OPEN.**
