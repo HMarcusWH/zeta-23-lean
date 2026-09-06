@@ -27,3 +27,4 @@ import Zeta23.ExceptionalZero.GlobalFirstBadShiftedSchur
 import Zeta23.ExceptionalZero.GlobalFirstBadCubicShell
 import Zeta23.ExceptionalZero.GlobalFirstBadCubicNormalizedSchur
 import Zeta23.ExceptionalZero.GlobalFirstBadCubicSecularEquation
+import Zeta23.ExceptionalZero.GlobalFirstBadCubicExplicitSecular
