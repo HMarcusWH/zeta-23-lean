@@ -265,8 +265,9 @@ theorem cubicExplicitSchurScalar_eq_zero_iff_cubicSecularScalar_eq_zero
   · intro hF
     rw [hF] at hbridge
     have hstar : star (cubicExplicitSchurScalar p hL N hprev lam hlam) = 0 := by
-      apply (div_eq_zero_iff hcc).mp
-      exact hbridge.symm
+      rcases div_eq_zero_iff.mp hbridge.symm with hstar | hden
+      · exact hstar
+      · exact (hcc hden).elim
     have hback := congrArg star hstar
     simpa using hback
 
