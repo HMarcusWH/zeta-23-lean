@@ -18,16 +18,23 @@ projected predecessor block
 
 and uses it to separate the two zero-shift mechanisms left open by E4-A1.
 
-The key construction is a canonical inverse of `A` only on `range A`. No
-whole-space inverse at zero is introduced. The predecessor subtype continues
-to use the induced ambient successor inner product explicitly; no nested
+In the decoupled branch, annihilation of `ker A` places the coupling vector in
+`range A`. We then obtain a zero-shift solution `A x₀ = b` and prove that the
+quadratic value `⟪x₀,b⟫` is independent of the chosen solution. In the resonant
+branch, a kernel vector couples nontrivially to the cubic channel and the safe
+negative-shift resolvent gives an exact identity and denominator-free bound.
+
+No inverse of `A` at zero is introduced. The predecessor subtype continues to
+use the induced ambient successor inner product explicitly; no nested
 `InnerProductSpace` instance is installed.
 
 Firewalls:
 * `ker A` is the kernel of the projected successor predecessor block, not the
   predecessor-size compressed-operator kernel;
-* the range inverse is not a whole-space `A⁻¹`;
-* no branch is asserted to occur at the global first-bad state;
+* no whole-space or range-only zero-shift inverse is introduced;
+* solution-independence is proved rather than hidden behind an arbitrary
+  choice of zero-shift preimage;
+* no branch is asserted impossible at the global first-bad state;
 * no zero-shift endpoint sign, root exclusion, positivity, finite-to-infinite,
   or RH theorem is claimed.
 -/
@@ -216,111 +223,78 @@ theorem mem_intrinsicPredecessorBlock_range_of_inner_kernel_eq_zero
   rw [← hrEq]
   exact r.property
 
-/-- `A` restricted to its own range. This is the canonical zero-shift block
-that can be inverted even when `A` has a nontrivial whole-space kernel. -/
-def intrinsicPredecessorRangeBlock
-    (p : ReversalParity) (L : ℝ) (N : ℕ) :
-    LinearMap.range (intrinsicPredecessorBlock p L N) →ₗ[ℂ]
-      LinearMap.range (intrinsicPredecessorBlock p L N) where
-  toFun := fun y =>
-    ⟨intrinsicPredecessorBlock p L N
-        (y : intrinsicParityPredecessorSubspace p N),
-      ⟨(y : intrinsicParityPredecessorSubspace p N), rfl⟩⟩
-  map_add' := by
-    intro x y
-    apply Subtype.ext
-    simp
-  map_smul' := by
-    intro c x
-    apply Subtype.ext
-    simp
-
-/-- The range-restricted zero-shift block is injective. -/
-theorem intrinsicPredecessorRangeBlock_injective
-    (p : ReversalParity) (L : ℝ) (N : ℕ) :
-    Function.Injective (intrinsicPredecessorRangeBlock p L N) := by
-  intro x y hxy
-  have hAxy :
-      intrinsicPredecessorBlock p L N
-          ((x : intrinsicParityPredecessorSubspace p N) -
-            (y : intrinsicParityPredecessorSubspace p N)) = 0 := by
-    have hxy' := congrArg Subtype.val hxy
-    change
-      intrinsicPredecessorBlock p L N
-          (x : intrinsicParityPredecessorSubspace p N) =
-        intrinsicPredecessorBlock p L N
-          (y : intrinsicParityPredecessorSubspace p N) at hxy'
-    rw [map_sub, hxy', sub_self]
-  have hrange :
-      ((x : intrinsicParityPredecessorSubspace p N) -
-          (y : intrinsicParityPredecessorSubspace p N)) ∈
-        LinearMap.range (intrinsicPredecessorBlock p L N) :=
-    (LinearMap.range (intrinsicPredecessorBlock p L N)).sub_mem
-      x.property y.property
-  have hdis := intrinsicPredecessorBlock_range_disjoint_kernel p L N
-  have hdiffInf :
-      ((x : intrinsicParityPredecessorSubspace p N) -
-          (y : intrinsicParityPredecessorSubspace p N)) ∈
-        LinearMap.range (intrinsicPredecessorBlock p L N) ⊓
-          LinearMap.ker (intrinsicPredecessorBlock p L N) := by
-    refine ⟨hrange, ?_⟩
-    change
-      intrinsicPredecessorBlock p L N
-          ((x : intrinsicParityPredecessorSubspace p N) -
-            (y : intrinsicParityPredecessorSubspace p N)) = 0
-    exact hAxy
-  have hdiffBot :
-      ((x : intrinsicParityPredecessorSubspace p N) -
-          (y : intrinsicParityPredecessorSubspace p N)) ∈
-        (⊥ : Submodule ℂ (intrinsicParityPredecessorSubspace p N)) := by
-    rw [← hdis.eq_bot]
-    exact hdiffInf
-  have hdiff0 :
-      (x : intrinsicParityPredecessorSubspace p N) -
-        (y : intrinsicParityPredecessorSubspace p N) = 0 := by
-    simpa using hdiffBot
-  apply Subtype.ext
-  exact sub_eq_zero.mp hdiff0
-
-/-- Canonical zero-shift linear equivalence on `range A`. -/
-def intrinsicPredecessorRangeEquiv
-    (p : ReversalParity) (L : ℝ) (N : ℕ) :
-    LinearMap.range (intrinsicPredecessorBlock p L N) ≃ₗ[ℂ]
-      LinearMap.range (intrinsicPredecessorBlock p L N) :=
-  LinearEquiv.ofInjectiveEndo
-    (intrinsicPredecessorRangeBlock p L N)
-    (intrinsicPredecessorRangeBlock_injective p L N)
-
-/-- Canonical zero-shift inverse, defined only on `range A`. -/
-def intrinsicPredecessorRangeInverse
-    (p : ReversalParity) (L : ℝ) (N : ℕ) :
-    LinearMap.range (intrinsicPredecessorBlock p L N) →ₗ[ℂ]
-      LinearMap.range (intrinsicPredecessorBlock p L N) :=
-  (intrinsicPredecessorRangeEquiv p L N).symm.toLinearMap
-
-/-- The canonical range inverse is a right inverse for the range-restricted
-zero-shift block. -/
-theorem intrinsicPredecessorRangeBlock_rangeInverse_apply
+/-- Any two zero-shift solutions `A x = b` give the same quadratic coupling
+`⟪x,b⟫`. Their difference lies in `ker A`, while `b`, being in `range A`, is
+orthogonal to that kernel. -/
+theorem inner_intrinsicPredecessorBlock_preimage_eq
     (p : ReversalParity) (L : ℝ) (N : ℕ)
-    (b : LinearMap.range (intrinsicPredecessorBlock p L N)) :
-    intrinsicPredecessorRangeBlock p L N
-        (intrinsicPredecessorRangeInverse p L N b) = b := by
-  simpa [intrinsicPredecessorRangeInverse, intrinsicPredecessorRangeEquiv,
-    LinearEquiv.ofBijective_apply] using
-      (intrinsicPredecessorRangeEquiv p L N).apply_symm_apply b
+    (b x y : intrinsicParityPredecessorSubspace p N)
+    (hx : intrinsicPredecessorBlock p L N x = b)
+    (hy : intrinsicPredecessorBlock p L N y = b) :
+    inner ℂ
+        (x : euclideanParityBoundaryFlatSubspace p (N + 1))
+        (b : euclideanParityBoundaryFlatSubspace p (N + 1)) =
+      inner ℂ
+        (y : euclideanParityBoundaryFlatSubspace p (N + 1))
+        (b : euclideanParityBoundaryFlatSubspace p (N + 1)) := by
+  have hker : intrinsicPredecessorBlock p L N (x - y) = 0 := by
+    rw [map_sub, hx, hy, sub_self]
+  have hbRange :
+      b ∈ LinearMap.range (intrinsicPredecessorBlock p L N) := by
+    exact ⟨x, hx⟩
+  have hrangeKer :
+      inner ℂ
+          (b : euclideanParityBoundaryFlatSubspace p (N + 1))
+          ((x - y : intrinsicParityPredecessorSubspace p N) :
+            euclideanParityBoundaryFlatSubspace p (N + 1)) = 0 :=
+    inner_intrinsicPredecessorBlock_range_kernel_eq_zero
+      p L N b (x - y) hbRange hker
+  have hkerRange :
+      inner ℂ
+          ((x - y : intrinsicParityPredecessorSubspace p N) :
+            euclideanParityBoundaryFlatSubspace p (N + 1))
+          (b : euclideanParityBoundaryFlatSubspace p (N + 1)) = 0 := by
+    rw [inner_eq_zero_symm]
+    exact hrangeKer
+  change
+    inner ℂ
+        ((x : euclideanParityBoundaryFlatSubspace p (N + 1)) -
+          (y : euclideanParityBoundaryFlatSubspace p (N + 1)))
+        (b : euclideanParityBoundaryFlatSubspace p (N + 1)) = 0 at hkerRange
+  rw [inner_sub_left] at hkerRange
+  exact sub_eq_zero.mp hkerRange
 
-/-- Ambient predecessor form of the canonical zero-shift solve `A x₀ = b` for
-`b ∈ range A`. -/
-theorem intrinsicPredecessorBlock_rangeInverse_apply
+/-- If `b` annihilates `ker A`, then the zero-shift equation `A x₀ = b` has a
+solution and the quadratic value `⟪x₀,b⟫` is independent of the selected
+solution. -/
+theorem exists_intrinsicPredecessorBlock_preimage_and_inner_unique
     (p : ReversalParity) (L : ℝ) (N : ℕ)
-    (b : LinearMap.range (intrinsicPredecessorBlock p L N)) :
-    intrinsicPredecessorBlock p L N
-        ((intrinsicPredecessorRangeInverse p L N b :
-            LinearMap.range (intrinsicPredecessorBlock p L N)) :
-          intrinsicParityPredecessorSubspace p N) =
-      (b : intrinsicParityPredecessorSubspace p N) := by
-  have h := intrinsicPredecessorRangeBlock_rangeInverse_apply p L N b
-  exact congrArg Subtype.val h
+    (b : intrinsicParityPredecessorSubspace p N)
+    (horth :
+      ∀ z : intrinsicParityPredecessorSubspace p N,
+        intrinsicPredecessorBlock p L N z = 0 →
+          inner ℂ
+            (z : euclideanParityBoundaryFlatSubspace p (N + 1))
+            (b : euclideanParityBoundaryFlatSubspace p (N + 1)) = 0) :
+    ∃ x₀ : intrinsicParityPredecessorSubspace p N,
+      intrinsicPredecessorBlock p L N x₀ = b ∧
+      ∀ x : intrinsicParityPredecessorSubspace p N,
+        intrinsicPredecessorBlock p L N x = b →
+          inner ℂ
+              (x : euclideanParityBoundaryFlatSubspace p (N + 1))
+              (b : euclideanParityBoundaryFlatSubspace p (N + 1)) =
+            inner ℂ
+              (x₀ : euclideanParityBoundaryFlatSubspace p (N + 1))
+              (b : euclideanParityBoundaryFlatSubspace p (N + 1)) := by
+  have hbRange :
+      b ∈ LinearMap.range (intrinsicPredecessorBlock p L N) :=
+    mem_intrinsicPredecessorBlock_range_of_inner_kernel_eq_zero
+      p L N b horth
+  rcases hbRange with ⟨x₀, hx₀⟩
+  refine ⟨x₀, hx₀, ?_⟩
+  intro x hx
+  exact inner_intrinsicPredecessorBlock_preimage_eq
+    p L N b x x₀ hx hx₀
 
 /-- Exact resonant identity. If `z ∈ ker A`, then its coupling to an arbitrary
 predecessor vector `b` is exactly `(-lam)` times its coupling to the safe
@@ -490,8 +464,7 @@ theorem norm_sq_inner_kernel_coupling_le_neg_mul_norm_sq_re_inner_resolvent
       simp [y, R, mul_assoc]
 
 /-- Cubic specialization of the decoupled branch: if the canonical cubic
-coupling vanishes on `ker A`, then the coupling vector belongs to `range A` and
-therefore has a canonical zero-shift range inverse. -/
+coupling vanishes on `ker A`, then the coupling vector belongs to `range A`. -/
 theorem cubicCoupling_mem_intrinsicPredecessorBlock_range_of_zero_on_kernel
     (p : ReversalParity) (L : ℝ) (N : ℕ)
     (hzero :
@@ -510,12 +483,51 @@ theorem cubicCoupling_mem_intrinsicPredecessorBlock_range_of_zero_on_kernel
     (intrinsicShellToPredecessor p L N (intrinsicCubicShellPart p N))
     hzero
 
+/-- Cubic decoupled zero-shift endpoint. If the canonical cubic coupling
+annihilates `ker A`, then `A x₀ = b` has a solution and the quadratic term
+`⟪x₀,b⟫` is independent of the chosen zero-shift solution. -/
+theorem exists_cubicCoupling_zeroShift_preimage_and_inner_unique
+    (p : ReversalParity) (L : ℝ) (N : ℕ)
+    (hzero :
+      ∀ z : intrinsicParityPredecessorSubspace p N,
+        intrinsicPredecessorBlock p L N z = 0 →
+          inner ℂ
+            (z : euclideanParityBoundaryFlatSubspace p (N + 1))
+            ((intrinsicShellToPredecessor p L N
+                (intrinsicCubicShellPart p N) :
+                intrinsicParityPredecessorSubspace p N) :
+              euclideanParityBoundaryFlatSubspace p (N + 1)) = 0) :
+    ∃ x₀ : intrinsicParityPredecessorSubspace p N,
+      intrinsicPredecessorBlock p L N x₀ =
+        intrinsicShellToPredecessor p L N (intrinsicCubicShellPart p N) ∧
+      ∀ x : intrinsicParityPredecessorSubspace p N,
+        intrinsicPredecessorBlock p L N x =
+            intrinsicShellToPredecessor p L N (intrinsicCubicShellPart p N) →
+          inner ℂ
+              (x : euclideanParityBoundaryFlatSubspace p (N + 1))
+              ((intrinsicShellToPredecessor p L N
+                  (intrinsicCubicShellPart p N) :
+                  intrinsicParityPredecessorSubspace p N) :
+                euclideanParityBoundaryFlatSubspace p (N + 1)) =
+            inner ℂ
+              (x₀ : euclideanParityBoundaryFlatSubspace p (N + 1))
+              ((intrinsicShellToPredecessor p L N
+                  (intrinsicCubicShellPart p N) :
+                  intrinsicParityPredecessorSubspace p N) :
+                euclideanParityBoundaryFlatSubspace p (N + 1)) := by
+  exact exists_intrinsicPredecessorBlock_preimage_and_inner_unique
+    p L N
+    (intrinsicShellToPredecessor p L N (intrinsicCubicShellPart p N))
+    hzero
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.inner_intrinsicPredecessorBlock_range_kernel_eq_zero
 #print axioms Zeta23.CCM.intrinsicPredecessorBlock_kernel_isCompl_range
 #print axioms Zeta23.CCM.mem_intrinsicPredecessorBlock_range_of_inner_kernel_eq_zero
-#print axioms Zeta23.CCM.intrinsicPredecessorRangeBlock_rangeInverse_apply
+#print axioms Zeta23.CCM.inner_intrinsicPredecessorBlock_preimage_eq
+#print axioms Zeta23.CCM.exists_intrinsicPredecessorBlock_preimage_and_inner_unique
 #print axioms Zeta23.CCM.inner_intrinsicPredecessorBlock_kernel_resolvent_eq
 #print axioms Zeta23.CCM.norm_sq_inner_kernel_coupling_le_neg_mul_norm_sq_re_inner_resolvent
 #print axioms Zeta23.CCM.cubicCoupling_mem_intrinsicPredecessorBlock_range_of_zero_on_kernel
+#print axioms Zeta23.CCM.exists_cubicCoupling_zeroShift_preimage_and_inner_unique
