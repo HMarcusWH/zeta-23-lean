@@ -5,12 +5,12 @@
 ## Current authority snapshot
 
 ```text
-live main after PR #119 = d4175d2bb305e62863f593824b3f40e921a46ee6
-live main tree = 1985472ac470822af279044261fa365fb9bb5535
+live main after PR #122 = b2d1210902d430f3cdd3c24c2961ab843469b5d6
+live main tree = db51419fb7cc8b2e3dbe5cf2e770390086db9862
 
-theorem-state anchor = PR #119 merge d4175d2bb305e62863f593824b3f40e921a46ee6
-theorem tree = 1985472ac470822af279044261fa365fb9bb5535
-FIRST-BAD-RIGIDITY-E3-A exact secular equivalence = PROVED / MERGED
+theorem-state anchor = PR #122 merge b2d1210902d430f3cdd3c24c2961ab843469b5d6
+validated theorem head = 9c8154e3ea7a5762f8e65d508dc68bb9246db869
+E3-B1 secular metric control + E4-A1 zero-resonance coupling classification = PROVED / MERGED
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
@@ -27,147 +27,97 @@ Live GitHub head + Lean compiler + CI are the exact authority. The control plane
 F1 finite canonical negative obstruction                              PROVED / #94
 constrained algebra / Euclidean sector                                PROVED / #96-#98
 exact centered N-flow + fixed-L negative tail                         PROVED / #100
-reversal symmetry / even commutator collapse                          PROVED / #102
-direct parity geometry + algebraic D-equivalence                      PROVED / #103
-least/global bad + predecessor nonnegative + 1d successor shell       PROVED / #105,#112
-negative first-bad eigenmode + noninheritance                         PROVED / #107
-nonzero shell projection + exact parity normals/KKT                   PROVED / #109
-cubic parity channel + compressed defect finrank <=1                  PROVED / #110
-intrinsic W/S block + exact cubic factorization                       PROVED / #112
+reversal symmetry / parity geometry / algebraic D                     PROVED / #102-#103
+global first bad + predecessor nonnegative + 1d successor shell       PROVED / #105,#112
+negative first-bad eigenmode + KKT/cubic channel                      PROVED / #107,#109,#110
 canonical V=W⊕S + shifted predecessor Schur reduction                 PROVED / #113
 canonical cubic shell incidence                                       PROVED / #115
-canonical cubic shell/quotient coordinate + normalized Schur          PROVED / #118
-exact canonical secular root <-> negative-shift eigenmode             PROVED / #119
+canonical cubic quotient coordinate + normalized Schur                PROVED / #118
+exact quotient secular root <-> negative-shift eigenmode              PROVED / #119
+exact explicit cubic Schur scalar bridge                              PROVED / #121
+projected symmetry/coercivity + real resolvent metric control         PROVED / #122
+real unconjugated exact secular bridge + root metric bound            PROVED / #122
+zero-resonance cubic-coupling classification on ker A                 PROVED / #122
 
-e3-B projected symmetry / coercivity / explicit scalar bridge         NEXT
-e4 parity shifted-nullity / zero-resonance classification             PARALLEL / NEXT
-quantitative one-step deformation theorem                              LEAD / OPEN FORMALIZATION
-resolvent monotonicity / negative-root uniqueness                      OPEN
-negative-root exclusion                                                OPEN
-positivity / finite-to-infinite closure                                OPEN
-RH                                                                       OPEN
+E4-A2 zero-shift/range endpoint split                                 NOW
+E3-C resolvent monotonicity / root uniqueness                         PARALLEL
+E4-B parity shifted-nullity comparison                                PARALLEL
+E3-B3 positive-floor deformation theorem                              PARALLEL / OPEN FORMALIZATION
+negative-root exclusion                                               OPEN
+positivity / finite-to-infinite closure                               OPEN
+RH                                                                     OPEN
 ```
 
-## What #119 gives the controller
+## Exact post-#122 finite state
 
-The current finite obstruction is no longer merely
+A hypothetical off-line zero is reduced to one global-first-bad finite state carrying:
 
-```text
-negative eigenmode -> Schur identity.
-```
+- a negative shift `lam<0`;
+- predecessor nonnegativity;
+- canonical `V=W⊕S` with one-dimensional shell;
+- canonical cubic shell vector `c!=0`;
+- safe shifted predecessor resolvent `R_lam`;
+- exact quotient scalar `F(lam)`;
+- explicit Schur scalar `S(lam)`;
+- exact real bridge `F(lam)=S(lam)/<c,c>`;
+- exact root/eigenmode equivalence;
+- theorem-backed shifted metric/resolvent bounds;
+- the first denominator-free metric restriction at the root;
+- pointwise classification on `ker A`:
 
-For each safe negative shift `lam<0`, the repository constructs a canonical trial vector and residual and proves
+  ```text
+  Az=0 -> (<z,Bc>=0 <-> Tz=0).
+  ```
 
-```text
-cubicSecularScalar(lam)=0
-  <-> exists nonzero v with T v = lam v.
-```
-
-A hypothetical off-line zero therefore forces a global-first-bad state with an exact negative secular root.
-
-This is the new theorem frontier consumed by research-control routing.
-
-## Critical representation firewall
-
-`cubicSecularScalar` in PR #119 is the canonical cubic quotient coordinate of the full residual. The #113/#118 expression
-
-```text
-<Tc,c> - lam<c,c> - <R_lam Bc,Bc>
-```
-
-is not yet theorem-identified pointwise with the #119 scalar for all safe negative shifts.
-
-Therefore the next theorem action must establish the **metric bridge** before the controller treats sign or monotonicity of the explicit Schur expression as sign or monotonicity of `cubicSecularScalar`.
+This is the strongest current finite rigidity package. It is not root exclusion and not RH.
 
 ## Current execution priority
 
-1. **E3-B1 — projected symmetry / shifted coercivity.** Prove native symmetry of `intrinsicPredecessorBlock`, quantitative coercivity of `A-lam I`, and safe resolvent norm/positivity bounds.
-2. **E3-B2 — explicit secular bridge.** Prove the exact pointwise equality between the #119 quotient scalar and the normalized explicit Schur scalar, respecting Mathlib's complex-inner-product convention.
-3. **E4-A — parity nullity / zero resonance.** Theoremize the rank-at-most-one shifted-nullity consequence and determine how `Bc` interacts with `ker A`.
-4. **E3-B3 — quantitative predecessor-floor deformation bound.** Use a certified lower spectral floor `mu` to prove the theorem-backed one-step inequality if the exact hypotheses close.
-5. **E3-C — resolvent identity / monotonicity / root uniqueness.** Attempt only after the scalar bridge and zero-resonance behavior are under control.
-6. **Root exclusion.** Uniqueness is not absence; any contradiction must use additional CCM-specific shell/parity/KKT/N-flow structure.
+1. **E4-A2 — zero-shift/range endpoint.** Split on the exact E4-A1 dichotomy. In the decoupled branch prove `Bc ∈ range A` and build a solution-based zero-shift endpoint without `A^-1`. In the resonant branch theoremize the zero-eigenspace contribution to `R_lam Bc` and its effect on the secular scalar near zero.
+2. **E3-C — resolvent identity / monotonicity.** The representation barrier is closed. Prove a finite-dimensional shifted-resolvent identity and strict scalar monotonicity if justified; conclude at most one negative root, not absence.
+3. **E4-B — parity shifted-nullity.** Use rank/kernel algebra only; no unitary/interlacing assumptions through `D`.
+4. **E3-B3 — general lower-floor deformation theorem.** Generalize the #122 `mu=0` metric estimate to a certified floor `mu` and theoremize the one-step deformation inequality.
+5. **Root exclusion.** Combine endpoint/zero-resonance information with shell/parity/KKT/N-flow structure. Generic Schur systems admit negative roots, so a contradiction must use genuinely CCM-specific structure.
 
 The source-faithful `G1-B1B -> G1-final -> S-NEG -> G23` lane remains parallel.
 
-## Deformation-budget lane
+## Zero-resonance firewall after #122
 
-Control-v2 may continue to falsify the candidate route numerically using
-
-```text
-g_N = q_N-mu_N
-beta_N
-beta_N^2/g_N
-```
-
-but the diagnostic lane must follow the theorem lane's definitions and hypothesis boundaries.
-
-The expected theorem-backed composition is
+PR #122 does **not** prove `Bc ⟂ ker A`. It proves the exact equivalence
 
 ```text
-E3-B metric bridge
-  -> certified predecessor-floor resolvent estimate
-  -> d_N(g_N+d_N) <= beta_N^2
-  -> d_N <= beta_N^2/g_N only when g_N>0 is separately certified.
+Az=0 -> (<z,Bc>=0 <-> Tz=0)
 ```
 
-A finite prefix, fitted tail, local residual or observed decay is never an infinite-tail certificate. Decision-bearing reduced calculations still require the hardened Control-v2 assurance rules.
+and the quantified equivalence between vanishing of the coupling on the whole projected kernel and every projected-kernel vector being a genuine successor zero mode.
 
-## Zero-resonance first break
-
-Global-first-bad gives `A>=0`, not `A>0`. Consequently a zero eigenvalue of the predecessor block can make the shifted resolvent singular near zero.
-
-The cheapest high-information structural tests are:
-
-```text
-ker A != 0 ?
-Bc ⟂ ker A ?
-```
-
-and the parity comparison
-
-```text
-|nullity(T_even-zI)-nullity(T_odd-zI)| <= 1 ?
-```
-
-The rank-at-most-one parity defect makes the last statement a natural algebraic target, but all three remain OPEN until theoremized.
+Therefore the controller must route both branches until one is excluded by theorem.
 
 ## Control-v2 authority
 
-`research/RHRC/control_v2/` remains additive research-control infrastructure only.
+`research/RHRC/control_v2/` remains additive research-control infrastructure only. It may rank actions, select first-break falsifiers, record archaeology/replay evidence and build fail-closed deformation-budget certificates. It may not write theorem authority, promote claims, change `BOUNDARY.json` terminal status or emit RH.
 
-It may:
-- rank research actions;
-- select first-break falsifiers;
-- record archaeology/replay evidence;
-- build fail-closed deformation-budget certificates.
-
-It may not:
-- write theorem authority;
-- change claim registry status by inference;
-- change `BOUNDARY.json` terminal status;
-- convert numerical or historical clues into proof.
-
-The merged control-plane anchor is #117 because #118/#119 changed theorem files but not Control-v2 semantics.
+The control-plane anchor remains #117 because #118/#119/#121/#122 changed theorem state but not controller semantics.
 
 ## Permanent firewalls
 
 - RH remains OPEN.
 - shell nonzero is not shell invariance or pure-shell behavior.
 - D is algebraic, not unitary/isometric.
-- exact cubic factorization is rank at most one, not exact rank one.
+- exact cubic factorization is rank at most one, not automatically exact rank one.
 - predecessor nonnegative is not a positive spectral gap.
-- use `(A-lam I)^(-1)` only for `lam<0`; no `A^-1` at zero.
-- #119 root equivalence is not root exclusion.
-- quotient secular scalar is not yet pointwise identified with the explicit Schur expression.
+- `ker A` is the projected successor predecessor-block kernel, not the predecessor-size compressed-operator kernel.
+- no `A^-1` at zero.
+- E4-A1 classification is not decoupling.
+- #122 metric control is not root exclusion.
 - root uniqueness, if proved, is not positivity.
 - no finite/fitted deformation tail is a proof of complete future control.
-- no source-normalization, promoted-binding, finite-to-infinite or RH change follows from #118/#119.
+- no source-normalization, promoted-binding, finite-to-infinite or RH change follows from #121/#122.
 
 ## Current research records
 
 - `CURRENT_RESEARCH_PLAN.md` — execution order and gates.
-- `RESEARCH_LEADS_POST_119_DELTA.md` — current post-green theorem implications and falsification targets.
+- `RESEARCH_LEADS_POST_122_DELTA.md` — current post-green theorem implications and falsification targets.
 - `RESEARCH_LEADS.md` — accumulated lead ledger / historical option memory.
 - `OBSTRUCTION_LEDGER.md` — reusable blockers and claim firewalls.
 - `DEAD_ROUTES.md` — route failures requiring changed-premise justification before revival.

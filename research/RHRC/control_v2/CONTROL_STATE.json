@@ -3,9 +3,9 @@
   "boundary_id": "B0_RH_2026_08_20",
   "terminal_claim": "RH_OPEN",
   "merged_theorem_anchor": {
-    "pr": 119,
-    "merge_commit": "d4175d2bb305e62863f593824b3f40e921a46ee6",
-    "tree": "1985472ac470822af279044261fa365fb9bb5535",
+    "pr": 122,
+    "merge_commit": "b2d1210902d430f3cdd3c24c2961ab843469b5d6",
+    "tree": "db51419fb7cc8b2e3dbe5cf2e770390086db9862",
     "status": "MERGED_GREEN_THEOREM_STATE"
   },
   "merged_control_anchor": {
@@ -15,5 +15,5 @@
     "status": "MERGED_GREEN_CONTROL_STATE"
   },
   "candidate_branch": null,
-  "control_note": "PR #119 is the merged theorem anchor: exact canonical negative secular root iff negative-shift eigenmode. PR #117 remains the latest merged Control-v2 anchor because #118/#119 changed theorem files but not control semantics. Current theorem frontier is E3-B projected metric/resolvent control plus the explicit secular bridge, with E4 zero-resonance/nullity in parallel. Control v2 has no theorem/claim authority. RH remains OPEN."
+  "control_note": "PR #122 is the merged theorem anchor: projected predecessor symmetry/coercivity, negative-shift resolvent metric control, the real unconjugated exact secular bridge, the first root metric bound, and E4-A1 zero-resonance cubic-coupling classification are proved. PR #117 remains the latest merged Control-v2 anchor because #118/#119/#121/#122 changed theorem state but not control semantics. Current theorem frontier is E4-A2 zero-shift/range-endpoint classification, with E3-C monotonicity and E4-B parity shifted-nullity in parallel. Control v2 has no theorem/claim authority. RH remains OPEN."
 }
