@@ -113,29 +113,38 @@ theorem cubicZeroShiftShellResponseScalar_smul_cubic_eq
         (cubicZeroShiftTrialVector p L N x₀) := by
   let y := parityCompressedCanonical p L (N + 1)
     (cubicZeroShiftTrialVector p L N x₀)
-  let s := intrinsicShellPart p N y
   have hcoordShell :=
-    intrinsicCubicShellCoordinate_smul_cubic_eq p N hN s
+    intrinsicCubicShellCoordinate_smul_cubic_eq
+      p N hN (intrinsicShellPart p N y)
   have hcoordCarrier :
-      intrinsicCubicShellCoordinate p N s •
+      intrinsicCubicShellCoordinate p N (intrinsicShellPart p N y) •
           (intrinsicCubicShellPart p N :
             euclideanParityBoundaryFlatSubspace p (N + 1)) =
-        (s : euclideanParityBoundaryFlatSubspace p (N + 1)) := by
+        ((intrinsicShellPart p N y : intrinsicParitySuccShell p N) :
+          euclideanParityBoundaryFlatSubspace p (N + 1)) := by
     have h := congrArg
       (fun t : intrinsicParitySuccShell p N =>
         (t : euclideanParityBoundaryFlatSubspace p (N + 1)))
       hcoordShell
-    simpa using h
+    change
+      intrinsicCubicShellCoordinate p N (intrinsicShellPart p N y) •
+          (intrinsicCubicShellPart p N :
+            euclideanParityBoundaryFlatSubspace p (N + 1)) =
+        ((intrinsicShellPart p N y : intrinsicParitySuccShell p N) :
+          euclideanParityBoundaryFlatSubspace p (N + 1)) at h
+    exact h
   have hy :
-      y = (s : euclideanParityBoundaryFlatSubspace p (N + 1)) := by
-    simpa [y, s] using
+      y =
+        ((intrinsicShellPart p N y : intrinsicParitySuccShell p N) :
+          euclideanParityBoundaryFlatSubspace p (N + 1)) := by
+    simpa [y] using
       parityCompressedCanonical_cubicZeroShiftTrialVector_eq_shellPart
         p L N x₀ hx₀
   change
     intrinsicCubicShellCoordinate p N (intrinsicShellPart p N y) •
         (intrinsicCubicShellPart p N :
           euclideanParityBoundaryFlatSubspace p (N + 1)) = y
-  simpa [s] using hcoordCarrier.trans hy.symm
+  exact hcoordCarrier.trans hy.symm
 
 /-- The #125 zero-shift Schur endpoint is exactly the canonical one-dimensional
 shell response, with the first-slot conjugation required by the complex inner
