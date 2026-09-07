@@ -1,17 +1,49 @@
 {
   "schema_version": "RHRC-control-actions-1.1",
-  "current_frontier": "FIRST_BAD_RIGIDITY_E4_A2",
+  "current_frontier": "FIRST_BAD_RIGIDITY_E4_A3",
   "open_obligations": [
-    "E4_A2_ZERO_SHIFT_RANGE_ENDPOINT",
-    "E4_A2_RESONANT_RESOLVENT",
-    "E3_C_RESOLVENT_MONOTONICITY",
+    "E4_A3_ZERO_SHIFT_SHELL_RESPONSE",
+    "E4_A3_RESONANT_POLE_DECOMPOSITION",
+    "E4_A3_BRANCH_RIGIDITY",
     "E4_B_PARITY_SHIFTED_NULLITY",
+    "E3_C_RESOLVENT_MONOTONICITY",
     "E3_B3_PREDECESSOR_FLOOR_DEFORMATION",
     "NEGATIVE_ROOT_EXCLUSION",
     "DEFORMATION_BUDGET_PAPER_TEST"
   ],
   "actions": {
-    "E4_A2_ZERO_SHIFT_RANGE_ENDPOINT": {
+    "E4_A3_ZERO_SHIFT_SHELL_RESPONSE": {
+      "kind": "THEOREM_ATTEMPT",
+      "concept_id": "cubic_normalized_schur",
+      "retro_search_required": true,
+      "first_break_required": true,
+      "decision_commutation_required": false,
+      "horizon_required_for_tail_claim": false,
+      "dead_route_matches": [],
+      "surviving_objections": [
+        "PR #125 proves only that the predecessor coordinate of T u0 vanishes; the exact shell coefficient is not separately theoremized",
+        "T u0 in the one-dimensional shell would not by itself make u0 an eigenvector",
+        "shell invariance of the full compressed operator remains unproved"
+      ],
+      "score_inputs": {
+        "cost": 1.2,
+        "information_gain": 5.0,
+        "falsification_value": 4.8,
+        "closure_value": 5.0,
+        "residual_risk": 0.8,
+        "dependency_debt": 0.4
+      },
+      "first_breaks": [
+        {
+          "id": "E4A3-SHELL-FB-01",
+          "statement": "the proved zero predecessor coordinate of T u0 does not yield a repository-usable canonical shell-response coefficient and exact relation to the zero-shift endpoint",
+          "test_id": "prove_zero_shift_shell_response_coefficient",
+          "estimated_cost": 0.8,
+          "decisive_if_failed": true
+        }
+      ]
+    },
+    "E4_A3_RESONANT_POLE_DECOMPOSITION": {
       "kind": "THEOREM_ATTEMPT",
       "concept_id": "parity_resonance",
       "retro_search_required": true,
@@ -20,37 +52,29 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "PR #122 classifies coupling on ker A but does not prove that the coupling vanishes",
-        "A may have nontrivial kernel, so A^-1 at zero remains forbidden",
-        "the zero-shift scalar must be independent of the chosen solution modulo ker A",
-        "ker A is the projected successor predecessor-block kernel, not the predecessor-size compressed-operator kernel"
+        "PR #124 proves an exact resonant identity and lower bound but not the full kernel/range decomposition of R_lam b",
+        "the pole decomposition must use the projected successor predecessor block ker A and may not substitute the predecessor-size compressed spectrum",
+        "an exact pole may classify resonance without excluding it"
       ],
       "score_inputs": {
         "cost": 1.5,
         "information_gain": 5.0,
-        "falsification_value": 5.0,
-        "closure_value": 5.0,
+        "falsification_value": 4.8,
+        "closure_value": 4.8,
         "residual_risk": 1.0,
         "dependency_debt": 0.5
       },
       "first_breaks": [
         {
-          "id": "E4A2-RANGE-FB-01",
-          "statement": "kernel-orthogonality of the canonical coupling does not yield a repository-usable range witness for the projected predecessor block",
-          "test_id": "prove_kernel_orthogonal_coupling_in_predecessor_range",
-          "estimated_cost": 0.8,
-          "decisive_if_failed": true
-        },
-        {
-          "id": "E4A2-RANGE-FB-02",
-          "statement": "the proposed zero-shift secular scalar depends on the chosen solution Ax=b",
-          "test_id": "prove_zero_shift_solution_independence",
-          "estimated_cost": 0.7,
+          "id": "E4A3-POLE-FB-01",
+          "statement": "the canonical ker A plus range A decomposition does not yield an exact algebraic 1 over minus lam kernel contribution to the shifted resolvent",
+          "test_id": "prove_exact_resonant_kernel_pole_decomposition",
+          "estimated_cost": 0.9,
           "decisive_if_failed": true
         }
       ]
     },
-    "E4_A2_RESONANT_RESOLVENT": {
+    "E4_A3_BRANCH_RIGIDITY": {
       "kind": "THEOREM_ATTEMPT",
       "concept_id": "parity_resonance",
       "retro_search_required": true,
@@ -59,56 +83,26 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "a nonzero kernel coupling may force rather than exclude a negative secular root",
-        "near-zero blowup must be theoremized from the exact finite operator rather than asserted from heuristic spectral language",
-        "the project must not identify projected ker A with a predecessor-size zero eigenspace"
+        "generic Hermitian block systems admit a nonnegative predecessor block with a negative zero-shift Schur complement",
+        "generic zero resonance can create negative spectrum rather than contradict it",
+        "branch exclusion must use CCM-specific parity, KKT, cubic or N-flow structure rather than generic Schur algebra",
+        "the regular and resonant branches may require different contradiction mechanisms"
       ],
       "score_inputs": {
-        "cost": 1.7,
+        "cost": 2.8,
         "information_gain": 5.0,
         "falsification_value": 5.0,
-        "closure_value": 4.8,
-        "residual_risk": 1.2,
-        "dependency_debt": 0.7
+        "closure_value": 5.0,
+        "residual_risk": 2.8,
+        "dependency_debt": 1.4
       },
       "first_breaks": [
         {
-          "id": "E4A2-RES-FB-01",
-          "statement": "a nonzero cubic coupling on ker A does not yield a sign-definite or quantitatively useful zero-eigenspace contribution to the shifted resolvent quadratic value",
-          "test_id": "prove_resonant_kernel_resolvent_lower_bound",
-          "estimated_cost": 1.1,
-          "decisive_if_failed": false
-        }
-      ]
-    },
-    "E3_C_RESOLVENT_MONOTONICITY": {
-      "kind": "THEOREM_ATTEMPT",
-      "concept_id": "shifted_coercivity",
-      "retro_search_required": true,
-      "first_break_required": true,
-      "decision_commutation_required": false,
-      "horizon_required_for_tail_claim": false,
-      "dead_route_matches": [],
-      "surviving_objections": [
-        "PR #122 removes the scalar representation barrier but does not prove monotonicity",
-        "root uniqueness is weaker than root exclusion",
-        "zero resonance controls the endpoint behavior even if monotonicity holds"
-      ],
-      "score_inputs": {
-        "cost": 2.0,
-        "information_gain": 4.5,
-        "falsification_value": 4.5,
-        "closure_value": 4.0,
-        "residual_risk": 1.5,
-        "dependency_debt": 0.8
-      },
-      "first_breaks": [
-        {
-          "id": "E3C-FB-01",
-          "statement": "the finite-dimensional shifted resolvent identity does not yield strict monotonicity of the exact real explicit secular scalar on the safe negative axis",
-          "test_id": "prove_real_secular_strict_monotonicity",
-          "estimated_cost": 1.2,
-          "decisive_if_failed": false
+          "id": "E4A3-RIGIDITY-FB-01",
+          "statement": "the full post-125 CCM constraints still admit a finite Hermitian countermodel with the same strict regular endpoint or resonant negative-root mechanism",
+          "test_id": "construct_or_exclude_post125_branch_countermodel",
+          "estimated_cost": 1.5,
+          "decisive_if_failed": true
         }
       ]
     },
@@ -127,9 +121,9 @@
       ],
       "score_inputs": {
         "cost": 1.8,
-        "information_gain": 4.2,
-        "falsification_value": 4.2,
-        "closure_value": 3.8,
+        "information_gain": 4.5,
+        "falsification_value": 4.5,
+        "closure_value": 4.2,
         "residual_risk": 1.4,
         "dependency_debt": 0.8
       },
@@ -143,6 +137,37 @@
         }
       ]
     },
+    "E3_C_RESOLVENT_MONOTONICITY": {
+      "kind": "THEOREM_ATTEMPT",
+      "concept_id": "shifted_coercivity",
+      "retro_search_required": true,
+      "first_break_required": true,
+      "decision_commutation_required": false,
+      "horizon_required_for_tail_claim": false,
+      "dead_route_matches": [],
+      "surviving_objections": [
+        "strict monotonicity may yield only root uniqueness, while the off-line-zero endpoint already forces one negative root",
+        "root uniqueness is weaker than negative-root exclusion",
+        "zero resonance controls endpoint behavior even if monotonicity holds"
+      ],
+      "score_inputs": {
+        "cost": 2.0,
+        "information_gain": 4.0,
+        "falsification_value": 4.3,
+        "closure_value": 3.5,
+        "residual_risk": 1.5,
+        "dependency_debt": 0.8
+      },
+      "first_breaks": [
+        {
+          "id": "E3C-FB-01",
+          "statement": "the finite-dimensional shifted resolvent identity does not yield strict monotonicity of the exact real explicit secular scalar on the safe negative axis",
+          "test_id": "prove_real_secular_strict_monotonicity",
+          "estimated_cost": 1.2,
+          "decisive_if_failed": false
+        }
+      ]
+    },
     "E3_B3_PREDECESSOR_FLOOR_DEFORMATION": {
       "kind": "THEOREM_ATTEMPT",
       "concept_id": "deformation_budget",
@@ -152,15 +177,15 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "PR #122 proves only the first-bad mu=0 metric layer",
         "a strictly positive predecessor floor is not available from first-bad minimality alone",
-        "the shell gap g_N=q_N-mu_N may fail to stay positive"
+        "the shell gap g_N=q_N-mu_N may fail to stay positive",
+        "the theorem should not displace E4-A3 unless it supplies independent exclusion information"
       ],
       "score_inputs": {
         "cost": 2.0,
-        "information_gain": 4.5,
-        "falsification_value": 4.5,
-        "closure_value": 4.5,
+        "information_gain": 3.8,
+        "falsification_value": 4.3,
+        "closure_value": 3.8,
         "residual_risk": 1.5,
         "dependency_debt": 1.0
       },
@@ -184,8 +209,8 @@
       "dead_route_matches": [],
       "surviving_objections": [
         "generic Hermitian Schur systems can have negative roots",
-        "monotonicity or uniqueness is not absence",
-        "the E4-A2 endpoint/resonance branch must supply genuinely CCM-specific information",
+        "PR #125 proves a negative regular endpoint rather than excluding it",
+        "PR #124 proves quantitative resonance rather than excluding it",
         "CCM-specific shell/parity/KKT/N-flow structure must supply the contradiction"
       ],
       "score_inputs": {
@@ -199,8 +224,8 @@
       "first_breaks": [
         {
           "id": "NRE-FB-01",
-          "statement": "the accumulated post-#122 CCM constraints still admit a finite model with a negative explicit secular root",
-          "test_id": "construct_or_exclude_post122_constrained_block_countermodel",
+          "statement": "the accumulated post-125 CCM constraints still admit a finite model with a negative explicit secular root",
+          "test_id": "construct_or_exclude_post125_constrained_block_countermodel",
           "estimated_cost": 2.0,
           "decisive_if_failed": true
         }
@@ -219,13 +244,13 @@
         "beta_N decay is unproved",
         "summable infinite-tail majorant is unproved",
         "all-L certification / controlled L-dependence is unproved",
-        "diagnostic quantities must remain aligned with the theorem-backed #122 metric definitions and any future E3-B3 generalization"
+        "diagnostic quantities must remain aligned with theorem-backed metric definitions and any future E3-B3 generalization"
       ],
       "score_inputs": {
         "cost": 1.0,
-        "information_gain": 5.0,
+        "information_gain": 4.5,
         "falsification_value": 5.0,
-        "closure_value": 4.0,
+        "closure_value": 3.5,
         "residual_risk": 2.0,
         "dependency_debt": 1.0
       },
