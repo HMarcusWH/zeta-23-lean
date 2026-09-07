@@ -96,6 +96,7 @@ theorem parityCompressedCanonical_cubicZeroShiftTrialVector_mem_shell
     simpa [y] using
       parityCompressedCanonical_cubicZeroShiftTrialVector_eq_shellPart
         p L N x₀ hx₀
+  change y ∈ intrinsicParitySuccShell p N
   rw [hy]
   exact (intrinsicShellPart p N y).property
 
@@ -213,7 +214,8 @@ theorem cubicZeroShiftSchurEndpoint_eq_star_shellResponse_mul_inner
     _ = star sigma *
         inner ℂ
           (c : euclideanParityBoundaryFlatSubspace p (N + 1)) u := by
-      rw [inner_smul_left]
+      exact inner_smul_left
+        (c : euclideanParityBoundaryFlatSubspace p (N + 1)) u sigma
     _ = star sigma *
         inner ℂ
           (c : euclideanParityBoundaryFlatSubspace p (N + 1))
