@@ -100,9 +100,7 @@ theorem inner_intrinsicPredecessorBlock_kernel_cubicCoupling_eq
       rfl
     change
       inner ℂ
-          (z : euclideanParityBoundaryFlatSubspace p (N + 1))
-          (parityCompressedCanonical p L (N + 1)
-            (c : euclideanParityBoundaryFlatSubspace p (N + 1))) =
+          (z : euclideanParityBoundaryFlatSubspace p (N + 1)) yc =
         inner ℂ
           (z : euclideanParityBoundaryFlatSubspace p (N + 1))
           (b : euclideanParityBoundaryFlatSubspace p (N + 1))
@@ -178,6 +176,14 @@ theorem inner_cubicCoupling_eq_zero_iff_successor_zero_of_intrinsicPredecessorBl
     inner_intrinsicPredecessorBlock_kernel_cubicCoupling_eq
       p L N hN z hz
   dsimp at hidentity
+  change
+    inner ℂ
+        (z : euclideanParityBoundaryFlatSubspace p (N + 1))
+        (b : euclideanParityBoundaryFlatSubspace p (N + 1)) =
+      star (intrinsicCubicQuotientCoordinate p N y) *
+        inner ℂ
+          (c : euclideanParityBoundaryFlatSubspace p (N + 1))
+          (c : euclideanParityBoundaryFlatSubspace p (N + 1)) at hidentity
   have hccne :
       inner ℂ
           (c : euclideanParityBoundaryFlatSubspace p (N + 1))
@@ -185,13 +191,16 @@ theorem inner_cubicCoupling_eq_zero_iff_successor_zero_of_intrinsicPredecessorBl
     simpa [c] using inner_intrinsicCubicShellPart_self_ne_zero p N hN
   constructor
   · intro hzero
+    change
+      inner ℂ
+          (z : euclideanParityBoundaryFlatSubspace p (N + 1))
+          (b : euclideanParityBoundaryFlatSubspace p (N + 1)) = 0 at hzero
     have hprod :
         star (intrinsicCubicQuotientCoordinate p N y) *
           inner ℂ
             (c : euclideanParityBoundaryFlatSubspace p (N + 1))
-            (c : euclideanParityBoundaryFlatSubspace p (N + 1)) = 0 := by
-      rw [← hidentity]
-      simpa [b, c] using hzero
+            (c : euclideanParityBoundaryFlatSubspace p (N + 1)) = 0 :=
+      hidentity.symm.trans hzero
     have hstarq : star (intrinsicCubicQuotientCoordinate p N y) = 0 :=
       (mul_eq_zero.mp hprod).resolve_right hccne
     have hq : intrinsicCubicQuotientCoordinate p N y = 0 := by
@@ -201,56 +210,37 @@ theorem inner_cubicCoupling_eq_zero_iff_successor_zero_of_intrinsicPredecessorBl
       simpa [intrinsicCubicQuotientCoordinate] using hq
     have hs0 : intrinsicShellPart p N y = 0 :=
       (intrinsicCubicShellCoordinate_eq_zero_iff p N hN).mp hscoord
-    have hyShell :=
-      parityCompressedCanonical_eq_shellPart_of_intrinsicPredecessorBlock_eq_zero
-        p L N z hz
+    have hyShell :
+        y =
+          ((intrinsicShellPart p N y : intrinsicParitySuccShell p N) :
+            euclideanParityBoundaryFlatSubspace p (N + 1)) := by
+      simpa only [y] using
+        parityCompressedCanonical_eq_shellPart_of_intrinsicPredecessorBlock_eq_zero
+          p L N z hz
     change y = 0
-    simpa [y, hs0] using hyShell
+    calc
+      y =
+          ((intrinsicShellPart p N y : intrinsicParitySuccShell p N) :
+            euclideanParityBoundaryFlatSubspace p (N + 1)) := hyShell
+      _ = 0 := by simp [hs0]
   · intro hy0
-    have hsym :
-        inner ℂ y
-            (c : euclideanParityBoundaryFlatSubspace p (N + 1)) =
-          inner ℂ
-            (z : euclideanParityBoundaryFlatSubspace p (N + 1))
-            (parityCompressedCanonical p L (N + 1)
-              (c : euclideanParityBoundaryFlatSubspace p (N + 1))) := by
-      exact parityCompressedCanonical_isSymmetric p L (N + 1)
-        (z : euclideanParityBoundaryFlatSubspace p (N + 1))
-        (c : euclideanParityBoundaryFlatSubspace p (N + 1))
-    have hBT :
-        inner ℂ
-            (z : euclideanParityBoundaryFlatSubspace p (N + 1))
-            (parityCompressedCanonical p L (N + 1)
-              (c : euclideanParityBoundaryFlatSubspace p (N + 1))) =
-          inner ℂ
-            (z : euclideanParityBoundaryFlatSubspace p (N + 1))
-            (b : euclideanParityBoundaryFlatSubspace p (N + 1)) := by
-      let yc := parityCompressedCanonical p L (N + 1)
-        (c : euclideanParityBoundaryFlatSubspace p (N + 1))
-      have hyrec := intrinsicPredecessorPart_add_shellPart p N yc
-      have hort := inner_intrinsicPredecessor_shell_eq_zero
-        p N z (intrinsicShellPart p N yc)
-      change
-        inner ℂ
-            (z : euclideanParityBoundaryFlatSubspace p (N + 1)) yc =
-          inner ℂ
-            (z : euclideanParityBoundaryFlatSubspace p (N + 1))
-            (b : euclideanParityBoundaryFlatSubspace p (N + 1))
-      rw [← hyrec, inner_add_right, hort, add_zero]
-      rfl
-    have hcouple :
-        inner ℂ
-            (z : euclideanParityBoundaryFlatSubspace p (N + 1))
-            (b : euclideanParityBoundaryFlatSubspace p (N + 1)) =
-          inner ℂ y
-            (c : euclideanParityBoundaryFlatSubspace p (N + 1)) :=
-      (hsym.trans hBT).symm
+    have hy0' : y = 0 := by
+      simpa only [y] using hy0
     change
       inner ℂ
           (z : euclideanParityBoundaryFlatSubspace p (N + 1))
           (b : euclideanParityBoundaryFlatSubspace p (N + 1)) = 0
-    rw [hcouple, hy0]
-    simp
+    calc
+      inner ℂ
+          (z : euclideanParityBoundaryFlatSubspace p (N + 1))
+          (b : euclideanParityBoundaryFlatSubspace p (N + 1)) =
+        star (intrinsicCubicQuotientCoordinate p N y) *
+          inner ℂ
+            (c : euclideanParityBoundaryFlatSubspace p (N + 1))
+            (c : euclideanParityBoundaryFlatSubspace p (N + 1)) := hidentity
+      _ = 0 := by
+        rw [hy0']
+        simp
 
 /-- Quantified E4-A1 classification. The canonical cubic coupling vanishes on
 the entire kernel of the projected predecessor block if and only if every such
