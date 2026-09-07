@@ -315,7 +315,7 @@ theorem cubicDefectFunctional_eq_evenCompressionResidual_a2
   rw [inner_smul_right, inner_smul_right] at hcoeff
   apply Eq.symm
   apply (mul_right_cancel₀ hgg)
-  exact hcoeff.symm
+  exact hcoeff
 
 /-- Main source-explicit endpoint: the canonical cubic parity-defect functional
 is exactly the actual canonical-source quadratic normal moment. -/
