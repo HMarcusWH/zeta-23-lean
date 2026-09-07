@@ -5,12 +5,12 @@
 ## Authority snapshot
 
 ```text
-live main after PR #122 = b2d1210902d430f3cdd3c24c2961ab843469b5d6
-live main tree = db51419fb7cc8b2e3dbe5cf2e770390086db9862
+live main after PR #125 = 615437fd5854b4473471d9826b4d4787b2e8e42f
+live main tree = 245bba07addba0c5ad85fcf1b1b4218b4432c427
 
-theorem-state anchor = PR #122 merge b2d1210902d430f3cdd3c24c2961ab843469b5d6
-validated theorem head = 9c8154e3ea7a5762f8e65d508dc68bb9246db869
-E3-B1 secular metric control + E4-A1 zero-resonance coupling classification = PROVED / MERGED
+theorem-state anchor = PR #125 merge 615437fd5854b4473471d9826b4d4787b2e8e42f
+validated theorem head = 533beb4a42fc96cd43a97e071c6e07e3178872b6
+E4-A2 kernel/range dichotomy + strict regular endpoint = PROVED / MERGED
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
@@ -19,7 +19,7 @@ Control v2 / FFBBP v1.6 hardened state = MERGED GREEN CONTROL INFRASTRUCTURE
 RH = OPEN
 ```
 
-Live GitHub head + Lean/compiler/CI remain authoritative. PRs #118/#119/#121/#122 advance theorem authority only; the latest merged Control-v2 change remains #117.
+Live GitHub head + Lean/compiler/CI remain authoritative. PRs #118/#119/#121/#122/#124/#125 advance theorem authority only; the latest merged Control-v2 semantic change remains #117.
 
 ## Recent theorem packages
 
@@ -40,7 +40,9 @@ Live GitHub head + Lean/compiler/CI remain authoritative. PRs #118/#119/#121/#12
 #118 canonical cubic quotient coordinate + normalized Schur
 #119 exact canonical quotient-secular root/eigenmode equivalence
 #121 exact explicit cubic Schur scalar bridge
-#122 projected metric/resolvent control + E4-A1 zero-resonance coupling classification
+#122 projected metric/resolvent control + E4-A1 zero-resonance classification
+#124 zero-shift kernel/range dichotomy + resonant identity/bound
+#125 canonical zero-shift Schur endpoint + complete square + Re S0<0
 ```
 
 ## Current frontier
@@ -53,10 +55,12 @@ FIRST-BAD-RIGIDITY-E
   E3-B2 exact explicit Schur bridge                                 PROVED / #121
   E3-B1 projected symmetry/coercivity/resolvent metric control      PROVED / #122
   E4-A1 ker(A) cubic-coupling classification                        PROVED / #122
+  E4-A2 kernel/range zero-shift dichotomy                           PROVED / #124
+  E4-A2 strict canonical zero-shift endpoint                        PROVED / #125
 
-  E4-A2 zero-shift/range-endpoint split                             NOW
-  E3-C  resolvent identity / secular monotonicity / root uniqueness PARALLEL
+  E4-A3 zero-shift shell response / resonant pole / branch rigidity NOW
   E4-B  parity shifted-nullity from rank-at-most-one algebra        PARALLEL
+  E3-C  resolvent identity / secular monotonicity / root uniqueness PARALLEL
   E3-B3 general predecessor-floor deformation theorem               PARALLEL / OPEN
 
 TARGET
@@ -65,81 +69,69 @@ TARGET
   RH                                                                 OPEN
 ```
 
-## What #121/#122 changed
+## E4-A2 settlement
 
-#121 proved, for the canonical negative-shift trial problem,
-
-```text
-F(lam) = star(S(lam)) / <c,c>
-```
-
-where `F` is the exact quotient-coordinate root detector and
+For `A=P_W T|_W`, `c=intrinsicCubicShellPart`, `b=Bc`, #124 proves
 
 ```text
-S(lam)=<Tc,c>-lam<c,c>-<R_lam Bc,Bc>.
+range A ⟂ ker A
+W = ker A ⊕ range A
+b ⟂ ker A -> b ∈ range A.
 ```
 
-#122 then theoremized projected predecessor symmetry, negative-shift coercivity, resolvent symmetry/norm/quadratic bounds, nonnegative real resolvent quadratic values, and realness of `S`. Thus on the safe negative axis the exact bridge becomes
+In the decoupled branch there exists `x0` with `Ax0=b`, and `<x,b>` is identical for every solution `Ax=b`. In the resonant branch #124 proves
 
 ```text
-F(lam)=S(lam)/<c,c>.
+<z,b> = (-lam)<z,R_lam b>
+|<z,b>|^2 <= (-lam)||z||^2 Re<R_lam b,b>.
 ```
 
-At a root #122 also proves the first denominator-free metric bound
+#125 defines the canonical zero-shift endpoint
 
 ```text
-0 <= Re(<Tc,c>-lam<c,c>)
-(-lam) * Re(<Tc,c>-lam<c,c>) <= ||Bc||^2.
+S0=<Tc,c>-<x0,b>
 ```
 
-## E4-A1 settlement
-
-For `A=P_W T|_W`, `c=intrinsicCubicShellPart`, `b=Bc`, #122 proves that if `Az=0` then the full successor image `Tz` lies in the one-dimensional shell and
+and the zero-shift trial vector `u0=-x0+c`. It proves zero predecessor residual for `T u0`, the exact identity `<T u0,u0>=S0`, the predecessor-fibre complete square, and at a safe negative secular root
 
 ```text
-<z,b> = star(kappa(Tz)) <c,c>.
+Re S0 < 0.
 ```
 
-Hence
-
-```text
-Az=0 -> (<z,b>=0 <-> Tz=0).
-```
-
-The quantified theorem says that `b` annihilates all of `ker A` iff every vector in `ker A` is already a genuine successor zero mode.
-
-This does **not** decide whether either side holds for the actual global-first-bad state.
+The actual global-first-bad state is therefore classified as a strictly negative regular endpoint or an exact kernel resonance. Neither branch is excluded.
 
 ## Highest-leverage next split
 
-### Decoupled branch
+### Zero-shift shell response
 
-If `b` annihilates `ker A`, use finite-dimensional symmetry to prove `b ∈ range A` and obtain a zero-shift witness `x₀` satisfying `A x₀=b`. This is the correct algebraic endpoint; do not introduce `A^-1` at zero.
+Use the proved zero predecessor coordinate of `T u0` and `V=W⊕S`, `dim_C S=1` to theoremize the exact canonical shell coefficient of `T u0`. Do not infer that `u0` is an eigenvector.
 
-### Resonant branch
+### Resonant pole decomposition
 
-If some `z∈ker A` has `<z,b>!=0`, #122 says that vector is not a successor zero mode. The next theorem should expose the corresponding zero-resonant contribution to the shifted resolvent/secular scalar near `lam=0-`.
+Use #124's `ker A ⊕ range A` algebra to decompose `b` and theoremize the exact `1/(-lam)` kernel component of `R_lam b`.
 
-### Parallel monotonicity
+### Branch rigidity
 
-The scalar representation is now real and exact, so E3-C can proceed. A monotonicity theorem may yield at most one negative root, but uniqueness remains strictly weaker than exclusion.
+Compose both mechanisms with parity rank-at-most-one structure, KKT/normal-space geometry, cubic quotient information, first-bad minimality and exact N-flow. Generic Hermitian block systems admit both a negative Schur endpoint and zero resonance, so a contradiction must use genuinely CCM-specific structure.
 
-## Small upstream cleanup opportunity
+### Parallel lanes
 
-`re_inner_shiftedIntrinsicPredecessorBlock_ge` currently carries `lam<0` although its quadratic comparison itself is algebraic from predecessor nonnegativity; negativity is needed later to turn `-lam` into a positive coercive floor. A future cleanup may split/generalize that theorem to reduce dependency debt. This is not required before E4-A2.
+E4-B shifted-nullity and E3-C monotonicity remain useful. Monotonicity can yield root uniqueness, but uniqueness remains strictly weaker than exclusion.
 
 ## Firewalls
 
 - RH remains OPEN.
 - `ker A` is the projected successor predecessor-block kernel, not the predecessor-size spectrum.
-- E4-A1 is a classification, not a decoupling theorem.
 - D is algebraic, not unitary/isometric.
 - no shell invariance is proved.
-- no `A^-1` at zero.
+- no `A^-1` at zero; #124/#125 deliberately use solution-space canonicity instead.
+- `Re S0<0` is not branch exclusion.
+- resonance is not automatically contradictory.
+- `T u0 ∈ S`, if proved, is not `T u0 ∈ span(u0)`.
 - monotonicity/uniqueness is not negative-root exclusion.
-- no source-normalization or machine claim-registry promotion follows from #121/#122.
+- no source-normalization or machine claim-registry promotion follows automatically from #124/#125.
 - positivity / finite-to-infinite closure / RH remain OPEN.
 
-Current research detail: `research/RHRC/RESEARCH_LEADS_POST_122_DELTA.md`.
+Current research detail: `research/RHRC/RESEARCH_LEADS_POST_125_DELTA.md`.
 
 **RH remains OPEN.**
