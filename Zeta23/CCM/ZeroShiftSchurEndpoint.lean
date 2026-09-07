@@ -68,11 +68,35 @@ theorem cubicZeroShiftSchurEndpoint_eq_of_preimages
       intrinsicShellToPredecessor p L N (intrinsicCubicShellPart p N)) :
     cubicZeroShiftSchurEndpoint p L N x =
       cubicZeroShiftSchurEndpoint p L N y := by
-  dsimp [cubicZeroShiftSchurEndpoint]
-  rw [inner_intrinsicPredecessorBlock_preimage_eq
-    p L N
-    (intrinsicShellToPredecessor p L N (intrinsicCubicShellPart p N))
-    x y hx hy]
+  let c := intrinsicCubicShellPart p N
+  let b := intrinsicShellToPredecessor p L N c
+  have hxy :
+      inner ℂ
+          (x : euclideanParityBoundaryFlatSubspace p (N + 1))
+          (b : euclideanParityBoundaryFlatSubspace p (N + 1)) =
+        inner ℂ
+          (y : euclideanParityBoundaryFlatSubspace p (N + 1))
+          (b : euclideanParityBoundaryFlatSubspace p (N + 1)) := by
+    exact inner_intrinsicPredecessorBlock_preimage_eq
+      p L N b x y
+      (by simpa [b, c] using hx)
+      (by simpa [b, c] using hy)
+  change
+    inner ℂ
+        (parityCompressedCanonical p L (N + 1)
+          (c : euclideanParityBoundaryFlatSubspace p (N + 1)))
+        (c : euclideanParityBoundaryFlatSubspace p (N + 1)) -
+      inner ℂ
+        (x : euclideanParityBoundaryFlatSubspace p (N + 1))
+        (b : euclideanParityBoundaryFlatSubspace p (N + 1)) =
+    inner ℂ
+        (parityCompressedCanonical p L (N + 1)
+          (c : euclideanParityBoundaryFlatSubspace p (N + 1)))
+        (c : euclideanParityBoundaryFlatSubspace p (N + 1)) -
+      inner ℂ
+        (y : euclideanParityBoundaryFlatSubspace p (N + 1))
+        (b : euclideanParityBoundaryFlatSubspace p (N + 1))
+  rw [hxy]
 
 /-- Canonical zero-shift trial vector in the decoupled branch. Its shell part is
 the canonical cubic shell vector, while its predecessor part is `-x₀`. -/
@@ -317,7 +341,15 @@ theorem inner_parityCompressedCanonical_cubicZeroShiftTrialVector_self
                 euclideanParityBoundaryFlatSubspace p (N + 1)) +
               (c : euclideanParityBoundaryFlatSubspace p (N + 1))))
           (c : euclideanParityBoundaryFlatSubspace p (N + 1)) = _
-      rw [map_add, map_neg, inner_add_left, inner_neg_left]
+      rw [map_add]
+      change
+        inner ℂ
+          (parityCompressedCanonical p L (N + 1)
+              (-(x₀ : euclideanParityBoundaryFlatSubspace p (N + 1))) +
+            parityCompressedCanonical p L (N + 1)
+              (c : euclideanParityBoundaryFlatSubspace p (N + 1)))
+          (c : euclideanParityBoundaryFlatSubspace p (N + 1)) = _
+      rw [map_neg, inner_add_left, inner_neg_left]
     _ = cubicZeroShiftSchurEndpoint p L N x₀ := by
       rw [hsym, hxb]
       change
@@ -401,6 +433,7 @@ theorem inner_cubicZeroShiftTrialVector_add_predecessor
             (d : euclideanParityBoundaryFlatSubspace p (N + 1)))
           (d : euclideanParityBoundaryFlatSubspace p (N + 1))) := by
             simp only [map_add, inner_add_left, inner_add_right]
+            abel
     _ = cubicZeroShiftSchurEndpoint p L N x₀ +
         inner ℂ
           ((intrinsicPredecessorBlock p L N d :
