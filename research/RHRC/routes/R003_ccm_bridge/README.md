@@ -1,15 +1,15 @@
 # R003 — CCM / finite Weil bridge
 
-Status: **ACTIVE. GLOBAL FIRST-BAD + EXACT REAL SECULAR METRIC/RESONANCE PACKAGE PROVED THROUGH PR #122; E4-A2 ZERO-SHIFT ENDPOINT CURRENT. RH OPEN.**
+Status: **ACTIVE. GLOBAL FIRST-BAD + EXACT ZERO-SHIFT ENDPOINT/RESONANCE DICHOTOMY PROVED THROUGH PR #125; E4-A3 BRANCH RIGIDITY CURRENT. RH OPEN.**
 
 ## Current authority split
 
 ```text
-theorem-state anchor = PR #122 merge b2d1210902d430f3cdd3c24c2961ab843469b5d6
-validated theorem head = 9c8154e3ea7a5762f8e65d508dc68bb9246db869
-theorem tree = db51419fb7cc8b2e3dbe5cf2e770390086db9862
-theorem-bearing merged through = PR #122
-E3-B1 metric control + E4-A1 zero-resonance coupling classification = PROVED / MERGED
+theorem-state anchor = PR #125 merge 615437fd5854b4473471d9826b4d4787b2e8e42f
+validated theorem head = 533beb4a42fc96cd43a97e071c6e07e3178872b6
+theorem tree = 245bba07addba0c5ad85fcf1b1b4218b4432c427
+theorem-bearing merged through = PR #125
+E4-A2 kernel/range zero-shift dichotomy + strict regular endpoint = PROVED / MERGED
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
@@ -40,10 +40,14 @@ FIRST-BAD-RIGIDITY-E3-A exact negative secular root iff eigenmode PROVED / #119
 FIRST-BAD-RIGIDITY-E3-B2 exact explicit Schur scalar bridge       PROVED / #121
 FIRST-BAD-RIGIDITY-E3-B1 projected metric/resolvent control       PROVED / #122
 FIRST-BAD-RIGIDITY-E4-A1 ker(A) cubic-coupling classification     PROVED / #122
-off-line zero -> common global-first-bad metric/resonance package PROVED / #122
+FIRST-BAD-RIGIDITY-E4-A2 kernel/range zero-shift dichotomy        PROVED / #124
+FIRST-BAD-RIGIDITY-E4-A2 exact resonant identity/lower bound      PROVED / #124
+FIRST-BAD-RIGIDITY-E4-A2 canonical endpoint + complete square     PROVED / #125
+FIRST-BAD-RIGIDITY-E4-A2 decoupled Re S0<0                       PROVED / #125
+off-line zero -> strict endpoint OR resonant first-bad package    PROVED / #125
 ```
 
-## Exact post-#122 first-bad state
+## Exact post-#125 first-bad state
 
 A hypothetical off-critical-line zeta zero forces one finite problem with:
 
@@ -52,135 +56,91 @@ A hypothetical off-critical-line zeta zero forces one finite problem with:
 - both predecessor parity sectors nonnegative;
 - a genuine negative parity-compressed eigenvalue `lam<0`;
 - intrinsic successor decomposition `V=W⊕S`, `dim_C S=1`;
-- canonical cubic shell vector `c=intrinsicCubicShellPart` with `c!=0`;
+- canonical cubic shell vector `c!=0`;
 - canonical quotient coordinate on `V/W`;
 - safe shifted predecessor inverse `R_lam=(A-lam I)^(-1)`;
-- canonical trial vector `u_lam=-R_lam Bc+c`;
-- exact quotient scalar `F(lam)` with root iff genuine eigenmode;
-- explicit Schur scalar
+- exact quotient and explicit real Schur scalar root;
+- exact E4-A1 coupling classification on `ker A`;
+- canonical decomposition `W=ker A⊕range A`;
+- one of two exact E4-A2 mechanisms:
 
   ```text
-  S(lam)=<Tc,c>-lam<c,c>-<R_lam Bc,Bc>;
-  ```
+  REGULAR:
+    Ax0=b
+    S0=<Tc,c>-<x0,b>
+    endpoint independent of x0
+    predecessorPart(Tu0)=0 for u0=-x0+c
+    exact complete square
+    Re S0<0
 
-- exact real pointwise identity
-
-  ```text
-  F(lam)=S(lam)/<c,c>;
-  ```
-
-- real/nonnegative resolvent quadratic value and denominator-free metric bounds;
-- at a root,
-
-  ```text
-  0 <= Re(<Tc,c>-lam<c,c>)
-  (-lam) Re(<Tc,c>-lam<c,c>) <= ||Bc||^2;
-  ```
-
-- exact E4-A1 kernel-coupling classification
-
-  ```text
-  Az=0 -> (<z,Bc>=0 <-> Tz=0).
+  RESONANT:
+    ∃z∈ker A, <z,b>!=0
+    <z,b>=(-lam)<z,R_lam b>
+    |<z,b>|^2 <= (-lam)||z||^2 Re<R_lam b,b>.
   ```
 
 This is a finite-dimensional rigidity package, not an RH proof.
 
-## E3-B settlement — explicit real secular metric
+## E4-A2 settlement
 
-**PROVED / #121-#122.**
+**PROVED / #124-#125.**
 
-PR #121 theoremizes the conjugated explicit scalar bridge. PR #122 supplies the projected predecessor symmetry, shifted coercivity, resolvent symmetry/positivity/bounds and realness needed to remove the conjugation in the safe negative-shift regime.
+The decoupled branch no longer needs `A^-1` at zero: #124 proves range membership, existence of a preimage and solution-independence of the quadratic coupling. #125 turns that invariant scalar into the actual zero-shift endpoint, proves the exact complete square and forces `Re S0<0` at the negative secular root.
 
-The exact #119 root detector and the explicit Schur scalar can now be analyzed as one real scalar object under the proved hypotheses.
+The resonant branch is not excluded. #124 already supplies an exact resolvent identity and denominator-free quantitative lower bound.
 
-## E4-A1 settlement — zero-resonance coupling
+## Current route state — E4-A3 branch rigidity
 
-**PROVED / #122.**
-
-For
-
-```text
-A=P_W T|_W,
-c=intrinsicCubicShellPart,
-b=Bc,
-```
-
-if `Az=0`, then `Tz` lies in the one-dimensional intrinsic shell and
-
-```text
-<z,b> = star(kappa(Tz)) <c,c>.
-```
-
-Therefore
-
-```text
-Az=0 -> (<z,b>=0 <-> Tz=0).
-```
-
-The quantified version says `b` annihilates the full projected kernel iff every projected-kernel vector is a genuine successor zero mode.
-
-### Semantic firewall
-
-This does not prove that `b` annihilates `ker A`. `ker A` is the kernel of the projected successor predecessor block, not the predecessor-size compressed operator.
-
-## Current route state — E4-A2 zero-shift endpoint
-
-### Branch A — decoupled kernel
+### A3a — zero-shift shell response
 
 **DERIVED / OPEN FORMALIZATION.**
 
-Assume the E4-A1 vanishing side:
+#125 proves
 
 ```text
-∀ z, Az=0 -> <z,b>=0.
+predecessorPart(Tu0)=0.
 ```
 
-Use finite-dimensional symmetry to prove
+Since `V=W⊕S`, theoremize `T u0∈S`; then use the canonical cubic shell coordinate and `dim_C S=1` to identify the exact one-dimensional response coefficient and its relation to `S0`.
 
-```text
-b ∈ range A,
-```
+**Firewall:** this does not by itself prove `u0` is an eigenvector.
 
-then choose `x0` with `A x0=b`. Build the zero-shift endpoint from this solution, proving independence of the chosen solution from the kernel ambiguity. Never introduce `A^-1` at zero.
-
-### Branch B — resonant kernel
+### A3b — exact resonant pole
 
 **LEAD / OPEN.**
 
-Assume there exists `z` with
+Use #124's `ker A⊕range A` split to decompose `b=bK+bR` and prove the exact kernel-pole contribution to the safe shifted resolvent. The target is an algebraic decomposition, not an asymptotic slogan.
 
-```text
-Az=0
-<z,b>!=0.
-```
+### A3c — branch rigidity
 
-PR #122 implies `Tz!=0` and that the image is a nonzero shell direction. The next theorem should isolate the corresponding `1/(-lam)` zero-eigenspace contribution to `R_lam b` and derive a useful sign/asymptotic restriction on `S(lam)` near zero.
+**OPEN.**
 
-This branch may force a negative secular root rather than exclude one; that possibility is itself valuable because it would classify which first-bad configurations remain admissible.
+Compose A3a/A3b with:
+
+- rank-at-most-one parity defect;
+- parity KKT / normal-space geometry;
+- canonical cubic quotient coordinate;
+- first-bad minimality and exact N-flow.
+
+Attempt to exclude one or both branches or to classify the surviving finite countermodels more tightly.
+
+## E4-B — parity shifted-nullity
+
+**OPEN / PARALLEL.**
+
+Use the existing algebraic D-equivalence and same-space parity defect with finrank <=1 to theoremize a shifted-nullity comparison. Do not import unitary interlacing through D.
 
 ## E3-C — monotonicity / root-count control
 
-**OPEN; now unblocked by the scalar representation.**
+**OPEN / PARALLEL.**
 
-Prove a finite-dimensional shifted-resolvent identity and derive strict monotonicity of the exact real explicit secular scalar if justified.
-
-Expected consequence:
-
-```text
-at most one negative root.
-```
+The exact root detector is a real explicit scalar on `lam<0`. A shifted-resolvent identity may yield strict monotonicity and at most one negative root.
 
 Permanent firewall:
 
 ```text
 at most one negative root != no negative root.
 ```
-
-## E4-B — parity shifted-nullity
-
-**OPEN / PARALLEL.**
-
-Use the existing algebraic D-equivalence and same-space parity defect with finrank <=1 to theoremize a shifted-nullity comparison. Do not import unitary interlacing through D; D is not theoremized as isometric.
 
 ## E3-B3 — general predecessor-floor theorem
 
@@ -193,7 +153,7 @@ mu ||w||^2 <= Re <Aw,w>,
 lam<mu,
 ```
 
-prove the denominator `mu-lam` resolvent estimate and derive the canonical one-step inequality
+prove the denominator `mu-lam` resolvent estimate and derive
 
 ```text
 d_N(g_N+d_N) <= beta_N^2.
@@ -203,13 +163,15 @@ The shortcut `d_N<=beta_N^2/g_N` requires separately proved `g_N>0`.
 
 ## Deformation-budget composition and falsification lane
 
-The theorem-backed metric ancestry is now
+The theorem-backed ancestry is now
 
 ```text
 #119 exact root detector
   -> #121 explicit Schur bridge
   -> #122 real metric/resolvent control
-  -> E3-B3 general lower-floor theorem if needed.
+  -> #124 zero-shift/resonance split
+  -> #125 strict regular endpoint
+  -> E4-A3 branch rigidity.
 ```
 
 The cheap diagnostic order remains
@@ -240,11 +202,13 @@ Do not conflate source interface geometry with source negativity.
 - Bombieri zero-height truncations are distinct from deterministic CCM Fourier-mode truncations;
 - boundary-flat legality is required for the hard-window C² bridge;
 - `ker A` is not the predecessor-size compressed-operator kernel;
-- E4-A1 classification does not imply kernel decoupling;
 - no `A^-1` at zero;
-- #122 metric control and any future uniqueness theorem are not negative-root exclusion;
+- `Re S0<0` is not branch exclusion;
+- resonance is not automatically contradictory;
+- `T u0∈S` would not by itself imply an eigenvector;
+- root uniqueness is not root exclusion;
 - RH remains OPEN.
 
-Detailed current implications and falsification plan: `../../RESEARCH_LEADS_POST_122_DELTA.md`.
+Detailed current implications and falsification plan: `../../RESEARCH_LEADS_POST_125_DELTA.md`.
 
 **RH remains OPEN.**
