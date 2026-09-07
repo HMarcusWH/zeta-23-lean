@@ -291,8 +291,7 @@ def intrinsicPredecessorRangeEquiv
   have hinj : Function.Injective AR :=
     intrinsicPredecessorRangeBlock_injective p L N
   have hsurj : Function.Surjective AR :=
-    (LinearMap.injective_iff_surjective_of_finrank_eq_finrank
-      (f := AR) rfl).mp hinj
+    LinearMap.injective_iff_surjective.mp hinj
   exact LinearEquiv.ofBijective AR ⟨hinj, hsurj⟩
 
 /-- Canonical zero-shift inverse, defined only on `range A`. -/
@@ -363,7 +362,7 @@ theorem inner_intrinsicPredecessorBlock_kernel_resolvent_eq
       intrinsicPredecessorBlock p L N z - (lam : ℂ) • z =
         (-lam : ℂ) • z
     rw [hz, zero_sub]
-    simpa only [map_neg, neg_smul]
+    exact (neg_smul (lam : ℂ) z).symm
   rw [hzshift, hy] at hsym
   calc
     inner ℂ
@@ -437,8 +436,8 @@ theorem norm_sq_inner_kernel_coupling_le_neg_mul_norm_sq_re_inner_resolvent
           ‖inner ℂ
             (z : euclideanParityBoundaryFlatSubspace p (N + 1))
             (y : euclideanParityBoundaryFlatSubspace p (N + 1))‖ := by
-              rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
-                abs_neg, abs_of_neg hlam]
+              rw [norm_mul, norm_neg, Complex.norm_real, Real.norm_eq_abs,
+                abs_of_neg hlam]
       _ ≤ (-lam) * (‖z‖ * ‖y‖) := by
               have hinner :
                   ‖inner ℂ
