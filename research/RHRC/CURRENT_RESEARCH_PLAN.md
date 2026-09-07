@@ -5,11 +5,11 @@
 ## Current authority split
 
 ```text
-theorem-state anchor = PR #122 merge b2d1210902d430f3cdd3c24c2961ab843469b5d6
-theorem tree = db51419fb7cc8b2e3dbe5cf2e770390086db9862
-validated theorem head = 9c8154e3ea7a5762f8e65d508dc68bb9246db869
-theorem-bearing merged through = PR #122
-E3-B1 metric layer + E4-A1 zero-resonance coupling classification = PROVED / MERGED
+theorem-state anchor = PR #125 merge 615437fd5854b4473471d9826b4d4787b2e8e42f
+theorem tree = 245bba07addba0c5ad85fcf1b1b4218b4432c427
+validated theorem head = 533beb4a42fc96cd43a97e071c6e07e3178872b6
+theorem-bearing merged through = PR #125
+E4-A2 zero-shift kernel/range dichotomy + strict regular endpoint = PROVED / MERGED
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
@@ -44,28 +44,41 @@ DONE
   E3-B2 exact explicit Schur scalar bridge / #121
   E3-B1 projected symmetry + shifted coercivity/resolvent metric control / #122
   E4-A1 exact ker(A) cubic-coupling classification / #122
+  E4-A2 range/kernel direct sum + decoupled zero-shift solve / #124
+  E4-A2 exact resonant identity + denominator-free bound / #124
+  E4-A2 canonical zero-shift endpoint + complete square / #125
+  E4-A2 decoupled branch at negative secular root -> Re S0<0 / #125
 
-NOW — E4-A2: ZERO-SHIFT / RANGE-ENDPOINT SPLIT
-  Case A: coupling vanishes on ker A
-    prove b ⟂ ker A -> b ∈ range A for the finite symmetric projected block
-    obtain x0 with A x0 = b
-    define/prove the zero-shift endpoint algebraically, without A^-1
-  Case B: coupling does not vanish on ker A
-    isolate a kernel witness z with <z,b> != 0
-    theoremize the corresponding zero-resonant contribution to R_lam b
-    determine the induced sign/asymptotic restriction on the secular scalar as lam -> 0-
+NOW — E4-A3: BRANCH RIGIDITY
+  A3a ZERO-SHIFT SHELL RESPONSE
+    theoremize T u0 ∈ S from the proved zero predecessor coordinate
+    use dim_C S=1 and the canonical cubic coordinate to obtain the exact shell coefficient
+    identify the one-dimensional response encoded by S0
+    do not promote this to an eigenvector theorem
 
-PARALLEL — E3-C: RESOLVENT IDENTITY / MONOTONICITY
-  prove finite-dimensional shifted resolvent identity
-  exploit #122 real exact scalar representation
-  prove strict monotonicity on lam<0 if justified
-  derive at most one negative root / negative-index control
-  never confuse uniqueness with absence
+  A3b RESONANT POLE DECOMPOSITION
+    use W=ker A⊕range A to split b=bK+bR
+    theoremize the exact kernel contribution to R_lam b
+    isolate the 1/(-lam) pole coefficient without heuristic spectral language
+
+  A3c BRANCH RIGIDITY / COUNTERMODEL ATTACK
+    compose A3a/A3b with parity rank-at-most-one structure
+    compose with KKT / parity normal-space geometry
+    compose with canonical cubic quotient data
+    compose with exact N-flow and global-first-bad minimality
+    attempt to exclude one or both branches, or shrink the surviving finite countermodel class
 
 PARALLEL — E4-B: PARITY SHIFTED-NULLITY
   use finrank-at-most-one defect + algebraic D-equivalence
   theoremize shifted-nullity difference without unitary assumptions
-  connect only where the exact first-bad state permits
+  use only where it constrains the E4-A3 branch state
+
+PARALLEL — E3-C: RESOLVENT IDENTITY / MONOTONICITY
+  prove finite-dimensional shifted resolvent identity
+  exploit the exact real scalar representation
+  prove strict monotonicity on lam<0 if justified
+  derive at most one negative root / negative-index control
+  never confuse uniqueness with absence
 
 PARALLEL — E3-B3: GENERAL LOWER-FLOOR DEFORMATION THEOREM
   under mu ||w||^2 <= Re<Aw,w> and lam<mu,
@@ -75,7 +88,6 @@ PARALLEL — E3-B3: GENERAL LOWER-FLOOR DEFORMATION THEOREM
 
 TARGET
   CCM-specific negative-root exclusion at the global first-bad state
-  combine shell/parity/KKT/N-flow/zero-resonance/endpoint constraints
   positivity / finite-to-infinite closure remains open until separately proved
 
 PARALLEL DIAGNOSTIC
@@ -88,36 +100,7 @@ PARALLEL SOURCE
 RH OPEN
 ```
 
-## What #121/#122 made possible
-
-PR #121 proves the pointwise bridge
-
-```text
-F(lam)=star(S(lam))/<c,c>
-```
-
-between the exact quotient-coordinate root detector `F` and the explicit cubic Schur scalar
-
-```text
-S(lam)=<Tc,c>-lam<c,c>-<R_lam Bc,Bc>.
-```
-
-PR #122 proves that `S(lam)` is real in the safe negative-shift regime and theoremizes the exact metric structure needed for scalar analysis. Hence
-
-```text
-F(lam)=S(lam)/<c,c>
-```
-
-and at a root
-
-```text
-0 <= Re(<Tc,c>-lam<c,c>)
-(-lam) * Re(<Tc,c>-lam<c,c>) <= ||Bc||^2.
-```
-
-The old representation barrier is therefore closed. Scalar sign/monotonicity work can now target the actual exact root detector rather than a merely related expression.
-
-## E4-A1 changes the zero-resonance question
+## What #124/#125 made possible
 
 Let
 
@@ -127,101 +110,96 @@ c = intrinsicCubicShellPart
 b = intrinsicShellToPredecessor c.
 ```
 
-For every `z` with `Az=0`, #122 proves
+PR #124 closes the range/kernel infrastructure:
 
 ```text
-<z,b> = star(kappa(Tz)) <c,c>
+range A ⟂ ker A
+W=ker A⊕range A.
 ```
 
-and therefore
+It turns the E4-A1 coupling split into an exact zero-shift dichotomy. In the decoupled branch:
 
 ```text
-<z,b>=0 <-> Tz=0.
+b ∈ range A
+∃x0, Ax0=b
+Ax=b and Ay=b -> <x,b>=<y,b>.
 ```
 
-So the previous vague question “does `b` annihilate `ker A`?” is now an exact dichotomy:
+In the resonant branch:
 
 ```text
-all kernel couplings vanish
-  <-> every projected-kernel vector is already a successor zero mode;
-
-some kernel coupling is nonzero
-  <-> some projected-kernel vector has a nonzero shell image under the successor operator.
+Az=0
+<z,b>!=0
+<z,b>=(-lam)<z,R_lam b>
+|<z,b>|^2 <= (-lam)||z||^2 Re<R_lam b,b>.
 ```
 
-Neither branch is currently ruled out.
-
-## Why E4-A2 is the immediate next layer
-
-The zero-resonance branch now determines the endpoint geometry of the exact secular scalar.
-
-### Decoupled branch
-
-If `b ⟂ ker A`, finite-dimensional symmetry should give
+PR #125 then defines
 
 ```text
-b ∈ range A.
+S0=<Tc,c>-<x0,b>
+u0=-x0+c
 ```
 
-This would provide an exact algebraic zero-shift witness `x0` satisfying `Ax0=b`, avoiding the forbidden move of pretending that `A^-1` exists at zero. The finite endpoint candidate becomes
+and proves:
 
 ```text
-S(0-) = <Tc,c> - <x0,b>
+predecessorPart(Tu0)=0
+<Tu0,u0>=S0
+exact predecessor-fibre complete square
+Re S0<0 at the safe negative explicit secular root.
 ```
 
-once independence of the chosen solution and compatibility with the negative-shift limit are separately theoremized.
+The old E4-A2 endpoint existence/sign problem is therefore closed. The new problem is whether the full CCM structure can tolerate either remaining branch.
+
+## Why E4-A3 is the immediate next layer
+
+### Regular branch
+
+The regular branch already has a strictly negative canonical endpoint. Generic Hermitian Schur systems can do this, so negativity alone is not a contradiction.
+
+The highest-information refinement is one-dimensional shell response. Since #125 proves the predecessor coordinate of `T u0` is zero and `V=W⊕S`, theoremize `T u0∈S`; then use the canonical cubic coordinate on the one-dimensional shell to identify the exact response coefficient. This creates a scalar object that can be compared to parity/KKT/N-flow structure.
 
 ### Resonant branch
 
-If some `z∈ker A` has `<z,b>!=0`, the shifted resolvent should carry a `1/(-lam)` component in the zero eigenspace. The fastest useful theorem is not a generic asymptotic slogan but an exact lower/sign statement sufficient to decide whether the explicit secular scalar is forced negative near zero.
+#124 already proves a quantitative lower bound. The next useful theorem is stronger and more structural: decompose the coupling under `ker A⊕range A` and isolate the exact pole of `R_lam b`. This distinguishes finite regular response from genuine zero-mode resonance algebraically.
+
+### Branch rigidity
+
+The project should then attack the finite counterexample space, not RH by slogan. Ask whether a finite system satisfying all of:
+
+```text
+A>=0
+negative explicit secular root
+strict regular endpoint OR exact resonance
+rank-at-most-one parity defect
+KKT/cubic constraints
+first-bad N-flow ancestry
+```
+
+can still exist.
 
 ## E3-C monotonicity lane
 
-With symmetry and realness now proved, the expected finite-dimensional spectral picture is
-
-```text
-A >= 0,
-R_lam=(A-lam I)^(-1),
-lam<0.
-```
-
-The target scalar identity should imply that `S` is strictly decreasing in `lam` on the safe negative axis. This may be formalized by a resolvent identity rather than calculus.
-
-If successful:
+The exact root detector is already theorem-identified with a real explicit scalar. Strict monotonicity may yield:
 
 ```text
 S has at most one negative root.
 ```
 
-Permanent firewall: this does not exclude that one root.
+Permanent firewall: this does not exclude that one root. Because a hypothetical off-line zero already forces a negative root, E3-C is supportive rather than the primary exclusion mechanism.
 
 ## Quantitative deformation composition
 
-The #122 `mu=0` root metric bound is now theorem-backed. The reusable generalization remains:
+The #122 `mu=0` root metric bound remains theorem-backed. The reusable generalization remains:
 
 ```text
 mu ||w||^2 <= Re <Aw,w>
 lam < mu
-R_lam = (A-lam I)^(-1)
+R_lam=(A-lam I)^(-1)
 ```
 
-implying
-
-```text
-(mu-lam) ||R_lam b|| <= ||b||
-Re <R_lam b,b> <= ||b||^2/(mu-lam).
-```
-
-For canonical shell quantities
-
-```text
-q_N = Re <Tc,c> / ||c||^2
-beta_N^2 = ||Bc||^2 / ||c||^2
-d_N = mu_N-lam
-g_N = q_N-mu_N,
-```
-
-the target remains
+implying the expected `mu-lam` resolvent estimate and the normalized one-step inequality
 
 ```text
 d_N(g_N+d_N) <= beta_N^2.
@@ -229,32 +207,29 @@ d_N(g_N+d_N) <= beta_N^2.
 
 The shortcut `d_N <= beta_N^2/g_N` requires independently certified `g_N>0`.
 
-## Upstream cleanup candidate
-
-`re_inner_shiftedIntrinsicPredecessorBlock_ge` currently accepts `hlam : lam < 0`, although the displayed quadratic comparison itself is produced from predecessor nonnegativity plus the algebraic shift. Negativity is needed downstream to obtain a positive coercive floor and perform cancellation/division. A later cleanup may split the algebraic inequality from the negative-shift corollary.
-
-This is a dependency-compression opportunity, not the current critical path.
+Do not let this lane displace E4-A3 unless it produces independent information about branch exclusion.
 
 ## Falsification gates
 
-- generic block systems with `A=0`, `b!=0` show that zero resonance can generate negative spectrum; do not assume resonance is benign;
-- `b=0` alone does not exclude a negative root if the shell diagonal is negative;
+- generic block systems with `A>=0` can have negative zero-shift Schur complement; `Re S0<0` is not contradiction;
+- generic zero resonance can generate negative spectrum; the resonant branch is not automatically impossible;
+- `T u0∈S` does not imply `u0` is an eigenvector;
+- `ker A` is not the predecessor-size compressed-operator kernel;
 - monotonicity gives uniqueness, not absence;
-- do not identify `ker A` with the predecessor-size compressed-operator kernel;
-- do not use successor positivity to prove the endpoint sign: that would be circular at the first-bad state;
 - D remains algebraic, not unitary/isometric;
+- do not use successor positivity to prove endpoint nonnegativity at the first-bad state;
 - no finite prefix, fitted tail or observed decay is an infinite-horizon certificate.
 
 ## Permanent claim boundary
 
-**PROVED:** through PR #122, including the exact real explicit secular representation, projected metric/resolvent bounds, the first root metric inequality, and the E4-A1 kernel-coupling equivalence.
+**PROVED:** through PR #125, including exact real secular representation, projected metric/resolvent bounds, E4-A1 coupling classification, E4-A2 range/kernel split, zero-shift solution canonicity, exact resonant identity/bound, canonical zero-shift endpoint, complete-square identity and strict `Re S0<0` in the decoupled first-bad branch.
 
-**DERIVED / OPEN FORMALIZATION:** finite-dimensional `range A = (ker A)⊥` specialization for the projected block; zero-shift solution-based endpoint; generic rank-one shifted-nullity comparison.
+**DERIVED / OPEN FORMALIZATION:** `T u0∈S` and a canonical shell-response coefficient; generic rank-one shifted-nullity comparison.
 
-**LEAD / HYPOTHESIS:** resonant near-zero secular forcing, strict secular monotonicity/root uniqueness, positive-floor deformation budget, CCM-specific root exclusion.
+**LEAD / HYPOTHESIS:** exact resonant pole decomposition, branch exclusion from parity/KKT/N-flow composition, strict secular monotonicity/root uniqueness, positive-floor deformation budget.
 
-**OPEN:** which E4-A1 branch occurs, negative-root exclusion, positivity, finite-to-infinite closure, RH.
+**OPEN:** exclusion of the regular branch, exclusion of the resonant branch, negative-root exclusion, positivity, finite-to-infinite closure, RH.
 
-Detailed post-green lead delta: `RESEARCH_LEADS_POST_122_DELTA.md`.
+Detailed post-green lead delta: `RESEARCH_LEADS_POST_125_DELTA.md`.
 
 **RH remains OPEN.**
