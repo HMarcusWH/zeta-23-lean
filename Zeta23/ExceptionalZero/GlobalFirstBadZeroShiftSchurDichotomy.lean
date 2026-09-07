@@ -15,18 +15,20 @@ post-#122 global-first-bad endpoint. A hypothetical off-critical-line zero
 therefore forces one common finite state in one of two exact zero-shift
 mechanisms:
 
-* decoupled: the canonical cubic coupling belongs to `range A`, where `A` has
-  a canonical zero-shift inverse restricted to its range;
+* decoupled: the canonical cubic coupling annihilates `ker A`, so the
+  zero-shift equation `A x₀ = b` has a solution and the quadratic value
+  `⟪x₀,b⟫` is independent of the selected solution;
 * resonant: a kernel vector couples nontrivially to the cubic channel and the
   exact negative-shift resolvent identity/lower bound holds at the same
   negative secular root.
 
-This is a classification, not a contradiction. No branch is excluded and RH
-remains open.
+No inverse of `A` at zero is introduced. This is a classification, not a
+contradiction. No branch is excluded and RH remains open.
 -/
 
 /-- A hypothetical off-line zero forces one global-first-bad state in either
-the decoupled range branch or the quantitatively resonant kernel branch. -/
+the decoupled zero-shift-solve branch or the quantitatively resonant kernel
+branch. -/
 theorem exists_globalFirstBad_zeroShiftSchurDichotomy_of_offLine_zero
     (ρ₀ : zetaZeroConfig.carrier)
     (hoff : (ρ₀ : ℂ).re ≠ 1 / 2) :
@@ -45,9 +47,28 @@ theorem exists_globalFirstBad_zeroShiftSchurDichotomy_of_offLine_zero
               (∀ N : ℕ, N < Nprev + 1 → ¬ AnyParityBad L N) ∧
               cubicExplicitSchurScalar p hL Nprev (hprevBoth p) lam hlam = 0 ∧
               (
-                intrinsicShellToPredecessor p L Nprev
-                    (intrinsicCubicShellPart p Nprev) ∈
-                  LinearMap.range (intrinsicPredecessorBlock p L Nprev)
+                (
+                  ∃ x₀ : intrinsicParityPredecessorSubspace p Nprev,
+                    intrinsicPredecessorBlock p L Nprev x₀ =
+                      intrinsicShellToPredecessor p L Nprev
+                        (intrinsicCubicShellPart p Nprev) ∧
+                    ∀ x : intrinsicParityPredecessorSubspace p Nprev,
+                      intrinsicPredecessorBlock p L Nprev x =
+                          intrinsicShellToPredecessor p L Nprev
+                            (intrinsicCubicShellPart p Nprev) →
+                        inner ℂ
+                            (x : euclideanParityBoundaryFlatSubspace p (Nprev + 1))
+                            ((intrinsicShellToPredecessor p L Nprev
+                                (intrinsicCubicShellPart p Nprev) :
+                                intrinsicParityPredecessorSubspace p Nprev) :
+                              euclideanParityBoundaryFlatSubspace p (Nprev + 1)) =
+                          inner ℂ
+                            (x₀ : euclideanParityBoundaryFlatSubspace p (Nprev + 1))
+                            ((intrinsicShellToPredecessor p L Nprev
+                                (intrinsicCubicShellPart p Nprev) :
+                                intrinsicParityPredecessorSubspace p Nprev) :
+                              euclideanParityBoundaryFlatSubspace p (Nprev + 1))
+                )
                 ∨
                 ∃ z : intrinsicParityPredecessorSubspace p Nprev,
                   intrinsicPredecessorBlock p L Nprev z = 0 ∧
@@ -103,11 +124,11 @@ theorem exists_globalFirstBad_zeroShiftSchurDichotomy_of_offLine_zero
           inner ℂ
             (z : euclideanParityBoundaryFlatSubspace p (Nprev + 1))
             (b : euclideanParityBoundaryFlatSubspace p (Nprev + 1)) = 0
-  · have hrange : b ∈ LinearMap.range (intrinsicPredecessorBlock p L Nprev) :=
-      cubicCoupling_mem_intrinsicPredecessorBlock_range_of_zero_on_kernel
+  · have hsolve :=
+      exists_cubicCoupling_zeroShift_preimage_and_inner_unique
         p L Nprev (by simpa [b] using hzero)
     exact ⟨L, hL, Nprev, hNprev, p, lam, hlam, hprevBoth,
-      hglobal, hmin, hroot, Or.inl (by simpa [b] using hrange)⟩
+      hglobal, hmin, hroot, Or.inl (by simpa [b] using hsolve)⟩
   · push_neg at hzero
     obtain ⟨z, hz, hzb⟩ := hzero
     have hid :=
@@ -138,9 +159,28 @@ theorem exists_globalFirstBad_zeroShiftSchurDichotomy_of_exists_offLine_zero
               (∀ N : ℕ, N < Nprev + 1 → ¬ AnyParityBad L N) ∧
               cubicExplicitSchurScalar p hL Nprev (hprevBoth p) lam hlam = 0 ∧
               (
-                intrinsicShellToPredecessor p L Nprev
-                    (intrinsicCubicShellPart p Nprev) ∈
-                  LinearMap.range (intrinsicPredecessorBlock p L Nprev)
+                (
+                  ∃ x₀ : intrinsicParityPredecessorSubspace p Nprev,
+                    intrinsicPredecessorBlock p L Nprev x₀ =
+                      intrinsicShellToPredecessor p L Nprev
+                        (intrinsicCubicShellPart p Nprev) ∧
+                    ∀ x : intrinsicParityPredecessorSubspace p Nprev,
+                      intrinsicPredecessorBlock p L Nprev x =
+                          intrinsicShellToPredecessor p L Nprev
+                            (intrinsicCubicShellPart p Nprev) →
+                        inner ℂ
+                            (x : euclideanParityBoundaryFlatSubspace p (Nprev + 1))
+                            ((intrinsicShellToPredecessor p L Nprev
+                                (intrinsicCubicShellPart p Nprev) :
+                                intrinsicParityPredecessorSubspace p Nprev) :
+                              euclideanParityBoundaryFlatSubspace p (Nprev + 1)) =
+                          inner ℂ
+                            (x₀ : euclideanParityBoundaryFlatSubspace p (Nprev + 1))
+                            ((intrinsicShellToPredecessor p L Nprev
+                                (intrinsicCubicShellPart p Nprev) :
+                                intrinsicParityPredecessorSubspace p Nprev) :
+                              euclideanParityBoundaryFlatSubspace p (Nprev + 1))
+                )
                 ∨
                 ∃ z : intrinsicParityPredecessorSubspace p Nprev,
                   intrinsicPredecessorBlock p L Nprev z = 0 ∧
