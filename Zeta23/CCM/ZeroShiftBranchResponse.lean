@@ -76,7 +76,9 @@ theorem intrinsicPredecessorKernelPart_shiftedIntrinsicPredecessorBlock
         (intrinsicPredecessorBlock p L N y - (lam : ℂ) • y) = _
   rw [map_sub, map_smul,
     intrinsicPredecessorKernelPart_intrinsicPredecessorBlock_eq_zero]
-  simp only [sub_eq_add_neg, zero_add, neg_smul]
+  simpa only [zero_sub] using
+    (neg_smul (lam : ℂ)
+      (intrinsicPredecessorKernelPart p L N y)).symm
 
 /-- E4-A3b core identity: after projection to `ker A`, the safe shifted
 resolvent has an exact denominator-free pole coefficient. -/
@@ -380,7 +382,8 @@ theorem cubicZeroShiftShellResponseScalar_re_neg_of_explicit_root
         Complex.re sigma *
           ‖(c : euclideanParityBoundaryFlatSubspace p (N + 1))‖ ^ 2 := by
     rw [hre, hinner]
-    simp [Complex.mul_re]
+    simp only [Complex.mul_re, Complex.star_def, Complex.conj_re,
+      Complex.conj_im, Complex.ofReal_re, Complex.ofReal_im, mul_zero, sub_zero]
   rw [hre'] at hSneg
   nlinarith
 
