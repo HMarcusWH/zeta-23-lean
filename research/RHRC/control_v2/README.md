@@ -16,72 +16,95 @@ The controller answers **where to look next**, never **what is mathematically tr
 `CONTROL_STATE.json` records two distinct anchors:
 
 ```text
-theorem-state anchor = PR #122 merge b2d1210902d430f3cdd3c24c2961ab843469b5d6
-validated theorem head = 9c8154e3ea7a5762f8e65d508dc68bb9246db869
+theorem-state anchor = PR #125 merge 615437fd5854b4473471d9826b4d4787b2e8e42f
+validated theorem head = 533beb4a42fc96cd43a97e071c6e07e3178872b6
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 ```
 
-PR #122 is the current merged theorem authority: projected predecessor symmetry/coercivity, negative-shift resolvent metric control, the real explicit secular bridge, the first root metric bound, and E4-A1 zero-resonance coupling classification are proved. PR #117 remains the latest merged green Control-v2 authority because #118/#119/#121/#122 changed theorem state but not controller semantics.
+PR #125 is the current merged theorem authority. PR #117 remains the latest merged green Control-v2 authority because #118/#119/#121/#122/#124/#125 changed theorem state but not controller semantics.
 
 ## Current routed frontier
 
-`ACTION_REGISTRY.json` now routes from `FIRST_BAD_RIGIDITY_E4_A2`.
+`ACTION_REGISTRY.json` now routes from `FIRST_BAD_RIGIDITY_E4_A3`.
 
 Primary theorem actions:
 
 ```text
-E4-A2 decoupled zero-shift/range endpoint
-E4-A2 resonant kernel/resolvent theorem
-E3-C exact real secular monotonicity / root-count control
+E4-A3 zero-shift shell-response coefficient
+E4-A3 exact resonant kernel-pole decomposition
+E4-A3 CCM-specific branch rigidity / finite countermodel attack
 E4-B parity shifted-nullity from rank-at-most-one algebra
+E3-C exact real secular monotonicity / root-count control
 E3-B3 generalized predecessor-floor deformation theorem
-negative-root exclusion only after endpoint/resonance structure is available
+negative-root exclusion only after branch-rigidity information is available
 ```
 
 The deformation-budget paper test remains parallel diagnostic research.
 
 ## Why the frontier moved
 
-The post-#119 representation barrier is closed:
+The post-#122 E4-A2 problem is now formally compressed by #124/#125.
+
+PR #124 proves:
 
 ```text
-#119 exact quotient root detector
-  + #121 pointwise explicit Schur bridge
-  + #122 projected symmetry/realness
-  -> exact real scalar representation on lam<0.
+W=ker A⊕range A
+b annihilates ker A -> b∈range A
+Ax0=b has a solution
+<x,b> is solution-independent
 ```
 
-PR #122 also proves the E4-A1 pointwise classification
+and, in the resonant branch,
 
 ```text
-Az=0 -> (<z,Bc>=0 <-> Tz=0),
+<z,b>=(-lam)<z,R_lam b>
+|<z,b>|^2 <= (-lam)||z||^2 Re<R_lam b,b>.
 ```
 
-where `A=P_W T|_W` is the projected successor predecessor block.
-
-The controller must not simplify this to `Bc ⟂ ker A`. The actual first-bad state may lie on either branch.
-
-## E4-A2 routing rule
-
-### Decoupled branch
-
-If the coupling vanishes on `ker A`, the next theorem target is
+PR #125 proves the regular endpoint
 
 ```text
-Bc ⟂ ker A -> Bc ∈ range A.
+S0=<Tc,c>-<x0,b>,
+u0=-x0+c,
+predecessorPart(Tu0)=0,
+<Tu0,u0>=S0,
+Re S0<0
 ```
 
-Then obtain a solution `x0` with `A x0=Bc` and define the zero-shift secular endpoint through the solution class. No `A^-1` at zero is permitted.
+with an exact complete-square identity.
 
-### Resonant branch
+The controller must therefore not route back to “prove range membership,” “prove solution independence,” or “prove a useful resonant lower bound.” Those first-breaks have been consumed by theorem authority.
 
-If some `z∈ker A` has `<z,Bc>!=0`, theoremize the zero-eigenspace contribution to the shifted resolvent quadratic value and its effect on the real explicit secular scalar near `lam=0-`.
+## E4-A3 routing rule
 
-This branch may force a negative root rather than exclude one; Control v2 treats that as useful classification evidence, not a failure of the research pass.
+### Zero-shift shell response
+
+The next theorem target is to convert the already-proved zero predecessor coordinate of `T u0` into an exact canonical shell-response coefficient using `V=W⊕S` and `dim_C S=1`.
+
+Permanent firewall:
+
+```text
+T u0∈S != u0 eigenvector.
+```
+
+### Resonant pole decomposition
+
+Use #124's canonical `ker A⊕range A` split to decompose `b` and isolate the exact `1/(-lam)` kernel contribution to `R_lam b`. The target is finite algebra, not heuristic spectral asymptotics.
+
+### Branch rigidity
+
+The decisive route is to combine regular shell response / resonant pole information with structure generic Hermitian Schur systems do not have:
+
+- parity rank-at-most-one defect;
+- KKT / parity normal-space geometry;
+- canonical cubic quotient channel;
+- exact N-flow and first-bad minimality.
+
+A finite post-#125 countermodel is a valid falsifier. If such a model survives all imposed CCM constraints, do not claim root exclusion.
 
 ## E3-C routing rule
 
-The exact root detector is now theorem-identified with a real explicit scalar, so shifted-resolvent identity and strict monotonicity work is admissible.
+The exact root detector is theorem-identified with a real explicit scalar, so shifted-resolvent identity and strict monotonicity work is admissible.
 
 Permanent controller firewall:
 
@@ -89,7 +112,7 @@ Permanent controller firewall:
 at most one negative root != no negative root.
 ```
 
-A uniqueness theorem must route onward to endpoint/CCM-specific exclusion rather than terminal closure.
+Because an off-line zero already forces a negative root, monotonicity is supportive rather than terminal.
 
 ## Main objects
 
@@ -110,13 +133,12 @@ The theorem ancestry is now
 #119 exact secular equivalence
   -> #121 explicit scalar bridge
   -> #122 mu=0 metric/resolvent control
-  -> E3-B3 generalized lower-floor one-step inequality if useful
-  -> only then decision-bearing deformation bounds.
+  -> #124 zero-shift/resonance split
+  -> #125 strict regular endpoint
+  -> E4-A3 branch rigidity
 ```
 
-If a future theorem uses a lower predecessor floor `mu`, the diagnostic gap must use the same theorem-backed `mu` and shell-stiffness convention. The controller may not mix an empirical spectral floor with a theorem statement and call the result certified.
-
-A finite prefix, fitted tail or small local residual is not enough. `PRUNE` still requires a complete assured horizon certificate under the existing v1.6 rules.
+If a future theorem uses a lower predecessor floor `mu`, the diagnostic gap must use the same theorem-backed `mu` and shell-stiffness convention. A finite prefix, fitted tail or small local residual is not enough. `PRUNE` still requires a complete assured horizon certificate under the existing v1.6 rules.
 
 ## FFBBP v1.6 assurance integration
 
@@ -152,6 +174,6 @@ DR-010 remains dead. The current exact N-flow / first-bad / secular route does n
 
 `tools/run_suite.py` runs Control-v2 unit tests. The Python RHRC workflow checks out full Git history and performs a real-history Control-v2 smoke run. Router recommendations themselves are not theorem assertions; authority, completeness, leakage, exact interval coverage and assurance invariants remain CI-fatal.
 
-Detailed current post-green research implications: `../RESEARCH_LEADS_POST_122_DELTA.md`.
+Detailed current post-green research implications: `../RESEARCH_LEADS_POST_125_DELTA.md`.
 
 **RH remains OPEN.**
