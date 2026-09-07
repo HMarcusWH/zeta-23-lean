@@ -182,15 +182,26 @@ theorem mem_intrinsicPredecessorBlock_range_of_inner_kernel_eq_zero
     rw [inner_eq_zero_symm]
     exact hrk
   have hrec := intrinsicPredecessorKernelPart_add_rangePart p L N b
+  have hrecAmbient :
+      (((k : intrinsicParityPredecessorSubspace p N) :
+          euclideanParityBoundaryFlatSubspace p (N + 1)) +
+        ((r : intrinsicParityPredecessorSubspace p N) :
+          euclideanParityBoundaryFlatSubspace p (N + 1))) =
+        (b : euclideanParityBoundaryFlatSubspace p (N + 1)) := by
+    simpa using
+      congrArg
+        (fun w : intrinsicParityPredecessorSubspace p N =>
+          (w : euclideanParityBoundaryFlatSubspace p (N + 1))) hrec
   have hkk :
       inner ℂ
           ((k : intrinsicParityPredecessorSubspace p N) :
             euclideanParityBoundaryFlatSubspace p (N + 1))
           ((k : intrinsicParityPredecessorSubspace p N) :
             euclideanParityBoundaryFlatSubspace p (N + 1)) = 0 := by
-    rw [← hkb]
-    rw [← hrec]
-    rw [inner_add_right, hkr, add_zero]
+    have hkb' := hkb
+    rw [← hrecAmbient] at hkb'
+    rw [inner_add_right, hkr, add_zero] at hkb'
+    exact hkb'
   have hk0Ambient :
       ((k : intrinsicParityPredecessorSubspace p N) :
         euclideanParityBoundaryFlatSubspace p (N + 1)) = 0 :=
@@ -280,7 +291,8 @@ def intrinsicPredecessorRangeEquiv
   have hinj : Function.Injective AR :=
     intrinsicPredecessorRangeBlock_injective p L N
   have hsurj : Function.Surjective AR :=
-    LinearMap.injective_iff_surjective.mp hinj
+    (LinearMap.injective_iff_surjective_of_finrank_eq_finrank
+      (f := AR) rfl).mp hinj
   exact LinearEquiv.ofBijective AR ⟨hinj, hsurj⟩
 
 /-- Canonical zero-shift inverse, defined only on `range A`. -/
@@ -297,10 +309,9 @@ theorem intrinsicPredecessorRangeBlock_rangeInverse_apply
     (b : LinearMap.range (intrinsicPredecessorBlock p L N)) :
     intrinsicPredecessorRangeBlock p L N
         (intrinsicPredecessorRangeInverse p L N b) = b := by
-  change
-    intrinsicPredecessorRangeEquiv p L N
-        ((intrinsicPredecessorRangeEquiv p L N).symm b) = b
-  exact (intrinsicPredecessorRangeEquiv p L N).apply_symm_apply b
+  simpa [intrinsicPredecessorRangeInverse, intrinsicPredecessorRangeEquiv,
+    LinearEquiv.ofBijective_apply] using
+      (intrinsicPredecessorRangeEquiv p L N).apply_symm_apply b
 
 /-- Ambient predecessor form of the canonical zero-shift solve `A x₀ = b` for
 `b ∈ range A`. -/
@@ -351,8 +362,8 @@ theorem inner_intrinsicPredecessorBlock_kernel_resolvent_eq
     change
       intrinsicPredecessorBlock p L N z - (lam : ℂ) • z =
         (-lam : ℂ) • z
-    rw [hz]
-    simp
+    rw [hz, zero_sub]
+    simpa only [map_neg, neg_smul]
   rw [hzshift, hy] at hsym
   calc
     inner ℂ
@@ -407,6 +418,7 @@ theorem norm_sq_inner_kernel_coupling_le_neg_mul_norm_sq_re_inner_resolvent
   have hid :=
     inner_intrinsicPredecessorBlock_kernel_resolvent_eq
       p hL N hprev hlam z b hz
+  have hneg : 0 ≤ -lam := le_of_lt (neg_pos.mpr hlam)
   have hcs :
       ‖inner ℂ
           (z : euclideanParityBoundaryFlatSubspace p (N + 1))
@@ -425,20 +437,26 @@ theorem norm_sq_inner_kernel_coupling_le_neg_mul_norm_sq_re_inner_resolvent
           ‖inner ℂ
             (z : euclideanParityBoundaryFlatSubspace p (N + 1))
             (y : euclideanParityBoundaryFlatSubspace p (N + 1))‖ := by
-              rw [norm_mul]
-              simp [abs_of_pos (neg_pos.mpr hlam)]
+              rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
+                abs_neg, abs_of_neg hlam]
       _ ≤ (-lam) * (‖z‖ * ‖y‖) := by
-              have hinner := norm_inner_le_norm
-                (z : euclideanParityBoundaryFlatSubspace p (N + 1))
-                (y : euclideanParityBoundaryFlatSubspace p (N + 1))
-              have hnonneg : 0 ≤ -lam := le_of_lt (neg_pos.mpr hlam)
-              exact mul_le_mul_of_nonneg_left (by simpa using hinner) hnonneg
+              have hinner :
+                  ‖inner ℂ
+                      (z : euclideanParityBoundaryFlatSubspace p (N + 1))
+                      (y : euclideanParityBoundaryFlatSubspace p (N + 1))‖ ≤
+                    ‖z‖ * ‖y‖ := by
+                simpa only [Submodule.norm_coe] using
+                  (norm_inner_le_norm
+                    (z : euclideanParityBoundaryFlatSubspace p (N + 1))
+                    (y : euclideanParityBoundaryFlatSubspace p (N + 1)))
+              exact mul_le_mul_of_nonneg_left hinner hneg
       _ = (-lam) * ‖z‖ * ‖y‖ := by ring
   have hleft0 :
       0 ≤ ‖inner ℂ
         (z : euclideanParityBoundaryFlatSubspace p (N + 1))
         (b : euclideanParityBoundaryFlatSubspace p (N + 1))‖ := norm_nonneg _
-  have hright0 : 0 ≤ (-lam) * ‖z‖ * ‖y‖ := by positivity
+  have hright0 : 0 ≤ (-lam) * ‖z‖ * ‖y‖ := by
+    exact mul_nonneg (mul_nonneg hneg (norm_nonneg z)) (norm_nonneg y)
   have hsquare :
       ‖inner ℂ
           (z : euclideanParityBoundaryFlatSubspace p (N + 1))
@@ -453,7 +471,8 @@ theorem norm_sq_inner_kernel_coupling_le_neg_mul_norm_sq_re_inner_resolvent
         (inner ℂ
           (y : euclideanParityBoundaryFlatSubspace p (N + 1))
           (b : euclideanParityBoundaryFlatSubspace p (N + 1))) at hcoercive
-  have hfactor : 0 ≤ (-lam) * ‖z‖ ^ 2 := by positivity
+  have hfactor : 0 ≤ (-lam) * ‖z‖ ^ 2 := by
+    exact mul_nonneg hneg (sq_nonneg ‖z‖)
   have hmul := mul_le_mul_of_nonneg_left hcoercive hfactor
   calc
     ‖inner ℂ
