@@ -76,9 +76,7 @@ theorem intrinsicPredecessorKernelPart_shiftedIntrinsicPredecessorBlock
         (intrinsicPredecessorBlock p L N y - (lam : ℂ) • y) = _
   rw [map_sub, map_smul,
     intrinsicPredecessorKernelPart_intrinsicPredecessorBlock_eq_zero]
-  change
-    -((lam : ℂ) • intrinsicPredecessorKernelPart p L N y) =
-      (-lam : ℂ) • intrinsicPredecessorKernelPart p L N y
+  rw [zero_sub]
   exact (neg_smul (lam : ℂ)
     (intrinsicPredecessorKernelPart p L N y)).symm
 
