@@ -30,3 +30,4 @@ import Zeta23.ExceptionalZero.GlobalFirstBadCubicSecularEquation
 import Zeta23.ExceptionalZero.GlobalFirstBadCubicExplicitSecular
 import Zeta23.ExceptionalZero.GlobalFirstBadCubicMetricResonance
 import Zeta23.ExceptionalZero.GlobalFirstBadZeroShiftSchurDichotomy
+import Zeta23.ExceptionalZero.GlobalFirstBadZeroShiftSchurEndpoint
