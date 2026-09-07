@@ -287,12 +287,11 @@ def intrinsicPredecessorRangeEquiv
     (p : ReversalParity) (L : ℝ) (N : ℕ) :
     LinearMap.range (intrinsicPredecessorBlock p L N) ≃ₗ[ℂ]
       LinearMap.range (intrinsicPredecessorBlock p L N) := by
-  let AR := intrinsicPredecessorRangeBlock p L N
-  have hinj : Function.Injective AR :=
-    intrinsicPredecessorRangeBlock_injective p L N
-  have hsurj : Function.Surjective AR :=
-    LinearMap.injective_iff_surjective.mp hinj
-  exact LinearEquiv.ofBijective AR ⟨hinj, hsurj⟩
+  refine LinearEquiv.ofBijective
+    (intrinsicPredecessorRangeBlock p L N) ⟨?_, ?_⟩
+  · exact intrinsicPredecessorRangeBlock_injective p L N
+  · exact LinearMap.surjective_of_injective
+      (intrinsicPredecessorRangeBlock_injective p L N)
 
 /-- Canonical zero-shift inverse, defined only on `range A`. -/
 def intrinsicPredecessorRangeInverse
