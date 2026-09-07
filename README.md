@@ -7,13 +7,13 @@ This fork preserves the upstream Zeta23 theorem package while adding an opt-in R
 ## Current authority snapshot
 
 ```text
-live main after PR #119 = d4175d2bb305e62863f593824b3f40e921a46ee6
-live main tree = 1985472ac470822af279044261fa365fb9bb5535
+live main after PR #122 = b2d1210902d430f3cdd3c24c2961ab843469b5d6
+live main tree = db51419fb7cc8b2e3dbe5cf2e770390086db9862
 
-theorem-state anchor = PR #119 merge d4175d2bb305e62863f593824b3f40e921a46ee6
-theorem tree = 1985472ac470822af279044261fa365fb9bb5535
-theorem-bearing merged through = PR #119
-FIRST-BAD-RIGIDITY-E3-A exact canonical secular equivalence = PROVED / MERGED
+theorem-state anchor = PR #122 merge b2d1210902d430f3cdd3c24c2961ab843469b5d6
+validated theorem head = 9c8154e3ea7a5762f8e65d508dc68bb9246db869
+theorem-bearing merged through = PR #122
+E3-B1 secular metric control + E4-A1 zero-resonance coupling classification = PROVED / MERGED
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
@@ -22,7 +22,7 @@ Control v2 / FFBBP v1.6 hardened research-control state = MERGED GREEN CONTROL I
 RH = OPEN
 ```
 
-Live GitHub head + Lean compiler + CI remain authoritative over prose snapshots. PRs #118/#119 advanced theorem authority but did not change Control-v2 semantics, so the separate control-plane anchor remains #117.
+Live GitHub head + Lean compiler + CI remain authoritative over prose snapshots. PRs #118/#119/#121/#122 advanced theorem authority; Control-v2 semantics have not changed since #117.
 
 ## Current RH-directed theorem ladder
 
@@ -31,158 +31,136 @@ off-line zeta zero
   -> compact C² pole-neutral negative W test                       PROVED
   -> strict aperture + legal finite approximation                 PROVED
   -> canonical finite negative obstruction                        PROVED / #94
-  -> constrained algebra / Hermitianity / Euclidean sector        PROVED / #96-#98
+  -> constrained algebra / Euclidean sector                       PROVED / #96-#98
   -> exact centered N-flow / fixed-L negative tail                PROVED / #100
-  -> exact reversal symmetry / even commutator collapse           PROVED / #102
-  -> direct parity geometry / algebraic D-equivalence             PROVED / #103
-  -> least/global first bad + predecessor nonnegative             PROVED / #105,#112
-  -> 1d successor shell + negative first-bad eigenmode            PROVED / #105,#107
-  -> exact parity normals + KKT                                   PROVED / #109
-  -> cubic parity defect finrank <= 1                             PROVED / #110
-  -> intrinsic W/S block + exact cubic factorization              PROVED / #112
-  -> canonical V=W⊕S + safe shifted predecessor resolvent         PROVED / #113
-  -> canonical cubic shell coordinate != 0                        PROVED / #115
-  -> canonical cubic quotient coordinate + normalized Schur       PROVED / #118
-  -> exact secular scalar root iff negative-shift eigenmode        PROVED / #119
+  -> reversal/parity geometry / algebraic D-equivalence           PROVED / #102-#103
+  -> global first bad + predecessor nonnegative                   PROVED / #105,#112
+  -> negative first-bad eigenmode + KKT/cubic channel             PROVED / #107,#109,#110
+  -> intrinsic V=W⊕S + safe shifted Schur reduction               PROVED / #112,#113
+  -> canonical cubic shell + quotient coordinates                 PROVED / #115,#118
+  -> exact quotient secular root iff negative eigenmode           PROVED / #119
+  -> exact explicit Schur scalar bridge                           PROVED / #121
+  -> projected symmetry/coercivity/resolvent metric control       PROVED / #122
+  -> real unconjugated secular bridge + first root metric bound   PROVED / #122
+  -> ker(A) cubic-coupling classification                         PROVED / #122
 
 NOW
-  E3-B metric bridge:
-    projected predecessor symmetry
-    shifted coercivity / resolvent norm and positivity bounds
-    identify #119 quotient secular scalar with explicit Schur scalar
+  E4-A2 zero-shift / range-endpoint split:
+    classify the decoupled branch b ⟂ ker A without using A^-1
+    classify the resonant branch when some z in ker A has <z,b> != 0
 
-PARALLEL / NEXT
-  E4 zero-resonance / parity-nullity structure
-  theorem-backed one-step deformation inequality if E3-B succeeds
-  resolvent monotonicity / root uniqueness only after the explicit bridge
-
-PARALLEL DIAGNOSTIC
+PARALLEL
+  E3-C shifted-resolvent identity / strict secular monotonicity / root uniqueness
+  E4-B parity shifted-nullity comparison from rank-at-most-one algebra
+  E3-B3 general lower-floor deformation theorem
   deformation-budget falsification lane
   source-faithful G1-B1B -> G1-final -> S-NEG -> G23
 
-RH                                                                 OPEN
+TARGET
+  CCM-specific negative-root exclusion at the global first-bad state
+  positivity / finite-to-infinite closure                         OPEN
+  RH                                                               OPEN
 ```
 
-## What PR #118 changed
+## What PR #121 changed
 
-PR #118 selected the nonzero canonical cubic shell vector as the distinguished coordinate on the one-dimensional intrinsic successor shell. It proves exact reconstruction from that coordinate, identifies the successor/predecessor quotient with one complex scalar, and canonically normalizes a genuine negative eigenmode so its shell part is exactly `intrinsicCubicShellPart`.
-
-It also proves that on the odd carrier the exact cubic parity defect coefficient is literally the canonical quotient coordinate of the intertwining defect. This does **not** prove that the defect functional is nonzero on a specific vector.
-
-## What PR #119 changed
-
-PR #119 closes the missing converse direction in the first-bad Schur reduction.
-
-For every safe negative shift `lam < 0` under predecessor nonnegativity it constructs the canonical trial vector
+PR #121 connected the exact #119 quotient-coordinate root detector to the explicit cubic Schur scalar
 
 ```text
-u_lam = -(A-lam I)^(-1) B c + c
+S(lam) = <Tc,c> - lam<c,c> - <R_lam Bc,Bc>.
 ```
 
-with canonical cubic shell part `c`, defines the full residual
+Under the safe negative-shift hypotheses it proves
 
 ```text
-r_lam = T u_lam - lam u_lam,
+cubicSecularScalar(lam)
+  = star(S(lam)) / <c,c>
 ```
 
-proves the predecessor coordinate of `r_lam` is zero, and defines
+and equivalence of `S(lam)=0`, the canonical trial eigenmode, and existence of a nonzero eigenmode at `lam`.
+
+## What PR #122 changed
+
+PR #122 closes the metric layer deliberately left open by #121. On the projected predecessor block
 
 ```text
-cubicSecularScalar(lam) = intrinsicCubicQuotientCoordinate(r_lam).
+A = P_W T|_W,
+b = Bc,
+R_lam = (A-lam I)^(-1),  lam < 0,
 ```
 
-The main theorem is the exact two-way criterion
+Lean now proves projected symmetry, shifted symmetry/coercivity, resolvent norm and quadratic bounds, real/nonnegative resolvent quadratic value, and realness of the explicit cubic Schur scalar. Consequently the exact bridge becomes the unconjugated real identity
 
 ```text
-cubicSecularScalar(lam) = 0
-  <-> exists nonzero v, T v = lam v
+cubicSecularScalar(lam) = S(lam) / <c,c>.
 ```
 
-for `lam < 0` in the safe predecessor regime.
-
-A hypothetical off-line zero is now reduced to a global-first-bad finite state carrying an exact negative root of this canonical scalar equation.
-
-### Critical distinction after #119
-
-The #119 secular scalar is the faithful **quotient coordinate of the full residual**. The older #113/#118 Schur expression
+At an exact negative secular root, PR #122 also proves the first denominator-free metric constraint
 
 ```text
-<Tc,c> - lam<c,c> - <(A-lam I)^(-1)Bc,Bc>
+0 <= Re(<Tc,c> - lam<c,c>)
+(-lam) * Re(<Tc,c> - lam<c,c>) <= ||Bc||^2.
 ```
 
-is theorem-backed on genuine eigenmodes, but has not yet been identified pointwise with the #119 scalar for every safe negative shift.
+The E4-A1 theorem classifies zero resonance on the projected block:
 
-That exact bridge is part of E3-B. Do not silently treat the two scalarizations as definitionally equal.
+```text
+Az = 0
+  -> (<z,Bc> = 0 <-> T_(N+1) z = 0).
+```
+
+This is a classification theorem, **not** a theorem that `Bc` annihilates `ker A`.
 
 ## Current mathematical frontier
 
-### E3-B — projected metric / explicit secular bridge
+### E4-A2 — zero-shift / range endpoint
 
-The next theorem package should establish, in the repository's exact inner product:
+The highest-information next split is now determined by #122.
 
-1. `intrinsicPredecessorBlock` is symmetric;
-2. `A-lam I` has quantitative coercivity for `lam<0`;
-3. the shifted resolvent is symmetric, has real/nonnegative quadratic values, and obeys a safe norm bound;
-4. the #119 quotient-coordinate scalar equals the normalized explicit Schur scalar.
-
-Only after this bridge is proved should the project attempt scalar sign or monotonicity theorems.
-
-### E4 — zero resonance is now a first-class obstruction
-
-Global-first-bad gives predecessor **nonnegativity**, not strict positivity. Therefore `A` may have a zero kernel, and `(A-lam I)^(-1)` can become singular as `lam` approaches zero from below.
-
-The high-value parallel question is whether the canonical shell coupling `b=Bc` annihilates `ker A`, or whether the zero-resonant component yields an alternative rigidity constraint. The rank-at-most-one parity defect and algebraic even/odd equivalence make parity nullity comparison a natural companion theorem.
-
-### Deformation-budget composition
-
-Once E3-B supplies a theorem-backed predecessor floor/resolvent estimate, the diagnostic quantities
+If the cubic coupling vanishes on all of `ker A`, symmetry should allow a finite-dimensional range/kernel argument
 
 ```text
-q_N
-beta_N
-g_N = q_N - mu_N
+b ⟂ ker A  ->  b ∈ range A
 ```
 
-can be attached to a genuine operator inequality. The expected target is
+and hence an algebraic zero-shift endpoint witness `x₀` with `A x₀ = b`, without introducing `A^-1` at zero.
+
+If the coupling does not vanish on `ker A`, #122 identifies a genuine successor zero-resonance direction. The next task is to theoremize how that component enters the negative-shift resolvent and secular scalar near `lam=0-`.
+
+### E3-C — monotonicity / root count
+
+The explicit scalar is now theorem-backed and real on the safe negative axis, so resolvent-identity and monotonicity work is no longer blocked by representation ambiguity. A strict monotonicity theorem may imply at most one negative root.
+
+Permanent firewall:
 
 ```text
-d_N (g_N + d_N) <= beta_N^2,
+at most one negative root != no negative root.
 ```
 
-with `d_N = mu_N-lam`, and the shortcut
+### E4-B — parity shifted-nullity
 
-```text
-d_N <= beta_N^2/g_N
-```
-
-only when `g_N>0` is independently certified.
-
-A finite prefix, fitted tail, local residual or numerical decay pattern is never an infinite-horizon certificate.
+The rank-at-most-one parity defect remains available for a purely algebraic shifted-nullity comparison. Do not use Hermitian interlacing through `D`; `D` is algebraic, not theoremized unitary/isometric.
 
 ## Permanent firewalls
 
 - RH remains OPEN.
-- `V=W⊕S` is proved; shell invariance under the compressed operator is not.
-- nonzero shell coordinate does not imply a pure-shell eigenmode.
-- D-equivalence is algebraic, not unitary or isometric.
-- exact cubic factorization does not prove the defect functional is nonzero or the defect rank exactly one.
-- #119 secular-root equivalence is a spectral reduction, not root exclusion.
-- the #119 quotient scalar and the explicit Schur expression are distinct theorem objects until E3-B proves their bridge.
-- predecessor nonnegative does not mean predecessor strictly positive; zero resonance remains possible.
-- use `A-lam I` for `lam<0`; never assume `A^-1` at zero.
-- root uniqueness, if later proved, is not root absence.
-- no equal-spectrum, Hermitian interlacing or inertia transfer through D is proved.
-- a diagnostic `2x2` formula is not an operator theorem.
-- generic R002 taper-grid and Bombieri zero-height truncations remain distinct from the canonical deterministic CCM family except where exact bridge theorems say otherwise.
-- the legacy printed `finiteMatrix` differs from the canonical source matrix by a scalar identity; sign-sensitive spectral claims must use the canonical source normalization.
-- positivity, finite-to-infinite closure and RH remain OPEN unless separately theorem-backed.
+- `V=W⊕S` is proved; shell invariance is not.
+- D-equivalence is algebraic, not unitary/isometric.
+- exact cubic factorization gives rank at most one, not automatically exact rank one.
+- `ker A` means the kernel of the projected successor predecessor block `P_W T|_W`; it is not the predecessor-size compressed-operator kernel.
+- PR #122 classifies cubic coupling on `ker A`; it does not prove decoupling.
+- use `A-lam I` for `lam<0`; no `A^-1` at zero.
+- root uniqueness, if proved, is not root absence.
+- the first metric root bound is not negative-root exclusion.
+- no finite/fitted deformation tail is an infinite-horizon certificate.
+- source-normalization, promoted-binding, positivity, finite-to-infinite closure and RH remain unchanged unless separately theorem-backed.
 
 ## Living research records
 
 - `research/RHRC/README.md`
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`
+- `research/RHRC/RESEARCH_LEADS_POST_122_DELTA.md`
 - `research/RHRC/RESEARCH_LEADS.md`
-- `research/RHRC/RESEARCH_LEADS_POST_119_DELTA.md`
 - `research/RHRC/OBSTRUCTION_LEDGER.md`
 - `research/RHRC/DEAD_ROUTES.md`
 - `research/RHRC/routes/R003_ccm_bridge/README.md`
@@ -190,6 +168,6 @@ A finite prefix, fitted tail, local residual or numerical decay pattern is never
 - `research/RHRC/CLAIM_REGISTRY.json`
 - `research/RHRC/R003_PROMOTED_BINDINGS.json`
 
-Machine claim/binding promotion must not be inferred beyond the entries actually present in the registries.
+Machine claim/binding promotion must not be inferred beyond entries actually present in the registries.
 
 **RH remains OPEN.**

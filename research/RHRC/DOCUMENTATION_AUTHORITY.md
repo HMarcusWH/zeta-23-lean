@@ -14,7 +14,7 @@ When two sources disagree:
 6. **PR-specific settlement documents**.
 7. **Historical roadmaps, release audits, numerical receipts and old implementation plans**.
 
-Control-v2 route certificates and retro-search receipts sit inside level 4 as **diagnostic research-control artifacts only**. They do not outrank theorem declarations, machine claim surfaces, active route authority, or compiler evidence.
+Control-v2 route certificates and retro-search receipts sit inside level 4 as diagnostic research-control artifacts only. They do not outrank theorem declarations, machine claim surfaces, active route authority or compiler evidence.
 
 A green but unmerged PR is branch evidence, not merged repository truth.
 
@@ -34,7 +34,7 @@ Update these when the underlying state changes:
 - active route README;
 - `research/RHRC/RESEARCH_LEADS.md` **or** a newer post-green delta when lead/status memory changes;
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`;
-- dead-route and obstruction ledgers when their classifications change;
+- dead-route and obstruction ledgers when classifications change;
 - `VALIDATION_PROTOCOL.md` when validation semantics change;
 - `control_v2/CONTROL_STATE.json` when theorem/control anchors or the control frontier change materially;
 - `control_v2/ACTION_REGISTRY.json` when the executable research frontier changes.
@@ -44,13 +44,6 @@ Dated post-green delta files remain historical evidence and must not be rewritte
 ### Historical settlements
 
 PR-specific settlement and dated audit files record what was known at that time. Do not rewrite their mathematical history merely to make them look current.
-
-If necessary add a short banner:
-
-```text
-HISTORICAL SETTLEMENT
-Current authority: live Lean/CI + registries + active route README.
-```
 
 ### Immutable provenance snapshots
 
@@ -73,12 +66,13 @@ The repository keeps separate anchors when needed:
 
 A control-only PR does not advance theorem authority. A theorem-only PR does not automatically advance Control-v2 semantics.
 
-### Current synchronized anchors after PR #119
+### Current synchronized anchors after PR #122
 
 ```text
-theorem-state anchor = PR #119 merge d4175d2bb305e62863f593824b3f40e921a46ee6
-theorem tree = 1985472ac470822af279044261fa365fb9bb5535
-E3-A exact canonical negative secular root/eigenmode equivalence = PROVED / MERGED
+theorem-state anchor = PR #122 merge b2d1210902d430f3cdd3c24c2961ab843469b5d6
+validated theorem head = 9c8154e3ea7a5762f8e65d508dc68bb9246db869
+theorem tree = db51419fb7cc8b2e3dbe5cf2e770390086db9862
+E3-B1 metric control + E4-A1 zero-resonance coupling classification = PROVED / MERGED
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
@@ -87,7 +81,7 @@ Control v2 / FFBBP v1.6 hardened research-control state = MERGED GREEN CONTROL I
 RH = OPEN
 ```
 
-PRs #118/#119 changed theorem files but did not change Control-v2 semantics. Therefore theorem authority advances to #119 while control-plane authority remains #117.
+PRs #118/#119/#121/#122 changed theorem files but did not change Control-v2 semantics. Therefore theorem authority advances to #122 while control-plane authority remains #117.
 
 Machine registries and compiler/CI evidence still outrank prose anchors.
 
@@ -103,8 +97,6 @@ Machine registries and compiler/CI evidence still outrank prose anchors.
 - convert historical or numerical clues into theorem evidence.
 
 `runner/terminal_answer.py` remains independent of Control v2. Historical clues are `requires_revalidation=true` by default. Counterfactual replay must be bounded by an `as_of` anchor, and external time-travel sources require availability metadata.
-
-Archaeology scope must be stated literally. `ALL_REFS_BEFORE_ANCHOR_IN_DECLARED_PATHS` means all historical refs in the declared Git search paths, not every repository byte.
 
 ## Update triggers
 
@@ -135,8 +127,6 @@ After every meaningful green result:
 8. update obstruction/dead-route ledgers when a reusable blocker changed;
 9. leave historical settlements untouched except for an authority banner when necessary.
 
-A green but unmerged PR remains branch evidence until merged.
-
 ## Validated import-closure law
 
 Repository presence, PR inclusion, merge inclusion and no-placeholder scanning are weaker states than Lean elaboration.
@@ -151,7 +141,9 @@ Historical examples:
 - PR #115 theoremized cubic shell incidence.
 - PR #117 hardened Control v2 without changing theorem declarations.
 - PR #118 theoremized the canonical cubic quotient coordinate and normalized Schur reduction.
-- PR #119 theoremized the exact negative secular root/eigenmode equivalence in the authoritative CCM/ExceptionalZero umbrella closures.
+- PR #119 theoremized the exact negative secular root/eigenmode equivalence.
+- PR #121 theoremized the pointwise explicit cubic Schur bridge.
+- PR #122 theoremized projected metric/resolvent control, real unconjugated scalarization, the first root metric bound and E4-A1 zero-resonance coupling classification.
 
 See `VALIDATION_PROTOCOL.md`.
 
@@ -175,23 +167,37 @@ For R003, `R003_PROMOTED_BINDINGS.json` is the declared production binding surfa
 
 Supporting theorem checks may exist without individual registry promotion. CI does not equate every theorem with a promoted claim; promotion intent must be explicit.
 
-## Current transition after PR #119
+## Current transition after PR #122
 
-The theorem frontier is **E3-B**, not E2.
+The theorem frontier is **E4-A2 zero-shift/range-endpoint classification**, with E3-C monotonicity and E4-B shifted-nullity in parallel.
 
-PR #119 proves the exact canonical quotient-secular root/eigenmode equivalence. The next job is to establish the metric bridge:
+The previous E3-B representation obstruction is closed:
 
 ```text
-projected predecessor symmetry
-  -> shifted coercivity / safe resolvent bounds
-  -> resolvent realness/positivity
-  -> exact pointwise identity between #119 quotient scalar and the normalized explicit Schur scalar.
+#119 exact quotient secular root detector
+  + #121 conjugated explicit Schur bridge
+  + #122 symmetry/realness
+  -> exact real pointwise scalar representation.
 ```
 
-A separate parallel obstruction is now explicit: predecessor nonnegativity does not exclude `ker A`. Zero resonance may make the shifted resolvent singular near zero, so E4 parity-nullity/kernel-coupling analysis is promoted in priority.
+The zero-resonance question is also sharper. For `A=P_W T|_W`, `b=Bc`, #122 proves
 
-Only after the explicit scalar bridge and zero-resonance behavior are controlled should the project attempt resolvent monotonicity or negative-root uniqueness. Even a uniqueness theorem would remain weaker than negative-root exclusion.
+```text
+Az=0 -> (<z,b>=0 <-> Tz=0).
+```
 
-The post-#119 implications and falsification plan are recorded in `RESEARCH_LEADS_POST_119_DELTA.md`.
+The next job is to determine what each branch implies for the zero-shift endpoint:
+
+```text
+b ⟂ ker A
+  -> attempt b ∈ range A and a solution-based finite endpoint without A^-1;
+
+some z∈ker A has <z,b>!=0
+  -> theoremize the zero-resonant contribution to R_lam b and the secular scalar near 0-.
+```
+
+Only after this and/or an independent scalar monotonicity theorem should the project attempt a CCM-specific negative-root exclusion theorem. Even root uniqueness remains weaker than exclusion.
+
+The post-#122 implications and falsification plan are recorded in `RESEARCH_LEADS_POST_122_DELTA.md`.
 
 **RH remains OPEN.**

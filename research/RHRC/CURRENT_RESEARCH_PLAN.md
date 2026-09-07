@@ -5,10 +5,11 @@
 ## Current authority split
 
 ```text
-theorem-state anchor = PR #119 merge d4175d2bb305e62863f593824b3f40e921a46ee6
-theorem tree = 1985472ac470822af279044261fa365fb9bb5535
-theorem-bearing merged through = PR #119
-FIRST-BAD-RIGIDITY-E3-A exact canonical secular equivalence = PROVED / MERGED
+theorem-state anchor = PR #122 merge b2d1210902d430f3cdd3c24c2961ab843469b5d6
+theorem tree = db51419fb7cc8b2e3dbe5cf2e770390086db9862
+validated theorem head = 9c8154e3ea7a5762f8e65d508dc68bb9246db869
+theorem-bearing merged through = PR #122
+E3-B1 metric layer + E4-A1 zero-resonance coupling classification = PROVED / MERGED
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
@@ -40,47 +41,45 @@ DONE
   E1 canonical cubic shell incidence / #115
   E2 canonical cubic quotient coordinate + normalized Schur / #118
   E3-A exact canonical secular root <-> negative-shift eigenmode / #119
+  E3-B2 exact explicit Schur scalar bridge / #121
+  E3-B1 projected symmetry + shifted coercivity/resolvent metric control / #122
+  E4-A1 exact ker(A) cubic-coupling classification / #122
 
-NOW — E3-B1: PROJECTED SYMMETRY / SHIFTED COERCIVITY
-  prove intrinsicPredecessorBlock symmetric in the exact repository inner product
-  prove A-lam I symmetric for real lam
-  prove quantitative coercivity for lam<0
-  derive ||R_lam b|| <= ||b||/(-lam)
-  prove resolvent quadratic value is real/nonnegative and safely bounded
+NOW — E4-A2: ZERO-SHIFT / RANGE-ENDPOINT SPLIT
+  Case A: coupling vanishes on ker A
+    prove b ⟂ ker A -> b ∈ range A for the finite symmetric projected block
+    obtain x0 with A x0 = b
+    define/prove the zero-shift endpoint algebraically, without A^-1
+  Case B: coupling does not vanish on ker A
+    isolate a kernel witness z with <z,b> != 0
+    theoremize the corresponding zero-resonant contribution to R_lam b
+    determine the induced sign/asymptotic restriction on the secular scalar as lam -> 0-
 
-NEXT — E3-B2: EXPLICIT SECULAR BRIDGE
-  define/use the normalized explicit Schur scalar on the canonical cubic shell
-  prove exact pointwise equality with #119 cubicSecularScalar
-  respect Mathlib convention: complex inner product linear in second argument
-  only after this bridge attach sign/monotonicity claims to the #119 scalar
+PARALLEL — E3-C: RESOLVENT IDENTITY / MONOTONICITY
+  prove finite-dimensional shifted resolvent identity
+  exploit #122 real exact scalar representation
+  prove strict monotonicity on lam<0 if justified
+  derive at most one negative root / negative-index control
+  never confuse uniqueness with absence
 
-PARALLEL / NEXT — E4-A: ZERO RESONANCE / PARITY NULLITY
-  prove generic rank-at-most-one shifted-nullity difference lemma
-  specialize to even/odd compressed canonical operators through algebraic D-equivalence
-  classify predecessor zero resonance
-  test whether b=Bc annihilates ker A
+PARALLEL — E4-B: PARITY SHIFTED-NULLITY
+  use finrank-at-most-one defect + algebraic D-equivalence
+  theoremize shifted-nullity difference without unitary assumptions
+  connect only where the exact first-bad state permits
 
-THEN — E3-B3: QUANTITATIVE PREDECESSOR-FLOOR THEOREM
-  introduce a theorem-level lower floor mu on A
-  for lam<mu prove resolvent bound with denominator mu-lam
-  define theorem-backed q_N and beta_N from canonical c_N
-  derive d_N(g_N+d_N) <= beta_N^2
-  use d_N <= beta_N^2/g_N only when g_N>0 is independently certified
-
-THEN — E3-C: RESOLVENT IDENTITY / MONOTONICITY
-  prove finite-dimensional shifted resolvent identity without calculus if possible
-  derive scalar monotonicity only on the exact real explicit secular representation
-  root uniqueness / negative-index control if justified
-  do not confuse uniqueness with absence
+PARALLEL — E3-B3: GENERAL LOWER-FLOOR DEFORMATION THEOREM
+  under mu ||w||^2 <= Re<Aw,w> and lam<mu,
+  prove the mu-lam resolvent bound
+  theoremize q_N, beta_N and d_N(g_N+d_N) <= beta_N^2
+  use d_N <= beta_N^2/g_N only after independent g_N>0
 
 TARGET
   CCM-specific negative-root exclusion at the global first-bad state
-  combine shell/parity/KKT/N-flow/zero-resonance constraints
+  combine shell/parity/KKT/N-flow/zero-resonance/endpoint constraints
   positivity / finite-to-infinite closure remains open until separately proved
 
 PARALLEL DIAGNOSTIC
   probe g_N=q_N-mu_N, beta_N, beta_N^2/g_N
-  kill the deformation-budget route cheaply if gap/coupling/summability fails
   no PRUNE without a complete assured infinite-tail certificate
 
 PARALLEL SOURCE
@@ -89,78 +88,116 @@ PARALLEL SOURCE
 RH OPEN
 ```
 
-## What PR #118 made possible
+## What #121/#122 made possible
 
-PR #118 makes the one-dimensional shell canonical rather than basis-dependent. The cubic shell coordinate is faithful, the successor/predecessor quotient is represented by one complex scalar, and genuine negative eigenmodes can be normalized so their shell component is exactly `intrinsicCubicShellPart`.
-
-This removes arbitrary shell scaling from every downstream Schur/resolvent quantity.
-
-## What PR #119 made possible
-
-For every safe negative shift the repository now has a canonical trial vector
+PR #121 proves the pointwise bridge
 
 ```text
-u_lam = -(A-lam I)^(-1)Bc + c
+F(lam)=star(S(lam))/<c,c>
 ```
 
-and residual
+between the exact quotient-coordinate root detector `F` and the explicit cubic Schur scalar
 
 ```text
-r_lam = T u_lam - lam u_lam.
+S(lam)=<Tc,c>-lam<c,c>-<R_lam Bc,Bc>.
 ```
 
-The predecessor coordinate of the residual is exactly zero. Therefore the canonical quotient coordinate detects the entire residual:
+PR #122 proves that `S(lam)` is real in the safe negative-shift regime and theoremizes the exact metric structure needed for scalar analysis. Hence
 
 ```text
-cubicSecularScalar(lam)=0
-  <-> r_lam=0
-  <-> u_lam is a genuine eigenmode
-  <-> exists a nonzero eigenmode at lam.
+F(lam)=S(lam)/<c,c>
 ```
 
-This changes the project from a one-way Schur necessary condition to an exact one-variable spectral criterion on the negative axis.
-
-## Why E3-B is the immediate next layer
-
-The exact #119 scalar is **not defined as** the #113/#118 inner-product Schur expression. Sign, realness and monotonicity of the explicit Schur expression cannot be transferred to `cubicSecularScalar` until a theorem identifies them pointwise.
-
-Projected predecessor symmetry and resolvent symmetry are the natural bridge because the canonical quotient coordinate uses
+and at a root
 
 ```text
-<c,s>/<c,c>
+0 <= Re(<Tc,c>-lam<c,c>)
+(-lam) * Re(<Tc,c>-lam<c,c>) <= ||Bc||^2.
 ```
 
-while the old block identity was derived using full-operator symmetry and cross terms with the repository's fixed complex inner-product orientation.
+The old representation barrier is therefore closed. Scalar sign/monotonicity work can now target the actual exact root detector rather than a merely related expression.
 
-The smallest useful E3-B package is therefore metric, not another shell abstraction.
+## E4-A1 changes the zero-resonance question
 
-## Zero resonance promoted to a primary obstruction
-
-The global-first-bad predecessor is only nonnegative. Thus
+Let
 
 ```text
-ker A
+A = intrinsicPredecessorBlock = P_W T|_W
+c = intrinsicCubicShellPart
+b = intrinsicShellToPredecessor c.
 ```
 
-may be nonzero. For `lam<0`, `A-lam I` is safely invertible, but the resolvent can diverge as `lam -> 0-` on the zero eigenspace.
-
-The high-information split is:
+For every `z` with `Az=0`, #122 proves
 
 ```text
-Case 1: A has a positive lower floor.
-  -> E3-B3 applies directly.
-
-Case 2: ker A != 0.
-  -> determine whether Bc is orthogonal to ker A.
-  -> if yes, the dangerous zero eigenspace decouples from the secular channel.
-  -> if no, exploit the resonant singular component as a separate rigidity signal.
+<z,b> = star(kappa(Tz)) <c,c>
 ```
 
-This is why E4-A moves forward in priority.
+and therefore
+
+```text
+<z,b>=0 <-> Tz=0.
+```
+
+So the previous vague question “does `b` annihilate `ker A`?” is now an exact dichotomy:
+
+```text
+all kernel couplings vanish
+  <-> every projected-kernel vector is already a successor zero mode;
+
+some kernel coupling is nonzero
+  <-> some projected-kernel vector has a nonzero shell image under the successor operator.
+```
+
+Neither branch is currently ruled out.
+
+## Why E4-A2 is the immediate next layer
+
+The zero-resonance branch now determines the endpoint geometry of the exact secular scalar.
+
+### Decoupled branch
+
+If `b ⟂ ker A`, finite-dimensional symmetry should give
+
+```text
+b ∈ range A.
+```
+
+This would provide an exact algebraic zero-shift witness `x0` satisfying `Ax0=b`, avoiding the forbidden move of pretending that `A^-1` exists at zero. The finite endpoint candidate becomes
+
+```text
+S(0-) = <Tc,c> - <x0,b>
+```
+
+once independence of the chosen solution and compatibility with the negative-shift limit are separately theoremized.
+
+### Resonant branch
+
+If some `z∈ker A` has `<z,b>!=0`, the shifted resolvent should carry a `1/(-lam)` component in the zero eigenspace. The fastest useful theorem is not a generic asymptotic slogan but an exact lower/sign statement sufficient to decide whether the explicit secular scalar is forced negative near zero.
+
+## E3-C monotonicity lane
+
+With symmetry and realness now proved, the expected finite-dimensional spectral picture is
+
+```text
+A >= 0,
+R_lam=(A-lam I)^(-1),
+lam<0.
+```
+
+The target scalar identity should imply that `S` is strictly decreasing in `lam` on the safe negative axis. This may be formalized by a resolvent identity rather than calculus.
+
+If successful:
+
+```text
+S has at most one negative root.
+```
+
+Permanent firewall: this does not exclude that one root.
 
 ## Quantitative deformation composition
 
-Once a lower predecessor floor `mu` is available, the intended exact theorem shape is
+The #122 `mu=0` root metric bound is now theorem-backed. The reusable generalization remains:
 
 ```text
 mu ||w||^2 <= Re <Aw,w>
@@ -175,21 +212,16 @@ implying
 Re <R_lam b,b> <= ||b||^2/(mu-lam).
 ```
 
-For the canonical shell vector `c`, define scale-free
+For canonical shell quantities
 
 ```text
 q_N = Re <Tc,c> / ||c||^2
-beta_N^2 = ||Bc||^2 / ||c||^2.
-```
-
-At a negative secular root, with
-
-```text
+beta_N^2 = ||Bc||^2 / ||c||^2
 d_N = mu_N-lam
 g_N = q_N-mu_N,
 ```
 
-the target inequality is
+the target remains
 
 ```text
 d_N(g_N+d_N) <= beta_N^2.
@@ -197,36 +229,32 @@ d_N(g_N+d_N) <= beta_N^2.
 
 The shortcut `d_N <= beta_N^2/g_N` requires independently certified `g_N>0`.
 
-All of this remains DERIVED / LEAD until Lean theoremizes the exact hypotheses.
+## Upstream cleanup candidate
 
-## Deformation-budget falsification gates
+`re_inner_shiftedIntrinsicPredecessorBlock_ge` currently accepts `hlam : lam < 0`, although the displayed quadratic comparison itself is produced from predecessor nonnegativity plus the algebraic shift. Negativity is needed downstream to obtain a positive coercive floor and perform cancellation/division. A later cleanup may split the algebraic inequality from the negative-shift corollary.
 
-- `q_N-mu_N` must remain usefully positive in the tested regime;
-- `beta_N` must exhibit useful decay;
-- `beta_N^2/(q_N-mu_N)` must admit a complete certified summable tail majorant, not merely tend to zero;
-- the result must survive both parity carriers and the required positive-L regime;
-- reduced/reference decision commutation remains required for decision-bearing reduced calculations;
-- a finite prefix, fitted tail or local residual is not an infinite-horizon certificate.
+This is a dependency-compression opportunity, not the current critical path.
 
-## E4-A falsification gates
+## Falsification gates
 
+- generic block systems with `A=0`, `b!=0` show that zero resonance can generate negative spectrum; do not assume resonance is benign;
+- `b=0` alone does not exclude a negative root if the shell diagonal is negative;
+- monotonicity gives uniqueness, not absence;
+- do not identify `ker A` with the predecessor-size compressed-operator kernel;
+- do not use successor positivity to prove the endpoint sign: that would be circular at the first-bad state;
 - D remains algebraic, not unitary/isometric;
-- derive nullity comparison from rank/range algebra, not Hermitian interlacing through D;
-- shifted kernel statements must use the exact transported operators at the same scalar;
-- zero-resonance conclusions must distinguish `ker A`, `ker T_even`, and `ker T_odd`;
-- do not assume `Bc` is orthogonal to `ker A`; test/prove it;
-- simultaneous parity resonance remains OPEN until separately classified.
+- no finite prefix, fitted tail or observed decay is an infinite-horizon certificate.
 
 ## Permanent claim boundary
 
-**PROVED:** through PR #119, including exact canonical negative secular root/eigenmode equivalence and the off-line-zero -> global-first-bad negative-root endpoint.
+**PROVED:** through PR #122, including the exact real explicit secular representation, projected metric/resolvent bounds, the first root metric inequality, and the E4-A1 kernel-coupling equivalence.
 
-**DERIVED / OPEN FORMALIZATION:** projected predecessor symmetry, shifted coercivity, resolvent positivity/bounds, pointwise explicit-Schur bridge, parity shifted-nullity difference.
+**DERIVED / OPEN FORMALIZATION:** finite-dimensional `range A = (ker A)⊥` specialization for the projected block; zero-shift solution-based endpoint; generic rank-one shifted-nullity comparison.
 
-**LEAD / HYPOTHESIS:** kernel-coupling decoupling, theorem-backed deformation budget, resolvent monotonicity/root uniqueness, CCM-specific root exclusion.
+**LEAD / HYPOTHESIS:** resonant near-zero secular forcing, strict secular monotonicity/root uniqueness, positive-floor deformation budget, CCM-specific root exclusion.
 
-**OPEN:** positivity, finite-to-infinite closure, RH.
+**OPEN:** which E4-A1 branch occurs, negative-root exclusion, positivity, finite-to-infinite closure, RH.
 
-Detailed post-green lead delta: `RESEARCH_LEADS_POST_119_DELTA.md`.
+Detailed post-green lead delta: `RESEARCH_LEADS_POST_122_DELTA.md`.
 
 **RH remains OPEN.**

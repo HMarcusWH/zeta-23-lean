@@ -2,7 +2,8 @@
 
 This ledger records reusable blockers that should shape future route design.
 
-> **Current theorem anchor:** merged PR #119, `d4175d2bb305e62863f593824b3f40e921a46ee6`.  
+> **Current theorem anchor:** merged PR #122, `b2d1210902d430f3cdd3c24c2961ab843469b5d6`.  
+> **Validated theorem head:** `9c8154e3ea7a5762f8e65d508dc68bb9246db869`.  
 > **Claim firewall:** RH remains OPEN.
 
 ## OBS-001 — TightMult information wall
@@ -170,7 +171,7 @@ Still not proved:
 
 ## OBS-020 — exact one-channel parity factorization is not unitary rank-one perturbation theory
 
-**Status:** PROJECT FIREWALL; FACTORIZATION CLOSED BY #112, CANONICAL QUOTIENT VISIBILITY PARTLY CLOSED BY #118, METRIC ESCAPES OPEN.
+**Status:** PROJECT FIREWALL; FACTORIZATION CLOSED BY #112, CANONICAL QUOTIENT VISIBILITY PARTLY CLOSED BY #118, METRIC TRANSFER THROUGH D STILL OPEN.
 
 #110/#112 prove algebraic one-channel / rank-at-most-one parity defect structure and exact pointwise cubic factorization. #118 proves that on the odd successor carrier `cubicDefectFunctional` is literally the canonical quotient coordinate of the exact intertwining defect.
 
@@ -182,25 +183,13 @@ Still not proved:
 - conjugated odd compression is self-adjoint in the original even-sector metric;
 - Hermitian rank-one interlacing, equal spectra or inertia transfer through D.
 
-**Current escape route:** use rank/kernel algebra for parity-nullity statements; establish metric compatibility separately before importing self-adjoint perturbation theory.
+**Current escape route:** use rank/kernel algebra for parity-nullity statements; do not import metric perturbation theory through D.
 
 ## OBS-021 — shifted Schur identity is not an exact secular criterion
 
 **Status:** HISTORICAL BLOCKER CLOSED BY PR #119; PERMANENT GENERIC-SCHUR WARNING REMAINS.
 
-PR #113 proved only the necessary first-bad identity
-
-```text
-(A-lam I)w = -Bs
-w = -(A-lam I)^(-1)Bs
-<Ts,s> - lam<s,s> - <(A-lam I)^(-1)Bs,Bs> = 0
-```
-
-for a genuine negative first-bad eigenmode.
-
-PR #118 canonically normalized the shell to the cubic direction.
-
-PR #119 closes the missing converse by constructing, for every safe `lam<0`, a canonical trial vector and full residual, then defining the secular scalar as the faithful quotient coordinate of that residual. It proves
+PR #113 proved only a necessary shifted Schur identity for a genuine negative first-bad eigenmode. PR #118 canonically normalized the shell. PR #119 closes the missing converse by constructing, for every safe `lam<0`, a canonical trial vector and full residual, then defining the secular scalar as the faithful quotient coordinate of that residual. It proves
 
 ```text
 cubicSecularScalar(lam)=0
@@ -208,42 +197,45 @@ cubicSecularScalar(lam)=0
   <-> exists nonzero eigenmode at lam.
 ```
 
-Therefore the historical blocker “Schur identity only necessary” is closed.
-
 **Permanent warning:** exact secular equivalence is still not a contradiction. Generic Hermitian block systems can have negative secular roots.
 
-## OBS-022 — quotient secular scalar is not yet the explicit Schur scalar
+## OBS-022 — quotient secular scalar versus explicit Schur scalar
 
-**Status:** CURRENT FORMALIZATION OBSTRUCTION / POST-#119 FRONTIER.
+**Status:** HISTORICAL BLOCKER CLOSED BY PR #121/#122; PERMANENT REPRESENTATION WARNING REMAINS.
 
 PR #119 defines
 
 ```text
-F(lam)=intrinsicCubicQuotientCoordinate(T u_lam - lam u_lam)
+F(lam)=intrinsicCubicQuotientCoordinate(T u_lam - lam u_lam).
 ```
 
-for the canonical shifted-resolvent trial vector.
-
-The older canonical cubic-shell Schur expression is
+The explicit cubic Schur scalar is
 
 ```text
 S(lam)=<Tc,c> - lam<c,c> - <R_lam Bc,Bc>.
 ```
 
-Current Lean proves `S(lam)=0` for genuine negative eigenmodes and proves `F(lam)=0` iff a genuine eigenmode exists. It does **not yet** prove a pointwise identity between `F` and the correctly normalized `S` for every safe negative shift.
+PR #121 proves the exact pointwise identity
 
-**Escape requirement:**
+```text
+F(lam)=star(S(lam))/<c,c>
+```
 
-1. prove projected predecessor symmetry in the exact repository inner product;
-2. prove shifted resolvent symmetry / real quadratic values;
-3. handle Mathlib's complex inner-product orientation exactly;
-4. theoremize the pointwise normalized identity.
+for the safe negative-shift regime, with `<c,c> != 0`.
 
-**Consequence:** do not transfer sign, reality or monotonicity from the explicit Schur expression to `cubicSecularScalar` until this bridge is green.
+PR #122 proves the required projected symmetry/resolvent metric facts and realness of `S`, so the bridge sharpens to
+
+```text
+F(lam)=S(lam)/<c,c>.
+```
+
+The old obstruction to transferring real scalar analysis to the exact #119 root detector is therefore closed.
+
+**Permanent warning:** the identity is theorem-backed only under its stated safe negative-shift/predecessor-nonnegativity hypotheses. Do not treat the two definitions as globally definitionally identical.
 
 ## OBS-023 — predecessor nonnegativity permits zero resonance
 
-**Status:** CURRENT STRUCTURAL OBSTRUCTION / POST-#119 FRONTIER.
+**Status:** CURRENT STRUCTURAL OBSTRUCTION; E4-A1 CLASSIFICATION CLOSED BY PR #122, BRANCH OUTCOME OPEN.
 
 Global-first-bad gives
 
@@ -251,25 +243,41 @@ Global-first-bad gives
 Re <Aw,w> >= 0,
 ```
 
-not a positive lower spectral gap.
+not a positive lower spectral gap. Thus `ker A` may be nontrivial. Although `A-lam I` is safely invertible for `lam<0`, the shifted resolvent can have a `1/(-lam)` singular component as `lam -> 0-`.
 
-Thus `ker A` may be nontrivial. Although `A-lam I` is safely invertible for `lam<0`, the shifted resolvent can have a `1/(-lam)` singular component as `lam -> 0-`.
-
-**Fast structural test:** determine whether the canonical shell coupling `b=Bc` annihilates the zero eigenspace:
+PR #122 proves the exact pointwise classification for
 
 ```text
-z in ker A -> <z,b>=0 ?
+A=P_W T|_W,
+b=Bc:
 ```
 
-If yes, the singular zero eigenspace decouples from the secular channel. If no, the resonant singular contribution may itself constrain negative roots.
+```text
+Az=0 -> (<z,b>=0 <-> T_(N+1) z=0).
+```
 
-**Parallel escape route:** use the existing same-space parity defect with finrank at most one to theoremize shifted-nullity comparison and classify simultaneous/zero resonance without assuming D is unitary.
+It also proves the quantified equivalence
+
+```text
+b annihilates ker A
+  <-> every z in ker A is already a genuine successor zero mode.
+```
+
+This is **not** a theorem that the coupling vanishes. The actual first-bad state may lie on either side.
+
+**Current escape split:**
+
+1. **Decoupled branch:** prove `b ⟂ ker A -> b ∈ range A` using finite-dimensional symmetry, obtain some `x0` with `Ax0=b`, and build a solution-based zero-shift endpoint without `A^-1`.
+2. **Resonant branch:** from a witness `z∈ker A` with `<z,b>!=0`, theoremize the zero-eigenspace contribution to `R_lam b` and its effect on `S(lam)` near `0-`.
+3. **Parallel:** use the same-space parity defect with finrank at most one for shifted-nullity comparison without unitary assumptions on D.
+
+**Semantic firewall:** `ker A` is the kernel of the projected successor predecessor block. It is not identified with the kernel of the predecessor-size compressed operator.
 
 ## OBS-024 — root uniqueness is not root exclusion
 
 **Status:** PERMANENT CLAIM FIREWALL.
 
-Even if a later E3-C theorem proves the canonical real secular function is strictly monotone and has at most one negative root, a single negative root may still exist.
+After #122 the exact root detector has a real explicit scalar representation, so strict monotonicity/root-count control is now a legitimate theorem target. Even if E3-C proves at most one negative root, a single negative root may still exist.
 
 **Escape requirement:** use additional CCM-specific information — shell/cubic/parity/KKT/N-flow structure, endpoint sign information, zero-resonance constraints, or an equivalent rigidity theorem — to exclude the remaining root.
 
