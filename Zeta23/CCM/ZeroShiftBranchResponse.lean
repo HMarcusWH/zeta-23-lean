@@ -76,7 +76,12 @@ theorem intrinsicPredecessorKernelPart_shiftedIntrinsicPredecessorBlock
         (intrinsicPredecessorBlock p L N y - (lam : ℂ) • y) = _
   rw [map_sub, map_smul,
     intrinsicPredecessorKernelPart_intrinsicPredecessorBlock_eq_zero]
-  exact zero_sub ((lam : ℂ) • intrinsicPredecessorKernelPart p L N y)
+  calc
+    0 - (lam : ℂ) • intrinsicPredecessorKernelPart p L N y =
+        -((lam : ℂ) • intrinsicPredecessorKernelPart p L N y) := zero_sub _
+    _ = (-lam : ℂ) • intrinsicPredecessorKernelPart p L N y := by
+      exact (neg_smul (lam : ℂ)
+        (intrinsicPredecessorKernelPart p L N y)).symm
 
 /-- E4-A3b core identity: after projection to `ker A`, the safe shifted
 resolvent has an exact denominator-free pole coefficient. -/
