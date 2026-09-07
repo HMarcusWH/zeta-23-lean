@@ -32,3 +32,4 @@ import Zeta23.ExceptionalZero.GlobalFirstBadCubicMetricResonance
 import Zeta23.ExceptionalZero.GlobalFirstBadZeroShiftSchurDichotomy
 import Zeta23.ExceptionalZero.GlobalFirstBadZeroShiftSchurEndpoint
 import Zeta23.ExceptionalZero.GlobalFirstBadZeroShiftShellResponse
+import Zeta23.ExceptionalZero.GlobalFirstBadZeroShiftBranchResponse
