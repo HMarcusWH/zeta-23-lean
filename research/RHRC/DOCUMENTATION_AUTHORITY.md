@@ -66,13 +66,13 @@ The repository keeps separate anchors when needed:
 
 A control-only PR does not advance theorem authority. A theorem-only PR does not automatically advance Control-v2 semantics.
 
-### Current synchronized anchors after PR #122
+### Current synchronized anchors after PR #125
 
 ```text
-theorem-state anchor = PR #122 merge b2d1210902d430f3cdd3c24c2961ab843469b5d6
-validated theorem head = 9c8154e3ea7a5762f8e65d508dc68bb9246db869
-theorem tree = db51419fb7cc8b2e3dbe5cf2e770390086db9862
-E3-B1 metric control + E4-A1 zero-resonance coupling classification = PROVED / MERGED
+theorem-state anchor = PR #125 merge 615437fd5854b4473471d9826b4d4787b2e8e42f
+validated theorem head = 533beb4a42fc96cd43a97e071c6e07e3178872b6
+theorem tree = 245bba07addba0c5ad85fcf1b1b4218b4432c427
+E4-A2 kernel/range zero-shift dichotomy + strict regular endpoint = PROVED / MERGED
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
@@ -81,7 +81,7 @@ Control v2 / FFBBP v1.6 hardened research-control state = MERGED GREEN CONTROL I
 RH = OPEN
 ```
 
-PRs #118/#119/#121/#122 changed theorem files but did not change Control-v2 semantics. Therefore theorem authority advances to #122 while control-plane authority remains #117.
+PRs #118/#119/#121/#122/#124/#125 changed theorem files but did not change Control-v2 semantics. Therefore theorem authority advances to #125 while control-plane authority remains #117.
 
 Machine registries and compiler/CI evidence still outrank prose anchors.
 
@@ -143,7 +143,9 @@ Historical examples:
 - PR #118 theoremized the canonical cubic quotient coordinate and normalized Schur reduction.
 - PR #119 theoremized the exact negative secular root/eigenmode equivalence.
 - PR #121 theoremized the pointwise explicit cubic Schur bridge.
-- PR #122 theoremized projected metric/resolvent control, real unconjugated scalarization, the first root metric bound and E4-A1 zero-resonance coupling classification.
+- PR #122 theoremized projected metric/resolvent control, real scalarization, the first root metric bound and E4-A1 coupling classification.
+- PR #124 theoremized projected kernel/range geometry, zero-shift solution canonicity and the exact resonant identity/bound.
+- PR #125 theoremized the canonical zero-shift endpoint, exact complete square and strict regular endpoint sign.
 
 See `VALIDATION_PROTOCOL.md`.
 
@@ -167,37 +169,32 @@ For R003, `R003_PROMOTED_BINDINGS.json` is the declared production binding surfa
 
 Supporting theorem checks may exist without individual registry promotion. CI does not equate every theorem with a promoted claim; promotion intent must be explicit.
 
-## Current transition after PR #122
+## Current transition after PR #125
 
-The theorem frontier is **E4-A2 zero-shift/range-endpoint classification**, with E3-C monotonicity and E4-B shifted-nullity in parallel.
+The theorem frontier is **E4-A3 branch rigidity**, with E4-B shifted-nullity and E3-C monotonicity in parallel.
 
-The previous E3-B representation obstruction is closed:
-
-```text
-#119 exact quotient secular root detector
-  + #121 conjugated explicit Schur bridge
-  + #122 symmetry/realness
-  -> exact real pointwise scalar representation.
-```
-
-The zero-resonance question is also sharper. For `A=P_W T|_W`, `b=Bc`, #122 proves
+The E4-A2 zero-shift problem is no longer open in its old form:
 
 ```text
-Az=0 -> (<z,b>=0 <-> Tz=0).
+#124: W=ker A⊕range A; regular zero-shift solve is canonical as a scalar;
+      resonant branch has exact identity + quantitative lower bound.
+
+#125: regular branch has an exact zero-shift Schur endpoint,
+      complete-square variational interpretation,
+      and Re S0<0 at the forced negative secular root.
 ```
 
-The next job is to determine what each branch implies for the zero-shift endpoint:
+The next job is not to re-prove range membership or endpoint sign. It is to expose the one-dimensional shell response in the regular branch, the exact kernel pole in the resonant branch, and then compose those with parity/KKT/cubic/N-flow structure.
+
+Permanent firewalls:
 
 ```text
-b ⟂ ker A
-  -> attempt b ∈ range A and a solution-based finite endpoint without A^-1;
-
-some z∈ker A has <z,b>!=0
-  -> theoremize the zero-resonant contribution to R_lam b and the secular scalar near 0-.
+Re S0<0 != contradiction
+resonance != contradiction
+T u0∈S != u0 eigenvector
+root uniqueness != root exclusion
 ```
 
-Only after this and/or an independent scalar monotonicity theorem should the project attempt a CCM-specific negative-root exclusion theorem. Even root uniqueness remains weaker than exclusion.
-
-The post-#122 implications and falsification plan are recorded in `RESEARCH_LEADS_POST_122_DELTA.md`.
+The current post-#125 implications and falsification plan are recorded in `RESEARCH_LEADS_POST_125_DELTA.md`.
 
 **RH remains OPEN.**
