@@ -75,11 +75,8 @@ theorem intrinsicPredecessorKernelPart_shiftedIntrinsicPredecessorBlock
     intrinsicPredecessorKernelPart p L N
         (intrinsicPredecessorBlock p L N y - (lam : ℂ) • y) = _
   rw [map_sub, map_smul,
-    intrinsicPredecessorKernelPart_intrinsicPredecessorBlock_eq_zero,
-    zero_sub]
-  exact
-    (neg_smul (lam : ℂ)
-      (intrinsicPredecessorKernelPart p L N y)).symm
+    intrinsicPredecessorKernelPart_intrinsicPredecessorBlock_eq_zero]
+  simp only [sub_eq_add_neg, zero_add, neg_smul]
 
 /-- E4-A3b core identity: after projection to `ker A`, the safe shifted
 resolvent has an exact denominator-free pole coefficient. -/
@@ -363,6 +360,13 @@ theorem cubicZeroShiftShellResponseScalar_re_neg_of_explicit_root
   have hnormpos :
       0 < ‖(c : euclideanParityBoundaryFlatSubspace p (N + 1))‖ ^ 2 := by
     positivity
+  have hinner :
+      inner ℂ
+          (c : euclideanParityBoundaryFlatSubspace p (N + 1))
+          (c : euclideanParityBoundaryFlatSubspace p (N + 1)) =
+        ((‖(c : euclideanParityBoundaryFlatSubspace p (N + 1))‖ ^ 2 : ℝ) : ℂ) := by
+    rw [inner_self_eq_norm_sq_to_K]
+    norm_cast
   have hre := congrArg Complex.re hendpoint
   change
     Complex.re (cubicZeroShiftSchurEndpoint p L N x₀) =
@@ -375,7 +379,7 @@ theorem cubicZeroShiftShellResponseScalar_re_neg_of_explicit_root
       Complex.re (cubicZeroShiftSchurEndpoint p L N x₀) =
         Complex.re sigma *
           ‖(c : euclideanParityBoundaryFlatSubspace p (N + 1))‖ ^ 2 := by
-    rw [hre, inner_self_eq_norm_sq_to_K]
+    rw [hre, hinner]
     simp [Complex.mul_re]
   rw [hre'] at hSneg
   nlinarith
