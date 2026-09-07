@@ -291,6 +291,7 @@ def intrinsicPredecessorRangeEquiv
     (intrinsicPredecessorRangeBlock p L N) ⟨?_, ?_⟩
   · exact intrinsicPredecessorRangeBlock_injective p L N
   · exact LinearMap.surjective_of_injective
+      (f := intrinsicPredecessorRangeBlock p L N)
       (intrinsicPredecessorRangeBlock_injective p L N)
 
 /-- Canonical zero-shift inverse, defined only on `range A`. -/
