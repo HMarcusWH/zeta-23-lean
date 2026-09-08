@@ -105,5 +105,6 @@ import Zeta23.CCM.QuadraticNormalMatrixMoment
 import Zeta23.CCM.CanonicalSourceMomentAtoms
 import Zeta23.CCM.SourceMomentDecomposition
 import Zeta23.CCM.CrossParitySecularTransfer
+import Zeta23.CCM.KernelSourceTransport
 import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.ClaimBindings
