@@ -229,6 +229,7 @@ theorem reverseCoefficients_poleOddProfile
   ext i
   simp [reverseCoefficients, poleOddProfile, poleOddProfileReal,
     poleProfileDenominator]
+  ring
 
 /-- The odd pole profile pairs to zero with every even boundary-flat input. -/
 theorem poleOddProfile_dot_evenBoundaryFlat_eq_zero
