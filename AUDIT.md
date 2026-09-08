@@ -1,19 +1,19 @@
-# RHRC formal audit — theorem authority through PR #129; control authority through PR #117
+# RHRC formal audit — theorem authority through PR #131; control authority through PR #117
 
 > **RH remains OPEN.**
 
 ## Current authority split
 
 ```text
-live main after #129 = e1192857afed9f68fa4a13143ce690b62191b997
-live main tree = 2f042a3b0b3313e7c67d627a58a32d579d4e7ff7
+live main after #131 = 436d524d0cdeb5986d76dcbb988f771d19836c55
+live main tree = 5ad51fd877d51348f1af474b2864eb4ab3e0617a
 
-theorem-state anchor = PR #129 merge e1192857afed9f68fa4a13143ce690b62191b997
-validated theorem head = 440be3e5b6bf05e94ae2c65b1704d52d20acc9af
-validated theorem tree = 2f042a3b0b3313e7c67d627a58a32d579d4e7ff7
-theorem-bearing merged through = PR #129
-RHRC #838 = SUCCESS
-Permansson #611 = SUCCESS
+theorem-state anchor = PR #131 merge 436d524d0cdeb5986d76dcbb988f771d19836c55
+validated theorem head = b0026683bcbf233afa947c7f15b57bcc4ddf31e3
+validated theorem tree = 5ad51fd877d51348f1af474b2864eb4ab3e0617a
+theorem-bearing merged through = PR #131
+RHRC #854 = SUCCESS
+Permansson #627 = SUCCESS
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
@@ -22,7 +22,7 @@ Control v2 / FFBBP v1.6 hardened research-control state = MERGED GREEN CONTROL I
 RH = OPEN
 ```
 
-Live GitHub head + exact compiler/CI evidence outrank this prose. The exact #129 theorem head passed both authoritative workflows before merge, and the validated theorem tree is identical to the merged-main tree.
+Live GitHub head + exact compiler/CI evidence outrank this prose. The exact #131 theorem head passed both authoritative workflows before merge, and the validated theorem tree is identical to the merged-main tree.
 
 ## PR #112 — FIRST-BAD-RIGIDITY-D1
 
@@ -93,17 +93,11 @@ S0=<Tc,c>-<x0,b>
 u0=-x0+c
 ```
 
-with solution independence, zero predecessor coordinate of `T u0`, exact identity `<T u0,u0>=S0`, exact predecessor-fibre complete square, and at the forced negative explicit root
-
-```text
-Re S0 < 0.
-```
+with solution independence, zero predecessor coordinate of `T u0`, exact identity `<T u0,u0>=S0`, exact predecessor-fibre complete square, and at the forced negative explicit root `Re S0 < 0`.
 
 This is not regular-branch exclusion.
 
 ## PR #127 — FIRST-BAD-RIGIDITY-E4-A3a
-
-Exact theorem head: `3e0a55f397601389387b614bd4595be634d1e572`.
 
 **PROVED — special zero-shift shell response:** for the decoupled zero-shift trial vector, the specific image `T u0` is exactly its shell part. The canonical response scalar `sigma0` satisfies
 
@@ -112,19 +106,11 @@ sigma0 • c = T u0
 S0 = star(sigma0) * <c,c>.
 ```
 
-The conjugation is theorem-relevant because Mathlib's complex inner product is conjugate-linear in the first argument.
-
 **Not proved:** shell invariance of the full operator or that `u0` is an eigenvector.
 
 ## PR #128 — FIRST-BAD-RIGIDITY-E4-A3b
 
-Exact theorem head: `a31f174c5748695369200cdc20b6514016accadd`.
-
-**PROVED — regular branch:** at the same forced negative explicit root,
-
-```text
-Re sigma0 < 0.
-```
+**PROVED — regular branch:** at the same forced negative explicit root, `Re sigma0 < 0`.
 
 **PROVED — canonical kernel coordinate:** the predecessor kernel coordinate vanishes exactly on `range A`; for the safe shifted resolvent,
 
@@ -134,38 +120,13 @@ Re sigma0 < 0.
 
 For the cubic coupling `b=Bc`, define `k=K(b)`. The decoupled branch has `k=0`; the resonant branch has `k!=0` and the exact divided `1/(-lam)` kernel-pole formula for `lam<0`.
 
-**PROVED — ExceptionalZero composition:** a hypothetical off-line zero forces the same global-first-bad state into the strengthened regular/resonant classification.
-
 **Not proved:** exclusion of either branch.
 
 ## PR #129 — FIRST-BAD-RIGIDITY-E4-A3c
 
-Exact theorem head: `440be3e5b6bf05e94ae2c65b1704d52d20acc9af`.
-Merged main: `e1192857afed9f68fa4a13143ce690b62191b997`.
-Validated/merged tree: `2f042a3b0b3313e7c67d627a58a32d579d4e7ff7`.
-RHRC #838: SUCCESS. Permansson #611: SUCCESS.
+**PROVED — source-explicit cubic defect:** the cubic parity-defect coefficient is exactly the actual canonical quadratic source moment.
 
-**PROVED — source-explicit cubic defect:** `SourceExplicitCubicDefect.lean` defines the orthogonalized quadratic normal `centeredQuadraticNormal` and the canonical source moment `evenQuadraticSourceMoment`. The main endpoint is
-
-```text
-Zeta23.CCM.cubicDefectFunctional_eq_evenQuadraticSourceMoment
-```
-
-which proves, for the actual `canonicalSourceMatrix`, that the cubic parity-defect coefficient is exactly the quadratic source moment.
-
-**PROVED — exact cross-parity transport:** the compiler-audited theorem surface includes
-
-```text
-intrinsicCubicQuotientCoordinate_evenIndex
-cubicSecularResidual_eq_scalar_smul_intrinsicCubicShellPart
-cubicSecularTrialVector_odd_eq_evenIndex_sub_resolvent_forcing
-cubicSecularScalar_odd_eq_alpha_mul_even_add_gamma_mul_defect
-crossParitySecularGamma_eq_trial_cubic_overlap_div
-cubicSecularScalar_crossParity_source_transfer
-cubicSecularScalar_odd_eq_overlap_mul_source_of_even_root
-```
-
-The exact transfer has the mathematical form
+**PROVED — exact cross-parity transport:**
 
 ```text
 F_- = alpha * F_+ + Gamma * sourceMoment(u_+).
@@ -173,21 +134,66 @@ F_- = alpha * F_+ + Gamma * sourceMoment(u_+).
 
 The predecessor correction in the D-transported cubic shell is retained; D is never upgraded to unitary/isometric.
 
-**PROVED — global ExceptionalZero endpoint:**
+**PROVED — global ExceptionalZero endpoint:** a hypothetical off-line zero is forced to one global-first-bad finite state carrying the source-explicit parity certificate at the same negative explicit root.
+
+**Not proved:** useful sign/nonzeroness of `alpha`, `Gamma`, overlap or source moment; branch exclusion; negative-root exclusion; RH.
+
+## PR #131 — FIRST-BAD-RIGIDITY-E4-A4a
+
+Exact theorem head: `b0026683bcbf233afa947c7f15b57bcc4ddf31e3`.  
+Merged main: `436d524d0cdeb5986d76dcbb988f771d19836c55`.  
+Validated/merged tree: `5ad51fd877d51348f1af474b2864eb4ab3e0617a`.  
+RHRC #854: SUCCESS. Permansson #627: SUCCESS.
+
+**PROVED — exact production source decomposition:**
 
 ```text
-exists_globalFirstBad_crossParitySecularTransfer_of_offLine_zero
+canonicalSourceMatrix
+  = canonicalPoleMatrix
+    - canonicalArchMatrix
+    - canonicalPrimeMatrix.
 ```
 
-forces a hypothetical off-line zero to one global-first-bad finite state carrying the source-explicit parity certificate at the same negative explicit root. Even-root and odd-root cases are recorded without dividing by an unproved factor.
+The canonical archimedean channel is reduced safely through the corrected direct source normalization. The index-independent scalar correction is separated as a scalar identity and is annihilated by the active quadratic-normal observable.
 
-**Not proved:** useful sign/nonzeroness of `alpha`, `Gamma`, the overlap or source moment; regular/resonant exclusion; negative-root exclusion; RH.
+**PROVED — reduced arch split:**
+
+```text
+reducedCanonicalArchMatrix
+  = reducedCanonicalArchDiagonalMatrix
+    + reducedCanonicalArchOffDiagonalMatrix.
+```
+
+**PROVED — prime atomization:** the finite prime channel is an exact von-Mangoldt weighted finite sum of existing elementary `sourceMatrix` atoms at source coordinates `1 - log q / L`.
+
+**PROVED — pole factorization and parity cancellation:** the pole matrix has an exact rank-two profile factorization into even and odd profiles; the odd profile pairs to zero with every even boundary-flat input, leaving one surviving even-profile contribution in the active moment.
+
+**PROVED — A4a endpoint:**
+
+```text
+cubicDefectFunctional L K v
+  = explicitCanonicalSourceMoment L K v
+```
+
+for `0<L`, `2<=K`, and `v` in the exact even Euclidean boundary-flat sector, where
+
+```text
+explicitCanonicalSourceMoment
+  = poleEven
+    - reducedArchDiagonal
+    - reducedArchOffDiagonal
+    - finitePrimeAtomSum.
+```
+
+**Not proved:** any useful sign/nonzeroness of the explicit source moment, overlap, `Gamma`, or `alpha`; regular/resonant exclusion; negative-root exclusion; RH.
+
+**Post-green derived warning:** the explicit source moment is linear in `v`. Therefore universal strict positivity/nonnegativity of the raw moment over the whole vector space cannot be the A4b mechanism; `v -> -v` reverses it. A useful constraint must be tied to the canonically oriented trial vector and/or composed with overlap/root/branch data.
 
 ## PR #117 — latest control-plane authority
 
 **CI-VERIFIED CONTROL INFRASTRUCTURE:** Control-v2 hardening, typed deformation-budget steps, horizon-certificate requirement, decision-commutation checks, archaeology-path binding, deterministic routing transparency, theorem/control anchor separation.
 
-PRs #118/#119/#121/#122/#124/#125/#127/#128/#129 changed theorem state but did not change Control-v2 semantics. Therefore the separate control-plane anchor remains #117.
+PRs #118/#119/#121/#122/#124/#125/#127/#128/#129/#131 changed theorem state but did not change Control-v2 semantics. Therefore the separate control-plane anchor remains #117.
 
 ## Current formal state
 
@@ -208,35 +214,38 @@ canonical resonant kernel coordinate / exact pole                       PROVED /
 cubic defect = canonical quadratic source moment                        PROVED / #129
 exact cross-parity secular transfer                                     PROVED / #129
 off-line zero -> source-explicit global first-bad certificate           PROVED / #129
+exact canonical source-moment decomposition                             PROVED / #131
 
-useful sign/nonzeroness of source moment / Gamma / overlap               OPEN
-regular branch source-specific exclusion                                OPEN
-resonant branch source-specific exclusion                               OPEN
-negative-root exclusion                                                  OPEN
-explicit terminal RH bridge                                              OPEN
-RH                                                                        OPEN
+universal raw source-moment positivity                                  NOT A VIABLE TARGET / linearity
+useful compositional source/overlap constraint                          OPEN
+regular branch source-specific exclusion                               OPEN
+resonant branch source-specific exclusion                              OPEN
+negative-root exclusion                                                 OPEN
+explicit terminal RH bridge                                             OPEN
+RH                                                                       OPEN
 ```
 
 ## Current research frontier
 
-### E4-A4 — canonical-source branch exclusion
+### E4-A4b — regular-branch canonical-source test
 
-The shell response, kernel pole and exact parity transfer are now theorem-backed. Generic structural countermodels survive these kinds of constraints, so the next contradiction must use the actual canonical source formula, including the source diagonal/channel values exposed through the #129 quadratic moment.
+A4a is closed. The next theorem should compose the #131 explicit pole/arch/prime source formula directly into the #129 cross-parity root interface and then ask what source-sensitive invariant can constrain the canonical first-bad trial vector.
 
-Primary tasks:
+Highest-leverage first tranche:
 
-1. exact decomposition of `evenQuadraticSourceMoment` through the production `canonicalSourceMatrix` formula;
-2. source-specific regular-branch incompatibility;
-3. source-specific resonant-branch incompatibility;
-4. composition into global first-bad negative-root exclusion.
+1. source-expanded root transfer;
+2. named linearity/negation/scalar-covariance lemmas for the explicit source moment;
+3. the elementary one-parameter `sourceMatrix omega` quadratic-normal observable;
+4. exact endpoint zeros at `omega=0,1`;
+5. only then a source-specific factorization/sign/real-part theorem on the canonically oriented regular state.
 
-### E4-B — parity shifted-nullity
+### E4-A4c — resonant source test
 
-Still parallel. Use finite-dimensional rank/kernel algebra only; do not import unitary interlacing through D.
+Still open. Combine the exact kernel pole, predecessor nonnegativity and the same source-expanded parity equation.
 
-### E3-C — resolvent identity / monotonicity
+### E4-B / E3-C / E3-B3
 
-Still parallel. At most one negative root remains strictly weaker than no negative root.
+Remain parallel. Shifted-nullity and monotonicity may constrain the state but must not displace source-sensitive A4 unless they add genuinely new information. At most one negative root remains weaker than no negative root.
 
 ## Permanent firewalls
 
@@ -249,11 +258,12 @@ Still parallel. At most one negative root remains strictly weaker than no negati
 - no `A^-1` at zero;
 - `Re S0<0` and `Re sigma0<0` are not branch exclusion;
 - a canonical `1/(-lam)` kernel pole is classification, not contradiction;
-- #129 does not prove source-moment, overlap, `alpha` or `Gamma` sign/nonzeroness;
+- #129/#131 do not prove source-moment, overlap, `alpha` or `Gamma` sign/nonzeroness;
+- universal raw source-moment positivity is incompatible with the linear source observable except in a degenerate zero-functional sense;
 - generic structural countermodels do not refute the actual canonical source matrix;
 - root uniqueness remains weaker than root exclusion;
-- no source-normalization, promoted-binding, negative-root exclusion or RH change is implied by #127-#129.
+- no source-normalization, promoted-binding, negative-root exclusion or RH change is implied by #127-#131.
 
-Detailed current post-green implications: `research/RHRC/RESEARCH_LEADS_POST_129_DELTA.md`.
+Detailed current post-green implications: `research/RHRC/RESEARCH_LEADS_POST_131_DELTA.md`.
 
 **RH remains OPEN.**
