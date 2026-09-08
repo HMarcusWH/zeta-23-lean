@@ -21,12 +21,12 @@ class ControlV2Tests(unittest.TestCase):
         self.assertFalse(boundary["may_emit_terminal_rh_status"])
         self.assertFalse(boundary["may_promote_lean_theorem"])
 
-    def test_state_has_post_129_theorem_and_post_117_control_anchors(self):
+    def test_state_has_post_131_theorem_and_post_117_control_anchors(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 129)
+        self.assertEqual(state.anchor.pr, 131)
         self.assertEqual(
             state.anchor.merge_commit,
-            "e1192857afed9f68fa4a13143ce690b62191b997",
+            "436d524d0cdeb5986d76dcbb988f771d19836c55",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -35,7 +35,7 @@ class ControlV2Tests(unittest.TestCase):
         )
         self.assertNotEqual(state.anchor.merge_commit, state.control_anchor.merge_commit)
         self.assertEqual(state.terminal_claim, "RH_OPEN")
-        self.assertEqual(state.frontier_id, "FIRST_BAD_RIGIDITY_E4_A4_SOURCE_EXCLUSION")
+        self.assertEqual(state.frontier_id, "FIRST_BAD_RIGIDITY_E4_A4B_REGULAR_SOURCE_TEST")
 
     def test_router_is_deterministic_non_authoritative_and_transparent(self):
         state = load_research_state()
@@ -92,7 +92,7 @@ class ControlV2Tests(unittest.TestCase):
         self.assertEqual(set(calls), unique_concepts)
 
         e4a4_ids = (
-            "E4_A4_SOURCE_MOMENT_DECOMPOSITION",
+            "E4_A4_SOURCE_EXPANDED_ROOT_INTERFACE",
             "E4_A4_REGULAR_SOURCE_EXCLUSION",
             "E4_A4_RESONANT_SOURCE_EXCLUSION",
             "E4_A4_GLOBAL_FIRST_BAD_EXCLUSION",
