@@ -14,7 +14,7 @@
   "actions": {
     "E4_A4_SOURCE_MOMENT_DECOMPOSITION": {
       "kind": "THEOREM_ATTEMPT",
-      "concept_id": "cubic_normalized_schur",
+      "concept_id": "canonical_source_exclusion",
       "retro_search_required": true,
       "first_break_required": true,
       "decision_commutation_required": false,
@@ -46,7 +46,7 @@
     },
     "E4_A4_REGULAR_SOURCE_EXCLUSION": {
       "kind": "THEOREM_ATTEMPT",
-      "concept_id": "cubic_normalized_schur",
+      "concept_id": "canonical_source_exclusion",
       "retro_search_required": true,
       "first_break_required": true,
       "decision_commutation_required": false,
@@ -78,7 +78,7 @@
     },
     "E4_A4_RESONANT_SOURCE_EXCLUSION": {
       "kind": "THEOREM_ATTEMPT",
-      "concept_id": "parity_resonance",
+      "concept_id": "canonical_source_exclusion",
       "retro_search_required": true,
       "first_break_required": true,
       "decision_commutation_required": false,
@@ -110,7 +110,7 @@
     },
     "E4_A4_GLOBAL_FIRST_BAD_EXCLUSION": {
       "kind": "THEOREM_ATTEMPT",
-      "concept_id": "cubic_normalized_schur",
+      "concept_id": "canonical_source_exclusion",
       "retro_search_required": true,
       "first_break_required": true,
       "decision_commutation_required": false,
