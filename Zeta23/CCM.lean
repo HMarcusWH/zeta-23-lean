@@ -99,5 +99,7 @@ import Zeta23.CCM.ZeroShiftSchurDichotomy
 import Zeta23.CCM.ZeroShiftSchurEndpoint
 import Zeta23.CCM.ZeroShiftShellResponse
 import Zeta23.CCM.ZeroShiftBranchResponse
+import Zeta23.CCM.SourceExplicitCubicDefect
+import Zeta23.CCM.CrossParitySecularTransfer
 import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.ClaimBindings

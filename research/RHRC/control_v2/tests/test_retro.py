@@ -1,5 +1,6 @@
 import hashlib
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -17,25 +18,30 @@ from control_v2.retro.search import DEFAULT_GIT_SEARCH_PATHS, search_concept
 
 
 class RetroTests(unittest.TestCase):
-    def _git(self, repo: Path, *args: str) -> str:
-        proc = subprocess.run(["git", *args], cwd=repo, check=True, capture_output=True, text=True)
+    def _git(self, repo: Path, *args: str, commit_date: str | None = None) -> str:
+        env = os.environ.copy()
+        if commit_date is not None:
+            env.update(GIT_AUTHOR_DATE=commit_date, GIT_COMMITTER_DATE=commit_date)
+        proc = subprocess.run(
+            ["git", *args], cwd=repo, env=env, check=True, capture_output=True, text=True
+        )
         return proc.stdout.strip()
 
     def _fixture_repo(self) -> tuple[tempfile.TemporaryDirectory, Path, str, str]:
         td = tempfile.TemporaryDirectory()
         repo = Path(td.name)
-        self._git(repo, "init")
+        self._git(repo, "init", "--initial-branch=main")
         self._git(repo, "config", "user.email", "test@example.com")
         self._git(repo, "config", "user.name", "RHRC Test")
         (repo / "research" / "RHRC").mkdir(parents=True)
         p = repo / "research" / "RHRC" / "old.md"
         p.write_text("residual headroom appears here\n", encoding="utf-8")
         self._git(repo, "add", ".")
-        self._git(repo, "commit", "-m", "old clue")
+        self._git(repo, "commit", "-m", "old clue", commit_date="2001-01-01T00:00:00Z")
         old = self._git(repo, "rev-parse", "HEAD")
         p.write_text("residual headroom appears here\nfuture resonance clue\n", encoding="utf-8")
         self._git(repo, "add", ".")
-        self._git(repo, "commit", "-m", "future clue")
+        self._git(repo, "commit", "-m", "future clue", commit_date="2001-01-03T00:00:00Z")
         new = self._git(repo, "rev-parse", "HEAD")
         return td, repo, old, new
 
@@ -71,9 +77,13 @@ class RetroTests(unittest.TestCase):
         branch_file = repo / "research" / "RHRC" / "branch.md"
         branch_file.write_text("detectability budget branch clue\n", encoding="utf-8")
         self._git(repo, "add", ".")
-        self._git(repo, "commit", "-m", "unmerged historical clue")
+        # Git archaeology uses commit time, not the order fixture commits are made.
+        self._git(
+            repo, "commit", "-m", "unmerged historical clue",
+            commit_date="2001-01-02T00:00:00Z",
+        )
         branch_commit = self._git(repo, "rev-parse", "HEAD")
-        self._git(repo, "checkout", "master")
+        self._git(repo, "checkout", "main")
         anchor = self._git(repo, "rev-parse", "HEAD")
         receipt = search_concept(
             repo_root=repo,
@@ -84,6 +94,28 @@ class RetroTests(unittest.TestCase):
         self.assertEqual(receipt.search_scope, "ALL_REFS_BEFORE_ANCHOR_IN_DECLARED_PATHS")
         self.assertEqual(receipt.search_paths, DEFAULT_GIT_SEARCH_PATHS)
         self.assertTrue(any(hit.source_commit == branch_commit for hit in receipt.hits))
+
+    def test_archaeology_excludes_unmerged_branch_after_anchor(self):
+        td, repo, old, anchor = self._fixture_repo()
+        self.addCleanup(td.cleanup)
+        self._git(repo, "checkout", "-b", "future-unmerged", old)
+        branch_file = repo / "research" / "RHRC" / "branch.md"
+        branch_file.write_text("detectability budget future branch clue\n", encoding="utf-8")
+        self._git(repo, "add", ".")
+        self._git(
+            repo, "commit", "-m", "unmerged future clue",
+            commit_date="2001-01-04T00:00:00Z",
+        )
+        branch_commit = self._git(repo, "rev-parse", "HEAD")
+        self._git(repo, "checkout", "main")
+        receipt = search_concept(
+            repo_root=repo,
+            concept_id="deformation_budget",
+            as_of_ref=anchor,
+            aliases_path=RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json",
+        )
+        self.assertTrue(receipt.hits)
+        self.assertTrue(all(hit.source_commit != branch_commit for hit in receipt.hits))
 
     def test_receipt_hash_binds_declared_paths(self):
         td, repo, old, _ = self._fixture_repo()
