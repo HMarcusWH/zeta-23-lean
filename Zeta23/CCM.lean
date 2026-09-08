@@ -100,6 +100,10 @@ import Zeta23.CCM.ZeroShiftSchurEndpoint
 import Zeta23.CCM.ZeroShiftShellResponse
 import Zeta23.CCM.ZeroShiftBranchResponse
 import Zeta23.CCM.SourceExplicitCubicDefect
+import Zeta23.CCM.CanonicalSourceChannels
+import Zeta23.CCM.QuadraticNormalMatrixMoment
+import Zeta23.CCM.CanonicalSourceMomentAtoms
+import Zeta23.CCM.SourceMomentDecomposition
 import Zeta23.CCM.CrossParitySecularTransfer
 import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.ClaimBindings
