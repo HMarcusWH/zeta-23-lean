@@ -5,14 +5,14 @@
 ## Current authority snapshot
 
 ```text
-live main after PR #129 = e1192857afed9f68fa4a13143ce690b62191b997
-live main tree = 2f042a3b0b3313e7c67d627a58a32d579d4e7ff7
+live main after PR #131 = 436d524d0cdeb5986d76dcbb988f771d19836c55
+live main tree = 5ad51fd877d51348f1af474b2864eb4ab3e0617a
 
-theorem-state anchor = PR #129 merge e1192857afed9f68fa4a13143ce690b62191b997
-validated theorem head = 440be3e5b6bf05e94ae2c65b1704d52d20acc9af
-validated theorem tree = 2f042a3b0b3313e7c67d627a58a32d579d4e7ff7
-RHRC #838 = SUCCESS
-Permansson #611 = SUCCESS
+theorem-state anchor = PR #131 merge 436d524d0cdeb5986d76dcbb988f771d19836c55
+validated theorem head = b0026683bcbf233afa947c7f15b57bcc4ddf31e3
+validated theorem tree = 5ad51fd877d51348f1af474b2864eb4ab3e0617a
+RHRC #854 = SUCCESS
+Permansson #627 = SUCCESS
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
@@ -44,8 +44,10 @@ exact one-dimensional zero-shift shell response                       PROVED / #
 signed regular response + canonical resonant kernel pole              PROVED / #128
 source-explicit cubic defect + cross-parity secular transfer          PROVED / #129
 off-line zero -> source-explicit global first-bad certificate         PROVED / #129
+exact canonical source-moment decomposition                           PROVED / #131
 
-E4-A4 canonical-source branch exclusion                               NOW
+E4-A4b regular-branch source test                                     NOW
+E4-A4c resonant-branch source test                                    NEXT / PARALLEL
 E4-B parity shifted-nullity comparison                                PARALLEL
 E3-C resolvent monotonicity / root uniqueness                         PARALLEL
 E3-B3 positive-floor deformation theorem                              PARALLEL / OPEN FORMALIZATION
@@ -54,7 +56,7 @@ explicit terminal RH bridge                                           OPEN
 RH                                                                     OPEN
 ```
 
-## Exact post-#129 finite state
+## Exact post-#131 finite state
 
 A hypothetical off-line zero is reduced to one global-first-bad finite state carrying:
 
@@ -69,9 +71,10 @@ A hypothetical off-line zero is reduced to one global-first-bad finite state car
 - the exact regular/resonant branch package;
 - the #127 pure-shell response of the regular zero-shift image;
 - the #128 canonical kernel coordinate and exact resonant `1/(-lam)` pole;
-- the #129 source-explicit parity certificate.
+- the #129 source-explicit cross-parity certificate;
+- the #131 exact pole/arch/prime decomposition of the canonical source moment.
 
-The branch data are now:
+The branch data remain:
 
 ```text
 REGULAR:
@@ -91,56 +94,61 @@ RESONANT:
   plus the earlier pointwise kernel witness / identity / bound.
 ```
 
-Across parity, with `u_+` the canonical even trial vector and `sourceMoment` the #129 canonical quadratic source moment,
+Across parity,
 
 ```text
 F_- = alpha * F_+ + Gamma * sourceMoment(u_+).
 ```
 
-`Gamma` has an exact odd trial/cubic overlap representation. If the forced root is even, `F_+=0` and the odd scalar is the exact overlap-times-source product. If the forced root is odd, `F_-=0` and the full balance is retained without division.
+PR #131 now identifies the source term with
+
+```text
+explicitCanonicalSourceMoment
+  = poleEven
+    - reducedArchDiagonal
+    - reducedArchOffDiagonal
+    - finitePrimeAtomSum.
+```
+
+The index-independent archimedean scalar is annihilated by this observable, and the odd pole profile pairs to zero against every even boundary-flat input.
 
 This is the strongest current finite rigidity/source-exposure package. It is not branch exclusion, negative-root exclusion or RH.
 
-## Why the frontier moved to E4-A4
+## Why the frontier moved from A4a to A4b
 
-The post-#128 falsification pass constructed generic and centered-grid structural countermodels that retain the relevant Schur/shell/resonance/parity/KKT/displacement geometry while still admitting a bad successor state. Therefore the project should not spend another theorem tranche proving a contradiction from generic block structure alone.
+A4a is closed by #131. The production source formula is no longer opaque at the quadratic-normal interface.
 
-PR #129 exposes the first clearly source-specific scalar in the active parity route:
+The post-green reading also exposes a route constraint: `explicitCanonicalSourceMoment L K v` is linear in `v`. Therefore universal strict positivity/nonnegativity of the raw source moment over the whole even boundary-flat vector space cannot be the exclusion mechanism; `v -> -v` reverses it, and complex phase covariance gives the same warning more generally.
 
-```text
-evenQuadraticSourceMoment L K v
-  = <n2, canonicalSourceMatrix(L,K) v> / <n2,n2>
-  = cubicDefectFunctional L K v.
-```
-
-The next theorem must use the actual `canonicalSourceMatrix` formula, not merely its Hermitianity, parity, displacement rank or abstract block decomposition.
+This does not rule out source-sensitive constraints on the canonically oriented first-bad secular trial vector. It redirects A4b toward a **compositional invariant** involving the source decomposition together with the canonical overlap / `Gamma`, root parity, and branch equations.
 
 ## Current execution priority
 
-1. **E4-A4a — source moment decomposition.** Expand the production `canonicalSourceMatrix` inside the #129 source moment and theoremize exact cancellations/channel decomposition before attempting inequalities.
-2. **E4-A4b — regular branch source test.** Combine `k=0`, `Re sigma0<0`, cross-parity transfer and the source moment to seek a canonical-source incompatibility. Do not assume any factor nonzero.
-3. **E4-A4c — resonant branch source test.** Combine `k!=0`, the exact pole, parity transfer and the source moment. Test whether the actual source formula can support the resonant state.
-4. **E4-A4d — global first-bad exclusion.** Only after both branches are excluded should the project theoremize no canonical first-bad negative root.
+1. **E4-A4b-0 — source-expanded root interface.** Compose #131 directly into the #129 cross-parity/root theorems; theoremize linearity/negation/scalar covariance of the explicit source moment; isolate the elementary source-atom observable; theoremize its endpoint zeros at `omega=0,1`.
+2. **E4-A4b — regular branch source test.** Combine `k=0`, `Re sigma0<0`, predecessor nonnegativity, overlap/source transfer and the explicit pole/arch/prime formula. Seek contradiction or a strictly smaller canonical regular class.
+3. **E4-A4c — resonant branch source test.** Combine `k!=0`, the exact pole, predecessor nonnegativity, parity transfer and the same explicit source decomposition.
+4. **E4-A4d — global first-bad exclusion.** Only after both actual canonical branches are excluded should the project theoremize no negative first-bad root.
 5. **E4-B / E3-C / E3-B3** remain parallel only where they add information not already falsified by generic structural countermodels.
 
 The source-faithful `G1-B1B -> G1-final -> S-NEG -> G23` lane remains a parallel cross-check.
 
-## Post-#129 falsification rule
+## Post-#131 falsification rule
 
-A proposed root-exclusion theorem should be attacked against the known structural fixtures first.
+A proposed source inequality should be attacked first with:
 
-If the argument also excludes arbitrary reversal-symmetric diagonal perturbations preserving the displacement identity, then either:
+- `v -> -v` and complex phase rotation;
+- source moment zero, overlap zero, `Gamma=0`, `alpha=0`;
+- the elementary atom at and near `omega=0,1`;
+- the known post-#129 generic structural fixtures;
+- diagonal compatibility if attempting to unify the arch off-diagonal channel with prime divided-difference atoms.
 
-- the proof has found a genuinely stronger invariant not represented in those fixtures; or
-- it is silently using an assumption that must be identified.
-
-Generic countermodels are **EXPERIMENTAL SIGNAL / regression fixtures**, not realizable zeta configurations and not counterexamples to the canonical CCM matrix.
+Generic countermodels remain **EXPERIMENTAL SIGNAL / regression fixtures**, not realizable zeta configurations and not counterexamples to the canonical CCM matrix.
 
 ## Control-v2 authority
 
 `research/RHRC/control_v2/` remains additive research-control infrastructure only. It may rank actions, select first-break falsifiers, record archaeology/replay evidence and build fail-closed deformation-budget certificates. It may not write theorem authority, promote claims, change `BOUNDARY.json` terminal status or emit RH.
 
-The control-plane anchor remains #117 because #118/#119/#121/#122/#124/#125/#127/#128/#129 changed theorem state but not controller semantics.
+The control-plane anchor remains #117 because #118/#119/#121/#122/#124/#125/#127/#128/#129/#131 changed theorem state but not controller semantics.
 
 ## Permanent firewalls
 
@@ -155,18 +163,20 @@ The control-plane anchor remains #117 because #118/#119/#121/#122/#124/#125/#127
 - no `A^-1` at zero.
 - `Re S0<0` and `Re sigma0<0` are not root exclusion.
 - the exact resonant pole is not automatically contradictory.
-- #129 proves no useful sign/nonzeroness for `alpha`, `Gamma`, overlap or source moment.
+- #129/#131 prove no useful sign/nonzeroness for `alpha`, `Gamma`, overlap or source moment.
+- universal raw source-moment positivity is not a viable theorem target for this linear observable.
 - no finite/fitted deformation tail is proof of complete future control.
-- no source-normalization, promoted-binding, negative-root exclusion or RH change follows automatically from #127-#129.
+- no source-normalization, promoted-binding, negative-root exclusion or RH change follows automatically from #127-#131.
 
 ## Current research records
 
 - `CURRENT_RESEARCH_PLAN.md` — execution order and gates.
-- `RESEARCH_LEADS_POST_129_DELTA.md` — current post-green implications and falsification targets.
-- `RESEARCH_LEADS.md` — accumulated historical option memory; newer deltas supersede stale per-entry currentness.
+- `RESEARCH_LEADS_POST_131_DELTA.md` — current post-green implications and falsification targets.
+- `RESEARCH_LEADS_POST_129_DELTA.md` — historical predecessor delta.
+- `RESEARCH_LEADS.md` — accumulated historical option memory.
 - `OBSTRUCTION_LEDGER.md` — reusable blockers and claim firewalls.
 - `DEAD_ROUTES.md` — route failures requiring changed-premise justification before revival.
-- `countermodels/POST_129_STRUCTURAL_COUNTERMODELS_2026_09_08.md` — post-#128/#129 falsification fixtures.
+- `countermodels/POST_129_STRUCTURAL_COUNTERMODELS_2026_09_08.md` — structural falsification fixtures.
 - `routes/R003_ccm_bridge/README.md` — active route theorem surface.
 - `control_v2/README.md` — research-control semantics.
 - `CLAIM_REGISTRY.json` / `R003_PROMOTED_BINDINGS.json` — machine promotion surface; do not infer promotion from prose.
