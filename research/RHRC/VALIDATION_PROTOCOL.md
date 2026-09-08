@@ -34,17 +34,17 @@ A skipped downstream step is not a passed gate.
 ## Current theorem/control validation anchors
 
 ```text
-theorem-state anchor = PR #129 merge e1192857afed9f68fa4a13143ce690b62191b997
-validated theorem head = 440be3e5b6bf05e94ae2c65b1704d52d20acc9af
-validated theorem tree = 2f042a3b0b3313e7c67d627a58a32d579d4e7ff7
-RHRC #838 = SUCCESS
-Permansson #611 = SUCCESS
+theorem-state anchor = PR #131 merge 436d524d0cdeb5986d76dcbb988f771d19836c55
+validated theorem head = b0026683bcbf233afa947c7f15b57bcc4ddf31e3
+validated theorem tree = 5ad51fd877d51348f1af474b2864eb4ab3e0617a
+RHRC #854 = SUCCESS
+Permansson #627 = SUCCESS
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
 ```
 
-The #129 theorem head and merged main have the same theorem tree. PR #117 remains the latest Control-v2 semantic authority because later theorem PRs changed mathematical state but not controller semantics.
+The #131 theorem head and merged main have the same theorem tree. PR #117 remains the latest Control-v2 semantic authority because later theorem PRs changed mathematical state but not controller semantics.
 
 ## Import/build closure law
 
@@ -54,7 +54,7 @@ A declaration is compiler-validated project theorem authority only if its module
 
 PR #103 is the canonical example: `ConstrainedParityGeometry.lean` was imported by `Zeta23.CCM` and compiled; `ParityBadness.lean` was merged but not imported and remained staged source until a later build closure consumed it.
 
-Current example: PR #129 imports the source-explicit/cross-parity modules through the CCM/ExceptionalZero umbrella closures; the exact theorem head passed both authoritative workflows before merge.
+Current example: PR #131 wires `CanonicalSourceChannels.lean`, `QuadraticNormalMatrixMoment.lean`, `CanonicalSourceMomentAtoms.lean`, and `SourceMomentDecomposition.lean` into the `Zeta23.CCM` umbrella. The exact theorem head passed the CCM build, ExceptionalZero build, no-placeholder gate, RHRC source/normalization checks, and Permansson verification before merge.
 
 ## Axiom inspection
 
@@ -81,7 +81,7 @@ Zeta23/CCM/ClaimBindings.lean
 
 `promoted_binding_lint.py` enforces set equality, theorem-name equality, and exact #check/#print-axioms presence.
 
-Compiler-PROVED theorem authority beyond the current machine-promoted claim list must not be silently upgraded to `PROVED_UNCONDITIONAL` registry status. PRs #112-#129 contain examples of theorem authority advancing faster than the explicit machine-promotion surface.
+Compiler-PROVED theorem authority beyond the current machine-promoted claim list must not be silently upgraded to `PROVED_UNCONDITIONAL` registry status. PRs #112-#131 contain examples of theorem authority advancing faster than the explicit machine-promotion surface.
 
 ## Control-v2 validation law
 
