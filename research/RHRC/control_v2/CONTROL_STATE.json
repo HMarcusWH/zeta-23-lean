@@ -3,9 +3,9 @@
   "boundary_id": "B0_RH_2026_08_20",
   "terminal_claim": "RH_OPEN",
   "merged_theorem_anchor": {
-    "pr": 129,
-    "merge_commit": "e1192857afed9f68fa4a13143ce690b62191b997",
-    "tree": "2f042a3b0b3313e7c67d627a58a32d579d4e7ff7",
+    "pr": 131,
+    "merge_commit": "436d524d0cdeb5986d76dcbb988f771d19836c55",
+    "tree": "5ad51fd877d51348f1af474b2864eb4ab3e0617a",
     "status": "MERGED_GREEN_THEOREM_STATE"
   },
   "merged_control_anchor": {
@@ -15,5 +15,5 @@
     "status": "MERGED_GREEN_CONTROL_STATE"
   },
   "candidate_branch": null,
-  "control_note": "PR #129 is the merged theorem anchor (validated theorem head 440be3e5b6bf05e94ae2c65b1704d52d20acc9af; RHRC #838 and Permansson #611 success). PR #127 proves the special zero-shift shell response; #128 proves the signed regular response and canonical resonant kernel pole; #129 proves the source-explicit cubic-defect identity, exact cross-parity secular transfer, overlap representation, even-root source-product specialization, and global off-line-zero source-explicit certificate. PR #117 remains the latest merged Control-v2 semantic anchor because #118/#119/#121/#122/#124/#125/#127/#128/#129 changed theorem state but not controller semantics. Current theorem frontier is FIRST_BAD_RIGIDITY_E4_A4_SOURCE_EXCLUSION: use actual canonicalSourceMatrix source values to attack the regular and resonant branches, with E4-B shifted-nullity, E3-C monotonicity and E3-B3 deformation in parallel. Control v2 has no theorem/claim authority. RH remains OPEN."
+  "control_note": "PR #131 is the merged theorem anchor (validated theorem head b0026683bcbf233afa947c7f15b57bcc4ddf31e3; RHRC #854 and Permansson #627 success). PR #127 proves the special zero-shift shell response; #128 proves the signed regular response and canonical resonant kernel pole; #129 proves the source-explicit cubic-defect identity, exact cross-parity secular transfer, overlap representation, even-root source-product specialization, and global off-line-zero source-explicit certificate; #131 proves the exact production source-moment decomposition into pole-even, reduced arch diagonal/off-diagonal and finite von-Mangoldt prime-atom channels, including arch scalar annihilation and pole odd-profile cancellation. PR #117 remains the latest merged Control-v2 semantic anchor because #118/#119/#121/#122/#124/#125/#127/#128/#129/#131 changed theorem state but not controller semantics. Current theorem frontier is FIRST_BAD_RIGIDITY_E4_A4B_REGULAR_SOURCE_TEST: compose the #131 source formula into the #129 root interface, test the regular branch compositionally, then the resonant branch, with E4-B shifted-nullity, E3-C monotonicity and E3-B3 deformation in parallel. Control v2 has no theorem/claim authority. RH remains OPEN."
 }

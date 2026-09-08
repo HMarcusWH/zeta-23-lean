@@ -1,8 +1,8 @@
 {
   "schema_version": "RHRC-control-actions-1.1",
-  "current_frontier": "FIRST_BAD_RIGIDITY_E4_A4_SOURCE_EXCLUSION",
+  "current_frontier": "FIRST_BAD_RIGIDITY_E4_A4B_REGULAR_SOURCE_TEST",
   "open_obligations": [
-    "E4_A4_SOURCE_MOMENT_DECOMPOSITION",
+    "E4_A4_SOURCE_EXPANDED_ROOT_INTERFACE",
     "E4_A4_REGULAR_SOURCE_EXCLUSION",
     "E4_A4_RESONANT_SOURCE_EXCLUSION",
     "E4_A4_GLOBAL_FIRST_BAD_EXCLUSION",
@@ -12,7 +12,7 @@
     "DEFORMATION_BUDGET_PAPER_TEST"
   ],
   "actions": {
-    "E4_A4_SOURCE_MOMENT_DECOMPOSITION": {
+    "E4_A4_SOURCE_EXPANDED_ROOT_INTERFACE": {
       "kind": "THEOREM_ATTEMPT",
       "concept_id": "canonical_source_exclusion",
       "retro_search_required": true,
@@ -21,26 +21,26 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "PR #129 identifies the cubic defect with the canonical quadratic source moment but does not expand that moment through the production canonicalSourceMatrix formula",
-        "generic parity/KKT/rank-one/displacement structure has surviving synthetic countermodels",
-        "the next theorem must expose source values absent from arbitrary reversal-symmetric diagonal perturbations",
-        "a guessed sign theorem may be false even when an exact source decomposition is useful"
+        "PR #131 proves the exact source decomposition but the #129 cross-parity root theorems still expose the source term through the older sourceMoment interface",
+        "the explicit source moment is linear in the trial vector, so universal raw positivity/nonnegativity is not a viable theorem target",
+        "the useful invariant must retain canonical trial-vector orientation and may need the overlap/Gamma/root data",
+        "the elementary sourceMatrix omega observable has endpoint cancellations that should be theoremized before guessing an interior inequality"
       ],
       "score_inputs": {
-        "cost": 1.4,
+        "cost": 1.2,
         "information_gain": 5.0,
         "falsification_value": 5.0,
-        "closure_value": 5.0,
-        "residual_risk": 1.0,
-        "dependency_debt": 0.5
+        "closure_value": 4.8,
+        "residual_risk": 0.8,
+        "dependency_debt": 0.4
       },
       "first_breaks": [
         {
-          "id": "E4A4-SOURCE-FB-01",
-          "statement": "the production canonicalSourceMatrix formula does not yield a cleaner exact decomposition of the PR #129 quadratic source moment on the canonical even trial vector",
-          "test_id": "derive_exact_canonical_source_moment_decomposition",
+          "id": "E4A4-ROOT-SOURCE-FB-01",
+          "statement": "the #131 explicit source decomposition cannot be composed cleanly into the #129 cross-parity root interface with permanent linearity and endpoint-source-atom firewalls",
+          "test_id": "theoremize_source_expanded_cross_parity_root_interface",
           "estimated_cost": 0.8,
-          "decisive_if_failed": true
+          "decisive_if_failed": false
         }
       ]
     },
@@ -54,23 +54,24 @@
       "dead_route_matches": [],
       "surviving_objections": [
         "generic nonnegative-predecessor systems can have Re S0<0 and Re sigma0<0",
-        "PR #129 does not prove alpha, Gamma, the overlap or source moment nonzero or sign-controlled",
-        "a useful inequality must be derived from actual canonical source values rather than assumed as one-step block positivity",
+        "PR #131 decomposes the source moment but does not prove alpha, Gamma, overlap or the canonically composed source term nonzero or sign-controlled",
+        "raw universal source-moment positivity is unavailable because the explicit source observable is linear in v",
+        "a useful inequality must be derived from the actual pole/arch/prime values together with canonical orientation data rather than assumed as one-step block positivity",
         "the known centered-grid regular countermodels must be invalidated by an explicit source-specific hypothesis"
       ],
       "score_inputs": {
-        "cost": 2.2,
+        "cost": 2.0,
         "information_gain": 5.0,
         "falsification_value": 5.0,
         "closure_value": 5.0,
-        "residual_risk": 2.2,
-        "dependency_debt": 1.1
+        "residual_risk": 2.0,
+        "dependency_debt": 0.9
       },
       "first_breaks": [
         {
-          "id": "E4A4-REG-FB-01",
-          "statement": "the actual canonical source moment remains compatible with k=0 and Re sigma0<0 on legal first-bad regular data",
-          "test_id": "construct_or_exclude_canonical_regular_source_state",
+          "id": "E4A4-REG-FB-02",
+          "statement": "the actual pole/arch/prime source composition remains compatible with k=0, Re sigma0<0, predecessor nonnegativity and the exact #129/#131 parity-root equation on legal first-bad regular data",
+          "test_id": "construct_or_exclude_canonical_regular_source_state_post_131",
           "estimated_cost": 1.2,
           "decisive_if_failed": true
         }
@@ -86,23 +87,23 @@
       "dead_route_matches": [],
       "surviving_objections": [
         "an exact 1/(-lam) kernel pole is not generically contradictory",
-        "PR #129 does not prove the source moment or overlap nonzero at a resonant state",
+        "PR #131 decomposes the source term but does not prove the composed source/overlap quantity nonzero at a resonant state",
         "the projected predecessor kernel may not be replaced by predecessor-size compressed nullity",
         "the known centered-grid resonant countermodel must be invalidated by source values rather than generic nullity algebra"
       ],
       "score_inputs": {
-        "cost": 2.4,
+        "cost": 2.3,
         "information_gain": 5.0,
         "falsification_value": 5.0,
         "closure_value": 5.0,
-        "residual_risk": 2.4,
-        "dependency_debt": 1.2
+        "residual_risk": 2.3,
+        "dependency_debt": 1.1
       },
       "first_breaks": [
         {
-          "id": "E4A4-RES-FB-01",
-          "statement": "the actual canonical source formula remains compatible with k!=0, the exact kernel pole and the PR #129 cross-parity balance",
-          "test_id": "construct_or_exclude_canonical_resonant_source_state",
+          "id": "E4A4-RES-FB-02",
+          "statement": "the actual pole/arch/prime source formula remains compatible with k!=0, the exact kernel pole, predecessor nonnegativity and the #129/#131 cross-parity balance",
+          "test_id": "construct_or_exclude_canonical_resonant_source_state_post_131",
           "estimated_cost": 1.3,
           "decisive_if_failed": true
         }
@@ -118,7 +119,7 @@
       "dead_route_matches": [],
       "surviving_objections": [
         "both regular and resonant canonical branches must be discharged without assuming a preferred parity",
-        "no division by alpha, Gamma, the overlap or source moment is legal without separate nonzeroness",
+        "no division by alpha, Gamma, overlap or source moment is legal without separate nonzeroness",
         "generic structural exclusion is quarantined by post-#128 countermodels",
         "terminal Mathlib RH still requires an explicit statement bridge after finite first-bad exclusion"
       ],

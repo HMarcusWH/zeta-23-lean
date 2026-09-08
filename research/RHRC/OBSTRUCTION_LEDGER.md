@@ -2,9 +2,9 @@
 
 This ledger records reusable blockers that should shape future route design.
 
-> **Current theorem anchor:** merged PR #129, `e1192857afed9f68fa4a13143ce690b62191b997`.  
-> **Validated theorem head:** `440be3e5b6bf05e94ae2c65b1704d52d20acc9af`.  
-> **Validated theorem tree:** `2f042a3b0b3313e7c67d627a58a32d579d4e7ff7`.  
+> **Current theorem anchor:** merged PR #131, `436d524d0cdeb5986d76dcbb988f771d19836c55`.  
+> **Validated theorem head:** `b0026683bcbf233afa947c7f15b57bcc4ddf31e3`.  
+> **Validated theorem tree:** `5ad51fd877d51348f1af474b2864eb4ab3e0617a`.  
 > **Claim firewall:** RH remains OPEN.
 
 ## OBS-001 — TightMult information wall
@@ -169,25 +169,26 @@ Still not proved:
 
 ## OBS-020 — exact one-channel parity factorization is not unitary rank-one perturbation theory
 
-**Status:** PROJECT FIREWALL; FACTORIZATION CLOSED BY #112; QUOTIENT VISIBILITY CLOSED BY #118; SOURCE-EXPLICIT DEFECT COEFFICIENT CLOSED BY #129; METRIC TRANSFER THROUGH D STILL OPEN.
+**Status:** PROJECT FIREWALL; FACTORIZATION CLOSED BY #112; QUOTIENT VISIBILITY CLOSED BY #118; SOURCE-EXPLICIT DEFECT COEFFICIENT CLOSED BY #129; EXACT SOURCE DECOMPOSITION CLOSED BY #131; METRIC TRANSFER THROUGH D STILL OPEN.
 
-#110/#112 prove algebraic one-channel / rank-at-most-one parity defect structure and exact pointwise cubic factorization. #118 identifies the odd cubic defect coefficient with the canonical quotient coordinate. #129 proves the coefficient is exactly the canonical-source quadratic normal moment
+#110/#112 prove algebraic one-channel / rank-at-most-one parity defect structure and exact pointwise cubic factorization. #118 identifies the odd cubic defect coefficient with the canonical quotient coordinate. #129 proves the coefficient is exactly the canonical-source quadratic normal moment. #131 then proves the exact production decomposition
 
 ```text
 cubicDefectFunctional L K v
-  = evenQuadraticSourceMoment L K v
-  = <n2, canonicalSourceMatrix(L,K)v>/<n2,n2>.
+  = explicitCanonicalSourceMoment L K v
 ```
+
+with pole-even, reduced arch diagonal/off-diagonal and finite prime-atom contributions.
 
 Still not proved:
 
-- useful sign or nonzeroness of this moment on the canonical first-bad trial vector;
+- useful sign or nonzeroness of the canonically composed source/overlap quantity;
 - exact defect rank one rather than rank zero-or-one;
 - D is unitary/isometric;
 - conjugated odd compression is self-adjoint in the original even-sector metric;
 - Hermitian rank-one interlacing, equal spectra or inertia transfer through D.
 
-**Current escape route:** use #129 to spend actual canonical-source information. Do not import metric perturbation theory through D.
+**Current escape route:** use #131 to spend actual canonical-source information compositionally. Do not import metric perturbation theory through D.
 
 ## OBS-021 — shifted Schur identity is not an exact secular criterion
 
@@ -234,12 +235,14 @@ The theorem chain now gives:
       k=K(b)=0 in the decoupled branch;
       k!=0 in the resonant branch;
       (-lam)K(R_lam b)=k.
+#129: exact cross-parity source transfer
+#131: exact pole/arch/prime source-moment decomposition.
 ```
 
-The old escape split “construct the endpoint / theoremize the pole” is closed. The surviving obligation is source-specific:
+The surviving obligation is source-specific:
 
-1. show whether the actual canonical source formula can support `k=0`, `Re sigma0<0` and the #129 parity transfer simultaneously;
-2. show whether it can support `k!=0`, the exact pole and the same parity transfer simultaneously.
+1. show whether the actual canonical source formula can support `k=0`, `Re sigma0<0` and the source-expanded parity transfer simultaneously;
+2. show whether it can support `k!=0`, the exact pole and the same source-expanded transfer simultaneously.
 
 **Semantic firewall:** `ker A` is the kernel of the projected successor predecessor block. It is not identified with the kernel of the predecessor-size compressed operator.
 
@@ -276,7 +279,7 @@ Re sigma0<0
 
 Likewise, generic zero resonance may create negative spectrum rather than contradict it.
 
-**Escape requirement:** use source information absent from the generic countermodels. PR #129 exposes the canonical source moment interface where that information can enter.
+**Escape requirement:** use source information absent from the generic countermodels. PRs #129/#131 expose the canonical source interface and its exact channel decomposition.
 
 ## OBS-026 — generic first-bad structural package is insufficient; actual canonical source values must do work
 
@@ -289,12 +292,43 @@ Post-#128 discovery countermodels show that increasingly rich generic structure 
 - actual centered-grid boundary-flat parity spaces with generic reversal-symmetric diagonal operators producing both-parity regular negativity, one-parity badness, or genuine resonance;
 - reversal-symmetric diagonal perturbations preserving the displacement identity while altering the sign-sensitive successor state.
 
-Exact rational discovery checks additionally support the #129 transfer architecture and show the predecessor correction in `D c+` is not optional.
-
 These fixtures are **EXPERIMENTAL SIGNAL**, not Lean theorems, realizable zeta configurations or counterexamples to `canonicalSourceMatrix`.
 
 **Consequence:** a proposed contradiction based only on Hermitianity, first-bad minimality, parity, KKT, rank-at-most-one defect, shell response, resonance classification or displacement structure is not credible unless it identifies an additional invariant the fixtures do not preserve.
 
-**Current escape requirement:** theoremize a property of the actual `canonicalSourceMatrix` source formula — most directly through the #129 quadratic source moment, its overlap coefficient, or a composition with the branch/pole data — that invalidates the generic fixtures.
+**Current escape requirement:** use the #131 pole/arch/prime source formula, most likely in composition with the #129 overlap/root transfer or with branch/pole data.
+
+## OBS-027 — the #131 raw source moment is linear, so universal one-sided sign is unavailable
+
+**Status:** DERIVED STRUCTURAL FIREWALL FROM PROVED #131 INTERFACE.
+
+The production quantity
+
+```text
+explicitCanonicalSourceMoment L K v
+```
+
+is linear in the trial vector `v`: every channel is a linear matrix action on `v`, paired against the fixed centered quadratic normal, with a denominator independent of `v`.
+
+Therefore
+
+```text
+explicitCanonicalSourceMoment L K (-v)
+  = - explicitCanonicalSourceMoment L K v
+```
+
+and, more generally over the complex carrier, scalar/phase covariance must be respected.
+
+**Consequence:** unless the functional is identically zero, no theorem asserting universal strict positivity or universal nonnegativity of the raw moment on the whole even boundary-flat vector space can be true.
+
+This does **not** exclude sign/nonzero/phase control on the canonically oriented secular trial vector after composing with additional branch data. The live quantity in #129 transfer is
+
+```text
+Gamma * explicitCanonicalSourceMoment(u_+)
+```
+
+or the exact overlap-times-source product at an even root.
+
+**Escape requirement:** prove a source-sensitive compositional invariant tied to the canonical trial-vector orientation, overlap/root parity, branch equations, or a smaller source-atom shape theorem. Do not repackage the dead universal-sign target.
 
 **RH remains OPEN.**

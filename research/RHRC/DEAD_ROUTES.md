@@ -119,4 +119,37 @@ Reversal-symmetric diagonal perturbations commute with the centered index operat
 
 **Consequence:** displacement structure remains useful algebraic information but cannot be the terminal exclusion mechanism by itself. Any revival must combine it with source values not preserved by the diagonal perturbation family.
 
+## DR-014 — universal raw source-moment positivity
+
+Attempt to prove a theorem of the form
+
+```text
+0 < explicitCanonicalSourceMoment L K v
+```
+
+or universal nonnegativity for every legal even boundary-flat vector `v`, and use that as the A4b exclusion mechanism.
+
+**Status:** structurally dead after PR #131.
+
+PR #131 exposes the source observable as a linear functional of `v`. Therefore
+
+```text
+explicitCanonicalSourceMoment L K (-v)
+  = - explicitCanonicalSourceMoment L K v
+```
+
+as a straightforward consequence of the proved linear matrix-moment interface. Over the complex carrier, scalar/phase covariance gives the same obstruction more generally.
+
+Unless the functional is identically zero, no universal one-sided sign theorem can hold on the whole vector space.
+
+**This does not kill source-sensitive A4b.** The canonically oriented secular trial vector is not arbitrary, and the actual transfer equation contains the compositional quantity
+
+```text
+Gamma * explicitCanonicalSourceMoment(u_+)
+```
+
+or, at an even root, the exact overlap-times-source product. A revival of a sign argument must therefore attach the sign/phase/nonzeroness to additional theorem-backed orientation or branch data, not to the raw source functional on the full sector.
+
+**Current live replacement route:** source-expanded cross-parity root transfer + canonical overlap/root/branch composition + elementary source-atom analysis.
+
 **RH remains OPEN.**

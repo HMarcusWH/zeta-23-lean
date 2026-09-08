@@ -1,15 +1,15 @@
 # R003 — CCM / finite Weil bridge
 
-Status: **ACTIVE. GLOBAL FIRST-BAD + ZERO-SHIFT BRANCH RESPONSE + SOURCE-EXPLICIT CROSS-PARITY TRANSFER PROVED THROUGH PR #129; E4-A4 CANONICAL-SOURCE EXCLUSION CURRENT. RH OPEN.**
+Status: **ACTIVE. GLOBAL FIRST-BAD + ZERO-SHIFT BRANCH RESPONSE + SOURCE-EXPLICIT CROSS-PARITY TRANSFER + EXACT SOURCE DECOMPOSITION PROVED THROUGH PR #131; E4-A4b REGULAR SOURCE TEST CURRENT. RH OPEN.**
 
 ## Current authority split
 
 ```text
-theorem-state anchor = PR #129 merge e1192857afed9f68fa4a13143ce690b62191b997
-validated theorem head = 440be3e5b6bf05e94ae2c65b1704d52d20acc9af
-theorem tree = 2f042a3b0b3313e7c67d627a58a32d579d4e7ff7
-RHRC #838 = SUCCESS
-Permansson #611 = SUCCESS
+theorem-state anchor = PR #131 merge 436d524d0cdeb5986d76dcbb988f771d19836c55
+validated theorem head = b0026683bcbf233afa947c7f15b57bcc4ddf31e3
+theorem tree = 5ad51fd877d51348f1af474b2864eb4ab3e0617a
+RHRC #854 = SUCCESS
+Permansson #627 = SUCCESS
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
@@ -46,9 +46,10 @@ FIRST-BAD-RIGIDITY-E4-A3a canonical zero-shift shell response     PROVED / #127
 FIRST-BAD-RIGIDITY-E4-A3b signed response + canonical kernel pole PROVED / #128
 FIRST-BAD-RIGIDITY-E4-A3c source-explicit parity transfer         PROVED / #129
 off-line zero -> source-explicit first-bad certificate            PROVED / #129
+FIRST-BAD-RIGIDITY-E4-A4a exact source-moment decomposition       PROVED / #131
 ```
 
-## Exact post-#129 first-bad state
+## Exact post-#131 first-bad state
 
 A hypothetical off-critical-line zeta zero forces one finite problem with:
 
@@ -65,9 +66,10 @@ A hypothetical off-critical-line zeta zero forces one finite problem with:
 - exact regular/resonant zero-shift classification;
 - exact #127 shell response;
 - exact #128 canonical kernel pole;
-- exact #129 source-explicit parity transfer.
+- exact #129 source-explicit parity transfer;
+- exact #131 decomposition of the source moment into pole-even, reduced arch diagonal, reduced arch off-diagonal and finite prime-atom channels.
 
-The branch package is:
+The branch package remains:
 
 ```text
 REGULAR:
@@ -87,118 +89,120 @@ RESONANT:
   plus the #124 pointwise witness / identity / bound.
 ```
 
-Across parity, define the #129 canonical source moment
-
-```text
-sourceMoment(v)
-  = <n2, canonicalSourceMatrix(L,N+1)v>/<n2,n2>.
-```
-
-Then the exact secular transfer is
+Across parity,
 
 ```text
 F_- = alpha * F_+ + Gamma * sourceMoment(u_+).
 ```
 
-`Gamma` is theorem-identified with an odd trial/cubic overlap ratio. At an even root, `F_+=0` and `F_-` is exactly overlap times source moment. At an odd root, `F_-=0` and the full transfer balance is retained without division.
+PR #131 theoremizes
 
-This is a finite-dimensional rigidity/source-exposure package, not an RH proof.
+```text
+sourceMoment(v) = explicitCanonicalSourceMoment(v)
+```
 
-## E4-A3 settlement
+with
 
-**PROVED / #127-#129.**
+```text
+explicitCanonicalSourceMoment
+  = poleEven
+    - reducedArchDiagonal
+    - reducedArchOffDiagonal
+    - finitePrimeAtomSum.
+```
 
-The old A3 implementation obligations are closed:
+The index-independent archimedean scalar is annihilated by the quadratic-normal observable. The pole odd profile pairs to zero against the even boundary-flat sector. No branch is excluded.
 
-- shell response is theoremized;
-- the regular response sign is theoremized;
-- the resonant kernel pole is theoremized;
-- exact quotient/D transport is theoremized;
-- the predecessor correction in `D c+` is theoremized and retained;
-- the exact cross-parity secular equation is theoremized;
-- the cubic defect coefficient is identified with the actual canonical source moment;
-- the global off-line-zero wrapper carries the source-explicit certificate.
+## E4-A4a settlement
 
-None of these results excludes the bad state by itself.
+**PROVED / #131.**
 
-## Current route state — E4-A4 canonical-source branch exclusion
+The source-opacity obligation is closed:
 
-### A4a — source moment decomposition
+- `canonicalSourceMatrix = pole - canonicalArch - prime` is theoremized;
+- the corrected direct Eq. 4.4 archimedean channel is reduced by removing the index-independent scalar;
+- the active observable annihilates that scalar identity exactly;
+- the reduced arch channel splits into diagonal and off-diagonal matrices;
+- the prime channel is a finite von-Mangoldt weighted sum of elementary `sourceMatrix` atoms;
+- the pole channel has an exact rank-two even/odd profile factorization;
+- the odd pole profile cancels on even boundary-flat input;
+- the #129 cubic defect equals the exact explicit source moment.
+
+This is decomposition, not a sign theorem.
+
+## Current route state — E4-A4b regular-branch source test
+
+### A4b-0 — source-expanded root interface
 
 **OPEN / PRIMARY.**
 
-Open the production definition of `canonicalSourceMatrix` inside
+Compose #131 directly into the #129 transfer theorems so that the root interface is stated with `explicitCanonicalSourceMoment` rather than the opaque `sourceMoment` alias.
+
+The first theorem tranche should also formalize linearity/negation/scalar covariance of the explicit moment and isolate
 
 ```text
-evenQuadraticSourceMoment L (N+1) uPlus.
+omega -> quadraticNormalMatrixMoment K (sourceMatrix omega K) v.
 ```
 
-The first target should be an exact formula: isolate constant-normal cancellation and identify the actual source-channel contributions seen by `n2`. Avoid starting with a guessed inequality.
+The existing endpoint identities imply this elementary observable vanishes at `omega=0` and `omega=1`; theoremize those endpoints before attempting a global inequality.
 
 ### A4b — regular branch source test
 
-**OPEN.**
+**OPEN / CURRENT.**
 
-Use the theorem-backed package
+Use
 
 ```text
 k=0
 Re sigma0<0
-F_- = alpha F_+ + Gamma sourceMoment(u_+)
+F_- = alpha F_+ + Gamma explicitCanonicalSourceMoment(u_+)
 ```
 
-and the actual source formula. The objective is either a contradiction or a strictly smaller canonical regular class.
+plus predecessor nonnegativity and the actual source formula. The objective is either a contradiction or a strictly smaller canonical regular class.
 
-Do not assume or divide by `alpha`, `Gamma`, the overlap or `sourceMoment` without separate proof.
+Do not seek universal positivity of the raw source moment on the whole vector space: the observable is linear in `v`, so `v -> -v` reverses it. The useful object must be the canonically composed source/overlap quantity or another orientation-sensitive invariant.
 
 ### A4c — resonant branch source test
 
-**OPEN.**
+**OPEN / NEXT.**
 
 Use
 
 ```text
 k!=0
 (-lam)K(R_lam b)=k
-F_- = alpha F_+ + Gamma sourceMoment(u_+)
+F_- = alpha F_+ + Gamma explicitCanonicalSourceMoment(u_+)
 ```
 
 plus predecessor nonnegativity and actual source values.
 
-The exact pole is classification, not contradiction. The theorem must identify a source-specific incompatibility.
+The exact pole is classification, not contradiction.
 
 ### A4d — global first-bad exclusion
 
 **OPEN.**
 
-Only after both canonical branches are excluded should the route theoremize no negative global first-bad root. The existing ExceptionalZero reduction already starts from an arbitrary off-line zero, so that exclusion would immediately rule out such a zero in the project's zeta carrier. A final explicit bridge to the terminal Mathlib `RiemannHypothesis` statement would still be required.
+Only after both canonical branches are excluded should the route theoremize no negative global first-bad root. The existing ExceptionalZero reduction already starts from an arbitrary off-line zero; a final explicit bridge to the terminal Mathlib `RiemannHypothesis` statement would still be required.
 
-## Post-#129 generic-route falsification
+## Post-#131 falsification rule
 
-The active route changed because generic structural countermodels survived:
+Before theoremizing a source inequality:
 
-- negative regular Schur endpoint with nonnegative predecessor;
-- exact zero resonance with negative spectrum;
-- actual centered-grid boundary-flat parity spaces with generic reversal-symmetric diagonal operators producing both-parity regular negativity, one-parity badness, or genuine resonance;
-- displacement-preserving diagonal perturbations changing the sign-sensitive finite state.
+- test `v -> -v` and complex phase rotation;
+- test source moment zero, overlap zero, `Gamma=0`, `alpha=0`;
+- test the elementary source atom at and near `omega=0,1`;
+- if combining arch off-diagonal and prime terms through divided differences, prove diagonal compatibility separately;
+- rerun the post-#129 structural countermodels to confirm the argument really spends canonical source values.
 
-These are **EXPERIMENTAL SIGNAL / synthetic falsification fixtures**, not canonical CCM counterexamples.
-
-**Route rule:** a proposed contradiction that does not use source values beyond Hermitianity/parity/displacement should first be tested against `../../countermodels/POST_129_STRUCTURAL_COUNTERMODELS_2026_09_08.md`.
+The structural fixtures remain **EXPERIMENTAL SIGNAL / synthetic falsification fixtures**, not canonical CCM counterexamples.
 
 ## E4-B — parity shifted-nullity
 
-**OPEN / PARALLEL.**
-
-Use the existing algebraic D-equivalence and same-space parity defect with finrank <=1 to theoremize a shifted-nullity comparison. Do not import unitary interlacing through D. Activate only if it constrains A4.
+**OPEN / PARALLEL.** Use algebraic D-equivalence and finrank-at-most-one defect only. Do not import unitary interlacing through D.
 
 ## E3-C — monotonicity / root-count control
 
-**OPEN / PARALLEL.**
-
-The exact root detector is a real explicit scalar on `lam<0`. A shifted-resolvent identity may yield strict monotonicity and at most one negative root.
-
-Permanent firewall:
+**OPEN / PARALLEL.** A shifted-resolvent identity may yield strict monotonicity and at most one negative root.
 
 ```text
 at most one negative root != no negative root.
@@ -206,47 +210,7 @@ at most one negative root != no negative root.
 
 ## E3-B3 — general predecessor-floor theorem
 
-**LEAD / OPEN FORMALIZATION.**
-
-Generalize the #122 `mu=0` metric estimate. Under
-
-```text
-mu ||w||^2 <= Re <Aw,w>,
-lam<mu,
-```
-
-prove the denominator `mu-lam` resolvent estimate and derive
-
-```text
-d_N(g_N+d_N) <= beta_N^2.
-```
-
-The shortcut `d_N<=beta_N^2/g_N` requires separately proved `g_N>0`.
-
-## Deformation-budget composition and falsification lane
-
-The theorem-backed ancestry is now
-
-```text
-#119 exact root detector
-  -> #121 explicit Schur bridge
-  -> #122 real metric/resolvent control
-  -> #124/#125 zero-shift branch endpoint
-  -> #127 shell response
-  -> #128 signed response / canonical pole
-  -> #129 source-explicit cross-parity transfer
-  -> E4-A4 canonical-source exclusion.
-```
-
-The cheap diagnostic order remains
-
-```text
-g_N=q_N-mu_N
-beta_N
-beta_N^2/g_N.
-```
-
-Kill the lane if the gap fails, coupling does not decay usefully, or the ratio cannot support a complete summable certified tail. A finite prefix, fitted tail or local residual is not a complete budget.
+**LEAD / OPEN FORMALIZATION.** Under `mu ||w||^2 <= Re <Aw,w>` and `lam<mu`, prove the denominator `mu-lam` resolvent estimate and derive `d_N(g_N+d_N) <= beta_N^2`. The shortcut `d_N<=beta_N^2/g_N` requires separately proved `g_N>0`.
 
 ## Source-faithful parallel lane
 
@@ -271,11 +235,12 @@ Do not conflate source interface geometry with source negativity.
 - the exact resonant pole is not automatically contradictory;
 - D is algebraic, not unitary/isometric;
 - the predecessor correction in `D c+` may not be dropped;
-- #129 proves no sign/nonzeroness for `alpha`, `Gamma`, overlap or source moment;
+- #129/#131 prove no useful sign/nonzeroness for `alpha`, `Gamma`, overlap or source moment;
+- universal raw source-moment positivity is not compatible with this linear observable;
 - generic structural countermodels do not refute `canonicalSourceMatrix`;
 - root uniqueness is not root exclusion;
 - RH remains OPEN.
 
-Detailed current implications and falsification plan: `../../RESEARCH_LEADS_POST_129_DELTA.md`.
+Detailed current implications and falsification plan: `../../RESEARCH_LEADS_POST_131_DELTA.md`.
 
 **RH remains OPEN.**

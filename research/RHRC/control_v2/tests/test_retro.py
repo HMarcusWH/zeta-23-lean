@@ -70,7 +70,7 @@ class RetroTests(unittest.TestCase):
             (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
         )
         for action_id in (
-            "E4_A4_SOURCE_MOMENT_DECOMPOSITION",
+            "E4_A4_SOURCE_EXPANDED_ROOT_INTERFACE",
             "E4_A4_REGULAR_SOURCE_EXCLUSION",
             "E4_A4_RESONANT_SOURCE_EXCLUSION",
             "E4_A4_GLOBAL_FIRST_BAD_EXCLUSION",
