@@ -296,7 +296,7 @@ These fixtures are **EXPERIMENTAL SIGNAL**, not Lean theorems, realizable zeta c
 
 **Consequence:** a proposed contradiction based only on Hermitianity, first-bad minimality, parity, KKT, rank-at-most-one defect, shell response, resonance classification or displacement structure is not credible unless it identifies an additional invariant the fixtures do not preserve.
 
-**Current escape requirement:** use the #131 pole/arch/prime source formula, most likely in composition with the #129 overlap/root transfer or with branch/pole data.
+**Current escape requirement:** use the #131 pole/arch/prime source formula with an observable that retains the actual canonical normalization.
 
 ## OBS-027 — the #131 raw source moment is linear, so universal one-sided sign is unavailable
 
@@ -321,14 +321,86 @@ and, more generally over the complex carrier, scalar/phase covariance must be re
 
 **Consequence:** unless the functional is identically zero, no theorem asserting universal strict positivity or universal nonnegativity of the raw moment on the whole even boundary-flat vector space can be true.
 
-This does **not** exclude sign/nonzero/phase control on the canonically oriented secular trial vector after composing with additional branch data. The live quantity in #129 transfer is
+This does **not** exclude sign/nonzero/phase control on the canonically oriented secular trial vector after composing with additional branch data.
+
+## OBS-028 — factorwise cross-parity nonvanishing/sign is not structural
+
+**Status:** EXPERIMENTALLY FALSIFIED GENERIC ROUTE / EXACT RATIONAL REGRESSION FIREWALL.
+
+Exact rational centered-grid reversal-symmetric diagonal models retain the actual legal parity/boundary-flat spaces, predecessor nonnegativity, KKT extraction, rank-one cubic defect, quotient transport, shifted trial reconstruction, overlap formula and full #129 transfer while realizing all of the following:
 
 ```text
-Gamma * explicitCanonicalSourceMoment(u_+)
+sourceMoment(u+) != 0 but Gamma = 0 at a common negative root
+Gamma != 0 but sourceMoment(u+) = 0 at a common negative root
+alpha = 0 at an odd-only negative root while the even successor is positive
 ```
 
-or the exact overlap-times-source product at an even root.
+Additional exact fixtures realize negative `Gamma`, negative `alpha`, and either sign of the source moment.
 
-**Escape requirement:** prove a source-sensitive compositional invariant tied to the canonical trial-vector orientation, overlap/root parity, branch equations, or a smaller source-atom shape theorem. Do not repackage the dead universal-sign target.
+These fixtures are not the canonical arithmetic source and do not refute a future source-specific theorem.
+
+**Consequence:** no argument may divide by `alpha`, `Gamma`, overlap, or source moment without a separate theorem proving the required nonzeroness from canonical source information. An even-only exclusion theorem is insufficient.
+
+**Escape requirement:** use an exact canonical pole/arch/prime normalization theorem that visibly fails on the generic fixtures.
+
+## OBS-029 — scalar-shift-invariant transfer data cannot locate the absolute spectral origin
+
+**Status:** DERIVED STRUCTURAL FIREWALL / EXACT RATIONAL CHECK.
+
+In the generic first-bad transfer package, the simultaneous shift
+
+```text
+M -> M+tI
+lambda -> lambda+t
+```
+
+shifts predecessor blocks by `tI` while leaving the shifted resolvent equations and trial vectors unchanged. Because the shell is orthogonal to its predecessor, the cubic defect/source functional, `alpha`, `Gamma`, and both secular scalars can also remain unchanged.
+
+The spectrum nevertheless moves relative to zero. Exact rational fixtures explicitly move a common root from negative to positive while preserving the corresponding transfer data.
+
+**Consequence:** no terminal negative-root contradiction can come from the shift-invariant structural package alone. The proof must spend an information channel that remembers the actual canonical scalar normalization.
+
+The #131 quadratic-normal moment deliberately annihilates scalar identities, so another decomposition of the same observable cannot recover that missing information.
+
+**Escape requirement:** restore the absolute canonical source energy / one-step block normalization, including the archimedean scalar correction.
+
+## OBS-030 — one-step domination is the unresolved arithmetic content
+
+**Status:** CURRENT DECISIVE OPEN OBSTRUCTION.
+
+For either parity, let
+
+```text
+A = P_W T|_W
+c = canonical shell vector
+b = P_W T c
+q_c = Re<Tc,c>.
+```
+
+With `A>=0`, the target
+
+```text
+q_c >= 0
+|<w,b>|^2 <= q_c Re<Aw,w>  for every w in W
+```
+
+is equivalent to positivity of the one-step block extension.
+
+This target is not supplied by first-bad minimality, Hermitianity, parity, KKT, the rank-one defect, cross-parity transfer, or factorwise source information. Exact rational fixtures with strictly positive predecessor blocks still admit negative successor roots.
+
+If the domination theorem is derived from the actual canonical source, then:
+
+```text
+w in ker A -> <w,b>=0
+```
+
+so the coupling lies in `range A` and resonance disappears. In the regular branch, choosing `Ax0=b` gives `S0>=0`, contradicting the already-proved `Re S0<0` at the forced negative root.
+
+**Current escape route:**
+
+1. theoremize denominator-free zero-shift kernel/source transport;
+2. theoremize an absolute pole/arch/prime source-energy decomposition retaining the scalar correction;
+3. prove the canonical one-step domination/coercivity estimate in both parities;
+4. use high-order source-coordinate cancellation or log-lift regular-aperture selection only if they materially support step 3.
 
 **RH remains OPEN.**
