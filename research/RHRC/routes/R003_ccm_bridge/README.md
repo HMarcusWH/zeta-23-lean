@@ -182,9 +182,9 @@ The active route changed because generic structural countermodels survived:
 - actual centered-grid boundary-flat parity spaces with generic reversal-symmetric diagonal operators producing both-parity regular negativity, one-parity badness, or genuine resonance;
 - displacement-preserving diagonal perturbations changing the sign-sensitive finite state.
 
-These are **EXPERIMENTAL SIGNAL / regression fixtures**, not canonical CCM counterexamples.
+These are **EXPERIMENTAL SIGNAL / synthetic falsification fixtures**, not canonical CCM counterexamples.
 
-**Route rule:** a proposed contradiction that does not use source values beyond Hermitianity/parity/displacement should first be tested against `countermodels/POST_129_STRUCTURAL_COUNTERMODELS_2026_09_08.md`.
+**Route rule:** a proposed contradiction that does not use source values beyond Hermitianity/parity/displacement should first be tested against `../../countermodels/POST_129_STRUCTURAL_COUNTERMODELS_2026_09_08.md`.
 
 ## E4-B — parity shifted-nullity
 
