@@ -153,7 +153,8 @@ theorem canonicalPoleMatrix_eq_rankTwoProfiles
   have hreal :=
     poleComponent_eq_profile_factorization hL
       (centeredIndex K i) (centeredIndex K j)
-  norm_cast
+  simpa [poleProfileScale, poleEvenProfile, poleOddProfile] using
+    congrArg (fun x : ℝ => (x : ℂ)) hreal
 
 /-- Local complex specialization of rank-one matrix action, avoiding any
 opposite-ring coercion in the project theorem surface. -/
