@@ -2,10 +2,12 @@ import json
 import sys
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 
 RHRC = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(RHRC))
 
+from control_v2.run_control import _collect_retro_receipts
 from control_v2.router import SCORE_FORMULA_VERSION, action_score, load_actions, recommend
 from control_v2.state import load_research_state
 
@@ -19,12 +21,12 @@ class ControlV2Tests(unittest.TestCase):
         self.assertFalse(boundary["may_emit_terminal_rh_status"])
         self.assertFalse(boundary["may_promote_lean_theorem"])
 
-    def test_state_has_post_125_theorem_and_post_117_control_anchors(self):
+    def test_state_has_post_129_theorem_and_post_117_control_anchors(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 125)
+        self.assertEqual(state.anchor.pr, 129)
         self.assertEqual(
             state.anchor.merge_commit,
-            "615437fd5854b4473471d9826b4d4787b2e8e42f",
+            "e1192857afed9f68fa4a13143ce690b62191b997",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -33,7 +35,7 @@ class ControlV2Tests(unittest.TestCase):
         )
         self.assertNotEqual(state.anchor.merge_commit, state.control_anchor.merge_commit)
         self.assertEqual(state.terminal_claim, "RH_OPEN")
-        self.assertEqual(state.frontier_id, "FIRST_BAD_RIGIDITY_E4_A3")
+        self.assertEqual(state.frontier_id, "FIRST_BAD_RIGIDITY_E4_A4_SOURCE_EXCLUSION")
 
     def test_router_is_deterministic_non_authoritative_and_transparent(self):
         state = load_research_state()
@@ -62,6 +64,40 @@ class ControlV2Tests(unittest.TestCase):
         self.assertTrue(any(SCORE_FORMULA_VERSION in line for line in a.rationale))
         for action in actions:
             self.assertTrue(any(action.action_id in line for line in a.rationale))
+
+    def test_shared_retro_concept_is_searched_once_per_run(self):
+        actions = load_actions()
+        calls: list[str] = []
+
+        def fake_search(**kwargs):
+            concept_id = kwargs["concept_id"]
+            calls.append(concept_id)
+            return SimpleNamespace(
+                receipt_id=f"RETRO-{concept_id}",
+                search_complete=True,
+                searched_sources=(),
+            )
+
+        receipts = _collect_retro_receipts(
+            actions,
+            as_of_ref="anchor",
+            archive_root=None,
+            exhaustive=True,
+            search_fn=fake_search,
+        )
+
+        retro_actions = [a for a in actions if a.retro_search_required]
+        unique_concepts = {a.concept_id for a in retro_actions}
+        self.assertEqual(len(calls), len(unique_concepts))
+        self.assertEqual(set(calls), unique_concepts)
+
+        e4a4_ids = (
+            "E4_A4_SOURCE_MOMENT_DECOMPOSITION",
+            "E4_A4_REGULAR_SOURCE_EXCLUSION",
+            "E4_A4_RESONANT_SOURCE_EXCLUSION",
+            "E4_A4_GLOBAL_FIRST_BAD_EXCLUSION",
+        )
+        self.assertEqual(len({id(receipts[action_id]) for action_id in e4a4_ids}), 1)
 
     def test_missing_retro_receipts_fail_closed(self):
         state = load_research_state()

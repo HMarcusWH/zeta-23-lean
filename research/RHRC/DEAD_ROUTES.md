@@ -76,7 +76,8 @@ Infer useful eigenvector convergence from the numerically fitted symmetric tridi
 
 Finite fitted-generator spectral gaps collapse badly in tested cases. A revival requires an analytically specified generator plus separate absolute commutator and spectral-gap theorems.
 
-**Post-#100 clarification:** K0-F1/K0-F1E/N-FLOW is theorem-backed and is not a revival of DR-010. PR #96 uses the exact analytically defined centered-index operator D and exact canonical identity [D,M]=g1^T-1g^T; PR #98 supplies the exact Euclidean constrained carrier and negative Euclidean direction; PR #100 supplies exact centered finite-N nesting, Euclidean isometric constrained extension and fixed-L persistent negativity. No fitted-generator, small-commutator, spectral-gap or eigenvector-convergence inference is used. The next route proceeds through exact reversal/parity, first-bad constrained-shell geometry and an explicit constrained orthogonal compression.
+**Post-#100 clarification:** K0-F1/K0-F1E/N-FLOW is theorem-backed and is not a revival of DR-010. PR #96 uses the exact analytically defined centered-index operator D and exact canonical identity `[D,M]=g1^T-1g^T`; PR #98 supplies the exact Euclidean constrained carrier and negative Euclidean direction; PR #100 supplies exact centered finite-N nesting, Euclidean isometric constrained extension and fixed-L persistent negativity. No fitted-generator, small-commutator, spectral-gap or eigenvector-convergence inference is used.
+
 ## DR-011 — legacy absolute spectrum as canonical source spectrum
 
 Use absolute eigenvalues, inertia, PSD, trace, determinant or lower bounds computed from the legacy printed `finiteMatrix` as if they were canonical source spectral data.
@@ -84,3 +85,38 @@ Use absolute eigenvalues, inertia, PSD, trace, determinant or lower bounds compu
 **Status:** forbidden semantic shortcut.
 
 The canonical and legacy matrices differ by a scalar identity shift. Only shift-invariant information transports automatically.
+
+## DR-012 — generic shell/Schur/parity/KKT first-bad exclusion
+
+Attempt to exclude the global first-bad negative state using only the generic structural package
+
+```text
+Hermitianity
+A>=0 on the predecessor
+one-dimensional shell
+negative zero-shift Schur endpoint / signed shell response
+exact zero resonance / kernel pole
+rank-at-most-one parity defect
+KKT normal-space geometry
+first-bad N-flow ancestry
+```
+
+without using actual canonical source values.
+
+**Status:** quarantined by post-#128 countermodels.
+
+Generic 2x2 and centered-grid diagonal constructions retain these mechanisms while still admitting regular or resonant negative behavior. A revival must identify a new invariant not shared by the fixtures.
+
+**Changed-premise requirement for revival:** an exact theorem showing that the actual `canonicalSourceMatrix` imposes an additional sign, overlap, moment, diagonal, prime/arch, or related source constraint.
+
+## DR-013 — displacement identity alone excludes the first-bad state
+
+Use the exact centered displacement identity / low displacement rank as the decisive contradiction against the negative first-bad state.
+
+**Status:** quarantined by diagonal-perturbation countermodels.
+
+Reversal-symmetric diagonal perturbations commute with the centered index operator and therefore preserve the same displacement commutator while changing absolute spectral sign and first-bad behavior.
+
+**Consequence:** displacement structure remains useful algebraic information but cannot be the terminal exclusion mechanism by itself. Any revival must combine it with source values not preserved by the diagonal perturbation family.
+
+**RH remains OPEN.**

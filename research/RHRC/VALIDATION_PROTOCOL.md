@@ -31,13 +31,30 @@ A skipped downstream step is not a passed gate.
 
 `run_suite.py` also executes FFBBP and Control-v2 regression tests. These tests guard research-control semantics; they do not grant theorem authority to FFBBP or Control v2.
 
+## Current theorem/control validation anchors
+
+```text
+theorem-state anchor = PR #129 merge e1192857afed9f68fa4a13143ce690b62191b997
+validated theorem head = 440be3e5b6bf05e94ae2c65b1704d52d20acc9af
+validated theorem tree = 2f042a3b0b3313e7c67d627a58a32d579d4e7ff7
+RHRC #838 = SUCCESS
+Permansson #611 = SUCCESS
+
+control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
+control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
+```
+
+The #129 theorem head and merged main have the same theorem tree. PR #117 remains the latest Control-v2 semantic authority because later theorem PRs changed mathematical state but not controller semantics.
+
 ## Import/build closure law
 
 A `.lean` file existing in the repository, appearing in a PR, passing the no-placeholder scan, or being merged does **not** establish that its declarations elaborate.
 
 A declaration is compiler-validated project theorem authority only if its module lies in the transitive import closure of an exact successful authoritative build, or the module itself was explicitly built by an authoritative successful gate.
 
-PR #103 is the canonical example: `ConstrainedParityGeometry.lean` was imported by `Zeta23.CCM` and compiled; `ParityBadness.lean` was merged but not imported and remained staged source. PR #115 is the current theorem-state anchor: its E1 modules are imported into the CCM/ExceptionalZero umbrella closures and the PR merged green. PR #116 is a separate merged green control-plane anchor and did not change theorem authority.
+PR #103 is the canonical example: `ConstrainedParityGeometry.lean` was imported by `Zeta23.CCM` and compiled; `ParityBadness.lean` was merged but not imported and remained staged source until a later build closure consumed it.
+
+Current example: PR #129 imports the source-explicit/cross-parity modules through the CCM/ExceptionalZero umbrella closures; the exact theorem head passed both authoritative workflows before merge.
 
 ## Axiom inspection
 
@@ -50,6 +67,8 @@ For production-promoted R003 bindings, `ClaimBindings.lean` must contain exact
 
 The accepted production foundation is `[propext, Classical.choice, Quot.sound]`. No production theorem may depend on `sorryAx` or a promoted project axiom.
 
+Supporting theorem modules may also carry module-local `#print axioms` checks without thereby becoming machine-promoted claims.
+
 ## Proof versus promotion
 
 For R003 `PROVED_UNCONDITIONAL`, exact theorem names must agree across:
@@ -61,6 +80,8 @@ Zeta23/CCM/ClaimBindings.lean
 ~~~
 
 `promoted_binding_lint.py` enforces set equality, theorem-name equality, and exact #check/#print-axioms presence.
+
+Compiler-PROVED theorem authority beyond the current machine-promoted claim list must not be silently upgraded to `PROVED_UNCONDITIONAL` registry status. PRs #112-#129 contain examples of theorem authority advancing faster than the explicit machine-promotion surface.
 
 ## Control-v2 validation law
 
@@ -111,6 +132,8 @@ The additive `ffbbp/v16_*` modules expose newer assurance contracts. They do not
 After every meaningful green result: verify exact evidence; read the proof/control result; compare history; analyze upstream/downstream implications; revisit dead routes; falsify clues; then synchronize registries, active route README, research-lead deltas, CURRENT_RESEARCH_PLAN and public summaries.
 
 Historical settlements and provenance snapshots remain historical.
+
+A post-green sync must not rewrite a large historical ledger merely to manufacture currentness when the documented authority law permits a new dated delta to supersede it. In that case, the living README/plan/route/control documents must point to the new delta explicitly.
 
 ## Claim firewall
 

@@ -77,6 +77,37 @@ def _load_history(path: Path | None) -> tuple[RouteHistoryRecord, ...]:
     return tuple(records)
 
 
+def _collect_retro_receipts(
+    actions,
+    *,
+    as_of_ref: str,
+    archive_root: Path | None,
+    exhaustive: bool,
+    search_fn=search_concept,
+) -> dict[str, object]:
+    """Search each retro concept once and share its immutable receipt by action.
+
+    Multiple actions may intentionally route through the same concept vocabulary.
+    A Control-v2 run has one theorem anchor, archive root and exhaustiveness mode,
+    so repeating an exhaustive all-ref search for the same concept adds no evidence.
+    """
+    concept_receipts: dict[str, object] = {}
+    action_receipts: dict[str, object] = {}
+    for action in actions:
+        if not action.retro_search_required:
+            continue
+        if action.concept_id not in concept_receipts:
+            concept_receipts[action.concept_id] = search_fn(
+                repo_root=REPO,
+                concept_id=action.concept_id,
+                as_of_ref=as_of_ref,
+                archive_root=archive_root,
+                exhaustive=exhaustive,
+            )
+        action_receipts[action.action_id] = concept_receipts[action.concept_id]
+    return action_receipts
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="RHRC Control v2 diagnostic research router")
     parser.add_argument("--archive-root", type=Path)
@@ -91,19 +122,20 @@ def main() -> int:
     actions = load_actions()
     registry = _action_registry()
 
+    action_receipts = _collect_retro_receipts(
+        actions,
+        as_of_ref=state.anchor.merge_commit,
+        archive_root=args.archive_root,
+        exhaustive=not args.quick_retro,
+    )
+
     receipt_ids: dict[str, str] = {}
     receipt_complete: dict[str, bool] = {}
     receipt_summaries: list[dict] = []
     for action in actions:
         if not action.retro_search_required:
             continue
-        receipt = search_concept(
-            repo_root=REPO,
-            concept_id=action.concept_id,
-            as_of_ref=state.anchor.merge_commit,
-            archive_root=args.archive_root,
-            exhaustive=not args.quick_retro,
-        )
+        receipt = action_receipts[action.action_id]
         receipt_ids[action.action_id] = receipt.receipt_id
         receipt_complete[action.action_id] = receipt.search_complete
         summary = summarize_receipt(receipt)

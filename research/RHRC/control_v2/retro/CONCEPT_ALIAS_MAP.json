@@ -17,6 +17,23 @@
     "one-dimensional shell",
     "cubic defect"
   ],
+  "canonical_source_exclusion": [
+    "canonicalSourceMatrix",
+    "cutoffFreeMatrix",
+    "sourceEq44Matrix",
+    "dictionaryMatrix",
+    "evenQuadraticSourceMoment",
+    "centeredQuadraticNormal",
+    "source normalization",
+    "source moment",
+    "quadratic normal",
+    "prime contribution",
+    "prime channel",
+    "archimedean contribution",
+    "archimedean channel",
+    "gamma contribution",
+    "finite source formula"
+  ],
   "shifted_coercivity": [
     "shifted coercivity",
     "resolvent norm",

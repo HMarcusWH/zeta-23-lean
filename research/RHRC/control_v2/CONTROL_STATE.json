@@ -3,9 +3,9 @@
   "boundary_id": "B0_RH_2026_08_20",
   "terminal_claim": "RH_OPEN",
   "merged_theorem_anchor": {
-    "pr": 125,
-    "merge_commit": "615437fd5854b4473471d9826b4d4787b2e8e42f",
-    "tree": "245bba07addba0c5ad85fcf1b1b4218b4432c427",
+    "pr": 129,
+    "merge_commit": "e1192857afed9f68fa4a13143ce690b62191b997",
+    "tree": "2f042a3b0b3313e7c67d627a58a32d579d4e7ff7",
     "status": "MERGED_GREEN_THEOREM_STATE"
   },
   "merged_control_anchor": {
@@ -15,5 +15,5 @@
     "status": "MERGED_GREEN_CONTROL_STATE"
   },
   "candidate_branch": null,
-  "control_note": "PR #125 is the merged theorem anchor: #124 proves projected kernel/range decomposition, zero-shift solution canonicity, and the exact resonant identity/lower bound; #125 proves the canonical zero-shift Schur endpoint, exact complete square, and strict Re S0<0 in the decoupled first-bad branch. PR #117 remains the latest merged Control-v2 anchor because #118/#119/#121/#122/#124/#125 changed theorem state but not control semantics. Current theorem frontier is E4-A3 branch rigidity: zero-shift shell response, exact resonant pole decomposition, and CCM-specific branch exclusion, with E4-B shifted-nullity and E3-C monotonicity in parallel. Control v2 has no theorem/claim authority. RH remains OPEN."
+  "control_note": "PR #129 is the merged theorem anchor (validated theorem head 440be3e5b6bf05e94ae2c65b1704d52d20acc9af; RHRC #838 and Permansson #611 success). PR #127 proves the special zero-shift shell response; #128 proves the signed regular response and canonical resonant kernel pole; #129 proves the source-explicit cubic-defect identity, exact cross-parity secular transfer, overlap representation, even-root source-product specialization, and global off-line-zero source-explicit certificate. PR #117 remains the latest merged Control-v2 semantic anchor because #118/#119/#121/#122/#124/#125/#127/#128/#129 changed theorem state but not controller semantics. Current theorem frontier is FIRST_BAD_RIGIDITY_E4_A4_SOURCE_EXCLUSION: use actual canonicalSourceMatrix source values to attack the regular and resonant branches, with E4-B shifted-nullity, E3-C monotonicity and E3-B3 deformation in parallel. Control v2 has no theorem/claim authority. RH remains OPEN."
 }

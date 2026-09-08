@@ -2,8 +2,9 @@
 
 This ledger records reusable blockers that should shape future route design.
 
-> **Current theorem anchor:** merged PR #125, `615437fd5854b4473471d9826b4d4787b2e8e42f`.  
-> **Validated theorem head:** `533beb4a42fc96cd43a97e071c6e07e3178872b6`.  
+> **Current theorem anchor:** merged PR #129, `e1192857afed9f68fa4a13143ce690b62191b997`.  
+> **Validated theorem head:** `440be3e5b6bf05e94ae2c65b1704d52d20acc9af`.  
+> **Validated theorem tree:** `2f042a3b0b3313e7c67d627a58a32d579d4e7ff7`.  
 > **Claim firewall:** RH remains OPEN.
 
 ## OBS-001 — TightMult information wall
@@ -76,13 +77,7 @@ The latter additionally requires the correct carrier/function space, measure, so
 
 **Status:** FORMAL STRUCTURAL CONSEQUENCE.
 
-If
-
-```text
-A = M + cI,
-```
-
-then commutators, eigenvectors/eigenspaces and eigenvalue gaps transport, but absolute eigenvalues and sign-sensitive quantities shift.
+If `A=M+cI`, commutators, eigenvectors/eigenspaces and eigenvalue gaps transport, but absolute eigenvalues and sign-sensitive quantities shift.
 
 Therefore legacy `finiteMatrix` numerical inertia/PSD/lower-bound evidence cannot be promoted to canonical source spectral evidence.
 
@@ -120,9 +115,7 @@ A theorem defining or identifying the source functional does not by itself trans
 
 **Status:** PROJECT FIREWALL; PRIMARY R003 ESCAPE PROVED.
 
-PR #91 proves uniform formula-level approximation by periodic finite localized Fourier functions on one fixed aperture, but not global hard-window `C²` legality for the raw zero extension.
-
-PR #93 closes the primary route with `exists_boundaryFlatFinite_WCONT_approx`.
+PR #91 proves uniform formula-level approximation by periodic finite localized Fourier functions on one fixed aperture, but not global hard-window `C²` legality for the raw zero extension. PR #93 closes the primary route with `exists_boundaryFlatFinite_WCONT_approx`.
 
 **Permanent warning:** do not infer legality for unrelated raw periodic approximants or for the correction vector alone.
 
@@ -146,7 +139,7 @@ A `.lean` file existing, appearing in a PR, passing syntactic no-placeholder che
 
 ## OBS-019 — one-dimensional successor shell is not an invariant negative line
 
-**Status:** PROJECT FIREWALL; INTRINSIC BLOCK-GEOMETRY ESCAPE CLOSED BY #112/#113, CANONICAL COORDINATE ESCAPE CLOSED BY #118, ZERO-SHIFT SHELL-RESPONSE THEOREM STILL OPEN.
+**Status:** PROJECT FIREWALL; BLOCK-GEOMETRY ESCAPE CLOSED BY #112/#113; CANONICAL COORDINATE CLOSED BY #118; SPECIAL ZERO-SHIFT SHELL RESPONSE CLOSED BY #127.
 
 Now PROVED:
 
@@ -157,42 +150,50 @@ intrinsicShellPart(v_bad) != 0
 intrinsicShellPart(x)=0 <-> x in W
 canonical cubic shell vector c != 0
 canonical shell coordinate reconstructs every s in S
-canonical quotient coordinate vanishes exactly on W.
+canonical quotient coordinate vanishes exactly on W
+for the decoupled zero-shift trial u0:
+  T u0 = shellPart(T u0)
+  sigma0*c = T u0
+  S0 = star(sigma0)<c,c>.
 ```
-
-PR #125 additionally proves that the predecessor coordinate of `T u0` vanishes for the decoupled zero-shift trial vector.
 
 Still not proved:
 
-- the eigenmode is purely shell;
+- the negative eigenmode is purely shell;
 - the shell is invariant under the compressed canonical operator;
 - `u0` is an eigenvector;
 - D transports the shell orthogonally;
 - negative index exactly one / unique negative eigenline as a separately formalized theorem.
 
-**Consequence:** use canonical `W⊕S` and cubic quotient coordinates; theoremize the shell response directly rather than silently invoking invariant-subspace spectral theory.
+**Consequence:** the old “theoremize shell response” escape is consumed. Future arguments may use the exact special response, but must not silently upgrade it to invariant-subspace spectral theory.
 
 ## OBS-020 — exact one-channel parity factorization is not unitary rank-one perturbation theory
 
-**Status:** PROJECT FIREWALL; FACTORIZATION CLOSED BY #112, CANONICAL QUOTIENT VISIBILITY PARTLY CLOSED BY #118, METRIC TRANSFER THROUGH D STILL OPEN.
+**Status:** PROJECT FIREWALL; FACTORIZATION CLOSED BY #112; QUOTIENT VISIBILITY CLOSED BY #118; SOURCE-EXPLICIT DEFECT COEFFICIENT CLOSED BY #129; METRIC TRANSFER THROUGH D STILL OPEN.
 
-#110/#112 prove algebraic one-channel / rank-at-most-one parity defect structure and exact pointwise cubic factorization. #118 proves that on the odd successor carrier `cubicDefectFunctional` is literally the canonical quotient coordinate of the exact intertwining defect.
+#110/#112 prove algebraic one-channel / rank-at-most-one parity defect structure and exact pointwise cubic factorization. #118 identifies the odd cubic defect coefficient with the canonical quotient coordinate. #129 proves the coefficient is exactly the canonical-source quadratic normal moment
+
+```text
+cubicDefectFunctional L K v
+  = evenQuadraticSourceMoment L K v
+  = <n2, canonicalSourceMatrix(L,K)v>/<n2,n2>.
+```
 
 Still not proved:
 
-- `cubicDefectFunctional` is nonzero on a specific input;
+- useful sign or nonzeroness of this moment on the canonical first-bad trial vector;
 - exact defect rank one rather than rank zero-or-one;
 - D is unitary/isometric;
 - conjugated odd compression is self-adjoint in the original even-sector metric;
 - Hermitian rank-one interlacing, equal spectra or inertia transfer through D.
 
-**Current escape route:** use rank/kernel algebra for parity-nullity statements; do not import metric perturbation theory through D.
+**Current escape route:** use #129 to spend actual canonical-source information. Do not import metric perturbation theory through D.
 
 ## OBS-021 — shifted Schur identity is not an exact secular criterion
 
 **Status:** HISTORICAL BLOCKER CLOSED BY PR #119; PERMANENT GENERIC-SCHUR WARNING REMAINS.
 
-PR #113 proved only a necessary shifted Schur identity for a genuine negative first-bad eigenmode. PR #118 canonically normalized the shell. PR #119 closes the missing converse by constructing, for every safe `lam<0`, a canonical trial vector and full residual, then defining the secular scalar as the faithful quotient coordinate of that residual. It proves
+PR #119 proves
 
 ```text
 cubicSecularScalar(lam)=0
@@ -206,7 +207,7 @@ cubicSecularScalar(lam)=0
 
 **Status:** HISTORICAL BLOCKER CLOSED BY PR #121/#122; PERMANENT REPRESENTATION WARNING REMAINS.
 
-PR #119 defines the quotient residual scalar `F(lam)`. PR #121 identifies it pointwise with the conjugated explicit Schur scalar, and PR #122 proves the symmetry/realness needed for
+PR #121 identifies the quotient scalar with the conjugated explicit Schur scalar; #122 proves the symmetry/realness needed for
 
 ```text
 F(lam)=S(lam)/<c,c>
@@ -218,57 +219,27 @@ on the safe negative-shift regime.
 
 ## OBS-023 — predecessor nonnegativity permits zero resonance
 
-**Status:** CURRENT STRUCTURAL OBSTRUCTION; E4-A1 CLASSIFICATION CLOSED BY #122; KERNEL/RANGE + REGULAR ENDPOINT CLOSED BY #124/#125; BRANCH EXCLUSION OPEN.
+**Status:** CURRENT STRUCTURAL OBSTRUCTION; CLASSIFICATION/POLE INFRASTRUCTURE CLOSED THROUGH #128; SOURCE-SPECIFIC RESONANT EXCLUSION OPEN.
 
-Global-first-bad gives
+Global-first-bad gives `Re <Aw,w> >= 0`, not a positive lower spectral gap. Thus `ker A` may be nontrivial.
 
-```text
-Re <Aw,w> >= 0,
-```
-
-not a positive lower spectral gap. Thus `ker A` may be nontrivial.
-
-PR #122 proves
+The theorem chain now gives:
 
 ```text
-Az=0 -> (<z,b>=0 <-> Tz=0).
+#122: Az=0 -> (<z,b>=0 <-> Tz=0)
+#124: W=ker A⊕range A; exact resonant identity/bound
+#125: canonical regular endpoint with Re S0<0
+#127: exact special shell response
+#128: canonical kernel coordinate K;
+      k=K(b)=0 in the decoupled branch;
+      k!=0 in the resonant branch;
+      (-lam)K(R_lam b)=k.
 ```
 
-PR #124 then proves
+The old escape split “construct the endpoint / theoremize the pole” is closed. The surviving obligation is source-specific:
 
-```text
-W=ker A⊕range A,
-b annihilates ker A -> b∈range A,
-Ax0=b has a solution,
-<x,b> is solution-independent,
-```
-
-and in the resonant branch
-
-```text
-<z,b>=(-lam)<z,R_lam b>
-|<z,b>|^2 <= (-lam)||z||^2 Re<R_lam b,b>.
-```
-
-PR #125 proves that the regular solution class carries the canonical endpoint
-
-```text
-S0=<Tc,c>-<x0,b>
-```
-
-with exact complete square and
-
-```text
-Re S0<0
-```
-
-at the forced negative secular root.
-
-The old escape split “construct the endpoint or quantify resonance” is therefore closed. The current escape split is:
-
-1. **Regular shell response:** theoremize the exact one-dimensional shell coefficient of `T u0` and compose it with CCM-specific constraints.
-2. **Resonant pole:** theoremize the exact kernel-pole decomposition of `R_lam b` under `ker A⊕range A`.
-3. **Branch rigidity:** use parity/KKT/cubic/N-flow structure to exclude one or both mechanisms or shrink the finite countermodel space.
+1. show whether the actual canonical source formula can support `k=0`, `Re sigma0<0` and the #129 parity transfer simultaneously;
+2. show whether it can support `k!=0`, the exact pole and the same parity transfer simultaneously.
 
 **Semantic firewall:** `ker A` is the kernel of the projected successor predecessor block. It is not identified with the kernel of the predecessor-size compressed operator.
 
@@ -278,24 +249,25 @@ The old escape split “construct the endpoint or quantify resonance” is there
 
 The exact root detector has a real explicit scalar representation, so strict monotonicity/root-count control is a legitimate theorem target. Even if E3-C proves at most one negative root, a single negative root may still exist — and a hypothetical off-line zero already forces one.
 
-**Escape requirement:** use additional CCM-specific information — shell/cubic/parity/KKT/N-flow structure, endpoint sign information, zero-resonance constraints, or an equivalent rigidity theorem — to exclude the remaining root.
-
 `at most one negative root` must never be documented as positivity or RH.
 
-## OBS-025 — negative zero-shift Schur endpoint is not a contradiction
+## OBS-025 — negative zero-shift endpoint / signed shell response is not a contradiction
 
-**Status:** CURRENT PROJECT FIREWALL; EXPOSED BY PR #125.
+**Status:** CURRENT PROJECT FIREWALL; EXPOSED BY #125 AND SHARPENED BY #127/#128.
 
-PR #125 proves in the decoupled global-first-bad branch
+The decoupled global-first-bad branch now has
 
 ```text
-Re S0 < 0.
+Re S0 < 0
+S0 = star(sigma0)<c,c>
+Re sigma0 < 0.
 ```
 
-This is a strict variational obstruction, but generic Hermitian block systems with a nonnegative predecessor block can have a negative zero-shift Schur complement. Therefore
+These are strict variational/response constraints, but generic Hermitian block systems with a nonnegative predecessor block can have a negative zero-shift Schur complement and a negative shell response. Therefore
 
 ```text
 Re S0<0
+Re sigma0<0
   != regular-branch exclusion
   != negative-root exclusion
   != positivity
@@ -304,6 +276,25 @@ Re S0<0
 
 Likewise, generic zero resonance may create negative spectrum rather than contradict it.
 
-**Escape requirement:** identify and theoremize structure specific to the CCM first-bad problem — most plausibly the one-dimensional cubic shell response, parity rank-at-most-one defect, KKT normal-space geometry, exact N-flow/minimality, or a composition of these — and show that generic countermodels cannot satisfy the full package.
+**Escape requirement:** use source information absent from the generic countermodels. PR #129 exposes the canonical source moment interface where that information can enter.
+
+## OBS-026 — generic first-bad structural package is insufficient; actual canonical source values must do work
+
+**Status:** EXPERIMENTALLY FALSIFIED GENERIC ROUTE / CURRENT DESIGN FIREWALL.
+
+Post-#128 discovery countermodels show that increasingly rich generic structure can coexist with bad finite states:
+
+- nonnegative predecessors with a negative regular Schur endpoint;
+- exact zero resonance with a negative eigenvalue;
+- actual centered-grid boundary-flat parity spaces with generic reversal-symmetric diagonal operators producing both-parity regular negativity, one-parity badness, or genuine resonance;
+- reversal-symmetric diagonal perturbations preserving the displacement identity while altering the sign-sensitive successor state.
+
+Exact rational discovery checks additionally support the #129 transfer architecture and show the predecessor correction in `D c+` is not optional.
+
+These fixtures are **EXPERIMENTAL SIGNAL**, not Lean theorems, realizable zeta configurations or counterexamples to `canonicalSourceMatrix`.
+
+**Consequence:** a proposed contradiction based only on Hermitianity, first-bad minimality, parity, KKT, rank-at-most-one defect, shell response, resonance classification or displacement structure is not credible unless it identifies an additional invariant the fixtures do not preserve.
+
+**Current escape requirement:** theoremize a property of the actual `canonicalSourceMatrix` source formula — most directly through the #129 quadratic source moment, its overlap coefficient, or a composition with the branch/pole data — that invalidates the generic fixtures.
 
 **RH remains OPEN.**
