@@ -103,9 +103,7 @@ theorem sourceEq44ArchComponent_eq_reducedCanonicalArchComponent_add_scalar
         if n = m then canonicalArchScalarCorrection L else 0 := by
   by_cases hnm : n = m
   · subst m
-    change 2 * sourceEq44GammaL n L - 2 * betaL n L =
-      (2 * reducedCanonicalGammaL n L - 2 * betaL n L) +
-        canonicalArchScalarCorrection L
+    simp [sourceEq44ArchComponent, reducedCanonicalArchComponent]
     rw [sourceEq44GammaL_eq_reducedCanonicalGammaL n hL]
     unfold canonicalArchScalarCorrection
     ring
