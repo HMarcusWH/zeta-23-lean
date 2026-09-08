@@ -5,8 +5,8 @@
 ## Authority snapshot
 
 ```text
-live main after PR #131 = 436d524d0cdeb5986d76dcbb988f771d19836c55
-live main tree = 5ad51fd877d51348f1af474b2864eb4ab3e0617a
+live main after documentation PR #132 = 38f65ce4abf5eec258d51425e7c9c88b63b21ffb
+live main tree = 1cc939300fb269f798d25dc88f8eaff4eccc181a
 
 theorem-state anchor = PR #131 merge 436d524d0cdeb5986d76dcbb988f771d19836c55
 validated theorem head = b0026683bcbf233afa947c7f15b57bcc4ddf31e3
@@ -14,152 +14,177 @@ validated theorem tree = 5ad51fd877d51348f1af474b2864eb4ab3e0617a
 RHRC #854 = SUCCESS
 Permansson #627 = SUCCESS
 
-control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
+control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
-Control v2 / FFBBP v1.6 hardened state = MERGED GREEN CONTROL INFRASTRUCTURE
 
 RH = OPEN
 ```
 
-Live GitHub head + Lean/compiler/CI remain authoritative. PRs #127/#128/#129/#131 advanced theorem authority only; the latest merged Control-v2 semantic change remains #117.
+Live GitHub head + Lean/compiler/CI remain authoritative. PR #132 is documentation/control metadata only. The theorem surface remains exactly through #131.
 
 ## Recent theorem packages
 
 ```text
-#94  F1 canonical finite negative obstruction
-#96  constrained canonical algebra
-#98  Euclidean constrained sector
+#94  canonical finite negative obstruction
+#96-#98 constrained canonical algebra + Euclidean sector
 #100 exact centered N-flow + fixed-L negative tail
-#102 exact reversal symmetry + even commutator collapse
-#103 exact parity geometry + algebraic D-equivalence
-#105 least bad parity size + 1d successor shell
-#107 parity compression + genuine negative eigenmode + non-inheritance
-#109 nonzero shell projection + exact parity normals + KKT
-#110 cubic parity channel + rank-at-most-one compressed parity defect
-#112 global first bad + intrinsic shell + exact cubic factorization
-#113 intrinsic direct sum + shifted inverse + scalar Schur identity
-#115 canonical cubic shell incidence
-#118 canonical cubic quotient coordinate + normalized Schur
-#119 exact canonical quotient-secular root/eigenmode equivalence
-#121 exact explicit cubic Schur scalar bridge
-#122 projected metric/resolvent control + E4-A1 zero-resonance classification
-#124 zero-shift kernel/range dichotomy + resonant identity/bound
-#125 canonical zero-shift Schur endpoint + complete square + Re S0<0
+#102-#103 exact reversal/parity geometry + algebraic D-equivalence
+#105/#107/#109/#110 least-bad eigenmode, parity normals, KKT, cubic channel
+#112/#113 global first bad, intrinsic shell, V=W⊕S, shifted Schur reduction
+#115/#118 canonical cubic shell + quotient coordinate
+#119 exact secular root/eigenmode equivalence
+#121 exact explicit Schur scalar bridge
+#122 projected metric/resolvent control + zero-resonance classification
+#124/#125 zero-shift kernel/range dichotomy + endpoint + Re S0<0
 #127 canonical zero-shift shell response
-#128 signed regular shell response + canonical resonant pole
+#128 signed regular response + canonical resonant pole
 #129 source-explicit cubic defect + exact cross-parity secular transfer
 #131 exact canonical source-moment decomposition
+#132 documentation/control synchronization only
 ```
 
 ## Current frontier
 
 ```text
-FIRST-BAD-RIGIDITY-E
-  E1    cubic-shell incidence                                      PROVED / #115
-  E2    canonical cubic coordinate + normalized Schur              PROVED / #118
-  E3-A  exact quotient secular root <-> eigenmode                   PROVED / #119
-  E3-B2 exact explicit Schur bridge                                 PROVED / #121
-  E3-B1 projected symmetry/coercivity/resolvent metric control      PROVED / #122
-  E4-A1 ker(A) cubic-coupling classification                        PROVED / #122
-  E4-A2 kernel/range zero-shift dichotomy + endpoint                PROVED / #124-#125
-  E4-A3a canonical zero-shift shell response                        PROVED / #127
-  E4-A3b signed response + canonical resonant kernel pole           PROVED / #128
-  E4-A3c source-explicit cross-parity secular transfer              PROVED / #129
-  E4-A4a exact source-moment decomposition                          PROVED / #131
+E4-A4b0 kernel/source zero-shift transport                         NOW
+E4-A4b1 absolute canonical source-energy decomposition            THEN
+E4-A4b2 canonical one-step domination/coercivity                  DECISIVE OPEN TARGET
+E4-A4R  log-lift dense regular-aperture selection                 FALLBACK SIMPLIFIER
+E4-A4d  global first-bad exclusion                                AFTER COERCIVITY
 
-  E4-A4b regular-branch source test                                 NOW
-  E4-A4c resonant-branch source test                                NEXT / PARALLEL
-  E4-B  parity shifted-nullity from rank-at-most-one algebra        PARALLEL
-  E3-C  resolvent identity / secular monotonicity / root uniqueness PARALLEL
-  E3-B3 general predecessor-floor deformation theorem               PARALLEL / OPEN
+PARALLEL
+  E4-B shifted-nullity
+  E3-C secular monotonicity / root-count control
+  E3-B3 lower-floor deformation
+  source-coordinate high-order cancellation formalization when useful
 
 TARGET
-  actual canonical first-bad negative-root exclusion
-  no off-line zero through existing global reduction
-  explicit terminal RH bridge
-  RH                                                                 OPEN
+  no canonical first-bad negative root
+  -> no off-line zero through existing global reduction
+  -> explicit terminal Mathlib RH bridge
+  RH OPEN
 ```
 
-## Exact post-#131 state
+## Exact formal state
 
-For the projected predecessor block `A=P_W T|_W`, canonical cubic shell vector `c`, coupling `b=Bc`, and safe negative root `lam<0`:
+A hypothetical off-line zero already forces one global-first-bad finite state with:
 
-- #127 proves the decoupled zero-shift image `T u0` is exactly one-dimensional shell response and identifies its canonical scalar `sigma0`;
-- #128 proves `Re sigma0<0` at the forced root and defines the canonical kernel coordinate `k=K(b)`, with `k=0` in the decoupled branch and `k!=0` plus an exact `1/(-lam)` pole in the resonant branch;
-- #129 identifies the cubic defect functional with the actual canonical-source quadratic normal moment and transfers the exact secular equation from even to odd parity, retaining the predecessor correction in `D c+`;
-- #131 decomposes that exact source moment into a surviving pole-even profile term, reduced arch diagonal and off-diagonal moments, and a finite von-Mangoldt weighted sum of elementary `sourceMatrix` moments. The index-independent arch scalar is annihilated and the pole odd profile cancels on the even boundary-flat sector.
+- a negative exact secular/eigenvalue root;
+- both predecessor parity sectors nonnegative;
+- canonical one-dimensional shell/KKT geometry;
+- zero-shift kernel/range classification;
+- `Re S0<0` and regular `Re sigma0<0`;
+- a canonical resonant kernel pole;
+- exact cross-parity transfer;
+- exact pole/arch/prime decomposition of the canonical source moment.
 
-The global ExceptionalZero wrapper still says that a hypothetical off-line zero forces one global-first-bad finite state carrying the exact source-explicit cross-parity certificate at the same negative explicit root.
+Neither branch is excluded. No negative-root exclusion or RH theorem is proved.
 
-Neither the regular nor resonant branch is excluded.
+## Post-#132 derived structural target
 
-## Highest-leverage next split
-
-### A4b-0 — source-expanded root interface
-
-Compose the #131 identity directly into the #129 transfer theorem so the live equation is
+The next strongest theorem is the denominator-free kernel/source transport. For `z in ker A+`, the audit derives
 
 ```text
-F_- = alpha F_+ + Gamma * explicitCanonicalSourceMoment(u_+).
+A-(Dz) = beta(z)d + mu(z)a
+<b-,Dz>/rho- = beta(z)+mu(z)
 ```
 
-The same tranche should theoremize linearity/negation/scalar covariance of the explicit source moment, isolate the elementary source-atom observable
+and therefore
 
 ```text
-omega -> quadraticNormalMatrixMoment K (sourceMatrix omega K) v,
+(||K+b+||^2/rho+) K-d + mu(K+b+) K-a = 0
 ```
 
-and theoremize its endpoint zeros at `omega=0,1`.
+in the full odd predecessor kernel.
 
-### Regular branch source exclusion
-
-Combine
+Under both regular couplings, the same geometry yields
 
 ```text
-k = 0
-Re sigma0 < 0
-F_- = alpha F_+ + Gamma * explicitCanonicalSourceMoment(u_+)
+Gamma0 * mu(z) = 0
 ```
 
-with predecessor nonnegativity and actual source structure. The useful target must be compositional: the raw source moment is linear in `v`, so universal positivity/nonnegativity on the whole vector space is not viable.
-
-### Resonant branch source exclusion
-
-Combine
+for every even predecessor-kernel vector. A direct zero-shift transfer is also derivable without pseudoinverse/Laurent machinery:
 
 ```text
-k != 0
-(-lam) K(R_lam b) = k
-F_- = alpha F_+ + Gamma * explicitCanonicalSourceMoment(u_+)
+sigma- = alpha0 sigma+ + Gamma0 * mu(u+0).
 ```
 
-with the same canonical source formula and first-bad predecessor nonnegativity.
+These are derived targets, not compiled theorem authority.
 
-### Global exclusion
+## Countermodel lesson
 
-Only after both branches are actually excluded may the project claim no canonical first-bad negative root. The existing reduction from an arbitrary off-line zero would then rule out such a zero in the project carrier; the terminal Mathlib RH statement still requires an explicit final bridge.
+Exact rational generic centered-grid fixtures preserve the parity/boundary-flat/KKT/rank-one/transfer package while realizing:
 
-## Falsification lesson after #131
+```text
+sourceMoment != 0 with Gamma = 0 at a common negative root
+Gamma != 0 with sourceMoment = 0 at a common negative root
+alpha = 0 at an odd-only negative root with positive even successor
+```
 
-Generic structural countermodels survive the already-proved shell/Schur/parity/KKT/N-flow framework. #131 adds actual source values, but it also reveals a permanent warning: `explicitCanonicalSourceMoment` is linear in the trial vector. Therefore a universal raw sign theorem is structurally the wrong target.
+Additional fixtures realize negative `Gamma`, negative `alpha`, and either sign of the source moment.
 
-The next argument should instead test the canonically oriented source/overlap product, the elementary atom as a function of `omega`, or another source-sensitive invariant that depends on the branch/root orientation.
+They are not the canonical arithmetic source and not RH counterexamples. They quarantine generic factorwise sign/nonzero closure and any division by those factors without a separate canonical theorem.
+
+## Why absolute energy is now central
+
+The generic covariance
+
+```text
+M -> M+tI
+lambda -> lambda+t
+```
+
+can preserve the trial/transfer package while moving the root relative to zero. Therefore the structural transfer data do not know the absolute spectral origin.
+
+PR #131's normal moment intentionally annihilates scalar identity shifts. The next arithmetic layer must restore the absolute canonical normalization through
+
+```text
+E(v)=Re<Tv,v>.
+```
+
+The decisive target is the canonical one-step domination theorem. With `A>=0`, shell `c`, coupling `b=P_WTc`, and `q_c=Re<Tc,c>`, prove
+
+```text
+q_c >= 0
+|<w,b>|^2 <= q_c Re<Aw,w>  for every w in W.
+```
+
+If this holds, kernel vectors force the coupling into `range A`, removing resonance. In the regular branch, `Ax0=b` gives `S0>=0`, contradicting the existing `Re S0<0` at the forced negative root.
+
+## Secondary source clue
+
+Boundary-flat Taylor algebra predicts the first potentially nonzero source-coordinate terms at orders `omega^7` / `omega^9`. High-precision diagnostics support the coefficients. This is **DERIVED / EXPERIMENTAL**, not proof, and is useful only if it feeds a rigorous absolute-energy/coercivity estimate.
+
+## Fallback regular-aperture route
+
+If resonance is a proof-engineering obstruction, freeze the prime cutoff and use
+
+```text
+M_Q(L)=-log(L)I+B_Q(L),  L=exp(z),
+```
+
+with periodic holomorphic remainder to prove determinant nonidentity and dense nonsingularity. Preserve a negative witness by continuity and reselect the least-bad size at a nearby aperture with PD predecessors.
+
+This does not exclude a negative successor. Exact generic fixtures already show PD predecessors can coexist with negative roots.
 
 ## Firewalls
 
 - RH remains OPEN.
-- `ker A` is the projected successor predecessor-block kernel, not the predecessor-size spectrum.
 - D is algebraic, not unitary/isometric.
-- the predecessor correction in `D c+` may not be dropped.
-- no shell invariance is proved.
+- predecessor correction in `D c+` must be retained.
+- `ker A` is the projected successor predecessor-block kernel.
 - no `A^-1` at zero.
 - `Re S0<0` and `Re sigma0<0` are not branch exclusion.
-- a canonical resonant pole is not automatically contradictory.
-- #129/#131 give no useful sign/nonzeroness for `alpha`, `Gamma`, overlap or source moment.
-- universal raw source-moment positivity is not a viable route for this linear observable.
-- generic structural countermodels refute generic arguments, not the canonical CCM source formula.
-- monotonicity/uniqueness is not negative-root exclusion.
-- no machine claim-registry promotion follows automatically from #127-#131.
-- RH remains OPEN.
+- canonical resonant pole is not contradiction.
+- no division by `alpha`, `Gamma`, overlap or source moment without theoremized nonzeroness.
+- universal raw source-moment positivity is dead by linearity.
+- factorwise sign/nonzero closure is quarantined by exact rational countermodels.
+- shift-invariant transfer data cannot locate the absolute spectral origin.
+- positive-definite predecessors are simplification, not exclusion.
+- generic countermodels do not refute the canonical source.
+- numerical precision is not theorem authority.
+- machine claim promotion and RH status do not change from documentation.
 
-Current research detail: `research/RHRC/RESEARCH_LEADS_POST_131_DELTA.md`.
+Current research detail: `research/RHRC/RESEARCH_LEADS_POST_132_DELTA.md`.
+
+**RH remains OPEN.**
