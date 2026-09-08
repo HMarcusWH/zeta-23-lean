@@ -62,27 +62,29 @@ Create a new versioned object if semantics change.
 The repository keeps separate anchors when needed:
 
 - **theorem-state anchor** — last meaningful theorem-bearing merge whose Lean surface defines current mathematical authority;
-- **control-plane anchor** — last meaningful merged green research-control/assurance state.
+- **control-plane semantic anchor** — last meaningful merged green research-control/assurance semantics.
 
-A control-only PR does not advance theorem authority. A theorem-only PR does not automatically advance Control-v2 semantics.
+A documentation/control-metadata PR does not advance theorem authority. A theorem-only PR does not automatically advance Control-v2 semantics.
 
-### Current synchronized anchors after PR #131
+### Current synchronized anchors after PR #132
 
 ```text
+live main after documentation PR #132 = 38f65ce4abf5eec258d51425e7c9c88b63b21ffb
+live main tree = 1cc939300fb269f798d25dc88f8eaff4eccc181a
+
 theorem-state anchor = PR #131 merge 436d524d0cdeb5986d76dcbb988f771d19836c55
 validated theorem head = b0026683bcbf233afa947c7f15b57bcc4ddf31e3
 theorem tree = 5ad51fd877d51348f1af474b2864eb4ab3e0617a
 RHRC #854 = SUCCESS
 Permansson #627 = SUCCESS
 
-control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
+control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
-Control v2 / FFBBP v1.6 hardened research-control state = MERGED GREEN CONTROL INFRASTRUCTURE
 
 RH = OPEN
 ```
 
-PRs #118/#119/#121/#122/#124/#125/#127/#128/#129/#131 changed theorem files but did not change Control-v2 semantics. Therefore theorem authority advances to #131 while control-plane authority remains #117.
+PR #132 synchronized documentation/control metadata and the research frontier but added no Lean theorem. Theorem authority therefore remains #131. The routing metadata may advance while Control-v2 authority/algorithm semantics remain anchored at #117.
 
 Machine registries and compiler/CI evidence still outrank prose anchors.
 
@@ -151,6 +153,7 @@ Historical examples:
 - PR #128 theoremized the signed regular response and canonical resonant kernel pole.
 - PR #129 theoremized the source-explicit cubic defect, exact cross-parity secular transfer, overlap representation and global off-line-zero source-explicit certificate.
 - PR #131 theoremized the exact canonical source-moment decomposition: pole-even channel, reduced arch diagonal/off-diagonal channels, finite von-Mangoldt prime atomization, scalar arch annihilation, pole odd-profile cancellation, and `cubicDefectFunctional = explicitCanonicalSourceMoment`.
+- PR #132 changed documentation/control metadata only and therefore did not advance theorem authority.
 
 See `VALIDATION_PROTOCOL.md`.
 
@@ -174,42 +177,43 @@ For R003, `R003_PROMOTED_BINDINGS.json` is the declared production binding surfa
 
 Supporting theorem checks may exist without individual registry promotion. CI does not equate every theorem with a promoted claim; promotion intent must be explicit.
 
-## Current transition after PR #131
+## Current transition after PR #132
 
-The theorem frontier is **E4-A4b regular-branch canonical-source testing**, with E4-A4c resonant testing, E4-B shifted-nullity, E3-C monotonicity and E3-B3 deformation in parallel.
+The newest current-priority delta is `RESEARCH_LEADS_POST_132_DELTA.md`. `RESEARCH_LEADS_POST_131_DELTA.md` remains historical evidence for the state immediately after theorem PR #131.
 
-The old E4-A3 construction problem is closed by #127-#129, and A4a source opacity is now closed by #131:
+The post-#132 audit changes routing without changing theorem truth:
 
 ```text
-#127: special zero-shift image is pure shell; sigma0*c=T u0;
-      S0=star(sigma0)<c,c>.
+NEXT THEOREM
+  E4-A4b0 kernel/source zero-shift transport
 
-#128: regular Re sigma0<0; canonical kernel coordinate k;
-      resonant exact (-lam)K(R_lam b)=k and divided pole.
+NEXT ARITHMETIC LAYER
+  absolute canonical source-energy decomposition retaining scalar normalization
 
-#129: cubic defect = actual canonical quadratic source moment;
-      exact cross-parity secular transfer;
-      off-line zero -> source-explicit global first-bad certificate.
+DECISIVE OPEN TARGET
+  canonical one-step domination/coercivity in both parities
 
-#131: source moment = exact pole/arch/prime decomposition;
-      index-independent arch scalar annihilated;
-      pole odd profile cancels on the even boundary-flat sector.
+OPTIONAL SIMPLIFIER
+  log-lift dense regular-aperture selection
 ```
 
-The next job is not to re-prove shell response, pole decomposition, generic branch structure, or source decomposition. Post-#128 countermodels show that generic parity/KKT/rank-one/displacement structure can coexist with bad finite states, while the #131 linear source observable rules out universal raw positivity as a viable theorem target. The next theorem must therefore compose actual canonical source values with the canonical overlap/root/branch data.
+The exact rational countermodel campaign additionally quarantines generic factorwise `alpha`/`Gamma`/overlap/source-moment sign or nonvanishing closure. Scalar-shift covariance demonstrates that the generic transfer package cannot determine the absolute spectral origin. The replacement route must spend exact canonical normalization information.
 
-Permanent firewalls:
+Permanent firewalls now include:
 
 ```text
-Re S0<0 != contradiction
-Re sigma0<0 != contradiction
+Re S0<0 != contradiction by itself
+Re sigma0<0 != contradiction by itself
 canonical 1/(-lam) pole != contradiction
 D algebraic != D unitary/isometric
 source decomposition != source sign/nonzeroness
 linear source observable != universal raw positivity
+factorwise transfer nonvanishing is not structural
+shift-invariant transfer data != absolute spectral sign
+positive-definite predecessors != positive successor
 root uniqueness != root exclusion
 ```
 
-The current post-#131 implications and falsification plan are recorded in `RESEARCH_LEADS_POST_131_DELTA.md`.
+The current post-#132 implications and falsification plan are recorded in `RESEARCH_LEADS_POST_132_DELTA.md`.
 
 **RH remains OPEN.**
