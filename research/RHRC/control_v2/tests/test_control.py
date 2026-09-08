@@ -35,7 +35,10 @@ class ControlV2Tests(unittest.TestCase):
         )
         self.assertNotEqual(state.anchor.merge_commit, state.control_anchor.merge_commit)
         self.assertEqual(state.terminal_claim, "RH_OPEN")
-        self.assertEqual(state.frontier_id, "FIRST_BAD_RIGIDITY_E4_A4B_REGULAR_SOURCE_TEST")
+        self.assertEqual(
+            state.frontier_id,
+            "FIRST_BAD_RIGIDITY_E4_A4B0_KERNEL_SOURCE_TRANSPORT",
+        )
 
     def test_router_is_deterministic_non_authoritative_and_transparent(self):
         state = load_research_state()
@@ -92,9 +95,10 @@ class ControlV2Tests(unittest.TestCase):
         self.assertEqual(set(calls), unique_concepts)
 
         e4a4_ids = (
-            "E4_A4_SOURCE_EXPANDED_ROOT_INTERFACE",
-            "E4_A4_REGULAR_SOURCE_EXCLUSION",
-            "E4_A4_RESONANT_SOURCE_EXCLUSION",
+            "E4_A4_KERNEL_SOURCE_TRANSPORT",
+            "E4_A4_ABSOLUTE_SOURCE_ENERGY",
+            "E4_A4_CANONICAL_ONE_STEP_DOMINATION",
+            "E4_A4_REGULAR_APERTURE_SELECTION",
             "E4_A4_GLOBAL_FIRST_BAD_EXCLUSION",
         )
         self.assertEqual(len({id(receipts[action_id]) for action_id in e4a4_ids}), 1)

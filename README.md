@@ -7,8 +7,8 @@ This fork preserves the upstream Zeta23 theorem package while adding an opt-in R
 ## Current authority snapshot
 
 ```text
-live main after PR #131 = 436d524d0cdeb5986d76dcbb988f771d19836c55
-live main tree = 5ad51fd877d51348f1af474b2864eb4ab3e0617a
+live main after documentation PR #132 = 38f65ce4abf5eec258d51425e7c9c88b63b21ffb
+live main tree = 1cc939300fb269f798d25dc88f8eaff4eccc181a
 
 theorem-state anchor = PR #131 merge 436d524d0cdeb5986d76dcbb988f771d19836c55
 validated theorem head = b0026683bcbf233afa947c7f15b57bcc4ddf31e3
@@ -17,14 +17,14 @@ theorem-bearing merged through = PR #131
 RHRC #854 = SUCCESS
 Permansson #627 = SUCCESS
 
-control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
+control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
-Control v2 / FFBBP v1.6 hardened research-control state = MERGED GREEN CONTROL INFRASTRUCTURE
+Control v2 / FFBBP v1.6 hardened research-control semantics = MERGED GREEN CONTROL INFRASTRUCTURE
 
 RH = OPEN
 ```
 
-Live GitHub head + Lean compiler + CI remain authoritative over prose snapshots. PRs #118/#119/#121/#122/#124/#125/#127/#128/#129/#131 advanced theorem authority; Control-v2 semantics have not changed since #117.
+Live GitHub head + Lean compiler + CI remain authoritative over prose snapshots. PR #132 synchronized documentation/control metadata only; theorem authority remains exactly at #131.
 
 ## Current RH-directed theorem ladder
 
@@ -53,126 +53,168 @@ off-line zeta zero
   -> off-line zero -> source-explicit first-bad certificate       PROVED / #129
   -> exact canonical source-moment decomposition                  PROVED / #131
 
-NOW — E4-A4b REGULAR-BRANCH SOURCE TEST
-  compose the #131 pole/arch/prime source decomposition directly into
-  the #129 cross-parity root equations;
-  target a compositional source/overlap invariant rather than a universal
-  sign theorem for the raw source moment;
-  isolate and study the one-parameter elementary source atom;
-  do not divide by `alpha`, `Gamma`, overlap, or source moment without
-  a separate nonzeroness theorem.
+NOW — E4-A4b0 KERNEL/SOURCE TRANSPORT
+  theoremize the denominator-free zero-shift kernel identities,
+  the full odd-kernel projected compatibility, the direct zero-shift
+  cross-parity transfer, and regular-kernel overlap/source annihilation.
 
-PARALLEL
-  E4-A4c resonant-branch source test
-  E4-B parity shifted-nullity comparison from rank-at-most-one algebra
-  E3-C shifted-resolvent identity / strict secular monotonicity / root uniqueness
-  E3-B3 general lower-floor deformation theorem
-  deformation-budget falsification lane
-  source-faithful G1-B1B -> G1-final -> S-NEG -> G23
+THEN — ABSOLUTE CANONICAL SOURCE ENERGY
+  restore the pole/arch/prime energy decomposition including the
+  scalar normalization term deliberately annihilated by the #131 moment.
+
+DECISIVE TARGET — CANONICAL ONE-STEP DOMINATION
+  q_c = Re<Tc,c> >= 0
+  |<w,b>|^2 <= q_c Re<Aw,w>  for every predecessor vector w.
+  If derived from the actual canonical source, this removes resonance
+  and contradicts the already-proved negative zero-shift endpoint.
+
+FALLBACK SIMPLIFIER
+  log-lift / analytic dense regular-aperture selection if resonance makes
+  the arithmetic estimate unnecessarily difficult. Positive-definite
+  predecessors alone are not exclusion.
 
 TARGET
-  source-specific exclusion of the actual canonical global first-bad state
-  -> negative-root exclusion
+  no canonical first-bad negative state
   -> no off-line zero via the existing global reduction
-  -> explicit bridge to the terminal RH statement
+  -> explicit terminal Mathlib RiemannHypothesis bridge
   RH                                                               OPEN
 ```
 
-## What PRs #127-#131 changed
+## Exact post-#131 formal state
 
-Let
+A hypothetical off-line zero is already reduced to one finite global-first-bad configuration carrying:
 
-```text
-A = P_W T|_W,
-c = intrinsicCubicShellPart,
-b = Bc,
-u0 = -x0 + c,
-F_p(lam) = cubicSecularScalar p ... lam.
-```
+- a negative exact secular/eigenvalue root;
+- nonnegative predecessor parity sectors;
+- canonical `V=W⊕S` and one-dimensional shell geometry;
+- safe shifted predecessor resolvents and exact Schur/secular identities;
+- the zero-shift regular/resonant branch package;
+- `Re S0<0` and, in the regular branch, `Re sigma0<0`;
+- the canonical resonant kernel coordinate and exact pole;
+- exact cross-parity secular transfer;
+- the exact canonical source-moment decomposition into pole-even, reduced arch diagonal/off-diagonal and finite von-Mangoldt source atoms.
 
-PR #127 closes the regular zero-shift shell-response step: for a decoupled solution `Ax0=b`, the specific image `T u0` is pure shell and a canonical scalar `sigma0` satisfies
+This is the strongest theorem-backed finite reduction. It is not negative-root exclusion or RH.
 
-```text
-sigma0 • c = T u0,
-S0 = star(sigma0) * <c,c>.
-```
+## What the post-#132 audit changed
 
-PR #128 sharpens the same regular branch to `Re sigma0 < 0` at the forced negative root and introduces the canonical kernel coordinate `K`. For `k=K(b)` it proves the exact denominator-free pole identity
-
-```text
-(-lam) • K(R_lam b) = k.
-```
-
-Thus the decoupled branch has `k=0`, while the resonant branch has `k!=0` and an exact divided `1/(-lam)` pole formula for `lam<0`.
-
-PR #129 exposes the parity/cubic defect directly on the canonical source side:
+The next theorem should no longer be merely a source-expanded restatement of #129. The stronger denominator-free target is the kernel/source transport identity. For `z in ker A+`, the derived target is
 
 ```text
-cubicDefectFunctional L K v
-  = <n2, canonicalSourceMatrix(L,K) v> / <n2,n2>
+A-(Dz) = beta(z) d + mu(z) a
+<b-,Dz>/rho- = beta(z) + mu(z)
 ```
 
-and theoremizes
+and hence, after projection to the entire odd predecessor kernel,
 
 ```text
-F_- = alpha * F_+ + Gamma * sourceMoment(u_+).
+(||K+b+||^2/rho+) K-d + mu(K+b+) K-a = 0.
 ```
 
-PR #131 then decomposes the production source moment exactly into
+Under both regular couplings, the same geometry yields the derived compatibility
 
 ```text
-one surviving pole-even profile term
-- reduced arch diagonal moment
-- reduced arch off-diagonal moment
-- finite von-Mangoldt weighted elementary sourceMatrix moments.
+Gamma0 * mu(z) = 0
 ```
 
-The index-independent archimedean scalar cancels from this observable and the pole odd profile cancels on the even boundary-flat input. The final theorem is
+for every even predecessor-kernel vector. These are not yet Lean theorems.
+
+A direct zero-shift transfer is also available without whole-block invertibility, pseudoinverses, or Laurent limits:
 
 ```text
-cubicDefectFunctional L K v
-  = explicitCanonicalSourceMoment L K v.
+sigma- = alpha0 sigma+ + Gamma0 * mu(u+0).
 ```
 
-A hypothetical off-line zero therefore forces one global-first-bad finite state carrying an exact source-expanded cross-parity certificate. This is stronger rigidity/exposure, not branch exclusion.
+## Why generic transfer algebra is essentially exhausted
 
-## Current mathematical frontier
+Exact rational centered-grid countermodels preserve the parity/boundary-flat geometry, predecessor nonnegativity, KKT extraction, rank-one cubic defect, quotient transport, trial reconstruction, overlap formula and full #129 scalar transfer while realizing:
 
-The post-#128 countermodel pass still rules out a contradiction based only on generic Hermitian/Schur/parity/KKT/displacement structure. #131 removes source opacity, but it also reveals that the explicit source moment is linear in the trial vector. Therefore a universal raw positivity/nonnegativity theorem on the full legal vector space cannot be the A4b mechanism: `v -> -v` reverses the value.
+```text
+sourceMoment(u+) != 0 with Gamma = 0 at a common negative root
+Gamma != 0 with sourceMoment(u+) = 0 at a common negative root
+alpha = 0 at an odd-only negative root with positive even successor
+```
 
-The immediate high-information questions are now:
+Additional fixtures realize negative `Gamma`, negative `alpha`, and either sign of the source moment.
 
-- what does the exact #129 cross-parity root equation become after substituting the #131 pole/arch/prime decomposition?
-- can the product of the canonical overlap coefficient with the explicit source moment be constrained on the actual first-bad trial vector?
-- what exact factorization, symmetry, monotonicity, or real-part control does the elementary source atom have as a function of its source coordinate `omega`?
-- can the regular package `k=0`, `Re sigma0<0` coexist with that compositional source structure?
-- can the resonant package `k!=0`, exact kernel pole, and predecessor nonnegativity coexist with it?
+These are generic reversal-symmetric diagonal sources, not the canonical arithmetic CCM source and not RH counterexamples. They do show that factorwise sign/nonvanishing and even-only exclusion are not credible structural closure mechanisms.
+
+More importantly, the simultaneous generic shift
+
+```text
+M -> M+tI
+lambda -> lambda+t
+```
+
+can preserve the whole transfer package while moving the spectral root across zero. Therefore the shift-invariant transfer data cannot locate the absolute spectral origin.
+
+## The remaining hard theorem is arithmetic normalization
+
+PR #131's quadratic-normal source moment intentionally annihilates scalar identity shifts. That is ideal for the parity defect but erases precisely the information needed to know where zero lies.
+
+The next source object must retain the absolute normalization:
+
+```text
+E(v) = Re<Tv,v>.
+```
+
+The decisive target is a canonical one-step domination theorem. For predecessor `A>=0`, shell `c`, coupling `b=P_W T c`, and `q_c=Re<Tc,c>`, prove from the actual pole/arch/prime source that
+
+```text
+q_c >= 0
+|<w,b>|^2 <= q_c Re<Aw,w>  for every w in W.
+```
+
+This is equivalent to positivity of the one-step block extension when `A>=0`.
+
+If it holds, then:
+
+1. `w in ker A` forces `<w,b>=0`, so the resonant coupling disappears;
+2. in the regular branch, `Ax0=b` gives `S0>=0`;
+3. the existing first-bad theorem gives `Re S0<0` at the forced negative root;
+4. contradiction.
+
+A source-faithful proof of this domination is therefore the current central mathematical target.
+
+## Quantitative clue
+
+Post-#132 Taylor algebra and high-precision checks suggest unusually high source-coordinate cancellation under the boundary-flat moment constraints:
+
+```text
+odd source-atom energy:        first possible term at omega^7
+even source-atom energy:       first possible term at omega^9
+even quadratic-normal moment:  first possible term at omega^7
+```
+
+This is **DERIVED / EXPERIMENTAL**, not theorem authority. It is relevant only insofar as it can feed a rigorous absolute-energy/coercivity estimate.
 
 ## Permanent firewalls
 
 - RH remains OPEN.
-- `V=W⊕S` is proved; shell invariance is not.
-- `T u0 ∈ S` for the special zero-shift trial image does not make `u0` an eigenvector.
+- `V=W⊕S` does not imply shell invariance.
+- the special `T u0∈S` theorem does not make `u0` an eigenvector.
 - D-equivalence is algebraic, not unitary/isometric.
-- the predecessor correction term in `D c+` is explicit theorem data and must be retained in general.
-- exact cubic factorization gives rank at most one, not automatically exact rank one.
-- `ker A` means the kernel of the projected successor predecessor block `P_W T|_W`; it is not the predecessor-size compressed-operator kernel.
-- no whole-space or range-only `A^-1` is introduced at zero.
-- `Re S0 < 0` and `Re sigma0 < 0` are not branch exclusion.
-- resonance and an exact `1/(-lam)` pole are not automatically contradictory.
-- #129/#131 do not prove `alpha`, `Gamma`, overlap, or the canonical source moment nonzero or sign-controlled.
-- raw universal source-moment positivity is incompatible with the linear source observable except in a degenerate zero-functional sense.
-- root uniqueness, if proved, is not root absence.
-- generic/displacement-preserving countermodels do not refute the actual canonical CCM source matrix; they refute arguments that use too little source-specific information.
-- source-normalization, machine claim promotion, negative-root exclusion and RH remain unchanged unless separately theorem-backed.
+- the predecessor correction in `D c+` must be retained.
+- exact cubic factorization is rank at most one, not automatically exact rank one.
+- `ker A` is the projected successor predecessor-block kernel, not the predecessor-size compressed-operator kernel.
+- no `A^-1` at zero.
+- `Re S0<0` and `Re sigma0<0` are not branch exclusion.
+- the resonant pole is classification, not contradiction.
+- no division by `alpha`, `Gamma`, overlap or source moment without separately proved nonzeroness.
+- raw universal source-moment positivity is impossible for the linear observable except in the degenerate zero-functional case.
+- shift-invariant transfer data do not determine the absolute spectral origin.
+- positive-definite predecessor selection is simplification, not negative-root exclusion.
+- generic countermodels refute generic arguments, not the canonical arithmetic source.
+- numerical precision is not rigorous enclosure or theorem authority.
+- machine claim promotion, negative-root exclusion and RH remain unchanged unless separately theorem-backed.
 
 ## Living research records
 
 - `research/RHRC/README.md`
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`
-- `research/RHRC/RESEARCH_LEADS_POST_131_DELTA.md` — current post-green delta
-- `research/RHRC/RESEARCH_LEADS_POST_129_DELTA.md` — historical predecessor delta
-- `research/RHRC/RESEARCH_LEADS.md` — accumulated historical option ledger
+- `research/RHRC/RESEARCH_LEADS_POST_132_DELTA.md` — current post-#132 research delta
+- `research/RHRC/RESEARCH_LEADS_POST_131_DELTA.md` — historical predecessor delta
+- `research/RHRC/RESEARCH_LEADS_POST_129_DELTA.md` — earlier parity/source delta
 - `research/RHRC/OBSTRUCTION_LEDGER.md`
 - `research/RHRC/DEAD_ROUTES.md`
 - `research/RHRC/countermodels/POST_129_STRUCTURAL_COUNTERMODELS_2026_09_08.md`

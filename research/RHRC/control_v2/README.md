@@ -18,137 +18,162 @@ The controller answers **where to look next**, never **what is mathematically tr
 ```text
 theorem-state anchor = PR #131 merge 436d524d0cdeb5986d76dcbb988f771d19836c55
 validated theorem head = b0026683bcbf233afa947c7f15b57bcc4ddf31e3
-control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
+control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 ```
 
-PR #131 is the current merged theorem authority. PR #117 remains the latest merged green Control-v2 semantic authority because #118/#119/#121/#122/#124/#125/#127/#128/#129/#131 changed theorem state but not controller semantics.
+PR #132 synchronized documentation/control metadata only. PR #131 remains theorem authority. PR #117 remains the latest merged green Control-v2 semantic authority because subsequent changes have altered theorem state or routing data, not the controller's authority model/algorithms.
 
 ## Current routed frontier
 
-The theorem frontier has advanced from A4a source decomposition to **E4-A4b regular-branch source testing**.
-
-Primary theorem actions should now be read as:
+The post-#132 research audit changes the immediate route to:
 
 ```text
-A4b-0 source-expanded cross-parity root interface
-A4b regular-branch canonical-source exclusion
-A4c resonant-branch canonical-source exclusion
-A4d global first-bad exclusion
+E4-A4b0  kernel/source zero-shift transport                 NOW
+E4-A4b1  absolute canonical source-energy decomposition     THEN
+E4-A4b2  canonical one-step domination/coercivity           DECISIVE TARGET
+E4-A4R   log-lift dense regular-aperture selection          FALLBACK SIMPLIFIER
+E4-A4d   global first-bad exclusion                         AFTER COERCIVITY
 ```
 
 Parallel actions remain:
 
 ```text
-E4-B parity shifted-nullity
-E3-C exact real secular monotonicity / root-count control
+E4-B  parity shifted-nullity
+E3-C  exact real secular monotonicity / root-count control
 E3-B3 generalized predecessor-floor deformation theorem
 deformation-budget paper falsifier
 ```
 
-## Why the frontier moved
+## Why routing changed
 
-The old E4-A3 obligations are theorem-authoritative:
+The previous routing emphasized composing #131 directly into the #129 root equation and testing regular/resonant branches factorwise. The post-#132 audit found a stronger denominator-free zero-shift identity and the exact countermodel campaign falsified several factorwise shortcuts.
 
-```text
-#127:
-  T u0 is pure shell for the special decoupled zero-shift trial
-  sigma0*c = T u0
-  S0 = star(sigma0)<c,c>
+### New immediate theorem target
 
-#128:
-  Re sigma0<0 at the forced negative root
-  canonical kernel coordinate K
-  k=K(b)=0 in the decoupled branch
-  k!=0 in the resonant branch
-  (-lam)K(R_lam b)=k
-
-#129:
-  cubicDefectFunctional = evenQuadraticSourceMoment
-  F_- = alpha F_+ + Gamma sourceMoment(u_+)
-  Gamma = exact odd trial/cubic overlap ratio
-  even-root source-product specialization
-  off-line zero -> source-explicit global first-bad certificate
-
-#131:
-  exact canonicalSourceMatrix pole/arch/prime split
-  exact arch scalar annihilation in the active observable
-  exact reduced arch diagonal/off-diagonal split
-  exact finite von-Mangoldt prime atomization
-  exact pole even/odd profile factorization
-  odd pole profile cancellation on the even boundary-flat sector
-  cubicDefectFunctional = explicitCanonicalSourceMoment
-```
-
-The controller must therefore not route back to proving shell response, pole decomposition, generic cross-parity transfer, or source-moment decomposition. Those first-breaks have been consumed by theorem authority.
-
-## Post-#131 routing rule
-
-### Source-expanded root interface first
-
-The highest-information immediate theorem target is to compose
+For `z in ker A+`, the existing parity-defect/quotient identities should compose to
 
 ```text
-evenQuadraticSourceMoment
-  = explicitCanonicalSourceMoment
+A-(Dz) = beta(z) d + mu(z) a
+<b-,Dz>/rho- = beta(z) + mu(z)
 ```
 
-directly into the #129 cross-parity/root theorems.
-
-The same tranche should theoremize linearity/negation/scalar covariance of the explicit moment, isolate the elementary source-atom observable
+and hence
 
 ```text
-omega -> quadraticNormalMatrixMoment K (sourceMatrix omega K) v,
+(||K+b+||^2/rho+) K-d + mu(K+b+) K-a = 0
 ```
 
-and theoremize endpoint zeros at `omega=0,1`.
+in the full odd predecessor kernel.
 
-### Universal raw source sign is not an admissible first-break
-
-The #131 explicit source moment is linear in the vector argument. Therefore a universal theorem claiming strict positivity/nonnegativity on the whole legal vector space is structurally the wrong target: `v -> -v` reverses the value.
-
-Control v2 should instead rank **compositional** source tests involving the canonically oriented trial vector together with overlap / `Gamma`, root parity, or branch equations.
-
-### Regular branch source test
-
-Use
+Under both regular couplings the derived target is
 
 ```text
-k=0
-Re sigma0<0
-F_- = alpha F_+ + Gamma explicitCanonicalSourceMoment(u_+)
+Gamma0 * mu(z) = 0
 ```
 
-plus predecessor nonnegativity and actual pole/arch/prime source values.
+for every even predecessor-kernel vector.
 
-Permanent firewall:
+The same tranche should theoremize the direct zero-shift transfer
 
 ```text
-source decomposition != source sign/nonzeroness.
+sigma- = alpha0 sigma+ + Gamma0 * mu(u+0)
 ```
 
-### Resonant branch source test
+without a pseudoinverse, Laurent limit or whole-block inverse.
 
-Use
+These are derived targets, not current theorem authority.
+
+## Exact countermodel routing gate
+
+Exact rational generic reversal-symmetric diagonal fixtures preserve the actual centered grid, parity/boundary-flat constraints, predecessor nonnegativity, KKT extraction, rank-one cubic defect, quotient transport, shifted trial reconstruction, overlap formula and the full #129 transfer while exhibiting:
 
 ```text
-k!=0
-(-lam)K(R_lam b)=k
-F_- = alpha F_+ + Gamma explicitCanonicalSourceMoment(u_+)
+sourceMoment(u+) != 0 with Gamma = 0 at a common negative root
+Gamma != 0 with sourceMoment(u+) = 0 at a common negative root
+alpha = 0 at an odd-only negative root with positive even successor
 ```
 
-and actual source values. The exact pole classifies resonance; it does not exclude it.
+Additional fixtures realize negative `Gamma`, negative `alpha`, and either sign of the source moment.
 
-### Global exclusion
+These are synthetic/generic regression fixtures, not canonical CCM sources and not zeta counterexamples.
 
-Only after both canonical branches are excluded should Control v2 route to the finite negative-root exclusion composition. No preferred root parity may be assumed. No division by `alpha`, `Gamma`, overlap or source moment is permitted without a theorem.
+**Routing consequence:** Control v2 should not prioritize division by `alpha`, `Gamma`, overlap or source moment, generic factorwise sign/nonzeroness, or even-only root exclusion unless a new canonical source theorem explicitly supplies the missing premise.
 
-## Generic countermodel gate
+## Scalar-shift origin firewall
 
-The post-#128/#129 countermodel registry remains a first-break requirement in spirit for structural exclusion claims. Known fixtures include regular nonnegative-predecessor Schur countermodels, exact resonant countermodels, centered reversal-symmetric diagonal fixtures, and displacement-preserving diagonal perturbations.
+In the generic structural package, the simultaneous shift
 
-These are experimental/synthetic regression fixtures, not zeta counterexamples.
+```text
+M -> M+tI
+lambda -> lambda+t
+```
 
-A candidate theorem that would also rule out those fixtures without naming an additional source-specific invariant should be treated as suspect and falsified before expensive Lean work.
+can preserve the trial vectors, cubic defect/source functional, `alpha`, `Gamma`, and secular transfer data while moving the absolute spectrum relative to zero.
+
+Therefore shift-invariant transfer data cannot by themselves close a sign-sensitive negative-root claim.
+
+PR #131's quadratic-normal moment also annihilates scalar identities. The next arithmetic layer must retain the absolute canonical normalization.
+
+## Absolute source-energy route
+
+The next source theorem should decompose
+
+```text
+E(v) = Re<Tv,v>
+```
+
+through the exact production pole/arch/prime source while retaining the canonical archimedean scalar correction.
+
+A decomposition alone is not closure. Its purpose is to support the decisive one-step domination target.
+
+## Canonical one-step domination
+
+For each parity, with predecessor `A>=0`, shell `c`, coupling `b=P_W T c`, and
+
+```text
+q_c = Re<Tc,c>,
+```
+
+the target is
+
+```text
+q_c >= 0
+|<w,b>|^2 <= q_c Re<Aw,w>  for every w in W.
+```
+
+This is equivalent to positivity of the one-step block extension under `A>=0`.
+
+If theoremized from the actual canonical source:
+
+- kernel vectors force `<w,b>=0`, removing resonance;
+- a regular solution `Ax0=b` gives `S0>=0`;
+- the existing first-bad theorem gives `Re S0<0` at the forced negative root;
+- contradiction.
+
+Control v2 should treat this as the central closure-value theorem, not as an assumption or a cheap intermediate lemma.
+
+## Regular-aperture fallback
+
+If resonance makes the arithmetic estimate unnecessarily difficult, the admissible simplifier is frozen-cutoff analytic/log-lift regular selection:
+
+```text
+M_Q(L) = -log(L) I + B_Q(L)
+L = exp(z)
+```
+
+with periodic holomorphic remainder. Determinant nonidentity + real analyticity should yield dense apertures where finitely many predecessor parity blocks are injective. Preserve a negative witness by continuity, move to such an aperture, then reselect the least-bad size.
+
+Permanent warning:
+
+```text
+positive-definite predecessors != positive successor != RH.
+```
+
+The exact generic countermodels include strictly positive predecessors with negative successor roots, so regular selection is only simplification.
+
+## Quantitative source lane
+
+Boundary-flat Taylor algebra suggests source-coordinate leading orders `omega^7` and `omega^9`. High-precision checks support the predicted coefficients. This remains **DERIVED / EXPERIMENTAL** until theoremized and should be routed only when it contributes a rigorous bound for absolute source energy/coercivity.
 
 ## E3-C routing rule
 
@@ -173,38 +198,40 @@ Because an off-line zero already forces a negative root, monotonicity is support
 
 ## Deformation-budget alignment rule
 
-The theorem ancestry is now
+The current theorem/research ancestry is
 
 ```text
 #119 exact secular equivalence
   -> #121 explicit scalar bridge
-  -> #122 mu=0 metric/resolvent control
+  -> #122 metric/resolvent control
   -> #124/#125 zero-shift branch endpoint
   -> #127 shell response
   -> #128 signed response / canonical pole
   -> #129 source-explicit parity transfer
-  -> #131 exact source decomposition
-  -> E4-A4b/c canonical-source branch tests
+  -> #131 exact source-moment decomposition
+  -> kernel/source zero-shift transport
+  -> absolute source energy
+  -> canonical one-step domination
 ```
 
 If a future theorem uses a lower predecessor floor `mu`, the diagnostic gap must use the same theorem-backed `mu` and shell-stiffness convention. A finite prefix, fitted tail or small local residual is not enough. `PRUNE` still requires a complete assured horizon certificate under the existing v1.6 rules.
-
-## FFBBP v1.6 assurance integration
-
-The existing RUN42C profile and `FFBBP_REFERENCE.json` remain frozen historical qualification authority. The additive `ffbbp/v16_*` modules expose v1.6 assurance contracts without inheriting RUN42C qualification.
-
-A small local residual is not a horizon certificate. Numerical closeness is not decision commutation.
 
 ## Dead-route law
 
 `DEAD_ROUTES.md` remains authoritative historical failure memory. A dead/quarantined route cannot be silently resurrected; a revival record must state the original blocker, changed premise and evidence.
 
-Post-#131, universal raw source-moment positivity is additionally dead as a theorem strategy because the observable is linear in the vector argument. Source-sensitive composition with canonical orientation data is a changed premise and remains live.
+Current relevant dead/quarantined lessons:
+
+```text
+universal raw source-moment positivity is dead by linearity
+factorwise alpha/Gamma/overlap/source-moment closure is quarantined by exact countermodels
+shift-invariant transfer data cannot determine absolute spectral sign
+```
 
 ## CI
 
 `tools/run_suite.py` runs Control-v2 unit tests. The Python RHRC workflow checks out full Git history and performs a real-history Control-v2 smoke run. Router recommendations themselves are not theorem assertions; authority, completeness, leakage, exact interval coverage and assurance invariants remain CI-fatal.
 
-Detailed current post-green research implications: `../RESEARCH_LEADS_POST_131_DELTA.md`.
+Detailed current research implications: `../RESEARCH_LEADS_POST_132_DELTA.md`.
 
 **RH remains OPEN.**

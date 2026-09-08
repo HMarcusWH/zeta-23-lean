@@ -1,10 +1,11 @@
 {
   "schema_version": "RHRC-control-actions-1.1",
-  "current_frontier": "FIRST_BAD_RIGIDITY_E4_A4B_REGULAR_SOURCE_TEST",
+  "current_frontier": "FIRST_BAD_RIGIDITY_E4_A4B0_KERNEL_SOURCE_TRANSPORT",
   "open_obligations": [
-    "E4_A4_SOURCE_EXPANDED_ROOT_INTERFACE",
-    "E4_A4_REGULAR_SOURCE_EXCLUSION",
-    "E4_A4_RESONANT_SOURCE_EXCLUSION",
+    "E4_A4_KERNEL_SOURCE_TRANSPORT",
+    "E4_A4_ABSOLUTE_SOURCE_ENERGY",
+    "E4_A4_CANONICAL_ONE_STEP_DOMINATION",
+    "E4_A4_REGULAR_APERTURE_SELECTION",
     "E4_A4_GLOBAL_FIRST_BAD_EXCLUSION",
     "E4_B_PARITY_SHIFTED_NULLITY",
     "E3_C_RESOLVENT_MONOTONICITY",
@@ -12,7 +13,7 @@
     "DEFORMATION_BUDGET_PAPER_TEST"
   ],
   "actions": {
-    "E4_A4_SOURCE_EXPANDED_ROOT_INTERFACE": {
+    "E4_A4_KERNEL_SOURCE_TRANSPORT": {
       "kind": "THEOREM_ATTEMPT",
       "concept_id": "canonical_source_exclusion",
       "retro_search_required": true,
@@ -21,63 +22,108 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "PR #131 proves the exact source decomposition but the #129 cross-parity root theorems still expose the source term through the older sourceMoment interface",
-        "the explicit source moment is linear in the trial vector, so universal raw positivity/nonnegativity is not a viable theorem target",
-        "the useful invariant must retain canonical trial-vector orientation and may need the overlap/Gamma/root data",
-        "the elementary sourceMatrix omega observable has endpoint cancellations that should be theoremized before guessing an interior inequality"
+        "the kernel/source transport identities are derived from existing declarations but are not yet compiler-checked Lean theorems",
+        "the full odd-kernel projected identity must retain the predecessor corrections d and a and must not assume D is isometric",
+        "the direct zero-shift coefficients alpha0 and Gamma0 can depend on the chosen predecessor preimage even though the endpoint response is preimage-independent",
+        "Gamma0 * mu(z) = 0 is a compatibility dichotomy, not branch exclusion, and must not be converted into division by an unproved factor"
       ],
       "score_inputs": {
-        "cost": 1.2,
+        "cost": 1.0,
         "information_gain": 5.0,
         "falsification_value": 5.0,
-        "closure_value": 4.8,
-        "residual_risk": 0.8,
-        "dependency_debt": 0.4
+        "closure_value": 4.9,
+        "residual_risk": 0.6,
+        "dependency_debt": 0.3
       },
       "first_breaks": [
         {
-          "id": "E4A4-ROOT-SOURCE-FB-01",
-          "statement": "the #131 explicit source decomposition cannot be composed cleanly into the #129 cross-parity root interface with permanent linearity and endpoint-source-atom firewalls",
-          "test_id": "theoremize_source_expanded_cross_parity_root_interface",
-          "estimated_cost": 0.8,
+          "id": "E4A4-KST-FB-01",
+          "statement": "the existing parity-defect, quotient-transport and zero-shift declarations do not compose into the claimed denominator-free kernel/source vector identity without an unproved metric or inverse assumption",
+          "test_id": "theoremize_zero_shift_kernel_source_transport",
+          "estimated_cost": 0.7,
           "decisive_if_failed": false
         }
       ]
     },
-    "E4_A4_REGULAR_SOURCE_EXCLUSION": {
+    "E4_A4_ABSOLUTE_SOURCE_ENERGY": {
       "kind": "THEOREM_ATTEMPT",
       "concept_id": "canonical_source_exclusion",
       "retro_search_required": true,
       "first_break_required": true,
       "decision_commutation_required": false,
       "horizon_required_for_tail_claim": false,
-      "dead_route_matches": [],
+      "dead_route_matches": [
+        "DR-016"
+      ],
       "surviving_objections": [
-        "generic nonnegative-predecessor systems can have Re S0<0 and Re sigma0<0",
-        "PR #131 decomposes the source moment but does not prove alpha, Gamma, overlap or the canonically composed source term nonzero or sign-controlled",
-        "raw universal source-moment positivity is unavailable because the explicit source observable is linear in v",
-        "a useful inequality must be derived from the actual pole/arch/prime values together with canonical orientation data rather than assumed as one-step block positivity",
-        "the known centered-grid regular countermodels must be invalidated by an explicit source-specific hypothesis"
+        "the #131 quadratic-normal moment annihilates scalar identities and therefore cannot locate the absolute spectral origin by itself",
+        "the absolute energy must retain the canonical archimedean scalar correction with the correct sign",
+        "a channel decomposition is bookkeeping unless it feeds a source-specific sign or coercive estimate",
+        "generic scalar-shift countermodels must fail an explicit canonical-normalization hypothesis"
       ],
       "score_inputs": {
-        "cost": 2.0,
+        "cost": 1.6,
         "information_gain": 5.0,
         "falsification_value": 5.0,
         "closure_value": 5.0,
-        "residual_risk": 2.0,
-        "dependency_debt": 0.9
+        "residual_risk": 1.3,
+        "dependency_debt": 0.7
       },
       "first_breaks": [
         {
-          "id": "E4A4-REG-FB-02",
-          "statement": "the actual pole/arch/prime source composition remains compatible with k=0, Re sigma0<0, predecessor nonnegativity and the exact #129/#131 parity-root equation on legal first-bad regular data",
-          "test_id": "construct_or_exclude_canonical_regular_source_state_post_131",
-          "estimated_cost": 1.2,
+          "id": "E4A4-ENERGY-FB-01",
+          "statement": "the production canonicalSourceMatrix pole/arch/prime decomposition cannot be lifted to an exact absolute quadratic-energy decomposition retaining the arch scalar correction on the legal parity carrier",
+          "test_id": "theoremize_absolute_canonical_source_energy",
+          "estimated_cost": 1.0,
+          "decisive_if_failed": false
+        }
+      ]
+    },
+    "E4_A4_CANONICAL_ONE_STEP_DOMINATION": {
+      "kind": "THEOREM_ATTEMPT",
+      "concept_id": "canonical_source_exclusion",
+      "retro_search_required": true,
+      "first_break_required": true,
+      "decision_commutation_required": false,
+      "horizon_required_for_tail_claim": false,
+      "dead_route_matches": [
+        "DR-012",
+        "DR-015",
+        "DR-016"
+      ],
+      "surviving_objections": [
+        "generic Hermitian/parity/KKT/transfer structure does not imply one-step positivity",
+        "exact rational fixtures with strictly positive predecessors can still have negative successor roots",
+        "individual source atoms are indefinite on legal vectors, including exact omega=1/2 fixtures",
+        "the proof must use the full canonical pole/arch/prime normalization rather than assume the desired Schur domination",
+        "both parities must be covered; an even-only exclusion leaves an exact generic odd-only mechanism alive"
+      ],
+      "score_inputs": {
+        "cost": 2.8,
+        "information_gain": 5.0,
+        "falsification_value": 5.0,
+        "closure_value": 5.0,
+        "residual_risk": 2.8,
+        "dependency_debt": 1.4
+      },
+      "first_breaks": [
+        {
+          "id": "E4A4-DOM-FB-01",
+          "statement": "a low-dimensional canonical source compression violates q_c >= 0 or |<w,b>|^2 <= q_c Re<Aw,w> under the exact theorem hypotheses",
+          "test_id": "falsify_canonical_one_step_domination_low_dimension",
+          "estimated_cost": 0.9,
+          "decisive_if_failed": true
+        },
+        {
+          "id": "E4A4-DOM-FB-02",
+          "statement": "the exact pole/arch/prime energy decomposition supplies no coercive mechanism distinguishing the canonical source from the scalar-shift countermodels",
+          "test_id": "derive_source_specific_one_step_coercivity",
+          "estimated_cost": 1.8,
           "decisive_if_failed": true
         }
       ]
     },
-    "E4_A4_RESONANT_SOURCE_EXCLUSION": {
+    "E4_A4_REGULAR_APERTURE_SELECTION": {
       "kind": "THEOREM_ATTEMPT",
       "concept_id": "canonical_source_exclusion",
       "retro_search_required": true,
@@ -86,25 +132,25 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "an exact 1/(-lam) kernel pole is not generically contradictory",
-        "PR #131 decomposes the source term but does not prove the composed source/overlap quantity nonzero at a resonant state",
-        "the projected predecessor kernel may not be replaced by predecessor-size compressed nullity",
-        "the known centered-grid resonant countermodel must be invalidated by source values rather than generic nullity algebra"
+        "dense nonsingularity requires frozen-cutoff holomorphy/real analyticity and determinant nonidentity, not merely continuity",
+        "cutoff thresholds require an exact zero-entry atom continuity argument",
+        "the negative witness must be preserved by continuity before the least-bad size is reselected at the nearby aperture",
+        "positive-definite predecessors simplify resonance but do not imply a positive successor or exclude a negative root"
       ],
       "score_inputs": {
-        "cost": 2.3,
-        "information_gain": 5.0,
-        "falsification_value": 5.0,
-        "closure_value": 5.0,
-        "residual_risk": 2.3,
-        "dependency_debt": 1.1
+        "cost": 2.7,
+        "information_gain": 4.2,
+        "falsification_value": 4.6,
+        "closure_value": 3.8,
+        "residual_risk": 2.2,
+        "dependency_debt": 1.5
       },
       "first_breaks": [
         {
-          "id": "E4A4-RES-FB-02",
-          "statement": "the actual pole/arch/prime source formula remains compatible with k!=0, the exact kernel pole, predecessor nonnegativity and the #129/#131 cross-parity balance",
-          "test_id": "construct_or_exclude_canonical_resonant_source_state_post_131",
-          "estimated_cost": 1.3,
+          "id": "E4A4-APR-FB-01",
+          "statement": "the frozen-cutoff compressed determinant can vanish identically because the claimed -log(L)I plus periodic holomorphic remainder representation fails on the exact canonical source",
+          "test_id": "prove_log_lift_determinant_nonidentity",
+          "estimated_cost": 1.6,
           "decisive_if_failed": true
         }
       ]
@@ -118,9 +164,9 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "both regular and resonant canonical branches must be discharged without assuming a preferred parity",
+        "the canonical one-step domination or an equivalent source-energy theorem must be established in both parities",
         "no division by alpha, Gamma, overlap or source moment is legal without separate nonzeroness",
-        "generic structural exclusion is quarantined by post-#128 countermodels",
+        "generic structural exclusion is quarantined by exact rational countermodels",
         "terminal Mathlib RH still requires an explicit statement bridge after finite first-bad exclusion"
       ],
       "score_inputs": {
@@ -133,10 +179,10 @@
       },
       "first_breaks": [
         {
-          "id": "E4A4-GLOBAL-FB-01",
-          "statement": "after source-specific regular and resonant analysis, an actual canonical global-first-bad negative root remains admissible",
-          "test_id": "exclude_both_canonical_first_bad_branches",
-          "estimated_cost": 1.8,
+          "id": "E4A4-GLOBAL-FB-02",
+          "statement": "after the canonical coercivity theorem, an actual canonical global-first-bad negative root remains admissible",
+          "test_id": "compose_canonical_domination_with_global_first_bad",
+          "estimated_cost": 1.4,
           "decisive_if_failed": true
         }
       ]
@@ -152,7 +198,7 @@
       "surviving_objections": [
         "D is algebraic, not unitary or isometric",
         "rank-at-most-one defect does not identify which parity carries a zero mode",
-        "shifted-nullity control is supportive unless it constrains the E4-A4 source-sensitive branch state"
+        "shifted-nullity control is supportive unless it constrains the source-sensitive branch state"
       ],
       "score_inputs": {
         "cost": 1.8,
@@ -183,7 +229,7 @@
       "surviving_objections": [
         "strict monotonicity may yield only root uniqueness while a hypothetical off-line zero already forces one negative root",
         "root uniqueness is weaker than negative-root exclusion",
-        "the theorem should not displace E4-A4 unless it adds source-sensitive branch information"
+        "the theorem should not displace source-normalization work unless it adds new information"
       ],
       "score_inputs": {
         "cost": 2.0,
@@ -214,7 +260,7 @@
       "surviving_objections": [
         "a strictly positive predecessor floor is not available from first-bad minimality alone",
         "the shell gap g_N=q_N-mu_N may fail to stay positive",
-        "the theorem should not displace E4-A4 unless it supplies independent source-sensitive exclusion information"
+        "the theorem should not displace canonical source-energy work unless it supplies independent exclusion information"
       ],
       "score_inputs": {
         "cost": 2.0,
