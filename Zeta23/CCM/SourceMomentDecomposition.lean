@@ -75,7 +75,7 @@ theorem evenQuadraticSourceMoment_eq_explicitCanonicalSourceMoment
   rw [evenQuadraticSourceMoment_eq_channel_moments hL K v]
   rw [quadraticNormalPoleMoment_eq_evenProfile hL K v]
   rw [quadraticNormalPrimeMoment_eq_sum_sourceMatrix]
-  rfl
+  simp [explicitCanonicalSourceMoment]
 
 /-- PR #129's cubic parity-defect coefficient inherits the exact A4a production
 source decomposition. -/
