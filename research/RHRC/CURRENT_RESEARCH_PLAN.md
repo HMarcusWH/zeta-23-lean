@@ -5,12 +5,12 @@
 ## Current authority split
 
 ```text
-theorem-state anchor = PR #129 merge e1192857afed9f68fa4a13143ce690b62191b997
-theorem tree = 2f042a3b0b3313e7c67d627a58a32d579d4e7ff7
-validated theorem head = 440be3e5b6bf05e94ae2c65b1704d52d20acc9af
-theorem-bearing merged through = PR #129
-RHRC #838 = SUCCESS
-Permansson #611 = SUCCESS
+theorem-state anchor = PR #131 merge 436d524d0cdeb5986d76dcbb988f771d19836c55
+theorem tree = 5ad51fd877d51348f1af474b2864eb4ab3e0617a
+validated theorem head = b0026683bcbf233afa947c7f15b57bcc4ddf31e3
+theorem-bearing merged through = PR #131
+RHRC #854 = SUCCESS
+Permansson #627 = SUCCESS
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
@@ -54,30 +54,38 @@ DONE
   E4-A3c exact cross-parity secular transfer / #129
   E4-A3c cubic defect = canonical quadratic source moment / #129
   off-line zero -> source-explicit global first-bad certificate / #129
+  E4-A4a exact canonical source-moment decomposition / #131
+  E4-A4a arch scalar cancellation + arch diagonal/off-diagonal split / #131
+  E4-A4a finite von-Mangoldt prime atomization / #131
+  E4-A4a pole even/odd factorization + odd-profile cancellation / #131
 
-NOW — E4-A4: CANONICAL-SOURCE BRANCH EXCLUSION
+NOW — E4-A4b: REGULAR-BRANCH SOURCE TEST
 
-  A4a SOURCE MOMENT DECOMPOSITION
-    expand the actual production canonicalSourceMatrix inside
-      <n2, M u+>/<n2,n2>
-    identify exact prime/arch/diagonal contributions and cancellations
-    theoremize the exact decomposition before any inequality
+  A4b-0 SOURCE-EXPANDED ROOT INTERFACE
+    compose #131 directly into the #129 cross-parity secular equations
+    theoremize linearity / negation / scalar covariance of the explicit source moment
+    isolate the one-parameter elementary source-atom observable
+    theoremize its exact endpoint zeros at omega=0 and omega=1
+    do not attempt a universal raw sign theorem on the full vector space
 
   A4b REGULAR-BRANCH SOURCE TEST
     combine
       k=0
       Re sigma0<0
-      F_- = alpha F_+ + Gamma sourceMoment(u+)
-    with actual source structure
+      predecessor nonnegativity
+      F_- = alpha F_+ + Gamma explicitSourceMoment(u+)
+    with the actual pole/arch/prime formula
     seek contradiction or a sharply smaller canonical regular class
-    do not assume alpha/Gamma/sourceMoment nonzero or sign-controlled
+    target the compositional quantity entering parity transfer, not sourceMoment in isolation
+    do not assume alpha/Gamma/overlap/sourceMoment nonzero or sign-controlled
 
   A4c RESONANT-BRANCH SOURCE TEST
     combine
       k!=0
       (-lam) K(R_lam b)=k
-      F_- = alpha F_+ + Gamma sourceMoment(u+)
-    with actual source structure and predecessor nonnegativity
+      predecessor nonnegativity
+      F_- = alpha F_+ + Gamma explicitSourceMoment(u+)
+    with the same actual source formula
     seek contradiction or a sharply smaller canonical resonant class
 
   A4d GLOBAL FIRST-BAD EXCLUSION
@@ -118,7 +126,7 @@ TARGET
   RH OPEN
 ```
 
-## What #127-#129 made possible
+## What #127-#131 made possible
 
 Let
 
@@ -146,7 +154,7 @@ RESONANT: k=K(b)!=0 and (-lam)K(R_lam b)=k.
 
 The divided pole follows only because `lam<0`; the denominator-free identity is primary.
 
-PR #129 then identifies the parity-defect coefficient with the actual canonical source moment and proves exact parity transfer:
+PR #129 identifies the parity-defect coefficient with the actual canonical source moment and proves exact parity transfer:
 
 ```text
 cubicDefectFunctional L K v
@@ -156,42 +164,59 @@ cubicDefectFunctional L K v
 F_- = alpha F_+ + Gamma sourceMoment(u_+).
 ```
 
-The `Gamma` coefficient has an exact odd trial/cubic overlap representation. At an even root the odd scalar is exactly overlap times source moment. At an odd root the full balance is retained without division.
+PR #131 then opens that source moment completely:
 
-The old E4-A3 construction problem is therefore closed. The new question is not how to expose the branch response. It is whether the **actual canonical source formula** can support either exposed branch.
+```text
+cubicDefectFunctional L K v
+  = explicitCanonicalSourceMoment L K v
+```
 
-## Why E4-A4 is the immediate next layer
+where the right-hand side is exactly
+
+```text
+one surviving pole-even profile term
+- reduced arch diagonal moment
+- reduced arch off-diagonal moment
+- finite von-Mangoldt weighted elementary sourceMatrix moments.
+```
+
+The index-independent canonical archimedean scalar cancels from the active observable, and the pole odd profile annihilates the even boundary-flat input.
+
+The old A4a source-opacity problem is therefore closed. The new question is which property of this **actual pole/arch/prime combination, composed with the canonical parity overlap and branch data**, excludes the regular or resonant state.
+
+## Why A4b is the immediate next layer
 
 ### Generic structure has been adversarially tested
 
-The post-#128 discovery pass found generic Hermitian and centered-grid diagonal models that preserve increasingly much of the structural package while retaining bad successor behavior. These include:
+The post-#128 discovery pass found generic Hermitian and centered-grid diagonal models that preserve increasingly much of the structural package while retaining bad successor behavior. These are **EXPERIMENTAL SIGNAL / regression fixtures**, not Lean theorems and not zeta counterexamples.
 
-- a regular 2x2 Schur countermodel with nonnegative predecessor and negative endpoint;
-- a resonant 2x2 countermodel with exact zero-mode coupling;
-- centered radius-3 diagonal models with both regular responses negative;
-- a centered model with only one parity bad;
-- a genuine centered odd resonance with zero successor kernels;
-- reversal-symmetric diagonal perturbations that preserve the displacement identity while changing the sign-sensitive first-bad state.
+Their implication remains methodological: parity/KKT/rank-one/displacement/first-bad structure alone is insufficient. A valid contradiction must spend information specific to the actual canonical source values.
 
-These are **EXPERIMENTAL SIGNAL / regression fixtures**, not Lean theorems and not zeta counterexamples.
+### #131 falsifies the naive universal-sign target
 
-Their implication is methodological: parity/KKT/rank-one/displacement/first-bad structure alone is insufficient. A valid contradiction must spend information specific to the actual canonical source values.
+The explicit source moment is linear in the trial vector. Therefore a universal theorem asserting strict positivity or nonnegativity of the raw moment on the entire even boundary-flat vector space cannot be the A4b mechanism: `v -> -v` reverses the value, and complex phase covariance strengthens the same obstruction.
 
-### A4a is the cheapest decisive theorem
+This does not rule out a sign/phase/nonvanishing statement for the canonically oriented trial vector after composition with overlap, `Gamma`, root parity, or branch equations. It means the useful invariant must be compositional.
 
-PR #129 has already exposed exactly where the source enters. Before attempting a sign theorem, expand
+### A4b-0 is the cheapest next theorem
+
+Before guessing a difficult inequality, theoremize the exact post-#131 root interface:
 
 ```text
-evenQuadraticSourceMoment L (N+1) uPlus
+F_- = alpha F_+ + Gamma explicitCanonicalSourceMoment(u_+).
 ```
 
-through the production definition of `canonicalSourceMatrix`. The first useful result may be an exact identity rather than an inequality: cancellation of constant normal contributions, isolation of the canonical diagonal term, or a prime/arch split aligned with `n2`.
+At an even root, replace the source term in the exact overlap-times-source product by the explicit pole/arch/prime decomposition. Then isolate the elementary source atom
 
-This has high falsification value: if the source moment remains sign-indefinite on legal first-bad data, we learn immediately that A4b needs a more compositional invariant.
+```text
+omega -> quadraticNormalMatrixMoment K (sourceMatrix omega K) v.
+```
+
+The existing endpoint identities `sourceMatrix 0 = 0` and `sourceMatrix 1 = 2 I`, together with scalar-identity annihilation of the quadratic-normal observable, imply endpoint zeros. The next useful theorem may be a factorization or shape constraint rather than a global sign theorem.
 
 ## Regular branch target
 
-The regular branch already carries
+The regular branch carries
 
 ```text
 Ax0=b
@@ -200,28 +225,23 @@ Re sigma0<0
 Re S0<0
 ```
 
-plus the #129 parity transfer. A source-specific exclusion theorem must show that the actual `canonicalSourceMatrix` cannot realize that package at a first-bad root.
+plus exact #129/#131 source-expanded parity transfer. A source-specific exclusion theorem must show that the actual pole/arch/prime formula cannot realize that package at a first-bad root.
 
-A transparent sufficient certificate would resemble block positivity,
-
-```text
-q_c >= 0
-|<w,b>|^2 <= q_c q_A(w)
-```
-
-but this is essentially one-step positivity and is not progress if merely assumed. Any useful theorem must derive its content from the canonical source formula.
+A transparent sufficient certificate resembling one-step positivity is not progress if merely assumed. Any useful theorem must derive its content from the canonical source formula.
 
 ## Resonant branch target
 
-The resonant branch carries a canonical nonzero kernel coordinate and exact pole. The next useful theorem should ask whether the actual source moment / parity transfer forces a vanishing or incompatible overlap on that same state.
+The resonant branch carries a canonical nonzero kernel coordinate and exact pole. The next useful theorem should ask whether the explicit source decomposition / parity transfer forces a vanishing or incompatible overlap on that same state.
 
 Do not replace the projected predecessor kernel with the predecessor-size compressed spectrum. Do not infer contradiction from the pole alone.
 
 ## Falsification gates
 
-- re-run any proposed generic inequality on the post-#129 structural countermodels;
-- if an argument excludes arbitrary reversal-symmetric diagonal perturbations, identify the stronger invariant it is actually using;
+- test `v -> -v` and complex phase rotation before proposing source-moment sign claims;
 - test boundary cases `N=1`, source-moment zero, overlap zero, `Gamma=0`, `alpha=0`;
+- test the elementary source observable at and near `omega=0,1`;
+- if combining arch off-diagonal and prime atoms through divided differences, verify diagonal compatibility separately;
+- re-run any proposed generic inequality on the post-#129 structural countermodels;
 - never divide by a factor unless nonzeroness is separately theoremized;
 - preserve the predecessor correction in `D c+`;
 - do not use D as an isometry;
@@ -231,16 +251,16 @@ Do not replace the projected predecessor kernel with the predecessor-size compre
 
 ## Permanent claim boundary
 
-**PROVED:** through PR #129, including exact zero-shift shell response, signed regular response, canonical resonant kernel pole, source-explicit cubic-defect identity, exact cross-parity secular transfer, overlap representation, even-root source-product specialization, and the global off-line-zero source-explicit first-bad wrapper.
+**PROVED:** through PR #131, including exact zero-shift shell response, signed regular response, canonical resonant kernel pole, source-explicit cubic-defect identity, exact cross-parity secular transfer, global off-line-zero source-explicit first-bad wrapper, and exact canonical source-moment decomposition into pole-even / reduced arch diagonal / reduced arch off-diagonal / finite prime-atom channels.
 
-**DERIVED:** the source moment is the exact surviving quadratic normal coefficient in the canonical even compression residual; at a forced even root, the same-lambda odd root condition reduces to vanishing of the overlap-times-source product. These consequences should not be promoted beyond their theorem hypotheses.
+**DERIVED:** the explicit source moment is linear in the trial vector; raw universal positivity on the whole vector space is not a viable route; the elementary source observable vanishes at `omega=0` and `omega=1` by the existing endpoint matrix identities plus scalar-identity annihilation.
 
-**LEAD / HYPOTHESIS:** source-moment decomposition through prime/arch/diagonal channels; regular-branch source exclusion; resonant-branch source exclusion; strict secular monotonicity; positive-floor deformation budget.
+**LEAD / HYPOTHESIS:** source-expanded root-interface theorem package; compositional overlap-times-source invariant; elementary source-atom factorization/shape theorem; regular-branch source exclusion; resonant-branch source exclusion; potential-level arch/prime unification; strict secular monotonicity; positive-floor deformation budget.
 
 **EXPERIMENTAL SIGNAL:** the post-#128/#129 structural countermodels and exact rational transfer checks.
 
-**OPEN:** useful sign/nonzeroness of source moment/overlap/Gamma; exclusion of regular branch; exclusion of resonant branch; negative-root exclusion; explicit terminal RH bridge; RH.
+**OPEN:** useful sign/nonzeroness of the canonically composed source/overlap quantity; exclusion of regular branch; exclusion of resonant branch; negative-root exclusion; explicit terminal RH bridge; RH.
 
-Detailed post-green lead delta: `RESEARCH_LEADS_POST_129_DELTA.md`.
+Detailed current post-green delta: `RESEARCH_LEADS_POST_131_DELTA.md`.
 
 **RH remains OPEN.**
