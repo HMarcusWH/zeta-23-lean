@@ -116,7 +116,7 @@ It also theoremizes the exact parity transfer
 F_- = alpha * F_+ + Gamma * sourceMoment(u_+),
 ```
 
-with `Gamma` represented by the canonical odd trial/cubic overlap and with the non-droppable predecessor correction in `D c_+` retained. At an even root this specializes to an exact overlap-times-source product for `F_-`; at an odd root the full balance is retained without division.
+with `Gamma` represented by the canonical odd trial/cubic overlap. The exact D-transport decomposition retains an explicit predecessor correction term, but #129 does not separately prove that correction nonzero. At an even root this specializes to an exact overlap-times-source product for `F_-`; at an odd root the full balance is retained without division.
 
 A hypothetical off-line zero therefore forces one global-first-bad finite state carrying this exact source-explicit cross-parity certificate. This is stronger rigidity/exposure, not branch exclusion.
 
@@ -137,7 +137,7 @@ The next theorem must therefore spend information from the actual canonical sour
 - `V=W⊕S` is proved; shell invariance is not.
 - `T u0 ∈ S` for the special zero-shift trial image does not make `u0` an eigenvector.
 - D-equivalence is algebraic, not unitary/isometric.
-- the predecessor correction in `D c_+` is real theorem data and may not be dropped.
+- the predecessor correction term in `D c_+` is explicit theorem data and must be retained in general; its nonzeroness is not theoremized.
 - exact cubic factorization gives rank at most one, not automatically exact rank one.
 - `ker A` means the kernel of the projected successor predecessor block `P_W T|_W`; it is not the predecessor-size compressed-operator kernel.
 - no whole-space or range-only `A^-1` is introduced at zero.
