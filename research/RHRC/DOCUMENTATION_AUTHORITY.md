@@ -66,14 +66,14 @@ The repository keeps separate anchors when needed:
 
 A control-only PR does not advance theorem authority. A theorem-only PR does not automatically advance Control-v2 semantics.
 
-### Current synchronized anchors after PR #129
+### Current synchronized anchors after PR #131
 
 ```text
-theorem-state anchor = PR #129 merge e1192857afed9f68fa4a13143ce690b62191b997
-validated theorem head = 440be3e5b6bf05e94ae2c65b1704d52d20acc9af
-theorem tree = 2f042a3b0b3313e7c67d627a58a32d579d4e7ff7
-RHRC #838 = SUCCESS
-Permansson #611 = SUCCESS
+theorem-state anchor = PR #131 merge 436d524d0cdeb5986d76dcbb988f771d19836c55
+validated theorem head = b0026683bcbf233afa947c7f15b57bcc4ddf31e3
+theorem tree = 5ad51fd877d51348f1af474b2864eb4ab3e0617a
+RHRC #854 = SUCCESS
+Permansson #627 = SUCCESS
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
@@ -82,7 +82,7 @@ Control v2 / FFBBP v1.6 hardened research-control state = MERGED GREEN CONTROL I
 RH = OPEN
 ```
 
-PRs #118/#119/#121/#122/#124/#125/#127/#128/#129 changed theorem files but did not change Control-v2 semantics. Therefore theorem authority advances to #129 while control-plane authority remains #117.
+PRs #118/#119/#121/#122/#124/#125/#127/#128/#129/#131 changed theorem files but did not change Control-v2 semantics. Therefore theorem authority advances to #131 while control-plane authority remains #117.
 
 Machine registries and compiler/CI evidence still outrank prose anchors.
 
@@ -150,6 +150,7 @@ Historical examples:
 - PR #127 theoremized the special zero-shift shell response and its exact relation to `S0`.
 - PR #128 theoremized the signed regular response and canonical resonant kernel pole.
 - PR #129 theoremized the source-explicit cubic defect, exact cross-parity secular transfer, overlap representation and global off-line-zero source-explicit certificate.
+- PR #131 theoremized the exact canonical source-moment decomposition: pole-even channel, reduced arch diagonal/off-diagonal channels, finite von-Mangoldt prime atomization, scalar arch annihilation, pole odd-profile cancellation, and `cubicDefectFunctional = explicitCanonicalSourceMoment`.
 
 See `VALIDATION_PROTOCOL.md`.
 
@@ -173,11 +174,11 @@ For R003, `R003_PROMOTED_BINDINGS.json` is the declared production binding surfa
 
 Supporting theorem checks may exist without individual registry promotion. CI does not equate every theorem with a promoted claim; promotion intent must be explicit.
 
-## Current transition after PR #129
+## Current transition after PR #131
 
-The theorem frontier is **E4-A4 canonical-source branch exclusion**, with E4-B shifted-nullity, E3-C monotonicity and E3-B3 deformation in parallel.
+The theorem frontier is **E4-A4b regular-branch canonical-source testing**, with E4-A4c resonant testing, E4-B shifted-nullity, E3-C monotonicity and E3-B3 deformation in parallel.
 
-The old E4-A3 construction problem is closed:
+The old E4-A3 construction problem is closed by #127-#129, and A4a source opacity is now closed by #131:
 
 ```text
 #127: special zero-shift image is pure shell; sigma0*c=T u0;
@@ -189,9 +190,13 @@ The old E4-A3 construction problem is closed:
 #129: cubic defect = actual canonical quadratic source moment;
       exact cross-parity secular transfer;
       off-line zero -> source-explicit global first-bad certificate.
+
+#131: source moment = exact pole/arch/prime decomposition;
+      index-independent arch scalar annihilated;
+      pole odd profile cancels on the even boundary-flat sector.
 ```
 
-The next job is not to re-prove shell response, pole decomposition or generic branch structure. Post-#128 countermodels show that generic parity/KKT/rank-one/displacement structure can coexist with bad finite states. The next theorem must therefore spend information from the actual `canonicalSourceMatrix` source formula.
+The next job is not to re-prove shell response, pole decomposition, generic branch structure, or source decomposition. Post-#128 countermodels show that generic parity/KKT/rank-one/displacement structure can coexist with bad finite states, while the #131 linear source observable rules out universal raw positivity as a viable theorem target. The next theorem must therefore compose actual canonical source values with the canonical overlap/root/branch data.
 
 Permanent firewalls:
 
@@ -200,10 +205,11 @@ Re S0<0 != contradiction
 Re sigma0<0 != contradiction
 canonical 1/(-lam) pole != contradiction
 D algebraic != D unitary/isometric
-source transfer != source sign/nonzeroness
+source decomposition != source sign/nonzeroness
+linear source observable != universal raw positivity
 root uniqueness != root exclusion
 ```
 
-The current post-#129 implications and falsification plan are recorded in `RESEARCH_LEADS_POST_129_DELTA.md`.
+The current post-#131 implications and falsification plan are recorded in `RESEARCH_LEADS_POST_131_DELTA.md`.
 
 **RH remains OPEN.**
