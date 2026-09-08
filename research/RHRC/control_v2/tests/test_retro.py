@@ -70,9 +70,10 @@ class RetroTests(unittest.TestCase):
             (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
         )
         for action_id in (
-            "E4_A4_SOURCE_EXPANDED_ROOT_INTERFACE",
-            "E4_A4_REGULAR_SOURCE_EXCLUSION",
-            "E4_A4_RESONANT_SOURCE_EXCLUSION",
+            "E4_A4_KERNEL_SOURCE_TRANSPORT",
+            "E4_A4_ABSOLUTE_SOURCE_ENERGY",
+            "E4_A4_CANONICAL_ONE_STEP_DOMINATION",
+            "E4_A4_REGULAR_APERTURE_SELECTION",
             "E4_A4_GLOBAL_FIRST_BAD_EXCLUSION",
         ):
             self.assertEqual(
@@ -103,7 +104,6 @@ class RetroTests(unittest.TestCase):
         branch_file = repo / "research" / "RHRC" / "branch.md"
         branch_file.write_text("detectability budget branch clue\n", encoding="utf-8")
         self._git(repo, "add", ".")
-        # Git archaeology uses commit time, not the order fixture commits are made.
         self._git(
             repo, "commit", "-m", "unmerged historical clue",
             commit_date="2001-01-02T00:00:00Z",
