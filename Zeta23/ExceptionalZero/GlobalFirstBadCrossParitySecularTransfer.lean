@@ -57,8 +57,7 @@ def crossParityFirstBadRootCertificate
   let overlap :=
     inner ℂ
         (cubicSecularTrialVector .odd hL N hprevOdd lam hlam)
-        (oddCubicCompressionVector (N + 1) :
-          euclideanParityBoundaryFlatSubspace .odd (N + 1)) /
+        (successorParityCubicVector .odd N) /
       inner ℂ
         (intrinsicCubicShellPart .odd N :
           euclideanParityBoundaryFlatSubspace .odd (N + 1))
