@@ -150,6 +150,45 @@ Gamma * explicitCanonicalSourceMoment(u_+)
 
 or, at an even root, the exact overlap-times-source product. A revival of a sign argument must therefore attach the sign/phase/nonzeroness to additional theorem-backed orientation or branch data, not to the raw source functional on the full sector.
 
-**Current live replacement route:** source-expanded cross-parity root transfer + canonical overlap/root/branch composition + elementary source-atom analysis.
+## DR-015 — factorwise `alpha` / `Gamma` / overlap / source-moment exclusion
+
+Try to close the first-bad state by proving, from the generic #129 structural package alone, that one transfer factor has a fixed sign or cannot vanish, or by dividing the parity-transfer equation by such a factor.
+
+**Status:** quarantined by exact rational post-#129 countermodels.
+
+Selected centered-grid fixtures preserve the actual boundary-flat parity spaces, predecessor nonnegativity, KKT geometry, rank-one cubic defect, quotient transport, trial reconstruction, overlap formula and exact scalar transfer while exhibiting all of the following mechanisms:
+
+```text
+sourceMoment(u+) != 0 but Gamma = 0 at a common negative root
+Gamma != 0 but sourceMoment(u+) = 0 at a common negative root
+alpha = 0 at an odd-only negative root while the even successor is positive
+```
+
+Additional exact fixtures realize negative `Gamma`, negative `alpha`, and either sign of the source moment. These are generic reversal-symmetric diagonal sources, not the canonical arithmetic CCM source and not RH counterexamples.
+
+**Consequence:** no proof may divide by `alpha`, `Gamma`, overlap, or source moment without separately theoremizing the needed nonzeroness from information genuinely specific to the canonical source. Even-only root exclusion is also insufficient.
+
+**Changed-premise requirement for revival:** an exact canonical prime/arch/pole normalization theorem that forces the relevant factor behavior on the actual first-bad state.
+
+## DR-016 — shift-invariant transfer data determine absolute spectral sign
+
+Attempt to infer that the common secular/root data are negative relative to zero using only the shift-invariant structural transfer package.
+
+**Status:** structurally unavailable in generic models.
+
+Under the simultaneous scalar shift
+
+```text
+M -> M + t I
+lambda -> lambda + t
+```
+
+with the shell orthogonal to its predecessor, the predecessor blocks shift by `tI` while the shifted resolvent equation, canonical trial vectors, cubic defect/source functional, `alpha`, `Gamma`, and both secular scalars remain unchanged. The spectrum moves relative to zero.
+
+An exact rational fixture can therefore move a common root from negative to positive while preserving the corresponding transfer data.
+
+**Consequence:** the terminal exclusion mechanism must spend an information channel that remembers the absolute canonical normalization. The #131 quadratic-normal source moment deliberately annihilates scalar identities, so it cannot supply this information by itself.
+
+**Current live replacement route:** restore the absolute canonical source energy, retain the archimedean scalar correction, and prove a canonical one-step domination/coercivity theorem. Kernel/source transport is the immediate structural theorem that should precede that arithmetic estimate.
 
 **RH remains OPEN.**
