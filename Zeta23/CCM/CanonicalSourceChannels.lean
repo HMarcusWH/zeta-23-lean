@@ -103,8 +103,9 @@ theorem sourceEq44ArchComponent_eq_reducedCanonicalArchComponent_add_scalar
         if n = m then canonicalArchScalarCorrection L else 0 := by
   by_cases hnm : n = m
   · subst m
-    rw [sourceEq44ArchComponent, reducedCanonicalArchComponent]
-    simp only [if_pos rfl]
+    change 2 * sourceEq44GammaL n L - 2 * betaL n L =
+      (2 * reducedCanonicalGammaL n L - 2 * betaL n L) +
+        canonicalArchScalarCorrection L
     rw [sourceEq44GammaL_eq_reducedCanonicalGammaL n hL]
     unfold canonicalArchScalarCorrection
     ring
@@ -133,7 +134,9 @@ theorem canonicalArchMatrix_eq_reducedCanonicalArchMatrix_add_scalar
             (Fin (2 * K + 1))
             (Fin (2 * K + 1)) ℂ) := by
   ext i j
-  rw [canonicalArchMatrix_apply, reducedCanonicalArchMatrix_apply]
+  change (sourceEq44ArchComponent (centeredIndex K i) (centeredIndex K j) L : ℂ) =
+    (reducedCanonicalArchComponent (centeredIndex K i) (centeredIndex K j) L : ℂ) +
+      (canonicalArchScalarCorrection L : ℂ) * (if i = j then 1 else 0)
   rw [sourceEq44ArchComponent_eq_reducedCanonicalArchComponent_add_scalar
     (centeredIndex K i) (centeredIndex K j) hL]
   by_cases hij : i = j

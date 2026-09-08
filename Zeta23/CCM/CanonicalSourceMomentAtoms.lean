@@ -40,6 +40,7 @@ theorem canonicalPrimeMatrix_eq_sum_sourceMatrix
         primeSourceWeight q • sourceMatrix (primeSourceCoordinate q L) K := by
   classical
   ext i j
+  simp only [Matrix.sum_apply, Pi.smul_apply, smul_eq_mul, sourceMatrix_apply]
   change
     ((∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
       (Λ q / Real.sqrt q : ℝ) *
@@ -130,6 +131,7 @@ theorem poleComponent_eq_profile_factorization
           poleOddProfileReal n L * poleOddProfileReal m L) := by
   have hn := poleProfileDenominator_pos hL n
   have hm := poleProfileDenominator_pos hL m
+  unfold poleProfileDenominator at hn hm
   unfold poleComponent poleProfileScaleReal poleEvenProfileReal
     poleOddProfileReal poleProfileDenominator
   dsimp
@@ -163,8 +165,11 @@ theorem complex_vecMulVec_mulVec
     (u w x : Fin (2 * K + 1) → ℂ) :
     vecMulVec u w *ᵥ x = (w ⬝ᵥ x) • u := by
   ext i
-  simp [Matrix.mulVec, dotProduct, Matrix.vecMulVec,
-    Finset.mul_sum, mul_assoc]
+  change (∑ j, (u i * w j) * x j) = (∑ j, w j * x j) * u i
+  rw [Finset.sum_mul]
+  apply Finset.sum_congr rfl
+  intro j hj
+  ring
 
 /-- Quadratic-normal numerator of a rank-one bilinear matrix. -/
 theorem quadraticNormalMatrixNumerator_vecMulVec
@@ -192,8 +197,9 @@ theorem dotProduct_eq_zero_of_reverse_odd_even
     calc
       (∑ i, r i * u i) =
           ∑ i : Fin (2 * K + 1), r i.rev * u i.rev := by
-            rw [← Equiv.sum_comp Fin.revPerm]
-            simp
+            simpa only [Fin.revPerm_apply] using
+              (Equiv.sum_comp Fin.revPerm
+                (fun i : Fin (2 * K + 1) => r i * u i)).symm
       _ = -(∑ i, r i * u i) := by
             rw [← Finset.sum_neg_distrib]
             apply Finset.sum_congr rfl
@@ -223,7 +229,6 @@ theorem reverseCoefficients_poleOddProfile
   ext i
   simp [reverseCoefficients, poleOddProfile, poleOddProfileReal,
     poleProfileDenominator]
-  ring
 
 /-- The odd pole profile pairs to zero with every even boundary-flat input. -/
 theorem poleOddProfile_dot_evenBoundaryFlat_eq_zero
