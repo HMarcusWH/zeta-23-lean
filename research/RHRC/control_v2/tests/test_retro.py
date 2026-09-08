@@ -54,6 +54,32 @@ class RetroTests(unittest.TestCase):
         self.assertNotIn("rupture", terms)
         self.assertNotIn("slack", terms)
 
+    def test_e4a4_source_actions_use_source_specific_archaeology_aliases(self):
+        aliases = load_alias_map(RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json")
+        terms = expanded_terms("canonical_source_exclusion", aliases)
+        for term in (
+            "canonicalSourceMatrix",
+            "evenQuadraticSourceMoment",
+            "centeredQuadraticNormal",
+            "source normalization",
+            "prime contribution",
+            "archimedean contribution",
+        ):
+            self.assertIn(term, terms)
+        registry = json.loads(
+            (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
+        )
+        for action_id in (
+            "E4_A4_SOURCE_MOMENT_DECOMPOSITION",
+            "E4_A4_REGULAR_SOURCE_EXCLUSION",
+            "E4_A4_RESONANT_SOURCE_EXCLUSION",
+            "E4_A4_GLOBAL_FIRST_BAD_EXCLUSION",
+        ):
+            self.assertEqual(
+                registry["actions"][action_id]["concept_id"],
+                "canonical_source_exclusion",
+            )
+
     def test_as_of_search_does_not_see_future_commit(self):
         td, repo, old, new = self._fixture_repo()
         self.addCleanup(td.cleanup)
