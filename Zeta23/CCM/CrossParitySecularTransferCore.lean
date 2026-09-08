@@ -150,6 +150,8 @@ theorem cubicSecularScalar_odd_eq_alpha_mul_even_add_gamma_mul_defect
     (lam : ℂ) •
       ((R f : intrinsicParityPredecessorSubspace .odd N) :
         euclideanParityBoundaryFlatSubspace .odd (N + 1))
+  have hQAres : Q Ares = Fplus + phi := hqDuResidual
+  have hQTpred : Q Tpred = chi f := hchi
   have hQouter : Q (Ares - Bres) = Q Ares - Q Bres := Q.map_sub Ares Bres
   have hQinner : Q (Tpred - Lpred) = Q Tpred - Q Lpred := Q.map_sub Tpred Lpred
   have hQlam :
@@ -168,7 +170,7 @@ theorem cubicSecularScalar_odd_eq_alpha_mul_even_add_gamma_mul_defect
         change Q Ares - Q (Tpred - Lpred) = _
         rw [hQinner]
       _ = (Fplus + phi) - (chi f - 0) := by
-        rw [hqDuResidual, hchi, hQlam, hRf0, smul_zero]
+        rw [hQAres, hQTpred, hQlam, hRf0, smul_zero]
       _ = Fplus + phi - chi f := by ring
   have hf : f = Fplus • dW + phi • a := by rfl
   have hchif : chi f = Fplus * chi dW + phi * chi a := by
@@ -371,7 +373,7 @@ theorem crossParitySecularGamma_eq_trial_cubic_overlap_div
     rw [hg, hcoeNeg]
     simp only [inner_add_left, inner_add_right, inner_neg_left]
     rw [hRaC, hCa]
-    simp only [neg_zero, zero_add, sub_eq_add_neg]
+    simp only [neg_zero, zero_add, add_zero, sub_eq_add_neg]
     change
       - inner ℂ
           ((R b : intrinsicParityPredecessorSubspace .odd N) :
