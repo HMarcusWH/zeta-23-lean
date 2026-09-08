@@ -1,6 +1,6 @@
-# Post-129 structural countermodels and transfer regression fixtures — 2026-09-08
+# Post-129 structural countermodels and historical transfer discovery evidence — 2026-09-08
 
-> **Status:** EXPERIMENTAL SIGNAL / SYNTHETIC REGRESSION FIXTURES.  
+> **Status:** EXPERIMENTAL SIGNAL / SYNTHETIC FALSIFICATION FIXTURES.  
 > **Not Lean theorem authority. Not a realizable zeta counterexample. RH remains OPEN.**
 
 This file preserves the post-#128/#129 falsification evidence that changed the active theorem frontier. Its purpose is to stop the project from rebuilding a generic contradiction that has already been defeated by explicit finite models.
@@ -126,11 +126,11 @@ Yet the fixtures above change sign-sensitive successor behavior.
 
 So the exact low-rank displacement identity is valuable structure, but it cannot by itself exclude the first-bad negative state. A terminal contradiction must use canonical source values not preserved by arbitrary diagonal perturbation.
 
-## Exact-rational transfer checks
+## Historical exact-rational discovery record
 
-The post-#128 discovery script also tested the proposed cross-parity transfer architecture with exact rational arithmetic.
+The post-#128 discovery pass reported exact-rational checks of the proposed cross-parity transfer architecture.
 
-Recorded results:
+Recorded external results were:
 
 ```text
 37 distinct diagonal parameter cases
@@ -139,12 +139,6 @@ Recorded results:
 74 exact KKT moment-coefficient checks passed
 140 checks failed when the predecessor correction in D c+ was omitted
 ```
-
-Interpretation:
-
-- **EXPERIMENTAL SIGNAL:** the exact formulas theoremized in PR #129 are strongly supported by independent algebraic tests;
-- **EXPERIMENTAL SIGNAL:** the predecessor correction in the D-transported cubic shell is structurally necessary and must not be simplified away;
-- none of these executable checks upgrades a mathematical claim beyond the Lean theorem surface.
 
 One recorded exact-rational example at an even root used
 
@@ -155,11 +149,27 @@ Gamma = 1
 phi(u_+) = -55/21.
 ```
 
-Again this is a regression datum, not theorem authority.
+### Repository reproducibility status
+
+The original discovery script and its complete 37-case parameter table were **not checked into this repository with PR #129 and were not recovered from repository history during the PR #130 review**. Therefore the counts above are preserved only as **HISTORICAL EXPERIMENTAL SIGNAL**.
+
+They are **not** a current CI regression gate, must **not** be described as repository-reproducible regression data, and must not be used to claim that `run_suite.py` independently verifies the `185 / 74 / 140` counts.
+
+Fail-closed rule:
+
+```text
+missing original oracle/data
+  -> do not fabricate replacement cases from the reported counts
+  -> do not upgrade the counts to CI evidence
+  -> rely on the Lean-PROVED #129 decomposition for theorem authority
+  -> recover and independently validate the original oracle before wiring it into CI
+```
+
+The theorem-backed firewall remains stronger than the historical discovery signal: #129 proves the exact predecessor-plus-shell decomposition and retains the predecessor correction in the cross-parity proof. It does **not** prove that the predecessor correction is nonzero in every allowed case.
 
 ## What these fixtures falsify
 
-They falsify or quarantine the following generic leads:
+The explicit finite fixtures above falsify or quarantine the following generic leads:
 
 1. negative zero-shift endpoint is itself a contradiction;
 2. exact zero resonance is itself a contradiction;
@@ -167,8 +177,9 @@ They falsify or quarantine the following generic leads:
 4. the bad eigenmode's cubic coefficient must vanish generically;
 5. predecessor resonance must imply successor nullity;
 6. first-bad + KKT + rank-one cubic + N-flow structure alone excludes the obstruction;
-7. the displacement identity alone excludes the obstruction;
-8. `D c+` can be replaced by the odd shell generator without a predecessor correction.
+7. the displacement identity alone excludes the obstruction.
+
+The historical exact-rational counts are supporting discovery evidence for the transfer architecture; until the original oracle is recovered they are not an executable repository falsifier.
 
 ## What remains live
 
