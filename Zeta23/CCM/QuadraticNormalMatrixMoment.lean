@@ -190,7 +190,7 @@ theorem quadraticNormalMatrixNumerator_one_eq_zero
         (v : EuclideanSpace ℂ (Fin (2 * K + 1))) v.property
   rw [EuclideanSpace.inner_eq_star_dotProduct] at hinner
   simpa [quadraticNormalMatrixNumerator,
-    evenBoundaryFlatRawCoefficients] using hinner
+    evenBoundaryFlatRawCoefficients, PiLp.coe_continuousLinearEquiv] using hinner
 
 /-- Adding an arbitrary scalar identity does not change the numerator. -/
 theorem quadraticNormalMatrixNumerator_add_scalar_identity
