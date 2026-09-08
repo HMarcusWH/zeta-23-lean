@@ -1,18 +1,18 @@
 {
   "schema_version": "RHRC-control-actions-1.1",
-  "current_frontier": "FIRST_BAD_RIGIDITY_E4_A3",
+  "current_frontier": "FIRST_BAD_RIGIDITY_E4_A4_SOURCE_EXCLUSION",
   "open_obligations": [
-    "E4_A3_ZERO_SHIFT_SHELL_RESPONSE",
-    "E4_A3_RESONANT_POLE_DECOMPOSITION",
-    "E4_A3_BRANCH_RIGIDITY",
+    "E4_A4_SOURCE_MOMENT_DECOMPOSITION",
+    "E4_A4_REGULAR_SOURCE_EXCLUSION",
+    "E4_A4_RESONANT_SOURCE_EXCLUSION",
+    "E4_A4_GLOBAL_FIRST_BAD_EXCLUSION",
     "E4_B_PARITY_SHIFTED_NULLITY",
     "E3_C_RESOLVENT_MONOTONICITY",
     "E3_B3_PREDECESSOR_FLOOR_DEFORMATION",
-    "NEGATIVE_ROOT_EXCLUSION",
     "DEFORMATION_BUDGET_PAPER_TEST"
   ],
   "actions": {
-    "E4_A3_ZERO_SHIFT_SHELL_RESPONSE": {
+    "E4_A4_SOURCE_MOMENT_DECOMPOSITION": {
       "kind": "THEOREM_ATTEMPT",
       "concept_id": "cubic_normalized_schur",
       "retro_search_required": true,
@@ -21,60 +21,62 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "PR #125 proves only that the predecessor coordinate of T u0 vanishes; the exact shell coefficient is not separately theoremized",
-        "T u0 in the one-dimensional shell would not by itself make u0 an eigenvector",
-        "shell invariance of the full compressed operator remains unproved"
+        "PR #129 identifies the cubic defect with the canonical quadratic source moment but does not expand that moment through the production canonicalSourceMatrix formula",
+        "generic parity/KKT/rank-one/displacement structure has surviving synthetic countermodels",
+        "the next theorem must expose source values absent from arbitrary reversal-symmetric diagonal perturbations",
+        "a guessed sign theorem may be false even when an exact source decomposition is useful"
       ],
       "score_inputs": {
-        "cost": 1.2,
+        "cost": 1.4,
         "information_gain": 5.0,
-        "falsification_value": 4.8,
+        "falsification_value": 5.0,
         "closure_value": 5.0,
-        "residual_risk": 0.8,
-        "dependency_debt": 0.4
-      },
-      "first_breaks": [
-        {
-          "id": "E4A3-SHELL-FB-01",
-          "statement": "the proved zero predecessor coordinate of T u0 does not yield a repository-usable canonical shell-response coefficient and exact relation to the zero-shift endpoint",
-          "test_id": "prove_zero_shift_shell_response_coefficient",
-          "estimated_cost": 0.8,
-          "decisive_if_failed": true
-        }
-      ]
-    },
-    "E4_A3_RESONANT_POLE_DECOMPOSITION": {
-      "kind": "THEOREM_ATTEMPT",
-      "concept_id": "parity_resonance",
-      "retro_search_required": true,
-      "first_break_required": true,
-      "decision_commutation_required": false,
-      "horizon_required_for_tail_claim": false,
-      "dead_route_matches": [],
-      "surviving_objections": [
-        "PR #124 proves an exact resonant identity and lower bound but not the full kernel/range decomposition of R_lam b",
-        "the pole decomposition must use the projected successor predecessor block ker A and may not substitute the predecessor-size compressed spectrum",
-        "an exact pole may classify resonance without excluding it"
-      ],
-      "score_inputs": {
-        "cost": 1.5,
-        "information_gain": 5.0,
-        "falsification_value": 4.8,
-        "closure_value": 4.8,
         "residual_risk": 1.0,
         "dependency_debt": 0.5
       },
       "first_breaks": [
         {
-          "id": "E4A3-POLE-FB-01",
-          "statement": "the canonical ker A plus range A decomposition does not yield an exact algebraic 1 over minus lam kernel contribution to the shifted resolvent",
-          "test_id": "prove_exact_resonant_kernel_pole_decomposition",
-          "estimated_cost": 0.9,
+          "id": "E4A4-SOURCE-FB-01",
+          "statement": "the production canonicalSourceMatrix formula does not yield a cleaner exact decomposition of the PR #129 quadratic source moment on the canonical even trial vector",
+          "test_id": "derive_exact_canonical_source_moment_decomposition",
+          "estimated_cost": 0.8,
           "decisive_if_failed": true
         }
       ]
     },
-    "E4_A3_BRANCH_RIGIDITY": {
+    "E4_A4_REGULAR_SOURCE_EXCLUSION": {
+      "kind": "THEOREM_ATTEMPT",
+      "concept_id": "cubic_normalized_schur",
+      "retro_search_required": true,
+      "first_break_required": true,
+      "decision_commutation_required": false,
+      "horizon_required_for_tail_claim": false,
+      "dead_route_matches": [],
+      "surviving_objections": [
+        "generic nonnegative-predecessor systems can have Re S0<0 and Re sigma0<0",
+        "PR #129 does not prove alpha, Gamma, the overlap or source moment nonzero or sign-controlled",
+        "a useful inequality must be derived from actual canonical source values rather than assumed as one-step block positivity",
+        "the known centered-grid regular countermodels must be invalidated by an explicit source-specific hypothesis"
+      ],
+      "score_inputs": {
+        "cost": 2.2,
+        "information_gain": 5.0,
+        "falsification_value": 5.0,
+        "closure_value": 5.0,
+        "residual_risk": 2.2,
+        "dependency_debt": 1.1
+      },
+      "first_breaks": [
+        {
+          "id": "E4A4-REG-FB-01",
+          "statement": "the actual canonical source moment remains compatible with k=0 and Re sigma0<0 on legal first-bad regular data",
+          "test_id": "construct_or_exclude_canonical_regular_source_state",
+          "estimated_cost": 1.2,
+          "decisive_if_failed": true
+        }
+      ]
+    },
+    "E4_A4_RESONANT_SOURCE_EXCLUSION": {
       "kind": "THEOREM_ATTEMPT",
       "concept_id": "parity_resonance",
       "retro_search_required": true,
@@ -83,25 +85,57 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "generic Hermitian block systems admit a nonnegative predecessor block with a negative zero-shift Schur complement",
-        "generic zero resonance can create negative spectrum rather than contradict it",
-        "branch exclusion must use CCM-specific parity, KKT, cubic or N-flow structure rather than generic Schur algebra",
-        "the regular and resonant branches may require different contradiction mechanisms"
+        "an exact 1/(-lam) kernel pole is not generically contradictory",
+        "PR #129 does not prove the source moment or overlap nonzero at a resonant state",
+        "the projected predecessor kernel may not be replaced by predecessor-size compressed nullity",
+        "the known centered-grid resonant countermodel must be invalidated by source values rather than generic nullity algebra"
       ],
       "score_inputs": {
-        "cost": 2.8,
+        "cost": 2.4,
         "information_gain": 5.0,
         "falsification_value": 5.0,
         "closure_value": 5.0,
-        "residual_risk": 2.8,
-        "dependency_debt": 1.4
+        "residual_risk": 2.4,
+        "dependency_debt": 1.2
       },
       "first_breaks": [
         {
-          "id": "E4A3-RIGIDITY-FB-01",
-          "statement": "the full post-125 CCM constraints still admit a finite Hermitian countermodel with the same strict regular endpoint or resonant negative-root mechanism",
-          "test_id": "construct_or_exclude_post125_branch_countermodel",
-          "estimated_cost": 1.5,
+          "id": "E4A4-RES-FB-01",
+          "statement": "the actual canonical source formula remains compatible with k!=0, the exact kernel pole and the PR #129 cross-parity balance",
+          "test_id": "construct_or_exclude_canonical_resonant_source_state",
+          "estimated_cost": 1.3,
+          "decisive_if_failed": true
+        }
+      ]
+    },
+    "E4_A4_GLOBAL_FIRST_BAD_EXCLUSION": {
+      "kind": "THEOREM_ATTEMPT",
+      "concept_id": "cubic_normalized_schur",
+      "retro_search_required": true,
+      "first_break_required": true,
+      "decision_commutation_required": false,
+      "horizon_required_for_tail_claim": false,
+      "dead_route_matches": [],
+      "surviving_objections": [
+        "both regular and resonant canonical branches must be discharged without assuming a preferred parity",
+        "no division by alpha, Gamma, the overlap or source moment is legal without separate nonzeroness",
+        "generic structural exclusion is quarantined by post-#128 countermodels",
+        "terminal Mathlib RH still requires an explicit statement bridge after finite first-bad exclusion"
+      ],
+      "score_inputs": {
+        "cost": 3.4,
+        "information_gain": 5.0,
+        "falsification_value": 5.0,
+        "closure_value": 5.0,
+        "residual_risk": 3.0,
+        "dependency_debt": 1.6
+      },
+      "first_breaks": [
+        {
+          "id": "E4A4-GLOBAL-FB-01",
+          "statement": "after source-specific regular and resonant analysis, an actual canonical global-first-bad negative root remains admissible",
+          "test_id": "exclude_both_canonical_first_bad_branches",
+          "estimated_cost": 1.8,
           "decisive_if_failed": true
         }
       ]
@@ -116,21 +150,21 @@
       "dead_route_matches": [],
       "surviving_objections": [
         "D is algebraic, not unitary or isometric",
-        "rank-at-most-one defect does not by itself identify which parity carries a zero mode",
-        "shifted-nullity control must be proved with rank/kernel algebra rather than Hermitian interlacing through D"
+        "rank-at-most-one defect does not identify which parity carries a zero mode",
+        "shifted-nullity control is supportive unless it constrains the E4-A4 source-sensitive branch state"
       ],
       "score_inputs": {
         "cost": 1.8,
-        "information_gain": 4.5,
-        "falsification_value": 4.5,
-        "closure_value": 4.2,
+        "information_gain": 3.8,
+        "falsification_value": 4.2,
+        "closure_value": 3.4,
         "residual_risk": 1.4,
         "dependency_debt": 0.8
       },
       "first_breaks": [
         {
           "id": "E4B-FB-01",
-          "statement": "the same-space rank-at-most-one parity defect does not yield a usable shifted-nullity difference theorem under purely algebraic D-equivalence",
+          "statement": "the same-space rank-at-most-one parity defect does not yield a source-useful shifted-nullity constraint under purely algebraic D-equivalence",
           "test_id": "prove_rank_one_shifted_nullity_difference",
           "estimated_cost": 1.0,
           "decisive_if_failed": false
@@ -146,22 +180,22 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "strict monotonicity may yield only root uniqueness, while the off-line-zero endpoint already forces one negative root",
+        "strict monotonicity may yield only root uniqueness while a hypothetical off-line zero already forces one negative root",
         "root uniqueness is weaker than negative-root exclusion",
-        "zero resonance controls endpoint behavior even if monotonicity holds"
+        "the theorem should not displace E4-A4 unless it adds source-sensitive branch information"
       ],
       "score_inputs": {
         "cost": 2.0,
-        "information_gain": 4.0,
-        "falsification_value": 4.3,
-        "closure_value": 3.5,
+        "information_gain": 3.5,
+        "falsification_value": 4.0,
+        "closure_value": 3.0,
         "residual_risk": 1.5,
         "dependency_debt": 0.8
       },
       "first_breaks": [
         {
           "id": "E3C-FB-01",
-          "statement": "the finite-dimensional shifted resolvent identity does not yield strict monotonicity of the exact real explicit secular scalar on the safe negative axis",
+          "statement": "the finite-dimensional shifted resolvent identity does not yield strict monotonicity of the exact real secular scalar on the safe negative axis",
           "test_id": "prove_real_secular_strict_monotonicity",
           "estimated_cost": 1.2,
           "decisive_if_failed": false
@@ -179,13 +213,13 @@
       "surviving_objections": [
         "a strictly positive predecessor floor is not available from first-bad minimality alone",
         "the shell gap g_N=q_N-mu_N may fail to stay positive",
-        "the theorem should not displace E4-A3 unless it supplies independent exclusion information"
+        "the theorem should not displace E4-A4 unless it supplies independent source-sensitive exclusion information"
       ],
       "score_inputs": {
         "cost": 2.0,
-        "information_gain": 3.8,
-        "falsification_value": 4.3,
-        "closure_value": 3.8,
+        "information_gain": 3.5,
+        "falsification_value": 4.0,
+        "closure_value": 3.2,
         "residual_risk": 1.5,
         "dependency_debt": 1.0
       },
@@ -195,38 +229,6 @@
           "statement": "the generalized lower-floor resolvent estimate does not imply d_N(g_N+d_N) <= beta_N^2 under the stated theorem hypotheses",
           "test_id": "prove_one_step_deformation_inequality",
           "estimated_cost": 1.2,
-          "decisive_if_failed": true
-        }
-      ]
-    },
-    "NEGATIVE_ROOT_EXCLUSION": {
-      "kind": "THEOREM_ATTEMPT",
-      "concept_id": "cubic_normalized_schur",
-      "retro_search_required": true,
-      "first_break_required": true,
-      "decision_commutation_required": false,
-      "horizon_required_for_tail_claim": false,
-      "dead_route_matches": [],
-      "surviving_objections": [
-        "generic Hermitian Schur systems can have negative roots",
-        "PR #125 proves a negative regular endpoint rather than excluding it",
-        "PR #124 proves quantitative resonance rather than excluding it",
-        "CCM-specific shell/parity/KKT/N-flow structure must supply the contradiction"
-      ],
-      "score_inputs": {
-        "cost": 4.0,
-        "information_gain": 5.0,
-        "falsification_value": 5.0,
-        "closure_value": 5.0,
-        "residual_risk": 4.0,
-        "dependency_debt": 2.5
-      },
-      "first_breaks": [
-        {
-          "id": "NRE-FB-01",
-          "statement": "the accumulated post-125 CCM constraints still admit a finite model with a negative explicit secular root",
-          "test_id": "construct_or_exclude_post125_constrained_block_countermodel",
-          "estimated_cost": 2.0,
           "decisive_if_failed": true
         }
       ]
@@ -248,9 +250,9 @@
       ],
       "score_inputs": {
         "cost": 1.0,
-        "information_gain": 4.5,
+        "information_gain": 4.0,
         "falsification_value": 5.0,
-        "closure_value": 3.5,
+        "closure_value": 3.0,
         "residual_risk": 2.0,
         "dependency_debt": 1.0
       },

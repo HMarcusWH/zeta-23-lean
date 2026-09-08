@@ -5,11 +5,12 @@
 ## Current authority split
 
 ```text
-theorem-state anchor = PR #125 merge 615437fd5854b4473471d9826b4d4787b2e8e42f
-theorem tree = 245bba07addba0c5ad85fcf1b1b4218b4432c427
-validated theorem head = 533beb4a42fc96cd43a97e071c6e07e3178872b6
-theorem-bearing merged through = PR #125
-E4-A2 zero-shift kernel/range dichotomy + strict regular endpoint = PROVED / MERGED
+theorem-state anchor = PR #129 merge e1192857afed9f68fa4a13143ce690b62191b997
+theorem tree = 2f042a3b0b3313e7c67d627a58a32d579d4e7ff7
+validated theorem head = 440be3e5b6bf05e94ae2c65b1704d52d20acc9af
+theorem-bearing merged through = PR #129
+RHRC #838 = SUCCESS
+Permansson #611 = SUCCESS
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
@@ -48,30 +49,46 @@ DONE
   E4-A2 exact resonant identity + denominator-free bound / #124
   E4-A2 canonical zero-shift endpoint + complete square / #125
   E4-A2 decoupled branch at negative secular root -> Re S0<0 / #125
+  E4-A3a canonical zero-shift shell response / #127
+  E4-A3b regular Re sigma0<0 + canonical resonant kernel pole / #128
+  E4-A3c exact cross-parity secular transfer / #129
+  E4-A3c cubic defect = canonical quadratic source moment / #129
+  off-line zero -> source-explicit global first-bad certificate / #129
 
-NOW — E4-A3: BRANCH RIGIDITY
-  A3a ZERO-SHIFT SHELL RESPONSE
-    theoremize T u0 ∈ S from the proved zero predecessor coordinate
-    use dim_C S=1 and the canonical cubic coordinate to obtain the exact shell coefficient
-    identify the one-dimensional response encoded by S0
-    do not promote this to an eigenvector theorem
+NOW — E4-A4: CANONICAL-SOURCE BRANCH EXCLUSION
 
-  A3b RESONANT POLE DECOMPOSITION
-    use W=ker A⊕range A to split b=bK+bR
-    theoremize the exact kernel contribution to R_lam b
-    isolate the 1/(-lam) pole coefficient without heuristic spectral language
+  A4a SOURCE MOMENT DECOMPOSITION
+    expand the actual production canonicalSourceMatrix inside
+      <n2, M u+>/<n2,n2>
+    identify exact prime/arch/diagonal contributions and cancellations
+    theoremize the exact decomposition before any inequality
 
-  A3c BRANCH RIGIDITY / COUNTERMODEL ATTACK
-    compose A3a/A3b with parity rank-at-most-one structure
-    compose with KKT / parity normal-space geometry
-    compose with canonical cubic quotient data
-    compose with exact N-flow and global-first-bad minimality
-    attempt to exclude one or both branches, or shrink the surviving finite countermodel class
+  A4b REGULAR-BRANCH SOURCE TEST
+    combine
+      k=0
+      Re sigma0<0
+      F_- = alpha F_+ + Gamma sourceMoment(u+)
+    with actual source structure
+    seek contradiction or a sharply smaller canonical regular class
+    do not assume alpha/Gamma/sourceMoment nonzero or sign-controlled
+
+  A4c RESONANT-BRANCH SOURCE TEST
+    combine
+      k!=0
+      (-lam) K(R_lam b)=k
+      F_- = alpha F_+ + Gamma sourceMoment(u+)
+    with actual source structure and predecessor nonnegativity
+    seek contradiction or a sharply smaller canonical resonant class
+
+  A4d GLOBAL FIRST-BAD EXCLUSION
+    exclude both actual canonical branches
+    theoremize absence of a negative first-bad root
+    then compose with the existing off-line-zero -> first-bad reduction
 
 PARALLEL — E4-B: PARITY SHIFTED-NULLITY
   use finrank-at-most-one defect + algebraic D-equivalence
   theoremize shifted-nullity difference without unitary assumptions
-  use only where it constrains the E4-A3 branch state
+  activate only if it constrains A4 source-sensitive branch analysis
 
 PARALLEL — E3-C: RESOLVENT IDENTITY / MONOTONICITY
   prove finite-dimensional shifted resolvent identity
@@ -85,151 +102,145 @@ PARALLEL — E3-B3: GENERAL LOWER-FLOOR DEFORMATION THEOREM
   prove the mu-lam resolvent bound
   theoremize q_N, beta_N and d_N(g_N+d_N) <= beta_N^2
   use d_N <= beta_N^2/g_N only after independent g_N>0
-
-TARGET
-  CCM-specific negative-root exclusion at the global first-bad state
-  positivity / finite-to-infinite closure remains open until separately proved
+  do not let this displace A4 unless it adds source-sensitive exclusion data
 
 PARALLEL DIAGNOSTIC
   probe g_N=q_N-mu_N, beta_N, beta_N^2/g_N
   no PRUNE without a complete assured infinite-tail certificate
 
-PARALLEL SOURCE
+PARALLEL SOURCE CROSS-CHECK
   G1-B1B -> G1-final -> S-NEG -> G23
 
-RH OPEN
+TARGET
+  canonical first-bad negative-root exclusion
+  -> no off-line zero via existing global reduction
+  -> explicit final bridge to Mathlib RiemannHypothesis
+  RH OPEN
 ```
 
-## What #124/#125 made possible
+## What #127-#129 made possible
 
 Let
 
 ```text
 A = intrinsicPredecessorBlock = P_W T|_W
 c = intrinsicCubicShellPart
-b = intrinsicShellToPredecessor c.
+b = intrinsicShellToPredecessor c
+u0 = -x0+c
 ```
 
-PR #124 closes the range/kernel infrastructure:
+PR #127 closes the special zero-shift shell response:
 
 ```text
-range A ⟂ ker A
-W=ker A⊕range A.
+T u0 = shellPart(T u0)
+sigma0*c = T u0
+S0 = star(sigma0)<c,c>.
 ```
 
-It turns the E4-A1 coupling split into an exact zero-shift dichotomy. In the decoupled branch:
+PR #128 closes the next branch-response layer:
 
 ```text
-b ∈ range A
-∃x0, Ax0=b
-Ax=b and Ay=b -> <x,b>=<y,b>.
+REGULAR: Re sigma0<0 and k=K(b)=0
+RESONANT: k=K(b)!=0 and (-lam)K(R_lam b)=k.
 ```
 
-In the resonant branch:
+The divided pole follows only because `lam<0`; the denominator-free identity is primary.
+
+PR #129 then identifies the parity-defect coefficient with the actual canonical source moment and proves exact parity transfer:
 
 ```text
-Az=0
-<z,b>!=0
-<z,b>=(-lam)<z,R_lam b>
-|<z,b>|^2 <= (-lam)||z||^2 Re<R_lam b,b>.
+cubicDefectFunctional L K v
+  = evenQuadraticSourceMoment L K v
+  = <n2, canonicalSourceMatrix(L,K)v>/<n2,n2>
+
+F_- = alpha F_+ + Gamma sourceMoment(u_+).
 ```
 
-PR #125 then defines
+The `Gamma` coefficient has an exact odd trial/cubic overlap representation. At an even root the odd scalar is exactly overlap times source moment. At an odd root the full balance is retained without division.
+
+The old E4-A3 construction problem is therefore closed. The new question is not how to expose the branch response. It is whether the **actual canonical source formula** can support either exposed branch.
+
+## Why E4-A4 is the immediate next layer
+
+### Generic structure has been adversarially tested
+
+The post-#128 discovery pass found generic Hermitian and centered-grid diagonal models that preserve increasingly much of the structural package while retaining bad successor behavior. These include:
+
+- a regular 2x2 Schur countermodel with nonnegative predecessor and negative endpoint;
+- a resonant 2x2 countermodel with exact zero-mode coupling;
+- centered radius-3 diagonal models with both regular responses negative;
+- a centered model with only one parity bad;
+- a genuine centered odd resonance with zero successor kernels;
+- reversal-symmetric diagonal perturbations that preserve the displacement identity while changing the sign-sensitive first-bad state.
+
+These are **EXPERIMENTAL SIGNAL / regression fixtures**, not Lean theorems and not zeta counterexamples.
+
+Their implication is methodological: parity/KKT/rank-one/displacement/first-bad structure alone is insufficient. A valid contradiction must spend information specific to the actual canonical source values.
+
+### A4a is the cheapest decisive theorem
+
+PR #129 has already exposed exactly where the source enters. Before attempting a sign theorem, expand
 
 ```text
-S0=<Tc,c>-<x0,b>
-u0=-x0+c
+evenQuadraticSourceMoment L (N+1) uPlus
 ```
 
-and proves:
+through the production definition of `canonicalSourceMatrix`. The first useful result may be an exact identity rather than an inequality: cancellation of constant normal contributions, isolation of the canonical diagonal term, or a prime/arch split aligned with `n2`.
+
+This has high falsification value: if the source moment remains sign-indefinite on legal first-bad data, we learn immediately that A4b needs a more compositional invariant.
+
+## Regular branch target
+
+The regular branch already carries
 
 ```text
-predecessorPart(Tu0)=0
-<Tu0,u0>=S0
-exact predecessor-fibre complete square
-Re S0<0 at the safe negative explicit secular root.
+Ax0=b
+k=0
+Re sigma0<0
+Re S0<0
 ```
 
-The old E4-A2 endpoint existence/sign problem is therefore closed. The new problem is whether the full CCM structure can tolerate either remaining branch.
+plus the #129 parity transfer. A source-specific exclusion theorem must show that the actual `canonicalSourceMatrix` cannot realize that package at a first-bad root.
 
-## Why E4-A3 is the immediate next layer
-
-### Regular branch
-
-The regular branch already has a strictly negative canonical endpoint. Generic Hermitian Schur systems can do this, so negativity alone is not a contradiction.
-
-The highest-information refinement is one-dimensional shell response. Since #125 proves the predecessor coordinate of `T u0` is zero and `V=W⊕S`, theoremize `T u0∈S`; then use the canonical cubic coordinate on the one-dimensional shell to identify the exact response coefficient. This creates a scalar object that can be compared to parity/KKT/N-flow structure.
-
-### Resonant branch
-
-#124 already proves a quantitative lower bound. The next useful theorem is stronger and more structural: decompose the coupling under `ker A⊕range A` and isolate the exact pole of `R_lam b`. This distinguishes finite regular response from genuine zero-mode resonance algebraically.
-
-### Branch rigidity
-
-The project should then attack the finite counterexample space, not RH by slogan. Ask whether a finite system satisfying all of:
+A transparent sufficient certificate would resemble block positivity,
 
 ```text
-A>=0
-negative explicit secular root
-strict regular endpoint OR exact resonance
-rank-at-most-one parity defect
-KKT/cubic constraints
-first-bad N-flow ancestry
+q_c >= 0
+|<w,b>|^2 <= q_c q_A(w)
 ```
 
-can still exist.
+but this is essentially one-step positivity and is not progress if merely assumed. Any useful theorem must derive its content from the canonical source formula.
 
-## E3-C monotonicity lane
+## Resonant branch target
 
-The exact root detector is already theorem-identified with a real explicit scalar. Strict monotonicity may yield:
+The resonant branch carries a canonical nonzero kernel coordinate and exact pole. The next useful theorem should ask whether the actual source moment / parity transfer forces a vanishing or incompatible overlap on that same state.
 
-```text
-S has at most one negative root.
-```
-
-Permanent firewall: this does not exclude that one root. Because a hypothetical off-line zero already forces a negative root, E3-C is supportive rather than the primary exclusion mechanism.
-
-## Quantitative deformation composition
-
-The #122 `mu=0` root metric bound remains theorem-backed. The reusable generalization remains:
-
-```text
-mu ||w||^2 <= Re <Aw,w>
-lam < mu
-R_lam=(A-lam I)^(-1)
-```
-
-implying the expected `mu-lam` resolvent estimate and the normalized one-step inequality
-
-```text
-d_N(g_N+d_N) <= beta_N^2.
-```
-
-The shortcut `d_N <= beta_N^2/g_N` requires independently certified `g_N>0`.
-
-Do not let this lane displace E4-A3 unless it produces independent information about branch exclusion.
+Do not replace the projected predecessor kernel with the predecessor-size compressed spectrum. Do not infer contradiction from the pole alone.
 
 ## Falsification gates
 
-- generic block systems with `A>=0` can have negative zero-shift Schur complement; `Re S0<0` is not contradiction;
-- generic zero resonance can generate negative spectrum; the resonant branch is not automatically impossible;
-- `T u0∈S` does not imply `u0` is an eigenvector;
-- `ker A` is not the predecessor-size compressed-operator kernel;
+- re-run any proposed generic inequality on the post-#129 structural countermodels;
+- if an argument excludes arbitrary reversal-symmetric diagonal perturbations, identify the stronger invariant it is actually using;
+- test boundary cases `N=1`, source-moment zero, overlap zero, `Gamma=0`, `alpha=0`;
+- never divide by a factor unless nonzeroness is separately theoremized;
+- preserve the predecessor correction in `D c+`;
+- do not use D as an isometry;
+- do not use successor positivity at the first-bad state;
 - monotonicity gives uniqueness, not absence;
-- D remains algebraic, not unitary/isometric;
-- do not use successor positivity to prove endpoint nonnegativity at the first-bad state;
-- no finite prefix, fitted tail or observed decay is an infinite-horizon certificate.
+- no finite prefix or fitted tail is an infinite-horizon certificate.
 
 ## Permanent claim boundary
 
-**PROVED:** through PR #125, including exact real secular representation, projected metric/resolvent bounds, E4-A1 coupling classification, E4-A2 range/kernel split, zero-shift solution canonicity, exact resonant identity/bound, canonical zero-shift endpoint, complete-square identity and strict `Re S0<0` in the decoupled first-bad branch.
+**PROVED:** through PR #129, including exact zero-shift shell response, signed regular response, canonical resonant kernel pole, source-explicit cubic-defect identity, exact cross-parity secular transfer, overlap representation, even-root source-product specialization, and the global off-line-zero source-explicit first-bad wrapper.
 
-**DERIVED / OPEN FORMALIZATION:** `T u0∈S` and a canonical shell-response coefficient; generic rank-one shifted-nullity comparison.
+**DERIVED:** the source moment is the exact surviving quadratic normal coefficient in the canonical even compression residual; at a forced even root, the same-lambda odd root condition reduces to vanishing of the overlap-times-source product. These consequences should not be promoted beyond their theorem hypotheses.
 
-**LEAD / HYPOTHESIS:** exact resonant pole decomposition, branch exclusion from parity/KKT/N-flow composition, strict secular monotonicity/root uniqueness, positive-floor deformation budget.
+**LEAD / HYPOTHESIS:** source-moment decomposition through prime/arch/diagonal channels; regular-branch source exclusion; resonant-branch source exclusion; strict secular monotonicity; positive-floor deformation budget.
 
-**OPEN:** exclusion of the regular branch, exclusion of the resonant branch, negative-root exclusion, positivity, finite-to-infinite closure, RH.
+**EXPERIMENTAL SIGNAL:** the post-#128/#129 structural countermodels and exact rational transfer checks.
 
-Detailed post-green lead delta: `RESEARCH_LEADS_POST_125_DELTA.md`.
+**OPEN:** useful sign/nonzeroness of source moment/overlap/Gamma; exclusion of regular branch; exclusion of resonant branch; negative-root exclusion; explicit terminal RH bridge; RH.
+
+Detailed post-green lead delta: `RESEARCH_LEADS_POST_129_DELTA.md`.
 
 **RH remains OPEN.**

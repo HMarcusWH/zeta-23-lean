@@ -1,15 +1,15 @@
 # R003 — CCM / finite Weil bridge
 
-Status: **ACTIVE. GLOBAL FIRST-BAD + EXACT ZERO-SHIFT ENDPOINT/RESONANCE DICHOTOMY PROVED THROUGH PR #125; E4-A3 BRANCH RIGIDITY CURRENT. RH OPEN.**
+Status: **ACTIVE. GLOBAL FIRST-BAD + ZERO-SHIFT BRANCH RESPONSE + SOURCE-EXPLICIT CROSS-PARITY TRANSFER PROVED THROUGH PR #129; E4-A4 CANONICAL-SOURCE EXCLUSION CURRENT. RH OPEN.**
 
 ## Current authority split
 
 ```text
-theorem-state anchor = PR #125 merge 615437fd5854b4473471d9826b4d4787b2e8e42f
-validated theorem head = 533beb4a42fc96cd43a97e071c6e07e3178872b6
-theorem tree = 245bba07addba0c5ad85fcf1b1b4218b4432c427
-theorem-bearing merged through = PR #125
-E4-A2 kernel/range zero-shift dichotomy + strict regular endpoint = PROVED / MERGED
+theorem-state anchor = PR #129 merge e1192857afed9f68fa4a13143ce690b62191b997
+validated theorem head = 440be3e5b6bf05e94ae2c65b1704d52d20acc9af
+theorem tree = 2f042a3b0b3313e7c67d627a58a32d579d4e7ff7
+RHRC #838 = SUCCESS
+Permansson #611 = SUCCESS
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
@@ -41,13 +41,14 @@ FIRST-BAD-RIGIDITY-E3-B2 exact explicit Schur scalar bridge       PROVED / #121
 FIRST-BAD-RIGIDITY-E3-B1 projected metric/resolvent control       PROVED / #122
 FIRST-BAD-RIGIDITY-E4-A1 ker(A) cubic-coupling classification     PROVED / #122
 FIRST-BAD-RIGIDITY-E4-A2 kernel/range zero-shift dichotomy        PROVED / #124
-FIRST-BAD-RIGIDITY-E4-A2 exact resonant identity/lower bound      PROVED / #124
 FIRST-BAD-RIGIDITY-E4-A2 canonical endpoint + complete square     PROVED / #125
-FIRST-BAD-RIGIDITY-E4-A2 decoupled Re S0<0                       PROVED / #125
-off-line zero -> strict endpoint OR resonant first-bad package    PROVED / #125
+FIRST-BAD-RIGIDITY-E4-A3a canonical zero-shift shell response     PROVED / #127
+FIRST-BAD-RIGIDITY-E4-A3b signed response + canonical kernel pole PROVED / #128
+FIRST-BAD-RIGIDITY-E4-A3c source-explicit parity transfer         PROVED / #129
+off-line zero -> source-explicit first-bad certificate            PROVED / #129
 ```
 
-## Exact post-#125 first-bad state
+## Exact post-#129 first-bad state
 
 A hypothetical off-critical-line zeta zero forces one finite problem with:
 
@@ -60,75 +61,136 @@ A hypothetical off-critical-line zeta zero forces one finite problem with:
 - canonical quotient coordinate on `V/W`;
 - safe shifted predecessor inverse `R_lam=(A-lam I)^(-1)`;
 - exact quotient and explicit real Schur scalar root;
-- exact E4-A1 coupling classification on `ker A`;
-- canonical decomposition `W=ker A⊕range A`;
-- one of two exact E4-A2 mechanisms:
+- exact kernel/range split `W=ker A⊕range A`;
+- exact regular/resonant zero-shift classification;
+- exact #127 shell response;
+- exact #128 canonical kernel pole;
+- exact #129 source-explicit parity transfer.
 
-  ```text
-  REGULAR:
-    Ax0=b
-    S0=<Tc,c>-<x0,b>
-    endpoint independent of x0
-    predecessorPart(Tu0)=0 for u0=-x0+c
-    exact complete square
-    Re S0<0
-
-  RESONANT:
-    ∃z∈ker A, <z,b>!=0
-    <z,b>=(-lam)<z,R_lam b>
-    |<z,b>|^2 <= (-lam)||z||^2 Re<R_lam b,b>.
-  ```
-
-This is a finite-dimensional rigidity package, not an RH proof.
-
-## E4-A2 settlement
-
-**PROVED / #124-#125.**
-
-The decoupled branch no longer needs `A^-1` at zero: #124 proves range membership, existence of a preimage and solution-independence of the quadratic coupling. #125 turns that invariant scalar into the actual zero-shift endpoint, proves the exact complete square and forces `Re S0<0` at the negative secular root.
-
-The resonant branch is not excluded. #124 already supplies an exact resolvent identity and denominator-free quantitative lower bound.
-
-## Current route state — E4-A3 branch rigidity
-
-### A3a — zero-shift shell response
-
-**DERIVED / OPEN FORMALIZATION.**
-
-#125 proves
+The branch package is:
 
 ```text
-predecessorPart(Tu0)=0.
+REGULAR:
+  Ax0=b
+  S0=<Tc,c>-<x0,b>
+  u0=-x0+c
+  sigma0*c = T u0
+  S0=star(sigma0)<c,c>
+  Re S0<0
+  Re sigma0<0
+  k=K(b)=0
+
+RESONANT:
+  k=K(b)!=0
+  (-lam)K(R_lam b)=k
+  K(R_lam b)=(-lam)^(-1)k
+  plus the #124 pointwise witness / identity / bound.
 ```
 
-Since `V=W⊕S`, theoremize `T u0∈S`; then use the canonical cubic shell coordinate and `dim_C S=1` to identify the exact one-dimensional response coefficient and its relation to `S0`.
+Across parity, define the #129 canonical source moment
 
-**Firewall:** this does not by itself prove `u0` is an eigenvector.
+```text
+sourceMoment(v)
+  = <n2, canonicalSourceMatrix(L,N+1)v>/<n2,n2>.
+```
 
-### A3b — exact resonant pole
+Then the exact secular transfer is
 
-**LEAD / OPEN.**
+```text
+F_- = alpha * F_+ + Gamma * sourceMoment(u_+).
+```
 
-Use #124's `ker A⊕range A` split to decompose `b=bK+bR` and prove the exact kernel-pole contribution to the safe shifted resolvent. The target is an algebraic decomposition, not an asymptotic slogan.
+`Gamma` is theorem-identified with an odd trial/cubic overlap ratio. At an even root, `F_+=0` and `F_-` is exactly overlap times source moment. At an odd root, `F_-=0` and the full transfer balance is retained without division.
 
-### A3c — branch rigidity
+This is a finite-dimensional rigidity/source-exposure package, not an RH proof.
+
+## E4-A3 settlement
+
+**PROVED / #127-#129.**
+
+The old A3 implementation obligations are closed:
+
+- shell response is theoremized;
+- the regular response sign is theoremized;
+- the resonant kernel pole is theoremized;
+- exact quotient/D transport is theoremized;
+- the predecessor correction in `D c+` is theoremized and retained;
+- the exact cross-parity secular equation is theoremized;
+- the cubic defect coefficient is identified with the actual canonical source moment;
+- the global off-line-zero wrapper carries the source-explicit certificate.
+
+None of these results excludes the bad state by itself.
+
+## Current route state — E4-A4 canonical-source branch exclusion
+
+### A4a — source moment decomposition
+
+**OPEN / PRIMARY.**
+
+Open the production definition of `canonicalSourceMatrix` inside
+
+```text
+evenQuadraticSourceMoment L (N+1) uPlus.
+```
+
+The first target should be an exact formula: isolate constant-normal cancellation and identify the actual source-channel contributions seen by `n2`. Avoid starting with a guessed inequality.
+
+### A4b — regular branch source test
 
 **OPEN.**
 
-Compose A3a/A3b with:
+Use the theorem-backed package
 
-- rank-at-most-one parity defect;
-- parity KKT / normal-space geometry;
-- canonical cubic quotient coordinate;
-- first-bad minimality and exact N-flow.
+```text
+k=0
+Re sigma0<0
+F_- = alpha F_+ + Gamma sourceMoment(u_+)
+```
 
-Attempt to exclude one or both branches or to classify the surviving finite countermodels more tightly.
+and the actual source formula. The objective is either a contradiction or a strictly smaller canonical regular class.
+
+Do not assume or divide by `alpha`, `Gamma`, the overlap or `sourceMoment` without separate proof.
+
+### A4c — resonant branch source test
+
+**OPEN.**
+
+Use
+
+```text
+k!=0
+(-lam)K(R_lam b)=k
+F_- = alpha F_+ + Gamma sourceMoment(u_+)
+```
+
+plus predecessor nonnegativity and actual source values.
+
+The exact pole is classification, not contradiction. The theorem must identify a source-specific incompatibility.
+
+### A4d — global first-bad exclusion
+
+**OPEN.**
+
+Only after both canonical branches are excluded should the route theoremize no negative global first-bad root. The existing ExceptionalZero reduction already starts from an arbitrary off-line zero, so that exclusion would immediately rule out such a zero in the project's zeta carrier. A final explicit bridge to the terminal Mathlib `RiemannHypothesis` statement would still be required.
+
+## Post-#129 generic-route falsification
+
+The active route changed because generic structural countermodels survived:
+
+- negative regular Schur endpoint with nonnegative predecessor;
+- exact zero resonance with negative spectrum;
+- actual centered-grid boundary-flat parity spaces with generic reversal-symmetric diagonal operators producing both-parity regular negativity, one-parity badness, or genuine resonance;
+- displacement-preserving diagonal perturbations changing the sign-sensitive finite state.
+
+These are **EXPERIMENTAL SIGNAL / regression fixtures**, not canonical CCM counterexamples.
+
+**Route rule:** a proposed contradiction that does not use source values beyond Hermitianity/parity/displacement should first be tested against `countermodels/POST_129_STRUCTURAL_COUNTERMODELS_2026_09_08.md`.
 
 ## E4-B — parity shifted-nullity
 
 **OPEN / PARALLEL.**
 
-Use the existing algebraic D-equivalence and same-space parity defect with finrank <=1 to theoremize a shifted-nullity comparison. Do not import unitary interlacing through D.
+Use the existing algebraic D-equivalence and same-space parity defect with finrank <=1 to theoremize a shifted-nullity comparison. Do not import unitary interlacing through D. Activate only if it constrains A4.
 
 ## E3-C — monotonicity / root-count control
 
@@ -169,9 +231,11 @@ The theorem-backed ancestry is now
 #119 exact root detector
   -> #121 explicit Schur bridge
   -> #122 real metric/resolvent control
-  -> #124 zero-shift/resonance split
-  -> #125 strict regular endpoint
-  -> E4-A3 branch rigidity.
+  -> #124/#125 zero-shift branch endpoint
+  -> #127 shell response
+  -> #128 signed response / canonical pole
+  -> #129 source-explicit cross-parity transfer
+  -> E4-A4 canonical-source exclusion.
 ```
 
 The cheap diagnostic order remains
@@ -182,7 +246,7 @@ beta_N
 beta_N^2/g_N.
 ```
 
-Kill the route if the gap fails, coupling does not decay usefully, or the ratio cannot support a complete summable certified tail. A finite prefix, fitted tail or local residual is not a complete budget.
+Kill the lane if the gap fails, coupling does not decay usefully, or the ratio cannot support a complete summable certified tail. A finite prefix, fitted tail or local residual is not a complete budget.
 
 ## Source-faithful parallel lane
 
@@ -203,12 +267,15 @@ Do not conflate source interface geometry with source negativity.
 - boundary-flat legality is required for the hard-window C² bridge;
 - `ker A` is not the predecessor-size compressed-operator kernel;
 - no `A^-1` at zero;
-- `Re S0<0` is not branch exclusion;
-- resonance is not automatically contradictory;
-- `T u0∈S` would not by itself imply an eigenvector;
+- `Re S0<0` and `Re sigma0<0` are not branch exclusion;
+- the exact resonant pole is not automatically contradictory;
+- D is algebraic, not unitary/isometric;
+- the predecessor correction in `D c+` may not be dropped;
+- #129 proves no sign/nonzeroness for `alpha`, `Gamma`, overlap or source moment;
+- generic structural countermodels do not refute `canonicalSourceMatrix`;
 - root uniqueness is not root exclusion;
 - RH remains OPEN.
 
-Detailed current implications and falsification plan: `../../RESEARCH_LEADS_POST_125_DELTA.md`.
+Detailed current implications and falsification plan: `../../RESEARCH_LEADS_POST_129_DELTA.md`.
 
 **RH remains OPEN.**
