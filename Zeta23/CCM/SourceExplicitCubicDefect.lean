@@ -64,6 +64,7 @@ theorem inner_centeredPowerVector_zero_centeredQuadraticNormal_eq_zero
   unfold centeredQuadraticNormal
   rw [inner_sub_right, inner_smul_right]
   field_simp [hden]
+  ring
 
 /-- Symmetric orientation of the constant/quadratic orthogonality identity. -/
 theorem inner_centeredQuadraticNormal_centeredPowerVector_zero_eq_zero
@@ -108,17 +109,26 @@ theorem centeredQuadraticNormal_ne_zero
     simp [i0]
   have hi1 : centeredIndex K i1 = 1 := by
     simp [i1, centeredIndex]
-  have hcenter := congrArg
-    (fun x : EuclideanSpace ℂ (Fin (2 * K + 1)) => x i0) hzero
-  have hone := congrArg
-    (fun x : EuclideanSpace ℂ (Fin (2 * K + 1)) => x i1) hzero
-  have hmu :
-      inner ℂ (centeredPowerVector K 0) (centeredPowerVector K 2) /
-          inner ℂ (centeredPowerVector K 0) (centeredPowerVector K 0) = 0 := by
-    simpa [centeredQuadraticNormal, centeredPowerVector_apply, hi0, i0,
-      Pi.smul_apply, smul_eq_mul] using hcenter
-  simp [centeredQuadraticNormal, centeredPowerVector_apply, hi1, hmu,
-    Pi.smul_apply, smul_eq_mul] at hone
+  let mu : ℂ :=
+    inner ℂ (centeredPowerVector K 0) (centeredPowerVector K 2) /
+      inner ℂ (centeredPowerVector K 0) (centeredPowerVector K 0)
+  have hscalar : centeredPowerVector K 2 = mu • centeredPowerVector K 0 := by
+    have hz := hzero
+    unfold centeredQuadraticNormal at hz
+    change centeredPowerVector K 2 - mu • centeredPowerVector K 0 = 0 at hz
+    exact sub_eq_zero.mp hz
+  have h0 := congrArg
+    (fun x : EuclideanSpace ℂ (Fin (2 * K + 1)) => x i0) hscalar
+  have h1 := congrArg
+    (fun x : EuclideanSpace ℂ (Fin (2 * K + 1)) => x i1) hscalar
+  have hmu : mu = 0 := by
+    simpa [centeredPowerVector_apply, hi0, Pi.smul_apply, smul_eq_mul]
+      using h0.symm
+  have hone : (1 : ℂ) = mu := by
+    simpa [centeredPowerVector_apply, hi1, Pi.smul_apply, smul_eq_mul]
+      using h1
+  rw [hmu] at hone
+  norm_num at hone
 
 /-- The quadratic normal therefore has nonzero self inner product. -/
 theorem inner_centeredQuadraticNormal_self_ne_zero
@@ -312,7 +322,20 @@ theorem cubicDefectFunctional_eq_evenCompressionResidual_a2
   have hcoeff := congrArg
     (fun y : euclideanOddBoundaryFlatSubspace K =>
       inner ℂ (oddCubicCompressionVector K) y) heq
-  rw [inner_smul_right, inner_smul_right] at hcoeff
+  have hleft :
+      inner ℂ (oddCubicCompressionVector K)
+          (a2 • oddCubicCompressionVector K) =
+        a2 * inner ℂ (oddCubicCompressionVector K) (oddCubicCompressionVector K) := by
+    exact inner_smul_right (oddCubicCompressionVector K)
+      (oddCubicCompressionVector K) a2
+  have hright :
+      inner ℂ (oddCubicCompressionVector K)
+          (cubicDefectFunctional L K v • oddCubicCompressionVector K) =
+        cubicDefectFunctional L K v *
+          inner ℂ (oddCubicCompressionVector K) (oddCubicCompressionVector K) := by
+    exact inner_smul_right (oddCubicCompressionVector K)
+      (oddCubicCompressionVector K) (cubicDefectFunctional L K v)
+  rw [hleft, hright] at hcoeff
   apply Eq.symm
   apply (mul_right_cancel₀ hgg)
   exact hcoeff
