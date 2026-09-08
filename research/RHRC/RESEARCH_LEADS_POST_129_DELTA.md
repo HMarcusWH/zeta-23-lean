@@ -119,7 +119,7 @@ At the mathematical level, for the same `L,N,lam<0` and both predecessor paritie
 F_- = alpha * F_+ + Gamma * sourceMoment(u_+).
 ```
 
-The D-transported even cubic shell contains a predecessor correction; Lean keeps it. The proof never treats D as unitary/isometric.
+The D-transported even cubic shell is theoremized with its exact predecessor-plus-shell decomposition; the proof retains the predecessor correction term and never treats D as unitary/isometric. No nonzeroness of that predecessor correction is claimed.
 
 `Gamma` is identified with an exact odd trial / full odd cubic-generator overlap divided by `<c_-,c_->`.
 
@@ -212,17 +212,19 @@ sourceMoment = prime contribution + arch contribution + diagonal contribution
 
 or a smaller exact identity if some channels vanish against `n2`.
 
-## 3. The D-transport correction is structural, not proof noise
+## 3. The D-transport correction must be retained unless separately proved zero
 
-The exact rational checks and the Lean proof both show that
+**PROVED:** #129 theoremizes the exact decomposition
 
 ```text
-D c_+ != c_-
+D c_+ = dW + c_-
 ```
 
-generically; a predecessor correction survives.
+where `dW` is the odd predecessor part. Lean does **not** prove `dW != 0`; in particular the allowed boundary case `N=1` can have zero predecessor correction.
 
-Any upstream attempt to simplify the parity equivalence should preserve this correction rather than hiding it behind notation that tempts future invalid cancellation.
+**EXPERIMENTAL SIGNAL:** the exact-rational discovery checks found `dW` nonzero generically in the tested models, and dropping the predecessor correction caused 140 transfer/reconstruction checks to fail.
+
+Therefore future parity simplifications should preserve the predecessor term by default, but must not promote its nonzeroness without a separately scoped theorem.
 
 ## 4. The canonical matrix normalization is now even more central
 
