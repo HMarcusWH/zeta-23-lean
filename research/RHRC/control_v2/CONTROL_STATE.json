@@ -3,9 +3,9 @@
   "boundary_id": "B0_RH_2026_08_20",
   "terminal_claim": "RH_OPEN",
   "merged_theorem_anchor": {
-    "pr": 131,
-    "merge_commit": "436d524d0cdeb5986d76dcbb988f771d19836c55",
-    "tree": "5ad51fd877d51348f1af474b2864eb4ab3e0617a",
+    "pr": 134,
+    "merge_commit": "7f1fec480d1ccbff04a456ab937accf7b23cc1af",
+    "tree": "c142efa141036331d139c532d06e7a976c5b50c2",
     "status": "MERGED_GREEN_THEOREM_STATE"
   },
   "merged_control_anchor": {
@@ -15,5 +15,5 @@
     "status": "MERGED_GREEN_CONTROL_STATE"
   },
   "candidate_branch": null,
-  "control_note": "PR #131 remains the merged theorem anchor (validated theorem head b0026683bcbf233afa947c7f15b57bcc4ddf31e3; RHRC #854 and Permansson #627 success). PR #132 is documentation/control metadata only and does not expand theorem authority. The post-#132 audit and exact countermodel campaign change research routing: the immediate theorem target is FIRST_BAD_RIGIDITY_E4_A4B0_KERNEL_SOURCE_TRANSPORT, formalizing denominator-free zero-shift kernel/source compatibility and direct zero-shift parity transfer. The next arithmetic layer is an absolute canonical source-energy decomposition retaining the scalar normalization discarded by the #131 normal moment. The decisive open target is canonical one-step domination/coercivity, which would remove resonance and contradict the already-proved negative zero-shift endpoint. Exact rational generic fixtures quarantine factorwise alpha/Gamma/overlap/source-moment sign or nonvanishing shortcuts, and scalar-shift covariance shows the generic transfer package cannot locate the absolute spectral origin. Log-lift regular-aperture selection is a fallback simplifier, not exclusion. PR #117 remains the latest merged Control-v2 semantic anchor because the routing updates do not change controller authority or algorithms. Control v2 has no theorem/claim authority. RH remains OPEN."
+  "control_note": "PR #134 is the merged theorem anchor (validated theorem head 753ee53a7fc08bd3be9a5a0f37417629122395f9; RHRC #870 and Permansson #643 success). PR #134 theoremized denominator-free whole-kernel source transport, direct zero-shift cross-parity transfer, the exact zero-shift Gamma overlap formula, and Gamma0*mu(z)=0 on the full even predecessor kernel. The kernel/source transport action is therefore complete and must not remain routable. The immediate research frontier is FIRST_BAD_RIGIDITY_E4_A4B1_ABSOLUTE_SOURCE_ENERGY: theoremize Re<Tv,v> through the production pole/arch/prime source while retaining the canonical archimedean scalar identity correction that the #131 moment intentionally annihilates. The decisive open target remains canonical one-step domination/coercivity, which would remove resonant coupling and contradict the already-proved negative zero-shift endpoint. Exact rational generic countermodels continue to quarantine factorwise alpha/Gamma/overlap/source-moment sign or nonvanishing shortcuts, and scalar-shift covariance shows generic transfer data cannot locate the absolute spectral origin. Log-lift regular-aperture selection remains a fallback simplifier, not exclusion. PR #117 remains the latest merged Control-v2 semantic anchor because this update changes theorem/frontier data, not controller authority or algorithms. Control v2 has no theorem/claim authority. RH remains OPEN."
 }
