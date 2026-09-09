@@ -1,4 +1,5 @@
 import Zeta23.CCM.KernelSourceTransport
+import Mathlib.Analysis.InnerProductSpace.LinearMap
 
 noncomputable section
 
@@ -342,6 +343,8 @@ theorem crossParityZeroShiftGamma_eq_trial_cubic_overlap_div
   let den := inner ℂ
     (c : euclideanParityBoundaryFlatSubspace .odd (N + 1))
     (c : euclideanParityBoundaryFlatSubspace .odd (N + 1))
+  have hden : den ≠ 0 :=
+    inner_intrinsicCubicShellPart_self_ne_zero .odd N hN
   have hg := oddCubicCompressionVector_eq_predecessor_add_cubicShellPart N
   have hxc :
       inner ℂ
@@ -386,7 +389,7 @@ theorem crossParityZeroShiftGamma_eq_trial_cubic_overlap_div
           (c : euclideanParityBoundaryFlatSubspace .odd (N + 1))) / den
   rw [inner_add_right, inner_add_left, inner_add_left, hxna, hxnc, hca]
   simp only [zero_add, add_zero]
-  ring
+  field_simp [hden] <;> ring
 
 /-- Direct zero-shift cross-parity transfer.  It is proved at zero itself from
 explicit predecessor preimages, not by taking a limit of the safe negative
@@ -539,15 +542,15 @@ theorem cubicZeroShiftShellResponseScalar_crossParity_explicitSource_transfer
           (w : euclideanParityBoundaryFlatSubspace .odd (N + 1)) / den = _
     rw [hsym, hpred]
     change
-      (inner ℂ
-          (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
-          (sigmaPlus •
+      ((innerSL ℂ
+          (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1)))
+        (sigmaPlus •
             ((d : intrinsicParityPredecessorSubspace .odd N) :
               euclideanParityBoundaryFlatSubspace .odd (N + 1)) +
-           mu •
+          mu •
             ((a : intrinsicParityPredecessorSubspace .odd N) :
               euclideanParityBoundaryFlatSubspace .odd (N + 1)))) / den = _
-    simp only [inner_add_right, inner_smul_right]
+    simp only [map_add, map_smul, innerSL_apply_apply, smul_eq_mul]
   change sigmaMinus =
     (1 - inner ℂ
         (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
@@ -603,7 +606,7 @@ theorem crossParityZeroShiftGamma_mul_explicitSource_eq_zero_on_evenKernel
               intrinsicParityPredecessorSubspace .even N) :
               euclideanParityBoundaryFlatSubspace .even (N + 1))
             (z : euclideanParityBoundaryFlatSubspace .even (N + 1)) = 0 := by
-      simpa only [inner_zero] using hsym
+      simpa only [inner_zero_right] using hsym
     change
       inner ℂ
           ((intrinsicShellToPredecessor .even L N
@@ -678,12 +681,12 @@ theorem crossParityZeroShiftGamma_mul_explicitSource_eq_zero_on_evenKernel
             ((a : intrinsicParityPredecessorSubspace .odd N) :
               euclideanParityBoundaryFlatSubspace .odd (N + 1)) / den := by
         change
-          inner ℂ
-              (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
-              (mu •
-                ((a : intrinsicParityPredecessorSubspace .odd N) :
-                  euclideanParityBoundaryFlatSubspace .odd (N + 1))) / den = _
-        simp only [inner_smul_right]
+          ((innerSL ℂ
+              (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1)))
+            (mu •
+              ((a : intrinsicParityPredecessorSubspace .odd N) :
+                euclideanParityBoundaryFlatSubspace .odd (N + 1)))) / den = _
+        simp only [map_smul, innerSL_apply_apply, smul_eq_mul]
   change
     (1 - inner ℂ
         (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
