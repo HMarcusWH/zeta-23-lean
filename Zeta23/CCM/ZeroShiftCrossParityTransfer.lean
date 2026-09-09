@@ -148,20 +148,16 @@ theorem parityCompressedCanonical_odd_evenIndex_zeroShiftTrial_eq
       parityCompressedCanonical .odd L (N + 1) (D uPlus) =
         D (parityCompressedCanonical .even L (N + 1) uPlus) +
           mu • successorParityCubicVector .odd N := by
-    change
-      oddCompressedCanonical L (N + 1)
-          (euclideanEvenToOddIndexLinearMap (N + 1) uPlus) =
-        euclideanEvenToOddIndexLinearMap (N + 1)
-            (evenCompressedCanonical L (N + 1) uPlus) +
-          mu • oddCubicCompressionVector (N + 1)
-    change
-      oddCompressedCanonical L (N + 1)
-          (euclideanEvenToOddIndexLinearMap (N + 1) uPlus) -
-        euclideanEvenToOddIndexLinearMap (N + 1)
-            (evenCompressedCanonical L (N + 1) uPlus) =
-          mu • oddCubicCompressionVector (N + 1) at hdefNative
     rw [hsource] at hdefNative
-    exact sub_eq_iff_eq_add.mp hdefNative
+    have hsub :
+        parityCompressedCanonical .odd L (N + 1) (D uPlus) -
+          D (parityCompressedCanonical .even L (N + 1) uPlus) =
+          mu • successorParityCubicVector .odd N := by
+      simpa [D, evenIndexParityLinearMap,
+        evenOddCompressedIntertwiningDefect,
+        evenCompressedCanonical, oddCompressedCanonical,
+        successorParityCubicVector] using hdefNative
+    exact sub_eq_iff_eq_add.mp hsub
   have hDc :=
     evenIndex_cubicShellPart_eq_predecessor_add_oddCubicShellPart N hN
   have hg := oddCubicCompressionVector_eq_predecessor_add_cubicShellPart N
@@ -211,7 +207,9 @@ theorem intrinsicPredecessorPart_odd_evenIndex_zeroShiftTrial_eq
     hL N hN xPlus hxPlus
   dsimp at hfull
   have hp := congrArg (intrinsicPredecessorPart .odd N) hfull
-  simpa using hp
+  rw [map_add, intrinsicPredecessorPart_coe_predecessor,
+    map_smul, intrinsicPredecessorPart_coe_shell, smul_zero, add_zero] at hp
+  exact hp
 
 /-- Even regularity determines the entire odd cubic-coupling kernel component
 from the even zero-shift shell response and the exact source moment. -/
@@ -276,7 +274,8 @@ theorem oddCubicCouplingKernelPart_eq_evenZeroShiftResponse_add_source
     intrinsicPredecessorKernelPart_intrinsicPredecessorBlock_eq_zero] at hk
   change
     0 + cubicCouplingKernelPart .odd L N = _ at hk
-  simpa [map_add, map_smul] using hk
+  rw [map_add, map_smul, map_smul] at hk
+  simpa using hk
 
 /-- Zero-shift Gamma has the exact trial/full-cubic-generator overlap
 interpretation for every selected odd preimage. -/
@@ -413,15 +412,23 @@ theorem cubicZeroShiftShellResponseScalar_crossParity_explicitSource_transfer
       intrinsicPredecessorBlock .odd L N w =
         sigmaPlus • d + mu • a := by
     have hp := congrArg (intrinsicPredecessorPart .odd N) hTw
-    simpa [intrinsicPredecessorBlock] using hp
+    rw [map_add, intrinsicPredecessorPart_coe_predecessor,
+      map_smul, intrinsicPredecessorPart_coe_shell, smul_zero, add_zero] at hp
+    change intrinsicPredecessorPart .odd N
+      (parityCompressedCanonical .odd L (N + 1)
+        (w : euclideanParityBoundaryFlatSubspace .odd (N + 1))) = _
+    exact hp
   have hQTw :
       intrinsicCubicQuotientCoordinate .odd N
         (parityCompressedCanonical .odd L (N + 1)
           (w : euclideanParityBoundaryFlatSubspace .odd (N + 1))) =
         sigmaPlus + mu - sigmaMinus := by
     have hq := congrArg (intrinsicCubicQuotientCoordinate .odd N) hTw
-    simpa [intrinsicCubicQuotientCoordinate_predecessor_eq_zero .odd N hN,
-      intrinsicCubicQuotientCoordinate_cubicShellPart .odd N hN] using hq
+    rw [map_add,
+      intrinsicCubicQuotientCoordinate_predecessor_eq_zero .odd N hN,
+      map_smul,
+      intrinsicCubicQuotientCoordinate_cubicShellPart .odd N hN] at hq
+    simpa using hq
   have hQmetric :=
     intrinsicCubicQuotientCoordinate_parityCompressedCanonical_predecessor_eq
       .odd L N hN w
@@ -473,7 +480,7 @@ theorem cubicZeroShiftShellResponseScalar_crossParity_explicitSource_transfer
           euclideanParityBoundaryFlatSubspace .odd (N + 1)) / den) * mu
   field_simp [hden] at hscalar ⊢
   ring_nf at hscalar ⊢
-  linarith
+  linear_combination hscalar
 
 /-- If both cubic couplings admit zero-shift preimages, the selected odd
 zero-shift Gamma annihilates the exact #131 source functional on the entire
@@ -578,7 +585,7 @@ theorem crossParityZeroShiftGamma_mul_explicitSource_eq_zero_on_evenKernel
           euclideanParityBoundaryFlatSubspace .odd (N + 1)) / den) * mu = 0
   field_simp [hden] at hmu ⊢
   ring_nf at hmu ⊢
-  linarith
+  linear_combination hmu
 
 /-- Safe nonzero-Gamma corollary: no division is hidden in the primary
 annihilation theorem. -/
