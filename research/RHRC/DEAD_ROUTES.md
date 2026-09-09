@@ -154,7 +154,7 @@ or, at an even root, the exact overlap-times-source product. A revival of a sign
 
 Try to close the first-bad state by proving, from the generic #129 structural package alone, that one transfer factor has a fixed sign or cannot vanish, or by dividing the parity-transfer equation by such a factor.
 
-**Status:** quarantined by exact rational post-#129 countermodels.
+**Status:** quarantined by exact rational post-#129 countermodels and unchanged by PR #134's product law.
 
 Selected centered-grid fixtures preserve the actual boundary-flat parity spaces, predecessor nonnegativity, KKT geometry, rank-one cubic defect, quotient transport, trial reconstruction, overlap formula and exact scalar transfer while exhibiting all of the following mechanisms:
 
@@ -166,7 +166,7 @@ alpha = 0 at an odd-only negative root while the even successor is positive
 
 Additional exact fixtures realize negative `Gamma`, negative `alpha`, and either sign of the source moment. These are generic reversal-symmetric diagonal sources, not the canonical arithmetic CCM source and not RH counterexamples.
 
-**Consequence:** no proof may divide by `alpha`, `Gamma`, overlap, or source moment without separately theoremizing the needed nonzeroness from information genuinely specific to the canonical source. Even-only root exclusion is also insufficient.
+**Consequence:** no proof may divide by `alpha`, `Gamma`, `Gamma0`, overlap, source moment or `mu(z)` without separately theoremizing the needed nonzeroness from information genuinely specific to the canonical source. Even-only root exclusion is also insufficient.
 
 **Changed-premise requirement for revival:** an exact canonical prime/arch/pole normalization theorem that forces the relevant factor behavior on the actual first-bad state.
 
@@ -189,6 +189,14 @@ An exact rational fixture can therefore move a common root from negative to posi
 
 **Consequence:** the terminal exclusion mechanism must spend an information channel that remembers the absolute canonical normalization. The #131 quadratic-normal source moment deliberately annihilates scalar identities, so it cannot supply this information by itself.
 
-**Current live replacement route:** restore the absolute canonical source energy, retain the archimedean scalar correction, and prove a canonical one-step domination/coercivity theorem. Kernel/source transport is the immediate structural theorem that should precede that arithmetic estimate.
+**Post-#134 status:** the denominator-free zero-shift kernel/source transport prerequisite is now PROVED and no longer part of the escape work. The live replacement route is now:
+
+```text
+absolute canonical source-energy decomposition retaining the arch scalar correction
+  -> canonical one-step domination/coercivity
+  -> global first-bad exclusion.
+```
+
+PR #134's exact `Gamma0*mu(z)=0` product law does not resurrect the dead factorwise route and does not locate the absolute spectral origin.
 
 **RH remains OPEN.**
