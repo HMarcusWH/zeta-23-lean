@@ -45,8 +45,14 @@ private theorem quadraticForm_matrix_add
     (u : ι → ℂ) :
     quadraticForm (A + B) u = quadraticForm A u + quadraticForm B u := by
   unfold quadraticForm
+  rw [← Finset.sum_add_distrib]
+  apply Finset.sum_congr rfl
+  intro i hi
+  rw [← Finset.sum_add_distrib]
+  apply Finset.sum_congr rfl
+  intro j hj
   simp only [Matrix.add_apply]
-  simp_rw [mul_add, add_mul, Finset.sum_add_distrib]
+  ring
 
 private theorem quadraticForm_matrix_sub
     {ι : Type*} [Fintype ι]
@@ -54,8 +60,14 @@ private theorem quadraticForm_matrix_sub
     (u : ι → ℂ) :
     quadraticForm (A - B) u = quadraticForm A u - quadraticForm B u := by
   unfold quadraticForm
+  rw [← Finset.sum_sub_distrib]
+  apply Finset.sum_congr rfl
+  intro i hi
+  rw [← Finset.sum_sub_distrib]
+  apply Finset.sum_congr rfl
+  intro j hj
   simp only [Matrix.sub_apply]
-  simp_rw [mul_sub, sub_mul, Finset.sum_sub_distrib]
+  ring
 
 private theorem quadraticForm_matrix_smul_real
     {ι : Type*} [Fintype ι]
@@ -65,20 +77,21 @@ private theorem quadraticForm_matrix_smul_real
     quadraticForm (((a : ℂ)) • A) u =
       (a : ℂ) * quadraticForm A u := by
   unfold quadraticForm
-  simp only [Pi.smul_apply, smul_eq_mul]
   rw [Finset.mul_sum]
   apply Finset.sum_congr rfl
   intro i hi
   rw [Finset.mul_sum]
   apply Finset.sum_congr rfl
   intro j hj
+  simp only [Pi.smul_apply, smul_eq_mul]
   ring
 
 @[simp] theorem matrixRealEnergy_zero
     {ι : Type*} [Fintype ι] [DecidableEq ι]
     (x : EuclideanSpace ℂ ι) :
     matrixRealEnergy (0 : Matrix ι ι ℂ) x = 0 := by
-  simp [matrixRealEnergy, quadraticForm]
+  unfold matrixRealEnergy quadraticForm
+  simp
 
 /-- Additivity in the matrix argument. -/
 theorem matrixRealEnergy_add
@@ -88,8 +101,7 @@ theorem matrixRealEnergy_add
     matrixRealEnergy (A + B) x =
       matrixRealEnergy A x + matrixRealEnergy B x := by
   unfold matrixRealEnergy
-  rw [quadraticForm_matrix_add]
-  exact Complex.add_re _ _
+  rw [quadraticForm_matrix_add, Complex.add_re]
 
 /-- Subtractivity in the matrix argument. -/
 theorem matrixRealEnergy_sub
@@ -99,8 +111,7 @@ theorem matrixRealEnergy_sub
     matrixRealEnergy (A - B) x =
       matrixRealEnergy A x - matrixRealEnergy B x := by
   unfold matrixRealEnergy
-  rw [quadraticForm_matrix_sub]
-  exact Complex.sub_re _ _
+  rw [quadraticForm_matrix_sub, Complex.sub_re]
 
 /-- Real scalar-linearity in the matrix argument. -/
 theorem matrixRealEnergy_smul_real
@@ -111,8 +122,9 @@ theorem matrixRealEnergy_smul_real
     matrixRealEnergy (((a : ℂ)) • A) x =
       a * matrixRealEnergy A x := by
   unfold matrixRealEnergy
-  rw [quadraticForm_matrix_smul_real]
-  simp [Complex.mul_re]
+  rw [quadraticForm_matrix_smul_real, Complex.mul_re,
+    Complex.ofReal_re, Complex.ofReal_im]
+  ring
 
 /-- Finite-sum linearity in the matrix argument. -/
 theorem matrixRealEnergy_sum
@@ -126,7 +138,8 @@ theorem matrixRealEnergy_sum
   induction s using Finset.induction_on with
   | empty => simp
   | @insert a s ha ih =>
-      simp [ha, matrixRealEnergy_add, ih]
+      rw [Finset.sum_insert ha, Finset.sum_insert ha]
+      rw [matrixRealEnergy_add, ih]
 
 /-- Existing exact bridge to the Euclidean self-energy orientation used by the
 spectral and Schur layers. -/
