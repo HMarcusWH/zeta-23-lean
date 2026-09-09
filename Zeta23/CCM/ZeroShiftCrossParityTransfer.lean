@@ -606,7 +606,7 @@ theorem crossParityZeroShiftGamma_mul_explicitSource_eq_zero_on_evenKernel
               intrinsicParityPredecessorSubspace .even N) :
               euclideanParityBoundaryFlatSubspace .even (N + 1))
             (z : euclideanParityBoundaryFlatSubspace .even (N + 1)) = 0 := by
-      simpa only [inner_zero_right] using hsym
+      simpa using hsym
     change
       inner ℂ
           ((intrinsicShellToPredecessor .even L N
