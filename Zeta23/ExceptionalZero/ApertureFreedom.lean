@@ -46,8 +46,9 @@ theorem
     intro x hx
     have hxm := hmargin hx
     constructor
-    · linarith
-    · linarith
+    · exact lt_trans hr hxm.1
+    · have h34 : 3 * r < 4 * r := by nlinarith [hr]
+      exact lt_trans hxm.2 (lt_trans h34 hLbig)
   obtain ⟨N, hN, u, hflat, hfiniteNeg⟩ :=
     exists_boundaryFlatFinite_negativeW_of_strictAperture
       hL hh hhc hs hneg
