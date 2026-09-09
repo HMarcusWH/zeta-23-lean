@@ -235,7 +235,7 @@ theorem parityCompressedCanonical_evenKernel_eq_beta_smul_cubic
       ((intrinsicShellPart .even N y : intrinsicParitySuccShell .even N) :
         euclideanParityBoundaryFlatSubspace .even (N + 1)) = y := by
     rw [hyPred] at hrec
-    simpa only [zero_add] using hrec
+    simpa only [Submodule.coe_zero, zero_add] using hrec
   have hrep := intrinsicCubicShellCoordinate_smul_cubic_eq
     .even N hN (intrinsicShellPart .even N y)
   have hrepCarrier := congrArg
