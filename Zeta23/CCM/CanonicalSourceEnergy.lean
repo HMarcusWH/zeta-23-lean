@@ -83,6 +83,7 @@ private theorem quadraticForm_matrix_smul_real
   rw [Finset.mul_sum]
   apply Finset.sum_congr rfl
   intro j hj
+  simp only [Matrix.smul_apply, smul_eq_mul]
   ring
 
 @[simp] theorem matrixRealEnergy_zero
