@@ -1,8 +1,7 @@
 {
   "schema_version": "RHRC-control-actions-1.1",
-  "current_frontier": "FIRST_BAD_RIGIDITY_E4_A4B0_KERNEL_SOURCE_TRANSPORT",
+  "current_frontier": "FIRST_BAD_RIGIDITY_E4_A4B1_ABSOLUTE_SOURCE_ENERGY",
   "open_obligations": [
-    "E4_A4_KERNEL_SOURCE_TRANSPORT",
     "E4_A4_ABSOLUTE_SOURCE_ENERGY",
     "E4_A4_CANONICAL_ONE_STEP_DOMINATION",
     "E4_A4_REGULAR_APERTURE_SELECTION",
@@ -13,38 +12,6 @@
     "DEFORMATION_BUDGET_PAPER_TEST"
   ],
   "actions": {
-    "E4_A4_KERNEL_SOURCE_TRANSPORT": {
-      "kind": "THEOREM_ATTEMPT",
-      "concept_id": "canonical_source_exclusion",
-      "retro_search_required": true,
-      "first_break_required": true,
-      "decision_commutation_required": false,
-      "horizon_required_for_tail_claim": false,
-      "dead_route_matches": [],
-      "surviving_objections": [
-        "the kernel/source transport identities are derived from existing declarations but are not yet compiler-checked Lean theorems",
-        "the full odd-kernel projected identity must retain the predecessor corrections d and a and must not assume D is isometric",
-        "the direct zero-shift coefficients alpha0 and Gamma0 can depend on the chosen predecessor preimage even though the endpoint response is preimage-independent",
-        "Gamma0 * mu(z) = 0 is a compatibility dichotomy, not branch exclusion, and must not be converted into division by an unproved factor"
-      ],
-      "score_inputs": {
-        "cost": 1.0,
-        "information_gain": 5.0,
-        "falsification_value": 5.0,
-        "closure_value": 4.9,
-        "residual_risk": 0.6,
-        "dependency_debt": 0.3
-      },
-      "first_breaks": [
-        {
-          "id": "E4A4-KST-FB-01",
-          "statement": "the existing parity-defect, quotient-transport and zero-shift declarations do not compose into the claimed denominator-free kernel/source vector identity without an unproved metric or inverse assumption",
-          "test_id": "theoremize_zero_shift_kernel_source_transport",
-          "estimated_cost": 0.7,
-          "decisive_if_failed": false
-        }
-      ]
-    },
     "E4_A4_ABSOLUTE_SOURCE_ENERGY": {
       "kind": "THEOREM_ATTEMPT",
       "concept_id": "canonical_source_exclusion",
@@ -52,14 +19,14 @@
       "first_break_required": true,
       "decision_commutation_required": false,
       "horizon_required_for_tail_claim": false,
-      "dead_route_matches": [
-        "DR-016"
-      ],
+      "dead_route_matches": ["DR-016"],
       "surviving_objections": [
+        "PR #134 completes denominator-free zero-shift transport but does not provide a sign-bearing absolute energy theorem",
         "the #131 quadratic-normal moment annihilates scalar identities and therefore cannot locate the absolute spectral origin by itself",
         "the absolute energy must retain the canonical archimedean scalar correction with the correct sign",
         "a channel decomposition is bookkeeping unless it feeds a source-specific sign or coercive estimate",
-        "generic scalar-shift countermodels must fail an explicit canonical-normalization hypothesis"
+        "generic scalar-shift countermodels must fail an explicit canonical-normalization hypothesis",
+        "the first energy PR should expose exact production bookkeeping without silently assuming positivity"
       ],
       "score_inputs": {
         "cost": 1.6,
@@ -76,6 +43,13 @@
           "test_id": "theoremize_absolute_canonical_source_energy",
           "estimated_cost": 1.0,
           "decisive_if_failed": false
+        },
+        {
+          "id": "E4A4-ENERGY-FB-02",
+          "statement": "the regular zero-shift trial energy cannot be linked exactly to the existing Schur endpoint without an unproved inverse or sign assumption",
+          "test_id": "theoremize_zero_shift_energy_endpoint_identity",
+          "estimated_cost": 0.8,
+          "decisive_if_failed": false
         }
       ]
     },
@@ -86,15 +60,12 @@
       "first_break_required": true,
       "decision_commutation_required": false,
       "horizon_required_for_tail_claim": false,
-      "dead_route_matches": [
-        "DR-012",
-        "DR-015",
-        "DR-016"
-      ],
+      "dead_route_matches": ["DR-012", "DR-015", "DR-016"],
       "surviving_objections": [
         "generic Hermitian/parity/KKT/transfer structure does not imply one-step positivity",
         "exact rational fixtures with strictly positive predecessors can still have negative successor roots",
         "individual source atoms are indefinite on legal vectors, including exact omega=1/2 fixtures",
+        "PR #134's Gamma0*mu(z)=0 product law does not permit division by either factor without new canonical input",
         "the proof must use the full canonical pole/arch/prime normalization rather than assume the desired Schur domination",
         "both parities must be covered; an even-only exclusion leaves an exact generic odd-only mechanism alive"
       ],
@@ -135,7 +106,8 @@
         "dense nonsingularity requires frozen-cutoff holomorphy/real analyticity and determinant nonidentity, not merely continuity",
         "cutoff thresholds require an exact zero-entry atom continuity argument",
         "the negative witness must be preserved by continuity before the least-bad size is reselected at the nearby aperture",
-        "positive-definite predecessors simplify resonance but do not imply a positive successor or exclude a negative root"
+        "positive-definite predecessors simplify resonance but do not imply a positive successor or exclude a negative root",
+        "PR #134 already supplies exact zero-shift kernel geometry, so regularization should be used only if it materially simplifies the arithmetic energy proof"
       ],
       "score_inputs": {
         "cost": 2.7,
@@ -165,6 +137,7 @@
       "dead_route_matches": [],
       "surviving_objections": [
         "the canonical one-step domination or an equivalent source-energy theorem must be established in both parities",
+        "PR #134 supplies exact zero-shift transport but not branch exclusion",
         "no division by alpha, Gamma, overlap or source moment is legal without separate nonzeroness",
         "generic structural exclusion is quarantined by exact rational countermodels",
         "terminal Mathlib RH still requires an explicit statement bridge after finite first-bad exclusion"
@@ -198,7 +171,8 @@
       "surviving_objections": [
         "D is algebraic, not unitary or isometric",
         "rank-at-most-one defect does not identify which parity carries a zero mode",
-        "shifted-nullity control is supportive unless it constrains the source-sensitive branch state"
+        "PR #134 already supplies stronger source-sensitive whole-kernel transport for the active zero-shift problem",
+        "shifted-nullity control is supportive unless it adds new source-sensitive branch information"
       ],
       "score_inputs": {
         "cost": 1.8,
