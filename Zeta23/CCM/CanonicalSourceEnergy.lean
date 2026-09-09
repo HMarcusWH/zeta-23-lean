@@ -90,8 +90,12 @@ private theorem quadraticForm_matrix_smul_real
     {ι : Type*} [Fintype ι] [DecidableEq ι]
     (x : EuclideanSpace ℂ ι) :
     matrixRealEnergy (0 : Matrix ι ι ℂ) x = 0 := by
-  unfold matrixRealEnergy quadraticForm
-  simp
+  unfold matrixRealEnergy
+  have h := congrArg Complex.re
+    (quadraticForm_matrix_smul_real
+      (a := 0) (A := (1 : Matrix ι ι ℂ))
+      ((EuclideanSpace.equiv ι ℂ) x))
+  simpa using h
 
 /-- Additivity in the matrix argument. -/
 theorem matrixRealEnergy_add
@@ -159,9 +163,9 @@ theorem matrixRealEnergy_one
   rw [matrixRealEnergy_eq_re_inner_apply_self]
   have hone :
       (1 : Matrix ι ι ℂ).toEuclideanLin x = x := by
-    apply (EuclideanSpace.equiv ι ℂ).injective
-    rw [Matrix.ofLp_toLpLin, Matrix.toLin'_apply]
-    simp
+    change (Matrix.toLpLin 2 2 (1 : Matrix ι ι ℂ)) x = x
+    rw [Matrix.toLpLin_one]
+    rfl
   rw [hone]
   simpa only [RCLike.re_to_complex] using
     (norm_sq_eq_re_inner (𝕜 := ℂ) x).symm
@@ -185,8 +189,8 @@ theorem matrixRealEnergy_sourceMatrix_one
     (K : ℕ)
     (x : EuclideanSpace ℂ (Fin (2 * K + 1))) :
     matrixRealEnergy (sourceMatrix 1 K) x = 2 * ‖x‖ ^ 2 := by
-  rw [sourceMatrix_one, matrixRealEnergy_smul_real, matrixRealEnergy_one]
-  norm_num
+  have htwo : (2 : ℂ) = ((2 : ℝ) : ℂ) := by norm_num
+  rw [sourceMatrix_one, htwo, matrixRealEnergy_smul_real, matrixRealEnergy_one]
 
 /-- Absolute canonical energy on one legal reversal-parity carrier. -/
 def parityCanonicalSourceEnergy
@@ -250,7 +254,6 @@ theorem matrixRealEnergy_canonicalArchMatrix_eq_channels
   rw [reducedCanonicalArchMatrix_eq_diagonal_add_offDiagonal]
   rw [matrixRealEnergy_add, matrixRealEnergy_add,
     matrixRealEnergy_smul_real, matrixRealEnergy_one]
-  ring
 
 /-- Exact arithmetic channel expression for one Euclidean vector. -/
 def canonicalSourceChannelEnergy
