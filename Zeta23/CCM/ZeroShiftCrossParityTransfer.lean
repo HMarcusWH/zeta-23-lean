@@ -353,6 +353,19 @@ theorem crossParityZeroShiftGamma_eq_trial_cubic_overlap_div
           (c : euclideanParityBoundaryFlatSubspace .odd (N + 1))
           (a : euclideanParityBoundaryFlatSubspace .odd (N + 1)) = 0 :=
     inner_intrinsicShell_predecessor_eq_zero .odd N c a
+  have hxna :
+      inner ℂ
+          (-(xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1)))
+          (a : euclideanParityBoundaryFlatSubspace .odd (N + 1)) =
+        -inner ℂ
+          (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
+          (a : euclideanParityBoundaryFlatSubspace .odd (N + 1)) := by
+    exact inner_neg_left _ _
+  have hxnc :
+      inner ℂ
+          (-(xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1)))
+          (c : euclideanParityBoundaryFlatSubspace .odd (N + 1)) = 0 := by
+    rw [inner_neg_left, hxc, neg_zero]
   change
     1 - inner ℂ
           (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
@@ -371,9 +384,8 @@ theorem crossParityZeroShiftGamma_eq_trial_cubic_overlap_div
         (((a : intrinsicParityPredecessorSubspace .odd N) :
           euclideanParityBoundaryFlatSubspace .odd (N + 1)) +
           (c : euclideanParityBoundaryFlatSubspace .odd (N + 1))) / den
-  rw [inner_add_right, inner_add_left, inner_add_left,
-    inner_neg_left, hxc, hca]
-  simp only [neg_zero, zero_add, add_zero]
+  rw [inner_add_right, inner_add_left, inner_add_left, hxna, hxnc, hca]
+  simp only [zero_add, add_zero]
   ring
 
 /-- Direct zero-shift cross-parity transfer.  It is proved at zero itself from
@@ -460,7 +472,7 @@ theorem cubicZeroShiftShellResponseScalar_crossParity_explicitSource_transfer
           (cMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1)) := by
     rw [hwCarrier, (parityCompressedCanonical .odd L (N + 1)).map_sub,
       hfull, ← hminusResponse]
-    simp only [smul_sub, sub_smul]
+    simp only [sub_smul]
     abel
   have hpred :
       intrinsicPredecessorBlock .odd L N w =
@@ -526,17 +538,16 @@ theorem cubicZeroShiftShellResponseScalar_crossParity_explicitSource_transfer
             euclideanParityBoundaryFlatSubspace .odd (N + 1))
           (w : euclideanParityBoundaryFlatSubspace .odd (N + 1)) / den = _
     rw [hsym, hpred]
-    rw [show
-      (((sigmaPlus • d + mu • a : intrinsicParityPredecessorSubspace .odd N) :
-          euclideanParityBoundaryFlatSubspace .odd (N + 1))) =
-        sigmaPlus •
+    change
+      (inner ℂ
+          (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
+          (sigmaPlus •
             ((d : intrinsicParityPredecessorSubspace .odd N) :
               euclideanParityBoundaryFlatSubspace .odd (N + 1)) +
-          mu •
+           mu •
             ((a : intrinsicParityPredecessorSubspace .odd N) :
-              euclideanParityBoundaryFlatSubspace .odd (N + 1)) by rfl]
-    rw [inner_add_right, inner_smul_right, inner_smul_right]
-    simp only [smul_eq_mul]
+              euclideanParityBoundaryFlatSubspace .odd (N + 1)))) / den = _
+    simp only [inner_add_right, inner_smul_right]
   change sigmaMinus =
     (1 - inner ℂ
         (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
@@ -592,7 +603,7 @@ theorem crossParityZeroShiftGamma_mul_explicitSource_eq_zero_on_evenKernel
               intrinsicParityPredecessorSubspace .even N) :
               euclideanParityBoundaryFlatSubspace .even (N + 1))
             (z : euclideanParityBoundaryFlatSubspace .even (N + 1)) = 0 := by
-      simpa using hsym
+      simpa only [inner_zero] using hsym
     change
       inner ℂ
           ((intrinsicShellToPredecessor .even L N
@@ -637,23 +648,42 @@ theorem crossParityZeroShiftGamma_mul_explicitSource_eq_zero_on_evenKernel
           ((intrinsicPredecessorBlock .odd L N Dz :
               intrinsicParityPredecessorSubspace .odd N) :
             euclideanParityBoundaryFlatSubspace .odd (N + 1)) := by
-    rw [← hxMinus]
-    exact intrinsicPredecessorBlock_isSymmetric .odd L N xMinus Dz
+    have hs := intrinsicPredecessorBlock_isSymmetric .odd L N xMinus Dz
+    rw [hxMinus] at hs
+    simpa [bMinus, cMinus] using hs
   have hmu :
       mu = mu *
         inner ℂ
           (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
           ((a : intrinsicParityPredecessorSubspace .odd N) :
             euclideanParityBoundaryFlatSubspace .odd (N + 1)) / den := by
-    rw [hQeq, hsymMinus, hpred]
-    rw [show
-      (((mu • a : intrinsicParityPredecessorSubspace .odd N) :
-          euclideanParityBoundaryFlatSubspace .odd (N + 1))) =
-        mu •
-          ((a : intrinsicParityPredecessorSubspace .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1)) by rfl]
-    rw [inner_smul_right]
-    simp only [smul_eq_mul]
+    calc
+      mu = inner ℂ
+          (bMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
+          (Dz : euclideanParityBoundaryFlatSubspace .odd (N + 1)) / den := hQeq
+      _ = inner ℂ
+          (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
+          ((intrinsicPredecessorBlock .odd L N Dz :
+              intrinsicParityPredecessorSubspace .odd N) :
+            euclideanParityBoundaryFlatSubspace .odd (N + 1)) / den := by
+        rw [hsymMinus]
+      _ = inner ℂ
+          (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
+          ((mu • a : intrinsicParityPredecessorSubspace .odd N) :
+            euclideanParityBoundaryFlatSubspace .odd (N + 1)) / den := by
+        rw [hpred]
+      _ = mu *
+          inner ℂ
+            (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
+            ((a : intrinsicParityPredecessorSubspace .odd N) :
+              euclideanParityBoundaryFlatSubspace .odd (N + 1)) / den := by
+        change
+          inner ℂ
+              (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
+              (mu •
+                ((a : intrinsicParityPredecessorSubspace .odd N) :
+                  euclideanParityBoundaryFlatSubspace .odd (N + 1))) / den = _
+        simp only [inner_smul_right]
   change
     (1 - inner ℂ
         (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
