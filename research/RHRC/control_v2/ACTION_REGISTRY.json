@@ -19,7 +19,7 @@
       "first_break_required": true,
       "decision_commutation_required": false,
       "horizon_required_for_tail_claim": false,
-      "dead_route_matches": ["DR-016"],
+      "dead_route_matches": [],
       "surviving_objections": [
         "PR #134 completes denominator-free zero-shift transport but does not provide a sign-bearing absolute energy theorem",
         "the #131 quadratic-normal moment annihilates scalar identities and therefore cannot locate the absolute spectral origin by itself",
