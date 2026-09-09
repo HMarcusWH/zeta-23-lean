@@ -69,8 +69,8 @@ class RetroTests(unittest.TestCase):
         registry = json.loads(
             (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
         )
+        self.assertNotIn("E4_A4_KERNEL_SOURCE_TRANSPORT", registry["actions"])
         for action_id in (
-            "E4_A4_KERNEL_SOURCE_TRANSPORT",
             "E4_A4_ABSOLUTE_SOURCE_ENERGY",
             "E4_A4_CANONICAL_ONE_STEP_DOMINATION",
             "E4_A4_REGULAR_APERTURE_SELECTION",
