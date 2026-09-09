@@ -5,13 +5,12 @@
 ## Current authority split
 
 ```text
-live main after theorem PR #137 = fa2f209a6eb8b4059968e8d61239d80588ca256c
-live main tree = e3de4dc0377f0124832822b6f97ab5bbd7718640
+live main after merged PR #138 = ebf289bdfdde69020bee0d1571047f155e5de4db
+live main tree = d26cd83709437260d0a16630d90c73a93f64c975
 
 theorem-state anchor = PR #137 merge fa2f209a6eb8b4059968e8d61239d80588ca256c
 validated theorem head = 64988e142590c82bd0ad43604279ede9a8e85eff
-theorem tree = e3de4dc0377f0124832822b6f97ab5bbd7718640
-theorem-bearing merged through = PR #137
+validated theorem tree = e3de4dc0377f0124832822b6f97ab5bbd7718640
 RHRC #878 = SUCCESS
 Permansson #651 = SUCCESS
 
@@ -19,7 +18,7 @@ control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86
 RH = OPEN
 ```
 
-Live GitHub head + exact Lean/compiler/CI remain authoritative. Machine claim promotion is separate.
+Live GitHub head + exact Lean/compiler/CI remain authoritative. PR #138 and this synchronization layer do not advance theorem authority beyond #137.
 
 ## One-screen frontier
 
@@ -34,84 +33,97 @@ DONE
   exact denominator-free zero-shift kernel/source transport / #134
   scalar-sensitive absolute canonical source energy / #136
   exact production source pairing / #137
-  exact one-step determinant Δ(w) / #137
+  exact one-step determinant Delta(w) / #137
   domination -> kernel annihilation -> zero-shift preimage / #137
   domination + predecessor nonnegativity -> Re S0>=0 / #137
   domination -> no safe negative explicit Schur root / #137
   off-line zero -> global-first-bad domination failure / #137
-  off-line zero -> q_c<0 OR exists w, Δ(w)<0 / #137
+  off-line zero -> q_c<0 OR exists w, Delta(w)<0 / #137
 
-POST-#137 RESEARCH CONCLUSION
-  the absolute-energy object is built
-  the sufficiency theorem is built
-  the global countercertificate is built
-  the remaining content is the canonical arithmetic sign theorem itself
-  generic structural/factorwise/shift-blind routes remain quarantined
-  the determinant reduction is exact but may be essentially equivalent to
-  one-step block positivity under predecessor nonnegativity
+POST-#138 RESEARCH CORRECTION
+  under A>=0 and a one-dimensional shell,
 
-NOW — A4b2b: CANONICAL SHELL / DETERMINANT SIGN THEOREM
-  under the exact first-bad-compatible hypotheses prove
+    q_c>=0 AND forall w, Delta(w)>=0
 
-    q_c = cubicShellRealEnergy p L N >= 0
-    cubicOneStepDeterminant p L N w >= 0 for every predecessor w
+  is DERIVED to be equivalent to positivity of the one-step successor form.
+  Universal A4b2b remains sufficient, but it is not currently a smaller RH subproblem.
 
-  prove this from the actual canonical pole/arch/scalar/prime source.
-  do not assume `canonicalOneStepDomination` as a helper.
+NOW — A4R REGULAR-APERTURE SELECTION
+  prove that every strict finite canonical negative witness can be moved to an
+  arbitrarily nearby positive aperture, preserving negativity, so that all
+  finitely relevant predecessor blocks in both parities are injective/positive
+  definite; then reselect global first-bad at the new aperture.
 
-FIRST FALSIFICATION GATE
-  search exact/symbolic or rigorously enclosed low-dimensional canonical states
-  satisfying the relevant predecessor nonnegativity hypotheses for
+  Candidate mechanism:
 
-    q_c < 0
-    or
-    Δ(w) < 0.
+    frozen cutoff Q
+    M_Q(L) = -log(L) I + B_Q(L)
+    L = exp(z)
+    Bhat_Q(z) periodic under z -> z + 2*pi*i
+    characteristic-polynomial root count -> determinant nonidentity
+    -> dense regular apertures
 
-  A canonical witness kills this route, not RH.
+  This route earns information because it removes resonance by witness selection,
+  not by assuming successor positivity.
 
-STRUCTURE GATE
-  before a long inequality proof, look for one of:
+AFTER A4R — REGULAR FIRST-BAD COUNTERCERTIFICATE
+  both predecessor parity blocks positive definite
+  unique x0 = A^-1 b
+  u0 = c - A^-1 b
+  canonicalSourceEnergy(u0) = Re S0 < 0 at the forced bad state
 
-    full-source Gram representation
-    integral positivity representation
-    Cauchy-Schwarz remainder identity for Δ
-    sum-of-squares factorization
-    exact cancellation reducing Δ to a smaller positive kernel
+DECISIVE OPEN ARITHMETIC TARGET
+  prove, from exact canonical prime/arch/scalar interaction,
 
-  Individual source atoms are indefinite, so termwise positivity is not the default plan.
+    canonicalSourceEnergy(c - A^-1 b) >= 0
 
-QUANTITATIVE LANE
-  retarget boundary-flat source-coordinate cancellation to q_c and Δ:
+  on the exact forced regular first-bad trial.
 
-    candidate orders omega^7 / omega^9 remain DERIVED / EXPERIMENTAL
+  Equivalent regular scalar form:
 
-  formalize them only if they give a rigorous bound on the full-source determinant.
+    <b, A^-1 b> <= q_c.
 
-OPTIONAL / FALLBACK — A4R REGULAR-APERTURE SELECTION
-  use only if it materially simplifies the source sign proof.
-  Positive-definite predecessors are not negative-root exclusion.
-  #137 already proves domination would remove resonance without A4R.
+  Do not obtain this by defining an auxiliary positive form whose positivity is
+  equivalent to the desired successor positivity.
 
-PARALLEL
+DISCOVERY GATE BEFORE THE SIGN THEOREM
+  analyze the full minimizing-trial Schur remainder, not generic eigenvalue scans:
+
+    u0 = c - A^-1 b
+    S0 = Ecanonical(u0)
+
+  record pole / reduced-arch-diagonal / reduced-arch-off-diagonal / scalar /
+  finite-prime contributions and prime-weight sensitivities.
+
+  interval-certify the smallest high-sensitivity examples before trusting a
+  candidate inequality.
+
+BROAD FALLBACK — UNIVERSAL A4b2b
+  universal q_c>=0 and Delta(w)>=0 remains a valid closing theorem if a genuinely
+  independent canonical arithmetic mechanism is discovered.
+  It is deferred because the universal certificate is the full successor positivity
+  problem under the present block hypotheses.
+
+PARALLEL / LOWER PRIORITY
   E4-B shifted-nullity
   E3-C secular monotonicity/root-count control
   E3-B3 lower-floor deformation
   deformation-budget diagnostic
-
-  These remain lower priority unless they add independent source-specific exclusion information.
+  pole-neutral finite-approximation refinement
 
 TARGET
-  canonical shell/determinant signs
-  -> canonicalOneStepDomination at every forced first-bad state
-  -> contradiction with #137 off-line-zero -> domination failure
+  regular-aperture selection
+  -> regular first-bad source countercertificate
+  -> exact regular Schur-energy arithmetic sign
+  -> contradiction with forced Re S0<0
   -> no off-line zero through existing reduction
   -> explicit terminal Mathlib RiemannHypothesis wrapper
   RH OPEN
 ```
 
-## Exact #136/#137 theorem objects now available
+## Exact theorem objects available through #137
 
-### Scalar-sensitive energy
+### Absolute scalar-sensitive energy
 
 `CanonicalSourceEnergy.lean` exposes:
 
@@ -124,9 +136,9 @@ cubicShellRealEnergy
 
 with exact pole/arch/scalar/prime decomposition and exact zero-shift trial-energy bridge.
 
-### Complex pairing
+### Exact complex pairing
 
-`CanonicalSourcePairing.lean` extends the bookkeeping from self-energy to the exact complex pairing needed for the shell/predecessor cross term.
+`CanonicalSourcePairing.lean` exposes the pairing needed to compute predecessor energy, shell coupling and determinant from the same production source.
 
 ### One-step determinant
 
@@ -139,52 +151,101 @@ cubicOneStepDeterminant
 canonicalOneStepDomination
 ```
 
-and the exact channel formula for the determinant.
+and proves the conditional kernel/range/endpoint/negative-root chain.
 
 ### Global countercertificate
 
 `GlobalFirstBadOneStepDomination.lean` proves that a hypothetical off-line zero forces
 
 ```text
-q_c < 0 OR exists w, Δ(w) < 0
+q_c < 0 OR exists w, Delta(w) < 0
 ```
 
 at one global-first-bad predecessor-nonnegative state.
 
-## Dumbassery / circularity check
+## Post-#138 derived geometry to preserve
 
-A proposed proof of domination must be rejected if it simply repackages any of the following:
+These are not newly Lean-locked.
 
-- “the successor should be nonnegative”;
-- the absence of the negative root it is supposed to prove;
-- a positive-definite predecessor assumption not supplied by first-bad minimality;
-- a hidden inverse at zero;
-- termwise positivity of indefinite source atoms;
-- generic Hermitian/parity/KKT structure already realized by countermodels;
-- a scalar-shift-invariant argument that cannot locate the canonical spectral origin.
+```text
+k = P_(ker A)b
+Delta(k) = -||k||^4
+```
 
-The proof earns information only if it identifies a canonical arithmetic mechanism not shared by the generic fixtures.
+so resonance has an explicit determinant witness.
 
-## Falsification gates
+At a safe negative explicit root `lambda`, the root-selected predecessor vector
 
-- test both parities;
-- test the exact canonical normalization, not legacy `finiteMatrix`;
-- test the shell sign and determinant separately;
-- test kernel directions, where `Δ=-|b|^2` and nonnegativity demands exact coupling annihilation;
-- exploit homogeneity in `w` when reducing numerical/symbolic searches;
-- preserve the exact first-bad/predecessor hypotheses when claiming relevance;
-- no finite-prefix or high-precision observation is theorem authority.
+```text
+w_lambda = (A-lambda I)^-1 b
+```
+
+has a derived closed determinant formula and is a preferred discovery direction.
+
+The external audit also reports the exact correction-vector proportionality
+
+```text
+d = -(6/(2*N-1)) a
+```
+
+with exact rational finite checks; formalization remains optional cleanup rather than the immediate RH bottleneck.
+
+## Why A4R moved ahead of A4b2b
+
+The old post-#137 plan treated A4R as fallback because a successful domination theorem would itself remove resonance. That is formally true but strategically backwards: universal domination is now understood to contain the full successor positivity burden.
+
+Regular-aperture selection instead attempts to remove only singular predecessor geometry. Generic regular negative examples show regularity does not imply positivity, so a successful A4R theorem adds real information without closing RH by assumption.
+
+## A4R first-break gates
+
+Reject or narrow the proposed theorem if any of these fail:
+
+1. the exact production frozen-cutoff compression does not have the claimed `-log(L) I` coefficient;
+2. frozen-cutoff analyticity/holomorphy fails on the required domain;
+3. physical prime/prime-power threshold continuity is not exact;
+4. an aperture-dependent basis introduces unaccounted Gram factors;
+5. simultaneous determinant avoidance across the finite size/parity family cannot be established;
+6. negativity cannot be preserved before moving the aperture;
+7. the proof assumes the old least-bad index persists rather than reselecting first-bad;
+8. the intrinsic projected predecessor is not the compression controlled by the determinant theorem.
+
+A failure here kills or narrows A4R, not RH.
+
+## Schur-sign discovery firewalls
+
+- the reported source-atom determinant leading coefficient is negative; atomwise positive determinant/SOS is not the default plan;
+- sampled canonical Schur energies can be the residue of extremely large channel cancellation;
+- modified prime-weight experiments show that exact arithmetic coefficients matter sharply;
+- therefore prefer exact combined-channel identities/remainders to independent absolute majorants;
+- do not treat high precision as interval certification or theorem authority;
+- a regular first-bad state with `S0<0` is still only the forced countercertificate, not a contradiction.
+
+## Current records
+
+Newest research delta:
+
+`RESEARCH_LEADS_POST_138_ASTRA_DELTA.md`
+
+External-review provenance:
+
+`external_reviews/ASTRA_POST_138_RH_PATH_ASSESSMENT_2026_09_09.md`
+
+Discovery/falsification record:
+
+`countermodels/POST_138_ASTRA_DIAGNOSTICS_2026_09_09.md`
+
+Older post-green deltas remain historical evidence and must not be rewritten to look current.
 
 ## Permanent claim boundary
 
-**PROVED:** theorem authority is through PR #137, including #136 absolute energy and #137 source pairing, determinant reduction, conditional domination sufficiency, and global domination-failure/sign-witness wrappers.
+**PROVED:** theorem authority remains through PR #137.
 
-**DERIVED:** domination is the one-dimensional-shell block-positivity condition under predecessor nonnegativity; a positive Gram representation of the full canonical source pairing would be a natural route to the determinant inequality if it exists.
+**DERIVED:** universal one-step determinant positivity is successor positivity under the present block hypotheses; regular/resonant classification and selected determinant identities.
 
-**LEAD / HYPOTHESIS:** canonical shell-energy nonnegativity, determinant nonnegativity, Gram/integral representation, high-order cancellation as a determinant bound, A4R regular-aperture simplification.
+**LEAD / HYPOTHESIS:** log-lift dense regular-aperture selection; paired-channel regular Schur-energy bound; pole-neutral refined carrier.
 
-**EXPERIMENTAL SIGNAL:** generic exact rational countermodels and any future canonical low-dimensional sign probes.
+**EXPERIMENTAL SIGNAL:** sharp cancellation and prime-weight sensitivity reported by the Astra audit.
 
-**OPEN:** canonical one-step domination, finite first-bad exclusion, unconditional negative-root exclusion, terminal Mathlib RH bridge, RH.
+**OPEN:** regular-aperture selection, regular canonical Schur-energy nonnegativity, finite negative-root exclusion, terminal Mathlib RH bridge, RH.
 
 **RH remains OPEN.**

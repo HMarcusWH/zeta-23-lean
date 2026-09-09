@@ -1,24 +1,22 @@
 # R003 — CCM / finite Weil bridge
 
-Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #137. ABSOLUTE SOURCE ENERGY, EXACT SOURCE PAIRING, ONE-STEP DETERMINANT REDUCTION AND GLOBAL DOMINATION-FAILURE COUNTERCERTIFICATE ARE PROVED. CURRENT FRONTIER = CANONICAL SHELL/DETERMINANT SIGN THEOREM. RH OPEN.**
+Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #137. POST-#138 RESEARCH FRONTIER = REGULAR-APERTURE SELECTION, THEN REGULAR CANONICAL SCHUR-ENERGY SIGN. RH OPEN.**
 
 ## Current authority split
 
 ```text
-live main after theorem PR #137 = fa2f209a6eb8b4059968e8d61239d80588ca256c
-live main tree = e3de4dc0377f0124832822b6f97ab5bbd7718640
+live main after merged PR #138 = ebf289bdfdde69020bee0d1571047f155e5de4db
+live main tree = d26cd83709437260d0a16630d90c73a93f64c975
 
 theorem-state anchor = PR #137 merge fa2f209a6eb8b4059968e8d61239d80588ca256c
 validated theorem head = 64988e142590c82bd0ad43604279ede9a8e85eff
-theorem tree = e3de4dc0377f0124832822b6f97ab5bbd7718640
+validated theorem tree = e3de4dc0377f0124832822b6f97ab5bbd7718640
 RHRC #878 = SUCCESS
 Permansson #651 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
 ```
-
-Live GitHub head + exact Lean/CI build closure remain authoritative.
 
 ## Closed internal ladder
 
@@ -38,11 +36,10 @@ exact canonical source pairing                                   PROVED / #137
 one-step determinant/channel formula                             PROVED / #137
 domination -> zero-shift preimage + endpoint >=0                 PROVED / #137 CONDITIONAL
 domination -> no safe negative explicit Schur root               PROVED / #137 CONDITIONAL
-off-line zero -> domination failure                              PROVED / #137
-off-line zero -> q_c<0 OR exists Δ<0                             PROVED / #137
+off-line zero -> q_c<0 OR exists Delta<0                        PROVED / #137
 ```
 
-## Exact #136/#137 source objects
+## Exact #136/#137 objects
 
 For the canonical one-step block:
 
@@ -52,93 +49,131 @@ c = intrinsic cubic shell
 b = P_W T c
 q_A(w) = Re<Aw,w>
 q_c = Re<Tc,c>
-Δ(w) = q_c*q_A(w) - |<w,b>|^2.
+Delta(w) = q_c*q_A(w) - |<w,b>|^2.
 ```
 
-#136 provides scalar-sensitive self-energy and the exact pole/arch/scalar/prime channel decomposition. #137 extends the source bookkeeping to the exact complex pairing and therefore to the exact determinant.
+#136 provides scalar-sensitive self-energy and exact pole/arch/scalar/prime channel decomposition. #137 extends that bookkeeping to the exact complex pairing and determinant.
 
 `canonicalOneStepDomination` is exactly
 
 ```text
 q_c >= 0
 AND
-forall w, Δ(w) >= 0.
+forall w, Delta(w) >= 0.
 ```
 
-This is a proposition, not a proved property of the canonical source.
+It is a proposition/certificate, not a proved property of the canonical source.
 
-## Exact global first-bad endpoint
+## Post-#138 route correction
 
-A hypothetical off-critical-line zeta zero forces one finite problem with:
-
-- positive aperture;
-- global least-bad successor size;
-- both predecessor parity sectors nonnegative;
-- an exact negative explicit Schur/eigenvalue root;
-- the already-proved zero-shift/source package;
-- failure of `canonicalOneStepDomination`;
-- therefore the explicit finite sign witness
+The independent Astra audit sharpens the post-#137 circularity warning:
 
 ```text
-q_c < 0
-OR
-exists w in W, Δ(w) < 0.
+A>=0 and one-dimensional shell:
+canonicalOneStepDomination
+  <-> successor one-step quadratic form is nonnegative.
 ```
 
-This is the sharp current reduction. No branch of that disjunction has been excluded.
+Universal A4b2b therefore remains a correct sufficient closing theorem but is not presently a smaller subproblem.
 
-## Current route — canonical shell/determinant signs
+The R003 active route now attempts to remove only singular predecessor geometry before spending arithmetic effort on the final regular scalar.
 
-**OPEN / DECISIVE ARITHMETIC TARGET.**
+## Current route — A4R regular-aperture selection
 
-Under the exact first-bad-compatible source hypotheses, prove
+**OPEN / PRIMARY REDUCTION TARGET.**
+
+Prove that a strict finite canonical negative witness can be moved to an arbitrarily nearby positive aperture such that:
+
+- the same witness remains negative before reselection;
+- every finitely relevant predecessor block in both parities is injective/positive definite;
+- the global first-bad index is selected again at the new aperture.
+
+Candidate mechanism:
 
 ```text
-q_c >= 0
-Δ(w) >= 0 for every w in W.
+freeze prime cutoff Q
+M_Q(L) = -log(L) I + B_Q(L)
+L = exp(z)
+periodic Bhat_Q(z)
+characteristic-polynomial root count
+-> determinant nonidentity
+-> dense regular apertures.
 ```
 
-The proof must use the actual canonical source normalization. The preferred discovery order is:
+Acceptance requires the exact production source, not a toy family. In particular prove frozen-cutoff analyticity, threshold continuity, fixed-basis/Gram correctness, simultaneous finite avoidance and the exact predecessor-compression bridge.
 
-1. **falsification:** search canonical low-dimensional predecessor-nonnegative states for `q_c<0` or `Δ<0`;
-2. **exact algebra:** expand `q_c`, `q_A`, and `b` through pole/arch/scalar/prime channels and simplify before estimating;
-3. **representation search:** test whether the full source pairing has a positive Gram/integral representation making `Δ` a Cauchy-Schwarz remainder;
-4. **quantitative cancellation:** use boundary-flat high-order source-coordinate cancellation only if it bounds the full determinant;
-5. **formal sign theorem:** theoremize the surviving source-specific mechanism in both parities.
+## Next route — regular canonical Schur-energy sign
 
-## Why this is not merely a solved Schur problem
+If A4R succeeds, both predecessor blocks are positive definite and the forced first-bad state has
 
-#137 proves that domination is sufficient and that an off-line zero forces its failure. It does **not** prove domination. With a nonnegative predecessor and one-dimensional shell, the domination inequalities encode essentially the missing positivity of the one-step extension.
+```text
+x0 = A^-1 b
+u0 = c - A^-1 b
+S0 = q_c - <b,A^-1 b>
+Ecanonical(u0) = Re S0 < 0.
+```
 
-The value of #137 is localization: any hypothetical failure is now forced into a concrete canonical shell-energy or two-dimensional determinant witness.
+The decisive arithmetic target becomes
 
-## Countermodel firewall
+```text
+Ecanonical(c - A^-1 b) >= 0
+```
 
-Exact rational generic centered-grid reversal-symmetric fixtures already show that Hermitianity, first-bad minimality, parity, KKT, rank-one defect, cross-parity transfer, factor nonvanishing and scalar-shift-invariant data are insufficient.
+on that exact forced regular trial, equivalently
 
-The new A4b2b route is **not** a revival of those generic dead routes because its premise is the exact canonical source pairing and absolute scalar normalization introduced in #136/#137.
+```text
+<b,A^-1b> <= q_c.
+```
 
-A canonical low-dimensional sign failure would falsify this route but would not be a zeta/RH counterexample unless the exact global-first-bad hypotheses and realizability are separately established.
+This theorem must use exact canonical prime/arch/scalar interaction. An auxiliary positive form whose positivity is equivalent to successor PSD is circular.
 
-## A4R fallback
+## Preserved derived geometry
 
-Frozen-cutoff log-lift/dense regular-aperture selection remains available only if it simplifies the source sign proof. Positive-definite predecessors do not themselves exclude a negative successor, and #137 already shows domination would remove resonance without this detour.
+The post-#138 audit records, not yet as new Lean authority:
+
+```text
+k = P_(ker A)b
+Delta(k) = -||k||^4
+```
+
+and an explicit determinant formula for `w_lambda=(A-lambda I)^-1b` at the safe negative root.
+
+It also reports
+
+```text
+d = -(6/(2*N-1)) a
+```
+
+for the two #134 correction vectors, supported by exact rational checks. This should prevent investment in false independence arguments.
+
+## Discovery/falsification constraints
+
+- reported negative leading source-atom determinant coefficient: do not default to atomwise positive determinant/SOS;
+- reported canonical Schur cancellation ratios around `6.46e20` in a small sample: coarse independent channel majorants require exceptional justification;
+- reported `1e-8` modified prime-weight sensitivity: exact arithmetic coefficients matter sharply;
+- all such findings are DERIVED/external or EXPERIMENTAL, not theorem authority.
+
+The preferred discovery observable after A4R is the **full minimizing-trial Schur remainder** on `u0`, including exact mixed channel cancellation and prime-weight sensitivities.
+
+## Universal domination fallback
+
+Universal `q_c>=0` and `Delta(w)>=0` for every predecessor direction remains a valid closing theorem. It is deferred rather than killed. Promote it again if a genuinely independent positive canonical source representation or exact arithmetic remainder is found.
 
 ## Permanent normalization / claim firewalls
 
 - canonical sign-sensitive object is `canonicalSourceMatrix` under the repaired source convention;
-- legacy `finiteMatrix` differs by a scalar identity and cannot supply absolute sign automatically;
-- `canonicalOneStepDomination` is OPEN;
-- conditional negative-root exclusion is not unconditional exclusion;
-- `q_c<0 OR exists Δ<0` is a forced witness, not a contradiction;
-- individual source atoms can be indefinite;
-- D is algebraic, not unitary/isometric;
-- no `A^-1` at zero;
+- legacy `finiteMatrix` cannot supply absolute sign automatically;
+- theorem authority remains #137;
+- regular-aperture selection is OPEN;
+- regular canonical Schur-energy nonnegativity is OPEN;
+- regularity alone does not exclude a negative successor;
+- no `A^-1` at zero before regularity;
 - no division by unproved transfer factors;
-- generic countermodels do not refute the canonical source;
+- D is algebraic, not unitary/isometric;
+- generic/modified-source countermodels do not refute canonical CCM;
 - numerical precision is not theorem authority;
 - RH remains OPEN.
 
-Detailed current implications and falsification plan: `../../RESEARCH_LEADS_POST_137_DELTA.md`.
+Detailed current implications: `../../RESEARCH_LEADS_POST_138_ASTRA_DELTA.md`.
 
 **RH remains OPEN.**

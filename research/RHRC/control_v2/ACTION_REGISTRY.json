@@ -1,9 +1,10 @@
 {
   "schema_version": "RHRC-control-actions-1.1",
-  "current_frontier": "FIRST_BAD_RIGIDITY_E4_A4B2B_CANONICAL_ONE_STEP_SIGN",
+  "current_frontier": "FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_APERTURE_SELECTION",
   "open_obligations": [
-    "E4_A4_CANONICAL_ONE_STEP_DOMINATION",
     "E4_A4_REGULAR_APERTURE_SELECTION",
+    "E4_A4_REGULAR_SCHUR_ENERGY_SIGN",
+    "E4_A4_CANONICAL_ONE_STEP_DOMINATION",
     "E4_A4_GLOBAL_FIRST_BAD_EXCLUSION",
     "E4_B_PARITY_SHIFTED_NULLITY",
     "E3_C_RESOLVENT_MONOTONICITY",
@@ -11,6 +12,104 @@
     "DEFORMATION_BUDGET_PAPER_TEST"
   ],
   "actions": {
+    "E4_A4_REGULAR_APERTURE_SELECTION": {
+      "kind": "THEOREM_ATTEMPT",
+      "concept_id": "canonical_source_exclusion",
+      "retro_search_required": true,
+      "first_break_required": true,
+      "decision_commutation_required": false,
+      "horizon_required_for_tail_claim": false,
+      "dead_route_matches": [],
+      "surviving_objections": [
+        "the exact production frozen-cutoff compression must expose the claimed -log(L) identity coefficient after all basis/Gram factors are accounted for",
+        "frozen-cutoff holomorphy/real analyticity and physical prime/prime-power threshold continuity are theorem obligations, not heuristic regularity assumptions",
+        "simultaneous avoidance must cover all finitely relevant predecessor sizes in both parities",
+        "the strict negative witness must be preserved by continuity before changing aperture, and global first-bad must be reselected after the move",
+        "the intrinsic projected predecessor must be identified with the compression whose determinant is controlled",
+        "positive-definite predecessors remove resonance but do not imply a positive successor or exclude a negative root",
+        "generic regular negative examples are mandatory negative controls so the theorem cannot silently prove positivity",
+        "external Astra exact checks and numerics are discovery evidence only"
+      ],
+      "score_inputs": {
+        "cost": 2.8,
+        "information_gain": 5.0,
+        "falsification_value": 5.0,
+        "closure_value": 4.6,
+        "residual_risk": 1.8,
+        "dependency_debt": 1.0
+      },
+      "first_breaks": [
+        {
+          "id": "E4A4-APR-FB-01",
+          "statement": "the exact production frozen-cutoff parity/BF compression does not admit the claimed -log(L)I plus single-valued periodic log-lift remainder representation",
+          "test_id": "prove_production_log_lift_decomposition",
+          "estimated_cost": 1.1,
+          "decisive_if_failed": true
+        },
+        {
+          "id": "E4A4-APR-FB-02",
+          "statement": "the periodic determinant nonidentity argument fails to establish dense injective apertures for one fixed finite compressed block",
+          "test_id": "prove_log_lift_determinant_nonidentity",
+          "estimated_cost": 1.4,
+          "decisive_if_failed": true
+        },
+        {
+          "id": "E4A4-APR-FB-03",
+          "statement": "injective apertures cannot be chosen simultaneously for all finitely relevant predecessor sizes and both parities while respecting physical cutoff thresholds",
+          "test_id": "prove_simultaneous_finite_regular_aperture_selection",
+          "estimated_cost": 1.0,
+          "decisive_if_failed": true
+        },
+        {
+          "id": "E4A4-APR-FB-04",
+          "statement": "a strict finite negative witness cannot be preserved under the aperture move and then reselected into a global first-bad state with both predecessor blocks positive definite",
+          "test_id": "compose_negative_witness_with_regular_aperture_reselection",
+          "estimated_cost": 1.2,
+          "decisive_if_failed": true
+        }
+      ]
+    },
+    "E4_A4_REGULAR_SCHUR_ENERGY_SIGN": {
+      "kind": "THEOREM_ATTEMPT",
+      "concept_id": "canonical_source_exclusion",
+      "retro_search_required": true,
+      "first_break_required": true,
+      "decision_commutation_required": false,
+      "horizon_required_for_tail_claim": false,
+      "dead_route_matches": [],
+      "surviving_objections": [
+        "this action depends on a theorem-backed regular first-bad witness; do not assume A^-1 exists before A4R is closed",
+        "the target Ecanonical(c-A^-1b)>=0 is the hard arithmetic sign, so an auxiliary positive form equivalent to successor positivity is circular",
+        "the external audit reports extremely sharp prime/arch/scalar cancellation in small canonical samples, so independent coarse channel majorants may be too lossy",
+        "the external audit reports negative leading atomwise determinant coefficients, so termwise determinant positivity/SOS is not a credible default mechanism",
+        "modified prime-weight experiments show the exact arithmetic coefficients matter; a proof shared by nearby perturbed sources is suspect unless its scope explains that sensitivity",
+        "both parities, exact production normalization and the exact forced regular first-bad carrier must be respected"
+      ],
+      "score_inputs": {
+        "cost": 3.2,
+        "information_gain": 5.0,
+        "falsification_value": 5.0,
+        "closure_value": 5.0,
+        "residual_risk": 2.6,
+        "dependency_debt": 2.2
+      },
+      "first_breaks": [
+        {
+          "id": "E4A4-SCHUR-FB-01",
+          "statement": "interval-certified minimizing-trial calculations falsify the proposed regular canonical Schur-energy sign on a state satisfying the exact scoped hypotheses",
+          "test_id": "interval_certify_regular_schur_sign_low_dimension",
+          "estimated_cost": 1.0,
+          "decisive_if_failed": true
+        },
+        {
+          "id": "E4A4-SCHUR-FB-02",
+          "statement": "the exact prime/arch/scalar pairing on u0=c-A^-1b yields no independently controlled remainder beyond a restatement of successor positivity",
+          "test_id": "derive_regular_schur_paired_source_remainder",
+          "estimated_cost": 1.8,
+          "decisive_if_failed": false
+        }
+      ]
+    },
     "E4_A4_CANONICAL_ONE_STEP_DOMINATION": {
       "kind": "THEOREM_ATTEMPT",
       "concept_id": "canonical_source_exclusion",
@@ -21,69 +120,36 @@
       "dead_route_matches": [],
       "surviving_objections": [
         "PR #137 proves only that the exact domination certificate is sufficient; it does not prove q_c>=0 or Delta(w)>=0",
-        "with a nonnegative predecessor and one-dimensional shell, full domination is essentially the missing one-step block positivity, so a mere restatement has zero information gain",
+        "post-#138 analysis sharpens the circularity firewall: under predecessor nonnegativity and a one-dimensional shell, universal domination is equivalent to successor one-step positivity",
+        "therefore this action has low information gain unless a genuinely independent canonical arithmetic mechanism appears",
         "generic Hermitian/parity/KKT/transfer structure remains quarantined by DR-012 and exact rational countermodels",
-        "factorwise alpha/Gamma/overlap/source-moment closure remains quarantined by DR-015 and is not needed by the determinant route",
-        "shift-invariant transfer data remain quarantined by DR-016; the proof must retain the #136/#137 scalar-sensitive canonical normalization",
-        "individual source atoms are indefinite, so termwise positivity is not a credible default proof",
-        "both parities and the exact first-bad/predecessor-nonnegative hypotheses must be respected",
-        "a canonical low-dimensional sign failure would falsify this route but not RH"
+        "factorwise alpha/Gamma/overlap/source-moment closure remains quarantined by DR-015",
+        "shift-invariant transfer data remain quarantined by DR-016; any proof must retain #136/#137 scalar-sensitive normalization",
+        "atomwise positive determinant/SOS is quarantined by DR-018 pending a changed premise",
+        "a canonical scoped sign failure would falsify this universal route but not RH"
       ],
       "score_inputs": {
-        "cost": 2.2,
-        "information_gain": 5.0,
-        "falsification_value": 5.0,
+        "cost": 3.0,
+        "information_gain": 3.0,
+        "falsification_value": 4.4,
         "closure_value": 5.0,
-        "residual_risk": 2.3,
-        "dependency_debt": 0.8
+        "residual_risk": 3.2,
+        "dependency_debt": 1.7
       },
       "first_breaks": [
         {
           "id": "E4A4-DOM-FB-01",
-          "statement": "an exact or rigorously enclosed canonical predecessor-nonnegative low-dimensional state violates q_c >= 0 or cubicOneStepDeterminant >= 0 under the scoped theorem hypotheses",
+          "statement": "an exact or rigorously enclosed canonical predecessor-nonnegative low-dimensional state violates q_c>=0 or cubicOneStepDeterminant>=0 under the scoped theorem hypotheses",
           "test_id": "falsify_canonical_one_step_signs_low_dimension",
           "estimated_cost": 0.8,
           "decisive_if_failed": true
         },
         {
           "id": "E4A4-DOM-FB-02",
-          "statement": "the full pole/arch/scalar/prime source pairing yields no non-circular Gram, integral, cancellation, sum-of-squares, or other source-specific mechanism controlling the one-step determinant beyond restating successor positivity",
-          "test_id": "derive_source_specific_determinant_mechanism",
+          "statement": "no independent canonical arithmetic mechanism is found that implies universal domination without encoding successor positivity itself",
+          "test_id": "derive_independent_universal_domination_mechanism",
           "estimated_cost": 1.5,
           "decisive_if_failed": false
-        }
-      ]
-    },
-    "E4_A4_REGULAR_APERTURE_SELECTION": {
-      "kind": "THEOREM_ATTEMPT",
-      "concept_id": "canonical_source_exclusion",
-      "retro_search_required": true,
-      "first_break_required": true,
-      "decision_commutation_required": false,
-      "horizon_required_for_tail_claim": false,
-      "dead_route_matches": [],
-      "surviving_objections": [
-        "dense nonsingularity requires frozen-cutoff holomorphy/real analyticity and determinant nonidentity, not merely continuity",
-        "cutoff thresholds require an exact zero-entry atom continuity argument",
-        "the negative witness must be preserved by continuity before the least-bad size is reselected at the nearby aperture",
-        "positive-definite predecessors simplify resonance but do not imply a positive successor or exclude a negative root",
-        "PR #137 already proves domination would remove resonance, so regularization should be used only if it materially simplifies the arithmetic sign proof"
-      ],
-      "score_inputs": {
-        "cost": 2.7,
-        "information_gain": 4.2,
-        "falsification_value": 4.6,
-        "closure_value": 3.8,
-        "residual_risk": 2.2,
-        "dependency_debt": 1.5
-      },
-      "first_breaks": [
-        {
-          "id": "E4A4-APR-FB-01",
-          "statement": "the frozen-cutoff compressed determinant can vanish identically because the claimed -log(L)I plus periodic holomorphic remainder representation fails on the exact canonical source",
-          "test_id": "prove_log_lift_determinant_nonidentity",
-          "estimated_cost": 1.6,
-          "decisive_if_failed": true
         }
       ]
     },
@@ -96,8 +162,8 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "PR #137 already proves off-line zero -> global-first-bad domination failure, but the canonical sign theorem is still missing",
-        "global exclusion cannot run until q_c>=0 and Delta(w)>=0 are proved under the exact forced-state hypotheses",
+        "global exclusion cannot run until either the regular first-bad Schur-energy sign or an independently proved universal domination theorem is available",
+        "the post-#138 preferred composition is regular-aperture selection -> regular source countercertificate -> Ecanonical(c-A^-1b)>=0 -> contradiction with forced Re S0<0",
         "no division by alpha, Gamma, overlap or source moment is legal without separate nonzeroness",
         "terminal Mathlib RH still requires an explicit statement bridge after finite first-bad exclusion"
       ],
@@ -107,13 +173,13 @@
         "falsification_value": 5.0,
         "closure_value": 5.0,
         "residual_risk": 3.0,
-        "dependency_debt": 1.6
+        "dependency_debt": 2.8
       },
       "first_breaks": [
         {
-          "id": "E4A4-GLOBAL-FB-02",
-          "statement": "after the canonical sign theorem, the #137 global domination-failure wrapper cannot be composed into a contradiction at the same forced first-bad state",
-          "test_id": "compose_canonical_signs_with_global_domination_failure",
+          "id": "E4A4-GLOBAL-FB-03",
+          "statement": "after regular witness selection and a theorem-backed regular Schur-energy sign, the same forced first-bad witness cannot be composed into a contradiction",
+          "test_id": "compose_regular_schur_sign_with_global_first_bad_witness",
           "estimated_cost": 1.0,
           "decisive_if_failed": true
         }
@@ -130,15 +196,16 @@
       "surviving_objections": [
         "D is algebraic, not unitary or isometric",
         "rank-at-most-one defect does not identify which parity carries a zero mode",
-        "PR #137 makes the source-specific determinant sign the active route; shifted-nullity is supportive unless it adds independent source information"
+        "the post-#138 correction-vector proportionality signal removes one hoped-for independence mechanism",
+        "shifted-nullity remains supportive unless it adds independent canonical source information beyond A4R"
       ],
       "score_inputs": {
         "cost": 1.8,
-        "information_gain": 3.8,
+        "information_gain": 3.6,
         "falsification_value": 4.2,
-        "closure_value": 3.4,
-        "residual_risk": 1.4,
-        "dependency_debt": 0.8
+        "closure_value": 3.2,
+        "residual_risk": 1.5,
+        "dependency_debt": 0.9
       },
       "first_breaks": [
         {
@@ -159,17 +226,18 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "strict monotonicity may yield only root uniqueness while a hypothetical off-line zero already forces one negative root",
+        "strict monotonicity yields root uniqueness while a hypothetical off-line zero already forces one negative root",
         "root uniqueness is weaker than negative-root exclusion",
-        "the theorem should not displace the canonical determinant-sign work unless it adds new information"
+        "the generic derivative S'(lambda)=-rho-||(A-lambda I)^-1b||^2 is compatible with one negative root",
+        "this route should not displace A4R unless it supplies independent source-specific exclusion information"
       ],
       "score_inputs": {
         "cost": 2.0,
-        "information_gain": 3.5,
+        "information_gain": 3.2,
         "falsification_value": 4.0,
-        "closure_value": 3.0,
-        "residual_risk": 1.5,
-        "dependency_debt": 0.8
+        "closure_value": 2.8,
+        "residual_risk": 1.6,
+        "dependency_debt": 0.9
       },
       "first_breaks": [
         {
@@ -192,13 +260,14 @@
       "surviving_objections": [
         "a strictly positive predecessor floor is not available from first-bad minimality alone",
         "the shell gap g_N=q_N-mu_N may fail to stay positive",
-        "the theorem should not displace canonical source determinant work unless it supplies independent exclusion information"
+        "regular-aperture selection now attacks predecessor singularity more directly",
+        "the theorem should not displace canonical regular-source work unless it supplies independent exclusion information"
       ],
       "score_inputs": {
         "cost": 2.0,
-        "information_gain": 3.5,
+        "information_gain": 3.3,
         "falsification_value": 4.0,
-        "closure_value": 3.2,
+        "closure_value": 3.0,
         "residual_risk": 1.5,
         "dependency_debt": 1.0
       },
