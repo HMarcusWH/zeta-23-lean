@@ -1,26 +1,25 @@
 # R003 — CCM / finite Weil bridge
 
-Status: **ACTIVE. GLOBAL FIRST-BAD + ZERO-SHIFT BRANCH RESPONSE + SOURCE-EXPLICIT CROSS-PARITY TRANSFER + EXACT SOURCE DECOMPOSITION PROVED THROUGH PR #131; POST-#132 FRONTIER = KERNEL/SOURCE TRANSPORT -> ABSOLUTE SOURCE ENERGY -> CANONICAL ONE-STEP DOMINATION. RH OPEN.**
+Status: **ACTIVE. GLOBAL FIRST-BAD + ZERO-SHIFT BRANCH RESPONSE + SOURCE-EXPLICIT CROSS-PARITY TRANSFER + EXACT SOURCE DECOMPOSITION + DENOMINATOR-FREE ZERO-SHIFT KERNEL/SOURCE TRANSPORT PROVED THROUGH PR #134. CURRENT FRONTIER = ABSOLUTE SOURCE ENERGY -> CANONICAL ONE-STEP DOMINATION. RH OPEN.**
 
 ## Current authority split
 
 ```text
-live main after documentation PR #132 = 38f65ce4abf5eec258d51425e7c9c88b63b21ffb
-live main tree = 1cc939300fb269f798d25dc88f8eaff4eccc181a
+live main after theorem PR #134 = 7f1fec480d1ccbff04a456ab937accf7b23cc1af
+live main tree = c142efa141036331d139c532d06e7a976c5b50c2
 
-theorem-state anchor = PR #131 merge 436d524d0cdeb5986d76dcbb988f771d19836c55
-validated theorem head = b0026683bcbf233afa947c7f15b57bcc4ddf31e3
-theorem tree = 5ad51fd877d51348f1af474b2864eb4ab3e0617a
-RHRC #854 = SUCCESS
-Permansson #627 = SUCCESS
+theorem-state anchor = PR #134 merge 7f1fec480d1ccbff04a456ab937accf7b23cc1af
+validated theorem head = 753ee53a7fc08bd3be9a5a0f37417629122395f9
+theorem tree = c142efa141036331d139c532d06e7a976c5b50c2
+RHRC #870 = SUCCESS
+Permansson #643 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
-control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
 
 RH = OPEN
 ```
 
-Live GitHub head + exact Lean/CI build closure remain authoritative. PR #132 changed documentation/control metadata only.
+Live GitHub head + exact Lean/CI build closure remain authoritative.
 
 ## Closed internal ladder
 
@@ -49,6 +48,9 @@ FIRST-BAD-RIGIDITY-E4-A3b signed response + canonical kernel pole PROVED / #128
 FIRST-BAD-RIGIDITY-E4-A3c source-explicit parity transfer         PROVED / #129
 off-line zero -> source-explicit first-bad certificate            PROVED / #129
 FIRST-BAD-RIGIDITY-E4-A4a exact source-moment decomposition       PROVED / #131
+FIRST-BAD-RIGIDITY-E4-A4b0 whole-kernel source transport          PROVED / #134
+FIRST-BAD-RIGIDITY-E4-A4b0 direct zero-shift parity transfer      PROVED / #134
+FIRST-BAD-RIGIDITY-E4-A4b0 Gamma0*mu(z)=0 whole-kernel law        PROVED / #134
 ```
 
 ## Exact theorem-backed first-bad state
@@ -68,7 +70,9 @@ A hypothetical off-critical-line zeta zero forces one finite problem with:
 - exact #127 shell response;
 - exact #128 canonical kernel pole;
 - exact #129 source-explicit parity transfer;
-- exact #131 decomposition of the source moment into pole-even, reduced arch diagonal, reduced arch off-diagonal and finite prime-atom channels.
+- exact #131 pole/arch/prime decomposition of the active source moment;
+- exact #134 denominator-free whole-kernel source transport;
+- exact #134 direct zero-shift parity transfer and whole-kernel product law.
 
 The regular package includes
 
@@ -91,76 +95,55 @@ k=K(b)!=0
 K(R_lam b)=(-lam)^(-1)k.
 ```
 
-Across parity,
+Across parity at negative shift:
 
 ```text
 F_- = alpha * F_+ + Gamma * sourceMoment(u_+).
 ```
 
-PR #131 theoremizes
-
-```text
-sourceMoment(v) = explicitCanonicalSourceMoment(v)
-```
-
-with
-
-```text
-explicitCanonicalSourceMoment
-  = poleEven
-    - reducedArchDiagonal
-    - reducedArchOffDiagonal
-    - finitePrimeAtomSum.
-```
-
-The active quadratic-normal observable annihilates the index-independent archimedean scalar identity. No branch is excluded.
-
-## Post-#132 route update
-
-### A4b0 — kernel/source zero-shift transport
-
-**DERIVED TARGET / NEXT THEOREM.**
-
-For `z in ker A+`, theoremize
+At zero, #134 now proves directly:
 
 ```text
 A-(Dz) = beta(z)d + mu(z)a
 <b-,Dz>/rho- = beta(z)+mu(z)
+beta(z)K-d + mu(z)K-a = 0
 ```
 
-and the full odd-kernel projection
-
-```text
-(||K+b+||^2/rho+) K-d + mu(K+b+) K-a = 0.
-```
-
-Under both regular couplings, theoremize
-
-```text
-Gamma0 * mu(z) = 0
-```
-
-for every even predecessor-kernel vector.
-
-Also theoremize the direct zero-shift parity transfer
+for `z in ker A+`, and under both preimage hypotheses:
 
 ```text
 sigma- = alpha0 sigma+ + Gamma0 mu(u+0)
+Gamma0 = <u-0,g->/rho-
+Gamma0 * mu(z)=0  for every z in ker A+.
 ```
 
-without pseudoinverse, Laurent expansion or whole-block inverse. Preserve the fact that `alpha0` / `Gamma0` may depend on the chosen preimage even though the endpoint response is preimage-independent.
+No zero-shift inverse, pseudoinverse, Laurent expansion, one-dimensional-kernel assumption, D-isometry, source sign, or coefficient nonzeroness is used.
+
+## Current route
 
 ### A4b1 — absolute canonical source energy
 
-**OPEN / NEXT ARITHMETIC LAYER.**
+**OPEN / NEXT THEOREM.**
 
-Lift the production source decomposition from the shift-invariant normal moment to
+Lift the production source decomposition from the shift-invariant #131 normal moment to
 
 ```text
 E(v)=Re<Tv,v>
 ```
 
-while retaining the canonical archimedean scalar correction. The target decomposition must keep the absolute source normalization that #131 intentionally discards from the cubic defect observable.
+while retaining the canonical archimedean scalar identity correction.
+
+The first theorem package should expose exact energy bookkeeping:
+
+```text
+pole energy
+- reduced arch diagonal energy
+- reduced arch off-diagonal energy
+- arch scalar correction * ||v||^2
+- finite von-Mangoldt-weighted prime atom energies.
+```
+
+Specialize to the canonical cubic shell and `cubicZeroShiftTrialVector`. Under `Ax0=b`, theoremize the exact regular energy/Schur identity. Do not promote positivity merely from the decomposition.
 
 ### A4b2 — canonical one-step domination
 
@@ -181,8 +164,6 @@ q_c >= 0
 |<w,b>|^2 <= q_c Re<Aw,w>  for every w in W.
 ```
 
-This is equivalent to positivity of the one-step block extension when `A>=0`.
-
 If proved:
 
 ```text
@@ -197,13 +178,13 @@ This is the main unresolved finite arithmetic/coercive theorem.
 
 **LEAD / OPTIONAL SIMPLIFIER.**
 
-If resonance materially complicates A4b2, freeze the prime cutoff and prove
+If resonance materially complicates A4b2, frozen-cutoff analyticity and
 
 ```text
-M_Q(L)=-log(L)I+B_Q(L),  L=exp(z),
+M_Q(L)=-log(L)I+B_Q(L),  L=exp(z)
 ```
 
-with periodic holomorphic remainder. Periodicity should force determinant nonidentity; real analyticity should then give dense apertures where finitely many predecessor parity blocks are injective. Preserve a negative witness by continuity and reselect the least-bad size.
+may yield dense apertures with injective predecessor parity blocks. Preserve a negative witness by continuity and reselect the least-bad size.
 
 Positive-definite predecessors do not by themselves exclude a negative successor.
 
@@ -232,25 +213,11 @@ lambda -> lambda+t,
 
 the trial/transfer package can remain unchanged while the spectrum moves relative to zero. Therefore shift-invariant cross-parity data cannot determine absolute negative spectral sign.
 
-The final source argument must retain the exact canonical scalar normalization. This is why absolute source energy is now primary.
+The final source argument must retain the exact canonical scalar normalization. This is why absolute source energy is primary after #134.
 
 ## Quantitative source lead
 
 Boundary-flat Taylor algebra predicts first potentially nonzero source-coordinate terms at orders `omega^7` / `omega^9`. High-precision checks support the predicted leading coefficients. This remains **DERIVED / EXPERIMENTAL**, not theorem authority, and should be formalized only if it feeds a rigorous source-energy/coercivity estimate.
-
-## E4-B / E3-C / E3-B3
-
-These remain parallel support routes. D is algebraic, not unitary. Root uniqueness is weaker than root absence. Lower-floor deformation must not displace source-normalization work unless it adds independent exclusion information.
-
-## Source-faithful parallel lane
-
-The independent source-faithful lane remains
-
-```text
-G1-B1B -> G1-final -> S-NEG -> G23.
-```
-
-Do not conflate source interface geometry with source negativity.
 
 ## Permanent normalization / model firewalls
 
@@ -261,12 +228,12 @@ Do not conflate source interface geometry with source negativity.
 - boundary-flat legality is required for the hard-window C² bridge;
 - `ker A` is not the predecessor-size compressed-operator kernel;
 - no `A^-1` at zero;
-- `Re S0<0` and `Re sigma0<0` are not branch exclusion;
+- `Re S0<0` and `Re sigma0<0` are not branch exclusion by themselves;
+- `Gamma0*mu(z)=0` is a product law, not factorwise exclusion;
 - the exact resonant pole is not automatically contradictory;
 - D is algebraic, not unitary/isometric;
 - the predecessor correction in `D c+` may not be dropped;
 - no division by `alpha`, `Gamma`, overlap or source moment without separately proved nonzeroness;
-- universal raw source-moment positivity is dead by linearity;
 - factorwise transfer closure is quarantined by exact rational countermodels;
 - shift-invariant transfer data cannot locate the absolute spectral origin;
 - positive-definite predecessors do not imply a positive successor;
@@ -275,6 +242,6 @@ Do not conflate source interface geometry with source negativity.
 - numerical precision is not theorem authority;
 - RH remains OPEN.
 
-Detailed current implications and falsification plan: `../../RESEARCH_LEADS_POST_132_DELTA.md`.
+Detailed current implications and falsification plan: `../../RESEARCH_LEADS_POST_134_DELTA.md`.
 
 **RH remains OPEN.**
