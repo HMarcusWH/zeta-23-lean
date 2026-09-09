@@ -32,7 +32,22 @@
     "archimedean contribution",
     "archimedean channel",
     "gamma contribution",
-    "finite source formula"
+    "finite source formula",
+    "CanonicalSourceEnergy",
+    "CanonicalSourcePairing",
+    "matrixRealEnergy",
+    "canonicalSourceChannelEnergy",
+    "canonicalSourceChannelPairing",
+    "cubicShellRealEnergy",
+    "cubicShellCoupling",
+    "intrinsicPredecessorRealEnergy",
+    "cubicOneStepDeterminant",
+    "canonicalOneStepDomination",
+    "one-step determinant",
+    "Gram determinant",
+    "shell energy",
+    "source pairing",
+    "domination failure"
   ],
   "shifted_coercivity": [
     "shifted coercivity",

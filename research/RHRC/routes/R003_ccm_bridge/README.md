@@ -1,21 +1,20 @@
 # R003 — CCM / finite Weil bridge
 
-Status: **ACTIVE. GLOBAL FIRST-BAD + ZERO-SHIFT BRANCH RESPONSE + SOURCE-EXPLICIT CROSS-PARITY TRANSFER + EXACT SOURCE DECOMPOSITION + DENOMINATOR-FREE ZERO-SHIFT KERNEL/SOURCE TRANSPORT PROVED THROUGH PR #134. CURRENT FRONTIER = ABSOLUTE SOURCE ENERGY -> CANONICAL ONE-STEP DOMINATION. RH OPEN.**
+Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #137. ABSOLUTE SOURCE ENERGY, EXACT SOURCE PAIRING, ONE-STEP DETERMINANT REDUCTION AND GLOBAL DOMINATION-FAILURE COUNTERCERTIFICATE ARE PROVED. CURRENT FRONTIER = CANONICAL SHELL/DETERMINANT SIGN THEOREM. RH OPEN.**
 
 ## Current authority split
 
 ```text
-live main after theorem PR #134 = 7f1fec480d1ccbff04a456ab937accf7b23cc1af
-live main tree = c142efa141036331d139c532d06e7a976c5b50c2
+live main after theorem PR #137 = fa2f209a6eb8b4059968e8d61239d80588ca256c
+live main tree = e3de4dc0377f0124832822b6f97ab5bbd7718640
 
-theorem-state anchor = PR #134 merge 7f1fec480d1ccbff04a456ab937accf7b23cc1af
-validated theorem head = 753ee53a7fc08bd3be9a5a0f37417629122395f9
-theorem tree = c142efa141036331d139c532d06e7a976c5b50c2
-RHRC #870 = SUCCESS
-Permansson #643 = SUCCESS
+theorem-state anchor = PR #137 merge fa2f209a6eb8b4059968e8d61239d80588ca256c
+validated theorem head = 64988e142590c82bd0ad43604279ede9a8e85eff
+theorem tree = e3de4dc0377f0124832822b6f97ab5bbd7718640
+RHRC #878 = SUCCESS
+Permansson #651 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
-
 RH = OPEN
 ```
 
@@ -27,221 +26,119 @@ Live GitHub head + exact Lean/CI build closure remain authoritative.
 F1 finite canonical obstruction                                  PROVED / #94
 constrained / Euclidean finite wall                              PROVED / #96-#98
 N-FLOW fixed-L negative tail                                     PROVED / #100
-PARITY reversal / displacement collapse                          PROVED / #102
-PARITY-FLOW D-equivalence / exact parity geometry                 PROVED / #103
-PARITY-BAD least bad size + predecessor nonnegative               PROVED / #105
-FIRST-BAD-SPECTRUM compression + negative mode                    PROVED / #107
-FIRST-BAD-RIGIDITY-A/B shell projection + KKT                     PROVED / #109
-FIRST-BAD-RIGIDITY-C cubic parity defect finrank <=1              PROVED / #110
-FIRST-BAD-RIGIDITY-D1 global first bad + W/S + exact cubic F      PROVED / #112
-FIRST-BAD-RIGIDITY-D2 V=W⊕S + shifted inverse + Schur             PROVED / #113
-FIRST-BAD-RIGIDITY-E1 cubic generator not inherited               PROVED / #115
-FIRST-BAD-RIGIDITY-E2 canonical cubic quotient + normalized Schur PROVED / #118
-FIRST-BAD-RIGIDITY-E3-A exact negative secular root iff eigenmode PROVED / #119
-FIRST-BAD-RIGIDITY-E3-B2 exact explicit Schur scalar bridge       PROVED / #121
-FIRST-BAD-RIGIDITY-E3-B1 projected metric/resolvent control       PROVED / #122
-FIRST-BAD-RIGIDITY-E4-A1 ker(A) cubic-coupling classification     PROVED / #122
-FIRST-BAD-RIGIDITY-E4-A2 kernel/range zero-shift dichotomy        PROVED / #124
-FIRST-BAD-RIGIDITY-E4-A2 canonical endpoint + complete square     PROVED / #125
-FIRST-BAD-RIGIDITY-E4-A3a canonical zero-shift shell response     PROVED / #127
-FIRST-BAD-RIGIDITY-E4-A3b signed response + canonical kernel pole PROVED / #128
-FIRST-BAD-RIGIDITY-E4-A3c source-explicit parity transfer         PROVED / #129
-off-line zero -> source-explicit first-bad certificate            PROVED / #129
-FIRST-BAD-RIGIDITY-E4-A4a exact source-moment decomposition       PROVED / #131
-FIRST-BAD-RIGIDITY-E4-A4b0 whole-kernel source transport          PROVED / #134
-FIRST-BAD-RIGIDITY-E4-A4b0 direct zero-shift parity transfer      PROVED / #134
-FIRST-BAD-RIGIDITY-E4-A4b0 Gamma0*mu(z)=0 whole-kernel law        PROVED / #134
+PARITY reversal / D-equivalence                                  PROVED / #102-#103
+global first bad + nonnegative predecessors                      PROVED / #105,#112
+negative mode + KKT + cubic channel                              PROVED / #107,#109,#110
+V=W⊕S + shifted/zero-shift Schur package                         PROVED / #113-#128
+source-explicit parity transfer                                  PROVED / #129
+exact source-moment decomposition                                PROVED / #131
+whole-kernel zero-shift source transport                         PROVED / #134
+absolute canonical source energy                                 PROVED / #136
+exact canonical source pairing                                   PROVED / #137
+one-step determinant/channel formula                             PROVED / #137
+domination -> zero-shift preimage + endpoint >=0                 PROVED / #137 CONDITIONAL
+domination -> no safe negative explicit Schur root               PROVED / #137 CONDITIONAL
+off-line zero -> domination failure                              PROVED / #137
+off-line zero -> q_c<0 OR exists Δ<0                             PROVED / #137
 ```
 
-## Exact theorem-backed first-bad state
+## Exact #136/#137 source objects
 
-A hypothetical off-critical-line zeta zero forces one finite problem with:
-
-- positive aperture `L`;
-- global least-bad successor size;
-- both predecessor parity sectors nonnegative;
-- a genuine negative parity-compressed eigenvalue `lam<0`;
-- intrinsic successor decomposition `V=W⊕S`, `dim_C S=1`;
-- canonical cubic shell vector `c!=0`;
-- safe shifted predecessor inverse for `lam<0`;
-- exact quotient and explicit real Schur scalar root;
-- exact kernel/range split `W=ker A⊕range A`;
-- exact regular/resonant zero-shift classification;
-- exact #127 shell response;
-- exact #128 canonical kernel pole;
-- exact #129 source-explicit parity transfer;
-- exact #131 pole/arch/prime decomposition of the active source moment;
-- exact #134 denominator-free whole-kernel source transport;
-- exact #134 direct zero-shift parity transfer and whole-kernel product law.
-
-The regular package includes
+For the canonical one-step block:
 
 ```text
-Ax0=b
-S0=<Tc,c>-<x0,b>
-u0=-x0+c
-sigma0*c = T u0
-S0=star(sigma0)<c,c>
-Re S0<0
-Re sigma0<0
-k=K(b)=0.
+A = intrinsic predecessor block
+c = intrinsic cubic shell
+b = P_W T c
+q_A(w) = Re<Aw,w>
+q_c = Re<Tc,c>
+Δ(w) = q_c*q_A(w) - |<w,b>|^2.
 ```
 
-The resonant package includes
+#136 provides scalar-sensitive self-energy and the exact pole/arch/scalar/prime channel decomposition. #137 extends the source bookkeeping to the exact complex pairing and therefore to the exact determinant.
 
-```text
-k=K(b)!=0
-(-lam)K(R_lam b)=k
-K(R_lam b)=(-lam)^(-1)k.
-```
-
-Across parity at negative shift:
-
-```text
-F_- = alpha * F_+ + Gamma * sourceMoment(u_+).
-```
-
-At zero, #134 now proves directly:
-
-```text
-A-(Dz) = beta(z)d + mu(z)a
-<b-,Dz>/rho- = beta(z)+mu(z)
-beta(z)K-d + mu(z)K-a = 0
-```
-
-for `z in ker A+`, and under both preimage hypotheses:
-
-```text
-sigma- = alpha0 sigma+ + Gamma0 mu(u+0)
-Gamma0 = <u-0,g->/rho-
-Gamma0 * mu(z)=0  for every z in ker A+.
-```
-
-No zero-shift inverse, pseudoinverse, Laurent expansion, one-dimensional-kernel assumption, D-isometry, source sign, or coefficient nonzeroness is used.
-
-## Current route
-
-### A4b1 — absolute canonical source energy
-
-**OPEN / NEXT THEOREM.**
-
-Lift the production source decomposition from the shift-invariant #131 normal moment to
-
-```text
-E(v)=Re<Tv,v>
-```
-
-while retaining the canonical archimedean scalar identity correction.
-
-The first theorem package should expose exact energy bookkeeping:
-
-```text
-pole energy
-- reduced arch diagonal energy
-- reduced arch off-diagonal energy
-- arch scalar correction * ||v||^2
-- finite von-Mangoldt-weighted prime atom energies.
-```
-
-Specialize to the canonical cubic shell and `cubicZeroShiftTrialVector`. Under `Ax0=b`, theoremize the exact regular energy/Schur identity. Do not promote positivity merely from the decomposition.
-
-### A4b2 — canonical one-step domination
-
-**OPEN / DECISIVE TARGET.**
-
-For either parity, define
-
-```text
-A=P_W T|_W
-b=P_W T c
-q_c=Re<Tc,c>.
-```
-
-Prove from the actual canonical source
+`canonicalOneStepDomination` is exactly
 
 ```text
 q_c >= 0
-|<w,b>|^2 <= q_c Re<Aw,w>  for every w in W.
+AND
+forall w, Δ(w) >= 0.
 ```
 
-If proved:
+This is a proposition, not a proved property of the canonical source.
+
+## Exact global first-bad endpoint
+
+A hypothetical off-critical-line zeta zero forces one finite problem with:
+
+- positive aperture;
+- global least-bad successor size;
+- both predecessor parity sectors nonnegative;
+- an exact negative explicit Schur/eigenvalue root;
+- the already-proved zero-shift/source package;
+- failure of `canonicalOneStepDomination`;
+- therefore the explicit finite sign witness
 
 ```text
-w in ker A -> <w,b>=0
+q_c < 0
+OR
+exists w in W, Δ(w) < 0.
 ```
 
-so resonance disappears. In the regular branch, `Ax0=b` gives `S0>=0`, contradicting the already-proved `Re S0<0` at the forced negative root.
+This is the sharp current reduction. No branch of that disjunction has been excluded.
 
-This is the main unresolved finite arithmetic/coercive theorem.
+## Current route — canonical shell/determinant signs
 
-### A4R — regular-aperture log-lift
+**OPEN / DECISIVE ARITHMETIC TARGET.**
 
-**LEAD / OPTIONAL SIMPLIFIER.**
-
-If resonance materially complicates A4b2, frozen-cutoff analyticity and
+Under the exact first-bad-compatible source hypotheses, prove
 
 ```text
-M_Q(L)=-log(L)I+B_Q(L),  L=exp(z)
+q_c >= 0
+Δ(w) >= 0 for every w in W.
 ```
 
-may yield dense apertures with injective predecessor parity blocks. Preserve a negative witness by continuity and reselect the least-bad size.
+The proof must use the actual canonical source normalization. The preferred discovery order is:
 
-Positive-definite predecessors do not by themselves exclude a negative successor.
+1. **falsification:** search canonical low-dimensional predecessor-nonnegative states for `q_c<0` or `Δ<0`;
+2. **exact algebra:** expand `q_c`, `q_A`, and `b` through pole/arch/scalar/prime channels and simplify before estimating;
+3. **representation search:** test whether the full source pairing has a positive Gram/integral representation making `Δ` a Cauchy-Schwarz remainder;
+4. **quantitative cancellation:** use boundary-flat high-order source-coordinate cancellation only if it bounds the full determinant;
+5. **formal sign theorem:** theoremize the surviving source-specific mechanism in both parities.
 
-## Exact countermodel firewall
+## Why this is not merely a solved Schur problem
 
-Exact rational generic centered-grid reversal-symmetric diagonal fixtures preserve the legal parity/boundary-flat/KKT/rank-one/transfer structure while realizing:
+#137 proves that domination is sufficient and that an off-line zero forces its failure. It does **not** prove domination. With a nonnegative predecessor and one-dimensional shell, the domination inequalities encode essentially the missing positivity of the one-step extension.
 
-```text
-sourceMoment(u+) != 0 with Gamma = 0 at a common negative root
-Gamma != 0 with sourceMoment(u+) = 0 at a common negative root
-alpha = 0 at an odd-only negative root with positive even successor
-```
+The value of #137 is localization: any hypothetical failure is now forced into a concrete canonical shell-energy or two-dimensional determinant witness.
 
-Additional fixtures realize negative `Gamma`, negative `alpha`, and either sign of the source moment.
+## Countermodel firewall
 
-These fixtures are not `canonicalSourceMatrix` and are not zeta/RH counterexamples. They quarantine generic factorwise sign/nonzero closure, division by unproved factors, and even-only exclusion.
+Exact rational generic centered-grid reversal-symmetric fixtures already show that Hermitianity, first-bad minimality, parity, KKT, rank-one defect, cross-parity transfer, factor nonvanishing and scalar-shift-invariant data are insufficient.
 
-## Absolute-origin firewall
+The new A4b2b route is **not** a revival of those generic dead routes because its premise is the exact canonical source pairing and absolute scalar normalization introduced in #136/#137.
 
-Under the generic simultaneous shift
+A canonical low-dimensional sign failure would falsify this route but would not be a zeta/RH counterexample unless the exact global-first-bad hypotheses and realizability are separately established.
 
-```text
-M -> M+tI
-lambda -> lambda+t,
-```
+## A4R fallback
 
-the trial/transfer package can remain unchanged while the spectrum moves relative to zero. Therefore shift-invariant cross-parity data cannot determine absolute negative spectral sign.
+Frozen-cutoff log-lift/dense regular-aperture selection remains available only if it simplifies the source sign proof. Positive-definite predecessors do not themselves exclude a negative successor, and #137 already shows domination would remove resonance without this detour.
 
-The final source argument must retain the exact canonical scalar normalization. This is why absolute source energy is primary after #134.
+## Permanent normalization / claim firewalls
 
-## Quantitative source lead
-
-Boundary-flat Taylor algebra predicts first potentially nonzero source-coordinate terms at orders `omega^7` / `omega^9`. High-precision checks support the predicted leading coefficients. This remains **DERIVED / EXPERIMENTAL**, not theorem authority, and should be formalized only if it feeds a rigorous source-energy/coercivity estimate.
-
-## Permanent normalization / model firewalls
-
-- canonical sign-sensitive object is `canonicalSourceMatrix = cutoffFreeMatrix = sourceEq44Matrix = dictionaryMatrix` under the repaired source convention;
-- legacy printed `finiteMatrix` differs by a scalar identity, so absolute eigenvalue/PSD/inertia claims do not transfer automatically;
-- generic R002 smooth taper-grid is not the canonical CCM family except at exact specialization;
-- Bombieri zero-height truncations are distinct from deterministic CCM Fourier-mode truncations;
-- boundary-flat legality is required for the hard-window C² bridge;
-- `ker A` is not the predecessor-size compressed-operator kernel;
-- no `A^-1` at zero;
-- `Re S0<0` and `Re sigma0<0` are not branch exclusion by themselves;
-- `Gamma0*mu(z)=0` is a product law, not factorwise exclusion;
-- the exact resonant pole is not automatically contradictory;
+- canonical sign-sensitive object is `canonicalSourceMatrix` under the repaired source convention;
+- legacy `finiteMatrix` differs by a scalar identity and cannot supply absolute sign automatically;
+- `canonicalOneStepDomination` is OPEN;
+- conditional negative-root exclusion is not unconditional exclusion;
+- `q_c<0 OR exists Δ<0` is a forced witness, not a contradiction;
+- individual source atoms can be indefinite;
 - D is algebraic, not unitary/isometric;
-- the predecessor correction in `D c+` may not be dropped;
-- no division by `alpha`, `Gamma`, overlap or source moment without separately proved nonzeroness;
-- factorwise transfer closure is quarantined by exact rational countermodels;
-- shift-invariant transfer data cannot locate the absolute spectral origin;
-- positive-definite predecessors do not imply a positive successor;
-- generic structural countermodels do not refute `canonicalSourceMatrix`;
-- root uniqueness is not root exclusion;
+- no `A^-1` at zero;
+- no division by unproved transfer factors;
+- generic countermodels do not refute the canonical source;
 - numerical precision is not theorem authority;
 - RH remains OPEN.
 
-Detailed current implications and falsification plan: `../../RESEARCH_LEADS_POST_134_DELTA.md`.
+Detailed current implications and falsification plan: `../../RESEARCH_LEADS_POST_137_DELTA.md`.
 
 **RH remains OPEN.**

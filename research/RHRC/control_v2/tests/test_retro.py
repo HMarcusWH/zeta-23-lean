@@ -54,24 +54,28 @@ class RetroTests(unittest.TestCase):
         self.assertNotIn("rupture", terms)
         self.assertNotIn("slack", terms)
 
-    def test_e4a4_source_actions_use_source_specific_archaeology_aliases(self):
+    def test_e4a4_actions_use_source_specific_energy_pairing_determinant_aliases(self):
         aliases = load_alias_map(RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json")
         terms = expanded_terms("canonical_source_exclusion", aliases)
         for term in (
             "canonicalSourceMatrix",
-            "evenQuadraticSourceMoment",
-            "centeredQuadraticNormal",
             "source normalization",
-            "prime contribution",
-            "archimedean contribution",
+            "CanonicalSourceEnergy",
+            "CanonicalSourcePairing",
+            "matrixRealEnergy",
+            "cubicShellRealEnergy",
+            "cubicShellCoupling",
+            "cubicOneStepDeterminant",
+            "canonicalOneStepDomination",
+            "Gram determinant",
         ):
             self.assertIn(term, terms)
         registry = json.loads(
             (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
         )
         self.assertNotIn("E4_A4_KERNEL_SOURCE_TRANSPORT", registry["actions"])
+        self.assertNotIn("E4_A4_ABSOLUTE_SOURCE_ENERGY", registry["actions"])
         for action_id in (
-            "E4_A4_ABSOLUTE_SOURCE_ENERGY",
             "E4_A4_CANONICAL_ONE_STEP_DOMINATION",
             "E4_A4_REGULAR_APERTURE_SELECTION",
             "E4_A4_GLOBAL_FIRST_BAD_EXCLUSION",
@@ -80,6 +84,10 @@ class RetroTests(unittest.TestCase):
                 registry["actions"][action_id]["concept_id"],
                 "canonical_source_exclusion",
             )
+        self.assertEqual(
+            registry["actions"]["E4_A4_CANONICAL_ONE_STEP_DOMINATION"]["dead_route_matches"],
+            [],
+        )
 
     def test_as_of_search_does_not_see_future_commit(self):
         td, repo, old, new = self._fixture_repo()

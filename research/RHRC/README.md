@@ -5,14 +5,14 @@
 ## Current authority snapshot
 
 ```text
-live main after theorem PR #134 = 7f1fec480d1ccbff04a456ab937accf7b23cc1af
-live main tree = c142efa141036331d139c532d06e7a976c5b50c2
+live main after theorem PR #137 = fa2f209a6eb8b4059968e8d61239d80588ca256c
+live main tree = e3de4dc0377f0124832822b6f97ab5bbd7718640
 
-theorem-state anchor = PR #134 merge 7f1fec480d1ccbff04a456ab937accf7b23cc1af
-validated theorem head = 753ee53a7fc08bd3be9a5a0f37417629122395f9
-validated theorem tree = c142efa141036331d139c532d06e7a976c5b50c2
-RHRC #870 = SUCCESS
-Permansson #643 = SUCCESS
+theorem-state anchor = PR #137 merge fa2f209a6eb8b4059968e8d61239d80588ca256c
+validated theorem head = 64988e142590c82bd0ad43604279ede9a8e85eff
+validated theorem tree = e3de4dc0377f0124832822b6f97ab5bbd7718640
+RHRC #878 = SUCCESS
+Permansson #651 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 Control v2 / FFBBP v1.6 hardened semantics = MERGED GREEN CONTROL INFRASTRUCTURE
@@ -31,115 +31,91 @@ constrained algebra / Euclidean sector                                  PROVED /
 exact centered N-flow + fixed-L negative tail                           PROVED / #100
 reversal / parity / algebraic D                                         PROVED / #102-#103
 global first bad + nonnegative predecessors + one-dimensional shell     PROVED / #105,#112
-negative eigenmode + KKT / cubic channel                                PROVED / #107,#109,#110
-canonical V=W⊕S + shifted Schur/secular machinery                       PROVED / #113-#122
-zero-shift kernel/range dichotomy + endpoint                            PROVED / #124-#125
-special zero-shift shell response                                       PROVED / #127
-signed regular response + resonant kernel pole                          PROVED / #128
+exact shifted Schur/secular and zero-shift package                      PROVED / #113-#128
 source-explicit cross-parity transfer                                   PROVED / #129
-off-line zero -> source-explicit global first-bad certificate           PROVED / #129
 exact canonical source-moment decomposition                             PROVED / #131
-denominator-free whole-kernel source transport                          PROVED / #134
-direct zero-shift cross-parity transfer                                 PROVED / #134
-Gamma0 * mu(z)=0 on full even predecessor kernel                        PROVED / #134
+denominator-free zero-shift source transport                            PROVED / #134
+absolute canonical source-energy decomposition                          PROVED / #136
+exact canonical source pairing                                          PROVED / #137
+one-step determinant + domination sufficiency                           PROVED / #137
+off-line zero -> domination failure / explicit sign witness             PROVED / #137
 
-absolute canonical source-energy decomposition                          NEXT THEOREM
-canonical one-step domination / coercivity                              DECISIVE OPEN TARGET
-regular-aperture log-lift selection                                     FALLBACK SIMPLIFIER
-negative-root exclusion                                                 OPEN
-explicit terminal RH bridge                                             OPEN
+canonical shell/determinant sign theorem                                OPEN / NOW
+canonical one-step domination                                           OPEN
+negative-root exclusion                                                  OPEN
+explicit terminal RH bridge                                              OPEN
 RH                                                                       OPEN
 ```
 
-## Post-#134 theorem conclusion
+## Post-#137 theorem conclusion
 
-The zero-shift transport tranche is complete enough for the current route. For every even predecessor-kernel vector `z`, Lean proves
-
-```text
-A-(Dz) = beta(z)d + mu(z)a
-<b-,Dz>/rho- = beta(z)+mu(z)
-```
-
-and hence the whole odd-kernel vector compatibility
+For either parity, let
 
 ```text
-beta(z) K-d + mu(z) K-a = 0.
+q_c = Re<Tc,c>
+q_A(w) = Re<Aw,w>
+b(w) = <w,P_WTc>
+Δ(w) = q_c*q_A(w) - |b(w)|^2.
 ```
 
-Under an even zero-shift preimage, the odd coupling-kernel coordinate is exactly driven by the even zero-shift response and source term. Under both parity preimages Lean proves
+Lean now proves the exact channel representation and the sufficiency chain
 
 ```text
-sigma- = alpha0 sigma+ + Gamma0 * mu(u+0)
-Gamma0 = <u-0,g->/rho-
-Gamma0 * mu(z)=0  for every z in ker A+.
+canonicalOneStepDomination
+  -> shell coupling annihilates ker A
+  -> shell coupling lies in range A
+  -> zero-shift preimage exists
+  -> Re S0 >= 0
+  -> no safe negative explicit Schur root.
 ```
 
-These are direct finite zero-shift theorems. No pseudoinverse, Laurent expansion, whole-block inverse, one-dimensional kernel assumption, D-isometry, source sign, or coefficient nonzeroness is used.
+The global first-bad wrapper also proves
 
-## Why the frontier moved
+```text
+off-line zeta zero
+  -> NOT canonicalOneStepDomination
+  -> q_c < 0 OR exists w, Δ(w) < 0.
+```
 
-Exact rational structural countermodels already show that generic sign/nonvanishing of `alpha`, `Gamma`, overlap, or source moment cannot close the branch. Scalar-shift covariance also shows that the shift-invariant transfer package cannot determine where the absolute spectral origin lies.
-
-PR #131's active source moment intentionally annihilates scalar identities. Therefore the next theorem must retain absolute canonical normalization rather than further refine the same linear observable.
+No theorem proves the missing sign conditions.
 
 ## Current execution priority
 
-1. **E4-A4b1 — absolute source energy.** Define and decompose `E(v)=Re<Tv,v>` through the actual production pole/arch/prime source, retaining the canonical archimedean scalar correction. Specialize to the cubic shell and zero-shift trial. Prove the exact regular-preimage energy/Schur identity. Do not assume positivity.
-2. **E4-A4b2 — canonical one-step domination.** For each parity prove from the actual canonical source
+1. **A4b2b — falsify or prove the canonical shell/determinant signs.** Work directly on `q_c` and `Δ` using the production pole/arch/scalar/prime channel formulas. First try to falsify on the smallest exact canonical predecessor-nonnegative states.
+2. **Find a structural representation.** Prefer a positive Gram/integral representation or a Cauchy-Schwarz remainder identity for the full canonical pairing over a termwise source-atom sign argument.
+3. **Retarget the quantitative cancellation lead.** Test whether the `omega^7 / omega^9` boundary-flat cancellations control the determinant remainder.
+4. **A4R only if useful.** Dense regular apertures may simplify algebra, but regularity alone is not exclusion and #137 already makes resonance disappear conditionally on domination.
+5. **Global exclusion and terminal wrapper only after the sign theorem.**
 
-   ```text
-   q_c = Re<Tc,c> >= 0
-   |<w,b>|^2 <= q_c Re<Aw,w>  for every w in W.
-   ```
+Parallel E4-B / E3-C / E3-B3 work remains available but should not displace the source-specific sign problem unless it adds independent exclusion information.
 
-   This is the decisive finite arithmetic/coercive target.
-3. **E4-A4R — log-lift regular-aperture selection, only if useful.** Dense injective predecessor apertures may simplify resonance, but regularity alone does not exclude a negative successor.
-4. **Global exclusion and terminal wrapper.** Only after the canonical domination/exclusion theorem is proved.
+## Why the determinant reduction is useful but not magic
 
-Parallel E4-B / E3-C / E3-B3 work remains available but should not displace canonical normalization unless it adds independent exclusion information.
+The one-dimensional-shell block is governed by predecessor energy, shell energy and shell coupling. The #137 determinant is the exact two-dimensional Gram/Schur obstruction on each predecessor direction. With `A>=0`, requiring `q_c>=0` and `Δ(w)>=0` for every `w` is essentially requiring positivity of the one-step extension.
 
-## Why one-step domination would close the finite obstruction
-
-With `A>=0`, shell `c`, coupling `b=P_WTc`, and `q_c=Re<Tc,c>`, the domination
-
-```text
-|<w,b>|^2 <= q_c Re<Aw,w>
-```
-
-implies `w in ker A -> <w,b>=0`, eliminating resonant coupling. In the regular branch, `Ax0=b` gives the zero-shift Schur endpoint `S0>=0`. But the existing first-bad theorem gives `Re S0<0` at the forced negative root. Contradiction.
-
-The unresolved content is therefore source-faithful arithmetic positivity/coercivity for the actual canonical CCM normalization.
-
-## Quantitative source lead
-
-Boundary-flat Taylor algebra suggests first potentially nonzero source-coordinate terms at orders `omega^7` and `omega^9`. High-precision checks support the predicted coefficients. This remains **DERIVED / EXPERIMENTAL** and should only be promoted if it yields a rigorous ingredient for the energy/domination theorem.
+So #137 does not make the central positivity problem disappear. It does something more disciplined: it turns every hypothetical off-line zero into a concrete, source-addressable sign failure that can be attacked or falsified directly.
 
 ## Permanent firewalls
 
 - RH remains OPEN.
+- `canonicalOneStepDomination` is not established.
+- conditional sufficiency is not unconditional exclusion.
+- `q_c<0 OR exists Δ<0` is a countercertificate, not an inconsistency.
+- individual source atoms may be indefinite; no termwise positivity shortcut is licensed.
 - D is algebraic, not unitary/isometric.
-- the predecessor correction in `D c+` may not be dropped.
-- `ker A` is the projected successor predecessor-block kernel, not the predecessor-size compressed spectrum.
 - no `A^-1` at zero.
-- `Re S0<0` and `Re sigma0<0` are not root exclusion by themselves.
-- the resonant pole is classification, not contradiction.
-- `Gamma0*mu(z)=0` does not permit division without a separately proved nonzero factor.
-- universal raw source-moment positivity is unavailable for the linear observable.
-- factorwise sign/nonzero closure is quarantined by exact rational countermodels.
-- shift-invariant transfer data cannot determine absolute spectral sign.
-- positive-definite predecessor selection is simplification, not exclusion.
-- generic countermodels do not refute the actual canonical arithmetic source.
-- numerical precision is not theorem authority.
-- no machine claim, negative-root exclusion or RH change follows from research prose.
+- no division by `alpha`, `Gamma`, overlap or source moment without theoremized nonzeroness.
+- generic structural countermodels do not refute the actual canonical source.
+- numerical evidence is not theorem authority.
+- machine claim promotion remains separate from supporting theorem validity.
 
 ## Current research records
 
 - `CURRENT_RESEARCH_PLAN.md` — execution order and gates.
-- `RESEARCH_LEADS_POST_134_DELTA.md` — current post-#134 research delta.
-- `RESEARCH_LEADS_POST_132_DELTA.md` — historical pre-#134 frontier.
+- `RESEARCH_LEADS_POST_137_DELTA.md` — current post-green research delta.
+- `RESEARCH_LEADS_POST_134_DELTA.md` — historical pre-#136/#137 frontier.
 - `OBSTRUCTION_LEDGER.md` — reusable blockers and claim firewalls.
 - `DEAD_ROUTES.md` — dead/quarantined routes requiring changed-premise justification.
-- `countermodels/POST_129_STRUCTURAL_COUNTERMODELS_2026_09_08.md` — structural falsification fixtures.
 - `routes/R003_ccm_bridge/README.md` — active route theorem surface.
 - `control_v2/README.md` — research-control semantics.
 - `CLAIM_REGISTRY.json` / `R003_PROMOTED_BINDINGS.json` — machine promotion surface.

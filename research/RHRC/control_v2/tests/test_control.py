@@ -21,12 +21,12 @@ class ControlV2Tests(unittest.TestCase):
         self.assertFalse(boundary["may_emit_terminal_rh_status"])
         self.assertFalse(boundary["may_promote_lean_theorem"])
 
-    def test_state_has_post_134_theorem_and_post_117_control_anchors(self):
+    def test_state_has_post_137_theorem_and_post_117_control_anchors(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 134)
+        self.assertEqual(state.anchor.pr, 137)
         self.assertEqual(
             state.anchor.merge_commit,
-            "7f1fec480d1ccbff04a456ab937accf7b23cc1af",
+            "fa2f209a6eb8b4059968e8d61239d80588ca256c",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -37,13 +37,14 @@ class ControlV2Tests(unittest.TestCase):
         self.assertEqual(state.terminal_claim, "RH_OPEN")
         self.assertEqual(
             state.frontier_id,
-            "FIRST_BAD_RIGIDITY_E4_A4B1_ABSOLUTE_SOURCE_ENERGY",
+            "FIRST_BAD_RIGIDITY_E4_A4B2B_CANONICAL_ONE_STEP_SIGN",
         )
 
-    def test_completed_kernel_transport_is_not_routable(self):
+    def test_completed_energy_action_is_not_routable(self):
         action_ids = {a.action_id for a in load_actions()}
         self.assertNotIn("E4_A4_KERNEL_SOURCE_TRANSPORT", action_ids)
-        self.assertIn("E4_A4_ABSOLUTE_SOURCE_ENERGY", action_ids)
+        self.assertNotIn("E4_A4_ABSOLUTE_SOURCE_ENERGY", action_ids)
+        self.assertIn("E4_A4_CANONICAL_ONE_STEP_DOMINATION", action_ids)
 
     def test_router_is_deterministic_non_authoritative_and_transparent(self):
         state = load_research_state()
@@ -68,11 +69,17 @@ class ControlV2Tests(unittest.TestCase):
         self.assertEqual(a.to_dict(), b.to_dict())
         self.assertFalse(a.theorem_authority)
         self.assertFalse(a.terminal_claim_change)
-        self.assertIsNotNone(a.selected_action)
-        self.assertEqual(a.selected_action, "E4_A4_ABSOLUTE_SOURCE_ENERGY")
+        self.assertEqual(a.selected_action, "E4_A4_CANONICAL_ONE_STEP_DOMINATION")
         self.assertTrue(any(SCORE_FORMULA_VERSION in line for line in a.rationale))
         for action in actions:
             self.assertTrue(any(action.action_id in line for line in a.rationale))
+
+    def test_domination_action_outranks_diagnostic_deformation_lane(self):
+        scores = {a.action_id: action_score(a) for a in load_actions()}
+        self.assertGreater(
+            scores["E4_A4_CANONICAL_ONE_STEP_DOMINATION"],
+            scores["DEFORMATION_BUDGET_PAPER_TEST"],
+        )
 
     def test_shared_retro_concept_is_searched_once_per_run(self):
         actions = load_actions()
@@ -101,7 +108,6 @@ class ControlV2Tests(unittest.TestCase):
         self.assertEqual(set(calls), unique_concepts)
 
         e4a4_ids = (
-            "E4_A4_ABSOLUTE_SOURCE_ENERGY",
             "E4_A4_CANONICAL_ONE_STEP_DOMINATION",
             "E4_A4_REGULAR_APERTURE_SELECTION",
             "E4_A4_GLOBAL_FIRST_BAD_EXCLUSION",
