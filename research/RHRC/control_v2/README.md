@@ -4,16 +4,9 @@
 
 ## Purpose
 
-Control v2 provides:
-
-1. **Forward routing.** Rank admissible next research moves by explicit cost, information gain, falsification value, closure value, residual risk and dependency debt. Every serious route declares a first-break test.
-2. **Retroactive archaeology and replay.** Search repository history using concept aliases, optionally search a normalized external archive, and support `as_of` counterfactual replay so old states cannot see future clues.
-
-The controller answers **where to look next**, never **what is mathematically true**. Lean/CI and machine claim surfaces retain theorem/claim authority.
+Control v2 provides deterministic forward routing and retroactive archaeology/replay. It answers **where to look next**, never **what is mathematically true**.
 
 ## Separate theorem and control anchors
-
-`CONTROL_STATE.json` records two distinct anchors:
 
 ```text
 theorem-state anchor = PR #137 merge fa2f209a6eb8b4059968e8d61239d80588ca256c
@@ -21,7 +14,7 @@ validated theorem head = 64988e142590c82bd0ad43604279ede9a8e85eff
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 ```
 
-PR #137 is theorem-bearing and advances theorem authority. PR #117 remains the latest merged green Control-v2 semantic authority because this sync changes theorem/frontier data, vocabulary and regression assertions, not the controller's capability model.
+PR #138 and the post-#138 Astra synchronization change research state and routing metadata, not theorem authority or the controller's capability model.
 
 ## Current routed frontier
 
@@ -29,85 +22,118 @@ PR #137 is theorem-bearing and advances theorem authority. PR #117 remains the l
 A4b0  kernel/source zero-shift transport                       PROVED / RETIRED
 A4b1  absolute canonical source energy                         PROVED / #136 / RETIRED
 A4b2a exact one-step determinant + sufficiency reduction       PROVED / #137
-A4b2b canonical shell/determinant sign theorem                 NOW
-A4R   log-lift dense regular-aperture selection                FALLBACK
-GLOBAL canonical first-bad exclusion                           AFTER SIGN THEOREM
+A4R   regular-aperture/log-lift witness selection              NOW
+A4b2r regular minimizing-trial Schur-energy sign               AFTER A4R
+A4b2b universal one-step domination                            BROAD FALLBACK
+GLOBAL first-bad exclusion                                     AFTER A4b2r OR independent domination
 ```
 
-Parallel actions remain E4-B shifted-nullity, E3-C secular monotonicity, E3-B3 deformation and the deformation-budget diagnostic.
+Parallel actions remain shifted-nullity, secular monotonicity, predecessor-floor deformation and the deformation-budget diagnostic.
 
-## Why the old energy action is retired
+## Why routing changed after #138
 
-PR #136 completed the old A4b1 action. Leaving `E4_A4_ABSOLUTE_SOURCE_ENERGY` routable would let the controller recommend already-proved work.
-
-The current source-specific action is `E4_A4_CANONICAL_ONE_STEP_DOMINATION`, now interpreted through the exact #137 objects:
+The post-#138 Astra audit sharpens the #137 circularity warning:
 
 ```text
-q_c = Re<Tc,c>
-q_A(w)=Re<Aw,w>
-b(w)=<w,P_WTc>
-Δ(w)=q_c*q_A(w)-|b(w)|^2.
+A>=0 and dim(shell)=1:
+q_c>=0 AND forall w, Delta(w)>=0
+  <-> successor one-step form is nonnegative.
 ```
 
-## Why the action is not a dead-route revival
+Universal domination is therefore still a correct sufficient theorem, but its nominal closure value should not make it look like a smaller theorem than the remaining positivity obstruction.
 
-The previous registry attached DR-012 / DR-015 / DR-016 to the domination action. After #137 that is too coarse:
+Regular-aperture selection has higher immediate information value because it aims only to remove predecessor singularity/resonance while preserving a strict negative witness. Generic regular negative examples show that regularity does not imply positivity.
 
-- DR-012 kills **generic** shell/Schur/parity/KKT exclusion without source values;
-- DR-015 kills **factorwise** alpha/Gamma/overlap/source-moment closure;
-- DR-016 kills **shift-invariant** transfer data as a locator of absolute spectral sign.
+## Selected action — E4_A4_REGULAR_APERTURE_SELECTION
 
-The live A4b2b action instead consumes the scalar-sensitive canonical source energy and exact production pairing from #136/#137. It is therefore a changed problem, not a silent resurrection of those routes. The dead-route IDs are removed from the action's admission blockers but retained as surviving objections/firewalls.
+The active theorem attempt must establish, from the production canonical aperture dependence:
+
+1. exact frozen-cutoff decomposition with the canonical `-log(L)` scalar;
+2. log-lift determinant nonidentity;
+3. simultaneous finite avoidance of predecessor singularities in both parities;
+4. continuity preservation of the strict negative witness;
+5. fresh global first-bad reselection after moving the aperture;
+6. positive-definite predecessor blocks for the reselected state.
+
+No successor positivity, regular preimage, determinant sign, or RH premise may be assumed.
+
+## Next action — E4_A4_REGULAR_SCHUR_ENERGY_SIGN
+
+After A4R is theorem-backed, the next arithmetic object is
+
+```text
+u0 = c - A^-1 b
+S0 = Ecanonical(u0) = q_c - <b,A^-1b>.
+```
+
+The closing sign target is
+
+```text
+Ecanonical(u0) >= 0.
+```
+
+The controller records this as a separate action so global exclusion does not silently stand in for the actual missing arithmetic theorem.
+
+First-break discovery should prioritize:
+
+- interval-certified low-dimensional minimizing-trial calculations;
+- exact paired prime/arch/scalar remainder identities;
+- prime-weight sensitivity;
+- rejection of atomwise positive determinant/SOS and overly coarse independent channel majorants unless a changed premise is proved.
+
+## Universal domination fallback
+
+`E4_A4_CANONICAL_ONE_STEP_DOMINATION` remains routable but is deliberately demoted. It should become primary again only if a genuinely independent canonical arithmetic mechanism is found.
+
+Its surviving objections include DR-012/015/016 plus the post-#138 DR-018 atomwise-determinant and DR-020 coarse-majorant firewalls.
+
+## Post-#138 archaeology vocabulary
+
+The `canonical_source_exclusion` concept now includes the regularity and Schur-energy language needed to recover both old and new attempts:
+
+```text
+regular aperture
+log lift
+logarithmic determinant
+periodic determinant
+frozen cutoff
+predecessor injective
+positive definite predecessor
+Schur energy
+regular Schur endpoint
+minimizing trial
+A^-1 b
+prime coefficient sensitivity
+source sensitivity
+paired source remainder
+```
+
+The previous source-energy/pairing/determinant aliases remain.
 
 ## Deterministic routing consequence
 
-#137 reduces the dependency debt and proof-engineering risk of the domination action: the certificate, kernel/range consequence, endpoint consequence, negative-root sufficiency theorem and global failure wrapper are already compiled. The remaining work is the arithmetic sign theorem itself.
+The base score formula is unchanged. The action inputs now encode the research-state correction:
 
-The score inputs are therefore updated so the canonical sign action outranks the diagnostic deformation lane rather than tying it. This is a routing priority change, not theorem evidence.
+- regular-aperture selection outranks the deformation diagnostic and universal domination;
+- regular Schur sign remains explicit but carries dependency debt until A4R closes;
+- universal domination remains admissible but no longer wins merely because it would close the route if proved.
 
-## First-break contract
-
-The current action should fail early if either of these happens:
-
-1. a canonical low-dimensional predecessor-nonnegative state exhibits `q_c<0` or `Δ(w)<0` under the exact normalization;
-2. the full pole/arch/scalar/prime pairing supplies no source-specific representation or estimate beyond generic block positivity.
-
-If (1) occurs, retire the domination route and use the exact witness to redesign the arithmetic target. Do not reinterpret it as evidence against RH.
-
-## Archaeology vocabulary
-
-The `canonical_source_exclusion` concept now explicitly includes:
-
-```text
-CanonicalSourceEnergy
-CanonicalSourcePairing
-canonicalOneStepDomination
-cubicOneStepDeterminant
-cubicShellRealEnergy
-cubicShellCoupling
-one-step determinant
-Gram determinant
-shell energy
-source pairing
-```
-
-This lets retro search recover both the old source-normalization language and the new determinant language without introducing generic alias noise.
-
-## Dead-route law
-
-`DEAD_ROUTES.md` remains authoritative historical failure memory. A dead/quarantined route cannot be silently resurrected. Removing a dead-route admission match is valid only when the live action no longer instantiates the dead route; the changed premise must be documented, as above.
+This is routing metadata, not theorem evidence.
 
 ## CI expectations
 
-`tools/run_suite.py` runs Control-v2 unit tests. The Python RHRC workflow performs a real-history smoke run. The post-#137 sync tests assert:
+`tools/run_suite.py` runs Control-v2 unit tests. The RHRC workflow real-history smoke run must assert:
 
-- theorem anchor #137 and control anchor #117 remain separate;
-- A4b1 is no longer routable;
-- the canonical domination/sign action is routable and deterministically selected when control contracts are satisfied;
-- source archaeology aliases include the new energy/pairing/determinant vocabulary;
-- the real-history workflow smoke anchor is #137;
-- terminal claim remains `RH_OPEN` and controller theorem authority remains false.
+- theorem anchor remains #137;
+- control anchor remains #117;
+- frontier is `FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_APERTURE_SELECTION`;
+- selected action is `E4_A4_REGULAR_APERTURE_SELECTION`;
+- regular-aperture action outranks universal domination and the deformation diagnostic;
+- universal domination remains routable but is not selected;
+- regular Schur-energy action is present and shares the canonical-source archaeology concept;
+- terminal claim remains `RH_OPEN`;
+- controller theorem authority and terminal-claim mutation remain false.
 
-Detailed current research implications: `../RESEARCH_LEADS_POST_137_DELTA.md`.
+Newest research implications: `../RESEARCH_LEADS_POST_138_ASTRA_DELTA.md`.
 
 **RH remains OPEN.**
