@@ -5,22 +5,21 @@
 ## Authority snapshot
 
 ```text
-live main after documentation PR #132 = 38f65ce4abf5eec258d51425e7c9c88b63b21ffb
-live main tree = 1cc939300fb269f798d25dc88f8eaff4eccc181a
+live main after theorem PR #134 = 7f1fec480d1ccbff04a456ab937accf7b23cc1af
+live main tree = c142efa141036331d139c532d06e7a976c5b50c2
 
-theorem-state anchor = PR #131 merge 436d524d0cdeb5986d76dcbb988f771d19836c55
-validated theorem head = b0026683bcbf233afa947c7f15b57bcc4ddf31e3
-validated theorem tree = 5ad51fd877d51348f1af474b2864eb4ab3e0617a
-RHRC #854 = SUCCESS
-Permansson #627 = SUCCESS
+theorem-state anchor = PR #134 merge 7f1fec480d1ccbff04a456ab937accf7b23cc1af
+validated theorem head = 753ee53a7fc08bd3be9a5a0f37417629122395f9
+validated theorem tree = c142efa141036331d139c532d06e7a976c5b50c2
+RHRC #870 = SUCCESS
+Permansson #643 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
-control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
 
 RH = OPEN
 ```
 
-Live GitHub head + Lean/compiler/CI remain authoritative. PR #132 is documentation/control metadata only. The theorem surface remains exactly through #131.
+Live GitHub head + exact Lean/compiler/CI remain authoritative. PR #134 is theorem-bearing and supersedes #131 as theorem authority.
 
 ## Recent theorem packages
 
@@ -40,14 +39,15 @@ Live GitHub head + Lean/compiler/CI remain authoritative. PR #132 is documentati
 #128 signed regular response + canonical resonant pole
 #129 source-explicit cubic defect + exact cross-parity secular transfer
 #131 exact canonical source-moment decomposition
-#132 documentation/control synchronization only
+#132/#133 documentation/control synchronization only
+#134 denominator-free whole-kernel source transport + direct zero-shift transfer
 ```
 
 ## Current frontier
 
 ```text
-E4-A4b0 kernel/source zero-shift transport                         NOW
-E4-A4b1 absolute canonical source-energy decomposition            THEN
+E4-A4b0 kernel/source zero-shift transport                         PROVED / #134
+E4-A4b1 absolute canonical source-energy decomposition            NOW
 E4-A4b2 canonical one-step domination/coercivity                  DECISIVE OPEN TARGET
 E4-A4R  log-lift dense regular-aperture selection                 FALLBACK SIMPLIFIER
 E4-A4d  global first-bad exclusion                                AFTER COERCIVITY
@@ -76,40 +76,64 @@ A hypothetical off-line zero already forces one global-first-bad finite state wi
 - `Re S0<0` and regular `Re sigma0<0`;
 - a canonical resonant kernel pole;
 - exact cross-parity transfer;
-- exact pole/arch/prime decomposition of the canonical source moment.
+- exact pole/arch/prime decomposition of the canonical source moment;
+- exact denominator-free whole-kernel source transport;
+- exact direct zero-shift parity transfer;
+- exact `Gamma0*mu(z)=0` product law on the full even predecessor kernel.
 
 Neither branch is excluded. No negative-root exclusion or RH theorem is proved.
 
-## Post-#132 derived structural target
+## What #134 changed
 
-The next strongest theorem is the denominator-free kernel/source transport. For `z in ker A+`, the audit derives
+The strongest zero-shift source/kernel identities are no longer derived targets. They are compiled theorem authority:
 
 ```text
 A-(Dz) = beta(z)d + mu(z)a
 <b-,Dz>/rho- = beta(z)+mu(z)
+beta(z)K-d + mu(z)K-a = 0
 ```
 
-and therefore
+for `z in ker A+`, and under both parity zero-shift preimages:
 
 ```text
-(||K+b+||^2/rho+) K-d + mu(K+b+) K-a = 0
+sigma- = alpha0 sigma+ + Gamma0 * mu(u+0)
+Gamma0 = <u-0,g->/rho-
+Gamma0 * mu(z)=0  for every z in ker A+.
 ```
 
-in the full odd predecessor kernel.
+The current route therefore does not need a zero-shift inverse, pseudoinverse, Laurent expansion, or kernel-dimension assumption.
 
-Under both regular couplings, the same geometry yields
+The product law is not factorwise exclusion. Exact generic countermodels already realize `Gamma=0`, so no division by `Gamma0` is permitted without a separate canonical theorem.
+
+## Why absolute energy is now central
+
+The generic covariance
 
 ```text
-Gamma0 * mu(z) = 0
+M -> M+tI
+lambda -> lambda+t
 ```
 
-for every even predecessor-kernel vector. A direct zero-shift transfer is also derivable without pseudoinverse/Laurent machinery:
+can preserve the trial/transfer package while moving the root relative to zero. Therefore structural transfer data do not know the absolute spectral origin.
+
+PR #131's normal moment intentionally annihilates scalar identity shifts. The next arithmetic layer must restore absolute canonical normalization through
 
 ```text
-sigma- = alpha0 sigma+ + Gamma0 * mu(u+0).
+E(v)=Re<Tv,v>.
 ```
 
-These are derived targets, not compiled theorem authority.
+The immediate theorem target is the exact production energy decomposition, retaining the archimedean scalar correction and specializing to the cubic shell / zero-shift trial.
+
+## Decisive target
+
+With `A>=0`, shell `c`, coupling `b=P_WTc`, and `q_c=Re<Tc,c>`, prove from the actual canonical source
+
+```text
+q_c >= 0
+|<w,b>|^2 <= q_c Re<Aw,w>  for every w in W.
+```
+
+If this holds, kernel vectors force the coupling into `range A`, removing resonance. In the regular branch, `Ax0=b` gives `S0>=0`, contradicting the existing `Re S0<0` at the forced negative root.
 
 ## Countermodel lesson
 
@@ -125,39 +149,13 @@ Additional fixtures realize negative `Gamma`, negative `alpha`, and either sign 
 
 They are not the canonical arithmetic source and not RH counterexamples. They quarantine generic factorwise sign/nonzero closure and any division by those factors without a separate canonical theorem.
 
-## Why absolute energy is now central
-
-The generic covariance
-
-```text
-M -> M+tI
-lambda -> lambda+t
-```
-
-can preserve the trial/transfer package while moving the root relative to zero. Therefore the structural transfer data do not know the absolute spectral origin.
-
-PR #131's normal moment intentionally annihilates scalar identity shifts. The next arithmetic layer must restore the absolute canonical normalization through
-
-```text
-E(v)=Re<Tv,v>.
-```
-
-The decisive target is the canonical one-step domination theorem. With `A>=0`, shell `c`, coupling `b=P_WTc`, and `q_c=Re<Tc,c>`, prove
-
-```text
-q_c >= 0
-|<w,b>|^2 <= q_c Re<Aw,w>  for every w in W.
-```
-
-If this holds, kernel vectors force the coupling into `range A`, removing resonance. In the regular branch, `Ax0=b` gives `S0>=0`, contradicting the existing `Re S0<0` at the forced negative root.
-
 ## Secondary source clue
 
-Boundary-flat Taylor algebra predicts the first potentially nonzero source-coordinate terms at orders `omega^7` / `omega^9`. High-precision diagnostics support the coefficients. This is **DERIVED / EXPERIMENTAL**, not proof, and is useful only if it feeds a rigorous absolute-energy/coercivity estimate.
+Boundary-flat Taylor algebra predicts first potentially nonzero source-coordinate terms at orders `omega^7` / `omega^9`. High-precision diagnostics support the coefficients. This is **DERIVED / EXPERIMENTAL**, not proof, and is useful only if it feeds a rigorous absolute-energy/coercivity estimate.
 
 ## Fallback regular-aperture route
 
-If resonance is a proof-engineering obstruction, freeze the prime cutoff and use
+If resonance remains a proof-engineering obstruction after the energy decomposition, freeze the prime cutoff and use
 
 ```text
 M_Q(L)=-log(L)I+B_Q(L),  L=exp(z),
@@ -176,8 +174,9 @@ This does not exclude a negative successor. Exact generic fixtures already show 
 - no `A^-1` at zero.
 - `Re S0<0` and `Re sigma0<0` are not branch exclusion.
 - canonical resonant pole is not contradiction.
+- `Gamma0*mu(z)=0` is a product law, not factorwise exclusion.
 - no division by `alpha`, `Gamma`, overlap or source moment without theoremized nonzeroness.
-- universal raw source-moment positivity is dead by linearity.
+- universal raw source-moment positivity is unavailable for the linear observable.
 - factorwise sign/nonzero closure is quarantined by exact rational countermodels.
 - shift-invariant transfer data cannot locate the absolute spectral origin.
 - positive-definite predecessors are simplification, not exclusion.
@@ -185,6 +184,6 @@ This does not exclude a negative successor. Exact generic fixtures already show 
 - numerical precision is not theorem authority.
 - machine claim promotion and RH status do not change from documentation.
 
-Current research detail: `research/RHRC/RESEARCH_LEADS_POST_132_DELTA.md`.
+Current research detail: `research/RHRC/RESEARCH_LEADS_POST_134_DELTA.md`.
 
 **RH remains OPEN.**
