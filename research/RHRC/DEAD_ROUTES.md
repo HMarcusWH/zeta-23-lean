@@ -50,37 +50,29 @@ Identify the historical printed-normalization `finiteMatrix` directly with the e
 
 PRs #71/#73 showed that the direct Section-4 source authority is the canonical cutoff-free object, while `finiteMatrix` is the frozen later printed normalization. The objects differ by a scalar identity shift.
 
-A future actual `QW_lambda|E_N` theorem must land on `canonicalSourceMatrix` through an independently defined source functional.
-
 ## DR-008 — generic R002 taper-grid = canonical CCM
 
 Treat the production R002 smooth-taper `G-tilde(T)` as merely the canonical CCM finite matrix in another basis.
 
 **Status:** refuted as a generic identity / classified SPECIALIZATION_ONLY by D0-R (#66).
 
-Hard-window character geometry matches the CCM basis specialization; the production objects differ in taper, carrier, index set, parameter regime and zero truncation.
-
 ## DR-009 — Bombieri finite truncation = deterministic CCM Fourier band
 
-Directly identify Bombieri's finite zero-index matrix `H(Gamma_N;t)` with the deterministic centered Fourier-mode CCM matrix.
+Directly identify Bombieri's finite zero-index matrix with the deterministic centered Fourier-mode CCM matrix.
 
 **Status:** not supported by the source audit / quarantined.
 
-The finite coordinates, dimensions and truncation laws are different. Any revival requires an actual theorem giving a change of basis, compression, congruence or inertia transfer.
-
 ## DR-010 — fitted small commutator -> eigenvector convergence
 
-Infer useful eigenvector convergence from the numerically fitted symmetric tridiagonal generator because its normalized commutator with the finite CCM matrix is small.
+Infer useful eigenvector convergence from a numerically fitted symmetric tridiagonal generator because its normalized commutator with the finite CCM matrix is small.
 
 **Status:** falsified as a route in its present form.
 
-Finite fitted-generator spectral gaps collapse badly in tested cases. A revival requires an analytically specified generator plus separate absolute commutator and spectral-gap theorems.
-
-**Post-#100 clarification:** K0-F1/K0-F1E/N-FLOW is theorem-backed and is not a revival of DR-010. PR #96 uses the exact analytically defined centered-index operator D and exact canonical identity `[D,M]=g1^T-1g^T`; PR #98 supplies the exact Euclidean constrained carrier and negative Euclidean direction; PR #100 supplies exact centered finite-N nesting, Euclidean isometric constrained extension and fixed-L persistent negativity. No fitted-generator, small-commutator, spectral-gap or eigenvector-convergence inference is used.
+A revival requires an analytically specified generator plus separate absolute commutator and spectral-gap theorems.
 
 ## DR-011 — legacy absolute spectrum as canonical source spectrum
 
-Use absolute eigenvalues, inertia, PSD, trace, determinant or lower bounds computed from the legacy printed `finiteMatrix` as if they were canonical source spectral data.
+Use absolute eigenvalues, inertia, PSD, trace, determinant or lower bounds computed from legacy printed `finiteMatrix` as if they were canonical source spectral data.
 
 **Status:** forbidden semantic shortcut.
 
@@ -88,115 +80,59 @@ The canonical and legacy matrices differ by a scalar identity shift. Only shift-
 
 ## DR-012 — generic shell/Schur/parity/KKT first-bad exclusion
 
-Attempt to exclude the global first-bad negative state using only the generic structural package
-
-```text
-Hermitianity
-A>=0 on the predecessor
-one-dimensional shell
-negative zero-shift Schur endpoint / signed shell response
-exact zero resonance / kernel pole
-rank-at-most-one parity defect
-KKT normal-space geometry
-first-bad N-flow ancestry
-```
-
-without using actual canonical source values.
+Attempt to exclude the global first-bad negative state using only generic Hermitianity, predecessor nonnegativity, one-dimensional shell, Schur endpoint, resonance classification, rank-one parity defect, KKT geometry and first-bad ancestry without actual canonical source values.
 
 **Status:** quarantined by post-#128 countermodels.
 
-Generic 2x2 and centered-grid diagonal constructions retain these mechanisms while still admitting regular or resonant negative behavior. A revival must identify a new invariant not shared by the fixtures.
-
-**Changed-premise requirement for revival:** an exact theorem showing that the actual `canonicalSourceMatrix` imposes an additional sign, overlap, moment, diagonal, prime/arch, or related source constraint.
+**Post-#137 clarification:** the live determinant route is not a revival of DR-012. It explicitly consumes the scalar-sensitive canonical source energy/pairing from #136/#137. Generic structure remains insufficient.
 
 ## DR-013 — displacement identity alone excludes the first-bad state
 
-Use the exact centered displacement identity / low displacement rank as the decisive contradiction against the negative first-bad state.
+Use the exact centered displacement identity / low displacement rank as the decisive contradiction.
 
 **Status:** quarantined by diagonal-perturbation countermodels.
 
-Reversal-symmetric diagonal perturbations commute with the centered index operator and therefore preserve the same displacement commutator while changing absolute spectral sign and first-bad behavior.
-
-**Consequence:** displacement structure remains useful algebraic information but cannot be the terminal exclusion mechanism by itself. Any revival must combine it with source values not preserved by the diagonal perturbation family.
-
 ## DR-014 — universal raw source-moment positivity
 
-Attempt to prove a theorem of the form
+Attempt to prove universal positivity/nonnegativity of `explicitCanonicalSourceMoment L K v` on the whole legal vector space.
 
-```text
-0 < explicitCanonicalSourceMoment L K v
-```
+**Status:** structurally dead after PR #131 because the observable is linear in `v` and changes sign under negation unless zero.
 
-or universal nonnegativity for every legal even boundary-flat vector `v`, and use that as the A4b exclusion mechanism.
-
-**Status:** structurally dead after PR #131.
-
-PR #131 exposes the source observable as a linear functional of `v`. Therefore
-
-```text
-explicitCanonicalSourceMoment L K (-v)
-  = - explicitCanonicalSourceMoment L K v
-```
-
-as a straightforward consequence of the proved linear matrix-moment interface. Over the complex carrier, scalar/phase covariance gives the same obstruction more generally.
-
-Unless the functional is identically zero, no universal one-sided sign theorem can hold on the whole vector space.
-
-**This does not kill source-sensitive A4b.** The canonically oriented secular trial vector is not arbitrary, and the actual transfer equation contains the compositional quantity
-
-```text
-Gamma * explicitCanonicalSourceMoment(u_+)
-```
-
-or, at an even root, the exact overlap-times-source product. A revival of a sign argument must therefore attach the sign/phase/nonzeroness to additional theorem-backed orientation or branch data, not to the raw source functional on the full sector.
+**Post-#137 clarification:** the quadratic one-step determinant is a different object and does not revive raw linear source-moment positivity.
 
 ## DR-015 — factorwise `alpha` / `Gamma` / overlap / source-moment exclusion
 
-Try to close the first-bad state by proving, from the generic #129 structural package alone, that one transfer factor has a fixed sign or cannot vanish, or by dividing the parity-transfer equation by such a factor.
+Try to close the first-bad state by proving from the generic transfer package that one transfer factor has a fixed sign or cannot vanish, or by dividing the transfer equation by such a factor.
 
-**Status:** quarantined by exact rational post-#129 countermodels and unchanged by PR #134's product law.
+**Status:** quarantined by exact rational post-#129 countermodels and unchanged by #134/#137.
 
-Selected centered-grid fixtures preserve the actual boundary-flat parity spaces, predecessor nonnegativity, KKT geometry, rank-one cubic defect, quotient transport, trial reconstruction, overlap formula and exact scalar transfer while exhibiting all of the following mechanisms:
-
-```text
-sourceMoment(u+) != 0 but Gamma = 0 at a common negative root
-Gamma != 0 but sourceMoment(u+) = 0 at a common negative root
-alpha = 0 at an odd-only negative root while the even successor is positive
-```
-
-Additional exact fixtures realize negative `Gamma`, negative `alpha`, and either sign of the source moment. These are generic reversal-symmetric diagonal sources, not the canonical arithmetic CCM source and not RH counterexamples.
-
-**Consequence:** no proof may divide by `alpha`, `Gamma`, `Gamma0`, overlap, source moment or `mu(z)` without separately theoremizing the needed nonzeroness from information genuinely specific to the canonical source. Even-only root exclusion is also insufficient.
-
-**Changed-premise requirement for revival:** an exact canonical prime/arch/pole normalization theorem that forces the relevant factor behavior on the actual first-bad state.
+**Post-#137 clarification:** the determinant route avoids these factors. It should not carry DR-015 as a dead-route revival blocker, but DR-015 remains a permanent firewall against factorwise shortcuts.
 
 ## DR-016 — shift-invariant transfer data determine absolute spectral sign
 
-Attempt to infer that the common secular/root data are negative relative to zero using only the shift-invariant structural transfer package.
+Attempt to infer absolute negative spectral location using only the shift-invariant transfer package.
 
 **Status:** structurally unavailable in generic models.
 
-Under the simultaneous scalar shift
+Under `M -> M+tI`, `lambda -> lambda+t`, the old transfer data can remain unchanged while the spectrum moves relative to zero.
+
+**Post-#137 status:** #136 restores scalar-sensitive self-energy and #137 extends that absolute normalization to the exact source pairing/determinant. The live determinant route is therefore not a revival of DR-016. Any argument that drops the scalar correction or otherwise becomes shift-blind falls back into DR-016.
+
+## DR-017 — domination proved by restating successor positivity
+
+Attempt to close A4b2b by assuming, invoking, or merely renaming the positivity of the successor one-step block, the absence of the negative root, or `canonicalOneStepDomination` itself.
+
+**Status:** dead by circularity / zero information gain after PR #137.
+
+With predecessor nonnegativity and a one-dimensional shell,
 
 ```text
-M -> M + t I
-lambda -> lambda + t
+q_c>=0
+forall w, Δ(w)>=0
 ```
 
-with the shell orthogonal to its predecessor, the predecessor blocks shift by `tI` while the shifted resolvent equation, canonical trial vectors, cubic defect/source functional, `alpha`, `Gamma`, and both secular scalars remain unchanged. The spectrum moves relative to zero.
+is essentially the missing one-step block-positivity content. PR #137 proves this certificate is sufficient; it does not provide a cheaper proof of the certificate.
 
-An exact rational fixture can therefore move a common root from negative to positive while preserving the corresponding transfer data.
-
-**Consequence:** the terminal exclusion mechanism must spend an information channel that remembers the absolute canonical normalization. The #131 quadratic-normal source moment deliberately annihilates scalar identities, so it cannot supply this information by itself.
-
-**Post-#134 status:** the denominator-free zero-shift kernel/source transport prerequisite is now PROVED and no longer part of the escape work. The live replacement route is now:
-
-```text
-absolute canonical source-energy decomposition retaining the arch scalar correction
-  -> canonical one-step domination/coercivity
-  -> global first-bad exclusion.
-```
-
-PR #134's exact `Gamma0*mu(z)=0` product law does not resurrect the dead factorwise route and does not locate the absolute spectral origin.
+**Changed-premise requirement for any apparent revival:** provide an independent canonical arithmetic mechanism — such as a positive Gram/integral representation, exact source cancellation, or sum-of-squares identity — whose premises do not already encode the desired successor positivity or RH-strength conclusion.
 
 **RH remains OPEN.**

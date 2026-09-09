@@ -6,7 +6,7 @@ This document defines what "green", "proved", "validated" and "promoted" mean in
 
 ## Exact object first
 
-For every theorem-bearing PR record the base, PR head, exact synthetic merge checked by GitHub Actions, theorem tree, eventual merged-main commit/tree, and Lean version.
+For every theorem-bearing PR record the base, PR head, exact object checked by GitHub Actions, theorem tree, eventual merged-main commit/tree, and Lean version where relevant.
 
 For control-only PRs record the exact control head/merge tree separately from the last theorem-bearing anchor. A control-only green must not advance theorem authority.
 
@@ -16,7 +16,7 @@ Compiler validity attaches only to the exact object actually checked.
 
 Current theorem/claim gates include:
 
-~~~text
+```text
 python research/RHRC/tools/run_suite.py
 R003 normalization audit / dictionary guards / source-normalization firewall
 R004 scalar-shift invariant audit
@@ -25,7 +25,7 @@ lake build Zeta23.CCM
 lake build Zeta23.ExceptionalZero
 forbidden sorry / project axiom scan
 Permansson independent formal verification
-~~~
+```
 
 A skipped downstream step is not a passed gate.
 
@@ -34,17 +34,42 @@ A skipped downstream step is not a passed gate.
 ## Current theorem/control validation anchors
 
 ```text
-theorem-state anchor = PR #131 merge 436d524d0cdeb5986d76dcbb988f771d19836c55
-validated theorem head = b0026683bcbf233afa947c7f15b57bcc4ddf31e3
-validated theorem tree = 5ad51fd877d51348f1af474b2864eb4ab3e0617a
-RHRC #854 = SUCCESS
-Permansson #627 = SUCCESS
+theorem-state anchor = PR #137 merge fa2f209a6eb8b4059968e8d61239d80588ca256c
+validated theorem head = 64988e142590c82bd0ad43604279ede9a8e85eff
+validated theorem tree = e3de4dc0377f0124832822b6f97ab5bbd7718640
+RHRC #878 = SUCCESS
+Permansson #651 = SUCCESS
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
 ```
 
-The #131 theorem head and merged main have the same theorem tree. PR #117 remains the latest Control-v2 semantic authority because later theorem PRs changed mathematical state but not controller semantics.
+The #137 theorem head and merged main have the same theorem tree. PR #117 remains the latest Control-v2 semantic authority because later theorem PRs changed mathematical state but not the controller capability/authority model.
+
+## Exact #137 gate evidence
+
+At validated theorem head `64988e142590c82bd0ad43604279ede9a8e85eff`, RHRC workflow run #878 completed successfully. Its jobs included:
+
+```text
+python-rhrc                         SUCCESS
+  RHRC claim and regression suite  SUCCESS
+  Control v2 real-history smoke    SUCCESS
+
+r003-normalization-audit            SUCCESS
+  canonical normalization lock      SUCCESS
+  dictionary/source firewalls       SUCCESS
+  R004 shift-invariant audit        SUCCESS
+  external-reference firewall       SUCCESS
+
+lean                               SUCCESS
+  lake build Zeta23.CCM             SUCCESS
+  lake build Zeta23.ExceptionalZero SUCCESS
+  forbidden-placeholder scan        SUCCESS
+```
+
+Permansson workflow run #651 also completed successfully.
+
+The exact #137 umbrella imports include `CanonicalSourcePairing`, `CanonicalOneStepDomination`, and `GlobalFirstBadOneStepDomination`, so these declarations are in the validated build closure.
 
 ## Import/build closure law
 
@@ -52,36 +77,36 @@ A `.lean` file existing in the repository, appearing in a PR, passing the no-pla
 
 A declaration is compiler-validated project theorem authority only if its module lies in the transitive import closure of an exact successful authoritative build, or the module itself was explicitly built by an authoritative successful gate.
 
-PR #103 is the canonical example: `ConstrainedParityGeometry.lean` was imported by `Zeta23.CCM` and compiled; `ParityBadness.lean` was merged but not imported and remained staged source until a later build closure consumed it.
+PR #103 is the canonical historical example: `ConstrainedParityGeometry.lean` was imported by `Zeta23.CCM` and compiled; `ParityBadness.lean` was merged but not imported and remained staged source until a later build closure consumed it.
 
-Current example: PR #131 wires `CanonicalSourceChannels.lean`, `QuadraticNormalMatrixMoment.lean`, `CanonicalSourceMomentAtoms.lean`, and `SourceMomentDecomposition.lean` into the `Zeta23.CCM` umbrella. The exact theorem head passed the CCM build, ExceptionalZero build, no-placeholder gate, RHRC source/normalization checks, and Permansson verification before merge.
+Current example: PR #137 wires `CanonicalSourcePairing.lean` and `CanonicalOneStepDomination.lean` into `Zeta23.CCM`, and `GlobalFirstBadOneStepDomination.lean` into `Zeta23.ExceptionalZero`. Both umbrella targets passed the exact-head build.
 
 ## Axiom inspection
 
 For production-promoted R003 bindings, `ClaimBindings.lean` must contain exact
 
-~~~lean
+```lean
 #check <theorem>
 #print axioms <theorem>
-~~~
+```
 
 The accepted production foundation is `[propext, Classical.choice, Quot.sound]`. No production theorem may depend on `sorryAx` or a promoted project axiom.
 
-Supporting theorem modules may also carry module-local `#print axioms` checks without thereby becoming machine-promoted claims.
+Supporting theorem modules may also carry module-local `#print axioms` checks without thereby becoming machine-promoted claims. PR #137 prints axioms for the headline determinant/sufficiency/global endpoint theorems, but this does not by itself promote them into `CLAIM_REGISTRY.json`.
 
 ## Proof versus promotion
 
 For R003 `PROVED_UNCONDITIONAL`, exact theorem names must agree across:
 
-~~~text
+```text
 CLAIM_REGISTRY.json
 R003_PROMOTED_BINDINGS.json
 Zeta23/CCM/ClaimBindings.lean
-~~~
+```
 
 `promoted_binding_lint.py` enforces set equality, theorem-name equality, and exact #check/#print-axioms presence.
 
-Compiler-PROVED theorem authority beyond the current machine-promoted claim list must not be silently upgraded to `PROVED_UNCONDITIONAL` registry status. PRs #112-#131 contain examples of theorem authority advancing faster than the explicit machine-promotion surface.
+Compiler-PROVED theorem authority beyond the current machine-promoted claim list must not be silently upgraded to `PROVED_UNCONDITIONAL` registry status. PRs #112-#137 contain examples of theorem authority advancing faster than the explicit machine-promotion surface.
 
 ## Control-v2 validation law
 
@@ -96,7 +121,6 @@ Compiler-PROVED theorem authority beyond the current machine-promoted claim list
 - `as_of` Git replay that cannot see future commits;
 - external time-travel replay that requires availability metadata;
 - retro receipts bound to their declared Git search paths;
-- no generic standalone alias flood as an admission-quality deformation-budget search surface;
 - exact sorted contiguous finite-prefix coverage for deformation budgets;
 - no `PRUNE` from a numeric tail without a passed horizon certificate targeting the remaining deformation budget;
 - no decision-bearing reduced-model `PRUNE` without decision commutation when that gate is required;
@@ -105,21 +129,12 @@ Compiler-PROVED theorem authority beyond the current machine-promoted claim list
 
 A Control-v2 recommendation is **not** a theorem, claim promotion, RH evidence, or a substitute for Lean.
 
-## FFBBP v1.6 assurance overlay
-
-The additive `ffbbp/v16_*` modules expose newer assurance contracts. They do not rewrite `FFBBP_REFERENCE.json`, `IMPLEMENTATION_CLOSURE_OVERLAY.json`, or the qualified RUN42C profile. In particular:
-
-- v1.6 theory does not inherit RUN42C operational qualification;
-- diagnostic commutation and decision commutation are separate gates;
-- horizon-bearing use requires a horizon certificate;
-- witness-bearing use requires visibility, perturbation margin and masking clearance.
-
 ## Vocabulary
 
 - **source present** — file exists.
 - **module compiles** — Lean elaborated that module.
 - **umbrella build green** — named target and transitive imports compiled.
-- **PR green** — all required gates for the exact PR merge object succeeded.
+- **PR green** — all required gates for the exact PR object succeeded.
 - **PROVED** — exact statement compiler-validated with acceptable axiom surface.
 - **PROVED_UNCONDITIONAL** — proved theorem additionally registered on the production claim surface.
 - **DERIVED** — straightforward consequence not separately theorem-locked.
@@ -129,7 +144,7 @@ The additive `ffbbp/v16_*` modules expose newer assurance contracts. They do not
 
 ## Post-green synchronization
 
-After every meaningful green result: verify exact evidence; read the proof/control result; compare history; analyze upstream/downstream implications; revisit dead routes; falsify clues; then synchronize registries, active route README, research-lead deltas, CURRENT_RESEARCH_PLAN and public summaries.
+After every meaningful green result: verify exact evidence; read the proof/control result; compare history; analyze upstream/downstream implications; revisit dead routes; falsify clues; then synchronize registries, active route README, research-lead deltas, CURRENT_RESEARCH_PLAN, VALIDATION_PROTOCOL and public summaries.
 
 Historical settlements and provenance snapshots remain historical.
 
@@ -137,6 +152,6 @@ A post-green sync must not rewrite a large historical ledger merely to manufactu
 
 ## Claim firewall
 
-Green supporting mathematics, source interfaces, finite nesting, parity geometry, research-control recommendations, budget diagnostics and numerical agreement are not RH.
+Green supporting mathematics, source interfaces, finite nesting, parity geometry, determinant reductions, research-control recommendations, budget diagnostics and numerical agreement are not RH.
 
 **RH remains OPEN unless the exact terminal RH theorem passes the complete proof and claim-validation gates.**

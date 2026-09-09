@@ -29,9 +29,10 @@ jobs:
           import json
           p = json.load(open('/tmp/RHRC_CONTROL_V2.json'))
           assert p['terminal_claim'] == 'RH_OPEN'
-          assert p['theorem_anchor']['pr'] == 134
+          assert p['theorem_anchor']['pr'] == 137
           assert p['control_anchor']['pr'] == 117
           assert p['theorem_anchor']['merge_commit'] != p['control_anchor']['merge_commit']
+          assert p['route_certificate']['selected_action'] == 'E4_A4_CANONICAL_ONE_STEP_DOMINATION'
           assert p['route_certificate']['theorem_authority'] is False
           assert p['route_certificate']['terminal_claim_change'] is False
           assert all(r['search_paths'] for r in p['retro_receipts'])
