@@ -89,18 +89,19 @@ def regularizedArchScale (x : ℝ) : ℝ :=
 theorem regularizedArchScale_eq_mul_archDensity
     {x : ℝ} (hx : x ≠ 0) :
     regularizedArchScale x = x * archDensity x := by
-  have hs : Real.sinh x ≠ 0 := (Real.sinh_ne_zero).2 hx
-  have hden : Real.exp x - Real.exp (-x) ≠ 0 := by
-    intro h
-    apply hs
-    rw [Real.sinh_eq, h]
-    norm_num
-  rw [regularizedArchScale, archSinhSlope, dslope_of_ne _ hx]
-  unfold slope archDensity
-  simp only [Real.sinh_zero, sub_zero]
-  rw [Real.sinh_eq]
-  field_simp [hx, hden]
-  ring
+  have hslope : x * archSinhSlope x = Real.sinh x := by
+    simpa [archSinhSlope, smul_eq_mul] using
+      sub_smul_dslope Real.sinh 0 x
+  have hden :
+      Real.exp x - Real.exp (-x) = 2 * x * archSinhSlope x := by
+    calc
+      Real.exp x - Real.exp (-x) = 2 * Real.sinh x := by
+        rw [Real.sinh_eq]
+        ring
+      _ = 2 * (x * archSinhSlope x) := by rw [← hslope]
+      _ = 2 * x * archSinhSlope x := by ring
+  rw [regularizedArchScale, archDensity, hden]
+  field_simp [hx, archSinhSlope_ne_zero x] <;> ring
 
 /-- Continuous divided slope of cosine at zero. -/
 def archCosSlope (x : ℝ) : ℝ :=
@@ -152,8 +153,7 @@ theorem regularizedAlphaIntegrand_eq_of_ne
         hL
     rw [regularizedAlphaIntegrand, Real.sinc_of_ne_zero harg,
       regularizedArchScale_eq_mul_archDensity hx]
-    field_simp [hL, hx, hnR, Real.pi_ne_zero]
-    ring
+    field_simp [hL, hx, hnR, Real.pi_ne_zero] <;> ring
 
 /-- Exact rewrite of `alphaL` by the continuous origin-regularized integrand. -/
 theorem alphaL_eq_regularized_integral
@@ -163,17 +163,12 @@ theorem alphaL_eq_regularized_integral
         ∫ x in (0 : ℝ)..L, regularizedAlphaIntegrand n L x := by
   unfold alphaL
   congr 1
-  apply intervalIntegral.integral_congr
+  refine intervalIntegral.integral_congr_uIoo ?_
+  rw [uIoo_of_le hL.le]
   intro x hxint
-  by_cases hx : x = 0
-  · subst x
-    by_cases hn : n = 0
-    · simp [hn, regularizedAlphaIntegrand_zero]
-    · simp [hn, regularizedAlphaIntegrand_zero]
-  · change
-      Real.sin (2 * Real.pi * (n : ℝ) * x / L) * archDensity x =
-        regularizedAlphaIntegrand n L x
-    exact (regularizedAlphaIntegrand_eq_of_ne n hL.ne' hx).symm
+  have hx : x ≠ 0 := ne_of_gt hxint.1
+  simp only [hx, if_false]
+  exact (regularizedAlphaIntegrand_eq_of_ne n hL.ne' hx).symm
 
 private theorem continuous_regularizedAlphaIntegrand_pos_uncurry
     (n : ℤ) :
@@ -245,15 +240,12 @@ theorem betaL_eq_regularized_integral
         ∫ x in (0 : ℝ)..L, regularizedBetaIntegrand n L x := by
   unfold betaL
   congr 1
-  apply intervalIntegral.integral_congr
+  refine intervalIntegral.integral_congr_uIoo ?_
+  rw [uIoo_of_le hL.le]
   intro x hxint
-  by_cases hx : x = 0
-  · subst x
-    simp [regularizedBetaIntegrand_zero]
-  · change
-      x * Real.cos (2 * Real.pi * (n : ℝ) * x / L) * archDensity x =
-        regularizedBetaIntegrand n L x
-    exact (regularizedBetaIntegrand_eq_of_ne n L hx).symm
+  have hx : x ≠ 0 := ne_of_gt hxint.1
+  simp only [hx, if_false]
+  exact (regularizedBetaIntegrand_eq_of_ne n L hx).symm
 
 private theorem continuous_regularizedBetaIntegrand_pos_uncurry
     (n : ℤ) :
@@ -307,10 +299,9 @@ def regularizedSourceEq411LhsIntegrand (n : ℤ) (L x : ℝ) : ℝ :=
 @[simp] theorem regularizedSourceEq411LhsIntegrand_zero
     (n : ℤ) (L : ℝ) :
     regularizedSourceEq411LhsIntegrand n L 0 = 1 / 4 := by
-  rw [regularizedSourceEq411LhsIntegrand, archCosSlope, archExpSlope,
-    dslope_same, dslope_same, (Real.hasDerivAt_cos 0).deriv,
-    (Real.hasDerivAt_exp 0).deriv, regularizedArchScale_zero]
-  norm_num
+  simp [regularizedSourceEq411LhsIntegrand, archCosSlope, archExpSlope,
+    regularizedArchScale_zero, (Real.hasDerivAt_cos 0).deriv,
+    (Real.hasDerivAt_exp 0).deriv] <;> ring
 
 /-- Away from the origin the gamma regularization is exactly the production
 left-hand integrand. -/
@@ -446,19 +437,44 @@ theorem continuous_sourceEq44ArchComponent_pos
 theorem continuous_poleComponent_pos
     (n m : ℤ) :
     Continuous (fun L : Ioi (0 : ℝ) => poleComponent n m (L : ℝ)) := by
-  rw [continuous_iff_continuousAt]
-  intro L
-  have hm :
-      (L : ℝ) ^ 2 + 16 * Real.pi ^ 2 * (m : ℝ) ^ 2 ≠ 0 := by
+  have hval : Continuous (fun L : Ioi (0 : ℝ) => (L : ℝ)) :=
+    continuous_subtype_val
+  have hsinh :
+      Continuous (fun L : Ioi (0 : ℝ) => Real.sinh ((L : ℝ) / 4)) :=
+    Real.continuous_sinh.comp (hval.div_const 4)
+  have hnum :
+      Continuous
+        (fun L : Ioi (0 : ℝ) =>
+          32 * (L : ℝ) * Real.sinh ((L : ℝ) / 4) ^ 2 *
+            ((L : ℝ) ^ 2 - 16 * Real.pi ^ 2 * ((m * n : ℤ) : ℝ))) :=
+    ((continuous_const.mul hval).mul (hsinh.pow 2)).mul
+      ((hval.pow 2).sub continuous_const)
+  have hmcont :
+      Continuous
+        (fun L : Ioi (0 : ℝ) =>
+          (L : ℝ) ^ 2 + 16 * Real.pi ^ 2 * (m : ℝ) ^ 2) :=
+    (hval.pow 2).add continuous_const
+  have hncont :
+      Continuous
+        (fun L : Ioi (0 : ℝ) =>
+          (L : ℝ) ^ 2 + 16 * Real.pi ^ 2 * (n : ℝ) ^ 2) :=
+    (hval.pow 2).add continuous_const
+  have hmne :
+      ∀ L : Ioi (0 : ℝ),
+        (L : ℝ) ^ 2 + 16 * Real.pi ^ 2 * (m : ℝ) ^ 2 ≠ 0 := by
+    intro L
     have hLsq : 0 < (L : ℝ) ^ 2 := sq_pos_of_pos L.property
     positivity
-  have hn :
-      (L : ℝ) ^ 2 + 16 * Real.pi ^ 2 * (n : ℝ) ^ 2 ≠ 0 := by
+  have hnne :
+      ∀ L : Ioi (0 : ℝ),
+        (L : ℝ) ^ 2 + 16 * Real.pi ^ 2 * (n : ℝ) ^ 2 ≠ 0 := by
+    intro L
     have hLsq : 0 < (L : ℝ) ^ 2 := sq_pos_of_pos L.property
     positivity
   unfold poleComponent
   dsimp only
-  fun_prop (disch := assumption)
+  exact hnum.div (hmcont.mul hncont)
+    (fun L => mul_ne_zero (hmne L) (hnne L))
 
 /-- The physical source coordinate of one frozen prime-power atom varies
 continuously with positive aperture. -/
@@ -568,11 +584,13 @@ theorem continuousOn_canonicalSourceMatrix_apply_fixedCell
   have hpole :
       ContinuousOn (fun L : ℝ => (poleComponent n m L : ℂ))
         (fixedCanonicalCutoffCell Q) := by
-    simpa using Complex.continuous_ofReal.comp_continuousOn hpoleReal
+    simpa only [Function.comp_apply] using
+      Complex.continuous_ofReal.comp_continuousOn hpoleReal
   have harch :
       ContinuousOn (fun L : ℝ => (sourceEq44ArchComponent n m L : ℂ))
         (fixedCanonicalCutoffCell Q) := by
-    simpa using Complex.continuous_ofReal.comp_continuousOn harchReal
+    simpa only [Function.comp_apply] using
+      Complex.continuous_ofReal.comp_continuousOn harchReal
   have hfrozen :
       ContinuousOn
         (fun L : ℝ => frozenCanonicalPrimeMatrix Q L K i j)
