@@ -34,21 +34,21 @@ A skipped downstream step is not a passed gate.
 ## Current theorem/control validation anchors
 
 ```text
-theorem-state anchor = PR #137 merge fa2f209a6eb8b4059968e8d61239d80588ca256c
-validated theorem head = 64988e142590c82bd0ad43604279ede9a8e85eff
-validated theorem tree = e3de4dc0377f0124832822b6f97ab5bbd7718640
-RHRC #878 = SUCCESS
-Permansson #651 = SUCCESS
+theorem-state anchor = PR #140 merge fa96196b5bd6ed754853b0bdacee1dbd2356022f
+validated theorem head = 77b52cfc73dfd83d2a0ed4373befba97d77e48e5
+validated theorem tree = 2015404927540ae79a64469af82813463694b71d
+RHRC #882 = SUCCESS
+Permansson #655 = SUCCESS
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
 ```
 
-The #137 theorem head and merged main have the same theorem tree. PR #117 remains the latest Control-v2 semantic authority because later theorem PRs changed mathematical state but not the controller capability/authority model.
+The #140 validated theorem head and merged main have the same tree. PR #117 remains the latest Control-v2 semantic authority because #140 changes mathematical state, not the controller capability/authority model.
 
-## Exact #137 gate evidence
+## Exact #140 gate evidence
 
-At validated theorem head `64988e142590c82bd0ad43604279ede9a8e85eff`, RHRC workflow run #878 completed successfully. Its jobs included:
+At validated theorem head `77b52cfc73dfd83d2a0ed4373befba97d77e48e5`, RHRC workflow run #882 completed successfully. Its jobs included:
 
 ```text
 python-rhrc                         SUCCESS
@@ -67,9 +67,30 @@ lean                               SUCCESS
   forbidden-placeholder scan        SUCCESS
 ```
 
-Permansson workflow run #651 also completed successfully.
+Permansson workflow run #655 also completed successfully.
 
-The exact #137 umbrella imports include `CanonicalSourcePairing`, `CanonicalOneStepDomination`, and `GlobalFirstBadOneStepDomination`, so these declarations are in the validated build closure.
+The exact #140 umbrella imports include `CanonicalApertureRegularityScaffold` in `Zeta23.CCM` and `ApertureFreedom` in `Zeta23.ExceptionalZero`, so those declarations lie in the validated build closure.
+
+## What #140 validates
+
+Compiler-validated theorem authority now includes:
+
+```text
+Zeta23.ExceptionalZero.eventually_all_apertures_have_negativeCanonicalSourceWitness_of_offLine_zero
+Zeta23.ExceptionalZero.eventually_all_apertures_have_negativeCanonicalSourceWitness_of_exists_offLine_zero
+Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero
+Zeta23.ExceptionalZero.eventually_all_apertures_have_globalFirstBad_of_offLine_zero
+
+Zeta23.CCM.intrinsicPredecessorRegular_iff_injective
+Zeta23.CCM.existsUnique_intrinsicPredecessorBlock_preimage_of_regular
+Zeta23.CCM.existsUnique_cubicZeroShiftPreimage_of_regular
+Zeta23.CCM.frozenCanonicalPrimeMatrix_eq_canonicalPrimeMatrix
+Zeta23.CCM.primeSourceCoordinate_log_self
+Zeta23.CCM.sourceMatrix_primeSourceCoordinate_log_self
+Zeta23.CCM.neg_two_wCorrection_eq_neg_log_add_remainder
+```
+
+These theorems establish aperture freedom and algebraic/frozen-source interfaces. They do **not** establish dense regularity, full aperture analyticity, successor positivity, negative-root exclusion, or RH.
 
 ## Import/build closure law
 
@@ -77,9 +98,9 @@ A `.lean` file existing in the repository, appearing in a PR, passing the no-pla
 
 A declaration is compiler-validated project theorem authority only if its module lies in the transitive import closure of an exact successful authoritative build, or the module itself was explicitly built by an authoritative successful gate.
 
-PR #103 is the canonical historical example: `ConstrainedParityGeometry.lean` was imported by `Zeta23.CCM` and compiled; `ParityBadness.lean` was merged but not imported and remained staged source until a later build closure consumed it.
+PR #103 remains the canonical historical example: `ConstrainedParityGeometry.lean` was imported by `Zeta23.CCM` and compiled; `ParityBadness.lean` was merged but not imported and remained staged source until a later build closure consumed it.
 
-Current example: PR #137 wires `CanonicalSourcePairing.lean` and `CanonicalOneStepDomination.lean` into `Zeta23.CCM`, and `GlobalFirstBadOneStepDomination.lean` into `Zeta23.ExceptionalZero`. Both umbrella targets passed the exact-head build.
+Current example: PR #140 wires `CanonicalApertureRegularityScaffold.lean` into `Zeta23.CCM` and `ApertureFreedom.lean` into `Zeta23.ExceptionalZero`; both umbrella targets passed the exact-head build.
 
 ## Axiom inspection
 
@@ -92,7 +113,7 @@ For production-promoted R003 bindings, `ClaimBindings.lean` must contain exact
 
 The accepted production foundation is `[propext, Classical.choice, Quot.sound]`. No production theorem may depend on `sorryAx` or a promoted project axiom.
 
-Supporting theorem modules may also carry module-local `#print axioms` checks without thereby becoming machine-promoted claims. PR #137 prints axioms for the headline determinant/sufficiency/global endpoint theorems, but this does not by itself promote them into `CLAIM_REGISTRY.json`.
+Supporting theorem modules may also carry module-local `#print axioms` checks without thereby becoming machine-promoted claims. PR #140 prints axioms for the aperture-freedom and regularity scaffold headline theorems; this does not by itself promote them into `CLAIM_REGISTRY.json`.
 
 ## Proof versus promotion
 
@@ -106,7 +127,7 @@ Zeta23/CCM/ClaimBindings.lean
 
 `promoted_binding_lint.py` enforces set equality, theorem-name equality, and exact #check/#print-axioms presence.
 
-Compiler-PROVED theorem authority beyond the current machine-promoted claim list must not be silently upgraded to `PROVED_UNCONDITIONAL` registry status. PRs #112-#137 contain examples of theorem authority advancing faster than the explicit machine-promotion surface.
+Compiler-PROVED theorem authority beyond the current machine-promoted claim list must not be silently upgraded to `PROVED_UNCONDITIONAL` registry status. PR #140 is another example of theorem authority advancing without a corresponding automatic machine-claim promotion.
 
 ## Control-v2 validation law
 
@@ -144,14 +165,14 @@ A Control-v2 recommendation is **not** a theorem, claim promotion, RH evidence, 
 
 ## Post-green synchronization
 
-After every meaningful green result: verify exact evidence; read the proof/control result; compare history; analyze upstream/downstream implications; revisit dead routes; falsify clues; then synchronize registries, active route README, research-lead deltas, CURRENT_RESEARCH_PLAN, VALIDATION_PROTOCOL and public summaries.
+After every meaningful green result: verify exact evidence; read the proof/control result; compare history; analyze upstream/downstream implications; revisit dead routes; falsify clues; then synchronize registries, active route README, research-lead deltas, `CURRENT_RESEARCH_PLAN`, `VALIDATION_PROTOCOL` and public summaries.
 
 Historical settlements and provenance snapshots remain historical.
 
-A post-green sync must not rewrite a large historical ledger merely to manufacture currentness when the documented authority law permits a new dated delta to supersede it. In that case, the living README/plan/route/control documents must point to the new delta explicitly.
+A post-green sync must not rewrite a large historical ledger merely to manufacture currentness when the documentation law permits a new dated delta to supersede it. In that case, the living README/plan/route/control documents must point to the new delta explicitly.
 
 ## Claim firewall
 
-Green supporting mathematics, source interfaces, finite nesting, parity geometry, determinant reductions, research-control recommendations, budget diagnostics and numerical agreement are not RH.
+Green supporting mathematics, aperture freedom, regularity interfaces, source normalization, finite nesting, parity geometry, determinant reductions, research-control recommendations, budget diagnostics and numerical agreement are not RH.
 
 **RH remains OPEN unless the exact terminal RH theorem passes the complete proof and claim-validation gates.**

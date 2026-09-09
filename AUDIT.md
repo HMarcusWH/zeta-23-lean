@@ -1,24 +1,24 @@
-# RHRC formal audit — theorem authority through PR #137; post-#138 research frontier rerouted
+# RHRC formal audit — theorem authority through PR #140; fixed-cell A4R frontier
 
 > **RH remains OPEN.**
 
 ## Current authority split
 
 ```text
-live main after merged PR #138 = ebf289bdfdde69020bee0d1571047f155e5de4db
-live main tree = d26cd83709437260d0a16630d90c73a93f64c975
+live main after merged PR #140 = fa96196b5bd6ed754853b0bdacee1dbd2356022f
+live main tree = 2015404927540ae79a64469af82813463694b71d
 
-theorem-state anchor = PR #137 merge fa2f209a6eb8b4059968e8d61239d80588ca256c
-validated theorem head = 64988e142590c82bd0ad43604279ede9a8e85eff
-validated theorem tree = e3de4dc0377f0124832822b6f97ab5bbd7718640
-RHRC #878 = SUCCESS
-Permansson #651 = SUCCESS
+theorem-state anchor = PR #140 merge fa96196b5bd6ed754853b0bdacee1dbd2356022f
+validated theorem head = 77b52cfc73dfd83d2a0ed4373befba97d77e48e5
+validated theorem tree = 2015404927540ae79a64469af82813463694b71d
+RHRC #882 = SUCCESS
+Permansson #655 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
 ```
 
-Live GitHub head + exact compiler/CI evidence outrank this prose. PR #138 and this research synchronization do not advance theorem authority.
+Live GitHub head + exact compiler/CI evidence outrank this prose.
 
 ## Exact theorem-state progression
 
@@ -38,137 +38,156 @@ Live GitHub head + exact compiler/CI evidence outrank this prose. PR #138 and th
 Delta(w)=q_c*q_A(w)-|<w,b>|^2.
 ```
 
+Also PROVED: conditional domination sufficiency, kernel/range zero-shift consequences, `Re S0>=0` under domination plus predecessor nonnegativity, no safe negative explicit root under domination, exact domination-failure disjunction, and the global off-line-zero sign-failure countercertificate.
+
+### PR #140 — aperture freedom and regularity scaffold
+
+**PROVED:**
+
+```text
+off-line zero
+  -> exists L0>0
+  -> for every L>L0, a finite boundary-flat canonical negative witness exists.
+```
+
 Also PROVED:
 
 ```text
-Az=0 and Delta(z)>=0 -> shell coupling vanishes
-canonicalOneStepDomination -> shell coupling in range A
-canonicalOneStepDomination + predecessor nonnegativity -> Re S0>=0
-canonicalOneStepDomination -> no safe negative explicit Schur root
-not canonicalOneStepDomination <-> q_c<0 OR exists w, Delta(w)<0
-off-line zero -> one global-first-bad state satisfying that sign-failure disjunction.
+every sufficiently large L -> some AnyParityBad(L,N)
+every sufficiently large L -> freshly selectable least global-first-bad Nstar
 ```
 
-No theorem proves `canonicalOneStepDomination`, universal determinant sign, unconditional negative-root exclusion, or RH.
-
-## Post-#138 independent research audit
-
-An Astra review reconstructed the state from approximately #132 through merged #138, read the relevant theorem surface, and challenged the roadmap rather than the Lean validity.
-
-The most important **DERIVED** correction is:
+and the exact regularity/frozen-source interfaces:
 
 ```text
-A>=0 and dim(shell)=1:
-q_c>=0 AND forall w, Delta(w)>=0
-  <-> successor one-step quadratic form is nonnegative.
+IntrinsicPredecessorRegular <-> injective intrinsicPredecessorBlock
+regular predecessor -> unique preimage of every target
+regular predecessor -> unique cubic zero-shift preimage
+floor(exp L)=Q -> frozenCanonicalPrimeMatrix Q L K = canonicalPrimeMatrix L K
+L=log q -> entering source atom matrix is exactly zero
+-2*wCorrection(L) = -log(L) + canonicalApertureScalarRemainder(L), L>0.
 ```
 
-The universal determinant theorem is therefore a valid closing theorem but not presently a reduced RH subproblem.
+No theorem proves the analytic determinant-nonidentity step, dense regular apertures, the final regular Schur sign, negative-root exclusion, or RH.
 
-## New active reduction — regular-aperture selection
+## Post-#140 research correction
 
-The immediate research theorem is now:
+The most important structural change is not a new positivity statement. It is the aperture quantifier.
 
-> Move every strict finite canonical negative witness to an arbitrarily nearby positive aperture, preserving negativity, so that all finitely relevant predecessor parity blocks are positive definite; then reselect the global first-bad state at the moved aperture.
+Because an off-line zero now forces fresh finite negativity at every sufficiently large aperture, A4R no longer has to move one old finite witness through an unknown global regularity problem.
 
-Candidate analytic mechanism:
+The preferred reduction is:
 
 ```text
-frozen prime cutoff Q
-M_Q(L) = -log(L) I + B_Q(L)
-L = exp(z)
-periodic log-lift remainder
-finite characteristic-polynomial root count
--> determinant nonidentity
--> dense simultaneous regular apertures.
+choose one large frozen cutoff cell
+-> invoke #140 inside the cell
+-> learn a finite witness size N
+-> preserve that one strict negative value locally
+-> regularize only finitely many predecessor blocks up to N in both parities
+-> reselect global first-bad.
 ```
 
-This is a LEAD, not a theorem.
+This makes countable all-size Baire avoidance unnecessary for the primary route.
 
-Required obligations are explicit: exact scalar coefficient, frozen-cutoff analyticity, physical threshold continuity, basis/Gram correctness, simultaneous avoidance in both parities and finitely many sizes, preservation of the negative witness, fresh first-bad reselection, and exact predecessor-compression identification.
+## Active A4R1 theorem
 
-## Smallest remaining obstruction after a successful A4R theorem
-
-With predecessor `A>0`,
+Choose `Q` large and work strictly inside
 
 ```text
-x0 = A^-1 b
-u0 = c - A^-1 b
-S0 = q_c - <b,A^-1 b>.
+log Q < L < log(Q+1).
 ```
 
-Existing theorem ingredients identify the forced regular trial energy with the negative endpoint:
+The prime cutoff is constant on the cell. The next proof obligations are:
 
 ```text
-Ecanonical(u0) = Re S0 < 0.
+1. continuity of fixed finite canonical energy in L on the cell;
+2. analytic/holomorphic representation of the actual projected predecessor;
+3. determinant nonidentity for each fixed parity/size;
+4. dense regularity for each fixed block;
+5. finite simultaneous avoidance through a prescribed M;
+6. compose with #140 negativity and fresh first-bad reselection.
 ```
 
-The decisive arithmetic target becomes
+The #140 real-axis `-log(L)` scalar coefficient is already theorem-backed. The unresolved analytic part is the full production predecessor remainder, especially the archimedean channel.
+
+The old dictionary/gamma bridge is therefore resurrected as a likely analytic input rather than rebuilding the continuation from raw interval integrals.
+
+## Candidate determinant nonidentity argument
+
+The proposed log-cover representation is
 
 ```text
-Ecanonical(c - A^-1 b) >= 0
+Ahat(z) = -z I + Rhat(z)
+Rhat(z+2*pi*i)=Rhat(z).
 ```
 
-on the exact forced regular first-bad trial, equivalently
+If `det Ahat` vanished identically, periodicity would force one fixed `d x d` matrix to have `d+1` distinct eigenvalues differing by `2*pi*i`, impossible.
+
+This is a **LEAD / HYPOTHESIS** until the exact production continuation is theoremized. The invalid shortcut `A(exp z)=-zI+periodic` without a genuine log-cover continuation remains forbidden.
+
+## Smallest remaining obstruction after successful A4R1
+
+At the reselected first-bad state:
 
 ```text
-<b,A^-1 b> <= q_c.
+A>=0                    from first-bad minimality
+A injective             from A4R1
+unique x0 with A x0=b   from #140 regularity scaffold
+u0=c-x0.
 ```
 
-This scalar observable is smaller than universal domination but is not yet proved easier. Its sign remains substantial new mathematics.
-
-## Derived observations preserved from the audit
-
-These are not new Lean authority:
+The intended forced countercertificate is
 
 ```text
-k=P_(ker A)b
-Delta(k)=-||k||^4
+Ecanonical(u0)=Re S0<0.
 ```
 
-and a root-selected determinant identity for `w_lambda=(A-lambda I)^-1b`.
-
-The review also reports an exact correction-vector proportionality
+The decisive arithmetic target remains
 
 ```text
-d = -(6/(2*N-1)) a
+Ecanonical(c-x0)>=0
 ```
 
-with exact rational finite checks. Formalization is optional cleanup, not the current blocker.
+on the exact forced regular first-bad trial, equivalently `<b,A^-1b><=q_c` once inverse shorthand is justified.
 
-## Falsification state
+This is substantial new mathematics and cannot be obtained by assuming successor PSD under another name.
 
-The external audit reports:
+## Preserved derived/falsification state
 
-- a negative leading coefficient in the elementary source-atom two-vector determinant, so atomwise positive determinant/SOS is not a credible default route;
-- sampled canonical positive Schur endpoints arising from cancellation ratios as large as approximately `6.46e20`;
-- modified prime-weight experiments where relative `1e-8` changes can flip successor sign while predecessors stay positive.
+- **DERIVED:** under predecessor PSD and one-dimensional shell, universal `q_c>=0` plus `Delta(w)>=0` is equivalent to successor positivity.
+- **DERIVED:** `Delta(P_kerA b)=-||P_kerA b||^4`.
+- **DERIVED / external exact-check:** `d=-(6/(2*N-1))a` for the two correction vectors.
+- **DERIVED / external symbolic:** negative leading source-atom determinant coefficient rules out atomwise positive determinant/SOS as a default route.
+- **EXPERIMENTAL SIGNAL:** canonical Schur endpoints can arise from extreme prime/arch/scalar cancellation.
+- **EXPERIMENTAL SIGNAL:** tiny modified prime-weight perturbations can flip successor sign while predecessors stay positive.
 
-These are **DERIVED/external symbolic** or **EXPERIMENTAL SIGNAL** as documented in `countermodels/POST_138_ASTRA_DIAGNOSTICS_2026_09_09.md`. They are not canonical RH counterexamples and are not theorem evidence.
+These are not canonical RH counterexamples and are not theorem authority.
 
 ## Current execution order
 
 ```text
-1. regular-aperture/log-lift selection
-2. package one regular first-bad source countercertificate
-3. interval/symbolic analysis of the full minimizing-trial Schur remainder
-4. derive an independent exact prime/arch/scalar remainder or inequality
-5. formalize regular canonical Schur-energy nonnegativity
-6. compose with forced Re S0<0
-7. explicit Mathlib RiemannHypothesis wrapper
+1. fixed-cell finite regularization: continuity + analytic predecessor + determinant nonidentity
+2. finite simultaneous regular-aperture selection through a prescribed horizon
+3. compose with #140 aperture freedom and fresh first-bad reselection
+4. package one regular first-bad source countercertificate
+5. interval/symbolic analysis of the full minimizing-trial Schur remainder
+6. derive an independent exact prime/arch/scalar remainder or inequality
+7. formalize regular canonical Schur-energy nonnegativity
+8. compose with forced Re S0<0
+9. explicit Mathlib RiemannHypothesis wrapper
 ```
 
-Universal `q_c/Delta` domination is retained as a broad fallback if an independently positive canonical source mechanism is discovered.
+Universal `q_c/Delta` domination remains a broad fallback if an independently positive canonical source mechanism is discovered.
 
 ## Permanent firewalls
 
 - compiler/CI validity is authoritative; repository presence alone is not;
-- theorem authority remains #137;
-- external research reviews do not promote claims;
+- theorem authority is through #140 and no further;
+- aperture freedom is PROVED, dense regular-aperture selection is OPEN;
 - regularity is not positivity;
+- all-size Baire regularization is not required unless finite-cell selection fails for a theoremized reason;
 - universal determinant positivity cannot count as a reduction if it merely restates successor PSD;
-- atomwise source positivity is not available;
-- no `A^-1` at zero before regularity;
+- no `A^-1` at zero before regularity; formal code should prefer the unique-preimage interface;
 - D is algebraic, not unitary/isometric;
 - no division by unproved transfer/source factors;
 - modified-source or generic countermodels are not zeta counterexamples;
@@ -176,6 +195,6 @@ Universal `q_c/Delta` domination is retained as a broad fallback if an independe
 - machine claim promotion remains separate;
 - RH remains OPEN.
 
-Newest research implications: `research/RHRC/RESEARCH_LEADS_POST_138_ASTRA_DELTA.md`.
+Newest research implications: `research/RHRC/RESEARCH_LEADS_POST_140_APERTURE_FREEDOM_DELTA.md`.
 
 **RH remains OPEN.**
