@@ -584,13 +584,17 @@ theorem continuousOn_canonicalSourceMatrix_apply_fixedCell
   have hpole :
       ContinuousOn (fun L : ℝ => (poleComponent n m L : ℂ))
         (fixedCanonicalCutoffCell Q) := by
-    simpa only [Function.comp_apply] using
-      Complex.continuous_ofReal.comp_continuousOn hpoleReal
+    change ContinuousOn
+      (Complex.ofReal ∘ fun L : ℝ => poleComponent n m L)
+      (fixedCanonicalCutoffCell Q)
+    exact Complex.continuous_ofReal.comp_continuousOn hpoleReal
   have harch :
       ContinuousOn (fun L : ℝ => (sourceEq44ArchComponent n m L : ℂ))
         (fixedCanonicalCutoffCell Q) := by
-    simpa only [Function.comp_apply] using
-      Complex.continuous_ofReal.comp_continuousOn harchReal
+    change ContinuousOn
+      (Complex.ofReal ∘ fun L : ℝ => sourceEq44ArchComponent n m L)
+      (fixedCanonicalCutoffCell Q)
+    exact Complex.continuous_ofReal.comp_continuousOn harchReal
   have hfrozen :
       ContinuousOn
         (fun L : ℝ => frozenCanonicalPrimeMatrix Q L K i j)
