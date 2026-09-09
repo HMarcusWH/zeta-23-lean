@@ -1,18 +1,18 @@
 # R003 — CCM / finite Weil bridge
 
-Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #137. POST-#138 RESEARCH FRONTIER = REGULAR-APERTURE SELECTION, THEN REGULAR CANONICAL SCHUR-ENERGY SIGN. RH OPEN.**
+Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #140. CURRENT FRONTIER = FIXED-CELL FINITE REGULAR-APERTURE SELECTION, THEN REGULAR CANONICAL SCHUR-ENERGY SIGN. RH OPEN.**
 
 ## Current authority split
 
 ```text
-live main after merged PR #138 = ebf289bdfdde69020bee0d1571047f155e5de4db
-live main tree = d26cd83709437260d0a16630d90c73a93f64c975
+live main after merged PR #140 = fa96196b5bd6ed754853b0bdacee1dbd2356022f
+live main tree = 2015404927540ae79a64469af82813463694b71d
 
-theorem-state anchor = PR #137 merge fa2f209a6eb8b4059968e8d61239d80588ca256c
-validated theorem head = 64988e142590c82bd0ad43604279ede9a8e85eff
-validated theorem tree = e3de4dc0377f0124832822b6f97ab5bbd7718640
-RHRC #878 = SUCCESS
-Permansson #651 = SUCCESS
+theorem-state anchor = PR #140 merge fa96196b5bd6ed754853b0bdacee1dbd2356022f
+validated theorem head = 77b52cfc73dfd83d2a0ed4373befba97d77e48e5
+validated theorem tree = 2015404927540ae79a64469af82813463694b71d
+RHRC #882 = SUCCESS
+Permansson #655 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
@@ -37,9 +37,13 @@ one-step determinant/channel formula                             PROVED / #137
 domination -> zero-shift preimage + endpoint >=0                 PROVED / #137 CONDITIONAL
 domination -> no safe negative explicit Schur root               PROVED / #137 CONDITIONAL
 off-line zero -> q_c<0 OR exists Delta<0                        PROVED / #137
+eventual negative witness at every sufficiently large aperture   PROVED / #140
+eventual AnyParityBad + fresh global-first-bad selection         PROVED / #140
+actual predecessor det!=0 <-> injective + unique preimage        PROVED / #140
+frozen prime-cell equality + threshold zero + scalar -log split  PROVED / #140
 ```
 
-## Exact #136/#137 objects
+## Exact #136/#137 block objects
 
 For the canonical one-step block:
 
@@ -64,9 +68,9 @@ forall w, Delta(w) >= 0.
 
 It is a proposition/certificate, not a proved property of the canonical source.
 
-## Post-#138 route correction
+## Post-#140 route correction
 
-The independent Astra audit sharpens the post-#137 circularity warning:
+The post-#138 circularity result still stands:
 
 ```text
 A>=0 and one-dimensional shell:
@@ -74,52 +78,129 @@ canonicalOneStepDomination
   <-> successor one-step quadratic form is nonnegative.
 ```
 
-Universal A4b2b therefore remains a correct sufficient closing theorem but is not presently a smaller subproblem.
+#140 then changes the aperture-selection quantifiers:
 
-The R003 active route now attempts to remove only singular predecessor geometry before spending arithmetic effort on the final regular scalar.
+```text
+off-line zero
+  -> finite negative canonical witness at every sufficiently large aperture.
+```
 
-## Current route — A4R regular-aperture selection
+Therefore the active route should choose a convenient frozen cutoff cell **before** choosing the final finite witness.
+
+## A4R0 — aperture freedom and regularity scaffold
+
+**PROVED / #140.**
+
+The new theorem modules supply:
+
+```text
+ApertureFreedom.lean
+  every sufficiently large aperture has a finite negative witness
+  every sufficiently large aperture has AnyParityBad
+  every sufficiently large aperture admits a fresh least global-first-bad
+
+CanonicalApertureRegularityScaffold.lean
+  predecessor determinant nonzero <-> injective
+  regular predecessor -> unique target preimage
+  regular predecessor -> unique cubic zero-shift preimage
+  frozen prime matrix equality on floor(exp L)=Q cells
+  threshold source atom equals zero at L=log q
+  exact real-axis -log(L) scalar extraction.
+```
+
+These are interfaces, not the dense regularity theorem.
+
+## Current route — A4R1 fixed-cell finite regularization
 
 **OPEN / PRIMARY REDUCTION TARGET.**
 
-Prove that a strict finite canonical negative witness can be moved to an arbitrarily nearby positive aperture such that:
-
-- the same witness remains negative before reselection;
-- every finitely relevant predecessor block in both parities is injective/positive definite;
-- the global first-bad index is selected again at the new aperture.
-
-Candidate mechanism:
+Choose a large integer `Q` and work strictly inside
 
 ```text
-freeze prime cutoff Q
-M_Q(L) = -log(L) I + B_Q(L)
-L = exp(z)
-periodic Bhat_Q(z)
-characteristic-polynomial root count
--> determinant nonidentity
--> dense regular apertures.
+log Q < L < log(Q+1).
 ```
 
-Acceptance requires the exact production source, not a toy family. In particular prove frozen-cutoff analyticity, threshold continuity, fixed-basis/Gram correctness, simultaneous finite avoidance and the exact predecessor-compression bridge.
+The cutoff is constant throughout this cell. Then:
+
+```text
+choose interior L1
+-> #140 gives finite N,u with Ecanonical(L1,N,u)<0
+-> prove continuity for this fixed N,u
+-> obtain a neighborhood J where the same u remains negative
+-> prove each fixed intrinsic predecessor determinant has dense nonzero set
+-> intersect only both parities and 1<=k<=N
+-> choose L2 in J with those finitely many regular predecessors
+-> preserve the same negative witness
+-> freshly reselect global first-bad at L2.
+```
+
+Because the preserved negative witness is still bad at size `N`, the reselected first-bad size is at most `N`; the finite regularity horizon therefore covers the reselected state.
+
+### What this removes from the primary route
+
+- no countable all-size Baire theorem;
+- no threshold crossing during the regularizing move;
+- no assumption that the old least-bad index persists.
+
+Countable/Baire regularization is retained only as fallback if the finite-cell route fails for a theoremized reason.
+
+## Fixed-block analytic target
+
+For each fixed `Q,p,N`, work on the determinant of the actual projected predecessor block.
+
+The desired theorem chain is:
+
+```text
+full frozen production predecessor admits suitable complex/log-cover continuation
+-> Ahat(z)=-z I+Rhat(z)
+-> Rhat(z+2*pi*i)=Rhat(z)
+-> determinant is not identically zero
+-> regular real apertures are dense in the cutoff cell.
+```
+
+The #140 theorem already validates the scalar real-axis `-log(L)` contribution in `wCorrection`. The unresolved step is the full projected-block remainder.
+
+The archimedean channel is the main analytic hazard. Before building new raw integral analyticity, inspect and reuse:
+
+```text
+DictionaryArchPhysical.lean
+DictionaryArchBridge.lean
+GammaFacts/Mu.lean
+```
+
+The old dictionary/digamma bridge is a **RESURRECTED LEAD** because #140 makes aperture analyticity newly central.
+
+The invalid shortcut that treats physical `A(exp z)` as simultaneously periodic and equal to `-zI+periodic` without a genuine log-cover continuation remains forbidden.
 
 ## Next route — regular canonical Schur-energy sign
 
-If A4R succeeds, both predecessor blocks are positive definite and the forced first-bad state has
+If A4R1 succeeds, the reselected first-bad state has predecessor nonnegativity from minimality and injectivity from regularization. #140 then supplies a unique `x0` with
 
 ```text
-x0 = A^-1 b
-u0 = c - A^-1 b
-S0 = q_c - <b,A^-1 b>
+A x0 = b.
+```
+
+Use this unique-preimage interface in Lean rather than making inverse notation load-bearing.
+
+Set
+
+```text
+u0 = c - x0.
+```
+
+The intended packaged forced countercertificate is
+
+```text
 Ecanonical(u0) = Re S0 < 0.
 ```
 
 The decisive arithmetic target becomes
 
 ```text
-Ecanonical(c - A^-1 b) >= 0
+Ecanonical(c-x0) >= 0
 ```
 
-on that exact forced regular trial, equivalently
+on that exact forced regular trial, equivalently in inverse shorthand
 
 ```text
 <b,A^-1b> <= q_c.
@@ -127,16 +208,16 @@ on that exact forced regular trial, equivalently
 
 This theorem must use exact canonical prime/arch/scalar interaction. An auxiliary positive form whose positivity is equivalent to successor PSD is circular.
 
-## Preserved derived geometry
+## Preserved derived geometry and diagnostics
 
-The post-#138 audit records, not yet as new Lean authority:
+The post-#138 audit records, not as new Lean authority:
 
 ```text
 k = P_(ker A)b
 Delta(k) = -||k||^4
 ```
 
-and an explicit determinant formula for `w_lambda=(A-lambda I)^-1b` at the safe negative root.
+and an explicit determinant formula for the root-selected predecessor vector at a safe negative root.
 
 It also reports
 
@@ -144,16 +225,16 @@ It also reports
 d = -(6/(2*N-1)) a
 ```
 
-for the two #134 correction vectors, supported by exact rational checks. This should prevent investment in false independence arguments.
+for the two #134 correction vectors, supported by exact rational checks.
 
-## Discovery/falsification constraints
+Discovery constraints remain:
 
-- reported negative leading source-atom determinant coefficient: do not default to atomwise positive determinant/SOS;
-- reported canonical Schur cancellation ratios around `6.46e20` in a small sample: coarse independent channel majorants require exceptional justification;
-- reported `1e-8` modified prime-weight sensitivity: exact arithmetic coefficients matter sharply;
+- negative leading source-atom determinant coefficient: do not default to atomwise positive determinant/SOS;
+- extreme sampled canonical Schur cancellation: independent channel majorants require exceptional justification;
+- modified prime-weight sensitivity: exact arithmetic coefficients matter sharply;
 - all such findings are DERIVED/external or EXPERIMENTAL, not theorem authority.
 
-The preferred discovery observable after A4R is the **full minimizing-trial Schur remainder** on `u0`, including exact mixed channel cancellation and prime-weight sensitivities.
+The preferred discovery observable after A4R1 is the **full minimizing-trial Schur remainder** on `u0`, simplified using `A x0=b` before inequalities are attempted.
 
 ## Universal domination fallback
 
@@ -163,17 +244,19 @@ Universal `q_c>=0` and `Delta(w)>=0` for every predecessor direction remains a v
 
 - canonical sign-sensitive object is `canonicalSourceMatrix` under the repaired source convention;
 - legacy `finiteMatrix` cannot supply absolute sign automatically;
-- theorem authority remains #137;
-- regular-aperture selection is OPEN;
+- theorem authority is through #140;
+- aperture freedom is PROVED;
+- dense fixed-cell regular-aperture selection is OPEN;
 - regular canonical Schur-energy nonnegativity is OPEN;
 - regularity alone does not exclude a negative successor;
-- no `A^-1` at zero before regularity;
+- no all-size Baire theorem is required unless finite-cell selection fails for a theoremized reason;
+- no inverse is load-bearing before regularity; prefer unique preimage;
 - no division by unproved transfer factors;
 - D is algebraic, not unitary/isometric;
 - generic/modified-source countermodels do not refute canonical CCM;
 - numerical precision is not theorem authority;
 - RH remains OPEN.
 
-Detailed current implications: `../../RESEARCH_LEADS_POST_138_ASTRA_DELTA.md`.
+Detailed current implications: `../../RESEARCH_LEADS_POST_140_APERTURE_FREEDOM_DELTA.md`.
 
 **RH remains OPEN.**

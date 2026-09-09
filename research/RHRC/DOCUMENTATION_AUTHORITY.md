@@ -14,7 +14,7 @@ When sources disagree:
 6. **PR-specific settlement documents**.
 7. **Historical roadmaps, audits, numerical receipts, external reviews and old implementation plans**.
 
-External model/reviewer reports are discovery evidence unless their results are independently reproduced or theoremized. They may reroute research when their reasoning survives audit, but they do not outrank Lean/CI or become theorem authority by being copied into the repository.
+External model/reviewer reports are discovery evidence unless independently reproduced or theoremized. They may reroute research when their reasoning survives audit, but they do not outrank Lean/CI or become theorem authority by being copied into the repository.
 
 Control-v2 route certificates and retro-search receipts are diagnostic research-control artifacts only. They do not outrank theorem declarations, machine claim surfaces, active route authority or compiler evidence.
 
@@ -23,20 +23,20 @@ A green but unmerged PR is branch evidence, not merged repository truth. A merge
 ## Current synchronized anchors
 
 ```text
-live main after merged PR #138 = ebf289bdfdde69020bee0d1571047f155e5de4db
-live main tree = d26cd83709437260d0a16630d90c73a93f64c975
+live main after merged PR #140 = fa96196b5bd6ed754853b0bdacee1dbd2356022f
+live main tree = 2015404927540ae79a64469af82813463694b71d
 
-theorem-state anchor = PR #137 merge fa2f209a6eb8b4059968e8d61239d80588ca256c
-validated theorem head = 64988e142590c82bd0ad43604279ede9a8e85eff
-validated theorem tree = e3de4dc0377f0124832822b6f97ab5bbd7718640
-RHRC #878 = SUCCESS
-Permansson #651 = SUCCESS
+theorem-state anchor = PR #140 merge fa96196b5bd6ed754853b0bdacee1dbd2356022f
+validated theorem head = 77b52cfc73dfd83d2a0ed4373befba97d77e48e5
+validated theorem tree = 2015404927540ae79a64469af82813463694b71d
+RHRC #882 = SUCCESS
+Permansson #655 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
 ```
 
-PR #138 synchronizes research/control metadata after #137 and does not advance theorem authority. The post-#138 Astra audit changes the **research ordering**, not the theorem-state anchor.
+PR #140 is theorem-bearing and advances theorem authority. The post-#140 documentation synchronization changes research/control metadata only; it does not add theorem authority beyond #140.
 
 ## Living SSOTs
 
@@ -53,7 +53,7 @@ Update these when the underlying state changes:
 - dead-route and obstruction ledgers when reusable classifications change;
 - claim/route registries only when their own formal state actually changes;
 - `control_v2/CONTROL_STATE.json` when theorem/control anchors or research frontier change;
-- `control_v2/ACTION_REGISTRY.json` when executable research priority changes.
+- `control_v2/ACTION_REGISTRY.json` when executable research priority or first-break specification changes.
 
 Dated deltas and external reviews are historical evidence. Do not rewrite older deltas to look current; add a newer delta and update current-priority pointers.
 
@@ -64,9 +64,9 @@ The repository keeps distinct anchors:
 - **theorem-state anchor** — latest meaningful theorem-bearing merge whose compiled Lean surface defines current mathematical authority;
 - **control-plane semantic anchor** — latest meaningful merged green research-control/assurance semantics.
 
-A documentation/control PR does not advance theorem authority. A theorem-only PR does not automatically advance Control-v2 algorithm/authority semantics.
+PR #140 advances the theorem-state anchor because it adds and validates theorem-bearing Lean modules. PR #117 remains the Control-v2 semantic anchor because #140 does not change the controller's capability/authority model.
 
-PR #117 remains the Control-v2 semantic anchor because the current reroute changes action metadata, scores, aliases and regression assertions, not the controller's capability or authority model.
+A documentation/control PR that updates the theorem anchor to #140 does not itself create new theorem authority.
 
 ## Control-v2 authority law
 
@@ -103,17 +103,17 @@ After a post-green or independent research pass, update documentation when any o
 4. update active route README when route state changed;
 5. add a new dated research delta when lead/status memory changed;
 6. update `CURRENT_RESEARCH_PLAN.md` when execution order or decision gates changed;
-7. update `VALIDATION_PROTOCOL.md` only if exact validation anchors/examples or semantics changed;
+7. update `VALIDATION_PROTOCOL.md` when exact validation anchors/examples changed;
 8. update Control-v2 state/action metadata if theorem frontier or research priority changed;
 9. update root/RHRC README and audit records when the public critical path changed;
 10. update obstruction/dead-route/countermodel records when reusable blockers/falsifiers changed;
 11. leave historical settlements untouched unless an explicit authority banner requires correction.
 
-## Current transition after the post-#138 Astra audit
+## Current transition after PR #140
 
 Newest current-priority delta:
 
-`RESEARCH_LEADS_POST_138_ASTRA_DELTA.md`
+`RESEARCH_LEADS_POST_140_APERTURE_FREEDOM_DELTA.md`
 
 Current route:
 
@@ -125,31 +125,45 @@ PROVED THROUGH #137
   conditional domination sufficiency
   off-line zero -> q_c<0 OR exists Delta<0
 
-DERIVED POST-#138 CORRECTION
-  under A>=0 and dim shell=1,
-  universal q_c/Delta nonnegativity is equivalent to successor positivity
+PROVED / #140
+  off-line zero -> finite negative canonical witness at every sufficiently large aperture
+  -> AnyParityBad at every sufficiently large aperture
+  -> freshly selectable global-first-bad at every sufficiently large aperture
+  predecessor det!=0 <-> injective
+  regular predecessor -> unique cubic zero-shift preimage
+  frozen prime-cell equality
+  threshold atom vanishing
+  exact real-axis -log(L) scalar extraction
+
+DERIVED POST-#140 PLANNING CORRECTION
+  choose a frozen cutoff cell first;
+  obtain a finite witness there;
+  regularize only the finitely many predecessor sizes up to that witness size;
+  preserve negativity locally and reselect first-bad.
 
 NEXT THEOREM
-  regular-aperture/log-lift selection:
-  preserve a strict negative witness while moving to an aperture where every
-  finitely relevant predecessor block in both parities is positive definite,
-  then reselect first-bad.
+  fixed-cell finite regular-aperture selection:
+  continuity + full production predecessor analyticity/log-cover +
+  fixed-block determinant nonidentity + finite simultaneous avoidance.
 
 AFTER
-  regular source countercertificate with unique A^-1 b
-  -> independent canonical Schur-energy sign on u0=c-A^-1b
+  regular source countercertificate with unique A x0=b
+  -> independent canonical Schur-energy sign on u0=c-x0.
 
 BROAD FALLBACK
   universal canonical one-step domination if an independent arithmetic
   mechanism is discovered.
 ```
 
+The countable all-size Baire route is not classified dead; it is a fallback that should not be built unless the finite-cell theorem fails for a specific theoremized reason.
+
 ## Permanent firewalls
 
 ```text
+aperture freedom != dense regularity
+regular predecessor != positive successor
 conditional domination sufficiency != domination theorem
 universal domination restatement != research reduction
-regular predecessor != positive successor
 regular first-bad negative trial != contradiction
 source decomposition != source sign
 external exact check != Lean theorem

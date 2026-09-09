@@ -21,13 +21,15 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "the exact production frozen-cutoff compression must expose the claimed -log(L) identity coefficient after all basis/Gram factors are accounted for",
-        "frozen-cutoff holomorphy/real analyticity and physical prime/prime-power threshold continuity are theorem obligations, not heuristic regularity assumptions",
-        "simultaneous avoidance must cover all finitely relevant predecessor sizes in both parities",
-        "the strict negative witness must be preserved by continuity before changing aperture, and global first-bad must be reselected after the move",
-        "the intrinsic projected predecessor must be identified with the compression whose determinant is controlled",
-        "positive-definite predecessors remove resonance but do not imply a positive successor or exclude a negative root",
-        "generic regular negative examples are mandatory negative controls so the theorem cannot silently prove positivity",
+        "PR #140 proves the real-axis scalar extraction -2*wCorrection(L)=-log(L)+remainder(L), but the full frozen projected predecessor still needs a theorem-backed analytic/log-cover representation",
+        "the active route must work on the actual intrinsicPredecessorBlock, not a predecessor-size or unprojected proxy",
+        "fixed finite canonical energy continuity on one frozen cutoff cell is a theorem obligation before a strict negative witness can be preserved under an aperture move",
+        "for each fixed cutoff/parity/size, determinant nonidentity and dense real regularity must be proved; structural identically-zero blocks would kill or narrow the route",
+        "after PR #140 produces a finite witness (N,u), simultaneous avoidance only needs both parities and sizes through N; a countable all-size Baire theorem is not a current dependency",
+        "the regularizing move should remain inside one physical cutoff cell so threshold crossing is not load-bearing",
+        "global first-bad must be freshly reselected after the move; the old least-bad index must not be assumed to persist",
+        "regular predecessors remove resonance but do not imply a positive successor or exclude a negative root",
+        "generic regular negative examples remain mandatory negative controls so the theorem cannot silently prove positivity",
         "external Astra exact checks and numerics are discovery evidence only"
       ],
       "score_inputs": {
@@ -41,30 +43,30 @@
       "first_breaks": [
         {
           "id": "E4A4-APR-FB-01",
-          "statement": "the exact production frozen-cutoff parity/BF compression does not admit the claimed -log(L)I plus single-valued periodic log-lift remainder representation",
-          "test_id": "prove_production_log_lift_decomposition",
+          "statement": "on one frozen cutoff cell, the full production intrinsic predecessor cannot be given the required analytic/log-cover representation after the theorem-backed scalar -log(L) extraction",
+          "test_id": "prove_frozen_cell_intrinsic_predecessor_analytic_representation",
           "estimated_cost": 1.1,
           "decisive_if_failed": true
         },
         {
           "id": "E4A4-APR-FB-02",
-          "statement": "the periodic determinant nonidentity argument fails to establish dense injective apertures for one fixed finite compressed block",
-          "test_id": "prove_log_lift_determinant_nonidentity",
+          "statement": "for one fixed cutoff/parity/size, the determinant is structurally identically zero or the monodromy/eigenvalue-counting argument fails to prove determinant nonidentity and dense regular apertures",
+          "test_id": "prove_fixed_block_determinant_nonidentity",
           "estimated_cost": 1.4,
           "decisive_if_failed": true
         },
         {
           "id": "E4A4-APR-FB-03",
-          "statement": "injective apertures cannot be chosen simultaneously for all finitely relevant predecessor sizes and both parities while respecting physical cutoff thresholds",
-          "test_id": "prove_simultaneous_finite_regular_aperture_selection",
-          "estimated_cost": 1.0,
+          "statement": "a fixed finite canonical negative witness cannot be preserved by continuity inside one frozen cutoff cell",
+          "test_id": "prove_fixed_witness_cutoff_cell_continuity",
+          "estimated_cost": 0.9,
           "decisive_if_failed": true
         },
         {
           "id": "E4A4-APR-FB-04",
-          "statement": "a strict finite negative witness cannot be preserved under the aperture move and then reselected into a global first-bad state with both predecessor blocks positive definite",
-          "test_id": "compose_negative_witness_with_regular_aperture_reselection",
-          "estimated_cost": 1.2,
+          "statement": "after PR #140 supplies a finite witness size N, dense fixed-block regularity cannot be composed into finite simultaneous avoidance for both parities through N and fresh global-first-bad reselection",
+          "test_id": "compose_post140_witness_with_finite_regular_reselection",
+          "estimated_cost": 1.1,
           "decisive_if_failed": true
         }
       ]
@@ -78,8 +80,9 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "this action depends on a theorem-backed regular first-bad witness; do not assume A^-1 exists before A4R is closed",
-        "the target Ecanonical(c-A^-1b)>=0 is the hard arithmetic sign, so an auxiliary positive form equivalent to successor positivity is circular",
+        "this action depends on a theorem-backed regular first-bad witness; PR #140 supplies unique preimages conditional on regularity but does not prove dense regular-aperture selection",
+        "formal code should prefer the unique x0 satisfying A x0=b rather than making A^-1 load-bearing before a dedicated inverse interface exists",
+        "the target Ecanonical(c-x0)>=0 is the hard arithmetic sign, so an auxiliary positive form equivalent to successor positivity is circular",
         "the external audit reports extremely sharp prime/arch/scalar cancellation in small canonical samples, so independent coarse channel majorants may be too lossy",
         "the external audit reports negative leading atomwise determinant coefficients, so termwise determinant positivity/SOS is not a credible default mechanism",
         "modified prime-weight experiments show the exact arithmetic coefficients matter; a proof shared by nearby perturbed sources is suspect unless its scope explains that sensitivity",
@@ -103,7 +106,7 @@
         },
         {
           "id": "E4A4-SCHUR-FB-02",
-          "statement": "the exact prime/arch/scalar pairing on u0=c-A^-1b yields no independently controlled remainder beyond a restatement of successor positivity",
+          "statement": "the exact prime/arch/scalar pairing on the unique trial u0=c-x0 with A x0=b yields no independently controlled remainder beyond a restatement of successor positivity",
           "test_id": "derive_regular_schur_paired_source_remainder",
           "estimated_cost": 1.8,
           "decisive_if_failed": false
@@ -121,6 +124,7 @@
       "surviving_objections": [
         "PR #137 proves only that the exact domination certificate is sufficient; it does not prove q_c>=0 or Delta(w)>=0",
         "post-#138 analysis sharpens the circularity firewall: under predecessor nonnegativity and a one-dimensional shell, universal domination is equivalent to successor one-step positivity",
+        "PR #140 adds aperture freedom and regularity interfaces but does not make universal domination a smaller theorem",
         "therefore this action has low information gain unless a genuinely independent canonical arithmetic mechanism appears",
         "generic Hermitian/parity/KKT/transfer structure remains quarantined by DR-012 and exact rational countermodels",
         "factorwise alpha/Gamma/overlap/source-moment closure remains quarantined by DR-015",
@@ -163,7 +167,8 @@
       "dead_route_matches": [],
       "surviving_objections": [
         "global exclusion cannot run until either the regular first-bad Schur-energy sign or an independently proved universal domination theorem is available",
-        "the post-#138 preferred composition is regular-aperture selection -> regular source countercertificate -> Ecanonical(c-A^-1b)>=0 -> contradiction with forced Re S0<0",
+        "the post-#140 preferred composition is fixed-cell finite regularization -> fresh regular first-bad -> unique A x0=b -> Ecanonical(c-x0)>=0 -> contradiction with forced Re S0<0",
+        "PR #140 supplies eventual first-bad existence at every sufficiently large aperture but does not exclude the reselected bad state",
         "no division by alpha, Gamma, overlap or source moment is legal without separate nonzeroness",
         "terminal Mathlib RH still requires an explicit statement bridge after finite first-bad exclusion"
       ],
@@ -178,7 +183,7 @@
       "first_breaks": [
         {
           "id": "E4A4-GLOBAL-FB-03",
-          "statement": "after regular witness selection and a theorem-backed regular Schur-energy sign, the same forced first-bad witness cannot be composed into a contradiction",
+          "statement": "after fixed-cell regular witness selection and a theorem-backed regular Schur-energy sign, the same forced first-bad witness cannot be composed into a contradiction",
           "test_id": "compose_regular_schur_sign_with_global_first_bad_witness",
           "estimated_cost": 1.0,
           "decisive_if_failed": true
@@ -197,6 +202,7 @@
         "D is algebraic, not unitary or isometric",
         "rank-at-most-one defect does not identify which parity carries a zero mode",
         "the post-#138 correction-vector proportionality signal removes one hoped-for independence mechanism",
+        "PR #140 now attacks predecessor singularity more directly through aperture freedom plus regularity selection",
         "shifted-nullity remains supportive unless it adds independent canonical source information beyond A4R"
       ],
       "score_inputs": {

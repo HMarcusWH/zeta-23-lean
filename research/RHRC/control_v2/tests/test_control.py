@@ -21,12 +21,16 @@ class ControlV2Tests(unittest.TestCase):
         self.assertFalse(boundary["may_emit_terminal_rh_status"])
         self.assertFalse(boundary["may_promote_lean_theorem"])
 
-    def test_state_has_post_137_theorem_and_post_117_control_anchors(self):
+    def test_state_has_post_140_theorem_and_post_117_control_anchors(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 137)
+        self.assertEqual(state.anchor.pr, 140)
         self.assertEqual(
             state.anchor.merge_commit,
-            "fa2f209a6eb8b4059968e8d61239d80588ca256c",
+            "fa96196b5bd6ed754853b0bdacee1dbd2356022f",
+        )
+        self.assertEqual(
+            state.anchor.tree,
+            "2015404927540ae79a64469af82813463694b71d",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -86,6 +90,19 @@ class ControlV2Tests(unittest.TestCase):
             scores["E4_A4_REGULAR_APERTURE_SELECTION"],
             scores["DEFORMATION_BUDGET_PAPER_TEST"],
         )
+
+    def test_regular_aperture_action_is_post140_fixed_cell_finite_horizon(self):
+        registry = json.loads(
+            (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
+        )
+        action = registry["actions"]["E4_A4_REGULAR_APERTURE_SELECTION"]
+        objections = "\n".join(action["surviving_objections"])
+        first_breaks = "\n".join(x["statement"] for x in action["first_breaks"])
+        self.assertIn("PR #140", objections)
+        self.assertIn("frozen cutoff cell", objections)
+        self.assertIn("sizes through N", objections)
+        self.assertIn("fixed cutoff/parity/size", first_breaks)
+        self.assertIn("finite simultaneous avoidance", first_breaks)
 
     def test_universal_domination_remains_routable_but_is_not_selected(self):
         state = load_research_state()
