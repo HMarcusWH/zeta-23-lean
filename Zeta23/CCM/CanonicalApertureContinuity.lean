@@ -1,5 +1,6 @@
 import Zeta23.CCM.CanonicalApertureRegularityScaffold
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Sinc
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp
 import Mathlib.MeasureTheory.Integral.DominatedConvergence
 
 noncomputable section
@@ -7,7 +8,7 @@ noncomputable section
 namespace Zeta23.CCM
 
 open Matrix MeasureTheory Set
-open scoped ArithmeticFunction BigOperators ComplexConjugate Interval
+open scoped ArithmeticFunction BigOperators ComplexConjugate Interval Topology
 
 /-!
 # FIRST-BAD-RIGIDITY-E4-A4R1a: fixed-cell canonical aperture continuity
@@ -17,12 +18,12 @@ fixed-cutoff-cell regularization route.
 
 The main analytic step removes the apparent origin singularity of the
 archimedean density before invoking parameter-dependent interval-integral
-continuity.  The continuous extension of `x * archDensity x` is expressed
+continuity. The continuous extension of `x * archDensity x` is expressed
 through the divided slope of `Real.sinh`; `Real.sinc` and divided slopes of
-`cos` and `exp` then regularize the three production archimedean integrands.
+`cos` and `exp` then regularize the production archimedean integrands.
 
 On a physical cutoff cell `(log Q, log (Q+1))`, the finite prime-power set is
-frozen.  Combining the continuous pole, direct equation-(4.4) archimedean, and
+frozen. Combining the continuous pole, direct equation-(4.4) archimedean, and
 frozen prime channels gives entrywise continuity of the actual production
 `canonicalSourceMatrix`, hence continuity and local strict-sign persistence of
 one fixed finite quadratic witness.
@@ -88,11 +89,17 @@ def regularizedArchScale (x : ℝ) : ℝ :=
 theorem regularizedArchScale_eq_mul_archDensity
     {x : ℝ} (hx : x ≠ 0) :
     regularizedArchScale x = x * archDensity x := by
+  have hs : Real.sinh x ≠ 0 := (Real.sinh_ne_zero).2 hx
+  have hden : Real.exp x - Real.exp (-x) ≠ 0 := by
+    intro h
+    apply hs
+    rw [Real.sinh_eq, h]
+    norm_num
   rw [regularizedArchScale, archSinhSlope, dslope_of_ne _ hx]
   unfold slope archDensity
-  rw [← Real.two_sinh]
-  have hs : Real.sinh x ≠ 0 := (Real.sinh_ne_zero).2 hx
-  field_simp [hx, hs]
+  simp only [Real.sinh_zero, sub_zero]
+  rw [Real.sinh_eq]
+  field_simp [hx, hden]
   ring
 
 /-- Continuous divided slope of cosine at zero. -/
@@ -160,8 +167,12 @@ theorem alphaL_eq_regularized_integral
   intro x hxint
   by_cases hx : x = 0
   · subst x
-    by_cases hn : n = 0 <;> simp [hn, regularizedAlphaIntegrand_zero]
-  · rw [if_neg hx]
+    by_cases hn : n = 0
+    · simp [hn, regularizedAlphaIntegrand_zero]
+    · simp [hn, regularizedAlphaIntegrand_zero]
+  · change
+      Real.sin (2 * Real.pi * (n : ℝ) * x / L) * archDensity x =
+        regularizedAlphaIntegrand n L x
     exact (regularizedAlphaIntegrand_eq_of_ne n hL.ne' hx).symm
 
 private theorem continuous_regularizedAlphaIntegrand_pos_uncurry
@@ -170,8 +181,11 @@ private theorem continuous_regularizedAlphaIntegrand_pos_uncurry
       (Function.uncurry
         (fun L : Ioi (0 : ℝ) =>
           fun x : ℝ => regularizedAlphaIntegrand n (L : ℝ) x)) := by
-  unfold regularizedAlphaIntegrand Function.uncurry
-  fun_prop (disch := positivity)
+  rw [continuous_iff_continuousAt]
+  rintro ⟨L, x⟩
+  have hL : (L : ℝ) ≠ 0 := ne_of_gt L.property
+  unfold Function.uncurry regularizedAlphaIntegrand
+  fun_prop (disch := assumption)
 
 /-- `alphaL n` is continuous on the positive aperture axis. -/
 theorem continuous_alphaL_pos (n : ℤ) :
@@ -202,9 +216,7 @@ theorem continuous_alphaL_pos (n : ℤ) :
 /-- Real-axis packaging of positive-aperture alpha continuity. -/
 theorem continuousOn_alphaL_Ioi (n : ℤ) :
     ContinuousOn (alphaL n) (Ioi (0 : ℝ)) := by
-  intro L hL
-  rw [continuousWithinAt_iff_continuousAt_domRestrict (alphaL n) hL]
-  simpa using (continuous_alphaL_pos n).continuousAt
+  exact continuousOn_iff_continuous_domRestrict.mpr (continuous_alphaL_pos n)
 
 /-- Origin-regularized integrand for `betaL`. -/
 def regularizedBetaIntegrand (n : ℤ) (L x : ℝ) : ℝ :=
@@ -238,7 +250,9 @@ theorem betaL_eq_regularized_integral
   by_cases hx : x = 0
   · subst x
     simp [regularizedBetaIntegrand_zero]
-  · rw [if_neg hx]
+  · change
+      x * Real.cos (2 * Real.pi * (n : ℝ) * x / L) * archDensity x =
+        regularizedBetaIntegrand n L x
     exact (regularizedBetaIntegrand_eq_of_ne n L hx).symm
 
 private theorem continuous_regularizedBetaIntegrand_pos_uncurry
@@ -247,8 +261,11 @@ private theorem continuous_regularizedBetaIntegrand_pos_uncurry
       (Function.uncurry
         (fun L : Ioi (0 : ℝ) =>
           fun x : ℝ => regularizedBetaIntegrand n (L : ℝ) x)) := by
-  unfold regularizedBetaIntegrand Function.uncurry
-  fun_prop (disch := positivity)
+  rw [continuous_iff_continuousAt]
+  rintro ⟨L, x⟩
+  have hL : (L : ℝ) ≠ 0 := ne_of_gt L.property
+  unfold Function.uncurry regularizedBetaIntegrand
+  fun_prop (disch := assumption)
 
 /-- `betaL n` is continuous on the positive aperture axis. -/
 theorem continuous_betaL_pos (n : ℤ) :
@@ -266,7 +283,10 @@ theorem continuous_betaL_pos (n : ℤ) :
       (continuous_regularizedBetaIntegrand_pos_uncurry n)
       continuous_subtype_val
   have hinv : Continuous (fun L : Ioi (0 : ℝ) => (1 / (L : ℝ))) := by
-    fun_prop (disch := positivity)
+    rw [continuous_iff_continuousAt]
+    intro L
+    have hL : (L : ℝ) ≠ 0 := ne_of_gt L.property
+    fun_prop (disch := assumption)
   have hscaled := hinv.mul hInt
   convert hscaled using 1
   funext L
@@ -275,9 +295,7 @@ theorem continuous_betaL_pos (n : ℤ) :
 /-- Real-axis packaging of positive-aperture beta continuity. -/
 theorem continuousOn_betaL_Ioi (n : ℤ) :
     ContinuousOn (betaL n) (Ioi (0 : ℝ)) := by
-  intro L hL
-  rw [continuousWithinAt_iff_continuousAt_domRestrict (betaL n) hL]
-  simpa using (continuous_betaL_pos n).continuousAt
+  exact continuousOn_iff_continuous_domRestrict.mpr (continuous_betaL_pos n)
 
 /-- Origin-regularized direct equation-(4.11)-left-hand gamma integrand. -/
 def regularizedSourceEq411LhsIntegrand (n : ℤ) (L x : ℝ) : ℝ :=
@@ -302,6 +320,9 @@ theorem regularizedSourceEq411LhsIntegrand_eq_of_ne
       (Real.cos (2 * Real.pi * (n : ℝ) * x / L) -
         Real.exp (-x / 2)) * archDensity x := by
   let a : ℝ := 2 * Real.pi * (n : ℝ) / L
+  have harg : 2 * Real.pi * (n : ℝ) * x / L = a * x := by
+    dsimp [a]
+    ring
   have hcos := sub_smul_dslope Real.cos 0 (a * x)
   have hexp := sub_smul_dslope Real.exp 0 (-x / 2)
   simp only [sub_zero, Real.cos_zero, Real.exp_zero, smul_eq_mul] at hcos hexp
@@ -323,8 +344,9 @@ theorem regularizedSourceEq411LhsIntegrand_eq_of_ne
       _ = Real.cos (a * x) - Real.exp (-x / 2) := by
         rw [hcos, hexp']
         ring
-  rw [regularizedSourceEq411LhsIntegrand,
-    regularizedArchScale_eq_mul_archDensity hx]
+  unfold regularizedSourceEq411LhsIntegrand
+  rw [harg, regularizedArchScale_eq_mul_archDensity hx]
+  unfold archCosSlope archExpSlope
   change
     (a * dslope Real.cos 0 (a * x) +
         (1 / 2 : ℝ) * dslope Real.exp 0 (-x / 2)) *
@@ -350,8 +372,8 @@ theorem regularizedSourceEq411LhsIntegrand_eq
   by_cases hx : x = 0
   · subst x
     simp [sourceEq411LhsIntegrand]
-  · simp [sourceEq411LhsIntegrand, hx,
-      regularizedSourceEq411LhsIntegrand_eq_of_ne n L hx]
+  · simpa [sourceEq411LhsIntegrand, hx] using
+      regularizedSourceEq411LhsIntegrand_eq_of_ne n L hx
 
 private theorem continuous_regularizedSourceEq411LhsIntegrand_pos_uncurry
     (n : ℤ) :
@@ -359,13 +381,25 @@ private theorem continuous_regularizedSourceEq411LhsIntegrand_pos_uncurry
       (Function.uncurry
         (fun L : Ioi (0 : ℝ) =>
           fun x : ℝ => regularizedSourceEq411LhsIntegrand n (L : ℝ) x)) := by
-  unfold regularizedSourceEq411LhsIntegrand Function.uncurry
-  fun_prop (disch := positivity)
+  rw [continuous_iff_continuousAt]
+  rintro ⟨L, x⟩
+  have hL : (L : ℝ) ≠ 0 := ne_of_gt L.property
+  unfold Function.uncurry regularizedSourceEq411LhsIntegrand
+  fun_prop (disch := assumption)
 
 private theorem continuous_wCorrection_pos :
     Continuous (fun L : Ioi (0 : ℝ) => wCorrection (L : ℝ)) := by
+  rw [continuous_iff_continuousAt]
+  intro L
+  have hExp : 1 < Real.exp (L : ℝ) := Real.one_lt_exp_iff.mpr L.property
+  have hnum : Real.exp (L : ℝ) + 1 ≠ 0 := by positivity
+  have hden : Real.exp (L : ℝ) - 1 ≠ 0 :=
+    sub_ne_zero.mpr (ne_of_gt hExp)
+  have hratio :
+      (Real.exp (L : ℝ) + 1) / (Real.exp (L : ℝ) - 1) ≠ 0 :=
+    div_ne_zero hnum hden
   unfold wCorrection
-  fun_prop (disch := positivity)
+  fun_prop (disch := assumption)
 
 /-- The direct equation-(4.4) gamma primitive is continuous on positive
 apertures. -/
@@ -390,7 +424,7 @@ theorem continuous_sourceEq44GammaL_pos (n : ℤ) :
   congr 1
   apply intervalIntegral.integral_congr
   intro x hx
-  exact regularizedSourceEq411LhsIntegrand_eq n (L : ℝ) x
+  exact (regularizedSourceEq411LhsIntegrand_eq n (L : ℝ) x).symm
 
 /-- The full direct equation-(4.4) archimedean entry is continuous on positive
 apertures. -/
@@ -412,34 +446,30 @@ theorem continuous_sourceEq44ArchComponent_pos
 theorem continuous_poleComponent_pos
     (n m : ℤ) :
     Continuous (fun L : Ioi (0 : ℝ) => poleComponent n m (L : ℝ)) := by
+  rw [continuous_iff_continuousAt]
+  intro L
+  have hm :
+      (L : ℝ) ^ 2 + 16 * Real.pi ^ 2 * (m : ℝ) ^ 2 ≠ 0 := by
+    have hLsq : 0 < (L : ℝ) ^ 2 := sq_pos_of_pos L.property
+    positivity
+  have hn :
+      (L : ℝ) ^ 2 + 16 * Real.pi ^ 2 * (n : ℝ) ^ 2 ≠ 0 := by
+    have hLsq : 0 < (L : ℝ) ^ 2 := sq_pos_of_pos L.property
+    positivity
   unfold poleComponent
   dsimp only
-  fun_prop (disch := positivity)
+  fun_prop (disch := assumption)
 
-/-- One elementary source entry is continuous in its real source coordinate. -/
-@[fun_prop] theorem continuous_sourceEntry
-    (n m : ℤ) :
-    Continuous (fun omega : ℝ => sourceEntry omega n m) := by
-  by_cases hnm : n = m
-  · subst m
-    simp only [sourceEntry_self]
-    unfold sourceDiagonal
-    fun_prop
-  · rw [show (fun omega : ℝ => sourceEntry omega n m) =
-      fun omega =>
-        (sourcePotential omega n - sourcePotential omega m) /
-          (((n - m : ℤ) : ℂ)) by
-      funext omega
-      exact sourceEntry_of_ne omega hnm]
-    unfold sourcePotential
-    fun_prop
-
-/-- Entrywise continuity of one elementary source matrix. -/
-@[fun_prop] theorem continuous_sourceMatrix_apply
-    (K : ℕ) (i j : Fin (2 * K + 1)) :
-    Continuous (fun omega : ℝ => sourceMatrix omega K i j) := by
-  simpa [sourceMatrix_apply] using
-    continuous_sourceEntry (centeredIndex K i) (centeredIndex K j)
+/-- The physical source coordinate of one frozen prime-power atom varies
+continuously with positive aperture. -/
+@[fun_prop] theorem continuous_primeSourceCoordinate_pos (q : ℕ) :
+    Continuous
+      (fun L : Ioi (0 : ℝ) => primeSourceCoordinate q (L : ℝ)) := by
+  rw [continuous_iff_continuousAt]
+  intro L
+  have hL : (L : ℝ) ≠ 0 := ne_of_gt L.property
+  unfold primeSourceCoordinate
+  fun_prop (disch := assumption)
 
 /-- Each entry of the frozen finite prime-power channel is continuous on the
 positive aperture axis. -/
@@ -451,7 +481,11 @@ theorem continuous_frozenCanonicalPrimeMatrix_apply_pos
   classical
   unfold frozenCanonicalPrimeMatrix
   simp only [Matrix.sum_apply, Matrix.smul_apply, smul_eq_mul]
-  fun_prop (disch := positivity)
+  apply continuous_finsetSum (Finset.Icc 2 Q)
+  intro q hq
+  exact continuous_const.mul
+    ((continuous_sourceMatrix_apply K i j).comp
+      (continuous_primeSourceCoordinate_pos q))
 
 /-- Physical open cutoff cell on which the finite prime-power horizon is fixed. -/
 def fixedCanonicalCutoffCell (Q : ℕ) : Set ℝ :=
@@ -463,7 +497,6 @@ theorem fixedCanonicalCutoffCell_subset_Ioi
     {Q : ℕ} (hQ : 1 ≤ Q) :
     fixedCanonicalCutoffCell Q ⊆ Ioi (0 : ℝ) := by
   intro L hL
-  have hQpos : (0 : ℝ) < (Q : ℝ) := by exact_mod_cast (Nat.zero_lt_of_lt hQ)
   have hlogQ : 0 ≤ Real.log (Q : ℝ) :=
     Real.log_nonneg (by exact_mod_cast hQ)
   exact lt_of_le_of_lt hlogQ hL.1
@@ -492,6 +525,27 @@ theorem isOpen_fixedCanonicalCutoffCell (Q : ℕ) :
     IsOpen (fixedCanonicalCutoffCell Q) := by
   exact isOpen_Ioo
 
+/-- Positive-axis continuity of one pole entry, packaged as `ContinuousOn`. -/
+private theorem continuousOn_poleComponent_Ioi (n m : ℤ) :
+    ContinuousOn (fun L : ℝ => poleComponent n m L) (Ioi (0 : ℝ)) := by
+  exact continuousOn_iff_continuous_domRestrict.mpr
+    (continuous_poleComponent_pos n m)
+
+/-- Positive-axis continuity of one direct equation-(4.4) archimedean entry. -/
+private theorem continuousOn_sourceEq44ArchComponent_Ioi (n m : ℤ) :
+    ContinuousOn (fun L : ℝ => sourceEq44ArchComponent n m L) (Ioi (0 : ℝ)) := by
+  exact continuousOn_iff_continuous_domRestrict.mpr
+    (continuous_sourceEq44ArchComponent_pos n m)
+
+/-- Positive-axis continuity of one frozen prime entry. -/
+private theorem continuousOn_frozenCanonicalPrimeMatrix_apply_Ioi
+    (Q K : ℕ) (i j : Fin (2 * K + 1)) :
+    ContinuousOn
+      (fun L : ℝ => frozenCanonicalPrimeMatrix Q L K i j)
+      (Ioi (0 : ℝ)) := by
+  exact continuousOn_iff_continuous_domRestrict.mpr
+    (continuous_frozenCanonicalPrimeMatrix_apply_pos Q K i j)
+
 /-- On one physical cutoff cell, each entry of the actual production canonical
 source matrix is continuous. -/
 theorem continuousOn_canonicalSourceMatrix_apply_fixedCell
@@ -501,64 +555,62 @@ theorem continuousOn_canonicalSourceMatrix_apply_fixedCell
       (fun L : ℝ => canonicalSourceMatrix L K i j)
       (fixedCanonicalCutoffCell Q) := by
   have hsub := fixedCanonicalCutoffCell_subset_Ioi hQ
+  let n : ℤ := centeredIndex K i
+  let m : ℤ := centeredIndex K j
+  have hpoleReal :
+      ContinuousOn (fun L : ℝ => poleComponent n m L)
+        (fixedCanonicalCutoffCell Q) :=
+    (continuousOn_poleComponent_Ioi n m).mono hsub
+  have harchReal :
+      ContinuousOn (fun L : ℝ => sourceEq44ArchComponent n m L)
+        (fixedCanonicalCutoffCell Q) :=
+    (continuousOn_sourceEq44ArchComponent_Ioi n m).mono hsub
   have hpole :
-      ContinuousOn
-        (fun L : ℝ => canonicalPoleMatrix L K i j)
+      ContinuousOn (fun L : ℝ => (poleComponent n m L : ℂ))
         (fixedCanonicalCutoffCell Q) := by
-    have hpos :
-        ContinuousOn
-          (fun L : ℝ => canonicalPoleMatrix L K i j)
-          (Ioi (0 : ℝ)) := by
-      intro L hL
-      rw [continuousWithinAt_iff_continuousAt_domRestrict _ hL]
-      simpa [canonicalPoleMatrix_apply] using
-        (continuous_poleComponent_pos
-          (centeredIndex K i) (centeredIndex K j)).continuousAt
-    exact hpos.mono hsub
+    simpa using Complex.continuous_ofReal.comp_continuousOn hpoleReal
   have harch :
-      ContinuousOn
-        (fun L : ℝ => canonicalArchMatrix L K i j)
+      ContinuousOn (fun L : ℝ => (sourceEq44ArchComponent n m L : ℂ))
         (fixedCanonicalCutoffCell Q) := by
-    have hpos :
-        ContinuousOn
-          (fun L : ℝ => canonicalArchMatrix L K i j)
-          (Ioi (0 : ℝ)) := by
-      intro L hL
-      rw [continuousWithinAt_iff_continuousAt_domRestrict _ hL]
-      simpa [canonicalArchMatrix_apply] using
-        (continuous_sourceEq44ArchComponent_pos
-          (centeredIndex K i) (centeredIndex K j)).continuousAt
-    exact hpos.mono hsub
+    simpa using Complex.continuous_ofReal.comp_continuousOn harchReal
   have hfrozen :
       ContinuousOn
         (fun L : ℝ => frozenCanonicalPrimeMatrix Q L K i j)
-        (fixedCanonicalCutoffCell Q) := by
-    have hpos :
-        ContinuousOn
-          (fun L : ℝ => frozenCanonicalPrimeMatrix Q L K i j)
-          (Ioi (0 : ℝ)) := by
-      intro L hL
-      rw [continuousWithinAt_iff_continuousAt_domRestrict _ hL]
-      simpa using
-        (continuous_frozenCanonicalPrimeMatrix_apply_pos Q K i j).continuousAt
-    exact hpos.mono hsub
+        (fixedCanonicalCutoffCell Q) :=
+    (continuousOn_frozenCanonicalPrimeMatrix_apply_Ioi Q K i j).mono hsub
   have hsum :
       ContinuousOn
         (fun L : ℝ =>
-          canonicalPoleMatrix L K i j -
-            canonicalArchMatrix L K i j -
+          (poleComponent n m L : ℂ) -
+            (sourceEq44ArchComponent n m L : ℂ) -
               frozenCanonicalPrimeMatrix Q L K i j)
         (fixedCanonicalCutoffCell Q) :=
     (hpole.sub harch).sub hfrozen
   refine hsum.congr ?_
   intro L hL
-  rw [canonicalSourceMatrix_eq_pole_sub_arch_sub_prime]
-  simp only [Matrix.sub_apply]
-  have hLpos : 0 < L := hsub hL
-  have hfloor := natFloor_exp_eq_on_fixedCanonicalCutoffCell hQ hL
   have hprime :=
-    frozenCanonicalPrimeMatrix_eq_canonicalPrimeMatrix Q hLpos hfloor K
-  rw [← hprime]
+    frozenCanonicalPrimeMatrix_eq_canonicalPrimeMatrix
+      (Q := Q) L K (natFloor_exp_eq_on_fixedCanonicalCutoffCell hQ hL)
+  have hprimeEntry :
+      frozenCanonicalPrimeMatrix Q L K i j =
+        (primeComponent (centeredIndex K i) (centeredIndex K j) L : ℂ) := by
+    calc
+      frozenCanonicalPrimeMatrix Q L K i j =
+          canonicalPrimeMatrix L K i j := by
+        exact congrArg (fun M => M i j) hprime
+      _ = (primeComponent (centeredIndex K i) (centeredIndex K j) L : ℂ) := rfl
+  calc
+    canonicalSourceMatrix L K i j = sourceEq44Matrix L K i j := by
+      exact congrArg (fun M => M i j)
+        (canonicalSourceMatrix_eq_sourceEq44Matrix L K)
+    _ = (sourceEq44Entry (centeredIndex K i) (centeredIndex K j) L : ℂ) := rfl
+    _ = (poleComponent n m L : ℂ) -
+          (sourceEq44ArchComponent n m L : ℂ) -
+            frozenCanonicalPrimeMatrix Q L K i j := by
+      dsimp [n, m]
+      unfold sourceEq44Entry
+      push_cast
+      rw [hprimeEntry]
 
 /-- Fixed-vector canonical quadratic energy is continuous on one physical
 cutoff cell. -/
@@ -574,13 +626,14 @@ theorem continuousOn_re_canonicalSourceQuadraticForm_fixedCell
         (fun L : ℝ => quadraticForm (canonicalSourceMatrix L N) u)
         (fixedCanonicalCutoffCell Q) := by
     unfold quadraticForm
-    apply continuousOn_finset_sum
+    apply continuousOn_finsetSum
     intro i hi
-    apply continuousOn_finset_sum
+    apply continuousOn_finsetSum
     intro j hj
-    exact continuousOn_const.mul
-      ((continuousOn_canonicalSourceMatrix_apply_fixedCell Q N hQ i j).mul
-        continuousOn_const)
+    exact
+      ((continuousOn_const.mul
+        (continuousOn_canonicalSourceMatrix_apply_fixedCell Q N hQ i j)).mul
+          continuousOn_const)
   exact Complex.continuous_re.comp_continuousOn hcomplex
 
 /-- Headline fixed-cell persistence theorem: a strict negative canonical
