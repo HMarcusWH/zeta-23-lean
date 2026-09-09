@@ -66,13 +66,30 @@ def evenIndexIntrinsicPredecessorLinearMap
   map_add' := by
     intro x y
     apply Subtype.ext
-    apply Subtype.ext
-    exact map_add (evenIndexParityLinearMap (N + 1)) x y
+    change
+      evenIndexParityLinearMap (N + 1)
+          (((x + y : intrinsicParityPredecessorSubspace .even N) :
+            euclideanParityBoundaryFlatSubspace .even (N + 1))) =
+        evenIndexParityLinearMap (N + 1)
+            (x : euclideanParityBoundaryFlatSubspace .even (N + 1)) +
+          evenIndexParityLinearMap (N + 1)
+            (y : euclideanParityBoundaryFlatSubspace .even (N + 1))
+    simpa only [Submodule.coe_add] using
+      (evenIndexParityLinearMap (N + 1)).map_add
+        (x : euclideanParityBoundaryFlatSubspace .even (N + 1))
+        (y : euclideanParityBoundaryFlatSubspace .even (N + 1))
   map_smul' := by
     intro c x
     apply Subtype.ext
-    apply Subtype.ext
-    exact map_smul (evenIndexParityLinearMap (N + 1)) c x
+    change
+      evenIndexParityLinearMap (N + 1)
+          (((c • x : intrinsicParityPredecessorSubspace .even N) :
+            euclideanParityBoundaryFlatSubspace .even (N + 1))) =
+        c • evenIndexParityLinearMap (N + 1)
+          (x : euclideanParityBoundaryFlatSubspace .even (N + 1))
+    simpa only [Submodule.coe_smul] using
+      (evenIndexParityLinearMap (N + 1)).map_smul c
+        (x : euclideanParityBoundaryFlatSubspace .even (N + 1))
 
 /-- The native predecessor restriction is literally the already-validated
 successor-carrier centered-index map after coercion. -/
@@ -84,6 +101,32 @@ theorem coe_evenIndexIntrinsicPredecessorLinearMap
       euclideanParityBoundaryFlatSubspace .odd (N + 1)) =
       evenIndexParityLinearMap (N + 1)
         (z : euclideanParityBoundaryFlatSubspace .even (N + 1)) := rfl
+
+/-- The predecessor coordinate fixes an inherited predecessor vector. -/
+@[simp] theorem intrinsicPredecessorPart_coe_predecessor
+    (p : ReversalParity) (N : ℕ)
+    (w : intrinsicParityPredecessorSubspace p N) :
+    intrinsicPredecessorPart p N
+        (w : euclideanParityBoundaryFlatSubspace p (N + 1)) = w := by
+  apply Subtype.ext
+  have hrec := intrinsicPredecessorPart_add_shellPart p N
+    (w : euclideanParityBoundaryFlatSubspace p (N + 1))
+  have hs0 :
+      intrinsicShellPart p N
+          (w : euclideanParityBoundaryFlatSubspace p (N + 1)) = 0 :=
+    (intrinsicShellPart_eq_zero_iff p N).2 w.property
+  rw [hs0] at hrec
+  simpa using hrec
+
+/-- The predecessor coordinate kills a native shell vector. -/
+@[simp] theorem intrinsicPredecessorPart_coe_shell
+    (p : ReversalParity) (N : ℕ)
+    (s : intrinsicParitySuccShell p N) :
+    intrinsicPredecessorPart p N
+        (s : euclideanParityBoundaryFlatSubspace p (N + 1)) = 0 := by
+  exact
+    (Submodule.projectionOnto_apply_eq_zero_iff
+      (intrinsicPredecessor_isCompl_shell p N)).2 s.property
 
 /-- Normalized shell-coupling coefficient of a predecessor vector. -/
 def cubicShellCouplingCoefficient
@@ -192,7 +235,7 @@ theorem parityCompressedCanonical_evenKernel_eq_beta_smul_cubic
       ((intrinsicShellPart .even N y : intrinsicParitySuccShell .even N) :
         euclideanParityBoundaryFlatSubspace .even (N + 1)) = y := by
     rw [hyPred] at hrec
-    simpa using hrec.symm
+    simpa using hrec
   have hrep := intrinsicCubicShellCoordinate_smul_cubic_eq
     .even N hN (intrinsicShellPart .even N y)
   have hrepCarrier := congrArg
@@ -272,24 +315,18 @@ theorem parityCompressedCanonical_odd_evenIndex_kernel_eq
         D (parityCompressedCanonical .even L (N + 1)
           (z : euclideanParityBoundaryFlatSubspace .even (N + 1))) +
         mu • successorParityCubicVector .odd N := by
-    change
-      oddCompressedCanonical L (N + 1)
-          (euclideanEvenToOddIndexLinearMap (N + 1)
-            (z : euclideanParityBoundaryFlatSubspace .even (N + 1))) =
-        euclideanEvenToOddIndexLinearMap (N + 1)
-            (evenCompressedCanonical L (N + 1)
-              (z : euclideanParityBoundaryFlatSubspace .even (N + 1))) +
-          mu • oddCubicCompressionVector (N + 1)
-    change
-      oddCompressedCanonical L (N + 1)
-          (euclideanEvenToOddIndexLinearMap (N + 1)
-            (z : euclideanParityBoundaryFlatSubspace .even (N + 1))) -
-        euclideanEvenToOddIndexLinearMap (N + 1)
-            (evenCompressedCanonical L (N + 1)
-              (z : euclideanParityBoundaryFlatSubspace .even (N + 1))) =
-          mu • oddCubicCompressionVector (N + 1) at hdefNative
     rw [hsource] at hdefNative
-    exact sub_eq_iff_eq_add.mp hdefNative
+    have hsub :
+        parityCompressedCanonical .odd L (N + 1)
+            (D (z : euclideanParityBoundaryFlatSubspace .even (N + 1))) -
+          D (parityCompressedCanonical .even L (N + 1)
+            (z : euclideanParityBoundaryFlatSubspace .even (N + 1))) =
+          mu • successorParityCubicVector .odd N := by
+      simpa [D, evenIndexParityLinearMap,
+        evenOddCompressedIntertwiningDefect,
+        evenCompressedCanonical, oddCompressedCanonical,
+        successorParityCubicVector] using hdefNative
+    exact sub_eq_iff_eq_add.mp hsub
   have hDc :=
     evenIndex_cubicShellPart_eq_predecessor_add_oddCubicShellPart N hN
   have hg := oddCubicCompressionVector_eq_predecessor_add_cubicShellPart N
@@ -337,8 +374,16 @@ theorem oddPredecessorBlock_evenIndex_eq_beta_add_source_of_evenKernel
     hL N hN z hz
   dsimp at hfull
   have hp := congrArg (intrinsicPredecessorPart .odd N) hfull
-  simpa [intrinsicPredecessorBlock,
-    coe_evenIndexIntrinsicPredecessorLinearMap] using hp
+  rw [map_add, intrinsicPredecessorPart_coe_predecessor,
+    map_smul, intrinsicPredecessorPart_coe_shell, smul_zero, add_zero] at hp
+  change
+    intrinsicPredecessorPart .odd N
+        (parityCompressedCanonical .odd L (N + 1)
+          (((evenIndexIntrinsicPredecessorLinearMap N z :
+              intrinsicParityPredecessorSubspace .odd N) :
+            euclideanParityBoundaryFlatSubspace .odd (N + 1)))) = _
+  rw [coe_evenIndexIntrinsicPredecessorLinearMap]
+  exact hp
 
 /-- Shell/quotient half of the same kernel transport. -/
 theorem oddCubicCouplingQuotient_evenIndex_eq_beta_add_source_of_evenKernel
@@ -357,8 +402,11 @@ theorem oddCubicCouplingQuotient_evenIndex_eq_beta_add_source_of_evenKernel
     hL N hN z hz
   dsimp at hfull
   have hq := congrArg (intrinsicCubicQuotientCoordinate .odd N) hfull
-  simpa [intrinsicCubicQuotientCoordinate_predecessor_eq_zero .odd N hN,
-    intrinsicCubicQuotientCoordinate_cubicShellPart .odd N hN] using hq
+  rw [map_add,
+    intrinsicCubicQuotientCoordinate_predecessor_eq_zero .odd N hN,
+    map_smul,
+    intrinsicCubicQuotientCoordinate_cubicShellPart .odd N hN] at hq
+  simpa using hq
 
 /-- Projecting the kernel transport to the entire odd predecessor kernel gives
 an exact vector compatibility identity. -/
@@ -379,7 +427,8 @@ theorem evenKernel_crossParity_projected_compatibility
       hL N hN z hz
   have hp := congrArg (intrinsicPredecessorKernelPart .odd L N) htransport
   rw [intrinsicPredecessorKernelPart_intrinsicPredecessorBlock_eq_zero] at hp
-  simpa [map_add, map_smul] using hp.symm
+  rw [map_add, map_smul, map_smul] at hp
+  simpa using hp.symm
 
 /-- On the actual even cubic coupling kernel component the normalized coupling
 coefficient is its self-inner value divided by the canonical shell norm. -/
@@ -407,6 +456,20 @@ theorem cubicShellCouplingCoefficient_cubicCouplingKernelPart
   let k := cubicCouplingKernelPart .even L N
   have hkb := inner_intrinsicPredecessorKernelPart_coupling_eq_self
     .even L N b
+  have hkb' :
+      inner ℂ
+          (((k : LinearMap.ker (intrinsicPredecessorBlock .even L N)) :
+            intrinsicParityPredecessorSubspace .even N) :
+            euclideanParityBoundaryFlatSubspace .even (N + 1))
+          (b : euclideanParityBoundaryFlatSubspace .even (N + 1)) =
+        inner ℂ
+          (((k : LinearMap.ker (intrinsicPredecessorBlock .even L N)) :
+            intrinsicParityPredecessorSubspace .even N) :
+            euclideanParityBoundaryFlatSubspace .even (N + 1))
+          (((k : LinearMap.ker (intrinsicPredecessorBlock .even L N)) :
+            intrinsicParityPredecessorSubspace .even N) :
+            euclideanParityBoundaryFlatSubspace .even (N + 1)) := by
+    simpa [k] using hkb
   have hbk :
       inner ℂ
           (b : euclideanParityBoundaryFlatSubspace .even (N + 1))
@@ -421,7 +484,7 @@ theorem cubicShellCouplingCoefficient_cubicCouplingKernelPart
             intrinsicParityPredecessorSubspace .even N) :
             euclideanParityBoundaryFlatSubspace .even (N + 1)) := by
     rw [← inner_conj_symm]
-    rw [hkb]
+    rw [hkb']
     rw [inner_self_conj]
   change
     inner ℂ
