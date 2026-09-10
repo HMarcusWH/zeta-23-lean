@@ -1,6 +1,7 @@
 import Zeta23.CCM.CanonicalApertureContinuity
 import Mathlib.MeasureTheory.Integral.IntervalIntegral.IntegrationByParts
 import Mathlib.Analysis.Complex.RemovableSingularity
+import Mathlib.Analysis.Calculus.ParametricIntervalIntegral
 
 noncomputable section
 
@@ -15,11 +16,11 @@ open scoped Interval
 PR #142 regularized the origin of the three production archimedean aperture
 integrands and proved real continuity.  This module performs the exact
 `x = L*t` change of variables so the integration interval is fixed at `[0,1]`,
-and introduces the corresponding complex divided-slope primitives.
+and introduces the corresponding genuine complex divided-slope primitives.
 
 The fixed-unit identities are production identities, not numerical ansatzes.
-The complex definitions are auxiliary continuation objects; later files must
-prove exact real-axis agreement before using them on the canonical source.
+The complex definitions are auxiliary continuation objects; exact real-axis
+bridges are theorem-locked below before they are used by the frozen source.
 
 No determinant nonidentity, dense regularity, sign, or RH claim is made here.
 -/
@@ -56,8 +57,8 @@ theorem alphaL_eq_unitInterval_integral
     unfold regularizedAlphaIntegrand
     fun_prop (disch := exact hL.ne')
   rw [intervalIntegral_zero_L_eq_mul_zero_one hL hg]
-  congr 1
   rw [← intervalIntegral.integral_const_mul]
+  apply congrArg ((1 / Real.pi) * ·)
   apply intervalIntegral.integral_congr
   intro t _
   unfold regularizedAlphaIntegrand
@@ -77,12 +78,13 @@ theorem betaL_eq_unitInterval_integral
     unfold regularizedBetaIntegrand
     fun_prop (disch := exact hL.ne')
   rw [intervalIntegral_zero_L_eq_mul_zero_one hL hg]
-  rw [one_div, inv_mul_eq_iff₀ hL.ne']
+  have hLn : L ≠ 0 := hL.ne'
+  rw [one_div, inv_mul_cancel_left₀ hLn]
   apply intervalIntegral.integral_congr
   intro t _
   unfold regularizedBetaIntegrand
   congr 2
-  field_simp [hL.ne']
+  field_simp [hLn]
 
 /-- Exact fixed-unit representation of the direct equation-(4.4) diagonal
 primitive after removing only `wCorrection`. -/
@@ -117,6 +119,10 @@ theorem sourceEq44GammaL_sub_wCorrection_eq_unitInterval_integral
   field_simp [hLn]
   ring
 
+/-- Complex divided slope `sin(z)/z`, with value one at zero. -/
+def complexArchSinc (z : ℂ) : ℂ :=
+  dslope Complex.sin 0 z
+
 /-- Complex divided slope `sinh(z)/z`, with the derivative value at zero. -/
 def complexArchSinhSlope (z : ℂ) : ℂ :=
   dslope Complex.sinh 0 z
@@ -133,6 +139,10 @@ def complexArchExpSlope (z : ℂ) : ℂ :=
 def complexRegularizedArchScale (z : ℂ) : ℂ :=
   Complex.exp (z / 2) / (2 * complexArchSinhSlope z)
 
+@[simp] theorem complexArchSinc_zero : complexArchSinc 0 = 1 := by
+  rw [complexArchSinc, dslope_same, (Complex.hasDerivAt_sin 0).deriv]
+  simp
+
 @[simp] theorem complexArchSinhSlope_zero : complexArchSinhSlope 0 = 1 := by
   rw [complexArchSinhSlope, dslope_same, (Complex.hasDerivAt_sinh 0).deriv]
   simp
@@ -148,6 +158,14 @@ def complexRegularizedArchScale (z : ℂ) : ℂ :=
 @[simp] theorem complexRegularizedArchScale_zero :
     complexRegularizedArchScale 0 = 1 / 2 := by
   simp [complexRegularizedArchScale]
+
+/-- The complex sine divided slope is analytic everywhere. -/
+theorem differentiable_complexArchSinc :
+    Differentiable ℂ complexArchSinc := by
+  unfold complexArchSinc
+  rw [← differentiableOn_univ]
+  exact (Complex.differentiableOn_dslope univ_mem).2
+    Complex.differentiable_sin.differentiableOn
 
 /-- The complex hyperbolic divided slope is analytic everywhere. -/
 theorem differentiable_complexArchSinhSlope :
@@ -183,10 +201,40 @@ theorem eventually_complexArchSinhSlope_ne_zero :
   have hne : complexArchSinhSlope 0 ≠ 0 := by simp
   exact hcont.eventually_ne hne
 
+/-- Consequently the complex regularized archimedean scale is analytic at the
+origin. -/
+theorem analyticAt_complexRegularizedArchScale_zero :
+    AnalyticAt ℂ complexRegularizedArchScale 0 := by
+  rw [analyticAt_iff_eventually_differentiableAt]
+  filter_upwards [eventually_complexArchSinhSlope_ne_zero] with z hz
+  unfold complexRegularizedArchScale
+  fun_prop (disch := assumption)
+
+/-- Genuine complex fixed-unit continuation of `alphaL`. -/
+def complexAlphaCore (n : ℤ) (z : ℂ) : ℂ :=
+  2 * (n : ℂ) *
+    ∫ t in (0 : ℝ)..1,
+      complexArchSinc ((2 * Real.pi * (n : ℝ) * t : ℝ) : ℂ) *
+        complexRegularizedArchScale (z * (t : ℂ))
+
+/-- Genuine complex fixed-unit continuation of `betaL`. -/
+def complexBetaCore (n : ℤ) (z : ℂ) : ℂ :=
+  ∫ t in (0 : ℝ)..1,
+    Complex.cos ((2 * Real.pi * (n : ℝ) * t : ℝ) : ℂ) *
+      complexRegularizedArchScale (z * (t : ℂ))
+
+/-- Genuine complex fixed-unit continuation of `sourceEq44GammaL-wCorrection`. -/
+def complexGammaCore (n : ℤ) (z : ℂ) : ℂ :=
+  ∫ t in (0 : ℝ)..1,
+    (((2 * Real.pi * (n : ℝ) : ℝ) : ℂ) *
+        complexArchCosSlope ((2 * Real.pi * (n : ℝ) * t : ℝ) : ℂ) +
+      (z / 2) * complexArchExpSlope (-(z * (t : ℂ)) / 2)) *
+        complexRegularizedArchScale (z * (t : ℂ))
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.alphaL_eq_unitInterval_integral
 #print axioms Zeta23.CCM.betaL_eq_unitInterval_integral
 #print axioms Zeta23.CCM.sourceEq44GammaL_sub_wCorrection_eq_unitInterval_integral
 #print axioms Zeta23.CCM.differentiable_complexArchSinhSlope
-#print axioms Zeta23.CCM.eventually_complexArchSinhSlope_ne_zero
+#print axioms Zeta23.CCM.analyticAt_complexRegularizedArchScale_zero
