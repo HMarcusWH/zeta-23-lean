@@ -234,7 +234,11 @@ theorem analyticAt_complexRegularizedArchScale_zero :
   rw [analyticAt_iff_eventually_differentiableAt]
   filter_upwards [eventually_complexArchSinhSlope_ne_zero] with z hz
   unfold complexRegularizedArchScale
-  fun_prop (disch := assumption)
+  have hnum : Differentiable ℂ (fun w : ℂ => Complex.exp (w / 2)) :=
+    Complex.differentiable_exp.comp (differentiable_id.div_const _)
+  have hden : Differentiable ℂ (fun w : ℂ => (2 : ℂ) * complexArchSinhSlope w) :=
+    differentiable_complexArchSinhSlope.const_mul 2
+  exact (hnum z).div (hden z) (mul_ne_zero (by norm_num) hz)
 
 /-- Genuine complex fixed-unit continuation of `alphaL`. -/
 def complexAlphaCore (n : ℤ) (z : ℂ) : ℂ :=
