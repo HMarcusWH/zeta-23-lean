@@ -143,7 +143,7 @@ theorem frozenParityCompressedCanonical_eq_neg_log_id_add_remainder
             euclideanParityBoundaryFlatSubspace p N →ₗ[ℂ]
               euclideanParityBoundaryFlatSubspace p N) +
         frozenParityCompressedRemainder Q p L N) x
-  simp [frozenParityCompressedRemainder_apply]
+  simp [frozenParityCompressedRemainder_apply, Matrix.toEuclideanLin]
 
 /-- Intrinsic compression of the real frozen source remainder. -/
 def frozenIntrinsicPredecessorRemainderReal
