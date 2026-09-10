@@ -130,7 +130,6 @@ theorem frozenCanonicalSourceMatrix_eq_neg_log_identity_add_remainder
     simp
     linear_combination hsC
   · simp [hij]
-    ring
 
 end Zeta23.CCM
 
