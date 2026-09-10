@@ -8,10 +8,9 @@ noncomputable section
 namespace Zeta23.CCM
 
 open Complex MeasureTheory Set Filter
-open scoped Interval
+open scoped Topology Interval
 
-/-!
-# FIRST-BAD-RIGIDITY-E4-A4R1b: analytic aperture primitives
+/-! # FIRST-BAD-RIGIDITY-E4-A4R1b: analytic aperture primitives
 
 PR #142 regularized the origin of the three production archimedean aperture
 integrands and proved real continuity.  This module performs the exact
