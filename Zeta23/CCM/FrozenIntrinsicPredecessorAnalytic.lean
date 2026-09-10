@@ -119,6 +119,19 @@ def frozenParityCompressedRemainder
         ((frozenCanonicalSourceRemainderReal Q L N).toEuclideanLin
           (x : EuclideanSpace ℂ (Fin (2 * N + 1)))) := rfl
 
+/-- A scalar multiple of the identity matrix acts as the same scalar multiple
+of the identity on Euclidean space.  Keeping this pointwise lemma explicit
+avoids asking simplification to discover linearity through `Matrix.toLpLin`. -/
+private theorem toLpLin_smul_one_apply
+    (a : ℂ) (N : ℕ)
+    (x : EuclideanSpace ℂ (Fin (2 * N + 1))) :
+    ((Matrix.toLpLin 2 2)
+        (a • (1 : Matrix (Fin (2 * N + 1)) (Fin (2 * N + 1)) ℂ))) x =
+      a • x := by
+  rw [Matrix.toLpLin_apply]
+  ext i
+  simp
+
 /-- The exact ambient scalar split survives parity compression with coefficient
 unchanged.  The identity matrix compresses to the identity endomorphism on the
 parity subspace. -/
@@ -143,7 +156,8 @@ theorem frozenParityCompressedCanonical_eq_neg_log_id_add_remainder
             euclideanParityBoundaryFlatSubspace p N →ₗ[ℂ]
               euclideanParityBoundaryFlatSubspace p N) +
         frozenParityCompressedRemainder Q p L N) x
-  simp [frozenParityCompressedRemainder_apply, Matrix.toEuclideanLin, map_smul]
+  simp [frozenParityCompressedRemainder_apply, Matrix.toEuclideanLin,
+    toLpLin_smul_one_apply]
 
 /-- Intrinsic compression of the real frozen source remainder. -/
 def frozenIntrinsicPredecessorRemainderReal
