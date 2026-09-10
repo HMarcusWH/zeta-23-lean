@@ -57,9 +57,9 @@
         },
         {
           "id": "E4A4-APR-FB-03",
-          "statement": "the cell-minimal bad-size construction cannot be production-packaged so that all smaller sizes are nonnegative throughout the same physical cutoff cell while a fixed bad parity witness is preserved on the PR #142 open neighborhood and intersected with dense regularity at the relevant predecessor size",
+          "statement": "conditional downstream packaging: after FB-01 and FB-02 establish the required analytic representation and dense regularity, the cell-minimal bad-size construction cannot be production-packaged so that all smaller sizes are nonnegative throughout the same physical cutoff cell while a fixed bad parity witness is preserved on the PR #142 open neighborhood and intersected with dense regularity at the relevant predecessor size",
           "test_id": "compose_post142_cell_minimum_with_dense_regular_selection",
-          "estimated_cost": 1.0,
+          "estimated_cost": 1.6,
           "decisive_if_failed": true
         }
       ]
