@@ -57,23 +57,29 @@ No determinant nonidentity, dense regularity, sign, or RH claim is made here.
     complexRegularizedArchScale (x : ℂ) = (regularizedArchScale x : ℂ) := by
   unfold complexRegularizedArchScale regularizedArchScale
   rw [complexArchSinhSlope_ofReal]
-  rw [← Complex.ofReal_exp]
-  push_cast
+  norm_cast
 
 /-- Exact positive-real-axis agreement of the complex fixed-unit alpha core. -/
 @[simp] theorem complexAlphaCore_ofReal
     (n : ℤ) {L : ℝ} (hL : 0 < L) :
     complexAlphaCore n (L : ℂ) = (alphaL n L : ℂ) := by
   rw [complexAlphaCore, alphaL_eq_unitInterval_integral n hL]
-  rw [← intervalIntegral.integral_ofReal]
-  push_cast
-  congr 1
-  apply intervalIntegral.integral_congr
-  intro t _
-  have hLt : (L : ℂ) * (t : ℂ) = ((L * t : ℝ) : ℂ) := by push_cast
-  rw [hLt, complexRegularizedArchScale_ofReal]
-  rw [complexArchSinc_ofReal]
-  push_cast
+  have hInt :
+      (∫ t in (0 : ℝ)..1,
+          complexArchSinc ((2 * Real.pi * (n : ℝ) * t : ℝ) : ℂ) *
+            complexRegularizedArchScale ((L : ℂ) * (t : ℂ))) =
+        ((∫ t in (0 : ℝ)..1,
+            Real.sinc (2 * Real.pi * (n : ℝ) * t) *
+              regularizedArchScale (L * t)) : ℂ) := by
+    rw [← intervalIntegral.integral_ofReal]
+    apply intervalIntegral.integral_congr
+    intro t _
+    dsimp
+    have hLt : (L : ℂ) * (t : ℂ) = ((L * t : ℝ) : ℂ) := by
+      norm_cast
+    rw [hLt, complexRegularizedArchScale_ofReal, complexArchSinc_ofReal]
+  rw [hInt]
+  norm_cast
 
 /-- Exact positive-real-axis agreement of the complex fixed-unit beta core. -/
 @[simp] theorem complexBetaCore_ofReal
@@ -83,10 +89,11 @@ No determinant nonidentity, dense regularity, sign, or RH claim is made here.
   rw [← intervalIntegral.integral_ofReal]
   apply intervalIntegral.integral_congr
   intro t _
-  have hLt : (L : ℂ) * (t : ℂ) = ((L * t : ℝ) : ℂ) := by push_cast
+  dsimp
+  have hLt : (L : ℂ) * (t : ℂ) = ((L * t : ℝ) : ℂ) := by
+    norm_cast
   rw [hLt, complexRegularizedArchScale_ofReal]
-  rw [← Complex.ofReal_cos]
-  push_cast
+  norm_cast
 
 /-- Exact positive-real-axis agreement of the complex fixed-unit gamma core,
 after removing only the production `wCorrection`. -/
@@ -99,12 +106,15 @@ after removing only the production `wCorrection`. -/
   rw [← intervalIntegral.integral_ofReal]
   apply intervalIntegral.integral_congr
   intro t _
-  have hLt : (L : ℂ) * (t : ℂ) = ((L * t : ℝ) : ℂ) := by push_cast
+  dsimp
+  have hLt : (L : ℂ) * (t : ℂ) = ((L * t : ℝ) : ℂ) := by
+    norm_cast
   have hnegLt : -((L : ℂ) * (t : ℂ)) / 2 =
-      ((-(L * t) / 2 : ℝ) : ℂ) := by push_cast
+      ((-(L * t) / 2 : ℝ) : ℂ) := by
+    norm_cast
   rw [hLt, hnegLt, complexRegularizedArchScale_ofReal,
     complexArchCosSlope_ofReal, complexArchExpSlope_ofReal]
-  push_cast
+  norm_cast
 
 end Zeta23.CCM
 
