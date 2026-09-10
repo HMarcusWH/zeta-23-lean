@@ -7,7 +7,7 @@ from types import SimpleNamespace
 RHRC = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(RHRC))
 
-from control_v2.run_control import _collect_retro_receipts
+from control_v2.run_control import _collect_retro_receipts, _selected_first_break
 from control_v2.router import SCORE_FORMULA_VERSION, action_score, load_actions, recommend
 from control_v2.state import load_research_state
 
@@ -105,6 +105,18 @@ class ControlV2Tests(unittest.TestCase):
         self.assertIn("determinant nonidentity", first_breaks)
         self.assertIn("cell-minimal bad-size", first_breaks)
         self.assertNotIn("fixed finite canonical negative witness cannot be preserved", first_breaks)
+
+        selected_break = _selected_first_break(
+            registry, "E4_A4_REGULAR_APERTURE_SELECTION"
+        )
+        self.assertIsNotNone(selected_break)
+        self.assertEqual(selected_break["break_id"], "E4A4-APR-FB-01")
+
+        costs = {x["id"]: x["estimated_cost"] for x in action["first_breaks"]}
+        self.assertLess(costs["E4A4-APR-FB-01"], costs["E4A4-APR-FB-02"])
+        self.assertLess(costs["E4A4-APR-FB-02"], costs["E4A4-APR-FB-03"])
+        fb03 = next(x for x in action["first_breaks"] if x["id"] == "E4A4-APR-FB-03")
+        self.assertIn("conditional downstream packaging", fb03["statement"])
 
     def test_universal_domination_remains_routable_but_is_not_selected(self):
         state = load_research_state()
