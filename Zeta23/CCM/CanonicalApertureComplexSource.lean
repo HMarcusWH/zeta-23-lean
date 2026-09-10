@@ -40,14 +40,12 @@ def complexSourceMatrix (ω : ℂ) (N : ℕ) :
 @[simp] theorem complexSourcePotential_ofReal (ω : ℝ) (n : ℤ) :
     complexSourcePotential (ω : ℂ) n = sourcePotential ω n := by
   unfold complexSourcePotential sourcePotential
-  rw [← Complex.ofReal_sin]
-  push_cast
+  norm_cast
 
 @[simp] theorem complexSourceDiagonal_ofReal (ω : ℝ) (n : ℤ) :
     complexSourceDiagonal (ω : ℂ) n = sourceDiagonal ω n := by
   unfold complexSourceDiagonal sourceDiagonal
-  rw [← Complex.ofReal_cos]
-  push_cast
+  norm_cast
 
 @[simp] theorem complexSourceEntry_ofReal (ω : ℝ) (n m : ℤ) :
     complexSourceEntry (ω : ℂ) n m = sourceEntry ω n m := by
@@ -59,7 +57,9 @@ def complexSourceMatrix (ω : ℂ) (N : ℕ) :
 @[simp] theorem complexSourceMatrix_ofReal (ω : ℝ) (N : ℕ) :
     complexSourceMatrix (ω : ℂ) N = sourceMatrix ω N := by
   ext i j
-  simp [complexSourceMatrix, sourceMatrix, dividedDifferenceMatrix]
+  change complexSourceEntry (ω : ℂ) (centeredIndex N i) (centeredIndex N j) =
+    sourceEntry ω (centeredIndex N i) (centeredIndex N j)
+  exact complexSourceEntry_ofReal ω _ _
 
 /-- Complex aperture coordinate of one frozen prime-power source atom. -/
 def complexPrimeSourceCoordinate (q : ℕ) (z : ℂ) : ℂ :=
@@ -69,7 +69,7 @@ def complexPrimeSourceCoordinate (q : ℕ) (z : ℂ) : ℂ :=
     complexPrimeSourceCoordinate q (L : ℂ) =
       (primeSourceCoordinate q L : ℂ) := by
   unfold complexPrimeSourceCoordinate primeSourceCoordinate
-  push_cast
+  norm_cast
 
 /-- Frozen complex prime-power matrix.  The finite set is literally `Icc 2 Q`;
 there is no complexified floor or moving cutoff. -/
@@ -103,8 +103,7 @@ def complexPoleComponent (n m : ℤ) (z : ℂ) : ℂ :=
     complexPoleComponent n m (L : ℂ) = (poleComponent n m L : ℂ) := by
   unfold complexPoleComponent poleComponent
   dsimp
-  rw [← Complex.ofReal_sinh]
-  push_cast
+  norm_cast
 
 /-- Centered finite complex pole matrix. -/
 def complexCanonicalPoleMatrix (z : ℂ) (K : ℕ) :
