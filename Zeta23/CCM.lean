@@ -105,6 +105,13 @@ import Zeta23.CCM.QuadraticNormalMatrixMoment
 import Zeta23.CCM.CanonicalSourceMomentAtoms
 import Zeta23.CCM.CanonicalApertureRegularityScaffold
 import Zeta23.CCM.CanonicalApertureContinuity
+import Zeta23.CCM.CanonicalApertureAnalyticPrimitives
+import Zeta23.CCM.CanonicalApertureComplexBridge
+import Zeta23.CCM.CanonicalApertureComplexSource
+import Zeta23.CCM.FrozenCanonicalSourceAnalytic
+import Zeta23.CCM.FrozenCanonicalSourceComplex
+import Zeta23.CCM.FrozenIntrinsicPredecessorAnalytic
+import Zeta23.CCM.FrozenIntrinsicPredecessorComplex
 import Zeta23.CCM.SourceMomentDecomposition
 import Zeta23.CCM.CrossParitySecularTransfer
 import Zeta23.CCM.KernelSourceTransport
