@@ -21,16 +21,16 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "PR #140 proves the real-axis scalar extraction -2*wCorrection(L)=-log(L)+remainder(L), but the full frozen projected predecessor still needs a theorem-backed analytic/log-cover representation",
-        "the active route must work on the actual intrinsicPredecessorBlock, not a predecessor-size or unprojected proxy",
-        "fixed finite canonical energy continuity on one frozen cutoff cell is a theorem obligation before a strict negative witness can be preserved under an aperture move",
-        "for each fixed cutoff/parity/size, determinant nonidentity and dense real regularity must be proved; structural identically-zero blocks would kill or narrow the route",
-        "after PR #140 produces a finite witness (N,u), simultaneous avoidance only needs both parities and sizes through N; a countable all-size Baire theorem is not a current dependency",
-        "the regularizing move should remain inside one physical cutoff cell so threshold crossing is not load-bearing",
-        "global first-bad must be freshly reselected after the move; the old least-bad index must not be assumed to persist",
-        "regular predecessors remove resonance but do not imply a positive successor or exclude a negative root",
-        "generic regular negative examples remain mandatory negative controls so the theorem cannot silently prove positivity",
-        "external Astra exact checks and numerics are discovery evidence only"
+        "PR #140 proves the real-axis scalar extraction -2*wCorrection(L)=-log(L)+remainder(L), and PR #142 proves fixed-cell continuity plus same-size/same-vector strict negative witness persistence for the actual canonicalSourceMatrix; neither proves the full frozen projected predecessor analytic/log-cover representation",
+        "the active route must work on the actual intrinsicPredecessorBlock, not a predecessor-size, unprojected, raw-Gram, or surrogate matrix",
+        "PR #142 retires fixed-witness continuity as an open first-break: preservation of one selected strict negative witness inside its physical cutoff cell is now PROVED",
+        "for each fixed cutoff/parity/size used by the production selection, determinant nonidentity and dense real regularity must still be proved; a structurally identically-zero block would kill or narrow the route",
+        "the post-#142 preferred composition minimizes bad size over the entire physical cutoff cell, making every smaller size good in both parities throughout that cell; production packaging of this cell-minimal selection is still OPEN",
+        "after choosing the cell-minimal bad size K*, dense regularity only needs to intersect the #142 persistent-negative open set for the relevant predecessor determinant(s) at N*=K*-1; countable all-size Baire and finite-prefix simultaneous regularization are not current dependencies",
+        "the analytic continuation must expose an exact operator identity A(L)=-Log(L)I+B(L) with B single-valued on a connected punctured domain supporting the monodromy argument; hidden monodromy or a basis/Gram mismatch invalidates the shortcut",
+        "regular predecessors remove resonance but do not imply a positive successor, a nonnegative regular Schur energy, or negative-root exclusion",
+        "the post-#142 generic analytic regularization countermodel is a mandatory negative control: persistence, cell/global minimality, regularity, parity and scalar logarithms alone can coexist with negative finite states",
+        "external exact checks, the standalone conditional Lean selection check, and high-precision rescaling computations remain non-authoritative discovery evidence unless merged/theoremized at the appropriate level"
       ],
       "score_inputs": {
         "cost": 2.8,
@@ -43,30 +43,23 @@
       "first_breaks": [
         {
           "id": "E4A4-APR-FB-01",
-          "statement": "on one frozen cutoff cell, the full production intrinsic predecessor cannot be given the required analytic/log-cover representation after the theorem-backed scalar -log(L) extraction",
+          "statement": "the actual frozen production intrinsic predecessor cannot be represented as -Log(L) times the identity plus a single-valued holomorphic remainder on a common connected punctured domain that agrees with the physical real cell and supports a winding loop around zero",
           "test_id": "prove_frozen_cell_intrinsic_predecessor_analytic_representation",
           "estimated_cost": 1.1,
           "decisive_if_failed": true
         },
         {
           "id": "E4A4-APR-FB-02",
-          "statement": "for one fixed cutoff/parity/size, the determinant is structurally identically zero or the monodromy/eigenvalue-counting argument fails to prove determinant nonidentity and dense regular apertures",
+          "statement": "for one fixed cutoff/parity/size needed by the route, the actual predecessor determinant is structurally identically zero or the logarithmic-monodromy finite-spectrum argument fails to establish determinant nonidentity and dense real regular apertures",
           "test_id": "prove_fixed_block_determinant_nonidentity",
           "estimated_cost": 1.4,
           "decisive_if_failed": true
         },
         {
           "id": "E4A4-APR-FB-03",
-          "statement": "a fixed finite canonical negative witness cannot be preserved by continuity inside one frozen cutoff cell",
-          "test_id": "prove_fixed_witness_cutoff_cell_continuity",
-          "estimated_cost": 0.9,
-          "decisive_if_failed": true
-        },
-        {
-          "id": "E4A4-APR-FB-04",
-          "statement": "after PR #140 supplies a finite witness size N, dense fixed-block regularity cannot be composed into finite simultaneous avoidance for both parities through N and fresh global-first-bad reselection",
-          "test_id": "compose_post140_witness_with_finite_regular_reselection",
-          "estimated_cost": 1.1,
+          "statement": "the cell-minimal bad-size construction cannot be production-packaged so that all smaller sizes are nonnegative throughout the same physical cutoff cell while a fixed bad parity witness is preserved on the PR #142 open neighborhood and intersected with dense regularity at the relevant predecessor size",
+          "test_id": "compose_post142_cell_minimum_with_dense_regular_selection",
+          "estimated_cost": 1.0,
           "decisive_if_failed": true
         }
       ]
@@ -80,13 +73,14 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "this action depends on a theorem-backed regular first-bad witness; PR #140 supplies unique preimages conditional on regularity but does not prove dense regular-aperture selection",
+        "this action depends on a theorem-backed regular first-bad witness; PR #142 closes fixed-cell witness persistence but determinant nonidentity, dense regularity and production cell-minimal regular selection remain OPEN",
         "formal code should prefer the unique x0 satisfying A x0=b rather than making A^-1 load-bearing before a dedicated inverse interface exists",
         "the target Ecanonical(c-x0)>=0 is the hard arithmetic sign, so an auxiliary positive form equivalent to successor positivity is circular",
         "the external audit reports extremely sharp prime/arch/scalar cancellation in small canonical samples, so independent coarse channel majorants may be too lossy",
         "the external audit reports negative leading atomwise determinant coefficients, so termwise determinant positivity/SOS is not a credible default mechanism",
         "modified prime-weight experiments show the exact arithmetic coefficients matter; a proof shared by nearby perturbed sources is suspect unless its scope explains that sensitivity",
-        "both parities, exact production normalization and the exact forced regular first-bad carrier must be respected"
+        "the post-#142 generic analytic countermodel shows that even persistent badness plus globally positive predecessors and scalar -log(L) structure can occur generically, so the final sign must spend actual canonical arithmetic",
+        "both parities where required, exact production normalization and the exact forced regular cell-minimal carrier must be respected"
       ],
       "score_inputs": {
         "cost": 3.2,
@@ -106,7 +100,7 @@
         },
         {
           "id": "E4A4-SCHUR-FB-02",
-          "statement": "the exact prime/arch/scalar pairing on the unique trial u0=c-x0 with A x0=b yields no independently controlled remainder beyond a restatement of successor positivity",
+          "statement": "the exact pole/prime/arch/scalar pairing on the unique trial u0=c-x0 with A x0=b yields no independently controlled remainder beyond a restatement of successor positivity",
           "test_id": "derive_regular_schur_paired_source_remainder",
           "estimated_cost": 1.8,
           "decisive_if_failed": false
@@ -124,12 +118,13 @@
       "surviving_objections": [
         "PR #137 proves only that the exact domination certificate is sufficient; it does not prove q_c>=0 or Delta(w)>=0",
         "post-#138 analysis sharpens the circularity firewall: under predecessor nonnegativity and a one-dimensional shell, universal domination is equivalent to successor one-step positivity",
-        "PR #140 adds aperture freedom and regularity interfaces but does not make universal domination a smaller theorem",
+        "PR #140 adds aperture freedom and PR #142 adds fixed-cell same-witness persistence, but neither makes universal domination a smaller arithmetic theorem",
         "therefore this action has low information gain unless a genuinely independent canonical arithmetic mechanism appears",
         "generic Hermitian/parity/KKT/transfer structure remains quarantined by DR-012 and exact rational countermodels",
         "factorwise alpha/Gamma/overlap/source-moment closure remains quarantined by DR-015",
         "shift-invariant transfer data remain quarantined by DR-016; any proof must retain #136/#137 scalar-sensitive normalization",
         "atomwise positive determinant/SOS is quarantined by DR-018 pending a changed premise",
+        "the post-#142 analytic regularization countermodel further blocks any proof based only on persistence, regularity, parity, minimality and scalar logarithms",
         "a canonical scoped sign failure would falsify this universal route but not RH"
       ],
       "score_inputs": {
@@ -167,8 +162,8 @@
       "dead_route_matches": [],
       "surviving_objections": [
         "global exclusion cannot run until either the regular first-bad Schur-energy sign or an independently proved universal domination theorem is available",
-        "the post-#140 preferred composition is fixed-cell finite regularization -> fresh regular first-bad -> unique A x0=b -> Ecanonical(c-x0)>=0 -> contradiction with forced Re S0<0",
-        "PR #140 supplies eventual first-bad existence at every sufficiently large aperture but does not exclude the reselected bad state",
+        "the post-#142 preferred composition is cell-minimal bad-size selection -> #142 same-witness persistence -> dense actual predecessor regularity -> unique A x0=b -> Ecanonical(c-x0)>=0 -> contradiction with forced Re S0<0",
+        "PR #142 supplies persistence of a fixed negative witness but does not prove dense regularity or the arithmetic sign needed to exclude the selected state",
         "no division by alpha, Gamma, overlap or source moment is legal without separate nonzeroness",
         "terminal Mathlib RH still requires an explicit statement bridge after finite first-bad exclusion"
       ],
@@ -183,7 +178,7 @@
       "first_breaks": [
         {
           "id": "E4A4-GLOBAL-FB-03",
-          "statement": "after fixed-cell regular witness selection and a theorem-backed regular Schur-energy sign, the same forced first-bad witness cannot be composed into a contradiction",
+          "statement": "after post-#142 cell-minimal regular witness selection and a theorem-backed regular Schur-energy sign, the same forced first-bad witness cannot be composed into a contradiction",
           "test_id": "compose_regular_schur_sign_with_global_first_bad_witness",
           "estimated_cost": 1.0,
           "decisive_if_failed": true
@@ -202,7 +197,7 @@
         "D is algebraic, not unitary or isometric",
         "rank-at-most-one defect does not identify which parity carries a zero mode",
         "the post-#138 correction-vector proportionality signal removes one hoped-for independence mechanism",
-        "PR #140 now attacks predecessor singularity more directly through aperture freedom plus regularity selection",
+        "PR #140 aperture freedom plus PR #142 fixed-cell persistence now attack predecessor singularity more directly through analytic dense-regularity selection",
         "shifted-nullity remains supportive unless it adds independent canonical source information beyond A4R"
       ],
       "score_inputs": {
@@ -235,7 +230,7 @@
         "strict monotonicity yields root uniqueness while a hypothetical off-line zero already forces one negative root",
         "root uniqueness is weaker than negative-root exclusion",
         "the generic derivative S'(lambda)=-rho-||(A-lambda I)^-1b||^2 is compatible with one negative root",
-        "this route should not displace A4R unless it supplies independent source-specific exclusion information"
+        "this route should not displace post-#142 analytic regularization unless it supplies independent source-specific exclusion information"
       ],
       "score_inputs": {
         "cost": 2.0,
@@ -266,7 +261,7 @@
       "surviving_objections": [
         "a strictly positive predecessor floor is not available from first-bad minimality alone",
         "the shell gap g_N=q_N-mu_N may fail to stay positive",
-        "regular-aperture selection now attacks predecessor singularity more directly",
+        "post-#142 cell-minimal analytic regular-aperture selection attacks predecessor singularity more directly",
         "the theorem should not displace canonical regular-source work unless it supplies independent exclusion information"
       ],
       "score_inputs": {
