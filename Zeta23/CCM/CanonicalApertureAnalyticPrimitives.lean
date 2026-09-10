@@ -7,7 +7,7 @@ noncomputable section
 
 namespace Zeta23.CCM
 
-open Complex MeasureTheory Set
+open Complex MeasureTheory Set Filter
 open scoped Interval
 
 /-!
@@ -67,16 +67,15 @@ theorem alphaL_eq_unitInterval_integral
     apply intervalIntegral.integral_congr
     intro t _
     unfold regularizedAlphaIntegrand
+    dsimp
     have harg :
         2 * Real.pi * (n : ℝ) * (L * t) / L =
           2 * Real.pi * (n : ℝ) * t := by
       field_simp [hLn]
-      ring
     rw [harg]
     ring
   rw [hInt, intervalIntegral.integral_const_mul]
   field_simp [hLn, Real.pi_ne_zero]
-  ring
 
 /-- Exact fixed-unit-interval representation of the production `betaL`. -/
 theorem betaL_eq_unitInterval_integral
@@ -95,11 +94,11 @@ theorem betaL_eq_unitInterval_integral
   apply intervalIntegral.integral_congr
   intro t _
   unfold regularizedBetaIntegrand
+  dsimp
   have harg :
       2 * Real.pi * (n : ℝ) * (L * t) / L =
         2 * Real.pi * (n : ℝ) * t := by
     field_simp [hLn]
-    ring
   rw [harg]
 
 /-- Exact fixed-unit representation of the direct equation-(4.4) diagonal
@@ -134,15 +133,14 @@ theorem sourceEq44GammaL_sub_wCorrection_eq_unitInterval_integral
   apply intervalIntegral.integral_congr
   intro t _
   unfold regularizedSourceEq411LhsIntegrand
+  dsimp
   have hLn : L ≠ 0 := hL.ne'
   have harg :
       2 * Real.pi * (n : ℝ) * (L * t) / L =
         2 * Real.pi * (n : ℝ) * t := by
     field_simp [hLn]
-    ring
   rw [harg]
-  field_simp [hLn]
-  ring
+  field_simp [hLn] <;> ring
 
 /-- Complex divided slope `sin(z)/z`, with value one at zero. -/
 def complexArchSinc (z : ℂ) : ℂ :=
