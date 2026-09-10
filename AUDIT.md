@@ -1,18 +1,18 @@
-# RHRC formal audit — theorem authority through PR #140; fixed-cell A4R frontier
+# RHRC formal audit — theorem authority through PR #142; analytic regularity frontier
 
 > **RH remains OPEN.**
 
 ## Current authority split
 
 ```text
-live main after merged PR #140 = fa96196b5bd6ed754853b0bdacee1dbd2356022f
-live main tree = 2015404927540ae79a64469af82813463694b71d
+live main after merged PR #142 = 3e8d2995a1c00a9aef0d8cb0f5382658c91a8673
+live main tree = a92d03d0d4ad800d544a835b8ae2e3d23bae2c47
 
-theorem-state anchor = PR #140 merge fa96196b5bd6ed754853b0bdacee1dbd2356022f
-validated theorem head = 77b52cfc73dfd83d2a0ed4373befba97d77e48e5
-validated theorem tree = 2015404927540ae79a64469af82813463694b71d
-RHRC #882 = SUCCESS
-Permansson #655 = SUCCESS
+theorem-state anchor = PR #142 merge 3e8d2995a1c00a9aef0d8cb0f5382658c91a8673
+validated theorem head = 23d96af9aafd86ad26ae7913c3d6c14503d539de
+validated theorem tree = a92d03d0d4ad800d544a835b8ae2e3d23bae2c47
+RHRC #889 = SUCCESS
+Permansson #662 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
@@ -38,7 +38,7 @@ Live GitHub head + exact compiler/CI evidence outrank this prose.
 Delta(w)=q_c*q_A(w)-|<w,b>|^2.
 ```
 
-Also PROVED: conditional domination sufficiency, kernel/range zero-shift consequences, `Re S0>=0` under domination plus predecessor nonnegativity, no safe negative explicit root under domination, exact domination-failure disjunction, and the global off-line-zero sign-failure countercertificate.
+Also PROVED: conditional domination sufficiency, kernel/range zero-shift consequences, `Re S0>=0` under domination plus predecessor nonnegativity, no safe negative explicit Schur root under domination, exact domination-failure disjunction, and the global off-line-zero sign-failure countercertificate.
 
 ### PR #140 — aperture freedom and regularity scaffold
 
@@ -55,83 +55,126 @@ Also PROVED:
 ```text
 every sufficiently large L -> some AnyParityBad(L,N)
 every sufficiently large L -> freshly selectable least global-first-bad Nstar
-```
-
-and the exact regularity/frozen-source interfaces:
-
-```text
 IntrinsicPredecessorRegular <-> injective intrinsicPredecessorBlock
-regular predecessor -> unique preimage of every target
 regular predecessor -> unique cubic zero-shift preimage
 floor(exp L)=Q -> frozenCanonicalPrimeMatrix Q L K = canonicalPrimeMatrix L K
 L=log q -> entering source atom matrix is exactly zero
 -2*wCorrection(L) = -log(L) + canonicalApertureScalarRemainder(L), L>0.
 ```
 
-No theorem proves the analytic determinant-nonidentity step, dense regular apertures, the final regular Schur sign, negative-root exclusion, or RH.
+### PR #142 — fixed-cell canonical continuity and witness persistence
 
-## Post-#140 research correction
-
-The most important structural change is not a new positivity statement. It is the aperture quantifier.
-
-Because an off-line zero now forces fresh finite negativity at every sufficiently large aperture, A4R no longer has to move one old finite witness through an unknown global regularity problem.
-
-The preferred reduction is:
+**PROVED:** on each physical cutoff cell `I_Q=(log Q,log(Q+1))` with `Q>=1`:
 
 ```text
-choose one large frozen cutoff cell
--> invoke #140 inside the cell
--> learn a finite witness size N
--> preserve that one strict negative value locally
--> regularize only finitely many predecessor blocks up to N in both parities
--> reselect global first-bad.
+floor(exp L)=Q;
+entries of canonicalSourceMatrix are continuous;
+fixed-vector real canonical quadratic energy is continuous;
+a strict negative witness persists on an open in-cell neighborhood
+with the same finite size N and the same vector u.
 ```
 
-This makes countable all-size Baire avoidance unnecessary for the primary route.
-
-## Active A4R1 theorem
-
-Choose `Q` large and work strictly inside
+Exact headline declarations:
 
 ```text
-log Q < L < log(Q+1).
+continuousOn_canonicalSourceMatrix_apply_fixedCell
+continuousOn_re_canonicalSourceQuadraticForm_fixedCell
+exists_open_fixedCell_negativeCanonicalSourceWitness_persistence
+eventually_fixedCell_negativeCanonicalSourceWitness_persists_of_offLine_zero
+eventually_fixedCell_negativeCanonicalSourceWitness_persists_of_exists_offLine_zero
 ```
 
-The prime cutoff is constant on the cell. The next proof obligations are:
+The final #142 RHRC run #889 and Permansson run #662 both succeeded on theorem head `23d96af9...`; the validated theorem tree equals merged-main tree `a92d03d0...`.
+
+No theorem proves analytic continuation of the full frozen predecessor, determinant nonidentity, dense regular apertures, the final regular Schur sign, negative-root exclusion, or RH.
+
+## Post-#142 research correction
+
+#142 closes the continuity/persistence part of A4R. The preferred selection can now be simplified further.
+
+**DERIVED:** choose the least bad size over an entire physical cutoff cell:
 
 ```text
-1. continuity of fixed finite canonical energy in L on the cell;
-2. analytic/holomorphic representation of the actual projected predecessor;
-3. determinant nonidentity for each fixed parity/size;
-4. dense regularity for each fixed block;
-5. finite simultaneous avoidance through a prescribed M;
-6. compose with #140 negativity and fresh first-bad reselection.
+K* = min { K | exists L in I_Q, AnyParityBad L K }.
 ```
 
-The #140 real-axis `-log(L)` scalar coefficient is already theorem-backed. The unresolved analytic part is the full production predecessor remainder, especially the archimedean channel.
+Then every smaller size is good in both parities throughout that whole cell. At predecessor size `N*=K*-1`, both predecessor parity sectors are nonnegative for every aperture in the cell.
 
-The old dictionary/gamma bridge is therefore resurrected as a likely analytic input rather than rebuilding the continuation from raw interval integrals.
+Take a negative parity witness at size `K*`. #142 preserves that same witness on an open `J subset I_Q`. If the relevant predecessor regularity set is dense, it meets `J`; at the selected point predecessor PSD + injectivity gives positive definiteness.
+
+Therefore the primary route no longer needs:
+
+```text
+countable all-size Baire regularization;
+finite-prefix simultaneous regularization through the witness size.
+```
+
+A standalone abstract conditional version of this cell-minimal selection has been locally Lean-checked, but it is not merged theorem authority and does not prove canonical determinant density.
+
+## Active A4R1b theorem
+
+The remaining regularization target is now:
+
+```text
+actual frozen intrinsic predecessor
+  -> complex continuation of the exact production channels
+  -> A(L) = -Log(L) I + B(L)
+  -> single-valued holomorphic B on a connected punctured domain
+  -> logarithmic monodromy + finite-dimensional spectrum
+  -> determinant nonidentity
+  -> dense regular apertures on I_Q.
+```
+
+The target must remain the actual `intrinsicPredecessorBlock`, not a proxy.
+
+#142 makes direct analytic continuation more plausible because the real archimedean formulas already use origin-regularized divided slopes. After the real substitution `x=L t`, the integration interval becomes fixed. Those fixed-unit-interval formulas are **DERIVED**, not currently Lean declarations.
+
+The candidate punctured domain must be proved channel by channel. A schematic strip bounded by the first nonzero imaginary hyperbolic singularities is a lead, not theorem authority.
 
 ## Candidate determinant nonidentity argument
 
-The proposed log-cover representation is
+The #140 scalar extraction supplies the real-axis logarithmic term. The desired lifted family is
 
 ```text
-Ahat(z) = -z I + Rhat(z)
-Rhat(z+2*pi*i)=Rhat(z).
+Ahat(z) = -z I + B(exp z)
 ```
 
-If `det Ahat` vanished identically, periodicity would force one fixed `d x d` matrix to have `d+1` distinct eigenvalues differing by `2*pi*i`, impossible.
-
-This is a **LEAD / HYPOTHESIS** until the exact production continuation is theoremized. The invalid shortcut `A(exp z)=-zI+periodic` without a genuine log-cover continuation remains forbidden.
-
-## Smallest remaining obstruction after successful A4R1
-
-At the reselected first-bad state:
+with `B` single-valued in the aperture variable. Then
 
 ```text
-A>=0                    from first-bad minimality
-A injective             from A4R1
+B(exp(z+2*pi*i)) = B(exp z).
+```
+
+If `det Ahat` vanished identically, one fixed finite matrix would have arbitrarily many distinct eigenvalues differing by `2*pi*i`, impossible.
+
+This is a **LEAD / HYPOTHESIS** until the full production continuation and exact operator decomposition are theoremized. The shortcut `A(exp z)=-zI+periodic` without proving the single-valued remainder remains forbidden.
+
+## Stronger falsification after #142
+
+A generic analytic centered diagonal family can satisfy all of:
+
+```text
+exact scalar -log L term;
+positive predecessors throughout L>0;
+persistent finite negative witnesses at every aperture;
+a globally minimal bad size;
+common negative behavior in both parities.
+```
+
+This is not the canonical zeta source. It proves only that aperture freedom, persistence, minimality, regularity, parity and scalar logarithms cannot themselves yield the final contradiction.
+
+See `research/RHRC/countermodels/POST_142_REGULARIZATION_COUNTERMODEL_2026_09_10.md`.
+
+Once both predecessors are regular, the #134 kernel product law becomes vacuous on the trivial kernel. Regularization removes resonance; it does not convert kernel transport into an energy sign theorem.
+
+## Smallest remaining obstruction after successful analytic regularity
+
+At the selected regular first-bad state:
+
+```text
+A>=0                    from cell/global first-bad minimality
+A injective             from regularity
+A>0                     finite Hermitian consequence
 unique x0 with A x0=b   from #140 regularity scaffold
 u0=c-x0.
 ```
@@ -148,46 +191,36 @@ The decisive arithmetic target remains
 Ecanonical(c-x0)>=0
 ```
 
-on the exact forced regular first-bad trial, equivalently `<b,A^-1b><=q_c` once inverse shorthand is justified.
+on the exact forced production state, equivalently `<b,A^-1b><=q_c` once inverse shorthand is justified.
 
-This is substantial new mathematics and cannot be obtained by assuming successor PSD under another name.
-
-## Preserved derived/falsification state
-
-- **DERIVED:** under predecessor PSD and one-dimensional shell, universal `q_c>=0` plus `Delta(w)>=0` is equivalent to successor positivity.
-- **DERIVED:** `Delta(P_kerA b)=-||P_kerA b||^4`.
-- **DERIVED / external exact-check:** `d=-(6/(2*N-1))a` for the two correction vectors.
-- **DERIVED / external symbolic:** negative leading source-atom determinant coefficient rules out atomwise positive determinant/SOS as a default route.
-- **EXPERIMENTAL SIGNAL:** canonical Schur endpoints can arise from extreme prime/arch/scalar cancellation.
-- **EXPERIMENTAL SIGNAL:** tiny modified prime-weight perturbations can flip successor sign while predecessors stay positive.
-
-These are not canonical RH counterexamples and are not theorem authority.
+This is substantial new arithmetic. Universal one-step domination remains a valid broad closing condition but is not a reduced subproblem if its proof merely restates successor positivity.
 
 ## Current execution order
 
 ```text
-1. fixed-cell finite regularization: continuity + analytic predecessor + determinant nonidentity
-2. finite simultaneous regular-aperture selection through a prescribed horizon
-3. compose with #140 aperture freedom and fresh first-bad reselection
-4. package one regular first-bad source countercertificate
-5. interval/symbolic analysis of the full minimizing-trial Schur remainder
-6. derive an independent exact prime/arch/scalar remainder or inequality
-7. formalize regular canonical Schur-energy nonnegativity
-8. compose with forced Re S0<0
-9. explicit Mathlib RiemannHypothesis wrapper
+1. production cell-minimal bad-state wrapper
+2. complexify #142 regularized production primitives on an explicit common domain
+3. build the exact frozen intrinsic predecessor and isolate -Log(L) I
+4. prove finite-dimensional logarithmic-monodromy determinant nonidentity
+5. derive dense fixed-cell regularity
+6. intersect with #142 persistent negativity and package a regular first-bad certificate
+7. expose the exact negative regular zero-shift source energy
+8. derive an independent arithmetic contradiction from the full pole/arch/scalar/prime source
+9. compose to negative-root exclusion
+10. explicit Mathlib RiemannHypothesis wrapper
 ```
-
-Universal `q_c/Delta` domination remains a broad fallback if an independently positive canonical source mechanism is discovered.
 
 ## Permanent firewalls
 
 - compiler/CI validity is authoritative; repository presence alone is not;
-- theorem authority is through #140 and no further;
-- aperture freedom is PROVED, dense regular-aperture selection is OPEN;
-- regularity is not positivity;
-- all-size Baire regularization is not required unless finite-cell selection fails for a theoremized reason;
+- theorem authority is through #142 and no further;
+- fixed-cell continuity/persistence is PROVED; analyticity/dense regularity is OPEN;
+- cell-minimal regularization is DERIVED until merged;
+- regularity is not positivity of the successor;
+- all-size Baire and finite-prefix regularization are fallback infrastructure, not current dependencies;
 - universal determinant positivity cannot count as a reduction if it merely restates successor PSD;
 - no `A^-1` at zero before regularity; formal code should prefer the unique-preimage interface;
+- `Gamma0*mu(z)=0` with trivial kernel is not a sign theorem;
 - D is algebraic, not unitary/isometric;
 - no division by unproved transfer/source factors;
 - modified-source or generic countermodels are not zeta counterexamples;
@@ -195,6 +228,6 @@ Universal `q_c/Delta` domination remains a broad fallback if an independently po
 - machine claim promotion remains separate;
 - RH remains OPEN.
 
-Newest research implications: `research/RHRC/RESEARCH_LEADS_POST_140_APERTURE_FREEDOM_DELTA.md`.
+Newest research implications: `research/RHRC/RESEARCH_LEADS_POST_142_FIXED_CELL_PERSISTENCE_DELTA.md`.
 
 **RH remains OPEN.**

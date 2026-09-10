@@ -7,7 +7,7 @@ from types import SimpleNamespace
 RHRC = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(RHRC))
 
-from control_v2.run_control import _collect_retro_receipts
+from control_v2.run_control import _collect_retro_receipts, _selected_first_break
 from control_v2.router import SCORE_FORMULA_VERSION, action_score, load_actions, recommend
 from control_v2.state import load_research_state
 
@@ -21,16 +21,16 @@ class ControlV2Tests(unittest.TestCase):
         self.assertFalse(boundary["may_emit_terminal_rh_status"])
         self.assertFalse(boundary["may_promote_lean_theorem"])
 
-    def test_state_has_post_140_theorem_and_post_117_control_anchors(self):
+    def test_state_has_post_142_theorem_and_post_117_control_anchors(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 140)
+        self.assertEqual(state.anchor.pr, 142)
         self.assertEqual(
             state.anchor.merge_commit,
-            "fa96196b5bd6ed754853b0bdacee1dbd2356022f",
+            "3e8d2995a1c00a9aef0d8cb0f5382658c91a8673",
         )
         self.assertEqual(
             state.anchor.tree,
-            "2015404927540ae79a64469af82813463694b71d",
+            "a92d03d0d4ad800d544a835b8ae2e3d23bae2c47",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -91,18 +91,32 @@ class ControlV2Tests(unittest.TestCase):
             scores["DEFORMATION_BUDGET_PAPER_TEST"],
         )
 
-    def test_regular_aperture_action_is_post140_fixed_cell_finite_horizon(self):
+    def test_regular_aperture_action_is_post142_cell_minimal_analytic_route(self):
         registry = json.loads(
             (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
         )
         action = registry["actions"]["E4_A4_REGULAR_APERTURE_SELECTION"]
         objections = "\n".join(action["surviving_objections"])
         first_breaks = "\n".join(x["statement"] for x in action["first_breaks"])
-        self.assertIn("PR #140", objections)
-        self.assertIn("frozen cutoff cell", objections)
-        self.assertIn("sizes through N", objections)
-        self.assertIn("fixed cutoff/parity/size", first_breaks)
-        self.assertIn("finite simultaneous avoidance", first_breaks)
+        self.assertIn("PR #142", objections)
+        self.assertIn("same-size/same-vector", objections)
+        self.assertIn("cell-minimal", objections)
+        self.assertIn("single-valued holomorphic remainder", first_breaks)
+        self.assertIn("determinant nonidentity", first_breaks)
+        self.assertIn("cell-minimal bad-size", first_breaks)
+        self.assertNotIn("fixed finite canonical negative witness cannot be preserved", first_breaks)
+
+        selected_break = _selected_first_break(
+            registry, "E4_A4_REGULAR_APERTURE_SELECTION"
+        )
+        self.assertIsNotNone(selected_break)
+        self.assertEqual(selected_break["break_id"], "E4A4-APR-FB-01")
+
+        costs = {x["id"]: x["estimated_cost"] for x in action["first_breaks"]}
+        self.assertLess(costs["E4A4-APR-FB-01"], costs["E4A4-APR-FB-02"])
+        self.assertLess(costs["E4A4-APR-FB-02"], costs["E4A4-APR-FB-03"])
+        fb03 = next(x for x in action["first_breaks"] if x["id"] == "E4A4-APR-FB-03")
+        self.assertIn("conditional downstream packaging", fb03["statement"])
 
     def test_universal_domination_remains_routable_but_is_not_selected(self):
         state = load_research_state()

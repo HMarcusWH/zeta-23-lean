@@ -3,9 +3,9 @@
   "boundary_id": "B0_RH_2026_08_20",
   "terminal_claim": "RH_OPEN",
   "merged_theorem_anchor": {
-    "pr": 140,
-    "merge_commit": "fa96196b5bd6ed754853b0bdacee1dbd2356022f",
-    "tree": "2015404927540ae79a64469af82813463694b71d",
+    "pr": 142,
+    "merge_commit": "3e8d2995a1c00a9aef0d8cb0f5382658c91a8673",
+    "tree": "a92d03d0d4ad800d544a835b8ae2e3d23bae2c47",
     "status": "MERGED_GREEN_THEOREM_STATE"
   },
   "merged_control_anchor": {
@@ -15,5 +15,5 @@
     "status": "MERGED_GREEN_CONTROL_STATE"
   },
   "candidate_branch": null,
-  "control_note": "PR #140 is the merged theorem anchor (validated theorem head 77b52cfc73dfd83d2a0ed4373befba97d77e48e5; validated tree 2015404927540ae79a64469af82813463694b71d; RHRC #882 and Permansson #655 success). It proves aperture freedom from an off-line zero at every sufficiently large aperture and theorem-locks the actual predecessor regularity/frozen-source scalar scaffold. The post-#140 research pass simplifies A4R: choose one large frozen cutoff cell first, invoke #140 at an interior aperture to obtain a finite negative witness (N,u), preserve that one strict negative value locally, regularize only the finitely many predecessor blocks in both parities through N, then freshly reselect global first-bad. Countable all-size Baire regularization and threshold crossing are not primary obligations. The immediate frontier remains FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_APERTURE_SELECTION, now specified as fixed-cell finite regularization. The next explicit arithmetic action remains regular minimizing-trial Schur-energy nonnegativity on the unique x0 satisfying A x0=b. Universal one-step domination remains a broad fallback because under predecessor nonnegativity and a one-dimensional shell it is DERIVED equivalent to successor positivity. PR #117 remains the Control-v2 semantic anchor. Control v2 has no theorem/claim authority. RH remains OPEN."
+  "control_note": "PR #142 is the merged theorem anchor (validated theorem head 23d96af9aafd86ad26ae7913c3d6c14503d539de; validated tree a92d03d0d4ad800d544a835b8ae2e3d23bae2c47; RHRC #889 and Permansson #662 success). It proves fixed-cell continuity of the actual canonicalSourceMatrix and fixed-vector real quadratic energy, plus same-size/same-vector strict negative witness persistence inside one physical cutoff cell; its ExceptionalZero wrapper composes this with PR #140 aperture freedom. The post-#142 research pass further compresses A4R: choose the least bad size over the entire cutoff cell, so every smaller size is nonnegative in both parities throughout the cell, preserve a bad parity witness on an open set using #142, and regularize only the relevant predecessor determinant(s) at that cell-minimal size. Countable all-size Baire regularization and finite-prefix simultaneous regularization are no longer primary obligations. The immediate frontier remains FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_APERTURE_SELECTION, now focused on an exact analytic frozen intrinsic predecessor, single-valued holomorphic remainder after the #140 scalar -log(L) extraction, determinant nonidentity by logarithmic monodromy, dense fixed-cell regularity, and production cell-minimal selection. Regularity removes resonance but does not supply the decisive arithmetic sign: Ecanonical(c-x0)>=0 on the exact forced regular trial remains OPEN. A generic post-#142 analytic regularization countermodel is a mandatory negative control showing that persistence, minimality, regularity, parity and scalar logarithms alone do not contradict negative finite states. PR #117 remains the Control-v2 semantic anchor. Control v2 has no theorem/claim authority. RH remains OPEN."
 }
