@@ -34,63 +34,60 @@ A skipped downstream step is not a passed gate.
 ## Current theorem/control validation anchors
 
 ```text
-theorem-state anchor = PR #140 merge fa96196b5bd6ed754853b0bdacee1dbd2356022f
-validated theorem head = 77b52cfc73dfd83d2a0ed4373befba97d77e48e5
-validated theorem tree = 2015404927540ae79a64469af82813463694b71d
-RHRC #882 = SUCCESS
-Permansson #655 = SUCCESS
+theorem-state anchor = PR #142 merge 3e8d2995a1c00a9aef0d8cb0f5382658c91a8673
+validated theorem head = 23d96af9aafd86ad26ae7913c3d6c14503d539de
+validated theorem tree = a92d03d0d4ad800d544a835b8ae2e3d23bae2c47
+RHRC #889 = SUCCESS
+Permansson #662 = SUCCESS
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
 ```
 
-The #140 validated theorem head and merged main have the same tree. PR #117 remains the latest Control-v2 semantic authority because #140 changes mathematical state, not the controller capability/authority model.
+The #142 validated theorem head and merged main have the same tree. PR #117 remains the latest Control-v2 semantic authority because #142 changes mathematical state, not the controller capability/authority model.
 
-## Exact #140 gate evidence
+## Exact #142 gate evidence
 
-At validated theorem head `77b52cfc73dfd83d2a0ed4373befba97d77e48e5`, RHRC workflow run #882 completed successfully. Its jobs included:
+At validated theorem head `23d96af9aafd86ad26ae7913c3d6c14503d539de`, RHRC workflow run #889 (`34415009760`) completed successfully. Its jobs include the repository claim/regression suite, Control-v2 real-history smoke, normalization/source firewalls, aggregate Lean builds and forbidden-placeholder/project-axiom checks.
 
-```text
-python-rhrc                         SUCCESS
-  RHRC claim and regression suite  SUCCESS
-  Control v2 real-history smoke    SUCCESS
-
-r003-normalization-audit            SUCCESS
-  canonical normalization lock      SUCCESS
-  dictionary/source firewalls       SUCCESS
-  R004 shift-invariant audit        SUCCESS
-  external-reference firewall       SUCCESS
-
-lean                               SUCCESS
-  lake build Zeta23.CCM             SUCCESS
-  lake build Zeta23.ExceptionalZero SUCCESS
-  forbidden-placeholder scan        SUCCESS
-```
-
-Permansson workflow run #655 also completed successfully.
-
-The exact #140 umbrella imports include `CanonicalApertureRegularityScaffold` in `Zeta23.CCM` and `ApertureFreedom` in `Zeta23.ExceptionalZero`, so those declarations lie in the validated build closure.
-
-## What #140 validates
-
-Compiler-validated theorem authority now includes:
+The authoritative aggregate targets are:
 
 ```text
-Zeta23.ExceptionalZero.eventually_all_apertures_have_negativeCanonicalSourceWitness_of_offLine_zero
-Zeta23.ExceptionalZero.eventually_all_apertures_have_negativeCanonicalSourceWitness_of_exists_offLine_zero
-Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero
-Zeta23.ExceptionalZero.eventually_all_apertures_have_globalFirstBad_of_offLine_zero
-
-Zeta23.CCM.intrinsicPredecessorRegular_iff_injective
-Zeta23.CCM.existsUnique_intrinsicPredecessorBlock_preimage_of_regular
-Zeta23.CCM.existsUnique_cubicZeroShiftPreimage_of_regular
-Zeta23.CCM.frozenCanonicalPrimeMatrix_eq_canonicalPrimeMatrix
-Zeta23.CCM.primeSourceCoordinate_log_self
-Zeta23.CCM.sourceMatrix_primeSourceCoordinate_log_self
-Zeta23.CCM.neg_two_wCorrection_eq_neg_log_add_remainder
+lake build Zeta23.CCM
+lake build Zeta23.ExceptionalZero
 ```
 
-These theorems establish aperture freedom and algebraic/frozen-source interfaces. They do **not** establish dense regularity, full aperture analyticity, successor positivity, negative-root exclusion, or RH.
+The exact #142 umbrella imports include `CanonicalApertureContinuity` in `Zeta23.CCM` and `FixedCellWitnessPersistence` in `Zeta23.ExceptionalZero`, so those declarations lie in the validated build closure.
+
+Permansson workflow run #662 (`34415009766`) also completed successfully on the same theorem head.
+
+The new endpoint axiom prints expose only the accepted standard axiom surface (`propext`, `Classical.choice`, `Quot.sound`); no `sorryAx` appeared in the checked endpoint output.
+
+## What #142 validates
+
+Compiler-validated theorem authority includes the #140 aperture-freedom/regularity scaffold and now additionally:
+
+```text
+Zeta23.CCM.continuousOn_canonicalSourceMatrix_apply_fixedCell
+Zeta23.CCM.continuousOn_re_canonicalSourceQuadraticForm_fixedCell
+Zeta23.CCM.exists_open_fixedCell_negativeCanonicalSourceWitness_persistence
+
+Zeta23.ExceptionalZero.eventually_fixedCell_negativeCanonicalSourceWitness_persists_of_offLine_zero
+Zeta23.ExceptionalZero.eventually_fixedCell_negativeCanonicalSourceWitness_persists_of_exists_offLine_zero
+```
+
+The exact proof also theorem-locks the real regularized primitive identities used to obtain continuity, including:
+
+```text
+Zeta23.CCM.regularizedArchScale_eq_mul_archDensity
+Zeta23.CCM.alphaL_eq_regularized_integral
+Zeta23.CCM.betaL_eq_regularized_integral
+Zeta23.CCM.regularizedSourceEq411LhsIntegrand_eq
+```
+
+These are **real-axis regularized integral identities and continuity theorems**. They do not validate complex analyticity, the later `x=L t` fixed-unit-interval reformulation, determinant nonidentity, dense regularity, successor positivity, negative-root exclusion, or RH.
+
+The fixed-unit-interval rescaled formulas discussed in the post-#142 research pass are currently **DERIVED**, not merged declarations. High-precision comparison of those rescaled formulas is **EXPERIMENTAL SIGNAL**, not theorem authority.
 
 ## Import/build closure law
 
@@ -100,7 +97,7 @@ A declaration is compiler-validated project theorem authority only if its module
 
 PR #103 remains the canonical historical example: `ConstrainedParityGeometry.lean` was imported by `Zeta23.CCM` and compiled; `ParityBadness.lean` was merged but not imported and remained staged source until a later build closure consumed it.
 
-Current example: PR #140 wires `CanonicalApertureRegularityScaffold.lean` into `Zeta23.CCM` and `ApertureFreedom.lean` into `Zeta23.ExceptionalZero`; both umbrella targets passed the exact-head build.
+Current example: PR #142 wires `CanonicalApertureContinuity.lean` into `Zeta23.CCM` and `FixedCellWitnessPersistence.lean` into `Zeta23.ExceptionalZero`; both umbrella targets passed the exact-head build.
 
 ## Axiom inspection
 
@@ -113,7 +110,7 @@ For production-promoted R003 bindings, `ClaimBindings.lean` must contain exact
 
 The accepted production foundation is `[propext, Classical.choice, Quot.sound]`. No production theorem may depend on `sorryAx` or a promoted project axiom.
 
-Supporting theorem modules may also carry module-local `#print axioms` checks without thereby becoming machine-promoted claims. PR #140 prints axioms for the aperture-freedom and regularity scaffold headline theorems; this does not by itself promote them into `CLAIM_REGISTRY.json`.
+Supporting theorem modules may also carry module-local `#print axioms` checks without thereby becoming machine-promoted claims. PR #142 prints axioms for its continuity/persistence headline theorems; this does not by itself promote them into `CLAIM_REGISTRY.json`.
 
 ## Proof versus promotion
 
@@ -127,7 +124,7 @@ Zeta23/CCM/ClaimBindings.lean
 
 `promoted_binding_lint.py` enforces set equality, theorem-name equality, and exact #check/#print-axioms presence.
 
-Compiler-PROVED theorem authority beyond the current machine-promoted claim list must not be silently upgraded to `PROVED_UNCONDITIONAL` registry status. PR #140 is another example of theorem authority advancing without a corresponding automatic machine-claim promotion.
+Compiler-PROVED theorem authority beyond the current machine-promoted claim list must not be silently upgraded to `PROVED_UNCONDITIONAL` registry status. PR #142 is another example of theorem authority advancing without a corresponding automatic machine-claim promotion.
 
 ## Control-v2 validation law
 
@@ -158,7 +155,8 @@ A Control-v2 recommendation is **not** a theorem, claim promotion, RH evidence, 
 - **PR green** — all required gates for the exact PR object succeeded.
 - **PROVED** — exact statement compiler-validated with acceptable axiom surface.
 - **PROVED_UNCONDITIONAL** — proved theorem additionally registered on the production claim surface.
-- **DERIVED** — straightforward consequence not separately theorem-locked.
+- **DERIVED** — mathematical consequence not separately theorem-locked.
+- **LOCAL LEAN CHECK** — standalone/local compilation evidence outside merged theorem authority.
 - **LEAD / HYPOTHESIS** — motivated research route.
 - **EXPERIMENTAL SIGNAL** — numerical/search/discovery evidence only.
 - **OPEN** — not established.
@@ -173,6 +171,6 @@ A post-green sync must not rewrite a large historical ledger merely to manufactu
 
 ## Claim firewall
 
-Green supporting mathematics, aperture freedom, regularity interfaces, source normalization, finite nesting, parity geometry, determinant reductions, research-control recommendations, budget diagnostics and numerical agreement are not RH.
+Green supporting mathematics, aperture freedom, fixed-cell continuity, witness persistence, regularity interfaces, source normalization, finite nesting, parity geometry, determinant reductions, research-control recommendations, budget diagnostics and numerical agreement are not RH.
 
 **RH remains OPEN unless the exact terminal RH theorem passes the complete proof and claim-validation gates.**
