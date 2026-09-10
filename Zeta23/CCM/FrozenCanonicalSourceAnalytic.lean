@@ -1,4 +1,5 @@
 import Zeta23.CCM.CanonicalApertureContinuity
+import Zeta23.CCM.CanonicalApertureComplexSource
 import Zeta23.CCM.CanonicalSourceChannels
 
 noncomputable section
