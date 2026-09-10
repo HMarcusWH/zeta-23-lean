@@ -57,12 +57,24 @@ theorem alphaL_eq_unitInterval_integral
     unfold regularizedAlphaIntegrand
     fun_prop (disch := exact hL.ne')
   rw [intervalIntegral_zero_L_eq_mul_zero_one hL hg]
-  rw [← intervalIntegral.integral_const_mul]
-  apply congrArg ((1 / Real.pi) * ·)
-  apply intervalIntegral.integral_congr
-  intro t _
-  unfold regularizedAlphaIntegrand
   have hLn : L ≠ 0 := hL.ne'
+  have hInt :
+      (∫ t in (0 : ℝ)..1, regularizedAlphaIntegrand n L (L * t)) =
+        ∫ t in (0 : ℝ)..1,
+          (2 * Real.pi * (n : ℝ) / L) *
+            (Real.sinc (2 * Real.pi * (n : ℝ) * t) *
+              regularizedArchScale (L * t)) := by
+    apply intervalIntegral.integral_congr
+    intro t _
+    unfold regularizedAlphaIntegrand
+    have harg :
+        2 * Real.pi * (n : ℝ) * (L * t) / L =
+          2 * Real.pi * (n : ℝ) * t := by
+      field_simp [hLn]
+      ring
+    rw [harg]
+    ring
+  rw [hInt, intervalIntegral.integral_const_mul]
   field_simp [hLn, Real.pi_ne_zero]
   ring
 
@@ -83,8 +95,12 @@ theorem betaL_eq_unitInterval_integral
   apply intervalIntegral.integral_congr
   intro t _
   unfold regularizedBetaIntegrand
-  congr 2
-  field_simp [hLn]
+  have harg :
+      2 * Real.pi * (n : ℝ) * (L * t) / L =
+        2 * Real.pi * (n : ℝ) * t := by
+    field_simp [hLn]
+    ring
+  rw [harg]
 
 /-- Exact fixed-unit representation of the direct equation-(4.4) diagonal
 primitive after removing only `wCorrection`. -/
@@ -100,11 +116,14 @@ theorem sourceEq44GammaL_sub_wCorrection_eq_unitInterval_integral
       sourceEq44GammaL n L - wCorrection L =
         ∫ x in (0 : ℝ)..L, regularizedSourceEq411LhsIntegrand n L x := by
     unfold sourceEq44GammaL
-    rw [sub_eq_iff_eq_add]
-    congr 1
-    apply intervalIntegral.integral_congr
-    intro x _
-    exact (regularizedSourceEq411LhsIntegrand_eq n L x).symm
+    have hreg :
+        (∫ x in (0 : ℝ)..L, sourceEq411LhsIntegrand n L x) =
+          ∫ x in (0 : ℝ)..L, regularizedSourceEq411LhsIntegrand n L x := by
+      apply intervalIntegral.integral_congr
+      intro x _
+      exact (regularizedSourceEq411LhsIntegrand_eq n L x).symm
+    rw [hreg]
+    ring
   rw [hgamma]
   have hg : Continuous
       (fun x : ℝ => regularizedSourceEq411LhsIntegrand n L x) := by
@@ -116,6 +135,12 @@ theorem sourceEq44GammaL_sub_wCorrection_eq_unitInterval_integral
   intro t _
   unfold regularizedSourceEq411LhsIntegrand
   have hLn : L ≠ 0 := hL.ne'
+  have harg :
+      2 * Real.pi * (n : ℝ) * (L * t) / L =
+        2 * Real.pi * (n : ℝ) * t := by
+    field_simp [hLn]
+    ring
+  rw [harg]
   field_simp [hLn]
   ring
 
@@ -164,7 +189,8 @@ theorem differentiable_complexArchSinc :
     Differentiable ℂ complexArchSinc := by
   unfold complexArchSinc
   rw [← differentiableOn_univ]
-  exact (Complex.differentiableOn_dslope univ_mem).2
+  have hU : (Set.univ : Set ℂ) ∈ 𝓝 (0 : ℂ) := by simp
+  exact (Complex.differentiableOn_dslope hU).2
     Complex.differentiable_sin.differentiableOn
 
 /-- The complex hyperbolic divided slope is analytic everywhere. -/
@@ -172,7 +198,8 @@ theorem differentiable_complexArchSinhSlope :
     Differentiable ℂ complexArchSinhSlope := by
   unfold complexArchSinhSlope
   rw [← differentiableOn_univ]
-  exact (Complex.differentiableOn_dslope univ_mem).2
+  have hU : (Set.univ : Set ℂ) ∈ 𝓝 (0 : ℂ) := by simp
+  exact (Complex.differentiableOn_dslope hU).2
     Complex.differentiable_sinh.differentiableOn
 
 /-- The complex cosine divided slope is analytic everywhere. -/
@@ -180,7 +207,8 @@ theorem differentiable_complexArchCosSlope :
     Differentiable ℂ complexArchCosSlope := by
   unfold complexArchCosSlope
   rw [← differentiableOn_univ]
-  exact (Complex.differentiableOn_dslope univ_mem).2
+  have hU : (Set.univ : Set ℂ) ∈ 𝓝 (0 : ℂ) := by simp
+  exact (Complex.differentiableOn_dslope hU).2
     Complex.differentiable_cos.differentiableOn
 
 /-- The complex exponential divided slope is analytic everywhere. -/
@@ -188,7 +216,8 @@ theorem differentiable_complexArchExpSlope :
     Differentiable ℂ complexArchExpSlope := by
   unfold complexArchExpSlope
   rw [← differentiableOn_univ]
-  exact (Complex.differentiableOn_dslope univ_mem).2
+  have hU : (Set.univ : Set ℂ) ∈ 𝓝 (0 : ℂ) := by simp
+  exact (Complex.differentiableOn_dslope hU).2
     Complex.differentiable_exp.differentiableOn
 
 /-- There is a genuine complex neighborhood of zero on which the regularized
