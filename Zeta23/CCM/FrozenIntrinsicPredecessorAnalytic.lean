@@ -134,11 +134,14 @@ theorem frozenParityCompressedCanonical_eq_neg_log_id_add_remainder
     frozenCanonicalSourceMatrix_eq_neg_log_identity_add_remainder Q N hL]
   change
     (euclideanParityBoundaryFlatSubspace p N).orthogonalProjectionOnto
-        (((( (-(Real.log L : ℂ)) •
+        (((((-(Real.log L : ℂ)) •
             (1 : Matrix (Fin (2 * N + 1)) (Fin (2 * N + 1)) ℂ)) +
           frozenCanonicalSourceRemainderReal Q L N).toEuclideanLin)
             (x : EuclideanSpace ℂ (Fin (2 * N + 1)))) =
-      ((-(Real.log L : ℂ)) • LinearMap.id +
+      ((-(Real.log L : ℂ)) •
+          (LinearMap.id :
+            euclideanParityBoundaryFlatSubspace p N →ₗ[ℂ]
+              euclideanParityBoundaryFlatSubspace p N) +
         frozenParityCompressedRemainder Q p L N) x
   simp [frozenParityCompressedRemainder_apply]
 
@@ -175,7 +178,10 @@ theorem frozenIntrinsicPredecessorBlock_eq_neg_log_id_add_remainder
     intrinsicPredecessorPart p N
         (frozenParityCompressedCanonical Q p L (N + 1)
           (x : euclideanParityBoundaryFlatSubspace p (N + 1))) =
-      ((-(Real.log L : ℂ)) • LinearMap.id +
+      ((-(Real.log L : ℂ)) •
+          (LinearMap.id :
+            intrinsicParityPredecessorSubspace p N →ₗ[ℂ]
+              intrinsicParityPredecessorSubspace p N) +
         frozenIntrinsicPredecessorRemainderReal Q p L N) x
   rw [frozenParityCompressedCanonical_eq_neg_log_id_add_remainder Q p (N + 1) hL]
   simp [frozenIntrinsicPredecessorRemainderReal]
