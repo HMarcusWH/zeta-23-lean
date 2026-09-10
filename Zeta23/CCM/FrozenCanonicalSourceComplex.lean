@@ -44,10 +44,8 @@ entry. -/
   · subst m
     simp [complexCanonicalArchWithoutWComponent,
       canonicalArchWithoutWComponent, hL]
-    push_cast
   · simp [complexCanonicalArchWithoutWComponent,
       canonicalArchWithoutWComponent, hnm, hL]
-    push_cast
 
 /-- Centered finite complex archimedean remainder matrix. -/
 def complexCanonicalArchWithoutWMatrix (z : ℂ) (K : ℕ) :
@@ -77,6 +75,7 @@ def complexApertureScalarFactor (z : ℂ) : ℂ :=
   unfold complexApertureScalarFactor
   rw [← Complex.ofReal_exp]
   push_cast
+  rfl
 
 /-- Complex continuation of the scalar remainder, using the principal complex
 log only on domains where `complexApertureScalarFactor z ∈ Complex.slitPlane`.
@@ -101,6 +100,7 @@ remainder. -/
   rw [complexApertureScalarFactor_ofReal,
     ← Complex.ofReal_log hfactor.le]
   push_cast
+  rfl
 
 /-- Full complex continuation of the frozen source remainder. -/
 def complexFrozenCanonicalSourceRemainder
