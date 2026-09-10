@@ -112,6 +112,7 @@ import Zeta23.CCM.FrozenCanonicalSourceAnalytic
 import Zeta23.CCM.FrozenCanonicalSourceComplex
 import Zeta23.CCM.FrozenIntrinsicPredecessorAnalytic
 import Zeta23.CCM.FrozenIntrinsicPredecessorComplex
+import Zeta23.CCM.CanonicalApertureHolomorphy
 import Zeta23.CCM.SourceMomentDecomposition
 import Zeta23.CCM.CrossParitySecularTransfer
 import Zeta23.CCM.KernelSourceTransport
