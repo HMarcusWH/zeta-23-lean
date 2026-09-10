@@ -23,20 +23,20 @@ A green but unmerged PR is branch evidence, not merged repository truth. A merge
 ## Current synchronized anchors
 
 ```text
-live main after merged PR #140 = fa96196b5bd6ed754853b0bdacee1dbd2356022f
-live main tree = 2015404927540ae79a64469af82813463694b71d
+live main after merged PR #142 = 3e8d2995a1c00a9aef0d8cb0f5382658c91a8673
+live main tree = a92d03d0d4ad800d544a835b8ae2e3d23bae2c47
 
-theorem-state anchor = PR #140 merge fa96196b5bd6ed754853b0bdacee1dbd2356022f
-validated theorem head = 77b52cfc73dfd83d2a0ed4373befba97d77e48e5
-validated theorem tree = 2015404927540ae79a64469af82813463694b71d
-RHRC #882 = SUCCESS
-Permansson #655 = SUCCESS
+theorem-state anchor = PR #142 merge 3e8d2995a1c00a9aef0d8cb0f5382658c91a8673
+validated theorem head = 23d96af9aafd86ad26ae7913c3d6c14503d539de
+validated theorem tree = a92d03d0d4ad800d544a835b8ae2e3d23bae2c47
+RHRC #889 = SUCCESS
+Permansson #662 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
 ```
 
-PR #140 is theorem-bearing and advances theorem authority. The post-#140 documentation synchronization changes research/control metadata only; it does not add theorem authority beyond #140.
+PR #142 is theorem-bearing and advances theorem authority beyond #140. This post-#142 documentation/control synchronization changes research/control metadata only; it does not add theorem authority beyond #142.
 
 ## Living SSOTs
 
@@ -64,9 +64,9 @@ The repository keeps distinct anchors:
 - **theorem-state anchor** — latest meaningful theorem-bearing merge whose compiled Lean surface defines current mathematical authority;
 - **control-plane semantic anchor** — latest meaningful merged green research-control/assurance semantics.
 
-PR #140 advances the theorem-state anchor because it adds and validates theorem-bearing Lean modules. PR #117 remains the Control-v2 semantic anchor because #140 does not change the controller's capability/authority model.
+PR #142 advances the theorem-state anchor because it adds and validates theorem-bearing Lean modules for actual-source fixed-cell continuity and persistence. PR #117 remains the Control-v2 semantic anchor because #142 does not change the controller's capability/authority model.
 
-A documentation/control PR that updates the theorem anchor to #140 does not itself create new theorem authority.
+A documentation/control PR that updates the theorem anchor to #142 does not itself create new theorem authority.
 
 ## Control-v2 authority law
 
@@ -109,11 +109,11 @@ After a post-green or independent research pass, update documentation when any o
 10. update obstruction/dead-route/countermodel records when reusable blockers/falsifiers changed;
 11. leave historical settlements untouched unless an explicit authority banner requires correction.
 
-## Current transition after PR #140
+## Current transition after PR #142
 
 Newest current-priority delta:
 
-`RESEARCH_LEADS_POST_140_APERTURE_FREEDOM_DELTA.md`
+`RESEARCH_LEADS_POST_142_FIXED_CELL_PERSISTENCE_DELTA.md`
 
 Current route:
 
@@ -135,40 +135,53 @@ PROVED / #140
   threshold atom vanishing
   exact real-axis -log(L) scalar extraction
 
-DERIVED POST-#140 PLANNING CORRECTION
-  choose a frozen cutoff cell first;
-  obtain a finite witness there;
-  regularize only the finitely many predecessor sizes up to that witness size;
-  preserve negativity locally and reselect first-bad.
+PROVED / #142
+  actual canonical source entry continuity on a fixed physical cutoff cell
+  fixed-vector canonical quadratic-energy continuity on that cell
+  same finite size and same vector stay strictly negative on an open in-cell neighborhood
+  off-line zero -> locally persistent fixed witness at every chosen sufficiently large cell-interior aperture
+
+DERIVED POST-#142 PLANNING COMPRESSION
+  minimize bad size over the whole cutoff cell;
+  all smaller sizes are good in both parities throughout the cell;
+  predecessor PSD is therefore uniform across the cell;
+  preserve a bad parity witness using #142;
+  regularize only the relevant predecessor determinant(s) at the cell-minimal size.
 
 NEXT THEOREM
-  fixed-cell finite regular-aperture selection:
-  continuity + full production predecessor analyticity/log-cover +
-  fixed-block determinant nonidentity + finite simultaneous avoidance.
+  actual frozen intrinsic predecessor analyticity / single-valued remainder
+  + exact -Log(L) identity split
+  + determinant nonidentity by logarithmic monodromy
+  + dense fixed-cell regularity.
 
 AFTER
-  regular source countercertificate with unique A x0=b
+  production cell-minimal regular first-bad source countercertificate
+  with unique A x0=b
   -> independent canonical Schur-energy sign on u0=c-x0.
 
 BROAD FALLBACK
-  universal canonical one-step domination if an independent arithmetic
-  mechanism is discovered.
+  all-size Baire / finite-prefix regularization only if the smaller cell-minimal route fails;
+  universal canonical one-step domination only if an independent arithmetic mechanism is discovered.
 ```
 
-The countable all-size Baire route is not classified dead; it is a fallback that should not be built unless the finite-cell theorem fails for a specific theoremized reason.
+The post-#142 generic analytic regularization countermodel is a reusable falsification record. It shows that persistence, cell/global minimality, predecessor regularity, parity and an explicit scalar logarithm are not enough by themselves to exclude a negative successor. Exact canonical arithmetic must enter the decisive sign theorem.
 
 ## Permanent firewalls
 
 ```text
-aperture freedom != dense regularity
+aperture freedom != fixed-witness persistence        [#142 closes the latter]
+fixed-witness persistence != analyticity
+analyticity != determinant nonidentity
 regular predecessor != positive successor
+cell-minimality + regularity != arithmetic contradiction
+Gamma0*mu(z)=0 with trivial kernel != source sign
 conditional domination sufficiency != domination theorem
 universal domination restatement != research reduction
 regular first-bad negative trial != contradiction
 source decomposition != source sign
 external exact check != Lean theorem
 high-precision numerical agreement != interval proof
-modified-source countermodel != zeta counterexample
+modified/generic source countermodel != zeta counterexample
 D algebraic != D unitary/isometric
 root uniqueness != root exclusion
 ```
@@ -177,6 +190,7 @@ root uniqueness != root exclusion
 
 - **PROVED** — exact statement established by Lean/CI;
 - **DERIVED** — mathematical consequence not separately theorem-locked;
+- **LOCAL LEAN CHECK** — standalone/local compilation evidence not merged into theorem authority;
 - **LEAD / HYPOTHESIS** — motivated route with unclosed obligations;
 - **EXPERIMENTAL SIGNAL** — numerical/search/discovery evidence only;
 - **OPEN** — not established.
