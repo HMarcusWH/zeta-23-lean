@@ -68,17 +68,17 @@ No determinant nonidentity, dense regularity, sign, or RH claim is made here.
       (∫ t in (0 : ℝ)..1,
           complexArchSinc ((2 * Real.pi * (n : ℝ) * t : ℝ) : ℂ) *
             complexRegularizedArchScale ((L : ℂ) * (t : ℂ))) =
-        ((∫ t in (0 : ℝ)..1,
-            Real.sinc (2 * Real.pi * (n : ℝ) * t) *
-              regularizedArchScale (L * t)) : ℂ) := by
-    rw [← intervalIntegral.integral_ofReal]
+        ∫ t in (0 : ℝ)..1,
+          ((Real.sinc (2 * Real.pi * (n : ℝ) * t) *
+            regularizedArchScale (L * t) : ℝ) : ℂ) := by
     apply intervalIntegral.integral_congr
     intro t _
     dsimp
     have hLt : (L : ℂ) * (t : ℂ) = ((L * t : ℝ) : ℂ) := by
       norm_cast
     rw [hLt, complexRegularizedArchScale_ofReal, complexArchSinc_ofReal]
-  rw [hInt]
+    norm_cast
+  rw [hInt, intervalIntegral.integral_ofReal]
   norm_cast
 
 /-- Exact positive-real-axis agreement of the complex fixed-unit beta core. -/
@@ -109,10 +109,11 @@ after removing only the production `wCorrection`. -/
   dsimp
   have hLt : (L : ℂ) * (t : ℂ) = ((L * t : ℝ) : ℂ) := by
     norm_cast
-  have hnegLt : -((L : ℂ) * (t : ℂ)) / 2 =
+  rw [hLt]
+  have hnegLt : -(((L * t : ℝ) : ℂ)) / 2 =
       ((-(L * t) / 2 : ℝ) : ℂ) := by
     norm_cast
-  rw [hLt, hnegLt, complexRegularizedArchScale_ofReal,
+  rw [hnegLt, complexRegularizedArchScale_ofReal,
     complexArchCosSlope_ofReal, complexArchExpSlope_ofReal]
   norm_cast
 
