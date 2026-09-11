@@ -19,9 +19,9 @@ inside `complexArchSafeStrip`, crossed with `[0,1]`, provides the uniform
 integrable derivative bound required by Mathlib's parametric interval-integral
 theorem.
 
-The first production core proved here is `complexBetaCore`; alpha and gamma are
-added using the same engine once the compiler has validated the common
-infrastructure.
+The common engine is first instantiated by `complexBetaCore`, then reused for
+`complexAlphaCore`; `complexGammaCore` uses the same dominated-integral engine
+with one additional aperture-dependent entire coefficient.
 
 No frozen-source determinant, determinant nonidentity, dense regularity,
 positivity, negative-root exclusion, or RH claim is made here.
@@ -72,7 +72,9 @@ private theorem hasDerivAt_fixedUnitIntegral_of_continuousOn
     have hslice : ContinuousOn (F z₀) (Set.Icc (0 : ℝ) 1) := by
       have hc := hF.comp hpair hmap
       simpa [K, Function.uncurry] using hc
-    exact hslice.intervalIntegrable
+    have hsliceU : ContinuousOn (F z₀) (Set.uIcc (0 : ℝ) 1) := by
+      simpa [uIcc_of_le zero_le_one] using hslice
+    exact hsliceU.intervalIntegrable
   · have hpair : ContinuousOn (fun t : ℝ => (z₀, t)) (Set.Icc (0 : ℝ) 1) := by
       fun_prop
     have hmap : MapsTo (fun t : ℝ => (z₀, t)) (Set.Icc (0 : ℝ) 1) K := by
@@ -159,8 +161,7 @@ private theorem differentiableAt_weightedArchIntegral
       mul_assoc, mul_comm, mul_left_comm] using hweighted
   have hmain := hasDerivAt_fixedUnitIntegral_of_continuousOn
     hr hF hF' hpoint
-  exact (by
-    simpa [weightedArchIntegral] using hmain.differentiableAt)
+  simpa [weightedArchIntegral] using hmain.differentiableAt
 
 /-- `complexBetaCore` is complex differentiable at every aperture in the
 common archimedean safe strip. -/
@@ -187,13 +188,203 @@ theorem analyticOnNhd_complexBetaCore_strip (n : ℤ) :
   (differentiableOn_complexBetaCore_strip n).analyticOnNhd
     isOpen_complexArchSafeStrip
 
-/-- Every real aperture, not only every positive real aperture, is an analytic
-point of the beta continuation.  Production provenance still separately uses
-`L > 0`. -/
+/-- Every real aperture is an analytic point of the beta continuation. -/
 theorem analyticAt_complexBetaCore_ofReal (n : ℤ) (L : ℝ) :
     AnalyticAt ℂ (complexBetaCore n) (L : ℂ) :=
   analyticOnNhd_complexBetaCore_strip n _ (ofReal_mem_complexArchSafeStrip L)
 
+/-- `complexAlphaCore` is complex differentiable throughout the same strip. -/
+theorem differentiableAt_complexAlphaCore_of_mem_strip
+    (n : ℤ) {z : ℂ} (hz : z ∈ complexArchSafeStrip) :
+    DifferentiableAt ℂ (complexAlphaCore n) z := by
+  let w : ℝ → ℂ := fun t =>
+    complexArchSinc ((2 * Real.pi * (n : ℝ) * t : ℝ) : ℂ)
+  have hsinc : Continuous complexArchSinc := differentiable_complexArchSinc.continuous
+  have hw : ContinuousOn w (Set.Icc (0 : ℝ) 1) := by
+    dsimp [w]
+    fun_prop (disch := assumption)
+  have h := differentiableAt_weightedArchIntegral hw hz
+  have hscaled := h.const_mul (2 * (n : ℂ))
+  simpa [w, weightedArchIntegral, weightedArchIntegrand, complexAlphaCore] using hscaled
+
+/-- Strip-wide differentiability of the alpha core. -/
+theorem differentiableOn_complexAlphaCore_strip (n : ℤ) :
+    DifferentiableOn ℂ (complexAlphaCore n) complexArchSafeStrip := by
+  intro z hz
+  exact (differentiableAt_complexAlphaCore_of_mem_strip n hz).differentiableWithinAt
+
+/-- Genuine holomorphy of the alpha core on the common open strip. -/
+theorem analyticOnNhd_complexAlphaCore_strip (n : ℤ) :
+    AnalyticOnNhd ℂ (complexAlphaCore n) complexArchSafeStrip :=
+  (differentiableOn_complexAlphaCore_strip n).analyticOnNhd
+    isOpen_complexArchSafeStrip
+
+/-- Every real aperture is an analytic point of the alpha continuation. -/
+theorem analyticAt_complexAlphaCore_ofReal (n : ℤ) (L : ℝ) :
+    AnalyticAt ℂ (complexAlphaCore n) (L : ℂ) :=
+  analyticOnNhd_complexAlphaCore_strip n _ (ofReal_mem_complexArchSafeStrip L)
+
+/-- Aperture-dependent coefficient multiplying the common regularized scale in
+the fixed-unit gamma core. -/
+private def gammaApertureCoeff (n : ℤ) (z : ℂ) (t : ℝ) : ℂ :=
+  ((2 * Real.pi * (n : ℝ) : ℝ) : ℂ) *
+      complexArchCosSlope ((2 * Real.pi * (n : ℝ) * t : ℝ) : ℂ) +
+    (z / 2) * complexArchExpSlope (-(z * (t : ℂ)) / 2)
+
+/-- Exact parameter derivative of `gammaApertureCoeff`. -/
+private def gammaApertureCoeffDeriv (n : ℤ) (z : ℂ) (t : ℝ) : ℂ :=
+  (1 / 2 : ℂ) * complexArchExpSlope (-(z * (t : ℂ)) / 2) +
+    (z / 2) *
+      (deriv complexArchExpSlope (-(z * (t : ℂ)) / 2) * (-(t : ℂ) / 2))
+
+private def gammaParamIntegrand (n : ℤ) (z : ℂ) (t : ℝ) : ℂ :=
+  gammaApertureCoeff n z t *
+    complexRegularizedArchScale (z * (t : ℂ))
+
+private def gammaParamIntegrandDeriv (n : ℤ) (z : ℂ) (t : ℝ) : ℂ :=
+  gammaApertureCoeffDeriv n z t *
+      complexRegularizedArchScale (z * (t : ℂ)) +
+    gammaApertureCoeff n z t *
+      (deriv complexRegularizedArchScale (z * (t : ℂ)) * (t : ℂ))
+
+private theorem continuous_deriv_complexArchExpSlope :
+    Continuous (deriv complexArchExpSlope) := by
+  rw [continuous_iff_continuousAt]
+  intro z
+  exact (differentiable_complexArchExpSlope.analyticAt z).deriv.continuousAt
+
+private theorem continuous_gammaApertureCoeff (n : ℤ) :
+    Continuous (Function.uncurry (gammaApertureCoeff n)) := by
+  have hcos : Continuous complexArchCosSlope :=
+    differentiable_complexArchCosSlope.continuous
+  have hexp : Continuous complexArchExpSlope :=
+    differentiable_complexArchExpSlope.continuous
+  unfold gammaApertureCoeff Function.uncurry
+  fun_prop (disch := assumption)
+
+private theorem continuous_gammaApertureCoeffDeriv (n : ℤ) :
+    Continuous (Function.uncurry (gammaApertureCoeffDeriv n)) := by
+  have hexp : Continuous complexArchExpSlope :=
+    differentiable_complexArchExpSlope.continuous
+  have hderivExp : Continuous (deriv complexArchExpSlope) :=
+    continuous_deriv_complexArchExpSlope
+  unfold gammaApertureCoeffDeriv Function.uncurry
+  fun_prop (disch := assumption)
+
+private theorem hasDerivAt_gammaApertureCoeff
+    (n : ℤ) (z : ℂ) (t : ℝ) :
+    HasDerivAt (fun u : ℂ => gammaApertureCoeff n u t)
+      (gammaApertureCoeffDeriv n z t) z := by
+  let A : ℂ :=
+    ((2 * Real.pi * (n : ℝ) : ℝ) : ℂ) *
+      complexArchCosSlope ((2 * Real.pi * (n : ℝ) * t : ℝ) : ℂ)
+  have hconst : HasDerivAt (fun _ : ℂ => A) 0 z := hasDerivAt_const z A
+  have hzhalf : HasDerivAt (fun u : ℂ => u / 2) (1 / 2 : ℂ) z := by
+    simpa using (hasDerivAt_id z).div_const 2
+  have hinner : HasDerivAt
+      (fun u : ℂ => -(u * (t : ℂ)) / 2) (-(t : ℂ) / 2) z := by
+    convert (((hasDerivAt_id z).mul_const (t : ℂ)).neg.div_const 2) using 1 <;> ring
+  have hexpBase : HasDerivAt complexArchExpSlope
+      (deriv complexArchExpSlope (-(z * (t : ℂ)) / 2))
+      (-(z * (t : ℂ)) / 2) :=
+    (differentiable_complexArchExpSlope (-(z * (t : ℂ)) / 2)).hasDerivAt
+  have hexpComp := hexpBase.comp z hinner
+  have hprod := hzhalf.mul hexpComp
+  have hsum := hconst.add hprod
+  simpa [A, gammaApertureCoeff, gammaApertureCoeffDeriv,
+    mul_assoc, mul_comm, mul_left_comm] using hsum
+
+private theorem hasDerivAt_gammaParamIntegrand
+    (n : ℤ) {z : ℂ} (hz : z ∈ complexArchSafeStrip)
+    {t : ℝ} (ht : t ∈ Set.Icc (0 : ℝ) 1) :
+    HasDerivAt (fun u : ℂ => gammaParamIntegrand n u t)
+      (gammaParamIntegrandDeriv n z t) z := by
+  have hzt : z * (t : ℂ) ∈ complexArchSafeStrip :=
+    mul_Icc_mem_complexArchSafeStrip hz ht
+  have hscaleBase : HasDerivAt complexRegularizedArchScale
+      (deriv complexRegularizedArchScale (z * (t : ℂ)))
+      (z * (t : ℂ)) :=
+    (differentiableAt_complexRegularizedArchScale_of_mem_strip hzt).hasDerivAt
+  have hmul : HasDerivAt (fun u : ℂ => u * (t : ℂ)) (t : ℂ) z := by
+    simpa using (hasDerivAt_id z).mul_const (t : ℂ)
+  have hscale := hscaleBase.comp z hmul
+  have hcoeff := hasDerivAt_gammaApertureCoeff n z t
+  have hprod := hcoeff.mul hscale
+  simpa [gammaParamIntegrand, gammaParamIntegrandDeriv,
+    mul_assoc, mul_comm, mul_left_comm] using hprod
+
+/-- `complexGammaCore` is complex differentiable throughout the common strip. -/
+theorem differentiableAt_complexGammaCore_of_mem_strip
+    (n : ℤ) {z₀ : ℂ} (hz₀ : z₀ ∈ complexArchSafeStrip) :
+    DifferentiableAt ℂ (complexGammaCore n) z₀ := by
+  rcases exists_closedBall_subset_complexArchSafeStrip hz₀ with ⟨r, hr, hclosed⟩
+  let K : Set (ℂ × ℝ) := closedBall z₀ r ×ˢ Set.Icc (0 : ℝ) 1
+  have hmap : MapsTo
+      (fun p : ℂ × ℝ => p.1 * (p.2 : ℂ)) K complexArchSafeStrip := by
+    intro p hp
+    exact mul_Icc_mem_complexArchSafeStrip (hclosed hp.1) hp.2
+  have hmapcont : ContinuousOn
+      (fun p : ℂ × ℝ => p.1 * (p.2 : ℂ)) K := by
+    fun_prop
+  have hscale : ContinuousOn
+      (fun p : ℂ × ℝ => complexRegularizedArchScale (p.1 * (p.2 : ℂ))) K :=
+    analyticOnNhd_complexRegularizedArchScale_strip.continuousOn.comp hmapcont hmap
+  have hderivScale : AnalyticOnNhd ℂ
+      (deriv complexRegularizedArchScale) complexArchSafeStrip :=
+    analyticOnNhd_complexRegularizedArchScale_strip.deriv
+  have hderivScaleComp : ContinuousOn
+      (fun p : ℂ × ℝ =>
+        deriv complexRegularizedArchScale (p.1 * (p.2 : ℂ))) K :=
+    hderivScale.continuousOn.comp hmapcont hmap
+  have htcast : ContinuousOn (fun p : ℂ × ℝ => (p.2 : ℂ)) K := by
+    fun_prop
+  have hcoeff : ContinuousOn
+      (Function.uncurry (gammaApertureCoeff n)) K :=
+    (continuous_gammaApertureCoeff n).continuousOn
+  have hcoeff' : ContinuousOn
+      (Function.uncurry (gammaApertureCoeffDeriv n)) K :=
+    (continuous_gammaApertureCoeffDeriv n).continuousOn
+  have hF : ContinuousOn
+      (Function.uncurry (gammaParamIntegrand n)) K := by
+    simpa [gammaParamIntegrand, Function.uncurry] using hcoeff.mul hscale
+  have hscaleParamDeriv : ContinuousOn
+      (fun p : ℂ × ℝ =>
+        deriv complexRegularizedArchScale (p.1 * (p.2 : ℂ)) * (p.2 : ℂ)) K :=
+    hderivScaleComp.mul htcast
+  have hF' : ContinuousOn
+      (Function.uncurry (gammaParamIntegrandDeriv n)) K := by
+    simpa [gammaParamIntegrandDeriv, Function.uncurry] using
+      (hcoeff'.mul hscale).add (hcoeff.mul hscaleParamDeriv)
+  have hpoint : ∀ z ∈ closedBall z₀ r, ∀ t ∈ Set.Icc (0 : ℝ) 1,
+      HasDerivAt
+        (fun u : ℂ => gammaParamIntegrand n u t)
+        (gammaParamIntegrandDeriv n z t) z := by
+    intro z hz t ht
+    exact hasDerivAt_gammaParamIntegrand n (hclosed hz) ht
+  have hmain := hasDerivAt_fixedUnitIntegral_of_continuousOn
+    hr hF hF' hpoint
+  simpa [complexGammaCore, gammaParamIntegrand, gammaApertureCoeff] using
+    hmain.differentiableAt
+
+/-- Strip-wide differentiability of the gamma core. -/
+theorem differentiableOn_complexGammaCore_strip (n : ℤ) :
+    DifferentiableOn ℂ (complexGammaCore n) complexArchSafeStrip := by
+  intro z hz
+  exact (differentiableAt_complexGammaCore_of_mem_strip n hz).differentiableWithinAt
+
+/-- Genuine holomorphy of the gamma core on the common open strip. -/
+theorem analyticOnNhd_complexGammaCore_strip (n : ℤ) :
+    AnalyticOnNhd ℂ (complexGammaCore n) complexArchSafeStrip :=
+  (differentiableOn_complexGammaCore_strip n).analyticOnNhd
+    isOpen_complexArchSafeStrip
+
+/-- Every real aperture is an analytic point of the gamma continuation. -/
+theorem analyticAt_complexGammaCore_ofReal (n : ℤ) (L : ℝ) :
+    AnalyticAt ℂ (complexGammaCore n) (L : ℂ) :=
+  analyticOnNhd_complexGammaCore_strip n _ (ofReal_mem_complexArchSafeStrip L)
+
 end Zeta23.CCM
 
+#print axioms Zeta23.CCM.analyticOnNhd_complexAlphaCore_strip
 #print axioms Zeta23.CCM.analyticOnNhd_complexBetaCore_strip
+#print axioms Zeta23.CCM.analyticOnNhd_complexGammaCore_strip
