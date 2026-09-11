@@ -1,18 +1,18 @@
 # R003 — CCM / finite Weil bridge
 
-Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #146. CURRENT FRONTIER = GENUINE APERTURE-PARAMETER HOLOMORPHY OF THE FIXED-UNIT PRODUCTION SOURCE INTEGRALS, THEN DETERMINANT NONIDENTITY / DENSE FIXED-CELL REGULARITY, THEN REGULAR CANONICAL SCHUR-ENERGY SIGN. RH OPEN.**
+Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #148. CURRENT FRONTIER = ASSEMBLED SOURCE/PREDECESSOR HOLOMORPHY ON A COMMON DOMAIN, THEN DETERMINANT NONIDENTITY / DENSE FIXED-CELL REGULARITY, THEN REGULAR CANONICAL SCHUR-ENERGY SIGN. RH OPEN.**
 
 ## Current authority split
 
 ```text
-live main after merged PR #146 = f2999d12e29d61debce130e83491ac3df410b0c2
-live main tree = fe76581d445569cb838cb4df7bf50703aa34f5cc
+live main after merged PR #148 = fcd301ae4c1b58196ff7fca18128243f1d35a87b
+live main tree = 91d537ee64b8f613bebdcf12110deba486276d35
 
-theorem-state anchor = PR #146 merge f2999d12e29d61debce130e83491ac3df410b0c2
-validated theorem head = a25d238478f7b19072c5364486b8f3f994bf6b79
-validated theorem tree = fe76581d445569cb838cb4df7bf50703aa34f5cc
-RHRC #922 / run 34600323163 = SUCCESS
-Permansson #695 / run 34600323144 = SUCCESS
+theorem-state anchor = PR #148 merge fcd301ae4c1b58196ff7fca18128243f1d35a87b
+validated theorem head = 77c2d14511004ba380b080e08b4943b267ebd863
+validated theorem tree = 91d537ee64b8f613bebdcf12110deba486276d35
+RHRC #930 / run 34619665717 = SUCCESS
+Permansson #703 / run 34619665725 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
@@ -46,6 +46,10 @@ exact -log(L) identity split through intrinsic projection        PROVED / #144
 complex frozen remainder + log-cover/deck identities             PROVED / #144
 local removable scalar analyticity at zero                       PROVED / #145
 removable scalar/remainder <-> production complex scalar         PROVED / #146
+connected arch strip + regularized arch scale holomorphy         PROVED / #148
+complexAlphaCore parameter holomorphy                            PROVED / #148
+complexBetaCore parameter holomorphy                             PROVED / #148
+complexGammaCore parameter holomorphy                            PROVED / #148
 ```
 
 ## Exact #136/#137 block objects
@@ -79,9 +83,7 @@ It is a proposition/certificate, not a proved property of the canonical source.
 
 **PROVED / #142:** on one physical cutoff cell `I_Q=(log Q,log(Q+1))` with `Q>=1`, the actual production `canonicalSourceMatrix` is entrywise continuous and every fixed-vector real quadratic energy is continuous. A strict negative witness at one interior aperture therefore persists on an open `J subset I_Q` with the same finite size and the same vector.
 
-## A4R1b after #144-#146 — exact state
-
-The old first break "construct the actual frozen complex predecessor and isolate the scalar logarithm" is now closed.
+## A4R1b after #144-#148 — exact state
 
 ### PROVED / #144
 
@@ -107,32 +109,73 @@ Ahat(z) = -z I + R(exp z)
 
 with exact deck-periodicity of `R(exp z)` and exact recovery of the real production predecessor on a physical cell.
 
-### PROVED / #145
+### PROVED / #145-#146
 
-The scalar aperture factor/remainder admits the theoremized removable analytic extension at zero.
+The scalar aperture factor/remainder admits the theoremized removable analytic extension at zero and agrees exactly with the production complex scalar/remainder on `z != 0`, with positive-real production provenance.
 
-### PROVED / #146
+### PROVED / #148
 
-The removable scalar factor/remainder agrees exactly with the production complex scalar/remainder on `z != 0` and with the positive-real production formulas.
+The exact fixed-unit archimedean source cores are now genuinely analytic in the complex aperture parameter on the connected strip
+
+```text
+complexArchSafeStrip = { z : C | |Im z| < pi }.
+```
+
+In particular:
+
+```text
+complexArchSinhSlope_ne_zero_of_mem_strip
+analyticOnNhd_complexRegularizedArchScale_strip
+analyticOnNhd_complexAlphaCore_strip
+analyticOnNhd_complexBetaCore_strip
+analyticOnNhd_complexGammaCore_strip
+```
+
+are compiler-validated.
 
 ### OPEN / PRIMARY REDUCTION TARGET
 
-No theorem yet proves that the non-scalar parameter-dependent fixed-unit source integrals are holomorphic in the aperture parameter. Consequently no theorem yet proves `complexFrozenIntrinsicPredecessorRemainder` is holomorphic.
-
-The first break is therefore:
+The full production source is not yet theoremized as holomorphic on one common domain. The remaining channels are:
 
 ```text
-fixed-unit production source integral
-  -> local zero-free / denominator control
-  -> pointwise complex parameter derivative
-  -> locally uniform integrable domination
-  -> differentiation under the integral
-  -> holomorphy of complexBetaCore / complexAlphaCore / complexGammaCore
-  -> assembled frozen source holomorphy
-  -> assembled intrinsic predecessor remainder holomorphy.
+production scalar/principal-log branch
+pole denominator / pole matrix
+finite prime/source channel
+fixed finite source assembly
+intrinsic projection
+logarithmic-cover lift.
 ```
 
-Prototype the simplest core first, preferably `complexBetaCore`.
+The next first break is therefore:
+
+```text
+common punctured source domain
+  -> scalar branch control
+  -> pole zero-free control
+  -> finite source analyticity
+  -> complexFrozenCanonicalSourceRemainder holomorphy
+  -> complexFrozenIntrinsicPredecessorRemainder holomorphy
+  -> lifted predecessor holomorphy on a connected cover domain.
+```
+
+## Scalar right-half-plane lead
+
+A high-value common-domain lead is
+
+```text
+z*(exp z + 1)/(exp z - 1) = z*coth(z/2)
+```
+
+with expected real-part formula
+
+```text
+Re(z*coth(z/2))
+  = (x*sinh x + y*sin y)/(cosh x - cos y),  z=x+iy.
+```
+
+For `|y|<pi`, the numerator terms are nonnegative and the denominator is positive away from zero. If Lean closes the strict positivity theorem, the production scalar factor stays in the right half-plane on the punctured arch strip, giving a natural principal-log branch on the same domain.
+
+**Status: LEAD / HYPOTHESIS.**
 
 ## Translation/deck-law firewall
 
@@ -153,20 +196,19 @@ translation/deck identity
 
 is invalid without a genuine analytic proof.
 
-See `../../countermodels/POST_146_TRANSLATION_NOT_HOLOMORPHY_COUNTERMODEL_2026_09_11.md`.
+## Determinant nonidentity mechanism — after assembled holomorphy
 
-## Determinant nonidentity mechanism — after holomorphy only
-
-Once holomorphy of the actual lifted predecessor is theorem-backed, the exact #144 structure becomes load-bearing:
+Once holomorphy of the actual lifted predecessor is theorem-backed, use
 
 ```text
-Ahat(z) = -z I + R(exp z)
-R(exp(z+2*pi*i)) = R(exp z).
+Ahat(z+2*pi*i)=Ahat(z)-(2*pi*i)I.
 ```
 
-If `det Ahat` vanished identically, the same finite-dimensional operator `R(exp z0)` would be forced to support too many distinct scalar shifts/eigenvalues as `z0` is translated by `2*pi*i*k`.
+Iterating at one base point gives finitely many distinct scalar shifts of one fixed finite operator. If `det Ahat` vanished identically, its characteristic polynomial would have too many roots. This is the intended algebraic nonidentity proof.
 
-This is a **LEAD / HYPOTHESIS** until the determinant nonidentity theorem is formally proved. Holomorphy alone is not enough; `det Ahat` could in principle still be identically zero.
+The zero-dimensional predecessor case must be split off directly; do not force a positive-degree root-count argument through `finrank=0`.
+
+Holomorphy and determinant nonidentity remain separate proof obligations.
 
 ## Post-#142 route compression — cell-minimal size first
 
@@ -180,6 +222,8 @@ K* = min { K | exists L in I_Q, AnyParityBad L K }.
 
 Then every `K<K*` is good in both parities throughout the cell, so predecessor size `N*=K*-1` is PSD throughout the cell. Choose a bad parity witness at `(L*,K*)`; #142 preserves the same witness on an open `J subset I_Q`. If the relevant predecessor determinant is nonzero on a dense subset, choose a regular aperture in `J`.
 
+This cell-wide minimization is essential. A least bad size chosen only at one aperture is not stable after moving the aperture.
+
 For the bad parity's negative Schur-energy reduction, only that parity's predecessor needs regularizing. Regularizing both parities remains a useful stronger option.
 
 The production cell-minimal composition is not yet a merged theorem.
@@ -191,7 +235,7 @@ If analytic regularity succeeds, compose dense regularity with the cell-minimal 
 At the selected state:
 
 ```text
-A>=0                    from cell/global minimality
+A>=0                    from cell-wide minimality
 A injective             from regularity
 A>0                     finite Hermitian consequence
 unique x0 with A x0=b   #140 scaffold
@@ -209,16 +253,10 @@ Ecanonical(u0) = Re S0 < 0.
 The decisive arithmetic target becomes
 
 ```text
-Ecanonical(c-x0) >= 0
+Ecanonical(c-x0) >= 0.
 ```
 
-on that exact forced regular trial, equivalently in inverse shorthand
-
-```text
-<b,A^-1b> <= q_c.
-```
-
-This theorem must use exact canonical pole/arch/scalar/prime interaction. An auxiliary positive form whose positivity is equivalent to successor PSD is circular.
+A possible narrower reduction is to prove the zero-shift coupling is real and then use `q_c>=0` together with `Delta(x0)>=0`. This remains **DERIVED/LEAD** until the exact coupling-realness and zero-energy edge case are theoremized.
 
 ## Stronger falsification constraints
 
@@ -237,10 +275,11 @@ Universal `q_c>=0` and `Delta(w)>=0` for every predecessor direction remains a v
 
 - canonical sign-sensitive object is `canonicalSourceMatrix` under the repaired source convention;
 - legacy `finiteMatrix` cannot supply absolute sign automatically;
-- theorem authority is through #146;
+- theorem authority is through #148;
 - aperture freedom and same-witness persistence are PROVED;
 - exact frozen/log-cover construction and scalar production bridge are PROVED;
-- genuine assembled parameter holomorphy is OPEN;
+- fixed-unit alpha/beta/gamma parameter holomorphy is PROVED;
+- genuine assembled source/predecessor holomorphy is OPEN;
 - translation/deck identities are not holomorphy;
 - determinant nonidentity / dense regularity are OPEN;
 - cell-minimal regular selection is DERIVED until production-packaged;
@@ -252,8 +291,9 @@ Universal `q_c>=0` and `Delta(w)>=0` for every predecessor direction remains a v
 - D is algebraic, not unitary/isometric;
 - generic/modified-source countermodels do not refute canonical CCM;
 - numerical precision is not theorem authority;
+- terminal strip-zero exclusion still needs an explicit outside-strip/trivial-zero bridge to Mathlib `RiemannHypothesis`;
 - RH remains OPEN.
 
-Detailed current implications: `../../RESEARCH_LEADS_POST_146_APERTURE_ANALYTIC_FRONTIER_DELTA.md`.
+Detailed current implications: `../../RESEARCH_LEADS_POST_148_PARAMETER_HOLOMORPHY_GREEN_DELTA.md`.
 
 **RH remains OPEN.**
