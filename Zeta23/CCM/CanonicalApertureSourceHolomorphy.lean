@@ -20,10 +20,11 @@ archimedean cores on `complexArchSafeStrip`.  This module assembles those core
 theorems with the frozen prime and pole channels and the scalar logarithm
 branch control into the actual frozen complex source remainder.
 
-The common source domain is the punctured safe strip.  On this domain every
-finite source channel is genuinely analytic and the auxiliary complex source
-is theorem-locked to production on positive real points in a physical cutoff
-cell by the earlier complex-source bridge.
+The common source domain is the punctured safe strip.  The analytic statements
+for finite matrices are deliberately entrywise: the pinned Mathlib does not
+provide the normed-space structure needed to treat `Matrix` itself as the
+codomain of `AnalyticOnNhd`, while entrywise holomorphy is exactly what the
+later finite determinant argument consumes.
 
 No determinant density, positivity, negative-root exclusion, or RH theorem is
 claimed here.
@@ -49,41 +50,37 @@ theorem analyticOnNhd_complexCanonicalArchWithoutWComponent_strip
     AnalyticOnNhd ℂ
       (complexCanonicalArchWithoutWComponent n m)
       complexArchSafeStrip := by
+  intro z hz
   by_cases hnm : n = m
   · subst m
-    have hg :=
-      (analyticOnNhd_complexGammaCore_strip n).const_smul (c := (2 : ℂ))
-    have hb :=
-      (analyticOnNhd_complexBetaCore_strip n).const_smul (c := (2 : ℂ))
-    simpa [complexCanonicalArchWithoutWComponent, smul_eq_mul] using hg.sub hb
-  · have ha :=
-      (analyticOnNhd_complexAlphaCore_strip m).sub
-        (analyticOnNhd_complexAlphaCore_strip n)
-    simpa [complexCanonicalArchWithoutWComponent, hnm] using
-      ha.div_const (c := (((n - m : ℤ) : ℂ)))
+    simp only [complexCanonicalArchWithoutWComponent, if_pos rfl]
+    have hg := analyticOnNhd_complexGammaCore_strip n z hz
+    have hb := analyticOnNhd_complexBetaCore_strip n z hz
+    exact (analyticAt_const.mul hg).sub (analyticAt_const.mul hb)
+  · simp only [complexCanonicalArchWithoutWComponent, if_neg hnm]
+    have ha :=
+      (analyticOnNhd_complexAlphaCore_strip m z hz).sub
+        (analyticOnNhd_complexAlphaCore_strip n z hz)
+    exact ha.div_const (c := (((n - m : ℤ) : ℂ)))
 
-/-- Matrix packaging of the exact archimedean remainder holomorphy. -/
-theorem analyticOnNhd_complexCanonicalArchWithoutWMatrix_strip
-    (K : ℕ) :
+/-- Entrywise packaging of the exact archimedean remainder holomorphy. -/
+theorem analyticOnNhd_complexCanonicalArchWithoutWMatrix_apply_strip
+    (K : ℕ) (i j : Fin (2 * K + 1)) :
     AnalyticOnNhd ℂ
-      (fun z : ℂ => complexCanonicalArchWithoutWMatrix z K)
+      (fun z : ℂ => complexCanonicalArchWithoutWMatrix z K i j)
       complexArchSafeStrip := by
-  rw [analyticOnNhd_pi_iff]
-  intro i
-  rw [analyticOnNhd_pi_iff]
-  intro j
   simpa [complexCanonicalArchWithoutWMatrix] using
     analyticOnNhd_complexCanonicalArchWithoutWComponent_strip
       (centeredIndex K i) (centeredIndex K j)
 
-/-- Restriction of the archimedean matrix theorem to the common source domain. -/
-theorem analyticOnNhd_complexCanonicalArchWithoutWMatrix_sourceDomain
-    (K : ℕ) :
+/-- Restriction of one archimedean matrix entry to the common source domain. -/
+theorem analyticOnNhd_complexCanonicalArchWithoutWMatrix_apply_sourceDomain
+    (K : ℕ) (i j : Fin (2 * K + 1)) :
     AnalyticOnNhd ℂ
-      (fun z : ℂ => complexCanonicalArchWithoutWMatrix z K)
+      (fun z : ℂ => complexCanonicalArchWithoutWMatrix z K i j)
       complexFrozenSourceDomain := by
   intro z hz
-  exact analyticOnNhd_complexCanonicalArchWithoutWMatrix_strip K z hz.1
+  exact analyticOnNhd_complexCanonicalArchWithoutWMatrix_apply_strip K i j z hz.1
 
 /-- The only singularity of one frozen prime coordinate on the selected source
 domain has already been removed by definition. -/
@@ -96,9 +93,10 @@ theorem analyticOnNhd_complexPrimeSourceCoordinate_sourceDomain
   have hz0 : z ≠ 0 := by
     have hnot : z ∉ ({0} : Set ℂ) := hz.2
     simpa using hnot
+  simp only [complexPrimeSourceCoordinate]
   have hquot : AnalyticAt ℂ (fun w : ℂ => (Real.log q : ℂ) / w) z :=
     analyticAt_const.div analyticAt_id hz0
-  simpa [complexPrimeSourceCoordinate] using analyticAt_const.sub hquot
+  exact analyticAt_const.sub hquot
 
 private theorem analyticOnNhd_complexSourcePotential_comp
     {s : Set ℂ} {ω : ℂ → ℂ}
@@ -143,51 +141,50 @@ private theorem analyticOnNhd_complexSourceEntry_comp
     simpa [complexSourceEntry, dividedDifferenceEntry, hnm] using
       (hn.sub hm).div_const (c := (((n - m : ℤ) : ℂ)))
 
-/-- Any analytic complex source coordinate produces an analytic finite source
-matrix. -/
-theorem analyticOnNhd_complexSourceMatrix_comp
+/-- Any analytic complex source coordinate produces analytic entries of the
+finite source matrix. -/
+theorem analyticOnNhd_complexSourceMatrix_comp_apply
     {s : Set ℂ} {ω : ℂ → ℂ}
-    (hω : AnalyticOnNhd ℂ ω s) (K : ℕ) :
-    AnalyticOnNhd ℂ (fun z : ℂ => complexSourceMatrix (ω z) K) s := by
-  rw [analyticOnNhd_pi_iff]
-  intro i
-  rw [analyticOnNhd_pi_iff]
-  intro j
+    (hω : AnalyticOnNhd ℂ ω s) (K : ℕ)
+    (i j : Fin (2 * K + 1)) :
+    AnalyticOnNhd ℂ
+      (fun z : ℂ => complexSourceMatrix (ω z) K i j) s := by
   simpa [complexSourceMatrix, dividedDifferenceMatrix] using
     analyticOnNhd_complexSourceEntry_comp hω
       (centeredIndex K i) (centeredIndex K j)
 
-/-- One frozen prime-power source atom is analytic on the punctured source
-strip. -/
-theorem analyticOnNhd_complexPrimeSourceMatrix_sourceDomain
-    (q K : ℕ) :
+/-- One entry of a frozen prime-power source atom is analytic on the punctured
+source strip. -/
+theorem analyticOnNhd_complexPrimeSourceMatrix_apply_sourceDomain
+    (q K : ℕ) (i j : Fin (2 * K + 1)) :
     AnalyticOnNhd ℂ
       (fun z : ℂ =>
-        complexSourceMatrix (complexPrimeSourceCoordinate q z) K)
+        complexSourceMatrix (complexPrimeSourceCoordinate q z) K i j)
       complexFrozenSourceDomain :=
-  analyticOnNhd_complexSourceMatrix_comp
-    (analyticOnNhd_complexPrimeSourceCoordinate_sourceDomain q) K
+  analyticOnNhd_complexSourceMatrix_comp_apply
+    (analyticOnNhd_complexPrimeSourceCoordinate_sourceDomain q) K i j
 
-/-- The full frozen finite prime channel is analytic on the punctured source
-strip.  The prime cutoff is finite and fixed, so no moving-floor issue enters
-this theorem. -/
-theorem analyticOnNhd_complexFrozenCanonicalPrimeMatrix_sourceDomain
-    (Q K : ℕ) :
+/-- Every entry of the full frozen finite prime channel is analytic on the
+punctured source strip.  The prime cutoff is finite and fixed, so no
+moving-floor issue enters this theorem. -/
+theorem analyticOnNhd_complexFrozenCanonicalPrimeMatrix_apply_sourceDomain
+    (Q K : ℕ) (i j : Fin (2 * K + 1)) :
     AnalyticOnNhd ℂ
-      (fun z : ℂ => complexFrozenCanonicalPrimeMatrix Q z K)
+      (fun z : ℂ => complexFrozenCanonicalPrimeMatrix Q z K i j)
       complexFrozenSourceDomain := by
   classical
   have hsum := (Finset.Icc 2 Q).analyticOnNhd_fun_sum
     (𝕜 := ℂ)
     (f := fun q : ℕ => fun z : ℂ =>
-      primeSourceWeight q •
-        complexSourceMatrix (complexPrimeSourceCoordinate q z) K)
+      primeSourceWeight q *
+        complexSourceMatrix (complexPrimeSourceCoordinate q z) K i j)
     (s := complexFrozenSourceDomain)
     (fun q _hq => by
-      simpa using
-        (analyticOnNhd_complexPrimeSourceMatrix_sourceDomain q K).const_smul
+      simpa [smul_eq_mul] using
+        (analyticOnNhd_complexPrimeSourceMatrix_apply_sourceDomain q K i j).const_smul
           (c := primeSourceWeight q))
-  simpa [complexFrozenCanonicalPrimeMatrix] using hsum
+  simpa [complexFrozenCanonicalPrimeMatrix, Matrix.sum_apply, Pi.smul_apply,
+    smul_eq_mul] using hsum
 
 /-- The quadratic pole denominator for one centered integer frequency has no
 zero in the punctured source strip.  Its only complex roots are
@@ -208,15 +205,17 @@ theorem complexPoleQuadraticDenominator_ne_zero
     have ha2 :
         a ^ 2 = -(16 * (Real.pi : ℂ) ^ 2 * (m : ℂ) ^ 2) := by
       dsimp [a]
-      rw [Complex.I_sq]
-      ring
+      calc
+        (4 * (Real.pi : ℂ) * (m : ℂ) * Complex.I) ^ 2 =
+            (4 * (Real.pi : ℂ) * (m : ℂ)) ^ 2 * Complex.I ^ 2 := by ring
+        _ = -(16 * (Real.pi : ℂ) ^ 2 * (m : ℂ) ^ 2) := by
+          rw [Complex.I_sq]
+          ring
     have hsq : z ^ 2 = a ^ 2 := by
       rw [ha2]
       exact eq_neg_of_add_eq_zero_left hzero
     have haim : a.im = 4 * Real.pi * (m : ℝ) := by
-      dsimp [a]
-      simp
-      ring
+      simp [a, mul_assoc]
     have haLower : Real.pi ≤ |a.im| := by
       rw [haim]
       rcases lt_or_gt_of_ne hm0 with hmneg | hmpos
@@ -233,12 +232,9 @@ theorem complexPoleQuadraticDenominator_ne_zero
         rw [abs_of_pos hvalpos]
         nlinarith [Real.pi_pos]
     rcases (sq_eq_sq_iff_eq_or_eq_neg.mp hsq) with hza | hza
-    · have hbad := hzstrip
-      rw [hza] at hbad
+    · have hbad : |a.im| < Real.pi := by simpa [hza] using hzstrip
       exact (not_lt_of_ge haLower) hbad
-    · have hbad := hzstrip
-      rw [hza] at hbad
-      simp only [map_neg, abs_neg] at hbad
+    · have hbad : |a.im| < Real.pi := by simpa [hza] using hzstrip
       exact (not_lt_of_ge haLower) hbad
 
 /-- One literal pole entry is analytic throughout the punctured source strip. -/
@@ -248,36 +244,39 @@ theorem analyticOnNhd_complexPoleComponent_sourceDomain
       (complexPoleComponent n m)
       complexFrozenSourceDomain := by
   intro z hz
-  let κ : ℂ := 16 * (Real.pi : ℂ) ^ 2
-  have hdenM : z ^ 2 + κ * (m : ℂ) ^ 2 ≠ 0 := by
-    simpa [κ, mul_assoc] using complexPoleQuadraticDenominator_ne_zero m hz
-  have hdenN : z ^ 2 + κ * (n : ℂ) ^ 2 ≠ 0 := by
-    simpa [κ, mul_assoc] using complexPoleQuadraticDenominator_ne_zero n hz
+  have hdenM :
+      z ^ 2 + 16 * (Real.pi : ℂ) ^ 2 * (m : ℂ) ^ 2 ≠ 0 :=
+    complexPoleQuadraticDenominator_ne_zero m hz
+  have hdenN :
+      z ^ 2 + 16 * (Real.pi : ℂ) ^ 2 * (n : ℂ) ^ 2 ≠ 0 :=
+    complexPoleQuadraticDenominator_ne_zero n hz
+  change AnalyticAt ℂ
+    (fun w : ℂ =>
+      (32 * w * Complex.sinh (w / 4) ^ 2) *
+          (w ^ 2 - (16 * (Real.pi : ℂ) ^ 2) * ((m * n : ℤ) : ℂ)) /
+        ((w ^ 2 + (16 * (Real.pi : ℂ) ^ 2) * (m : ℂ) ^ 2) *
+          (w ^ 2 + (16 * (Real.pi : ℂ) ^ 2) * (n : ℂ) ^ 2))) z
   have hC : AnalyticAt ℂ
       (fun w : ℂ => 32 * w * Complex.sinh (w / 4) ^ 2) z := by
     fun_prop
   have hnum : AnalyticAt ℂ
-      (fun w : ℂ => w ^ 2 - κ * ((m * n : ℤ) : ℂ)) z := by
+      (fun w : ℂ =>
+        w ^ 2 - (16 * (Real.pi : ℂ) ^ 2) * ((m * n : ℤ) : ℂ)) z := by
     fun_prop
   have hden : AnalyticAt ℂ
       (fun w : ℂ =>
-        (w ^ 2 + κ * (m : ℂ) ^ 2) *
-          (w ^ 2 + κ * (n : ℂ) ^ 2)) z := by
+        (w ^ 2 + (16 * (Real.pi : ℂ) ^ 2) * (m : ℂ) ^ 2) *
+          (w ^ 2 + (16 * (Real.pi : ℂ) ^ 2) * (n : ℂ) ^ 2)) z := by
     fun_prop
-  have hquot := (hC.mul hnum).div hden (mul_ne_zero hdenM hdenN)
-  simpa [complexPoleComponent, κ, mul_assoc] using hquot
+  exact (hC.mul hnum).div hden (mul_ne_zero hdenM hdenN)
 
-/-- The centered finite literal pole matrix is analytic throughout the
-punctured source strip. -/
-theorem analyticOnNhd_complexCanonicalPoleMatrix_sourceDomain
-    (K : ℕ) :
+/-- Every entry of the centered finite literal pole matrix is analytic
+throughout the punctured source strip. -/
+theorem analyticOnNhd_complexCanonicalPoleMatrix_apply_sourceDomain
+    (K : ℕ) (i j : Fin (2 * K + 1)) :
     AnalyticOnNhd ℂ
-      (fun z : ℂ => complexCanonicalPoleMatrix z K)
+      (fun z : ℂ => complexCanonicalPoleMatrix z K i j)
       complexFrozenSourceDomain := by
-  rw [analyticOnNhd_pi_iff]
-  intro i
-  rw [analyticOnNhd_pi_iff]
-  intro j
   simpa [complexCanonicalPoleMatrix] using
     analyticOnNhd_complexPoleComponent_sourceDomain
       (centeredIndex K i) (centeredIndex K j)
@@ -298,22 +297,30 @@ theorem analyticOnNhd_complexApertureScalarRemainder_sourceDomain :
   filter_upwards [eventually_ne_nhds hz0] with w hw
   exact complexApertureScalarRemainderRemovable_eq_complexApertureScalarRemainder hw
 
-/-- Full assembly theorem: the exact frozen complex source remainder is
-analytic on one explicit punctured strip containing the whole nonzero real
-axis. -/
-theorem analyticOnNhd_complexFrozenCanonicalSourceRemainder_sourceDomain
-    (Q K : ℕ) :
+/-- Full assembly theorem, entrywise: every entry of the exact frozen complex
+source remainder is analytic on one explicit punctured strip containing the
+whole nonzero real axis. -/
+theorem analyticOnNhd_complexFrozenCanonicalSourceRemainder_apply_sourceDomain
+    (Q K : ℕ) (i j : Fin (2 * K + 1)) :
     AnalyticOnNhd ℂ
-      (fun z : ℂ => complexFrozenCanonicalSourceRemainder Q z K)
+      (fun z : ℂ => complexFrozenCanonicalSourceRemainder Q z K i j)
       complexFrozenSourceDomain := by
-  have hpole := analyticOnNhd_complexCanonicalPoleMatrix_sourceDomain K
-  have harch := analyticOnNhd_complexCanonicalArchWithoutWMatrix_sourceDomain K
-  have hprime := analyticOnNhd_complexFrozenCanonicalPrimeMatrix_sourceDomain Q K
+  have hpole := analyticOnNhd_complexCanonicalPoleMatrix_apply_sourceDomain K i j
+  have harch :=
+    analyticOnNhd_complexCanonicalArchWithoutWMatrix_apply_sourceDomain K i j
+  have hprime :=
+    analyticOnNhd_complexFrozenCanonicalPrimeMatrix_apply_sourceDomain Q K i j
   have hscalar : AnalyticOnNhd ℂ
-      (fun z : ℂ => complexApertureScalarRemainder z •
-        (1 : Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ))
-      complexFrozenSourceDomain :=
-    analyticOnNhd_complexApertureScalarRemainder_sourceDomain.smul analyticOnNhd_const
+      (fun z : ℂ =>
+        (complexApertureScalarRemainder z •
+          (1 : Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ)) i j)
+      complexFrozenSourceDomain := by
+    intro z hz
+    simpa [Pi.smul_apply, smul_eq_mul] using
+      (analyticOnNhd_complexApertureScalarRemainder_sourceDomain z hz).mul
+        (analyticAt_const : AnalyticAt ℂ
+          (fun _ : ℂ =>
+            (1 : Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ) i j) z)
   simpa [complexFrozenCanonicalSourceRemainder] using
     ((hpole.sub harch).sub hprime).add hscalar
 
@@ -321,11 +328,11 @@ end Zeta23.CCM
 
 #print axioms Zeta23.CCM.isOpen_complexFrozenSourceDomain
 #print axioms Zeta23.CCM.analyticOnNhd_complexCanonicalArchWithoutWComponent_strip
-#print axioms Zeta23.CCM.analyticOnNhd_complexCanonicalArchWithoutWMatrix_strip
+#print axioms Zeta23.CCM.analyticOnNhd_complexCanonicalArchWithoutWMatrix_apply_strip
 #print axioms Zeta23.CCM.analyticOnNhd_complexPrimeSourceCoordinate_sourceDomain
-#print axioms Zeta23.CCM.analyticOnNhd_complexSourceMatrix_comp
-#print axioms Zeta23.CCM.analyticOnNhd_complexFrozenCanonicalPrimeMatrix_sourceDomain
+#print axioms Zeta23.CCM.analyticOnNhd_complexSourceMatrix_comp_apply
+#print axioms Zeta23.CCM.analyticOnNhd_complexFrozenCanonicalPrimeMatrix_apply_sourceDomain
 #print axioms Zeta23.CCM.complexPoleQuadraticDenominator_ne_zero
-#print axioms Zeta23.CCM.analyticOnNhd_complexCanonicalPoleMatrix_sourceDomain
+#print axioms Zeta23.CCM.analyticOnNhd_complexCanonicalPoleMatrix_apply_sourceDomain
 #print axioms Zeta23.CCM.analyticOnNhd_complexApertureScalarRemainder_sourceDomain
-#print axioms Zeta23.CCM.analyticOnNhd_complexFrozenCanonicalSourceRemainder_sourceDomain
+#print axioms Zeta23.CCM.analyticOnNhd_complexFrozenCanonicalSourceRemainder_apply_sourceDomain
