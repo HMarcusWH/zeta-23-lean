@@ -1,6 +1,7 @@
 import Zeta23.CCM.CanonicalApertureSourceHolomorphy
 import Zeta23.CCM.FrozenIntrinsicPredecessorComplex
 import Mathlib.Analysis.Analytic.Constructions
+import Mathlib.Analysis.SpecialFunctions.ExpDeriv
 
 noncomputable section
 
@@ -37,7 +38,7 @@ private theorem complexFrozenCanonicalSourceRemainder_toEuclideanLin_apply_eq_su
             EuclideanSpace.single i 1 := by
   rw [Matrix.toLpLin_apply]
   ext k
-  simp [Matrix.mulVec, PiLp.single_apply]
+  simp [Matrix.mulVec, dotProduct, Pi.single_apply]
 
 /-- The actual frozen source remainder, after application to a fixed vector,
 is analytic as a Euclidean-space-valued map on the common source domain. -/
@@ -101,9 +102,7 @@ theorem analyticOnNhd_complexFrozenIntrinsicPredecessorRemainder_apply_sourceDom
     AnalyticOnNhd ℂ
       (fun z : ℂ => complexFrozenIntrinsicPredecessorRemainder Q p N z x)
       complexFrozenSourceDomain := by
-  let P : euclideanParityBoundaryFlatSubspace p (N + 1) →L[ℂ]
-      intrinsicParityPredecessorSubspace p N :=
-    LinearMap.toContinuousLinearMap (intrinsicPredecessorPart p N)
+  let P := (intrinsicPredecessorPart p N).toContinuousLinearMap
   have hpar :=
     analyticOnNhd_complexFrozenParityCompressedRemainder_apply_sourceDomain
       Q p (N + 1)
@@ -128,7 +127,8 @@ theorem isOpen_liftedFrozenPredecessorDomain :
 /-- The origin belongs to the lifted domain (`exp 0 = 1`). -/
 theorem zero_mem_liftedFrozenPredecessorDomain :
     (0 : ℂ) ∈ liftedFrozenPredecessorDomain := by
-  change (1 : ℂ) ∈ complexFrozenSourceDomain
+  change Complex.exp 0 ∈ complexFrozenSourceDomain
+  simp only [Complex.exp_zero]
   constructor
   · simpa [complexArchSafeStrip] using Real.pi_pos
   · simp
@@ -155,7 +155,7 @@ theorem analyticOnNhd_liftedFrozenIntrinsicPredecessorRemainder_apply
       complexFrozenIntrinsicPredecessorRemainder Q p N (Complex.exp w) x) z
   exact
     (analyticOnNhd_complexFrozenIntrinsicPredecessorRemainder_apply_sourceDomain
-      Q p N x (Complex.exp z) hz).comp Complex.analyticAt_exp
+      Q p N x (Complex.exp z) hz).comp analyticAt_cexp
 
 /-- The full lifted predecessor block is analytic after application to every
 fixed intrinsic vector. -/
