@@ -96,6 +96,7 @@ theorem complexApertureScalarFactor_re_formula
     Complex.one_re, Complex.one_im, Complex.exp_re, Complex.exp_im,
     add_zero, sub_zero]
   field_simp [hden]
+  ring_nf
   nlinarith [Real.sin_sq_add_cos_sq z.im]
 
 /-- The production scalar factor has strictly positive real part throughout the
@@ -125,15 +126,9 @@ theorem complexApertureScalarFactor_re_pos_of_mem_strip_of_ne_zero
         apply Complex.ext <;> simp [hx0, hy0]
       have hypos : 0 < z.im * Real.sin z.im :=
         real_mul_sin_pos_of_abs_lt_pi_of_ne_zero hz hy0
-      have he : 0 < Real.exp z.re := Real.exp_pos z.re
-      have hsecondPos :
-          0 < 2 * z.im * Real.exp z.re * Real.sin z.im := by
-        have htmp : 0 < 2 * Real.exp z.re * (z.im * Real.sin z.im) :=
-          mul_pos (mul_pos (by norm_num) he) hypos
-        nlinarith
       rw [hx0]
-      norm_num at hsecondPos ⊢
-      exact hsecondPos
+      simp only [zero_mul, Real.exp_zero, mul_one, zero_add]
+      nlinarith [hypos]
     · have hfirst : 0 < z.re * (Real.exp z.re ^ 2 - 1) :=
         real_mul_exp_sq_sub_one_pos hx0
       linarith
