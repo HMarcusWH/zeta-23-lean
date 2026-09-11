@@ -45,7 +45,7 @@ private theorem hasDerivAt_fixedUnitIntegral_of_continuousOn
   let K : Set (ℂ × ℝ) := closedBall z₀ r ×ˢ Set.Icc (0 : ℝ) 1
   have hK : IsCompact K := by
     dsimp [K]
-    exact isCompact_closedBall.prod isCompact_Icc
+    exact IsCompact.prod isCompact_closedBall isCompact_Icc
   have hnorm : ContinuousOn (fun p : ℂ × ℝ => ‖F' p.1 p.2‖) K := by
     simpa [K, Function.uncurry] using hF'.norm
   rcases hK.bddAbove_image hnorm with ⟨C, hC⟩
@@ -60,18 +60,19 @@ private theorem hasDerivAt_fixedUnitIntegral_of_continuousOn
     have hmap : MapsTo (fun t : ℝ => (z, t)) (Set.Icc (0 : ℝ) 1) K := by
       intro t ht
       exact ⟨hzclosed, ht⟩
-    have hslice : ContinuousOn (F z) (Set.Icc (0 : ℝ) 1) := by
-      have hc := hF.comp hpair hmap
-      simpa [K, Function.uncurry] using hc
-    exact (hslice.mono uIoc_subset_uIcc).aestronglyMeasurable measurableSet_uIoc
+    have hc := hF.comp hpair hmap
+    have hcIoc := hc.mono Set.Ioc_subset_Icc_self
+    rw [Set.uIoc_of_le zero_le_one]
+    simpa only [Function.comp_apply, Function.uncurry] using
+      hcIoc.aestronglyMeasurable measurableSet_Ioc
   · have hpair : ContinuousOn (fun t : ℝ => (z₀, t)) (Set.Icc (0 : ℝ) 1) := by
       fun_prop
     have hmap : MapsTo (fun t : ℝ => (z₀, t)) (Set.Icc (0 : ℝ) 1) K := by
       intro t ht
       exact ⟨hz₀closed, ht⟩
+    have hc := hF.comp hpair hmap
     have hslice : ContinuousOn (F z₀) (Set.Icc (0 : ℝ) 1) := by
-      have hc := hF.comp hpair hmap
-      simpa [K, Function.uncurry] using hc
+      simpa only [Function.comp_apply, Function.uncurry] using hc
     have hsliceU : ContinuousOn (F z₀) (Set.uIcc (0 : ℝ) 1) := by
       simpa [uIcc_of_le zero_le_one] using hslice
     exact hsliceU.intervalIntegrable
@@ -80,18 +81,25 @@ private theorem hasDerivAt_fixedUnitIntegral_of_continuousOn
     have hmap : MapsTo (fun t : ℝ => (z₀, t)) (Set.Icc (0 : ℝ) 1) K := by
       intro t ht
       exact ⟨hz₀closed, ht⟩
-    have hslice : ContinuousOn (F' z₀) (Set.Icc (0 : ℝ) 1) := by
-      have hc := hF'.comp hpair hmap
-      simpa [K, Function.uncurry] using hc
-    exact (hslice.mono uIoc_subset_uIcc).aestronglyMeasurable measurableSet_uIoc
+    have hc := hF'.comp hpair hmap
+    have hcIoc := hc.mono Set.Ioc_subset_Icc_self
+    rw [Set.uIoc_of_le zero_le_one]
+    simpa only [Function.comp_apply, Function.uncurry] using
+      hcIoc.aestronglyMeasurable measurableSet_Ioc
   · filter_upwards with t
     intro ht z hz
+    have htIcc : t ∈ Set.Icc (0 : ℝ) 1 := by
+      rw [Set.uIoc_of_le zero_le_one] at ht
+      exact Set.Ioc_subset_Icc_self ht
     have hp : (z, t) ∈ K :=
-      ⟨ball_subset_closedBall hz, uIoc_subset_uIcc ht⟩
+      ⟨ball_subset_closedBall hz, htIcc⟩
     exact hC ⟨(z, t), hp, rfl⟩
   · filter_upwards with t
     intro ht z hz
-    exact hderiv z (ball_subset_closedBall hz) t (uIoc_subset_uIcc ht)
+    have htIcc : t ∈ Set.Icc (0 : ℝ) 1 := by
+      rw [Set.uIoc_of_le zero_le_one] at ht
+      exact Set.Ioc_subset_Icc_self ht
+    exact hderiv z (ball_subset_closedBall hz) t htIcc
 
 /-- A fixed continuous weight multiplied by the regularized archimedean scale. -/
 private def weightedArchIntegrand (w : ℝ → ℂ) (z : ℂ) (t : ℝ) : ℂ :=
@@ -128,7 +136,10 @@ private theorem differentiableAt_weightedArchIntegral
     exact analyticOnNhd_complexRegularizedArchScale_strip.continuousOn.comp hmapcont hmap
   have hF : ContinuousOn
       (Function.uncurry (weightedArchIntegrand w)) K := by
-    simpa [weightedArchIntegrand, Function.uncurry] using hwprod.mul hscale
+    change ContinuousOn
+      (fun p : ℂ × ℝ =>
+        w p.2 * complexRegularizedArchScale (p.1 * (p.2 : ℂ))) K
+    exact hwprod.mul hscale
   have hderivScale : AnalyticOnNhd ℂ
       (deriv complexRegularizedArchScale) complexArchSafeStrip :=
     analyticOnNhd_complexRegularizedArchScale_strip.deriv
@@ -140,8 +151,11 @@ private theorem differentiableAt_weightedArchIntegral
     fun_prop
   have hF' : ContinuousOn
       (Function.uncurry (weightedArchIntegrandDeriv w)) K := by
-    simpa [weightedArchIntegrandDeriv, Function.uncurry] using
-      hwprod.mul (htcast.mul hderivScaleComp)
+    change ContinuousOn
+      (fun p : ℂ × ℝ =>
+        w p.2 * ((p.2 : ℂ) *
+          deriv complexRegularizedArchScale (p.1 * (p.2 : ℂ)))) K
+    exact hwprod.mul (htcast.mul hderivScaleComp)
   have hpoint : ∀ z ∈ closedBall z₀ r, ∀ t ∈ Set.Icc (0 : ℝ) 1,
       HasDerivAt
         (fun u : ℂ => weightedArchIntegrand w u t)
@@ -161,7 +175,9 @@ private theorem differentiableAt_weightedArchIntegral
       mul_assoc, mul_comm, mul_left_comm] using hweighted
   have hmain := hasDerivAt_fixedUnitIntegral_of_continuousOn
     hr hF hF' hpoint
-  simpa [weightedArchIntegral] using hmain.differentiableAt
+  change DifferentiableAt ℂ
+    (fun z : ℂ => ∫ t in (0 : ℝ)..1, weightedArchIntegrand w z t) z₀
+  exact hmain.differentiableAt
 
 /-- `complexBetaCore` is complex differentiable at every aperture in the
 common archimedean safe strip. -/
@@ -174,7 +190,8 @@ theorem differentiableAt_complexBetaCore_of_mem_strip
     dsimp [w]
     fun_prop
   have h := differentiableAt_weightedArchIntegral hw hz
-  simpa [w, weightedArchIntegral, weightedArchIntegrand, complexBetaCore] using h
+  change DifferentiableAt ℂ (complexBetaCore n) z at h
+  exact h
 
 /-- Strip-wide differentiability of the beta core. -/
 theorem differentiableOn_complexBetaCore_strip (n : ℤ) :
@@ -205,7 +222,8 @@ theorem differentiableAt_complexAlphaCore_of_mem_strip
     fun_prop (disch := assumption)
   have h := differentiableAt_weightedArchIntegral hw hz
   have hscaled := h.const_mul (2 * (n : ℂ))
-  simpa [w, weightedArchIntegral, weightedArchIntegrand, complexAlphaCore] using hscaled
+  change DifferentiableAt ℂ (complexAlphaCore n) z at hscaled
+  exact hscaled
 
 /-- Strip-wide differentiability of the alpha core. -/
 theorem differentiableOn_complexAlphaCore_strip (n : ℤ) :
@@ -232,7 +250,7 @@ private def gammaApertureCoeff (n : ℤ) (z : ℂ) (t : ℝ) : ℂ :=
     (z / 2) * complexArchExpSlope (-(z * (t : ℂ)) / 2)
 
 /-- Exact parameter derivative of `gammaApertureCoeff`. -/
-private def gammaApertureCoeffDeriv (n : ℤ) (z : ℂ) (t : ℝ) : ℂ :=
+private def gammaApertureCoeffDeriv (_n : ℤ) (z : ℂ) (t : ℝ) : ℂ :=
   (1 / 2 : ℂ) * complexArchExpSlope (-(z * (t : ℂ)) / 2) +
     (z / 2) *
       (deriv complexArchExpSlope (-(z * (t : ℂ)) / 2) * (-(t : ℂ) / 2))
@@ -278,21 +296,27 @@ private theorem hasDerivAt_gammaApertureCoeff
   let A : ℂ :=
     ((2 * Real.pi * (n : ℝ) : ℝ) : ℂ) *
       complexArchCosSlope ((2 * Real.pi * (n : ℝ) * t : ℝ) : ℂ)
-  have hconst : HasDerivAt (fun _ : ℂ => A) 0 z := hasDerivAt_const z A
   have hzhalf : HasDerivAt (fun u : ℂ => u / 2) (1 / 2 : ℂ) z := by
     simpa using (hasDerivAt_id z).div_const 2
   have hinner : HasDerivAt
       (fun u : ℂ => -(u * (t : ℂ)) / 2) (-(t : ℂ) / 2) z := by
-    convert (((hasDerivAt_id z).mul_const (t : ℂ)).neg.div_const 2) using 1 <;> ring
+    simpa using (((hasDerivAt_id z).mul_const (t : ℂ)).neg.div_const 2)
   have hexpBase : HasDerivAt complexArchExpSlope
       (deriv complexArchExpSlope (-(z * (t : ℂ)) / 2))
       (-(z * (t : ℂ)) / 2) :=
     (differentiable_complexArchExpSlope (-(z * (t : ℂ)) / 2)).hasDerivAt
   have hexpComp := hexpBase.comp z hinner
   have hprod := hzhalf.mul hexpComp
-  have hsum := hconst.add hprod
-  simpa [A, gammaApertureCoeff, gammaApertureCoeffDeriv,
-    mul_assoc, mul_comm, mul_left_comm] using hsum
+  have hvar : HasDerivAt
+      (fun u : ℂ => (u / 2) * complexArchExpSlope (-(u * (t : ℂ)) / 2))
+      (gammaApertureCoeffDeriv n z t) z := by
+    convert hprod using 1 <;> ring
+  have hsum := (hasDerivAt_const z A).add hvar
+  change HasDerivAt
+    (fun u : ℂ => A +
+      (u / 2) * complexArchExpSlope (-(u * (t : ℂ)) / 2))
+    (gammaApertureCoeffDeriv n z t) z
+  exact hsum
 
 private theorem hasDerivAt_gammaParamIntegrand
     (n : ℤ) {z : ℂ} (hz : z ∈ complexArchSafeStrip)
@@ -310,8 +334,7 @@ private theorem hasDerivAt_gammaParamIntegrand
   have hscale := hscaleBase.comp z hmul
   have hcoeff := hasDerivAt_gammaApertureCoeff n z t
   have hprod := hcoeff.mul hscale
-  simpa [gammaParamIntegrand, gammaParamIntegrandDeriv,
-    mul_assoc, mul_comm, mul_left_comm] using hprod
+  simpa [gammaParamIntegrand, gammaParamIntegrandDeriv, mul_assoc] using hprod
 
 /-- `complexGammaCore` is complex differentiable throughout the common strip. -/
 theorem differentiableAt_complexGammaCore_of_mem_strip
@@ -346,15 +369,23 @@ theorem differentiableAt_complexGammaCore_of_mem_strip
     (continuous_gammaApertureCoeffDeriv n).continuousOn
   have hF : ContinuousOn
       (Function.uncurry (gammaParamIntegrand n)) K := by
-    simpa [gammaParamIntegrand, Function.uncurry] using hcoeff.mul hscale
+    change ContinuousOn
+      (fun p : ℂ × ℝ => gammaApertureCoeff n p.1 p.2 *
+        complexRegularizedArchScale (p.1 * (p.2 : ℂ))) K
+    exact hcoeff.mul hscale
   have hscaleParamDeriv : ContinuousOn
       (fun p : ℂ × ℝ =>
         deriv complexRegularizedArchScale (p.1 * (p.2 : ℂ)) * (p.2 : ℂ)) K :=
     hderivScaleComp.mul htcast
   have hF' : ContinuousOn
       (Function.uncurry (gammaParamIntegrandDeriv n)) K := by
-    simpa [gammaParamIntegrandDeriv, Function.uncurry] using
-      (hcoeff'.mul hscale).add (hcoeff.mul hscaleParamDeriv)
+    change ContinuousOn
+      (fun p : ℂ × ℝ =>
+        gammaApertureCoeffDeriv n p.1 p.2 *
+            complexRegularizedArchScale (p.1 * (p.2 : ℂ)) +
+          gammaApertureCoeff n p.1 p.2 *
+            (deriv complexRegularizedArchScale (p.1 * (p.2 : ℂ)) * (p.2 : ℂ))) K
+    exact (hcoeff'.mul hscale).add (hcoeff.mul hscaleParamDeriv)
   have hpoint : ∀ z ∈ closedBall z₀ r, ∀ t ∈ Set.Icc (0 : ℝ) 1,
       HasDerivAt
         (fun u : ℂ => gammaParamIntegrand n u t)
@@ -363,8 +394,9 @@ theorem differentiableAt_complexGammaCore_of_mem_strip
     exact hasDerivAt_gammaParamIntegrand n (hclosed hz) ht
   have hmain := hasDerivAt_fixedUnitIntegral_of_continuousOn
     hr hF hF' hpoint
-  simpa [complexGammaCore, gammaParamIntegrand, gammaApertureCoeff] using
-    hmain.differentiableAt
+  have hd := hmain.differentiableAt
+  change DifferentiableAt ℂ (complexGammaCore n) z₀ at hd
+  exact hd
 
 /-- Strip-wide differentiability of the gamma core. -/
 theorem differentiableOn_complexGammaCore_strip (n : ℤ) :
