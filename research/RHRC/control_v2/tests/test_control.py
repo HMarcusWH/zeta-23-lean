@@ -21,16 +21,16 @@ class ControlV2Tests(unittest.TestCase):
         self.assertFalse(boundary["may_emit_terminal_rh_status"])
         self.assertFalse(boundary["may_promote_lean_theorem"])
 
-    def test_state_has_post_146_theorem_and_post_117_control_anchors(self):
+    def test_state_has_post_148_theorem_and_post_117_control_anchors(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 146)
+        self.assertEqual(state.anchor.pr, 148)
         self.assertEqual(
             state.anchor.merge_commit,
-            "f2999d12e29d61debce130e83491ac3df410b0c2",
+            "fcd301ae4c1b58196ff7fca18128243f1d35a87b",
         )
         self.assertEqual(
             state.anchor.tree,
-            "fe76581d445569cb838cb4df7bf50703aa34f5cc",
+            "91d537ee64b8f613bebdcf12110deba486276d35",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -91,19 +91,19 @@ class ControlV2Tests(unittest.TestCase):
             scores["DEFORMATION_BUDGET_PAPER_TEST"],
         )
 
-    def test_regular_aperture_action_is_post146_parameter_holomorphy_route(self):
+    def test_regular_aperture_action_is_post148_assembled_holomorphy_route(self):
         registry = json.loads(
             (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
         )
         action = registry["actions"]["E4_A4_REGULAR_APERTURE_SELECTION"]
         objections = "\n".join(action["surviving_objections"])
         first_breaks = "\n".join(x["statement"] for x in action["first_breaks"])
-        self.assertIn("PR #146", objections)
+        self.assertIn("PR #148", objections)
         self.assertIn("same-size/same-vector", objections)
         self.assertIn("cell-minimal", objections)
-        self.assertIn("parameter holomorphy", objections)
-        self.assertIn("fixed-unit production source integrals", first_breaks)
-        self.assertIn("determinant nonidentity", first_breaks)
+        self.assertIn("assembled frozen source/predecessor holomorphy", objections)
+        self.assertIn("common punctured complex domain", first_breaks)
+        self.assertIn("determinant", first_breaks)
         self.assertIn("cell-minimal bad-size", first_breaks)
         self.assertNotIn("fixed finite canonical negative witness cannot be preserved", first_breaks)
 
