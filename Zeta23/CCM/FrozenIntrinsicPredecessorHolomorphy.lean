@@ -102,6 +102,11 @@ theorem analyticOnNhd_complexFrozenIntrinsicPredecessorRemainder_apply_sourceDom
     AnalyticOnNhd ℂ
       (fun z : ℂ => complexFrozenIntrinsicPredecessorRemainder Q p N z x)
       complexFrozenSourceDomain := by
+  letI : NormedSpace ℂ (intrinsicParityPredecessorSubspace p N) where
+    norm_smul_le c y := by
+      simpa using
+        (norm_smul_le c
+          (y : euclideanParityBoundaryFlatSubspace p (N + 1)))
   let P := (intrinsicPredecessorPart p N).toContinuousLinearMap
   have hpar :=
     analyticOnNhd_complexFrozenParityCompressedRemainder_apply_sourceDomain
