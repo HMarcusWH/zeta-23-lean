@@ -3,9 +3,9 @@
   "boundary_id": "B0_RH_2026_08_20",
   "terminal_claim": "RH_OPEN",
   "merged_theorem_anchor": {
-    "pr": 142,
-    "merge_commit": "3e8d2995a1c00a9aef0d8cb0f5382658c91a8673",
-    "tree": "a92d03d0d4ad800d544a835b8ae2e3d23bae2c47",
+    "pr": 146,
+    "merge_commit": "f2999d12e29d61debce130e83491ac3df410b0c2",
+    "tree": "fe76581d445569cb838cb4df7bf50703aa34f5cc",
     "status": "MERGED_GREEN_THEOREM_STATE"
   },
   "merged_control_anchor": {
@@ -15,5 +15,5 @@
     "status": "MERGED_GREEN_CONTROL_STATE"
   },
   "candidate_branch": null,
-  "control_note": "PR #142 is the merged theorem anchor (validated theorem head 23d96af9aafd86ad26ae7913c3d6c14503d539de; validated tree a92d03d0d4ad800d544a835b8ae2e3d23bae2c47; RHRC #889 and Permansson #662 success). It proves fixed-cell continuity of the actual canonicalSourceMatrix and fixed-vector real quadratic energy, plus same-size/same-vector strict negative witness persistence inside one physical cutoff cell; its ExceptionalZero wrapper composes this with PR #140 aperture freedom. The post-#142 research pass further compresses A4R: choose the least bad size over the entire cutoff cell, so every smaller size is nonnegative in both parities throughout the cell, preserve a bad parity witness on an open set using #142, and regularize only the relevant predecessor determinant(s) at that cell-minimal size. Countable all-size Baire regularization and finite-prefix simultaneous regularization are no longer primary obligations. The immediate frontier remains FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_APERTURE_SELECTION, now focused on an exact analytic frozen intrinsic predecessor, single-valued holomorphic remainder after the #140 scalar -log(L) extraction, determinant nonidentity by logarithmic monodromy, dense fixed-cell regularity, and production cell-minimal selection. Regularity removes resonance but does not supply the decisive arithmetic sign: Ecanonical(c-x0)>=0 on the exact forced regular trial remains OPEN. A generic post-#142 analytic regularization countermodel is a mandatory negative control showing that persistence, minimality, regularity, parity and scalar logarithms alone do not contradict negative finite states. PR #117 remains the Control-v2 semantic anchor. Control v2 has no theorem/claim authority. RH remains OPEN."
+  "control_note": "PR #146 is the merged theorem anchor (validated theorem head a25d238478f7b19072c5364486b8f3f994bf6b79; validated theorem tree fe76581d445569cb838cb4df7bf50703aa34f5cc; RHRC #922 and Permansson #695 success). PR #144 theorem-locked the exact frozen production source/predecessor scaffold, real-axis -log(L) identity split through the intrinsic predecessor, complex frozen remainder, logarithmic-cover lift, deck-periodicity identities, and exact production-cell bridge. PR #145 added the removable scalar factor/remainder and local analyticity at zero. PR #146 proves exact punctured-domain equality of those removable scalar objects with the production complex scalar/remainder and locks them back to the positive-real production formulas. These results do not prove genuine aperture-parameter holomorphy of the fixed-unit source integrals or the assembled frozen predecessor remainder. The immediate frontier therefore remains FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_APERTURE_SELECTION, but FB-01 is now parameter-integral holomorphy / assembled predecessor holomorphy, followed by determinant nonidentity, dense fixed-cell regularity, and production cell-minimal regular selection. Translation or deck identities alone are explicitly insufficient to establish holomorphy. Regularity removes resonance but does not supply the decisive arithmetic sign Ecanonical(c-x0)>=0. PR #117 remains the Control-v2 semantic anchor. Control v2 has no theorem/claim authority. RH remains OPEN."
 }

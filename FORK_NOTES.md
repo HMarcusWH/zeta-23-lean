@@ -5,20 +5,18 @@
 ## Authority snapshot
 
 ```text
-live main after merged PR #142 = 3e8d2995a1c00a9aef0d8cb0f5382658c91a8673
-live main tree = a92d03d0d4ad800d544a835b8ae2e3d23bae2c47
+live main after merged PR #146 = f2999d12e29d61debce130e83491ac3df410b0c2
+live main tree = fe76581d445569cb838cb4df7bf50703aa34f5cc
 
-theorem-state anchor = PR #142 merge 3e8d2995a1c00a9aef0d8cb0f5382658c91a8673
-validated theorem head = 23d96af9aafd86ad26ae7913c3d6c14503d539de
-validated theorem tree = a92d03d0d4ad800d544a835b8ae2e3d23bae2c47
-RHRC #889 = SUCCESS
-Permansson #662 = SUCCESS
+theorem-state anchor = PR #146 merge f2999d12e29d61debce130e83491ac3df410b0c2
+validated theorem head = a25d238478f7b19072c5364486b8f3f994bf6b79
+validated theorem tree = fe76581d445569cb838cb4df7bf50703aa34f5cc
+RHRC #922 / run 34600323163 = SUCCESS
+Permansson #695 / run 34600323144 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
 ```
-
-PR #142 is theorem-bearing and advances theorem authority beyond #140. It does not prove determinant nonidentity, dense regular-aperture existence, the final arithmetic Schur sign, negative-root exclusion, or RH.
 
 ## Recent theorem packages
 
@@ -30,35 +28,48 @@ PR #142 is theorem-bearing and advances theorem authority beyond #140. It does n
 #137 exact source pairing + one-step determinant + global sign-failure endpoint
 #140 eventual aperture freedom + predecessor-regularity/frozen-cutoff scaffold
 #142 fixed-cell canonical continuity + same-witness local persistence
+#144 exact frozen production source/predecessor + logarithmic-cover scaffold
+#145 local removable scalar analyticity at zero
+#146 removable scalar/remainder <-> production complex scalar/remainder
 ```
 
-## What #142 adds
+## What #144 adds
 
-**PROVED:** on every physical cutoff cell `I_Q=(log Q,log(Q+1))`, each entry of the actual production `canonicalSourceMatrix` is continuous.
+**PROVED:** exact frozen canonical source equality with the actual production source on a physical cutoff cell.
 
-**PROVED:** for any fixed finite coefficient vector, its canonical quadratic energy is continuous on that cell.
+**PROVED:** exact `-log(L) * I + remainder` decomposition survives the actual parity compression and intrinsic predecessor projection.
 
-**PROVED:** a strict negative witness at one interior aperture persists on an open in-cell neighborhood with the **same finite size and the same vector**.
+**PROVED:** exact complex frozen source/predecessor remainder and positive-real bridges.
 
-**PROVED:** combined with #140, an off-line zero supplies such a locally persistent boundary-flat negative witness at every chosen sufficiently large cell-interior aperture.
-
-Headline declarations:
+**PROVED:** logarithmic-cover lift
 
 ```text
-continuousOn_canonicalSourceMatrix_apply_fixedCell
-continuousOn_re_canonicalSourceQuadraticForm_fixedCell
-exists_open_fixedCell_negativeCanonicalSourceWitness_persistence
-eventually_fixedCell_negativeCanonicalSourceWitness_persists_of_offLine_zero
+Ahat(z) = -z I + R(exp z)
 ```
 
-## Current frontier after the #142 post-green pass
+with exact deck-periodicity of the lifted remainder and exact affine deck shift for the full lifted block.
+
+**PROVED:** evaluating the lifted family at `z=log L` on a physical cutoff cell recovers the production `intrinsicPredecessorBlock`.
+
+## What #145-#146 add
+
+**PROVED / #145:** the corrected scalar aperture factor and scalar remainder have a removable analytic extension at zero.
+
+**PROVED / #146:** away from zero, that removable scalar layer is exactly the existing production complex scalar/remainder; on `L>0`, it is exactly the production real scalar formula.
+
+This closes the scalar removable-point/provenance issue without modifying the production definitions.
+
+## Current frontier
 
 ```text
 A4b1 absolute canonical source energy                            PROVED / #136
 A4b2a one-step determinant/sufficiency reduction                 PROVED / #137
 A4R0  aperture freedom + regularity scaffold                     PROVED / #140
 A4R1a fixed-cell canonical witness persistence                   PROVED / #142
-A4R1b analytic frozen predecessor + determinant nonidentity      OPEN / NOW
+A4R1b frozen/log-cover predecessor scaffold                      PROVED / #144
+A4R1b scalar removable analyticity + production bridge           PROVED / #145-#146
+A4R1b parameter-integral + assembled holomorphy                  OPEN / NOW
+A4R1b determinant nonidentity + dense regularity                 OPEN / NEXT
 A4R1c cell-minimal regular first-bad selection                   OPEN / NEXT
 A4b2r regular minimizing-trial Schur-energy sign                 OPEN / DECISIVE ARITHMETIC GAP
 A4b2b universal shell/determinant domination                     OPEN / BROAD FALLBACK
@@ -67,51 +78,56 @@ terminal Mathlib RH wrapper                                      OPEN
 RH                                                               OPEN
 ```
 
-## Why the regularization problem shrank again
+## The remaining analytic gap is narrower
 
-After #140 the preferred plan was to choose one cutoff cell, obtain a finite witness `(N,u)`, preserve it locally, then regularize all predecessor blocks through size `N`.
+The complex/log-cover family now exists. The next theorem is not another algebraic continuation identity. It is genuine complex differentiability of the fixed-unit parameter integrals that feed the exact complex source.
 
-#142 closes the persistence step. A stronger **DERIVED** selection is now available: choose the least bad size over the entire cutoff cell before choosing the regular aperture.
+The preferred prototype is `complexBetaCore`:
+
+```text
+fixed domain [0,1]
++ pointwise complex differentiability in z
++ local denominator nonvanishing/control
++ locally uniform integrable domination
+-> differentiation under the integral
+-> Analytic / Holomorphic in z.
+```
+
+After that, reuse the proof pattern for `complexAlphaCore` and `complexGammaCore`, then assemble source/predecessor holomorphy.
+
+## Translation/deck-law firewall
+
+The exact deck law from #144 is structural, not analytic. The generic function
+
+```text
+F(z)=-z+Re z
+```
+
+has the same kind of affine imaginary-translation behavior while being nonholomorphic. This permanently blocks any shortcut from deck/translation identity to holomorphy.
+
+## Cell-minimal compression
+
+The post-#142 **DERIVED** selection remains preferred:
 
 ```text
 K* = min { K | exists L in I_Q, AnyParityBad L K }.
 ```
 
-Then every smaller size is good in both parities throughout the whole cell. At predecessor size `N*=K*-1`, predecessor nonnegativity is therefore uniform across the cell.
-
-Take a negative witness at size `K*`; #142 preserves it on an open `J`. Dense regularity need only intersect that open set for the relevant predecessor determinant(s) at the single size `N*`.
-
-So neither countable all-size Baire regularity nor finite-prefix regularization is a primary dependency.
-
-## Intended A4R1b theorem shape
-
-```text
-actual frozen intrinsic predecessor
-  -> complex continuation of the production channels
-  -> A(L) = -Log(L) I + B(L)
-  -> single-valued holomorphic B on a punctured connected domain
-  -> logarithmic monodromy / finite-spectrum contradiction if det identically zero
-  -> determinant nonidentity
-  -> dense regular apertures on every physical cutoff cell.
-```
-
-The #140 scalar `-log L` coefficient is already theorem-backed. #142 supplies regularized real archimedean integrands that make direct complexification more concrete.
-
-After the real substitution `x=L t`, the integration interval becomes fixed and the oscillatory frequency no longer moves with aperture. Those rescaled formulas are **DERIVED**, not merged Lean declarations.
+Then all smaller sizes are good in both parities throughout the cell; predecessor size `K*-1` is PSD across the cell; #142 preserves one selected bad witness on an open set; and eventual dense regularity only has to meet that open set at the single predecessor size.
 
 ## After analytic regularity
 
-At the selected cell-minimal first-bad state:
+At the selected cell-minimal regular first-bad state:
 
 ```text
-A>=0                    from cell/global minimality
-A injective             from regularity
-A>0                     finite Hermitian consequence
-unique x0 with A x0=b   #140 scaffold
+A>=0
+A injective
+A>0
+unique x0 with A x0=b
 u0=c-x0.
 ```
 
-The existing #136/#137 machinery can then be packaged into the forced regular countercertificate
+The existing #136/#137 machinery can then be packaged into the forced regular negative countercertificate
 
 ```text
 Ecanonical(u0)=Re S0<0.
@@ -120,35 +136,31 @@ Ecanonical(u0)=Re S0<0.
 The decisive arithmetic target remains
 
 ```text
-Ecanonical(c-x0) >= 0
+Ecanonical(c-x0)>=0
 ```
 
-or equivalently `<b,A^-1b> <= q_c` once inverse shorthand is legal.
+or equivalently `<b,A^-1b> <= q_c` after regularity.
 
 ## Falsification state
 
-A new generic analytic centered diagonal family has all of the following simultaneously:
+Two negative controls are active:
 
-```text
-explicit -log L scalar term;
-predecessor positivity throughout L>0;
-persistent finite negative witnesses at every aperture;
-a globally minimal bad size;
-common negative behavior in both parities.
-```
+1. the post-#142 generic analytic regularization countermodel shows that persistence + minimality + regularity + parity + scalar logarithm do not force the contradiction;
+2. the post-#146 `-z+Re z` countermodel shows that translation/deck structure does not imply holomorphy.
 
-It is not the canonical zeta source. Its purpose is to prove a design firewall: aperture freedom, persistence, minimality, regularity, parity and scalar logarithms do not by themselves generate the contradiction. The actual canonical pole/archimedean/von-Mangoldt arithmetic must do new work.
-
-See `research/RHRC/countermodels/POST_142_REGULARIZATION_COUNTERMODEL_2026_09_10.md`.
+Neither is a counterexample to the actual canonical source or to RH.
 
 ## Firewalls
 
 - RH remains OPEN.
-- theorem authority is through #142 only.
-- fixed-cell persistence is PROVED; analyticity, determinant nonidentity and dense regularity are OPEN.
+- theorem authority is through #146 only.
+- exact frozen/log-cover continuation is PROVED; assembled parameter holomorphy is OPEN.
+- local scalar analyticity is not full source/predecessor analyticity.
+- deck-periodicity is not holomorphy.
+- holomorphy is not determinant nonidentity.
 - cell-minimal regularization is DERIVED until production-packaged.
 - regularity is not successor positivity.
-- the regular scalar sign theorem is OPEN.
+- the regular scalar/Schur sign theorem is OPEN.
 - no all-size Baire or finite-prefix regularization should be built unless the smaller route fails for a theoremized reason.
 - no zero-shift inverse is required in Lean before regularity; use the unique-preimage interface.
 - no termwise source-atom positivity shortcut.
@@ -156,6 +168,6 @@ See `research/RHRC/countermodels/POST_142_REGULARIZATION_COUNTERMODEL_2026_09_10
 - D remains algebraic, not unitary/isometric.
 - machine claim promotion remains separate.
 
-Newest research detail: `research/RHRC/RESEARCH_LEADS_POST_142_FIXED_CELL_PERSISTENCE_DELTA.md`.
+Newest research detail: `research/RHRC/RESEARCH_LEADS_POST_146_APERTURE_ANALYTIC_FRONTIER_DELTA.md`.
 
 **RH remains OPEN.**

@@ -7,172 +7,80 @@ This fork preserves the upstream Zeta23 theorem package while adding an opt-in R
 ## Current authority snapshot
 
 ```text
-live main after merged PR #142 = 3e8d2995a1c00a9aef0d8cb0f5382658c91a8673
-live main tree = a92d03d0d4ad800d544a835b8ae2e3d23bae2c47
+live main after merged PR #146 = f2999d12e29d61debce130e83491ac3df410b0c2
+live main tree = fe76581d445569cb838cb4df7bf50703aa34f5cc
 
-theorem-state anchor = PR #142 merge 3e8d2995a1c00a9aef0d8cb0f5382658c91a8673
-validated theorem head = 23d96af9aafd86ad26ae7913c3d6c14503d539de
-validated theorem tree = a92d03d0d4ad800d544a835b8ae2e3d23bae2c47
-RHRC #889 = SUCCESS
-Permansson #662 = SUCCESS
+theorem-state anchor = PR #146 merge f2999d12e29d61debce130e83491ac3df410b0c2
+validated theorem head = a25d238478f7b19072c5364486b8f3f994bf6b79
+validated theorem tree = fe76581d445569cb838cb4df7bf50703aa34f5cc
+RHRC #922 / run 34600323163 = SUCCESS
+Permansson #695 / run 34600323144 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
 ```
 
-Live GitHub head + exact Lean/compiler/CI remain authoritative. PR #142 is theorem-bearing and advances theorem authority beyond #140. It does **not** prove determinant nonidentity, dense regular apertures, successor positivity, negative-root exclusion, the final regular Schur-energy sign, or RH.
+Live GitHub head + exact Lean/compiler/CI remain authoritative.
 
 ## Current theorem ladder
 
 ```text
 off-line zeta zero
   -> legal finite canonical negative obstruction                     PROVED
-  -> global first bad + predecessor parity nonnegativity              PROVED
-  -> shell/KKT/Schur/secular machinery                               PROVED
-  -> source-explicit transfer                                        PROVED / #129
-  -> exact canonical source-moment decomposition                     PROVED / #131
-  -> denominator-free zero-shift kernel/source transport             PROVED / #134
-  -> scalar-sensitive absolute canonical source energy               PROVED / #136
-  -> exact source pairing + one-step determinant                     PROVED / #137
-  -> off-line zero => q_c<0 OR exists w, Delta(w)<0                  PROVED / #137
+  -> global first bad + predecessor parity nonnegativity             PROVED
+  -> shell/KKT/Schur/secular machinery                              PROVED
+  -> source-explicit transfer                                       PROVED / #129
+  -> exact canonical source-moment decomposition                    PROVED / #131
+  -> denominator-free zero-shift kernel/source transport            PROVED / #134
+  -> scalar-sensitive absolute canonical source energy              PROVED / #136
+  -> exact source pairing + one-step determinant                    PROVED / #137
+  -> off-line zero => q_c<0 OR exists w, Delta(w)<0                 PROVED / #137
   -> every sufficiently large aperture has a finite negative
-     canonical witness and a freshly selectable global first bad     PROVED / #140
+     canonical witness and a freshly selectable global first bad    PROVED / #140
   -> predecessor determinant !=0 <-> injective, with unique
-     zero-shift preimage on a regular predecessor                    PROVED / #140
-  -> frozen prime-cutoff equality, threshold atom vanishing,
-     exact real-axis -log(L) scalar extraction                       PROVED / #140
-  -> actual canonical source entries and fixed-vector energy are
-     continuous on one physical cutoff cell                          PROVED / #142
-  -> same finite size and same vector remain strictly negative on
-     an open neighborhood inside that cutoff cell                    PROVED / #142
-  -> off-line zero supplies such a locally persistent witness at
-     every chosen sufficiently large cell-interior aperture          PROVED / #142
+     zero-shift preimage on a regular predecessor                   PROVED / #140
+  -> actual canonical source is continuous on each fixed physical
+     cutoff cell; same finite witness persists on an open set       PROVED / #142
+  -> exact frozen production source/predecessor, -log(L) split,
+     complex frozen remainder and log-cover/deck identities         PROVED / #144
+  -> removable scalar factor/remainder locally analytic at zero     PROVED / #145
+  -> removable scalar factor/remainder equal the production complex
+     scalar/remainder away from zero and on the positive real axis  PROVED / #146
 ```
 
-No theorem proves dense regularity, determinant nonidentity, the regular first-bad arithmetic sign, negative-root exclusion, or RH.
+No theorem proves genuine aperture-parameter holomorphy of the assembled frozen source/predecessor remainder, determinant nonidentity, dense regularity, the regular first-bad arithmetic sign, negative-root exclusion, or RH.
 
-## Post-#142 route correction
+## What changed in #144-#146
 
-The preferred regularization problem is now smaller than the post-#140 finite-prefix plan.
+The old post-#142 plan treated "construct the complex frozen predecessor / isolate the logarithm" as one open block. That block has now split cleanly.
 
-For a physical cutoff cell
+**PROVED / #144:** the actual frozen production source and intrinsic predecessor exist with exact fixed-cell agreement; the `-log L` scalar survives the exact production projections; the complex frozen remainder and logarithmic-cover lift are theorem-locked; and exact deck-periodicity/deck-shift identities hold.
 
-```text
-I_Q = (log Q, log(Q+1)),
-```
+**PROVED / #145:** the corrected scalar factor/remainder has a removable analytic extension at zero.
 
-define the least bad size over the **entire cell**:
+**PROVED / #146:** that removable scalar layer is exactly the existing production complex scalar/remainder away from zero and exactly matches the positive-real production formula.
 
-```text
-K* = min { K | exists L in I_Q, AnyParityBad L K }.
-```
-
-This is currently a **DERIVED** composition, not a merged theorem. Its key consequence is that every smaller size is nonnegative in both parities throughout the whole cell. If `N*=K*-1`, the predecessor sector at the cell-minimal bad size is therefore PSD across the cell.
-
-Choose a bad parity witness at some `L*`. PR #142 preserves that same witness on an open `J subset I_Q`. Dense regularity for the relevant predecessor determinant would then allow selecting `L2 in J` where the same negative witness survives and the predecessor is injective; PSD + injective gives positive definiteness in finite Hermitian dimension.
-
-So the primary route no longer needs either:
-
-- countable all-size Baire regularization; or
-- simultaneous regularization of every size through a finite prefix.
-
-Both remain fallbacks if the smaller production theorem fails for a theoremized reason.
-
-## NOW — analytic frozen predecessor regularity
-
-The open theorem work is:
-
-```text
-fixed physical cutoff cell
-  -> production cell-minimal bad-state wrapper
-  -> complex continuation of the actual frozen intrinsic predecessor
-  -> exact split A(L) = -Log(L) I + B(L)
-  -> single-valued holomorphic remainder on a punctured domain
-  -> logarithmic monodromy / finite-spectrum determinant nonidentity
-  -> dense regular apertures
-  -> intersect density with the #142 persistent-negative open set
-  -> regular first-bad countercertificate.
-```
-
-PR #142 makes the analytic step more concrete by replacing the apparent archimedean origin singularities with continuous divided-slope regularizations. After the real change of variables `x=L t`, the production integrals have fixed interval `[0,1]` and fixed oscillatory frequency. Those rescaled formulas are **DERIVED**, not merged Lean declarations.
-
-The log-lift determinant argument remains a **LEAD / HYPOTHESIS** until the actual production remainder is theoremized on a domain that supports winding around zero without hidden monodromy cancellation.
-
-## After regularity — the decisive arithmetic obstruction
-
-At a regular first-bad state, cell/global minimality gives predecessor nonnegativity and regularity gives a unique solution
-
-```text
-A x0 = b.
-```
-
-Let
-
-```text
-u0 = c - x0.
-```
-
-Existing #136 Schur/energy machinery supplies the target negative regular certificate
-
-```text
-Ecanonical(u0) = Re S0 < 0
-```
-
-once the regular selection is formally packaged.
-
-The decisive remaining arithmetic theorem is still
-
-```text
-Ecanonical(c-x0) >= 0
-```
-
-on that exact forced production state, equivalently after regularity
-
-```text
-<b,A^-1 b> <= q_c.
-```
-
-A proof that merely repackages successor positivity or universal one-step domination is circular.
-
-## Stronger falsification after #142
-
-A generic analytic centered diagonal family can simultaneously have:
-
-```text
-an explicit -log L scalar term;
-predecessors positive for all L>0;
-persistent negative finite witnesses at every aperture;
-a globally minimal bad size;
-common negative behavior in both parities.
-```
-
-Therefore
-
-```text
-aperture freedom + persistence + minimality + regularity + parity + scalar log
-```
-
-does **not** force a contradiction by generic geometry alone. The actual canonical pole/archimedean/von-Mangoldt arithmetic must do new work.
-
-See `research/RHRC/countermodels/POST_142_REGULARIZATION_COUNTERMODEL_2026_09_10.md`.
+**OPEN:** the non-scalar fixed-unit parameter integrals have not yet been proved holomorphic in the aperture parameter. Therefore the full assembled frozen source/predecessor holomorphy theorem is still open.
 
 ## Active path
 
 ```text
-PROVED through #142
+PROVED through #146
   eventual aperture freedom
-  + regularity/frozen-source scaffold
-  + fixed-cell canonical continuity
-  + same-witness local persistence
+  + fixed-cell same-witness persistence
+  + exact frozen/log-cover predecessor scaffold
+  + local scalar removable analyticity
+  + scalar <-> production bridge
 
 NOW
-  production cell minimum
-  + analytic frozen predecessor
-  + determinant nonidentity
-  + dense fixed-cell regularity
+  genuine parameter holomorphy of the exact fixed-unit production source integrals
+  -> assembled complex frozen source/predecessor holomorphy
 
 THEN
-  regular first-bad countercertificate with unique A x0=b
+  determinant nonidentity
+  -> dense fixed-cell regularity
+  -> intersect with #142 persistent-negative open set
+  -> production cell-minimal regular first-bad countercertificate
 
 DECISIVE OPEN THEOREM
   Ecanonical(c-x0) >= 0 on the exact forced regular trial
@@ -183,16 +91,72 @@ TARGET
 
 Universal one-step domination remains a broad fallback if a genuinely independent positive canonical arithmetic mechanism is found.
 
+## Why holomorphy is the next real gate
+
+The #144 log-cover law is structural:
+
+```text
+Ahat(z) = -z I + R(exp z)
+R(exp(z+2*pi*i)) = R(exp z).
+```
+
+But translation/deck identities do not imply complex differentiability. The reusable negative control
+
+```text
+F(z) = -z + Re z
+```
+
+has the same kind of affine deck-shift behavior under imaginary translation while remaining nonholomorphic.
+
+So the next theorem must come from genuine complex analysis of the parameter-dependent integrals — most likely local denominator control plus differentiation under a fixed-domain integral — not from the deck law itself.
+
+## Post-#142 cell-minimal compression
+
+The preferred regularization problem remains smaller than the older finite-prefix plan.
+
+For a physical cutoff cell `I_Q=(log Q,log(Q+1))`, define the least size that is bad somewhere in the entire cell. Then every smaller size is good in both parities throughout the cell. If dense predecessor regularity is later proved, it only has to hit the #142 open persistent-negative neighborhood at the single predecessor size `N*=K*-1`.
+
+This is **DERIVED**, not yet production-packaged in Lean.
+
+## After regularity — decisive arithmetic obstruction
+
+At a regular cell-minimal first-bad state:
+
+```text
+A>=0                    from minimality
+A injective             from regularity
+A>0                     finite Hermitian consequence
+unique x0 with A x0=b   from #140
+u0=c-x0.
+```
+
+Existing machinery is intended to package the forced negative certificate
+
+```text
+Ecanonical(u0)=Re S0<0.
+```
+
+The decisive missing arithmetic theorem is still
+
+```text
+Ecanonical(c-x0)>=0
+```
+
+or equivalently after regularity `<b,A^-1b> <= q_c`.
+
+A proof that merely repackages successor positivity or universal one-step domination is circular.
+
 ## Permanent firewalls
 
 - RH remains OPEN.
-- theorem authority is through #142, not beyond it.
-- fixed-cell continuity and witness persistence are PROVED; analyticity and dense regularity are OPEN.
-- cell-minimality and the smaller regularization composition are DERIVED until formally packaged.
+- theorem authority is through #146, not beyond it.
+- complex/log-cover structure is PROVED; assembled parameter holomorphy is OPEN.
+- local scalar analyticity is not full source/predecessor analyticity.
+- translation/deck identities are not a substitute for holomorphy.
+- holomorphy does not imply determinant nonidentity.
+- determinant nonidentity/dense regularity does not imply the final arithmetic sign.
+- cell-minimal regularization is DERIVED until production-packaged.
 - regularity is not successor positivity.
-- a regular first-bad negative state is not yet a contradiction.
-- source decomposition is not source positivity.
-- no inverse notation is load-bearing before regularity; use the unique-preimage theorem when formalizing.
 - no factorwise division by unproved transfer/source quantities.
 - D remains algebraic, not unitary/isometric.
 - generic or modified-source countermodels do not refute the actual canonical source.
@@ -202,9 +166,9 @@ Universal one-step domination remains a broad fallback if a genuinely independen
 ## Living research records
 
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`
-- `research/RHRC/RESEARCH_LEADS_POST_142_FIXED_CELL_PERSISTENCE_DELTA.md` — newest research-priority delta
-- `research/RHRC/RESEARCH_LEADS_POST_140_APERTURE_FREEDOM_DELTA.md` — historical pre-#142 delta
-- `research/RHRC/RESEARCH_LEADS_POST_138_ASTRA_DELTA.md` — historical pre-#140 delta
+- `research/RHRC/RESEARCH_LEADS_POST_146_APERTURE_ANALYTIC_FRONTIER_DELTA.md` — newest research-priority delta
+- `research/RHRC/RESEARCH_LEADS_POST_142_FIXED_CELL_PERSISTENCE_DELTA.md` — historical pre-#144 delta
+- `research/RHRC/countermodels/POST_146_TRANSLATION_NOT_HOLOMORPHY_COUNTERMODEL_2026_09_11.md`
 - `research/RHRC/countermodels/POST_142_REGULARIZATION_COUNTERMODEL_2026_09_10.md`
 - `research/RHRC/OBSTRUCTION_LEDGER.md`
 - `research/RHRC/DEAD_ROUTES.md`
