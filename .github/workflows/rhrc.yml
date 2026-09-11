@@ -29,9 +29,9 @@ jobs:
           import json
           p = json.load(open('/tmp/RHRC_CONTROL_V2.json'))
           assert p['terminal_claim'] == 'RH_OPEN'
-          assert p['theorem_anchor']['pr'] == 146
-          assert p['theorem_anchor']['merge_commit'] == 'f2999d12e29d61debce130e83491ac3df410b0c2'
-          assert p['theorem_anchor']['tree'] == 'fe76581d445569cb838cb4df7bf50703aa34f5cc'
+          assert p['theorem_anchor']['pr'] == 148
+          assert p['theorem_anchor']['merge_commit'] == 'fcd301ae4c1b58196ff7fca18128243f1d35a87b'
+          assert p['theorem_anchor']['tree'] == '91d537ee64b8f613bebdcf12110deba486276d35'
           assert p['control_anchor']['pr'] == 117
           assert p['theorem_anchor']['merge_commit'] != p['control_anchor']['merge_commit']
           assert p['route_certificate']['frontier_id'] == 'FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_APERTURE_SELECTION'

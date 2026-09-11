@@ -5,14 +5,14 @@
 ## Current authority snapshot
 
 ```text
-live main after merged PR #146 = f2999d12e29d61debce130e83491ac3df410b0c2
-live main tree = fe76581d445569cb838cb4df7bf50703aa34f5cc
+live main after merged PR #148 = fcd301ae4c1b58196ff7fca18128243f1d35a87b
+live main tree = 91d537ee64b8f613bebdcf12110deba486276d35
 
-theorem-state anchor = PR #146 merge f2999d12e29d61debce130e83491ac3df410b0c2
-validated theorem head = a25d238478f7b19072c5364486b8f3f994bf6b79
-validated theorem tree = fe76581d445569cb838cb4df7bf50703aa34f5cc
-RHRC #922 / run 34600323163 = SUCCESS
-Permansson #695 / run 34600323144 = SUCCESS
+theorem-state anchor = PR #148 merge fcd301ae4c1b58196ff7fca18128243f1d35a87b
+validated theorem head = 77c2d14511004ba380b080e08b4943b267ebd863
+validated theorem tree = 91d537ee64b8f613bebdcf12110deba486276d35
+RHRC #930 / run 34619665717 = SUCCESS
+Permansson #703 / run 34619665725 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
@@ -33,54 +33,52 @@ absolute canonical source-energy decomposition                          PROVED /
 exact canonical source pairing + one-step determinant                   PROVED / #137
 off-line zero -> q_c<0 OR exists w, Delta(w)<0                         PROVED / #137
 aperture freedom at every sufficiently large L                          PROVED / #140
-predecessor det!=0 <-> injective + unique preimage                      PROVED / #140
+predecessor det!=0 <-> injectivity + unique preimage                    PROVED / #140
 fixed-cell actual-source continuity + fixed-witness persistence          PROVED / #142
 exact frozen production source/predecessor + -log(L) split              PROVED / #144
 complex frozen remainder + log-cover/deck identities                    PROVED / #144
 local removable scalar analyticity at zero                              PROVED / #145
 removable scalar/remainder <-> production complex scalar/remainder       PROVED / #146
+connected arch strip + alpha/beta/gamma parameter holomorphy            PROVED / #148
 
-parameter holomorphy of fixed-unit production source integrals           OPEN / NOW
 assembled frozen source/predecessor holomorphy                           OPEN / NOW
-determinant nonidentity + dense regular aperture                         OPEN / NEXT
+lifted determinant analyticity + nonidentity + dense regularity          OPEN / NEXT
 production cell-minimal regular selection                                OPEN / NEXT
 regular minimizing-trial Schur-energy sign                               OPEN / DECISIVE ARITHMETIC GAP
 universal canonical one-step domination                                  OPEN / BROAD FALLBACK
 negative-root exclusion                                                   OPEN
-explicit terminal RH bridge                                               OPEN
+outside-strip/trivial-zero seam + terminal RH bridge                      OPEN
 RH                                                                        OPEN
 ```
 
-## What #144-#146 changed
+## What #148 changed
 
-The old A4R1b first break was too coarse. The exact production/log-cover object now exists.
+PR #148 closes the previous fixed-unit parameter-integral first break. It proves genuine complex analyticity of `complexAlphaCore`, `complexBetaCore`, and `complexGammaCore` throughout the connected archimedean safe strip `|Im z|<pi`, with strip-wide analyticity of `complexRegularizedArchScale` and zero-freeness of the divided sinh denominator.
 
-PR #144 proves the frozen source agrees with production on a physical cutoff cell, proves the exact `-log(L) * I + remainder` decomposition through the actual parity and intrinsic-predecessor projections, constructs the complex frozen remainder, lifts it to `L=exp z`, proves exact deck-periodicity/deck-shift identities, and recovers the actual production predecessor at `z=log L`.
-
-PR #145 repairs the scalar removable point and proves local analyticity of that scalar layer at zero.
-
-PR #146 proves the repaired scalar factor and remainder are exactly the production complex scalar/remainder on `z!=0` and exactly match the positive-real production formulas.
-
-What remains open is not "construct the complex predecessor". The first genuine analytic gap is now:
+The next genuine analytic gap is not another alpha/beta/gamma derivative. It is common-domain assembly of the full production source:
 
 ```text
-fixed-unit parameter-dependent production integrals
-  -> genuine complex differentiability / analyticity
-  -> assembled complexFrozenCanonicalSourceRemainder holomorphy
-  -> assembled complexFrozenIntrinsicPredecessorRemainder holomorphy.
+scalar principal-log branch
++ pole denominator
++ finite prime/source channel
++ #148 arch cores
+-> complexFrozenCanonicalSourceRemainder holomorphy
+-> complexFrozenIntrinsicPredecessorRemainder holomorphy
+-> lifted predecessor holomorphy on a connected cover domain.
 ```
 
 ## Current execution priority
 
-1. **Prototype parameter holomorphy on the simplest fixed-unit core.** Prefer `complexBetaCore`; prove local denominator control, pointwise parameter differentiability and an integrable local majorant that licenses differentiation under the integral.
-2. **Reuse the proof pattern for the remaining production cores.** Close `complexAlphaCore` and `complexGammaCore` without changing Eq. (4.4) normalization.
-3. **Assemble source/predecessor holomorphy.** Push the core analytic theorems through the exact #144 complex frozen source and intrinsic predecessor definitions.
-4. **Prove determinant nonidentity.** Only after genuine holomorphy is available may the logarithmic-cover finite-spectrum argument become load-bearing.
-5. **Derive dense fixed-cell regularity.** Use analytic isolated-zero/identity machinery on the actual determinant.
-6. **Compose with #142 persistence.** Intersect the persistent-negative open set with dense regularity and package a regular cell-minimal first-bad certificate.
-7. **Expose the regular minimizing-trial deficit.** Use the #140 unique-preimage interface `A x0=b` and #136/#137 energy/Schur machinery to obtain `Ecanonical(c-x0)=Re S0<0` on the exact selected state.
-8. **Attack the decisive arithmetic sign.** Prove, from exact pole/arch/scalar/prime structure, `Ecanonical(c-x0)>=0` on that state.
-9. **Compose to contradiction and the terminal Mathlib RH wrapper.**
+1. **Attack the scalar common-domain branch first.** Try to prove `Re(z*coth(z/2))>0` on the punctured strip `|Im z|<pi`.
+2. **Close the remaining source channels.** Prove pole-denominator zero-freeness and finite prime/source analyticity on the same domain.
+3. **Assemble source/predecessor holomorphy.** Push those theorems through the exact #144 finite matrices and intrinsic projections.
+4. **Lift to a connected logarithmic-cover domain.** Do not infer connectedness from deck invariance; prove it explicitly.
+5. **Prove determinant nonidentity.** Use the exact deck shift plus a finite characteristic-polynomial root count, with the zero-dimensional predecessor case split off.
+6. **Derive dense fixed-cell regularity.** Use one-variable analytic identity/isolated-zero machinery.
+7. **Compose with #142 persistence.** Intersect the persistent-negative open set with dense regularity and package a regular cell-minimal first-bad certificate.
+8. **Expose the regular minimizing-trial deficit.** Use the unique preimage `A x0=b` and existing energy/Schur machinery to obtain `Ecanonical(c-x0)=Re S0<0` on the exact selected state.
+9. **Attack the decisive arithmetic sign.** Prove `Ecanonical(c-x0)>=0` from exact pole/arch/scalar/prime structure.
+10. **Compose to contradiction, then close the outside-strip/trivial-zero seam and the Mathlib RH wrapper.**
 
 Universal A4b2b domination remains a broad fallback if a genuinely independent positive source representation or exact arithmetic remainder appears.
 
@@ -92,7 +90,7 @@ The post-#142 derived selection remains the preferred composition:
 K* = min { K | exists L in (log Q,log(Q+1)), AnyParityBad L K }.
 ```
 
-Every `K<K*` is then good in both parities at every aperture in that cell. At predecessor size `N*=K*-1`, predecessor nonnegativity holds throughout the cell. #142 preserves one exact bad witness on an open `J`. Once dense regularity is proved, select a regular aperture inside `J`.
+Every `K<K*` is then good in both parities at every aperture in that cell. At predecessor size `N*=K*-1`, predecessor nonnegativity therefore holds throughout the cell. #142 preserves one exact bad witness on an open `J`. Once dense regularity is proved, select a regular aperture inside `J`.
 
 This remains **DERIVED** until production-packaged.
 
@@ -104,32 +102,27 @@ The #144 deck law is exact, but it is not an analyticity theorem. The generic fu
 F(z) = -z + Re z
 ```
 
-satisfies an affine imaginary-translation law of the same structural kind while being nonholomorphic. Therefore no proof may infer parameter holomorphy from deck-periodicity/translation identities alone.
+satisfies an affine imaginary-translation law of the same structural kind while being nonholomorphic. No proof may infer parameter holomorphy from deck-periodicity/translation identities alone.
 
-See `countermodels/POST_146_TRANSLATION_NOT_HOLOMORPHY_COUNTERMODEL_2026_09_11.md`.
+## Candidate determinant mechanism
 
-The earlier post-#142 analytic regularization negative control remains active: persistence, minimality, regularity, parity and a scalar logarithm can all coexist with a negative finite state in a generic model.
-
-## Candidate determinant mechanism after holomorphy
-
-Once genuine holomorphy is theoremized, the exact #144 architecture becomes useful:
+Once assembled lifted holomorphy is theoremized, use
 
 ```text
-Ahat(z) = -z I + R(exp z)
-R(exp(z+2*pi*i)) = R(exp z).
+Ahat(z+2*pi*i)=Ahat(z)-(2*pi*i)I.
 ```
 
-If the determinant were identically zero, a finite-dimensional spectral/root-counting argument may force one fixed finite operator to support too many distinct scalar shifts. This remains a **LEAD / HYPOTHESIS** until the determinant theorem is actually proved.
+If the determinant were identically zero, the same finite operator at a base point would be forced to admit too many distinct scalar shifts as eigenvalues. A characteristic-polynomial root count should establish nonidentity. This remains a **LEAD / HYPOTHESIS** until Lean proves it.
 
 ## Decisive arithmetic target
 
 At a selected regular cell-minimal first-bad state:
 
 ```text
-A>=0                    from minimality
-A injective             from regularity
-A>0                     finite Hermitian consequence
-unique x0 with A x0=b   from #140
+A>=0
+A injective
+A>0
+unique x0 with A x0=b
 u0=c-x0.
 ```
 
@@ -142,23 +135,16 @@ Ecanonical(u0)=Re S0<0.
 The decisive missing theorem is
 
 ```text
-Ecanonical(c-x0)>=0
+Ecanonical(c-x0)>=0.
 ```
 
-or, once inverse shorthand is legal,
-
-```text
-<b,A^-1b> <= q_c.
-```
-
-A proof that merely assumes or repackages successor positivity is circular.
+A narrower possible certificate is `q_c>=0` plus `Delta(x0)>=0`, but only after the zero-shift coupling is proved real and the `q_A(x0)=0` case is handled. This is not yet theorem-backed.
 
 ## Permanent firewalls
 
 - RH remains OPEN.
-- theorem authority is through #146 only.
-- exact complex/log-cover objects are PROVED; full parameter holomorphy is OPEN.
-- local scalar analyticity is not assembled source/predecessor analyticity.
+- theorem authority is through #148 only.
+- fixed-unit archimedean core holomorphy is PROVED; assembled source/predecessor holomorphy is OPEN.
 - translation/deck structure is not holomorphy.
 - holomorphy is not determinant nonidentity.
 - cell-minimal regular selection is DERIVED until production-packaged.
@@ -170,12 +156,13 @@ A proof that merely assumes or repackages successor positivity is circular.
 - no factorwise division by `alpha`, `Gamma`, overlap or source moment without theoremized nonzeroness.
 - D is algebraic, not unitary/isometric.
 - machine claim promotion remains separate.
+- strip-zero exclusion is not yet the full Mathlib `RiemannHypothesis` wrapper without the outside-strip/trivial-zero seam.
 
 ## Current research records
 
 - `CURRENT_RESEARCH_PLAN.md` — execution order and gates.
-- `RESEARCH_LEADS_POST_146_APERTURE_ANALYTIC_FRONTIER_DELTA.md` — newest research delta.
-- `RESEARCH_LEADS_POST_142_FIXED_CELL_PERSISTENCE_DELTA.md` — historical pre-#144 delta.
+- `RESEARCH_LEADS_POST_148_PARAMETER_HOLOMORPHY_GREEN_DELTA.md` — newest research delta.
+- `RESEARCH_LEADS_POST_146_APERTURE_ANALYTIC_FRONTIER_DELTA.md` — historical pre-#148 delta.
 - `countermodels/POST_146_TRANSLATION_NOT_HOLOMORPHY_COUNTERMODEL_2026_09_11.md` — holomorphy inference negative control.
 - `countermodels/POST_142_REGULARIZATION_COUNTERMODEL_2026_09_10.md` — generic regularization negative control.
 - `OBSTRUCTION_LEDGER.md` — reusable blockers.

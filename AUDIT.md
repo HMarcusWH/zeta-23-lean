@@ -1,18 +1,18 @@
-# RHRC formal audit — theorem authority through PR #146; parameter-holomorphy frontier
+# RHRC formal audit — theorem authority through PR #148; assembled-holomorphy frontier
 
 > **RH remains OPEN.**
 
 ## Current authority split
 
 ```text
-live main after merged PR #146 = f2999d12e29d61debce130e83491ac3df410b0c2
-live main tree = fe76581d445569cb838cb4df7bf50703aa34f5cc
+live main after merged PR #148 = fcd301ae4c1b58196ff7fca18128243f1d35a87b
+live main tree = 91d537ee64b8f613bebdcf12110deba486276d35
 
-theorem-state anchor = PR #146 merge f2999d12e29d61debce130e83491ac3df410b0c2
-validated theorem head = a25d238478f7b19072c5364486b8f3f994bf6b79
-validated theorem tree = fe76581d445569cb838cb4df7bf50703aa34f5cc
-RHRC #922 / run 34600323163 = SUCCESS
-Permansson #695 / run 34600323144 = SUCCESS
+theorem-state anchor = PR #148 merge fcd301ae4c1b58196ff7fca18128243f1d35a87b
+validated theorem head = 77c2d14511004ba380b080e08b4943b267ebd863
+validated theorem tree = 91d537ee64b8f613bebdcf12110deba486276d35
+RHRC #930 / run 34619665717 = SUCCESS
+Permansson #703 / run 34619665725 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
@@ -71,90 +71,100 @@ lifted block(z+2*pi*i)=lifted block(z)-(2*pi*i)I
 
 and evaluating the lifted block at `z=log L` on a physical cutoff cell gives the actual production `intrinsicPredecessorBlock`.
 
-These are exact algebraic/production/log-cover theorems. They do not prove the remainder is holomorphic in the parameter.
+These are exact algebraic/production/log-cover theorems. They do not by themselves prove holomorphy.
 
-### PR #145 — local removable scalar analyticity
+### PR #145-#146 — scalar removable layer
 
-**PROVED:** the removable scalar factor has value `2` at zero, `complexArchExpSlope` is nonzero on a genuine neighborhood of zero, the removable factor is analytic at zero, the value lies in the principal-log slit plane, and the principal-log scalar remainder is analytic at zero.
+**PROVED / #145:** the removable scalar factor has value `2` at zero and the repaired scalar factor/remainder is analytic locally at zero.
 
-This is deliberately local. The divided exponential slope has nonzero zeros at `2*pi*i*k`, `k!=0`, so there is no global-entire quotient claim.
+**PROVED / #146:** for `z!=0`, the removable scalar factor/remainder agrees exactly with the existing production complex scalar/remainder and matches the positive-real production formulas.
 
-### PR #146 — production bridge for the removable scalar layer
+### PR #148 — genuine fixed-unit parameter holomorphy
 
-**PROVED:** for `z!=0`, the removable scalar factor is exactly `complexApertureScalarFactor`.
+**PROVED:**
 
-**PROVED:** for `z!=0`, the removable scalar remainder is exactly `complexApertureScalarRemainder`.
+```text
+complexArchSafeStrip = {z : C | |Im z| < pi}
+```
 
-**PROVED:** on `L>0`, both repaired objects are locked back to the exact positive-real production formulas.
+is open, convex, preconnected and connected.
 
-The proof explicitly handles the case `exp z - 1 = 0`; it does not assume global denominator nonvanishing.
+**PROVED:** `complexArchSinhSlope` is zero-free throughout that strip.
 
-## Exact validation evidence for #146
+**PROVED:** `complexRegularizedArchScale` is differentiable/analytic throughout that strip.
+
+**PROVED:** each exact fixed-unit production core
+
+```text
+complexAlphaCore
+complexBetaCore
+complexGammaCore
+```
+
+is differentiable/analytic throughout the strip.
+
+The proof uses genuine differentiation under the fixed `[0,1]` integral with local compact domination. It does not infer holomorphy from the deck law.
+
+## Exact validation evidence for #148
 
 Validated theorem head:
 
 ```text
-a25d238478f7b19072c5364486b8f3f994bf6b79
+77c2d14511004ba380b080e08b4943b267ebd863
 ```
 
 Validated theorem tree:
 
 ```text
-fe76581d445569cb838cb4df7bf50703aa34f5cc
+91d537ee64b8f613bebdcf12110deba486276d35
 ```
 
 Merged main commit:
 
 ```text
-f2999d12e29d61debce130e83491ac3df410b0c2
+fcd301ae4c1b58196ff7fca18128243f1d35a87b
 ```
 
 Merged main has the same theorem tree as the validated PR head.
 
-RHRC run #922 (`34600323163`) succeeded, including `python-rhrc`, `r003-normalization-audit`, aggregate `lake build Zeta23.CCM`, aggregate `lake build Zeta23.ExceptionalZero`, and the forbidden placeholder/project-axiom scan. Permansson run #695 (`34600323144`) also succeeded.
+RHRC run #930 (`34619665717`) succeeded. Permansson run #703 (`34619665725`) also succeeded on the same theorem head.
 
 ## What is not yet proved
 
 No theorem currently proves:
 
 ```text
-parameter holomorphy of complexAlphaCore
-parameter holomorphy of complexBetaCore
-parameter holomorphy of complexGammaCore
+production scalar right-half-plane control on the punctured arch strip
+common-domain pole denominator zero-freeness / pole holomorphy
 holomorphy of complexFrozenCanonicalSourceRemainder
 holomorphy of complexFrozenIntrinsicPredecessorRemainder
+holomorphy of the lifted predecessor on a connected logarithmic-cover domain
 holomorphy/nonidentity of the relevant determinant
 dense regular apertures on the physical cutoff cell
 production cell-minimal regular first-bad selection
+realness of the exact zero-shift coupling in the compression needed for Delta(x0)
 regular canonical Schur-energy nonnegativity
 negative-root exclusion
+outside-strip/trivial-zero terminal seam
 RH
 ```
 
 ## Active analytic theorem
 
-The smallest current obstruction is genuine parameter-integral holomorphy.
+The smallest current obstruction is assembled common-domain source/predecessor holomorphy.
 
-The exact production/log-cover family is already present; the proof must now establish actual complex differentiability rather than infer it from structural identities.
+The #148 archimedean cores are closed inputs. The remaining production channels are scalar, pole and finite prime/source pieces.
 
-Preferred prototype:
-
-```text
-complexBetaCore
-```
-
-with a proof architecture of:
+The highest-value scalar lead is
 
 ```text
-fixed integration interval
-+ local denominator nonvanishing/control
-+ pointwise differentiability in the complex aperture parameter
-+ locally uniform integrable majorant
--> differentiate under the integral
--> Analytic/Holomorphic parameter dependence.
+Re(z*coth(z/2))
+  = (x*sinh x + y*sin y)/(cosh x - cos y)
 ```
 
-Then reuse the pattern for `complexAlphaCore` and `complexGammaCore`, assemble source holomorphy, and push through the fixed projections to the intrinsic predecessor remainder.
+for `z=x+iy`. On `|y|<pi`, this suggests strict positivity away from zero and therefore a clean principal-log branch on the punctured arch strip.
+
+This is a **LEAD / HYPOTHESIS**, not yet a theorem.
 
 ## Translation/deck-law falsification
 
@@ -166,22 +176,21 @@ The generic function
 F(z)=-z+Re z
 ```
 
-has affine imaginary-translation behavior of the same structural kind while failing complex differentiability. Therefore any proposed proof that substitutes deck-periodicity or a translation identity for genuine analytic control is invalid.
-
-This negative control is documented in `research/RHRC/countermodels/POST_146_TRANSLATION_NOT_HOLOMORPHY_COUNTERMODEL_2026_09_11.md`.
+has affine imaginary-translation behavior of the same structural kind while failing complex differentiability. Therefore any proof that substitutes deck-periodicity or a translation identity for genuine analytic control is invalid.
 
 ## Candidate determinant nonidentity argument
 
-Only after genuine holomorphy is established should the #144 lifted structure become load-bearing:
+Only after assembled lifted holomorphy is established should the #144 deck structure become load-bearing:
 
 ```text
-Ahat(z)=-z I + R(exp z)
-R(exp(z+2*pi*i))=R(exp z).
+Ahat(z+2*pi*i)=Ahat(z)-(2*pi*i)I.
 ```
 
-If `det Ahat` vanished identically, the intended finite-dimensional spectral/root-counting mechanism would force one fixed finite operator to support too many distinct scalar shifts/eigenvalues. This remains a **LEAD / HYPOTHESIS**, not a theorem.
+If `det Ahat` vanished identically, the intended finite-dimensional argument is to iterate the deck shift at one base point and force the characteristic polynomial of one fixed finite operator to have too many distinct roots.
 
-Holomorphy alone would not suffice: determinant nonidentity must be proved separately.
+This remains a **LEAD / HYPOTHESIS**, not a theorem.
+
+The zero-dimensional predecessor case must be split off separately.
 
 ## Post-#142 cell-minimal research correction
 
@@ -193,14 +202,14 @@ K* = min { K | exists L in I_Q, AnyParityBad L K }.
 
 All smaller sizes are good in both parities throughout the cell, so predecessor size `N*=K*-1` is PSD throughout the cell. #142 preserves the selected bad witness on an open set. Once dense regularity is theorem-backed, choose a regular point inside that open set.
 
-This removes countable all-size Baire regularization and finite-prefix simultaneous regularization from the primary route.
+The minimum must be taken over the whole cell. A least bad size at one aperture cannot safely be transported to a different aperture.
 
 ## Smallest remaining obstruction after successful analytic regularity
 
 At the selected regular first-bad state:
 
 ```text
-A>=0                    from cell/global first-bad minimality
+A>=0                    from cell-wide first-bad minimality
 A injective             from regularity
 A>0                     finite Hermitian consequence
 unique x0 with A x0=b   from #140 regularity scaffold
@@ -219,31 +228,34 @@ The decisive arithmetic target remains
 Ecanonical(c-x0)>=0
 ```
 
-on the exact forced production state, equivalently `<b,A^-1b><=q_c` once inverse shorthand is justified.
+on the exact forced production state.
 
-This is substantial new arithmetic. Universal one-step domination remains a valid broad closing condition but is not a reduced subproblem if its proof merely restates successor positivity.
+A possible smaller certificate is `q_c>=0` plus `Delta(x0)>=0`, but only after Lean proves the zero-shift coupling is real and the `q_A(x0)=0` edge case is handled. Until then this is **DERIVED/LEAD**, not theorem authority.
+
+Universal one-step domination remains a valid broad closing condition but is not a reduced subproblem if its proof merely restates successor positivity.
 
 ## Current execution order
 
 ```text
-1. parameter holomorphy of one fixed-unit production core, preferably complexBetaCore
-2. reuse for complexAlphaCore and complexGammaCore
+1. prove/falsify scalar right-half-plane control on the punctured arch strip
+2. close common-domain scalar/pole/prime source holomorphy
 3. assemble complex frozen source and intrinsic predecessor remainder holomorphy
-4. prove determinant nonidentity
-5. derive dense fixed-cell regularity
-6. intersect with #142 persistent negativity and package a regular first-bad certificate
-7. expose the exact negative regular zero-shift source energy
-8. derive an independent arithmetic contradiction from the full pole/arch/scalar/prime source
-9. compose to negative-root exclusion
-10. explicit Mathlib RiemannHypothesis wrapper
+4. prove lifted predecessor holomorphy on a connected cover domain
+5. prove determinant nonidentity by deck shift + characteristic polynomial
+6. derive dense fixed-cell regularity
+7. intersect with #142 persistent negativity and package a cell-minimal regular first-bad certificate
+8. expose the exact negative regular zero-shift source energy
+9. derive an independent arithmetic nonnegative sign from the full pole/arch/scalar/prime source
+10. compose to negative-root exclusion
+11. close the outside-strip/trivial-zero seam
+12. explicit Mathlib RiemannHypothesis wrapper
 ```
 
 ## Permanent firewalls
 
 - compiler/CI validity is authoritative; repository presence alone is not;
-- theorem authority is through #146 and no further;
-- complex/log-cover structure is PROVED; assembled parameter holomorphy is OPEN;
-- local scalar analyticity is not full source/predecessor holomorphy;
+- theorem authority is through #148 and no further;
+- fixed-unit archimedean parameter holomorphy is PROVED; assembled source/predecessor holomorphy is OPEN;
 - translation/deck identity is not holomorphy;
 - holomorphy is not determinant nonidentity;
 - cell-minimal regularization is DERIVED until merged;
@@ -256,9 +268,10 @@ This is substantial new arithmetic. Universal one-step domination remains a vali
 - no division by unproved transfer/source factors;
 - modified-source or generic countermodels are not zeta counterexamples;
 - numerical precision is not theorem authority;
+- strip-zero exclusion is not the terminal Mathlib RH theorem without the outside-strip/trivial-zero seam;
 - machine claim promotion remains separate;
 - RH remains OPEN.
 
-Newest research implications: `research/RHRC/RESEARCH_LEADS_POST_146_APERTURE_ANALYTIC_FRONTIER_DELTA.md`.
+Newest research implications: `research/RHRC/RESEARCH_LEADS_POST_148_PARAMETER_HOLOMORPHY_GREEN_DELTA.md`.
 
 **RH remains OPEN.**

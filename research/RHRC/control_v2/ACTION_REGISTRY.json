@@ -22,11 +22,14 @@
       "dead_route_matches": [],
       "surviving_objections": [
         "PR #142 proves fixed-cell continuity plus same-size/same-vector strict negative witness persistence for the actual canonicalSourceMatrix",
-        "PR #144 theorem-locks the exact frozen production source and intrinsic predecessor, the real-axis -log(L) identity split, the complex frozen remainder, the logarithmic-cover lift, deck-periodicity identities, and exact production-cell agreement; it does not prove parameter holomorphy of the complex remainder",
-        "PR #145 proves local analyticity at zero only for the removable scalar factor/remainder, not for the fixed-unit source integrals or the assembled frozen predecessor remainder",
-        "PR #146 proves exact punctured-domain equality of the removable scalar factor/remainder with the production complex scalar/remainder and positive-real provenance; it does not prove source-integral holomorphy, determinant nonidentity, or dense regularity",
+        "PR #144 theorem-locks the exact frozen production source and intrinsic predecessor, the real-axis -log(L) identity split, the complex frozen remainder, the logarithmic-cover lift, deck-periodicity identities, and exact production-cell agreement",
+        "PR #145 proves local analyticity at zero for the removable scalar factor/remainder",
+        "PR #146 proves exact punctured-domain equality of the removable scalar factor/remainder with the production complex scalar/remainder and positive-real provenance",
+        "PR #148 proves genuine parameter holomorphy of complexAlphaCore, complexBetaCore and complexGammaCore on the connected archimedean safe strip |Im z|<pi, plus strip-wide analyticity of complexRegularizedArchScale; it does not yet prove assembled frozen source/predecessor holomorphy, determinant nonidentity, or dense regularity",
         "the active route must work on the actual intrinsicPredecessorBlock, not a predecessor-size, unprojected, raw-Gram, or surrogate matrix",
+        "the remaining source-analytic work must control the production scalar principal-log branch, pole denominator, finite prime/source channel and exact fixed projections on one common domain",
         "for each fixed cutoff/parity/size used by the production selection, determinant nonidentity and dense real regularity must still be proved; a structurally identically-zero block would kill or narrow the route",
+        "the zero-dimensional predecessor case must be split off instead of forcing a positive-degree characteristic-polynomial argument",
         "the preferred composition minimizes bad size over the entire physical cutoff cell, making every smaller size good in both parities throughout that cell; production packaging of this cell-minimal selection is still OPEN",
         "after choosing the cell-minimal bad size K*, dense regularity only needs to intersect the #142 persistent-negative open set for the relevant predecessor determinant(s) at N*=K*-1; countable all-size Baire and finite-prefix simultaneous regularization are not current dependencies",
         "deck-periodicity or translation identities alone do not imply complex differentiability; the generic F(z)=-z+Re(z) countermodel is a mandatory negative control",
@@ -35,31 +38,31 @@
         "external exact checks, standalone conditional Lean selection checks, and numerical comparisons remain non-authoritative discovery evidence unless merged/theoremized at the appropriate level"
       ],
       "score_inputs": {
-        "cost": 2.8,
+        "cost": 2.6,
         "information_gain": 5.0,
         "falsification_value": 5.0,
-        "closure_value": 4.6,
-        "residual_risk": 1.8,
-        "dependency_debt": 1.0
+        "closure_value": 4.8,
+        "residual_risk": 1.7,
+        "dependency_debt": 0.8
       },
       "first_breaks": [
         {
           "id": "E4A4-APR-FB-01",
-          "statement": "the exact complex fixed-unit production source integrals cannot be proved holomorphic in the aperture parameter on a common local/domain neighborhood with sufficient uniform denominator control and differentiation-under-the-integral justification, so genuine holomorphy of the assembled complexFrozenIntrinsicPredecessorRemainder cannot be established from the #144-#146 scaffold",
-          "test_id": "prove_fixed_unit_parameter_integral_holomorphy",
-          "estimated_cost": 1.1,
+          "statement": "after PR #148 closes alpha/beta/gamma parameter-integral holomorphy, the remaining production scalar/pole/prime source channels cannot be placed on one common punctured complex domain and assembled into genuine holomorphy of complexFrozenCanonicalSourceRemainder, complexFrozenIntrinsicPredecessorRemainder, and the lifted predecessor on a connected logarithmic-cover domain",
+          "test_id": "prove_assembled_source_predecessor_holomorphy",
+          "estimated_cost": 1.2,
           "decisive_if_failed": true
         },
         {
           "id": "E4A4-APR-FB-02",
-          "statement": "after genuine holomorphy is established, for one fixed cutoff/parity/size needed by the route the actual predecessor determinant is structurally identically zero or the logarithmic-cover finite-spectrum argument fails to establish determinant nonidentity and dense real regular apertures",
-          "test_id": "prove_fixed_block_determinant_nonidentity",
+          "statement": "after assembled/lifted predecessor holomorphy is established, the actual predecessor determinant is structurally identically zero for a required finite block or the exact deck-shift plus characteristic-polynomial argument fails to establish nonidentity and hence dense real regular apertures; the zero-dimensional predecessor case must be handled separately",
+          "test_id": "prove_fixed_block_determinant_nonidentity_and_density",
           "estimated_cost": 1.4,
           "decisive_if_failed": true
         },
         {
           "id": "E4A4-APR-FB-03",
-          "statement": "conditional downstream packaging: after FB-01 and FB-02 establish genuine holomorphy and dense regularity, the cell-minimal bad-size construction cannot be production-packaged so that all smaller sizes are nonnegative throughout the same physical cutoff cell while a fixed bad parity witness is preserved on the PR #142 open neighborhood and intersected with dense regularity at the relevant predecessor size",
+          "statement": "conditional downstream packaging: after FB-01 and FB-02 establish assembled holomorphy and dense regularity, the cell-minimal bad-size construction cannot be production-packaged so that all smaller sizes are nonnegative throughout the same physical cutoff cell while a fixed bad parity witness is preserved on the PR #142 open neighborhood and intersected with dense regularity at the relevant predecessor size",
           "test_id": "compose_post142_cell_minimum_with_dense_regular_selection",
           "estimated_cost": 1.6,
           "decisive_if_failed": true
@@ -75,9 +78,11 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "this action depends on a theorem-backed regular first-bad witness; #144-#146 close frozen/source/scalar continuation scaffolding but genuine assembled holomorphy, determinant nonidentity, dense regularity and production cell-minimal regular selection remain OPEN",
+        "this action depends on a theorem-backed regular first-bad witness; #148 closes fixed-unit archimedean core holomorphy but assembled source/predecessor holomorphy, determinant nonidentity, dense regularity and production cell-minimal regular selection remain OPEN",
         "formal code should prefer the unique x0 satisfying A x0=b rather than making A^-1 load-bearing before a dedicated inverse interface exists",
         "the target Ecanonical(c-x0)>=0 is the hard arithmetic sign, so an auxiliary positive form equivalent to successor positivity is circular",
+        "the exact zero-shift coupling should be tested for theoremized realness before using the compression Delta(x0)=q_A(x0)*(q_c-q_A(x0))",
+        "even with that compression, the q_A(x0)=0 edge case means Delta(x0)>=0 alone does not supply the endpoint sign; q_c>=0 or equivalent information remains necessary",
         "the external audit reports extremely sharp prime/arch/scalar cancellation in small canonical samples, so independent coarse channel majorants may be too lossy",
         "the external audit reports negative leading atomwise determinant coefficients, so termwise determinant positivity/SOS is not a credible default mechanism",
         "modified prime-weight experiments show the exact arithmetic coefficients matter; a proof shared by nearby perturbed sources is suspect unless its scope explains that sensitivity",
@@ -90,7 +95,7 @@
         "falsification_value": 5.0,
         "closure_value": 5.0,
         "residual_risk": 2.6,
-        "dependency_debt": 2.2
+        "dependency_debt": 2.0
       },
       "first_breaks": [
         {
@@ -120,7 +125,7 @@
       "surviving_objections": [
         "PR #137 proves only that the exact domination certificate is sufficient; it does not prove q_c>=0 or Delta(w)>=0",
         "post-#138 analysis sharpens the circularity firewall: under predecessor nonnegativity and a one-dimensional shell, universal domination is equivalent to successor one-step positivity",
-        "PR #140 adds aperture freedom, PR #142 adds fixed-cell same-witness persistence, and PRs #144-#146 add exact continuation/scalar infrastructure, but none makes universal domination a smaller arithmetic theorem",
+        "PR #140 adds aperture freedom, PR #142 adds fixed-cell same-witness persistence, PRs #144-#146 add exact continuation/scalar infrastructure, and PR #148 closes fixed-unit archimedean core holomorphy, but none makes universal domination a smaller arithmetic theorem",
         "therefore this action has low information gain unless a genuinely independent canonical arithmetic mechanism appears",
         "generic Hermitian/parity/KKT/transfer structure remains quarantined by DR-012 and exact rational countermodels",
         "factorwise alpha/Gamma/overlap/source-moment closure remains quarantined by DR-015",
@@ -165,9 +170,9 @@
       "surviving_objections": [
         "global exclusion cannot run until either the regular first-bad Schur-energy sign or an independently proved universal domination theorem is available",
         "the preferred composition is cell-minimal bad-size selection -> #142 same-witness persistence -> dense actual predecessor regularity -> unique A x0=b -> Ecanonical(c-x0)>=0 -> contradiction with forced Re S0<0",
-        "#144-#146 provide exact frozen/log-cover/scalar production bridges but do not yet prove the genuine holomorphy and determinant density needed to select the regular aperture",
+        "#148 closes the fixed-unit core parameter-holomorphy obstruction but assembled source/predecessor holomorphy and determinant density still have to be proved before selecting the regular aperture",
         "no division by alpha, Gamma, overlap or source moment is legal without separate nonzeroness",
-        "terminal Mathlib RH still requires an explicit statement bridge after finite first-bad exclusion"
+        "terminal Mathlib RH still requires an explicit statement bridge after finite first-bad exclusion, including the outside-strip/trivial-zero seam"
       ],
       "score_inputs": {
         "cost": 3.4,
@@ -175,7 +180,7 @@
         "falsification_value": 5.0,
         "closure_value": 5.0,
         "residual_risk": 3.0,
-        "dependency_debt": 2.8
+        "dependency_debt": 2.6
       },
       "first_breaks": [
         {
@@ -199,7 +204,7 @@
         "D is algebraic, not unitary or isometric",
         "rank-at-most-one defect does not identify which parity carries a zero mode",
         "the post-#138 correction-vector proportionality signal removes one hoped-for independence mechanism",
-        "the post-#146 regular-aperture route attacks predecessor singularity more directly through genuine holomorphy plus determinant nonidentity",
+        "the post-#148 regular-aperture route attacks predecessor singularity more directly through assembled holomorphy plus determinant nonidentity",
         "shifted-nullity remains supportive unless it adds independent canonical source information beyond A4R"
       ],
       "score_inputs": {
@@ -232,7 +237,7 @@
         "strict monotonicity yields root uniqueness while a hypothetical off-line zero already forces one negative root",
         "root uniqueness is weaker than negative-root exclusion",
         "the generic derivative S'(lambda)=-rho-||(A-lambda I)^-1b||^2 is compatible with one negative root",
-        "this route should not displace post-#146 analytic regularization unless it supplies independent source-specific exclusion information"
+        "this route should not displace post-#148 analytic regularization unless it supplies independent source-specific exclusion information"
       ],
       "score_inputs": {
         "cost": 2.0,
@@ -263,7 +268,7 @@
       "surviving_objections": [
         "a strictly positive predecessor floor is not available from first-bad minimality alone",
         "the shell gap g_N=q_N-mu_N may fail to stay positive",
-        "post-#146 cell-minimal analytic regular-aperture selection attacks predecessor singularity more directly",
+        "post-#148 cell-minimal analytic regular-aperture selection attacks predecessor singularity more directly",
         "the theorem should not displace canonical regular-source work unless it supplies independent exclusion information"
       ],
       "score_inputs": {
