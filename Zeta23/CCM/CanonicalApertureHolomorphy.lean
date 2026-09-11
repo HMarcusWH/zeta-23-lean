@@ -34,11 +34,12 @@ def complexApertureScalarFactorRemovable (z : ℂ) : ℂ :=
 @[simp] theorem complexApertureScalarFactorRemovable_zero :
     complexApertureScalarFactorRemovable 0 = 2 := by
   simp [complexApertureScalarFactorRemovable]
+  norm_num
 
 /-- The divided exponential slope stays nonzero in a genuine neighborhood of
 zero. -/
 theorem eventually_complexArchExpSlope_ne_zero :
-    ∀ᶠ z in 𝓝 (0 : ℂ), complexArchExpSlope z ≠ 0 := by
+    ∀ᶠ z in nhds (0 : ℂ), complexArchExpSlope z ≠ 0 := by
   have hcont : ContinuousAt complexArchExpSlope 0 :=
     (differentiable_complexArchExpSlope 0).continuousAt
   have hne : complexArchExpSlope 0 ≠ 0 := by simp
