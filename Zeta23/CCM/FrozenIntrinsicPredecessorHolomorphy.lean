@@ -15,12 +15,14 @@ open scoped BigOperators ComplexConjugate ArithmeticFunction
 
 The frozen source remainder is now known entrywise analytic on one explicit
 punctured strip.  This module pushes that fact through the *actual* matrix
-application, parity compression and intrinsic predecessor projection, then
-lifts the result to the logarithmic cover through `Complex.exp`.
+application and parity compression, then through arbitrary scalar coordinates
+of the intrinsic predecessor projection, and finally lifts those coordinates to
+the logarithmic cover through `Complex.exp`.
 
-The analytic statements are deliberately application-level.  We do not add a
-new matrix-valued analytic abstraction and we do not replace the production
-predecessor by a principal submatrix.
+The scalar-coordinate formulation is exactly what the determinant argument
+needs.  It deliberately avoids adding a stronger topology-dependent analytic
+structure on the nested intrinsic predecessor subtype itself, while preserving
+the actual production projection and block definitions.
 
 No determinant-density, sign, negative-root exclusion, finite-to-infinite
 closure, or RH theorem is claimed here.
@@ -93,30 +95,35 @@ theorem analyticOnNhd_complexFrozenParityCompressedRemainder_apply_sourceDomain
       (analyticOnNhd_complexFrozenCanonicalSourceRemainder_toEuclideanLin_apply_sourceDomain
         Q N (x : EuclideanSpace ℂ (Fin (2 * N + 1))) z hz)
 
-/-- The exact intrinsic predecessor remainder is analytic after application to
-a fixed intrinsic vector.  This is the same two-stage projection used by the
-production Schur block. -/
-theorem analyticOnNhd_complexFrozenIntrinsicPredecessorRemainder_apply_sourceDomain
+/-- Every fixed scalar coordinate of the exact intrinsic predecessor remainder
+is analytic on the common source domain.
+
+The scalar functional is composed algebraically with the genuine intrinsic
+predecessor projection first.  The resulting map has the already-topologized
+successor parity space as its domain and `ℂ` as codomain, so no auxiliary
+normed-space structure on the nested intrinsic subtype is required. -/
+theorem analyticOnNhd_complexFrozenIntrinsicPredecessorRemainder_coord_sourceDomain
     (Q : ℕ) (p : ReversalParity) (N : ℕ)
+    (φ : intrinsicParityPredecessorSubspace p N →ₗ[ℂ] ℂ)
     (x : intrinsicParityPredecessorSubspace p N) :
     AnalyticOnNhd ℂ
-      (fun z : ℂ => complexFrozenIntrinsicPredecessorRemainder Q p N z x)
+      (fun z : ℂ => φ (complexFrozenIntrinsicPredecessorRemainder Q p N z x))
       complexFrozenSourceDomain := by
-  letI : NormedSpace ℂ (euclideanParityBoundaryFlatSubspace p (N + 1)) :=
-    (euclideanParityBoundaryFlatSubspace p (N + 1)).normedSpace
-  letI : NormedSpace ℂ (intrinsicParityPredecessorSubspace p N) :=
-    (intrinsicParityPredecessorSubspace p N).normedSpace
-  let P := (intrinsicPredecessorPart p N).toContinuousLinearMap
+  let c : euclideanParityBoundaryFlatSubspace p (N + 1) →ₗ[ℂ] ℂ :=
+    φ.comp (intrinsicPredecessorPart p N)
+  let cL : euclideanParityBoundaryFlatSubspace p (N + 1) →L[ℂ] ℂ :=
+    LinearMap.toContinuousLinearMap c
   have hpar :=
     analyticOnNhd_complexFrozenParityCompressedRemainder_apply_sourceDomain
       Q p (N + 1)
       (x : euclideanParityBoundaryFlatSubspace p (N + 1))
   intro z hz
-  change AnalyticAt ℂ
-    (fun w : ℂ =>
-      P (complexFrozenParityCompressedRemainder Q p w (N + 1)
-        (x : euclideanParityBoundaryFlatSubspace p (N + 1)))) z
-  exact (P.analyticAt _).comp (hpar z hz)
+  have hc :=
+    (cL.analyticAt
+      (complexFrozenParityCompressedRemainder Q p z (N + 1)
+        (x : euclideanParityBoundaryFlatSubspace p (N + 1)))).comp
+      (hpar z hz)
+  simpa [complexFrozenIntrinsicPredecessorRemainder, c, cL] using hc
 
 /-- Natural analytic domain on the logarithmic cover.  The puncture at zero
 disappears upstairs because `Complex.exp` never vanishes. -/
@@ -146,41 +153,46 @@ theorem add_two_pi_I_mem_liftedFrozenPredecessorDomain_iff
     Complex.exp z ∈ complexFrozenSourceDomain
   rw [Complex.exp_add, Complex.exp_two_pi_mul_I, mul_one]
 
-/-- The lifted frozen remainder is analytic on the logarithmic cover. -/
-theorem analyticOnNhd_liftedFrozenIntrinsicPredecessorRemainder_apply
+/-- Every fixed scalar coordinate of the lifted frozen remainder is analytic on
+the logarithmic cover. -/
+theorem analyticOnNhd_liftedFrozenIntrinsicPredecessorRemainder_coord
     (Q : ℕ) (p : ReversalParity) (N : ℕ)
+    (φ : intrinsicParityPredecessorSubspace p N →ₗ[ℂ] ℂ)
     (x : intrinsicParityPredecessorSubspace p N) :
     AnalyticOnNhd ℂ
-      (fun z : ℂ => liftedFrozenIntrinsicPredecessorRemainder Q p N z x)
+      (fun z : ℂ => φ (liftedFrozenIntrinsicPredecessorRemainder Q p N z x))
       liftedFrozenPredecessorDomain := by
   intro z hz
   change AnalyticAt ℂ
     (fun w : ℂ =>
-      complexFrozenIntrinsicPredecessorRemainder Q p N (Complex.exp w) x) z
+      φ (complexFrozenIntrinsicPredecessorRemainder Q p N (Complex.exp w) x)) z
   exact
-    (analyticOnNhd_complexFrozenIntrinsicPredecessorRemainder_apply_sourceDomain
-      Q p N x (Complex.exp z) hz).comp analyticAt_cexp
+    (analyticOnNhd_complexFrozenIntrinsicPredecessorRemainder_coord_sourceDomain
+      Q p N φ x (Complex.exp z) hz).comp analyticAt_cexp
 
-/-- The full lifted predecessor block is analytic after application to every
-fixed intrinsic vector. -/
-theorem analyticOnNhd_liftedFrozenIntrinsicPredecessorBlock_apply
+/-- Every fixed scalar coordinate of the full lifted predecessor block is
+analytic on the logarithmic cover.  This is the exact interface required by the
+finite determinant polynomial. -/
+theorem analyticOnNhd_liftedFrozenIntrinsicPredecessorBlock_coord
     (Q : ℕ) (p : ReversalParity) (N : ℕ)
+    (φ : intrinsicParityPredecessorSubspace p N →ₗ[ℂ] ℂ)
     (x : intrinsicParityPredecessorSubspace p N) :
     AnalyticOnNhd ℂ
-      (fun z : ℂ => liftedFrozenIntrinsicPredecessorBlock Q p N z x)
+      (fun z : ℂ => φ (liftedFrozenIntrinsicPredecessorBlock Q p N z x))
       liftedFrozenPredecessorDomain := by
   intro z hz
-  change AnalyticAt ℂ
-    (fun w : ℂ => (-w) • x +
-      liftedFrozenIntrinsicPredecessorRemainder Q p N w x) z
-  exact (analyticAt_id.neg.smul analyticAt_const).add
-    (analyticOnNhd_liftedFrozenIntrinsicPredecessorRemainder_apply Q p N x z hz)
+  have hscalar : AnalyticAt ℂ (fun w : ℂ => (-w) * φ x) z :=
+    analyticAt_id.neg.mul analyticAt_const
+  have hrem :=
+    analyticOnNhd_liftedFrozenIntrinsicPredecessorRemainder_coord
+      Q p N φ x z hz
+  simpa [liftedFrozenIntrinsicPredecessorBlock, smul_eq_mul] using hscalar.add hrem
 
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.analyticOnNhd_complexFrozenCanonicalSourceRemainder_toEuclideanLin_apply_sourceDomain
 #print axioms Zeta23.CCM.analyticOnNhd_complexFrozenParityCompressedRemainder_apply_sourceDomain
-#print axioms Zeta23.CCM.analyticOnNhd_complexFrozenIntrinsicPredecessorRemainder_apply_sourceDomain
+#print axioms Zeta23.CCM.analyticOnNhd_complexFrozenIntrinsicPredecessorRemainder_coord_sourceDomain
 #print axioms Zeta23.CCM.isOpen_liftedFrozenPredecessorDomain
 #print axioms Zeta23.CCM.add_two_pi_I_mem_liftedFrozenPredecessorDomain_iff
-#print axioms Zeta23.CCM.analyticOnNhd_liftedFrozenIntrinsicPredecessorBlock_apply
+#print axioms Zeta23.CCM.analyticOnNhd_liftedFrozenIntrinsicPredecessorBlock_coord
