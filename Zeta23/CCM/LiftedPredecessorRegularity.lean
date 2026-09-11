@@ -116,6 +116,8 @@ theorem analyticOnNhd_liftedFrozenIntrinsicPredecessorMatrix_apply
     AnalyticOnNhd ℂ
       (fun z : ℂ => liftedFrozenIntrinsicPredecessorMatrix Q p N z i j)
       liftedFrozenPredecessorDomain := by
+  letI : NormedSpace ℂ (euclideanParityBoundaryFlatSubspace p (N + 1)) :=
+    (euclideanParityBoundaryFlatSubspace p (N + 1)).normedSpace
   letI : NormedSpace ℂ (intrinsicParityPredecessorSubspace p N) :=
     (intrinsicParityPredecessorSubspace p N).normedSpace
   let E := intrinsicParityPredecessorSubspace p N
