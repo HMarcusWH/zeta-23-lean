@@ -50,14 +50,27 @@ theorem analyticOnNhd_complexCanonicalArchWithoutWComponent_strip
     AnalyticOnNhd ℂ
       (complexCanonicalArchWithoutWComponent n m)
       complexArchSafeStrip := by
-  intro z hz
   by_cases hnm : n = m
   · subst m
-    simp only [complexCanonicalArchWithoutWComponent, if_pos rfl]
+    have hformula :
+        complexCanonicalArchWithoutWComponent n n =
+          (fun w : ℂ => 2 * complexGammaCore n w - 2 * complexBetaCore n w) := by
+      funext w
+      simp [complexCanonicalArchWithoutWComponent]
+    rw [hformula]
+    intro z hz
     have hg := analyticOnNhd_complexGammaCore_strip n z hz
     have hb := analyticOnNhd_complexBetaCore_strip n z hz
     exact (analyticAt_const.mul hg).sub (analyticAt_const.mul hb)
-  · simp only [complexCanonicalArchWithoutWComponent, if_neg hnm]
+  · have hformula :
+        complexCanonicalArchWithoutWComponent n m =
+          (fun w : ℂ =>
+            (complexAlphaCore m w - complexAlphaCore n w) /
+              (((n - m : ℤ) : ℂ))) := by
+      funext w
+      simp [complexCanonicalArchWithoutWComponent, hnm]
+    rw [hformula]
+    intro z hz
     have ha :=
       (analyticOnNhd_complexAlphaCore_strip m z hz).sub
         (analyticOnNhd_complexAlphaCore_strip n z hz)
@@ -89,11 +102,13 @@ theorem analyticOnNhd_complexPrimeSourceCoordinate_sourceDomain
     AnalyticOnNhd ℂ
       (complexPrimeSourceCoordinate q)
       complexFrozenSourceDomain := by
+  change AnalyticOnNhd ℂ
+    (fun w : ℂ => 1 - (Real.log q : ℂ) / w)
+    complexFrozenSourceDomain
   intro z hz
   have hz0 : z ≠ 0 := by
     have hnot : z ∉ ({0} : Set ℂ) := hz.2
     simpa using hnot
-  simp only [complexPrimeSourceCoordinate]
   have hquot : AnalyticAt ℂ (fun w : ℂ => (Real.log q : ℂ) / w) z :=
     analyticAt_const.div analyticAt_id hz0
   exact analyticAt_const.sub hquot
@@ -149,9 +164,11 @@ theorem analyticOnNhd_complexSourceMatrix_comp_apply
     (i j : Fin (2 * K + 1)) :
     AnalyticOnNhd ℂ
       (fun z : ℂ => complexSourceMatrix (ω z) K i j) s := by
-  simpa [complexSourceMatrix, dividedDifferenceMatrix] using
-    analyticOnNhd_complexSourceEntry_comp hω
-      (centeredIndex K i) (centeredIndex K j)
+  change AnalyticOnNhd ℂ
+    (fun z : ℂ =>
+      complexSourceEntry (ω z) (centeredIndex K i) (centeredIndex K j)) s
+  exact analyticOnNhd_complexSourceEntry_comp hω
+    (centeredIndex K i) (centeredIndex K j)
 
 /-- One entry of a frozen prime-power source atom is analytic on the punctured
 source strip. -/
@@ -180,9 +197,9 @@ theorem analyticOnNhd_complexFrozenCanonicalPrimeMatrix_apply_sourceDomain
         complexSourceMatrix (complexPrimeSourceCoordinate q z) K i j)
     (s := complexFrozenSourceDomain)
     (fun q _hq => by
-      simpa [smul_eq_mul] using
-        (analyticOnNhd_complexPrimeSourceMatrix_apply_sourceDomain q K i j).const_smul
-          (c := primeSourceWeight q))
+      intro z hz
+      exact analyticAt_const.mul
+        (analyticOnNhd_complexPrimeSourceMatrix_apply_sourceDomain q K i j z hz))
   simpa [complexFrozenCanonicalPrimeMatrix, Matrix.sum_apply, Pi.smul_apply,
     smul_eq_mul] using hsum
 
@@ -316,13 +333,21 @@ theorem analyticOnNhd_complexFrozenCanonicalSourceRemainder_apply_sourceDomain
           (1 : Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ)) i j)
       complexFrozenSourceDomain := by
     intro z hz
-    simpa [Pi.smul_apply, smul_eq_mul] using
-      (analyticOnNhd_complexApertureScalarRemainder_sourceDomain z hz).mul
-        (analyticAt_const : AnalyticAt ℂ
-          (fun _ : ℂ =>
-            (1 : Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ) i j) z)
-  simpa [complexFrozenCanonicalSourceRemainder] using
-    ((hpole.sub harch).sub hprime).add hscalar
+    change AnalyticAt ℂ
+      (fun w : ℂ =>
+        complexApertureScalarRemainder w *
+          (1 : Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ) i j) z
+    exact (analyticOnNhd_complexApertureScalarRemainder_sourceDomain z hz).mul
+      analyticAt_const
+  intro z hz
+  change AnalyticAt ℂ
+    (fun w : ℂ =>
+      complexCanonicalPoleMatrix w K i j -
+        complexCanonicalArchWithoutWMatrix w K i j -
+          complexFrozenCanonicalPrimeMatrix Q w K i j +
+            complexApertureScalarRemainder w *
+              (1 : Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ) i j) z
+  exact (((hpole z hz).sub (harch z hz)).sub (hprime z hz)).add (hscalar z hz)
 
 end Zeta23.CCM
 
