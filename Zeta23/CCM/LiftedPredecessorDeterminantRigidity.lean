@@ -39,7 +39,7 @@ theorem exists_nat_det_sub_smul_id_ne_zero
     ∃ k : ℕ,
       LinearMap.det (A - (((k : ℂ) * c) • LinearMap.id)) ≠ 0 := by
   by_contra h
-  push_neg at h
+  push Not at h
   let f : ℕ → ℂ := fun k => (k : ℂ) * c
   have hf : Function.Injective f := by
     intro m n hmn
@@ -50,7 +50,7 @@ theorem exists_nat_det_sub_smul_id_ne_zero
     Set.infinite_range_of_injective hf
   have hroot : Set.range f ⊆ {z : ℂ | Polynomial.IsRoot A.charpoly z} := by
     rintro z ⟨k, rfl⟩
-    rw [Polynomial.IsRoot]
+    rw [Polynomial.IsRoot.def]
     rw [LinearMap.eval_charpoly]
     have hshift :
         algebraMap ℂ (Module.End ℂ E) (f k) - A =
@@ -78,7 +78,8 @@ theorem liftedFrozenIntrinsicPredecessorBlock_add_nat_two_pi_I
       liftedFrozenIntrinsicPredecessorBlock Q p N z -
         ((k : ℂ) * (2 * (Real.pi : ℂ) * Complex.I)) • LinearMap.id := by
   induction k with
-  | zero => simp
+  | zero =>
+      rw [Nat.cast_zero, zero_mul, add_zero, zero_smul, sub_zero]
   | succ k ih =>
       have harg :
           z + ((Nat.succ k : ℕ) : ℂ) *
