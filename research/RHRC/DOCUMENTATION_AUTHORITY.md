@@ -23,20 +23,20 @@ A green but unmerged PR is branch evidence, not merged repository truth. A merge
 ## Current synchronized anchors
 
 ```text
-live main after merged PR #142 = 3e8d2995a1c00a9aef0d8cb0f5382658c91a8673
-live main tree = a92d03d0d4ad800d544a835b8ae2e3d23bae2c47
+live main after merged PR #146 = f2999d12e29d61debce130e83491ac3df410b0c2
+live main tree = fe76581d445569cb838cb4df7bf50703aa34f5cc
 
-theorem-state anchor = PR #142 merge 3e8d2995a1c00a9aef0d8cb0f5382658c91a8673
-validated theorem head = 23d96af9aafd86ad26ae7913c3d6c14503d539de
-validated theorem tree = a92d03d0d4ad800d544a835b8ae2e3d23bae2c47
-RHRC #889 = SUCCESS
-Permansson #662 = SUCCESS
+theorem-state anchor = PR #146 merge f2999d12e29d61debce130e83491ac3df410b0c2
+validated theorem head = a25d238478f7b19072c5364486b8f3f994bf6b79
+validated theorem tree = fe76581d445569cb838cb4df7bf50703aa34f5cc
+RHRC #922 / run 34600323163 = SUCCESS
+Permansson #695 / run 34600323144 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
 ```
 
-PR #142 is theorem-bearing and advances theorem authority beyond #140. This post-#142 documentation/control synchronization changes research/control metadata only; it does not add theorem authority beyond #142.
+PR #146 is theorem-bearing and advances theorem authority beyond #144/#145. This documentation/control synchronization changes research/control metadata only; it does not add theorem authority beyond #146.
 
 ## Living SSOTs
 
@@ -64,9 +64,9 @@ The repository keeps distinct anchors:
 - **theorem-state anchor** — latest meaningful theorem-bearing merge whose compiled Lean surface defines current mathematical authority;
 - **control-plane semantic anchor** — latest meaningful merged green research-control/assurance semantics.
 
-PR #142 advances the theorem-state anchor because it adds and validates theorem-bearing Lean modules for actual-source fixed-cell continuity and persistence. PR #117 remains the Control-v2 semantic anchor because #142 does not change the controller's capability/authority model.
+PR #146 advances the theorem-state anchor because it adds and validates theorem-bearing Lean declarations that bridge the removable analytic scalar layer to the production scalar/remainder. PR #117 remains the Control-v2 semantic anchor because #146 does not change the controller's capability/authority model.
 
-A documentation/control PR that updates the theorem anchor to #142 does not itself create new theorem authority.
+A documentation/control PR that updates the theorem anchor to #146 does not itself create new theorem authority.
 
 ## Control-v2 authority law
 
@@ -109,54 +109,44 @@ After a post-green or independent research pass, update documentation when any o
 10. update obstruction/dead-route/countermodel records when reusable blockers/falsifiers changed;
 11. leave historical settlements untouched unless an explicit authority banner requires correction.
 
-## Current transition after PR #142
+## Current transition after PR #146
 
 Newest current-priority delta:
 
-`RESEARCH_LEADS_POST_142_FIXED_CELL_PERSISTENCE_DELTA.md`
+`RESEARCH_LEADS_POST_146_APERTURE_ANALYTIC_FRONTIER_DELTA.md`
 
 Current route:
 
 ```text
-PROVED THROUGH #137
-  absolute source energy
-  exact source pairing
-  one-step determinant
-  conditional domination sufficiency
-  off-line zero -> q_c<0 OR exists Delta<0
+PROVED THROUGH #142
+  aperture freedom
+  fixed-cell actual-source continuity
+  same-size/same-vector open negative persistence
 
-PROVED / #140
-  off-line zero -> finite negative canonical witness at every sufficiently large aperture
-  -> AnyParityBad at every sufficiently large aperture
-  -> freshly selectable global-first-bad at every sufficiently large aperture
-  predecessor det!=0 <-> injective
-  regular predecessor -> unique cubic zero-shift preimage
-  frozen prime-cell equality
-  threshold atom vanishing
-  exact real-axis -log(L) scalar extraction
+PROVED / #144
+  exact frozen production source/predecessor scaffold
+  exact -log(L) identity split through intrinsic projection
+  complex frozen remainder and positive-real bridges
+  logarithmic-cover lift and exact deck-shift laws
 
-PROVED / #142
-  actual canonical source entry continuity on a fixed physical cutoff cell
-  fixed-vector canonical quadratic-energy continuity on that cell
-  same finite size and same vector stay strictly negative on an open in-cell neighborhood
-  off-line zero -> locally persistent fixed witness at every chosen sufficiently large cell-interior aperture
+PROVED / #145
+  local removable scalar analyticity at zero
 
-DERIVED POST-#142 PLANNING COMPRESSION
-  minimize bad size over the whole cutoff cell;
-  all smaller sizes are good in both parities throughout the cell;
-  predecessor PSD is therefore uniform across the cell;
-  preserve a bad parity witness using #142;
-  regularize only the relevant predecessor determinant(s) at the cell-minimal size.
+PROVED / #146
+  removable scalar factor/remainder = production complex scalar/remainder for z != 0
+  exact positive-real production provenance
+
+DERIVED POST-#146
+  the production scalar remainder has a removable analytic singularity at zero
 
 NEXT THEOREM
-  actual frozen intrinsic predecessor analyticity / single-valued remainder
-  + exact -Log(L) identity split
-  + determinant nonidentity by logarithmic monodromy
-  + dense fixed-cell regularity.
+  genuine aperture-parameter holomorphy of the exact fixed-unit production source integrals
+  -> assembled complex frozen source/predecessor holomorphy.
 
 AFTER
-  production cell-minimal regular first-bad source countercertificate
-  with unique A x0=b
+  determinant nonidentity
+  -> dense fixed-cell regularity
+  -> production cell-minimal regular first-bad source countercertificate
   -> independent canonical Schur-energy sign on u0=c-x0.
 
 BROAD FALLBACK
@@ -164,14 +154,16 @@ BROAD FALLBACK
   universal canonical one-step domination only if an independent arithmetic mechanism is discovered.
 ```
 
-The post-#142 generic analytic regularization countermodel is a reusable falsification record. It shows that persistence, cell/global minimality, predecessor regularity, parity and an explicit scalar logarithm are not enough by themselves to exclude a negative successor. Exact canonical arithmetic must enter the decisive sign theorem.
+The post-#146 translation negative control `F(z)=-z+Re z` is reusable: affine/deck-shift structure does not imply holomorphy. The earlier post-#142 regularization countermodel remains independently active: persistence, minimality, regularity, parity and an explicit scalar logarithm do not imply the arithmetic contradiction.
 
 ## Permanent firewalls
 
 ```text
 aperture freedom != fixed-witness persistence        [#142 closes the latter]
 fixed-witness persistence != analyticity
-analyticity != determinant nonidentity
+complex/deck lift != holomorphy
+local scalar analyticity != assembled source holomorphy
+holomorphy != determinant nonidentity
 regular predecessor != positive successor
 cell-minimality + regularity != arithmetic contradiction
 Gamma0*mu(z)=0 with trivial kernel != source sign
