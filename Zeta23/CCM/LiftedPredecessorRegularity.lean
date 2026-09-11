@@ -188,6 +188,83 @@ theorem liftedFrozenIntrinsicPredecessorDet_not_zero_on_rigidityDomain
     exists_mem_liftedFrozenRigidityDomain_det_ne_zero Q p N
   exact hzne (hzero hz)
 
+/-- Every nonempty open real interval inside one physical cutoff cell contains
+an aperture at which the actual intrinsic predecessor is regular.
+
+If every point of the interval were singular, their logarithms would give an
+accumulating zero set for the lifted analytic determinant on the connected
+rigidity corridor.  The identity theorem would then make the determinant zero
+on the whole corridor, contradicting the deck-forced nonzero determinant. -/
+theorem exists_intrinsicPredecessorRegular_in_open_fixedCell
+    {Q : ℕ} (hQ : 1 ≤ Q)
+    (p : ReversalParity) (N : ℕ)
+    {J : Set ℝ}
+    (hJopen : IsOpen J)
+    (hJne : J.Nonempty)
+    (hJcell : J ⊆ fixedCanonicalCutoffCell Q) :
+    ∃ L ∈ J, IntrinsicPredecessorRegular p L N := by
+  classical
+  by_contra hnone
+  push_neg at hnone
+  obtain ⟨L₀, hL₀J⟩ := hJne
+  have hL₀cell : L₀ ∈ fixedCanonicalCutoffCell Q := hJcell hL₀J
+  have hL₀pos : 0 < L₀ := fixedCanonicalCutoffCell_subset_Ioi hQ hL₀cell
+  let f : ℂ → ℂ := liftedFrozenIntrinsicPredecessorDet Q p N
+  have hf : AnalyticOnNhd ℂ f liftedFrozenRigidityDomain := by
+    intro z hz
+    exact analyticOnNhd_liftedFrozenIntrinsicPredecessorDet Q p N z
+      (liftedFrozenRigidityDomain_subset_liftedFrozenPredecessorDomain hz)
+  have hzeroReal :
+      ∀ L ∈ J, f (Real.log L : ℂ) = 0 := by
+    intro L hLJ
+    have hLcell : L ∈ fixedCanonicalCutoffCell Q := hJcell hLJ
+    have hLpos : 0 < L := fixedCanonicalCutoffCell_subset_Ioi hQ hLcell
+    have hsing : ¬ IntrinsicPredecessorRegular p L N := hnone L hLJ
+    change ¬ intrinsicPredecessorDet p L N ≠ 0 at hsing
+    have hdet0 : intrinsicPredecessorDet p L N = 0 := not_ne_iff.mp hsing
+    have hbridge :=
+      liftedFrozenIntrinsicPredecessorBlock_of_log_fixedCell hQ hLcell p N
+    change LinearMap.det
+      (liftedFrozenIntrinsicPredecessorBlock Q p N (Real.log L : ℂ)) = 0
+    rw [hbridge]
+    exact hdet0
+  have hJevent : ∀ᶠ L in 𝓝[≠] L₀, L ∈ J :=
+    (hJopen.mem_nhds hL₀J).filter_mono nhdsWithin_le_nhds
+  have hrealEvent :
+      ∀ᶠ L in 𝓝[≠] L₀, L ∈ J ∧ f (Real.log L : ℂ) = 0 := by
+    filter_upwards [hJevent] with L hLJ
+    exact ⟨hLJ, hzeroReal L hLJ⟩
+  have hreal :
+      ∃ᶠ L in 𝓝[≠] L₀, L ∈ J ∧ f (Real.log L : ℂ) = 0 :=
+    hrealEvent.frequently
+  have hcomplex :
+      ∃ᶠ z in 𝓝[≠] (Real.log L₀ : ℂ), f z = 0 := by
+    rw [frequently_iff_seq_forall] at hreal ⊢
+    obtain ⟨xs, hxs_tendsto, hxs_zero⟩ := hreal
+    refine ⟨fun n => (Real.log (xs n) : ℂ), ?_, fun n => (hxs_zero n).2⟩
+    rw [tendsto_nhdsWithin_iff] at hxs_tendsto ⊢
+    constructor
+    · rw [tendsto_ofReal_iff]
+      exact (Real.continuousAt_log hL₀pos.ne').tendsto.comp hxs_tendsto.1
+    · filter_upwards [hxs_tendsto.2] with n hxsne
+      have hxsJ : xs n ∈ J := (hxs_zero n).1
+      have hxscell : xs n ∈ fixedCanonicalCutoffCell Q := hJcell hxsJ
+      have hxspos : 0 < xs n := fixedCanonicalCutoffCell_subset_Ioi hQ hxscell
+      have hlogne : Real.log (xs n) ≠ Real.log L₀ := by
+        intro heq
+        exact hxsne (Real.log_injOn_pos hxspos hL₀pos heq)
+      simpa using hlogne
+  have hidenticallyZero : Set.EqOn f 0 liftedFrozenRigidityDomain :=
+    AnalyticOnNhd.eqOn_of_preconnected_of_frequently_eq
+      hf analyticOnNhd_const
+      isPreconnected_liftedFrozenRigidityDomain
+      (z₀ := (Real.log L₀ : ℂ))
+      (ofReal_mem_liftedFrozenRigidityDomain (Real.log L₀))
+      hcomplex
+  exact
+    (liftedFrozenIntrinsicPredecessorDet_not_zero_on_rigidityDomain Q p N)
+      hidenticallyZero
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.isPreconnected_liftedFrozenRigidityDomain
@@ -195,3 +272,4 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.analyticOnNhd_liftedFrozenIntrinsicPredecessorMatrix_apply
 #print axioms Zeta23.CCM.analyticOnNhd_liftedFrozenIntrinsicPredecessorDet
 #print axioms Zeta23.CCM.exists_mem_liftedFrozenRigidityDomain_det_ne_zero
+#print axioms Zeta23.CCM.exists_intrinsicPredecessorRegular_in_open_fixedCell
