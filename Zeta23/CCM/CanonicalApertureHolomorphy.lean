@@ -1,4 +1,5 @@
 import Zeta23.CCM.FrozenCanonicalSourceComplex
+import Zeta23.CCM.CanonicalApertureArchDomain
 import Mathlib.Analysis.SpecialFunctions.Complex.Analytic
 
 noncomputable section
@@ -74,6 +75,47 @@ the exact production real expression. -/
     (Complex.ofReal_ne_zero.mpr hL.ne')]
   exact complexApertureScalarFactor_ofReal L
 
+/-- The divided exponential slope has no zero anywhere in the same common
+archimedean strip used by the fixed-unit source cores.  Away from zero a zero
+would force `exp z = exp 0`; exponential injectivity on the fundamental strip
+then forces `z = 0`. -/
+theorem complexArchExpSlope_ne_zero_of_mem_strip
+    {z : ℂ} (hz : z ∈ complexArchSafeStrip) :
+    complexArchExpSlope z ≠ 0 := by
+  by_cases hz0 : z = 0
+  · subst z
+    simp
+  · intro hslopeZero
+    have hslope :
+        z * complexArchExpSlope z = Complex.exp z - 1 := by
+      simpa [complexArchExpSlope, smul_eq_mul] using
+        sub_smul_dslope Complex.exp 0 z
+    have hsub : Complex.exp z - 1 = 0 := by
+      rw [← hslope, hslopeZero, mul_zero]
+    have hexp : Complex.exp z = Complex.exp 0 := by
+      simpa using sub_eq_zero.mp hsub
+    have hb : -Real.pi < z.im ∧ z.im < Real.pi := abs_lt.mp hz
+    have hzeroLower : -Real.pi < (0 : ℂ).im := by
+      simpa using Real.pi_pos
+    have hzeroUpper : (0 : ℂ).im ≤ Real.pi := by
+      simp [Real.pi_pos.le]
+    have hEq : z = 0 :=
+      Complex.exp_inj_of_neg_pi_lt_of_le_pi
+        hb.1 hb.2.le hzeroLower hzeroUpper hexp
+    exact hz0 hEq
+
+/-- The removable scalar factor is genuinely analytic throughout the full safe
+strip, not merely in a neighborhood of zero. -/
+theorem analyticOnNhd_complexApertureScalarFactorRemovable_strip :
+    AnalyticOnNhd ℂ complexApertureScalarFactorRemovable complexArchSafeStrip := by
+  intro z hz
+  unfold complexApertureScalarFactorRemovable
+  have hnum : AnalyticAt ℂ (fun w : ℂ => Complex.exp w + 1) z :=
+    (Complex.differentiable_exp.analyticAt z).add analyticAt_const
+  have hden : AnalyticAt ℂ complexArchExpSlope z :=
+    differentiable_complexArchExpSlope.analyticAt z
+  exact hnum.div hden (complexArchExpSlope_ne_zero_of_mem_strip hz)
+
 /-- The divided exponential slope stays nonzero in a genuine neighborhood of
 zero. -/
 theorem eventually_complexArchExpSlope_ne_zero :
@@ -143,6 +185,8 @@ end Zeta23.CCM
 
 #print axioms Zeta23.CCM.complexApertureScalarFactorRemovable_eq_complexApertureScalarFactor
 #print axioms Zeta23.CCM.complexApertureScalarFactorRemovable_ofReal
+#print axioms Zeta23.CCM.complexArchExpSlope_ne_zero_of_mem_strip
+#print axioms Zeta23.CCM.analyticOnNhd_complexApertureScalarFactorRemovable_strip
 #print axioms Zeta23.CCM.complexApertureScalarRemainderRemovable_eq_complexApertureScalarRemainder
 #print axioms Zeta23.CCM.complexApertureScalarRemainderRemovable_ofReal
 #print axioms Zeta23.CCM.analyticAt_complexApertureScalarFactorRemovable_zero
