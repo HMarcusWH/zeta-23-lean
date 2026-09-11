@@ -36,8 +36,13 @@ theorem isOpen_complexArchSafeStrip : IsOpen complexArchSafeStrip := by
 /-- The archimedean safe strip is convex as a real subset of `ℂ`. -/
 theorem convex_complexArchSafeStrip : Convex ℝ complexArchSafeStrip := by
   rw [complexArchSafeStrip]
-  simpa only [abs_lt] using
-    (convex_halfSpace_im_gt (-Real.pi)).inter (convex_halfSpace_im_lt Real.pi)
+  have hset :
+      {z : ℂ | |z.im| < Real.pi} =
+        ({z : ℂ | -Real.pi < z.im} ∩ {z : ℂ | z.im < Real.pi}) := by
+    ext z
+    simp [abs_lt]
+  rw [hset]
+  exact (convex_halfSpace_im_gt (-Real.pi)).inter (convex_halfSpace_im_lt Real.pi)
 
 /-- Hence the archimedean safe strip is preconnected. -/
 theorem isPreconnected_complexArchSafeStrip :
@@ -66,17 +71,19 @@ theorem mul_Icc_mem_complexArchSafeStrip
     {z : ℂ} (hz : z ∈ complexArchSafeStrip)
     {t : ℝ} (ht : t ∈ Set.Icc (0 : ℝ) 1) :
     z * (t : ℂ) ∈ complexArchSafeStrip := by
-  rw [complexArchSafeStrip] at hz ⊢
+  have hz' : |z.im| < Real.pi := by
+    simpa [complexArchSafeStrip] using hz
   have ht0 : 0 ≤ t := ht.1
   have ht1 : t ≤ 1 := ht.2
   have him : (z * (t : ℂ)).im = z.im * t := by
     simp [Complex.mul_im]
+  change |(z * (t : ℂ)).im| < Real.pi
   rw [him, abs_mul, abs_of_nonneg ht0]
   calc
     |z.im| * t ≤ |z.im| * 1 :=
       mul_le_mul_of_nonneg_left ht1 (abs_nonneg z.im)
     _ = |z.im| := by ring
-    _ < Real.pi := hz
+    _ < Real.pi := hz'
 
 /-- The complex divided hyperbolic slope has no zero in the safe strip.
 At the origin the divided slope equals one; away from the origin, a hypothetical
