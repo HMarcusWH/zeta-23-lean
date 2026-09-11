@@ -80,7 +80,8 @@ theorem liftedFrozenIntrinsicPredecessorBlock_add_nat_two_pi_I
         ((k : ℂ) * (2 * (Real.pi : ℂ) * Complex.I)) • LinearMap.id := by
   induction k with
   | zero =>
-      simp
+      simpa only [Nat.cast_zero, zero_mul, add_zero, zero_smul] using
+        (sub_zero (liftedFrozenIntrinsicPredecessorBlock Q p N z)).symm
   | succ k ih =>
       have harg :
           z + ((Nat.succ k : ℕ) : ℂ) *
