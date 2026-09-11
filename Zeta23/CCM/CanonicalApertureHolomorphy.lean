@@ -17,9 +17,9 @@ definitions.
 
 The existing `complexApertureScalarFactor` is intentionally totalized by Lean
 and therefore has the wrong point value at zero.  The auxiliary removable
-extension below has the correct value `2`, is analytic at zero, and will be
-proved equal to the existing factor on the punctured domain where the latter
-is mathematically used.
+extension below has the correct value `2`, is analytic at zero, and is proved
+equal to the existing factor on the punctured domain where the latter is
+mathematically used.
 
 No determinant nonidentity, dense regularity, sign, negative-root exclusion,
 or RH claim is made here.
@@ -35,6 +35,44 @@ def complexApertureScalarFactorRemovable (z : ℂ) : ℂ :=
     complexApertureScalarFactorRemovable 0 = 2 := by
   simp [complexApertureScalarFactorRemovable]
   norm_num
+
+/-- Away from the removable point, the corrected scalar factor is exactly the
+existing production scalar factor. -/
+theorem complexApertureScalarFactorRemovable_eq_complexApertureScalarFactor
+    {z : ℂ} (hz : z ≠ 0) :
+    complexApertureScalarFactorRemovable z =
+      complexApertureScalarFactor z := by
+  have hslope :
+      z * complexArchExpSlope z = Complex.exp z - 1 := by
+    simpa [complexArchExpSlope, smul_eq_mul] using
+      sub_smul_dslope Complex.exp 0 z
+  by_cases hden : Complex.exp z - 1 = 0
+  · have hslopeZero : complexArchExpSlope z = 0 := by
+      have hmul : z * complexArchExpSlope z = 0 := by
+        simpa [hden] using hslope
+      exact (mul_eq_zero.mp hmul).resolve_left hz
+    simp [complexApertureScalarFactorRemovable,
+      complexApertureScalarFactor, hden, hslopeZero]
+  · have hslopeNe : complexArchExpSlope z ≠ 0 := by
+      intro hslopeZero
+      apply hden
+      calc
+        Complex.exp z - 1 = z * complexArchExpSlope z := hslope.symm
+        _ = 0 := by simp [hslopeZero]
+    unfold complexApertureScalarFactorRemovable complexApertureScalarFactor
+    rw [← hslope]
+    field_simp [hz, hslopeNe]
+    <;> ring
+
+/-- On the positive real axis, the removable scalar factor is locked back to
+the exact production real expression. -/
+@[simp] theorem complexApertureScalarFactorRemovable_ofReal
+    {L : ℝ} (hL : 0 < L) :
+    complexApertureScalarFactorRemovable (L : ℂ) =
+      ((L * ((Real.exp L + 1) / (Real.exp L - 1)) : ℝ) : ℂ) := by
+  rw [complexApertureScalarFactorRemovable_eq_complexApertureScalarFactor
+    (Complex.ofReal_ne_zero.mpr hL.ne')]
+  exact complexApertureScalarFactor_ofReal L
 
 /-- The divided exponential slope stays nonzero in a genuine neighborhood of
 zero. -/
@@ -75,6 +113,26 @@ def complexApertureScalarRemainderRemovable (z : ℂ) : ℂ :=
   Complex.log (complexApertureScalarFactorRemovable z) -
     ((Real.eulerMascheroniConstant + Real.log (4 * Real.pi) : ℝ) : ℂ)
 
+/-- Away from zero, the removable analytic remainder is exactly the existing
+production complex aperture remainder. -/
+theorem complexApertureScalarRemainderRemovable_eq_complexApertureScalarRemainder
+    {z : ℂ} (hz : z ≠ 0) :
+    complexApertureScalarRemainderRemovable z =
+      complexApertureScalarRemainder z := by
+  unfold complexApertureScalarRemainderRemovable
+    complexApertureScalarRemainder
+  rw [complexApertureScalarFactorRemovable_eq_complexApertureScalarFactor hz]
+
+/-- On the positive real axis, the removable analytic remainder is exactly the
+production canonical aperture scalar remainder. -/
+@[simp] theorem complexApertureScalarRemainderRemovable_ofReal
+    {L : ℝ} (hL : 0 < L) :
+    complexApertureScalarRemainderRemovable (L : ℂ) =
+      (canonicalApertureScalarRemainder L : ℂ) := by
+  rw [complexApertureScalarRemainderRemovable_eq_complexApertureScalarRemainder
+    (Complex.ofReal_ne_zero.mpr hL.ne')]
+  exact complexApertureScalarRemainder_ofReal hL
+
 /-- The corrected scalar remainder is analytic at zero. -/
 theorem analyticAt_complexApertureScalarRemainderRemovable_zero :
     AnalyticAt ℂ complexApertureScalarRemainderRemovable 0 := by
@@ -83,5 +141,9 @@ theorem analyticAt_complexApertureScalarRemainderRemovable_zero :
 
 end Zeta23.CCM
 
+#print axioms Zeta23.CCM.complexApertureScalarFactorRemovable_eq_complexApertureScalarFactor
+#print axioms Zeta23.CCM.complexApertureScalarFactorRemovable_ofReal
+#print axioms Zeta23.CCM.complexApertureScalarRemainderRemovable_eq_complexApertureScalarRemainder
+#print axioms Zeta23.CCM.complexApertureScalarRemainderRemovable_ofReal
 #print axioms Zeta23.CCM.analyticAt_complexApertureScalarFactorRemovable_zero
 #print axioms Zeta23.CCM.analyticAt_complexApertureScalarRemainderRemovable_zero
