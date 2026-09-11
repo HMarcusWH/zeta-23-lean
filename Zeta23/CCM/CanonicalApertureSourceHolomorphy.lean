@@ -1,6 +1,7 @@
 import Zeta23.CCM.CanonicalApertureParameterHolomorphy
 import Zeta23.CCM.FrozenCanonicalSourceComplex
 import Mathlib.Analysis.Analytic.Constructions
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv
 
 noncomputable section
 
@@ -88,9 +89,100 @@ theorem analyticOnNhd_complexPrimeSourceCoordinate_sourceDomain
     analyticAt_const.div analyticAt_id hz0
   simpa [complexPrimeSourceCoordinate] using analyticAt_const.sub hquot
 
+private theorem analyticOnNhd_complexSourcePotential_comp
+    {s : Set ℂ} {ω : ℂ → ℂ}
+    (hω : AnalyticOnNhd ℂ ω s) (n : ℤ) :
+    AnalyticOnNhd ℂ (fun z : ℂ => complexSourcePotential (ω z) n) s := by
+  intro z hz
+  have hw := hω z hz
+  let a : ℂ := 2 * (Real.pi : ℂ) * (n : ℂ)
+  have harg : AnalyticAt ℂ (fun u : ℂ => a * ω u) z :=
+    analyticAt_const.mul hw
+  have hsin : AnalyticAt ℂ (fun u : ℂ => Complex.sin (a * ω u)) z := by
+    simpa [Function.comp_def] using Complex.analyticAt_sin.comp harg
+  simpa [complexSourcePotential, a, mul_assoc] using
+    hsin.div_const (c := (Real.pi : ℂ))
+
+private theorem analyticOnNhd_complexSourceDiagonal_comp
+    {s : Set ℂ} {ω : ℂ → ℂ}
+    (hω : AnalyticOnNhd ℂ ω s) (n : ℤ) :
+    AnalyticOnNhd ℂ (fun z : ℂ => complexSourceDiagonal (ω z) n) s := by
+  intro z hz
+  have hw := hω z hz
+  let a : ℂ := 2 * (Real.pi : ℂ) * (n : ℂ)
+  have harg : AnalyticAt ℂ (fun u : ℂ => a * ω u) z :=
+    analyticAt_const.mul hw
+  have hcos : AnalyticAt ℂ (fun u : ℂ => Complex.cos (a * ω u)) z := by
+    simpa [Function.comp_def] using Complex.analyticAt_cos.comp harg
+  have hprod : AnalyticAt ℂ
+      (fun u : ℂ => (2 : ℂ) * (ω u * Complex.cos (a * ω u))) z :=
+    analyticAt_const.mul (hw.mul hcos)
+  simpa [complexSourceDiagonal, a, mul_assoc] using hprod
+
+private theorem analyticOnNhd_complexSourceEntry_comp
+    {s : Set ℂ} {ω : ℂ → ℂ}
+    (hω : AnalyticOnNhd ℂ ω s) (n m : ℤ) :
+    AnalyticOnNhd ℂ (fun z : ℂ => complexSourceEntry (ω z) n m) s := by
+  by_cases hnm : n = m
+  · subst m
+    simpa [complexSourceEntry, dividedDifferenceEntry] using
+      analyticOnNhd_complexSourceDiagonal_comp hω n
+  · have hn := analyticOnNhd_complexSourcePotential_comp hω n
+    have hm := analyticOnNhd_complexSourcePotential_comp hω m
+    simpa [complexSourceEntry, dividedDifferenceEntry, hnm] using
+      (hn.sub hm).div_const (c := (((n - m : ℤ) : ℂ)))
+
+/-- Any analytic complex source coordinate produces an analytic finite source
+matrix. -/
+theorem analyticOnNhd_complexSourceMatrix_comp
+    {s : Set ℂ} {ω : ℂ → ℂ}
+    (hω : AnalyticOnNhd ℂ ω s) (K : ℕ) :
+    AnalyticOnNhd ℂ (fun z : ℂ => complexSourceMatrix (ω z) K) s := by
+  rw [analyticOnNhd_pi_iff]
+  intro i
+  rw [analyticOnNhd_pi_iff]
+  intro j
+  simpa [complexSourceMatrix, dividedDifferenceMatrix] using
+    analyticOnNhd_complexSourceEntry_comp hω
+      (centeredIndex K i) (centeredIndex K j)
+
+/-- One frozen prime-power source atom is analytic on the punctured source
+strip. -/
+theorem analyticOnNhd_complexPrimeSourceMatrix_sourceDomain
+    (q K : ℕ) :
+    AnalyticOnNhd ℂ
+      (fun z : ℂ =>
+        complexSourceMatrix (complexPrimeSourceCoordinate q z) K)
+      complexFrozenSourceDomain :=
+  analyticOnNhd_complexSourceMatrix_comp
+    (analyticOnNhd_complexPrimeSourceCoordinate_sourceDomain q) K
+
+/-- The full frozen finite prime channel is analytic on the punctured source
+strip.  The prime cutoff is finite and fixed, so no moving-floor issue enters
+this theorem. -/
+theorem analyticOnNhd_complexFrozenCanonicalPrimeMatrix_sourceDomain
+    (Q K : ℕ) :
+    AnalyticOnNhd ℂ
+      (fun z : ℂ => complexFrozenCanonicalPrimeMatrix Q z K)
+      complexFrozenSourceDomain := by
+  classical
+  have hsum := (Finset.Icc 2 Q).analyticOnNhd_fun_sum
+    (𝕜 := ℂ)
+    (f := fun q : ℕ => fun z : ℂ =>
+      primeSourceWeight q •
+        complexSourceMatrix (complexPrimeSourceCoordinate q z) K)
+    (s := complexFrozenSourceDomain)
+    (fun q _hq => by
+      simpa using
+        (analyticOnNhd_complexPrimeSourceMatrix_sourceDomain q K).const_smul
+          (c := primeSourceWeight q))
+  simpa [complexFrozenCanonicalPrimeMatrix] using hsum
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.isOpen_complexFrozenSourceDomain
 #print axioms Zeta23.CCM.analyticOnNhd_complexCanonicalArchWithoutWComponent_strip
 #print axioms Zeta23.CCM.analyticOnNhd_complexCanonicalArchWithoutWMatrix_strip
 #print axioms Zeta23.CCM.analyticOnNhd_complexPrimeSourceCoordinate_sourceDomain
+#print axioms Zeta23.CCM.analyticOnNhd_complexSourceMatrix_comp
+#print axioms Zeta23.CCM.analyticOnNhd_complexFrozenCanonicalPrimeMatrix_sourceDomain
