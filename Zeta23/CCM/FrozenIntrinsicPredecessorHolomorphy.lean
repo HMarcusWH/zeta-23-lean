@@ -102,6 +102,8 @@ theorem analyticOnNhd_complexFrozenIntrinsicPredecessorRemainder_apply_sourceDom
     AnalyticOnNhd ℂ
       (fun z : ℂ => complexFrozenIntrinsicPredecessorRemainder Q p N z x)
       complexFrozenSourceDomain := by
+  letI : NormedSpace ℂ (euclideanParityBoundaryFlatSubspace p (N + 1)) :=
+    (euclideanParityBoundaryFlatSubspace p (N + 1)).normedSpace
   letI : NormedSpace ℂ (intrinsicParityPredecessorSubspace p N) :=
     (intrinsicParityPredecessorSubspace p N).normedSpace
   let P := (intrinsicPredecessorPart p N).toContinuousLinearMap
