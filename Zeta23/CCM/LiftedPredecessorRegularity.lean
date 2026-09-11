@@ -116,22 +116,17 @@ theorem analyticOnNhd_liftedFrozenIntrinsicPredecessorMatrix_apply
     AnalyticOnNhd ℂ
       (fun z : ℂ => liftedFrozenIntrinsicPredecessorMatrix Q p N z i j)
       liftedFrozenPredecessorDomain := by
-  letI : NormedSpace ℂ (euclideanParityBoundaryFlatSubspace p (N + 1)) :=
-    (euclideanParityBoundaryFlatSubspace p (N + 1)).normedSpace
-  letI : NormedSpace ℂ (intrinsicParityPredecessorSubspace p N) :=
-    (intrinsicParityPredecessorSubspace p N).normedSpace
   let E := intrinsicParityPredecessorSubspace p N
   let b := Module.finBasis ℂ E
-  let c : E →L[ℂ] ℂ := LinearMap.toContinuousLinearMap (b.coord i)
   have hfun :
       (fun z : ℂ => liftedFrozenIntrinsicPredecessorMatrix Q p N z i j) =
-        (fun z : ℂ => c (liftedFrozenIntrinsicPredecessorBlock Q p N z (b j))) := by
+        (fun z : ℂ =>
+          (b.coord i) (liftedFrozenIntrinsicPredecessorBlock Q p N z (b j))) := by
     funext z
-    simp [liftedFrozenIntrinsicPredecessorMatrix, E, b, c, LinearMap.toMatrix_apply]
+    simp [liftedFrozenIntrinsicPredecessorMatrix, E, b, LinearMap.toMatrix_apply]
   rw [hfun]
-  intro z hz
-  exact (c.analyticAt _).comp
-    (analyticOnNhd_liftedFrozenIntrinsicPredecessorBlock_apply Q p N (b j) z hz)
+  exact analyticOnNhd_liftedFrozenIntrinsicPredecessorBlock_coord
+    Q p N (b.coord i) (b j)
 
 /-- Lifted determinant of the actual intrinsic predecessor block. -/
 noncomputable def liftedFrozenIntrinsicPredecessorDet
