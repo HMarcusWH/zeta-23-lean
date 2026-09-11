@@ -2,6 +2,7 @@ import Zeta23.CCM.CanonicalApertureParameterHolomorphy
 import Zeta23.CCM.FrozenCanonicalSourceComplex
 import Mathlib.Analysis.Analytic.Constructions
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp
 
 noncomputable section
 
@@ -178,6 +179,100 @@ theorem analyticOnNhd_complexFrozenCanonicalPrimeMatrix_sourceDomain
           (c := primeSourceWeight q))
   simpa [complexFrozenCanonicalPrimeMatrix] using hsum
 
+/-- The quadratic pole denominator for one centered integer frequency has no
+zero in the punctured source strip.  Its only complex roots are
+`± 4*pi*m*i`; every nonzero such root lies far outside `|Im z| < pi`, while
+`m = 0` leaves only the removed root `z = 0`. -/
+theorem complexPoleQuadraticDenominator_ne_zero
+    (m : ℤ) {z : ℂ} (hz : z ∈ complexFrozenSourceDomain) :
+    z ^ 2 + 16 * (Real.pi : ℂ) ^ 2 * (m : ℂ) ^ 2 ≠ 0 := by
+  have hzstrip : |z.im| < Real.pi := by
+    exact hz.1
+  have hz0 : z ≠ 0 := by
+    have hnot : z ∉ ({0} : Set ℂ) := hz.2
+    simpa using hnot
+  by_cases hm0 : m = 0
+  · subst m
+    simpa using pow_ne_zero 2 hz0
+  · intro hzero
+    let a : ℂ := 4 * (Real.pi : ℂ) * (m : ℂ) * Complex.I
+    have ha2 :
+        a ^ 2 = -(16 * (Real.pi : ℂ) ^ 2 * (m : ℂ) ^ 2) := by
+      dsimp [a]
+      rw [Complex.I_sq]
+      ring
+    have hsq : z ^ 2 = a ^ 2 := by
+      rw [ha2]
+      exact eq_neg_of_add_eq_zero_left hzero
+    have haim : a.im = 4 * Real.pi * (m : ℝ) := by
+      dsimp [a]
+      simp
+      ring
+    have haLower : Real.pi ≤ |a.im| := by
+      rw [haim]
+      rcases lt_or_gt_of_ne hm0 with hmneg | hmpos
+      · have hm1Z : m ≤ (-1 : ℤ) := by omega
+        have hm1 : (m : ℝ) ≤ -1 := by exact_mod_cast hm1Z
+        have hvalneg : 4 * Real.pi * (m : ℝ) < 0 := by
+          have hfourpi : 0 < 4 * Real.pi := by positivity
+          exact mul_neg_of_pos_of_neg hfourpi (lt_of_le_of_lt hm1 (by norm_num))
+        rw [abs_of_neg hvalneg]
+        nlinarith [Real.pi_pos]
+      · have hm1Z : (1 : ℤ) ≤ m := by omega
+        have hm1 : (1 : ℝ) ≤ (m : ℝ) := by exact_mod_cast hm1Z
+        have hvalpos : 0 < 4 * Real.pi * (m : ℝ) := by positivity
+        rw [abs_of_pos hvalpos]
+        nlinarith [Real.pi_pos]
+    rcases (sq_eq_sq_iff_eq_or_eq_neg.mp hsq) with hza | hza
+    · have hbad := hzstrip
+      rw [hza] at hbad
+      exact (not_lt_of_ge haLower) hbad
+    · have hbad := hzstrip
+      rw [hza] at hbad
+      simp only [map_neg, abs_neg] at hbad
+      exact (not_lt_of_ge haLower) hbad
+
+/-- One literal pole entry is analytic throughout the punctured source strip. -/
+theorem analyticOnNhd_complexPoleComponent_sourceDomain
+    (n m : ℤ) :
+    AnalyticOnNhd ℂ
+      (complexPoleComponent n m)
+      complexFrozenSourceDomain := by
+  intro z hz
+  let κ : ℂ := 16 * (Real.pi : ℂ) ^ 2
+  have hdenM : z ^ 2 + κ * (m : ℂ) ^ 2 ≠ 0 := by
+    simpa [κ, mul_assoc] using complexPoleQuadraticDenominator_ne_zero m hz
+  have hdenN : z ^ 2 + κ * (n : ℂ) ^ 2 ≠ 0 := by
+    simpa [κ, mul_assoc] using complexPoleQuadraticDenominator_ne_zero n hz
+  have hC : AnalyticAt ℂ
+      (fun w : ℂ => 32 * w * Complex.sinh (w / 4) ^ 2) z := by
+    fun_prop
+  have hnum : AnalyticAt ℂ
+      (fun w : ℂ => w ^ 2 - κ * ((m * n : ℤ) : ℂ)) z := by
+    fun_prop
+  have hden : AnalyticAt ℂ
+      (fun w : ℂ =>
+        (w ^ 2 + κ * (m : ℂ) ^ 2) *
+          (w ^ 2 + κ * (n : ℂ) ^ 2)) z := by
+    fun_prop
+  have hquot := (hC.mul hnum).div hden (mul_ne_zero hdenM hdenN)
+  simpa [complexPoleComponent, κ, mul_assoc] using hquot
+
+/-- The centered finite literal pole matrix is analytic throughout the
+punctured source strip. -/
+theorem analyticOnNhd_complexCanonicalPoleMatrix_sourceDomain
+    (K : ℕ) :
+    AnalyticOnNhd ℂ
+      (fun z : ℂ => complexCanonicalPoleMatrix z K)
+      complexFrozenSourceDomain := by
+  rw [analyticOnNhd_pi_iff]
+  intro i
+  rw [analyticOnNhd_pi_iff]
+  intro j
+  simpa [complexCanonicalPoleMatrix] using
+    analyticOnNhd_complexPoleComponent_sourceDomain
+      (centeredIndex K i) (centeredIndex K j)
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.isOpen_complexFrozenSourceDomain
@@ -186,3 +281,5 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.analyticOnNhd_complexPrimeSourceCoordinate_sourceDomain
 #print axioms Zeta23.CCM.analyticOnNhd_complexSourceMatrix_comp
 #print axioms Zeta23.CCM.analyticOnNhd_complexFrozenCanonicalPrimeMatrix_sourceDomain
+#print axioms Zeta23.CCM.complexPoleQuadraticDenominator_ne_zero
+#print axioms Zeta23.CCM.analyticOnNhd_complexCanonicalPoleMatrix_sourceDomain
