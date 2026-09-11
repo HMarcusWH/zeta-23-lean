@@ -97,7 +97,10 @@ theorem complexApertureScalarFactor_re_formula
     add_zero, sub_zero]
   field_simp [hden]
   ring_nf
-  nlinarith [Real.sin_sq_add_cos_sq z.im]
+  have htrig : Real.cos z.im ^ 2 = 1 - Real.sin z.im ^ 2 := by
+    nlinarith [Real.sin_sq_add_cos_sq z.im]
+  rw [htrig]
+  ring
 
 /-- The production scalar factor has strictly positive real part throughout the
 punctured safe strip. -/
