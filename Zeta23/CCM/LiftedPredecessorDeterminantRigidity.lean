@@ -50,6 +50,7 @@ theorem exists_nat_det_sub_smul_id_ne_zero
     Set.infinite_range_of_injective hf
   have hroot : Set.range f ⊆ {z : ℂ | Polynomial.IsRoot A.charpoly z} := by
     rintro z ⟨k, rfl⟩
+    change Polynomial.IsRoot A.charpoly (f k)
     rw [Polynomial.IsRoot.def]
     rw [LinearMap.eval_charpoly]
     have hshift :
@@ -79,7 +80,7 @@ theorem liftedFrozenIntrinsicPredecessorBlock_add_nat_two_pi_I
         ((k : ℂ) * (2 * (Real.pi : ℂ) * Complex.I)) • LinearMap.id := by
   induction k with
   | zero =>
-      rw [Nat.cast_zero, zero_mul, add_zero, zero_smul, sub_zero]
+      simp
   | succ k ih =>
       have harg :
           z + ((Nat.succ k : ℕ) : ℂ) *
