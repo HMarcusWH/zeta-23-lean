@@ -116,6 +116,11 @@ theorem analyticOnNhd_liftedFrozenIntrinsicPredecessorMatrix_apply
     AnalyticOnNhd ℂ
       (fun z : ℂ => liftedFrozenIntrinsicPredecessorMatrix Q p N z i j)
       liftedFrozenPredecessorDomain := by
+  letI : NormedSpace ℂ (intrinsicParityPredecessorSubspace p N) where
+    norm_smul_le c y := by
+      simpa using
+        (norm_smul_le c
+          (y : euclideanParityBoundaryFlatSubspace p (N + 1)))
   let E := intrinsicParityPredecessorSubspace p N
   let b := Module.finBasis ℂ E
   let c : E →L[ℂ] ℂ := LinearMap.toContinuousLinearMap (b.coord i)
