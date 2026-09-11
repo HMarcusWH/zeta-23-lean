@@ -120,6 +120,7 @@ import Zeta23.CCM.CanonicalApertureSourceHolomorphy
 import Zeta23.CCM.FrozenIntrinsicPredecessorHolomorphy
 import Zeta23.CCM.LiftedPredecessorDeterminantRigidity
 import Zeta23.CCM.LiftedPredecessorRegularity
+import Zeta23.CCM.CellMinimalRegularFirstBad
 import Zeta23.CCM.SourceMomentDecomposition
 import Zeta23.CCM.CrossParitySecularTransfer
 import Zeta23.CCM.KernelSourceTransport
