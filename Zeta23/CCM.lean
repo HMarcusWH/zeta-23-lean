@@ -106,6 +106,7 @@ import Zeta23.CCM.CanonicalSourceMomentAtoms
 import Zeta23.CCM.CanonicalApertureRegularityScaffold
 import Zeta23.CCM.CanonicalApertureContinuity
 import Zeta23.CCM.CanonicalApertureAnalyticPrimitives
+import Zeta23.CCM.CanonicalApertureArchDomain
 import Zeta23.CCM.CanonicalApertureComplexBridge
 import Zeta23.CCM.CanonicalApertureComplexSource
 import Zeta23.CCM.FrozenCanonicalSourceAnalytic
