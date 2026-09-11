@@ -117,6 +117,7 @@ import Zeta23.CCM.FrozenIntrinsicPredecessorComplex
 import Zeta23.CCM.CanonicalApertureHolomorphy
 import Zeta23.CCM.CanonicalApertureScalarHalfPlane
 import Zeta23.CCM.CanonicalApertureSourceHolomorphy
+import Zeta23.CCM.FrozenIntrinsicPredecessorHolomorphy
 import Zeta23.CCM.LiftedPredecessorDeterminantRigidity
 import Zeta23.CCM.SourceMomentDecomposition
 import Zeta23.CCM.CrossParitySecularTransfer
