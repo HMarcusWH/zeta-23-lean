@@ -7,14 +7,14 @@ This fork preserves the upstream Zeta23 theorem package while adding an opt-in R
 ## Current authority snapshot
 
 ```text
-live main after merged PR #146 = f2999d12e29d61debce130e83491ac3df410b0c2
-live main tree = fe76581d445569cb838cb4df7bf50703aa34f5cc
+live main after merged PR #148 = fcd301ae4c1b58196ff7fca18128243f1d35a87b
+live main tree = 91d537ee64b8f613bebdcf12110deba486276d35
 
-theorem-state anchor = PR #146 merge f2999d12e29d61debce130e83491ac3df410b0c2
-validated theorem head = a25d238478f7b19072c5364486b8f3f994bf6b79
-validated theorem tree = fe76581d445569cb838cb4df7bf50703aa34f5cc
-RHRC #922 / run 34600323163 = SUCCESS
-Permansson #695 / run 34600323144 = SUCCESS
+theorem-state anchor = PR #148 merge fcd301ae4c1b58196ff7fca18128243f1d35a87b
+validated theorem head = 77c2d14511004ba380b080e08b4943b267ebd863
+validated theorem tree = 91d537ee64b8f613bebdcf12110deba486276d35
+RHRC #930 / run 34619665717 = SUCCESS
+Permansson #703 / run 34619665725 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
@@ -46,38 +46,41 @@ off-line zeta zero
   -> removable scalar factor/remainder locally analytic at zero     PROVED / #145
   -> removable scalar factor/remainder equal the production complex
      scalar/remainder away from zero and on the positive real axis  PROVED / #146
+  -> connected arch strip, strip-wide regularized arch scale,
+     alpha/beta/gamma fixed-unit parameter holomorphy               PROVED / #148
 ```
 
-No theorem proves genuine aperture-parameter holomorphy of the assembled frozen source/predecessor remainder, determinant nonidentity, dense regularity, the regular first-bad arithmetic sign, negative-root exclusion, or RH.
+No theorem proves assembled frozen source/predecessor holomorphy, lifted determinant nonidentity, dense fixed-cell regularity, production cell-minimal regular first-bad selection, the regular first-bad arithmetic sign, negative-root exclusion, or RH.
 
-## What changed in #144-#146
+## What #148 changed
 
-The old post-#142 plan treated "construct the complex frozen predecessor / isolate the logarithm" as one open block. That block has now split cleanly.
+PR #148 closes the previous fixed-unit parameter-integral obstruction. It proves the common archimedean safe strip
 
-**PROVED / #144:** the actual frozen production source and intrinsic predecessor exist with exact fixed-cell agreement; the `-log L` scalar survives the exact production projections; the complex frozen remainder and logarithmic-cover lift are theorem-locked; and exact deck-periodicity/deck-shift identities hold.
+```text
+complexArchSafeStrip = { z : C | |Im z| < pi }
+```
 
-**PROVED / #145:** the corrected scalar factor/remainder has a removable analytic extension at zero.
+is open/convex/connected, proves the divided sinh denominator is zero-free there, proves `complexRegularizedArchScale` analytic throughout the strip, and proves `complexAlphaCore`, `complexBetaCore`, and `complexGammaCore` analytic throughout the strip.
 
-**PROVED / #146:** that removable scalar layer is exactly the existing production complex scalar/remainder away from zero and exactly matches the positive-real production formula.
-
-**OPEN:** the non-scalar fixed-unit parameter integrals have not yet been proved holomorphic in the aperture parameter. Therefore the full assembled frozen source/predecessor holomorphy theorem is still open.
+The proof is genuine differentiation under a fixed `[0,1]` integral with local compact domination. It does not infer holomorphy from the #144 deck law.
 
 ## Active path
 
 ```text
-PROVED through #146
+PROVED through #148
   eventual aperture freedom
   + fixed-cell same-witness persistence
   + exact frozen/log-cover predecessor scaffold
-  + local scalar removable analyticity
-  + scalar <-> production bridge
+  + scalar removable layer + production bridge
+  + fixed-unit alpha/beta/gamma parameter holomorphy
 
 NOW
-  genuine parameter holomorphy of the exact fixed-unit production source integrals
+  common-domain production source holomorphy
   -> assembled complex frozen source/predecessor holomorphy
+  -> lifted predecessor holomorphy on a connected cover domain
 
 THEN
-  determinant nonidentity
+  determinant nonidentity via deck-shift / finite characteristic-polynomial argument
   -> dense fixed-cell regularity
   -> intersect with #142 persistent-negative open set
   -> production cell-minimal regular first-bad countercertificate
@@ -86,72 +89,75 @@ DECISIVE OPEN THEOREM
   Ecanonical(c-x0) >= 0 on the exact forced regular trial
 
 TARGET
-  contradiction -> no off-line zero -> explicit Mathlib RH wrapper
+  contradiction -> no off-line strip zero -> explicit outside-strip/trivial-zero seam -> Mathlib RH wrapper
 ```
 
 Universal one-step domination remains a broad fallback if a genuinely independent positive canonical arithmetic mechanism is found.
 
-## Why holomorphy is the next real gate
+## Why assembly is the next real gate
 
-The #144 log-cover law is structural:
+The #148 theorem package closes only the archimedean fixed-unit cores. The exact frozen production source also contains a scalar principal-log branch, pole denominators, and finite prime/source terms. Those channels must be placed on one common punctured complex domain and assembled through the exact finite matrix/projection interfaces before the lifted determinant can be treated as an analytic function.
 
-```text
-Ahat(z) = -z I + R(exp z)
-R(exp(z+2*pi*i)) = R(exp z).
-```
-
-But translation/deck identities do not imply complex differentiability. The reusable negative control
+A high-value lead is the identity
 
 ```text
-F(z) = -z + Re z
+Re(z*coth(z/2))
+  = (x*sinh(x) + y*sin(y)) / (cosh(x) - cos(y)),  z=x+iy.
 ```
 
-has the same kind of affine deck-shift behavior under imaginary translation while remaining nonholomorphic.
+On `|y|<pi`, this suggests the production scalar factor has positive real part away from zero, which would give a clean principal-log branch on the same strip. This is a **LEAD / HYPOTHESIS**, not yet a theorem.
 
-So the next theorem must come from genuine complex analysis of the parameter-dependent integrals — most likely local denominator control plus differentiation under a fixed-domain integral — not from the deck law itself.
+## Determinant nonidentity is separate from holomorphy
+
+The exact #144 deck law remains
+
+```text
+Ahat(z+2*pi*i) = Ahat(z) - (2*pi*i) I.
+```
+
+Once the lifted family is analytic on a connected domain, determinant nonidentity should be attacked algebraically: if the determinant vanished identically, one fixed finite operator would support too many distinct scalar shifts as eigenvalues. A finite characteristic-polynomial root count is the intended mechanism.
+
+The zero-dimensional predecessor case must be split off directly.
 
 ## Post-#142 cell-minimal compression
 
-The preferred regularization problem remains smaller than the older finite-prefix plan.
+For a physical cutoff cell `I_Q=(log Q,log(Q+1))`, define the least size that is bad somewhere in the entire cell. Then every smaller size is good in both parities throughout the cell. This quantifier order is essential: minimizing at a single aperture and then moving the aperture would lose the predecessor nonnegativity conclusion.
 
-For a physical cutoff cell `I_Q=(log Q,log(Q+1))`, define the least size that is bad somewhere in the entire cell. Then every smaller size is good in both parities throughout the cell. If dense predecessor regularity is later proved, it only has to hit the #142 open persistent-negative neighborhood at the single predecessor size `N*=K*-1`.
+If dense predecessor regularity is proved, it only has to hit the #142 open persistent-negative neighborhood at the single predecessor size `N*=K*-1`.
 
-This is **DERIVED**, not yet production-packaged in Lean.
+This remains **DERIVED**, not yet production-packaged in Lean.
 
 ## After regularity — decisive arithmetic obstruction
 
 At a regular cell-minimal first-bad state:
 
 ```text
-A>=0                    from minimality
+A>=0                    from cell-wide minimality
 A injective             from regularity
 A>0                     finite Hermitian consequence
 unique x0 with A x0=b   from #140
 u0=c-x0.
 ```
 
-Existing machinery is intended to package the forced negative certificate
+Existing machinery is intended to package
 
 ```text
 Ecanonical(u0)=Re S0<0.
 ```
 
-The decisive missing arithmetic theorem is still
+The decisive missing arithmetic theorem is
 
 ```text
-Ecanonical(c-x0)>=0
+Ecanonical(c-x0)>=0.
 ```
 
-or equivalently after regularity `<b,A^-1b> <= q_c`.
-
-A proof that merely repackages successor positivity or universal one-step domination is circular.
+A potentially narrower certificate than universal domination is `q_c>=0` plus `Delta(x0)>=0`, but only after theoremizing that the zero-shift coupling is real and handling the `q_A(x0)=0` edge case.
 
 ## Permanent firewalls
 
 - RH remains OPEN.
-- theorem authority is through #146, not beyond it.
-- complex/log-cover structure is PROVED; assembled parameter holomorphy is OPEN.
-- local scalar analyticity is not full source/predecessor analyticity.
+- theorem authority is through #148, not beyond it.
+- fixed-unit archimedean parameter holomorphy is PROVED; assembled source/predecessor holomorphy is OPEN.
 - translation/deck identities are not a substitute for holomorphy.
 - holomorphy does not imply determinant nonidentity.
 - determinant nonidentity/dense regularity does not imply the final arithmetic sign.
@@ -162,12 +168,13 @@ A proof that merely repackages successor positivity or universal one-step domina
 - generic or modified-source countermodels do not refute the actual canonical source.
 - external exact checks and numerical experiments are not theorem authority.
 - machine claim promotion remains separate from compiler theorem validity.
+- the terminal Mathlib RH wrapper still requires explicit outside-strip/trivial-zero bookkeeping.
 
 ## Living research records
 
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`
-- `research/RHRC/RESEARCH_LEADS_POST_146_APERTURE_ANALYTIC_FRONTIER_DELTA.md` — newest research-priority delta
-- `research/RHRC/RESEARCH_LEADS_POST_142_FIXED_CELL_PERSISTENCE_DELTA.md` — historical pre-#144 delta
+- `research/RHRC/RESEARCH_LEADS_POST_148_PARAMETER_HOLOMORPHY_GREEN_DELTA.md` — newest research-priority delta
+- `research/RHRC/RESEARCH_LEADS_POST_146_APERTURE_ANALYTIC_FRONTIER_DELTA.md` — historical pre-#148 delta
 - `research/RHRC/countermodels/POST_146_TRANSLATION_NOT_HOLOMORPHY_COUNTERMODEL_2026_09_11.md`
 - `research/RHRC/countermodels/POST_142_REGULARIZATION_COUNTERMODEL_2026_09_10.md`
 - `research/RHRC/OBSTRUCTION_LEDGER.md`
