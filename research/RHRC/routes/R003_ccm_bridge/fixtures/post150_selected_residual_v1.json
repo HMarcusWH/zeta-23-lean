@@ -1,0 +1,33 @@
+{
+  "schema_version": "POST150_SELECTED_RESIDUAL_FIXTURE_v1",
+  "phase": "RIGOROUS_FINITE_NUMERICAL_AUDIT",
+  "claim_cap": "NO_THEOREM_PROMOTION",
+  "theorem_anchor_pr": 150,
+  "frontier": "FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN",
+  "first_break": "E4A4-SCHUR-FB-04",
+  "smoke_cases": [
+    {
+      "Q": 2,
+      "L_num": 3,
+      "L_den": 4,
+      "N": 2,
+      "parity": "even",
+      "purpose": "CI plumbing and normalization smoke only"
+    },
+    {
+      "Q": 3,
+      "L_num": 5,
+      "L_den": 4,
+      "N": 2,
+      "parity": "odd",
+      "purpose": "manual cross-parity smoke"
+    }
+  ],
+  "candidates": [],
+  "notes": [
+    "Populate candidates only from the floating discovery scout, then replay with Arb.",
+    "A candidate closes the H3-scoped FB-04 falsification gate only if the Arb certificate proves all advertised hypotheses and strict negative selected-residual energy.",
+    "Finite sampled-cell ancestry is never promoted to whole-cell #150 ancestry.",
+    "RH remains OPEN."
+  ]
+}

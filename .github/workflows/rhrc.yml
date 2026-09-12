@@ -59,6 +59,18 @@ jobs:
         run: python research/RHRC/routes/R003_ccm_bridge/check_finite_dictionary_reference.py
       - name: Check source normalization semantic firewall
         run: python research/RHRC/routes/R003_ccm_bridge/check_source_normalization_firewall.py
+      - name: Check post-150 selected-residual certification plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post150_selected_residual_scope.py
+      - name: Scout post-150 selected-residual scope
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post150_selected_residual_scope.py \
+            --q-min 2 --q-max 4 --n-min 1 --n-max 5 --samples 2 --top 12 \
+            --output /tmp/POST150_SELECTED_RESIDUAL_DISCOVERY.json
+      - name: Replay checked-in post-150 interval certificates
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post150_selected_residual_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post150_selected_residual_v1.json \
+            --output /tmp/POST150_SELECTED_RESIDUAL_CERTIFICATE.json
       - name: Audit R004 scalar-shift invariants
         run: python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
       - name: Reject external reference code as a Lean dependency
