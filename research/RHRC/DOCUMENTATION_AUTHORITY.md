@@ -23,20 +23,20 @@ A green but unmerged PR is branch evidence, not merged repository truth. A merge
 ## Current synchronized anchors
 
 ```text
-live main after merged PR #150 = fb92d5749d6f7a65cfc9129d49d8213219c059db
-live main tree = 999ef44d44855cdffd5be5843e9f072867c0a7a8
+live main after merged PR #153 = 474a88d76ecd2f4eee6178685b2e8d8b104171ca
+live main tree = dd69f1c612047f2d2f15a7ba158664634284b42e
 
-theorem-state anchor = PR #150 merge fb92d5749d6f7a65cfc9129d49d8213219c059db
-validated theorem head = b1be9eca5f544d4356ea88089c0f7264f75d2220
-validated theorem tree = 999ef44d44855cdffd5be5843e9f072867c0a7a8
-RHRC #971 / run 34690959720 = SUCCESS
-Permansson #744 / run 34690959699 = SUCCESS
+theorem-state anchor = PR #153 merge 474a88d76ecd2f4eee6178685b2e8d8b104171ca
+validated theorem head = b6622dadab911008c0a7238e9dc711c6f9946302
+validated theorem tree = dd69f1c612047f2d2f15a7ba158664634284b42e
+RHRC #994 / run 34709905190 = SUCCESS
+Permansson #767 / run 34709905198 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
 ```
 
-PR #150 is theorem-bearing and advances theorem authority beyond #148. This documentation/control synchronization changes research/control metadata only; it does not add theorem authority beyond #150.
+PR #153 is theorem-bearing and advances theorem authority beyond #150. This documentation/control synchronization changes research/control metadata only; it does not add theorem authority beyond #153.
 
 ## Living SSOTs
 
@@ -47,10 +47,11 @@ Update these when the underlying state changes:
 - `AUDIT.md`;
 - `research/RHRC/README.md`;
 - active route README;
+- `research/RHRC/RESEARCH_LEADS.md` — compact living lead index;
 - newest dated research delta;
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`;
 - `research/RHRC/VALIDATION_PROTOCOL.md` when validation anchors or gate semantics change;
-- dead-route and obstruction records when reusable classifications change;
+- `research/RHRC/OBSTRUCTION_LEDGER.md` / `DEAD_ROUTES.md` when reusable classifications change;
 - claim/route registries only when their own formal state actually changes;
 - `control_v2/CONTROL_STATE.json` when theorem/control anchors or research frontier change;
 - `control_v2/ACTION_REGISTRY.json` when executable research priority or first-break specification changes;
@@ -58,7 +59,13 @@ Update these when the underlying state changes:
 
 Dated deltas and external reviews are historical evidence. Do not rewrite older deltas to look current; add a newer delta and update current-priority pointers.
 
-Large accumulated historical ledgers should not be destructively rewritten merely to manufacture currentness. When the reusable history remains valid, preserve it and place additive new state in the newest dated delta / diagnostics record, with living SSOTs pointing there.
+Large accumulated historical ledgers should not be destructively rewritten merely to manufacture currentness. In this synchronization the old full per-entry research-leads ledger is preserved byte-for-byte as
+
+```text
+RESEARCH_LEADS_LEGACY_FULL_THROUGH_110.md
+```
+
+while `RESEARCH_LEADS.md` becomes a compact living index with a current authority block. `OBSTRUCTION_LEDGER.md` remains the accumulated blocker ledger but its authority header and post-#153 additive classifications are current.
 
 ## Theorem-state versus control-plane anchors
 
@@ -67,48 +74,59 @@ The repository keeps distinct anchors:
 - **theorem-state anchor** — latest meaningful theorem-bearing merge whose compiled Lean surface defines current mathematical authority;
 - **control-plane semantic anchor** — latest meaningful merged green research-control/assurance semantics.
 
-PR #150 advances theorem authority because it compiler-validates assembled production source/predecessor holomorphy, algebraic deck-forced determinant nonidentity, analytic open-interval predecessor regularity, cell-minimal regular first-bad selection, and the exact regular negative canonical source-channel endpoint.
+PR #153 advances theorem authority because it compiler-validates:
 
-PR #117 remains the Control-v2 semantic anchor because #150 does not change the controller's capability/authority model.
+```text
+RegularCellMinimalFirstBadCertificate
+RegularCellMinimalNegativeEnergyCertificate
+exists_regularFirstBad_negativeEnergyCertificate_of_offLine_zero
+contDiff_sourceAtomRealEnergy
+matrixRealEnergy_pole_sub_prime_eq_discrepancy
+canonicalSourceChannelEnergy_eq_discrepancy
+```
 
-A documentation/control PR that updates the theorem anchor to #150 does not itself create theorem authority.
+among the surrounding exact bridge declarations.
 
-## Current transition after PR #150
+PR #117 remains the Control-v2 semantic anchor because #153 does not change the controller's capability/authority model.
+
+A documentation/control PR that updates the theorem anchor to #153 does not itself create theorem authority.
+
+## Current transition after PR #153
 
 Newest project synthesis:
 
-`RESEARCH_LEADS_POST_150_REGULARIZATION_CLOSED_ARITHMETIC_FRONTIER_DELTA.md`
+`RESEARCH_LEADS_POST_153_CERTIFICATE_DISCREPANCY_GREEN_JET_FRONTIER_DELTA.md`
 
-External-review provenance:
+Historical external-review provenance:
 
 `external_reviews/ASTRA_POST_150_ARITHMETIC_FRONTIER_ASSESSMENT_2026_09_12.md`
 
-Post-#150 diagnostics/falsification memory:
+Historical post-#150 diagnostics/falsification memory:
 
-`countermodels/POST_150_ARITHMETIC_DIAGNOSTICS_2026_09_12.md`
+```text
+countermodels/POST_150_ARITHMETIC_DIAGNOSTICS_2026_09_12.md
+countermodels/POST_150_SELECTED_RESIDUAL_SCOPE_AUDIT_2026_09_12.md
+```
 
 Current route:
 
 ```text
-PROVED THROUGH #150
+PROVED THROUGH #153
   off-line zero
-  -> sufficiently-large finite badness
-  -> whole-cell least bad size
-  -> persistent negative witness
-  -> actual regular predecessor selection
-  -> unique zero-shift preimage
+  -> retained regular cell-minimal first-bad certificate
+  -> predecessor nonnegativity + regularity + exact A x0=b
   -> exact canonical source-channel energy < 0
+  -> exact finite pole-prime discrepancy normal form
 
 NOW
-  retain full first-bad ancestry
-  -> exact pole/prime discrepancy identity
-  -> boundary-flat Taylor annihilation
-  -> Riesz-smoothed discrepancy identities
-  -> interval-certified falsification
+  determine the actual source-energy endpoint jets
+  -> generic iterated primitives / repeated integration by parts
+  -> instantiate only to theorem-backed order
+  -> interval-certified transformed-arithmetic falsification
   -> independent selected-residual nonnegativity theorem
 
 AFTER
-  contradiction with #150 negative certificate
+  same-state contradiction
   -> negative-root exclusion
   -> outside-strip/trivial-zero seam
   -> explicit Mathlib RiemannHypothesis wrapper.
@@ -116,19 +134,41 @@ AFTER
 
 Universal one-step domination remains a broad fallback, not the immediate reduction.
 
+## Post-#153 classification correction
+
+The following status changes must be reflected in every living summary:
+
+```text
+full retained first-bad certificate
+  OPEN / LEAD after #150
+  -> PROVED / #153
+
+exact pole-prime discrepancy identity
+  EXTERNAL DERIVED after #150
+  -> PROVED / #153
+
+order-seven generic source-energy zero
+order-nine even-parity source-energy zero
+sixth/eighth-order Riesz formulas
+  remain DERIVED / LEAD
+  -> NOT promoted by #153
+```
+
+The key firewall is that coefficient/function-level boundary-flat moment information does not automatically prove the same high-order zero for `sourceAtomRealEnergy`. The admissible repeated-IBP order is a theorem output.
+
 ## Permanent firewalls
 
 ```text
 supporting theorem green != machine claim promotion
 regular predecessor != positive successor
-open-interval regular selection != separately theoremized dense-set declaration
-nonnegative + regular predecessor -> positive definite is DERIVED unless packaged
 negative exact source-channel energy != contradiction
-external exact discrepancy != Lean theorem
-boundary-flat Taylor algebra != arithmetic sign
+exact discrepancy identity != discrepancy sign
+C-infinity source-atom energy != high-order endpoint flatness
+boundary-flat moments != automatically order-seven/order-nine source-energy jets
 Riesz smoothing != arithmetic sign
-coth aperture coordinate != log-cover deck coordinate
 numerical falsification != theorem
+interval-certified finite evidence != Lean theorem authority
+coth aperture coordinate != log-cover deck coordinate
 modified/generic source countermodel != zeta counterexample
 negative-root exclusion != terminal Mathlib RH wrapper without the final seam
 ```
@@ -139,7 +179,7 @@ negative-root exclusion != terminal Mathlib RH wrapper without the final seam
 - **DERIVED** — mathematical consequence not separately theorem-locked;
 - **LOCAL LEAN CHECK** — standalone/local compilation evidence not merged into theorem authority;
 - **EXTERNAL DERIVED** — exact/symbolic reasoning supplied externally and not yet repository-theoremized;
-- **LEAD / HYPOTHESIS** — motivated route with unclosed obligations;
+- **LEAD / HYPOTHESIS** — motivated route worth testing;
 - **EXPERIMENTAL SIGNAL** — numerical/search/discovery evidence only;
 - **OPEN** — not established.
 

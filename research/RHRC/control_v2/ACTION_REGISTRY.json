@@ -20,16 +20,17 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "PR #150 proves an actual regular cell-minimal first-bad state with unique zero-shift preimage A x0=b and exact canonical source-channel energy < 0; regular-aperture selection is no longer an open dependency",
+        "PR #153 retains the complete whole-cell regular first-bad ancestry and full negative-energy Schur state in first-class certificates; certificate retention is no longer an open dependency",
+        "PR #153 theoremizes the exact finite pole-prime discrepancy identity and full production source-channel discrepancy normal form; that cancellation interface is no longer EXTERNAL DERIVED",
         "the decisive target Ecanonical(c-x0)>=0 is still an independent arithmetic sign theorem and cannot be obtained by restating successor positivity or canonicalOneStepDomination",
-        "the #150 construction retains stronger ancestry than the outer energy wrapper exports, including whole-cell minimality and smaller-size goodness; future arithmetic work should not discard useful forced-state hypotheses prematurely",
-        "the post-#150 Astra discrepancy identity is EXTERNAL DERIVED until reproduced/theoremized in repository-native notation",
-        "boundary-flat Taylor annihilation and sixth/eighth-order Riesz smoothing are DERIVED research reductions, not sign theorems",
+        "the historical post-#150 order-seven/order-nine source-energy expansion and sixth/eighth-order Riesz formulas remain DERIVED/LEAD until the actual endpoint jets of sourceAtomRealEnergy are Lean-locked",
+        "FB-03 must determine the legal jet order from exact boundary-flat/parity hypotheses, then instantiate generic repeated integration by parts only to that proved order",
         "post-#150 experiments quarantine raw aperture Loewner monotonicity, global minimizing-trial Schur monotonicity, and universal positive elementary source-atom energy as default shortcuts",
-        "post-#138/#150 conditioning signals show that independent coarse pole/arch/scalar/prime majorants may lose the cancellation scale required by the selected residual",
+        "post-#138/#150 conditioning signals show that independent coarse pole/arch/scalar/prime majorants may lose the cancellation scale required by the selected residual; after #153 separately bounding pole and prime also discards a theorem-backed exact discrepancy interface",
         "modified-source sensitivity shows that exact arithmetic coefficients matter; a proof shared indiscriminately by nearby perturbed sources is suspect unless its scope explains that robustness",
         "formal code should prefer the exact unique-preimage equation A x0=b unless a dedicated inverse abstraction materially simplifies the arithmetic",
-        "both exact production normalization and the precise #150 selected-state hypotheses must be preserved throughout the arithmetic reduction"
+        "both exact production normalization and the precise #153 retained selected-state hypotheses must be preserved throughout the arithmetic reduction",
+        "the #152 Arb harness is a scoped falsification/certification instrument, not theorem authority and not proof of the stronger whole-cell ancestry by finite sampling"
       ],
       "score_inputs": {
         "cost": 2.0,
@@ -41,36 +42,22 @@
       },
       "first_breaks": [
         {
-          "id": "E4A4-SCHUR-FB-01",
-          "statement": "the current #150 endpoint discards cell-minimal ancestry or opposite-parity/smaller-size information needed by the strongest arithmetic reductions, so a richer full first-bad certificate or finite simultaneous-regularity interface must be theoremized before the sign attack",
-          "test_id": "retain_full_post150_first_bad_certificate",
-          "estimated_cost": 0.8,
-          "decisive_if_failed": false
-        },
-        {
-          "id": "E4A4-SCHUR-FB-02",
-          "statement": "the proposed exact pole integral / pole-minus-prime discrepancy identity fails when reconstructed against the repository's production normalization and exact sourceMatrix conventions",
-          "test_id": "theoremize_pole_prime_discrepancy_identity",
-          "estimated_cost": 1.0,
-          "decisive_if_failed": false
-        },
-        {
           "id": "E4A4-SCHUR-FB-03",
-          "statement": "the exact boundary-flat moment constraints do not yield the claimed order-seven/order-nine atom Taylor annihilation or the corresponding sixth/eighth-order Riesz-smoothed discrepancy identities under the production conventions",
-          "test_id": "theoremize_boundary_flat_riesz_smoothing",
+          "statement": "the exact production boundary-flat/parity hypotheses do not yield enough endpoint vanishing of sourceAtomRealEnergy to support a useful repeated-integration-by-parts discrepancy reduction, or the actual maximal jet order differs from the historical order-seven/order-nine lead; determine the true jet order first and instantiate a generic iterated-primitive identity only to that theorem-backed order",
+          "test_id": "theoremize_actual_source_energy_endpoint_jets_and_generic_smoothing",
           "estimated_cost": 1.2,
           "decisive_if_failed": false
         },
         {
           "id": "E4A4-SCHUR-FB-04",
-          "statement": "interval-certified canonical calculations produce a state satisfying the proposed scoped arithmetic hypotheses while violating the candidate selected-residual nonnegativity mechanism",
+          "statement": "after consuming the exact #153 discrepancy identity and whatever transformed representation FB-03 actually proves, interval-certified canonical calculations produce a state satisfying the proposed scoped arithmetic hypotheses while violating the candidate selected-residual nonnegativity mechanism",
           "test_id": "interval_certify_regular_selected_residual_sign",
           "estimated_cost": 1.4,
           "decisive_if_failed": true
         },
         {
           "id": "E4A4-SCHUR-FB-05",
-          "statement": "after the exact cancellation-preserving identities and falsification gates are established, no independent canonical arithmetic inequality proves Ecanonical(c-x0)>=0 on the exact forced #150 selected state",
+          "statement": "after the exact cancellation-preserving identities, theorem-backed endpoint-jet reduction and falsification gates are established, no independent canonical arithmetic inequality proves Ecanonical(c-x0)>=0 on the exact retained #153 forced state",
           "test_id": "prove_regular_selected_residual_nonnegativity",
           "estimated_cost": 2.0,
           "decisive_if_failed": true
@@ -88,7 +75,7 @@
       "surviving_objections": [
         "PR #137 proves only that canonicalOneStepDomination is sufficient; it does not prove q_c>=0 or Delta(w)>=0",
         "under predecessor nonnegativity and a one-dimensional shell, universal domination is DERIVED to be equivalent to successor one-step positivity, so proving it by a positivity restatement has no research information gain",
-        "PR #150 removes the selected predecessor resonance and packages exact negative selected-residual energy, but does not make universal domination a smaller arithmetic theorem",
+        "PR #153 gives the selected state richer retained ancestry and an exact pole-prime discrepancy interface, but it does not make universal domination a smaller arithmetic theorem",
         "generic Hermitian/parity/KKT/transfer/displacement structure remains quarantined by countermodels",
         "factorwise alpha/Gamma/overlap/source-moment closure remains quarantined",
         "atomwise positive determinant/SOS remains quarantined",
@@ -128,8 +115,8 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "PR #150 already supplies the regular finite first-bad negative-energy endpoint; global exclusion now waits on an independent nonnegative selected-residual sign or an independently proved broader domination theorem",
-        "the preferred composition is #150 exact negative certificate + theorem-backed Ecanonical(c-x0)>=0 on the same forced state -> contradiction",
+        "PR #153 supplies the retained regular finite first-bad negative-energy endpoint and exact discrepancy normal form; global exclusion now waits on an independent nonnegative selected-residual sign or an independently proved broader domination theorem",
+        "the preferred composition is #153 retained negative certificate + theorem-backed Ecanonical(c-x0)>=0 on the same forced state -> contradiction",
         "no division by alpha, Gamma, overlap or source moment is legal without separate nonzeroness",
         "terminal Mathlib RH still requires the explicit outside-strip/trivial-zero seam after negative-root exclusion"
       ],
@@ -144,8 +131,8 @@
       "first_breaks": [
         {
           "id": "E4A4-GLOBAL-FB-03",
-          "statement": "after a theorem-backed selected-residual nonnegative sign is available, it cannot be composed with the exact #150 forced negative certificate at the same selected state",
-          "test_id": "compose_regular_schur_sign_with_post150_negative_certificate",
+          "statement": "after a theorem-backed selected-residual nonnegative sign is available, it cannot be composed with the exact #153 retained forced negative certificate at the same selected state",
+          "test_id": "compose_regular_schur_sign_with_post153_negative_certificate",
           "estimated_cost": 0.8,
           "decisive_if_failed": true
         }
@@ -162,8 +149,8 @@
       "surviving_objections": [
         "D is algebraic, not unitary or isometric",
         "rank-at-most-one defect does not identify which parity carries a zero mode",
-        "#150 removes resonance for the selected predecessor directly, so shifted-nullity is supportive unless it adds new source-specific arithmetic information",
-        "simultaneous both-parity regular selection is a possible post-#150 strengthening but is not yet theoremized"
+        "#153 retains the selected regular predecessor and first-bad ancestry directly, so shifted-nullity is supportive unless it adds new source-specific arithmetic information",
+        "simultaneous both-parity regular selection remains an optional strengthening and is not theoremized"
       ],
       "score_inputs": {
         "cost": 1.8,
@@ -194,8 +181,8 @@
       "surviving_objections": [
         "strict monotonicity yields root uniqueness while a hypothetical off-line zero already forces one negative root",
         "root uniqueness is weaker than negative-root exclusion",
-        "post-#150 experiments also disfavor global aperture/selected-Schur monotonicity as the decisive arithmetic mechanism",
-        "this route should not displace the selected-residual arithmetic sign unless it supplies independent source-specific exclusion information"
+        "post-#150 experiments disfavor global aperture/selected-Schur monotonicity as the decisive arithmetic mechanism",
+        "this route should not displace the #153 discrepancy/endpoint-jet selected-residual route unless it supplies independent source-specific exclusion information"
       ],
       "score_inputs": {
         "cost": 2.0,
@@ -224,9 +211,9 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "a strictly positive predecessor floor is not available uniformly from first-bad minimality alone, although the selected #150 predecessor is regular",
+        "a strictly positive predecessor floor is not available uniformly from first-bad minimality alone, although the selected #153 predecessor is regular and nonnegative",
         "the shell gap g_N=q_N-mu_N may fail to stay positive",
-        "the selected-residual arithmetic sign is now more direct than rebuilding a global deformation horizon",
+        "the selected-residual discrepancy/endpoint-jet arithmetic route is now more direct than rebuilding a global deformation horizon",
         "this theorem should not displace canonical arithmetic work unless it supplies independent exclusion information"
       ],
       "score_inputs": {

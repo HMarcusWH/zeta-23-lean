@@ -3,9 +3,9 @@
   "boundary_id": "B0_RH_2026_08_20",
   "terminal_claim": "RH_OPEN",
   "merged_theorem_anchor": {
-    "pr": 150,
-    "merge_commit": "fb92d5749d6f7a65cfc9129d49d8213219c059db",
-    "tree": "999ef44d44855cdffd5be5843e9f072867c0a7a8",
+    "pr": 153,
+    "merge_commit": "474a88d76ecd2f4eee6178685b2e8d8b104171ca",
+    "tree": "dd69f1c612047f2d2f15a7ba158664634284b42e",
     "status": "MERGED_GREEN_THEOREM_STATE"
   },
   "merged_control_anchor": {
@@ -15,5 +15,5 @@
     "status": "MERGED_GREEN_CONTROL_STATE"
   },
   "candidate_branch": null,
-  "control_note": "PR #150 is the merged theorem anchor (validated theorem head b1be9eca5f544d4356ea88089c0f7264f75d2220; validated theorem tree 999ef44d44855cdffd5be5843e9f072867c0a7a8; RHRC #971 and Permansson #744 success). PR #150 closes the former A4R regular-aperture first breaks: the full frozen production source and actual intrinsic predecessor scalar coordinates are analytic on explicit domains; the exact deck law plus finite characteristic-polynomial rigidity forces lifted determinant nonidentity; analytic identity machinery yields an actual regular predecessor in every nonempty open interval of a physical cutoff cell; whole-cell bad-size minimality plus #142 persistence produces a regular cell-minimal first-bad state; and the existing Schur/energy machinery gives exact negative canonical source-channel energy at that selected state. The immediate frontier is FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN: retain the full first-bad ancestry, theoremize cancellation-preserving pole/prime and boundary-flat Riesz identities, falsify candidate inequalities with interval-certified canonical tests, and prove the independent scoped sign Ecanonical(c-x0)>=0. Universal domination remains a broad fallback. PR #117 remains the Control-v2 semantic anchor. Control v2 has no theorem/claim authority. RH remains OPEN."
+  "control_note": "PR #153 is the merged theorem anchor (validated theorem head b6622dadab911008c0a7238e9dc711c6f9946302; validated theorem tree dd69f1c612047f2d2f15a7ba158664634284b42e; RHRC #994 and Permansson #767 success). FB-01 and FB-02 are now consumed theorem prerequisites: the whole-cell regular first-bad ancestry and full negative-energy Schur state are retained in first-class certificates, the retained certificate propagates from a hypothetical off-line zero, and the exact finite pole-prime discrepancy plus full source-channel discrepancy normal form are Lean-validated. The immediate chronological theorem frontier is FB-03: determine the actual endpoint jets of sourceAtomRealEnergy under exact boundary-flat/parity hypotheses, build a generic iterated-primitive/repeated-integration-by-parts interface, and instantiate only to the proved order. The selected top-level action remains FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN; the #152 interval harness remains the first decisive falsification instrument once a candidate transformed sign mechanism is specified. Universal domination remains a broad fallback. PR #117 remains the Control-v2 semantic anchor. Control v2 has no theorem/claim authority. RH remains OPEN."
 }

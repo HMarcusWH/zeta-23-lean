@@ -21,16 +21,16 @@ class ControlV2Tests(unittest.TestCase):
         self.assertFalse(boundary["may_emit_terminal_rh_status"])
         self.assertFalse(boundary["may_promote_lean_theorem"])
 
-    def test_state_has_post_150_theorem_and_post_117_control_anchors(self):
+    def test_state_has_post_153_theorem_and_post_117_control_anchors(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 150)
+        self.assertEqual(state.anchor.pr, 153)
         self.assertEqual(
             state.anchor.merge_commit,
-            "fb92d5749d6f7a65cfc9129d49d8213219c059db",
+            "474a88d76ecd2f4eee6178685b2e8d8b104171ca",
         )
         self.assertEqual(
             state.anchor.tree,
-            "999ef44d44855cdffd5be5843e9f072867c0a7a8",
+            "dd69f1c612047f2d2f15a7ba158664634284b42e",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -96,20 +96,28 @@ class ControlV2Tests(unittest.TestCase):
             scores["E4_B_PARITY_SHIFTED_NULLITY"],
         )
 
-    def test_regular_schur_action_is_post150_arithmetic_route(self):
+    def test_regular_schur_action_is_post153_endpoint_jet_route(self):
         registry = json.loads(
             (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
         )
         action = registry["actions"]["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"]
         objections = "\n".join(action["surviving_objections"])
         first_breaks = "\n".join(x["statement"] for x in action["first_breaks"])
-        self.assertIn("PR #150", objections)
-        self.assertIn("exact canonical source-channel energy < 0", objections)
-        self.assertIn("discrepancy", objections)
-        self.assertIn("Riesz", objections)
-        self.assertIn("full first-bad certificate", first_breaks)
-        self.assertIn("pole-minus-prime discrepancy", first_breaks)
-        self.assertIn("Riesz-smoothed", first_breaks)
+        break_ids = [x["id"] for x in action["first_breaks"]]
+
+        self.assertIn("PR #153", objections)
+        self.assertIn("pole-prime discrepancy", objections)
+        self.assertIn("endpoint jets", objections)
+        self.assertIn("FB-03", objections)
+        self.assertNotIn("E4A4-SCHUR-FB-01", break_ids)
+        self.assertNotIn("E4A4-SCHUR-FB-02", break_ids)
+        self.assertEqual(
+            break_ids,
+            ["E4A4-SCHUR-FB-03", "E4A4-SCHUR-FB-04", "E4A4-SCHUR-FB-05"],
+        )
+        self.assertIn("actual maximal jet order", first_breaks)
+        self.assertIn("generic iterated-primitive", first_breaks)
+        self.assertIn("exact #153 discrepancy", first_breaks)
         self.assertIn("interval-certified", first_breaks)
         self.assertIn("Ecanonical(c-x0)>=0", first_breaks)
 
@@ -117,10 +125,8 @@ class ControlV2Tests(unittest.TestCase):
             registry, "E4_A4_REGULAR_SCHUR_ENERGY_SIGN"
         )
         self.assertIsNotNone(selected_break)
-        # Control-v2 chooses the cheapest decisive falsifier, not the first
-        # chronological theoremization step. FB-01/02/03 are deliberately
-        # information-preserving but non-decisive; FB-04 is the first cheap
-        # decisive gate.
+        # FB-03 is the chronological theorem dependency. Control-v2 chooses the
+        # cheapest decisive falsifier; FB-04 remains the first decisive gate.
         self.assertEqual(selected_break["break_id"], "E4A4-SCHUR-FB-04")
 
         costs = [x["estimated_cost"] for x in action["first_breaks"]]

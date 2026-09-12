@@ -2,10 +2,12 @@
 
 This ledger records reusable blockers that should shape future route design.
 
-> **Current theorem anchor:** merged PR #137, `fa2f209a6eb8b4059968e8d61239d80588ca256c`.  
-> **Validated theorem head:** `64988e142590c82bd0ad43604279ede9a8e85eff`.  
-> **Validated theorem tree:** `e3de4dc0377f0124832822b6f97ab5bbd7718640`.  
+> **Current theorem anchor:** merged PR #153, `474a88d76ecd2f4eee6178685b2e8d8b104171ca`.  
+> **Validated theorem head:** `b6622dadab911008c0a7238e9dc711c6f9946302`.  
+> **Validated theorem tree:** `dd69f1c612047f2d2f15a7ba158664634284b42e`.  
 > **Claim firewall:** RH remains OPEN.
+
+Historical obstruction origins below retain the PR number at which they were discovered/classified. A later theorem may close an escape without deleting the reusable warning.
 
 ## OBS-001 — TightMult information wall
 
@@ -213,11 +215,11 @@ on the safe negative-shift regime.
 
 ## OBS-023 — predecessor nonnegativity permits zero resonance
 
-**Status:** STRUCTURAL OBSTRUCTION; CLASSIFICATION CLOSED THROUGH #128; ZERO-SHIFT SOURCE COMPATIBILITY CLOSED BY #134; CONDITIONAL RESONANCE REMOVAL CLOSED BY #137; CANONICAL SIGN THEOREM OPEN.
+**Status:** STRUCTURAL OBSTRUCTION; CLASSIFICATION CLOSED THROUGH #128; ZERO-SHIFT SOURCE COMPATIBILITY CLOSED BY #134; CONDITIONAL RESONANCE REMOVAL CLOSED BY #137; SELECTED RESONANCE REMOVED BY #150; CANONICAL SIGN THEOREM OPEN.
 
-Global-first-bad gives `Re <Aw,w> >= 0`, not a positive lower spectral gap. Thus `ker A` may be nontrivial.
+Global-first-bad gives `Re <Aw,w> >= 0`, not a positive lower spectral gap. Thus a generic first-bad predecessor may have nontrivial kernel.
 
-The theorem chain now gives:
+The historical theorem chain gives:
 
 ```text
 #122: Az=0 -> (<z,b>=0 <-> Tz=0)
@@ -228,10 +230,11 @@ The theorem chain now gives:
 #134: exact denominator-free zero-shift kernel/source transport
 #136: scalar-sensitive absolute source energy
 #137: Δ(z)>=0 on Az=0 -> b(z)=0
-      domination -> b in range A -> zero-shift preimage exists.
+      domination -> b in range A -> zero-shift preimage exists
+#150: actual selected predecessor can be chosen regular.
 ```
 
-Thus resonance is no longer a separate downstream theorem **if** the canonical determinant sign is proved. The surviving obligation is exactly the source-specific determinant sign.
+For the current selected #150/#153 state, resonance is removed directly. The surviving obligation is the independent source-specific arithmetic sign.
 
 **Semantic firewall:** `ker A` is the kernel of the projected successor predecessor block. It is not identified with the kernel of the predecessor-size compressed operator.
 
@@ -243,26 +246,25 @@ Strict monotonicity/root-count control may give at most one negative root. A hyp
 
 ## OBS-025 — negative zero-shift endpoint / signed shell response is not a contradiction by itself
 
-**Status:** PROJECT FIREWALL; EXPOSED BY #125, SHARPENED BY #127/#128/#134, CONDITIONALLY CLOSED BY #137.
+**Status:** PROJECT FIREWALL; EXPOSED BY #125, SHARPENED BY #127/#128/#134, REGULAR NEGATIVE CERTIFICATE CLOSED BY #150/#153; OPPOSING SIGN OPEN.
 
-The decoupled global-first-bad branch has
+The current retained selected state can carry
 
 ```text
-Re S0 < 0
-S0 = star(sigma0)<c,c>
-Re sigma0 < 0.
+lam < 0
+explicit Schur root = 0
+A x0 = b
+canonicalSourceChannelEnergy(c-x0) < 0.
 ```
 
-PR #137 proves that **if** canonical one-step domination holds, then `Re S0>=0` and the safe negative root is excluded. But domination itself is OPEN.
+PR #153 retains this state but does not prove the opposing sign.
 
 Therefore
 
 ```text
-Re S0<0
-Re sigma0<0
-exact zero-shift transfer
-conditional domination sufficiency
-  != unconditional branch exclusion
+retained exact negative energy
+  != contradiction
+  != negative-root exclusion
   != RH.
 ```
 
@@ -272,7 +274,7 @@ conditional domination sufficiency
 
 Post-#128 discovery countermodels show increasingly rich generic structure can coexist with bad finite states. They are experimental/synthetic fixtures, not canonical source or zeta counterexamples.
 
-**Post-#137 consequence:** a proposed contradiction based only on Hermitianity, first-bad minimality, parity, KKT, rank-at-most-one defect, shell response, resonance classification, displacement structure or cross-parity transfer is still not credible. The current proof must spend the exact scalar-sensitive canonical source pairing inside `q_c` and `Δ`.
+**Post-#153 consequence:** a proposed contradiction based only on Hermitianity, first-bad minimality, parity, KKT, rank-at-most-one defect, shell response, regularity, displacement structure or cross-parity transfer is still not credible. The current proof must spend the exact canonical source arithmetic, now including the theorem-backed discrepancy interface.
 
 ## OBS-027 — the #131 raw source moment is linear, so universal one-sided sign is unavailable
 
@@ -288,19 +290,19 @@ Post-#128 discovery countermodels show increasingly rich generic structure can c
 
 Exact rational centered-grid reversal-symmetric diagonal models realize `Gamma=0`, source moment zero/nonzero, `alpha=0`, negative coefficients and both source-moment signs while preserving the generic transfer package.
 
-**Consequence:** no argument may divide by `alpha`, `Gamma`, overlap, source moment, `Gamma0`, or `mu(z)` without a separate theorem. The #137 determinant route avoids these factors and does not revive this route.
+**Consequence:** no argument may divide by `alpha`, `Gamma`, overlap, source moment, `Gamma0`, or `mu(z)` without a separate theorem. The current retained/discrepancy route does not revive this route.
 
 ## OBS-029 — scalar-shift-invariant transfer data cannot locate the absolute spectral origin
 
-**Status:** DERIVED STRUCTURAL FIREWALL; ABSOLUTE-ENERGY ESCAPE CLOSED BY #136, PAIRING/DETERMINANT INTERFACE CLOSED BY #137, SIGN THEOREM OPEN.
+**Status:** DERIVED STRUCTURAL FIREWALL; ABSOLUTE-ENERGY ESCAPE CLOSED BY #136, PAIRING/DETERMINANT INTERFACE CLOSED BY #137, SELECTED NEGATIVE ENERGY CLOSED BY #150/#153, OPPOSING SIGN OPEN.
 
 Under simultaneous generic scalar shift `M -> M+tI`, `lambda -> lambda+t`, the old shifted transfer package can remain unchanged while the spectrum moves relative to zero.
 
-PR #136 restores scalar-sensitive canonical self-energy; #137 extends that absolute normalization to the shell/predecessor pairing and determinant. The remaining question is whether those exact canonical quantities have the required signs.
+PR #136 restores scalar-sensitive canonical self-energy; #137 extends that absolute normalization to shell/predecessor pairing and determinant; #150/#153 package the exact selected negative energy. The remaining question is the independent nonnegative sign under exact canonical arithmetic.
 
 ## OBS-030 — one-step domination is now an exact certificate; its arithmetic truth remains open
 
-**Status:** FORMAL CERTIFICATE / DECISIVE SIGN CONTENT OPEN.
+**Status:** FORMAL CERTIFICATE / DECISIVE UNIVERSAL SIGN CONTENT OPEN.
 
 For either parity:
 
@@ -320,52 +322,66 @@ canonicalOneStepDomination
   := q_c>=0 AND forall w, Δ(w)>=0
 ```
 
-and proves:
+and proves its sufficiency for the desired zero-shift sign / negative-root exclusion mechanism.
 
-```text
-domination -> b annihilates ker A
-domination -> b in range A
-domination + predecessor nonnegativity -> Re S0>=0
-domination -> no safe negative explicit Schur root.
-```
-
-The missing mathematics is not sufficiency anymore. It is exactly the canonical sign theorem.
+The missing mathematics is not sufficiency. It is canonical arithmetic truth. The current #153 route seeks the smaller selected-state sign first.
 
 ## OBS-031 — exact zero-shift transport is not factorwise or branch exclusion
 
-**Status:** FORMAL POST-#134 CLAIM FIREWALL; UNCHANGED BY #137.
+**Status:** FORMAL POST-#134 CLAIM FIREWALL; UNCHANGED BY #153.
 
-PR #134 proves direct zero-shift transfer and `Gamma0*mu(z)=0` under both preimage hypotheses. PR #137 bypasses the need to divide this product by using an independent determinant certificate. Nothing in #137 licenses factorwise conclusions from the #134 product law.
+PR #134 proves direct zero-shift transfer and `Gamma0*mu(z)=0` under both preimage hypotheses. Later determinant/regularity/certificate/discrepancy results do not license factorwise conclusions from that product law.
 
 ## OBS-032 — determinant reduction can become a tautological positivity restatement
 
-**Status:** POST-#137 RESEARCH-GAIN FIREWALL.
+**Status:** POST-#137 RESEARCH-GAIN FIREWALL; UNCHANGED BY #153.
 
-With `A>=0` and a one-dimensional shell, the conditions
+With `A>=0` and a one-dimensional shell, the universal determinant conditions encode essentially the missing positivity of the one-step block extension. Therefore a “proof” that merely assumes successor PSD, assumes absence of the negative root, or rewrites the same block positivity under a new name has no research information gain and is circular for the active route.
+
+**Escape requirement:** identify a canonical arithmetic mechanism — e.g. an exact cancellation, non-circular Gram/integral representation, sum-of-squares identity or source-specific bound — implied by premises available before the desired conclusion.
+
+## OBS-033 — the global/selected sign-failure countercertificate is not a contradiction
+
+**Status:** FORMAL CLAIM FIREWALL; RETAINED/SHARPENED THROUGH #153.
+
+PR #137 first exposed global sign failure alternatives. PR #150 selects a regular negative-energy state. PR #153 retains its complete ancestry and exact negative Schur/source-channel state.
+
+This shrinks the admissible off-line-zero counterexample space but does not rule it out.
+
+**Consequence:** RH remains OPEN until new mathematics proves the opposing sign on the exact forced state and the terminal RH wrapper is validated.
+
+## OBS-034 — theorem-backed pole-prime cancellation must not be discarded silently
+
+**Status:** FORMAL INTERFACE / POST-#153 RESEARCH-DESIGN FIREWALL.
+
+PR #153 proves
 
 ```text
-q_c>=0
-forall w, Δ(w)>=0
+matrixRealEnergy_pole_sub_prime_eq_discrepancy
+canonicalSourceChannelEnergy_eq_discrepancy.
 ```
 
-encode essentially the missing positivity of the one-step block extension. Therefore a “proof” that merely assumes successor PSD, assumes absence of the negative root, or rewrites the same block positivity under a new name has no research information gain and is circular for the active route.
+The individually large pole and prime channels therefore have an exact finite cumulative-discrepancy pairing before estimation.
 
-**Escape requirement:** identify a canonical arithmetic mechanism — e.g. a non-circular Gram/integral representation, exact cancellation, sum-of-squares identity or source-specific bound — that implies the signs from premises already available before the desired conclusion.
+**Consequence:** a proposed proof that immediately returns to independent coarse pole and prime majorants discards theorem-backed cancellation. That is allowed only if it proves quantitatively that the loss is harmless at the selected-residual scale.
 
-## OBS-033 — the #137 global sign-failure countercertificate is not a contradiction
+**Preferred escape:** work through `canonicalPolePrimeDiscrepancy` / `canonicalPolePrimeDiscrepancyEnergy`, or prove a sharper correlated replacement.
 
-**Status:** FORMAL POST-#137 CLAIM FIREWALL.
+## OBS-035 — boundary-flat moments are not automatically high-order source-energy endpoint jets
 
-PR #137 proves
+**Status:** POST-#153 CLAIM / ROADMAP FIREWALL.
+
+The repository has exact boundary-flat finite-function/moment constraints and PR #153 proves `sourceAtomRealEnergy` is smooth with value zero at the source endpoint.
+
+That does **not** by itself prove the historical suggested statements
 
 ```text
-off-line zero
-  -> global-first-bad predecessor-nonnegative state
-  -> q_c<0 OR exists w, Δ(w)<0.
+sourceAtomRealEnergy = O(omega^7)          generically
+sourceAtomRealEnergy = O(omega^9)          in even parity
 ```
 
-This shrinks the admissible counterexample space but does not rule out either alternative. Numerical failure to find such a witness is not proof; finding one in an arbitrary canonical state is not automatically a realizable off-line-zero state.
+or the corresponding sixth/eighth-order Riesz-smoothed discrepancy identities.
 
-**Consequence:** RH remains OPEN until new mathematics excludes the forced sign-failure alternatives under the exact theorem hypotheses and the terminal RH wrapper is validated.
+**Consequence:** the admissible repeated-integration-by-parts order is a theorem output. FB-03 must determine the actual endpoint jets from the exact production formula and selected-vector hypotheses before the arithmetic route may use a high-order smoothing identity.
 
 **RH remains OPEN.**
