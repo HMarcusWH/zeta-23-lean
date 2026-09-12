@@ -46,14 +46,20 @@ def sourceAtomRealEnergy
 private theorem contDiff_ofReal_comp
     {f : ℝ → ℝ} (hf : ContDiff ℝ ⊤ f) :
     ContDiff ℝ ⊤ (fun x : ℝ => (f x : ℂ)) := by
-  simpa only [Function.comp_apply, Complex.ofRealCLM_apply] using
-    (Complex.ofRealCLM.contDiff.comp hf)
+  have hfun :
+      (Complex.ofRealCLM ∘ f) = (fun x : ℝ => (f x : ℂ)) := by
+    funext x
+    simp [Function.comp_def]
+  exact hfun ▸ (Complex.ofRealCLM.contDiff.comp hf)
 
 private theorem contDiff_re_comp
     {f : ℝ → ℂ} (hf : ContDiff ℝ ⊤ f) :
     ContDiff ℝ ⊤ (fun x : ℝ => Complex.re (f x)) := by
-  simpa only [Function.comp_apply, Complex.reCLM_apply] using
-    (Complex.reCLM.contDiff.comp hf)
+  have hfun :
+      (Complex.reCLM ∘ f) = (fun x : ℝ => Complex.re (f x)) := by
+    funext x
+    simp [Function.comp_def]
+  exact hfun ▸ (Complex.reCLM.contDiff.comp hf)
 
 private theorem contDiff_sourcePotential_fb02 (n : ℤ) :
     ContDiff ℝ ⊤ (fun ω : ℝ => sourcePotential ω n) := by
@@ -416,7 +422,17 @@ private theorem hasDerivAt_canonicalPoleCumulativeWeight (t : ℝ) :
       4 * (Real.cosh (t / 2) * (1 / 2)) =
         2 * Real.cosh (t / 2) := by
     ring
-  simpa only [canonicalPoleCumulativeWeight, hcoef] using h
+  have h' :
+      HasDerivAt
+        (fun y : ℝ => 4 * (Real.sinh ∘ fun s : ℝ => s / 2) y)
+        (2 * Real.cosh (t / 2)) t := by
+    simpa only [hcoef] using h
+  have hfun :
+      (fun y : ℝ => 4 * (Real.sinh ∘ fun s : ℝ => s / 2) y) =
+        canonicalPoleCumulativeWeight := by
+    funext y
+    simp [canonicalPoleCumulativeWeight, Function.comp_def]
+  exact hfun ▸ h'
 
 private theorem hasDerivAt_sourceAtom_composed
     {L : ℝ} (hL : 0 < L)
@@ -431,10 +447,26 @@ private theorem hasDerivAt_sourceAtom_composed
   have hdiff : Differentiable ℝ (sourceAtomRealEnergy K x) :=
     hsmooth.differentiable (by simp)
   have hinner : HasDerivAt (fun s : ℝ => 1 - s / L) (-(1 / L)) t := by
-    simpa only [zero_sub] using
+    have hraw :=
       (hasDerivAt_const t (1 : ℝ)).sub ((hasDerivAt_id t).div_const L)
+    have hraw' :
+        HasDerivAt
+          ((fun _ : ℝ => (1 : ℝ)) - fun s : ℝ => s / L)
+          (-(1 / L)) t := by
+      simpa only [id_eq, zero_sub] using hraw
+    have hfun :
+        ((fun _ : ℝ => (1 : ℝ)) - fun s : ℝ => s / L) =
+          (fun s : ℝ => 1 - s / L) := by
+      funext s
+      rfl
+    exact hfun ▸ hraw'
   have hcomp := (hdiff (1 - t / L)).hasDerivAt.comp t hinner
-  simpa only [mul_comm] using hcomp
+  have hfun :
+      (sourceAtomRealEnergy K x ∘ fun s : ℝ => 1 - s / L) =
+        (fun s : ℝ => sourceAtomRealEnergy K x (1 - s / L)) := by
+    funext s
+    rfl
+  exact hfun ▸ hcomp
 
 /-- One integration by parts replaces the pole density by its cumulative
 primitive. -/
