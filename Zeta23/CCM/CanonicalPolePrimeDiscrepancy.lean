@@ -1,5 +1,6 @@
 import Zeta23.CCM.CanonicalSourceEnergy
 import Zeta23.CCM.DictionaryPoleLift
+import Mathlib.Analysis.Calculus.ContDiff.Deriv
 import Mathlib.MeasureTheory.Integral.IntervalIntegral.IntegrationByParts
 
 noncomputable section
@@ -63,7 +64,7 @@ def sourceAtomRealEnergy
 /-- The elementary source-atom real energy is `C^∞`.  This is intentionally
 stronger than FB-02 needs so FB-03 can reuse the same smoothness spine for its
 higher derivatives. -/
-theorem contDiff_sourceAtomRealEnergy
+@[fun_prop] theorem contDiff_sourceAtomRealEnergy
     (K : ℕ)
     (x : EuclideanSpace ℂ (Fin (2 * K + 1))) :
     ContDiff ℝ ⊤ (sourceAtomRealEnergy K x) := by
@@ -71,10 +72,9 @@ theorem contDiff_sourceAtomRealEnergy
   simp only [sourceMatrix_apply]
   fun_prop
 
-/-- Local public-facing expansion of the deterministic pole functional into
-its two physical exponential weights.  This repeats only the generic Fourier
-bookkeeping already used by `DictionaryPoleSource`; it does not re-integrate
-the closed `poleComponent` formula. -/
+/-- Local expansion of the deterministic pole functional into its two physical
+exponential weights.  This repeats only generic Fourier bookkeeping already
+used by `DictionaryPoleSource`; it does not re-integrate `poleComponent`. -/
 private theorem dictionaryPoleRHS_eq_spatial_weights_fb02
     {k : ℝ → ℂ} (hk : Continuous k) (hkc : HasCompactSupport k) :
     dictionaryPoleRHS k =
@@ -133,18 +133,8 @@ theorem dictionaryPoleRHS_basis_eq_sourceEntry_integral
   let G : ℝ → ℂ := fun y =>
     k y *
       ((Real.exp (-|y| / 2) : ℂ) + (Real.exp (|y| / 2) : ℂ))
-  have hk : Continuous k := by
-    have heq : k = fun y =>
-        (1 / 2 : ℂ) * sourceEntry (dictionaryApertureCoord L y) n m := by
-      funext y
-      exact dictionaryBasisTest_eq_sourceEntry_clamped hL n m y
-    rw [heq]
-    fun_prop
-  have hkc : HasCompactSupport k := by
-    refine HasCompactSupport.intro (K := Icc (-L) L) isCompact_Icc ?_
-    intro y hy
-    by_contra hzero
-    exact hy (dictionaryBasisTest_support_subset n m hzero)
+  have hk : Continuous k := continuous_dictionaryBasisTest hL n m
+  have hkc : HasCompactSupport k := dictionaryBasisTest_hasCompactSupport n m
   rw [dictionaryPoleRHS_eq_spatial_weights_fb02 hk hkc]
   have hA : Integrable
       (fun y : ℝ => k y * (Real.exp (-|y| / 2) : ℂ)) :=
@@ -210,6 +200,113 @@ theorem dictionaryPoleRHS_basis_eq_sourceEntry_integral
     abs_of_nonneg hyIcc.1, hweights]
   ring
 
+/-- Entrywise form of the pole/source integral bridge. -/
+theorem canonicalPoleMatrix_apply_eq_sourceEntry_integral
+    {L : ℝ} (hL : 0 < L)
+    (K : ℕ)
+    (i j : Fin (2 * K + 1)) :
+    canonicalPoleMatrix L K i j =
+      ∫ t in (0 : ℝ)..L,
+        ((2 * Real.cosh (t / 2) : ℝ) : ℂ) *
+          sourceEntry (1 - t / L)
+            (centeredIndex K i) (centeredIndex K j) := by
+  calc
+    canonicalPoleMatrix L K i j =
+        ((poleComponent (centeredIndex K i) (centeredIndex K j) L : ℝ) : ℂ) := rfl
+    _ = dictionaryPoleRHS
+          (dictionaryBasisTest (centeredIndex K i) (centeredIndex K j) L) :=
+        (dictionaryPoleRHS_basis hL (centeredIndex K i) (centeredIndex K j)).symm
+    _ = _ := dictionaryPoleRHS_basis_eq_sourceEntry_integral
+      hL (centeredIndex K i) (centeredIndex K j)
+
+private theorem quadraticForm_canonicalPoleMatrix_eq_sourceContract_integral
+    {L : ℝ} (hL : 0 < L)
+    (K : ℕ)
+    (u : Fin (2 * K + 1) → ℂ) :
+    quadraticForm (canonicalPoleMatrix L K) u =
+      ∫ t in (0 : ℝ)..L,
+        ((2 * Real.cosh (t / 2) : ℝ) : ℂ) *
+          sourceContract K u (1 - t / L) := by
+  let H : ℝ → ℂ := fun t =>
+    ((2 * Real.cosh (t / 2) : ℝ) : ℂ) *
+      sourceContract K u (1 - t / L)
+  have hfun : H = fun t =>
+      ∑ i, ∑ j,
+        (starRingEnd ℂ) (u i) *
+          (((2 * Real.cosh (t / 2) : ℝ) : ℂ) *
+            sourceEntry (1 - t / L) (centeredIndex K i) (centeredIndex K j)) *
+          u j := by
+    funext t
+    dsimp [H]
+    unfold sourceContract quadraticForm
+    simp_rw [sourceMatrix_apply, Finset.mul_sum]
+    apply Finset.sum_congr rfl
+    intro i hi
+    simp_rw [Finset.mul_sum]
+    apply Finset.sum_congr rfl
+    intro j hj
+    ring
+  rw [hfun]
+  have hint (i j : Fin (2 * K + 1)) : IntervalIntegrable
+      (fun t : ℝ =>
+        (starRingEnd ℂ) (u i) *
+          (((2 * Real.cosh (t / 2) : ℝ) : ℂ) *
+            sourceEntry (1 - t / L) (centeredIndex K i) (centeredIndex K j)) *
+          u j) volume 0 L := by
+    apply Continuous.intervalIntegrable
+    fun_prop
+  rw [intervalIntegral.integral_finsetSum _
+      (fun i _ => intervalIntegral.intervalIntegrable_finsetSum _
+        (fun j _ => hint i j))]
+  apply Finset.sum_congr rfl
+  intro i hi
+  rw [intervalIntegral.integral_finsetSum _ (fun j _ => hint i j)]
+  apply Finset.sum_congr rfl
+  intro j hj
+  rw [intervalIntegral.integral_const_mul, intervalIntegral.integral_mul_const,
+    ← canonicalPoleMatrix_apply_eq_sourceEntry_integral hL K i j]
+  rfl
+
+private theorem re_intervalIntegral_eq_intervalIntegral_re
+    {a b : ℝ} {f : ℝ → ℂ} (hf : Continuous f) :
+    Complex.re (∫ t in a..b, f t) =
+      ∫ t in a..b, Complex.re (f t) := by
+  have hint := hf.intervalIntegrable a b
+  unfold intervalIntegral
+  rw [Complex.sub_re, ← integral_re hint.1, ← integral_re hint.2]
+
+/-- Exact pole energy as the continuous source-atom integral. -/
+theorem matrixRealEnergy_canonicalPoleMatrix_eq_integral_sourceAtom
+    {L : ℝ} (hL : 0 < L)
+    (K : ℕ)
+    (x : EuclideanSpace ℂ (Fin (2 * K + 1))) :
+    matrixRealEnergy (canonicalPoleMatrix L K) x =
+      ∫ t in (0 : ℝ)..L,
+        2 * Real.cosh (t / 2) *
+          sourceAtomRealEnergy K x (1 - t / L) := by
+  let u := (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x
+  have hcomplex :=
+    quadraticForm_canonicalPoleMatrix_eq_sourceContract_integral hL K u
+  have hcont : Continuous (fun t : ℝ =>
+      ((2 * Real.cosh (t / 2) : ℝ) : ℂ) *
+        sourceContract K u (1 - t / L)) := by
+    fun_prop
+  have hre := congrArg Complex.re hcomplex
+  rw [re_intervalIntegral_eq_intervalIntegral_re hcont] at hre
+  have hreal :
+      (fun t : ℝ => Complex.re
+        (((2 * Real.cosh (t / 2) : ℝ) : ℂ) *
+          sourceContract K u (1 - t / L))) =
+      fun t => 2 * Real.cosh (t / 2) *
+        sourceAtomRealEnergy K x (1 - t / L) := by
+    funext t
+    unfold sourceAtomRealEnergy matrixRealEnergy sourceContract
+    dsimp [u]
+    rw [Complex.mul_re]
+    simp
+  rw [hreal] at hre
+  exact hre
+
 /-- Finite cumulative von-Mangoldt staircase on the same aperture horizon as
 `canonicalPrimeMatrix`. -/
 def canonicalPrimeCumulativeWeight (L t : ℝ) : ℝ :=
@@ -223,6 +320,272 @@ def canonicalPrimeCumulativeWeight (L t : ℝ) : ℝ :=
 `2 * cosh(t/2)`. -/
 def canonicalPoleCumulativeWeight (t : ℝ) : ℝ :=
   4 * Real.sinh (t / 2)
+
+private theorem hasDerivAt_canonicalPoleCumulativeWeight (t : ℝ) :
+    HasDerivAt canonicalPoleCumulativeWeight
+      (2 * Real.cosh (t / 2)) t := by
+  unfold canonicalPoleCumulativeWeight
+  have h := ((hasDerivAt_id t).div_const 2).sinh.const_mul 4
+  convert h using 1 <;> ring
+
+private theorem hasDerivAt_sourceAtom_composed
+    {L : ℝ} (hL : 0 < L)
+    (K : ℕ)
+    (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+    (t : ℝ) :
+    HasDerivAt
+      (fun s : ℝ => sourceAtomRealEnergy K x (1 - s / L))
+      (-(1 / L) * deriv (sourceAtomRealEnergy K x) (1 - t / L)) t := by
+  have hsmooth : ContDiff ℝ ∞ (sourceAtomRealEnergy K x) := by
+    simpa using contDiff_sourceAtomRealEnergy K x
+  have hdiff : Differentiable ℝ (sourceAtomRealEnergy K x) :=
+    (contDiff_infty_iff_deriv.mp hsmooth).1
+  have hinner : HasDerivAt (fun s : ℝ => 1 - s / L) (-(1 / L)) t := by
+    convert (hasDerivAt_const t (1 : ℝ)).sub ((hasDerivAt_id t).div_const L) using 1 <;>
+      ring
+  have hcomp := (hdiff (1 - t / L)).hasDerivAt.comp t hinner
+  convert hcomp using 1 <;> ring
+
+/-- One integration by parts replaces the pole density by its cumulative
+primitive. -/
+theorem matrixRealEnergy_canonicalPoleMatrix_eq_deriv_integral
+    {L : ℝ} (hL : 0 < L)
+    (K : ℕ)
+    (x : EuclideanSpace ℂ (Fin (2 * K + 1))) :
+    matrixRealEnergy (canonicalPoleMatrix L K) x =
+      (1 / L) *
+        ∫ t in (0 : ℝ)..L,
+          canonicalPoleCumulativeWeight t *
+            deriv (sourceAtomRealEnergy K x) (1 - t / L) := by
+  rw [matrixRealEnergy_canonicalPoleMatrix_eq_integral_sourceAtom hL K x]
+  let g : ℝ → ℝ := fun t => sourceAtomRealEnergy K x (1 - t / L)
+  let gp : ℝ → ℝ := fun t =>
+    -(1 / L) * deriv (sourceAtomRealEnergy K x) (1 - t / L)
+  let A := canonicalPoleCumulativeWeight
+  let Ap : ℝ → ℝ := fun t => 2 * Real.cosh (t / 2)
+  have hg : ∀ t ∈ [[(0 : ℝ), L]], HasDerivAt g (gp t) t := by
+    intro t ht
+    exact hasDerivAt_sourceAtom_composed hL K x t
+  have hA : ∀ t ∈ [[(0 : ℝ), L]], HasDerivAt A (Ap t) t := by
+    intro t ht
+    exact hasDerivAt_canonicalPoleCumulativeWeight t
+  have hDcont : Continuous (deriv (sourceAtomRealEnergy K x)) := by
+    have hsmooth : ContDiff ℝ ∞ (sourceAtomRealEnergy K x) := by
+      simpa using contDiff_sourceAtomRealEnergy K x
+    exact hsmooth.continuous_deriv (by simp)
+  have hgpcont : Continuous gp := by
+    dsimp [gp]
+    fun_prop
+  have hApcont : Continuous Ap := by
+    dsimp [Ap]
+    fun_prop
+  have hparts := intervalIntegral.integral_mul_deriv_eq_deriv_mul
+    hg hA (hgpcont.intervalIntegrable 0 L) (hApcont.intervalIntegrable 0 L)
+  have hLend : g L = 0 := by
+    dsimp [g]
+    rw [div_self hL.ne']
+    simp
+  have hA0 : A 0 = 0 := by simp [A, canonicalPoleCumulativeWeight]
+  have hleft :
+      (∫ t in (0 : ℝ)..L, 2 * Real.cosh (t / 2) *
+        sourceAtomRealEnergy K x (1 - t / L)) =
+      ∫ t in (0 : ℝ)..L, g t * Ap t := by
+    apply intervalIntegral.integral_congr
+    intro t ht
+    dsimp [g, Ap]
+    ring
+  rw [hleft, hparts, hLend, hA0]
+  dsimp [gp, A]
+  rw [intervalIntegral.integral_const_mul]
+  ring
+
+private theorem sourceAtom_value_eq_deriv_integral
+    {L : ℝ} (hL : 0 < L)
+    (K : ℕ)
+    (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+    {a : ℝ} (ha0 : 0 ≤ a) (haL : a ≤ L) :
+    sourceAtomRealEnergy K x (1 - a / L) =
+      (1 / L) *
+        ∫ t in a..L,
+          deriv (sourceAtomRealEnergy K x) (1 - t / L) := by
+  let F : ℝ → ℝ := fun t =>
+    -L * sourceAtomRealEnergy K x (1 - t / L)
+  let D : ℝ → ℝ := fun t =>
+    deriv (sourceAtomRealEnergy K x) (1 - t / L)
+  have hF : ∀ t ∈ [[a, L]], HasDerivAt F (D t) t := by
+    intro t ht
+    have hc := hasDerivAt_sourceAtom_composed hL K x t
+    have hs := hc.const_mul (-L)
+    dsimp [F, D]
+    convert hs using 1
+    field_simp [hL.ne']
+    ring
+  have hDcont : Continuous D := by
+    have hsmooth : ContDiff ℝ ∞ (sourceAtomRealEnergy K x) := by
+      simpa using contDiff_sourceAtomRealEnergy K x
+    have hd := hsmooth.continuous_deriv (by simp)
+    dsimp [D]
+    fun_prop
+  have hftc := intervalIntegral.integral_eq_sub_of_hasDerivAt
+    (f := F) (f' := D) hF (hDcont.intervalIntegrable a L)
+  have hFL : F L = 0 := by
+    dsimp [F]
+    rw [div_self hL.ne']
+    simp
+  rw [hFL] at hftc
+  dsimp [F, D] at hftc ⊢
+  field_simp [hL.ne'] at hftc ⊢
+  linarith
+
+private theorem prime_log_mem_aperture
+    {L : ℝ} {q : ℕ}
+    (hq : q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊) :
+    0 ≤ Real.log q ∧ Real.log q ≤ L := by
+  have hqmem := Finset.mem_Icc.mp hq
+  have hqposNat : 0 < q := lt_of_lt_of_le (by norm_num : 0 < 2) hqmem.1
+  have hqpos : (0 : ℝ) < q := by exact_mod_cast hqposNat
+  have hqexp : (q : ℝ) ≤ Real.exp L :=
+    (Nat.le_floor_iff (Real.exp_pos L).le).mp hqmem.2
+  exact ⟨Real.log_natCast_nonneg q,
+    (by rw [← Real.log_exp L]; exact Real.log_le_log hqpos hqexp)⟩
+
+private theorem intervalIntegrable_step_mul_continuous
+    {a L c : ℝ} (ha0 : 0 ≤ a) (haL : a ≤ L)
+    {f : ℝ → ℝ} (hf : Continuous f) :
+    IntervalIntegrable
+      (fun t : ℝ => (if a ≤ t then c else 0) * f t) volume 0 L := by
+  let h : ℝ → ℝ := fun t => (if a ≤ t then c else 0) * f t
+  have hleft : IntervalIntegrable h volume 0 a := by
+    have hz : IntervalIntegrable (fun _ : ℝ => (0 : ℝ)) volume 0 a :=
+      continuous_const.intervalIntegrable 0 a
+    apply hz.congr_uIoo
+    intro t ht
+    have ht' : t ∈ Ioo (0 : ℝ) a := by
+      simpa [uIoo_of_le ha0] using ht
+    simp [h, not_le.mpr ht'.2]
+  have hright : IntervalIntegrable h volume a L := by
+    have hc : Continuous (fun t : ℝ => c * f t) := continuous_const.mul hf
+    have hi := hc.intervalIntegrable a L
+    apply hi.congr_uIoo
+    intro t ht
+    have ht' : t ∈ Ioo a L := by
+      simpa [uIoo_of_le haL] using ht
+    simp [h, le_of_lt ht'.1]
+  exact hleft.trans hright
+
+private theorem intervalIntegral_step_mul_continuous
+    {a L c : ℝ} (ha0 : 0 ≤ a) (haL : a ≤ L)
+    {f : ℝ → ℝ} (hf : Continuous f) :
+    (∫ t in (0 : ℝ)..L, (if a ≤ t then c else 0) * f t) =
+      c * ∫ t in a..L, f t := by
+  let h : ℝ → ℝ := fun t => (if a ≤ t then c else 0) * f t
+  have hleft : IntervalIntegrable h volume 0 a := by
+    have hz : IntervalIntegrable (fun _ : ℝ => (0 : ℝ)) volume 0 a :=
+      continuous_const.intervalIntegrable 0 a
+    apply hz.congr_uIoo
+    intro t ht
+    have ht' : t ∈ Ioo (0 : ℝ) a := by
+      simpa [uIoo_of_le ha0] using ht
+    simp [h, not_le.mpr ht'.2]
+  have hright : IntervalIntegrable h volume a L := by
+    have hc : Continuous (fun t : ℝ => c * f t) := continuous_const.mul hf
+    have hi := hc.intervalIntegrable a L
+    apply hi.congr_uIoo
+    intro t ht
+    have ht' : t ∈ Ioo a L := by
+      simpa [uIoo_of_le haL] using ht
+    simp [h, le_of_lt ht'.1]
+  have hsplit := intervalIntegral.integral_add_adjacent_intervals
+    (μ := volume) hleft hright
+  rw [← hsplit]
+  have hz : (∫ t in (0 : ℝ)..a, h t) = 0 := by
+    rw [← intervalIntegral.integral_zero]
+    apply intervalIntegral.integral_congr_uIoo
+    intro t ht
+    have ht' : t ∈ Ioo (0 : ℝ) a := by
+      simpa [uIoo_of_le ha0] using ht
+    simp [h, not_le.mpr ht'.2]
+  have hr : (∫ t in a..L, h t) = ∫ t in a..L, c * f t := by
+    apply intervalIntegral.integral_congr_uIoo
+    intro t ht
+    have ht' : t ∈ Ioo a L := by
+      simpa [uIoo_of_le haL] using ht
+    simp [h, le_of_lt ht'.1]
+  rw [hz, hr, zero_add, intervalIntegral.integral_const_mul]
+
+/-- The existing finite prime energy is the derivative integral against the
+same finite cumulative staircase. -/
+theorem matrixRealEnergy_canonicalPrimeMatrix_eq_cumulative_deriv_integral
+    {L : ℝ} (hL : 0 < L)
+    (K : ℕ)
+    (x : EuclideanSpace ℂ (Fin (2 * K + 1))) :
+    matrixRealEnergy (canonicalPrimeMatrix L K) x =
+      (1 / L) *
+        ∫ t in (0 : ℝ)..L,
+          canonicalPrimeCumulativeWeight L t *
+            deriv (sourceAtomRealEnergy K x) (1 - t / L) := by
+  rw [matrixRealEnergy_canonicalPrimeMatrix_eq_sum_sourceMatrix]
+  let D : ℝ → ℝ := fun t =>
+    deriv (sourceAtomRealEnergy K x) (1 - t / L)
+  have hDcont : Continuous D := by
+    have hsmooth : ContDiff ℝ ∞ (sourceAtomRealEnergy K x) := by
+      simpa using contDiff_sourceAtomRealEnergy K x
+    have hd := hsmooth.continuous_deriv (by simp)
+    dsimp [D]
+    fun_prop
+  have hcum :
+      (∫ t in (0 : ℝ)..L,
+        canonicalPrimeCumulativeWeight L t * D t) =
+      ∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+        (Λ q / Real.sqrt q : ℝ) * ∫ t in Real.log q..L, D t := by
+    unfold canonicalPrimeCumulativeWeight
+    have hfun :
+        (fun t : ℝ =>
+          (∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+            if Real.log q ≤ t then Λ q / Real.sqrt q else 0) * D t) =
+        fun t =>
+          ∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+            (if Real.log q ≤ t then (Λ q / Real.sqrt q : ℝ) else 0) * D t := by
+      funext t
+      rw [Finset.sum_mul]
+    rw [hfun]
+    rw [intervalIntegral.integral_finsetSum _]
+    · apply Finset.sum_congr rfl
+      intro q hq
+      obtain ⟨hlog0, hlogL⟩ := prime_log_mem_aperture hq
+      exact intervalIntegral_step_mul_continuous
+        hlog0 hlogL hDcont
+    · intro q hq
+      obtain ⟨hlog0, hlogL⟩ := prime_log_mem_aperture hq
+      exact intervalIntegrable_step_mul_continuous
+        hlog0 hlogL hDcont
+  change
+    (∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+      (Λ q / Real.sqrt q : ℝ) *
+        sourceAtomRealEnergy K x (primeSourceCoordinate q L)) = _
+  rw [hcum]
+  calc
+    (∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+      (Λ q / Real.sqrt q : ℝ) *
+        sourceAtomRealEnergy K x (primeSourceCoordinate q L)) =
+        ∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+          (Λ q / Real.sqrt q : ℝ) *
+            ((1 / L) * ∫ t in Real.log q..L, D t) := by
+              apply Finset.sum_congr rfl
+              intro q hq
+              obtain ⟨hlog0, hlogL⟩ := prime_log_mem_aperture hq
+              rw [show primeSourceCoordinate q L = 1 - Real.log q / L by
+                rfl]
+              rw [sourceAtom_value_eq_deriv_integral hL K x hlog0 hlogL]
+              rfl
+    _ = (1 / L) *
+        ∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+          (Λ q / Real.sqrt q : ℝ) * ∫ t in Real.log q..L, D t := by
+            rw [Finset.mul_sum]
+            apply Finset.sum_congr rfl
+            intro q hq
+            ring
+    _ = _ := by rw [← hcum]
 
 /-- Cancellation-preserving finite pole-prime discrepancy. -/
 def canonicalPolePrimeDiscrepancy (L t : ℝ) : ℝ :=
@@ -243,3 +606,5 @@ end Zeta23.CCM
 
 #print axioms Zeta23.CCM.contDiff_sourceAtomRealEnergy
 #print axioms Zeta23.CCM.dictionaryPoleRHS_basis_eq_sourceEntry_integral
+#print axioms Zeta23.CCM.matrixRealEnergy_canonicalPoleMatrix_eq_deriv_integral
+#print axioms Zeta23.CCM.matrixRealEnergy_canonicalPrimeMatrix_eq_cumulative_deriv_integral
