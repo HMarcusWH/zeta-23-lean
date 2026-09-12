@@ -37,3 +37,4 @@ import Zeta23.ExceptionalZero.GlobalFirstBadZeroShiftShellResponse
 import Zeta23.ExceptionalZero.GlobalFirstBadZeroShiftBranchResponse
 import Zeta23.ExceptionalZero.GlobalFirstBadCrossParitySecularTransfer
 import Zeta23.ExceptionalZero.GlobalFirstBadOneStepDomination
+import Zeta23.ExceptionalZero.RegularFirstBadClosure
