@@ -21,16 +21,16 @@ class ControlV2Tests(unittest.TestCase):
         self.assertFalse(boundary["may_emit_terminal_rh_status"])
         self.assertFalse(boundary["may_promote_lean_theorem"])
 
-    def test_state_has_post_148_theorem_and_post_117_control_anchors(self):
+    def test_state_has_post_150_theorem_and_post_117_control_anchors(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 148)
+        self.assertEqual(state.anchor.pr, 150)
         self.assertEqual(
             state.anchor.merge_commit,
-            "fcd301ae4c1b58196ff7fca18128243f1d35a87b",
+            "fb92d5749d6f7a65cfc9129d49d8213219c059db",
         )
         self.assertEqual(
             state.anchor.tree,
-            "91d537ee64b8f613bebdcf12110deba486276d35",
+            "999ef44d44855cdffd5be5843e9f072867c0a7a8",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -41,16 +41,17 @@ class ControlV2Tests(unittest.TestCase):
         self.assertEqual(state.terminal_claim, "RH_OPEN")
         self.assertEqual(
             state.frontier_id,
-            "FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_APERTURE_SELECTION",
+            "FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN",
         )
 
-    def test_completed_actions_are_not_routable_and_new_actions_are_present(self):
+    def test_completed_actions_are_not_routable_and_arithmetic_actions_are_present(self):
         action_ids = {a.action_id for a in load_actions()}
         self.assertNotIn("E4_A4_KERNEL_SOURCE_TRANSPORT", action_ids)
         self.assertNotIn("E4_A4_ABSOLUTE_SOURCE_ENERGY", action_ids)
-        self.assertIn("E4_A4_REGULAR_APERTURE_SELECTION", action_ids)
+        self.assertNotIn("E4_A4_REGULAR_APERTURE_SELECTION", action_ids)
         self.assertIn("E4_A4_REGULAR_SCHUR_ENERGY_SIGN", action_ids)
         self.assertIn("E4_A4_CANONICAL_ONE_STEP_DOMINATION", action_ids)
+        self.assertIn("E4_A4_GLOBAL_FIRST_BAD_EXCLUSION", action_ids)
 
     def test_router_is_deterministic_non_authoritative_and_transparent(self):
         state = load_research_state()
@@ -75,49 +76,55 @@ class ControlV2Tests(unittest.TestCase):
         self.assertEqual(a.to_dict(), b.to_dict())
         self.assertFalse(a.theorem_authority)
         self.assertFalse(a.terminal_claim_change)
-        self.assertEqual(a.selected_action, "E4_A4_REGULAR_APERTURE_SELECTION")
+        self.assertEqual(a.selected_action, "E4_A4_REGULAR_SCHUR_ENERGY_SIGN")
         self.assertTrue(any(SCORE_FORMULA_VERSION in line for line in a.rationale))
         for action in actions:
             self.assertTrue(any(action.action_id in line for line in a.rationale))
 
-    def test_regular_aperture_action_outranks_domination_and_deformation(self):
+    def test_regular_schur_action_outranks_fallbacks(self):
         scores = {a.action_id: action_score(a) for a in load_actions()}
         self.assertGreater(
-            scores["E4_A4_REGULAR_APERTURE_SELECTION"],
+            scores["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"],
             scores["E4_A4_CANONICAL_ONE_STEP_DOMINATION"],
         )
         self.assertGreater(
-            scores["E4_A4_REGULAR_APERTURE_SELECTION"],
+            scores["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"],
             scores["DEFORMATION_BUDGET_PAPER_TEST"],
         )
+        self.assertGreater(
+            scores["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"],
+            scores["E4_B_PARITY_SHIFTED_NULLITY"],
+        )
 
-    def test_regular_aperture_action_is_post148_assembled_holomorphy_route(self):
+    def test_regular_schur_action_is_post150_arithmetic_route(self):
         registry = json.loads(
             (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
         )
-        action = registry["actions"]["E4_A4_REGULAR_APERTURE_SELECTION"]
+        action = registry["actions"]["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"]
         objections = "\n".join(action["surviving_objections"])
         first_breaks = "\n".join(x["statement"] for x in action["first_breaks"])
-        self.assertIn("PR #148", objections)
-        self.assertIn("same-size/same-vector", objections)
-        self.assertIn("cell-minimal", objections)
-        self.assertIn("assembled frozen source/predecessor holomorphy", objections)
-        self.assertIn("common punctured complex domain", first_breaks)
-        self.assertIn("determinant", first_breaks)
-        self.assertIn("cell-minimal bad-size", first_breaks)
-        self.assertNotIn("fixed finite canonical negative witness cannot be preserved", first_breaks)
+        self.assertIn("PR #150", objections)
+        self.assertIn("exact canonical source-channel energy < 0", objections)
+        self.assertIn("discrepancy", objections)
+        self.assertIn("Riesz", objections)
+        self.assertIn("full first-bad certificate", first_breaks)
+        self.assertIn("pole-minus-prime discrepancy", first_breaks)
+        self.assertIn("Riesz-smoothed", first_breaks)
+        self.assertIn("interval-certified", first_breaks)
+        self.assertIn("Ecanonical(c-x0)>=0", first_breaks)
 
         selected_break = _selected_first_break(
-            registry, "E4_A4_REGULAR_APERTURE_SELECTION"
+            registry, "E4_A4_REGULAR_SCHUR_ENERGY_SIGN"
         )
         self.assertIsNotNone(selected_break)
-        self.assertEqual(selected_break["break_id"], "E4A4-APR-FB-01")
+        # Control-v2 chooses the cheapest decisive falsifier, not the first
+        # chronological theoremization step. FB-01/02/03 are deliberately
+        # information-preserving but non-decisive; FB-04 is the first cheap
+        # decisive gate.
+        self.assertEqual(selected_break["break_id"], "E4A4-SCHUR-FB-04")
 
-        costs = {x["id"]: x["estimated_cost"] for x in action["first_breaks"]}
-        self.assertLess(costs["E4A4-APR-FB-01"], costs["E4A4-APR-FB-02"])
-        self.assertLess(costs["E4A4-APR-FB-02"], costs["E4A4-APR-FB-03"])
-        fb03 = next(x for x in action["first_breaks"] if x["id"] == "E4A4-APR-FB-03")
-        self.assertIn("conditional downstream packaging", fb03["statement"])
+        costs = [x["estimated_cost"] for x in action["first_breaks"]]
+        self.assertEqual(costs, sorted(costs))
 
     def test_universal_domination_remains_routable_but_is_not_selected(self):
         state = load_research_state()
@@ -135,16 +142,6 @@ class ControlV2Tests(unittest.TestCase):
             first_break_counts=first_break_counts,
         )
         self.assertNotEqual(cert.selected_action, "E4_A4_CANONICAL_ONE_STEP_DOMINATION")
-
-    def test_regular_schur_sign_is_explicit_future_obligation(self):
-        registry = json.loads(
-            (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
-        )
-        self.assertIn("E4_A4_REGULAR_SCHUR_ENERGY_SIGN", registry["open_obligations"])
-        action = registry["actions"]["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"]
-        self.assertEqual(action["concept_id"], "canonical_source_exclusion")
-        self.assertTrue(action["first_break_required"])
-        self.assertGreaterEqual(len(action["first_breaks"]), 2)
 
     def test_shared_retro_concept_is_searched_once_per_run(self):
         actions = load_actions()
@@ -173,7 +170,6 @@ class ControlV2Tests(unittest.TestCase):
         self.assertEqual(set(calls), unique_concepts)
 
         e4a4_ids = (
-            "E4_A4_REGULAR_APERTURE_SELECTION",
             "E4_A4_REGULAR_SCHUR_ENERGY_SIGN",
             "E4_A4_CANONICAL_ONE_STEP_DOMINATION",
             "E4_A4_GLOBAL_FIRST_BAD_EXCLUSION",

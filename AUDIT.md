@@ -1,18 +1,18 @@
-# RHRC formal audit — theorem authority through PR #148; assembled-holomorphy frontier
+# RHRC formal audit — theorem authority through PR #150; arithmetic residual frontier
 
 > **RH remains OPEN.**
 
 ## Current authority split
 
 ```text
-live main after merged PR #148 = fcd301ae4c1b58196ff7fca18128243f1d35a87b
-live main tree = 91d537ee64b8f613bebdcf12110deba486276d35
+live main after merged PR #150 = fb92d5749d6f7a65cfc9129d49d8213219c059db
+live main tree = 999ef44d44855cdffd5be5843e9f072867c0a7a8
 
-theorem-state anchor = PR #148 merge fcd301ae4c1b58196ff7fca18128243f1d35a87b
-validated theorem head = 77c2d14511004ba380b080e08b4943b267ebd863
-validated theorem tree = 91d537ee64b8f613bebdcf12110deba486276d35
-RHRC #930 / run 34619665717 = SUCCESS
-Permansson #703 / run 34619665725 = SUCCESS
+theorem-state anchor = PR #150 merge fb92d5749d6f7a65cfc9129d49d8213219c059db
+validated theorem head = b1be9eca5f544d4356ea88089c0f7264f75d2220
+validated theorem tree = 999ef44d44855cdffd5be5843e9f072867c0a7a8
+RHRC #971 / run 34690959720 = SUCCESS
+Permansson #744 / run 34690959699 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
@@ -20,258 +20,252 @@ RH = OPEN
 
 Live GitHub head + exact compiler/CI evidence outrank this prose.
 
-## Exact theorem-state progression
+## Exact validation evidence for #150
 
-### PR #134 — zero-shift source transport
+At validated theorem head
 
-**PROVED:** denominator-free whole-kernel source transport, direct zero-shift cross-parity transfer, exact zero-shift `Gamma` overlap formula, and `Gamma0*mu(z)=0` under both preimage hypotheses.
+```text
+b1be9eca5f544d4356ea88089c0f7264f75d2220
+```
+
+RHRC run #971 (`34690959720`) completed successfully.
+
+Successful RHRC jobs included:
+
+```text
+python-rhrc
+r003-normalization-audit
+lean
+```
+
+The Lean job successfully completed:
+
+```text
+lake build Zeta23.CCM
+lake build Zeta23.ExceptionalZero
+forbidden placeholder/project-axiom scan
+```
+
+The R003 normalization job successfully completed the normalization lock, finite-dictionary guard, source-normalization firewall, R004 scalar-shift audit and external-reference dependency firewall.
+
+Permansson run #744 (`34690959699`) also completed successfully on the same theorem head.
+
+The validated theorem head and merged `main` share theorem tree
+
+```text
+999ef44d44855cdffd5be5843e9f072867c0a7a8.
+```
+
+## Exact theorem-state progression relevant to #150
 
 ### PR #136 — absolute canonical source energy
 
-**PROVED:** scalar-sensitive `matrixRealEnergy`, identity-shift sensitivity, exact prime/arch/scalar source-energy decomposition, cubic-shell energy, regular zero-shift trial energy `= Re S0`, and negative explicit Schur root -> negative canonical trial energy.
+**PROVED:** scalar-sensitive canonical self-energy; exact pole/arch/scalar/prime channel decomposition; cubic-shell energy; regular zero-shift trial energy `= Re S0`; negative explicit Schur root -> negative canonical trial energy.
 
-### PR #137 — canonical one-step determinant reduction
+### PR #137 — one-step determinant reduction
 
-**PROVED:** exact complex source pairing, predecessor energy, shell coupling and
+**PROVED:** exact complex source pairing and
 
 ```text
 Delta(w)=q_c*q_A(w)-|<w,b>|^2.
 ```
 
-Also PROVED: conditional domination sufficiency, kernel/range zero-shift consequences, `Re S0>=0` under domination plus predecessor nonnegativity, no safe negative explicit Schur root under domination, exact domination-failure disjunction, and the global off-line-zero sign-failure countercertificate.
+Also PROVED: conditional domination sufficiency and the global off-line-zero sign-failure countercertificate.
 
-### PR #140 — aperture freedom and regularity scaffold
+No theorem proves the domination certificate itself.
 
-**PROVED:** every sufficiently large aperture carries a finite boundary-flat canonical negative witness if an off-line zero exists; `IntrinsicPredecessorRegular <-> injective intrinsicPredecessorBlock`; a regular predecessor gives a unique cubic zero-shift preimage; frozen prime-cell equality and threshold source-atom vanishing hold; and the real-axis scalar extraction has exact `-log(L)` coefficient.
+### PR #140 — aperture freedom / regularity scaffold
 
-### PR #142 — fixed-cell continuity and witness persistence
+**PROVED:** every sufficiently large aperture carries finite canonical badness under an off-line zero; regular predecessor `iff` determinant nonzero `iff` injective; regularity gives a unique zero-shift preimage; physical frozen-cutoff and scalar `-log L` interfaces are exact.
 
-**PROVED:** on each physical cutoff cell `I_Q=(log Q,log(Q+1))` with `Q>=1`, entries of the actual production `canonicalSourceMatrix` and every fixed-vector real canonical quadratic energy are continuous. A strict negative witness therefore persists on an open in-cell neighborhood with the same finite size and same vector.
+### PR #142 — fixed-cell continuity / persistence
 
-### PR #144 — frozen production and logarithmic-cover scaffold
+**PROVED:** actual source continuity on a physical cutoff cell and same-size/same-vector persistence of a strict negative witness on an open in-cell neighborhood.
 
-**PROVED:** the exact frozen canonical source agrees with the actual production source on its physical cutoff cell.
+### PR #144-#148 — analytic prerequisites
 
-**PROVED:** the exact ambient scalar split
+**PROVED:** exact frozen source/predecessor/log-cover scaffold; removable scalar layer and production bridge; connected archimedean safe strip; genuine fixed-unit alpha/beta/gamma parameter holomorphy.
 
-```text
-frozen source = -log(L) * I + frozen remainder
-```
+### PR #150 — assembled source holomorphy
 
-survives parity compression and the actual intrinsic predecessor projection with coefficient exactly `-1`.
-
-**PROVED:** the exact complex frozen source/intrinsic-predecessor remainder has the correct positive-real bridge.
-
-**PROVED:** the logarithmic-cover objects satisfy
+**PROVED:** the common punctured source domain
 
 ```text
-lifted remainder(z+2*pi*i)=lifted remainder(z)
-lifted block(z+2*pi*i)=lifted block(z)-(2*pi*i)I
+complexFrozenSourceDomain = complexArchSafeStrip \ {0}
 ```
 
-and evaluating the lifted block at `z=log L` on a physical cutoff cell gives the actual production `intrinsicPredecessorBlock`.
+is open and carries exact source-channel holomorphy.
 
-These are exact algebraic/production/log-cover theorems. They do not by themselves prove holomorphy.
+Headline validated declarations include:
 
-### PR #145-#146 — scalar removable layer
+```text
+analyticOnNhd_complexFrozenCanonicalPrimeMatrix_apply_sourceDomain
+complexPoleQuadraticDenominator_ne_zero
+analyticOnNhd_complexCanonicalPoleMatrix_apply_sourceDomain
+analyticOnNhd_complexApertureScalarRemainder_sourceDomain
+analyticOnNhd_complexFrozenCanonicalSourceRemainder_apply_sourceDomain
+```
 
-**PROVED / #145:** the removable scalar factor has value `2` at zero and the repaired scalar factor/remainder is analytic locally at zero.
+### PR #150 — actual predecessor holomorphy
 
-**PROVED / #146:** for `z!=0`, the removable scalar factor/remainder agrees exactly with the existing production complex scalar/remainder and matches the positive-real production formulas.
+**PROVED:** applying the exact frozen source to fixed vectors, parity-compressing it and projecting to the actual intrinsic predecessor preserves scalar-coordinate analyticity.
 
-### PR #148 — genuine fixed-unit parameter holomorphy
+Validated declarations include:
+
+```text
+analyticOnNhd_complexFrozenCanonicalSourceRemainder_toEuclideanLin_apply_sourceDomain
+analyticOnNhd_complexFrozenParityCompressedRemainder_apply_sourceDomain
+analyticOnNhd_complexFrozenIntrinsicPredecessorRemainder_coord_sourceDomain
+analyticOnNhd_liftedFrozenIntrinsicPredecessorRemainder_coord
+analyticOnNhd_liftedFrozenIntrinsicPredecessorBlock_coord
+```
+
+### PR #150 — determinant rigidity
 
 **PROVED:**
 
 ```text
-complexArchSafeStrip = {z : C | |Im z| < pi}
+exists_nat_det_sub_smul_id_ne_zero
+liftedFrozenIntrinsicPredecessorBlock_add_nat_two_pi_I
+exists_nat_deck_translate_liftedFrozenIntrinsicPredecessor_det_ne_zero
+liftedFrozenIntrinsicPredecessor_det_not_identically_zero.
 ```
 
-is open, convex, preconnected and connected.
+The proof is purely finite-dimensional/algebraic: if all deck scalar shifts were singular, one monic characteristic polynomial would have infinitely many distinct roots.
 
-**PROVED:** `complexArchSinhSlope` is zero-free throughout that strip.
+### PR #150 — determinant analyticity / open-interval regularity
 
-**PROVED:** `complexRegularizedArchScale` is differentiable/analytic throughout that strip.
-
-**PROVED:** each exact fixed-unit production core
+**PROVED:** the lifted determinant is analytic on the true lifted domain; a connected/preconnected rigidity corridor contains the real physical logarithms and a deck nonzero witness; analytic identity machinery gives
 
 ```text
-complexAlphaCore
-complexBetaCore
-complexGammaCore
+exists_intrinsicPredecessorRegular_in_open_fixedCell.
 ```
 
-is differentiable/analytic throughout the strip.
+Exact content: every nonempty open real interval inside one fixed physical cutoff cell contains an aperture where the actual intrinsic predecessor is regular.
 
-The proof uses genuine differentiation under the fixed `[0,1]` integral with local compact domination. It does not infer holomorphy from the deck law.
+**DERIVED terminology:** the regular apertures are dense in the cell.
 
-## Exact validation evidence for #148
+### PR #150 — cell-minimal regular first bad
 
-Validated theorem head:
+**PROVED:**
 
 ```text
-77c2d14511004ba380b080e08b4943b267ebd863
+CellAnyParityBad
+exists_least_cellAnyParityBad_two_le
+not_anyParityBad_of_lt_cellMinimal
+exists_regular_cellMinimal_firstBad.
 ```
 
-Validated theorem tree:
+The minimum is taken over the whole physical cell before moving the aperture. This prevents loss of the smaller-size-good conclusion.
+
+### PR #150 — exact negative energy endpoint
+
+**PROVED:**
 
 ```text
-91d537ee64b8f613bebdcf12110deba486276d35
+exists_regular_cellMinimal_negativeCanonicalEnergy
 ```
 
-Merged main commit:
+and the ExceptionalZero wrappers
 
 ```text
-fcd301ae4c1b58196ff7fca18128243f1d35a87b
+exists_fixedCanonicalCutoffCell_point_above
+exists_regularFirstBad_negativeCanonicalEnergy_of_offLine_zero
+exists_regularFirstBad_negativeCanonicalEnergy_of_exists_offLine_zero.
 ```
 
-Merged main has the same theorem tree as the validated PR head.
-
-RHRC run #930 (`34619665717`) succeeded. Permansson run #703 (`34619665725`) also succeeded on the same theorem head.
+Thus a hypothetical off-line zero forces one finite regular state with unique zero-shift preimage and strictly negative exact canonical source-channel energy.
 
 ## What is not yet proved
 
-No theorem currently proves:
+No current theorem establishes:
 
 ```text
-production scalar right-half-plane control on the punctured arch strip
-common-domain pole denominator zero-freeness / pole holomorphy
-holomorphy of complexFrozenCanonicalSourceRemainder
-holomorphy of complexFrozenIntrinsicPredecessorRemainder
-holomorphy of the lifted predecessor on a connected logarithmic-cover domain
-holomorphy/nonidentity of the relevant determinant
-dense regular apertures on the physical cutoff cell
-production cell-minimal regular first-bad selection
-realness of the exact zero-shift coupling in the compression needed for Delta(x0)
-regular canonical Schur-energy nonnegativity
+positive definiteness as a separately packaged property of the selected predecessor
+simultaneous regularity of every smaller predecessor block in both parities
+an exported full certificate retaining whole-cell K* minimality through the outer energy wrapper
+exact pole-minus-prime discrepancy identity in the new post-#150 form
+boundary-flat Taylor annihilation through order six/eight as a dedicated theorem
+sixth/eighth-order Riesz-smoothed discrepancy identity
+regular selected-residual nonnegativity Ecanonical(c-x0)>=0
+universal canonical one-step domination
 negative-root exclusion
 outside-strip/trivial-zero terminal seam
-RH
+RiemannHypothesis
 ```
 
-## Active analytic theorem
+The first three are strengthening/interface opportunities. The selected-residual sign is the decisive current arithmetic gap.
 
-The smallest current obstruction is assembled common-domain source/predecessor holomorphy.
+## Derived post-#150 consequences
 
-The #148 archimedean cores are closed inputs. The remaining production channels are scalar, pole and finite prime/source pieces.
-
-The highest-value scalar lead is
+At the selected state:
 
 ```text
-Re(z*coth(z/2))
-  = (x*sinh x + y*sin y)/(cosh x - cos y)
+A>=0
+A regular
 ```
 
-for `z=x+iy`. On `|y|<pi`, this suggests strict positivity away from zero and therefore a clean principal-log branch on the punctured arch strip.
-
-This is a **LEAD / HYPOTHESIS**, not yet a theorem.
-
-## Translation/deck-law falsification
-
-The exact #144 deck law does not imply holomorphy.
-
-The generic function
+are theorem-backed. Since the predecessor is finite-dimensional Hermitian, **DERIVED**:
 
 ```text
-F(z)=-z+Re z
+A>0.
 ```
 
-has affine imaginary-translation behavior of the same structural kind while failing complex differentiability. Therefore any proof that substitutes deck-periodicity or a translation identity for genuine analytic control is invalid.
+The theorem `exists_intrinsicPredecessorRegular_in_open_fixedCell` supports the **DERIVED** dense-set interpretation but the exact theorem API is the open-interval existential statement.
 
-## Candidate determinant nonidentity argument
+The stronger “regular negative certificates arbitrarily far out” statement is a natural #140/#150 composition but is not yet a named theorem and remains DERIVED.
 
-Only after assembled lifted holomorphy is established should the #144 deck structure become load-bearing:
+## Post-#150 research state
+
+The analytic/regularization obstruction is closed. The active question is the sign of the exact regular zero-shift residual.
+
+The highest-value external reduction is a cancellation-preserving pole/prime discrepancy identity. The project synthesis further derives high-order endpoint annihilation from the exact boundary-flat moments and candidate sixth/eighth-order Riesz smoothing. These are recorded in the newest research delta with non-theorem labels.
+
+## Active falsification constraints
+
+Current evidence argues against using, as default proof mechanisms:
 
 ```text
-Ahat(z+2*pi*i)=Ahat(z)-(2*pi*i)I.
+global aperture Loewner monotonicity
+global minimizing-trial Schur monotonicity
+universal positive elementary source-atom energy
+independent loose absolute channel majorants
 ```
 
-If `det Ahat` vanished identically, the intended finite-dimensional argument is to iterate the deck shift at one base point and force the characteristic polynomial of one fixed finite operator to have too many distinct roots.
+These are EXPERIMENTAL SIGNAL / quarantined research shortcuts, not universal mathematical theorems.
 
-This remains a **LEAD / HYPOTHESIS**, not a theorem.
-
-The zero-dimensional predecessor case must be split off separately.
-
-## Post-#142 cell-minimal research correction
-
-The preferred selection remains **DERIVED**:
-
-```text
-K* = min { K | exists L in I_Q, AnyParityBad L K }.
-```
-
-All smaller sizes are good in both parities throughout the cell, so predecessor size `N*=K*-1` is PSD throughout the cell. #142 preserves the selected bad witness on an open set. Once dense regularity is theorem-backed, choose a regular point inside that open set.
-
-The minimum must be taken over the whole cell. A least bad size at one aperture cannot safely be transported to a different aperture.
-
-## Smallest remaining obstruction after successful analytic regularity
-
-At the selected regular first-bad state:
-
-```text
-A>=0                    from cell-wide first-bad minimality
-A injective             from regularity
-A>0                     finite Hermitian consequence
-unique x0 with A x0=b   from #140 regularity scaffold
-u0=c-x0.
-```
-
-The intended forced countercertificate is
-
-```text
-Ecanonical(u0)=Re S0<0.
-```
-
-The decisive arithmetic target remains
-
-```text
-Ecanonical(c-x0)>=0
-```
-
-on the exact forced production state.
-
-A possible smaller certificate is `q_c>=0` plus `Delta(x0)>=0`, but only after Lean proves the zero-shift coupling is real and the `q_A(x0)=0` edge case is handled. Until then this is **DERIVED/LEAD**, not theorem authority.
-
-Universal one-step domination remains a valid broad closing condition but is not a reduced subproblem if its proof merely restates successor positivity.
+The apparent coth/deck lattice coincidence is also downgraded because the coth factor uses the aperture variable while the exact deck translation acts in the log-aperture variable.
 
 ## Current execution order
 
 ```text
-1. prove/falsify scalar right-half-plane control on the punctured arch strip
-2. close common-domain scalar/pole/prime source holomorphy
-3. assemble complex frozen source and intrinsic predecessor remainder holomorphy
-4. prove lifted predecessor holomorphy on a connected cover domain
-5. prove determinant nonidentity by deck shift + characteristic polynomial
-6. derive dense fixed-cell regularity
-7. intersect with #142 persistent negativity and package a cell-minimal regular first-bad certificate
-8. expose the exact negative regular zero-shift source energy
-9. derive an independent arithmetic nonnegative sign from the full pole/arch/scalar/prime source
-10. compose to negative-root exclusion
-11. close the outside-strip/trivial-zero seam
-12. explicit Mathlib RiemannHypothesis wrapper
+1. retain/export the full #150 first-bad certificate
+2. reproduce/theoremize exact pole integral and pole-minus-prime discrepancy
+3. theoremize boundary-flat Taylor annihilation + Riesz smoothing
+4. interval-certify/falsify candidate selected-residual sign mechanisms
+5. prove Ecanonical(c-x0)>=0 on the exact forced state
+6. compose with #150 to negative-root exclusion
+7. close outside-strip/trivial-zero seam
+8. explicit Mathlib RiemannHypothesis wrapper
 ```
 
 ## Permanent firewalls
 
 - compiler/CI validity is authoritative; repository presence alone is not;
-- theorem authority is through #148 and no further;
-- fixed-unit archimedean parameter holomorphy is PROVED; assembled source/predecessor holomorphy is OPEN;
-- translation/deck identity is not holomorphy;
-- holomorphy is not determinant nonidentity;
-- cell-minimal regularization is DERIVED until merged;
-- regularity is not positivity of the successor;
-- all-size Baire and finite-prefix regularization are fallback infrastructure, not current dependencies;
-- universal determinant positivity cannot count as a reduction if it merely restates successor PSD;
-- no `A^-1` at zero before regularity; formal code should prefer the unique-preimage interface;
-- `Gamma0*mu(z)=0` with trivial kernel is not a sign theorem;
-- D is algebraic, not unitary/isometric;
+- theorem authority is through #150 and no further;
+- supporting compiler-proved theorems are not automatically machine-promoted claims;
+- regularity is not successor positivity;
+- nonnegative + regular predecessor -> positive definite is DERIVED unless separately packaged;
+- exact negative source-channel energy is not contradiction without an independent nonnegative sign theorem;
+- external exact derivation != Lean theorem;
+- Riesz smoothing != arithmetic sign;
+- numerical precision != theorem authority;
+- generic/modified-source countermodel != zeta counterexample;
+- D algebraic != D unitary/isometric;
 - no division by unproved transfer/source factors;
-- modified-source or generic countermodels are not zeta counterexamples;
-- numerical precision is not theorem authority;
-- strip-zero exclusion is not the terminal Mathlib RH theorem without the outside-strip/trivial-zero seam;
-- machine claim promotion remains separate;
+- negative-root exclusion != terminal Mathlib RH without the final seam;
 - RH remains OPEN.
 
-Newest research implications: `research/RHRC/RESEARCH_LEADS_POST_148_PARAMETER_HOLOMORPHY_GREEN_DELTA.md`.
+Newest research implications: `research/RHRC/RESEARCH_LEADS_POST_150_REGULARIZATION_CLOSED_ARITHMETIC_FRONTIER_DELTA.md`.
 
 **RH remains OPEN.**

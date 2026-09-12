@@ -6,11 +6,9 @@ This document defines what "green", "proved", "validated" and "promoted" mean in
 
 ## Exact object first
 
-For every theorem-bearing PR record the base, PR head, exact object checked by GitHub Actions, theorem tree, eventual merged-main commit/tree, and Lean version where relevant.
+For every theorem-bearing PR record the base, exact PR head checked by GitHub Actions, theorem tree, eventual merged-main commit/tree and relevant compiler version/toolchain.
 
-For control-only PRs record the exact control head/merge tree separately from the last theorem-bearing anchor. A control-only green must not advance theorem authority.
-
-Compiler validity attaches only to the exact object actually checked.
+Compiler validity attaches only to the exact object actually checked. A control/docs-only green must not create theorem authority.
 
 ## Authoritative repository gates
 
@@ -29,28 +27,28 @@ Permansson independent formal verification
 
 A skipped downstream step is not a passed gate.
 
-`run_suite.py` also executes FFBBP and Control-v2 regression tests. These tests guard research-control semantics; they do not grant theorem authority to FFBBP or Control v2.
+`run_suite.py` also executes FFBBP and Control-v2 regression tests. Those guard research-control semantics; they do not grant theorem authority to the controller.
 
 ## Current theorem/control validation anchors
 
 ```text
-theorem-state anchor = PR #148 merge fcd301ae4c1b58196ff7fca18128243f1d35a87b
-validated theorem head = 77c2d14511004ba380b080e08b4943b267ebd863
-validated theorem tree = 91d537ee64b8f613bebdcf12110deba486276d35
-RHRC #930 / run 34619665717 = SUCCESS
-Permansson #703 / run 34619665725 = SUCCESS
+theorem-state anchor = PR #150 merge fb92d5749d6f7a65cfc9129d49d8213219c059db
+validated theorem head = b1be9eca5f544d4356ea88089c0f7264f75d2220
+validated theorem tree = 999ef44d44855cdffd5be5843e9f072867c0a7a8
+RHRC #971 / run 34690959720 = SUCCESS
+Permansson #744 / run 34690959699 = SUCCESS
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
 ```
 
-The #148 validated theorem head and merged main have the same tree `91d537ee...`. PR #117 remains the latest Control-v2 semantic authority because #148 changes mathematical state, not the controller capability/authority model.
+The #150 validated theorem head and merged main have the same tree `999ef44d...`. PR #117 remains the Control-v2 semantic authority because #150 changes mathematical state, not controller capability/authority semantics.
 
-## Exact #148 gate evidence
+## Exact #150 gate evidence
 
-At validated theorem head `77c2d14511004ba380b080e08b4943b267ebd863`, RHRC workflow run #930 (`34619665717`) completed successfully.
+At validated theorem head `b1be9eca5f544d4356ea88089c0f7264f75d2220`, RHRC workflow run #971 (`34690959720`) completed successfully.
 
-Its jobs completed successfully, including:
+Successful jobs:
 
 ```text
 python-rhrc
@@ -58,7 +56,7 @@ r003-normalization-audit
 lean
 ```
 
-The `lean` job successfully ran:
+The `lean` job successfully completed:
 
 ```text
 lake build Zeta23.CCM
@@ -66,80 +64,131 @@ lake build Zeta23.ExceptionalZero
 forbidden placeholder/project-axiom scan
 ```
 
-Permansson workflow run #703 (`34619665725`) also completed successfully on the same theorem head.
-
-## What #144-#148 validate
-
-### PR #144
-
-The exact frozen production source/predecessor and logarithmic-cover infrastructure is in the validated `Zeta23.CCM` build closure. Headline theorem objects include:
+The normalization job successfully reran:
 
 ```text
-frozenCanonicalSourceMatrix_eq_canonicalSourceMatrix_fixedCell
-frozenCanonicalSourceMatrix_eq_neg_log_identity_add_remainder
-frozenIntrinsicPredecessorBlock_eq_actual_fixedCell
-frozenIntrinsicPredecessorBlock_eq_neg_log_id_add_remainder
-intrinsicPredecessorBlock_eq_neg_log_id_add_remainder_fixedCell
-complexFrozenIntrinsicPredecessorRemainder_ofReal
-liftedFrozenIntrinsicPredecessorRemainder_add_two_pi_I
-liftedFrozenIntrinsicPredecessorBlock_add_two_pi_I
-liftedFrozenIntrinsicPredecessorBlock_of_log_fixedCell
+cutoff-free CCM normalization lock
+finite dictionary external-oracle guards
+source-normalization semantic firewall
+R004 scalar-shift invariant audit
+external-reference dependency firewall
 ```
 
-These validate exact algebraic continuation objects, real/complex production bridges and deck identities. They do **not** validate complex differentiability/analyticity of the full parameter-dependent frozen remainder.
+Permansson workflow run #744 (`34690959699`) also completed successfully on the same theorem head.
 
-### PR #145-#146
+## What #150 validates
 
-`CanonicalApertureHolomorphy.lean` validates the removable scalar factor/remainder at zero and exact equality with the production complex scalar/remainder away from zero, plus positive-real production provenance.
+The #150 modules lie inside the authoritative `Zeta23.CCM` / `Zeta23.ExceptionalZero` aggregate build closure.
 
-The proof explicitly handles nonzero periodic zeros of the divided exponential slope rather than assuming a global-entire quotient.
+### Full frozen source holomorphy
 
-### PR #148
-
-The #148 modules are imported through `Zeta23.CCM` and therefore lie in the validated aggregate build closure.
-
-Validated theorem authority includes:
+Validated declarations include:
 
 ```text
-complexArchSafeStrip
-isOpen_complexArchSafeStrip
-convex_complexArchSafeStrip
-isPreconnected_complexArchSafeStrip
-isConnected_complexArchSafeStrip
-ofReal_mem_complexArchSafeStrip
-mul_Icc_mem_complexArchSafeStrip
-complexArchSinhSlope_ne_zero_of_mem_strip
-differentiableOn_complexRegularizedArchScale_strip
-analyticOnNhd_complexRegularizedArchScale_strip
-differentiableAt_complexAlphaCore_of_mem_strip
-differentiableOn_complexAlphaCore_strip
-analyticOnNhd_complexAlphaCore_strip
-differentiableAt_complexBetaCore_of_mem_strip
-differentiableOn_complexBetaCore_strip
-analyticOnNhd_complexBetaCore_strip
-differentiableAt_complexGammaCore_of_mem_strip
-differentiableOn_complexGammaCore_strip
-analyticOnNhd_complexGammaCore_strip
+complexFrozenSourceDomain
+isOpen_complexFrozenSourceDomain
+analyticOnNhd_complexFrozenCanonicalPrimeMatrix_apply_sourceDomain
+complexPoleQuadraticDenominator_ne_zero
+analyticOnNhd_complexCanonicalPoleMatrix_apply_sourceDomain
+analyticOnNhd_complexApertureScalarRemainder_sourceDomain
+analyticOnNhd_complexFrozenCanonicalSourceRemainder_apply_sourceDomain
 ```
 
-The parameter-core theorems are genuine differentiation-under-the-integral results on a fixed interval with local compact domination.
+### Intrinsic predecessor / log-cover holomorphy
 
-The current theorem surface does **not** validate:
+Validated declarations include:
 
 ```text
-holomorphy of the full production scalar branch on the common source domain
-pole-channel denominator zero-freeness / holomorphy on the common source domain
-holomorphy of complexFrozenCanonicalSourceRemainder
-holomorphy of complexFrozenIntrinsicPredecessorRemainder
-holomorphy of the lifted predecessor on a connected cover domain
-holomorphy/nonidentity of the relevant determinant
-dense regular apertures on the physical cutoff cell
-production cell-minimal regular first-bad selection
-regular canonical Schur-energy nonnegativity
+analyticOnNhd_complexFrozenCanonicalSourceRemainder_toEuclideanLin_apply_sourceDomain
+analyticOnNhd_complexFrozenParityCompressedRemainder_apply_sourceDomain
+analyticOnNhd_complexFrozenIntrinsicPredecessorRemainder_coord_sourceDomain
+liftedFrozenPredecessorDomain
+isOpen_liftedFrozenPredecessorDomain
+add_two_pi_I_mem_liftedFrozenPredecessorDomain_iff
+analyticOnNhd_liftedFrozenIntrinsicPredecessorRemainder_coord
+analyticOnNhd_liftedFrozenIntrinsicPredecessorBlock_coord
+```
+
+### Algebraic determinant rigidity
+
+Validated declarations include:
+
+```text
+exists_nat_det_sub_smul_id_ne_zero
+liftedFrozenIntrinsicPredecessorBlock_add_nat_two_pi_I
+exists_nat_deck_translate_liftedFrozenIntrinsicPredecessor_det_ne_zero
+liftedFrozenIntrinsicPredecessor_det_not_identically_zero
+```
+
+This nonidentity result is algebraic and independent of analytic continuation.
+
+### Analytic determinant / regular-aperture selection
+
+Validated declarations include:
+
+```text
+liftedFrozenRigidityDomain
+isPreconnected_liftedFrozenRigidityDomain
+liftedFrozenRigidityDomain_subset_liftedFrozenPredecessorDomain
+analyticOnNhd_liftedFrozenIntrinsicPredecessorMatrix_apply
+analyticOnNhd_liftedFrozenIntrinsicPredecessorDet
+exists_mem_liftedFrozenRigidityDomain_det_ne_zero
+liftedFrozenIntrinsicPredecessorDet_not_zero_on_rigidityDomain
+exists_intrinsicPredecessorRegular_in_open_fixedCell
+```
+
+The exact regularity theorem states that every nonempty open real interval inside one physical cutoff cell contains a regular actual predecessor aperture.
+
+### Cell-minimal regular first-bad / exact energy
+
+Validated declarations include:
+
+```text
+CellAnyParityBad
+exists_least_cellAnyParityBad_two_le
+not_anyParityBad_of_lt_cellMinimal
+exists_regular_cellMinimal_firstBad
+exists_regular_cellMinimal_negativeCanonicalEnergy
+```
+
+### ExceptionalZero closure
+
+Validated declarations include:
+
+```text
+exists_fixedCanonicalCutoffCell_point_above
+exists_regularFirstBad_negativeCanonicalEnergy_of_offLine_zero
+exists_regularFirstBad_negativeCanonicalEnergy_of_exists_offLine_zero
+```
+
+These declarations establish the current formal endpoint:
+
+```text
+off-line zero
+  -> finite actual-production regular selected state
+  -> unique zero-shift preimage
+  -> exact canonical source-channel energy < 0.
+```
+
+They do not prove the opposing nonnegative sign.
+
+## Current theorem surface does not validate
+
+```text
+selected predecessor positive-definite as a separately named theorem
+simultaneous regularity of all smaller predecessor blocks / both parities
+full first-bad ancestry retained through the outer energy wrapper
+post-#150 pole-minus-prime discrepancy identity
+boundary-flat Taylor annihilation through order six/eight as dedicated declarations
+Riesz-smoothed discrepancy identities
+regular selected-residual nonnegativity Ecanonical(c-x0)>=0
+canonical one-step domination
 negative-root exclusion
 outside-strip/trivial-zero terminal seam
-RH
+RiemannHypothesis
 ```
+
+Some of these are DERIVED consequences or research leads; none should be labeled PROVED merely because the construction suggests them.
 
 ## Import/build closure law
 
@@ -149,7 +198,7 @@ A declaration is compiler-validated project theorem authority only if its module
 
 PR #103 remains the canonical historical example: `ConstrainedParityGeometry.lean` was imported by `Zeta23.CCM` and compiled; `ParityBadness.lean` was merged but not imported and remained staged source until a later build closure consumed it.
 
-Current example: the #148 `CanonicalApertureArchDomain` and `CanonicalApertureParameterHolomorphy` modules are imported through `Zeta23.CCM` and therefore lie in the validated #148 build closure.
+Current example: the #150 source/predecessor/determinant/regularity/cell-minimal modules are imported through the CCM/ExceptionalZero umbrellas and were validated by the exact #150 green aggregate build.
 
 ## Axiom inspection
 
@@ -162,7 +211,7 @@ For production-promoted R003 bindings, `ClaimBindings.lean` must contain exact
 
 The accepted production foundation is `[propext, Classical.choice, Quot.sound]`. No production theorem may depend on `sorryAx` or a promoted project axiom.
 
-Supporting theorem modules may also carry module-local `#print axioms` checks without thereby becoming machine-promoted claims. The #148 modules print axioms for their headline analytic declarations; this does not itself promote them into `CLAIM_REGISTRY.json`.
+Supporting theorem modules may carry module-local `#print axioms` checks without thereby becoming machine-promoted claims. PR #150 is another example of compiler theorem authority advancing beyond the current machine-promoted claim-ID surface.
 
 ## Proof versus promotion
 
@@ -174,30 +223,23 @@ R003_PROMOTED_BINDINGS.json
 Zeta23/CCM/ClaimBindings.lean
 ```
 
-`promoted_binding_lint.py` enforces set equality, theorem-name equality, and exact #check/#print-axioms presence.
+`promoted_binding_lint.py` enforces set equality, theorem-name equality and exact `#check`/`#print axioms` presence.
 
-Compiler-PROVED theorem authority beyond the current machine-promoted claim list must not be silently upgraded to `PROVED_UNCONDITIONAL` registry status. PR #148 is another example of theorem authority advancing without automatic machine-claim promotion.
+This docs/control sync deliberately leaves those promotion surfaces unchanged.
 
 ## Control-v2 validation law
 
-`research/RHRC/control_v2/` is diagnostic research infrastructure only. Its CI gates enforce:
+`research/RHRC/control_v2/` is diagnostic research infrastructure only. Its CI gates enforce, among other things:
 
 - no theorem/claim/terminal-answer authority;
 - separate theorem and control-plane anchors;
 - deterministic route certificates and score diagnostics;
-- deterministic retro receipt hashes;
 - fail-closed missing retro-search / first-break requirements;
-- dead-route revival records when explicitly required;
-- `as_of` Git replay that cannot see future commits;
-- external time-travel replay that requires availability metadata;
-- retro receipts bound to their declared Git search paths;
-- exact sorted contiguous finite-prefix coverage for deformation budgets;
-- no `PRUNE` from a numeric tail without a passed horizon certificate targeting the remaining deformation budget;
-- no decision-bearing reduced-model `PRUNE` without decision commutation when that gate is required;
-- no promotion from diagnostic commutation to decision commutation;
-- no horizon certificate from a small local residual alone.
+- exact archaeology scope and replay semantics;
+- dead-route revival records when required;
+- hard-coded current theorem/frontier/action smoke assertions.
 
-A Control-v2 recommendation is **not** a theorem, claim promotion, RH evidence, or a substitute for Lean.
+The post-#150 sync must therefore update the exact Control-v2 theorem anchor to #150, retire the completed regular-aperture action from the routable set, and select the existing `E4_A4_REGULAR_SCHUR_ENERGY_SIGN` action. These are routing facts, not theorem claims.
 
 ## Vocabulary
 
@@ -209,20 +251,13 @@ A Control-v2 recommendation is **not** a theorem, claim promotion, RH evidence, 
 - **PROVED_UNCONDITIONAL** — proved theorem additionally registered on the production claim surface.
 - **DERIVED** — mathematical consequence not separately theorem-locked.
 - **LOCAL LEAN CHECK** — standalone/local compilation evidence outside merged theorem authority.
+- **EXTERNAL DERIVED** — externally supplied exact/symbolic reasoning not yet repository-theoremized.
 - **LEAD / HYPOTHESIS** — motivated research route.
 - **EXPERIMENTAL SIGNAL** — numerical/search/discovery evidence only.
 - **OPEN** — not established.
 
-## Post-green synchronization
-
-After every meaningful green result: verify exact evidence; read the proof/control result; compare history; analyze upstream/downstream implications; revisit dead routes; falsify clues; then synchronize registries, active route README, research-lead deltas, `CURRENT_RESEARCH_PLAN`, `VALIDATION_PROTOCOL` and public summaries.
-
-Historical settlements and provenance snapshots remain historical.
-
-A post-green sync must not rewrite a large historical ledger merely to manufacture currentness when the documentation law permits a new dated delta to supersede it. In that case, the living README/plan/route/control documents must point to the new delta explicitly.
-
 ## Claim firewall
 
-Green supporting mathematics, aperture freedom, fixed-cell continuity, witness persistence, frozen/log-cover continuation objects, local scalar analyticity, scalar production bridges, fixed-unit parameter holomorphy, regularity interfaces, source normalization, finite nesting, parity geometry, determinant reductions, research-control recommendations, budget diagnostics and numerical agreement are not RH.
+Green regularization infrastructure, determinant rigidity, open-interval regularity, cell-minimal selection and exact negative canonical energy are not RH. A contradiction still requires independent arithmetic nonnegativity on the exact forced state, then negative-root exclusion and the terminal statement seam.
 
 **RH remains OPEN unless the exact terminal RH theorem passes the complete proof and claim-validation gates.**

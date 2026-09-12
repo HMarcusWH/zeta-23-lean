@@ -5,14 +5,14 @@
 ## Authority snapshot
 
 ```text
-live main after merged PR #148 = fcd301ae4c1b58196ff7fca18128243f1d35a87b
-live main tree = 91d537ee64b8f613bebdcf12110deba486276d35
+live main after merged PR #150 = fb92d5749d6f7a65cfc9129d49d8213219c059db
+live main tree = 999ef44d44855cdffd5be5843e9f072867c0a7a8
 
-theorem-state anchor = PR #148 merge fcd301ae4c1b58196ff7fca18128243f1d35a87b
-validated theorem head = 77c2d14511004ba380b080e08b4943b267ebd863
-validated theorem tree = 91d537ee64b8f613bebdcf12110deba486276d35
-RHRC #930 / run 34619665717 = SUCCESS
-Permansson #703 / run 34619665725 = SUCCESS
+theorem-state anchor = PR #150 merge fb92d5749d6f7a65cfc9129d49d8213219c059db
+validated theorem head = b1be9eca5f544d4356ea88089c0f7264f75d2220
+validated theorem tree = 999ef44d44855cdffd5be5843e9f072867c0a7a8
+RHRC #971 / run 34690959720 = SUCCESS
+Permansson #744 / run 34690959699 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
@@ -21,161 +21,116 @@ RH = OPEN
 ## Recent theorem packages
 
 ```text
-#129 source-explicit cubic defect + exact cross-parity secular transfer
+#129 source-explicit cubic defect + cross-parity secular transfer
 #131 exact canonical source-moment decomposition
-#134 denominator-free whole-kernel source transport + direct zero-shift transfer
-#136 absolute canonical source energy + scalar-sensitive production decomposition
-#137 exact source pairing + one-step determinant + global sign-failure endpoint
-#140 eventual aperture freedom + predecessor-regularity/frozen-cutoff scaffold
-#142 fixed-cell canonical continuity + same-witness local persistence
+#134 denominator-free whole-kernel source transport
+#136 absolute canonical source energy + exact channel decomposition
+#137 exact source pairing + one-step determinant + sign-failure endpoint
+#140 eventual aperture freedom + predecessor regularity scaffold
+#142 fixed-cell continuity + same-witness persistence
 #144 exact frozen production source/predecessor + logarithmic-cover scaffold
-#145 local removable scalar analyticity at zero
-#146 removable scalar/remainder <-> production complex scalar/remainder
-#148 connected arch strip + fixed-unit alpha/beta/gamma parameter holomorphy
+#145-#146 removable scalar analyticity + production bridge
+#148 fixed-unit alpha/beta/gamma parameter holomorphy
+#150 assembled source/predecessor holomorphy + determinant rigidity
+#150 open-interval actual predecessor regularity
+#150 cell-minimal regular first bad + exact negative source-channel energy
+#150 off-line zero -> finite regular negative-energy certificate
 ```
 
-## What #148 adds
+## What #150 adds
 
-**PROVED:** `complexArchSafeStrip = {z : ℂ | |z.im| < pi}` is open, convex and connected.
+**PROVED:** the exact frozen source remainder is entrywise analytic on an explicit punctured source strip, and its actual intrinsic predecessor scalar coordinates remain analytic after parity compression/projection and log lifting.
 
-**PROVED:** `complexArchSinhSlope` is zero-free throughout that strip.
+**PROVED:** deck translation forces lifted determinant nonidentity by finite characteristic-polynomial rigidity.
 
-**PROVED:** `complexRegularizedArchScale` is analytic throughout that strip.
+**PROVED:** every nonempty open interval inside one physical cutoff cell contains a regular actual intrinsic predecessor aperture.
 
-**PROVED:** `complexAlphaCore`, `complexBetaCore` and `complexGammaCore` are genuinely analytic in the aperture parameter throughout the strip, via differentiation under the fixed `[0,1]` integral with local compact domination.
+**PROVED:** whole-cell bad-size minimization composes with #142 persistence and regular selection to produce a regular cell-minimal first-bad state.
 
-**PROVED:** real-axis analyticity corollaries for those cores do not require positivity of the real parameter.
+**PROVED:** that state carries a unique zero-shift preimage, a safe negative explicit root and strictly negative exact canonical source-channel energy.
 
-This closes the old fixed-unit parameter-integral first break without changing Eq. (4.4) normalization or using the deck law as a substitute for holomorphy.
+**PROVED:** a hypothetical off-line zero forces one such finite regular negative-energy certificate.
+
+No theorem proves the selected energy nonnegative, excludes the hypothetical zero, or proves RH.
 
 ## Current frontier
 
 ```text
 A4b1 absolute canonical source energy                            PROVED / #136
 A4b2a one-step determinant/sufficiency reduction                 PROVED / #137
-A4R0  aperture freedom + regularity scaffold                     PROVED / #140
-A4R1a fixed-cell canonical witness persistence                   PROVED / #142
-A4R1b frozen/log-cover predecessor scaffold                      PROVED / #144
-A4R1b scalar removable analyticity + production bridge           PROVED / #145-#146
-A4R1b alpha/beta/gamma parameter holomorphy                      PROVED / #148
-A4R1b assembled source/predecessor holomorphy                    OPEN / NOW
-A4R1b determinant nonidentity + dense regularity                 OPEN / NEXT
-A4R1c cell-minimal regular first-bad selection                   OPEN / NEXT
-A4b2r regular minimizing-trial Schur-energy sign                 OPEN / DECISIVE ARITHMETIC GAP
+A4R0 aperture freedom                                            PROVED / #140
+A4R1a fixed-cell negative persistence                            PROVED / #142
+A4R1b analytic/log-cover/determinant regularity                  PROVED / #144-#150
+A4R1c cell-minimal regular first-bad selection                   PROVED / #150
+A4b2r exact regular negative selected residual                   PROVED / #150
+A4b2r independent selected-residual nonnegativity                OPEN / NOW
 A4b2b universal shell/determinant domination                     OPEN / BROAD FALLBACK
-global first-bad exclusion                                       OPEN
+global negative-root exclusion                                   OPEN
 outside-strip/trivial-zero + terminal Mathlib RH wrapper          OPEN
 RH                                                               OPEN
 ```
 
-## The remaining analytic gap
+## Current research reduction
 
-The production source still contains non-arch channels. The next proof must put all of these on one common complex domain:
+The active object is the exact selected zero-shift residual `u0=c-x0`, where `A x0=b` uniquely at the #150 regular predecessor.
 
-```text
-production scalar/principal-log branch
-pole denominator / pole matrix
-finite prime/source terms
-#148 arch cores
-```
-
-and then assemble
+The next work is not another regularity proof. It is to understand the cancellation structure of
 
 ```text
-complexFrozenCanonicalSourceRemainder
-complexFrozenIntrinsicPredecessorRemainder
-liftedFrozenIntrinsicPredecessorBlock
+Ecanonical(u0)<0
 ```
 
-as analytic families.
-
-The natural candidate base domain is the punctured arch strip. A high-value lead is the expected strict positivity
+forced by a hypothetical off-line zero and prove independently that the exact forced state must instead satisfy
 
 ```text
-Re(z*coth(z/2)) > 0
+Ecanonical(u0)>=0.
 ```
 
-for `|Im z|<pi`, `z!=0`, which would give a clean right-half-plane principal-log branch for the production scalar factor.
+An external post-#150 audit proposes a pole-minus-prime discrepancy integral that preserves cancellation before estimation. The project synthesis combines that with the exact boundary-flat moments to derive candidate sixth/eighth-order Riesz-smoothed discrepancy identities.
 
-## Translation/deck-law firewall
+These are **EXTERNAL DERIVED / DERIVED LEADS**, not yet Lean theorem authority.
 
-The exact deck law from #144 is structural, not analytic. The generic function
+## Valuable state not to discard
+
+The cell-minimal construction carries more ancestry than the outer energy endpoint exports:
 
 ```text
-F(z)=-z+Re z
+whole-cell K* minimality
+all smaller sizes good throughout the cell
+both parity sectors nonnegative at smaller sizes
+open persistence of the selected bad witness
+selected regular predecessor
+negative root
+A x0=b
+exact negative energy.
 ```
 
-has the same kind of affine imaginary-translation behavior while being nonholomorphic. This permanently blocks any shortcut from deck/translation identity to holomorphy.
+The next theorem interface should consider preserving this full state. A finite simultaneous-regularity strengthening across both parities/smaller sizes is also worth theoremizing if it remains cheap.
 
-## Determinant nonidentity lead
+## Current falsification firewalls
 
-Once the lifted predecessor is analytic on a connected domain, the exact law
+- raw aperture Loewner monotonicity is not supported by canonical experiments;
+- scalar zero-shift Schur monotonicity is not supported globally;
+- elementary atom energy is signed in tested states;
+- coarse independent channel bounds are conditioning-hostile;
+- coth aperture singularities and log-cover deck translations live in different coordinates.
 
-```text
-Ahat(z+2*pi*i)=Ahat(z)-(2*pi*i)I
-```
-
-suggests a finite characteristic-polynomial root-count proof that the determinant is not identically zero. This is still a **LEAD / HYPOTHESIS**.
-
-The zero-dimensional predecessor case must be handled directly rather than forced through a positive-degree root-count argument.
-
-## Cell-minimal compression
-
-The post-#142 **DERIVED** selection remains preferred:
-
-```text
-K* = min { K | exists L in I_Q, AnyParityBad L K }.
-```
-
-Then all smaller sizes are good in both parities throughout the cell; predecessor size `K*-1` is PSD across the cell; #142 preserves one selected bad witness on an open set; and dense regularity only has to meet that open set at the single predecessor size.
-
-The minimum must be taken over the whole cell. Choosing a least bad size at one aperture and then moving the aperture is not enough.
-
-## After analytic regularity
-
-At the selected cell-minimal regular first-bad state:
-
-```text
-A>=0
-A injective
-A>0
-unique x0 with A x0=b
-u0=c-x0.
-```
-
-The existing #136/#137 machinery can then be packaged into the forced regular negative countercertificate
-
-```text
-Ecanonical(u0)=Re S0<0.
-```
-
-The decisive arithmetic target remains
-
-```text
-Ecanonical(c-x0)>=0.
-```
-
-A narrower possible certificate is `q_c>=0` plus `Delta(x0)>=0`, but only after theoremizing zero-shift coupling realness and the zero-energy edge case.
+These findings constrain route design but do not prove the desired sign.
 
 ## Firewalls
 
 - RH remains OPEN.
-- theorem authority is through #148 only.
-- fixed-unit alpha/beta/gamma parameter holomorphy is PROVED.
-- assembled source/predecessor holomorphy is OPEN.
-- deck-periodicity is not holomorphy.
-- holomorphy is not determinant nonidentity.
-- cell-minimal regularization is DERIVED until production-packaged.
+- theorem authority is through #150 only.
+- machine claim promotion remains separate.
 - regularity is not successor positivity.
-- the regular scalar/Schur sign theorem is OPEN.
-- no all-size Baire or finite-prefix regularization should be built unless the smaller route fails for a theoremized reason.
-- no zero-shift inverse is required in Lean before regularity; use the unique-preimage interface.
-- no termwise source-atom positivity shortcut.
+- `A>0` at the selected state is a DERIVED finite Hermitian consequence unless separately packaged.
+- the open-interval regularity theorem supports a dense interpretation but “dense” is not the exact theorem declaration.
+- negative exact source-channel energy is not a contradiction.
+- external discrepancy/Riesz work is not theorem authority until formalized.
 - no factorwise division by unproved transfer quantities.
 - D remains algebraic, not unitary/isometric.
-- strip-zero exclusion is not yet the full Mathlib RH statement without outside-strip/trivial-zero bookkeeping.
-- machine claim promotion remains separate.
+- negative-root exclusion is not the terminal Mathlib RH wrapper without explicit final bookkeeping.
 
-Newest research detail: `research/RHRC/RESEARCH_LEADS_POST_148_PARAMETER_HOLOMORPHY_GREEN_DELTA.md`.
+Newest research detail: `research/RHRC/RESEARCH_LEADS_POST_150_REGULARIZATION_CLOSED_ARITHMETIC_FRONTIER_DELTA.md`.
 
 **RH remains OPEN.**

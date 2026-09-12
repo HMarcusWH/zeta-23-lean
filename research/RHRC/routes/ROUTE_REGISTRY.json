@@ -12,14 +12,7 @@
     {
       "route_id": "R001_exceptional_zero",
       "phase": "DISCOVERY",
-      "claim_ids": [
-        "R001_FILTERED_ZERO_POLE",
-        "R001_WEIL_BRIDGE",
-        "R001_ZERO_GROWTH",
-        "R001_PRIME_UPPER",
-        "R001_PRIME_UPPER_EQUIV_RH",
-        "C_RH"
-      ],
+      "claim_ids": ["R001_FILTERED_ZERO_POLE", "R001_WEIL_BRIDGE", "R001_ZERO_GROWTH", "R001_PRIME_UPPER", "R001_PRIME_UPPER_EQUIV_RH", "C_RH"],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false
@@ -27,11 +20,7 @@
     {
       "route_id": "R002_multi_probe",
       "phase": "DISCOVERY",
-      "claim_ids": [
-        "R002_MULTI_PROBE_SEPARATION",
-        "R002_WINDOWED_VISIBILITY",
-        "R002_KERNEL_ZERO_SIDE_BRIDGE"
-      ],
+      "claim_ids": ["R002_MULTI_PROBE_SEPARATION", "R002_WINDOWED_VISIBILITY", "R002_KERNEL_ZERO_SIDE_BRIDGE"],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
@@ -104,19 +93,17 @@
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "R003 merged compiler-validated theorem authority remains through FIRST-BAD-RIGIDITY-E4-A4b2a / PR #137 (validated head 64988e142590c82bd0ad43604279ede9a8e85eff; merge fa2f209a6eb8b4059968e8d61239d80588ca256c; theorem tree e3de4dc0377f0124832822b6f97ab5bbd7718640; RHRC #878 and Permansson #651 success). PR #138 is documentation/control synchronization only. #136 proves scalar-sensitive absolute canonical source energy and the regular zero-shift trial-energy bridge. #137 proves the exact complex production source pairing, one-step determinant Delta(w)=q_c q_A(w)-|<w,b>|^2, conditional domination sufficiency, and the global off-line-zero -> q_c<0 OR exists Delta<0 countercertificate. The post-#138 Astra audit reroutes discovery priority: under predecessor nonnegativity and a one-dimensional shell, universal q_c/Delta nonnegativity is DERIVED to be equivalent to successor positivity, so universal domination remains a broad fallback rather than the immediate reduction. The current research frontier is regular-aperture/log-lift selection: preserve a strict finite negative witness while moving to a nearby aperture where all finitely relevant predecessor blocks in both parities are positive definite, then reselect global first-bad. After that, the decisive arithmetic target is the regular minimizing-trial canonical Schur-energy sign Ecanonical(c-A^-1 b)>=0. External exact checks and numerics remain DERIVED/EXPERIMENTAL, not theorem authority. The claim_ids list deliberately remains the machine-promoted claim surface through PR #110; theorem authority beyond that surface must not be inferred as production claim promotion. Negative-root exclusion and RH remain OPEN."
+      "note": "R003 merged compiler-validated theorem authority is through PR #150 (validated head b1be9eca5f544d4356ea88089c0f7264f75d2220; merge fb92d5749d6f7a65cfc9129d49d8213219c059db; theorem tree 999ef44d44855cdffd5be5843e9f072867c0a7a8; RHRC #971 and Permansson #744 success). #150 closes assembled actual-production source/predecessor holomorphy, algebraic deck-forced determinant nonidentity, analytic open-interval actual predecessor regular selection, cell-minimal regular first-bad selection, and the exact regular negative canonical source-channel endpoint. A hypothetical off-line zero now forces one finite regular state with unique A x0=b and canonicalSourceChannelEnergy<0. The current research frontier is the independent arithmetic sign Ecanonical(c-x0)>=0 on that exact forced selected state. Post-#150 discrepancy/Riesz identities are DERIVED/EXTERNAL-DERIVED research leads until theoremized. The claim_ids list deliberately remains the machine-promoted claim surface through PR #110; theorem authority beyond that surface must not be inferred as production claim promotion. Negative-root exclusion, the terminal statement seam, and RH remain OPEN."
     },
     {
       "route_id": "R004_prolate_v2",
       "phase": "DISCOVERY",
-      "claim_ids": [
-        "R004_CCM_DISPLACEMENT_FORMAL"
-      ],
+      "claim_ids": ["R004_CCM_DISPLACEMENT_FORMAL"],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
       "note": "Finite displacement lane. Exact displacement/rank<=2 is promoted on canonicalSourceMatrix; legacy finiteMatrix is usable only for scalar-shift-invariant structure. Absolute spectral-sign claims must use the canonical normalization."
     }
   ],
-  "note": "These routes are intentionally not frozen yet. A frozen digest would be false precision while analytic objects are still being defined."
+  "note": "These routes are intentionally not frozen yet. A frozen digest would be false precision while analytic/arithmetic objects are still being refined."
 }

@@ -54,35 +54,32 @@ class RetroTests(unittest.TestCase):
         self.assertNotIn("rupture", terms)
         self.assertNotIn("slack", terms)
 
-    def test_e4a4_actions_use_post_138_regular_and_schur_aliases(self):
+    def test_e4a4_actions_use_post_150_arithmetic_aliases(self):
         aliases = load_alias_map(RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json")
         terms = expanded_terms("canonical_source_exclusion", aliases)
         for term in (
             "canonicalSourceMatrix",
             "CanonicalSourceEnergy",
-            "CanonicalSourcePairing",
-            "cubicOneStepDeterminant",
-            "canonicalOneStepDomination",
-            "regular aperture",
-            "log lift",
-            "logarithmic determinant",
-            "frozen cutoff",
-            "positive definite predecessor",
-            "Schur energy",
-            "minimizing trial",
-            "A^-1 b",
-            "prime coefficient sensitivity",
-            "paired source remainder",
+            "canonicalSourceChannelEnergy",
+            "regular first bad",
+            "full first-bad certificate",
+            "selected residual",
+            "pole-prime discrepancy",
+            "von Mangoldt discrepancy",
+            "Riesz smoothing",
+            "boundary-flat Taylor annihilation",
+            "omega^7",
+            "omega^9",
+            "interval-certified Schur sign",
+            "channel cancellation",
         ):
             self.assertIn(term, terms)
 
         registry = json.loads(
             (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
         )
-        self.assertNotIn("E4_A4_KERNEL_SOURCE_TRANSPORT", registry["actions"])
-        self.assertNotIn("E4_A4_ABSOLUTE_SOURCE_ENERGY", registry["actions"])
+        self.assertNotIn("E4_A4_REGULAR_APERTURE_SELECTION", registry["actions"])
         for action_id in (
-            "E4_A4_REGULAR_APERTURE_SELECTION",
             "E4_A4_REGULAR_SCHUR_ENERGY_SIGN",
             "E4_A4_CANONICAL_ONE_STEP_DOMINATION",
             "E4_A4_GLOBAL_FIRST_BAD_EXCLUSION",
@@ -91,14 +88,7 @@ class RetroTests(unittest.TestCase):
                 registry["actions"][action_id]["concept_id"],
                 "canonical_source_exclusion",
             )
-        self.assertEqual(
-            registry["actions"]["E4_A4_REGULAR_APERTURE_SELECTION"]["dead_route_matches"],
-            [],
-        )
-        self.assertEqual(
-            registry["actions"]["E4_A4_CANONICAL_ONE_STEP_DOMINATION"]["dead_route_matches"],
-            [],
-        )
+            self.assertEqual(registry["actions"][action_id]["dead_route_matches"], [])
 
     def test_as_of_search_does_not_see_future_commit(self):
         td, repo, old, new = self._fixture_repo()
