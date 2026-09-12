@@ -101,17 +101,12 @@ class RetroTests(unittest.TestCase):
                 registry["actions"][action_id]["concept_id"],
                 "canonical_source_exclusion",
             )
+            # None of these actions revives a dead route. DR-024 is a negative
+            # control for the selected action, not an admission blocker.
+            self.assertEqual(registry["actions"][action_id]["dead_route_matches"], [])
 
         schur = registry["actions"]["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"]
-        self.assertIn("DR-024", schur["dead_route_matches"])
-        self.assertEqual(
-            registry["actions"]["E4_A4_CANONICAL_ONE_STEP_DOMINATION"]["dead_route_matches"],
-            [],
-        )
-        self.assertEqual(
-            registry["actions"]["E4_A4_GLOBAL_FIRST_BAD_EXCLUSION"]["dead_route_matches"],
-            [],
-        )
+        self.assertIn("DR-024", "\n".join(schur["surviving_objections"]))
 
         schur_break_ids = [x["id"] for x in schur["first_breaks"]]
         self.assertNotIn("E4A4-SCHUR-FB-01", schur_break_ids)
