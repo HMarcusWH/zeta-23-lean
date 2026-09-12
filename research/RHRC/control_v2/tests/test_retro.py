@@ -54,7 +54,7 @@ class RetroTests(unittest.TestCase):
         self.assertNotIn("rupture", terms)
         self.assertNotIn("slack", terms)
 
-    def test_e4a4_actions_use_post_150_arithmetic_aliases(self):
+    def test_e4a4_actions_use_post_153_endpoint_jet_aliases(self):
         aliases = load_alias_map(RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json")
         terms = expanded_terms("canonical_source_exclusion", aliases)
         for term in (
@@ -62,10 +62,17 @@ class RetroTests(unittest.TestCase):
             "CanonicalSourceEnergy",
             "canonicalSourceChannelEnergy",
             "regular first bad",
+            "RegularCellMinimalFirstBadCertificate",
+            "RegularCellMinimalNegativeEnergyCertificate",
             "full first-bad certificate",
             "selected residual",
+            "sourceAtomRealEnergy",
+            "endpoint jets",
+            "canonicalPolePrimeDiscrepancy",
             "pole-prime discrepancy",
             "von Mangoldt discrepancy",
+            "iterated primitive",
+            "repeated integration by parts",
             "Riesz smoothing",
             "boundary-flat Taylor annihilation",
             "omega^7",
@@ -89,6 +96,17 @@ class RetroTests(unittest.TestCase):
                 "canonical_source_exclusion",
             )
             self.assertEqual(registry["actions"][action_id]["dead_route_matches"], [])
+
+        schur_break_ids = [
+            x["id"]
+            for x in registry["actions"]["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"]["first_breaks"]
+        ]
+        self.assertNotIn("E4A4-SCHUR-FB-01", schur_break_ids)
+        self.assertNotIn("E4A4-SCHUR-FB-02", schur_break_ids)
+        self.assertEqual(
+            schur_break_ids,
+            ["E4A4-SCHUR-FB-03", "E4A4-SCHUR-FB-04", "E4A4-SCHUR-FB-05"],
+        )
 
     def test_as_of_search_does_not_see_future_commit(self):
         td, repo, old, new = self._fixture_repo()
