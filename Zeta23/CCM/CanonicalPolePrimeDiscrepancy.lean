@@ -46,18 +46,14 @@ def sourceAtomRealEnergy
 private theorem contDiff_ofReal_comp
     {f : ℝ → ℝ} (hf : ContDiff ℝ ⊤ f) :
     ContDiff ℝ ⊤ (fun x : ℝ => (f x : ℂ)) := by
-  rw [show (fun x : ℝ => (f x : ℂ)) = Complex.ofRealCLM ∘ f by
-    funext x
-    simp only [Function.comp_apply, Complex.ofRealCLM_apply]]
-  exact Complex.ofRealCLM.contDiff.comp hf
+  simpa only [Function.comp_apply, Complex.ofRealCLM_apply] using
+    (Complex.ofRealCLM.contDiff.comp hf)
 
 private theorem contDiff_re_comp
     {f : ℝ → ℂ} (hf : ContDiff ℝ ⊤ f) :
     ContDiff ℝ ⊤ (fun x : ℝ => Complex.re (f x)) := by
-  rw [show (fun x : ℝ => Complex.re (f x)) = Complex.reCLM ∘ f by
-    funext x
-    simp only [Function.comp_apply, Complex.reCLM_apply]]
-  exact Complex.reCLM.contDiff.comp hf
+  simpa only [Function.comp_apply, Complex.reCLM_apply] using
+    (Complex.reCLM.contDiff.comp hf)
 
 private theorem contDiff_sourcePotential_fb02 (n : ℤ) :
     ContDiff ℝ ⊤ (fun ω : ℝ => sourcePotential ω n) := by
@@ -361,7 +357,7 @@ private theorem re_intervalIntegral_eq_intervalIntegral_re
     Complex.re (∫ t in a..b, f t) =
       ∫ t in a..b, Complex.re (f t) := by
   have hint : IntervalIntegrable f volume a b := hf.intervalIntegrable a b
-  exact (intervalIntegral_re hint).symm
+  exact (intervalIntegral.intervalIntegral_re hint).symm
 
 /-- Exact pole energy as the continuous source-atom integral. -/
 theorem matrixRealEnergy_canonicalPoleMatrix_eq_integral_sourceAtom
@@ -416,8 +412,11 @@ private theorem hasDerivAt_canonicalPoleCumulativeWeight (t : ℝ) :
     simpa using (hasDerivAt_id t).div_const 2
   have hsinh := (Real.hasDerivAt_sinh (t / 2)).comp t hinner
   have h := hsinh.const_mul 4
-  unfold canonicalPoleCumulativeWeight
-  convert h using 1 <;> ring
+  have hcoef :
+      4 * (Real.cosh (t / 2) * (1 / 2)) =
+        2 * Real.cosh (t / 2) := by
+    ring
+  simpa only [canonicalPoleCumulativeWeight, hcoef] using h
 
 private theorem hasDerivAt_sourceAtom_composed
     {L : ℝ} (hL : 0 < L)
@@ -432,10 +431,10 @@ private theorem hasDerivAt_sourceAtom_composed
   have hdiff : Differentiable ℝ (sourceAtomRealEnergy K x) :=
     hsmooth.differentiable (by simp)
   have hinner : HasDerivAt (fun s : ℝ => 1 - s / L) (-(1 / L)) t := by
-    convert (hasDerivAt_const t (1 : ℝ)).sub ((hasDerivAt_id t).div_const L) using 1 <;>
-      ring
+    simpa only [zero_sub] using
+      (hasDerivAt_const t (1 : ℝ)).sub ((hasDerivAt_id t).div_const L)
   have hcomp := (hdiff (1 - t / L)).hasDerivAt.comp t hinner
-  convert hcomp using 1 <;> ring
+  simpa only [mul_comm] using hcomp
 
 /-- One integration by parts replaces the pole density by its cumulative
 primitive. -/
@@ -518,7 +517,7 @@ private theorem sourceAtom_value_eq_deriv_integral
     have hcoef : (-L) * (-(1 / L)) = (1 : ℝ) := by
       field_simp [hL.ne']
     dsimp [F, D]
-    simpa only [mul_assoc, hcoef, one_mul] using hs
+    simpa only [← mul_assoc, hcoef, one_mul] using hs
   have hDcont : Continuous D := by
     have hsmooth : ContDiff ℝ ⊤ (sourceAtomRealEnergy K x) :=
       contDiff_sourceAtomRealEnergy K x
@@ -738,7 +737,17 @@ theorem matrixRealEnergy_pole_sub_prime_eq_discrepancy
       intro q hq
       obtain ⟨hlog0, hlogL⟩ := prime_log_mem_aperture hq
       exact intervalIntegrable_step_mul_continuous hlog0 hlogL hDcont
-    simpa only [Finset.sum_apply] using hsum
+    have hsum_fun :
+        (∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+          fun t : ℝ =>
+            (if Real.log q ≤ t then (Λ q / Real.sqrt q : ℝ) else 0) * D t) =
+        (fun t : ℝ =>
+          ∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+            (if Real.log q ≤ t then (Λ q / Real.sqrt q : ℝ) else 0) * D t) := by
+      funext t
+      simp only [Finset.sum_apply]
+    rw [← hsum_fun]
+    exact hsum
   have hdisc :
       (∫ t in (0 : ℝ)..L,
         canonicalPolePrimeDiscrepancy L t * D t) =
