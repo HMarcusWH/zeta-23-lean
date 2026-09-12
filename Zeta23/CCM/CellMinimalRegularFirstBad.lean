@@ -21,6 +21,11 @@ with fixed-cell strict-sign persistence and the analytic regular-aperture
 selection theorem.  The same negative witness persists while the aperture is
 moved to a point where the predecessor block is regular.
 
+PR #153 additionally retains the complete first-bad ancestry as a first-class
+certificate.  The legacy existential theorem remains available as a projection,
+so downstream users do not need to change while stronger consumers can retain
+the whole-cell minimum.
+
 No source positivity, negative-root exclusion, finite-to-infinite closure, or
 RH theorem is claimed here.
 -/
@@ -56,26 +61,40 @@ theorem not_anyParityBad_of_lt_cellMinimal
   intro hbad
   exact (hmin M hM) ⟨L, hL, hbad⟩
 
-/-- Headline composition theorem: if a cutoff cell is bad at some finite size,
-then it contains a *regular* aperture at a cell-minimal first-bad size.
+/-- Complete finite state retained by the cell-minimal regular first-bad
+construction.  Both the whole-cell ancestry and its selected-aperture
+projection are stored because the former is mathematically stronger while the
+latter is the cheap interface used by the Schur layer. -/
+structure RegularCellMinimalFirstBadCertificate (Q : ℕ) where
+  Kstar : ℕ
+  Nstar : ℕ
+  L : ℝ
+  p : ReversalParity
+  one_le_Q : 1 ≤ Q
+  two_le_Kstar : 2 ≤ Kstar
+  one_le_Nstar : 1 ≤ Nstar
+  succ_eq : Nstar + 1 = Kstar
+  L_mem : L ∈ fixedCanonicalCutoffCell Q
+  bad : ParityBad p L Kstar
+  cell_minimal :
+    ∀ M : ℕ, M < Kstar → ¬ CellAnyParityBad Q M
+  smaller_good :
+    ∀ M : ℕ, M < Kstar → ¬ AnyParityBad L M
+  regular : IntrinsicPredecessorRegular p L Nstar
 
-The output aperture may differ from the aperture that first witnessed
-cell-badness, but the exact same negative vector is persisted to it.  Because
-the minimum was taken over the whole cell, all smaller sizes remain good after
-this move. -/
-theorem exists_regular_cellMinimal_firstBad
+/-- Every retained physical cutoff-cell aperture is positive. -/
+theorem RegularCellMinimalFirstBadCertificate.L_pos
+    {Q : ℕ} (c : RegularCellMinimalFirstBadCertificate Q) :
+    0 < c.L :=
+  fixedCanonicalCutoffCell_subset_Ioi c.one_le_Q c.L_mem
+
+/-- Strong form of the cell-minimal first-bad theorem.  Unlike the historical
+existential interface, this theorem does not discard the whole-cell minimum
+used to construct the selected regular aperture. -/
+theorem exists_regular_cellMinimal_firstBadCertificate
     (Q : ℕ) (hQ : 1 ≤ Q)
     (hex : ∃ K : ℕ, CellAnyParityBad Q K) :
-    ∃ Kstar Nstar : ℕ,
-      ∃ L : ℝ,
-        ∃ p : ReversalParity,
-          2 ≤ Kstar ∧
-          1 ≤ Nstar ∧
-          Nstar + 1 = Kstar ∧
-          L ∈ fixedCanonicalCutoffCell Q ∧
-          ParityBad p L Kstar ∧
-          (∀ M : ℕ, M < Kstar → ¬ AnyParityBad L M) ∧
-          IntrinsicPredecessorRegular p L Nstar := by
+    Nonempty (RegularCellMinimalFirstBadCertificate Q) := by
   obtain ⟨Kstar, hKtwo, hcellBad, hminCell⟩ :=
     exists_least_cellAnyParityBad_two_le Q hex
   obtain ⟨L₁, hL₁cell, hbadEither⟩ := hcellBad
@@ -101,8 +120,21 @@ theorem exists_regular_cellMinimal_firstBad
     have hminL : ∀ M : ℕ, M < Kstar → ¬ AnyParityBad L M := by
       intro M hM
       exact not_anyParityBad_of_lt_cellMinimal hminCell hM hLcell
-    exact ⟨Kstar, Nstar, L, p, hKtwo, hNstar, hsucc,
-      hLcell, hbadL, hminL, hreg⟩
+    exact ⟨{
+      Kstar := Kstar
+      Nstar := Nstar
+      L := L
+      p := p
+      one_le_Q := hQ
+      two_le_Kstar := hKtwo
+      one_le_Nstar := hNstar
+      succ_eq := hsucc
+      L_mem := hLcell
+      bad := hbadL
+      cell_minimal := hminCell
+      smaller_good := hminL
+      regular := hreg
+    }⟩
   · let p : ReversalParity := .odd
     obtain ⟨u, hune, humem, hneg⟩ := hbad
     obtain ⟨J, hJopen, hL₁J, hJcell, hJneg⟩ :=
@@ -124,11 +156,45 @@ theorem exists_regular_cellMinimal_firstBad
     have hminL : ∀ M : ℕ, M < Kstar → ¬ AnyParityBad L M := by
       intro M hM
       exact not_anyParityBad_of_lt_cellMinimal hminCell hM hLcell
-    exact ⟨Kstar, Nstar, L, p, hKtwo, hNstar, hsucc,
-      hLcell, hbadL, hminL, hreg⟩
+    exact ⟨{
+      Kstar := Kstar
+      Nstar := Nstar
+      L := L
+      p := p
+      one_le_Q := hQ
+      two_le_Kstar := hKtwo
+      one_le_Nstar := hNstar
+      succ_eq := hsucc
+      L_mem := hLcell
+      bad := hbadL
+      cell_minimal := hminCell
+      smaller_good := hminL
+      regular := hreg
+    }⟩
+
+/-- Compatibility projection of the stronger certificate theorem. -/
+theorem exists_regular_cellMinimal_firstBad
+    (Q : ℕ) (hQ : 1 ≤ Q)
+    (hex : ∃ K : ℕ, CellAnyParityBad Q K) :
+    ∃ Kstar Nstar : ℕ,
+      ∃ L : ℝ,
+        ∃ p : ReversalParity,
+          2 ≤ Kstar ∧
+          1 ≤ Nstar ∧
+          Nstar + 1 = Kstar ∧
+          L ∈ fixedCanonicalCutoffCell Q ∧
+          ParityBad p L Kstar ∧
+          (∀ M : ℕ, M < Kstar → ¬ AnyParityBad L M) ∧
+          IntrinsicPredecessorRegular p L Nstar := by
+  obtain ⟨c⟩ := exists_regular_cellMinimal_firstBadCertificate Q hQ hex
+  exact ⟨c.Kstar, c.Nstar, c.L, c.p,
+    c.two_le_Kstar, c.one_le_Nstar, c.succ_eq, c.L_mem,
+    c.bad, c.smaller_good, c.regular⟩
 
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.exists_least_cellAnyParityBad_two_le
 #print axioms Zeta23.CCM.not_anyParityBad_of_lt_cellMinimal
+#print axioms Zeta23.CCM.RegularCellMinimalFirstBadCertificate
+#print axioms Zeta23.CCM.exists_regular_cellMinimal_firstBadCertificate
 #print axioms Zeta23.CCM.exists_regular_cellMinimal_firstBad
