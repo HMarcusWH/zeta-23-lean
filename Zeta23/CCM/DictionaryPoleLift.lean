@@ -2,16 +2,6 @@ import Zeta23.CCM.DictionaryFiniteExpansion
 
 noncomputable section
 
-namespace Complex
-
-/-- Lean/Mathlib compatibility lemma for the real embedding as a continuous
-linear map.  The map is definitionally the ordinary real-to-complex coercion,
-but this release does not expose an `ofRealCLM_apply` simp theorem. -/
-@[simp] theorem ofRealCLM_apply (x : ℝ) :
-    (ofRealCLM : ℝ → ℂ) x = (x : ℂ) := rfl
-
-end Complex
-
 namespace Zeta23.CCM
 
 open Matrix Set MeasureTheory
