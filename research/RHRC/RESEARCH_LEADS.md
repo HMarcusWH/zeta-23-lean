@@ -7,16 +7,16 @@
 ## Current theorem / research authority
 
 ```text
-live main after merged PR #153 = 474a88d76ecd2f4eee6178685b2e8d8b104171ca
-live main tree = dd69f1c612047f2d2f15a7ba158664634284b42e
+live main after merged PR #155 = 7bd3f1028d42272fcadc347c43371b992d9c0bd7
+live main tree = 9a4f21ed55aa0cbdf54527164c2f5f96912c65de
 
-theorem-state anchor = PR #153 merge 474a88d76ecd2f4eee6178685b2e8d8b104171ca
-validated theorem head = b6622dadab911008c0a7238e9dc711c6f9946302
-validated theorem tree = dd69f1c612047f2d2f15a7ba158664634284b42e
-RHRC #994 / run 34709905190 = SUCCESS
-Permansson #767 / run 34709905198 = SUCCESS
+latest theorem-bearing PR = #155
+validated theorem head = ecfd075c07923e6fc80ab1a5b4f2d49c724f5577
+validated theorem tree = 9a4f21ed55aa0cbdf54527164c2f5f96912c65de
+RHRC #1005 / run 34720946254 = SUCCESS
+Permansson #778 / run 34720946242 = SUCCESS
 
-newest post-green delta = RESEARCH_LEADS_POST_153_CERTIFICATE_DISCREPANCY_GREEN_JET_FRONTIER_DELTA.md
+newest post-green delta = RESEARCH_LEADS_POST_155_RIESZ_D_TRANSPORT_FRONTIER_DELTA.md
 current execution SSOT = CURRENT_RESEARCH_PLAN.md
 RH = OPEN
 ```
@@ -25,29 +25,15 @@ Live GitHub head and exact compiler/CI evidence remain authoritative.
 
 ## Historical full-ledger preservation
 
-The former large per-entry `RESEARCH_LEADS.md` inventory was last fully rewritten around the #107/#110 state and subsequently accumulated stale “current” labels even as newer dated deltas superseded it.
-
-That exact file is preserved unchanged as:
+The former large per-entry inventory is preserved unchanged as
 
 ```text
 RESEARCH_LEADS_LEGACY_FULL_THROUGH_110.md
 ```
 
-Use it for archaeology, old lead IDs, provenance and historical route context. The dated `RESEARCH_LEADS_POST_*.md` files remain the chronological post-green record. This current file is intentionally a compact living index so its authority block does not drift again.
+Use it for archaeology, old lead IDs, provenance and historical route context. Older dated `RESEARCH_LEADS_POST_*.md` files remain chronological historical records.
 
 ## Status vocabulary
-
-Research status:
-
-- **ACTIVE** — currently worth theorem or bounded experiment work.
-- **TESTING** — undergoing a bounded feasibility/falsification spike.
-- **READY** — prerequisites are in place and the lead can be activated cheaply.
-- **BLOCKED** — potentially useful, but a named prerequisite is missing.
-- **DORMANT** — coherent, but lower priority than the active route.
-- **PROMOTED** — consumed into theorem-authoritative infrastructure.
-- **SUPERSEDED** — replaced by a cleaner theorem/route.
-- **REFUTED** — falsified as stated.
-- **QUARANTINED** — do not reuse without an explicit changed-premise argument.
 
 Formal status:
 
@@ -56,7 +42,6 @@ Formal status:
 - **LEAD / HYPOTHESIS** — mathematically motivated route, not established.
 - **EXPERIMENTAL SIGNAL** — numerical/search/discovery evidence only.
 - **OPEN** — exact intended statement not established.
-- **RH-EQUIVALENT** — theorem/audit shows the target is already RH-strength in the current framework.
 
 Research status never upgrades formal status.
 
@@ -73,7 +58,7 @@ RegularCellMinimalNegativeEnergyCertificate
 exists_regularFirstBad_negativeEnergyCertificate_of_offLine_zero
 ```
 
-The whole-cell first-bad ancestry, selected smaller-size goodness, selected regular predecessor, predecessor nonnegativity, negative explicit root, exact `A x0=b`, and negative exact canonical energy are now retained in theorem-facing structures.
+The whole-cell first-bad ancestry, selected regular predecessor, predecessor nonnegativity, negative explicit root, exact `A x0=b`, and negative exact canonical energy are retained in theorem-facing structures.
 
 ### Exact pole-prime discrepancy
 
@@ -89,99 +74,172 @@ canonicalSourceChannelEnergy_eq_discrepancy
 
 Pole and prime cancellation is now an exact finite Lean theorem under the production normalization.
 
+### Generic legal Riesz smoothing
+
+**Research status:** PROMOTED  
+**Formal status:** PROVED / #155
+
+#155 proves finite discrepancy integrability, left-anchored iterated primitives, positive-order absolute continuity, a.e. derivative recovery, smooth composed source jets, and the generic arbitrary-order Riesz identity under explicit endpoint-jet hypotheses.
+
+It does **not** prove unconditional production order 6/8.
+
+### Production source parity/even jets
+
+**Research status:** PROMOTED  
+**Formal status:** PROVED / #155
+
+Production source energy is odd in the source coordinate, all even endpoint derivatives vanish, and even reversal parity kills `M3`.
+
 ### Selected-residual certification harness
 
 **Research status:** TESTING INFRASTRUCTURE  
 **Formal status:** TOOLING / #152; no theorem authority
 
-The exact-rational geometry + production numerical scout + Arb replay lane can falsify finite scoped sign mechanisms. It does not prove a sign by repeated success and does not automatically certify the stronger whole-cell ancestry retained by #153.
+The exact-rational geometry + production numerical scout + Arb replay lane can falsify finite scoped sign mechanisms. It does not prove a sign by repeated success and does not automatically certify whole-cell ancestry.
 
-## Active lead — FB-03 source-energy endpoint jets
+## Active lead — FB-03E complex source-coordinate D transport
 
 **Research status:** ACTIVE / HIGHEST LEVERAGE  
-**Formal status:** OPEN
+**Formal status:** DERIVED / OPEN IN LEAN
 
 Target:
 
 ```text
-for legal boundary-flat/parity x,
-determine the actual derivatives of
-  sourceAtomRealEnergy K x
-that vanish at omega=0.
+M0(u)=0
+  -> g_u''(omega)=-(2*pi)^2 g_(D u)(omega)
 ```
 
-The old symbolic calculation suggesting a generic order-seven zero and even-parity order-nine zero remains **DERIVED / LEAD**. It is not an input assumption.
+for the genuine complex production energy `g_u = sourceAtomRealEnergy K u`.
 
-Fastest information-producing sequence:
+The entrywise calculation gives a rank-at-most-two defect. Its complex Hermitian quadratic form vanishes under `sum u=0`. The implementation must make that cancellation theorem-backed rather than importing a real-vector contraction theorem by analogy.
+
+Preferred proof spine:
 
 ```text
-exact selected-vector boundary-flat interface
-  -> derivative values at zero, in increasing order
-  -> actual maximal useful jet order
-  -> generic iterated primitives / repeated integration by parts
-  -> instantiate only to theorem-backed order.
+sourceEntrySecondDerivative
+  -> entrywise rank-two source-matrix identity
+  -> complex contraction against conj(u_i)*u_j
+  -> zero-sum annihilation
+  -> identify D A D with source energy of indexMatrix *ᵥ u.
 ```
 
-## Active lead — transformed selected-residual arithmetic sign
+## Active lead — moment-prefix recursion / production odd jets
+
+**Research status:** ACTIVE / SAME PR  
+**Formal status:** DERIVED / OPEN IN LEAN
+
+Use the already proved shift
+
+```text
+M_k(Du)=M_(k+1)(u)
+```
+
+to target
+
+```text
+M0=...=M(r-1)=0
+  -> g_u^(2r)(omega)=(-1)^r*(2*pi)^(2r)*g_(D^r u)(omega)
+  -> g_u^(2r+1)(0)=2*(-1)^r*(2*pi)^(2r)*|M_r(u)|^2.
+```
+
+Expected production consequences:
+
+```text
+boundary-flat -> jets 1..6 vanish
+boundary-flat -> g^(7)(0)=-2*(2*pi)^6*|M3|^2
+
+even boundary-flat + #155 M3=0 -> jets 1..8 vanish
+even -> g^(9)(0)=2*(2*pi)^8*|M4|^2.
+```
+
+These remain DERIVED until compiler-validated.
+
+## Active lead — exact production Riesz 6/8
+
+**Research status:** ACTIVE / SAME PR  
+**Formal status:** OPEN
+
+Instantiate the already-proved generic #155 Riesz theorem:
+
+```text
+boundary-flat -> exact order-6 Riesz identity
+even boundary-flat -> exact order-8 Riesz identity.
+```
+
+No arithmetic sign theorem belongs in this step.
+
+## Immediate downstream — retained transformed-negative certificate
+
+**Research status:** READY AFTER FB-03E  
+**Formal status:** OPEN
+
+Compose the production Riesz specializations with the retained #153 first-bad certificate and ExceptionalZero wrapper. The goal is
+
+```text
+off-line zero
+  -> retained regular first-bad state
+  -> exact order-6/order-8 transformed residual < 0
+```
+
+without adding hypotheses not already present on the retained state.
+
+Once green, FB-03 is genuinely closed.
+
+## Dead route — pointwise positivity after smoothing
+
+**Research status:** REFUTED  
+**Formal status:** exact finite falsification of the proposed mechanism; not an RH result
+
+The exact boundary-flat `K=2` vectors
+
+```text
+even: (1,-4,6,-4,1)
+odd:  (1,-2,0,2,-1)
+```
+
+show the relevant seventh/ninth source derivatives change sign. Thus
+
+```text
+positive Riesz primitive + endpoint flatness
+  -> pointwise fixed-sign smoothed integrand
+```
+
+is not a valid universal closing theorem.
+
+The Riesz representation survives; the pointwise sign interpretation does not.
+
+## Active lead — complete transformed-residual arithmetic sign
 
 **Research status:** ACTIVE AFTER FB-03  
 **Formal status:** OPEN
 
-Use the exact #153 discrepancy identity plus the FB-03 theorem-backed transformation to search for an independent inequality proving
+The surviving target is the **complete integrated discrepancy minus reduced archimedean/scalar residual**, under the exact retained whole-cell first-bad ancestry.
+
+Candidate mechanism families worth deriving and immediately falsifying:
+
+- stationarity `A x0=b` inside the transformed representation;
+- transfer to smaller-size good predecessor energies;
+- whole-cell minimality across the fixed cutoff cell;
+- exact cancellation identities that keep discrepancy and archimedean pieces coupled;
+- cross-parity compensation if a genuinely invariant combined quantity exists.
+
+Do not invest in a theorem before specifying an independently meaningful inequality/mechanism.
+
+## Lead — combined-parity invariant
+
+**Research status:** TEST FIRST  
+**Formal status:** LEAD / HYPOTHESIS
+
+The first surviving local cutoff contributions have opposite parity signs. Candidate diagnostics include
 
 ```text
-Ecanonical(c-x0) >= 0
+S_even + S_odd
+S_even * S_odd
 ```
 
-on the exact retained forced state.
+or another parity-combined invariant.
 
-The theorem must not smuggle successor positivity, absence of the negative root, or `canonicalOneStepDomination` into its premises.
-
-## Active falsification lead — interval-certified transformed mechanism
-
-**Research status:** READY AFTER FB-03 OBSERVABLE  
-**Formal status:** EXPERIMENTAL / RIGOROUS FINITE NUMERICAL EVIDENCE ONLY
-
-Extend the #152 harness to the exact transformed discrepancy observable and keep the remaining reduced archimedean/scalar budget visible. Test both parity sectors and prime-threshold/cutoff sensitivity.
-
-A rigorous finite counterexample kills the scoped candidate mechanism. Absence of a counterexample does not prove the theorem.
-
-## Supportive / resurrectable leads
-
-### Simultaneous both-parity / finite-tower regularity
-
-**Research status:** READY SUPPORT  
-**Formal status:** OPEN
-
-The retained #153 whole-cell certificate makes this easier to state, but it is not required merely to run FB-03.
-
-### Cross-parity source transfer
-
-**Research status:** READY SUPPORT  
-**Formal status:** mixed PROVED inputs + OPEN closing use
-
-The selected predecessor resonance is gone. A stronger simultaneous regularity theorem could make #129/#134 cross-parity relations more useful, but no metric/unitary property of `D` may be assumed.
-
-### Low-rank displacement compression of `<b,A^-1b>`
-
-**Research status:** READY / FALSIFY EARLY  
-**Formal status:** LEAD
-
-Now that the selected predecessor is regular and the preimage is exact, revisit displacement only if it compresses the canonical inverse/preimage energy into genuinely source-specific quantities. Generic displacement alone remains quarantined by countermodels.
-
-### Positive-pivot / first-sign-flip recurrence
-
-**Research status:** READY / SPECULATIVE  
-**Formal status:** LEAD
-
-The retained ancestry gives “all smaller sizes good, selected successor bad.” A canonical arithmetic recurrence for Schur pivots could exploit this, but no such recurrence is currently theorem-backed.
-
-### Schur residual envelope derivative
-
-**Research status:** READY DIAGNOSTIC  
-**Formal status:** DERIVED / OPEN LEAN
-
-The local regular-state envelope identity remains potentially useful for sensitivity analysis. Global monotonicity is experimentally disfavored and must not be assumed.
+Cheapest test: compute the same-cell quantities across prime-power thresholds and inside cells. If sign/monotonicity fails, discard immediately. If a combined quantity survives while the individual sectors oscillate, that is new information worth theorem work.
 
 ## Broad fallback — universal one-step domination
 
@@ -192,9 +250,7 @@ The local regular-state envelope identity remains potentially useful for sensiti
 
 ## Quarantined current shortcuts
 
-Keep the full historical failure details in `DEAD_ROUTES.md`, `OBSTRUCTION_LEDGER.md`, the legacy full research-leads ledger, and dated countermodel reports.
-
-Current high-priority quarantines:
+Current high-priority quarantines/dead routes include:
 
 - generic first-bad Hermitian/parity/KKT structure without exact canonical arithmetic;
 - factorwise `alpha` / `Gamma` / overlap / source-moment nonvanishing or division;
@@ -205,25 +261,8 @@ Current high-priority quarantines:
 - global minimizing-trial Schur monotonicity;
 - universal positive elementary source-atom energy;
 - direct coth/deck common-lattice identification;
-- pre-assumed order-seven/order-nine endpoint flatness.
-
-## Alternate routes retained for archaeology / fallback
-
-The following older route families remain available in the legacy full ledger and their route-specific documents:
-
-```text
-R001 exceptional-zero amplification / scalar RH-equivalence wall
-R002 multi-probe / masking route
-source-faithful QW restriction cross-check
-continuous aperture first-singularity route
-resolvent / spectral-measure routes
-finite Xi / entire-function route
-Bombieri finite comparator
-Suzuki localized-bottom cross-check
-analytically specified Jacobi/prolate generator
-```
-
-None should displace the current #153 endpoint-jet/discrepancy route without a named changed premise or higher information gain.
+- real-vector D transport silently promoted to the complex production energy;
+- pointwise fixed-sign smoothed-integrand positivity.
 
 ## Update law
 
@@ -239,8 +278,6 @@ After every meaningful green result:
 
 ## Standing research questions
 
-After every meaningful green result ask:
-
 1. What became possible that was not possible before?
 2. Which assumptions disappeared or can now be weakened?
 3. Which dead route had exactly that missing prerequisite?
@@ -252,6 +289,6 @@ After every meaningful green result ask:
 9. Are we using the canonical sign-authoritative object?
 10. Does any conclusion rely on an unproved identification between distinct finite/operator objects?
 
-**Current highest-information question:** what is the exact endpoint-jet order of `sourceAtomRealEnergy` forced by the production boundary-flat/parity hypotheses?
+**Current highest-information question:** can the derived complex source-coordinate D-transport be theoremized exactly on the production energy, thereby closing the odd jets and exact Riesz 6/8 specializations?
 
 **RH remains OPEN.**
