@@ -2,6 +2,7 @@ import Zeta23.CCM.CanonicalSourceEnergy
 import Zeta23.CCM.DictionaryPoleLift
 import Mathlib.Analysis.Calculus.ContDiff.Deriv
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp
 import Mathlib.MeasureTheory.Integral.IntervalIntegral.IntegrationByParts
 
 noncomputable section
@@ -45,14 +46,18 @@ def sourceAtomRealEnergy
 private theorem contDiff_ofReal_comp
     {f : ℝ → ℝ} (hf : ContDiff ℝ ⊤ f) :
     ContDiff ℝ ⊤ (fun x : ℝ => (f x : ℂ)) := by
-  simpa only [Function.comp_apply, Complex.ofRealCLM_apply] using
-    Complex.ofRealCLM.contDiff.comp hf
+  rw [show (fun x : ℝ => (f x : ℂ)) = Complex.ofRealCLM ∘ f by
+    funext x
+    simp only [Function.comp_apply, Complex.ofRealCLM_apply]]
+  exact Complex.ofRealCLM.contDiff.comp hf
 
 private theorem contDiff_re_comp
     {f : ℝ → ℂ} (hf : ContDiff ℝ ⊤ f) :
     ContDiff ℝ ⊤ (fun x : ℝ => Complex.re (f x)) := by
-  simpa only [Function.comp_apply, Complex.reCLM_apply] using
-    Complex.reCLM.contDiff.comp hf
+  rw [show (fun x : ℝ => Complex.re (f x)) = Complex.reCLM ∘ f by
+    funext x
+    simp only [Function.comp_apply, Complex.reCLM_apply]]
+  exact Complex.reCLM.contDiff.comp hf
 
 private theorem contDiff_sourcePotential_fb02 (n : ℤ) :
     ContDiff ℝ ⊤ (fun ω : ℝ => sourcePotential ω n) := by
@@ -91,13 +96,14 @@ higher derivatives. -/
     (K : ℕ)
     (x : EuclideanSpace ℂ (Fin (2 * K + 1))) :
     ContDiff ℝ ⊤ (sourceAtomRealEnergy K x) := by
-  let u := (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x
   have hq : ContDiff ℝ ⊤
-      (fun ω : ℝ => quadraticForm (sourceMatrix ω K) u) := by
+      (fun ω : ℝ => quadraticForm (sourceMatrix ω K)
+        ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x)) := by
     unfold quadraticForm
     simp only [sourceMatrix_apply]
     fun_prop
-  simpa [sourceAtomRealEnergy, matrixRealEnergy, u] using contDiff_re_comp hq
+  unfold sourceAtomRealEnergy matrixRealEnergy
+  exact contDiff_re_comp hq
 
 /-- Local expansion of the deterministic pole functional into its two physical
 exponential weights.  This repeats only generic Fourier bookkeeping already
@@ -355,8 +361,7 @@ private theorem re_intervalIntegral_eq_intervalIntegral_re
     Complex.re (∫ t in a..b, f t) =
       ∫ t in a..b, Complex.re (f t) := by
   have hint : IntervalIntegrable f volume a b := hf.intervalIntegrable a b
-  unfold intervalIntegral
-  rw [Complex.sub_re, ← integral_re hint.1, ← integral_re hint.2]
+  exact (intervalIntegral_re hint).symm
 
 /-- Exact pole energy as the continuous source-atom integral. -/
 theorem matrixRealEnergy_canonicalPoleMatrix_eq_integral_sourceAtom
@@ -425,7 +430,7 @@ private theorem hasDerivAt_sourceAtom_composed
   have hsmooth : ContDiff ℝ ⊤ (sourceAtomRealEnergy K x) :=
     contDiff_sourceAtomRealEnergy K x
   have hdiff : Differentiable ℝ (sourceAtomRealEnergy K x) :=
-    (contDiff_infty_iff_deriv.mp hsmooth).1
+    hsmooth.differentiable (by simp)
   have hinner : HasDerivAt (fun s : ℝ => 1 - s / L) (-(1 / L)) t := by
     convert (hasDerivAt_const t (1 : ℝ)).sub ((hasDerivAt_id t).div_const L) using 1 <;>
       ring
@@ -513,9 +518,7 @@ private theorem sourceAtom_value_eq_deriv_integral
     have hcoef : (-L) * (-(1 / L)) = (1 : ℝ) := by
       field_simp [hL.ne']
     dsimp [F, D]
-    convert hs using 1
-    · rfl
-    · rw [mul_assoc, hcoef, one_mul]
+    simpa only [mul_assoc, hcoef, one_mul] using hs
   have hDcont : Continuous D := by
     have hsmooth : ContDiff ℝ ⊤ (sourceAtomRealEnergy K x) :=
       contDiff_sourceAtomRealEnergy K x
@@ -533,7 +536,6 @@ private theorem sourceAtom_value_eq_deriv_integral
           dsimp [F]
           rw [div_self hL.ne']
           simp
-          ring
     _ = (1 / L) * ∫ t in a..L, D t := by rw [hftc]
     _ = _ := rfl
 
@@ -727,10 +729,16 @@ theorem matrixRealEnergy_pole_sub_prime_eq_discrepancy
       funext t
       rw [Finset.sum_mul]
     rw [hfun]
-    apply IntervalIntegrable.sum
-    intro q hq
-    obtain ⟨hlog0, hlogL⟩ := prime_log_mem_aperture hq
-    exact intervalIntegrable_step_mul_continuous hlog0 hlogL hDcont
+    have hsum : IntervalIntegrable
+        (∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+          fun t : ℝ =>
+            (if Real.log q ≤ t then (Λ q / Real.sqrt q : ℝ) else 0) * D t)
+        volume 0 L := by
+      apply IntervalIntegrable.sum
+      intro q hq
+      obtain ⟨hlog0, hlogL⟩ := prime_log_mem_aperture hq
+      exact intervalIntegrable_step_mul_continuous hlog0 hlogL hDcont
+    simpa only [Finset.sum_apply] using hsum
   have hdisc :
       (∫ t in (0 : ℝ)..L,
         canonicalPolePrimeDiscrepancy L t * D t) =
