@@ -111,7 +111,7 @@ The regular-Schur action must remember:
 - exact discrepancy/Riesz cancellation must not be silently discarded;
 - post-#150 numerical probes disfavor global aperture Loewner monotonicity, global minimizing-trial Schur monotonicity and universal positive atom energy;
 - source-coordinate D transport must be proved on the complex production energy, not inferred from a real helper;
-- DR-024 kills universal pointwise fixed-sign smoothed-integrand positivity;
+- DR-024 kills universal pointwise fixed-sign smoothed-integrand positivity, but the surviving complete transformed-residual route does not revive DR-024 and therefore must not list it in `dead_route_matches`;
 - finite Arb certification does not become Lean theorem authority or automatically certify whole-cell ancestry.
 
 ## Universal domination fallback
@@ -136,7 +136,7 @@ This is routing metadata, not theorem evidence.
 - completed FB-03A-D are not represented as open first breaks;
 - FB-03E explicitly requires complex production D transport / production odd jets;
 - FB-03F explicitly requires retained-certificate composition;
-- DR-024 is visible as a dead-route match on the selected action;
+- DR-024 remains a negative-control objection/ledger entry while the surviving action has no dead-route revival blocker;
 - terminal claim remains `RH_OPEN`;
 - controller theorem authority and terminal-claim mutation remain false.
 
