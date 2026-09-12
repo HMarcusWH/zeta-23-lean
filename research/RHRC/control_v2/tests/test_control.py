@@ -109,7 +109,10 @@ class ControlV2Tests(unittest.TestCase):
         self.assertIn("generic legal repeated integration by parts", objections)
         self.assertIn("complex production", objections)
         self.assertIn("pointwise fixed-sign", objections)
-        self.assertIn("DR-024", action["dead_route_matches"])
+        self.assertIn("DR-024", objections)
+        # DR-024 kills only a shortcut; the surviving complete-residual route is
+        # not reviving it, so Control-v2 must not require a RevivalRecord.
+        self.assertEqual(action["dead_route_matches"], [])
         self.assertNotIn("E4A4-SCHUR-FB-01", break_ids)
         self.assertNotIn("E4A4-SCHUR-FB-02", break_ids)
         self.assertNotIn("E4A4-SCHUR-FB-03", break_ids)
