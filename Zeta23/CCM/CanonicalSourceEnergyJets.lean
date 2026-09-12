@@ -47,9 +47,10 @@ an output of these endpoint theorems.
     sourceEntry (-ω) n m = -sourceEntry ω n m := by
   by_cases h : n = m
   · subst m
-    simp
+    rw [sourceEntry_self, sourceEntry_self]
+    exact sourceDiagonal_neg_sourceCoordinate ω n
   · rw [sourceEntry_of_ne (-ω) h, sourceEntry_of_ne ω h]
-    simp
+    rw [sourcePotential_neg_sourceCoordinate, sourcePotential_neg_sourceCoordinate]
     ring
 
 @[simp] theorem sourceMatrix_neg_sourceCoordinate
