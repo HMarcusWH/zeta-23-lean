@@ -27,7 +27,7 @@ Reusable countermodel/regression classes include:
 - **post-#150 minimizing-Schur derivative fixture:** test whether the exact regular selected-residual Schur value has a uniform derivative sign;
 - **post-#150 elementary-atom energy fixture:** test the sign of the elementary source-atom energy on the exact selected-residual geometry;
 - **post-#155 D-transport regression fixture:** test the complex production identity separately from any real-vector contraction helper and verify the zero-sum rank-two cancellation;
-- **post-#155 pointwise Riesz-sign fixture:** exact `K=2` even/odd boundary-flat vectors falsify the universal claim that positive Riesz primitives plus endpoint flatness force a pointwise fixed-sign smoothed source-energy integrand;
+- **post-#155 pointwise Riesz-sign fixture:** exact `K=2` even/odd boundary-flat vectors falsify the universal claim that positive Riesz primitives plus endpoint flatness force a pointwise fixed-sign smoothed source-energy integrand; the exact derivative witness is rerun by `check_post155_riesz_pointwise_sign.py` in the RHRC suite;
 - **post-#150 selected-residual interval fixture:** reconstruct exact boundary-flat/parity/predecessor/shell geometry, scout the production canonical source numerically, then replay candidate sign failures with Arb enclosures before treating them as rigorous finite falsification evidence.
 
 Historical fixture records:
@@ -39,6 +39,14 @@ Historical fixture records:
 - `POST_150_ARITHMETIC_DIAGNOSTICS_2026_09_12.md`
 - `POST_150_SELECTED_RESIDUAL_SCOPE_AUDIT_2026_09_12.md`
 - `POST_155_RIESZ_POINTWISE_SIGN_COUNTERMODELS_2026_09_13.md`
+
+Executable exact regression:
+
+```text
+python research/RHRC/countermodels/check_post155_riesz_pointwise_sign.py
+```
+
+The checker reconstructs the odd source derivatives from the production `sourceEntryReal` formula at `omega=0` and `omega=1/4` using exact rational arithmetic, and verifies the opposite-sign ninth/seventh derivative values for both `K=2` fixtures.
 
 The post-#150 files record a mixture of DERIVED/external calculations, EXPERIMENTAL SIGNAL numerical route falsifications, and rigorously enclosed finite numerical audits. They remain historical records at their original evidence classes.
 
