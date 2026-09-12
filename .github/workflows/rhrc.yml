@@ -29,13 +29,13 @@ jobs:
           import json
           p = json.load(open('/tmp/RHRC_CONTROL_V2.json'))
           assert p['terminal_claim'] == 'RH_OPEN'
-          assert p['theorem_anchor']['pr'] == 148
-          assert p['theorem_anchor']['merge_commit'] == 'fcd301ae4c1b58196ff7fca18128243f1d35a87b'
-          assert p['theorem_anchor']['tree'] == '91d537ee64b8f613bebdcf12110deba486276d35'
+          assert p['theorem_anchor']['pr'] == 150
+          assert p['theorem_anchor']['merge_commit'] == 'fb92d5749d6f7a65cfc9129d49d8213219c059db'
+          assert p['theorem_anchor']['tree'] == '999ef44d44855cdffd5be5843e9f072867c0a7a8'
           assert p['control_anchor']['pr'] == 117
           assert p['theorem_anchor']['merge_commit'] != p['control_anchor']['merge_commit']
-          assert p['route_certificate']['frontier_id'] == 'FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_APERTURE_SELECTION'
-          assert p['route_certificate']['selected_action'] == 'E4_A4_REGULAR_APERTURE_SELECTION'
+          assert p['route_certificate']['frontier_id'] == 'FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN'
+          assert p['route_certificate']['selected_action'] == 'E4_A4_REGULAR_SCHUR_ENERGY_SIGN'
           assert p['route_certificate']['theorem_authority'] is False
           assert p['route_certificate']['terminal_claim_change'] is False
           assert all(r['search_paths'] for r in p['retro_receipts'])

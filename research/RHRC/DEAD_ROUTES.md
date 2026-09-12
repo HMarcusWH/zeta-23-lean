@@ -78,7 +78,7 @@ Attempt to exclude the global first-bad negative state using only generic Hermit
 
 **Status:** quarantined by post-#128 countermodels.
 
-**Post-#138 clarification:** neither the regular-aperture route nor the later Schur-energy route revives DR-012. A4R uses exact canonical aperture dependence only to select a regular witness; the eventual sign theorem must spend exact source arithmetic.
+**Post-#150 clarification:** #150 removes selected-predecessor singularity but does not revive DR-012. The final sign theorem must spend actual canonical arithmetic.
 
 ## DR-013 — displacement identity alone excludes the first-bad state
 
@@ -96,7 +96,7 @@ Attempt to prove universal positivity/nonnegativity of `explicitCanonicalSourceM
 
 Try to close the first-bad state by proving from the generic transfer package that one transfer factor has a fixed sign or cannot vanish, or by dividing the transfer equation by such a factor.
 
-**Status:** quarantined by exact rational post-#129 countermodels and unchanged by #134/#137.
+**Status:** quarantined by exact rational post-#129 countermodels and unchanged by #134/#137/#150.
 
 No argument may divide by `alpha`, `Gamma`, overlap, source moment, `Gamma0`, or `mu(z)` without a separate theorem.
 
@@ -114,16 +114,14 @@ Attempt to close A4b2b by assuming, invoking, or merely renaming positivity of t
 
 **Status:** dead by circularity / zero information gain after PR #137; strengthened post-#138.
 
-Under predecessor nonnegativity and a one-dimensional shell, the Astra audit derives the exact equivalence
+Under predecessor nonnegativity and a one-dimensional shell, the Astra audit derives
 
 ```text
 q_c>=0 AND forall w, Delta(w)>=0
   <-> successor one-step quadratic form >=0.
 ```
 
-Universal domination remains a valid sufficient closing theorem, but it does **not** count as a reduction of the RH obstruction unless it is obtained from an independently justified canonical arithmetic mechanism.
-
-**Changed-premise requirement for revival as the primary route:** exhibit a source-specific theorem — e.g. a genuinely positive representation, exact combined-channel remainder, or independent arithmetic inequality — whose premises do not already encode successor positivity or RH-strength Weil positivity.
+Universal domination remains a valid sufficient closing theorem, but it does **not** count as a reduction unless obtained from an independently justified canonical arithmetic mechanism.
 
 ## DR-018 — atom-by-atom positive determinant / SOS
 
@@ -131,32 +129,70 @@ Attempt to prove the #137 determinant nonnegative by proving each elementary can
 
 **Status:** quarantined by the post-#138 Astra symbolic audit.
 
-The reported first nonzero two-vector determinant coefficient of an elementary source atom is negative on the tested boundary-flat predecessor/shell sectors, with leading determinant orders `omega^18` in odd parity and `omega^22` in even parity.
+The reported first nonzero two-vector determinant coefficient is negative on tested boundary-flat predecessor/shell sectors, with leading determinant orders `omega^18` in odd parity and `omega^22` in even parity.
 
-**Consequence:** the old `omega^7 / omega^9` cancellation signal does not support atomwise determinant positivity. A full-source mixed-channel cancellation identity remains possible and is not killed by this route record.
-
-**Evidence class:** external DERIVED/symbolic result; repository reproduction pending. Do not promote to Lean theorem authority.
+**Evidence class:** external DERIVED/symbolic; repository theoremization pending.
 
 ## DR-019 — correction-vector independence in the #134 kernel transport
 
 Attempt to force factorwise kernel/source conclusions by treating the two odd predecessor correction vectors `a` and `d` as independent directions.
 
-**Status:** quarantined pending formalization of the post-#138 geometric identity
+**Status:** quarantined pending formalization of the post-#138 identity
 
 ```text
 d = -(6/(2*N-1)) a.
 ```
 
-The identity was reported with exact rational checks for `K=2,...,30` and an elementary power-sum derivation. Until Lean-locked, treat it as external DERIVED evidence, but do not invest in an independence argument contradicted by the available exact checks.
+Until Lean-locked, treat it as external DERIVED evidence, but do not invest in an independence argument contradicted by exact checks.
 
 ## DR-020 — independent coarse channel majorants for the regular Schur sign
 
 Attempt to prove `Ecanonical(c-A^-1b)>=0` by separately bounding the absolute magnitudes of pole, archimedean, scalar and prime channels with large slack, without exploiting their exact cancellation.
 
-**Status:** quarantined as a default strategy by post-#138 numerical conditioning signals.
+**Status:** quarantined as a default strategy by post-#138 and post-#150 numerical conditioning signals.
 
-Sampled canonical regular endpoints were reported as residues of cancellation with an absolute-channel/final-value ratio around `6.46e20` in one small case. This does not prove every coarse-majorant strategy impossible, but any proposed bound must demonstrate enough correlated structure to survive that conditioning.
+The final regular Schur endpoint can be a tiny residue of much larger channel terms. Any proposed separated bound must demonstrate enough correlated structure to survive that conditioning.
 
-**Escape requirement:** exact paired-channel cancellation, a sharp source-specific remainder, or a rigorously quantified bound shown by interval-certified tests to resolve the observed cancellation scale.
+**Escape requirement:** exact paired-channel cancellation, a sharp source-specific remainder, or rigorously quantified interval-certified bounds resolving the observed cancellation scale.
+
+## DR-021 — global aperture Loewner monotonicity
+
+Attempt to prove the selected canonical sign by showing the full canonical matrix family is globally monotone in Loewner order as aperture varies.
+
+**Status:** quarantined as a default route by post-#150 EXPERIMENTAL SIGNAL.
+
+Canonical derivative probes exhibit mixed spectral signs rather than a uniform positive- or negative-semidefinite derivative.
+
+**Revival requirement:** narrow the theorem to the exact selected residual/subspace and prove that the mixed-sign modes are irrelevant, with rigorous certification.
+
+## DR-022 — global minimizing-trial Schur monotonicity
+
+Attempt to prove the final sign from a global monotonicity theorem for the regular zero-shift Schur value `S(L)`.
+
+**Status:** quarantined as a default route by post-#150 EXPERIMENTAL SIGNAL.
+
+The derivative of the minimizing-trial Schur value changes sign in tested canonical aperture ranges.
+
+The envelope identity `S'(L)=<M'(L)u(L),u(L)>`, if theoremized, remains useful diagnostically; it does not imply a fixed sign.
+
+## DR-023 — universal positive elementary source-atom energy
+
+Attempt to represent the selected residual energy as a sum/integral of elementary source atoms each having nonnegative quadratic energy on the relevant canonical trial.
+
+**Status:** quarantined as a default route by post-#150 EXPERIMENTAL SIGNAL.
+
+Tested elementary atom energies change sign. A transformed discrepancy or full-source mixed cancellation may still admit a useful sign and is not killed by this record.
+
+## Coordinate-mismatch warning — not a dead route ID
+
+The scalar identity
+
+```text
+L*(exp L+1)/(exp L-1)=L*coth(L/2)
+```
+
+uses the complex aperture coordinate `L`, whereas #150 deck translation acts on the log-cover coordinate `z` after `L=exp z`.
+
+Therefore a direct “same `2*pi*i` lattice -> same resolvent” argument is **downgraded**, not established. Reviving it requires an explicit transform/conjugacy theorem connecting the two coordinates.
 
 **RH remains OPEN.**
