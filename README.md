@@ -175,13 +175,15 @@ The #152 interval harness is a falsification/certification instrument, not theor
 Current living state is maintained in:
 
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`;
+- `research/RHRC/RESEARCH_LEADS.md` — compact living lead index;
 - `research/RHRC/RESEARCH_LEADS_POST_153_CERTIFICATE_DISCREPANCY_GREEN_JET_FRONTIER_DELTA.md`;
+- `research/RHRC/OBSTRUCTION_LEDGER.md`;
 - `research/RHRC/DOCUMENTATION_AUTHORITY.md`;
 - `research/RHRC/VALIDATION_PROTOCOL.md`;
 - `research/RHRC/routes/R003_ccm_bridge/README.md`;
 - `research/RHRC/control_v2/README.md`.
 
-Older dated deltas, external reviews, countermodel reports and release audits remain historical evidence and are not rewritten to look current. The accumulated `RESEARCH_LEADS.md` and `OBSTRUCTION_LEDGER.md` are historical inventories; current anchors and additive post-#153 state are carried by the living SSOTs and newest dated delta.
+The former large per-entry research-leads ledger is preserved unchanged as `research/RHRC/RESEARCH_LEADS_LEGACY_FULL_THROUGH_110.md`. Older dated deltas, external reviews, countermodel reports and release audits remain historical evidence and are not rewritten to look current.
 
 ## Permanent firewalls
 

@@ -47,10 +47,11 @@ Update these when the underlying state changes:
 - `AUDIT.md`;
 - `research/RHRC/README.md`;
 - active route README;
+- `research/RHRC/RESEARCH_LEADS.md` — compact living lead index;
 - newest dated research delta;
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`;
 - `research/RHRC/VALIDATION_PROTOCOL.md` when validation anchors or gate semantics change;
-- dead-route and obstruction records when reusable classifications change;
+- `research/RHRC/OBSTRUCTION_LEDGER.md` / `DEAD_ROUTES.md` when reusable classifications change;
 - claim/route registries only when their own formal state actually changes;
 - `control_v2/CONTROL_STATE.json` when theorem/control anchors or research frontier change;
 - `control_v2/ACTION_REGISTRY.json` when executable research priority or first-break specification changes;
@@ -58,20 +59,13 @@ Update these when the underlying state changes:
 
 Dated deltas and external reviews are historical evidence. Do not rewrite older deltas to look current; add a newer delta and update current-priority pointers.
 
-Large accumulated historical ledgers should not be destructively rewritten merely to manufacture currentness. When reusable history remains valid, preserve it and place additive new state in the newest dated delta / diagnostics record, with living SSOTs pointing there.
-
-### Accumulated ledgers with historical opening anchors
-
-`RESEARCH_LEADS.md` and `OBSTRUCTION_LEDGER.md` are accumulated inventories whose internal opening-anchor blocks come from earlier full-ledger review points. They are **not** current-anchor SSOTs. Their historical entries remain useful, but current authority/status overrides come from:
+Large accumulated historical ledgers should not be destructively rewritten merely to manufacture currentness. In this synchronization the old full per-entry research-leads ledger is preserved byte-for-byte as
 
 ```text
-CURRENT_RESEARCH_PLAN.md
-README.md
-routes/R003_ccm_bridge/README.md
-RESEARCH_LEADS_POST_153_CERTIFICATE_DISCREPANCY_GREEN_JET_FRONTIER_DELTA.md
+RESEARCH_LEADS_LEGACY_FULL_THROUGH_110.md
 ```
 
-This explicit classification prevents an old header inside a large historical ledger from outranking the living state. A future full-ledger rewrite may refresh those files, but lack of such a rewrite is not documentation drift when the living SSOTs are synchronized.
+while `RESEARCH_LEADS.md` becomes a compact living index with a current authority block. `OBSTRUCTION_LEDGER.md` remains the accumulated blocker ledger but its authority header and post-#153 additive classifications are current.
 
 ## Theorem-state versus control-plane anchors
 

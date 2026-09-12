@@ -131,9 +131,14 @@ A separate simultaneous-both-parity / finite-tower regularity strengthening rema
 
 Current living synthesis:
 
-`research/RHRC/RESEARCH_LEADS_POST_153_CERTIFICATE_DISCREPANCY_GREEN_JET_FRONTIER_DELTA.md`
+```text
+research/RHRC/RESEARCH_LEADS.md
+research/RHRC/RESEARCH_LEADS_POST_153_CERTIFICATE_DISCREPANCY_GREEN_JET_FRONTIER_DELTA.md
+research/RHRC/CURRENT_RESEARCH_PLAN.md
+research/RHRC/OBSTRUCTION_LEDGER.md
+```
 
-Older dated deltas and external reviews remain historical. The large accumulated `RESEARCH_LEADS.md` / `OBSTRUCTION_LEDGER.md` inventories are not current-anchor SSOTs; their reusable history is preserved and superseded where necessary by the living plan and newest dated delta.
+The former large per-entry lead ledger is preserved unchanged as `research/RHRC/RESEARCH_LEADS_LEGACY_FULL_THROUGH_110.md`. Older dated deltas and external reviews remain historical.
 
 ## Firewalls
 
