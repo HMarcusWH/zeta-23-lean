@@ -52,7 +52,7 @@ off-line zero -> finite regular negative-energy certificate      PROVED / #150
 The exact common source domain is
 
 ```text
-complexFrozenSourceDomain = complexArchSafeStrip \\ {0}.
+complexFrozenSourceDomain = complexArchSafeStrip \ {0}.
 ```
 
 Headline source/predecessor declarations include:
