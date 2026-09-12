@@ -47,15 +47,16 @@ theorem intervalIntegrable_canonicalPolePrimeRieszPrimitive
       (canonicalPolePrimeRieszPrimitive L r) volume 0 L := by
   induction r with
   | zero =>
-      simpa using intervalIntegrable_canonicalPolePrimeDiscrepancy hL
+      change IntervalIntegrable (canonicalPolePrimeDiscrepancy L) volume 0 L
+      exact intervalIntegrable_canonicalPolePrimeDiscrepancy hL
   | succ r ih =>
       have h0 : (0 : ℝ) ∈ uIcc (0 : ℝ) L := by
         rw [uIcc_of_le hL.le]
         exact ⟨le_rfl, hL.le⟩
       have hac : AbsolutelyContinuousOnInterval
           (fun t => ∫ s in (0 : ℝ)..t,
-            canonicalPolePrimeRieszPrimitive L r s) 0 L :=
-        ih.absolutelyContinuousOnInterval_intervalIntegral h0
+            canonicalPolePrimeRieszPrimitive L r s) 0 L := by
+        exact ih.absolutelyContinuousOnInterval_intervalIntegral h0
       simpa [canonicalPolePrimeRieszPrimitive] using
         hac.continuousOn.intervalIntegrable
 
@@ -68,8 +69,7 @@ theorem absolutelyContinuousOnInterval_canonicalPolePrimeRieszPrimitive_succ
     rw [uIcc_of_le hL.le]
     exact ⟨le_rfl, hL.le⟩
   simpa [canonicalPolePrimeRieszPrimitive] using
-    (intervalIntegrable_canonicalPolePrimeRieszPrimitive hL r).
-      absolutelyContinuousOnInterval_intervalIntegral h0
+    (intervalIntegrable_canonicalPolePrimeRieszPrimitive hL r).absolutelyContinuousOnInterval_intervalIntegral h0
 
 /-- On the physical interval, the derivative of the `(r+1)`st primitive is the
 `r`th primitive almost everywhere.  This is deliberately an a.e. theorem:
@@ -83,8 +83,8 @@ theorem ae_deriv_canonicalPolePrimeRieszPrimitive_succ
     rw [uIcc_of_le hL.le]
     exact ⟨le_rfl, hL.le⟩
   have hae :=
-    (intervalIntegrable_canonicalPolePrimeRieszPrimitive hL r).
-      ae_hasDerivAt_integral
+    IntervalIntegrable.ae_hasDerivAt_integral
+      (intervalIntegrable_canonicalPolePrimeRieszPrimitive hL r)
   filter_upwards [hae] with t ht
   intro htmem
   have hder := ht htmem 0 h0
@@ -137,10 +137,13 @@ theorem deriv_sourceAtomComposedJet
     simpa only [← iteratedDeriv_succ] using
       (hdiff (1 - t / L)).hasDerivAt
   have hin : HasDerivAt (fun s : ℝ => 1 - s / L) (-(1 / L)) t := by
-    convert (hasDerivAt_const t (1 : ℝ)).sub ((hasDerivAt_id t).div_const L) using 1 <;>
-      ring
+    simpa using
+      (hasDerivAt_const t (1 : ℝ)).sub ((hasDerivAt_id t).div_const L)
   have hcomp := hout.comp t hin
-  unfold sourceAtomComposedJet
+  change deriv
+      ((iteratedDeriv r (sourceAtomRealEnergy K x)) ∘
+        (fun s : ℝ => 1 - s / L)) t =
+    -(1 / L) * iteratedDeriv (r + 1) (sourceAtomRealEnergy K x) (1 - t / L)
   rw [hcomp.deriv]
   ring
 
@@ -200,7 +203,10 @@ theorem canonicalPolePrimeRiesz_integral_step
         exact ⟨hmem.1.le, hmem.2⟩
       dsimp [P, G]
       rw [ht htIcc]
-    · simp [Ioc_eq_empty hL.le]
+    · filter_upwards with t
+      intro hmem
+      exfalso
+      linarith [hL, hmem.1, hmem.2]
   rw [hleft, hright, hP0, hGL] at hparts
   dsimp [P, G] at hparts
   linarith
