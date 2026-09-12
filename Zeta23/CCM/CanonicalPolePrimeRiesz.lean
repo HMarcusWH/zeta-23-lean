@@ -137,8 +137,7 @@ theorem deriv_sourceAtomComposedJet
     simpa only [← iteratedDeriv_succ] using
       (hdiff (1 - t / L)).hasDerivAt
   have hin : HasDerivAt (fun s : ℝ => 1 - s / L) (-(1 / L)) t := by
-    simpa using
-      (hasDerivAt_const t (1 : ℝ)).sub ((hasDerivAt_id t).div_const L)
+    simpa using ((hasDerivAt_id t).div_const L).const_sub 1
   have hcomp := hout.comp t hin
   change deriv
       ((iteratedDeriv r (sourceAtomRealEnergy K x)) ∘
