@@ -1,278 +1,214 @@
-# RHRC formal audit — theorem authority through PR #153; endpoint-jet arithmetic frontier
+# RHRC formal audit — theorem authority through PR #155; production D-transport frontier
 
 > **RH remains OPEN.**
 
 ## Current authority split
 
 ```text
-live main after merged PR #153 = 474a88d76ecd2f4eee6178685b2e8d8b104171ca
-live main tree = dd69f1c612047f2d2f15a7ba158664634284b42e
+live main after merged PR #155 = 7bd3f1028d42272fcadc347c43371b992d9c0bd7
+live main tree = 9a4f21ed55aa0cbdf54527164c2f5f96912c65de
 
-theorem-state anchor = PR #153 merge 474a88d76ecd2f4eee6178685b2e8d8b104171ca
-validated theorem head = b6622dadab911008c0a7238e9dc711c6f9946302
-validated theorem tree = dd69f1c612047f2d2f15a7ba158664634284b42e
-RHRC #994 / run 34709905190 = SUCCESS
-Permansson #767 / run 34709905198 = SUCCESS
+latest theorem-bearing PR = #155
+validated theorem head = ecfd075c07923e6fc80ab1a5b4f2d49c724f5577
+validated theorem tree = 9a4f21ed55aa0cbdf54527164c2f5f96912c65de
+RHRC #1005 / run 34720946254 = SUCCESS
+Permansson #778 / run 34720946242 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
 ```
 
-Live GitHub head + exact compiler/CI evidence outrank this prose.
+Live GitHub head + exact compiler/CI evidence outrank this prose. The validated #155 head and merged main are distinct commits that share the same theorem tree.
 
-## Exact validation evidence for #153
+## Exact validation evidence for #155
 
 At validated theorem head
 
 ```text
-b6622dadab911008c0a7238e9dc711c6f9946302
+ecfd075c07923e6fc80ab1a5b4f2d49c724f5577
 ```
 
-RHRC run #994 (`34709905190`) completed successfully.
+RHRC run #1005 (`34720946254`) completed successfully. Permansson run #778 (`34720946242`) also completed successfully.
 
-Successful RHRC jobs included:
+The successful theorem-bearing closure includes the aggregate CCM build, ExceptionalZero build, R003 normalization/source firewalls, no-sorry/no-project-axiom checks, and the independent Permansson verification lane.
 
-```text
-python-rhrc
-r003-normalization-audit
-lean
-```
-
-The `lean` job successfully completed:
-
-```text
-lake build Zeta23.CCM
-lake build Zeta23.ExceptionalZero
-forbidden placeholder/project-axiom scan
-```
-
-The R003 normalization job successfully completed the normalization lock, finite-dictionary guards, source-normalization firewall, post-#150 selected-residual certification plumbing/scout/replay, R004 scalar-shift invariant audit and external-reference dependency firewall.
-
-Permansson run #767 (`34709905198`) also completed successfully and its `Reject placeholders and extra axioms` step passed.
-
-The validated theorem head and merged `main` share theorem tree
-
-```text
-dd69f1c612047f2d2f15a7ba158664634284b42e.
-```
-
-## Exact theorem-state progression relevant to #153
+## Exact theorem-state progression relevant to #155
 
 ### PR #150 — regular negative endpoint
 
-**PROVED:** assembled actual-production source/predecessor holomorphy, deck-forced determinant nonidentity, actual predecessor regularity in every nonempty open interval of a physical cutoff cell, cell-minimal regular first-bad selection, unique zero-shift preimage and strict negative exact canonical source-channel energy under a hypothetical off-line zero.
+**PROVED:** actual regular cell-minimal first-bad selection and strict negative exact canonical source-channel energy under a hypothetical off-line zero.
 
 ### PR #152 — falsification/certification harness
 
-**TOOLING / NOT THEOREM AUTHORITY:** exact finite carrier reconstruction, production-canonical discovery backend, independent Arb replay, H0-H3 selected-aperture scope classification and deterministic CI plumbing for candidate selected-residual sign mechanisms.
+**TOOLING / NOT THEOREM AUTHORITY:** exact finite geometry, production scout, independent Arb replay, H0-H3 scope classification, deterministic CI plumbing.
 
-No candidate or numerical absence result is a theorem.
-
-### PR #153 — retained first-bad certificate
+### PR #153 — retained certificate + exact finite discrepancy
 
 **PROVED:**
 
 ```text
 RegularCellMinimalFirstBadCertificate
-RegularCellMinimalFirstBadCertificate.L_pos
-exists_regular_cellMinimal_firstBadCertificate
-```
-
-The retained certificate stores:
-
-```text
-Kstar, Nstar, L, parity
-1 <= Q
-2 <= Kstar
-1 <= Nstar
-Nstar + 1 = Kstar
-L in fixedCanonicalCutoffCell Q
-ParityBad p L Kstar
-whole-cell minimality:
-  forall M<Kstar, not CellAnyParityBad Q M
-selected-aperture smaller-size goodness:
-  forall M<Kstar, not AnyParityBad L M
-IntrinsicPredecessorRegular p L Nstar.
-```
-
-The historical theorem `exists_regular_cellMinimal_firstBad` remains a compatibility projection.
-
-### PR #153 — retained regular negative-energy state
-
-**PROVED:**
-
-```text
 RegularCellMinimalNegativeEnergyCertificate
-exists_regular_cellMinimal_negativeCanonicalEnergyCertificate
-```
-
-The structure retains the first-bad certificate together with:
-
-```text
-predecessorNonnegative
-x0
-lam
-lam < 0
-exact cubicExplicitSchurScalar root equation
-A x0 = b
-parityCanonicalSourceEnergy(u0) < 0
-canonicalSourceChannelEnergy(u0) < 0.
-```
-
-The historical `exists_regular_cellMinimal_negativeCanonicalEnergy` theorem remains a projection.
-
-### PR #153 — ExceptionalZero propagation
-
-**PROVED:**
-
-```text
 exists_regularFirstBad_negativeEnergyCertificate_of_offLine_zero
-```
-
-A hypothetical off-line zero therefore reaches the retained structured certificate directly. The older tuple wrappers remain available.
-
-### PR #153 — smooth source-atom spine
-
-**PROVED:**
-
-```text
-sourceAtomRealEnergy
-sourceAtomRealEnergy_zero
-contDiff_sourceEntry
-contDiff_sourceAtomRealEnergy
-```
-
-The source-atom real energy is `C^∞` in the source coordinate. This supplies regularity needed for later endpoint-jet discovery, but it does not state any higher-order vanishing.
-
-### PR #153 — exact pole/source and prime/cumulative derivative forms
-
-**PROVED:**
-
-```text
-dictionaryPoleRHS_basis_eq_sourceEntry_integral
-canonicalPoleMatrix_apply_eq_sourceEntry_integral
-matrixRealEnergy_canonicalPoleMatrix_eq_integral_sourceAtom
-matrixRealEnergy_canonicalPoleMatrix_eq_deriv_integral
-canonicalPrimeCumulativeWeight
-canonicalPoleCumulativeWeight
-matrixRealEnergy_canonicalPrimeMatrix_eq_cumulative_deriv_integral
-```
-
-The pole primitive is exactly
-
-```text
-canonicalPoleCumulativeWeight t = 4 * sinh(t/2)
-```
-
-and the finite prime staircase is
-
-```text
-canonicalPrimeCumulativeWeight L t
-  = sum_{q in Icc 2 floor(exp L), log q <= t} Lambda(q)/sqrt(q).
-```
-
-### PR #153 — exact finite pole-prime discrepancy
-
-**PROVED:**
-
-```text
 canonicalPolePrimeDiscrepancy
 canonicalPolePrimeDiscrepancyEnergy
 matrixRealEnergy_pole_sub_prime_eq_discrepancy
 canonicalSourceChannelEnergy_eq_discrepancy
 ```
 
-The headline finite identity is
+The whole-cell ancestry and full regular negative-energy state are retained and the pole-minus-prime channel is rewritten through one exact finite discrepancy before the remaining archimedean/scalar terms are subtracted.
+
+### PR #155 — discrepancy integrability seam
+
+**PROVED:**
 
 ```text
-E_pole(x) - E_prime(x)
-  = (1/L) * integral_0^L
-      canonicalPolePrimeDiscrepancy L t
-      * deriv(sourceAtomRealEnergy K x)(1-t/L) dt.
+intervalIntegrable_canonicalPrimeCumulativeWeight
+intervalIntegrable_canonicalPoleCumulativeWeight
+intervalIntegrable_canonicalPolePrimeDiscrepancy
 ```
 
-The full production channel becomes that discrepancy energy minus the already theoremized reduced archimedean diagonal, reduced archimedean off-diagonal and scalar correction.
+The finite prime staircase is integrated, not differentiated.
 
-This exact identity is now theorem authority. It is no longer `EXTERNAL DERIVED`.
+### PR #155 — anchored Riesz primitives and legal smoothing
 
-## What is not yet proved
-
-No current theorem establishes:
+**PROVED:**
 
 ```text
-the exact maximal endpoint-jet order of sourceAtomRealEnergy forced by boundary-flatness
-the historical suggested order-seven generic source-energy zero
-the historical suggested order-nine even-parity source-energy zero
-a sixth/eighth-order Riesz-smoothed discrepancy identity
-a generic repeated-integration-by-parts theorem instantiated to the actual legal jet order
-a sign for the transformed pole-prime discrepancy pairing
-regular selected-residual nonnegativity Ecanonical(c-x0)>=0
-universal canonical one-step domination
+canonicalPolePrimeRieszPrimitive
+intervalIntegrable_canonicalPolePrimeRieszPrimitive
+absolutelyContinuousOnInterval_canonicalPolePrimeRieszPrimitive_succ
+ae_deriv_canonicalPolePrimeRieszPrimitive_succ
+sourceAtomComposedJet
+contDiff_one_sourceAtomComposedJet
+deriv_sourceAtomComposedJet
+canonicalPolePrimeDiscrepancyEnergy_eq_rieszEnergy
+```
+
+The generic arbitrary-order Riesz identity is legal under explicit endpoint-jet hypotheses. It does not differentiate the discontinuous prime staircase.
+
+### PR #155 — production source-energy parity/even jets
+
+**PROVED:**
+
+```text
+sourceAtomRealEnergy_neg_sourceCoordinate
+iteratedDeriv_even_sourceAtomRealEnergy_zero
+centeredMoment_three_eq_zero_of_even
+```
+
+Hence production source energy is odd in the source coordinate, every even endpoint derivative at zero vanishes, and even reversal parity kills centered moment `M3`.
+
+## What #155 did not prove
+
+No current Lean theorem establishes:
+
+```text
+the complex production identity g_u'' = -(2*pi)^2 g_(D u)
+the moment-prefix D-transport recursion
+the required odd endpoint cancellations
+unconditional production Riesz order 6
+unconditional even-parity production Riesz order 8
+a retained transformed-negative first-bad wrapper
+a sign for the complete transformed discrepancy/archimedean/scalar residual
+regular selected-residual nonnegativity
 negative-root exclusion
 outside-strip/trivial-zero terminal seam
 RiemannHypothesis
 ```
 
-The old order-seven/order-nine and sixth/eighth-order formulas remain **DERIVED / LEAD** until independently theoremized against the exact production definitions.
+## Current derived bridge
+
+The audited post-green calculation gives
+
+```text
+M0(u)=0
+  -> g_u''(omega)=-(2*pi)^2 g_(D u)(omega)
+```
+
+for the genuine complex production energy, with an entrywise rank-two correction whose Hermitian quadratic form vanishes under the zero-sum condition.
+
+Combining this with the already proved moment shift `M_k(Du)=M_(k+1)(u)` yields the intended recursion
+
+```text
+M0=...=M(r-1)=0
+  -> g_u^(2r)(omega)=(-1)^r*(2*pi)^(2r)*g_(D^r u)(omega)
+  -> g_u^(2r+1)(0)=2*(-1)^r*(2*pi)^(2r)*|M_r(u)|^2.
+```
+
+**Formal status: DERIVED / OPEN IN LEAN.**
+
+The next implementation must prove the complex sesquilinear transport directly; existing real-contraction derivative lemmas do not authorize silent promotion to `sourceAtomRealEnergy`.
+
+## Exact route falsification after #155
+
+The boundary-flat `K=2` fixtures
+
+```text
+even = (1,-4,6,-4,1)
+odd  = (1,-2,0,2,-1)
+```
+
+satisfy the three moment constraints and the indicated reversal parity, yet the relevant seventh/ninth source derivatives change sign.
+
+Therefore the universal implication
+
+```text
+positive Riesz primitive + endpoint flatness
+  -> pointwise fixed-sign smoothed integrand
+```
+
+is **DEAD**.
+
+This does not refute the Riesz identity. It refutes a proposed pointwise sign mechanism. The complete integrated residual may still admit a sign through actual arithmetic cancellation, stationarity, whole-cell ancestry, or a different invariant.
 
 ## Current formal endpoint
 
-From a hypothetical off-line zero:
+From a hypothetical off-line zero, #153 supplies one retained regular first-bad certificate with strict negative exact canonical source-channel energy. #155 supplies a legal arbitrary-order conditional Riesz representation and the production even-jet/parity facts.
+
+The missing theorem bridge is now sharply isolated:
 
 ```text
-exists Q,
-  Nonempty (RegularCellMinimalNegativeEnergyCertificate Q)
+complex D-transport
+  -> production odd endpoint jets
+  -> exact Riesz order 6 / even order 8
+  -> retained transformed-negative wrapper.
 ```
 
-and the retained certificate provides whole-cell first-bad ancestry, selected predecessor nonnegativity/regularity, the exact negative Schur root and exact negative source-channel energy.
-
-Independently, for every positive aperture and finite test vector, #153 provides the exact pole-prime discrepancy normal form.
-
-The next theorem problem is to connect the legal selected residual's boundary-flat/parity constraints to the actual endpoint jets of `sourceAtomRealEnergy`, then use only the proved order in any repeated-IBP transformation.
-
-## Derived post-#153 consequences
-
-At the selected state, `A>=0` and `A` regular are theorem-backed. Since the predecessor is finite-dimensional Hermitian, **DERIVED**:
-
-```text
-A > 0.
-```
-
-The open-interval regularity theorem still supports the derived dense-set interpretation, but the exact API remains the open-interval existential statement.
-
-The exact discrepancy theorem means any route that immediately separates pole and prime into coarse independent majorants discards a theorem-backed cancellation interface and must justify why the loss is harmless at the required residual scale.
+After that, the only missing contradiction-producing implication is genuinely arithmetic.
 
 ## Current execution order
 
 ```text
 FB-01  retained first-bad certificate                              PROVED / #153
 FB-02  exact pole-prime discrepancy                                PROVED / #153
-FB-03  discover/prove actual source-energy endpoint jets           OPEN / NEXT
-       -> generic iterated primitives / repeated IBP
-       -> instantiate only to proved order
-FB-04  interval-certify/falsify transformed arithmetic mechanisms  OPEN
-FB-05  prove Ecanonical(c-x0)>=0 on exact forced state             OPEN
-FB-06  compose same-state signs -> negative-root exclusion         OPEN
-FB-07  close outside-strip/trivial-zero seam -> Mathlib RH         OPEN
+FB-03A discrepancy integrability                                   PROVED / #155
+FB-03B anchored primitives + AC / a.e. derivative                 PROVED / #155
+FB-03C generic repeated IBP / conditional Riesz                    PROVED / #155
+FB-03D source oddness + all even jets + even M3=0                  PROVED / #155
+FB-03E complex D-transport + production odd jets + Riesz 6/8       OPEN / NEXT
+FB-03F retained transformed-negative wrapper                        OPEN
+FB-04  complete transformed-residual arithmetic mechanism           OPEN
+FB-05  scoped regular selected-residual nonnegative sign             OPEN
+FB-06  same-state contradiction / negative-root exclusion            OPEN
+FB-07  terminal outside-strip/trivial-zero seam                       OPEN
 ```
 
 ## Permanent firewalls
 
 - compiler/CI validity is authoritative; repository presence alone is not;
-- theorem authority is through #153 and machine claim promotion is separate;
-- a negative retained certificate is not itself a contradiction;
-- the discrepancy identity is not a discrepancy sign theorem;
-- smoothness of `sourceAtomRealEnergy` is not high-order vanishing;
-- boundary-flat function/moment constraints are not automatically order-seven/order-nine source-energy jets;
+- theorem authority through #155 and machine claim promotion are separate;
+- generic legal smoothing is not unconditional production order 6/8;
+- a real contraction identity is not automatically the complex production identity;
 - Riesz smoothing is not an arithmetic sign theorem;
+- pointwise smoothed-integrand positivity is falsified as a universal route;
 - interval-certified finite numerics are scoped falsification evidence, not Lean theorem authority;
 - regularity is not successor positivity;
-- no factorwise division by unproved transfer/source factors;
 - `D` algebraic != `D` unitary/isometric;
 - negative-root exclusion != terminal Mathlib RH without the final seam;
 - RH remains OPEN.
 
 Newest research implications:
-`research/RHRC/RESEARCH_LEADS_POST_153_CERTIFICATE_DISCREPANCY_GREEN_JET_FRONTIER_DELTA.md`.
+`research/RHRC/RESEARCH_LEADS_POST_155_RIESZ_D_TRANSPORT_FRONTIER_DELTA.md`.
 
 **RH remains OPEN.**
