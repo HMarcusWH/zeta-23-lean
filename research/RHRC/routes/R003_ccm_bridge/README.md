@@ -1,18 +1,18 @@
 # R003 — CCM / finite Weil bridge
 
-Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #153. RETAINED CERTIFICATE + EXACT POLE-PRIME DISCREPANCY ARE CLOSED; CURRENT FRONTIER = SOURCE-ENERGY ENDPOINT JETS / TRANSFORMED SELECTED-RESIDUAL ARITHMETIC. RH OPEN.**
+Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #155. GENERIC RIESZ SMOOTHING + ALL EVEN SOURCE-ENERGY JETS ARE CLOSED; CURRENT FRONTIER = COMPLEX D-TRANSPORT / PRODUCTION ODD JETS / COMPLETE TRANSFORMED-RESIDUAL ARITHMETIC. RH OPEN.**
 
 ## Current authority split
 
 ```text
-live main after merged PR #153 = 474a88d76ecd2f4eee6178685b2e8d8b104171ca
-live main tree = dd69f1c612047f2d2f15a7ba158664634284b42e
+live main after merged PR #155 = 7bd3f1028d42272fcadc347c43371b992d9c0bd7
+live main tree = 9a4f21ed55aa0cbdf54527164c2f5f96912c65de
 
-theorem-state anchor = PR #153 merge 474a88d76ecd2f4eee6178685b2e8d8b104171ca
-validated theorem head = b6622dadab911008c0a7238e9dc711c6f9946302
-validated theorem tree = dd69f1c612047f2d2f15a7ba158664634284b42e
-RHRC #994 / run 34709905190 = SUCCESS
-Permansson #767 / run 34709905198 = SUCCESS
+latest theorem-bearing PR = #155
+validated theorem head = ecfd075c07923e6fc80ab1a5b4f2d49c724f5577
+validated theorem tree = 9a4f21ed55aa0cbdf54527164c2f5f96912c65de
+RHRC #1005 / run 34720946254 = SUCCESS
+Permansson #778 / run 34720946242 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
@@ -30,22 +30,14 @@ exact source-moment decomposition                                PROVED / #131
 whole-kernel zero-shift source transport                         PROVED / #134
 absolute canonical source energy                                 PROVED / #136
 exact canonical source pairing + one-step determinant            PROVED / #137
-eventual finite badness at every sufficiently large aperture     PROVED / #140
-actual predecessor det!=0 <-> injective + unique preimage        PROVED / #140
-fixed-cell actual-source continuity / witness persistence        PROVED / #142
-exact frozen source/predecessor + log-cover scaffold             PROVED / #144
-scalar removable analytic/production bridge                     PROVED / #145-#146
-fixed-unit alpha/beta/gamma parameter holomorphy                 PROVED / #148
-assembled frozen source/predecessor holomorphy                   PROVED / #150
-deck-forced determinant nonidentity                              PROVED / #150
-actual regular predecessor in every nonempty open cell interval  PROVED / #150
-cell-minimal regular first-bad selection                         PROVED / #150
-exact negative canonical source-channel energy at that state     PROVED / #150
-retained full first-bad certificate                              PROVED / #153
-retained full negative-energy Schur certificate                  PROVED / #153
-off-line zero -> retained certificate                            PROVED / #153
-exact finite pole-prime discrepancy identity                     PROVED / #153
-full source-channel discrepancy normal form                      PROVED / #153
+regular selected first-bad endpoint                              PROVED / #140-#150
+retained full first-bad / negative-energy certificates           PROVED / #153
+exact finite pole-prime discrepancy / full-channel normal form   PROVED / #153
+finite discrepancy interval integrability                       PROVED / #155
+anchored Riesz primitives + AC / a.e. derivative                PROVED / #155
+generic legal repeated IBP / conditional Riesz                   PROVED / #155
+source oddness + all even endpoint jets                          PROVED / #155
+even reversal parity -> M3=0                                    PROVED / #155
 ```
 
 ## Retained first-bad certificate surface
@@ -65,60 +57,11 @@ exists_regular_cellMinimal_negativeCanonicalEnergyCertificate
 exists_regularFirstBad_negativeEnergyCertificate_of_offLine_zero.
 ```
 
-The current forced state therefore retains, in one theorem-backed object:
+The current forced state therefore retains whole-cell minimality, selected-aperture smaller-size goodness, regularity, predecessor nonnegativity, the negative explicit Schur root, exact `A x0=b`, and strict negative production source-channel energy.
 
-```text
-whole-cell K* minimality
-selected-aperture smaller-size goodness
-selected parity badness at K*
-selected predecessor regularity
-predecessor nonnegativity
-negative explicit Schur root + exact root equation
-unique zero-shift preimage A x0=b
-exact negative parity energy
-exact negative production source-channel energy.
-```
+## Exact discrepancy + #155 Riesz surface
 
-The pre-#153 tuple theorems remain compatibility projections.
-
-## Exact #153 pole-prime discrepancy surface
-
-The elementary source atom is
-
-```text
-sourceAtomRealEnergy K x omega
-  = matrixRealEnergy (sourceMatrix omega K) x.
-```
-
-PR #153 proves it is smooth:
-
-```text
-contDiff_sourceAtomRealEnergy.
-```
-
-The pole primitive is
-
-```text
-canonicalPoleCumulativeWeight t = 4*sinh(t/2),
-```
-
-and the finite prime staircase is
-
-```text
-canonicalPrimeCumulativeWeight L t
-  = sum_{q in Icc 2 floor(exp L), log q <= t} Lambda(q)/sqrt(q).
-```
-
-The exact production channel theorems are
-
-```text
-matrixRealEnergy_canonicalPoleMatrix_eq_deriv_integral
-matrixRealEnergy_canonicalPrimeMatrix_eq_cumulative_deriv_integral
-matrixRealEnergy_pole_sub_prime_eq_discrepancy
-canonicalSourceChannelEnergy_eq_discrepancy.
-```
-
-Define
+The exact finite discrepancy is
 
 ```text
 D_L(t)
@@ -127,139 +70,181 @@ D_L(t)
    - sum_{q in Icc 2 floor(exp L), log q <= t} Lambda(q)/sqrt(q).
 ```
 
-Then, for `L>0`,
+PR #153 proves
 
 ```text
-E_pole(x)-E_prime(x)
-  = (1/L) * integral_0^L D_L(t)
-      * deriv(sourceAtomRealEnergy K x)(1-t/L) dt.
+matrixRealEnergy_pole_sub_prime_eq_discrepancy
+canonicalSourceChannelEnergy_eq_discrepancy.
 ```
 
-The full source channel is this discrepancy energy minus the reduced archimedean diagonal, reduced archimedean off-diagonal and scalar-correction terms.
-
-This is theorem authority. The post-#150 Astra discrepancy derivation is now historical provenance rather than the current evidence class.
-
-## Current frontier — FB-03 source-energy endpoint jets
-
-The next theorem target is not “prove sixth/eighth-order Riesz smoothing” as a precommitted fact.
-
-The exact question is:
+PR #155 adds the public interval-integrability seam and the left-anchored iterated primitive API
 
 ```text
-for legal boundary-flat/parity x,
-what derivatives of sourceAtomRealEnergy K x vanish at omega=0?
+canonicalPolePrimeRieszPrimitive.
 ```
 
-Existing bridge theorems already encode low-order boundary-flat function/moment information, but they do not automatically establish the same derivative order for the quadratic source-atom energy.
+Positive-order primitives are absolutely continuous and recover the previous primitive as derivative almost everywhere. The generic Riesz energy theorem is legal and never differentiates the prime staircase.
 
-The historical symbolic calculation suggested:
+The generic theorem still requires the relevant source-energy endpoint jets to vanish explicitly.
+
+## Exact #155 source-energy jet surface
+
+PR #155 proves
 
 ```text
-g(omega) = -(8*pi^6/315)|M3|^2 omega^7 + O(omega^9)
+sourceAtomRealEnergy_neg_sourceCoordinate
+iteratedDeriv_even_sourceAtomRealEnergy_zero
+centeredMoment_three_eq_zero_of_even.
 ```
 
-and an even-parity first possible term at order nine.
+Consequences:
 
-**Status:** DERIVED / LEAD until Lean locks the exact source-energy jets.
+```text
+all even endpoint derivatives vanish;
+even reversal parity gives M3=0.
+```
+
+This does **not** yet close the odd endpoint derivatives required for production Riesz order 6/8.
+
+## Current frontier — FB-03E complex D transport
+
+The post-green audited identity is
+
+```text
+M0(u)=0
+  -> g_u''(omega)=-(2*pi)^2 g_(D u)(omega),
+```
+
+where `g_u=sourceAtomRealEnergy K u` and `D` is the centered index multiplier.
+
+**Status: DERIVED / OPEN IN LEAN.**
+
+The intended theorem composition uses the already-proved moment shift
+
+```text
+M_k(Du)=M_(k+1)(u)
+```
+
+to derive
+
+```text
+M0=...=M(r-1)=0
+  -> g_u^(2r)(omega)=(-1)^r*(2*pi)^(2r)*g_(D^r u)(omega)
+  -> g_u^(2r+1)(0)=2*(-1)^r*(2*pi)^(2r)*|M_r(u)|^2.
+```
+
+Expected production specializations, still OPEN:
+
+```text
+boundary-flat -> jets 1..6 vanish -> exact Riesz order 6
+even boundary-flat -> jets 1..8 vanish -> exact Riesz order 8.
+```
 
 ### Required implementation pattern
 
-1. identify the exact boundary-flat/parity hypotheses carried by the selected `cubicZeroShiftTrialVector`;
-2. prove the source-energy derivative values at zero in increasing order;
-3. accept the actual maximal order Lean/the exact formula gives;
-4. define a generic iterated-primitive API for a discrepancy function;
-5. prove repeated integration by parts with all endpoint terms explicit;
-6. instantiate only to the formally established jet order.
+1. use `sourceEntrySecondDerivative`, including the diagonal case;
+2. prove the entrywise rank-at-most-two source-matrix defect identity;
+3. coerce to the complex production matrix;
+4. sum against `conj(u_i)*u_j`;
+5. kill the rank-two correction with `sum u=0`;
+6. identify `D A D` with the production source energy of `indexMatrix *ᵥ u`;
+7. iterate through the moment-prefix flag.
 
-The prime staircase must be integrated, not differentiated.
+**Firewall:** a theorem for the real contraction API does not establish the complex production source-energy identity.
 
-## Post-#150 / #152 interval-certification harness
+## FB-03F — transformed retained negative certificate
 
-The route contains the falsification harness:
+After exact production Riesz 6/8 is theorem-backed, compose it with the retained #153 certificate and ExceptionalZero wrapper so a hypothetical off-line zero yields the same retained whole-cell first-bad ancestry plus an exact transformed negative residual.
+
+No new boundary-flat/parity/regularity hypotheses may be inserted unless proved from the retained state.
+
+## Post-#155 exact falsification
+
+The exact `K=2` boundary-flat vectors
 
 ```text
-canonical_source_numeric.py
-canonical_source_arb.py
-post150_selected_residual.py
-probe_post150_selected_residual_scope.py
-certify_post150_selected_residual_scope.py
-check_post150_selected_residual_scope.py
-fixtures/post150_selected_residual_v1.json
+even: (1,-4,6,-4,1)
+odd:  (1,-2,0,2,-1)
 ```
 
-The names remain `post150` because they are historical tooling names introduced by #152. They are not stale theorem-anchor claims.
+show that the relevant ninth/seventh source derivatives change sign on the physical source-coordinate interval.
 
-The harness reconstructs exact rational carrier geometry, scouts production-canonical states, and replays checked-in candidates with Arb enclosures. H3 includes selected-aperture predecessor positivity/regularity, selected successor badness and both-parity goodness at every smaller size.
+Therefore
 
-H3 is still not automatic proof of the stronger whole-cell quantifier retained in the #153 certificate.
+```text
+positive Riesz primitive + endpoint flatness
+  -> pointwise fixed-sign smoothed integrand
+```
 
-A negative floating candidate is only **EXPERIMENTAL SIGNAL**. A rigorous Arb failure can falsify the finite scoped mechanism it certifies; it is not Lean theorem authority and not a zeta counterexample.
+is a dead universal route.
 
-After FB-03, this harness should consume the exact theorem-backed transformed discrepancy observable rather than a hard-coded assumed sixth/eighth-order formula.
+This does not refute the #155 Riesz identity. The surviving sign target is the **complete integrated discrepancy minus archimedean/scalar residual** or another global arithmetic invariant.
 
-## Falsification constraints
+## #152 interval-certification harness
 
-The active arithmetic route must respect:
+The historical `post150_*` tooling names remain unchanged. The harness is still scoped falsification/certification infrastructure, not theorem authority.
 
-1. raw aperture Loewner monotonicity is not supported by canonical derivative probes;
-2. the minimizing-trial Schur derivative changes sign in tested apertures;
-3. elementary source-atom energy is signed in tested states;
-4. the final Schur endpoint can be a tiny residue of much larger channel contributions;
-5. exact arithmetic coefficients matter;
-6. `L*coth(L/2)` and log-cover deck translation use different coordinates;
-7. the historical order-seven/order-nine endpoint claim is not theorem authority;
-8. after #153, separately bounding pole and prime discards an exact cancellation-preserving theorem and must be justified quantitatively.
+Do **not** retarget it to a guessed sixth/eighth-order observable. Wait until FB-03E/F define the exact Lean transformed residual, then use the harness to falsify specific candidate mechanisms.
+
+Repeated numerical positivity or negativity by itself is not a proof mechanism.
 
 ## Current arithmetic target
 
-On the exact retained forced state:
+The current theorem-backed forced state has
 
 ```text
-canonicalSourceChannelEnergy(u0) < 0        PROVED
+canonicalSourceChannelEnergy(u0) < 0.
 ```
 
-The decisive missing theorem is
+After FB-03E/F this should become an exact transformed negative residual. The decisive missing theorem is an independently justified nonnegative sign for that **same complete transformed residual** under the exact retained first-bad hypotheses.
+
+Candidate mechanism families worth testing include:
 
 ```text
-canonicalSourceChannelEnergy(u0) >= 0       OPEN
+stationarity A x0=b
+whole-cell smaller-size goodness
+transfer to predecessor energies
+exact transformed discrepancy/archimedean cancellation
+combined-parity invariant.
 ```
 
-or an equivalent scoped arithmetic inequality under the exact certificate hypotheses.
-
-Because the predecessor is nonnegative and regular, positive definiteness is a DERIVED finite Hermitian consequence. Formal Lean should keep the exact unique-preimage equation primary unless an inverse abstraction materially helps.
+The combined-parity idea is **LEAD / HYPOTHESIS** only and should be numerically falsified first.
 
 ## Highest-leverage next theorem order
 
 ```text
-FB-01  retained full first-bad certificate                     PROVED / #153
-FB-02  exact finite pole-prime discrepancy                     PROVED / #153
-FB-03  actual source-energy endpoint jets + generic smoothing  OPEN / NEXT
-FB-04  interval-certified transformed arithmetic falsification OPEN
-FB-05  scoped selected-residual nonnegativity                  OPEN
-FB-06  same-state contradiction / negative-root exclusion      OPEN
-FB-07  outside-strip/trivial-zero seam + Mathlib RH wrapper     OPEN
+FB-01  retained full first-bad certificate                         PROVED / #153
+FB-02  exact finite pole-prime discrepancy                         PROVED / #153
+FB-03A finite discrepancy integrability                            PROVED / #155
+FB-03B anchored primitives + AC / a.e. derivative                 PROVED / #155
+FB-03C generic repeated IBP / conditional Riesz                    PROVED / #155
+FB-03D source oddness + all even jets + even M3=0                  PROVED / #155
+FB-03E complex D-transport + production odd jets + Riesz 6/8       OPEN / NEXT
+FB-03F retained transformed-negative wrapper                        OPEN
+FB-04  transformed arithmetic-mechanism falsification               OPEN
+FB-05  scoped complete-residual nonnegative sign                     OPEN
+FB-06  same-state contradiction / negative-root exclusion            OPEN
+FB-07  outside-strip/trivial-zero seam + Mathlib RH wrapper           OPEN
 ```
 
 ## Permanent normalization / claim firewalls
 
 - canonical sign-sensitive object is `canonicalSourceMatrix` under the repaired source convention;
 - legacy `finiteMatrix` cannot supply absolute sign automatically;
-- theorem authority is through #153;
+- theorem authority is through #155;
 - compiler theorem authority beyond machine-promoted claim IDs is not automatic claim promotion;
 - retained negative energy is not itself a contradiction;
-- exact discrepancy identity is not discrepancy positivity;
-- smoothness is not high-order endpoint flatness;
-- boundary-flat moment constraints do not automatically imply the historical order-seven/order-nine energy zero;
+- exact discrepancy identity / generic Riesz smoothing is not an arithmetic sign theorem;
+- real D-transport helper theorems are not automatically the complex production theorem;
+- pointwise smoothed-integrand positivity is falsified as a universal mechanism;
 - no inverse is load-bearing before regularity; prefer unique preimage;
 - no division by unproved transfer factors;
 - `D` is algebraic, not unitary/isometric;
-- generic/modified-source countermodels do not refute canonical CCM;
-- numerical precision is not theorem authority;
 - interval-certified finite numerics are scoped falsification evidence, not Lean theorem authority;
 - terminal negative-root exclusion still needs the explicit outside-strip/trivial-zero bridge to Mathlib `RiemannHypothesis`;
 - RH remains OPEN.
 
 Detailed current implications:
-`../../RESEARCH_LEADS_POST_153_CERTIFICATE_DISCREPANCY_GREEN_JET_FRONTIER_DELTA.md`.
+`../../RESEARCH_LEADS_POST_155_RIESZ_D_TRANSPORT_FRONTIER_DELTA.md`.
 
 **RH remains OPEN.**
