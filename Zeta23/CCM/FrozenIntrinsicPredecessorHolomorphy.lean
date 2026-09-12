@@ -123,11 +123,18 @@ theorem analyticOnNhd_complexFrozenIntrinsicPredecessorRemainder_coord_sourceDom
         (fun w : ℂ =>
           cL (complexFrozenParityCompressedRemainder Q p w (N + 1)
             (x : euclideanParityBoundaryFlatSubspace p (N + 1)))) z := by
-    exact
-      (cL.analyticAt
-        (complexFrozenParityCompressedRemainder Q p z (N + 1)
-          (x : euclideanParityBoundaryFlatSubspace p (N + 1)))).fun_comp
-        (hpar z hz)
+    have hc0 :
+        AnalyticAt ℂ cL
+          (complexFrozenParityCompressedRemainder Q p z (N + 1)
+            (x : euclideanParityBoundaryFlatSubspace p (N + 1))) :=
+      cL.analyticAt _
+    have hcomp :=
+      AnalyticAt.comp
+        (f := fun w : ℂ =>
+          complexFrozenParityCompressedRemainder Q p w (N + 1)
+            (x : euclideanParityBoundaryFlatSubspace p (N + 1)))
+        hc0 (hpar z hz)
+    simpa [Function.comp_def] using hcomp
   simpa [complexFrozenIntrinsicPredecessorRemainder, c, cL] using hc
 
 /-- Natural analytic domain on the logarithmic cover.  The puncture at zero
