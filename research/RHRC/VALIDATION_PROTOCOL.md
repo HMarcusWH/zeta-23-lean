@@ -33,158 +33,124 @@ A skipped downstream step is not a passed gate.
 ## Current theorem/control validation anchors
 
 ```text
-theorem-state anchor = PR #153 merge 474a88d76ecd2f4eee6178685b2e8d8b104171ca
-validated theorem head = b6622dadab911008c0a7238e9dc711c6f9946302
-validated theorem tree = dd69f1c612047f2d2f15a7ba158664634284b42e
-RHRC #994 / run 34709905190 = SUCCESS
-Permansson #767 / run 34709905198 = SUCCESS
+latest theorem-bearing PR = #155
+merged theorem-bearing main = 7bd3f1028d42272fcadc347c43371b992d9c0bd7
+validated theorem head = ecfd075c07923e6fc80ab1a5b4f2d49c724f5577
+validated theorem tree = 9a4f21ed55aa0cbdf54527164c2f5f96912c65de
+RHRC #1005 / run 34720946254 = SUCCESS
+Permansson #778 / run 34720946242 = SUCCESS
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
 ```
 
-The #153 validated theorem head and merged main have the same tree `dd69f1c...`. PR #117 remains the Control-v2 semantic authority because #153 changes mathematical state, not controller capability/authority semantics.
+The #155 validated PR head and merged main are different commit objects but share theorem tree `9a4f21ed...`. PR #117 remains the Control-v2 semantic authority because #155 changes mathematical state, not controller capability/authority semantics.
 
-## Exact #153 gate evidence
+## Exact #155 gate evidence
 
-At validated theorem head `b6622dadab911008c0a7238e9dc711c6f9946302`, RHRC workflow run #994 (`34709905190`) completed successfully.
+At validated theorem head `ecfd075c07923e6fc80ab1a5b4f2d49c724f5577`, RHRC workflow run #1005 (`34720946254`) completed successfully. Permansson workflow run #778 (`34720946242`) also completed successfully.
 
-Successful RHRC jobs:
+Successful theorem-bearing closure includes:
 
 ```text
 python-rhrc
 r003-normalization-audit
 lean
-```
-
-The `lean` job successfully completed:
-
-```text
 lake build Zeta23.CCM
 lake build Zeta23.ExceptionalZero
 forbidden placeholder/project-axiom scan
+Permansson independent formal verification
 ```
 
-The normalization job successfully reran:
+## What #155 validates
 
-```text
-cutoff-free CCM normalization lock
-finite dictionary external-oracle guards
-source-normalization semantic firewall
-post-#150 selected-residual certification plumbing
-post-#150 selected-residual scope scout
-checked-in interval-certificate replay
-R004 scalar-shift invariant audit
-external-reference dependency firewall
-```
+The new #155 modules are imported through `Zeta23.CCM` and therefore lie in the authoritative aggregate build closure.
 
-Permansson workflow run #767 (`34709905198`) also completed successfully on the same theorem head, including `Reject placeholders and extra axioms`.
-
-## What #153 validates
-
-The #153 modules lie inside the authoritative `Zeta23.CCM` / `Zeta23.ExceptionalZero` aggregate build closure.
-
-### Retained cell-minimal first-bad certificate
+### Discrepancy integrability
 
 Validated declarations include:
 
 ```text
-RegularCellMinimalFirstBadCertificate
-RegularCellMinimalFirstBadCertificate.L_pos
-exists_regular_cellMinimal_firstBadCertificate
-exists_regular_cellMinimal_firstBad
+intervalIntegrable_canonicalPrimeCumulativeWeight
+intervalIntegrable_canonicalPoleCumulativeWeight
+intervalIntegrable_canonicalPolePrimeDiscrepancy
 ```
 
-The structure retains the whole-cell minimality premise as well as the selected-aperture projection.
+The finite prime cumulative object remains a staircase; no continuity at prime-log thresholds is claimed.
 
-### Retained negative-energy certificate
+### Anchored Riesz primitive API
 
 Validated declarations include:
 
 ```text
-RegularCellMinimalNegativeEnergyCertificate
-exists_regular_cellMinimal_negativeCanonicalEnergyCertificate
-exists_regular_cellMinimal_negativeCanonicalEnergy
+canonicalPolePrimeRieszPrimitive
+canonicalPolePrimeRieszPrimitive_zero
+canonicalPolePrimeRieszPrimitive_succ_zero
+intervalIntegrable_canonicalPolePrimeRieszPrimitive
+absolutelyContinuousOnInterval_canonicalPolePrimeRieszPrimitive_succ
+ae_deriv_canonicalPolePrimeRieszPrimitive_succ
 ```
 
-The retained state includes predecessor nonnegativity, the exact negative explicit root equation, the unique preimage equation `A x0=b`, and strict parity/channel energy negativity.
+Positive-order primitives are absolutely continuous and recover the previous primitive as derivative almost everywhere on the physical interval.
 
-### ExceptionalZero propagation
+### Pulled-back source-energy jets / legal repeated IBP
+
+Validated declarations include the source composed-jet regularity/chain-rule layer and the generic Riesz energy theorem
+
+```text
+canonicalPolePrimeDiscrepancyEnergy_eq_rieszEnergy
+```
+
+under explicit endpoint-jet hypotheses through the requested order.
+
+This is a legal arbitrary-order smoothing engine. It does not itself prove those production odd jets.
+
+### Source-coordinate parity/even jets
 
 Validated declarations include:
 
 ```text
-exists_regularFirstBad_negativeEnergyCertificate_of_offLine_zero
-exists_regularFirstBad_negativeCanonicalEnergy_of_offLine_zero
-exists_regularFirstBad_negativeCanonicalEnergy_of_exists_offLine_zero
+sourceAtomRealEnergy_neg_sourceCoordinate
+iteratedDeriv_even_sourceAtomRealEnergy_zero
+centeredMoment_three_eq_zero_of_even
 ```
 
-Thus a hypothetical off-line zero now reaches the richer first-class certificate without discarding the whole-cell ancestry.
+Hence production source energy is odd in the source coordinate, all even endpoint derivatives at zero vanish, and even reversal parity forces `M3=0`.
 
-### Smooth source-atom layer
-
-Validated declarations include:
+## What remains outside theorem authority after #155
 
 ```text
-sourceAtomRealEnergy
-sourceAtomRealEnergy_zero
-contDiff_sourceEntry
-contDiff_sourceAtomRealEnergy
-```
-
-This validates smoothness of the exact source-atom energy in the source coordinate. It does not validate high-order endpoint vanishing.
-
-### Pole/source derivative-integral bridge
-
-Validated declarations include:
-
-```text
-dictionaryPoleRHS_basis_eq_sourceEntry_integral
-canonicalPoleMatrix_apply_eq_sourceEntry_integral
-matrixRealEnergy_canonicalPoleMatrix_eq_integral_sourceAtom
-matrixRealEnergy_canonicalPoleMatrix_eq_deriv_integral
-```
-
-### Finite prime cumulative derivative-integral bridge
-
-Validated declarations include:
-
-```text
-canonicalPrimeCumulativeWeight
-canonicalPoleCumulativeWeight
-matrixRealEnergy_canonicalPrimeMatrix_eq_cumulative_deriv_integral
-```
-
-### Exact finite discrepancy normal form
-
-Validated declarations include:
-
-```text
-canonicalPolePrimeDiscrepancy
-canonicalPolePrimeDiscrepancyEnergy
-matrixRealEnergy_pole_sub_prime_eq_discrepancy
-canonicalSourceChannelEnergy_eq_discrepancy
-```
-
-This is the exact production pole-minus-prime cancellation theorem. No infinite series/distribution interchange is required by the exported identity.
-
-## Current theorem surface does not validate
-
-```text
-actual maximal endpoint-jet order of sourceAtomRealEnergy under boundary-flat constraints
-historical suggested order-seven generic source-energy zero
-historical suggested order-nine even-parity source-energy zero
-sixth/eighth-order Riesz-smoothed discrepancy identities
-generic repeated-IBP theorem instantiated to the selected state
-sign of the transformed discrepancy pairing
-regular selected-residual nonnegativity Ecanonical(c-x0)>=0
+complex production D-transport g_u''=-(2*pi)^2 g_(D u)
+moment-prefix D-transport recursion
+odd endpoint derivative formula
+unconditional production Riesz order 6
+unconditional even-parity production Riesz order 8
+retained transformed-negative first-bad wrapper
+sign of the complete transformed discrepancy/archimedean/scalar residual
+regular selected-residual nonnegativity
 canonical one-step domination
 negative-root exclusion
 outside-strip/trivial-zero terminal seam
 RiemannHypothesis
 ```
 
-Some items remain DERIVED research leads; none should be labeled PROVED merely because the old symbolic expansion suggested them.
+These may be DERIVED or motivated, but none should be labeled PROVED before the exact Lean declarations pass the authoritative build and axiom gates.
+
+## Complex-production transport firewall
+
+Existing real-vector contraction derivative results do not automatically establish the production complex source-energy identity.
+
+For FB-03E, acceptable proof authority must explicitly bridge:
+
+```text
+entrywise sourceEntry second derivative
+-> complex source-matrix identity
+-> contraction against conj(u_i)*u_j
+-> zero-sum annihilation of the rank-two correction
+-> production source energy of indexMatrix *ᵥ u.
+```
+
+A real-only theorem may be a helper but not the final production statement.
 
 ## Import/build closure law
 
@@ -192,9 +158,9 @@ A `.lean` file existing in the repository, appearing in a PR, passing the no-pla
 
 A declaration is compiler-validated project theorem authority only if its module lies in the transitive import closure of an exact successful authoritative build, or the module itself was explicitly built by an authoritative successful gate.
 
-PR #103 remains the canonical historical example: `ConstrainedParityGeometry.lean` was imported by `Zeta23.CCM` and compiled; `ParityBadness.lean` was merged but not imported and remained staged source until a later build closure consumed it.
+PR #103 remains the canonical historical example: a merged source file outside the validated import closure was not theorem authority until a later build consumed it.
 
-Current example: the #153 certificate/discrepancy modules are imported through the CCM/ExceptionalZero umbrellas and were validated by the exact #153 green aggregate build.
+Current example: the #155 source-energy jet, discrepancy-integrability and Riesz modules are imported by `Zeta23.CCM` and were validated by the exact green aggregate build.
 
 ## Axiom inspection
 
@@ -207,7 +173,7 @@ For production-promoted R003 bindings, `ClaimBindings.lean` must contain exact
 
 The accepted production foundation is `[propext, Classical.choice, Quot.sound]`. No production theorem may depend on `sorryAx` or a promoted project axiom.
 
-Supporting theorem modules may carry module-local `#print axioms` checks without thereby becoming machine-promoted claims. PR #153 advances compiler theorem authority beyond the current machine-promoted claim-ID surface.
+Supporting theorem modules may carry module-local `#print axioms` checks without thereby becoming machine-promoted claims. PR #155 advances compiler theorem authority beyond the current machine-promoted claim-ID surface.
 
 ## Proof versus promotion
 
@@ -235,9 +201,9 @@ This docs/control sync deliberately leaves those promotion surfaces unchanged.
 - dead-route revival records when required;
 - hard-coded current theorem/frontier/action smoke assertions.
 
-The post-#153 sync must therefore update the exact Control-v2 theorem anchor to #153, treat FB-01 and FB-02 as completed theorem prerequisites, and rewrite FB-03 as endpoint-jet discovery plus generic repeated integration by parts without presupposing order seven/nine.
+The post-#155 sync must update the exact theorem anchor to #155, mark generic smoothing/even jets as completed theorem prerequisites, and retarget the chronological first break to complex D-transport / production odd jets / exact Riesz 6/8.
 
-The selected top-level action remains `E4_A4_REGULAR_SCHUR_ENERGY_SIGN`. Control v2 may still choose FB-04 as the cheapest decisive falsifier; that routing decision is distinct from the chronological theorem dependency that FB-03 must provide before a transformed FB-04 claim can be tested.
+Control v2 may still rank a later arithmetic falsifier cheaply, but that routing decision is distinct from chronological theorem dependency.
 
 ## Vocabulary
 
@@ -256,6 +222,6 @@ The selected top-level action remains `E4_A4_REGULAR_SCHUR_ENERGY_SIGN`. Control
 
 ## Claim firewall
 
-Green retained-certificate infrastructure and the exact finite discrepancy identity are not RH. A contradiction still requires an independent nonnegative sign on the exact same forced state, then negative-root exclusion and the terminal statement seam.
+Green generic smoothing and even-jet infrastructure are not RH. A contradiction still requires exact production odd jets, a retained transformed negative residual, and an independent nonnegative arithmetic sign on that same forced state, followed by negative-root exclusion and the terminal statement seam.
 
 **RH remains OPEN unless the exact terminal RH theorem passes the complete proof and claim-validation gates.**
