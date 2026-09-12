@@ -52,7 +52,7 @@ off-line zero -> finite regular negative-energy certificate      PROVED / #150
 The exact common source domain is
 
 ```text
-complexFrozenSourceDomain = complexArchSafeStrip \ {0}.
+complexFrozenSourceDomain = complexArchSafeStrip \\ {0}.
 ```
 
 Headline source/predecessor declarations include:
@@ -224,6 +224,49 @@ The active arithmetic route must respect the following current evidence:
 
 Items 1-4 are EXPERIMENTAL SIGNAL / route quarantines, not theorem authority.
 
+## Post-#150 FB-04 interval-certification harness
+
+The route now contains a dedicated falsification harness for
+`E4A4-SCHUR-FB-04`:
+
+```text
+canonical_source_numeric.py
+canonical_source_arb.py
+post150_selected_residual.py
+probe_post150_selected_residual_scope.py
+certify_post150_selected_residual_scope.py
+check_post150_selected_residual_scope.py
+fixtures/post150_selected_residual_v1.json
+```
+
+The finite carrier geometry is constructed exactly over rational/integer
+coordinates before a source matrix is inserted. The fast backend uses the
+formal normalization lock
+
+```text
+canonical = legacy + 2*cCorrection(L) I
+```
+
+without changing the historical R004 `build_ccm_matrix`. The independent
+python-flint/Arb backend reconstructs the direct production equation-(4.4)
+source with the same removable archimedean formulas theoremized in
+`CanonicalApertureContinuity.lean`.
+
+The scout distinguishes selected-aperture scopes H0-H3. H3 includes regular
+positive predecessor, selected successor badness and both-parity goodness at
+every smaller size at the same aperture. Finite sampling is explicitly **not**
+allowed to certify the stronger whole-cell ancestry used internally by #150.
+
+A negative floating candidate remains **EXPERIMENTAL SIGNAL**. It is promoted
+only to a rigorous finite scoped falsification result if Arb enclosures certify
+the physical cutoff cell, predecessor positive definiteness/regularity,
+explicit successor badness, all advertised smaller-size hypotheses, and strict
+negative direct/Schur selected-residual energy. Even such a certificate is not
+Lean theorem authority and does not alter the terminal claim.
+
+Detailed audit:
+`../../countermodels/POST_150_SELECTED_RESIDUAL_SCOPE_AUDIT_2026_09_12.md`.
+
 ## Highest-leverage next theorem order
 
 ```text
@@ -251,6 +294,7 @@ Items 1-4 are EXPERIMENTAL SIGNAL / route quarantines, not theorem authority.
 - D is algebraic, not unitary/isometric;
 - generic/modified-source countermodels do not refute canonical CCM;
 - numerical precision is not theorem authority;
+- interval-certified finite numerics are scoped falsification evidence, not Lean theorem authority;
 - terminal negative-root exclusion still needs the explicit outside-strip/trivial-zero bridge to Mathlib `RiemannHypothesis`;
 - RH remains OPEN.
 
