@@ -127,6 +127,8 @@ import Zeta23.CCM.KernelSourceTransport
 import Zeta23.CCM.ZeroShiftCrossParityTransfer
 import Zeta23.CCM.CanonicalSourceEnergy
 import Zeta23.CCM.CanonicalPolePrimeDiscrepancy
+import Zeta23.CCM.CanonicalPolePrimeDiscrepancyIntegrability
+import Zeta23.CCM.CanonicalPolePrimeRiesz
 import Zeta23.CCM.RegularFirstBadCanonicalEnergy
 import Zeta23.CCM.CanonicalSourcePairing
 import Zeta23.CCM.CanonicalOneStepDomination
