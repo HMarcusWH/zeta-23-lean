@@ -40,8 +40,8 @@ theorem exists_least_cellAnyParityBad_two_le
   classical
   let Kstar := Nat.find hex
   have hbad : CellAnyParityBad Q Kstar := Nat.find_spec hex
-  obtain ⟨L, _hLcell, hLbad⟩ := hbad
-  refine ⟨Kstar, two_le_of_anyParityBad hLbad, hbad, ?_⟩
+  obtain ⟨L, hLcell, hLbad⟩ := hbad
+  refine ⟨Kstar, two_le_of_anyParityBad hLbad, ⟨L, hLcell, hLbad⟩, ?_⟩
   intro K hK
   exact Nat.find_min hex hK
 
