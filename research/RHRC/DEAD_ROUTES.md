@@ -153,6 +153,8 @@ Attempt to prove `Ecanonical(c-A^-1b)>=0` by separately bounding the absolute ma
 
 The final regular Schur endpoint can be a tiny residue of much larger channel terms. Any proposed separated bound must demonstrate enough correlated structure to survive that conditioning.
 
+**Post-#153/#155 clarification:** pole-prime cancellation and its legal Riesz representation are theorem-backed interfaces. Splitting pole and prime apart again, or replacing the transformed exact residual with loose independent envelopes, requires a quantitative justification for the lost cancellation.
+
 **Escape requirement:** exact paired-channel cancellation, a sharp source-specific remainder, or rigorously quantified interval-certified bounds resolving the observed cancellation scale.
 
 ## DR-021 — global aperture Loewner monotonicity
@@ -182,6 +184,37 @@ Attempt to represent the selected residual energy as a sum/integral of elementar
 **Status:** quarantined as a default route by post-#150 EXPERIMENTAL SIGNAL.
 
 Tested elementary atom energies change sign. A transformed discrepancy or full-source mixed cancellation may still admit a useful sign and is not killed by this record.
+
+## DR-024 — positive Riesz primitive + boundary flatness -> pointwise fixed-sign smoothed integrand
+
+Attempt to close the post-#155 transformed sign problem by combining positivity of a left-anchored Riesz primitive with the endpoint-jet cancellations and then claiming the smoothed source-energy integrand has a fixed pointwise sign.
+
+**Status:** **DEAD / exact finite falsification.**
+
+The exact `K=2` boundary-flat centered vectors
+
+```text
+even: (1,-4,6,-4,1)
+odd:  (1,-2,0,2,-1)
+```
+
+satisfy the three centered-moment constraints and the stated reversal parity. The relevant ninth derivative in the even case and seventh derivative in the odd case change sign on the physical source-coordinate interval.
+
+Therefore
+
+```text
+Riesz primitive >= 0
++ endpoint flatness
+  -/-> pointwise fixed-sign transformed integrand.
+```
+
+This does **not** refute the #155 Riesz identity and is not a zeta counterexample. It refutes only the universal pointwise-sign mechanism.
+
+**Surviving routes:** a sign for the complete integrated discrepancy minus archimedean/scalar residual; stationarity/whole-cell transfer; a genuinely new cancellation identity; or a cross-parity/global invariant.
+
+**Revival requirement:** state and prove a new hypothesis that excludes the exact fixtures above and show the retained production first-bad state satisfies it.
+
+Regression record: `countermodels/POST_155_RIESZ_POINTWISE_SIGN_COUNTERMODELS_2026_09_13.md`.
 
 ## Coordinate-mismatch warning — not a dead route ID
 
