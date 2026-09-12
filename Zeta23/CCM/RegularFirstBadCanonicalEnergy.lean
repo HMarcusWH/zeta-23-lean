@@ -71,7 +71,8 @@ theorem exists_regular_cellMinimal_negativeCanonicalEnergyCertificate
     Nonempty (RegularCellMinimalNegativeEnergyCertificate Q) := by
   obtain ⟨c⟩ := exists_regular_cellMinimal_firstBadCertificate Q hQ hex
   have hNlt : c.Nstar < c.Kstar := by
-    omega
+    rw [← c.succ_eq]
+    exact Nat.lt_succ_self c.Nstar
   have hprev :
       ∀ x : EuclideanSpace ℂ (Fin (2 * c.Nstar + 1)),
         x ∈ euclideanParityBoundaryFlatSubspace c.p c.Nstar →
