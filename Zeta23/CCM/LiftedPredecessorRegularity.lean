@@ -79,7 +79,7 @@ theorem liftedFrozenRigidityDomain_subset_liftedFrozenPredecessorDomain :
       have hle : Real.exp z.re * |Real.sin z.im| ≤ 1 := by
         calc
           Real.exp z.re * |Real.sin z.im| ≤ 1 * 1 :=
-            mul_le_mul hexp hsin hnonneg (Real.exp_nonneg z.re)
+            mul_le_mul hexp hsin hnonneg (by norm_num)
           _ = 1 := by norm_num
       exact lt_of_le_of_lt hle (by linarith [Real.pi_gt_three])
   · simpa using Complex.exp_ne_zero z
@@ -162,7 +162,11 @@ theorem analyticOnNhd_liftedFrozenIntrinsicPredecessorDet
     intro i _hi
     exact analyticOnNhd_liftedFrozenIntrinsicPredecessorMatrix_apply
       Q p N (σ i) i z hz
-  simpa [liftedFrozenIntrinsicPredecessorDet] using hmatrix
+  change AnalyticOnNhd ℂ
+    (fun z : ℂ => LinearMap.det (liftedFrozenIntrinsicPredecessorBlock Q p N z))
+    liftedFrozenPredecessorDomain
+  simpa only [det_liftedFrozenIntrinsicPredecessorMatrix,
+    liftedFrozenIntrinsicPredecessorDet] using hmatrix
 
 /-- The algebraic deck witness can be chosen inside the connected rigidity
 corridor used for analytic continuation. -/
@@ -227,8 +231,10 @@ theorem exists_intrinsicPredecessorRegular_in_open_fixedCell
       (liftedFrozenIntrinsicPredecessorBlock Q p N (Real.log L : ℂ)) = 0
     rw [hbridge]
     exact hdet0
+  have hJnhds : ∀ᶠ L in 𝓝 L₀, L ∈ J :=
+    hJopen.mem_nhds hL₀J
   have hJevent : ∀ᶠ L in 𝓝[≠] L₀, L ∈ J :=
-    (hJopen.mem_nhds hL₀J).filter_mono nhdsWithin_le_nhds
+    hJnhds.filter_mono nhdsWithin_le_nhds
   have hrealEvent :
       ∀ᶠ L in 𝓝[≠] L₀, L ∈ J ∧ f (Real.log L : ℂ) = 0 := by
     filter_upwards [hJevent] with L hLJ
