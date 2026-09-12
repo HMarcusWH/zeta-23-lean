@@ -59,16 +59,21 @@ theorem intervalIntegrable_canonicalPrimeCumulativeWeight
     IntervalIntegrable
       (canonicalPrimeCumulativeWeight L) volume 0 L := by
   unfold canonicalPrimeCumulativeWeight
+  let S : Finset ℕ := Finset.Icc 2 ⌊Real.exp L⌋₊
+  let f : ℕ → ℝ → ℝ := fun q t =>
+    if Real.log q ≤ t then Λ q / Real.sqrt q else 0
   have hsum :
-      IntervalIntegrable
-        (∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
-          fun t : ℝ => if Real.log q ≤ t then Λ q / Real.sqrt q else 0)
-        volume 0 L := by
+      IntervalIntegrable (∑ q ∈ S, f q) volume 0 L := by
     apply IntervalIntegrable.sum
     intro q hq
     obtain ⟨hlog0, hlogL⟩ := primeLog_mem_aperture_fb03 hq
     exact intervalIntegrable_step_constant_fb03 hlog0 hlogL
-  simpa only [Finset.sum_apply] using hsum
+  have hfun :
+      (∑ q ∈ S, f q) = (fun t : ℝ => ∑ q ∈ S, f q t) := by
+    funext t
+    simp
+  rw [hfun] at hsum
+  simpa [S, f] using hsum
 
 /-- The smooth pole cumulative weight is interval-integrable on every positive
 physical aperture. -/
