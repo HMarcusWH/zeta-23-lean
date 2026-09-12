@@ -117,7 +117,11 @@ class ControlV2Tests(unittest.TestCase):
             registry, "E4_A4_REGULAR_SCHUR_ENERGY_SIGN"
         )
         self.assertIsNotNone(selected_break)
-        self.assertEqual(selected_break["break_id"], "E4A4-SCHUR-FB-01")
+        # Control-v2 chooses the cheapest decisive falsifier, not the first
+        # chronological theoremization step. FB-01/02/03 are deliberately
+        # information-preserving but non-decisive; FB-04 is the first cheap
+        # decisive gate.
+        self.assertEqual(selected_break["break_id"], "E4A4-SCHUR-FB-04")
 
         costs = [x["estimated_cost"] for x in action["first_breaks"]]
         self.assertEqual(costs, sorted(costs))
