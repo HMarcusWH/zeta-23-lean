@@ -17,6 +17,7 @@ from canonical_source_arb import (
     to_arb_rational,
 )
 from canonical_source_numeric import canonical_source_matrix_L
+from certify_post150_selected_residual_scope import certify_candidate
 from post150_selected_residual import (
     evaluate_selected_residual_state,
     exact_geometry_self_check,
@@ -47,22 +48,59 @@ def main() -> int:
     if state["selected_residual"]["channel_energies"]["reconstruction_error"] > 2e-8:
         raise AssertionError("fast canonical channel reconstruction regression")
 
+    # Independent direct-production Arb normalization check on a nontrivial
+    # three-by-three matrix, exercising diagonal and off-diagonal entries.
     set_precision(160)
     L_arb = to_arb_rational(L_num, L_den)
     cell = fixed_cell_membership(Q, L_arb)
     if not cell["certified"]:
         raise AssertionError("dyadic smoke aperture escaped fixed cutoff cell")
 
-    direct, rebuilt = channel_reconstruction(L_arb, 0, Q)
-    delta = direct[0, 0] - rebuilt[0, 0]
-    if not delta.contains(0):
-        raise AssertionError("Arb direct/channel normalization reconstruction failed")
+    direct, rebuilt = channel_reconstruction(L_arb, 1, Q)
+    fast = canonical_source_matrix_L(L_float, 1)
+    max_cross_backend_abs = 0.0
+    for r in range(3):
+        for c in range(3):
+            delta = direct[r, c] - rebuilt[r, c]
+            if not delta.contains(0):
+                raise AssertionError(
+                    f"Arb direct/channel normalization reconstruction failed at {(r, c)}"
+                )
+            midpoint_error = abs(float(direct[r, c].mid()) - float(fast[r, c]))
+            max_cross_backend_abs = max(max_cross_backend_abs, midpoint_error)
+    if max_cross_backend_abs > 5e-8:
+        raise AssertionError(
+            f"fast/direct-Arb normalization mismatch: {max_cross_backend_abs}"
+        )
 
-    fast00 = float(canonical_source_matrix_L(L_float, 0)[0, 0])
-    arb_mid = float(direct[0, 0].mid())
-    cross_backend_abs = abs(fast00 - arb_mid)
-    if cross_backend_abs > 5e-8:
-        raise AssertionError(f"fast/direct-Arb normalization mismatch: {cross_backend_abs}")
+    # Exercise the *full* rigorous candidate path even though this smoke state
+    # is not advertised as a counterexample. N=2 reaches the nontrivial
+    # predecessor solve, Sylvester test, smaller-size ancestry audit, Schur
+    # identity and channel reconstruction. Missing successor-badness witness is
+    # intentional: the smoke must never be promoted to FB-04 evidence.
+    rigorous_smoke = certify_candidate(
+        {
+            "Q": Q,
+            "L_num": L_num,
+            "L_den": L_den,
+            "N": 2,
+            "parity": "even",
+            "expect_fb04_scoped_counterexample": False,
+        },
+        precision_bits=160,
+    )
+    if not rigorous_smoke["n_flow_restriction_agreement"]["certified_overlap_entrywise"]:
+        raise AssertionError("rigorous N-flow restriction agreement failed")
+    if not rigorous_smoke["predecessor"]["regular"]:
+        raise AssertionError("rigorous smoke predecessor unexpectedly singular")
+    if not rigorous_smoke["predecessor"]["positive_definite"]["certified"]:
+        raise AssertionError("rigorous smoke predecessor positivity failed")
+    if not rigorous_smoke["selected_residual"]["identity_overlap"]:
+        raise AssertionError("rigorous Schur/direct selected-residual identity failed")
+    if not rigorous_smoke["channels"]["reconstruction_overlap"]:
+        raise AssertionError("rigorous channel reconstruction failed")
+    if rigorous_smoke["fb04_scoped_counterexample_certified"]:
+        raise AssertionError("non-counterexample smoke state was incorrectly promoted")
 
     payload = {
         "schema_version": "POST150_SELECTED_RESIDUAL_CI_CHECK_v1",
@@ -76,10 +114,19 @@ def main() -> int:
             "flow_error": state["flow"]["restricted_form_max_error"],
             "schur_identity_error": state["selected_residual"]["identity_error"],
         },
-        "arb_smoke": {
+        "arb_normalization_smoke": {
             "cell_certified": cell["certified"],
-            "direct_channel_reconstruction_contains_zero": True,
-            "fast_midpoint_abs_difference": cross_backend_abs,
+            "matrix_radius": 1,
+            "direct_channel_reconstruction_entrywise": True,
+            "max_fast_midpoint_abs_difference": max_cross_backend_abs,
+        },
+        "arb_full_candidate_path_smoke": {
+            "predecessor_regular": rigorous_smoke["predecessor"]["regular"],
+            "predecessor_positive_definite": rigorous_smoke["predecessor"]["positive_definite"]["certified"],
+            "n_flow_overlap": rigorous_smoke["n_flow_restriction_agreement"]["certified_overlap_entrywise"],
+            "schur_identity_overlap": rigorous_smoke["selected_residual"]["identity_overlap"],
+            "channel_reconstruction_overlap": rigorous_smoke["channels"]["reconstruction_overlap"],
+            "fb04_promoted": rigorous_smoke["fb04_scoped_counterexample_certified"],
         },
         "checked_in_candidate_count": len(fixture["candidates"]),
         "fb04_status": (
