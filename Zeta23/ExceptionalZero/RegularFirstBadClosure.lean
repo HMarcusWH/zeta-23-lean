@@ -16,6 +16,9 @@ every sufficiently large aperture.  We choose one sufficiently large physical
 prime-cutoff cell, seed cell-badness at an interior point, and then hand the
 problem to the pure CCM regular-first-bad theorem.
 
+PR #153 retains the complete CCM certificate through this exceptional-zero
+wrapper.  The historical tuple theorem remains available as a projection.
+
 The output is a finite regular canonical state with strictly negative exact
 pole/arch/scalar/prime channel energy.  No theorem here proves that this energy
 is nonnegative, excludes the hypothetical zero, or proves RH.
@@ -56,9 +59,25 @@ theorem exists_fixedCanonicalCutoffCell_point_above
   have hL₀L : L₀ < L := lt_trans hL₀logQ hLcell.1
   exact ⟨Q, hQ, L, hLcell, hL₀L⟩
 
-/-- A hypothetical off-line zero forces one regular cell-minimal finite state
-whose canonical zero-shift trial has strictly negative exact source-channel
-energy. -/
+/-- A hypothetical off-line zero forces a complete regular cell-minimal
+negative-energy certificate in some physical cutoff cell. -/
+theorem exists_regularFirstBad_negativeEnergyCertificate_of_offLine_zero
+    (ρ₀ : zetaZeroConfig.carrier)
+    (hoff : (ρ₀ : ℂ).re ≠ 1 / 2) :
+    ∃ Q : ℕ,
+      Nonempty (RegularCellMinimalNegativeEnergyCertificate Q) := by
+  obtain ⟨L₀, _hL₀pos, hbadAll⟩ :=
+    eventually_all_apertures_have_anyParityBad_of_offLine_zero ρ₀ hoff
+  obtain ⟨Q, hQ, Lseed, hLseedCell, hLseedBig⟩ :=
+    exists_fixedCanonicalCutoffCell_point_above L₀
+  obtain ⟨K, hbadSeed⟩ := hbadAll Lseed hLseedBig
+  have hcellBad : CellAnyParityBad Q K :=
+    ⟨Lseed, hLseedCell, hbadSeed⟩
+  exact ⟨Q,
+    exists_regular_cellMinimal_negativeCanonicalEnergyCertificate
+      Q hQ ⟨K, hcellBad⟩⟩
+
+/-- Compatibility projection of the stronger off-line-zero certificate. -/
 theorem exists_regularFirstBad_negativeCanonicalEnergy_of_offLine_zero
     (ρ₀ : zetaZeroConfig.carrier)
     (hoff : (ρ₀ : ℂ).re ≠ 1 / 2) :
@@ -78,19 +97,12 @@ theorem exists_regularFirstBad_negativeCanonicalEnergy_of_offLine_zero
               canonicalSourceChannelEnergy L (N + 1)
                   (cubicZeroShiftTrialVector p L N x₀ :
                     EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) < 0 := by
-  obtain ⟨L₀, _hL₀pos, hbadAll⟩ :=
-    eventually_all_apertures_have_anyParityBad_of_offLine_zero ρ₀ hoff
-  obtain ⟨Q, hQ, Lseed, hLseedCell, hLseedBig⟩ :=
-    exists_fixedCanonicalCutoffCell_point_above L₀
-  obtain ⟨K, hbadSeed⟩ := hbadAll Lseed hLseedBig
-  have hcellBad : CellAnyParityBad Q K :=
-    ⟨Lseed, hLseedCell, hbadSeed⟩
-  obtain ⟨N, L, p, x₀, lam, hN, hLcell, hreg, hlam, hx₀,
-      _hparityNeg, hchannelNeg⟩ :=
-    exists_regular_cellMinimal_negativeCanonicalEnergy
-      Q hQ ⟨K, hcellBad⟩
-  exact ⟨Q, N, L, p, x₀, lam, hQ, hN, hLcell, hreg, hlam, hx₀,
-    hchannelNeg⟩
+  obtain ⟨Q, c⟩ :=
+    exists_regularFirstBad_negativeEnergyCertificate_of_offLine_zero ρ₀ hoff
+  obtain ⟨c⟩ := c
+  exact ⟨Q, c.firstBad.Nstar, c.firstBad.L, c.firstBad.p, c.x₀, c.lam,
+    c.firstBad.one_le_Q, c.firstBad.one_le_Nstar, c.firstBad.L_mem,
+    c.firstBad.regular, c.lam_neg, c.preimage, c.channelEnergyNeg⟩
 
 /-- Existential off-line-zero wrapper. -/
 theorem exists_regularFirstBad_negativeCanonicalEnergy_of_exists_offLine_zero
@@ -117,5 +129,6 @@ theorem exists_regularFirstBad_negativeCanonicalEnergy_of_exists_offLine_zero
 end Zeta23.ExceptionalZero
 
 #print axioms Zeta23.ExceptionalZero.exists_fixedCanonicalCutoffCell_point_above
+#print axioms Zeta23.ExceptionalZero.exists_regularFirstBad_negativeEnergyCertificate_of_offLine_zero
 #print axioms Zeta23.ExceptionalZero.exists_regularFirstBad_negativeCanonicalEnergy_of_offLine_zero
 #print axioms Zeta23.ExceptionalZero.exists_regularFirstBad_negativeCanonicalEnergy_of_exists_offLine_zero
