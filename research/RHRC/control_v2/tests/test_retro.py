@@ -54,7 +54,7 @@ class RetroTests(unittest.TestCase):
         self.assertNotIn("rupture", terms)
         self.assertNotIn("slack", terms)
 
-    def test_e4a4_actions_use_post_153_endpoint_jet_aliases(self):
+    def test_e4a4_actions_use_post_155_d_transport_aliases(self):
         aliases = load_alias_map(RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json")
         terms = expanded_terms("canonical_source_exclusion", aliases)
         for term in (
@@ -69,15 +69,21 @@ class RetroTests(unittest.TestCase):
             "sourceAtomRealEnergy",
             "endpoint jets",
             "canonicalPolePrimeDiscrepancy",
-            "pole-prime discrepancy",
-            "von Mangoldt discrepancy",
+            "canonicalPolePrimeRieszPrimitive",
             "iterated primitive",
             "repeated integration by parts",
             "Riesz smoothing",
-            "boundary-flat Taylor annihilation",
-            "omega^7",
-            "omega^9",
-            "interval-certified Schur sign",
+            "source-coordinate oddness",
+            "all even jets",
+            "source-coordinate D transport",
+            "moment-prefix recursion",
+            "complex production D transport",
+            "rank-two source defect",
+            "Riesz order 6",
+            "Riesz order 8",
+            "pointwise smoothed integrand",
+            "combined parity",
+            "complete transformed residual",
             "channel cancellation",
         ):
             self.assertIn(term, terms)
@@ -95,17 +101,30 @@ class RetroTests(unittest.TestCase):
                 registry["actions"][action_id]["concept_id"],
                 "canonical_source_exclusion",
             )
-            self.assertEqual(registry["actions"][action_id]["dead_route_matches"], [])
 
-        schur_break_ids = [
-            x["id"]
-            for x in registry["actions"]["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"]["first_breaks"]
-        ]
+        schur = registry["actions"]["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"]
+        self.assertIn("DR-024", schur["dead_route_matches"])
+        self.assertEqual(
+            registry["actions"]["E4_A4_CANONICAL_ONE_STEP_DOMINATION"]["dead_route_matches"],
+            [],
+        )
+        self.assertEqual(
+            registry["actions"]["E4_A4_GLOBAL_FIRST_BAD_EXCLUSION"]["dead_route_matches"],
+            [],
+        )
+
+        schur_break_ids = [x["id"] for x in schur["first_breaks"]]
         self.assertNotIn("E4A4-SCHUR-FB-01", schur_break_ids)
         self.assertNotIn("E4A4-SCHUR-FB-02", schur_break_ids)
+        self.assertNotIn("E4A4-SCHUR-FB-03", schur_break_ids)
         self.assertEqual(
             schur_break_ids,
-            ["E4A4-SCHUR-FB-03", "E4A4-SCHUR-FB-04", "E4A4-SCHUR-FB-05"],
+            [
+                "E4A4-SCHUR-FB-03E",
+                "E4A4-SCHUR-FB-03F",
+                "E4A4-SCHUR-FB-04",
+                "E4A4-SCHUR-FB-05",
+            ],
         )
 
     def test_as_of_search_does_not_see_future_commit(self):
