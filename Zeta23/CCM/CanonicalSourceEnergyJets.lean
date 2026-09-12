@@ -45,13 +45,10 @@ an output of these endpoint theorems.
 @[simp] theorem sourceEntry_neg_sourceCoordinate
     (ω : ℝ) (n m : ℤ) :
     sourceEntry (-ω) n m = -sourceEntry ω n m := by
+  unfold sourceEntry dividedDifferenceEntry
   by_cases h : n = m
-  · subst m
-    rw [sourceEntry_self, sourceEntry_self]
-    exact sourceDiagonal_neg_sourceCoordinate ω n
-  · rw [sourceEntry_of_ne (-ω) h, sourceEntry_of_ne ω h]
-    rw [sourcePotential_neg_sourceCoordinate, sourcePotential_neg_sourceCoordinate]
-    ring
+  · simp [h, sourceDiagonal_neg_sourceCoordinate]
+  · simp [h, sourcePotential_neg_sourceCoordinate]
 
 @[simp] theorem sourceMatrix_neg_sourceCoordinate
     (ω : ℝ) (K : ℕ) :
