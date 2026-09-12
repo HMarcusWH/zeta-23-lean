@@ -16,6 +16,30 @@ positive left-anchored Riesz primitive
 
 A failure of this implication means smoothing cannot manufacture pointwise positivity merely from primitive positivity and endpoint flatness.
 
+## Auditable production formula and checker
+
+The regression evaluates derivatives directly from the production real source-entry formula in `Zeta23/CCM/DictionaryAnalysis.lean`:
+
+```text
+n != m:
+  sourceEntryReal(omega,n,m)
+    = [sin(2*pi*n*omega)-sin(2*pi*m*omega)] / [pi*(n-m)]
+
+n = m:
+  sourceEntryReal(omega,n,n)
+    = 2*omega*cos(2*pi*n*omega).
+```
+
+For real fixture vectors the quadratic source contraction agrees exactly with the theorem-authoritative complex contraction by `sourceContract_eq_ofReal`.
+
+The deterministic checker is:
+
+```text
+research/RHRC/countermodels/check_post155_riesz_pointwise_sign.py
+```
+
+It uses only integer and `Fraction` arithmetic. At `omega=0` and `omega=1/4`, the required trigonometric values lie in `{0,+/-1}`. The checker evaluates the exact normalized odd derivatives as rational pairs `a+b*pi`; it uses no floating approximation. `research/RHRC/tools/run_suite.py` executes this checker in CI.
+
 ## Exact K=2 fixtures
 
 Use centered coordinates `n=-2,-1,0,1,2`.
@@ -36,7 +60,16 @@ M2=0.
 
 Even parity also gives `M3=0`.
 
-The first potentially surviving odd endpoint derivative is therefore the ninth-order term, proportional to `|M4|^2` at zero. The corresponding ninth derivative is not of one fixed sign throughout the physical source-coordinate interval.
+For the production source energy `g_even`, the checker obtains the exact values
+
+```text
+g_even^(9)(0)   / [2*(2*pi)^8] = 576 > 0
+
+g_even^(9)(1/4) / [2*(2*pi)^8]
+  = -1024/3 - 16*pi < 0.
+```
+
+Therefore the ninth derivative changes sign between `omega=0` and `omega=1/4`.
 
 ### Odd reversal fixture
 
@@ -52,7 +85,24 @@ M1=0
 M2=0.
 ```
 
-The first potentially surviving odd endpoint derivative is the seventh-order term, proportional to `-|M3|^2` at zero. The corresponding seventh derivative changes sign on the physical source-coordinate interval.
+For the production source energy `g_odd`, the exact checker gives
+
+```text
+g_odd^(7)(0)   / [2*(2*pi)^6] = -144 < 0
+
+g_odd^(7)(1/4) / [2*(2*pi)^6]
+  = 256/3 + 4*pi > 0.
+```
+
+Equivalently, under the historical normalization by the negative factor `-2*(2*pi)^6`, these are
+
+```text
+144 > 0
+and
+-256/3 - 4*pi < 0.
+```
+
+Therefore the seventh derivative also changes sign between `omega=0` and `omega=1/4`.
 
 ## What these fixtures establish
 
@@ -65,6 +115,8 @@ and endpoint jets vanish
 ```
 
 Even when the Riesz primitive is positive in a prime-free aperture, the source-energy derivative factor can change sign.
+
+The regression is exact at the finite source-entry level. It does not rely on the still-unproved complex `D`-transport theorem proposed for FB-03E.
 
 ## What they do not establish
 
@@ -94,6 +146,12 @@ Each remains OPEN until separately theoremized.
 
 ## Regression use
 
-Before reviving a proposed pointwise positivity argument, test it against both fixtures. A valid revival must name a new hypothesis that excludes these fixtures and prove that the exact retained first-bad production state satisfies that hypothesis.
+Before reviving a proposed pointwise positivity argument, run
+
+```text
+python research/RHRC/countermodels/check_post155_riesz_pointwise_sign.py
+```
+
+and test the proposed new hypothesis against both fixtures. A valid revival must name a new hypothesis that excludes these fixtures and prove that the exact retained first-bad production state satisfies that hypothesis.
 
 **RH remains OPEN.**
