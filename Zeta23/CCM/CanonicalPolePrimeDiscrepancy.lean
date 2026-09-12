@@ -460,7 +460,11 @@ private theorem hasDerivAt_sourceAtom_composed
       funext s
       rfl
     exact hfun ▸ hraw'
-  have hcomp := (hdiff (1 - t / L)).hasDerivAt.comp t hinner
+  have hcomp :
+      HasDerivAt
+        (sourceAtomRealEnergy K x ∘ fun s : ℝ => 1 - s / L)
+        (-(1 / L) * deriv (sourceAtomRealEnergy K x) (1 - t / L)) t := by
+    simpa [mul_comm] using (hdiff (1 - t / L)).hasDerivAt.comp t hinner
   have hfun :
       (sourceAtomRealEnergy K x ∘ fun s : ℝ => 1 - s / L) =
         (fun s : ℝ => sourceAtomRealEnergy K x (1 - s / L)) := by
