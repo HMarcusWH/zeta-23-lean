@@ -7,14 +7,14 @@
 ## Current theorem / research authority
 
 ```text
-live main after merged PR #161 = ef29b45de683962122c1e898ed31bf9417757125
-live main tree = b080572e87068889a72b4e612f99ddf0bd67f482
-latest theorem-bearing PR = #161
-validated theorem head = 188407fb02a37de2e380ede3b60e140953b01441
-validated theorem tree = b080572e87068889a72b4e612f99ddf0bd67f482
-RHRC #1026 = SUCCESS
-Permansson #799 = SUCCESS
-newest post-green delta = RESEARCH_LEADS_POST_161_SAME_STATE_RIESZ_SOURCE_RIGIDITY_DELTA.md
+live main after merged PR #163 = bd3fa1aafa7df2aa35873df532bdb6f17ddd2bbd
+live main tree = c397b3a015ea54e38ecfe626d6e29556fe963839
+latest theorem-bearing PR = #163
+validated theorem head = b418ff034428f92594bab0e5b8276181a086ee4b
+validated theorem tree = c397b3a015ea54e38ecfe626d6e29556fe963839
+RHRC #1039 = SUCCESS
+Permansson #812 = SUCCESS
+newest post-green delta = RESEARCH_LEADS_POST_163_MIXED_SOURCE_RIESZ_ARITHMETIC_FRONTIER_DELTA.md
 current execution SSOT = CURRENT_RESEARCH_PLAN.md
 RH = OPEN
 ```
@@ -39,100 +39,95 @@ The general moment-prefix odd-jet theorem, exact seventh/even-ninth self-energy 
 
 ### Same-state shifted Riesz x cross-parity source — PROVED / #161
 
-#161 adds:
+#161 adds the same-state shifted negative trial, strict even R8 negativity, exact R9/M4 boundary control, the odd-secular `Gamma * explicitCanonicalSourceMoment` identity, odd-good source-moment nonvanishing, and the odd-bad OR explicit-source-nonzero fork.
+
+### Mixed quadratic-normal jet x Riesz boundary — PROVED / #163
+
+#163 adds:
 
 ```text
-parityBad_of_negative_eigenmode
-predecessorNonnegative_anyParity
-negative shifted secular-root canonical/source energy
-even shifted Riesz-8 negativity
-exact shifted Riesz-9 / M4 boundary inequality
-opposite secular nonroot under opposite-parity goodness
-odd scalar = Gamma * explicitCanonicalSourceMoment on retained even shifted trial
-odd-good -> explicit source moment != 0
-odd-bad OR explicit-source-moment-nonzero retained fork
+quadraticNormalSourceAtom
+h_v^(7)(0) = -2*(2*pi)^6*M4(v)
+|h_v^(7)(0)|^2 = 4*(2*pi)^12*|M4(v)|^2
+explicitCanonicalSourceMoment finite-prime term samples the same h_v
+2*(2*pi)^4*(R8-R9) = S8(L)*|h_v^(7)(0)|^2
+retained even-shifted specialization
+strict retained R9 upper bound through the squared mixed jet
+crossParityGamma != 0 under even-selected + odd-good
 ```
 
-The same canonical shifted negative state now carries spectral, local-moment and global-arithmetic constraints.
+The same canonical shifted negative state now carries spectral, global-source, local-analytic and transformed-energy constraints.
 
-## Active lead — mixed source-pairing jet / M4 rigidity
+## Active lead 1 — endpoint scalar `S8(L)`
 
-**Research status:** ACTIVE / HIGHEST LEVERAGE  
-**Formal status:** DERIVED / OPEN IN LEAN
-
-For the quadratic-normal source pairing
-
-```text
-h_v(omega) = <n2, sourceMatrix(omega) v> / <n2,n2>
-```
-
-the post-green calculation predicts, for even boundary-flat `v`,
-
-```text
-h_v^(7)(0) = -2*(2*pi)^6 * M4(v).
-```
-
-If theoremized, this connects the linear quadratic-normal source jet to the theorem-backed quadratic #159/#161 Riesz boundary proportional to `|M4(v)|^2`.
-
-The useful target is not just the derivative identity. It is whether the retained shifted secular state satisfies an additional canonical relation between this local mixed jet and
-
-```text
-explicitCanonicalSourceMoment L (N+1) evenShiftedTrial.
-```
-
-Do not confuse the mixed-pairing formula with #159's already-proved self-energy ninth derivative.
-
-## Active lead — source moment / M4 separation falsification
-
-**Research status:** TEST BEFORE STRONG RIGIDITY THEOREM  
+**Research status:** HIGHEST-LEVERAGE FALSIFICATION CANDIDATE  
 **Formal status:** OPEN
 
-Retarget theorem-aligned exact/Arb tooling to the same shifted state and ask whether one can realize:
+The exact #163 recurrence isolates the sign-bearing arithmetic scalar:
 
 ```text
-explicitCanonicalSourceMoment != 0 with M4 = 0
-M4 != 0 with explicitCanonicalSourceMoment = 0.
+S8(L) = canonicalPolePrimeRieszEndpointScalar L 8.
 ```
 
-The generic vector-space answer may be yes. The relevant question is whether the **canonical shifted secular state** imposes an extra relation.
+Before theorem investment, derive and numerically sweep the exact Lean-normalized object across cutoff cells and prime-power thresholds. Search aggressively for sign changes or zeros. If a useful sign/nonvanishing statement survives, formalize the weakest true theorem sufficient for the retained state.
 
-Repeated finite success is not a theorem.
+Do not promote numerical positivity to theorem status.
 
-## Active lead — simultaneous parity badness
+## Active lead 2 — production prime-sample / local-jet rigidity
+
+**Research status:** HIGH LEVERAGE  
+**Formal status:** OPEN
+
+#163 proves that the finite-prime part of `explicitCanonicalSourceMoment` is a weighted sum of values of the same `quadraticNormalSourceAtom` whose seventh derivative is exactly proportional to `M4`.
+
+A generic finite sample sum does not determine a derivative. The research question is whether the **canonical** prime coordinates, weights, cutoff-cell variation, analyticity, recurrence, or multiple compatible sample identities impose an interpolation/uniqueness restriction unavailable to generic vectors.
+
+Fast falsification targets include:
+
+```text
+explicitCanonicalSourceMoment != 0 with h^(7)(0)=0
+h^(7)(0) != 0 with explicitCanonicalSourceMoment=0
+multiple sample configurations sharing the same global source sum but different seventh jets
+```
+
+where realizable under theorem-aligned controls.
+
+## Active lead 3 — simultaneous parity badness
 
 **Research status:** FALSIFY BEFORE LEAN INVESTMENT  
 **Formal status:** OPEN
 
-#161's left branch permits simultaneous even and odd badness at the same successor size over a globally good predecessor scale.
+#161's left branch permits simultaneous even and odd badness at the same successor size. #163 does not remove it. Use exact rational/generic rank-one parity models and canonical numerical probes to test whether simultaneous badness remains structurally easy after imposing the exact source data.
 
-Use exact rational/generic rank-one parity models to test whether such simultaneous badness is structurally easy. If yes, no generic rank-one/parity argument can close this branch; exact arithmetic must enter.
+If yes, generic parity geometry still cannot close the branch; arithmetic must enter more strongly.
 
 ## Coverage lead — odd-selected first bad
 
 **Research status:** OPEN COVERAGE DEBT
 
-#161's retained same-state theorem is conditional on selected parity being even. There is no WLOG-even theorem because `D` is algebraic rather than unitary/isometric and the two parity compressions are not spectrally identified.
+The strongest retained mixed/Riesz package is conditional on selected parity being even where strict R8 negativity is used. There is no WLOG-even theorem because `D` is algebraic rather than unitary/isometric and the two parity compressions are not spectrally identified.
 
-Possible future routes are reverse cross-parity transfer, an odd analogue of the mixed rigidity theorem, or a separate argument excluding odd-selected first badness.
-
-## Derived lead — Gamma nonzero under odd-good
-
-**Formal status:** DERIVED
-
-Under even-selected + odd-good, #161 proves
-
-```text
-F_odd(lambda) != 0
-F_odd(lambda) = Gamma(lambda) * explicitCanonicalSourceMoment(...).
-```
-
-Therefore both factors are nonzero, without division. Theoremize this only if it simplifies later composition.
+Possible future routes are reverse cross-parity transfer, an odd analogue of the mixed-jet package, or a separate arithmetic exclusion of odd-selected first badness.
 
 ## Decisive lead — independent contradiction-producing arithmetic restriction
 
-**Formal status:** OPEN
+**Formal status:** OPEN / ACTIVE
 
-The terminal arithmetic task remains a genuinely independent canonical restriction on the exact forced state. It may be a relation between global source moment and local mixed jet/Riesz boundary, a simultaneous-parity incompatibility that genuinely spends canonical arithmetic, a nonnegative transformed residual, or another theorem that excludes the retained negative root without restating successor positivity.
+The terminal arithmetic task is a genuinely independent canonical restriction on the exact forced state. Candidate mechanisms include:
+
+- endpoint-scalar sign/nonvanishing;
+- canonical sample-to-jet rigidity;
+- simultaneous-parity incompatibility that genuinely spends canonical arithmetic;
+- a cancellation-preserving transformed residual;
+- another theorem excluding the retained negative root without restating successor positivity.
+
+Any such restriction must compose with the exact #161/#163 retained state.
+
+## Resurrected / reframed routes
+
+The former “mixed source/M4” route is no longer open theorem work: #163 solved the local analytic/Riesz coupling. What remains from that route is the arithmetic question of whether the global source samples constrain the local jet.
+
+The cross-parity source fork from #161 is more informative after #163 because the finite-prime source term and the local mixed jet now share the same analytic observable. This is a shared interface, not yet a rigidity theorem.
 
 ## Dead route — pointwise positivity after smoothing
 
@@ -143,7 +138,7 @@ positive Riesz primitive + endpoint flatness
   -> pointwise fixed-sign smoothed integrand.
 ```
 
-#159 proves an integrated signed boundary recurrence and #161 proves same-state composition. Neither revives this dead pointwise claim.
+#159 proves an integrated signed boundary recurrence, #161 proves same-state composition, and #163 rewrites the boundary through a squared mixed jet. None revives the dead pointwise claim.
 
 ## Broad fallback — universal one-step domination
 
@@ -157,20 +152,21 @@ positive Riesz primitive + endpoint flatness
 - atomwise positive determinant/SOS;
 - independent coarse pole/prime/arch/scalar majorants;
 - global aperture or Schur monotonicity as a substitute for root exclusion;
-- treating the mixed source-pairing jet as already proved;
 - inferring `M4 != 0` from nonzero explicit source moment or conversely;
+- inferring a local derivative from one finite weighted sample sum;
+- assuming a sign for `canonicalPolePrimeRieszEndpointScalar`;
 - treating retained/shifted R8/R9 as parity-unconditional;
 - assuming the selected parity is even WLOG.
 
 ## Standing research questions
 
-1. Can the mixed quadratic-normal source pairing be theoremized with exact production conjugation and normalization?
-2. Does its seventh jet equal `-2*(2*pi)^6*M4` on every even boundary-flat carrier?
-3. On the canonical shifted secular state, is the global explicit source moment constrained by that local `M4` jet in a way generic vectors are not?
+1. Does `canonicalPolePrimeRieszEndpointScalar L 8` have a useful exact sign or nonvanishing theorem on the production range?
+2. Do the canonical finite-prime samples of `quadraticNormalSourceAtom` constrain its seventh jet in a way generic samples do not?
+3. Can the #161 global source obstruction and #163 local mixed-jet/Riesz coupling be composed into an incompatible arithmetic condition?
 4. Is simultaneous even+odd badness generic, or does canonical arithmetic restrict it?
 5. What closes the odd-selected branch?
 6. Does any proposed closing lemma secretly assume successor positivity or RH-strength content?
 
-**Current highest-information question:** does the canonical shifted negative eigenstate satisfy a non-generic arithmetic rigidity relation linking the #161 global source obstruction to the #159/#161 local `M4` Riesz boundary?
+**Current highest-information question:** which independent arithmetic feature of the exact production state can convert the now-theoremized shared source/mixed-jet/Riesz interface into an actual impossibility?
 
 **RH remains OPEN.**

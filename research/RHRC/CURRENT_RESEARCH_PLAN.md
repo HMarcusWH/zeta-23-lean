@@ -5,20 +5,20 @@
 ## Current authority split
 
 ```text
-live main after merged PR #161 = ef29b45de683962122c1e898ed31bf9417757125
-live main tree = b080572e87068889a72b4e612f99ddf0bd67f482
+live main after merged PR #163 = bd3fa1aafa7df2aa35873df532bdb6f17ddd2bbd
+live main tree = c397b3a015ea54e38ecfe626d6e29556fe963839
 
-latest theorem-bearing PR = #161
-validated theorem head = 188407fb02a37de2e380ede3b60e140953b01441
-validated theorem tree = b080572e87068889a72b4e612f99ddf0bd67f482
-RHRC #1026 = SUCCESS
-Permansson #799 = SUCCESS
+latest theorem-bearing PR = #163
+validated theorem head = b418ff034428f92594bab0e5b8276181a086ee4b
+validated theorem tree = c397b3a015ea54e38ecfe626d6e29556fe963839
+RHRC #1039 = SUCCESS
+Permansson #812 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
 ```
 
-Live GitHub head + exact Lean/compiler/CI remain authoritative. The validated #161 head and merged `main` are distinct commits with the same theorem tree.
+Live GitHub head + exact Lean/compiler/CI remain authoritative. The validated #163 head and merged `main` are distinct commits with the same theorem tree.
 
 ## One-screen frontier
 
@@ -61,113 +61,113 @@ DONE / #161 — FB-04B
   odd-good -> explicitCanonicalSourceMoment != 0
   headline fork: odd successor bad OR explicit source moment != 0
 
-NOW — FB-04C MIXED SOURCE / M4 RIGIDITY
-  theoremize the exact quadratic-normal mixed source observable
-  verify the expected seventh jet proportional to M4
-  specialize it to the retained even shifted trial
-  test whether the linear source observable and quadratic Riesz M4^2 boundary impose a new canonical-state restriction
-  preserve exact pole/prime/archimedean cancellation
-  falsify stronger coupling/sign claims before theorem investment
+DONE / #163 — FB-04C
+  exact complex mixed source-pairing derivative transport
+  exact quadraticNormalSourceAtom normalization
+  h_v^(7)(0) = -2*(2*pi)^6*M4(v) on even boundary-flat carriers
+  exact mixed seventh-jet norm square = constant*|M4|^2
+  explicitCanonicalSourceMoment finite-prime term samples the same quadraticNormalSourceAtom
+  exact complete-channel R8-R9 boundary rewrite through |h_v^(7)(0)|^2
+  retained even-shifted first-bad specialization
+  strict retained R9 upper bound through the mixed jet without endpoint-scalar sign
+  crossParityGamma != 0 under even-selected + odd-good
 
-PARALLEL FALSIFICATION
-  test whether simultaneous even+odd badness is generic in abstract rank-one parity models
-  test whether sourceMoment != 0 and M4 != 0 can be separated on canonical shifted states
-  keep odd-selected first-bad branch as an explicit coverage gap
+NOW — FB-05 CANONICAL ARITHMETIC RESTRICTION
+  find an independently meaningful arithmetic restriction on the exact retained state
+  attack endpoint-scalar sign/nonvanishing before assuming it
+  test whether canonical prime sampling constrains the local seventh jet
+  test simultaneous even+odd badness with theorem-aligned controls
+  keep the odd-selected first-bad branch explicit
+  preserve exact pole/prime/archimedean cancellation
+  reject any route that merely restates successor positivity
 
 DECISIVE OPEN TARGET
-  independent contradiction-producing canonical arithmetic restriction on the exact forced state
+  independent contradiction-producing canonical arithmetic restriction
   -> same-state contradiction
   -> negative-root exclusion
   -> outside-strip/trivial-zero seam
   -> Mathlib RiemannHypothesis wrapper
 ```
 
-## Exact #161 theorem package
+## Exact #163 theorem package
 
-### Spectral / first-bad interfaces — PROVED
-
-```text
-parityBad_of_negative_eigenmode
-RegularCellMinimalFirstBadCertificate.predecessorNonnegative_anyParity
-```
-
-These close the converse negative-eigenmode interface and expose both-parity predecessor nonnegativity without requiring simultaneous zero-shift regularity.
-
-### Shifted secular-root Riesz layer — PROVED
+### Generic mixed-source calculus — PROVED
 
 ```text
-parityCanonicalSourceEnergy_cubicSecularTrialVector_eq_lam_normSq_of_root
-parityCanonicalSourceEnergy_cubicSecularTrialVector_neg_of_root
-canonicalSourceChannelEnergy_cubicSecularTrialVector_neg_of_root
-canonicalRieszSourceChannelEnergy_eight_neg_of_even_secular_root
-canonicalRieszSourceChannelEnergy_nine_lt_neg_momentFourBoundary_of_even_secular_root
-cubicSecularScalar_ne_zero_of_not_parityBad
+quadraticNormalSourceAtom
+iteratedDeriv_seven_quadraticNormalSourceAtom_eq_moment_four
+explicitCanonicalSourceMoment_eq_quadraticNormalSourceAtom_sum
+normSq_iteratedDeriv_seven_quadraticNormalSourceAtom
+two_pi_four_mul_rieszBoundaryEight_eq_endpointScalar_mul_mixedJetNormSq
+two_pi_four_mul_rieszEight_sub_nine_eq_endpointScalar_mul_mixedJetNormSq
 ```
 
-The R8/R9 statements are even-sector statements on the actual shifted secular-root trial. No sign of the endpoint scalar is asserted.
-
-### Retained same-state composition — PROVED
+For even boundary-flat `v` with `K >= 1`, Lean proves
 
 ```text
-RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial
-RegularCellMinimalNegativeEnergyCertificate.evenSecularRoot_of_even
-RegularCellMinimalNegativeEnergyCertificate.evenShiftedRieszEightNeg
-RegularCellMinimalNegativeEnergyCertificate.evenShiftedRieszNine_lt_neg_momentFourBoundary
-RegularCellMinimalNegativeEnergyCertificate.oddSecularScalar_eq_gamma_mul_explicitSource_of_even
-RegularCellMinimalNegativeEnergyCertificate.explicitSourceMoment_ne_zero_of_even_of_not_oddBad
-RegularCellMinimalNegativeEnergyCertificate.oddBad_or_explicitSourceMoment_ne_zero_of_even
+h_v^(7)(0) = -2*(2*pi)^6*M4(v)
+|h_v^(7)(0)|^2 = 4*(2*pi)^12*|M4(v)|^2
+2*(2*pi)^4*(R8(v)-R9(v)) = S8(L)*|h_v^(7)(0)|^2.
 ```
 
-The zero-shift retained trial is not identified with the shifted secular trial. The composition is genuinely same-state only after reconstructing the retained explicit root as the canonical even secular root through an eigenmode bridge.
+The source-moment decomposition theorem also exposes the finite-prime term as a weighted sum of values of this same `quadraticNormalSourceAtom` at the production prime-source coordinates. Pole and archimedean terms remain present.
 
-## Derived consequences worth theoremizing only if useful
-
-Under the even-selected + odd-good branch:
+### Retained same-state specialization — PROVED
 
 ```text
-odd secular scalar != 0
-odd secular scalar = Gamma * explicitCanonicalSourceMoment
+RegularCellMinimalNegativeEnergyCertificate.evenShiftedMixedSourceSeventhJet_eq_momentFour
+RegularCellMinimalNegativeEnergyCertificate.evenShiftedRieszEightNine_eq_mixedJetBoundary
+RegularCellMinimalNegativeEnergyCertificate.evenShiftedRieszNine_lt_neg_mixedJetBoundary
+RegularCellMinimalNegativeEnergyCertificate.crossParityGamma_ne_zero_of_even_of_not_oddBad
 ```
 
-so directly:
+In the retained even-selected branch, strict R8 negativity and the exact boundary identity imply
 
 ```text
-Gamma != 0
-AND
-explicitCanonicalSourceMoment != 0.
+2*(2*pi)^4*R9 < -S8(L)*|h^(7)(0)|^2
 ```
 
-This requires no division. It is DERIVED, not yet a separate Lean theorem.
+without assuming a sign for `S8(L)`.
 
-## FB-04C target
-
-Conceptually define the mixed observable
+## What #163 does not prove
 
 ```text
-h_v(omega)
-  = <centeredQuadraticNormal, sourceMatrix(omega) v>
-      / <centeredQuadraticNormal, centeredQuadraticNormal>.
+explicitCanonicalSourceMoment != 0 -> M4 != 0        OPEN
+M4 != 0 -> explicitCanonicalSourceMoment != 0        OPEN
+finite prime samples determine h^(7)(0)               OPEN
+canonicalPolePrimeRieszEndpointScalar L 8 >= 0        OPEN
+canonicalPolePrimeRieszEndpointScalar L 8 != 0        OPEN
+simultaneous even/odd bad exclusion                    OPEN
+odd-selected first-bad branch closure                  OPEN
+negative-root exclusion                                OPEN
+RiemannHypothesis                                      OPEN
 ```
 
-Expected target for even boundary-flat `v`:
+The phrase “mixed-source rigidity” must therefore be read narrowly: #163 proves the local mixed-jet/Riesz coupling, not a global sourceMoment<->M4 rigidity theorem.
+
+## FB-05 candidate subroutes
+
+### A. Endpoint-scalar route
+
+Study the exact theorem object
 
 ```text
-h_v^(7)(0) = -2*(2*pi)^6*M4(v).
+canonicalPolePrimeRieszEndpointScalar L 8
 ```
 
-Then #159 gives the quadratic boundary term
+with the exact Lean normalization. First falsify global sign/nonvanishing claims numerically and symbolically across cutoff cells and prime-power thresholds. Only formalize a sign theorem if it survives.
 
-```text
-B8(v) = 2*(2*pi)^8*S8(L)*|M4(v)|^2,
-```
+### B. Production sample-to-jet route
 
-so formally one expects
+The finite-prime contribution samples `quadraticNormalSourceAtom` exactly. A generic finite weighted sum of samples does not determine a seventh derivative. Search for extra canonical structure: multiple cutoff cells, exact prime-source coordinates/weights, analyticity, recurrence, interpolation, or a stronger source identity.
 
-```text
-B8(v) = S8(L)/(2*(2*pi)^4) * |h_v^(7)(0)|^2.
-```
+### C. Simultaneous parity route
 
-The mixed-jet formula and this boundary rewrite remain OPEN IN LEAN.
+#161 still allows the odd successor to be bad. Test whether simultaneous even+odd badness remains structurally easy after imposing the canonical arithmetic source data. Generic/rank-one countermodels should be used before Lean investment.
+
+### D. Odd-selected coverage
+
+The retained strict R8/R9 package is even-selected where stated. There is no WLOG-even reduction because `D` is algebraic rather than unitary/isometric. Reverse transfer, an odd analogue, or independent exclusion remains open.
 
 ## Falsification requirements
 
@@ -175,9 +175,10 @@ Before promoting a stronger arithmetic mechanism, attack it with:
 
 - small canonical sizes and both parity sectors;
 - exact/Arb reconstruction using existing R003 backends;
+- endpoint-scalar zero/sign-change searches;
 - source-moment zero / near-zero cases;
-- M4 zero / near-zero cases;
-- examples with sourceMoment != 0 but M4 = 0 and conversely when available;
+- mixed seventh-jet / `M4` zero or near-zero cases;
+- sourceMoment != 0 with mixed jet = 0 and conversely when available;
 - simultaneous both-parity badness;
 - scaling and normalization checks;
 - modified-source controls when the proposed mechanism looks too structural.
@@ -191,7 +192,7 @@ positive Riesz primitive + endpoint flatness
   -> pointwise fixed-sign smoothed integrand.
 ```
 
-#159/#161 integrated boundary and same-state identities do not revive that pointwise claim.
+#159/#161/#163 integrated boundary, same-state and mixed-jet identities do not revive that pointwise claim.
 
 ## Semantic work packages
 
@@ -202,8 +203,8 @@ FB-03A-D legal Riesz engine / parity-even jets                     PROVED / #155
 FB-03E-F complex production transport / retained Riesz negativity  PROVED / #157
 FB-04A exact moment jets + signed Riesz boundary recurrence         PROVED / #159
 FB-04B same-state shifted Riesz x cross-parity source composition  PROVED / #161
-FB-04C mixed source-pairing jet -> M4 rigidity bridge              DERIVED / OPEN
-FB-05  independent contradiction-producing arithmetic restriction  OPEN
+FB-04C mixed quadratic-normal jet x Riesz boundary coupling        PROVED / #163
+FB-05  independent contradiction-producing arithmetic restriction  OPEN / ACTIVE
 FB-06  same-state contradiction / negative-root exclusion          OPEN
 FB-07  terminal zeta/Mathlib seam                                  OPEN
 ```
@@ -214,20 +215,22 @@ PR numbers are execution history, not mathematical dependencies.
 
 1. A retained transformed negative certificate is not a contradiction.
 2. Exact discrepancy/Riesz identities are not arithmetic positivity.
-3. R8/R9 retained/shifted statements are conditional on even parity.
-4. The #159 self-energy seventh/ninth jet formulas are not the mixed source-pairing seventh-jet theorem.
+3. R8/R9 retained/shifted statements are conditional on even parity where stated.
+4. The #159 self-energy seventh/ninth jet formulas are not the #163 mixed source-pairing theorem; #163 proved the latter independently.
 5. `explicitCanonicalSourceMoment != 0` does not imply `M4 != 0`, nor conversely, without a theorem.
-6. Simultaneous even/odd badness remains possible until excluded.
-7. The selected first-bad parity cannot be assumed even WLOG; D is not unitary/isometric.
-8. Riesz smoothing is not a pointwise sign theorem.
-9. Pointwise fixed-sign smoothed-integrand positivity remains falsified.
-10. No division by alpha/Gamma/overlap/source moment without a theorem.
-11. Interval-certified numerics are not Lean theorem authority.
-12. Machine claim promotion remains separate from compiler theorem validity.
-13. Negative-root exclusion is not the terminal Mathlib RH statement without the final seam.
+6. Exact finite-prime sampling of a function does not by itself determine its local seventh jet.
+7. No endpoint-scalar sign/nonvanishing theorem is currently available.
+8. Simultaneous even/odd badness remains possible until excluded.
+9. The selected first-bad parity cannot be assumed even WLOG; D is not unitary/isometric.
+10. Riesz smoothing is not a pointwise sign theorem.
+11. Pointwise fixed-sign smoothed-integrand positivity remains falsified.
+12. No division by alpha/Gamma/overlap/source moment without a theorem.
+13. Interval-certified numerics are not Lean theorem authority.
+14. Machine claim promotion remains separate from compiler theorem validity.
+15. Negative-root exclusion is not the terminal Mathlib RH statement without the final seam.
 
 Newest research delta:
 
-`RESEARCH_LEADS_POST_161_SAME_STATE_RIESZ_SOURCE_RIGIDITY_DELTA.md`
+`RESEARCH_LEADS_POST_163_MIXED_SOURCE_RIESZ_ARITHMETIC_FRONTIER_DELTA.md`
 
 **RH remains OPEN.**

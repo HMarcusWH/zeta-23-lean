@@ -21,20 +21,20 @@ A green but unmerged PR is branch evidence. A merged Lean file is theorem author
 ## Current synchronized anchors
 
 ```text
-live main after merged PR #161 = ef29b45de683962122c1e898ed31bf9417757125
-live main tree = b080572e87068889a72b4e612f99ddf0bd67f482
+live main after merged PR #163 = bd3fa1aafa7df2aa35873df532bdb6f17ddd2bbd
+live main tree = c397b3a015ea54e38ecfe626d6e29556fe963839
 
-latest theorem-bearing PR = #161
-validated theorem head = 188407fb02a37de2e380ede3b60e140953b01441
-validated theorem tree = b080572e87068889a72b4e612f99ddf0bd67f482
-RHRC #1026 = SUCCESS
-Permansson #799 = SUCCESS
+latest theorem-bearing PR = #163
+validated theorem head = b418ff034428f92594bab0e5b8276181a086ee4b
+validated theorem tree = c397b3a015ea54e38ecfe626d6e29556fe963839
+RHRC #1039 = SUCCESS
+Permansson #812 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
 ```
 
-The validated #161 PR head and merged main are distinct commits with the same theorem tree. Documentation must distinguish current live main, latest theorem-bearing merge, exact validated head/tree, and control-plane semantic anchor.
+The validated #163 PR head and merged main are distinct commits with the same theorem tree. Documentation must distinguish current live main, latest theorem-bearing merge, exact validated head/tree, and control-plane semantic anchor.
 
 A later docs-only merge may move live `main` without changing theorem authority.
 
@@ -64,26 +64,26 @@ Historical dated deltas are not rewritten to look current.
 - **theorem tree** — tree shared by validated head and merged theorem-bearing state when applicable;
 - **control-plane semantic anchor** — latest meaningful green controller capability/authority semantics.
 
-PR #161 advances theorem authority because it compiler-validates: negative-eigenmode -> `ParityBad`; first-bad predecessor nonnegativity for either parity; exact canonical/source-channel negativity on a genuine shifted secular-root trial; strict even Riesz-8 negativity and the exact Riesz-9/M4 boundary inequality on that same shifted trial; opposite-parity secular nonvanishing under opposite-parity goodness; the retained odd-secular = Gamma * explicit-source identity at an even retained root; odd-good -> nonzero explicit production source moment; and the headline odd-successor-bad OR explicit-source-moment-nonzero fork.
+PR #163 advances theorem authority because it compiler-validates the direct complex mixed-source pairing calculus, the exact quadratic-normal seventh jet proportional to `M4`, the corresponding mixed-jet norm-square theorem, the exact finite-prime sampling decomposition of `explicitCanonicalSourceMoment` through the same `quadraticNormalSourceAtom`, the complete-channel Riesz-8/Riesz-9 boundary identity through the squared seventh jet, and the retained even-shifted specialization including a strict R9 upper bound without any endpoint-scalar sign assumption.
 
-PR #117 remains the Control-v2 semantic anchor because #161 changes mathematical state, not controller authority/capability semantics.
+PR #117 remains the Control-v2 semantic anchor because #163 changes mathematical state, not controller authority/capability semantics.
 
-This docs/control synchronization records #161; it does not create theorem authority.
+This docs/control synchronization records #163; it does not create theorem authority.
 
-## Current transition after PR #161
+## Current transition after PR #163
 
 Newest project synthesis:
 
-`RESEARCH_LEADS_POST_161_SAME_STATE_RIESZ_SOURCE_RIGIDITY_DELTA.md`
+`RESEARCH_LEADS_POST_163_MIXED_SOURCE_RIESZ_ARITHMETIC_FRONTIER_DELTA.md`
 
 Historical predecessor:
 
-`RESEARCH_LEADS_POST_159_RIESZ_CROSS_PARITY_FRONTIER_DELTA.md`
+`RESEARCH_LEADS_POST_161_SAME_STATE_RIESZ_SOURCE_RIGIDITY_DELTA.md`
 
 Current route:
 
 ```text
-PROVED THROUGH #161
+PROVED THROUGH #163
   off-line zero
   -> retained regular cell-minimal first-bad certificate
   -> exact negative canonical source channel
@@ -100,59 +100,61 @@ PROVED THROUGH #161
   -> same shifted even state has odd scalar = Gamma * explicit source moment
   -> odd-good forces explicit source moment != 0
   -> odd successor bad OR explicit source moment != 0
+  -> exact quadratic-normal mixed source observable
+  -> exact seventh mixed jet = -2*(2*pi)^6*M4
+  -> finite-prime term samples the same mixed observable
+  -> exact R8-R9 boundary = endpoint scalar * squared seventh mixed jet
+  -> retained same-state mixed-jet/Riesz specialization
 
 NOW
-  theoremize the mixed quadratic-normal source observable
-  -> verify seventh jet proportional to M4
-  -> specialize to the retained even shifted state
-  -> test whether linear source information and quadratic Riesz M4^2 information produce a genuinely new canonical rigidity relation
-
-PARALLEL
-  falsify simultaneous even+odd badness in generic/rank-one controls before theorem investment
-  preserve odd-selected branch as open coverage debt
+  FB-05 independent canonical arithmetic restriction
+  -> falsify/prove endpoint-scalar sign or nonvanishing if available
+  -> test canonical prime-sample / local-jet rigidity
+  -> test simultaneous-parity exclusion with actual arithmetic
+  -> preserve odd-selected branch as open coverage debt
 
 AFTER
-  independent contradiction-producing arithmetic restriction
-  -> same-state contradiction
+  same-state contradiction
   -> negative-root exclusion
   -> outside-strip/trivial-zero seam
   -> explicit Mathlib RiemannHypothesis wrapper
 ```
 
-## Post-#161 classification correction
+## Post-#163 classification correction
 
 Every living summary must now reflect:
 
 ```text
 same-state shifted-root Riesz x cross-parity source composition
-  OPEN / NEXT after #159
-  -> PROVED / #161
-
-negative eigenmode -> ParityBad
-  implicit/converse-only before #161
-  -> PROVED / #161
-
-first-bad predecessor nonnegativity for arbitrary parity
-  derived from ancestry before #161
-  -> PROVED / #161
-
-odd-good -> explicitCanonicalSourceMoment != 0 on retained even shifted state
   -> PROVED / #161
 
 mixed quadratic-normal source-pairing seventh-jet -> M4
-  -> DERIVED / OPEN IN LEAN
+  DERIVED / OPEN before #163
+  -> PROVED / #163
+
+finite-prime source term samples the same quadraticNormalSourceAtom
+  -> PROVED / #163
+
+mixed seventh-jet squared R8-R9 boundary coupling
+  -> PROVED / #163
+
+retained even-shifted mixed-jet/Riesz specialization
+  -> PROVED / #163
 
 explicit source moment <-> M4 coupling
+  -> OPEN
+
+endpoint-scalar sign/nonvanishing
   -> OPEN
 
 simultaneous even/odd bad exclusion
   -> OPEN
 
 independent contradiction-producing arithmetic restriction
-  -> OPEN
+  -> OPEN / ACTIVE
 ```
 
-Do not confuse the proved #159 self-energy ninth derivative with the unproved mixed source-pairing seventh derivative. Do not infer `M4 != 0` from #161's nonzero explicit source moment.
+Do not confuse the proved shared-observable sampling interface with a theorem that the global source moment determines the seventh local jet. A finite weighted sample sum does not by itself determine a derivative. Do not infer `M4 != 0` from #161's nonzero explicit source moment.
 
 ## Permanent firewalls
 
@@ -162,9 +164,11 @@ regular predecessor != positive successor
 retained transformed negative energy != contradiction
 exact discrepancy / Riesz identity != arithmetic sign
 R8/R9 retained or shifted statements != parity-unconditional theorem
-#159 seventh/ninth self-energy jets != mixed source-pairing jet theorem
+#159 seventh/ninth self-energy jets != #163 mixed source-pairing jet theorem by type; #163 proves the mixed theorem independently
 explicitCanonicalSourceMoment != 0 !=> M4 != 0
 M4 != 0 !=> explicitCanonicalSourceMoment != 0
+finite prime samples != local seventh-jet determination without new theorem
+canonicalPolePrimeRieszEndpointScalar sign/nonvanishing remains open
 simultaneous even/odd badness remains open
 selected parity cannot be assumed even WLOG
 Riesz smoothing != pointwise sign

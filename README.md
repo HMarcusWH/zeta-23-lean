@@ -7,18 +7,18 @@ This fork preserves the upstream Zeta23 theorem package while adding an opt-in R
 ## Current authority snapshot
 
 ```text
-live main after merged PR #161 = ef29b45de683962122c1e898ed31bf9417757125
-live main tree = b080572e87068889a72b4e612f99ddf0bd67f482
-latest theorem-bearing PR = #161
-validated theorem head = 188407fb02a37de2e380ede3b60e140953b01441
-validated theorem tree = b080572e87068889a72b4e612f99ddf0bd67f482
-RHRC #1026 = SUCCESS
-Permansson #799 = SUCCESS
+live main after merged PR #163 = bd3fa1aafa7df2aa35873df532bdb6f17ddd2bbd
+live main tree = c397b3a015ea54e38ecfe626d6e29556fe963839
+latest theorem-bearing PR = #163
+validated theorem head = b418ff034428f92594bab0e5b8276181a086ee4b
+validated theorem tree = c397b3a015ea54e38ecfe626d6e29556fe963839
+RHRC #1039 = SUCCESS
+Permansson #812 = SUCCESS
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
 ```
 
-Live GitHub head + exact Lean/compiler/CI are authoritative. The validated #161 head and merged `main` are distinct commits with the same theorem tree.
+Live GitHub head + exact Lean/compiler/CI are authoritative. The validated #163 head and merged `main` are distinct commits with the same theorem tree.
 
 ## Current theorem ladder
 
@@ -40,72 +40,64 @@ retained R6->R7 / even R8->R9 moment-square boundaries                  PROVED /
 same-state shifted Riesz x cross-parity source composition              PROVED / #161
 odd-good -> nonzero exact production source moment                      PROVED / #161
 headline odd-bad OR explicit-source-nonzero fork                        PROVED / #161
+mixed quadratic-normal seventh source jet -> M4                         PROVED / #163
+finite-prime sampling of the same mixed source observable               PROVED / #163
+mixed-jet squared Riesz-8/Riesz-9 boundary coupling                     PROVED / #163
+retained mixed-jet/Riesz specialization                                 PROVED / #163
 
-mixed quadratic-normal source-pairing jet -> M4                         DERIVED / OPEN
 source-moment / M4 canonical-state rigidity                             OPEN
+endpoint-scalar sign/nonvanishing                                       OPEN
 simultaneous even/odd bad exclusion                                     OPEN
 odd-selected first-bad branch closure                                   OPEN
-independent contradiction-producing arithmetic restriction              OPEN
+independent contradiction-producing arithmetic restriction              OPEN / ACTIVE
 negative-root exclusion                                                  OPEN
 outside-strip/trivial-zero seam + Mathlib RH wrapper                     OPEN
 RH                                                                       OPEN
 ```
 
-## What #161 added
+## What #163 added
 
-PR #161 closed the same-state composition gap. Lean now proves that the retained even negative root can be reconstructed as the canonical shifted secular root built from whole-cell predecessor nonnegativity, and that the **same shifted trial** carries:
-
-```text
-complete Riesz-8 energy < 0
-exact Riesz-9 / M4 boundary inequality
-odd secular scalar = Gamma * explicitCanonicalSourceMoment.
-```
-
-It also proves
+PR #163 closes FB-04C. Lean now proves that the exact production mixed quadratic-normal observable
 
 ```text
-not odd ParityBad
-  -> odd secular scalar != 0
-  -> explicitCanonicalSourceMoment != 0,
+h_v(omega) = quadraticNormalSourceAtom K v omega
 ```
 
-and therefore the retained even-selected fork
+satisfies, for even boundary-flat carriers,
 
 ```text
-odd successor ParityBad
-OR
-explicitCanonicalSourceMoment(even shifted negative trial) != 0.
+h_v^(7)(0) = -2*(2*pi)^6*M4(v),
+|h_v^(7)(0)|^2 = 4*(2*pi)^12*|M4(v)|^2,
+2*(2*pi)^4*(R8(v)-R9(v)) = S8(L)*|h_v^(7)(0)|^2.
 ```
 
-No division by Gamma/overlap is used, no sign of the Riesz endpoint scalar is assumed, and no implication from nonzero explicit source moment to nonzero `M4` is asserted.
+The exact finite-prime contribution to `explicitCanonicalSourceMoment` samples this same `quadraticNormalSourceAtom` at the production prime-source coordinates. Pole and archimedean terms remain.
+
+On the retained even shifted first-bad state, #163 specializes the same identities and proves
+
+```text
+2*(2*pi)^4*R9 < -S8(L)*|h^(7)(0)|^2
+```
+
+without assuming any sign for `S8(L)`. Under opposite-parity goodness it also theoremizes `crossParityGamma != 0`.
+
+No global sourceMoment<->M4 implication and no endpoint-scalar sign theorem is asserted.
 
 ## Current active path
 
-The live theorem frontier is now **FB-04C**: theoremize the exact mixed quadratic-normal source observable and test whether its local `M4` jet genuinely couples to the global arithmetic source obstruction already forced by #161.
+The live theorem frontier is now **FB-05**: find an independent canonical arithmetic restriction that makes the exact retained #161/#163 state impossible.
 
-Conceptually:
-
-```text
-h_v(omega)
-  = <centeredQuadraticNormal, sourceMatrix(omega) v>
-      / <centeredQuadraticNormal, centeredQuadraticNormal>
-```
-
-with expected even-boundary-flat target
+Highest-information candidate subroutes are:
 
 ```text
-h_v^(7)(0) = -2*(2*pi)^6*M4(v).
+endpoint-scalar sign/nonvanishing
+production prime-sample -> local-jet rigidity
+simultaneous parity badness exclusion with actual arithmetic
+odd-selected first-bad coverage
+another cancellation-preserving invariant on the same state
 ```
 
-If this survives exact Lean normalization, it can be combined with the theorem-backed Riesz boundary
-
-```text
-B8(v) = 2*(2*pi)^8*S8(L)*|M4(v)|^2
-```
-
-on the same shifted state. The decisive open problem is still an **independent canonical arithmetic rigidity/sign restriction** that contradicts the forced state.
-
-In parallel, simultaneous even+odd badness should be attacked in exact generic/rank-one controls before theorem investment, and the odd-selected first-bad branch remains an explicit coverage gap.
+The next theorem PR should be chosen only after adversarial falsification of these candidates. In particular, we do not pre-assume that `S8(L)` is positive.
 
 ## Falsified shortcut
 
@@ -116,7 +108,7 @@ positive Riesz primitive + endpoint flatness
   -> pointwise fixed-sign smoothed integrand.
 ```
 
-The integrated boundary recurrence and #161 same-state composition do not revive that dead pointwise claim.
+The integrated boundary recurrence, #161 same-state composition and #163 mixed-jet rewrite do not revive that dead pointwise claim.
 
 ## Documentation authority
 
@@ -124,7 +116,7 @@ Current living state is maintained in:
 
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`;
 - `research/RHRC/RESEARCH_LEADS.md`;
-- `research/RHRC/RESEARCH_LEADS_POST_161_SAME_STATE_RIESZ_SOURCE_RIGIDITY_DELTA.md`;
+- `research/RHRC/RESEARCH_LEADS_POST_163_MIXED_SOURCE_RIESZ_ARITHMETIC_FRONTIER_DELTA.md`;
 - `research/RHRC/DOCUMENTATION_AUTHORITY.md`;
 - `research/RHRC/VALIDATION_PROTOCOL.md`;
 - `research/RHRC/routes/R003_ccm_bridge/README.md`;
@@ -135,12 +127,14 @@ Older dated deltas, external reviews and countermodel records remain historical 
 ## Permanent firewalls
 
 - RH remains OPEN.
-- theorem authority through #161 is separate from machine claim promotion.
+- theorem authority through #163 is separate from machine claim promotion.
 - retained/shifted transformed negativity is not a contradiction.
 - exact Riesz identities are not arithmetic sign theorems.
 - R8/R9 statements remain conditional on even parity where stated.
-- the #159 self-energy ninth-jet theorem is not the unproved mixed source-pairing seventh-jet theorem.
+- #159 self-energy jets are distinct from #163's independently proved mixed source-pairing theorem.
 - `explicitCanonicalSourceMoment != 0` does not imply `M4 != 0`, nor conversely, without a theorem.
+- exact finite-prime sampling does not by itself determine the local seventh jet.
+- no sign or nonvanishing theorem for `S8(L)` is currently available.
 - simultaneous even/odd badness is not excluded.
 - selected parity cannot be assumed even WLOG.
 - no division by alpha/Gamma/overlap/source moment without separate nonzeroness.

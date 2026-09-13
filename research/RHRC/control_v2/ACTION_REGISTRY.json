@@ -25,14 +25,17 @@
         "PR #157 theoremizes genuine complex production D-transport, exact complete Riesz order 6 / even order 8, retained transformed negativity and the ExceptionalZero Riesz-6 wrapper",
         "PR #159 theoremizes the exact first source-energy jet, the general moment-prefix odd-jet law, exact seventh/ninth leading-moment formulas, the generic signed Riesz boundary recurrence, and retained R6->R7 / even R8->R9 boundary decompositions",
         "PR #161 theoremizes the same-state shifted composition: first-bad any-parity predecessor nonnegativity, shifted secular-root canonical/source negativity, even Riesz-8 negativity, the exact Riesz-9/M4 boundary inequality, cross-parity odd scalar = Gamma * explicitCanonicalSourceMoment on the same retained even shifted trial, and the odd-bad OR explicit-source-moment-nonzero fork",
+        "PR #163 theoremizes the mixed quadratic-normal source observable, its exact seventh jet -2*(2*pi)^6*M4, the mixed-jet norm-square identity, exact finite-prime sampling of the same quadraticNormalSourceAtom inside explicitCanonicalSourceMoment, the complete Riesz-8/Riesz-9 boundary identity through the squared seventh jet, and the retained even-shifted specialization",
         "FB-04B same-state shifted Riesz x cross-parity source composition is consumed theorem infrastructure and must not remain listed as open",
-        "the current FB-04C target is the mixed quadratic-normal source observable and its expected seventh jet proportional to M4, followed by a test of whether that linear observable supplies genuinely new information against the quadratic Riesz M4^2 boundary",
+        "FB-04C mixed-source jet / Riesz coupling is consumed theorem infrastructure and must not remain a live first break",
         "nonzero explicitCanonicalSourceMoment does not imply M4 != 0 and M4 != 0 does not imply nonzero explicitCanonicalSourceMoment without a new canonical-state relation",
+        "the exact prime-source sum samples quadraticNormalSourceAtom, but a finite weighted sample sum does not by itself determine the seventh jet at zero",
+        "no sign or nonvanishing theorem for canonicalPolePrimeRieszEndpointScalar L 8 is currently available",
         "simultaneous even/odd successor badness is still allowed and should be falsified in generic/rank-one models before Lean investment",
         "the odd-selected first-bad branch remains a real coverage gap; D is not unitary and no WLOG-even reduction is available",
-        "DR-024 kills only pointwise fixed-sign smoothed-integrand positivity; the integrated Riesz/cross-parity source route is not a dead-route revival",
+        "DR-024 kills only pointwise fixed-sign smoothed-integrand positivity; the integrated Riesz/cross-parity/mixed-source route is not a dead-route revival",
         "the decisive target remains an independently meaningful canonical arithmetic restriction, not successor positivity or canonicalOneStepDomination under another name",
-        "the #152 Arb harness is scoped falsification infrastructure; after #161 it should test the mixed-source/M4 or simultaneous-parity mechanisms rather than rescan already-proved same-state Riesz negativity"
+        "the #152 Arb harness is scoped falsification infrastructure; after #163 it should test endpoint-scalar, sample-to-jet, simultaneous-parity, or other FB-05 arithmetic mechanisms rather than rescan already-proved mixed-source identities"
       ],
       "score_inputs": {
         "cost": 2.0,
@@ -44,16 +47,9 @@
       },
       "first_breaks": [
         {
-          "id": "E4A4-SCHUR-FB-04",
-          "statement": "after consuming #161 same-state shifted Riesz x cross-parity source composition, the mixed quadratic-normal source-pairing mechanism fails: the expected seventh jet proportional to M4 cannot be theoremized with the exact production normalization, or the resulting linear-source / quadratic-Riesz relation imposes no additional restriction on the exact canonical shifted negative state under theorem-aligned or interval-certified falsification",
-          "test_id": "theoremize_and_falsify_mixed_source_m4_rigidity",
-          "estimated_cost": 1.4,
-          "decisive_if_failed": true
-        },
-        {
           "id": "E4A4-SCHUR-FB-05",
-          "statement": "after the exact cancellation-preserving Riesz, same-state cross-parity/source, and any surviving mixed-source/M4 interfaces are theorem-backed and falsification gates are passed, no independent canonical arithmetic inequality or rigidity statement proves a contradiction-producing restriction on the exact forced state",
-          "test_id": "prove_complete_transformed_residual_nonnegativity",
+          "statement": "after consuming #163's exact mixed-source seventh-jet, finite-prime sampling decomposition, squared-jet Riesz boundary identity and retained-state specialization, no independent canonical arithmetic property of the endpoint scalar, production source sampling, exact pole/arch/prime decomposition, parity coupling, or another theorem-backed invariant yields an incompatible restriction on the exact forced shifted state",
+          "test_id": "falsify_and_prove_fb05_canonical_arithmetic_restriction",
           "estimated_cost": 2.0,
           "decisive_if_failed": true
         }
@@ -70,7 +66,7 @@
       "surviving_objections": [
         "PR #137 proves canonicalOneStepDomination is sufficient but not its arithmetic truth",
         "under predecessor nonnegativity and one-dimensional shell geometry, universal domination is essentially the missing successor positivity and has no information gain if proved by restatement",
-        "PR #161 sharpens the selected-state arithmetic route but does not make universal domination a smaller theorem",
+        "PR #163 sharpens the selected-state arithmetic route but does not make universal domination a smaller theorem",
         "generic Hermitian/parity/KKT/transfer/displacement structure remains quarantined by countermodels",
         "factorwise alpha/Gamma/overlap/source-moment closure remains quarantined",
         "atomwise positive determinant/SOS remains quarantined"
@@ -111,7 +107,8 @@
       "surviving_objections": [
         "PR #157 supplies retained complete Riesz-6 negativity under a hypothetical off-line zero, with stronger Riesz-8 negativity for even first-bad parity",
         "PR #159 exposes exact retained boundary defects but does not supply an opposing sign",
-        "PR #161 aligns the even negative secular trial with exact Riesz-8/Riesz-9 structure and the cross-parity explicit source obstruction, but still supplies no contradiction-producing arithmetic restriction",
+        "PR #161 aligns the even negative secular trial with exact Riesz-8/Riesz-9 structure and the cross-parity explicit source obstruction",
+        "PR #163 aligns that same retained even shifted trial with the exact mixed seventh source jet and squared-jet Riesz boundary, but still supplies no contradiction-producing arithmetic restriction",
         "no division by alpha, Gamma, overlap or source moment is legal without separate nonzeroness",
         "terminal Mathlib RH still requires the outside-strip/trivial-zero seam after negative-root exclusion"
       ],
@@ -144,8 +141,8 @@
       "surviving_objections": [
         "D is algebraic, not unitary or isometric",
         "rank-at-most-one defect does not identify which parity carries a zero mode",
-        "#161 does not upgrade D to metric transport or prove simultaneous-parity badness impossible",
-        "the active post-#161 route uses the exact secular/source transfer and same-state Riesz obstruction rather than assuming spectral equivalence through D"
+        "#163 does not upgrade D to metric transport or prove simultaneous-parity badness impossible",
+        "the active post-#163 route uses exact secular/source/mixed-jet/Riesz constraints rather than assuming spectral equivalence through D"
       ],
       "score_inputs": {
         "cost": 1.8,
@@ -177,7 +174,7 @@
         "strict monotonicity yields root uniqueness while a hypothetical off-line zero already forces one negative root",
         "root uniqueness is weaker than negative-root exclusion",
         "post-#150 experiments disfavor global aperture/selected-Schur monotonicity as the decisive mechanism",
-        "the theorem-backed post-#161 same-state Riesz/cross-parity source obstruction is more direct unless monotonicity supplies independent source-specific exclusion information"
+        "the theorem-backed post-#163 same-state source/Riesz/mixed-jet obstruction is more direct unless monotonicity supplies independent source-specific exclusion information"
       ],
       "score_inputs": {
         "cost": 2.0,
@@ -208,7 +205,7 @@
       "surviving_objections": [
         "a strictly positive predecessor floor is not available uniformly from first-bad minimality alone",
         "the shell gap g_N=q_N-mu_N may fail to stay positive",
-        "the post-#161 mixed-source/same-state rigidity route is more direct than rebuilding a global deformation horizon"
+        "the post-#163 same-state arithmetic-rigidity route is more direct than rebuilding a global deformation horizon"
       ],
       "score_inputs": {
         "cost": 2.0,
