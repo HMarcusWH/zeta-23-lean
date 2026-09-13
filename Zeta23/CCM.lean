@@ -136,6 +136,7 @@ import Zeta23.CCM.CanonicalPolePrimeDiscrepancyIntegrability
 import Zeta23.CCM.CanonicalPolePrimeRiesz
 import Zeta23.CCM.CanonicalSourceRieszEnergy
 import Zeta23.CCM.CanonicalRieszBoundary
+import Zeta23.CCM.QuadraticNormalSourceJets
 import Zeta23.CCM.SecularRootRieszBoundary
 import Zeta23.CCM.RegularFirstBadCanonicalEnergy
 import Zeta23.CCM.RegularFirstBadRieszEnergy
