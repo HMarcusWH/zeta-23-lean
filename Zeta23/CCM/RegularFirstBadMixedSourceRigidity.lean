@@ -41,7 +41,9 @@ theorem RegularCellMinimalNegativeEnergyCertificate.evenShiftedMixedSourceSevent
         centeredMoment (c.firstBad.Nstar + 1) 4
           (evenBoundaryFlatRawCoefficients
             (c.firstBad.Nstar + 1) c.evenShiftedTrial) := by
-  simpa [RegularCellMinimalNegativeEnergyCertificate.evenShiftedQuadraticNormalSourceAtom] using
+  change iteratedDeriv 7
+    (quadraticNormalSourceAtom (c.firstBad.Nstar + 1) c.evenShiftedTrial) 0 = _
+  exact
     iteratedDeriv_seven_quadraticNormalSourceAtom_eq_moment_four
       (c.firstBad.Nstar + 1) (by omega) c.evenShiftedTrial
 
@@ -62,7 +64,12 @@ theorem RegularCellMinimalNegativeEnergyCertificate.evenShiftedRieszEightNine_eq
       canonicalPolePrimeRieszEndpointScalar c.firstBad.L 8 *
         Complex.normSq
           (iteratedDeriv 7 c.evenShiftedQuadraticNormalSourceAtom 0) := by
-  simpa [RegularCellMinimalNegativeEnergyCertificate.evenShiftedQuadraticNormalSourceAtom] using
+  change _ =
+    canonicalPolePrimeRieszEndpointScalar c.firstBad.L 8 *
+      Complex.normSq
+        (iteratedDeriv 7
+          (quadraticNormalSourceAtom (c.firstBad.Nstar + 1) c.evenShiftedTrial) 0)
+  exact
     two_pi_four_mul_rieszEight_sub_nine_eq_endpointScalar_mul_mixedJetNormSq
       c.firstBad.L_pos (c.firstBad.Nstar + 1) (by omega) c.evenShiftedTrial
 
