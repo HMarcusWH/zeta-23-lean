@@ -21,16 +21,16 @@ class ControlV2Tests(unittest.TestCase):
         self.assertFalse(boundary["may_emit_terminal_rh_status"])
         self.assertFalse(boundary["may_promote_lean_theorem"])
 
-    def test_state_has_post_157_theorem_and_post_117_control_anchors(self):
+    def test_state_has_post_159_theorem_and_post_117_control_anchors(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 157)
+        self.assertEqual(state.anchor.pr, 159)
         self.assertEqual(
             state.anchor.merge_commit,
-            "e304f07c9e83165ebf066db0d67c2cc24f8961c2",
+            "63862cd80501754c6c6599ffea09b874a327dae4",
         )
         self.assertEqual(
             state.anchor.tree,
-            "706dfde7f9e7b0b8403a671769d424ac7862f5e7",
+            "cb7a81d3b10e7f909b794103f2a919a3a3ccf233",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -59,20 +59,10 @@ class ControlV2Tests(unittest.TestCase):
         receipts = {a.action_id: "RETRO-test" for a in actions}
         complete = {a.action_id: True for a in actions}
         first_break_counts = {a.action_id: 1 for a in actions}
-        a = recommend(
-            state,
-            actions,
-            retro_receipts=receipts,
-            retro_complete=complete,
-            first_break_counts=first_break_counts,
-        )
-        b = recommend(
-            state,
-            actions,
-            retro_receipts=receipts,
-            retro_complete=complete,
-            first_break_counts=first_break_counts,
-        )
+        a = recommend(state, actions, retro_receipts=receipts, retro_complete=complete,
+                      first_break_counts=first_break_counts)
+        b = recommend(state, actions, retro_receipts=receipts, retro_complete=complete,
+                      first_break_counts=first_break_counts)
         self.assertEqual(a.to_dict(), b.to_dict())
         self.assertFalse(a.theorem_authority)
         self.assertFalse(a.terminal_claim_change)
@@ -83,20 +73,14 @@ class ControlV2Tests(unittest.TestCase):
 
     def test_regular_schur_action_outranks_fallbacks(self):
         scores = {a.action_id: action_score(a) for a in load_actions()}
-        self.assertGreater(
-            scores["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"],
-            scores["E4_A4_CANONICAL_ONE_STEP_DOMINATION"],
-        )
-        self.assertGreater(
-            scores["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"],
-            scores["DEFORMATION_BUDGET_PAPER_TEST"],
-        )
-        self.assertGreater(
-            scores["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"],
-            scores["E4_B_PARITY_SHIFTED_NULLITY"],
-        )
+        self.assertGreater(scores["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"],
+                           scores["E4_A4_CANONICAL_ONE_STEP_DOMINATION"])
+        self.assertGreater(scores["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"],
+                           scores["DEFORMATION_BUDGET_PAPER_TEST"])
+        self.assertGreater(scores["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"],
+                           scores["E4_B_PARITY_SHIFTED_NULLITY"])
 
-    def test_regular_schur_action_is_post157_transformed_arithmetic_route(self):
+    def test_regular_schur_action_is_post159_same_state_composition_route(self):
         registry = json.loads(
             (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
         )
@@ -105,30 +89,20 @@ class ControlV2Tests(unittest.TestCase):
         first_breaks = "\n".join(x["statement"] for x in action["first_breaks"])
         break_ids = [x["id"] for x in action["first_breaks"]]
 
-        self.assertIn("PR #157", objections)
-        self.assertIn("complex production D-transport", objections)
-        self.assertIn("retained Riesz negativity", objections)
-        self.assertIn("pointwise fixed-sign", objections)
+        self.assertIn("PR #159", objections)
+        self.assertIn("general moment-prefix odd-jet law", objections)
+        self.assertIn("signed Riesz boundary recurrence", objections)
+        self.assertIn("cross-parity source-moment transfer", objections)
+        self.assertIn("mixed quadratic-normal source-pairing", objections)
         self.assertIn("DR-024", objections)
-        self.assertIn("seventh/ninth leading-jet formulas", objections)
-        # DR-024 kills only a shortcut; the surviving complete-residual route is
-        # not reviving it, so Control-v2 must not require a RevivalRecord.
         self.assertEqual(action["dead_route_matches"], [])
-        self.assertNotIn("E4A4-SCHUR-FB-01", break_ids)
-        self.assertNotIn("E4A4-SCHUR-FB-02", break_ids)
-        self.assertNotIn("E4A4-SCHUR-FB-03", break_ids)
-        self.assertNotIn("E4A4-SCHUR-FB-03E", break_ids)
-        self.assertNotIn("E4A4-SCHUR-FB-03F", break_ids)
         self.assertEqual(
             break_ids,
-            [
-                "E4A4-SCHUR-FB-04",
-                "E4A4-SCHUR-FB-05",
-            ],
+            ["E4A4-SCHUR-FB-04", "E4A4-SCHUR-FB-05"],
         )
-        self.assertIn("#157 production Riesz", first_breaks)
-        self.assertIn("interval-certified", first_breaks)
-        self.assertIn("complete-residual", first_breaks)
+        self.assertIn("#159 exact moment jets", first_breaks)
+        self.assertIn("shifted-root/cross-parity", first_breaks)
+        self.assertIn("complete transformed-residual", first_breaks)
 
         selected_break = _selected_first_break(
             registry, "E4_A4_REGULAR_SCHUR_ENERGY_SIGN"
@@ -139,17 +113,14 @@ class ControlV2Tests(unittest.TestCase):
     def test_universal_domination_remains_routable_but_is_not_selected(self):
         state = load_research_state()
         actions = load_actions()
-        action_ids = {a.action_id for a in actions}
-        self.assertIn("E4_A4_CANONICAL_ONE_STEP_DOMINATION", action_ids)
+        self.assertIn("E4_A4_CANONICAL_ONE_STEP_DOMINATION", {a.action_id for a in actions})
         receipts = {a.action_id: "RETRO-test" for a in actions}
         complete = {a.action_id: True for a in actions}
-        first_break_counts = {a.action_id: 1 for a in actions}
         cert = recommend(
-            state,
-            actions,
+            state, actions,
             retro_receipts=receipts,
             retro_complete=complete,
-            first_break_counts=first_break_counts,
+            first_break_counts={a.action_id: 1 for a in actions},
         )
         self.assertNotEqual(cert.selected_action, "E4_A4_CANONICAL_ONE_STEP_DOMINATION")
 
@@ -161,24 +132,16 @@ class ControlV2Tests(unittest.TestCase):
             concept_id = kwargs["concept_id"]
             calls.append(concept_id)
             return SimpleNamespace(
-                receipt_id=f"RETRO-{concept_id}",
-                search_complete=True,
-                searched_sources=(),
+                receipt_id=f"RETRO-{concept_id}", search_complete=True, searched_sources=()
             )
 
         receipts = _collect_retro_receipts(
-            actions,
-            as_of_ref="anchor",
-            archive_root=None,
-            exhaustive=True,
-            search_fn=fake_search,
+            actions, as_of_ref="anchor", archive_root=None, exhaustive=True, search_fn=fake_search
         )
-
         retro_actions = [a for a in actions if a.retro_search_required]
         unique_concepts = {a.concept_id for a in retro_actions}
         self.assertEqual(len(calls), len(unique_concepts))
         self.assertEqual(set(calls), unique_concepts)
-
         e4a4_ids = (
             "E4_A4_REGULAR_SCHUR_ENERGY_SIGN",
             "E4_A4_CANONICAL_ONE_STEP_DOMINATION",
@@ -189,13 +152,8 @@ class ControlV2Tests(unittest.TestCase):
     def test_missing_retro_receipts_fail_closed(self):
         state = load_research_state()
         actions = load_actions()
-        cert = recommend(
-            state,
-            actions,
-            retro_receipts={},
-            retro_complete={},
-            first_break_counts={a.action_id: 1 for a in actions},
-        )
+        cert = recommend(state, actions, retro_receipts={}, retro_complete={},
+                         first_break_counts={a.action_id: 1 for a in actions})
         self.assertEqual(cert.disposition.value, "ABSTAIN")
 
     def test_incomplete_retro_receipt_fails_closed(self):
@@ -203,13 +161,8 @@ class ControlV2Tests(unittest.TestCase):
         actions = load_actions()
         receipts = {a.action_id: "RETRO-quick" for a in actions}
         complete = {a.action_id: False for a in actions}
-        cert = recommend(
-            state,
-            actions,
-            retro_receipts=receipts,
-            retro_complete=complete,
-            first_break_counts={a.action_id: 1 for a in actions},
-        )
+        cert = recommend(state, actions, retro_receipts=receipts, retro_complete=complete,
+                         first_break_counts={a.action_id: 1 for a in actions})
         self.assertEqual(cert.disposition.value, "ABSTAIN")
 
     def test_score_inputs_are_finite(self):
