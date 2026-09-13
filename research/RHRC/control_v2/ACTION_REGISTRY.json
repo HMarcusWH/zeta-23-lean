@@ -20,17 +20,18 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "PR #153 retains the complete whole-cell regular first-bad ancestry and full negative-energy Schur state in first-class certificates; certificate retention is no longer an open dependency",
-        "PR #153 theoremizes the exact finite pole-prime discrepancy identity and full production source-channel discrepancy normal form",
-        "PR #155 theoremizes finite discrepancy integrability, anchored Riesz primitives, positive-order absolute continuity, the a.e. derivative seam, generic legal repeated integration by parts / arbitrary-order conditional Riesz smoothing, production source-coordinate oddness, all even endpoint jets, and even-parity M3=0",
-        "PR #157 theoremizes the genuine complex production D-transport identity, boundary-flat production jets through order 6, even boundary-flat jets through order 8, exact complete production Riesz order-6 / even order-8 representations, retained Riesz negativity, and the ExceptionalZero order-6 negative wrapper",
-        "exact seventh/ninth leading-jet formulas remain DERIVED / OPEN IN LEAN and must not be read into the #157 theorem surface",
-        "DR-024 kills only the pointwise fixed-sign smoothed-integrand shortcut; the surviving complete transformed-residual route is not a dead-route revival",
-        "the decisive target is still an independent arithmetic sign theorem for the complete transformed residual and cannot be obtained by restating successor positivity or canonicalOneStepDomination",
-        "post-#138/#150 conditioning signals show that independent coarse pole/arch/scalar/prime majorants may lose the cancellation scale required by the selected residual; after #153/#155/#157 separately bounding pole and prime also discards theorem-backed exact discrepancy/Riesz interfaces",
-        "modified-source sensitivity shows that exact arithmetic coefficients matter; a proof shared indiscriminately by nearby perturbed sources is suspect unless its scope explains that robustness",
-        "formal code should prefer the exact unique-preimage equation A x0=b unless a dedicated inverse abstraction materially simplifies the arithmetic",
-        "the #152 Arb harness is a scoped falsification/certification instrument, not theorem authority; after #157 it may now be retargeted only to an exact theorem-aligned transformed observable and a specific mechanism"
+        "PR #153 retains the whole-cell regular first-bad ancestry and exact negative source-channel state; certificate retention is consumed infrastructure",
+        "PR #155 theoremizes legal arbitrary-order Riesz smoothing, source-coordinate oddness and all even endpoint jets",
+        "PR #157 theoremizes genuine complex production D-transport, exact complete Riesz order 6 / even order 8, retained transformed negativity and the ExceptionalZero Riesz-6 wrapper",
+        "PR #159 theoremizes the exact first source-energy jet, the general moment-prefix odd-jet law, exact seventh/ninth leading-moment formulas, the generic signed Riesz boundary recurrence, and retained R6->R7 / even R8->R9 boundary decompositions",
+        "the first Riesz boundary recurrence and seventh/ninth leading-jet formulas are consumed theorem infrastructure and must not remain listed as open",
+        "the post-#159 highest-information composition is same-state: align the even negative secular trial with exact Riesz-8/Riesz-9 moment-four boundary structure and the already-proved cross-parity source-moment transfer",
+        "at an even secular root the existing theorem gives odd secular scalar = overlap * evenQuadraticSourceMoment; no division by overlap/Gamma/source moment is legal without separate nonzeroness",
+        "cell-minimal global first-bad ancestry supplies predecessor nonnegativity for both parities below the first bad size, but the same-state shifted-root composition is not yet theorem-packaged",
+        "the mixed quadratic-normal source-pairing seventh-jet = constant * M4 bridge remains DERIVED / OPEN IN LEAN; do not read it into #159",
+        "DR-024 kills only pointwise fixed-sign smoothed-integrand positivity; the integrated Riesz/cross-parity source route is not a dead-route revival",
+        "the decisive target remains an independently meaningful canonical arithmetic restriction, not successor positivity or canonicalOneStepDomination under another name",
+        "the #152 Arb harness is scoped falsification infrastructure; after #159 it should test a theorem-aligned composed mechanism rather than rescan already-proved transformed negativity"
       ],
       "score_inputs": {
         "cost": 2.0,
@@ -43,14 +44,14 @@
       "first_breaks": [
         {
           "id": "E4A4-SCHUR-FB-04",
-          "statement": "after consuming the exact #153 discrepancy identity, #155 legal Riesz engine and #157 production Riesz / retained transformed-negative certificate, interval-certified canonical calculations produce a state satisfying the proposed scoped arithmetic mechanism while violating its claimed complete-residual sign, boundary-term sign, transfer inequality, or monotonicity conclusion",
-          "test_id": "interval_certify_transformed_arithmetic_mechanism",
+          "statement": "after consuming #159 exact moment jets and signed Riesz boundary recurrence, the proposed same-state shifted-root/cross-parity source mechanism fails: the exact even negative secular trial cannot be aligned with the transformed Riesz state, the opposite-parity-bad-or-source-moment-nonzero dichotomy cannot be derived, or an interval-certified canonical state falsifies the specific transfer/sign consequence proposed from that composition",
+          "test_id": "compose_and_falsify_shifted_riesz_cross_parity_source_mechanism",
           "estimated_cost": 1.4,
           "decisive_if_failed": true
         },
         {
           "id": "E4A4-SCHUR-FB-05",
-          "statement": "after the exact cancellation-preserving identities, theorem-backed production Riesz reduction and falsification gates are established, no independent canonical arithmetic inequality proves the required complete transformed-residual nonnegativity on the exact retained forced state",
+          "statement": "after the exact cancellation-preserving Riesz and same-state cross-parity/source interfaces are theorem-backed and falsification gates are passed, no independent canonical arithmetic inequality proves the required complete transformed-residual nonnegativity or an equivalent contradiction-producing restriction on the exact forced state",
           "test_id": "prove_complete_transformed_residual_nonnegativity",
           "estimated_cost": 2.0,
           "decisive_if_failed": true
@@ -66,13 +67,12 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "PR #137 proves only that canonicalOneStepDomination is sufficient; it does not prove q_c>=0 or Delta(w)>=0",
-        "under predecessor nonnegativity and a one-dimensional shell, universal domination is DERIVED to be equivalent to successor one-step positivity, so proving it by a positivity restatement has no research information gain",
-        "PR #157 closes the selected-state production Riesz transport/composition route but does not make universal domination a smaller arithmetic theorem",
+        "PR #137 proves canonicalOneStepDomination is sufficient but not its arithmetic truth",
+        "under predecessor nonnegativity and one-dimensional shell geometry, universal domination is essentially the missing successor positivity and has no information gain if proved by restatement",
+        "PR #159 sharpens the selected-state transformed route but does not make universal domination a smaller theorem",
         "generic Hermitian/parity/KKT/transfer/displacement structure remains quarantined by countermodels",
         "factorwise alpha/Gamma/overlap/source-moment closure remains quarantined",
-        "atomwise positive determinant/SOS remains quarantined",
-        "a canonical scoped sign failure would falsify this universal route but not RH"
+        "atomwise positive determinant/SOS remains quarantined"
       ],
       "score_inputs": {
         "cost": 3.0,
@@ -108,10 +108,11 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "PR #157 supplies the theorem-backed retained complete Riesz-6 negative first-bad certificate under a hypothetical off-line zero, with the stronger retained Riesz-8 result when the first-bad parity is even",
-        "the preferred composition is retained transformed negative certificate + theorem-backed nonnegative complete transformed residual on the same forced state -> contradiction",
+        "PR #157 supplies retained complete Riesz-6 negativity under a hypothetical off-line zero, with stronger Riesz-8 negativity for even first-bad parity",
+        "PR #159 exposes exact retained boundary defects but does not supply an opposing sign",
+        "the post-#159 even branch should first exploit the same negative secular trial through cross-parity source transfer before attempting global exclusion",
         "no division by alpha, Gamma, overlap or source moment is legal without separate nonzeroness",
-        "terminal Mathlib RH still requires the explicit outside-strip/trivial-zero seam after negative-root exclusion"
+        "terminal Mathlib RH still requires the outside-strip/trivial-zero seam after negative-root exclusion"
       ],
       "score_inputs": {
         "cost": 2.4,
@@ -124,7 +125,7 @@
       "first_breaks": [
         {
           "id": "E4A4-GLOBAL-FB-03",
-          "statement": "after a theorem-backed complete transformed-residual nonnegative sign is available, it cannot be composed with the exact retained transformed negative certificate at the same selected state",
+          "statement": "after a theorem-backed contradiction-producing arithmetic restriction is available, it cannot be composed with the exact retained transformed negative certificate at the same selected state",
           "test_id": "compose_transformed_sign_with_retained_negative_certificate",
           "estimated_cost": 0.8,
           "decisive_if_failed": true
@@ -142,8 +143,8 @@
       "surviving_objections": [
         "D is algebraic, not unitary or isometric",
         "rank-at-most-one defect does not identify which parity carries a zero mode",
-        "#157 makes D theorem-useful for source-coordinate derivative transport but does not upgrade D to metric transport",
-        "simultaneous both-parity regular selection remains an optional strengthening and is not theoremized"
+        "#159 does not upgrade D to metric transport",
+        "the active post-#159 cross-parity composition uses the exact secular/source transfer rather than assuming spectral equivalence through D"
       ],
       "score_inputs": {
         "cost": 1.8,
@@ -174,8 +175,8 @@
       "surviving_objections": [
         "strict monotonicity yields root uniqueness while a hypothetical off-line zero already forces one negative root",
         "root uniqueness is weaker than negative-root exclusion",
-        "post-#150 experiments disfavor global aperture/selected-Schur monotonicity as the decisive arithmetic mechanism",
-        "this route should not displace the #157 production-Riesz / complete transformed-residual route unless it supplies independent source-specific exclusion information"
+        "post-#150 experiments disfavor global aperture/selected-Schur monotonicity as the decisive mechanism",
+        "the post-#159 same-state Riesz/cross-parity source composition is more direct unless monotonicity supplies independent source-specific exclusion information"
       ],
       "score_inputs": {
         "cost": 2.0,
@@ -204,10 +205,9 @@
       "horizon_required_for_tail_claim": false,
       "dead_route_matches": [],
       "surviving_objections": [
-        "a strictly positive predecessor floor is not available uniformly from first-bad minimality alone, although the selected retained predecessor is regular and nonnegative",
+        "a strictly positive predecessor floor is not available uniformly from first-bad minimality alone",
         "the shell gap g_N=q_N-mu_N may fail to stay positive",
-        "the post-#157 transformed-residual arithmetic route is now more direct than rebuilding a global deformation horizon",
-        "this theorem should not displace canonical arithmetic work unless it supplies independent exclusion information"
+        "the post-#159 same-state source/Riesz route is more direct than rebuilding a global deformation horizon"
       ],
       "score_inputs": {
         "cost": 2.0,
@@ -240,7 +240,7 @@
         "beta_N decay is unproved",
         "summable infinite-tail majorant is unproved",
         "all-L certification / controlled L-dependence is unproved",
-        "diagnostic quantities must remain aligned with theorem-backed metric definitions and any future E3-B3 generalization"
+        "diagnostic quantities must remain aligned with theorem-backed metric definitions"
       ],
       "score_inputs": {
         "cost": 1.0,
