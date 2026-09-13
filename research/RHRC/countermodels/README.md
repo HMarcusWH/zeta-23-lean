@@ -26,8 +26,9 @@ Reusable countermodel/regression classes include:
 - **post-#150 aperture-derivative fixture:** test whether the actual canonical matrix derivative has a uniform Loewner sign before using aperture monotonicity;
 - **post-#150 minimizing-Schur derivative fixture:** test whether the exact regular selected-residual Schur value has a uniform derivative sign;
 - **post-#150 elementary-atom energy fixture:** test the sign of the elementary source-atom energy on the exact selected-residual geometry;
-- **post-#155 D-transport regression fixture:** test the complex production identity separately from any real-vector contraction helper and verify the zero-sum rank-two cancellation;
+- **post-#155 D-transport regression fixture:** historical implementation firewall; PR #157 now theoremizes the genuine complex production D-transport and zero-sum rank-two cancellation, so this fixture protects against future regressions rather than recording an open dependency;
 - **post-#155 pointwise Riesz-sign fixture:** exact `K=2` even/odd boundary-flat vectors falsify the universal claim that positive Riesz primitives plus endpoint flatness force a pointwise fixed-sign smoothed source-energy integrand; the exact derivative witness is rerun by `check_post155_riesz_pointwise_sign.py` in the RHRC suite;
+- **post-#157 boundary-term arithmetic fixture (planned):** once the generic one-step Riesz boundary recurrence exists, test any proposed scalar endpoint-factor sign/monotonicity across fixed cutoff cells and prime-power thresholds before theorem investment;
 - **post-#150 selected-residual interval fixture:** reconstruct exact boundary-flat/parity/predecessor/shell geometry, scout the production canonical source numerically, then replay candidate sign failures with Arb enclosures before treating them as rigorous finite falsification evidence.
 
 Historical fixture records:
@@ -52,11 +53,13 @@ The post-#150 files record a mixture of DERIVED/external calculations, EXPERIMEN
 
 PR #153 theoremizes the exact finite pole-prime discrepancy identity and full production source-channel discrepancy normal form. PR #155 theoremizes finite discrepancy integrability, anchored Riesz primitives, legal generic repeated integration by parts / conditional Riesz smoothing, source-coordinate oddness, all even endpoint jets, and even-parity `M3=0`.
 
-Production odd jets and unconditional Riesz order 6/8 remain OPEN until the complex D-transport/moment-prefix route is Lean-validated.
+PR #157 theoremizes the genuine complex production D-transport, boundary-flat jets through order 6, even boundary-flat jets through order 8, exact complete production Riesz order 6 / even order 8, retained transformed negativity, and the ExceptionalZero Riesz-6 negative wrapper.
 
-The exact post-#155 `K=2` fixtures kill only the pointwise fixed-sign interpretation. They do not refute the Riesz identity or prove anything about RH.
+Therefore complex D-transport and unconditional production Riesz order 6 are no longer open. The stronger retained Riesz-8 result remains conditional on even first-bad parity.
 
-The actual canonical pole/archimedean/von-Mangoldt channels must supply any decisive exclusion theorem. The current falsification target is a **specific mechanism for the complete transformed residual**, not merely sign frequency of the old selected residual.
+The exact post-#155 `K=2` fixtures kill only the pointwise fixed-sign interpretation. They do not refute the Riesz identities or prove anything about RH.
+
+The actual canonical pole/archimedean/von-Mangoldt channels must supply any decisive exclusion theorem. The current falsification target is a **specific mechanism for the complete theorem-backed transformed residual**, not merely sign frequency of the old selected residual.
 
 A regression fixture may protect a semantic firewall even when it is not itself a zeta counterexample.
 
