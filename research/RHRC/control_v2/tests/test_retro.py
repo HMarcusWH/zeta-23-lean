@@ -54,7 +54,7 @@ class RetroTests(unittest.TestCase):
         self.assertNotIn("rupture", terms)
         self.assertNotIn("slack", terms)
 
-    def test_e4a4_actions_use_post_161_same_state_mixed_source_aliases(self):
+    def test_e4a4_actions_use_post_163_mixed_jet_arithmetic_aliases(self):
         aliases = load_alias_map(RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json")
         terms = expanded_terms("canonical_source_exclusion", aliases)
         for term in (
@@ -90,7 +90,15 @@ class RetroTests(unittest.TestCase):
             "simultaneous parity badness",
             "mixed source pairing",
             "mixed quadratic-normal source observable",
-            "mixed source M4 rigidity",
+            "quadraticNormalSourceAtom",
+            "iteratedDeriv_seven_quadraticNormalSourceAtom_eq_moment_four",
+            "explicitCanonicalSourceMoment_eq_quadraticNormalSourceAtom_sum",
+            "evenShiftedMixedSourceSeventhJet_eq_momentFour",
+            "evenShiftedRieszEightNine_eq_mixedJetBoundary",
+            "evenShiftedRieszNine_lt_neg_mixedJetBoundary",
+            "source sample jet",
+            "endpoint scalar sign",
+            "endpoint scalar nonvanishing",
             "source moment versus M4",
             "pointwise smoothed integrand",
             "complete transformed residual",
@@ -115,16 +123,13 @@ class RetroTests(unittest.TestCase):
 
         schur = registry["actions"]["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"]
         objections = "\n".join(schur["surviving_objections"])
-        self.assertIn("PR #161", objections)
-        self.assertIn("same-state shifted composition", objections)
-        self.assertIn("mixed quadratic-normal source observable", objections)
+        self.assertIn("PR #163", objections)
+        self.assertIn("FB-04C mixed-source jet / Riesz coupling", objections)
         self.assertIn("nonzero explicitCanonicalSourceMoment does not imply M4", objections)
+        self.assertIn("finite weighted sample sum does not by itself determine the seventh jet", objections)
         self.assertIn("DR-024", objections)
         schur_break_ids = [x["id"] for x in schur["first_breaks"]]
-        self.assertEqual(
-            schur_break_ids,
-            ["E4A4-SCHUR-FB-04", "E4A4-SCHUR-FB-05"],
-        )
+        self.assertEqual(schur_break_ids, ["E4A4-SCHUR-FB-05"])
 
     def test_as_of_search_does_not_see_future_commit(self):
         td, repo, old, new = self._fixture_repo()
