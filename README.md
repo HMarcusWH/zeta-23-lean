@@ -7,148 +7,101 @@ This fork preserves the upstream Zeta23 theorem package while adding an opt-in R
 ## Current authority snapshot
 
 ```text
-live main after merged PR #157 = e304f07c9e83165ebf066db0d67c2cc24f8961c2
-live main tree = 706dfde7f9e7b0b8403a671769d424ac7862f5e7
-
-latest theorem-bearing PR = #157
-validated theorem head = 4b517db1d4a50277d325e77e771a30fc0db5c777
-validated theorem tree = 706dfde7f9e7b0b8403a671769d424ac7862f5e7
-RHRC #1017 / run 34731682546 = SUCCESS
-Permansson #790 / run 34731682544 = SUCCESS
-
+live main after merged PR #159 = 63862cd80501754c6c6599ffea09b874a327dae4
+live main tree = cb7a81d3b10e7f909b794103f2a919a3a3ccf233
+latest theorem-bearing PR = #159
+validated theorem head = b2a064ad5d1f0acbd93309a9257c5661cfa3ec28
+validated theorem tree = cb7a81d3b10e7f909b794103f2a919a3a3ccf233
+RHRC #1021 / run 34736245287 = SUCCESS
+Permansson #794 / run 34736245311 = SUCCESS
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
 ```
 
-Live GitHub head + exact Lean/compiler/CI remain authoritative. The validated #157 head and merged `main` are different commits but share the same theorem tree.
+Live GitHub head + exact Lean/compiler/CI are authoritative. The validated #159 head and merged `main` are distinct commits with the same theorem tree.
 
 ## Current theorem ladder
 
 ```text
-off-line zeta zero
-  -> legal finite canonical negative obstruction                     PROVED
-  -> global first bad + predecessor parity nonnegativity             PROVED
-  -> shell/KKT/Schur/secular machinery                               PROVED
-  -> source-explicit transfer                                       PROVED / #129
-  -> exact canonical source-moment decomposition                    PROVED / #131
-  -> denominator-free zero-shift kernel/source transport            PROVED / #134
-  -> scalar-sensitive absolute canonical source energy              PROVED / #136
-  -> exact source pairing + one-step determinant                    PROVED / #137
-  -> aperture freedom / regular selected first bad                  PROVED / #140-#150
-  -> interval-certified selected-residual falsification harness     TOOLING / #152
-  -> retained whole-cell first-bad certificate                      PROVED / #153
-  -> exact finite pole-prime discrepancy identity                   PROVED / #153
-  -> finite discrepancy integrability                              PROVED / #155
-  -> anchored Riesz primitives + legal conditional smoothing        PROVED / #155
-  -> source-coordinate oddness + all even endpoint jets             PROVED / #155
-  -> genuine complex production D transport                         PROVED / #157
-  -> boundary-flat jets 1..6 / even jets 1..8                       PROVED / #157
-  -> exact complete Riesz-6 / even Riesz-8 source channel           PROVED / #157
-  -> retained complete Riesz-6 negativity                           PROVED / #157
-  -> retained complete Riesz-8 negativity when first-bad parity even PROVED / #157
-  -> off-line zero -> retained complete Riesz-6 negative certificate PROVED / #157
+off-line zero -> legal finite canonical negative obstruction            PROVED
+first-bad / parity / Schur / secular machinery                          PROVED
+source-explicit cross-parity transfer                                   PROVED / #129
+exact canonical source-moment decomposition                             PROVED / #131
+zero-shift source transport / absolute source energy / determinant      PROVED / #134-#137
+regular selected first-bad endpoint                                     PROVED / #140-#150
+retained first-bad + exact pole-prime discrepancy                       PROVED / #153
+legal generic Riesz smoothing + parity/even source jets                 PROVED / #155
+complex production D transport + exact complete Riesz 6/even 8          PROVED / #157
+retained transformed negativity + off-line-zero R6 wrapper              PROVED / #157
+general moment-prefix odd-jet law                                       PROVED / #159
+exact seventh / even ninth leading-moment self-energy jets               PROVED / #159
+generic signed complete-channel Riesz boundary recurrence               PROVED / #159
+retained R6->R7 / even R8->R9 moment-square boundaries                  PROVED / #159
 
-  -> specific FB-04 arithmetic-mechanism falsification              OPEN / NEXT
-  -> independent nonnegative sign for complete transformed residual OPEN
-  -> same-state contradiction / negative-root exclusion             OPEN
-  -> outside-strip/trivial-zero seam + Mathlib RH wrapper           OPEN
-  -> RH                                                              OPEN
+same-state shifted Riesz x cross-parity source composition              OPEN / NEXT
+mixed quadratic-normal source-pairing jet -> M4                         DERIVED / OPEN
+independent contradiction-producing arithmetic restriction              OPEN
+negative-root exclusion                                                  OPEN
+outside-strip/trivial-zero seam + Mathlib RH wrapper                     OPEN
+RH                                                                       OPEN
 ```
 
-## What #157 actually proved
+## What #159 added
 
-PR #157 closes the former FB-03E/FB-03F theorem frontier.
-
-### Complex production D transport
-
-**PROVED:** the source-coordinate second-derivative transport is established on the genuine complex production `sourceAtomRealEnergy`. The proof explicitly handles complex coefficients, exposes the rank-two defect before zero-sum cancellation, and does not silently promote a real-vector helper.
-
-### Production endpoint jets
-
-**PROVED:** every boundary-flat production carrier has source-energy jets 1 through 6 equal to zero. Every even boundary-flat production carrier has jets 1 through 8 equal to zero.
-
-### Exact complete production Riesz representations
-
-**PROVED:** boundary-flat carriers satisfy exact order-6 Riesz equality; even boundary-flat carriers satisfy exact order-8 Riesz equality. The complete transformed channel is `canonicalRieszSourceChannelEnergy`, retaining the transformed pole-prime discrepancy, both reduced archimedean channels and the scalar correction.
-
-### Retained transformed-negative state
-
-**PROVED:** every retained `RegularCellMinimalNegativeEnergyCertificate` carries strict complete Riesz-6 negativity; when its retained first-bad parity is even, it also carries strict complete Riesz-8 negativity.
-
-**PROVED:** a hypothetical off-line zero propagates to a retained regular first-bad certificate with complete order-6 Riesz source-channel energy `< 0`.
-
-This is not a contradiction. It is the transformed negative side of the desired same-state contradiction.
-
-## What #157 did not prove
-
-No current Lean theorem establishes:
+PR #159 closed the former first-boundary-term sublead. Lean now proves the exact first source-energy jet and a general moment-prefix theorem
 
 ```text
-an independent nonnegative sign for the complete transformed residual
-an exact Riesz boundary-term sign theorem
-exact seventh/ninth leading-jet coefficient formulas
-negative-root exclusion
-outside-strip/trivial-zero terminal seam
-RiemannHypothesis
+M0=...=M(r-1)=0
+  -> g^(2r+1)(0) = 2 * (-(2*pi)^2)^r * normSq(Mr).
 ```
 
-The post-green calculation
+Consequently the exact boundary-flat seventh derivative and even boundary-flat ninth derivative are theorem authority.
+
+#159 also proves a generic signed recurrence
 
 ```text
-g^(7)(0) = -2*(2*pi)^6*|M3|^2
-g^(9)(0) =  2*(2*pi)^8*|M4|^2
+canonicalRieszSourceChannelEnergy r
+  = canonicalRieszSourceChannelEnergy (r+1)
+    + canonicalPolePrimeRieszBoundaryTerm r.
 ```
 
-remains **DERIVED / OPEN IN LEAN**. #157 theoremizes the zero cases needed for Riesz 6/8, not those exact leading coefficients.
+No sign of the endpoint scalar is asserted. On retained first-bad states this yields exact R6/R7 and, under even parity, R8/R9 moment-square decompositions.
+
+## Current active path
+
+The post-green repo-wide pass found that #159 now composes naturally with theorem inventory that predates it.
+
+At an even negative secular root the existing cross-parity theorem gives
+
+```text
+odd secular scalar
+  = overlap * evenQuadraticSourceMoment(even shifted trial),
+```
+
+and the source moment is exactly the production quantity `explicitCanonicalSourceMoment`, retaining pole/prime/archimedean cancellation.
+
+Global first-bad minimality already supplies predecessor nonnegativity for either parity below the first globally bad size.
+
+The next theorem-bearing target is therefore to place the **negative secular root, #159 transformed Riesz state, and cross-parity source moment on the same shifted trial**, and derive the fail-closed fork
+
+```text
+odd successor is ParityBad
+OR
+explicitCanonicalSourceMoment(even negative secular trial) != 0.
+```
+
+Only after this composition survives should the project invest in the mixed quadratic-normal source-pairing jet expected to connect the linear source defect to #159's quadratic `|M4|^2` Riesz boundary.
 
 ## Falsified shortcut
 
-Exact `K=2` boundary-flat fixtures
-
-```text
-even: (1,-4,6,-4,1)
-odd:  (1,-2,0,2,-1)
-```
-
-show that the relevant seventh/ninth source derivatives change sign. Therefore
+Exact K=2 boundary-flat fixtures still refute
 
 ```text
 positive Riesz primitive + endpoint flatness
-  -> pointwise fixed-sign smoothed integrand
+  -> pointwise fixed-sign smoothed integrand.
 ```
 
-remains **DEAD**. #157 does not revive it.
-
-## Active path
-
-```text
-PROVED THROUGH #157
-  off-line zero
-    -> retained regular cell-minimal first-bad certificate
-    -> exact canonical source-channel energy < 0
-    -> exact finite pole-prime discrepancy normal form
-    -> legal production Riesz order 6
-    -> complete retained Riesz-6 source-channel energy < 0
-
-NOW — FB-04
-  formulate a specific arithmetic mechanism for the EXACT complete transformed residual
-  align discovery/certification tooling with the theorem-backed transformed object
-  try to falsify the mechanism before theorem investment
-
-PROMISING SUBLEAD
-  expose the first Riesz boundary term
-  theoremize exact leading endpoint jets only if needed
-  test scalar endpoint factors across fixed cutoff cells and prime-power thresholds
-
-THEN — FB-05
-  prove an independent nonnegative theorem on the exact same retained state
-
-TARGET
-  same-state contradiction
-    -> negative-root exclusion
-    -> explicit outside-strip/trivial-zero seam
-    -> Mathlib RiemannHypothesis wrapper
-```
+#159's integrated boundary recurrence is not a revival of that dead pointwise claim.
 
 ## Documentation authority
 
@@ -156,28 +109,26 @@ Current living state is maintained in:
 
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`;
 - `research/RHRC/RESEARCH_LEADS.md`;
-- `research/RHRC/RESEARCH_LEADS_POST_157_PRODUCTION_RIESZ_ARITHMETIC_FRONTIER_DELTA.md`;
-- `research/RHRC/OBSTRUCTION_LEDGER.md` / `DEAD_ROUTES.md`;
+- `research/RHRC/RESEARCH_LEADS_POST_159_RIESZ_CROSS_PARITY_FRONTIER_DELTA.md`;
 - `research/RHRC/DOCUMENTATION_AUTHORITY.md`;
 - `research/RHRC/VALIDATION_PROTOCOL.md`;
 - `research/RHRC/routes/R003_ccm_bridge/README.md`;
 - `research/RHRC/control_v2/README.md`.
 
-Older dated deltas, external reviews, countermodel reports and release audits remain historical evidence and are not rewritten to look current.
+Older dated deltas, external reviews and countermodel records remain historical evidence and are not rewritten to look current.
 
 ## Permanent firewalls
 
 - RH remains OPEN.
-- compiler/CI validity attaches to the exact checked object.
-- theorem authority through #157 is not automatic machine claim promotion.
-- a retained transformed negative certificate is not a contradiction.
-- exact discrepancy/Riesz identities are not arithmetic sign theorems.
-- R6 is universal on retained certificates; R8 is conditional on retained even parity.
-- exact seventh/ninth leading-jet formulas remain open until separately theoremized.
-- pointwise positivity of the smoothed integrand is falsified as a universal mechanism.
-- interval-certified finite numerics are not Lean theorem authority.
-- generic/modified-source countermodels are not zeta counterexamples.
+- theorem authority through #159 is separate from machine claim promotion.
+- retained transformed negativity is not a contradiction.
+- exact Riesz identities are not arithmetic sign theorems.
+- R8/R9 statements remain conditional on even parity where stated.
+- the #159 self-energy ninth-jet theorem is not the unproved mixed source-pairing seventh-jet theorem.
+- no division by alpha/Gamma/overlap/source moment without separate nonzeroness.
+- pointwise fixed-sign smoothed-integrand positivity remains dead.
 - `D` remains algebraic, not unitary/isometric.
+- interval-certified finite numerics are not Lean theorem authority.
 - negative-root exclusion is not the terminal Mathlib `RiemannHypothesis` statement without the final seam.
 
 **RH remains OPEN.**

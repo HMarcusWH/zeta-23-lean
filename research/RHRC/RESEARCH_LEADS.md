@@ -2,285 +2,160 @@
 
 > **Claim firewall: RH remains OPEN.**
 >
-> This is the current research inventory/index, not a theorem registry. Formal authority remains the exact Lean/compiler/CI state plus the deliberately separate machine claim surfaces.
+> This is a research inventory, not theorem authority. Exact Lean/compiler/CI state wins.
 
 ## Current theorem / research authority
 
 ```text
-live main after merged PR #157 = e304f07c9e83165ebf066db0d67c2cc24f8961c2
-live main tree = 706dfde7f9e7b0b8403a671769d424ac7862f5e7
-
-latest theorem-bearing PR = #157
-validated theorem head = 4b517db1d4a50277d325e77e771a30fc0db5c777
-validated theorem tree = 706dfde7f9e7b0b8403a671769d424ac7862f5e7
-RHRC #1017 / run 34731682546 = SUCCESS
-Permansson #790 / run 34731682544 = SUCCESS
-
-newest post-green delta = RESEARCH_LEADS_POST_157_PRODUCTION_RIESZ_ARITHMETIC_FRONTIER_DELTA.md
+live main after merged PR #159 = 63862cd80501754c6c6599ffea09b874a327dae4
+live main tree = cb7a81d3b10e7f909b794103f2a919a3a3ccf233
+latest theorem-bearing PR = #159
+validated theorem head = b2a064ad5d1f0acbd93309a9257c5661cfa3ec28
+validated theorem tree = cb7a81d3b10e7f909b794103f2a919a3a3ccf233
+RHRC #1021 / run 34736245287 = SUCCESS
+Permansson #794 / run 34736245311 = SUCCESS
+newest post-green delta = RESEARCH_LEADS_POST_159_RIESZ_CROSS_PARITY_FRONTIER_DELTA.md
 current execution SSOT = CURRENT_RESEARCH_PLAN.md
 RH = OPEN
 ```
 
-Live GitHub head and exact compiler/CI evidence remain authoritative.
+## Promoted theorem inputs
 
-## Historical full-ledger preservation
+### Retained first-bad state — PROVED / #153
 
-The former large per-entry inventory is preserved unchanged as
+`RegularCellMinimalFirstBadCertificate` and `RegularCellMinimalNegativeEnergyCertificate` retain whole-cell ancestry, selected regular predecessor, negative explicit root, exact `A x0=b`, and negative canonical energy.
 
-```text
-RESEARCH_LEADS_LEGACY_FULL_THROUGH_110.md
-```
+### Exact discrepancy + legal Riesz engine — PROVED / #153/#155
 
-Use it for archaeology, old lead IDs, provenance and historical route context. Older dated `RESEARCH_LEADS_POST_*.md` files remain chronological historical records.
+Pole/prime cancellation is theoremized before smoothing. Left-anchored Riesz primitives, absolute continuity, a.e. derivative recovery and arbitrary-order conditional integration by parts are compiler-validated.
 
-## Status vocabulary
+### Complex production transport + transformed negativity — PROVED / #157
 
-- **PROVED** — exact statement established by Lean/compiler/CI.
-- **DERIVED** — direct mathematical consequence not separately theoremized.
-- **LEAD / HYPOTHESIS** — mathematically motivated route, not established.
-- **EXPERIMENTAL SIGNAL** — numerical/search/discovery evidence only.
-- **OPEN** — exact intended statement not established.
+Complex production D-transport, boundary-flat jets through 6, even jets through 8, exact complete Riesz 6/even 8, retained transformed negativity and the ExceptionalZero Riesz-6 wrapper are theorem authority.
 
-Research status never upgrades formal status.
-
-## Current promoted frontier inputs
-
-### Retained regular first-bad certificate
-
-**Research status:** PROMOTED  
-**Formal status:** PROVED / #153
+### Exact moment-prefix jets + signed Riesz boundary — PROVED / #159
 
 ```text
-RegularCellMinimalFirstBadCertificate
-RegularCellMinimalNegativeEnergyCertificate
-exists_regularFirstBad_negativeEnergyCertificate_of_offLine_zero
+iteratedDeriv_one_sourceAtomRealEnergy_eq_two_normSq_sum
+iteratedDeriv_odd_sourceAtomRealEnergy_eq_moment_normSq_of_prefix
+iteratedDeriv_seven_sourceAtomRealEnergy_eq_moment_three
+iteratedDeriv_nine_sourceAtomRealEnergy_eq_moment_four_of_even_boundaryFlat
+canonicalPolePrimeRieszEndpointScalar
+canonicalPolePrimeRieszBoundaryTerm
+canonicalRieszSourceChannelEnergy_eq_succ_add_boundary
 ```
 
-The whole-cell first-bad ancestry, selected regular predecessor, predecessor nonnegativity, negative explicit root, exact `A x0=b`, and negative exact canonical energy are retained in theorem-facing structures.
+The retained first-bad certificate additionally carries exact R6->R7 and, under even parity, R8->R9 moment-square boundary decompositions.
 
-### Exact pole-prime discrepancy
-
-**Research status:** PROMOTED  
-**Formal status:** PROVED / #153
-
-```text
-canonicalPolePrimeDiscrepancy
-canonicalPolePrimeDiscrepancyEnergy
-matrixRealEnergy_pole_sub_prime_eq_discrepancy
-canonicalSourceChannelEnergy_eq_discrepancy
-```
-
-Pole and prime cancellation is an exact finite Lean theorem under the production normalization.
-
-### Generic legal Riesz smoothing
-
-**Research status:** PROMOTED  
-**Formal status:** PROVED / #155
-
-#155 proves finite discrepancy integrability, left-anchored iterated primitives, positive-order absolute continuity, a.e. derivative recovery, smooth composed source jets, and the generic arbitrary-order Riesz identity under explicit endpoint-jet hypotheses.
-
-### Complex production D transport / endpoint jets
-
-**Research status:** PROMOTED  
-**Formal status:** PROVED / #157
-
-#157 proves the genuine complex production source-energy second-derivative transport with explicit real/imaginary handling and zero-sum annihilation of the rank-two defect. It also proves boundary-flat source-energy jets through order 6 and even boundary-flat jets through order 8.
-
-### Exact complete production Riesz 6/8
-
-**Research status:** PROMOTED  
-**Formal status:** PROVED / #157
-
-```text
-canonicalRieszSourceChannelEnergy
-canonicalSourceChannelEnergy_eq_rieszSix_of_boundaryFlat
-canonicalSourceChannelEnergy_eq_rieszEight_of_even_boundaryFlat
-```
-
-The complete transformed channel retains both reduced archimedean channels and the scalar correction.
-
-### Retained transformed-negative certificate
-
-**Research status:** PROMOTED  
-**Formal status:** PROVED / #157
-
-```text
-RegularCellMinimalNegativeEnergyCertificate.rieszSixNeg
-RegularCellMinimalNegativeEnergyCertificate.rieszEightNeg_of_even
-exists_regularFirstBad_rieszSixNegativeCertificate_of_offLine_zero
-```
-
-Every retained certificate carries complete Riesz-6 negativity. Riesz-8 negativity is available only when the retained first-bad parity is even. A hypothetical off-line zero reaches the retained Riesz-6 negative certificate.
-
-### Selected-residual certification harness
-
-**Research status:** TESTING INFRASTRUCTURE  
-**Formal status:** TOOLING / #152; no theorem authority
-
-The exact-rational geometry + production numerical scout + Arb replay lane can falsify finite scoped sign mechanisms. It does not prove a sign by repeated success and does not automatically certify whole-cell ancestry.
-
-## Active lead — first Riesz boundary term
+## Active lead — same-state shifted Riesz x cross-parity source composition
 
 **Research status:** ACTIVE / HIGHEST LEVERAGE  
-**Formal status:** LEAD / HYPOTHESIS
+**Formal status:** component theorems PROVED; composition OPEN
 
-Now that R6/R8 and retained transformed negativity are theorem-backed, the first unforced endpoint term may expose a smaller arithmetic observable.
-
-Target generic identity:
+The existing cross-parity theorem gives at an even negative secular root
 
 ```text
-E_r = E_(r+1) + B_r
+odd secular scalar
+  = overlap * evenQuadraticSourceMoment(even shifted trial).
 ```
 
-with a signed right-endpoint contribution built from
+The source moment is already exactly
 
 ```text
-canonicalPolePrimeRieszPrimitive L (r+1) L
-iteratedDeriv (r+1) (sourceAtomRealEnergy K x) 0.
+explicitCanonicalSourceMoment
+  = pole - reduced arch diagonal - reduced arch offdiagonal - finite prime-source sum.
 ```
 
-This should be theoremized as an identity before any sign interpretation is attempted.
+Global first-bad minimality already supplies predecessor nonnegativity in either parity below the first globally bad size.
 
-## Active lead — exact leading endpoint jets
+The next theorem package should put these facts and #159's Riesz-8/Riesz-9 moment-four boundary on the same even negative secular trial and derive
 
-**Research status:** READY IF NEEDED BY BOUNDARY TERM  
+```text
+odd successor is bad
+OR
+explicitCanonicalSourceMoment(even negative secular trial) != 0.
+```
+
+No division by overlap/Gamma/source moment is needed or allowed.
+
+## Active lead — mixed source-pairing jet
+
+**Research status:** NEXT IF SAME-STATE COMPOSITION SURVIVES  
 **Formal status:** DERIVED / OPEN IN LEAN
 
-The post-green composition gives
+For the quadratic-normal source pairing
 
 ```text
-g^(7)(0) = -2*(2*pi)^6*|M3|^2
-g^(9)(0) =  2*(2*pi)^8*|M4|^2.
+h_v(omega) = <n2, sourceMatrix(omega) v> / <n2,n2>
 ```
 
-These are not part of the #157 theorem surface. The existing theorem package proves only the vanishing needed through orders 6/8.
-
-If the boundary-term recurrence makes these coefficients useful, theoremize the smallest exact statements rather than a broad unused Taylor hierarchy.
-
-## Active lead — scalar Riesz endpoint arithmetic
-
-**Research status:** TEST FIRST  
-**Formal status:** OPEN / EXPERIMENTAL UNTIL CHECKED
-
-Once the boundary recurrence is theorem-backed, test the scalar factors
+the post-green calculation predicts, for even boundary-flat `v`,
 
 ```text
-canonicalPolePrimeRieszPrimitive L 7 L
-canonicalPolePrimeRieszPrimitive L 9 L
+h_v^(7)(0) = -2*(2*pi)^6 * M4(v).
 ```
 
-and any proposed normalized variants across certified fixed cutoff cells and prime-power thresholds.
+If theoremized, this would connect the linear cubic/source-defect channel used by cross-parity transfer to the quadratic #159 Riesz boundary proportional to `|M4(v)|^2`.
 
-Reuse existing R003 numerical/Arb backends. Do not fork the production normalization.
+Do not confuse this mixed-pairing formula with #159's already-proved self-energy ninth derivative.
 
-A single rigorous finite sign failure kills an overbroad sign/monotonicity claim.
+## Active lead — composed arithmetic falsification
 
-## Active lead — complete transformed-residual arithmetic sign
-
-**Research status:** ACTIVE / DECISIVE  
+**Research status:** TEST BEFORE SIGN THEOREM  
 **Formal status:** OPEN
 
-The surviving target is the **complete integrated transformed discrepancy minus reduced archimedean/scalar residual**, on the exact retained whole-cell first-bad state.
+After same-state composition exists, retarget the #152 exact/Arb harness to the composed quantities:
 
-Candidate mechanism families worth deriving and immediately falsifying:
+- endpoint scalar `canonicalPolePrimeRieszEndpointScalar`;
+- `M4` on the even shifted trial;
+- `explicitCanonicalSourceMoment`;
+- cross-parity secular scalar / overlap factor;
+- opposite-parity badness;
+- Riesz-8/Riesz-9 complete residual.
 
-- stationarity `A x0=b` inside the transformed representation;
-- transfer to smaller-size good predecessor energies;
-- whole-cell minimality across the fixed cutoff cell;
-- exact first-boundary-term decomposition;
-- cancellation identities that keep discrepancy and archimedean pieces coupled;
-- cross-parity compensation if a genuinely invariant combined quantity exists.
+The test must preserve the theorem-backed pole/prime/archimedean cancellation. Repeated finite success is not a theorem.
 
-Do not invest in a theorem before specifying an independently meaningful inequality/mechanism.
+## Decisive lead — independent contradiction-producing arithmetic restriction
+
+**Formal status:** OPEN
+
+The terminal arithmetic task remains a genuinely independent canonical restriction on the exact forced state. It may be a nonnegative transformed residual, a same-state incompatibility between parity/source/Riesz constraints, or another theorem that excludes the retained negative root without restating successor positivity.
 
 ## Dead route — pointwise positivity after smoothing
 
-**Research status:** REFUTED  
-**Formal status:** exact finite falsification of the proposed mechanism; not an RH result
-
-The exact boundary-flat `K=2` vectors
-
-```text
-even: (1,-4,6,-4,1)
-odd:  (1,-2,0,2,-1)
-```
-
-show the relevant seventh/ninth source derivatives change sign. Thus
+The exact boundary-flat K=2 fixtures still refute
 
 ```text
 positive Riesz primitive + endpoint flatness
-  -> pointwise fixed-sign smoothed integrand
+  -> pointwise fixed-sign smoothed integrand.
 ```
 
-is not a valid universal closing theorem.
-
-The Riesz representation survives; the pointwise sign interpretation does not. An integrated boundary-term recurrence is not a revival of this route.
-
-## Lead — combined-parity invariant
-
-**Research status:** TEST FIRST  
-**Formal status:** LEAD / HYPOTHESIS
-
-The first surviving local cutoff contributions have opposite parity signs. Candidate diagnostics include
-
-```text
-S_even + S_odd
-S_even * S_odd
-```
-
-or another parity-combined invariant.
-
-Cheapest test: compute the same-cell quantities across prime-power thresholds and inside cells. If sign/monotonicity fails, discard immediately. If a combined quantity survives while the individual sectors oscillate, that is new information worth theorem work.
+#159 proves an integrated signed boundary recurrence. That does not revive this dead pointwise claim.
 
 ## Broad fallback — universal one-step domination
 
-**Research status:** DORMANT / ROUTABLE FALLBACK  
-**Formal status:** OPEN
+`canonicalOneStepDomination` remains theorem-backed as a sufficient certificate but is research-useful only if an independent canonical arithmetic mechanism proves it. A proof that merely repackages successor positivity is circular for discovery purposes.
 
-`canonicalOneStepDomination` is a theorem-backed sufficient certificate, but under predecessor nonnegativity and a one-dimensional shell it essentially repackages the missing successor positivity. It becomes research-useful only if an independent canonical arithmetic mechanism proves it.
+## Quarantines
 
-## Quarantined current shortcuts
-
-Current high-priority quarantines/dead routes include:
-
-- generic first-bad Hermitian/parity/KKT structure without exact canonical arithmetic;
-- factorwise `alpha` / `Gamma` / overlap / source-moment nonvanishing or division;
-- shift-invariant data used to infer absolute spectral sign;
-- atom-by-atom positive determinant/SOS;
+- generic Hermitian/parity/KKT/displacement structure without exact source arithmetic;
+- factorwise division by `alpha`, `Gamma`, overlap or source moment;
+- D treated as unitary/isometric;
+- atomwise positive determinant/SOS;
 - independent coarse pole/prime/arch/scalar majorants;
-- global aperture Loewner monotonicity;
-- global minimizing-trial Schur monotonicity;
-- universal positive elementary source-atom energy;
-- direct coth/deck common-lattice identification;
-- pointwise fixed-sign smoothed-integrand positivity;
-- treating exact seventh/ninth coefficients as already proved;
-- treating retained R8 negativity as parity-unconditional.
-
-## Update law
-
-After every meaningful green result:
-
-1. verify the exact checked head/tree and theorem surface;
-2. update claim/route registries only when their own authority changes;
-3. update the active route README and `CURRENT_RESEARCH_PLAN.md`;
-4. add a dated post-green delta;
-5. update this compact living index when lead status/execution priority changes;
-6. preserve old dated deltas and the legacy full ledger as historical evidence;
-7. resurrect a dead route only by naming the premise that changed.
+- global aperture or Schur monotonicity as a substitute for root exclusion;
+- treating the mixed source-pairing jet as already proved;
+- treating retained R8/R9 as parity-unconditional.
 
 ## Standing research questions
 
-1. What became possible that was not possible before?
-2. Which assumptions disappeared or can now be weakened?
-3. Which dead route had exactly that missing prerequisite?
-4. Can multiple proved results compose into a qualitatively stronger restriction?
-5. Can we attack the admissible counterexample space rather than RH directly?
-6. What is the cheapest falsifier for the most promising new clue?
-7. Does the result compress the dependency graph?
-8. Is a proposed next lemma secretly RH-equivalent?
-9. Are we using the canonical sign-authoritative object?
-10. Does any conclusion rely on an unproved identification between distinct finite/operator objects?
+1. What can #159 now compose with that was previously unavailable?
+2. Does the same negative secular trial carry both the Riesz moment-square defect and the explicit cross-parity source defect?
+3. If the opposite parity remains good, what source quantity is forced nonzero?
+4. Can the linear source defect and quadratic Riesz defect be linked through a mixed source jet?
+5. What is the cheapest canonical falsifier for that composed mechanism?
+6. Does any proposed closing lemma secretly assume successor positivity or RH-strength content?
 
-**Current highest-information question:** does the first nonvanishing Riesz boundary term expose a scalar arithmetic sign/transfer mechanism that survives canonical interval falsification, or does it fail quickly and force us back to the full transformed residual?
+**Current highest-information question:** can the exact even negative secular trial be made to carry #159's Riesz boundary and the existing cross-parity explicit source moment simultaneously, yielding a nontrivial parity/source obstruction before any sign theorem?
 
 **RH remains OPEN.**
