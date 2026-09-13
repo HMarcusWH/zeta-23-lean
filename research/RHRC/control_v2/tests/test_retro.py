@@ -54,7 +54,7 @@ class RetroTests(unittest.TestCase):
         self.assertNotIn("rupture", terms)
         self.assertNotIn("slack", terms)
 
-    def test_e4a4_actions_use_post_157_transformed_arithmetic_aliases(self):
+    def test_e4a4_actions_use_post_159_riesz_cross_parity_aliases(self):
         aliases = load_alias_map(RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json")
         terms = expanded_terms("canonical_source_exclusion", aliases)
         for term in (
@@ -64,32 +64,25 @@ class RetroTests(unittest.TestCase):
             "regular first bad",
             "RegularCellMinimalFirstBadCertificate",
             "RegularCellMinimalNegativeEnergyCertificate",
-            "full first-bad certificate",
-            "selected residual",
-            "sourceAtomRealEnergy",
-            "endpoint jets",
             "canonicalPolePrimeDiscrepancy",
             "canonicalPolePrimeRieszPrimitive",
-            "iterated primitive",
-            "repeated integration by parts",
-            "Riesz smoothing",
-            "source-coordinate oddness",
-            "all even jets",
-            "source-coordinate D transport",
-            "moment-prefix recursion",
             "complex production D transport",
-            "rank-two source defect",
-            "Riesz order 6",
-            "Riesz order 8",
             "canonicalRieszSourceChannelEnergy",
-            "retained Riesz-6 negative certificate",
-            "ExceptionalZero Riesz closure",
-            "Riesz boundary term",
-            "first nonvanishing endpoint jet",
+            "canonicalPolePrimeRieszEndpointScalar",
+            "canonicalPolePrimeRieszBoundaryTerm",
+            "signed Riesz boundary recurrence",
+            "moment-prefix odd-jet law",
             "seventh derivative moment three",
             "ninth derivative moment four",
+            "cross-parity secular transfer",
+            "cubicSecularScalar_odd_eq_overlap_mul_source_of_even_root",
+            "explicitCanonicalSourceMoment",
+            "shifted secular trial",
+            "same-state composition",
+            "opposite parity bad",
+            "source moment nonzero",
+            "mixed source pairing",
             "pointwise smoothed integrand",
-            "combined parity",
             "complete transformed residual",
             "channel cancellation",
         ):
@@ -111,20 +104,15 @@ class RetroTests(unittest.TestCase):
             self.assertEqual(registry["actions"][action_id]["dead_route_matches"], [])
 
         schur = registry["actions"]["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"]
-        self.assertIn("DR-024", "\n".join(schur["surviving_objections"]))
-
+        objections = "\n".join(schur["surviving_objections"])
+        self.assertIn("PR #159", objections)
+        self.assertIn("cross-parity source-moment transfer", objections)
+        self.assertIn("mixed quadratic-normal source-pairing", objections)
+        self.assertIn("DR-024", objections)
         schur_break_ids = [x["id"] for x in schur["first_breaks"]]
-        self.assertNotIn("E4A4-SCHUR-FB-01", schur_break_ids)
-        self.assertNotIn("E4A4-SCHUR-FB-02", schur_break_ids)
-        self.assertNotIn("E4A4-SCHUR-FB-03", schur_break_ids)
-        self.assertNotIn("E4A4-SCHUR-FB-03E", schur_break_ids)
-        self.assertNotIn("E4A4-SCHUR-FB-03F", schur_break_ids)
         self.assertEqual(
             schur_break_ids,
-            [
-                "E4A4-SCHUR-FB-04",
-                "E4A4-SCHUR-FB-05",
-            ],
+            ["E4A4-SCHUR-FB-04", "E4A4-SCHUR-FB-05"],
         )
 
     def test_as_of_search_does_not_see_future_commit(self):
@@ -150,10 +138,7 @@ class RetroTests(unittest.TestCase):
         branch_file = repo / "research" / "RHRC" / "branch.md"
         branch_file.write_text("detectability budget branch clue\n", encoding="utf-8")
         self._git(repo, "add", ".")
-        self._git(
-            repo, "commit", "-m", "unmerged historical clue",
-            commit_date="2001-01-02T00:00:00Z",
-        )
+        self._git(repo, "commit", "-m", "unmerged historical clue", commit_date="2001-01-02T00:00:00Z")
         branch_commit = self._git(repo, "rev-parse", "HEAD")
         self._git(repo, "checkout", "main")
         anchor = self._git(repo, "rev-parse", "HEAD")
@@ -174,10 +159,7 @@ class RetroTests(unittest.TestCase):
         branch_file = repo / "research" / "RHRC" / "branch.md"
         branch_file.write_text("detectability budget future branch clue\n", encoding="utf-8")
         self._git(repo, "add", ".")
-        self._git(
-            repo, "commit", "-m", "unmerged future clue",
-            commit_date="2001-01-04T00:00:00Z",
-        )
+        self._git(repo, "commit", "-m", "unmerged future clue", commit_date="2001-01-04T00:00:00Z")
         branch_commit = self._git(repo, "rev-parse", "HEAD")
         self._git(repo, "checkout", "main")
         receipt = search_concept(
