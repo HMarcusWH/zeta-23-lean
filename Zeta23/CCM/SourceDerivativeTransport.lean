@@ -49,17 +49,16 @@ theorem sourceDiagonalSecondDerivative_formula
   have hinner : HasDerivAt (fun t : ℝ => -Real.sin (a * t) * a)
       (-(Real.cos (a * ω) * a) * a) ω := by
     simpa [mul_assoc] using harg.sin.neg.mul_const a
-  have hsum :
-      HasDerivAt
-        (fun t : ℝ =>
+  have hfunSum :
+      (fun t : ℝ =>
           2 * Real.cos (a * t) +
-            2 * t * (-Real.sin (a * t) * a))
-        (2 * (-Real.sin (a * ω) * a) +
-          (2 * (-Real.sin (a * ω) * a) +
-            2 * ω * (-(Real.cos (a * ω) * a) * a))) ω := by
-    simpa only [Pi.add_apply, Pi.mul_apply] using
-      hleft.add (htwot.mul hinner)
-  rw [hsum.deriv]
+            2 * t * (-Real.sin (a * t) * a)) =
+        (fun t : ℝ => 2 * Real.cos (a * t)) +
+          (fun t : ℝ => 2 * t) *
+            (fun t : ℝ => -Real.sin (a * t) * a) := by
+    funext t
+    rfl
+  rw [hfunSum, (hleft.add (htwot.mul hinner)).deriv]
   dsimp [a]
   ring
 
@@ -293,8 +292,11 @@ theorem sourceAtomRealEnergy_eq_re_im_contracts
           ((starRingEnd ℂ) (u i) *
             (sourceEntryReal ω (centeredIndex K i) (centeredIndex K j) : ℂ) *
             u j) = _
-    simp only [starRingEnd_apply, Complex.star_def, Complex.mul_re,
-      Complex.ofReal_re, Complex.ofReal_im, Complex.conj_re, Complex.conj_im]
+    rw [starRingEnd_apply, Complex.star_def]
+    rw [Complex.mul_re]
+    rw [Complex.mul_re, Complex.mul_im]
+    simp only [Complex.ofReal_re, Complex.ofReal_im,
+      Complex.conj_re, Complex.conj_im]
     ring
   calc
     Complex.reCLM (∑ i, ∑ j,
