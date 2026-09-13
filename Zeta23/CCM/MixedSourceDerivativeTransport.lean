@@ -234,7 +234,8 @@ private theorem sourceAtomPairing_indexActions_raw
   intro i hi
   apply Finset.sum_congr rfl
   intro j hj
-  simp only [star_smul, star_trivial, Complex.real_smul]
+  rw [star_smul]
+  simp only [star_trivial, Complex.real_smul]
   push_cast
   ring
 
@@ -393,7 +394,14 @@ theorem hasDerivAt_sourcePairingRightDefect_zero
     have hsin := harg.sin
     have hweighted := hsin.const_mul (centeredIndex K j : ℝ)
     have hterm := hweighted.smul_const (uy j)
-    convert hterm using 1 <;> simp <;> ring
+    have hcoeff :
+        (centeredIndex K j : ℝ) *
+            (Real.cos (2 * Real.pi * (centeredIndex K j : ℝ) * 0) *
+              (2 * Real.pi * (centeredIndex K j : ℝ))) =
+          2 * Real.pi * (centeredIndex K j : ℝ) ^ 2 := by
+      simp
+      ring
+    simpa only [hcoeff] using hterm
   convert hsum using 1
   unfold centeredMoment
   rw [Finset.smul_sum]
@@ -530,11 +538,13 @@ theorem iteratedDeriv_three_sourceAtomPairing_eq_moments_of_right_sum_zero
   have hsumDx : sourcePairingCoefficientSum K Dx =
       centeredMoment K 1
         ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) := by
+    unfold sourcePairingCoefficientSum
     rw [← centeredMoment_zero_eq_sum]
     simpa [Dx] using centeredMoment_sourceIndexAction K 0 x
   have hsumDy : sourcePairingCoefficientSum K Dy =
       centeredMoment K 1
         ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) y) := by
+    unfold sourcePairingCoefficientSum
     rw [← centeredMoment_zero_eq_sum]
     simpa [Dy] using centeredMoment_sourceIndexAction K 0 y
   rw [hsumDx, hsumDy, hsx0]
