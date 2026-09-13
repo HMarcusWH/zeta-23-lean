@@ -112,16 +112,25 @@ theorem RegularCellMinimalNegativeEnergyCertificate.trial_evenCoefficient
         c.firstBad.p c.firstBad.L c.firstBad.Nstar c.x₀ :
         EuclideanSpace ℂ (Fin (2 * (c.firstBad.Nstar + 1) + 1)))) ∈
       evenCoefficientSubspace (c.firstBad.Nstar + 1) := by
-  let u := cubicZeroShiftTrialVector
-    c.firstBad.p c.firstBad.L c.firstBad.Nstar c.x₀
   have hu :
-      (u : EuclideanSpace ℂ (Fin (2 * (c.firstBad.Nstar + 1) + 1))) ∈
+      (cubicZeroShiftTrialVector
+          c.firstBad.p c.firstBad.L c.firstBad.Nstar c.x₀ :
+        EuclideanSpace ℂ (Fin (2 * (c.firstBad.Nstar + 1) + 1))) ∈
         euclideanParityBoundaryFlatSubspace c.firstBad.p
-          (c.firstBad.Nstar + 1) := u.property
-  rw [hp] at hu
+          (c.firstBad.Nstar + 1) :=
+    (cubicZeroShiftTrialVector
+      c.firstBad.p c.firstBad.L c.firstBad.Nstar c.x₀).property
+  have huEven :
+      (cubicZeroShiftTrialVector
+          c.firstBad.p c.firstBad.L c.firstBad.Nstar c.x₀ :
+        EuclideanSpace ℂ (Fin (2 * (c.firstBad.Nstar + 1) + 1))) ∈
+        euclideanEvenBoundaryFlatSubspace (c.firstBad.Nstar + 1) := by
+    simpa [hp] using hu
   exact evenCoefficientSubspace_of_mem_euclideanEvenBoundaryFlatSubspace
     (c.firstBad.Nstar + 1)
-    (u : EuclideanSpace ℂ (Fin (2 * (c.firstBad.Nstar + 1) + 1))) hu
+    (cubicZeroShiftTrialVector
+      c.firstBad.p c.firstBad.L c.firstBad.Nstar c.x₀ :
+      EuclideanSpace ℂ (Fin (2 * (c.firstBad.Nstar + 1) + 1))) huEven
 
 /-- Even retained first-bad states admit the stronger order-eight exact Riesz
 representation. -/
