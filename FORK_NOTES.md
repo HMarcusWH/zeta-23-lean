@@ -5,20 +5,20 @@
 ## Authority snapshot
 
 ```text
-live main after merged PR #155 = 7bd3f1028d42272fcadc347c43371b992d9c0bd7
-live main tree = 9a4f21ed55aa0cbdf54527164c2f5f96912c65de
+live main after merged PR #157 = e304f07c9e83165ebf066db0d67c2cc24f8961c2
+live main tree = 706dfde7f9e7b0b8403a671769d424ac7862f5e7
 
-latest theorem-bearing PR = #155
-validated theorem head = ecfd075c07923e6fc80ab1a5b4f2d49c724f5577
-validated theorem tree = 9a4f21ed55aa0cbdf54527164c2f5f96912c65de
-RHRC #1005 / run 34720946254 = SUCCESS
-Permansson #778 / run 34720946242 = SUCCESS
+latest theorem-bearing PR = #157
+validated theorem head = 4b517db1d4a50277d325e77e771a30fc0db5c777
+validated theorem tree = 706dfde7f9e7b0b8403a671769d424ac7862f5e7
+RHRC #1017 / run 34731682546 = SUCCESS
+Permansson #790 / run 34731682544 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
 ```
 
-The validated #155 PR head and merged main are distinct commits with the same theorem tree.
+The validated #157 PR head and merged main are distinct commits with the same theorem tree.
 
 ## Recent theorem packages
 
@@ -33,21 +33,23 @@ The validated #155 PR head and merged main are distinct commits with the same th
 #153 retained first-bad / negative-energy certificate + exact pole-prime discrepancy
 #155 discrepancy integrability + generic legal Riesz smoothing
 #155 source-coordinate oddness + all even jets + even M3=0
+#157 complex production D transport + production odd jets through R6/R8
+#157 complete Riesz source channel + retained transformed-negative certificate
 ```
 
-## What #155 adds
+## What #157 adds
 
-**PROVED:** finite prime, pole and exact pole-prime discrepancy interval integrability.
+**PROVED:** the genuine complex production source energy satisfies the exact second-derivative centered-index transport once the complex coefficient sum vanishes; the rank-two defect is exposed and killed explicitly.
 
-**PROVED:** left-anchored iterated discrepancy primitives, positive-order absolute continuity, and the a.e. derivative relation that recovers the previous primitive without differentiating the prime staircase.
+**PROVED:** boundary-flat production carriers have jets 1..6 zero; even boundary-flat carriers have jets 1..8 zero.
 
-**PROVED:** smooth source-energy composed jets and one legal integration-by-parts step; by iteration, the generic arbitrary-order Riesz identity is available under explicit endpoint-jet hypotheses.
+**PROVED:** exact complete production Riesz order 6; exact order 8 under even parity.
 
-**PROVED:** production `sourceAtomRealEnergy` is odd in the source coordinate, so all even endpoint derivatives at zero vanish.
+**PROVED:** every retained regular first-bad certificate has complete Riesz-6 source-channel energy `< 0`; the even-parity retained certificate has complete Riesz-8 energy `< 0`.
 
-**PROVED:** even reversal parity kills centered moment `M3`.
+**PROVED:** a hypothetical off-line zero yields the retained Riesz-6 negative certificate.
 
-**NOT PROVED:** the odd endpoint derivatives required for unconditional production order-6 or order-8 Riesz specialization.
+**NOT PROVED:** an independent opposing nonnegative arithmetic sign, exact seventh/ninth leading-jet formulas, negative-root exclusion, or RH.
 
 ## Current frontier
 
@@ -56,36 +58,33 @@ FB-01 retained whole-cell/Schur certificate                        PROVED / #153
 FB-02 exact finite pole-prime discrepancy                          PROVED / #153
 FB-03A finite discrepancy integrability                            PROVED / #155
 FB-03B anchored primitives + AC / a.e. derivative                 PROVED / #155
-FB-03C generic legal repeated IBP / conditional Riesz              PROVED / #155
+FB-03C generic legal repeated IBP / conditional Riesz             PROVED / #155
 FB-03D source oddness + all even jets + even M3=0                  PROVED / #155
-FB-03E complex D-transport + production odd jets + Riesz 6/8       OPEN / NOW
-FB-03F retained transformed-negative wrapper                        OPEN
-FB-04 complete transformed-residual arithmetic mechanism            OPEN
-FB-05 scoped regular selected-residual nonnegative sign              OPEN
-FB-06 same-state contradiction / negative-root exclusion             OPEN
-FB-07 outside-strip/trivial-zero + terminal Mathlib RH seam          OPEN
-RH                                                                  OPEN
+FB-03E complex D transport + production odd jets + Riesz 6/8      PROVED / #157
+FB-03F retained transformed-negative wrapper                       PROVED / #157
+FB-04 complete transformed-residual arithmetic mechanism           OPEN / NOW
+FB-05 scoped complete-residual nonnegative sign                    OPEN
+FB-06 same-state contradiction / negative-root exclusion           OPEN
+FB-07 outside-strip/trivial-zero + terminal Mathlib RH seam         OPEN
+RH                                                                 OPEN
 ```
 
-## Current derived bridge
+## Post-green clue
 
-For production source energy `g_u`, the audited post-green calculation gives
+The next useful abstraction is likely not another restatement of the already-proved R6/R8 equality. The first nonvanishing Riesz boundary term may expose a smaller arithmetic target:
 
 ```text
-M0(u)=0 -> g_u''(omega) = -(2*pi)^2 g_(D u)(omega).
+E_r = E_(r+1) + boundary_term.
 ```
 
-Together with the existing theorem `M_k(Du)=M_(k+1)(u)`, this suggests
+Expected leading endpoint formulas
 
 ```text
-M0=...=M(r-1)=0
-  -> g_u^(2r)(omega) = (-1)^r*(2*pi)^(2r)*g_(D^r u)(omega)
-  -> g_u^(2r+1)(0) = 2*(-1)^r*(2*pi)^(2r)*|M_r|^2.
+g^(7)(0) = -2*(2*pi)^6*|M3|^2
+g^(9)(0) =  2*(2*pi)^8*|M4|^2
 ```
 
-**Status: DERIVED / OPEN IN LEAN.**
-
-The next theorem PR must prove this on the genuine complex production energy, not only on a real contraction helper.
+are **DERIVED / OPEN IN LEAN**. They must not be promoted from #157.
 
 ## Exact falsification memory
 
@@ -96,40 +95,26 @@ even: (1,-4,6,-4,1)
 odd:  (1,-2,0,2,-1)
 ```
 
-show that the relevant seventh/ninth source derivatives change sign. Therefore
+still kill
 
 ```text
 positive Riesz primitive + endpoint flatness
-  -> pointwise fixed-sign smoothed integrand
+  -> pointwise fixed-sign smoothed integrand.
 ```
 
-is a dead universal route.
+This does not refute the Riesz identity. It blocks a pointwise-sign shortcut only.
 
-The surviving target is a sign for the **complete integrated discrepancy minus archimedean/scalar residual**, or another genuinely arithmetic mechanism using the retained whole-cell ancestry.
+## Next theorem-bearing slice after this sync
 
-## Next theorem-bearing slice
+Preferred design:
 
 ```text
-CCM: prove source-coordinate D transport and close production Riesz jets
+CCM: expose the first Riesz boundary term and probe endpoint arithmetic
 ```
 
-Implementation firewall:
+The Lean half should prove a generic signed one-step Riesz recurrence and, only where required, exact endpoint leading-jet identities. The numerical/Arb half should immediately try to falsify any proposed scalar boundary-factor sign across fixed cutoff cells and prime-power thresholds.
 
-```text
-sourceEntrySecondDerivative
-  -> entrywise rank-two identity
-  -> complex source-matrix identity
-  -> contract against conj(u_i)*u_j
-  -> kill the rank-two correction using sum u_i=0
-  -> identify D A D with source energy of indexMatrix *ᵥ u.
-```
-
-Expected production consequences remain DERIVED until Lean validates them:
-
-```text
-boundary-flat: jets 1..6 vanish
-even boundary-flat: jets 1..8 vanish
-```
+If that scalar route dies, preserve the failure and return to the complete transformed residual using stationarity, lower-size transfer, whole-cell ancestry or a cancellation identity.
 
 ## Documentation state
 
@@ -137,7 +122,7 @@ Current living synthesis:
 
 ```text
 research/RHRC/RESEARCH_LEADS.md
-research/RHRC/RESEARCH_LEADS_POST_155_RIESZ_D_TRANSPORT_FRONTIER_DELTA.md
+research/RHRC/RESEARCH_LEADS_POST_157_PRODUCTION_RIESZ_ARITHMETIC_FRONTIER_DELTA.md
 research/RHRC/CURRENT_RESEARCH_PLAN.md
 research/RHRC/OBSTRUCTION_LEDGER.md
 research/RHRC/DEAD_ROUTES.md
@@ -148,12 +133,13 @@ External reviewer material remains discovery evidence unless independently repro
 ## Firewalls
 
 - RH remains OPEN.
-- theorem authority is through #155 only.
+- theorem authority is through #157 only.
 - machine claim promotion remains separate.
-- a retained negative source-channel energy is not a contradiction.
-- generic Riesz smoothing does not itself prove production order 6/8.
-- complex production transport must not be inferred from real contraction theorems.
-- pointwise smoothed-integrand positivity is falsified as a universal mechanism.
+- a retained transformed negative source-channel energy is not a contradiction.
+- exact Riesz 6/8 is not an arithmetic sign theorem.
+- R8 is conditional on even retained parity.
+- exact seventh/ninth leading-jet coefficients remain open.
+- pointwise smoothed-integrand positivity remains falsified as a universal mechanism.
 - the #152 harness is scoped falsification/certification infrastructure, not theorem authority.
 - `D` remains algebraic, not unitary/isometric.
 - negative-root exclusion is not the terminal Mathlib RH wrapper without explicit final bookkeeping.

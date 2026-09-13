@@ -7,16 +7,16 @@
 ## Current theorem / research authority
 
 ```text
-live main after merged PR #155 = 7bd3f1028d42272fcadc347c43371b992d9c0bd7
-live main tree = 9a4f21ed55aa0cbdf54527164c2f5f96912c65de
+live main after merged PR #157 = e304f07c9e83165ebf066db0d67c2cc24f8961c2
+live main tree = 706dfde7f9e7b0b8403a671769d424ac7862f5e7
 
-latest theorem-bearing PR = #155
-validated theorem head = ecfd075c07923e6fc80ab1a5b4f2d49c724f5577
-validated theorem tree = 9a4f21ed55aa0cbdf54527164c2f5f96912c65de
-RHRC #1005 / run 34720946254 = SUCCESS
-Permansson #778 / run 34720946242 = SUCCESS
+latest theorem-bearing PR = #157
+validated theorem head = 4b517db1d4a50277d325e77e771a30fc0db5c777
+validated theorem tree = 706dfde7f9e7b0b8403a671769d424ac7862f5e7
+RHRC #1017 / run 34731682546 = SUCCESS
+Permansson #790 / run 34731682544 = SUCCESS
 
-newest post-green delta = RESEARCH_LEADS_POST_155_RIESZ_D_TRANSPORT_FRONTIER_DELTA.md
+newest post-green delta = RESEARCH_LEADS_POST_157_PRODUCTION_RIESZ_ARITHMETIC_FRONTIER_DELTA.md
 current execution SSOT = CURRENT_RESEARCH_PLAN.md
 RH = OPEN
 ```
@@ -34,8 +34,6 @@ RESEARCH_LEADS_LEGACY_FULL_THROUGH_110.md
 Use it for archaeology, old lead IDs, provenance and historical route context. Older dated `RESEARCH_LEADS_POST_*.md` files remain chronological historical records.
 
 ## Status vocabulary
-
-Formal status:
 
 - **PROVED** — exact statement established by Lean/compiler/CI.
 - **DERIVED** — direct mathematical consequence not separately theoremized.
@@ -72,7 +70,7 @@ matrixRealEnergy_pole_sub_prime_eq_discrepancy
 canonicalSourceChannelEnergy_eq_discrepancy
 ```
 
-Pole and prime cancellation is now an exact finite Lean theorem under the production normalization.
+Pole and prime cancellation is an exact finite Lean theorem under the production normalization.
 
 ### Generic legal Riesz smoothing
 
@@ -81,14 +79,38 @@ Pole and prime cancellation is now an exact finite Lean theorem under the produc
 
 #155 proves finite discrepancy integrability, left-anchored iterated primitives, positive-order absolute continuity, a.e. derivative recovery, smooth composed source jets, and the generic arbitrary-order Riesz identity under explicit endpoint-jet hypotheses.
 
-It does **not** prove unconditional production order 6/8.
-
-### Production source parity/even jets
+### Complex production D transport / endpoint jets
 
 **Research status:** PROMOTED  
-**Formal status:** PROVED / #155
+**Formal status:** PROVED / #157
 
-Production source energy is odd in the source coordinate, all even endpoint derivatives vanish, and even reversal parity kills `M3`.
+#157 proves the genuine complex production source-energy second-derivative transport with explicit real/imaginary handling and zero-sum annihilation of the rank-two defect. It also proves boundary-flat source-energy jets through order 6 and even boundary-flat jets through order 8.
+
+### Exact complete production Riesz 6/8
+
+**Research status:** PROMOTED  
+**Formal status:** PROVED / #157
+
+```text
+canonicalRieszSourceChannelEnergy
+canonicalSourceChannelEnergy_eq_rieszSix_of_boundaryFlat
+canonicalSourceChannelEnergy_eq_rieszEight_of_even_boundaryFlat
+```
+
+The complete transformed channel retains both reduced archimedean channels and the scalar correction.
+
+### Retained transformed-negative certificate
+
+**Research status:** PROMOTED  
+**Formal status:** PROVED / #157
+
+```text
+RegularCellMinimalNegativeEnergyCertificate.rieszSixNeg
+RegularCellMinimalNegativeEnergyCertificate.rieszEightNeg_of_even
+exists_regularFirstBad_rieszSixNegativeCertificate_of_offLine_zero
+```
+
+Every retained certificate carries complete Riesz-6 negativity. Riesz-8 negativity is available only when the retained first-bad parity is even. A hypothetical off-line zero reaches the retained Riesz-6 negative certificate.
 
 ### Selected-residual certification harness
 
@@ -97,93 +119,79 @@ Production source energy is odd in the source coordinate, all even endpoint deri
 
 The exact-rational geometry + production numerical scout + Arb replay lane can falsify finite scoped sign mechanisms. It does not prove a sign by repeated success and does not automatically certify whole-cell ancestry.
 
-## Active lead — FB-03E complex source-coordinate D transport
+## Active lead — first Riesz boundary term
 
 **Research status:** ACTIVE / HIGHEST LEVERAGE  
+**Formal status:** LEAD / HYPOTHESIS
+
+Now that R6/R8 and retained transformed negativity are theorem-backed, the first unforced endpoint term may expose a smaller arithmetic observable.
+
+Target generic identity:
+
+```text
+E_r = E_(r+1) + B_r
+```
+
+with a signed right-endpoint contribution built from
+
+```text
+canonicalPolePrimeRieszPrimitive L (r+1) L
+iteratedDeriv (r+1) (sourceAtomRealEnergy K x) 0.
+```
+
+This should be theoremized as an identity before any sign interpretation is attempted.
+
+## Active lead — exact leading endpoint jets
+
+**Research status:** READY IF NEEDED BY BOUNDARY TERM  
 **Formal status:** DERIVED / OPEN IN LEAN
 
-Target:
+The post-green composition gives
 
 ```text
-M0(u)=0
-  -> g_u''(omega)=-(2*pi)^2 g_(D u)(omega)
+g^(7)(0) = -2*(2*pi)^6*|M3|^2
+g^(9)(0) =  2*(2*pi)^8*|M4|^2.
 ```
 
-for the genuine complex production energy `g_u = sourceAtomRealEnergy K u`.
+These are not part of the #157 theorem surface. The existing theorem package proves only the vanishing needed through orders 6/8.
 
-The entrywise calculation gives a rank-at-most-two defect. Its complex Hermitian quadratic form vanishes under `sum u=0`. The implementation must make that cancellation theorem-backed rather than importing a real-vector contraction theorem by analogy.
+If the boundary-term recurrence makes these coefficients useful, theoremize the smallest exact statements rather than a broad unused Taylor hierarchy.
 
-Preferred proof spine:
+## Active lead — scalar Riesz endpoint arithmetic
+
+**Research status:** TEST FIRST  
+**Formal status:** OPEN / EXPERIMENTAL UNTIL CHECKED
+
+Once the boundary recurrence is theorem-backed, test the scalar factors
 
 ```text
-sourceEntrySecondDerivative
-  -> entrywise rank-two source-matrix identity
-  -> complex contraction against conj(u_i)*u_j
-  -> zero-sum annihilation
-  -> identify D A D with source energy of indexMatrix *ᵥ u.
+canonicalPolePrimeRieszPrimitive L 7 L
+canonicalPolePrimeRieszPrimitive L 9 L
 ```
 
-## Active lead — moment-prefix recursion / production odd jets
+and any proposed normalized variants across certified fixed cutoff cells and prime-power thresholds.
 
-**Research status:** ACTIVE / SAME PR  
-**Formal status:** DERIVED / OPEN IN LEAN
+Reuse existing R003 numerical/Arb backends. Do not fork the production normalization.
 
-Use the already proved shift
+A single rigorous finite sign failure kills an overbroad sign/monotonicity claim.
 
-```text
-M_k(Du)=M_(k+1)(u)
-```
+## Active lead — complete transformed-residual arithmetic sign
 
-to target
-
-```text
-M0=...=M(r-1)=0
-  -> g_u^(2r)(omega)=(-1)^r*(2*pi)^(2r)*g_(D^r u)(omega)
-  -> g_u^(2r+1)(0)=2*(-1)^r*(2*pi)^(2r)*|M_r(u)|^2.
-```
-
-Expected production consequences:
-
-```text
-boundary-flat -> jets 1..6 vanish
-boundary-flat -> g^(7)(0)=-2*(2*pi)^6*|M3|^2
-
-even boundary-flat + #155 M3=0 -> jets 1..8 vanish
-even -> g^(9)(0)=2*(2*pi)^8*|M4|^2.
-```
-
-These remain DERIVED until compiler-validated.
-
-## Active lead — exact production Riesz 6/8
-
-**Research status:** ACTIVE / SAME PR  
+**Research status:** ACTIVE / DECISIVE  
 **Formal status:** OPEN
 
-Instantiate the already-proved generic #155 Riesz theorem:
+The surviving target is the **complete integrated transformed discrepancy minus reduced archimedean/scalar residual**, on the exact retained whole-cell first-bad state.
 
-```text
-boundary-flat -> exact order-6 Riesz identity
-even boundary-flat -> exact order-8 Riesz identity.
-```
+Candidate mechanism families worth deriving and immediately falsifying:
 
-No arithmetic sign theorem belongs in this step.
+- stationarity `A x0=b` inside the transformed representation;
+- transfer to smaller-size good predecessor energies;
+- whole-cell minimality across the fixed cutoff cell;
+- exact first-boundary-term decomposition;
+- cancellation identities that keep discrepancy and archimedean pieces coupled;
+- cross-parity compensation if a genuinely invariant combined quantity exists.
 
-## Immediate downstream — retained transformed-negative certificate
-
-**Research status:** READY AFTER FB-03E  
-**Formal status:** OPEN
-
-Compose the production Riesz specializations with the retained #153 first-bad certificate and ExceptionalZero wrapper. The goal is
-
-```text
-off-line zero
-  -> retained regular first-bad state
-  -> exact order-6/order-8 transformed residual < 0
-```
-
-without adding hypotheses not already present on the retained state.
-
-Once green, FB-03 is genuinely closed.
+Do not invest in a theorem before specifying an independently meaningful inequality/mechanism.
 
 ## Dead route — pointwise positivity after smoothing
 
@@ -206,24 +214,7 @@ positive Riesz primitive + endpoint flatness
 
 is not a valid universal closing theorem.
 
-The Riesz representation survives; the pointwise sign interpretation does not.
-
-## Active lead — complete transformed-residual arithmetic sign
-
-**Research status:** ACTIVE AFTER FB-03  
-**Formal status:** OPEN
-
-The surviving target is the **complete integrated discrepancy minus reduced archimedean/scalar residual**, under the exact retained whole-cell first-bad ancestry.
-
-Candidate mechanism families worth deriving and immediately falsifying:
-
-- stationarity `A x0=b` inside the transformed representation;
-- transfer to smaller-size good predecessor energies;
-- whole-cell minimality across the fixed cutoff cell;
-- exact cancellation identities that keep discrepancy and archimedean pieces coupled;
-- cross-parity compensation if a genuinely invariant combined quantity exists.
-
-Do not invest in a theorem before specifying an independently meaningful inequality/mechanism.
+The Riesz representation survives; the pointwise sign interpretation does not. An integrated boundary-term recurrence is not a revival of this route.
 
 ## Lead — combined-parity invariant
 
@@ -261,8 +252,9 @@ Current high-priority quarantines/dead routes include:
 - global minimizing-trial Schur monotonicity;
 - universal positive elementary source-atom energy;
 - direct coth/deck common-lattice identification;
-- real-vector D transport silently promoted to the complex production energy;
-- pointwise fixed-sign smoothed-integrand positivity.
+- pointwise fixed-sign smoothed-integrand positivity;
+- treating exact seventh/ninth coefficients as already proved;
+- treating retained R8 negativity as parity-unconditional.
 
 ## Update law
 
@@ -289,6 +281,6 @@ After every meaningful green result:
 9. Are we using the canonical sign-authoritative object?
 10. Does any conclusion rely on an unproved identification between distinct finite/operator objects?
 
-**Current highest-information question:** can the derived complex source-coordinate D-transport be theoremized exactly on the production energy, thereby closing the odd jets and exact Riesz 6/8 specializations?
+**Current highest-information question:** does the first nonvanishing Riesz boundary term expose a scalar arithmetic sign/transfer mechanism that survives canonical interval falsification, or does it fail quickly and force us back to the full transformed residual?
 
 **RH remains OPEN.**

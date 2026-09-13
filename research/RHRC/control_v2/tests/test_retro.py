@@ -54,7 +54,7 @@ class RetroTests(unittest.TestCase):
         self.assertNotIn("rupture", terms)
         self.assertNotIn("slack", terms)
 
-    def test_e4a4_actions_use_post_155_d_transport_aliases(self):
+    def test_e4a4_actions_use_post_157_transformed_arithmetic_aliases(self):
         aliases = load_alias_map(RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json")
         terms = expanded_terms("canonical_source_exclusion", aliases)
         for term in (
@@ -81,6 +81,13 @@ class RetroTests(unittest.TestCase):
             "rank-two source defect",
             "Riesz order 6",
             "Riesz order 8",
+            "canonicalRieszSourceChannelEnergy",
+            "retained Riesz-6 negative certificate",
+            "ExceptionalZero Riesz closure",
+            "Riesz boundary term",
+            "first nonvanishing endpoint jet",
+            "seventh derivative moment three",
+            "ninth derivative moment four",
             "pointwise smoothed integrand",
             "combined parity",
             "complete transformed residual",
@@ -101,8 +108,6 @@ class RetroTests(unittest.TestCase):
                 registry["actions"][action_id]["concept_id"],
                 "canonical_source_exclusion",
             )
-            # None of these actions revives a dead route. DR-024 is a negative
-            # control for the selected action, not an admission blocker.
             self.assertEqual(registry["actions"][action_id]["dead_route_matches"], [])
 
         schur = registry["actions"]["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"]
@@ -112,11 +117,11 @@ class RetroTests(unittest.TestCase):
         self.assertNotIn("E4A4-SCHUR-FB-01", schur_break_ids)
         self.assertNotIn("E4A4-SCHUR-FB-02", schur_break_ids)
         self.assertNotIn("E4A4-SCHUR-FB-03", schur_break_ids)
+        self.assertNotIn("E4A4-SCHUR-FB-03E", schur_break_ids)
+        self.assertNotIn("E4A4-SCHUR-FB-03F", schur_break_ids)
         self.assertEqual(
             schur_break_ids,
             [
-                "E4A4-SCHUR-FB-03E",
-                "E4A4-SCHUR-FB-03F",
                 "E4A4-SCHUR-FB-04",
                 "E4A4-SCHUR-FB-05",
             ],

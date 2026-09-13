@@ -23,20 +23,20 @@ A green but unmerged PR is branch evidence, not merged repository truth. A merge
 ## Current synchronized anchors
 
 ```text
-live main after merged PR #155 = 7bd3f1028d42272fcadc347c43371b992d9c0bd7
-live main tree = 9a4f21ed55aa0cbdf54527164c2f5f96912c65de
+live main after merged PR #157 = e304f07c9e83165ebf066db0d67c2cc24f8961c2
+live main tree = 706dfde7f9e7b0b8403a671769d424ac7862f5e7
 
-latest theorem-bearing PR = #155
-validated theorem head = ecfd075c07923e6fc80ab1a5b4f2d49c724f5577
-validated theorem tree = 9a4f21ed55aa0cbdf54527164c2f5f96912c65de
-RHRC #1005 / run 34720946254 = SUCCESS
-Permansson #778 / run 34720946242 = SUCCESS
+latest theorem-bearing PR = #157
+validated theorem head = 4b517db1d4a50277d325e77e771a30fc0db5c777
+validated theorem tree = 706dfde7f9e7b0b8403a671769d424ac7862f5e7
+RHRC #1017 / run 34731682546 = SUCCESS
+Permansson #790 / run 34731682544 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
 ```
 
-The validated #155 PR head and merged main are different commits with the same theorem tree. Documentation must distinguish:
+The validated #157 PR head and merged main are different commits with the same theorem tree. Documentation must distinguish:
 
 ```text
 current live main
@@ -79,21 +79,21 @@ The repository keeps distinct anchors:
 - **theorem tree** — tree shared by the validated head and merged theorem-bearing result when applicable;
 - **control-plane semantic anchor** — latest meaningful merged green research-control/assurance semantics.
 
-PR #155 advances theorem authority because it compiler-validates the new discrepancy integrability, generic Riesz smoothing, source oddness/all-even-jets and even-parity `M3=0` packages.
+PR #157 advances theorem authority because it compiler-validates the genuine complex production D-transport theorem, the boundary-flat production endpoint jets through orders 6/8, exact complete production Riesz order 6 / even order 8 representations, retained transformed negativity, and the ExceptionalZero order-6 negative wrapper.
 
-PR #117 remains the Control-v2 semantic anchor because #155 changes mathematical state, not the controller's capability/authority model.
+PR #117 remains the Control-v2 semantic anchor because #157 changes mathematical state, not the controller's capability/authority model.
 
-A documentation/control PR that updates the theorem anchor to #155 does not itself create theorem authority.
+A documentation/control PR that updates the theorem anchor to #157 does not itself create theorem authority.
 
-## Current transition after PR #155
+## Current transition after PR #157
 
 Newest project synthesis:
 
+`RESEARCH_LEADS_POST_157_PRODUCTION_RIESZ_ARITHMETIC_FRONTIER_DELTA.md`
+
+Historical pre-#157 synthesis:
+
 `RESEARCH_LEADS_POST_155_RIESZ_D_TRANSPORT_FRONTIER_DELTA.md`
-
-External-review provenance:
-
-`external_reviews/ASTRA_POST_155_RH_PATH_ASSESSMENT_2026_09_13.md`
 
 Exact finite route-falsification memory:
 
@@ -102,24 +102,28 @@ Exact finite route-falsification memory:
 Current route:
 
 ```text
-PROVED THROUGH #155
+PROVED THROUGH #157
   off-line zero
   -> retained regular cell-minimal first-bad certificate
   -> exact canonical source-channel energy < 0
   -> exact finite pole-prime discrepancy normal form
-  -> legal generic conditional Riesz representation
-  -> source oddness + all even endpoint jets + even M3=0
+  -> genuine complex production D transport
+  -> boundary-flat jets 1..6 / even jets 1..8
+  -> exact complete Riesz order 6 / even order 8
+  -> retained complete Riesz-6 source-channel energy < 0
 
 NOW
-  complex production D-transport
-  -> moment-prefix recursion
-  -> production odd endpoint jets
-  -> exact Riesz order 6 / even order 8
-  -> retained transformed-negative first-bad wrapper
+  formulate a specific arithmetic mechanism for the exact complete transformed residual
+  -> theorem-aligned numerical / interval falsification
+  -> if a mechanism survives, prove the smallest independent nonnegative arithmetic inequality
+
+PROMISING SUBLEAD
+  generic first Riesz boundary-term recurrence
+  -> exact seventh/ninth leading jets only if needed
+  -> scalar endpoint-factor falsification
 
 AFTER
-  specific arithmetic-mechanism falsification on the complete transformed residual
-  -> independent nonnegative complete-residual theorem
+  independent nonnegative complete-residual theorem
   -> same-state contradiction
   -> negative-root exclusion
   -> outside-strip/trivial-zero seam
@@ -128,46 +132,45 @@ AFTER
 
 Universal one-step domination remains a broad fallback, not the immediate reduction.
 
-## Post-#155 classification correction
+## Post-#157 classification correction
 
 The following status changes must be reflected in every living summary:
 
 ```text
-finite discrepancy integrability
-  OPEN after #153
-  -> PROVED / #155
+complex production D transport
+  OPEN after #155
+  -> PROVED / #157
 
-anchored primitives + legal generic repeated IBP / conditional Riesz
-  OPEN after #153
-  -> PROVED / #155
+production odd jets through the required R6/R8 orders
+  OPEN after #155
+  -> PROVED / #157
 
-source-coordinate oddness + all even endpoint jets
-  OPEN after #153
-  -> PROVED / #155
+exact complete production Riesz order 6
+exact complete even-parity production Riesz order 8
+  OPEN after #155
+  -> PROVED / #157
 
-even parity M3=0
-  OPEN after #153
-  -> PROVED / #155
-
-complex D-transport
-production odd jets
-unconditional Riesz order 6/8
 retained transformed-negative wrapper
-  remain DERIVED / OPEN IN LEAN
+  OPEN after #155
+  -> PROVED / #157
+
+exact seventh/ninth leading-jet coefficient formulas
+independent complete transformed-residual nonnegative sign
+  remain DERIVED/LEAD or OPEN.
 ```
 
-The new key firewall is that a real contraction derivative identity is not automatically the complex production source-energy theorem.
+OBS-035 and OBS-036 remain useful historical firewalls but their immediate escape requirements are consumed by #157; they must not continue to describe FB-03E/F as open.
 
 ## Permanent firewalls
 
 ```text
 supporting theorem green != machine claim promotion
 regular predecessor != positive successor
-negative exact source-channel energy != contradiction
-exact discrepancy identity != discrepancy sign
-generic legal Riesz smoothing != unconditional production order 6/8
-real contraction identity != complex production source-energy identity
-Riesz smoothing != arithmetic sign
+retained transformed negative energy != contradiction
+exact discrepancy / Riesz identity != arithmetic sign
+R8 retained negativity != parity-unconditional theorem
+exact seventh/ninth leading-jet formulas remain open
+Riesz smoothing != pointwise sign
 pointwise smoothed-integrand positivity is falsified as a universal route
 numerical falsification != theorem
 interval-certified finite evidence != Lean theorem authority
