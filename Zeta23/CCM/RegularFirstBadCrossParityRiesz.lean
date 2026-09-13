@@ -65,14 +65,35 @@ theorem RegularCellMinimalNegativeEnergyCertificate.evenSecularRoot_of_even
       c.firstBad.p c.firstBad.L_pos c.firstBad.Nstar
       c.firstBad.one_le_Nstar c.predecessorNonnegative
       c.lam c.lam_neg).mp c.explicit_root
+  rcases hexSelected with ⟨v, hvne, hveig⟩
+  have hvEvenMem :
+      (v : EuclideanSpace ℂ (Fin (2 * (c.firstBad.Nstar + 1) + 1))) ∈
+        euclideanParityBoundaryFlatSubspace .even
+          (c.firstBad.Nstar + 1) := by
+    simpa [hp] using v.property
+  let ve : euclideanParityBoundaryFlatSubspace .even
+      (c.firstBad.Nstar + 1) :=
+    ⟨(v : EuclideanSpace ℂ (Fin (2 * (c.firstBad.Nstar + 1) + 1))), hvEvenMem⟩
+  have hvene : ve ≠ 0 := by
+    intro hzero
+    apply hvne
+    apply Subtype.ext
+    exact congrArg Subtype.val hzero
+  have hveigEven :
+      parityCompressedCanonical .even c.firstBad.L
+          (c.firstBad.Nstar + 1) ve =
+        (c.lam : ℂ) • ve := by
+    apply Subtype.ext
+    have hraw := congrArg Subtype.val hveig
+    simpa [ve, hp] using hraw
   have hexEven :
       ∃ v : euclideanParityBoundaryFlatSubspace .even
           (c.firstBad.Nstar + 1),
         v ≠ 0 ∧
           parityCompressedCanonical .even c.firstBad.L
               (c.firstBad.Nstar + 1) v =
-            (c.lam : ℂ) • v := by
-    simpa [hp] using hexSelected
+            (c.lam : ℂ) • v :=
+    ⟨ve, hvene, hveigEven⟩
   exact
     (cubicSecularScalar_eq_zero_iff_exists_eigenmode
       .even c.firstBad.L_pos c.firstBad.Nstar
