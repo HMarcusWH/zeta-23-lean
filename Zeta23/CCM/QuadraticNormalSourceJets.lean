@@ -46,7 +46,7 @@ theorem quadraticNormalSourceAtom_eq_sourceAtomPairing_div
   congr 1
   unfold quadraticNormalMatrixNumerator sourceAtomPairing
     evenBoundaryFlatRawCoefficients
-  unfold dotProduct Matrix.mulVec
+  unfold Matrix.mulVec dotProduct
   simp_rw [sourceMatrix_apply, sourceEntry_eq_ofReal]
   apply Finset.sum_congr rfl
   intro i hi
@@ -160,7 +160,6 @@ private theorem sourcePairingCoefficientSum_indexAction_eq_moment_one
         ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) := by
   rw [sourcePairingCoefficientSum_eq_moment_zero,
     centeredMoment_sourceIndexAction]
-  norm_num
 
 private theorem sourcePairingCoefficientSum_indexAction_sq_eq_moment_two
     (K : ℕ)
@@ -172,7 +171,6 @@ private theorem sourcePairingCoefficientSum_indexAction_sq_eq_moment_two
   rw [sourcePairingCoefficientSum_eq_moment_zero,
     centeredMoment_sourceIndexAction,
     centeredMoment_sourceIndexAction]
-  norm_num
 
 private theorem centeredMoment_one_indexAction_sq_eq_moment_three
     (K : ℕ)
@@ -183,7 +181,6 @@ private theorem centeredMoment_one_indexAction_sq_eq_moment_three
       centeredMoment K 3
         ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) := by
   rw [centeredMoment_sourceIndexAction, centeredMoment_sourceIndexAction]
-  norm_num
 
 private theorem centeredMoment_two_indexAction_sq_eq_moment_four
     (K : ℕ)
@@ -194,7 +191,6 @@ private theorem centeredMoment_two_indexAction_sq_eq_moment_four
       centeredMoment K 4
         ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) := by
   rw [centeredMoment_sourceIndexAction, centeredMoment_sourceIndexAction]
-  norm_num
 
 /-- Unnormalized headline calculation: the seventh mixed source jet against
 `n2` is its normalization times the fourth centered moment of the carrier. -/
@@ -248,7 +244,7 @@ theorem iteratedDeriv_seven_sourceAtomPairing_quadraticNormal_eq_moment_four
           (centeredMoment K 0
             ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) D2n2)) =
         inner ℂ (centeredQuadraticNormal K) (centeredQuadraticNormal K) := by
-    rw [sourcePairingCoefficientSum_indexAction_sq_eq_moment_two]
+    rw [centeredMoment_sourceIndexAction, centeredMoment_sourceIndexAction]
     simpa [D2n2, Dn2, n2] using
       star_centeredQuadraticNormal_moment_two_eq_inner_self K
   have hD2ym2 :
@@ -270,7 +266,7 @@ theorem iteratedDeriv_seven_sourceAtomPairing_quadraticNormal_eq_moment_four
           rw [hstep2]
     _ = _ := by
           rw [hthird, hD2n2m1, hD2n2m0, hD2ym2]
-          simp only [map_zero, zero_mul, zero_add, Complex.real_smul]
+          simp only [star_zero, zero_mul, zero_add, Complex.real_smul]
           push_cast
           ring
 
@@ -345,6 +341,7 @@ theorem two_pi_four_mul_rieszBoundaryEight_eq_endpointScalar_mul_mixedJetNormSq
   rw [canonicalPolePrimeRieszBoundaryTerm_eight_eq_moment_four_of_even
     L K (v : EuclideanSpace ℂ (Fin (2 * K + 1)))]
   · rw [normSq_iteratedDeriv_seven_quadraticNormalSourceAtom K hK v]
+    simp only [evenBoundaryFlatRawCoefficients]
     ring
   · simpa [evenBoundaryFlatRawCoefficients] using hflat
   · simpa [evenBoundaryFlatRawCoefficients] using heven
