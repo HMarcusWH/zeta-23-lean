@@ -5,13 +5,13 @@
 ## Authority snapshot
 
 ```text
-live main after merged PR #159 = 63862cd80501754c6c6599ffea09b874a327dae4
-live main tree = cb7a81d3b10e7f909b794103f2a919a3a3ccf233
-latest theorem-bearing PR = #159
-validated theorem head = b2a064ad5d1f0acbd93309a9257c5661cfa3ec28
-validated theorem tree = cb7a81d3b10e7f909b794103f2a919a3a3ccf233
-RHRC #1021 / run 34736245287 = SUCCESS
-Permansson #794 / run 34736245311 = SUCCESS
+live main after merged PR #161 = ef29b45de683962122c1e898ed31bf9417757125
+live main tree = b080572e87068889a72b4e612f99ddf0bd67f482
+latest theorem-bearing PR = #161
+validated theorem head = 188407fb02a37de2e380ede3b60e140953b01441
+validated theorem tree = b080572e87068889a72b4e612f99ddf0bd67f482
+RHRC #1026 = SUCCESS
+Permansson #799 = SUCCESS
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
 ```
@@ -30,31 +30,39 @@ RH = OPEN
 #155 legal generic Riesz smoothing + source oddness/even jets
 #157 complex production D transport + exact complete Riesz 6/even 8 + retained negativity
 #159 general moment-prefix odd jets + exact signed Riesz boundary recurrence
+#161 same-state shifted Riesz x cross-parity source obstruction
 ```
 
-## What #159 adds
+## What #161 adds
 
-**PROVED:** exact first complex source-energy jet and a general moment-prefix odd-jet theorem.
+**PROVED:** `parityBad_of_negative_eigenmode` and arbitrary-parity predecessor nonnegativity from retained first-bad ancestry.
+
+**PROVED:** a genuine negative secular-root trial has exact negative canonical/source-channel energy; in the even sector the same trial has strict complete Riesz-8 negativity and the exact Riesz-9 / `M4` boundary inequality.
+
+**PROVED:** under opposite-parity goodness the odd secular scalar is nonzero.
+
+**PROVED:** at the retained even first-bad root,
+
+```text
+odd secular scalar
+  = Gamma * explicitCanonicalSourceMoment(even shifted trial).
+```
 
 **PROVED:**
 
 ```text
-g^(7)(0) = -2*(2*pi)^6*normSq(M3)
+odd-good -> explicitCanonicalSourceMoment != 0
 ```
 
-for boundary-flat carriers, and
+and therefore
 
 ```text
-g^(9)(0) = 2*(2*pi)^8*normSq(M4)
+odd successor bad
+OR
+explicitCanonicalSourceMoment(even shifted trial) != 0.
 ```
 
-for even boundary-flat carriers.
-
-**PROVED:** generic signed Riesz boundary recurrence for the pole-prime and complete transformed channels.
-
-**PROVED:** retained R6->R7 and, under even parity, R8->R9 exact moment-square boundary decompositions.
-
-**NOT PROVED:** endpoint-scalar positivity, same-state shifted Riesz/cross-parity source composition, mixed source-pairing seventh jet, an opposing arithmetic sign, negative-root exclusion, or RH.
+**NOT PROVED:** mixed source-pairing seventh jet, a sourceMoment/M4 coupling theorem, simultaneous-parity-bad exclusion, odd-selected branch closure, an opposing arithmetic sign/rigidity theorem, negative-root exclusion, or RH.
 
 ## Current frontier
 
@@ -64,8 +72,8 @@ FB-02 exact discrepancy                                         PROVED / #153
 FB-03A-D legal Riesz engine / parity-even jets                  PROVED / #155
 FB-03E-F complex transport / retained transformed negativity    PROVED / #157
 FB-04A moment jets + signed Riesz boundary recurrence            PROVED / #159
-FB-04B same-state shifted Riesz x cross-parity source           OPEN / NOW
-FB-04C mixed source-pairing jet -> M4                           DERIVED / OPEN
+FB-04B same-state shifted Riesz x cross-parity source           PROVED / #161
+FB-04C mixed source-pairing jet -> M4 rigidity                  DERIVED / OPEN / NOW
 FB-05 independent contradiction-producing arithmetic restriction OPEN
 FB-06 negative-root exclusion                                   OPEN
 FB-07 terminal Mathlib RH seam                                  OPEN
@@ -74,32 +82,23 @@ RH                                                               OPEN
 
 ## Post-green clue
 
-The first Riesz boundary term is no longer merely a clue; its exact self-energy form is theorem-backed. The stronger new clue comes from composing it with the existing cross-parity source stack.
-
-At an even negative secular root the existing theorem gives
+The same retained even shifted negative state now carries three exact views:
 
 ```text
-odd secular scalar
-  = overlap * evenQuadraticSourceMoment(even shifted trial),
+R8(u_lambda) < 0
+R9(u_lambda) < -2*(2*pi)^8*S8(L)*|M4(u_lambda)|^2
+F_odd(lambda) = Gamma(lambda)*explicitCanonicalSourceMoment(u_lambda).
 ```
 
-with `evenQuadraticSourceMoment = explicitCanonicalSourceMoment` theorem-backed.
+This converts the previous composition question into a rigidity question: what extra canonical arithmetic relation can make those simultaneous constraints impossible?
 
-Global first-bad ancestry already gives smaller-size predecessor nonnegativity in both parities. The next theorem should therefore align the even negative secular trial with #159's Riesz-8/Riesz-9 boundary and derive
-
-```text
-odd successor bad
-OR
-explicit canonical source moment != 0.
-```
-
-The subsequent mixed-jet lead is
+The next theorem lead is the mixed quadratic-normal source observable expected to satisfy
 
 ```text
 h_v^(7)(0) = -2*(2*pi)^6*M4(v)
 ```
 
-for the quadratic-normal source pairing. This remains **DERIVED / OPEN IN LEAN**.
+for even boundary-flat `v`. This remains **DERIVED / OPEN IN LEAN**.
 
 ## Exact falsification memory
 
@@ -110,17 +109,17 @@ even: (1,-4,6,-4,1)
 odd:  (1,-2,0,2,-1)
 ```
 
-still kill the universal pointwise fixed-sign smoothed-integrand route. The exact integrated recurrence survives.
+still kill the universal pointwise fixed-sign smoothed-integrand route. The exact integrated recurrence and same-state composition survive.
 
 ## Next theorem-bearing slice after this sync
 
 Preferred design:
 
 ```text
-CCM: couple even first-bad secular roots to Riesz and cross-parity source obstruction
+CCM: prove mixed quadratic-normal source jets and connect M4 to the shifted source defect
 ```
 
-It should use existing theorem interfaces rather than introduce simultaneous zero-shift regularity or a parallel certificate. No source factor may be divided out without a separate theorem.
+Before strong theorem investment, falsify simultaneous even+odd badness in exact generic/rank-one controls and test whether nonzero explicit source moment and nonzero `M4` can separate on canonical shifted states.
 
 ## Documentation state
 
@@ -128,7 +127,7 @@ Current living synthesis:
 
 ```text
 research/RHRC/RESEARCH_LEADS.md
-research/RHRC/RESEARCH_LEADS_POST_159_RIESZ_CROSS_PARITY_FRONTIER_DELTA.md
+research/RHRC/RESEARCH_LEADS_POST_161_SAME_STATE_RIESZ_SOURCE_RIGIDITY_DELTA.md
 research/RHRC/CURRENT_RESEARCH_PLAN.md
 research/RHRC/OBSTRUCTION_LEDGER.md
 research/RHRC/DEAD_ROUTES.md
@@ -137,12 +136,15 @@ research/RHRC/DEAD_ROUTES.md
 ## Firewalls
 
 - RH remains OPEN.
-- theorem authority is through #159 only.
+- theorem authority is through #161 only.
 - machine claim promotion remains separate.
-- retained transformed negativity is not a contradiction.
+- retained/shifted transformed negativity is not a contradiction.
 - exact Riesz boundary identities are not sign theorems.
 - R8/R9 results remain conditional on even parity where stated.
 - #159's self-energy moment jets do not prove the mixed source-pairing jet.
+- `explicitCanonicalSourceMoment != 0` does not imply `M4 != 0`, nor conversely.
+- simultaneous even/odd badness remains open.
+- selected parity cannot be assumed even WLOG.
 - no division by alpha/Gamma/overlap/source moment without theorem-backed nonzeroness.
 - pointwise fixed-sign smoothing remains dead.
 - `D` remains algebraic, not unitary/isometric.
