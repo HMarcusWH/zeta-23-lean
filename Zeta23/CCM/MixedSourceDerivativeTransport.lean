@@ -214,6 +214,7 @@ theorem sourcePairingIndexAction_eq_sourceIndexAction
   ext i
   simp only [indexMatrix_mulVec_apply, Complex.real_smul]
   push_cast
+  rfl
 
 private theorem sourceAtomPairing_indexActions_raw
     (K : ℕ)
@@ -233,8 +234,8 @@ private theorem sourceAtomPairing_indexActions_raw
   intro i hi
   apply Finset.sum_congr rfl
   intro j hj
-  simp only [Complex.real_smul, starRingEnd_apply, Complex.star_def,
-    map_mul, Complex.conj_ofReal]
+  simp only [star_smul, star_trivial, Complex.real_smul]
+  push_cast
   ring
 
 /-- Exact mixed second-derivative transport when the right coefficient sum
@@ -274,8 +275,8 @@ theorem sourceAtomPairingSecondDerivative_transport_of_right_sum_zero
     rw [Finset.smul_sum]
     apply Finset.sum_congr rfl
     intro j hj
-    rw [mul_smul]
-    congr 1
+    simp only [Complex.real_smul]
+    push_cast
     ring
   have hleft :
       (∑ i, ∑ j, a i • (star (ux i) * uy j)) = 0 := by
