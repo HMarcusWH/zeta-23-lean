@@ -36,7 +36,7 @@ jobs:
           assert p['theorem_anchor']['merge_commit'] != p['control_anchor']['merge_commit']
           assert p['route_certificate']['frontier_id'] == 'FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN'
           assert p['route_certificate']['selected_action'] == 'E4_A4_REGULAR_SCHUR_ENERGY_SIGN'
-          assert p['route_certificate']['first_break']['break_id'] == 'E4A4-SCHUR-FB-05'
+          assert p['selected_first_break']['break_id'] == 'E4A4-SCHUR-FB-05'
           assert p['route_certificate']['theorem_authority'] is False
           assert p['route_certificate']['terminal_claim_change'] is False
           assert all(r['search_paths'] for r in p['retro_receipts'])
