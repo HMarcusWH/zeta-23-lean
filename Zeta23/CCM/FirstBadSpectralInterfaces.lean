@@ -75,13 +75,34 @@ theorem parityBad_of_negative_eigenmode
           (v : EuclideanSpace ℂ (Fin (2 * N + 1)))) < 0 := by
     rw [← re_inner_parityCompressedCanonical_self p L N v]
     exact hcomp
+  have hxneg :
+      Complex.re
+        (inner ℂ
+          ((canonicalSourceMatrix L N).toEuclideanLin x)
+          x) < 0 := by
+    simpa [x] using hamb
+  have hbridge :
+      (quadraticForm (canonicalSourceMatrix L N)
+        ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x)).re =
+      Complex.re
+        (inner ℂ
+          ((canonicalSourceMatrix L N).toEuclideanLin x)
+          x) :=
+    quadraticForm_re_eq_re_inner_apply_self
+      (canonicalSourceMatrix L N) x
   have hquad :
       (quadraticForm (canonicalSourceMatrix L N) u).re < 0 := by
     change
       (quadraticForm (canonicalSourceMatrix L N)
         ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x)).re < 0
-    rw [quadraticForm_re_eq_re_inner_apply_self]
-    simpa [x] using hamb
+    calc
+      (quadraticForm (canonicalSourceMatrix L N)
+        ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x)).re =
+          Complex.re
+            (inner ℂ
+              ((canonicalSourceMatrix L N).toEuclideanLin x)
+              x) := hbridge
+      _ < 0 := hxneg
   exact ⟨u, hune, humem, hquad⟩
 
 /-- Whole-cell first-bad ancestry gives predecessor nonnegativity in either
