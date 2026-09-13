@@ -5,17 +5,17 @@
 ## Separate theorem and control anchors
 
 ```text
-latest theorem-bearing PR = #161
-merged theorem-bearing main = ef29b45de683962122c1e898ed31bf9417757125
-validated theorem head = 188407fb02a37de2e380ede3b60e140953b01441
-validated theorem tree = b080572e87068889a72b4e612f99ddf0bd67f482
-RHRC #1026 = SUCCESS
-Permansson #799 = SUCCESS
+latest theorem-bearing PR = #163
+merged theorem-bearing main = bd3fa1aafa7df2aa35873df532bdb6f17ddd2bbd
+validated theorem head = b418ff034428f92594bab0e5b8276181a086ee4b
+validated theorem tree = c397b3a015ea54e38ecfe626d6e29556fe963839
+RHRC #1039 = SUCCESS
+Permansson #812 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 ```
 
-PR #161 advances theorem authority. This synchronization changes routing metadata and regression locks, not the controller's capability/authority model.
+PR #163 advances theorem authority. This synchronization changes routing metadata and regression locks, not the controller's capability/authority model.
 
 ## Current routed frontier
 
@@ -26,51 +26,50 @@ FB-03A-D legal Riesz engine / parity-even jets                     PROVED / #155
 FB-03E-F complex production transport / retained Riesz negativity  PROVED / #157
 FB-04A exact moment jets + signed Riesz boundary recurrence         PROVED / #159
 FB-04B same-state shifted Riesz x cross-parity source composition  PROVED / #161
-FB-04C mixed source-pairing jet -> M4 rigidity bridge              NOW / first live break
-FB-05 independent contradiction-producing arithmetic restriction  OPEN
+FB-04C mixed quadratic-normal jet x Riesz boundary coupling        PROVED / #163
+FB-05 independent contradiction-producing arithmetic restriction  NOW / first live break
 A4b2b universal one-step domination                                BROAD FALLBACK
 GLOBAL first-bad exclusion                                         AFTER scoped arithmetic closure
 ```
 
 The selected action remains `E4_A4_REGULAR_SCHUR_ENERGY_SIGN` under frontier `FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN`.
 
-## Why routing changes after #161
+## Why routing changes after #163
 
-#161 consumes the former same-state composition sublead:
+#163 consumes the former FB-04C mixed-source sublead:
 
-1. a genuine negative compressed eigenmode implies `ParityBad`;
-2. first-bad ancestry supplies predecessor nonnegativity for either parity;
-3. a negative secular root gives exact negative canonical/source-channel energy on its canonical shifted trial;
-4. an even negative secular root gives strict complete Riesz-8 negativity on that same shifted trial;
-5. the same shifted trial satisfies the exact Riesz-9 / `M4` boundary inequality;
-6. under opposite-parity goodness the opposite secular scalar is nonzero;
-7. at the retained even first-bad root the odd secular scalar equals `Gamma * explicitCanonicalSourceMoment` on the same shifted trial;
-8. odd-good forces nonzero explicit production source moment;
-9. the headline retained fork is `odd successor bad OR explicit source moment != 0`.
+1. the exact complex mixed source pairing is theoremized independently of the #159 self-energy theorem;
+2. the normalized quadratic-normal observable `quadraticNormalSourceAtom` has exact seventh jet `-2*(2*pi)^6*M4` on every even boundary-flat carrier with `K>=1`;
+3. its seventh-jet norm square is exactly the corresponding constant times `|M4|^2`;
+4. `explicitCanonicalSourceMoment` is rewritten so its finite-prime term samples that same `quadraticNormalSourceAtom` at the production prime-source coordinates;
+5. the complete-channel Riesz-8/Riesz-9 recurrence is rewritten as endpoint scalar times the squared seventh mixed jet;
+6. those identities are specialized to the retained #161 even shifted first-bad trial;
+7. strict retained Riesz-8 negativity yields a strict Riesz-9 upper bound through the mixed jet without assuming a sign for the endpoint scalar;
+8. under opposite-parity goodness the retained cross-parity Gamma factor is nonzero.
 
-The controller must no longer present same-state alignment or that fork as open theorem work.
+The controller must no longer present the mixed-source seventh-jet or its Riesz coupling as open theorem work.
 
 ## Selected action — E4_A4_REGULAR_SCHUR_ENERGY_SIGN
 
-The first live break is now the mixed source/M4 rigidity bridge:
+The first live break is now FB-05:
 
 ```text
-Can the exact mixed quadratic-normal source observable be theoremized
-with the expected seventh jet proportional to M4,
-and does that linear source observable impose genuinely new information
-when combined with the same-state #161 source obstruction and the
-#159/#161 quadratic Riesz M4^2 boundary?
+Given the exact #161/#163 same-state spectral, source, mixed-jet and Riesz constraints,
+find an independent canonical arithmetic property that makes the retained shifted
+negative state impossible.
 ```
 
-Expected theorem-level local target:
+Highest-information candidate subroutes are:
 
 ```text
-h_v^(7)(0) = -2*(2*pi)^6*M4(v)
+1. exact sign/nonvanishing analysis of canonicalPolePrimeRieszEndpointScalar L 8;
+2. theorem-aligned production prime-sample -> local-jet rigidity for quadraticNormalSourceAtom;
+3. simultaneous even+odd badness exclusion that genuinely spends canonical arithmetic;
+4. odd-selected first-bad coverage;
+5. another cancellation-preserving arithmetic invariant on the same retained state.
 ```
 
-for the exact production mixed observable on even boundary-flat `v`.
-
-That identity alone is not a contradiction. The decisive follow-up remains an independent canonical arithmetic relation on the exact forced shifted state.
+These are research candidates, not theorem claims. In particular, #163 does not prove a sign for the endpoint scalar and does not prove `explicitCanonicalSourceMoment != 0 <-> M4 != 0`.
 
 ## Evidence-class firewall
 
@@ -87,13 +86,17 @@ generic signed Riesz boundary recurrence                    PROVED / #159
 retained R6->R7 / even R8->R9 boundary decompositions       PROVED / #159
 same-state shifted Riesz x cross-parity source composition  PROVED / #161
 odd-good -> explicit source moment nonzero                   PROVED / #161
-mixed source-pairing seventh jet -> M4                      DERIVED / OPEN IN LEAN
+mixed quadratic-normal seventh jet -> M4                    PROVED / #163
+finite-prime sampling of the same mixed source observable   PROVED / #163
+mixed-jet squared Riesz-8/Riesz-9 boundary coupling         PROVED / #163
+retained mixed-jet/Riesz specialization                     PROVED / #163
 source-moment <-> M4 coupling                               OPEN
+endpoint-scalar sign/nonvanishing                           OPEN
 simultaneous even/odd bad exclusion                         OPEN
 odd-selected branch closure                                 OPEN
 pointwise fixed-sign smoothed-integrand route               DEAD / exact finite falsification
 #152 interval harness                                       TOOLING / scoped certification
-final contradiction-producing arithmetic restriction       OPEN
+final contradiction-producing arithmetic restriction       OPEN / ACTIVE
 ```
 
 ## Negative controls
@@ -101,30 +104,31 @@ final contradiction-producing arithmetic restriction       OPEN
 - universal one-step domination is not a research reduction when obtained by restating successor positivity;
 - generic shell/parity/KKT/displacement structure is insufficient without exact canonical arithmetic;
 - no division by `alpha`, `Gamma`, overlap or source moment without a nonzeroness theorem;
-- D remains algebraic, not unitary/isometric;
+- `D` remains algebraic, not unitary/isometric;
 - exact discrepancy/Riesz cancellation must not be discarded by coarse channel bounds;
-- DR-024 kills pointwise fixed-sign smoothed-integrand positivity only; the integrated boundary/cross-parity route does not revive it;
+- DR-024 kills pointwise fixed-sign smoothed-integrand positivity only; the integrated boundary/cross-parity/mixed-source route does not revive it;
 - `explicitCanonicalSourceMoment != 0` does not imply `M4 != 0`, nor conversely, without a new theorem;
-- the mixed source-pairing jet is not theorem authority yet;
-- simultaneous even/odd badness is not excluded by #161;
+- exact finite-prime sampling of `quadraticNormalSourceAtom` does not by itself determine its seventh derivative at zero;
+- the mixed source-pairing jet is theorem authority after #163, but it is not an arithmetic contradiction;
+- simultaneous even/odd badness is not excluded by #163;
 - finite Arb certification does not become Lean theorem authority.
 
 ## CI expectations
 
 `tools/run_suite.py` runs Control-v2 unit tests. The RHRC workflow smoke must assert:
 
-- theorem anchor is #161;
-- theorem merge/tree correspond to the exact validated #161 state;
+- theorem anchor is #163;
+- theorem merge/tree correspond to the exact validated #163 state;
 - control anchor remains #117;
 - frontier and selected action remain unchanged;
-- FB-04 and FB-05 remain the selected action's live first breaks;
-- FB-04 text is post-#161 mixed-source/M4 theoremization and falsification;
+- consumed FB-04C is no longer a live first break;
+- FB-05 is the sole selected first break for `E4_A4_REGULAR_SCHUR_ENERGY_SIGN`;
 - DR-024 remains a negative-control objection with no revival blocker;
 - terminal claim remains `RH_OPEN`;
 - controller theorem authority and terminal-claim mutation remain false.
 
 Newest research implications:
 
-`../RESEARCH_LEADS_POST_161_SAME_STATE_RIESZ_SOURCE_RIGIDITY_DELTA.md`
+`../RESEARCH_LEADS_POST_163_MIXED_SOURCE_RIESZ_ARITHMETIC_FRONTIER_DELTA.md`
 
 **RH remains OPEN.**
