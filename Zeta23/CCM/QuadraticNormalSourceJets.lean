@@ -53,8 +53,8 @@ theorem quadraticNormalSourceAtom_eq_sourceAtomPairing_div
   rw [Finset.sum_mul]
   apply Finset.sum_congr rfl
   intro j hj
-  simp only [Complex.real_smul]
-  ring
+  simpa only [Complex.real_smul, EuclideanSpace.equiv,
+    PiLp.coe_continuousLinearEquiv]
 
 /-- Raw coordinates of an even boundary-flat vector satisfy the exact three
 boundary-flat moment constraints. -/
