@@ -227,7 +227,6 @@ theorem canonicalRieszSourceChannelEnergy_eight_eq_nine_add_moment_four
   rw [canonicalRieszSourceChannelEnergy_eq_succ_add_boundary hL 8 K x]
   rw [canonicalPolePrimeRieszBoundaryTerm_eight_eq_moment_four_of_even
     L K x hflat heven]
-  norm_num
 
 end Zeta23.CCM
 
