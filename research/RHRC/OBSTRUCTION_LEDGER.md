@@ -2,9 +2,9 @@
 
 This ledger records reusable blockers that should shape future route design.
 
-> **Current theorem anchor:** merged PR #155, `7bd3f1028d42272fcadc347c43371b992d9c0bd7`.  
-> **Validated theorem head:** `ecfd075c07923e6fc80ab1a5b4f2d49c724f5577`.  
-> **Validated theorem tree:** `9a4f21ed55aa0cbdf54527164c2f5f96912c65de`.  
+> **Current theorem anchor:** merged PR #157, `e304f07c9e83165ebf066db0d67c2cc24f8961c2`.  
+> **Validated theorem head:** `4b517db1d4a50277d325e77e771a30fc0db5c777`.  
+> **Validated theorem tree:** `706dfde7f9e7b0b8403a671769d424ac7862f5e7`.  
 > **Claim firewall:** RH remains OPEN.
 
 Historical obstruction origins below retain the PR number at which they were discovered/classified. A later theorem may close an escape without deleting the reusable warning.
@@ -171,9 +171,9 @@ Still not proved:
 
 ## OBS-020 — exact one-channel parity factorization is not unitary rank-one perturbation theory
 
-**Status:** PROJECT FIREWALL; FACTORIZATION CLOSED BY #112; QUOTIENT VISIBILITY CLOSED BY #118; SOURCE-EXPLICIT DEFECT CLOSED BY #129; SOURCE DECOMPOSITION CLOSED BY #131; ZERO-SHIFT SOURCE TRANSPORT CLOSED BY #134; ABSOLUTE ENERGY CLOSED BY #136; SOURCE PAIRING/ONE-STEP DETERMINANT CLOSED BY #137; METRIC/UNITARY TRANSFER THROUGH D STILL UNPROVED AND UNNEEDED FOR THE CURRENT ROUTE.
+**Status:** PROJECT FIREWALL; FACTORIZATION CLOSED BY #112; QUOTIENT VISIBILITY CLOSED BY #118; SOURCE-EXPLICIT DEFECT CLOSED BY #129; SOURCE DECOMPOSITION CLOSED BY #131; ZERO-SHIFT SOURCE TRANSPORT CLOSED BY #134; ABSOLUTE ENERGY CLOSED BY #136; SOURCE PAIRING/ONE-STEP DETERMINANT CLOSED BY #137; SOURCE-COORDINATE D TRANSPORT CLOSED BY #157; METRIC/UNITARY TRANSFER THROUGH D STILL UNPROVED AND UNNEEDED FOR THE CURRENT ROUTE.
 
-The project now has exact algebraic defect/source transport, scalar-sensitive self-energy, complex source pairing and the denominator-free one-step determinant. None of these upgrades D to an isometry or transports Hermitian perturbation theory through D.
+The project now has exact algebraic defect/source transport, scalar-sensitive self-energy, complex source pairing, the denominator-free one-step determinant, and theorem-backed source-coordinate derivative transport. None of these upgrades D to an isometry or transports Hermitian perturbation theory through D.
 
 Still not proved:
 
@@ -183,7 +183,7 @@ Still not proved:
 - conjugated odd compression is self-adjoint in the original even-sector metric;
 - Hermitian rank-one interlacing, equal spectra or inertia transfer through D.
 
-**Current escape route:** spend actual canonical source normalization through the source-energy/discrepancy machinery. Do not import metric perturbation theory through D.
+**Current escape route:** spend actual canonical source normalization through the theorem-backed transformed source-energy/discrepancy machinery. Do not import metric perturbation theory through D.
 
 ## OBS-021 — shifted Schur identity is not an exact secular criterion
 
@@ -231,7 +231,7 @@ Strict monotonicity/root-count control may give at most one negative root. A hyp
 
 ## OBS-025 — negative zero-shift endpoint / signed shell response is not a contradiction by itself
 
-**Status:** PROJECT FIREWALL; EXPOSED BY #125, SHARPENED BY #127/#128/#134, REGULAR NEGATIVE CERTIFICATE CLOSED BY #150/#153; OPPOSING SIGN OPEN.
+**Status:** PROJECT FIREWALL; EXPOSED BY #125, SHARPENED BY #127/#128/#134, REGULAR NEGATIVE CERTIFICATE CLOSED BY #150/#153, TRANSFORMED NEGATIVE CERTIFICATE CLOSED BY #157; OPPOSING SIGN OPEN.
 
 The current retained selected state can carry
 
@@ -239,7 +239,8 @@ The current retained selected state can carry
 lam < 0
 explicit Schur root = 0
 A x0 = b
-canonicalSourceChannelEnergy(c-x0) < 0.
+canonicalSourceChannelEnergy(c-x0) < 0
+canonicalRieszSourceChannelEnergy(...,6,...) < 0.
 ```
 
 Therefore
@@ -257,7 +258,7 @@ retained exact negative energy
 
 Post-#128 discovery countermodels show increasingly rich generic structure can coexist with bad finite states. They are experimental/synthetic fixtures, not canonical source or zeta counterexamples.
 
-**Post-#155 consequence:** a proposed contradiction based only on Hermitianity, first-bad minimality, parity, KKT, shell response, regularity, displacement structure, cross-parity transfer or generic smoothing is still not credible. The current proof must spend the exact canonical arithmetic and complete transformed residual.
+**Post-#157 consequence:** a proposed contradiction based only on Hermitianity, first-bad minimality, parity, KKT, shell response, regularity, displacement structure, cross-parity transfer or generic smoothing/transport is still not credible. The current proof must spend the exact canonical arithmetic and complete transformed residual.
 
 ## OBS-027 — the #131 raw source moment is linear, so universal one-sided sign is unavailable
 
@@ -277,11 +278,11 @@ Exact rational centered-grid reversal-symmetric diagonal models realize `Gamma=0
 
 ## OBS-029 — scalar-shift-invariant transfer data cannot locate the absolute spectral origin
 
-**Status:** DERIVED STRUCTURAL FIREWALL; ABSOLUTE-ENERGY ESCAPE CLOSED BY #136, PAIRING/DETERMINANT INTERFACE CLOSED BY #137, SELECTED NEGATIVE ENERGY CLOSED BY #150/#153, OPPOSING SIGN OPEN.
+**Status:** DERIVED STRUCTURAL FIREWALL; ABSOLUTE-ENERGY ESCAPE CLOSED BY #136, PAIRING/DETERMINANT INTERFACE CLOSED BY #137, SELECTED NEGATIVE ENERGY CLOSED BY #150/#153, TRANSFORMED NEGATIVE STATE CLOSED BY #157, OPPOSING SIGN OPEN.
 
 Under simultaneous generic scalar shift `M -> M+tI`, `lambda -> lambda+t`, the old shifted transfer package can remain unchanged while the spectrum moves relative to zero.
 
-The remaining question is the independent nonnegative sign under exact canonical arithmetic.
+The remaining question is the independent nonnegative sign under exact canonical arithmetic on the theorem-backed transformed state.
 
 ## OBS-030 — one-step domination is an exact certificate; its arithmetic truth remains open
 
@@ -293,13 +294,13 @@ The missing mathematics is not sufficiency. It is canonical arithmetic truth. Un
 
 ## OBS-031 — exact zero-shift transport is not factorwise or branch exclusion
 
-**Status:** FORMAL POST-#134 CLAIM FIREWALL; UNCHANGED BY #155.
+**Status:** FORMAL POST-#134 CLAIM FIREWALL; UNCHANGED BY #157.
 
 PR #134 proves direct zero-shift transfer and `Gamma0*mu(z)=0` under both preimage hypotheses. Later determinant/regularity/certificate/discrepancy/Riesz results do not license factorwise conclusions from that product law.
 
 ## OBS-032 — determinant reduction can become a tautological positivity restatement
 
-**Status:** POST-#137 RESEARCH-GAIN FIREWALL; UNCHANGED BY #155.
+**Status:** POST-#137 RESEARCH-GAIN FIREWALL; UNCHANGED BY #157.
 
 With `A>=0` and a one-dimensional shell, the universal determinant conditions encode essentially the missing positivity of the one-step block extension. A proof that merely assumes successor PSD, assumes absence of the negative root, or rewrites the same block positivity under a new name is circular.
 
@@ -307,15 +308,15 @@ With `A>=0` and a one-dimensional shell, the universal determinant conditions en
 
 ## OBS-033 — the global/selected sign-failure countercertificate is not a contradiction
 
-**Status:** FORMAL CLAIM FIREWALL; RETAINED/SHARPENED THROUGH #153 AND REEXPRESSED BY #155.
+**Status:** FORMAL CLAIM FIREWALL; RETAINED/SHARPENED THROUGH #153, RIESZ-TRANSFORMED BY #157.
 
-PR #137 first exposed global sign failure alternatives. PR #150 selects a regular negative-energy state. PR #153 retains its complete ancestry and exact negative source-channel state. PR #155 supplies a legal generic Riesz representation but no opposing sign.
+PR #137 first exposed global sign failure alternatives. PR #150 selects a regular negative-energy state. PR #153 retains its complete ancestry and exact negative source-channel state. PR #155 supplies the legal generic Riesz engine. PR #157 supplies exact production Riesz order 6 / even order 8 and retains strict complete Riesz negativity on the same certificate.
 
-**Consequence:** RH remains OPEN until new mathematics proves the opposing sign on the exact forced state and the terminal RH wrapper is validated.
+**Consequence:** RH remains OPEN until new mathematics proves the opposing sign on the exact forced transformed state and the terminal RH wrapper is validated.
 
 ## OBS-034 — theorem-backed pole-prime cancellation must not be discarded silently
 
-**Status:** FORMAL INTERFACE / POST-#153 RESEARCH-DESIGN FIREWALL; STRENGTHENED BY #155.
+**Status:** FORMAL INTERFACE / POST-#153 RESEARCH-DESIGN FIREWALL; STRENGTHENED BY #155/#157.
 
 PR #153 proves
 
@@ -324,44 +325,52 @@ matrixRealEnergy_pole_sub_prime_eq_discrepancy
 canonicalSourceChannelEnergy_eq_discrepancy.
 ```
 
-PR #155 then proves a legal conditional Riesz representation of that exact discrepancy without differentiating the prime staircase.
+PR #155 proves a legal conditional Riesz representation of that exact discrepancy without differentiating the prime staircase. PR #157 instantiates the production endpoint conditions and packages the exact complete Riesz-6 / even Riesz-8 source channel.
 
 **Consequence:** a proposed proof that immediately returns to independent coarse pole and prime majorants, or replaces the exact Riesz-transformed pairing by unrelated loose envelopes, discards theorem-backed cancellation and must prove the loss harmless at the selected-residual scale.
 
-## OBS-035 — even source-energy jets are proved; odd production jets remain a theorem obligation
+## OBS-035 — endpoint-jet obligations must match the exact theoremized order
 
-**Status:** POST-#155 CLAIM / ROADMAP FIREWALL.
+**Status:** POST-#155 CLAIM / ROADMAP FIREWALL; REQUIRED R6/R8 ESCAPE CLOSED BY #157; PERMANENT ORDER-SCOPE WARNING REMAINS.
 
 PR #155 proves production source-coordinate oddness and therefore all **even** endpoint derivatives vanish. It also proves even-parity `M3=0`.
 
-It does **not** by itself prove the odd derivative cancellations required for the unconditional sixth/eighth-order Riesz specializations.
-
-The generic #155 Riesz theorem still requires explicit hypotheses
+PR #157 closes the missing odd cancellations needed by the generic #155 Riesz theorem:
 
 ```text
-iteratedDeriv j (sourceAtomRealEnergy K x) 0 = 0
+boundary-flat production carriers -> jets 1..6 vanish
+even boundary-flat production carriers -> jets 1..8 vanish.
 ```
 
-for every `1 <= j <= r`.
+Therefore exact production Riesz order 6 and even-parity order 8 are theorem-backed.
 
-**Consequence:** production order 6/8 remains OPEN until the odd jets are theoremized. The derived D-transport/moment-prefix recursion is the current intended escape.
+**Permanent warning:** do not silently strengthen this to exact leading coefficient formulas. In particular
+
+```text
+g^(7)(0) = -2*(2*pi)^6*|M3|^2
+g^(9)(0) =  2*(2*pi)^8*|M4|^2
+```
+
+remain **DERIVED / OPEN IN LEAN** until separately theoremized.
 
 ## OBS-036 — real contraction derivative transport is not complex production source-energy transport
 
-**Status:** POST-#155 IMPLEMENTATION / CLAIM FIREWALL.
+**Status:** POST-#155 IMPLEMENTATION / CLAIM FIREWALL; EXACT SOURCE-ENERGY ESCAPE CLOSED BY #157; PERMANENT WARNING REMAINS.
 
-The existing derivative/contraction infrastructure contains real-coefficient helper theorems. Production `sourceAtomRealEnergy`, however, is the real part of a genuinely complex sesquilinear quadratic form.
+A theorem only for a real contraction API does **not** by itself establish a theorem for arbitrary complex production trials.
 
-Therefore a proof only for a real contraction API does **not** establish
+PR #157 closes the exact required escape for `sourceAtomRealEnergy` by:
 
 ```text
-g_u''(omega)=-(2*pi)^2 g_(D u)(omega)
+entrywise sourceEntry second derivative
+-> explicit rank-two defect
+-> real/imag decomposition of the genuine complex production energy
+-> zero-sum annihilation of both coordinate defects
+-> identification with source energy of sourceIndexAction.
 ```
 
-for arbitrary complex production trials.
+The resulting `sourceAtomRealEnergySecondDerivative_eq_indexAction` is theorem authority.
 
-**Required escape:** prove the entrywise second-derivative/rank-two identity including the diagonal; coerce it to the complex source matrix; contract against `conj(u_i)*u_j`; explicitly annihilate the correction with `sum u=0`; then identify the `D A D` quadratic form with the production energy of `indexMatrix *ᵥ u`.
-
-**Consequence:** no silent real-to-complex transport in FB-03E.
+**Permanent warning:** this closure is specific to the theoremized production identity. Future real-vector helper theorems still require an explicit complex-production bridge before they may be used on sesquilinear production energies.
 
 **RH remains OPEN.**
