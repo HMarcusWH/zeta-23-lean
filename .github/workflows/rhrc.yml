@@ -29,13 +29,14 @@ jobs:
           import json
           p = json.load(open('/tmp/RHRC_CONTROL_V2.json'))
           assert p['terminal_claim'] == 'RH_OPEN'
-          assert p['theorem_anchor']['pr'] == 161
-          assert p['theorem_anchor']['merge_commit'] == 'ef29b45de683962122c1e898ed31bf9417757125'
-          assert p['theorem_anchor']['tree'] == 'b080572e87068889a72b4e612f99ddf0bd67f482'
+          assert p['theorem_anchor']['pr'] == 163
+          assert p['theorem_anchor']['merge_commit'] == 'bd3fa1aafa7df2aa35873df532bdb6f17ddd2bbd'
+          assert p['theorem_anchor']['tree'] == 'c397b3a015ea54e38ecfe626d6e29556fe963839'
           assert p['control_anchor']['pr'] == 117
           assert p['theorem_anchor']['merge_commit'] != p['control_anchor']['merge_commit']
           assert p['route_certificate']['frontier_id'] == 'FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN'
           assert p['route_certificate']['selected_action'] == 'E4_A4_REGULAR_SCHUR_ENERGY_SIGN'
+          assert p['route_certificate']['first_break']['break_id'] == 'E4A4-SCHUR-FB-05'
           assert p['route_certificate']['theorem_authority'] is False
           assert p['route_certificate']['terminal_claim_change'] is False
           assert all(r['search_paths'] for r in p['retro_receipts'])
