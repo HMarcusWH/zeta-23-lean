@@ -29,88 +29,84 @@ A skipped downstream step is not a passed gate. Control-v2 regression tests guar
 ## Current theorem/control validation anchors
 
 ```text
-latest theorem-bearing PR = #159
-merged theorem-bearing main = 63862cd80501754c6c6599ffea09b874a327dae4
-validated theorem head = b2a064ad5d1f0acbd93309a9257c5661cfa3ec28
-validated theorem tree = cb7a81d3b10e7f909b794103f2a919a3a3ccf233
-RHRC #1021 / run 34736245287 = SUCCESS
-Permansson #794 / run 34736245311 = SUCCESS
+latest theorem-bearing PR = #161
+merged theorem-bearing main = ef29b45de683962122c1e898ed31bf9417757125
+validated theorem head = 188407fb02a37de2e380ede3b60e140953b01441
+validated theorem tree = b080572e87068889a72b4e612f99ddf0bd67f482
+RHRC #1026 = SUCCESS
+Permansson #799 = SUCCESS
 
 control-plane anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
 ```
 
-The #159 validated PR head and merged main are different commit objects but share theorem tree `cb7a81d3...`. PR #117 remains the Control-v2 semantic authority because #159 changes mathematical state, not controller capability/authority semantics.
+The #161 validated PR head and merged main are different commit objects but share theorem tree `b080572e...`. PR #117 remains the Control-v2 semantic authority because #161 changes mathematical state, not controller capability/authority semantics.
 
-## Exact #159 gate evidence
+## Exact #161 gate evidence
 
-At validated theorem head `b2a064ad5d1f0acbd93309a9257c5661cfa3ec28`, RHRC workflow run #1021 (`34736245287`) completed successfully. Permansson workflow run #794 (`34736245311`) also completed successfully.
+At validated theorem head `188407fb02a37de2e380ede3b60e140953b01441`, RHRC workflow run #1026 completed successfully. Permansson workflow run #799 also completed successfully.
 
-The authoritative closure includes `python-rhrc`, R003 normalization audit, aggregate CCM/ExceptionalZero Lean builds, forbidden-placeholder/project-axiom scan and Permansson.
+The authoritative closure includes `python-rhrc`, Control-v2 smoke, R003 normalization audit, aggregate CCM/ExceptionalZero Lean builds, forbidden-placeholder/project-axiom scan and Permansson.
 
-## What #159 validates
+## What #161 validates
 
 The new modules are imported through `Zeta23.CCM` and therefore lie in the authoritative aggregate build closure.
 
-### Production moment-prefix jets
+### Spectral / first-bad interfaces
 
 Validated declarations include:
 
 ```text
-iteratedDeriv_one_sourceAtomRealEnergy_eq_two_normSq_sum
-iteratedDeriv_odd_sourceAtomRealEnergy_eq_moment_normSq_of_prefix
-iteratedDeriv_seven_sourceAtomRealEnergy_eq_moment_three
-iteratedDeriv_nine_sourceAtomRealEnergy_eq_moment_four_of_even_boundaryFlat
+parityBad_of_negative_eigenmode
+RegularCellMinimalFirstBadCertificate.predecessorNonnegative_anyParity
 ```
 
-Thus the exact seventh and even ninth self-energy leading-moment formulas are theorem authority. They are no longer DERIVED/OPEN.
-
-### Signed Riesz boundary recurrence
+### Shifted secular-root energy / Riesz layer
 
 Validated declarations include:
 
 ```text
-canonicalPolePrimeRieszEndpointScalar
-canonicalPolePrimeRieszBoundaryTerm
-canonicalPolePrimeRiesz_integral_step_with_boundary
-canonicalPolePrimeRieszEnergy_eq_succ_add_boundary
-canonicalRieszSourceChannelEnergy_eq_succ_add_boundary
-canonicalPolePrimeRieszBoundaryTerm_six_eq_moment_three
-canonicalPolePrimeRieszBoundaryTerm_eight_eq_moment_four_of_even
-canonicalRieszSourceChannelEnergy_six_eq_seven_sub_moment_three
-canonicalRieszSourceChannelEnergy_eight_eq_nine_add_moment_four
+parityCanonicalSourceEnergy_cubicSecularTrialVector_eq_lam_normSq_of_root
+parityCanonicalSourceEnergy_cubicSecularTrialVector_neg_of_root
+canonicalSourceChannelEnergy_cubicSecularTrialVector_neg_of_root
+canonicalRieszSourceChannelEnergy_eight_neg_of_even_secular_root
+canonicalRieszSourceChannelEnergy_nine_lt_neg_momentFourBoundary_of_even_secular_root
+cubicSecularScalar_ne_zero_of_not_parityBad
 ```
 
-No sign of the endpoint scalar is validated. The complete-channel recurrence retains the archimedean and scalar terms exactly.
+No sign of the Riesz endpoint scalar is validated. The R8/R9 statements are even-sector statements on the genuine shifted secular-root trial.
 
-### Retained first-bad boundary state
+### Retained same-state composition
 
 Validated declarations include:
 
 ```text
-RegularCellMinimalNegativeEnergyCertificate.rieszSix_eq_rieszSeven_sub_momentThree
-RegularCellMinimalNegativeEnergyCertificate.rieszSeven_lt_momentThreeBoundary
-RegularCellMinimalNegativeEnergyCertificate.rieszEight_eq_rieszNine_add_momentFour_of_even
-RegularCellMinimalNegativeEnergyCertificate.rieszNine_lt_neg_momentFourBoundary_of_even
+RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial
+RegularCellMinimalNegativeEnergyCertificate.evenSecularRoot_of_even
+RegularCellMinimalNegativeEnergyCertificate.evenShiftedRieszEightNeg
+RegularCellMinimalNegativeEnergyCertificate.evenShiftedRieszNine_lt_neg_momentFourBoundary
+RegularCellMinimalNegativeEnergyCertificate.oddSecularScalar_eq_gamma_mul_explicitSource_of_even
+RegularCellMinimalNegativeEnergyCertificate.explicitSourceMoment_ne_zero_of_even_of_not_oddBad
+RegularCellMinimalNegativeEnergyCertificate.oddBad_or_explicitSourceMoment_ne_zero_of_even
 ```
 
-R8/R9 remains conditional on even first-bad parity.
+The proof does not identify the retained zero-shift trial with the shifted secular trial. It reconstructs the retained explicit root as a genuine even secular root through an eigenmode proposition and then composes theorem-backed interfaces on the same shifted state.
 
-## What remains outside theorem authority after #159
+## What remains outside theorem authority after #161
 
 ```text
-same-state composition of shifted negative secular trial with #159 Riesz boundary and cross-parity source transfer
-negative eigenmode -> ParityBad converse wrapper as a named theorem
-first-bad arbitrary-parity predecessor-nonnegativity convenience method
-opposite-parity-bad OR explicit-source-moment-nonzero retained obstruction
 mixed quadratic-normal source-pairing seventh jet = constant * M4
+explicitCanonicalSourceMoment != 0 -> M4 != 0
+M4 != 0 -> explicitCanonicalSourceMoment != 0
+simultaneous even/odd bad exclusion
+odd-selected first-bad branch reduction/closure
 independent contradiction-producing complete arithmetic restriction
 negative-root exclusion
 outside-strip/trivial-zero terminal seam
 RiemannHypothesis
 ```
 
-The existing component theorems for cross-parity source transfer and explicit source-moment decomposition remain valid, but their post-#159 same-state composition is not automatically theorem authority until separately packaged and compiled.
+The derived odd-good consequence `Gamma != 0 AND explicitCanonicalSourceMoment != 0` is straightforward from validated #161 theorems but is not separately theorem-locked unless added later.
 
 ## Import/build closure law
 
@@ -120,7 +116,7 @@ A `.lean` file existing in the repository, appearing in a PR, passing syntactic 
 
 Production-promoted R003 bindings require exact `#check` and `#print axioms` alignment across claim surfaces. The accepted production foundation is `[propext, Classical.choice, Quot.sound]`; no production theorem may depend on `sorryAx` or a promoted project axiom.
 
-Supporting theorem modules may carry module-local `#print axioms` checks without becoming machine-promoted claims. #159 advances compiler theorem authority beyond the current machine-promoted claim-ID surface.
+Supporting theorem modules may carry module-local `#print axioms` checks without becoming machine-promoted claims. #161 advances compiler theorem authority beyond the current machine-promoted claim-ID surface.
 
 ## Proof versus promotion
 
@@ -138,12 +134,13 @@ This docs/control sync leaves those promotion surfaces unchanged.
 
 Control v2 has no theorem/claim/terminal-answer authority. Its CI gates enforce separate theorem/control anchors, deterministic routing, fail-closed retro/first-break contracts, dead-route revival requirements and hard-coded current theorem/frontier/action smoke assertions.
 
-The post-#159 sync must:
+The post-#161 sync must:
 
-- advance theorem anchor to #159 / merge `63862cd...` / tree `cb7a81d3...`;
-- stop labeling the generic Riesz boundary recurrence and seventh/ninth self-energy formulas as open;
+- advance theorem anchor to #161 / merge `ef29b45d...` / tree `b080572e...`;
+- stop labeling same-state shifted Riesz x cross-parity source composition as open;
 - keep FB-04 and FB-05 as the selected action's live first breaks;
-- retarget FB-04 toward same-state shifted Riesz x cross-parity source composition and falsification;
+- retarget FB-04 toward mixed quadratic-normal source / M4 theoremization and falsification;
+- retain the new firewall that nonzero explicit source moment does not imply nonzero `M4`;
 - keep DR-024 as a negative-control objection without a dead-route revival blocker;
 - keep terminal claim `RH_OPEN`.
 
@@ -163,6 +160,6 @@ The post-#159 sync must:
 
 ## Claim firewall
 
-Green #159 moment jets and signed Riesz boundary identities are not RH. A contradiction still requires new arithmetic mathematics on the exact forced state, negative-root exclusion and the terminal zeta/Mathlib seam.
+Green #161 same-state Riesz/source theorems are not RH. A contradiction still requires new arithmetic mathematics on the exact forced state, negative-root exclusion and the terminal zeta/Mathlib seam.
 
 **RH remains OPEN unless the exact terminal RH theorem passes the complete proof and claim-validation gates.**

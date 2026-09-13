@@ -2,9 +2,9 @@
 
 This ledger records reusable blockers that should shape future route design.
 
-> **Current theorem anchor:** merged PR #159, `63862cd80501754c6c6599ffea09b874a327dae4`.  
-> **Validated theorem head:** `b2a064ad5d1f0acbd93309a9257c5661cfa3ec28`.  
-> **Validated theorem tree:** `cb7a81d3b10e7f909b794103f2a919a3a3ccf233`.  
+> **Current theorem anchor:** merged PR #161, `ef29b45de683962122c1e898ed31bf9417757125`.  
+> **Validated theorem head:** `188407fb02a37de2e380ede3b60e140953b01441`.  
+> **Validated theorem tree:** `b080572e87068889a72b4e612f99ddf0bd67f482`.  
 > **Claim firewall:** RH remains OPEN.
 
 Historical obstruction origins below retain the PR number at which they were discovered/classified. A later theorem may close an escape without deleting the reusable warning.
@@ -171,9 +171,9 @@ Still not proved:
 
 ## OBS-020 — exact one-channel parity factorization is not unitary rank-one perturbation theory
 
-**Status:** PROJECT FIREWALL; FACTORIZATION CLOSED BY #112; QUOTIENT VISIBILITY CLOSED BY #118; SOURCE-EXPLICIT DEFECT CLOSED BY #129; SOURCE DECOMPOSITION CLOSED BY #131; ZERO-SHIFT SOURCE TRANSPORT CLOSED BY #134; ABSOLUTE ENERGY CLOSED BY #136; SOURCE PAIRING/ONE-STEP DETERMINANT CLOSED BY #137; SOURCE-COORDINATE D TRANSPORT CLOSED BY #157; METRIC/UNITARY TRANSFER THROUGH D STILL UNPROVED AND UNNEEDED FOR THE CURRENT ROUTE.
+**Status:** PROJECT FIREWALL; FACTORIZATION CLOSED BY #112; QUOTIENT VISIBILITY CLOSED BY #118; SOURCE-EXPLICIT DEFECT CLOSED BY #129; SOURCE DECOMPOSITION CLOSED BY #131; ZERO-SHIFT SOURCE TRANSPORT CLOSED BY #134; ABSOLUTE ENERGY CLOSED BY #136; SOURCE PAIRING/ONE-STEP DETERMINANT CLOSED BY #137; SOURCE-COORDINATE D TRANSPORT CLOSED BY #157; SAME-STATE CROSS-PARITY SOURCE COMPOSITION CLOSED BY #161; METRIC/UNITARY TRANSFER THROUGH D STILL UNPROVED AND UNNEEDED FOR THE CURRENT ROUTE.
 
-The project now has exact algebraic defect/source transport, scalar-sensitive self-energy, complex source pairing, the denominator-free one-step determinant, and theorem-backed source-coordinate derivative transport. None of these upgrades D to an isometry or transports Hermitian perturbation theory through D.
+The project now has exact algebraic defect/source transport, scalar-sensitive self-energy, complex source pairing, the denominator-free one-step determinant, theorem-backed source-coordinate derivative transport, and a retained same-state cross-parity source obstruction. None of these upgrades D to an isometry or transports Hermitian perturbation theory through D.
 
 Still not proved:
 
@@ -183,7 +183,7 @@ Still not proved:
 - conjugated odd compression is self-adjoint in the original even-sector metric;
 - Hermitian rank-one interlacing, equal spectra or inertia transfer through D.
 
-**Current escape route:** spend actual canonical source normalization through the theorem-backed transformed source-energy/discrepancy machinery. Do not import metric perturbation theory through D.
+**Current escape route:** spend actual canonical source normalization through the theorem-backed transformed/source-moment machinery. Do not import metric perturbation theory through D.
 
 ## OBS-021 — shifted Schur identity is not an exact secular criterion
 
@@ -215,11 +215,11 @@ on the safe negative-shift regime.
 
 ## OBS-023 — predecessor nonnegativity permits zero resonance
 
-**Status:** STRUCTURAL OBSTRUCTION; CLASSIFICATION CLOSED THROUGH #128; ZERO-SHIFT SOURCE COMPATIBILITY CLOSED BY #134; CONDITIONAL RESONANCE REMOVAL CLOSED BY #137; SELECTED RESONANCE REMOVED BY #150; CANONICAL SIGN THEOREM OPEN.
+**Status:** STRUCTURAL OBSTRUCTION; CLASSIFICATION CLOSED THROUGH #128; ZERO-SHIFT SOURCE COMPATIBILITY CLOSED BY #134; CONDITIONAL RESONANCE REMOVAL CLOSED BY #137; SELECTED RESONANCE REMOVED BY #150; ARBITRARY-PARITY PREDECESSOR NONNEGATIVITY INTERFACE CLOSED BY #161; CANONICAL SIGN THEOREM OPEN.
 
 Global-first-bad gives `Re <Aw,w> >= 0`, not a positive lower spectral gap. Thus a generic first-bad predecessor may have nontrivial kernel.
 
-For the current selected #150/#153 state, resonance is removed directly. The surviving obligation is the independent source-specific arithmetic sign.
+For the current selected #150/#153 state, resonance is removed directly. #161 additionally exposes whole-cell predecessor nonnegativity for either parity, which is enough for the current shifted cross-parity composition without adding simultaneous zero-shift regularity.
 
 **Semantic firewall:** `ker A` is the kernel of the projected successor predecessor block. It is not identified with the kernel of the predecessor-size compressed operator.
 
@@ -231,7 +231,7 @@ Strict monotonicity/root-count control may give at most one negative root. A hyp
 
 ## OBS-025 — negative zero-shift endpoint / signed shell response is not a contradiction by itself
 
-**Status:** PROJECT FIREWALL; EXPOSED BY #125, SHARPENED BY #127/#128/#134, REGULAR NEGATIVE CERTIFICATE CLOSED BY #150/#153, TRANSFORMED NEGATIVE CERTIFICATE CLOSED BY #157; BOUNDARY DEFECT EXPOSED BY #159; OPPOSING RESTRICTION OPEN.
+**Status:** PROJECT FIREWALL; EXPOSED BY #125, SHARPENED BY #127/#128/#134, REGULAR NEGATIVE CERTIFICATE CLOSED BY #150/#153, TRANSFORMED NEGATIVE CERTIFICATE CLOSED BY #157; BOUNDARY DEFECT EXPOSED BY #159; SAME-STATE SHIFTED RIESZ/SOURCE OBSTRUCTION CLOSED BY #161; OPPOSING RESTRICTION OPEN.
 
 The retained selected state can carry
 
@@ -241,10 +241,12 @@ explicit Schur root = 0
 A x0 = b
 canonicalSourceChannelEnergy(c-x0) < 0
 canonicalRieszSourceChannelEnergy(...,6,...) < 0
-exact signed Riesz boundary decomposition.
+exact signed Riesz boundary decomposition
+same shifted even trial with R8 < 0 and exact R9/M4 boundary inequality
+same shifted even trial with odd secular scalar = Gamma * explicit source moment.
 ```
 
-Therefore retained exact negative energy and its #159 boundary decomposition are not themselves a contradiction, negative-root exclusion, or RH.
+Therefore retained exact negative energy, its boundary decomposition and the #161 same-state source obstruction are not themselves a contradiction, negative-root exclusion, or RH.
 
 ## OBS-026 — generic first-bad structural package is insufficient; actual canonical source values must do work
 
@@ -252,7 +254,7 @@ Therefore retained exact negative energy and its #159 boundary decomposition are
 
 Post-#128 discovery countermodels show increasingly rich generic structure can coexist with bad finite states. They are experimental/synthetic fixtures, not canonical source or zeta counterexamples.
 
-**Post-#159 consequence:** a proposed contradiction based only on Hermitianity, first-bad minimality, parity, KKT, shell response, regularity, displacement structure, cross-parity transfer or generic smoothing/transport is still not credible. The current proof must spend the exact canonical arithmetic and complete transformed/source-moment interfaces.
+**Post-#161 consequence:** a proposed contradiction based only on Hermitianity, first-bad minimality, parity, KKT, shell response, regularity, displacement structure, generic cross-parity transfer or generic smoothing/transport is still not credible. The current proof must spend the exact canonical arithmetic and the complete same-state transformed/source-moment interfaces.
 
 ## OBS-027 — the #131 raw source moment is linear, so universal one-sided sign is unavailable
 
@@ -264,19 +266,21 @@ Post-#128 discovery countermodels show increasingly rich generic structure can c
 
 ## OBS-028 — factorwise cross-parity nonvanishing/sign is not structural
 
-**Status:** EXPERIMENTALLY FALSIFIED GENERIC ROUTE / EXACT RATIONAL REGRESSION FIREWALL.
+**Status:** EXPERIMENTALLY FALSIFIED GENERIC ROUTE / EXACT RATIONAL REGRESSION FIREWALL; SCOPED SAME-STATE NONVANISHING NOW AVAILABLE THROUGH #161.
 
 Exact rational centered-grid reversal-symmetric diagonal models realize `Gamma=0`, source moment zero/nonzero, `alpha=0`, negative coefficients and both source-moment signs while preserving the generic transfer package.
 
-**Consequence:** no argument may divide by `alpha`, `Gamma`, overlap, source moment, `Gamma0`, or `mu(z)` without a separate theorem. A same-state product-nonzero theorem may imply factor nonzeroness, but the proof must establish the product is nonzero first.
+#161 proves a scoped product-nonzero consequence only after adding the retained even-root state and opposite-parity goodness: the odd secular scalar is nonzero and equals `Gamma * explicitCanonicalSourceMoment`, so both factors are DERIVED nonzero in that branch.
+
+**Consequence:** no argument may divide by `alpha`, `Gamma`, overlap, source moment, `Gamma0`, or `mu(z)` outside a theorem-backed nonzero scope.
 
 ## OBS-029 — scalar-shift-invariant transfer data cannot locate the absolute spectral origin
 
-**Status:** DERIVED STRUCTURAL FIREWALL; ABSOLUTE-ENERGY ESCAPE CLOSED BY #136, PAIRING/DETERMINANT INTERFACE CLOSED BY #137, SELECTED NEGATIVE ENERGY CLOSED BY #150/#153, TRANSFORMED NEGATIVE STATE CLOSED BY #157, BOUNDARY STRUCTURE CLOSED BY #159, OPPOSING RESTRICTION OPEN.
+**Status:** DERIVED STRUCTURAL FIREWALL; ABSOLUTE-ENERGY ESCAPE CLOSED BY #136, PAIRING/DETERMINANT INTERFACE CLOSED BY #137, SELECTED NEGATIVE ENERGY CLOSED BY #150/#153, TRANSFORMED NEGATIVE STATE CLOSED BY #157, BOUNDARY STRUCTURE CLOSED BY #159, SAME-STATE TRANSFER CLOSED BY #161, OPPOSING RESTRICTION OPEN.
 
 Under simultaneous generic scalar shift `M -> M+tI`, `lambda -> lambda+t`, the old shifted transfer package can remain unchanged while the spectrum moves relative to zero.
 
-The remaining question is an independent canonical arithmetic restriction on the theorem-backed transformed/source state.
+#161 now places absolute negative Riesz/source energy and cross-parity source transfer on the same canonical shifted state. The remaining question is an independent canonical arithmetic restriction incompatible with that state.
 
 ## OBS-030 — one-step domination is an exact certificate; its arithmetic truth remains open
 
@@ -288,13 +292,13 @@ The missing mathematics is not sufficiency. It is canonical arithmetic truth. Un
 
 ## OBS-031 — exact zero-shift transport is not factorwise or branch exclusion
 
-**Status:** FORMAL POST-#134 CLAIM FIREWALL; UNCHANGED BY #159.
+**Status:** FORMAL POST-#134 CLAIM FIREWALL; UNCHANGED BY #161.
 
-PR #134 proves direct zero-shift transfer and `Gamma0*mu(z)=0` under both preimage hypotheses. Later determinant/regularity/certificate/discrepancy/Riesz results do not license factorwise conclusions from that product law.
+PR #134 proves direct zero-shift transfer and `Gamma0*mu(z)=0` under both preimage hypotheses. Later determinant/regularity/certificate/discrepancy/Riesz and shifted #161 results do not license factorwise conclusions from that separate zero-shift product law.
 
 ## OBS-032 — determinant reduction can become a tautological positivity restatement
 
-**Status:** POST-#137 RESEARCH-GAIN FIREWALL; UNCHANGED BY #159.
+**Status:** POST-#137 RESEARCH-GAIN FIREWALL; UNCHANGED BY #161.
 
 With `A>=0` and a one-dimensional shell, the universal determinant conditions encode essentially the missing positivity of the one-step block extension. A proof that merely assumes successor PSD, assumes absence of the negative root, or rewrites the same block positivity under a new name is circular.
 
@@ -302,15 +306,15 @@ With `A>=0` and a one-dimensional shell, the universal determinant conditions en
 
 ## OBS-033 — the global/selected sign-failure countercertificate is not a contradiction
 
-**Status:** FORMAL CLAIM FIREWALL; RETAINED/SHARPENED THROUGH #153, RIESZ-TRANSFORMED BY #157, BOUNDARY-RESOLVED BY #159.
+**Status:** FORMAL CLAIM FIREWALL; RETAINED/SHARPENED THROUGH #153, RIESZ-TRANSFORMED BY #157, BOUNDARY-RESOLVED BY #159, SAME-STATE SOURCE/RIESZ-COMPOSED BY #161.
 
-PR #137 first exposed global sign failure alternatives. PR #150 selects a regular negative-energy state. PR #153 retains its complete ancestry and exact negative source-channel state. PR #155 supplies the legal generic Riesz engine. PR #157 supplies exact production Riesz order 6 / even order 8 and strict retained transformed negativity. PR #159 exposes the exact first surviving moment-square boundary terms.
+PR #137 first exposed global sign failure alternatives. PR #150 selects a regular negative-energy state. PR #153 retains its complete ancestry and exact negative source-channel state. PR #155 supplies the legal generic Riesz engine. PR #157 supplies exact production Riesz order 6 / even order 8 and strict retained transformed negativity. PR #159 exposes the exact first surviving moment-square boundary terms. PR #161 reconstructs the retained even negative root as the canonical shifted secular state and composes its Riesz obstruction with the exact cross-parity arithmetic source obstruction.
 
 **Consequence:** RH remains OPEN until new mathematics proves an incompatible canonical restriction on the exact forced state and the terminal RH wrapper is validated.
 
 ## OBS-034 — theorem-backed pole-prime cancellation must not be discarded silently
 
-**Status:** FORMAL INTERFACE / POST-#153 RESEARCH-DESIGN FIREWALL; STRENGTHENED BY #155/#157/#159.
+**Status:** FORMAL INTERFACE / POST-#153 RESEARCH-DESIGN FIREWALL; STRENGTHENED BY #155/#157/#159/#161.
 
 PR #153 proves
 
@@ -319,7 +323,7 @@ matrixRealEnergy_pole_sub_prime_eq_discrepancy
 canonicalSourceChannelEnergy_eq_discrepancy.
 ```
 
-PR #155 proves a legal conditional Riesz representation without differentiating the prime staircase. PR #157 instantiates exact production Riesz-6/even-Riesz-8. PR #159 proves the signed boundary recurrence without dropping the archimedean/scalar terms.
+PR #155 proves a legal conditional Riesz representation without differentiating the prime staircase. PR #157 instantiates exact production Riesz-6/even-Riesz-8. PR #159 proves the signed boundary recurrence without dropping the archimedean/scalar terms. PR #161 composes the transformed state with `explicitCanonicalSourceMoment`, whose pole/arch/prime decomposition is exact.
 
 **Consequence:** a proposed proof that returns to independent coarse pole and prime majorants, or replaces the exact transformed/source-moment cancellation by unrelated loose envelopes, must prove the loss harmless at the selected-residual scale.
 
@@ -352,7 +356,7 @@ PR #157 closes the exact required escape for `sourceAtomRealEnergy` by explicit 
 
 ## OBS-037 — self-energy moment jets are not mixed quadratic-normal source jets
 
-**Status:** POST-#159 CLAIM / IMPLEMENTATION FIREWALL.
+**Status:** POST-#159 CLAIM / IMPLEMENTATION FIREWALL; MADE IMMEDIATE BY #161 SAME-STATE COMPOSITION.
 
 PR #159 proves odd endpoint jets for
 
@@ -360,15 +364,55 @@ PR #159 proves odd endpoint jets for
 sourceAtomRealEnergy K x
 ```
 
-which is a real quadratic self-energy. The post-green cross-parity composition introduces a different, complex linear mixed observable
+which is a real quadratic self-energy. #161 now places a different, global complex linear source observable on the same retained shifted negative state through `explicitCanonicalSourceMoment`.
+
+The proposed local mixed observable is
 
 ```text
 <centeredQuadraticNormal, sourceMatrix(omega) v>
   / <centeredQuadraticNormal, centeredQuadraticNormal>.
 ```
 
-The expected mixed seventh derivative proportional to `M4(v)` is mathematically motivated but is not a corollary by type alone from the #159 self-energy theorem.
+The expected mixed seventh derivative proportional to `M4(v)` is mathematically motivated but is not a corollary by type alone from the #159 self-energy theorem or from #161's source-moment nonzeroness.
 
 **Escape requirement:** theoremize the mixed pairing directly, or derive it from an explicit source-entry derivative formula with all conjugation/normalization factors checked.
+
+## OBS-038 — nonzero explicit source moment does not imply nonzero M4
+
+**Status:** POST-#161 STRUCTURAL / CLAIM FIREWALL.
+
+PR #161 proves, in the retained even-selected / odd-good branch,
+
+```text
+explicitCanonicalSourceMoment L (Nstar+1) evenShiftedTrial != 0.
+```
+
+This is a global canonical arithmetic linear functional containing pole, reduced archimedean diagonal/off-diagonal and finite prime-source contributions.
+
+It does **not** imply
+
+```text
+centeredMoment (Nstar+1) 4 evenShiftedTrial != 0.
+```
+
+Conversely, nonzero `M4` does not by itself imply a nonzero explicit canonical source moment. Generic cancellation and scaling already make these different observables.
+
+**Escape requirement:** any proof coupling #161's source obstruction to the #159/#161 `M4^2` Riesz boundary must establish an additional canonical-state relation between the two observables. The mixed quadratic-normal source jet is a candidate interface, not yet a theorem.
+
+## OBS-039 — simultaneous parity badness remains an allowed branch
+
+**Status:** POST-#161 OPEN-BRANCH FIREWALL.
+
+The headline #161 theorem is a disjunction:
+
+```text
+odd successor bad
+OR
+explicit source moment != 0
+```
+
+under selected even first-bad parity. The left branch is not contradictory merely because even is already bad.
+
+**Escape requirement:** first falsify exact generic/rank-one models to determine whether simultaneous even+odd badness is structurally easy. Any surviving exclusion theorem must spend additional canonical arithmetic rather than assuming interlacing or metric equivalence through `D`.
 
 **RH remains OPEN.**

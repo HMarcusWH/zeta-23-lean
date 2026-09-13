@@ -21,16 +21,16 @@ class ControlV2Tests(unittest.TestCase):
         self.assertFalse(boundary["may_emit_terminal_rh_status"])
         self.assertFalse(boundary["may_promote_lean_theorem"])
 
-    def test_state_has_post_159_theorem_and_post_117_control_anchors(self):
+    def test_state_has_post_161_theorem_and_post_117_control_anchors(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 159)
+        self.assertEqual(state.anchor.pr, 161)
         self.assertEqual(
             state.anchor.merge_commit,
-            "63862cd80501754c6c6599ffea09b874a327dae4",
+            "ef29b45de683962122c1e898ed31bf9417757125",
         )
         self.assertEqual(
             state.anchor.tree,
-            "cb7a81d3b10e7f909b794103f2a919a3a3ccf233",
+            "b080572e87068889a72b4e612f99ddf0bd67f482",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -80,7 +80,7 @@ class ControlV2Tests(unittest.TestCase):
         self.assertGreater(scores["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"],
                            scores["E4_B_PARITY_SHIFTED_NULLITY"])
 
-    def test_regular_schur_action_is_post159_same_state_composition_route(self):
+    def test_regular_schur_action_is_post161_mixed_source_rigidity_route(self):
         registry = json.loads(
             (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
         )
@@ -89,20 +89,21 @@ class ControlV2Tests(unittest.TestCase):
         first_breaks = "\n".join(x["statement"] for x in action["first_breaks"])
         break_ids = [x["id"] for x in action["first_breaks"]]
 
-        self.assertIn("PR #159", objections)
-        self.assertIn("general moment-prefix odd-jet law", objections)
-        self.assertIn("signed Riesz boundary recurrence", objections)
-        self.assertIn("cross-parity source-moment transfer", objections)
-        self.assertIn("mixed quadratic-normal source-pairing", objections)
+        self.assertIn("PR #161", objections)
+        self.assertIn("same-state shifted composition", objections)
+        self.assertIn("mixed quadratic-normal source observable", objections)
+        self.assertIn("nonzero explicitCanonicalSourceMoment does not imply M4", objections)
+        self.assertIn("simultaneous even/odd successor badness", objections)
+        self.assertIn("odd-selected first-bad branch", objections)
         self.assertIn("DR-024", objections)
         self.assertEqual(action["dead_route_matches"], [])
         self.assertEqual(
             break_ids,
             ["E4A4-SCHUR-FB-04", "E4A4-SCHUR-FB-05"],
         )
-        self.assertIn("#159 exact moment jets", first_breaks)
-        self.assertIn("shifted-root/cross-parity", first_breaks)
-        self.assertIn("complete transformed-residual", first_breaks)
+        self.assertIn("#161 same-state shifted Riesz", first_breaks)
+        self.assertIn("mixed quadratic-normal source-pairing", first_breaks)
+        self.assertIn("contradiction-producing restriction", first_breaks)
 
         selected_break = _selected_first_break(
             registry, "E4_A4_REGULAR_SCHUR_ENERGY_SIGN"

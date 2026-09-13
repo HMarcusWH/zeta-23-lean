@@ -7,14 +7,14 @@
 ## Current theorem / research authority
 
 ```text
-live main after merged PR #159 = 63862cd80501754c6c6599ffea09b874a327dae4
-live main tree = cb7a81d3b10e7f909b794103f2a919a3a3ccf233
-latest theorem-bearing PR = #159
-validated theorem head = b2a064ad5d1f0acbd93309a9257c5661cfa3ec28
-validated theorem tree = cb7a81d3b10e7f909b794103f2a919a3a3ccf233
-RHRC #1021 / run 34736245287 = SUCCESS
-Permansson #794 / run 34736245311 = SUCCESS
-newest post-green delta = RESEARCH_LEADS_POST_159_RIESZ_CROSS_PARITY_FRONTIER_DELTA.md
+live main after merged PR #161 = ef29b45de683962122c1e898ed31bf9417757125
+live main tree = b080572e87068889a72b4e612f99ddf0bd67f482
+latest theorem-bearing PR = #161
+validated theorem head = 188407fb02a37de2e380ede3b60e140953b01441
+validated theorem tree = b080572e87068889a72b4e612f99ddf0bd67f482
+RHRC #1026 = SUCCESS
+Permansson #799 = SUCCESS
+newest post-green delta = RESEARCH_LEADS_POST_161_SAME_STATE_RIESZ_SOURCE_RIGIDITY_DELTA.md
 current execution SSOT = CURRENT_RESEARCH_PLAN.md
 RH = OPEN
 ```
@@ -35,52 +35,29 @@ Complex production D-transport, boundary-flat jets through 6, even jets through 
 
 ### Exact moment-prefix jets + signed Riesz boundary — PROVED / #159
 
+The general moment-prefix odd-jet theorem, exact seventh/even-ninth self-energy leading-moment formulas, generic signed Riesz recurrence and retained R6->R7 / even R8->R9 boundary decompositions are theorem authority.
+
+### Same-state shifted Riesz x cross-parity source — PROVED / #161
+
+#161 adds:
+
 ```text
-iteratedDeriv_one_sourceAtomRealEnergy_eq_two_normSq_sum
-iteratedDeriv_odd_sourceAtomRealEnergy_eq_moment_normSq_of_prefix
-iteratedDeriv_seven_sourceAtomRealEnergy_eq_moment_three
-iteratedDeriv_nine_sourceAtomRealEnergy_eq_moment_four_of_even_boundaryFlat
-canonicalPolePrimeRieszEndpointScalar
-canonicalPolePrimeRieszBoundaryTerm
-canonicalRieszSourceChannelEnergy_eq_succ_add_boundary
+parityBad_of_negative_eigenmode
+predecessorNonnegative_anyParity
+negative shifted secular-root canonical/source energy
+even shifted Riesz-8 negativity
+exact shifted Riesz-9 / M4 boundary inequality
+opposite secular nonroot under opposite-parity goodness
+odd scalar = Gamma * explicitCanonicalSourceMoment on retained even shifted trial
+odd-good -> explicit source moment != 0
+odd-bad OR explicit-source-moment-nonzero retained fork
 ```
 
-The retained first-bad certificate additionally carries exact R6->R7 and, under even parity, R8->R9 moment-square boundary decompositions.
+The same canonical shifted negative state now carries spectral, local-moment and global-arithmetic constraints.
 
-## Active lead — same-state shifted Riesz x cross-parity source composition
+## Active lead — mixed source-pairing jet / M4 rigidity
 
 **Research status:** ACTIVE / HIGHEST LEVERAGE  
-**Formal status:** component theorems PROVED; composition OPEN
-
-The existing cross-parity theorem gives at an even negative secular root
-
-```text
-odd secular scalar
-  = overlap * evenQuadraticSourceMoment(even shifted trial).
-```
-
-The source moment is already exactly
-
-```text
-explicitCanonicalSourceMoment
-  = pole - reduced arch diagonal - reduced arch offdiagonal - finite prime-source sum.
-```
-
-Global first-bad minimality already supplies predecessor nonnegativity in either parity below the first globally bad size.
-
-The next theorem package should put these facts and #159's Riesz-8/Riesz-9 moment-four boundary on the same even negative secular trial and derive
-
-```text
-odd successor is bad
-OR
-explicitCanonicalSourceMoment(even negative secular trial) != 0.
-```
-
-No division by overlap/Gamma/source moment is needed or allowed.
-
-## Active lead — mixed source-pairing jet
-
-**Research status:** NEXT IF SAME-STATE COMPOSITION SURVIVES  
 **Formal status:** DERIVED / OPEN IN LEAN
 
 For the quadratic-normal source pairing
@@ -95,31 +72,67 @@ the post-green calculation predicts, for even boundary-flat `v`,
 h_v^(7)(0) = -2*(2*pi)^6 * M4(v).
 ```
 
-If theoremized, this would connect the linear cubic/source-defect channel used by cross-parity transfer to the quadratic #159 Riesz boundary proportional to `|M4(v)|^2`.
+If theoremized, this connects the linear quadratic-normal source jet to the theorem-backed quadratic #159/#161 Riesz boundary proportional to `|M4(v)|^2`.
 
-Do not confuse this mixed-pairing formula with #159's already-proved self-energy ninth derivative.
+The useful target is not just the derivative identity. It is whether the retained shifted secular state satisfies an additional canonical relation between this local mixed jet and
 
-## Active lead — composed arithmetic falsification
+```text
+explicitCanonicalSourceMoment L (N+1) evenShiftedTrial.
+```
 
-**Research status:** TEST BEFORE SIGN THEOREM  
+Do not confuse the mixed-pairing formula with #159's already-proved self-energy ninth derivative.
+
+## Active lead — source moment / M4 separation falsification
+
+**Research status:** TEST BEFORE STRONG RIGIDITY THEOREM  
 **Formal status:** OPEN
 
-After same-state composition exists, retarget the #152 exact/Arb harness to the composed quantities:
+Retarget theorem-aligned exact/Arb tooling to the same shifted state and ask whether one can realize:
 
-- endpoint scalar `canonicalPolePrimeRieszEndpointScalar`;
-- `M4` on the even shifted trial;
-- `explicitCanonicalSourceMoment`;
-- cross-parity secular scalar / overlap factor;
-- opposite-parity badness;
-- Riesz-8/Riesz-9 complete residual.
+```text
+explicitCanonicalSourceMoment != 0 with M4 = 0
+M4 != 0 with explicitCanonicalSourceMoment = 0.
+```
 
-The test must preserve the theorem-backed pole/prime/archimedean cancellation. Repeated finite success is not a theorem.
+The generic vector-space answer may be yes. The relevant question is whether the **canonical shifted secular state** imposes an extra relation.
+
+Repeated finite success is not a theorem.
+
+## Active lead — simultaneous parity badness
+
+**Research status:** FALSIFY BEFORE LEAN INVESTMENT  
+**Formal status:** OPEN
+
+#161's left branch permits simultaneous even and odd badness at the same successor size over a globally good predecessor scale.
+
+Use exact rational/generic rank-one parity models to test whether such simultaneous badness is structurally easy. If yes, no generic rank-one/parity argument can close this branch; exact arithmetic must enter.
+
+## Coverage lead — odd-selected first bad
+
+**Research status:** OPEN COVERAGE DEBT
+
+#161's retained same-state theorem is conditional on selected parity being even. There is no WLOG-even theorem because `D` is algebraic rather than unitary/isometric and the two parity compressions are not spectrally identified.
+
+Possible future routes are reverse cross-parity transfer, an odd analogue of the mixed rigidity theorem, or a separate argument excluding odd-selected first badness.
+
+## Derived lead — Gamma nonzero under odd-good
+
+**Formal status:** DERIVED
+
+Under even-selected + odd-good, #161 proves
+
+```text
+F_odd(lambda) != 0
+F_odd(lambda) = Gamma(lambda) * explicitCanonicalSourceMoment(...).
+```
+
+Therefore both factors are nonzero, without division. Theoremize this only if it simplifies later composition.
 
 ## Decisive lead — independent contradiction-producing arithmetic restriction
 
 **Formal status:** OPEN
 
-The terminal arithmetic task remains a genuinely independent canonical restriction on the exact forced state. It may be a nonnegative transformed residual, a same-state incompatibility between parity/source/Riesz constraints, or another theorem that excludes the retained negative root without restating successor positivity.
+The terminal arithmetic task remains a genuinely independent canonical restriction on the exact forced state. It may be a relation between global source moment and local mixed jet/Riesz boundary, a simultaneous-parity incompatibility that genuinely spends canonical arithmetic, a nonnegative transformed residual, or another theorem that excludes the retained negative root without restating successor positivity.
 
 ## Dead route — pointwise positivity after smoothing
 
@@ -130,7 +143,7 @@ positive Riesz primitive + endpoint flatness
   -> pointwise fixed-sign smoothed integrand.
 ```
 
-#159 proves an integrated signed boundary recurrence. That does not revive this dead pointwise claim.
+#159 proves an integrated signed boundary recurrence and #161 proves same-state composition. Neither revives this dead pointwise claim.
 
 ## Broad fallback — universal one-step domination
 
@@ -140,22 +153,24 @@ positive Riesz primitive + endpoint flatness
 
 - generic Hermitian/parity/KKT/displacement structure without exact source arithmetic;
 - factorwise division by `alpha`, `Gamma`, overlap or source moment;
-- D treated as unitary/isometric;
+- `D` treated as unitary/isometric;
 - atomwise positive determinant/SOS;
 - independent coarse pole/prime/arch/scalar majorants;
 - global aperture or Schur monotonicity as a substitute for root exclusion;
 - treating the mixed source-pairing jet as already proved;
-- treating retained R8/R9 as parity-unconditional.
+- inferring `M4 != 0` from nonzero explicit source moment or conversely;
+- treating retained/shifted R8/R9 as parity-unconditional;
+- assuming the selected parity is even WLOG.
 
 ## Standing research questions
 
-1. What can #159 now compose with that was previously unavailable?
-2. Does the same negative secular trial carry both the Riesz moment-square defect and the explicit cross-parity source defect?
-3. If the opposite parity remains good, what source quantity is forced nonzero?
-4. Can the linear source defect and quadratic Riesz defect be linked through a mixed source jet?
-5. What is the cheapest canonical falsifier for that composed mechanism?
+1. Can the mixed quadratic-normal source pairing be theoremized with exact production conjugation and normalization?
+2. Does its seventh jet equal `-2*(2*pi)^6*M4` on every even boundary-flat carrier?
+3. On the canonical shifted secular state, is the global explicit source moment constrained by that local `M4` jet in a way generic vectors are not?
+4. Is simultaneous even+odd badness generic, or does canonical arithmetic restrict it?
+5. What closes the odd-selected branch?
 6. Does any proposed closing lemma secretly assume successor positivity or RH-strength content?
 
-**Current highest-information question:** can the exact even negative secular trial be made to carry #159's Riesz boundary and the existing cross-parity explicit source moment simultaneously, yielding a nontrivial parity/source obstruction before any sign theorem?
+**Current highest-information question:** does the canonical shifted negative eigenstate satisfy a non-generic arithmetic rigidity relation linking the #161 global source obstruction to the #159/#161 local `M4` Riesz boundary?
 
 **RH remains OPEN.**

@@ -54,7 +54,7 @@ class RetroTests(unittest.TestCase):
         self.assertNotIn("rupture", terms)
         self.assertNotIn("slack", terms)
 
-    def test_e4a4_actions_use_post_159_riesz_cross_parity_aliases(self):
+    def test_e4a4_actions_use_post_161_same_state_mixed_source_aliases(self):
         aliases = load_alias_map(RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json")
         terms = expanded_terms("canonical_source_exclusion", aliases)
         for term in (
@@ -78,10 +78,20 @@ class RetroTests(unittest.TestCase):
             "cubicSecularScalar_odd_eq_overlap_mul_source_of_even_root",
             "explicitCanonicalSourceMoment",
             "shifted secular trial",
+            "evenShiftedTrial",
             "same-state composition",
+            "same-state shifted Riesz",
+            "predecessorNonnegative_anyParity",
+            "parityBad_of_negative_eigenmode",
+            "cubicSecularScalar_ne_zero_of_not_parityBad",
+            "oddBad_or_explicitSourceMoment_ne_zero_of_even",
             "opposite parity bad",
             "source moment nonzero",
+            "simultaneous parity badness",
             "mixed source pairing",
+            "mixed quadratic-normal source observable",
+            "mixed source M4 rigidity",
+            "source moment versus M4",
             "pointwise smoothed integrand",
             "complete transformed residual",
             "channel cancellation",
@@ -105,9 +115,10 @@ class RetroTests(unittest.TestCase):
 
         schur = registry["actions"]["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"]
         objections = "\n".join(schur["surviving_objections"])
-        self.assertIn("PR #159", objections)
-        self.assertIn("cross-parity source-moment transfer", objections)
-        self.assertIn("mixed quadratic-normal source-pairing", objections)
+        self.assertIn("PR #161", objections)
+        self.assertIn("same-state shifted composition", objections)
+        self.assertIn("mixed quadratic-normal source observable", objections)
+        self.assertIn("nonzero explicitCanonicalSourceMoment does not imply M4", objections)
         self.assertIn("DR-024", objections)
         schur_break_ids = [x["id"] for x in schur["first_breaks"]]
         self.assertEqual(
