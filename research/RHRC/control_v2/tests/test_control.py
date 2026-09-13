@@ -21,16 +21,16 @@ class ControlV2Tests(unittest.TestCase):
         self.assertFalse(boundary["may_emit_terminal_rh_status"])
         self.assertFalse(boundary["may_promote_lean_theorem"])
 
-    def test_state_has_post_155_theorem_and_post_117_control_anchors(self):
+    def test_state_has_post_157_theorem_and_post_117_control_anchors(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 155)
+        self.assertEqual(state.anchor.pr, 157)
         self.assertEqual(
             state.anchor.merge_commit,
-            "7bd3f1028d42272fcadc347c43371b992d9c0bd7",
+            "e304f07c9e83165ebf066db0d67c2cc24f8961c2",
         )
         self.assertEqual(
             state.anchor.tree,
-            "9a4f21ed55aa0cbdf54527164c2f5f96912c65de",
+            "706dfde7f9e7b0b8403a671769d424ac7862f5e7",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -96,7 +96,7 @@ class ControlV2Tests(unittest.TestCase):
             scores["E4_B_PARITY_SHIFTED_NULLITY"],
         )
 
-    def test_regular_schur_action_is_post155_d_transport_route(self):
+    def test_regular_schur_action_is_post157_transformed_arithmetic_route(self):
         registry = json.loads(
             (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
         )
@@ -105,39 +105,35 @@ class ControlV2Tests(unittest.TestCase):
         first_breaks = "\n".join(x["statement"] for x in action["first_breaks"])
         break_ids = [x["id"] for x in action["first_breaks"]]
 
-        self.assertIn("PR #155", objections)
-        self.assertIn("generic legal repeated integration by parts", objections)
-        self.assertIn("complex production", objections)
+        self.assertIn("PR #157", objections)
+        self.assertIn("complex production D-transport", objections)
+        self.assertIn("retained Riesz negativity", objections)
         self.assertIn("pointwise fixed-sign", objections)
         self.assertIn("DR-024", objections)
+        self.assertIn("seventh/ninth leading-jet formulas", objections)
         # DR-024 kills only a shortcut; the surviving complete-residual route is
         # not reviving it, so Control-v2 must not require a RevivalRecord.
         self.assertEqual(action["dead_route_matches"], [])
         self.assertNotIn("E4A4-SCHUR-FB-01", break_ids)
         self.assertNotIn("E4A4-SCHUR-FB-02", break_ids)
         self.assertNotIn("E4A4-SCHUR-FB-03", break_ids)
+        self.assertNotIn("E4A4-SCHUR-FB-03E", break_ids)
+        self.assertNotIn("E4A4-SCHUR-FB-03F", break_ids)
         self.assertEqual(
             break_ids,
             [
-                "E4A4-SCHUR-FB-03E",
-                "E4A4-SCHUR-FB-03F",
                 "E4A4-SCHUR-FB-04",
                 "E4A4-SCHUR-FB-05",
             ],
         )
-        self.assertIn("rank-two source-coordinate identity", first_breaks)
-        self.assertIn("genuine complex production", first_breaks)
-        self.assertIn("Riesz orders 6/8", first_breaks)
-        self.assertIn("retained #153 first-bad negative certificate", first_breaks)
+        self.assertIn("#157 production Riesz", first_breaks)
         self.assertIn("interval-certified", first_breaks)
-        self.assertIn("complete transformed-residual", first_breaks)
+        self.assertIn("complete-residual", first_breaks)
 
         selected_break = _selected_first_break(
             registry, "E4_A4_REGULAR_SCHUR_ENERGY_SIGN"
         )
         self.assertIsNotNone(selected_break)
-        # FB-03E/F are chronological theorem dependencies. Control-v2 chooses
-        # the cheapest decisive falsifier; FB-04 remains the first decisive gate.
         self.assertEqual(selected_break["break_id"], "E4A4-SCHUR-FB-04")
 
     def test_universal_domination_remains_routable_but_is_not_selected(self):
