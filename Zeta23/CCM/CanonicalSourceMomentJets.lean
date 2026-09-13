@@ -72,8 +72,7 @@ theorem iteratedDeriv_odd_sourceAtomRealEnergy_eq_moment_normSq_of_prefix
   | succ r ih =>
       have hsum :
           ∑ i, ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) i = 0 := by
-        rw [← centeredMoment_zero_eq_sum]
-        exact hprefix 0 (by omega)
+        simpa only [centeredMoment_zero_eq_sum] using hprefix 0 (by omega)
       have hprefixD :
           ∀ k : ℕ, k < r →
             centeredMoment K k
@@ -86,10 +85,19 @@ theorem iteratedDeriv_odd_sourceAtomRealEnergy_eq_moment_normSq_of_prefix
         iteratedDeriv_add_two_sourceAtomRealEnergy_eq_indexAction
           K x (2 * r + 1) 0 hsum
       have hind := ih (sourceIndexAction K x) hprefixD
-      rw [show 2 * (r + 1) + 1 = (2 * r + 1) + 2 by omega]
-      rw [htransport, hind, centeredMoment_sourceIndexAction]
-      rw [pow_succ]
-      ring
+      calc
+        iteratedDeriv (2 * (r + 1) + 1) (sourceAtomRealEnergy K x) 0 =
+            iteratedDeriv ((2 * r + 1) + 2) (sourceAtomRealEnergy K x) 0 := by
+              congr 1 <;> omega
+        _ = -(2 * Real.pi) ^ 2 *
+              iteratedDeriv (2 * r + 1)
+                (sourceAtomRealEnergy K (sourceIndexAction K x)) 0 := htransport
+        _ = 2 * (-(2 * Real.pi) ^ 2) ^ (r + 1) *
+              Complex.normSq
+                (centeredMoment K (r + 1)
+                  ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x)) := by
+              rw [hind, centeredMoment_sourceIndexAction, pow_succ]
+              ring
 
 /-- Boundary-flat production carriers have exact seventh endpoint jet governed
 by the first unconstrained centered moment `M_3`. -/
