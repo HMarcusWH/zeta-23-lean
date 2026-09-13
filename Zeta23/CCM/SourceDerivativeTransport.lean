@@ -49,16 +49,11 @@ theorem sourceDiagonalSecondDerivative_formula
   have hinner : HasDerivAt (fun t : ℝ => -Real.sin (a * t) * a)
       (-(Real.cos (a * ω) * a) * a) ω := by
     simpa [mul_assoc] using harg.sin.neg.mul_const a
-  have hright := htwot.mul hinner
-  have hsum := hleft.add hright
-  have hderiv :
-      deriv (fun t : ℝ =>
-        2 * Real.cos (a * t) + 2 * t * (-Real.sin (a * t) * a)) ω =
-        2 * (-Real.sin (a * ω) * a) +
-          (2 * (-Real.sin (a * ω) * a) +
-            2 * ω * (-(Real.cos (a * ω) * a) * a)) := by
-    simpa only [Pi.add_apply, Pi.mul_apply] using hsum.deriv
-  rw [hderiv]
+  rw [deriv_fun_add hleft.differentiableAt
+    (htwot.mul hinner).differentiableAt]
+  rw [hleft.deriv]
+  rw [deriv_fun_mul htwot.differentiableAt hinner.differentiableAt]
+  rw [htwot.deriv, hinner.deriv]
   dsimp [a]
   ring
 
@@ -121,13 +116,23 @@ private theorem sum_sum_rankTwo_real
         apply Finset.sum_congr rfl
         intro i hi
         rw [Finset.mul_sum]
+        apply Finset.sum_congr rfl
+        intro j hj
+        ring
       _ = _ := by rw [Finset.sum_mul]
+  have huv :
+      (∑ i, u i * v i) = ∑ i, v i * u i := by
+    apply Finset.sum_congr rfl
+    intro i hi
+    ring
   calc
     (∑ i, ∑ j, u i * (v i + v j) * u j) =
         (∑ i, ∑ j, u i * v i * u j) +
           (∑ i, ∑ j, u i * v j * u j) := by
       simp_rw [mul_add, add_mul, Finset.sum_add_distrib]
-    _ = _ := by rw [hleft, hright]; ring
+    _ = _ := by
+      rw [hleft, hright, huv]
+      ring
 
 private theorem sum_sum_rankTwo_scaled_real
     {ι : Type*} [Fintype ι]
@@ -192,8 +197,14 @@ theorem sourceContractRealSecondDerivative_transport_with_defect
           ∑ i,
             (centeredIndex K i : ℝ) *
               Real.sin (2 * Real.pi * (centeredIndex K i : ℝ) * ω) * u i := by
-    simpa [v] using
-      (sum_sum_rankTwo_scaled_real u v (4 * Real.pi))
+    calc
+      _ = 2 * (4 * Real.pi) * (∑ i, u i) *
+          ∑ i,
+            (centeredIndex K i : ℝ) *
+              Real.sin (2 * Real.pi * (centeredIndex K i : ℝ) * ω) * u i := by
+        simpa [v] using
+          (sum_sum_rankTwo_scaled_real u v (4 * Real.pi))
+      _ = _ := by ring
   calc
     (∑ i, ∑ j,
       u i *
@@ -265,7 +276,8 @@ theorem sourceAtomRealEnergy_eq_re_im_contracts
           u j) =
       (u i).re * sourceEntryReal ω (centeredIndex K i) (centeredIndex K j) * (u j).re +
         (u i).im * sourceEntryReal ω (centeredIndex K i) (centeredIndex K j) * (u j).im
-  simp [starRingEnd_apply, Complex.star_def, Complex.mul_re]
+  simp only [starRingEnd_apply, Complex.star_def, Complex.mul_re,
+    Complex.ofReal_re, Complex.ofReal_im, Complex.conj_re, Complex.conj_im]
   ring
 
 /-- First derivative of the production source energy, expressed through the
@@ -346,7 +358,7 @@ theorem coefficientSumReal_re_im_eq_zero_of_sum_eq_zero
   unfold coefficientSumReal
   have hre := congrArg (fun z : ℂ => Complex.reCLM z) hsum
   have him := congrArg (fun z : ℂ => Complex.imCLM z) hsum
-  simpa using ⟨hre, him⟩
+  simpa only [map_sum, map_zero] using And.intro hre him
 
 /-- Production `D`-transport: after the exact zero-moment condition kills the
 rank-two defect, two source-coordinate derivatives equal one centered-index
@@ -377,7 +389,17 @@ theorem sourceAtomRealEnergySecondDerivative_eq_indexAction
             (fun i => (((centeredIndex K i : ℂ) * u i)).re) ω +
           sourceContractReal K
             (fun i => (((centeredIndex K i : ℂ) * u i)).im) ω)
-  simp [Complex.mul_re, Complex.mul_im]
+  have hreIndex :
+      (fun i => (((centeredIndex K i : ℂ) * u i)).re) =
+        (fun i => (centeredIndex K i : ℝ) * (u i).re) := by
+    funext i
+    simp [Complex.mul_re]
+  have himIndex :
+      (fun i => (((centeredIndex K i : ℂ) * u i)).im) =
+        (fun i => (centeredIndex K i : ℝ) * (u i).im) := by
+    funext i
+    simp [Complex.mul_im]
+  rw [hreIndex, himIndex]
   ring
 
 end Zeta23.CCM
