@@ -21,16 +21,16 @@ class ControlV2Tests(unittest.TestCase):
         self.assertFalse(boundary["may_emit_terminal_rh_status"])
         self.assertFalse(boundary["may_promote_lean_theorem"])
 
-    def test_state_has_post_161_theorem_and_post_117_control_anchors(self):
+    def test_state_has_post_163_theorem_and_post_117_control_anchors(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 161)
+        self.assertEqual(state.anchor.pr, 163)
         self.assertEqual(
             state.anchor.merge_commit,
-            "ef29b45de683962122c1e898ed31bf9417757125",
+            "bd3fa1aafa7df2aa35873df532bdb6f17ddd2bbd",
         )
         self.assertEqual(
             state.anchor.tree,
-            "b080572e87068889a72b4e612f99ddf0bd67f482",
+            "c397b3a015ea54e38ecfe626d6e29556fe963839",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -80,7 +80,7 @@ class ControlV2Tests(unittest.TestCase):
         self.assertGreater(scores["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"],
                            scores["E4_B_PARITY_SHIFTED_NULLITY"])
 
-    def test_regular_schur_action_is_post161_mixed_source_rigidity_route(self):
+    def test_regular_schur_action_is_post163_fb05_arithmetic_route(self):
         registry = json.loads(
             (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
         )
@@ -89,27 +89,26 @@ class ControlV2Tests(unittest.TestCase):
         first_breaks = "\n".join(x["statement"] for x in action["first_breaks"])
         break_ids = [x["id"] for x in action["first_breaks"]]
 
-        self.assertIn("PR #161", objections)
-        self.assertIn("same-state shifted composition", objections)
-        self.assertIn("mixed quadratic-normal source observable", objections)
+        self.assertIn("PR #163", objections)
+        self.assertIn("FB-04C mixed-source jet / Riesz coupling", objections)
         self.assertIn("nonzero explicitCanonicalSourceMoment does not imply M4", objections)
+        self.assertIn("finite weighted sample sum does not by itself determine the seventh jet", objections)
+        self.assertIn("canonicalPolePrimeRieszEndpointScalar", objections)
         self.assertIn("simultaneous even/odd successor badness", objections)
         self.assertIn("odd-selected first-bad branch", objections)
         self.assertIn("DR-024", objections)
         self.assertEqual(action["dead_route_matches"], [])
-        self.assertEqual(
-            break_ids,
-            ["E4A4-SCHUR-FB-04", "E4A4-SCHUR-FB-05"],
-        )
-        self.assertIn("#161 same-state shifted Riesz", first_breaks)
-        self.assertIn("mixed quadratic-normal source-pairing", first_breaks)
-        self.assertIn("contradiction-producing restriction", first_breaks)
+        self.assertEqual(break_ids, ["E4A4-SCHUR-FB-05"])
+        self.assertIn("#163's exact mixed-source seventh-jet", first_breaks)
+        self.assertIn("endpoint scalar", first_breaks)
+        self.assertIn("production source sampling", first_breaks)
+        self.assertIn("incompatible restriction", first_breaks)
 
         selected_break = _selected_first_break(
             registry, "E4_A4_REGULAR_SCHUR_ENERGY_SIGN"
         )
         self.assertIsNotNone(selected_break)
-        self.assertEqual(selected_break["break_id"], "E4A4-SCHUR-FB-04")
+        self.assertEqual(selected_break["break_id"], "E4A4-SCHUR-FB-05")
 
     def test_universal_domination_remains_routable_but_is_not_selected(self):
         state = load_research_state()
