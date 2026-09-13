@@ -21,20 +21,20 @@ A green but unmerged PR is branch evidence. A merged Lean file is theorem author
 ## Current synchronized anchors
 
 ```text
-live main after merged PR #159 = 63862cd80501754c6c6599ffea09b874a327dae4
-live main tree = cb7a81d3b10e7f909b794103f2a919a3a3ccf233
+live main after merged PR #161 = ef29b45de683962122c1e898ed31bf9417757125
+live main tree = b080572e87068889a72b4e612f99ddf0bd67f482
 
-latest theorem-bearing PR = #159
-validated theorem head = b2a064ad5d1f0acbd93309a9257c5661cfa3ec28
-validated theorem tree = cb7a81d3b10e7f909b794103f2a919a3a3ccf233
-RHRC #1021 / run 34736245287 = SUCCESS
-Permansson #794 / run 34736245311 = SUCCESS
+latest theorem-bearing PR = #161
+validated theorem head = 188407fb02a37de2e380ede3b60e140953b01441
+validated theorem tree = b080572e87068889a72b4e612f99ddf0bd67f482
+RHRC #1026 = SUCCESS
+Permansson #799 = SUCCESS
 
 control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
 RH = OPEN
 ```
 
-The validated #159 PR head and merged main are distinct commits with the same theorem tree. Documentation must distinguish current live main, latest theorem-bearing merge, exact validated head/tree, and control-plane semantic anchor.
+The validated #161 PR head and merged main are distinct commits with the same theorem tree. Documentation must distinguish current live main, latest theorem-bearing merge, exact validated head/tree, and control-plane semantic anchor.
 
 A later docs-only merge may move live `main` without changing theorem authority.
 
@@ -64,26 +64,26 @@ Historical dated deltas are not rewritten to look current.
 - **theorem tree** — tree shared by validated head and merged theorem-bearing state when applicable;
 - **control-plane semantic anchor** — latest meaningful green controller capability/authority semantics.
 
-PR #159 advances theorem authority because it compiler-validates the exact complex first source-energy jet, a general moment-prefix odd-jet theorem, exact seventh/ninth leading-moment formulas, a generic signed Riesz boundary recurrence for the pole-prime and complete transformed channels, and the retained first-bad R6->R7 / even R8->R9 boundary decompositions.
+PR #161 advances theorem authority because it compiler-validates: negative-eigenmode -> `ParityBad`; first-bad predecessor nonnegativity for either parity; exact canonical/source-channel negativity on a genuine shifted secular-root trial; strict even Riesz-8 negativity and the exact Riesz-9/M4 boundary inequality on that same shifted trial; opposite-parity secular nonvanishing under opposite-parity goodness; the retained odd-secular = Gamma * explicit-source identity at an even retained root; odd-good -> nonzero explicit production source moment; and the headline odd-successor-bad OR explicit-source-moment-nonzero fork.
 
-PR #117 remains the Control-v2 semantic anchor because #159 changes mathematical state, not controller authority/capability semantics.
+PR #117 remains the Control-v2 semantic anchor because #161 changes mathematical state, not controller authority/capability semantics.
 
-This docs/control synchronization records #159; it does not create theorem authority.
+This docs/control synchronization records #161; it does not create theorem authority.
 
-## Current transition after PR #159
+## Current transition after PR #161
 
 Newest project synthesis:
 
-`RESEARCH_LEADS_POST_159_RIESZ_CROSS_PARITY_FRONTIER_DELTA.md`
+`RESEARCH_LEADS_POST_161_SAME_STATE_RIESZ_SOURCE_RIGIDITY_DELTA.md`
 
 Historical predecessor:
 
-`RESEARCH_LEADS_POST_157_PRODUCTION_RIESZ_ARITHMETIC_FRONTIER_DELTA.md`
+`RESEARCH_LEADS_POST_159_RIESZ_CROSS_PARITY_FRONTIER_DELTA.md`
 
 Current route:
 
 ```text
-PROVED THROUGH #159
+PROVED THROUGH #161
   off-line zero
   -> retained regular cell-minimal first-bad certificate
   -> exact negative canonical source channel
@@ -91,21 +91,25 @@ PROVED THROUGH #159
   -> legal production Riesz 6 / even 8
   -> retained transformed negativity
   -> general moment-prefix odd-jet law
-  -> exact seventh/ninth leading-moment formulas
+  -> exact seventh/ninth leading-moment self-energy formulas
   -> generic signed complete-channel Riesz boundary recurrence
   -> retained R6->R7 / even R8->R9 moment-square boundary decompositions
+  -> both-parity predecessor nonnegativity interface
+  -> genuine shifted negative secular state
+  -> same shifted even state has R8<0 and exact R9/M4 boundary inequality
+  -> same shifted even state has odd scalar = Gamma * explicit source moment
+  -> odd-good forces explicit source moment != 0
+  -> odd successor bad OR explicit source moment != 0
 
 NOW
-  compose #159 with existing negative-shift cross-parity source transfer
-  on the same even negative secular trial
-  -> expose both-parity predecessor nonnegativity from global first-bad ancestry
-  -> derive opposite-parity-bad OR explicit source-moment-nonzero obstruction
-  -> falsify stronger arithmetic consequences before sign-theorem investment
+  theoremize the mixed quadratic-normal source observable
+  -> verify seventh jet proportional to M4
+  -> specialize to the retained even shifted state
+  -> test whether linear source information and quadratic Riesz M4^2 information produce a genuinely new canonical rigidity relation
 
-NEXT LEAD
-  mixed quadratic-normal source-pairing jet
-  -> expected seventh jet proportional to M4
-  -> connect linear source defect to quadratic Riesz M4^2 boundary
+PARALLEL
+  falsify simultaneous even+odd badness in generic/rank-one controls before theorem investment
+  preserve odd-selected branch as open coverage debt
 
 AFTER
   independent contradiction-producing arithmetic restriction
@@ -115,34 +119,40 @@ AFTER
   -> explicit Mathlib RiemannHypothesis wrapper
 ```
 
-## Post-#159 classification correction
+## Post-#161 classification correction
 
 Every living summary must now reflect:
 
 ```text
-generic signed Riesz boundary recurrence
-  DERIVED/OPEN after #157
-  -> PROVED / #159
-
-exact seventh/ninth self-energy leading-moment formulas
-  DERIVED/OPEN after #157
-  -> PROVED / #159
-
-retained R6->R7 / even R8->R9 boundary decompositions
-  OPEN before #159
-  -> PROVED / #159
-
 same-state shifted-root Riesz x cross-parity source composition
-  -> OPEN / NEXT
+  OPEN / NEXT after #159
+  -> PROVED / #161
+
+negative eigenmode -> ParityBad
+  implicit/converse-only before #161
+  -> PROVED / #161
+
+first-bad predecessor nonnegativity for arbitrary parity
+  derived from ancestry before #161
+  -> PROVED / #161
+
+odd-good -> explicitCanonicalSourceMoment != 0 on retained even shifted state
+  -> PROVED / #161
 
 mixed quadratic-normal source-pairing seventh-jet -> M4
   -> DERIVED / OPEN IN LEAN
+
+explicit source moment <-> M4 coupling
+  -> OPEN
+
+simultaneous even/odd bad exclusion
+  -> OPEN
 
 independent contradiction-producing arithmetic restriction
   -> OPEN
 ```
 
-Do not confuse the proved #159 self-energy ninth derivative with the unproved mixed source-pairing seventh derivative.
+Do not confuse the proved #159 self-energy ninth derivative with the unproved mixed source-pairing seventh derivative. Do not infer `M4 != 0` from #161's nonzero explicit source moment.
 
 ## Permanent firewalls
 
@@ -151,8 +161,12 @@ supporting theorem green != machine claim promotion
 regular predecessor != positive successor
 retained transformed negative energy != contradiction
 exact discrepancy / Riesz identity != arithmetic sign
-R8/R9 retained statements != parity-unconditional theorem
+R8/R9 retained or shifted statements != parity-unconditional theorem
 #159 seventh/ninth self-energy jets != mixed source-pairing jet theorem
+explicitCanonicalSourceMoment != 0 !=> M4 != 0
+M4 != 0 !=> explicitCanonicalSourceMoment != 0
+simultaneous even/odd badness remains open
+selected parity cannot be assumed even WLOG
 Riesz smoothing != pointwise sign
 pointwise smoothed-integrand positivity remains falsified
 no division by alpha/Gamma/overlap/source moment without a theorem
