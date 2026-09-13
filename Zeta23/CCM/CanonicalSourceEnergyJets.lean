@@ -120,7 +120,7 @@ theorem centeredMoment_three_eq_zero_of_even
     {u : Fin (2 * K + 1) → ℂ}
     (hu : u ∈ evenCoefficientSubspace K) :
     centeredMoment K 3 u = 0 := by
-  exact centeredMoment_odd_eq_zero_of_even hu (by norm_num)
+  exact centeredMoment_odd_eq_zero_of_even hu (by decide)
 
 /-- The Euclidean index action shifts centered moments exactly. -/
 theorem centeredMoment_sourceIndexAction
@@ -166,7 +166,7 @@ theorem iteratedDeriv_two_sourceAtomRealEnergy_eq_indexAction
     iteratedDeriv 2 (sourceAtomRealEnergy K x) ω =
       -(2 * Real.pi) ^ 2 *
         sourceAtomRealEnergy K (sourceIndexAction K x) ω := by
-  rw [show 2 = 1 + 1 by omega, iteratedDeriv_succ]
+  rw [show 2 = 1 + 1 by omega, iteratedDeriv_succ, iteratedDeriv_one]
   have hderiv :
       deriv (sourceAtomRealEnergy K x) =
         sourceAtomRealEnergyDerivative K x := by
@@ -198,8 +198,9 @@ theorem iteratedDeriv_add_two_sourceAtomRealEnergy_eq_indexAction
         iteratedDeriv j
           (iteratedDeriv 2 (sourceAtomRealEnergy K x)) ω := by
       simp only [iteratedDeriv_eq_iterate]
-      exact Function.iterate_add_apply
-        (fun f : ℝ → ℝ => deriv f) j 2 (sourceAtomRealEnergy K x) ω
+      exact congrFun
+        (Function.iterate_add_apply
+          (fun f : ℝ → ℝ => deriv f) j 2 (sourceAtomRealEnergy K x)) ω
     _ = iteratedDeriv j
         (fun t => -(2 * Real.pi) ^ 2 *
           sourceAtomRealEnergy K (sourceIndexAction K x) t) ω := by
@@ -261,7 +262,6 @@ theorem sourceIndexAction_cube_sum_eq_centeredMoment_three
   rw [centeredMoment_sourceIndexAction,
     centeredMoment_sourceIndexAction,
     centeredMoment_sourceIndexAction]
-  norm_num
 
 /-- Odd jet three vanishes on every production boundary-flat carrier. -/
 theorem iteratedDeriv_three_sourceAtomRealEnergy_zero_of_boundaryFlat
