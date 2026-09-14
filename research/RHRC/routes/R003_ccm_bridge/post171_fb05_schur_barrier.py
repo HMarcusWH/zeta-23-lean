@@ -316,12 +316,14 @@ def barrier_case(
     start = budget["start"]
     if not start["H1_full"]:
         classification = "H1_SCOPE_LOST"
-    elif full_min["H1_lost_on_grid"]:
-        classification = "H1_SCOPE_LOST"
     elif full_min["best"] is None:
         classification = "NUMERICALLY_UNRESOLVED"
     elif full_min["best"]["unit_full_pivot"] < 0.0:
+        # A negative pivot at an H1-aligned point is the highest-value finite
+        # discovery even if H1 is lost elsewhere in the same arithmetic cell.
         classification = "SAMPLED_BAD_SUCCESSOR"
+    elif full_min["H1_lost_on_grid"]:
+        classification = "H1_SCOPE_LOST"
     else:
         classification = "SAMPLED_BARRIER_SURVIVES"
 
