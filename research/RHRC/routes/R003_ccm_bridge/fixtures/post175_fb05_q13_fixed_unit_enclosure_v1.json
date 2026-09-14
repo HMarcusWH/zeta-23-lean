@@ -1,0 +1,49 @@
+{
+  "schema_version": "POST175_FB05_Q13_FIXED_UNIT_ENCLOSURE_FIXTURE_v1",
+  "claim_cap": "FINITE_FIXED_UNIT_METHOD_BENCHMARK_ONLY",
+  "theorem_authority_pr": 163,
+  "research_anchor_pr": 174,
+  "routing_sync_pr": 175,
+  "selected_target": {
+    "q_start": 13,
+    "q_end": 16,
+    "predecessor_N": 2,
+    "successor_K": 3,
+    "selected_parity": "even"
+  },
+  "physical_Qs": [13, 14, 15],
+  "supported_seam_Qs": [12, 13, 14, 15, 16],
+  "required_ancestry_control": {
+    "predecessor_N": 2,
+    "parity": "odd"
+  },
+  "arb_precision_bits": 384,
+  "point_quantization_bits": 48,
+  "primitive_n_min": -3,
+  "primitive_n_max": 3,
+  "agreement_points": [
+    {"label": "Q13_midpoint", "Q": 13, "t": 0.5},
+    {"label": "Q14_determinant_basin", "Q": 14, "t": 0.4071598118066347},
+    {"label": "Q15_midpoint", "Q": 15, "t": 0.5}
+  ],
+  "primary_Q14_centers": [
+    {"label": "determinant_minimum", "Q": 14, "t": 0.4071598118066347},
+    {"label": "pivot_minimum", "Q": 14, "t": 0.4067650959871002}
+  ],
+  "primary_radius_bits": [12, 16, 20],
+  "control_boxes": [
+    {"label": "Q13_mid_control", "Q": 13, "t": 0.5, "radius_bit": 16},
+    {"label": "Q14_benign_control", "Q": 14, "t": 0.2, "radius_bit": 16},
+    {"label": "Q15_mid_control", "Q": 15, "t": 0.5, "radius_bit": 16}
+  ],
+  "material_width_gain_factor": 2.0,
+  "nonclaims": [
+    "The fixed-unit formulas are exact production identities, but this Python benchmark is not Lean theorem authority.",
+    "Old/new finite Arb overlap is a scoped implementation/equivalence check, not a new global identity theorem.",
+    "A narrower interval is a method result, not a sign theorem.",
+    "The q13/N2/K3/even target is a finite high-information laboratory, not the arbitrary retained first-bad state.",
+    "Determinant and Schur-pivot minima are distinct optimization targets.",
+    "No derivative sign, stationary-point theorem, whole-cell positivity, FB-05 closure, negative-root exclusion, or RH claim is made.",
+    "RH remains OPEN."
+  ]
+}
