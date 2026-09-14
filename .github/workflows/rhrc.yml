@@ -136,6 +136,20 @@ jobs:
           python research/RHRC/routes/R003_ccm_bridge/certify_post169_fb05_threshold_pivot_scope.py \
             --input research/RHRC/routes/R003_ccm_bridge/fixtures/post169_fb05_threshold_pivot_v1.json \
             --output /tmp/POST169_FB05_SCHUR_VISIBILITY_CERTIFICATE.json
+      - name: Check post-#171 threshold-barrier accounting
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post171_fb05_schur_barrier_scope.py
+      - name: Scout post-#171 threshold-to-threshold Schur barriers
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post171_fb05_threshold_barrier_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post171_fb05_threshold_barrier_v1.json \
+            --grid 97 --local-seeds 6 --integration-nodes 8 \
+            --output /tmp/POST171_FB05_THRESHOLD_BARRIER_DISCOVERY.json
+      - name: Replay post-#171 dangerous barrier points with Arb
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post171_fb05_threshold_barrier_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post171_fb05_threshold_barrier_v1.json \
+            --discovery /tmp/POST171_FB05_THRESHOLD_BARRIER_DISCOVERY.json \
+            --output /tmp/POST171_FB05_THRESHOLD_BARRIER_CERTIFICATE.json
       - name: Audit R004 scalar-shift invariants
         run: python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
       - name: Reject external reference code as a Lean dependency
