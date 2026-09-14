@@ -36,19 +36,22 @@
         "PR #174 consumes the exact q13/N2/K3/even 1D->2D scalarization: H1 reduces to a(L)>0 and the complete pivot sign to Delta_2(L)=a(L)d(L)-b(L)^2",
         "PR #174 respects the physical Q=13/14/15 subcells but the 384-bit direct scalar interval audit remains 100% UNRESOLVED in every nonzero-width cell",
         "PR #174 therefore shows scalarization alone does not eliminate canonical interval dependency; more precision/depth on the same direct formulas is not the next strategy",
-        "the leading research hypothesis is a fixed-unit pullback / dependency-reduced analytic scalar enclosure benchmarked against the existing production evaluator before derivative or Taylor machinery",
+        "PR #176 independently implements the fixed-unit pullback, preserves the direct production evaluator as baseline, and passes primitive/full-matrix/scalar/seam agreement checks in the exact CI pipeline",
+        "PR #176 classifies FIXED_UNIT_METHOD_ACCEPTED after all six frozen primary Q14 boxes satisfy the predeclared factor-2 Delta_2 interval-width criterion; this is finite method-selection evidence only",
+        "the next research hypothesis is that fixed-unit dependency reduction survives differentiation strongly enough to give useful rigorous Delta_2' enclosures and local Q14 stationary-basin discrimination",
+        "the standalone #176 certifier has replay-hardening debt because it trusts a supplied PASS schedule; the exact CI benchmark was generated from the frozen fixture immediately before certification",
         "determinant and pivot minima are distinct optimization targets because P=Delta_2/a and a(L) varies",
         "full physical H1 does not imply H1 for the q-removed background; first-bad interpretation of a full-background lift requires background H1 separately",
         "nonzero explicitCanonicalSourceMoment does not imply M4 != 0 and M4 != 0 does not imply nonzero explicitCanonicalSourceMoment without a new canonical-state relation",
         "the exact prime-source sum samples quadraticNormalSourceAtom, but a finite weighted sample sum does not by itself determine the seventh jet at zero",
         "simultaneous even/odd successor badness is still allowed and should be tested with actual canonical arithmetic rather than assumed away",
         "the odd-selected first-bad branch remains a real coverage gap; D is not unitary and no WLOG-even reduction is available",
-        "global aperture and global minimizing-Schur monotonicity remain quarantined; the analytic scalar enclosure route does not assume a fixed global derivative sign",
+        "global aperture and global minimizing-Schur monotonicity remain quarantined; the local fixed-unit derivative route does not assume a fixed global derivative sign",
         "independent pole/arch/prime/scalar Schur pivots cannot be added because the Schur map is nonlinear",
         "finite Arb central differences and production quadrature are not derivative theorems",
         "DR-024 kills only pointwise fixed-sign smoothed-integrand positivity; the integrated Riesz/cross-parity/mixed-source route is not a dead-route revival",
         "the decisive target remains an independently meaningful canonical arithmetic restriction, not successor positivity or canonicalOneStepDomination under another name",
-        "the R003 Arb/numerical harness is scoped falsification infrastructure; interval UNRESOLVED is not sign evidence and research outputs do not become Lean theorem authority"
+        "the R003 Arb/numerical harness is scoped falsification infrastructure; interval UNRESOLVED and finite method acceptance are not theorem authority"
       ],
       "score_inputs": {
         "cost": 2.0,
@@ -61,7 +64,7 @@
       "first_breaks": [
         {
           "id": "E4A4-SCHUR-FB-05",
-          "statement": "after consuming #163 theorem authority and the #165-#174 endpoint-scalar, shifted-state, near-critical cell, threshold-jet, Schur-visibility, threshold-to-threshold and q13-scalar results, no theorem-backed analytic scalar enclosure law, parity restriction, source-sampling relation, endpoint-scalar consequence, or other independent canonical arithmetic invariant yields an incompatible restriction on the exact forced shifted state without restating successor positivity",
+          "statement": "after consuming #163 theorem authority and the #165-#176 endpoint-scalar, shifted-state, near-critical-cell, threshold-jet, Schur-visibility, threshold-to-threshold, q13-scalar and fixed-unit method-selection results, no theorem-backed local derivative/stationary law, parity restriction, source-sampling relation, endpoint-scalar consequence, or other independent canonical arithmetic invariant yields an incompatible restriction on the exact forced shifted state without restating successor positivity",
           "test_id": "falsify_and_prove_fb05_canonical_arithmetic_restriction",
           "estimated_cost": 2.0,
           "decisive_if_failed": true
@@ -80,7 +83,7 @@
         "PR #137 proves canonicalOneStepDomination is sufficient but not its arithmetic truth",
         "under predecessor nonnegativity and one-dimensional shell geometry, universal domination is essentially the missing successor positivity and has no information gain if proved by restatement",
         "PR #163 sharpens the selected-state arithmetic route but does not make universal domination a smaller theorem",
-        "PRs #165-#174 sharpen the research target toward a dependency-reduced analytic q13 scalar enclosure and a generalizable arithmetic restriction rather than universal domination",
+        "PRs #165-#176 sharpen the research target toward fixed-unit local derivative/stationary discrimination on the q13 scalar laboratory and a generalizable arithmetic restriction rather than universal domination",
         "generic Hermitian/parity/KKT/transfer/displacement structure remains quarantined by countermodels",
         "factorwise alpha/Gamma/overlap/source-moment closure remains quarantined",
         "atomwise positive determinant/SOS remains quarantined"
@@ -123,7 +126,7 @@
         "PR #159 exposes exact retained boundary defects but does not supply an opposing sign",
         "PR #161 aligns the even negative secular trial with exact Riesz-8/Riesz-9 structure and the cross-parity explicit source obstruction",
         "PR #163 aligns that same retained even shifted trial with the exact mixed seventh source jet and squared-jet Riesz boundary, but still supplies no contradiction-producing arithmetic restriction",
-        "PRs #165-#174 narrow the surviving arithmetic search to a dependency-reduced analytic q13 scalar enclosure and whatever generalizable arithmetic law can be extracted from it; none proves negative-root exclusion",
+        "PRs #165-#176 narrow the surviving arithmetic search to fixed-unit local derivative/stationary discrimination on the q13 scalar laboratory and whatever generalizable arithmetic law can be extracted from it; none proves negative-root exclusion",
         "no division by alpha, Gamma, overlap or source moment is legal without separate nonzeroness",
         "terminal Mathlib RH still requires the outside-strip/trivial-zero seam after negative-root exclusion"
       ],
@@ -161,6 +164,7 @@
         "#170 shows the odd q17 threshold direction is Schur-visible at one finite target but still does not exclude simultaneous parity badness or supply a universal barrier",
         "#172 finds opposite signs of current-q entry lift in different finite q/N/parity targets; same-q opposite-parity controls are still needed before attributing the effect to parity",
         "#174 keeps odd-N2 ancestry explicit but does not establish a parity-exclusion theorem",
+        "#176 keeps odd-N2 ancestry in the fixed-unit agreement benchmark but still does not establish a parity-exclusion theorem",
         "the active route uses exact secular/source/mixed-jet/Riesz and complete scalar constraints rather than assuming spectral equivalence through D"
       ],
       "score_inputs": {
@@ -193,7 +197,7 @@
         "strict monotonicity yields root uniqueness while a hypothetical off-line zero already forces one negative root",
         "root uniqueness is weaker than negative-root exclusion",
         "post-#150 experiments disfavor global aperture/selected-Schur monotonicity as the decisive mechanism",
-        "post-#174 work targets local dependency-reduced scalar enclosure rather than reviving a global fixed-sign derivative claim",
+        "post-#176 work targets local fixed-unit derivative/stationary discrimination rather than reviving a global fixed-sign derivative claim",
         "the theorem-backed same-state source/Riesz/mixed-jet obstruction is more direct unless monotonicity supplies independent source-specific exclusion information"
       ],
       "score_inputs": {
@@ -225,7 +229,7 @@
       "surviving_objections": [
         "a strictly positive predecessor floor is not available uniformly from first-bad minimality alone",
         "the shell gap g_N=q_N-mu_N may fail to stay positive",
-        "the post-#174 analytic q13 scalar route is more direct than rebuilding a global deformation horizon"
+        "the post-#176 local fixed-unit q13 derivative route is more direct than rebuilding a global deformation horizon"
       ],
       "score_inputs": {
         "cost": 2.0,
