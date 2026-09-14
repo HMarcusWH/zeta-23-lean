@@ -1,0 +1,61 @@
+{
+  "schema_version": "POST177_FB05_Q13_FIXED_UNIT_DERIVATIVE_FIXTURE_v1",
+  "claim_cap": "FINITE_FIXED_UNIT_DERIVATIVE_DISCRIMINATION_ONLY",
+  "theorem_authority_pr": 163,
+  "research_anchor_pr": 176,
+  "routing_sync_pr": 177,
+  "selected_target": {
+    "q_start": 13,
+    "q_end": 16,
+    "predecessor_N": 2,
+    "successor_K": 3,
+    "selected_parity": "even",
+    "primary_Q": 14
+  },
+  "required_ancestry_control": {
+    "predecessor_N": 2,
+    "parity": "odd"
+  },
+  "arb_precision_bits": 384,
+  "implementation_check_precision_bits": 192,
+  "point_quantization_bits": 48,
+  "derivative_check_n_values": [-3, 0, 3],
+  "finite_difference_h_bits": [18, 22, 26],
+  "finite_difference_relative_tolerance": 0.00005,
+  "finite_difference_absolute_tolerance": 1e-10,
+  "derivative_check_points": [
+    {"label": "Q13_midpoint", "Q": 13, "t": 0.5},
+    {"label": "Q14_left_of_determinant_basin", "Q": 14, "t": 0.4066715305566347},
+    {"label": "Q14_determinant_basin", "Q": 14, "t": 0.4071598118066347},
+    {"label": "Q14_right_of_determinant_basin", "Q": 14, "t": 0.4076480930566347},
+    {"label": "Q15_midpoint", "Q": 15, "t": 0.5}
+  ],
+  "determinant_center": {
+    "label": "determinant_minimum",
+    "Q": 14,
+    "t": 0.4071598118066347
+  },
+  "pivot_center_control": {
+    "label": "pivot_minimum_control",
+    "Q": 14,
+    "t": 0.4067650959871002,
+    "radius_bit": 16
+  },
+  "primary_offset_bits": [10, 13, 16],
+  "primary_radius_extra_bits": 3,
+  "central_radius_bits": [16, 20],
+  "control_boxes": [
+    {"label": "Q13_mid_control", "Q": 13, "t": 0.5, "radius_bit": 16},
+    {"label": "Q15_mid_control", "Q": 15, "t": 0.5, "radius_bit": 16}
+  ],
+  "required_derivative_zero_weight_seams": [14, 15],
+  "nonclaims": [
+    "This Python derivative audit is not Lean theorem authority.",
+    "Finite-difference agreement is an implementation cross-check, not a derivative theorem.",
+    "A two-sided derivative sign bracket gives only a derived existence statement by continuity, not uniqueness.",
+    "Determinant and Schur-pivot stationary points are distinct optimization targets.",
+    "Derivative continuation is required only across the zero-von-Mangoldt seams 14 and 15, not the nonzero entering-atom seams 13 or 16.",
+    "No second-derivative sign, Taylor minimum certificate, interval-Newton/Krawczyk theorem, whole-cell positivity, FB-05 closure, negative-root exclusion, or RH claim is made.",
+    "RH remains OPEN."
+  ]
+}
