@@ -17,12 +17,12 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #170
-validated research head = 70689692d5b92252bf9da97740385aaced2bf197
-merged research commit = c94242fe41ae62b59aaa392a33e35034eb2c1b1e
-research tree = 38e38a1d4cf90afa0e8103e58d1cbae626ebdeef
-RHRC #1058 = SUCCESS
-Permansson #831 = SUCCESS
+merged research PR = #172
+validated research head = 4c857cd031497d895232a18a4bfb9a094d9facae
+merged research commit = a31bb0bb7f025d7727dd3f224c705af797f64a19
+research tree = c64b098c3159d739fa15eeaa96e35693615873d7
+RHRC #1063 = SUCCESS
+Permansson #836 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
@@ -58,7 +58,7 @@ retained mixed-jet/Riesz specialization                                 PROVED /
 
 source-moment / M4 canonical-state rigidity                             OPEN
 endpoint-scalar global sign/nonvanishing                                OPEN
-threshold-to-threshold Schur barrier                                    OPEN / ACTIVE RESEARCH
+q13 even 2x2 scalar barrier                                             OPEN / ACTIVE RESEARCH
 simultaneous even/odd bad exclusion                                     OPEN
 odd-selected first-bad branch closure                                   OPEN
 negative-root exclusion                                                 OPEN
@@ -84,7 +84,7 @@ No finite bad successor was found in the broad scout, but a near-critical odd `Q
 
 ### #167 — Q16 scalar barrier
 
-The near-critical full cell showed no floating negative point. The current direct whole-cell Arb representation remained 256/256 unresolved at depth 8, so brute subdivision is not being treated as mathematical progress.
+The near-critical full cell showed no floating negative point. The current direct whole-cell Arb representation remained 256/256 unresolved at depth 8, so brute dependency-heavy subdivision is not being treated as mathematical progress.
 
 ### #168 — log17 threshold moment jet
 
@@ -99,29 +99,72 @@ The exact threshold and 18 two-sided Arb microscope points remained positive, wh
 
 ### #170 — theorem-aligned Schur visibility/background audit
 
-The scalar diagnostic is aligned with the actual one-step `[W|c]` geometry. The unit-shell pivot matches the post-#150 selected residual, the q17 threshold direction is finite-certified Schur-visible (`rho != 0`), and the exact entering-q atom raises the pivot at all seven checked positive offsets.
+The scalar diagnostic is aligned with the actual one-step `[W|c]` geometry. The q17 threshold direction is finite-certified Schur-visible (`rho != 0`), the exact q17 entering atom raises the pivot at checked offsets, and the q-removed background has negative certified finite differences.
 
-At the same time, the q-removed smooth background has negative central finite differences at all seven tested scales. The direct physical scout remains H1-aligned at all 97 sampled states through q19 and finds no sampled negative pivot.
+### #172 — threshold-to-threshold barrier falsification
 
-This is finite research evidence, not an interval/barrier theorem.
+The research layer tests genuine arithmetic intervals across q/N/parity. All sampled complete physical states remain positive, but the arithmetic-entry heuristic changes materially:
+
+```text
+q9 / even   current-q entry lift  NEGATIVE_CERTIFIED
+q13 / even  current-q entry lift  NEGATIVE_CERTIFIED
+q16 / odd   current-q entry lift  POSITIVE_CERTIFIED
+```
+
+The most dangerous sampled state is `q=13 -> 16, N=2, K*=3, even`. Arb certifies at the quantized near-minimum
+
+```text
+full unit-shell pivot      ~= +5.8401616e-12
+q-removed background       ~= +1.2217611e-11
+q13 entry lift             ~= -6.3774491e-12
+```
+
+with H1 predecessor positivity certified there.
+
+Thus arithmetic entry lift is sign-indefinite in the tested canonical states. The next problem is the complete physical scalar barrier, not a universal favorable threshold-kick theorem.
 
 ## Current active path
 
 The live theorem frontier remains **FB-05**: find an independent canonical arithmetic restriction that makes the exact retained #161/#163 state impossible.
 
-The highest-information research slice is now a **threshold-to-threshold Schur barrier**.
+The highest-information research target is now the **q13/N2/K3/even 2x2 Schur determinant barrier**.
 
-Use the local envelope identity
+For this exact low-dimensional target, theorem-aligned executable geometry gives a one-dimensional predecessor and two-dimensional successor. In `[W|c]` coordinates,
 
 ```text
-P'(L) = u_L^T M'(L) u_L
+H(L) = [[a(L), b(L)],
+        [b(L), d(L)]]
+
+H1      <-> a(L) > 0
+P(L)     = d(L) - b(L)^2/a(L)
+Delta_2  = a(L)d(L) - b(L)^2
 ```
 
-as a cancellation-preserving diagnostic, without assuming global monotonicity, and compare the integrated background loss between genuine arithmetic seams against the arithmetic replenishment at threshold entry.
+so on H1 scope
 
-The next research PR should test whether the theorem-aligned H1 pivot can reach zero before the next nonzero von-Mangoldt seam, across multiple q/N/parity targets.
+```text
+sign P(L) = sign Delta_2(L).
+```
 
-This is not a revival of global Schur monotonicity.
+The next rigorous research PR should try to certify or falsify
+
+```text
+a(L) > 0 and Delta_2(L) > 0
+```
+
+through the entire arithmetic interval `log 13 <= L <= log 16`.
+
+Because the production backend tracks physical `Q=floor(exp L)`, the rigorous interval must respect the subcells
+
+```text
+[log 13, log 14]
+[log 14, log 15]
+[log 15, log 16]
+```
+
+unless exact inertness of the zero-von-Mangoldt Q=14/15 additions is separately certified.
+
+A positive q13-cell certificate would be a method/structure result, **not** FB-05 closure: the retained first-bad state forced by an off-line zero is not known to lie in this one finite cell.
 
 ## Documentation authority
 
@@ -129,7 +172,7 @@ Current living state is maintained in:
 
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`;
 - `research/RHRC/RESEARCH_LEADS.md`;
-- `research/RHRC/RESEARCH_LEADS_POST_170_SCHUR_VISIBILITY_THRESHOLD_BARRIER_DELTA.md`;
+- `research/RHRC/RESEARCH_LEADS_POST_172_Q13_EVEN_SCALAR_BARRIER_DELTA.md`;
 - `research/RHRC/DOCUMENTATION_AUTHORITY.md`;
 - `research/RHRC/VALIDATION_PROTOCOL.md`;
 - `research/RHRC/routes/R003_ccm_bridge/README.md`;
@@ -143,14 +186,15 @@ Older dated deltas, external reviews and countermodel records remain historical 
 - theorem authority remains through #163 until a later compiler-green Lean theorem PR.
 - research PR green is not theorem authority.
 - exact executable algebra is not a Lean theorem.
-- finite Arb certification is not a global theorem.
-- finite-difference enclosures are not derivative theorems.
+- finite Arb certification is not a global or whole-cell theorem.
+- finite-difference/envelope quadrature evidence is not a derivative theorem.
 - retained/shifted transformed negativity is not a contradiction.
 - exact Riesz identities are not arithmetic sign theorems.
 - endpoint-scalar positivity alone is not first-bad exclusion.
-- threshold prime-entry stabilization is not full-source stabilization.
-- Schur visibility at q17 is not a universal visibility theorem.
+- arithmetic threshold entry lift is not known to have a universal favorable sign.
+- full physical H1 does not imply q-removed-background H1.
 - sums of independent channel pivots are invalid because the Schur map is nonlinear.
+- large channel cancellation makes coarse component-sign reasoning unsafe at tiny residual scales.
 - `explicitCanonicalSourceMoment != 0` does not imply `M4 != 0`, nor conversely.
 - exact finite-prime sampling does not by itself determine the local seventh jet.
 - simultaneous even/odd badness is not excluded.
@@ -159,6 +203,7 @@ Older dated deltas, external reviews and countermodel records remain historical 
 - pointwise fixed-sign smoothed-integrand positivity remains dead.
 - `UNRESOLVED` interval output is not sign evidence.
 - `D` remains algebraic, not unitary/isometric.
+- q13 whole-cell positivity alone would not imply global first-bad exclusion.
 - negative-root exclusion is not the terminal Mathlib `RiemannHypothesis` statement without the final seam.
 
 **RH remains OPEN.**

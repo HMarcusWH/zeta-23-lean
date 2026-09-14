@@ -25,12 +25,12 @@ Permansson #812 = SUCCESS
 ### Latest research-evidence anchor
 
 ```text
-merged research PR = #170
-validated research head = 70689692d5b92252bf9da97740385aaced2bf197
-merged research commit = c94242fe41ae62b59aaa392a33e35034eb2c1b1e
-research tree = 38e38a1d4cf90afa0e8103e58d1cbae626ebdeef
-RHRC #1058 = SUCCESS
-Permansson #831 = SUCCESS
+merged research PR = #172
+validated research head = 4c857cd031497d895232a18a4bfb9a094d9facae
+merged research commit = a31bb0bb7f025d7727dd3f224c705af797f64a19
+research tree = c64b098c3159d739fa15eeaa96e35693615873d7
+RHRC #1063 = SUCCESS
+Permansson #836 = SUCCESS
 ```
 
 ### Control authority
@@ -73,6 +73,9 @@ post-#167 threshold-jet algebra / Q17 scout / replay [research PR #168]
 post-#169 theorem-aligned Schur visibility algebra   [research PR #170]
 post-#169 threshold Schur/background scout           [research PR #170]
 post-#169 Arb Schur-visibility replay                [research PR #170]
+post-#171 threshold-barrier accounting check         [research PR #172]
+post-#171 multi-cell threshold-barrier scout         [research PR #172]
+post-#171 Arb finite-point barrier replay            [research PR #172]
 ```
 
 Interpretation law:
@@ -83,16 +86,17 @@ research gate green
   -/-> Lean theorem
   -/-> global sign theorem
   -/-> whole-cell theorem
-  -/-> threshold barrier theorem
+  -/-> universal arithmetic-entry sign
   -/-> RH evidence beyond its exact finite/symbolic scope
 ```
 
 In particular:
 
-- exact SymPy identities are **EXACT EXECUTABLE**, not Lean theorem authority;
+- exact SymPy/algebraic identities are **EXACT EXECUTABLE**, not Lean theorem authority;
 - floating discovery is **EXPERIMENTAL SIGNAL**;
 - Arb pointwise replay is **RIGOROUS FINITE CERTIFICATION** only;
 - Arb central finite differences are **RIGOROUS FINITE-DIFFERENCE ENCLOSURES**, not derivative theorems;
+- production envelope quadrature is a diagnostic unless separately interval-certified;
 - `UNRESOLVED` interval output is neither positive nor negative evidence;
 - absence of a finite negative candidate is not a positivity theorem.
 
@@ -114,7 +118,7 @@ RegularCellMinimalNegativeEnergyCertificate.evenShiftedRieszNine_lt_neg_mixedJet
 RegularCellMinimalNegativeEnergyCertificate.crossParityGamma_ne_zero_of_even_of_not_oddBad
 ```
 
-These establish theorem authority through #163. Research PRs #165-#170 do not alter this declaration set.
+These establish theorem authority through #163. Research PRs #165-#172 do not alter this declaration set.
 
 ## What the post-#163 research checks validate operationally
 
@@ -136,11 +140,48 @@ The boundary-flat threshold-jet algebra is checked exactly in the executable lay
 
 ### #170
 
-The deterministic checker validates the theorem-aligned `[W|c]` one-step geometry, unit-shell agreement with the post-#150 selected residual, the exact finite-dimensional rank-one Schur update, the exact directional Schur derivative identity, and the transformed #168 moment-rank-one law in that coordinate.
+The deterministic checker validates theorem-aligned `[W|c]` one-step geometry, unit-shell agreement with the post-#150 selected residual, exact finite-dimensional rank-one Schur update, exact directional Schur derivative, and transformed threshold moment law.
 
-The Arb replay finite-certifies the q17 threshold predecessor-positive state, nonzero Schur visibility at that exact finite target, positive entering-q pivot effect at seven checked positive offsets, and negative q-removed background central finite differences at seven tested scales. These are scoped finite statements only.
+The Arb replay finite-certifies q17 predecessor positivity, nonzero Schur visibility, positive q17 entering-q pivot effect at checked offsets, and negative q-removed background central finite differences.
 
-The floating physical scout remains H1-aligned at all 97 sampled points through the next genuine von-Mangoldt seam q19 and finds no sampled negative pivot. That is not interval positivity.
+### #172
+
+The deterministic accounting checker validates synthetic envelope/integration closure, genuine nonzero von-Mangoldt seam identification, production budget reconstruction, and threshold-entry vanishing at the seam.
+
+The floating production scout tests several arithmetic intervals and reports no sampled bad successor. Its most dangerous target is `q13 -> 16, N2, K3, even`, with a sampled unit-shell pivot near `5.8e-12`.
+
+The finite Arb replay certifies selected threshold and near-minimum points. In particular it certifies at the q13/even quantized candidate:
+
+```text
+H1 predecessor positive
+full unit-shell pivot      ~= +5.8401616e-12
+q-removed background       ~= +1.2217611e-11
+q13 entry lift             ~= -6.3774491e-12
+```
+
+It also certifies negative current-q entry lift at q9/even and positive lift at q16/odd. Therefore no universal favorable arithmetic-entry sign may be inferred.
+
+The q17 replay preserves another scope distinction: full physical H1 can hold while the q-removed background is not H1-certified. Algebraic `full-background` differences are not automatically first-bad comparative statements.
+
+The large cancellation ratios observed by the production diagnostic are research evidence about conditioning, not formal derivative identities.
+
+## Current q13 scalar-certification target
+
+For the next research PR, the exact executable `N=2 -> K*=3` geometry should be checked again and the complete successor written as
+
+```text
+H(L) = [[a(L),b(L)],[b(L),d(L)]].
+```
+
+On H1 scope,
+
+```text
+a(L) > 0
+P(L) = Delta_2(L)/a(L)
+Delta_2(L)=a(L)d(L)-b(L)^2.
+```
+
+A rigorous whole-interval claim over `log13 <= L <= log16` must respect physical integer cutoff cells Q=13,14,15 unless exact zero-weight seam inertness is separately certified. A pointwise Arb replay is insufficient for a whole-cell claim.
 
 ## Axiom inspection
 
@@ -158,8 +199,8 @@ canonicalPolePrimeRieszEndpointScalar L 8 >= 0
 canonicalPolePrimeRieszEndpointScalar L 8 != 0
 boundary-flat threshold-entry law as a separately Lean-theoremized aperture theorem
 Schur-envelope derivative as a project Lean theorem
-threshold-to-threshold integrated barrier inequality
-whole-cell positivity through an arithmetic interval
+q13/N2/K3/even whole-cell positivity
+universal arithmetic threshold-entry sign
 simultaneous even/odd bad exclusion
 odd-selected first-bad branch reduction/closure
 independent contradiction-producing complete arithmetic restriction
@@ -182,22 +223,24 @@ R003_PROMOTED_BINDINGS.json
 Zeta23/CCM/ClaimBindings.lean
 ```
 
-The post-#170 docs/routing synchronization leaves those promotion surfaces unchanged.
+The post-#172 docs/routing synchronization leaves those promotion surfaces unchanged.
 
 ## Control-v2 validation law
 
 Control v2 has no theorem/claim/terminal-answer authority. Its CI gates enforce separate theorem/control anchors, deterministic routing, fail-closed retro/first-break contracts, dead-route revival requirements and hard-coded current theorem/frontier/action smoke assertions.
 
-The post-#170 synchronization must:
+The post-#172 synchronization must:
 
 - keep theorem anchor at #163;
 - keep control semantic anchor at #117;
 - keep frontier and selected action unchanged;
 - keep `E4A4-SCHUR-FB-05` as the sole selected first break;
-- refresh surviving objections through #170;
-- record threshold-to-threshold Schur barrier dynamics as the current highest-information research slice;
+- refresh surviving objections through #172;
+- record the q13/N2/K3/even 2x2 scalar determinant barrier as the current highest-information research slice;
+- record that finite current-q entry lift is sign-indefinite;
+- preserve the physical-H1 versus background-H1 distinction;
 - preserve endpoint-scalar/sourceMoment/parity/odd-selected firewalls;
-- preserve DR-024 and global monotonicity quarantines;
+- preserve DR-024/global monotonicity quarantines and the #167 representation warning;
 - keep terminal claim `RH_OPEN`.
 
 ## Vocabulary
@@ -219,6 +262,6 @@ The post-#170 synchronization must:
 
 ## Claim firewall
 
-Green #163 mixed-source/Riesz theorems are not RH. Green #165-#170 research tooling is not theorem authority. A contradiction still requires new arithmetic mathematics on the exact forced state, negative-root exclusion and the terminal zeta/Mathlib seam.
+Green #163 mixed-source/Riesz theorems are not RH. Green #165-#172 research tooling is not theorem authority. A contradiction still requires new arithmetic mathematics on the exact forced state, negative-root exclusion and the terminal zeta/Mathlib seam.
 
 **RH remains OPEN unless the exact terminal RH theorem passes the complete proof and claim-validation gates.**

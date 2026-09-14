@@ -15,12 +15,12 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #170
-validated research head = 70689692d5b92252bf9da97740385aaced2bf197
-merged research commit = c94242fe41ae62b59aaa392a33e35034eb2c1b1e
-research tree = 38e38a1d4cf90afa0e8103e58d1cbae626ebdeef
-RHRC #1058 = SUCCESS
-Permansson #831 = SUCCESS
+merged research PR = #172
+validated research head = 4c857cd031497d895232a18a4bfb9a094d9facae
+merged research commit = a31bb0bb7f025d7727dd3f224c705af797f64a19
+research tree = c64b098c3159d739fa15eeaa96e35693615873d7
+RHRC #1063 = SUCCESS
+Permansson #836 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
@@ -55,15 +55,32 @@ No theorem-bearing PR has superseded #163.
 #167 Q16 near-critical scalar-barrier / interval-method audit
 #168 log17 boundary-flat threshold-jet / Q17 microscope
 #170 theorem-aligned Schur visibility / background-drift audit
+#172 threshold-to-threshold Schur barrier falsification / q13 near-critical target
 ```
 
-### #170
+### #172
 
-The one-step scalar is now computed in the theorem-aligned `[W|c]` basis and unit-shell normalized. The q17 odd threshold direction is finite-certified Schur-visible (`rho != 0`), and the exact entering-q atom raises the pivot at all seven checked positive offsets.
+The threshold-to-threshold research pass tested genuine nonzero von-Mangoldt intervals across several q/N/parity states. No sampled bad successor was found, but the arithmetic-entry heuristic changed materially.
 
-The q-removed background nevertheless has negative central finite differences at all seven checked scales. The physical scout remains H1-aligned at 97/97 sampled points through q19 and finds zero sampled negative pivots.
+Finite Arb replay now contains both signs:
 
-This confirms a competition between favorable high-order arithmetic replenishment and lower-order smooth background loss; it does not prove a barrier.
+```text
+q9 / even   current-q entry lift  NEGATIVE_CERTIFIED
+q13 / even  current-q entry lift  NEGATIVE_CERTIFIED
+q16 / odd   current-q entry lift  POSITIVE_CERTIFIED
+```
+
+The most dangerous sampled state is `q=13 -> 16, N=2, K*=3, even`. At the quantized near-minimum, Arb certifies
+
+```text
+full unit-shell pivot      ~= +5.8401616e-12
+q-removed background       ~= +1.2217611e-11
+q13 entry lift             ~= -6.3774491e-12
+```
+
+with H1 predecessor positivity certified there.
+
+So the isolated arithmetic entry is not universal "replenishment". The current object is the complete physical scalar barrier.
 
 ## Current frontier
 
@@ -76,7 +93,7 @@ FB-04A moment jets + signed Riesz boundary recurrence           PROVED / #159
 FB-04B same-state shifted Riesz x cross-parity source           PROVED / #161
 FB-04C mixed quadratic-normal jet x Riesz boundary coupling     PROVED / #163
 FB-05 independent contradiction-producing arithmetic restriction OPEN / NOW
-  current research slice: threshold-to-threshold Schur barrier
+  current research slice: q13/N2/K3/even 2x2 scalar determinant barrier
 FB-06 negative-root exclusion                                   OPEN
 FB-07 terminal Mathlib RH seam                                  OPEN
 RH                                                               OPEN
@@ -84,20 +101,26 @@ RH                                                               OPEN
 
 ## Current post-green clue
 
-The theorem-aligned scalar pivot now exposes two opposing local mechanisms at q17:
+At `N=2 -> K*=3`, the exact executable parity carrier has dimensions 1 -> 2. In theorem-aligned `[W|c]` coordinates,
 
 ```text
-entering arithmetic atom -> raises pivot
-smooth q-removed background -> lowers pivot
+H(L) = [[a,b],[b,d]]
+H1   <-> a > 0
+P    = d - b^2/a
+Delta_2 = a*d - b^2
 ```
 
-The project already knows the local Schur-envelope diagnostic
+and therefore, in H1 scope,
 
 ```text
-P'(L) = u_L^T M'(L) u_L.
+sign P = sign Delta_2.
 ```
 
-The next research pass should not seek a global monotonicity theorem. It should integrate/certify the local envelope dynamics between genuine nonzero von-Mangoldt seams and ask whether the positive H1 barrier can be exhausted before arithmetic replenishment arrives.
+This makes the q13/even target a genuinely dependency-reduced finite laboratory.
+
+The next pass should rigorously resolve whether `Delta_2` can cross zero while `a>0` across `log13 <= L <= log16`.
+
+Because the production backend tracks `Q=floor(exp L)`, the rigorous interval must respect physical subcells `[log13,log14]`, `[log14,log15]`, `[log15,log16]` unless zero-weight Q=14/15 inertness is separately certified.
 
 ## Important non-revivals
 
@@ -106,25 +129,32 @@ This is **not**:
 ```text
 global aperture Loewner monotonicity
 global minimizing-Schur monotonicity
-brute whole-cell Arb subdivision
+brute dependency-heavy full-matrix Arb subdivision
 endpoint-scalar positivity as a standalone contradiction
 prime-sample -> local-jet implication by analogy
 summing independent channel Schur pivots
+universal positive arithmetic threshold replenishment
 ```
+
+The q13 2x2 scalar route instead satisfies the existing escape condition from the failed #167 full-matrix interval representation: reduce the dependency-heavy matrix problem to a better-conditioned scalar formulation.
 
 ## Next theorem-bearing slice
 
-Do not pre-commit to a theorem because the envelope identity is clean. First falsify the threshold-to-threshold barrier mechanism across multiple genuine arithmetic seams, sizes and both parities. If it produces an independent canonical inequality unavailable from successor positivity itself, theoremize the weakest useful statement and compose it with the exact #161/#163 retained state.
+Do not theoremize the q13 finite cell merely because a rigorous scalar certificate becomes possible. A positive q13-cell certificate would be a method/structure result, not global FB-05 closure.
+
+First identify why the low-dimensional scalar stays positive or find a certified H1 crossing. If the resulting arithmetic inequality generalizes beyond this one finite cell and supplies independent information rather than restating successor positivity, then theoremize the weakest useful statement and compose it with the exact #161/#163 retained state.
 
 ## Permanent firewalls
 
-- research evidence through #170 does not move theorem authority beyond #163;
+- research evidence through #172 does not move theorem authority beyond #163;
 - endpoint-scalar positivity alone is not first-bad exclusion;
-- threshold prime-entry stabilization is not full-source stabilization;
-- q17 Schur visibility is finite evidence, not a universal theorem;
-- finite differences are not derivative theorems;
+- arithmetic entry lift is sign-indefinite in the tested finite canonical states;
+- physical H1 does not imply q-removed-background H1;
+- q13 whole-cell positivity alone would not close FB-05;
+- large channel cancellation makes coarse component-sign reasoning unsafe;
+- finite differences/quadrature are not derivative theorems;
 - exact executable algebra is not a Lean theorem;
-- finite Arb evidence is scoped only to its certified points;
+- finite Arb evidence is scoped only to its certified points/intervals;
 - sourceMoment nonzero does not imply `M4` nonzero, nor conversely;
 - simultaneous parity badness remains open;
 - selected parity is not even WLOG;

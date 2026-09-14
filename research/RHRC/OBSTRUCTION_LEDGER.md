@@ -5,7 +5,7 @@ This ledger records reusable blockers that should shape future route design.
 > **Current theorem anchor:** merged PR #163, `bd3fa1aafa7df2aa35873df532bdb6f17ddd2bbd`.  
 > **Validated theorem head:** `b418ff034428f92594bab0e5b8276181a086ee4b`.  
 > **Validated theorem tree:** `c397b3a015ea54e38ecfe626d6e29556fe963839`.  
-> **Latest research-evidence anchor:** merged PR #170, validated head `70689692d5b92252bf9da97740385aaced2bf197`.  
+> **Latest research-evidence anchor:** merged PR #172, validated head `4c857cd031497d895232a18a4bfb9a094d9facae`.  
 > **Claim firewall:** RH remains OPEN.
 
 Historical obstruction origins below retain the PR number at which they were discovered/classified. A later theorem may close an escape without deleting the reusable warning.
@@ -558,6 +558,48 @@ DP_M[D] = u_M^T D u_M,
 
 where `u_M` is the complete Schur-minimizing trial for the full background. PR #170 locks the equivalent block formula as exact executable algebra.
 
+PR #172 strengthens the conditioning warning: production attribution examples exhibit cancellation ratios around `1e9`-`1e10`, so separately large channel contributions cannot be trusted to determine a near-`1e-12` complete pivot sign without rigorous cancellation control.
+
 **Consequence:** future channel analyses must work at matrix level or through the derivative/envelope evaluated on the full minimizing trial. Any proof that sums standalone channel pivots changes the nonlinear problem and loses the exact cancellation structure.
+
+## OBS-045 — current-q arithmetic entry is not universal barrier replenishment
+
+**Status:** RIGOROUS FINITE RESEARCH EVIDENCE FROM PR #172; NOT A LEAN THEOREM.
+
+PR #172 finite Arb replay contains both signs for the complete theorem-aligned current-q pivot lift:
+
+```text
+q9 / even   -> NEGATIVE_CERTIFIED
+q13 / even  -> NEGATIVE_CERTIFIED
+q16 / odd   -> POSITIVE_CERTIFIED
+```
+
+At the q13/N2/K3/even quantized near-minimum:
+
+```text
+P_full       ~= +5.8401616e-12
+P_background ~= +1.2217611e-11
+P_full - P_background ~= -6.3774491e-12.
+```
+
+**Consequence:** the post-#170 favorable q17 atom cannot be generalized into a universal “arithmetic replenishment” sign. Any theorem using a favorable threshold kick needs extra state/parity/arithmetic hypotheses or must work with the complete physical scalar.
+
+**Escape requirement:** derive a complete canonical scalar inequality or a state-dependent arithmetic sign law that survives q/N/parity falsification.
+
+## OBS-046 — physical H1 does not imply q-removed-background H1
+
+**Status:** RIGOROUS FINITE SCOPE FIREWALL FROM PR #172; NOT A LEAN THEOREM.
+
+At the q17 near-end replay the complete physical state is H1-certified while the q-removed background is not H1-certified.
+
+Therefore an algebraic quantity
+
+```text
+P_full - P_background
+```
+
+does not automatically have first-bad comparative meaning. The Schur pivot has the theorem-aligned first-bad interpretation only when the corresponding predecessor block is positive.
+
+**Consequence:** background/entry decompositions must carry separate H1 status. If background H1 fails or is unresolved, report the algebraic lift but do not label it barrier replenishment/depletion in first-bad scope.
 
 **RH remains OPEN.**
