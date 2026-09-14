@@ -35,15 +35,16 @@ This remains the compiler-validated mathematical authority until a later theorem
 ### 2. Research-evidence anchor
 
 ```text
-latest merged research PR = #174
-validated research head = 2d9fc5a5f7d552afb893c871fe84c9ed61a60ac0
-merged research commit = 946788f09c871de5133e2a8c8f5c94d7d69b521d
-research tree = 2a22b83c4d5903158c036d38420d9ae79b7726f2
-RHRC #1070 = SUCCESS
-Permansson #843 = SUCCESS
+latest merged research PR = #176
+validated research head = c6f53131b91b18aff2a50a6db2ddaa2761e7e5aa
+PR integration commit tested by Actions = ad6c904cf38c64d61c7990b3b6e87eec27ad0064
+merged research commit = 96cccf715c02ed2bd4ae58f8362180020ae90854
+research tree = 28bd302c17a6128e538a3510917dafb670f6dce8
+RHRC #1072 = SUCCESS
+Permansson #845 = SUCCESS
 ```
 
-This records the newest green research/discovery state. It does **not** upgrade executable identities, floating searches, Arb finite-point/interval certifications, or finite-difference diagnostics into Lean theorem authority.
+This records the newest green research/discovery state. It does **not** upgrade executable identities, floating searches, Arb finite-point/interval certifications, method-selection outcomes, or finite-difference diagnostics into Lean theorem authority.
 
 ### 3. Control-plane semantic anchor
 
@@ -87,7 +88,7 @@ PR #163 compiler-validates the exact mixed quadratic-normal source pairing, the 
 
 No later research PR changes those theorem declarations.
 
-### Research progression #165-#174
+### Research progression #165-#176
 
 ```text
 #165 exact executable S8 audit
@@ -126,15 +127,23 @@ No later research PR changes those theorem declarations.
      -> physical Q=13/14/15 scalar continuations checked
      -> direct 384-bit adaptive scalar interval audit remains
         100% UNRESOLVED in every physical subcell
+
+#176 fixed-unit q13/Q14 enclosure benchmark
+     -> independent fixed-unit Arb path agrees with direct production path
+     -> primitive/full-matrix/scalar/seam/zero-weight checks pass
+     -> six frozen primary Q14 boxes benchmarked
+     -> factor-2 material Delta_2 width criterion passes in all six
+     -> method classification FIXED_UNIT_METHOD_ACCEPTED
+     -> finite method-selection evidence only
 ```
 
 The newest project synthesis is:
 
-`RESEARCH_LEADS_POST_174_Q13_SCALAR_DEPENDENCY_FRONTIER_DELTA.md`.
+`RESEARCH_LEADS_POST_176_FIXED_UNIT_METHOD_ACCEPTANCE_Q14_STATIONARY_FRONTIER_DELTA.md`.
 
 The previous post-green synthesis is:
 
-`RESEARCH_LEADS_POST_172_Q13_EVEN_SCALAR_BARRIER_DELTA.md`.
+`RESEARCH_LEADS_POST_174_Q13_SCALAR_DEPENDENCY_FRONTIER_DELTA.md`.
 
 ## Current route
 
@@ -150,7 +159,7 @@ PROVED THROUGH #163
   -> exact finite-prime sampling of same observable
   -> exact R8-R9 squared-jet boundary
 
-RESEARCHED THROUGH #174
+RESEARCHED THROUGH #176
   endpoint scalar audited
   theorem-aligned shifted finite state audited
   Q16 near-critical cell isolated
@@ -160,20 +169,27 @@ RESEARCHED THROUGH #174
   threshold-to-threshold production dynamics tested
   arithmetic entry lift found sign-indefinite
   q13/N2/K3/even reduced exactly to a 2x2 scalar barrier
-  direct scalar interval subdivision also found dependency-limited
+  direct scalar interval subdivision found dependency-limited
+  fixed-unit representation selected by frozen finite width benchmark
 
 NOW
-  FB-05 analytic/dependency-reduced scalar enclosure frontier
+  FB-05I fixed-unit Q14 derivative/stationary frontier
   -> preserve a(L), Delta_2(L), odd-N2 ancestry
-  -> change representation/enclosure mathematics
-  -> benchmark against production evaluator
-  -> only then add derivative/Taylor/Newton machinery if useful
+  -> derive/check fixed-unit primitive and scalar derivatives
+  -> measure derivative interval conditioning
+  -> only then add local Taylor/Newton/Krawczyk machinery if useful
   -> theoremize only a genuinely independent generalizable restriction
 ```
 
+## Validation caveat after #176
+
+The exact #176 CI pipeline generated the six-box benchmark from the frozen fixture immediately before certification and logged `FIXED_UNIT_METHOD_ACCEPTED` with the factor-2 criterion passing in all six primary boxes.
+
+A review nevertheless identified a standalone replay-hardening gap: the certifier trusts a supplied `PASS` benchmark schedule rather than independently rebinding every schedule-defining field to the fixture. Future validation plumbing should reject stale or hand-edited schedules explicitly. This does not alter the exact in-pipeline finite result and does not promote it mathematically.
+
 ## Claim firewall
 
-Research green is not theorem promotion. The #174 finite scalar audit does not prove q13 positivity, negativity, zero contact, a universal derivative law, a global threshold barrier, or first-bad exclusion.
+Research green is not theorem promotion. The #176 finite method-selection result does not prove q13 positivity, negativity, zero contact, stationary existence or uniqueness, a universal derivative law, a global threshold barrier, or first-bad exclusion.
 
 Even a future full q13-cell positivity certificate would be a finite method/structure result unless its proof yields a theorem that applies to the arbitrary retained first-bad state forced by #153/#161.
 
