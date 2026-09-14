@@ -163,6 +163,19 @@ jobs:
             --input research/RHRC/routes/R003_ccm_bridge/fixtures/post173_fb05_q13_scalar_barrier_v1.json \
             --discovery /tmp/POST173_Q13_SCALAR_DISCOVERY.json \
             --output /tmp/POST173_Q13_SCALAR_CERTIFICATE.json
+      - name: Check post-#175 fixed-unit q13 enclosure plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post175_fb05_q13_fixed_unit_enclosure_scope.py
+      - name: Benchmark post-#175 fixed-unit q13 enclosure
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post175_fb05_q13_fixed_unit_enclosure_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post175_fb05_q13_fixed_unit_enclosure_v1.json \
+            --output /tmp/POST175_Q13_FIXED_UNIT_BENCHMARK.json
+      - name: Certify post-#175 fixed-unit agreement and interval-width gain
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post175_fb05_q13_fixed_unit_enclosure_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post175_fb05_q13_fixed_unit_enclosure_v1.json \
+            --benchmark /tmp/POST175_Q13_FIXED_UNIT_BENCHMARK.json \
+            --output /tmp/POST175_Q13_FIXED_UNIT_CERTIFICATE.json
       - name: Audit R004 scalar-shift invariants
         run: python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
       - name: Reject external reference code as a Lean dependency
