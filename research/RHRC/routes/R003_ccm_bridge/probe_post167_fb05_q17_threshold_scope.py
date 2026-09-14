@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Floating two-sided log(q) microscope and next-cell scout for FB-05.
 
-Discovery only.  The script follows the physical canonical matrix across the
-Q=q-1 to Q=q cutoff transition and separately checks that the isolated entering
-prime-power atom approaches the exact boundary-flat moment-jet prediction.
+Discovery only.  The physical canonical matrix is scouted in ordinary floating
+arithmetic, while the isolated entering-atom asymptotics use high-precision
+mpmath so division by omega^7 / omega^9 is not destroyed by cancellation.
 """
 from __future__ import annotations
 
@@ -12,14 +12,16 @@ import json
 import math
 from pathlib import Path
 
+import mpmath as mp
 import numpy as np
+import sympy as sp
 from scipy.optimize import minimize_scalar
 
 from canonical_source_numeric import fixed_cell_bounds
+from post150_selected_residual import exact_parity_basis
 from post167_fb05_threshold_jet import (
     aperture_from_source_coordinate,
-    predicted_canonical_leading_matrix_float,
-    restricted_canonical_entering_atom_float,
+    centered_moment_row,
     successor_barrier_at_L_float,
     von_mangoldt_weight_float,
 )
@@ -36,9 +38,86 @@ def _compact(rec: dict) -> dict:
     }
 
 
-def _frobenius_relative(A: np.ndarray, B: np.ndarray) -> float:
-    den = max(float(np.linalg.norm(B, ord="fro")), 1e-300)
-    return float(np.linalg.norm(A - B, ord="fro")) / den
+def _mp_von_mangoldt_weight(q: int) -> mp.mpf:
+    fac = sp.factorint(int(q))
+    if len(fac) != 1:
+        return mp.mpf("0")
+    p = next(iter(fac))
+    return mp.log(p) / mp.sqrt(q)
+
+
+def _source_entry_mp(omega: mp.mpf, n: int, m: int) -> mp.mpf:
+    if n == m:
+        return 2 * omega * mp.cos(2 * mp.pi * n * omega)
+    return (
+        mp.sin(2 * mp.pi * n * omega) - mp.sin(2 * mp.pi * m * omega)
+    ) / (mp.pi * (n - m))
+
+
+def _restricted_entering_atom_mp(q: int, K: int, parity: str, omega: mp.mpf) -> mp.matrix:
+    B = exact_parity_basis(K, parity)
+    idx = list(range(-K, K + 1))
+    weight = _mp_von_mangoldt_weight(q)
+    out = mp.matrix(B.cols, B.cols)
+    for a in range(B.cols):
+        for b in range(B.cols):
+            total = mp.mpf("0")
+            for r, n in enumerate(idx):
+                br = mp.mpf(int(B[r, a]))
+                if not br:
+                    continue
+                for c, m in enumerate(idx):
+                    bc = mp.mpf(int(B[c, b]))
+                    if not bc:
+                        continue
+                    total += br * (-weight * _source_entry_mp(omega, n, m)) * bc
+            out[a, b] = total
+    return out
+
+
+def _predicted_leading_mp(q: int, K: int, parity: str) -> tuple[int, mp.matrix]:
+    B = exact_parity_basis(K, parity)
+    weight = _mp_von_mangoldt_weight(q)
+    if parity == "odd":
+        order = 7
+        row = centered_moment_row(K, B, 3)
+        scalar = weight * 2 * (2 * mp.pi) ** 6 / math.factorial(7)
+    elif parity == "even":
+        order = 9
+        row = centered_moment_row(K, B, 4)
+        scalar = -weight * 2 * (2 * mp.pi) ** 8 / math.factorial(9)
+    else:
+        raise ValueError("parity must be even or odd")
+    out = mp.matrix(B.cols, B.cols)
+    for a in range(B.cols):
+        for b in range(B.cols):
+            out[a, b] = scalar * mp.mpf(int(row[0, a])) * mp.mpf(int(row[0, b]))
+    return order, out
+
+
+def _mp_frobenius(A: mp.matrix) -> mp.mpf:
+    return mp.sqrt(mp.fsum(A[r, c] ** 2 for r in range(A.rows) for c in range(A.cols)))
+
+
+def _atom_asymptotic_record(q: int, K: int, parity: str, exponent: int) -> dict:
+    order, predicted = _predicted_leading_mp(q, K, parity)
+    omega = mp.mpf(1) / (mp.mpf(2) ** exponent)
+    restricted = _restricted_entering_atom_mp(q, K, parity, omega)
+    scaled = restricted / (omega ** order)
+    diff = scaled - predicted
+    pred_norm = _mp_frobenius(predicted)
+    scaled_norm = _mp_frobenius(scaled)
+    rel = _mp_frobenius(diff) / pred_norm if pred_norm else mp.mpf("0")
+    return {
+        "parity": parity,
+        "order": order,
+        "exponent": exponent,
+        "omega": mp.nstr(omega, 30),
+        "scaled_frobenius_norm": mp.nstr(scaled_norm, 40),
+        "predicted_frobenius_norm": mp.nstr(pred_norm, 40),
+        "relative_error_to_predicted": mp.nstr(rel, 40),
+        "arithmetic": "mpmath_160_dps",
+    }
 
 
 def main() -> int:
@@ -79,28 +158,14 @@ def main() -> int:
                 }
             )
 
-    # Isolated entering-atom asymptotics in both parity carriers.  Divide by
-    # the predicted first surviving power before comparing to the exact leading
-    # rank-one moment coefficient.
+    # High-precision isolated entering-atom asymptotics.  This is separate from
+    # the production scout so the tiny omega^9 even signal is not divided out of
+    # double-precision cancellation noise.
+    mp.mp.dps = 160
     atom_asymptotics = []
-    for parity, order in (("odd", 7), ("even", 9)):
-        predicted = predicted_canonical_leading_matrix_float(args.q, K, parity)
+    for parity in ("odd", "even"):
         for k in exponents:
-            omega = 2.0 ** (-k)
-            restricted = restricted_canonical_entering_atom_float(args.q, K, parity, omega)
-            scaled = restricted / (omega ** order)
-            atom_asymptotics.append(
-                {
-                    "parity": parity,
-                    "order": order,
-                    "exponent": k,
-                    "omega": omega,
-                    "scaled_frobenius_norm": float(np.linalg.norm(scaled, ord="fro")),
-                    "predicted_frobenius_norm": float(np.linalg.norm(predicted, ord="fro")),
-                    "relative_error_to_predicted": _frobenius_relative(scaled, predicted),
-                    "numerical_rank_scaled": int(np.linalg.matrix_rank(scaled, tol=max(np.linalg.norm(scaled, 2), 1.0) * 1e-10)),
-                }
-            )
+            atom_asymptotics.append(_atom_asymptotic_record(args.q, K, parity, k))
 
     # Full physical Q=q cell scout.  Stay strictly inside the cell; the exact
     # threshold is handled independently by the Arb replay.
@@ -120,10 +185,6 @@ def main() -> int:
     ts = np.linspace(eps, 1.0 - eps, args.grid)
     rows = [evaluate_t(float(t)) for t in ts]
     rows_by_eig = sorted(rows, key=lambda r: float(r["normalized_min_eigenvalue"]))
-    rows_by_pivot = sorted(
-        [r for r in rows if r["final_sylvester_pivot"] is not None],
-        key=lambda r: float(r["final_sylvester_pivot"]),
-    )
     dt = 1.0 / (args.grid - 1)
     local_minima = []
     for seed in rows_by_eig[: args.local_seeds]:
@@ -176,9 +237,9 @@ def main() -> int:
             crossing = "NO_CLEAR_TREND"
 
     payload = {
-        "schema_version": "POST167_FB05_Q17_THRESHOLD_DISCOVERY_v1",
+        "schema_version": "POST167_FB05_Q17_THRESHOLD_DISCOVERY_v2",
         "status": "PASS",
-        "phase": "FLOATING_THRESHOLD_FALSIFICATION",
+        "phase": "FLOATING_THRESHOLD_FALSIFICATION_WITH_HIGH_PRECISION_ATOM_JET",
         "claim_cap": "EXPERIMENTAL_SIGNAL_ONLY",
         "target": {"q": args.q, "threshold_L": threshold, "N": args.n, "Kstar": K, "parity": args.parity},
         "von_mangoldt_weight": weight,
@@ -196,7 +257,7 @@ def main() -> int:
         "nonclaims": [
             "Floating threshold behavior is not a sign theorem.",
             "No sampled negative point does not imply Q17-cell positivity.",
-            "The isolated-atom jet does not determine the full canonical derivative by itself.",
+            "High-precision isolated-atom asymptotics are not a proof of the full canonical derivative.",
             "Any negative candidate requires independent Arb replay.",
             "RH remains OPEN.",
         ],
