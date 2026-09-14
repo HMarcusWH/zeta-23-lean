@@ -4,7 +4,7 @@
 
 ## Authority split
 
-Live GitHub head + exact compiler/CI evidence are authoritative dynamically. Do not hard-code a docs merge as permanent `live main` state.
+Live GitHub head + exact compiler/CI evidence are authoritative dynamically. Do not hard-code a mutable docs merge as permanent `live main` state.
 
 ### Theorem authority
 
@@ -19,12 +19,12 @@ Permansson #812 = SUCCESS
 ### Latest research-evidence anchor
 
 ```text
-latest merged research PR = #172
-validated research head = 4c857cd031497d895232a18a4bfb9a094d9facae
-merged research commit = a31bb0bb7f025d7727dd3f224c705af797f64a19
-research tree = c64b098c3159d739fa15eeaa96e35693615873d7
-RHRC #1063 = SUCCESS
-Permansson #836 = SUCCESS
+latest merged research PR = #174
+validated research head = 2d9fc5a5f7d552afb893c871fe84c9ed61a60ac0
+merged research commit = 946788f09c871de5133e2a8c8f5c94d7d69b521d
+research tree = 2a22b83c4d5903158c036d38420d9ae79b7726f2
+RHRC #1070 = SUCCESS
+Permansson #843 = SUCCESS
 ```
 
 ### Control authority
@@ -35,7 +35,7 @@ selected formal first break = E4A4-SCHUR-FB-05
 terminal claim = RH_OPEN
 ```
 
-Research PRs #165-#172 do not advance theorem or machine-claim authority.
+Research PRs #165-#174 do not advance theorem or machine-claim authority.
 
 ## One-screen frontier
 
@@ -56,84 +56,44 @@ PROVED THROUGH #163
 
 POST-THEOREM FB-05 RESEARCH
   #165  exact S8 executable arithmetic audited
-        broad finite positivity signal; no sign theorem
-        positivity alone is not a contradiction
+        broad finite positivity signal; sign alone not a contradiction
 
   #166  true shifted secular state executable
         u_lambda = c - W(H-lambda G)^(-1)r
-        672-state scout; no negative successor found
-        Q16/N3/K4/odd near-critical family isolated
+        672-state scout; Q16/N3/K4/odd near-critical family isolated
 
-  #167  Q16 full-cell scalar barrier attack
+  #167  Q16 full-cell attack
         no floating negative point found
-        apparent minimum moves toward log 17
         direct whole-cell Arb: 256/256 leaves UNRESOLVED
-        brute dependency-heavy subdivision rejected in current representation
+        brute dependency-heavy matrix subdivision rejected
 
   #168  log17 boundary-flat prime-entry jet
-        exact executable K=2..8 identities
         odd first surviving order 7 ~ M3^2
         even first surviving order 9 ~ M4^2
         threshold + 18/18 two-sided Arb points positive
-        Q17 = CONTINUES_DOWN_BUT_POSITIVE
 
   #170  theorem-aligned [W|c] Schur visibility/background audit
         q17 threshold direction Schur-visible
-        exact q17 entering-q pivot effect positive at checked offsets
+        entering-q pivot effect positive at checked offsets
         q-removed background finite difference negative at checked scales
-        sampled physical state remains positive through q19
 
   #172  threshold-to-threshold production barrier audit
-        genuine arithmetic intervals tested across q/N/parity
-        sampled bad successor count = 0
-        arithmetic entry lift sign-indefinite in finite Arb replay
-          q9/even  negative
-          q13/even negative
-          q16/odd  positive
-        most dangerous sampled state = q13->16 / N2 / K3 / even
-        Arb near-minimum full pivot ~= +5.8401616e-12
-        Arb q13 entry lift          ~= -6.3774491e-12
-        channel cancellation ratios reach ~1e9-1e10
+        arithmetic entry lift finite-certified with both signs
+        q13/N2/K3/even isolated as strongest near-critical target
+        full pivot ~= +5.8401616e-12
+        q13 entry lift ~= -6.3774491e-12
 
-NOW — FB-05 Q13 EVEN 2x2 SCALAR BARRIER
-  exact executable dimensions:
-    predecessor N=2 -> dim 1
-    successor K*=3  -> dim 2
-
-  in theorem-aligned [W|c] coordinates:
-    H = [[a,b],[b,d]]
-    H1 <-> a > 0
-    Delta_2 = a*d - b^2
-    P = Delta_2 / a
-
-  classify over log13 <= L <= log16:
-    A. a(L) <= 0 somewhere
-       -> H1 scope loss
-    B. a(L) > 0 and Delta_2(L) < 0 somewhere
-       -> strict bad successor
-    C. a(L) > 0 and Delta_2(L) = 0 somewhere
-       -> barrier contact / singular successor
-    D. a(L) > 0 and Delta_2(L) > 0 everywhere
-       -> strict positive-cell certificate
-
-  note:
-    Delta_2(L) >= 0 alone does NOT establish D;
-    nonvanishing is a separate obligation.
-
-  rigorous physical subcells:
-    [log13,log14]
-    [log14,log15]
-    [log15,log16]
-  unless zero-weight Q=14/15 inertness is separately certified
-
-AFTER
-  if a certified H1 negative point appears -> replay immediately through #166
-  if a certified H1 zero-contact point appears -> classify tangency/multiplicity/nonvanishing before inferring crossing or positivity
-  if full q13 cell is strictly positive -> extract the arithmetic/scalar inequality and test generalization
-  -> theoremize only a genuinely independent surviving restriction
-  -> compose with exact #161/#163 retained state
-  -> FB-06 same-state contradiction / negative-root exclusion
-  -> FB-07 outside-strip/trivial-zero seam + Mathlib RH wrapper
+  #174  exact q13/N2/K3/even 2x2 scalar barrier audit
+        H=[[a,b],[b,d]]
+        H1 <-> a>0
+        Delta_2=a*d-b^2
+        sign pivot = sign Delta_2 in H1
+        floating basin remains sampled-positive
+        384-bit direct scalar Arb audit:
+          Q13 100% UNRESOLVED
+          Q14 100% UNRESOLVED
+          Q15 100% UNRESOLVED
+        no H1-loss/bad/contact/strict-positive interval certified
 ```
 
 ## Exact theorem package through #163
@@ -165,76 +125,101 @@ q13/N2/K3/even whole-cell nonnegativity/nonvanishing/strict positivity
 universal arithmetic-entry sign
 simultaneous even/odd bad exclusion
 odd-selected first-bad closure
+independent contradiction-producing canonical arithmetic restriction
 negative-root exclusion
 RiemannHypothesis
 ```
 
 ## Reclassified FB-05 subroutes
 
-### A. q13/N2/K3/even 2x2 determinant barrier — NEXT
+### A. q13/N2/K3/even 2x2 determinant barrier — SCALARIZATION CONSUMED / METHOD FRONTIER ACTIVE
 
-This is the current highest-information route. The full successor is two-dimensional, so H1 and successor sign reduce to one predecessor scalar `a(L)` and one determinant `Delta_2(L)`.
+#174 validates the exact theorem-aligned 1D->2D reduction and direct scalar audit. The geometric reduction is no longer the next task.
 
-The target is not to prove global Schur monotonicity. It is to classify one near-critical complete physical scalar interval in a dependency-reduced representation, including possible determinant contact at zero.
+The direct `a(L), Delta_2(L)` interval representation remains dependency-limited: every nonzero-width physical Q=13/14/15 cell is unresolved at the configured 384-bit adaptive audit. Therefore the next move must change the enclosure mathematics rather than merely increase precision, depth or leaf budget.
 
-A strict-positive q13 interval certificate is not itself FB-05 closure. It becomes valuable only if the successful scalar argument yields an arithmetic inequality that can be generalized to arbitrary retained first-bad states.
+Candidate routes:
+
+```text
+fixed-unit pullback of production archimedean integrals
+certified derivative / variation bounds
+local Taylor models around the dangerous Q14 basin
+interval Newton / Krawczyk for Delta_2' or possible contact
+analytic scalar factorization / root exclusion if exposed
+```
+
+The first acceptance gate for a new representation is equivalence with the existing production evaluator at certified points **and** materially tighter interval widths near the dangerous basin.
 
 ### B. Threshold-to-threshold Schur barrier — RESEARCHED / #172
 
-#172 validates exact executable Schur/envelope algebra, deterministic numerical integration smoke tests, and finite production/Arb replay across several arithmetic intervals. It finds no sampled bad successor but falsifies universal favorable arithmetic replenishment as a research heuristic.
+Consumed research infrastructure. Universal favorable arithmetic replenishment is falsified as a default heuristic.
 
-### C. Full scalar pivot / background decomposition — VALIDATED RESEARCH MECHANISM / #170
+### C. Theorem-aligned pivot/background decomposition — VALIDATED RESEARCH MECHANISM / #170
 
-The theorem-aligned `[W|c]` pivot, exact rank-one update, directional derivative, and finite q17 visibility are consumed research infrastructure.
+Consumed infrastructure. Independent channel pivots may not be added because the Schur map is nonlinear.
 
 ### D. Endpoint scalar `S8` — OPEN, lower standalone leverage
 
-#165 found no finite sign reversal in the audited range, but no global theorem follows. Even if `S8 >= 0`, #163 gives `R9 <= R8 < 0`; sign alone is not a contradiction.
+#165 found no finite sign reversal in the audited range, but even `S8 >= 0` merely propagates retained negativity.
 
 ### E. SourceMoment / local jet rigidity — OPEN
 
-#163 proves a shared analytic observable. #166-#172 do not establish a global sourceMoment-to-`M4` implication or converse.
+#163 proves a shared analytic observable. #166-#174 do not establish a global sourceMoment-to-`M4` implication or converse.
 
 ### F. Simultaneous parity route — OPEN
 
-#161 still allows the opposite parity to be bad. The parity-asymmetric finite threshold behavior may become useful only after a complete canonical restriction is found.
+#161 still allows the opposite parity to be bad. Same-q/N opposite-parity controls remain useful.
 
 ### G. Odd-selected coverage — OPEN
 
 There is no WLOG-even theorem because `D` is algebraic, not unitary/isometric.
 
+## New reusable post-#174 firewalls
+
+### OBS-047 — scalarization does not eliminate canonical interval dependency
+
+Reducing the full matrix to `a,b,d,Delta_2` simplifies the finite geometry but does not by itself cure repeated-parameter interval dependency in the canonical formulas.
+
+### OBS-048 — determinant and pivot minima are distinct
+
+In H1, `P=Delta_2/a`; because `a(L)` varies, minimizing `Delta_2` and minimizing `P` are different problems. Future root/minimum isolation must name the scalar being controlled.
+
+### DR-026 candidate — brute direct scalar subdivision
+
+Repeatedly subdividing the same direct q13 scalar formulas is dead as the current certification strategy after #174. Revival requires a changed representation or new analytic control; more precision/depth alone is not a route change.
+
 ## Falsification requirements for the next research PR
 
-- remain in theorem-aligned `[W|c]` one-step geometry;
-- use the exact q13/N2/K3/even 1D->2D reduction;
-- classify H1 through `a(L)` and successor sign/zero structure through `Delta_2(L)`;
-- explicitly distinguish determinant negativity, zero contact, nonnegativity, and strict positivity;
-- preserve von Mangoldt prime powers, not primes only;
-- respect the physical Q=13/14/15 subcells or separately certify zero-weight seam inertness;
-- use enough precision to survive the `~1e-12` margin and `~1e9-1e10` cancellation scale;
-- run opposite-parity/same-q controls to test whether the observed sign pattern is parity-driven;
-- treat `UNRESOLVED` as unresolved, never as sign evidence;
-- if an actual finite bad successor appears, feed it immediately into the #166 shifted-state discriminator;
-- if a zero-contact point appears, classify whether it is tangential, endpoint, or crossing and separate nonvanishing from nonnegativity;
-- if the cell is strictly positive, test whether the proof ingredient generalizes before Lean investment;
-- reject any argument that simply restates successor positivity.
-
-## Dead/quarantined shortcuts relevant now
-
-- pointwise fixed-sign smoothed-integrand positivity remains dead;
-- generic first-bad geometry without canonical arithmetic remains insufficient;
-- universal one-step domination is not research progress when obtained by restating successor positivity;
-- global Loewner or minimizing-Schur monotonicity remains quarantined;
-- brute direct whole-cell Arb subdivision in the dependency-heavy full-matrix representation is not the next certification strategy;
-- independent channel Schur pivots may not be summed because the Schur map is nonlinear;
-- universal favorable arithmetic threshold replenishment is unsupported by #172.
+- stay in theorem-aligned `[W|c]` geometry;
+- preserve exact N=2 -> K*=3 dimensions;
+- preserve physical Q=13/14/15 seam semantics and von Mangoldt prime powers;
+- preserve odd N=2 ancestry tracking;
+- benchmark any new evaluator against the existing production evaluator at certified points;
+- measure interval-width improvement rather than assume it;
+- keep determinant and pivot minima distinct;
+- do not assume global derivative sign or revive global Schur monotonicity;
+- treat zero-containing intervals as unresolved unless existence is separately certified;
+- if an actual bad successor appears, replay it immediately through #166;
+- if the q13 cell is strictly positive, extract and falsify the generalizable arithmetic inequality before Lean investment.
 
 ## Highest-leverage next move
 
-Build a research PR to fully classify the **q13/N2/K3/even 2x2 determinant barrier** across the physical Q=13/14/15 subcells, including possible zero contact.
+Build a research PR that first implements and benchmarks a dependency-reduced fixed-unit production scalar evaluator. Only if that representation materially tightens the dangerous Q14 enclosures should the same PR or its successor add derivative/Taylor/Newton machinery to isolate the minimum/contact problem.
 
 Standing question:
 
-> Given everything theoremized through #163 and learned experimentally through #172, does the complete canonical q13/even 2x2 Schur determinant lose H1 scope, become negative, merely touch zero, or remain strictly positive; and what arithmetic mechanism behind that classification could generalize to the retained first-bad state?
+> Given everything theoremized through #163 and validated experimentally through #174, what analytic representation preserves the exact q13 scalar geometry while reducing interval dependency enough to decide whether the barrier loses H1, crosses zero, merely touches zero, or stays strictly positive?
+
+Then:
+
+```text
+surviving independent arithmetic restriction
+  -> compose with exact #161/#163 retained state
+  -> FB-06 same-state contradiction / negative-root exclusion
+  -> FB-07 outside-strip/trivial-zero seam + Mathlib RH wrapper
+```
+
+Detailed current synthesis:
+`RESEARCH_LEADS_POST_174_Q13_SCALAR_DEPENDENCY_FRONTIER_DELTA.md`.
 
 **RH remains OPEN.**
