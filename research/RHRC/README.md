@@ -15,12 +15,12 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #176
-validated research head = c6f53131b91b18aff2a50a6db2ddaa2761e7e5aa
-merged research commit = 96cccf715c02ed2bd4ae58f8362180020ae90854
-research tree = 28bd302c17a6128e538a3510917dafb670f6dce8
-RHRC #1072 = SUCCESS
-Permansson #845 = SUCCESS
+merged research PR = #178
+validated research head = 28df43faed0db8c0f12a25525df6c28467ce5b07
+merged research commit = fb2a181ce0d95d90396ead7730e7bf365616a153
+research tree = 96ab14953e9e8bff5245953082db8a6471648614
+RHRC #1074 = SUCCESS
+Permansson #847 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
@@ -72,8 +72,9 @@ RH                                                                    OPEN
 - **#172:** current-q entry lift found sign-indefinite; q13/N2/K3/even isolated as the strongest near-critical target.
 - **#174:** exact q13 1D->2D scalar reduction validated; direct 384-bit scalar interval audit remains 100% unresolved on physical Q=13,14,15 subcells.
 - **#176:** independent fixed-unit evaluator agrees with the direct production path and passes the frozen six-box Q14 factor-2 determinant-width routing criterion; method classification `FIXED_UNIT_METHOD_ACCEPTED`.
+- **#178:** complete fixed-Q derivative implementation validated against independent centered value differences; all six primary Q14 raw `Delta_2'` boxes remain `DERIVATIVE_UNRESOLVED`; no bad/H1-loss interval certified; #176 replay-hardening debt closed.
 
-## Immediate frontier — FB-05I fixed-unit derivative/stationary discrimination
+## Immediate frontier — FB-05J correlation-preserving Q14 derivative enclosure
 
 For the q13 target, the exact executable geometry remains:
 
@@ -85,28 +86,34 @@ H1 <-> a(L)>0
 P(L)=Delta_2(L)/a(L) in H1.
 ```
 
-#174 shows scalarization alone does not cure interval dependency. #176 then selects the fixed-unit pullback as the preferred **research enclosure representation for this finite laboratory** by the predeclared finite agreement/width benchmark.
-
-The next discriminator is no longer representation selection. It is whether the conditioning gain survives differentiation:
+#174 shows scalarization alone does not cure interval dependency. #176 selects the fixed-unit pullback as the preferred finite research representation. #178 validates the complete derivative machinery but the raw assembled interval expression
 
 ```text
-fixed-unit alpha', beta', gamma'
--> a', b', d'
--> Delta_2' = a'd + ad' - 2bb'
--> independent centered-finite-difference checks
--> rigorous derivative interval-width audit
--> only if useful: Taylor / interval Newton / Krawczyk.
+Delta_2' = a'd + ad' - 2bb'
+```
+
+certifies no sign on any primary side box.
+
+The next discriminator is therefore not another raw derivative subdivision. It is a **correlation-preserving enclosure comparison**:
+
+```text
+1. rigorous point Delta_2' balls at frozen primary/control centers
+2. compare exact representations in H1
+     raw: Delta_2' = a'd + ad' - 2bb'
+     Schur-factorized: Delta_2' = a'P + aP'
+3. if point orientation is visible, add Delta_2'' and centered mean-value/Taylor control
+4. only after a two-sided bracket, use interval Newton/Krawczyk.
 ```
 
 A positive q13 whole-cell result would still be a finite method/structure result, not FB-05 closure.
 
 ## Current execution priority
 
-1. **Implement an independently checked fixed-unit derivative evaluator.**
-2. **Measure rigorous `Delta_2'` conditioning near and outside the dangerous Q14 basin.**
-3. **Do not assume interval Newton/Taylor will work until the derivative gate passes.**
+1. **Compute rigorous point `Delta_2'` signs at the frozen centers.**
+2. **Benchmark raw versus Schur-factorized derivative enclosures where H1 is certified.**
+3. **Do not assume a second-derivative/Taylor route is useful until point orientation is visible.**
 4. **Keep determinant and pivot stationary problems distinct.**
-5. **If a bad state appears, replay it immediately through #166.**
+5. **If a bad state appears, replay it immediately through #166/#161/#163.**
 6. **If positive, identify and falsify the generalizable arithmetic reason.**
 7. **Theoremize only an independent restriction that adds information beyond successor positivity.**
 8. **Compose with #161/#163, then close FB-06/FB-07.**
@@ -114,8 +121,8 @@ A positive q13 whole-cell result would still be a finite method/structure result
 ## Current research records
 
 - `CURRENT_RESEARCH_PLAN.md` — execution order and theorem gates.
-- `RESEARCH_LEADS_POST_176_FIXED_UNIT_METHOD_ACCEPTANCE_Q14_STATIONARY_FRONTIER_DELTA.md` — newest audited research synthesis.
-- `RESEARCH_LEADS_POST_174_Q13_SCALAR_DEPENDENCY_FRONTIER_DELTA.md` — previous synthesis.
+- `RESEARCH_LEADS_POST_178_DERIVATIVE_UNRESOLVED_CENTERED_ENCLOSURE_DELTA.md` — newest audited research synthesis.
+- `RESEARCH_LEADS_POST_176_FIXED_UNIT_METHOD_ACCEPTANCE_Q14_STATIONARY_FRONTIER_DELTA.md` — previous synthesis.
 - `OBSTRUCTION_LEDGER.md` / `DEAD_ROUTES.md` — reusable blockers.
 - `routes/R003_ccm_bridge/README.md` — active route theorem/research surface.
 - `control_v2/README.md` — executable routing semantics.
@@ -138,9 +145,11 @@ A positive q13 whole-cell result would still be a finite method/structure result
 - `UNRESOLVED` interval output is not sign evidence.
 - direct scalar subdivision is not the next strategy after #174.
 - #176 fixed-unit method acceptance is scoped to the frozen finite q13/Q14 benchmark.
+- #178 `DERIVATIVE_UNRESOLVED` is not zero or stationary evidence.
+- raw assembled derivative boxes with only more precision/subdivision are not a new route.
 - determinant and pivot minima are distinct optimization targets.
 - q13 whole-cell positivity alone would not imply global first-bad exclusion.
-- the standalone #176 certifier still has a replay-hardening debt around benchmark-schedule binding; the exact CI pipeline generated its benchmark from the frozen fixture in-pipeline.
+- the #176 replay-hardening debt is closed by #178.
 - negative-root exclusion still needs the terminal seam before `RiemannHypothesis`.
 
 **RH remains OPEN.**
