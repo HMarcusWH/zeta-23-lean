@@ -44,20 +44,20 @@ class ControlV2Tests(unittest.TestCase):
             "FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN",
         )
 
-    def test_control_note_records_post174_research_without_moving_theorem_anchor(self):
+    def test_control_note_records_post176_research_without_moving_theorem_anchor(self):
         control = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
         note = control["control_note"]
-        self.assertIn("PR #174", note)
-        self.assertIn("2d9fc5a5f7d552afb893c871fe84c9ed61a60ac0", note)
-        self.assertIn("946788f09c871de5133e2a8c8f5c94d7d69b521d", note)
-        self.assertIn("q13->16/N2/K3/even", note)
-        self.assertIn("2x2 scalar determinant barrier", note)
-        self.assertIn("Q=13/14/15 subcells", note)
-        self.assertIn("100% UNRESOLVED", note)
-        self.assertIn("scalarization alone does not eliminate canonical interval dependency", note)
-        self.assertIn("fixed-unit pullback", note)
+        self.assertIn("PR #176", note)
+        self.assertIn("c6f53131b91b18aff2a50a6db2ddaa2761e7e5aa", note)
+        self.assertIn("96cccf715c02ed2bd4ae58f8362180020ae90854", note)
+        self.assertIn("q13/N2/K3/even", note)
+        self.assertIn("FIXED_UNIT_METHOD_ACCEPTED", note)
+        self.assertIn("six primary Q14 boxes", note)
+        self.assertIn("factor-2", note)
+        self.assertIn("derivative/stationary discrimination", note)
+        self.assertIn("replay-hardening debt", note)
         self.assertIn("PR #117 remains the Control-v2 semantic anchor", note)
         self.assertEqual(control["merged_theorem_anchor"]["pr"], 163)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
@@ -99,7 +99,7 @@ class ControlV2Tests(unittest.TestCase):
         self.assertGreater(scores["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"],
                            scores["E4_B_PARITY_SHIFTED_NULLITY"])
 
-    def test_regular_schur_action_is_post174_fb05_analytic_scalar_route(self):
+    def test_regular_schur_action_is_post176_fb05_fixed_unit_derivative_route(self):
         registry = json.loads(
             (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
         )
@@ -117,6 +117,7 @@ class ControlV2Tests(unittest.TestCase):
             "PR #170",
             "PR #172",
             "PR #174",
+            "PR #176",
             "theorem-aligned [W|c] one-step Schur pivot",
             "sign-indefinite",
             "q13->16/N2/K3/even",
@@ -124,7 +125,11 @@ class ControlV2Tests(unittest.TestCase):
             "Q=13/14/15 subcells",
             "100% UNRESOLVED",
             "scalarization alone does not eliminate canonical interval dependency",
-            "fixed-unit pullback",
+            "FIXED_UNIT_METHOD_ACCEPTED",
+            "six frozen primary Q14 boxes",
+            "factor-2",
+            "Delta_2'",
+            "replay-hardening debt",
             "determinant and pivot minima",
             "full physical H1 does not imply H1 for the q-removed background",
             "cancellation ratios around 1e9-1e10",
@@ -139,8 +144,8 @@ class ControlV2Tests(unittest.TestCase):
 
         self.assertEqual(action["dead_route_matches"], [])
         self.assertEqual(break_ids, ["E4A4-SCHUR-FB-05"])
-        self.assertIn("#165-#174", first_breaks)
-        self.assertIn("analytic scalar enclosure", first_breaks)
+        self.assertIn("#165-#176", first_breaks)
+        self.assertIn("local derivative/stationary law", first_breaks)
         self.assertIn("without restating successor positivity", first_breaks)
 
         selected_break = _selected_first_break(
