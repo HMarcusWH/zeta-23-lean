@@ -15,18 +15,18 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #168
-validated research head = 9657dad6f1e262b1fa7e08e6944aaa935feeaf33
-merged research commit = 4e2c111a836f3fc95f8209485f726dc886c918e7
-research tree = 881e1f05302041f56ae4b6a14f14e45d7bbc096b
-RHRC #1055 = SUCCESS
-Permansson #828 = SUCCESS
+merged research PR = #170
+validated research head = 70689692d5b92252bf9da97740385aaced2bf197
+merged research commit = c94242fe41ae62b59aaa392a33e35034eb2c1b1e
+research tree = 38e38a1d4cf90afa0e8103e58d1cbae626ebdeef
+RHRC #1058 = SUCCESS
+Permansson #831 = SUCCESS
 
 CONTROL AUTHORITY
 control-plane semantic anchor = PR #117
 selected first break = E4A4-SCHUR-FB-05
 
-newest post-green delta = RESEARCH_LEADS_POST_168_THRESHOLD_JET_BACKGROUND_DRIFT_DELTA.md
+newest post-green delta = RESEARCH_LEADS_POST_170_SCHUR_VISIBILITY_THRESHOLD_BARRIER_DELTA.md
 current execution SSOT = CURRENT_RESEARCH_PLAN.md
 RH = OPEN
 ```
@@ -101,41 +101,68 @@ even: first surviving source-energy order 9, governed by M4^2
 
 The physical Q16/Q17 microscope certified the exact threshold and all 18 two-sided test points positive, while the full Q17 state continued downward but remained positive.
 
-**Conclusion:** the isolated favorable entering-prime jet does not determine the full canonical aperture drift.
+### #170 — theorem-aligned Schur visibility / background split
 
-## Active lead 1 — full scalar pivot / background variation
+The research scalar is moved to the theorem-aligned one-step basis `[W|c]` and unit-shell normalized. The deterministic checker locks the exact rank-one Schur update and directional Schur derivative identities in the executable layer.
+
+At the q17/N3/K4/odd target:
+
+```text
+H1 predecessor positive at threshold                finite-certified
+unit-shell pivot at log17                           positive
+Schur visibility rho                                nonzero finite-certified
+exact entering-q pivot effect                       positive at 7/7 offsets
+q-removed background central finite difference      negative at 7/7 scales
+physical H1 scout through q19                       97/97 H1, 0 sampled negative pivots
+```
+
+**Conclusion:** the favorable threshold atom is genuinely visible to the first-bad scalar obstruction, but a lower-order smooth background can still drive the complete pivot downward. No interval or barrier theorem follows.
+
+## Active lead 1 — threshold-to-threshold Schur barrier
 
 **Research status:** HIGHEST LEVERAGE / NEXT  
 **Formal status:** OPEN
 
-Replace dependency-heavy full-matrix interval evaluation with a scalar final Sylvester/Schur pivot.
-
-Near an actual prime-power threshold, decompose
+Use the local Schur-envelope identity
 
 ```text
-P(L) = P_background(L) + P_entering_q(L).
+P'(L) = u_L^T M'(L) u_L
 ```
 
-The background contains pole, archimedean, scalar-repair, and already-active prime-power variation. The entering term begins only at seventh order on the odd boundary-flat carrier and ninth order on the even carrier.
+as a cancellation-preserving diagnostic, without assuming a fixed global derivative sign.
+
+The next question is integrated rather than pointwise:
+
+```text
+P(L_next^-) - P(L_q^+)
+  = integral_{L_q}^{L_next} P'(L) dL.
+```
 
 Primary questions:
 
 ```text
-What is the background derivative/variation at the threshold?
-What is the exact pivot sensitivity to the entering rank-one atom?
-What is the catch-up scale?
-Does the arithmetic kick create a real barrier before the next relevant threshold?
-Does the answer differ decisively by parity?
+How much positive H1 barrier can the smooth background consume before the next genuine arithmetic seam?
+Which pole/arch/active-prime/scalar derivatives create the near-cancellation?
+How much barrier does the next entering prime power replenish?
+Can P reach zero while H1 remains valid?
+Does the mechanism survive multiple q, N and both parities?
 ```
 
 A theorem is worth pursuing only if this produces information not equivalent to successor positivity.
+
+## Validated research mechanism — theorem-aligned pivot/background decomposition
+
+**Research status:** CONSUMED INPUT / #170  
+**Formal status:** NOT LEAN-THEOREMIZED
+
+#170 reconstructs the theorem-aligned one-step Schur pivot, verifies finite-dimensional Schur algebra, certifies q17 threshold visibility, and separates the exact entering atom from the smooth background. The decomposition is now research infrastructure rather than the next open task.
 
 ## Active lead 2 — simultaneous parity badness
 
 **Research status:** HIGH LEVERAGE SUPPORTING ROUTE  
 **Formal status:** OPEN
 
-#161 still permits both parity successors to be bad. The new parity-asymmetric threshold behavior may supply useful arithmetic structure, but only after the full canonical background is included.
+#161 still permits both parity successors to be bad. The parity-asymmetric threshold behavior may supply useful arithmetic structure, but only after the full canonical barrier dynamics are included.
 
 Do not import Hermitian interlacing through `D`; `D` is not theoremized as unitary/isometric.
 
@@ -155,14 +182,12 @@ Possible routes include an odd analogue, reverse cross-parity composition, or an
 
 No global sign or nonvanishing theorem exists. #165 found broad finite positive evidence, but even a proof `S8 >= 0` would not by itself contradict the retained negative state.
 
-A future endpoint-scalar theorem needs an additional independent terminal restriction before it becomes a plausible closure mechanism.
-
 ## Reclassified lead — production sample / local-jet rigidity
 
 **Research status:** OPEN, NOT YET SUPPORTED AS A GENERIC IMPLICATION  
 **Formal status:** OPEN
 
-#163 proves the finite-prime source contribution samples the same analytic observable whose local seventh jet is tied to `M4`. #166-#168 do not establish either implication
+#163 proves the finite-prime source contribution samples the same analytic observable whose local seventh jet is tied to `M4`. #166-#170 do not establish either implication
 
 ```text
 explicitCanonicalSourceMoment != 0 -> M4 != 0
@@ -176,7 +201,7 @@ Finite weighted sampling still does not generically determine a local derivative
 **Research status:** EXACT EXECUTABLE ALGEBRA + FINITE HIGH-PRECISION/ARB EVIDENCE  
 **Formal status:** NOT SEPARATELY LEAN-THEOREMIZED
 
-The odd/even seventh/ninth-order threshold response is now a useful component, not the current closing lemma. Formalize it only if the full scalar pivot dynamics demonstrate a theorem-relevant barrier.
+The odd/even seventh/ninth-order threshold response is a useful component, not the current closing lemma. #170 shows the odd direction is Schur-visible at the q17 finite target.
 
 ## Dead/quarantined routes relevant to current work
 
@@ -186,34 +211,35 @@ The odd/even seventh/ninth-order threshold response is now a useful component, n
 - global aperture Loewner monotonicity is quarantined;
 - global minimizing-trial Schur monotonicity is quarantined;
 - brute direct whole-cell interval subdivision of the current dependency-heavy matrix representation is not the next certification strategy;
-- independent loose pole/prime/arch/scalar majorants are disfavored unless cancellation loss is quantitatively controlled.
+- independent loose pole/prime/arch/scalar majorants are disfavored unless cancellation loss is quantitatively controlled;
+- independent channel Schur pivots may not be summed because the Schur map is nonlinear.
 
-## Falsification requirements for the pivot/background route
+## Falsification requirements for the threshold-barrier route
 
-- exact/independent pivot reconstruction;
-- channel-level pivot reconstruction;
+- theorem-aligned `[W|c]` pivot geometry;
+- H1 predecessor-positive scope for first-bad interpretation;
 - prime powers via von Mangoldt weights;
-- both sides of actual prime-power thresholds;
-- high-precision derivative/finite-difference cross-checks;
-- Arb pointwise replay of selected candidates;
+- local envelope analysis without global monotonicity assumptions;
+- exact/certified channel-derivative cancellation rather than sums of channel pivots;
+- both sides of genuine prime-power thresholds;
+- integrated barrier-loss versus replenishment estimates;
 - multiple sizes and both parities;
-- tests where the predicted threshold kick is weak or degenerate;
-- explicit distinction between `UNRESOLVED` and sign evidence;
-- no global monotonicity assumption;
+- explicit search for zero/weak visibility and adverse threshold kicks;
+- explicit distinction between finite differences and derivative theorems;
 - if a bad successor appears, immediate same-state replay through #166.
 
 ## Standing research questions
 
-1. Can the full scalar pivot be decomposed into a smooth canonical background plus an explicit high-order prime-entry kick with a useful inequality?
-2. Does the threshold kick ever dominate the background quickly enough to create a barrier to first badness?
-3. Does the parity asymmetry combine with #161 to restrict simultaneous even/odd badness?
-4. What closes the odd-selected branch?
-5. Can endpoint-scalar or sourceMoment/`M4` information become useful after composition with the pivot dynamics?
+1. Can local Schur-envelope dynamics bound integrated barrier loss from one arithmetic seam to the next?
+2. Is the q17 near-cancellation structurally constrained or accidental?
+3. Can threshold replenishment keep the H1 pivot from reaching zero before the next nonzero von-Mangoldt seam?
+4. Does the parity asymmetry combine with #161 to restrict simultaneous even/odd badness?
+5. What closes the odd-selected branch?
 6. Does any proposed closing lemma secretly restate successor positivity or assume RH-strength content?
 
-**Current highest-information question:** can exact canonical arithmetic turn the near-critical scalar pivot into a barrier incompatible with the retained shifted negative state?
+**Current highest-information question:** can exact canonical arithmetic maintain a positive theorem-aligned H1 Schur barrier threshold-to-threshold without a global monotonicity theorem?
 
 Detailed current synthesis:
-`RESEARCH_LEADS_POST_168_THRESHOLD_JET_BACKGROUND_DRIFT_DELTA.md`.
+`RESEARCH_LEADS_POST_170_SCHUR_VISIBILITY_THRESHOLD_BARRIER_DELTA.md`.
 
 **RH remains OPEN.**
