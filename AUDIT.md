@@ -1,28 +1,35 @@
-# RHRC formal audit — theorem authority through PR #163; FB-05 arithmetic frontier
+# RHRC formal audit — theorem authority through PR #163; research evidence through PR #168
 
 > **RH remains OPEN.**
 
-## Current authority split
+## Authority split
+
+Live GitHub head + exact compiler/CI evidence outrank this prose.
 
 ```text
-live main after merged PR #163 = bd3fa1aafa7df2aa35873df532bdb6f17ddd2bbd
-live main tree = c397b3a015ea54e38ecfe626d6e29556fe963839
+THEOREM AUTHORITY
 latest theorem-bearing PR = #163
 validated theorem head = b418ff034428f92594bab0e5b8276181a086ee4b
 validated theorem tree = c397b3a015ea54e38ecfe626d6e29556fe963839
 RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
-control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
-RH = OPEN
+
+LATEST RESEARCH-EVIDENCE ANCHOR
+merged research PR = #168
+validated research head = 9657dad6f1e262b1fa7e08e6944aaa935feeaf33
+merged research commit = 4e2c111a836f3fc95f8209485f726dc886c918e7
+research tree = 881e1f05302041f56ae4b6a14f14e45d7bbc096b
+RHRC #1055 = SUCCESS
+Permansson #828 = SUCCESS
+
+CONTROL SEMANTIC AUTHORITY
+PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
+selected first break = E4A4-SCHUR-FB-05
 ```
 
-Live GitHub head + exact compiler/CI evidence outrank this prose. The validated #163 head and merged main are distinct commits sharing the theorem tree above.
+The theorem and research anchors are intentionally different. No result from #165-#168 is promoted to Lean theorem authority merely because those PRs are green.
 
-## Exact validation evidence
-
-At `b418ff034428f92594bab0e5b8276181a086ee4b`, RHRC #1039 and Permansson #812 completed successfully. The theorem-bearing closure includes aggregate CCM and ExceptionalZero builds, R003 normalization/source checks, Control-v2/regression tests and the forbidden-placeholder/project-axiom gate.
-
-## Relevant theorem progression
+## Exact theorem progression
 
 ### #153
 
@@ -38,48 +45,26 @@ Genuine complex production D transport; boundary-flat jets through 6; even jets 
 
 ### #159
 
-General moment-prefix odd-jet law, exact seventh/even-ninth self-energy leading-moment formulas, generic signed Riesz boundary recurrence and retained R6->R7 / even R8->R9 exact moment-square boundary decompositions.
+General moment-prefix odd-jet law, exact seventh/even-ninth self-energy leading-moment formulas, generic signed Riesz boundary recurrence and retained R6->R7 / even R8->R9 exact moment-square decompositions.
 
 ### #161
 
 Same-state shifted negative secular trial; strict even R8 negativity; exact R9/M4 boundary inequality; cross-parity `Gamma * explicitCanonicalSourceMoment` identity; odd-good source-moment nonvanishing; odd-bad OR source-moment-nonzero fork.
 
-### #163 — generic mixed-source package
+### #163
 
-**PROVED:**
-
-```text
-iteratedDeriv_seven_quadraticNormalSourceAtom_eq_moment_four
-explicitCanonicalSourceMoment_eq_quadraticNormalSourceAtom_sum
-normSq_iteratedDeriv_seven_quadraticNormalSourceAtom
-two_pi_four_mul_rieszBoundaryEight_eq_endpointScalar_mul_mixedJetNormSq
-two_pi_four_mul_rieszEight_sub_nine_eq_endpointScalar_mul_mixedJetNormSq
-```
-
-Therefore, for even boundary-flat `v` with `K>=1`, Lean proves
+Lean theoremizes the exact mixed quadratic-normal source observable and its retained-state composition:
 
 ```text
 h_v^(7)(0) = -2*(2*pi)^6*M4(v)
 |h_v^(7)(0)|^2 = 4*(2*pi)^12*|M4(v)|^2
-2*(2*pi)^4*(R8(v)-R9(v)) = S8(L)*|h_v^(7)(0)|^2.
+finite-prime term of explicitCanonicalSourceMoment samples the same h_v
+2*(2*pi)^4*(R8(v)-R9(v)) = S8(L)*|h_v^(7)(0)|^2
 ```
 
-The source-moment decomposition also theoremizes that the finite-prime term samples the same `quadraticNormalSourceAtom` at the production prime-source coordinates.
+Retained specialization additionally yields the strict R9 upper bound without assuming a sign for `S8` and proves `crossParityGamma != 0` under opposite-parity goodness.
 
-### #163 — retained same-state mixed/Riesz specialization
-
-**PROVED:**
-
-```text
-RegularCellMinimalNegativeEnergyCertificate.evenShiftedMixedSourceSeventhJet_eq_momentFour
-RegularCellMinimalNegativeEnergyCertificate.evenShiftedRieszEightNine_eq_mixedJetBoundary
-RegularCellMinimalNegativeEnergyCertificate.evenShiftedRieszNine_lt_neg_mixedJetBoundary
-RegularCellMinimalNegativeEnergyCertificate.crossParityGamma_ne_zero_of_even_of_not_oddBad
-```
-
-The strict retained R9 upper bound does not assume any sign for the endpoint scalar.
-
-## What #163 does not prove
+## What theorem authority does not establish
 
 No current Lean theorem establishes:
 
@@ -89,74 +74,86 @@ M4 != 0 -> explicitCanonicalSourceMoment != 0
 finite production samples determine h^(7)(0)
 canonicalPolePrimeRieszEndpointScalar L 8 >= 0
 canonicalPolePrimeRieszEndpointScalar L 8 != 0
+boundary-flat threshold-entry law as a separately theoremized aperture theorem
+full scalar pivot/background inequality
 simultaneous even+odd bad exclusion
-odd-selected first-bad branch reduction/closure
-independent contradiction-producing arithmetic restriction
+odd-selected first-bad branch closure
 negative-root exclusion
-terminal RiemannHypothesis
+RiemannHypothesis
 ```
 
-The exact shared observable is an interface, not yet a global sampling/interpolation theorem.
+## Research audit after theorem authority
 
-## Post-green frontier
+### PR #165 — endpoint scalar
 
-The same retained even shifted negative state now satisfies
+The executable Riesz-8 endpoint scalar is independently reconstructed with the exact repository normalization and von Mangoldt prime powers. Stable-pole, convolution/closed-form and Arb overlap checks pass. Broad finite searches find no sampled negative value.
+
+**Audit conclusion:** this is not a global sign theorem. Even if `S8 >= 0` were later proved, the current #163 recurrence would propagate retained negativity rather than contradict it. Endpoint sign therefore needs another independent terminal restriction to become a closing mechanism.
+
+### PR #166 — shifted same-state discriminator
+
+The finite discovery state is corrected to
 
 ```text
-R8(u_lambda) < 0
-F_odd(lambda) = Gamma(lambda)*explicitCanonicalSourceMoment(u_lambda)
-h^(7)(0) = -2*(2*pi)^6*M4(u_lambda)
-2*(2*pi)^4*(R8(u_lambda)-R9(u_lambda)) = S8(L)*|h^(7)(0)|^2
+u_lambda = c - W(H-lambda G)^(-1)r,
 ```
 
-and, in the even-selected branch,
+with the Gram matrix required because the exact integer predecessor basis is non-orthonormal.
+
+A 672-state scout finds zero reconstructible negative shifted states but isolates a near-critical odd `Q16/N3/K4` family. The strongest sampled point is independently Arb/Sylvester-certified positive.
+
+**Audit conclusion:** absence of a bad finite state is not positivity; the research target becomes the near-critical cell rather than another uniform scan.
+
+### PR #167 — Q16 full-cell scalar barrier
+
+Floating full-cell optimization finds no negative aperture and pushes the apparent minimum toward `log 17`.
+
+The direct whole-cell Arb representation remains unresolved in every depth-8 leaf:
 
 ```text
-2*(2*pi)^4*R9(u_lambda) < -S8(L)*|h^(7)(0)|^2.
+leaf_count = 256
+POSITIVE_CERTIFIED = 0
+BAD_INTERVAL_CERTIFIED = 0
+UNRESOLVED = 256
 ```
 
-The highest-information next work is FB-05: falsify candidate arithmetic restrictions before theorem investment, especially endpoint-scalar sign/nonvanishing and canonical sample-to-jet rigidity.
+**Audit conclusion:** direct dependency-heavy full-matrix subdivision is methodologically insufficient in the current representation. `UNRESOLVED` is not sign evidence.
 
-## Exact route falsification still active
+### PR #168 — threshold moment jet / Q17 microscope
 
-The K=2 boundary-flat fixtures continue to refute universal pointwise fixed-sign smoothed-integrand positivity. This does not refute the exact integrated Riesz recurrence, #161 same-state source composition, or #163 mixed-jet/Riesz coupling.
-
-## Current execution order
+A corrected boundary-flat analysis gives exact executable parity identities for `K=2..8`:
 
 ```text
-FB-01  retained first-bad certificate                              PROVED / #153
-FB-02  exact pole-prime discrepancy                                PROVED / #153
-FB-03A-D legal Riesz engine / parity-even jets                     PROVED / #155
-FB-03E-F complex transport / retained transformed negativity       PROVED / #157
-FB-04A moment jets + signed Riesz boundary recurrence               PROVED / #159
-FB-04B shifted Riesz x cross-parity source composition             PROVED / #161
-FB-04C mixed quadratic-normal jet x Riesz boundary coupling        PROVED / #163
-FB-05  independent contradiction-producing arithmetic restriction OPEN / NEXT
-FB-06  same-state contradiction / negative-root exclusion          OPEN
-FB-07  terminal seam                                               OPEN
+odd:  orders 1,3,5 vanish; first surviving order 7 ~ M3^2
+even: orders 1,3,5,7 vanish; first surviving order 9 ~ M4^2
 ```
 
-## Permanent firewalls
+The exact log17 threshold and all 18 two-sided Arb microscope points certify positive. Floating discovery in Q17 reports `CONTINUES_DOWN_BUT_POSITIVE`.
 
-- compiler/CI validity is authoritative;
-- theorem authority through #163 and machine claim promotion are separate;
-- complete retained/shifted transformed negativity is not a contradiction;
-- exact discrepancy/Riesz identities are not arithmetic sign theorems;
-- no division by transfer factors without nonzeroness;
-- `D` algebraic != `D` unitary/isometric;
-- #159 self-energy moment jets and #163 mixed source-pairing jets are distinct theorem surfaces;
-- nonzero explicit source moment !=> nonzero M4;
-- nonzero M4 !=> nonzero explicit source moment;
-- finite samples != local derivative determination without a theorem;
-- endpoint-scalar sign/nonvanishing remains open;
-- simultaneous even/odd badness remains open;
-- selected parity cannot be assumed even WLOG;
-- pointwise smoothed-integrand positivity remains dead as a universal route;
-- interval-certified finite numerics are falsification evidence, not Lean authority;
-- negative-root exclusion != terminal Mathlib RH without final seam;
-- RH remains OPEN.
+**Audit conclusion:** the isolated favorable entering-prime jet is real in the executable layer but does not control the full canonical aperture drift.
 
-Newest research implications:
-`research/RHRC/RESEARCH_LEADS_POST_163_MIXED_SOURCE_RIESZ_ARITHMETIC_FRONTIER_DELTA.md`.
+## Current post-green frontier
 
-**RH remains OPEN.**
+The highest-information remaining FB-05 target is now a dependency-reduced scalar final Sylvester/Schur pivot with a channel-aware decomposition
+
+```text
+P(L) = P_background(L) + P_entering_q(L).
+```
+
+The next research pass should determine the background variation, pivot sensitivity to the high-order rank-one threshold atom, catch-up scale, parity dependence and whether the combined dynamics produce an actual barrier or finite bad successor.
+
+This is not a revival of global Schur monotonicity. The project already has evidence that a global fixed derivative sign is false/quarantined.
+
+## Claim firewall
+
+- #165-#168 are research evidence, not theorem promotion.
+- exact executable algebra is not Lean theorem authority.
+- finite Arb certification is not a whole-cell or global theorem.
+- absence of sampled negative states is not positivity.
+- endpoint-scalar positivity alone is not first-bad exclusion.
+- threshold prime-entry stabilization is not full-source stabilization.
+- `UNRESOLVED` interval output is not sign evidence.
+- sourceMoment nonzero does not imply `M4` nonzero, nor conversely.
+- simultaneous parity badness and odd-selected coverage remain open.
+- negative-root exclusion remains open.
+- **RH remains OPEN.**

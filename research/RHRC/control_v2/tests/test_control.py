@@ -21,7 +21,7 @@ class ControlV2Tests(unittest.TestCase):
         self.assertFalse(boundary["may_emit_terminal_rh_status"])
         self.assertFalse(boundary["may_promote_lean_theorem"])
 
-    def test_state_has_post_163_theorem_and_post_117_control_anchors(self):
+    def test_state_keeps_post_163_theorem_and_post_117_control_anchors(self):
         state = load_research_state()
         self.assertEqual(state.anchor.pr, 163)
         self.assertEqual(
@@ -43,6 +43,20 @@ class ControlV2Tests(unittest.TestCase):
             state.frontier_id,
             "FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN",
         )
+
+    def test_control_note_records_post168_research_without_moving_theorem_anchor(self):
+        control = json.loads(
+            (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
+        )
+        note = control["control_note"]
+        self.assertIn("PR #168", note)
+        self.assertIn("9657dad6f1e262b1fa7e08e6944aaa935feeaf33", note)
+        self.assertIn("full scalar Sylvester/Schur pivot", note)
+        self.assertIn("CONTINUES_DOWN_BUT_POSITIVE", note)
+        self.assertIn("PR #117 remains the Control-v2 semantic anchor", note)
+        self.assertEqual(control["merged_theorem_anchor"]["pr"], 163)
+        self.assertEqual(control["merged_control_anchor"]["pr"], 117)
+        self.assertEqual(control["terminal_claim"], "RH_OPEN")
 
     def test_completed_actions_are_not_routable_and_arithmetic_actions_are_present(self):
         action_ids = {a.action_id for a in load_actions()}
@@ -80,7 +94,7 @@ class ControlV2Tests(unittest.TestCase):
         self.assertGreater(scores["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"],
                            scores["E4_B_PARITY_SHIFTED_NULLITY"])
 
-    def test_regular_schur_action_is_post163_fb05_arithmetic_route(self):
+    def test_regular_schur_action_is_post168_fb05_pivot_route(self):
         registry = json.loads(
             (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
         )
@@ -89,20 +103,31 @@ class ControlV2Tests(unittest.TestCase):
         first_breaks = "\n".join(x["statement"] for x in action["first_breaks"])
         break_ids = [x["id"] for x in action["first_breaks"]]
 
-        self.assertIn("PR #163", objections)
-        self.assertIn("FB-04C mixed-source jet / Riesz coupling", objections)
-        self.assertIn("nonzero explicitCanonicalSourceMoment does not imply M4", objections)
-        self.assertIn("finite weighted sample sum does not by itself determine the seventh jet", objections)
-        self.assertIn("canonicalPolePrimeRieszEndpointScalar", objections)
-        self.assertIn("simultaneous even/odd successor badness", objections)
-        self.assertIn("odd-selected first-bad branch", objections)
-        self.assertIn("DR-024", objections)
+        for token in (
+            "PR #163",
+            "PR #165",
+            "PR #166",
+            "PR #167",
+            "PR #168",
+            "endpoint positivity alone",
+            "true shifted secular ray",
+            "256 depth-8 leaves remain UNRESOLVED",
+            "CONTINUES_DOWN_BUT_POSITIVE",
+            "full scalar Sylvester/Schur pivot",
+            "nonzero explicitCanonicalSourceMoment does not imply M4",
+            "finite weighted sample sum does not by itself determine the seventh jet",
+            "simultaneous even/odd successor badness",
+            "odd-selected first-bad branch",
+            "global aperture and global minimizing-Schur monotonicity remain quarantined",
+            "DR-024",
+        ):
+            self.assertIn(token, objections)
+
         self.assertEqual(action["dead_route_matches"], [])
         self.assertEqual(break_ids, ["E4A4-SCHUR-FB-05"])
-        self.assertIn("#163's exact mixed-source seventh-jet", first_breaks)
-        self.assertIn("endpoint scalar", first_breaks)
-        self.assertIn("production source sampling", first_breaks)
-        self.assertIn("incompatible restriction", first_breaks)
+        self.assertIn("#165-#168", first_breaks)
+        self.assertIn("full-pivot/background variation law", first_breaks)
+        self.assertIn("without restating successor positivity", first_breaks)
 
         selected_break = _selected_first_break(
             registry, "E4_A4_REGULAR_SCHUR_ENERGY_SIGN"
@@ -166,8 +191,8 @@ class ControlV2Tests(unittest.TestCase):
         self.assertEqual(cert.disposition.value, "ABSTAIN")
 
     def test_score_inputs_are_finite(self):
-        for action in load_actions():
-            self.assertTrue(abs(action_score(action)) < 1e6)
+        for a in load_actions():
+            self.assertTrue(abs(action_score(a)) < 1e6)
 
     def test_terminal_answer_does_not_import_control_v2(self):
         terminal = (RHRC / "runner" / "terminal_answer.py").read_text(encoding="utf-8")

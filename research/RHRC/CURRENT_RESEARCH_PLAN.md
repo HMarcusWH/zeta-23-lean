@@ -2,235 +2,185 @@
 
 > **Claim firewall: RH remains OPEN.**
 
-## Current authority split
+## Authority split
+
+Live GitHub head + exact compiler/CI evidence are authoritative dynamically. Do not hard-code a docs merge as permanent `live main` state.
+
+### Theorem authority
 
 ```text
-live main after merged PR #163 = bd3fa1aafa7df2aa35873df532bdb6f17ddd2bbd
-live main tree = c397b3a015ea54e38ecfe626d6e29556fe963839
-
 latest theorem-bearing PR = #163
 validated theorem head = b418ff034428f92594bab0e5b8276181a086ee4b
 validated theorem tree = c397b3a015ea54e38ecfe626d6e29556fe963839
 RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
-
-control-plane semantic anchor = PR #117 merge 19346f4c00d13bf33db95cbe5325233f86e54c12
-RH = OPEN
 ```
 
-Live GitHub head + exact Lean/compiler/CI remain authoritative. The validated #163 head and merged `main` are distinct commits with the same theorem tree.
+### Latest research-evidence anchor
+
+```text
+latest merged research PR = #168
+validated research head = 9657dad6f1e262b1fa7e08e6944aaa935feeaf33
+merged research commit = 4e2c111a836f3fc95f8209485f726dc886c918e7
+research tree = 881e1f05302041f56ae4b6a14f14e45d7bbc096b
+RHRC #1055 = SUCCESS
+Permansson #828 = SUCCESS
+```
+
+### Control authority
+
+```text
+control-plane semantic anchor = PR #117
+selected formal first break = E4A4-SCHUR-FB-05
+terminal claim = RH_OPEN
+```
+
+Research PRs #165-#168 do not advance theorem or machine-claim authority.
 
 ## One-screen frontier
 
 ```text
-DONE THROUGH #153
-  off-line zero -> retained regular cell-minimal first-bad certificate
-  exact negative canonical source-channel energy on that retained state
-  exact finite pole-prime discrepancy and full-channel normal form
+PROVED THROUGH #163
+  off-line zero
+  -> retained regular cell-minimal first-bad certificate
+  -> exact negative canonical source channel
+  -> exact finite pole-prime discrepancy
+  -> legal production Riesz 6 / even 8
+  -> retained transformed negativity
+  -> exact moment-prefix jets and signed Riesz boundary recurrence
+  -> same-state shifted Riesz x cross-parity source obstruction
+  -> exact quadratic-normal mixed source observable
+  -> h^(7)(0) = -2*(2*pi)^6*M4
+  -> finite-prime term samples the same observable
+  -> exact R8-R9 = endpoint scalar * squared mixed seventh jet
 
-DONE / #155
-  finite discrepancy integrability
-  anchored Riesz primitives + AC / a.e. derivative seam
-  legal arbitrary-order conditional Riesz smoothing
-  source-coordinate oddness + all even endpoint jets
-  even parity -> M3 = 0
+POST-THEOREM FB-05 RESEARCH
+  #165  exact S8 executable arithmetic audited
+        broad finite positivity signal; no sign theorem
+        positivity alone is not a contradiction
 
-DONE / #157
-  genuine complex production D transport
-  boundary-flat jets 1..6 / even jets 1..8
-  exact complete production Riesz 6 / even Riesz 8
-  retained complete Riesz negativity
-  off-line zero -> retained complete Riesz-6 negative certificate
+  #166  true shifted secular state executable
+        u_lambda = c - W(H-lambda G)^(-1)r
+        672-state scout; no negative successor found
+        Q16/N3/K4/odd near-critical family isolated
 
-DONE / #159 — FB-04A
-  exact first source-energy jet
-  general moment-prefix odd-jet theorem
-  exact seventh derivative = -2*(2*pi)^6*|M3|^2
-  exact even ninth derivative = 2*(2*pi)^8*|M4|^2
-  generic signed pole-prime / complete-channel Riesz boundary recurrence
-  retained R6->R7 M3^2 and even R8->R9 M4^2 decompositions
+  #167  Q16 full-cell scalar barrier attack
+        no floating negative point found
+        apparent minimum moves toward log 17
+        direct whole-cell Arb: 256/256 leaves UNRESOLVED
+        brute subdivision route rejected in current representation
 
-DONE / #161 — FB-04B
-  negative eigenmode -> ParityBad
-  predecessor nonnegativity available for either parity from first-bad ancestry
-  genuine shifted negative secular trial has exact negative canonical/source energy
-  same even shifted trial has R8 < 0
-  same even shifted trial has exact R9/M4 boundary inequality
-  odd-good -> odd secular scalar != 0
-  retained even root: odd scalar = Gamma * explicitCanonicalSourceMoment on same trial
-  odd-good -> explicitCanonicalSourceMoment != 0
-  headline fork: odd successor bad OR explicit source moment != 0
+  #168  log17 boundary-flat prime-entry jet
+        exact executable K=2..8 identities
+        odd first surviving order 7 ~ M3^2
+        even first surviving order 9 ~ M4^2
+        threshold + 18/18 two-sided Arb points positive
+        Q17 = CONTINUES_DOWN_BUT_POSITIVE
+        isolated stabilizing atom does not control full background drift
 
-DONE / #163 — FB-04C
-  exact complex mixed source-pairing derivative transport
-  exact quadraticNormalSourceAtom normalization
-  h_v^(7)(0) = -2*(2*pi)^6*M4(v) on even boundary-flat carriers
-  exact mixed seventh-jet norm square = constant*|M4|^2
-  explicitCanonicalSourceMoment finite-prime term samples the same quadraticNormalSourceAtom
-  exact complete-channel R8-R9 boundary rewrite through |h_v^(7)(0)|^2
-  retained even-shifted first-bad specialization
-  strict retained R9 upper bound through the mixed jet without endpoint-scalar sign
-  crossParityGamma != 0 under even-selected + odd-good
+NOW — FB-05 FULL SCALAR PIVOT / BACKGROUND VARIATION
+  decompose near-critical final Sylvester/Schur pivot into
+    smooth canonical background
+    +
+    entering prime-power high-order rank-one kick
 
-NOW — FB-05 CANONICAL ARITHMETIC RESTRICTION
-  find an independently meaningful arithmetic restriction on the exact retained state
-  attack endpoint-scalar sign/nonvanishing before assuming it
-  test whether canonical prime sampling constrains the local seventh jet
-  test simultaneous even+odd badness with theorem-aligned controls
-  keep the odd-selected first-bad branch explicit
-  preserve exact pole/prime/archimedean cancellation
-  reject any route that merely restates successor positivity
+  determine
+    background derivative / variation
+    threshold-kick coefficient
+    pivot sensitivity to the rank-one atom
+    catch-up scale
+    behavior through later prime-power thresholds
+    parity dependence
+    whether a genuine barrier or bad successor emerges
 
-DECISIVE OPEN TARGET
-  independent contradiction-producing canonical arithmetic restriction
-  -> same-state contradiction
-  -> negative-root exclusion
-  -> outside-strip/trivial-zero seam
-  -> Mathlib RiemannHypothesis wrapper
+AFTER
+  weakest surviving arithmetic theorem
+  -> compose with exact #161/#163 retained state
+  -> FB-06 same-state contradiction / negative-root exclusion
+  -> FB-07 outside-strip/trivial-zero seam + Mathlib RH wrapper
 ```
 
-## Exact #163 theorem package
+## Exact theorem package through #163
 
-### Generic mixed-source calculus — PROVED
+For the retained even-selected branch, Lean proves on one exact shifted negative state:
 
 ```text
-quadraticNormalSourceAtom
-iteratedDeriv_seven_quadraticNormalSourceAtom_eq_moment_four
-explicitCanonicalSourceMoment_eq_quadraticNormalSourceAtom_sum
-normSq_iteratedDeriv_seven_quadraticNormalSourceAtom
-two_pi_four_mul_rieszBoundaryEight_eq_endpointScalar_mul_mixedJetNormSq
-two_pi_four_mul_rieszEight_sub_nine_eq_endpointScalar_mul_mixedJetNormSq
+R8(u_lambda) < 0
+F_odd(lambda) = Gamma(lambda)*explicitCanonicalSourceMoment(u_lambda)
+odd successor bad OR explicitCanonicalSourceMoment(u_lambda) != 0
+h^(7)(0) = -2*(2*pi)^6*M4(u_lambda)
+2*(2*pi)^4*(R8(u_lambda)-R9(u_lambda)) = S8(L)*|h^(7)(0)|^2
+2*(2*pi)^4*R9(u_lambda) < -S8(L)*|h^(7)(0)|^2
 ```
 
-For even boundary-flat `v` with `K >= 1`, Lean proves
+The strict R9 inequality uses no sign assumption on `S8(L)`.
+
+## What remains formally open
 
 ```text
-h_v^(7)(0) = -2*(2*pi)^6*M4(v)
-|h_v^(7)(0)|^2 = 4*(2*pi)^12*|M4(v)|^2
-2*(2*pi)^4*(R8(v)-R9(v)) = S8(L)*|h_v^(7)(0)|^2.
+explicitCanonicalSourceMoment != 0 -> M4 != 0
+M4 != 0 -> explicitCanonicalSourceMoment != 0
+finite production samples determine h^(7)(0)
+canonicalPolePrimeRieszEndpointScalar L 8 >= 0
+canonicalPolePrimeRieszEndpointScalar L 8 != 0
+simultaneous even/odd bad exclusion
+odd-selected first-bad closure
+full scalar pivot/background inequality
+negative-root exclusion
+RiemannHypothesis
 ```
 
-The source-moment decomposition theorem also exposes the finite-prime term as a weighted sum of values of this same `quadraticNormalSourceAtom` at the production prime-source coordinates. Pole and archimedean terms remain present.
+## Reclassified FB-05 subroutes
 
-### Retained same-state specialization — PROVED
+### A. Full scalar pivot / background dynamics — NEXT
 
-```text
-RegularCellMinimalNegativeEnergyCertificate.evenShiftedMixedSourceSeventhJet_eq_momentFour
-RegularCellMinimalNegativeEnergyCertificate.evenShiftedRieszEightNine_eq_mixedJetBoundary
-RegularCellMinimalNegativeEnergyCertificate.evenShiftedRieszNine_lt_neg_mixedJetBoundary
-RegularCellMinimalNegativeEnergyCertificate.crossParityGamma_ne_zero_of_even_of_not_oddBad
-```
+Work with a dependency-reduced scalar barrier, not the whole interval matrix. Preserve exact channel cancellation and isolate the high-order entering prime-power response from the lower-order continuously varying background.
 
-In the retained even-selected branch, strict R8 negativity and the exact boundary identity imply
+This is the current highest-information route.
 
-```text
-2*(2*pi)^4*R9 < -S8(L)*|h^(7)(0)|^2
-```
+### B. Endpoint scalar `S8` — OPEN, lower standalone leverage
 
-without assuming a sign for `S8(L)`.
+#165 found no finite sign reversal in the audited range, but no global theorem follows. Even if `S8 >= 0`, #163 gives `R9 <= R8 < 0`; sign alone is not a contradiction.
 
-## What #163 does not prove
+### C. SourceMoment / local jet rigidity — OPEN
 
-```text
-explicitCanonicalSourceMoment != 0 -> M4 != 0        OPEN
-M4 != 0 -> explicitCanonicalSourceMoment != 0        OPEN
-finite prime samples determine h^(7)(0)               OPEN
-canonicalPolePrimeRieszEndpointScalar L 8 >= 0        OPEN
-canonicalPolePrimeRieszEndpointScalar L 8 != 0        OPEN
-simultaneous even/odd bad exclusion                    OPEN
-odd-selected first-bad branch closure                  OPEN
-negative-root exclusion                                OPEN
-RiemannHypothesis                                      OPEN
-```
+#163 proves a shared analytic observable. #166-#168 do not establish a global sourceMoment-to-`M4` implication or converse.
 
-The phrase “mixed-source rigidity” must therefore be read narrowly: #163 proves the local mixed-jet/Riesz coupling, not a global sourceMoment<->M4 rigidity theorem.
+### D. Simultaneous parity route — OPEN
 
-## FB-05 candidate subroutes
+#161 still allows the opposite parity to be bad. The parity-asymmetric threshold jets may become useful only when composed with a full canonical pivot restriction.
 
-### A. Endpoint-scalar route
+### E. Odd-selected coverage — OPEN
 
-Study the exact theorem object
+There is no WLOG-even theorem because `D` is algebraic, not unitary/isometric.
 
-```text
-canonicalPolePrimeRieszEndpointScalar L 8
-```
+## Falsification requirements for the next research PR
 
-with the exact Lean normalization. First falsify global sign/nonvanishing claims numerically and symbolically across cutoff cells and prime-power thresholds. Only formalize a sign theorem if it survives.
+- reconstruct the final pivot independently from the restricted matrix;
+- verify channel reconstruction at scalar-pivot level;
+- use prime powers through von Mangoldt weights, not primes only;
+- compare high-precision finite differences/derivatives with pointwise Arb replay;
+- test both sides of actual prime-power thresholds;
+- test multiple sizes and both parities;
+- search deliberately for weak/degenerate threshold kicks;
+- treat `UNRESOLVED` as unresolved, never as a sign;
+- do not revive global aperture or Schur monotonicity under a new name;
+- if an actual finite bad successor appears, feed it into the #166 shifted-state discriminator.
 
-### B. Production sample-to-jet route
+## Dead/quarantined shortcuts relevant now
 
-The finite-prime contribution samples `quadraticNormalSourceAtom` exactly. A generic finite weighted sum of samples does not determine a seventh derivative. Search for extra canonical structure: multiple cutoff cells, exact prime-source coordinates/weights, analyticity, recurrence, interpolation, or a stronger source identity.
+- pointwise fixed-sign smoothed-integrand positivity remains dead;
+- generic first-bad geometry without canonical arithmetic remains insufficient;
+- universal one-step domination is not research progress when obtained by restating successor positivity;
+- global Loewner or Schur monotonicity remains quarantined;
+- brute direct whole-cell Arb subdivision in the current dependency-heavy representation is not the next certification strategy.
 
-### C. Simultaneous parity route
+## Highest-leverage next move
 
-#161 still allows the odd successor to be bad. Test whether simultaneous even+odd badness remains structurally easy after imposing the canonical arithmetic source data. Generic/rank-one countermodels should be used before Lean investment.
+Build a research PR for the full threshold pivot/background decomposition and try to falsify it aggressively. Formalize only the weakest theorem that survives and supplies information unavailable from successor positivity itself.
 
-### D. Odd-selected coverage
+Standing question:
 
-The retained strict R8/R9 package is even-selected where stated. There is no WLOG-even reduction because `D` is algebraic rather than unitary/isometric. Reverse transfer, an odd analogue, or independent exclusion remains open.
-
-## Falsification requirements
-
-Before promoting a stronger arithmetic mechanism, attack it with:
-
-- small canonical sizes and both parity sectors;
-- exact/Arb reconstruction using existing R003 backends;
-- endpoint-scalar zero/sign-change searches;
-- source-moment zero / near-zero cases;
-- mixed seventh-jet / `M4` zero or near-zero cases;
-- sourceMoment != 0 with mixed jet = 0 and conversely when available;
-- simultaneous both-parity badness;
-- scaling and normalization checks;
-- modified-source controls when the proposed mechanism looks too structural.
-
-## Dead route remains dead
-
-Exact boundary-flat `K=2` fixtures still refute
-
-```text
-positive Riesz primitive + endpoint flatness
-  -> pointwise fixed-sign smoothed integrand.
-```
-
-#159/#161/#163 integrated boundary, same-state and mixed-jet identities do not revive that pointwise claim.
-
-## Semantic work packages
-
-```text
-FB-01  retained full first-bad certificate                         PROVED / #153
-FB-02  exact finite pole-prime discrepancy                         PROVED / #153
-FB-03A-D legal Riesz engine / parity-even jets                     PROVED / #155
-FB-03E-F complex production transport / retained Riesz negativity  PROVED / #157
-FB-04A exact moment jets + signed Riesz boundary recurrence         PROVED / #159
-FB-04B same-state shifted Riesz x cross-parity source composition  PROVED / #161
-FB-04C mixed quadratic-normal jet x Riesz boundary coupling        PROVED / #163
-FB-05  independent contradiction-producing arithmetic restriction  OPEN / ACTIVE
-FB-06  same-state contradiction / negative-root exclusion          OPEN
-FB-07  terminal zeta/Mathlib seam                                  OPEN
-```
-
-PR numbers are execution history, not mathematical dependencies.
-
-## Permanent firewalls
-
-1. A retained transformed negative certificate is not a contradiction.
-2. Exact discrepancy/Riesz identities are not arithmetic positivity.
-3. R8/R9 retained/shifted statements are conditional on even parity where stated.
-4. The #159 self-energy seventh/ninth jet formulas are not the #163 mixed source-pairing theorem; #163 proved the latter independently.
-5. `explicitCanonicalSourceMoment != 0` does not imply `M4 != 0`, nor conversely, without a theorem.
-6. Exact finite-prime sampling of a function does not by itself determine its local seventh jet.
-7. No endpoint-scalar sign/nonvanishing theorem is currently available.
-8. Simultaneous even/odd badness remains possible until excluded.
-9. The selected first-bad parity cannot be assumed even WLOG; D is not unitary/isometric.
-10. Riesz smoothing is not a pointwise sign theorem.
-11. Pointwise fixed-sign smoothed-integrand positivity remains falsified.
-12. No division by alpha/Gamma/overlap/source moment without a theorem.
-13. Interval-certified numerics are not Lean theorem authority.
-14. Machine claim promotion remains separate from compiler theorem validity.
-15. Negative-root exclusion is not the terminal Mathlib RH statement without the final seam.
-
-Newest research delta:
-
-`RESEARCH_LEADS_POST_163_MIXED_SOURCE_RIESZ_ARITHMETIC_FRONTIER_DELTA.md`
+> Given everything now theoremized through #163 and learned experimentally through #168, can the exact canonical arithmetic force a scalar pivot barrier incompatible with the retained shifted negative state?
 
 **RH remains OPEN.**

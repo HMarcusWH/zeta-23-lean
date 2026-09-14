@@ -177,6 +177,8 @@ The derivative of the minimizing-trial Schur value changes sign in tested canoni
 
 The envelope identity `S'(L)=<M'(L)u(L),u(L)>`, if theoremized, remains useful diagnostically; it does not imply a fixed sign.
 
+**Post-#168 clarification:** the current threshold-pivot/background route does not revive DR-022. It is local to actual arithmetic seams and decomposes smooth background variation from the high-order entering-prime response without assuming a fixed global derivative sign.
+
 ## DR-023 — universal positive elementary source-atom energy
 
 Attempt to represent the selected residual energy as a sum/integral of elementary source atoms each having nonnegative quadratic energy on the relevant canonical trial.
@@ -215,6 +217,44 @@ This does **not** refute the #155 Riesz identity and is not a zeta counterexampl
 **Revival requirement:** state and prove a new hypothesis that excludes the exact fixtures above and show the retained production first-bad state satisfies it.
 
 Regression record: `countermodels/POST_155_RIESZ_POINTWISE_SIGN_COUNTERMODELS_2026_09_13.md`.
+
+## DR-025 — brute direct whole-cell Arb subdivision of the canonical matrix
+
+Attempt to certify the near-critical canonical cell merely by repeatedly subdividing the aperture interval while evaluating the same dependency-heavy full canonical matrix expression.
+
+**Status:** **DEAD AS THE CURRENT CERTIFICATION STRATEGY / exact finite method falsification in PR #167.**
+
+For the strongest post-#166 near-critical target
+
+```text
+Q = 16
+N = 3
+K* = 4
+parity = odd
+```
+
+PR #167 deepened the direct fixed-cell Arb audit to depth 8. The complete result was
+
+```text
+leaf_count = 256
+POSITIVE_CERTIFIED = 0
+BAD_INTERVAL_CERTIFIED = 0
+UNRESOLVED = 256
+```
+
+This does **not** prove that the cell is negative, positive, or especially close to a zero. It shows that the current representation suffers enough dependency inflation that subdivision alone does not resolve the sign.
+
+Therefore:
+
+```text
+UNRESOLVED != negative
+UNRESOLVED != positive
+more subdivisions != demonstrated mathematical progress
+```
+
+**Revival requirement:** change the representation or supply new analytic control — for example a dependency-reduced scalar Sylvester/Schur pivot, exact channel decomposition, derivative/variation bounds, or another certified enclosure strategy. Merely increasing subdivision depth does not count as a route change.
+
+This dead-route entry does **not** quarantine interval arithmetic generally. Pointwise Arb replay and better-conditioned scalar interval formulations remain active research tools.
 
 ## Coordinate-mismatch warning — not a dead route ID
 
