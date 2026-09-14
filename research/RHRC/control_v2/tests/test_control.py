@@ -58,7 +58,7 @@ class ControlV2Tests(unittest.TestCase):
         self.assertIn("NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN", note)
         self.assertIn("correlation-preserving Q14 derivative enclosure", note)
         self.assertIn("replay-hardening debt", note)
-        self.assertIn("closed", note)
+        self.assertIn("closes", note)
         self.assertIn("PR #117 remains the Control-v2 semantic anchor", note)
         self.assertEqual(control["merged_theorem_anchor"]["pr"], 163)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
