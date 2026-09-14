@@ -19,12 +19,12 @@ Permansson #812 = SUCCESS
 ### Latest research-evidence anchor
 
 ```text
-latest merged research PR = #176
-validated research head = c6f53131b91b18aff2a50a6db2ddaa2761e7e5aa
-merged research commit = 96cccf715c02ed2bd4ae58f8362180020ae90854
-research tree = 28bd302c17a6128e538a3510917dafb670f6dce8
-RHRC #1072 = SUCCESS
-Permansson #845 = SUCCESS
+latest merged research PR = #178
+validated research head = 28df43faed0db8c0f12a25525df6c28467ce5b07
+merged research commit = fb2a181ce0d95d90396ead7730e7bf365616a153
+research tree = 96ab14953e9e8bff5245953082db8a6471648614
+RHRC #1074 = SUCCESS
+Permansson #847 = SUCCESS
 ```
 
 ### Control authority
@@ -35,7 +35,7 @@ selected formal first break = E4A4-SCHUR-FB-05
 terminal claim = RH_OPEN
 ```
 
-Research PRs #165-#176 do not advance theorem or machine-claim authority.
+Research PRs #165-#178 do not advance theorem or machine-claim authority.
 
 ## One-screen frontier
 
@@ -60,7 +60,7 @@ POST-THEOREM FB-05 RESEARCH
 
   #166  true shifted secular state executable
         u_lambda = c - W(H-lambda G)^(-1)r
-        672-state scout; Q16/N3/K4/odd near-critical family isolated
+        near-critical Q16/N3/K4/odd family isolated
 
   #167  Q16 full-cell attack
         no floating negative point found
@@ -80,15 +80,12 @@ POST-THEOREM FB-05 RESEARCH
   #172  threshold-to-threshold production barrier audit
         arithmetic entry lift finite-certified with both signs
         q13/N2/K3/even isolated as strongest near-critical target
-        full pivot ~= +5.8401616e-12
-        q13 entry lift ~= -6.3774491e-12
 
   #174  exact q13/N2/K3/even 2x2 scalar barrier audit
         H=[[a,b],[b,d]]
         H1 <-> a>0
         Delta_2=a*d-b^2
         sign pivot = sign Delta_2 in H1
-        floating basin remains sampled-positive
         384-bit direct scalar Arb audit:
           Q13 100% UNRESOLVED
           Q14 100% UNRESOLVED
@@ -97,11 +94,20 @@ POST-THEOREM FB-05 RESEARCH
 
   #176  fixed-unit q13/Q14 enclosure benchmark
         independent fixed-unit Arb path agrees with direct production path
-        primitive/full-matrix/scalar/seam/zero-weight checks pass
         6 frozen primary Q14 boxes benchmarked
         factor-2 material Delta_2 width criterion passes in all 6
         method_classification = FIXED_UNIT_METHOD_ACCEPTED
-        finite method-selection evidence only; no sign theorem
+
+  #178  complete fixed-unit derivative discrimination
+        M'(L)=pole'-arch'-prime' implemented inside fixed Q-cells
+        analytic primitive/full-matrix/scalar/odd-ancestry derivatives
+          independently checked against centered value differences
+        derivative seam checks restricted to zero-weight seams 14/15
+        6 primary Q14 side boxes audited at 384-bit Arb
+        disposition = DERIVATIVE_UNRESOLVED
+        orientation = NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN
+        no bad interval / no H1-loss interval certified
+        #176 standalone replay-hardening debt closed
 ```
 
 ## Exact theorem package through #163
@@ -140,100 +146,122 @@ RiemannHypothesis
 
 ## Reclassified FB-05 subroutes
 
-### A. q13/N2/K3/even 2x2 determinant barrier — FIXED-UNIT METHOD SELECTED / DERIVATIVE FRONTIER ACTIVE
+### A. q13/N2/K3/even 2x2 determinant barrier — DERIVATIVE IMPLEMENTATION VALIDATED / RAW BOX SIGN UNRESOLVED
 
-#174 consumed the exact theorem-aligned 1D->2D reduction. #176 now consumes the first representation-selection gate left by #174.
+#174 consumes the exact theorem-aligned 1D->2D reduction. #176 consumes the first representation-selection gate. #178 consumes the first derivative-implementation gate.
 
-The direct `a(L), Delta_2(L)` representation remains the independent production baseline, but the fixed-unit pullback is the preferred **research enclosure representation for this finite laboratory** because it passed the predeclared finite benchmark:
+The finite laboratory is
 
 ```text
-6 primary Q14 boxes
-factor-2 material Delta_2 width criterion
-6/6 delta_strictly_narrower
-6/6 delta_material_gain
-FIXED_UNIT_METHOD_ACCEPTED
+H(L) = [[a(L), b(L)],
+        [b(L), d(L)]]
+Delta_2(L)=a(L)d(L)-b(L)^2
+H1 <-> a(L)>0
+P(L)=Delta_2(L)/a(L) in H1.
 ```
 
-This does not classify the barrier. The next route must test whether the value-level conditioning gain survives differentiation.
+#176 selected the fixed-unit pullback as the preferred research enclosure representation on the frozen value benchmark.
 
-Current derivative chain:
+#178 validates the complete canonical derivative chain
 
 ```text
-fixed-unit alpha', beta', gamma'
+fixed-unit primitive derivatives
+  + pole derivative
+  + fixed-Q prime derivative
+  -> complete M'(L)
   -> a', b', d'
-  -> Delta_2' = a'd + ad' - 2bb'
+  -> Delta_2' = a'd + ad' - 2bb'.
 ```
 
-First acceptance gate:
+But the exact finite research result is
 
 ```text
-independent agreement of analytic derivative evaluator
-with high-precision centered finite differences at frozen points
-AND
-rigorous derivative enclosures narrow enough to distinguish
-outer monotone regions from the shallow Q14 stationary basin.
+DERIVATIVE_UNRESOLVED
+NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN
+left/right certified sign label sets all empty
+no derived stationary existence
+no bad interval
+no H1-loss interval.
 ```
 
-Only after that gate should the route attempt local Taylor models, interval Newton/Krawczyk, or certified stationary/minimum/contact isolation.
+Therefore the current raw interval expression is not yet a useful stationary discriminator. This is not zero/stationary evidence.
 
-The exact cell classification remains:
+### B. Correlation-preserving Q14 derivative enclosure — NOW / HIGHEST LEVERAGE
+
+The next research slice should diagnose the dependency source before adding a large second-derivative/Newton stack.
+
+Order:
 
 ```text
-A. H1 loss:       a(L) <= 0 somewhere
-B. bad successor: a(L) > 0 and Delta_2(L) < 0 somewhere
-C. contact:       a(L) > 0 and Delta_2(L) = 0 somewhere
-D. strict barrier:a(L) > 0 and Delta_2(L) > 0 everywhere
+1. rigorous point Delta_2' balls at frozen primary/control centers
+2. compare exact derivative representations in H1
+     raw: Delta_2' = a'd + ad' - 2bb'
+     Schur-factorized: Delta_2 = aP,
+                       Delta_2' = a'P + aP'
+3. only if point orientation is visible:
+     implement/bound Delta_2''
+     use centered mean-value/Taylor enclosure
+4. only after a two-sided derivative sign bracket:
+     interval Newton / Krawczyk on Delta_2'.
 ```
 
-A zero-containing interval is not a contact theorem. `Delta_2 >= 0` without nonvanishing is not case D.
+The determinant and pivot minima remain distinct. Using `a'P+aP'` is only an alternative enclosure graph for the determinant derivative, not a claim that the determinant and pivot have the same stationary point.
 
-### B. Threshold-to-threshold Schur barrier — RESEARCHED / #172
+Green outcomes must include method falsification. If point balls or centered/factorized boxes remain unresolved, record that and change representation again rather than forcing more subdivision.
+
+### C. Threshold-to-threshold Schur barrier — RESEARCHED / #172
 
 Consumed research infrastructure. Universal favorable arithmetic replenishment is falsified as a default heuristic.
 
-### C. Theorem-aligned pivot/background decomposition — VALIDATED RESEARCH MECHANISM / #170
+### D. Theorem-aligned pivot/background decomposition — VALIDATED RESEARCH MECHANISM / #170
 
 Consumed infrastructure. Independent channel pivots may not be added because the Schur map is nonlinear.
 
-### D. Endpoint scalar `S8` — OPEN, lower standalone leverage
+### E. Endpoint scalar `S8` — OPEN, lower standalone leverage
 
 #165 found no finite sign reversal in the audited range, but even `S8 >= 0` merely propagates retained negativity.
 
-### E. SourceMoment / local jet rigidity — OPEN
+### F. SourceMoment / local jet rigidity — OPEN
 
-#163 proves a shared analytic observable. #166-#176 do not establish a global sourceMoment-to-`M4` implication or converse.
+#163 proves a shared analytic observable. #166-#178 do not establish a global sourceMoment-to-`M4` implication or converse.
 
-### F. Simultaneous parity route — OPEN
+### G. Simultaneous parity route — OPEN
 
 #161 still allows the opposite parity to be bad. Same-q/N opposite-parity controls remain useful.
 
-### G. Odd-selected coverage — OPEN
+### H. Odd-selected coverage — OPEN
 
 There is no WLOG-even theorem because `D` is algebraic, not unitary/isometric.
 
-## Reusable post-#174/#176 firewalls
+## Reusable post-#174/#176/#178 firewalls
 
 ### OBS-047 — scalarization does not eliminate canonical interval dependency
 
-Reducing the full matrix to `a,b,d,Delta_2` simplifies the finite geometry but does not by itself cure repeated-parameter interval dependency in the canonical formulas.
+Reducing the full matrix to `a,b,d,Delta_2` simplifies finite geometry but does not by itself cure repeated-parameter interval dependency.
 
 ### OBS-048 — determinant and pivot minima are distinct
 
-In H1, `P=Delta_2/a`; because `a(L)` varies, minimizing `Delta_2` and minimizing `P` are different problems. Future root/minimum isolation must name the scalar being controlled.
+In H1, `P=Delta_2/a`; because `a(L)` varies, minimizing `Delta_2` and minimizing `P` are different problems.
 
 ### OBS-049 — fixed-unit pullback materially reduces q13/Q14 determinant enclosure width on the frozen benchmark
 
-PR #176 finite-certifies old/new evaluator agreement in the exact CI pipeline and passes the predeclared factor-2 determinant-width gate in all six primary Q14 boxes. This establishes a finite method-selection result, not a sign theorem or global conditioning theorem.
+PR #176 finite-certifies old/new evaluator agreement and passes the predeclared factor-2 determinant-width gate in all six primary Q14 boxes. This is finite method-selection evidence, not a sign theorem or global conditioning theorem.
+
+### OBS-050 — value-level fixed-unit conditioning does not automatically yield derivative sign discrimination
+
+PR #178 validates the complete derivative implementation but all six primary raw `Delta_2'` interval boxes are sign-unresolved. Therefore #176 value-width improvement cannot be silently propagated to derivative conditioning.
 
 ### DR-026 — brute direct scalar subdivision
 
-Repeatedly subdividing the same direct q13 scalar formulas is dead as the current certification strategy after #174. #176 exercises one permitted escape by changing the analytic representation. More precision/depth alone remains not a route change.
+Repeatedly subdividing the same direct q13 scalar formulas is dead as the current certification strategy after #174.
 
-## Validation hardening debt exposed by #176 review
+### DR-027 — brute raw assembled derivative-box refinement
 
-The exact #176 CI workflow generated the benchmark schedule from the frozen fixture immediately before the certifier, so the reported `FIXED_UNIT_METHOD_ACCEPTED` classification is grounded in the intended pipeline execution.
+Repeating `a'd+ad'-2bb'` on more/smaller boxes with only more precision/depth is quarantined as the default next strategy after #178. Revival requires a changed correlation/dependency representation such as point diagnostics, centered/Taylor evaluation or exact factorization.
 
-Separately, the standalone certifier currently trusts a supplied `PASS` benchmark schedule rather than independently verifying that all schedule-defining fields match the fixture. A future replay-hardening patch should bind those fields explicitly. This is a software-validation debt, not a mathematical counterexample and not a reason to promote the finite method result beyond its scope.
+## Validation debt status
+
+The #176 standalone benchmark replay-hardening debt is **closed by #178**. The certifier now reconstructs the frozen schedule from its fixture and the #178 checker adversarially verifies rejection of missing, duplicate, relabeled, extra and dyadically altered schedules.
 
 ## Falsification requirements for the next research PR
 
@@ -241,24 +269,22 @@ Separately, the standalone certifier currently trusts a supplied `PASS` benchmar
 - preserve exact N=2 -> K*=3 dimensions;
 - preserve physical Q=13/14/15 seam semantics and von Mangoldt prime powers;
 - preserve odd N=2 ancestry tracking;
-- keep the direct production evaluator as an independent baseline;
-- independently check fixed-unit analytic derivatives against high-precision centered finite differences;
-- measure derivative interval conditioning rather than infer it from value-level conditioning;
+- keep the direct production/value evaluator as an independent baseline;
+- first measure rigorous point `Delta_2'` signs before investing in second derivatives;
+- compare raw and Schur-factorized derivative representations only in valid H1 scope;
 - keep determinant and pivot minima distinct;
 - do not assume global derivative sign or revive global Schur monotonicity;
 - treat zero-containing intervals as unresolved unless existence is separately certified;
-- if an actual bad successor appears, replay it immediately through #166;
+- if an actual bad successor appears, replay it immediately through #166/#161/#163;
 - if the q13 cell is strictly positive, extract and falsify the generalizable arithmetic inequality before Lean investment.
 
 ## Highest-leverage next move
 
-Build a research PR that discriminates the fixed-unit Q14 determinant derivatives and stationary basin. Its first green criterion should be reliable derivative agreement plus useful interval conditioning, **not** successful stationary-point isolation by fiat.
-
-If derivative conditioning survives, then attempt to isolate a stationary region of `Delta_2` with interval Newton/Krawczyk and certify the local value using centered Taylor/second-derivative bounds. If derivative conditioning fails, change the analytic differentiation/factorization rather than returning to brute precision or subdivision.
+Build a research PR that benchmarks correlation-preserving Q14 determinant derivative enclosures. Its first green criterion should be reliable point/factorized diagnostics, **not** successful stationary-point isolation by fiat.
 
 Standing question:
 
-> Given everything theoremized through #163 and validated experimentally through #176, does the fixed-unit representation reduce dependency strongly enough after differentiation to decide the Q14 determinant stationary/minimum/contact problem?
+> Given everything theoremized through #163 and validated experimentally through #178, can the near-critical determinant derivative be enclosed in a way that preserves the correlations lost by the raw interval expression?
 
 Then:
 
@@ -270,6 +296,6 @@ surviving independent arithmetic restriction
 ```
 
 Detailed current synthesis:
-`RESEARCH_LEADS_POST_176_FIXED_UNIT_METHOD_ACCEPTANCE_Q14_STATIONARY_FRONTIER_DELTA.md`.
+`RESEARCH_LEADS_POST_178_DERIVATIVE_UNRESOLVED_CENTERED_ENCLOSURE_DELTA.md`.
 
 **RH remains OPEN.**

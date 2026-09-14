@@ -17,12 +17,12 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #176
-validated research head = c6f53131b91b18aff2a50a6db2ddaa2761e7e5aa
-merged research commit = 96cccf715c02ed2bd4ae58f8362180020ae90854
-research tree = 28bd302c17a6128e538a3510917dafb670f6dce8
-RHRC #1072 = SUCCESS
-Permansson #845 = SUCCESS
+merged research PR = #178
+validated research head = 28df43faed0db8c0f12a25525df6c28467ce5b07
+merged research commit = fb2a181ce0d95d90396ead7730e7bf365616a153
+research tree = 96ab14953e9e8bff5245953082db8a6471648614
+RHRC #1074 = SUCCESS
+Permansson #847 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
@@ -116,23 +116,57 @@ The predeclared routing criterion passes in every primary box: `Delta_2` is stri
 
 This is rigorous finite **method-selection evidence**, not a determinant sign, stationary-point theorem, whole-cell positivity result, arbitrary first-bad statement, or Lean theorem.
 
+### #178 — complete fixed-unit derivative discrimination
+
+The fixed-unit derivative backend differentiates the complete fixed-Q canonical source,
+
+```text
+M'(L) = pole'(L) - arch'(L) - prime'(L),
+```
+
+and propagates the result through the theorem-aligned `[W|c]` restriction to
+
+```text
+Delta_2' = a'd + ad' - 2bb'.
+```
+
+Analytic primitive, full 7x7 matrix, theorem-aligned scalar and odd-N2 ancestry derivatives agree with independent centered finite differences on the frozen implementation checks. Derivative seam continuation is required only at the zero-von-Mangoldt seams 14 and 15.
+
+The six frozen primary Q14 derivative boxes nevertheless return
+
+```text
+DERIVATIVE_UNRESOLVED
+NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN
+```
+
+with no certified left/right derivative sign, no derived stationary existence, no bad interval and no H1-loss interval. This is a rigorous finite method result: it says the current raw assembled derivative interval representation is not yet discriminating, not that `Delta_2'` vanishes.
+
+#178 also closes the #176 standalone replay-hardening debt by binding the supplied benchmark schedule back to its frozen fixture and rejecting malformed schedules.
+
 ## Current active path
 
 The live theorem frontier remains **FB-05**: find an independent canonical arithmetic restriction that makes the exact retained #161/#163 state impossible.
 
-The q13/N2/K3/even finite laboratory now has a preferred research enclosure representation: the #176 fixed-unit pullback. The next highest-information question is whether that representation also gives useful rigorous control of the **local Q14 determinant derivative and stationary basin**.
-
-The first derivative chain to discriminate is
+The q13/N2/K3/even finite laboratory now has validated value and derivative infrastructure, but #178 shows that raw box evaluation of
 
 ```text
-alpha', beta', gamma'
-        -> a', b', d'
-        -> Delta_2' = a'd + ad' - 2bb'.
+Delta_2' = a'd + ad' - 2bb'
 ```
 
-The next research gate is deliberately methodological: independently check the fixed-unit derivative evaluator against high-precision centered finite differences at frozen points, then measure whether interval derivative enclosures are narrow enough to separate the outer monotone regions from the shallow Q14 stationary basin.
+does not certify a sign on the frozen primary side boxes.
 
-Only if that derivative conditioning is useful should the route spend additional complexity on interval Newton/Krawczyk, centered Taylor bounds, or certified local minimum/contact isolation. Determinant and Schur-pivot minima remain distinct optimization targets.
+The next highest-information question is therefore **where the derivative dependency enters**. The preferred order is:
+
+```text
+1. rigorous point Delta_2' balls at frozen centers
+2. compare raw determinant derivative with the exact H1 factorization
+     Delta_2 = a P
+     Delta_2' = a'P + aP'
+3. only if point orientation is visible, add Delta_2'' and centered mean-value/Taylor bounds
+4. only after a two-sided derivative bracket, attempt interval Newton/Krawczyk.
+```
+
+The determinant and Schur-pivot minima remain distinct optimization targets. The Schur factorization is only an alternative dependency graph for the same determinant derivative; it does not revive global Schur monotonicity.
 
 A positive q13-cell certificate would still be a method/structure result, **not** FB-05 closure: the retained first-bad state forced by an off-line zero is not known to lie in this one finite cell.
 
@@ -142,7 +176,7 @@ Current living state is maintained in:
 
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`;
 - `research/RHRC/RESEARCH_LEADS.md`;
-- `research/RHRC/RESEARCH_LEADS_POST_176_FIXED_UNIT_METHOD_ACCEPTANCE_Q14_STATIONARY_FRONTIER_DELTA.md`;
+- `research/RHRC/RESEARCH_LEADS_POST_178_DERIVATIVE_UNRESOLVED_CENTERED_ENCLOSURE_DELTA.md`;
 - `research/RHRC/DOCUMENTATION_AUTHORITY.md`;
 - `research/RHRC/VALIDATION_PROTOCOL.md`;
 - `research/RHRC/routes/R003_ccm_bridge/README.md`;
@@ -170,6 +204,8 @@ Older dated deltas, external reviews and countermodel records remain historical 
 - `UNRESOLVED` interval output is not sign evidence.
 - direct scalar subdivision is not the next strategy after #174.
 - #176 fixed-unit method acceptance is scoped to the frozen finite q13/Q14 benchmark and is not a sign theorem.
+- #178 `DERIVATIVE_UNRESOLVED` is not zero/stationary evidence.
+- repeating the same raw assembled derivative boxes with only more precision/subdivision is not a new route.
 - determinant and pivot minima are distinct optimization targets.
 - `D` remains algebraic, not unitary/isometric.
 - q13 whole-cell positivity alone would not imply global first-bad exclusion.

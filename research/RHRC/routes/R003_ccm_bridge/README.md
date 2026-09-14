@@ -1,6 +1,6 @@
 # R003 — CCM / finite Weil bridge
 
-Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #163. LATEST RESEARCH EVIDENCE THROUGH PR #176. CURRENT FRONTIER = FB-05 FIXED-UNIT Q14 DERIVATIVE/STATIONARY DISCRIMINATION. RH OPEN.**
+Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #163. LATEST RESEARCH EVIDENCE THROUGH PR #178. CURRENT FRONTIER = FB-05 CORRELATION-PRESERVING Q14 DERIVATIVE ENCLOSURE. RH OPEN.**
 
 ## Authority split
 
@@ -15,12 +15,12 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #176
-validated research head = c6f53131b91b18aff2a50a6db2ddaa2761e7e5aa
-merged research commit = 96cccf715c02ed2bd4ae58f8362180020ae90854
-research tree = 28bd302c17a6128e538a3510917dafb670f6dce8
-RHRC #1072 = SUCCESS
-Permansson #845 = SUCCESS
+merged research PR = #178
+validated research head = 28df43faed0db8c0f12a25525df6c28467ce5b07
+merged research commit = fb2a181ce0d95d90396ead7730e7bf365616a153
+research tree = 96ab14953e9e8bff5245953082db8a6471648614
+RHRC #1074 = SUCCESS
+Permansson #847 = SUCCESS
 
 CONTROL AUTHORITY
 control-plane semantic anchor = PR #117
@@ -74,8 +74,6 @@ No endpoint-scalar sign, sourceMoment/`M4` implication, simultaneous-parity excl
 
 The exact executable `S8(L)` normalization is independently checked, including prime powers through von Mangoldt weights. Finite discovery and Arb fixtures found no sampled negative value.
 
-**Firewall:** even `S8 >= 0` only yields `R9 <= R8 < 0` from the current theorem package. Sign alone is not FB-05 closure.
-
 ### #166 — shifted-state discriminator
 
 Finite discovery is aligned with the actual shifted secular ray `u_lambda = c - W(H-lambda G)^(-1)r`. A broad finite scout found no negative successor but isolated a near-critical `Q=16,N=3,K=4,odd` family.
@@ -94,15 +92,7 @@ The selected scalar is reconstructed in the exact `[W|c]` basis. At q17/N3/K4/od
 
 ### #172 — threshold-to-threshold production barrier
 
-Finite current-q entry lift is sign-indefinite:
-
-```text
-q9 / even   NEGATIVE_CERTIFIED
-q13 / even  NEGATIVE_CERTIFIED
-q16 / odd   POSITIVE_CERTIFIED
-```
-
-The strongest near-critical target becomes
+Finite current-q entry lift is sign-indefinite. The strongest near-critical target becomes
 
 ```text
 q = 13 -> 16
@@ -110,8 +100,6 @@ N = 2
 K* = 3
 parity = even.
 ```
-
-At the quantized near-minimum, Arb certifies a positive full pivot of about `5.84e-12`, positive background of about `1.22e-11`, and negative q13 entry lift of about `-6.38e-12`.
 
 ### #174 — exact q13 2x2 scalar barrier
 
@@ -127,40 +115,50 @@ P(L)=Delta_2(L)/a(L) in H1 scope.
 
 The floating scout sharpens the dangerous Q14 basin and remains sampled-positive. The determinant minimum and Schur-pivot minimum are nearby but not identical.
 
-The 384-bit direct scalar interval audit over physical Q=13/14/15 subcells returns:
-
-```text
-Q=13  100% UNRESOLVED
-Q=14  100% UNRESOLVED
-Q=15  100% UNRESOLVED
-```
-
-No H1-loss, bad interval, contact theorem, or strict-positive interval is certified.
-
-**Consequence:** the scalar geometry is now consumed research infrastructure. Direct adaptive evaluation of the same scalar formulas is itself dependency-limited. The next method must change the enclosure representation or add analytic control rather than merely increase subdivision depth.
+The 384-bit direct scalar interval audit over physical Q=13/14/15 subcells returns 100% `UNRESOLVED` in every cell, with no H1-loss, bad interval, contact theorem, or strict-positive interval certified.
 
 ### #176 — fixed-unit q13/Q14 enclosure method selection
 
-The fixed-unit pullback is implemented independently while preserving the direct `[0,L]` production evaluator as a baseline. The exact CI pipeline validates primitive, complete `7x7` matrix, theorem-aligned even scalar, odd-N2 ancestry, seam and zero-weight agreement.
-
-The frozen benchmark contains six primary Q14 boxes: three radii around the sampled determinant minimum and three around the sampled pivot minimum. With predeclared material width factor `2.0`, all six report
-
-```text
-delta_strictly_narrower = true
-delta_material_gain = true
-```
-
-and the certifier reports
+The fixed-unit pullback is implemented independently while preserving the direct `[0,L]` production evaluator as a baseline. All six frozen primary Q14 boxes satisfy the predeclared factor-2 `Delta_2` width criterion, and the certifier reports
 
 ```text
 FIXED_UNIT_METHOD_ACCEPTED
 ```
 
-**Consequence:** fixed-unit is the preferred research enclosure representation for this finite q13/Q14 laboratory. This is rigorous finite method-selection evidence, not a determinant sign, stationary theorem, whole-cell positivity result, first-bad theorem or Lean promotion.
+This is rigorous finite method-selection evidence, not a determinant sign, stationary theorem, whole-cell positivity result, first-bad theorem or Lean promotion.
 
-## Current frontier — fixed-unit Q14 derivative / stationary discrimination
+### #178 — complete fixed-unit derivative discrimination
 
-Preserve the exact q13 observables:
+The derivative backend differentiates the complete fixed-Q source
+
+```text
+M'(L)=pole'(L)-arch'(L)-prime'(L)
+```
+
+and propagates it through the theorem-aligned `[W|c]` restriction to
+
+```text
+Delta_2' = a'd + ad' - 2bb'.
+```
+
+Independent centered-difference checks validate primitive, complete 7x7 matrix, theorem-aligned scalar and odd-N2 predecessor derivatives at frozen points. Derivative seam continuation is checked only at the zero-weight seams 14 and 15.
+
+The exact six-primary-box certifier returns
+
+```text
+DERIVATIVE_UNRESOLVED
+NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN
+```
+
+with all left/right certified sign lists empty, no derived stationary existence, no bad interval and no H1-loss interval.
+
+This is not evidence that `Delta_2'` vanishes. It is a finite method result: raw assembled derivative boxes remain dependency-limited.
+
+#178 also closes the #176 benchmark replay-hardening debt by binding schedule-defining fields back to the frozen fixture and testing adversarial mutations.
+
+## Current frontier — correlation-preserving Q14 derivative enclosure
+
+Preserve the exact q13 observables
 
 ```text
 a(L)
@@ -168,27 +166,19 @@ Delta_2(L)=a(L)d(L)-b(L)^2
 odd N=2 predecessor ancestry
 ```
 
-and test whether the #176 conditioning gain survives differentiation.
+but change the derivative enclosure graph before doing more subdivision.
 
-Primary research chain:
-
-```text
-fixed-unit alpha', beta', gamma'
--> a', b', d'
--> Delta_2' = a'd + ad' - 2bb'.
-```
-
-The first acceptance gate is:
+Primary research order:
 
 ```text
-analytic fixed-unit derivative evaluator agrees with independent
-high-precision centered finite differences at frozen points
-AND
-rigorous Delta_2' enclosures are narrow enough to distinguish
-outer monotone regions from the shallow Q14 stationary basin.
+1. rigorous point Delta_2' balls at frozen centers
+2. compare exact representations in certified H1 scope
+     raw: Delta_2' = a'd + ad' - 2bb'
+     Schur-factorized: Delta_2 = aP,
+                       Delta_2' = a'P + aP'
+3. if point orientation is visible, add Delta_2'' and centered mean-value/Taylor control
+4. only after a two-sided derivative bracket, attempt interval Newton/Krawczyk.
 ```
-
-Only after this gate should the route invest in certified local Taylor models, interval Newton/Krawczyk, or stationary/minimum/contact isolation.
 
 The final scalar classification remains:
 
@@ -232,41 +222,36 @@ post-#167 threshold-jet / Q17 audit (#168)
 post-#169 Schur visibility/background audit (#170)
 post-#171 threshold-to-threshold barrier audit (#172)
 post-#173 q13 scalar-barrier plumbing/scout/interval audit (#174)
-post-#175 fixed-unit q13 enclosure plumbing (#176)
-post-#175 fixed-unit q13 benchmark (#176)
-post-#175 fixed-unit agreement/width certification (#176)
+post-#175 fixed-unit q13 enclosure plumbing/benchmark/certification (#176)
+post-#177 fixed-unit derivative plumbing/probe/certification (#178)
 ```
 
-Relevant #176 assets:
+Relevant #178 assets:
 
 ```text
-post175_fb05_q13_fixed_unit_enclosure.py
-check_post175_fb05_q13_fixed_unit_enclosure_scope.py
-probe_post175_fb05_q13_fixed_unit_enclosure_scope.py
-certify_post175_fb05_q13_fixed_unit_enclosure_scope.py
-fixtures/post175_fb05_q13_fixed_unit_enclosure_v1.json
+post177_fb05_q13_fixed_unit_derivative.py
+check_post177_fb05_q13_fixed_unit_derivative_scope.py
+probe_post177_fb05_q13_fixed_unit_derivative_scope.py
+certify_post177_fb05_q13_fixed_unit_derivative_scope.py
+fixtures/post177_fb05_q13_fixed_unit_derivative_v1.json
 ```
 
-Passing these gates means the executable research checks ran correctly on the exact head. It does not promote their numerical/SymPy/Arb output to Lean theorem authority.
-
-### Replay-hardening debt
-
-The exact #176 workflow generated its benchmark schedule from the frozen fixture immediately before certification. A review identified that the standalone certifier trusts a supplied `PASS` benchmark schedule rather than independently rebinding every schedule-defining field to the fixture. Future validation plumbing should close that replay gap; it does not alter the exact in-pipeline finite result.
+Passing these gates means the executable research checks ran correctly on the exact head. It does not promote their numerical/Arb output to Lean theorem authority.
 
 ## Highest-leverage order
 
 ```text
-FB-01  retained full first-bad certificate                         PROVED / #153
-FB-02  exact finite pole-prime discrepancy                         PROVED / #153
-FB-03A-D legal Riesz engine / parity-even jets                     PROVED / #155
-FB-03E-F complex transport / retained transformed negativity       PROVED / #157
-FB-04A exact moment jets + signed Riesz boundary recurrence        PROVED / #159
-FB-04B same-state shifted Riesz x cross-parity source composition PROVED / #161
-FB-04C mixed quadratic-normal jet x Riesz boundary coupling       PROVED / #163
-FB-05  independent contradiction-producing arithmetic restriction OPEN / ACTIVE
-  current research slice: fixed-unit Q14 determinant derivative/stationary discrimination
-FB-06  same-state contradiction / negative-root exclusion         OPEN
-FB-07  terminal seam + Mathlib RH wrapper                          OPEN
+FB-01  retained full first-bad/Schur certificate                         PROVED / #153
+FB-02  exact finite pole-prime discrepancy                               PROVED / #153
+FB-03A-D legal Riesz engine / parity-even jets                           PROVED / #155
+FB-03E-F complex transport / retained transformed negativity             PROVED / #157
+FB-04A exact moment jets + signed Riesz boundary recurrence              PROVED / #159
+FB-04B same-state shifted Riesz x cross-parity source composition        PROVED / #161
+FB-04C mixed quadratic-normal jet x Riesz boundary coupling              PROVED / #163
+FB-05  independent contradiction-producing arithmetic restriction       OPEN / ACTIVE
+  current research slice: correlation-preserving Q14 determinant derivative enclosure
+FB-06  same-state contradiction / negative-root exclusion                OPEN
+FB-07  terminal seam + Mathlib RH wrapper                                 OPEN
 ```
 
 ## Permanent firewalls
@@ -285,6 +270,8 @@ FB-07  terminal seam + Mathlib RH wrapper                          OPEN
 - whole-cell `UNRESOLVED` is not sign evidence;
 - direct scalar subdivision is not the next strategy after #174;
 - #176 fixed-unit method acceptance is scoped to the frozen q13/Q14 benchmark;
+- #178 `DERIVATIVE_UNRESOLVED` is not stationary evidence;
+- raw assembled derivative-box refinement with only more precision/depth is not a new route;
 - sourceMoment nonzero does not imply `M4` nonzero, nor conversely;
 - simultaneous parity badness remains open;
 - selected parity cannot be assumed even WLOG;
@@ -292,6 +279,6 @@ FB-07  terminal seam + Mathlib RH wrapper                          OPEN
 - RH remains OPEN.
 
 Detailed current implications:
-`../../RESEARCH_LEADS_POST_176_FIXED_UNIT_METHOD_ACCEPTANCE_Q14_STATIONARY_FRONTIER_DELTA.md`.
+`../../RESEARCH_LEADS_POST_178_DERIVATIVE_UNRESOLVED_CENTERED_ENCLOSURE_DELTA.md`.
 
 **RH remains OPEN.**

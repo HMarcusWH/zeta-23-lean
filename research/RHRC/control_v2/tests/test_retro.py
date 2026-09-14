@@ -54,7 +54,7 @@ class RetroTests(unittest.TestCase):
         self.assertNotIn("rupture", terms)
         self.assertNotIn("slack", terms)
 
-    def test_e4a4_actions_use_post176_fixed_unit_derivative_arithmetic_aliases(self):
+    def test_e4a4_actions_use_post178_correlation_preserving_derivative_aliases(self):
         aliases = load_alias_map(RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json")
         terms = expanded_terms("canonical_source_exclusion", aliases)
         for term in (
@@ -129,10 +129,23 @@ class RetroTests(unittest.TestCase):
             "factor-2 determinant width gain",
             "Q14 derivative frontier",
             "fixed-unit derivative evaluator",
+            "complete canonical derivative",
+            "DERIVATIVE_UNRESOLVED",
+            "NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN",
+            "raw assembled derivative",
+            "point derivative ball",
+            "rigorous point derivative",
+            "correlation-preserving derivative enclosure",
+            "Schur-factorized derivative",
+            "Delta_2' = a'P + aP'",
+            "centered derivative enclosure",
+            "mean-value enclosure",
+            "second derivative bound",
             "local stationary basin",
             "stationary basin discrimination",
             "benchmark schedule binding",
             "replay hardening",
+            "schedule mutation rejection",
             "Taylor enclosure",
             "interval Newton",
             "Krawczyk",
@@ -169,6 +182,7 @@ class RetroTests(unittest.TestCase):
             "PR #172",
             "PR #174",
             "PR #176",
+            "PR #178",
             "theorem-aligned [W|c] one-step Schur pivot",
             "sign-indefinite",
             "q13->16/N2/K3/even",
@@ -177,9 +191,12 @@ class RetroTests(unittest.TestCase):
             "100% UNRESOLVED",
             "scalarization alone does not eliminate canonical interval dependency",
             "FIXED_UNIT_METHOD_ACCEPTED",
-            "six frozen primary Q14 boxes",
             "factor-2",
-            "Delta_2'",
+            "DERIVATIVE_UNRESOLVED",
+            "NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN",
+            "a'd+ad'-2bb'",
+            "point Delta_2' balls",
+            "Delta_2'=a'P+aP'",
             "replay-hardening debt",
             "determinant and pivot minima",
             "full physical H1 does not imply H1 for the q-removed background",

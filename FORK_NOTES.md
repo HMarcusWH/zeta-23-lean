@@ -15,12 +15,12 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #176
-validated research head = c6f53131b91b18aff2a50a6db2ddaa2761e7e5aa
-merged research commit = 96cccf715c02ed2bd4ae58f8362180020ae90854
-research tree = 28bd302c17a6128e538a3510917dafb670f6dce8
-RHRC #1072 = SUCCESS
-Permansson #845 = SUCCESS
+merged research PR = #178
+validated research head = 28df43faed0db8c0f12a25525df6c28467ce5b07
+merged research commit = fb2a181ce0d95d90396ead7730e7bf365616a153
+research tree = 96ab14953e9e8bff5245953082db8a6471648614
+RHRC #1074 = SUCCESS
+Permansson #847 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
@@ -58,13 +58,12 @@ No theorem-bearing PR has superseded #163.
 #172 threshold-to-threshold Schur barrier falsification
 #174 q13/N2/K3/even exact 2x2 scalar-barrier / interval-method audit
 #176 fixed-unit q13/Q14 enclosure agreement + method-selection benchmark
+#178 complete fixed-unit derivative implementation + Q14 derivative discrimination
 ```
 
 ### What #174 changed
 
-The q13 scalar reduction proposed after #172 is now consumed research infrastructure.
-
-For `N=2 -> K*=3`, exact theorem-aligned executable geometry gives
+The q13 scalar reduction proposed after #172 is consumed research infrastructure. For `N=2 -> K*=3`, exact theorem-aligned executable geometry gives
 
 ```text
 H(L) = [[a,b],[b,d]]
@@ -75,19 +74,44 @@ P = Delta_2/a in H1.
 
 The direct 384-bit adaptive scalar interval audit respects physical Q=13/14/15 subcells but certifies no positive, bad, H1-loss, or contact interval. Each physical cell remains 100% `UNRESOLVED`.
 
-Therefore the project should no longer ask whether scalarization itself cures the #167 dependency problem. It does not.
+Therefore scalarization itself does not cure the #167 dependency problem.
 
 ### What #176 changed
 
-The fixed-unit escape proposed after #174 was implemented as an independent Arb evaluator and compared against the direct `[0,L]` production path. The exact CI pipeline checks primitive, matrix, scalar, seam and zero-weight agreement, then benchmarks six frozen primary Q14 boxes around the distinct determinant and pivot basins.
-
-Every primary box reports both `delta_strictly_narrower = true` and `delta_material_gain = true` under the predeclared factor-2 criterion, so the pipeline classifies the method as
+The fixed-unit escape proposed after #174 was implemented as an independent Arb evaluator and compared against the direct `[0,L]` production path. Every primary Q14 benchmark box reports both `delta_strictly_narrower = true` and `delta_material_gain = true` under the predeclared factor-2 criterion, so the pipeline classifies
 
 ```text
 FIXED_UNIT_METHOD_ACCEPTED
 ```
 
 This selects a preferred **research enclosure representation for the q13 finite laboratory**. It does not prove a determinant sign, stationary point, whole-cell barrier, arbitrary first-bad restriction, or Lean theorem.
+
+### What #178 changed
+
+The complete fixed-Q canonical derivative
+
+```text
+M'(L)=pole'(L)-arch'(L)-prime'(L)
+```
+
+is now implemented and independently checked through primitive, complete 7x7 matrix, theorem-aligned scalar and odd-N2 ancestry layers. The exact derivative observable is
+
+```text
+Delta_2' = a'd + ad' - 2bb'.
+```
+
+The frozen six-box Q14 certifier returns
+
+```text
+DERIVATIVE_UNRESOLVED
+NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN
+```
+
+with no certified left/right derivative sign, no derived stationary existence, no bad interval and no H1-loss interval.
+
+This does **not** mean `Delta_2'=0`. It means the raw assembled derivative interval representation remains dependency-limited on the frozen boxes.
+
+#178 also closes the #176 replay-hardening debt: supplied benchmark schedules are now rebound to their frozen fixture and malformed schedules are rejected.
 
 ## Current frontier
 
@@ -100,7 +124,7 @@ FB-04A moment jets + signed Riesz boundary recurrence           PROVED / #159
 FB-04B same-state shifted Riesz x cross-parity source           PROVED / #161
 FB-04C mixed quadratic-normal jet x Riesz boundary coupling     PROVED / #163
 FB-05 independent contradiction-producing arithmetic restriction OPEN / NOW
-  current research slice: fixed-unit Q14 derivative/stationary discrimination
+  current research slice: correlation-preserving Q14 derivative enclosure
 FB-06 negative-root exclusion                                   OPEN
 FB-07 terminal Mathlib RH seam                                  OPEN
 RH                                                               OPEN
@@ -108,19 +132,22 @@ RH                                                               OPEN
 
 ## Current post-green clue
 
-The method bottleneck has moved again: #176 shows that the fixed-unit aperture representation materially reduces determinant enclosure width on the frozen q13/Q14 benchmark. The next question is whether that conditioning gain survives **differentiation** strongly enough to decide local Q14 stationary structure.
+The method bottleneck has moved again. #176 improved value-level determinant intervals, while #178 shows that direct interval evaluation of the differentiated assembled determinant still certifies no primary sign.
 
-The first research chain is
+The next question is therefore **where the derivative dependency enters**.
+
+Highest-information order:
 
 ```text
-alpha', beta', gamma'
-        -> a', b', d'
-        -> Delta_2' = a'd + ad' - 2bb'.
+1. rigorous point Delta_2' balls at all frozen primary/control centers
+2. compare exact representations
+     raw: Delta_2' = a'd + ad' - 2bb'
+     H1:  Delta_2' = a'P + aP'
+3. if point orientation is visible, add Delta_2'' and centered mean-value/Taylor bounds
+4. only after a two-sided derivative bracket, attempt interval Newton/Krawczyk.
 ```
 
-The next gate remains methodological: independently check fixed-unit derivatives against high-precision centered finite differences, then test whether derivative interval widths can separate outer monotone regions from the shallow stationary basin.
-
-Only if that succeeds should local Taylor models, interval Newton/Krawczyk or rigorous minimum/contact isolation be attempted. Do not assume those methods will work merely because the value-level enclosure improved.
+The determinant and pivot minima remain distinct optimization targets. The Schur-factorized expression is only an alternative enclosure representation of the determinant derivative, not a revival of global minimizing-Schur monotonicity.
 
 ## Important non-revivals
 
@@ -131,6 +158,7 @@ global aperture Loewner monotonicity
 global minimizing-Schur monotonicity
 more brute subdivision of the full matrix
 more brute subdivision of the same direct scalar formulas
+more brute subdivision of the same raw assembled Delta_2' formula
 endpoint-scalar positivity as a standalone contradiction
 prime-sample -> local-jet implication by analogy
 summing independent channel Schur pivots
@@ -141,11 +169,13 @@ universal positive arithmetic threshold replenishment
 
 - scalarization alone does not eliminate canonical interval dependency;
 - #176 fixed-unit method acceptance is finite and benchmark-scoped, not a sign theorem;
+- #178 validates the derivative implementation but returns `DERIVATIVE_UNRESOLVED` on all six primary side boxes;
+- `DERIVATIVE_UNRESOLVED` is not zero/stationary evidence;
 - determinant and Schur-pivot minima are different optimization targets;
 - a zero-containing interval is not a zero/contact theorem;
-- more precision/depth alone is not a new route after #174;
-- the direct production evaluator remains an independent baseline rather than being replaced by the fixed-unit evaluator;
-- the standalone #176 certifier should eventually bind its supplied benchmark schedule back to the frozen fixture; exact CI generated that benchmark in-pipeline, so this is replay hardening debt rather than a new mathematical claim;
+- more precision/depth alone is not a new route after #174/#178;
+- the direct production evaluator remains an independent baseline;
+- the #176 standalone replay-hardening debt is closed by #178;
 - q13 whole-cell positivity, if eventually certified, remains a finite method/structure result until its controlling arithmetic mechanism generalizes.
 
 ## Next theorem-bearing slice
@@ -154,7 +184,7 @@ Do not theoremize a q13 finite-cell observation merely because a better enclosur
 
 ## Permanent firewalls
 
-- research evidence through #176 does not move theorem authority beyond #163;
+- research evidence through #178 does not move theorem authority beyond #163;
 - endpoint-scalar positivity alone is not first-bad exclusion;
 - arithmetic entry lift is sign-indefinite in tested canonical states;
 - physical H1 does not imply q-removed-background H1;
@@ -170,6 +200,6 @@ Do not theoremize a q13 finite-cell observation merely because a better enclosur
 - negative-root exclusion and RH remain open.
 
 Detailed current synthesis:
-`research/RHRC/RESEARCH_LEADS_POST_176_FIXED_UNIT_METHOD_ACCEPTANCE_Q14_STATIONARY_FRONTIER_DELTA.md`.
+`research/RHRC/RESEARCH_LEADS_POST_178_DERIVATIVE_UNRESOLVED_CENTERED_ENCLOSURE_DELTA.md`.
 
 **RH remains OPEN.**

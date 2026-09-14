@@ -35,16 +35,15 @@ This remains the compiler-validated mathematical authority until a later theorem
 ### 2. Research-evidence anchor
 
 ```text
-latest merged research PR = #176
-validated research head = c6f53131b91b18aff2a50a6db2ddaa2761e7e5aa
-PR integration commit tested by Actions = ad6c904cf38c64d61c7990b3b6e87eec27ad0064
-merged research commit = 96cccf715c02ed2bd4ae58f8362180020ae90854
-research tree = 28bd302c17a6128e538a3510917dafb670f6dce8
-RHRC #1072 = SUCCESS
-Permansson #845 = SUCCESS
+latest merged research PR = #178
+validated research head = 28df43faed0db8c0f12a25525df6c28467ce5b07
+merged research commit = fb2a181ce0d95d90396ead7730e7bf365616a153
+research tree = 96ab14953e9e8bff5245953082db8a6471648614
+RHRC #1074 = SUCCESS
+Permansson #847 = SUCCESS
 ```
 
-This records the newest green research/discovery state. It does **not** upgrade executable identities, floating searches, Arb finite-point/interval certifications, method-selection outcomes, or finite-difference diagnostics into Lean theorem authority.
+This records the newest green research/discovery state. It does **not** upgrade executable identities, floating searches, Arb finite-point/interval certifications, method-selection outcomes, finite-difference diagnostics or interval-method classifications into Lean theorem authority.
 
 ### 3. Control-plane semantic anchor
 
@@ -88,7 +87,7 @@ PR #163 compiler-validates the exact mixed quadratic-normal source pairing, the 
 
 No later research PR changes those theorem declarations.
 
-### Research progression #165-#176
+### Research progression #165-#178
 
 ```text
 #165 exact executable S8 audit
@@ -130,20 +129,28 @@ No later research PR changes those theorem declarations.
 
 #176 fixed-unit q13/Q14 enclosure benchmark
      -> independent fixed-unit Arb path agrees with direct production path
-     -> primitive/full-matrix/scalar/seam/zero-weight checks pass
      -> six frozen primary Q14 boxes benchmarked
      -> factor-2 material Delta_2 width criterion passes in all six
      -> method classification FIXED_UNIT_METHOD_ACCEPTED
-     -> finite method-selection evidence only
+
+#178 complete fixed-unit derivative discrimination
+     -> complete fixed-Q M'(L)=pole'-arch'-prime' implemented
+     -> primitive/full-matrix/scalar/odd-ancestry derivatives checked
+        against independent centered value differences
+     -> derivative seams checked only at zero-weight seams 14 and 15
+     -> six primary Q14 side boxes return DERIVATIVE_UNRESOLVED
+     -> NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN
+     -> no bad interval / no H1-loss interval certified
+     -> #176 replay-hardening debt closed
 ```
 
 The newest project synthesis is:
 
-`RESEARCH_LEADS_POST_176_FIXED_UNIT_METHOD_ACCEPTANCE_Q14_STATIONARY_FRONTIER_DELTA.md`.
+`RESEARCH_LEADS_POST_178_DERIVATIVE_UNRESOLVED_CENTERED_ENCLOSURE_DELTA.md`.
 
 The previous post-green synthesis is:
 
-`RESEARCH_LEADS_POST_174_Q13_SCALAR_DEPENDENCY_FRONTIER_DELTA.md`.
+`RESEARCH_LEADS_POST_176_FIXED_UNIT_METHOD_ACCEPTANCE_Q14_STATIONARY_FRONTIER_DELTA.md`.
 
 ## Current route
 
@@ -159,7 +166,7 @@ PROVED THROUGH #163
   -> exact finite-prime sampling of same observable
   -> exact R8-R9 squared-jet boundary
 
-RESEARCHED THROUGH #176
+RESEARCHED THROUGH #178
   endpoint scalar audited
   theorem-aligned shifted finite state audited
   Q16 near-critical cell isolated
@@ -170,26 +177,29 @@ RESEARCHED THROUGH #176
   arithmetic entry lift found sign-indefinite
   q13/N2/K3/even reduced exactly to a 2x2 scalar barrier
   direct scalar interval subdivision found dependency-limited
-  fixed-unit representation selected by frozen finite width benchmark
+  fixed-unit value representation selected by frozen width benchmark
+  complete analytic fixed-unit derivative infrastructure validated
+  raw assembled Delta_2' side-box signs remain unresolved
+  #176 replay schedule hardening closed
 
 NOW
-  FB-05I fixed-unit Q14 derivative/stationary frontier
-  -> preserve a(L), Delta_2(L), odd-N2 ancestry
-  -> derive/check fixed-unit primitive and scalar derivatives
-  -> measure derivative interval conditioning
-  -> only then add local Taylor/Newton/Krawczyk machinery if useful
+  FB-05J correlation-preserving Q14 derivative enclosure
+  -> rigorous point Delta_2' signs first
+  -> compare raw and H1 Schur-factorized derivative representations
+  -> add Delta_2'' / centered mean-value or Taylor bounds only if point orientation is visible
+  -> use interval Newton/Krawczyk only after a genuine two-sided derivative bracket
   -> theoremize only a genuinely independent generalizable restriction
 ```
 
-## Validation caveat after #176
+## Validation debt status after #178
 
-The exact #176 CI pipeline generated the six-box benchmark from the frozen fixture immediately before certification and logged `FIXED_UNIT_METHOD_ACCEPTED` with the factor-2 criterion passing in all six primary boxes.
+The standalone #176 replay-hardening gap is closed by #178. The certifier reconstructs the frozen benchmark schedule from its fixture, and the #178 checker adversarially verifies rejection of missing, duplicate, relabeled, extra and dyadically altered schedules.
 
-A review nevertheless identified a standalone replay-hardening gap: the certifier trusts a supplied `PASS` benchmark schedule rather than independently rebinding every schedule-defining field to the fixture. Future validation plumbing should reject stale or hand-edited schedules explicitly. This does not alter the exact in-pipeline finite result and does not promote it mathematically.
+The remaining issue is mathematical/methodological rather than replay plumbing: raw interval evaluation of the assembled determinant derivative remains sign-unresolved on the frozen primary boxes.
 
 ## Claim firewall
 
-Research green is not theorem promotion. The #176 finite method-selection result does not prove q13 positivity, negativity, zero contact, stationary existence or uniqueness, a universal derivative law, a global threshold barrier, or first-bad exclusion.
+Research green is not theorem promotion. The #176 finite method-selection result does not prove q13 positivity. The #178 derivative result does not prove `Delta_2'=0`, stationary existence, contact, badness, H1 loss, or failure of every derivative representation.
 
 Even a future full q13-cell positivity certificate would be a finite method/structure result unless its proof yields a theorem that applies to the arbitrary retained first-bad state forced by #153/#161.
 

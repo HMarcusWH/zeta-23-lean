@@ -295,6 +295,41 @@ more depth != new method
 
 This dead-route entry does **not** quarantine scalar interval arithmetic generally. It rejects only repeated subdivision of the same dependency-heavy direct formulas.
 
+## DR-027 — brute raw assembled derivative-box refinement
+
+Attempt to resolve the q13/Q14 stationary basin by repeatedly evaluating the same assembled fixed-unit determinant derivative
+
+```text
+Delta_2' = a'd + ad' - 2bb'
+```
+
+on more/smaller interval boxes or at greater precision without changing the dependency graph.
+
+**Status:** **QUARANTINED AS THE DEFAULT NEXT STRATEGY / finite method falsification in PR #178.**
+
+PR #178 validates the complete fixed-Q canonical derivative implementation and its independent centered-difference checks, then evaluates six frozen primary Q14 side boxes at 384-bit Arb precision. The exact certifier reports
+
+```text
+DERIVATIVE_UNRESOLVED
+NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN
+```
+
+with all certified left/right derivative-sign label sets empty. No bad interval and no H1-loss interval is certified.
+
+This does **not** prove `Delta_2'=0`, a stationary point, contact, or failure of the derivative route. It shows only that the current raw assembled interval representation remains dependency-limited on the tested boxes.
+
+Therefore:
+
+```text
+DERIVATIVE_UNRESOLVED != zero derivative
+more raw boxes != new method
+more precision on the same expression != new method
+```
+
+**Revival requirement:** change the correlation/dependency representation — for example rigorous point derivative diagnostics, a centered mean-value/Taylor enclosure, the exact H1 Schur-factorized identity `Delta_2'=a'P+aP'`, or another demonstrably tighter analytic factorization.
+
+This entry does **not** quarantine analytic differentiation, fixed-unit evaluation, interval arithmetic, local Taylor methods, interval Newton/Krawczyk, or Schur-factorized derivative enclosures generally.
+
 ## Coordinate-mismatch warning — not a dead route ID
 
 The scalar identity

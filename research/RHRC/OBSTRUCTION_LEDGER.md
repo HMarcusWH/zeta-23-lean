@@ -5,7 +5,7 @@ This ledger records reusable blockers that should shape future route design.
 > **Current theorem anchor:** merged PR #163, `bd3fa1aafa7df2aa35873df532bdb6f17ddd2bbd`.  
 > **Validated theorem head:** `b418ff034428f92594bab0e5b8276181a086ee4b`.  
 > **Validated theorem tree:** `c397b3a015ea54e38ecfe626d6e29556fe963839`.  
-> **Latest research-evidence anchor:** merged PR #176, validated head `c6f53131b91b18aff2a50a6db2ddaa2761e7e5aa`.  
+> **Latest research-evidence anchor:** merged PR #178, validated head `28df43faed0db8c0f12a25525df6c28467ce5b07`.  
 > **Claim firewall:** RH remains OPEN.
 
 Historical obstruction origins below retain the PR number at which they were discovered/classified. A later theorem may close an escape without deleting the reusable warning.
@@ -662,12 +662,49 @@ and classifies the route
 FIXED_UNIT_METHOD_ACCEPTED.
 ```
 
-**Consequence:** on this frozen q13/Q14 laboratory, the direct moving-domain representation was a substantive contributor to interval inflation, and the fixed-unit pullback is the preferred research enclosure representation for the next derivative/stationary experiment.
+**Consequence:** on this frozen q13/Q14 laboratory, the direct moving-domain representation was a substantive contributor to interval inflation, and the fixed-unit pullback is the preferred research enclosure representation.
 
 This does **not** prove a determinant sign, stationary existence/uniqueness, whole-cell positivity, arbitrary first-bad restriction, or global conditioning theorem.
 
-**Validation caveat:** the exact #176 CI pipeline generated the benchmark from the frozen fixture immediately before certification. The standalone certifier currently trusts a supplied `PASS` benchmark schedule rather than independently rebinding every schedule-defining field to the fixture. That is replay-hardening debt and should be fixed separately; it does not promote or negate the exact in-pipeline finite result.
+**Validation hardening status:** the standalone schedule-binding debt identified after #176 is closed by PR #178. The certifier now reconstructs the frozen benchmark schedule from its fixture, and the #178 checker adversarially verifies rejection of missing, duplicate, relabeled, extra and dyadically altered schedules.
 
-**Next falsification requirement:** measure whether the conditioning gain survives analytic differentiation. A value-level width improvement does not imply useful `Delta_2'` enclosures.
+## OBS-050 — fixed-unit value conditioning does not automatically yield derivative sign discrimination
+
+**Status:** RIGOROUS FINITE RESEARCH / METHOD EVIDENCE FROM PR #178; NOT A LEAN THEOREM.
+
+PR #178 validates the complete fixed-Q canonical derivative
+
+```text
+M'(L)=pole'(L)-arch'(L)-prime'(L)
+```
+
+and independently checks the analytic primitive, full 7x7 matrix, theorem-aligned scalar and odd-N2 ancestry derivatives against centered differences of the already-green value evaluators.
+
+For the six frozen primary Q14 side boxes, the exact certifier returns
+
+```text
+DERIVATIVE_UNRESOLVED
+NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN
+```
+
+with all certified left/right sign-label sets empty. It separately certifies no bad interval and no H1-loss interval.
+
+Therefore:
+
+```text
+fixed-unit value-width gain
+  -/-> useful raw-box derivative sign enclosure
+
+DERIVATIVE_UNRESOLVED
+  -/-> Delta_2' = 0
+  -/-> stationary existence
+  -/-> contact
+  -/-> bad successor
+  -/-> H1 loss.
+```
+
+**Consequence:** value-level conditioning and derivative-level conditioning are separate certification problems. The next route should preserve correlations more aggressively rather than repeating the same raw assembled derivative interval graph.
+
+**Escape requirement:** first test rigorous point `Delta_2'` balls, then compare exact derivative representations such as the H1 factorization `Delta_2'=a'P+aP'`; only if point orientation is visible should the route add second-derivative/centered-Taylor control or interval Newton/Krawczyk.
 
 **RH remains OPEN.**
