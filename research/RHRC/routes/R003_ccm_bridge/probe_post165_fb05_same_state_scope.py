@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 """Broad floating scout for post-#165 FB-05 same-state arithmetic restrictions.
 
-The scout deliberately ranks adversarial states: simultaneous parity badness,
-large source-channel cancellation, sourceMoment/M4 scale separation, and small
-endpoint scalars.  It is a discovery engine only.  Any candidate worth keeping
+The scout deliberately ranks adversarial shifted states: simultaneous parity
+badness, large source-channel cancellation, sourceMoment/M4 scale separation,
+and small endpoint scalars.  When no bad successor is found it also retains the
+H1 states whose successor eigenvalue is closest to zero, so a negative result
+still tells us whether the sampled finite regime is near the first-bad boundary.
+
+This is a discovery engine only.  Any actual shifted candidate worth keeping
 must be replayed with Arb by ``certify_post165_fb05_same_state_scope.py``.
 """
 from __future__ import annotations
@@ -111,6 +115,33 @@ def _compact_candidate(rec: dict, L_num: int, L_den: int) -> dict:
     }
 
 
+def _compact_margin(rec: dict, L_num: int, L_den: int) -> dict | None:
+    """Keep H1 states near the successor sign boundary even without a bad root."""
+    if not rec["post150_scope"]["H1_predecessor_positive"]:
+        return None
+    eig = rec["selected_successor"].get("min_form_eigenvalue")
+    if eig is None or not math.isfinite(float(eig)):
+        return None
+    return {
+        "Q": int(rec["Q"]),
+        "L_num": int(L_num),
+        "L_den": int(L_den),
+        "L": float(rec["L"]),
+        "N": int(rec["N"]),
+        "Kstar": int(rec["Kstar"]),
+        "parity": rec["parity"],
+        "successor_min_form_eigenvalue": float(eig),
+        "absolute_margin_to_zero": abs(float(eig)),
+        "zero_shift_schur_energy": float(
+            rec["zero_shift_selected_residual"]["schur_energy"]
+        ),
+        "zero_shift_direct_trial_energy": float(
+            rec["zero_shift_selected_residual"]["direct_trial_energy"]
+        ),
+        "scope_highest": rec["post150_scope"]["highest"],
+    }
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--q-min", type=int, default=2)
@@ -135,6 +166,7 @@ def main() -> int:
         raise ValueError("samples must be positive")
 
     candidates = []
+    margins = []
     attempted = 0
     unavailable = 0
     for Q in range(args.q_min, args.q_max + 1):
@@ -146,6 +178,9 @@ def main() -> int:
                 for parity in ("even", "odd"):
                     attempted += 1
                     rec = evaluate_shifted_state(Q, L, N, parity)
+                    margin = _compact_margin(rec, num, den)
+                    if margin is not None:
+                        margins.append(margin)
                     if not rec["available"]:
                         unavailable += 1
                         continue
@@ -153,6 +188,26 @@ def main() -> int:
 
     candidates.sort(key=lambda x: (-float(x["score"]), x["Q"], x["N"], x["parity"]))
     top = candidates[: args.top]
+    margins.sort(
+        key=lambda x: (
+            float(x["absolute_margin_to_zero"]),
+            x["Q"],
+            x["N"],
+            x["parity"],
+        )
+    )
+    closest = margins[: args.top]
+    minimum_sampled = min(
+        margins,
+        key=lambda x: (
+            float(x["successor_min_form_eigenvalue"]),
+            x["Q"],
+            x["N"],
+            x["parity"],
+        ),
+        default=None,
+    )
+
     payload = {
         "schema_version": "POST165_FB05_SAME_STATE_DISCOVERY_v1",
         "status": "PASS",
@@ -167,11 +222,15 @@ def main() -> int:
             "dyadic_bits": args.dyadic_bits,
             "attempted_states": attempted,
             "unavailable_states": unavailable,
+            "h1_margin_states": len(margins),
             "shifted_states": len(candidates),
         },
+        "minimum_sampled_successor_eigenvalue": minimum_sampled,
+        "closest_to_zero_successor_margins": closest,
         "top_candidates": top,
         "nonclaims": [
-            "Candidate ranking is exploratory and not theorem authority.",
+            "Candidate and margin ranking is exploratory and not theorem authority.",
+            "A positive sampled successor margin is not a whole-cell positivity certificate.",
             "A floating sign is not a certificate.",
             "No sourceMoment/M4 implication is promoted by this scout.",
             "No endpoint-scalar global sign theorem is promoted by this scout.",
@@ -186,7 +245,10 @@ def main() -> int:
             {
                 "status": payload["status"],
                 "attempted_states": attempted,
+                "h1_margin_states": len(margins),
                 "shifted_states": len(candidates),
+                "minimum_sampled_successor_eigenvalue": minimum_sampled,
+                "closest_to_zero_successor_margins": closest,
                 "top_candidates": [
                     {
                         "score": c["score"],
