@@ -5,7 +5,7 @@ This ledger records reusable blockers that should shape future route design.
 > **Current theorem anchor:** merged PR #163, `bd3fa1aafa7df2aa35873df532bdb6f17ddd2bbd`.  
 > **Validated theorem head:** `b418ff034428f92594bab0e5b8276181a086ee4b`.  
 > **Validated theorem tree:** `c397b3a015ea54e38ecfe626d6e29556fe963839`.  
-> **Latest research-evidence anchor:** merged PR #168, validated head `9657dad6f1e262b1fa7e08e6944aaa935feeaf33`.  
+> **Latest research-evidence anchor:** merged PR #170, validated head `70689692d5b92252bf9da97740385aaced2bf197`.  
 > **Claim firewall:** RH remains OPEN.
 
 Historical obstruction origins below retain the PR number at which they were discovered/classified. A later theorem may close an escape without deleting the reusable warning.
@@ -513,7 +513,7 @@ more subdivision != demonstrated mathematical progress
 
 ## OBS-043 — isolated prime-entry stabilization does not control the full canonical aperture drift
 
-**Status:** EXACT EXECUTABLE LOCAL STRUCTURE + FINITE ARB/FLOATING RESEARCH EVIDENCE FROM PR #168; NOT A LEAN THEOREM.
+**Status:** EXACT EXECUTABLE LOCAL STRUCTURE + FINITE ARB/FLOATING RESEARCH EVIDENCE FROM PR #168, STRENGTHENED BY PR #170; NOT A LEAN THEOREM.
 
 After enforcing the actual boundary-flat carrier before parity reduction, the executable source-atom expansion has first surviving orders
 
@@ -524,12 +524,40 @@ even -> order 9 through M4^2.
 
 The canonical sign makes the entering odd prime-power contribution locally stabilizing at its first surviving order.
 
-However the full canonical source also contains pole, archimedean, scalar-repair, and already-active prime-power terms whose aperture dependence is not delayed to the same high order.
+PR #170 strengthens this from a matrix-level statement to the theorem-aligned one-step scalar at the q17/N3/K4/odd finite target: the threshold direction is Arb-certified Schur-visible (`rho != 0`) and the exact entering-q pivot effect is positive at all seven checked positive offsets.
 
-PR #168 certifies the exact `L=log 17` threshold and 18 two-sided finite microscope points positive, while the full Q17 floating state still `CONTINUES_DOWN_BUT_POSITIVE`.
+Nevertheless, the q-removed smooth background has a negative Arb-certified central finite difference at all seven tested scales, while the full physical scout remains H1-aligned and sampled-positive through q19.
 
-**Consequence:** a favorable local entering-prime jet does not imply favorable total aperture drift. The correct next object is a cancellation-preserving full scalar pivot/background decomposition, not the isolated atom by itself.
+**Consequence:** even a nonzero, Schur-visible favorable threshold atom does not determine the total canonical pivot drift. The next object is an integrated, cancellation-preserving threshold-to-threshold Schur barrier, not the isolated atom or a local sign by itself.
 
-**Permanent warning:** do not formalize the isolated threshold jet and silently treat it as a full-source monotonicity/barrier theorem.
+**Permanent warning:** do not formalize the isolated threshold jet or finite q17 visibility and silently treat either as a full-source monotonicity/barrier theorem.
+
+## OBS-044 — channel Schur pivots are not additive
+
+**Status:** EXACT FINITE-DIMENSIONAL ALGEBRA / EXECUTABLE-LOCKED BY PR #170; NOT SEPARATELY LEAN-THEOREMIZED.
+
+The one-step Schur map
+
+```text
+P(H) = d - b^T A^-1 b
+```
+
+is nonlinear. In general,
+
+```text
+P(M1 + ... + Mr) != P(M1) + ... + P(Mr).
+```
+
+Therefore independent pole/archimedean/prime/scalar **pivot values may not be summed** to explain the tiny selected residual.
+
+At a complete H1 background, directional attribution is cancellation-preserving through the envelope derivative
+
+```text
+DP_M[D] = u_M^T D u_M,
+```
+
+where `u_M` is the complete Schur-minimizing trial for the full background. PR #170 locks the equivalent block formula as exact executable algebra.
+
+**Consequence:** future channel analyses must work at matrix level or through the derivative/envelope evaluated on the full minimizing trial. Any proof that sums standalone channel pivots changes the nonlinear problem and loses the exact cancellation structure.
 
 **RH remains OPEN.**
