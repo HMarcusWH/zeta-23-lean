@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Post-#169 floating falsifier for Schur visibility and threshold/background competition.
 
-Primary target: q=17, predecessor N=3, odd parity.  This script is discovery
-only.  It uses the theorem-aligned [W|c] zero-shift Schur coordinate, filters
-first-bad interpretations to H1 predecessor-positive states, and never treats
-finite differences as derivative theorems.
+Primary target: q=17, predecessor N=3, odd parity. This script is discovery
+only. Tiny threshold effects below the explicit double-precision resolution
+floor are delegated to the Arb replay rather than interpreted from subtracting
+near-equal floating Schur pivots.
 """
 from __future__ import annotations
 
@@ -17,7 +17,7 @@ import numpy as np
 from scipy.optimize import brentq
 
 from canonical_source_numeric import canonical_source_matrix_L
-from post167_fb05_threshold_jet import aperture_from_source_coordinate, von_mangoldt_weight_float
+from post167_fb05_threshold_jet import von_mangoldt_weight_float
 from post169_fb05_schur_visibility import (
     background_signed_channels_at_omega_float,
     directional_schur_derivative_float,
@@ -32,11 +32,9 @@ from post169_fb05_schur_visibility import (
 
 
 def next_von_mangoldt_threshold(q: int) -> int:
-    k = q + 1
-    while k < q + 10000:
+    for k in range(q + 1, q + 10000):
         if von_mangoldt_weight_float(k) != 0.0:
             return k
-        k += 1
     raise ArithmeticError("failed to find next von-Mangoldt threshold")
 
 
@@ -78,14 +76,14 @@ def _finite_difference_background(q: int, N: int, parity: str, exponent: int) ->
         "channel_directional_sum": channel_sum,
         "directional_total": directional_total,
         "finite_difference_minus_directional_total": beta_unit - directional_total,
-        "interpretation": "finite-difference evidence in source coordinate omega; not a derivative theorem",
+        "interpretation": "coarse finite-difference evidence in source coordinate omega; not a derivative theorem",
     }
 
 
 def _local_model(P0: float, beta: float, Kkick: float, order: int, omega_next: float) -> dict:
     out = {
         "P0": P0,
-        "beta1": beta,
+        "beta1_coarse": beta,
         "Kkick": Kkick,
         "order": order,
         "omega_next": omega_next,
@@ -93,6 +91,7 @@ def _local_model(P0: float, beta: float, Kkick: float, order: int, omega_next: f
         "omega_value_catch": None,
         "predicted_turning_point": None,
         "predicted_zero_before_next": None,
+        "claim_cap": "COARSE_LOCAL_MODEL_ONLY",
     }
     if beta < 0.0 and Kkick > 0.0:
         out["omega_slope_catch"] = (-beta / (order * Kkick)) ** (1.0 / (order - 1))
@@ -153,6 +152,7 @@ def main() -> int:
     ap.add_argument("--n", type=int, default=3)
     ap.add_argument("--parity", choices=["odd", "even"], default="odd")
     ap.add_argument("--exponents", default="6,8,10,12,14,16,18,20")
+    ap.add_argument("--beta-exponent", type=int, default=8)
     ap.add_argument("--grid", type=int, default=97)
     ap.add_argument("--output", type=Path, default=Path("/tmp/POST169_FB05_SCHUR_VISIBILITY_DISCOVERY.json"))
     args = ap.parse_args()
@@ -161,8 +161,8 @@ def main() -> int:
     if von_mangoldt_weight_float(args.q) == 0.0:
         raise ValueError("target q must have nonzero von-Mangoldt weight")
     exponents = sorted({int(x) for x in args.exponents.split(",") if x.strip()})
-    if not exponents:
-        raise ValueError("need source-offset exponents")
+    if not exponents or args.beta_exponent not in exponents:
+        raise ValueError("beta exponent must be included in source-offset exponents")
 
     q_next = next_von_mangoldt_threshold(args.q)
     threshold = _background_pivot(args.q, args.n, args.parity, 0.0)
@@ -177,14 +177,15 @@ def main() -> int:
         rec = pivot_effect_record(args.q, args.n, args.parity, omega)
         residual_scale = omega ** (jet_order + 2)
         rec["unit_residual_over_expected_next_order"] = (
-            rec["unit_exact_minus_rank_one"] / residual_scale if residual_scale else None
+            rec["unit_exact_minus_rank_one"] / residual_scale
+            if rec["float_exact_effect_resolved"] and rec["unit_exact_minus_rank_one"] is not None
+            else None
         )
         atom_records.append(rec)
 
     finite_differences = [_finite_difference_background(args.q, args.n, args.parity, exp) for exp in exponents if exp >= 8]
-    usable = [r for r in finite_differences if r["H1_minus"] and r["H1_zero"] and r["H1_plus"]]
-    beta_record = usable[-1] if usable else finite_differences[-1]
-    beta = float(beta_record["beta_unit_central_difference"])
+    selected = next(r for r in finite_differences if r["exponent"] == args.beta_exponent)
+    beta = float(selected["beta_unit_central_difference"])
     Kkick = float(kappa * visibility["rho2"] / c2)
     omega_next = 1.0 - math.log(float(args.q)) / math.log(float(q_next))
     local_model = _local_model(threshold["unit_shell_pivot"], beta, Kkick, jet_order, omega_next)
@@ -198,7 +199,7 @@ def main() -> int:
         visibility_class = "VISIBLE_SIGNAL"
 
     payload = {
-        "schema_version": "POST169_FB05_SCHUR_VISIBILITY_DISCOVERY_v1",
+        "schema_version": "POST169_FB05_SCHUR_VISIBILITY_DISCOVERY_v2",
         "status": "PASS",
         "claim_cap": "EXPERIMENTAL_SIGNAL_ONLY",
         "target": {
@@ -225,20 +226,20 @@ def main() -> int:
         },
         "exact_q_atom_vs_rank_one": atom_records,
         "background_finite_differences": finite_differences,
-        "selected_beta_record": beta_record,
+        "selected_coarse_background_variation": selected,
         "local_truncated_model": local_model,
         "physical_scout_to_next_von_mangoldt_threshold": physical,
         "interpretation": (
             "The q atom is separated at matrix level before evaluating the nonlinear Schur pivot. "
-            "Channel attribution uses the directional derivative of the pivot, not sums of channel pivots."
+            "Tiny exact-minus-background effects below the explicit floating resolution floor are left to Arb."
         ),
         "nonclaims": [
             "Finite differences are not derivative theorems.",
+            "The coarse local model is not extrapolated as a barrier theorem.",
             "A visible threshold direction is not a first-bad contradiction.",
             "No sampled negative pivot implies no whole-interval positivity theorem.",
-            "The integer shell generator is ray-equivalent, not magnitude-identical, to Lean's canonical cubic shell.",
-            "RH remains OPEN.",
-        ],
+            "RH remains OPEN."
+        ]
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
@@ -246,14 +247,15 @@ def main() -> int:
         "status": "PASS",
         "target": payload["target"],
         "threshold": payload["threshold"],
-        "selected_beta_record": beta_record,
+        "selected_coarse_background_variation": selected,
         "local_truncated_model": local_model,
         "physical_summary": {
             "H1_count": physical["H1_count"],
             "negative_H1_count": physical["negative_H1_count"],
-            "best_H1_unit_pivot": physical["best_H1_unit_pivot"],
+            "best_H1_unit_pivot": physical["best_H1_unit_pivot"]
         },
-        "atom_tail": atom_records[-3:],
+        "resolved_atom_records": [r for r in atom_records if r["float_exact_effect_resolved"]],
+        "resolution_limited_atom_count": sum(1 for r in atom_records if not r["float_exact_effect_resolved"])
     }, indent=2))
     return 0
 

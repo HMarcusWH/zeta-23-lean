@@ -8,13 +8,12 @@ centered predecessor / intrinsic-shell geometry
     H = B_step^T M B_step = [[A,b],[b^T,d]],
     P = d - b^T A^{-1} b.
 
-`c` is the checked-in exact integer shell generator.  It spans the same
+`c` is the checked-in exact integer shell generator. It spans the same
 one-dimensional shell as Lean's `intrinsicCubicShellPart`, but is not asserted
-to have the same magnitude.  Consequently raw pivots are reported together
-with the scale-invariant unit-shell normalization P / ||c||^2.
+to have the same magnitude. Raw pivots are therefore reported together with
+the scale-invariant unit-shell normalization P / ||c||^2.
 
-All results in this module are research/audit tooling only.  No executable
-result is Lean theorem authority.  RH remains OPEN.
+All results in this module are research/audit tooling only. RH remains OPEN.
 """
 from __future__ import annotations
 
@@ -25,11 +24,7 @@ import numpy as np
 import sympy as sp
 
 from canonical_source_numeric import canonical_source_matrix_L, signed_channel_matrices_L
-from post150_selected_residual import (
-    centered_predecessor_basis,
-    exact_shell_generator,
-    sympy_to_numpy,
-)
+from post150_selected_residual import centered_predecessor_basis, exact_shell_generator, sympy_to_numpy
 from post167_fb05_threshold_jet import (
     aperture_from_source_coordinate,
     canonical_entering_atom_float,
@@ -117,14 +112,10 @@ def theorem_aligned_pivot_float(M: np.ndarray, predecessor_N: int, parity: str) 
 
 
 def moment_vector_step(predecessor_N: int, parity: str) -> tuple[int, np.ndarray]:
-    """Leading boundary-flat threshold moment row in [W|c] coordinates."""
     geom = one_step_geometry(predecessor_N, parity)
     K = predecessor_N + 1
-    if parity == "odd":
-        moment_order = 3
-    elif parity == "even":
-        moment_order = 4
-    else:
+    moment_order = 3 if parity == "odd" else 4 if parity == "even" else None
+    if moment_order is None:
         raise ValueError("parity must be even or odd")
     row = centered_moment_row(K, geom.step_basis_exact, moment_order)
     return moment_order, np.asarray(row, dtype=float).reshape(-1)
@@ -143,7 +134,7 @@ def threshold_leading_scalar(q: int, parity: str) -> tuple[int, float]:
 
 def schur_visibility_float(H_background: np.ndarray, v: np.ndarray) -> dict:
     blocks = schur_pivot_float(H_background)
-    A, b = blocks["A"], blocks["b"]
+    A = blocks["A"]
     v = np.asarray(v, dtype=float).reshape(-1)
     if len(v) != H_background.shape[0]:
         raise ValueError("visibility vector dimension mismatch")
@@ -160,15 +151,18 @@ def schur_visibility_float(H_background: np.ndarray, v: np.ndarray) -> dict:
     return {"rho": rho, "rho2": rho * rho, "gamma": gamma, "a": a, "alpha": alpha}
 
 
-def rank_one_pivot_update_float(pivot: float, tau: float, rho: float, gamma: float) -> float:
+def rank_one_pivot_effect_float(tau: float, rho: float, gamma: float) -> float:
     den = 1.0 + float(tau) * float(gamma)
     if abs(den) < 1e-15:
         raise ArithmeticError("rank-one Schur denominator is numerically singular")
-    return float(pivot + float(tau) * float(rho) ** 2 / den)
+    return float(float(tau) * float(rho) ** 2 / den)
+
+
+def rank_one_pivot_update_float(pivot: float, tau: float, rho: float, gamma: float) -> float:
+    return float(pivot + rank_one_pivot_effect_float(tau, rho, gamma))
 
 
 def directional_schur_derivative_float(H: np.ndarray, D: np.ndarray) -> float:
-    """Directional derivative of P(H)=d-b^T A^-1 b at an invertible A."""
     blocks = schur_pivot_float(H)
     DA, Db, Dd = schur_blocks_float(np.asarray(D, dtype=float))
     x = blocks["x"]
@@ -182,12 +176,6 @@ def signed_entering_atom_float(q: int, predecessor_N: int, omega: float) -> np.n
 
 
 def full_background_at_omega_float(q: int, predecessor_N: int, omega: float) -> dict:
-    """Return physical full matrix and smooth background with q atom removed.
-
-    For omega<=0 the q atom is not physically active and the full matrix is
-    already the background.  For omega>0 the signed canonical q atom is
-    subtracted from the full physical matrix.
-    """
     L = aperture_from_source_coordinate(q, float(omega))
     K = predecessor_N + 1
     full = canonical_source_matrix_L(L, K)
@@ -215,11 +203,18 @@ def pivot_effect_record(q: int, predecessor_N: int, parity: str, omega: float) -
         raise AssertionError("moment/jet order mismatch")
     vis = schur_visibility_float(bg_rec["H"], v)
     tau = kappa * float(omega) ** jet_order
-    model_pivot = rank_one_pivot_update_float(bg_rec["raw_pivot"], tau, vis["rho"], vis["gamma"])
+    model_effect = rank_one_pivot_effect_float(tau, vis["rho"], vis["gamma"])
     exact_effect = full_rec["raw_pivot"] - bg_rec["raw_pivot"]
-    model_effect = model_pivot - bg_rec["raw_pivot"]
-    residual = exact_effect - model_effect
     c2 = float(bg_rec["geometry"].c2)
+
+    # The production matrix builder is ordinary double-precision discovery
+    # arithmetic. Once the predicted effect is below this relative floor, a
+    # subtraction of two near-equal Schur pivots is deliberately not treated as
+    # asymptotic evidence. Arb replay is the authority for those points.
+    resolution_floor = 1e-8 * max(abs(bg_rec["raw_pivot"]), 1e-30)
+    resolved = abs(model_effect) >= resolution_floor
+    residual = exact_effect - model_effect if resolved else None
+
     return {
         "L": state["L"],
         "omega": float(omega),
@@ -234,7 +229,9 @@ def pivot_effect_record(q: int, predecessor_N: int, parity: str, omega: float) -
         "raw_rank_one_model_effect": model_effect,
         "unit_rank_one_model_effect": model_effect / c2,
         "raw_exact_minus_rank_one": residual,
-        "unit_exact_minus_rank_one": residual / c2,
+        "unit_exact_minus_rank_one": None if residual is None else residual / c2,
+        "float_exact_effect_resolved": resolved,
+        "float_resolution_floor": resolution_floor,
         "jet_order": jet_order,
         "kappa": kappa,
         "rho": vis["rho"],

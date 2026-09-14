@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Rigorous pointwise Arb replay for post-#169 Schur visibility research.
 
-This certifies finite theorem-aligned [W|c] Schur data only.  It does not claim
-a derivative theorem, whole-cell positivity, FB-05 closure, or RH.
+This certifies finite theorem-aligned [W|c] Schur data and finite-difference
+enclosures only. It does not promote those finite differences to derivative
+theorems or claim whole-cell positivity, FB-05 closure, or RH.
 """
 from __future__ import annotations
 
@@ -25,11 +26,7 @@ from canonical_source_arb import (
 from certify_post150_selected_residual_scope import positive_definite_certificate
 from post150_selected_residual import centered_predecessor_basis, exact_shell_generator
 from post166_fb05_cell_interval import _arb_matrix_from_sympy, fixed_q_canonical_source_matrix_arb
-from post167_fb05_threshold_jet import (
-    canonical_entering_atom_arb,
-    centered_moment_row,
-    von_mangoldt_weight_arb,
-)
+from post167_fb05_threshold_jet import canonical_entering_atom_arb, centered_moment_row, von_mangoldt_weight_arb
 
 HERE = Path(__file__).resolve().parent
 DEFAULT_FIXTURE = HERE / "fixtures" / "post169_fb05_threshold_pivot_v1.json"
@@ -63,13 +60,9 @@ def _schur_record(H: arb_mat) -> dict:
     if n < 1 or H.ncols() != n:
         raise ValueError("expected nonempty square one-step matrix")
     if n == 1:
-        pivot = H[0, 0]
         return {
-            "A": arb_mat(0, 0),
-            "b": arb_mat(0, 1),
-            "x": arb_mat(0, 1),
-            "pivot": pivot,
-            "predecessor_pd": positive_definite_certificate(arb_mat(0, 0)),
+            "A": arb_mat(0, 0), "b": arb_mat(0, 1), "x": arb_mat(0, 1),
+            "pivot": H[0, 0], "predecessor_pd": positive_definite_certificate(arb_mat(0, 0))
         }
     A = _submatrix(H, range(n - 1), range(n - 1))
     b = _submatrix(H, range(n - 1), range(n - 1, n))
@@ -88,8 +81,7 @@ def _visibility(H: arb_mat, v: list[int]) -> dict:
     n = H.nrows()
     alpha = arb(int(v[-1]))
     if n == 1:
-        rho = alpha
-        gamma = arb(0)
+        rho, gamma = alpha, arb(0)
     else:
         a = arb_mat([[int(x)] for x in v[:-1]])
         z = rec["A"].solve(a)
@@ -100,22 +92,14 @@ def _visibility(H: arb_mat, v: list[int]) -> dict:
         "rho": rho,
         "gamma": gamma,
         "rho_nonzero_certified": definitely_nonzero(rho),
-        "predecessor_pd": rec["predecessor_pd"],
+        "predecessor_pd": rec["predecessor_pd"]
     }
-
-
-def _rank_one_pivot(H: arb_mat, tau: arb, v: list[int]) -> arb | None:
-    n = len(v)
-    update = arb_mat([[tau * int(v[r]) * int(v[c]) for c in range(n)] for r in range(n)])
-    model = H + update
-    return _schur_record(model)["pivot"]
 
 
 def _entrywise_overlap(A: arb_mat, B: arb_mat) -> bool:
     return A.nrows() == B.nrows() and A.ncols() == B.ncols() and all(
         (A[r, c] - B[r, c]).contains(0)
-        for r in range(A.nrows())
-        for c in range(A.ncols())
+        for r in range(A.nrows()) for c in range(A.ncols())
     )
 
 
@@ -145,6 +129,50 @@ def _moment_vector(N: int, parity: str, B) -> list[int]:
     return [int(row[0, j]) for j in range(row.cols)]
 
 
+def _rank_one_formula_effect(Hbg: arb_mat, tau: arb, v: list[int]) -> arb | None:
+    vis = _visibility(Hbg, v)
+    if not vis["available"]:
+        return None
+    return tau * vis["rho"] ** 2 / (1 + tau * vis["gamma"])
+
+
+def _background_schur_at_signed_offset(q: int, N: int, parity: str, sign: int, exponent: int) -> dict:
+    den = 1 << exponent
+    omega = arb(sign) / den
+    L = arb(q).log() / (1 - omega)
+    _W, _c, B, c2 = _step_basis(N, parity)
+    physical_Q = q - 1 if sign < 0 else q
+    full = canonical_source_matrix(L, N + 1, physical_Q)
+    if sign > 0:
+        atom = canonical_entering_atom_arb(q, N + 1, omega)
+        bg = full - atom
+    else:
+        bg = full
+    rec = _schur_record(_restricted(bg, B))
+    return {
+        "omega": omega, "L": L, "physical_Q": physical_Q,
+        "pivot": rec["pivot"], "unit_pivot": None if rec["pivot"] is None else rec["pivot"] / c2,
+        "H1": bool(rec["predecessor_pd"]["certified"])
+    }
+
+
+def _finite_difference(q: int, N: int, parity: str, exponent: int) -> dict:
+    minus = _background_schur_at_signed_offset(q, N, parity, -1, exponent)
+    plus = _background_schur_at_signed_offset(q, N, parity, 1, exponent)
+    h = arb(1) / (1 << exponent)
+    beta = None
+    if minus["unit_pivot"] is not None and plus["unit_pivot"] is not None:
+        beta = (plus["unit_pivot"] - minus["unit_pivot"]) / (2 * h)
+    return {
+        "exponent": exponent,
+        "h": ball_record(h),
+        "H1_minus": minus["H1"], "H1_plus": plus["H1"],
+        "unit_background_central_difference": None if beta is None else ball_record(beta),
+        "sign": _sign_class(beta),
+        "claim_cap": "RIGOROUS_FINITE_DIFFERENCE_ENCLOSURE_ONLY"
+    }
+
+
 def _point(q: int, N: int, parity: str, exponent: int) -> dict:
     den = 1 << exponent
     omega = arb(1) / den
@@ -154,34 +182,28 @@ def _point(q: int, N: int, parity: str, exponent: int) -> dict:
     atom = canonical_entering_atom_arb(q, N + 1, omega)
     background = full - atom
     reconstruction = _entrywise_overlap(full, background + atom)
-    Hfull = _restricted(full, B)
-    Hbg = _restricted(background, B)
-    full_rec = _schur_record(Hfull)
-    bg_rec = _schur_record(Hbg)
+    Hfull, Hbg = _restricted(full, B), _restricted(background, B)
+    full_rec, bg_rec = _schur_record(Hfull), _schur_record(Hbg)
     v = _moment_vector(N, parity, B)
     order, kappa = _kappa(q, parity)
     tau = kappa * omega ** order
-    model_pivot = _rank_one_pivot(Hbg, tau, v) if bg_rec["pivot"] is not None else None
+    model_effect = _rank_one_formula_effect(Hbg, tau, v) if bg_rec["pivot"] is not None else None
     exact_effect = full_rec["pivot"] - bg_rec["pivot"] if full_rec["pivot"] is not None and bg_rec["pivot"] is not None else None
-    model_effect = model_pivot - bg_rec["pivot"] if model_pivot is not None and bg_rec["pivot"] is not None else None
     residual = exact_effect - model_effect if exact_effect is not None and model_effect is not None else None
     return {
         "exponent": exponent,
-        "omega": ball_record(omega),
-        "L": ball_record(L),
+        "omega": ball_record(omega), "L": ball_record(L),
         "full_equals_background_plus_q_atom": reconstruction,
         "H1_background_certified": bool(bg_rec["predecessor_pd"]["certified"]),
         "H1_full_certified": bool(full_rec["predecessor_pd"]["certified"]),
-        "background_raw_pivot": None if bg_rec["pivot"] is None else ball_record(bg_rec["pivot"]),
         "background_unit_pivot": None if bg_rec["pivot"] is None else ball_record(bg_rec["pivot"] / c2),
-        "full_raw_pivot": None if full_rec["pivot"] is None else ball_record(full_rec["pivot"]),
         "full_unit_pivot": None if full_rec["pivot"] is None else ball_record(full_rec["pivot"] / c2),
         "exact_q_effect": None if exact_effect is None else ball_record(exact_effect),
         "exact_q_effect_sign": _sign_class(exact_effect),
-        "rank_one_model_effect": None if model_effect is None else ball_record(model_effect),
-        "rank_one_model_effect_sign": _sign_class(model_effect),
+        "rank_one_formula_effect": None if model_effect is None else ball_record(model_effect),
+        "rank_one_formula_effect_sign": _sign_class(model_effect),
         "exact_minus_rank_one": None if residual is None else ball_record(residual),
-        "claim_cap": "RIGOROUS_FINITE_POINT_AUDIT_ONLY",
+        "claim_cap": "RIGOROUS_FINITE_POINT_AUDIT_ONLY"
     }
 
 
@@ -193,9 +215,7 @@ def main() -> int:
     args = ap.parse_args()
     fixture = json.loads(args.input.read_text(encoding="utf-8"))
     target = fixture["target"]
-    q = int(target["q"])
-    N = int(target["predecessor_N"])
-    parity = target["selected_parity"]
+    q, N, parity = int(target["q"]), int(target["predecessor_N"]), target["selected_parity"]
     precision = int(args.precision_bits or fixture.get("arb_precision_bits", 256))
     set_precision(precision)
 
@@ -206,7 +226,6 @@ def main() -> int:
     schur0 = _schur_record(H0)
     v = _moment_vector(N, parity, B)
     visibility = _visibility(H0, v)
-
     threshold = {
         "L": ball_record(L0),
         "H1_predecessor_positive_certified": bool(schur0["predecessor_pd"]["certified"]),
@@ -218,47 +237,49 @@ def main() -> int:
             "available": visibility["available"],
             "rho": None if not visibility["available"] else ball_record(visibility["rho"]),
             "rho_nonzero_certified": False if not visibility["available"] else visibility["rho_nonzero_certified"],
-            "gamma": None if not visibility["available"] else ball_record(visibility["gamma"]),
-        },
+            "gamma": None if not visibility["available"] else ball_record(visibility["gamma"])
+        }
     }
 
-    points = [_point(q, N, parity, int(e)) for e in fixture["source_offset_exponents"]]
+    exponents = [int(e) for e in fixture["source_offset_exponents"]]
+    points = [_point(q, N, parity, e) for e in exponents]
     if not all(p["full_equals_background_plus_q_atom"] for p in points):
         raise AssertionError("full/background/q-atom Arb reconstruction failed")
+    finite_differences = [_finite_difference(q, N, parity, e) for e in exponents]
 
     counts = {"POSITIVE_CERTIFIED": 0, "NEGATIVE_CERTIFIED": 0, "UNRESOLVED": 0}
     for p in points:
         counts[p["exact_q_effect_sign"]] += 1
+    diff_counts = {"POSITIVE_CERTIFIED": 0, "NEGATIVE_CERTIFIED": 0, "UNRESOLVED": 0}
+    for p in finite_differences:
+        diff_counts[p["sign"]] += 1
 
     out = {
-        "schema_version": "POST169_FB05_SCHUR_VISIBILITY_CERTIFICATE_v1",
+        "schema_version": "POST169_FB05_SCHUR_VISIBILITY_CERTIFICATE_v2",
         "status": "PASS",
-        "claim_cap": "RIGOROUS_FINITE_POINT_AUDIT_ONLY",
-        "target": target,
-        "precision_bits": precision,
+        "claim_cap": "RIGOROUS_FINITE_POINT_AND_DIFFERENCE_AUDIT_ONLY",
+        "target": target, "precision_bits": precision,
         "threshold": threshold,
         "positive_source_coordinate_points": points,
+        "background_central_finite_differences": finite_differences,
         "exact_q_effect_sign_counts": counts,
-        "interpretation": (
-            "Arb certifies pointwise one-step Schur geometry and q-atom reconstruction. "
-            "No finite-difference quantity is promoted to a derivative theorem."
-        ),
+        "background_difference_sign_counts": diff_counts,
         "nonclaims": [
+            "Finite-difference enclosures are not derivative theorems.",
             "The integer shell generator is ray-equivalent, not magnitude-identical, to Lean's intrinsicCubicShellPart.",
             "Pointwise Arb replay is not a whole-cell positivity theorem.",
             "Schur visibility is not FB-05 closure.",
-            "No executable result is Lean theorem authority.",
             "RH remains OPEN."
         ]
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({
-        "status": "PASS",
-        "target": target,
-        "threshold": threshold,
+        "status": "PASS", "target": target, "threshold": threshold,
         "exact_q_effect_sign_counts": counts,
-        "point_count": len(points)
+        "background_difference_sign_counts": diff_counts,
+        "finite_difference_summaries": finite_differences,
+        "first_point": points[0], "last_point": points[-1]
     }, indent=2))
     return 0
 
