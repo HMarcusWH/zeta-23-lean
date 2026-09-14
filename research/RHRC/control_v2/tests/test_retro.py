@@ -54,7 +54,7 @@ class RetroTests(unittest.TestCase):
         self.assertNotIn("rupture", terms)
         self.assertNotIn("slack", terms)
 
-    def test_e4a4_actions_use_post170_barrier_arithmetic_aliases(self):
+    def test_e4a4_actions_use_post172_q13_scalar_arithmetic_aliases(self):
         aliases = load_alias_map(RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json")
         terms = expanded_terms("canonical_source_exclusion", aliases)
         for term in (
@@ -131,6 +131,20 @@ class RetroTests(unittest.TestCase):
             "barrier loss",
             "barrier replenishment",
             "integrated background loss",
+            "arithmetic interval",
+            "genuine von Mangoldt seam",
+            "arithmetic entry lift",
+            "sign-indefinite entry lift",
+            "q13 q16 interval",
+            "q13 even barrier",
+            "N2 K3 even",
+            "2x2 Schur determinant",
+            "Delta_2",
+            "physical cutoff subcell",
+            "Q13 Q14 Q15",
+            "background H1",
+            "physical H1",
+            "cancellation ratio",
         ):
             self.assertIn(term, terms)
 
@@ -158,10 +172,14 @@ class RetroTests(unittest.TestCase):
             "PR #167",
             "PR #168",
             "PR #170",
+            "PR #172",
             "theorem-aligned [W|c] one-step Schur pivot",
-            "nonzero q17 Schur visibility",
-            "threshold-to-threshold Schur barrier",
-            "finite Arb central differences are not derivative theorems",
+            "sign-indefinite",
+            "q13->16/N2/K3/even",
+            "Delta_2(L)=a(L)d(L)-b(L)^2",
+            "Q=13/14/15 subcells",
+            "full physical H1 does not imply H1 for the q-removed background",
+            "cancellation ratios around 1e9-1e10",
             "nonzero explicitCanonicalSourceMoment does not imply M4",
             "finite weighted sample sum does not by itself determine the seventh jet",
             "DR-024",

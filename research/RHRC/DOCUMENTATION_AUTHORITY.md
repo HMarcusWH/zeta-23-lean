@@ -37,15 +37,15 @@ This remains the compiler-validated mathematical authority until a later theorem
 ### 2. Research-evidence anchor
 
 ```text
-latest merged research PR = #170
-validated research head = 70689692d5b92252bf9da97740385aaced2bf197
-merged research commit = c94242fe41ae62b59aaa392a33e35034eb2c1b1e
-research tree = 38e38a1d4cf90afa0e8103e58d1cbae626ebdeef
-RHRC #1058 = SUCCESS
-Permansson #831 = SUCCESS
+latest merged research PR = #172
+validated research head = 4c857cd031497d895232a18a4bfb9a094d9facae
+merged research commit = a31bb0bb7f025d7727dd3f224c705af797f64a19
+research tree = c64b098c3159d739fa15eeaa96e35693615873d7
+RHRC #1063 = SUCCESS
+Permansson #836 = SUCCESS
 ```
 
-This records the newest green research/discovery state. It does **not** upgrade SymPy identities, floating searches, Arb finite-point certifications, or finite-difference enclosures into Lean theorem authority.
+This records the newest green research/discovery state. It does **not** upgrade executable identities, floating searches, Arb finite-point certifications, quadrature diagnostics, or finite-difference enclosures into Lean theorem authority.
 
 ### 3. Control-plane semantic anchor
 
@@ -115,7 +115,7 @@ crossParityGamma != 0 under opposite-parity goodness
 
 No later research PR changes those theorem declarations.
 
-### Research progression #165-#170
+### Research progression #165-#172
 
 The current research-evidence layer adds, without theorem promotion:
 
@@ -131,7 +131,7 @@ The current research-evidence layer adds, without theorem promotion:
 #167 Q16 scalar-barrier attack
      -> no floating negative point
      -> direct whole-cell Arb remains 256/256 UNRESOLVED
-     -> brute dependency-heavy subdivision rejected as current method
+     -> dependency-heavy full-matrix subdivision rejected as current method
 
 #168 boundary-flat prime-entry threshold jet
      -> odd first surviving order 7 ~ M3^2
@@ -141,20 +141,27 @@ The current research-evidence layer adds, without theorem promotion:
 
 #170 theorem-aligned one-step Schur visibility/background audit
      -> [W|c] pivot aligned with post-#150 selected residual
-     -> q17 threshold direction finite-certified Schur-visible (rho != 0)
-     -> exact entering-q effect positive at 7/7 checked offsets
-     -> q-removed background finite difference negative at 7/7 checked scales
-     -> 97/97 sampled H1 states remain positive through q19
-     -> no whole-cell or barrier theorem
+     -> q17 direction finite-certified Schur-visible
+     -> exact q17 entering atom raises pivot at checked offsets
+     -> q-removed background finite difference negative at checked scales
+
+#172 threshold-to-threshold production barrier audit
+     -> genuine von-Mangoldt intervals tested across q/N/parity
+     -> no sampled bad successor
+     -> finite current-q entry lift is sign-indefinite
+     -> q13/N2/K3/even isolated as strongest near-critical target
+     -> Arb near-minimum full pivot ~= +5.84e-12
+     -> Arb q13 entry lift ~= -6.38e-12
+     -> channel cancellation ratios reach ~1e9-1e10
 ```
 
 The newest project synthesis is:
 
-`RESEARCH_LEADS_POST_170_SCHUR_VISIBILITY_THRESHOLD_BARRIER_DELTA.md`.
+`RESEARCH_LEADS_POST_172_Q13_EVEN_SCALAR_BARRIER_DELTA.md`.
 
 The previous post-green synthesis is:
 
-`RESEARCH_LEADS_POST_168_THRESHOLD_JET_BACKGROUND_DRIFT_DELTA.md`.
+`RESEARCH_LEADS_POST_170_SCHUR_VISIBILITY_THRESHOLD_BARRIER_DELTA.md`.
 
 ## Current route
 
@@ -170,30 +177,34 @@ PROVED THROUGH #163
   -> exact finite-prime sampling of same observable
   -> exact R8-R9 squared-jet boundary
 
-RESEARCHED THROUGH #170
+RESEARCHED THROUGH #172
   endpoint scalar audited
   theorem-aligned shifted finite state audited
   Q16 near-critical scalar barrier isolated
-  brute whole-cell interval representation falsified as current method
+  dependency-heavy full-matrix interval representation falsified as current method
   prime-entry threshold moment jet identified
   theorem-aligned [W|c] Schur pivot reconstructed
-  q17 threshold direction shown finite-certified Schur-visible
-  q17 arithmetic kick raises pivot at checked offsets
-  smooth q-removed background decreases at checked scales
-  sampled H1 pivot remains positive through q19
+  q17 finite visibility/background competition isolated
+  threshold-to-threshold production dynamics tested across multiple arithmetic cells
+  arithmetic entry lift found sign-indefinite in finite Arb replay
+  q13/N2/K3/even near-zero complete scalar isolated
 
 NOW
-  FB-05 threshold-to-threshold Schur barrier
-  -> local envelope derivative, not global monotonicity
-  -> integrated background loss across genuine arithmetic intervals
-  -> cancellation-preserving derivative attribution
-  -> arithmetic replenishment at the next seam
-  -> broad q/N/parity falsification
-  -> theoremize only a genuinely independent surviving restriction
+  FB-05 q13/N2/K3/even 2x2 scalar determinant barrier
+  -> predecessor scalar a(L)
+  -> determinant Delta_2(L)=a(L)d(L)-b(L)^2
+  -> H1 + successor sign reduce to a(L)>0 and Delta_2(L)>0
+  -> rigorous physical Q=13/14/15 subcells over log13..log16
+  -> opposite-parity/same-q controls
+  -> theoremize only a genuinely independent generalizable restriction
 ```
 
 ## Claim firewall
 
-Research green is not theorem promotion. The q17 finite certificates do not prove universal visibility, a derivative sign, interval positivity, or a threshold barrier. The formal first break remains FB-05 and the terminal claim remains `RH_OPEN`.
+Research green is not theorem promotion. The #172 finite certificates do not prove a whole-cell q13 sign, a universal arithmetic-entry sign, a global derivative law, a global threshold barrier, or first-bad exclusion.
+
+Even a future full q13-cell positivity certificate would be a finite method/structure result unless its proof yields a theorem that applies to the arbitrary retained first-bad state forced by #153/#161.
+
+The formal first break remains FB-05 and the terminal claim remains `RH_OPEN`.
 
 **RH remains OPEN.**
