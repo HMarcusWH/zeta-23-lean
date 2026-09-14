@@ -14,7 +14,7 @@
     "floating_min_eigenvalue": 2.3292865177849273e-12,
     "post166_arb_classification": "POSITIVE_DEFINITE_CERTIFIED"
   },
-  "max_depth": 4,
+  "max_depth": 8,
   "nonclaims": [
     "The checked-in seed is a finite positive point, not a whole-cell theorem.",
     "Adaptive interval failure is UNRESOLVED, not evidence of negativity.",
