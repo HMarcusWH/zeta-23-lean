@@ -1,0 +1,43 @@
+{
+  "schema_version": "POST173_FB05_Q13_SCALAR_BARRIER_FIXTURE_v1",
+  "claim_cap": "FINITE_Q13_SCALAR_INTERVAL_AUDIT_ONLY",
+  "theorem_authority_pr": 163,
+  "research_anchor_pr": 172,
+  "routing_sync_pr": 173,
+  "selected_target": {
+    "q_start": 13,
+    "q_end": 16,
+    "predecessor_N": 2,
+    "successor_K": 3,
+    "selected_parity": "even"
+  },
+  "physical_Qs": [13, 14, 15],
+  "required_ancestry_control": {
+    "predecessor_N": 2,
+    "parity": "odd"
+  },
+  "optional_successor_parity_control": {
+    "q_start": 13,
+    "q_end": 16,
+    "predecessor_N": 2,
+    "successor_K": 3,
+    "parity": "odd"
+  },
+  "float_grid": 257,
+  "float_local_seeds": 8,
+  "arb_precision_bits": 384,
+  "point_quantization_bits": 48,
+  "adaptive": {
+    "max_depth": 10,
+    "max_leaf_budget_per_cell": 128
+  },
+  "nonclaims": [
+    "The q13/N2/even target is a finite high-information laboratory, not the arbitrary retained first-bad state.",
+    "UNRESOLVED interval leaves are neither positive nor negative evidence.",
+    "An Arb interval containing zero does not certify a determinant root or tangential contact.",
+    "Selected H2 badness is not H3 first-bad alignment without same-aperture odd N=2 predecessor goodness.",
+    "Strict whole-cell q13 positivity would not close FB-05.",
+    "No global Schur monotonicity is assumed.",
+    "RH remains OPEN."
+  ]
+}
