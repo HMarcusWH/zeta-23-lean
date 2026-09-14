@@ -15,12 +15,12 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #174
-validated research head = 2d9fc5a5f7d552afb893c871fe84c9ed61a60ac0
-merged research commit = 946788f09c871de5133e2a8c8f5c94d7d69b521d
-research tree = 2a22b83c4d5903158c036d38420d9ae79b7726f2
-RHRC #1070 = SUCCESS
-Permansson #843 = SUCCESS
+merged research PR = #176
+validated research head = c6f53131b91b18aff2a50a6db2ddaa2761e7e5aa
+merged research commit = 96cccf715c02ed2bd4ae58f8362180020ae90854
+research tree = 28bd302c17a6128e538a3510917dafb670f6dce8
+RHRC #1072 = SUCCESS
+Permansson #845 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
@@ -71,10 +71,11 @@ RH                                                                    OPEN
 - **#170:** theorem-aligned `[W|c]` Schur visibility/background split validated in the research layer.
 - **#172:** current-q entry lift found sign-indefinite; q13/N2/K3/even isolated as the strongest near-critical target.
 - **#174:** exact q13 1D->2D scalar reduction validated; direct 384-bit scalar interval audit remains 100% unresolved on physical Q=13,14,15 subcells.
+- **#176:** independent fixed-unit evaluator agrees with the direct production path and passes the frozen six-box Q14 factor-2 determinant-width routing criterion; method classification `FIXED_UNIT_METHOD_ACCEPTED`.
 
-## Immediate frontier — FB-05 analytic scalar enclosure
+## Immediate frontier — FB-05I fixed-unit derivative/stationary discrimination
 
-For the q13 target, the exact executable geometry is consumed:
+For the q13 target, the exact executable geometry remains:
 
 ```text
 H(L) = [[a(L), b(L)],
@@ -84,35 +85,37 @@ H1 <-> a(L)>0
 P(L)=Delta_2(L)/a(L) in H1.
 ```
 
-#174 shows that scalarization alone does not cure interval dependency. The next research pass must preserve this geometry while changing the enclosure representation.
+#174 shows scalarization alone does not cure interval dependency. #176 then selects the fixed-unit pullback as the preferred **research enclosure representation for this finite laboratory** by the predeclared finite agreement/width benchmark.
 
-Highest-leverage lead:
+The next discriminator is no longer representation selection. It is whether the conditioning gain survives differentiation:
 
 ```text
-reuse fixed-unit aperture parameterization from #148
--> certify agreement with current production evaluator
--> measure interval-width improvement in dangerous Q14 basin
--> if successful, add derivative/variation bounds, Taylor models,
-   interval Newton/Krawczyk, or analytic root exclusion.
+fixed-unit alpha', beta', gamma'
+-> a', b', d'
+-> Delta_2' = a'd + ad' - 2bb'
+-> independent centered-finite-difference checks
+-> rigorous derivative interval-width audit
+-> only if useful: Taylor / interval Newton / Krawczyk.
 ```
 
 A positive q13 whole-cell result would still be a finite method/structure result, not FB-05 closure.
 
 ## Current execution priority
 
-1. **Build and benchmark a dependency-reduced q13 scalar evaluator.**
-2. **Require certified equivalence + tighter intervals before adding higher machinery.**
-3. **Resolve H1 loss / determinant crossing / zero contact / strict barrier only after the representation gate passes.**
-4. **If a bad state appears, replay it immediately through #166.**
-5. **If positive, identify and falsify the generalizable arithmetic reason.**
-6. **Theoremize only an independent restriction that adds information beyond successor positivity.**
-7. **Compose with #161/#163, then close FB-06/FB-07.**
+1. **Implement an independently checked fixed-unit derivative evaluator.**
+2. **Measure rigorous `Delta_2'` conditioning near and outside the dangerous Q14 basin.**
+3. **Do not assume interval Newton/Taylor will work until the derivative gate passes.**
+4. **Keep determinant and pivot stationary problems distinct.**
+5. **If a bad state appears, replay it immediately through #166.**
+6. **If positive, identify and falsify the generalizable arithmetic reason.**
+7. **Theoremize only an independent restriction that adds information beyond successor positivity.**
+8. **Compose with #161/#163, then close FB-06/FB-07.**
 
 ## Current research records
 
 - `CURRENT_RESEARCH_PLAN.md` — execution order and theorem gates.
-- `RESEARCH_LEADS_POST_174_Q13_SCALAR_DEPENDENCY_FRONTIER_DELTA.md` — newest audited research synthesis.
-- `RESEARCH_LEADS_POST_172_Q13_EVEN_SCALAR_BARRIER_DELTA.md` — previous synthesis.
+- `RESEARCH_LEADS_POST_176_FIXED_UNIT_METHOD_ACCEPTANCE_Q14_STATIONARY_FRONTIER_DELTA.md` — newest audited research synthesis.
+- `RESEARCH_LEADS_POST_174_Q13_SCALAR_DEPENDENCY_FRONTIER_DELTA.md` — previous synthesis.
 - `OBSTRUCTION_LEDGER.md` / `DEAD_ROUTES.md` — reusable blockers.
 - `routes/R003_ccm_bridge/README.md` — active route theorem/research surface.
 - `control_v2/README.md` — executable routing semantics.
@@ -134,8 +137,10 @@ A positive q13 whole-cell result would still be a finite method/structure result
 - selected parity cannot be assumed even WLOG.
 - `UNRESOLVED` interval output is not sign evidence.
 - direct scalar subdivision is not the next strategy after #174.
+- #176 fixed-unit method acceptance is scoped to the frozen finite q13/Q14 benchmark.
 - determinant and pivot minima are distinct optimization targets.
 - q13 whole-cell positivity alone would not imply global first-bad exclusion.
+- the standalone #176 certifier still has a replay-hardening debt around benchmark-schedule binding; the exact CI pipeline generated its benchmark from the frozen fixture in-pipeline.
 - negative-root exclusion still needs the terminal seam before `RiemannHypothesis`.
 
 **RH remains OPEN.**
