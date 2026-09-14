@@ -150,6 +150,19 @@ jobs:
             --input research/RHRC/routes/R003_ccm_bridge/fixtures/post171_fb05_threshold_barrier_v1.json \
             --discovery /tmp/POST171_FB05_THRESHOLD_BARRIER_DISCOVERY.json \
             --output /tmp/POST171_FB05_THRESHOLD_BARRIER_CERTIFICATE.json
+      - name: Check post-#173 q13 scalar-barrier plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post173_fb05_q13_scalar_barrier_scope.py
+      - name: Scout post-#173 q13 2x2 scalar barrier
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post173_fb05_q13_scalar_barrier_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post173_fb05_q13_scalar_barrier_v1.json \
+            --output /tmp/POST173_Q13_SCALAR_DISCOVERY.json
+      - name: Certify post-#173 q13 scalar interval barrier
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post173_fb05_q13_scalar_barrier_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post173_fb05_q13_scalar_barrier_v1.json \
+            --discovery /tmp/POST173_Q13_SCALAR_DISCOVERY.json \
+            --output /tmp/POST173_Q13_SCALAR_CERTIFICATE.json
       - name: Audit R004 scalar-shift invariants
         run: python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
       - name: Reject external reference code as a Lean dependency
