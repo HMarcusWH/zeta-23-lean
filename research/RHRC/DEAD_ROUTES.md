@@ -181,7 +181,9 @@ The envelope identity `S'(L)=<M'(L)u(L),u(L)>`, if theoremized, remains useful d
 
 **Post-#170 clarification:** the theorem-aligned `[W|c]` research layer now locks the equivalent finite-dimensional directional Schur derivative identity exactly in executable algebra and finite-certifies opposite local motions at q17: the entering arithmetic atom raises the pivot while the q-removed background has negative central finite differences. This still does **not** revive global monotonicity. The live route is threshold-local and integrated: control total barrier loss from one genuine nonzero von-Mangoldt seam to the next, allowing the derivative to vary and change sign.
 
-**Revival firewall:** any future proof that assumes or concludes one global sign for `S'(L)` is still DR-022 unless it supplies genuinely new hypotheses excluding the known sign-changing behavior. A threshold-to-threshold integral inequality is a different route.
+**Post-#174 clarification:** using derivative/variation bounds locally to tighten one scalar enclosure does not revive DR-022. The forbidden shortcut is a global fixed sign for the minimizing Schur derivative; local Taylor/interval-Newton control of a specific minimum/contact problem is a different method.
+
+**Revival firewall:** any future proof that assumes or concludes one global sign for `S'(L)` is still DR-022 unless it supplies genuinely new hypotheses excluding the known sign-changing behavior.
 
 ## DR-023 — universal positive elementary source-atom energy
 
@@ -259,6 +261,39 @@ more subdivisions != demonstrated mathematical progress
 **Revival requirement:** change the representation or supply new analytic control — for example a dependency-reduced scalar Sylvester/Schur pivot, exact channel decomposition, derivative/variation bounds, or another certified enclosure strategy. Merely increasing subdivision depth does not count as a route change.
 
 This dead-route entry does **not** quarantine interval arithmetic generally. Pointwise Arb replay and better-conditioned scalar interval formulations remain active research tools.
+
+## DR-026 — brute direct scalar subdivision of the q13 canonical formulas
+
+Attempt to resolve the q13/N2/K3/even barrier by first reducing the theorem-aligned successor to the exact scalars `a(L)`, `Delta_2(L)=a(L)d(L)-b(L)^2`, and odd-N2 ancestry, then repeatedly subdividing the physical cells while evaluating those same direct canonical formulas with Arb.
+
+**Status:** **DEAD AS THE CURRENT CERTIFICATION STRATEGY / finite method falsification in PR #174.**
+
+PR #174 performs exactly the dependency-reduced escape left open by DR-025. The exact theorem-aligned geometry is one-dimensional predecessor inside a two-dimensional successor, and the rigorous audit is piecewise on the physical Q=13/14/15 cells.
+
+At 384-bit precision the adaptive scalar interval result is
+
+```text
+Q=13: positive width = 0, bad width = 0, H1-loss width = 0, unresolved width = 1
+Q=14: positive width = 0, bad width = 0, H1-loss width = 0, unresolved width = 1
+Q=15: positive width = 0, bad width = 0, H1-loss width = 0, unresolved width = 1
+```
+
+No H1-loss, bad interval, zero/contact theorem, or strict-positive interval is certified.
+
+This does **not** prove that the q13 barrier is negative, positive, or tangent to zero. It proves a methodological point: matrix dimension was not the sole source of interval failure. Dependency inflation persists in the direct scalar formulas.
+
+Therefore:
+
+```text
+scalarization != analytic dependency reduction
+more precision != new method
+more leaves != new method
+more depth != new method
+```
+
+**Revival requirement:** change the enclosure mathematics — for example a fixed-unit pullback, certified derivative/variation bounds, local Taylor models, interval Newton/Krawczyk, analytic factorization, or another demonstrably tighter representation. A revived method should first certify agreement with the production evaluator and show materially tighter interval widths near the dangerous Q14 basin.
+
+This dead-route entry does **not** quarantine scalar interval arithmetic generally. It rejects only repeated subdivision of the same dependency-heavy direct formulas.
 
 ## Coordinate-mismatch warning — not a dead route ID
 

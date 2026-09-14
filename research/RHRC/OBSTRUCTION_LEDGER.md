@@ -5,7 +5,7 @@ This ledger records reusable blockers that should shape future route design.
 > **Current theorem anchor:** merged PR #163, `bd3fa1aafa7df2aa35873df532bdb6f17ddd2bbd`.  
 > **Validated theorem head:** `b418ff034428f92594bab0e5b8276181a086ee4b`.  
 > **Validated theorem tree:** `c397b3a015ea54e38ecfe626d6e29556fe963839`.  
-> **Latest research-evidence anchor:** merged PR #172, validated head `4c857cd031497d895232a18a4bfb9a094d9facae`.  
+> **Latest research-evidence anchor:** merged PR #174, validated head `2d9fc5a5f7d552afb893c871fe84c9ed61a60ac0`.  
 > **Claim firewall:** RH remains OPEN.
 
 Historical obstruction origins below retain the PR number at which they were discovered/classified. A later theorem may close an escape without deleting the reusable warning.
@@ -601,5 +601,46 @@ P_full - P_background
 does not automatically have first-bad comparative meaning. The Schur pivot has the theorem-aligned first-bad interpretation only when the corresponding predecessor block is positive.
 
 **Consequence:** background/entry decompositions must carry separate H1 status. If background H1 fails or is unresolved, report the algebraic lift but do not label it barrier replenishment/depletion in first-bad scope.
+
+## OBS-047 — scalarization alone does not eliminate canonical interval dependency
+
+**Status:** RIGOROUS FINITE CERTIFICATION-METHOD FIREWALL FROM PR #174; NOT A LEAN THEOREM.
+
+PR #174 performs the exact dependency-reduced scalar escape left open by #167. For q13/N2/K3/even the theorem-aligned successor is exactly two-dimensional with
+
+```text
+H(L) = [[a(L),b(L)],[b(L),d(L)]]
+Delta_2(L)=a(L)d(L)-b(L)^2
+H1 <-> a(L)>0
+P(L)=Delta_2(L)/a(L) in H1.
+```
+
+Despite that geometric reduction, the 384-bit adaptive direct scalar audit remains 100% unresolved over each physical Q=13/14/15 cell, with zero positive, bad, or H1-loss interval width certified.
+
+Therefore:
+
+```text
+finite-dimensional scalarization != analytic dependency reduction
+```
+
+**Consequence:** the current obstacle is not merely matrix dimension. Repeated aperture dependence and cancellation inside the direct canonical scalar formulas remain sufficient to defeat naive interval subdivision.
+
+**Escape requirement:** change the representation or add analytic control — e.g. fixed-unit pullback, certified derivative/variation bounds, local Taylor models, interval Newton/Krawczyk, or another demonstrably tighter enclosure. The replacement should first be benchmarked against the production evaluator and show measurable interval-width improvement.
+
+## OBS-048 — determinant and Schur-pivot minima are distinct optimization targets
+
+**Status:** FINITE FLOATING/STRUCTURAL RESEARCH FIREWALL FROM PR #174; ALGEBRAIC DISTINCTION EXACT, MINIMUM LOCATIONS EXPERIMENTAL.
+
+In H1 scope,
+
+```text
+P(L)=Delta_2(L)/a(L),
+```
+
+and `a(L)` varies with aperture. Therefore minimizing `Delta_2` and minimizing `P` are different optimization problems even though they have the same pointwise sign.
+
+PR #174's floating scout finds nearby but nonidentical sampled minima for the determinant and unit-shell pivot.
+
+**Consequence:** future root/minimum isolation must state which scalar is being controlled. A certified stationary point for `Delta_2` is not automatically the pivot minimum, and vice versa.
 
 **RH remains OPEN.**

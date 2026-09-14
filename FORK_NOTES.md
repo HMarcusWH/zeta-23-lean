@@ -15,15 +15,16 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #172
-validated research head = 4c857cd031497d895232a18a4bfb9a094d9facae
-merged research commit = a31bb0bb7f025d7727dd3f224c705af797f64a19
-research tree = c64b098c3159d739fa15eeaa96e35693615873d7
-RHRC #1063 = SUCCESS
-Permansson #836 = SUCCESS
+merged research PR = #174
+validated research head = 2d9fc5a5f7d552afb893c871fe84c9ed61a60ac0
+merged research commit = 946788f09c871de5133e2a8c8f5c94d7d69b521d
+research tree = 2a22b83c4d5903158c036d38420d9ae79b7726f2
+RHRC #1070 = SUCCESS
+Permansson #843 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
+selected first break = E4A4-SCHUR-FB-05
 RH = OPEN
 ```
 
@@ -36,7 +37,6 @@ RH = OPEN
 #136 absolute canonical source energy + exact channel decomposition
 #137 exact source pairing + one-step determinant
 #140-#150 regular-aperture / retained selected first bad
-#152 interval-certified selected-residual harness
 #153 retained first-bad negative-energy certificate + exact discrepancy
 #155 legal generic Riesz smoothing + source oddness/even jets
 #157 complex production D transport + exact complete Riesz 6/even 8 + retained negativity
@@ -52,35 +52,29 @@ No theorem-bearing PR has superseded #163.
 ```text
 #165 exact executable Riesz-8 endpoint-scalar audit
 #166 theorem-aligned shifted-state discriminator
-#167 Q16 near-critical scalar-barrier / interval-method audit
+#167 Q16 near-critical cell / interval-method audit
 #168 log17 boundary-flat threshold-jet / Q17 microscope
 #170 theorem-aligned Schur visibility / background-drift audit
-#172 threshold-to-threshold Schur barrier falsification / q13 near-critical target
+#172 threshold-to-threshold Schur barrier falsification
+#174 q13/N2/K3/even exact 2x2 scalar-barrier / interval-method audit
 ```
 
-### #172
+### What #174 changed
 
-The threshold-to-threshold research pass tested genuine nonzero von-Mangoldt intervals across several q/N/parity states. No sampled bad successor was found, but the arithmetic-entry heuristic changed materially.
+The q13 scalar reduction proposed after #172 is now consumed research infrastructure.
 
-Finite Arb replay now contains both signs:
+For `N=2 -> K*=3`, exact theorem-aligned executable geometry gives
 
 ```text
-q9 / even   current-q entry lift  NEGATIVE_CERTIFIED
-q13 / even  current-q entry lift  NEGATIVE_CERTIFIED
-q16 / odd   current-q entry lift  POSITIVE_CERTIFIED
+H(L) = [[a,b],[b,d]]
+H1 <-> a > 0
+Delta_2 = a*d - b^2
+P = Delta_2/a in H1.
 ```
 
-The most dangerous sampled state is `q=13 -> 16, N=2, K*=3, even`. At the quantized near-minimum, Arb certifies
+The direct 384-bit adaptive scalar interval audit respects physical Q=13/14/15 subcells but certifies no positive, bad, H1-loss, or contact interval. Each physical cell remains 100% `UNRESOLVED`.
 
-```text
-full unit-shell pivot      ~= +5.8401616e-12
-q-removed background       ~= +1.2217611e-11
-q13 entry lift             ~= -6.3774491e-12
-```
-
-with H1 predecessor positivity certified there.
-
-So the isolated arithmetic entry is not universal "replenishment". The current object is the complete physical scalar barrier.
+Therefore the project should no longer ask whether scalarization itself cures the #167 dependency problem. It does not.
 
 ## Current frontier
 
@@ -93,7 +87,7 @@ FB-04A moment jets + signed Riesz boundary recurrence           PROVED / #159
 FB-04B same-state shifted Riesz x cross-parity source           PROVED / #161
 FB-04C mixed quadratic-normal jet x Riesz boundary coupling     PROVED / #163
 FB-05 independent contradiction-producing arithmetic restriction OPEN / NOW
-  current research slice: q13/N2/K3/even 2x2 scalar determinant barrier
+  current research slice: dependency-reduced analytic q13 scalar enclosure
 FB-06 negative-root exclusion                                   OPEN
 FB-07 terminal Mathlib RH seam                                  OPEN
 RH                                                               OPEN
@@ -101,26 +95,19 @@ RH                                                               OPEN
 
 ## Current post-green clue
 
-At `N=2 -> K*=3`, the exact executable parity carrier has dimensions 1 -> 2. In theorem-aligned `[W|c]` coordinates,
+The method bottleneck has moved from finite geometry to analytic enclosure.
+
+The leading research hypothesis is to reuse the fixed-unit aperture representation already developed in the #148 theorem layer. A fixed-domain pullback can remove repeated `L` dependence from the oscillatory phase and may produce materially tighter interval enclosures for `a(L)` and `Delta_2(L)`.
+
+The first acceptance gate is not a sign theorem. It is:
 
 ```text
-H(L) = [[a,b],[b,d]]
-H1   <-> a > 0
-P    = d - b^2/a
-Delta_2 = a*d - b^2
+new evaluator agrees with existing production evaluator
+AND
+new evaluator materially tightens the dangerous Q14 enclosures.
 ```
 
-and therefore, in H1 scope,
-
-```text
-sign P = sign Delta_2.
-```
-
-This makes the q13/even target a genuinely dependency-reduced finite laboratory.
-
-The next pass should rigorously resolve whether `Delta_2` can cross zero while `a>0` across `log13 <= L <= log16`.
-
-Because the production backend tracks `Q=floor(exp L)`, the rigorous interval must respect physical subcells `[log13,log14]`, `[log14,log15]`, `[log15,log16]` unless zero-weight Q=14/15 inertness is separately certified.
+If that succeeds, derivative/variation bounds, local Taylor models, and interval Newton/Krawczyk become justified next tools.
 
 ## Important non-revivals
 
@@ -129,26 +116,32 @@ This is **not**:
 ```text
 global aperture Loewner monotonicity
 global minimizing-Schur monotonicity
-brute dependency-heavy full-matrix Arb subdivision
+more brute subdivision of the full matrix
+more brute subdivision of the same direct scalar formulas
 endpoint-scalar positivity as a standalone contradiction
 prime-sample -> local-jet implication by analogy
 summing independent channel Schur pivots
 universal positive arithmetic threshold replenishment
 ```
 
-The q13 2x2 scalar route instead satisfies the existing escape condition from the failed #167 full-matrix interval representation: reduce the dependency-heavy matrix problem to a better-conditioned scalar formulation.
+## New method firewalls
+
+- scalarization alone does not eliminate canonical interval dependency;
+- determinant and Schur-pivot minima are different optimization targets;
+- a zero-containing interval is not a zero/contact theorem;
+- more precision/depth alone is not a new route after #174;
+- any new enclosure representation must first be benchmarked against the existing production evaluator;
+- q13 whole-cell positivity, if eventually certified, remains a finite method/structure result until its controlling arithmetic mechanism generalizes.
 
 ## Next theorem-bearing slice
 
-Do not theoremize the q13 finite cell merely because a rigorous scalar certificate becomes possible. A positive q13-cell certificate would be a method/structure result, not global FB-05 closure.
-
-First identify why the low-dimensional scalar stays positive or find a certified H1 crossing. If the resulting arithmetic inequality generalizes beyond this one finite cell and supplies independent information rather than restating successor positivity, then theoremize the weakest useful statement and compose it with the exact #161/#163 retained state.
+Do not theoremize a q13 finite-cell observation merely because a better enclosure succeeds. First identify the independent arithmetic reason behind any certified behavior and test it outside the one finite q13 state. The next Lean theorem should be the weakest generalizable restriction that genuinely adds information beyond successor positivity.
 
 ## Permanent firewalls
 
-- research evidence through #172 does not move theorem authority beyond #163;
+- research evidence through #174 does not move theorem authority beyond #163;
 - endpoint-scalar positivity alone is not first-bad exclusion;
-- arithmetic entry lift is sign-indefinite in the tested finite canonical states;
+- arithmetic entry lift is sign-indefinite in tested canonical states;
 - physical H1 does not imply q-removed-background H1;
 - q13 whole-cell positivity alone would not close FB-05;
 - large channel cancellation makes coarse component-sign reasoning unsafe;
@@ -160,5 +153,8 @@ First identify why the low-dimensional scalar stays positive or find a certified
 - selected parity is not even WLOG;
 - `UNRESOLVED` is not sign evidence;
 - negative-root exclusion and RH remain open.
+
+Detailed current synthesis:
+`research/RHRC/RESEARCH_LEADS_POST_174_Q13_SCALAR_DEPENDENCY_FRONTIER_DELTA.md`.
 
 **RH remains OPEN.**

@@ -14,19 +14,19 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #172
-validated research head = 4c857cd031497d895232a18a4bfb9a094d9facae
-merged research commit = a31bb0bb7f025d7727dd3f224c705af797f64a19
-research tree = c64b098c3159d739fa15eeaa96e35693615873d7
-RHRC #1063 = SUCCESS
-Permansson #836 = SUCCESS
+merged research PR = #174
+validated research head = 2d9fc5a5f7d552afb893c871fe84c9ed61a60ac0
+merged research commit = 946788f09c871de5133e2a8c8f5c94d7d69b521d
+research tree = 2a22b83c4d5903158c036d38420d9ae79b7726f2
+RHRC #1070 = SUCCESS
+Permansson #843 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 control-plane semantic anchor = PR #117
 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
 ```
 
-PRs #165-#172 refresh research evidence and routing context only. They do not change the controller's capability/authority model and do not move theorem authority beyond #163.
+PRs #165-#174 refresh research evidence and routing context only. They do not change the controller's capability/authority model and do not move theorem authority beyond #163.
 
 ## Current routed frontier
 
@@ -39,7 +39,7 @@ FB-04A exact moment jets + signed Riesz boundary recurrence        PROVED / #159
 FB-04B same-state shifted Riesz x cross-parity source composition PROVED / #161
 FB-04C mixed quadratic-normal jet x Riesz boundary coupling       PROVED / #163
 FB-05 independent contradiction-producing arithmetic restriction  NOW / sole selected first break
-  current research slice: q13/N2/K3/even 2x2 scalar determinant barrier
+  current research slice: dependency-reduced analytic q13 scalar enclosure
 A4b2b universal one-step domination                               BROAD FALLBACK
 GLOBAL first-bad exclusion                                        AFTER scoped arithmetic closure
 ```
@@ -48,19 +48,19 @@ The selected action remains `E4_A4_REGULAR_SCHUR_ENERGY_SIGN` under frontier `FI
 
 The selected first-break ID remains `E4A4-SCHUR-FB-05`.
 
-## Why routing changes after #165-#172
+## Why routing changes after #174
 
 The formal break has not changed, but the best way to interrogate it has.
 
 - #165 shows endpoint-scalar positivity alone is not a contradiction mechanism.
 - #166 aligns finite discovery with the true shifted secular ray and isolates a near-critical Q16/N3/K4/odd family.
 - #167 shows dependency-heavy direct whole-cell Arb subdivision is unresolved at all 256 depth-8 leaves.
-- #168 identifies the boundary-flat seventh/ninth-order threshold jets and finds the full Q17 state continues downward but positive.
-- #170 moves the scalar to theorem-aligned `[W|c]` geometry and finite-certifies q17 Schur visibility while separating entering-atom and q-removed-background motions.
-- #172 broadens to threshold-to-threshold production dynamics across genuine von-Mangoldt intervals and finds that current-q entry lift is sign-indefinite in finite Arb replay: q9/even and q13/even negative, q16/odd positive.
-- #172 isolates `q13 -> 16, N2, K3, even` as the most dangerous sampled complete state, with a certified positive pivot of only about `5.84e-12` at the quantized candidate.
+- #168 identifies the boundary-flat seventh/ninth-order threshold jets.
+- #170 moves the scalar to theorem-aligned `[W|c]` geometry and finite-certifies q17 visibility/background competition.
+- #172 shows current-q entry lift is sign-indefinite and isolates q13/N2/K3/even as the strongest near-critical state.
+- #174 consumes the exact q13 1D->2D scalar reduction but shows direct 384-bit adaptive evaluation of `a(L)` and `Delta_2(L)` remains 100% unresolved on physical Q=13/14/15 cells.
 
-Therefore the current information target is not a universal favorable threshold kick. It is the complete near-critical q13/even scalar in a dependency-reduced 2x2 representation.
+Therefore the current information target is no longer scalarization itself. It is a changed analytic/enclosure representation of the exact scalar geometry.
 
 ## Selected action — E4_A4_REGULAR_SCHUR_ENERGY_SIGN
 
@@ -83,10 +83,20 @@ parity = even
 H(L) = [[a(L),b(L)],[b(L),d(L)]]
 H1 <-> a(L)>0
 Delta_2(L)=a(L)d(L)-b(L)^2
-P(L)=Delta_2(L)/a(L)
+P(L)=Delta_2(L)/a(L) in H1.
 ```
 
-Resolve whether `Delta_2` can cross zero while H1 remains valid, or certify both `a>0` and `Delta_2>0` across the physical Q=13/14/15 subcells.
+Preserve this exact geometry but change the enclosure representation. The leading lead is a fixed-unit pullback of the production archimedean terms, benchmarked against the existing evaluator.
+
+First gate:
+
+```text
+certified evaluator agreement
+AND
+materially tighter interval widths near the dangerous Q14 basin.
+```
+
+Only after that should derivative/variation bounds, Taylor models, interval Newton/Krawczyk, or analytic root exclusion be added.
 
 A positive q13 whole-cell result is not itself FB-05 closure. It must yield a generalizable independent arithmetic restriction before theorem promotion is justified.
 
@@ -110,14 +120,15 @@ retained mixed-jet/Riesz specialization                     PROVED / #163
 
 endpoint-scalar executable audit                            RESEARCH / #165
 shifted-state same-state finite discriminator               RESEARCH / #166
-Q16 scalar-barrier / interval-method audit                  RESEARCH / #167
+Q16 interval-method audit                                   RESEARCH / #167
 threshold moment-jet / Q17 microscope                       RESEARCH / #168
 theorem-aligned Schur visibility/background audit           RESEARCH / #170
 threshold-to-threshold production barrier audit             RESEARCH / #172
+q13 exact 2x2 scalar-barrier / interval-method audit         RESEARCH / #174
 
 source-moment <-> M4 coupling                               OPEN
 endpoint-scalar global sign/nonvanishing                    OPEN
-q13/N2/K3/even whole-cell scalar barrier                    OPEN / ACTIVE
+q13/N2/K3/even whole-cell sign/contact                      OPEN / ACTIVE
 simultaneous even/odd bad exclusion                         OPEN
 odd-selected branch closure                                 OPEN
 final contradiction-producing arithmetic restriction       OPEN
@@ -132,7 +143,7 @@ final contradiction-producing arithmetic restriction       OPEN
 - exact discrepancy/Riesz cancellation must not be discarded by coarse channel bounds;
 - endpoint-scalar positivity alone is not first-bad exclusion;
 - exact finite-prime sampling does not by itself determine a local derivative;
-- current-q arithmetic entry lift is not universally favorable in the tested finite states;
+- current-q arithmetic entry lift is not universally favorable;
 - full physical H1 does not imply q-removed-background H1;
 - independent channel Schur pivots cannot be summed;
 - finite Arb central differences/quadrature are not derivative theorems;
@@ -141,7 +152,9 @@ final contradiction-producing arithmetic restriction       OPEN
 - selected parity is not even WLOG;
 - `UNRESOLVED` interval output is not sign evidence;
 - global aperture/Schur monotonicity remains quarantined;
-- brute dependency-heavy full-matrix whole-cell subdivision remains a failed representation, while the q13 2x2 scalar reduction is an allowed escape;
+- brute dependency-heavy full-matrix subdivision remains dead as the current method;
+- after #174, brute subdivision of the same direct scalar formulas is also not the next method;
+- determinant and pivot minima are distinct optimization targets;
 - q13 whole-cell positivity alone would not imply global first-bad exclusion.
 
 ## CI expectations
@@ -156,10 +169,10 @@ final contradiction-producing arithmetic restriction       OPEN
 - terminal claim remains `RH_OPEN`;
 - controller theorem authority and terminal-claim mutation remain false.
 
-Control-v2 tests additionally lock the post-#172 routing context so the selected action cannot silently revert to the pre-#172 threshold-replenishment framing.
+Control-v2 tests should lock the post-#174 routing vocabulary so the selected action cannot silently revert to the now-consumed scalarization step or to brute subdivision.
 
 Newest research implications:
 
-`../RESEARCH_LEADS_POST_172_Q13_EVEN_SCALAR_BARRIER_DELTA.md`
+`../RESEARCH_LEADS_POST_174_Q13_SCALAR_DEPENDENCY_FRONTIER_DELTA.md`
 
 **RH remains OPEN.**

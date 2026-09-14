@@ -25,12 +25,12 @@ Permansson #812 = SUCCESS
 ### Latest research-evidence anchor
 
 ```text
-merged research PR = #172
-validated research head = 4c857cd031497d895232a18a4bfb9a094d9facae
-merged research commit = a31bb0bb7f025d7727dd3f224c705af797f64a19
-research tree = c64b098c3159d739fa15eeaa96e35693615873d7
-RHRC #1063 = SUCCESS
-Permansson #836 = SUCCESS
+merged research PR = #174
+validated research head = 2d9fc5a5f7d552afb893c871fe84c9ed61a60ac0
+merged research commit = 946788f09c871de5133e2a8c8f5c94d7d69b521d
+research tree = 2a22b83c4d5903158c036d38420d9ae79b7726f2
+RHRC #1070 = SUCCESS
+Permansson #843 = SUCCESS
 ```
 
 ### Control authority
@@ -76,6 +76,9 @@ post-#169 Arb Schur-visibility replay                [research PR #170]
 post-#171 threshold-barrier accounting check         [research PR #172]
 post-#171 multi-cell threshold-barrier scout         [research PR #172]
 post-#171 Arb finite-point barrier replay            [research PR #172]
+post-#173 q13 scalar-barrier plumbing                [research PR #174]
+post-#173 q13 2x2 scalar scout                       [research PR #174]
+post-#173 q13 adaptive Arb scalar audit              [research PR #174]
 ```
 
 Interpretation law:
@@ -96,6 +99,7 @@ In particular:
 - floating discovery is **EXPERIMENTAL SIGNAL**;
 - deterministic Gauss-Legendre integration smoke tests are **DETERMINISTIC NUMERICAL VALIDATION**, not exact integral identities;
 - Arb pointwise replay is **RIGOROUS FINITE CERTIFICATION** only;
+- Arb interval output is a rigorous enclosure only for the exact encoded interval expression;
 - Arb central finite differences are **RIGOROUS FINITE-DIFFERENCE ENCLOSURES**, not derivative theorems;
 - production envelope quadrature is a numerical diagnostic unless separately interval-certified;
 - `UNRESOLVED` interval output is neither positive nor negative evidence;
@@ -119,81 +123,89 @@ RegularCellMinimalNegativeEnergyCertificate.evenShiftedRieszNine_lt_neg_mixedJet
 RegularCellMinimalNegativeEnergyCertificate.crossParityGamma_ne_zero_of_even_of_not_oddBad
 ```
 
-These establish theorem authority through #163. Research PRs #165-#172 do not alter this declaration set.
+These establish theorem authority through #163. Research PRs #165-#174 do not alter this declaration set.
 
 ## What the post-#163 research checks validate operationally
 
 ### #165
 
-The exact executable Riesz-8 endpoint-scalar normalization, prime-power handling, stable pole expression and finite Arb replay are internally cross-checked. No global sign theorem is created.
+Exact executable Riesz-8 endpoint-scalar normalization, prime-power handling, stable pole expression and finite Arb replay are internally cross-checked. No global sign theorem is created.
 
 ### #166
 
-The discovery state is aligned with the generalized shifted system `H-lambda G`; source-channel reconstruction and Arb safe-shift plumbing are checked. No actual first-bad state is assumed to exist in the finite scan.
+Discovery is aligned with the generalized shifted system `H-lambda G`; source-channel reconstruction and Arb safe-shift plumbing are checked. No actual first-bad state is assumed to exist in the finite scan.
 
 ### #167
 
-The Q16 near-critical scalar barrier is searched. The direct whole-cell Arb representation returns 256/256 unresolved depth-8 leaves. That validates a methodological limitation, not a sign.
+The Q16 near-critical cell is searched. The direct whole-cell Arb representation returns 256/256 unresolved depth-8 leaves. That validates a methodological limitation, not a sign.
 
 ### #168
 
-The boundary-flat threshold-jet algebra is checked exactly in the executable layer for `K=2..8`; the Q16/Q17 threshold and finite two-sided microscope are replayed with Arb. The full Q17 discovery state remains positive in the sampled scope while continuing downward.
+Boundary-flat threshold-jet algebra is checked exactly in the executable layer for `K=2..8`; the Q16/Q17 threshold and finite two-sided microscope are replayed with Arb.
 
 ### #170
 
-The deterministic checker validates theorem-aligned `[W|c]` one-step geometry, unit-shell agreement with the post-#150 selected residual, exact finite-dimensional rank-one Schur update, exact directional Schur derivative, and transformed threshold moment law.
-
-The Arb replay finite-certifies q17 predecessor positivity, nonzero Schur visibility, positive q17 entering-q pivot effect at checked offsets, and negative q-removed background central finite differences.
+The deterministic checker validates theorem-aligned `[W|c]` one-step geometry, unit-shell agreement with the selected residual, exact finite-dimensional rank-one Schur update, exact directional Schur derivative, and transformed threshold moment law. Arb replay finite-certifies the checked q17 visibility/background behavior.
 
 ### #172
 
-The deterministic accounting checker validates exact finite-dimensional Schur/envelope algebra, genuine nonzero von-Mangoldt seam identification, production budget reconstruction, and threshold-entry vanishing at the seam. Its synthetic integral closure test is numerical: it uses 32-node floating Gauss-Legendre quadrature with a finite acceptance tolerance and therefore validates the integration implementation as a deterministic numerical smoke test, not as an exact executable integral identity.
+The threshold-to-threshold layer validates the finite-dimensional accounting and finite Arb replay across several arithmetic intervals. Current-q entry lift is sign-indefinite in the tested finite states and the q13/N2/K3/even state becomes the strongest near-critical target.
 
-The floating production scout tests several arithmetic intervals and reports no sampled bad successor. Its most dangerous target is `q13 -> 16, N2, K3, even`, with a sampled unit-shell pivot near `5.8e-12`.
+### #174
 
-The finite Arb replay certifies selected threshold and near-minimum points. In particular it certifies at the q13/even quantized candidate:
-
-```text
-H1 predecessor positive
-full unit-shell pivot      ~= +5.8401616e-12
-q-removed background       ~= +1.2217611e-11
-q13 entry lift             ~= -6.3774491e-12
-```
-
-It also certifies negative current-q entry lift at q9/even and positive lift at q16/odd. Therefore no universal favorable arithmetic-entry sign may be inferred.
-
-The q17 replay preserves another scope distinction: full physical H1 can hold while the q-removed background is not H1-certified. Algebraic `full-background` differences are not automatically first-bad comparative statements.
-
-The large cancellation ratios observed by the production diagnostic are research evidence about conditioning, not formal derivative identities.
-
-## Current q13 scalar-certification target
-
-For the next research PR, the exact executable `N=2 -> K*=3` geometry should be checked again and the complete successor written as
+The deterministic checker validates the exact q13/N2/K3/even 1D->2D theorem-aligned scalar geometry, exact research-basis norms, physical-cell seam handling, and the reduction
 
 ```text
-H(L) = [[a(L),b(L)],[b(L),d(L)]].
+H1 <-> a_even(L) > 0
+Delta_even(L) = a_even(L)d_even(L)-b_even(L)^2
+sign pivot = sign Delta_even in H1.
 ```
 
-On H1 scope,
+The floating scout refines the dangerous Q14 basin and remains sampled-positive.
+
+The 384-bit direct scalar interval audit reports
 
 ```text
-a(L) > 0
-P(L) = Delta_2(L)/a(L)
-Delta_2(L)=a(L)d(L)-b(L)^2.
+Q=13: 100% UNRESOLVED
+Q=14: 100% UNRESOLVED
+Q=15: 100% UNRESOLVED
 ```
 
-The whole-interval task must distinguish four outcomes:
+with zero positive, bad, or H1-loss width certified. No zero/contact theorem follows from a zero-containing enclosure, no strict-positive whole-cell theorem is created, and no shifted-state handoff is emitted.
+
+Operational interpretation:
 
 ```text
-A. a(L) <= 0 somewhere: H1 scope loss.
-B. a(L) > 0 and Delta_2(L) < 0 somewhere: strict bad successor.
-C. a(L) > 0 and Delta_2(L) = 0 somewhere: barrier contact / singular successor.
-D. a(L) > 0 and Delta_2(L) > 0 everywhere: strict positive-cell certificate.
+direct scalar interval UNRESOLVED
+  -/-> determinant zero
+  -/-> determinant negative
+  -/-> determinant positive
+  -> current direct scalar enclosure representation is insufficient
 ```
 
-Thus a nonnegative determinant certificate still requires a separate nonvanishing argument before it can be called a strict barrier.
+Because #167 already falsified brute subdivision of the full matrix and #174 now shows the same pathology after exact scalarization, the next certification attempt must change the representation or add analytic control rather than merely increase depth/precision.
 
-A rigorous whole-interval claim over `log13 <= L <= log16` must respect physical integer cutoff cells Q=13,14,15 unless exact zero-weight seam inertness is separately certified. A pointwise Arb replay is insufficient for a whole-cell claim.
+## Current FB-05 research target
+
+The exact q13 scalar geometry is consumed research infrastructure. The next research target is a dependency-reduced analytic enclosure of the same observables:
+
+```text
+a(L)
+Delta_2(L)=a(L)d(L)-b(L)^2
+odd N=2 predecessor ancestry
+```
+
+Candidate mechanisms include fixed-unit pullback of the production archimedean integrals, certified derivative/variation bounds, local Taylor models, interval Newton/Krawczyk, or another analytic scalar representation.
+
+The first acceptance gate for a changed evaluator is:
+
+```text
+certified agreement with the existing production evaluator
+AND
+materially tighter interval widths near the dangerous Q14 basin.
+```
+
+Only then should derivative/minimum/root-isolation machinery be treated as justified research investment.
 
 ## Axiom inspection
 
@@ -235,25 +247,7 @@ R003_PROMOTED_BINDINGS.json
 Zeta23/CCM/ClaimBindings.lean
 ```
 
-The post-#172 docs/routing synchronization leaves those promotion surfaces unchanged.
-
-## Control-v2 validation law
-
-Control v2 has no theorem/claim/terminal-answer authority. Its CI gates enforce separate theorem/control anchors, deterministic routing, fail-closed retro/first-break contracts, dead-route revival requirements and hard-coded current theorem/frontier/action smoke assertions.
-
-The post-#172 synchronization must:
-
-- keep theorem anchor at #163;
-- keep control semantic anchor at #117;
-- keep frontier and selected action unchanged;
-- keep `E4A4-SCHUR-FB-05` as the sole selected first break;
-- refresh surviving objections through #172;
-- record the q13/N2/K3/even 2x2 scalar determinant barrier as the current highest-information research slice;
-- record that finite current-q entry lift is sign-indefinite;
-- preserve the physical-H1 versus background-H1 distinction;
-- preserve endpoint-scalar/sourceMoment/parity/odd-selected firewalls;
-- preserve DR-024/global monotonicity quarantines and the #167 representation warning;
-- keep terminal claim `RH_OPEN`.
+The post-#174 docs/routing synchronization leaves those promotion surfaces unchanged.
 
 ## Vocabulary
 
@@ -266,7 +260,7 @@ The post-#172 synchronization must:
 - **DERIVED** — mathematical consequence not separately theorem-locked;
 - **LOCAL LEAN CHECK** — standalone/local compilation outside merged theorem authority;
 - **EXACT EXECUTABLE** — symbolic/executable identity locked by research tooling, not Lean theorem authority;
-- **DETERMINISTIC NUMERICAL VALIDATION** — deterministic floating numerical acceptance test with an explicit tolerance; not an exact identity or theorem;
+- **DETERMINISTIC NUMERICAL VALIDATION** — deterministic floating numerical acceptance test with an explicit tolerance;
 - **EXPERIMENTAL SIGNAL** — numerical/search/discovery evidence only;
 - **RIGOROUS FINITE CERTIFICATION** — Arb/interval statement in the exact finite scope only;
 - **RIGOROUS FINITE-DIFFERENCE ENCLOSURE** — certified finite quotient/enclosure, not a derivative theorem;
@@ -275,6 +269,6 @@ The post-#172 synchronization must:
 
 ## Claim firewall
 
-Green #163 mixed-source/Riesz theorems are not RH. Green #165-#172 research tooling is not theorem authority. A contradiction still requires new arithmetic mathematics on the exact forced state, negative-root exclusion and the terminal zeta/Mathlib seam.
+Green #163 mixed-source/Riesz theorems are not RH. Green #165-#174 research tooling is not theorem authority. A contradiction still requires new arithmetic mathematics on the exact forced state, negative-root exclusion and the terminal zeta/Mathlib seam.
 
 **RH remains OPEN unless the exact terminal RH theorem passes the complete proof and claim-validation gates.**
