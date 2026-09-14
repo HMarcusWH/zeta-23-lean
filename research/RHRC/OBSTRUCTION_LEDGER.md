@@ -5,6 +5,7 @@ This ledger records reusable blockers that should shape future route design.
 > **Current theorem anchor:** merged PR #163, `bd3fa1aafa7df2aa35873df532bdb6f17ddd2bbd`.  
 > **Validated theorem head:** `b418ff034428f92594bab0e5b8276181a086ee4b`.  
 > **Validated theorem tree:** `c397b3a015ea54e38ecfe626d6e29556fe963839`.  
+> **Latest research-evidence anchor:** merged PR #168, validated head `9657dad6f1e262b1fa7e08e6944aaa935feeaf33`.  
 > **Claim firewall:** RH remains OPEN.
 
 Historical obstruction origins below retain the PR number at which they were discovered/classified. A later theorem may close an escape without deleting the reusable warning.
@@ -453,5 +454,82 @@ Likewise, the exact finite-prime sampling of `h` inside `explicitCanonicalSource
 **Consequence:** the FB-05 arithmetic problem cannot be closed merely by pointing to the square. The sign-bearing endpoint scalar or a separate sampling/cancellation relation must do genuine arithmetic work.
 
 **Escape requirement:** prove a theorem-backed sign/nonvanishing property of the exact endpoint scalar, a canonical sample-to-jet rigidity statement, or another independent arithmetic restriction that composes with the retained state.
+
+## OBS-041 — endpoint-scalar positivity is not by itself first-bad exclusion
+
+**Status:** DERIVED FROM THE PROVED #163 RECURRENCE; RESEARCH PRIORITY CORRECTED BY PR #165.
+
+On the retained even-selected shifted state, #163 gives
+
+```text
+2*(2*pi)^4*(R8-R9) = S8(L)*|h^(7)(0)|^2
+```
+
+with `R8 < 0` already theoremized. Therefore a hypothetical theorem
+
+```text
+S8(L) >= 0
+```
+
+would imply
+
+```text
+R9 <= R8 < 0,
+```
+
+not a contradiction.
+
+PR #165 finds broad finite positive evidence for the exact executable `S8` normalization, but this does not change the logical point.
+
+**Consequence:** endpoint-scalar sign/nonvanishing can be useful only after composition with another independent terminal restriction. Proving positivity merely because finite evidence looks favorable is not currently the highest-information theorem target.
+
+## OBS-042 — direct whole-cell interval failure is not a sign result
+
+**Status:** EXPERIMENTAL / CERTIFICATION-METHOD FIREWALL FROM PR #167.
+
+For the near-critical canonical target
+
+```text
+Q=16, N=3, K*=4, parity=odd,
+```
+
+PR #167's direct fixed-cell Arb evaluation remained unresolved after depth-8 subdivision:
+
+```text
+256 / 256 leaves = UNRESOLVED.
+```
+
+No leaf was certified positive or bad.
+
+Therefore:
+
+```text
+UNRESOLVED != negative
+UNRESOLVED != positive
+more subdivision != demonstrated mathematical progress
+```
+
+**Consequence:** change the representation rather than merely increasing interval depth. A scalar Sylvester/Schur pivot, channel decomposition, derivative/variation bounds, or another dependency-reduced formulation is the current escape.
+
+## OBS-043 — isolated prime-entry stabilization does not control the full canonical aperture drift
+
+**Status:** EXACT EXECUTABLE LOCAL STRUCTURE + FINITE ARB/FLOATING RESEARCH EVIDENCE FROM PR #168; NOT A LEAN THEOREM.
+
+After enforcing the actual boundary-flat carrier before parity reduction, the executable source-atom expansion has first surviving orders
+
+```text
+odd  -> order 7 through M3^2
+even -> order 9 through M4^2.
+```
+
+The canonical sign makes the entering odd prime-power contribution locally stabilizing at its first surviving order.
+
+However the full canonical source also contains pole, archimedean, scalar-repair, and already-active prime-power terms whose aperture dependence is not delayed to the same high order.
+
+PR #168 certifies the exact `L=log 17` threshold and 18 two-sided finite microscope points positive, while the full Q17 floating state still `CONTINUES_DOWN_BUT_POSITIVE`.
+
+**Consequence:** a favorable local entering-prime jet does not imply favorable total aperture drift. The correct next object is a cancellation-preserving full scalar pivot/background decomposition, not the isolated atom by itself.
+
+**Permanent warning:** do not formalize the isolated threshold jet and silently treat it as a full-source monotonicity/barrier theorem.
 
 **RH remains OPEN.**
