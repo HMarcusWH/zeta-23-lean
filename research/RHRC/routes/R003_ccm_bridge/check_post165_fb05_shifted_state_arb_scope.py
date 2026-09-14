@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
-"""Rigorous Arb plumbing smoke for the post-#165 shifted-state machinery.
+"""Rigorous Arb checks for the post-#165 shifted-state machinery.
 
-A production first-bad state is conditional and need not occur in a small
-finite scan.  This check therefore exercises the generalized shifted system on
-a narrow safe negative interval around lambda=-1 without asserting that the
-interval contains a secular root.
+A production first-bad state is conditional and need not occur in a finite
+scan.  This check therefore has two deliberately separate roles:
 
-It validates only the numerical/certification plumbing:
+1. exercise the generalized shifted system on a narrow safe negative interval
+   around lambda=-1 without asserting that the interval contains a secular
+   root;
+2. Arb-audit the closest-to-zero H1 successor found by the floating #166 scout
+   using an exact Sylvester positive-definiteness certificate.  Failure to
+   certify positivity is reported as UNRESOLVED, not converted into a bad-state
+   claim.
+
+The shifted smoke validates only numerical/certification plumbing:
   * H - Lambda G is solved in the exact integer predecessor basis;
   * the predecessor residual encloses zero entrywise;
   * on the even smoke state, the exact quadratic-normal source moment and its
@@ -14,8 +20,8 @@ It validates only the numerical/certification plumbing:
   * the scalar identity-shift channel vanishes in the mixed pairing;
   * the existing #165 Arb S8 evaluator is callable on the same aperture.
 
-No root, sign theorem, sourceMoment/M4 implication, or RH conclusion is
-promoted by this file.
+No root, whole-cell sign theorem, sourceMoment/M4 implication, or RH conclusion
+is promoted by this file.
 """
 from __future__ import annotations
 
@@ -31,11 +37,17 @@ from canonical_riesz_endpoint_scalar import (
 from canonical_source_arb import (
     ball_record,
     canonical_source_matrix,
+    fixed_cell_membership,
     set_precision,
     signed_channel_matrices,
     to_arb_rational,
 )
-from post150_selected_residual import centered_predecessor_basis, exact_shell_generator
+from certify_post150_selected_residual_scope import positive_definite_certificate
+from post150_selected_residual import (
+    centered_predecessor_basis,
+    exact_parity_basis,
+    exact_shell_generator,
+)
 
 
 def _arb_matrix_from_sympy(A: sp.Matrix) -> arb_mat:
@@ -48,6 +60,13 @@ def _scalar(A: arb_mat) -> arb:
     if A.nrows() != 1 or A.ncols() != 1:
         raise ValueError("expected 1x1 matrix")
     return A[0, 0]
+
+
+def _restriction(M: arb_mat, B: sp.Matrix) -> arb_mat:
+    if B.cols == 0:
+        return arb_mat(0, 0)
+    X = _arb_matrix_from_sympy(B)
+    return X.transpose() * M * X
 
 
 def _quadratic_normal_column(K: int) -> arb_mat:
@@ -142,18 +161,64 @@ def _safe_interval_shift_case(Q: int, L_num: int, L_den: int, N: int, parity: st
     return record
 
 
+def _near_critical_successor_case(
+    Q: int,
+    L_num: int,
+    L_den: int,
+    N: int,
+    parity: str,
+    floating_min_eigenvalue: float,
+) -> dict:
+    """Arb-classify one exact sampled successor without assuming its sign."""
+    K = N + 1
+    L = to_arb_rational(L_num, L_den)
+    cell = fixed_cell_membership(Q, L)
+    Vsucc = exact_parity_basis(K, parity)
+    Msucc = canonical_source_matrix(L, K, Q)
+    Hsucc = _restriction(Msucc, Vsucc)
+    pd = positive_definite_certificate(Hsucc)
+    classification = "POSITIVE_DEFINITE_CERTIFIED" if pd["certified"] else "UNRESOLVED"
+    return {
+        "Q": Q,
+        "L_num": L_num,
+        "L_den": L_den,
+        "N": N,
+        "Kstar": K,
+        "parity": parity,
+        "floating_min_form_eigenvalue": floating_min_eigenvalue,
+        "cell": cell,
+        "classification": classification,
+        "strict_positive_form": pd,
+        "nonclaim": (
+            "This certifies only the exact sampled finite successor when classification "
+            "is POSITIVE_DEFINITE_CERTIFIED; it is not a whole-cell positivity theorem."
+        ),
+    }
+
+
 def main() -> int:
     set_precision(256)
     cases = [
         _safe_interval_shift_case(2, 3, 4, 2, "even"),
         _safe_interval_shift_case(3, 5, 4, 2, "odd"),
     ]
+    # Strongest near-critical signal emitted by the 672-state #166 scout.
+    near_critical = _near_critical_successor_case(
+        16,
+        3098486646606,
+        1099511627776,
+        3,
+        "odd",
+        2.3292865177849273e-12,
+    )
     payload = {
-        "schema_version": "POST165_FB05_SHIFTED_ARB_CHECK_v1",
+        "schema_version": "POST165_FB05_SHIFTED_ARB_CHECK_v2",
         "status": "PASS",
         "cases": cases,
+        "near_critical_successor": near_critical,
         "claim_firewall": {
             "root_claim": False,
+            "whole_cell_claim": False,
             "theorem_authority": False,
             "terminal_claim": "RH_OPEN",
         },
