@@ -41,12 +41,14 @@ Research PRs #165-#172 do not promote theorem authority beyond #163.
 
 PR #172 moved the post-#170 local Schur-visibility picture into threshold-to-threshold production dynamics. The executable layer:
 
-- locks exact finite-dimensional envelope/integration accounting on synthetic fixtures;
+- locks the exact finite-dimensional Schur/envelope algebra and a deterministic 32-node floating Gauss-Legendre integration smoke test on synthetic fixtures;
 - identifies genuine nonzero von-Mangoldt seams;
 - reconstructs production threshold/barrier budgets;
 - scouts multiple q/N/parity arithmetic intervals;
 - Arb-replays threshold and selected near-minimum points;
 - preserves theorem-aligned `[W|c]` one-step geometry and H1 scope.
+
+The synthetic integration check is numerical: it uses floating Gauss-Legendre quadrature and accepts a finite tolerance. It is not an exact executable integration identity and does not create derivative or integral theorem authority.
 
 The tested genuine arithmetic intervals include
 
@@ -221,13 +223,13 @@ The broader threshold-to-threshold scout shows:
 arithmetic entry lift is not universally favorable;
 the q13/even complete scalar comes within ~5.84e-12 of zero;
 the q13 target is exactly 2-dimensional in [W|c] coordinates;
-H1 + successor sign therefore reduce to a(L)>0 and Delta_2(L)>0;
+H1 + successor sign reduce to classifying a(L) and Delta_2(L), including possible zero contact;
 physical cutoff seams 14/15 must still be handled rigorously.
 ```
 
 The next question is no longer "does arithmetic replenishment beat background loss?" in general. It is:
 
-> Can the complete q13/N2/K3/even scalar determinant cross zero while the 1D predecessor remains positive, or can that exact low-dimensional barrier be certified positive throughout the full physical 13 -> 16 interval?
+> How do `a(L)` and `Delta_2(L)` behave throughout the q13/N2/K3/even physical interval: does H1 fail, does the determinant become negative, does it merely touch zero, or does it stay strictly positive?
 
 ## New reusable obstructions
 
@@ -247,32 +249,41 @@ Target:
 R003: resolve the q13 -> 16 even 2x2 Schur determinant barrier
 ```
 
-Primary rigorous question:
+The rigorous task is to classify the signs and zeros of `a(L)` and `Delta_2(L)` throughout the physical interval. The relevant outcomes are:
 
 ```text
-exists L in (log 13, log 16):
-  a(L) > 0 and Delta_2(L) < 0
+A. H1 loss:
+   a(L) <= 0 somewhere.
+
+B. strict bad successor:
+   a(L) > 0 and Delta_2(L) < 0 somewhere.
+
+C. barrier contact / singular successor:
+   a(L) > 0 and Delta_2(L) = 0 somewhere.
+
+D. strict barrier:
+   a(L) > 0 and Delta_2(L) > 0 for all L in [log 13, log 16].
 ```
 
-versus a full interval certificate
-
-```text
-a(L) > 0 and Delta_2(L) > 0
-for all L in [log 13, log 16].
-```
+A tangential or endpoint zero is therefore a first-class research outcome and must not be hidden inside a false negative-versus-positive dichotomy.
 
 The rigorous implementation should respect the physical Q=13/14/15 subcells.
 
 If a certified negative H1 point is found, feed that state immediately into the #166 shifted-state machinery.
 
-If the whole q13 interval is certified positive, treat that as a **method/structure result**, not FB-05 closure. The retained first-bad state forced by an off-line zero has arbitrary canonical L/N/parity; positivity of this one finite q13 cell does not exclude all retained states. The next step would be to extract whatever arithmetic/scalar inequality made the 2x2 proof succeed and test whether it generalizes.
+If a certified zero-contact state is found with H1 intact, treat it as a distinct structural event and investigate multiplicity/tangency/nonvanishing before inferring either crossing or positivity.
+
+If the whole q13 interval is certified strictly positive, treat that as a **method/structure result**, not FB-05 closure. The retained first-bad state forced by an off-line zero has arbitrary canonical L/N/parity; positivity of this one finite q13 cell does not exclude all retained states. The next step would be to extract whatever arithmetic/scalar inequality made the 2x2 proof succeed and test whether it generalizes.
+
+A weaker certificate `Delta_2 >= 0` is also informative but is not the same as strict positivity; it requires a separate nonvanishing argument to exclude case C.
 
 ## Falsification checks
 
 The next pass should deliberately test:
 
-- whether `a(L)` approaches or crosses zero before `Delta_2(L)`;
-- whether `Delta_2(L)` crosses zero in any of the Q=13/14/15 physical subcells;
+- whether `a(L)` approaches, reaches, or crosses zero before any determinant event;
+- whether `Delta_2(L)` reaches zero, crosses zero, or only touches zero in any of the Q=13/14/15 physical subcells;
+- whether a zero can occur at an arithmetic/physical subcell endpoint;
 - whether the q13 sampled minimum moves under higher-precision optimization;
 - whether the opposite parity at the same q/N behaves qualitatively differently;
 - whether negative entry lift is parity-driven or a q/N-specific effect;
@@ -283,8 +294,10 @@ The next pass should deliberately test:
 
 - theorem authority remains #163;
 - #172 is research evidence only;
+- the synthetic integration check is deterministic numerical quadrature, not an exact integral identity;
 - finite Arb point certification is not whole-cell positivity;
 - a q13 whole-cell certificate would not by itself close FB-05;
+- `Delta_2 >= 0` without nonvanishing is not a strict barrier certificate;
 - arithmetic entry lift is not known to have a universal sign;
 - physical H1 does not imply background H1;
 - channel pivot values are not additive;
