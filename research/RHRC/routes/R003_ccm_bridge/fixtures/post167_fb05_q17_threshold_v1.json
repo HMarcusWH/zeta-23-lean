@@ -1,0 +1,20 @@
+{
+  "schema_version": "POST167_FB05_Q17_THRESHOLD_v1",
+  "claim_cap": "RIGOROUS_FINITE_POINT_CERTIFICATION_ONLY",
+  "target": {
+    "q": 17,
+    "predecessor_N": 3,
+    "successor_K": 4,
+    "selected_parity": "odd",
+    "purpose": "two-sided prime-entry audit at the Q16/Q17 near-critical threshold discovered after PR #167"
+  },
+  "source_offset_exponents": [6, 8, 10, 12, 16, 20, 24, 28, 32],
+  "arb_precision_bits": 256,
+  "nonclaims": [
+    "The q=17 target is a finite research target, not a global prime-only reduction.",
+    "The implementation retains von-Mangoldt weights and therefore supports prime powers.",
+    "Finite threshold certification is not Lean theorem authority.",
+    "A finite bad successor would not itself be an RH contradiction.",
+    "RH remains OPEN."
+  ]
+}

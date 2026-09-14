@@ -111,6 +111,19 @@ jobs:
             --input research/RHRC/routes/R003_ccm_bridge/fixtures/post166_fb05_cell_barrier_v1.json \
             --max-depth 8 \
             --output /tmp/POST166_FB05_CELL_BARRIER_CERTIFICATE.json
+      - name: Check post-#167 cutoff-entry moment-jet algebra
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post167_fb05_threshold_jet_scope.py
+      - name: Scout post-#167 Q17 threshold crossing
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post167_fb05_q17_threshold_scope.py \
+            --q 17 --n 3 --parity odd --grid 65 --local-seeds 6 \
+            --output /tmp/POST167_FB05_Q17_THRESHOLD_DISCOVERY.json
+      - name: Replay post-#167 Q17 threshold candidates
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post167_fb05_q17_threshold_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post167_fb05_q17_threshold_v1.json \
+            --discovery /tmp/POST167_FB05_Q17_THRESHOLD_DISCOVERY.json \
+            --output /tmp/POST167_FB05_Q17_THRESHOLD_CERTIFICATE.json
       - name: Audit R004 scalar-shift invariants
         run: python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
       - name: Reject external reference code as a Lean dependency
