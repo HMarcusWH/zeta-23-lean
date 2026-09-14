@@ -1,0 +1,24 @@
+{
+  "schema_version": "POST166_FB05_CELL_BARRIER_v1",
+  "claim_cap": "RIGOROUS_FINITE_INTERVAL_AUDIT_ONLY",
+  "target": {
+    "Q": 16,
+    "N": 3,
+    "Kstar": 4,
+    "parity": "odd",
+    "purpose": "full-cell audit of the strongest near-critical successor discovered by PR #166"
+  },
+  "near_critical_seed": {
+    "L_num": 3098486646606,
+    "L_den": 1099511627776,
+    "floating_min_eigenvalue": 2.3292865177849273e-12,
+    "post166_arb_classification": "POSITIVE_DEFINITE_CERTIFIED"
+  },
+  "max_depth": 8,
+  "nonclaims": [
+    "The checked-in seed is a finite positive point, not a whole-cell theorem.",
+    "Adaptive interval failure is UNRESOLVED, not evidence of negativity.",
+    "No finite numerical result is Lean theorem authority.",
+    "RH remains OPEN."
+  ]
+}
