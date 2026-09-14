@@ -25,13 +25,12 @@ Permansson #812 = SUCCESS
 ### Latest research-evidence anchor
 
 ```text
-merged research PR = #176
-validated research head = c6f53131b91b18aff2a50a6db2ddaa2761e7e5aa
-PR integration commit tested by Actions = ad6c904cf38c64d61c7990b3b6e87eec27ad0064
-merged research commit = 96cccf715c02ed2bd4ae58f8362180020ae90854
-research tree = 28bd302c17a6128e538a3510917dafb670f6dce8
-RHRC #1072 = SUCCESS
-Permansson #845 = SUCCESS
+merged research PR = #178
+validated research head = 28df43faed0db8c0f12a25525df6c28467ce5b07
+merged research commit = fb2a181ce0d95d90396ead7730e7bf365616a153
+research tree = 96ab14953e9e8bff5245953082db8a6471648614
+RHRC #1074 = SUCCESS
+Permansson #847 = SUCCESS
 ```
 
 ### Control authority
@@ -83,6 +82,9 @@ post-#173 q13 adaptive Arb scalar audit              [research PR #174]
 post-#175 fixed-unit q13 enclosure plumbing          [research PR #176]
 post-#175 fixed-unit q13 benchmark                   [research PR #176]
 post-#175 fixed-unit agreement/width certification  [research PR #176]
+post-#177 fixed-unit derivative plumbing             [research PR #178]
+post-#177 Q14 derivative schedule/probe              [research PR #178]
+post-#177 derivative discrimination certification   [research PR #178]
 ```
 
 Interpretation law:
@@ -127,7 +129,7 @@ RegularCellMinimalNegativeEnergyCertificate.evenShiftedRieszNine_lt_neg_mixedJet
 RegularCellMinimalNegativeEnergyCertificate.crossParityGamma_ne_zero_of_even_of_not_oddBad
 ```
 
-These establish theorem authority through #163. Research PRs #165-#176 do not alter this declaration set.
+These establish theorem authority through #163. Research PRs #165-#178 do not alter this declaration set.
 
 ## What the post-#163 research checks validate operationally
 
@@ -165,8 +167,6 @@ Delta_even(L) = a_even(L)d_even(L)-b_even(L)^2
 sign pivot = sign Delta_even in H1.
 ```
 
-The floating scout refines the dangerous Q14 basin and remains sampled-positive.
-
 The 384-bit direct scalar interval audit reports
 
 ```text
@@ -175,7 +175,7 @@ Q=14: 100% UNRESOLVED
 Q=15: 100% UNRESOLVED
 ```
 
-with zero positive, bad, or H1-loss width certified. No zero/contact theorem follows from a zero-containing enclosure, no strict-positive whole-cell theorem is created, and no shifted-state handoff is emitted.
+with zero positive, bad, or H1-loss width certified. No zero/contact theorem follows from a zero-containing enclosure.
 
 Operational interpretation:
 
@@ -186,8 +186,6 @@ direct scalar interval UNRESOLVED
   -/-> determinant positive
   -> current direct scalar enclosure representation is insufficient
 ```
-
-Because #167 already falsified brute subdivision of the full matrix and #174 now shows the same pathology after exact scalarization, the next certification attempt must change the representation or add analytic control rather than merely increase depth/precision.
 
 ### #176
 
@@ -202,20 +200,15 @@ status = PASS
 method_classification = FIXED_UNIT_METHOD_ACCEPTED
 ```
 
-and all six primary boxes report
-
-```text
-delta_strictly_narrower = true
-delta_material_gain = true
-```
+and all six primary boxes satisfy the strict-narrower/material-gain criterion.
 
 Operational interpretation:
 
 ```text
 FIXED_UNIT_METHOD_ACCEPTED
-  -> frozen direct/fixed-unit agreement checks passed in the exact CI pipeline
-  -> predeclared factor-2 q13/Q14 determinant-width method gate passed
-  -> investing in fixed-unit derivative research is justified
+  -> frozen direct/fixed-unit agreement checks passed
+  -> predeclared factor-2 determinant-width method gate passed
+  -> fixed-unit value-level research investment is justified
 
   -/-> determinant sign
   -/-> stationary-point theorem
@@ -225,41 +218,76 @@ FIXED_UNIT_METHOD_ACCEPTED
   -/-> Lean theorem promotion
 ```
 
-### #176 replay-hardening caveat
+### #178
 
-The exact GitHub Actions pipeline generated the benchmark from the frozen fixture immediately before the certifier. A review identified that the standalone certifier itself does not independently verify every schedule-defining field of an externally supplied `PASS` benchmark against the fixture.
+The derivative research path differentiates the complete fixed-Q canonical source
 
-Therefore the exact in-pipeline #176 classification remains valid in its finite scope, while standalone/replayed certification should eventually be hardened to reject stale or hand-modified schedules explicitly. Do not silently upgrade this software-validation debt into mathematical evidence in either direction.
+```text
+M'(L)=pole'(L)-arch'(L)-prime'(L)
+```
+
+and restricts it through the theorem-aligned `[W|c]` basis to `a',b',d'` and
+
+```text
+Delta_2' = a'd + ad' - 2bb'.
+```
+
+The checker compares analytic primitive derivatives, every upper-triangular entry of the complete 7x7 derivative matrix, theorem-aligned scalar derivatives and odd-N2 predecessor derivative against centered differences of the already-green value evaluators. Derivative continuation is required only at zero-von-Mangoldt seams 14 and 15.
+
+The exact RHRC #1074 certifier reports
+
+```text
+status = PASS
+derivative disposition = DERIVATIVE_UNRESOLVED
+orientation = NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN
+left_negative_labels  = []
+left_positive_labels  = []
+right_negative_labels = []
+right_positive_labels = []
+derived_stationary_existence_if_continuity_used = false
+uniqueness_claim = false
+```
+
+and separately
+
+```text
+value event = NO_BAD_OR_H1_LOSS_INTERVAL_CERTIFIED
+bad_labels = []
+h1_loss_labels = []
+```
+
+Operational interpretation:
+
+```text
+DERIVATIVE_UNRESOLVED
+  -> the complete derivative implementation/checking stack is valid on the exact head
+  -> all six primary raw Delta_2' interval boxes contain no certified sign
+
+  -/-> Delta_2' = 0
+  -/-> stationary existence
+  -/-> stationary uniqueness
+  -/-> contact
+  -/-> bad successor
+  -/-> H1 loss
+  -/-> failure of every derivative representation
+```
+
+#178 also closes the #176 standalone replay-hardening debt: the certifier reconstructs the frozen schedule from the fixture, and adversarial schedule mutations are rejected.
 
 ## Current FB-05 research target
 
-The q13 scalar geometry and the first representation-selection gate are now consumed research infrastructure. The next target is fixed-unit derivative/stationary discrimination on the same observables:
+The q13 scalar geometry, fixed-unit value representation, and complete derivative implementation are now consumed research infrastructure.
+
+The next target is correlation-preserving derivative enclosure:
 
 ```text
-a(L)
-Delta_2(L)=a(L)d(L)-b(L)^2
-odd N=2 predecessor ancestry
+1. rigorous point Delta_2' signs at frozen centers
+2. compare exact raw and H1 Schur-factorized derivative representations
+3. if point orientation is visible, add Delta_2'' and centered mean-value/Taylor bounds
+4. only after a two-sided derivative bracket, attempt interval Newton/Krawczyk.
 ```
 
-Primary derivative chain:
-
-```text
-fixed-unit alpha', beta', gamma'
-  -> a', b', d'
-  -> Delta_2' = a'd + ad' - 2bb'.
-```
-
-The first acceptance gate is:
-
-```text
-analytic derivative evaluator agrees with independent
-high-precision centered finite differences at frozen points
-AND
-rigorous derivative intervals are narrow enough to discriminate
-outer Q14 monotone regions from the local stationary basin.
-```
-
-Only then should local Taylor models, interval Newton/Krawczyk, or certified minimum/contact isolation be treated as justified research investment.
+Do not repeat the same raw assembled derivative boxes with only more precision/depth and call it a new route.
 
 ## Axiom inspection
 
@@ -301,7 +329,7 @@ R003_PROMOTED_BINDINGS.json
 Zeta23/CCM/ClaimBindings.lean
 ```
 
-The post-#176 docs/routing synchronization leaves those promotion surfaces unchanged.
+The post-#178 docs/routing synchronization leaves those promotion surfaces unchanged.
 
 ## Vocabulary
 
@@ -323,6 +351,6 @@ The post-#176 docs/routing synchronization leaves those promotion surfaces uncha
 
 ## Claim firewall
 
-Green #163 mixed-source/Riesz theorems are not RH. Green #165-#176 research tooling is not theorem authority. A contradiction still requires new arithmetic mathematics on the exact forced state, negative-root exclusion and the terminal zeta/Mathlib seam.
+Green #163 mixed-source/Riesz theorems are not RH. Green #165-#178 research tooling is not theorem authority. A contradiction still requires new arithmetic mathematics on the exact forced state, negative-root exclusion and the terminal zeta/Mathlib seam.
 
 **RH remains OPEN unless the exact terminal RH theorem passes the complete proof and claim-validation gates.**
