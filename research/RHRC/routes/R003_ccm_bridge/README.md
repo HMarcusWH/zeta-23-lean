@@ -1,6 +1,6 @@
 # R003 — CCM / finite Weil bridge
 
-Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #163. LATEST RESEARCH EVIDENCE THROUGH PR #172. CURRENT FRONTIER = FB-05 Q13/N2/K3/EVEN 2X2 SCALAR DETERMINANT BARRIER. RH OPEN.**
+Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #163. LATEST RESEARCH EVIDENCE THROUGH PR #174. CURRENT FRONTIER = FB-05 ANALYTIC/DEPENDENCY-REDUCED Q13 SCALAR ENCLOSURE. RH OPEN.**
 
 ## Authority split
 
@@ -15,12 +15,12 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #172
-validated research head = 4c857cd031497d895232a18a4bfb9a094d9facae
-merged research commit = a31bb0bb7f025d7727dd3f224c705af797f64a19
-research tree = c64b098c3159d739fa15eeaa96e35693615873d7
-RHRC #1063 = SUCCESS
-Permansson #836 = SUCCESS
+merged research PR = #174
+validated research head = 2d9fc5a5f7d552afb893c871fe84c9ed61a60ac0
+merged research commit = 946788f09c871de5133e2a8c8f5c94d7d69b521d
+research tree = 2a22b83c4d5903158c036d38420d9ae79b7726f2
+RHRC #1070 = SUCCESS
+Permansson #843 = SUCCESS
 
 CONTROL AUTHORITY
 control-plane semantic anchor = PR #117
@@ -74,27 +74,27 @@ No endpoint-scalar sign, sourceMoment/`M4` implication, simultaneous-parity excl
 
 The exact executable `S8(L)` normalization is independently checked, including prime powers through von Mangoldt weights. Finite discovery and Arb fixtures found no sampled negative value.
 
-**Firewall:** even `S8 >= 0` would only yield `R9 <= R8 < 0` from the current theorem package. Sign alone is not FB-05 closure.
+**Firewall:** even `S8 >= 0` only yields `R9 <= R8 < 0` from the current theorem package. Sign alone is not FB-05 closure.
 
 ### #166 — shifted-state discriminator
 
-The finite executable is aligned with the actual shifted secular ray `u_lambda = c - W(H-lambda G)^(-1)r`. A broad finite scout found no negative successor but isolated a near-critical `Q=16,N=3,K=4,odd` family.
+Finite discovery is aligned with the actual shifted secular ray `u_lambda = c - W(H-lambda G)^(-1)r`. A broad finite scout found no negative successor but isolated a near-critical `Q=16,N=3,K=4,odd` family.
 
-### #167 — Q16 scalar barrier
+### #167 — Q16 barrier / method falsification
 
-Floating full-cell optimization found no negative point and pushed the apparent minimum toward `log 17`. The direct dependency-heavy whole-cell Arb representation remained unresolved at every depth-8 leaf: `256 / 256 UNRESOLVED`.
+Floating full-cell optimization found no negative point. Direct dependency-heavy whole-cell Arb evaluation remained `256 / 256 UNRESOLVED` at depth 8.
 
 ### #168 — threshold moment jet
 
-Exact executable boundary-flat parity identities for `K=2..8` give odd first surviving source-energy order 7 through `M3^2` and even first surviving order 9 through `M4^2`. The exact `L=log 17` threshold and all 18 two-sided Arb microscope points are positive. The full Q17 floating state is `CONTINUES_DOWN_BUT_POSITIVE`.
+Exact executable boundary-flat parity identities give odd first surviving source-energy order 7 through `M3^2` and even first surviving order 9 through `M4^2`. The exact `L=log 17` threshold and all 18 two-sided Arb microscope points are positive.
 
-### #170 — theorem-aligned Schur visibility / background split
+### #170 — theorem-aligned Schur visibility/background split
 
-The selected scalar is reconstructed in the theorem-aligned exact basis `[W|c]`. The unit-shell pivot agrees with the post-#150 selected residual. At q17/N3/K4/odd, the threshold direction is finite-certified Schur-visible; the entering q17 atom raises the pivot at checked offsets while the q-removed background finite difference is negative.
+The selected scalar is reconstructed in the exact `[W|c]` basis. At q17/N3/K4/odd, the threshold direction is finite-certified Schur-visible; the entering q17 atom raises the pivot at checked offsets while the q-removed background finite difference is negative.
 
 ### #172 — threshold-to-threshold production barrier
 
-The research layer tests genuine nonzero von-Mangoldt intervals across multiple q/N/parity targets. No sampled bad successor appears, but finite current-q entry lift is sign-indefinite:
+Finite current-q entry lift is sign-indefinite:
 
 ```text
 q9 / even   NEGATIVE_CERTIFIED
@@ -102,7 +102,7 @@ q13 / even  NEGATIVE_CERTIFIED
 q16 / odd   POSITIVE_CERTIFIED
 ```
 
-The most dangerous sampled complete state is
+The strongest near-critical target becomes
 
 ```text
 q = 13 -> 16
@@ -111,83 +111,78 @@ K* = 3
 parity = even.
 ```
 
-At the quantized near-minimum, Arb certifies
+At the quantized near-minimum, Arb certifies a positive full pivot of about `5.84e-12`, positive background of about `1.22e-11`, and negative q13 entry lift of about `-6.38e-12`.
 
-```text
-H1 predecessor positive
-full unit-shell pivot      ~= +5.8401616e-12
-q-removed background       ~= +1.2217611e-11
-q13 entry lift             ~= -6.3774491e-12
-```
+### #174 — exact q13 2x2 scalar barrier
 
-The q17 replay also demonstrates that full physical H1 does not imply H1 for the q-removed background. Production channel cancellation ratios reach approximately `1e9`-`1e10`.
-
-**Consequence:** the current object is the complete q13/even scalar barrier, not a universal favorable threshold-kick theorem.
-
-## Current frontier — q13/N2/K3/even 2x2 scalar determinant barrier
-
-For this exact finite target, theorem-aligned executable dimensions are 1 -> 2. In `[W|c]` coordinates,
+For the q13 target the exact theorem-aligned executable geometry is 1D predecessor -> 2D successor. In `[W|c]` coordinates,
 
 ```text
 H(L) = [[a(L), b(L)],
         [b(L), d(L)]]
-
-H1 <-> a(L) > 0
-P(L) = d(L) - b(L)^2/a(L)
-Delta_2(L) = a(L)d(L) - b(L)^2.
+Delta_2(L) = a(L)d(L)-b(L)^2
+H1 <-> a(L)>0
+P(L)=Delta_2(L)/a(L) in H1 scope.
 ```
 
-Hence in H1 scope
+The floating scout sharpens the dangerous Q14 basin and remains sampled-positive. The determinant minimum and Schur-pivot minimum are nearby but not identical.
+
+The 384-bit direct scalar interval audit over physical Q=13/14/15 subcells returns:
 
 ```text
-sign P(L) = sign Delta_2(L).
+Q=13  100% UNRESOLVED
+Q=14  100% UNRESOLVED
+Q=15  100% UNRESOLVED
 ```
 
-The next rigorous task is to classify the complete interval, including zero contact:
+No H1-loss, bad interval, contact theorem, or strict-positive interval is certified.
+
+**Consequence:** the scalar geometry is now consumed research infrastructure. Direct adaptive evaluation of the same scalar formulas is itself dependency-limited. The next method must change the enclosure representation or add analytic control rather than merely increase subdivision depth.
+
+## Current frontier — dependency-reduced analytic scalar enclosure
+
+Preserve the exact q13 observables:
 
 ```text
-A. H1 loss:
-   a(L) <= 0 somewhere.
-
-B. strict bad successor:
-   a(L) > 0 and Delta_2(L) < 0 somewhere.
-
-C. barrier contact / singular successor:
-   a(L) > 0 and Delta_2(L) = 0 somewhere.
-
-D. strict barrier:
-   a(L) > 0 and Delta_2(L) > 0 for all L in [log13,log16].
+a(L)
+Delta_2(L)=a(L)d(L)-b(L)^2
+odd N=2 predecessor ancestry
 ```
 
-Case C includes tangential and endpoint zeros. It must be separated from both negative crossing and strict positivity; proving only `Delta_2 >= 0` still leaves a nonvanishing obligation.
+but change their analytic/enclosure representation.
 
-### Physical cutoff handling
+The highest-leverage lead is to reuse the fixed-unit aperture parameterization developed in the #148 theorem layer. A substitution such as `z=L*s` places the archimedean integrals on a common unit interval and removes repeated aperture dependence from the oscillatory phase. This is a **research lead**, not a proved improvement.
 
-The arithmetic interval 13 -> 16 contains no nonzero von-Mangoldt seams at 14 or 15, but the production backend still tracks physical `Q=floor(exp L)`.
-
-Therefore the rigorous backend should initially certify piecewise on
+The first acceptance gate for a new evaluator is:
 
 ```text
-[log13,log14]
-[log14,log15]
-[log15,log16]
+certified agreement with the existing production evaluator
+AND
+materially tighter interval widths in the dangerous Q14 basin.
 ```
 
-or separately prove exact inertness of the zero-weight Q=14/15 additions in the reduced scalar representation.
+Only after this gate should the route invest in certified derivative/variation bounds, local Taylor models, interval Newton/Krawczyk, or analytic root exclusion.
 
-This is a dependency-reduced scalar escape from the #167 full-matrix interval failure, not a revival of that failed representation.
+The final scalar classification remains:
 
-A positive q13 whole-cell certificate would still be a finite method/structure result, not global FB-05 closure.
+```text
+A. H1 loss: a(L) <= 0 somewhere
+B. strict bad successor: a(L)>0 and Delta_2(L)<0 somewhere
+C. zero/contact: a(L)>0 and Delta_2(L)=0 somewhere
+D. strict barrier: a(L)>0 and Delta_2(L)>0 everywhere
+```
+
+A zero-containing interval is not a contact theorem. `Delta_2 >= 0` without nonvanishing is not a strict barrier certificate.
 
 ## Supporting open routes
 
 ### Simultaneous parity badness
 
-#161 still allows both parity successors to be bad. #172 shows different current-q entry signs in different finite q/N/parity targets, but same-q opposite-parity controls are needed before attributing the effect to parity.
+#161 still allows both parity successors to be bad. Same-q/N opposite-parity controls remain useful.
 
 ### Odd-selected coverage
 
-The strongest retained mixed/Riesz package is even-selected where stated. No WLOG-even theorem exists.
+No WLOG-even theorem exists because `D` is algebraic, not unitary/isometric.
 
 ### Endpoint scalar
 
@@ -203,36 +198,16 @@ The R003 CI layer now includes:
 
 ```text
 post-#150 selected-residual finite/Arb audit
-post-#163 endpoint-scalar audit (#165 research)
-post-#165 theorem-aligned shifted-state audit (#166 research)
-post-#166 Q16 scalar-barrier audit (#167 research)
-post-#167 threshold-jet / Q17 audit (#168 research)
-post-#169 theorem-aligned Schur visibility algebra (#170 research)
-post-#169 threshold Schur/background scout (#170 research)
-post-#169 Arb Schur-visibility replay (#170 research)
-post-#171 threshold-barrier accounting check (#172 research)
-post-#171 multi-cell threshold-barrier scout (#172 research)
-post-#171 Arb finite-point barrier replay (#172 research)
+post-#163 endpoint-scalar audit (#165)
+post-#165 theorem-aligned shifted-state audit (#166)
+post-#166 Q16 cell-barrier audit (#167)
+post-#167 threshold-jet / Q17 audit (#168)
+post-#169 Schur visibility/background audit (#170)
+post-#171 threshold-to-threshold barrier audit (#172)
+post-#173 q13 scalar-barrier plumbing/scout/interval audit (#174)
 ```
 
 Passing these gates means the executable research checks ran correctly on the exact head. It does not promote their numerical/SymPy/Arb output to Lean theorem authority.
-
-## Falsification discipline
-
-For the q13 2x2 route:
-
-- stay in exact theorem-aligned `[W|c]` geometry;
-- recheck exact `N=2 -> K*=3` dimensions;
-- certify H1 with `a(L)>0` and classify successor sign/zero structure with `Delta_2(L)`;
-- keep von Mangoldt prime powers;
-- respect physical Q=13/14/15 subcells or separately certify zero-weight seam inertness;
-- use enough precision for the `~1e-12` residual and `~1e9-1e10` cancellation scale;
-- test same-q/N opposite parity;
-- search for H1 loss, determinant zero contact, and determinant crossing;
-- treat `UNRESOLVED` as unresolved;
-- if an actual bad successor is discovered, replay it through the #166 shifted-state machinery;
-- if a zero-contact state is discovered, classify tangency/multiplicity/nonvanishing before inferring a crossing;
-- if the cell is strictly positive, extract and falsify the generalizable arithmetic inequality before Lean theorem investment.
 
 ## Highest-leverage order
 
@@ -245,7 +220,7 @@ FB-04A exact moment jets + signed Riesz boundary recurrence        PROVED / #159
 FB-04B same-state shifted Riesz x cross-parity source composition PROVED / #161
 FB-04C mixed quadratic-normal jet x Riesz boundary coupling       PROVED / #163
 FB-05  independent contradiction-producing arithmetic restriction OPEN / ACTIVE
-  current research slice: q13/N2/K3/even 2x2 scalar determinant barrier
+  current research slice: dependency-reduced analytic enclosure of the q13 scalar barrier
 FB-06  same-state contradiction / negative-root exclusion         OPEN
 FB-07  terminal seam + Mathlib RH wrapper                          OPEN
 ```
@@ -254,29 +229,24 @@ FB-07  terminal seam + Mathlib RH wrapper                          OPEN
 
 - theorem authority remains through #163;
 - research PR green is not theorem authority;
-- machine-promoted claims remain a separate older surface;
 - exact executable algebra is not a Lean theorem;
-- interval-certified finite numerics are scoped evidence only;
-- finite differences/quadrature are not derivative theorems;
+- finite Arb evidence is scoped only to its certified object;
 - absence of sampled badness is not positivity;
 - endpoint-scalar positivity alone is not first-bad exclusion;
 - current-q arithmetic entry lift is not universally favorable;
 - full physical H1 does not imply background H1;
-- `Delta_2 >= 0` without nonvanishing is not a strict q13 barrier certificate;
-- q13 whole-cell positivity alone would not close FB-05;
-- retained transformed negativity is not contradiction;
+- determinant and pivot minima are distinct optimization targets;
+- independent channel pivots may not be added;
+- large cancellation demands cancellation-preserving arithmetic;
+- whole-cell `UNRESOLVED` is not sign evidence;
+- direct scalar subdivision is not the next strategy after #174;
 - sourceMoment nonzero does not imply `M4` nonzero, nor conversely;
 - simultaneous parity badness remains open;
 - selected parity cannot be assumed even WLOG;
-- no factorwise division without theorem-backed nonzeroness;
-- `D` remains algebraic, not unitary/isometric;
-- independent channel pivots may not be added;
-- large cancellation demands cancellation-preserving arithmetic;
-- whole-cell `UNRESOLVED` interval output is not sign evidence;
 - negative-root exclusion still needs the terminal zeta/Mathlib seam;
 - RH remains OPEN.
 
 Detailed current implications:
-`../../RESEARCH_LEADS_POST_172_Q13_EVEN_SCALAR_BARRIER_DELTA.md`.
+`../../RESEARCH_LEADS_POST_174_Q13_SCALAR_DEPENDENCY_FRONTIER_DELTA.md`.
 
 **RH remains OPEN.**
