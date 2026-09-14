@@ -84,6 +84,18 @@ jobs:
           python research/RHRC/routes/R003_ccm_bridge/certify_post163_endpoint_scalar_scope.py \
             --input research/RHRC/routes/R003_ccm_bridge/fixtures/post163_endpoint_scalar_v1.json \
             --output /tmp/POST163_ENDPOINT_SCALAR_CERTIFICATE.json
+      - name: Check post-#165 FB-05 shifted-state plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post165_fb05_shifted_state_scope.py
+      - name: Scout post-#165 FB-05 same-state scope
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post165_fb05_same_state_scope.py \
+            --q-min 2 --q-max 8 --n-min 2 --n-max 4 --samples 2 --top 12 \
+            --output /tmp/POST165_FB05_SAME_STATE_DISCOVERY.json
+      - name: Replay checked-in post-#165 FB-05 same-state certificates
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post165_fb05_same_state_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post165_fb05_same_state_v1.json \
+            --output /tmp/POST165_FB05_SAME_STATE_CERTIFICATE.json
       - name: Audit R004 scalar-shift invariants
         run: python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
       - name: Reject external reference code as a Lean dependency
