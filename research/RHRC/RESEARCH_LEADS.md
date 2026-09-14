@@ -167,19 +167,23 @@ Therefore, on H1 scope,
 sign P(L) = sign Delta_2(L).
 ```
 
-The next rigorous question is binary:
+The next rigorous task is to classify the signs and zeros of `a(L)` and `Delta_2(L)` throughout the q13 physical interval. The relevant outcomes are:
 
 ```text
-exists L in (log13,log16):
-  a(L)>0 and Delta_2(L)<0
+A. H1 loss:
+   a(L) <= 0 somewhere.
+
+B. strict bad successor:
+   a(L) > 0 and Delta_2(L) < 0 somewhere.
+
+C. barrier contact / singular successor:
+   a(L) > 0 and Delta_2(L) = 0 somewhere.
+
+D. strict barrier:
+   a(L) > 0 and Delta_2(L) > 0 for all L in [log13,log16].
 ```
 
-versus
-
-```text
-a(L)>0 and Delta_2(L)>0
-for all L in [log13,log16].
-```
+Case C includes tangential and endpoint contact and must be investigated separately; it is neither a negative crossing nor a strict-positive certificate. A proof of `Delta_2 >= 0` therefore still needs nonvanishing to establish case D.
 
 Because the production backend tracks physical `Q=floor(exp L)`, a whole-interval certificate must either work piecewise on Q=13/14/15 subcells or separately certify exact inertness of the zero-von-Mangoldt Q=14/15 additions.
 
@@ -190,7 +194,7 @@ A positive q13 whole-cell result is **not** FB-05 closure by itself. Its value i
 **Research status:** CONSUMED INPUT / #172  
 **Formal status:** NOT LEAN-THEOREMIZED
 
-#172 locks the executable seam accounting, production budget reconstruction, multi-cell scout, and finite Arb replay. It should now be used as infrastructure for the q13 scalar attack rather than rerun as an end in itself.
+#172 locks exact executable Schur/envelope algebra, deterministic numerical integration smoke tests, seam accounting, production budget reconstruction, the multi-cell scout, and finite Arb replay. It should now be used as infrastructure for the q13 scalar attack rather than rerun as an end in itself.
 
 ## Validated research mechanism — theorem-aligned pivot/background decomposition
 
@@ -257,26 +261,28 @@ The q13 2x2 scalar route is not a revival of the failed #167 representation. It 
 - theorem-aligned `[W|c]` geometry;
 - exact `N=2 -> K*=3` dimension check;
 - H1 through `a(L)>0`;
-- successor sign through `Delta_2(L)`;
+- successor sign/zero structure through `Delta_2(L)`;
 - prime powers via von Mangoldt weights;
 - physical Q=13/14/15 subcell handling;
 - enough precision for the `1e-12` margin and `1e9-1e10` cancellation scale;
 - same-q/N opposite-parity controls;
-- explicit search for H1 loss before determinant crossing;
+- explicit search for H1 loss, determinant zero contact, and determinant sign crossing;
 - treat `UNRESOLVED` as unresolved;
 - if a bad successor appears, immediate same-state replay through #166;
-- if the cell is positive, identify whether the proof ingredient generalizes before theoremization.
+- if a zero-contact state appears, classify tangency/multiplicity/nonvanishing before inferring a crossing;
+- if the cell is strictly positive, identify whether the proof ingredient generalizes before theoremization.
 
 ## Standing research questions
 
-1. Does `Delta_2(L)` cross zero anywhere in the q13/even arithmetic interval while `a(L)>0`?
-2. Can the reduced scalar representation rigorously certify the physical Q=13/14/15 subcells where the full-matrix representation could not?
-3. If the q13 cell stays positive, what arithmetic inequality creates the turn away from zero?
-4. Does that inequality survive other q/N/parity states, especially same-q opposite parity?
-5. Can any surviving inequality be composed with the exact #161/#163 retained state without restating successor positivity?
-6. What closes simultaneous parity badness and the odd-selected branch?
+1. Does `a(L)` remain positive throughout the q13/even arithmetic interval?
+2. Does `Delta_2(L)` become negative, merely reach zero, or remain strictly positive while H1 holds?
+3. Can the reduced scalar representation rigorously certify the physical Q=13/14/15 subcells where the full-matrix representation could not?
+4. If the q13 cell stays strictly positive, what arithmetic inequality creates the turn away from zero?
+5. Does that inequality survive other q/N/parity states, especially same-q opposite parity?
+6. Can any surviving inequality be composed with the exact #161/#163 retained state without restating successor positivity?
+7. What closes simultaneous parity badness and the odd-selected branch?
 
-**Current highest-information question:** can the complete canonical q13/N2/K3/even 2x2 determinant barrier be resolved rigorously, and does the reason generalize beyond that finite cell?
+**Current highest-information question:** can the complete canonical q13/N2/K3/even 2x2 determinant barrier be fully classified—including possible zero contact—and does the controlling reason generalize beyond that finite cell?
 
 Detailed current synthesis:
 `RESEARCH_LEADS_POST_172_Q13_EVEN_SCALAR_BARRIER_DELTA.md`.
