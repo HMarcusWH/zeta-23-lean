@@ -15,12 +15,12 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #174
-validated research head = 2d9fc5a5f7d552afb893c871fe84c9ed61a60ac0
-merged research commit = 946788f09c871de5133e2a8c8f5c94d7d69b521d
-research tree = 2a22b83c4d5903158c036d38420d9ae79b7726f2
-RHRC #1070 = SUCCESS
-Permansson #843 = SUCCESS
+merged research PR = #176
+validated research head = c6f53131b91b18aff2a50a6db2ddaa2761e7e5aa
+merged research commit = 96cccf715c02ed2bd4ae58f8362180020ae90854
+research tree = 28bd302c17a6128e538a3510917dafb670f6dce8
+RHRC #1072 = SUCCESS
+Permansson #845 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
@@ -57,6 +57,7 @@ No theorem-bearing PR has superseded #163.
 #170 theorem-aligned Schur visibility / background-drift audit
 #172 threshold-to-threshold Schur barrier falsification
 #174 q13/N2/K3/even exact 2x2 scalar-barrier / interval-method audit
+#176 fixed-unit q13/Q14 enclosure agreement + method-selection benchmark
 ```
 
 ### What #174 changed
@@ -76,6 +77,18 @@ The direct 384-bit adaptive scalar interval audit respects physical Q=13/14/15 s
 
 Therefore the project should no longer ask whether scalarization itself cures the #167 dependency problem. It does not.
 
+### What #176 changed
+
+The fixed-unit escape proposed after #174 was implemented as an independent Arb evaluator and compared against the direct `[0,L]` production path. The exact CI pipeline checks primitive, matrix, scalar, seam and zero-weight agreement, then benchmarks six frozen primary Q14 boxes around the distinct determinant and pivot basins.
+
+Every primary box reports both `delta_strictly_narrower = true` and `delta_material_gain = true` under the predeclared factor-2 criterion, so the pipeline classifies the method as
+
+```text
+FIXED_UNIT_METHOD_ACCEPTED
+```
+
+This selects a preferred **research enclosure representation for the q13 finite laboratory**. It does not prove a determinant sign, stationary point, whole-cell barrier, arbitrary first-bad restriction, or Lean theorem.
+
 ## Current frontier
 
 ```text
@@ -87,7 +100,7 @@ FB-04A moment jets + signed Riesz boundary recurrence           PROVED / #159
 FB-04B same-state shifted Riesz x cross-parity source           PROVED / #161
 FB-04C mixed quadratic-normal jet x Riesz boundary coupling     PROVED / #163
 FB-05 independent contradiction-producing arithmetic restriction OPEN / NOW
-  current research slice: dependency-reduced analytic q13 scalar enclosure
+  current research slice: fixed-unit Q14 derivative/stationary discrimination
 FB-06 negative-root exclusion                                   OPEN
 FB-07 terminal Mathlib RH seam                                  OPEN
 RH                                                               OPEN
@@ -95,19 +108,19 @@ RH                                                               OPEN
 
 ## Current post-green clue
 
-The method bottleneck has moved from finite geometry to analytic enclosure.
+The method bottleneck has moved again: #176 shows that the fixed-unit aperture representation materially reduces determinant enclosure width on the frozen q13/Q14 benchmark. The next question is whether that conditioning gain survives **differentiation** strongly enough to decide local Q14 stationary structure.
 
-The leading research hypothesis is to reuse the fixed-unit aperture representation already developed in the #148 theorem layer. A fixed-domain pullback can remove repeated `L` dependence from the oscillatory phase and may produce materially tighter interval enclosures for `a(L)` and `Delta_2(L)`.
-
-The first acceptance gate is not a sign theorem. It is:
+The first research chain is
 
 ```text
-new evaluator agrees with existing production evaluator
-AND
-new evaluator materially tightens the dangerous Q14 enclosures.
+alpha', beta', gamma'
+        -> a', b', d'
+        -> Delta_2' = a'd + ad' - 2bb'.
 ```
 
-If that succeeds, derivative/variation bounds, local Taylor models, and interval Newton/Krawczyk become justified next tools.
+The next gate remains methodological: independently check fixed-unit derivatives against high-precision centered finite differences, then test whether derivative interval widths can separate outer monotone regions from the shallow stationary basin.
+
+Only if that succeeds should local Taylor models, interval Newton/Krawczyk or rigorous minimum/contact isolation be attempted. Do not assume those methods will work merely because the value-level enclosure improved.
 
 ## Important non-revivals
 
@@ -127,10 +140,12 @@ universal positive arithmetic threshold replenishment
 ## New method firewalls
 
 - scalarization alone does not eliminate canonical interval dependency;
+- #176 fixed-unit method acceptance is finite and benchmark-scoped, not a sign theorem;
 - determinant and Schur-pivot minima are different optimization targets;
 - a zero-containing interval is not a zero/contact theorem;
 - more precision/depth alone is not a new route after #174;
-- any new enclosure representation must first be benchmarked against the existing production evaluator;
+- the direct production evaluator remains an independent baseline rather than being replaced by the fixed-unit evaluator;
+- the standalone #176 certifier should eventually bind its supplied benchmark schedule back to the frozen fixture; exact CI generated that benchmark in-pipeline, so this is replay hardening debt rather than a new mathematical claim;
 - q13 whole-cell positivity, if eventually certified, remains a finite method/structure result until its controlling arithmetic mechanism generalizes.
 
 ## Next theorem-bearing slice
@@ -139,7 +154,7 @@ Do not theoremize a q13 finite-cell observation merely because a better enclosur
 
 ## Permanent firewalls
 
-- research evidence through #174 does not move theorem authority beyond #163;
+- research evidence through #176 does not move theorem authority beyond #163;
 - endpoint-scalar positivity alone is not first-bad exclusion;
 - arithmetic entry lift is sign-indefinite in tested canonical states;
 - physical H1 does not imply q-removed-background H1;
@@ -155,6 +170,6 @@ Do not theoremize a q13 finite-cell observation merely because a better enclosur
 - negative-root exclusion and RH remain open.
 
 Detailed current synthesis:
-`research/RHRC/RESEARCH_LEADS_POST_174_Q13_SCALAR_DEPENDENCY_FRONTIER_DELTA.md`.
+`research/RHRC/RESEARCH_LEADS_POST_176_FIXED_UNIT_METHOD_ACCEPTANCE_Q14_STATIONARY_FRONTIER_DELTA.md`.
 
 **RH remains OPEN.**
