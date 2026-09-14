@@ -1,0 +1,35 @@
+{
+  "schema_version": "POST163_ENDPOINT_SCALAR_FIXTURE_v1",
+  "claim_cap": "RIGOROUS_FINITE_POINT_CERTIFICATION_ONLY",
+  "selection_policy": {
+    "cells": [1, 2, 4, 8, 16, 64],
+    "relative_positions": [0.01, 0.5, 0.99],
+    "dyadic_bits": 48,
+    "purpose": "deterministic near-boundary and midpoint replay across increasing cutoff cells; not selected for favorable sign"
+  },
+  "candidates": [
+    {"Q": 1, "L_num": 1951035865052, "L_den": 281474976710656, "riesz_order": 8, "selection": "near_left_of_cell_Q1"},
+    {"Q": 1, "L_num": 97551793252584, "L_den": 281474976710656, "riesz_order": 8, "selection": "midpoint_of_cell_Q1"},
+    {"Q": 1, "L_num": 193152550640116, "L_den": 281474976710656, "riesz_order": 8, "selection": "near_right_of_cell_Q1"},
+    {"Q": 2, "L_num": 196244869323785, "L_den": 281474976710656, "riesz_order": 8, "selection": "near_left_of_cell_Q2"},
+    {"Q": 2, "L_num": 252167727436032, "L_den": 281474976710656, "riesz_order": 8, "selection": "midpoint_of_cell_Q2"},
+    {"Q": 2, "L_num": 308090585548279, "L_den": 281474976710656, "riesz_order": 8, "selection": "near_right_of_cell_Q2"},
+    {"Q": 4, "L_num": 390835266269428, "L_den": 281474976710656, "riesz_order": 8, "selection": "near_left_of_cell_Q4"},
+    {"Q": 4, "L_num": 421611835964985, "L_den": 281474976710656, "riesz_order": 8, "selection": "midpoint_of_cell_Q4"},
+    {"Q": 4, "L_num": 452388405660542, "L_den": 281474976710656, "riesz_order": 8, "selection": "near_right_of_cell_Q4"},
+    {"Q": 8, "L_num": 585642289287685, "L_den": 281474976710656, "riesz_order": 8, "selection": "near_left_of_cell_Q8"},
+    {"Q": 8, "L_num": 601887248124648, "L_den": 281474976710656, "riesz_order": 8, "selection": "midpoint_of_cell_Q8"},
+    {"Q": 8, "L_num": 618132206961610, "L_den": 281474976710656, "riesz_order": 8, "selection": "near_right_of_cell_Q8"},
+    {"Q": 16, "L_num": 780584989160809, "L_den": 281474976710656, "riesz_order": 8, "selection": "near_left_of_cell_Q16"},
+    {"Q": 16, "L_num": 788946503027606, "L_den": 281474976710656, "riesz_order": 8, "selection": "midpoint_of_cell_Q16"},
+    {"Q": 16, "L_num": 797308016894404, "L_den": 281474976710656, "riesz_order": 8, "selection": "near_right_of_cell_Q16"},
+    {"Q": 64, "L_num": 1170665159436446, "L_den": 281474976710656, "riesz_order": 8, "selection": "near_left_of_cell_Q64"},
+    {"Q": 64, "L_num": 1172803539303069, "L_den": 281474976710656, "riesz_order": 8, "selection": "midpoint_of_cell_Q64"},
+    {"Q": 64, "L_num": 1174941919169692, "L_den": 281474976710656, "riesz_order": 8, "selection": "near_right_of_cell_Q64"}
+  ],
+  "nonclaims": [
+    "Fixture selection is deterministic and not evidence of global sign.",
+    "Finite Arb certificates are not Lean theorem authority.",
+    "RH remains OPEN."
+  ]
+}
