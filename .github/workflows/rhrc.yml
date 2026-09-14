@@ -98,6 +98,19 @@ jobs:
           python research/RHRC/routes/R003_ccm_bridge/certify_post165_fb05_same_state_scope.py \
             --input research/RHRC/routes/R003_ccm_bridge/fixtures/post165_fb05_same_state_v1.json \
             --output /tmp/POST165_FB05_SAME_STATE_CERTIFICATE.json
+      - name: Check post-#166 Q16 cell-barrier plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post166_fb05_cell_barrier_scope.py
+      - name: Scout post-#166 Q16 full-cell determinant barrier
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post166_fb05_cell_barrier_scope.py \
+            --q 16 --n 3 --parity odd --grid 65 --top 12 --local-seeds 6 \
+            --output /tmp/POST166_FB05_CELL_BARRIER_DISCOVERY.json
+      - name: Replay post-#166 Q16 adaptive Arb cell audit
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post166_fb05_cell_barrier_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post166_fb05_cell_barrier_v1.json \
+            --max-depth 4 \
+            --output /tmp/POST166_FB05_CELL_BARRIER_CERTIFICATE.json
       - name: Audit R004 scalar-shift invariants
         run: python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
       - name: Reject external reference code as a Lean dependency
