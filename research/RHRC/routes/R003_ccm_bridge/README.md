@@ -143,17 +143,23 @@ Hence in H1 scope
 sign P(L) = sign Delta_2(L).
 ```
 
-The next rigorous task is to decide between
+The next rigorous task is to classify the complete interval, including zero contact:
 
 ```text
-exists L in (log13,log16): a(L)>0 and Delta_2(L)<0
+A. H1 loss:
+   a(L) <= 0 somewhere.
+
+B. strict bad successor:
+   a(L) > 0 and Delta_2(L) < 0 somewhere.
+
+C. barrier contact / singular successor:
+   a(L) > 0 and Delta_2(L) = 0 somewhere.
+
+D. strict barrier:
+   a(L) > 0 and Delta_2(L) > 0 for all L in [log13,log16].
 ```
 
-and
-
-```text
-a(L)>0 and Delta_2(L)>0 for all L in [log13,log16].
-```
+Case C includes tangential and endpoint zeros. It must be separated from both negative crossing and strict positivity; proving only `Delta_2 >= 0` still leaves a nonvanishing obligation.
 
 ### Physical cutoff handling
 
@@ -217,15 +223,16 @@ For the q13 2x2 route:
 
 - stay in exact theorem-aligned `[W|c]` geometry;
 - recheck exact `N=2 -> K*=3` dimensions;
-- certify H1 with `a(L)>0` and successor sign with `Delta_2(L)`;
+- certify H1 with `a(L)>0` and classify successor sign/zero structure with `Delta_2(L)`;
 - keep von Mangoldt prime powers;
 - respect physical Q=13/14/15 subcells or separately certify zero-weight seam inertness;
 - use enough precision for the `~1e-12` residual and `~1e9-1e10` cancellation scale;
 - test same-q/N opposite parity;
-- search for H1 loss before determinant crossing;
+- search for H1 loss, determinant zero contact, and determinant crossing;
 - treat `UNRESOLVED` as unresolved;
 - if an actual bad successor is discovered, replay it through the #166 shifted-state machinery;
-- if the cell is positive, extract and falsify the generalizable arithmetic inequality before Lean theorem investment.
+- if a zero-contact state is discovered, classify tangency/multiplicity/nonvanishing before inferring a crossing;
+- if the cell is strictly positive, extract and falsify the generalizable arithmetic inequality before Lean theorem investment.
 
 ## Highest-leverage order
 
@@ -255,6 +262,7 @@ FB-07  terminal seam + Mathlib RH wrapper                          OPEN
 - endpoint-scalar positivity alone is not first-bad exclusion;
 - current-q arithmetic entry lift is not universally favorable;
 - full physical H1 does not imply background H1;
+- `Delta_2 >= 0` without nonvanishing is not a strict q13 barrier certificate;
 - q13 whole-cell positivity alone would not close FB-05;
 - retained transformed negativity is not contradiction;
 - sourceMoment nonzero does not imply `M4` nonzero, nor conversely;
