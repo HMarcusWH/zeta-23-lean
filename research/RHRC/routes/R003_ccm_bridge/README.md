@@ -1,6 +1,6 @@
 # R003 — CCM / finite Weil bridge
 
-Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #163. LATEST RESEARCH EVIDENCE THROUGH PR #174. CURRENT FRONTIER = FB-05 ANALYTIC/DEPENDENCY-REDUCED Q13 SCALAR ENCLOSURE. RH OPEN.**
+Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #163. LATEST RESEARCH EVIDENCE THROUGH PR #176. CURRENT FRONTIER = FB-05 FIXED-UNIT Q14 DERIVATIVE/STATIONARY DISCRIMINATION. RH OPEN.**
 
 ## Authority split
 
@@ -15,12 +15,12 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #174
-validated research head = 2d9fc5a5f7d552afb893c871fe84c9ed61a60ac0
-merged research commit = 946788f09c871de5133e2a8c8f5c94d7d69b521d
-research tree = 2a22b83c4d5903158c036d38420d9ae79b7726f2
-RHRC #1070 = SUCCESS
-Permansson #843 = SUCCESS
+merged research PR = #176
+validated research head = c6f53131b91b18aff2a50a6db2ddaa2761e7e5aa
+merged research commit = 96cccf715c02ed2bd4ae58f8362180020ae90854
+research tree = 28bd302c17a6128e538a3510917dafb670f6dce8
+RHRC #1072 = SUCCESS
+Permansson #845 = SUCCESS
 
 CONTROL AUTHORITY
 control-plane semantic anchor = PR #117
@@ -139,7 +139,26 @@ No H1-loss, bad interval, contact theorem, or strict-positive interval is certif
 
 **Consequence:** the scalar geometry is now consumed research infrastructure. Direct adaptive evaluation of the same scalar formulas is itself dependency-limited. The next method must change the enclosure representation or add analytic control rather than merely increase subdivision depth.
 
-## Current frontier — dependency-reduced analytic scalar enclosure
+### #176 — fixed-unit q13/Q14 enclosure method selection
+
+The fixed-unit pullback is implemented independently while preserving the direct `[0,L]` production evaluator as a baseline. The exact CI pipeline validates primitive, complete `7x7` matrix, theorem-aligned even scalar, odd-N2 ancestry, seam and zero-weight agreement.
+
+The frozen benchmark contains six primary Q14 boxes: three radii around the sampled determinant minimum and three around the sampled pivot minimum. With predeclared material width factor `2.0`, all six report
+
+```text
+delta_strictly_narrower = true
+delta_material_gain = true
+```
+
+and the certifier reports
+
+```text
+FIXED_UNIT_METHOD_ACCEPTED
+```
+
+**Consequence:** fixed-unit is the preferred research enclosure representation for this finite q13/Q14 laboratory. This is rigorous finite method-selection evidence, not a determinant sign, stationary theorem, whole-cell positivity result, first-bad theorem or Lean promotion.
+
+## Current frontier — fixed-unit Q14 derivative / stationary discrimination
 
 Preserve the exact q13 observables:
 
@@ -149,19 +168,27 @@ Delta_2(L)=a(L)d(L)-b(L)^2
 odd N=2 predecessor ancestry
 ```
 
-but change their analytic/enclosure representation.
+and test whether the #176 conditioning gain survives differentiation.
 
-The highest-leverage lead is to reuse the fixed-unit aperture parameterization developed in the #148 theorem layer. A substitution such as `z=L*s` places the archimedean integrals on a common unit interval and removes repeated aperture dependence from the oscillatory phase. This is a **research lead**, not a proved improvement.
-
-The first acceptance gate for a new evaluator is:
+Primary research chain:
 
 ```text
-certified agreement with the existing production evaluator
-AND
-materially tighter interval widths in the dangerous Q14 basin.
+fixed-unit alpha', beta', gamma'
+-> a', b', d'
+-> Delta_2' = a'd + ad' - 2bb'.
 ```
 
-Only after this gate should the route invest in certified derivative/variation bounds, local Taylor models, interval Newton/Krawczyk, or analytic root exclusion.
+The first acceptance gate is:
+
+```text
+analytic fixed-unit derivative evaluator agrees with independent
+high-precision centered finite differences at frozen points
+AND
+rigorous Delta_2' enclosures are narrow enough to distinguish
+outer monotone regions from the shallow Q14 stationary basin.
+```
+
+Only after this gate should the route invest in certified local Taylor models, interval Newton/Krawczyk, or stationary/minimum/contact isolation.
 
 The final scalar classification remains:
 
@@ -205,9 +232,26 @@ post-#167 threshold-jet / Q17 audit (#168)
 post-#169 Schur visibility/background audit (#170)
 post-#171 threshold-to-threshold barrier audit (#172)
 post-#173 q13 scalar-barrier plumbing/scout/interval audit (#174)
+post-#175 fixed-unit q13 enclosure plumbing (#176)
+post-#175 fixed-unit q13 benchmark (#176)
+post-#175 fixed-unit agreement/width certification (#176)
+```
+
+Relevant #176 assets:
+
+```text
+post175_fb05_q13_fixed_unit_enclosure.py
+check_post175_fb05_q13_fixed_unit_enclosure_scope.py
+probe_post175_fb05_q13_fixed_unit_enclosure_scope.py
+certify_post175_fb05_q13_fixed_unit_enclosure_scope.py
+fixtures/post175_fb05_q13_fixed_unit_enclosure_v1.json
 ```
 
 Passing these gates means the executable research checks ran correctly on the exact head. It does not promote their numerical/SymPy/Arb output to Lean theorem authority.
+
+### Replay-hardening debt
+
+The exact #176 workflow generated its benchmark schedule from the frozen fixture immediately before certification. A review identified that the standalone certifier trusts a supplied `PASS` benchmark schedule rather than independently rebinding every schedule-defining field to the fixture. Future validation plumbing should close that replay gap; it does not alter the exact in-pipeline finite result.
 
 ## Highest-leverage order
 
@@ -220,7 +264,7 @@ FB-04A exact moment jets + signed Riesz boundary recurrence        PROVED / #159
 FB-04B same-state shifted Riesz x cross-parity source composition PROVED / #161
 FB-04C mixed quadratic-normal jet x Riesz boundary coupling       PROVED / #163
 FB-05  independent contradiction-producing arithmetic restriction OPEN / ACTIVE
-  current research slice: dependency-reduced analytic enclosure of the q13 scalar barrier
+  current research slice: fixed-unit Q14 determinant derivative/stationary discrimination
 FB-06  same-state contradiction / negative-root exclusion         OPEN
 FB-07  terminal seam + Mathlib RH wrapper                          OPEN
 ```
@@ -240,6 +284,7 @@ FB-07  terminal seam + Mathlib RH wrapper                          OPEN
 - large cancellation demands cancellation-preserving arithmetic;
 - whole-cell `UNRESOLVED` is not sign evidence;
 - direct scalar subdivision is not the next strategy after #174;
+- #176 fixed-unit method acceptance is scoped to the frozen q13/Q14 benchmark;
 - sourceMoment nonzero does not imply `M4` nonzero, nor conversely;
 - simultaneous parity badness remains open;
 - selected parity cannot be assumed even WLOG;
@@ -247,6 +292,6 @@ FB-07  terminal seam + Mathlib RH wrapper                          OPEN
 - RH remains OPEN.
 
 Detailed current implications:
-`../../RESEARCH_LEADS_POST_174_Q13_SCALAR_DEPENDENCY_FRONTIER_DELTA.md`.
+`../../RESEARCH_LEADS_POST_176_FIXED_UNIT_METHOD_ACCEPTANCE_Q14_STATIONARY_FRONTIER_DELTA.md`.
 
 **RH remains OPEN.**

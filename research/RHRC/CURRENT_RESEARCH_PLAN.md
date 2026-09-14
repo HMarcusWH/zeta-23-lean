@@ -19,12 +19,12 @@ Permansson #812 = SUCCESS
 ### Latest research-evidence anchor
 
 ```text
-latest merged research PR = #174
-validated research head = 2d9fc5a5f7d552afb893c871fe84c9ed61a60ac0
-merged research commit = 946788f09c871de5133e2a8c8f5c94d7d69b521d
-research tree = 2a22b83c4d5903158c036d38420d9ae79b7726f2
-RHRC #1070 = SUCCESS
-Permansson #843 = SUCCESS
+latest merged research PR = #176
+validated research head = c6f53131b91b18aff2a50a6db2ddaa2761e7e5aa
+merged research commit = 96cccf715c02ed2bd4ae58f8362180020ae90854
+research tree = 28bd302c17a6128e538a3510917dafb670f6dce8
+RHRC #1072 = SUCCESS
+Permansson #845 = SUCCESS
 ```
 
 ### Control authority
@@ -35,7 +35,7 @@ selected formal first break = E4A4-SCHUR-FB-05
 terminal claim = RH_OPEN
 ```
 
-Research PRs #165-#174 do not advance theorem or machine-claim authority.
+Research PRs #165-#176 do not advance theorem or machine-claim authority.
 
 ## One-screen frontier
 
@@ -94,6 +94,14 @@ POST-THEOREM FB-05 RESEARCH
           Q14 100% UNRESOLVED
           Q15 100% UNRESOLVED
         no H1-loss/bad/contact/strict-positive interval certified
+
+  #176  fixed-unit q13/Q14 enclosure benchmark
+        independent fixed-unit Arb path agrees with direct production path
+        primitive/full-matrix/scalar/seam/zero-weight checks pass
+        6 frozen primary Q14 boxes benchmarked
+        factor-2 material Delta_2 width criterion passes in all 6
+        method_classification = FIXED_UNIT_METHOD_ACCEPTED
+        finite method-selection evidence only; no sign theorem
 ```
 
 ## Exact theorem package through #163
@@ -132,23 +140,52 @@ RiemannHypothesis
 
 ## Reclassified FB-05 subroutes
 
-### A. q13/N2/K3/even 2x2 determinant barrier — SCALARIZATION CONSUMED / METHOD FRONTIER ACTIVE
+### A. q13/N2/K3/even 2x2 determinant barrier — FIXED-UNIT METHOD SELECTED / DERIVATIVE FRONTIER ACTIVE
 
-#174 validates the exact theorem-aligned 1D->2D reduction and direct scalar audit. The geometric reduction is no longer the next task.
+#174 consumed the exact theorem-aligned 1D->2D reduction. #176 now consumes the first representation-selection gate left by #174.
 
-The direct `a(L), Delta_2(L)` interval representation remains dependency-limited: every nonzero-width physical Q=13/14/15 cell is unresolved at the configured 384-bit adaptive audit. Therefore the next move must change the enclosure mathematics rather than merely increase precision, depth or leaf budget.
-
-Candidate routes:
+The direct `a(L), Delta_2(L)` representation remains the independent production baseline, but the fixed-unit pullback is the preferred **research enclosure representation for this finite laboratory** because it passed the predeclared finite benchmark:
 
 ```text
-fixed-unit pullback of production archimedean integrals
-certified derivative / variation bounds
-local Taylor models around the dangerous Q14 basin
-interval Newton / Krawczyk for Delta_2' or possible contact
-analytic scalar factorization / root exclusion if exposed
+6 primary Q14 boxes
+factor-2 material Delta_2 width criterion
+6/6 delta_strictly_narrower
+6/6 delta_material_gain
+FIXED_UNIT_METHOD_ACCEPTED
 ```
 
-The first acceptance gate for a new representation is equivalence with the existing production evaluator at certified points **and** materially tighter interval widths near the dangerous basin.
+This does not classify the barrier. The next route must test whether the value-level conditioning gain survives differentiation.
+
+Current derivative chain:
+
+```text
+fixed-unit alpha', beta', gamma'
+  -> a', b', d'
+  -> Delta_2' = a'd + ad' - 2bb'
+```
+
+First acceptance gate:
+
+```text
+independent agreement of analytic derivative evaluator
+with high-precision centered finite differences at frozen points
+AND
+rigorous derivative enclosures narrow enough to distinguish
+outer monotone regions from the shallow Q14 stationary basin.
+```
+
+Only after that gate should the route attempt local Taylor models, interval Newton/Krawczyk, or certified stationary/minimum/contact isolation.
+
+The exact cell classification remains:
+
+```text
+A. H1 loss:       a(L) <= 0 somewhere
+B. bad successor: a(L) > 0 and Delta_2(L) < 0 somewhere
+C. contact:       a(L) > 0 and Delta_2(L) = 0 somewhere
+D. strict barrier:a(L) > 0 and Delta_2(L) > 0 everywhere
+```
+
+A zero-containing interval is not a contact theorem. `Delta_2 >= 0` without nonvanishing is not case D.
 
 ### B. Threshold-to-threshold Schur barrier — RESEARCHED / #172
 
@@ -164,7 +201,7 @@ Consumed infrastructure. Independent channel pivots may not be added because the
 
 ### E. SourceMoment / local jet rigidity — OPEN
 
-#163 proves a shared analytic observable. #166-#174 do not establish a global sourceMoment-to-`M4` implication or converse.
+#163 proves a shared analytic observable. #166-#176 do not establish a global sourceMoment-to-`M4` implication or converse.
 
 ### F. Simultaneous parity route — OPEN
 
@@ -174,7 +211,7 @@ Consumed infrastructure. Independent channel pivots may not be added because the
 
 There is no WLOG-even theorem because `D` is algebraic, not unitary/isometric.
 
-## New reusable post-#174 firewalls
+## Reusable post-#174/#176 firewalls
 
 ### OBS-047 — scalarization does not eliminate canonical interval dependency
 
@@ -184,9 +221,19 @@ Reducing the full matrix to `a,b,d,Delta_2` simplifies the finite geometry but d
 
 In H1, `P=Delta_2/a`; because `a(L)` varies, minimizing `Delta_2` and minimizing `P` are different problems. Future root/minimum isolation must name the scalar being controlled.
 
-### DR-026 candidate — brute direct scalar subdivision
+### OBS-049 — fixed-unit pullback materially reduces q13/Q14 determinant enclosure width on the frozen benchmark
 
-Repeatedly subdividing the same direct q13 scalar formulas is dead as the current certification strategy after #174. Revival requires a changed representation or new analytic control; more precision/depth alone is not a route change.
+PR #176 finite-certifies old/new evaluator agreement in the exact CI pipeline and passes the predeclared factor-2 determinant-width gate in all six primary Q14 boxes. This establishes a finite method-selection result, not a sign theorem or global conditioning theorem.
+
+### DR-026 — brute direct scalar subdivision
+
+Repeatedly subdividing the same direct q13 scalar formulas is dead as the current certification strategy after #174. #176 exercises one permitted escape by changing the analytic representation. More precision/depth alone remains not a route change.
+
+## Validation hardening debt exposed by #176 review
+
+The exact #176 CI workflow generated the benchmark schedule from the frozen fixture immediately before the certifier, so the reported `FIXED_UNIT_METHOD_ACCEPTED` classification is grounded in the intended pipeline execution.
+
+Separately, the standalone certifier currently trusts a supplied `PASS` benchmark schedule rather than independently verifying that all schedule-defining fields match the fixture. A future replay-hardening patch should bind those fields explicitly. This is a software-validation debt, not a mathematical counterexample and not a reason to promote the finite method result beyond its scope.
 
 ## Falsification requirements for the next research PR
 
@@ -194,8 +241,9 @@ Repeatedly subdividing the same direct q13 scalar formulas is dead as the curren
 - preserve exact N=2 -> K*=3 dimensions;
 - preserve physical Q=13/14/15 seam semantics and von Mangoldt prime powers;
 - preserve odd N=2 ancestry tracking;
-- benchmark any new evaluator against the existing production evaluator at certified points;
-- measure interval-width improvement rather than assume it;
+- keep the direct production evaluator as an independent baseline;
+- independently check fixed-unit analytic derivatives against high-precision centered finite differences;
+- measure derivative interval conditioning rather than infer it from value-level conditioning;
 - keep determinant and pivot minima distinct;
 - do not assume global derivative sign or revive global Schur monotonicity;
 - treat zero-containing intervals as unresolved unless existence is separately certified;
@@ -204,11 +252,13 @@ Repeatedly subdividing the same direct q13 scalar formulas is dead as the curren
 
 ## Highest-leverage next move
 
-Build a research PR that first implements and benchmarks a dependency-reduced fixed-unit production scalar evaluator. Only if that representation materially tightens the dangerous Q14 enclosures should the same PR or its successor add derivative/Taylor/Newton machinery to isolate the minimum/contact problem.
+Build a research PR that discriminates the fixed-unit Q14 determinant derivatives and stationary basin. Its first green criterion should be reliable derivative agreement plus useful interval conditioning, **not** successful stationary-point isolation by fiat.
+
+If derivative conditioning survives, then attempt to isolate a stationary region of `Delta_2` with interval Newton/Krawczyk and certify the local value using centered Taylor/second-derivative bounds. If derivative conditioning fails, change the analytic differentiation/factorization rather than returning to brute precision or subdivision.
 
 Standing question:
 
-> Given everything theoremized through #163 and validated experimentally through #174, what analytic representation preserves the exact q13 scalar geometry while reducing interval dependency enough to decide whether the barrier loses H1, crosses zero, merely touches zero, or stays strictly positive?
+> Given everything theoremized through #163 and validated experimentally through #176, does the fixed-unit representation reduce dependency strongly enough after differentiation to decide the Q14 determinant stationary/minimum/contact problem?
 
 Then:
 
@@ -220,6 +270,6 @@ surviving independent arithmetic restriction
 ```
 
 Detailed current synthesis:
-`RESEARCH_LEADS_POST_174_Q13_SCALAR_DEPENDENCY_FRONTIER_DELTA.md`.
+`RESEARCH_LEADS_POST_176_FIXED_UNIT_METHOD_ACCEPTANCE_Q14_STATIONARY_FRONTIER_DELTA.md`.
 
 **RH remains OPEN.**

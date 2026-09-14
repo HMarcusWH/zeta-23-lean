@@ -17,12 +17,12 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #174
-validated research head = 2d9fc5a5f7d552afb893c871fe84c9ed61a60ac0
-merged research commit = 946788f09c871de5133e2a8c8f5c94d7d69b521d
-research tree = 2a22b83c4d5903158c036d38420d9ae79b7726f2
-RHRC #1070 = SUCCESS
-Permansson #843 = SUCCESS
+merged research PR = #176
+validated research head = c6f53131b91b18aff2a50a6db2ddaa2761e7e5aa
+merged research commit = 96cccf715c02ed2bd4ae58f8362180020ae90854
+research tree = 28bd302c17a6128e538a3510917dafb670f6dce8
+RHRC #1072 = SUCCESS
+Permansson #845 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
@@ -108,23 +108,31 @@ The floating basin remains sampled-positive. The 384-bit direct scalar interval 
 
 This is a method result, not a sign result: exact scalarization does not by itself eliminate interval dependency.
 
+### #176 — fixed-unit q13/Q14 method benchmark
+
+The fixed-unit pullback is implemented as an independent Arb evaluator while the direct `[0,L]` production evaluator remains the baseline. The exact PR pipeline checks primitive, full `7x7` matrix, theorem-aligned scalar, seam and zero-weight agreement, then benchmarks six frozen primary Q14 boxes around the distinct determinant and pivot basins.
+
+The predeclared routing criterion passes in every primary box: `Delta_2` is strictly narrower and satisfies the factor-2 material-width criterion throughout the frozen benchmark. The certifier reports `FIXED_UNIT_METHOD_ACCEPTED`.
+
+This is rigorous finite **method-selection evidence**, not a determinant sign, stationary-point theorem, whole-cell positivity result, arbitrary first-bad statement, or Lean theorem.
+
 ## Current active path
 
 The live theorem frontier remains **FB-05**: find an independent canonical arithmetic restriction that makes the exact retained #161/#163 state impossible.
 
-The highest-information research target is now a **dependency-reduced analytic enclosure of the q13/N2/K3/even scalar barrier**.
+The q13/N2/K3/even finite laboratory now has a preferred research enclosure representation: the #176 fixed-unit pullback. The next highest-information question is whether that representation also gives useful rigorous control of the **local Q14 determinant derivative and stationary basin**.
 
-The geometric reduction is consumed. The next representation must preserve `a(L)`, `Delta_2(L)` and odd-N2 ancestry while changing the enclosure mathematics. The leading candidate is to reuse the fixed-unit aperture parameterization developed in #148 and benchmark it against the existing evaluator.
-
-First gate:
+The first derivative chain to discriminate is
 
 ```text
-certified agreement with current production evaluator
-AND
-materially tighter interval widths near the dangerous Q14 basin.
+alpha', beta', gamma'
+        -> a', b', d'
+        -> Delta_2' = a'd + ad' - 2bb'.
 ```
 
-Only after that should derivative/variation bounds, local Taylor models, interval Newton/Krawczyk, or analytic root exclusion be added.
+The next research gate is deliberately methodological: independently check the fixed-unit derivative evaluator against high-precision centered finite differences at frozen points, then measure whether interval derivative enclosures are narrow enough to separate the outer monotone regions from the shallow Q14 stationary basin.
+
+Only if that derivative conditioning is useful should the route spend additional complexity on interval Newton/Krawczyk, centered Taylor bounds, or certified local minimum/contact isolation. Determinant and Schur-pivot minima remain distinct optimization targets.
 
 A positive q13-cell certificate would still be a method/structure result, **not** FB-05 closure: the retained first-bad state forced by an off-line zero is not known to lie in this one finite cell.
 
@@ -134,7 +142,7 @@ Current living state is maintained in:
 
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`;
 - `research/RHRC/RESEARCH_LEADS.md`;
-- `research/RHRC/RESEARCH_LEADS_POST_174_Q13_SCALAR_DEPENDENCY_FRONTIER_DELTA.md`;
+- `research/RHRC/RESEARCH_LEADS_POST_176_FIXED_UNIT_METHOD_ACCEPTANCE_Q14_STATIONARY_FRONTIER_DELTA.md`;
 - `research/RHRC/DOCUMENTATION_AUTHORITY.md`;
 - `research/RHRC/VALIDATION_PROTOCOL.md`;
 - `research/RHRC/routes/R003_ccm_bridge/README.md`;
@@ -161,6 +169,7 @@ Older dated deltas, external reviews and countermodel records remain historical 
 - pointwise fixed-sign smoothed-integrand positivity remains dead.
 - `UNRESOLVED` interval output is not sign evidence.
 - direct scalar subdivision is not the next strategy after #174.
+- #176 fixed-unit method acceptance is scoped to the frozen finite q13/Q14 benchmark and is not a sign theorem.
 - determinant and pivot minima are distinct optimization targets.
 - `D` remains algebraic, not unitary/isometric.
 - q13 whole-cell positivity alone would not imply global first-bad exclusion.

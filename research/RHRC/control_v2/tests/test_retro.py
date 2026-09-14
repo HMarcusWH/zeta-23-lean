@@ -54,7 +54,7 @@ class RetroTests(unittest.TestCase):
         self.assertNotIn("rupture", terms)
         self.assertNotIn("slack", terms)
 
-    def test_e4a4_actions_use_post174_analytic_scalar_arithmetic_aliases(self):
+    def test_e4a4_actions_use_post176_fixed_unit_derivative_arithmetic_aliases(self):
         aliases = load_alias_map(RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json")
         terms = expanded_terms("canonical_source_exclusion", aliases)
         for term in (
@@ -124,6 +124,15 @@ class RetroTests(unittest.TestCase):
             "analytic scalar enclosure",
             "dependency-reduced scalar enclosure",
             "interval width improvement",
+            "FIXED_UNIT_METHOD_ACCEPTED",
+            "fixed-unit method acceptance",
+            "factor-2 determinant width gain",
+            "Q14 derivative frontier",
+            "fixed-unit derivative evaluator",
+            "local stationary basin",
+            "stationary basin discrimination",
+            "benchmark schedule binding",
+            "replay hardening",
             "Taylor enclosure",
             "interval Newton",
             "Krawczyk",
@@ -159,6 +168,7 @@ class RetroTests(unittest.TestCase):
             "PR #170",
             "PR #172",
             "PR #174",
+            "PR #176",
             "theorem-aligned [W|c] one-step Schur pivot",
             "sign-indefinite",
             "q13->16/N2/K3/even",
@@ -166,7 +176,11 @@ class RetroTests(unittest.TestCase):
             "Q=13/14/15 subcells",
             "100% UNRESOLVED",
             "scalarization alone does not eliminate canonical interval dependency",
-            "fixed-unit pullback",
+            "FIXED_UNIT_METHOD_ACCEPTED",
+            "six frozen primary Q14 boxes",
+            "factor-2",
+            "Delta_2'",
+            "replay-hardening debt",
             "determinant and pivot minima",
             "full physical H1 does not imply H1 for the q-removed background",
             "cancellation ratios around 1e9-1e10",

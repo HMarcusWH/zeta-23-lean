@@ -5,7 +5,7 @@ This ledger records reusable blockers that should shape future route design.
 > **Current theorem anchor:** merged PR #163, `bd3fa1aafa7df2aa35873df532bdb6f17ddd2bbd`.  
 > **Validated theorem head:** `b418ff034428f92594bab0e5b8276181a086ee4b`.  
 > **Validated theorem tree:** `c397b3a015ea54e38ecfe626d6e29556fe963839`.  
-> **Latest research-evidence anchor:** merged PR #174, validated head `2d9fc5a5f7d552afb893c871fe84c9ed61a60ac0`.  
+> **Latest research-evidence anchor:** merged PR #176, validated head `c6f53131b91b18aff2a50a6db2ddaa2761e7e5aa`.  
 > **Claim firewall:** RH remains OPEN.
 
 Historical obstruction origins below retain the PR number at which they were discovered/classified. A later theorem may close an escape without deleting the reusable warning.
@@ -642,5 +642,32 @@ and `a(L)` varies with aperture. Therefore minimizing `Delta_2` and minimizing `
 PR #174's floating scout finds nearby but nonidentical sampled minima for the determinant and unit-shell pivot.
 
 **Consequence:** future root/minimum isolation must state which scalar is being controlled. A certified stationary point for `Delta_2` is not automatically the pivot minimum, and vice versa.
+
+## OBS-049 — fixed-unit pullback materially reduces q13/Q14 determinant enclosure width on the frozen benchmark
+
+**Status:** RIGOROUS FINITE RESEARCH / METHOD EVIDENCE FROM PR #176; NOT A LEAN THEOREM.
+
+PR #176 implements a fixed-unit Arb evaluation path independently of the existing direct `[0,L]` production evaluator and checks that the two enclose the same frozen production primitives, complete matrices, theorem-aligned scalars, odd-N2 ancestry and physical seam values.
+
+The frozen Q14 benchmark contains six primary boxes: three radii around the sampled determinant minimum and three around the sampled Schur-pivot minimum. With the predeclared material width factor `2.0`, the exact CI pipeline reports for every primary box
+
+```text
+delta_strictly_narrower = true
+delta_material_gain = true
+```
+
+and classifies the route
+
+```text
+FIXED_UNIT_METHOD_ACCEPTED.
+```
+
+**Consequence:** on this frozen q13/Q14 laboratory, the direct moving-domain representation was a substantive contributor to interval inflation, and the fixed-unit pullback is the preferred research enclosure representation for the next derivative/stationary experiment.
+
+This does **not** prove a determinant sign, stationary existence/uniqueness, whole-cell positivity, arbitrary first-bad restriction, or global conditioning theorem.
+
+**Validation caveat:** the exact #176 CI pipeline generated the benchmark from the frozen fixture immediately before certification. The standalone certifier currently trusts a supplied `PASS` benchmark schedule rather than independently rebinding every schedule-defining field to the fixture. That is replay-hardening debt and should be fixed separately; it does not promote or negate the exact in-pipeline finite result.
+
+**Next falsification requirement:** measure whether the conditioning gain survives analytic differentiation. A value-level width improvement does not imply useful `Delta_2'` enclosures.
 
 **RH remains OPEN.**

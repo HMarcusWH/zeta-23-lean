@@ -25,12 +25,13 @@ Permansson #812 = SUCCESS
 ### Latest research-evidence anchor
 
 ```text
-merged research PR = #174
-validated research head = 2d9fc5a5f7d552afb893c871fe84c9ed61a60ac0
-merged research commit = 946788f09c871de5133e2a8c8f5c94d7d69b521d
-research tree = 2a22b83c4d5903158c036d38420d9ae79b7726f2
-RHRC #1070 = SUCCESS
-Permansson #843 = SUCCESS
+merged research PR = #176
+validated research head = c6f53131b91b18aff2a50a6db2ddaa2761e7e5aa
+PR integration commit tested by Actions = ad6c904cf38c64d61c7990b3b6e87eec27ad0064
+merged research commit = 96cccf715c02ed2bd4ae58f8362180020ae90854
+research tree = 28bd302c17a6128e538a3510917dafb670f6dce8
+RHRC #1072 = SUCCESS
+Permansson #845 = SUCCESS
 ```
 
 ### Control authority
@@ -72,13 +73,16 @@ post-#166 Q16 scalar-barrier scout / interval audit  [research PR #167]
 post-#167 threshold-jet algebra / Q17 scout / replay [research PR #168]
 post-#169 theorem-aligned Schur visibility algebra   [research PR #170]
 post-#169 threshold Schur/background scout           [research PR #170]
-post-#169 Arb Schur-visibility replay                [research PR #170]
+post-#169 Arb Schur-visibility replay                 [research PR #170]
 post-#171 threshold-barrier accounting check         [research PR #172]
 post-#171 multi-cell threshold-barrier scout         [research PR #172]
 post-#171 Arb finite-point barrier replay            [research PR #172]
 post-#173 q13 scalar-barrier plumbing                [research PR #174]
 post-#173 q13 2x2 scalar scout                       [research PR #174]
 post-#173 q13 adaptive Arb scalar audit              [research PR #174]
+post-#175 fixed-unit q13 enclosure plumbing          [research PR #176]
+post-#175 fixed-unit q13 benchmark                   [research PR #176]
+post-#175 fixed-unit agreement/width certification  [research PR #176]
 ```
 
 Interpretation law:
@@ -123,7 +127,7 @@ RegularCellMinimalNegativeEnergyCertificate.evenShiftedRieszNine_lt_neg_mixedJet
 RegularCellMinimalNegativeEnergyCertificate.crossParityGamma_ne_zero_of_even_of_not_oddBad
 ```
 
-These establish theorem authority through #163. Research PRs #165-#174 do not alter this declaration set.
+These establish theorem authority through #163. Research PRs #165-#176 do not alter this declaration set.
 
 ## What the post-#163 research checks validate operationally
 
@@ -185,9 +189,51 @@ direct scalar interval UNRESOLVED
 
 Because #167 already falsified brute subdivision of the full matrix and #174 now shows the same pathology after exact scalarization, the next certification attempt must change the representation or add analytic control rather than merely increase depth/precision.
 
+### #176
+
+The fixed-unit research path rewrites the archimedean integrals on a fixed unit interval while keeping the direct evaluator as an independent comparator. The exact PR pipeline validates primitive, full-matrix, theorem-aligned scalar, odd-ancestry, seam and zero-weight agreement.
+
+Its frozen fixture defines six primary Q14 boxes at three radii around the separately sampled determinant and Schur-pivot minima, with predeclared `material_width_gain_factor = 2.0`.
+
+The exact RHRC #1072 certifier reports
+
+```text
+status = PASS
+method_classification = FIXED_UNIT_METHOD_ACCEPTED
+```
+
+and all six primary boxes report
+
+```text
+delta_strictly_narrower = true
+delta_material_gain = true
+```
+
+Operational interpretation:
+
+```text
+FIXED_UNIT_METHOD_ACCEPTED
+  -> frozen direct/fixed-unit agreement checks passed in the exact CI pipeline
+  -> predeclared factor-2 q13/Q14 determinant-width method gate passed
+  -> investing in fixed-unit derivative research is justified
+
+  -/-> determinant sign
+  -/-> stationary-point theorem
+  -/-> whole-cell q13 positivity
+  -/-> arbitrary first-bad restriction
+  -/-> FB-05 closure
+  -/-> Lean theorem promotion
+```
+
+### #176 replay-hardening caveat
+
+The exact GitHub Actions pipeline generated the benchmark from the frozen fixture immediately before the certifier. A review identified that the standalone certifier itself does not independently verify every schedule-defining field of an externally supplied `PASS` benchmark against the fixture.
+
+Therefore the exact in-pipeline #176 classification remains valid in its finite scope, while standalone/replayed certification should eventually be hardened to reject stale or hand-modified schedules explicitly. Do not silently upgrade this software-validation debt into mathematical evidence in either direction.
+
 ## Current FB-05 research target
 
-The exact q13 scalar geometry is consumed research infrastructure. The next research target is a dependency-reduced analytic enclosure of the same observables:
+The q13 scalar geometry and the first representation-selection gate are now consumed research infrastructure. The next target is fixed-unit derivative/stationary discrimination on the same observables:
 
 ```text
 a(L)
@@ -195,17 +241,25 @@ Delta_2(L)=a(L)d(L)-b(L)^2
 odd N=2 predecessor ancestry
 ```
 
-Candidate mechanisms include fixed-unit pullback of the production archimedean integrals, certified derivative/variation bounds, local Taylor models, interval Newton/Krawczyk, or another analytic scalar representation.
-
-The first acceptance gate for a changed evaluator is:
+Primary derivative chain:
 
 ```text
-certified agreement with the existing production evaluator
-AND
-materially tighter interval widths near the dangerous Q14 basin.
+fixed-unit alpha', beta', gamma'
+  -> a', b', d'
+  -> Delta_2' = a'd + ad' - 2bb'.
 ```
 
-Only then should derivative/minimum/root-isolation machinery be treated as justified research investment.
+The first acceptance gate is:
+
+```text
+analytic derivative evaluator agrees with independent
+high-precision centered finite differences at frozen points
+AND
+rigorous derivative intervals are narrow enough to discriminate
+outer Q14 monotone regions from the local stationary basin.
+```
+
+Only then should local Taylor models, interval Newton/Krawczyk, or certified minimum/contact isolation be treated as justified research investment.
 
 ## Axiom inspection
 
@@ -247,7 +301,7 @@ R003_PROMOTED_BINDINGS.json
 Zeta23/CCM/ClaimBindings.lean
 ```
 
-The post-#174 docs/routing synchronization leaves those promotion surfaces unchanged.
+The post-#176 docs/routing synchronization leaves those promotion surfaces unchanged.
 
 ## Vocabulary
 
@@ -269,6 +323,6 @@ The post-#174 docs/routing synchronization leaves those promotion surfaces uncha
 
 ## Claim firewall
 
-Green #163 mixed-source/Riesz theorems are not RH. Green #165-#174 research tooling is not theorem authority. A contradiction still requires new arithmetic mathematics on the exact forced state, negative-root exclusion and the terminal zeta/Mathlib seam.
+Green #163 mixed-source/Riesz theorems are not RH. Green #165-#176 research tooling is not theorem authority. A contradiction still requires new arithmetic mathematics on the exact forced state, negative-root exclusion and the terminal zeta/Mathlib seam.
 
 **RH remains OPEN unless the exact terminal RH theorem passes the complete proof and claim-validation gates.**

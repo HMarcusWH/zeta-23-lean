@@ -15,18 +15,18 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #174
-validated research head = 2d9fc5a5f7d552afb893c871fe84c9ed61a60ac0
-merged research commit = 946788f09c871de5133e2a8c8f5c94d7d69b521d
-research tree = 2a22b83c4d5903158c036d38420d9ae79b7726f2
-RHRC #1070 = SUCCESS
-Permansson #843 = SUCCESS
+merged research PR = #176
+validated research head = c6f53131b91b18aff2a50a6db2ddaa2761e7e5aa
+merged research commit = 96cccf715c02ed2bd4ae58f8362180020ae90854
+research tree = 28bd302c17a6128e538a3510917dafb670f6dce8
+RHRC #1072 = SUCCESS
+Permansson #845 = SUCCESS
 
 CONTROL AUTHORITY
 control-plane semantic anchor = PR #117
 selected first break = E4A4-SCHUR-FB-05
 
-newest post-green delta = RESEARCH_LEADS_POST_174_Q13_SCALAR_DEPENDENCY_FRONTIER_DELTA.md
+newest post-green delta = RESEARCH_LEADS_POST_176_FIXED_UNIT_METHOD_ACCEPTANCE_Q14_STATIONARY_FRONTIER_DELTA.md
 current execution SSOT = CURRENT_RESEARCH_PLAN.md
 RH = OPEN
 ```
@@ -122,7 +122,26 @@ The 384-bit direct scalar interval audit over physical Q=13/14/15 subcells retur
 
 **Method conclusion:** scalarization alone does not eliminate canonical interval dependency. Repeating the same direct formulas at greater precision/depth is not the next strategy.
 
-## Active lead 1 — dependency-reduced analytic q13 scalar enclosure
+### #176 — fixed-unit q13/Q14 enclosure method selection
+
+The fixed-unit pullback is implemented as an independent Arb path while the direct production evaluator remains the comparator. The exact CI pipeline checks primitive, complete matrix, theorem-aligned scalar, odd-ancestry, seam and zero-weight agreement.
+
+The frozen method benchmark uses six primary Q14 boxes around the distinct determinant and pivot basins. Its predeclared material-width factor is 2. Every primary box has
+
+```text
+delta_strictly_narrower = true
+delta_material_gain = true
+```
+
+and the pipeline reports
+
+```text
+FIXED_UNIT_METHOD_ACCEPTED
+```
+
+**Method conclusion:** fixed-unit is now the preferred research enclosure representation for this finite q13/Q14 laboratory. This is finite method-selection evidence only, not a determinant sign or theorem promotion.
+
+## Active lead 1 — fixed-unit Q14 derivative / stationary structure
 
 **Research status:** HIGHEST LEVERAGE / NEXT  
 **Formal status:** OPEN
@@ -135,19 +154,27 @@ Delta_2(L)=a(L)d(L)-b(L)^2
 odd N=2 predecessor ancestry
 ```
 
-but change their analytic/enclosure representation.
+and now test whether the #176 conditioning improvement survives differentiation.
 
-The strongest immediate lead is to reuse the fixed-unit aperture parameterization from #148. A fixed-domain pullback can remove repeated `L` dependence from the oscillatory phase and may tighten interval enclosures.
-
-The first acceptance gate is deliberately methodological:
+The first derivative chain is
 
 ```text
-new evaluator agrees with current production evaluator at certified points
-AND
-new evaluator materially tightens interval widths in the dangerous Q14 basin.
+fixed-unit alpha', beta', gamma'
+  -> a', b', d'
+  -> Delta_2' = a'd + ad' - 2bb'.
 ```
 
-Only after that should the route add certified derivative/variation bounds, local Taylor models, interval Newton/Krawczyk, or analytic root exclusion.
+The next acceptance gate is deliberately methodological:
+
+```text
+analytic fixed-unit derivatives agree with independent
+high-precision centered finite differences at frozen points
+AND
+rigorous Delta_2' enclosures are narrow enough to discriminate
+outer monotone regions from the shallow Q14 stationary basin.
+```
+
+Only after that should the route add local Taylor models, interval Newton/Krawczyk, or certified root/minimum isolation.
 
 The final classification remains:
 
@@ -163,6 +190,10 @@ A zero-containing interval is not a contact theorem. `Delta_2 >= 0` without nonv
 A positive q13 whole-cell result is **not** FB-05 closure by itself. Its value is in revealing a certification mechanism and, potentially, a generalizable arithmetic inequality.
 
 ## Validated research mechanisms — consumed inputs
+
+### Fixed-unit value-level enclosure — #176
+
+Use as preferred finite q13 research representation. Keep the direct production evaluator as an independent baseline; do not infer derivative conditioning from value-level conditioning without measuring it.
 
 ### Threshold-to-threshold barrier accounting — #172
 
@@ -202,9 +233,9 @@ No global sign or nonvanishing theorem exists. Even a proof `S8 >= 0` would not 
 **Research status:** OPEN, NOT YET SUPPORTED AS A GENERIC IMPLICATION  
 **Formal status:** OPEN
 
-#163 proves the finite-prime source contribution samples the same analytic observable whose local seventh jet is tied to `M4`. #166-#174 do not establish either implication between explicit source moment nonvanishing and `M4` nonvanishing.
+#163 proves the finite-prime source contribution samples the same analytic observable whose local seventh jet is tied to `M4`. #166-#176 do not establish either implication between explicit source moment nonvanishing and `M4` nonvanishing.
 
-## New reusable classifications from #174
+## Reusable classifications from #174/#176
 
 ### OBS-047 — scalarization does not eliminate interval dependency
 
@@ -214,9 +245,17 @@ Finite geometry reduction and analytic dependency reduction are separate tasks.
 
 Because `P=Delta_2/a` and `a(L)` varies, minimizing `Delta_2` and minimizing `P` are different optimization problems.
 
-### DR-026 candidate — brute direct scalar subdivision
+### OBS-049 — fixed-unit pullback materially reduces q13/Q14 determinant enclosure width on the frozen benchmark
 
-Repeated adaptive subdivision of the same direct q13 scalar formulas is dead as the current certification strategy. Revival requires a changed representation or new analytic control.
+The exact #176 pipeline certifies old/new agreement and satisfies the factor-2 material determinant-width criterion in every primary Q14 box. This is a scoped finite method result, not a global conditioning theorem or sign theorem.
+
+### DR-026 — brute direct scalar subdivision
+
+Repeated adaptive subdivision of the same direct q13 scalar formulas is dead as the current certification strategy. #176 revives interval work only by changing representation; more precision/depth alone is still not a new method.
+
+## Validation hardening note
+
+The exact #176 CI workflow generated its benchmark from the frozen fixture immediately before certification. A review nevertheless identified that the standalone certifier trusts a supplied `PASS` schedule rather than independently rebinding all schedule-defining fields to the fixture. Future replay hardening should close that software-validation gap. It does not alter the scope of the exact in-pipeline finite result.
 
 ## Falsification requirements for the next route
 
@@ -224,8 +263,9 @@ Repeated adaptive subdivision of the same direct q13 scalar formulas is dead as 
 - preserve exact N=2 -> K*=3 dimensions;
 - preserve physical Q=13/14/15 seam handling and prime powers;
 - preserve odd N=2 ancestry;
-- certify agreement between old and new evaluators;
-- measure interval-width improvement rather than assume it;
+- keep direct production evaluation as an independent baseline;
+- independently check analytic derivatives against high-precision centered finite differences;
+- measure derivative interval-width quality rather than infer it from #176;
 - keep determinant and pivot minima distinct;
 - do not assume global derivative sign;
 - treat zero-containing intervals as unresolved unless existence is separately certified;
@@ -234,17 +274,18 @@ Repeated adaptive subdivision of the same direct q13 scalar formulas is dead as 
 
 ## Standing research questions
 
-1. Can a fixed-unit/dependency-reduced representation materially tighten `a(L)` and `Delta_2(L)` enclosures?
-2. Does `a(L)` remain positive throughout the physical q13 interval?
-3. Does `Delta_2(L)` become negative, merely reach zero, or stay strictly positive while H1 holds?
-4. If positive, what arithmetic inequality creates the turn away from zero?
-5. Does that inequality survive other q/N/parity states?
-6. Can any surviving inequality be composed with the exact #161/#163 retained state without restating successor positivity?
-7. What closes simultaneous parity badness and the odd-selected branch?
+1. Does the fixed-unit representation remain materially better conditioned after differentiation?
+2. Can `Delta_2'` be signed on outer Q14 regions while isolating one small stationary basin?
+3. Does `a(L)` remain positive throughout the relevant physical q13 interval?
+4. At any rigorously isolated local minimum, does `Delta_2` become negative, merely reach zero, or stay strictly positive?
+5. If positive, what arithmetic inequality creates the turn away from zero?
+6. Does that inequality survive other q/N/parity states?
+7. Can any surviving inequality be composed with the exact #161/#163 retained state without restating successor positivity?
+8. What closes simultaneous parity badness and the odd-selected branch?
 
-**Current highest-information question:** what analytic representation preserves the exact q13 scalar geometry while reducing dependency enough to decide the minimum/contact problem?
+**Current highest-information question:** does fixed-unit dependency reduction survive differentiation strongly enough to decide the Q14 determinant stationary/minimum/contact problem?
 
 Detailed current synthesis:
-`RESEARCH_LEADS_POST_174_Q13_SCALAR_DEPENDENCY_FRONTIER_DELTA.md`.
+`RESEARCH_LEADS_POST_176_FIXED_UNIT_METHOD_ACCEPTANCE_Q14_STATIONARY_FRONTIER_DELTA.md`.
 
 **RH remains OPEN.**
