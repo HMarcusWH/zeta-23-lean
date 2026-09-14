@@ -3,7 +3,8 @@
 
 A green run means the comparison executed faithfully.  The fixed-unit method may
 be ACCEPTED, MIXED, or REJECTED while CI remains green.  Only evaluator mismatch,
-seam/normalization regression, or execution failure is a red condition.
+seam/normalization regression, malformed benchmark schedule, or execution failure
+is a red condition.
 """
 from __future__ import annotations
 
@@ -36,6 +37,93 @@ from post175_fb05_q13_fixed_unit_enclosure import (
 
 HERE = Path(__file__).resolve().parent
 DEFAULT_FIXTURE = HERE / "fixtures" / "post175_fb05_q13_fixed_unit_enclosure_v1.json"
+
+
+def _quantized_center(t: float, bits: int) -> tuple[int, int]:
+    den = 1 << bits
+    num = int(round(float(t) * den))
+    num = max(1, min(den - 1, num))
+    return num, den
+
+
+def _expected_box(label: str, Q: int, t: float, radius_bit: int, point_bits: int, primary: bool) -> dict:
+    if radius_bit >= point_bits:
+        raise ValueError("radius_bit must be smaller than point quantization bits")
+    center_num, den = _quantized_center(t, point_bits)
+    radius_num = 1 << (point_bits - radius_bit)
+    lo = max(0, center_num - radius_num)
+    hi = min(den, center_num + radius_num)
+    if not 0 <= lo < hi <= den:
+        raise AssertionError("invalid expected benchmark box")
+    return {
+        "label": label,
+        "Q": int(Q),
+        "primary": bool(primary),
+        "radius_bit": int(radius_bit),
+        "lo_num": int(lo),
+        "hi_num": int(hi),
+        "den": int(den),
+        "center_num": int(center_num),
+    }
+
+
+def expected_benchmark_boxes(fixture: dict) -> list[dict]:
+    """Reconstruct the frozen #176 schedule directly from the fixture."""
+    bits = int(fixture["point_quantization_bits"])
+    boxes: list[dict] = []
+    for center in fixture["primary_Q14_centers"]:
+        for radius_bit in fixture["primary_radius_bits"]:
+            boxes.append(_expected_box(
+                f"{center['label']}_r2^-{int(radius_bit)}",
+                int(center["Q"]), float(center["t"]), int(radius_bit), bits, True,
+            ))
+    for control in fixture["control_boxes"]:
+        boxes.append(_expected_box(
+            control["label"], int(control["Q"]), float(control["t"]),
+            int(control["radius_bit"]), bits, False,
+        ))
+    return boxes
+
+
+def validate_benchmark_schedule(fixture: dict, benchmark: dict) -> None:
+    """Fail closed if a supplied PASS benchmark is not the frozen fixture schedule."""
+    if benchmark.get("schema_version") != "POST175_FB05_Q13_FIXED_UNIT_BENCHMARK_v1":
+        raise AssertionError("benchmark schema regression")
+    if benchmark.get("status") != "PASS":
+        raise AssertionError("benchmark schedule did not pass")
+    for key in ("theorem_authority_pr", "research_anchor_pr", "routing_sync_pr"):
+        if benchmark.get(key) != fixture.get(key):
+            raise AssertionError(f"benchmark authority mismatch: {key}")
+
+    expected = expected_benchmark_boxes(fixture)
+    actual = benchmark.get("boxes")
+    if not isinstance(actual, list):
+        raise AssertionError("benchmark boxes missing")
+    if len(actual) != len(expected):
+        raise AssertionError("benchmark box count mismatch")
+
+    expected_by_label = {b["label"]: b for b in expected}
+    if len(expected_by_label) != len(expected):
+        raise AssertionError("fixture produced duplicate expected labels")
+    actual_labels = [b.get("label") for b in actual]
+    if len(set(actual_labels)) != len(actual_labels):
+        raise AssertionError("benchmark contains duplicate labels")
+    if set(actual_labels) != set(expected_by_label):
+        raise AssertionError("benchmark label set does not match frozen fixture")
+
+    keys = ("label", "Q", "primary", "radius_bit", "lo_num", "hi_num", "den", "center_num")
+    for box in actual:
+        expected_box = expected_by_label[box["label"]]
+        for key in keys:
+            if box.get(key) != expected_box[key]:
+                raise AssertionError(f"benchmark schedule mismatch for {box['label']} field {key}")
+
+    primary_count = sum(1 for b in expected if b["primary"])
+    control_count = len(expected) - primary_count
+    if benchmark.get("primary_box_count") != primary_count:
+        raise AssertionError("benchmark primary count mismatch")
+    if benchmark.get("control_box_count") != control_count:
+        raise AssertionError("benchmark control count mismatch")
 
 
 def _width(x: arb) -> arb:
@@ -216,8 +304,7 @@ def main() -> int:
     benchmark = json.loads(args.benchmark.read_text(encoding="utf-8"))
     set_precision(int(fixture["arb_precision_bits"]))
 
-    if benchmark.get("status") != "PASS":
-        raise AssertionError("benchmark schedule did not pass")
+    validate_benchmark_schedule(fixture, benchmark)
     records = [_box_record(box, fixture) for box in benchmark["boxes"]]
     method = _method_classification(records)
 
@@ -231,6 +318,7 @@ def main() -> int:
         "precision_bits": int(fixture["arb_precision_bits"]),
         "material_width_gain_factor": fixture["material_width_gain_factor"],
         "method_classification": method,
+        "benchmark_schedule_bound_to_fixture": True,
         "boxes": records,
         "primary_summary": [
             {
@@ -248,6 +336,7 @@ def main() -> int:
     print(json.dumps({
         "status": "PASS",
         "method_classification": method,
+        "benchmark_schedule_bound_to_fixture": True,
         "primary_summary": out["primary_summary"],
     }, indent=2))
     return 0
