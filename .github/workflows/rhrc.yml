@@ -91,7 +91,7 @@ jobs:
       - name: Scout post-#165 FB-05 same-state scope
         run: |
           python research/RHRC/routes/R003_ccm_bridge/probe_post165_fb05_same_state_scope.py \
-            --q-min 2 --q-max 8 --n-min 2 --n-max 4 --samples 2 --top 12 \
+            --q-min 1 --q-max 16 --n-min 2 --n-max 8 --samples 3 --top 12 \
             --output /tmp/POST165_FB05_SAME_STATE_DISCOVERY.json
       - name: Replay checked-in post-#165 FB-05 same-state certificates
         run: |
