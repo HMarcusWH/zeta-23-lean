@@ -44,17 +44,20 @@ class ControlV2Tests(unittest.TestCase):
             "FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN",
         )
 
-    def test_control_note_records_post172_research_without_moving_theorem_anchor(self):
+    def test_control_note_records_post174_research_without_moving_theorem_anchor(self):
         control = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
         note = control["control_note"]
-        self.assertIn("PR #172", note)
-        self.assertIn("4c857cd031497d895232a18a4bfb9a094d9facae", note)
+        self.assertIn("PR #174", note)
+        self.assertIn("2d9fc5a5f7d552afb893c871fe84c9ed61a60ac0", note)
+        self.assertIn("946788f09c871de5133e2a8c8f5c94d7d69b521d", note)
         self.assertIn("q13->16/N2/K3/even", note)
-        self.assertIn("sign-indefinite", note)
         self.assertIn("2x2 scalar determinant barrier", note)
         self.assertIn("Q=13/14/15 subcells", note)
+        self.assertIn("100% UNRESOLVED", note)
+        self.assertIn("scalarization alone does not eliminate canonical interval dependency", note)
+        self.assertIn("fixed-unit pullback", note)
         self.assertIn("PR #117 remains the Control-v2 semantic anchor", note)
         self.assertEqual(control["merged_theorem_anchor"]["pr"], 163)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
@@ -96,7 +99,7 @@ class ControlV2Tests(unittest.TestCase):
         self.assertGreater(scores["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"],
                            scores["E4_B_PARITY_SHIFTED_NULLITY"])
 
-    def test_regular_schur_action_is_post172_fb05_q13_scalar_route(self):
+    def test_regular_schur_action_is_post174_fb05_analytic_scalar_route(self):
         registry = json.loads(
             (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
         )
@@ -113,16 +116,16 @@ class ControlV2Tests(unittest.TestCase):
             "PR #168",
             "PR #170",
             "PR #172",
-            "endpoint positivity alone",
-            "true shifted secular ray",
-            "256 depth-8 leaves remain UNRESOLVED",
-            "CONTINUES_DOWN_BUT_POSITIVE",
+            "PR #174",
             "theorem-aligned [W|c] one-step Schur pivot",
             "sign-indefinite",
             "q13->16/N2/K3/even",
             "Delta_2(L)=a(L)d(L)-b(L)^2",
             "Q=13/14/15 subcells",
-            "positive q13 whole-cell certificate",
+            "100% UNRESOLVED",
+            "scalarization alone does not eliminate canonical interval dependency",
+            "fixed-unit pullback",
+            "determinant and pivot minima",
             "full physical H1 does not imply H1 for the q-removed background",
             "cancellation ratios around 1e9-1e10",
             "nonzero explicitCanonicalSourceMoment does not imply M4",
@@ -136,8 +139,8 @@ class ControlV2Tests(unittest.TestCase):
 
         self.assertEqual(action["dead_route_matches"], [])
         self.assertEqual(break_ids, ["E4A4-SCHUR-FB-05"])
-        self.assertIn("#165-#172", first_breaks)
-        self.assertIn("q13-style scalar barrier law", first_breaks)
+        self.assertIn("#165-#174", first_breaks)
+        self.assertIn("analytic scalar enclosure", first_breaks)
         self.assertIn("without restating successor positivity", first_breaks)
 
         selected_break = _selected_first_break(
