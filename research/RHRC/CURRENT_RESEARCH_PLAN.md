@@ -106,10 +106,19 @@ NOW — FB-05 Q13 EVEN 2x2 SCALAR BARRIER
     Delta_2 = a*d - b^2
     P = Delta_2 / a
 
-  resolve / falsify:
-    a(L) > 0
-    Delta_2(L) > 0
-  over log13 <= L <= log16
+  classify over log13 <= L <= log16:
+    A. a(L) <= 0 somewhere
+       -> H1 scope loss
+    B. a(L) > 0 and Delta_2(L) < 0 somewhere
+       -> strict bad successor
+    C. a(L) > 0 and Delta_2(L) = 0 somewhere
+       -> barrier contact / singular successor
+    D. a(L) > 0 and Delta_2(L) > 0 everywhere
+       -> strict positive-cell certificate
+
+  note:
+    Delta_2(L) >= 0 alone does NOT establish D;
+    nonvanishing is a separate obligation.
 
   rigorous physical subcells:
     [log13,log14]
@@ -119,7 +128,8 @@ NOW — FB-05 Q13 EVEN 2x2 SCALAR BARRIER
 
 AFTER
   if a certified H1 negative point appears -> replay immediately through #166
-  if full q13 cell is positive -> extract the arithmetic/scalar inequality and test generalization
+  if a certified H1 zero-contact point appears -> classify tangency/multiplicity/nonvanishing before inferring crossing or positivity
+  if full q13 cell is strictly positive -> extract the arithmetic/scalar inequality and test generalization
   -> theoremize only a genuinely independent surviving restriction
   -> compose with exact #161/#163 retained state
   -> FB-06 same-state contradiction / negative-root exclusion
@@ -151,7 +161,7 @@ canonicalPolePrimeRieszEndpointScalar L 8 >= 0
 canonicalPolePrimeRieszEndpointScalar L 8 != 0
 threshold-entry law as a separately Lean-theoremized aperture theorem
 Schur-envelope derivative as a project Lean theorem
-q13/N2/K3/even whole-cell positivity
+q13/N2/K3/even whole-cell nonnegativity/nonvanishing/strict positivity
 universal arithmetic-entry sign
 simultaneous even/odd bad exclusion
 odd-selected first-bad closure
@@ -163,15 +173,15 @@ RiemannHypothesis
 
 ### A. q13/N2/K3/even 2x2 determinant barrier — NEXT
 
-This is the current highest-information route. The full successor is two-dimensional, so H1 and successor positivity reduce to the signs of one predecessor scalar `a(L)` and one determinant `Delta_2(L)`.
+This is the current highest-information route. The full successor is two-dimensional, so H1 and successor sign reduce to one predecessor scalar `a(L)` and one determinant `Delta_2(L)`.
 
-The target is not to prove global Schur monotonicity. It is to resolve one near-critical complete physical scalar interval in a dependency-reduced representation.
+The target is not to prove global Schur monotonicity. It is to classify one near-critical complete physical scalar interval in a dependency-reduced representation, including possible determinant contact at zero.
 
-A positive q13 interval certificate is not itself FB-05 closure. It becomes valuable only if the successful scalar argument yields an arithmetic inequality that can be generalized to arbitrary retained first-bad states.
+A strict-positive q13 interval certificate is not itself FB-05 closure. It becomes valuable only if the successful scalar argument yields an arithmetic inequality that can be generalized to arbitrary retained first-bad states.
 
 ### B. Threshold-to-threshold Schur barrier — RESEARCHED / #172
 
-#172 validates executable accounting and finite production/Arb replay across several arithmetic intervals. It finds no sampled bad successor but falsifies universal favorable arithmetic replenishment as a research heuristic.
+#172 validates exact executable Schur/envelope algebra, deterministic numerical integration smoke tests, and finite production/Arb replay across several arithmetic intervals. It finds no sampled bad successor but falsifies universal favorable arithmetic replenishment as a research heuristic.
 
 ### C. Full scalar pivot / background decomposition — VALIDATED RESEARCH MECHANISM / #170
 
@@ -197,14 +207,16 @@ There is no WLOG-even theorem because `D` is algebraic, not unitary/isometric.
 
 - remain in theorem-aligned `[W|c]` one-step geometry;
 - use the exact q13/N2/K3/even 1D->2D reduction;
-- certify H1 through `a(L)>0` and successor sign through `Delta_2(L)`;
+- classify H1 through `a(L)` and successor sign/zero structure through `Delta_2(L)`;
+- explicitly distinguish determinant negativity, zero contact, nonnegativity, and strict positivity;
 - preserve von Mangoldt prime powers, not primes only;
 - respect the physical Q=13/14/15 subcells or separately certify zero-weight seam inertness;
 - use enough precision to survive the `~1e-12` margin and `~1e9-1e10` cancellation scale;
 - run opposite-parity/same-q controls to test whether the observed sign pattern is parity-driven;
 - treat `UNRESOLVED` as unresolved, never as sign evidence;
 - if an actual finite bad successor appears, feed it immediately into the #166 shifted-state discriminator;
-- if the cell is positive, test whether the proof ingredient generalizes before Lean investment;
+- if a zero-contact point appears, classify whether it is tangential, endpoint, or crossing and separate nonvanishing from nonnegativity;
+- if the cell is strictly positive, test whether the proof ingredient generalizes before Lean investment;
 - reject any argument that simply restates successor positivity.
 
 ## Dead/quarantined shortcuts relevant now
@@ -219,10 +231,10 @@ There is no WLOG-even theorem because `D` is algebraic, not unitary/isometric.
 
 ## Highest-leverage next move
 
-Build a research PR to resolve the **q13/N2/K3/even 2x2 determinant barrier** rigorously across the physical Q=13/14/15 subcells.
+Build a research PR to fully classify the **q13/N2/K3/even 2x2 determinant barrier** across the physical Q=13/14/15 subcells, including possible zero contact.
 
 Standing question:
 
-> Given everything theoremized through #163 and learned experimentally through #172, does the complete canonical q13/even 2x2 Schur determinant ever cross zero while the one-dimensional predecessor remains positive, and if not, what arithmetic inequality prevents it that could generalize to the retained first-bad state?
+> Given everything theoremized through #163 and learned experimentally through #172, does the complete canonical q13/even 2x2 Schur determinant lose H1 scope, become negative, merely touch zero, or remain strictly positive; and what arithmetic mechanism behind that classification could generalize to the retained first-bad state?
 
 **RH remains OPEN.**
