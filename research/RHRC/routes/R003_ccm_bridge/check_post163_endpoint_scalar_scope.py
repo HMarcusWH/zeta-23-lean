@@ -10,8 +10,10 @@ import json
 
 import mpmath as mp
 import sympy as sp
+from flint import arb
 
 from canonical_riesz_endpoint_scalar import (
+    canonical_riesz_endpoint_scalar_arb,
     canonical_riesz_endpoint_scalar_mp,
     dyadic_inside_cell,
     endpoint_record_arb,
@@ -19,6 +21,7 @@ from canonical_riesz_endpoint_scalar import (
     pole_endpoint_primitive_nine_expanded_mp,
     pole_prime_endpoint_primitive_mp,
 )
+from canonical_source_arb import set_precision, to_arb_rational
 
 
 def von_mangoldt_mp(q: int) -> mp.mpf:
@@ -139,16 +142,20 @@ def main() -> int:
             failures.append({"check": "cutoff_threshold_continuity", "Q": Q})
     checks.append({"name": "cutoff_threshold_continuity", "rows": threshold_rows})
 
-    # 5. High-precision mpmath values lie inside the rigorous Arb enclosures.
+    # 5. High-precision mpmath values overlap the raw rigorous Arb balls.  Do not
+    # compare against ball_record display strings: those are intentionally rounded.
     arb_rows = []
+    set_precision(320)
     for Q in (1, 2, 4, 8):
         num, den = dyadic_inside_cell(Q, mp.mpf("0.5"), bits=48)
         L = mp.mpf(num) / den
         value = canonical_riesz_endpoint_scalar_mp(8, Q, L)
         rec = endpoint_record_arb(8, Q, num, den, precision_bits=320)
-        lower = mp.mpf(rec["endpoint_scalar"]["lower"])
-        upper = mp.mpf(rec["endpoint_scalar"]["upper"])
-        ok = bool(rec["cell"]["certified"] and lower <= value <= upper)
+        L_arb = to_arb_rational(num, den)
+        raw_ball = canonical_riesz_endpoint_scalar_arb(8, Q, L_arb)
+        mp_ball = arb(mp.nstr(value, 90))
+        delta = raw_ball - mp_ball
+        ok = bool(rec["cell"]["certified"] and delta.contains(0))
         arb_rows.append(
             {
                 "Q": Q,
@@ -157,11 +164,12 @@ def main() -> int:
                 "pass": ok,
                 "mp_value": mp.nstr(value, 30),
                 "arb": rec["endpoint_scalar"],
+                "raw_overlap_difference": delta.str(30, more=True),
             }
         )
         if not ok:
-            failures.append({"check": "mp_value_inside_arb_enclosure", "Q": Q})
-    checks.append({"name": "mp_value_inside_arb_enclosure", "rows": arb_rows})
+            failures.append({"check": "mp_value_overlaps_raw_arb_ball", "Q": Q})
+    checks.append({"name": "mp_value_overlaps_raw_arb_ball", "rows": arb_rows})
 
     payload = {
         "schema_version": "POST163_ENDPOINT_SCALAR_CHECK_v1",
