@@ -17,12 +17,12 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #168
-validated research head = 9657dad6f1e262b1fa7e08e6944aaa935feeaf33
-merged research commit = 4e2c111a836f3fc95f8209485f726dc886c918e7
-research tree = 881e1f05302041f56ae4b6a14f14e45d7bbc096b
-RHRC #1055 = SUCCESS
-Permansson #828 = SUCCESS
+merged research PR = #170
+validated research head = 70689692d5b92252bf9da97740385aaced2bf197
+merged research commit = c94242fe41ae62b59aaa392a33e35034eb2c1b1e
+research tree = 38e38a1d4cf90afa0e8103e58d1cbae626ebdeef
+RHRC #1058 = SUCCESS
+Permansson #831 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
@@ -58,28 +58,13 @@ retained mixed-jet/Riesz specialization                                 PROVED /
 
 source-moment / M4 canonical-state rigidity                             OPEN
 endpoint-scalar global sign/nonvanishing                                OPEN
-full scalar pivot/background inequality                                 OPEN / ACTIVE RESEARCH
+threshold-to-threshold Schur barrier                                    OPEN / ACTIVE RESEARCH
 simultaneous even/odd bad exclusion                                     OPEN
 odd-selected first-bad branch closure                                   OPEN
 negative-root exclusion                                                 OPEN
 outside-strip/trivial-zero seam + Mathlib RH wrapper                    OPEN
 RH                                                                      OPEN
 ```
-
-## What theorem authority through #163 gives
-
-For the retained even shifted first-bad state, Lean proves an exact same-state package including
-
-```text
-R8(u_lambda) < 0
-F_odd(lambda) = Gamma(lambda)*explicitCanonicalSourceMoment(u_lambda)
-odd successor bad OR explicitCanonicalSourceMoment(u_lambda) != 0
-h^(7)(0) = -2*(2*pi)^6*M4(u_lambda)
-2*(2*pi)^4*(R8(u_lambda)-R9(u_lambda)) = S8(L)*|h^(7)(0)|^2
-2*(2*pi)^4*R9(u_lambda) < -S8(L)*|h^(7)(0)|^2
-```
-
-No global sourceMoment/`M4` implication and no endpoint-scalar sign theorem is asserted.
 
 ## Research progression after theorem authority
 
@@ -112,36 +97,31 @@ even -> order 9, governed by M4^2
 
 The exact threshold and 18 two-sided Arb microscope points remained positive, while the full Q17 state continued downward but remained positive.
 
-The isolated entering-prime stabilizer therefore does not determine the full canonical drift.
+### #170 — theorem-aligned Schur visibility/background audit
+
+The scalar diagnostic is aligned with the actual one-step `[W|c]` geometry. The unit-shell pivot matches the post-#150 selected residual, the q17 threshold direction is finite-certified Schur-visible (`rho != 0`), and the exact entering-q atom raises the pivot at all seven checked positive offsets.
+
+At the same time, the q-removed smooth background has negative central finite differences at all seven tested scales. The direct physical scout remains H1-aligned at all 97 sampled states through q19 and finds no sampled negative pivot.
+
+This is finite research evidence, not an interval/barrier theorem.
 
 ## Current active path
 
 The live theorem frontier remains **FB-05**: find an independent canonical arithmetic restriction that makes the exact retained #161/#163 state impossible.
 
-The highest-information research slice is now:
+The highest-information research slice is now a **threshold-to-threshold Schur barrier**.
+
+Use the local envelope identity
 
 ```text
-full scalar final Sylvester/Schur pivot
-=
-smooth canonical background
-+
-high-order entering prime-power threshold kick.
+P'(L) = u_L^T M'(L) u_L
 ```
 
-The next research PR should determine the background variation, pivot sensitivity to the rank-one threshold atom, catch-up scale, parity behavior and whether this yields a real barrier or an actual finite bad successor.
+as a cancellation-preserving diagnostic, without assuming global monotonicity, and compare the integrated background loss between genuine arithmetic seams against the arithmetic replenishment at threshold entry.
 
-This is not a revival of global Schur monotonicity and must not assume a fixed global derivative sign.
+The next research PR should test whether the theorem-aligned H1 pivot can reach zero before the next nonzero von-Mangoldt seam, across multiple q/N/parity targets.
 
-## Supporting open routes
-
-```text
-simultaneous parity badness exclusion with actual arithmetic
-odd-selected first-bad coverage
-endpoint-scalar sign/nonvanishing as a supporting theorem if useful
-sourceMoment / M4 rigidity only if additional canonical structure appears
-```
-
-The next theorem PR should be chosen only after adversarial falsification of the pivot/background mechanism.
+This is not a revival of global Schur monotonicity.
 
 ## Documentation authority
 
@@ -149,7 +129,7 @@ Current living state is maintained in:
 
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`;
 - `research/RHRC/RESEARCH_LEADS.md`;
-- `research/RHRC/RESEARCH_LEADS_POST_168_THRESHOLD_JET_BACKGROUND_DRIFT_DELTA.md`;
+- `research/RHRC/RESEARCH_LEADS_POST_170_SCHUR_VISIBILITY_THRESHOLD_BARRIER_DELTA.md`;
 - `research/RHRC/DOCUMENTATION_AUTHORITY.md`;
 - `research/RHRC/VALIDATION_PROTOCOL.md`;
 - `research/RHRC/routes/R003_ccm_bridge/README.md`;
@@ -164,10 +144,13 @@ Older dated deltas, external reviews and countermodel records remain historical 
 - research PR green is not theorem authority.
 - exact executable algebra is not a Lean theorem.
 - finite Arb certification is not a global theorem.
+- finite-difference enclosures are not derivative theorems.
 - retained/shifted transformed negativity is not a contradiction.
 - exact Riesz identities are not arithmetic sign theorems.
 - endpoint-scalar positivity alone is not first-bad exclusion.
 - threshold prime-entry stabilization is not full-source stabilization.
+- Schur visibility at q17 is not a universal visibility theorem.
+- sums of independent channel pivots are invalid because the Schur map is nonlinear.
 - `explicitCanonicalSourceMoment != 0` does not imply `M4 != 0`, nor conversely.
 - exact finite-prime sampling does not by itself determine the local seventh jet.
 - simultaneous even/odd badness is not excluded.
