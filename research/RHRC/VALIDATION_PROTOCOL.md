@@ -94,9 +94,10 @@ In particular:
 
 - exact SymPy/algebraic identities are **EXACT EXECUTABLE**, not Lean theorem authority;
 - floating discovery is **EXPERIMENTAL SIGNAL**;
+- deterministic Gauss-Legendre integration smoke tests are **DETERMINISTIC NUMERICAL VALIDATION**, not exact integral identities;
 - Arb pointwise replay is **RIGOROUS FINITE CERTIFICATION** only;
 - Arb central finite differences are **RIGOROUS FINITE-DIFFERENCE ENCLOSURES**, not derivative theorems;
-- production envelope quadrature is a diagnostic unless separately interval-certified;
+- production envelope quadrature is a numerical diagnostic unless separately interval-certified;
 - `UNRESOLVED` interval output is neither positive nor negative evidence;
 - absence of a finite negative candidate is not a positivity theorem.
 
@@ -146,7 +147,7 @@ The Arb replay finite-certifies q17 predecessor positivity, nonzero Schur visibi
 
 ### #172
 
-The deterministic accounting checker validates synthetic envelope/integration closure, genuine nonzero von-Mangoldt seam identification, production budget reconstruction, and threshold-entry vanishing at the seam.
+The deterministic accounting checker validates exact finite-dimensional Schur/envelope algebra, genuine nonzero von-Mangoldt seam identification, production budget reconstruction, and threshold-entry vanishing at the seam. Its synthetic integral closure test is numerical: it uses 32-node floating Gauss-Legendre quadrature with a finite acceptance tolerance and therefore validates the integration implementation as a deterministic numerical smoke test, not as an exact executable integral identity.
 
 The floating production scout tests several arithmetic intervals and reports no sampled bad successor. Its most dangerous target is `q13 -> 16, N2, K3, even`, with a sampled unit-shell pivot near `5.8e-12`.
 
@@ -181,6 +182,17 @@ P(L) = Delta_2(L)/a(L)
 Delta_2(L)=a(L)d(L)-b(L)^2.
 ```
 
+The whole-interval task must distinguish four outcomes:
+
+```text
+A. a(L) <= 0 somewhere: H1 scope loss.
+B. a(L) > 0 and Delta_2(L) < 0 somewhere: strict bad successor.
+C. a(L) > 0 and Delta_2(L) = 0 somewhere: barrier contact / singular successor.
+D. a(L) > 0 and Delta_2(L) > 0 everywhere: strict positive-cell certificate.
+```
+
+Thus a nonnegative determinant certificate still requires a separate nonvanishing argument before it can be called a strict barrier.
+
 A rigorous whole-interval claim over `log13 <= L <= log16` must respect physical integer cutoff cells Q=13,14,15 unless exact zero-weight seam inertness is separately certified. A pointwise Arb replay is insufficient for a whole-cell claim.
 
 ## Axiom inspection
@@ -199,7 +211,7 @@ canonicalPolePrimeRieszEndpointScalar L 8 >= 0
 canonicalPolePrimeRieszEndpointScalar L 8 != 0
 boundary-flat threshold-entry law as a separately Lean-theoremized aperture theorem
 Schur-envelope derivative as a project Lean theorem
-q13/N2/K3/even whole-cell positivity
+q13/N2/K3/even whole-cell strict positivity / nonvanishing
 universal arithmetic threshold-entry sign
 simultaneous even/odd bad exclusion
 odd-selected first-bad branch reduction/closure
@@ -254,6 +266,7 @@ The post-#172 synchronization must:
 - **DERIVED** — mathematical consequence not separately theorem-locked;
 - **LOCAL LEAN CHECK** — standalone/local compilation outside merged theorem authority;
 - **EXACT EXECUTABLE** — symbolic/executable identity locked by research tooling, not Lean theorem authority;
+- **DETERMINISTIC NUMERICAL VALIDATION** — deterministic floating numerical acceptance test with an explicit tolerance; not an exact identity or theorem;
 - **EXPERIMENTAL SIGNAL** — numerical/search/discovery evidence only;
 - **RIGOROUS FINITE CERTIFICATION** — Arb/interval statement in the exact finite scope only;
 - **RIGOROUS FINITE-DIFFERENCE ENCLOSURE** — certified finite quotient/enclosure, not a derivative theorem;
