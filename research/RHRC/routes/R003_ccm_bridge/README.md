@@ -1,6 +1,6 @@
 # R003 — CCM / finite Weil bridge
 
-Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #163. LATEST RESEARCH EVIDENCE THROUGH PR #168. CURRENT FRONTIER = FB-05 FULL SCALAR PIVOT / BACKGROUND VARIATION. RH OPEN.**
+Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #163. LATEST RESEARCH EVIDENCE THROUGH PR #170. CURRENT FRONTIER = FB-05 THRESHOLD-TO-THRESHOLD SCHUR BARRIER. RH OPEN.**
 
 ## Authority split
 
@@ -15,12 +15,12 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #168
-validated research head = 9657dad6f1e262b1fa7e08e6944aaa935feeaf33
-merged research commit = 4e2c111a836f3fc95f8209485f726dc886c918e7
-research tree = 881e1f05302041f56ae4b6a14f14e45d7bbc096b
-RHRC #1055 = SUCCESS
-Permansson #828 = SUCCESS
+merged research PR = #170
+validated research head = 70689692d5b92252bf9da97740385aaced2bf197
+merged research commit = c94242fe41ae62b59aaa392a33e35034eb2c1b1e
+research tree = 38e38a1d4cf90afa0e8103e58d1cbae626ebdeef
+RHRC #1058 = SUCCESS
+Permansson #831 = SUCCESS
 
 CONTROL AUTHORITY
 control-plane semantic anchor = PR #117
@@ -44,7 +44,6 @@ retained transformed negativity + ExceptionalZero R6 wrapper     PROVED / #157
 general moment-prefix odd-jet law                                PROVED / #159
 exact seventh / even ninth leading-moment self-energy jets        PROVED / #159
 generic signed complete-channel Riesz boundary recurrence        PROVED / #159
-retained R6->R7 / even R8->R9 moment-square boundaries           PROVED / #159
 same-state shifted Riesz x cross-parity source composition       PROVED / #161
 odd-good -> exact production source moment nonzero                PROVED / #161
 odd-bad OR explicit-source-nonzero retained fork                 PROVED / #161
@@ -79,61 +78,53 @@ The exact executable `S8(L)` normalization is independently checked, including p
 
 ### #166 — shifted-state discriminator
 
-The finite executable is aligned with the actual shifted secular ray:
-
-```text
-u_lambda = c - W(H-lambda G)^(-1)r.
-```
-
-A broad finite scout found no negative successor but isolated a near-critical `Q=16, N=3, K=4, odd` family.
+The finite executable is aligned with the actual shifted secular ray `u_lambda = c - W(H-lambda G)^(-1)r`. A broad finite scout found no negative successor but isolated a near-critical `Q=16,N=3,K=4,odd` family.
 
 ### #167 — Q16 scalar barrier
 
-Floating full-cell optimization found no negative point and pushed the apparent minimum toward `log 17`.
-
-The direct whole-cell Arb representation remained unresolved at every depth-8 leaf:
-
-```text
-256 / 256 UNRESOLVED
-```
-
-This is a certification-method failure, not a sign result.
+Floating full-cell optimization found no negative point and pushed the apparent minimum toward `log 17`. The direct whole-cell Arb representation remained unresolved at every depth-8 leaf: `256 / 256 UNRESOLVED`.
 
 ### #168 — threshold moment jet
 
-Exact executable boundary-flat parity identities for `K=2..8` give:
+Exact executable boundary-flat parity identities for `K=2..8` give odd first surviving source-energy order 7 through `M3^2` and even first surviving order 9 through `M4^2`. The exact `L=log 17` threshold and all 18 two-sided Arb microscope points are positive. The full Q17 floating state is `CONTINUES_DOWN_BUT_POSITIVE`.
+
+### #170 — theorem-aligned Schur visibility / background split
+
+The selected scalar is reconstructed in the theorem-aligned exact basis `[W|c]`. The unit-shell pivot agrees with the post-#150 selected residual. The exact executable layer checks the rank-one Schur update and directional Schur derivative identities.
+
+For q17/N3/K4/odd:
 
 ```text
-odd  first surviving source-energy order = 7, governed by M3^2
-even first surviving source-energy order = 9, governed by M4^2
+threshold predecessor H1 positive                         finite-certified
+threshold unit-shell pivot                                positive
+Schur visibility rho                                      nonzero finite-certified
+exact entering-q pivot effect                             positive at 7/7 checked offsets
+q-removed background central finite difference            negative at 7/7 tested scales
+physical scout through q19                                97/97 H1, 0 sampled negative pivots
 ```
 
-The exact `L=log 17` threshold and all 18 two-sided Arb microscope points are positive. The full Q17 floating state is `CONTINUES_DOWN_BUT_POSITIVE`.
+**Consequence:** the favorable threshold atom is truly visible to the theorem-aligned scalar barrier, but the smooth background can move the complete pivot in the opposite direction. No whole-cell or barrier theorem follows.
 
-**Consequence:** the isolated entering-prime stabilizer does not control the full canonical aperture drift.
+## Current frontier — FB-05 threshold-to-threshold Schur barrier
 
-## Current frontier — FB-05 full scalar pivot / background variation
-
-The next research object is a dependency-reduced scalar final Sylvester/Schur pivot.
-
-Near a prime-power threshold, study
+The next research object is not another pivot reconstruction. Use the local Schur-envelope identity
 
 ```text
-P(L) = P_background(L) + P_entering_q(L).
+P'(L) = u_L^T M'(L) u_L
 ```
 
-The background includes pole, archimedean, scalar-repair and already-active prime-power variation. The entering term begins at high order after boundary-flat/parity annihilation.
+as a cancellation-preserving diagnostic and study the integrated evolution of the positive H1 pivot from one genuine nonzero von-Mangoldt seam to the next.
 
 Highest-information questions:
 
-1. Can the final pivot be reconstructed independently and by signed channels?
-2. What is the background derivative/variation at the threshold?
-3. What is the exact pivot sensitivity to the entering rank-one atom?
-4. At what source-coordinate scale can the high-order arithmetic kick catch the background drift?
-5. Does this create a barrier, a bad successor, or a parity incompatibility before the next meaningful threshold?
-6. Does the mechanism persist across sizes, parities and prime powers?
+1. how much integrated smooth-background loss occurs over one arithmetic interval?
+2. which pole/archimedean/active-prime/scalar derivatives produce the near-cancellation?
+3. how much positive barrier is replenished by the next entering prime power?
+4. can the theorem-aligned pivot reach zero while H1 remains valid?
+5. does the answer differ decisively by parity?
+6. does the mechanism survive multiple sizes and genuine prime-power thresholds?
 
-This route must preserve exact cancellation and must not repackage successor positivity.
+This route must preserve exact cancellation and must not repackage successor positivity or global Schur monotonicity.
 
 ## Supporting open routes
 
@@ -163,23 +154,27 @@ post-#163 endpoint-scalar audit (#165 research)
 post-#165 theorem-aligned shifted-state audit (#166 research)
 post-#166 Q16 scalar-barrier audit (#167 research)
 post-#167 threshold-jet / Q17 audit (#168 research)
+post-#169 theorem-aligned Schur visibility algebra (#170 research)
+post-#169 threshold Schur/background scout (#170 research)
+post-#169 Arb Schur-visibility replay (#170 research)
 ```
 
 Passing these gates means the executable research checks ran correctly on the exact head. It does not promote their numerical/SymPy output to Lean theorem authority.
 
 ## Falsification discipline
 
-For the pivot/background route:
+For the threshold-barrier route:
 
-- use exact canonical normalization;
+- stay in exact theorem-aligned `[W|c]` geometry;
+- require H1 predecessor positivity before first-bad interpretation;
 - keep von Mangoldt prime powers;
-- reconstruct pivot and channel contributions independently;
-- test both sides of prime-power thresholds;
-- compare high-precision derivatives with Arb pointwise replay;
-- test both parity sectors and multiple sizes;
-- search for degenerate/weak threshold kicks;
+- use local envelope dynamics without assuming global monotonicity;
+- preserve channel cancellation through matrix derivatives / the minimizing trial;
+- integrate/certify barrier loss rather than infer it from sparse point signs;
+- test both parity sectors and multiple sizes/thresholds;
+- search for degenerate/zero visibility and adverse arithmetic kicks;
+- distinguish finite differences from derivative theorems;
 - treat `UNRESOLVED` as unresolved;
-- do not revive global Loewner or Schur monotonicity;
 - if an actual bad successor is discovered, replay it through the #166 shifted-state machinery.
 
 ## Highest-leverage order
@@ -193,7 +188,7 @@ FB-04A exact moment jets + signed Riesz boundary recurrence        PROVED / #159
 FB-04B same-state shifted Riesz x cross-parity source composition PROVED / #161
 FB-04C mixed quadratic-normal jet x Riesz boundary coupling       PROVED / #163
 FB-05  independent contradiction-producing arithmetic restriction OPEN / ACTIVE
-  current research slice: full scalar pivot/background dynamics
+  current research slice: threshold-to-threshold Schur barrier
 FB-06  same-state contradiction / negative-root exclusion         OPEN
 FB-07  terminal seam + Mathlib RH wrapper                          OPEN
 ```
@@ -205,21 +200,23 @@ FB-07  terminal seam + Mathlib RH wrapper                          OPEN
 - machine-promoted claims remain a separate older surface;
 - exact executable algebra is not a Lean theorem;
 - interval-certified finite numerics are scoped evidence only;
+- finite differences are not derivative theorems;
 - absence of sampled badness is not positivity;
 - endpoint-scalar positivity alone is not first-bad exclusion;
 - threshold prime-entry stabilization is not full-source stabilization;
+- q17 Schur visibility is not a universal theorem;
 - retained transformed negativity is not contradiction;
-- exact Riesz identities are not arithmetic sign theorems;
 - sourceMoment nonzero does not imply `M4` nonzero, nor conversely;
 - simultaneous parity badness remains open;
 - selected parity cannot be assumed even WLOG;
 - no factorwise division without theorem-backed nonzeroness;
 - `D` remains algebraic, not unitary/isometric;
+- independent channel pivots may not be added;
 - whole-cell `UNRESOLVED` interval output is not sign evidence;
 - negative-root exclusion still needs the terminal zeta/Mathlib seam;
 - RH remains OPEN.
 
 Detailed current implications:
-`../../RESEARCH_LEADS_POST_168_THRESHOLD_JET_BACKGROUND_DRIFT_DELTA.md`.
+`../../RESEARCH_LEADS_POST_170_SCHUR_VISIBILITY_THRESHOLD_BARRIER_DELTA.md`.
 
 **RH remains OPEN.**

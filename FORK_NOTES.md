@@ -15,12 +15,12 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #168
-validated research head = 9657dad6f1e262b1fa7e08e6944aaa935feeaf33
-merged research commit = 4e2c111a836f3fc95f8209485f726dc886c918e7
-research tree = 881e1f05302041f56ae4b6a14f14e45d7bbc096b
-RHRC #1055 = SUCCESS
-Permansson #828 = SUCCESS
+merged research PR = #170
+validated research head = 70689692d5b92252bf9da97740385aaced2bf197
+merged research commit = c94242fe41ae62b59aaa392a33e35034eb2c1b1e
+research tree = 38e38a1d4cf90afa0e8103e58d1cbae626ebdeef
+RHRC #1058 = SUCCESS
+Permansson #831 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
@@ -54,31 +54,16 @@ No theorem-bearing PR has superseded #163.
 #166 theorem-aligned shifted-state discriminator
 #167 Q16 near-critical scalar-barrier / interval-method audit
 #168 log17 boundary-flat threshold-jet / Q17 microscope
+#170 theorem-aligned Schur visibility / background-drift audit
 ```
 
-### #165
+### #170
 
-The exact executable `S8(L)` normalization is audited including prime powers. Broad finite positive evidence survives, but positivity alone only propagates retained transformed negativity and is not a contradiction mechanism.
+The one-step scalar is now computed in the theorem-aligned `[W|c]` basis and unit-shell normalized. The q17 odd threshold direction is finite-certified Schur-visible (`rho != 0`), and the exact entering-q atom raises the pivot at all seven checked positive offsets.
 
-### #166
+The q-removed background nevertheless has negative central finite differences at all seven checked scales. The physical scout remains H1-aligned at 97/97 sampled points through q19 and finds zero sampled negative pivots.
 
-The finite state is aligned with the actual generalized shifted secular ray
-
-```text
-u_lambda = c - W(H-lambda G)^(-1)r.
-```
-
-A broad scout finds no finite bad successor but isolates the near-critical `Q16/N3/K4/odd` family.
-
-### #167
-
-The strongest Q16 family remains floating-positive. Direct whole-cell Arb subdivision is dependency-limited: 256/256 depth-8 leaves remain `UNRESOLVED`.
-
-### #168
-
-Exact executable boundary-flat parity identities give first surviving source-energy order 7 through `M3^2` in odd parity and order 9 through `M4^2` in even parity. The exact log17 threshold and all 18 two-sided Arb microscope points remain positive. The full Q17 state continues downward but remains positive.
-
-Therefore the isolated favorable entering-prime jet does not control the full canonical drift.
+This confirms a competition between favorable high-order arithmetic replenishment and lower-order smooth background loss; it does not prove a barrier.
 
 ## Current frontier
 
@@ -91,7 +76,7 @@ FB-04A moment jets + signed Riesz boundary recurrence           PROVED / #159
 FB-04B same-state shifted Riesz x cross-parity source           PROVED / #161
 FB-04C mixed quadratic-normal jet x Riesz boundary coupling     PROVED / #163
 FB-05 independent contradiction-producing arithmetic restriction OPEN / NOW
-  current research slice: full scalar pivot/background dynamics
+  current research slice: threshold-to-threshold Schur barrier
 FB-06 negative-root exclusion                                   OPEN
 FB-07 terminal Mathlib RH seam                                  OPEN
 RH                                                               OPEN
@@ -99,19 +84,20 @@ RH                                                               OPEN
 
 ## Current post-green clue
 
-The same retained even shifted negative state already has theorem-backed spectral, transformed-energy, global-source and local-mixed-jet views. The remaining arithmetic obstruction should now be searched in a dependency-reduced scalar barrier rather than another equivalent representation of those same facts.
-
-Near an actual prime-power threshold the research target is
+The theorem-aligned scalar pivot now exposes two opposing local mechanisms at q17:
 
 ```text
-final scalar pivot
-=
-smooth canonical background
-+
-high-order entering prime-power kick.
+entering arithmetic atom -> raises pivot
+smooth q-removed background -> lowers pivot
 ```
 
-The next experiment should measure the background drift, derive the pivot sensitivity to the rank-one threshold atom, estimate the catch-up scale, and test whether a barrier, parity incompatibility, or actual finite bad successor results.
+The project already knows the local Schur-envelope diagnostic
+
+```text
+P'(L) = u_L^T M'(L) u_L.
+```
+
+The next research pass should not seek a global monotonicity theorem. It should integrate/certify the local envelope dynamics between genuine nonzero von-Mangoldt seams and ask whether the positive H1 barrier can be exhausted before arithmetic replenishment arrives.
 
 ## Important non-revivals
 
@@ -123,19 +109,20 @@ global minimizing-Schur monotonicity
 brute whole-cell Arb subdivision
 endpoint-scalar positivity as a standalone contradiction
 prime-sample -> local-jet implication by analogy
+summing independent channel Schur pivots
 ```
-
-Each of those either remains quarantined or lacks sufficient downstream contradiction content.
 
 ## Next theorem-bearing slice
 
-Do not pre-commit to a theorem merely because a local identity is clean. First falsify the full scalar pivot/background mechanism. If it produces an independent canonical inequality unavailable from successor positivity itself, theoremize the weakest useful statement and compose it with the exact #161/#163 retained state.
+Do not pre-commit to a theorem because the envelope identity is clean. First falsify the threshold-to-threshold barrier mechanism across multiple genuine arithmetic seams, sizes and both parities. If it produces an independent canonical inequality unavailable from successor positivity itself, theoremize the weakest useful statement and compose it with the exact #161/#163 retained state.
 
 ## Permanent firewalls
 
-- research evidence through #168 does not move theorem authority beyond #163;
+- research evidence through #170 does not move theorem authority beyond #163;
 - endpoint-scalar positivity alone is not first-bad exclusion;
 - threshold prime-entry stabilization is not full-source stabilization;
+- q17 Schur visibility is finite evidence, not a universal theorem;
+- finite differences are not derivative theorems;
 - exact executable algebra is not a Lean theorem;
 - finite Arb evidence is scoped only to its certified points;
 - sourceMoment nonzero does not imply `M4` nonzero, nor conversely;

@@ -1,4 +1,4 @@
-# RHRC formal audit — theorem authority through PR #163; research evidence through PR #168
+# RHRC formal audit — theorem authority through PR #163; research evidence through PR #170
 
 > **RH remains OPEN.**
 
@@ -15,19 +15,19 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #168
-validated research head = 9657dad6f1e262b1fa7e08e6944aaa935feeaf33
-merged research commit = 4e2c111a836f3fc95f8209485f726dc886c918e7
-research tree = 881e1f05302041f56ae4b6a14f14e45d7bbc096b
-RHRC #1055 = SUCCESS
-Permansson #828 = SUCCESS
+merged research PR = #170
+validated research head = 70689692d5b92252bf9da97740385aaced2bf197
+merged research commit = c94242fe41ae62b59aaa392a33e35034eb2c1b1e
+research tree = 38e38a1d4cf90afa0e8103e58d1cbae626ebdeef
+RHRC #1058 = SUCCESS
+Permansson #831 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
 selected first break = E4A4-SCHUR-FB-05
 ```
 
-The theorem and research anchors are intentionally different. No result from #165-#168 is promoted to Lean theorem authority merely because those PRs are green.
+The theorem and research anchors are intentionally different. No result from #165-#170 is promoted to Lean theorem authority merely because those PRs are green.
 
 ## Exact theorem progression
 
@@ -75,7 +75,9 @@ finite production samples determine h^(7)(0)
 canonicalPolePrimeRieszEndpointScalar L 8 >= 0
 canonicalPolePrimeRieszEndpointScalar L 8 != 0
 boundary-flat threshold-entry law as a separately theoremized aperture theorem
-full scalar pivot/background inequality
+Schur-envelope derivative as a project theorem
+threshold-to-threshold integrated Schur barrier
+whole arithmetic-cell positivity
 simultaneous even+odd bad exclusion
 odd-selected first-bad branch closure
 negative-root exclusion
@@ -86,72 +88,57 @@ RiemannHypothesis
 
 ### PR #165 — endpoint scalar
 
-The executable Riesz-8 endpoint scalar is independently reconstructed with the exact repository normalization and von Mangoldt prime powers. Stable-pole, convolution/closed-form and Arb overlap checks pass. Broad finite searches find no sampled negative value.
+The executable Riesz-8 endpoint scalar is independently reconstructed with the exact repository normalization and von Mangoldt prime powers. Broad finite searches find no sampled negative value.
 
-**Audit conclusion:** this is not a global sign theorem. Even if `S8 >= 0` were later proved, the current #163 recurrence would propagate retained negativity rather than contradict it. Endpoint sign therefore needs another independent terminal restriction to become a closing mechanism.
+**Audit conclusion:** this is not a global sign theorem; positivity alone propagates retained negativity rather than contradicting it.
 
 ### PR #166 — shifted same-state discriminator
 
-The finite discovery state is corrected to
-
-```text
-u_lambda = c - W(H-lambda G)^(-1)r,
-```
-
-with the Gram matrix required because the exact integer predecessor basis is non-orthonormal.
-
-A 672-state scout finds zero reconstructible negative shifted states but isolates a near-critical odd `Q16/N3/K4` family. The strongest sampled point is independently Arb/Sylvester-certified positive.
-
-**Audit conclusion:** absence of a bad finite state is not positivity; the research target becomes the near-critical cell rather than another uniform scan.
+The finite discovery state is corrected to `u_lambda = c - W(H-lambda G)^(-1)r`. A broad scout finds zero reconstructible negative shifted states but isolates a near-critical odd `Q16/N3/K4` family. The strongest sampled point is independently Arb/Sylvester-certified positive.
 
 ### PR #167 — Q16 full-cell scalar barrier
 
-Floating full-cell optimization finds no negative aperture and pushes the apparent minimum toward `log 17`.
-
-The direct whole-cell Arb representation remains unresolved in every depth-8 leaf:
-
-```text
-leaf_count = 256
-POSITIVE_CERTIFIED = 0
-BAD_INTERVAL_CERTIFIED = 0
-UNRESOLVED = 256
-```
+Floating full-cell optimization finds no negative aperture and pushes the apparent minimum toward `log 17`. The direct whole-cell Arb representation remains unresolved in every depth-8 leaf: 256/256 `UNRESOLVED`.
 
 **Audit conclusion:** direct dependency-heavy full-matrix subdivision is methodologically insufficient in the current representation. `UNRESOLVED` is not sign evidence.
 
 ### PR #168 — threshold moment jet / Q17 microscope
 
-A corrected boundary-flat analysis gives exact executable parity identities for `K=2..8`:
+Boundary-flat parity analysis gives exact executable first surviving orders 7 (`M3^2`) in odd parity and 9 (`M4^2`) in even parity. The exact log17 threshold and all 18 two-sided Arb microscope points certify positive. Floating discovery in Q17 reports `CONTINUES_DOWN_BUT_POSITIVE`.
 
-```text
-odd:  orders 1,3,5 vanish; first surviving order 7 ~ M3^2
-even: orders 1,3,5,7 vanish; first surviving order 9 ~ M4^2
-```
+### PR #170 — theorem-aligned Schur visibility / background drift
 
-The exact log17 threshold and all 18 two-sided Arb microscope points certify positive. Floating discovery in Q17 reports `CONTINUES_DOWN_BUT_POSITIVE`.
+The selected scalar is rebuilt in theorem-aligned `[W|c]` one-step coordinates. The deterministic checker verifies the exact executable rank-one Schur update and directional Schur derivative identities and matches the unit-shell pivot to the post-#150 selected residual.
 
-**Audit conclusion:** the isolated favorable entering-prime jet is real in the executable layer but does not control the full canonical aperture drift.
+For q17/N3/K4/odd, Arb certifies predecessor positivity at the threshold and nonzero Schur visibility. The exact entering-q pivot effect is positive at all seven checked positive offsets. The q-removed background central finite difference is negative at all seven tested scales. The physical scout remains H1-aligned at 97/97 sampled points through q19 and finds zero sampled negative pivots.
+
+**Audit conclusion:** the arithmetic kick is genuinely visible and favorable, while the smooth background can move the full pivot in the opposite direction. This is finite evidence, not a derivative or barrier theorem.
+
+Operational note: one #170 Lean job initially failed before compilation on an external Elan HTTP 504. The same exact research head was rerun successfully through the actual compiler gates; authority attaches to the successful exact-head run, not the transient setup failure.
 
 ## Current post-green frontier
 
-The highest-information remaining FB-05 target is now a dependency-reduced scalar final Sylvester/Schur pivot with a channel-aware decomposition
+The highest-information remaining FB-05 target is a threshold-local, cancellation-preserving Schur barrier:
 
 ```text
-P(L) = P_background(L) + P_entering_q(L).
+P'(L) = u_L^T M'(L) u_L
 ```
 
-The next research pass should determine the background variation, pivot sensitivity to the high-order rank-one threshold atom, catch-up scale, parity dependence and whether the combined dynamics produce an actual barrier or finite bad successor.
+used diagnostically and integrated from one genuine nonzero von-Mangoldt seam to the next. The task is to compare integrated smooth-background loss with arithmetic replenishment without assuming global monotonicity.
 
-This is not a revival of global Schur monotonicity. The project already has evidence that a global fixed derivative sign is false/quarantined.
+This is not a revival of DR-022. Global minimizing-Schur monotonicity remains quarantined.
 
 ## Claim firewall
 
-- #165-#168 are research evidence, not theorem promotion.
+- #165-#170 are research evidence, not theorem promotion.
 - exact executable algebra is not Lean theorem authority.
 - finite Arb certification is not a whole-cell or global theorem.
+- finite central differences are not derivative theorems.
 - absence of sampled negative states is not positivity.
 - endpoint-scalar positivity alone is not first-bad exclusion.
 - threshold prime-entry stabilization is not full-source stabilization.
+- q17 Schur visibility is not a universal visibility theorem.
+- channel pivot values cannot be summed as if the Schur map were linear.
 - `UNRESOLVED` interval output is not sign evidence.
 - sourceMoment nonzero does not imply `M4` nonzero, nor conversely.
 - simultaneous parity badness and odd-selected coverage remain open.

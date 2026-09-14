@@ -54,7 +54,7 @@ class RetroTests(unittest.TestCase):
         self.assertNotIn("rupture", terms)
         self.assertNotIn("slack", terms)
 
-    def test_e4a4_actions_use_post168_pivot_arithmetic_aliases(self):
+    def test_e4a4_actions_use_post170_barrier_arithmetic_aliases(self):
         aliases = load_alias_map(RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json")
         terms = expanded_terms("canonical_source_exclusion", aliases)
         for term in (
@@ -122,6 +122,15 @@ class RetroTests(unittest.TestCase):
             "catch-up scale",
             "whole-cell interval",
             "dependency inflation",
+            "Schur visibility",
+            "visibility coefficient",
+            "theorem-aligned Schur pivot",
+            "unit-shell pivot",
+            "Schur envelope",
+            "threshold-to-threshold barrier",
+            "barrier loss",
+            "barrier replenishment",
+            "integrated background loss",
         ):
             self.assertIn(term, terms)
 
@@ -148,8 +157,11 @@ class RetroTests(unittest.TestCase):
             "PR #166",
             "PR #167",
             "PR #168",
-            "full scalar Sylvester/Schur pivot",
-            "CONTINUES_DOWN_BUT_POSITIVE",
+            "PR #170",
+            "theorem-aligned [W|c] one-step Schur pivot",
+            "nonzero q17 Schur visibility",
+            "threshold-to-threshold Schur barrier",
+            "finite Arb central differences are not derivative theorems",
             "nonzero explicitCanonicalSourceMoment does not imply M4",
             "finite weighted sample sum does not by itself determine the seventh jet",
             "DR-024",

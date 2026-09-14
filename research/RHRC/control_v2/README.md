@@ -14,19 +14,19 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #168
-validated research head = 9657dad6f1e262b1fa7e08e6944aaa935feeaf33
-merged research commit = 4e2c111a836f3fc95f8209485f726dc886c918e7
-research tree = 881e1f05302041f56ae4b6a14f14e45d7bbc096b
-RHRC #1055 = SUCCESS
-Permansson #828 = SUCCESS
+merged research PR = #170
+validated research head = 70689692d5b92252bf9da97740385aaced2bf197
+merged research commit = c94242fe41ae62b59aaa392a33e35034eb2c1b1e
+research tree = 38e38a1d4cf90afa0e8103e58d1cbae626ebdeef
+RHRC #1058 = SUCCESS
+Permansson #831 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 control-plane semantic anchor = PR #117
 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
 ```
 
-PRs #165-#168 refresh research evidence and routing context only. They do not change the controller's capability/authority model and do not move theorem authority beyond #163.
+PRs #165-#170 refresh research evidence and routing context only. They do not change the controller's capability/authority model and do not move theorem authority beyond #163.
 
 ## Current routed frontier
 
@@ -39,7 +39,7 @@ FB-04A exact moment jets + signed Riesz boundary recurrence        PROVED / #159
 FB-04B same-state shifted Riesz x cross-parity source composition PROVED / #161
 FB-04C mixed quadratic-normal jet x Riesz boundary coupling       PROVED / #163
 FB-05 independent contradiction-producing arithmetic restriction  NOW / sole selected first break
-  current research slice: full scalar pivot/background dynamics
+  current research slice: threshold-to-threshold Schur barrier
 A4b2b universal one-step domination                               BROAD FALLBACK
 GLOBAL first-bad exclusion                                        AFTER scoped arithmetic closure
 ```
@@ -48,42 +48,17 @@ The selected action remains `E4_A4_REGULAR_SCHUR_ENERGY_SIGN` under frontier `FI
 
 The selected first-break ID remains `E4A4-SCHUR-FB-05`.
 
-## Why routing changes after #165-#168
+## Why routing changes after #165-#170
 
 The formal break has not changed, but the best way to interrogate it has.
 
-### #165 — endpoint scalar
+- #165 shows endpoint-scalar positivity alone is not a contradiction mechanism.
+- #166 aligns finite discovery with the true shifted secular ray and isolates a near-critical Q16/N3/K4/odd family.
+- #167 shows direct whole-cell Arb subdivision is dependency-limited: 256/256 depth-8 leaves remain unresolved.
+- #168 identifies the boundary-flat seventh/ninth-order threshold jets and finds the full Q17 state continues downward but positive.
+- #170 moves the scalar to theorem-aligned `[W|c]` geometry, finite-certifies q17 Schur visibility, separates a positive entering-q pivot effect from a negative smooth-background finite difference, and finds the sampled physical H1 pivot remains positive through q19.
 
-The exact executable `canonicalPolePrimeRieszEndpointScalar L 8` normalization was audited. Broad finite positive evidence survived, but endpoint positivity alone would only propagate retained Riesz negativity. It is therefore not the default standalone closure mechanism.
-
-### #166 — actual shifted state
-
-Discovery was aligned with the theorem state:
-
-```text
-u_lambda = c - W(H-lambda G)^(-1)r.
-```
-
-The broad scout found no finite negative successor but isolated a near-critical odd `Q16/N3/K4` family.
-
-### #167 — Q16 scalar barrier
-
-No floating negative point was found. The direct whole-cell Arb representation remained unresolved in all 256 depth-8 leaves.
-
-Therefore repeated subdivision of the same dependency-heavy full matrix is not the current research strategy.
-
-### #168 — prime-entry threshold jet
-
-Boundary-flat parity annihilation gives exact executable first surviving source-energy orders:
-
-```text
-odd  -> order 7 through M3^2
-even -> order 9 through M4^2
-```
-
-The exact log17 threshold and 18 two-sided Arb microscope points remained positive, while the full Q17 state continued downward but remained positive.
-
-Therefore the favorable isolated entering-prime jet does not determine the full canonical drift.
+Therefore the pivot/background decomposition itself is consumed research infrastructure. The current question is whether integrated local envelope dynamics create a threshold-to-threshold barrier.
 
 ## Selected action — E4_A4_REGULAR_SCHUR_ENERGY_SIGN
 
@@ -95,24 +70,24 @@ find an independent canonical arithmetic property that makes the retained shifte
 negative state impossible.
 ```
 
-The current highest-information attack is now:
+The current highest-information attack is:
 
 ```text
-full scalar final Sylvester/Schur pivot
-=
-smooth canonical background
-+
-high-order entering prime-power threshold kick.
+use the theorem-aligned H1 Schur envelope locally,
+preserve pole/arch/prime/scalar cancellation,
+and compare integrated background loss from one genuine arithmetic seam
+to the next against arithmetic threshold replenishment.
 ```
 
 Research questions:
 
-1. reconstruct the scalar pivot independently and by signed channels;
-2. measure/background-bound its threshold variation;
-3. derive the pivot sensitivity to the high-order rank-one prime-entry term;
-4. estimate/test the catch-up scale;
-5. determine whether a real barrier, finite bad successor, or parity incompatibility results;
-6. preserve simultaneous-parity and odd-selected coverage as live obligations.
+1. can the local envelope derivative be bounded/certified on an arithmetic interval without assuming global monotonicity?
+2. which exact channel derivatives create the q17 near-cancellation?
+3. how much positive barrier can the background consume before the next nonzero von-Mangoldt seam?
+4. how much barrier is replenished by the entering prime-power threshold response?
+5. can the H1 pivot reach zero before the next seam?
+6. does the mechanism persist across sizes and both parities?
+7. can any surviving inequality be composed with the exact #161/#163 retained state without restating successor positivity?
 
 This is not a revival of global Schur monotonicity. No fixed global derivative sign is assumed.
 
@@ -138,10 +113,11 @@ endpoint-scalar executable audit                            RESEARCH / #165
 shifted-state same-state finite discriminator               RESEARCH / #166
 Q16 scalar-barrier / interval-method audit                  RESEARCH / #167
 threshold moment-jet / Q17 microscope                       RESEARCH / #168
+theorem-aligned Schur visibility/background audit           RESEARCH / #170
 
 source-moment <-> M4 coupling                               OPEN
 endpoint-scalar global sign/nonvanishing                    OPEN
-full scalar pivot/background inequality                     OPEN / ACTIVE
+threshold-to-threshold Schur barrier                        OPEN / ACTIVE
 simultaneous even/odd bad exclusion                         OPEN
 odd-selected branch closure                                 OPEN
 final contradiction-producing arithmetic restriction       OPEN
@@ -157,9 +133,11 @@ final contradiction-producing arithmetic restriction       OPEN
 - endpoint-scalar positivity alone is not first-bad exclusion;
 - exact finite-prime sampling does not by itself determine a local derivative;
 - threshold prime-entry stabilization does not imply full-source stabilization;
+- q17 visibility is a finite certificate, not a universal theorem;
+- independent channel Schur pivots cannot be summed;
+- finite Arb central differences are not derivative theorems;
 - simultaneous even/odd badness remains open;
 - selected parity is not even WLOG;
-- finite Arb certification is not Lean theorem authority;
 - `UNRESOLVED` interval output is not sign evidence;
 - global aperture/Schur monotonicity remains quarantined;
 - brute direct whole-cell subdivision of the current dependency-heavy matrix representation is not the current certification route.
@@ -176,10 +154,10 @@ final contradiction-producing arithmetic restriction       OPEN
 - terminal claim remains `RH_OPEN`;
 - controller theorem authority and terminal-claim mutation remain false.
 
-Control-v2 tests additionally lock the post-#168 routing context so the selected action cannot silently revert to pre-#165 priorities.
+Control-v2 tests additionally lock the post-#170 routing context so the selected action cannot silently revert to the pre-#170 pivot-construction priority.
 
 Newest research implications:
 
-`../RESEARCH_LEADS_POST_168_THRESHOLD_JET_BACKGROUND_DRIFT_DELTA.md`
+`../RESEARCH_LEADS_POST_170_SCHUR_VISIBILITY_THRESHOLD_BARRIER_DELTA.md`
 
 **RH remains OPEN.**

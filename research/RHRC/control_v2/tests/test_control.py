@@ -44,15 +44,16 @@ class ControlV2Tests(unittest.TestCase):
             "FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN",
         )
 
-    def test_control_note_records_post168_research_without_moving_theorem_anchor(self):
+    def test_control_note_records_post170_research_without_moving_theorem_anchor(self):
         control = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
         note = control["control_note"]
-        self.assertIn("PR #168", note)
-        self.assertIn("9657dad6f1e262b1fa7e08e6944aaa935feeaf33", note)
-        self.assertIn("full scalar Sylvester/Schur pivot", note)
-        self.assertIn("CONTINUES_DOWN_BUT_POSITIVE", note)
+        self.assertIn("PR #170", note)
+        self.assertIn("70689692d5b92252bf9da97740385aaced2bf197", note)
+        self.assertIn("theorem-aligned [W|c] one-step Schur pivot", note)
+        self.assertIn("Schur visibility", note)
+        self.assertIn("threshold-to-threshold Schur barrier", note)
         self.assertIn("PR #117 remains the Control-v2 semantic anchor", note)
         self.assertEqual(control["merged_theorem_anchor"]["pr"], 163)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
@@ -94,7 +95,7 @@ class ControlV2Tests(unittest.TestCase):
         self.assertGreater(scores["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"],
                            scores["E4_B_PARITY_SHIFTED_NULLITY"])
 
-    def test_regular_schur_action_is_post168_fb05_pivot_route(self):
+    def test_regular_schur_action_is_post170_fb05_barrier_route(self):
         registry = json.loads(
             (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
         )
@@ -109,11 +110,15 @@ class ControlV2Tests(unittest.TestCase):
             "PR #166",
             "PR #167",
             "PR #168",
+            "PR #170",
             "endpoint positivity alone",
             "true shifted secular ray",
             "256 depth-8 leaves remain UNRESOLVED",
             "CONTINUES_DOWN_BUT_POSITIVE",
-            "full scalar Sylvester/Schur pivot",
+            "theorem-aligned [W|c] one-step Schur pivot",
+            "nonzero q17 Schur visibility",
+            "threshold-to-threshold Schur barrier",
+            "finite Arb central differences are not derivative theorems",
             "nonzero explicitCanonicalSourceMoment does not imply M4",
             "finite weighted sample sum does not by itself determine the seventh jet",
             "simultaneous even/odd successor badness",
@@ -125,8 +130,8 @@ class ControlV2Tests(unittest.TestCase):
 
         self.assertEqual(action["dead_route_matches"], [])
         self.assertEqual(break_ids, ["E4A4-SCHUR-FB-05"])
-        self.assertIn("#165-#168", first_breaks)
-        self.assertIn("full-pivot/background variation law", first_breaks)
+        self.assertIn("#165-#170", first_breaks)
+        self.assertIn("threshold-to-threshold Schur barrier", first_breaks)
         self.assertIn("without restating successor positivity", first_breaks)
 
         selected_break = _selected_first_break(
