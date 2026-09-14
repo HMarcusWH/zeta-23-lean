@@ -177,7 +177,11 @@ The derivative of the minimizing-trial Schur value changes sign in tested canoni
 
 The envelope identity `S'(L)=<M'(L)u(L),u(L)>`, if theoremized, remains useful diagnostically; it does not imply a fixed sign.
 
-**Post-#168 clarification:** the current threshold-pivot/background route does not revive DR-022. It is local to actual arithmetic seams and decomposes smooth background variation from the high-order entering-prime response without assuming a fixed global derivative sign.
+**Post-#168 clarification:** the threshold-pivot/background route does not revive DR-022. It is local to actual arithmetic seams and decomposes smooth background variation from the high-order entering-prime response without assuming a fixed global derivative sign.
+
+**Post-#170 clarification:** the theorem-aligned `[W|c]` research layer now locks the equivalent finite-dimensional directional Schur derivative identity exactly in executable algebra and finite-certifies opposite local motions at q17: the entering arithmetic atom raises the pivot while the q-removed background has negative central finite differences. This still does **not** revive global monotonicity. The live route is threshold-local and integrated: control total barrier loss from one genuine nonzero von-Mangoldt seam to the next, allowing the derivative to vary and change sign.
+
+**Revival firewall:** any future proof that assumes or concludes one global sign for `S'(L)` is still DR-022 unless it supplies genuinely new hypotheses excluding the known sign-changing behavior. A threshold-to-threshold integral inequality is a different route.
 
 ## DR-023 — universal positive elementary source-atom energy
 
