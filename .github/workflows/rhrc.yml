@@ -124,6 +124,18 @@ jobs:
             --input research/RHRC/routes/R003_ccm_bridge/fixtures/post167_fb05_q17_threshold_v1.json \
             --discovery /tmp/POST167_FB05_Q17_THRESHOLD_DISCOVERY.json \
             --output /tmp/POST167_FB05_Q17_THRESHOLD_CERTIFICATE.json
+      - name: Check post-#169 theorem-aligned Schur visibility algebra
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post169_fb05_schur_visibility_scope.py
+      - name: Scout post-#169 threshold Schur visibility and background drift
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post169_fb05_threshold_pivot_scope.py \
+            --q 17 --n 3 --parity odd --grid 97 \
+            --output /tmp/POST169_FB05_SCHUR_VISIBILITY_DISCOVERY.json
+      - name: Replay post-#169 threshold Schur visibility with Arb
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post169_fb05_threshold_pivot_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post169_fb05_threshold_pivot_v1.json \
+            --output /tmp/POST169_FB05_SCHUR_VISIBILITY_CERTIFICATE.json
       - name: Audit R004 scalar-shift invariants
         run: python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
       - name: Reject external reference code as a Lean dependency

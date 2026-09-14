@@ -1,0 +1,21 @@
+{
+  "schema_version": "POST169_FB05_THRESHOLD_PIVOT_FIXTURE_v1",
+  "claim_cap": "RIGOROUS_FINITE_POINT_AUDIT_ONLY",
+  "theorem_authority_pr": 163,
+  "research_anchor_pr": 168,
+  "target": {
+    "q": 17,
+    "predecessor_N": 3,
+    "successor_K": 4,
+    "selected_parity": "odd"
+  },
+  "source_offset_exponents": [8, 10, 12, 14, 16, 18, 20],
+  "arb_precision_bits": 256,
+  "nonclaims": [
+    "The fixture does not assert Schur visibility is nonzero.",
+    "The fixture does not assert a sign for the background derivative.",
+    "The fixture does not assert whole-cell positivity or a finite bad successor.",
+    "No numerical result is Lean theorem authority.",
+    "RH remains OPEN."
+  ]
+}
