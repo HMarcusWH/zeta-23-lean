@@ -12,6 +12,7 @@
   ],
   "arb_targets": [
     {"q": 9, "predecessor_N": 2, "successor_K": 3, "selected_parity": "even"},
+    {"q": 13, "predecessor_N": 2, "successor_K": 3, "selected_parity": "even"},
     {"q": 16, "predecessor_N": 3, "successor_K": 4, "selected_parity": "odd"},
     {"q": 17, "predecessor_N": 3, "successor_K": 4, "selected_parity": "odd"}
   ],
@@ -22,6 +23,7 @@
     "Stress targets are finite falsification sentinels, not a completeness claim.",
     "Pointwise Arb replay is not whole-cell positivity.",
     "A sampled positive physical minimum is not a theorem.",
+    "q13/N2/even is included in Arb replay because the first #172 scout found it to have the smallest sampled physical pivot; this does not assert it is the exact cell minimum.",
     "No global Schur monotonicity is assumed.",
     "RH remains OPEN."
   ]
