@@ -1,4 +1,4 @@
-# RHRC formal audit — theorem authority through PR #163; research evidence through PR #176
+# RHRC formal audit — theorem authority through PR #163; research evidence through PR #178
 
 > **RH remains OPEN.**
 
@@ -15,19 +15,19 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #176
-validated research head = c6f53131b91b18aff2a50a6db2ddaa2761e7e5aa
-merged research commit = 96cccf715c02ed2bd4ae58f8362180020ae90854
-research tree = 28bd302c17a6128e538a3510917dafb670f6dce8
-RHRC #1072 = SUCCESS
-Permansson #845 = SUCCESS
+merged research PR = #178
+validated research head = 28df43faed0db8c0f12a25525df6c28467ce5b07
+merged research commit = fb2a181ce0d95d90396ead7730e7bf365616a153
+research tree = 96ab14953e9e8bff5245953082db8a6471648614
+RHRC #1074 = SUCCESS
+Permansson #847 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
 selected first break = E4A4-SCHUR-FB-05
 ```
 
-The theorem and research anchors are intentionally different. No result from #165-#176 is promoted to Lean theorem authority merely because those PRs are green.
+The theorem and research anchors are intentionally different. No result from #165-#178 is promoted to Lean theorem authority merely because those PRs are green.
 
 ## Exact theorem progression
 
@@ -121,59 +121,81 @@ sign P(L)=sign Delta_2(L) in H1.
 
 The floating scout sharpens the dangerous Q14 basin while remaining sampled-positive. The determinant minimum and pivot minimum are nearby but nonidentical.
 
-The 384-bit direct scalar interval audit respects physical Q=13/14/15 subcells and returns:
+The 384-bit direct scalar interval audit respects physical Q=13/14/15 subcells and returns 100% `UNRESOLVED` in each cell, with no positive, bad, H1-loss, or contact interval certified.
 
-```text
-Q=13 100% UNRESOLVED
-Q=14 100% UNRESOLVED
-Q=15 100% UNRESOLVED
-```
-
-No positive, bad, H1-loss, or contact interval is certified.
-
-**Audit conclusion:** exact scalarization does not by itself eliminate interval dependency. Matrix dimension was not the sole cause of the #167 certification failure. Repeating the same direct scalar formulas at greater precision/depth is not the next method.
+**Audit conclusion:** exact scalarization does not by itself eliminate interval dependency. Repeating the same direct scalar formulas at greater precision/depth is not the next method.
 
 ### #176 — fixed-unit q13/Q14 enclosure benchmark
 
-The fixed-domain pullback proposed after #174 is implemented independently in Arb while preserving the existing direct `[0,L]` evaluator as comparator. The exact CI pipeline tests primitive, full-matrix, theorem-aligned scalar, seam and zero-weight agreement.
+The fixed-domain pullback is implemented independently in Arb while preserving the existing direct `[0,L]` evaluator as comparator. The exact CI pipeline tests primitive, full-matrix, theorem-aligned scalar, seam and zero-weight agreement.
 
-The benchmark probe then generates six frozen primary Q14 boxes: three radii around the sampled determinant minimum and three around the sampled Schur-pivot minimum. The certifier reports:
-
-```text
-status = PASS
-method_classification = FIXED_UNIT_METHOD_ACCEPTED
-material_width_gain_factor = 2
-```
-
-For all six primary boxes:
+The benchmark contains six frozen primary Q14 boxes around the sampled determinant and Schur-pivot basins. With predeclared material-width factor `2.0`, all six satisfy the strict-narrower/material-gain criterion, and the certifier reports
 
 ```text
-delta_strictly_narrower = true
-delta_material_gain = true
+FIXED_UNIT_METHOD_ACCEPTED
 ```
 
-**Audit conclusion:** the fixed-unit pullback passes the predeclared finite method-selection gate for the q13/Q14 laboratory. It materially reduces determinant enclosure width on that frozen benchmark. This is not a determinant sign, stationary theorem, whole-cell positivity result, arbitrary first-bad theorem, or Lean promotion.
+**Audit conclusion:** fixed-unit passes the finite representation-selection gate. This is not determinant sign, stationary existence, whole-cell positivity, arbitrary first-bad closure, or theorem promotion.
 
-**Validation note:** the exact CI pipeline generated the benchmark schedule from the frozen fixture immediately before certification. The standalone certifier currently trusts a supplied `PASS` benchmark schedule rather than independently rebinding every schedule field to the fixture; that replay-hardening issue was identified in review and remains software validation debt, not additional mathematical evidence.
+### #178 — complete derivative implementation / raw derivative-box discrimination
+
+PR #178 differentiates the complete fixed-Q canonical source:
+
+```text
+M'(L)=pole'(L)-arch'(L)-prime'(L)
+```
+
+and propagates the derivative through the theorem-aligned `[W|c]` geometry to
+
+```text
+Delta_2' = a'd + ad' - 2bb'.
+```
+
+The implementation checker independently compares the analytic derivative evaluator against centered finite differences at frozen Q13/Q14/Q15 points through primitive, complete 7x7 matrix, theorem-aligned scalar, and odd-N2 ancestry layers. Derivative seam continuation is required only at zero-von-Mangoldt seams 14 and 15.
+
+The rigorous six-primary-box Q14 certifier returns
+
+```text
+DERIVATIVE_UNRESOLVED
+orientation = NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN
+left_negative_labels  = []
+left_positive_labels  = []
+right_negative_labels = []
+right_positive_labels = []
+derived_stationary_existence_if_continuity_used = false
+uniqueness_claim = false
+```
+
+and separately
+
+```text
+NO_BAD_OR_H1_LOSS_INTERVAL_CERTIFIED
+```
+
+with empty bad/H1-loss label sets.
+
+**Audit conclusion:** the analytic derivative implementation is validated research infrastructure, but raw interval evaluation of the assembled determinant derivative does not yet discriminate sign on the frozen side boxes. `DERIVATIVE_UNRESOLVED` is not zero/stationary evidence.
+
+#178 also closes the #176 standalone replay-hardening debt by binding the benchmark schedule to the checked-in fixture and adversarially rejecting malformed schedules.
 
 ## Current post-green frontier
 
-The representation-selection gate has now been consumed. The next research problem is whether the fixed-unit conditioning gain survives differentiation strongly enough to decide local Q14 stationary structure.
+The derivative implementation exists; the next problem is dependency structure, not derivative existence.
 
 Highest-leverage discriminator:
 
 ```text
-fixed-unit alpha', beta', gamma'
--> a', b', d'
--> Delta_2' = a'd + ad' - 2bb'
--> independent centered-finite-difference checks at frozen points
--> measure rigorous derivative interval conditioning
--> only if useful: local Taylor / interval Newton / Krawczyk minimum isolation.
+1. rigorous point Delta_2' balls at frozen primary/control centers
+2. compare exact derivative representations
+     raw: Delta_2' = a'd + ad' - 2bb'
+     H1:  Delta_2' = a'P + aP'
+3. only if point orientation is visible, implement Delta_2'' and centered mean-value/Taylor bounds
+4. only after a two-sided derivative bracket, attempt interval Newton/Krawczyk.
 ```
 
-This is local analytic control, not a revival of global aperture/Schur monotonicity. Interval Newton/Krawczyk is now justified as a candidate downstream tool, not assumed to succeed.
+This is local correlation-preserving analytic control, not a revival of global aperture/Schur monotonicity. Repeating the same raw derivative expression with only greater precision/subdivision is not a new route.
 
-A positive q13 whole-cell certificate would be a finite method/structure result, not FB-05 closure: the exact retained first-bad state from #153/#161 is not restricted to that one finite cell.
+A positive q13 whole-cell certificate would remain a finite method/structure result, not FB-05 closure: the retained first-bad state from #153/#161 is not restricted to that one finite cell.
 
 ## Current open theorem obligations
 
@@ -198,7 +220,7 @@ RiemannHypothesis
 
 ## Claim firewall
 
-- #165-#176 are research evidence, not theorem promotion.
+- #165-#178 are research evidence, not theorem promotion.
 - exact executable algebra is not Lean theorem authority.
 - finite Arb certification is not automatically a whole-cell or global theorem.
 - absence of sampled negative states is not positivity.
@@ -210,6 +232,7 @@ RiemannHypothesis
 - `UNRESOLVED` interval output is not sign evidence.
 - direct scalar subdivision is not the next strategy after #174.
 - #176 fixed-unit method acceptance is scoped to the frozen finite benchmark.
+- #178 `DERIVATIVE_UNRESOLVED` is not `Delta_2'=0` and not stationary evidence.
 - determinant and pivot minima are distinct optimization targets.
 - sourceMoment nonzero does not imply `M4` nonzero, nor conversely.
 - simultaneous parity badness and odd-selected coverage remain open.
