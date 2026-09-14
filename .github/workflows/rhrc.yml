@@ -86,6 +86,8 @@ jobs:
             --output /tmp/POST163_ENDPOINT_SCALAR_CERTIFICATE.json
       - name: Check post-#165 FB-05 shifted-state plumbing
         run: python research/RHRC/routes/R003_ccm_bridge/check_post165_fb05_shifted_state_scope.py
+      - name: Check post-#165 FB-05 shifted-state Arb plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post165_fb05_shifted_state_arb_scope.py
       - name: Scout post-#165 FB-05 same-state scope
         run: |
           python research/RHRC/routes/R003_ccm_bridge/probe_post165_fb05_same_state_scope.py \
