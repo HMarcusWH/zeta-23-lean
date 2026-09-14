@@ -109,7 +109,7 @@ jobs:
         run: |
           python research/RHRC/routes/R003_ccm_bridge/certify_post166_fb05_cell_barrier_scope.py \
             --input research/RHRC/routes/R003_ccm_bridge/fixtures/post166_fb05_cell_barrier_v1.json \
-            --max-depth 4 \
+            --max-depth 8 \
             --output /tmp/POST166_FB05_CELL_BARRIER_CERTIFICATE.json
       - name: Audit R004 scalar-shift invariants
         run: python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
