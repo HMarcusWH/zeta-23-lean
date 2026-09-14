@@ -30,7 +30,8 @@
         "PR #166 aligns finite discovery with the true shifted secular ray u_lambda = c - W(H-lambda G)^(-1)r and isolates a near-critical Q16/N3/K4/odd family without finding a finite bad successor",
         "PR #167 attacks the full Q16 near-critical cell, finds no floating negative point, and shows brute direct whole-cell Arb subdivision is dependency-limited: all 256 depth-8 leaves remain UNRESOLVED",
         "PR #168 verifies exact executable boundary-flat prime-entry jets (odd first surviving order 7 through M3^2; even first surviving order 9 through M4^2), certifies the log17 threshold and 18 two-sided microscope points positive, and finds the full Q17 state CONTINUES_DOWN_BUT_POSITIVE",
-        "the isolated favorable entering-prime jet therefore does not determine the full canonical aperture drift; the current information target is a dependency-reduced full scalar Sylvester/Schur pivot decomposition into smooth background plus high-order prime-power kick",
+        "PR #170 reconstructs the theorem-aligned [W|c] one-step Schur pivot, finite-certifies nonzero q17 Schur visibility, certifies the entering-q pivot effect positive at seven checked offsets, and certifies the q-removed background central finite difference negative at seven tested scales while a 97-point physical scout remains H1-aligned and sampled-positive through q19",
+        "the full-pivot/background decomposition is now consumed research infrastructure; the current information target is threshold-to-threshold Schur barrier control using the local envelope identity without assuming global monotonicity",
         "FB-04B same-state shifted Riesz x cross-parity source composition is consumed theorem infrastructure and must not remain listed as open",
         "FB-04C mixed-source jet / Riesz coupling is consumed theorem infrastructure and must not remain a live first break",
         "nonzero explicitCanonicalSourceMoment does not imply M4 != 0 and M4 != 0 does not imply nonzero explicitCanonicalSourceMoment without a new canonical-state relation",
@@ -38,7 +39,9 @@
         "no sign or nonvanishing theorem for canonicalPolePrimeRieszEndpointScalar L 8 is currently available",
         "simultaneous even/odd successor badness is still allowed and should be tested with actual canonical arithmetic rather than assumed away",
         "the odd-selected first-bad branch remains a real coverage gap; D is not unitary and no WLOG-even reduction is available",
-        "global aperture and global minimizing-Schur monotonicity remain quarantined; the new pivot/background route is local to arithmetic thresholds and must not assume a fixed global derivative sign",
+        "global aperture and global minimizing-Schur monotonicity remain quarantined; the threshold-barrier route is local/integrated over arithmetic intervals and must not assume a fixed global derivative sign",
+        "independent pole/arch/prime/scalar Schur pivots cannot be added because the Schur map is nonlinear; cancellation-preserving attribution must use matrix derivatives / the complete minimizing trial",
+        "finite Arb central differences are not derivative theorems and the 97-point q17-to-q19 scout is not interval positivity",
         "DR-024 kills only pointwise fixed-sign smoothed-integrand positivity; the integrated Riesz/cross-parity/mixed-source route is not a dead-route revival",
         "the decisive target remains an independently meaningful canonical arithmetic restriction, not successor positivity or canonicalOneStepDomination under another name",
         "the R003 Arb/numerical harness is scoped falsification infrastructure; interval UNRESOLVED is not sign evidence and research outputs do not become Lean theorem authority"
@@ -54,7 +57,7 @@
       "first_breaks": [
         {
           "id": "E4A4-SCHUR-FB-05",
-          "statement": "after consuming #163 theorem authority and the #165-#168 endpoint-scalar, shifted-state, near-critical cell and threshold-jet falsification results, no independent canonical full-pivot/background variation law, parity restriction, source-sampling relation, endpoint-scalar consequence, or other theorem-backed invariant yields an incompatible restriction on the exact forced shifted state without restating successor positivity",
+          "statement": "after consuming #163 theorem authority and the #165-#170 endpoint-scalar, shifted-state, near-critical cell, threshold-jet and Schur-visibility/background results, no theorem-backed threshold-to-threshold Schur barrier, integrated background-loss bound, parity restriction, source-sampling relation, endpoint-scalar consequence, or other independent canonical arithmetic invariant yields an incompatible restriction on the exact forced shifted state without restating successor positivity",
           "test_id": "falsify_and_prove_fb05_canonical_arithmetic_restriction",
           "estimated_cost": 2.0,
           "decisive_if_failed": true
@@ -73,7 +76,7 @@
         "PR #137 proves canonicalOneStepDomination is sufficient but not its arithmetic truth",
         "under predecessor nonnegativity and one-dimensional shell geometry, universal domination is essentially the missing successor positivity and has no information gain if proved by restatement",
         "PR #163 sharpens the selected-state arithmetic route but does not make universal domination a smaller theorem",
-        "PRs #165-#168 further sharpen the research target toward the scalar pivot/background dynamics rather than universal domination",
+        "PRs #165-#170 sharpen the research target toward threshold-to-threshold Schur barrier dynamics rather than universal domination",
         "generic Hermitian/parity/KKT/transfer/displacement structure remains quarantined by countermodels",
         "factorwise alpha/Gamma/overlap/source-moment closure remains quarantined",
         "atomwise positive determinant/SOS remains quarantined"
@@ -116,7 +119,7 @@
         "PR #159 exposes exact retained boundary defects but does not supply an opposing sign",
         "PR #161 aligns the even negative secular trial with exact Riesz-8/Riesz-9 structure and the cross-parity explicit source obstruction",
         "PR #163 aligns that same retained even shifted trial with the exact mixed seventh source jet and squared-jet Riesz boundary, but still supplies no contradiction-producing arithmetic restriction",
-        "PRs #165-#168 narrow the surviving arithmetic search to the full scalar pivot/background dynamics; none proves negative-root exclusion",
+        "PRs #165-#170 narrow the surviving arithmetic search to threshold-to-threshold Schur barrier dynamics; none proves negative-root exclusion",
         "no division by alpha, Gamma, overlap or source moment is legal without separate nonzeroness",
         "terminal Mathlib RH still requires the outside-strip/trivial-zero seam after negative-root exclusion"
       ],
@@ -151,7 +154,8 @@
         "rank-at-most-one defect does not identify which parity carries a zero mode",
         "#163 does not upgrade D to metric transport or prove simultaneous-parity badness impossible",
         "#168 exposes parity-asymmetric threshold jets but does not by itself exclude simultaneous badness because the full canonical background can dominate the entering atom",
-        "the active route uses exact secular/source/mixed-jet/Riesz and pivot/background constraints rather than assuming spectral equivalence through D"
+        "#170 shows the odd q17 threshold direction is Schur-visible at one finite target but still does not exclude simultaneous parity badness or supply a universal barrier",
+        "the active route uses exact secular/source/mixed-jet/Riesz and threshold-barrier constraints rather than assuming spectral equivalence through D"
       ],
       "score_inputs": {
         "cost": 1.8,
@@ -183,7 +187,7 @@
         "strict monotonicity yields root uniqueness while a hypothetical off-line zero already forces one negative root",
         "root uniqueness is weaker than negative-root exclusion",
         "post-#150 experiments disfavor global aperture/selected-Schur monotonicity as the decisive mechanism",
-        "post-#168 pivot/background work must remain local to arithmetic seams rather than revive a global fixed-sign derivative claim",
+        "post-#170 threshold-barrier work must remain local/integrated over arithmetic seams rather than revive a global fixed-sign derivative claim",
         "the theorem-backed same-state source/Riesz/mixed-jet obstruction is more direct unless monotonicity supplies independent source-specific exclusion information"
       ],
       "score_inputs": {
@@ -215,7 +219,7 @@
       "surviving_objections": [
         "a strictly positive predecessor floor is not available uniformly from first-bad minimality alone",
         "the shell gap g_N=q_N-mu_N may fail to stay positive",
-        "the post-#168 scalar pivot/background arithmetic route is more direct than rebuilding a global deformation horizon"
+        "the post-#170 threshold-barrier arithmetic route is more direct than rebuilding a global deformation horizon"
       ],
       "score_inputs": {
         "cost": 2.0,
