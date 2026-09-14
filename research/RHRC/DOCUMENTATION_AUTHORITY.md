@@ -20,8 +20,6 @@ A green but unmerged PR is branch evidence. A merged Lean file is theorem author
 
 ## Three-anchor model
 
-Living docs must distinguish three different kinds of authority.
-
 ### 1. Theorem-state anchor
 
 ```text
@@ -37,15 +35,15 @@ This remains the compiler-validated mathematical authority until a later theorem
 ### 2. Research-evidence anchor
 
 ```text
-latest merged research PR = #172
-validated research head = 4c857cd031497d895232a18a4bfb9a094d9facae
-merged research commit = a31bb0bb7f025d7727dd3f224c705af797f64a19
-research tree = c64b098c3159d739fa15eeaa96e35693615873d7
-RHRC #1063 = SUCCESS
-Permansson #836 = SUCCESS
+latest merged research PR = #174
+validated research head = 2d9fc5a5f7d552afb893c871fe84c9ed61a60ac0
+merged research commit = 946788f09c871de5133e2a8c8f5c94d7d69b521d
+research tree = 2a22b83c4d5903158c036d38420d9ae79b7726f2
+RHRC #1070 = SUCCESS
+Permansson #843 = SUCCESS
 ```
 
-This records the newest green research/discovery state. It does **not** upgrade executable identities, floating searches, Arb finite-point certifications, quadrature diagnostics, or finite-difference enclosures into Lean theorem authority.
+This records the newest green research/discovery state. It does **not** upgrade executable identities, floating searches, Arb finite-point/interval certifications, or finite-difference diagnostics into Lean theorem authority.
 
 ### 3. Control-plane semantic anchor
 
@@ -58,26 +56,11 @@ This changes only when controller capability/authority semantics change, not mer
 
 ## Dynamic live-head rule
 
-Do **not** freeze a mutable documentation merge as a permanent string such as
+Do **not** freeze a mutable documentation merge as a permanent `live main` string inside long-lived authority prose. A docs or research merge moves `main` without changing theorem authority.
 
-```text
-live main after PR #X = <sha>
-```
+When an exact current `main` SHA is needed for execution or handover, record it in the time-specific execution document, PR description, or dated research delta.
 
-inside long-lived authority prose unless the exact historical commit is itself the intended object of record.
-
-A docs or research merge moves `main` without changing theorem authority. Therefore living docs should say:
-
-```text
-Live GitHub head is authoritative dynamically.
-Theorem authority = theorem-state anchor.
-Latest research evidence = research-evidence anchor.
-Control semantics = control-plane semantic anchor.
-```
-
-When an exact current `main` SHA is needed for an execution or handover, record it in the time-specific execution document, PR description, or dated research delta.
-
-## Living SSOTs
+## Living SSOT update law
 
 Update these when their underlying state changes:
 
@@ -100,68 +83,58 @@ Historical dated deltas are not rewritten to look current.
 
 ### Theorem authority through #163
 
-PR #163 compiler-validates:
-
-```text
-exact complex mixed quadratic-normal source pairing
-h^(7)(0) = -2*(2*pi)^6*M4 on even boundary-flat carriers
-mixed-jet norm-square identity
-finite-prime sampling of the same quadraticNormalSourceAtom
-Riesz-8/Riesz-9 boundary through the squared seventh jet
-retained even-shifted specialization
-strict retained R9 upper bound without endpoint-scalar sign
-crossParityGamma != 0 under opposite-parity goodness
-```
+PR #163 compiler-validates the exact mixed quadratic-normal source pairing, the seventh mixed jet `-2*(2*pi)^6*M4`, finite-prime sampling of the same observable, the squared-jet Riesz-8/Riesz-9 boundary, the retained even-shifted specialization, and scoped cross-parity Gamma nonvanishing.
 
 No later research PR changes those theorem declarations.
 
-### Research progression #165-#172
-
-The current research-evidence layer adds, without theorem promotion:
+### Research progression #165-#174
 
 ```text
 #165 exact executable S8 audit
      -> broad finite positive evidence
-     -> positivity alone is not a contradiction mechanism
+     -> positivity alone not a contradiction
 
 #166 theorem-aligned shifted-state executable
      -> generalized H-lambda G resolvent
      -> near-critical Q16/N3/K4/odd family isolated
 
-#167 Q16 scalar-barrier attack
+#167 Q16 full-cell attack
      -> no floating negative point
-     -> direct whole-cell Arb remains 256/256 UNRESOLVED
-     -> dependency-heavy full-matrix subdivision rejected as current method
+     -> direct whole-cell Arb 256/256 UNRESOLVED
+     -> brute dependency-heavy matrix subdivision rejected
 
-#168 boundary-flat prime-entry threshold jet
-     -> odd first surviving order 7 ~ M3^2
-     -> even first surviving order 9 ~ M4^2
+#168 boundary-flat threshold jet
+     -> odd order 7 ~ M3^2
+     -> even order 9 ~ M4^2
      -> exact threshold + 18/18 two-sided Arb points positive
-     -> full Q17 state continues downward but remains positive
 
 #170 theorem-aligned one-step Schur visibility/background audit
-     -> [W|c] pivot aligned with post-#150 selected residual
+     -> [W|c] pivot aligned with selected residual
      -> q17 direction finite-certified Schur-visible
-     -> exact q17 entering atom raises pivot at checked offsets
-     -> q-removed background finite difference negative at checked scales
+     -> entering atom raises pivot at checked offsets
+     -> q-removed background finite difference negative
 
 #172 threshold-to-threshold production barrier audit
-     -> genuine von-Mangoldt intervals tested across q/N/parity
-     -> no sampled bad successor
-     -> finite current-q entry lift is sign-indefinite
-     -> q13/N2/K3/even isolated as strongest near-critical target
-     -> Arb near-minimum full pivot ~= +5.84e-12
-     -> Arb q13 entry lift ~= -6.38e-12
-     -> channel cancellation ratios reach ~1e9-1e10
+     -> current-q entry lift finite-certified with both signs
+     -> q13/N2/K3/even strongest near-critical target
+
+#174 exact q13 2x2 scalar-barrier audit
+     -> predecessor dimension 1, successor dimension 2
+     -> H1 <-> a>0
+     -> Delta_2=a*d-b^2
+     -> pivot sign = determinant sign in H1
+     -> physical Q=13/14/15 scalar continuations checked
+     -> direct 384-bit adaptive scalar interval audit remains
+        100% UNRESOLVED in every physical subcell
 ```
 
 The newest project synthesis is:
 
-`RESEARCH_LEADS_POST_172_Q13_EVEN_SCALAR_BARRIER_DELTA.md`.
+`RESEARCH_LEADS_POST_174_Q13_SCALAR_DEPENDENCY_FRONTIER_DELTA.md`.
 
 The previous post-green synthesis is:
 
-`RESEARCH_LEADS_POST_170_SCHUR_VISIBILITY_THRESHOLD_BARRIER_DELTA.md`.
+`RESEARCH_LEADS_POST_172_Q13_EVEN_SCALAR_BARRIER_DELTA.md`.
 
 ## Current route
 
@@ -177,31 +150,30 @@ PROVED THROUGH #163
   -> exact finite-prime sampling of same observable
   -> exact R8-R9 squared-jet boundary
 
-RESEARCHED THROUGH #172
+RESEARCHED THROUGH #174
   endpoint scalar audited
   theorem-aligned shifted finite state audited
-  Q16 near-critical scalar barrier isolated
-  dependency-heavy full-matrix interval representation falsified as current method
+  Q16 near-critical cell isolated
+  full-matrix interval representation falsified as current method
   prime-entry threshold moment jet identified
   theorem-aligned [W|c] Schur pivot reconstructed
-  q17 finite visibility/background competition isolated
-  threshold-to-threshold production dynamics tested across multiple arithmetic cells
-  arithmetic entry lift found sign-indefinite in finite Arb replay
-  q13/N2/K3/even near-zero complete scalar isolated
+  threshold-to-threshold production dynamics tested
+  arithmetic entry lift found sign-indefinite
+  q13/N2/K3/even reduced exactly to a 2x2 scalar barrier
+  direct scalar interval subdivision also found dependency-limited
 
 NOW
-  FB-05 q13/N2/K3/even 2x2 scalar determinant barrier
-  -> predecessor scalar a(L)
-  -> determinant Delta_2(L)=a(L)d(L)-b(L)^2
-  -> H1 + successor sign reduce to a(L)>0 and Delta_2(L)>0
-  -> rigorous physical Q=13/14/15 subcells over log13..log16
-  -> opposite-parity/same-q controls
+  FB-05 analytic/dependency-reduced scalar enclosure frontier
+  -> preserve a(L), Delta_2(L), odd-N2 ancestry
+  -> change representation/enclosure mathematics
+  -> benchmark against production evaluator
+  -> only then add derivative/Taylor/Newton machinery if useful
   -> theoremize only a genuinely independent generalizable restriction
 ```
 
 ## Claim firewall
 
-Research green is not theorem promotion. The #172 finite certificates do not prove a whole-cell q13 sign, a universal arithmetic-entry sign, a global derivative law, a global threshold barrier, or first-bad exclusion.
+Research green is not theorem promotion. The #174 finite scalar audit does not prove q13 positivity, negativity, zero contact, a universal derivative law, a global threshold barrier, or first-bad exclusion.
 
 Even a future full q13-cell positivity certificate would be a finite method/structure result unless its proof yields a theorem that applies to the arbitrary retained first-bad state forced by #153/#161.
 
