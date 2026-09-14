@@ -1,0 +1,40 @@
+{
+  "schema_version": "POST165_FB05_SAME_STATE_FIXTURE_v1",
+  "phase": "RIGOROUS_FINITE_INTERVAL_AUDIT",
+  "claim_cap": "RIGOROUS_FINITE_INTERVAL_EVIDENCE_ONLY",
+  "theorem_anchor_pr": 163,
+  "audit_anchor_pr": 165,
+  "frontier": "E4A4-SCHUR-FB-05",
+  "selection_policy": {
+    "status": "INITIAL_PLUMBING_SEEDS",
+    "rule": "Start from historical deterministic post-#150 smoke points. Replace or extend only with adversarial states emitted by the post-#165 floating scout and then Arb-replay them.",
+    "no_favorable_sign_selection": true
+  },
+  "smoke_cases": [
+    {
+      "Q": 2,
+      "L_num": 3,
+      "L_den": 4,
+      "N": 2,
+      "parity": "even",
+      "purpose": "historical even plumbing seed; no arithmetic expectation"
+    },
+    {
+      "Q": 3,
+      "L_num": 5,
+      "L_den": 4,
+      "N": 2,
+      "parity": "odd",
+      "purpose": "historical odd plumbing seed; no even-source theorem expectation"
+    }
+  ],
+  "candidates": [],
+  "nonclaims": [
+    "Smoke cases are infrastructure seeds, not selected evidence for a conjectured sign.",
+    "Floating discovery may nominate later candidates but cannot certify them.",
+    "Finite Arb replay is not Lean theorem authority.",
+    "No sourceMoment/M4 implication is assumed.",
+    "No global endpoint-scalar sign theorem is assumed.",
+    "RH remains OPEN."
+  ]
+}
