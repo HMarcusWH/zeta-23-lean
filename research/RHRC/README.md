@@ -15,12 +15,12 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #168
-validated research head = 9657dad6f1e262b1fa7e08e6944aaa935feeaf33
-merged research commit = 4e2c111a836f3fc95f8209485f726dc886c918e7
-research tree = 881e1f05302041f56ae4b6a14f14e45d7bbc096b
-RHRC #1055 = SUCCESS
-Permansson #828 = SUCCESS
+merged research PR = #170
+validated research head = 70689692d5b92252bf9da97740385aaced2bf197
+merged research commit = c94242fe41ae62b59aaa392a33e35034eb2c1b1e
+research tree = 38e38a1d4cf90afa0e8103e58d1cbae626ebdeef
+RHRC #1058 = SUCCESS
+Permansson #831 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
@@ -54,9 +54,9 @@ retained mixed-jet/Riesz specialization                               PROVED / #
 
 source-moment / M4 global rigidity                                    OPEN
 endpoint-scalar global sign/nonvanishing                              OPEN
+threshold-to-threshold Schur barrier                                  OPEN / ACTIVE RESEARCH
 simultaneous even/odd bad exclusion                                   OPEN
 odd-selected branch closure                                           OPEN
-full scalar pivot/background inequality                               OPEN / ACTIVE RESEARCH
 negative-root exclusion                                               OPEN
 terminal zeta/Mathlib seam                                            OPEN
 RH                                                                    OPEN
@@ -66,17 +66,11 @@ RH                                                                    OPEN
 
 ### #165 — endpoint scalar
 
-The exact executable `S8(L)` normalization is audited with prime powers. Broad finite evidence is positive, but positivity alone would only propagate `R8<0` to `R9<0`; it is not by itself a contradiction.
+The exact executable `S8(L)` normalization is audited with prime powers. Broad finite evidence is positive, but positivity alone is not a contradiction.
 
 ### #166 — theorem-aligned shifted state
 
-The finite discriminator uses the true generalized shifted secular ray
-
-```text
-u_lambda = c - W(H-lambda G)^(-1)r.
-```
-
-A broad scan found no finite negative successor and isolated the near-critical `Q=16,N=3,K=4,odd` family.
+The finite discriminator uses the true generalized shifted secular ray `u_lambda = c - W(H-lambda G)^(-1)r`. A broad scan found no finite negative successor and isolated the near-critical `Q16/N3/K4/odd` family.
 
 ### #167 — Q16 scalar barrier
 
@@ -84,43 +78,49 @@ The strongest finite candidate stayed positive in floating discovery. Direct who
 
 ### #168 — threshold moment jet
 
-Boundary-flat parity annihilation yields exact executable first surviving source-energy orders:
+Boundary-flat parity annihilation yields exact executable first surviving source-energy orders 7 through `M3^2` in odd parity and 9 through `M4^2` in even parity. The exact log17 threshold and 18 two-sided Arb microscope points certify positive. The full Q17 state continues downward but remains positive.
+
+### #170 — theorem-aligned Schur visibility
+
+The selected scalar is rebuilt in `[W|c]` one-step coordinates and unit-shell normalized. The q17 threshold direction is finite-certified Schur-visible (`rho != 0`); the exact entering-q pivot effect is positive at all seven checked positive offsets. The q-removed smooth background has negative central finite differences at all seven tested scales. A 97-point physical scout stays H1-aligned and sampled-positive through q19.
+
+No derivative, interval-positivity or barrier theorem follows.
+
+## Immediate frontier — FB-05 threshold-to-threshold Schur barrier
+
+The current high-information research object is the theorem-aligned H1 Schur pivot. Use the local envelope identity
 
 ```text
-odd  -> order 7, governed by M3^2
-even -> order 9, governed by M4^2
+P'(L) = u_L^T M'(L) u_L
 ```
 
-The exact log17 threshold and 18 two-sided Arb microscope points certify positive. The full Q17 state continues downward but remains positive.
+as a cancellation-preserving diagnostic, but do **not** assume a fixed global derivative sign.
 
-The isolated favorable entering-prime term therefore does not control the full canonical drift.
-
-## Immediate frontier — FB-05 full scalar pivot / background dynamics
-
-The next high-information research task is to work with a dependency-reduced final Sylvester/Schur pivot and decompose
+The next research pass should control or falsify
 
 ```text
-P(L) = P_background(L) + P_entering_q(L)
+P(L_next^-) - P(L_q^+)
+  = integral_{L_q}^{L_next} P'(L) dL
 ```
 
-near actual prime-power thresholds.
+from one genuine nonzero von-Mangoldt seam to the next, comparing smooth background loss with arithmetic threshold replenishment.
 
 Required information:
 
-1. exact pivot reconstruction;
-2. signed-channel/background reconstruction;
-3. threshold background variation;
-4. pivot sensitivity to the rank-one entering atom;
-5. catch-up scale between smooth drift and the high-order prime kick;
+1. exact/certified local envelope dynamics;
+2. pole/arch/active-prime/scalar derivative cancellation;
+3. integrated background loss over one arithmetic interval;
+4. threshold replenishment size and visibility;
+5. H1 validity throughout any claimed barrier interval;
 6. parity dependence and simultaneous-badness consequences;
-7. whether a real barrier or finite bad successor appears.
+7. broad q/N/parity falsification.
 
-This is **not** a revival of global Schur monotonicity. No global derivative sign is assumed.
+This is **not** a revival of global Schur monotonicity.
 
 ## Current execution priority
 
-1. **Build/falsify the full scalar pivot/background decomposition.**
-2. **Choose the weakest surviving theorem.** Formalize only if the decomposition supplies independent information rather than restating successor positivity.
+1. **Build/falsify the threshold-to-threshold Schur barrier.**
+2. **Choose the weakest surviving theorem.** Formalize only if the barrier supplies independent information rather than restating successor positivity.
 3. **Compose with the exact retained #161/#163 state.**
 4. **Close coverage debt.** Simultaneous parity and odd-selected branches remain explicit.
 5. **FB-06/07.** Same-state contradiction, negative-root exclusion, terminal seam.
@@ -128,8 +128,8 @@ This is **not** a revival of global Schur monotonicity. No global derivative sig
 ## Current research records
 
 - `CURRENT_RESEARCH_PLAN.md` — execution order and theorem gates.
-- `RESEARCH_LEADS_POST_168_THRESHOLD_JET_BACKGROUND_DRIFT_DELTA.md` — newest audited research synthesis.
-- `RESEARCH_LEADS_POST_163_MIXED_SOURCE_RIESZ_ARITHMETIC_FRONTIER_DELTA.md` — historical pre-#165 synthesis.
+- `RESEARCH_LEADS_POST_170_SCHUR_VISIBILITY_THRESHOLD_BARRIER_DELTA.md` — newest audited research synthesis.
+- `RESEARCH_LEADS_POST_168_THRESHOLD_JET_BACKGROUND_DRIFT_DELTA.md` — previous post-green synthesis.
 - `OBSTRUCTION_LEDGER.md` / `DEAD_ROUTES.md` — reusable blockers.
 - `routes/R003_ccm_bridge/README.md` — active route theorem/research surface.
 - `control_v2/README.md` — executable routing semantics.
@@ -141,12 +141,13 @@ This is **not** a revival of global Schur monotonicity. No global derivative sig
 - research PR green is not theorem authority.
 - exact executable algebra is not a Lean theorem.
 - finite Arb certification is not a global theorem.
+- finite central differences are not derivative theorems.
 - transformed negativity is not a contradiction.
 - exact discrepancy/Riesz identities are not arithmetic sign theorems.
 - endpoint-scalar positivity alone is not first-bad exclusion.
 - threshold prime-entry stabilization is not full-source stabilization.
-- nonzero explicit source moment does not establish nonzero M4, nor conversely.
-- finite prime samples do not by themselves determine the local seventh jet.
+- q17 Schur visibility is not a universal visibility theorem.
+- independent channel Schur pivots may not be added.
 - simultaneous even/odd badness remains open.
 - selected parity cannot be assumed even WLOG.
 - no division by alpha/Gamma/overlap/source moment without theorem-backed nonzeroness.
