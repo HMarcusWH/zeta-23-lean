@@ -37,15 +37,15 @@ This remains the compiler-validated mathematical authority until a later theorem
 ### 2. Research-evidence anchor
 
 ```text
-latest merged research PR = #168
-validated research head = 9657dad6f1e262b1fa7e08e6944aaa935feeaf33
-merged research commit = 4e2c111a836f3fc95f8209485f726dc886c918e7
-research tree = 881e1f05302041f56ae4b6a14f14e45d7bbc096b
-RHRC #1055 = SUCCESS
-Permansson #828 = SUCCESS
+latest merged research PR = #170
+validated research head = 70689692d5b92252bf9da97740385aaced2bf197
+merged research commit = c94242fe41ae62b59aaa392a33e35034eb2c1b1e
+research tree = 38e38a1d4cf90afa0e8103e58d1cbae626ebdeef
+RHRC #1058 = SUCCESS
+Permansson #831 = SUCCESS
 ```
 
-This records the newest green research/discovery state. It does **not** upgrade SymPy identities, floating searches, Arb finite-point certifications, or executable checks into Lean theorem authority.
+This records the newest green research/discovery state. It does **not** upgrade SymPy identities, floating searches, Arb finite-point certifications, or finite-difference enclosures into Lean theorem authority.
 
 ### 3. Control-plane semantic anchor
 
@@ -115,7 +115,7 @@ crossParityGamma != 0 under opposite-parity goodness
 
 No later research PR changes those theorem declarations.
 
-### Research progression #165-#168
+### Research progression #165-#170
 
 The current research-evidence layer adds, without theorem promotion:
 
@@ -138,16 +138,23 @@ The current research-evidence layer adds, without theorem promotion:
      -> even first surviving order 9 ~ M4^2
      -> exact threshold + 18/18 two-sided Arb points positive
      -> full Q17 state continues downward but remains positive
-     -> isolated favorable prime-entry jet does not control full drift
+
+#170 theorem-aligned one-step Schur visibility/background audit
+     -> [W|c] pivot aligned with post-#150 selected residual
+     -> q17 threshold direction finite-certified Schur-visible (rho != 0)
+     -> exact entering-q effect positive at 7/7 checked offsets
+     -> q-removed background finite difference negative at 7/7 checked scales
+     -> 97/97 sampled H1 states remain positive through q19
+     -> no whole-cell or barrier theorem
 ```
 
 The newest project synthesis is:
 
+`RESEARCH_LEADS_POST_170_SCHUR_VISIBILITY_THRESHOLD_BARRIER_DELTA.md`.
+
+The previous post-green synthesis is:
+
 `RESEARCH_LEADS_POST_168_THRESHOLD_JET_BACKGROUND_DRIFT_DELTA.md`.
-
-The historical predecessor remains:
-
-`RESEARCH_LEADS_POST_163_MIXED_SOURCE_RIESZ_ARITHMETIC_FRONTIER_DELTA.md`.
 
 ## Current route
 
@@ -163,112 +170,30 @@ PROVED THROUGH #163
   -> exact finite-prime sampling of same observable
   -> exact R8-R9 squared-jet boundary
 
-RESEARCHED THROUGH #168
+RESEARCHED THROUGH #170
   endpoint scalar audited
   theorem-aligned shifted finite state audited
   Q16 near-critical scalar barrier isolated
   brute whole-cell interval representation falsified as current method
   prime-entry threshold moment jet identified
-  Q17 remains positive but continues downward
+  theorem-aligned [W|c] Schur pivot reconstructed
+  q17 threshold direction shown finite-certified Schur-visible
+  q17 arithmetic kick raises pivot at checked offsets
+  smooth q-removed background decreases at checked scales
+  sampled H1 pivot remains positive through q19
 
 NOW
-  FB-05 full scalar pivot/background variation
-  -> dependency-reduced scalar pivot
-  -> exact channel/background reconstruction
-  -> prime-power threshold-kick coefficient
-  -> catch-up scale / barrier test
-  -> simultaneous-parity / odd-selected implications if available
-
-AFTER
-  weakest useful canonical arithmetic theorem
-  -> compose with exact retained state
-  -> negative-root exclusion
-  -> outside-strip/trivial-zero seam
-  -> explicit Mathlib RiemannHypothesis wrapper
+  FB-05 threshold-to-threshold Schur barrier
+  -> local envelope derivative, not global monotonicity
+  -> integrated background loss across genuine arithmetic intervals
+  -> cancellation-preserving derivative attribution
+  -> arithmetic replenishment at the next seam
+  -> broad q/N/parity falsification
+  -> theoremize only a genuinely independent surviving restriction
 ```
 
-## Current classification
+## Claim firewall
 
-Living summaries must reflect:
+Research green is not theorem promotion. The q17 finite certificates do not prove universal visibility, a derivative sign, interval positivity, or a threshold barrier. The formal first break remains FB-05 and the terminal claim remains `RH_OPEN`.
 
-```text
-same-state shifted-root Riesz x cross-parity source composition
-  -> PROVED / #161
-
-mixed quadratic-normal source seventh jet -> M4
-  -> PROVED / #163
-
-finite-prime term samples same quadraticNormalSourceAtom
-  -> PROVED / #163
-
-mixed seventh-jet squared R8-R9 boundary coupling
-  -> PROVED / #163
-
-endpoint-scalar global sign/nonvanishing
-  -> OPEN
-
-endpoint-scalar finite executable audit
-  -> RESEARCH / #165
-
-true shifted-state finite discriminator
-  -> RESEARCH / #166
-
-Q16 whole-cell floating barrier + interval-method falsification
-  -> RESEARCH / #167
-
-boundary-flat threshold moment jet
-  -> EXACT EXECUTABLE / FINITE EVIDENCE / #168
-  -> NOT SEPARATELY LEAN-THEOREMIZED
-
-full scalar pivot/background inequality
-  -> OPEN / ACTIVE RESEARCH FRONTIER
-
-explicit source moment <-> M4 rigidity
-  -> OPEN
-
-simultaneous even/odd bad exclusion
-  -> OPEN
-
-odd-selected closure
-  -> OPEN
-```
-
-## Permanent firewalls
-
-```text
-supporting theorem green != machine claim promotion
-research PR green != theorem authority
-exact executable algebra != Lean theorem
-finite Arb certification != whole-cell/global theorem
-absence of sampled negative state != positivity theorem
-retained transformed negative energy != contradiction
-exact discrepancy / Riesz identity != arithmetic sign
-endpoint-scalar positivity alone != first-bad exclusion
-threshold prime-entry stabilization != full canonical stabilization
-explicitCanonicalSourceMoment != 0 !=> M4 != 0
-M4 != 0 !=> explicitCanonicalSourceMoment != 0
-finite prime samples != local derivative determination without new theorem
-simultaneous even/odd badness remains open
-selected parity cannot be assumed even WLOG
-Riesz smoothing != pointwise sign
-pointwise smoothed-integrand positivity remains falsified
-UNRESOLVED interval enclosure != sign evidence
-no division by alpha/Gamma/overlap/source moment without theorem
-D remains algebraic, not unitary/isometric
-modified/generic source countermodel != zeta counterexample
-negative-root exclusion != terminal Mathlib RH wrapper
-```
-
-## Claim vocabulary
-
-- **PROVED** — exact statement established by Lean/CI;
-- **DERIVED** — direct consequence not separately theorem-locked;
-- **LOCAL LEAN CHECK** — local compilation outside merged theorem authority;
-- **EXACT EXECUTABLE** — symbolic/executable identity locked by research tooling, not Lean theorem authority;
-- **EXTERNAL DERIVED** — exact reasoning not yet repository-theoremized;
-- **LEAD / HYPOTHESIS** — motivated route worth testing;
-- **EXPERIMENTAL SIGNAL** — numerical/search/discovery evidence only;
-- **RIGOROUS FINITE CERTIFICATION** — interval/Arb statement in its exact finite scope only;
-- **OPEN** — not established.
-
-RH remains OPEN until the exact terminal theorem is proved and claim-validated.
+**RH remains OPEN.**
