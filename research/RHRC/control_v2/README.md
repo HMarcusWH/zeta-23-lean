@@ -14,19 +14,19 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #176
-validated research head = c6f53131b91b18aff2a50a6db2ddaa2761e7e5aa
-merged research commit = 96cccf715c02ed2bd4ae58f8362180020ae90854
-research tree = 28bd302c17a6128e538a3510917dafb670f6dce8
-RHRC #1072 = SUCCESS
-Permansson #845 = SUCCESS
+merged research PR = #178
+validated research head = 28df43faed0db8c0f12a25525df6c28467ce5b07
+merged research commit = fb2a181ce0d95d90396ead7730e7bf365616a153
+research tree = 96ab14953e9e8bff5245953082db8a6471648614
+RHRC #1074 = SUCCESS
+Permansson #847 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 control-plane semantic anchor = PR #117
 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
 ```
 
-PRs #165-#176 refresh research evidence and routing context only. They do not change the controller's capability/authority model and do not move theorem authority beyond #163.
+PRs #165-#178 refresh research evidence and routing context only. They do not change the controller's capability/authority model and do not move theorem authority beyond #163.
 
 ## Current routed frontier
 
@@ -39,7 +39,7 @@ FB-04A exact moment jets + signed Riesz boundary recurrence        PROVED / #159
 FB-04B same-state shifted Riesz x cross-parity source composition PROVED / #161
 FB-04C mixed quadratic-normal jet x Riesz boundary coupling       PROVED / #163
 FB-05 independent contradiction-producing arithmetic restriction  NOW / sole selected first break
-  current research slice: fixed-unit Q14 derivative/stationary discrimination
+  current research slice: correlation-preserving Q14 derivative enclosure
 A4b2b universal one-step domination                               BROAD FALLBACK
 GLOBAL first-bad exclusion                                        AFTER scoped arithmetic closure
 ```
@@ -48,7 +48,7 @@ The selected action remains `E4_A4_REGULAR_SCHUR_ENERGY_SIGN` under frontier `FI
 
 The selected first-break ID remains `E4A4-SCHUR-FB-05`.
 
-## Why routing changes after #176
+## Why routing changes after #178
 
 The formal break has not changed, but the best way to interrogate it has.
 
@@ -59,9 +59,11 @@ The formal break has not changed, but the best way to interrogate it has.
 - #170 moves the scalar to theorem-aligned `[W|c]` geometry and finite-certifies q17 visibility/background competition.
 - #172 shows current-q entry lift is sign-indefinite and isolates q13/N2/K3/even as the strongest near-critical state.
 - #174 consumes the exact q13 1D->2D scalar reduction but shows direct 384-bit adaptive evaluation of `a(L)` and `Delta_2(L)` remains 100% unresolved on physical Q=13/14/15 cells.
-- #176 implements an independent fixed-unit evaluator, preserves the direct production path as comparator, and passes the frozen six-box Q14 factor-2 determinant-width method gate in the exact CI pipeline, yielding `FIXED_UNIT_METHOD_ACCEPTED`.
+- #176 implements an independent fixed-unit evaluator and passes the frozen six-box Q14 factor-2 determinant-width method gate, yielding `FIXED_UNIT_METHOD_ACCEPTED`.
+- #178 validates the complete fixed-Q derivative implementation, but all six primary raw `Delta_2'` side boxes classify `DERIVATIVE_UNRESOLVED` with `NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN`.
+- #178 closes the #176 replay-hardening debt by rebinding benchmark schedules to their frozen fixture and rejecting malformed schedules.
 
-Therefore representation selection has been consumed for this finite laboratory. The current information target is whether fixed-unit dependency reduction survives **differentiation** strongly enough to resolve local Q14 stationary structure.
+Therefore derivative implementation itself is consumed infrastructure. The current information target is now **where interval dependency re-enters the near-cancelling determinant derivative**.
 
 ## Selected action — E4_A4_REGULAR_SCHUR_ENERGY_SIGN
 
@@ -87,25 +89,21 @@ Delta_2(L)=a(L)d(L)-b(L)^2
 P(L)=Delta_2(L)/a(L) in H1.
 ```
 
-The fixed-unit pullback is now the preferred research enclosure representation for this q13/Q14 laboratory. The next chain is
+The fixed-unit pullback remains the preferred research enclosure representation for this q13/Q14 laboratory, and the complete derivative backend is now validated research infrastructure.
+
+The next chain is:
 
 ```text
-fixed-unit alpha', beta', gamma'
--> a', b', d'
--> Delta_2' = a'd + ad' - 2bb'.
+1. rigorous point Delta_2' balls at frozen centers
+2. compare exact derivative representations in H1
+     raw: Delta_2' = a'd + ad' - 2bb'
+     Schur-factorized: Delta_2 = aP,
+                       Delta_2' = a'P + aP'
+3. if point orientation is visible, add Delta_2'' and centered mean-value/Taylor bounds
+4. only after a certified two-sided derivative bracket, use interval Newton/Krawczyk.
 ```
 
-First gate:
-
-```text
-analytic derivative evaluator agrees with independent
-high-precision centered finite differences at frozen points
-AND
-rigorous Delta_2' intervals are useful enough to separate
-outer monotone regions from the shallow Q14 stationary basin.
-```
-
-Only after that should Taylor models, interval Newton/Krawczyk, or certified minimum/contact isolation be added. Successful value-level conditioning in #176 does not guarantee derivative conditioning.
+Repeating the same raw assembled derivative boxes with only greater precision/depth is not a route change.
 
 A positive q13 whole-cell result is not itself FB-05 closure. It must yield a generalizable independent arithmetic restriction before theorem promotion is justified.
 
@@ -135,21 +133,40 @@ theorem-aligned Schur visibility/background audit           RESEARCH / #170
 threshold-to-threshold production barrier audit             RESEARCH / #172
 q13 exact 2x2 scalar-barrier / interval-method audit         RESEARCH / #174
 fixed-unit q13/Q14 enclosure method selection               RESEARCH / #176
+complete fixed-unit derivative discrimination               RESEARCH / #178
 
 source-moment <-> M4 coupling                               OPEN
 endpoint-scalar global sign/nonvanishing                    OPEN
 q13/N2/K3/even whole-cell sign/contact                      OPEN / ACTIVE
-fixed-unit Delta_2' stationary-basin classification         OPEN / NEXT
+correlation-preserving Delta_2' enclosure                   OPEN / NEXT
 simultaneous even/odd bad exclusion                         OPEN
 odd-selected branch closure                                 OPEN
 final contradiction-producing arithmetic restriction       OPEN
 ```
 
-## Validation note from #176 review
+## Post-#178 method firewall
 
-The exact #176 CI pipeline generated its benchmark schedule from the frozen fixture immediately before certification and logged all six intended primary boxes. The standalone certifier nevertheless trusts a supplied `PASS` benchmark schedule instead of independently rebinding every schedule-defining field to the fixture.
+The exact #178 CI result is:
 
-That is replay-hardening debt for future validation plumbing. It does not change the exact in-pipeline finite method-selection result, and it does not grant any additional mathematical authority.
+```text
+DERIVATIVE_UNRESOLVED
+NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN
+```
+
+with no bad interval and no H1-loss interval.
+
+Interpretation:
+
+```text
+DERIVATIVE_UNRESOLVED
+  -> raw assembled derivative boxes do not certify sign
+  -/-> Delta_2' = 0
+  -/-> stationary existence
+  -/-> stationary uniqueness
+  -/-> contact
+  -/-> bad successor
+  -/-> failure of every derivative representation.
+```
 
 ## Negative controls
 
@@ -171,6 +188,7 @@ That is replay-hardening debt for future validation plumbing. It does not change
 - global aperture/Schur monotonicity remains quarantined;
 - brute dependency-heavy full-matrix subdivision remains dead as the current method;
 - after #174, brute subdivision of the same direct scalar formulas is also not the next method;
+- after #178, brute refinement of the same raw assembled derivative boxes is also not the next method;
 - #176 fixed-unit method acceptance is scoped to the frozen finite benchmark and is not a sign theorem;
 - determinant and pivot minima are distinct optimization targets;
 - q13 whole-cell positivity alone would not imply global first-bad exclusion.
@@ -187,10 +205,10 @@ That is replay-hardening debt for future validation plumbing. It does not change
 - terminal claim remains `RH_OPEN`;
 - controller theorem authority and terminal-claim mutation remain false.
 
-Control-v2 tests should lock the post-#176 routing vocabulary so the selected action cannot silently revert to the consumed scalarization or fixed-unit method-selection steps, or to brute subdivision.
+Control-v2 tests should lock the post-#178 routing vocabulary so the selected action cannot silently revert to the consumed scalarization, value-representation selection, raw derivative-box refinement, or brute subdivision steps.
 
 Newest research implications:
 
-`../RESEARCH_LEADS_POST_176_FIXED_UNIT_METHOD_ACCEPTANCE_Q14_STATIONARY_FRONTIER_DELTA.md`
+`../RESEARCH_LEADS_POST_178_DERIVATIVE_UNRESOLVED_CENTERED_ENCLOSURE_DELTA.md`
 
 **RH remains OPEN.**
