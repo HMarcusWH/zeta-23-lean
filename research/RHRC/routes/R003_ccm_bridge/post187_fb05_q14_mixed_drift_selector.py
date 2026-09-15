@@ -10,8 +10,6 @@ Research/audit tooling only.  RH remains OPEN.
 """
 from __future__ import annotations
 
-from copy import deepcopy
-
 from flint import acb, arb, arb_mat
 
 from canonical_source_arb import (
@@ -24,7 +22,6 @@ from post169_fb05_schur_visibility import one_step_geometry
 from post173_fb05_q13_scalar_barrier import TARGET_KSTAR, TARGET_N, scalar_geometry
 from post177_fb05_q13_fixed_unit_derivative import (
     direct_arch_component_prime,
-    fixed_unit_derivative_scalar_record_arb_at_L,
     fixed_unit_primitive_derivative_caches,
     pole_component_prime,
     prime_component_prime,
@@ -252,27 +249,33 @@ def selector_record_from_box(box: dict) -> dict:
 def _rescale_primitives(p: dict, alpha: int, beta: int, gamma: int) -> dict:
     if alpha == 0 or beta == 0 or gamma == 0:
         raise ValueError("normalization rescalings must be nonzero")
-    q = deepcopy(p)
     aa = arb(alpha * alpha)
     bb = arb(beta * beta)
     ab = arb(alpha * beta)
     gg = arb(gamma * gamma)
-    q["a"] *= aa
-    q["b"] *= ab
-    q["d"] *= bb
-    q["a_prime"] *= aa
-    q["b_prime"] *= ab
-    q["d_prime"] *= bb
-    q["w2"] *= aa
-    q["c2"] *= bb
-    q["odd_a"] *= gg
-    q["odd_a_prime"] *= gg
-    q["odd_w2"] *= gg
-    for triplet in q["channels"].values():
-        triplet["a"] *= aa
-        triplet["b"] *= ab
-        triplet["d"] *= bb
-    return q
+    return {
+        "L": p["L"],
+        "a": p["a"] * aa,
+        "b": p["b"] * ab,
+        "d": p["d"] * bb,
+        "a_prime": p["a_prime"] * aa,
+        "b_prime": p["b_prime"] * ab,
+        "d_prime": p["d_prime"] * bb,
+        "w2": p["w2"] * aa,
+        "c2": p["c2"] * bb,
+        "odd_a": p["odd_a"] * gg,
+        "odd_a_prime": p["odd_a_prime"] * gg,
+        "odd_w2": p["odd_w2"] * gg,
+        "channels": {
+            name: {
+                "a": triplet["a"] * aa,
+                "b": triplet["b"] * ab,
+                "d": triplet["d"] * bb,
+            }
+            for name, triplet in p["channels"].items()
+        },
+        "channel_matrix_reconstruction_overlap": p["channel_matrix_reconstruction_overlap"],
+    }
 
 
 def normalization_invariance_record(box: dict, rescalings: list[dict]) -> dict:
@@ -300,7 +303,11 @@ def normalization_invariance_record(box: dict, rescalings: list[dict]) -> dict:
                 ok = overlap(original, transformed)
             field_checks[field] = bool(ok)
             all_ok = all_ok and bool(ok)
-        rows.append({"scale": scale, "field_overlaps": field_checks, "all_overlap": all(field_checks.values())})
+        rows.append({
+            "scale": scale,
+            "field_overlaps": field_checks,
+            "all_overlap": all(field_checks.values()),
+        })
     return {
         "scope": "CERTIFIED_H1_SCOPE",
         "all_overlap": bool(all_ok),
