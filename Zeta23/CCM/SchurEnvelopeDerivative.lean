@@ -45,7 +45,7 @@ Firewalls:
 /-- Scalar Schur pivot for a real symmetric 2x2 block with nonzero predecessor
 entry `a`.  The definition is algebraic and is meaningful even when `a = 0`,
 but the derivative/factorization theorems below require `a ≠ 0`. -/
-def schurPivot2x2 (a b d : ℝ) : ℝ :=
+noncomputable def schurPivot2x2 (a b d : ℝ) : ℝ :=
   d - b * b / a
 
 /-- Determinant of the real symmetric 2x2 block `[[a,b],[b,d]]`. -/
@@ -54,7 +54,7 @@ def schurDet2x2 (a b d : ℝ) : ℝ :=
 
 /-- Correlation-preserving / envelope form of the Schur-pivot directional
 derivative. -/
-def schurPivot2x2Derivative
+noncomputable def schurPivot2x2Derivative
     (a b da db dd : ℝ) : ℝ :=
   dd - 2 * (b / a) * db + (b / a) ^ 2 * da
 
@@ -69,7 +69,6 @@ theorem schurDet2x2_eq_mul_pivot
     schurDet2x2 a b d = a * schurPivot2x2 a b d := by
   unfold schurDet2x2 schurPivot2x2
   field_simp [ha]
-  ring
 
 /-- The direct determinant derivative factors as the product-rule derivative of
 `a * P`.  This is the algebraic bridge used for contact-local orientation. -/
@@ -105,20 +104,10 @@ theorem hasDerivAt_schurPivot2x2
     HasDerivAt
       (fun t : ℝ => schurPivot2x2 (a t) (b t) (d t))
       (schurPivot2x2Derivative (a L) (b L) da db dd) L := by
-  have hbb :
-      HasDerivAt (fun t : ℝ => b t * b t)
-        (db * b L + b L * db) L := by
-    simpa using hb.mul hb
-  have hquot :
-      HasDerivAt (fun t : ℝ => (b t * b t) / a t)
-        (((db * b L + b L * db) * a L - (b L * b L) * da) /
-          (a L) ^ 2) L := by
-    simpa using hbb.div ha ha0
-  have hraw :
-      HasDerivAt (fun t : ℝ => d t - (b t * b t) / a t)
-        (dd - (((db * b L + b L * db) * a L - (b L * b L) * da) /
-          (a L) ^ 2)) L := by
-    simpa using hd.sub hquot
+  change HasDerivAt
+    (d - (b * b) / a)
+    (schurPivot2x2Derivative (a L) (b L) da db dd) L
+  have hraw := hd.sub ((hb.mul hb).div ha ha0)
   have hder :
       dd - (((db * b L + b L * db) * a L - (b L * b L) * da) /
           (a L) ^ 2) =
@@ -126,8 +115,8 @@ theorem hasDerivAt_schurPivot2x2
     unfold schurPivot2x2Derivative
     field_simp [ha0]
     ring
-  rw [hder] at hraw
-  simpa [schurPivot2x2] using hraw
+  rw [← hder]
+  exact hraw
 
 /-- Calculus theorem for the determinant companion. -/
 theorem hasDerivAt_schurDet2x2
@@ -138,18 +127,17 @@ theorem hasDerivAt_schurDet2x2
     HasDerivAt
       (fun t : ℝ => schurDet2x2 (a t) (b t) (d t))
       (schurDet2x2Derivative (a L) (b L) (d L) da db dd) L := by
-  have hraw :
-      HasDerivAt
-        (fun t : ℝ => a t * d t - b t * b t)
-        (da * d L + a L * dd - (db * b L + b L * db)) L := by
-    simpa using (ha.mul hd).sub (hb.mul hb)
+  change HasDerivAt
+    (a * d - b * b)
+    (schurDet2x2Derivative (a L) (b L) (d L) da db dd) L
+  have hraw := (ha.mul hd).sub (hb.mul hb)
   have hder :
       da * d L + a L * dd - (db * b L + b L * db) =
         schurDet2x2Derivative (a L) (b L) (d L) da db dd := by
     unfold schurDet2x2Derivative
     ring
-  rw [hder] at hraw
-  simpa [schurDet2x2] using hraw
+  rw [← hder]
+  exact hraw
 
 /-- At a Schur contact `P = 0`, the determinant derivative is exactly `a P'`.
 This is the contact-local identity needed by the FB-05 orientation-clash route. -/
