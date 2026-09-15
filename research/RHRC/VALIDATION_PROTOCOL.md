@@ -8,7 +8,7 @@ This document defines what "green", "proved", "validated" and "promoted" mean in
 
 For every theorem-bearing PR record the base, exact PR head checked by GitHub Actions, theorem tree, merged theorem-bearing commit/tree and relevant compiler/toolchain evidence. Compiler validity attaches only to the exact checked object.
 
-For research-only PRs, record the exact research head/merge and CI evidence separately. A green research PR validates that its executable checks ran as specified; it does not convert symbolic/numerical/Arb research output into Lean theorem authority.
+For research-only PRs, record the exact research head/merge and CI evidence separately. A green research PR validates that its executable checks ran as specified; it does not convert symbolic/numerical/Arb research output into Lean theorem authority. A falsification disposition can be mathematically negative while the PR is correctly green.
 
 ## Authority classes
 
@@ -26,13 +26,12 @@ Permansson #862 = SUCCESS
 ### Latest research-evidence anchor
 
 ```text
-merged research PR = #180
-validated research head = a87469da9e611b53ae400cb4b18ce4afeb94e6d2
-merged research commit = 93ea3df51f2671e316197c1530ea504dee76e821
-research tree = 8199cdc543f1b761c70466dfd602c143a277e6a2
-RHRC #1077 = SUCCESS
-Lean #837 = SUCCESS
-Permansson #850 = SUCCESS
+merged research PR = #186
+validated research head = 7d277a99437d98fdb7c831f25a130eac07f1b3af
+merged research commit = 0494658a87d29eeb2124aa16232c264c21d23c18
+RHRC #1091 = SUCCESS
+Permansson #864 = SUCCESS
+research disposition = DOMINATION_SIGNAL_MIXED
 ```
 
 ### Control authority
@@ -52,7 +51,7 @@ Current theorem/claim gates include:
 ```text
 python research/RHRC/tools/run_suite.py
 R003 normalization audit / dictionary guards / source-normalization firewall
-post-#163 through post-#179 frozen research regressions
+post-#163 onward frozen research regressions, including #186 remainder-drift falsification
 R004 scalar-shift invariant audit
 external-reference dependency firewall
 lake build Zeta23.CCM
@@ -126,11 +125,69 @@ NOT PROVED / #184
   RH
 ```
 
-## Post-#163 research checks remain research evidence
+## Exact #186 research evidence
 
-The R003 workflow continues to run the post-#163 research chain through #180: endpoint-scalar audit; shifted-state scout/replay; Q16 interval audit; threshold-jet/Q17 microscope; theorem-aligned Schur visibility; threshold-to-threshold barrier audit; q13 scalar barrier; fixed-unit enclosure benchmark; complete derivative discrimination; and the post-#179 exact-center/Schur-scope audit.
+PR #186 validated the exact research head
 
-Interpretation law:
+```text
+7d277a99437d98fdb7c831f25a130eac07f1b3af
+```
+
+and was merged as
+
+```text
+0494658a87d29eeb2124aa16232c264c21d23c18.
+```
+
+RHRC #1091 and Permansson #864 completed successfully.
+
+The research certificate reuses the exact frozen #180 q13/Q14 N2/K3/even schedule and checks the physical-aperture decomposition
+
+```text
+P_L' = -E/L + R_L'
+margin_L = E/L - R_L'
+rho_L = L*R_L'/E.
+```
+
+The primary exact-center disposition is:
+
+```text
+DOMINATION_SIGNAL_MIXED
+
+positive margin:
+  det_left_o2^-10_r2^-13
+  det_left_o2^-13_r2^-16
+
+negative margin:
+  det_right_o2^-10_r2^-13
+  det_right_o2^-13_r2^-16
+  det_left_o2^-16_r2^-19
+  det_right_o2^-16_r2^-19
+
+unresolved primary exact centers: none
+finite-width scope: FINITE_WIDTH_OUT_OF_H1_SCOPE
+```
+
+Interpretation:
+
+```text
+RIGOROUS FINITE RESEARCH CERTIFICATION / #186
+  exact encoded frozen states
+  exact-center H1 checks required by the certificate
+  internal algebraic/enclosure consistency checks
+  mixed domination-margin disposition
+
+NOT THEOREM PROMOTION / #186
+  no Lean source-specific domination theorem
+  no general opposite-sign theorem
+  no contact existence/orientation theorem
+  no negative-root exclusion
+  no RH
+```
+
+The fact that #186 is green means the falsifier executed faithfully. It does **not** mean the tested hypothesis survived. The tested broad formulation did not survive: four of six primary exact centers certify negative domination margin.
+
+## Research evidence interpretation law
 
 ```text
 research gate green
@@ -151,11 +208,12 @@ In particular:
 - Arb interval output is a rigorous enclosure only for the exact encoded interval expression;
 - Arb central finite differences are finite-difference enclosures, not derivative theorems;
 - `UNRESOLVED` is neither positive nor negative evidence;
+- a green falsification PR may return `MIXED` or `FAILS` and still be a successful validation run;
 - absence of a finite negative candidate is not a positivity theorem.
 
-## Exact #180 research evidence
+## Inherited #180 research evidence
 
-The inherited #178 schedule is reused exactly. At all six frozen primary Q14 exact centers, rigorous Arb point balls give
+The #186 schedule descends from #180. At all six frozen primary Q14 exact centers, #180 rigorously certified
 
 ```text
 POINT_DERIVATIVE_BASIN_BRACKETED
@@ -164,23 +222,37 @@ left centers:  3/3 Delta_2' < 0
 right centers: 3/3 Delta_2' > 0
 ```
 
-The Schur point graph agrees on the same H1-usable points. This supports a derived stationary-existence statement if continuity is invoked, but `uniqueness_claim = false`.
-
 For the nonzero-width primary boxes:
 
 ```text
 SCHUR_OUT_OF_H1_SCOPE
 applicable_primary_count = 0
-sign_recovery_labels = []
-strict_width_gain_labels = []
-material_2x_gain_labels = []
 ```
 
-So #180 does not establish a finite-box Schur width gain or sign recovery.
+#186 does not change that finite-width H1 classification; its own finite-width result is `FINITE_WIDTH_OUT_OF_H1_SCOPE`.
 
-## Current FB-05 validation target after #184
+## Current FB-05 validation target after #186
 
-The immediate research target is **not** another raw assembled derivative-box refinement. It is a theorem-aligned decomposition of the exact same frozen #180 states into the universal logarithmic drift and the production remainder drift.
+The next research target is **not** to prove the now-falsified broad domination hypothesis. It is to explain the mixed exact-center split on the unchanged frozen panel and look for a canonical, theorem-connectable selector condition.
+
+Any candidate selector must be predeclared before outcome inspection and tested against:
+
+```text
+same frozen centers
+normalization invariance / canonical normalization
+opposite-parity and ancestry controls
+no target leakage from margin/rho/successor positivity
+same-state composition requirement
+finite-width H1 scope where intervals are used
+```
+
+The next formal target may still be a sign-neutral transport of existing complex frozen-source remainder holomorphy through parity projection and N2 predecessor/shell scalar pairings to actual real derivative witnesses and an instantiated production `HasDerivAt` Schur identity.
+
+Only after a narrower arithmetic condition survives research falsification should a source-specific sign inequality become theorem work.
+
+## Production normalization and coordinate firewall after #184/#186
+
+The finite q13 research code uses exact integer `W,c` coordinates. Its shell generator spans the same one-dimensional shell as Lean's canonical cubic shell but is not theorem-identified at the same magnitude. Formal production uses the canonical intrinsic cubic shell and complex Hermitian geometry.
 
 Coordinate law:
 
@@ -188,29 +260,9 @@ Coordinate law:
 #184 theorem coordinate: t = log L
   dP/dt = -E + dR/dt
 
-#178/#180 research coordinate: physical L
+#178/#180/#186 research coordinate: physical L
   dP/dL = -E/L + dR/dL
 ```
-
-Therefore the next finite falsification target must compare
-
-```text
-dR/dL  versus  E/L
-```
-
-or equivalently
-
-```text
-L*dR/dL  versus  E.
-```
-
-The next formal target is to transport the existing complex frozen-source remainder holomorphy through parity projection and the N2 predecessor/shell scalar pairings, producing actual real derivative witnesses for the remainder coordinates and then an actual production `HasDerivAt` Schur identity.
-
-Only after that interface exists should a source-specific remainder domination inequality be promoted to theorem work.
-
-## Production normalization and coordinate firewall after #184
-
-The finite q13 research code uses exact integer `W,c` coordinates. Its shell generator spans the same one-dimensional shell as Lean's canonical cubic shell but is not theorem-identified at the same magnitude. Formal production uses the canonical intrinsic cubic shell and complex Hermitian geometry.
 
 Therefore:
 
@@ -223,9 +275,10 @@ log-coordinate derivative d/dt
 
 analyticity of the remainder
   -/-> domination of its derivative magnitude
-```
 
-Prefer invariant/canonical statements and explicit coordinate conversion.
+mixed finite domination signal
+  -/-> a general opposite-sign theorem
+```
 
 ## Axiom inspection
 
@@ -243,7 +296,7 @@ canonicalPolePrimeRieszEndpointScalar L 8 >= 0
 canonicalPolePrimeRieszEndpointScalar L 8 != 0
 actual N2 production remainder scalar derivative witnesses
 actual production HasDerivAt Schur log-drift identity
-source-specific production remainder/contact-orientation bound
+any valid narrowed source-specific contact-orientation bound
 first-bad contact existence/orientation composition on the same retained state
 centered finite-width H1 on frozen Q14 boxes
 q13/N2/K3/even whole-cell strict positivity / nonvanishing / contact classification
@@ -269,7 +322,7 @@ R003_PROMOTED_BINDINGS.json
 Zeta23/CCM/ClaimBindings.lean
 ```
 
-PR #184 adds theorem authority but does not alter those machine claim-promotion surfaces.
+PR #186 is research-only and does not alter those machine claim-promotion surfaces.
 
 ## Vocabulary
 
@@ -289,6 +342,6 @@ PR #184 adds theorem authority but does not alter those machine claim-promotion 
 
 ## Claim firewall
 
-Green #184 Hermitian/log-drift structure is not a source-specific arithmetic domination theorem. Green #180 research evidence is not theorem promotion. A contradiction still requires a genuinely independent canonical restriction on the exact retained state, a same-state incompatible first-bad orientation, negative-root exclusion and the terminal zeta/Mathlib seam.
+Green #184 Hermitian/log-drift structure is not a source-specific arithmetic domination theorem. Green #186 research evidence is not theorem promotion, and its `DOMINATION_SIGNAL_MIXED` disposition specifically blocks pretending that the broad source-remainder domination clue survived. A contradiction still requires a genuinely independent canonical restriction on the exact retained state, a same-state incompatible first-bad property, negative-root exclusion and the terminal zeta/Mathlib seam.
 
 **RH remains OPEN.**
