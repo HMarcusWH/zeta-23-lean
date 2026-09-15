@@ -31,21 +31,22 @@ RHRC #1089 = SUCCESS
 Permansson #862 = SUCCESS
 ```
 
-#184 is the current compiler-validated mathematical authority. It adds the complex-Hermitian Schur calculus, full frozen parity family on the logarithmic cover, exact fixed-cell production bridge, N2 predecessor/shell geometry, the algebraic universal-minus-remainder envelope derivative, and the conditional negative-orientation criterion.
+#184 remains the current compiler-validated mathematical authority. It adds the complex-Hermitian Schur calculus, full frozen parity family on the logarithmic cover, exact fixed-cell production bridge, N2 predecessor/shell geometry, the algebraic universal-minus-remainder envelope derivative, and the conditional negative-orientation criterion.
 
 ### 2. Research-evidence anchor
 
 ```text
-latest merged research PR = #180
-validated research head = a87469da9e611b53ae400cb4b18ce4afeb94e6d2
-merged research commit = 93ea3df51f2671e316197c1530ea504dee76e821
-research tree = 8199cdc543f1b761c70466dfd602c143a277e6a2
-RHRC #1077 = SUCCESS
-Lean #837 = SUCCESS
-Permansson #850 = SUCCESS
+latest merged research PR = #186
+validated research head = 7d277a99437d98fdb7c831f25a130eac07f1b3af
+merged research commit = 0494658a87d29eeb2124aa16232c264c21d23c18
+RHRC #1091 = SUCCESS
+Permansson #864 = SUCCESS
+research disposition = DOMINATION_SIGNAL_MIXED
 ```
 
-#180 records the newest green finite/discovery state. It does not upgrade Arb, floating, executable or interval-method output into Lean theorem authority.
+#186 is research/falsification evidence, not theorem promotion. On the exact frozen q13/Q14 N2/K3/even schedule inherited from #180, two primary exact-center states certify positive domination margin and four certify negative domination margin; no primary exact center is unresolved. The finite-width boxes remain `FINITE_WIDTH_OUT_OF_H1_SCOPE`.
+
+The simple universal source-remainder domination proposal is therefore falsified in this tested finite scope. This does **not** falsify #184, whose theorem is conditional, and it does not establish a general opposite sign law.
 
 ### 3. Control-plane semantic anchor
 
@@ -101,35 +102,39 @@ algebraic P_t' = -envelopeNormSq + remainderEnvelopeDerivative
 remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0
 ```
 
-#184 does **not** yet assemble the actual source-specific real remainder-coordinate derivative witnesses from existing complex analyticity. It therefore does not yet prove a fully instantiated production `HasDerivAt` theorem for the N2 Schur pivot or a source-specific domination bound.
+#184 does **not** prove source-specific remainder domination, contact existence/uniqueness, a first-bad crossing orientation on the same retained state, global Schur monotonicity, first-bad exclusion, negative-root exclusion or RH.
 
-It also does not prove contact existence/uniqueness, first-bad crossing orientation on the same retained state, global Schur monotonicity, first-bad exclusion, negative-root exclusion or RH.
-
-### Research progression through #180
+### Research progression through #186
 
 ```text
 #165 endpoint-scalar executable audit
 #166 true shifted-state finite discriminator
-#167 Q16 whole-cell interval method falsification
+#167 Q16 whole-cell interval-method falsification
 #168 threshold moment jet / Q17 microscope
 #170 theorem-aligned one-step Schur visibility/background audit
 #172 threshold-to-threshold production barrier audit
 #174 q13/N2/K3/even exact 2x2 scalar barrier
 #176 fixed-unit q13/Q14 value representation acceptance
-#178 complete fixed-unit physical-L derivative implementation; raw side boxes unresolved
+#178 complete fixed-unit physical-L derivative implementation
 #180 exact-center derivative basin minimum-oriented; nonzero-width Schur graph out of H1 scope
+#186 exact frozen remainder-drift falsifier -> DOMINATION_SIGNAL_MIXED
 ```
 
-#180's finite result remains:
+Exact #186 primary-center classification:
 
 ```text
-POINT_DERIVATIVE_BASIN_BRACKETED
-MINIMUM_ORIENTED
-left centers: 3/3 Delta_2' < 0
-right centers: 3/3 Delta_2' > 0
-SCHUR_OUT_OF_H1_SCOPE
-applicable_primary_count = 0
-uniqueness_claim = false
+positive domination margin:
+  det_left_o2^-10_r2^-13
+  det_left_o2^-13_r2^-16
+
+negative domination margin:
+  det_right_o2^-10_r2^-13
+  det_right_o2^-13_r2^-16
+  det_left_o2^-16_r2^-19
+  det_right_o2^-16_r2^-19
+
+unresolved primary exact centers: none
+finite-width scope: FINITE_WIDTH_OUT_OF_H1_SCOPE
 ```
 
 ### Current route
@@ -145,28 +150,23 @@ PROVED THROUGH #184
   -> algebraic universal-negative-drift + remainder decomposition
   -> conditional negative orientation under remainder domination
 
-RESEARCHED THROUGH #180
-  -> q13/N2/K3/even finite microscope
-  -> exact-center derivative basin minimum-oriented
-  -> finite-width H1 is first Schur-box gate
+RESEARCHED THROUGH #186
+  -> exact #180 dangerous-state schedule preserved
+  -> coordinate-correct physical-L decomposition executed
+  -> two positive-margin states + four negative-margin states
+  -> simple universal remainder domination falsified in tested scope
 
-NOW
-  research falsification lane:
-    reuse exact #180 physical-L schedule
-    -> split full pivot derivative into -E/L + remainder_drift_L
-    -> measure domination margin and ratio L*remainder_drift_L/E
-
-  formal Pair-A lane:
-    existing complex frozen-source holomorphy
-    -> parity/N2 scalar derivative witnesses
-    -> actual production HasDerivAt identity
-    -> source-specific contact-local remainder domination
-    -> same-state opposing first-bad contact orientation
+NOW — FB-05
+  -> do not theoremize universal remainder domination
+  -> explain the mixed split on the exact same frozen states
+  -> search for an independently meaningful local discriminator separating the two surviving left states from the four failures
+  -> only theoremize a narrower source-specific inequality if the discriminator survives adversarial finite tests
+  -> in parallel, actual production scalar derivative witnesses remain useful infrastructure, but not as evidence that a global domination theorem is true
 ```
 
 The formal first break remains `E4A4-SCHUR-FB-05`; the terminal claim remains `RH_OPEN`.
 
-## Coordinate firewall after #184
+## Coordinate firewall after #184/#186
 
 PR #184's natural variable is logarithmic coordinate `t=log L`:
 
@@ -174,23 +174,23 @@ PR #184's natural variable is logarithmic coordinate `t=log L`:
 dP/dt = -E + dR/dt.
 ```
 
-The #178/#180 R003 derivative backend is in physical aperture `L`. Before comparison, use
+The #178/#180/#186 R003 derivative backend is in physical aperture `L`:
 
 ```text
-dP/dL = -E/L + dR/dL
+dP/dL = -E/L + dR/dL.
 ```
 
-and test `dR/dL < E/L`, equivalently `L*dR/dL < E`.
-
-Do not compare a `t`-derivative remainder term directly against a physical-`L` derivative or vice versa.
+Thus the tested domination margin is `E/L - dR/dL`, equivalently the ratio test `L*dR/dL/E < 1` when `E>0`. #186 respected this conversion.
 
 ## Claim firewall
 
 - green research is not theorem promotion;
-- #184 Hermitian/log-cover structure is not a source-specific arithmetic derivative bound;
-- analyticity does not imply the needed domination magnitude;
-- q13/N2/K3 is a finite microscope, not automatic arbitrary-first-bad coverage;
-- `SCHUR_OUT_OF_H1_SCOPE` is not evidence of sign failure;
+- `DOMINATION_SIGNAL_MIXED` is a successful falsification outcome, not a failed CI run;
+- #186 falsifies only the simple universal domination formulation on its frozen finite scope;
+- #184 remains valid because its negative-orientation theorem is conditional on domination;
+- the two positive-margin centers do not establish a general theorem;
+- the four negative-margin centers do not establish a general opposite-sign theorem;
+- finite-width boxes remain outside certified H1 scope;
 - global Schur monotonicity remains quarantined;
 - negative-root exclusion remains OPEN;
 - **RH remains OPEN.**
