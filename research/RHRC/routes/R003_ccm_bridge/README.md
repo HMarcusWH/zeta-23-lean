@@ -52,7 +52,7 @@ remainder domination -> negative pivot orientation               PROVED / #184
 #176 fixed-unit enclosure method acceptance
 #178 complete physical-L derivative implementation
 #180 exact-center derivative basin / H1-scope audit
-#186 coordinate-correct remainder-drift falsifier
+#186 coordinate-correct remainder-drift falsifier -> DOMINATION_SIGNAL_MIXED
 #188 mixed-drift selector audit
 #189 individual selector semantic-independence audit
 #190 joint strong-selector separability audit
@@ -60,7 +60,7 @@ remainder domination -> negative pivot orientation               PROVED / #184
 
 ### #186
 
-Broad source-remainder domination is mixed on the exact frozen panel and therefore not a universal theorem target in that scope.
+The exact frozen panel returns `DOMINATION_SIGNAL_MIXED`. Broad source-remainder domination is therefore not a universal theorem target in that scope.
 
 ### #188
 
