@@ -15,12 +15,12 @@ For research-only PRs, record the exact research head/merge and CI evidence sepa
 ### Theorem authority
 
 ```text
-latest theorem-bearing PR = #182
-validated theorem head = 0c3f63cdc4774ba1a68b21d1558ea0ee860a938d
-merged theorem commit = a69160d37a84049711aaff6c3d5db804583a7306
-validated theorem tree = e0b260b3b3a1ed470d54c14d8c0c46b32379f3fb
-RHRC #1082 = SUCCESS
-Permansson #855 = SUCCESS
+latest theorem-bearing PR = #184
+validated theorem head = a756494ebe7e2530715e996b9a9a341fbe07c683
+merged theorem commit = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
+validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
+RHRC #1089 = SUCCESS
+Permansson #862 = SUCCESS
 ```
 
 ### Latest research-evidence anchor
@@ -52,6 +52,7 @@ Current theorem/claim gates include:
 ```text
 python research/RHRC/tools/run_suite.py
 R003 normalization audit / dictionary guards / source-normalization firewall
+post-#163 through post-#179 frozen research regressions
 R004 scalar-shift invariant audit
 external-reference dependency firewall
 lake build Zeta23.CCM
@@ -62,57 +63,63 @@ Permansson independent formal verification
 
 A skipped downstream step is not a passed gate. Control-v2 regression tests guard routing semantics only; they do not grant theorem authority.
 
-## Exact #182 theorem evidence
+## Exact #184 theorem evidence
 
-PR #182 validated the exact head
+PR #184 validated the exact head
 
 ```text
-0c3f63cdc4774ba1a68b21d1558ea0ee860a938d
+a756494ebe7e2530715e996b9a9a341fbe07c683
 ```
 
 with theorem tree
 
 ```text
-e0b260b3b3a1ed470d54c14d8c0c46b32379f3fb
+6c77cd470809959a403b3bcc5f08d39f4076fa4c
 ```
 
 and was merged as
 
 ```text
-a69160d37a84049711aaff6c3d5db804583a7306.
+6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e.
 ```
 
-The module `Zeta23/CCM/SchurEnvelopeDerivative.lean` is imported by `Zeta23/CCM.lean`, so the successful aggregate CCM build compiler-validates its declarations. The same workflow also built `Zeta23.ExceptionalZero` and ran the forbidden-placeholder scan over the promoted CCM/ExceptionalZero subtrees. Permansson #855 independently completed successfully.
+The modules `Zeta23/CCM/HermitianSchurEnvelopeDerivative.lean` and `Zeta23/CCM/FrozenN2SchurLogDrift.lean` are imported by `Zeta23/CCM.lean`, so the successful aggregate CCM build compiler-validates their declarations. The same workflow built `Zeta23.ExceptionalZero` and ran the forbidden-placeholder scan over the promoted CCM/ExceptionalZero subtrees. Permansson #862 independently completed successfully.
 
-Validated declarations include:
+Validated mathematical content includes:
 
 ```text
-schurDet2x2_eq_mul_pivot
-schurDet2x2Derivative_eq_factorized
-schurPivot2x2Derivative_eq_detQuotientDerivative
-hasDerivAt_schurPivot2x2
-hasDerivAt_schurDet2x2
-schurDet2x2Derivative_eq_mul_pivotDerivative_of_contact
-schurDet2x2Derivative_neg_iff_pivotDerivative_neg_of_contact
-schurDet2x2Derivative_pos_iff_pivotDerivative_pos_of_contact
+Hermitian 2x2 Schur pivot/determinant identities with |b|^2/a
+real-component HasDerivAt theorems for the complex off-diagonal coordinate
+contact-local determinant/pivot derivative sign transfer under H1
+full frozen parity production family on logarithmic cover
+M~(t) = -t I + R~(t)
+fixed-cell equality with parityCompressedCanonical
+log-cover deck-translation law
+N2 predecessor/shell reconstruction
+nonzero canonical cubic shell
+predecessor-shell orthogonality
+algebraic P_t' = -envelopeNormSq + remainderEnvelopeDerivative
+conditional negative orientation when remainder drift < envelopeNormSq
 ```
 
 Operational interpretation:
 
 ```text
-PROVED / #182
-  generic real 2x2 determinant-pivot factorization
-  exact correlation-preserving pivot derivative
-  exact quotient/envelope derivative equivalence
-  actual scalar HasDerivAt theorems
-  at contact P=0: Delta_2'=aP'
-  under H1 a>0: determinant and pivot derivative orientations agree
+PROVED / #184
+  complex-Hermitian contact calculus
+  normalization-safe production log-cover family
+  exact fixed-cell production attachment
+  N2/K3 intrinsic predecessor-shell geometry
+  algebraic universal-negative-drift/remainder split
+  conditional negative-orientation criterion
 
-NOT PROVED / #182
+NOT PROVED / #184
+  actual source-specific real remainder-coordinate derivative witnesses
+  fully instantiated production HasDerivAt N2 Schur identity
+  source-specific remainder domination
   contact existence or uniqueness
-  production arithmetic sign for P' or Delta_2'
+  required first-bad crossing orientation on the same retained state
   finite-width H1 on the Q14 boxes
-  production/Hermitian Schur-envelope bridge
   global Schur monotonicity
   first-bad exclusion
   negative-root exclusion
@@ -171,33 +178,54 @@ material_2x_gain_labels = []
 
 So #180 does not establish a finite-box Schur width gain or sign recovery.
 
-## Current FB-05 validation target
+## Current FB-05 validation target after #184
 
-The next finite research target is:
+The immediate research target is **not** another raw assembled derivative-box refinement. It is a theorem-aligned decomposition of the exact same frozen #180 states into the universal logarithmic drift and the production remainder drift.
+
+Coordinate law:
 
 ```text
-1. centered H1 recovery from point a(L0)>0 plus rigorous a'(I)
-2. inside recovered H1, retry the Schur derivative box using theorem-backed #182 calculus
-3. if still unresolved, add Delta_2'' and centered derivative propagation
-4. only after signed neighborhoods, attempt interval Newton/Krawczyk.
+#184 theorem coordinate: t = log L
+  dP/dt = -E + dR/dt
+
+#178/#180 research coordinate: physical L
+  dP/dL = -E/L + dR/dL
 ```
 
-The parallel theorem target is an invariant/Hermitian production Schur-envelope bridge that attaches to the already-proved fixed-cell `-log(L)I + remainder` decomposition and exposes the exact universal `-||u||^2/L` drift plus a scalar production remainder derivative.
+Therefore the next finite falsification target must compare
 
-## Production normalization firewall after #182
+```text
+dR/dL  versus  E/L
+```
 
-The finite q13 research code uses exact integer `W,c` coordinates. Its shell generator spans the same one-dimensional shell as Lean's canonical cubic shell but is not theorem-identified at the same magnitude. Formal production lives in a complex Hermitian carrier, while #182 is generic real 2x2 calculus.
+or equivalently
+
+```text
+L*dR/dL  versus  E.
+```
+
+The next formal target is to transport the existing complex frozen-source remainder holomorphy through parity projection and the N2 predecessor/shell scalar pairings, producing actual real derivative witnesses for the remainder coordinates and then an actual production `HasDerivAt` Schur identity.
+
+Only after that interface exists should a source-specific remainder domination inequality be promoted to theorem work.
+
+## Production normalization and coordinate firewall after #184
+
+The finite q13 research code uses exact integer `W,c` coordinates. Its shell generator spans the same one-dimensional shell as Lean's canonical cubic shell but is not theorem-identified at the same magnitude. Formal production uses the canonical intrinsic cubic shell and complex Hermitian geometry.
 
 Therefore:
 
 ```text
 research W/c coordinates
   -/-> formal canonical shell coordinates by definitional equality
-real b^2/a Schur correction
-  -/-> complex Hermitian |b|^2/a without a specialization theorem.
+
+log-coordinate derivative d/dt
+  -/-> physical-aperture derivative d/dL without the factor L
+
+analyticity of the remainder
+  -/-> domination of its derivative magnitude
 ```
 
-Prefer invariant statements or separately prove the bridge.
+Prefer invariant/canonical statements and explicit coordinate conversion.
 
 ## Axiom inspection
 
@@ -213,8 +241,10 @@ M4 != 0 -> explicitCanonicalSourceMoment != 0
 finite production samples determine the seventh jet at zero
 canonicalPolePrimeRieszEndpointScalar L 8 >= 0
 canonicalPolePrimeRieszEndpointScalar L 8 != 0
-production/Hermitian Schur-envelope derivative bridge
+actual N2 production remainder scalar derivative witnesses
+actual production HasDerivAt Schur log-drift identity
 source-specific production remainder/contact-orientation bound
+first-bad contact existence/orientation composition on the same retained state
 centered finite-width H1 on frozen Q14 boxes
 q13/N2/K3/even whole-cell strict positivity / nonvanishing / contact classification
 simultaneous even/odd bad exclusion
@@ -239,7 +269,7 @@ R003_PROMOTED_BINDINGS.json
 Zeta23/CCM/ClaimBindings.lean
 ```
 
-PR #182 adds theorem authority but does not alter those machine claim-promotion surfaces.
+PR #184 adds theorem authority but does not alter those machine claim-promotion surfaces.
 
 ## Vocabulary
 
@@ -259,6 +289,6 @@ PR #182 adds theorem authority but does not alter those machine claim-promotion 
 
 ## Claim firewall
 
-Green #182 Schur/contact calculus is not a zeta arithmetic sign theorem. Green #180 research evidence is not theorem promotion. A contradiction still requires a genuinely independent canonical arithmetic restriction on the exact retained state, negative-root exclusion and the terminal zeta/Mathlib seam.
+Green #184 Hermitian/log-drift structure is not a source-specific arithmetic domination theorem. Green #180 research evidence is not theorem promotion. A contradiction still requires a genuinely independent canonical restriction on the exact retained state, a same-state incompatible first-bad orientation, negative-root exclusion and the terminal zeta/Mathlib seam.
 
 **RH remains OPEN.**

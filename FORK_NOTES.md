@@ -6,12 +6,12 @@
 
 ```text
 THEOREM AUTHORITY
-latest theorem-bearing PR = #182
-validated theorem head = 0c3f63cdc4774ba1a68b21d1558ea0ee860a938d
-merged theorem commit = a69160d37a84049711aaff6c3d5db804583a7306
-validated theorem tree = e0b260b3b3a1ed470d54c14d8c0c46b32379f3fb
-RHRC #1082 = SUCCESS
-Permansson #855 = SUCCESS
+latest theorem-bearing PR = #184
+validated theorem head = a756494ebe7e2530715e996b9a9a341fbe07c683
+merged theorem commit = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
+validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
+RHRC #1089 = SUCCESS
+Permansson #862 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
 merged research PR = #180
@@ -44,27 +44,42 @@ RH = OPEN
 #161 same-state shifted Riesz x cross-parity source obstruction
 #163 mixed quadratic-normal source jet x retained Riesz boundary coupling
 #182 generic real 2x2 Schur-envelope derivative + H1 contact orientation transfer
+#184 complex-Hermitian Schur + full frozen parity log-drift + N2 shell geometry
 ```
 
-## What #182 adds
+## What #184 adds
 
-`Zeta23/CCM/SchurEnvelopeDerivative.lean` is inside the aggregate CCM build. It theoremizes
+`Zeta23/CCM/HermitianSchurEnvelopeDerivative.lean` and `Zeta23/CCM/FrozenN2SchurLogDrift.lean` are inside the aggregate CCM build.
+
+The production-facing Schur correction is now the genuine Hermitian form
 
 ```text
-Delta_2 = aP
-P' = d' - 2*(b/a)b' + (b/a)^2 a'
-Delta_2' = a'P + aP'
+P = d - |b|^2/a.
 ```
 
-and proves that at contact `P=0`,
+The exact frozen production family is theoremized on logarithmic coordinate `t` as
 
 ```text
-Delta_2' = aP'.
+M~(t) = -t I + R~(t),
 ```
 
-Under H1 `a>0`, determinant and pivot derivative orientations agree.
+with fixed-cell equality to `parityCompressedCanonical`. For the N2/K3 intrinsic geometry, Lean proves the canonical cubic shell is nonzero, predecessor and shell reconstruct the successor, and predecessor is orthogonal to shell.
 
-This is generic calculus. It does not establish contact existence, production arithmetic sign, finite-width H1, global Schur monotonicity, first-bad exclusion, negative-root exclusion or RH.
+Under the required scalar derivative data, Lean proves
+
+```text
+P_t' = -envelopeNormSq + remainderEnvelopeDerivative
+```
+
+and
+
+```text
+remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0.
+```
+
+This closes the production/Hermitian/log-cover algebraic interface.
+
+It does **not** yet assemble the actual source-specific real remainder scalar derivative witnesses from existing complex holomorphy, prove the domination inequality, establish contact existence/uniqueness or the opposing first-bad contact orientation, first-bad exclusion, negative-root exclusion or RH.
 
 ## Research packages through #180
 
@@ -77,7 +92,7 @@ This is generic calculus. It does not establish contact existence, production ar
 #172 threshold-to-threshold Schur barrier falsification
 #174 q13/N2/K3/even exact 2x2 scalar-barrier / interval-method audit
 #176 fixed-unit q13/Q14 enclosure agreement + method-selection benchmark
-#178 complete fixed-unit derivative implementation + Q14 derivative discrimination
+#178 complete fixed-unit physical-L derivative implementation + Q14 derivative discrimination
 #180 exact-center Q14 derivative basin + Schur H1-scope audit
 ```
 
@@ -94,37 +109,45 @@ applicable_primary_count = 0
 
 ## Current route
 
-### Finite lane
+### Research falsification lane
 
-Recover H1 by centered propagation from `a(L0)>0` and rigorous `a'(I)`. Only then retry the Schur derivative representation. Add `Delta_2''` and interval Newton/Krawczyk only if the cheaper gates succeed and still leave sign unresolved.
+#184 uses `t=log L`, while #178/#180 differentiate in physical `L`. The correct conversion is
+
+```text
+dP/dL = -envelopeNormSq/L + remainder_drift_L.
+```
+
+Reuse the exact frozen #180 states and report
+
+```text
+universal drift = -E/L
+remainder drift
+margin = E/L - remainder drift
+ratio = L*remainder drift/E
+```
+
+before investing in the source-specific domination proof.
 
 ### Formal Pair-A lane
 
-Use the already-proved fixed-cell source decomposition
+Use the already-proved frozen complex source remainder holomorphy to obtain the actual N2 scalar derivative witnesses through parity projection and canonical predecessor/shell pairings. Then instantiate #184 as an actual production `HasDerivAt` Schur theorem and only then attack the contact-local remainder domination bound.
 
-```text
-M_Q(L) = -log(L) I + R_Q(L)
-```
+A contradiction additionally needs an independently theorem-backed incompatible first-bad contact orientation on the **same** retained state.
 
-together with #182 to theoremize a normalization-safe production/Hermitian Schur-envelope derivative. The target universal term is
+## Normalization / coordinate warning
 
-```text
--||u_L||^2/L,
-```
+The q13 research integer shell generator spans the same one-dimensional shell as Lean's canonical cubic shell but is not theorem-identified with the same magnitude. Formal production should stay on the canonical intrinsic shell.
 
-with all difficult arithmetic isolated in an exact production remainder derivative. Then seek/falsify a source-specific contact-local bound producing an orientation incompatible with first-bad crossing.
-
-## Normalization warning
-
-The q13 research integer shell generator spans the same one-dimensional shell as Lean's canonical cubic shell but is not theorem-identified with the same magnitude. Formal production is complex Hermitian while #182 is real 2x2. Do not silently identify those coordinate systems.
+Also `d/dt = L*d/dL` for `t=log L`; do not compare derivative magnitudes across those coordinates without the factor.
 
 ## Claim firewall
 
-- theorem authority advances to #182 only for the exact generic statements Lean proved;
+- theorem authority advances to #184 only for the exact statements Lean proved;
 - research authority remains #180 for the latest finite evidence;
 - Control-v2 semantic authority remains #117;
 - `SCHUR_OUT_OF_H1_SCOPE` is not a sign theorem;
-- generic contact orientation is not a production arithmetic sign;
+- #184's algebraic drift split is not a source-specific arithmetic domination theorem;
+- analyticity is not a derivative magnitude bound;
 - global Schur monotonicity remains quarantined;
 - negative-root exclusion remains OPEN;
 - **RH remains OPEN.**

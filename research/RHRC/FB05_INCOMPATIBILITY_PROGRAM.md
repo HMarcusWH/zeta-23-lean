@@ -81,9 +81,9 @@ SCHUR_OUT_OF_H1_SCOPE
 applicable_primary_count = 0
 ```
 
-so centered H1 recovery remains the immediate finite gate.
+so finite-width H1 remains an interval-neighborhood gate if that route is needed.
 
-### PROVED — PR #182: generic 2x2 Schur-envelope derivative and contact orientation
+### PROVED — PR #182: generic real 2x2 Schur contact calculus
 
 PR #182 closes the generic real 2x2 calculus layer. For
 
@@ -93,13 +93,7 @@ P = d - b^2/a
 Delta_2 = a*d - b^2
 ```
 
-Lean proves the exact Schur-envelope derivative
-
-```text
-P' = d' - 2*(b/a)*b' + (b/a)^2*a'
-```
-
-its determinant-quotient equivalent, the factorized derivative
+Lean proves the exact Schur-envelope derivative, determinant-quotient equivalent, factorized derivative
 
 ```text
 Delta_2' = a'P + aP',
@@ -113,9 +107,35 @@ Delta_2' = aP'.
 
 Under H1 (`a>0`), determinant and pivot derivative orientations agree.
 
-This is **generic 2x2 contact orientation**, not a production remainder sign theorem. PR #182 does not prove contact existence, a sign for `P'`, finite-width H1, global Schur monotonicity, first-bad exclusion, negative-root exclusion or RH.
+### PROVED — PR #184: Hermitian production/log-drift structure
 
-The remaining Pair-A problem is therefore source-specific.
+PR #184 advances Pair A from the real proxy to the actual complex-Hermitian production geometry.
+
+Lean now proves, in the exact declared scopes:
+
+```text
+Hermitian 2x2 pivot/determinant calculus with |b|^2/a
+full frozen parity family on logarithmic cover M~(t)=-tI+R~(t)
+fixed-cell equality with parityCompressedCanonical
+N2 predecessor / canonical cubic shell reconstruction
+canonical cubic shell != 0
+predecessor ⟂ shell
+P_t' = -envelopeNormSq + remainderEnvelopeDerivative
+remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0
+```
+
+This is a major narrowing of Pair A: the production/Hermitian/log-cover algebraic interface is no longer open.
+
+The remaining source-specific gaps are:
+
+```text
+actual real scalar derivative witnesses for the frozen production remainder
+fully instantiated production HasDerivAt Schur identity
+source-specific remainder domination
+same-state first-bad contact existence/orientation composition
+```
+
+Existing complex frozen-source remainder holomorphy means the first item is primarily finite-dimensional analytic transport, not a new pole/arch/prime analyticity problem.
 
 ## External research inputs worth composing carefully
 
@@ -157,52 +177,66 @@ for the special canonical witness forced by first-bad geometry. Such a restricte
 
 ### Pair A — contact orientation clash — LEADING ROUTE
 
-**Side 1: first-bad/contact geometry.** A hypothetical first bad contact must cross with the orientation required by the first-bad event.
+**Side 1: first-bad/contact geometry.** A hypothetical first-bad contact must be shown to have the crossing orientation required by the first-bad event on the exact same retained state.
 
-**Side 2: canonical production derivative law.** The fixed-cell theorem inventory already contains exact decompositions of the form
-
-```text
-M_Q(L) = -log(L) I + R_Q(L)
-```
-
-through production parity/intrinsic compression. PR #182 now supplies the generic contact calculus.
-
-For orthogonal raw coordinates `W,c`, with `x=b/a` and `u=c-xW`, the universal scalar drift should contribute
+**Side 2: canonical production derivative law.** PR #184 now theoremizes the relevant complex-Hermitian/log-cover algebraic structure. On logarithmic coordinate `t=log L`:
 
 ```text
-a'_log = -||W||^2/L
-b'_log = 0
-d'_log = -||c||^2/L
+P_t' = -E + R_t'
 ```
 
-and therefore
+where `E = envelopeNormSq` is the universal positive geometric quantity and all cancellation is isolated in the production remainder derivative.
+
+If
 
 ```text
-P'_log = -(||c||^2 + x^2||W||^2)/L
-       = -||u||^2/L.
+R_t' < E,
 ```
 
-The desired production identity is schematically
+then Lean already proves
 
 ```text
-P'(L) = -||u_L||^2/L + production remainder drift.
+P_t' < 0.
 ```
 
-The missing lemma is a source-specific contact-local bound on the **production remainder** strong enough to force an orientation incompatible with first-bad crossing.
-
-**Status split:**
+For the existing R003 backend, which differentiates in physical aperture `L`, the equivalent formula is
 
 ```text
-generic 2x2 Schur-envelope derivative          PROVED / #182
-generic H1 contact orientation transfer         PROVED / #182
-production/Hermitian interface                  OPEN
-exact remainder derivative at that interface    OPEN
-source-specific opposing contact orientation    OPEN
+P_L' = -E/L + R_L'
 ```
 
-**Normalization firewall:** the q13 research integer shell generator spans the same one-dimensional shell as Lean's canonical cubic shell but is not theorem-identified at the same magnitude. Prefer an invariant/Hermitian bridge rather than silently identifying coordinates.
+and the coordinate-consistent domination condition is
 
-**Complex firewall:** formal production lives in a complex Hermitian carrier; #182 is real 2x2 calculus. A production theorem should either theoremize the Hermitian `|b|^2/a` form or explicitly prove the required real specialization.
+```text
+R_L' < E/L
+```
+
+or equivalently
+
+```text
+L*R_L' < E.
+```
+
+**Current Pair-A status split:**
+
+```text
+generic real 2x2 Schur-envelope derivative                PROVED / #182
+Hermitian 2x2 Schur calculus                              PROVED / #184
+full frozen parity production log-cover family            PROVED / #184
+fixed-cell equality with actual production                PROVED / #184
+N2 predecessor/canonical-shell orthogonality              PROVED / #184
+algebraic universal-negative-drift/remainder split        PROVED / #184
+remainder domination -> negative orientation              PROVED / #184
+actual production remainder scalar derivative witnesses   OPEN
+source-specific remainder domination                      OPEN
+opposing first-bad contact orientation on same state      OPEN
+```
+
+**Normalization firewall:** the q13 research integer shell generator spans the same one-dimensional shell as Lean's canonical cubic shell but is not theorem-identified at the same magnitude. Formal theorem work should stay on the canonical intrinsic shell.
+
+**Coordinate firewall:** do not compare `d/dt` with `d/dL` without the factor `L`.
+
+**Analyticity firewall:** holomorphy/analyticity supplies derivative existence but not the magnitude bound needed for domination.
 
 ### Pair B — negative-index separation versus critical-line sampling rigidity
 
@@ -244,7 +278,7 @@ R001 supplies target-adaptive off-line growth after pole killing. A narrower, sa
 
 | Pair | RH-false / first-bad property | Opposing property sought | Missing bridge | Fastest falsifier |
 |---|---|---|---|---|
-| A | first-contact crossing orientation | canonical log drift + remainder forces opposite contact orientation | production/Hermitian Schur-envelope + remainder derivative | split log/remainder derivatives at #180 frozen centers |
+| A | first-contact crossing orientation | #184 log drift + source remainder forces opposite contact orientation | actual remainder derivatives + domination + same-state crossing composition | split `-E/L` and remainder derivative on exact #180 frozen states |
 | B | negative transverse Gram direction | same witness receives positive sampling/frame energy from simple critical zeros | canonical witness -> exact zero-side family | finite zero-side replay with exceptional budget |
 | C | local q13/Q14 bad/contact event | short-window critical zeros force enough local positivity | aperture/window correspondence | compare support scale with Wang regime |
 | D | selected parity badness/source fork | opposite parity restrictions close both branches | same-state parity composition | same-q/N opposite-parity controls |
@@ -256,32 +290,40 @@ R001 supplies target-adaptive off-line growth after pole killing. A narrower, sa
 - **Independence test:** do not double-count two proofs of the same second-moment phenomenon.
 - **Same-object test:** both properties must apply to the exact same state/aperture/parity/normalization/production object.
 - **Normalization test:** external or research coordinate systems require exact bridges before composition.
+- **Coordinate test:** `t=log L` and physical `L` derivatives must be converted exactly before sign/magnitude comparison.
+- **Analyticity test:** derivative existence is not a derivative magnitude estimate.
 - **Exceptional-budget test:** if a tiny off-line set can contribute arbitrarily large negative mass, density information cannot dominate it.
 - **Mustache test:** reject any allegedly modest lemma that unfolds to an RH-equivalent target such as `ArithmeticSideSubexponential` or full Weil positivity.
 - **Moving-state test:** do not silently drop derivative terms from a moving optimizer; the envelope cancellation must be theoremized at the exact interface.
-- **Global-monotonicity test:** PR #182 licenses local contact calculus, not DR-022 global fixed-sign Schur monotonicity.
+- **Global-monotonicity test:** PR #184 licenses local Hermitian contact/log-drift calculus, not DR-022 global fixed-sign Schur monotonicity.
 - **Circularity test:** neither side may assume successor positivity, absence of the negative root, or RH-equivalent content.
 
 ## Immediate execution order
 
-### Finite lane
+### Finite falsification lane
 
 ```text
-centered H1 recovery on frozen #180 boxes
-  -> theorem-backed Schur-box retry in certified H1
-  -> Delta_2'' centered propagation only if needed
-  -> interval Newton/Krawczyk only after signed neighborhoods
+reuse the exact frozen #180 physical-L schedule
+  -> evaluate E/L and the full pivot derivative
+  -> derive/evaluate the production remainder derivative
+  -> cross-check full = -E/L + remainder
+  -> report domination margin E/L - remainder
+  -> report ratio L*remainder/E
+  -> classify whether the proposed domination mechanism survives
 ```
 
-### Formal Pair-A lane
+Do this before investing in a source-specific domination proof.
+
+### Formal Pair-A lane if the signal survives
 
 ```text
-invariant/Hermitian production Schur-envelope interface
-  -> attach fixed-cell -log(L)I + remainder decomposition
-  -> isolate -||u||^2/L universal drift
-  -> expose exact scalar production remainder derivative
-  -> falsify/prove a source-specific contact-local bound
-  -> compose with PR #182 contact orientation
+existing complex frozen-source remainder holomorphy
+  -> parity-compressed scalar analyticity
+  -> N2 predecessor/canonical-shell pairings
+  -> real remainder-coordinate derivative witnesses
+  -> actual production HasDerivAt Schur identity
+  -> source-specific remainder domination
+  -> compose with independently theorem-backed first-bad contact orientation
 ```
 
 The central objective remains:

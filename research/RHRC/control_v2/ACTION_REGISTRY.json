@@ -46,10 +46,12 @@
         "PR #180 consumes the post-#178 point-derivative scout: the point balls are signed, while the nonzero-width Schur representation is blocked by H1 scope rather than established width gain",
         "PR #180's nonzero-width Schur primary benchmark classifies SCHUR_OUT_OF_H1_SCOPE with applicable_primary_count=0, so it does not establish Schur width gain or sign recovery on those boxes; the first interval gate is H1 certification itself",
         "PR #182 theoremizes the generic real 2x2 Schur-envelope derivative: Delta_2=aP, Delta_2'=a'P+aP', exact quotient/envelope equivalence, and at contact P=0 the identity Delta_2'=aP'; under H1 a>0 determinant and pivot derivative orientations agree",
-        "PR #182 is generic contact calculus, not a production arithmetic sign law: it proves neither contact existence nor any sign of P' or Delta_2' from the zeta source",
-        "the immediate finite route is centered H1 recovery from point a(L0)>0 and the already-validated a'(I) enclosure, followed by a theorem-backed Schur-box retry; Delta_2''/centered derivative propagation is the fallback if that remains unresolved",
-        "the production fixed-cell inventory already preserves an exact -log(L)*I scalar drift, but the remaining structural target is the production-interface Schur-envelope/remainder derivative and a source-specific contact-local bound",
-        "the research integer shell generator is only known to span the same one-dimensional shell as Lean's intrinsic cubic shell and is not normalization-identified; production theorem work should prefer an invariant/Hermitian interface",
+        "PR #184 theoremizes the complex-Hermitian 2x2 Schur calculus, the full frozen parity production family M~(t)=-tI+R~(t), exact fixed-cell equality with parityCompressedCanonical, N2 predecessor/canonical-cubic-shell reconstruction and orthogonality, the algebraic P_t'=-envelopeNormSq+remainderEnvelopeDerivative split, and the conditional negative-orientation theorem when the remainder drift is dominated",
+        "PR #184 closes the production/Hermitian/log-cover algebraic interface but does not yet assemble the actual source-specific real remainder-coordinate derivative witnesses, prove the fully instantiated production HasDerivAt Schur identity, prove source-specific remainder domination, or supply the opposing first-bad contact orientation",
+        "the immediate highest-information research route is to reuse the exact #180 physical-L schedule and split dP/dL=-envelopeNormSq/L+remainder_drift_L, reporting the domination margin and the ratio L*remainder_drift_L/envelopeNormSq before further theorem investment",
+        "the next formal bridge, if the signal survives, is finite-dimensional transport of already-proved frozen-source complex analyticity through parity projection and the N2 predecessor/canonical-shell scalar pairings to actual real derivative witnesses",
+        "the research integer shell generator is only known to span the same one-dimensional shell as Lean's intrinsic cubic shell and is not normalization-identified; formal theorem work must stay on the canonical intrinsic cubic shell",
+        "log-coordinate derivatives d/dt with t=log L must not be compared directly to physical-aperture d/dL research derivatives; d/dL introduces the factor 1/L in the universal drift",
         "repeating the same raw assembled derivative boxes with only more precision/depth is not a route change after PR #178",
         "determinant and pivot minima are distinct optimization targets because P=Delta_2/a and a(L) varies",
         "full physical H1 does not imply H1 for the q-removed background; first-bad interpretation of a full-background lift requires background H1 separately",
@@ -75,7 +77,7 @@
       "first_breaks": [
         {
           "id": "E4A4-SCHUR-FB-05",
-          "statement": "after consuming the #165-#182 theorem/research sequence, including #182 generic contact-orientation calculus and #180 finite point-orientation evidence, no theorem-backed production-interface remainder/contact restriction, parity restriction, source-sampling relation, endpoint-scalar consequence, or other independent canonical arithmetic invariant yields an incompatible restriction on the exact forced shifted state without restating successor positivity",
+          "statement": "after consuming the #165-#184 theorem/research sequence, #184 already closes the complex-Hermitian production/log-cover algebraic bridge and proves that remainder domination would force negative pivot orientation; what remains is that no theorem-backed source-specific actual remainder-derivative bound, parity restriction, source-sampling relation, endpoint-scalar consequence, or other independent canonical invariant forces an incompatible restriction on the exact retained first-bad/contact state without restating successor positivity, and the required opposing first-bad contact orientation has not yet been composed on that same state",
           "test_id": "falsify_and_prove_fb05_canonical_arithmetic_restriction",
           "estimated_cost": 2.0,
           "decisive_if_failed": true
@@ -94,7 +96,7 @@
         "PR #137 proves canonicalOneStepDomination is sufficient but not its arithmetic truth",
         "under predecessor nonnegativity and one-dimensional shell geometry, universal domination is essentially the missing successor positivity and has no information gain if proved by restatement",
         "PR #163 sharpens the selected-state arithmetic route but does not make universal domination a smaller theorem",
-        "PRs #165-#182 sharpen the route toward local contact orientation plus production arithmetic structure rather than universal domination",
+        "PRs #165-#184 sharpen the route toward local contact orientation plus a source-specific production remainder restriction rather than universal domination",
         "generic Hermitian/parity/KKT/transfer/displacement structure remains quarantined by countermodels",
         "factorwise alpha/Gamma/overlap/source-moment closure remains quarantined",
         "atomwise positive determinant/SOS remains quarantined"
@@ -137,7 +139,7 @@
         "PR #159 exposes exact retained boundary defects but does not supply an opposing sign",
         "PR #161 aligns the even negative secular trial with exact Riesz-8/Riesz-9 structure and the cross-parity explicit source obstruction",
         "PR #163 aligns that same retained even shifted trial with the exact mixed seventh source jet and squared-jet Riesz boundary, but still supplies no contradiction-producing arithmetic restriction",
-        "PRs #165-#182 narrow the surviving arithmetic search to same-state/contact-local arithmetic restrictions; none proves negative-root exclusion",
+        "PRs #165-#184 narrow the surviving arithmetic search to same-state/contact-local arithmetic restrictions; #184 supplies the exact Hermitian/log-drift interface but not the source-specific domination theorem or opposing first-bad orientation needed for exclusion",
         "no division by alpha, Gamma, overlap or source moment is legal without separate nonzeroness",
         "terminal Mathlib RH still requires the outside-strip/trivial-zero seam after negative-root exclusion"
       ],
@@ -177,7 +179,7 @@
         "#174 keeps odd-N2 ancestry explicit but does not establish a parity-exclusion theorem",
         "#176 keeps odd-N2 ancestry in the fixed-unit agreement benchmark but still does not establish a parity-exclusion theorem",
         "#178 checks the odd-N2 predecessor derivative in the fixed-unit derivative stack but still does not establish a parity-exclusion theorem",
-        "#182 is generic 2x2 contact calculus and does not close the parity branch",
+        "#184 is a Hermitian/contact/log-drift theorem package and does not close the parity branch",
         "the active route uses exact secular/source/mixed-jet/Riesz and complete scalar constraints rather than assuming spectral equivalence through D"
       ],
       "score_inputs": {
@@ -210,7 +212,7 @@
         "strict monotonicity yields root uniqueness while a hypothetical off-line zero already forces one negative root",
         "root uniqueness is weaker than negative-root exclusion",
         "post-#150 experiments disfavor global aperture/selected-Schur monotonicity as the decisive mechanism",
-        "post-#182 work uses theorem-backed local contact calculus without reviving a global fixed-sign derivative claim",
+        "post-#184 work uses theorem-backed local Hermitian contact/log-drift calculus without reviving a global fixed-sign derivative claim",
         "the theorem-backed same-state source/Riesz/mixed-jet obstruction is more direct unless monotonicity supplies independent source-specific exclusion information"
       ],
       "score_inputs": {
@@ -242,7 +244,7 @@
       "surviving_objections": [
         "a strictly positive predecessor floor is not available uniformly from first-bad minimality alone",
         "the shell gap g_N=q_N-mu_N may fail to stay positive",
-        "the post-#182 local contact-orientation route is more direct than rebuilding a global deformation horizon"
+        "the post-#184 local contact-orientation/remainder route is more direct than rebuilding a global deformation horizon"
       ],
       "score_inputs": {
         "cost": 2.0,

@@ -6,12 +6,12 @@
 
 ```text
 THEOREM AUTHORITY
-latest theorem-bearing PR = #182
-merged theorem-bearing main = a69160d37a84049711aaff6c3d5db804583a7306
-validated theorem head = 0c3f63cdc4774ba1a68b21d1558ea0ee860a938d
-validated theorem tree = e0b260b3b3a1ed470d54c14d8c0c46b32379f3fb
-RHRC #1082 = SUCCESS
-Permansson #855 = SUCCESS
+latest theorem-bearing PR = #184
+merged theorem-bearing main = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
+validated theorem head = a756494ebe7e2530715e996b9a9a341fbe07c683
+validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
+RHRC #1089 = SUCCESS
+Permansson #862 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
 merged research PR = #180
@@ -39,7 +39,8 @@ FB-03E-F complex production transport / retained Riesz negativity PROVED / #157
 FB-04A exact moment jets + signed Riesz boundary recurrence        PROVED / #159
 FB-04B same-state shifted Riesz x cross-parity source composition PROVED / #161
 FB-04C mixed quadratic-normal jet x Riesz boundary coupling       PROVED / #163
-FB-05A generic 2x2 Schur/contact orientation calculus              PROVED / #182
+FB-05A generic real Schur/contact orientation calculus             PROVED / #182
+FB-05B Hermitian production/log-cover Schur drift decomposition   PROVED / #184
 FB-05 independent contradiction-producing arithmetic restriction  NOW / sole selected first break
 A4b2b universal one-step domination                               BROAD FALLBACK
 GLOBAL first-bad exclusion                                        AFTER scoped arithmetic closure
@@ -49,19 +50,29 @@ The selected action remains `E4_A4_REGULAR_SCHUR_ENERGY_SIGN` under frontier `FI
 
 The selected first-break ID remains `E4A4-SCHUR-FB-05`.
 
-## Why routing changes after #182
+## Why routing changes after #184
 
-#180 already established exact-center derivative orientation but found all nonzero-width primary Schur boxes out of H1 scope. #182 then theoremized the generic real 2x2 calculus used by that research graph:
+#184 consumes the production/Hermitian/log-cover algebraic bridge that was open after #182.
+
+Lean now has:
 
 ```text
-Delta_2 = aP
-P' = d' - 2*(b/a)b' + (b/a)^2 a'
-Delta_2' = a'P + aP'
-P=0 -> Delta_2'=aP'
-a>0 -> sign(Delta_2') = sign(P') at contact.
+Hermitian P = d - |b|^2/a
+M~(t) = -t I + R~(t)
+N2 predecessor / canonical cubic shell orthogonality
+P_t' = -envelopeNormSq + remainderEnvelopeDerivative
+remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0
 ```
 
-Therefore the project should not spend another PR rediscovering generic quotient/product calculus. The remaining FB-05 information target is now **production arithmetic**.
+Therefore Control-v2 must no longer recommend “prove the production/Hermitian Schur bridge” as if that interface were open.
+
+The remaining FB-05 information target is source-specific:
+
+```text
+actual remainder scalar derivative witnesses
+  -> quantitative remainder domination
+  -> same-state opposing first-bad contact orientation
+```
 
 ## Selected action — E4_A4_REGULAR_SCHUR_ENERGY_SIGN
 
@@ -70,61 +81,50 @@ The sole live first break remains:
 ```text
 Given the exact retained same-state spectral/source/Riesz/mixed-jet constraints,
 find an independent canonical arithmetic property that makes the retained shifted
-negative state impossible.
+negative state impossible without restating successor positivity.
 ```
 
 Two synchronized lanes are active.
 
-### Finite lane
+### Highest-information finite falsification lane
+
+Reuse the exact #180 q13/Q14 N2/K3 schedule.
+
+#184's theorem coordinate is `t=log L`, while the #178/#180 research backend uses physical aperture `L`. Therefore test the exact converted identity
 
 ```text
-q = 13 -> 16
-N = 2
-K* = 3
-parity = even
-
-H(L) = [[a(L),b(L)],[b(L),d(L)]]
-H1 <-> a(L)>0
-Delta_2(L)=a(L)d(L)-b(L)^2
-P(L)=Delta_2(L)/a(L) in H1.
+dP/dL = -E/L + remainder_drift_L.
 ```
 
-Exact #180 research state:
+Report:
 
 ```text
-POINT_DERIVATIVE_BASIN_BRACKETED
-MINIMUM_ORIENTED
-left centers: 3/3 Delta_2' < 0
-right centers: 3/3 Delta_2' > 0
-SCHUR_OUT_OF_H1_SCOPE on all primary nonzero-width boxes
-applicable_primary_count = 0
+E
+-E/L
+full pivot derivative in L
+remainder_drift_L
+margin = E/L - remainder_drift_L
+ratio = L*remainder_drift_L/E
 ```
 
-Execution order:
+and require the component reconstruction check.
 
-```text
-1. centered H1 recovery from a(L0)>0 + rigorous a'(I)
-2. inside recovered H1, retry the #182-backed Schur derivative box
-3. only if still unresolved, add Delta_2'' / centered propagation
-4. interval Newton/Krawczyk only after signed neighborhoods.
-```
+This is a falsification gate. A ratio reaching/exceeding one on a legitimate frozen state kills the simple domination formulation in that scope.
 
-### Formal Pair-A lane
+### Formal Pair-A lane if the signal survives
 
-The production fixed-cell inventory already provides exact `-log(L)I + remainder` structure. The target is a normalization-safe invariant/Hermitian Schur-envelope derivative that isolates
+The repository already proves entrywise holomorphy of the full frozen complex source remainder. The next theorem bridge is finite-dimensional transport through the exact parity projection and N2 predecessor/canonical-shell scalar pairings to actual real derivative witnesses.
 
-```text
--||u_L||^2/L
-```
+Then instantiate #184 as an actual production `HasDerivAt` Schur identity and only after that attempt the source-specific remainder bound.
 
-plus an exact scalar production remainder derivative. Then falsify/prove a source-specific contact-local bound that forces an orientation incompatible with first-bad crossing.
+A contradiction additionally requires an independently theorem-backed first-bad contact orientation on the exact same retained state.
 
-## Production bridge firewall
+## Production / coordinate firewall
 
 - the research integer shell generator spans the same one-dimensional shell as Lean's canonical cubic shell but is not theorem-identified at the same magnitude;
-- production is complex Hermitian while #182 is generic real 2x2;
-- source-coordinate derivative transport is not aperture derivative control;
-- moving-state terms must be handled by an exact envelope theorem;
+- formal theorem work should stay on the canonical intrinsic cubic shell;
+- `d/dt = L*d/dL` for `t=log L`; derivative magnitudes across the two coordinates are not interchangeable;
+- analyticity gives derivative existence, not the domination magnitude bound;
 - global Schur monotonicity remains quarantined.
 
 ## Evidence-class firewall
@@ -140,6 +140,7 @@ mixed quadratic-normal seventh jet -> M4                    PROVED / #163
 finite-prime sampling of same mixed source observable       PROVED / #163
 mixed-jet squared R8-R9 boundary coupling                   PROVED / #163
 generic real Schur-envelope/contact calculus                PROVED / #182
+Hermitian production/log-cover Schur package                PROVED / #184
 
 endpoint-scalar executable audit                            RESEARCH / #165
 shifted-state finite discriminator                          RESEARCH / #166
@@ -149,15 +150,16 @@ theorem-aligned Schur visibility/background audit           RESEARCH / #170
 threshold-to-threshold production barrier audit             RESEARCH / #172
 q13 exact 2x2 scalar-barrier / interval-method audit         RESEARCH / #174
 fixed-unit q13/Q14 enclosure method selection               RESEARCH / #176
-complete fixed-unit derivative discrimination               RESEARCH / #178
+complete fixed-unit physical-L derivative discrimination    RESEARCH / #178
 exact-center derivative basin / Schur-scope audit           RESEARCH / #180
 
-production/Hermitian envelope bridge                        OPEN
-production remainder/contact orientation bound              OPEN
-centered finite-width H1                                    OPEN / NEXT
-simultaneous even/odd bad exclusion                         OPEN
-odd-selected branch closure                                 OPEN
-final contradiction-producing arithmetic restriction       OPEN
+actual production remainder scalar derivative witnesses      OPEN
+source-specific remainder/contact orientation bound          OPEN
+same-state opposing first-bad contact orientation            OPEN
+centered finite-width H1                                     OPEN
+simultaneous even/odd bad exclusion                          OPEN
+odd-selected branch closure                                  OPEN
+final contradiction-producing arithmetic restriction        OPEN
 ```
 
 ## Negative controls
@@ -175,14 +177,14 @@ final contradiction-producing arithmetic restriction       OPEN
 - global aperture/Schur monotonicity remains quarantined;
 - brute raw derivative refinement remains dead as the current method;
 - determinant and pivot minima are distinct;
-- generic #182 contact calculus is not a production arithmetic sign.
+- #184's algebraic drift split is not a source-specific arithmetic domination theorem.
 
 ## CI expectations
 
 `tools/run_suite.py` runs Control-v2 unit tests. The RHRC workflow smoke must assert:
 
-- theorem anchor is #182;
-- theorem merge/tree correspond to the exact validated #182 state;
+- theorem anchor is #184;
+- theorem merge/tree correspond to the exact validated #184 state;
 - control anchor remains #117;
 - frontier and selected action remain unchanged;
 - FB-05 is the sole selected first break for `E4_A4_REGULAR_SCHUR_ENERGY_SIGN`;
@@ -190,6 +192,6 @@ final contradiction-producing arithmetic restriction       OPEN
 - controller theorem authority and terminal-claim mutation remain false.
 
 Newest implications:
-`../RESEARCH_LEADS_POST_182_SCHUR_ENVELOPE_CONTACT_ORIENTATION_DELTA.md`.
+`../RESEARCH_LEADS_POST_184_HERMITIAN_LOG_DRIFT_REMAINDER_DOMINATION_DELTA.md`.
 
 **RH remains OPEN.**

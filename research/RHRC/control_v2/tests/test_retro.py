@@ -55,7 +55,7 @@ class RetroTests(unittest.TestCase):
         self.assertNotIn("rupture", terms)
         self.assertNotIn("slack", terms)
 
-    def test_e4a4_actions_use_post182_contact_orientation_aliases(self):
+    def test_e4a4_actions_use_post184_remainder_orientation_aliases(self):
         aliases = load_alias_map(RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json")
         terms = expanded_terms("canonical_source_exclusion", aliases)
         for term in (
@@ -137,6 +137,7 @@ class RetroTests(unittest.TestCase):
             "PR #163",
             "PR #180",
             "PR #182",
+            "PR #184",
             "theorem-aligned [W|c] one-step Schur pivot",
             "q13->16/N2/K3/even",
             "Delta_2(L)=a(L)d(L)-b(L)^2",
@@ -146,20 +147,21 @@ class RetroTests(unittest.TestCase):
             "MINIMUM_ORIENTED",
             "SCHUR_OUT_OF_H1_SCOPE",
             "applicable_primary_count=0",
-            "Schur-envelope derivative",
-            "Delta_2'=aP'",
-            "centered H1 recovery",
-            "-log(L)*I",
-            "invariant/Hermitian",
-            "determinant and pivot minima",
+            "complex-Hermitian",
+            "M~(t)=-tI+R~(t)",
+            "P_t'=-envelopeNormSq+remainderEnvelopeDerivative",
+            "dP/dL=-envelopeNormSq/L+remainder_drift_L",
+            "L*remainder_drift_L/envelopeNormSq",
+            "canonical intrinsic cubic shell",
             "global aperture and global minimizing-Schur monotonicity remain quarantined",
             "DR-024",
         ):
             self.assertIn(token, objections)
         schur_break_ids = [x["id"] for x in schur["first_breaks"]]
         self.assertEqual(schur_break_ids, ["E4A4-SCHUR-FB-05"])
-        self.assertIn("#165-#182", schur["first_breaks"][0]["statement"])
-        self.assertIn("production-interface", schur["first_breaks"][0]["statement"])
+        self.assertIn("#165-#184", schur["first_breaks"][0]["statement"])
+        self.assertIn("source-specific", schur["first_breaks"][0]["statement"])
+        self.assertIn("same state", schur["first_breaks"][0]["statement"])
 
     def test_git_history_handles_dash_leading_fixed_string_terms(self):
         td, repo, _, _ = self._fixture_repo()

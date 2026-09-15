@@ -21,16 +21,16 @@ class ControlV2Tests(unittest.TestCase):
         self.assertFalse(boundary["may_emit_terminal_rh_status"])
         self.assertFalse(boundary["may_promote_lean_theorem"])
 
-    def test_state_advances_theorem_anchor_to_182_without_moving_control_anchor(self):
+    def test_state_advances_theorem_anchor_to_184_without_moving_control_anchor(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 182)
+        self.assertEqual(state.anchor.pr, 184)
         self.assertEqual(
             state.anchor.merge_commit,
-            "a69160d37a84049711aaff6c3d5db804583a7306",
+            "6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e",
         )
         self.assertEqual(
             state.anchor.tree,
-            "e0b260b3b3a1ed470d54c14d8c0c46b32379f3fb",
+            "6c77cd470809959a403b3bcc5f08d39f4076fa4c",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -44,31 +44,31 @@ class ControlV2Tests(unittest.TestCase):
             "FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN",
         )
 
-    def test_control_note_records_post182_theorem_and_post180_research(self):
+    def test_control_note_records_post184_theorem_and_post180_research(self):
         control = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
         note = control["control_note"]
         for token in (
-            "PR #182",
-            "0c3f63cdc4774ba1a68b21d1558ea0ee860a938d",
-            "a69160d37a84049711aaff6c3d5db804583a7306",
-            "e0b260b3b3a1ed470d54c14d8c0c46b32379f3fb",
-            "Schur-envelope derivative",
-            "Delta_2'=a'P+aP'",
+            "PR #184",
+            "a756494ebe7e2530715e996b9a9a341fbe07c683",
+            "6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e",
+            "6c77cd470809959a403b3bcc5f08d39f4076fa4c",
+            "complex-Hermitian",
+            "M~(t)=-tI+R~(t)",
+            "P_t'=-envelopeNormSq+remainderEnvelopeDerivative",
             "PR #180",
             "a87469da9e611b53ae400cb4b18ce4afeb94e6d2",
             "POINT_DERIVATIVE_BASIN_BRACKETED",
             "MINIMUM_ORIENTED",
             "SCHUR_OUT_OF_H1_SCOPE",
             "applicable_primary_count=0",
-            "centered H1 recovery",
-            "-log(L)I",
-            "invariant/Hermitian",
+            "dP/dL=-envelopeNormSq/L+remainder_drift_L",
+            "L*remainder_drift_L/envelopeNormSq",
             "PR #117 remains the Control-v2 semantic anchor",
         ):
             self.assertIn(token, note)
-        self.assertEqual(control["merged_theorem_anchor"]["pr"], 182)
+        self.assertEqual(control["merged_theorem_anchor"]["pr"], 184)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
         self.assertEqual(control["terminal_claim"], "RH_OPEN")
 
@@ -108,7 +108,7 @@ class ControlV2Tests(unittest.TestCase):
         self.assertGreater(scores["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"],
                            scores["E4_B_PARITY_SHIFTED_NULLITY"])
 
-    def test_regular_schur_action_is_post182_contact_incompatibility_route(self):
+    def test_regular_schur_action_is_post184_remainder_incompatibility_route(self):
         registry = json.loads(
             (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
         )
@@ -121,23 +121,20 @@ class ControlV2Tests(unittest.TestCase):
             "PR #163",
             "PR #180",
             "PR #182",
-            "Schur-envelope derivative",
-            "contact",
-            "Delta_2'=aP'",
-            "theorem-aligned [W|c] one-step Schur pivot",
+            "PR #184",
+            "complex-Hermitian",
+            "M~(t)=-tI+R~(t)",
+            "P_t'=-envelopeNormSq+remainderEnvelopeDerivative",
             "q13->16/N2/K3/even",
-            "Delta_2(L)=a(L)d(L)-b(L)^2",
             "FIXED_UNIT_METHOD_ACCEPTED",
             "DERIVATIVE_UNRESOLVED",
             "POINT_DERIVATIVE_BASIN_BRACKETED",
             "MINIMUM_ORIENTED",
             "SCHUR_OUT_OF_H1_SCOPE",
             "applicable_primary_count=0",
-            "centered H1 recovery",
-            "-log(L)*I",
-            "generic",
-            "production",
-            "determinant and pivot minima",
+            "dP/dL=-envelopeNormSq/L+remainder_drift_L",
+            "L*remainder_drift_L/envelopeNormSq",
+            "canonical intrinsic cubic shell",
             "global aperture and global minimizing-Schur monotonicity remain quarantined",
             "DR-024",
         ):
@@ -145,9 +142,9 @@ class ControlV2Tests(unittest.TestCase):
 
         self.assertEqual(action["dead_route_matches"], [])
         self.assertEqual(break_ids, ["E4A4-SCHUR-FB-05"])
-        self.assertIn("#165-#182", first_breaks)
-        self.assertIn("production-interface", first_breaks)
-        self.assertIn("incompatible restriction", first_breaks)
+        self.assertIn("#165-#184", first_breaks)
+        self.assertIn("source-specific", first_breaks)
+        self.assertIn("same state", first_breaks)
         self.assertIn("without restating successor positivity", first_breaks)
 
         selected_break = _selected_first_break(
@@ -156,7 +153,7 @@ class ControlV2Tests(unittest.TestCase):
         self.assertIsNotNone(selected_break)
         self.assertEqual(selected_break["break_id"], "E4A4-SCHUR-FB-05")
 
-    def test_fb05_incompatibility_program_is_same_state_and_post182_claim_capped(self):
+    def test_fb05_incompatibility_program_is_same_state_and_post184_claim_capped(self):
         program = (RHRC / "FB05_INCOMPATIBILITY_PROGRAM.md").read_text(encoding="utf-8")
         for token in (
             "same state",
@@ -169,10 +166,10 @@ class ControlV2Tests(unittest.TestCase):
             "Do not count them as two independent",
             "Sparse-exception test",
             "Mustache test",
-            "PR #182",
-            "generic 2x2",
-            "contact orientation",
-            "production remainder",
+            "PR #184",
+            "complex-Hermitian",
+            "remainder domination",
+            "coordinate",
             "FB-05",
             "RH remains OPEN",
         ):
