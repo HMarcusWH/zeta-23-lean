@@ -1,0 +1,42 @@
+{
+  "schema_version": "POST185_FB05_Q13_REMAINDER_DRIFT_FIXTURE_v1",
+  "claim_cap": "FINITE_REMAINDER_DRIFT_FALSIFICATION_ONLY",
+  "theorem_authority_pr": 184,
+  "research_anchor_pr": 180,
+  "routing_sync_pr": 185,
+  "inherited_schedule_fixture": "post179_fb05_q13_correlation_preserving_derivative_v1.json",
+  "selected_target": {
+    "q_start": 13,
+    "q_end": 16,
+    "predecessor_N": 2,
+    "successor_K": 3,
+    "selected_parity": "even",
+    "primary_Q": 14
+  },
+  "required_ancestry_control": {
+    "predecessor_N": 2,
+    "parity": "odd"
+  },
+  "arb_precision_bits": 384,
+  "implementation_check_precision_bits": 192,
+  "expected_primary_box_count": 6,
+  "expected_control_box_count": 5,
+  "require_primary_exact_center_h1": true,
+  "research_dispositions": [
+    "DOMINATION_SIGNAL_STRONG",
+    "DOMINATION_SIGNAL_MIXED",
+    "DOMINATION_SIGNAL_FAILS",
+    "DOMINATION_SIGNAL_UNRESOLVED"
+  ],
+  "nonclaims": [
+    "This Python audit is research/falsification tooling, not Lean theorem authority.",
+    "The exact post-#180 frozen schedule is reused; no center movement, basin refit, or adaptive target selection is permitted.",
+    "The research basis uses the existing theorem-aligned [W|c] q13 geometry; no claim is made that its shell generator has the same magnitude as Lean's intrinsic cubic shell vector.",
+    "The physical-L identity tested here is dP/dL = -E/L + dR/dL; log-coordinate and physical-L derivatives are not mixed.",
+    "A positive finite domination margin at the frozen centers is an experimental signal only and does not prove a source-specific domination theorem on arbitrary retained first-bad states.",
+    "A failed or mixed domination signal is a legitimate green falsification outcome; only malformed scope, algebraic disagreement, enclosure inconsistency, or execution regressions are CI-red.",
+    "Finite-width boxes are evaluated only inside rigorously certified H1 scope; OUT_OF_H1_SCOPE is not a negative mathematical result.",
+    "No contact existence, first-bad crossing orientation, whole-cell positivity, negative-root exclusion, or RH claim is made.",
+    "RH remains OPEN."
+  ]
+}
