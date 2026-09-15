@@ -14,52 +14,43 @@ When sources disagree:
 6. **PR-specific settlement documents**.
 7. **Historical roadmaps, audits, numerical receipts, external reviews and old implementation plans**.
 
-External reviews and numerical discovery are evidence for routing, not theorem authority. Control-v2 route certificates are diagnostic only.
-
-A green but unmerged PR is branch evidence. A merged Lean file is theorem authority only when its declarations lie in an exact successful authoritative compiler/import closure or were explicitly compiled by such a gate.
+Research certificates, exact-rational audits, Arb output and external reviews are routing evidence unless separately theoremized in Lean.
 
 ## Three-anchor model
 
-### 1. Theorem-state anchor
+### Theorem-state anchor
 
 ```text
 latest theorem-bearing PR = #184
 validated theorem head = a756494ebe7e2530715e996b9a9a341fbe07c683
 merged theorem commit = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
 validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
-RHRC #1089 = SUCCESS
-Permansson #862 = SUCCESS
 ```
 
-#184 remains the current compiler-validated mathematical authority. It adds the complex-Hermitian Schur calculus, full frozen parity family on the logarithmic cover, exact fixed-cell production bridge, N2 predecessor/shell geometry, the algebraic universal-minus-remainder envelope derivative, and the conditional negative-orientation criterion.
+PR #184 remains the current compiler-validated mathematical authority.
 
-### 2. Research-evidence anchor
+### Research-evidence anchor
 
 ```text
-latest merged research PR = #186
-validated research head = 7d277a99437d98fdb7c831f25a130eac07f1b3af
-merged research commit = 0494658a87d29eeb2124aa16232c264c21d23c18
-RHRC #1091 = SUCCESS
-Permansson #864 = SUCCESS
-research disposition = DOMINATION_SIGNAL_MIXED
+latest merged research PR = #190
+validated research head = 8701920b0da18ae6595ad0eee55c1f6cb291a94f
+merged research commit = f87da9fde71dd1e74419c6ae5848eee3787c27e4
+validated research tree = af8774b65c898de221a5bf32977ccff3407a7b2d
+RHRC #1096 = SUCCESS
+Permansson #869 = SUCCESS
+research disposition = JOINT_EXACT_VECTOR_SEPARABLE / JOINT_THRESHOLD_SIGNATURE_SEPARABLE
 ```
 
-#186 is research/falsification evidence, not theorem promotion. On the exact frozen q13/Q14 N2/K3/even schedule inherited from #180, two primary exact-center states certify positive domination margin and four certify negative domination margin; no primary exact center is unresolved. The finite-width boxes remain `FINITE_WIDTH_OUT_OF_H1_SCOPE`.
+This is research/falsification authority only. It does not move Lean theorem authority.
 
-The simple universal source-remainder domination proposal is therefore falsified in this tested finite scope. This does **not** falsify #184, whose theorem is conditional, and it does not establish a general opposite sign law.
-
-### 3. Control-plane semantic anchor
+### Control-plane semantic anchor
 
 ```text
 control-plane semantic anchor = PR #117
 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
 ```
 
-This changes only when controller capability/authority semantics change, not merely when theorem/research routing metadata is refreshed.
-
-## Dynamic live-head rule
-
-Do **not** freeze a mutable documentation merge as permanent `live main` state inside long-lived prose. When an exact current `main` SHA is needed, record it in the time-specific execution/PR/delta document.
+This changes only when controller capability/authority semantics change.
 
 ## Living SSOT update law
 
@@ -71,11 +62,11 @@ Update these when their underlying state changes:
 - `research/RHRC/RESEARCH_LEADS.md`;
 - newest dated research delta;
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`;
-- `research/RHRC/VALIDATION_PROTOCOL.md` when validation anchors/gates change;
+- `research/RHRC/VALIDATION_PROTOCOL.md` when validation anchors/evidence classes change;
 - obstruction/dead-route ledgers when reusable classifications change;
-- claim/route registries only when their own formal or explanatory state changes;
 - `control_v2/CONTROL_STATE.json` when theorem/control anchors or descriptive research state change;
 - `control_v2/ACTION_REGISTRY.json` when routing priority, surviving objections, or first-break specification changes;
+- `routes/ROUTE_REGISTRY.json` explanatory notes when route state changes;
 - retro aliases/regression tests when intentionally hard-coded research vocabulary changes.
 
 Historical dated deltas are not rewritten to look current.
@@ -84,113 +75,73 @@ Historical dated deltas are not rewritten to look current.
 
 ### Theorem authority through #184
 
-PR #184 imports `Zeta23/CCM/HermitianSchurEnvelopeDerivative.lean` and `Zeta23/CCM/FrozenN2SchurLogDrift.lean` into the validated aggregate CCM closure.
-
-It proves, in the exact scope of those declarations:
+Lean proves the Hermitian 2x2 Schur/contact calculus, exact frozen production log-cover family, fixed-cell production bridge, N2 predecessor/canonical-shell reconstruction and orthogonality, and
 
 ```text
-Hermitian 2x2 pivot/determinant calculus using |b|^2/a
-real-component HasDerivAt theorems for the complex off-diagonal coordinate
-contact-local determinant/pivot orientation equivalence under H1
-full frozen parity production family on logarithmic cover M~(t)=-tI+R~(t)
-exact fixed-cell equality with parityCompressedCanonical
-log-cover deck-translation law
-N2 predecessor/shell reconstruction
-nonzero canonical cubic shell
-exact predecessor-shell orthogonality
-algebraic P_t' = -envelopeNormSq + remainderEnvelopeDerivative
-remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0
+P_t' = -envelopeNormSq + remainderEnvelopeDerivative
+remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0.
 ```
 
-#184 does **not** prove source-specific remainder domination, contact existence/uniqueness, a first-bad crossing orientation on the same retained state, global Schur monotonicity, first-bad exclusion, negative-root exclusion or RH.
+No later research PR promotes additional Lean theorem authority.
 
-### Research progression through #186
+### Research progression through #190
 
 ```text
-#165 endpoint-scalar executable audit
-#166 true shifted-state finite discriminator
-#167 Q16 whole-cell interval-method falsification
-#168 threshold moment jet / Q17 microscope
-#170 theorem-aligned one-step Schur visibility/background audit
-#172 threshold-to-threshold production barrier audit
-#174 q13/N2/K3/even exact 2x2 scalar barrier
-#176 fixed-unit q13/Q14 value representation acceptance
-#178 complete fixed-unit physical-L derivative implementation
-#180 exact-center derivative basin minimum-oriented; nonzero-width Schur graph out of H1 scope
-#186 exact frozen remainder-drift falsifier -> DOMINATION_SIGNAL_MIXED
+#186 -> broad remainder domination returns DOMINATION_SIGNAL_MIXED
+#188 -> frozen normalization-safe selector family audited
+#189 -> every individual frozen selector is ambiently separable from target sign
+#190 -> complete seven-selector vector is jointly ambiently separable from target sign
+        with identical nonboundary threshold signature
+        -> all 127 nonempty subsets are also insufficient in that ambient algebra
 ```
 
-Exact #186 primary-center classification:
+The exact #190 executable classifications are:
 
 ```text
-positive domination margin:
-  det_left_o2^-10_r2^-13
-  det_left_o2^-13_r2^-16
-
-negative domination margin:
-  det_right_o2^-10_r2^-13
-  det_right_o2^-13_r2^-16
-  det_left_o2^-16_r2^-19
-  det_right_o2^-16_r2^-19
-
-unresolved primary exact centers: none
-finite-width scope: FINITE_WIDTH_OUT_OF_H1_SCOPE
+JOINT_EXACT_VECTOR_SEPARABLE
+JOINT_THRESHOLD_SIGNATURE_SEPARABLE
 ```
+
+The #190 code explicitly keeps canonical realizability, FB-05 closure, negative-root exclusion and RH false/unclaimed.
 
 ### Current route
 
 ```text
 PROVED THROUGH #184
-  retained first-bad/source/Riesz/mixed-jet state
-  -> generic real Schur calculus
-  -> complex-Hermitian Schur calculus
-  -> full frozen parity log-cover production family
-  -> exact fixed-cell bridge
-  -> N2 orthogonal predecessor/shell geometry
-  -> algebraic universal-negative-drift + remainder decomposition
-  -> conditional negative orientation under remainder domination
+  exact Hermitian/log-cover/contact algebra
 
-RESEARCHED THROUGH #186
-  -> exact #180 dangerous-state schedule preserved
-  -> coordinate-correct physical-L decomposition executed
-  -> two positive-margin states + four negative-margin states
-  -> simple universal remainder domination falsified in tested scope
+RESEARCHED THROUGH #190
+  broad domination falsified
+  frozen selector surface individually and jointly insufficient in ambient algebra
 
-NOW — FB-05
-  -> do not theoremize universal remainder domination
-  -> explain the mixed split on the exact same frozen states
-  -> search for an independently meaningful local discriminator separating the two surviving left states from the four failures
-  -> only theoremize a narrower source-specific inequality if the discriminator survives adversarial finite tests
-  -> in parallel, actual production scalar derivative witnesses remain useful infrastructure, but not as evidence that a global domination theorem is true
+NOW
+  characterize canonical production realizability
+  -> impose common-aperture/source-channel/geometry constraints on the #190 reflected twin
+  -> isolate the first exact production relation that destroys it
+  -> formalize only a relation shown to be mathematically decisive
 ```
 
-The formal first break remains `E4A4-SCHUR-FB-05`; the terminal claim remains `RH_OPEN`.
-
-## Coordinate firewall after #184/#186
-
-PR #184's natural variable is logarithmic coordinate `t=log L`:
+The concrete first lead comes from the executable production source decomposition:
 
 ```text
-dP/dt = -E + dR/dt.
+scalar_shift = 2*cCorrection'(L) I
+arch_signed  = -arch_direct - scalar_shift
 ```
 
-The #178/#180/#186 R003 derivative backend is in physical aperture `L`:
+This demonstrates that the ambient #190 source coordinates omit production coupling. It is a research lead, not yet a theorem excluding the reflected class.
 
-```text
-dP/dL = -E/L + dR/dL.
-```
+## Historical-state rule
 
-Thus the tested domination margin is `E/L - dR/dL`, equivalently the ratio test `L*dR/dL/E < 1` when `E>0`. #186 respected this conversion.
+The post-#186 delta and obstruction supplement remain historical evidence and must not be edited to pretend they were written after #190. The current living docs should point to the new post-#190 delta while retaining #186 as ancestry.
 
 ## Claim firewall
 
 - green research is not theorem promotion;
-- `DOMINATION_SIGNAL_MIXED` is a successful falsification outcome, not a failed CI run;
-- #186 falsifies only the simple universal domination formulation on its frozen finite scope;
-- #184 remains valid because its negative-orientation theorem is conditional on domination;
-- the two positive-margin centers do not establish a general theorem;
-- the four negative-margin centers do not establish a general opposite-sign theorem;
-- finite-width boxes remain outside certified H1 scope;
-- global Schur monotonicity remains quarantined;
+- a green falsification can invalidate its tested hypothesis;
+- exact executable algebra is not automatically a Lean theorem;
+- ambient algebra countermodels are not automatically canonical arithmetic states;
+- #190 closes only the declared frozen strong-selector observation surface in its ambient model;
+- theorem authority remains #184;
+- control semantic authority remains #117;
 - negative-root exclusion remains OPEN;
 - **RH remains OPEN.**
