@@ -14,13 +14,12 @@ RHRC #1089 = SUCCESS
 Permansson #862 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #180
-validated research head = a87469da9e611b53ae400cb4b18ce4afeb94e6d2
-merged research commit = 93ea3df51f2671e316197c1530ea504dee76e821
-research tree = 8199cdc543f1b761c70466dfd602c143a277e6a2
-RHRC #1077 = SUCCESS
-Lean #837 = SUCCESS
-Permansson #850 = SUCCESS
+merged research PR = #186
+validated research head = 7d277a99437d98fdb7c831f25a130eac07f1b3af
+merged research commit = 0494658a87d29eeb2124aa16232c264c21d23c18
+RHRC #1091 = SUCCESS
+Permansson #864 = SUCCESS
+research disposition = DOMINATION_SIGNAL_MIXED
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
@@ -58,7 +57,7 @@ source-moment / M4 global rigidity                                    OPEN
 endpoint-scalar global sign/nonvanishing                              OPEN
 actual production remainder scalar derivative witnesses              OPEN
 actual production HasDerivAt Schur log-drift identity                OPEN
-production remainder/contact-orientation domination bound             OPEN
+any valid narrowed production contact-orientation bound               OPEN
 same-state first-bad contact orientation composition                  OPEN
 q13 finite-width H1 / whole-cell sign-contact classification          OPEN / ACTIVE
 simultaneous even/odd bad exclusion                                   OPEN
@@ -68,11 +67,9 @@ terminal zeta/Mathlib seam                                            OPEN
 RH                                                                    OPEN
 ```
 
-## What #184 changes
+## What #184 established
 
-The production/Hermitian interface is no longer open. PR #184 moves the contact route from the generic real #182 calculus to the actual complex-Hermitian production geometry and logarithmic cover.
-
-Lean now proves, in the exact stated scopes,
+The production/Hermitian interface is theorem-backed. In the exact stated scopes Lean proves
 
 ```text
 P = d - |b|^2/a
@@ -80,72 +77,70 @@ M~(t) = -t I + R~(t)
 P_t' = -envelopeNormSq + remainderEnvelopeDerivative
 ```
 
-along with the exact fixed-cell bridge to `parityCompressedCanonical`, N2 predecessor/canonical-cubic-shell reconstruction and orthogonality, and the conditional implication
+along with the fixed-cell bridge to `parityCompressedCanonical`, N2 predecessor/canonical-cubic-shell reconstruction and orthogonality, and the conditional implication
 
 ```text
 remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0.
 ```
 
-The remaining source-specific gap is not the algebraic shape of the law. It is the actual remainder-coordinate differentiation and then a quantitative domination theorem.
+#184 does not prove the arithmetic premise of that implication, contact existence/uniqueness, an opposing first-bad orientation, negative-root exclusion or RH.
 
-#184 does not prove contact existence/uniqueness, source-specific domination, first-bad exclusion, negative-root exclusion or RH.
+## What #186 changed
 
-## Research state through #180
-
-The q13/N2/K3/even finite microscope has validated value and derivative infrastructure. #180 gives exact-center orientation:
+#186 reused the exact frozen #180 q13/Q14 N2/K3/even schedule and evaluated the corresponding physical-aperture decomposition
 
 ```text
-POINT_DERIVATIVE_BASIN_BRACKETED
-MINIMUM_ORIENTED
-left centers:  3/3 Delta_2' < 0
-right centers: 3/3 Delta_2' > 0
+dP/dL = -E/L + dR/dL
+margin = E/L - dR/dL
+rho = L*dR/dL/E.
 ```
 
-but the nonzero-width primary Schur boxes are
+The green research certificate returns
 
 ```text
-SCHUR_OUT_OF_H1_SCOPE
-applicable_primary_count = 0.
+DOMINATION_SIGNAL_MIXED
+
+positive margin:
+  det_left_o2^-10_r2^-13
+  det_left_o2^-13_r2^-16
+
+negative margin:
+  det_right_o2^-10_r2^-13
+  det_right_o2^-13_r2^-16
+  det_left_o2^-16_r2^-19
+  det_right_o2^-16_r2^-19
+
+unresolved primary exact centers: none
+finite-width scope: FINITE_WIDTH_OUT_OF_H1_SCOPE
 ```
 
-So #180 does not prove finite-width Schur sign recovery or width gain.
+Therefore the simple universal production-remainder domination hypothesis is falsified in this finite scope. This is a successful falsification result, not a CI failure and not a contradiction of #184's conditional theorem.
 
 ## Immediate frontier — FB-05
 
-### Finite falsification lane
+### Research lane: explain the mixed split
 
-The theorem and research coordinates must be matched exactly.
-
-#184 uses `t=log L`:
-
-```text
-dP/dt = -E + dR/dt.
-```
-
-#178/#180 uses physical aperture `L`, so the exact equivalent is
-
-```text
-dP/dL = -E/L + dR/dL.
-```
-
-Reuse the frozen #180 states and report separately:
+Do **not** move/refit the frozen #186 schedule. Compare the two positive-margin states with the four negative-margin states using canonical/theorem-connectable quantities such as
 
 ```text
 E
--E/L
-full pivot derivative in L
-production remainder derivative in L
-margin = E/L - remainder_drift_L
-ratio = L*remainder_drift_L/E
+dR/dL
+rho
+P_L'
+a, |b|, d
+normalized predecessor/shell coupling
+fixed-Q cell position
+position relative to the #180 minimum-oriented basin
+opposite-parity / ancestry controls
 ```
 
-with a consistency check that the components reconstruct the full derivative.
+The goal is not to fit six points. The goal is a condition `C(state)` that is independently meaningful and could plausibly be forced on the exact retained first-bad/contact state.
 
-This falsification pass comes before theorem investment in the source-specific bound.
+Reject a candidate if it restates the target margin, depends on arbitrary normalization, fails controls, or requires finite-width H1 outside certified scope.
 
-### Formal Pair-A lane
+### Formal lane: sign-neutral production derivative witnesses
 
-The repo already proves entrywise holomorphy of the complete frozen complex source remainder. The next formal bridge is therefore:
+The repo already proves entrywise holomorphy of the complete frozen complex source remainder. The next formal interface can still be:
 
 ```text
 complex remainder holomorphy
@@ -153,9 +148,23 @@ complex remainder holomorphy
   -> N2 predecessor/canonical-shell pairings
   -> actual real derivative witnesses for a_R, Re b_R, Im b_R, d_R
   -> production HasDerivAt Schur identity
-  -> source-specific domination
-  -> same-state opposing first-bad contact orientation
 ```
+
+After #186 this is infrastructure, not evidence that universal domination is true.
+
+### Composition lane
+
+A surviving Pair-A contradiction would now require
+
+```text
+canonical selector C on the same state
+  -> contact-local remainder domination
+  -> #184 negative pivot orientation
+  -> independently theorem-backed incompatible first-bad orientation
+  -> same-state contradiction
+```
+
+If no theorem-connectable selector survives the finite controls, downgrade Pair A and prioritize the other incompatibility pairs in `FB05_INCOMPATIBILITY_PROGRAM.md`.
 
 ## Production normalization / coordinate firewall
 
@@ -167,21 +176,23 @@ Also:
 d/dt with t=log L = L * d/dL.
 ```
 
-Do not compare log-coordinate and physical-L derivative magnitudes without that factor. Analyticity proves derivative existence, not a useful domination estimate.
+Do not compare log-coordinate and physical-L derivative magnitudes without that factor. Analyticity proves derivative existence, not a useful domination estimate. A mixed finite sign pattern is not a general opposite-sign theorem.
 
 Global Schur monotonicity remains quarantined.
 
 ## Current execution priority
 
-1. run the post-#184 coordinate-consistent drift/remainder split on the exact frozen #180 states;
-2. if the domination signal survives, theoremize the actual N2 remainder scalar derivative witnesses;
-3. instantiate #184 as an actual production `HasDerivAt` Schur identity;
-4. attempt a source-specific contact-local domination bound;
-5. independently theoremize/identify the opposing first-bad contact orientation on the exact same retained state;
-6. compose only after the same-state/same-aperture/same-parity/same-normalization firewall is satisfied;
-7. preserve `RH_OPEN` until the complete negative-root and terminal seams are theorem-backed.
+1. run a predeclared mixed-split discriminator audit on the exact #186 frozen states;
+2. test normalization, ancestry and parity controls before Lean investment;
+3. theoremize the actual N2 remainder scalar derivative witnesses as a sign-neutral interface;
+4. only if a canonical selector survives, formulate the narrowest contact-local sign theorem;
+5. independently identify/prove the opposing first-bad property on the exact same retained state;
+6. preserve `RH_OPEN` until negative-root exclusion and the terminal zeta/Mathlib seam are theorem-backed.
 
 Newest research synthesis:
-`RESEARCH_LEADS_POST_184_HERMITIAN_LOG_DRIFT_REMAINDER_DOMINATION_DELTA.md`.
+`RESEARCH_LEADS_POST_186_REMAINDER_DRIFT_MIXED_DELTA.md`.
+
+Obstruction supplement:
+`OBSTRUCTION_LEDGER_POST_186_DELTA.md`.
 
 **RH remains OPEN.**

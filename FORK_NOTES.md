@@ -14,13 +14,12 @@ RHRC #1089 = SUCCESS
 Permansson #862 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #180
-validated research head = a87469da9e611b53ae400cb4b18ce4afeb94e6d2
-merged research commit = 93ea3df51f2671e316197c1530ea504dee76e821
-research tree = 8199cdc543f1b761c70466dfd602c143a277e6a2
-RHRC #1077 = SUCCESS
-Lean #837 = SUCCESS
-Permansson #850 = SUCCESS
+merged research PR = #186
+validated research head = 7d277a99437d98fdb7c831f25a130eac07f1b3af
+merged research commit = 0494658a87d29eeb2124aa16232c264c21d23c18
+RHRC #1091 = SUCCESS
+Permansson #864 = SUCCESS
+research disposition = DOMINATION_SIGNAL_MIXED
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
@@ -51,7 +50,7 @@ RH = OPEN
 
 `Zeta23/CCM/HermitianSchurEnvelopeDerivative.lean` and `Zeta23/CCM/FrozenN2SchurLogDrift.lean` are inside the aggregate CCM build.
 
-The production-facing Schur correction is now the genuine Hermitian form
+The production-facing Schur correction is the genuine Hermitian form
 
 ```text
 P = d - |b|^2/a.
@@ -63,7 +62,7 @@ The exact frozen production family is theoremized on logarithmic coordinate `t` 
 M~(t) = -t I + R~(t),
 ```
 
-with fixed-cell equality to `parityCompressedCanonical`. For the N2/K3 intrinsic geometry, Lean proves the canonical cubic shell is nonzero, predecessor and shell reconstruct the successor, and predecessor is orthogonal to shell.
+with fixed-cell equality to `parityCompressedCanonical`. For N2/K3, Lean proves the canonical cubic shell is nonzero, predecessor and shell reconstruct the successor, and predecessor is orthogonal to shell.
 
 Under the required scalar derivative data, Lean proves
 
@@ -77,11 +76,9 @@ and
 remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0.
 ```
 
-This closes the production/Hermitian/log-cover algebraic interface.
+This closes the production/Hermitian/log-cover algebraic interface. It does not prove that actual source-specific arithmetic always satisfies the domination premise.
 
-It does **not** yet assemble the actual source-specific real remainder scalar derivative witnesses from existing complex holomorphy, prove the domination inequality, establish contact existence/uniqueness or the opposing first-bad contact orientation, first-bad exclusion, negative-root exclusion or RH.
-
-## Research packages through #180
+## Research packages through #186
 
 ```text
 #165 exact executable Riesz-8 endpoint-scalar audit
@@ -94,45 +91,53 @@ It does **not** yet assemble the actual source-specific real remainder scalar de
 #176 fixed-unit q13/Q14 enclosure agreement + method-selection benchmark
 #178 complete fixed-unit physical-L derivative implementation + Q14 derivative discrimination
 #180 exact-center Q14 derivative basin + Schur H1-scope audit
+#186 coordinate-correct production remainder-drift falsifier
 ```
 
-The current finite result remains:
+#180 supplies the frozen minimum-oriented derivative panel. #186 reuses it and tests
 
 ```text
-POINT_DERIVATIVE_BASIN_BRACKETED
-MINIMUM_ORIENTED
-left centers: 3/3 Delta_2' < 0
-right centers: 3/3 Delta_2' > 0
-SCHUR_OUT_OF_H1_SCOPE on nonzero-width primary Schur boxes
-applicable_primary_count = 0
+dP/dL = -E/L + dR/dL.
 ```
+
+The result is:
+
+```text
+DOMINATION_SIGNAL_MIXED
+
+positive margin:
+  det_left_o2^-10_r2^-13
+  det_left_o2^-13_r2^-16
+
+negative margin:
+  det_right_o2^-10_r2^-13
+  det_right_o2^-13_r2^-16
+  det_left_o2^-16_r2^-19
+  det_right_o2^-16_r2^-19
+
+unresolved primary exact centers: none
+finite-width scope: FINITE_WIDTH_OUT_OF_H1_SCOPE
+```
+
+The simple universal production-remainder domination formulation is therefore falsified in the tested frozen scope. This does not invalidate #184's conditional theorem and does not produce a general opposite-sign theorem.
 
 ## Current route
 
-### Research falsification lane
+### Research lane
 
-#184 uses `t=log L`, while #178/#180 differentiate in physical `L`. The correct conversion is
+Freeze the #186 panel and search for a canonical/theorem-connectable discriminator explaining the 2-positive / 4-negative split. Do not fit arbitrary labels or move the centers.
 
-```text
-dP/dL = -envelopeNormSq/L + remainder_drift_L.
-```
+Candidate diagnostics should come from existing production geometry: `E`, `R_L'`, `rho_L`, `P_L'`, `a`, `|b|`, `d`, normalized coupling/norm balances, fixed-Q position, the #180 basin coordinate, and opposite-parity/ancestry controls.
 
-Reuse the exact frozen #180 states and report
+Reject any candidate that merely restates margin sign or successor positivity, depends on arbitrary normalization, fails controls, or requires interval H1 where H1 is not certified.
 
-```text
-universal drift = -E/L
-remainder drift
-margin = E/L - remainder drift
-ratio = L*remainder drift/E
-```
+### Formal lane
 
-before investing in the source-specific domination proof.
+Use the already-proved frozen complex source remainder holomorphy to obtain the actual N2 scalar derivative witnesses through parity projection and canonical predecessor/shell pairings. Instantiate #184 as an actual production `HasDerivAt` Schur theorem, but keep this interface sign-neutral.
 
-### Formal Pair-A lane
+Only if the mixed-split audit identifies a real selector should the project formulate a narrower contact-local remainder domination theorem.
 
-Use the already-proved frozen complex source remainder holomorphy to obtain the actual N2 scalar derivative witnesses through parity projection and canonical predecessor/shell pairings. Then instantiate #184 as an actual production `HasDerivAt` Schur theorem and only then attack the contact-local remainder domination bound.
-
-A contradiction additionally needs an independently theorem-backed incompatible first-bad contact orientation on the **same** retained state.
+A contradiction still additionally requires an independently theorem-backed incompatible first-bad property on the **same** retained state/aperture/parity/normalization/production object.
 
 ## Normalization / coordinate warning
 
@@ -142,12 +147,12 @@ Also `d/dt = L*d/dL` for `t=log L`; do not compare derivative magnitudes across 
 
 ## Claim firewall
 
-- theorem authority advances to #184 only for the exact statements Lean proved;
-- research authority remains #180 for the latest finite evidence;
+- theorem authority remains #184 for the exact statements Lean proved;
+- latest research evidence advances to #186 only as rigorous finite research evidence;
 - Control-v2 semantic authority remains #117;
-- `SCHUR_OUT_OF_H1_SCOPE` is not a sign theorem;
-- #184's algebraic drift split is not a source-specific arithmetic domination theorem;
-- analyticity is not a derivative magnitude bound;
+- `DOMINATION_SIGNAL_MIXED` is a successful falsification disposition, not theorem promotion;
+- finite-width scope remains outside certified H1;
+- #184's algebraic drift split remains valid but its universal arithmetic premise is not established;
 - global Schur monotonicity remains quarantined;
 - negative-root exclusion remains OPEN;
 - **RH remains OPEN.**

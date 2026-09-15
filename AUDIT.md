@@ -1,4 +1,4 @@
-# RHRC formal audit — theorem authority through PR #184; research evidence through PR #180
+# RHRC formal audit — theorem authority through PR #184; research evidence through PR #186
 
 > **RH remains OPEN.**
 
@@ -16,13 +16,12 @@ RHRC #1089 = SUCCESS
 Permansson #862 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #180
-validated research head = a87469da9e611b53ae400cb4b18ce4afeb94e6d2
-merged research commit = 93ea3df51f2671e316197c1530ea504dee76e821
-research tree = 8199cdc543f1b761c70466dfd602c143a277e6a2
-RHRC #1077 = SUCCESS
-Lean #837 = SUCCESS
-Permansson #850 = SUCCESS
+merged research PR = #186
+validated research head = 7d277a99437d98fdb7c831f25a130eac07f1b3af
+merged research commit = 0494658a87d29eeb2124aa16232c264c21d23c18
+RHRC #1091 = SUCCESS
+Permansson #864 = SUCCESS
+research disposition = DOMINATION_SIGNAL_MIXED
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
@@ -83,9 +82,9 @@ P_t' = -envelopeNormSq + remainderEnvelopeDerivative
 remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0
 ```
 
-**Audit conclusion:** the production/Hermitian/log-cover algebraic bridge is theorem authority. The source-specific remainder derivative witnesses and domination estimate are not.
+**Audit conclusion:** the production/Hermitian/log-cover algebraic bridge is theorem authority. The source-specific arithmetic sign premise is not.
 
-## Research audit through #180
+## Research audit through #186
 
 The post-#163 research chain remains evidence/infrastructure rather than theorem authority:
 
@@ -100,9 +99,10 @@ The post-#163 research chain remains evidence/infrastructure rather than theorem
 #176 fixed-unit enclosure method selection
 #178 complete physical-L derivative implementation / raw derivative-box discrimination
 #180 exact-center derivative basin / Schur H1-scope audit
+#186 production remainder-drift falsifier
 ```
 
-The exact #180 finite conclusion is:
+#180 froze the six-point minimum-oriented Q14 panel:
 
 ```text
 POINT_DERIVATIVE_BASIN_BRACKETED
@@ -114,58 +114,102 @@ applicable_primary_count = 0
 uniqueness_claim = false
 ```
 
-No bad interval or H1-loss interval is certified.
+#186 reuses the exact schedule and evaluates
+
+```text
+P_L' = -E/L + R_L'
+margin_L = E/L - R_L'
+rho_L = L*R_L'/E.
+```
+
+Its exact-center disposition is:
+
+```text
+DOMINATION_SIGNAL_MIXED
+
+positive margin:
+  det_left_o2^-10_r2^-13
+  det_left_o2^-13_r2^-16
+
+negative margin:
+  det_right_o2^-10_r2^-13
+  det_right_o2^-13_r2^-16
+  det_left_o2^-16_r2^-19
+  det_right_o2^-16_r2^-19
+
+unresolved primary exact centers: none
+finite-width scope: FINITE_WIDTH_OUT_OF_H1_SCOPE
+```
+
+No theorem is promoted by this result. The broad universal remainder-domination clue is experimentally falsified only in the tested frozen finite scope.
 
 ## Current post-green frontier
 
-### Research falsification target
+### Research target
 
-Theorem and research derivatives use different coordinates.
+The immediate task is no longer to retry or prove universal `R_t' < E`. It is to explain the mixed split on the unchanged #186 panel.
 
-```text
-#184: t = log L
-  dP/dt = -E + dR/dt
+A useful discriminator must be canonical or theorem-connectable and must survive normalization, ancestry/parity and same-state tests. Candidate quantities should come from the existing production geometry rather than from ad hoc classification of six labelled points.
 
-#178/#180: physical L
-  dP/dL = -E/L + dR/dL
-```
-
-The next research step must reuse the exact frozen #180 schedule and report the production remainder drift, domination margin
+Fast rejection conditions:
 
 ```text
-E/L - dR/dL
+contains/re-encodes margin sign or rho<1
+restates successor positivity
+changes under harmless normalization
+fails inherited parity/ancestry controls
+needs finite-width H1 outside certified scope
+has no route to the actual retained first-bad/contact state
 ```
-
-and ratio
-
-```text
-L*(dR/dL)/E.
-```
-
-This is a falsification test of the proposed source-specific domination law.
 
 ### Formal target
 
-Existing entrywise complex holomorphy of the frozen source remainder should be transported through the exact parity projection and N2 predecessor/canonical-shell pairings to produce actual real derivative witnesses for the remainder scalar coordinates.
+Existing entrywise complex holomorphy of the frozen source remainder may still be transported through exact parity projection and N2 predecessor/canonical-shell pairings to actual real derivative witnesses for the remainder scalar coordinates.
 
-Only then does the project have a fully instantiated production `HasDerivAt` Schur identity suitable for a theorem-backed domination bound.
+This would give a fully instantiated production `HasDerivAt` Schur interface. After #186 it should remain sign-neutral until a narrower arithmetic selector survives falsification.
 
-## Claim firewall after #184
+### Composition target
+
+A Pair-A contradiction now requires
+
+```text
+canonical selector on same state
+  -> narrowed contact-local domination
+  -> #184 negative pivot orientation
+  -> independently theorem-backed incompatible first-bad property
+  -> same-state contradiction
+```
+
+If no selector survives, shift effort to the other FB-05 incompatibility pairs rather than rescuing the dead universal law.
+
+## Claim firewall after #186
 
 ```text
 #184 algebraic log-drift split
-  -/-> actual source-specific derivative magnitude bound
+  -/-> actual source-specific universal derivative magnitude bound
+
+#186 mixed finite signal
+  -/-> general sign theorem
+
+local domination at two sampled states
+  -/-> domination at actual contact
+
+negative margin at four sampled states
+  -/-> global opposite-sign law
 
 remainder domination
-  -/-> contradiction without an opposing first-bad contact orientation
+  -/-> contradiction without an independent opposing first-bad property
 
 q13/N2/K3 finite signal
   -/-> arbitrary retained first-bad theorem
-
-local negative derivative
-  -/-> global Schur monotonicity
 ```
 
 Global Schur monotonicity remains quarantined. Negative-root exclusion remains OPEN. The terminal zeta/Mathlib seam remains OPEN.
+
+Post-#186 research delta:
+`research/RHRC/RESEARCH_LEADS_POST_186_REMAINDER_DRIFT_MIXED_DELTA.md`.
+
+Post-#186 obstruction supplement:
+`research/RHRC/OBSTRUCTION_LEDGER_POST_186_DELTA.md`.
 
 **RH remains OPEN.**
