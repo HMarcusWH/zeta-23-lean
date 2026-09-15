@@ -1,0 +1,81 @@
+{
+  "schema_version": "POST187_FB05_Q14_MIXED_DRIFT_SELECTOR_FIXTURE_v1",
+  "claim_cap": "FINITE_MIXED_DRIFT_SELECTOR_DISCOVERY_ONLY",
+  "theorem_authority_pr": 184,
+  "research_anchor_pr": 186,
+  "routing_sync_pr": 187,
+  "source_fixture": "post185_fb05_q13_remainder_drift_v1.json",
+  "selected_target": {
+    "q_start": 13,
+    "q_end": 16,
+    "predecessor_N": 2,
+    "successor_K": 3,
+    "selected_parity": "even",
+    "primary_Q": 14
+  },
+  "required_ancestry_control": {
+    "predecessor_N": 2,
+    "parity": "odd"
+  },
+  "arb_precision_bits": 384,
+  "implementation_check_precision_bits": 192,
+  "expected_primary_box_count": 6,
+  "expected_control_box_count": 5,
+  "orientation_policy": "PRIMARY_DISCOVERY_ONLY",
+  "normalization_rescalings": [
+    {"even_predecessor": 2, "shell": 3, "odd_predecessor": 5},
+    {"even_predecessor": 3, "shell": 2, "odd_predecessor": 2},
+    {"even_predecessor": -1, "shell": 1, "odd_predecessor": -1},
+    {"even_predecessor": 1, "shell": -1, "odd_predecessor": 1},
+    {"even_predecessor": -2, "shell": 3, "odd_predecessor": -3}
+  ],
+  "candidate_rules": [
+    {"id": "G1_COUPLING_RATIO", "field": "coupling_ratio", "threshold_kind": "ONE", "candidate_class": "INDEPENDENT_GEOMETRY", "strong_eligible": true, "normalization_invariant": true},
+    {"id": "R1_PREDECESSOR_REMAINDER_COMPONENT", "field": "remainder_a_component", "threshold_kind": "ZERO", "candidate_class": "MECHANISM_DIAGNOSTIC", "strong_eligible": false, "normalization_invariant": true},
+    {"id": "R2_CROSS_REMAINDER_COMPONENT", "field": "remainder_b_component", "threshold_kind": "ZERO", "candidate_class": "MECHANISM_DIAGNOSTIC", "strong_eligible": false, "normalization_invariant": true},
+    {"id": "R3_SHELL_REMAINDER_COMPONENT", "field": "remainder_d_component", "threshold_kind": "ZERO", "candidate_class": "MECHANISM_DIAGNOSTIC", "strong_eligible": false, "normalization_invariant": true},
+    {"id": "P1_PARITY_LEVEL_RATIO", "field": "parity_predecessor_ratio", "threshold_kind": "ONE", "candidate_class": "PARITY", "strong_eligible": true, "normalization_invariant": true},
+    {"id": "P2_PARITY_LOG_SLOPE_GAP", "field": "parity_log_slope_gap", "threshold_kind": "ZERO", "candidate_class": "PARITY", "strong_eligible": true, "normalization_invariant": true},
+    {"id": "C1_PRIME_PIVOT_CONTRIBUTION", "field": "chi_prime_signed", "threshold_kind": "ZERO", "candidate_class": "SOURCE_CHANNEL", "strong_eligible": true, "normalization_invariant": true},
+    {"id": "C2_ARCH_PIVOT_CONTRIBUTION", "field": "chi_arch_signed", "threshold_kind": "ZERO", "candidate_class": "SOURCE_CHANNEL", "strong_eligible": true, "normalization_invariant": true},
+    {"id": "C3_POLE_PIVOT_CONTRIBUTION", "field": "chi_pole", "threshold_kind": "ZERO", "candidate_class": "SOURCE_CHANNEL", "strong_eligible": true, "normalization_invariant": true},
+    {"id": "C4_PRIME_VS_SMOOTH_MAGNITUDE", "field": "prime_vs_smooth_sq_ratio", "threshold_kind": "ONE", "candidate_class": "SOURCE_CHANNEL", "strong_eligible": true, "normalization_invariant": true}
+  ],
+  "selector_dispositions": [
+    "SELECTOR_SIGNAL_STRONG",
+    "SELECTOR_SIGNAL_PARTIAL",
+    "SELECTOR_SIGNAL_FAILS",
+    "SELECTOR_SIGNAL_UNRESOLVED"
+  ],
+  "forbidden_selector_fields": [
+    "label",
+    "side",
+    "offset_bit",
+    "radius_bit",
+    "center_num",
+    "t",
+    "Q",
+    "domination_margin_L",
+    "normalized_ratio",
+    "ratio_gap_to_one",
+    "scaled_margin",
+    "full_pivot_derivative_L",
+    "reconstructed_full_pivot_derivative_L",
+    "pivot_prime_directional",
+    "delta2_prime",
+    "raw_delta2_prime",
+    "schur_delta2_prime"
+  ],
+  "nonclaims": [
+    "This Python/Arb audit is research discovery tooling, not Lean theorem authority.",
+    "The exact post-#180/#186 schedule is reused; no center movement, basin refit, adaptive sampling, or post-hoc threshold fitting is permitted.",
+    "Candidate thresholds are restricted to the predeclared mathematically distinguished values ZERO and ONE.",
+    "Primary states may select only the inequality orientation; holdout controls never select orientation.",
+    "Mechanism-component candidates are diagnostic and cannot alone earn SELECTOR_SIGNAL_STRONG.",
+    "Controls outside exact-center certified H1 are HOLDOUT_OUT_OF_H1_SCOPE rather than selector failures.",
+    "The research basis is tested under predecessor/shell rescaling and sign flips; no magnitude identity with Lean's canonical cubic shell is assumed.",
+    "The source-channel audit uses the existing four-way research convention pole + arch_signed + prime_signed + scalar_shift and cross-checks it against the complete #178 derivative.",
+    "No selector found here is a theorem about contact, arbitrary Q/N/parity, retained first-bad states, negative-root exclusion, or RH.",
+    "RH remains OPEN."
+  ]
+}
