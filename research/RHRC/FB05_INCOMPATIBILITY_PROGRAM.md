@@ -81,11 +81,9 @@ SCHUR_OUT_OF_H1_SCOPE
 applicable_primary_count = 0
 ```
 
-so finite-width H1 remains an interval-neighborhood gate if that route is needed.
-
 ### PROVED — PR #182: generic real 2x2 Schur contact calculus
 
-PR #182 closes the generic real 2x2 calculus layer. For
+For
 
 ```text
 H = [[a,b],[b,d]]
@@ -109,9 +107,7 @@ Under H1 (`a>0`), determinant and pivot derivative orientations agree.
 
 ### PROVED — PR #184: Hermitian production/log-drift structure
 
-PR #184 advances Pair A from the real proxy to the actual complex-Hermitian production geometry.
-
-Lean now proves, in the exact declared scopes:
+PR #184 advances Pair A from the real proxy to the actual complex-Hermitian production geometry. Lean proves, in the exact declared scopes:
 
 ```text
 Hermitian 2x2 pivot/determinant calculus with |b|^2/a
@@ -124,18 +120,40 @@ P_t' = -envelopeNormSq + remainderEnvelopeDerivative
 remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0
 ```
 
-This is a major narrowing of Pair A: the production/Hermitian/log-cover algebraic interface is no longer open.
+This closes the production/Hermitian/log-cover algebraic interface.
 
-The remaining source-specific gaps are:
+### RIGOROUS FINITE RESEARCH — PR #186: broad Pair-A domination falsifier
+
+PR #186 reuses the exact frozen #180 q13/Q14 N2/K3/even schedule and tests the coordinate-correct physical-`L` decomposition
 
 ```text
-actual real scalar derivative witnesses for the frozen production remainder
-fully instantiated production HasDerivAt Schur identity
-source-specific remainder domination
-same-state first-bad contact existence/orientation composition
+P_L' = -E/L + R_L'
+margin_L = E/L - R_L'
+rho_L = L*R_L'/E.
 ```
 
-Existing complex frozen-source remainder holomorphy means the first item is primarily finite-dimensional analytic transport, not a new pole/arch/prime analyticity problem.
+The green research certificate returns:
+
+```text
+DOMINATION_SIGNAL_MIXED
+
+positive margin:
+  det_left_o2^-10_r2^-13
+  det_left_o2^-13_r2^-16
+
+negative margin:
+  det_right_o2^-10_r2^-13
+  det_right_o2^-13_r2^-16
+  det_left_o2^-16_r2^-19
+  det_right_o2^-16_r2^-19
+
+unresolved primary exact centers: none
+finite-width scope: FINITE_WIDTH_OUT_OF_H1_SCOPE
+```
+
+**Routing consequence:** the unconditional/broad source-remainder domination formulation is experimentally falsified on the frozen panel. Pair A is not dead, but it must now be **selector-conditioned/contact-local** rather than universal.
+
+#186 does not invalidate #184; #184's sign theorem is conditional on domination.
 
 ## External research inputs worth composing carefully
 
@@ -175,49 +193,27 @@ for the special canonical witness forced by first-bad geometry. Such a restricte
 
 ## Candidate incompatibility pairs
 
-### Pair A — contact orientation clash — LEADING ROUTE
+### Pair A — selector-conditioned contact orientation clash — CONDITIONAL LEADING ROUTE
 
-**Side 1: first-bad/contact geometry.** A hypothetical first-bad contact must be shown to have the crossing orientation required by the first-bad event on the exact same retained state.
+**Side 1:** a hypothetical first-bad contact must be shown to have the crossing orientation required by the first-bad event on the exact same retained state.
 
-**Side 2: canonical production derivative law.** PR #184 now theoremizes the relevant complex-Hermitian/log-cover algebraic structure. On logarithmic coordinate `t=log L`:
-
-```text
-P_t' = -E + R_t'
-```
-
-where `E = envelopeNormSq` is the universal positive geometric quantity and all cancellation is isolated in the production remainder derivative.
-
-If
+**Side 2:** #184 supplies the exact Hermitian production law
 
 ```text
-R_t' < E,
+P_t' = -E + R_t'.
 ```
 
-then Lean already proves
+If `R_t' < E`, Lean already proves `P_t' < 0`.
+
+**Post-#186 correction:** the broad hypothesis `R_t' < E` is not credible across the dangerous frozen class. Four of six exact-center samples violate its physical-`L` equivalent. Therefore the live Pair-A target is now
 
 ```text
-P_t' < 0.
+C(state) -> R_t' < E
 ```
 
-For the existing R003 backend, which differentiates in physical aperture `L`, the equivalent formula is
+for a canonical condition `C` that is independently forced at the same retained/contact state.
 
-```text
-P_L' = -E/L + R_L'
-```
-
-and the coordinate-consistent domination condition is
-
-```text
-R_L' < E/L
-```
-
-or equivalently
-
-```text
-L*R_L' < E.
-```
-
-**Current Pair-A status split:**
+Current status:
 
 ```text
 generic real 2x2 Schur-envelope derivative                PROVED / #182
@@ -226,17 +222,19 @@ full frozen parity production log-cover family            PROVED / #184
 fixed-cell equality with actual production                PROVED / #184
 N2 predecessor/canonical-shell orthogonality              PROVED / #184
 algebraic universal-negative-drift/remainder split        PROVED / #184
-remainder domination -> negative orientation              PROVED / #184
+domination -> negative orientation                        PROVED / #184
+broad/unconditional domination on frozen panel            FALSIFIED / #186 research
+canonical selector C                                      OPEN
 actual production remainder scalar derivative witnesses   OPEN
-source-specific remainder domination                      OPEN
+selector-conditioned/contact-local domination             OPEN
 opposing first-bad contact orientation on same state      OPEN
 ```
 
-**Normalization firewall:** the q13 research integer shell generator spans the same one-dimensional shell as Lean's canonical cubic shell but is not theorem-identified at the same magnitude. Formal theorem work should stay on the canonical intrinsic shell.
+**Next research test:** freeze the #186 panel and predeclare theorem-connectable candidate selectors. Candidate variables may include `E`, `R_L'`, `rho_L`, `P_L'`, `a`, `|b|`, `d`, normalized predecessor/shell coupling, fixed-Q cell position, #180 basin position, and opposite-parity/ancestry data.
 
-**Coordinate firewall:** do not compare `d/dt` with `d/dL` without the factor `L`.
+Reject a selector if it merely re-encodes margin sign/`rho<1`, restates successor positivity, depends on arbitrary normalization, fails controls, or has no route to the actual contact state.
 
-**Analyticity firewall:** holomorphy/analyticity supplies derivative existence but not the magnitude bound needed for domination.
+**Formal infrastructure still useful:** transport existing complex frozen-source remainder holomorphy through exact parity projection and N2 predecessor/canonical-shell pairings to actual real derivative witnesses and a production `HasDerivAt` Schur identity. Keep this theorem sign-neutral.
 
 ### Pair B — negative-index separation versus critical-line sampling rigidity
 
@@ -266,7 +264,7 @@ A retained q13/Q14 first-bad event is a very specific local sign/contact event. 
 odd successor bad OR explicit source moment != 0.
 ```
 
-A contradiction may come from two modest parity restrictions that close the two branches separately.
+A contradiction may come from two modest parity restrictions that close the two branches separately. #186 raises this pair's relative priority because universal Pair-A domination did not survive.
 
 ### Pair E — growth detector versus structured finite-energy control
 
@@ -278,7 +276,7 @@ R001 supplies target-adaptive off-line growth after pole killing. A narrower, sa
 
 | Pair | RH-false / first-bad property | Opposing property sought | Missing bridge | Fastest falsifier |
 |---|---|---|---|---|
-| A | first-contact crossing orientation | #184 log drift + source remainder forces opposite contact orientation | actual remainder derivatives + domination + same-state crossing composition | split `-E/L` and remainder derivative on exact #180 frozen states |
+| A | first-contact crossing orientation | selector-conditioned #184 log drift forces opposite contact orientation | canonical selector + actual derivatives + same-state crossing composition | frozen #186 mixed-split discriminator audit |
 | B | negative transverse Gram direction | same witness receives positive sampling/frame energy from simple critical zeros | canonical witness -> exact zero-side family | finite zero-side replay with exceptional budget |
 | C | local q13/Q14 bad/contact event | short-window critical zeros force enough local positivity | aperture/window correspondence | compare support scale with Wang regime |
 | D | selected parity badness/source fork | opposite parity restrictions close both branches | same-state parity composition | same-q/N opposite-parity controls |
@@ -292,29 +290,29 @@ R001 supplies target-adaptive off-line growth after pole killing. A narrower, sa
 - **Normalization test:** external or research coordinate systems require exact bridges before composition.
 - **Coordinate test:** `t=log L` and physical `L` derivatives must be converted exactly before sign/magnitude comparison.
 - **Analyticity test:** derivative existence is not a derivative magnitude estimate.
+- **Selector-leakage test:** `C(state)` may not contain the desired margin sign, `rho<1`, successor positivity, or an algebraic equivalent.
+- **H1 test:** do not infer finite-width Schur/remainder claims outside certified H1.
 - **Exceptional-budget test:** if a tiny off-line set can contribute arbitrarily large negative mass, density information cannot dominate it.
 - **Mustache test:** reject any allegedly modest lemma that unfolds to an RH-equivalent target such as `ArithmeticSideSubexponential` or full Weil positivity.
 - **Moving-state test:** do not silently drop derivative terms from a moving optimizer; the envelope cancellation must be theoremized at the exact interface.
-- **Global-monotonicity test:** PR #184 licenses local Hermitian contact/log-drift calculus, not DR-022 global fixed-sign Schur monotonicity.
+- **Global-monotonicity test:** #184 licenses local Hermitian contact/log-drift calculus, not DR-022 global fixed-sign Schur monotonicity.
 - **Circularity test:** neither side may assume successor positivity, absence of the negative root, or RH-equivalent content.
 
 ## Immediate execution order
 
-### Finite falsification lane
+### Research lane
 
 ```text
-reuse the exact frozen #180 physical-L schedule
-  -> evaluate E/L and the full pivot derivative
-  -> derive/evaluate the production remainder derivative
-  -> cross-check full = -E/L + remainder
-  -> report domination margin E/L - remainder
-  -> report ratio L*remainder/E
-  -> classify whether the proposed domination mechanism survives
+freeze exact #186 schedule
+  -> emit comparable invariant/canonical diagnostics for all primary + control states
+  -> predeclare candidate selector(s)
+  -> test 2-positive / 4-negative split without target leakage
+  -> run parity/ancestry/normalization controls
+  -> either promote the narrowest surviving selector-conditioned conjecture
+     or downgrade Pair A
 ```
 
-Do this before investing in a source-specific domination proof.
-
-### Formal Pair-A lane if the signal survives
+### Formal infrastructure lane
 
 ```text
 existing complex frozen-source remainder holomorphy
@@ -322,8 +320,16 @@ existing complex frozen-source remainder holomorphy
   -> N2 predecessor/canonical-shell pairings
   -> real remainder-coordinate derivative witnesses
   -> actual production HasDerivAt Schur identity
-  -> source-specific remainder domination
-  -> compose with independently theorem-backed first-bad contact orientation
+```
+
+### Composition lane if a selector survives
+
+```text
+canonical selector C on exact retained/contact state
+  -> selector-conditioned remainder domination
+  -> #184 negative contact orientation
+  -> independently theorem-backed first-bad opposing property
+  -> same-state contradiction
 ```
 
 The central objective remains:
