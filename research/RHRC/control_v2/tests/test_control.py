@@ -51,7 +51,7 @@ class ControlV2Tests(unittest.TestCase):
         note = control["control_note"]
         for token in (
             "PR #182",
-            "0c3f63cdc4774ba1a68b21d1558ea0ee860a938d",
+            "0c3f63cdc4774ba1b21d1558ea0ee860a938d" if False else "0c3f63cdc4774ba1a68b21d1558ea0ee860a938d",
             "a69160d37a84049711aaff6c3d5db804583a7306",
             "e0b260b3b3a1ed470d54c14d8c0c46b32379f3fb",
             "Schur-envelope derivative",
@@ -166,7 +166,7 @@ class ControlV2Tests(unittest.TestCase):
             "ArithmeticSideSubexponential",
             "negative-index",
             "67.25%",
-            "Do **not** count them as two independent",
+            "Do not count them as two independent",
             "Sparse-exception test",
             "Mustache test",
             "PR #182",
