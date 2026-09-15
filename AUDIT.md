@@ -1,79 +1,40 @@
-# RHRC formal audit — theorem authority through PR #184; research evidence through PR #186
+# RHRC formal audit — theorem authority through PR #184; research evidence through PR #190
 
 > **RH remains OPEN.**
 
-## Authority split
-
 Live GitHub head + exact compiler/CI evidence outrank this prose.
+
+## Authority split
 
 ```text
 THEOREM AUTHORITY
-latest theorem-bearing PR = #184
-validated theorem head = a756494ebe7e2530715e996b9a9a341fbe07c683
-merged theorem commit = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
-validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
-RHRC #1089 = SUCCESS
-Permansson #862 = SUCCESS
+PR #184
+head  = a756494ebe7e2530715e996b9a9a341fbe07c683
+merge = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
+tree  = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
 
-LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #186
-validated research head = 7d277a99437d98fdb7c831f25a130eac07f1b3af
-merged research commit = 0494658a87d29eeb2124aa16232c264c21d23c18
-RHRC #1091 = SUCCESS
-Permansson #864 = SUCCESS
-research disposition = DOMINATION_SIGNAL_MIXED
+LATEST RESEARCH EVIDENCE
+PR #190
+head  = 8701920b0da18ae6595ad0eee55c1f6cb291a94f
+merge = f87da9fde71dd1e74419c6ae5848eee3787c27e4
+tree  = af8774b65c898de221a5bf32977ccff3407a7b2d
+RHRC #1096 = SUCCESS
+Permansson #869 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
-PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
+PR #117
 selected first break = E4A4-SCHUR-FB-05
+terminal claim = RH_OPEN
 ```
 
-The theorem and research anchors are intentionally different.
+## Formal theorem state
 
-## Exact theorem progression
-
-### #153
-
-Retained whole-cell regular first-bad ancestry and negative canonical source energy; exact finite pole-prime discrepancy/full-channel normal form.
-
-### #155
-
-Finite discrepancy integrability; anchored Riesz primitives; AC/a.e. derivative seam; legal arbitrary-order conditional integration by parts; source oddness and all even endpoint jets.
-
-### #157
-
-Genuine complex production D transport; boundary-flat jets through 6; even jets through 8; exact complete Riesz 6/even 8; retained transformed negativity; off-line-zero -> retained Riesz-6 negative certificate.
-
-### #159
-
-General moment-prefix odd-jet law, exact seventh/even-ninth self-energy leading-moment formulas, generic signed Riesz boundary recurrence and retained R6->R7 / even R8->R9 exact moment-square decompositions.
-
-### #161
-
-Same-state shifted negative secular trial; strict even R8 negativity; exact R9/M4 boundary inequality; cross-parity `Gamma * explicitCanonicalSourceMoment` identity; odd-good source-moment nonvanishing; odd-bad OR source-moment-nonzero fork.
-
-### #163
-
-Exact mixed quadratic-normal source observable and retained-state composition:
-
-```text
-h_v^(7)(0) = -2*(2*pi)^6*M4(v)
-finite-prime term samples the same h_v
-2*(2*pi)^4*(R8(v)-R9(v)) = S8(L)*|h_v^(7)(0)|^2.
-```
-
-### #182
-
-`SchurEnvelopeDerivative.lean` compiler-validates the generic real 2x2 Schur calculus and H1 contact determinant/pivot orientation transfer.
-
-### #184
-
-`HermitianSchurEnvelopeDerivative.lean` and `FrozenN2SchurLogDrift.lean` are imported into the aggregate CCM build and compiler-validate the production-facing complex-Hermitian/log-cover package:
+No Lean theorem has been added after PR #184. The formal production-facing package still proves, in its exact scopes:
 
 ```text
 Hermitian P = d - |b|^2/a
-real-component HasDerivAt calculus
-full frozen parity family M~(t) = -t I + R~(t)
+contact-local determinant/pivot derivative orientation transfer under H1
+full frozen parity production family M~(t) = -t I + R~(t)
 exact fixed-cell bridge to parityCompressedCanonical
 N2 predecessor/canonical-shell reconstruction
 canonical shell != 0
@@ -82,134 +43,122 @@ P_t' = -envelopeNormSq + remainderEnvelopeDerivative
 remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0
 ```
 
-**Audit conclusion:** the production/Hermitian/log-cover algebraic bridge is theorem authority. The source-specific arithmetic sign premise is not.
+Still not proved: source-specific remainder domination, contact existence/uniqueness, opposing first-bad orientation on the same state, first-bad exclusion, negative-root exclusion or RH.
 
-## Research audit through #186
+## Research audit: #186 -> #190
 
-The post-#163 research chain remains evidence/infrastructure rather than theorem authority:
+### PR #186 — broad domination falsifier
 
-```text
-#165 endpoint scalar
-#166 shifted-state discriminator
-#167 Q16 full-cell interval-method falsification
-#168 threshold moment jet / Q17 microscope
-#170 theorem-aligned Schur visibility/background drift
-#172 threshold-to-threshold barrier dynamics
-#174 exact q13 2x2 scalar barrier
-#176 fixed-unit enclosure method selection
-#178 complete physical-L derivative implementation / raw derivative-box discrimination
-#180 exact-center derivative basin / Schur H1-scope audit
-#186 production remainder-drift falsifier
-```
-
-#180 froze the six-point minimum-oriented Q14 panel:
-
-```text
-POINT_DERIVATIVE_BASIN_BRACKETED
-MINIMUM_ORIENTED
-left centers:  3/3 Delta_2' < 0
-right centers: 3/3 Delta_2' > 0
-SCHUR_OUT_OF_H1_SCOPE
-applicable_primary_count = 0
-uniqueness_claim = false
-```
-
-#186 reuses the exact schedule and evaluates
+On the exact frozen #180 Q14 panel, the physical-aperture decomposition
 
 ```text
 P_L' = -E/L + R_L'
 margin_L = E/L - R_L'
-rho_L = L*R_L'/E.
+rho_L = L*R_L'/E
 ```
 
-Its exact-center disposition is:
+returned `DOMINATION_SIGNAL_MIXED`: two positive margins, four negative margins, no unresolved exact centers. The broad universal domination hypothesis therefore failed in this tested finite scope.
+
+### PR #188 — selector audit
+
+The frozen post-#186 audit introduced ten normalization-safe candidates. Seven were marked strong-eligible:
 
 ```text
-DOMINATION_SIGNAL_MIXED
-
-positive margin:
-  det_left_o2^-10_r2^-13
-  det_left_o2^-13_r2^-16
-
-negative margin:
-  det_right_o2^-10_r2^-13
-  det_right_o2^-13_r2^-16
-  det_left_o2^-16_r2^-19
-  det_right_o2^-16_r2^-19
-
-unresolved primary exact centers: none
-finite-width scope: FINITE_WIDTH_OUT_OF_H1_SCOPE
+G1_COUPLING_RATIO
+P1_PARITY_LEVEL_RATIO
+P2_PARITY_LOG_SLOPE_GAP
+C1_PRIME_PIVOT_CONTRIBUTION
+C2_ARCH_PIVOT_CONTRIBUTION
+C3_POLE_PIVOT_CONTRIBUTION
+C4_PRIME_VS_SMOOTH_MAGNITUDE
 ```
 
-No theorem is promoted by this result. The broad universal remainder-domination clue is experimentally falsified only in the tested frozen finite scope.
+R1/R2/R3 remained diagnostic-only because their sum reconstructs a target-adjacent mechanism quantity.
+
+### PR #189 — individual semantic independence
+
+For every frozen candidate separately, exact rational ambient states were certified with the same candidate value and same nonboundary threshold relation but opposite target signs. Result: no individual frozen candidate determines the target sign in the audited normalized algebra.
+
+### PR #190 — joint semantic independence
+
+PR #190 closes the remaining composition hole. It certifies two exact rational ambient states with:
+
+```text
+identical complete seven-dimensional strong selector vector
+identical nonboundary threshold signature
+opposite normalized FB-05 target signs
+```
+
+The executable classifications are:
+
+```text
+JOINT_EXACT_VECTOR_SEPARABLE
+JOINT_THRESHOLD_SIGNATURE_SEPARABLE
+```
+
+Since the full seven-vector is identical, every one of its `2^7 - 1 = 127` nonempty coordinate subsets is identical as well. No search over those subsets can restore information in this ambient algebra.
+
+The positive controls `channel_sum`, `direct_full_ratio`, and `mechanism_sum` do distinguish the pair and reconstruct the target exactly, confirming that the audit still detects target-containing observations.
+
+## Exact post-#190 limitation
+
+#190 does **not** prove that its reflected rational pair is realizable by the canonical arithmetic CCM construction. Its module and certificate explicitly keep
+
+```text
+canonical_realizability_claimed = false
+fb05_closed = false
+negative_root_exclusion = false
+rh_claim = false
+```
+
+Therefore the correct conclusion is not “Pair A is impossible.” It is:
+
+```text
+frozen selector composition is insufficient in the ambient normalized state space;
+the missing information, if Pair A survives, must enter through canonical production realizability or another independent same-state restriction.
+```
 
 ## Current post-green frontier
 
-### Research target
-
-The immediate task is no longer to retry or prove universal `R_t' < E`. It is to explain the mixed split on the unchanged #186 panel.
-
-A useful discriminator must be canonical or theorem-connectable and must survive normalization, ancestry/parity and same-state tests. Candidate quantities should come from the existing production geometry rather than from ad hoc classification of six labelled points.
-
-Fast rejection conditions:
+The next research target is a **canonical-realizability audit** of the #190 reflected twin. Actual production computes all channels and geometry from one common aperture/state. In particular the current research backend constructs
 
 ```text
-contains/re-encodes margin sign or rho<1
-restates successor positivity
-changes under harmless normalization
-fails inherited parity/ancestry controls
-needs finite-width H1 outside certified scope
-has no route to the actual retained first-bad/contact state
+scalar_shift = 2*cCorrection'(L) I
+arch_signed  = -arch_direct - scalar_shift
 ```
 
-### Formal target
+so the abstract scalar/arch degrees of freedom used in #190 are not obviously independent production degrees of freedom.
 
-Existing entrywise complex holomorphy of the frozen source remainder may still be transported through exact parity projection and N2 predecessor/canonical-shell pairings to actual real derivative witnesses for the remainder scalar coordinates.
-
-This would give a fully instantiated production `HasDerivAt` Schur interface. After #186 it should remain sign-neutral until a narrower arithmetic selector survives falsification.
-
-### Composition target
-
-A Pair-A contradiction now requires
+The correct next experiment is layered:
 
 ```text
-canonical selector on same state
-  -> narrowed contact-local domination
-  -> #184 negative pivot orientation
-  -> independently theorem-backed incompatible first-bad property
-  -> same-state contradiction
+ambient normalized algebra
+ -> four-way production channel coupling
+ -> exact scalar-aperture law
+ -> common archimedean derivative
+ -> common Schur geometry x,E
+ -> full same-L canonical source reconstruction
 ```
 
-If no selector survives, shift effort to the other FB-05 incompatibility pairs rather than rescuing the dead universal law.
+At each layer, ask whether an exact same-seven-vector/opposite-target twin can still exist. A numerical failure to find one is not a theorem; the goal is to isolate the first exact production relation that provably forbids the twin.
 
-## Claim firewall after #186
+## Claim firewall
 
 ```text
-#184 algebraic log-drift split
-  -/-> actual source-specific universal derivative magnitude bound
+#184 theorem package
+  -/-> source-specific sign law
 
-#186 mixed finite signal
-  -/-> general sign theorem
+#186 finite falsification
+  -/-> global opposite-sign theorem
 
-local domination at two sampled states
-  -/-> domination at actual contact
+#189 individual separability
+  -/-> canonical arithmetic independence
 
-negative margin at four sampled states
-  -/-> global opposite-sign law
+#190 joint separability
+  -/-> canonical realizability of the reflected pair
 
-remainder domination
-  -/-> contradiction without an independent opposing first-bad property
-
-q13/N2/K3 finite signal
-  -/-> arbitrary retained first-bad theorem
+production arch/scalar coupling
+  -/-> FB-05 closure until an exclusion theorem is actually proved
 ```
 
-Global Schur monotonicity remains quarantined. Negative-root exclusion remains OPEN. The terminal zeta/Mathlib seam remains OPEN.
-
-Post-#186 research delta:
-`research/RHRC/RESEARCH_LEADS_POST_186_REMAINDER_DRIFT_MIXED_DELTA.md`.
-
-Post-#186 obstruction supplement:
-`research/RHRC/OBSTRUCTION_LEDGER_POST_186_DELTA.md`.
-
-**RH remains OPEN.**
+Global Schur monotonicity remains quarantined. Negative-root exclusion remains OPEN. The terminal zeta/Mathlib seam remains OPEN. **RH remains OPEN.**
