@@ -79,9 +79,13 @@ def search_git_history(repo: Path, terms: tuple[str, ...], *, as_of_ref: str,
             all_refs_before_anchor=all_refs_before_anchor,
             max_commits=max_commits_per_term,
         ):
+            # Always pass the pattern through -e. A literal alias may begin
+            # with '-' (for example '-log(L)I remainder'); without -e,
+            # `git grep` parses that user-controlled term as command-line
+            # switches instead of as the fixed-string pattern.
             proc = _run(
                 repo,
-                ["grep", "-n", "-i", "--fixed-strings", term, commit, "--", *paths],
+                ["grep", "-n", "-i", "--fixed-strings", "-e", term, commit, "--", *paths],
                 check=False,
             )
             if proc.returncode not in (0, 1):

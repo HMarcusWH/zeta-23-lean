@@ -21,16 +21,16 @@ class ControlV2Tests(unittest.TestCase):
         self.assertFalse(boundary["may_emit_terminal_rh_status"])
         self.assertFalse(boundary["may_promote_lean_theorem"])
 
-    def test_state_keeps_post_163_theorem_and_post_117_control_anchors(self):
+    def test_state_advances_theorem_anchor_to_182_without_moving_control_anchor(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 163)
+        self.assertEqual(state.anchor.pr, 182)
         self.assertEqual(
             state.anchor.merge_commit,
-            "bd3fa1aafa7df2aa35873df532bdb6f17ddd2bbd",
+            "a69160d37a84049711aaff6c3d5db804583a7306",
         )
         self.assertEqual(
             state.anchor.tree,
-            "c397b3a015ea54e38ecfe626d6e29556fe963839",
+            "e0b260b3b3a1ed470d54c14d8c0c46b32379f3fb",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -44,27 +44,31 @@ class ControlV2Tests(unittest.TestCase):
             "FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN",
         )
 
-    def test_control_note_records_post180_research_without_moving_theorem_anchor(self):
+    def test_control_note_records_post182_theorem_and_post180_research(self):
         control = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
         note = control["control_note"]
-        self.assertIn("PR #180", note)
-        self.assertIn("a87469da9e611b53ae400cb4b18ce4afeb94e6d2", note)
-        self.assertIn("93ea3df51f2671e316197c1530ea504dee76e821", note)
-        self.assertIn("8199cdc543f1b761c70466dfd602c143a277e6a2", note)
-        self.assertIn("q13/N2/K3/even", note)
-        self.assertIn("FIXED_UNIT_METHOD_ACCEPTED", note)
-        self.assertIn("DERIVATIVE_UNRESOLVED", note)
-        self.assertIn("POINT_DERIVATIVE_BASIN_BRACKETED", note)
-        self.assertIn("MINIMUM_ORIENTED", note)
-        self.assertIn("SCHUR_OUT_OF_H1_SCOPE", note)
-        self.assertIn("applicable_primary_count=0", note)
-        self.assertIn("centered H1 recovery", note)
-        self.assertIn("replay-hardening debt", note)
-        self.assertIn("-log(L)*I + remainder", note)
-        self.assertIn("PR #117 remains the Control-v2 semantic anchor", note)
-        self.assertEqual(control["merged_theorem_anchor"]["pr"], 163)
+        for token in (
+            "PR #182",
+            "0c3f63cdc4774ba1a68b21d1558ea0ee860a938d",
+            "a69160d37a84049711aaff6c3d5db804583a7306",
+            "e0b260b3b3a1ed470d54c14d8c0c46b32379f3fb",
+            "Schur-envelope derivative",
+            "Delta_2'=a'P+aP'",
+            "PR #180",
+            "a87469da9e611b53ae400cb4b18ce4afeb94e6d2",
+            "POINT_DERIVATIVE_BASIN_BRACKETED",
+            "MINIMUM_ORIENTED",
+            "SCHUR_OUT_OF_H1_SCOPE",
+            "applicable_primary_count=0",
+            "centered H1 recovery",
+            "-log(L)I",
+            "invariant/Hermitian",
+            "PR #117 remains the Control-v2 semantic anchor",
+        ):
+            self.assertIn(token, note)
+        self.assertEqual(control["merged_theorem_anchor"]["pr"], 182)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
         self.assertEqual(control["terminal_claim"], "RH_OPEN")
 
@@ -104,7 +108,7 @@ class ControlV2Tests(unittest.TestCase):
         self.assertGreater(scores["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"],
                            scores["E4_B_PARITY_SHIFTED_NULLITY"])
 
-    def test_regular_schur_action_is_post180_centered_h1_and_incompatibility_route(self):
+    def test_regular_schur_action_is_post182_contact_incompatibility_route(self):
         registry = json.loads(
             (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
         )
@@ -115,45 +119,25 @@ class ControlV2Tests(unittest.TestCase):
 
         for token in (
             "PR #163",
-            "PR #165",
-            "PR #166",
-            "PR #167",
-            "PR #168",
-            "PR #170",
-            "PR #172",
-            "PR #174",
-            "PR #176",
-            "PR #178",
             "PR #180",
+            "PR #182",
+            "Schur-envelope derivative",
+            "contact",
+            "Delta_2'=aP'",
             "theorem-aligned [W|c] one-step Schur pivot",
-            "sign-indefinite",
             "q13->16/N2/K3/even",
             "Delta_2(L)=a(L)d(L)-b(L)^2",
-            "Q=13/14/15 subcells",
-            "100% UNRESOLVED",
-            "scalarization alone does not eliminate canonical interval dependency",
             "FIXED_UNIT_METHOD_ACCEPTED",
-            "factor-2",
-            "M'(L)=pole'-arch'-prime'",
             "DERIVATIVE_UNRESOLVED",
-            "NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN",
-            "a'd+ad'-2bb'",
             "POINT_DERIVATIVE_BASIN_BRACKETED",
             "MINIMUM_ORIENTED",
             "SCHUR_OUT_OF_H1_SCOPE",
             "applicable_primary_count=0",
             "centered H1 recovery",
-            "Delta_2'=a'P+aP'",
-            "replay-hardening debt",
             "-log(L)*I",
-            "Delta_2'=aP'",
+            "generic",
+            "production",
             "determinant and pivot minima",
-            "full physical H1 does not imply H1 for the q-removed background",
-            "cancellation ratios around 1e9-1e10",
-            "nonzero explicitCanonicalSourceMoment does not imply M4",
-            "finite weighted sample sum does not by itself determine the seventh jet",
-            "simultaneous even/odd successor badness",
-            "odd-selected first-bad branch",
             "global aperture and global minimizing-Schur monotonicity remain quarantined",
             "DR-024",
         ):
@@ -161,8 +145,8 @@ class ControlV2Tests(unittest.TestCase):
 
         self.assertEqual(action["dead_route_matches"], [])
         self.assertEqual(break_ids, ["E4A4-SCHUR-FB-05"])
-        self.assertIn("#165-#180", first_breaks)
-        self.assertIn("centered-H1/contact-derivative/stationary law", first_breaks)
+        self.assertIn("#165-#182", first_breaks)
+        self.assertIn("production-interface", first_breaks)
         self.assertIn("incompatible restriction", first_breaks)
         self.assertIn("without restating successor positivity", first_breaks)
 
@@ -172,7 +156,7 @@ class ControlV2Tests(unittest.TestCase):
         self.assertIsNotNone(selected_break)
         self.assertEqual(selected_break["break_id"], "E4A4-SCHUR-FB-05")
 
-    def test_fb05_incompatibility_program_is_same_state_and_claim_capped(self):
+    def test_fb05_incompatibility_program_is_same_state_and_post182_claim_capped(self):
         program = (RHRC / "FB05_INCOMPATIBILITY_PROGRAM.md").read_text(encoding="utf-8")
         for token in (
             "same state",
@@ -182,9 +166,13 @@ class ControlV2Tests(unittest.TestCase):
             "ArithmeticSideSubexponential",
             "negative-index",
             "67.25%",
-            "Do **not** count them as two independent",
+            "Do not count them as two independent",
             "Sparse-exception test",
             "Mustache test",
+            "PR #182",
+            "generic 2x2",
+            "contact orientation",
+            "production remainder",
             "FB-05",
             "RH remains OPEN",
         ):

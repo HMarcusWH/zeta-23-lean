@@ -15,11 +15,12 @@ For research-only PRs, record the exact research head/merge and CI evidence sepa
 ### Theorem authority
 
 ```text
-latest theorem-bearing PR = #163
-validated theorem head = b418ff034428f92594bab0e5b8276181a086ee4b
-validated theorem tree = c397b3a015ea54e38ecfe626d6e29556fe963839
-RHRC #1039 = SUCCESS
-Permansson #812 = SUCCESS
+latest theorem-bearing PR = #182
+validated theorem head = 0c3f63cdc4774ba1a68b21d1558ea0ee860a938d
+merged theorem commit = a69160d37a84049711aaff6c3d5db804583a7306
+validated theorem tree = e0b260b3b3a1ed470d54c14d8c0c46b32379f3fb
+RHRC #1082 = SUCCESS
+Permansson #855 = SUCCESS
 ```
 
 ### Latest research-evidence anchor
@@ -61,32 +62,66 @@ Permansson independent formal verification
 
 A skipped downstream step is not a passed gate. Control-v2 regression tests guard routing semantics only; they do not grant theorem authority.
 
-## Current R003 research audit stack
+## Exact #182 theorem evidence
 
-The R003 workflow also runs executable research checks that are **not theorem promotion surfaces**:
+PR #182 validated the exact head
 
 ```text
-post-#150 selected-residual certification plumbing / scout / replay
-post-#163 endpoint-scalar audit                       [research PR #165]
-post-#165 shifted-state plumbing / scout / replay    [research PR #166]
-post-#166 Q16 scalar-barrier scout / interval audit  [research PR #167]
-post-#167 threshold-jet algebra / Q17 scout / replay [research PR #168]
-post-#169 theorem-aligned Schur visibility algebra   [research PR #170]
-post-#169 threshold Schur/background scout           [research PR #170]
-post-#169 Arb Schur-visibility replay                 [research PR #170]
-post-#171 threshold-barrier accounting check         [research PR #172]
-post-#171 multi-cell threshold-barrier scout         [research PR #172]
-post-#171 Arb finite-point barrier replay            [research PR #172]
-post-#173 q13 scalar-barrier plumbing                [research PR #174]
-post-#173 q13 2x2 scalar scout                       [research PR #174]
-post-#173 q13 adaptive Arb scalar audit              [research PR #174]
-post-#175 fixed-unit q13 enclosure plumbing          [research PR #176]
-post-#175 fixed-unit q13 benchmark                   [research PR #176]
-post-#175 fixed-unit agreement/width certification  [research PR #176]
-post-#177 fixed-unit derivative plumbing             [research PR #178]
-post-#177 Q14 derivative schedule/probe              [research PR #178]
-post-#177 derivative discrimination certification   [research PR #178]
+0c3f63cdc4774ba1a68b21d1558ea0ee860a938d
 ```
+
+with theorem tree
+
+```text
+e0b260b3b3a1ed470d54c14d8c0c46b32379f3fb
+```
+
+and was merged as
+
+```text
+a69160d37a84049711aaff6c3d5db804583a7306.
+```
+
+The module `Zeta23/CCM/SchurEnvelopeDerivative.lean` is imported by `Zeta23/CCM.lean`, so the successful aggregate CCM build compiler-validates its declarations. The same workflow also built `Zeta23.ExceptionalZero` and ran the forbidden-placeholder scan over the promoted CCM/ExceptionalZero subtrees. Permansson #855 independently completed successfully.
+
+Validated declarations include:
+
+```text
+schurDet2x2_eq_mul_pivot
+schurDet2x2Derivative_eq_factorized
+schurPivot2x2Derivative_eq_detQuotientDerivative
+hasDerivAt_schurPivot2x2
+hasDerivAt_schurDet2x2
+schurDet2x2Derivative_eq_mul_pivotDerivative_of_contact
+schurDet2x2Derivative_neg_iff_pivotDerivative_neg_of_contact
+schurDet2x2Derivative_pos_iff_pivotDerivative_pos_of_contact
+```
+
+Operational interpretation:
+
+```text
+PROVED / #182
+  generic real 2x2 determinant-pivot factorization
+  exact correlation-preserving pivot derivative
+  exact quotient/envelope derivative equivalence
+  actual scalar HasDerivAt theorems
+  at contact P=0: Delta_2'=aP'
+  under H1 a>0: determinant and pivot derivative orientations agree
+
+NOT PROVED / #182
+  contact existence or uniqueness
+  production arithmetic sign for P' or Delta_2'
+  finite-width H1 on the Q14 boxes
+  production/Hermitian Schur-envelope bridge
+  global Schur monotonicity
+  first-bad exclusion
+  negative-root exclusion
+  RH
+```
+
+## Post-#163 research checks remain research evidence
+
+The R003 workflow continues to run the post-#163 research chain through #180: endpoint-scalar audit; shifted-state scout/replay; Q16 interval audit; threshold-jet/Q17 microscope; theorem-aligned Schur visibility; threshold-to-threshold barrier audit; q13 scalar barrier; fixed-unit enclosure benchmark; complete derivative discrimination; and the post-#179 exact-center/Schur-scope audit.
 
 Interpretation law:
 
@@ -97,185 +132,21 @@ research gate green
   -/-> global sign theorem
   -/-> whole-cell theorem
   -/-> universal arithmetic-entry sign
-  -/-> RH evidence beyond its exact finite/symbolic scope
+  -/-> RH.
 ```
 
 In particular:
 
 - exact SymPy/algebraic identities are **EXACT EXECUTABLE**, not Lean theorem authority;
 - floating discovery is **EXPERIMENTAL SIGNAL**;
-- deterministic Gauss-Legendre integration smoke tests are **DETERMINISTIC NUMERICAL VALIDATION**, not exact integral identities;
+- deterministic numerical checks are implementation evidence only;
 - Arb pointwise replay is **RIGOROUS FINITE CERTIFICATION** only;
 - Arb interval output is a rigorous enclosure only for the exact encoded interval expression;
-- Arb central finite differences are **RIGOROUS FINITE-DIFFERENCE ENCLOSURES**, not derivative theorems;
-- production envelope quadrature is a numerical diagnostic unless separately interval-certified;
-- `UNRESOLVED` interval output is neither positive nor negative evidence;
+- Arb central finite differences are finite-difference enclosures, not derivative theorems;
+- `UNRESOLVED` is neither positive nor negative evidence;
 - absence of a finite negative candidate is not a positivity theorem.
 
-## Exact #163 theorem evidence
-
-At validated theorem head `b418ff034428f92594bab0e5b8276181a086ee4b`, RHRC #1039 and Permansson #812 completed successfully. The theorem-bearing closure includes aggregate CCM and ExceptionalZero builds, R003 normalization/source checks, Control-v2/regression tests and the forbidden-placeholder/project-axiom gate.
-
-Validated declarations include:
-
-```text
-iteratedDeriv_seven_quadraticNormalSourceAtom_eq_moment_four
-explicitCanonicalSourceMoment_eq_quadraticNormalSourceAtom_sum
-normSq_iteratedDeriv_seven_quadraticNormalSourceAtom
-two_pi_four_mul_rieszBoundaryEight_eq_endpointScalar_mul_mixedJetNormSq
-two_pi_four_mul_rieszEight_sub_nine_eq_endpointScalar_mul_mixedJetNormSq
-RegularCellMinimalNegativeEnergyCertificate.evenShiftedMixedSourceSeventhJet_eq_momentFour
-RegularCellMinimalNegativeEnergyCertificate.evenShiftedRieszEightNine_eq_mixedJetBoundary
-RegularCellMinimalNegativeEnergyCertificate.evenShiftedRieszNine_lt_neg_mixedJetBoundary
-RegularCellMinimalNegativeEnergyCertificate.crossParityGamma_ne_zero_of_even_of_not_oddBad
-```
-
-These establish theorem authority through #163. Research PRs #165-#180 do not alter this declaration set.
-
-## What the post-#163 research checks validate operationally
-
-### #165
-
-Exact executable Riesz-8 endpoint-scalar normalization, prime-power handling, stable pole expression and finite Arb replay are internally cross-checked. No global sign theorem is created.
-
-### #166
-
-Discovery is aligned with the generalized shifted system `H-lambda G`; source-channel reconstruction and Arb safe-shift plumbing are checked. No actual first-bad state is assumed to exist in the finite scan.
-
-### #167
-
-The Q16 near-critical cell is searched. The direct whole-cell Arb representation returns 256/256 unresolved depth-8 leaves. That validates a methodological limitation, not a sign.
-
-### #168
-
-Boundary-flat threshold-jet algebra is checked exactly in the executable layer for `K=2..8`; the Q16/Q17 threshold and finite two-sided microscope are replayed with Arb.
-
-### #170
-
-The deterministic checker validates theorem-aligned `[W|c]` one-step geometry, unit-shell agreement with the selected residual, exact finite-dimensional rank-one Schur update, exact directional Schur derivative, and transformed threshold moment law. Arb replay finite-certifies the checked q17 visibility/background behavior.
-
-### #172
-
-The threshold-to-threshold layer validates the finite-dimensional accounting and finite Arb replay across several arithmetic intervals. Current-q entry lift is sign-indefinite in the tested finite states and the q13/N2/K3/even state becomes the strongest near-critical target.
-
-### #174
-
-The deterministic checker validates the exact q13/N2/K3/even 1D->2D theorem-aligned scalar geometry, exact research-basis norms, physical-cell seam handling, and the reduction
-
-```text
-H1 <-> a_even(L) > 0
-Delta_even(L) = a_even(L)d_even(L)-b_even(L)^2
-sign pivot = sign Delta_even in H1.
-```
-
-The 384-bit direct scalar interval audit reports
-
-```text
-Q=13: 100% UNRESOLVED
-Q=14: 100% UNRESOLVED
-Q=15: 100% UNRESOLVED
-```
-
-with zero positive, bad, or H1-loss width certified. No zero/contact theorem follows from a zero-containing enclosure.
-
-Operational interpretation:
-
-```text
-direct scalar interval UNRESOLVED
-  -/-> determinant zero
-  -/-> determinant negative
-  -/-> determinant positive
-  -> current direct scalar enclosure representation is insufficient
-```
-
-### #176
-
-The fixed-unit research path rewrites the archimedean integrals on a fixed unit interval while keeping the direct evaluator as an independent comparator. The exact PR pipeline validates primitive, full-matrix, theorem-aligned scalar, odd-ancestry, seam and zero-weight agreement.
-
-Its frozen fixture defines six primary Q14 boxes at three radii around the separately sampled determinant and Schur-pivot minima, with predeclared `material_width_gain_factor = 2.0`.
-
-The exact RHRC #1072 certifier reports
-
-```text
-status = PASS
-method_classification = FIXED_UNIT_METHOD_ACCEPTED
-```
-
-and all six primary boxes satisfy the strict-narrower/material-gain criterion.
-
-Operational interpretation:
-
-```text
-FIXED_UNIT_METHOD_ACCEPTED
-  -> frozen direct/fixed-unit agreement checks passed
-  -> predeclared factor-2 determinant-width method gate passed
-  -> fixed-unit value-level research investment is justified
-
-  -/-> determinant sign
-  -/-> stationary-point theorem
-  -/-> whole-cell q13 positivity
-  -/-> arbitrary first-bad restriction
-  -/-> FB-05 closure
-  -/-> Lean theorem promotion
-```
-
-### #178
-
-The derivative research path differentiates the complete fixed-Q canonical source
-
-```text
-M'(L)=pole'(L)-arch'(L)-prime'(L)
-```
-
-and restricts it through the theorem-aligned `[W|c]` basis to `a',b',d'` and
-
-```text
-Delta_2' = a'd + ad' - 2bb'.
-```
-
-The checker compares analytic primitive derivatives, every upper-triangular entry of the complete 7x7 derivative matrix, theorem-aligned scalar derivatives and odd-N2 predecessor derivative against centered differences of the already-green value evaluators. Derivative continuation is required only at zero-von-Mangoldt seams 14 and 15.
-
-The exact RHRC #1074 certifier reports
-
-```text
-status = PASS
-derivative disposition = DERIVATIVE_UNRESOLVED
-orientation = NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN
-left_negative_labels  = []
-left_positive_labels  = []
-right_negative_labels = []
-right_positive_labels = []
-derived_stationary_existence_if_continuity_used = false
-uniqueness_claim = false
-```
-
-and separately
-
-```text
-value event = NO_BAD_OR_H1_LOSS_INTERVAL_CERTIFIED
-bad_labels = []
-h1_loss_labels = []
-```
-
-Operational interpretation:
-
-```text
-DERIVATIVE_UNRESOLVED
-  -> the complete derivative implementation/checking stack is valid on the exact head
-  -> all six primary raw Delta_2' interval boxes contain no certified sign
-
-  -/-> Delta_2' = 0
-  -/-> stationary existence
-  -/-> stationary uniqueness
-  -/-> contact
-  -/-> bad successor
-  -/-> H1 loss
-  -/-> failure of every derivative representation
-```
-
-#178 also closes the #176 standalone replay-hardening debt: the certifier reconstructs the frozen schedule from the fixture, and adversarial schedule mutations are rejected.
-
-### #180 — exact-center derivative basin / Schur-scope audit
+## Exact #180 research evidence
 
 The inherited #178 schedule is reused exactly. At all six frozen primary Q14 exact centers, rigorous Arb point balls give
 
@@ -286,9 +157,9 @@ left centers:  3/3 Delta_2' < 0
 right centers: 3/3 Delta_2' > 0
 ```
 
-The Schur point graph agrees on the same six H1-usable points. This supports a **derived stationary-existence statement if continuity is invoked**, but `uniqueness_claim = false`.
+The Schur point graph agrees on the same H1-usable points. This supports a derived stationary-existence statement if continuity is invoked, but `uniqueness_claim = false`.
 
-For the nonzero-width primary boxes the result is instead
+For the nonzero-width primary boxes:
 
 ```text
 SCHUR_OUT_OF_H1_SCOPE
@@ -298,28 +169,39 @@ strict_width_gain_labels = []
 material_2x_gain_labels = []
 ```
 
-So #180 does **not** establish a finite-box Schur width gain. The width comparison is blocked before it becomes applicable because H1 is not certified over those boxes. No bad or H1-loss interval is certified.
+So #180 does not establish a finite-box Schur width gain or sign recovery.
 
-**Post-green consequence:** first try centered H1 recovery from the sharp point value `a(L0)>0` and the already-validated first derivative `a'`; only then retry the Schur box representation. Build `Delta_2''` for centered derivative propagation only if that cheaper preflight is insufficient.
+## Current FB-05 validation target
 
-## Current FB-05 research target
-
-The q13 scalar geometry, fixed-unit value representation, and complete derivative implementation are now consumed research infrastructure.
-
-The next target is finite-width propagation of the now-rigorous point orientation:
+The next finite research target is:
 
 ```text
 1. centered H1 recovery from point a(L0)>0 plus rigorous a'(I)
-2. inside recovered H1, retry Delta_2'=a'P+aP' on the frozen nonzero-width boxes
-3. if derivative sign remains unresolved, add Delta_2'' and centered mean-value/Taylor propagation
-4. only after signed left/right neighborhoods, attempt interval Newton/Krawczyk.
+2. inside recovered H1, retry the Schur derivative box using theorem-backed #182 calculus
+3. if still unresolved, add Delta_2'' and centered derivative propagation
+4. only after signed neighborhoods, attempt interval Newton/Krawczyk.
 ```
 
-Do not repeat the same raw assembled derivative boxes with only more precision/depth and call it a new route.
+The parallel theorem target is an invariant/Hermitian production Schur-envelope bridge that attaches to the already-proved fixed-cell `-log(L)I + remainder` decomposition and exposes the exact universal `-||u||^2/L` drift plus a scalar production remainder derivative.
+
+## Production normalization firewall after #182
+
+The finite q13 research code uses exact integer `W,c` coordinates. Its shell generator spans the same one-dimensional shell as Lean's canonical cubic shell but is not theorem-identified at the same magnitude. Formal production lives in a complex Hermitian carrier, while #182 is generic real 2x2 calculus.
+
+Therefore:
+
+```text
+research W/c coordinates
+  -/-> formal canonical shell coordinates by definitional equality
+real b^2/a Schur correction
+  -/-> complex Hermitian |b|^2/a without a specialization theorem.
+```
+
+Prefer invariant statements or separately prove the bridge.
 
 ## Axiom inspection
 
-The #163 mixed-source headline declarations carry module-local `#print axioms` checks. The successful aggregate build plus the no-placeholder/project-axiom gate makes them compiler-validated theorem authority. The accepted production foundation remains `[propext, Classical.choice, Quot.sound]`; no production theorem may depend on `sorryAx` or a promoted project axiom.
+The accepted production foundation remains the compiler-reported Mathlib foundations; no production theorem may depend on `sorryAx` or a promoted project axiom. The authoritative workflow rejects `sorry` and top-level `axiom` declarations in the promoted CCM/ExceptionalZero subtrees.
 
 Research Python/SymPy/Arb tooling has no authority to alter this axiom surface.
 
@@ -331,10 +213,10 @@ M4 != 0 -> explicitCanonicalSourceMoment != 0
 finite production samples determine the seventh jet at zero
 canonicalPolePrimeRieszEndpointScalar L 8 >= 0
 canonicalPolePrimeRieszEndpointScalar L 8 != 0
-boundary-flat threshold-entry law as a separately Lean-theoremized aperture theorem
-Schur-envelope derivative as a project Lean theorem
-q13/N2/K3/even whole-cell strict positivity / nonvanishing
-universal arithmetic threshold-entry sign
+production/Hermitian Schur-envelope derivative bridge
+source-specific production remainder/contact-orientation bound
+centered finite-width H1 on frozen Q14 boxes
+q13/N2/K3/even whole-cell strict positivity / nonvanishing / contact classification
 simultaneous even/odd bad exclusion
 odd-selected first-bad branch reduction/closure
 independent contradiction-producing complete arithmetic restriction
@@ -345,7 +227,7 @@ RiemannHypothesis
 
 ## Import/build closure law
 
-A `.lean` file existing in the repository, appearing in a PR, passing syntactic no-placeholder checks or being merged does not establish that its declarations elaborate. A declaration becomes compiler-validated project theorem authority only when its module lies in an exact successful authoritative build closure or is explicitly built by such a gate.
+A `.lean` file existing in the repository, appearing in a PR, passing syntactic no-placeholder checks or being merged does not establish that its declarations elaborate. A declaration becomes compiler-validated theorem authority only when its module lies in an exact successful authoritative build closure or is explicitly built by such a gate.
 
 ## Proof versus promotion
 
@@ -357,7 +239,7 @@ R003_PROMOTED_BINDINGS.json
 Zeta23/CCM/ClaimBindings.lean
 ```
 
-The post-#180 docs/routing synchronization leaves those promotion surfaces unchanged.
+PR #182 adds theorem authority but does not alter those machine claim-promotion surfaces.
 
 ## Vocabulary
 
@@ -370,15 +252,13 @@ The post-#180 docs/routing synchronization leaves those promotion surfaces uncha
 - **DERIVED** — mathematical consequence not separately theorem-locked;
 - **LOCAL LEAN CHECK** — standalone/local compilation outside merged theorem authority;
 - **EXACT EXECUTABLE** — symbolic/executable identity locked by research tooling, not Lean theorem authority;
-- **DETERMINISTIC NUMERICAL VALIDATION** — deterministic floating numerical acceptance test with an explicit tolerance;
 - **EXPERIMENTAL SIGNAL** — numerical/search/discovery evidence only;
 - **RIGOROUS FINITE CERTIFICATION** — Arb/interval statement in the exact finite scope only;
-- **RIGOROUS FINITE-DIFFERENCE ENCLOSURE** — certified finite quotient/enclosure, not a derivative theorem;
 - **LEAD / HYPOTHESIS** — motivated research route;
 - **OPEN** — not established.
 
 ## Claim firewall
 
-Green #163 mixed-source/Riesz theorems are not RH. Green #165-#180 research tooling is not theorem authority. A contradiction still requires new arithmetic mathematics on the exact forced state, negative-root exclusion and the terminal zeta/Mathlib seam.
+Green #182 Schur/contact calculus is not a zeta arithmetic sign theorem. Green #180 research evidence is not theorem promotion. A contradiction still requires a genuinely independent canonical arithmetic restriction on the exact retained state, negative-root exclusion and the terminal zeta/Mathlib seam.
 
-**RH remains OPEN unless the exact terminal RH theorem passes the complete proof and claim-validation gates.**
+**RH remains OPEN.**

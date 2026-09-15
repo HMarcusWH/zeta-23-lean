@@ -2,10 +2,10 @@
 
 This ledger records reusable blockers that should shape future route design.
 
-> **Current theorem anchor:** merged PR #163, `bd3fa1aafa7df2aa35873df532bdb6f17ddd2bbd`.  
-> **Validated theorem head:** `b418ff034428f92594bab0e5b8276181a086ee4b`.  
-> **Validated theorem tree:** `c397b3a015ea54e38ecfe626d6e29556fe963839`.  
-> **Latest research-evidence anchor:** merged PR #178, validated head `28df43faed0db8c0f12a25525df6c28467ce5b07`.  
+> **Current theorem anchor:** merged PR #182, `a69160d37a84049711aaff6c3d5db804583a7306`.  
+> **Validated theorem head:** `0c3f63cdc4774ba1a68b21d1558ea0ee860a938d`.  
+> **Validated theorem tree:** `e0b260b3b3a1ed470d54c14d8c0c46b32379f3fb`.  
+> **Latest research-evidence anchor:** merged PR #180, validated head `a87469da9e611b53ae400cb4b18ce4afeb94e6d2`.  
 > **Claim firewall:** RH remains OPEN.
 
 Historical obstruction origins below retain the PR number at which they were discovered/classified. A later theorem may close an escape without deleting the reusable warning.
@@ -412,7 +412,7 @@ PR #163 strengthens the interface: the finite-prime contribution to `explicitCan
 
 ## OBS-039 — simultaneous parity badness remains an allowed branch
 
-**Status:** POST-#161 OPEN-BRANCH FIREWALL; UNCHANGED BY #163.
+**Status:** POST-#161 OPEN-BRANCH FIREWALL; UNCHANGED BY #163/#182.
 
 The headline #161 theorem is a disjunction:
 
@@ -422,9 +422,9 @@ OR
 explicit source moment != 0
 ```
 
-under selected even first-bad parity. The left branch is not contradictory merely because even is already bad. #163 adds local mixed-jet/Riesz information on the retained even state but does not exclude odd badness.
+under selected even first-bad parity. The left branch is not contradictory merely because even is already bad. #163 adds local mixed-jet/Riesz information on the retained even state; #182 adds generic contact calculus; neither excludes odd badness.
 
-**Escape requirement:** first falsify exact generic/rank-one models to determine whether simultaneous even+odd badness is structurally easy. Any surviving exclusion theorem must spend additional canonical arithmetic rather than assuming interlacing or metric equivalence through `D`.
+**Escape requirement:** any simultaneous-parity exclusion theorem must spend additional canonical arithmetic rather than assume interlacing or metric equivalence through `D`.
 
 ## OBS-040 — a squared mixed-jet Riesz boundary identity is not an arithmetic sign theorem
 
@@ -437,274 +437,124 @@ PR #163 proves
   = canonicalPolePrimeRieszEndpointScalar(L,8) * |h^(7)(0)|^2.
 ```
 
-The norm square is nonnegative, but #163 proves neither
-
-```text
-canonicalPolePrimeRieszEndpointScalar L 8 >= 0
-```
-
-nor
-
-```text
-canonicalPolePrimeRieszEndpointScalar L 8 != 0.
-```
-
-Likewise, the exact finite-prime sampling of `h` inside `explicitCanonicalSourceMoment` does not determine `h^(7)(0)` without additional canonical structure.
-
-**Consequence:** the FB-05 arithmetic problem cannot be closed merely by pointing to the square. The sign-bearing endpoint scalar or a separate sampling/cancellation relation must do genuine arithmetic work.
-
-**Escape requirement:** prove a theorem-backed sign/nonvanishing property of the exact endpoint scalar, a canonical sample-to-jet rigidity statement, or another independent arithmetic restriction that composes with the retained state.
+The norm square is nonnegative, but #163 proves neither endpoint-scalar positivity nor nonvanishing. Exact finite-prime sampling of `h` also does not determine `h^(7)(0)` without additional canonical structure.
 
 ## OBS-041 — endpoint-scalar positivity is not by itself first-bad exclusion
 
 **Status:** DERIVED FROM THE PROVED #163 RECURRENCE; RESEARCH PRIORITY CORRECTED BY PR #165.
 
-On the retained even-selected shifted state, #163 gives
-
-```text
-2*(2*pi)^4*(R8-R9) = S8(L)*|h^(7)(0)|^2
-```
-
-with `R8 < 0` already theoremized. Therefore a hypothetical theorem
-
-```text
-S8(L) >= 0
-```
-
-would imply
-
-```text
-R9 <= R8 < 0,
-```
-
-not a contradiction.
-
-PR #165 finds broad finite positive evidence for the exact executable `S8` normalization, but this does not change the logical point.
-
-**Consequence:** endpoint-scalar sign/nonvanishing can be useful only after composition with another independent terminal restriction. Proving positivity merely because finite evidence looks favorable is not currently the highest-information theorem target.
+On the retained even-selected shifted state, endpoint-scalar positivity would imply `R9 <= R8 < 0`, not a contradiction. PR #165 found broad finite positive evidence but did not change the logic.
 
 ## OBS-042 — direct whole-cell interval failure is not a sign result
 
 **Status:** EXPERIMENTAL / CERTIFICATION-METHOD FIREWALL FROM PR #167.
 
-For the near-critical canonical target
+For the near-critical Q16/N3/K4/odd target, direct fixed-cell Arb remained unresolved in all 256 depth-8 leaves. No leaf was certified positive or bad.
 
-```text
-Q=16, N=3, K*=4, parity=odd,
-```
-
-PR #167's direct fixed-cell Arb evaluation remained unresolved after depth-8 subdivision:
-
-```text
-256 / 256 leaves = UNRESOLVED.
-```
-
-No leaf was certified positive or bad.
-
-Therefore:
-
-```text
-UNRESOLVED != negative
-UNRESOLVED != positive
-more subdivision != demonstrated mathematical progress
-```
-
-**Consequence:** change the representation rather than merely increasing interval depth. A scalar Sylvester/Schur pivot, channel decomposition, derivative/variation bounds, or another dependency-reduced formulation is the current escape.
+Therefore `UNRESOLVED` is not a sign result and more subdivision is not automatically progress.
 
 ## OBS-043 — isolated prime-entry stabilization does not control the full canonical aperture drift
 
 **Status:** EXACT EXECUTABLE LOCAL STRUCTURE + FINITE ARB/FLOATING RESEARCH EVIDENCE FROM PR #168, STRENGTHENED BY PR #170; NOT A LEAN THEOREM.
 
-After enforcing the actual boundary-flat carrier before parity reduction, the executable source-atom expansion has first surviving orders
-
-```text
-odd  -> order 7 through M3^2
-even -> order 9 through M4^2.
-```
-
-The canonical sign makes the entering odd prime-power contribution locally stabilizing at its first surviving order.
-
-PR #170 strengthens this from a matrix-level statement to the theorem-aligned one-step scalar at the q17/N3/K4/odd finite target: the threshold direction is Arb-certified Schur-visible (`rho != 0`) and the exact entering-q pivot effect is positive at all seven checked positive offsets.
-
-Nevertheless, the q-removed smooth background has a negative Arb-certified central finite difference at all seven tested scales, while the full physical scout remains H1-aligned and sampled-positive through q19.
-
-**Consequence:** even a nonzero, Schur-visible favorable threshold atom does not determine the total canonical pivot drift. The next object is an integrated, cancellation-preserving threshold-to-threshold Schur barrier, not the isolated atom or a local sign by itself.
-
-**Permanent warning:** do not formalize the isolated threshold jet or finite q17 visibility and silently treat either as a full-source monotonicity/barrier theorem.
+Boundary-flat parity annihilation delays isolated prime-entry response to high odd order. #170 shows the entering q17 atom can raise the theorem-aligned pivot while the q-removed smooth background drifts down. This does not imply full-source monotonicity.
 
 ## OBS-044 — channel Schur pivots are not additive
 
 **Status:** EXACT FINITE-DIMENSIONAL ALGEBRA / EXECUTABLE-LOCKED BY PR #170; NOT SEPARATELY LEAN-THEOREMIZED.
 
-The one-step Schur map
-
-```text
-P(H) = d - b^T A^-1 b
-```
-
-is nonlinear. In general,
-
-```text
-P(M1 + ... + Mr) != P(M1) + ... + P(Mr).
-```
-
-Therefore independent pole/archimedean/prime/scalar **pivot values may not be summed** to explain the tiny selected residual.
-
-At a complete H1 background, directional attribution is cancellation-preserving through the envelope derivative
-
-```text
-DP_M[D] = u_M^T D u_M,
-```
-
-where `u_M` is the complete Schur-minimizing trial for the full background. PR #170 locks the equivalent block formula as exact executable algebra.
-
-PR #172 strengthens the conditioning warning: production attribution examples exhibit cancellation ratios around `1e9`-`1e10`, so separately large channel contributions cannot be trusted to determine a near-`1e-12` complete pivot sign without rigorous cancellation control.
-
-**Consequence:** future channel analyses must work at matrix level or through the derivative/envelope evaluated on the full minimizing trial. Any proof that sums standalone channel pivots changes the nonlinear problem and loses the exact cancellation structure.
+The Schur map is nonlinear. Independent pole/archimedean/prime/scalar pivot values may not be summed. Channel attribution must work at matrix level or through a full-state directional/envelope derivative.
 
 ## OBS-045 — current-q arithmetic entry is not universal barrier replenishment
 
 **Status:** RIGOROUS FINITE RESEARCH EVIDENCE FROM PR #172; NOT A LEAN THEOREM.
 
-PR #172 finite Arb replay contains both signs for the complete theorem-aligned current-q pivot lift:
-
-```text
-q9 / even   -> NEGATIVE_CERTIFIED
-q13 / even  -> NEGATIVE_CERTIFIED
-q16 / odd   -> POSITIVE_CERTIFIED
-```
-
-At the q13/N2/K3/even quantized near-minimum:
-
-```text
-P_full       ~= +5.8401616e-12
-P_background ~= +1.2217611e-11
-P_full - P_background ~= -6.3774491e-12.
-```
-
-**Consequence:** the post-#170 favorable q17 atom cannot be generalized into a universal “arithmetic replenishment” sign. Any theorem using a favorable threshold kick needs extra state/parity/arithmetic hypotheses or must work with the complete physical scalar.
-
-**Escape requirement:** derive a complete canonical scalar inequality or a state-dependent arithmetic sign law that survives q/N/parity falsification.
+PR #172 finite replay contains both signs for the complete theorem-aligned current-q pivot lift. Any favorable threshold-kick theorem therefore needs extra state/parity/arithmetic hypotheses or must work with the complete physical scalar.
 
 ## OBS-046 — physical H1 does not imply q-removed-background H1
 
 **Status:** RIGOROUS FINITE SCOPE FIREWALL FROM PR #172; NOT A LEAN THEOREM.
 
-At the q17 near-end replay the complete physical state is H1-certified while the q-removed background is not H1-certified.
-
-Therefore an algebraic quantity
-
-```text
-P_full - P_background
-```
-
-does not automatically have first-bad comparative meaning. The Schur pivot has the theorem-aligned first-bad interpretation only when the corresponding predecessor block is positive.
-
-**Consequence:** background/entry decompositions must carry separate H1 status. If background H1 fails or is unresolved, report the algebraic lift but do not label it barrier replenishment/depletion in first-bad scope.
+A full physical H1 certificate does not authorize first-bad interpretation of a q-removed background whose predecessor positivity is unresolved.
 
 ## OBS-047 — scalarization alone does not eliminate canonical interval dependency
 
 **Status:** RIGOROUS FINITE CERTIFICATION-METHOD FIREWALL FROM PR #174; NOT A LEAN THEOREM.
 
-PR #174 performs the exact dependency-reduced scalar escape left open by #167. For q13/N2/K3/even the theorem-aligned successor is exactly two-dimensional with
-
-```text
-H(L) = [[a(L),b(L)],[b(L),d(L)]]
-Delta_2(L)=a(L)d(L)-b(L)^2
-H1 <-> a(L)>0
-P(L)=Delta_2(L)/a(L) in H1.
-```
-
-Despite that geometric reduction, the 384-bit adaptive direct scalar audit remains 100% unresolved over each physical Q=13/14/15 cell, with zero positive, bad, or H1-loss interval width certified.
-
-Therefore:
-
-```text
-finite-dimensional scalarization != analytic dependency reduction
-```
-
-**Consequence:** the current obstacle is not merely matrix dimension. Repeated aperture dependence and cancellation inside the direct canonical scalar formulas remain sufficient to defeat naive interval subdivision.
-
-**Escape requirement:** change the representation or add analytic control — e.g. fixed-unit pullback, certified derivative/variation bounds, local Taylor models, interval Newton/Krawczyk, or another demonstrably tighter enclosure. The replacement should first be benchmarked against the production evaluator and show measurable interval-width improvement.
+The exact q13/N2/K3/even 1D->2D reduction leaves the direct scalar interval audit 100% unresolved over the physical Q13/Q14/Q15 cells. Finite-dimensional scalarization is not the same as analytic dependency reduction.
 
 ## OBS-048 — determinant and Schur-pivot minima are distinct optimization targets
 
-**Status:** FINITE FLOATING/STRUCTURAL RESEARCH FIREWALL FROM PR #174; ALGEBRAIC DISTINCTION EXACT, MINIMUM LOCATIONS EXPERIMENTAL.
+**Status:** ALGEBRAIC DISTINCTION EXACT; MINIMUM LOCATIONS EXPERIMENTAL.
 
-In H1 scope,
-
-```text
-P(L)=Delta_2(L)/a(L),
-```
-
-and `a(L)` varies with aperture. Therefore minimizing `Delta_2` and minimizing `P` are different optimization problems even though they have the same pointwise sign.
-
-PR #174's floating scout finds nearby but nonidentical sampled minima for the determinant and unit-shell pivot.
-
-**Consequence:** future root/minimum isolation must state which scalar is being controlled. A certified stationary point for `Delta_2` is not automatically the pivot minimum, and vice versa.
+In H1, `P=Delta_2/a` and `a(L)` varies. A stationary/minimum theorem for one scalar does not automatically transfer to the other.
 
 ## OBS-049 — fixed-unit pullback materially reduces q13/Q14 determinant enclosure width on the frozen benchmark
 
 **Status:** RIGOROUS FINITE RESEARCH / METHOD EVIDENCE FROM PR #176; NOT A LEAN THEOREM.
 
-PR #176 implements a fixed-unit Arb evaluation path independently of the existing direct `[0,L]` production evaluator and checks that the two enclose the same frozen production primitives, complete matrices, theorem-aligned scalars, odd-N2 ancestry and physical seam values.
-
-The frozen Q14 benchmark contains six primary boxes: three radii around the sampled determinant minimum and three around the sampled Schur-pivot minimum. With the predeclared material width factor `2.0`, the exact CI pipeline reports for every primary box
-
-```text
-delta_strictly_narrower = true
-delta_material_gain = true
-```
-
-and classifies the route
-
-```text
-FIXED_UNIT_METHOD_ACCEPTED.
-```
-
-**Consequence:** on this frozen q13/Q14 laboratory, the direct moving-domain representation was a substantive contributor to interval inflation, and the fixed-unit pullback is the preferred research enclosure representation.
-
-This does **not** prove a determinant sign, stationary existence/uniqueness, whole-cell positivity, arbitrary first-bad restriction, or global conditioning theorem.
-
-**Validation hardening status:** the standalone schedule-binding debt identified after #176 is closed by PR #178. The certifier now reconstructs the frozen benchmark schedule from its fixture, and the #178 checker adversarially verifies rejection of missing, duplicate, relabeled, extra and dyadically altered schedules.
+The independent fixed-unit evaluator agrees with production on the frozen benchmark and passes the predeclared factor-2 determinant-width gate on all six primary boxes. This selects a research representation; it does not prove a sign.
 
 ## OBS-050 — fixed-unit value conditioning does not automatically yield derivative sign discrimination
 
 **Status:** RIGOROUS FINITE RESEARCH / METHOD EVIDENCE FROM PR #178; NOT A LEAN THEOREM.
 
-PR #178 validates the complete fixed-Q canonical derivative
+The complete fixed-Q derivative backend is validated, but all six primary raw `Delta_2'` boxes remain `DERIVATIVE_UNRESOLVED / NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN`.
+
+Therefore value-level conditioning and derivative-level conditioning are separate certification problems.
+
+## OBS-051 — point orientation is recoverable; finite-width Schur evaluation is blocked first by H1 scope
+
+**Status:** RIGOROUS FINITE RESEARCH / METHOD EVIDENCE FROM PR #180; NOT A LEAN THEOREM.
+
+PR #180 reuses the exact frozen #178 schedule and finite-certifies
 
 ```text
-M'(L)=pole'(L)-arch'(L)-prime'(L)
+POINT_DERIVATIVE_BASIN_BRACKETED
+MINIMUM_ORIENTED
+left centers:  3/3 Delta_2' < 0
+right centers: 3/3 Delta_2' > 0.
 ```
 
-and independently checks the analytic primitive, full 7x7 matrix, theorem-aligned scalar and odd-N2 ancestry derivatives against centered differences of the already-green value evaluators.
-
-For the six frozen primary Q14 side boxes, the exact certifier returns
+At those exact centers the Schur point graph agrees where H1 is usable. On the corresponding nonzero-width primary boxes, however,
 
 ```text
-DERIVATIVE_UNRESOLVED
-NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN
+SCHUR_OUT_OF_H1_SCOPE
+applicable_primary_count = 0.
 ```
 
-with all certified left/right sign-label sets empty. It separately certifies no bad interval and no H1-loss interval.
+**Consequence:** #180 does not establish a Schur width gain or finite-width sign recovery. The first local interval task is centered H1 recovery from `a(L0)>0` plus rigorous `a'(I)`, then a Schur-box retry.
 
-Therefore:
+## OBS-052 — generic Schur contact calculus is not a canonical arithmetic sign law
+
+**Status:** FORMAL POST-#182 CLAIM / INTERFACE FIREWALL.
+
+PR #182 compiler-validates the generic real 2x2 identities
 
 ```text
-fixed-unit value-width gain
-  -/-> useful raw-box derivative sign enclosure
-
-DERIVATIVE_UNRESOLVED
-  -/-> Delta_2' = 0
-  -/-> stationary existence
-  -/-> contact
-  -/-> bad successor
-  -/-> H1 loss.
+Delta_2 = aP
+Delta_2' = a'P + aP'
+P=0 -> Delta_2' = aP'
+a>0 -> determinant and pivot derivative orientations agree at contact.
 ```
 
-**Consequence:** value-level conditioning and derivative-level conditioning are separate certification problems. The next route should preserve correlations more aggressively rather than repeating the same raw assembled derivative interval graph.
+This theorem package does **not** prove:
 
-**Escape requirement:** first test rigorous point `Delta_2'` balls, then compare exact derivative representations such as the H1 factorization `Delta_2'=a'P+aP'`; only if point orientation is visible should the route add second-derivative/centered-Taylor control or interval Newton/Krawczyk.
+```text
+contact existence
+contact uniqueness
+sign(P')
+sign(Delta_2') from canonical arithmetic
+finite-width H1
+production/Hermitian Schur-envelope attachment
+global Schur monotonicity
+first-bad exclusion
+negative-root exclusion
+RH.
+```
+
+The q13 research integer shell generator is only known to span the same one-dimensional shell as Lean's canonical cubic shell, not to share its exact magnitude; production is complex Hermitian while #182 is real 2x2.
+
+**Consequence:** the next formal step must spend actual production structure and preserve normalization. Prefer an invariant/Hermitian envelope theorem attached to the proved fixed-cell `-log(L)I + remainder` decomposition. Only a source-specific remainder/contact inequality can supply the missing opposing orientation.
 
 **RH remains OPEN.**

@@ -12,6 +12,7 @@ sys.path.insert(0, str(RHRC))
 
 from control_v2.retro.aliases import expanded_terms, load_alias_map
 from control_v2.retro.archive import ArchiveManifestError
+from control_v2.retro.git_history import search_git_history
 from control_v2.retro.ingest import ingest_text_source
 from control_v2.retro.replay import assert_receipt_as_of, replay_concept
 from control_v2.retro.search import DEFAULT_GIT_SEARCH_PATHS, search_concept
@@ -54,7 +55,7 @@ class RetroTests(unittest.TestCase):
         self.assertNotIn("rupture", terms)
         self.assertNotIn("slack", terms)
 
-    def test_e4a4_actions_use_post178_correlation_preserving_derivative_aliases(self):
+    def test_e4a4_actions_use_post182_contact_orientation_aliases(self):
         aliases = load_alias_map(RHRC / "control_v2" / "retro" / "CONCEPT_ALIAS_MAP.json")
         terms = expanded_terms("canonical_source_exclusion", aliases)
         for term in (
@@ -72,80 +73,40 @@ class RetroTests(unittest.TestCase):
             "canonicalPolePrimeRieszBoundaryTerm",
             "signed Riesz boundary recurrence",
             "moment-prefix odd-jet law",
-            "seventh derivative moment three",
-            "ninth derivative moment four",
             "cross-parity secular transfer",
             "explicitCanonicalSourceMoment",
-            "shifted secular trial",
             "same-state composition",
-            "same-state shifted Riesz",
-            "predecessorNonnegative_anyParity",
-            "parityBad_of_negative_eigenmode",
-            "oddBad_or_explicitSourceMoment_ne_zero_of_even",
-            "simultaneous parity badness",
             "mixed quadratic-normal source observable",
-            "quadraticNormalSourceAtom",
-            "explicitCanonicalSourceMoment_eq_quadraticNormalSourceAtom_sum",
-            "source sample jet",
-            "endpoint scalar sign",
             "source moment versus M4",
             "complete transformed residual",
             "channel cancellation",
             "prime-power threshold",
-            "threshold jet",
-            "boundary-flat threshold",
-            "threshold moment jet",
-            "Schur pivot",
-            "scalar pivot",
-            "background drift",
-            "threshold kick",
-            "whole-cell interval",
-            "dependency inflation",
-            "Schur visibility",
             "theorem-aligned Schur pivot",
-            "unit-shell pivot",
             "threshold-to-threshold barrier",
-            "arithmetic entry lift",
-            "sign-indefinite entry lift",
             "q13 q16 interval",
-            "q13 even barrier",
             "N2 K3 even",
             "2x2 Schur determinant",
             "Delta_2",
-            "physical cutoff subcell",
             "Q13 Q14 Q15",
-            "background H1",
-            "physical H1",
-            "cancellation ratio",
-            "direct scalar subdivision",
-            "scalar dependency inflation",
             "fixed-unit pullback",
-            "fixed-unit aperture parameterization",
-            "analytic scalar enclosure",
-            "dependency-reduced scalar enclosure",
-            "interval width improvement",
             "FIXED_UNIT_METHOD_ACCEPTED",
-            "fixed-unit method acceptance",
-            "factor-2 determinant width gain",
-            "Q14 derivative frontier",
-            "fixed-unit derivative evaluator",
             "complete canonical derivative",
             "DERIVATIVE_UNRESOLVED",
             "NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN",
-            "raw assembled derivative",
-            "point derivative ball",
-            "rigorous point derivative",
             "correlation-preserving derivative enclosure",
             "Schur-factorized derivative",
             "Delta_2' = a'P + aP'",
-            "centered derivative enclosure",
-            "mean-value enclosure",
-            "second derivative bound",
-            "local stationary basin",
-            "stationary basin discrimination",
-            "benchmark schedule binding",
-            "replay hardening",
-            "schedule mutation rejection",
+            "POINT_DERIVATIVE_BASIN_BRACKETED",
+            "MINIMUM_ORIENTED",
+            "SCHUR_OUT_OF_H1_SCOPE",
+            "centered H1 recovery",
+            "Schur-envelope derivative",
+            "contact orientation",
+            "production Schur envelope",
+            "production remainder derivative",
+            "-log(L)I remainder",
+            "invariant Hermitian Schur",
+            "shell normalization bridge",
             "Taylor enclosure",
             "interval Newton",
             "Krawczyk",
@@ -174,40 +135,51 @@ class RetroTests(unittest.TestCase):
         objections = "\n".join(schur["surviving_objections"])
         for token in (
             "PR #163",
-            "PR #165",
-            "PR #166",
-            "PR #167",
-            "PR #168",
-            "PR #170",
-            "PR #172",
-            "PR #174",
-            "PR #176",
-            "PR #178",
+            "PR #180",
+            "PR #182",
             "theorem-aligned [W|c] one-step Schur pivot",
-            "sign-indefinite",
             "q13->16/N2/K3/even",
             "Delta_2(L)=a(L)d(L)-b(L)^2",
-            "Q=13/14/15 subcells",
-            "100% UNRESOLVED",
-            "scalarization alone does not eliminate canonical interval dependency",
             "FIXED_UNIT_METHOD_ACCEPTED",
-            "factor-2",
             "DERIVATIVE_UNRESOLVED",
-            "NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN",
-            "a'd+ad'-2bb'",
-            "point Delta_2' balls",
-            "Delta_2'=a'P+aP'",
-            "replay-hardening debt",
+            "POINT_DERIVATIVE_BASIN_BRACKETED",
+            "MINIMUM_ORIENTED",
+            "SCHUR_OUT_OF_H1_SCOPE",
+            "applicable_primary_count=0",
+            "Schur-envelope derivative",
+            "Delta_2'=aP'",
+            "centered H1 recovery",
+            "-log(L)*I",
+            "invariant/Hermitian",
             "determinant and pivot minima",
-            "full physical H1 does not imply H1 for the q-removed background",
-            "cancellation ratios around 1e9-1e10",
-            "nonzero explicitCanonicalSourceMoment does not imply M4",
-            "finite weighted sample sum does not by itself determine the seventh jet",
+            "global aperture and global minimizing-Schur monotonicity remain quarantined",
             "DR-024",
         ):
             self.assertIn(token, objections)
         schur_break_ids = [x["id"] for x in schur["first_breaks"]]
         self.assertEqual(schur_break_ids, ["E4A4-SCHUR-FB-05"])
+        self.assertIn("#165-#182", schur["first_breaks"][0]["statement"])
+        self.assertIn("production-interface", schur["first_breaks"][0]["statement"])
+
+    def test_git_history_handles_dash_leading_fixed_string_terms(self):
+        td, repo, _, _ = self._fixture_repo()
+        self.addCleanup(td.cleanup)
+        p = repo / "research" / "RHRC" / "old.md"
+        p.write_text(
+            "residual headroom appears here\n-log(L)I remainder is a literal search term\n",
+            encoding="utf-8",
+        )
+        self._git(repo, "add", ".")
+        self._git(repo, "commit", "-m", "dash-leading alias", commit_date="2001-01-05T00:00:00Z")
+        anchor = self._git(repo, "rev-parse", "HEAD")
+        hits = search_git_history(
+            repo,
+            ("-log(L)I remainder",),
+            as_of_ref=anchor,
+            paths=("research/RHRC",),
+        )
+        self.assertTrue(hits)
+        self.assertTrue(any(hit.term == "-log(L)I remainder" for hit in hits))
 
     def test_as_of_search_does_not_see_future_commit(self):
         td, repo, old, new = self._fixture_repo()

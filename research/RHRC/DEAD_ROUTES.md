@@ -183,6 +183,8 @@ The envelope identity `S'(L)=<M'(L)u(L),u(L)>`, if theoremized, remains useful d
 
 **Post-#174 clarification:** using derivative/variation bounds locally to tighten one scalar enclosure does not revive DR-022. The forbidden shortcut is a global fixed sign for the minimizing Schur derivative; local Taylor/interval-Newton control of a specific minimum/contact problem is a different method.
 
+**Post-#182 clarification:** PR #182 theoremizes the generic real 2x2 Schur-envelope derivative and proves that at an H1 contact determinant and pivot derivative orientations agree. This revives only the **local contact calculus** as theorem-backed infrastructure. It does not prove a global sign for `S'(L)`, does not supply a production arithmetic sign, and does not change the empirical sign-changing behavior that quarantined DR-022. The live structural route is contact-local: attach the production `-log(L)I + remainder` decomposition and seek a source-specific remainder bound at the same contact.
+
 **Revival firewall:** any future proof that assumes or concludes one global sign for `S'(L)` is still DR-022 unless it supplies genuinely new hypotheses excluding the known sign-changing behavior.
 
 ## DR-023 — universal positive elementary source-atom energy
@@ -327,6 +329,10 @@ more precision on the same expression != new method
 ```
 
 **Revival requirement:** change the correlation/dependency representation — for example rigorous point derivative diagnostics, a centered mean-value/Taylor enclosure, the exact H1 Schur-factorized identity `Delta_2'=a'P+aP'`, or another demonstrably tighter analytic factorization.
+
+**Post-#180 clarification:** exact-center point derivative balls recover a minimum-oriented left/right sign bracket, but the nonzero-width Schur boxes stop earlier at `SCHUR_OUT_OF_H1_SCOPE`. The immediate finite gate is therefore centered H1 recovery, not more raw derivative refinement.
+
+**Post-#182 clarification:** the generic Schur factorization and contact-orientation transfer are now Lean theorem authority. This strengthens the legitimacy of the changed representation but does not itself recover H1 or sign-certify a nonzero-width derivative box. The next finite step remains centered H1 recovery, followed by a theorem-backed Schur-box retry.
 
 This entry does **not** quarantine analytic differentiation, fixed-unit evaluation, interval arithmetic, local Taylor methods, interval Newton/Krawczyk, or Schur-factorized derivative enclosures generally.
 
