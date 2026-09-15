@@ -228,6 +228,19 @@ jobs:
             --input research/RHRC/routes/R003_ccm_bridge/fixtures/post187_fb05_q14_mixed_drift_selector_v1.json \
             --schedule /tmp/POST187_Q14_SELECTOR_SCHEDULE.json \
             --output /tmp/POST187_Q14_SELECTOR_CERTIFICATE.json
+      - name: Check post-#188 selector semantic-independence plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post188_fb05_q14_mixed_drift_selector_independence_scope.py
+      - name: Probe post-#188 frozen semantic-independence scope
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post188_fb05_q14_mixed_drift_selector_independence_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post188_fb05_q14_mixed_drift_selector_independence_v1.json \
+            --output /tmp/POST188_Q14_SELECTOR_INDEPENDENCE_SCHEDULE.json
+      - name: Certify post-#188 selector semantic-independence audit
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post188_fb05_q14_mixed_drift_selector_independence_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post188_fb05_q14_mixed_drift_selector_independence_v1.json \
+            --schedule /tmp/POST188_Q14_SELECTOR_INDEPENDENCE_SCHEDULE.json \
+            --output /tmp/POST188_Q14_SELECTOR_INDEPENDENCE_CERTIFICATE.json
       - name: Audit R004 scalar-shift invariants
         run: python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
       - name: Reject external reference code as a Lean dependency
