@@ -189,6 +189,19 @@ jobs:
             --input research/RHRC/routes/R003_ccm_bridge/fixtures/post177_fb05_q13_fixed_unit_derivative_v1.json \
             --schedule /tmp/POST177_Q14_DERIVATIVE_SCHEDULE.json \
             --output /tmp/POST177_Q14_DERIVATIVE_CERTIFICATE.json
+      - name: Check post-#179 Schur/correlation-preserving derivative plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post179_fb05_q13_correlation_preserving_derivative_scope.py
+      - name: Probe post-#179 exact-center and Schur derivative scope
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post179_fb05_q13_correlation_preserving_derivative_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post179_fb05_q13_correlation_preserving_derivative_v1.json \
+            --output /tmp/POST179_Q14_CORRELATION_SCHEDULE.json
+      - name: Certify post-#179 correlation-preserving derivative discrimination
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post179_fb05_q13_correlation_preserving_derivative_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post179_fb05_q13_correlation_preserving_derivative_v1.json \
+            --schedule /tmp/POST179_Q14_CORRELATION_SCHEDULE.json \
+            --output /tmp/POST179_Q14_CORRELATION_CERTIFICATE.json
       - name: Audit R004 scalar-shift invariants
         run: python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
       - name: Reject external reference code as a Lean dependency

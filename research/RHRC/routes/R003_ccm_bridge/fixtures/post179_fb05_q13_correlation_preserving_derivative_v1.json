@@ -1,0 +1,39 @@
+{
+  "schema_version": "POST179_FB05_Q13_CORRELATION_PRESERVING_DERIVATIVE_FIXTURE_v1",
+  "claim_cap": "FINITE_CORRELATION_PRESERVING_DERIVATIVE_DISCRIMINATION_ONLY",
+  "theorem_authority_pr": 163,
+  "research_anchor_pr": 178,
+  "routing_sync_pr": 179,
+  "inherited_derivative_fixture": "post177_fb05_q13_fixed_unit_derivative_v1.json",
+  "selected_target": {
+    "q_start": 13,
+    "q_end": 16,
+    "predecessor_N": 2,
+    "successor_K": 3,
+    "selected_parity": "even",
+    "primary_Q": 14
+  },
+  "required_ancestry_control": {
+    "predecessor_N": 2,
+    "parity": "odd"
+  },
+  "arb_precision_bits": 384,
+  "implementation_check_precision_bits": 192,
+  "finite_difference_h_bits": [22, 26],
+  "finite_difference_relative_tolerance": 0.00005,
+  "finite_difference_absolute_tolerance": 1e-10,
+  "material_width_gain_factor": 2.0,
+  "expected_primary_box_count": 6,
+  "expected_control_box_count": 5,
+  "nonclaims": [
+    "This Python audit is not Lean theorem authority.",
+    "The inherited post-#177 schedule is reused exactly; no adaptive center movement is permitted.",
+    "Point derivative signs are rigorous finite research evidence, not global derivative theorems.",
+    "The Schur graph is algebraically the same determinant derivative and is used only inside certified H1 scope.",
+    "Determinant and Schur-pivot stationary points remain distinct optimization targets.",
+    "A two-sided point or interval derivative sign bracket gives only a derived stationary-existence statement by continuity, not uniqueness.",
+    "A narrower Schur enclosure is a method result, not a positivity theorem or global conditioning theorem.",
+    "No second-derivative sign, Taylor minimum certificate, interval-Newton/Krawczyk theorem, whole-cell positivity, FB-05 closure, negative-root exclusion, or RH claim is made.",
+    "RH remains OPEN."
+  ]
+}
