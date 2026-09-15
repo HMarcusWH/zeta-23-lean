@@ -69,7 +69,7 @@ The information is absent from the full vector itself.
 
 ### What this obstruction does not establish
 
-The #190 pair is not proved to be the image of actual canonical arithmetic production. **Canonical arithmetic realizability remains open.** Therefore OBS-054 does **not** imply:
+The #190 pair is not proved to be the image of actual canonical arithmetic production. **Canonical arithmetic realizability remains open; canonical arithmetic realizability is not established by #190.** Therefore OBS-054 does **not** imply:
 
 ```text
 canonical arithmetic states admit opposite-target twins
