@@ -1,4 +1,4 @@
-# RHRC formal audit — theorem authority through PR #182; research evidence through PR #180
+# RHRC formal audit — theorem authority through PR #184; research evidence through PR #180
 
 > **RH remains OPEN.**
 
@@ -8,12 +8,12 @@ Live GitHub head + exact compiler/CI evidence outrank this prose.
 
 ```text
 THEOREM AUTHORITY
-latest theorem-bearing PR = #182
-validated theorem head = 0c3f63cdc4774ba1a68b21d1558ea0ee860a938d
-merged theorem commit = a69160d37a84049711aaff6c3d5db804583a7306
-validated theorem tree = e0b260b3b3a1ed470d54c14d8c0c46b32379f3fb
-RHRC #1082 = SUCCESS
-Permansson #855 = SUCCESS
+latest theorem-bearing PR = #184
+validated theorem head = a756494ebe7e2530715e996b9a9a341fbe07c683
+merged theorem commit = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
+validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
+RHRC #1089 = SUCCESS
+Permansson #862 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
 merged research PR = #180
@@ -65,25 +65,25 @@ finite-prime term samples the same h_v
 
 ### #182
 
-`SchurEnvelopeDerivative.lean` is imported into the aggregate CCM build and compiler-validates the generic real 2x2 Schur calculus:
+`SchurEnvelopeDerivative.lean` compiler-validates the generic real 2x2 Schur calculus and H1 contact determinant/pivot orientation transfer.
+
+### #184
+
+`HermitianSchurEnvelopeDerivative.lean` and `FrozenN2SchurLogDrift.lean` are imported into the aggregate CCM build and compiler-validate the production-facing complex-Hermitian/log-cover package:
 
 ```text
-Delta_2 = aP
-P' = d' - 2*(b/a)b' + (b/a)^2 a'
-Delta_2' = a'd + ad' - 2bb'
-Delta_2' = a'P + aP'
-P' = (Delta_2' a - Delta_2 a')/a^2.
+Hermitian P = d - |b|^2/a
+real-component HasDerivAt calculus
+full frozen parity family M~(t) = -t I + R~(t)
+exact fixed-cell bridge to parityCompressedCanonical
+N2 predecessor/canonical-shell reconstruction
+canonical shell != 0
+predecessor ⟂ shell
+P_t' = -envelopeNormSq + remainderEnvelopeDerivative
+remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0
 ```
 
-At contact `P=0`, Lean proves
-
-```text
-Delta_2' = aP'.
-```
-
-Under H1 `a>0`, positive and negative determinant derivative orientations are equivalent to the corresponding pivot derivative orientations.
-
-**Audit conclusion:** generic contact-orientation transfer is now theorem authority. No production arithmetic sign or contact existence theorem follows.
+**Audit conclusion:** the production/Hermitian/log-cover algebraic bridge is theorem authority. The source-specific remainder derivative witnesses and domination estimate are not.
 
 ## Research audit through #180
 
@@ -98,7 +98,7 @@ The post-#163 research chain remains evidence/infrastructure rather than theorem
 #172 threshold-to-threshold barrier dynamics
 #174 exact q13 2x2 scalar barrier
 #176 fixed-unit enclosure method selection
-#178 complete derivative implementation / raw derivative-box discrimination
+#178 complete physical-L derivative implementation / raw derivative-box discrimination
 #180 exact-center derivative basin / Schur H1-scope audit
 ```
 
@@ -114,68 +114,58 @@ applicable_primary_count = 0
 uniqueness_claim = false
 ```
 
-No bad interval or H1-loss interval is certified. The primary nonzero-width Schur experiment stops before width comparison because H1 is not certified over those boxes.
+No bad interval or H1-loss interval is certified.
 
 ## Current post-green frontier
 
-### Finite lane
+### Research falsification target
+
+Theorem and research derivatives use different coordinates.
 
 ```text
-1. recover H1 over nonzero width from point a(L0)>0 + rigorous a'(I)
-2. retry the #182-backed Schur derivative graph inside centered-certified H1
-3. if sign remains unresolved, implement Delta_2'' and centered derivative propagation
-4. only after signed left/right neighborhoods, attempt interval Newton/Krawczyk
+#184: t = log L
+  dP/dt = -E + dR/dt
+
+#178/#180: physical L
+  dP/dL = -E/L + dR/dL
 ```
 
-### Formal Pair-A lane
-
-The fixed-cell theorem inventory already preserves
+The next research step must reuse the exact frozen #180 schedule and report the production remainder drift, domination margin
 
 ```text
-M_Q(L) = -log(L) I + R_Q(L).
+E/L - dR/dL
 ```
 
-The next theorem should attach a normalization-safe production/Hermitian Schur envelope to this split and isolate
+and ratio
 
 ```text
-P'_log = -||u||^2/L
+L*(dR/dL)/E.
 ```
 
-plus an exact scalar remainder derivative. Only then should the project seek a source-specific contact-local inequality forcing an opposing orientation.
+This is a falsification test of the proposed source-specific domination law.
 
-## New reusable audit warning after #182
+### Formal target
 
-Generic contact calculus is not a canonical arithmetic sign law.
+Existing entrywise complex holomorphy of the frozen source remainder should be transported through the exact parity projection and N2 predecessor/canonical-shell pairings to produce actual real derivative witnesses for the remainder scalar coordinates.
 
-The finite research shell generator spans the same one-dimensional shell as Lean's canonical cubic shell but is not theorem-identified at the same magnitude. Production is complex Hermitian while #182 is real 2x2. Any direct production theorem must therefore prove the normalization/real-specialization bridge or use an invariant Hermitian formulation.
+Only then does the project have a fully instantiated production `HasDerivAt` Schur identity suitable for a theorem-backed domination bound.
 
-## Current open theorem obligations
+## Claim firewall after #184
 
 ```text
-explicitCanonicalSourceMoment != 0 -> M4 != 0
-M4 != 0 -> explicitCanonicalSourceMoment != 0
-finite production samples determine h^(7)(0)
-canonicalPolePrimeRieszEndpointScalar L 8 >= 0
-canonicalPolePrimeRieszEndpointScalar L 8 != 0
-production/Hermitian Schur-envelope derivative bridge
-source-specific production remainder/contact-orientation bound
-centered finite-width H1 on frozen #180 boxes
-q13/N2/K3/even whole-cell positivity/contact/nonvanishing
-simultaneous even+odd bad exclusion
-odd-selected first-bad branch closure
-independent contradiction-producing arithmetic restriction
-negative-root exclusion
-outside-strip/trivial-zero terminal seam
-RiemannHypothesis
+#184 algebraic log-drift split
+  -/-> actual source-specific derivative magnitude bound
+
+remainder domination
+  -/-> contradiction without an opposing first-bad contact orientation
+
+q13/N2/K3 finite signal
+  -/-> arbitrary retained first-bad theorem
+
+local negative derivative
+  -/-> global Schur monotonicity
 ```
 
-## Claim firewall
+Global Schur monotonicity remains quarantined. Negative-root exclusion remains OPEN. The terminal zeta/Mathlib seam remains OPEN.
 
-- #182 proves exactly the generic contact calculus listed above and no more.
-- #180 is finite research evidence, not theorem promotion.
-- exact executable algebra is not Lean theorem authority unless separately theoremized.
-- finite Arb certification is not automatically a whole-cell/global theorem.
-- `UNRESOLVED` is not sign evidence.
-- global Schur monotonicity remains quarantined.
-- negative-root exclusion remains open.
-- **RH remains OPEN.**
+**RH remains OPEN.**
