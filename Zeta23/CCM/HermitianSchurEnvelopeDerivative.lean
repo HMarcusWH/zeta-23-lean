@@ -117,11 +117,23 @@ theorem hasDerivAt_hermitianSchurPivot2x2_components
     (fun t : ℝ => d t - (br t ^ 2 + bi t ^ 2) / a t)
     (hermitianSchurPivot2x2Derivative
       (a L) ⟨br L, bi L⟩ da dbr dbi dd) L
+  have hsqRaw :
+      HasDerivAt
+        (fun t : ℝ => br t * br t + bi t * bi t)
+        ((dbr * br L + br L * dbr) +
+          (dbi * bi L + bi L * dbi)) L :=
+    (hbr.mul hbr).add (hbi.mul hbi)
+  have hcoef :
+      (dbr * br L + br L * dbr) +
+          (dbi * bi L + bi L * dbi) =
+        2 * br L * dbr + 2 * bi L * dbi := by
+    ring
   have hsq :
       HasDerivAt
         (fun t : ℝ => br t ^ 2 + bi t ^ 2)
         (2 * br L * dbr + 2 * bi L * dbi) L := by
-    convert (hbr.mul hbr).add (hbi.mul hbi) using 1 <;> ring
+    rw [← hcoef]
+    simpa only [pow_two] using hsqRaw
   have hraw := hd.sub (hsq.div ha ha0)
   have hder :
       dd -
@@ -154,11 +166,23 @@ theorem hasDerivAt_hermitianSchurDet2x2_components
     (fun t : ℝ => a t * d t - (br t ^ 2 + bi t ^ 2))
     (hermitianSchurDet2x2Derivative
       (a L) ⟨br L, bi L⟩ (d L) da dbr dbi dd) L
+  have hsqRaw :
+      HasDerivAt
+        (fun t : ℝ => br t * br t + bi t * bi t)
+        ((dbr * br L + br L * dbr) +
+          (dbi * bi L + bi L * dbi)) L :=
+    (hbr.mul hbr).add (hbi.mul hbi)
+  have hcoef :
+      (dbr * br L + br L * dbr) +
+          (dbi * bi L + bi L * dbi) =
+        2 * br L * dbr + 2 * bi L * dbi := by
+    ring
   have hsq :
       HasDerivAt
         (fun t : ℝ => br t ^ 2 + bi t ^ 2)
         (2 * br L * dbr + 2 * bi L * dbi) L := by
-    convert (hbr.mul hbr).add (hbi.mul hbi) using 1 <;> ring
+    rw [← hcoef]
+    simpa only [pow_two] using hsqRaw
   have hraw := (ha.mul hd).sub hsq
   have hder :
       da * d L + a L * dd -
@@ -166,7 +190,6 @@ theorem hasDerivAt_hermitianSchurDet2x2_components
         hermitianSchurDet2x2Derivative
           (a L) ⟨br L, bi L⟩ (d L) da dbr dbi dd := by
     unfold hermitianSchurDet2x2Derivative hermitianOffdiagCorrelation
-      hermitianOffdiagSq
     ring
   rw [← hder]
   exact hraw
