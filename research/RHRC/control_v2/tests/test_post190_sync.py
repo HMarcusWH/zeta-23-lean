@@ -104,7 +104,8 @@ class Post190SyncTests(unittest.TestCase):
             self.assertIn(token, objections)
         self.assertIn("#186-#190", first_break)
         self.assertIn("ambient normalized algebra", first_break)
-        self.assertIn("same retained first-bad/contact state", first_break)
+        self.assertIn("same state", first_break)
+        self.assertIn("retained first-bad/contact state", first_break)
 
     def test_route_registry_advances_r003_without_claim_id_change_semantics(self):
         registry = json.loads(
