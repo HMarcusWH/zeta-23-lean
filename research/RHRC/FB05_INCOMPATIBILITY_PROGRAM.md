@@ -76,7 +76,7 @@ These remain research hygiene rules even though the immediate Pair-A bottleneck 
 
 ### #186 — broad Pair-A domination falsifier
 
-The frozen Q14 exact-center panel returns `DOMINATION_SIGNAL_MIXED`: two positive domination margins and four negative. Broad/unconditional `R_t'<E` is therefore not a credible theorem target across the tested dangerous-state class.
+The frozen Q14 exact-center panel returns `DOMINATION_SIGNAL_MIXED`: two positive domination margins and four negative. Broad/unconditional `R_t'<E` is therefore not a credible theorem target across the tested dangerous-state class. This is the tested failure of broad **remainder domination** in that scope.
 
 ### #188 — frozen selector audit
 
