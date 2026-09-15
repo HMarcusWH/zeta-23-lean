@@ -15,12 +15,13 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #178
-validated research head = 28df43faed0db8c0f12a25525df6c28467ce5b07
-merged research commit = fb2a181ce0d95d90396ead7730e7bf365616a153
-research tree = 96ab14953e9e8bff5245953082db8a6471648614
-RHRC #1074 = SUCCESS
-Permansson #847 = SUCCESS
+merged research PR = #180
+validated research head = a87469da9e611b53ae400cb4b18ce4afeb94e6d2
+merged research commit = 93ea3df51f2671e316197c1530ea504dee76e821
+research tree = 8199cdc543f1b761c70466dfd602c143a277e6a2
+RHRC #1077 = SUCCESS
+Lean #837 = SUCCESS
+Permansson #850 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
@@ -59,6 +60,7 @@ No theorem-bearing PR has superseded #163.
 #174 q13/N2/K3/even exact 2x2 scalar-barrier / interval-method audit
 #176 fixed-unit q13/Q14 enclosure agreement + method-selection benchmark
 #178 complete fixed-unit derivative implementation + Q14 derivative discrimination
+#180 exact-center Q14 derivative basin + Schur H1-scope audit
 ```
 
 ### What #174 changed
@@ -113,6 +115,33 @@ This does **not** mean `Delta_2'=0`. It means the raw assembled derivative inter
 
 #178 also closes the #176 replay-hardening debt: supplied benchmark schedules are now rebound to their frozen fixture and malformed schedules are rejected.
 
+### #180 — exact-center derivative basin / Schur-scope audit
+
+The inherited #178 schedule is reused exactly. At all six frozen primary Q14 exact centers, rigorous Arb point balls give
+
+```text
+POINT_DERIVATIVE_BASIN_BRACKETED
+MINIMUM_ORIENTED
+left centers:  3/3 Delta_2' < 0
+right centers: 3/3 Delta_2' > 0
+```
+
+The Schur point graph agrees on the same six H1-usable points. This supports a **derived stationary-existence statement if continuity is invoked**, but `uniqueness_claim = false`.
+
+For the nonzero-width primary boxes the result is instead
+
+```text
+SCHUR_OUT_OF_H1_SCOPE
+applicable_primary_count = 0
+sign_recovery_labels = []
+strict_width_gain_labels = []
+material_2x_gain_labels = []
+```
+
+So #180 does **not** establish a finite-box Schur width gain. The width comparison is blocked before it becomes applicable because H1 is not certified over those boxes. No bad or H1-loss interval is certified.
+
+**Post-green consequence:** first try centered H1 recovery from the sharp point value `a(L0)>0` and the already-validated first derivative `a'`; only then retry the Schur box representation. Build `Delta_2''` for centered derivative propagation only if that cheaper preflight is insufficient.
+
 ## Current frontier
 
 ```text
@@ -124,7 +153,7 @@ FB-04A moment jets + signed Riesz boundary recurrence           PROVED / #159
 FB-04B same-state shifted Riesz x cross-parity source           PROVED / #161
 FB-04C mixed quadratic-normal jet x Riesz boundary coupling     PROVED / #163
 FB-05 independent contradiction-producing arithmetic restriction OPEN / NOW
-  current research slice: correlation-preserving Q14 derivative enclosure
+  current research slice: centered H1 recovery -> finite-width derivative propagation
 FB-06 negative-root exclusion                                   OPEN
 FB-07 terminal Mathlib RH seam                                  OPEN
 RH                                                               OPEN
@@ -134,17 +163,16 @@ RH                                                               OPEN
 
 The method bottleneck has moved again. #176 improved value-level determinant intervals, while #178 shows that direct interval evaluation of the differentiated assembled determinant still certifies no primary sign.
 
-The next question is therefore **where the derivative dependency enters**.
+The next question is now **how to propagate the rigorously signed point basin without losing H1/correlation**.
 
 Highest-information order:
 
 ```text
-1. rigorous point Delta_2' balls at all frozen primary/control centers
-2. compare exact representations
-     raw: Delta_2' = a'd + ad' - 2bb'
-     H1:  Delta_2' = a'P + aP'
-3. if point orientation is visible, add Delta_2'' and centered mean-value/Taylor bounds
-4. only after a two-sided derivative bracket, attempt interval Newton/Krawczyk.
+1. centered H1 recovery from point a(L0)>0 plus rigorous a'(I)
+2. inside recovered H1, retry Delta_2'=a'P+aP' on nonzero-width boxes
+3. if still unresolved, add Delta_2'' and centered mean-value/Taylor propagation of the signed point values
+4. only after signed left/right neighborhoods, attempt interval Newton/Krawczyk
+5. in parallel, test/theoremize the source-specific log-drift/contact derivative law.
 ```
 
 The determinant and pivot minima remain distinct optimization targets. The Schur-factorized expression is only an alternative enclosure representation of the determinant derivative, not a revival of global minimizing-Schur monotonicity.
@@ -184,7 +212,7 @@ Do not theoremize a q13 finite-cell observation merely because a better enclosur
 
 ## Permanent firewalls
 
-- research evidence through #178 does not move theorem authority beyond #163;
+- research evidence through #180 does not move theorem authority beyond #163;
 - endpoint-scalar positivity alone is not first-bad exclusion;
 - arithmetic entry lift is sign-indefinite in tested canonical states;
 - physical H1 does not imply q-removed-background H1;
@@ -200,6 +228,6 @@ Do not theoremize a q13 finite-cell observation merely because a better enclosur
 - negative-root exclusion and RH remain open.
 
 Detailed current synthesis:
-`research/RHRC/RESEARCH_LEADS_POST_178_DERIVATIVE_UNRESOLVED_CENTERED_ENCLOSURE_DELTA.md`.
+`research/RHRC/RESEARCH_LEADS_POST_180_POINT_DERIVATIVE_BASIN_CENTERED_TAYLOR_FRONTIER_DELTA.md`.
 
 **RH remains OPEN.**

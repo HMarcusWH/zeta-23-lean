@@ -19,12 +19,13 @@ Permansson #812 = SUCCESS
 ### Latest research-evidence anchor
 
 ```text
-latest merged research PR = #178
-validated research head = 28df43faed0db8c0f12a25525df6c28467ce5b07
-merged research commit = fb2a181ce0d95d90396ead7730e7bf365616a153
-research tree = 96ab14953e9e8bff5245953082db8a6471648614
-RHRC #1074 = SUCCESS
-Permansson #847 = SUCCESS
+latest merged research PR = #180
+validated research head = a87469da9e611b53ae400cb4b18ce4afeb94e6d2
+merged research commit = 93ea3df51f2671e316197c1530ea504dee76e821
+research tree = 8199cdc543f1b761c70466dfd602c143a277e6a2
+RHRC #1077 = SUCCESS
+Lean #837 = SUCCESS
+Permansson #850 = SUCCESS
 ```
 
 ### Control authority
@@ -35,7 +36,7 @@ selected formal first break = E4A4-SCHUR-FB-05
 terminal claim = RH_OPEN
 ```
 
-Research PRs #165-#178 do not advance theorem or machine-claim authority.
+Research PRs #165-#180 do not advance theorem or machine-claim authority.
 
 ## One-screen frontier
 
@@ -108,6 +109,18 @@ POST-THEOREM FB-05 RESEARCH
         orientation = NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN
         no bad interval / no H1-loss interval certified
         #176 standalone replay-hardening debt closed
+
+  #180  exact-center derivative orientation / Schur-scope audit
+        all 6 frozen primary Q14 exact centers are rigorously signed
+        left three Delta_2' < 0; right three Delta_2' > 0
+        point disposition = POINT_DERIVATIVE_BASIN_BRACKETED
+        orientation = MINIMUM_ORIENTED
+        Schur point evaluation agrees on the same 6 centers
+        nonzero-width Schur boxes classify SCHUR_OUT_OF_H1_SCOPE
+        applicable primary Schur boxes = 0
+        no Schur width/sign-recovery claim is therefore available on the primary boxes
+        stationary existence is derivable only if continuity is invoked; uniqueness = false
+        no bad interval / no H1-loss interval certified
 ```
 
 ## Exact theorem package through #163
@@ -146,9 +159,9 @@ RiemannHypothesis
 
 ## Reclassified FB-05 subroutes
 
-### A. q13/N2/K3/even 2x2 determinant barrier — DERIVATIVE IMPLEMENTATION VALIDATED / RAW BOX SIGN UNRESOLVED
+### A. q13/N2/K3/even 2x2 determinant barrier — POINT ORIENTATION CERTIFIED / FINITE-WIDTH PROPAGATION OPEN
 
-#174 consumes the exact theorem-aligned 1D->2D reduction. #176 consumes the first representation-selection gate. #178 consumes the first derivative-implementation gate.
+#174 consumes the exact theorem-aligned 1D->2D reduction. #176 consumes the first value-representation gate. #178 consumes the complete derivative-implementation gate. #180 consumes the exact-center orientation scout.
 
 The finite laboratory is
 
@@ -160,54 +173,91 @@ H1 <-> a(L)>0
 P(L)=Delta_2(L)/a(L) in H1.
 ```
 
-#176 selected the fixed-unit pullback as the preferred research enclosure representation on the frozen value benchmark.
-
-#178 validates the complete canonical derivative chain
+#180 gives the exact finite research state
 
 ```text
-fixed-unit primitive derivatives
-  + pole derivative
-  + fixed-Q prime derivative
-  -> complete M'(L)
-  -> a', b', d'
-  -> Delta_2' = a'd + ad' - 2bb'.
+POINT_DERIVATIVE_BASIN_BRACKETED
+MINIMUM_ORIENTED
+left centers:  Delta_2' < 0  (3/3)
+right centers: Delta_2' > 0  (3/3)
+Schur point orientation: same 6 signed centers
+stationary existence if continuity is invoked: true
+uniqueness claim: false
 ```
 
-But the exact finite research result is
+This is **EXPERIMENTAL SIGNAL — rigorous finite**. It does not isolate a stationary point and says nothing yet about the sign of `Delta_2` at a stationary point.
+
+The primary nonzero-width Schur benchmark did **not** establish a width improvement. It stopped one layer earlier:
 
 ```text
-DERIVATIVE_UNRESOLVED
-NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN
-left/right certified sign label sets all empty
-no derived stationary existence
-no bad interval
-no H1-loss interval.
+representation disposition = SCHUR_OUT_OF_H1_SCOPE
+applicable primary count = 0
+strict width gain labels = []
+material 2x gain labels = []
+sign recovery labels = []
 ```
 
-Therefore the current raw interval expression is not yet a useful stationary discriminator. This is not zero/stationary evidence.
+Thus #180 identifies the first local interval obstruction more sharply: exact-center H1/derivative information is visible, but the current nonzero-width box does not certify the H1 prerequisite `a>0` strongly enough to make the Schur interval graph applicable.
 
-### B. Correlation-preserving Q14 derivative enclosure — NOW / HIGHEST LEVERAGE
+### B. Centered H1 recovery -> centered derivative propagation — NOW / HIGHEST LEVERAGE
 
-The next research slice should diagnose the dependency source before adding a large second-derivative/Newton stack.
+Do **not** jump straight from the point bracket to a large second-derivative/Newton stack. First consume the cheaper information already available from #178/#180.
 
-Order:
+Selected order:
 
 ```text
-1. rigorous point Delta_2' balls at frozen primary/control centers
-2. compare exact derivative representations in H1
-     raw: Delta_2' = a'd + ad' - 2bb'
-     Schur-factorized: Delta_2 = aP,
-                       Delta_2' = a'P + aP'
-3. only if point orientation is visible:
-     implement/bound Delta_2''
-     use centered mean-value/Taylor enclosure
-4. only after a two-sided derivative sign bracket:
-     interval Newton / Krawczyk on Delta_2'.
+1. centered H1 recovery on the frozen boxes
+     certify point a(L0) > 0
+     bound a'(I) with the already-validated first-derivative evaluator
+     enclose a(I) by a(L0) + (I-L0)*a'(I)
+
+2. if centered H1 succeeds
+     re-enable the exact Schur factorization on nonzero-width boxes
+     compare raw Delta_2' with Delta_2' = a'P + aP'
+     ask whether Schur now recovers sign or materially reduces width
+
+3. only if derivative sign is still unresolved
+     implement/bound
+       Delta_2'' = a''d + 2a'd' + ad'' - 2(b')^2 - 2bb''
+     and use
+       Delta_2'(L) = Delta_2'(L0) + (L-L0) Delta_2''(xi)
+     to propagate the already-sharp point sign
+
+4. only after certified left-negative and right-positive neighborhoods
+     interval Newton / Krawczyk for stationary isolation
+
+5. only after a stationary point is isolated
+     certify the sign of Delta_2 at that point/basin.
 ```
 
-The determinant and pivot minima remain distinct. Using `a'P+aP'` is only an alternative enclosure graph for the determinant derivative, not a claim that the determinant and pivot have the same stationary point.
+The cheapest falsification target is therefore **centered H1 scope recovery**, not `Delta_2''` itself. If centered H1 already fails on the tightest pair, the next representation must preserve correlation in `a` before investing in second-order determinant calculus.
 
-Green outcomes must include method falsification. If point balls or centered/factorized boxes remain unresolved, record that and change representation again rather than forcing more subdivision.
+### B2. Structural FB-05 derivative law — PARALLEL LEAD, NOT A RESULT
+
+The existing Lean inventory already proves fixed-cell decompositions of the production source/intrinsic predecessor of the form
+
+```text
+A(L) = -log(L) * I + R(L)
+```
+
+with analytic remainder infrastructure. This suggests a general structural target for the actual Schur envelope: theoremize the production-interface envelope derivative, then isolate the universal logarithmic drift from the source-specific remainder drift.
+
+The candidate schematic identity is
+
+```text
+P'(L) = Re <u_L, A'(L) u_L>
+      = -||u_L||^2/L + Re <u_L, R'(L) u_L>.
+```
+
+**LEAD / HYPOTHESIS:** prove a source-specific bound on the remainder term strong enough to control the contact derivative. The displayed derivative decomposition is not yet a project theorem at the required production interface.
+
+At an H1 contact, the algebra `Delta_2=aP` gives
+
+```text
+P=0  =>  Delta_2' = a P'.
+```
+
+Since H1 has `a>0`, a contact-specific sign restriction on `P'` would transfer to `Delta_2'`. This is a weaker and potentially more useful target than reviving global Schur monotonicity.
 
 ### C. Threshold-to-threshold Schur barrier — RESEARCHED / #172
 
@@ -233,7 +283,7 @@ Consumed infrastructure. Independent channel pivots may not be added because the
 
 There is no WLOG-even theorem because `D` is algebraic, not unitary/isometric.
 
-## Reusable post-#174/#176/#178 firewalls
+## Reusable post-#174/#176/#178/#180 firewalls
 
 ### OBS-047 — scalarization does not eliminate canonical interval dependency
 
@@ -250,6 +300,12 @@ PR #176 finite-certifies old/new evaluator agreement and passes the predeclared 
 ### OBS-050 — value-level fixed-unit conditioning does not automatically yield derivative sign discrimination
 
 PR #178 validates the complete derivative implementation but all six primary raw `Delta_2'` interval boxes are sign-unresolved. Therefore #176 value-width improvement cannot be silently propagated to derivative conditioning.
+
+### OBS-051 — point orientation is recoverable; finite-width Schur evaluation is blocked first by H1 scope
+
+PR #180 finite-certifies `POINT_DERIVATIVE_BASIN_BRACKETED / MINIMUM_ORIENTED` at all six frozen primary exact centers. The three left centers are negative and the three right centers positive for `Delta_2'`, and the Schur point graph agrees where H1 is certified.
+
+On the corresponding nonzero-width primary boxes, however, the certifier reports `SCHUR_OUT_OF_H1_SCOPE` with `applicable_primary_count = 0`. Therefore #180 does **not** establish either Schur width gain or Schur sign recovery on those boxes. The first local interval task is to recover `a>0` by a correlation-preserving/centered enclosure, then retest the Schur graph.
 
 ### DR-026 — brute direct scalar subdivision
 
@@ -270,8 +326,10 @@ The #176 standalone benchmark replay-hardening debt is **closed by #178**. The c
 - preserve physical Q=13/14/15 seam semantics and von Mangoldt prime powers;
 - preserve odd N=2 ancestry tracking;
 - keep the direct production/value evaluator as an independent baseline;
-- first measure rigorous point `Delta_2'` signs before investing in second derivatives;
-- compare raw and Schur-factorized derivative representations only in valid H1 scope;
+- reuse the exact frozen #180 centers and do not move them toward a nicer numerical minimum;
+- attempt centered H1 recovery from rigorous point `a(L0)>0` plus the existing `a'(I)` enclosure before building second derivatives;
+- compare the Schur derivative representation only after H1 is certified on nonzero width;
+- if Schur still does not recover derivative sign, benchmark `Delta_2''` and centered propagation against the already-signed point values;
 - keep determinant and pivot minima distinct;
 - do not assume global derivative sign or revive global Schur monotonicity;
 - treat zero-containing intervals as unresolved unless existence is separately certified;
@@ -280,11 +338,11 @@ The #176 standalone benchmark replay-hardening debt is **closed by #178**. The c
 
 ## Highest-leverage next move
 
-Build a research PR that benchmarks correlation-preserving Q14 determinant derivative enclosures. Its first green criterion should be reliable point/factorized diagnostics, **not** successful stationary-point isolation by fiat.
+Build the centered-H1 preflight on the frozen Q14 side boxes. If it recovers `a>0`, rerun the exact Schur derivative graph on those boxes; only then pay the implementation cost of `Delta_2''`/centered Taylor propagation if needed.
 
 Standing question:
 
-> Given everything theoremized through #163 and validated experimentally through #178, can the near-critical determinant derivative be enclosed in a way that preserves the correlations lost by the raw interval expression?
+> Given everything theoremized through #163 and validated experimentally through #180, can the rigorously signed point derivative basin be propagated to nonzero width without losing H1 and the determinant correlations?
 
 Then:
 
@@ -296,6 +354,6 @@ surviving independent arithmetic restriction
 ```
 
 Detailed current synthesis:
-`RESEARCH_LEADS_POST_178_DERIVATIVE_UNRESOLVED_CENTERED_ENCLOSURE_DELTA.md`.
+`RESEARCH_LEADS_POST_180_POINT_DERIVATIVE_BASIN_CENTERED_TAYLOR_FRONTIER_DELTA.md`.
 
 **RH remains OPEN.**

@@ -15,12 +15,13 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #178
-validated research head = 28df43faed0db8c0f12a25525df6c28467ce5b07
-merged research commit = fb2a181ce0d95d90396ead7730e7bf365616a153
-research tree = 96ab14953e9e8bff5245953082db8a6471648614
-RHRC #1074 = SUCCESS
-Permansson #847 = SUCCESS
+merged research PR = #180
+validated research head = a87469da9e611b53ae400cb4b18ce4afeb94e6d2
+merged research commit = 93ea3df51f2671e316197c1530ea504dee76e821
+research tree = 8199cdc543f1b761c70466dfd602c143a277e6a2
+RHRC #1077 = SUCCESS
+Lean #837 = SUCCESS
+Permansson #850 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
@@ -73,8 +74,9 @@ RH                                                                    OPEN
 - **#174:** exact q13 1D->2D scalar reduction validated; direct 384-bit scalar interval audit remains 100% unresolved on physical Q=13,14,15 subcells.
 - **#176:** independent fixed-unit evaluator agrees with the direct production path and passes the frozen six-box Q14 factor-2 determinant-width routing criterion; method classification `FIXED_UNIT_METHOD_ACCEPTED`.
 - **#178:** complete fixed-Q derivative implementation validated against independent centered value differences; all six primary Q14 raw `Delta_2'` boxes remain `DERIVATIVE_UNRESOLVED`; no bad/H1-loss interval certified; #176 replay-hardening debt closed.
+- **#180:** all six frozen primary exact-center `Delta_2'` balls are rigorously minimum-oriented; the Schur point graph agrees, while nonzero-width primary Schur boxes are `SCHUR_OUT_OF_H1_SCOPE` with zero applicable primaries.
 
-## Immediate frontier — FB-05J correlation-preserving Q14 derivative enclosure
+## Immediate frontier — FB-05J centered H1 recovery and finite-width derivative propagation
 
 For the q13 target, the exact executable geometry remains:
 
@@ -94,34 +96,34 @@ Delta_2' = a'd + ad' - 2bb'
 
 certifies no sign on any primary side box.
 
-The next discriminator is therefore not another raw derivative subdivision. It is a **correlation-preserving enclosure comparison**:
+#180 answers the point-orientation question positively and exposes a narrower first interval failure: the six exact centers are minimum-oriented, while all six nonzero-width Schur primary boxes are `SCHUR_OUT_OF_H1_SCOPE`. The next discriminator is therefore **centered H1 recovery before second-order determinant calculus**:
 
 ```text
-1. rigorous point Delta_2' balls at frozen primary/control centers
-2. compare exact representations in H1
-     raw: Delta_2' = a'd + ad' - 2bb'
-     Schur-factorized: Delta_2' = a'P + aP'
-3. if point orientation is visible, add Delta_2'' and centered mean-value/Taylor control
-4. only after a two-sided bracket, use interval Newton/Krawczyk.
+1. point a(L0)>0 + rigorous a'(I) -> centered H1 enclosure
+2. if H1 is recovered, retry Delta_2'=a'P+aP' on nonzero-width boxes
+3. if sign remains unresolved, add Delta_2'' and centered mean-value/Taylor propagation
+4. only after signed left/right neighborhoods, use interval Newton/Krawczyk
+5. in parallel, test the -log(L)*I / arithmetic-remainder contact-derivative lead.
 ```
 
 A positive q13 whole-cell result would still be a finite method/structure result, not FB-05 closure.
 
 ## Current execution priority
 
-1. **Compute rigorous point `Delta_2'` signs at the frozen centers.**
-2. **Benchmark raw versus Schur-factorized derivative enclosures where H1 is certified.**
-3. **Do not assume a second-derivative/Taylor route is useful until point orientation is visible.**
-4. **Keep determinant and pivot stationary problems distinct.**
-5. **If a bad state appears, replay it immediately through #166/#161/#163.**
-6. **If positive, identify and falsify the generalizable arithmetic reason.**
-7. **Theoremize only an independent restriction that adds information beyond successor positivity.**
-8. **Compose with #161/#163, then close FB-06/FB-07.**
+1. **Recover H1 on the tightest inherited boxes by centered propagation of `a`.**
+2. **Only inside recovered H1, benchmark the nonzero-width Schur derivative graph.**
+3. **If still unresolved, build `Delta_2''` and centered propagation of the already-signed point derivative.**
+4. **Run the cheap `-log(L)` drift versus arithmetic-remainder diagnostic before theorem engineering around that structural lead.**
+5. **Keep determinant and pivot stationary problems distinct.**
+6. **Attempt interval Newton/Krawczyk only after signed finite neighborhoods exist.**
+7. **If a bad state appears, replay it immediately through #166/#161/#163.**
+8. **Theoremize only an independent restriction that adds information beyond successor positivity; then compose toward FB-06/FB-07.**
 
 ## Current research records
 
 - `CURRENT_RESEARCH_PLAN.md` — execution order and theorem gates.
-- `RESEARCH_LEADS_POST_178_DERIVATIVE_UNRESOLVED_CENTERED_ENCLOSURE_DELTA.md` — newest audited research synthesis.
+- `RESEARCH_LEADS_POST_180_POINT_DERIVATIVE_BASIN_CENTERED_TAYLOR_FRONTIER_DELTA.md` — newest audited research synthesis.
+- `RESEARCH_LEADS_POST_178_DERIVATIVE_UNRESOLVED_CENTERED_ENCLOSURE_DELTA.md` — prior derivative-unresolved synthesis.
 - `RESEARCH_LEADS_POST_176_FIXED_UNIT_METHOD_ACCEPTANCE_Q14_STATIONARY_FRONTIER_DELTA.md` — previous synthesis.
 - `OBSTRUCTION_LEDGER.md` / `DEAD_ROUTES.md` — reusable blockers.
 - `routes/R003_ccm_bridge/README.md` — active route theorem/research surface.
