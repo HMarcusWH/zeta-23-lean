@@ -14,13 +14,12 @@ RHRC #1089 = SUCCESS
 Permansson #862 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #180
-validated research head = a87469da9e611b53ae400cb4b18ce4afeb94e6d2
-merged research commit = 93ea3df51f2671e316197c1530ea504dee76e821
-research tree = 8199cdc543f1b761c70466dfd602c143a277e6a2
-RHRC #1077 = SUCCESS
-Lean #837 = SUCCESS
-Permansson #850 = SUCCESS
+merged research PR = #186
+validated research head = 7d277a99437d98fdb7c831f25a130eac07f1b3af
+merged research commit = 0494658a87d29eeb2124aa16232c264c21d23c18
+RHRC #1091 = SUCCESS
+Permansson #864 = SUCCESS
+research disposition = DOMINATION_SIGNAL_MIXED
 
 CONTROL SEMANTIC AUTHORITY
 control-plane semantic anchor = PR #117
@@ -41,6 +40,7 @@ FB-04B same-state shifted Riesz x cross-parity source composition PROVED / #161
 FB-04C mixed quadratic-normal jet x Riesz boundary coupling       PROVED / #163
 FB-05A generic real Schur/contact orientation calculus             PROVED / #182
 FB-05B Hermitian production/log-cover Schur drift decomposition   PROVED / #184
+FB-05C broad remainder domination on frozen panel                 FALSIFIED / #186 research
 FB-05 independent contradiction-producing arithmetic restriction  NOW / sole selected first break
 A4b2b universal one-step domination                               BROAD FALLBACK
 GLOBAL first-bad exclusion                                        AFTER scoped arithmetic closure
@@ -50,29 +50,34 @@ The selected action remains `E4_A4_REGULAR_SCHUR_ENERGY_SIGN` under frontier `FI
 
 The selected first-break ID remains `E4A4-SCHUR-FB-05`.
 
-## Why routing changes after #184
+## Why routing changes after #186
 
-#184 consumes the production/Hermitian/log-cover algebraic bridge that was open after #182.
+#184 consumes the production/Hermitian/log-cover algebraic bridge. #186 then performs the predeclared finite falsification pass on the exact frozen #180 q13/Q14 N2/K3/even schedule.
 
-Lean now has:
-
-```text
-Hermitian P = d - |b|^2/a
-M~(t) = -t I + R~(t)
-N2 predecessor / canonical cubic shell orthogonality
-P_t' = -envelopeNormSq + remainderEnvelopeDerivative
-remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0
-```
-
-Therefore Control-v2 must no longer recommend “prove the production/Hermitian Schur bridge” as if that interface were open.
-
-The remaining FB-05 information target is source-specific:
+The physical-aperture identity tested is
 
 ```text
-actual remainder scalar derivative witnesses
-  -> quantitative remainder domination
-  -> same-state opposing first-bad contact orientation
+dP/dL = -E/L + remainder_drift_L.
 ```
+
+The research certificate is
+
+```text
+DOMINATION_SIGNAL_MIXED
+```
+
+with two positive-margin and four negative-margin primary exact centers, no unresolved primary exact-center margin, and `FINITE_WIDTH_OUT_OF_H1_SCOPE` on the nonzero-width boxes.
+
+Therefore Control-v2 must no longer recommend “prove universal source-specific remainder domination” as if the finite signal survived. The live information target is now:
+
+```text
+freeze #186 panel
+  -> identify a canonical/theorem-connectable selector for the mixed split
+  -> falsify the selector against normalization/parity/ancestry controls
+  -> only if it survives, formulate a narrow contact-local sign theorem
+```
+
+The actual production remainder scalar derivative witnesses remain useful sign-neutral formal infrastructure.
 
 ## Selected action — E4_A4_REGULAR_SCHUR_ENERGY_SIGN
 
@@ -84,40 +89,43 @@ find an independent canonical arithmetic property that makes the retained shifte
 negative state impossible without restating successor positivity.
 ```
 
-Two synchronized lanes are active.
+### Highest-information research lane
 
-### Highest-information finite falsification lane
+Use the exact #186 frozen panel. Do not move centers or refit the basin.
 
-Reuse the exact #180 q13/Q14 N2/K3 schedule.
-
-#184's theorem coordinate is `t=log L`, while the #178/#180 research backend uses physical aperture `L`. Therefore test the exact converted identity
-
-```text
-dP/dL = -E/L + remainder_drift_L.
-```
-
-Report:
+Compare theorem-connectable quantities such as
 
 ```text
 E
--E/L
-full pivot derivative in L
 remainder_drift_L
-margin = E/L - remainder_drift_L
-ratio = L*remainder_drift_L/E
+rho = L*remainder_drift_L/E
+full pivot derivative
+a, |b|, d
+normalized predecessor/shell coupling
+fixed-Q cell position
+#180 basin position
+opposite-parity / ancestry controls
 ```
 
-and require the component reconstruction check.
+Predeclare candidate selectors before judging them. Reject target leakage from the desired margin sign, `rho<1`, successor positivity, or algebraic equivalents.
 
-This is a falsification gate. A ratio reaching/exceeding one on a legitimate frozen state kills the simple domination formulation in that scope.
+### Formal infrastructure lane
 
-### Formal Pair-A lane if the signal survives
+The repository already proves entrywise holomorphy of the full frozen complex source remainder. The next sign-neutral theorem bridge is finite-dimensional transport through exact parity projection and N2 predecessor/canonical-shell scalar pairings to actual real derivative witnesses, followed by an instantiated production `HasDerivAt` Schur identity.
 
-The repository already proves entrywise holomorphy of the full frozen complex source remainder. The next theorem bridge is finite-dimensional transport through the exact parity projection and N2 predecessor/canonical-shell scalar pairings to actual real derivative witnesses.
+Do not infer a magnitude/sign theorem from derivative existence.
 
-Then instantiate #184 as an actual production `HasDerivAt` Schur identity and only after that attempt the source-specific remainder bound.
+### Pair-A composition only if a selector survives
 
-A contradiction additionally requires an independently theorem-backed first-bad contact orientation on the exact same retained state.
+```text
+canonical selector C on exact retained/contact state
+  -> selector-conditioned/contact-local remainder domination
+  -> #184 negative pivot orientation
+  -> independently theorem-backed opposing first-bad property
+  -> same-state contradiction
+```
+
+If no selector survives, Pair A should be downgraded and the router should prioritize the other FB-05 incompatibility pairs rather than retrying the dead universal law.
 
 ## Production / coordinate firewall
 
@@ -125,6 +133,7 @@ A contradiction additionally requires an independently theorem-backed first-bad 
 - formal theorem work should stay on the canonical intrinsic cubic shell;
 - `d/dt = L*d/dL` for `t=log L`; derivative magnitudes across the two coordinates are not interchangeable;
 - analyticity gives derivative existence, not the domination magnitude bound;
+- #186 mixed finite evidence is not a general sign theorem;
 - global Schur monotonicity remains quarantined.
 
 ## Evidence-class firewall
@@ -152,10 +161,12 @@ q13 exact 2x2 scalar-barrier / interval-method audit         RESEARCH / #174
 fixed-unit q13/Q14 enclosure method selection               RESEARCH / #176
 complete fixed-unit physical-L derivative discrimination    RESEARCH / #178
 exact-center derivative basin / Schur-scope audit           RESEARCH / #180
+remainder-drift mixed-signal falsifier                      RESEARCH / #186
 
 actual production remainder scalar derivative witnesses      OPEN
-source-specific remainder/contact orientation bound          OPEN
-same-state opposing first-bad contact orientation            OPEN
+canonical mixed-split selector                              OPEN
+selector-conditioned/contact-local orientation bound         OPEN
+same-state opposing first-bad property                       OPEN
 centered finite-width H1                                     OPEN
 simultaneous even/odd bad exclusion                          OPEN
 odd-selected branch closure                                  OPEN
@@ -164,6 +175,7 @@ final contradiction-producing arithmetic restriction        OPEN
 
 ## Negative controls
 
+- broad/unconditional remainder domination is experimentally falsified on the exact #186 frozen panel;
 - universal one-step domination is not a research reduction when obtained by restating successor positivity;
 - no division by `alpha`, `Gamma`, overlap or source moment without theorem-backed nonzeroness;
 - exact discrepancy/Riesz cancellation must not be discarded by coarse channel bounds;
@@ -174,8 +186,8 @@ final contradiction-producing arithmetic restriction        OPEN
 - simultaneous even/odd badness remains open;
 - selected parity is not even WLOG;
 - `UNRESOLVED` is not sign evidence;
+- finite-width scope must stay inside H1 certification;
 - global aperture/Schur monotonicity remains quarantined;
-- brute raw derivative refinement remains dead as the current method;
 - determinant and pivot minima are distinct;
 - #184's algebraic drift split is not a source-specific arithmetic domination theorem.
 
@@ -188,10 +200,11 @@ final contradiction-producing arithmetic restriction        OPEN
 - control anchor remains #117;
 - frontier and selected action remain unchanged;
 - FB-05 is the sole selected first break for `E4_A4_REGULAR_SCHUR_ENERGY_SIGN`;
+- descriptive control state records PR #186 and `DOMINATION_SIGNAL_MIXED` without moving theorem/control authority;
 - terminal claim remains `RH_OPEN`;
 - controller theorem authority and terminal-claim mutation remain false.
 
 Newest implications:
-`../RESEARCH_LEADS_POST_184_HERMITIAN_LOG_DRIFT_REMAINDER_DOMINATION_DELTA.md`.
+`../RESEARCH_LEADS_POST_186_REMAINDER_DRIFT_MIXED_DELTA.md`.
 
 **RH remains OPEN.**
