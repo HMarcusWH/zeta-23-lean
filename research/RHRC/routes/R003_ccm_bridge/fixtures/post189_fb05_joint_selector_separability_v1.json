@@ -1,0 +1,88 @@
+{
+  "schema_version": "POST189_FB05_JOINT_SELECTOR_SEPARABILITY_FIXTURE_v1",
+  "claim_cap": "ABSTRACT_JOINT_STRONG_SELECTOR_SEPARABILITY_ONLY",
+  "base_main_sha": "2e4cd7b3f170612fe05ad7c334dee504304d8746",
+  "theorem_authority_pr": 184,
+  "mixed_drift_falsification_pr": 186,
+  "selector_audit_pr": 188,
+  "semantic_independence_pr": 189,
+  "semantic_independence_head_sha": "258198c7df7969891a7928f088ec75a90d469282",
+  "semantic_independence_merge_sha": "2e4cd7b3f170612fe05ad7c334dee504304d8746",
+  "source_selector_fixture": "post187_fb05_q14_mixed_drift_selector_v1.json",
+  "source_selector_fixture_blob_sha": "aebaa0d15ad7962f6d86ce370428c18cf3d4b7e7",
+  "source_selector_module": "post187_fb05_q14_mixed_drift_selector.py",
+  "source_selector_module_blob_sha": "03bcff09853c7c212c3a33a43c060909868f0c55",
+  "source_independence_fixture": "post188_fb05_q14_mixed_drift_selector_independence_v1.json",
+  "source_independence_fixture_blob_sha": "da6a49a32da3913636602969efb490d8ad1d5dfb",
+  "source_independence_module": "post188_fb05_q14_mixed_drift_selector_independence.py",
+  "source_independence_module_blob_sha": "4c79f244c26c968b01f15a9c5266db52ad8f4976",
+  "strong_selector_ids": [
+    "G1_COUPLING_RATIO",
+    "P1_PARITY_LEVEL_RATIO",
+    "P2_PARITY_LOG_SLOPE_GAP",
+    "C1_PRIME_PIVOT_CONTRIBUTION",
+    "C2_ARCH_PIVOT_CONTRIBUTION",
+    "C3_POLE_PIVOT_CONTRIBUTION",
+    "C4_PRIME_VS_SMOOTH_MAGNITUDE"
+  ],
+  "required_exact_vector_classification": "JOINT_EXACT_VECTOR_SEPARABLE",
+  "required_threshold_signature_classification": "JOINT_THRESHOLD_SIGNATURE_SEPARABLE",
+  "required_target_augmented_classification": "TARGET_AUGMENTED_EQUIVALENT",
+  "joint_witness": {
+    "construction": "SCALAR_CHANNEL_SIGN_REFLECTION",
+    "left": {
+      "coupling_ratio": "1/4",
+      "remainder_a_component": "1/2",
+      "remainder_b_component": "0",
+      "remainder_d_component": "0",
+      "parity_predecessor_ratio": "1/2",
+      "parity_log_slope_gap": "1",
+      "chi_prime_signed": "1",
+      "chi_arch_signed": "1",
+      "chi_pole": "1",
+      "chi_scalar_shift": "-7/2"
+    },
+    "right": {
+      "coupling_ratio": "1/4",
+      "remainder_a_component": "7/2",
+      "remainder_b_component": "0",
+      "remainder_d_component": "0",
+      "parity_predecessor_ratio": "1/2",
+      "parity_log_slope_gap": "1",
+      "chi_prime_signed": "1",
+      "chi_arch_signed": "1",
+      "chi_pole": "1",
+      "chi_scalar_shift": "-1/2"
+    }
+  },
+  "target_augmented_controls": [
+    {
+      "id": "CTRL_STRONG_PLUS_CHANNEL_SUM",
+      "field": "channel_sum",
+      "identity_kind": "NEGATIVE_VALUE"
+    },
+    {
+      "id": "CTRL_STRONG_PLUS_MECHANISM_SUM",
+      "field": "mechanism_sum",
+      "identity_kind": "ONE_MINUS_VALUE"
+    },
+    {
+      "id": "CTRL_STRONG_PLUS_DIRECT_FULL_RATIO",
+      "field": "direct_full_ratio",
+      "identity_kind": "NEGATIVE_VALUE"
+    }
+  ],
+  "nonclaims": [
+    "The joint witness is an exact rational state pair in the post-#189 normalized selector algebra, not a pair of canonical arithmetic CCM states.",
+    "JOINT_EXACT_VECTOR_SEPARABLE means only that the seven frozen strong-eligible post-#188 observables do not jointly determine the domination-target sign in this audited abstract algebra.",
+    "The witness also preserves the entire frozen nonboundary ZERO/ONE threshold signature; no threshold is fitted or moved.",
+    "The construction exploits sign blindness of the squared prime-vs-smooth magnitude observable under a scalar-channel reflection; it does not assert that production source channels admit that reflection.",
+    "Mechanism diagnostics R1/R2/R3 are deliberately excluded because together they reconstruct mechanism_sum and therefore the target.",
+    "No new selector, threshold, Q/N/parity schedule, canonical production label, or numerical search is introduced.",
+    "No canonical realizability, arbitrary-Q/N/parity transport, retained first-bad contradiction, or contact theorem is established.",
+    "No Lean theorem is promoted by this fixture.",
+    "FB-05 remains OPEN.",
+    "Negative-root exclusion remains OPEN.",
+    "RH remains OPEN."
+  ]
+}
