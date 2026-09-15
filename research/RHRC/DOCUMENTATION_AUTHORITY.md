@@ -23,15 +23,15 @@ A green but unmerged PR is branch evidence. A merged Lean file is theorem author
 ### 1. Theorem-state anchor
 
 ```text
-latest theorem-bearing PR = #182
-validated theorem head = 0c3f63cdc4774ba1a68b21d1558ea0ee860a938d
-merged theorem commit = a69160d37a84049711aaff6c3d5db804583a7306
-validated theorem tree = e0b260b3b3a1ed470d54c14d8c0c46b32379f3fb
-RHRC #1082 = SUCCESS
-Permansson #855 = SUCCESS
+latest theorem-bearing PR = #184
+validated theorem head = a756494ebe7e2530715e996b9a9a341fbe07c683
+merged theorem commit = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
+validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
+RHRC #1089 = SUCCESS
+Permansson #862 = SUCCESS
 ```
 
-#182 is the current compiler-validated mathematical authority. It adds theorem-backed generic real 2x2 Schur-envelope derivative calculus and H1 contact-orientation transfer.
+#184 is the current compiler-validated mathematical authority. It adds the complex-Hermitian Schur calculus, full frozen parity family on the logarithmic cover, exact fixed-cell production bridge, N2 predecessor/shell geometry, the algebraic universal-minus-remainder envelope derivative, and the conditional negative-orientation criterion.
 
 ### 2. Research-evidence anchor
 
@@ -81,11 +81,29 @@ Historical dated deltas are not rewritten to look current.
 
 ## Current synchronized state
 
-### Theorem authority through #182
+### Theorem authority through #184
 
-PR #182 imports `Zeta23/CCM/SchurEnvelopeDerivative.lean` into the validated aggregate CCM closure and proves, for the generic real 2x2 Schur block, the exact determinant/pivot factorization, the correlation-preserving pivot derivative, its quotient-rule equivalent, actual scalar `HasDerivAt` theorems, and at H1 contact the sign-equivalence of determinant and pivot derivatives.
+PR #184 imports `Zeta23/CCM/HermitianSchurEnvelopeDerivative.lean` and `Zeta23/CCM/FrozenN2SchurLogDrift.lean` into the validated aggregate CCM closure.
 
-#182 does **not** prove contact existence, production arithmetic sign, global Schur monotonicity, first-bad exclusion, negative-root exclusion or RH.
+It proves, in the exact scope of those declarations:
+
+```text
+Hermitian 2x2 pivot/determinant calculus using |b|^2/a
+real-component HasDerivAt theorems for the complex off-diagonal coordinate
+contact-local determinant/pivot orientation equivalence under H1
+full frozen parity production family on logarithmic cover M~(t)=-tI+R~(t)
+exact fixed-cell equality with parityCompressedCanonical
+log-cover deck-translation law
+N2 predecessor/shell reconstruction
+nonzero canonical cubic shell
+exact predecessor-shell orthogonality
+algebraic P_t' = -envelopeNormSq + remainderEnvelopeDerivative
+remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0
+```
+
+#184 does **not** yet assemble the actual source-specific real remainder-coordinate derivative witnesses from existing complex analyticity. It therefore does not yet prove a fully instantiated production `HasDerivAt` theorem for the N2 Schur pivot or a source-specific domination bound.
+
+It also does not prove contact existence/uniqueness, first-bad crossing orientation on the same retained state, global Schur monotonicity, first-bad exclusion, negative-root exclusion or RH.
 
 ### Research progression through #180
 
@@ -98,7 +116,7 @@ PR #182 imports `Zeta23/CCM/SchurEnvelopeDerivative.lean` into the validated agg
 #172 threshold-to-threshold production barrier audit
 #174 q13/N2/K3/even exact 2x2 scalar barrier
 #176 fixed-unit q13/Q14 value representation acceptance
-#178 complete fixed-unit derivative implementation; raw side boxes unresolved
+#178 complete fixed-unit physical-L derivative implementation; raw side boxes unresolved
 #180 exact-center derivative basin minimum-oriented; nonzero-width Schur graph out of H1 scope
 ```
 
@@ -117,10 +135,15 @@ uniqueness_claim = false
 ### Current route
 
 ```text
-PROVED THROUGH #182
+PROVED THROUGH #184
   retained first-bad/source/Riesz/mixed-jet state
-  -> generic 2x2 Schur-envelope derivative
-  -> H1 contact determinant/pivot orientation transfer
+  -> generic real Schur calculus
+  -> complex-Hermitian Schur calculus
+  -> full frozen parity log-cover production family
+  -> exact fixed-cell bridge
+  -> N2 orthogonal predecessor/shell geometry
+  -> algebraic universal-negative-drift + remainder decomposition
+  -> conditional negative orientation under remainder domination
 
 RESEARCHED THROUGH #180
   -> q13/N2/K3/even finite microscope
@@ -128,31 +151,45 @@ RESEARCHED THROUGH #180
   -> finite-width H1 is first Schur-box gate
 
 NOW
-  finite lane:
-    centered H1 recovery
-    -> theorem-backed Schur-box retry
-    -> Delta_2'' only if needed
+  research falsification lane:
+    reuse exact #180 physical-L schedule
+    -> split full pivot derivative into -E/L + remainder_drift_L
+    -> measure domination margin and ratio L*remainder_drift_L/E
 
   formal Pair-A lane:
-    production/Hermitian Schur-envelope interface
-    -> fixed-cell -log(L)I + remainder
-    -> -||u||^2/L universal drift
-    -> source-specific remainder/contact bound
+    existing complex frozen-source holomorphy
+    -> parity/N2 scalar derivative witnesses
+    -> actual production HasDerivAt identity
+    -> source-specific contact-local remainder domination
+    -> same-state opposing first-bad contact orientation
 ```
 
 The formal first break remains `E4A4-SCHUR-FB-05`; the terminal claim remains `RH_OPEN`.
 
-## Production bridge warning after #182
+## Coordinate firewall after #184
 
-The q13 research tool uses an exact integer shell generator that spans the same one-dimensional shell as Lean's canonical cubic shell but is not theorem-identified at the same magnitude. The production carrier is complex Hermitian while #182 is generic real 2x2 calculus.
+PR #184's natural variable is logarithmic coordinate `t=log L`:
 
-Therefore the next theorem should prefer an invariant/Hermitian interface or separately prove the required real-coordinate normalization bridge. Do not silently identify research and formal shell coordinates.
+```text
+dP/dt = -E + dR/dt.
+```
+
+The #178/#180 R003 derivative backend is in physical aperture `L`. Before comparison, use
+
+```text
+dP/dL = -E/L + dR/dL
+```
+
+and test `dR/dL < E/L`, equivalently `L*dR/dL < E`.
+
+Do not compare a `t`-derivative remainder term directly against a physical-`L` derivative or vice versa.
 
 ## Claim firewall
 
 - green research is not theorem promotion;
-- generic #182 contact calculus is not a zeta-arithmetic sign law;
-- finite #180 point orientation is not a whole-cell theorem;
+- #184 Hermitian/log-cover structure is not a source-specific arithmetic derivative bound;
+- analyticity does not imply the needed domination magnitude;
+- q13/N2/K3 is a finite microscope, not automatic arbitrary-first-bad coverage;
 - `SCHUR_OUT_OF_H1_SCOPE` is not evidence of sign failure;
 - global Schur monotonicity remains quarantined;
 - negative-root exclusion remains OPEN;
