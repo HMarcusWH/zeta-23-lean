@@ -12,6 +12,7 @@ sys.path.insert(0, str(RHRC))
 
 from control_v2.retro.aliases import expanded_terms, load_alias_map
 from control_v2.retro.archive import ArchiveManifestError
+from control_v2.retro.git_history import search_git_history
 from control_v2.retro.ingest import ingest_text_source
 from control_v2.retro.replay import assert_receipt_as_of, replay_concept
 from control_v2.retro.search import DEFAULT_GIT_SEARCH_PATHS, search_concept
@@ -159,6 +160,26 @@ class RetroTests(unittest.TestCase):
         self.assertEqual(schur_break_ids, ["E4A4-SCHUR-FB-05"])
         self.assertIn("#165-#182", schur["first_breaks"][0]["statement"])
         self.assertIn("production-interface", schur["first_breaks"][0]["statement"])
+
+    def test_git_history_handles_dash_leading_fixed_string_terms(self):
+        td, repo, _, _ = self._fixture_repo()
+        self.addCleanup(td.cleanup)
+        p = repo / "research" / "RHRC" / "old.md"
+        p.write_text(
+            "residual headroom appears here\n-log(L)I remainder is a literal search term\n",
+            encoding="utf-8",
+        )
+        self._git(repo, "add", ".")
+        self._git(repo, "commit", "-m", "dash-leading alias", commit_date="2001-01-05T00:00:00Z")
+        anchor = self._git(repo, "rev-parse", "HEAD")
+        hits = search_git_history(
+            repo,
+            ("-log(L)I remainder",),
+            as_of_ref=anchor,
+            paths=("research/RHRC",),
+        )
+        self.assertTrue(hits)
+        self.assertTrue(any(hit.term == "-log(L)I remainder" for hit in hits))
 
     def test_as_of_search_does_not_see_future_commit(self):
         td, repo, old, new = self._fixture_repo()
