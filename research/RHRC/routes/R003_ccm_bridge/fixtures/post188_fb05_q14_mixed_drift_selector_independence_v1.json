@@ -1,0 +1,86 @@
+{
+  "schema_version": "POST188_FB05_Q14_SELECTOR_SEMANTIC_INDEPENDENCE_FIXTURE_v1",
+  "claim_cap": "ABSTRACT_SELECTOR_SEMANTIC_INDEPENDENCE_ONLY",
+  "theorem_authority_pr": 184,
+  "mixed_drift_falsification_pr": 186,
+  "selector_audit_pr": 188,
+  "selector_head_sha": "a63cc3092dc1a8bda6aa89d9face659fd0e6fb5b",
+  "selector_merge_sha": "55fb2f1a1a344c3b752d800853f4f92985c80cd1",
+  "source_selector_fixture": "post187_fb05_q14_mixed_drift_selector_v1.json",
+  "source_selector_fixture_blob_sha": "aebaa0d15ad7962f6d86ce370428c18cf3d4b7e7",
+  "source_selector_module": "post187_fb05_q14_mixed_drift_selector.py",
+  "source_selector_module_blob_sha": "03bcff09853c7c212c3a33a43c060909868f0c55",
+  "required_candidate_classification": "ABSTRACTLY_SEPARABLE",
+  "required_target_alias_classification": "SEMANTIC_TARGET_EQUIVALENT",
+  "candidate_witnesses": [
+    {
+      "id": "G1_COUPLING_RATIO",
+      "left": {"coupling_ratio":"1/4","remainder_a_component":"1/4","remainder_b_component":"0","remainder_d_component":"1/4","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"0","chi_arch_signed":"0","chi_pole":"0","chi_scalar_shift":"-1/2"},
+      "right": {"coupling_ratio":"1/4","remainder_a_component":"1/4","remainder_b_component":"0","remainder_d_component":"5/4","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"0","chi_arch_signed":"0","chi_pole":"0","chi_scalar_shift":"1/2"}
+    },
+    {
+      "id": "R1_PREDECESSOR_REMAINDER_COMPONENT",
+      "left": {"coupling_ratio":"1/4","remainder_a_component":"1/4","remainder_b_component":"0","remainder_d_component":"1/4","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"0","chi_arch_signed":"0","chi_pole":"0","chi_scalar_shift":"-1/2"},
+      "right": {"coupling_ratio":"1/4","remainder_a_component":"1/4","remainder_b_component":"0","remainder_d_component":"5/4","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"0","chi_arch_signed":"0","chi_pole":"0","chi_scalar_shift":"1/2"}
+    },
+    {
+      "id": "R2_CROSS_REMAINDER_COMPONENT",
+      "left": {"coupling_ratio":"1/4","remainder_a_component":"1/4","remainder_b_component":"1/4","remainder_d_component":"0","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"0","chi_arch_signed":"0","chi_pole":"0","chi_scalar_shift":"-1/2"},
+      "right": {"coupling_ratio":"1/4","remainder_a_component":"1/4","remainder_b_component":"1/4","remainder_d_component":"1","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"0","chi_arch_signed":"0","chi_pole":"0","chi_scalar_shift":"1/2"}
+    },
+    {
+      "id": "R3_SHELL_REMAINDER_COMPONENT",
+      "left": {"coupling_ratio":"1/4","remainder_a_component":"1/4","remainder_b_component":"0","remainder_d_component":"1/4","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"0","chi_arch_signed":"0","chi_pole":"0","chi_scalar_shift":"-1/2"},
+      "right": {"coupling_ratio":"1/4","remainder_a_component":"5/4","remainder_b_component":"0","remainder_d_component":"1/4","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"0","chi_arch_signed":"0","chi_pole":"0","chi_scalar_shift":"1/2"}
+    },
+    {
+      "id": "P1_PARITY_LEVEL_RATIO",
+      "left": {"coupling_ratio":"1/4","remainder_a_component":"1/4","remainder_b_component":"0","remainder_d_component":"1/4","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"0","chi_arch_signed":"0","chi_pole":"0","chi_scalar_shift":"-1/2"},
+      "right": {"coupling_ratio":"1/4","remainder_a_component":"1/4","remainder_b_component":"0","remainder_d_component":"5/4","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"0","chi_arch_signed":"0","chi_pole":"0","chi_scalar_shift":"1/2"}
+    },
+    {
+      "id": "P2_PARITY_LOG_SLOPE_GAP",
+      "left": {"coupling_ratio":"1/4","remainder_a_component":"1/4","remainder_b_component":"0","remainder_d_component":"1/4","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"0","chi_arch_signed":"0","chi_pole":"0","chi_scalar_shift":"-1/2"},
+      "right": {"coupling_ratio":"1/4","remainder_a_component":"1/4","remainder_b_component":"0","remainder_d_component":"5/4","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"0","chi_arch_signed":"0","chi_pole":"0","chi_scalar_shift":"1/2"}
+    },
+    {
+      "id": "C1_PRIME_PIVOT_CONTRIBUTION",
+      "left": {"coupling_ratio":"1/4","remainder_a_component":"1/4","remainder_b_component":"0","remainder_d_component":"1/4","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"1","chi_arch_signed":"0","chi_pole":"0","chi_scalar_shift":"-3/2"},
+      "right": {"coupling_ratio":"1/4","remainder_a_component":"1/4","remainder_b_component":"0","remainder_d_component":"5/4","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"1","chi_arch_signed":"0","chi_pole":"0","chi_scalar_shift":"-1/2"}
+    },
+    {
+      "id": "C2_ARCH_PIVOT_CONTRIBUTION",
+      "left": {"coupling_ratio":"1/4","remainder_a_component":"1/4","remainder_b_component":"0","remainder_d_component":"1/4","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"0","chi_arch_signed":"1","chi_pole":"0","chi_scalar_shift":"-3/2"},
+      "right": {"coupling_ratio":"1/4","remainder_a_component":"1/4","remainder_b_component":"0","remainder_d_component":"5/4","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"0","chi_arch_signed":"1","chi_pole":"0","chi_scalar_shift":"-1/2"}
+    },
+    {
+      "id": "C3_POLE_PIVOT_CONTRIBUTION",
+      "left": {"coupling_ratio":"1/4","remainder_a_component":"1/4","remainder_b_component":"0","remainder_d_component":"1/4","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"0","chi_arch_signed":"0","chi_pole":"1","chi_scalar_shift":"-3/2"},
+      "right": {"coupling_ratio":"1/4","remainder_a_component":"1/4","remainder_b_component":"0","remainder_d_component":"5/4","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"0","chi_arch_signed":"0","chi_pole":"1","chi_scalar_shift":"-1/2"}
+    },
+    {
+      "id": "C4_PRIME_VS_SMOOTH_MAGNITUDE",
+      "left": {"coupling_ratio":"1/4","remainder_a_component":"1/5","remainder_b_component":"0","remainder_d_component":"1/5","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"-1/5","chi_arch_signed":"0","chi_pole":"0","chi_scalar_shift":"-2/5"},
+      "right": {"coupling_ratio":"1/4","remainder_a_component":"1/5","remainder_b_component":"0","remainder_d_component":"7/5","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"1/5","chi_arch_signed":"0","chi_pole":"0","chi_scalar_shift":"2/5"}
+    }
+  ],
+  "target_alias_controls": [
+    {"id":"CTRL_MECHANISM_SUM","field":"mechanism_sum","threshold_kind":"ONE","identity_kind":"ONE_MINUS_VALUE"},
+    {"id":"CTRL_CHANNEL_SUM","field":"channel_sum","threshold_kind":"ZERO","identity_kind":"NEGATIVE_VALUE"},
+    {"id":"CTRL_DIRECT_FULL_RATIO","field":"direct_full_ratio","threshold_kind":"ZERO","identity_kind":"NEGATIVE_VALUE"}
+  ],
+  "target_alias_states": [
+    {"coupling_ratio":"1/4","remainder_a_component":"1/4","remainder_b_component":"0","remainder_d_component":"1/4","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"0","chi_arch_signed":"0","chi_pole":"0","chi_scalar_shift":"-1/2"},
+    {"coupling_ratio":"1/4","remainder_a_component":"1/4","remainder_b_component":"0","remainder_d_component":"5/4","parity_predecessor_ratio":"1/2","parity_log_slope_gap":"1","chi_prime_signed":"0","chi_arch_signed":"0","chi_pole":"0","chi_scalar_shift":"1/2"}
+  ],
+  "nonclaims": [
+    "The countermodels are exact rational states in the normalized selector algebra, not canonical arithmetic CCM states.",
+    "ABSTRACTLY_SEPARABLE means only that an individual frozen selector is not forced to determine the domination-target sign by the audited normalized identities.",
+    "This audit does not establish canonical realizability, arbitrary-Q/N/parity transport, retained first-bad exclusion, or any contact theorem.",
+    "The three target-alias controls are deliberate positive controls and must be recognized as semantic target equivalents.",
+    "No selector theorem is promoted by this fixture.",
+    "FB-05 remains OPEN.",
+    "Negative-root exclusion remains OPEN.",
+    "RH remains OPEN."
+  ]
+}
