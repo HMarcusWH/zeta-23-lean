@@ -90,6 +90,7 @@ import Zeta23.CCM.ParityCompressionRankOne
 import Zeta23.CCM.ParityCubicFactorization
 import Zeta23.CCM.FirstBadShiftedSchur
 import Zeta23.CCM.SchurEnvelopeDerivative
+import Zeta23.CCM.HermitianSchurEnvelopeDerivative
 import Zeta23.CCM.CubicShellIncidence
 import Zeta23.CCM.CubicNormalizedSchur
 import Zeta23.CCM.CubicSecularEquation
@@ -115,6 +116,7 @@ import Zeta23.CCM.FrozenCanonicalSourceAnalytic
 import Zeta23.CCM.FrozenCanonicalSourceComplex
 import Zeta23.CCM.FrozenIntrinsicPredecessorAnalytic
 import Zeta23.CCM.FrozenIntrinsicPredecessorComplex
+import Zeta23.CCM.FrozenN2SchurLogDrift
 import Zeta23.CCM.CanonicalApertureHolomorphy
 import Zeta23.CCM.CanonicalApertureScalarHalfPlane
 import Zeta23.CCM.CanonicalApertureSourceHolomorphy
