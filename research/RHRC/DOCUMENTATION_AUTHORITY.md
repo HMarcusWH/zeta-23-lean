@@ -23,14 +23,15 @@ A green but unmerged PR is branch evidence. A merged Lean file is theorem author
 ### 1. Theorem-state anchor
 
 ```text
-latest theorem-bearing PR = #163
-validated theorem head = b418ff034428f92594bab0e5b8276181a086ee4b
-validated theorem tree = c397b3a015ea54e38ecfe626d6e29556fe963839
-RHRC #1039 = SUCCESS
-Permansson #812 = SUCCESS
+latest theorem-bearing PR = #182
+validated theorem head = 0c3f63cdc4774ba1a68b21d1558ea0ee860a938d
+merged theorem commit = a69160d37a84049711aaff6c3d5db804583a7306
+validated theorem tree = e0b260b3b3a1ed470d54c14d8c0c46b32379f3fb
+RHRC #1082 = SUCCESS
+Permansson #855 = SUCCESS
 ```
 
-This remains the compiler-validated mathematical authority until a later theorem-bearing PR passes the same gates.
+#182 is the current compiler-validated mathematical authority. It adds theorem-backed generic real 2x2 Schur-envelope derivative calculus and H1 contact-orientation transfer.
 
 ### 2. Research-evidence anchor
 
@@ -44,7 +45,7 @@ Lean #837 = SUCCESS
 Permansson #850 = SUCCESS
 ```
 
-This records the newest green research/discovery state. It does **not** upgrade executable identities, floating searches, Arb finite-point/interval certifications, method-selection outcomes, finite-difference diagnostics or interval-method classifications into Lean theorem authority.
+#180 records the newest green finite/discovery state. It does not upgrade Arb, floating, executable or interval-method output into Lean theorem authority.
 
 ### 3. Control-plane semantic anchor
 
@@ -53,13 +54,11 @@ control-plane semantic anchor = PR #117
 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
 ```
 
-This changes only when controller capability/authority semantics change, not merely when research routing metadata is refreshed.
+This changes only when controller capability/authority semantics change, not merely when theorem/research routing metadata is refreshed.
 
 ## Dynamic live-head rule
 
-Do **not** freeze a mutable documentation merge as a permanent `live main` string inside long-lived authority prose. A docs or research merge moves `main` without changing theorem authority.
-
-When an exact current `main` SHA is needed for execution or handover, record it in the time-specific execution document, PR description, or dated research delta.
+Do **not** freeze a mutable documentation merge as permanent `live main` state inside long-lived prose. When an exact current `main` SHA is needed, record it in the time-specific execution/PR/delta document.
 
 ## Living SSOT update law
 
@@ -82,140 +81,79 @@ Historical dated deltas are not rewritten to look current.
 
 ## Current synchronized state
 
-### Theorem authority through #163
+### Theorem authority through #182
 
-PR #163 compiler-validates the exact mixed quadratic-normal source pairing, the seventh mixed jet `-2*(2*pi)^6*M4`, finite-prime sampling of the same observable, the squared-jet Riesz-8/Riesz-9 boundary, the retained even-shifted specialization, and scoped cross-parity Gamma nonvanishing.
+PR #182 imports `Zeta23/CCM/SchurEnvelopeDerivative.lean` into the validated aggregate CCM closure and proves, for the generic real 2x2 Schur block, the exact determinant/pivot factorization, the correlation-preserving pivot derivative, its quotient-rule equivalent, actual scalar `HasDerivAt` theorems, and at H1 contact the sign-equivalence of determinant and pivot derivatives.
 
-No later research PR changes those theorem declarations.
+#182 does **not** prove contact existence, production arithmetic sign, global Schur monotonicity, first-bad exclusion, negative-root exclusion or RH.
 
-### Research progression #165-#180
+### Research progression through #180
 
 ```text
-#165 exact executable S8 audit
-     -> broad finite positive evidence
-     -> positivity alone not a contradiction
-
-#166 theorem-aligned shifted-state executable
-     -> generalized H-lambda G resolvent
-     -> near-critical Q16/N3/K4/odd family isolated
-
-#167 Q16 full-cell attack
-     -> no floating negative point
-     -> direct whole-cell Arb 256/256 UNRESOLVED
-     -> brute dependency-heavy matrix subdivision rejected
-
-#168 boundary-flat threshold jet
-     -> odd order 7 ~ M3^2
-     -> even order 9 ~ M4^2
-     -> exact threshold + 18/18 two-sided Arb points positive
-
+#165 endpoint-scalar executable audit
+#166 true shifted-state finite discriminator
+#167 Q16 whole-cell interval method falsification
+#168 threshold moment jet / Q17 microscope
 #170 theorem-aligned one-step Schur visibility/background audit
-     -> [W|c] pivot aligned with selected residual
-     -> q17 direction finite-certified Schur-visible
-     -> entering atom raises pivot at checked offsets
-     -> q-removed background finite difference negative
-
 #172 threshold-to-threshold production barrier audit
-     -> current-q entry lift finite-certified with both signs
-     -> q13/N2/K3/even strongest near-critical target
-
-#174 exact q13 2x2 scalar-barrier audit
-     -> predecessor dimension 1, successor dimension 2
-     -> H1 <-> a>0
-     -> Delta_2=a*d-b^2
-     -> pivot sign = determinant sign in H1
-     -> physical Q=13/14/15 scalar continuations checked
-     -> direct 384-bit adaptive scalar interval audit remains
-        100% UNRESOLVED in every physical subcell
-
-#176 fixed-unit q13/Q14 enclosure benchmark
-     -> independent fixed-unit Arb path agrees with direct production path
-     -> six frozen primary Q14 boxes benchmarked
-     -> factor-2 material Delta_2 width criterion passes in all six
-     -> method classification FIXED_UNIT_METHOD_ACCEPTED
-
-#178 complete fixed-unit derivative discrimination
-     -> complete fixed-Q M'(L)=pole'-arch'-prime' implemented
-     -> primitive/full-matrix/scalar/odd-ancestry derivatives checked
-        against independent centered value differences
-     -> derivative seams checked only at zero-weight seams 14 and 15
-     -> six primary Q14 side boxes return DERIVATIVE_UNRESOLVED
-     -> NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN
-     -> no bad interval / no H1-loss interval certified
-     -> #176 replay-hardening debt closed
-
-#180 exact-center derivative basin / Schur-scope audit
-     -> POINT_DERIVATIVE_BASIN_BRACKETED / MINIMUM_ORIENTED
-     -> all three frozen left centers Delta_2' < 0
-     -> all three frozen right centers Delta_2' > 0
-     -> Schur point graph agrees on H1-usable centers
-     -> nonzero-width primary Schur graph is SCHUR_OUT_OF_H1_SCOPE
-     -> applicable_primary_count = 0; no Schur width-gain/sign-recovery claim
-     -> centered H1 recovery becomes the immediate finite gate
+#174 q13/N2/K3/even exact 2x2 scalar barrier
+#176 fixed-unit q13/Q14 value representation acceptance
+#178 complete fixed-unit derivative implementation; raw side boxes unresolved
+#180 exact-center derivative basin minimum-oriented; nonzero-width Schur graph out of H1 scope
 ```
 
-The newest project synthesis is:
-
-`RESEARCH_LEADS_POST_180_POINT_DERIVATIVE_BASIN_CENTERED_TAYLOR_FRONTIER_DELTA.md`.
-
-The previous post-green synthesis is:
-
-`RESEARCH_LEADS_POST_176_FIXED_UNIT_METHOD_ACCEPTANCE_Q14_STATIONARY_FRONTIER_DELTA.md`.
-
-## Current route
+#180's finite result remains:
 
 ```text
-PROVED THROUGH #163
-  off-line zero
-  -> retained regular cell-minimal first-bad certificate
-  -> exact negative canonical source channel
-  -> exact finite pole-prime discrepancy
-  -> legal Riesz engine and transformed negativity
-  -> same-state shifted source/Riesz composition
-  -> mixed quadratic-normal seventh jet
-  -> exact finite-prime sampling of same observable
-  -> exact R8-R9 squared-jet boundary
+POINT_DERIVATIVE_BASIN_BRACKETED
+MINIMUM_ORIENTED
+left centers: 3/3 Delta_2' < 0
+right centers: 3/3 Delta_2' > 0
+SCHUR_OUT_OF_H1_SCOPE
+applicable_primary_count = 0
+uniqueness_claim = false
+```
+
+### Current route
+
+```text
+PROVED THROUGH #182
+  retained first-bad/source/Riesz/mixed-jet state
+  -> generic 2x2 Schur-envelope derivative
+  -> H1 contact determinant/pivot orientation transfer
 
 RESEARCHED THROUGH #180
-  endpoint scalar audited
-  theorem-aligned shifted finite state audited
-  Q16 near-critical cell isolated
-  full-matrix interval representation falsified as current method
-  prime-entry threshold moment jet identified
-  theorem-aligned [W|c] Schur pivot reconstructed
-  threshold-to-threshold production dynamics tested
-  arithmetic entry lift found sign-indefinite
-  q13/N2/K3/even reduced exactly to a 2x2 scalar barrier
-  direct scalar interval subdivision found dependency-limited
-  fixed-unit value representation selected by frozen width benchmark
-  complete analytic fixed-unit derivative infrastructure validated
-  raw assembled Delta_2' side-box signs remain unresolved
-  #176 replay schedule hardening closed
-  exact-center Q14 derivative basin minimum-oriented at all six frozen primary centers
-  nonzero-width Schur primary graph out of H1 scope before width comparison
+  -> q13/N2/K3/even finite microscope
+  -> exact-center derivative basin minimum-oriented
+  -> finite-width H1 is first Schur-box gate
 
 NOW
-  FB-05J finite-width propagation of the #180 point-oriented Q14 basin
-  -> recover H1 by centered propagation of a(L0)>0 using rigorous a'(I)
-  -> retry the H1 Schur derivative graph only on centered-certified boxes
-  -> add Delta_2'' / centered derivative Taylor bounds only if sign remains unresolved
-  -> use interval Newton/Krawczyk only after signed left/right neighborhoods
-  -> in parallel test the contact-local -log(L)*I / arithmetic-remainder derivative lead
-  -> theoremize only a genuinely independent generalizable restriction
+  finite lane:
+    centered H1 recovery
+    -> theorem-backed Schur-box retry
+    -> Delta_2'' only if needed
+
+  formal Pair-A lane:
+    production/Hermitian Schur-envelope interface
+    -> fixed-cell -log(L)I + remainder
+    -> -||u||^2/L universal drift
+    -> source-specific remainder/contact bound
 ```
 
-## Validation debt status after #178
+The formal first break remains `E4A4-SCHUR-FB-05`; the terminal claim remains `RH_OPEN`.
 
-The standalone #176 replay-hardening gap is closed by #178. The certifier reconstructs the frozen benchmark schedule from its fixture, and the #178 checker adversarially verifies rejection of missing, duplicate, relabeled, extra and dyadically altered schedules.
+## Production bridge warning after #182
 
-The remaining issue is mathematical/methodological rather than replay plumbing: raw interval evaluation of the assembled determinant derivative remains sign-unresolved on the frozen primary boxes.
+The q13 research tool uses an exact integer shell generator that spans the same one-dimensional shell as Lean's canonical cubic shell but is not theorem-identified at the same magnitude. The production carrier is complex Hermitian while #182 is generic real 2x2 calculus.
+
+Therefore the next theorem should prefer an invariant/Hermitian interface or separately prove the required real-coordinate normalization bridge. Do not silently identify research and formal shell coordinates.
 
 ## Claim firewall
 
-Research green is not theorem promotion. The #176 finite method-selection result does not prove q13 positivity. The #178 derivative result does not prove `Delta_2'=0`, stationary existence, contact, badness, H1 loss, or failure of every derivative representation.
-
-Even a future full q13-cell positivity certificate would be a finite method/structure result unless its proof yields a theorem that applies to the arbitrary retained first-bad state forced by #153/#161.
-
-The formal first break remains FB-05 and the terminal claim remains `RH_OPEN`.
-
-**RH remains OPEN.**
+- green research is not theorem promotion;
+- generic #182 contact calculus is not a zeta-arithmetic sign law;
+- finite #180 point orientation is not a whole-cell theorem;
+- `SCHUR_OUT_OF_H1_SCOPE` is not evidence of sign failure;
+- global Schur monotonicity remains quarantined;
+- negative-root exclusion remains OPEN;
+- **RH remains OPEN.**
