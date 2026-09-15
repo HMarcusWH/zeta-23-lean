@@ -1,4 +1,4 @@
-# RHRC formal audit — theorem authority through PR #163; research evidence through PR #178
+# RHRC formal audit — theorem authority through PR #163; research evidence through PR #180
 
 > **RH remains OPEN.**
 
@@ -15,19 +15,20 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #178
-validated research head = 28df43faed0db8c0f12a25525df6c28467ce5b07
-merged research commit = fb2a181ce0d95d90396ead7730e7bf365616a153
-research tree = 96ab14953e9e8bff5245953082db8a6471648614
-RHRC #1074 = SUCCESS
-Permansson #847 = SUCCESS
+merged research PR = #180
+validated research head = a87469da9e611b53ae400cb4b18ce4afeb94e6d2
+merged research commit = 93ea3df51f2671e316197c1530ea504dee76e821
+research tree = 8199cdc543f1b761c70466dfd602c143a277e6a2
+RHRC #1077 = SUCCESS
+Lean #837 = SUCCESS
+Permansson #850 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
 selected first break = E4A4-SCHUR-FB-05
 ```
 
-The theorem and research anchors are intentionally different. No result from #165-#178 is promoted to Lean theorem authority merely because those PRs are green.
+The theorem and research anchors are intentionally different. No result from #165-#180 is promoted to Lean theorem authority merely because those PRs are green.
 
 ## Exact theorem progression
 
@@ -178,6 +179,33 @@ with empty bad/H1-loss label sets.
 
 #178 also closes the #176 standalone replay-hardening debt by binding the benchmark schedule to the checked-in fixture and adversarially rejecting malformed schedules.
 
+### #180 — exact-center derivative basin / Schur-scope audit
+
+The inherited #178 schedule is reused exactly. At all six frozen primary Q14 exact centers, rigorous Arb point balls give
+
+```text
+POINT_DERIVATIVE_BASIN_BRACKETED
+MINIMUM_ORIENTED
+left centers:  3/3 Delta_2' < 0
+right centers: 3/3 Delta_2' > 0
+```
+
+The Schur point graph agrees on the same six H1-usable points. This supports a **derived stationary-existence statement if continuity is invoked**, but `uniqueness_claim = false`.
+
+For the nonzero-width primary boxes the result is instead
+
+```text
+SCHUR_OUT_OF_H1_SCOPE
+applicable_primary_count = 0
+sign_recovery_labels = []
+strict_width_gain_labels = []
+material_2x_gain_labels = []
+```
+
+So #180 does **not** establish a finite-box Schur width gain. The width comparison is blocked before it becomes applicable because H1 is not certified over those boxes. No bad or H1-loss interval is certified.
+
+**Post-green consequence:** first try centered H1 recovery from the sharp point value `a(L0)>0` and the already-validated first derivative `a'`; only then retry the Schur box representation. Build `Delta_2''` for centered derivative propagation only if that cheaper preflight is insufficient.
+
 ## Current post-green frontier
 
 The derivative implementation exists; the next problem is dependency structure, not derivative existence.
@@ -185,12 +213,11 @@ The derivative implementation exists; the next problem is dependency structure, 
 Highest-leverage discriminator:
 
 ```text
-1. rigorous point Delta_2' balls at frozen primary/control centers
-2. compare exact derivative representations
-     raw: Delta_2' = a'd + ad' - 2bb'
-     H1:  Delta_2' = a'P + aP'
-3. only if point orientation is visible, implement Delta_2'' and centered mean-value/Taylor bounds
-4. only after a two-sided derivative bracket, attempt interval Newton/Krawczyk.
+1. recover H1 over nonzero width from point a(L0)>0 + rigorous a'(I)
+2. retry the Schur derivative graph inside centered-certified H1
+3. if sign remains unresolved, implement Delta_2'' and centered derivative propagation
+4. only after signed left/right neighborhoods, attempt interval Newton/Krawczyk
+5. in parallel, test the -log(L)*I / arithmetic-remainder contact-derivative lead.
 ```
 
 This is local correlation-preserving analytic control, not a revival of global aperture/Schur monotonicity. Repeating the same raw derivative expression with only greater precision/subdivision is not a new route.
@@ -220,7 +247,7 @@ RiemannHypothesis
 
 ## Claim firewall
 
-- #165-#178 are research evidence, not theorem promotion.
+- #165-#180 are research evidence, not theorem promotion.
 - exact executable algebra is not Lean theorem authority.
 - finite Arb certification is not automatically a whole-cell or global theorem.
 - absence of sampled negative states is not positivity.

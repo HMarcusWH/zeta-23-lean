@@ -35,12 +35,13 @@ This remains the compiler-validated mathematical authority until a later theorem
 ### 2. Research-evidence anchor
 
 ```text
-latest merged research PR = #178
-validated research head = 28df43faed0db8c0f12a25525df6c28467ce5b07
-merged research commit = fb2a181ce0d95d90396ead7730e7bf365616a153
-research tree = 96ab14953e9e8bff5245953082db8a6471648614
-RHRC #1074 = SUCCESS
-Permansson #847 = SUCCESS
+latest merged research PR = #180
+validated research head = a87469da9e611b53ae400cb4b18ce4afeb94e6d2
+merged research commit = 93ea3df51f2671e316197c1530ea504dee76e821
+research tree = 8199cdc543f1b761c70466dfd602c143a277e6a2
+RHRC #1077 = SUCCESS
+Lean #837 = SUCCESS
+Permansson #850 = SUCCESS
 ```
 
 This records the newest green research/discovery state. It does **not** upgrade executable identities, floating searches, Arb finite-point/interval certifications, method-selection outcomes, finite-difference diagnostics or interval-method classifications into Lean theorem authority.
@@ -87,7 +88,7 @@ PR #163 compiler-validates the exact mixed quadratic-normal source pairing, the 
 
 No later research PR changes those theorem declarations.
 
-### Research progression #165-#178
+### Research progression #165-#180
 
 ```text
 #165 exact executable S8 audit
@@ -142,11 +143,20 @@ No later research PR changes those theorem declarations.
      -> NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN
      -> no bad interval / no H1-loss interval certified
      -> #176 replay-hardening debt closed
+
+#180 exact-center derivative basin / Schur-scope audit
+     -> POINT_DERIVATIVE_BASIN_BRACKETED / MINIMUM_ORIENTED
+     -> all three frozen left centers Delta_2' < 0
+     -> all three frozen right centers Delta_2' > 0
+     -> Schur point graph agrees on H1-usable centers
+     -> nonzero-width primary Schur graph is SCHUR_OUT_OF_H1_SCOPE
+     -> applicable_primary_count = 0; no Schur width-gain/sign-recovery claim
+     -> centered H1 recovery becomes the immediate finite gate
 ```
 
 The newest project synthesis is:
 
-`RESEARCH_LEADS_POST_178_DERIVATIVE_UNRESOLVED_CENTERED_ENCLOSURE_DELTA.md`.
+`RESEARCH_LEADS_POST_180_POINT_DERIVATIVE_BASIN_CENTERED_TAYLOR_FRONTIER_DELTA.md`.
 
 The previous post-green synthesis is:
 
@@ -166,7 +176,7 @@ PROVED THROUGH #163
   -> exact finite-prime sampling of same observable
   -> exact R8-R9 squared-jet boundary
 
-RESEARCHED THROUGH #178
+RESEARCHED THROUGH #180
   endpoint scalar audited
   theorem-aligned shifted finite state audited
   Q16 near-critical cell isolated
@@ -181,13 +191,16 @@ RESEARCHED THROUGH #178
   complete analytic fixed-unit derivative infrastructure validated
   raw assembled Delta_2' side-box signs remain unresolved
   #176 replay schedule hardening closed
+  exact-center Q14 derivative basin minimum-oriented at all six frozen primary centers
+  nonzero-width Schur primary graph out of H1 scope before width comparison
 
 NOW
-  FB-05J correlation-preserving Q14 derivative enclosure
-  -> rigorous point Delta_2' signs first
-  -> compare raw and H1 Schur-factorized derivative representations
-  -> add Delta_2'' / centered mean-value or Taylor bounds only if point orientation is visible
-  -> use interval Newton/Krawczyk only after a genuine two-sided derivative bracket
+  FB-05J finite-width propagation of the #180 point-oriented Q14 basin
+  -> recover H1 by centered propagation of a(L0)>0 using rigorous a'(I)
+  -> retry the H1 Schur derivative graph only on centered-certified boxes
+  -> add Delta_2'' / centered derivative Taylor bounds only if sign remains unresolved
+  -> use interval Newton/Krawczyk only after signed left/right neighborhoods
+  -> in parallel test the contact-local -log(L)*I / arithmetic-remainder derivative lead
   -> theoremize only a genuinely independent generalizable restriction
 ```
 

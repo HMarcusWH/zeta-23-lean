@@ -38,11 +38,16 @@
         "PR #174 therefore shows scalarization alone does not eliminate canonical interval dependency; more precision/depth on the same direct formulas is not the next strategy",
         "PR #176 independently implements the fixed-unit pullback, preserves the direct production evaluator as baseline, and classifies FIXED_UNIT_METHOD_ACCEPTED after all six frozen primary Q14 boxes satisfy the predeclared factor-2 Delta_2 interval-width criterion",
         "PR #178 validates the complete fixed-Q canonical derivative M'(L)=pole'-arch'-prime' against independent centered value differences through primitive/full-matrix/scalar/odd-ancestry layers",
+        "PR #178's raw assembled determinant derivative graph is Delta_2'=a'd+ad'-2bb'; its nonzero-width primary boxes remain the quarantined dependency-heavy representation rather than a sign theorem",
         "PR #178 returns DERIVATIVE_UNRESOLVED with NO_CERTIFIED_PRIMARY_DERIVATIVE_SIGN on all six primary Q14 side boxes; all left/right certified sign label sets are empty and no stationary existence is derived",
         "PR #178 certifies no bad interval and no H1-loss interval on the frozen derivative schedule",
         "PR #178 closes the #176 standalone replay-hardening debt by binding benchmark schedules to their frozen fixture and rejecting malformed schedules",
-        "the next research hypothesis is that a correlation-preserving derivative enclosure, rather than the raw assembled a'd+ad'-2bb' interval graph, can expose rigorous point/box orientation near the Q14 basin",
-        "the next route should first compute rigorous point Delta_2' balls, then compare raw and H1 Schur-factorized Delta_2'=a'P+aP' representations, and only then invest in Delta_2''/Taylor or interval-Newton machinery if orientation is visible",
+        "PR #180 finite-certifies POINT_DERIVATIVE_BASIN_BRACKETED / MINIMUM_ORIENTED at all six frozen primary Q14 exact centers: the three left Delta_2' point balls are negative and the three right point balls positive; the Schur point graph has the same six-center orientation",
+        "PR #180 consumes the post-#178 'point Delta_2' balls then compare Delta_2'=a'P+aP'' scout: the point balls are signed, while the nonzero-width Schur representation is blocked by H1 scope rather than established width gain",
+        "PR #180's nonzero-width Schur primary benchmark classifies SCHUR_OUT_OF_H1_SCOPE with applicable_primary_count=0, so it does not establish Schur width gain or sign recovery on those boxes; the first interval gate is H1 certification itself",
+        "the immediate finite route is centered H1 recovery from point a(L0)>0 and the already-validated a'(I) enclosure, followed by a Schur-box retry; Delta_2''/centered derivative propagation is the fallback if that remains unresolved",
+        "the accumulated theorem inventory already preserves an exact -log(L)*I scalar drift through the fixed-cell intrinsic predecessor; a production Schur-envelope derivative / arithmetic-remainder contact bound is a structural lead, not a proved sign law",
+        "at H1 contact the algebra Delta_2=aP and P=0 gives Delta_2'=aP'; this motivates contact-local sign transfer without reviving global Schur monotonicity",
         "repeating the same raw assembled derivative boxes with only more precision/depth is not a route change after PR #178",
         "determinant and pivot minima are distinct optimization targets because P=Delta_2/a and a(L) varies",
         "full physical H1 does not imply H1 for the q-removed background; first-bad interpretation of a full-background lift requires background H1 separately",
@@ -68,7 +73,7 @@
       "first_breaks": [
         {
           "id": "E4A4-SCHUR-FB-05",
-          "statement": "after consuming #163 theorem authority and the #165-#178 endpoint-scalar, shifted-state, near-critical-cell, threshold-jet, Schur-visibility, threshold-to-threshold, q13-scalar, fixed-unit value-selection and complete-derivative research results, no theorem-backed correlation-preserving local derivative/stationary law, parity restriction, source-sampling relation, endpoint-scalar consequence, or other independent canonical arithmetic invariant yields an incompatible restriction on the exact forced shifted state without restating successor positivity",
+          "statement": "after consuming #163 theorem authority and the #165-#180 endpoint-scalar, shifted-state, near-critical-cell, threshold-jet, Schur-visibility, threshold-to-threshold, q13-scalar, fixed-unit value-selection and complete-derivative research results, no theorem-backed centered-H1/contact-derivative/stationary law, parity restriction, source-sampling relation, endpoint-scalar consequence, or other independent canonical arithmetic invariant yields an incompatible restriction on the exact forced shifted state without restating successor positivity",
           "test_id": "falsify_and_prove_fb05_canonical_arithmetic_restriction",
           "estimated_cost": 2.0,
           "decisive_if_failed": true
@@ -87,7 +92,7 @@
         "PR #137 proves canonicalOneStepDomination is sufficient but not its arithmetic truth",
         "under predecessor nonnegativity and one-dimensional shell geometry, universal domination is essentially the missing successor positivity and has no information gain if proved by restatement",
         "PR #163 sharpens the selected-state arithmetic route but does not make universal domination a smaller theorem",
-        "PRs #165-#178 sharpen the research target toward correlation-preserving local derivative structure on the q13 scalar laboratory and a generalizable arithmetic restriction rather than universal domination",
+        "PRs #165-#180 sharpen the research target toward correlation-preserving local derivative structure on the q13 scalar laboratory and a generalizable arithmetic restriction rather than universal domination",
         "generic Hermitian/parity/KKT/transfer/displacement structure remains quarantined by countermodels",
         "factorwise alpha/Gamma/overlap/source-moment closure remains quarantined",
         "atomwise positive determinant/SOS remains quarantined"
@@ -130,7 +135,7 @@
         "PR #159 exposes exact retained boundary defects but does not supply an opposing sign",
         "PR #161 aligns the even negative secular trial with exact Riesz-8/Riesz-9 structure and the cross-parity explicit source obstruction",
         "PR #163 aligns that same retained even shifted trial with the exact mixed seventh source jet and squared-jet Riesz boundary, but still supplies no contradiction-producing arithmetic restriction",
-        "PRs #165-#178 narrow the surviving arithmetic search to correlation-preserving local derivative structure on the q13 scalar laboratory and whatever generalizable arithmetic law can be extracted from it; none proves negative-root exclusion",
+        "PRs #165-#180 narrow the surviving arithmetic search to correlation-preserving local derivative structure on the q13 scalar laboratory and whatever generalizable arithmetic law can be extracted from it; none proves negative-root exclusion",
         "no division by alpha, Gamma, overlap or source moment is legal without separate nonzeroness",
         "terminal Mathlib RH still requires the outside-strip/trivial-zero seam after negative-root exclusion"
       ],
@@ -202,7 +207,7 @@
         "strict monotonicity yields root uniqueness while a hypothetical off-line zero already forces one negative root",
         "root uniqueness is weaker than negative-root exclusion",
         "post-#150 experiments disfavor global aperture/selected-Schur monotonicity as the decisive mechanism",
-        "post-#178 work targets local correlation-preserving derivative enclosure rather than reviving a global fixed-sign derivative claim",
+        "post-#180 work targets local correlation-preserving derivative enclosure rather than reviving a global fixed-sign derivative claim",
         "the theorem-backed same-state source/Riesz/mixed-jet obstruction is more direct unless monotonicity supplies independent source-specific exclusion information"
       ],
       "score_inputs": {
@@ -234,7 +239,7 @@
       "surviving_objections": [
         "a strictly positive predecessor floor is not available uniformly from first-bad minimality alone",
         "the shell gap g_N=q_N-mu_N may fail to stay positive",
-        "the post-#178 local q13 correlation-preserving derivative route is more direct than rebuilding a global deformation horizon"
+        "the post-#180 local q13 correlation-preserving derivative route is more direct than rebuilding a global deformation horizon"
       ],
       "score_inputs": {
         "cost": 2.0,
@@ -278,9 +283,27 @@
         "dependency_debt": 1.0
       },
       "first_breaks": [
-        {"id": "DB-FB-01", "statement": "q_N-mu_N fails to remain usefully positive", "test_id": "probe_shell_gap", "estimated_cost": 1.0, "decisive_if_failed": true},
-        {"id": "DB-FB-02", "statement": "beta_N fails to exhibit usable decay", "test_id": "probe_shell_coupling", "estimated_cost": 1.1, "decisive_if_failed": true},
-        {"id": "DB-FB-03", "statement": "beta_N^2/(q_N-mu_N) fails to support a summable certified tail majorant", "test_id": "tail_majorant_test", "estimated_cost": 2.0, "decisive_if_failed": true}
+        {
+          "id": "DB-FB-01",
+          "statement": "q_N-mu_N fails to remain usefully positive",
+          "test_id": "probe_shell_gap",
+          "estimated_cost": 1.0,
+          "decisive_if_failed": true
+        },
+        {
+          "id": "DB-FB-02",
+          "statement": "beta_N fails to exhibit usable decay",
+          "test_id": "probe_shell_coupling",
+          "estimated_cost": 1.1,
+          "decisive_if_failed": true
+        },
+        {
+          "id": "DB-FB-03",
+          "statement": "beta_N^2/(q_N-mu_N) fails to support a summable certified tail majorant",
+          "test_id": "tail_majorant_test",
+          "estimated_cost": 2.0,
+          "decisive_if_failed": true
+        }
       ]
     }
   }

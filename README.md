@@ -17,12 +17,13 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #178
-validated research head = 28df43faed0db8c0f12a25525df6c28467ce5b07
-merged research commit = fb2a181ce0d95d90396ead7730e7bf365616a153
-research tree = 96ab14953e9e8bff5245953082db8a6471648614
-RHRC #1074 = SUCCESS
-Permansson #847 = SUCCESS
+merged research PR = #180
+validated research head = a87469da9e611b53ae400cb4b18ce4afeb94e6d2
+merged research commit = 93ea3df51f2671e316197c1530ea504dee76e821
+research tree = 8199cdc543f1b761c70466dfd602c143a277e6a2
+RHRC #1077 = SUCCESS
+Lean #837 = SUCCESS
+Permansson #850 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
@@ -143,6 +144,33 @@ with no certified left/right derivative sign, no derived stationary existence, n
 
 #178 also closes the #176 standalone replay-hardening debt by binding the supplied benchmark schedule back to its frozen fixture and rejecting malformed schedules.
 
+### #180 — exact-center derivative basin / Schur-scope audit
+
+The inherited #178 schedule is reused exactly. At all six frozen primary Q14 exact centers, rigorous Arb point balls give
+
+```text
+POINT_DERIVATIVE_BASIN_BRACKETED
+MINIMUM_ORIENTED
+left centers:  3/3 Delta_2' < 0
+right centers: 3/3 Delta_2' > 0
+```
+
+The Schur point graph agrees on the same six H1-usable points. This supports a **derived stationary-existence statement if continuity is invoked**, but `uniqueness_claim = false`.
+
+For the nonzero-width primary boxes the result is instead
+
+```text
+SCHUR_OUT_OF_H1_SCOPE
+applicable_primary_count = 0
+sign_recovery_labels = []
+strict_width_gain_labels = []
+material_2x_gain_labels = []
+```
+
+So #180 does **not** establish a finite-box Schur width gain. The width comparison is blocked before it becomes applicable because H1 is not certified over those boxes. No bad or H1-loss interval is certified.
+
+**Post-green consequence:** first try centered H1 recovery from the sharp point value `a(L0)>0` and the already-validated first derivative `a'`; only then retry the Schur box representation. Build `Delta_2''` for centered derivative propagation only if that cheaper preflight is insufficient.
+
 ## Current active path
 
 The live theorem frontier remains **FB-05**: find an independent canonical arithmetic restriction that makes the exact retained #161/#163 state impossible.
@@ -155,15 +183,14 @@ Delta_2' = a'd + ad' - 2bb'
 
 does not certify a sign on the frozen primary side boxes.
 
-The next highest-information question is therefore **where the derivative dependency enters**. The preferred order is:
+The next highest-information question is now **how to propagate the rigorously signed point basin without losing H1/correlation**. The preferred order is:
 
 ```text
-1. rigorous point Delta_2' balls at frozen centers
-2. compare raw determinant derivative with the exact H1 factorization
-     Delta_2 = a P
-     Delta_2' = a'P + aP'
-3. only if point orientation is visible, add Delta_2'' and centered mean-value/Taylor bounds
-4. only after a two-sided derivative bracket, attempt interval Newton/Krawczyk.
+1. centered H1 recovery from point a(L0)>0 plus rigorous a'(I)
+2. inside recovered H1, retry Delta_2'=a'P+aP' on nonzero-width boxes
+3. if still unresolved, add Delta_2'' and centered mean-value/Taylor propagation of the signed point values
+4. only after signed left/right neighborhoods, attempt interval Newton/Krawczyk
+5. in parallel, test/theoremize the source-specific log-drift/contact derivative law.
 ```
 
 The determinant and Schur-pivot minima remain distinct optimization targets. The Schur factorization is only an alternative dependency graph for the same determinant derivative; it does not revive global Schur monotonicity.
@@ -176,7 +203,7 @@ Current living state is maintained in:
 
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`;
 - `research/RHRC/RESEARCH_LEADS.md`;
-- `research/RHRC/RESEARCH_LEADS_POST_178_DERIVATIVE_UNRESOLVED_CENTERED_ENCLOSURE_DELTA.md`;
+- `research/RHRC/RESEARCH_LEADS_POST_180_POINT_DERIVATIVE_BASIN_CENTERED_TAYLOR_FRONTIER_DELTA.md`;
 - `research/RHRC/DOCUMENTATION_AUTHORITY.md`;
 - `research/RHRC/VALIDATION_PROTOCOL.md`;
 - `research/RHRC/routes/R003_ccm_bridge/README.md`;

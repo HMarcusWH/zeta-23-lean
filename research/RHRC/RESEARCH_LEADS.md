@@ -15,18 +15,19 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #178
-validated research head = 28df43faed0db8c0f12a25525df6c28467ce5b07
-merged research commit = fb2a181ce0d95d90396ead7730e7bf365616a153
-research tree = 96ab14953e9e8bff5245953082db8a6471648614
-RHRC #1074 = SUCCESS
-Permansson #847 = SUCCESS
+merged research PR = #180
+validated research head = a87469da9e611b53ae400cb4b18ce4afeb94e6d2
+merged research commit = 93ea3df51f2671e316197c1530ea504dee76e821
+research tree = 8199cdc543f1b761c70466dfd602c143a277e6a2
+RHRC #1077 = SUCCESS
+Lean #837 = SUCCESS
+Permansson #850 = SUCCESS
 
 CONTROL AUTHORITY
 control-plane semantic anchor = PR #117
 selected first break = E4A4-SCHUR-FB-05
 
-newest post-green delta = RESEARCH_LEADS_POST_178_DERIVATIVE_UNRESOLVED_CENTERED_ENCLOSURE_DELTA.md
+newest post-green delta = RESEARCH_LEADS_POST_180_POINT_DERIVATIVE_BASIN_CENTERED_TAYLOR_FRONTIER_DELTA.md
 current execution SSOT = CURRENT_RESEARCH_PLAN.md
 RH = OPEN
 ```
@@ -83,7 +84,7 @@ No negative floating aperture was found. Direct whole-cell Arb subdivision remai
 
 ### #168 — prime-power threshold jet
 
-Exact executable identities on boundary-flat parity carriers give odd first surviving source-energy order 7 through `M3^2` and even first surviving order 9 through `M4^2`. The physical Q16/Q17 threshold microscope remains positive.
+Exact executable identities on boundary-flat parity carriers give odd first surviving source-energy order 7 through `M3^2` and even first surviving source-energy order 9 through `M4^2`. The physical Q16/Q17 threshold microscope remains positive.
 
 ### #170 — theorem-aligned Schur visibility / background split
 
@@ -171,31 +172,36 @@ with all four certified left/right sign-label sets empty, no derived stationary 
 
 #178 also closes the #176 replay-hardening debt by binding benchmark schedules back to their frozen fixture and testing adversarial schedule mutations.
 
-## Active lead 1 — correlation-preserving Q14 derivative enclosure
+## Active lead 1 — centered H1 recovery and finite-width derivative propagation
 
 **Research status:** HIGHEST LEVERAGE / NEXT  
 **Formal status:** OPEN
 
-The first job is to identify whether #178 failed because of box dependency or because even point derivatives are intrinsically too close to zero.
+#180 answers the previous point-scout question: all six frozen primary exact centers certify `POINT_DERIVATIVE_BASIN_BRACKETED / MINIMUM_ORIENTED`, with all three left `Delta_2'` point balls negative and all three right point balls positive. The Schur point graph agrees on the same six H1-usable centers.
+
+The nonzero-width Schur experiment stops before width comparison:
+
+```text
+SCHUR_OUT_OF_H1_SCOPE
+applicable_primary_count = 0
+sign_recovery_labels = []
+strict_width_gain_labels = []
+material_2x_gain_labels = []
+```
+
+So the first job is now to recover the H1 prerequisite over nonzero width with the cheapest correlation-preserving construction available.
 
 Run in this order:
 
 ```text
-1. rigorous point Delta_2' balls at every primary/control center
-2. compare exact derivative representations in H1
-     raw: Delta_2' = a'd + ad' - 2bb'
-     Schur-factorized: Delta_2 = aP,
-                       Delta_2' = a'P + aP'
-3. only if point orientation is visible:
-     bound Delta_2''
-     build centered mean-value/Taylor enclosure
-4. only after a certified left/right derivative bracket:
-     interval Newton / Krawczyk on Delta_2'.
+1. centered H1 recovery from point a(L0)>0 and rigorous a'(I)
+2. if H1 succeeds, retry the Schur derivative box Delta_2'=a'P+aP'
+3. if derivative sign remains unresolved, bound Delta_2'' and propagate the sharp point sign
+4. only after signed left/right neighborhoods, use interval Newton/Krawczyk
+5. separately falsify the -log(L)*I / arithmetic-remainder contact-derivative hypothesis.
 ```
 
-The determinant and pivot minima remain distinct. The Schur-factorized derivative is proposed only as an alternative dependency graph for the determinant derivative.
-
-A positive q13 whole-cell result is **not** FB-05 closure by itself. Its value is in revealing a certification mechanism and, potentially, a generalizable arithmetic inequality.
+The determinant and pivot minima remain distinct. #180 did **not** show that the nonzero-width Schur graph is too wide; it was out of H1 scope. A positive q13 whole-cell result is still not FB-05 closure by itself.
 
 ## Validated research mechanisms — consumed inputs
 
@@ -247,7 +253,7 @@ No global sign or nonvanishing theorem exists. Even a proof `S8 >= 0` would not 
 
 #163 proves the finite-prime source contribution samples the same analytic observable whose local seventh jet is tied to `M4`. #166-#178 do not establish either implication between explicit source moment nonvanishing and `M4` nonvanishing.
 
-## Reusable classifications from #174/#176/#178
+## Reusable classifications from #174/#176/#178/#180
 
 ### OBS-047 — scalarization does not eliminate interval dependency
 
@@ -264,6 +270,10 @@ The exact #176 pipeline certifies old/new agreement and satisfies the factor-2 m
 ### OBS-050 — fixed-unit value conditioning does not automatically yield derivative sign discrimination
 
 The exact #178 derivative backend is validated, but all six primary raw `Delta_2'` interval boxes remain sign-unresolved. Value-level interval improvement cannot be silently promoted to derivative-level conditioning.
+
+### OBS-051 — point orientation is visible; finite-width Schur scope fails first at H1
+
+#180 signs all six primary exact-center derivatives with minimum orientation, but its nonzero-width Schur primary boxes are `SCHUR_OUT_OF_H1_SCOPE` with zero applicable primaries. Recover `a>0` over width before judging Schur width/sign performance.
 
 ### DR-026 — brute direct scalar subdivision
 
@@ -284,8 +294,8 @@ The #176 standalone schedule-binding debt is closed by #178. The certifier now r
 - preserve physical Q=13/14/15 seam handling and prime powers;
 - preserve odd N=2 ancestry;
 - keep direct production/value evaluation as an independent baseline;
-- measure rigorous point derivatives before adding second-derivative machinery;
-- compare raw and Schur-factorized derivative expressions only in certified H1 scope;
+- reuse the rigorously signed #180 point derivatives and first attempt centered H1 recovery before adding second-derivative machinery;
+- retry the Schur-factorized derivative expression only after centered H1 is certified on nonzero width;
 - keep determinant and pivot minima distinct;
 - do not assume global derivative sign;
 - treat zero-containing intervals as unresolved unless existence is separately certified;
@@ -294,19 +304,67 @@ The #176 standalone schedule-binding debt is closed by #178. The certifier now r
 
 ## Standing research questions
 
-1. Are rigorous point `Delta_2'` balls left-negative/right-positive at the frozen Q14 side centers?
-2. Is the raw assembled determinant derivative or the Schur-factorized derivative better conditioned?
-3. If point orientation is visible, can a centered mean-value/Taylor enclosure preserve that sign on nonzero-width boxes?
+1. Can the exact-center H1 information from #180 be propagated over the tightest frozen Q14 boxes using point `a(L0)>0` plus rigorous `a'(I)`?
+2. Once H1 is recovered, does the exact Schur graph certify a finite-width derivative sign or material conditioning gain?
+3. If not, is a centered `Delta_2''` enclosure sharp enough to propagate the already-certified left-negative/right-positive point signs?
 4. Can one stationary region then be isolated without assuming uniqueness?
 5. At any rigorously isolated local minimum, does `Delta_2` become negative, merely reach zero, or stay strictly positive?
-6. If positive, what arithmetic inequality creates the turn away from zero?
-7. Does that inequality survive other q/N/parity states?
-8. Can any surviving inequality be composed with the exact #161/#163 retained state without restating successor positivity?
-9. What closes simultaneous parity badness and the odd-selected branch?
+6. Does the fixed-cell `-log(L)*I + remainder` decomposition expose a contact-local derivative law that generalizes beyond the Q14 microscope?
+7. If the local minimum stays positive, what arithmetic inequality creates the turn away from zero?
+8. Does that inequality survive other q/N/parity states?
+9. Can any surviving inequality be composed with the exact #161/#163 retained state without restating successor positivity?
+10. What closes simultaneous parity badness and the odd-selected branch?
 
-**Current highest-information question:** can the correlations inside the near-cancelling Q14 determinant derivative be preserved strongly enough to certify local motion?
+**Current highest-information question:** can centered H1 recovery make the Schur derivative graph applicable on nonzero width, and if so does that preserve the #180 point orientation?
 
 Detailed current synthesis:
+`RESEARCH_LEADS_POST_180_POINT_DERIVATIVE_BASIN_CENTERED_TAYLOR_FRONTIER_DELTA.md`.
+
+Prior derivative-unresolved synthesis:
 `RESEARCH_LEADS_POST_178_DERIVATIVE_UNRESOLVED_CENTERED_ENCLOSURE_DELTA.md`.
 
 **RH remains OPEN.**
+## LEAD-038 — centered H1 recovery before second-order determinant propagation
+
+**Status:** selected finite research lead after PR #180.
+
+#180 proves, as rigorous finite research evidence, that all six frozen primary exact centers are H1-usable in the Schur point graph and that `Delta_2'` is minimum-oriented there: three left-negative and three right-positive centers. The corresponding nonzero-width Schur boxes classify `SCHUR_OUT_OF_H1_SCOPE` with zero applicable primaries.
+
+The next cheapest test is therefore not yet `Delta_2''`. Use the already validated first derivative to enclose
+
+```text
+a(L) = a(L0) + (L-L0) a'(xi)
+```
+
+from the sharp point value `a(L0)>0`. If this certifies H1 on the tightest boxes, rerun the Schur derivative enclosure before adding second-order determinant machinery.
+
+**Success criterion:** at least one frozen left/right pair becomes H1-certified over nonzero width and the Schur derivative representation becomes applicable.
+
+**Failure criterion:** even centered H1 propagation cannot separate `a` from zero on the tightest pair; then change the correlation representation for `a` before spending heavily on `Delta_2''`.
+
+No stationary uniqueness, determinant-minimum sign, q13 whole-cell theorem, FB-05 closure, or RH claim follows from this lead.
+
+## LEAD-039 — canonical log-drift / arithmetic-remainder contact law
+
+**Status:** structural theorem lead; OPEN.
+
+The existing Lean inventory proves fixed-cell source/intrinsic-predecessor decompositions with exact scalar drift
+
+```text
+A(L) = -log(L) * I + R(L)
+```
+
+and analytic remainder infrastructure. A candidate production-interface Schur-envelope identity is
+
+```text
+P'(L) = Re <u_L, A'(L)u_L>
+      = -||u_L||^2/L + Re <u_L, R'(L)u_L>.
+```
+
+The first equality must still be theoremized at the actual moving-state production interface, and the second requires a legal derivative bridge for the proved decomposition. The source-coordinate derivative transport theorems are not by themselves aperture-`L` derivative control.
+
+**Hypothesis to falsify:** the canonical arithmetic remainder drift obeys a contact-local bound strong enough that the universal `-1/L` term determines the forbidden contact orientation.
+
+At an H1 contact, `Delta_2=aP` gives the algebraic transfer `P=0 -> Delta_2'=aP'`; since `a>0`, a contact-specific `P'` sign law would transfer to the determinant without requiring global Schur monotonicity.
+
+This lead deliberately does **not** revive DR-022. Global fixed-sign Schur monotonicity remains quarantined.

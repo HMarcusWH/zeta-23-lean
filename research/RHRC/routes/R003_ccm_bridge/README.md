@@ -1,6 +1,6 @@
 # R003 — CCM / finite Weil bridge
 
-Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #163. LATEST RESEARCH EVIDENCE THROUGH PR #178. CURRENT FRONTIER = FB-05 CORRELATION-PRESERVING Q14 DERIVATIVE ENCLOSURE. RH OPEN.**
+Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #163. LATEST RESEARCH EVIDENCE THROUGH PR #180. CURRENT FRONTIER = FB-05 CENTERED H1 RECOVERY / FINITE-WIDTH Q14 DERIVATIVE PROPAGATION. RH OPEN.**
 
 ## Authority split
 
@@ -15,12 +15,13 @@ RHRC #1039 = SUCCESS
 Permansson #812 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #178
-validated research head = 28df43faed0db8c0f12a25525df6c28467ce5b07
-merged research commit = fb2a181ce0d95d90396ead7730e7bf365616a153
-research tree = 96ab14953e9e8bff5245953082db8a6471648614
-RHRC #1074 = SUCCESS
-Permansson #847 = SUCCESS
+merged research PR = #180
+validated research head = a87469da9e611b53ae400cb4b18ce4afeb94e6d2
+merged research commit = 93ea3df51f2671e316197c1530ea504dee76e821
+research tree = 8199cdc543f1b761c70466dfd602c143a277e6a2
+RHRC #1077 = SUCCESS
+Lean #837 = SUCCESS
+Permansson #850 = SUCCESS
 
 CONTROL AUTHORITY
 control-plane semantic anchor = PR #117
@@ -84,7 +85,7 @@ Floating full-cell optimization found no negative point. Direct dependency-heavy
 
 ### #168 — threshold moment jet
 
-Exact executable boundary-flat parity identities give odd first surviving source-energy order 7 through `M3^2` and even first surviving order 9 through `M4^2`. The exact `L=log 17` threshold and all 18 two-sided Arb microscope points are positive.
+Exact executable boundary-flat parity identities give odd first surviving source-energy order 7 through `M3^2` and even first surviving source-energy order 9 through `M4^2`. The exact `L=log 17` threshold and all 18 two-sided Arb microscope points are positive.
 
 ### #170 — theorem-aligned Schur visibility/background split
 
@@ -156,7 +157,7 @@ This is not evidence that `Delta_2'` vanishes. It is a finite method result: raw
 
 #178 also closes the #176 benchmark replay-hardening debt by binding schedule-defining fields back to the frozen fixture and testing adversarial mutations.
 
-## Current frontier — correlation-preserving Q14 derivative enclosure
+## Current frontier — centered H1 recovery and derivative propagation
 
 Preserve the exact q13 observables
 
@@ -168,16 +169,17 @@ odd N=2 predecessor ancestry
 
 but change the derivative enclosure graph before doing more subdivision.
 
+#180 has already consumed the exact-center point scout. The six primary points are minimum-oriented, but the nonzero-width Schur primaries are out of certified H1 scope before any width comparison is available.
+
 Primary research order:
 
 ```text
-1. rigorous point Delta_2' balls at frozen centers
-2. compare exact representations in certified H1 scope
-     raw: Delta_2' = a'd + ad' - 2bb'
-     Schur-factorized: Delta_2 = aP,
-                       Delta_2' = a'P + aP'
-3. if point orientation is visible, add Delta_2'' and centered mean-value/Taylor control
-4. only after a two-sided derivative bracket, attempt interval Newton/Krawczyk.
+1. centered H1 recovery
+     a(L0)>0 + rigorous a'(I) -> a(L0)+(I-L0)*a'(I)
+2. if H1 is recovered, benchmark Delta_2'=a'P+aP' on the same frozen boxes
+3. if sign remains unresolved, add Delta_2'' and centered mean-value/Taylor control
+4. only after signed finite neighborhoods, attempt interval Newton/Krawczyk
+5. keep the structural -log(L)*I / arithmetic-remainder contact law as a parallel theorem lead.
 ```
 
 The final scalar classification remains:
@@ -249,7 +251,7 @@ FB-04A exact moment jets + signed Riesz boundary recurrence              PROVED 
 FB-04B same-state shifted Riesz x cross-parity source composition        PROVED / #161
 FB-04C mixed quadratic-normal jet x Riesz boundary coupling              PROVED / #163
 FB-05  independent contradiction-producing arithmetic restriction       OPEN / ACTIVE
-  current research slice: correlation-preserving Q14 determinant derivative enclosure
+  current research slice: centered H1 recovery -> finite-width Q14 derivative propagation
 FB-06  same-state contradiction / negative-root exclusion                OPEN
 FB-07  terminal seam + Mathlib RH wrapper                                 OPEN
 ```
@@ -279,6 +281,6 @@ FB-07  terminal seam + Mathlib RH wrapper                                 OPEN
 - RH remains OPEN.
 
 Detailed current implications:
-`../../RESEARCH_LEADS_POST_178_DERIVATIVE_UNRESOLVED_CENTERED_ENCLOSURE_DELTA.md`.
+`../../RESEARCH_LEADS_POST_180_POINT_DERIVATIVE_BASIN_CENTERED_TAYLOR_FRONTIER_DELTA.md`.
 
 **RH remains OPEN.**

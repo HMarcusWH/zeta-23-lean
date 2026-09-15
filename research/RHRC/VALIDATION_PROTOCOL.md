@@ -25,12 +25,13 @@ Permansson #812 = SUCCESS
 ### Latest research-evidence anchor
 
 ```text
-merged research PR = #178
-validated research head = 28df43faed0db8c0f12a25525df6c28467ce5b07
-merged research commit = fb2a181ce0d95d90396ead7730e7bf365616a153
-research tree = 96ab14953e9e8bff5245953082db8a6471648614
-RHRC #1074 = SUCCESS
-Permansson #847 = SUCCESS
+merged research PR = #180
+validated research head = a87469da9e611b53ae400cb4b18ce4afeb94e6d2
+merged research commit = 93ea3df51f2671e316197c1530ea504dee76e821
+research tree = 8199cdc543f1b761c70466dfd602c143a277e6a2
+RHRC #1077 = SUCCESS
+Lean #837 = SUCCESS
+Permansson #850 = SUCCESS
 ```
 
 ### Control authority
@@ -129,7 +130,7 @@ RegularCellMinimalNegativeEnergyCertificate.evenShiftedRieszNine_lt_neg_mixedJet
 RegularCellMinimalNegativeEnergyCertificate.crossParityGamma_ne_zero_of_even_of_not_oddBad
 ```
 
-These establish theorem authority through #163. Research PRs #165-#178 do not alter this declaration set.
+These establish theorem authority through #163. Research PRs #165-#180 do not alter this declaration set.
 
 ## What the post-#163 research checks validate operationally
 
@@ -274,17 +275,44 @@ DERIVATIVE_UNRESOLVED
 
 #178 also closes the #176 standalone replay-hardening debt: the certifier reconstructs the frozen schedule from the fixture, and adversarial schedule mutations are rejected.
 
+### #180 — exact-center derivative basin / Schur-scope audit
+
+The inherited #178 schedule is reused exactly. At all six frozen primary Q14 exact centers, rigorous Arb point balls give
+
+```text
+POINT_DERIVATIVE_BASIN_BRACKETED
+MINIMUM_ORIENTED
+left centers:  3/3 Delta_2' < 0
+right centers: 3/3 Delta_2' > 0
+```
+
+The Schur point graph agrees on the same six H1-usable points. This supports a **derived stationary-existence statement if continuity is invoked**, but `uniqueness_claim = false`.
+
+For the nonzero-width primary boxes the result is instead
+
+```text
+SCHUR_OUT_OF_H1_SCOPE
+applicable_primary_count = 0
+sign_recovery_labels = []
+strict_width_gain_labels = []
+material_2x_gain_labels = []
+```
+
+So #180 does **not** establish a finite-box Schur width gain. The width comparison is blocked before it becomes applicable because H1 is not certified over those boxes. No bad or H1-loss interval is certified.
+
+**Post-green consequence:** first try centered H1 recovery from the sharp point value `a(L0)>0` and the already-validated first derivative `a'`; only then retry the Schur box representation. Build `Delta_2''` for centered derivative propagation only if that cheaper preflight is insufficient.
+
 ## Current FB-05 research target
 
 The q13 scalar geometry, fixed-unit value representation, and complete derivative implementation are now consumed research infrastructure.
 
-The next target is correlation-preserving derivative enclosure:
+The next target is finite-width propagation of the now-rigorous point orientation:
 
 ```text
-1. rigorous point Delta_2' signs at frozen centers
-2. compare exact raw and H1 Schur-factorized derivative representations
-3. if point orientation is visible, add Delta_2'' and centered mean-value/Taylor bounds
-4. only after a two-sided derivative bracket, attempt interval Newton/Krawczyk.
+1. centered H1 recovery from point a(L0)>0 plus rigorous a'(I)
+2. inside recovered H1, retry Delta_2'=a'P+aP' on the frozen nonzero-width boxes
+3. if derivative sign remains unresolved, add Delta_2'' and centered mean-value/Taylor propagation
+4. only after signed left/right neighborhoods, attempt interval Newton/Krawczyk.
 ```
 
 Do not repeat the same raw assembled derivative boxes with only more precision/depth and call it a new route.
@@ -329,7 +357,7 @@ R003_PROMOTED_BINDINGS.json
 Zeta23/CCM/ClaimBindings.lean
 ```
 
-The post-#178 docs/routing synchronization leaves those promotion surfaces unchanged.
+The post-#180 docs/routing synchronization leaves those promotion surfaces unchanged.
 
 ## Vocabulary
 
@@ -351,6 +379,6 @@ The post-#178 docs/routing synchronization leaves those promotion surfaces uncha
 
 ## Claim firewall
 
-Green #163 mixed-source/Riesz theorems are not RH. Green #165-#178 research tooling is not theorem authority. A contradiction still requires new arithmetic mathematics on the exact forced state, negative-root exclusion and the terminal zeta/Mathlib seam.
+Green #163 mixed-source/Riesz theorems are not RH. Green #165-#180 research tooling is not theorem authority. A contradiction still requires new arithmetic mathematics on the exact forced state, negative-root exclusion and the terminal zeta/Mathlib seam.
 
 **RH remains OPEN unless the exact terminal RH theorem passes the complete proof and claim-validation gates.**
