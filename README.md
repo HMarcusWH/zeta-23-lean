@@ -6,7 +6,7 @@ This fork preserves the upstream Zeta23 theorem package while adding an opt-in R
 
 ## Current authority snapshot
 
-Live GitHub head + exact Lean/compiler/CI evidence are authoritative dynamically.
+Live GitHub head + exact compiler/CI evidence are authoritative dynamically.
 
 ```text
 THEOREM AUTHORITY
@@ -14,201 +14,112 @@ latest theorem-bearing PR = #184
 validated theorem head = a756494ebe7e2530715e996b9a9a341fbe07c683
 merged theorem commit = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
 validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
-RHRC #1089 = SUCCESS
-Permansson #862 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #186
-validated research head = 7d277a99437d98fdb7c831f25a130eac07f1b3af
-merged research commit = 0494658a87d29eeb2124aa16232c264c21d23c18
-RHRC #1091 = SUCCESS
-Permansson #864 = SUCCESS
-research disposition = DOMINATION_SIGNAL_MIXED
+merged research PR = #190
+validated research head = 8701920b0da18ae6595ad0eee55c1f6cb291a94f
+merged research commit = f87da9fde71dd1e74419c6ae5848eee3787c27e4
+validated research tree = af8774b65c898de221a5bf32977ccff3407a7b2d
+RHRC run #1096 = SUCCESS
+Permansson run #869 = SUCCESS
+research disposition = JOINT_EXACT_VECTOR_SEPARABLE / JOINT_THRESHOLD_SIGNATURE_SEPARABLE
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
 selected first break = E4A4-SCHUR-FB-05
-RH = OPEN
+terminal claim = RH_OPEN
 ```
 
-The theorem, research and control anchors are intentionally separate.
+The theorem, research and control anchors are intentionally separate. Research green is not theorem promotion.
 
-## Current theorem ladder
+## Theorem frontier
 
-```text
-off-line zero -> legal finite canonical negative obstruction            PROVED
-first-bad / parity / Schur / secular machinery                          PROVED
-source-explicit cross-parity transfer                                   PROVED / #129
-exact canonical source-moment decomposition                             PROVED / #131
-zero-shift source transport / absolute source energy / determinant      PROVED / #134-#137
-regular selected first-bad endpoint                                     PROVED / #140-#150
-retained first-bad + exact pole-prime discrepancy                       PROVED / #153
-legal generic Riesz smoothing + parity/even source jets                 PROVED / #155
-complex production D transport + exact complete Riesz 6/even 8          PROVED / #157
-retained transformed negativity + off-line-zero R6 wrapper              PROVED / #157
-general moment-prefix odd-jet law                                       PROVED / #159
-same-state shifted Riesz x cross-parity source composition              PROVED / #161
-mixed quadratic-normal seventh source jet -> M4                         PROVED / #163
-finite-prime sampling of the same mixed source observable               PROVED / #163
-mixed-jet squared Riesz-8/Riesz-9 boundary coupling                     PROVED / #163
-generic real 2x2 Schur-envelope derivative calculus                     PROVED / #182
-H1 contact determinant/pivot derivative orientation equivalence         PROVED / #182
-complex-Hermitian 2x2 Schur calculus                                    PROVED / #184
-full frozen parity production family M~(t)=-tI+R~(t)                    PROVED / #184
-exact fixed-cell bridge to parityCompressedCanonical                    PROVED / #184
-N2 predecessor/canonical-cubic-shell reconstruction and orthogonality   PROVED / #184
-algebraic P_t'=-envelopeNormSq+remainderEnvelopeDerivative              PROVED / #184
-remainder domination -> negative pivot orientation                      PROVED / #184
-
-source-moment / M4 canonical-state rigidity                             OPEN
-endpoint-scalar global sign/nonvanishing                                OPEN
-actual production remainder scalar derivative witnesses                OPEN
-actual production HasDerivAt Schur log-drift identity                  OPEN
-any valid narrowed source-specific contact-orientation law              OPEN
-first-bad contact existence/orientation composition                     OPEN
-q13 finite-width H1 / whole-cell sign-contact classification            OPEN / ACTIVE
-simultaneous even/odd bad exclusion                                     OPEN
-odd-selected first-bad branch closure                                   OPEN
-negative-root exclusion                                                 OPEN
-outside-strip/trivial-zero seam + Mathlib RH wrapper                    OPEN
-RH                                                                      OPEN
-```
-
-## What #184 proved
-
-PR #184 moves the contact-orientation route into actual complex-Hermitian production geometry. Lean theoremizes
+The compiler-validated theorem ladder remains through PR #184. In particular Lean proves the complex-Hermitian 2x2 Schur calculus, the frozen production family on the logarithmic cover, the exact fixed-cell bridge to `parityCompressedCanonical`, N2 predecessor/canonical-shell reconstruction and orthogonality, and
 
 ```text
-P = d - |b|^2/a
-M~(t) = -t I + R~(t)
 P_t' = -envelopeNormSq + remainderEnvelopeDerivative
-```
-
-with the exact fixed-cell bridge to `parityCompressedCanonical`, N2 predecessor/canonical-cubic-shell reconstruction and orthogonality, and the conditional implication
-
-```text
 remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0.
 ```
 
-#184 does **not** prove that the production arithmetic remainder satisfies the domination premise, contact existence/uniqueness, an opposing first-bad orientation, negative-root exclusion or RH.
+PR #184 does **not** prove source-specific remainder domination, contact existence/uniqueness, an opposing first-bad orientation, negative-root exclusion or RH.
 
-## What #186 discovered
-
-PR #186 deliberately tried to falsify the post-#184 domination clue before further Lean investment. It reused the exact frozen #180 q13/Q14 N2/K3/even schedule and evaluated the physical-aperture form
+## Research progression through #190
 
 ```text
-dP/dL = -E/L + dR/dL
-margin = E/L - dR/dL
-rho = L*dR/dL/E.
+#186  broad production-remainder domination on the frozen Q14 panel
+      -> DOMINATION_SIGNAL_MIXED
+      -> simple universal domination falsified in tested scope
+
+#188  frozen normalization-safe selector audit
+      -> seven strong selectors + three diagnostic remainder components
+
+#189  exact semantic-independence audit
+      -> every individual frozen selector is abstractly separable from target sign
+
+#190  exact joint-separability audit
+      -> complete seven-dimensional strong vector can remain identical
+      -> same nonboundary ZERO/ONE threshold signature
+      -> opposite normalized FB-05 target signs
+      -> all 2^7 - 1 = 127 nonempty subsets are therefore also insufficient
+         inside the audited ambient normalized algebra
 ```
 
-The green certificate returned
+The #190 countermodel is an **ambient algebra countermodel**. It is not claimed to be an actual canonical arithmetic CCM state.
+
+## Current active path — FB-05 canonical realizability
+
+The frozen selector-mining programme has done its job. The next question is no longer
 
 ```text
-DOMINATION_SIGNAL_MIXED
+which combination of G1/P1/P2/C1-C4 predicts the target sign?
 ```
 
-with:
+because #190 closes that observation surface in the ambient normalized algebra.
+
+The live question is now:
 
 ```text
-positive margin:
-  det_left_o2^-10_r2^-13
-  det_left_o2^-13_r2^-16
-
-negative margin:
-  det_right_o2^-10_r2^-13
-  det_right_o2^-13_r2^-16
-  det_left_o2^-16_r2^-19
-  det_right_o2^-16_r2^-19
-
-unresolved primary exact centers: none
-finite-width scope: FINITE_WIDTH_OUT_OF_H1_SCOPE
+which canonical production realizability constraint forbids the #190 reflected twin?
 ```
 
-So the broad claim that the production remainder is uniformly dominated by the universal negative log drift is **experimentally falsified on this frozen finite panel**. That does not invalidate #184: its theorem is conditional. It also does not establish a general opposite-sign theorem.
-
-## Current active path — FB-05
-
-The active strategy remains a **same-state incompatibility** search. #186 changes the immediate target.
-
-### Research lane — explain the mixed split
-
-Keep the #186 schedule frozen. Do not move centers or refit the basin. Search for a canonical/theorem-connectable variable explaining why two states satisfy the domination inequality and four do not.
-
-Candidate diagnostics include:
+Actual production channels are more constrained than the #190 ambient coordinates. In the research derivative backend,
 
 ```text
-E
-dR/dL
-rho
-P_L'
-a, |b|, d
-normalized predecessor/shell coupling
-fixed-Q cell position
-position relative to the #180 minimum-oriented basin
-opposite-parity / ancestry controls
+scalar_shift = 2*cCorrection'(L) I
+arch_signed  = -arch_direct - scalar_shift
 ```
 
-A useful condition must not merely encode the target margin, depend on arbitrary normalization, fail controls, or require finite-width H1 where H1 is not certified.
+so `arch_signed` and `scalar_shift` are not independent production coordinates. This is a **lead**, not yet a theorem excluding all reflected twins.
 
-### Formal lane — sign-neutral derivative witnesses
+The next research pass should impose actual common-aperture production structure progressively and identify the first constraint that destroys the opposite-target twin. Only then should that constraint be considered for Lean formalization.
 
-The analytic infrastructure already proves entrywise holomorphy of the complete frozen complex source remainder. A useful next theorem package can transport this through exact parity projection and N2 predecessor/canonical-shell pairings to actual real derivative witnesses for
+## Current open obligations
 
 ```text
-a_R, Re b_R, Im b_R, d_R
+canonical production realizability of the post-#190 ambient twin      OPEN / ACTIVE
+actual N2 production remainder scalar derivative witnesses             OPEN
+actual production HasDerivAt Schur identity                            OPEN
+contact-local contradiction-producing arithmetic restriction           OPEN
+same-state first-bad opposing contact orientation                       OPEN
+centered finite-width H1 / q13 whole-cell contact classification        OPEN
+sourceMoment <-> M4 canonical-state rigidity                            OPEN
+simultaneous even/odd bad exclusion                                     OPEN
+odd-selected first-bad branch closure                                   OPEN
+negative-root exclusion                                                  OPEN
+outside-strip/trivial-zero terminal seam                                OPEN
+RiemannHypothesis                                                        OPEN
 ```
-
-and instantiate #184's algebraic identity as an actual production `HasDerivAt` Schur theorem.
-
-After #186 this is infrastructure, not evidence for a universal domination law.
-
-### Composition lane
-
-A surviving Pair-A route now has the form
-
-```text
-canonical selector C on the exact retained/contact state
-  -> narrowed contact-local remainder domination
-  -> #184 gives negative pivot orientation
-  -> independent first-bad theorem gives incompatible property
-  -> same-state contradiction
-```
-
-If no theorem-connectable selector survives the frozen controls, Pair A should be downgraded and the project should prioritize the other FB-05 incompatibility pairs: negative-index/sampling rigidity, local-zero rigidity, and the two-parity squeeze.
-
-## Production / coordinate firewalls
-
-- the q13 research integer shell generator spans the same one-dimensional shell as Lean's canonical cubic shell but is not theorem-identified with the same magnitude;
-- `t=log L` derivatives and physical-`L` derivatives differ by the factor `L` and must not be mixed;
-- analyticity does not imply a useful domination bound;
-- #186 mixed finite evidence is not a general sign theorem;
-- finite-width Schur/remainder claims require certified H1;
-- global minimizing-Schur monotonicity remains quarantined;
-- q13/N2/K3 finite evidence does not automatically generalize to arbitrary retained first-bad states.
-
-## Documentation authority
-
-Current living state is maintained in:
-
-- `research/RHRC/CURRENT_RESEARCH_PLAN.md`;
-- `research/RHRC/RESEARCH_LEADS.md`;
-- `research/RHRC/RESEARCH_LEADS_POST_186_REMAINDER_DRIFT_MIXED_DELTA.md`;
-- `research/RHRC/OBSTRUCTION_LEDGER_POST_186_DELTA.md`;
-- `research/RHRC/FB05_INCOMPATIBILITY_PROGRAM.md`;
-- `research/RHRC/DOCUMENTATION_AUTHORITY.md`;
-- `research/RHRC/VALIDATION_PROTOCOL.md`;
-- `research/RHRC/routes/R003_ccm_bridge/README.md`;
-- `research/RHRC/control_v2/CONTROL_STATE.json`.
-
-Older dated deltas, external reviews and countermodel records remain historical evidence and are not rewritten to look current.
 
 ## Permanent firewalls
 
-- RH remains OPEN.
-- theorem authority is compiler evidence, not PR title or prose.
-- research green is not theorem authority.
-- a green falsification run may reject its tested hypothesis.
-- finite Arb certification is not a global theorem.
-- transformed negativity is not a contradiction.
-- the contradiction must use incompatible properties of the exact same retained state/aperture/parity/normalization/production object.
+- compiler/CI evidence outranks prose;
+- theorem authority remains #184 until a later Lean-bearing PR passes the theorem gates;
+- #186 falsifies only broad domination in its frozen finite scope;
+- #189/#190 prove executable algebraic separability only in their declared ambient model;
+- ambient reflected twins are not automatically canonical production states;
+- do not resume arbitrary selector composition, threshold refitting, or subset search on G1/P1/P2/C1-C4;
+- actual production relations must use the same state, aperture, parity, normalization and production object;
+- negative-root exclusion remains OPEN;
+- **RH remains OPEN.**
+
+See `research/RHRC/CURRENT_RESEARCH_PLAN.md`, `research/RHRC/RESEARCH_LEADS.md`, `research/RHRC/FB05_INCOMPATIBILITY_PROGRAM.md`, and the post-#190 research delta for the current execution route.

@@ -48,8 +48,16 @@
         "PR #182 theoremizes the generic real 2x2 Schur-envelope derivative: Delta_2=aP, Delta_2'=a'P+aP', exact quotient/envelope equivalence, and at contact P=0 the identity Delta_2'=aP'; under H1 a>0 determinant and pivot derivative orientations agree",
         "PR #184 theoremizes the complex-Hermitian 2x2 Schur calculus, the full frozen parity production family M~(t)=-tI+R~(t), exact fixed-cell equality with parityCompressedCanonical, N2 predecessor/canonical-cubic-shell reconstruction and orthogonality, the algebraic P_t'=-envelopeNormSq+remainderEnvelopeDerivative split, and the conditional negative-orientation theorem when the remainder drift is dominated",
         "PR #184 closes the production/Hermitian/log-cover algebraic interface but does not yet assemble the actual source-specific real remainder-coordinate derivative witnesses, prove the fully instantiated production HasDerivAt Schur identity, prove source-specific remainder domination, or supply the opposing first-bad contact orientation",
-        "the immediate highest-information research route is to reuse the exact #180 physical-L schedule and split dP/dL=-envelopeNormSq/L+remainder_drift_L, reporting the domination margin and the ratio L*remainder_drift_L/envelopeNormSq before further theorem investment",
-        "the next formal bridge, if the signal survives, is finite-dimensional transport of already-proved frozen-source complex analyticity through parity projection and the N2 predecessor/canonical-shell scalar pairings to actual real derivative witnesses",
+        "PR #186 executes the coordinate-correct physical-L split dP/dL=-envelopeNormSq/L+remainder_drift_L on the frozen #180 panel and returns DOMINATION_SIGNAL_MIXED, falsifying the simple universal production-remainder domination formulation in that tested scope",
+        "the normalized #186 physical-L diagnostic is L*remainder_drift_L/envelopeNormSq and remains the coordinate-consistent dimensionless ratio",
+        "PR #188 freezes the normalization-safe mixed-drift selector surface with seven strong-eligible geometry/parity/source observables and three diagnostic remainder components",
+        "PR #189 exact-rationally shows each frozen selector separately is semantically separable from the normalized target sign in the ambient selector algebra",
+        "PR #190 closes the composition hole: the full seven-dimensional strong selector vector and its nonboundary threshold signature can be identical while normalized FB-05 target signs differ; all 127 nonempty subsets are therefore also insufficient in the audited ambient algebra",
+        "PR #190 explicitly does not claim canonical arithmetic realizability of its reflected pair, theorem promotion, FB-05 closure, negative-root exclusion, or RH",
+        "the immediate highest-information research route is now canonical production realizability of the #190 reflected twin, not another selector combination or threshold refit",
+        "the realizability audit should progressively impose source-channel construction coupling, the scalar-aperture law, common direct-arch derivative, common Schur geometry and full same-L/same-Q/same-parity canonical source reconstruction",
+        "the executable identity scalar_shift=2*cCorrection'(L) I and arch_signed=-arch_direct-scalar_shift is a candidate production constraint, not yet a theorem-backed exclusion law",
+        "the next formal bridge, if a decisive exact production relation is isolated, is finite-dimensional transport of already-proved frozen-source complex analyticity through parity projection and the N2 predecessor/canonical-shell scalar pairings to actual real derivative witnesses",
         "the research integer shell generator is only known to span the same one-dimensional shell as Lean's intrinsic cubic shell and is not normalization-identified; formal theorem work must stay on the canonical intrinsic cubic shell",
         "log-coordinate derivatives d/dt with t=log L must not be compared directly to physical-aperture d/dL research derivatives; d/dL introduces the factor 1/L in the universal drift",
         "repeating the same raw assembled derivative boxes with only more precision/depth is not a route change after PR #178",
@@ -77,7 +85,7 @@
       "first_breaks": [
         {
           "id": "E4A4-SCHUR-FB-05",
-          "statement": "after consuming the #165-#184 theorem/research sequence, #184 already closes the complex-Hermitian production/log-cover algebraic bridge and proves that remainder domination would force negative pivot orientation; what remains is that no theorem-backed source-specific actual remainder-derivative bound, parity restriction, source-sampling relation, endpoint-scalar consequence, or other independent canonical invariant forces an incompatible restriction on the exact retained first-bad/contact state without restating successor positivity, and the required opposing first-bad contact orientation has not yet been composed on that same state",
+          "statement": "after consuming the #165-#184 theorem/research sequence and the #186-#190 falsification/selector sequence, #184 already closes the complex-Hermitian production/log-cover algebraic bridge while #190 shows the frozen seven-selector observation surface is insufficient in the ambient normalized algebra; what remains is that no theorem-backed source-specific production-realizability relation, remainder-derivative bound, parity restriction, source-sampling relation, endpoint-scalar consequence, or other independent canonical invariant forces an incompatible restriction on the exact same state, namely the retained first-bad/contact state, without restating successor positivity, and the required opposing first-bad contact orientation has not yet been composed on that same state",
           "test_id": "falsify_and_prove_fb05_canonical_arithmetic_restriction",
           "estimated_cost": 2.0,
           "decisive_if_failed": true
@@ -96,7 +104,8 @@
         "PR #137 proves canonicalOneStepDomination is sufficient but not its arithmetic truth",
         "under predecessor nonnegativity and one-dimensional shell geometry, universal domination is essentially the missing successor positivity and has no information gain if proved by restatement",
         "PR #163 sharpens the selected-state arithmetic route but does not make universal domination a smaller theorem",
-        "PRs #165-#184 sharpen the route toward local contact orientation plus a source-specific production remainder restriction rather than universal domination",
+        "PR #186 experimentally falsifies the simple universal production-remainder domination formulation on the frozen dangerous-state panel",
+        "PR #190 shows the frozen strong-selector vector cannot rescue that broad route inside the ambient normalized algebra",
         "generic Hermitian/parity/KKT/transfer/displacement structure remains quarantined by countermodels",
         "factorwise alpha/Gamma/overlap/source-moment closure remains quarantined",
         "atomwise positive determinant/SOS remains quarantined"
@@ -139,7 +148,9 @@
         "PR #159 exposes exact retained boundary defects but does not supply an opposing sign",
         "PR #161 aligns the even negative secular trial with exact Riesz-8/Riesz-9 structure and the cross-parity explicit source obstruction",
         "PR #163 aligns that same retained even shifted trial with the exact mixed seventh source jet and squared-jet Riesz boundary, but still supplies no contradiction-producing arithmetic restriction",
-        "PRs #165-#184 narrow the surviving arithmetic search to same-state/contact-local arithmetic restrictions; #184 supplies the exact Hermitian/log-drift interface but not the source-specific domination theorem or opposing first-bad orientation needed for exclusion",
+        "PR #184 supplies the exact Hermitian/log-drift interface but not the source-specific sign theorem or opposing first-bad orientation needed for exclusion",
+        "PR #186 falsifies broad domination in the tested frozen scope and PR #190 shows the frozen seven-selector observation surface is insufficient in the ambient normalized algebra",
+        "canonical production realizability of the #190 reflected twin remains open",
         "no division by alpha, Gamma, overlap or source moment is legal without separate nonzeroness",
         "terminal Mathlib RH still requires the outside-strip/trivial-zero seam after negative-root exclusion"
       ],
