@@ -319,7 +319,21 @@
     "invariant Hermitian Schur",
     "shell normalization bridge",
     "DictionaryArchBridge",
-    "digamma bridge"
+    "digamma bridge",
+    "mixed drift selector",
+    "selector semantic independence",
+    "joint selector separability",
+    "strong selector vector",
+    "ambient normalized algebra",
+    "smooth channel sign reflection",
+    "scalar channel reflection",
+    "canonical production realizability",
+    "production realizability constraint",
+    "common aperture production state",
+    "same aperture trajectory",
+    "arch scalar coupling",
+    "arch scalar cancellation",
+    "same-L canonical source reconstruction"
   ],
   "shifted_coercivity": [
     "shifted coercivity",
