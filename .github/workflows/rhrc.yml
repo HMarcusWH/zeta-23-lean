@@ -241,6 +241,19 @@ jobs:
             --input research/RHRC/routes/R003_ccm_bridge/fixtures/post188_fb05_q14_mixed_drift_selector_independence_v1.json \
             --schedule /tmp/POST188_Q14_SELECTOR_INDEPENDENCE_SCHEDULE.json \
             --output /tmp/POST188_Q14_SELECTOR_INDEPENDENCE_CERTIFICATE.json
+      - name: Check post-#189 joint-selector separability plumbing
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post189_fb05_joint_selector_separability_scope.py
+      - name: Probe post-#189 frozen joint-selector scope
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post189_fb05_joint_selector_separability_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post189_fb05_joint_selector_separability_v1.json \
+            --output /tmp/POST189_FB05_JOINT_SELECTOR_SCHEDULE.json
+      - name: Certify post-#189 joint-selector separability
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post189_fb05_joint_selector_separability_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post189_fb05_joint_selector_separability_v1.json \
+            --schedule /tmp/POST189_FB05_JOINT_SELECTOR_SCHEDULE.json \
+            --output /tmp/POST189_FB05_JOINT_SELECTOR_CERTIFICATE.json
       - name: Audit R004 scalar-shift invariants
         run: python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
       - name: Reject external reference code as a Lean dependency
