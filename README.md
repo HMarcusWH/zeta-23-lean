@@ -10,12 +10,12 @@ Live GitHub head + exact Lean/compiler/CI evidence are authoritative dynamically
 
 ```text
 THEOREM AUTHORITY
-latest theorem-bearing PR = #182
-validated theorem head = 0c3f63cdc4774ba1a68b21d1558ea0ee860a938d
-merged theorem commit = a69160d37a84049711aaff6c3d5db804583a7306
-validated theorem tree = e0b260b3b3a1ed470d54c14d8c0c46b32379f3fb
-RHRC #1082 = SUCCESS
-Permansson #855 = SUCCESS
+latest theorem-bearing PR = #184
+validated theorem head = a756494ebe7e2530715e996b9a9a341fbe07c683
+merged theorem commit = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
+validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
+RHRC #1089 = SUCCESS
+Permansson #862 = SUCCESS
 
 LATEST RESEARCH-EVIDENCE ANCHOR
 merged research PR = #180
@@ -58,11 +58,19 @@ mixed-jet squared Riesz-8/Riesz-9 boundary coupling                     PROVED /
 retained mixed-jet/Riesz specialization                                 PROVED / #163
 generic real 2x2 Schur-envelope derivative calculus                     PROVED / #182
 H1 contact determinant/pivot derivative orientation equivalence         PROVED / #182
+complex-Hermitian 2x2 Schur calculus                                    PROVED / #184
+full frozen parity production family M~(t)=-tI+R~(t)                    PROVED / #184
+exact fixed-cell bridge to parityCompressedCanonical                    PROVED / #184
+N2 predecessor/canonical-cubic-shell reconstruction and orthogonality   PROVED / #184
+algebraic P_t'=-envelopeNormSq+remainderEnvelopeDerivative              PROVED / #184
+remainder domination -> negative pivot orientation                      PROVED / #184
 
 source-moment / M4 canonical-state rigidity                             OPEN
 endpoint-scalar global sign/nonvanishing                                OPEN
-production/Hermitian Schur-envelope bridge                              OPEN
-source-specific production remainder/contact sign                      OPEN
+actual production remainder scalar derivative witnesses                OPEN
+actual production HasDerivAt Schur log-drift identity                  OPEN
+source-specific production remainder domination/contact sign           OPEN
+first-bad contact existence/orientation composition                     OPEN
 q13 finite-width H1 / whole-cell sign-contact classification            OPEN / ACTIVE
 simultaneous even/odd bad exclusion                                     OPEN
 odd-selected first-bad branch closure                                   OPEN
@@ -71,35 +79,45 @@ outside-strip/trivial-zero seam + Mathlib RH wrapper                    OPEN
 RH                                                                      OPEN
 ```
 
-## What #182 changed
+## What #184 changed
 
-PR #182 adds `Zeta23/CCM/SchurEnvelopeDerivative.lean` to the aggregate CCM build. For the generic real block
+PR #184 moves the contact-orientation route from a real research proxy to the actual complex-Hermitian production geometry.
 
-```text
-H = [[a,b],[b,d]]
-P = d - b^2/a
-Delta_2 = a*d - b^2
-```
-
-Lean proves
+For a Hermitian 2x2 block, Lean now uses the genuine correction
 
 ```text
-Delta_2 = a P
-P' = d' - 2*(b/a)*b' + (b/a)^2*a'
-Delta_2' = a'd + ad' - 2bb'
-Delta_2' = a'P + aP'
-P' = (Delta_2' a - Delta_2 a')/a^2.
+P = d - |b|^2/a
 ```
 
-At contact `P=0`,
+and theoremizes the corresponding pivot/determinant derivative calculus, including real-component derivative theorems for the complex off-diagonal coordinate.
+
+More importantly, #184 defines the full frozen parity production family on logarithmic coordinate `t` and proves
 
 ```text
-Delta_2' = aP'.
+M~(t) = -t I + R~(t)
 ```
 
-Under H1 (`a>0`), determinant and pivot derivative orientations agree.
+with exact fixed-cell equality back to the actual `parityCompressedCanonical` family.
 
-This is theorem-backed **generic contact calculus**. It does not prove a contact exists, a production arithmetic sign, global Schur monotonicity, first-bad exclusion, negative-root exclusion or RH.
+For the N2/K3 intrinsic predecessor/shell geometry it proves the canonical cubic shell is nonzero, the predecessor and shell reconstruct the successor, and they are orthogonal. Under the required scalar derivative data, Lean proves the exact algebraic envelope split
+
+```text
+P_t' = -envelopeNormSq + remainderEnvelopeDerivative
+```
+
+and therefore
+
+```text
+remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0.
+```
+
+This isolates all possible cancellation of the universal negative drift into the production remainder derivative.
+
+### #184 claim firewall
+
+#184 does **not** yet transport the already-proved complex remainder holomorphy all the way to the actual N2 real scalar derivative witnesses. It therefore does not yet give a fully instantiated production `HasDerivAt` Schur theorem or a source-specific domination inequality.
+
+It also does not prove contact existence/uniqueness, a first-bad crossing orientation theorem, global Schur monotonicity, first-bad exclusion, negative-root exclusion or RH.
 
 ## Research progression through #180
 
@@ -113,7 +131,7 @@ The post-#163 finite research chain remains consumed infrastructure/evidence:
 - **#172:** threshold-to-threshold production barrier audit; current-q entry lift sign-indefinite.
 - **#174:** q13/N2/K3/even exact 2x2 scalar barrier; direct scalar interval subdivision unresolved.
 - **#176:** fixed-unit value representation accepted by the frozen factor-2 width benchmark.
-- **#178:** complete fixed-Q derivative implementation validated; raw nonzero-width derivative boxes unresolved.
+- **#178:** complete fixed-Q physical-`L` derivative implementation validated; raw nonzero-width derivative boxes unresolved.
 - **#180:** all six frozen primary exact-center derivative balls are minimum-oriented; nonzero-width Schur boxes are `SCHUR_OUT_OF_H1_SCOPE` with zero applicable primaries.
 
 Exact #180 point state:
@@ -128,41 +146,55 @@ uniqueness_claim = false
 
 ## Current active path — FB-05
 
-The active strategy is now explicitly a **same-state incompatibility** search rather than a requirement for one RH-sized miracle lemma.
+The active strategy is a **same-state incompatibility** search rather than a requirement for one RH-sized miracle lemma.
 
-### Finite lane
+### Immediate finite falsification lane
+
+#184 is written in `t=log L`, while the existing R003 derivative backend differentiates with respect to physical aperture `L`. Therefore
 
 ```text
-1. centered H1 recovery from point a(L0)>0 + rigorous a'(I)
-2. inside recovered H1, retry the theorem-backed Schur derivative graph
-3. if still unresolved, add Delta_2'' and centered mean-value/Taylor propagation
-4. only after signed left/right neighborhoods, attempt interval Newton/Krawczyk
+dP/dt = -E + dR/dt
 ```
+
+must be compared to the R003 form
+
+```text
+dP/dL = -E/L + dR/dL.
+```
+
+The next research test should reuse the exact frozen #180 q13/Q14 schedule and separately report
+
+```text
+universal_log_drift_L = -E/L
+production_remainder_drift_L
+full_pivot_derivative_L
+domination_margin_L = E/L - production_remainder_drift_L
+normalized_ratio = L * production_remainder_drift_L / E
+```
+
+with an exact arithmetic/enclosure cross-check that the two components reconstruct the full derivative.
+
+This test should be run **before** theorem investment in the source-specific domination bound.
 
 ### Formal Pair-A lane
 
-The production fixed-cell theorem inventory already contains exact decompositions of the form
+The analytic infrastructure already proves entrywise holomorphy of the complete frozen complex source remainder. The next theorem bridge should transport that through the exact parity projection and N2 predecessor/canonical-shell pairings to produce actual real derivative witnesses for
 
 ```text
-M_Q(L) = -log(L) I + R_Q(L).
+a_R, Re b_R, Im b_R, d_R.
 ```
 
-The next formal target is a normalization-safe production/Hermitian Schur-envelope theorem that isolates the universal drift
+Those witnesses then instantiate #184's algebraic identity as an actual production `HasDerivAt` Schur theorem. Only after that should the project attempt a source-specific contact-local remainder domination theorem.
 
-```text
-P'_log = -||u_L||^2/L
-```
+## Production / coordinate firewalls
 
-plus an exact scalar production remainder derivative. The hoped-for second lemma is a source-specific contact-local remainder bound forcing an orientation incompatible with first-bad crossing.
-
-## Production bridge firewalls
-
-- the q13 research integer shell generator spans the same one-dimensional shell as Lean's canonical cubic shell but is not theorem-identified at the same magnitude;
-- formal production is complex Hermitian while #182 is generic real 2x2 calculus;
-- existing source-coordinate `omega` derivative transport is not aperture-`L` derivative control;
-- do not silently discard moving-optimizer derivative terms;
+- the q13 research integer shell generator spans the same one-dimensional shell as Lean's canonical cubic shell but is not theorem-identified with the same magnitude;
+- #184 closes the complex-Hermitian/log-cover algebraic interface, not the source-specific derivative magnitude bound;
+- `t=log L` derivatives and physical-`L` derivatives differ by the factor `L` and must not be mixed;
+- analyticity does not imply a useful domination bound;
+- do not silently discard moving-optimizer/envelope terms;
 - global minimizing-Schur monotonicity remains quarantined;
-- q13 whole-cell positivity alone would still be a finite result until generalized to the arbitrary retained first-bad state.
+- q13/N2/K3 finite evidence does not automatically generalize to arbitrary retained first-bad states.
 
 ## Documentation authority
 
@@ -170,7 +202,7 @@ Current living state is maintained in:
 
 - `research/RHRC/CURRENT_RESEARCH_PLAN.md`;
 - `research/RHRC/RESEARCH_LEADS.md`;
-- `research/RHRC/RESEARCH_LEADS_POST_182_SCHUR_ENVELOPE_CONTACT_ORIENTATION_DELTA.md`;
+- `research/RHRC/RESEARCH_LEADS_POST_184_HERMITIAN_LOG_DRIFT_REMAINDER_DOMINATION_DELTA.md`;
 - `research/RHRC/FB05_INCOMPATIBILITY_PROGRAM.md`;
 - `research/RHRC/DOCUMENTATION_AUTHORITY.md`;
 - `research/RHRC/VALIDATION_PROTOCOL.md`;
@@ -188,7 +220,7 @@ Older dated deltas, external reviews and countermodel records remain historical 
 - transformed negativity is not a contradiction.
 - `UNRESOLVED` is not sign evidence.
 - global aperture/Schur monotonicity remains quarantined.
-- generic #182 contact calculus is not a canonical arithmetic sign law.
+- #184's algebraic log-drift split is not a source-specific arithmetic domination theorem.
 - determinant and pivot minima are distinct optimization targets.
 - simultaneous parity badness and odd-selected coverage remain open.
 - negative-root exclusion is not the terminal Mathlib `RiemannHypothesis` statement without the final seam.
