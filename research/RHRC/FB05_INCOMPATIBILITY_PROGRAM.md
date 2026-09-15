@@ -58,6 +58,20 @@ R_t' < E -> P_t' < 0
 
 This closes the algebraic production interface but not the arithmetic sign premise.
 
+## Permanent equivalence / external-research firewalls
+
+The post-#190 reroute does not erase earlier reusable warnings:
+
+- `ArithmeticSideSubexponential` is the PR #27 scalar equivalence wall: an apparently easier scalar upper-bound target can be RH wearing a different name.
+- `negative-index` separation remains an independent structural input and should not be conflated with the current production-realizability route.
+- The external 67.25% simple-critical-zero result is compatible with a sparse exceptional off-line set; percentage counting alone cannot exclude one exceptional quartet.
+- Where two external results instantiate essentially the same quadratic extremal mechanism, **Do not count them as two independent** constraints.
+- **Sparse-exception test:** any global exclusion argument based on density/percentage information must explicitly control a thin exceptional set.
+- **Mustache test:** reject a proposed reduction if it is equivalent to RH, successor positivity, or another open target after notation is unpacked.
+- Preserve the `coordinate` firewall: logarithmic `t=log L` derivatives and physical-aperture `L` derivatives differ by the factor `L`.
+
+These remain research hygiene rules even though the immediate Pair-A bottleneck has moved to canonical production realizability.
+
 ## Research inputs
 
 ### #186 — broad Pair-A domination falsifier
