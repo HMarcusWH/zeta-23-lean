@@ -1,0 +1,116 @@
+{
+  "schema_version": "POST202_FB05_Q14_COMPOSITE_PARITY_GAP_FIXTURE_v1",
+  "claim_cap": "POST202_Q14_COMPOSITE_PARITY_GAP_RESEARCH_ONLY",
+  "base_main_sha": "cd556456c661c797c3602f90c1f54e24add08acd",
+  "base_main_tree": "7077b57882d7a1970ceae52cb6d100fd7ace28d2",
+  "theorem_authority_pr": 184,
+  "research_authority_pr": 201,
+  "research_authority_head_sha": "be5b98dfce12777436bc40b39a37b04669ae4311",
+  "research_authority_merge_sha": "319db6f68f65bdcffc0657c03bea76502da59a57",
+  "research_authority_tree_sha": "840a2e8b0bf690507bc3385fbe122210e6d32c7a",
+  "routing_sync_pr": 202,
+  "inherited_post201_fixture": "post200_fb05_q14_discrepancy_mechanism_v1.json",
+  "inherited_post201_fixture_blob_sha": "667feb4d5b7ab58360b506ee4d0ce71d3c1b8d4e",
+  "inherited_post201_backend": "post200_fb05_q14_discrepancy_mechanism.py",
+  "inherited_post201_backend_blob_sha": "9700eb493efab085367b7495c17253da11207167",
+  "inherited_post201_paired_backend": "post200_fb05_q14_discrepancy_channel_jets.py",
+  "inherited_post201_paired_backend_blob_sha": "b792d5e96455d599f334f1eef2fa591854f6c442",
+  "inherited_post201_scope_check": "check_post200_fb05_q14_discrepancy_mechanism_scope.py",
+  "inherited_post201_scope_check_blob_sha": "6d70057c692c94ac26a948c6c7fb593d3505426d",
+  "inherited_post201_probe": "probe_post200_fb05_q14_discrepancy_mechanism_scope.py",
+  "inherited_post201_probe_blob_sha": "a61e666e98084775635c53a4a1420822c63ff9f8",
+  "inherited_post201_certifier": "certify_post200_fb05_q14_discrepancy_mechanism_scope.py",
+  "inherited_post201_certifier_blob_sha": "8c7c843336b619aaa3ea69e8c63f26fbe4bcf53a",
+  "theorem_scalar_split_source": "Zeta23/CCM/FrozenCanonicalSourceAnalytic.lean",
+  "theorem_scalar_split_source_blob_sha": "0c4e76ee7aa6afa666b84472976cd9268afb5672",
+  "theorem_parity_log_source": "Zeta23/CCM/FrozenN2SchurLogDrift.lean",
+  "theorem_parity_log_source_blob_sha": "456464607afcd86266025ea9dd3ae62cad6b5087",
+  "trajectory_transport_backend": "post194_fb05_q14_parity_trajectory_sharp_enclosure.py",
+  "trajectory_transport_backend_blob_sha": "9b655e012815d12a8d774e589bad1f21b3a7abf2",
+  "selected_target": {
+    "q_start": 13,
+    "q_end": 16,
+    "predecessor_N": 2,
+    "successor_K": 3,
+    "selected_parity": "even",
+    "primary_Q": 14
+  },
+  "required_ancestry_control": {
+    "predecessor_N": 2,
+    "parity": "odd"
+  },
+  "arb_precision_bits": 384,
+  "implementation_check_precision_bits": 192,
+  "implementation_check_labels": [
+    "Q13_midpoint",
+    "Q14_determinant_basin",
+    "Q15_midpoint"
+  ],
+  "implementation_check_h_bits": [14, 18, 22],
+  "implementation_check_relative_tolerance": 0.002,
+  "implementation_check_absolute_tolerance": 1e-08,
+  "center_kill_switch_pattern": {
+    "E": "STRICT_POSITIVE",
+    "G": "STRICT_POSITIVE",
+    "G_prime": "NONNEGATIVE",
+    "E_prime": "NONPOSITIVE"
+  },
+  "expected_post197": {
+    "classification": "GLOBAL_MONOTONE_ORIENTATION",
+    "uniform_orientation": "J_POSITIVE",
+    "leaf_count": 49,
+    "unresolved_span_count": 0
+  },
+  "expected_post201": {
+    "mechanism_classification": "DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED",
+    "positive_source_sum_leaf_count": 0,
+    "unresolved_source_sum_leaf_count": 49,
+    "control_transfer_status": "NO_UNIQUE_PRIMARY_LOCK"
+  },
+  "permitted_mechanism_classifications": [
+    "COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED",
+    "COMPOSITE_PARITY_GAP_LOCK",
+    "COOPERATIVE_COMPOSITE_LOCK",
+    "MIXED_COMPOSITE_RECONSTRUCTABLE",
+    "COMPOSITE_PARITY_GAP_DEPENDENCY_UNRESOLVED"
+  ],
+  "permitted_control_transfer_statuses": [
+    "PATTERN_FALSIFIED_BEFORE_FULL_COVER",
+    "COMPOSITE_LOCK_SURVIVES_Q13_Q15_CONTROLS",
+    "Q14_LOCAL_COMPOSITE_ONLY",
+    "NO_UNIQUE_COMPOSITE_LOCK"
+  ],
+  "policy": {
+    "post197_completed_cover_replay_required": true,
+    "post201_disposition_replay_required": true,
+    "theorem_aligned_scalar_split_required": true,
+    "scalar_cancellation_before_interval_transport_required": true,
+    "full_composite_only_classifier_required": true,
+    "exact_center_kill_switch_required": true,
+    "center_gate_before_full_cover_required": true,
+    "direct_method_c_transport_reconstruction_required": true,
+    "exact_inherited_leaf_partition_required": true,
+    "control_blind_mechanism_selection_required": true,
+    "new_q_n_k_parity_search_permitted": false,
+    "source_channel_selector_permitted": false,
+    "selector_refit_permitted": false,
+    "threshold_refit_permitted": false,
+    "target_sign_import_permitted": false,
+    "precision_increase_permitted": false,
+    "adaptive_budget_increase_permitted": false,
+    "center_pattern_rescue_search_permitted": false,
+    "control_informed_mechanism_selection_permitted": false,
+    "theorem_promotion_permitted": false
+  },
+  "nonclaims": [
+    "This PR is rigorous Arb research/falsification tooling, not Lean theorem authority.",
+    "The scalar-free executable contrast is a research port of the exact PR #184 decomposition M_Q(L) = -log(L) I + R_Q(L).",
+    "The trace-zero parity contrast annihilates every common scalar identity direction before interval transport.",
+    "The predeclared exact-center sign pattern is a kill-switch; if it fails at any frozen primary center the 49-leaf composite mechanism audit is not executed.",
+    "The direct Method-C evaluator remains the independent authority for the already-certified frozen Q14 J>0 sign.",
+    "A bounded composite lock would still require arbitrary-state generalization and formalization before becoming an FB-05 theorem.",
+    "Failure of the composite representation does not invalidate the direct PR #197 J>0 certificate.",
+    "No FB-05 closure, negative-root exclusion, or RH claim is established.",
+    "RH remains OPEN."
+  ]
+}

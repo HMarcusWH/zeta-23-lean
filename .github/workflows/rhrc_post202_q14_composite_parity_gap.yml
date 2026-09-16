@@ -1,0 +1,40 @@
+name: RHRC post-202 Q14 composite parity gap
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+concurrency:
+  group: rhrc-post202-q14-composite-parity-gap-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  post202-q14-composite-parity-gap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install R003 numerical audit requirements
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Recheck inherited post-#201 paired discrepancy jets
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post200_fb05_q14_discrepancy_channel_jets_scope.py
+      - name: Recheck inherited post-#201 discrepancy scope firewall
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post200_fb05_q14_discrepancy_mechanism_scope.py
+      - name: Check post-#202 theorem-aligned parity contrast jets
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post202_fb05_q14_parity_contrast_jets_scope.py
+      - name: Check post-#202 composite parity-gap scope
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post202_fb05_q14_composite_parity_gap_scope.py
+      - name: Probe post-#202 composite parity-gap schedule
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post202_fb05_q14_composite_parity_gap_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post202_fb05_q14_composite_parity_gap_v1.json \
+            --output /tmp/POST202_FB05_Q14_COMPOSITE_PARITY_GAP_SCHEDULE.json
+      - name: Certify post-#202 Q14 composite parity-gap mechanism
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post202_fb05_q14_composite_parity_gap_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post202_fb05_q14_composite_parity_gap_v1.json \
+            --schedule /tmp/POST202_FB05_Q14_COMPOSITE_PARITY_GAP_SCHEDULE.json \
+            --output /tmp/POST202_FB05_Q14_COMPOSITE_PARITY_GAP_CERTIFICATE.json
