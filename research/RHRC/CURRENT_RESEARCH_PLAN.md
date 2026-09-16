@@ -14,11 +14,11 @@ merged theorem commit = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
 validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
 
 LATEST RESEARCH EVIDENCE
-latest merged research PR = #197
-validated research head = 2d936f9764abdfeaa82127d5c834c6c3e429da25
-merged research commit = 162df6ce8bc13a816937d747f2965bff6764fad0
-validated research tree = 97f6372a4c7c131006b4abc090c86767b9e99990
-research disposition = GLOBAL_MONOTONE_ORIENTATION
+latest merged research PR = #199
+validated research head = fabe301c95277345f0efe764252ce1c1213a4112
+merged research commit = 27dda545b7ccdb2870088ebaf317d85e3d999555
+validated research tree = 85eb8ea25d240c4a9c339262bdc611fae881f7f0
+research disposition = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
 
 CONTROL AUTHORITY
 control-plane semantic anchor = PR #117
@@ -41,29 +41,18 @@ PROVED THROUGH #184
 
 COMPLETED RESEARCH HISTORY
   #186 broad domination test -> DOMINATION_SIGNAL_MIXED
-  #188 frozen strong-selector audit
-  #189 every individual frozen selector abstractly separable from target sign
-  #190 complete seven-dimensional strong vector jointly separable from target sign
-       -> all 127 nonempty subsets insufficient in audited ambient algebra
+  #190 complete seven-dimensional strong vector jointly separable
   #192 Layer 0 -> Layer 5 canonical production realizability audit
-       -> specific negative-scalar #190 witness excluded
-       -> general reflected mechanism not excluded
-       -> six-primary production panel has 0/15 seven-vector overlaps
-  #193 first-order Q14 parity-trajectory rigidity audit
-       -> 6/6 exact centers e>0, o>0, J>0, P2>0
-       -> 63 H1_UNRESOLVED
-       -> 33 J_UNRESOLVED
-       -> TRAJECTORY_RIGIDITY_UNRESOLVED
+  #193 first-order Q14 parity trajectory -> TRAJECTORY_RIGIDITY_UNRESOLVED
   #195 higher-order canonical trajectory enclosure
-       -> complete canonical M,M',M'' implementation validated
-       -> all 63 former H1 failures recovered
        -> 48 J_POSITIVE, 48 J_UNRESOLVED
        -> 0 J_NEGATIVE, 0 H1_UNRESOLVED
        -> one unresolved span
        -> certified t-fraction = 63/64
        -> PARTIAL_TRAJECTORY_ORIENTATION
+       -> historical global_positive_hull = false
+       -> historical bounded_distinct_aperture_twin_exclusion = false
   #197 unique residual-cell replay
-       -> exactly one inherited MAX_CELL_BUDGET leaf, width 1/64 of hull
        -> A = J_UNRESOLVED, B = J_POSITIVE, C = J_POSITIVE
        -> completed classification = GLOBAL_MONOTONE_ORIENTATION
        -> uniform orientation = J_POSITIVE
@@ -71,23 +60,32 @@ COMPLETED RESEARCH HISTORY
        -> certified t-fraction = 1
        -> global_positive_hull = true
        -> bounded_distinct_aperture_twin_exclusion = true
+  #199 source-mechanism audit on the same frozen Q14 hull
+       -> exact #197 cover replayed first
+       -> direct Method-C J remains J_POSITIVE on all 49 leaves
+       -> four-way source split = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+       -> collapsed three-way split = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+       -> selected collapsed uniform lock = null
+       -> NO_UNIQUE_COLLAPSED_UNIFORM_LOCK
 
-NOW — FB-05 / canonical parity-ordering mechanism
-  same frozen Q14 hull and canonical source lineage
-  complete bounded J>0 cover already established
-  OBS-056 CLOSED in this exact frozen research scope
-  OBS-057 OPEN: bounded-to-structural mechanism/generalization gap
-  explain/falsify why J stays positive rather than refine the cover again
-  source-mechanism audit of J' = o''e - e''o
-  retain all pole/arch/prime bilinear cross-channel terms
-  require rigorous reconstruction of the independent direct total
+NOW — FB-05 / cancellation-preserving parity mechanism
+  OBS-056 CLOSED in exact frozen Q14 research scope
+  OBS-057 OPEN / NARROWED: bounded-to-structural mechanism gap
+  OBS-058 OPEN: cancellation-preserving source representation gap
+  do not refine the complete #197 cover again
+  do not rerun the consumed #199 independent source split
+  preserve pole-prime cancellation before interval transport
+  build D = pole + prime_signed and A = direct_arch_signed
+  construct D,D',D'' and A,A',A'' upstream
+  parity-restrict only after pairing
+  require exact reconstruction of independent direct Method C
 ```
 
 ## What #184 still gives
 
-PR #184 proves the exact algebraic contact/log-drift interface. It does not prove the actual arithmetic remainder satisfies a useful sign/magnitude law. Its conditional sign theorem remains fully valid after #186-#197.
+PR #184 proves the exact algebraic contact/log-drift interface. It does not prove the actual arithmetic remainder satisfies a useful sign/magnitude law. Its conditional sign theorem remains fully valid after #186-#199.
 
-## Completed research history — preserve consumed layers
+## Historical contracts that remain binding
 
 ### #190 ambient selector composition
 
@@ -96,13 +94,15 @@ The project must continue to preserve:
 ```text
 STOP searching combinations/refits of G1/P1/P2/C1-C4
 all 127 nonempty subsets are closed by the full-vector witness
+EXACT_TWIN_SURVIVES
+EXACT_TWIN_EXCLUDED_BY_IDENTITY
 ```
 
-The #190 reflected pair is ambient algebra and does not claim canonical production realizability.
+The first label records the ambient reflected construction that survives the selector surface; the second records exclusion of the specific negative-scalar witness once the exact scalar-aperture identity is imposed. These are historical research classifications, not current theorem claims.
 
 ### #192 canonical production realizability
 
-The canonical production realizability ladder is completed research history:
+The canonical production realizability ladder remains consumed research history:
 
 ```text
 Layer 0  AMBIENT_NORMALIZED
@@ -113,15 +113,7 @@ Layer 4  COMMON_SCHUR_GEOMETRY
 Layer 5  CANONICAL_PRODUCTION
 ```
 
-Permitted historical evidence classes remain:
-
-```text
-EXACT_TWIN_SURVIVES
-EXACT_TWIN_EXCLUDED_BY_IDENTITY
-UNRESOLVED
-```
-
-The specific #190 witness is `EXACT_TWIN_EXCLUDED_BY_IDENTITY` under the exact positive scalar-aperture law. A positive-scalar adversarial control is `EXACT_TWIN_SURVIVES` at that layer. Bounded later layers remain `UNRESOLVED` for general twin existence; 0/15 overlaps on six primary states are not an injectivity theorem.
+The specific #190 witness is excluded under the exact positive scalar-aperture law. Bounded later layers remain UNRESOLVED for general twin existence; 0/15 overlaps on six primary states are not an injectivity theorem.
 
 ### #193 parity trajectory rigidity
 
@@ -140,7 +132,7 @@ sign(P1') = sign(P2) = sign(J).
 
 All 6/6 inherited exact Q14 primary centers certify `e>0`, `o>0`, `J>0`, `P2>0`.
 
-The first-order finite-width cover nevertheless returned:
+The first-order finite-width cover on the same frozen Q14 hull returned:
 
 ```text
 96 evaluated cells
@@ -151,11 +143,17 @@ The first-order finite-width cover nevertheless returned:
 TRAJECTORY_RIGIDITY_UNRESOLVED
 ```
 
-This did not locate a fold. It isolated a representation/dependency bottleneck.
+Do **not** infer this from points: exact-center positivity does not determine finite-width orientation. #193 isolated a representation/dependency bottleneck; it did not locate a fold.
 
-### #195 higher-order sharp enclosure — historical partial state
+### #195 higher-order canonical trajectory enclosure — historical partial state
 
-PR #195 executes the higher-order canonical trajectory enclosure on the same frozen Q14 hull and validates
+The exact differential identity used by the mechanism programme is
+
+```text
+J' = o''e - e''o
+```
+
+and PR #195 validates
 
 ```text
 M''(L) = pole''(L) - arch''(L) - prime''(L).
@@ -180,8 +178,6 @@ bounded_distinct_aperture_twin_exclusion = false
 
 Methods B and C have identical orientation counts. The H1 obstruction was removed; one budget-limited span remained.
 
-Do **not** infer this from points: #195 itself did not establish the full-hull sign. Its `PARTIAL_TRAJECTORY_ORIENTATION` / `63/64` state remains historical evidence.
-
 ### #197 complete frozen-Q14 orientation
 
 PR #197 replays #195 unchanged, confirms exactly one `MAX_CELL_BUDGET` leaf of width `1/64` of the hull, and evaluates that cell exactly once with the unchanged evaluator.
@@ -191,40 +187,73 @@ A = J_UNRESOLVED
 B = J_POSITIVE
 C = J_POSITIVE
 replayed_cell_orientation = J_POSITIVE
-```
-
-After replacing only that sentinel, the inherited 49-leaf partition gives:
-
-```text
 GLOBAL_MONOTONE_ORIENTATION
 uniform orientation = J_POSITIVE
-unresolved span count = 0
 certified t-fraction = 1
 global_positive_hull = true
 bounded_distinct_aperture_twin_exclusion = true
 ```
 
-This is rigorous bounded research for the exact frozen Q14 encoded domain. No Lean theorem was promoted.
+This is rigorous bounded research for the exact frozen Q14 encoded domain. No Lean theorem was promoted. The post-#197 next step was the source-mechanism audit of `J' = o''e - e''o`; #199 has now executed and consumed that audit.
 
-## Active lead A — canonical parity-ordering mechanism
+### #199 source-mechanism audit — completed and dependency-unresolved
+
+The source-mechanism audit keeps the same frozen Q14 hull and first replays the complete #197 cover. It validates four-way canonical source jets through second aperture order and both four-way and collapsed source-interaction reconstructions against independent direct Method C.
+
+```text
+post197_classification = GLOBAL_MONOTONE_ORIENTATION
+post197_uniform_orientation = J_POSITIVE
+completed_leaf_count = 49
+mechanism_classification = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+four_way_classification = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+collapsed_three_way_classification = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+selected_collapsed_uniform_lock_group = null
+control_transfer_status = NO_UNIQUE_COLLAPSED_UNIFORM_LOCK
+```
+
+Interpretation:
+
+```text
+direct correlated Method C remains rigorously positive
+source-separated interval attribution loses the sign
+```
+
+Therefore #199 does not falsify the Q14 ordering and does not prove that no source mechanism exists. It falsifies the sufficiency of the current independently enclosed source-interaction graph as a mechanism extractor.
+
+## Active lead A — cancellation-preserving pole-prime discrepancy representation
 
 **Status:** HIGHEST INFORMATION / NEXT RESEARCH PR.
 
-The bounded sign question is now consumed. The hypothesis to explain and aggressively falsify is not merely `J>0` on this already-certified hull, but the possibility of an independently meaningful canonical arithmetic relation behind that ordering.
-
-The exact derived identities are
+Existing theorem history already treats the pole-prime discrepancy as a cancellation-preserving canonical object. DR-020 warns that splitting pole and prime into loose independent envelopes can destroy the relevant residue.
 
 ```text
-J' = o''e - e''o
-(o/e)' = J/e^2
-(log(o/e))' = J/(o*e).
+D = pole + prime_signed
+A = direct_arch_signed
+M = D + A
 ```
 
-The next source-mechanism audit must decompose the canonical pole/arch/prime source jet while retaining every bilinear cross-channel term. It must rigorously reconstruct the independently evaluated direct `J'` before any dominance interpretation is trusted.
+where `prime_signed` already carries the production minus sign.
 
-Preferred classifications are structural, not target-fitted: single-channel dominated, stable cross-channel interaction, cancellation dominated, or mechanism unresolved.
+Do not obtain `D` by adding already-enclosed pole and prime Wronskian intervals. Construct
 
-If a compact source law survives falsification controls, isolate the smallest theorem candidate. If the orientation is cancellation-fragile, downgrade Pair A rather than widening the Q14 search.
+```text
+D, D', D''
+A, A', A''
+```
+
+at source/matrix level first. Only then restrict to even/odd normalized predecessors and perform the centered second-order transport.
+
+The two-channel Wronskian decomposition has only three interaction groups:
+
+```text
+J_DD
+J_DA
+J_AA
+```
+
+Their sum must rigorously reconstruct the same independent direct Method-C `J` on every inherited #197 leaf. If this remains dependency-unresolved, stop source chopping and search for a higher-level exact composite parity identity rather than increasing precision, depth or population.
+
+This is a LEAD / HYPOTHESIS, not a theorem-backed sign law.
 
 ## Active lead B — parity-ratio formulation
 
@@ -235,13 +264,7 @@ When `e,o>0`,
 (log(o/e))' = J/(oe).
 ```
 
-The frozen Q14 ratio is therefore strictly increasing at research-certification level. A generic monotonicity/injectivity lemma is a clean Lean target only after a source premise worth theoremizing has been identified.
-
-## Active lead C — production derivative witnesses
-
-Existing frozen-source complex holomorphy can still be transported through parity projection and canonical N2 predecessor/shell pairings to actual real derivative witnesses and a fully instantiated production `HasDerivAt` Schur identity.
-
-Keep this sign-neutral until the source mechanism audit isolates a theorem-sized relation.
+The frozen Q14 ratio is strictly increasing at research-certification level. A generic monotonicity/injectivity lemma is a clean Lean target only after a source premise worth theoremizing has been identified.
 
 ## Pair-A decision rule
 
@@ -249,66 +272,38 @@ Pair A remains live only if a same-state canonical arithmetic restriction compos
 
 ```text
 canonical source/parity-ordering restriction
-  -> excludes reflected same-observation branch or forces useful contact property
+  -> useful contact restriction
   -> #184 contact calculus
   -> independently theorem-backed first-bad property
   -> same-state contradiction
 ```
 
-The #197 bounded twin exclusion narrows the reflected space on the frozen branch; it does not yet identify the arbitrary retained first-bad state with that branch.
-
-## Alternative incompatibility pairs
-
-```text
-B  negative-index separation vs localized sampling rigidity
-C  local first-bad event vs short-window zero rigidity
-D  two-parity squeeze
-E  off-line growth vs structured finite-energy control
-```
-
-These remain leads, not results.
-
 ## Formal open obligations
 
 ```text
 OBS-056 residual Q14 orientation span                              CLOSED in exact frozen research scope
-OBS-057 bounded-to-structural parity-ordering mechanism gap       OPEN
-source-channel mechanism audit for J' = o''e - e''o               OPEN
-arbitrary-state source law implying parity ordering                OPEN
-actual N2 production remainder scalar derivative witnesses         OPEN
-actual production HasDerivAt Schur log-drift identity              OPEN
-same-state opposing first-bad contact orientation                  OPEN
-sourceMoment <-> M4 rigidity                                       OPEN
-simultaneous even/odd bad exclusion                                OPEN
-odd-selected first-bad closure                                     OPEN
-negative-root exclusion                                             OPEN
-outside-strip/trivial-zero terminal seam                           OPEN
-RiemannHypothesis                                                   OPEN
+OBS-057 bounded-to-structural parity-ordering mechanism gap       OPEN / NARROWED
+OBS-058 cancellation-preserving source representation gap         OPEN / ACTIVE
+discrepancy-first parity mechanism audit                          OPEN
+arbitrary-state source law implying parity ordering               OPEN
+actual N2 production remainder scalar derivative witnesses        OPEN
+actual production HasDerivAt Schur log-drift identity             OPEN
+same-state opposing first-bad contact orientation                 OPEN
+sourceMoment <-> M4 rigidity                                      OPEN
+simultaneous even/odd bad exclusion                               OPEN
+odd-selected first-bad closure                                    OPEN
+negative-root exclusion                                            OPEN
+outside-strip/trivial-zero terminal seam                          OPEN
+RiemannHypothesis                                                  OPEN
 ```
 
 ## Claim firewall
 
 - #190 is exact executable research, not Lean theorem authority;
-- #192 excludes a declared specific witness, not the general reflected class;
-- `TRAJECTORY_RIGIDITY_UNRESOLVED` is historical first-order nonresolution, not a fold;
-- #195 `PARTIAL_TRAJECTORY_ORIENTATION` and `63/64` remain historical bounded-partial evidence;
 - #197 `GLOBAL_MONOTONE_ORIENTATION` is complete bounded research on one frozen Q14 domain, not an arbitrary-Q theorem;
-- `global_positive_hull = true` does not establish FB-05;
-- `bounded_distinct_aperture_twin_exclusion = true` does not establish global canonical injectivity;
+- #199 `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED` does not weaken the independently certified direct `J_POSITIVE` cover;
+- no unique source lock does not imply no source mechanism;
+- the pole-prime discrepancy representation is theorem-motivated but its parity-ordering sign is OPEN;
 - theorem authority remains #184;
 - negative-root exclusion remains OPEN;
 - **RH remains OPEN.**
-
-## Standing questions
-
-> Given everything now formally true, what becomes possible that was not possible before?
-
-At research level, the complete frozen Q14 trajectory can be used as a certified positive-orientation object rather than a partial signal.
-
-> If this contains a clue toward RH, where does that clue propagate?
-
-A source-level ordering law would propagate to parity-ratio monotonicity, canonical reflected-twin exclusion on a broader class, and a smaller FB-05 counterexample space.
-
-> What experiment or lemma most efficiently tells us whether that clue is real?
-
-Run the source-mechanism audit on the already-complete trajectory and demand exact reconstruction plus adversarial falsification before theoremizing any apparent law.

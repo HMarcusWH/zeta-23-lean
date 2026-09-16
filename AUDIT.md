@@ -1,4 +1,4 @@
-# RHRC formal audit — theorem authority through PR #184; research evidence through PR #197
+# RHRC formal audit — theorem authority through PR #184; research evidence through PR #199
 
 > **RH remains OPEN.**
 
@@ -14,11 +14,11 @@ merge = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
 tree  = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
 
 LATEST RESEARCH EVIDENCE
-PR #197
-head  = 2d936f9764abdfeaa82127d5c834c6c3e429da25
-merge = 162df6ce8bc13a816937d747f2965bff6764fad0
-tree  = 97f6372a4c7c131006b4abc090c86767b9e99990
-research disposition = GLOBAL_MONOTONE_ORIENTATION
+PR #199
+head  = fabe301c95277345f0efe764252ce1c1213a4112
+merge = 27dda545b7ccdb2870088ebaf317d85e3d999555
+tree  = 85eb8ea25d240c4a9c339262bdc611fae881f7f0
+research disposition = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
 
 CONTROL SEMANTIC AUTHORITY
 PR #117
@@ -37,7 +37,7 @@ remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0.
 
 Still not proved: source-specific domination, contact existence/uniqueness, same-state opposing first-bad orientation, first-bad exclusion, negative-root exclusion or RH.
 
-## Research audit: #186 -> #197
+## Research audit: #186 -> #199
 
 ### #186 -> #190 — ambient selector surface consumed
 
@@ -55,19 +55,11 @@ P2 = L*J/(o*e)
 sign(P1') = sign(P2) = sign(J) under L,e,o>0
 ```
 
-All six exact inherited centers satisfy `e>0`, `o>0`, `J>0`, `P2>0`, but the first-order finite-width result was
-
-```text
-63/96 H1_UNRESOLVED
-33/96 J_UNRESOLVED
-0 J_NEGATIVE
-0 J_POSITIVE
-TRAJECTORY_RIGIDITY_UNRESOLVED
-```
+All six exact inherited centers satisfy `e>0`, `o>0`, `J>0`, `P2>0`, but the first-order finite-width result was `TRAJECTORY_RIGIDITY_UNRESOLVED` with 63/96 H1-unresolved cells and 33/96 J-unresolved cells.
 
 ### #195 — second-order sharp enclosure
 
-PR #195 validated the complete canonical fixed-Q `M,M',M''` lineage. Historical exact result:
+Historical exact result:
 
 ```text
 PARTIAL_TRAJECTORY_ORIENTATION
@@ -83,56 +75,54 @@ global_positive_hull = false
 bounded_distinct_aperture_twin_exclusion = false
 ```
 
-Thus #195 consumed the H1 obstruction but left one budget-limited orientation span.
-
 ### #197 — unique residual-cell replay
 
-PR #197 reruns #195 unchanged, finds exactly one `MAX_CELL_BUDGET` leaf occupying `1/64` of the inherited hull, and evaluates that exact cell once with the unchanged A/B/C evaluator.
+The unique inherited `MAX_CELL_BUDGET` leaf is evaluated once with the unchanged evaluator:
 
 ```text
 A = J_UNRESOLVED
 B = J_POSITIVE
 C = J_POSITIVE
-replayed_cell_orientation = J_POSITIVE
-```
-
-The completed inherited leaf partition is:
-
-```text
 GLOBAL_MONOTONE_ORIENTATION
 uniform orientation = J_POSITIVE
-unresolved span count = 0
 certified t-fraction = 1
-full_hull_signed_monotonicity = true
 global_positive_hull = true
 bounded_distinct_aperture_twin_exclusion = true
 ```
 
-This is a **complete signed Arb interval cover** of the declared frozen Q14 domain, hence `RIGOROUS BOUNDED RESEARCH`. It is not Lean theorem authority.
+This remains a complete signed Arb interval cover of the declared frozen Q14 domain, hence `RIGOROUS BOUNDED RESEARCH`.
 
-Under the already-certified positive denominator hypotheses, the bounded derived chain is
+### #199 — source-mechanism audit
+
+PR #199 first replays the exact #197 49-leaf complete positive cover. It then validates the four-way source jets through second aperture order, the collapsed direct-production representation, matrix reconstruction, scalar-shift self-Wronskian zero identity, and overlap with the independent direct Method-C transport.
+
+The final mechanism disposition is:
 
 ```text
-J>0 -> P2>0 -> P1'>0 -> P1 strictly increasing.
+four_way_classification = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+collapsed_three_way_classification = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+mechanism_classification = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+selected_collapsed_uniform_lock_group = null
+control_transfer_status = NO_UNIQUE_COLLAPSED_UNIFORM_LOCK
 ```
 
-Therefore distinct apertures in this exact branch cannot share `P1` or the complete frozen seven-vector.
+This is not evidence that `J` became unsigned. The direct #197/#199 replay remains rigorously `J_POSITIVE`. The result instead isolates a representation/dependency failure: independently enclosed source-interaction groups do not retain enough correlated information to expose the sign of the already-signed direct total.
 
 ## Current post-green frontier
 
-The residual-span sign problem is consumed. The next question is structural:
+The highest-information next move is therefore not another source split of the same form. It is a cancellation-preserving representation change.
 
-> Why does the complete frozen Q14 canonical trajectory have positive orientation, and can that reason be generalized to the exact retained first-bad/contact state?
-
-The highest-information experiment is a source-mechanism audit of
+The theorem-motivated first candidate is
 
 ```text
-J' = o''e - e''o
+D = pole + prime_signed
+A = direct_arch_signed
+M = D + A
 ```
 
-through pole/arch/prime source channels, retaining every bilinear cross-channel term and requiring rigorous reconstruction of direct `J'`.
+with `D,D',D''` and `A,A',A''` constructed before parity restriction and interval transport. The resulting discrepancy-self, discrepancy/arch cross, and arch-self Wronskian interactions must rigorously reconstruct independent direct Method C on every inherited #197 leaf.
 
-A compact stable source or cross-source inequality would become a theorem candidate. Cancellation-fragile behavior would instead argue against generalizing the Q14 result and would lower Pair-A priority.
+If that representation remains dependency-unresolved, the next move is to stop source chopping and search for a higher-level exact composite parity identity instead of increasing numerical effort.
 
 ## Claim firewall
 
@@ -140,19 +130,15 @@ A compact stable source or cross-source inequality would become a theorem candid
 #184 theorem package
   -/-> source-specific sign law
 
-#190 ambient selector insufficiency
-  -/-> canonical arithmetic impossibility theorem
-
-#192 specific-witness exclusion
-  -/-> general reflected-class exclusion
-
-#195 PARTIAL_TRAJECTORY_ORIENTATION / 63/64
-  historical research state only
-
 #197 GLOBAL_MONOTONE_ORIENTATION on frozen Q14
   -> rigorous bounded research
   -/-> arbitrary-Q theorem
   -/-> global canonical injectivity
+
+#199 SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+  -> current source attribution graph is dependency-limited
+  -/-> loss of #197 J_POSITIVE
+  -/-> source mechanism impossible
   -/-> FB-05 closure
   -/-> negative-root exclusion
   -/-> RH

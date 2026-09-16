@@ -155,6 +155,8 @@ The final regular Schur endpoint can be a tiny residue of much larger channel te
 
 **Post-#153/#155 clarification:** pole-prime cancellation and its legal Riesz representation are theorem-backed interfaces. Splitting pole and prime apart again, or replacing the transformed exact residual with loose independent envelopes, requires a quantitative justification for the lost cancellation.
 
+**Post-#199 clarification:** the warning is strengthened by the exact frozen-Q14 mechanism audit. The independent direct Method-C parity-Wronskian transport remains rigorously `J_POSITIVE` on the complete #197 cover, while both the four-way source-interaction representation and the collapsed pole/direct-arch/prime representation classify `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED`. This does **not** show that no source mechanism exists and does not weaken the direct sign certificate. It shows that independently enclosing the currently separated source interactions loses too much correlated information. A valid next escape should preserve an exact cancellation **before** interval transport, beginning with the theorem-motivated pole-prime discrepancy, or replace source attribution by a higher-level exact composite identity.
+
 **Escape requirement:** exact paired-channel cancellation, a sharp source-specific remainder, or rigorously quantified interval-certified bounds resolving the observed cancellation scale.
 
 ## DR-021 — global aperture Loewner monotonicity

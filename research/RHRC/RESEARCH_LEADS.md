@@ -14,16 +14,16 @@ merge = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
 tree  = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
 
 LATEST RESEARCH EVIDENCE
-PR #197
-head  = 2d936f9764abdfeaa82127d5c834c6c3e429da25
-merge = 162df6ce8bc13a816937d747f2965bff6764fad0
-tree  = 97f6372a4c7c131006b4abc090c86767b9e99990
-research disposition = GLOBAL_MONOTONE_ORIENTATION
+PR #199
+head  = fabe301c95277345f0efe764252ce1c1213a4112
+merge = 27dda545b7ccdb2870088ebaf317d85e3d999555
+tree  = 85eb8ea25d240c4a9c339262bdc611fae881f7f0
+research disposition = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
 
 CONTROL AUTHORITY
 PR #117
 selected first break = E4A4-SCHUR-FB-05
-newest post-green delta = RESEARCH_LEADS_POST_197_Q14_RESIDUAL_CELL_REPLAY_DELTA.md
+newest post-green delta = RESEARCH_LEADS_POST_199_Q14_SOURCE_DECOMPOSITION_DELTA.md
 terminal claim = RH_OPEN
 ```
 
@@ -37,6 +37,8 @@ R_t' < E -> P_t' < 0
 ```
 
 in the exact Hermitian/log-cover scope proved by Lean, together with the fixed-cell production bridge and N2 predecessor/canonical-shell geometry.
+
+PR #153 also supplies the theorem-backed pole-prime discrepancy interface that motivates the next cancellation-preserving research representation. That theorem does not itself prove a parity-ordering sign.
 
 ## Research evidence accumulated after #184
 
@@ -71,7 +73,7 @@ TRAJECTORY_RIGIDITY_UNRESOLVED
 
 ### #195 — canonical second-order sharp enclosure
 
-PR #195 validates the complete fixed-Q canonical second-aperture jet. Historical result:
+Historical result:
 
 ```text
 PARTIAL_TRAJECTORY_ORIENTATION
@@ -87,8 +89,6 @@ global_positive_hull = false
 bounded_distinct_aperture_twin_exclusion = false
 ```
 
-The higher-order methods recover every former H1 failure and leave one budget-limited orientation span.
-
 ### #197 — complete frozen Q14 orientation
 
 PR #197 replays #195 unchanged and evaluates exactly the one inherited `MAX_CELL_BUDGET` leaf of width `1/64` of the hull.
@@ -97,7 +97,6 @@ PR #197 replays #195 unchanged and evaluates exactly the one inherited `MAX_CELL
 A = J_UNRESOLVED
 B = J_POSITIVE
 C = J_POSITIVE
-replayed_cell_orientation = J_POSITIVE
 GLOBAL_MONOTONE_ORIENTATION
 uniform orientation = J_POSITIVE
 certified t-fraction = 1
@@ -107,27 +106,57 @@ bounded_distinct_aperture_twin_exclusion = true
 
 This is `RIGOROUS BOUNDED RESEARCH` on the exact frozen Q14 encoded domain. It is not Lean theorem authority.
 
-## Active lead 1 — source mechanism behind complete Q14 orientation
+### #199 — source decomposition mechanism audit
+
+PR #199 first replays the exact #197 positive cover. It validates the new four-way second-aperture source jets, the collapsed direct-production representation, scalar-shift self-Wronskian zero identity, and rigorous reconstruction overlap with independent direct Method C.
+
+Final classification:
+
+```text
+SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+```
+
+for both the four-way and collapsed three-way representations, with no selected uniform collapsed lock. This does not weaken the direct #197 `J_POSITIVE` certificate; it says the present split interval graph loses enough correlation that source attribution remains unresolved.
+
+## Active lead 1 — cancellation-preserving pole-prime discrepancy mechanism
 
 **Research status:** HIGHEST LEVERAGE / NEXT  
-**Formal status:** OPEN
+**Formal status:** OPEN / theorem-motivated representation
 
-The bounded sign question is consumed. The next experiment should explain or falsify the mechanism behind the complete positive orientation.
+The next experiment must change the dependency graph rather than compute the same decomposition harder.
 
-```text
-J' = o''e - e''o
-```
-
-Decompose the canonical pole/arch/prime source contributions, including every bilinear cross-channel term, and verify that the decomposition reconstructs the direct canonical total. The purpose is to distinguish:
+Use
 
 ```text
-single-channel dominance
-stable cross-channel interaction
-cancellation-dominated behavior
-mechanism unresolved
+D = pole + prime_signed
+A = direct_arch_signed
+M = D + A
 ```
 
-A small stable source law is a theorem candidate. Cancellation-fragile behavior is evidence against generalizing #197.
+where `prime_signed` already includes the production minus sign.
+
+Construct `D,D',D''` and `A,A',A''` at source/matrix level before parity restriction and finite-width transport. Then restrict to the normalized even/odd N2 predecessor levels and form only
+
+```text
+J_DD
+J_DA
+J_AA
+```
+
+with exact reconstruction of independent direct Method C required on every inherited #197 leaf.
+
+A decisive result would be one of:
+
+```text
+uniform discrepancy lock
+uniform arch lock
+uniform cross interaction lock
+cooperative nonnegative two-channel structure
+mixed-sign but reconstructable structure
+continued dependency unresolved
+```
+
+If the final outcome remains dependency-unresolved, stop source chopping and search for a higher-level exact composite parity identity.
 
 ## Active lead 2 — parity-ratio/log-slope formulation
 
@@ -164,11 +193,11 @@ canonical source/parity-ordering restriction on same retained/contact state
   -> same-state contradiction
 ```
 
-#197 supplies bounded twin exclusion only on the frozen Q14 trajectory. The missing step is a theorem-backed mechanism that applies to the exact retained first-bad state.
+#197 supplies bounded twin exclusion only on the frozen Q14 trajectory. #199 shows that the present source splitting does not yet expose a structural explanation. The missing step is still a theorem-backed mechanism that applies to the exact retained first-bad state.
 
 ## Active lead 5 — alternative incompatibility pairs
 
-If the source mechanism is cancellation-fragile or fails transfer tests, increase priority of:
+If the cancellation-preserving source mechanism remains fragile or fails transfer tests, increase priority of:
 
 ```text
 B negative-index vs localized sampling rigidity
@@ -193,12 +222,13 @@ E off-line growth vs structured finite-energy control
 #193 first-order parity-trajectory enclosure baseline
 #195 second-order H1 recovery / PARTIAL_TRAJECTORY_ORIENTATION / 63/64
 #197 complete frozen-Q14 GLOBAL_MONOTONE_ORIENTATION
+#199 independent source-interaction mechanism audit / SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
 ```
 
 Do not rerun consumed steps as if they were new mathematics.
 
 ## Same-state firewall
 
-Any RH-directed composition must refer to the same retained state, aperture, parity, normalization and production object. Ambient exact-rational countermodels do not automatically satisfy canonical constraints. Rigorous bounded Q14 monotonicity does not automatically hold on arbitrary retained states.
+Any RH-directed composition must refer to the same retained state, aperture, parity, normalization and production object. Ambient exact-rational countermodels do not automatically satisfy canonical constraints. Rigorous bounded Q14 monotonicity does not automatically hold on arbitrary retained states. Source groups must not be declared independent when known cancellation identities couple them.
 
 **RH remains OPEN.**
