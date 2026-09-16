@@ -1,0 +1,34 @@
+name: RHRC post-196 Q14 residual cell replay
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+concurrency:
+  group: rhrc-post196-q14-residual-replay-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  post196-q14-residual-cell-replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install R003 numerical audit requirements
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Check post-#196 residual-cell replay scope
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post196_fb05_q14_residual_cell_replay_scope.py
+      - name: Probe frozen post-#196 residual-cell replay schedule
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post196_fb05_q14_residual_cell_replay_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post196_fb05_q14_residual_cell_replay_v1.json \
+            --output /tmp/POST196_FB05_Q14_RESIDUAL_CELL_REPLAY_SCHEDULE.json
+      - name: Certify unique post-#195 budget-leaf replay
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post196_fb05_q14_residual_cell_replay_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post196_fb05_q14_residual_cell_replay_v1.json \
+            --schedule /tmp/POST196_FB05_Q14_RESIDUAL_CELL_REPLAY_SCHEDULE.json \
+            --output /tmp/POST196_FB05_Q14_RESIDUAL_CELL_REPLAY_CERTIFICATE.json
