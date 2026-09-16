@@ -156,3 +156,36 @@ Historical `test_post195_sync.py`, `test_post197_sync.py` and `test_post199_sync
 - control semantic authority remains #117;
 - negative-root exclusion remains OPEN;
 - **RH remains OPEN.**
+
+## Post-#203 authority override
+
+This section is the current synchronization and supersedes any earlier `latest merged research PR`, `newest current delta`, or `NOW` wording above while preserving that wording as history.
+
+### Current research-evidence anchor
+
+```text
+latest merged research PR = #203
+validated research head = c8196830a8b49e657b28d36b364e1cff68c568d6
+merged research commit = ab660e812a78d482145eadc3e42d186a63fa812b
+validated research tree = 7360e366fe8d623ef63ca902c23522bb72935848
+research disposition = COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
+```
+
+PR #203 is research/falsification authority only. Its repaired theorem-aligned parity contrast validates exact rational conversion, scalar cancellation before interval transport, and independent normalized `O-E` reconstruction through second order. The preregistered conjunction `E > 0`, `G > 0`, `G' >= 0`, `E' <= 0` fails its six-center gate, so `center_kill_switch_survives = false`, `full_cover_executed = false`, `completed_leaf_count = 0`, and `control_transfer_status = PATTERN_FALSIFIED_BEFORE_FULL_COVER`.
+
+The direct #197 `GLOBAL_MONOTONE_ORIENTATION / J_POSITIVE` certificate is unchanged. The failure consumes the planned simple Pair-A representation-engineering lane; it does not prove every Pair-A theorem impossible.
+
+### Current route after #203
+
+```text
+Pair-A representation engineering = CONSUMED / DOWNGRADED
+Pair D — same-state two-parity squeeze = HIGHEST INFORMATION / NEXT RESEARCH ROUTE
+Pair B — negative-index separation vs localized critical-line sampling rigidity = SECONDARY
+OBS-059 = OPEN / ACTIVE same-state two-parity squeeze / simultaneous-badness exclusion gap
+```
+
+The theorem anchor remains PR #184. The control-plane semantic anchor remains PR #117. `ACTION_REGISTRY.json` does not change because the selected formal frontier, action scores, concept ID, and `E4A4-SCHUR-FB-05` first-break semantics remain unchanged.
+
+`RESEARCH_LEADS_POST_203_Q14_COMPOSITE_PARITY_GAP_DELTA.md` is the newest current research delta. `OBSTRUCTION_LEDGER_POST_203_DELTA.md` and `DEAD_ROUTES_POST_203_DELTA.md` carry the corresponding obstruction/dead-route updates. Historical post-#201 files and tests remain historical and are not rewritten.
+
+R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
