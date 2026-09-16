@@ -125,15 +125,25 @@ def main() -> int:
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
+
+    scalar_samples = layers[LAYER_IDS[2]]["general_reflection_control"]["actual_scalar_samples"]
     print(json.dumps({
         "status": "PASS",
         "layer0": layers[LAYER_IDS[0]]["classification"],
         "layer1": layers[LAYER_IDS[1]]["classification"],
         "layer2_specific": layers[LAYER_IDS[2]]["classification"],
         "layer2_general_reflection": layers[LAYER_IDS[2]]["general_reflection_control"]["classification"],
+        "layer2_scalar_higher_ball": scalar_samples["higher"]["chi_scalar"]["ball"],
+        "layer2_scalar_lower_ball": scalar_samples["lower"]["chi_scalar"]["ball"],
         "layer3": layers[LAYER_IDS[3]]["classification"],
+        "layer3_all_arch_scalar_couplings_overlap": layers[LAYER_IDS[3]]["all_matrix_level_arch_scalar_couplings_overlap"],
         "layer4": layers[LAYER_IDS[4]]["classification"],
+        "layer4_pair_count": layers[LAYER_IDS[4]]["pair_count"],
+        "layer4_strong_vector_overlap_pair_count": layers[LAYER_IDS[4]]["strong_vector_overlap_pair_count"],
+        "layer4_overlap_and_opposite_target_pair_count": layers[LAYER_IDS[4]]["strong_vector_overlap_and_opposite_target_pair_count"],
         "layer5": layers[LAYER_IDS[5]]["classification"],
+        "layer5_certified_h1_state_count": layers[LAYER_IDS[5]]["certified_h1_state_count"],
+        "layer5_all_channel_reconstructions_overlap": layers[LAYER_IDS[5]]["all_in_scope_channel_reconstructions_overlap"],
         "fb05_closed": False,
         "negative_root_exclusion": False,
         "rh_claim": False
