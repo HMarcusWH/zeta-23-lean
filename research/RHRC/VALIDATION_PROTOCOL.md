@@ -22,11 +22,11 @@ validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
 ### Latest research-evidence anchor
 
 ```text
-merged research PR = #199
-validated research head = fabe301c95277345f0efe764252ce1c1213a4112
-merged research commit = 27dda545b7ccdb2870088ebaf317d85e3d999555
-validated research tree = 85eb8ea25d240c4a9c339262bdc611fae881f7f0
-research disposition = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+merged research PR = #201
+validated research head = be5b98dfce12777436bc40b39a37b04669ae4311
+merged research commit = 319db6f68f65bdcffc0657c03bea76502da59a57
+validated research tree = 840a2e8b0bf690507bc3385fbe122210e6d32c7a
+research disposition = DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED
 ```
 
 ### Control authority
@@ -47,7 +47,7 @@ Current gates include:
 python research/RHRC/tools/run_suite.py
 Control-v2 real-history smoke run
 R003 normalization/dictionary/source-normalization guards
-post-#163 onward frozen research regressions through #199
+post-#163 onward frozen research regressions through #201
 R004 scalar-shift invariant audit
 external-reference dependency firewall
 lake build Zeta23.CCM
@@ -59,6 +59,7 @@ post-192 parity-trajectory regression
 post-194 sharp trajectory / second-derivative regression
 post-#196 / #197 Q14 residual-cell replay regression
 post-#198 / #199 Q14 source-mechanism regression
+post-#200 / #201 Q14 discrepancy-mechanism regression
 ```
 
 A skipped downstream step is not a passed gate.
@@ -68,21 +69,22 @@ A skipped downstream step is not a passed gate.
 PR #184 remains the latest Lean-bearing authority. Validated mathematical content includes Hermitian 2x2 pivot/determinant identities, contact-local derivative sign transfer under H1, the full frozen parity production family, the fixed-cell bridge, N2 predecessor/canonical-shell reconstruction and
 
 ```text
+M~(t)=-tI+R~(t)
 P_t' = -envelopeNormSq + remainderEnvelopeDerivative
 remainder drift < envelopeNormSq -> negative pivot orientation.
 ```
 
 Not proved by #184: actual source-specific remainder derivative witnesses, source-specific domination, contact existence/uniqueness, opposing first-bad orientation, negative-root exclusion or RH.
 
-## Research evidence through #199
+## Research evidence through #201
 
 ### #186 / #190 / #192 historical constraints
 
-PR #186 returns `DOMINATION_SIGNAL_MIXED`. PR #190 establishes joint selector separability for the complete frozen selector vector in ambient normalized algebra. PR #192 executes the canonical production realizability ladder, excludes the specific negative-scalar witness under an exact identity, and leaves the general reflected class `UNRESOLVED`.
+PR #186 returns `DOMINATION_SIGNAL_MIXED`. PR #190 establishes joint selector separability for the complete frozen selector vector in ambient normalized algebra. Preserve `EXACT_TWIN_SURVIVES` and `EXACT_TWIN_EXCLUDED_BY_IDENTITY` as historical classifications. PR #192 executes the canonical production realizability ladder, excludes the specific negative-scalar witness under an exact identity, and leaves the general reflected class `UNRESOLVED`.
 
 ### #193 trajectory evidence
 
-The first-order finite-width classification is `TRAJECTORY_RIGIDITY_UNRESOLVED` with 63/96 H1-unresolved and 33/96 J-unresolved cells. This is historical method evidence, not a fold theorem.
+The first-order finite-width classification is `TRAJECTORY_RIGIDITY_UNRESOLVED` with 63/96 H1-unresolved and 33/96 J-unresolved cells. **Do not infer this from points.** This is historical method evidence, not a fold theorem.
 
 ### PR #195 second-order trajectory evidence — historical bounded partial state
 
@@ -109,14 +111,6 @@ global_positive_hull = false
 bounded_distinct_aperture_twin_exclusion = false
 ```
 
-Interpretation law:
-
-```text
-63/64 positive parameter coverage
-  -> RIGOROUS BOUNDED PARTIAL ORIENTATION RESEARCH
-  -/-> complete signed hull
-```
-
 ### PR #197 residual-cell replay — complete bounded state
 
 ```text
@@ -135,8 +129,6 @@ bounded_distinct_aperture_twin_exclusion = true
 This is a **complete signed Arb interval cover**, so the evidence class is `RIGOROUS BOUNDED RESEARCH`. It is not a Lean theorem and does not promote theorem authority beyond #184.
 
 ### PR #199 source-mechanism audit — representation nonresolution
-
-PR #199 must replay the exact #197 complete positive cover before any mechanism interpretation. It validates the four-way second-aperture source split and collapsed direct-production representation, then requires source-interaction reconstructions to overlap independent direct Method C on every primary and control cell.
 
 Final output:
 
@@ -161,7 +153,51 @@ source-separated interval reconstruction loses sign resolution
 -/-> Q14 ordering falsified
 ```
 
-This distinction is permanent validation law: an unresolved decomposition cannot downgrade an independently certified correlated quantity when exact reconstruction overlap has been checked.
+### PR #201 discrepancy-first audit — upstream pairing still unresolved
+
+PR #201 forms
+
+```text
+D = pole + prime_signed
+A = direct_arch_signed
+M = D + A
+```
+
+at matrix `M,M',M''` level before parity restriction and centered second-order interval transport. The paired reconstruction and finite-difference derivative checks pass. The exact completed #197 cover is reused and the direct Method-C `J_POSITIVE` result replays.
+
+Final certified output:
+
+```text
+post197_classification = GLOBAL_MONOTONE_ORIENTATION
+post197_uniform_orientation = J_POSITIVE
+post199_mechanism_classification = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+completed_leaf_count = 49
+paired_source_sum_positive_leaf_count = 0
+paired_source_sum_unresolved_leaf_count = 49
+mechanism_classification = DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED
+selected_uniform_lock_group = null
+control_transfer_status = NO_UNIQUE_PRIMARY_LOCK
+theorem_promotion = false
+fb05_closed = false
+negative_root_exclusion = false
+rh_claim = false
+```
+
+Evidence interpretation:
+
+```text
+direct Method-C J remains rigorously positive
++
+upstream pole-prime pairing is implementation-valid
++
+paired interval reconstruction still cannot certify its own positive sum
+
+=> cancellation-preserving discrepancy representation is dependency-unresolved
+-/-> direct J lost positivity
+-/-> pole-prime identity is false
+-/-> no source mechanism exists
+-/-> FB-05 closure
+```
 
 ## Evidence interpretation law
 
@@ -190,6 +226,10 @@ search fails / interval graph remains unresolved
 source-decomposition loses sign while direct correlated evaluator remains signed
   -> SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
   -> representation limitation, not sign reversal
+
+upstream discrepancy pairing loses sign while direct correlated evaluator remains signed
+  -> DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED
+  -> representation limitation, not sign reversal
 ```
 
 In particular:
@@ -199,35 +239,43 @@ In particular:
 - exact-center signs do not determine neighborhood signs;
 - a bounded complete cover does not determine arbitrary Q or arbitrary retained states;
 - a green falsification/nonresolution run may still be a successful validation run;
-- regrouping already-enclosed intervals does not recover cancellation lost before enclosure.
+- regrouping already-enclosed intervals does not recover cancellation lost before enclosure;
+- #201 additionally shows that even pairing pole and prime **before** enclosure is not sufficient for the present two-channel attribution graph to expose the direct sign;
+- **Do not count them as two independent** when two formulations are algebraically equivalent views of the same signed quantity.
 
-## Post-#199 validation rule
+## Post-#201 validation rule
 
-The bounded Q14 sign-recovery problem and the first independent source-mechanism audit are both consumed.
+The bounded Q14 sign-recovery problem, the independent source-mechanism audit, and the theorem-motivated discrepancy-first audit are all consumed.
 
-The next experiment may use the theorem-motivated cancellation-preserving representation
+The next experiment must use the fully assembled parity object rather than another linear source regrouping, unless a new independent theorem selects that representation.
+
+For a proposed full-composite parity-gap mechanism:
 
 ```text
-D = pole + prime_signed
-A = direct_arch_signed
-M = D + A
+1. freeze the candidate algebra/sign pattern before execution;
+2. test it first on the six inherited exact Q14 primary centers;
+3. if the predeclared simple pattern fails at a center, report falsification and stop;
+4. if it survives, reuse the exact #197 49-leaf partition;
+5. keep precision = 384 bits;
+6. do not increase Q/N/K/parity, depth or cell budget;
+7. require exact reconstruction overlap with independent direct Method C;
+8. do not use the known J label to choose a post-hoc sign pattern.
 ```
 
-but the pairing must be performed at source/matrix jet level before parity restriction and interval transport. Merely adding already-enclosed pole and prime interaction intervals is not a new dependency graph.
+Equivalent ratio identities such as `(o/e)' = J/e^2` are legal algebraic cross-checks but cannot by themselves count as a new independent mechanism.
 
-The new representation must use the exact inherited #197 leaf partition and direct Method-C comparator unless a separately documented reason changes scope. No new Q/N/K/parity search, precision increase, adaptive budget increase, target-label import, or control-informed mechanism selection should be allowed merely to rescue the hypothesis.
-
-Any later claim of a general parity-ordering theorem requires a theorem-backed source premise on the intended class; neither the frozen #197 cover nor the #199 representation diagnosis is such a theorem.
+If a full-composite mechanism is also mixed or dependency-unresolved, the validation/routing response should be to stop Pair-A representation engineering and prioritize a genuinely different same-state incompatibility pair, not to ratchet numerical budget.
 
 ## Claim firewall
 
 - theorem authority remains #184;
-- research authority advances through #199 only in the evidence classes stated above;
+- research authority advances through #201 only in the evidence classes stated above;
 - Control-v2 remains non-authoritative;
 - no research certificate may write terminal RH status;
 - historical PR #195 `PARTIAL_TRAJECTORY_ORIENTATION` / `63/64` remains preserved;
 - #197 `GLOBAL_MONOTONE_ORIENTATION` remains rigorous bounded research on one frozen Q14 domain;
 - #199 `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED` does not weaken #197 direct `J_POSITIVE`;
+- #201 `DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED` does not weaken #197 direct `J_POSITIVE`;
 - bounded distinct-aperture twin exclusion does not exclude all canonical reflected twins;
 - negative-root exclusion remains OPEN;
 - **RH remains OPEN.**
