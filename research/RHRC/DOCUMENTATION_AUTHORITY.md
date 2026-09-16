@@ -32,14 +32,14 @@ PR #184 remains the current compiler-validated mathematical authority.
 ### Research-evidence anchor
 
 ```text
-latest merged research PR = #197
-validated research head = 2d936f9764abdfeaa82127d5c834c6c3e429da25
-merged research commit = 162df6ce8bc13a816937d747f2965bff6764fad0
-validated research tree = 97f6372a4c7c131006b4abc090c86767b9e99990
-research disposition = GLOBAL_MONOTONE_ORIENTATION
+latest merged research PR = #199
+validated research head = fabe301c95277345f0efe764252ce1c1213a4112
+merged research commit = 27dda545b7ccdb2870088ebaf317d85e3d999555
+validated research tree = 85eb8ea25d240c4a9c339262bdc611fae881f7f0
+research disposition = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
 ```
 
-PR #197 is research/falsification authority only. It does not move Lean theorem authority.
+PR #199 is research/falsification authority only. It consumes and exactly replays PR #197's bounded `GLOBAL_MONOTONE_ORIENTATION` / `J_POSITIVE` certificate before classifying the present source decomposition as dependency-unresolved. It does not move Lean theorem authority and does not downgrade the #197 direct sign result.
 
 ### Control-plane semantic anchor
 
@@ -82,38 +82,26 @@ remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0.
 
 No later research PR promotes additional Lean theorem authority.
 
-### Completed research history through #197
+### Completed research history through #199
 
 ```text
 #186 -> broad remainder domination returns DOMINATION_SIGNAL_MIXED
-#188 -> frozen normalization-safe selector family audited
-#189 -> every individual frozen selector ambiently separable from target sign
 #190 -> complete seven-selector vector jointly ambiently separable from target sign
-        -> all 127 nonempty subsets insufficient in ambient algebra
 #192 -> canonical production realizability Layer 0 -> Layer 5 executed
-        -> specific negative-scalar witness excluded
-        -> general reflected mechanism unresolved
-        -> six-state production panel has 0/15 seven-vector overlaps
-#193 -> Q14 parity-trajectory rigidity audit
-        -> 6/6 exact centers e,o,J,P2 positive
-        -> 63/96 H1_UNRESOLVED
-        -> 33/96 J_UNRESOLVED
-        -> TRAJECTORY_RIGIDITY_UNRESOLVED
-#195 -> validated canonical M,M',M'' sharp trajectory enclosure
-        -> 63 second-order H1 recoveries
-        -> 48 J_POSITIVE, 48 J_UNRESOLVED
-        -> one unresolved span, certified t-fraction 63/64
-        -> PARTIAL_TRAJECTORY_ORIENTATION
-#197 -> unique inherited budget leaf replayed once
-        -> A J_UNRESOLVED; B/C J_POSITIVE
-        -> GLOBAL_MONOTONE_ORIENTATION
-        -> uniform J_POSITIVE
-        -> certified t-fraction 1
-        -> global_positive_hull = true
-        -> bounded_distinct_aperture_twin_exclusion = true
+#193 -> first-order Q14 parity trajectory remains finite-width unresolved
+#195 -> validated M,M',M''; PARTIAL_TRAJECTORY_ORIENTATION / 63/64 historical
+#197 -> unique residual leaf replay closes the frozen Q14 cover
+        -> GLOBAL_MONOTONE_ORIENTATION / uniform J_POSITIVE
+        -> certified fraction 1
+        -> bounded distinct-aperture twin exclusion
+#199 -> exact #197 cover replayed unchanged
+        -> four-way source mechanism = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+        -> collapsed three-way mechanism = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+        -> no unique collapsed uniform lock
+        -> direct bounded J_POSITIVE unchanged
 ```
 
-Historical #195 `PARTIAL_TRAJECTORY_ORIENTATION` / `63/64` remains preserved. PR #197 advances only the latest research-evidence anchor.
+Historical #195 and #197 states remain preserved. PR #199 advances only the latest research-evidence anchor.
 
 ### Current route
 
@@ -121,42 +109,37 @@ Historical #195 `PARTIAL_TRAJECTORY_ORIENTATION` / `63/64` remains preserved. PR
 PROVED THROUGH #184
   exact Hermitian/log-cover/contact algebra
 
-RESEARCHED THROUGH #197
-  #190 ambient selector surface insufficient
-  #192 specific reflected witness noncanonical; general reflection unresolved
-  #193 positive exact centers; first-order propagation unresolved
-  #195 H1 obstruction removed; 63/64 bounded partial orientation
-  #197 complete frozen-Q14 positive orientation and bounded twin exclusion
+RESEARCHED THROUGH #199
+  frozen Q14 direct orientation is complete and positive
+  current source-separated interaction graph loses sign resolution
 
 NOW
-  same canonical source lineage
-  -> do not refine an already complete frozen cover
-  -> audit the mechanism behind J>0
-  -> use J' = o''e - e''o
-  -> decompose pole/arch/prime contributions with all bilinear cross terms
-  -> require rigorous reconstruction of the direct canonical total
-  -> falsify any apparent source law before theoremization
+  do not refine the completed cover
+  do not rerun the same independent source split
+  preserve known pole-prime cancellation before interval transport
+  construct D = pole + prime_signed and A = direct_arch_signed
+  build D,D',D'' and A,A',A'' upstream
+  parity-restrict only after pairing
+  require exact reconstruction of independent direct Method C
+  if still unresolved, search for a higher-level composite identity
 ```
 
-A complete signed finite-width cover supports **rigorous bounded research**, not arbitrary-Q theorem authority.
+A complete signed finite-width cover supports **rigorous bounded research**, not arbitrary-Q theorem authority. A dependency-unresolved decomposition does not negate an independently certified direct sign.
 
 ## Historical-state rule
 
-The post-#190, post-#193 and post-#195 deltas remain historical evidence and must not be edited to pretend they were written after #197. `RESEARCH_LEADS_POST_197_Q14_RESIDUAL_CELL_REPLAY_DELTA.md` is the newest current delta.
+The post-#190, post-#193, post-#195 and post-#197 deltas remain historical evidence and must not be edited to pretend they were written after #199. `RESEARCH_LEADS_POST_199_Q14_SOURCE_DECOMPOSITION_DELTA.md` is the newest current delta.
 
-Historical `test_post195_sync.py` continues to verify that #195 evidence remains represented, while `test_post197_sync.py` verifies that the living current state advances to #197.
+Historical `test_post195_sync.py` and `test_post197_sync.py` continue to verify that their evidence remains represented. `test_post199_sync.py` owns the current #199 assertions.
 
 ## Claim firewall
 
 - green research is not theorem promotion;
 - exact executable algebra is not automatically a Lean theorem;
 - ambient algebra countermodels are not automatically canonical arithmetic states;
-- #192 excludes a declared specific witness, not the general reflected class;
-- #193 exact-center signs are not finite-width monotonicity;
-- #195 `PARTIAL_TRAJECTORY_ORIENTATION` / `63/64` is historical bounded-partial evidence;
 - #197 `GLOBAL_MONOTONE_ORIENTATION` is complete bounded research on one frozen Q14 domain;
-- `global_positive_hull = true` is not an FB-05 theorem;
-- bounded distinct-aperture twin exclusion is not global canonical injectivity;
+- #199 `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED` is a representation/mechanism classification, not a loss of #197 `J_POSITIVE`;
+- no unique source lock is not a theorem that no source law exists;
 - theorem authority remains #184;
 - control semantic authority remains #117;
 - negative-root exclusion remains OPEN;
