@@ -14,13 +14,15 @@ merged theorem commit = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
 validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
 
 LATEST RESEARCH EVIDENCE
-latest merged research PR = #190
-validated research head = 8701920b0da18ae6595ad0eee55c1f6cb291a94f
-merged research commit = f87da9fde71dd1e74419c6ae5848eee3787c27e4
-validated research tree = af8774b65c898de221a5bf32977ccff3407a7b2d
-RHRC #1096 = SUCCESS
-Permansson #869 = SUCCESS
-research disposition = JOINT_EXACT_VECTOR_SEPARABLE / JOINT_THRESHOLD_SIGNATURE_SEPARABLE
+latest merged research PR = #193
+validated research head = 085634ca7dafe4d9f598b2b5e081be80e050ba8c
+merged research commit = fdd6606f85e92bf632b4cdaf1d4af85f6fa5b195
+validated research tree = db569150046459f4b87a931d3e8d01054bbbedff
+RHRC #1109 = SUCCESS
+Permansson #882 = SUCCESS
+post-190 canonical realizability audit #5 = SUCCESS
+post-192 parity trajectory rigidity #3 = SUCCESS
+research disposition = TRAJECTORY_RIGIDITY_UNRESOLVED
 
 CONTROL AUTHORITY
 control-plane semantic anchor = PR #117
@@ -41,108 +43,62 @@ PROVED THROUGH #184
   -> P_t' = -E + R_t'
   -> R_t' < E -> P_t' < 0
 
-RESEARCHED THROUGH #190
+COMPLETED RESEARCH HISTORY
   #186 broad domination test -> DOMINATION_SIGNAL_MIXED
   #188 frozen strong-selector audit
   #189 every individual frozen selector abstractly separable from target sign
   #190 complete seven-dimensional strong vector jointly separable from target sign
-       with identical nonboundary threshold signature
-       -> all 127 nonempty subsets also insufficient in the audited ambient algebra
+       -> all 127 nonempty subsets insufficient in audited ambient algebra
+  #192 Layer 0 -> Layer 5 canonical production realizability audit
+       -> specific negative-scalar #190 witness excluded
+       -> general reflected mechanism not excluded
+       -> six-primary production panel has 0/15 seven-vector overlaps
+  #193 parity-trajectory rigidity audit
+       -> 6/6 exact centers e>0, o>0, J>0, P2>0
+       -> 63/96 H1_UNRESOLVED
+       -> 33/96 J_UNRESOLVED after H1 recovery
+       -> 0 J_NEGATIVE, 0 J_POSITIVE
+       -> TRAJECTORY_RIGIDITY_UNRESOLVED
 
-NOW — FB-05
-  STOP searching combinations/refits of G1/P1/P2/C1-C4.
-  START canonical-production realizability analysis:
-    -> identify the exact production constraints omitted by the #190 ambient model
-    -> impose them progressively on the reflected twin
-    -> isolate the first exact relation that destroys opposite-target realizability
-    -> only then invest in Lean formalization of that relation
+NOW — FB-05 / canonical trajectory rigidity
+  higher-order canonical trajectory enclosure
+  same frozen Q14 hull
+  same six inherited centers
+  same Q/N/K/parity
+  no target labels
 ```
 
 ## What #184 still gives
 
-PR #184 proves the exact algebraic contact/log-drift interface. It does not prove the actual arithmetic remainder satisfies a useful sign/magnitude law. Its conditional sign theorem remains fully valid after #186-#190.
+PR #184 proves the exact algebraic contact/log-drift interface. It does not prove the actual arithmetic remainder satisfies a useful sign/magnitude law. Its conditional sign theorem remains fully valid after #186-#193.
 
-## What #186 changed
+## Completed research history — preserve the consumed layers
 
-The simple universal proposal
+### #190 ambient selector composition
 
-```text
-R_t' < E
-```
-
-is not credible across the dangerous frozen class. On the exact inherited Q14 centers, two states satisfy the physical-L equivalent and four violate it. This is a finite falsification of the broad premise, not a contradiction of #184.
-
-## What #188-#190 changed
-
-The project next asked whether an independently meaningful state variable explains the mixed split.
-
-PR #188 froze ten normalization-safe candidates, of which seven were strong-eligible. PR #189 then showed each frozen candidate separately is semantically independent of target sign in the exact ambient normalized algebra. PR #190 closed the remaining composition hole by exhibiting one exact rational pair with:
+The project must continue to preserve the post-#190 conclusion:
 
 ```text
-same G1
-same P1
-same P2
-same C1
-same C2
-same C3
-same C4
-same frozen nonboundary threshold signature
-opposite normalized target signs
+STOP searching combinations/refits of G1/P1/P2/C1-C4
+all 127 nonempty subsets are closed by the full-vector witness
 ```
 
-Therefore no deterministic function of those seven observables alone can universally determine the target sign in that ambient algebra. Every subset is automatically closed by the same full-vector witness.
+The #190 ambient reflected pair does not claim canonical production realizability.
 
-### Permanent routing consequence
+### #192 canonical production realizability
 
-Do not spend another PR on:
+The canonical production realizability audit has now been executed. Its historical regression vocabulary remains authoritative for what was tested:
 
 ```text
-new Boolean combinations of G1/P1/P2/C1-C4
-searching their 127 subsets
-retuning ZERO/ONE thresholds
-fitting a new threshold to the six-state panel
-calling sign(smooth) a new independent selector
+Layer 0  AMBIENT_NORMALIZED
+Layer 1  SOURCE_CHANNEL_COUPLING
+Layer 2  SCALAR_APERTURE
+Layer 3  COMMON_ARCH_APERTURE
+Layer 4  COMMON_SCHUR_GEOMETRY
+Layer 5  CANONICAL_PRODUCTION
 ```
 
-Any new observable must enter because actual canonical production forces it, not because the ambient countermodel is inconvenient.
-
-## Active lead A — canonical production realizability
-
-This is the highest-information next move.
-
-The #190 algebra treats normalized coordinates abstractly. Actual production generates all source channels and Schur geometry from one common aperture, parity, cutoff cell and canonical source matrix.
-
-The existing executable decomposition already gives a candidate first constraint:
-
-```text
-scalar_shift = 2*cCorrection'(L) I
-arch_signed  = -arch_direct - scalar_shift
-```
-
-hence at matrix level
-
-```text
-arch_signed + scalar_shift = -arch_direct.
-```
-
-After the common parity restriction and directional functional, the corresponding normalized channel coordinates inherit the same linear coupling. #190's reflected pair deliberately varies the hidden scalar channel while holding the observed arch channel fixed, which is legal in the ambient algebra but not obviously realizable by one actual production family.
-
-**Status:** LEAD / executable-definition consequence, not a Lean exclusion theorem.
-
-### Required audit order
-
-The next research PR should replay the #190 ambiguity under progressively stronger constraints:
-
-```text
-Layer 0  #190 ambient normalized algebra
-Layer 1  four-way source-channel construction identity
-Layer 2  exact scalar-aperture law cCorrection'(L)
-Layer 3  common direct-arch derivative at the same L
-Layer 4  common Schur geometry x=b/a and envelope E
-Layer 5  full same-L, same-Q, same-parity canonical source reconstruction
-```
-
-For each layer report one of:
+Permitted evidence classes remain:
 
 ```text
 EXACT_TWIN_SURVIVES
@@ -150,41 +106,138 @@ EXACT_TWIN_EXCLUDED_BY_IDENTITY
 UNRESOLVED
 ```
 
-A bounded search that simply fails to find a twin earns only `UNRESOLVED`.
+The specific #190 witness is `EXACT_TWIN_EXCLUDED_BY_IDENTITY` when the exact positive scalar-aperture law is imposed. The adversarial positive-scalar reflected control is `EXACT_TWIN_SURVIVES` at that layer, so scalar positivity alone does not close the general reflection mechanism. Bounded later layers remain `UNRESOLVED`; a failed finite search is not nonexistence.
 
-## Active lead B — trajectory rigidity
-
-If pointwise production identities still permit abstract twins, move to the one-dimensional/fixed-cell aperture trajectory itself.
-
-Ask whether two actual apertures `L1 != L2` can satisfy
+The old source-channel clue remains valid completed-history context:
 
 ```text
-V(L1) = V(L2)
+scalar_shift = 2*cCorrection'(L) I
+arch_signed  = -arch_direct - scalar_shift
 ```
 
-for the full seven-vector while the target signs differ. A theorem-backed locally injective or monotone production coordinate could kill the twin without adding another ad hoc selector.
+but the next PR is no longer another canonical production realizability replay.
 
-The existing #180 centered derivative/H1 machinery may become useful here, but only after the exact production observable is chosen.
+### #193 parity trajectory rigidity
 
-## Active lead C — sign-neutral formal derivative witnesses
+PR #193 attacks the surviving reflected mechanism along the actual fixed-Q Q14 aperture trajectory using the inherited selectors rather than inventing another one.
+
+Define the derived orientation graph
+
+```text
+J = o'e - e'o
+```
+
+with the inherited identity
+
+```text
+P2 = L*J/(o*e).
+```
+
+Under `L,e,o>0`,
+
+```text
+sign(P1') = sign(P2) = sign(J).
+```
+
+All six inherited exact primary centers rigorously certify:
+
+```text
+e > 0
+o > 0
+J > 0
+P2 > 0
+```
+
+The first-order centered finite-width cover nevertheless classifies:
+
+```text
+TRAJECTORY_RIGIDITY_UNRESOLVED
+```
+
+with
+
+```text
+96 evaluated cells
+63 H1_UNRESOLVED
+33 J_UNRESOLVED after H1 recovery
+0 J_NEGATIVE
+0 J_POSITIVE
+```
+
+This distinction is mandatory: #193 did **not** find a fold. It found a finite-width representation/dependency bottleneck despite uniformly positive exact-center orientation.
+
+## Active lead A — higher-order Q14 parity-trajectory enclosure
+
+**Status:** HIGHEST INFORMATION / NEXT RESEARCH PR.
+
+Primary hypothesis to falsify:
+
+```text
+J(L) > 0 on the exact frozen Q14 primary hull
+```
+
+Do **not** infer this from points.
+
+Do **not** merely increase the #193 first-order budget.
+
+Run the same hull, same six centers, same Q/N/K/parity, same P1/P2/J graph, and no target labels. Compare the dependency representations:
+
+```text
+A. first-order Wronskian enclosure      [#193 baseline]
+B. direct P2 log-slope enclosure
+C. centered second-order/Taylor enclosure
+```
+
+The gold finite result is a complete signed cover with
+
+```text
+J(L) > 0 throughout the frozen Q14 hull.
+```
+
+Then, within that bounded canonical branch,
+
+```text
+J>0
+ -> P2>0
+ -> P1'>0
+ -> P1 strictly monotone
+ -> distinct apertures cannot share P1
+ -> distinct apertures cannot share the complete seven-vector.
+```
+
+This would still be rigorous finite research, not a Lean theorem, until separately formalized.
+
+## Why #193 nonresolution is informative
+
+The exact-center result argues against explaining the run by a center-level `J≈0` fold. The finite-width failure occurs because:
+
+```text
+63/96 evaluated cells lose centered H1 first;
+33/96 recover H1 but the first-order J graph wraps zero;
+0/96 obtain a signed J enclosure.
+```
+
+Therefore another depth/precision increase on the identical first-order graph is not a route change. The next move must change the dependency representation or centered order.
+
+## Active lead B — production derivative witnesses
 
 Existing frozen-source complex holomorphy can still be transported through parity projection and canonical N2 predecessor/shell pairings to actual real derivative witnesses and a fully instantiated production `HasDerivAt` Schur identity.
 
-This remains useful infrastructure. Do not formalize a weak scalar-positivity lemma merely because the specific #190 witness uses negative scalar coordinates; positivity alone does not obviously eliminate the entire reflected class.
+This remains useful formal infrastructure, but it is not a substitute for the bounded trajectory question.
 
 ## Pair-A decision rule
 
-Pair A remains live only if the canonical-realizability audit produces an independently meaningful exact restriction that can attach to the same retained/contact state.
+Pair A remains live only if a same-state canonical arithmetic restriction ultimately composes with #184 and an independently theorem-backed first-bad property.
 
 ```text
-canonical production constraint
-  -> excludes opposite-target twin / forces useful contact property
+canonical trajectory / production restriction
+  -> excludes reflected same-observation branch or forces useful contact property
   -> #184 contact calculus
   -> independently theorem-backed first-bad property
   -> same-state contradiction
 ```
 
-If a genuine canonical twin survives full production constraints, downgrade Pair A and prioritize alternative incompatibility pairs B-D rather than reopening selector mining.
+If sharper trajectory representations fail for a structural rather than representational reason, downgrade Pair A and increase priority of alternative incompatibility pairs rather than reopening selector mining.
 
 ## Alternative incompatibility pairs
 
@@ -197,16 +250,13 @@ E  off-line growth vs structured finite-energy control
 
 These remain leads, not results.
 
-## Finite-width H1 lane
-
-The inherited nonzero-width primary boxes remain outside certified H1. If the canonical-realizability route needs neighborhoods, use the existing centered-H1/Taylor order; do not revive brute subdivision with only more precision.
-
 ## Formal open obligations
 
 ```text
+higher-order centered Q14 parity-trajectory enclosure
+J>0 on the exact inherited Q14 hull
 actual N2 production remainder scalar derivative witnesses
 actual production HasDerivAt Schur log-drift identity
-canonical production realizability restriction excluding the #190 ambiguity
 same-state opposing first-bad contact orientation
 centered finite-width H1 / q13 whole-cell contact classification
 sourceMoment <-> M4 rigidity
@@ -221,9 +271,11 @@ RiemannHypothesis
 
 - #190 is exact executable research, not Lean theorem authority;
 - joint ambient separability is not canonical arithmetic separability;
-- arch/scalar coupling is a production-definition clue, not yet an FB-05 theorem;
-- failure to find a canonical twin is not proof of nonexistence;
-- broad domination remains falsified only in the tested #186 scope;
+- #192 exact identity exclusion applies to the specific witness under the declared layer, not the general reflected class;
+- 0/15 overlap on the six-state production panel is bounded evidence, not injectivity;
+- six positive #193 centers do not establish `J>0` on the hull;
+- `TRAJECTORY_RIGIDITY_UNRESOLVED` does not establish a fold;
+- first-order enclosure nonresolution does not falsify trajectory monotonicity;
 - theorem authority remains #184;
 - negative-root exclusion remains OPEN;
 - **RH remains OPEN.**
@@ -232,12 +284,12 @@ RiemannHypothesis
 
 > Given everything now formally true, what becomes possible that was not possible before?
 
-We can stop searching the frozen selector surface and directly study the image of the canonical production map inside the larger normalized algebra.
+We no longer need to ask whether the specific #190 ambient witness survives obvious production identities; #192 answered that. We can now attack the surviving general ambiguity on the actual one-dimensional production trajectory.
 
 > If this contains a clue toward RH, where does that clue propagate?
 
-Into a same-state realizability/rigidity theorem: the contradiction must come from a relation actual arithmetic production satisfies but the #190 reflected twin cannot.
+If `J>0` can be certified on the bounded canonical trajectory, it yields strict monotonicity of an already-frozen production coordinate rather than another ad hoc selector. That shrinks the canonical same-observation ambiguity needed by FB-05.
 
 > What experiment or lemma most efficiently tells us whether that clue is real?
 
-Progressively impose exact production constraints on the #190 twin and identify the first layer that removes it. That is the next research PR.
+On the identical frozen Q14 hull, compare the #193 first-order Wronskian graph with direct P2 log-slope and centered second-order/Taylor enclosures. If none can sign the hull, inspect whether the failure is mathematical or still dependency-induced before changing the route.
