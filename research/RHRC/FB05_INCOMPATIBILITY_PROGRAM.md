@@ -43,21 +43,25 @@ P_t' = -E + R_t'
 R_t' < E -> P_t' < 0.
 ```
 
-It does not prove the arithmetic premise.
+It does not prove the arithmetic premise or source-specific remainder domination.
 
-## Permanent firewalls
+## Permanent equivalence / external-research firewalls
 
-- scalar-equivalence / RH-with-a-mustache reductions are not auxiliary progress;
-- percentage/density results must survive the sparse-exception test;
-- `t=log L` and physical `L` derivatives must not be mixed;
-- independent pole/arch/prime Schur pivots cannot be added because the Schur map is nonlinear;
-- same-state composition is mandatory.
+- `ArithmeticSideSubexponential` is the PR #27 scalar equivalence wall: an apparently easier scalar upper-bound target can be RH wearing a different name.
+- `negative-index` separation remains an independent structural input and should not be conflated with the current trajectory route.
+- The external 67.25% simple-critical-zero result is compatible with a sparse exceptional off-line set; percentage counting alone cannot exclude one exceptional quartet.
+- **Do not count them as two independent constraints** when external results instantiate essentially the same quadratic extremal mechanism already represented by the project route.
+- **Sparse-exception test:** any percentage or density argument must be attacked by asking whether one exceptional quartet can survive it.
+- **Mustache test:** reject a reduction equivalent to RH, successor positivity, or another open target after notation is unpacked.
+- Preserve the coordinate firewall: logarithmic `t=log L` derivatives and physical-aperture `L` derivatives differ by a factor of `L`.
+- Independent pole/arch/prime Schur pivots cannot be added because the Schur map is nonlinear.
+- Same-state composition is mandatory.
 
 ## Research inputs through #197
 
 ### #186 — broad Pair-A domination falsifier
 
-The frozen Q14 exact-center panel returns `DOMINATION_SIGNAL_MIXED`; broad/unconditional `R_t'<E` is not a credible theorem target across that tested class.
+The frozen Q14 exact-center panel returns `DOMINATION_SIGNAL_MIXED`; broad/unconditional remainder domination `R_t'<E` is not a credible theorem target across that tested class.
 
 ### #188 -> #190 — frozen selector surface consumed
 
