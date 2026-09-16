@@ -1,0 +1,81 @@
+{
+  "schema_version": "POST190_FB05_CANONICAL_REALIZABILITY_FIXTURE_v1",
+  "claim_cap": "POST190_CANONICAL_REALIZABILITY_RESEARCH_ONLY",
+  "base_main_sha": "48fb064a2664a10e8b5711dba7a5ebb0450ea826",
+  "base_main_tree": "f6d5b4c7d525046a4e2beb4e86ecde828064acfa",
+  "theorem_authority_pr": 184,
+  "research_authority_pr": 190,
+  "research_authority_head_sha": "8701920b0da18ae6595ad0eee55c1f6cb291a94f",
+  "research_authority_merge_sha": "f87da9fde71dd1e74419c6ae5848eee3787c27e4",
+  "routing_sync_pr": 191,
+  "post190_joint_fixture": "post189_fb05_joint_selector_separability_v1.json",
+  "post190_joint_fixture_blob_sha": "dbf39a2c0763972ce1b79809a130defd9b3efadb",
+  "post190_joint_module": "post189_fb05_joint_selector_separability.py",
+  "post190_joint_module_blob_sha": "297d5c1374e664be765c66a337c75e718642d58d",
+  "source_selector_fixture": "post187_fb05_q14_mixed_drift_selector_v1.json",
+  "source_selector_fixture_blob_sha": "aebaa0d15ad7962f6d86ce370428c18cf3d4b7e7",
+  "source_selector_module": "post187_fb05_q14_mixed_drift_selector.py",
+  "source_selector_module_blob_sha": "03bcff09853c7c212c3a33a43c060909868f0c55",
+  "canonical_source_module": "canonical_source_arb.py",
+  "canonical_source_module_blob_sha": "0a38380f5674d965aabcc0b8cbfc37c3813a180e",
+  "fixed_unit_derivative_module": "post177_fb05_q13_fixed_unit_derivative.py",
+  "fixed_unit_derivative_module_blob_sha": "ef45b8fdfbb5aa9088e6f9f23f0d61161f2fb252",
+  "schur_geometry_module": "post179_fb05_q13_correlation_preserving_derivative.py",
+  "schur_geometry_module_blob_sha": "966e6d5cec6a34c956506e524e840bb2edc3f149",
+  "inherited_schedule_fixture": "post185_fb05_q13_remainder_drift_v1.json",
+  "inherited_schedule_fixture_blob_sha": "44fba43832358489aea4dc74deed0694ad478428",
+  "inherited_schedule_probe": "probe_post185_fb05_q13_remainder_drift_scope.py",
+  "inherited_schedule_probe_blob_sha": "5f40119070cb0b3ba31c6322dd8a98df2a54c8cf",
+  "canonical_object_map": "CCM_CANONICAL_OBJECT_MAP_v3.json",
+  "canonical_object_map_blob_sha": "a3ab0a06d18b911752ef9f12ef7fe08d7251196e",
+  "selected_target": {
+    "q_start": 13,
+    "q_end": 16,
+    "predecessor_N": 2,
+    "successor_K": 3,
+    "selected_parity": "even",
+    "primary_Q": 14
+  },
+  "required_ancestry_control": {
+    "predecessor_N": 2,
+    "parity": "odd"
+  },
+  "arb_precision_bits": 384,
+  "expected_primary_box_count": 6,
+  "expected_control_box_count": 5,
+  "required_layer_ids": [
+    "L0_AMBIENT_NORMALIZED",
+    "L1_SOURCE_CHANNEL_COUPLING",
+    "L2_SCALAR_APERTURE",
+    "L3_COMMON_ARCH_APERTURE",
+    "L4_COMMON_SCHUR_GEOMETRY",
+    "L5_CANONICAL_PRODUCTION"
+  ],
+  "required_specific_witness_dispositions": {
+    "L0_AMBIENT_NORMALIZED": "EXACT_TWIN_SURVIVES",
+    "L1_SOURCE_CHANNEL_COUPLING": "EXACT_TWIN_SURVIVES",
+    "L2_SCALAR_APERTURE": "EXACT_TWIN_EXCLUDED_BY_IDENTITY"
+  },
+  "required_general_scalar_control_disposition": "EXACT_TWIN_SURVIVES",
+  "bounded_layers_required_disposition": "UNRESOLVED",
+  "policy": {
+    "adaptive_center_movement_permitted": false,
+    "new_q_n_parity_search_permitted": false,
+    "selector_refit_permitted": false,
+    "threshold_refit_permitted": false,
+    "new_selector_features_permitted": false,
+    "arb_overlap_counts_as_exact_equality": false,
+    "bounded_search_failure_counts_as_exclusion": false
+  },
+  "nonclaims": [
+    "This PR is exact/Arb research and falsification tooling, not Lean theorem authority.",
+    "Layer 0 must reproduce the exact post-#190 ambient reflected twin before any production constraint is added.",
+    "Layer 1 adds only source-channel bookkeeping coupling; it must not silently import the scalar-aperture or Schur-geometry layers.",
+    "Layer 2 may exclude the specific negative-scalar #190 witness, but scalar positivity or range information alone does not exclude the general reflection mechanism.",
+    "Layers 3-5 reuse the exact inherited six-primary/five-control schedule; no center movement, Q/N/parity expansion, or adaptive target selection is permitted.",
+    "Arb overlap is rigorous finite evidence, not exact equality of canonical states.",
+    "Failure to find a twin on the bounded canonical schedule remains UNRESOLVED, not nonexistence.",
+    "No contact existence, opposing first-bad contact orientation, FB-05 closure, negative-root exclusion, or RH claim is established.",
+    "RH remains OPEN."
+  ]
+}
