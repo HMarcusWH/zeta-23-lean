@@ -194,3 +194,22 @@ The repaired #203 implementation validates exact-rational parity-contrast transp
 Pair-A **representation engineering** is therefore consumed/downgraded as the default research tactic. This does not prove that every possible Pair-A theorem is false. The next highest-information route is Pair D — same-state two-parity squeeze; Pair B — negative-index separation versus localized critical-line sampling rigidity — is secondary.
 
 **Do not count them as two independent** constraints when two formulations instantiate the same underlying mechanism. Global Schur monotonicity remains quarantined. Theorem authority remains #184; negative-root exclusion remains OPEN; **RH remains OPEN.**
+
+## Post-#205 audit addendum — generic Pair-D lane consumed
+
+Current research authority is now PR #205:
+
+```text
+head  = 73b78297da54b9f5b2d47584a8033356a6b2e2a8
+merge = deaa69ae190ada511cf8228f174846184673ff3a
+tree  = 3d715612eabf25a9056ab84b0c5e968f71354666
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+The exact executable C1 fixture uses the actual radius-3 centered boundary-flat parity geometry with a generic reversal-symmetric diagonal operator. It certifies both predecessor parity forms positive (`70`, `10`), while exact negative successor witnesses exist in both parities (`-130`, `-410`). The selected even compressed root is `-13/42`, and the centered-index commutator vanishes exactly.
+
+This is `EXACT EXECUTABLE RESEARCH / RIGOROUS FINITE SYNTHETIC COUNTERMODEL`, not Lean theorem authority and not a canonical CCM counterexample. `canonical_realizability = false`.
+
+Therefore generic predecessor positivity + parity/shell geometry + reversal symmetry + displacement commutation cannot supply the simultaneous-badness contradiction. DR-012 and DR-013 are strengthened by current executable evidence. Pair D remains open only in a **canonical-arithmetic** form: a later exclusion must identify a property of `canonicalSourceMatrix` that fails on C1.
+
+The next cheapest falsifier should attack the generic quadratic-normal-defect-versus-`M4` implication. The canonical `sourceMoment <-> M4` question, odd-selected first-bad closure, FB-05, negative-root exclusion and RH remain OPEN. Theorem authority remains #184.
