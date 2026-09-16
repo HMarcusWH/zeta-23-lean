@@ -347,3 +347,49 @@ A shared implementation/comparator path is insufficient validation. A new compos
 The planned simple Pair-A representation-engineering programme is consumed. Validation should now prioritize a preregistered Pair-D same-state two-parity falsifier rather than increasing the Q14 numerical budget or fitting another equivalent representation of `J`.
 
 The theorem authority remains #184. `GLOBAL_MONOTONE_ORIENTATION / J_POSITIVE` remains rigorous bounded research on the frozen Q14 domain. R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+## Post-#205 validation addendum
+
+Current research-evidence authority advances to PR #205:
+
+```text
+validated research head = 73b78297da54b9f5b2d47584a8033356a6b2e2a8
+merged research commit = deaa69ae190ada511cf8228f174846184673ff3a
+validated research tree = 3d715612eabf25a9056ab84b0c5e968f71354666
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+The #205 C1 result is classified as:
+
+```text
+EXACT EXECUTABLE RESEARCH
+RIGOROUS FINITE SYNTHETIC COUNTERMODEL
+```
+
+It certifies exact rational/integer properties of one synthetic reversal-symmetric radius-3 operator. It is not a Lean theorem and is not canonical-source realizability.
+
+### Countermodel-promotion rule
+
+A historical synthetic fixture that is later reconstructed exactly in current CI does not retroactively change the evidence class of the historical document. Record the later executable promotion in a new delta and registry entry. Do not claim recovery of a larger historical oracle unless that oracle itself is recovered.
+
+### Structural-falsifier rule
+
+If an exact generic countermodel survives the theorem's non-arithmetic structural hypotheses, any later proof of the excluded conclusion must identify which genuinely canonical hypothesis rules out that countermodel. Adding another generic lemma that the countermodel also satisfies is not route progress.
+
+For #205 this means:
+
+```text
+both predecessors positive
++ parity/boundary-flat/shell geometry
++ reversal symmetry
++ centered-index commutation
+-/-> not simultaneous badness
+```
+
+So generic simultaneous-parity exclusion is consumed. Canonical simultaneous-parity exclusion remains open.
+
+### Next falsification rule
+
+Before theoremizing a canonical `explicitCanonicalSourceMoment` / `M4` implication, test a generic analogue with a neutral observable name. A synthetic pairing must not be called `explicitCanonicalSourceMoment` unless it is proved equal to the actual canonical production observable.
+
+The theorem authority remains #184. R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
