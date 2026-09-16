@@ -78,3 +78,22 @@ fails its kill-switch, yielding `center_kill_switch_survives = false`, `full_cov
 The direct #197 `GLOBAL_MONOTONE_ORIENTATION / J_POSITIVE` certificate remains intact. Pair-A representation engineering is now consumed/downgraded as the default tactic; the highest-information next route is **Pair D — same-state two-parity squeeze**, with **Pair B — negative-index separation versus localized critical-line sampling rigidity** secondary.
 
 R003 remains `DISCOVERY`; confirmatory execution is not authorized. The selected formal first break remains `E4A4-SCHUR-FB-05`. Theorem authority remains #184. **RH remains OPEN.**
+
+## Post-#205 authoritative update
+
+```text
+LATEST RESEARCH EVIDENCE
+PR #205
+head  73b78297da54b9f5b2d47584a8033356a6b2e2a8
+merge deaa69ae190ada511cf8228f174846184673ff3a
+tree  3d715612eabf25a9056ab84b0c5e968f71354666
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+PR #205 makes historical C1 current executable evidence. On the actual repository radius-3 centered boundary-flat parity geometry, one exact generic reversal-symmetric diagonal operator has both predecessor sectors positive (`70`, `10`) and both successor sectors bad via exact rational witnesses (`-130`, `-410`). The selected even compressed root is `-13/42`; the centered-index commutator vanishes exactly.
+
+Evidence class: `EXACT EXECUTABLE RESEARCH / RIGOROUS FINITE SYNTHETIC COUNTERMODEL`. It is **not** `canonicalSourceMatrix`, is not proved zeta-realizable, and does not move Lean theorem authority.
+
+This consumes the **generic structural** version of Pair D. The active route is now Pair D in a narrower form: **same-state canonical-arithmetic two-parity squeeze**. Any successful simultaneous-badness exclusion must spend an actual canonical-source property absent from C1. `OBS-059` remains OPEN / ACTIVE / CANONICAL-ARITHMETIC ONLY.
+
+The next cheap falsifier should test the generic quadratic-normal-defect-versus-`M4` implication before theoremizing a canonical sourceMoment/`M4` bridge. Pair B remains secondary. R003 remains `DISCOVERY`; `E4A4-SCHUR-FB-05` remains the formal first break; theorem authority remains #184; **RH remains OPEN.**
