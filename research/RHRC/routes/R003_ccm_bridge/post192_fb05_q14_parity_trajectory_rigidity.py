@@ -96,6 +96,14 @@ def parity_coordinates_from_same_state(record: dict) -> dict:
     }
 
 
+def _orientation(x: arb) -> str:
+    if definitely_negative(x):
+        return J_NEGATIVE
+    if definitely_positive(x):
+        return J_POSITIVE
+    return J_UNRESOLVED
+
+
 def inherited_center_crosscheck(box: dict) -> dict:
     """Cross-check reconstructed P1/P2 against the frozen #188 selector graph."""
     den = int(box["den"])
@@ -110,6 +118,10 @@ def inherited_center_crosscheck(box: dict) -> dict:
             "P1_overlap": False,
             "P2_overlap": False,
             "P2_J_identity_overlap": overlap(ours["P2"], ours["P2_from_J"]),
+            "center_e_positive": definitely_positive(ours["e"]),
+            "center_o_positive": definitely_positive(ours["o"]),
+            "J_orientation": _orientation(ours["J"]),
+            "P2_orientation": _orientation(ours["P2"]),
         }
     p1_existing = inherited["candidates"]["parity_predecessor_ratio"]
     p2_existing = inherited["candidates"]["parity_log_slope_gap"]
@@ -119,6 +131,10 @@ def inherited_center_crosscheck(box: dict) -> dict:
         "P1_overlap": overlap(ours["P1"], p1_existing),
         "P2_overlap": overlap(ours["P2"], p2_existing),
         "P2_J_identity_overlap": overlap(ours["P2"], ours["P2_from_J"]),
+        "center_e_positive": definitely_positive(ours["e"]),
+        "center_o_positive": definitely_positive(ours["o"]),
+        "J_orientation": _orientation(ours["J"]),
+        "P2_orientation": _orientation(ours["P2"]),
         "P1": ball_record(ours["P1"]),
         "P2": ball_record(ours["P2"]),
         "J": ball_record(ours["J"]),
@@ -140,14 +156,6 @@ def primary_hull(boxes: list[dict]) -> dict:
     if not 0 <= lo < hi <= den:
         raise AssertionError("invalid inherited primary hull")
     return {"Q": Q, "lo_num": lo, "hi_num": hi, "den": den}
-
-
-def _orientation(J: arb) -> str:
-    if definitely_negative(J):
-        return J_NEGATIVE
-    if definitely_positive(J):
-        return J_POSITIVE
-    return J_UNRESOLVED
 
 
 def trajectory_cell_record(Q: int, lo_num: int, hi_num: int, den: int, depth: int) -> dict:
@@ -224,32 +232,58 @@ def _merge_spans(cells: list[dict]) -> list[dict]:
     return spans
 
 
+def _compressed_signed_orientations(ordered: list[dict]) -> list[str]:
+    compressed: list[str] = []
+    for row in ordered:
+        sign = row["orientation"]
+        if sign not in (J_NEGATIVE, J_POSITIVE):
+            continue
+        if not compressed or compressed[-1] != sign:
+            compressed.append(sign)
+    return compressed
+
+
+def _uniform_signed_side(rows: list[dict]) -> str | None:
+    signs = [row["orientation"] for row in rows if row["orientation"] in (J_NEGATIVE, J_POSITIVE)]
+    if not signs or len(signs) != len(rows):
+        return None
+    first = signs[0]
+    return first if all(sign == first for sign in signs) else None
+
+
 def _classify_cover(leaves: list[dict]) -> dict:
+    """Classify only what the ordered certified cover actually brackets."""
     ordered = sorted(leaves, key=lambda row: row["lo_num"])
-    signs = [row["orientation"] for row in ordered if row["orientation"] in (J_NEGATIVE, J_POSITIVE)]
+    signed = [row for row in ordered if row["orientation"] in (J_NEGATIVE, J_POSITIVE)]
     unresolved = [row for row in ordered if row["orientation"] not in (J_NEGATIVE, J_POSITIVE)]
     spans = _merge_spans(unresolved)
+    compressed_signs = _compressed_signed_orientations(ordered)
 
-    compressed_signs = []
-    for sign in signs:
-        if not compressed_signs or compressed_signs[-1] != sign:
-            compressed_signs.append(sign)
+    classification = TRAJECTORY_RIGIDITY_UNRESOLVED
+    excluded_outside_fold = False
 
-    if not unresolved and len(compressed_signs) == 1 and compressed_signs:
-        classification = GLOBAL_MONOTONE_ORIENTATION
-        excluded_outside_fold = True
-    elif len(spans) == 1 and compressed_signs in ([J_NEGATIVE, J_POSITIVE], [J_POSITIVE, J_NEGATIVE]):
-        classification = SINGLE_FOLD_REGION_LOCALIZED
-        excluded_outside_fold = True
-    elif len(compressed_signs) > 2:
-        classification = MULTIPLE_FOLD_REGIONS
-        excluded_outside_fold = False
-    elif signs:
+    if not unresolved and signed:
+        uniform = _uniform_signed_side(ordered)
+        if uniform is not None:
+            classification = GLOBAL_MONOTONE_ORIENTATION
+            excluded_outside_fold = True
+        elif len(compressed_signs) > 1:
+            classification = MULTIPLE_FOLD_REGIONS
+    elif len(spans) == 1:
+        span = spans[0]
+        left = [row for row in ordered if row["hi_num"] <= span["lo_num"]]
+        right = [row for row in ordered if row["lo_num"] >= span["hi_num"]]
+        left_sign = _uniform_signed_side(left)
+        right_sign = _uniform_signed_side(right)
+        if left_sign is not None and right_sign is not None and left_sign != right_sign:
+            classification = SINGLE_FOLD_REGION_LOCALIZED
+            excluded_outside_fold = True
+        elif signed:
+            classification = PARTIAL_TRAJECTORY_ORIENTATION
+    elif len(spans) > 1:
+        classification = MULTIPLE_FOLD_REGIONS if signed else TRAJECTORY_RIGIDITY_UNRESOLVED
+    elif signed:
         classification = PARTIAL_TRAJECTORY_ORIENTATION
-        excluded_outside_fold = False
-    else:
-        classification = TRAJECTORY_RIGIDITY_UNRESOLVED
-        excluded_outside_fold = False
 
     return {
         "classification": classification,
@@ -270,9 +304,19 @@ def localize_trajectory(
     queue = [(int(hull["lo_num"]), int(hull["hi_num"]), 0)]
     leaves: list[dict] = []
     evaluated = 0
+    max_evaluated_depth = 0
+    evaluated_orientation_counts = {
+        J_NEGATIVE: 0,
+        J_POSITIVE: 0,
+        J_UNRESOLVED: 0,
+        H1_UNRESOLVED: 0,
+    }
+    budget_exhausted_leaf_count = 0
+
     while queue:
         lo, hi, depth = queue.pop(0)
         if evaluated >= max_cells:
+            budget_exhausted_leaf_count += 1
             leaves.append({
                 "Q": int(hull["Q"]), "depth": depth, "lo_num": lo, "hi_num": hi,
                 "den": int(hull["den"]), "orientation": J_UNRESOLVED,
@@ -281,6 +325,8 @@ def localize_trajectory(
             continue
         row = trajectory_cell_record(int(hull["Q"]), lo, hi, int(hull["den"]), depth)
         evaluated += 1
+        max_evaluated_depth = max(max_evaluated_depth, depth)
+        evaluated_orientation_counts[row["orientation"]] += 1
         if row["orientation"] in (J_NEGATIVE, J_POSITIVE) or depth >= max_depth or hi - lo <= 2:
             leaves.append(row)
             continue
@@ -307,6 +353,9 @@ def localize_trajectory(
         "leaf_count": len(leaves),
         "max_depth": int(max_depth),
         "max_cells": int(max_cells),
+        "max_evaluated_depth": int(max_evaluated_depth),
+        "evaluated_orientation_counts": evaluated_orientation_counts,
+        "budget_exhausted_leaf_count": int(budget_exhausted_leaf_count),
         "leaves": leaves,
         **classification,
     }
