@@ -102,6 +102,17 @@ def main() -> int:
     )
     certified_fraction = Fraction(1, 1) - unresolved_width / hull_width
 
+    center_orientation_summary = [
+        {
+            "label": row["label"],
+            "center_e_positive": row["center_e_positive"],
+            "center_o_positive": row["center_o_positive"],
+            "J_orientation": row["J_orientation"],
+            "P2_orientation": row["P2_orientation"],
+        }
+        for row in result["primary_center_crosschecks"]
+    ]
+
     out = {
         "schema_version": "POST192_FB05_Q14_PARITY_TRAJECTORY_RIGIDITY_CERTIFICATE_v1",
         "status": "PASS",
@@ -118,13 +129,17 @@ def main() -> int:
             "hull_t_width": str(hull_width),
             "unresolved_t_width": str(unresolved_width),
             "certified_t_fraction": str(certified_fraction),
+            "evaluated_orientation_counts": localization["evaluated_orientation_counts"],
+            "budget_exhausted_leaf_count": localization["budget_exhausted_leaf_count"],
+            "max_evaluated_depth": localization["max_evaluated_depth"],
+            "primary_center_orientations": center_orientation_summary,
             "note": "Coverage diagnostic only; not a probability, confidence level, or theorem-strength score."
         },
         "interpretation": {
             "classification": classification,
             "derived_distinct_aperture_twin_exclusion_outside_fold": exclusion,
             "next_question_if_single_fold": "Can J be shown to have exactly one nondegenerate zero inside the reported fold interval using J', P2', second derivatives, centered Taylor, or interval Newton?",
-            "fallback_if_unresolved": "Non-resolution after the frozen budget remains an open trajectory-rigidity problem; do not infer twin nonexistence."
+            "fallback_if_unresolved": "Use the H1/J/budget diagnostics and exact-center orientations to choose the next representation; do not infer twin nonexistence or merely raise the refinement budget without diagnosis."
         },
         "nonclaims": fixture["nonclaims"],
         "theorem_promotion": False,
@@ -140,6 +155,10 @@ def main() -> int:
         "classification": classification,
         "evaluated_cell_count": localization["evaluated_cell_count"],
         "leaf_count": localization["leaf_count"],
+        "max_evaluated_depth": localization["max_evaluated_depth"],
+        "evaluated_orientation_counts": localization["evaluated_orientation_counts"],
+        "budget_exhausted_leaf_count": localization["budget_exhausted_leaf_count"],
+        "primary_center_orientations": center_orientation_summary,
         "orientation_sequence": localization["compressed_certified_orientation_sequence"],
         "unresolved_span_count": localization["unresolved_span_count"],
         "unresolved_span_widths": [_span_width(span) for span in unresolved_spans],
