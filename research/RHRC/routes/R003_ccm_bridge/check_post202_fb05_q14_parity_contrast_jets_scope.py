@@ -9,7 +9,10 @@ from flint import arb
 
 from canonical_source_arb import ball_record, set_precision
 from post166_fb05_cell_interval import cell_coordinate_L_arb
-from post173_fb05_q13_scalar_barrier import TARGET_KSTAR
+from post173_fb05_q13_scalar_barrier import TARGET_KSTAR, scalar_geometry
+from post194_fb05_q14_fixed_unit_second_derivative import (
+    fixed_unit_second_derivative_scalar_record_arb_at_L,
+)
 from post202_fb05_q14_parity_contrast_jets import (
     parity_gap_contrast_jets,
     parity_gap_contrast_metadata,
@@ -26,10 +29,31 @@ def _agreement(exact: arb, numeric: arb, atol: float, rtol: float) -> bool:
     return bool(err < tol)
 
 
+def _overlap(left: arb, right: arb) -> bool:
+    return bool((left - right).contains(0))
+
+
 def _quantized_t(value: float, bits: int) -> tuple[int, int]:
     den = 1 << bits
     num = int(round(float(value) * den))
     return max(1, min(den - 1, num)), den
+
+
+def _independent_normalized_gap(Q: int, L: arb) -> dict:
+    rec = fixed_unit_second_derivative_scalar_record_arb_at_L(Q, L)
+    we = arb(scalar_geometry("even").W_norm_sq)
+    wo = arb(scalar_geometry("odd").W_norm_sq)
+    E = rec["even"]["a"] / we
+    Ep = rec["even"]["a_prime"] / we
+    Epp = rec["even"]["a_second"] / we
+    O = rec["odd_N2_predecessor"] / wo
+    Op = rec["odd_N2_predecessor_prime"] / wo
+    Opp = rec["odd_N2_predecessor_second"] / wo
+    return {
+        "G": O - E,
+        "G_prime": Op - Ep,
+        "G_second": Opp - Epp,
+    }
 
 
 def main() -> int:
@@ -47,6 +71,10 @@ def main() -> int:
         raise AssertionError("exact parity-gap contrast invariant failed")
     if int(metadata["dimension"]) != 2 * TARGET_KSTAR + 1:
         raise AssertionError("parity-gap contrast dimension drift")
+    if int(metadata["noninteger_entry_count"]) <= 0:
+        raise AssertionError("expected genuinely rational parity-gap contrast coefficients")
+    if not metadata["exact_rational_conversion_required"]:
+        raise AssertionError("exact rational conversion requirement unexpectedly disabled")
 
     rows = []
     for label in fixture["implementation_check_labels"]:
@@ -57,6 +85,19 @@ def main() -> int:
         analytic = parity_gap_contrast_jets(L, TARGET_KSTAR, Q)
         if not all(analytic["checks"].values()):
             raise AssertionError(f"contrast reconstruction failed at {label}")
+
+        independent = _independent_normalized_gap(Q, L)
+        level_checks = {
+            "G_matches_independent_O_minus_E": _overlap(analytic["G"], independent["G"]),
+            "G_prime_matches_independent_O_prime_minus_E_prime": _overlap(
+                analytic["G_prime"], independent["G_prime"]
+            ),
+            "G_second_matches_independent_O_second_minus_E_second": _overlap(
+                analytic["G_second"], independent["G_second"]
+            ),
+        }
+        if not all(level_checks.values()):
+            raise AssertionError(f"exact rational contrast failed independent O-E reconstruction at {label}")
 
         ladder = []
         for hb in h_bits:
@@ -86,6 +127,7 @@ def main() -> int:
             "Q": Q,
             "L": ball_record(L),
             "contrast_checks": analytic["checks"],
+            "independent_level_reconstruction": level_checks,
             "finite_difference_ladder": ladder,
             "G_second_from_value_ok": value_second_ok,
         })
@@ -98,6 +140,8 @@ def main() -> int:
         "checks": {
             "theorem_aligned_w_correction_removal": True,
             "scalar_identity_annihilated_before_transport": True,
+            "exact_rational_contrast_conversion_required": True,
+            "independent_normalized_O_minus_E_reconstruction_required": True,
             "direct_total_reconstruction_required": True,
             "G_prime_matches_value_differences": True,
             "G_second_matches_first_derivative_differences": True,
