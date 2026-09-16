@@ -6,7 +6,7 @@
 
 ```text
 Lean theorem authority = PR #184
-latest research evidence = PR #199
+latest research evidence = PR #201
 control semantic authority = PR #117
 route phase = DISCOVERY
 ```
@@ -16,31 +16,47 @@ PR #184 proves the complex-Hermitian production/log-cover/contact algebra. No la
 ## Preserved research ancestry
 
 - PR #186: `DOMINATION_SIGNAL_MIXED`; broad universal production-remainder domination falsified in tested scope.
-- PR #190: `JOINT_EXACT_VECTOR_SEPARABLE` / `JOINT_THRESHOLD_SIGNATURE_SEPARABLE`; all 127 nonempty selector subsets insufficient in ambient normalized algebra.
+- PR #190: `JOINT_EXACT_VECTOR_SEPARABLE` / `JOINT_THRESHOLD_SIGNATURE_SEPARABLE`; all 127 nonempty selector subsets insufficient in ambient normalized algebra. Preserve `EXACT_TWIN_SURVIVES` and `EXACT_TWIN_EXCLUDED_BY_IDENTITY`.
 - PR #192: canonical production realizability Layer 0 -> Layer 5; specific reflected witness excluded, general reflected class `UNRESOLVED`.
-- PR #193: positive exact Q14 centers but `TRAJECTORY_RIGIDITY_UNRESOLVED` over finite width.
-- PR #195: validated `M,M',M''`; historical `PARTIAL_TRAJECTORY_ORIENTATION`, 48 `J_POSITIVE`, 48 `J_UNRESOLVED`, `63/64`.
+- PR #193: positive exact Q14 centers but `TRAJECTORY_RIGIDITY_UNRESOLVED` over finite width; **Do not infer this from points.**
+- PR #195: validated `M,M',M''`; historical `PARTIAL_TRAJECTORY_ORIENTATION`, exact `J' = o''e - e''o`, 48 `J_POSITIVE`, 48 `J_UNRESOLVED`, `63/64`.
 - PR #197: unique inherited budget leaf replayed once; complete cover becomes `GLOBAL_MONOTONE_ORIENTATION`, uniform `J_POSITIVE`, certified fraction `1`, `global_positive_hull = true`, `bounded_distinct_aperture_twin_exclusion = true`.
 - PR #199: exact #197 replay succeeds; the four-way and collapsed three-way source interaction representations both classify `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED`; no unique collapsed uniform lock is selected. Direct `J_POSITIVE` remains intact.
+- PR #201: `D = pole + prime_signed` and `A = direct_arch_signed` are formed at matrix-jet level before parity restriction and interval transport. Paired `M,M',M''` reconstruction passes and direct `J_POSITIVE` replays, but `0/49` paired source sums certify positive and `49/49` remain unresolved. Final disposition `DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED`, no uniform lock, `NO_UNIQUE_PRIMARY_LOCK`.
 
 ## Current route question
 
-The frozen Q14 bounded sign question is consumed, and the first explicit source-attribution graph is also consumed. The live route is now cancellation-preserving mechanism extraction.
+The frozen Q14 bounded sign question is consumed. The first independent source-attribution graph is consumed. The theorem-motivated discrepancy-first representation is also consumed.
 
-Do not rerun independent pole/arch/prime interaction boxes with only more precision or depth. Instead preserve pole-prime cancellation before enclosure:
+The current route is now **full-composite mechanism extraction**:
 
 ```text
-D = pole + prime_signed
-A = direct_arch_signed
-M = D + A
+same canonical assembled even/odd predecessor levels
+same M,M',M'' lineage
+same frozen Q14 population
+no source regrouping
+no precision/depth/population increase
 ```
 
-Construct `D,D',D''` and `A,A',A''` first, then restrict to even/odd normalized N2 predecessors and form the discrepancy-self, discrepancy/arch cross, and arch-self parity-Wronskian interactions. Require their sum to overlap the independent direct Method-C enclosure on every inherited #197 leaf.
+The first candidate family is the normalized parity gap
 
-The goal is to discover or falsify a compact canonical arithmetic relation behind the complete Q14 orientation. Existing pole-prime discrepancy theorems motivate this representation; they do not yet prove the desired parity-ordering sign.
+```text
+E = e / ||W_e||^2
+O = o / ||W_o||^2
+G = O - E
+Jbar = O' E - E' O = E G' - E' G
+```
+
+The factorization itself is only a DERIVED identity. The research question is whether a simple predeclared component sign pattern gives an independently meaningful reason for the known `Jbar>0`.
+
+Use the six inherited exact Q14 centers as a kill-switch before any full-cover run. If the frozen candidate sign pattern fails at a center, report the hypothesis falsified rather than increasing numerical effort. If it survives, reuse the exact #197 49-leaf partition at 384 bits and require overlap reconstruction against independent direct Method C.
+
+Merely rewriting `J>0` as `(O/E)'>0` or `(log(O/E))'>0` is not an independent mechanism. **Do not count them as two independent.**
+
+If the full-composite candidate is also mixed or dependency-unresolved, stop Pair-A representation engineering and prioritize the genuinely different Pair D / Pair B incompatibility routes.
 
 ## Claim firewall
 
-`GLOBAL_MONOTONE_ORIENTATION` remains rigorous bounded research on the exact frozen Q14 domain. `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED` is a newer mechanism-attribution result and does not weaken the direct sign certificate. Neither establishes arbitrary-Q ordering, global canonical injectivity, FB-05 closure, negative-root exclusion or RH.
+`GLOBAL_MONOTONE_ORIENTATION` remains rigorous bounded research on the exact frozen Q14 domain. `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED` (#199) and `DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED` (#201) are mechanism-attribution results and do not weaken the direct sign certificate. Neither establishes arbitrary-Q ordering, global canonical injectivity, FB-05 closure, negative-root exclusion or RH.
 
-Theorem authority remains #184. R003 remains `DISCOVERY`; confirmatory execution is not authorized. **RH remains OPEN.**
+Theorem authority remains #184. The production theorem interface retains `M~(t)=-tI+R~(t)`. R003 remains `DISCOVERY`; confirmatory execution is not authorized. **RH remains OPEN.**
