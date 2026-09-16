@@ -57,3 +57,20 @@ The preregistered composite signs `E > 0`, `G > 0`, `G' >= 0`, `E' <= 0` fail th
 Pair-A representation engineering is therefore **CONSUMED / DOWNGRADED** as the default tactic. Pair D — the same-state two-parity squeeze — is now the highest-information next research route; Pair B — negative-index versus localized critical-line sampling rigidity — is secondary. The selected first break remains `E4A4-SCHUR-FB-05`.
 
 Theorem authority remains #184. **RH remains OPEN.**
+
+## Post-#205 current state
+
+PR #205 is now the latest merged research evidence:
+
+```text
+head = 73b78297da54b9f5b2d47584a8033356a6b2e2a8
+merge = deaa69ae190ada511cf8228f174846184673ff3a
+tree = 3d715612eabf25a9056ab84b0c5e968f71354666
+PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+The exact executable C1 fixture has `N=2`, `K=3`, even/odd predecessor forms `70` and `10`, exact negative successor witness energies `-130` and `-410`, and selected even compressed root `-13/42`. The operator is reversal symmetric and has zero centered-index commutator, but `canonical_realizability = false`.
+
+Therefore generic predecessor positivity + parity/boundary-flat/shell geometry + reversal symmetry + centered-index displacement structure do **not** exclude simultaneous even/odd successor badness. The generic Pair-D structural lane is consumed. Pair D remains active only as a **canonical-arithmetic** route: a successful exclusion must use a property of the actual `canonicalSourceMatrix` that C1 does not satisfy.
+
+`sourceMoment <-> M4` canonical-state rigidity and the odd-selected first-bad branch remain OPEN. Pair B remains secondary. The selected first break remains `E4A4-SCHUR-FB-05`; theorem authority remains #184; **RH remains OPEN.**
