@@ -288,3 +288,62 @@ If a full-composite mechanism is also mixed or dependency-unresolved, the valida
 - bounded distinct-aperture twin exclusion does not exclude all canonical reflected twins;
 - negative-root exclusion remains OPEN;
 - **RH remains OPEN.**
+
+## Post-#203 validation addendum
+
+Current research-evidence authority advances to PR #203:
+
+```text
+validated research head = c8196830a8b49e657b28d36b364e1cff68c568d6
+merged research commit = ab660e812a78d482145eadc3e42d186a63fa812b
+validated research tree = 7360e366fe8d623ef63ca902c23522bb72935848
+research disposition = COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
+```
+
+The repaired #203 implementation establishes executable/provenance correctness of the exact-rational parity contrast. It requires `exact_rational_contrast_conversion`, `scalar_removed_before_contraction`, and independent normalized reconstructions `G=O-E`, `G'=O'-E'`, `G''=O''-E''` at the implementation-check points.
+
+The research mechanism itself was preregistered as the conjunction
+
+```text
+E > 0
+G > 0
+G' >= 0
+E' <= 0
+```
+
+and returns
+
+```text
+center_kill_switch_survives = false
+full_cover_executed = false
+completed_leaf_count = 0
+mechanism_classification = COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
+control_transfer_status = PATTERN_FALSIFIED_BEFORE_FULL_COVER
+```
+
+Evidence interpretation:
+
+```text
+predeclared center mechanism fails
+  -> SUCCESSFUL FALSIFICATION RESEARCH
+  -/-> CI failure
+  -/-> #197 J_POSITIVE lost
+  -/-> all Pair-A theorems impossible
+  -/-> RH
+```
+
+A failed preregistered kill-switch must not be rescued by fitting another nearby sign pattern to the same unblinded centers. Such a rescue is a new discovery route and requires an independently motivated fixture.
+
+### Exact-rational conversion rule
+
+PR #203 exposed and repaired an implementation-only bug where an integer-only SymPy-to-Arb helper truncated noninteger contrast coefficients. Therefore:
+
+> If exact research geometry contains noninteger rational coefficients, conversion into Arb must preserve the exact rational numerator/denominator. Integer-only conversion helpers are forbidden for that object.
+
+A shared implementation/comparator path is insufficient validation. A new composite evaluator must have at least one genuinely independent reconstruction path when feasible; #203's `O-E` checks are the model.
+
+### Post-#203 routing response
+
+The planned simple Pair-A representation-engineering programme is consumed. Validation should now prioritize a preregistered Pair-D same-state two-parity falsifier rather than increasing the Q14 numerical budget or fitting another equivalent representation of `J`.
+
+The theorem authority remains #184. `GLOBAL_MONOTONE_ORIENTATION / J_POSITIVE` remains rigorous bounded research on the frozen Q14 domain. R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
