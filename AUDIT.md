@@ -1,4 +1,4 @@
-# RHRC formal audit — theorem authority through PR #184; research evidence through PR #190
+# RHRC formal audit — theorem authority through PR #184; research evidence through PR #193
 
 > **RH remains OPEN.**
 
@@ -14,12 +14,14 @@ merge = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
 tree  = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
 
 LATEST RESEARCH EVIDENCE
-PR #190
-head  = 8701920b0da18ae6595ad0eee55c1f6cb291a94f
-merge = f87da9fde71dd1e74419c6ae5848eee3787c27e4
-tree  = af8774b65c898de221a5bf32977ccff3407a7b2d
-RHRC #1096 = SUCCESS
-Permansson #869 = SUCCESS
+PR #193
+head  = 085634ca7dafe4d9f598b2b5e081be80e050ba8c
+merge = fdd6606f85e92bf632b4cdaf1d4af85f6fa5b195
+tree  = db569150046459f4b87a931d3e8d01054bbbedff
+RHRC #1109 = SUCCESS
+Permansson #882 = SUCCESS
+post-190 canonical realizability audit #5 = SUCCESS
+post-192 parity trajectory rigidity #3 = SUCCESS
 
 CONTROL SEMANTIC AUTHORITY
 PR #117
@@ -45,102 +47,79 @@ remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0
 
 Still not proved: source-specific remainder domination, contact existence/uniqueness, opposing first-bad orientation on the same state, first-bad exclusion, negative-root exclusion or RH.
 
-## Research audit: #186 -> #190
+## Research audit: #186 -> #193
 
-### PR #186 — broad domination falsifier
+### #186 -> #190 — ambient selector surface consumed
 
-On the exact frozen #180 Q14 panel, the physical-aperture decomposition
-
-```text
-P_L' = -E/L + R_L'
-margin_L = E/L - R_L'
-rho_L = L*R_L'/E
-```
-
-returned `DOMINATION_SIGNAL_MIXED`: two positive margins, four negative margins, no unresolved exact centers. The broad universal domination hypothesis therefore failed in this tested finite scope.
-
-### PR #188 — selector audit
-
-The frozen post-#186 audit introduced ten normalization-safe candidates. Seven were marked strong-eligible:
-
-```text
-G1_COUPLING_RATIO
-P1_PARITY_LEVEL_RATIO
-P2_PARITY_LOG_SLOPE_GAP
-C1_PRIME_PIVOT_CONTRIBUTION
-C2_ARCH_PIVOT_CONTRIBUTION
-C3_POLE_PIVOT_CONTRIBUTION
-C4_PRIME_VS_SMOOTH_MAGNITUDE
-```
-
-R1/R2/R3 remained diagnostic-only because their sum reconstructs a target-adjacent mechanism quantity.
-
-### PR #189 — individual semantic independence
-
-For every frozen candidate separately, exact rational ambient states were certified with the same candidate value and same nonboundary threshold relation but opposite target signs. Result: no individual frozen candidate determines the target sign in the audited normalized algebra.
-
-### PR #190 — joint semantic independence
-
-PR #190 closes the remaining composition hole. It certifies two exact rational ambient states with:
-
-```text
-identical complete seven-dimensional strong selector vector
-identical nonboundary threshold signature
-opposite normalized FB-05 target signs
-```
-
-The executable classifications are:
+#186 returned `DOMINATION_SIGNAL_MIXED`. #188 froze the normalization-safe selector surface. #189 showed every selector individually ambiently separable from the target sign. #190 then certified the exact reflected pair with identical complete seven-vector and identical nonboundary threshold signature but opposite target signs:
 
 ```text
 JOINT_EXACT_VECTOR_SEPARABLE
 JOINT_THRESHOLD_SIGNATURE_SEPARABLE
 ```
 
-Since the full seven-vector is identical, every one of its `2^7 - 1 = 127` nonempty coordinate subsets is identical as well. No search over those subsets can restore information in this ambient algebra.
+Thus all 127 nonempty selector subsets are insufficient in that ambient algebra.
 
-The positive controls `channel_sum`, `direct_full_ratio`, and `mechanism_sum` do distinguish the pair and reconstruct the target exactly, confirming that the audit still detects target-containing observations.
+### #192 — canonical production realizability ladder
 
-## Exact post-#190 limitation
-
-#190 does **not** prove that its reflected rational pair is realizable by the canonical arithmetic CCM construction. Its module and certificate explicitly keep
+The historical Layer 0 -> Layer 5 canonical production realizability audit was executed rather than remaining a future plan:
 
 ```text
-canonical_realizability_claimed = false
-fb05_closed = false
-negative_root_exclusion = false
-rh_claim = false
+Layer 0  AMBIENT_NORMALIZED
+Layer 1  SOURCE_CHANNEL_COUPLING
+Layer 2  SCALAR_APERTURE
+Layer 3  COMMON_ARCH_APERTURE
+Layer 4  COMMON_SCHUR_GEOMETRY
+Layer 5  CANONICAL_PRODUCTION
 ```
 
-Therefore the correct conclusion is not “Pair A is impossible.” It is:
+The specific #190 negative-scalar witness is excluded when the exact positive scalar-aperture identity is imposed. An adversarial exact positive-scalar reflected construction shows that scalar positivity alone does not kill the general reflection mechanism. The bounded full canonical replay remains `UNRESOLVED` for general twin existence; among the six primary production states it reports 0/15 seven-vector overlaps. Search failure is not nonexistence.
+
+### #193 — parity trajectory rigidity
+
+PR #193 reuses the fixed-Q Q14 trajectory and the inherited P1/P2 graph. It defines only the equivalent orientation quantity
 
 ```text
-frozen selector composition is insufficient in the ambient normalized state space;
-the missing information, if Pair A survives, must enter through canonical production realizability or another independent same-state restriction.
+J = o'e - e'o
+P2 = L*J/(o*e)
+sign(P1') = sign(P2) = sign(J)   under L,e,o>0
 ```
+
+All six exact inherited primary centers certify:
+
+```text
+e > 0
+o > 0
+J > 0
+P2 > 0
+```
+
+But the frozen finite-width cover reports:
+
+```text
+96 evaluated cells
+63 H1_UNRESOLVED
+33 J_UNRESOLVED after H1 recovery
+0 J_NEGATIVE
+0 J_POSITIVE
+TRAJECTORY_RIGIDITY_UNRESOLVED
+```
+
+The whole inherited Q14 hull therefore remains unresolved. This does **not** locate a fold and does **not** falsify trajectory monotonicity. It identifies insufficiency of the current first-order centered enclosure representation/budget to certify neighborhood orientation.
 
 ## Current post-green frontier
 
-The next research target is a **canonical-realizability audit** of the #190 reflected twin. Actual production computes all channels and geometry from one common aperture/state. In particular the current research backend constructs
+Do not repeat #192 and do not simply turn up #193 depth/precision on the identical graph. On the **same frozen Q14 hull**, compare a sharper finite-width representation:
 
 ```text
-scalar_shift = 2*cCorrection'(L) I
-arch_signed  = -arch_direct - scalar_shift
+A. first-order Wronskian enclosure        [#193 baseline]
+B. direct P2 log-slope enclosure
+C. centered second-order/Taylor enclosure
 ```
 
-so the abstract scalar/arch degrees of freedom used in #190 are not obviously independent production degrees of freedom.
+The bounded research target is `J(L)>0` throughout that inherited hull. Six positive centers are only a structural signal; they are not hull positivity.
 
-The correct next experiment is layered:
-
-```text
-ambient normalized algebra
- -> four-way production channel coupling
- -> exact scalar-aperture law
- -> common archimedean derivative
- -> common Schur geometry x,E
- -> full same-L canonical source reconstruction
-```
-
-At each layer, ask whether an exact same-seven-vector/opposite-target twin can still exist. A numerical failure to find one is not a theorem; the goal is to isolate the first exact production relation that provably forbids the twin.
+If a complete signed cover eventually certifies `J>0`, then bounded strict monotonicity of P1 follows and distinct apertures on that branch cannot share the complete seven-vector. That consequence is research-level until separately formalized.
 
 ## Claim firewall
 
@@ -148,17 +127,17 @@ At each layer, ask whether an exact same-seven-vector/opposite-target twin can s
 #184 theorem package
   -/-> source-specific sign law
 
-#186 finite falsification
-  -/-> global opposite-sign theorem
+#190 joint ambient separability
+  -/-> canonical arithmetic separability
 
-#189 individual separability
-  -/-> canonical arithmetic independence
+#192 specific-witness exclusion
+  -/-> general reflected-class exclusion
 
-#190 joint separability
-  -/-> canonical realizability of the reflected pair
+6/6 positive #193 centers
+  -/-> J>0 on the hull
 
-production arch/scalar coupling
-  -/-> FB-05 closure until an exclusion theorem is actually proved
+first-order enclosure failure
+  -/-> trajectory monotonicity failure
 ```
 
 Global Schur monotonicity remains quarantined. Negative-root exclusion remains OPEN. The terminal zeta/Mathlib seam remains OPEN. **RH remains OPEN.**
