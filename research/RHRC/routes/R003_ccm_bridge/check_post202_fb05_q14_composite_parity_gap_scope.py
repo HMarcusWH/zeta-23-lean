@@ -122,17 +122,29 @@ def main() -> int:
 
     backend_text = (HERE / "post202_fb05_q14_parity_contrast_jets.py").read_text(encoding="utf-8")
     mechanism_text = (HERE / "post202_fb05_q14_composite_parity_gap_mechanism.py").read_text(encoding="utf-8")
+    checker_text = (HERE / "check_post202_fb05_q14_parity_contrast_jets_scope.py").read_text(encoding="utf-8")
     required_backend_markers = (
         "fixed_unit_gamma_core",
         "exact_parity_gap_contrast_matrix",
         "contrast.trace()",
         "scalar_free_full_composite_matrix_jets",
+        "_arb_matrix_from_sympy_rational",
+        "fmpq",
+        '"exact_rational_contrast_conversion": True',
         '"scalar_removed_before_contraction": True',
         "pole_component_prime",
         "prime_component_second",
     )
     if not all(marker in backend_text for marker in required_backend_markers):
-        raise AssertionError("composite backend lost theorem-aligned scalar-cancellation structure")
+        raise AssertionError("composite backend lost theorem-aligned scalar-cancellation/rational structure")
+    required_checker_markers = (
+        "_independent_normalized_gap",
+        "G_matches_independent_O_minus_E",
+        "G_prime_matches_independent_O_prime_minus_E_prime",
+        "G_second_matches_independent_O_second_minus_E_second",
+    )
+    if not all(marker in checker_text for marker in required_checker_markers):
+        raise AssertionError("contrast checker lost independent normalized O-E reconstruction")
     required_mechanism_markers = (
         "exact_center_kill_switch(schedule)",
         'if not gate["survives"]',
@@ -153,9 +165,10 @@ def main() -> int:
         "max_cells + 1",
         "max_cells+1",
         "post189_fb05_joint_selector_separability",
+        "_arb_matrix_from_sympy(",
     )
     if any(marker in backend_text or marker in mechanism_text for marker in forbidden_markers):
-        raise AssertionError("composite mechanism contains source-selector/search leakage marker")
+        raise AssertionError("composite mechanism contains source-selector/search/integer-conversion leakage marker")
 
     # Frozen classifier controls, independent of numerical output.
     if summarize_composite_rows([
@@ -190,6 +203,8 @@ def main() -> int:
         "center_kill_switch_pattern": fixture["center_kill_switch_pattern"],
         "primary_hull": schedule["primary_hull"],
         "full_composite_only_classifier_required": True,
+        "exact_rational_contrast_conversion_required": True,
+        "independent_normalized_O_minus_E_reconstruction_required": True,
         "theorem_promotion": False,
         "rh_claim": False,
     }, indent=2))
