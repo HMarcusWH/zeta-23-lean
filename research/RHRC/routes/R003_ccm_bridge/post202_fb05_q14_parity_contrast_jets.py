@@ -23,7 +23,7 @@ Research/audit tooling only.  No sign law is asserted here.  RH remains OPEN.
 from __future__ import annotations
 
 import sympy as sp
-from flint import acb, arb, arb_mat
+from flint import acb, arb, arb_mat, fmpq
 
 from canonical_source_arb import (
     _cos_slope,
@@ -34,7 +34,6 @@ from canonical_source_arb import (
     pole_component,
     prime_component,
 )
-from post166_fb05_cell_interval import _arb_matrix_from_sympy
 from post169_fb05_schur_visibility import one_step_geometry
 from post173_fb05_q13_scalar_barrier import TARGET_N, scalar_geometry
 from post175_fb05_q13_fixed_unit_enclosure import fixed_unit_alpha_L, fixed_unit_beta_L
@@ -53,11 +52,40 @@ from post194_fb05_q14_fixed_unit_second_derivative import (
     prime_component_second,
     regularized_arch_scale_L_second_derivative,
 )
-from post198_fb05_q14_four_way_channel_second_derivative import matrix_all_entries_overlap
 
 
 def _unit_integral_real(func) -> arb:
     return _integral_real(func, arb(1))
+
+
+def _arb_matrix_from_sympy_rational(A: sp.Matrix) -> arb_mat:
+    """Convert an exact SymPy rational matrix to Arb without integer truncation.
+
+    The repository's older ``_arb_matrix_from_sympy`` helper is intentionally
+    integer-only because it was written for exact integer geometry bases.  The
+    normalized parity contrast contains genuine rational coefficients, so using
+    that helper would silently apply ``int(...)`` to entries and change the
+    functional.  Every entry here is converted through an exact FLINT ``fmpq``.
+    """
+    if A.cols == 0:
+        return arb_mat(A.rows, 0)
+    rows = []
+    for r in range(A.rows):
+        row = []
+        for c in range(A.cols):
+            value = sp.cancel(A[r, c])
+            num, den = sp.fraction(value)
+            if not (num.is_Integer and den.is_Integer):
+                raise TypeError("parity contrast must have exact rational entries")
+            den_i = int(den)
+            if den_i == 0:
+                raise ZeroDivisionError("zero denominator in exact parity contrast")
+            if den_i < 0:
+                num = -num
+                den_i = -den_i
+            row.append(arb(fmpq(int(num), den_i)))
+        rows.append(row)
+    return arb_mat(rows)
 
 
 def fixed_unit_gamma_core(n: int, L: arb) -> arb:
@@ -196,11 +224,18 @@ def exact_parity_gap_contrast_matrix() -> sp.Matrix:
 
 def parity_gap_contrast_metadata() -> dict:
     contrast = exact_parity_gap_contrast_matrix()
+    noninteger_entries = sum(
+        not sp.cancel(contrast[r, c]).is_Integer
+        for r in range(contrast.rows)
+        for c in range(contrast.cols)
+    )
     return {
         "dimension": int(contrast.rows),
         "symmetric": contrast.T == contrast,
         "trace_zero": sp.simplify(contrast.trace()) == 0,
         "nonzero": contrast != sp.zeros(contrast.rows, contrast.cols),
+        "noninteger_entry_count": int(noninteger_entries),
+        "exact_rational_conversion_required": bool(noninteger_entries > 0),
         "even_norm_sq": int(scalar_geometry("even").W_norm_sq),
         "odd_norm_sq": int(scalar_geometry("odd").W_norm_sq),
     }
@@ -224,7 +259,7 @@ def parity_gap_contrast_jets(L: arb, N: int, Q: int) -> dict:
     contrast_exact = exact_parity_gap_contrast_matrix()
     if contrast_exact.rows != 2 * N + 1:
         raise ValueError("contrast dimension does not match requested canonical matrix size")
-    contrast = _arb_matrix_from_sympy(contrast_exact)
+    contrast = _arb_matrix_from_sympy_rational(contrast_exact)
     scalar_free = scalar_free_full_composite_matrix_jets(L, N, Q)
     G = _contract(scalar_free["matrix"], contrast)
     Gp = _contract(scalar_free["matrix_prime"], contrast)
@@ -241,6 +276,7 @@ def parity_gap_contrast_jets(L: arb, N: int, Q: int) -> dict:
         "G_prime_direct_overlap": _overlap(Gp, direct_Gp),
         "G_second_direct_overlap": _overlap(Gpp, direct_Gpp),
         "contrast_trace_zero": True,
+        "exact_rational_contrast_conversion": True,
         "scalar_removed_before_contraction": True,
     }
     if not all(checks.values()):
