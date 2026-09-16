@@ -99,7 +99,7 @@ TRAJECTORY_RIGIDITY_UNRESOLVED
 
 This is historical method evidence, not a fold theorem.
 
-### #195 second-order trajectory evidence — historical bounded partial state
+### PR #195 second-order trajectory evidence — historical bounded partial state
 
 ```text
 PARTIAL_TRAJECTORY_ORIENTATION
@@ -124,7 +124,7 @@ Interpretation law:
   -/-> complete signed hull
 ```
 
-### #197 residual-cell replay — complete bounded state
+### PR #197 residual-cell replay — complete bounded state
 
 PR #197 reruns #195 unchanged, identifies exactly one inherited `MAX_CELL_BUDGET` sentinel of width `1/64` of the hull, and evaluates that exact cell once.
 
@@ -205,7 +205,7 @@ Any later claim of a general parity-ordering theorem requires a theorem-backed s
 - research authority advances through #197 only in the evidence classes stated above;
 - Control-v2 remains non-authoritative;
 - no research certificate may write terminal RH status;
-- historical #195 `PARTIAL_TRAJECTORY_ORIENTATION` / `63/64` remains preserved;
+- historical PR #195 `PARTIAL_TRAJECTORY_ORIENTATION` / `63/64` remains preserved;
 - #197 `GLOBAL_MONOTONE_ORIENTATION` is rigorous bounded research on one frozen Q14 domain;
 - `global_positive_hull = true` does not establish global canonical injectivity or FB-05;
 - bounded distinct-aperture twin exclusion does not exclude all canonical reflected twins;
