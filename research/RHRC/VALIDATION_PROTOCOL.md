@@ -22,11 +22,11 @@ validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
 ### Latest research-evidence anchor
 
 ```text
-merged research PR = #195
-validated research head = ef8af439b4723062061553bfee0ae3eba0205684
-merged research commit = 380b0011ffa3fac9684ec05496e241b47878be69
-validated research tree = cc403fc55454c0f865c17a36d971a9e7947f1a1a
-research disposition = PARTIAL_TRAJECTORY_ORIENTATION
+merged research PR = #197
+validated research head = 2d936f9764abdfeaa82127d5c834c6c3e429da25
+merged research commit = 162df6ce8bc13a816937d747f2965bff6764fad0
+validated research tree = 97f6372a4c7c131006b4abc090c86767b9e99990
+research disposition = GLOBAL_MONOTONE_ORIENTATION
 ```
 
 ### Control authority
@@ -47,7 +47,7 @@ Current gates include:
 python research/RHRC/tools/run_suite.py
 Control-v2 real-history smoke run
 R003 normalization/dictionary/source-normalization guards
-post-#163 onward frozen research regressions through #195
+post-#163 onward frozen research regressions through #197
 R004 scalar-shift invariant audit
 external-reference dependency firewall
 lake build Zeta23.CCM
@@ -57,6 +57,7 @@ Permansson independent formal verification
 post-190 canonical realizability regression
 post-192 parity-trajectory regression
 post-194 sharp trajectory / second-derivative regression
+post-#196 / #197 Q14 residual-cell replay regression
 ```
 
 A skipped downstream step is not a passed gate.
@@ -78,32 +79,13 @@ remainder drift < envelopeNormSq -> negative pivot orientation
 
 Not proved by #184: actual source-specific remainder derivative witnesses, source-specific domination, contact existence/uniqueness, opposing first-bad orientation, negative-root exclusion or RH.
 
-## Research evidence through #195
+## Research evidence through #197
 
-### #190 ambient selector evidence
+### #186 / #190 / #192 historical constraints
 
-The exact rational research tooling certifies `JOINT_EXACT_VECTOR_SEPARABLE` and `JOINT_THRESHOLD_SIGNATURE_SEPARABLE`. This is exact executable research in the ambient normalized model, not a canonical-state theorem.
-
-### #192 canonical-realizability evidence
-
-Use these classifications exactly:
-
-```text
-EXACT_TWIN_EXCLUDED_BY_IDENTITY
-  only when a declared exact production identity excludes the object
-
-EXACT_TWIN_SURVIVES
-  only for an exact constructed model
-
-UNRESOLVED
-  for bounded production replay without an exact conclusion
-```
-
-#192 excludes the specific negative-scalar #190 witness after the exact scalar-aperture identity is imposed. Its positive-scalar adversarial control survives that identity. Later bounded production layers remain `UNRESOLVED` for the general reflected class. The six-state 0/15 seven-vector overlap count is finite structural evidence only.
+PR #186 returns `DOMINATION_SIGNAL_MIXED`. PR #190 establishes `JOINT_EXACT_VECTOR_SEPARABLE` and `JOINT_THRESHOLD_SIGNATURE_SEPARABLE` for the complete frozen selector vector in ambient normalized algebra. PR #192 executes the canonical production realizability ladder, excludes the specific negative-scalar witness under an exact identity, and leaves the general reflected class `UNRESOLVED`.
 
 ### #193 trajectory evidence
-
-The inherited exact-center P1/P2/J cross-checks use signed Arb point balls. The six exact centers with `e>0`, `o>0`, `J>0`, `P2>0` are rigorous **point research** for those encoded states.
 
 The first-order finite-width classification is:
 
@@ -115,13 +97,9 @@ TRAJECTORY_RIGIDITY_UNRESOLVED
 0 J_POSITIVE
 ```
 
-This does not establish a fold or falsify monotonicity.
+This is historical method evidence, not a fold theorem.
 
-### #195 second-order trajectory evidence
-
-PR #195 first validates the complete analytic fixed-Q canonical second derivative and independently cross-checks primitive, matrix, scalar and seam behavior. It then replays #193 exactly and evaluates A/B/C on one shared adaptive cover.
-
-Its exact bounded output is:
+### PR #195 second-order trajectory evidence — historical bounded partial state
 
 ```text
 PARTIAL_TRAJECTORY_ORIENTATION
@@ -144,10 +122,33 @@ Interpretation law:
 63/64 positive parameter coverage
   -> RIGOROUS BOUNDED PARTIAL ORIENTATION RESEARCH
   -/-> complete signed hull
-  -/-> bounded monotonicity theorem
 ```
 
-The absence of a certified negative cell is not proof that the unresolved span contains no zero or fold.
+### PR #197 residual-cell replay — complete bounded state
+
+PR #197 reruns #195 unchanged, identifies exactly one inherited `MAX_CELL_BUDGET` sentinel of width `1/64` of the hull, and evaluates that exact cell once.
+
+```text
+A = J_UNRESOLVED
+B = J_POSITIVE
+C = J_POSITIVE
+replayed_cell_orientation = J_POSITIVE
+completed_classification = GLOBAL_MONOTONE_ORIENTATION
+uniform orientation = J_POSITIVE
+unresolved span count = 0
+certified_t_fraction = 1
+full_hull_signed_monotonicity = true
+global_positive_hull = true
+bounded_distinct_aperture_twin_exclusion = true
+```
+
+This is a **complete signed Arb interval cover**, so the evidence class is:
+
+```text
+RIGOROUS BOUNDED RESEARCH
+```
+
+It is not a Lean theorem and does not promote theorem authority beyond #184.
 
 ## Evidence interpretation law
 
@@ -177,16 +178,14 @@ search fails / interval graph remains unresolved
 In particular:
 
 - ambient normalized algebra is not identical to the image of canonical arithmetic production;
-- exact selector separability is not canonical-state separability;
 - finite Arb certification is not a global theorem;
 - exact-center signs do not determine neighborhood signs;
-- `UNRESOLVED` is neither positive nor negative mathematical evidence;
-- a green falsification/nonresolution run may still be a successful validation run;
-- `PARTIAL_TRAJECTORY_ORIENTATION` cannot be silently promoted to `GLOBAL_MONOTONE_ORIENTATION`.
+- a bounded complete cover does not determine arbitrary Q or arbitrary retained states;
+- a green falsification/nonresolution run may still be a successful validation run.
 
-## Post-#195 validation rule
+## Post-#197 validation rule
 
-The next trajectory experiment must preserve the identical frozen Q14 hull, inherited Q/N/K/parity state and target-label firewall while changing the **mechanism/representation**, not silently the research population.
+The bounded Q14 sign-recovery problem is complete. Future trajectory research should **not** present another refinement of the same already-complete cover as progress unless it changes mathematical mechanism.
 
 The preferred next experiment may inspect
 
@@ -194,19 +193,21 @@ The preferred next experiment may inspect
 J' = o''e - e''o
 ```
 
-through the canonical pole/arch/prime source channels, but because this object is bilinear it must retain all cross-channel terms. Any source decomposition must rigorously reconstruct the independently evaluated direct canonical total.
+through canonical pole/arch/prime source channels. Because this object is bilinear, all cross-channel terms must be retained. Any source decomposition must rigorously reconstruct the independently evaluated direct canonical total before a dominance claim is accepted.
 
-Permitted outcomes include a stable source mechanism, stable cross-channel interaction, cancellation-dominated behavior, continued unresolved dependency, or a genuine signed counterexample. A mathematically negative result can still be a green validation result if the executable conclusion matches the evidence.
+Permitted mechanism outcomes include stable single-channel dominance, stable cross-channel interaction, cancellation-dominated behavior, or mechanism unresolved. A mathematically negative result can still be a green validation result if the executable conclusion matches the evidence.
 
-A claim of bounded `J>0` still requires a complete signed finite-width cover. `63/64`, point samples, overlap absence, or budget-limited unresolved cells cannot be upgraded to monotonicity.
+Any later claim of a general parity-ordering theorem requires a theorem-backed source premise on the intended class; the frozen #197 cover is not such a theorem.
 
 ## Claim firewall
 
 - theorem authority remains #184;
-- research authority advances through #195 only in the evidence classes stated above;
+- research authority advances through #197 only in the evidence classes stated above;
 - Control-v2 remains non-authoritative;
 - no research certificate may write terminal RH status;
-- canonical general reflected-twin exclusion remains OPEN;
-- `J>0` on the full Q14 hull remains OPEN;
+- historical PR #195 `PARTIAL_TRAJECTORY_ORIENTATION` / `63/64` remains preserved;
+- #197 `GLOBAL_MONOTONE_ORIENTATION` is rigorous bounded research on one frozen Q14 domain;
+- `global_positive_hull = true` does not establish global canonical injectivity or FB-05;
+- bounded distinct-aperture twin exclusion does not exclude all canonical reflected twins;
 - negative-root exclusion remains OPEN;
 - **RH remains OPEN.**

@@ -16,11 +16,11 @@ merged theorem commit = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
 validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #195
-validated research head = ef8af439b4723062061553bfee0ae3eba0205684
-merged research commit = 380b0011ffa3fac9684ec05496e241b47878be69
-validated research tree = cc403fc55454c0f865c17a36d971a9e7947f1a1a
-research disposition = PARTIAL_TRAJECTORY_ORIENTATION
+merged research PR = #197
+validated research head = 2d936f9764abdfeaa82127d5c834c6c3e429da25
+merged research commit = 162df6ce8bc13a816937d747f2965bff6764fad0
+validated research tree = 97f6372a4c7c131006b4abc090c86767b9e99990
+research disposition = GLOBAL_MONOTONE_ORIENTATION
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
@@ -28,7 +28,7 @@ selected first break = E4A4-SCHUR-FB-05
 terminal claim = RH_OPEN
 ```
 
-The theorem, research and control anchors are intentionally separate. Research green is not theorem promotion.
+Research green is not theorem promotion.
 
 ## Theorem frontier
 
@@ -62,11 +62,10 @@ PR #184 does **not** prove source-specific remainder domination, contact existen
       -> general reflected-twin mechanism remains UNRESOLVED
 
 #193  fixed-Q Q14 parity-trajectory rigidity audit
-      -> J = o'e - e'o for inherited P1/P2 orientation
+      -> J = o'e - e'o
       -> 6/6 exact inherited centers: e>0, o>0, J>0, P2>0
       -> 63/96 H1_UNRESOLVED
       -> 33/96 J_UNRESOLVED
-      -> 0 J_NEGATIVE, 0 J_POSITIVE
       -> TRAJECTORY_RIGIDITY_UNRESOLVED
 
 #195  canonical second-order sharp parity-trajectory enclosure
@@ -74,59 +73,61 @@ PR #184 does **not** prove source-specific remainder domination, contact existen
       -> second_order_h1_recovery_count = 63
       -> 48 J_POSITIVE, 48 J_UNRESOLVED
       -> 0 J_NEGATIVE, 0 H1_UNRESOLVED
-      -> representation_conflict_count = 0
       -> unresolved_span_count = 1
       -> certified_t_fraction = 63/64
       -> PARTIAL_TRAJECTORY_ORIENTATION
+      -> historical global_positive_hull = false
+
+#197  unique post-#195 budget-leaf replay
+      -> exactly one 1/64 MAX_CELL_BUDGET leaf evaluated once
+      -> A = J_UNRESOLVED
+      -> B = J_POSITIVE
+      -> C = J_POSITIVE
+      -> GLOBAL_MONOTONE_ORIENTATION
+      -> uniform orientation = J_POSITIVE
+      -> certified t-fraction = 1
+      -> global_positive_hull = true
+      -> bounded_distinct_aperture_twin_exclusion = true
 ```
 
-The #195 result is a strong representation improvement, not a complete hull sign theorem. `global_positive_hull = false` and `bounded_distinct_aperture_twin_exclusion = false` remain binding outputs.
+The #195 `PARTIAL_TRAJECTORY_ORIENTATION` / `63/64` result remains historical evidence. PR #197 completes the exact frozen Q14 cover at research-certification level; it does not create a Lean theorem.
 
-## Current active path — FB-05 / residual trajectory mechanism
+## Current active path — FB-05 / canonical parity-ordering mechanism
 
-PR #195 completely removes the #193 H1 obstruction on the frozen run. The remaining issue is a single unresolved orientation span.
+The bounded sign-recovery question on the frozen Q14 hull is consumed. The live question is now **why** the complete canonical trajectory is positively oriented and whether that reason generalizes to the exact retained first-bad/contact state.
 
-Do not:
+Do not resume selector mining, threshold refits, the #192 Layer 0 -> Layer 5 replay, or blind precision/depth escalation.
 
-```text
-resume selector mining or threshold refits
-repeat the #192 Layer 0 -> Layer 5 replay
-infer full-hull J>0 from 63/64 coverage
-blindly increase #195 precision/depth on the same dependency graph
-```
-
-Stay on the same frozen Q14 hull, same inherited Q/N/K/parity state and no target labels. Use the newly validated second-order jet and the exact identity
+Stay on the same canonical source lineage and inspect
 
 ```text
+J = o'e - e'o
 J' = o''e - e''o
 ```
 
-to audit the source mechanism behind the residual orientation. The next research build should decompose pole/arch/prime contributions, including all bilinear cross-channel terms, and rigorously reconstruct the direct canonical total.
-
-If the final span is eventually certified positive, then under `L,e,o>0`:
+through the pole/arch/prime source channels, retaining every bilinear cross-channel term and requiring rigorous reconstruction of the independent direct total. The goal is to identify or falsify a compact canonical arithmetic mechanism behind
 
 ```text
-P2 = L*J/(o*e)
-J>0 -> P1' > 0
+(o/e)' = J/e^2 > 0
+(log(o/e))' = J/(o*e) > 0.
 ```
-
-so P1 is strictly monotone on that bounded canonical branch and distinct apertures cannot share the complete seven-vector there. That remains bounded research evidence until separately theoremized.
 
 ## Current open obligations
 
 ```text
-residual one-span Q14 orientation mechanism                               OPEN / ACTIVE
-source-channel audit of J' = o''e - e''o                                 OPEN / ACTIVE
-J(L) > 0 on the full inherited Q14 hull                                  OPEN
-actual N2 production remainder scalar derivative witnesses               OPEN
-actual production HasDerivAt Schur identity                               OPEN
-same-state first-bad opposing contact orientation                         OPEN
-sourceMoment <-> M4 canonical-state rigidity                              OPEN
-simultaneous even/odd bad exclusion                                       OPEN
-odd-selected first-bad branch closure                                     OPEN
-negative-root exclusion                                                    OPEN
-outside-strip/trivial-zero terminal seam                                  OPEN
-RiemannHypothesis                                                          OPEN
+OBS-056 residual frozen-Q14 orientation span                           CLOSED in exact frozen Q14 research scope
+OBS-057 bounded-to-structural parity-ordering mechanism gap            OPEN / ACTIVE
+source-channel mechanism audit of J' = o''e - e''o                    OPEN / ACTIVE
+arbitrary-state source law implying the parity ordering                OPEN
+actual N2 production remainder scalar derivative witnesses             OPEN
+actual production HasDerivAt Schur identity                            OPEN
+same-state first-bad opposing contact orientation                      OPEN
+sourceMoment <-> M4 canonical-state rigidity                           OPEN
+simultaneous even/odd bad exclusion                                    OPEN
+odd-selected first-bad branch closure                                  OPEN
+negative-root exclusion                                                 OPEN
+outside-strip/trivial-zero terminal seam                               OPEN
+RiemannHypothesis                                                       OPEN
 ```
 
 ## Permanent firewalls
@@ -136,10 +137,10 @@ RiemannHypothesis                                                          OPEN
 - #190 closes the frozen selector surface only in its declared ambient normalized algebra;
 - #192 excludes the specific #190 witness but not the general reflected class;
 - #193 exact-center positivity is not finite-width monotonicity;
-- `TRAJECTORY_RIGIDITY_UNRESOLVED` was a first-order representation result, not a fold;
-- #195's `PARTIAL_TRAJECTORY_ORIENTATION` is not a complete hull theorem;
-- 63/64 certified positive coverage is not 64/64;
+- historical #195 `PARTIAL_TRAJECTORY_ORIENTATION` and `63/64` must not be rewritten away;
+- #197 complete frozen-Q14 coverage is rigorous bounded research, not arbitrary-Q or FB-05 theorem authority;
+- bounded distinct-aperture twin exclusion is not global canonical injectivity;
 - negative-root exclusion remains OPEN;
 - **RH remains OPEN.**
 
-See `research/RHRC/CURRENT_RESEARCH_PLAN.md`, `research/RHRC/RESEARCH_LEADS.md`, `research/RHRC/FB05_INCOMPATIBILITY_PROGRAM.md`, and `research/RHRC/RESEARCH_LEADS_POST_195_PARITY_TRAJECTORY_SHARP_ENCLOSURE_DELTA.md` for the current execution route.
+See `research/RHRC/CURRENT_RESEARCH_PLAN.md`, `research/RHRC/RESEARCH_LEADS.md`, `research/RHRC/FB05_INCOMPATIBILITY_PROGRAM.md`, and `research/RHRC/RESEARCH_LEADS_POST_197_Q14_RESIDUAL_CELL_REPLAY_DELTA.md` for the current execution route.
