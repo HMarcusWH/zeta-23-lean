@@ -32,16 +32,18 @@ PR #184 remains the current compiler-validated mathematical authority.
 ### Research-evidence anchor
 
 ```text
-latest merged research PR = #190
-validated research head = 8701920b0da18ae6595ad0eee55c1f6cb291a94f
-merged research commit = f87da9fde71dd1e74419c6ae5848eee3787c27e4
-validated research tree = af8774b65c898de221a5bf32977ccff3407a7b2d
-RHRC #1096 = SUCCESS
-Permansson #869 = SUCCESS
-research disposition = JOINT_EXACT_VECTOR_SEPARABLE / JOINT_THRESHOLD_SIGNATURE_SEPARABLE
+latest merged research PR = #193
+validated research head = 085634ca7dafe4d9f598b2b5e081be80e050ba8c
+merged research commit = fdd6606f85e92bf632b4cdaf1d4af85f6fa5b195
+validated research tree = db569150046459f4b87a931d3e8d01054bbbedff
+RHRC #1109 = SUCCESS
+Permansson #882 = SUCCESS
+post-190 canonical realizability audit #5 = SUCCESS
+post-192 parity trajectory rigidity #3 = SUCCESS
+research disposition = TRAJECTORY_RIGIDITY_UNRESOLVED
 ```
 
-This is research/falsification authority only. It does not move Lean theorem authority.
+The #193 head tree is identical to the merge tree. This is research/falsification authority only. It does not move Lean theorem authority.
 
 ### Control-plane semantic anchor
 
@@ -69,7 +71,7 @@ Update these when their underlying state changes:
 - `routes/ROUTE_REGISTRY.json` explanatory notes when route state changes;
 - retro aliases/regression tests when intentionally hard-coded research vocabulary changes.
 
-Historical dated deltas are not rewritten to look current.
+Historical dated deltas are not rewritten to look current. Historical regression tests are not repurposed to erase earlier consumed layers.
 
 ## Current synchronized state
 
@@ -84,25 +86,26 @@ remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0.
 
 No later research PR promotes additional Lean theorem authority.
 
-### Research progression through #190
+### Completed research history through #193
 
 ```text
 #186 -> broad remainder domination returns DOMINATION_SIGNAL_MIXED
 #188 -> frozen normalization-safe selector family audited
 #189 -> every individual frozen selector is ambiently separable from target sign
-#190 -> complete seven-selector vector is jointly ambiently separable from target sign
+#190 -> complete seven-selector vector jointly ambiently separable from target sign
         with identical nonboundary threshold signature
-        -> all 127 nonempty subsets are also insufficient in that ambient algebra
+        -> all 127 nonempty subsets insufficient in ambient algebra
+#192 -> canonical production realizability Layer 0 -> Layer 5 executed
+        -> specific negative-scalar witness excluded
+        -> general reflected mechanism unresolved
+        -> six-state production panel has 0/15 seven-vector overlaps
+#193 -> Q14 parity-trajectory rigidity audit
+        -> 6/6 exact centers e,o,J,P2 positive
+        -> finite-width first-order cover unresolved
+        -> TRAJECTORY_RIGIDITY_UNRESOLVED
 ```
 
-The exact #190 executable classifications are:
-
-```text
-JOINT_EXACT_VECTOR_SEPARABLE
-JOINT_THRESHOLD_SIGNATURE_SEPARABLE
-```
-
-The #190 code explicitly keeps canonical realizability, FB-05 closure, negative-root exclusion and RH false/unclaimed.
+The #190 code explicitly keeps canonical realizability, FB-05 closure, negative-root exclusion and RH false/unclaimed. #192 and #193 do not change that theorem firewall.
 
 ### Current route
 
@@ -110,37 +113,32 @@ The #190 code explicitly keeps canonical realizability, FB-05 closure, negative-
 PROVED THROUGH #184
   exact Hermitian/log-cover/contact algebra
 
-RESEARCHED THROUGH #190
-  broad domination falsified
-  frozen selector surface individually and jointly insufficient in ambient algebra
+RESEARCHED THROUGH #193
+  #190 ambient selector surface insufficient
+  #192 specific reflected witness noncanonical; general reflection unresolved
+  #193 exact-center parity orientation uniformly positive; finite-width rigidity unresolved
 
 NOW
-  characterize canonical production realizability
-  -> impose common-aperture/source-channel/geometry constraints on the #190 reflected twin
-  -> isolate the first exact production relation that destroys it
-  -> formalize only a relation shown to be mathematically decisive
+  same frozen Q14 hull
+  -> sharpen neighborhood representation
+  -> compare first-order J, direct P2 log-slope, centered second-order/Taylor
+  -> test whether J(L)>0 can be rigorously certified across the bounded hull
 ```
 
-The concrete first lead comes from the executable production source decomposition:
-
-```text
-scalar_shift = 2*cCorrection'(L) I
-arch_signed  = -arch_direct - scalar_shift
-```
-
-This demonstrates that the ambient #190 source coordinates omit production coupling. It is a research lead, not yet a theorem excluding the reflected class.
+A complete signed finite-width cover may support bounded monotonicity research. Six signed centers alone may not.
 
 ## Historical-state rule
 
-The post-#186 delta and obstruction supplement remain historical evidence and must not be edited to pretend they were written after #190. The current living docs should point to the new post-#190 delta while retaining #186 as ancestry.
+The post-#190 delta and OBS-054 remain historical evidence and must not be edited to pretend they were written after #193. The current living docs point to the new post-#193 delta while preserving the #190/#192 layer history needed for regression and provenance.
 
 ## Claim firewall
 
 - green research is not theorem promotion;
-- a green falsification can invalidate its tested hypothesis;
 - exact executable algebra is not automatically a Lean theorem;
 - ambient algebra countermodels are not automatically canonical arithmetic states;
-- #190 closes only the declared frozen strong-selector observation surface in its ambient model;
+- #192 excludes a declared specific witness, not the general reflected class;
+- six positive #193 centers are not a complete hull proof;
+- first-order enclosure nonresolution is not monotonicity falsification;
 - theorem authority remains #184;
 - control semantic authority remains #117;
 - negative-root exclusion remains OPEN;
