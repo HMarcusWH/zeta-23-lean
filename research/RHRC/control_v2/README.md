@@ -67,3 +67,23 @@ This does not downgrade #197 `GLOBAL_MONOTONE_ORIENTATION / J_POSITIVE`. It cons
 The machine action registry remains unchanged because the formal frontier, concept ID, scores and `E4A4-SCHUR-FB-05` first-break semantics remain unchanged. New obstruction bookkeeping is `OBS-059` for simultaneous even/odd badness / two-parity squeeze.
 
 Theorem authority remains #184. **RH remains OPEN.**
+
+## Post-#205 current descriptive state
+
+```text
+THEOREM AUTHORITY = PR #184
+LATEST RESEARCH EVIDENCE = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+R003 phase = DISCOVERY
+confirmatory execution = not authorized
+```
+
+PR #205 turns the historical C1 radius-3 fixture into current exact executable research. It certifies both predecessor sectors positive (`70`, `10`) and both successor sectors bad (`-130`, `-410`) with selected even root `-13/42`, while preserving reversal symmetry and `[D,M]=0`. `canonical_realizability=false`.
+
+The control implication is descriptive, not semantic: the **generic** two-parity squeeze is consumed, while Pair D remains active only as a **canonical-arithmetic** route. `OBS-059` remains open and now records that any successful exclusion must spend a property of the actual `canonicalSourceMatrix` absent from C1.
+
+`ACTION_REGISTRY.json`, action scores, first-break IDs, claim IDs, route digests and confirmation permissions remain unchanged. The next cheap research falsifier is the generic quadratic-normal-defect-versus-`M4` bridge. Pair B remains secondary.
+
+Theorem authority remains #184. Negative-root exclusion and **RH remain OPEN.**
