@@ -94,3 +94,31 @@ The first Pair-D execution should be a preregistered cheap falsifier/countermode
 Pair-A representation engineering is `CONSUMED / DOWNGRADED`, not mathematically forbidden forever. Revival requires an independently derived theorem-level invariant, not a post-hoc `E/G/G'/E'` refit.
 
 No claim_ids are changed by this synchronization. Theorem authority remains #184. R003 remains `DISCOVERY`; confirmatory execution is not authorized. The production theorem interface retains `M~(t)=-tI+R~(t)`. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+## Post-#205 active route
+
+```text
+latest research evidence = PR #205
+head = 73b78297da54b9f5b2d47584a8033356a6b2e2a8
+merge = deaa69ae190ada511cf8228f174846184673ff3a
+tree = 3d715612eabf25a9056ab84b0c5e968f71354666
+PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+The exact C1 fixture certifies that generic structural Pair D is not enough: both predecessor sectors are positive (`70`, `10`) while both successor sectors have exact negative witnesses (`-130`, `-410`). The selected even compressed root is `-13/42`; reversal symmetry and the centered-index displacement commutator survive. The fixture is not `canonicalSourceMatrix` and `canonical_realizability=false`.
+
+Therefore the active R003 question is now narrower:
+
+```text
+same retained canonical first-bad state
++ actual canonicalSourceMatrix arithmetic
++ #161 parity/source fork
++ #159/#163 Riesz / M4 / mixed-source structure
+-> what canonical property excludes C1-like simultaneous badness?
+```
+
+The next cheap falsifier is the generic quadratic-normal-defect-versus-`M4` implication. If that also has an exact synthetic countermodel, the surviving bridge must be genuinely canonical arithmetic rather than generic linear algebra.
+
+`OBS-059` remains `OPEN / ACTIVE / CANONICAL-ARITHMETIC ONLY`. Pair B remains secondary. DR-012 and DR-013 are strengthened by #205 rather than replaced by a new dead-route identifier.
+
+No claim_ids are changed. Theorem authority remains #184. R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
