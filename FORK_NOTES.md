@@ -12,14 +12,11 @@ merge = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
 tree  = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
 
 LATEST RESEARCH EVIDENCE
-PR #193
-head  = 085634ca7dafe4d9f598b2b5e081be80e050ba8c
-merge = fdd6606f85e92bf632b4cdaf1d4af85f6fa5b195
-tree  = db569150046459f4b87a931d3e8d01054bbbedff
-RHRC #1109 = SUCCESS
-Permansson #882 = SUCCESS
-post-190 canonical realizability audit #5 = SUCCESS
-post-192 parity trajectory rigidity #3 = SUCCESS
+PR #195
+head  = ef8af439b4723062061553bfee0ae3eba0205684
+merge = 380b0011ffa3fac9684ec05496e241b47878be69
+tree  = cc403fc55454c0f865c17a36d971a9e7947f1a1a
+research disposition = PARTIAL_TRAJECTORY_ORIENTATION
 
 CONTROL SEMANTIC AUTHORITY
 PR #117
@@ -49,6 +46,7 @@ with exact fixed-cell attachment to production and N2 predecessor/canonical-shel
 #190  complete seven-selector vector jointly separable from target sign
 #192  Layer 0 -> Layer 5 canonical production realizability audit executed
 #193  fixed-Q Q14 parity-trajectory rigidity audit -> TRAJECTORY_RIGIDITY_UNRESOLVED
+#195  canonical second-order sharp enclosure -> PARTIAL_TRAJECTORY_ORIENTATION
 ```
 
 #192 excludes the specific negative-scalar #190 witness once the exact scalar-aperture identity is imposed, but an adversarial positive-scalar reflected pair survives that identity and the bounded canonical replay does not prove general nonexistence. Among the six primary production states, the replay has 0/15 seven-vector overlaps; that is a bounded structural signal only.
@@ -60,32 +58,51 @@ J = o'e - e'o
 P2 = L*J/(o*e)
 ```
 
-and certifies `e>0`, `o>0`, `J>0`, `P2>0` at all six exact inherited centers. Its finite-width cover nevertheless returns 63 `H1_UNRESOLVED`, 33 `J_UNRESOLVED`, no signed J cells, and overall `TRAJECTORY_RIGIDITY_UNRESOLVED`.
+and certifies `e>0`, `o>0`, `J>0`, `P2>0` at all six exact inherited centers. Its first-order finite-width cover nevertheless returns 63 `H1_UNRESOLVED`, 33 `J_UNRESOLVED`, no signed J cells, and overall `TRAJECTORY_RIGIDITY_UNRESOLVED`.
+
+#195 keeps the exact same frozen Q14 hull and validates the complete fixed-Q canonical second-aperture jet `M,M',M''`. Its shared-cell A/B/C result is:
+
+```text
+48 J_POSITIVE
+48 J_UNRESOLVED
+0 J_NEGATIVE
+0 H1_UNRESOLVED
+second_order_h1_recovery_count = 63
+representation_conflict_count = 0
+unresolved_span_count = 1
+certified_t_fraction = 63/64
+global_positive_hull = false
+bounded_distinct_aperture_twin_exclusion = false
+PARTIAL_TRAJECTORY_ORIENTATION
+```
+
+Thus #195 completely removes the frozen H1 obstruction but does not sign the final 1/64 span.
 
 ## Current route
 
-The canonical production realizability ladder is completed research history, not the next experiment. The live bottleneck is neighborhood propagation of the positive exact-center trajectory orientation.
+The higher-order enclosure is now completed research history, not the next experiment. The live bottleneck is the mechanism behind the single unresolved orientation span.
 
-Do not resume selector mining, repeat the #192 replay, or merely raise the #193 subdivision/precision budget. On the **same frozen Q14 hull**, compare:
+Do not resume selector mining, repeat the #192 replay, infer a full-hull sign from `63/64`, or merely raise the #195 subdivision/precision budget. On the **same frozen Q14 hull**, use
 
 ```text
-#193 first-order Wronskian enclosure
-vs direct P2 log-slope enclosure
-vs centered second-order/Taylor enclosure
+J' = o''e - e''o
 ```
 
-The research question is whether one of those sharper representations can rigorously certify `J(L)>0` throughout the inherited hull. Six positive centers are not a monotonicity theorem.
+and audit the canonical pole/arch/prime source decomposition, retaining all bilinear cross-channel terms and requiring rigorous reconstruction of the direct canonical total.
+
+The research question is whether the residual span is unresolved because of interval dependency/cancellation or because the actual canonical trajectory reaches a zero/fold there.
 
 ## Permanent warnings
 
 - theorem authority remains #184;
-- research authority advances through #193 only as executable/finite research evidence;
+- research authority through #195 remains executable/finite research evidence;
 - #190 killed selector composition only in its declared ambient algebra;
 - #192 killed the specific reflected witness, not the general reflected class;
 - #193 did not find a fold;
-- first-order finite-width nonresolution does not falsify monotonicity;
-- `J>0` on the Q14 hull remains OPEN;
-- finite-width H1 remains separate;
+- #195 eliminates H1 failure on the frozen run but leaves one J span unresolved;
+- `63/64` positive coverage is not a complete monotonicity theorem;
+- `global_positive_hull = false` is binding;
+- `J>0` on the full Q14 hull remains OPEN;
 - global Schur monotonicity remains quarantined;
 - negative-root exclusion remains OPEN;
 - **RH remains OPEN.**

@@ -1,6 +1,6 @@
 # R003 — CCM / finite Weil bridge
 
-Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #184. LATEST RESEARCH EVIDENCE THROUGH PR #193. CURRENT FRONTIER = SHARPER Q14 PARITY-TRAJECTORY ENCLOSURE. RH OPEN.**
+Status: **ACTIVE. THEOREM AUTHORITY THROUGH PR #184. LATEST RESEARCH EVIDENCE THROUGH PR #195. CURRENT FRONTIER = RESIDUAL Q14 PARITY-TRAJECTORY ORIENTATION MECHANISM. RH OPEN.**
 
 ## Authority split
 
@@ -12,15 +12,11 @@ merge = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
 tree  = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
 
 LATEST RESEARCH EVIDENCE
-PR #193
-head  = 085634ca7dafe4d9f598b2b5e081be80e050ba8c
-merge = fdd6606f85e92bf632b4cdaf1d4af85f6fa5b195
-tree  = db569150046459f4b87a931d3e8d01054bbbedff
-RHRC #1109 = SUCCESS
-Permansson #882 = SUCCESS
-post-190 canonical realizability audit #5 = SUCCESS
-post-192 parity trajectory rigidity #3 = SUCCESS
-research disposition = TRAJECTORY_RIGIDITY_UNRESOLVED
+PR #195
+head  = ef8af439b4723062061553bfee0ae3eba0205684
+merge = 380b0011ffa3fac9684ec05496e241b47878be69
+tree  = cc403fc55454c0f865c17a36d971a9e7947f1a1a
+research disposition = PARTIAL_TRAJECTORY_ORIENTATION
 
 CONTROL AUTHORITY
 PR #117
@@ -41,7 +37,7 @@ P_t' = -envelopeNormSq + remainderEnvelopeDerivative             PROVED / #184
 remainder domination -> negative pivot orientation               PROVED / #184
 ```
 
-## Finite research state through #193
+## Finite research state through #195
 
 ```text
 #165 endpoint scalar
@@ -60,6 +56,7 @@ remainder domination -> negative pivot orientation               PROVED / #184
 #190 joint strong-selector separability audit
 #192 canonical production realizability Layer 0 -> Layer 5
 #193 Q14 parity-trajectory rigidity / first-order enclosure baseline
+#195 complete canonical second derivative / sharp shared-cell enclosure
 ```
 
 ### #190
@@ -81,17 +78,40 @@ P2 = L*J/(o*e)
 
 with `sign(P1') = sign(P2) = sign(J)` under `L,e,o>0`.
 
-All six exact inherited centers have positive `e`, `o`, `J`, and `P2`. The finite-width first-order cover nevertheless returns:
+All six exact inherited centers have positive `e`, `o`, `J`, and `P2`. The first-order finite-width cover returned:
 
 ```text
 63/96 H1_UNRESOLVED
-33/96 J_UNRESOLVED after H1 recovery
+33/96 J_UNRESOLVED
 0 J_NEGATIVE
 0 J_POSITIVE
 TRAJECTORY_RIGIDITY_UNRESOLVED
 ```
 
-This does not locate a fold. It leaves finite-width trajectory rigidity unresolved because the current representation loses sign information.
+This did not locate a fold. It left finite-width trajectory rigidity unresolved because the first-order representation lost sign information.
+
+### #195
+
+The higher-order same-hull experiment validates a complete fixed-Q canonical `M,M',M''` production lineage and evaluates all A/B/C representations on one shared adaptive cover.
+
+Exact output:
+
+```text
+classification = PARTIAL_TRAJECTORY_ORIENTATION
+48 J_POSITIVE
+48 J_UNRESOLVED
+0 J_NEGATIVE
+0 H1_UNRESOLVED
+second_order_h1_recovery_count = 63
+representation_conflict_count = 0
+unresolved_span_count = 1
+certified_t_fraction = 63/64
+uniform_orientation = null
+global_positive_hull = false
+bounded_distinct_aperture_twin_exclusion = false
+```
+
+Methods B and C agree exactly on the orientation counts. The historical H1 obstruction is eliminated on this frozen run. One orientation span remains unresolved.
 
 ## What remains consumed
 
@@ -103,33 +123,59 @@ searching their subsets
 retuning their thresholds
 repeating the #192 Layer 0 -> Layer 5 replay
 blindly increasing #193 first-order subdivision/precision
+blindly increasing #195 sharp-enclosure depth/precision without a new mechanism
 ```
 
 Those are consumed routes unless a new exact object or dependency representation is forced by canonical production.
 
-## Current research lane — sharper same-hull parity trajectory enclosure
+## Current research lane — residual same-hull orientation mechanism
 
 Same frozen Q14 hull. Same six centers. Same Q/N/K/parity. Same P1/P2/J. No target labels.
 
-Compare:
+The active question is now why the last 1/64 of the trajectory parameter range remains unresolved despite full H1 recovery and 63/64 positive coverage.
+
+Use the exact derived identity
 
 ```text
-A. first-order Wronskian enclosure      [#193 baseline]
-B. direct P2 log-slope enclosure
-C. centered second-order/Taylor enclosure
+J' = o''e - e''o
 ```
 
-The primary bounded hypothesis is:
+and audit the complete canonical source decomposition. Because `J'` is bilinear, do **not** add independent channel pivots or discard cross-channel terms. If
+
+```text
+e = sum_c e_c
+o = sum_c o_c
+```
+
+then the decomposition must retain terms of the form
+
+```text
+sum_{c,d} (o_c'' * e_d - e_c'' * o_d)
+```
+
+with production signs absorbed consistently. The recombined interval must rigorously reconstruct the direct canonical `J'` evaluation.
+
+The research objective is to distinguish:
+
+```text
+stable dominant source mechanism
+stable cross-channel interaction
+cancellation-dominated orientation
+remaining interval dependency
+genuine local fold/sign change
+```
+
+The primary bounded hypothesis remains:
 
 ```text
 J(L) > 0 throughout the inherited Q14 hull.
 ```
 
-If a complete signed cover proves this, then `P1'>0` throughout that bounded branch and distinct apertures cannot share P1 or the complete seven-vector there. That remains research evidence until separately theoremized.
+If a complete signed cover eventually proves this, then `P1'>0` throughout that bounded branch and distinct apertures cannot share P1 or the complete seven-vector there. That remains research evidence until separately theoremized.
 
 ## Formal lane — only after a decisive mechanism is isolated
 
-The existing holomorphy and #184 Schur calculus can support actual derivative witnesses and a production `HasDerivAt` theorem. Keep this sign-neutral until the trajectory audit shows which exact relation is worth formalizing.
+The existing holomorphy and #184 Schur calculus can support actual derivative witnesses and a production `HasDerivAt` theorem. Keep this sign-neutral until the mechanism audit shows which exact relation is worth formalizing.
 
 ## Coordinate / normalization locks
 
@@ -139,12 +185,14 @@ The existing holomorphy and #184 Schur calculus can support actual derivative wi
 - finite-width Schur statements require certified H1;
 - independent channel Schur pivots cannot be added because the Schur map is nonlinear;
 - ambient exact-rational states are not automatically canonical production states;
-- six signed centers do not imply a signed hull.
+- six signed centers do not imply a signed hull;
+- 63/64 signed trajectory coverage does not imply a 64/64 result.
 
 ## Current open route obligations
 
 ```text
-higher-order Q14 parity-trajectory enclosure
+residual one-span Q14 orientation mechanism
+source-channel decomposition/reconstruction of J' = o''e - e''o
 J>0 on the exact frozen Q14 hull
 actual N2 production remainder scalar derivative witnesses
 actual production HasDerivAt Schur identity
@@ -158,8 +206,8 @@ terminal zeta/Mathlib seam
 RiemannHypothesis
 ```
 
-Newest synthesis: `../../RESEARCH_LEADS_POST_193_PARITY_TRAJECTORY_DELTA.md`.
+Newest synthesis: `../../RESEARCH_LEADS_POST_195_PARITY_TRAJECTORY_SHARP_ENCLOSURE_DELTA.md`.
 
-Newest obstruction supplement: `../../OBSTRUCTION_LEDGER_POST_193_DELTA.md`.
+Newest obstruction supplement: `../../OBSTRUCTION_LEDGER_POST_195_DELTA.md`.
 
 **RH remains OPEN.**

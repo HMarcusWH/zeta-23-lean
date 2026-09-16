@@ -32,18 +32,14 @@ PR #184 remains the current compiler-validated mathematical authority.
 ### Research-evidence anchor
 
 ```text
-latest merged research PR = #193
-validated research head = 085634ca7dafe4d9f598b2b5e081be80e050ba8c
-merged research commit = fdd6606f85e92bf632b4cdaf1d4af85f6fa5b195
-validated research tree = db569150046459f4b87a931d3e8d01054bbbedff
-RHRC #1109 = SUCCESS
-Permansson #882 = SUCCESS
-post-190 canonical realizability audit #5 = SUCCESS
-post-192 parity trajectory rigidity #3 = SUCCESS
-research disposition = TRAJECTORY_RIGIDITY_UNRESOLVED
+latest merged research PR = #195
+validated research head = ef8af439b4723062061553bfee0ae3eba0205684
+merged research commit = 380b0011ffa3fac9684ec05496e241b47878be69
+validated research tree = cc403fc55454c0f865c17a36d971a9e7947f1a1a
+research disposition = PARTIAL_TRAJECTORY_ORIENTATION
 ```
 
-The #193 head tree is identical to the merge tree. This is research/falsification authority only. It does not move Lean theorem authority.
+PR #195 is research/falsification authority only. It does not move Lean theorem authority.
 
 ### Control-plane semantic anchor
 
@@ -67,8 +63,8 @@ Update these when their underlying state changes:
 - `research/RHRC/VALIDATION_PROTOCOL.md` when validation anchors/evidence classes change;
 - obstruction/dead-route ledgers when reusable classifications change;
 - `control_v2/CONTROL_STATE.json` when theorem/control anchors or descriptive research state change;
-- `control_v2/ACTION_REGISTRY.json` when routing priority, surviving objections, or first-break specification changes;
-- `routes/ROUTE_REGISTRY.json` explanatory notes when route state changes;
+- `control_v2/ACTION_REGISTRY.json` only when routing priority/first-break semantics change;
+- `routes/ROUTE_REGISTRY.json` only when route state/claim surfaces change;
 - retro aliases/regression tests when intentionally hard-coded research vocabulary changes.
 
 Historical dated deltas are not rewritten to look current. Historical regression tests are not repurposed to erase earlier consumed layers.
@@ -86,14 +82,13 @@ remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0.
 
 No later research PR promotes additional Lean theorem authority.
 
-### Completed research history through #193
+### Completed research history through #195
 
 ```text
 #186 -> broad remainder domination returns DOMINATION_SIGNAL_MIXED
 #188 -> frozen normalization-safe selector family audited
 #189 -> every individual frozen selector is ambiently separable from target sign
 #190 -> complete seven-selector vector jointly ambiently separable from target sign
-        with identical nonboundary threshold signature
         -> all 127 nonempty subsets insufficient in ambient algebra
 #192 -> canonical production realizability Layer 0 -> Layer 5 executed
         -> specific negative-scalar witness excluded
@@ -101,11 +96,18 @@ No later research PR promotes additional Lean theorem authority.
         -> six-state production panel has 0/15 seven-vector overlaps
 #193 -> Q14 parity-trajectory rigidity audit
         -> 6/6 exact centers e,o,J,P2 positive
-        -> finite-width first-order cover unresolved
+        -> 63/96 H1_UNRESOLVED
+        -> 33/96 J_UNRESOLVED
         -> TRAJECTORY_RIGIDITY_UNRESOLVED
+#195 -> validated canonical M,M',M'' sharp trajectory enclosure
+        -> 63 second-order H1 recoveries
+        -> 48 J_POSITIVE, 48 J_UNRESOLVED
+        -> 0 J_NEGATIVE, 0 H1_UNRESOLVED
+        -> one unresolved span, certified t-fraction 63/64
+        -> PARTIAL_TRAJECTORY_ORIENTATION
 ```
 
-The #190 code explicitly keeps canonical realizability, FB-05 closure, negative-root exclusion and RH false/unclaimed. #192 and #193 do not change that theorem firewall.
+The #190 code explicitly keeps canonical realizability, FB-05 closure, negative-root exclusion and RH false/unclaimed. #192, #193 and #195 do not change that theorem firewall.
 
 ### Current route
 
@@ -113,23 +115,26 @@ The #190 code explicitly keeps canonical realizability, FB-05 closure, negative-
 PROVED THROUGH #184
   exact Hermitian/log-cover/contact algebra
 
-RESEARCHED THROUGH #193
+RESEARCHED THROUGH #195
   #190 ambient selector surface insufficient
   #192 specific reflected witness noncanonical; general reflection unresolved
-  #193 exact-center parity orientation uniformly positive; finite-width rigidity unresolved
+  #193 positive exact centers; first-order finite-width propagation unresolved
+  #195 H1 obstruction removed; 63/64 parameter coverage positive; one J span unresolved
 
 NOW
   same frozen Q14 hull
-  -> sharpen neighborhood representation
-  -> compare first-order J, direct P2 log-slope, centered second-order/Taylor
-  -> test whether J(L)>0 can be rigorously certified across the bounded hull
+  -> do not enlarge search or fit a selector
+  -> audit the residual span and source mechanism
+  -> use J' = o''e - e''o
+  -> decompose pole/arch/prime contributions with all bilinear cross terms
+  -> require rigorous reconstruction of the direct canonical total
 ```
 
-A complete signed finite-width cover may support bounded monotonicity research. Six signed centers alone may not.
+A complete signed finite-width cover may support bounded monotonicity research. `PARTIAL_TRAJECTORY_ORIENTATION` does not.
 
 ## Historical-state rule
 
-The post-#190 delta and OBS-054 remain historical evidence and must not be edited to pretend they were written after #193. The current living docs point to the new post-#193 delta while preserving the #190/#192 layer history needed for regression and provenance.
+The post-#190 and post-#193 deltas remain historical evidence and must not be edited to pretend they were written after #195. The current living docs point to the post-#195 delta while preserving the #190/#192/#193 ancestry needed for regression and provenance.
 
 ## Claim firewall
 
@@ -138,7 +143,10 @@ The post-#190 delta and OBS-054 remain historical evidence and must not be edite
 - ambient algebra countermodels are not automatically canonical arithmetic states;
 - #192 excludes a declared specific witness, not the general reflected class;
 - six positive #193 centers are not a complete hull proof;
-- first-order enclosure nonresolution is not monotonicity falsification;
+- first-order #193 nonresolution is not monotonicity falsification;
+- #195 recovers H1 on the frozen run but does not sign the final span;
+- `63/64` positive coverage does not imply full-hull positivity;
+- `global_positive_hull = false` remains binding;
 - theorem authority remains #184;
 - control semantic authority remains #117;
 - negative-root exclusion remains OPEN;

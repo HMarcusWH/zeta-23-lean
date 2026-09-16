@@ -54,8 +54,8 @@
         "PR #189 exact-rationally shows each frozen selector separately is semantically separable from the normalized target sign in the ambient selector algebra",
         "PR #190 closes the composition hole: the full seven-dimensional strong selector vector and its nonboundary threshold signature can be identical while normalized FB-05 target signs differ; all 127 nonempty subsets are therefore also insufficient in the audited ambient algebra",
         "PR #190 explicitly does not claim canonical arithmetic realizability of its reflected pair, theorem promotion, FB-05 closure, negative-root exclusion, or RH",
-        "the immediate highest-information research route is now canonical production realizability of the #190 reflected twin, not another selector combination or threshold refit",
-        "the realizability audit should progressively impose source-channel construction coupling, the scalar-aperture law, common direct-arch derivative, common Schur geometry and full same-L/same-Q/same-parity canonical source reconstruction",
+        "the immediate highest-information research route after #190 is canonical production realizability of the reflected twin, not another selector combination or threshold refit",
+        "the realizability audit progressively imposes source-channel construction coupling, the scalar-aperture law, common direct-arch derivative, common Schur geometry and full same-L/same-Q/same-parity canonical source reconstruction",
         "the executable identity scalar_shift=2*cCorrection'(L) I and arch_signed=-arch_direct-scalar_shift is a candidate production constraint, not yet a theorem-backed exclusion law",
         "PR #192 executes that canonical production realizability ladder: the specific #190 negative-scalar witness is excluded by the exact scalar-aperture identity, but an exact positive-scalar adversarial reflected construction survives that identity and later bounded common-aperture/full-production layers remain UNRESOLVED for the general reflected class",
         "PR #192 full canonical replay finds 0/15 seven-vector overlaps among the six inherited primary production states; this is bounded structural evidence only and does not prove injectivity or general twin nonexistence",
@@ -63,7 +63,12 @@
         "PR #193 finite-width centered first-order enclosure remains TRAJECTORY_RIGIDITY_UNRESOLVED: 63/96 evaluated cells are H1_UNRESOLVED, 33/96 recover H1 but remain J_UNRESOLVED, and zero cells certify J_NEGATIVE or J_POSITIVE",
         "PR #193 does not locate a fold and does not falsify trajectory monotonicity; it shows that the current first-order centered representation/budget is insufficient to propagate positive exact-center orientation across the frozen Q14 hull",
         "more depth or precision on the identical #193 first-order representation is not a new mechanism after the finite-width dependency failure",
-        "the highest-information next research action is a sharper canonical parity-trajectory enclosure on the same frozen Q14 hull, comparing direct P2 log-slope and centered second-order/Taylor representations against the #193 first-order Wronskian baseline without target labels",
+        "the post-#193 highest-information experiment is a sharper canonical parity-trajectory enclosure on the same frozen Q14 hull, comparing direct P2 log-slope and centered second-order/Taylor representations against the #193 first-order Wronskian baseline without target labels",
+        "PR #195 executes that higher-order experiment on the same frozen Q14 hull and validates the complete canonical M,M',M'' fixed-Q production lineage before the shared-cell A/B/C comparison",
+        "PR #195 returns PARTIAL_TRAJECTORY_ORIENTATION with 48 J_POSITIVE, 48 J_UNRESOLVED, 0 J_NEGATIVE and 0 H1_UNRESOLVED; all 63 former H1 failures are recovered, representation_conflict_count=0, unresolved_span_count=1 and certified_t_fraction=63/64",
+        "PR #195 explicitly has global_positive_hull=false and bounded_distinct_aperture_twin_exclusion=false, so 63/64 positive parameter coverage cannot be promoted to full-hull monotonicity or twin exclusion",
+        "the highest-information next research action after #195 is a source-channel mechanism audit on the same frozen Q14 hull using the exact derived identity J'=o''e-e''o, not another selector, population change, or blind depth/precision increase",
+        "because J' is bilinear in source channels, the mechanism audit must retain every pole/arch/prime cross-channel term and rigorously reconstruct the independently evaluated direct canonical total",
         "the next formal bridge, if a decisive exact production relation is isolated, is finite-dimensional transport of already-proved frozen-source complex analyticity through parity projection and the N2 predecessor/canonical-shell scalar pairings to actual real derivative witnesses",
         "the research integer shell generator is only known to span the same one-dimensional shell as Lean's intrinsic cubic shell and is not normalization-identified; formal theorem work must stay on the canonical intrinsic cubic shell",
         "log-coordinate derivatives d/dt with t=log L must not be compared directly to physical-aperture d/dL research derivatives; d/dL introduces the factor 1/L in the universal drift",
@@ -157,7 +162,8 @@
         "PR #163 aligns that same retained even shifted trial with the exact mixed seventh source jet and squared-jet Riesz boundary, but still supplies no contradiction-producing arithmetic restriction",
         "PR #184 supplies the exact Hermitian/log-drift interface but not the source-specific sign theorem or opposing first-bad orientation needed for exclusion",
         "PR #186 falsifies broad domination in the tested frozen scope and PR #190 shows the frozen seven-selector observation surface is insufficient in the ambient normalized algebra",
-        "canonical production realizability of the #190 reflected twin remains open",
+        "PR #192 excludes the specific negative-scalar reflected witness but leaves the general canonical reflected class unresolved",
+        "PR #195 narrows the active trajectory obstruction to one unresolved orientation span and does not yet establish full-hull J>0 or bounded twin exclusion",
         "no division by alpha, Gamma, overlap or source moment is legal without separate nonzeroness",
         "terminal Mathlib RH still requires the outside-strip/trivial-zero seam after negative-root exclusion"
       ],
@@ -198,6 +204,7 @@
         "#176 keeps odd-N2 ancestry in the fixed-unit agreement benchmark but still does not establish a parity-exclusion theorem",
         "#178 checks the odd-N2 predecessor derivative in the fixed-unit derivative stack but still does not establish a parity-exclusion theorem",
         "#184 is a Hermitian/contact/log-drift theorem package and does not close the parity branch",
+        "#195 studies one inherited parity trajectory pair and does not establish simultaneous-parity exclusion",
         "the active route uses exact secular/source/mixed-jet/Riesz and complete scalar constraints rather than assuming spectral equivalence through D"
       ],
       "score_inputs": {
@@ -231,6 +238,7 @@
         "root uniqueness is weaker than negative-root exclusion",
         "post-#150 experiments disfavor global aperture/selected-Schur monotonicity as the decisive mechanism",
         "post-#184 work uses theorem-backed local Hermitian contact/log-drift calculus without reviving a global fixed-sign derivative claim",
+        "#195's bounded Q14 parity-trajectory evidence is local/canonical and does not revive a global aperture or global minimizing-Schur monotonicity claim",
         "the theorem-backed same-state source/Riesz/mixed-jet obstruction is more direct unless monotonicity supplies independent source-specific exclusion information"
       ],
       "score_inputs": {

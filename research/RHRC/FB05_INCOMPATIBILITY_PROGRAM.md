@@ -68,7 +68,7 @@ This closes the algebraic production interface but not the arithmetic remainder 
 - **Mustache test:** reject a reduction equivalent to RH, successor positivity, or another open target after notation is unpacked.
 - preserve the coordinate firewall: logarithmic `t=log L` derivatives and physical-aperture `L` derivatives differ by the factor `L`.
 
-## Research inputs through #193
+## Research inputs through #195
 
 ### #186 — broad Pair-A domination falsifier
 
@@ -79,8 +79,6 @@ The frozen Q14 exact-center panel returns `DOMINATION_SIGNAL_MIXED`; broad/uncon
 Seven normalization-safe strong selectors were frozen. #189 establishes individual ambient semantic separability. #190 establishes joint exact separability of the complete seven-vector and its nonboundary threshold signature, closing all 127 nonempty subsets in the audited ambient normalized algebra.
 
 ### #192 — canonical production realizability ladder executed
-
-The former highest-information research test has been executed:
 
 ```text
 Layer 0  AMBIENT_NORMALIZED
@@ -93,16 +91,16 @@ Layer 5  CANONICAL_PRODUCTION
 
 The specific negative-scalar #190 twin is excluded by the exact positive scalar-aperture identity. But a positive-scalar exact adversarial reflected pair survives that identity, and the bounded common-aperture/full-production layers remain `UNRESOLVED` for general reflected-twin existence. The six-primary canonical replay has 0/15 seven-vector overlaps; that is a bounded signal, not an injectivity theorem.
 
-The old production identity remains useful history:
+The historical production identity remains:
 
 ```text
 scalar_shift = 2*cCorrection'(L) I
 arch_signed  = -arch_direct - scalar_shift
 ```
 
-but repeating the Layer 0 -> Layer 5 audit is not the next route.
+Repeating the Layer 0 -> Layer 5 audit is not the next route.
 
-### #193 — parity-trajectory rigidity audit
+### #193 — parity-trajectory first-order baseline
 
 PR #193 attacks the surviving general ambiguity along the actual fixed-Q Q14 production trajectory. It introduces no new selector; it uses the derived Wronskian graph
 
@@ -129,14 +127,37 @@ The finite-width first-order centered enclosure returns:
 TRAJECTORY_RIGIDITY_UNRESOLVED
 ```
 
-This does **not** falsify trajectory monotonicity and does **not** locate a fold. It falsifies only the sufficiency of the current first-order centered representation/budget to certify finite-width orientation on the frozen hull.
+This does not falsify trajectory monotonicity and does not locate a fold. It falsifies only the sufficiency of the first-order centered representation/budget.
+
+### #195 — canonical second-order sharp enclosure
+
+PR #195 executes the higher-order experiment on the identical frozen Q14 hull. It first validates the complete fixed-Q canonical second-aperture jet `M,M',M''`, then evaluates the #193 first-order method and the sharper direct-log-slope / centered-Wronskian methods on one shared adaptive cover.
+
+Exact outcome:
+
+```text
+classification = PARTIAL_TRAJECTORY_ORIENTATION
+48 J_POSITIVE
+48 J_UNRESOLVED
+0 J_NEGATIVE
+0 H1_UNRESOLVED
+second_order_h1_recovery_count = 63
+representation_conflict_count = 0
+unresolved_span_count = 1
+certified_t_fraction = 63/64
+uniform_orientation = null
+global_positive_hull = false
+bounded_distinct_aperture_twin_exclusion = false
+```
+
+Thus the H1 part of the #193 bottleneck is consumed on the frozen run. The live obstruction is one residual J-orientation span.
 
 ## Consequence for Pair A
 
-The pre-#190 selector form remains consumed. The post-#192/#193 form is now:
+The pre-#190 selector form remains consumed. The post-#195 form is now:
 
 ```text
-canonical trajectory restriction on the same retained/contact state
+canonical trajectory/source restriction on the same retained/contact state
   -> excludes a same-observation reflected branch or forces a useful contact property
   -> #184 contact/log-drift calculus
   -> independent first-bad property on the same retained state
@@ -153,27 +174,35 @@ canonical trajectory restriction on the same retained/contact state
 
 **Trajectory first-order baseline:** EXECUTED by #193 and `TRAJECTORY_RIGIDITY_UNRESOLVED`.
 
-**Live missing object:** a finite-width representation or exact trajectory relation strong enough to certify orientation on a neighborhood rather than isolated centers.
+**Trajectory second-order sharp enclosure:** EXECUTED by #195 and `PARTIAL_TRAJECTORY_ORIENTATION`.
+
+**Live missing object:** a source-level or equivalent exact relation strong enough to resolve the final 1/64 orientation span and, if positive, explain rather than merely numerically observe the bounded ordering.
 
 ### Current Pair-A experiment
 
-Use the identical frozen Q14 hull and compare:
+Use the identical frozen Q14 hull and the exact derived identity
 
 ```text
-A. first-order Wronskian enclosure      [#193 baseline]
-B. direct P2 log-slope enclosure
-C. centered second-order/Taylor enclosure
+J' = o''e - e''o.
 ```
 
-Primary hypothesis to falsify:
+Decompose the complete canonical pole/arch/prime source jet, retaining all bilinear channel interactions:
+
+```text
+sum_{c,d} (o_c'' * e_d - e_c'' * o_d).
+```
+
+Require rigorous reconstruction of the independently evaluated direct canonical total. Classify whether the residual behavior is driven by a stable single-channel term, a stable cross-channel interaction, cancellation/dependency, or a genuine local zero/fold.
+
+Primary hypothesis to falsify remains:
 
 ```text
 J(L) > 0 throughout the exact frozen Q14 hull.
 ```
 
-A complete signed cover would give bounded strict monotonicity of P1 and exclude distinct-aperture complete-seven-vector twins on that branch. Six positive centers alone do not.
+A complete signed cover would give bounded strict monotonicity of P1 and exclude distinct-aperture complete-seven-vector twins on that branch. `63/64` alone does not.
 
-Do not merely raise the first-order subdivision or precision budget. After #193 that is not a new mechanism.
+Do not merely raise the #195 subdivision or precision budget. After #195 that is not a new mechanism.
 
 ## Pair B — negative-index separation versus critical-line sampling rigidity
 
@@ -201,19 +230,20 @@ For any proposed Pair-A trajectory constraint:
 4. **Target-leakage test:** no target label, margin, rho, full pivot derivative or alias used to shape the enclosure.
 5. **Normalization test:** basis/shell rescaling cannot manufacture the effect.
 6. **H1 test:** no interval Schur claim outside certified H1.
-7. **Point-vs-neighborhood test:** six signed centers do not imply a signed hull.
+7. **Point-vs-neighborhood test:** signed centers or 63/64 coverage do not imply a signed hull.
 8. **Representation test:** distinguish a mathematical sign failure from interval dependency/wrapping.
-9. **Search-vs-proof test:** failure to find a twin is not nonexistence.
-10. **Mustache test:** reject routes equivalent to RH or successor positivity under another name.
+9. **Reconstruction test:** source-channel diagnostics must recombine to the direct canonical object; independent channel pivots cannot be added.
+10. **Search-vs-proof test:** failure to find a twin is not nonexistence.
+11. **Mustache test:** reject routes equivalent to RH or successor positivity under another name.
 
 ## Highest-leverage order
 
 ```text
-1. sharper parity-trajectory enclosure on the same frozen Q14 hull
-2. if J>0 finite-width cover succeeds -> isolate the smallest exact monotonicity mechanism
-3. formalize that mechanism only if it attaches to the same retained/contact state
-4. compose with #184 and an independent first-bad property
-5. if the route fails structurally -> downgrade Pair A and prioritize Pair B / D
+1. source-channel mechanism audit on the one residual #195 Q14 span
+2. if the mechanism gives a full J>0 cover -> isolate the smallest exact ordering theorem
+3. formalize the abstract parity-ratio monotonicity/injectivity bridge only when its source premise is available
+4. compose with #184 and an independent first-bad property on the same state
+5. if the mechanism is cancellation-fragile or a real fold appears -> downgrade Pair A and prioritize Pair B / D
 ```
 
 ## Permanent claim firewall
@@ -226,8 +256,9 @@ For any proposed Pair-A trajectory constraint:
 #192 specific reflected witness                EXCLUDED under exact scalar identity
 #192 general reflected class                   OPEN
 #193 six exact trajectory centers              POSITIVE finite research
-#193 finite-width trajectory orientation       UNRESOLVED
-J>0 on frozen Q14 hull                         OPEN
+#193 first-order finite-width orientation      TRAJECTORY_RIGIDITY_UNRESOLVED
+#195 second-order finite-width orientation     PARTIAL_TRAJECTORY_ORIENTATION
+J>0 on full frozen Q14 hull                    OPEN
 contact contradiction                          OPEN
 negative-root exclusion                        OPEN
 RH                                             OPEN
