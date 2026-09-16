@@ -1,0 +1,68 @@
+{
+  "schema_version": "POST192_FB05_Q14_PARITY_TRAJECTORY_RIGIDITY_FIXTURE_v1",
+  "claim_cap": "POST192_Q14_PARITY_TRAJECTORY_RESEARCH_ONLY",
+  "base_main_sha": "c3e4c8012945d6b86c2236d9e0cce27e3a4c20d9",
+  "base_main_tree": "8dbbf620ebd3668350ad9978c6313d75e754885c",
+  "theorem_authority_pr": 184,
+  "research_authority_pr": 192,
+  "routing_sync_pr": 191,
+  "post192_module": "post190_fb05_canonical_realizability.py",
+  "post192_module_blob_sha": "2d698891948f89ce2cf23cf8340cd04c4278cf4d",
+  "post192_fixture": "post190_fb05_canonical_realizability_v1.json",
+  "post192_fixture_blob_sha": "bf21458e2dd3e42c23124f3fa7b2a32e12edd05d",
+  "source_selector_module": "post187_fb05_q14_mixed_drift_selector.py",
+  "source_selector_module_blob_sha": "03bcff09853c7c212c3a33a43c060909868f0c55",
+  "fixed_unit_derivative_module": "post177_fb05_q13_fixed_unit_derivative.py",
+  "fixed_unit_derivative_module_blob_sha": "ef45b8fdfbb5aa9088e6f9f23f0d61161f2fb252",
+  "inherited_schedule_fixture": "post177_fb05_q13_fixed_unit_derivative_v1.json",
+  "inherited_schedule_fixture_blob_sha": "ffc84a2aca9dee66fdfac76ab5ff881c816090ce",
+  "inherited_schedule_probe": "probe_post177_fb05_q13_fixed_unit_derivative_scope.py",
+  "inherited_schedule_probe_blob_sha": "257dc4c7c91d2add5be81d711073f7c1bbdc2750",
+  "selected_target": {
+    "q_start": 13,
+    "q_end": 16,
+    "predecessor_N": 2,
+    "successor_K": 3,
+    "selected_parity": "even",
+    "primary_Q": 14
+  },
+  "required_ancestry_control": {
+    "predecessor_N": 2,
+    "parity": "odd"
+  },
+  "arb_precision_bits": 384,
+  "expected_primary_box_count": 6,
+  "expected_control_box_count": 5,
+  "max_refinement_depth": 12,
+  "max_evaluated_cells": 96,
+  "permitted_classifications": [
+    "GLOBAL_MONOTONE_ORIENTATION",
+    "SINGLE_FOLD_REGION_LOCALIZED",
+    "MULTIPLE_FOLD_REGIONS",
+    "PARTIAL_TRAJECTORY_ORIENTATION",
+    "TRAJECTORY_RIGIDITY_UNRESOLVED"
+  ],
+  "policy": {
+    "new_q_n_parity_search_permitted": false,
+    "selector_refit_permitted": false,
+    "threshold_refit_permitted": false,
+    "new_selector_features_permitted": false,
+    "target_sign_import_permitted": false,
+    "deterministic_dyadic_refinement_inside_frozen_hull_permitted": true,
+    "centered_mean_value_h1_required": true,
+    "arb_overlap_counts_as_exact_equality": false,
+    "bounded_nonresolution_counts_as_exclusion": false
+  },
+  "nonclaims": [
+    "This PR is Arb research/falsification tooling, not Lean theorem authority.",
+    "P1 and P2 are the already-frozen post-#188 parity selectors; J=o'e-e'o is only their common derivative/evaluation graph and is not promoted as a new selector feature.",
+    "The even and odd predecessor values and derivatives must come from the same canonical M(L), M'(L) evaluation.",
+    "Finite-width predecessor positivity is recovered through a centered mean-value enclosure; raw wide-box H1 failure is not interpreted as mathematical failure.",
+    "Dyadic subdivision is deterministic and confined to the connected hull of the inherited six Q14 primary boxes. It is a localization method, not target refitting or a new Q/N/parity search.",
+    "A certified J sign on a covered cell gives finite Arb trajectory-orientation evidence there. Global injectivity is not claimed across an unresolved fold cell.",
+    "Failure to resolve J after the frozen depth/cell budget remains TRAJECTORY_RIGIDITY_UNRESOLVED, not nonexistence of a canonical twin.",
+    "Any distinct-aperture twin exclusion reported outside a fold region is a derived finite-scope consequence of the certified P1/P2 trajectory orientation, not a Lean theorem.",
+    "No contact existence, unique stationary point, FB-05 closure, negative-root exclusion, or RH claim is established.",
+    "RH remains OPEN."
+  ]
+}
