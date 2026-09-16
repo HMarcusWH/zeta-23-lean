@@ -198,7 +198,7 @@ through the canonical pole/arch/prime source channels, but because this object i
 
 Permitted outcomes include a stable source mechanism, stable cross-channel interaction, cancellation-dominated behavior, continued unresolved dependency, or a genuine signed counterexample. A mathematically negative result can still be a green validation result if the executable conclusion matches the evidence.
 
-A claim of bounded `J>0` still requires a **complete** signed finite-width cover. `63/64`, point samples, overlap absence, or budget-limited unresolved cells cannot be upgraded to monotonicity.
+A claim of bounded `J>0` still requires a complete signed finite-width cover. `63/64`, point samples, overlap absence, or budget-limited unresolved cells cannot be upgraded to monotonicity.
 
 ## Claim firewall
 
