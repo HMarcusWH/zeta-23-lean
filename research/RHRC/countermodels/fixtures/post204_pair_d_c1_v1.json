@@ -1,0 +1,52 @@
+{
+  "schema_version": "POST204_PAIR_D_C1_FIXTURE_v1",
+  "phase": "EXACT_SYNTHETIC_COUNTERMODEL_CERTIFICATION",
+  "claim_cap": "RIGOROUS_FINITE_SYNTHETIC_COUNTERMODEL_ONLY",
+  "base_main_sha": "79ea665689dc107018936a785a97d12a8f5c07c7",
+  "base_main_tree": "778a3e8daef6ffb60af3026bc489f9f2ee16007f",
+  "theorem_authority_pr": 184,
+  "research_authority_pr": 203,
+  "routing_sync_pr": 204,
+  "frontier": "E4A4-SCHUR-FB-05",
+  "historical_fixture": {
+    "name": "C1",
+    "source": "research/RHRC/countermodels/POST_129_STRUCTURAL_COUNTERMODELS_2026_09_08.md",
+    "source_blob": "f6e49e006f1b1734020eab2f7971018e81a0453e",
+    "q_by_abs_index": [1, 1, 1, -10],
+    "predecessor_N": 2,
+    "successor_K": 3,
+    "selected_parity": "even"
+  },
+  "provenance_blobs": {
+    "post150_selected_residual.py": "103b431f81a84da445a9ba06e48ba1d09abd8314",
+    "FirstBadSpectralInterfaces.lean": "c567adcdf94c56b4995a354fdd62d9dfe395cc37",
+    "RegularFirstBadCrossParityRiesz.lean": "fcb98e121827d2a71d9588c1042f533bb44bd4af",
+    "post165_fb05_shifted_state.py": "8a340bc00fbb3b507f354e42f0a3cd23a55bf803"
+  },
+  "expected_exact_values": {
+    "even_predecessor_form": "70",
+    "odd_predecessor_form": "10",
+    "even_shell_energy": "-130",
+    "odd_shell_energy": "-410",
+    "even_shell_norm_sq": "420",
+    "odd_shell_norm_sq": "140",
+    "selected_even_root": "-13/42"
+  },
+  "required_properties": [
+    "same exact reversal-symmetric radius-3 operator for both parities",
+    "actual repository boundary-flat parity geometry",
+    "both predecessor parity forms positive definite",
+    "selected even successor has an exact negative compressed root",
+    "even successor has an exact rational negative witness",
+    "odd successor has an exact rational negative witness",
+    "centered-index displacement commutator vanishes exactly"
+  ],
+  "nonclaims": [
+    "The synthetic diagonal operator is not canonicalSourceMatrix.",
+    "The fixture is not proved zeta-realizable.",
+    "This does not refute any theorem about the actual canonical CCM source matrix.",
+    "This does not prove simultaneous badness for a canonical retained state.",
+    "This does not close FB-05 or exclude negative roots.",
+    "RH remains OPEN."
+  ]
+}
