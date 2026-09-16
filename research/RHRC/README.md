@@ -12,13 +12,15 @@ merged theorem commit = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
 validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
 
 LATEST RESEARCH-EVIDENCE ANCHOR
-merged research PR = #190
-validated research head = 8701920b0da18ae6595ad0eee55c1f6cb291a94f
-merged research commit = f87da9fde71dd1e74419c6ae5848eee3787c27e4
-validated research tree = af8774b65c898de221a5bf32977ccff3407a7b2d
-RHRC #1096 = SUCCESS
-Permansson #869 = SUCCESS
-research disposition = JOINT_EXACT_VECTOR_SEPARABLE / JOINT_THRESHOLD_SIGNATURE_SEPARABLE
+merged research PR = #193
+validated research head = 085634ca7dafe4d9f598b2b5e081be80e050ba8c
+merged research commit = fdd6606f85e92bf632b4cdaf1d4af85f6fa5b195
+validated research tree = db569150046459f4b87a931d3e8d01054bbbedff
+RHRC #1109 = SUCCESS
+Permansson #882 = SUCCESS
+post-190 canonical realizability audit #5 = SUCCESS
+post-192 parity trajectory rigidity #3 = SUCCESS
+research disposition = TRAJECTORY_RIGIDITY_UNRESOLVED
 
 CONTROL SEMANTIC AUTHORITY
 PR #117 merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
@@ -30,71 +32,93 @@ terminal claim = RH_OPEN
 
 The theorem ladder remains unchanged after #184. The production/Hermitian/log-cover interface and conditional negative-orientation theorem are Lean authority; the arithmetic sign premise is not.
 
-## Research progression through #190
+## Completed research progression
 
-### #186 — broad domination falsified
+### #186 -> #190 — ambient observation surface
 
-The frozen Q14 panel gives `DOMINATION_SIGNAL_MIXED`, so unconditional production remainder domination is not the next theorem target.
-
-### #188 — selector audit
-
-The fixed panel was evaluated with predeclared normalization-safe geometry, parity and source-channel candidates. Seven candidates were marked strong-eligible; R1/R2/R3 remained diagnostic because together they reconstruct a target-adjacent quantity.
-
-### #189 — individual semantic independence
-
-Each frozen candidate separately admits exact ambient rational states with identical candidate value and threshold side but opposite normalized target signs.
-
-### #190 — joint semantic independence
-
-The complete seven-dimensional strong vector itself admits an exact ambient rational reflected pair with:
-
-```text
-same exact strong vector
-same nonboundary threshold signature
-opposite normalized target sign
-```
-
-The exact classifications are:
+#186 returns `DOMINATION_SIGNAL_MIXED`; #188 freezes the selector surface; #189 shows individual ambient separability; #190 closes the composition hole with:
 
 ```text
 JOINT_EXACT_VECTOR_SEPARABLE
 JOINT_THRESHOLD_SIGNATURE_SEPARABLE
 ```
 
-Because the full vector agrees, all 127 nonempty subsets agree as well. The frozen strong-selector composition programme is therefore consumed **inside the audited ambient normalized algebra**.
+All 127 nonempty subsets of G1/P1/P2/C1-C4 are therefore insufficient in the audited ambient normalized algebra.
 
-## Immediate frontier — FB-05 canonical realizability
+### #192 — canonical production realizability
 
-The project should not add another combination or threshold over G1/P1/P2/C1-C4. The next question is whether the #190 reflected twin survives actual production constraints.
-
-The executable production decomposition already exhibits a concrete coupling:
+The historical canonical production realizability plan was executed as the regression-preserved ladder:
 
 ```text
-scalar_shift = 2*cCorrection'(L) I
-arch_signed  = -arch_direct - scalar_shift
+Layer 0  AMBIENT_NORMALIZED
+Layer 1  SOURCE_CHANNEL_COUPLING
+Layer 2  SCALAR_APERTURE
+Layer 3  COMMON_ARCH_APERTURE
+Layer 4  COMMON_SCHUR_GEOMETRY
+Layer 5  CANONICAL_PRODUCTION
 ```
 
-Thus actual production source channels are generated jointly from one aperture/state. #190 intentionally does not model canonical realizability.
+The specific #190 negative-scalar twin is `EXACT_TWIN_EXCLUDED_BY_IDENTITY` once the actual positive scalar-aperture law is imposed. A positive-scalar adversarial control remains `EXACT_TWIN_SURVIVES` at that layer. Bounded common-aperture/canonical replay remains `UNRESOLVED` for the general reflected class. The six-primary production panel has 0/15 exact-observation overlap candidates; this is finite evidence only.
 
-The next research audit should impose, in order:
+### #193 — parity trajectory rigidity
+
+PR #193 attacks the surviving mechanism on the inherited fixed-Q Q14 aperture trajectory without adding a selector. It reuses P1/P2 and defines the equivalent orientation graph
 
 ```text
-1. four-way production channel coupling
-2. exact scalar-aperture law
-3. common direct-arch derivative
-4. common Schur geometry x and envelope E
-5. full same-L canonical source reconstruction
+J = o'e - e'o
+P2 = L*J/(o*e)
+sign(P1') = sign(P2) = sign(J)   when L,e,o>0
 ```
 
-and report the first layer where an opposite-target twin becomes impossible. If no exact exclusion is obtained, the result remains OPEN/UNRESOLVED rather than being promoted from a failed search.
+At all six exact inherited primary centers:
+
+```text
+e > 0
+o > 0
+J > 0
+P2 > 0
+```
+
+The finite-width cover remains unresolved:
+
+```text
+96 evaluated cells
+63 H1_UNRESOLVED
+33 J_UNRESOLVED after H1 recovery
+0 J_NEGATIVE
+0 J_POSITIVE
+TRAJECTORY_RIGIDITY_UNRESOLVED
+```
+
+This is a representation/dependency bottleneck, not evidence that trajectory monotonicity is false and not evidence that a fold exists.
+
+## Immediate frontier — higher-order canonical trajectory enclosure
+
+Use the same frozen Q14 hull, same six centers, same Q/N/K/parity and no target labels. Do not resume selector mining, repeat #192, or merely increase the #193 first-order budget.
+
+Compare on the identical domain:
+
+```text
+A. first-order Wronskian enclosure       [#193 baseline]
+B. direct P2 log-slope enclosure
+C. centered second-order/Taylor enclosure
+```
+
+Primary hypothesis to falsify:
+
+```text
+J(L) > 0 throughout the exact frozen Q14 primary hull
+```
+
+Gold finite result: a complete signed cover proving `J>0` on that bounded branch. Then `P1'>0`, so distinct apertures cannot share P1 and therefore cannot share the complete seven-vector on that branch. This is research-level finite reasoning until separately theoremized.
 
 ## Formal lane
 
-Existing complex frozen-source holomorphy and #184's finite-dimensional Schur calculus remain useful sign-neutral infrastructure. Formalize a production realizability relation only after the research audit identifies which exact relation actually removes the #190 ambiguity.
+Existing complex frozen-source holomorphy and #184's finite-dimensional Schur calculus remain useful sign-neutral infrastructure. A successful bounded trajectory mechanism should be distilled to the smallest exact relation before Lean formalization.
 
 ## Alternative incompatibility lanes
 
-If an actual canonical twin survives deep production constraints, Pair A loses priority. The maintained alternatives remain:
+If sharper canonical trajectory enclosures fail for a structural rather than representational reason, the maintained alternatives remain:
 
 ```text
 B  negative-index vs localized sampling rigidity
@@ -106,36 +130,36 @@ E  off-line growth vs structured finite-energy control
 ## Open obligations
 
 ```text
-canonical-realizability audit of the #190 reflected twin           OPEN / ACTIVE
-actual production remainder scalar derivative witnesses            OPEN
-actual production HasDerivAt Schur identity                        OPEN
-same-state contact arithmetic restriction                          OPEN
-opposing first-bad contact orientation                              OPEN
-centered finite-width H1 / q13 whole-cell contact                  OPEN
-sourceMoment <-> M4 rigidity                                       OPEN
-simultaneous even/odd bad exclusion                                OPEN
-odd-selected branch closure                                        OPEN
-negative-root exclusion                                             OPEN
-terminal zeta/Mathlib seam                                          OPEN
-RiemannHypothesis                                                   OPEN
+higher-order Q14 parity-trajectory enclosure                         OPEN / ACTIVE
+J>0 on the inherited Q14 hull                                       OPEN
+actual production remainder scalar derivative witnesses             OPEN
+actual production HasDerivAt Schur identity                         OPEN
+same-state contact arithmetic restriction                           OPEN
+opposing first-bad contact orientation                               OPEN
+sourceMoment <-> M4 rigidity                                        OPEN
+simultaneous even/odd bad exclusion                                 OPEN
+odd-selected branch closure                                         OPEN
+negative-root exclusion                                              OPEN
+terminal zeta/Mathlib seam                                           OPEN
+RiemannHypothesis                                                     OPEN
 ```
 
 ## Evidence-class firewall
 
 ```text
-#184 Lean package                         PROVED
-#186 mixed drift disposition              RIGOROUS FINITE RESEARCH
-#188 selector audit                       RIGOROUS FINITE RESEARCH
-#189 individual ambient separability      EXACT EXECUTABLE RESEARCH
-#190 joint ambient separability           EXACT EXECUTABLE RESEARCH
-canonical realizability of #190 twin      OPEN
-FB-05 closure                             OPEN
-negative-root exclusion                   OPEN
-RH                                        OPEN
+#184 Lean package                          PROVED
+#190 joint ambient separability            EXACT EXECUTABLE RESEARCH
+#192 canonical-realizability ladder        EXACT / RIGOROUS FINITE RESEARCH
+#193 exact signed centers                   RIGOROUS POINT RESEARCH
+#193 unresolved finite-width cover         EXPERIMENTAL/FINITE STRUCTURAL SIGNAL
+J>0 on the Q14 hull                        OPEN
+FB-05 closure                              OPEN
+negative-root exclusion                    OPEN
+RH                                         OPEN
 ```
 
-Newest synthesis: `RESEARCH_LEADS_POST_190_JOINT_SELECTOR_SEPARABILITY_DELTA.md`.
+Newest synthesis: `RESEARCH_LEADS_POST_193_PARITY_TRAJECTORY_DELTA.md`.
 
-Newest obstruction supplement: `OBSTRUCTION_LEDGER_POST_190_DELTA.md`.
+Newest obstruction supplement: `OBSTRUCTION_LEDGER_POST_193_DELTA.md`.
 
 **RH remains OPEN.**

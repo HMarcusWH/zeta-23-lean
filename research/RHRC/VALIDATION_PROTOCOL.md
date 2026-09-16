@@ -22,13 +22,15 @@ validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
 ### Latest research-evidence anchor
 
 ```text
-merged research PR = #190
-validated research head = 8701920b0da18ae6595ad0eee55c1f6cb291a94f
-merged research commit = f87da9fde71dd1e74419c6ae5848eee3787c27e4
-validated research tree = af8774b65c898de221a5bf32977ccff3407a7b2d
-RHRC #1096 = SUCCESS
-Permansson #869 = SUCCESS
-research disposition = JOINT_EXACT_VECTOR_SEPARABLE / JOINT_THRESHOLD_SIGNATURE_SEPARABLE
+merged research PR = #193
+validated research head = 085634ca7dafe4d9f598b2b5e081be80e050ba8c
+merged research commit = fdd6606f85e92bf632b4cdaf1d4af85f6fa5b195
+validated research tree = db569150046459f4b87a931d3e8d01054bbbedff
+RHRC #1109 = SUCCESS
+Permansson #882 = SUCCESS
+post-190 canonical realizability audit #5 = SUCCESS
+post-192 parity trajectory rigidity #3 = SUCCESS
+research disposition = TRAJECTORY_RIGIDITY_UNRESOLVED
 ```
 
 ### Control authority
@@ -49,7 +51,7 @@ Current gates include:
 python research/RHRC/tools/run_suite.py
 Control-v2 real-history smoke run
 R003 normalization/dictionary/source-normalization guards
-post-#163 onward frozen research regressions through #190
+post-#163 onward frozen research regressions through #193
 R004 scalar-shift invariant audit
 external-reference dependency firewall
 lake build Zeta23.CCM
@@ -77,40 +79,57 @@ remainder drift < envelopeNormSq -> negative pivot orientation
 
 Not proved by #184: actual source-specific remainder derivative witnesses, source-specific domination, contact existence/uniqueness, opposing first-bad orientation, negative-root exclusion or RH.
 
-## Exact research progression #186 -> #190
+## Research evidence through #193
 
-### #186 — rigorous finite falsification
+### #190 ambient selector evidence
 
-The exact frozen Q14 panel certifies `DOMINATION_SIGNAL_MIXED`. This kills the broad universal domination proposal in the tested finite scope while leaving #184's conditional theorem intact.
+The exact rational research tooling certifies `JOINT_EXACT_VECTOR_SEPARABLE` and `JOINT_THRESHOLD_SIGNATURE_SEPARABLE`. This is exact executable research in the ambient normalized model, not a canonical-state theorem.
 
-### #188 — rigorous finite selector audit
+### #192 canonical-realizability evidence
 
-The frozen schedule and normalization firewalls are retained. Seven strong-eligible selectors and three diagnostic mechanism components are audited without target leakage or threshold fitting.
-
-### #189 — exact executable individual independence
-
-For each frozen selector separately, the exact rational audit constructs ambient states with identical candidate value and threshold relation but opposite target sign. This is exact executable algebra, not a Lean theorem and not a canonical-realizability result.
-
-### #190 — exact executable joint independence
-
-The complete seven-dimensional strong selector vector is identical across an exact rational pair, with the same nonboundary threshold signature and opposite normalized target signs. The certified dispositions are:
+Use these classifications exactly:
 
 ```text
-JOINT_EXACT_VECTOR_SEPARABLE
-JOINT_THRESHOLD_SIGNATURE_SEPARABLE
+EXACT_TWIN_EXCLUDED_BY_IDENTITY
+  only when a declared exact production identity excludes the object
+
+EXACT_TWIN_SURVIVES
+  only for an exact constructed model
+
+UNRESOLVED
+  for bounded production replay without an exact conclusion
 ```
 
-The same witness closes all `2^7 - 1 = 127` nonempty coordinate subsets. Positive target-alias controls still distinguish the pair.
+#192 excludes the specific negative-scalar #190 witness after the exact scalar-aperture identity is imposed. Its positive-scalar adversarial control survives that identity. Later bounded production layers remain `UNRESOLVED` for the general reflected class. The six-state 0/15 seven-vector overlap count is finite structural evidence only.
 
-PR #190 explicitly keeps:
+### #193 trajectory evidence
+
+The inherited exact-center P1/P2/J cross-checks use signed Arb point balls. The six exact centers with `e>0`, `o>0`, `J>0`, `P2>0` are therefore rigorous **point research** for those encoded states.
+
+Evidence classes:
 
 ```text
-theorem_promotion = false
-canonical_realizability_claimed = false
-fb05_closed = false
-negative_root_exclusion = false
-rh_claim = false
+exact signed center Arb balls
+  -> RIGOROUS POINT RESEARCH
+
+complete signed finite-width Arb cover
+  -> RIGOROUS BOUNDED MONOTONICITY RESEARCH
+
+six signed centers with unresolved interval cover
+  -> EXPERIMENTAL/FINITE STRUCTURAL SIGNAL only;
+     not monotonicity
+
+budget exhaustion / unresolved dependency graph
+  -> UNRESOLVED
 ```
+
+Mandatory firewall:
+
+```text
+6/6 J>0 at centers  !=  J>0 on hull
+```
+
+#193's actual finite-width classification is `TRAJECTORY_RIGIDITY_UNRESOLVED`, with 63/96 `H1_UNRESOLVED`, 33/96 `J_UNRESOLVED`, zero `J_NEGATIVE` cells and zero `J_POSITIVE` cells. This does not establish a fold or falsify monotonicity.
 
 ## Evidence interpretation law
 
@@ -121,13 +140,16 @@ Lean compiler + authoritative import closure
 exact rational identity/countermodel in research tooling
   -> EXACT EXECUTABLE RESEARCH
 
-Arb point/interval certificate
-  -> RIGOROUS FINITE RESEARCH for the encoded object
+Arb signed point certificate
+  -> RIGOROUS POINT RESEARCH for the encoded state
+
+complete signed Arb interval cover
+  -> RIGOROUS BOUNDED RESEARCH for the encoded domain
 
 floating/numerical discovery
   -> EXPERIMENTAL SIGNAL
 
-search fails to find a counterexample
+search fails / interval graph remains unresolved
   -> UNRESOLVED, not proof
 ```
 
@@ -136,36 +158,31 @@ In particular:
 - ambient normalized algebra is not identical to the image of canonical arithmetic production;
 - exact selector separability is not canonical-state separability;
 - finite Arb certification is not a global theorem;
-- `UNRESOLVED` is neither positive nor negative evidence;
-- a green falsification may return `MIXED` or `SEPARABLE` and still be a successful validation run.
+- exact-center signs do not determine the signs of neighborhoods;
+- `UNRESOLVED` is neither positive nor negative mathematical evidence;
+- a green falsification/nonresolution run may still be a successful validation run.
 
-## Post-#190 validation rule
+## Post-#193 validation rule
 
-The next canonical-realizability audit must separate three outcomes:
+The next trajectory experiment must preserve the identical frozen Q14 hull, inherited centers, Q/N/K/parity and target-label firewall while changing the **representation**, not silently the research population.
 
-```text
-EXACT_TWIN_SURVIVES
-EXACT_TWIN_EXCLUDED_BY_IDENTITY
-UNRESOLVED
-```
-
-If an identity excludes the twin, record the exact assumptions used. If only bounded computation/search fails to find a twin, remain `UNRESOLVED`. Do not silently promote absence of a witness to nonexistence.
-
-The production arch/scalar relation
+Compare predeclared representations such as:
 
 ```text
-scalar_shift = 2*cCorrection'(L) I
-arch_signed  = -arch_direct - scalar_shift
+#193 first-order Wronskian enclosure
+direct P2 log-slope enclosure
+centered second-order/Taylor enclosure
 ```
 
-is currently executable-definition infrastructure. It becomes theorem authority only if separately formalized in the validated Lean closure.
+A claim of bounded `J>0` requires a complete signed finite-width cover. Point samples, overlap absence, or budget-limited unresolved cells cannot be upgraded to monotonicity.
 
 ## Claim firewall
 
 - theorem authority remains #184;
-- research authority advances to #190 only in the evidence class stated above;
+- research authority advances through #193 only in the evidence classes stated above;
 - Control-v2 remains non-authoritative;
 - no research certificate may write terminal RH status;
-- canonical realizability remains OPEN;
+- canonical general reflected-twin exclusion remains OPEN;
+- `J>0` on the Q14 hull remains OPEN;
 - negative-root exclusion remains OPEN;
 - **RH remains OPEN.**

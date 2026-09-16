@@ -12,13 +12,15 @@ head  = a756494ebe7e2530715e996b9a9a341fbe07c683
 tree  = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
 
 LATEST RESEARCH EVIDENCE
-merged research PR = #190
-head  = 8701920b0da18ae6595ad0eee55c1f6cb291a94f
-merge = f87da9fde71dd1e74419c6ae5848eee3787c27e4
-tree  = af8774b65c898de221a5bf32977ccff3407a7b2d
-RHRC #1096 = SUCCESS
-Permansson #869 = SUCCESS
-research disposition = JOINT_EXACT_VECTOR_SEPARABLE / JOINT_THRESHOLD_SIGNATURE_SEPARABLE
+merged research PR = #193
+head  = 085634ca7dafe4d9f598b2b5e081be80e050ba8c
+merge = fdd6606f85e92bf632b4cdaf1d4af85f6fa5b195
+tree  = db569150046459f4b87a931d3e8d01054bbbedff
+RHRC #1109 = SUCCESS
+Permansson #882 = SUCCESS
+post-190 canonical realizability audit #5 = SUCCESS
+post-192 parity trajectory rigidity #3 = SUCCESS
+research disposition = TRAJECTORY_RIGIDITY_UNRESOLVED
 
 CONTROL SEMANTIC AUTHORITY
 PR #117
@@ -36,74 +38,83 @@ FB-05C broad remainder domination on frozen panel                  FALSIFIED / #
 FB-05D frozen selector family                                      AUDITED / #188
 FB-05E individual selector sufficiency in ambient algebra          CLOSED / #189 research
 FB-05F joint seven-selector sufficiency in ambient algebra         CLOSED / #190 research
-FB-05G canonical production realizability of the reflected twin    NOW / selected research bottleneck
+FB-05G canonical production realizability Layer 0 -> Layer 5       EXECUTED / #192 research
+FB-05H first-order Q14 parity-trajectory enclosure                 UNRESOLVED / #193 research
+FB-05I sharper same-hull parity-trajectory enclosure               NOW / selected research bottleneck
 ```
 
 The selected action remains `E4_A4_REGULAR_SCHUR_ENERGY_SIGN` under frontier `FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN`. The selected first-break ID remains `E4A4-SCHUR-FB-05`.
 
-## Why routing changes after #190
+## Why routing changes after #193
 
-#186 killed the simple universal domination premise on the frozen finite panel. #188-#190 then tested whether the mixed sign split could be explained by the predeclared normalization-safe state observables.
+#190 closed the frozen selector surface only in ambient algebra. #192 then imposed canonical production structure: the particular negative-scalar witness is excluded, but the general reflection mechanism is not. #193 moved to the actual fixed-Q aperture trajectory.
 
-PR #190 supplies an exact ambient rational pair with:
+At all six exact Q14 centers #193 certifies:
 
 ```text
-same complete seven-dimensional strong selector vector
-same nonboundary ZERO/ONE threshold signature
-opposite normalized target signs
+e > 0
+o > 0
+J > 0
+P2 > 0
 ```
 
-Therefore Control-v2 must not recommend another combination, threshold refit or subset search over the same G1/P1/P2/C1-C4 surface.
+but the finite-width first-order run returns:
 
-The next information target is the difference between the ambient normalized state space and the image of actual canonical production.
+```text
+63/96 H1_UNRESOLVED
+33/96 J_UNRESOLVED
+0 J_NEGATIVE
+0 J_POSITIVE
+TRAJECTORY_RIGIDITY_UNRESOLVED
+```
+
+Therefore Control-v2 must not recommend another selector combination, another #192 replay, or merely a larger subdivision budget on the same #193 graph.
 
 ## Selected action — E4_A4_REGULAR_SCHUR_ENERGY_SIGN
 
-The sole live first break is still an independently meaningful canonical arithmetic restriction on the exact same retained/contact state. What changed is the search object.
+The sole live first break is still an independently meaningful canonical arithmetic restriction on the exact same retained/contact state. What changed is the highest-information research object.
 
 ### Highest-information research lane
 
-Audit **canonical realizability** of the post-#190 reflected twin.
+Audit **sharper parity-trajectory orientation on the same frozen Q14 hull**.
 
-The actual executable source decomposition already couples source channels:
-
-```text
-scalar_shift = 2*cCorrection'(L) I
-arch_signed  = -arch_direct - scalar_shift
-```
-
-so the hidden scalar coordinate used by #190 is not obviously free when one requires a common production aperture.
-
-Required progression:
+Reuse:
 
 ```text
-ambient normalized algebra
- -> source-channel construction identity
- -> scalar-aperture law
- -> common direct-arch derivative
- -> common Schur geometry
- -> full same-L canonical source reconstruction
+J = o'e - e'o
+P2 = L*J/(o*e)
+sign(P1') = sign(P2) = sign(J)  under L,e,o>0
 ```
 
-The controller should treat exact identity exclusion as strong research information and failed bounded searches only as `UNRESOLVED`.
+Compare:
+
+```text
+A. first-order Wronskian enclosure      [#193 baseline]
+B. direct P2 log-slope enclosure
+C. centered second-order/Taylor enclosure
+```
+
+Primary hypothesis to falsify: `J(L)>0` throughout the exact inherited Q14 hull.
+
+Exact-center positivity is a clue, not a bounded monotonicity result. A complete signed cover is required.
 
 ### Formal infrastructure lane
 
-Actual production derivative witnesses and an instantiated `HasDerivAt` Schur identity remain useful. Formalize the smallest production relation shown by the research audit to be decisive; do not theoremize weak scalar positivity or revive universal domination just because they are easy to state.
+Actual production derivative witnesses and an instantiated `HasDerivAt` Schur identity remain useful. Formalize the smallest exact trajectory/production relation shown by research to be decisive; do not theoremize weak scalar positivity or revive universal domination merely because they are easy to state.
 
 ### Pair-A decision rule
 
-If a canonical production relation kills the twin, attempt to compose it with #184 and an independently proved opposing first-bad property on the exact same state. If a genuine canonical twin survives full production constraints, downgrade Pair A and prioritize other incompatibility pairs.
+If a sharper representation certifies a genuine bounded monotonicity mechanism, attempt to distill and compose it with #184 and an independently proved opposing first-bad property on the exact same state. If the route fails structurally, downgrade Pair A and prioritize other incompatibility pairs.
 
 ## Evidence firewall
 
 ```text
 #184 Hermitian/log-cover package          PROVED
-#186 mixed domination                     RIGOROUS FINITE RESEARCH
-#188 selector audit                       RIGOROUS FINITE RESEARCH
-#189 individual semantic independence     EXACT EXECUTABLE RESEARCH
 #190 joint semantic independence          EXACT EXECUTABLE RESEARCH
-canonical realizability                   OPEN
+#192 canonical-realizability ladder       EXACT / RIGOROUS FINITE RESEARCH
+#193 exact trajectory centers             RIGOROUS POINT RESEARCH
+#193 finite-width orientation             UNRESOLVED
+J>0 on Q14 hull                           OPEN
 FB-05 closure                             OPEN
 negative-root exclusion                   OPEN
 RH                                        OPEN
@@ -120,8 +131,8 @@ RH                                        OPEN
 - terminal-claim mutation false;
 - terminal claim `RH_OPEN`.
 
-The post-#190 sync tests additionally guard the latest research evidence, ambient-vs-canonical firewall, consumed selector surface and retro vocabulary.
+The historical `test_post190_sync.py` remains untouched and continues to guard the consumed Layer 0 -> Layer 5 canonical production realizability vocabulary. `test_post193_sync.py` adds the new authority and trajectory-frontier regression without rewriting history.
 
-Newest implications: `../RESEARCH_LEADS_POST_190_JOINT_SELECTOR_SEPARABILITY_DELTA.md`.
+Newest implications: `../RESEARCH_LEADS_POST_193_PARITY_TRAJECTORY_DELTA.md`.
 
 **RH remains OPEN.**
