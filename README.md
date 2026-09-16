@@ -145,9 +145,31 @@ RiemannHypothesis                                                       OPEN
 - #197 complete frozen-Q14 coverage is rigorous bounded research, not arbitrary-Q or FB-05 theorem authority;
 - #199 source-decomposition nonresolution does not downgrade #197 direct `J_POSITIVE`;
 - #201 discrepancy-representation nonresolution also does not downgrade #197 direct `J_POSITIVE`;
-- 0/49 paired-source positive certificates does not mean `J` is nonpositive; it means the paired decomposition remains dependency-unresolved;
-- bounded distinct-aperture twin exclusion is not global canonical injectivity;
 - negative-root exclusion remains OPEN;
 - **RH remains OPEN.**
 
-See `research/RHRC/CURRENT_RESEARCH_PLAN.md`, `research/RHRC/RESEARCH_LEADS.md`, `research/RHRC/FB05_INCOMPATIBILITY_PROGRAM.md`, and `research/RHRC/RESEARCH_LEADS_POST_201_Q14_DISCREPANCY_MECHANISM_DELTA.md` for the current execution route.
+## Post-#203 authoritative synchronization
+
+This section supersedes the older "latest research" and "next experiment" wording above while preserving it as auditable history.
+
+```text
+LATEST RESEARCH EVIDENCE
+PR #203
+head  = c8196830a8b49e657b28d36b364e1cff68c568d6
+merge = ab660e812a78d482145eadc3e42d186a63fa812b
+tree  = 7360e366fe8d623ef63ca902c23522bb72935848
+research disposition = COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
+
+center_kill_switch_survives = false
+full_cover_executed = false
+completed_leaf_count = 0
+control_transfer_status = PATTERN_FALSIFIED_BEFORE_FULL_COVER
+```
+
+PR #203 faithfully executes the preregistered full-composite Pair-A falsifier after repairing an implementation-only exact-rational conversion bug. The repaired parity contrast independently reconstructs `G = O-E`, `G' = O'-E'`, and `G'' = O''-E''`; the frozen sign pattern `E > 0`, `G > 0`, `G' >= 0`, `E' <= 0` then fails the six-center kill-switch. The expensive 49-leaf audit is therefore correctly not run.
+
+This does **not** weaken PR #197 `GLOBAL_MONOTONE_ORIENTATION / J_POSITIVE`, and it does not prove all Pair-A mathematics impossible. It consumes the planned simple Pair-A representation-engineering sequence. The next highest-information research route is **Pair D — same-state two-parity squeeze**. **Pair B — negative-index separation versus localized critical-line sampling rigidity** is secondary.
+
+Theorem authority remains PR #184, the selected formal first break remains `E4A4-SCHUR-FB-05`, R003 remains `DISCOVERY`, negative-root exclusion remains OPEN, and **RH remains OPEN.**
+
+See `research/RHRC/RESEARCH_LEADS_POST_203_Q14_COMPOSITE_PARITY_GAP_DELTA.md` for the current post-green state.

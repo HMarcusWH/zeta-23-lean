@@ -33,10 +33,27 @@ The next action is therefore **not another linear source regrouping**, more prec
 
 The first composite candidate should have a frozen exact-center kill-switch and then, only if it survives, reuse the exact #197 49-leaf partition at 384 bits with no new adaptive budget.
 
-If the full-composite test is also mixed or dependency-unresolved, stop Pair-A representation engineering and increase priority of the genuinely different Pair D / Pair B same-state incompatibility routes.
-
 ## Claim firewall
 
 The #197 result remains rigorous bounded research on the exact frozen Q14 domain. PR #199 and PR #201 do not downgrade it; they classify two mechanism representations as dependency-unresolved. Neither result is arbitrary-Q canonical injectivity, FB-05 closure, negative-root exclusion, or RH. Theorem authority stays #184 and the production theorem interface still includes `M~(t)=-tI+R~(t)`.
 
-**RH remains OPEN.**
+## Post-#203 current state
+
+PR #203 is now the latest merged research evidence:
+
+```text
+head = c8196830a8b49e657b28d36b364e1cff68c568d6
+merge = ab660e812a78d482145eadc3e42d186a63fa812b
+tree = 7360e366fe8d623ef63ca902c23522bb72935848
+COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
+center_kill_switch_survives = false
+full_cover_executed = false
+completed_leaf_count = 0
+PATTERN_FALSIFIED_BEFORE_FULL_COVER
+```
+
+The preregistered composite signs `E > 0`, `G > 0`, `G' >= 0`, `E' <= 0` fail the six-center gate. No post-hoc sign rescue, extra precision, extra depth, or 49-leaf execution occurred. The repaired executable contrast still validates exact rational geometry and independent `O-E` reconstruction, so the negative mechanism result is implementation-clean.
+
+Pair-A representation engineering is therefore **CONSUMED / DOWNGRADED** as the default tactic. Pair D — the same-state two-parity squeeze — is now the highest-information next research route; Pair B — negative-index versus localized critical-line sampling rigidity — is secondary. The selected first break remains `E4A4-SCHUR-FB-05`.
+
+Theorem authority remains #184. **RH remains OPEN.**

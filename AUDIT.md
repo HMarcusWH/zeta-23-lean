@@ -151,8 +151,6 @@ discrepancy/direct-arch upstream pairing       -> dependency unresolved
 
 The next Pair-A test should preserve the fully assembled canonical parity object and ask whether a higher-level composite identity exposes a simpler independent sign mechanism. Merely re-encoding `J>0` as `(o/e)'>0` does not add mathematical information.
 
-The first candidate family is a normalized parity-gap/full-composite relation with a frozen exact-center kill-switch before any 49-leaf execution. If that also fails to reveal a clean independent mechanism, Pair-A representation engineering should be downgraded in favor of a genuinely different same-state incompatibility pair such as Pair D or Pair B.
-
 ## Claim firewall
 
 ```text
@@ -176,4 +174,23 @@ The first candidate family is a normalized parity-gap/full-composite relation wi
   -/-> RH
 ```
 
-**Do not count them as two independent** constraints when two formulations instantiate the same underlying mechanism. Global Schur monotonicity remains quarantined. **RH remains OPEN.**
+## Post-#203 audit addendum — current research authority
+
+The stale #201 authority/frontier wording above is preserved as history. Current research authority is PR #203:
+
+```text
+head  = c8196830a8b49e657b28d36b364e1cff68c568d6
+merge = ab660e812a78d482145eadc3e42d186a63fa812b
+tree  = 7360e366fe8d623ef63ca902c23522bb72935848
+research disposition = COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
+center_kill_switch_survives = false
+full_cover_executed = false
+completed_leaf_count = 0
+control_transfer_status = PATTERN_FALSIFIED_BEFORE_FULL_COVER
+```
+
+The repaired #203 implementation validates exact-rational parity-contrast transport and independent `G = O-E`, `G' = O'-E'`, `G'' = O''-E''` reconstruction. The preregistered sign pattern `E > 0`, `G > 0`, `G' >= 0`, `E' <= 0` fails before full-cover execution. This is a successful falsification result, not CI failure.
+
+Pair-A **representation engineering** is therefore consumed/downgraded as the default research tactic. This does not prove that every possible Pair-A theorem is false. The next highest-information route is Pair D — same-state two-parity squeeze; Pair B — negative-index separation versus localized critical-line sampling rigidity — is secondary.
+
+**Do not count them as two independent** constraints when two formulations instantiate the same underlying mechanism. Global Schur monotonicity remains quarantined. Theorem authority remains #184; negative-root exclusion remains OPEN; **RH remains OPEN.**

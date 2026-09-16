@@ -48,4 +48,22 @@ The production theorem interface remains `M~(t)=-tI+R~(t)`. Equivalent ratio ref
 
 PR #190, #192, #193, #195, #197, #199 and #201 remain research evidence, not Lean theorem promotion.
 
+## Post-#203 current descriptive state
+
+```text
+THEOREM AUTHORITY = PR #184
+LATEST RESEARCH EVIDENCE = PR #203
+research disposition = COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+R003 phase = DISCOVERY
+confirmatory execution = not authorized
+```
+
+PR #203's repaired exact-rational parity contrast passes implementation/reconstruction checks, but the preregistered `E > 0`, `G > 0`, `G' >= 0`, `E' <= 0` conjunction fails the six-center kill-switch. Therefore `center_kill_switch_survives=false`, `full_cover_executed=false`, `completed_leaf_count=0`, and `PATTERN_FALSIFIED_BEFORE_FULL_COVER`.
+
+This does not downgrade #197 `GLOBAL_MONOTONE_ORIENTATION / J_POSITIVE`. It consumes/downgrades Pair-A representation engineering as the default tactic. The next research route is Pair D — same-state two-parity squeeze. Pair B — negative-index versus localized sampling rigidity — is secondary.
+
+The machine action registry remains unchanged because the formal frontier, concept ID, scores and `E4A4-SCHUR-FB-05` first-break semantics remain unchanged. New obstruction bookkeeping is `OBS-059` for simultaneous even/odd badness / two-parity squeeze.
+
 Theorem authority remains #184. **RH remains OPEN.**

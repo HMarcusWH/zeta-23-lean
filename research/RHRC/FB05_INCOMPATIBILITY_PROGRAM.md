@@ -310,4 +310,68 @@ negative-root exclusion                        OPEN
 RH                                             OPEN
 ```
 
-**RH remains OPEN.**
+## Post-#203 routing settlement
+
+PR #203 executed the planned full-composite Pair-A falsifier on the exact inherited state. The repaired implementation independently validates exact-rational parity contrast geometry and
+
+```text
+G   = O - E
+G'  = O' - E'
+G'' = O'' - E''
+```
+
+while cancelling the common scalar direction before interval transport. The preregistered conjunction
+
+```text
+E > 0
+G > 0
+G' >= 0
+E' <= 0
+```
+
+fails its six-center gate:
+
+```text
+COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
+center_kill_switch_survives = false
+full_cover_executed = false
+completed_leaf_count = 0
+PATTERN_FALSIFIED_BEFORE_FULL_COVER
+```
+
+The direct #197 `GLOBAL_MONOTONE_ORIENTATION / J_POSITIVE` result remains intact. This consumes the planned simple Pair-A **representation-engineering** sequence. It does not prove that every future Pair-A theorem is impossible; a revival requires a genuinely new theorem-level invariant selected independently of the failed target data.
+
+### Pair A — DOWNGRADED AFTER PREREGISTERED COMPOSITE FALSIFIER
+
+Do not fit another nearby `E/G/G'/E'` sign pattern after observing #203. Do not return to selector mining, source-parenthesis changes, equivalent ratio rewrites, or more Q14 precision/depth as a substitute for new mathematics.
+
+### Pair D — PRIMARY ACTIVE PAIR / HIGHEST INFORMATION
+
+The next same-state route is the **two-parity squeeze**. The intended composition is:
+
+```text
+one exact retained canonical first-bad state
+  -> selected parity bad
+  -> #161 same-state shifted/parity-source fork
+  -> opposite parity bad OR explicit source moment nonzero
+  -> combine with #159/#163 Riesz, M3/M4 and mixed-source jet structure
+  -> seek an independently forced contradiction or strictly sharper fork
+```
+
+The immediate active obstruction is whether the same retained state can support simultaneous even/odd bad successors, or whether the alternative source-moment branch can be forced into conflict with already-proved mixed-jet/Riesz structure.
+
+### Pair B — SECONDARY ACTIVE PAIR
+
+Negative-index separation versus localized critical-line sampling rigidity remains genuinely different mathematics. It stays secondary because a same-window sampling/frame lower bound strong enough to kill a sparse exceptional quartet still carries larger theorem debt.
+
+## Post-#203 highest-leverage order
+
+```text
+1. synchronize living state through #203
+2. preregister a cheap Pair-D exact-state/countermodel falsifier
+3. test simultaneous even/odd badness and the source-moment alternative on the same state
+4. only theoremize a surviving restriction that is independently meaningful
+5. keep Pair B as the next independent family if Pair D is weak
+```
+
+Theorem authority remains #184. The selected formal first break remains `E4A4-SCHUR-FB-05`. R003 remains `DISCOVERY`; no confirmatory execution is authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**

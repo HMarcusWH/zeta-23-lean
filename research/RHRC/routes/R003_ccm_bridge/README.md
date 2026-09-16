@@ -59,4 +59,38 @@ If the full-composite candidate is also mixed or dependency-unresolved, stop Pai
 
 `GLOBAL_MONOTONE_ORIENTATION` remains rigorous bounded research on the exact frozen Q14 domain. `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED` (#199) and `DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED` (#201) are mechanism-attribution results and do not weaken the direct sign certificate. Neither establishes arbitrary-Q ordering, global canonical injectivity, FB-05 closure, negative-root exclusion or RH.
 
-Theorem authority remains #184. The production theorem interface retains `M~(t)=-tI+R~(t)`. R003 remains `DISCOVERY`; confirmatory execution is not authorized. **RH remains OPEN.**
+## Post-#203 active route
+
+The older full-composite candidate above has now been executed and falsified at its preregistered center gate.
+
+```text
+latest research evidence = PR #203
+head = c8196830a8b49e657b28d36b364e1cff68c568d6
+merge = ab660e812a78d482145eadc3e42d186a63fa812b
+tree = 7360e366fe8d623ef63ca902c23522bb72935848
+COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
+center_kill_switch_survives = false
+full_cover_executed = false
+completed_leaf_count = 0
+PATTERN_FALSIFIED_BEFORE_FULL_COVER
+```
+
+The repaired #203 contrast validates exact rational conversion, scalar cancellation before transport and independent `G=O-E`, `G'=O'-E'`, `G''=O''-E''` reconstruction. The failed object is the frozen simple sign conjunction, not the #197 direct `J_POSITIVE` certificate.
+
+The route is therefore no longer Pair-A representation extraction. The active R003 research question is **Pair D — same-state two-parity squeeze**:
+
+```text
+same retained canonical first-bad state
+same aperture / normalization / production object
+selected parity bad
++ #161 parity/source fork
++ #159/#163 Riesz and M3/M4 mixed-source structure
+-> can simultaneous even/odd badness survive?
+-> if not, what does the explicit-source-moment alternative force?
+```
+
+The first Pair-D execution should be a preregistered cheap falsifier/countermodel audit before any major theoremization. Pair B — negative-index separation versus localized critical-line sampling rigidity — is secondary.
+
+Pair-A representation engineering is `CONSUMED / DOWNGRADED`, not mathematically forbidden forever. Revival requires an independently derived theorem-level invariant, not a post-hoc `E/G/G'/E'` refit.
+
+No claim_ids are changed by this synchronization. Theorem authority remains #184. R003 remains `DISCOVERY`; confirmatory execution is not authorized. The production theorem interface retains `M~(t)=-tI+R~(t)`. Negative-root exclusion remains OPEN. **RH remains OPEN.**
