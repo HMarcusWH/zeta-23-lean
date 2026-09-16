@@ -111,6 +111,8 @@ global_positive_hull = false
 bounded_distinct_aperture_twin_exclusion = false
 ```
 
+The historical evidence class for this incomplete cover is **RIGOROUS BOUNDED PARTIAL ORIENTATION RESEARCH**. It remains preserved even though PR #197 later evaluates the unique residual span and advances the current bounded state.
+
 ### PR #197 residual-cell replay — complete bounded state
 
 ```text
@@ -181,6 +183,13 @@ theorem_promotion = false
 fb05_closed = false
 negative_root_exclusion = false
 rh_claim = false
+```
+
+Equivalent count shorthand retained for regression/readability:
+
+```text
+paired source sums positive = 0/49
+paired source sums unresolved = 49/49
 ```
 
 Evidence interpretation:
