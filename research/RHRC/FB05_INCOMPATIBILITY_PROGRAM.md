@@ -56,6 +56,7 @@ The project also has theorem-backed pole-prime discrepancy identities and legal 
 - `ArithmeticSideSubexponential` is the PR #27 scalar equivalence wall: an apparently easier scalar upper-bound target can be RH wearing a different name.
 - `negative-index` separation remains an independent structural input and should not be conflated with the current trajectory route.
 - The external 67.25% simple-critical-zero result is compatible with a sparse exceptional off-line set; percentage counting alone cannot exclude one exceptional quartet.
+- **Do not count them as two independent constraints** when external results instantiate essentially the same quadratic extremal mechanism already represented by the project route.
 - **Sparse-exception test:** any percentage or density argument must be attacked by asking whether one exceptional quartet can survive it.
 - **Mustache test:** reject a reduction equivalent to RH, successor positivity, or another open target after notation is unpacked.
 - Preserve the coordinate firewall: logarithmic `t=log L` derivatives and physical-aperture `L` derivatives differ by a factor of `L`.
