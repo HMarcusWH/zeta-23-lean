@@ -293,3 +293,59 @@ Do not rescue #203 with another post-hoc component sign pattern, source regroupi
 `OBS-059` is the same-state two-parity squeeze / simultaneous-badness exclusion gap. The existing open pieces are `sourceMoment <-> M4 rigidity`, `simultaneous even/odd bad exclusion`, and `odd-selected first-bad closure`.
 
 Theorem authority remains #184, the selected first break remains `E4A4-SCHUR-FB-05`, R003 remains `DISCOVERY`, and **RH remains OPEN.**
+
+## Post-#205 current leads
+
+### Research authority
+
+```text
+PR #205
+head  = 73b78297da54b9f5b2d47584a8033356a6b2e2a8
+merge = deaa69ae190ada511cf8228f174846184673ff3a
+tree  = 3d715612eabf25a9056ab84b0c5e968f71354666
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+newest post-green delta = RESEARCH_LEADS_POST_205_PAIR_D_STRUCTURAL_COUNTERMODEL_DELTA.md
+```
+
+### Active lead 1 — Pair D canonical-arithmetic squeeze
+
+**Research status:** HIGHEST LEVERAGE / ACTIVE  
+**Formal status:** OPEN
+
+#205 exact-executably certifies C1 with both predecessor sectors positive and both successor sectors bad while preserving reversal symmetry and centered-index commutation. Therefore the generic structural implication
+
+```text
+predecessor positivity + parity/shell/displacement structure
+  -> not simultaneous even/odd badness
+```
+
+is consumed.
+
+A valid Pair-D continuation must now spend a property genuinely specific to the actual `canonicalSourceMatrix`. The retained #161 fork remains the same:
+
+```text
+opposite parity bad
+OR
+explicitCanonicalSourceMoment != 0
+```
+
+but the left branch cannot be killed by generic parity geometry alone.
+
+### Active lead 2 — generic defect-versus-M4 falsifier
+
+**Research status:** NEXT CHEAP FALSIFICATION  
+**Formal status:** OPEN
+
+Before investing in a canonical theorem relating `explicitCanonicalSourceMoment` and `M4`, test the generic analogue on the same exact radius-3 geometry. Use a neutral observable name such as `genericQuadraticNormalPairing`; do not call a synthetic pairing `explicitCanonicalSourceMoment`.
+
+A generic exact countermodel with nonzero quadratic-normal pairing and `M4 = 0` would consume the generic bridge and force the surviving question to be specifically canonical arithmetic.
+
+### Active lead 3 — Pair B
+
+Pair B remains secondary and independent: negative-index separation versus localized critical-line sampling rigidity.
+
+### Obstruction state
+
+`OBS-059` remains `OPEN / ACTIVE / CANONICAL-ARITHMETIC ONLY`. Generic simultaneous-parity exclusion is exact-executably falsified by C1; canonical simultaneous-parity exclusion, canonical `sourceMoment <-> M4` rigidity, same-state canonical composition, and odd-selected first-bad closure remain open.
+
+DR-012 and DR-013 are strengthened by #205; no new dead-route identifier is required. Theorem authority remains #184, R003 remains `DISCOVERY`, and **RH remains OPEN.**
