@@ -94,6 +94,12 @@ NOW — FB-05 / full-composite parity mechanism
   use a frozen exact-center kill-switch before any 49-leaf full-cover execution
 ```
 
+Historical post-#199 obstruction-status string retained for regression compatibility:
+
+```text
+OBS-057 OPEN / NARROWED
+```
+
 ## What #184 still gives
 
 PR #184 proves the exact algebraic contact/log-drift interface. It does not prove the actual arithmetic remainder satisfies a useful sign/magnitude law. Its conditional sign theorem remains fully valid after #186-#201.
