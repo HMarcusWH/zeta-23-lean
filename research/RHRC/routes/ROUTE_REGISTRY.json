@@ -12,7 +12,14 @@
     {
       "route_id": "R001_exceptional_zero",
       "phase": "DISCOVERY",
-      "claim_ids": ["R001_FILTERED_ZERO_POLE", "R001_WEIL_BRIDGE", "R001_ZERO_GROWTH", "R001_PRIME_UPPER", "R001_PRIME_UPPER_EQUIV_RH", "C_RH"],
+      "claim_ids": [
+        "R001_FILTERED_ZERO_POLE",
+        "R001_WEIL_BRIDGE",
+        "R001_ZERO_GROWTH",
+        "R001_PRIME_UPPER",
+        "R001_PRIME_UPPER_EQUIV_RH",
+        "C_RH"
+      ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false
@@ -20,7 +27,11 @@
     {
       "route_id": "R002_multi_probe",
       "phase": "DISCOVERY",
-      "claim_ids": ["R002_MULTI_PROBE_SEPARATION", "R002_WINDOWED_VISIBILITY", "R002_KERNEL_ZERO_SIDE_BRIDGE"],
+      "claim_ids": [
+        "R002_MULTI_PROBE_SEPARATION",
+        "R002_WINDOWED_VISIBILITY",
+        "R002_KERNEL_ZERO_SIDE_BRIDGE"
+      ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
@@ -93,12 +104,14 @@
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
-      "note": "R003 compiler-validated theorem authority remains PR #184. PR #190 remains the ambient-selector composition milestone: JOINT_EXACT_VECTOR_SEPARABLE and JOINT_THRESHOLD_SIGNATURE_SEPARABLE show the seven-selector observation surface and all 127 nonempty subsets are insufficient in the audited ambient normalized algebra. The canonical-production realizability audit proceeds through PR #192: the specific negative-scalar #190 reflected witness is excluded by an exact scalar-aperture identity, while the general reflected class remains unresolved. PR #193 reuses P1/P2 and J=o'e-e'o and returns TRAJECTORY_RIGIDITY_UNRESOLVED on the same frozen Q14 hull. Historical PR #195 validates the complete canonical M,M',M'' fixed-Q lineage and returns PARTIAL_TRAJECTORY_ORIENTATION with 48 J_POSITIVE, 48 J_UNRESOLVED, 0 J_NEGATIVE, 0 H1_UNRESOLVED and certified fraction 63/64; global_positive_hull=false in that historical run. Latest research evidence advances through PR #197 (validated head 2d936f9764abdfeaa82127d5c834c6c3e429da25; merge 162df6ce8bc13a816937d747f2965bff6764fad0; tree 97f6372a4c7c131006b4abc090c86767b9e99990). PR #197 replays the unique inherited MAX_CELL_BUDGET leaf once with unchanged A/B/C: A remains unresolved while B and C are J_POSITIVE. The completed frozen Q14 cover is GLOBAL_MONOTONE_ORIENTATION with uniform J_POSITIVE, certified fraction 1, global_positive_hull=true and bounded_distinct_aperture_twin_exclusion=true. This is rigorous bounded research only; general canonical production realizability remains open. The immediate highest-information R003 route is a source-mechanism audit explaining/falsifying the complete orientation using J'=o''e-e''o, retaining every pole/arch/prime bilinear cross-channel term and requiring rigorous reconstruction of the direct canonical total. R003 remains DISCOVERY; confirmatory execution is not authorized. No claim_ids are changed by this synchronization. RH remains OPEN."
+      "note": "R003 compiler-validated theorem authority remains PR #184. PR #190 remains the ambient-selector composition milestone: JOINT_EXACT_VECTOR_SEPARABLE and JOINT_THRESHOLD_SIGNATURE_SEPARABLE show the seven-selector observation surface and all 127 nonempty subsets are insufficient in the audited ambient normalized algebra. PR #192 executes canonical production realizability Layer 0 -> Layer 5: the specific negative-scalar #190 reflected witness is excluded by an exact scalar-aperture identity while the general reflected class remains unresolved. PR #193 returns TRAJECTORY_RIGIDITY_UNRESOLVED on the same frozen Q14 hull. Historical PR #195 validates the canonical M,M',M'' fixed-Q lineage and returns PARTIAL_TRAJECTORY_ORIENTATION with 48 J_POSITIVE, 48 J_UNRESOLVED and certified fraction 63/64; global_positive_hull=false in that historical run. PR #197 (validated head 2d936f9764abdfeaa82127d5c834c6c3e429da25; merge 162df6ce8bc13a816937d747f2965bff6764fad0; tree 97f6372a4c7c131006b4abc090c86767b9e99990) replays the unique inherited MAX_CELL_BUDGET leaf once with unchanged A/B/C: A remains unresolved while B and C are J_POSITIVE. The completed frozen Q14 cover is GLOBAL_MONOTONE_ORIENTATION with uniform J_POSITIVE, certified fraction 1, global_positive_hull=true and bounded_distinct_aperture_twin_exclusion=true. Latest research evidence advances through PR #199 (validated head fabe301c95277345f0efe764252ce1c1213a4112; merge 27dda545b7ccdb2870088ebaf317d85e3d999555; tree 85eb8ea25d240c4a9c339262bdc611fae881f7f0). PR #199 first replays the exact #197 complete positive cover, then validates four-way and collapsed source-interaction reconstruction against independent direct Method C. Both four-way and collapsed-three-way mechanism classifications are SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED; selected_collapsed_uniform_lock_group=null and control_transfer_status=NO_UNIQUE_COLLAPSED_UNIFORM_LOCK. This does not weaken the direct bounded J_POSITIVE certificate. The immediate highest-information R003 route is now a cancellation-preserving representation change: construct D=pole+prime_signed and A=direct_arch_signed, with D,D',D'' and A,A',A'' formed before parity restriction and interval transport, then require the discrepancy-self, discrepancy/arch cross and arch-self Wronskian groups to reconstruct independent direct Method C on every inherited #197 leaf. If that remains dependency-unresolved, stop source chopping and search for a higher-level exact composite identity. R003 remains DISCOVERY; confirmatory execution is not authorized. No claim_ids are changed by this synchronization. RH remains OPEN."
     },
     {
       "route_id": "R004_prolate_v2",
       "phase": "DISCOVERY",
-      "claim_ids": ["R004_CCM_DISPLACEMENT_FORMAL"],
+      "claim_ids": [
+        "R004_CCM_DISPLACEMENT_FORMAL"
+      ],
       "route_spec_digest": null,
       "boundary_digest": null,
       "confirmatory_execution_authorized": false,
