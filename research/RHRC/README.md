@@ -14,11 +14,11 @@ merge 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
 tree  6c77cd470809959a403b3bcc5f08d39f4076fa4c
 
 LATEST RESEARCH EVIDENCE
-PR #199
-head  fabe301c95277345f0efe764252ce1c1213a4112
-merge 27dda545b7ccdb2870088ebaf317d85e3d999555
-tree  85eb8ea25d240c4a9c339262bdc611fae881f7f0
-research disposition = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+PR #201
+head  be5b98dfce12777436bc40b39a37b04669ae4311
+merge 319db6f68f65bdcffc0657c03bea76502da59a57
+tree  840a2e8b0bf690507bc3385fbe122210e6d32c7a
+research disposition = DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED
 
 CONTROL AUTHORITY
 PR #117
@@ -28,29 +28,30 @@ terminal claim = RH_OPEN
 ## Research history preserved
 
 - #186: `DOMINATION_SIGNAL_MIXED`.
-- #190: joint ambient selector separability; canonical arithmetic realizability becomes the next issue.
-- #192: Layer 0 -> Layer 5 canonical production realizability; specific negative-scalar witness excluded, general reflected class `UNRESOLVED`.
-- #193: six positive exact Q14 centers but first-order finite-width `TRAJECTORY_RIGIDITY_UNRESOLVED` with 63/96 H1 failures and 33/96 J failures.
-- #195: validated canonical `M,M',M''`; `PARTIAL_TRAJECTORY_ORIENTATION`, 48 `J_POSITIVE`, 48 `J_UNRESOLVED`, `63/64`, historical `global_positive_hull = false`.
-- #197: one inherited budget sentinel replayed; A unresolved, B/C positive; complete frozen hull becomes `GLOBAL_MONOTONE_ORIENTATION`, uniform `J_POSITIVE`, certified fraction `1`, `global_positive_hull = true`, bounded distinct-aperture twin exclusion true.
-- #199: exact #197 replay succeeds; direct Method-C remains `J_POSITIVE` on all 49 completed leaves, but both the four-way and collapsed three-way source interaction graphs classify `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED`; no unique collapsed lock is selected.
+- #190: joint ambient selector separability; all 127 nonempty strong-selector subsets insufficient in the audited ambient algebra.
+- #192: Layer 0 -> Layer 5 canonical production realizability; `EXACT_TWIN_SURVIVES` in early layers, the specific negative-scalar witness is `EXACT_TWIN_EXCLUDED_BY_IDENTITY`, general reflected class `UNRESOLVED`.
+- #193: six positive exact Q14 centers but first-order finite-width `TRAJECTORY_RIGIDITY_UNRESOLVED`; **Do not infer this from points.**
+- #195: validated canonical `M,M',M''`; exact `J' = o''e - e''o`; `PARTIAL_TRAJECTORY_ORIENTATION`, 48 `J_POSITIVE`, 48 `J_UNRESOLVED`, `63/64`.
+- #197: one inherited budget sentinel replayed; complete frozen hull becomes `GLOBAL_MONOTONE_ORIENTATION`, uniform `J_POSITIVE`, certified fraction `1`, `global_positive_hull = true`, bounded distinct-aperture twin exclusion true.
+- #199: exact #197 replay succeeds; direct Method-C remains `J_POSITIVE` on all 49 completed leaves, but the four-way and collapsed three-way source interaction graphs classify `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED`.
+- #201: pole-prime pairing is moved upstream to the matrix-jet level before parity restriction and interval transport. Paired `M,M',M''` reconstruction passes, direct `J_POSITIVE` still replays, but `paired_source_sum_positive_leaf_count = 0` and `paired_source_sum_unresolved_leaf_count = 49`; final classification `DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED` with `NO_UNIQUE_PRIMARY_LOCK`.
 
 ## Current R003 frontier
 
-The bounded Q14 orientation itself remains complete. The present source split is now also a consumed experiment: it loses sign resolution after channel separation even though the correlated direct total remains rigorously positive.
+The bounded Q14 orientation itself remains complete. The source-attribution lane has now been tested both with independent source groups and with theorem-motivated pole-prime cancellation preserved upstream; neither representation exposes the sign of the already-certified correlated total.
 
-The next experiment must preserve a mathematically meaningful cancellation before interval enclosure. The theorem-motivated first candidate is
+Therefore the next experiment must stop source chopping and preserve the **fully assembled canonical parity object**. The preferred next falsifier is a higher-level full-composite parity identity with a frozen exact-center kill-switch before any expensive full-hull run.
+
+The production theorem interface still includes
 
 ```text
-D = pole + prime_signed
-A = direct_arch_signed
-M = D + A
+M~(t)=-tI+R~(t)
 ```
 
-Construct `D,D',D''` and `A,A',A''` before parity restriction and interval transport, then decompose the parity Wronskian into discrepancy-self, discrepancy/arch cross, and arch-self interactions. Require rigorous reconstruction of the independent direct Method-C total on every inherited #197 leaf.
+so normalized parity combinations in which the common scalar drift cancels are natural composite candidates. But an equivalent rewrite of `J>0`, such as `(o/e)'>0`, is not by itself a new mechanism.
 
-This is a representation change, not a wider Q/N/K/parity search or a precision/budget increase.
+If the next full-composite test does not reveal an independently meaningful sign structure, Pair-A representation engineering should be downgraded and the route should pivot toward Pair D / Pair B.
 
-Theorem authority remains #184. `GLOBAL_MONOTONE_ORIENTATION` remains the bounded #197 sign result; `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED` is the newer #199 mechanism-attribution result and does not downgrade #197.
+Theorem authority remains #184. `GLOBAL_MONOTONE_ORIENTATION` remains the bounded #197 sign result; `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED` (#199) and `DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED` (#201) are mechanism-representation results and do not downgrade #197.
 
 **RH remains OPEN.**

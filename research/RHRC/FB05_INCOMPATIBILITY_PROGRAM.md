@@ -40,6 +40,7 @@ A valid incompatibility side must be a property of the canonical composite objec
 The actual complex-Hermitian production/log-cover package proves the generic contact algebra, exact fixed-cell production bridge, N2 predecessor/canonical-shell geometry and
 
 ```text
+M~(t)=-tI+R~(t)
 P = d - |b|^2/a
 P_t' = -E + R_t'
 R_t' < E -> P_t' < 0.
@@ -49,14 +50,14 @@ It does not prove the arithmetic premise or source-specific remainder domination
 
 ### PROVED — pole-prime discrepancy interface through PR #153
 
-The project also has theorem-backed pole-prime discrepancy identities and legal Riesz infrastructure. These justify treating the pole-prime cancellation as a mathematically meaningful composite object. They do not prove that a discrepancy-first parity trajectory has a fixed sign.
+The project also has theorem-backed pole-prime discrepancy identities and legal Riesz infrastructure. These justify treating pole-prime cancellation as a mathematically meaningful composite object. They do not prove that a discrepancy-first parity trajectory has a fixed sign.
 
 ## Permanent equivalence / external-research firewalls
 
 - `ArithmeticSideSubexponential` is the PR #27 scalar equivalence wall: an apparently easier scalar upper-bound target can be RH wearing a different name.
 - `negative-index` separation remains an independent structural input and should not be conflated with the current trajectory route.
 - The external 67.25% simple-critical-zero result is compatible with a sparse exceptional off-line set; percentage counting alone cannot exclude one exceptional quartet.
-- **Do not count them as two independent constraints** when external results instantiate essentially the same quadratic extremal mechanism already represented by the project route.
+- **Do not count them as two independent** when external results instantiate essentially the same quadratic extremal mechanism already represented by the project route.
 - **Sparse-exception test:** any percentage or density argument must be attacked by asking whether one exceptional quartet can survive it.
 - **Mustache test:** reject a reduction equivalent to RH, successor positivity, or another open target after notation is unpacked.
 - Preserve the coordinate firewall: logarithmic `t=log L` derivatives and physical-aperture `L` derivatives differ by a factor of `L`.
@@ -64,7 +65,7 @@ The project also has theorem-backed pole-prime discrepancy identities and legal 
 - Same-state composition is mandatory.
 - Source decomposition must preserve known cancellation before interval enclosure when independent boxing would destroy the relevant residue.
 
-## Research inputs through #199
+## Research inputs through #201
 
 ### #186 — broad Pair-A domination falsifier
 
@@ -72,7 +73,7 @@ The frozen Q14 exact-center panel returns `DOMINATION_SIGNAL_MIXED`; broad/uncon
 
 ### #188 -> #190 — frozen selector surface consumed
 
-Seven normalization-safe strong selectors were frozen. #189 establishes individual ambient semantic separability. #190 establishes joint exact separability of the complete seven-vector and all 127 nonempty subsets in the audited ambient normalized algebra.
+Seven normalization-safe strong selectors were frozen. #189 establishes individual ambient semantic separability. #190 establishes joint exact separability of the complete seven-vector and all 127 nonempty subsets in the audited ambient normalized algebra. Preserve the historical labels `EXACT_TWIN_SURVIVES` and `EXACT_TWIN_EXCLUDED_BY_IDENTITY`.
 
 ### #192 — canonical production realizability ladder executed
 
@@ -86,13 +87,14 @@ P2 = L*J/(o*e)
 sign(P1') = sign(P2) = sign(J) under L,e,o>0.
 ```
 
-Six exact Q14 centers are positive, while the first-order finite-width cover returns `TRAJECTORY_RIGIDITY_UNRESOLVED`.
+Six exact Q14 centers are positive, while the first-order finite-width cover returns `TRAJECTORY_RIGIDITY_UNRESOLVED`. **Do not infer this from points.**
 
 ### #195 — canonical second-order sharp enclosure
 
 Historical exact result:
 
 ```text
+J' = o''e - e''o
 PARTIAL_TRAJECTORY_ORIENTATION
 48 J_POSITIVE
 48 J_UNRESOLVED
@@ -127,8 +129,6 @@ This is rigorous bounded research, not Lean theorem authority.
 
 PR #199 executes the source-mechanism audit on that exact same frozen Q14 hull. It preserves every four-way bilinear source interaction, also checks the collapsed direct-production representation, and requires both to reconstruct independent direct Method C.
 
-The final result is:
-
 ```text
 four_way_classification = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
 collapsed_three_way_classification = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
@@ -137,22 +137,45 @@ selected_collapsed_uniform_lock_group = null
 control_transfer_status = NO_UNIQUE_COLLAPSED_UNIFORM_LOCK
 ```
 
-The direct `J_POSITIVE` certificate remains intact. Thus the present source split is too dependency-inflated to identify the mechanism; the experiment does not show that no source mechanism exists.
+The direct `J_POSITIVE` certificate remains intact.
+
+### #201 — discrepancy-first cancellation-preserving audit
+
+PR #201 consumes the theorem-motivated escape from #199. It forms
+
+```text
+D = pole + prime_signed
+A = direct_arch_signed
+M = D + A
+```
+
+at matrix `M,M',M''` level before parity restriction and interval transport. The paired matrix-jet reconstruction and finite-difference implementation checks pass.
+
+The complete frozen #197 49-leaf cover replays with direct `J_POSITIVE`, but the paired source sum remains unresolved on every leaf:
+
+```text
+paired_source_sum_positive_leaf_count = 0
+paired_source_sum_unresolved_leaf_count = 49
+mechanism_classification = DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED
+selected_uniform_lock_group = null
+control_transfer_status = NO_UNIQUE_PRIMARY_LOCK
+```
+
+This does **not** weaken the direct sign certificate and does not prove that no source mechanism exists. It shows that the present source-attribution strategy remains dependency-limited even after theorem-motivated upstream cancellation preservation.
 
 ## Consequence for Pair A
 
-The post-#199 form is now:
+The post-#201 form is now:
 
 ```text
 bounded canonical trajectory ordering is established on frozen Q14
-  -> current independent source attribution is dependency-unresolved
-  -> preserve theorem-motivated cancellation before enclosure
-  -> identify/falsify the smallest composite source law
-  -> generalize/theoremize only if it survives controls
-  -> attach that source restriction to the exact retained/contact state
-  -> #184 contact/log-drift calculus
-  -> independent first-bad property on the same state
-  -> contradiction
+  -> independent source attribution is dependency-unresolved (#199)
+  -> pole-prime discrepancy pairing is also dependency-unresolved (#201)
+  -> stop linear source regrouping as the default strategy
+  -> preserve the fully assembled canonical parity object
+  -> test one higher-level exact composite identity
+  -> generalize/theoremize only if it reveals an independently meaningful mechanism
+  -> otherwise downgrade Pair-A representation engineering
 ```
 
 ### Pair A — canonical trajectory/contact-orientation clash — CONDITIONAL LEADING ROUTE
@@ -169,35 +192,60 @@ bounded canonical trajectory ordering is established on frozen Q14
 
 **Trajectory full frozen cover:** EXECUTED by #197.
 
-**Independent source-attribution audit:** EXECUTED by #199; disposition `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED`.
+**Independent source-attribution audit:** EXECUTED by #199; `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED`.
 
-**Live missing object:** an independently meaningful canonical arithmetic mechanism that explains/generalizes the bounded parity ordering and applies to the exact arbitrary retained first-bad/contact state.
+**Cancellation-preserving discrepancy audit:** EXECUTED by #201; `DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED`.
 
-### Current Pair-A experiment
+**Live missing object:** an independently meaningful canonical **composite** mechanism that explains/generalizes the bounded parity ordering and applies to the exact arbitrary retained first-bad/contact state.
 
-Use a cancellation-preserving two-channel representation:
+### Current Pair-A experiment — full-composite parity-gap falsifier
 
-```text
-D = pole + prime_signed
-A = direct_arch_signed
-M = D + A
-```
-
-Construct `D,D',D''` and `A,A',A''` before parity restriction or interval transport. Then decompose the normalized parity Wronskian using only
+Do not build another pole/arch/prime regrouping. Keep the same fully assembled normalized parity levels:
 
 ```text
-J_DD
-J_DA
-J_AA
+E = e / ||W_e||^2
+O = o / ||W_o||^2
+G = O - E
 ```
 
-and require their sum to reconstruct independent direct Method C on every inherited #197 leaf.
+The exact algebraic factorization
 
-The research hypothesis to falsify is structural:
+```text
+Jbar = O' E - E' O = E G' - E' G
+```
 
-> preserving the canonical pole-prime discrepancy before enclosure reveals a compact parity-ordering relation that the #199 independent source boxes destroyed.
+is only a DERIVED identity. It is useful only if its component quantities expose a simpler independent sign structure.
 
-If this still returns dependency-unresolved, do not increase precision or widen Q. Stop source chopping and search for a higher-level exact composite parity identity.
+The next fixture should predeclare a simple center-level pattern before execution, for example
+
+```text
+E > 0
+G > 0
+G' >= 0
+E' <= 0
+```
+
+and the factor terms
+
+```text
+T1 = E * G'
+T2 = -E' * G.
+```
+
+This is a falsifier, not a fitted theorem. If the predeclared pattern already fails on any of the six inherited exact Q14 centers, report `COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED` and stop; do not increase numerical effort to rescue it.
+
+If it survives every center, then and only then reuse the exact #197 49-leaf partition at 384 bits, with unchanged Q/N/K/parity, no additional depth/cells, and an independent Method-C reconstruction comparator.
+
+Permitted full-cover outcomes should be frozen in advance, including:
+
+```text
+COMPOSITE_PARITY_GAP_LOCK
+COOPERATIVE_COMPOSITE_LOCK
+MIXED_COMPOSITE_RECONSTRUCTABLE
+COMPOSITE_PARITY_GAP_DEPENDENCY_UNRESOLVED
+```
+
+Merely proving `(O/E)'>0` from known `J>0` is not new information.
 
 ## Pair B — negative-index separation versus critical-line sampling rigidity
 
@@ -227,21 +275,21 @@ For any proposed Pair-A trajectory constraint:
 6. H1 test;
 7. bounded-vs-global test;
 8. representation/cancellation test;
-9. reconstruction test for all source diagnostics;
+9. reconstruction test;
 10. search-vs-proof test;
 11. mustache test.
 
-For the discrepancy-first representation specifically, reject any implementation that merely adds already-enclosed pole and prime interaction intervals after transport. The pairing must happen upstream.
+After #201, arbitrary linear source regrouping is not considered a new route unless an independent theorem singles out that grouping.
 
 ## Highest-leverage order
 
 ```text
-1. discrepancy-first two-channel audit on the complete #197 frozen Q14 trajectory
-2. identify/falsify the smallest exact ordering mechanism
-3. if robust, formalize the abstract parity-ratio monotonicity/injectivity bridge and source premise
-4. attach the source premise to the exact retained first-bad state
+1. synchronize the living state through #201
+2. run one full-composite Pair-A falsifier with exact-center kill-switch
+3. if a simple robust composite law survives, isolate the smallest generic theorem and formalize it
+4. attach any formal premise to the exact retained first-bad/contact state
 5. compose with #184 and an independent first-bad property
-6. if still dependency-unresolved -> stop source chopping and prioritize a higher-level composite identity or Pair B / D
+6. if the composite mechanism is mixed/unresolved -> stop Pair-A representation work and prioritize Pair D / Pair B
 ```
 
 ## Permanent claim firewall
@@ -254,6 +302,7 @@ For the discrepancy-first representation specifically, reject any implementation
 #192 general reflected class                   OPEN
 #197 frozen Q14 orientation                    GLOBAL_MONOTONE_ORIENTATION bounded research
 #199 independent source attribution            SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+#201 discrepancy-first attribution             DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED
 bounded distinct-aperture twin exclusion       TRUE on frozen #197 branch only
 global canonical injectivity                   OPEN
 contact contradiction                          OPEN
