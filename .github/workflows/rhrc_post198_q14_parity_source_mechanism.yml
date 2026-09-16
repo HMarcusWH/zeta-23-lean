@@ -1,0 +1,36 @@
+name: RHRC post-198 Q14 parity source mechanism
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+concurrency:
+  group: rhrc-post198-q14-source-mechanism-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  post198-q14-source-mechanism:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install R003 numerical audit requirements
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Check four-way second-derivative channel implementation
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post198_fb05_q14_four_way_channel_second_derivative_scope.py
+      - name: Check post-#198 source-mechanism scope
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post198_fb05_q14_parity_source_mechanism_scope.py
+      - name: Probe post-#198 source-mechanism schedule
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post198_fb05_q14_parity_source_mechanism_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post198_fb05_q14_parity_source_mechanism_v1.json \
+            --output /tmp/POST198_FB05_Q14_PARITY_SOURCE_MECHANISM_SCHEDULE.json
+      - name: Certify post-#198 Q14 parity source mechanism
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post198_fb05_q14_parity_source_mechanism_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post198_fb05_q14_parity_source_mechanism_v1.json \
+            --schedule /tmp/POST198_FB05_Q14_PARITY_SOURCE_MECHANISM_SCHEDULE.json \
+            --output /tmp/POST198_FB05_Q14_PARITY_SOURCE_MECHANISM_CERTIFICATE.json
