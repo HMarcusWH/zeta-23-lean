@@ -55,7 +55,12 @@ COMPLETED RESEARCH HISTORY
   #195 higher-order canonical trajectory enclosure
        -> J' = o''e - e''o
        -> PARTIAL_TRAJECTORY_ORIENTATION
+       -> 48 J_POSITIVE, 48 J_UNRESOLVED
+       -> 0 J_NEGATIVE, 0 H1_UNRESOLVED
+       -> one unresolved span
        -> certified t-fraction = 63/64
+       -> historical global_positive_hull = false
+       -> historical bounded_distinct_aperture_twin_exclusion = false
   #197 unique residual-cell replay
        -> GLOBAL_MONOTONE_ORIENTATION
        -> uniform orientation = J_POSITIVE
@@ -195,6 +200,8 @@ global_positive_hull = false
 bounded_distinct_aperture_twin_exclusion = false
 ```
 
+This historical state had one unresolved span. PR #197 later consumed exactly that span; the phrase is retained because the partial state remains an auditable ancestor.
+
 ### #197 complete frozen-Q14 orientation
 
 PR #197 replays #195 unchanged, confirms exactly one `MAX_CELL_BUDGET` leaf of width `1/64` of the hull, and evaluates that cell exactly once with the unchanged evaluator.
@@ -211,7 +218,7 @@ global_positive_hull = true
 bounded_distinct_aperture_twin_exclusion = true
 ```
 
-This is rigorous bounded research for the exact frozen Q14 encoded domain. No Lean theorem was promoted.
+This is rigorous bounded research for the exact frozen Q14 encoded domain. No Lean theorem was promoted. The post-#197 next step was the source-mechanism audit on the same frozen Q14 hull using `J' = o''e - e''o`; #199 has consumed that source-mechanism audit.
 
 ### #199 source-mechanism audit — completed and dependency-unresolved
 
@@ -243,7 +250,7 @@ A = direct_arch_signed
 M = D + A
 ```
 
-with `D,D',D''` and `A,A',A''` constructed before parity restriction and second-order interval transport. The three transported groups are the discrepancy self term, discrepancy/direct-arch cross term, and direct-arch self term.
+with `D,D',D''` and `A,A',A''` constructed before parity restriction and second-order interval transport.
 
 Exact certified output:
 
