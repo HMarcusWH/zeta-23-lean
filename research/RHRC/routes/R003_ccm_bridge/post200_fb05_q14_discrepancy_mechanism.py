@@ -17,7 +17,7 @@ from __future__ import annotations
 
 from flint import arb
 
-from canonical_source_arb import set_precision
+from canonical_source_arb import definitely_positive, set_precision
 from post166_fb05_cell_interval import arb_unit_interval, cell_coordinate_L_arb
 from post173_fb05_q13_scalar_barrier import TARGET_KSTAR
 from post198_fb05_q14_parity_source_mechanism import (
@@ -76,7 +76,7 @@ def paired_mechanism_cell_record(cell: dict) -> dict:
         "center_num": center_num,
         "den": den,
         "direct": {
-            "J_transport_positive": bool(direct["J_transport"] > 0),
+            "J_transport_positive": definitely_positive(direct["J_transport"]),
         },
         "paired": _json_interaction(paired),
         "checks": {
