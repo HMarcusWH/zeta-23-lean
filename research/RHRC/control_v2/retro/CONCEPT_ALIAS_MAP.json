@@ -333,7 +333,13 @@
     "same aperture trajectory",
     "arch scalar coupling",
     "arch scalar cancellation",
-    "same-L canonical source reconstruction"
+    "same-L canonical source reconstruction",
+    "parity Wronskian",
+    "parity log-slope gap",
+    "Q14 parity trajectory rigidity",
+    "canonical aperture fingerprint",
+    "first-order trajectory enclosure",
+    "TRAJECTORY_RIGIDITY_UNRESOLVED"
   ],
   "shifted_coercivity": [
     "shifted coercivity",
