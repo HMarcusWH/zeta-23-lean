@@ -1,0 +1,89 @@
+{
+  "schema_version": "POST196_FB05_Q14_RESIDUAL_CELL_REPLAY_FIXTURE_v1",
+  "claim_cap": "POST196_Q14_UNIQUE_BUDGET_LEAF_REPLAY_RESEARCH_ONLY",
+  "base_main_sha": "6d43209a7a392927169d1d1765704e8510fefbfc",
+  "base_main_tree": "9afe818a74edfe74055758a7aa5874163255d774",
+  "theorem_authority_pr": 184,
+  "research_authority_pr": 195,
+  "routing_sync_pr": 196,
+  "inherited_post195_module": "post194_fb05_q14_parity_trajectory_sharp_enclosure.py",
+  "inherited_post195_module_blob_sha": "9b655e012815d12a8d774e589bad1f21b3a7abf2",
+  "inherited_post195_fixture": "post194_fb05_q14_parity_trajectory_sharp_enclosure_v1.json",
+  "inherited_post195_fixture_blob_sha": "dc81d125c01aabcf54c990b70f579ed378c30cba",
+  "inherited_post195_probe": "probe_post194_fb05_q14_parity_trajectory_sharp_enclosure_scope.py",
+  "inherited_post195_probe_blob_sha": "3b094e8d3bf5e504358ce3b039e39f84fac0527d",
+  "inherited_post195_certifier": "certify_post194_fb05_q14_parity_trajectory_sharp_enclosure_scope.py",
+  "inherited_post195_certifier_blob_sha": "2194915dbc6abe4c282e31f7770a89a0088be974",
+  "selected_target": {
+    "q_start": 13,
+    "q_end": 16,
+    "predecessor_N": 2,
+    "successor_K": 3,
+    "selected_parity": "even",
+    "primary_Q": 14
+  },
+  "required_ancestry_control": {
+    "predecessor_N": 2,
+    "parity": "odd"
+  },
+  "arb_precision_bits": 384,
+  "max_refinement_depth": 12,
+  "max_evaluated_cells": 96,
+  "followup_evaluated_cells": 1,
+  "expected_post195_disposition": {
+    "classification": "PARTIAL_TRAJECTORY_ORIENTATION",
+    "evaluated_cell_count": 96,
+    "leaf_count": 49,
+    "evaluated_orientation_counts": {
+      "J_NEGATIVE": 0,
+      "J_POSITIVE": 48,
+      "J_UNRESOLVED": 48,
+      "H1_UNRESOLVED": 0
+    },
+    "second_order_h1_recovery_count": 63,
+    "budget_exhausted_leaf_count": 1,
+    "representation_conflict_count": 0,
+    "unresolved_span_count": 1
+  },
+  "expected_budget_leaf_fraction_of_hull": "1/64",
+  "permitted_replayed_orientations": [
+    "J_NEGATIVE",
+    "J_POSITIVE",
+    "J_UNRESOLVED",
+    "H1_UNRESOLVED"
+  ],
+  "permitted_classifications": [
+    "GLOBAL_MONOTONE_ORIENTATION",
+    "SINGLE_FOLD_REGION_LOCALIZED",
+    "MULTIPLE_FOLD_REGIONS",
+    "PARTIAL_TRAJECTORY_ORIENTATION",
+    "TRAJECTORY_RIGIDITY_UNRESOLVED"
+  ],
+  "policy": {
+    "repeat_post195_audit_required": true,
+    "unique_budget_leaf_required": true,
+    "one_cell_followup_only": true,
+    "inherited_evaluator_required": true,
+    "completed_cover_reclassification_required": true,
+    "new_q_n_parity_search_permitted": false,
+    "selector_refit_permitted": false,
+    "threshold_refit_permitted": false,
+    "target_sign_import_permitted": false,
+    "precision_increase_permitted": false,
+    "adaptive_budget_increase_permitted": false,
+    "recursive_followup_subdivision_permitted": false,
+    "source_mechanism_refit_permitted": false,
+    "bounded_nonresolution_counts_as_exclusion": false
+  },
+  "nonclaims": [
+    "This PR is Arb research/falsification tooling, not Lean theorem authority.",
+    "The complete post-#195 96-cell audit is rerun unchanged before the residual cell is identified.",
+    "The follow-up evaluates exactly the unique MAX_CELL_BUDGET leaf once with the unchanged post-#195 shared A/B/C evaluator.",
+    "The inherited adaptive cell budget remains 96; the one-cell replay is a separately declared post-hoc evaluation, not max_cells=97.",
+    "The replayed cell is not recursively subdivided in this experiment.",
+    "An unresolved replay is genuine finite-width nonresolution of that evaluated cell, not evidence of a zero or counterexample.",
+    "A complete signed cover, if obtained, is only a bounded Q14 research result until separately formalized.",
+    "No arbitrary-Q transport, FB-05 closure, negative-root exclusion, or RH claim is established.",
+    "RH remains OPEN."
+  ]
+}
