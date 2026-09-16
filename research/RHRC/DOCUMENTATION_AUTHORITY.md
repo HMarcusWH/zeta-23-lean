@@ -32,14 +32,14 @@ PR #184 remains the current compiler-validated mathematical authority.
 ### Research-evidence anchor
 
 ```text
-latest merged research PR = #199
-validated research head = fabe301c95277345f0efe764252ce1c1213a4112
-merged research commit = 27dda545b7ccdb2870088ebaf317d85e3d999555
-validated research tree = 85eb8ea25d240c4a9c339262bdc611fae881f7f0
-research disposition = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+latest merged research PR = #201
+validated research head = be5b98dfce12777436bc40b39a37b04669ae4311
+merged research commit = 319db6f68f65bdcffc0657c03bea76502da59a57
+validated research tree = 840a2e8b0bf690507bc3385fbe122210e6d32c7a
+research disposition = DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED
 ```
 
-PR #199 is research/falsification authority only. It consumes and exactly replays PR #197's bounded `GLOBAL_MONOTONE_ORIENTATION` / `J_POSITIVE` certificate before classifying the present source decomposition as dependency-unresolved. It does not move Lean theorem authority and does not downgrade the #197 direct sign result.
+PR #201 is research/falsification authority only. It consumes PR #199's explicit cancellation-preserving escape by forming `D = pole + prime_signed` and `A = direct_arch_signed` at matrix-jet level before parity restriction/transport. The direct #197 `GLOBAL_MONOTONE_ORIENTATION / J_POSITIVE` certificate still replays unchanged, while the paired representation remains dependency-unresolved on all 49 completed leaves. No Lean theorem authority moves.
 
 ### Control-plane semantic anchor
 
@@ -76,32 +76,41 @@ Historical dated deltas are not rewritten to look current. Historical regression
 Lean proves the Hermitian 2x2 Schur/contact calculus, exact frozen production log-cover family, fixed-cell production bridge, N2 predecessor/canonical-shell reconstruction and orthogonality, and
 
 ```text
+M~(t)=-tI+R~(t)
 P_t' = -envelopeNormSq + remainderEnvelopeDerivative
 remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0.
 ```
 
 No later research PR promotes additional Lean theorem authority.
 
-### Completed research history through #199
+### Completed research history through #201
 
 ```text
 #186 -> broad remainder domination returns DOMINATION_SIGNAL_MIXED
 #190 -> complete seven-selector vector jointly ambiently separable from target sign
+        -> EXACT_TWIN_SURVIVES / EXACT_TWIN_EXCLUDED_BY_IDENTITY retained as historical contracts
 #192 -> canonical production realizability Layer 0 -> Layer 5 executed
 #193 -> first-order Q14 parity trajectory remains finite-width unresolved
-#195 -> validated M,M',M''; PARTIAL_TRAJECTORY_ORIENTATION / 63/64 historical
+        -> Do **not** infer this from points
+#195 -> validated M,M',M''; J' = o''e - e''o
+        -> PARTIAL_TRAJECTORY_ORIENTATION / 63/64 historical
 #197 -> unique residual leaf replay closes the frozen Q14 cover
         -> GLOBAL_MONOTONE_ORIENTATION / uniform J_POSITIVE
         -> certified fraction 1
         -> bounded distinct-aperture twin exclusion
 #199 -> exact #197 cover replayed unchanged
-        -> four-way source mechanism = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
-        -> collapsed three-way mechanism = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
-        -> no unique collapsed uniform lock
+        -> four-way and collapsed source mechanisms = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
         -> direct bounded J_POSITIVE unchanged
+#201 -> discrepancy/direct-arch pairing performed before parity restriction/transport
+        -> paired M,M',M'' reconstruction passes
+        -> direct bounded J_POSITIVE unchanged
+        -> paired positive source sums = 0/49
+        -> paired unresolved source sums = 49/49
+        -> DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED
+        -> NO_UNIQUE_PRIMARY_LOCK
 ```
 
-Historical #195 and #197 states remain preserved. PR #199 advances only the latest research-evidence anchor.
+Historical #195, #197 and #199 states remain preserved. PR #201 advances only the latest research-evidence anchor.
 
 ### Current route
 
@@ -109,28 +118,28 @@ Historical #195 and #197 states remain preserved. PR #199 advances only the late
 PROVED THROUGH #184
   exact Hermitian/log-cover/contact algebra
 
-RESEARCHED THROUGH #199
+RESEARCHED THROUGH #201
   frozen Q14 direct orientation is complete and positive
-  current source-separated interaction graph loses sign resolution
+  independent source attribution loses sign resolution
+  theorem-motivated upstream pole-prime pairing also loses sign resolution
 
 NOW
-  do not refine the completed cover
-  do not rerun the same independent source split
-  preserve known pole-prime cancellation before interval transport
-  construct D = pole + prime_signed and A = direct_arch_signed
-  build D,D',D'' and A,A',A'' upstream
-  parity-restrict only after pairing
-  require exact reconstruction of independent direct Method C
-  if still unresolved, search for a higher-level composite identity
+  stop source chopping as the default route
+  do not change only source parentheses and call it new mathematics
+  preserve the assembled canonical parity object
+  test a higher-level exact composite parity identity
+  predeclare an exact-center falsification pattern before any full-hull run
+  reuse the exact #197 49-leaf partition only if the center pattern survives
+  if the composite mechanism also fails -> downgrade Pair A representation work and pivot to Pair D / Pair B
 ```
 
 A complete signed finite-width cover supports **rigorous bounded research**, not arbitrary-Q theorem authority. A dependency-unresolved decomposition does not negate an independently certified direct sign.
 
 ## Historical-state rule
 
-The post-#190, post-#193, post-#195 and post-#197 deltas remain historical evidence and must not be edited to pretend they were written after #199. `RESEARCH_LEADS_POST_199_Q14_SOURCE_DECOMPOSITION_DELTA.md` is the newest current delta.
+The post-#190, post-#193, post-#195, post-#197 and post-#199 deltas remain historical evidence and must not be edited to pretend they were written after #201. `RESEARCH_LEADS_POST_201_Q14_DISCREPANCY_MECHANISM_DELTA.md` is the newest current delta.
 
-Historical `test_post195_sync.py` and `test_post197_sync.py` continue to verify that their evidence remains represented. `test_post199_sync.py` owns the current #199 assertions.
+Historical `test_post195_sync.py`, `test_post197_sync.py` and `test_post199_sync.py` continue to verify that their evidence remains represented. `test_post201_sync.py` owns the current #201 assertions.
 
 ## Claim firewall
 
@@ -139,7 +148,10 @@ Historical `test_post195_sync.py` and `test_post197_sync.py` continue to verify 
 - ambient algebra countermodels are not automatically canonical arithmetic states;
 - #197 `GLOBAL_MONOTONE_ORIENTATION` is complete bounded research on one frozen Q14 domain;
 - #199 `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED` is a representation/mechanism classification, not a loss of #197 `J_POSITIVE`;
+- #201 `DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED` is another representation/mechanism classification, not a loss of #197 `J_POSITIVE`;
+- 0/49 paired positive source sums means the paired interval graph is unresolved, not that the direct Wronskian is nonpositive;
 - no unique source lock is not a theorem that no source law exists;
+- **Do not count them as two independent** when equivalent formulations encode the same mechanism;
 - theorem authority remains #184;
 - control semantic authority remains #117;
 - negative-root exclusion remains OPEN;
