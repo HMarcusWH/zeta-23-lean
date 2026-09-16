@@ -12,15 +12,11 @@ head  = a756494ebe7e2530715e996b9a9a341fbe07c683
 tree  = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
 
 LATEST RESEARCH EVIDENCE
-merged research PR = #193
-head  = 085634ca7dafe4d9f598b2b5e081be80e050ba8c
-merge = fdd6606f85e92bf632b4cdaf1d4af85f6fa5b195
-tree  = db569150046459f4b87a931d3e8d01054bbbedff
-RHRC #1109 = SUCCESS
-Permansson #882 = SUCCESS
-post-190 canonical realizability audit #5 = SUCCESS
-post-192 parity trajectory rigidity #3 = SUCCESS
-research disposition = TRAJECTORY_RIGIDITY_UNRESOLVED
+merged research PR = #195
+head  = ef8af439b4723062061553bfee0ae3eba0205684
+merge = 380b0011ffa3fac9684ec05496e241b47878be69
+tree  = cc403fc55454c0f865c17a36d971a9e7947f1a1a
+research disposition = PARTIAL_TRAJECTORY_ORIENTATION
 
 CONTROL SEMANTIC AUTHORITY
 PR #117
@@ -40,35 +36,35 @@ FB-05E individual selector sufficiency in ambient algebra          CLOSED / #189
 FB-05F joint seven-selector sufficiency in ambient algebra         CLOSED / #190 research
 FB-05G canonical production realizability Layer 0 -> Layer 5       EXECUTED / #192 research
 FB-05H first-order Q14 parity-trajectory enclosure                 UNRESOLVED / #193 research
-FB-05I sharper same-hull parity-trajectory enclosure               NOW / selected research bottleneck
+FB-05I second-order same-hull sharp enclosure                      PARTIAL / #195 research
+FB-05J residual one-span source-mechanism audit                    NOW / selected research bottleneck
 ```
 
 The selected action remains `E4_A4_REGULAR_SCHUR_ENERGY_SIGN` under frontier `FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN`. The selected first-break ID remains `E4A4-SCHUR-FB-05`.
 
-## Why routing changes after #193
+## Why routing changes after #195
 
-#190 closed the frozen selector surface only in ambient algebra. #192 then imposed canonical production structure: the particular negative-scalar witness is excluded, but the general reflection mechanism is not. #193 moved to the actual fixed-Q aperture trajectory.
+#190 closed the frozen selector surface only in ambient algebra. #192 then imposed canonical production structure: the particular negative-scalar witness is excluded, but the general reflection mechanism is not. #193 moved to the actual fixed-Q aperture trajectory but its first-order finite-width representation failed H1 on 63/96 cells and signed no nonzero-width J cell.
 
-At all six exact Q14 centers #193 certifies:
-
-```text
-e > 0
-o > 0
-J > 0
-P2 > 0
-```
-
-but the finite-width first-order run returns:
+#195 keeps that exact population and validates the complete canonical second-aperture jet. Its result is:
 
 ```text
-63/96 H1_UNRESOLVED
-33/96 J_UNRESOLVED
+PARTIAL_TRAJECTORY_ORIENTATION
+48 J_POSITIVE
+48 J_UNRESOLVED
 0 J_NEGATIVE
-0 J_POSITIVE
-TRAJECTORY_RIGIDITY_UNRESOLVED
+0 H1_UNRESOLVED
+second_order_h1_recovery_count = 63
+representation_conflict_count = 0
+unresolved_span_count = 1
+certified_t_fraction = 63/64
+global_positive_hull = false
+bounded_distinct_aperture_twin_exclusion = false
 ```
 
-Therefore Control-v2 must not recommend another selector combination, another #192 replay, or merely a larger subdivision budget on the same #193 graph.
+Thus the old H1 gate is consumed on the frozen run. The current bottleneck is one residual orientation span, not positivity recovery.
+
+Therefore Control-v2 must not recommend another selector combination, another #192 replay, a new Q/N/K/parity search, or merely a larger subdivision budget on the same #195 dependency graph.
 
 ## Selected action — E4_A4_REGULAR_SCHUR_ENERGY_SIGN
 
@@ -76,7 +72,7 @@ The sole live first break is still an independently meaningful canonical arithme
 
 ### Highest-information research lane
 
-Audit **sharper parity-trajectory orientation on the same frozen Q14 hull**.
+Audit the **source mechanism behind the residual Q14 parity-trajectory span on the same frozen hull**.
 
 Reuse:
 
@@ -84,27 +80,26 @@ Reuse:
 J = o'e - e'o
 P2 = L*J/(o*e)
 sign(P1') = sign(P2) = sign(J)  under L,e,o>0
+J' = o''e - e''o
 ```
 
-Compare:
+The next executable experiment should decompose the complete canonical pole/arch/prime production jet and reconstruct `J'` from all bilinear channel pairs:
 
 ```text
-A. first-order Wronskian enclosure      [#193 baseline]
-B. direct P2 log-slope enclosure
-C. centered second-order/Taylor enclosure
+sum_{c,d} (o_c'' * e_d - e_c'' * o_d)
 ```
 
-Primary hypothesis to falsify: `J(L)>0` throughout the exact inherited Q14 hull.
+with signs absorbed consistently. The recombination must rigorously contain/equal the direct canonical total.
 
-Exact-center positivity is a clue, not a bounded monotonicity result. A complete signed cover is required.
+Primary hypothesis to falsify remains `J(L)>0` throughout the exact inherited Q14 hull. `63/64` is evidence, not closure.
 
 ### Formal infrastructure lane
 
-Actual production derivative witnesses and an instantiated `HasDerivAt` Schur identity remain useful. Formalize the smallest exact trajectory/production relation shown by research to be decisive; do not theoremize weak scalar positivity or revive universal domination merely because they are easy to state.
+Actual production derivative witnesses and an instantiated `HasDerivAt` Schur identity remain useful. Formalize the smallest exact trajectory/production relation shown by research to be decisive; do not theoremize weak scalar positivity, partial coverage, or revive universal domination merely because they are easy to state.
 
 ### Pair-A decision rule
 
-If a sharper representation certifies a genuine bounded monotonicity mechanism, attempt to distill and compose it with #184 and an independently proved opposing first-bad property on the exact same state. If the route fails structurally, downgrade Pair A and prioritize other incompatibility pairs.
+If the residual span is certified positive for a structural reason, distill that mechanism and compose it with #184 and an independently proved opposing first-bad property on the exact same state. If the span contains a genuine fold or the orientation is cancellation-fragile, downgrade Pair A and prioritize the alternative incompatibility lanes.
 
 ## Evidence firewall
 
@@ -113,8 +108,9 @@ If a sharper representation certifies a genuine bounded monotonicity mechanism, 
 #190 joint semantic independence          EXACT EXECUTABLE RESEARCH
 #192 canonical-realizability ladder       EXACT / RIGOROUS FINITE RESEARCH
 #193 exact trajectory centers             RIGOROUS POINT RESEARCH
-#193 finite-width orientation             UNRESOLVED
-J>0 on Q14 hull                           OPEN
+#193 first-order finite-width orientation TRAJECTORY_RIGIDITY_UNRESOLVED
+#195 second-order finite-width orientation PARTIAL_TRAJECTORY_ORIENTATION
+J>0 on full Q14 hull                      OPEN
 FB-05 closure                             OPEN
 negative-root exclusion                   OPEN
 RH                                        OPEN
@@ -131,8 +127,8 @@ RH                                        OPEN
 - terminal-claim mutation false;
 - terminal claim `RH_OPEN`.
 
-The historical `test_post190_sync.py` remains untouched and continues to guard the consumed Layer 0 -> Layer 5 canonical production realizability vocabulary. `test_post193_sync.py` adds the new authority and trajectory-frontier regression without rewriting history.
+Historical sync tests remain untouched and continue to guard their consumed research vocabulary. `test_post195_sync.py` advances the living research anchor and residual-span routing without rewriting history.
 
-Newest implications: `../RESEARCH_LEADS_POST_193_PARITY_TRAJECTORY_DELTA.md`.
+Newest implications: `../RESEARCH_LEADS_POST_195_PARITY_TRAJECTORY_SHARP_ENCLOSURE_DELTA.md`.
 
 **RH remains OPEN.**

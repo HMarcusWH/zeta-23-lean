@@ -22,15 +22,11 @@ validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
 ### Latest research-evidence anchor
 
 ```text
-merged research PR = #193
-validated research head = 085634ca7dafe4d9f598b2b5e081be80e050ba8c
-merged research commit = fdd6606f85e92bf632b4cdaf1d4af85f6fa5b195
-validated research tree = db569150046459f4b87a931d3e8d01054bbbedff
-RHRC #1109 = SUCCESS
-Permansson #882 = SUCCESS
-post-190 canonical realizability audit #5 = SUCCESS
-post-192 parity trajectory rigidity #3 = SUCCESS
-research disposition = TRAJECTORY_RIGIDITY_UNRESOLVED
+merged research PR = #195
+validated research head = ef8af439b4723062061553bfee0ae3eba0205684
+merged research commit = 380b0011ffa3fac9684ec05496e241b47878be69
+validated research tree = cc403fc55454c0f865c17a36d971a9e7947f1a1a
+research disposition = PARTIAL_TRAJECTORY_ORIENTATION
 ```
 
 ### Control authority
@@ -51,13 +47,16 @@ Current gates include:
 python research/RHRC/tools/run_suite.py
 Control-v2 real-history smoke run
 R003 normalization/dictionary/source-normalization guards
-post-#163 onward frozen research regressions through #193
+post-#163 onward frozen research regressions through #195
 R004 scalar-shift invariant audit
 external-reference dependency firewall
 lake build Zeta23.CCM
 lake build Zeta23.ExceptionalZero
 forbidden sorry / project axiom scan
 Permansson independent formal verification
+post-190 canonical realizability regression
+post-192 parity-trajectory regression
+post-194 sharp trajectory / second-derivative regression
 ```
 
 A skipped downstream step is not a passed gate.
@@ -79,7 +78,7 @@ remainder drift < envelopeNormSq -> negative pivot orientation
 
 Not proved by #184: actual source-specific remainder derivative witnesses, source-specific domination, contact existence/uniqueness, opposing first-bad orientation, negative-root exclusion or RH.
 
-## Research evidence through #193
+## Research evidence through #195
 
 ### #190 ambient selector evidence
 
@@ -104,32 +103,51 @@ UNRESOLVED
 
 ### #193 trajectory evidence
 
-The inherited exact-center P1/P2/J cross-checks use signed Arb point balls. The six exact centers with `e>0`, `o>0`, `J>0`, `P2>0` are therefore rigorous **point research** for those encoded states.
+The inherited exact-center P1/P2/J cross-checks use signed Arb point balls. The six exact centers with `e>0`, `o>0`, `J>0`, `P2>0` are rigorous **point research** for those encoded states.
 
-Evidence classes:
-
-```text
-exact signed center Arb balls
-  -> RIGOROUS POINT RESEARCH
-
-complete signed finite-width Arb cover
-  -> RIGOROUS BOUNDED MONOTONICITY RESEARCH
-
-six signed centers with unresolved interval cover
-  -> EXPERIMENTAL/FINITE STRUCTURAL SIGNAL only;
-     not monotonicity
-
-budget exhaustion / unresolved dependency graph
-  -> UNRESOLVED
-```
-
-Mandatory firewall:
+The first-order finite-width classification is:
 
 ```text
-6/6 J>0 at centers  !=  J>0 on hull
+TRAJECTORY_RIGIDITY_UNRESOLVED
+63/96 H1_UNRESOLVED
+33/96 J_UNRESOLVED
+0 J_NEGATIVE
+0 J_POSITIVE
 ```
 
-#193's actual finite-width classification is `TRAJECTORY_RIGIDITY_UNRESOLVED`, with 63/96 `H1_UNRESOLVED`, 33/96 `J_UNRESOLVED`, zero `J_NEGATIVE` cells and zero `J_POSITIVE` cells. This does not establish a fold or falsify monotonicity.
+This does not establish a fold or falsify monotonicity.
+
+### #195 second-order trajectory evidence
+
+PR #195 first validates the complete analytic fixed-Q canonical second derivative and independently cross-checks primitive, matrix, scalar and seam behavior. It then replays #193 exactly and evaluates A/B/C on one shared adaptive cover.
+
+Its exact bounded output is:
+
+```text
+PARTIAL_TRAJECTORY_ORIENTATION
+48 J_POSITIVE
+48 J_UNRESOLVED
+0 J_NEGATIVE
+0 H1_UNRESOLVED
+second_order_h1_recovery_count = 63
+representation_conflict_count = 0
+unresolved_span_count = 1
+certified_t_fraction = 63/64
+uniform_orientation = null
+global_positive_hull = false
+bounded_distinct_aperture_twin_exclusion = false
+```
+
+Interpretation law:
+
+```text
+63/64 positive parameter coverage
+  -> RIGOROUS BOUNDED PARTIAL ORIENTATION RESEARCH
+  -/-> complete signed hull
+  -/-> bounded monotonicity theorem
+```
+
+The absence of a certified negative cell is not proof that the unresolved span contains no zero or fold.
 
 ## Evidence interpretation law
 
@@ -146,6 +164,9 @@ Arb signed point certificate
 complete signed Arb interval cover
   -> RIGOROUS BOUNDED RESEARCH for the encoded domain
 
+partial signed cover with explicit unresolved spans
+  -> RIGOROUS BOUNDED PARTIAL RESEARCH only
+
 floating/numerical discovery
   -> EXPERIMENTAL SIGNAL
 
@@ -158,31 +179,34 @@ In particular:
 - ambient normalized algebra is not identical to the image of canonical arithmetic production;
 - exact selector separability is not canonical-state separability;
 - finite Arb certification is not a global theorem;
-- exact-center signs do not determine the signs of neighborhoods;
+- exact-center signs do not determine neighborhood signs;
 - `UNRESOLVED` is neither positive nor negative mathematical evidence;
-- a green falsification/nonresolution run may still be a successful validation run.
+- a green falsification/nonresolution run may still be a successful validation run;
+- `PARTIAL_TRAJECTORY_ORIENTATION` cannot be silently promoted to `GLOBAL_MONOTONE_ORIENTATION`.
 
-## Post-#193 validation rule
+## Post-#195 validation rule
 
-The next trajectory experiment must preserve the identical frozen Q14 hull, inherited centers, Q/N/K/parity and target-label firewall while changing the **representation**, not silently the research population.
+The next trajectory experiment must preserve the identical frozen Q14 hull, inherited Q/N/K/parity state and target-label firewall while changing the **mechanism/representation**, not silently the research population.
 
-Compare predeclared representations such as:
+The preferred next experiment may inspect
 
 ```text
-#193 first-order Wronskian enclosure
-direct P2 log-slope enclosure
-centered second-order/Taylor enclosure
+J' = o''e - e''o
 ```
 
-A claim of bounded `J>0` requires a complete signed finite-width cover. Point samples, overlap absence, or budget-limited unresolved cells cannot be upgraded to monotonicity.
+through the canonical pole/arch/prime source channels, but because this object is bilinear it must retain all cross-channel terms. Any source decomposition must rigorously reconstruct the independently evaluated direct canonical total.
+
+Permitted outcomes include a stable source mechanism, stable cross-channel interaction, cancellation-dominated behavior, continued unresolved dependency, or a genuine signed counterexample. A mathematically negative result can still be a green validation result if the executable conclusion matches the evidence.
+
+A claim of bounded `J>0` still requires a **complete** signed finite-width cover. `63/64`, point samples, overlap absence, or budget-limited unresolved cells cannot be upgraded to monotonicity.
 
 ## Claim firewall
 
 - theorem authority remains #184;
-- research authority advances through #193 only in the evidence classes stated above;
+- research authority advances through #195 only in the evidence classes stated above;
 - Control-v2 remains non-authoritative;
 - no research certificate may write terminal RH status;
 - canonical general reflected-twin exclusion remains OPEN;
-- `J>0` on the Q14 hull remains OPEN;
+- `J>0` on the full Q14 hull remains OPEN;
 - negative-root exclusion remains OPEN;
 - **RH remains OPEN.**

@@ -35,7 +35,7 @@ class Post195SyncTests(unittest.TestCase):
             "0 H1_UNRESOLVED",
             "63/64",
             "one unresolved span",
-            "RH remains OPEN",
+            "RH remain OPEN",
         ):
             self.assertIn(token, note)
 
@@ -43,11 +43,15 @@ class Post195SyncTests(unittest.TestCase):
         paths = (
             ROOT / "README.md",
             ROOT / "AUDIT.md",
+            ROOT / "FORK_NOTES.md",
             RHRC / "README.md",
             RHRC / "CURRENT_RESEARCH_PLAN.md",
             RHRC / "DOCUMENTATION_AUTHORITY.md",
             RHRC / "RESEARCH_LEADS.md",
+            RHRC / "VALIDATION_PROTOCOL.md",
+            RHRC / "FB05_INCOMPATIBILITY_PROGRAM.md",
             RHRC / "routes" / "R003_ccm_bridge" / "README.md",
+            RHRC / "control_v2" / "README.md",
         )
         for path in paths:
             text = path.read_text(encoding="utf-8")
@@ -76,6 +80,71 @@ class Post195SyncTests(unittest.TestCase):
         self.assertIn("global_positive_hull = false", text)
         self.assertNotIn("global_positive_hull = true", text)
         self.assertNotIn("bounded_distinct_aperture_twin_exclusion = true", text)
+
+    def test_action_registry_preserves_ids_scores_and_advances_objections(self):
+        registry = json.loads(
+            (RHRC / "control_v2" / "ACTION_REGISTRY.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            registry["current_frontier"],
+            "FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN",
+        )
+        action = registry["actions"]["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"]
+        self.assertEqual(action["concept_id"], "canonical_source_exclusion")
+        self.assertEqual(action["score_inputs"]["information_gain"], 5.0)
+        self.assertEqual([b["id"] for b in action["first_breaks"]], ["E4A4-SCHUR-FB-05"])
+        objections = "\n".join(action["surviving_objections"])
+        for token in (
+            "PR #190",
+            "PR #192",
+            "PR #193",
+            "PR #195",
+            "PARTIAL_TRAJECTORY_ORIENTATION",
+            "48 J_POSITIVE",
+            "48 J_UNRESOLVED",
+            "63/64",
+            "J'=o''e-e''o",
+            "bilinear",
+            "cross-channel",
+        ):
+            self.assertIn(token, objections)
+
+    def test_route_registry_advances_r003_without_claim_id_change_semantics(self):
+        registry = json.loads(
+            (RHRC / "routes" / "ROUTE_REGISTRY.json").read_text(encoding="utf-8")
+        )
+        route = next(r for r in registry["routes"] if r["route_id"] == "R003_ccm_bridge")
+        self.assertEqual(route["phase"], "DISCOVERY")
+        self.assertFalse(route["confirmatory_execution_authorized"])
+        note = route["note"]
+        for token in (
+            "PR #184",
+            "PR #190",
+            "PR #192",
+            "PR #193",
+            "PR #195",
+            "PARTIAL_TRAJECTORY_ORIENTATION",
+            "48 J_POSITIVE",
+            "48 J_UNRESOLVED",
+            "63/64",
+            "global_positive_hull=false",
+            "J'=o''e-e''o",
+            "No claim_ids are changed by this synchronization",
+        ):
+            self.assertIn(token, note)
+
+    def test_validation_protocol_caps_partial_cover(self):
+        text = (RHRC / "VALIDATION_PROTOCOL.md").read_text(encoding="utf-8")
+        for token in (
+            "PR #195",
+            "PARTIAL_TRAJECTORY_ORIENTATION",
+            "RIGOROUS BOUNDED PARTIAL ORIENTATION RESEARCH",
+            "63/64",
+            "global_positive_hull = false",
+            "J' = o''e - e''o",
+            "complete signed finite-width cover",
+        ):
+            self.assertIn(token, text)
 
     def test_post195_delta_has_required_post_green_sections(self):
         text = (
@@ -124,11 +193,17 @@ class Post195SyncTests(unittest.TestCase):
         ):
             self.assertIn(token, text)
 
-    def test_no_claim_promotion_surface_changed(self):
+    def test_claim_surfaces_remain_unpromoted(self):
         registry = json.loads((RHRC / "CLAIM_REGISTRY.json").read_text(encoding="utf-8"))
         bindings = json.loads((RHRC / "R003_PROMOTED_BINDINGS.json").read_text(encoding="utf-8"))
         state = json.loads((RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8"))
+        route_registry = json.loads((RHRC / "routes" / "ROUTE_REGISTRY.json").read_text(encoding="utf-8"))
+        route = next(r for r in route_registry["routes"] if r["route_id"] == "R003_ccm_bridge")
         self.assertEqual(state["terminal_claim"], "RH_OPEN")
+        self.assertEqual(route["phase"], "DISCOVERY")
+        self.assertFalse(route["confirmatory_execution_authorized"])
+        self.assertIsNone(route["route_spec_digest"])
+        self.assertIsNone(route["boundary_digest"])
         self.assertIsInstance(registry, dict)
         self.assertIsInstance(bindings, dict)
 
