@@ -173,7 +173,7 @@ class Post193SyncTests(unittest.TestCase):
             "PR #192",
             "PR #193",
             "0/15 seven-vector overlaps",
-            "6/6",
+            "all six inherited exact Q14 primary centers",
             "TRAJECTORY_RIGIDITY_UNRESOLVED",
             "63/96",
             "33/96",
