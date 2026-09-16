@@ -14,22 +14,22 @@ merge = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
 tree  = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
 
 LATEST RESEARCH EVIDENCE
-PR #195
-head  = ef8af439b4723062061553bfee0ae3eba0205684
-merge = 380b0011ffa3fac9684ec05496e241b47878be69
-tree  = cc403fc55454c0f865c17a36d971a9e7947f1a1a
-research disposition = PARTIAL_TRAJECTORY_ORIENTATION
+PR #197
+head  = 2d936f9764abdfeaa82127d5c834c6c3e429da25
+merge = 162df6ce8bc13a816937d747f2965bff6764fad0
+tree  = 97f6372a4c7c131006b4abc090c86767b9e99990
+research disposition = GLOBAL_MONOTONE_ORIENTATION
 
 CONTROL AUTHORITY
 PR #117
 selected first break = E4A4-SCHUR-FB-05
-newest post-green delta = RESEARCH_LEADS_POST_195_PARITY_TRAJECTORY_SHARP_ENCLOSURE_DELTA.md
+newest post-green delta = RESEARCH_LEADS_POST_197_Q14_RESIDUAL_CELL_REPLAY_DELTA.md
 terminal claim = RH_OPEN
 ```
 
 ## Promoted theorem inputs
 
-The theorem inventory through #184 remains unchanged. The currently decisive production-facing input is:
+The theorem inventory through #184 remains unchanged. The decisive production-facing input is still
 
 ```text
 P_t' = -E + R_t'
@@ -46,7 +46,7 @@ in the exact Hermitian/log-cover scope proved by Lean, together with the fixed-c
 
 ### #192 — canonical production realizability
 
-The Layer 0 -> Layer 5 canonical production realizability audit is completed research history. The specific negative-scalar #190 witness is excluded by the exact scalar-aperture identity, but the general reflected mechanism survives scalar positivity in an exact adversarial control and remains unresolved after bounded full-production replay. The six-primary production panel has 0/15 seven-vector overlaps; no injectivity theorem follows.
+The Layer 0 -> Layer 5 canonical production realizability audit is completed research history. The specific negative-scalar #190 witness is excluded by the exact scalar-aperture identity, but the general reflected mechanism remains unresolved after bounded full-production replay. The six-primary production panel has 0/15 seven-vector overlaps; no general injectivity theorem follows.
 
 ### #193 — parity trajectory rigidity
 
@@ -59,7 +59,7 @@ P2 = L*J/(o*e)
 
 so under `L,e,o>0`, `sign(P1') = sign(P2) = sign(J)`.
 
-All six exact inherited Q14 centers have `e>0`, `o>0`, `J>0`, `P2>0`. The first-order finite-width cover remained:
+All six exact inherited Q14 centers have `e>0`, `o>0`, `J>0`, `P2>0`. Historical first-order finite-width result:
 
 ```text
 63/96 H1_UNRESOLVED
@@ -69,13 +69,9 @@ All six exact inherited Q14 centers have `e>0`, `o>0`, `J>0`, `P2>0`. The first-
 TRAJECTORY_RIGIDITY_UNRESOLVED
 ```
 
-This is historical first-order representation/dependency evidence, not evidence for a fold.
-
 ### #195 — canonical second-order sharp enclosure
 
-PR #195 validates the complete fixed-Q canonical second-aperture jet and reruns the exact #193 baseline before comparing the shared-cell A/B/C representations.
-
-The result is:
+PR #195 validates the complete fixed-Q canonical second-aperture jet. Historical result:
 
 ```text
 PARTIAL_TRAJECTORY_ORIENTATION
@@ -91,35 +87,52 @@ global_positive_hull = false
 bounded_distinct_aperture_twin_exclusion = false
 ```
 
-The higher-order methods therefore recover every former H1 failure on the frozen run and leave one residual orientation span.
+The higher-order methods recover every former H1 failure and leave one budget-limited orientation span.
 
-## Active lead 1 — residual one-span Q14 mechanism audit
+### #197 — complete frozen Q14 orientation
+
+PR #197 replays #195 unchanged and evaluates exactly the one inherited `MAX_CELL_BUDGET` leaf of width `1/64` of the hull.
+
+```text
+A = J_UNRESOLVED
+B = J_POSITIVE
+C = J_POSITIVE
+replayed_cell_orientation = J_POSITIVE
+GLOBAL_MONOTONE_ORIENTATION
+uniform orientation = J_POSITIVE
+certified t-fraction = 1
+global_positive_hull = true
+bounded_distinct_aperture_twin_exclusion = true
+```
+
+This is `RIGOROUS BOUNDED RESEARCH` on the exact frozen Q14 encoded domain. It is not Lean theorem authority.
+
+## Active lead 1 — source mechanism behind complete Q14 orientation
 
 **Research status:** HIGHEST LEVERAGE / NEXT  
 **Formal status:** OPEN
 
-Same frozen Q14 hull. Same six exact centers. Same Q/N/K/parity. Same P1/P2/J. No target labels.
-
-Primary hypothesis to falsify remains:
+The bounded sign question is consumed. The next experiment should explain or falsify the mechanism behind the complete positive orientation.
 
 ```text
-J(L) > 0 throughout the exact frozen Q14 hull.
+J' = o''e - e''o
 ```
 
-Do not infer this from `63/64`, from zero certified negative cells, or from the six exact centers.
-
-The new second-order jet gives the exact derived identity
+Decompose the canonical pole/arch/prime source contributions, including every bilinear cross-channel term, and verify that the decomposition reconstructs the direct canonical total. The purpose is to distinguish:
 
 ```text
-J' = o''e - e''o.
+single-channel dominance
+stable cross-channel interaction
+cancellation-dominated behavior
+mechanism unresolved
 ```
 
-The next experiment should decompose the canonical pole/arch/prime contributions to this quantity, including every bilinear cross-channel term, and verify that the decomposition reconstructs the direct canonical total. The purpose is to discover whether the residual span is controlled by a stable arithmetic mechanism or by cancellation/dependency.
+A small stable source law is a theorem candidate. Cancellation-fragile behavior is evidence against generalizing #197.
 
 ## Active lead 2 — parity-ratio/log-slope formulation
 
 **Research status:** HIGH LEVERAGE STRUCTURAL REFORMULATION  
-**Formal status:** DERIVED / source-specific sign still OPEN
+**Formal status:** DERIVED / source-specific general law OPEN
 
 When `e,o>0`:
 
@@ -128,7 +141,7 @@ When `e,o>0`:
 (log(o/e))' = J/(oe).
 ```
 
-This suggests that the canonical parity ratio or logarithmic slope is the natural structural object beneath P1/P2/J. If a full-hull source-specific `J>0` result is obtained, an abstract monotonicity/injectivity theorem is a clean Lean target.
+The frozen Q14 ratio is therefore strictly increasing at bounded research level. A generic monotonicity/injectivity Lean lemma is clean, but formalization should wait until the source premise worth feeding into it is identified.
 
 ## Active lead 3 — production derivative witnesses
 
@@ -144,18 +157,18 @@ Keep this sign-neutral until a decisive canonical mechanism is isolated.
 Pair A now has the form:
 
 ```text
-canonical trajectory or production restriction on same retained/contact state
+canonical source/parity-ordering restriction on same retained/contact state
   -> excludes reflected same-observation branch or forces useful contact restriction
   -> #184 contact/log-drift calculus
   -> independent first-bad property
   -> same-state contradiction
 ```
 
-Do not replace the missing first arrow with another empirical selector over G1/P1/P2/C1-C4.
+#197 supplies bounded twin exclusion only on the frozen Q14 trajectory. The missing step is a theorem-backed mechanism that applies to the exact retained first-bad state.
 
 ## Active lead 5 — alternative incompatibility pairs
 
-If the residual span contains a genuine fold or the source mechanism is cancellation-fragile, increase priority of:
+If the source mechanism is cancellation-fragile or fails transfer tests, increase priority of:
 
 ```text
 B negative-index vs localized sampling rigidity
@@ -178,23 +191,14 @@ E off-line growth vs structured finite-energy control
 #190 joint semantic-independence audit
 #192 canonical production realizability Layer 0 -> Layer 5
 #193 first-order parity-trajectory enclosure baseline
-#195 second-order H1 recovery / partial trajectory orientation
+#195 second-order H1 recovery / PARTIAL_TRAJECTORY_ORIENTATION / 63/64
+#197 complete frozen-Q14 GLOBAL_MONOTONE_ORIENTATION
 ```
 
 Do not rerun consumed steps as if they were new mathematics.
 
 ## Same-state firewall
 
-Any RH-directed composition must refer to the same:
-
-```text
-retained state
-aperture
-parity
-normalization
-production object
-```
-
-Ambient exact-rational countermodels do not automatically satisfy canonical constraints. Rigorous point values do not automatically control finite-width neighborhoods. `PARTIAL_TRAJECTORY_ORIENTATION` is not a full-hull theorem.
+Any RH-directed composition must refer to the same retained state, aperture, parity, normalization and production object. Ambient exact-rational countermodels do not automatically satisfy canonical constraints. Rigorous bounded Q14 monotonicity does not automatically hold on arbitrary retained states.
 
 **RH remains OPEN.**

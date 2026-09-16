@@ -32,14 +32,14 @@ PR #184 remains the current compiler-validated mathematical authority.
 ### Research-evidence anchor
 
 ```text
-latest merged research PR = #195
-validated research head = ef8af439b4723062061553bfee0ae3eba0205684
-merged research commit = 380b0011ffa3fac9684ec05496e241b47878be69
-validated research tree = cc403fc55454c0f865c17a36d971a9e7947f1a1a
-research disposition = PARTIAL_TRAJECTORY_ORIENTATION
+latest merged research PR = #197
+validated research head = 2d936f9764abdfeaa82127d5c834c6c3e429da25
+merged research commit = 162df6ce8bc13a816937d747f2965bff6764fad0
+validated research tree = 97f6372a4c7c131006b4abc090c86767b9e99990
+research disposition = GLOBAL_MONOTONE_ORIENTATION
 ```
 
-PR #195 is research/falsification authority only. It does not move Lean theorem authority.
+PR #197 is research/falsification authority only. It does not move Lean theorem authority.
 
 ### Control-plane semantic anchor
 
@@ -64,7 +64,7 @@ Update these when their underlying state changes:
 - obstruction/dead-route ledgers when reusable classifications change;
 - `control_v2/CONTROL_STATE.json` when theorem/control anchors or descriptive research state change;
 - `control_v2/ACTION_REGISTRY.json` only when routing priority/first-break semantics change;
-- `routes/ROUTE_REGISTRY.json` only when route state/claim surfaces change;
+- `routes/ROUTE_REGISTRY.json` when route state/claim surfaces or its living route note changes;
 - retro aliases/regression tests when intentionally hard-coded research vocabulary changes.
 
 Historical dated deltas are not rewritten to look current. Historical regression tests are not repurposed to erase earlier consumed layers.
@@ -82,12 +82,12 @@ remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0.
 
 No later research PR promotes additional Lean theorem authority.
 
-### Completed research history through #195
+### Completed research history through #197
 
 ```text
 #186 -> broad remainder domination returns DOMINATION_SIGNAL_MIXED
 #188 -> frozen normalization-safe selector family audited
-#189 -> every individual frozen selector is ambiently separable from target sign
+#189 -> every individual frozen selector ambiently separable from target sign
 #190 -> complete seven-selector vector jointly ambiently separable from target sign
         -> all 127 nonempty subsets insufficient in ambient algebra
 #192 -> canonical production realizability Layer 0 -> Layer 5 executed
@@ -102,12 +102,18 @@ No later research PR promotes additional Lean theorem authority.
 #195 -> validated canonical M,M',M'' sharp trajectory enclosure
         -> 63 second-order H1 recoveries
         -> 48 J_POSITIVE, 48 J_UNRESOLVED
-        -> 0 J_NEGATIVE, 0 H1_UNRESOLVED
         -> one unresolved span, certified t-fraction 63/64
         -> PARTIAL_TRAJECTORY_ORIENTATION
+#197 -> unique inherited budget leaf replayed once
+        -> A J_UNRESOLVED; B/C J_POSITIVE
+        -> GLOBAL_MONOTONE_ORIENTATION
+        -> uniform J_POSITIVE
+        -> certified t-fraction 1
+        -> global_positive_hull = true
+        -> bounded_distinct_aperture_twin_exclusion = true
 ```
 
-The #190 code explicitly keeps canonical realizability, FB-05 closure, negative-root exclusion and RH false/unclaimed. #192, #193 and #195 do not change that theorem firewall.
+Historical #195 `PARTIAL_TRAJECTORY_ORIENTATION` / `63/64` remains preserved. PR #197 advances only the latest research-evidence anchor.
 
 ### Current route
 
@@ -115,26 +121,30 @@ The #190 code explicitly keeps canonical realizability, FB-05 closure, negative-
 PROVED THROUGH #184
   exact Hermitian/log-cover/contact algebra
 
-RESEARCHED THROUGH #195
+RESEARCHED THROUGH #197
   #190 ambient selector surface insufficient
   #192 specific reflected witness noncanonical; general reflection unresolved
-  #193 positive exact centers; first-order finite-width propagation unresolved
-  #195 H1 obstruction removed; 63/64 parameter coverage positive; one J span unresolved
+  #193 positive exact centers; first-order propagation unresolved
+  #195 H1 obstruction removed; 63/64 bounded partial orientation
+  #197 complete frozen-Q14 positive orientation and bounded twin exclusion
 
 NOW
-  same frozen Q14 hull
-  -> do not enlarge search or fit a selector
-  -> audit the residual span and source mechanism
+  same canonical source lineage
+  -> do not refine an already complete frozen cover
+  -> audit the mechanism behind J>0
   -> use J' = o''e - e''o
   -> decompose pole/arch/prime contributions with all bilinear cross terms
   -> require rigorous reconstruction of the direct canonical total
+  -> falsify any apparent source law before theoremization
 ```
 
-A complete signed finite-width cover may support bounded monotonicity research. `PARTIAL_TRAJECTORY_ORIENTATION` does not.
+A complete signed finite-width cover supports **rigorous bounded research**, not arbitrary-Q theorem authority.
 
 ## Historical-state rule
 
-The post-#190 and post-#193 deltas remain historical evidence and must not be edited to pretend they were written after #195. The current living docs point to the post-#195 delta while preserving the #190/#192/#193 ancestry needed for regression and provenance.
+The post-#190, post-#193 and post-#195 deltas remain historical evidence and must not be edited to pretend they were written after #197. `RESEARCH_LEADS_POST_197_Q14_RESIDUAL_CELL_REPLAY_DELTA.md` is the newest current delta.
+
+Historical `test_post195_sync.py` continues to verify that #195 evidence remains represented, while `test_post197_sync.py` verifies that the living current state advances to #197.
 
 ## Claim firewall
 
@@ -142,11 +152,11 @@ The post-#190 and post-#193 deltas remain historical evidence and must not be ed
 - exact executable algebra is not automatically a Lean theorem;
 - ambient algebra countermodels are not automatically canonical arithmetic states;
 - #192 excludes a declared specific witness, not the general reflected class;
-- six positive #193 centers are not a complete hull proof;
-- first-order #193 nonresolution is not monotonicity falsification;
-- #195 recovers H1 on the frozen run but does not sign the final span;
-- `63/64` positive coverage does not imply full-hull positivity;
-- `global_positive_hull = false` remains binding;
+- #193 exact-center signs are not finite-width monotonicity;
+- #195 `PARTIAL_TRAJECTORY_ORIENTATION` / `63/64` is historical bounded-partial evidence;
+- #197 `GLOBAL_MONOTONE_ORIENTATION` is complete bounded research on one frozen Q14 domain;
+- `global_positive_hull = true` is not an FB-05 theorem;
+- bounded distinct-aperture twin exclusion is not global canonical injectivity;
 - theorem authority remains #184;
 - control semantic authority remains #117;
 - negative-root exclusion remains OPEN;
