@@ -85,7 +85,7 @@ NOW — FB-05 / cancellation-preserving parity mechanism
 
 PR #184 proves the exact algebraic contact/log-drift interface. It does not prove the actual arithmetic remainder satisfies a useful sign/magnitude law. Its conditional sign theorem remains fully valid after #186-#199.
 
-## Completed research history — preserve consumed layers
+## Historical contracts that remain binding
 
 ### #190 ambient selector composition
 
@@ -94,13 +94,15 @@ The project must continue to preserve:
 ```text
 STOP searching combinations/refits of G1/P1/P2/C1-C4
 all 127 nonempty subsets are closed by the full-vector witness
+EXACT_TWIN_SURVIVES
+EXACT_TWIN_EXCLUDED_BY_IDENTITY
 ```
 
-The #190 reflected pair is ambient algebra and does not claim canonical production realizability.
+The first label records the ambient reflected construction that survives the selector surface; the second records exclusion of the specific negative-scalar witness once the exact scalar-aperture identity is imposed. These are historical research classifications, not current theorem claims.
 
 ### #192 canonical production realizability
 
-The canonical production realizability ladder is completed research history:
+The canonical production realizability ladder remains consumed research history:
 
 ```text
 Layer 0  AMBIENT_NORMALIZED
@@ -111,7 +113,7 @@ Layer 4  COMMON_SCHUR_GEOMETRY
 Layer 5  CANONICAL_PRODUCTION
 ```
 
-The specific #190 witness is excluded under the exact positive scalar-aperture law. Bounded later layers remain unresolved for general twin existence; 0/15 overlaps on six primary states are not an injectivity theorem.
+The specific #190 witness is excluded under the exact positive scalar-aperture law. Bounded later layers remain UNRESOLVED for general twin existence; 0/15 overlaps on six primary states are not an injectivity theorem.
 
 ### #193 parity trajectory rigidity
 
@@ -130,7 +132,7 @@ sign(P1') = sign(P2) = sign(J).
 
 All 6/6 inherited exact Q14 primary centers certify `e>0`, `o>0`, `J>0`, `P2>0`.
 
-The first-order finite-width cover nevertheless returned:
+The first-order finite-width cover on the same frozen Q14 hull returned:
 
 ```text
 96 evaluated cells
@@ -141,11 +143,17 @@ The first-order finite-width cover nevertheless returned:
 TRAJECTORY_RIGIDITY_UNRESOLVED
 ```
 
-This did not locate a fold. It isolated a representation/dependency bottleneck.
+Do **not** infer this from points: exact-center positivity does not determine finite-width orientation. #193 isolated a representation/dependency bottleneck; it did not locate a fold.
 
-### #195 higher-order sharp enclosure — historical partial state
+### #195 higher-order canonical trajectory enclosure — historical partial state
 
-PR #195 validates
+The exact differential identity used by the mechanism programme is
+
+```text
+J' = o''e - e''o
+```
+
+and PR #195 validates
 
 ```text
 M''(L) = pole''(L) - arch''(L) - prime''(L).
@@ -179,26 +187,18 @@ A = J_UNRESOLVED
 B = J_POSITIVE
 C = J_POSITIVE
 replayed_cell_orientation = J_POSITIVE
-```
-
-The inherited 49-leaf partition gives:
-
-```text
 GLOBAL_MONOTONE_ORIENTATION
 uniform orientation = J_POSITIVE
-unresolved span count = 0
 certified t-fraction = 1
 global_positive_hull = true
 bounded_distinct_aperture_twin_exclusion = true
 ```
 
-This is rigorous bounded research for the exact frozen Q14 encoded domain. No Lean theorem was promoted.
+This is rigorous bounded research for the exact frozen Q14 encoded domain. No Lean theorem was promoted. The post-#197 next step was the source-mechanism audit of `J' = o''e - e''o`; #199 has now executed and consumed that audit.
 
 ### #199 source-mechanism audit — completed and dependency-unresolved
 
-The post-#197 source-mechanism audit is now consumed research history. It keeps the same frozen Q14 hull and first replays the complete #197 cover. It validates four-way canonical source jets through second aperture order and both four-way and collapsed source-interaction reconstructions against independent direct Method C.
-
-Exact output:
+The source-mechanism audit keeps the same frozen Q14 hull and first replays the complete #197 cover. It validates four-way canonical source jets through second aperture order and both four-way and collapsed source-interaction reconstructions against independent direct Method C.
 
 ```text
 post197_classification = GLOBAL_MONOTONE_ORIENTATION
@@ -226,8 +226,6 @@ Therefore #199 does not falsify the Q14 ordering and does not prove that no sour
 
 Existing theorem history already treats the pole-prime discrepancy as a cancellation-preserving canonical object. DR-020 warns that splitting pole and prime into loose independent envelopes can destroy the relevant residue.
 
-The next research representation is therefore
-
 ```text
 D = pole + prime_signed
 A = direct_arch_signed
@@ -236,7 +234,7 @@ M = D + A
 
 where `prime_signed` already carries the production minus sign.
 
-Crucially, do **not** obtain `D` by adding already-enclosed pole and prime Wronskian intervals. Construct
+Do not obtain `D` by adding already-enclosed pole and prime Wronskian intervals. Construct
 
 ```text
 D, D', D''
@@ -253,9 +251,7 @@ J_DA
 J_AA
 ```
 
-Their sum must rigorously reconstruct the same independent direct Method-C `J` on every inherited #197 leaf.
-
-Permitted outcomes include a uniform lock, cooperative nonnegative structure, mixed-sign but reconstructable structure, or continued dependency-unresolved classification. If it remains dependency-unresolved, stop source chopping and search for a higher-level exact composite parity identity.
+Their sum must rigorously reconstruct the same independent direct Method-C `J` on every inherited #197 leaf. If this remains dependency-unresolved, stop source chopping and search for a higher-level exact composite parity identity rather than increasing precision, depth or population.
 
 This is a LEAD / HYPOTHESIS, not a theorem-backed sign law.
 
@@ -268,13 +264,7 @@ When `e,o>0`,
 (log(o/e))' = J/(oe).
 ```
 
-The frozen Q14 ratio is therefore strictly increasing at research-certification level. A generic monotonicity/injectivity lemma is a clean Lean target only after a source premise worth theoremizing has been identified.
-
-## Active lead C — production derivative witnesses
-
-Existing frozen-source complex holomorphy can still be transported through parity projection and canonical N2 predecessor/shell pairings to actual real derivative witnesses and a fully instantiated production `HasDerivAt` Schur identity.
-
-Keep this sign-neutral until the source mechanism audit lineage isolates a theorem-sized relation.
+The frozen Q14 ratio is strictly increasing at research-certification level. A generic monotonicity/injectivity lemma is a clean Lean target only after a source premise worth theoremizing has been identified.
 
 ## Pair-A decision rule
 
@@ -282,24 +272,11 @@ Pair A remains live only if a same-state canonical arithmetic restriction compos
 
 ```text
 canonical source/parity-ordering restriction
-  -> excludes reflected same-observation branch or forces useful contact property
+  -> useful contact restriction
   -> #184 contact calculus
   -> independently theorem-backed first-bad property
   -> same-state contradiction
 ```
-
-The #197 bounded twin exclusion narrows the reflected space on the frozen branch; #199 says the current source attribution graph is not yet a structural explanation.
-
-## Alternative incompatibility pairs
-
-```text
-B  negative-index separation vs localized sampling rigidity
-C  local first-bad event vs short-window zero rigidity
-D  two-parity squeeze
-E  off-line growth vs structured finite-energy control
-```
-
-These remain leads, not results.
 
 ## Formal open obligations
 
@@ -330,17 +307,3 @@ RiemannHypothesis                                                  OPEN
 - theorem authority remains #184;
 - negative-root exclusion remains OPEN;
 - **RH remains OPEN.**
-
-## Standing questions
-
-> Given everything now formally true, what becomes possible that was not possible before?
-
-At research level, we can now distinguish a robust direct parity-ordering signal from the failure of one particular source-attribution graph to preserve that signal.
-
-> If this contains a clue toward RH, where does that clue propagate?
-
-A cancellation-preserving source law would propagate to parity-ratio monotonicity, broader canonical reflected-twin exclusion, and a smaller FB-05 counterexample space.
-
-> What experiment or lemma most efficiently tells us whether that clue is real?
-
-Run the discrepancy-first two-channel audit on the exact inherited #197 cover, preserving pole-prime cancellation before enclosure and demanding independent direct reconstruction before theoremizing anything.
