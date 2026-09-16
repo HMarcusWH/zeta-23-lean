@@ -189,3 +189,44 @@ The theorem anchor remains PR #184. The control-plane semantic anchor remains PR
 `RESEARCH_LEADS_POST_203_Q14_COMPOSITE_PARITY_GAP_DELTA.md` is the newest current research delta. `OBSTRUCTION_LEDGER_POST_203_DELTA.md` and `DEAD_ROUTES_POST_203_DELTA.md` carry the corresponding obstruction/dead-route updates. Historical post-#201 files and tests remain historical and are not rewritten.
 
 R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+## Post-#205 authority override
+
+This section supersedes the post-#203 authority pointer while preserving all earlier state as history.
+
+### Current research-evidence anchor
+
+```text
+latest merged research PR = #205
+validated research head = 73b78297da54b9f5b2d47584a8033356a6b2e2a8
+merged research commit = deaa69ae190ada511cf8228f174846184673ff3a
+validated research tree = 3d715612eabf25a9056ab84b0c5e968f71354666
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+PR #205 is exact executable research only. It reconstructs historical fixture C1 on the repository's actual radius-3 centered parity geometry and certifies both predecessor sectors positive (`70`, `10`) while both successor sectors admit exact negative witnesses (`-130`, `-410`), with selected even compressed root `-13/42`, reversal symmetry, and exact centered-index commutation. `canonical_realizability=false`.
+
+Evidence class:
+
+```text
+EXACT EXECUTABLE RESEARCH
+RIGOROUS FINITE SYNTHETIC COUNTERMODEL
+```
+
+This strengthens the old DR-012/DR-013 structural countermodel conclusion: generic first-bad/parity/shell/displacement structure is insufficient for simultaneous-badness exclusion. It does not show a canonical retained state has both parities bad.
+
+### Current route after #205
+
+```text
+Pair-A representation engineering = CONSUMED / DOWNGRADED
+generic structural Pair-D simultaneous-bad exclusion = CONSUMED / FALSIFIED BY C1
+Pair D canonical-arithmetic same-state squeeze = HIGHEST INFORMATION / ACTIVE
+Pair B negative-index separation vs localized critical-line sampling rigidity = SECONDARY
+OBS-059 = OPEN / ACTIVE / CANONICAL-ARITHMETIC ONLY
+```
+
+The next research falsifier is the generic quadratic-normal-defect-versus-`M4` implication. A synthetic pairing must not be named `explicitCanonicalSourceMoment`. If the generic bridge fails, only the generic bridge is consumed; the canonical arithmetic relation remains open.
+
+`RESEARCH_LEADS_POST_205_PAIR_D_STRUCTURAL_COUNTERMODEL_DELTA.md` is the newest current research delta. `OBSTRUCTION_LEDGER_POST_205_DELTA.md` and `DEAD_ROUTES_POST_205_DELTA.md` carry the new obstruction/dead-route refinements. Historical deltas and their evidence classes remain unchanged.
+
+The theorem anchor remains PR #184. The control-plane semantic anchor remains PR #117. `ACTION_REGISTRY.json` remains unchanged because the formal first break and action semantics do not move. R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
