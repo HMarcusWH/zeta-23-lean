@@ -1,0 +1,95 @@
+{
+  "schema_version": "POST194_FB05_Q14_PARITY_TRAJECTORY_SHARP_ENCLOSURE_FIXTURE_v1",
+  "claim_cap": "POST194_Q14_PARITY_TRAJECTORY_SHARP_RESEARCH_ONLY",
+  "base_main_sha": "05dedbec3c65cba08057058616737a707215a00a",
+  "base_main_tree": "48bcbb38953fc13883773a1eea5dc2aeb2c26985",
+  "theorem_authority_pr": 184,
+  "research_authority_pr": 193,
+  "routing_sync_pr": 194,
+  "post193_module": "post192_fb05_q14_parity_trajectory_rigidity.py",
+  "post193_module_blob_sha": "189579fa44824cd8ddca29d3d9fb48cf933b6617",
+  "post193_fixture": "post192_fb05_q14_parity_trajectory_rigidity_v1.json",
+  "post193_fixture_blob_sha": "8c59b133b759aa7324992e929c0abaac5db3bf44",
+  "post193_probe": "probe_post192_fb05_q14_parity_trajectory_rigidity_scope.py",
+  "post193_probe_blob_sha": "134a42b8fb1a4c2f42fd0414072e72a69b238c13",
+  "fixed_unit_derivative_module": "post177_fb05_q13_fixed_unit_derivative.py",
+  "fixed_unit_derivative_module_blob_sha": "ef45b8fdfbb5aa9088e6f9f23f0d61161f2fb252",
+  "inherited_schedule_fixture": "post177_fb05_q13_fixed_unit_derivative_v1.json",
+  "inherited_schedule_fixture_blob_sha": "ffc84a2aca9dee66fdfac76ab5ff881c816090ce",
+  "inherited_schedule_probe": "probe_post177_fb05_q13_fixed_unit_derivative_scope.py",
+  "inherited_schedule_probe_blob_sha": "257dc4c7c91d2add5be81d711073f7c1bbdc2750",
+  "second_derivative_backend": "post194_fb05_q14_fixed_unit_second_derivative.py",
+  "second_derivative_backend_blob_sha": "12b7b4f1f997c58ef05b007e7c5da69800b9ae8d",
+  "sharp_trajectory_module": "post194_fb05_q14_parity_trajectory_sharp_enclosure.py",
+  "sharp_trajectory_module_blob_sha": "9b655e012815d12a8d774e589bad1f21b3a7abf2",
+  "selected_target": {
+    "q_start": 13,
+    "q_end": 16,
+    "predecessor_N": 2,
+    "successor_K": 3,
+    "selected_parity": "even",
+    "primary_Q": 14
+  },
+  "required_ancestry_control": {
+    "predecessor_N": 2,
+    "parity": "odd"
+  },
+  "arb_precision_bits": 384,
+  "implementation_check_precision_bits": 192,
+  "expected_primary_box_count": 6,
+  "expected_control_box_count": 5,
+  "max_refinement_depth": 12,
+  "max_evaluated_cells": 96,
+  "second_derivative_check_labels": [
+    "Q13_midpoint",
+    "Q14_determinant_basin",
+    "Q15_midpoint"
+  ],
+  "second_derivative_h_bits": [
+    14,
+    18,
+    22
+  ],
+  "second_derivative_relative_tolerance": 0.002,
+  "second_derivative_absolute_tolerance": 1e-08,
+  "expected_post193_baseline": {
+    "classification": "TRAJECTORY_RIGIDITY_UNRESOLVED",
+    "evaluated_cell_count": 96,
+    "evaluated_orientation_counts": {
+      "J_NEGATIVE": 0,
+      "J_POSITIVE": 0,
+      "J_UNRESOLVED": 33,
+      "H1_UNRESOLVED": 63
+    }
+  },
+  "permitted_classifications": [
+    "GLOBAL_MONOTONE_ORIENTATION",
+    "SINGLE_FOLD_REGION_LOCALIZED",
+    "MULTIPLE_FOLD_REGIONS",
+    "PARTIAL_TRAJECTORY_ORIENTATION",
+    "TRAJECTORY_RIGIDITY_UNRESOLVED"
+  ],
+  "policy": {
+    "new_q_n_parity_search_permitted": false,
+    "selector_refit_permitted": false,
+    "threshold_refit_permitted": false,
+    "new_selector_features_permitted": false,
+    "target_sign_import_permitted": false,
+    "larger_precision_permitted": false,
+    "larger_refinement_budget_permitted": false,
+    "shared_cell_abc_comparison_required": true,
+    "post193_baseline_replay_required": true,
+    "second_derivative_independent_check_required": true,
+    "bounded_nonresolution_counts_as_exclusion": false
+  },
+  "nonclaims": [
+    "This PR is Arb research/falsification tooling, not Lean theorem authority.",
+    "Method A is the frozen post-#193 first-order Wronskian evaluator; Methods B/C are alternative enclosure graphs for the same inherited P1/P2/J trajectory information.",
+    "The complete canonical second derivative includes pole, archimedean and fixed-Q prime channels before the same state is restricted to even and odd parity.",
+    "Finite-difference agreement validates implementation only and is not a second-derivative theorem.",
+    "The inherited Q14 hull, six primary boxes, five controls, precision, depth and cell budget are unchanged.",
+    "A complete signed cover is required before any bounded monotonicity or distinct-aperture exclusion is derived.",
+    "No arbitrary-Q transport, FB-05 closure, negative-root exclusion, or RH claim is established.",
+    "RH remains OPEN."
+  ]
+}
