@@ -242,4 +242,54 @@ Do not rerun consumed steps as if they were new mathematics.
 
 Any RH-directed composition must refer to the same retained state, aperture, parity, normalization and production object. Ambient exact-rational countermodels do not automatically satisfy canonical constraints. Rigorous bounded Q14 monotonicity does not automatically hold on arbitrary retained states. Source groups must not be declared independent when known cancellation identities couple them. Equivalent reformulations of `J` must not be counted as independent constraints.
 
-**RH remains OPEN.**
+## Post-#203 current leads
+
+### Research authority
+
+```text
+PR #203
+head  = c8196830a8b49e657b28d36b364e1cff68c568d6
+merge = ab660e812a78d482145eadc3e42d186a63fa812b
+tree  = 7360e366fe8d623ef63ca902c23522bb72935848
+research disposition = COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
+newest post-green delta = RESEARCH_LEADS_POST_203_Q14_COMPOSITE_PARITY_GAP_DELTA.md
+```
+
+The repaired parity-contrast backend validates exact rational conversion and independent `G=O-E`, `G'=O'-E'`, `G''=O''-E''` reconstruction. The preregistered sign conjunction `E > 0`, `G > 0`, `G' >= 0`, `E' <= 0` fails its six-center gate. The result is `center_kill_switch_survives = false`, `full_cover_executed = false`, `completed_leaf_count = 0`, and `PATTERN_FALSIFIED_BEFORE_FULL_COVER`.
+
+### Active lead 1 — Pair D same-state two-parity squeeze
+
+**Research status:** HIGHEST LEVERAGE / NEXT  
+**Formal status:** OPEN
+
+Use the same retained canonical first-bad state and compose the existing parity/Riesz/source theorem inventory rather than another representation of `J`:
+
+```text
+selected parity bad
+  + #161 same-state odd-bad OR explicit-source-moment-nonzero fork
+  + #159/#163 Riesz, M3/M4 and mixed-source jet structure
+  -> test simultaneous even/odd badness
+  -> test whether the source-moment alternative can be forced into contradiction
+```
+
+The first Pair-D PR should be a preregistered **cheap falsifier/countermodel audit**, not a theorem claim. It must keep same state, same aperture, same normalization and actual canonical production. It should ask whether simultaneous badness survives the currently proved constraints before investing in a large formal bridge.
+
+### Active lead 2 — Pair B negative-index versus localized sampling rigidity
+
+**Research status:** SECONDARY / INDEPENDENT FAMILY  
+**Formal status:** OPEN
+
+Seek a same-window lower sampling/frame bound strong enough to defeat a sparse exceptional off-line quartet. Percentage/density results alone are insufficient because one exceptional quartet may survive.
+
+### Pair A after #203
+
+**Research status:** CONSUMED / DOWNGRADED AS REPRESENTATION ENGINEERING  
+**Formal status:** not mathematically dead
+
+Do not rescue #203 with another post-hoc component sign pattern, source regrouping, or equivalent ratio rewrite. A Pair-A revival requires a genuinely new theorem-level invariant derived independently of the failed target data.
+
+### New active obstruction
+
+`OBS-059` is the same-state two-parity squeeze / simultaneous-badness exclusion gap. The existing open pieces are `sourceMoment <-> M4 rigidity`, `simultaneous even/odd bad exclusion`, and `odd-selected first-bad closure`.
+
+Theorem authority remains #184, the selected first break remains `E4A4-SCHUR-FB-05`, R003 remains `DISCOVERY`, and **RH remains OPEN.**
