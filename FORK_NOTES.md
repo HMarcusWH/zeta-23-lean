@@ -1,8 +1,8 @@
-# Fork notes — RHRC state through PR #197
+# Fork notes — RHRC state through PR #199
 
 > **RH remains OPEN.**
 
-Theorem authority remains PR #184. Latest research evidence is PR #197. Control semantic authority remains PR #117.
+Theorem authority remains PR #184. Latest research evidence is PR #199. Control semantic authority remains PR #117.
 
 ## Preserved history
 
@@ -12,24 +12,26 @@ Theorem authority remains PR #184. Latest research evidence is PR #197. Control 
 - PR #193: `TRAJECTORY_RIGIDITY_UNRESOLVED`; 63/96 H1 unresolved and 33/96 J unresolved despite six positive exact centers.
 - PR #195: `PARTIAL_TRAJECTORY_ORIENTATION`; 48 `J_POSITIVE`, 48 `J_UNRESOLVED`, 0 H1 unresolved, `63/64` certified, historical `global_positive_hull = false`.
 - PR #197: the unique `MAX_CELL_BUDGET` leaf is evaluated once with unchanged A/B/C; A unresolved, B/C positive; completed cover becomes `GLOBAL_MONOTONE_ORIENTATION`, uniform `J_POSITIVE`, certified fraction `1`, `global_positive_hull = true`, `bounded_distinct_aperture_twin_exclusion = true`.
+- PR #199: the exact #197 cover replays first, but both the four-way source split and the collapsed pole/direct-arch/prime split classify `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED`; `selected_collapsed_uniform_lock_group = null` and `control_transfer_status = NO_UNIQUE_COLLAPSED_UNIFORM_LOCK`. The direct bounded `J_POSITIVE` result is unchanged.
 
 ## Current route
 
-The canonical Q14 bounded sign-recovery problem is complete at research-certification level. The live R003 task is now mechanism extraction/generalization, not another selector or larger search budget.
+The canonical Q14 bounded sign-recovery problem is complete at research-certification level. The first explicit source-attribution audit is also consumed: it did not find a rigorous source lock because the split interval graph lost enough dependency information to lose the already-certified direct sign.
 
-Use the validated second-order canonical source jet and
+The next research action is therefore a representation change, not more precision or a wider search. Preserve the theorem-motivated pole-prime cancellation **before** interval transport:
 
 ```text
-J = o'e - e'o
-J' = o''e - e''o
+D = pole + prime_signed          # pole - prime in unsigned language
+A = direct_arch_signed
+M = D + A
 ```
 
-to decompose pole/arch/prime contributions with all bilinear cross-channel terms and rigorously reconstruct the direct total. The purpose is to determine whether the complete orientation comes from a stable canonical arithmetic law or fragile cancellation.
+Construct `D,D',D''` and `A,A',A''` upstream, then parity-restrict and form only the discrepancy/arch Wronskian interaction groups. Their sum must rigorously reconstruct the same independent direct Method-C `J` on every inherited #197 leaf.
 
-`(o/e)' = J/e^2` and `(log(o/e))' = J/(oe)` are DERIVED reformulations under `e,o>0`, not source-specific theorems.
+`(o/e)' = J/e^2` and `(log(o/e))' = J/(oe)` remain DERIVED reformulations under `e,o>0`, not source-specific theorems.
 
 ## Claim firewall
 
-The #197 result is rigorous bounded research on the exact frozen Q14 domain. It is not arbitrary-Q canonical injectivity, FB-05 closure, negative-root exclusion, or RH. Theorem authority stays #184; the canonical production realizability problem from #192 is only narrowed on this one trajectory.
+The #197 result remains rigorous bounded research on the exact frozen Q14 domain. PR #199 does not downgrade it; it classifies the present source decomposition as dependency-unresolved. Neither result is arbitrary-Q canonical injectivity, FB-05 closure, negative-root exclusion, or RH. Theorem authority stays #184.
 
 **RH remains OPEN.**
