@@ -14,19 +14,16 @@ merge = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
 tree  = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
 
 LATEST RESEARCH EVIDENCE
-PR #193
-head  = 085634ca7dafe4d9f598b2b5e081be80e050ba8c
-merge = fdd6606f85e92bf632b4cdaf1d4af85f6fa5b195
-tree  = db569150046459f4b87a931d3e8d01054bbbedff
-RHRC #1109 = SUCCESS
-Permansson #882 = SUCCESS
-post-190 canonical realizability audit #5 = SUCCESS
-post-192 parity trajectory rigidity #3 = SUCCESS
+PR #195
+head  = ef8af439b4723062061553bfee0ae3eba0205684
+merge = 380b0011ffa3fac9684ec05496e241b47878be69
+tree  = cc403fc55454c0f865c17a36d971a9e7947f1a1a
+research disposition = PARTIAL_TRAJECTORY_ORIENTATION
 
 CONTROL AUTHORITY
 PR #117
 selected first break = E4A4-SCHUR-FB-05
-newest post-green delta = RESEARCH_LEADS_POST_193_PARITY_TRAJECTORY_DELTA.md
+newest post-green delta = RESEARCH_LEADS_POST_195_PARITY_TRAJECTORY_SHARP_ENCLOSURE_DELTA.md
 terminal claim = RH_OPEN
 ```
 
@@ -62,51 +59,87 @@ P2 = L*J/(o*e)
 
 so under `L,e,o>0`, `sign(P1') = sign(P2) = sign(J)`.
 
-All six exact inherited Q14 centers have `e>0`, `o>0`, `J>0`, `P2>0`. The first-order finite-width cover remains:
+All six exact inherited Q14 centers have `e>0`, `o>0`, `J>0`, `P2>0`. The first-order finite-width cover remained:
 
 ```text
 63/96 H1_UNRESOLVED
-33/96 J_UNRESOLVED after H1 recovery
+33/96 J_UNRESOLVED
 0 J_NEGATIVE
 0 J_POSITIVE
 TRAJECTORY_RIGIDITY_UNRESOLVED
 ```
 
-This is a finite-width dependency/representation bottleneck, not evidence for a fold.
+This is historical first-order representation/dependency evidence, not evidence for a fold.
 
-## Active lead 1 — higher-order Q14 parity-trajectory enclosure
+### #195 — canonical second-order sharp enclosure
+
+PR #195 validates the complete fixed-Q canonical second-aperture jet and reruns the exact #193 baseline before comparing the shared-cell A/B/C representations.
+
+The result is:
+
+```text
+PARTIAL_TRAJECTORY_ORIENTATION
+48 J_POSITIVE
+48 J_UNRESOLVED
+0 J_NEGATIVE
+0 H1_UNRESOLVED
+second_order_h1_recovery_count = 63
+representation_conflict_count = 0
+unresolved_span_count = 1
+certified_t_fraction = 63/64
+global_positive_hull = false
+bounded_distinct_aperture_twin_exclusion = false
+```
+
+The higher-order methods therefore recover every former H1 failure on the frozen run and leave one residual orientation span.
+
+## Active lead 1 — residual one-span Q14 mechanism audit
 
 **Research status:** HIGHEST LEVERAGE / NEXT  
 **Formal status:** OPEN
 
 Same frozen Q14 hull. Same six exact centers. Same Q/N/K/parity. Same P1/P2/J. No target labels.
 
-Compare:
-
-```text
-A. #193 first-order Wronskian enclosure
-B. direct P2 log-slope enclosure
-C. centered second-order/Taylor enclosure
-```
-
-Primary hypothesis to falsify:
+Primary hypothesis to falsify remains:
 
 ```text
 J(L) > 0 throughout the exact frozen Q14 hull.
 ```
 
-A complete signed cover would make P1 strictly monotone on that bounded branch and exclude distinct apertures with the same complete seven-vector there. Six signed centers do not establish that result.
+Do not infer this from `63/64`, from zero certified negative cells, or from the six exact centers.
 
-## Active lead 2 — production derivative witnesses
+The new second-order jet gives the exact derived identity
+
+```text
+J' = o''e - e''o.
+```
+
+The next experiment should decompose the canonical pole/arch/prime contributions to this quantity, including every bilinear cross-channel term, and verify that the decomposition reconstructs the direct canonical total. The purpose is to discover whether the residual span is controlled by a stable arithmetic mechanism or by cancellation/dependency.
+
+## Active lead 2 — parity-ratio/log-slope formulation
+
+**Research status:** HIGH LEVERAGE STRUCTURAL REFORMULATION  
+**Formal status:** DERIVED / source-specific sign still OPEN
+
+When `e,o>0`:
+
+```text
+(o/e)' = J/e^2
+(log(o/e))' = J/(oe).
+```
+
+This suggests that the canonical parity ratio or logarithmic slope is the natural structural object beneath P1/P2/J. If a full-hull source-specific `J>0` result is obtained, an abstract monotonicity/injectivity theorem is a clean Lean target.
+
+## Active lead 3 — production derivative witnesses
 
 **Research status:** HIGH LEVERAGE INFRASTRUCTURE  
 **Formal status:** OPEN, analytic prerequisites already PROVED
 
 Transport existing frozen-source complex holomorphy through exact parity projection and canonical predecessor/shell pairings to real derivatives of production scalar coordinates, then instantiate #184 as an actual production `HasDerivAt` Schur theorem.
 
-Keep this sign-neutral until a decisive canonical trajectory/production relation is isolated.
+Keep this sign-neutral until a decisive canonical mechanism is isolated.
 
-## Active lead 3 — narrowed Pair-A same-state clash
+## Active lead 4 — narrowed Pair-A same-state clash
 
 Pair A now has the form:
 
@@ -120,9 +153,9 @@ canonical trajectory or production restriction on same retained/contact state
 
 Do not replace the missing first arrow with another empirical selector over G1/P1/P2/C1-C4.
 
-## Active lead 4 — alternative incompatibility pairs
+## Active lead 5 — alternative incompatibility pairs
 
-If sharper trajectory enclosures fail for structural rather than representational reasons, increase priority of:
+If the residual span contains a genuine fold or the source mechanism is cancellation-fragile, increase priority of:
 
 ```text
 B negative-index vs localized sampling rigidity
@@ -130,10 +163,6 @@ C local first-bad vs short-window zero rigidity
 D two-parity squeeze
 E off-line growth vs structured finite-energy control
 ```
-
-## Active lead 5 — centered H1 / local propagation
-
-The #193 run shows H1 recovery itself is a major finite-width gate: 63/96 evaluated cells fail there. Reuse and strengthen centered H1/Taylor/interval-Newton machinery rather than returning to brute raw subdivision.
 
 ## Consumed mechanisms
 
@@ -149,6 +178,7 @@ The #193 run shows H1 recovery itself is a major finite-width gate: 63/96 evalua
 #190 joint semantic-independence audit
 #192 canonical production realizability Layer 0 -> Layer 5
 #193 first-order parity-trajectory enclosure baseline
+#195 second-order H1 recovery / partial trajectory orientation
 ```
 
 Do not rerun consumed steps as if they were new mathematics.
@@ -165,6 +195,6 @@ normalization
 production object
 ```
 
-Ambient exact-rational countermodels do not automatically satisfy these canonical constraints. Rigorous point values do not automatically control finite-width neighborhoods.
+Ambient exact-rational countermodels do not automatically satisfy canonical constraints. Rigorous point values do not automatically control finite-width neighborhoods. `PARTIAL_TRAJECTORY_ORIENTATION` is not a full-hull theorem.
 
 **RH remains OPEN.**
