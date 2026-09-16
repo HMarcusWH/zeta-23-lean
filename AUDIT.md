@@ -1,4 +1,4 @@
-# RHRC formal audit — theorem authority through PR #184; research evidence through PR #199
+# RHRC formal audit — theorem authority through PR #184; research evidence through PR #201
 
 > **RH remains OPEN.**
 
@@ -14,11 +14,11 @@ merge = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
 tree  = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
 
 LATEST RESEARCH EVIDENCE
-PR #199
-head  = fabe301c95277345f0efe764252ce1c1213a4112
-merge = 27dda545b7ccdb2870088ebaf317d85e3d999555
-tree  = 85eb8ea25d240c4a9c339262bdc611fae881f7f0
-research disposition = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
+PR #201
+head  = be5b98dfce12777436bc40b39a37b04669ae4311
+merge = 319db6f68f65bdcffc0657c03bea76502da59a57
+tree  = 840a2e8b0bf690507bc3385fbe122210e6d32c7a
+research disposition = DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED
 
 CONTROL SEMANTIC AUTHORITY
 PR #117
@@ -31,13 +31,14 @@ terminal claim = RH_OPEN
 No Lean theorem has been added after PR #184. The formal package still proves the Hermitian Schur/contact algebra, frozen parity production/log-cover family, exact fixed-cell production bridge, N2 predecessor/canonical-shell geometry, and the conditional decomposition
 
 ```text
+M~(t)=-tI+R~(t)
 P_t' = -envelopeNormSq + remainderEnvelopeDerivative
 remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0.
 ```
 
 Still not proved: source-specific domination, contact existence/uniqueness, same-state opposing first-bad orientation, first-bad exclusion, negative-root exclusion or RH.
 
-## Research audit: #186 -> #199
+## Research audit: #186 -> #201
 
 ### #186 -> #190 — ambient selector surface consumed
 
@@ -45,7 +46,7 @@ PR #186 returned `DOMINATION_SIGNAL_MIXED`. PR #188 froze the normalization-safe
 
 ### #192 — canonical production realizability
 
-The Layer 0 -> Layer 5 canonical production realizability ladder was executed. The specific negative-scalar #190 witness is excluded by the exact scalar-aperture identity, an adversarial positive-scalar reflection survives that identity, and the general reflected class remains `UNRESOLVED`. The six-primary production panel has 0/15 seven-vector overlaps; that is bounded research evidence, not injectivity.
+The Layer 0 -> Layer 5 canonical production realizability ladder was executed. `EXACT_TWIN_SURVIVES` records the reflected mechanism surviving the early ambient/source-coupling layers; `EXACT_TWIN_EXCLUDED_BY_IDENTITY` records exclusion of the specific negative-scalar witness by the exact scalar-aperture identity. The general reflected class remains `UNRESOLVED`.
 
 ### #193 — first-order parity trajectory
 
@@ -55,13 +56,14 @@ P2 = L*J/(o*e)
 sign(P1') = sign(P2) = sign(J) under L,e,o>0
 ```
 
-All six exact inherited centers satisfy `e>0`, `o>0`, `J>0`, `P2>0`, but the first-order finite-width result was `TRAJECTORY_RIGIDITY_UNRESOLVED` with 63/96 H1-unresolved cells and 33/96 J-unresolved cells.
+All six exact inherited centers satisfy `e>0`, `o>0`, `J>0`, `P2>0`, but the first-order finite-width result was `TRAJECTORY_RIGIDITY_UNRESOLVED`. **Do not infer this from points:** exact-center positivity did not establish finite-width monotonicity.
 
 ### #195 — second-order sharp enclosure
 
 Historical exact result:
 
 ```text
+J' = o''e - e''o
 PARTIAL_TRAJECTORY_ORIENTATION
 48 J_POSITIVE
 48 J_UNRESOLVED
@@ -94,25 +96,21 @@ This remains a complete signed Arb interval cover of the declared frozen Q14 dom
 
 ### #199 — source-mechanism audit
 
-PR #199 first replays the exact #197 49-leaf complete positive cover. It then validates the four-way source jets through second aperture order, the collapsed direct-production representation, matrix reconstruction, scalar-shift self-Wronskian zero identity, and overlap with the independent direct Method-C transport.
-
-The final mechanism disposition is:
+PR #199 first replays the exact #197 49-leaf complete positive cover. It then validates four-way and collapsed source-interaction reconstruction against independent direct Method C.
 
 ```text
+mechanism_classification = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
 four_way_classification = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
 collapsed_three_way_classification = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
-mechanism_classification = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
 selected_collapsed_uniform_lock_group = null
 control_transfer_status = NO_UNIQUE_COLLAPSED_UNIFORM_LOCK
 ```
 
-This is not evidence that `J` became unsigned. The direct #197/#199 replay remains rigorously `J_POSITIVE`. The result instead isolates a representation/dependency failure: independently enclosed source-interaction groups do not retain enough correlated information to expose the sign of the already-signed direct total.
+This is a representation/dependency diagnosis, not a loss of direct `J_POSITIVE`.
 
-## Current post-green frontier
+### #201 — cancellation-preserving discrepancy-first audit
 
-The highest-information next move is therefore not another source split of the same form. It is a cancellation-preserving representation change.
-
-The theorem-motivated first candidate is
+PR #201 tests the explicit escape left open after #199. It constructs
 
 ```text
 D = pole + prime_signed
@@ -120,9 +118,40 @@ A = direct_arch_signed
 M = D + A
 ```
 
-with `D,D',D''` and `A,A',A''` constructed before parity restriction and interval transport. The resulting discrepancy-self, discrepancy/arch cross, and arch-self Wronskian interactions must rigorously reconstruct independent direct Method C on every inherited #197 leaf.
+at matrix `M,M',M''` level **before** parity restriction and centered second-order interval transport. The paired matrix, first-derivative and second-derivative reconstructions all pass, and the direct #197 `GLOBAL_MONOTONE_ORIENTATION / J_POSITIVE` replay remains intact.
 
-If that representation remains dependency-unresolved, the next move is to stop source chopping and search for a higher-level exact composite parity identity instead of increasing numerical effort.
+The final certified result is:
+
+```text
+completed_leaf_count = 49
+paired_source_sum_positive_leaf_count = 0
+paired_source_sum_unresolved_leaf_count = 49
+mechanism_classification = DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED
+selected_uniform_lock_group = null
+control_transfer_status = NO_UNIQUE_PRIMARY_LOCK
+theorem_promotion = false
+fb05_closed = false
+negative_root_exclusion = false
+rh_claim = false
+```
+
+This is stronger than the #199 representation diagnosis: even theorem-motivated pole-prime pairing performed upstream does not retain enough interval dependency information to expose the sign of the already-signed direct total.
+
+It still does **not** prove that no arithmetic/source mechanism exists.
+
+## Current post-green frontier
+
+Do not continue rearranging linear source buckets without a new theorem that singles out the representation. The consumed source-level sequence is now:
+
+```text
+four-way source attribution                    -> dependency unresolved
+collapsed three-way attribution                -> dependency unresolved
+discrepancy/direct-arch upstream pairing       -> dependency unresolved
+```
+
+The next Pair-A test should preserve the fully assembled canonical parity object and ask whether a higher-level composite identity exposes a simpler independent sign mechanism. Merely re-encoding `J>0` as `(o/e)'>0` does not add mathematical information.
+
+The first candidate family is a normalized parity-gap/full-composite relation with a frozen exact-center kill-switch before any 49-leaf execution. If that also fails to reveal a clean independent mechanism, Pair-A representation engineering should be downgraded in favor of a genuinely different same-state incompatibility pair such as Pair D or Pair B.
 
 ## Claim firewall
 
@@ -136,12 +165,15 @@ If that representation remains dependency-unresolved, the next move is to stop s
   -/-> global canonical injectivity
 
 #199 SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED
-  -> current source attribution graph is dependency-limited
-  -/-> loss of #197 J_POSITIVE
+  -> independent source attribution is dependency-limited
+
+#201 DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED
+  -> upstream pole-prime pairing still loses sign resolution
+  -/-> loss of direct #197 J_POSITIVE
   -/-> source mechanism impossible
   -/-> FB-05 closure
   -/-> negative-root exclusion
   -/-> RH
 ```
 
-Global Schur monotonicity remains quarantined. **RH remains OPEN.**
+**Do not count them as two independent** constraints when two formulations instantiate the same underlying mechanism. Global Schur monotonicity remains quarantined. **RH remains OPEN.**
