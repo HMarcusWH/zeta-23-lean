@@ -64,3 +64,46 @@ The actual canonical pole/archimedean/von-Mangoldt channels must supply any deci
 A regression fixture may protect a semantic firewall even when it is not itself a zeta counterexample.
 
 **Claim firewall:** a generic, synthetic, modified-source or externally computed countermodel does not refute a theorem about the actual canonical CCM source matrix unless realizability or exact source equivalence is separately proved. A rigorous finite Arb enclosure can falsify the finite scoped mechanism it actually checks, but does not become Lean theorem authority and does not by itself certify whole-cell retained ancestry. RH remains OPEN.
+
+---
+
+## Post-#205 executable C1 promotion
+
+The historical post-#129 C1/C2/C3 document remains historical at its original evidence class. PR #205 later reconstructs **C1 specifically** as current repository-reproducible exact research; it does not recover the missing original 37-case oracle or retroactively upgrade the historical `185 / 74 / 140` counts.
+
+Current executable Pair-D C1 certificate:
+
+```text
+PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+fixture = C1
+N = 2
+K = 3
+q_by_abs_index = (1,1,1,-10)
+even predecessor form = 70 > 0
+odd predecessor form = 10 > 0
+even successor witness energy = -130
+odd successor witness energy = -410
+selected even compressed root = -13/42
+reversal_symmetric = true
+centered_index_commutator_zero = true
+canonical_realizability = false
+```
+
+Run it with:
+
+```text
+python research/RHRC/countermodels/check_post204_pair_d_exact_geometry.py
+python research/RHRC/countermodels/check_post204_pair_d_scope.py
+python research/RHRC/countermodels/certify_post204_pair_d_structural_countermodel.py
+```
+
+Evidence class:
+
+```text
+EXACT EXECUTABLE RESEARCH
+RIGOROUS FINITE SYNTHETIC COUNTERMODEL
+```
+
+Interpretation: generic predecessor positivity plus the actual radius-3 parity/boundary-flat/shell geometry, reversal symmetry, and centered-index displacement commutation do **not** exclude simultaneous even/odd successor badness. Any successful Pair-D exclusion must therefore use a property of the actual `canonicalSourceMatrix` not shared by C1.
+
+This does not prove canonical realizability, does not refute a Lean theorem, and does not close FB-05, negative-root exclusion, or RH.
