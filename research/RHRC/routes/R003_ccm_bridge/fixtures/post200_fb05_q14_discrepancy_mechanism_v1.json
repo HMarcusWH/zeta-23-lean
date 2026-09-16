@@ -1,0 +1,107 @@
+{
+  "schema_version": "POST200_FB05_Q14_DISCREPANCY_MECHANISM_FIXTURE_v1",
+  "claim_cap": "POST200_Q14_DISCREPANCY_MECHANISM_RESEARCH_ONLY",
+  "base_main_sha": "759c2146a74b8374ec80a97fa2ae4e4e51ab54c0",
+  "base_main_tree": "d4be5ed50d02e162c6226aeb8a0729698f995844",
+  "theorem_authority_pr": 184,
+  "research_authority_pr": 199,
+  "research_authority_head_sha": "fabe301c95277345f0efe764252ce1c1213a4112",
+  "research_authority_merge_sha": "27dda545b7ccdb2870088ebaf317d85e3d999555",
+  "research_authority_tree_sha": "85eb8ea25d240c4a9c339262bdc611fae881f7f0",
+  "routing_sync_pr": 200,
+  "inherited_post199_fixture": "post198_fb05_q14_parity_source_mechanism_v1.json",
+  "inherited_post199_fixture_blob_sha": "2cb12b48140bd61f05b4c06de9f11e6fdb0dc393",
+  "inherited_four_way_backend": "post198_fb05_q14_four_way_channel_second_derivative.py",
+  "inherited_four_way_backend_blob_sha": "790bc5d7b35a08e1d6e688763d5670f1ae96fb72",
+  "inherited_source_mechanism_backend": "post198_fb05_q14_parity_source_mechanism.py",
+  "inherited_source_mechanism_backend_blob_sha": "dbdac193910a68d85d8cc2c5eb6f5b52e79876cc",
+  "inherited_source_mechanism_scope_check": "check_post198_fb05_q14_parity_source_mechanism_scope.py",
+  "inherited_source_mechanism_scope_check_blob_sha": "68248c259479de0b16c29cc86616cfd24aac914e",
+  "inherited_source_mechanism_probe": "probe_post198_fb05_q14_parity_source_mechanism_scope.py",
+  "inherited_source_mechanism_probe_blob_sha": "0ec40df800c89b249046fe0bdfa6c895244cfd5c",
+  "inherited_source_mechanism_certifier": "certify_post198_fb05_q14_parity_source_mechanism_scope.py",
+  "inherited_source_mechanism_certifier_blob_sha": "b32c552e5c5a66664db385ec81b37bef0fb16121",
+  "inherited_four_way_second_check": "check_post198_fb05_q14_four_way_channel_second_derivative_scope.py",
+  "inherited_four_way_second_check_blob_sha": "1fd25d0d65c6627aea8ccd1376aacb04058e9639",
+  "selected_target": {
+    "q_start": 13,
+    "q_end": 16,
+    "predecessor_N": 2,
+    "successor_K": 3,
+    "selected_parity": "even",
+    "primary_Q": 14
+  },
+  "required_ancestry_control": {
+    "predecessor_N": 2,
+    "parity": "odd"
+  },
+  "arb_precision_bits": 384,
+  "implementation_check_precision_bits": 192,
+  "second_derivative_check_labels": [
+    "Q13_midpoint",
+    "Q14_determinant_basin",
+    "Q15_midpoint"
+  ],
+  "second_derivative_h_bits": [14, 18, 22],
+  "second_derivative_relative_tolerance": 0.002,
+  "second_derivative_absolute_tolerance": 1e-08,
+  "paired_channels": [
+    "pole_prime_discrepancy",
+    "direct_arch_signed"
+  ],
+  "expected_post197": {
+    "classification": "GLOBAL_MONOTONE_ORIENTATION",
+    "uniform_orientation": "J_POSITIVE",
+    "leaf_count": 49,
+    "unresolved_span_count": 0
+  },
+  "expected_post199": {
+    "mechanism_classification": "SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED",
+    "four_way_classification": "SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED",
+    "collapsed_three_way_classification": "SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED",
+    "control_transfer_status": "NO_UNIQUE_COLLAPSED_UNIFORM_LOCK"
+  },
+  "permitted_mechanism_classifications": [
+    "DISCREPANCY_UNIFORM_LOCK",
+    "DIRECT_ARCH_UNIFORM_LOCK",
+    "CROSS_UNIFORM_LOCK",
+    "REGIME_SWITCHING_LOCK",
+    "COOPERATIVE_NONNEGATIVE",
+    "MIXED_SIGN_RECONSTRUCTABLE",
+    "DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED"
+  ],
+  "permitted_control_transfer_statuses": [
+    "SELECTED_LOCK_SURVIVES_Q13_Q15_CONTROLS",
+    "Q14_LOCAL_MECHANISM_ONLY",
+    "NO_UNIQUE_PRIMARY_LOCK"
+  ],
+  "policy": {
+    "post197_completed_cover_replay_required": true,
+    "post199_scope_firewall_required": true,
+    "paired_matrix_jet_reconstruction_required": true,
+    "pairing_before_parity_restriction_required": true,
+    "normalized_predecessor_coordinates_required": true,
+    "direct_method_c_transport_reconstruction_required": true,
+    "exact_inherited_leaf_partition_required": true,
+    "control_blind_mechanism_selection_required": true,
+    "new_q_n_k_parity_search_permitted": false,
+    "selector_refit_permitted": false,
+    "threshold_refit_permitted": false,
+    "target_sign_import_permitted": false,
+    "precision_increase_permitted": false,
+    "adaptive_budget_increase_permitted": false,
+    "post_transport_pole_prime_regrouping_permitted": false,
+    "control_informed_mechanism_selection_permitted": false,
+    "theorem_promotion_permitted": false
+  },
+  "nonclaims": [
+    "This PR is rigorous Arb research/falsification tooling, not Lean theorem authority.",
+    "The theorem-backed pole-prime discrepancy identity motivates the pairing but does not prove a parity-orientation sign law.",
+    "The paired pole-prime channel must be formed at matrix M/M'/M'' level before parity restriction and second-order interval transport.",
+    "The independent direct Method-C evaluator remains authoritative for the already-certified frozen Q14 sign.",
+    "A reconstructable paired representation does not establish arbitrary-Q transport or a global source law.",
+    "Failure of the paired representation does not invalidate the direct PR #197 J>0 certificate.",
+    "No FB-05 closure, negative-root exclusion, or RH claim is established.",
+    "RH remains OPEN."
+  ]
+}
