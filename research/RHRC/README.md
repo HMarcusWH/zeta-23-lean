@@ -50,8 +50,31 @@ M~(t)=-tI+R~(t)
 
 so normalized parity combinations in which the common scalar drift cancels are natural composite candidates. But an equivalent rewrite of `J>0`, such as `(o/e)'>0`, is not by itself a new mechanism.
 
-If the next full-composite test does not reveal an independently meaningful sign structure, Pair-A representation engineering should be downgraded and the route should pivot toward Pair D / Pair B.
-
 Theorem authority remains #184. `GLOBAL_MONOTONE_ORIENTATION` remains the bounded #197 sign result; `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED` (#199) and `DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED` (#201) are mechanism-representation results and do not downgrade #197.
 
-**RH remains OPEN.**
+## Post-#203 authoritative update
+
+The preceding #201/current-route wording is preserved as historical ancestry. The current research anchor is:
+
+```text
+PR #203
+head  c8196830a8b49e657b28d36b364e1cff68c568d6
+merge ab660e812a78d482145eadc3e42d186a63fa812b
+tree  7360e366fe8d623ef63ca902c23522bb72935848
+research disposition = COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
+```
+
+The repaired theorem-aligned parity contrast passes exact-rational and independent `G=O-E`, `G'=O'-E'`, `G''=O''-E''` reconstruction checks. The preregistered six-center pattern
+
+```text
+E > 0
+G > 0
+G' >= 0
+E' <= 0
+```
+
+fails its kill-switch, yielding `center_kill_switch_survives = false`, `full_cover_executed = false`, `completed_leaf_count = 0`, and `PATTERN_FALSIFIED_BEFORE_FULL_COVER`.
+
+The direct #197 `GLOBAL_MONOTONE_ORIENTATION / J_POSITIVE` certificate remains intact. Pair-A representation engineering is now consumed/downgraded as the default tactic; the highest-information next route is **Pair D — same-state two-parity squeeze**, with **Pair B — negative-index separation versus localized critical-line sampling rigidity** secondary.
+
+R003 remains `DISCOVERY`; confirmatory execution is not authorized. The selected formal first break remains `E4A4-SCHUR-FB-05`. Theorem authority remains #184. **RH remains OPEN.**
