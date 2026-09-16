@@ -1,0 +1,40 @@
+name: RHRC post-200 Q14 discrepancy mechanism
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+concurrency:
+  group: rhrc-post200-q14-discrepancy-mechanism-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  post200-q14-discrepancy-mechanism:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install R003 numerical audit requirements
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Recheck inherited four-way second-derivative implementation
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post198_fb05_q14_four_way_channel_second_derivative_scope.py
+      - name: Recheck inherited post-#199 source-mechanism scope firewall
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post198_fb05_q14_parity_source_mechanism_scope.py
+      - name: Check post-#200 paired discrepancy channel jets
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post200_fb05_q14_discrepancy_channel_jets_scope.py
+      - name: Check post-#200 discrepancy mechanism scope
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post200_fb05_q14_discrepancy_mechanism_scope.py
+      - name: Probe post-#200 discrepancy mechanism schedule
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post200_fb05_q14_discrepancy_mechanism_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post200_fb05_q14_discrepancy_mechanism_v1.json \
+            --output /tmp/POST200_FB05_Q14_DISCREPANCY_MECHANISM_SCHEDULE.json
+      - name: Certify post-#200 Q14 discrepancy mechanism
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post200_fb05_q14_discrepancy_mechanism_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post200_fb05_q14_discrepancy_mechanism_v1.json \
+            --schedule /tmp/POST200_FB05_Q14_DISCREPANCY_MECHANISM_SCHEDULE.json \
+            --output /tmp/POST200_FB05_Q14_DISCREPANCY_MECHANISM_CERTIFICATE.json
