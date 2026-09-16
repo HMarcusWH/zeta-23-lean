@@ -56,16 +56,17 @@ P_t' = -E + R_t'
 R_t' < E -> P_t' < 0
 ```
 
-This closes the algebraic production interface but not the arithmetic sign premise.
+This closes the algebraic production interface but not the arithmetic remainder domination premise.
 
 ## Permanent equivalence / external-research firewalls
 
 - `ArithmeticSideSubexponential` is the PR #27 scalar equivalence wall: an apparently easier scalar upper-bound target can be RH wearing a different name.
 - `negative-index` separation remains an independent structural input and should not be conflated with the current trajectory route.
-- percentage counting alone cannot exclude a thin exceptional off-line set.
-- where external results instantiate essentially the same quadratic extremal mechanism, do not count them as independent constraints.
+- The external 67.25% simple-critical-zero result is compatible with a sparse exceptional off-line set; percentage counting alone cannot exclude one exceptional quartet.
+- **Do not count them as two independent constraints** when external results instantiate essentially the same quadratic extremal mechanism already represented by the project route.
+- **Sparse-exception test:** any percentage or density argument must be attacked by asking whether one exceptional quartet can survive it.
+- **Mustache test:** reject a reduction equivalent to RH, successor positivity, or another open target after notation is unpacked.
 - preserve the coordinate firewall: logarithmic `t=log L` derivatives and physical-aperture `L` derivatives differ by the factor `L`.
-- preserve the mustache test: reject a reduction equivalent to RH, successor positivity, or another open target after notation is unpacked.
 
 ## Research inputs through #193
 
