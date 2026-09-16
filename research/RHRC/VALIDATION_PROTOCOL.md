@@ -86,6 +86,14 @@ The first-order finite-width classification is `TRAJECTORY_RIGIDITY_UNRESOLVED` 
 
 ### PR #195 second-order trajectory evidence — historical bounded partial state
 
+The mechanism-facing differential identity preserved from this stage is
+
+```text
+J' = o''e - e''o
+```
+
+and the historical exact result is:
+
 ```text
 PARTIAL_TRAJECTORY_ORIENTATION
 48 J_POSITIVE
