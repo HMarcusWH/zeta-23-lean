@@ -156,3 +156,46 @@ unconditional sourceMoment -> M4 implication = NOT PROVED
 The old `genericQuadraticNormalPairing != 0 ?-> M4 != 0` falsifier is **SUPERSEDED / UNNECESSARY** as the next gate. The next theorem extraction is the quantitative coercive lower bound `-lam * ||Dv||^2 <= re(star(sourceMoment) * M4)`, then composition with #163 mixed-jet/Riesz boundary structure.
 
 No claim_ids are changed by this synchronization. R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+## Post-#209 active theorem frontier
+
+```text
+Lean theorem authority = PR #209
+validated theorem head = a6f0e5d3db988eeaf3ed54cf283f85b8d23f5392
+merged theorem commit = e029af769e01a547ebbc6ed045509bb2cbdd6cff
+validated theorem tree = 6a75278ebf3f2bd19a77419238872cb81835ec13
+latest research evidence = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+PR #209 proves quantitative Pair-D coercivity and the strict complete-source/local-seventh-jet anti-alignment on the exact even-selected odd-good branch. The retained fork is now
+
+```text
+odd successor bad
+OR
+re(star(sourceMoment) * mixedSeventhJet) < 0.
+```
+
+It also proves the nondegenerate Riesz boundary equivalence
+
+```text
+R8 = R9 <-> endpointScalar(L,8) = 0
+```
+
+on that branch. This does not prove an endpoint-scalar sign.
+
+Current route state:
+
+```text
+generic structural simultaneous-bad lane = consumed by #205
+even-selected odd-good branch = PROVED THROUGH #209
+OBS-059Q = CLOSED / PROVED BY #209
+OBS-059I = OPEN / ACTIVE
+simultaneous odd-bad branch remains open
+odd-selected first-bad branch remains open
+endpoint-scalar sign remains open
+```
+
+The next route is a preregistered cheap falsification search for an **independent complete canonical functional incompatibility** with the #209 anti-alignment or magnitude budget. Algebraic rearrangements of #209 and componentwise source re-enclosures do not count as independent information.
+
+No claim_ids are changed by this synchronization. R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
