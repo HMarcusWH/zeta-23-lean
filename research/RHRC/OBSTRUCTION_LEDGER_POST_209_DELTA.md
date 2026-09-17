@@ -79,7 +79,7 @@ This closes the extraction sub-obligation only. It does not close `OBS-059`.
 
 ## OBS-059I — independent complete-functional incompatibility
 
-**Status:** OPEN / ACTIVE / HIGHEST INFORMATION WITHIN THE EVEN-SELECTED ODD-GOOD BRANCH.**
+**Status:** OPEN / ACTIVE / HIGHEST INFORMATION WITHIN THE EVEN-SELECTED ODD-GOOD BRANCH.
 
 Required new information:
 
@@ -95,7 +95,7 @@ The candidate theorem must be genuinely independent of the odd-sector nonnegativ
 
 ## Riesz sub-route
 
-**Status:** REACTIVATED / NONDEGENERATE ON THE EVEN-SELECTED ODD-GOOD BRANCH; NOT CLOSED.**
+**Status:** REACTIVATED / NONDEGENERATE ON THE EVEN-SELECTED ODD-GOOD BRANCH; NOT CLOSED.
 
 PR #209 proves
 
