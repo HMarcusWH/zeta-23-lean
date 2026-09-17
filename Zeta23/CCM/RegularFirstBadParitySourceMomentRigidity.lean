@@ -59,10 +59,22 @@ theorem RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial_eigenmode_o
       .even c.firstBad.L_pos c.firstBad.Nstar c.firstBad.one_le_Nstar
       (c.firstBad.predecessorNonnegative_anyParity .even)
       c.lam c.lam_neg).mp hroot
-  constructor
-  · simpa [RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial] using hne
-  · simpa [evenCompressedCanonical,
-      RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial] using heig
+  change
+    cubicSecularTrialVector
+        .even c.firstBad.L_pos c.firstBad.Nstar
+        (c.firstBad.predecessorNonnegative_anyParity .even)
+        c.lam c.lam_neg ≠ 0 ∧
+      parityCompressedCanonical .even c.firstBad.L (c.firstBad.Nstar + 1)
+          (cubicSecularTrialVector
+            .even c.firstBad.L_pos c.firstBad.Nstar
+            (c.firstBad.predecessorNonnegative_anyParity .even)
+            c.lam c.lam_neg) =
+        (c.lam : ℂ) •
+          cubicSecularTrialVector
+            .even c.firstBad.L_pos c.firstBad.Nstar
+            (c.firstBad.predecessorNonnegative_anyParity .even)
+            c.lam c.lam_neg
+  exact ⟨hne, heig⟩
 
 /-- Headline retained rigidity: on the odd-good branch, the exact production
 source moment and fourth centered moment have strictly positive Hermitian
