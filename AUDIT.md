@@ -246,3 +246,33 @@ The next theorem-level information gain is quantitative coercivity:
 ```
 
 which is DERIVED from the #207 proof pattern but not yet separately formalized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+## Post-#209 audit addendum — quantitative Pair-D theorem authority
+
+```text
+THEOREM AUTHORITY = PR #209
+validated theorem head = a6f0e5d3db988eeaf3ed54cf283f85b8d23f5392
+merged theorem commit = e029af769e01a547ebbc6ed045509bb2cbdd6cff
+validated theorem tree = 6a75278ebf3f2bd19a77419238872cb81835ec13
+
+LATEST RESEARCH EVIDENCE = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+PR #209 is compiler-validated theorem authority. It proves quantitative Pair-D coercivity, the exact sourceMoment/seventh-jet rewrite, the quantitative upper bound, and strict anti-alignment on a genuine negative even eigenmode with odd successor good.
+
+On the retained even-selected state, the theorem package includes
+
+```text
+evenShiftedSourceMomentMomentFour_coercive_of_even_of_not_oddBad
+evenShiftedSourceMomentMixedJet_re_le_of_even_of_not_oddBad
+evenShiftedSourceMomentMixedJet_re_neg_of_even_of_not_oddBad
+oddBad_or_sourceMomentMixedJet_re_neg_of_even
+evenShiftedRieszEight_eq_nine_iff_endpointScalar_eq_zero_of_even_of_not_oddBad
+```
+
+Thus `OBS-059Q` is CLOSED / PROVED BY #209. The even-selected + odd-good branch is PROVED THROUGH #209 and now carries a quantitative complete-source/local-jet anti-alignment. The simultaneous odd-bad branch and odd-selected first-bad branch remain OPEN. Endpoint-scalar sign remains OPEN.
+
+The active research sub-obligation is `OBS-059I`: find genuinely independent complete-canonical-functional information incompatible with the #209 anti-alignment or magnitude budget on the same retained state. A rearrangement of #209 itself is not independent information. The Riesz lane is reactivated/nondegenerate on this branch, but no endpoint-scalar sign or high-order Riesz limit theorem is claimed.
+
+Negative-root exclusion remains OPEN. **RH remains OPEN.**
