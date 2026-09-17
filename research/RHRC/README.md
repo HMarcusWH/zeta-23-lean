@@ -124,3 +124,45 @@ Consequently `re(star(sourceMoment) * M4) > 0`, the canonical source moment is n
 The planned `genericQuadraticNormalPairing != 0 ?-> M4 != 0` falsifier is **SUPERSEDED / UNNECESSARY** as the next gate. No unconditional `sourceMoment -> M4` theorem has been proved. The next high-information theorem target is the quantitative coercivity bound `-lam * ||Dv||^2 <= re(star(sourceMoment) * M4)` and its retained specialization, followed by #163 mixed-jet/Riesz composition.
 
 R003 remains `DISCOVERY`; confirmatory execution is not authorized. `E4A4-SCHUR-FB-05` remains the formal first break. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+## Post-#209 authoritative theorem update
+
+```text
+THEOREM AUTHORITY = PR #209
+validated theorem head = a6f0e5d3db988eeaf3ed54cf283f85b8d23f5392
+merged theorem commit = e029af769e01a547ebbc6ed045509bb2cbdd6cff
+validated theorem tree = 6a75278ebf3f2bd19a77419238872cb81835ec13
+
+LATEST RESEARCH EVIDENCE = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+PR #209 proves, on the exact even-selected odd-good branch, the quantitative compensation law
+
+```text
+-lam * ||Dv||^2 <= re(star(sourceMoment) * M4)
+```
+
+and after the #163 seventh-jet identity,
+
+```text
+re(star(sourceMoment) * mixedSeventhJet) < 0
+```
+
+for the retained genuine negative state. It also proves
+
+```text
+odd successor bad
+OR
+re(star(sourceMoment) * mixedSeventhJet) < 0
+```
+
+and the nondegenerate boundary equivalence
+
+```text
+R8 = R9 <-> endpointScalar(L,8) = 0.
+```
+
+`OBS-059Q` is CLOSED / PROVED BY #209. `OBS-059I` is OPEN / ACTIVE: the next useful information must be an independent complete canonical functional incompatibility on the same retained state, not another rewrite of #209 or another source-component decomposition.
+
+The simultaneous odd-bad branch, odd-selected first-bad branch, endpoint-scalar sign, negative-root exclusion and RH remain OPEN. R003 remains `DISCOVERY`; confirmatory execution is not authorized. `E4A4-SCHUR-FB-05` remains the formal first break. **RH remains OPEN.**
