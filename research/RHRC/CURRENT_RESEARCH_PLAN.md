@@ -706,3 +706,102 @@ Next:
 ```
 
 R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+---
+
+# Post-#209 authoritative execution state
+
+This section is now the current execution SSOT and supersedes the post-#207 "highest-information next theorem" wording while preserving all earlier sections as history.
+
+```text
+THEOREM AUTHORITY = PR #209
+validated theorem head = a6f0e5d3db988eeaf3ed54cf283f85b8d23f5392
+merged theorem commit = e029af769e01a547ebbc6ed045509bb2cbdd6cff
+validated theorem tree = 6a75278ebf3f2bd19a77419238872cb81835ec13
+
+LATEST RESEARCH EVIDENCE = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+
+CONTROL AUTHORITY = PR #117
+selected formal first break = E4A4-SCHUR-FB-05
+terminal claim = RH_OPEN
+```
+
+## What #209 proves
+
+The #207 qualitative sourceMoment/`M4` orientation is now quantitative:
+
+```text
+-lam * ||Dv||^2 <= re(star(sourceMoment) * M4).
+```
+
+Composing with the exact #163 identity `h^(7)(0) = -2*(2*pi)^6*M4`, PR #209 proves
+
+```text
+re(star(sourceMoment) * h^(7)(0))
+  <= 2*(2*pi)^6*lam*||Dv||^2,
+```
+
+and for a genuine negative eigenmode with nonzero vector,
+
+```text
+re(star(sourceMoment) * h^(7)(0)) < 0.
+```
+
+On the exact retained even-selected state the theorem package includes:
+
+```text
+evenShiftedSourceMomentMomentFour_coercive_of_even_of_not_oddBad
+evenShiftedSourceMomentMixedJet_re_le_of_even_of_not_oddBad
+evenShiftedSourceMomentMixedJet_re_neg_of_even_of_not_oddBad
+oddBad_or_sourceMomentMixedJet_re_neg_of_even
+evenShiftedRieszEight_eq_nine_iff_endpointScalar_eq_zero_of_even_of_not_oddBad
+```
+
+The current Pair-D split is:
+
+```text
+generic structural simultaneous-bad exclusion = FALSIFIED / CONSUMED BY #205
+even-selected + odd-good retained branch = PROVED THROUGH #209
+OBS-059Q = CLOSED / PROVED BY #209
+OBS-059I = OPEN / ACTIVE
+canonical simultaneous odd-bad branch = OPEN
+odd-selected first-bad branch = OPEN
+endpoint-scalar sign = OPEN
+terminal FB-05 incompatibility = OPEN
+```
+
+## What changed in the execution plan
+
+The previous three steps are now complete:
+
+```text
+1. generic quantitative coercivity                         CLOSED / PROVED BY #209
+2. retained evenShiftedTrial specialization                CLOSED / PROVED BY #209
+3. #163 mixed seventh-jet / Riesz-8 / Riesz-9 composition CLOSED / PROVED BY #209
+```
+
+The active obligation is now **independent complete canonical functional incompatibility** on the same retained state. A useful next result must introduce information not algebraically equivalent to the odd-sector self-energy/nonnegativity argument already consumed by #207/#209.
+
+Preregister and cheaply falsify candidate routes before theorem investment:
+
+```text
+SIGN ROUTE:
+  independent lower/opposite-sign restriction on
+  re(star(Λ_L(h)) * h^(7)(0))
+
+MAGNITUDE ROUTE:
+  independent upper bound on
+  |Λ_L(h)| * |h^(7)(0)|
+  strong enough to contradict the compulsory #209 energy budget
+
+RIESZ ROUTE:
+  independent high-order limit/eventual-sign theorem that composes with
+  the now-nondegenerate R8/R9 boundary recurrence
+```
+
+The complete canonical functional must be preserved. Do not return to pole/archimedean/prime componentwise interval attribution unless a theorem proves that cancellation loss is harmless.
+
+The Riesz lane is **REACTIVATED / NONDEGENERATE ON THE EVEN-SELECTED ODD-GOOD BRANCH**, not solved: #209 removes the `J7 = 0` escape hatch and proves `R8 = R9 <-> endpointScalar(L,8)=0`, but no endpoint-scalar sign or high-order Riesz limit theorem is claimed.
+
+R003 remains `DISCOVERY`; confirmatory execution is not authorized. `ACTION_REGISTRY.json` semantics do not change. Negative-root exclusion remains OPEN. **RH remains OPEN.**

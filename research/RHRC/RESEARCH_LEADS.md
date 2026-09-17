@@ -409,3 +409,67 @@ The planned neutral `genericQuadraticNormalPairing != 0 ?-> M4 != 0` experiment 
 Pair B remains secondary and independent: negative-index separation versus localized critical-line sampling rigidity.
 
 The selected formal first break remains `E4A4-SCHUR-FB-05`, R003 remains `DISCOVERY`, and **RH remains OPEN.**
+
+## Post-#209 current leads
+
+### Theorem authority
+
+```text
+PR #209
+head  = a6f0e5d3db988eeaf3ed54cf283f85b8d23f5392
+merge = e029af769e01a547ebbc6ed045509bb2cbdd6cff
+tree  = 6a75278ebf3f2bd19a77419238872cb81835ec13
+newest post-green delta = RESEARCH_LEADS_POST_209_PAIR_D_COERCIVITY_ANTI_ALIGNMENT_DELTA.md
+```
+
+Latest research-only evidence remains PR #205 with `PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED`.
+
+### Active lead 1 — independent complete-functional incompatibility
+
+**Research status:** HIGHEST LEVERAGE / NEXT  
+**Formal status:** OPEN; #209 compulsory anti-alignment PROVED
+
+PR #209 closes the previous quantitative-coercivity extraction and proves on the retained even-selected odd-good branch
+
+```text
+-lam * ||Dv||^2 <= re(star(sourceMoment) * M4)
+re(star(sourceMoment) * mixedSeventhJet) < 0
+R8 = R9 <-> endpointScalar(L,8) = 0
+```
+
+The retained fork is
+
+```text
+odd successor bad
+OR
+re(star(sourceMoment) * mixedSeventhJet) < 0.
+```
+
+`OBS-059Q` is CLOSED / PROVED BY #209. `OBS-059I` is OPEN / ACTIVE.
+
+The next useful result must introduce independent information about the complete canonical source functional and the local seventh jet of the same source observable. Candidate families should be preregistered and cheaply falsified before theorem investment:
+
+```text
+SIGN: independent lower/opposite-sign restriction on re(star(Λ_L(h))*h^(7)(0))
+MAGNITUDE: independent upper bound on |Λ_L(h)|*|h^(7)(0)|
+RIESZ: independent high-order limit/eventual-sign theorem for the nondegenerate boundary chain
+```
+
+Do not count algebraic rearrangements of #209 as independent information. Do not return to componentwise source attribution unless cancellation preservation is theorem-backed.
+
+### Active lead 2 — unresolved Pair-D branches
+
+**Formal status:** OPEN
+
+```text
+canonical simultaneous odd-bad branch = OPEN
+odd-selected first-bad branch = OPEN
+endpoint-scalar sign = OPEN
+terminal same-state incompatibility = OPEN
+```
+
+### Active lead 3 — Pair B
+
+Pair B remains secondary and independent: negative-index separation versus localized critical-line sampling rigidity.
+
+The selected formal first break remains `E4A4-SCHUR-FB-05`, R003 remains `DISCOVERY`, and **RH remains OPEN.**

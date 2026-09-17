@@ -105,3 +105,35 @@ No unconditional `sourceMoment -> M4` theorem was proved. The proposed generic d
 ```
 
 then composition with the #163 mixed-jet/Riesz boundary package. Pair B remains secondary. `E4A4-SCHUR-FB-05` remains the selected first break; **RH remains OPEN.**
+
+## Post-#209 current theorem state
+
+```text
+THEOREM AUTHORITY = PR #209
+validated theorem head = a6f0e5d3db988eeaf3ed54cf283f85b8d23f5392
+merged theorem commit = e029af769e01a547ebbc6ed045509bb2cbdd6cff
+validated theorem tree = 6a75278ebf3f2bd19a77419238872cb81835ec13
+
+LATEST RESEARCH EVIDENCE = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+PR #209 closes the previously derived coercivity extraction and proves on the retained even-selected odd-good branch:
+
+```text
+-lam * ||Dv||^2 <= re(star(sourceMoment) * M4)
+re(star(sourceMoment) * mixedSeventhJet) < 0
+R8 = R9 <-> endpointScalar(L,8) = 0
+```
+
+The retained fork is now
+
+```text
+odd successor bad
+OR
+re(star(sourceMoment) * mixedSeventhJet) < 0.
+```
+
+`OBS-059Q` is CLOSED / PROVED BY #209. The active sub-obligation is `OBS-059I`: an independent complete canonical functional incompatibility on the same retained state. The simultaneous odd-bad branch, odd-selected first-bad branch, endpoint-scalar sign, negative-root exclusion and RH remain OPEN.
+
+Pair B remains secondary. `E4A4-SCHUR-FB-05` remains the selected first break. **RH remains OPEN.**
