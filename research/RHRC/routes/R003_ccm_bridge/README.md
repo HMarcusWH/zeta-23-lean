@@ -199,3 +199,27 @@ endpoint-scalar sign remains open
 The next route is a preregistered cheap falsification search for an **independent complete canonical functional incompatibility** with the #209 anti-alignment or magnitude budget. Algebraic rearrangements of #209 and componentwise source re-enclosures do not count as independent information.
 
 No claim_ids are changed by this synchronization. R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+## Post-#211 active theorem frontier
+
+```text
+Lean theorem authority = PR #211
+validated theorem head = 704a69e41871269814ba091e9476fe76b2d09844
+merged theorem commit = dd42e6368e48957c9922a9e917e10f60a2582b9f
+validated theorem tree = a735f6149aeaa9f8358394c33fd6dcee8062f68e
+latest research evidence = PR #205
+```
+
+PR #211 directly connects the theorem-authoritative R003 explicit-formula surface to the active Pair-D source observable:
+
+```text
+literatureRHS
+  -> literatureRHS_dictionaryMixedTest_eq_matrixCoefficientPairing
+  -> explicitCanonicalSourceMoment_eq_completeSourceFunctional
+  -> Λ_L(h_v)
+  -> retained #209 anti-alignment with h_v^(7)(0)
+```
+
+The representation prerequisite inside OBS-059I is CLOSED / PROVED BY #211. The next theoremization target is `SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL`. Do not re-split the complete functional into independently enclosed pole/arch/prime pieces unless cancellation preservation is theorem-backed.
+
+No claim IDs change. R003 remains `DISCOVERY`; `confirmatory_execution_authorized=false`; route and boundary digests remain null. Negative-root exclusion and **RH remain OPEN.**
