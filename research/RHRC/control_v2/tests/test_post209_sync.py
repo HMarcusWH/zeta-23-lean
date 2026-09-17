@@ -81,7 +81,7 @@ class Post209SyncTests(unittest.TestCase):
             "oddBad_or_sourceMomentMixedJet_re_neg_of_even",
             "evenShiftedRieszEight_eq_nine_iff_endpointScalar_eq_zero_of_even_of_not_oddBad",
             "quantitative compensation law",
-            "INDEPENDENT",
+            "independent",
             "RH remains OPEN",
         ):
             self.assertIn(token, text)
