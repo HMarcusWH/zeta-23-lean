@@ -500,3 +500,88 @@ The #207 proof structure suggests the quantitative coercive inequality
 which is DERIVED but not yet separately formalized. Formalize it generically, specialize to the retained `evenShiftedTrial`, then compose with #163's exact seventh mixed-source jet and Riesz-8/Riesz-9 boundary identities. The desired next information is an independent upper bound or incompatibility on the same canonical state, not another factorwise nonvanishing lemma.
 
 Pair B remains secondary. The selected first break remains `E4A4-SCHUR-FB-05`; R003 remains `DISCOVERY`; **RH remains OPEN.**
+
+---
+
+## Post-#209 Pair-D theorem settlement
+
+```text
+THEOREM AUTHORITY = PR #209
+validated theorem head = a6f0e5d3db988eeaf3ed54cf283f85b8d23f5392
+merged theorem commit = e029af769e01a547ebbc6ed045509bb2cbdd6cff
+validated theorem tree = 6a75278ebf3f2bd19a77419238872cb81835ec13
+LATEST RESEARCH EVIDENCE = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+### PROVED — quantitative even-selected odd-good coercivity and anti-alignment
+
+PR #209 closes the #207 coercivity extraction and proves
+
+```text
+-lam * ||Dv||^2 <= re(star(sourceMoment) * M4)
+re(star(sourceMoment) * h^(7)(0))
+  <= 2*(2*pi)^6*lam*||Dv||^2
+```
+
+with strict anti-alignment on a genuine negative eigenmode:
+
+```text
+re(star(sourceMoment) * h^(7)(0)) < 0.
+```
+
+On the retained exact state the fork is
+
+```text
+opposite parity bad
+OR
+re(star(sourceMoment) * mixedSeventhJet) < 0.
+```
+
+PR #209 also proves, under the retained even-selected odd-good hypotheses,
+
+```text
+R8 = R9 <-> endpointScalar(L,8) = 0.
+```
+
+This removes the `mixedSeventhJet = 0` escape hatch on that branch; it does not prove the endpoint scalar has a sign.
+
+### Obstruction transition
+
+```text
+OBS-059Q — quantitative Pair-D coercivity extraction
+  CLOSED / PROVED BY #209
+
+OBS-059I — independent complete-functional incompatibility
+  OPEN / ACTIVE
+```
+
+The next valid birdfishie side must be genuinely independent of the odd-sector self-energy/nonnegativity identity already used by #207/#209. Candidate families are:
+
+```text
+SIGN:
+  independent lower/opposite-sign restriction on
+  re(star(Λ_L(h)) * h^(7)(0))
+
+MAGNITUDE:
+  independent upper bound on |Λ_L(h)| * |h^(7)(0)|
+  strong enough to contradict the compulsory #209 energy budget
+
+RIESZ:
+  independent high-order limit/eventual-sign theorem that composes with
+  the now-nondegenerate R8/R9 boundary recurrence
+```
+
+Do not count an algebraic rearrangement of #209 as an independent side. Do not return to componentwise pole/arch/prime interval attribution unless a theorem proves the lost cancellations are harmless.
+
+### OPEN branches
+
+```text
+canonical simultaneous odd-bad branch        OPEN
+odd-selected first-bad branch                 OPEN
+endpoint-scalar sign                          OPEN
+terminal same-state incompatibility           OPEN
+negative-root exclusion                       OPEN
+```
+
+Pair B remains secondary. The selected first break remains `E4A4-SCHUR-FB-05`; R003 remains `DISCOVERY`; confirmatory execution is not authorized. **RH remains OPEN.**
