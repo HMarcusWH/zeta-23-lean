@@ -16,13 +16,13 @@ so the full literature RHS of the mixed dictionary test is exactly the correspon
 
 **PROVED.** For the exact active source observable
 [
-h_v(omega)=operatorname{quadraticNormalSourceAtom}(K,v,omega),
+h_v(ω) = quadraticNormalSourceAtom K v ω,
 ]
 PR #211 proves `quadraticNormalSourceAtom_zero` and `quadraticNormalSourceAtom_one`, hence (h_v(0)=h_v(1)=0).
 
 **PROVED.** Define
 [
-Lambda_L(h)=	frac12,operatorname{literatureRHS}(operatorname{canonicalSourcePhysicalLift}(L,h)).
+Λ_L(h) = (1/2) * literatureRHS (canonicalSourcePhysicalLift L h).
 ]
 Then
 
@@ -32,7 +32,7 @@ explicitCanonicalSourceMoment_eq_completeSourceFunctional
 
 proves
 [
-operatorname{explicitCanonicalSourceMoment}(L,K,v)=Lambda_L(h_v).
+explicitCanonicalSourceMoment(L,K,v) = Λ_L(h_v).
 ]
 
 The retained specialization is
@@ -46,9 +46,9 @@ oddBad_or_completeSourceFunctionalMixedJet_re_neg_of_even
 ```
 that is,
 [
-operatorname{ParityBad}_{odd}
+ParityBad_odd
 quadlorquad
-Re(overline{Lambda_L(h_v)},h_v^{(7)}(0))<0.
+Re(overline{Lambda_Lh_v},h_v^{(7)}(0))<0.
 ]
 
 PR #211 is a representation/interface theorem. The independent incompatibility required by OBS-059I is not proved.
@@ -59,7 +59,7 @@ PR #209 proved quantitative coercivity and strict anti-alignment using `explicit
 
 The active interface is therefore the exact same-observable global/local pair
 ```text
-Λ_L(h_v) versus h_v^(7)(0).
+Λ_Lh_v versus h_v^(7)(0).
 ```
 
 This closes the representation prerequisite inside OBS-059I but does not close OBS-059I itself.
@@ -80,7 +80,7 @@ The next theoremization target is
 SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL
 ```
 
-namely: derive, from the existing theorem-authoritative `literatureRHS`, dictionary normalization and the proved endpoint identities, the exact source-coordinate integral-plus-prime representation of (Lambda_L(h_v)).
+namely: derive, from the existing theorem-authoritative `literatureRHS`, dictionary normalization and the proved endpoint identities, the exact source-coordinate integral-plus-prime representation of (Lambda_Lh_v).
 
 Do not prerecord guessed constants or signs. The exact formula must be compiler-derived.
 
@@ -92,13 +92,13 @@ Once that kernel is theorem-backed, the active OBS-059I question becomes concret
 
 **LEAD / HYPOTHESIS — zero-side/mixed dictionary transport.** The generic mixed dictionary theorem can potentially express other exact matrix pairings through the same explicit-formula normalization. Any use must preserve the exact retained state and normalization.
 
-**LEAD / HYPOTHESIS — Riesz/global-local composition.** #209 makes the seventh jet nonzero on the odd-good branch; #211 now identifies the global source factor with a complete functional of the same (h_v). This makes kernel/repeated-integration questions better posed, but no endpoint-scalar sign or high-order Riesz limit theorem is proved.
+**LEAD / HYPOTHESIS — Riesz/global-local composition.** #209 makes the seventh jet nonzero on the odd-good branch; #211 now identifies the global source factor with a complete functional of the same h_v. This makes kernel/repeated-integration questions better posed, but no endpoint-scalar sign or high-order Riesz limit theorem is proved.
 
 # New RH-relevant clues
 
-**LEAD / HYPOTHESIS — kernel/Peano formulation.** After the source-coordinate kernel is exposed, (Lambda_L(h_v)) will be a continuous-plus-arithmetic-sampling functional of a physical lift of (h_v), while #163 identifies the local seventh jet. A useful independent theorem could arise from a Peano-kernel, reproducing-kernel, extremal, Gram, or repeated-integration representation that controls the angle or magnitude between these two functionals on the canonical source-atom class.
+**LEAD / HYPOTHESIS — kernel/Peano formulation.** After the source-coordinate kernel is exposed, (Lambda_Lh_v) will be a continuous-plus-arithmetic-sampling functional of a physical lift of h_v, while #163 identifies the local seventh jet. A useful independent theorem could arise from a Peano-kernel, reproducing-kernel, extremal, Gram, or repeated-integration representation that controls the angle or magnitude between these two functionals on the canonical source-atom class.
 
-**LEAD / HYPOTHESIS — magnitude incompatibility.** The #209 inequality yields a compulsory global/local budget. An independent upper bound for (|Lambda_L(h_v)|,|h_v^{(7)}(0)|) below that budget would exclude the odd-good branch without an opposite-sign theorem.
+**LEAD / HYPOTHESIS — magnitude incompatibility.** The #209 inequality yields a compulsory global/local budget. An independent upper bound for (|Lambda_Lh_v|,|h_v^{(7)}(0)|) below that budget would exclude the odd-good branch without an opposite-sign theorem.
 
 # Falsification checks
 
@@ -134,6 +134,6 @@ Upstream into the theorem-authoritative explicit-formula/dictionary machinery an
 
 What is the highest-information next test?
 
-Derive the exact source-coordinate kernel of (Lambda_L(h_v)), then attack whether that complete functional can satisfy the #209 anti-alignment or magnitude budget on the exact retained state.
+Derive the exact source-coordinate kernel of (Lambda_Lh_v), then attack whether that complete functional can satisfy the #209 anti-alignment or magnitude budget on the exact retained state.
 
 The selected formal first break remains `E4A4-SCHUR-FB-05`. R003 remains `DISCOVERY`; confirmatory execution is not authorized. **RH remains OPEN.**
