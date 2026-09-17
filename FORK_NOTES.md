@@ -137,3 +137,30 @@ re(star(sourceMoment) * mixedSeventhJet) < 0.
 `OBS-059Q` is CLOSED / PROVED BY #209. The active sub-obligation is `OBS-059I`: an independent complete canonical functional incompatibility on the same retained state. The simultaneous odd-bad branch, odd-selected first-bad branch, endpoint-scalar sign, negative-root exclusion and RH remain OPEN.
 
 Pair B remains secondary. `E4A4-SCHUR-FB-05` remains the selected first break. **RH remains OPEN.**
+
+## Post-#211 fork-state addendum
+
+```text
+THEOREM AUTHORITY = PR #211
+validated theorem head = 704a69e41871269814ba091e9476fe76b2d09844
+merged theorem commit = dd42e6368e48957c9922a9e917e10f60a2582b9f
+validated theorem tree = a735f6149aeaa9f8358394c33fd6dcee8062f68e
+
+LATEST RESEARCH EVIDENCE = PR #205
+CONTROL SEMANTIC AUTHORITY = PR #117
+terminal claim = RH_OPEN
+```
+
+PR #209 remains the source of quantitative Pair-D coercivity and strict sourceMoment/seventh-jet anti-alignment. PR #211 proves that the exact source moment is the complete functional `Λ_L(h_v)` of the same `quadraticNormalSourceAtom` whose seventh jet appears in that anti-alignment.
+
+The retained fork is now representable as
+
+```text
+odd successor bad
+OR
+re(star(Λ_L(h_v)) * h_v^(7)(0)) < 0.
+```
+
+This does not close OBS-059I. The representation prerequisite is CLOSED / PROVED BY #211; the next theoremization target is `SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL`; the required independent incompatibility remains OPEN.
+
+R003 remains `DISCOVERY`; no action scores, first-break IDs, claim IDs, route digests or confirmation permissions change. **RH remains OPEN.**
