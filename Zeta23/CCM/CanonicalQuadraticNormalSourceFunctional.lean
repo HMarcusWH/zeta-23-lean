@@ -66,11 +66,68 @@ def canonicalQuadraticNormalSourceFunctional
   (1 / 2 : ℂ) *
     Zeta23.EF.literatureRHS (canonicalSourcePhysicalLift L h)
 
+/-- Right scalar-linearity of the raw mixed matrix coefficient pairing. -/
+theorem matrixCoefficientPairing_mul_right
+    {N : ℕ}
+    (M : Matrix (Fin (2 * N + 1)) (Fin (2 * N + 1)) ℂ)
+    (x y : Fin (2 * N + 1) → ℂ)
+    (a : ℂ) :
+    matrixCoefficientPairing M x (fun j => a * y j) =
+      a * matrixCoefficientPairing M x y := by
+  unfold matrixCoefficientPairing
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro i hi
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro j hj
+  ring
+
+/-- With the quadratic normal in the left slot, the unscaled mixed coefficient
+pairing is exactly the raw quadratic-normal matrix numerator. -/
+theorem matrixCoefficientPairing_quadraticNormal_eq_numerator
+    (K : ℕ)
+    (M : Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ)
+    (v : euclideanEvenBoundaryFlatSubspace K) :
+    matrixCoefficientPairing M
+        (fun i => centeredQuadraticNormal K i)
+        (evenBoundaryFlatRawCoefficients K v) =
+      quadraticNormalMatrixNumerator K M v := by
+  unfold matrixCoefficientPairing quadraticNormalMatrixNumerator
+  unfold Matrix.mulVec dotProduct
+  apply Finset.sum_congr rfl
+  intro i hi
+  rw [Finset.sum_mul]
+  apply Finset.sum_congr rfl
+  intro j hj
+  ring
+
+/-- Every mixed dictionary test is one half of the corresponding source-matrix
+coefficient pairing at the clamped physical source coordinate. -/
+theorem dictionaryMixedTest_eq_half_sourceMatrix_pairing
+    {L : ℝ} (hL : 0 < L)
+    (N : ℕ)
+    (x y : Fin (2 * N + 1) → ℂ)
+    (t : ℝ) :
+    dictionaryMixedTest N x y L t =
+      (1 / 2 : ℂ) *
+        matrixCoefficientPairing
+          (sourceMatrix (dictionaryApertureCoord L t) N) x y := by
+  unfold dictionaryMixedTest matrixCoefficientPairing
+  simp_rw [dictionaryBasisTest_eq_sourceEntry_clamped hL, sourceMatrix_apply]
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro i hi
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro j hj
+  ring
+
 /-- Half of the mixed coefficient pairing with the quadratic normal and the
 `2/<n2,n2>`-scaled carrier is exactly the normalized quadratic-normal matrix
 moment. -/
 theorem half_matrixCoefficientPairing_quadraticNormal_scaled_eq_moment
-    (K : ℕ) (hK : 1 ≤ K)
+    (K : ℕ) (_hK : 1 ≤ K)
     (M : Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ)
     (v : euclideanEvenBoundaryFlatSubspace K) :
     (1 / 2 : ℂ) *
@@ -81,20 +138,9 @@ theorem half_matrixCoefficientPairing_quadraticNormal_scaled_eq_moment
                     (centeredQuadraticNormal K)) *
               evenBoundaryFlatRawCoefficients K v j) =
       quadraticNormalMatrixMoment K M v := by
-  have hden :
-      inner ℂ (centeredQuadraticNormal K) (centeredQuadraticNormal K) ≠ 0 :=
-    inner_centeredQuadraticNormal_self_ne_zero K hK
-  unfold matrixCoefficientPairing quadraticNormalMatrixMoment
-    quadraticNormalMatrixNumerator
-  unfold Matrix.mulVec dotProduct
-  field_simp [hden]
-  rw [Finset.sum_mul]
-  apply Finset.sum_congr rfl
-  intro i hi
-  rw [Finset.sum_mul]
-  rw [Finset.mul_sum]
-  apply Finset.sum_congr rfl
-  intro j hj
+  rw [matrixCoefficientPairing_mul_right]
+  rw [matrixCoefficientPairing_quadraticNormal_eq_numerator]
+  unfold quadraticNormalMatrixMoment
   ring
 
 /-- The physical lift of the active source observable is exactly the mixed
@@ -111,25 +157,12 @@ theorem canonicalSourcePhysicalLift_quadraticNormalSourceAtom_eq_mixedTest
                   (centeredQuadraticNormal K)) *
             evenBoundaryFlatRawCoefficients K v j)
         L := by
-  have hden :
-      inner ℂ (centeredQuadraticNormal K) (centeredQuadraticNormal K) ≠ 0 :=
-    inner_centeredQuadraticNormal_self_ne_zero K hK
   funext t
   unfold canonicalSourcePhysicalLift quadraticNormalSourceAtom
-    quadraticNormalMatrixMoment quadraticNormalMatrixNumerator
-    dictionaryMixedTest
-  simp_rw [dictionaryBasisTest_eq_sourceEntry_clamped hL]
-  unfold Matrix.mulVec dotProduct
-  simp_rw [sourceMatrix_apply]
-  field_simp [hden]
-  rw [Finset.sum_mul]
-  apply Finset.sum_congr rfl
-  intro i hi
-  rw [Finset.sum_mul]
-  rw [Finset.mul_sum]
-  apply Finset.sum_congr rfl
-  intro j hj
-  ring
+  rw [dictionaryMixedTest_eq_half_sourceMatrix_pairing hL]
+  exact
+    (half_matrixCoefficientPairing_quadraticNormal_scaled_eq_moment
+      K hK (sourceMatrix (dictionaryApertureCoord L t) K) v).symm
 
 /-- The complete functional evaluated on the active source atom is exactly the
 quadratic-normal moment of the deterministic dictionary matrix. -/
@@ -179,6 +212,8 @@ theorem explicitCanonicalSourceMoment_eq_completeSourceFunctional
 
 end Zeta23.CCM
 
+#print axioms Zeta23.CCM.matrixCoefficientPairing_quadraticNormal_eq_numerator
+#print axioms Zeta23.CCM.dictionaryMixedTest_eq_half_sourceMatrix_pairing
 #print axioms Zeta23.CCM.canonicalSourcePhysicalLift_quadraticNormalSourceAtom_eq_mixedTest
 #print axioms Zeta23.CCM.canonicalQuadraticNormalSourceFunctional_eq_dictionaryMoment
 #print axioms Zeta23.CCM.explicitCanonicalSourceMoment_eq_completeSourceFunctional
