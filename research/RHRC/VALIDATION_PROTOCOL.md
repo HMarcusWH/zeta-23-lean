@@ -489,3 +489,39 @@ Validation rule after #209:
 - theorem authority is exact-object specific: do not promote anything beyond the checked #209 declarations.
 
 R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+## Post-#211 validation addendum
+
+The theorem authority advances to PR #211 while research-only evidence remains PR #205:
+
+```text
+THEOREM AUTHORITY = PR #211
+validated theorem head = 704a69e41871269814ba091e9476fe76b2d09844
+merged theorem commit = dd42e6368e48957c9922a9e917e10f60a2582b9f
+validated theorem tree = a735f6149aeaa9f8358394c33fd6dcee8062f68e
+```
+
+Validation interpretation:
+
+```text
+literatureRHS_dictionaryMixedTest_eq_matrixCoefficientPairing
+  = PROVED
+
+explicitCanonicalSourceMoment_eq_completeSourceFunctional
+  = PROVED
+
+retained complete-functional anti-alignment rewrite
+  = PROVED
+
+independent complete-functional incompatibility
+  = NOT PROVED
+
+SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL
+  = NOT YET PROVED
+```
+
+The exact #211 theorem head passed all nine PR workflow families. RHRC research and Lean checks run #1159 passed the RHRC suite/control smoke, R003 normalization guards, `lake build Zeta23.CCM`, `lake build Zeta23.ExceptionalZero`, and the forbidden-placeholder scan.
+
+PR #209 remains the provenance for quantitative coercivity and strict anti-alignment. PR #211 only proves the representation/interface rewrite.
+
+R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. Negative-root exclusion and **RH remain OPEN.**
