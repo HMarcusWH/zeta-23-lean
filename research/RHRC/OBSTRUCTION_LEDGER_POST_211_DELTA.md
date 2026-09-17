@@ -72,7 +72,7 @@ negative-root exclusion = OPEN
 ## Claim firewall
 
 - #211 is Lean theorem authority only for its exact representation/interface statements.
-- #211 does not prove an independent sign or magnitude restriction on (Lambda_L(h_v)).
+- #211 does not prove an independent sign or magnitude restriction on Λ_L(h_v).
 - #211 does not exclude simultaneous odd badness.
 - #211 does not close the odd-selected branch.
 - #211 does not prove an endpoint-scalar sign.
