@@ -236,7 +236,10 @@ theorem re_star_explicitCanonicalSourceMoment_mul_momentFour_pos_of_even_negativ
   have hnonneg :
       0 ≤ Complex.re
         (inner ℂ (oddCompressedCanonical L K w) w) := by
-    simpa only [oddCompressedCanonical] using
+    change
+      0 ≤ Complex.re
+        (inner ℂ (parityCompressedCanonical .odd L K w) w)
+    exact
       re_inner_parityCompressedCanonical_nonnegative_of_not_parityBad
         hodd w
   have henergy :=
