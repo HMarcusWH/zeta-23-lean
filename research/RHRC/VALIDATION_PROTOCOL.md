@@ -393,3 +393,48 @@ So generic simultaneous-parity exclusion is consumed. Canonical simultaneous-par
 Before theoremizing a canonical `explicitCanonicalSourceMoment` / `M4` implication, test a generic analogue with a neutral observable name. A synthetic pairing must not be called `explicitCanonicalSourceMoment` unless it is proved equal to the actual canonical production observable.
 
 The theorem authority remains #184. R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+## Post-#207 validation addendum
+
+The theorem authority now advances to PR #207 while the research-only evidence anchor remains PR #205:
+
+```text
+THEOREM AUTHORITY = PR #207
+validated theorem head = 7e186ede13beece95e8a08b2449cd3accbe5b2f5
+merged theorem commit = 76cf4e3b5ef4b7ab904a861b6d4cb01fdcd8d0e0
+validated theorem tree = d6509407cc7b667b0ff3e7faab2acd525ae32db9
+
+LATEST RESEARCH EVIDENCE = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+Evidence interpretation:
+
+```text
+Lean compiler + exact #207 import closure
+  -> PROVED for the exact #207 theorem statements
+
+PR #205 C1 executable certificate
+  -> EXACT EXECUTABLE RESEARCH / RIGOROUS FINITE SYNTHETIC COUNTERMODEL
+```
+
+The retained #207 theorem package includes
+
+```text
+evenShiftedSourceMomentMomentFour_re_pos_of_even_of_not_oddBad
+evenShiftedMomentFour_ne_zero_of_even_of_not_oddBad
+evenShiftedMixedSourceSeventhJet_ne_zero_of_even_of_not_oddBad
+oddBad_or_sourceMomentMomentFour_re_pos_of_even
+```
+
+Validation rule after #207:
+
+- the even-selected odd-good branch is PROVED THROUGH #207;
+- the simultaneous odd-bad branch remains OPEN;
+- the odd-selected first-bad branch remains OPEN;
+- no unconditional `sourceMoment -> M4` implication is proved;
+- the `genericQuadraticNormalPairing != 0 ?-> M4 != 0` experiment is **SUPERSEDED / UNNECESSARY** as the next gate, not falsified and not a dead route;
+- the quantitative inequality `-lam * ||Dv||^2 <= re(star(sourceMoment) * M4)` is a DERIVED lead until separately formalized;
+- theorem authority is exact-object specific: do not promote anything beyond the checked #207 declarations.
+
+The next theorem-validation target is quantitative Pair-D coercivity, first generically and then on the retained shifted trial, followed by composition with the #163 mixed seventh-jet/Riesz boundary package. R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**

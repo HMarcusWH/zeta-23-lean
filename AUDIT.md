@@ -213,3 +213,36 @@ This is `EXACT EXECUTABLE RESEARCH / RIGOROUS FINITE SYNTHETIC COUNTERMODEL`, no
 Therefore generic predecessor positivity + parity/shell geometry + reversal symmetry + displacement commutation cannot supply the simultaneous-badness contradiction. DR-012 and DR-013 are strengthened by current executable evidence. Pair D remains open only in a **canonical-arithmetic** form: a later exclusion must identify a property of `canonicalSourceMatrix` that fails on C1.
 
 The next cheapest falsifier should attack the generic quadratic-normal-defect-versus-`M4` implication. The canonical `sourceMoment <-> M4` question, odd-selected first-bad closure, FB-05, negative-root exclusion and RH remain OPEN. Theorem authority remains #184.
+
+## Post-#207 audit addendum — theorem authority advances
+
+```text
+THEOREM AUTHORITY = PR #207
+validated theorem head = 7e186ede13beece95e8a08b2449cd3accbe5b2f5
+merged theorem commit = 76cf4e3b5ef4b7ab904a861b6d4cb01fdcd8d0e0
+validated theorem tree = d6509407cc7b667b0ff3e7faab2acd525ae32db9
+
+LATEST RESEARCH EVIDENCE = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+PR #207 is compiler-validated theorem authority. It proves the canonical Pair-D self-energy identity and the retained odd-good branch theorem
+
+```text
+evenShiftedSourceMomentMomentFour_re_pos_of_even_of_not_oddBad
+evenShiftedMomentFour_ne_zero_of_even_of_not_oddBad
+evenShiftedMixedSourceSeventhJet_ne_zero_of_even_of_not_oddBad
+oddBad_or_sourceMomentMomentFour_re_pos_of_even
+```
+
+Hence the even-selected + odd-good retained branch is PROVED THROUGH #207: the exact sourceMoment/`M4` Hermitian pairing is strictly positive, the source moment is nonzero, `M4` is nonzero, and the mixed seventh source jet is nonzero.
+
+The simultaneous odd-bad branch remains OPEN. The odd-selected first-bad branch remains OPEN. No unconditional `sourceMoment -> M4` implication is proved. The generic defect/`M4` falsifier is **SUPERSEDED / UNNECESSARY** as the next gate, not falsified.
+
+The next theorem-level information gain is quantitative coercivity:
+
+```text
+-lam * ||Dv||^2 <= re(star(sourceMoment) * M4)
+```
+
+which is DERIVED from the #207 proof pattern but not yet separately formalized. Negative-root exclusion remains OPEN. **RH remains OPEN.**

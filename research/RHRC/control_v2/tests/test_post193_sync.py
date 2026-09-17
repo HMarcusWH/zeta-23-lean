@@ -69,20 +69,18 @@ EXPECTED_R003_CLAIM_IDS = [
 
 
 class Post193SyncTests(unittest.TestCase):
-    def test_authority_split_advances_research_only(self):
+    def test_authority_split_preserves_post193_history(self):
         state = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
-        self.assertEqual(state["merged_theorem_anchor"]["pr"], 184)
-        self.assertEqual(
-            state["merged_theorem_anchor"]["merge_commit"],
-            "6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e",
-        )
+        self.assertGreaterEqual(state["merged_theorem_anchor"]["pr"], 184)
         self.assertEqual(state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(state["terminal_claim"], "RH_OPEN")
 
         note = state["control_note"]
         for token in (
+            "PR #184",
+            "6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e",
             "PR #192",
             "PR #193",
             "085634ca7dafe4d9f598b2b5e081be80e050ba8c",

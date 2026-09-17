@@ -74,3 +74,34 @@ The exact executable C1 fixture has `N=2`, `K=3`, even/odd predecessor forms `70
 Therefore generic predecessor positivity + parity/boundary-flat/shell geometry + reversal symmetry + centered-index displacement structure do **not** exclude simultaneous even/odd successor badness. The generic Pair-D structural lane is consumed. Pair D remains active only as a **canonical-arithmetic** route: a successful exclusion must use a property of the actual `canonicalSourceMatrix` that C1 does not satisfy.
 
 `sourceMoment <-> M4` canonical-state rigidity and the odd-selected first-bad branch remain OPEN. Pair B remains secondary. The selected first break remains `E4A4-SCHUR-FB-05`; theorem authority remains #184; **RH remains OPEN.**
+
+## Post-#207 current theorem state
+
+```text
+THEOREM AUTHORITY = PR #207
+validated theorem head = 7e186ede13beece95e8a08b2449cd3accbe5b2f5
+merged theorem commit = 76cf4e3b5ef4b7ab904a861b6d4cb01fdcd8d0e0
+validated theorem tree = d6509407cc7b667b0ff3e7faab2acd525ae32db9
+
+LATEST RESEARCH EVIDENCE = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+PR #207 spends genuinely canonical source arithmetic and proves the retained even-selected odd-good branch:
+
+```text
+evenShiftedSourceMomentMomentFour_re_pos_of_even_of_not_oddBad
+evenShiftedMomentFour_ne_zero_of_even_of_not_oddBad
+evenShiftedMixedSourceSeventhJet_ne_zero_of_even_of_not_oddBad
+oddBad_or_sourceMomentMomentFour_re_pos_of_even
+```
+
+So `re(star(sourceMoment) * M4) > 0`, `sourceMoment != 0`, `M4 != 0`, and the mixed seventh source jet is nonzero on that branch. The simultaneous odd-bad branch remains OPEN and the odd-selected first-bad branch remains OPEN.
+
+No unconditional `sourceMoment -> M4` theorem was proved. The proposed generic defect-versus-`M4` falsifier is **SUPERSEDED / UNNECESSARY** as the next gate, not falsified. The next high-information theorem extraction is quantitative coercivity,
+
+```text
+-lam * ||Dv||^2 <= re(star(sourceMoment) * M4),
+```
+
+then composition with the #163 mixed-jet/Riesz boundary package. Pair B remains secondary. `E4A4-SCHUR-FB-05` remains the selected first break; **RH remains OPEN.**

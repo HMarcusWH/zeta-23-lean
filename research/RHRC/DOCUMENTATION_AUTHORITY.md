@@ -230,3 +230,40 @@ The next research falsifier is the generic quadratic-normal-defect-versus-`M4` i
 `RESEARCH_LEADS_POST_205_PAIR_D_STRUCTURAL_COUNTERMODEL_DELTA.md` is the newest current research delta. `OBSTRUCTION_LEDGER_POST_205_DELTA.md` and `DEAD_ROUTES_POST_205_DELTA.md` carry the new obstruction/dead-route refinements. Historical deltas and their evidence classes remain unchanged.
 
 The theorem anchor remains PR #184. The control-plane semantic anchor remains PR #117. `ACTION_REGISTRY.json` remains unchanged because the formal first break and action semantics do not move. R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+## Post-#207 authority override
+
+This section supersedes the post-#205 theorem pointer while preserving all earlier state as history.
+
+### Current theorem-state anchor
+
+```text
+latest theorem-bearing PR = #207
+validated theorem head = 7e186ede13beece95e8a08b2449cd3accbe5b2f5
+merged theorem commit = 76cf4e3b5ef4b7ab904a861b6d4cb01fdcd8d0e0
+validated theorem tree = d6509407cc7b667b0ff3e7faab2acd525ae32db9
+```
+
+### Current research-evidence anchor
+
+```text
+latest merged research PR = #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+The three-anchor model is therefore now: theorem authority PR #207, research-only authority PR #205, control semantic authority PR #117.
+
+PR #207 proves the canonical Pair-D sourceMoment/`M4` energy orientation on the retained even-selected odd-good branch. The living theorem inventory must include
+
+```text
+evenShiftedSourceMomentMomentFour_re_pos_of_even_of_not_oddBad
+evenShiftedMomentFour_ne_zero_of_even_of_not_oddBad
+evenShiftedMixedSourceSeventhJet_ne_zero_of_even_of_not_oddBad
+oddBad_or_sourceMomentMomentFour_re_pos_of_even
+```
+
+The old generic `genericQuadraticNormalPairing != 0 ?-> M4 != 0` next-step proposal is **SUPERSEDED / UNNECESSARY**, not falsified and not a dead route. No unconditional `sourceMoment -> M4` implication has been proved.
+
+`RESEARCH_LEADS_POST_207_PAIR_D_SOURCE_M4_ENERGY_DELTA.md` is the newest current theorem/research delta. `OBSTRUCTION_LEDGER_POST_207_DELTA.md` records the split state of `OBS-059`. Historical post-#205 files remain historical and are not rewritten.
+
+The next theorem extraction is quantitative Pair-D coercivity `-lam * ||Dv||^2 <= re(star(sourceMoment) * M4)` and its retained specialization, followed by #163 mixed-jet/Riesz composition. `ACTION_REGISTRY.json` remains unchanged because the first-break semantics do not move. R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
