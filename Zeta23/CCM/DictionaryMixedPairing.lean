@@ -94,7 +94,6 @@ theorem paperFT_dictionaryMixedTest_eq_basis_sum
     simp_rw [Finset.sum_mul]
     apply Finset.sum_congr rfl
     intro i hi
-    rw [Finset.sum_mul]
     apply Finset.sum_congr rfl
     intro j hj
     ring
@@ -308,7 +307,6 @@ theorem dictionaryArchRHS_dictionaryMixedTest
       simp_rw [Finset.sum_mul]
       apply Finset.sum_congr rfl
       intro i hi
-      rw [Finset.sum_mul]
       apply Finset.sum_congr rfl
       intro j hj
       ring]
