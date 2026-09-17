@@ -438,3 +438,54 @@ Validation rule after #207:
 - theorem authority is exact-object specific: do not promote anything beyond the checked #207 declarations.
 
 The next theorem-validation target is quantitative Pair-D coercivity, first generically and then on the retained shifted trial, followed by composition with the #163 mixed seventh-jet/Riesz boundary package. R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+## Post-#209 validation addendum
+
+The theorem authority now advances to PR #209 while the research-only evidence anchor remains PR #205:
+
+```text
+THEOREM AUTHORITY = PR #209
+validated theorem head = a6f0e5d3db988eeaf3ed54cf283f85b8d23f5392
+merged theorem commit = e029af769e01a547ebbc6ed045509bb2cbdd6cff
+validated theorem tree = 6a75278ebf3f2bd19a77419238872cb81835ec13
+
+LATEST RESEARCH EVIDENCE = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+Evidence interpretation:
+
+```text
+Lean compiler + exact #209 import closure
+  -> PROVED for the exact #209 theorem statements
+
+PR #205 C1 executable certificate
+  -> EXACT EXECUTABLE RESEARCH / RIGOROUS FINITE SYNTHETIC COUNTERMODEL
+```
+
+The retained #209 theorem package includes
+
+```text
+evenShiftedSourceMomentMomentFour_coercive_of_even_of_not_oddBad
+evenShiftedSourceMomentMixedJet_re_le_of_even_of_not_oddBad
+evenShiftedSourceMomentMixedJet_re_neg_of_even_of_not_oddBad
+oddBad_or_sourceMomentMixedJet_re_neg_of_even
+evenShiftedRieszEight_eq_nine_iff_endpointScalar_eq_zero_of_even_of_not_oddBad
+```
+
+Validation rule after #209:
+
+- the even-selected odd-good branch is PROVED THROUGH #209;
+- quantitative Pair-D coercivity is PROVED;
+- strict sourceMoment/seventh-jet anti-alignment is PROVED under the exact #209 hypotheses;
+- the retained Riesz-8/Riesz-9 zero-boundary equivalence is PROVED;
+- `OBS-059Q` is CLOSED / PROVED BY #209;
+- `OBS-059I` is OPEN / ACTIVE;
+- the simultaneous odd-bad branch remains OPEN;
+- the odd-selected first-bad branch remains OPEN;
+- endpoint-scalar sign remains OPEN;
+- the derived magnitude budget is not yet separately formalized;
+- a future opposing sign/magnitude theorem must be genuinely independent of the odd-sector self-energy/nonnegativity argument already used by #207/#209;
+- theorem authority is exact-object specific: do not promote anything beyond the checked #209 declarations.
+
+R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
