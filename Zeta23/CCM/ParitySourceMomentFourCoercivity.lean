@@ -142,7 +142,7 @@ theorem
       (-2 * (2 * Real.pi) ^ 6) *
         (-lam * ‖euclideanEvenToOddIndexLinearMap K v‖ ^ 2) := by
           apply mul_le_mul_of_nonpos_left hcoerc
-          positivity
+          exact mul_nonpos_of_nonpos_of_nonneg (by norm_num) (by positivity)
     _ =
       2 * (2 * Real.pi) ^ 6 * lam *
         ‖euclideanEvenToOddIndexLinearMap K v‖ ^ 2 := by
