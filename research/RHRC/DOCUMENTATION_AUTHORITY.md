@@ -267,3 +267,33 @@ The old generic `genericQuadraticNormalPairing != 0 ?-> M4 != 0` next-step propo
 `RESEARCH_LEADS_POST_207_PAIR_D_SOURCE_M4_ENERGY_DELTA.md` is the newest current theorem/research delta. `OBSTRUCTION_LEDGER_POST_207_DELTA.md` records the split state of `OBS-059`. Historical post-#205 files remain historical and are not rewritten.
 
 The next theorem extraction is quantitative Pair-D coercivity `-lam * ||Dv||^2 <= re(star(sourceMoment) * M4)` and its retained specialization, followed by #163 mixed-jet/Riesz composition. `ACTION_REGISTRY.json` remains unchanged because the first-break semantics do not move. R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+## Post-#209 authority override
+
+This section supersedes the post-#207 current theorem pointer while preserving all earlier state as history.
+
+### Current theorem-state anchor
+
+```text
+latest theorem-bearing PR = #209
+validated theorem head = a6f0e5d3db988eeaf3ed54cf283f85b8d23f5392
+merged theorem commit = e029af769e01a547ebbc6ed045509bb2cbdd6cff
+validated theorem tree = 6a75278ebf3f2bd19a77419238872cb81835ec13
+```
+
+### Current research-evidence anchor
+
+```text
+latest merged research PR = #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+The three-anchor model is now: theorem authority PR #209, research-only authority PR #205, control semantic authority PR #117.
+
+PR #209 proves quantitative Pair-D coercivity, strict complete-source/seventh-jet anti-alignment on the even-negative/odd-good branch, the retained `oddBad_or_sourceMomentMixedJet_re_neg_of_even` fork, and the nondegenerate `R8 = R9 <-> endpointScalar(L,8)=0` boundary equivalence.
+
+`RESEARCH_LEADS_POST_209_PAIR_D_COERCIVITY_ANTI_ALIGNMENT_DELTA.md` is the newest current theorem/research delta. `OBSTRUCTION_LEDGER_POST_209_DELTA.md` records `OBS-059Q` as CLOSED / PROVED BY #209 and introduces `OBS-059I` as the active independent complete-functional incompatibility sub-obligation. Historical post-#207 files remain historical and are not rewritten.
+
+The next research step is not another extraction from the #207/#209 energy identity. It is a preregistered falsification search for genuinely independent complete-canonical-functional sign/magnitude information, or an independent Riesz high-order limit/sign theorem, on the same retained state.
+
+`ACTION_REGISTRY.json` remains unchanged because the first-break semantics do not move. R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. Endpoint-scalar sign, simultaneous odd-bad exclusion, odd-selected closure, negative-root exclusion and **RH remain OPEN.**
