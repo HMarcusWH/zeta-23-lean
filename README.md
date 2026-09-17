@@ -310,3 +310,42 @@ The active information gate is `OBS-059I`: find an **independent complete canoni
 The Riesz lane is reactivated/nondegenerate on the even-selected odd-good branch because #209 removes the `J7 = 0` escape hatch, but no endpoint-scalar sign or high-order Riesz limit theorem is claimed.
 
 R003 remains `DISCOVERY`; confirmatory execution is not authorized. `ACTION_REGISTRY.json`, claim IDs, route digests, action scores and first-break semantics remain unchanged. **RH remains OPEN.**
+
+## Post-#211 theorem-authority synchronization
+
+This section is the current authority override and preserves earlier post-green sections as historical ancestry.
+
+```text
+THEOREM AUTHORITY = PR #211
+validated theorem head = 704a69e41871269814ba091e9476fe76b2d09844
+merged theorem commit = dd42e6368e48957c9922a9e917e10f60a2582b9f
+validated theorem tree = a735f6149aeaa9f8358394c33fd6dcee8062f68e
+
+LATEST RESEARCH EVIDENCE = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+terminal claim = RH_OPEN
+```
+
+PR #209 remains the provenance of quantitative Pair-D coercivity, strict sourceMoment/seventh-jet anti-alignment and Riesz-8/Riesz-9 nondegeneracy. PR #211 proves the mixed dictionary bridge and the exact complete-functional representation
+
+```text
+explicitCanonicalSourceMoment L K v
+  = canonicalQuadraticNormalSourceFunctional L (quadraticNormalSourceAtom K v).
+```
+
+On the retained state the fork can now be stated as
+
+```text
+odd successor bad
+OR
+re(star(Λ_L(h_v)) * h_v^(7)(0)) < 0.
+```
+
+This is a representation/interface rewrite of the #209 obstruction, not an independent opposing sign theorem.
+
+`OBS-059I` remains **OPEN / ACTIVE**. Its representation prerequisite is CLOSED / PROVED BY #211. The next theoremization target is `SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL`: derive the exact source-coordinate integral-plus-prime representation from the theorem-authoritative `literatureRHS` and the proved endpoint identities, without prerecording guessed constants or signs.
+
+The required new information remains `INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY`. The simultaneous odd-bad branch, odd-selected first-bad branch, endpoint-scalar sign, negative-root exclusion and **RH remain OPEN.**
