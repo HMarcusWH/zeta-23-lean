@@ -146,6 +146,8 @@ import Zeta23.CCM.RegularFirstBadRieszEnergy
 import Zeta23.CCM.RegularFirstBadRieszBoundary
 import Zeta23.CCM.RegularFirstBadCrossParityRiesz
 import Zeta23.CCM.RegularFirstBadMixedSourceRigidity
+import Zeta23.CCM.ParitySourceMomentFourRigidity
+import Zeta23.CCM.RegularFirstBadParitySourceMomentRigidity
 import Zeta23.CCM.CanonicalSourcePairing
 import Zeta23.CCM.CanonicalOneStepDomination
 import Zeta23.CCM.SourceKappa
