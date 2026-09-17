@@ -95,7 +95,8 @@ theorem RegularCellMinimalNegativeEnergyCertificate.evenShiftedSourceMomentMomen
   obtain ⟨hvne, hveig⟩ := c.evenShiftedTrial_eigenmode_of_even hp
   exact
     re_star_explicitCanonicalSourceMoment_mul_momentFour_pos_of_even_negative_eigenmode_of_not_oddBad
-      c.firstBad.L_pos (c.firstBad.Nstar + 1) (by omega)
+      c.firstBad.L_pos (c.firstBad.Nstar + 1)
+      (Nat.succ_le_succ c.firstBad.one_le_Nstar)
       c.lam_neg hvne hveig hodd
 
 /-- The retained fourth centered moment cannot vanish on the odd-good branch.
