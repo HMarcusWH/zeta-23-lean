@@ -53,6 +53,7 @@ import Zeta23.CCM.DictionaryPoleLift
 import Zeta23.CCM.DictionaryPrimeLift
 import Zeta23.CCM.DictionaryArchLift
 import Zeta23.CCM.DictionaryRHSIdentity
+import Zeta23.CCM.DictionaryMixedPairing
 import Zeta23.CCM.DictionarySmoothCoreBridge
 import Zeta23.CCM.DictionarySymmetry
 import Zeta23.CCM.DictionarySmoothCorePolarization
@@ -151,6 +152,8 @@ import Zeta23.CCM.RegularFirstBadParitySourceMomentRigidity
 import Zeta23.CCM.ParitySourceMomentFourCoercivity
 import Zeta23.CCM.RegularFirstBadPairDCoercivity
 import Zeta23.CCM.CanonicalSourcePairing
+import Zeta23.CCM.CanonicalQuadraticNormalSourceFunctional
+import Zeta23.CCM.RegularFirstBadCompleteSourceFunctional
 import Zeta23.CCM.CanonicalOneStepDomination
 import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.ClaimBindings
