@@ -473,3 +473,63 @@ terminal same-state incompatibility = OPEN
 Pair B remains secondary and independent: negative-index separation versus localized critical-line sampling rigidity.
 
 The selected formal first break remains `E4A4-SCHUR-FB-05`, R003 remains `DISCOVERY`, and **RH remains OPEN.**
+
+## Post-#211 current leads
+
+### Theorem authority
+
+```text
+PR #211
+head  = 704a69e41871269814ba091e9476fe76b2d09844
+merge = dd42e6368e48957c9922a9e917e10f60a2582b9f
+tree  = a735f6149aeaa9f8358394c33fd6dcee8062f68e
+newest post-green delta = RESEARCH_LEADS_POST_211_COMPLETE_FUNCTIONAL_REPRESENTATION_DELTA.md
+```
+
+Latest research-only evidence remains PR #205.
+
+### Active lead 1 — expose the complete functional in source coordinates
+
+**Research status:** HIGHEST LEVERAGE / NEXT  
+**Formal status:** OPEN; complete-functional representation PROVED through #211
+
+The active object is now exact:
+
+```text
+Λ_L(h_v) = explicitCanonicalSourceMoment L K v
+```
+
+and the retained fork is
+
+```text
+odd successor bad
+OR
+re(star(Λ_L(h_v)) * h_v^(7)(0)) < 0.
+```
+
+The next theoremization step is `SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL`: derive the exact cancellation-preserving source-coordinate representation from `literatureRHS`. Do not freeze guessed constants or signs.
+
+### Active lead 2 — independent incompatibility
+
+**Formal status:** OPEN / OBS-059I
+
+After the kernel is exposed, preregister and falsify:
+
+```text
+SIGN
+MAGNITUDE
+RIESZ / KERNEL
+```
+
+Any successful theorem must be genuinely independent of the #207/#209 odd-sector self-energy/nonnegativity argument.
+
+### Active lead 3 — unresolved Pair-D branches
+
+```text
+canonical simultaneous odd-bad branch = OPEN
+odd-selected first-bad branch = OPEN
+endpoint-scalar sign = OPEN
+terminal same-state incompatibility = OPEN
+```
+
+Pair B remains secondary. The selected formal first break remains `E4A4-SCHUR-FB-05`; R003 remains `DISCOVERY`; **RH remains OPEN.**
