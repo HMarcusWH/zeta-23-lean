@@ -111,22 +111,13 @@ theorem inner_oddCubicCompressionVector_evenToOddIndex_eq_momentFour
         (euclideanEvenToOddIndexLinearMap K v) =
       centeredMoment K 4 (evenBoundaryFlatRawCoefficients K v) := by
   let w := euclideanEvenToOddIndexLinearMap K v
-  have hproj :
-      inner ℂ
-          ((euclideanOddBoundaryFlatSubspace K).orthogonalProjectionOnto
-            (centeredPowerVector K 3))
-          (w : EuclideanSpace ℂ (Fin (2 * K + 1))) =
-        inner ℂ (centeredPowerVector K 3)
-          (w : EuclideanSpace ℂ (Fin (2 * K + 1))) := by
-    exact
-      Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right
-        (K := euclideanOddBoundaryFlatSubspace K) w w.property
   change
     inner ℂ
         ((euclideanOddBoundaryFlatSubspace K).orthogonalProjectionOnto
           (centeredPowerVector K 3))
-        (w : EuclideanSpace ℂ (Fin (2 * K + 1))) = _
-  rw [hproj, inner_centeredPowerVector]
+        w = _
+  rw [Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right]
+  rw [inner_centeredPowerVector]
   change
     centeredMoment K 3
         ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ)
@@ -221,7 +212,6 @@ theorem re_inner_oddCompressedCanonical_evenIndex_eigenmode_eq
   change
     Complex.re (inner ℂ (oddCompressedCanonical L K w) w) = _
   rw [hinner, Complex.add_re, hfirst]
-  rfl
 
 /-- Headline generic rigidity: if the odd successor sector is good, then an
 even negative compressed eigenmode forces a strictly positive canonical
@@ -246,7 +236,7 @@ theorem re_star_explicitCanonicalSourceMoment_mul_momentFour_pos_of_even_negativ
   have hnonneg :
       0 ≤ Complex.re
         (inner ℂ (oddCompressedCanonical L K w) w) := by
-    simpa [oddCompressedCanonical, w] using
+    simpa only [oddCompressedCanonical] using
       re_inner_parityCompressedCanonical_nonnegative_of_not_parityBad
         hodd w
   have henergy :=
