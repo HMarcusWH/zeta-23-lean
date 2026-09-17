@@ -173,3 +173,45 @@ This does **not** weaken PR #197 `GLOBAL_MONOTONE_ORIENTATION / J_POSITIVE`, and
 Theorem authority remains PR #184, the selected formal first break remains `E4A4-SCHUR-FB-05`, R003 remains `DISCOVERY`, negative-root exclusion remains OPEN, and **RH remains OPEN.**
 
 See `research/RHRC/RESEARCH_LEADS_POST_203_Q14_COMPOSITE_PARITY_GAP_DELTA.md` for the current post-green state.
+
+## Post-#205 authoritative synchronization
+
+This section is the current research-state override.
+
+```text
+THEOREM AUTHORITY
+PR #184
+
+LATEST RESEARCH EVIDENCE
+PR #205
+head  = 73b78297da54b9f5b2d47584a8033356a6b2e2a8
+merge = deaa69ae190ada511cf8228f174846184673ff3a
+tree  = 3d715612eabf25a9056ab84b0c5e968f71354666
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+
+CONTROL SEMANTIC AUTHORITY
+PR #117
+selected first break = E4A4-SCHUR-FB-05
+terminal claim = RH_OPEN
+```
+
+PR #205 promotes the historical C1 radius-3 structural fixture to `EXACT EXECUTABLE RESEARCH / RIGOROUS FINITE SYNTHETIC COUNTERMODEL`. Exact values are
+
+```text
+N = 2
+K = 3
+even predecessor form = 70
+odd predecessor form  = 10
+even negative witness energy = -130
+odd negative witness energy  = -410
+selected even compressed root = -13/42
+reversal symmetric = true
+centered-index commutator = 0
+canonical_realizability = false
+```
+
+Therefore generic predecessor positivity, actual parity/boundary-flat/shell geometry, reversal symmetry and centered-index displacement structure do not exclude simultaneous even/odd successor badness. The **generic structural Pair-D lane is consumed**. Pair D itself remains active only as a **canonical-arithmetic same-state squeeze**: any successful exclusion must spend a property of the actual `canonicalSourceMatrix` absent from C1.
+
+`OBS-059` remains OPEN / ACTIVE / CANONICAL-ARITHMETIC ONLY. The canonical simultaneous-parity exclusion, `sourceMoment <-> M4` rigidity, same-state canonical composition, and odd-selected first-bad closure remain open. The next research falsifier should attack the generic quadratic-normal-defect-versus-`M4` implication before any new Lean theorem investment. Pair B remains secondary.
+
+No Lean theorem, claim registry, promoted binding, `ACTION_REGISTRY` score, first-break semantics or confirmatory status changes here. R003 remains `DISCOVERY`; negative-root exclusion remains OPEN; **RH remains OPEN.**

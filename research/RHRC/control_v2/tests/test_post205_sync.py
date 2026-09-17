@@ -7,8 +7,8 @@ RHRC = Path(__file__).resolve().parents[2]
 ROOT = RHRC.parent.parent
 
 
-class Post203SyncTests(unittest.TestCase):
-    def test_authority_split_preserves_post203_history(self):
+class Post205SyncTests(unittest.TestCase):
+    def test_authority_split_advances_research_only(self):
         state = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
@@ -20,21 +20,35 @@ class Post203SyncTests(unittest.TestCase):
         self.assertEqual(state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(state["terminal_claim"], "RH_OPEN")
 
-        note = state["control_note"]
-        for token in (
-            "Historical PR #203",
-            "c8196830a8b49e657b28d36b364e1cff68c568d6",
-            "ab660e812a78d482145eadc3e42d186a63fa812b",
-            "7360e366fe8d623ef63ca902c23522bb72935848",
-            "COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED",
-            "center_kill_switch_survives=false",
-            "full_cover_executed=false",
-            "completed_leaf_count=0",
-            "PATTERN_FALSIFIED_BEFORE_FULL_COVER",
-        ):
-            self.assertIn(token, note)
+        research = state["latest_research_evidence"]
+        self.assertEqual(research["pr"], 205)
+        self.assertEqual(
+            research["validated_head"],
+            "73b78297da54b9f5b2d47584a8033356a6b2e2a8",
+        )
+        self.assertEqual(
+            research["merge_commit"],
+            "deaa69ae190ada511cf8228f174846184673ff3a",
+        )
+        self.assertEqual(
+            research["tree"],
+            "3d715612eabf25a9056ab84b0c5e968f71354666",
+        )
+        self.assertEqual(
+            research["disposition"],
+            "PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED",
+        )
+        self.assertEqual(research["fixture"], "C1")
+        self.assertEqual(research["predecessor_N"], 2)
+        self.assertEqual(research["successor_K"], 3)
+        self.assertEqual(research["even_predecessor_form"], "70")
+        self.assertEqual(research["odd_predecessor_form"], "10")
+        self.assertEqual(research["even_witness_energy"], "-130")
+        self.assertEqual(research["odd_witness_energy"], "-410")
+        self.assertEqual(research["selected_even_root"], "-13/42")
+        self.assertFalse(research["canonical_realizability"])
 
-    def test_living_docs_advance_through_203_without_erasing_history(self):
+    def test_living_docs_advance_through_205_without_erasing_history(self):
         paths = (
             ROOT / "README.md",
             ROOT / "AUDIT.md",
@@ -61,30 +75,31 @@ class Post203SyncTests(unittest.TestCase):
                     "#199",
                     "#201",
                     "#203",
+                    "#205",
                 ):
                     self.assertIn(token, text)
+                self.assertIn("PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED", text)
                 self.assertIn("GLOBAL_MONOTONE_ORIENTATION", text)
                 self.assertIn("J_POSITIVE", text)
-                self.assertIn("SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED", text)
-                self.assertIn("DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED", text)
-                self.assertIn("COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED", text)
                 self.assertIn("RH remains OPEN", text)
 
-    def test_current_plan_consumes_pair_a_representation_engineering(self):
+    def test_current_plan_routes_pair_d_to_canonical_arithmetic(self):
         text = (RHRC / "CURRENT_RESEARCH_PLAN.md").read_text(encoding="utf-8")
         for token in (
-            "latest merged research PR = #203",
-            "COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED",
-            "center_kill_switch_survives = false",
-            "full_cover_executed = false",
-            "completed_leaf_count = 0",
-            "PATTERN_FALSIFIED_BEFORE_FULL_COVER",
-            "Pair-A representation engineering = CONSUMED / DOWNGRADED",
-            "Pair D — two-parity squeeze = HIGHEST INFORMATION / NEXT RESEARCH ROUTE",
-            "Pair B — negative-index separation vs localized critical-line sampling rigidity = SECONDARY",
-            "OBS-059",
-            "simultaneous even/odd bad exclusion",
-            "sourceMoment <-> M4 rigidity",
+            "latest merged research PR = #205",
+            "PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED",
+            "even predecessor form = 70 > 0",
+            "odd predecessor form  = 10 > 0",
+            "even successor witness energy = -130",
+            "odd successor witness energy  = -410",
+            "selected even compressed root = -13/42",
+            "canonical_realizability = false",
+            "OBS-059 OPEN / ACTIVE / CANONICAL-ARITHMETIC ONLY",
+            "generic structural Pair-D simultaneous-bad exclusion = EXACTLY FALSIFIED BY #205 C1",
+            "Pair D canonical-arithmetic squeeze = HIGHEST INFORMATION / ACTIVE",
+            "Pair B negative-index vs localized critical-line sampling rigidity = SECONDARY",
+            "genericQuadraticNormalPairing",
+            "sourceMoment <-> M4",
             "odd-selected first-bad closure",
         ):
             self.assertIn(token, text)
@@ -100,13 +115,15 @@ class Post203SyncTests(unittest.TestCase):
         self.assertIsNone(route["boundary_digest"])
         note = route["note"]
         for token in (
-            "PR #203",
-            "COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED",
-            "center_kill_switch_survives=false",
-            "full_cover_executed=false",
-            "completed_leaf_count=0",
-            "PATTERN_FALSIFIED_BEFORE_FULL_COVER",
-            "Pair D",
+            "PR #205",
+            "PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED",
+            "even predecessor form 70",
+            "odd predecessor form 10",
+            "even successor witness energy -130",
+            "odd successor witness energy -410",
+            "selected even compressed root -13/42",
+            "canonical_realizability=false",
+            "genericQuadraticNormalPairing",
             "Pair B",
             "OBS-059",
             "No claim_ids are changed by this synchronization",
@@ -136,24 +153,24 @@ class Post203SyncTests(unittest.TestCase):
         )
         self.assertEqual([b["id"] for b in action["first_breaks"]], ["E4A4-SCHUR-FB-05"])
 
-    def test_validation_protocol_records_falsification_and_rational_conversion_rule(self):
-        text = (RHRC / "VALIDATION_PROTOCOL.md").read_text(encoding="utf-8")
+    def test_countermodel_registry_promotes_only_c1(self):
+        text = (RHRC / "countermodels" / "README.md").read_text(encoding="utf-8")
         for token in (
-            "PR #203",
-            "COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED",
-            "SUCCESSFUL FALSIFICATION RESEARCH",
-            "exact rational",
-            "Integer-only conversion helpers are forbidden",
-            "G=O-E",
-            "GLOBAL_MONOTONE_ORIENTATION",
-            "J_POSITIVE",
-            "theorem authority remains #184",
+            "Post-#205 executable C1 promotion",
+            "PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED",
+            "check_post204_pair_d_exact_geometry.py",
+            "check_post204_pair_d_scope.py",
+            "certify_post204_pair_d_structural_countermodel.py",
+            "EXACT EXECUTABLE RESEARCH",
+            "RIGOROUS FINITE SYNTHETIC COUNTERMODEL",
+            "does not recover the missing original 37-case oracle",
+            "canonicalSourceMatrix",
         ):
             self.assertIn(token, text)
 
-    def test_post203_delta_has_required_post_green_sections(self):
+    def test_post205_delta_has_required_post_green_sections(self):
         text = (
-            RHRC / "RESEARCH_LEADS_POST_203_Q14_COMPOSITE_PARITY_GAP_DELTA.md"
+            RHRC / "RESEARCH_LEADS_POST_205_PAIR_D_STRUCTURAL_COUNTERMODEL_DELTA.md"
         ).read_text(encoding="utf-8")
         for heading in (
             "# What became formally true",
@@ -169,42 +186,46 @@ class Post203SyncTests(unittest.TestCase):
         ):
             self.assertIn(heading, text)
         for token in (
-            "COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED",
-            "PATTERN_FALSIFIED_BEFORE_FULL_COVER",
-            "GLOBAL_MONOTONE_ORIENTATION",
-            "DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED",
-            "Pair D",
+            "PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED",
+            "canonical_realizability = false",
+            "genericQuadraticNormalPairing",
+            "canonical sourceMoment <-> M4 rigidity",
             "Pair B",
             "RH remains OPEN",
         ):
             self.assertIn(token, text)
 
-    def test_obstruction_delta_promotes_obs059_without_overclaim(self):
-        text = (RHRC / "OBSTRUCTION_LEDGER_POST_203_DELTA.md").read_text(encoding="utf-8")
+    def test_obstruction_delta_narrows_obs059_without_closing_it(self):
+        text = (RHRC / "OBSTRUCTION_LEDGER_POST_205_DELTA.md").read_text(encoding="utf-8")
         for token in (
             "OBS-056",
             "OBS-057",
             "OBS-058",
             "OBS-059",
-            "OPEN / ACTIVE / HIGHEST INFORMATION",
-            "COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED",
-            "simultaneous even/odd bad exclusion",
-            "sourceMoment <-> M4",
+            "OPEN / ACTIVE / CANONICAL-ARITHMETIC ONLY",
+            "EXACTLY FALSIFIED BY #205 C1",
+            "canonical simultaneous even/odd bad exclusion",
+            "canonical sourceMoment <-> M4 rigidity",
+            "same-state canonical arithmetic composition",
+            "odd-selected first-bad closure",
             "RH remains OPEN",
         ):
             self.assertIn(token, text)
 
-    def test_dead_route_delta_blocks_post_hoc_pair_a_rescue(self):
-        text = (RHRC / "DEAD_ROUTES_POST_203_DELTA.md").read_text(encoding="utf-8")
+    def test_dead_route_delta_strengthens_existing_routes_only(self):
+        text = (RHRC / "DEAD_ROUTES_POST_205_DELTA.md").read_text(encoding="utf-8")
         for token in (
-            "DR-020",
+            "DR-012",
+            "DR-013",
+            "does not introduce a new dead-route family",
+            "even predecessor form = 70",
+            "odd predecessor form = 10",
+            "even witness energy = -130",
+            "odd witness energy = -410",
+            "selected even compressed root = -13/42",
+            "canonical sourceMoment <-> M4 rigidity",
             "DR-028",
-            "COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED",
-            "post-hoc",
-            "revival requirement",
-            "Pair D",
-            "Pair B",
-            "RH remains OPEN",
+            "RH remain OPEN",
         ):
             self.assertIn(token.lower(), text.lower())
 

@@ -500,3 +500,141 @@ NEXT:
 ```
 
 Theorem authority remains #184. R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+---
+
+# Post-#205 authoritative execution state
+
+This section is now the current execution SSOT and supersedes the post-#203 `LATEST RESEARCH EVIDENCE` and Pair-D-next wording above while preserving it as history.
+
+## Current authority through #205
+
+```text
+THEOREM AUTHORITY
+latest theorem-bearing PR = #184
+validated theorem head = a756494ebe7e2530715e996b9a9a341fbe07c683
+merged theorem commit = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
+validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
+
+LATEST RESEARCH EVIDENCE
+latest merged research PR = #205
+validated research head = 73b78297da54b9f5b2d47584a8033356a6b2e2a8
+merged research commit = deaa69ae190ada511cf8228f174846184673ff3a
+validated research tree = 3d715612eabf25a9056ab84b0c5e968f71354666
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+
+CONTROL AUTHORITY
+control-plane semantic anchor = PR #117
+selected formal first break = E4A4-SCHUR-FB-05
+terminal claim = RH_OPEN
+```
+
+## PR #205 — exact C1 Pair-D structural countermodel
+
+Evidence class:
+
+```text
+EXACT EXECUTABLE RESEARCH
+RIGOROUS FINITE SYNTHETIC COUNTERMODEL
+```
+
+Exact certified data:
+
+```text
+fixture = C1
+N = 2
+K = 3
+q_by_abs_index = (1,1,1,-10)
+
+even predecessor form = 70 > 0
+odd predecessor form  = 10 > 0
+
+even successor witness energy = -130
+odd successor witness energy  = -410
+
+selected even compressed root = -13/42
+reversal_symmetric = true
+centered_index_commutator_zero = true
+canonical_realizability = false
+```
+
+Interpretation:
+
+```text
+generic predecessor positivity
++ actual radius-3 parity/boundary-flat/shell geometry
++ reversal symmetry
++ centered-index displacement commutation
+  -/-> exclusion of simultaneous even/odd successor badness
+```
+
+This does not show simultaneous badness for `canonicalSourceMatrix`, does not refute a Lean theorem, and does not close FB-05.
+
+## NOW — FB-05 / canonical-arithmetic Pair D
+
+```text
+OBS-056 CLOSED in exact frozen Q14 research scope
+OBS-057 OPEN / narrowed through consumed Pair-A sequence
+OBS-058 OPEN / source-representation lane consumed as default
+OBS-059 OPEN / ACTIVE / CANONICAL-ARITHMETIC ONLY
+
+Pair-A representation engineering = CONSUMED / DOWNGRADED
+generic structural Pair-D simultaneous-bad exclusion = EXACTLY FALSIFIED BY #205 C1
+Pair D canonical-arithmetic squeeze = HIGHEST INFORMATION / ACTIVE
+Pair B negative-index vs localized critical-line sampling rigidity = SECONDARY
+```
+
+Remaining Pair-D obligations:
+
+```text
+canonical simultaneous even/odd bad exclusion             OPEN
+canonical sourceMoment <-> M4 rigidity                     OPEN
+same-state canonical composition                           OPEN
+odd-selected first-bad closure                             OPEN
+```
+
+#205 strengthens DR-012 and DR-013; it does not require a new dead-route identifier.
+
+## Highest-information next research falsifier
+
+Before theoremizing a canonical `explicitCanonicalSourceMoment` / `M4` bridge, test the generic analogue on the same exact radius-3 structural geometry:
+
+```text
+genericQuadraticNormalPairing != 0
+  ?-> M4 != 0
+```
+
+Rules:
+
+```text
+- use exact rational arithmetic;
+- use a neutral generic observable name;
+- do not call a synthetic pairing explicitCanonicalSourceMoment;
+- no canonical-realizability claim;
+- no adaptive target fitting;
+- if an exact generic countermodel exists, consume only the generic bridge;
+- the surviving theorem target must then be genuinely canonical arithmetic.
+```
+
+Do not launch a large Lean proof before this cheap falsification gate.
+
+## Post-#205 validation/routing rule
+
+```text
+STOP:
+  generic parity/shell/displacement exclusion of simultaneous badness
+  another generic Hermitian/KKT lemma that C1 satisfies
+  another Pair-A representation refit
+
+PRESERVE:
+  #184 theorem authority
+  #197 bounded J_POSITIVE
+  #203 Pair-A composite falsification
+  #205 exact C1 countermodel infrastructure
+
+NEXT:
+  exact generic defect-versus-M4 falsifier
+  then identify the canonical pole/archimedean/prime property excluding surviving generic models
+```
+
+R003 remains `DISCOVERY`; confirmatory execution is not authorized. `ACTION_REGISTRY.json` semantics do not change. Negative-root exclusion remains OPEN. **RH remains OPEN.**

@@ -375,3 +375,67 @@ Negative-index separation versus localized critical-line sampling rigidity remai
 ```
 
 Theorem authority remains #184. The selected formal first break remains `E4A4-SCHUR-FB-05`. R003 remains `DISCOVERY`; no confirmatory execution is authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+---
+
+## Post-#205 Pair-D canonical-arithmetic settlement
+
+PR #205 upgrades historical fixture C1 to exact executable research:
+
+```text
+PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+N = 2
+K = 3
+q_by_abs_index = (1,1,1,-10)
+even predecessor form = 70 > 0
+odd predecessor form = 10 > 0
+even successor witness energy = -130
+odd successor witness energy = -410
+selected even compressed root = -13/42
+reversal_symmetric = true
+centered_index_commutator_zero = true
+canonical_realizability = false
+```
+
+Evidence class: `EXACT EXECUTABLE RESEARCH / RIGOROUS FINITE SYNTHETIC COUNTERMODEL`.
+
+### Pair D — ACTIVE, CANONICAL-ARITHMETIC ONLY
+
+The generic structural version is consumed:
+
+```text
+predecessor positivity
++ actual radius-3 parity/boundary-flat/shell geometry
++ reversal symmetry
++ centered-index displacement commutation
+  -/-> simultaneous-parity exclusion
+```
+
+Therefore a successful Pair-D theorem must spend an independently meaningful property of the actual `canonicalSourceMatrix` that C1 lacks. The exact retained-state #161 fork remains:
+
+```text
+opposite parity bad
+OR
+explicitCanonicalSourceMoment != 0
+```
+
+but #205 shows that the first branch cannot be removed by generic parity/shell/displacement structure alone.
+
+### Remaining active Pair-D obligations
+
+```text
+canonical simultaneous even/odd bad exclusion      OPEN
+canonical sourceMoment <-> M4 rigidity              OPEN
+same-state canonical arithmetic composition         OPEN
+odd-selected first-bad closure                      OPEN
+```
+
+Before theoremizing the source-moment/M4 bridge, run a cheap exact generic falsifier for the neutral structural implication
+
+```text
+genericQuadraticNormalPairing != 0 ?-> M4 != 0
+```
+
+Do not call a synthetic pairing `explicitCanonicalSourceMoment`; that name is reserved for the actual canonical pole/archimedean/prime formula. If a generic exact countermodel exists, consume only the generic bridge and sharpen the surviving target to canonical arithmetic.
+
+#205 strengthens the existing DR-012/DR-013 firewalls; it does not create a new dead-route family. Pair B remains secondary. The formal first break remains `E4A4-SCHUR-FB-05`; theorem authority remains #184; R003 remains `DISCOVERY`; negative-root exclusion and **RH remain OPEN.**
