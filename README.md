@@ -260,3 +260,53 @@ The planned neutral `genericQuadraticNormalPairing != 0 ?-> M4 != 0` falsifier i
 first generically and then on the retained shifted trial, followed by composition with the #163 mixed seventh-jet/Riesz boundary package.
 
 R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+## Post-#209 theorem-authority synchronization
+
+This section supersedes the post-#207 current-frontier wording while preserving all earlier sections as historical ancestry.
+
+```text
+THEOREM AUTHORITY = PR #209
+validated theorem head = a6f0e5d3db988eeaf3ed54cf283f85b8d23f5392
+merged theorem commit = e029af769e01a547ebbc6ed045509bb2cbdd6cff
+validated theorem tree = 6a75278ebf3f2bd19a77419238872cb81835ec13
+
+LATEST RESEARCH EVIDENCE = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+terminal claim = RH_OPEN
+```
+
+PR #209 proves the quantitative Pair-D coercive law and its exact mixed-source reformulation:
+
+```text
+-lam * ||Dv||^2 <= re(star(sourceMoment) * M4)
+re(star(sourceMoment) * h^(7)(0))
+  <= 2*(2*pi)^6*lam*||Dv||^2
+```
+
+and on a genuine negative eigenmode with odd successor good,
+
+```text
+re(star(sourceMoment) * h^(7)(0)) < 0.
+```
+
+The retained theorem package includes
+
+```text
+evenShiftedSourceMomentMomentFour_coercive_of_even_of_not_oddBad
+evenShiftedSourceMomentMixedJet_re_le_of_even_of_not_oddBad
+evenShiftedSourceMomentMixedJet_re_neg_of_even_of_not_oddBad
+oddBad_or_sourceMomentMixedJet_re_neg_of_even
+evenShiftedRieszEight_eq_nine_iff_endpointScalar_eq_zero_of_even_of_not_oddBad
+```
+
+Hence the even-selected + odd-good retained branch is **PROVED THROUGH #209**. `OBS-059Q` is CLOSED / PROVED BY #209. The simultaneous odd-bad branch, odd-selected first-bad branch, endpoint-scalar sign, terminal FB-05 incompatibility and negative-root exclusion remain OPEN.
+
+The active information gate is `OBS-059I`: find an **independent complete canonical functional incompatibility** with the #209 anti-alignment or compulsory magnitude budget on the same retained state. Do not count a rearrangement of the same odd-sector self-energy identity as independent information, and do not return to source-component interval chopping without a theorem preserving cancellation.
+
+The Riesz lane is reactivated/nondegenerate on the even-selected odd-good branch because #209 removes the `J7 = 0` escape hatch, but no endpoint-scalar sign or high-order Riesz limit theorem is claimed.
+
+R003 remains `DISCOVERY`; confirmatory execution is not authorized. `ACTION_REGISTRY.json`, claim IDs, route digests, action scores and first-break semantics remain unchanged. **RH remains OPEN.**
