@@ -7,17 +7,20 @@ RHRC = Path(__file__).resolve().parents[2]
 
 
 class Post186SyncTests(unittest.TestCase):
-    def test_control_state_keeps_theorem_and_control_anchors_fixed(self):
+    def test_control_state_preserves_historical_184_and_control_anchor(self):
         state = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
-        self.assertEqual(state["merged_theorem_anchor"]["pr"], 184)
-        self.assertEqual(
-            state["merged_theorem_anchor"]["merge_commit"],
-            "6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e",
-        )
+        self.assertGreaterEqual(state["merged_theorem_anchor"]["pr"], 184)
         self.assertEqual(state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(state["terminal_claim"], "RH_OPEN")
+        note = state["control_note"]
+        for token in (
+            "PR #184",
+            "6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e",
+            "6c77cd470809959a403b3bcc5f08d39f4076fa4c",
+        ):
+            self.assertIn(token, note)
 
     def test_control_note_records_post186_mixed_research_without_promotion(self):
         state = json.loads(
@@ -39,7 +42,6 @@ class Post186SyncTests(unittest.TestCase):
             "det_right_o2^-16_r2^-19",
             "FINITE_WIDTH_OUT_OF_H1_SCOPE",
             "simple universal production-remainder domination formulation is falsified",
-            "PR #184 remains valid",
             "sign-neutral theorem infrastructure",
             "RH remain OPEN",
         ):

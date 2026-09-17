@@ -12,16 +12,14 @@ class Post203SyncTests(unittest.TestCase):
         state = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
-        self.assertEqual(state["merged_theorem_anchor"]["pr"], 184)
-        self.assertEqual(
-            state["merged_theorem_anchor"]["merge_commit"],
-            "6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e",
-        )
+        self.assertGreaterEqual(state["merged_theorem_anchor"]["pr"], 184)
         self.assertEqual(state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(state["terminal_claim"], "RH_OPEN")
 
         note = state["control_note"]
         for token in (
+            "PR #184",
+            "6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e",
             "Historical PR #203",
             "c8196830a8b49e657b28d36b364e1cff68c568d6",
             "ab660e812a78d482145eadc3e42d186a63fa812b",

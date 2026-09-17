@@ -215,3 +215,48 @@ Therefore generic predecessor positivity, actual parity/boundary-flat/shell geom
 `OBS-059` remains OPEN / ACTIVE / CANONICAL-ARITHMETIC ONLY. The canonical simultaneous-parity exclusion, `sourceMoment <-> M4` rigidity, same-state canonical composition, and odd-selected first-bad closure remain open. The next research falsifier should attack the generic quadratic-normal-defect-versus-`M4` implication before any new Lean theorem investment. Pair B remains secondary.
 
 No Lean theorem, claim registry, promoted binding, `ACTION_REGISTRY` score, first-break semantics or confirmatory status changes here. R003 remains `DISCOVERY`; negative-root exclusion remains OPEN; **RH remains OPEN.**
+
+## Post-#207 theorem-authority synchronization
+
+This section supersedes the earlier theorem/frontier wording while preserving it as history.
+
+```text
+THEOREM AUTHORITY = PR #207
+validated theorem head = 7e186ede13beece95e8a08b2449cd3accbe5b2f5
+merged theorem commit = 76cf4e3b5ef4b7ab904a861b6d4cb01fdcd8d0e0
+validated theorem tree = d6509407cc7b667b0ff3e7faab2acd525ae32db9
+
+LATEST RESEARCH EVIDENCE = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+terminal claim = RH_OPEN
+```
+
+PR #207 proves the exact canonical Pair-D self-energy identity and, on an even negative compressed eigenmode with the odd sector good,
+
+```text
+0 < re(star(explicitCanonicalSourceMoment) * M4).
+```
+
+On the retained even-selected first-bad state the theorem package includes
+
+```text
+evenShiftedSourceMomentMomentFour_re_pos_of_even_of_not_oddBad
+evenShiftedMomentFour_ne_zero_of_even_of_not_oddBad
+evenShiftedMixedSourceSeventhJet_ne_zero_of_even_of_not_oddBad
+oddBad_or_sourceMomentMomentFour_re_pos_of_even
+```
+
+Thus the even-selected + odd-good retained branch is **PROVED THROUGH #207**. The canonical simultaneous odd-bad branch remains OPEN, the odd-selected first-bad branch remains OPEN, and no unconditional `sourceMoment -> M4` implication is proved.
+
+The planned neutral `genericQuadraticNormalPairing != 0 ?-> M4 != 0` falsifier is **SUPERSEDED / UNNECESSARY** as the next gate; it was not executed and is not a dead route. The highest-information next theorem extraction is the quantitative coercive bound
+
+```text
+-lam * ||Dv||^2 <= re(star(sourceMoment) * M4)
+```
+
+first generically and then on the retained shifted trial, followed by composition with the #163 mixed seventh-jet/Riesz boundary package.
+
+R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**

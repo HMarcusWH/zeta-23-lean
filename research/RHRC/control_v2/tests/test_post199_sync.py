@@ -8,19 +8,16 @@ ROOT = RHRC.parent.parent
 
 
 class Post199SyncTests(unittest.TestCase):
-    def test_authority_split_advances_research_only(self):
+    def test_authority_split_preserves_post199_history(self):
         state = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
-        self.assertEqual(state["merged_theorem_anchor"]["pr"], 184)
-        self.assertEqual(
-            state["merged_theorem_anchor"]["merge_commit"],
-            "6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e",
-        )
+        self.assertGreaterEqual(state["merged_theorem_anchor"]["pr"], 184)
         self.assertEqual(state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(state["terminal_claim"], "RH_OPEN")
         note = state["control_note"]
         for token in (
+            "PR #184",
             "PR #199",
             "fabe301c95277345f0efe764252ce1c1213a4112",
             "27dda545b7ccdb2870088ebaf317d85e3d999555",

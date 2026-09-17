@@ -439,3 +439,64 @@ genericQuadraticNormalPairing != 0 ?-> M4 != 0
 Do not call a synthetic pairing `explicitCanonicalSourceMoment`; that name is reserved for the actual canonical pole/archimedean/prime formula. If a generic exact countermodel exists, consume only the generic bridge and sharpen the surviving target to canonical arithmetic.
 
 #205 strengthens the existing DR-012/DR-013 firewalls; it does not create a new dead-route family. Pair B remains secondary. The formal first break remains `E4A4-SCHUR-FB-05`; theorem authority remains #184; R003 remains `DISCOVERY`; negative-root exclusion and **RH remain OPEN.**
+
+---
+
+## Post-#207 Pair-D theorem settlement
+
+```text
+THEOREM AUTHORITY = PR #207
+validated theorem head = 7e186ede13beece95e8a08b2449cd3accbe5b2f5
+merged theorem commit = 76cf4e3b5ef4b7ab904a861b6d4cb01fdcd8d0e0
+validated theorem tree = d6509407cc7b667b0ff3e7faab2acd525ae32db9
+LATEST RESEARCH EVIDENCE = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+### PROVED — even-selected odd-good source/M4 orientation
+
+PR #207 proves the exact canonical self-energy identity and the retained theorem package
+
+```text
+evenShiftedSourceMomentMomentFour_re_pos_of_even_of_not_oddBad
+evenShiftedMomentFour_ne_zero_of_even_of_not_oddBad
+evenShiftedMixedSourceSeventhJet_ne_zero_of_even_of_not_oddBad
+oddBad_or_sourceMomentMomentFour_re_pos_of_even
+```
+
+Thus on the retained even-selected state:
+
+```text
+opposite parity bad
+OR
+0 < re(star(explicitCanonicalSourceMoment) * M4).
+```
+
+On the odd-good branch the source moment, `M4`, and the mixed seventh source jet are all nonzero. This is actual canonical arithmetic unavailable to C1.
+
+### OPEN branches
+
+```text
+canonical simultaneous odd-bad branch        OPEN
+odd-selected first-bad branch                 OPEN
+terminal same-state incompatibility           OPEN
+negative-root exclusion                       OPEN
+```
+
+There is still no unconditional theorem `explicitCanonicalSourceMoment != 0 -> M4 != 0`.
+
+### Superseded generic gate
+
+The proposed `genericQuadraticNormalPairing != 0 ?-> M4 != 0` falsifier is **SUPERSEDED / UNNECESSARY** as the next step. It was not run, so it is not a falsified or dead route.
+
+### Highest-leverage next theorem
+
+The #207 proof structure suggests the quantitative coercive inequality
+
+```text
+-lam * ||Dv||^2 <= re(star(sourceMoment) * M4),
+```
+
+which is DERIVED but not yet separately formalized. Formalize it generically, specialize to the retained `evenShiftedTrial`, then compose with #163's exact seventh mixed-source jet and Riesz-8/Riesz-9 boundary identities. The desired next information is an independent upper bound or incompatibility on the same canonical state, not another factorwise nonvanishing lemma.
+
+Pair B remains secondary. The selected first break remains `E4A4-SCHUR-FB-05`; R003 remains `DISCOVERY`; **RH remains OPEN.**

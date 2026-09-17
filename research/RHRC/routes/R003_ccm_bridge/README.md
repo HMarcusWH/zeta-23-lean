@@ -122,3 +122,37 @@ The next cheap falsifier is the generic quadratic-normal-defect-versus-`M4` impl
 `OBS-059` remains `OPEN / ACTIVE / CANONICAL-ARITHMETIC ONLY`. Pair B remains secondary. DR-012 and DR-013 are strengthened by #205 rather than replaced by a new dead-route identifier.
 
 No claim_ids are changed. Theorem authority remains #184. R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+## Post-#207 active theorem frontier
+
+```text
+Lean theorem authority = PR #207
+validated theorem head = 7e186ede13beece95e8a08b2449cd3accbe5b2f5
+merged theorem commit = 76cf4e3b5ef4b7ab904a861b6d4cb01fdcd8d0e0
+validated theorem tree = d6509407cc7b667b0ff3e7faab2acd525ae32db9
+latest research evidence = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+PR #207 proves the exact canonical sourceMoment/`M4` energy orientation on the even-selected odd-good branch. The retained theorem names are
+
+```text
+evenShiftedSourceMomentMomentFour_re_pos_of_even_of_not_oddBad
+evenShiftedMomentFour_ne_zero_of_even_of_not_oddBad
+evenShiftedMixedSourceSeventhJet_ne_zero_of_even_of_not_oddBad
+oddBad_or_sourceMomentMomentFour_re_pos_of_even
+```
+
+Therefore the current Pair-D state is:
+
+```text
+generic structural simultaneous-bad lane = consumed by #205
+even-selected odd-good branch = PROVED THROUGH #207
+simultaneous odd-bad branch remains open
+odd-selected first-bad branch remains open
+unconditional sourceMoment -> M4 implication = NOT PROVED
+```
+
+The old `genericQuadraticNormalPairing != 0 ?-> M4 != 0` falsifier is **SUPERSEDED / UNNECESSARY** as the next gate. The next theorem extraction is the quantitative coercive lower bound `-lam * ||Dv||^2 <= re(star(sourceMoment) * M4)`, then composition with #163 mixed-jet/Riesz boundary structure.
+
+No claim_ids are changed by this synchronization. R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**

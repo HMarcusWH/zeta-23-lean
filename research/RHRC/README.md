@@ -97,3 +97,30 @@ Evidence class: `EXACT EXECUTABLE RESEARCH / RIGOROUS FINITE SYNTHETIC COUNTERMO
 This consumes the **generic structural** version of Pair D. The active route is now Pair D in a narrower form: **same-state canonical-arithmetic two-parity squeeze**. Any successful simultaneous-badness exclusion must spend an actual canonical-source property absent from C1. `OBS-059` remains OPEN / ACTIVE / CANONICAL-ARITHMETIC ONLY.
 
 The next cheap falsifier should test the generic quadratic-normal-defect-versus-`M4` implication before theoremizing a canonical sourceMoment/`M4` bridge. Pair B remains secondary. R003 remains `DISCOVERY`; `E4A4-SCHUR-FB-05` remains the formal first break; theorem authority remains #184; **RH remains OPEN.**
+
+## Post-#207 authoritative theorem update
+
+```text
+THEOREM AUTHORITY = PR #207
+validated theorem head = 7e186ede13beece95e8a08b2449cd3accbe5b2f5
+merged theorem commit = 76cf4e3b5ef4b7ab904a861b6d4cb01fdcd8d0e0
+validated theorem tree = d6509407cc7b667b0ff3e7faab2acd525ae32db9
+
+LATEST RESEARCH EVIDENCE = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+The #207 theorem package proves, on the exact retained even-selected odd-good branch,
+
+```text
+evenShiftedSourceMomentMomentFour_re_pos_of_even_of_not_oddBad
+evenShiftedMomentFour_ne_zero_of_even_of_not_oddBad
+evenShiftedMixedSourceSeventhJet_ne_zero_of_even_of_not_oddBad
+oddBad_or_sourceMomentMomentFour_re_pos_of_even
+```
+
+Consequently `re(star(sourceMoment) * M4) > 0`, the canonical source moment is nonzero, `M4` is nonzero, and the mixed seventh source jet is nonzero on that branch. The simultaneous odd-bad branch and the odd-selected first-bad branch remain OPEN.
+
+The planned `genericQuadraticNormalPairing != 0 ?-> M4 != 0` falsifier is **SUPERSEDED / UNNECESSARY** as the next gate. No unconditional `sourceMoment -> M4` theorem has been proved. The next high-information theorem target is the quantitative coercivity bound `-lam * ||Dv||^2 <= re(star(sourceMoment) * M4)` and its retained specialization, followed by #163 mixed-jet/Riesz composition.
+
+R003 remains `DISCOVERY`; confirmatory execution is not authorized. `E4A4-SCHUR-FB-05` remains the formal first break. Negative-root exclusion remains OPEN. **RH remains OPEN.**

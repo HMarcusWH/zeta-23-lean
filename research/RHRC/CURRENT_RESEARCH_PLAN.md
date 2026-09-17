@@ -638,3 +638,71 @@ NEXT:
 ```
 
 R003 remains `DISCOVERY`; confirmatory execution is not authorized. `ACTION_REGISTRY.json` semantics do not change. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+---
+
+# Post-#207 authoritative execution state
+
+This section is now the current execution SSOT and supersedes the post-#205 theorem/frontier wording above while preserving it as history.
+
+```text
+THEOREM AUTHORITY = PR #207
+validated theorem head = 7e186ede13beece95e8a08b2449cd3accbe5b2f5
+merged theorem commit = 76cf4e3b5ef4b7ab904a861b6d4cb01fdcd8d0e0
+validated theorem tree = d6509407cc7b667b0ff3e7faab2acd525ae32db9
+
+LATEST RESEARCH EVIDENCE = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+
+CONTROL AUTHORITY = PR #117
+selected formal first break = E4A4-SCHUR-FB-05
+terminal claim = RH_OPEN
+```
+
+## What #207 proves
+
+On an even compressed negative eigenmode, the centered-index odd image satisfies the exact canonical self-energy identity. If the odd successor sector is good, PR #207 proves a strictly positive sourceMoment/`M4` Hermitian pairing.
+
+The retained theorem package includes:
+
+```text
+evenShiftedSourceMomentMomentFour_re_pos_of_even_of_not_oddBad
+evenShiftedMomentFour_ne_zero_of_even_of_not_oddBad
+evenShiftedMixedSourceSeventhJet_ne_zero_of_even_of_not_oddBad
+oddBad_or_sourceMomentMomentFour_re_pos_of_even
+```
+
+The current Pair-D split is:
+
+```text
+generic structural simultaneous-bad exclusion = FALSIFIED / CONSUMED BY #205
+even-selected + odd-good retained branch = PROVED THROUGH #207
+canonical simultaneous odd-bad branch = OPEN
+odd-selected first-bad branch = OPEN
+unconditional sourceMoment -> M4 implication = NOT PROVED
+terminal FB-05 incompatibility = OPEN
+```
+
+The planned `genericQuadraticNormalPairing != 0 ?-> M4 != 0` experiment is **SUPERSEDED / UNNECESSARY** as the next gate. It was not run and is not a dead route.
+
+## Highest-information next theorem
+
+The #207 proof already contains the inequalities needed for the DERIVED coercive statement
+
+```text
+-lam * ||Dv||^2 <= re(star(sourceMoment) * M4)
+```
+
+under the same even-negative-eigenmode + odd-good hypotheses. This quantitative coercivity is not yet separately formalized.
+
+Next:
+
+```text
+1. formalize quantitative coercivity generically;
+2. specialize it to c.evenShiftedTrial;
+3. compose with #163 mixed seventh-jet / Riesz-8 / Riesz-9 boundary identities;
+4. look for an independent canonical upper bound or incompatibility on the same state;
+5. keep the simultaneous odd-bad and odd-selected branches explicitly open.
+```
+
+R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**

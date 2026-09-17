@@ -349,3 +349,63 @@ Pair B remains secondary and independent: negative-index separation versus local
 `OBS-059` remains `OPEN / ACTIVE / CANONICAL-ARITHMETIC ONLY`. Generic simultaneous-parity exclusion is exact-executably falsified by C1; canonical simultaneous-parity exclusion, canonical `sourceMoment <-> M4` rigidity, same-state canonical composition, and odd-selected first-bad closure remain open.
 
 DR-012 and DR-013 are strengthened by #205; no new dead-route identifier is required. Theorem authority remains #184, R003 remains `DISCOVERY`, and **RH remains OPEN.**
+
+## Post-#207 current leads
+
+### Theorem authority
+
+```text
+PR #207
+head  = 7e186ede13beece95e8a08b2449cd3accbe5b2f5
+merge = 76cf4e3b5ef4b7ab904a861b6d4cb01fdcd8d0e0
+tree  = d6509407cc7b667b0ff3e7faab2acd525ae32db9
+newest post-green delta = RESEARCH_LEADS_POST_207_PAIR_D_SOURCE_M4_ENERGY_DELTA.md
+```
+
+Latest research-only evidence remains PR #205 with `PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED`.
+
+### Active lead 1 — Pair-D quantitative coercivity
+
+**Research status:** HIGHEST LEVERAGE / NEXT  
+**Formal status:** DERIVED LEAD; qualitative orientation PROVED through #207
+
+PR #207 proves the retained theorem package
+
+```text
+evenShiftedSourceMomentMomentFour_re_pos_of_even_of_not_oddBad
+evenShiftedMomentFour_ne_zero_of_even_of_not_oddBad
+evenShiftedMixedSourceSeventhJet_ne_zero_of_even_of_not_oddBad
+oddBad_or_sourceMomentMomentFour_re_pos_of_even
+```
+
+Thus the even-selected + odd-good branch is PROVED THROUGH #207: `re(star(sourceMoment) * M4) > 0`, sourceMoment != 0, M4 != 0, and the mixed seventh jet != 0.
+
+The next theorem extraction is the quantitative statement already latent in the proof:
+
+```text
+-lam * ||Dv||^2 <= re(star(sourceMoment) * M4).
+```
+
+Then specialize it to the retained `evenShiftedTrial` and compose it with the #163 mixed seventh-jet/Riesz boundary identity.
+
+### Active lead 2 — unresolved Pair-D branches
+
+**Formal status:** OPEN
+
+```text
+canonical simultaneous odd-bad branch = OPEN
+odd-selected first-bad branch = OPEN
+terminal same-state incompatibility = OPEN
+```
+
+No WLOG-even reduction is available.
+
+### Superseded gate
+
+The planned neutral `genericQuadraticNormalPairing != 0 ?-> M4 != 0` experiment is **SUPERSEDED / UNNECESSARY** as the next step. It was not executed and is not a dead route. No unconditional `sourceMoment -> M4` implication has been proved.
+
+### Pair B
+
+Pair B remains secondary and independent: negative-index separation versus localized critical-line sampling rigidity.
+
+The selected formal first break remains `E4A4-SCHUR-FB-05`, R003 remains `DISCOVERY`, and **RH remains OPEN.**
