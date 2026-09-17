@@ -8,7 +8,7 @@ ROOT = RHRC.parent.parent
 
 
 class Post203SyncTests(unittest.TestCase):
-    def test_authority_split_advances_research_only(self):
+    def test_authority_split_preserves_post203_history(self):
         state = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
@@ -20,30 +20,19 @@ class Post203SyncTests(unittest.TestCase):
         self.assertEqual(state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(state["terminal_claim"], "RH_OPEN")
 
-        research = state["latest_research_evidence"]
-        self.assertEqual(research["pr"], 203)
-        self.assertEqual(
-            research["validated_head"],
+        note = state["control_note"]
+        for token in (
+            "Historical PR #203",
             "c8196830a8b49e657b28d36b364e1cff68c568d6",
-        )
-        self.assertEqual(
-            research["merge_commit"],
             "ab660e812a78d482145eadc3e42d186a63fa812b",
-        )
-        self.assertEqual(
-            research["tree"],
             "7360e366fe8d623ef63ca902c23522bb72935848",
-        )
-        self.assertEqual(
-            research["disposition"], "COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED"
-        )
-        self.assertFalse(research["center_kill_switch_survives"])
-        self.assertFalse(research["full_cover_executed"])
-        self.assertEqual(research["completed_leaf_count"], 0)
-        self.assertEqual(
-            research["control_transfer_status"],
+            "COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED",
+            "center_kill_switch_survives=false",
+            "full_cover_executed=false",
+            "completed_leaf_count=0",
             "PATTERN_FALSIFIED_BEFORE_FULL_COVER",
-        )
+        ):
+            self.assertIn(token, note)
 
     def test_living_docs_advance_through_203_without_erasing_history(self):
         paths = (
