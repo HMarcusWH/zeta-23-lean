@@ -70,19 +70,19 @@ theorem integrable_paperFT_dictionaryBasisTest
       paperFT_dictionaryBasisTest_displacement_eq_sourceTest_sub
         hL hnm r
     change
-      Zeta23.paperFT (dictionaryBasisTest n m L) (r : ℂ) =
-        c⁻¹ *
+      c⁻¹ *
           (Zeta23.paperFT (dictionarySourceTest n L) (r : ℂ) -
-            Zeta23.paperFT (dictionarySourceTest m L) (r : ℂ))
+            Zeta23.paperFT (dictionarySourceTest m L) (r : ℂ)) =
+        Zeta23.paperFT (dictionaryBasisTest n m L) (r : ℂ)
     calc
-      Zeta23.paperFT (dictionaryBasisTest n m L) (r : ℂ) =
+      c⁻¹ *
+          (Zeta23.paperFT (dictionarySourceTest n L) (r : ℂ) -
+            Zeta23.paperFT (dictionarySourceTest m L) (r : ℂ)) =
           c⁻¹ * (c *
             Zeta23.paperFT (dictionaryBasisTest n m L) (r : ℂ)) := by
-              field_simp [hc]
-      _ = c⁻¹ *
-          (Zeta23.paperFT (dictionarySourceTest n L) (r : ℂ) -
-            Zeta23.paperFT (dictionarySourceTest m L) (r : ℂ)) := by
               rw [hdisp]
+      _ = Zeta23.paperFT (dictionaryBasisTest n m L) (r : ℂ) := by
+              field_simp [hc]
 
 /-- Every dictionary basis test has an integrable Mathlib Fourier transform. -/
 theorem integrable_fourier_dictionaryBasisTest
@@ -106,6 +106,13 @@ theorem integrable_paperFT_dictionaryBasisTest_mul_mu_sub_mu_zero
   have hsub := hfull.sub hconst
   refine hsub.congr ?_
   filter_upwards with tau
+  change
+    Zeta23.paperFT (dictionaryBasisTest n m L) (tau : ℂ) *
+        (Zeta23.mu tau : ℂ) -
+      Zeta23.paperFT (dictionaryBasisTest n m L) (tau : ℂ) *
+        (Zeta23.mu 0 : ℂ) =
+      Zeta23.paperFT (dictionaryBasisTest n m L) (tau : ℂ) *
+        ((Zeta23.mu tau - Zeta23.mu 0 : ℝ) : ℂ)
   push_cast
   ring
 
