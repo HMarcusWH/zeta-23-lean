@@ -179,6 +179,17 @@ theorem oddCubicGeneratorKernelPart_norm_sq_le_neg_lam_mul_resolventQuadratic_re
         ((k : intrinsicParityPredecessorSubspace .odd N) :
           euclideanParityBoundaryFlatSubspace .odd (N + 1)) at hpair
   rw [hpair] at hbase
+  let z :
+      euclideanParityBoundaryFlatSubspace .odd (N + 1) :=
+    ((k : intrinsicParityPredecessorSubspace .odd N) :
+      euclideanParityBoundaryFlatSubspace .odd (N + 1))
+  have hzNorm :
+      ‖inner ℂ z z‖ = Complex.re (inner ℂ z z) := by
+    symm
+    exact inner_self_re_eq_norm (𝕜 := ℂ) z
+  have hzSq :
+      Complex.re (inner ℂ z z) = ‖z‖ ^ 2 := by
+    exact inner_self_eq_norm_sq (𝕜 := ℂ) z
   have hinnernorm :
       ‖inner ℂ
           ((k : intrinsicParityPredecessorSubspace .odd N) :
@@ -186,26 +197,10 @@ theorem oddCubicGeneratorKernelPart_norm_sq_le_neg_lam_mul_resolventQuadratic_re
           ((k : intrinsicParityPredecessorSubspace .odd N) :
             euclideanParityBoundaryFlatSubspace .odd (N + 1))‖ =
         ‖(k : intrinsicParityPredecessorSubspace .odd N)‖ ^ 2 := by
-    calc
-      ‖inner ℂ
-          ((k : intrinsicParityPredecessorSubspace .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1))
-          ((k : intrinsicParityPredecessorSubspace .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1))‖ =
-          Complex.re
-            (inner ℂ
-              ((k : intrinsicParityPredecessorSubspace .odd N) :
-                euclideanParityBoundaryFlatSubspace .odd (N + 1))
-              ((k : intrinsicParityPredecessorSubspace .odd N) :
-                euclideanParityBoundaryFlatSubspace .odd (N + 1))) := by
-            symm
-            exact inner_self_re_eq_norm _
-      _ =
-          ‖((k : intrinsicParityPredecessorSubspace .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1))‖ ^ 2 := by
-            exact inner_self_eq_norm_sq _
-      _ = ‖(k : intrinsicParityPredecessorSubspace .odd N)‖ ^ 2 := by
-            rfl
+    change ‖inner ℂ z z‖ =
+      ‖(k : intrinsicParityPredecessorSubspace .odd N)‖ ^ 2
+    rw [hzNorm, hzSq]
+    rfl
   rw [hinnernorm] at hbase
   have hbase' :
       (‖(k : intrinsicParityPredecessorSubspace .odd N)‖ ^ 2) ^ 2 ≤
