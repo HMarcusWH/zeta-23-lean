@@ -157,13 +157,23 @@ theorem oddCubicGeneratorKernelPart_norm_sq_le_neg_lam_mul_resolventQuadratic_re
         (le_of_lt (neg_pos.mpr hlam))
         (oddCubicGeneratorResolventQuadratic_re_nonnegative
           hL N hprevOdd lam hlam)
-    have hkzero : ‖k‖ ^ 2 = 0 := by
-      simp [hk]
-    rw [hkzero]
-    exact hnonneg
-  · have hknormpos : (0 : ℝ) < ‖k‖ :=
-      norm_pos_iff.mpr hk
-    have hkpos : 0 < ‖k‖ ^ 2 := sq_pos_of_pos hknormpos
+    rw [hk]
+    simpa only [norm_zero, zero_pow (by norm_num : (2 : ℕ) ≠ 0)] using hnonneg
+  · have hkAmbient :
+        (k : intrinsicParityPredecessorSubspace .odd N) ≠ 0 := by
+      intro hzero
+      apply hk
+      apply Subtype.ext
+      exact hzero
+    have hknormpos :
+        (0 : ℝ) <
+          ‖(k : intrinsicParityPredecessorSubspace .odd N)‖ :=
+      norm_pos_iff.mpr hkAmbient
+    have hkposAmbient :
+        0 < ‖(k : intrinsicParityPredecessorSubspace .odd N)‖ ^ 2 :=
+      sq_pos_of_pos hknormpos
+    have hkpos : 0 < ‖k‖ ^ 2 := by
+      simpa only [Submodule.norm_coe] using hkposAmbient
     have hbase :=
       norm_sq_inner_kernel_coupling_le_neg_mul_norm_sq_re_inner_resolvent
         .odd hL N hprevOdd hlam
