@@ -117,6 +117,9 @@ theorem canonicalQuadraticNormalSourceFunctional_eq_sourceKernelRHS
     apply intervalIntegral.integral_congr
     intro x hx
     rw [uIcc_of_le hL.le] at hx
+    change
+      dictionaryMixedTest K xvec yvec L x * w x =
+        quadraticNormalSourceAtom K v (1 - x / L) * w x
     rw [← congrFun hlift x]
     rw [canonicalSourcePhysicalLift_eq_one_sub_of_mem hL hx.1 hx.2]
   rw [hinterval (fun x => (completeSourcePoleWeight x : ℂ))]
