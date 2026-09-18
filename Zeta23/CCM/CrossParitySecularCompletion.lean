@@ -239,7 +239,6 @@ theorem cubicSecularTrialVector_odd_eq_evenIndex_sub_source_resolvent_of_even_ro
     apply Subtype.ext
     rfl
   rw [hcoe]
-  rfl
 
 /-- Completed metric overlap of the odd trial with the odd cubic generator. -/
 theorem inner_oddCubicGenerator_oddTrial_eq_source_completion_of_even_root
