@@ -22,33 +22,27 @@ class Post205SyncTests(unittest.TestCase):
         ):
             self.assertIn(token, note)
 
-        research = state["latest_research_evidence"]
-        self.assertEqual(research["pr"], 205)
-        self.assertEqual(
-            research["validated_head"],
+        # #205 is historical research authority, not a forever-current pointer.
+        # Preserve its exact provenance in the append-only control history while
+        # allowing later research PRs to advance latest_research_evidence.
+        self.assertGreaterEqual(state["latest_research_evidence"]["pr"], 205)
+        for token in (
+            "PR #205",
             "73b78297da54b9f5b2d47584a8033356a6b2e2a8",
-        )
-        self.assertEqual(
-            research["merge_commit"],
             "deaa69ae190ada511cf8228f174846184673ff3a",
-        )
-        self.assertEqual(
-            research["tree"],
             "3d715612eabf25a9056ab84b0c5e968f71354666",
-        )
-        self.assertEqual(
-            research["disposition"],
             "PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED",
-        )
-        self.assertEqual(research["fixture"], "C1")
-        self.assertEqual(research["predecessor_N"], 2)
-        self.assertEqual(research["successor_K"], 3)
-        self.assertEqual(research["even_predecessor_form"], "70")
-        self.assertEqual(research["odd_predecessor_form"], "10")
-        self.assertEqual(research["even_witness_energy"], "-130")
-        self.assertEqual(research["odd_witness_energy"], "-410")
-        self.assertEqual(research["selected_even_root"], "-13/42")
-        self.assertFalse(research["canonical_realizability"])
+            "fixture C1",
+            "N=2",
+            "K=3",
+            "even predecessor form=70",
+            "odd predecessor form=10",
+            "even witness energy=-130",
+            "odd witness energy=-410",
+            "selected even root=-13/42",
+            "canonical_realizability=false",
+        ):
+            self.assertIn(token, note)
 
     def test_living_docs_advance_through_205_without_erasing_history(self):
         paths = (

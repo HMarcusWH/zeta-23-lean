@@ -381,3 +381,11 @@ The next research lanes are SIGN, MAGNITUDE, and DUAL / GRAM / EXTREMAL GEOMETRY
 Same-observable firewall: existing `CanonicalPolePrimeRiesz` results act on `sourceAtomRealEnergy`; #213 acts on `quadraticNormalSourceAtom`. Direct composition is not established.
 
 No claim IDs, action scores, first-break semantics, route digests, or confirmation permissions change. **RH remains OPEN.**
+
+## RH/CCM frontier after PR #215
+
+Theorem authority remains merged-green **PR #213**. Latest research evidence is merged-green **PR #215**, which rigorously certifies on the frozen K=3 even carrier that the complete source functional and M4 are independent duals and that their full-carrier pairing is sign-indefinite. This kills the universal arbitrary-vector sign/proportionality version of Pair D, not the retained first-bad route.
+
+The next target is **RETAINED_CROSS_PARITY_SECULAR_COMPLETION** on the exact forced negative root. Contact-locus ideas are explicitly demoted until a same-state contact bridge exists. The exact zero-shift response and resonant `1/(-lambda)` branch are resurrected secondary routes.
+
+**RH remains OPEN.**

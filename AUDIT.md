@@ -347,3 +347,22 @@ The next research lanes are SIGN, MAGNITUDE, and DUAL / GRAM / EXTREMAL GEOMETRY
 Same-observable firewall: existing `CanonicalPolePrimeRiesz` results act on `sourceAtomRealEnergy`; #213 acts on `quadraticNormalSourceAtom`. Direct composition is not established.
 
 No claim IDs, action scores, first-break semantics, route digests, or confirmation permissions change. **RH remains OPEN.**
+
+## Post-#215 audit settlement
+
+PR #215 passed its dedicated rigorous Arb certificate and the ordinary RHRC/Lean workflow family. Exact research disposition:
+```text
+FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED
+FULL_SPACE_SIGN_INDEFINITE_CERTIFIED
+DUAL_INDEPENDENCE_SURVIVES_Q13_Q15_CONTROLS
+```
+Q14 primary values:
+```text
+wedge  = -7.92856142933793718521707742118e-7
+R_min  = -7.60547660138399452560501190345e-11
+R_max  =  1.02497161190896926446719955942e-6
+```
+
+No Lean theorem changed. Theorem authority remains #213. The retained-state implication was not tested. The current active target is the exact retained negative-root cross-parity secular composition, not a universal full-carrier sign and not an unproved contact-state substitution.
+
+**RH remains OPEN.**

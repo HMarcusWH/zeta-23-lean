@@ -637,3 +637,72 @@ Hard same-observable firewall: existing pole-prime/Riesz results for `sourceAtom
 Hard dependency firewall: exposing pole/arch/prime pieces does not license independent component signs; #199/#201 remain relevant warnings.
 
 **RH remains OPEN.**
+
+## Post-#215 Pair-D routing correction
+
+PR #215 changes the Pair-D search space without closing `OBS-059I`.
+
+### Pair D0 — generic structural lane
+
+Generic predecessor positivity + parity/boundary-flat/shell geometry + reversal symmetry + centered-index displacement commutation is **FALSIFIED / CONSUMED by #205** as a simultaneous-bad exclusion mechanism.
+
+### Pair D1 — arbitrary-vector canonical complete-functional geometry
+
+At frozen K=3/even, #215 certifies `FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED`, `FULL_SPACE_SIGN_INDEFINITE_CERTIFIED`, `M4=(24,144)`, a Q14 wedge excluding zero, and `R_min < 0 < R_max`.
+
+Therefore a universal sign theorem for `re(star(S(v))*M4(v))`, or a universal proportionality `S ∝ M4`, is not the missing birdfishie.
+
+**Status: FALSIFIED / CONSUMED as a universal full-carrier route by #215.**
+
+### Pair D2 — retained negative-root secular locus
+
+**ACTIVE / HIGHEST INFORMATION.**
+
+Stay on the exact first-bad state and use the already-proved negative-root cross-parity certificate. In the even-selected branch the theorem inventory gives
+
+```text
+F_plus(lambda) = 0
+F_minus(lambda) = Gamma(lambda) * S(v_lambda)
+lambda < 0
+```
+
+at the same `L`, `N`, and `lambda`.
+
+Compose this with #209's compulsory
+`-lambda * ||D v_lambda||^2 <= re(star(S(v_lambda))*M4(v_lambda))`
+and #213's exact complete source-coordinate representation.
+
+The next preregistered questions are:
+
+1. **Opposite-good secular sign.** Does `¬ParityBad opposite` at `lambda < 0` force the opposite secular scalar to have strictly positive real part?
+2. **Secular completion.** Can the exact `Gamma(lambda) * S(v_lambda)` product be rewritten or bounded using `re(star(S)*M4)` minus a nonnegative resolvent correction, strongly enough to exclude the retained negative root?
+
+A schematic completion
+```text
+||c_-||^2 * F_-(lambda)
+  = re(star(S)*M4) - |S|^2 * C(lambda),
+C(lambda) >= 0
+```
+is a **LEAD / HYPOTHESIS**, not a proved identity. Conjugation, orientation, constants and correction terms must come from exact Lean definitions.
+
+### Contact-locus route — not promoted
+
+The current retained certificate is a negative secular root, not an exact zero-contact. Fixed-cell negativity persistence does not supply a zero crossing. A contact route requires an independent same-state contact bridge before RH-directed composition.
+
+### Zero-shift response route — resurrected
+
+The selected regular branch already proves `re sigma_selected < 0` and exact cross-parity zero-shift transfer when both preimages exist. Candidate missing lemma:
+```text
+opposite successor good
+  -> opposite cubic coupling annihilates ker(predecessor)
+  -> opposite zero-shift preimage exists
+```
+This is a theorem-extraction candidate, not yet promoted.
+
+### Resonant route — resurrected
+
+The resonant branch carries exact `1/(-lambda)` kernel-coordinate amplification. Test whether a #209/#215 near-zero spectral tube plus independently nontrivial canonical coupling overdraws the available energy budget.
+
+Pair B remains the independent fallback. R001 scalar prime-upper and universal two-translate determinant-bank positivity are already RH-equivalent formulations, not cheap auxiliary estimates. R004 still lacks its analytic generator/gap/limit chain.
+
+**RH remains OPEN.**

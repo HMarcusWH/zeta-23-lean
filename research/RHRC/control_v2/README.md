@@ -194,3 +194,52 @@ next research target = EXACT_KERNEL_ADVERSARIAL_FALSIFICATION
 ```
 
 R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. **RH remains OPEN.**
+
+## Post-#215 control state
+
+Current authority split after merged-green research PR #215:
+
+```text
+THEOREM AUTHORITY
+PR #213
+validated head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merge          = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+tree           = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE
+PR #215
+validated head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
+merge          = 191b1b648448c92010286dae54df8502df1f55ce
+tree           = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
+disposition    = FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED
+sign result    = FULL_SPACE_SIGN_INDEFINITE_CERTIFIED
+controls       = DUAL_INDEPENDENCE_SURVIVES_Q13_Q15_CONTROLS
+
+CONTROL SEMANTIC AUTHORITY
+PR #117
+
+terminal claim = RH_OPEN
+```
+
+PR #215 is rigorous bounded Arb research, not Lean theorem promotion. On the exact frozen K=3 even boundary-flat carrier it certifies the M4 covector `(24,144)`, a nonzero source/M4 wedge at Q14
+`[-7.92856142933793718521707742118e-7 +/- 2.44e-37]`, and generalized pairing extrema relative to `||Dv||^2`
+
+```text
+R_min = -7.60547660138399452560501190345e-11
+R_max =  1.02497161190896926446719955942e-6
+```
+
+so the full-carrier pairing is sign-indefinite. Universal full-carrier source/M4 sign and proportionality routes are therefore consumed at this research scope.
+
+The retained-state implication was explicitly `NOT_TESTED` by #215. The next route is not a guessed contact state. It is the already theorem-backed **retained negative-root cross-parity secular state**: preserve the same aperture, size, selected parity, negative shift and canonical source functional, and investigate whether the old exact cross-parity secular transfer combines with #209/#213 into an independent incompatibility.
+
+```text
+next research target = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+contact-locus route  = LEAD / REQUIRES SAME-STATE CONTACT BRIDGE
+zero-shift response  = RESURRECTED SECONDARY
+resonant pole/tube   = RESURRECTED SECONDARY
+OBS-059I             = OPEN / ACTIVE
+RH                    = OPEN
+```
+
+No claim IDs, action scores, first-break semantics, route digests, confirmation permissions or theorem declarations change in this synchronization.
