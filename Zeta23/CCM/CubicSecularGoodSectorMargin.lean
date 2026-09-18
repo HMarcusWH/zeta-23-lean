@@ -94,7 +94,7 @@ theorem re_inner_cubicSecularTrialVector_eq
   rw [hTu, inner_add_left]
   have hF :
       inner ℂ (F • c) u = star F * inner ℂ c c := by
-    rw [inner_smul_left, hcu]
+    simpa [hcu]
   have hlamInnerComplex :
       inner ℂ ((lam : ℂ) • u) u =
         lam • inner ℂ u u := by
