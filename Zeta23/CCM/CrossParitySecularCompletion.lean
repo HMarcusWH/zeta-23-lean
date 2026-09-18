@@ -122,7 +122,7 @@ theorem oddCubicGeneratorResolventQuadratic_eq_zero_iff
       Complex.re
         (oddCubicGeneratorResolventQuadratic hL N hprevOdd lam hlam) at hco
     rw [hC] at hco
-    simp only [map_zero, Complex.zero_re] at hco
+    simp only [Complex.zero_re] at hco
     have hRa : R a = 0 := by
       have hnormnonneg : 0 ≤ ‖R a‖ := norm_nonneg _
       have hlampos : 0 < -lam := neg_pos.mpr hlam
@@ -157,7 +157,7 @@ theorem oddCubicGeneratorResolventQuadratic_eq_zero_iff
             euclideanParityBoundaryFlatSubspace .odd (N + 1))
           (0 : euclideanParityBoundaryFlatSubspace .odd (N + 1)) = 0
     rw [hR0]
-    simp
+    exact inner_zero_left (𝕜 := ℂ) 0
 
 /-- At an even secular root the transported predecessor forcing collapses to
 the source defect times the odd cubic-generator predecessor part. -/
@@ -223,7 +223,23 @@ theorem cubicSecularTrialVector_odd_eq_evenIndex_sub_source_resolvent_of_even_ro
   rw [crossParityPredecessorForcing_eq_source_smul_generator_of_even_root
     hL N hN hprevEven lam hlam hroot]
   rw [map_smul]
-  simpa [uPlus, S]
+  have hcoe :
+      (((S •
+          shiftedIntrinsicPredecessorResolvent
+            .odd hL N hprevOdd lam hlam
+            (oddCubicGeneratorPredecessorPart N) :
+          intrinsicParityPredecessorSubspace .odd N) :
+        euclideanParityBoundaryFlatSubspace .odd (N + 1)) =
+        S •
+          ((shiftedIntrinsicPredecessorResolvent
+              .odd hL N hprevOdd lam hlam
+              (oddCubicGeneratorPredecessorPart N) :
+            intrinsicParityPredecessorSubspace .odd N) :
+            euclideanParityBoundaryFlatSubspace .odd (N + 1))) := by
+    apply Subtype.ext
+    rfl
+  rw [hcoe]
+  rfl
 
 /-- Completed metric overlap of the odd trial with the odd cubic generator. -/
 theorem inner_oddCubicGenerator_oddTrial_eq_source_completion_of_even_root
@@ -281,13 +297,15 @@ theorem inner_oddCubicGenerator_oddTrial_eq_source_completion_of_even_root
           (evenBoundaryFlatRawCoefficients (N + 1) uPlus) := by
     change
       inner ℂ
-          (g : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
-          ((evenIndexParityLinearMap (N + 1) uPlus :
-              euclideanParityBoundaryFlatSubspace .odd (N + 1)) :
+          ((oddCubicCompressionVector (N + 1) :
+              euclideanOddBoundaryFlatSubspace (N + 1)) :
+            EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
+          (((euclideanEvenToOddIndexLinearMap (N + 1)) uPlus :
+              euclideanOddBoundaryFlatSubspace (N + 1)) :
             EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) =
         centeredMoment (N + 1) 4
           (evenBoundaryFlatRawCoefficients (N + 1) uPlus)
-    simpa [g, successorParityCubicVector, evenIndexParityLinearMap] using
+    exact
       inner_oddCubicCompressionVector_evenToOddIndex_eq_momentFour
         (N + 1) uPlus
   have hgdecomp :=
@@ -422,7 +440,6 @@ theorem star_cubicSecularScalar_odd_mul_shellInner_eq_source_completion_of_even_
           S := by
     rw [htransfer]
     field_simp [hden]
-    ring
   have hstarTransferDen := congrArg (starRingEnd ℂ) htransferDen
   simp only [map_mul, hdenStarEnd] at hstarTransferDen
   have hinnerStar :
