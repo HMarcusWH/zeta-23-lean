@@ -124,10 +124,11 @@ theorem oddCubicGeneratorResolventQuadratic_eq_zero_iff
     rw [hC] at hco
     simp only [map_zero, Complex.zero_re] at hco
     have hRa : R a = 0 := by
-      have hnonneg : 0 ≤ ‖R a‖ ^ 2 := sq_nonneg _
+      have hnormnonneg : 0 ≤ ‖R a‖ := norm_nonneg _
       have hlampos : 0 < -lam := neg_pos.mpr hlam
-      have hsq : ‖R a‖ ^ 2 = 0 := by nlinarith
-      exact norm_eq_zero.mp (sq_eq_zero_iff.mp hsq)
+      have hnormzero : ‖R a‖ = 0 := by
+        nlinarith [sq_nonneg ‖R a‖]
+      exact norm_eq_zero.mp hnormzero
     have hright :=
       shiftedIntrinsicPredecessorBlock_resolvent_apply
         .odd hL N hprevOdd lam hlam a
