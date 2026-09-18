@@ -1,0 +1,69 @@
+{
+  "schema_version": "POST214_FB05_KERNEL_DUAL_GEOMETRY_FIXTURE_v1",
+  "claim_cap": "POST214_EXACT_KERNEL_DUAL_GEOMETRY_RESEARCH_ONLY",
+  "base_main_sha": "e073ecfc94c460a844097e9ed078f1da904bc26f",
+  "base_main_tree": "15b37fdd230590f674e68a3ef9ac7bdb75f491b4",
+  "theorem_authority_pr": 213,
+  "theorem_authority_head_sha": "703c3764a7d35aa4801e791a1929efa54c2533a1",
+  "theorem_authority_merge_sha": "ee341a6071d177c75bbea0a5f92ebe3b3bb16696",
+  "routing_sync_pr": 214,
+  "latest_research_authority_pr": 205,
+  "selected_target": {
+    "q_start": 13,
+    "q_end": 16,
+    "predecessor_N": 2,
+    "successor_K": 3,
+    "selected_parity": "even",
+    "primary_Q": 14
+  },
+  "inherited_post202_fixture": "post202_fb05_q14_composite_parity_gap_v1.json",
+  "inherited_post202_fixture_blob_sha": "370a7c2aecb15155b2adc51a9c2f08dfcf36e1b1",
+  "inherited_post177_fixture": "post177_fb05_q13_fixed_unit_derivative_v1.json",
+  "selected_center_labels": [
+    "Q13_midpoint",
+    "Q14_determinant_basin",
+    "Q15_midpoint"
+  ],
+  "primary_center_label": "Q14_determinant_basin",
+  "arb_precision_bits": 384,
+  "implementation_check_precision_bits": 192,
+  "provenance_blobs": {
+    "canonical_source_arb.py": "0a38380f5674d965aabcc0b8cbfc37c3813a180e",
+    "canonical_source_numeric.py": "475ac16564fa9e7bb6151b5b22c828af04715067",
+    "post150_selected_residual.py": "103b431f81a84da445a9ba06e48ba1d09abd8314",
+    "post165_fb05_shifted_state.py": "8a340bc00fbb3b507f354e42f0a3cd23a55bf803",
+    "CanonicalQuadraticNormalSourceKernel.lean": "c4075c85f4d772b7972124df993c5ac61965d8ef",
+    "QuadraticNormalSourceJets.lean": "fa1865cfdac91c5ee02755a68f97a286a5b43ac8"
+  },
+  "permitted_classifications": [
+    "FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED",
+    "DUAL_PROPORTIONALITY_NOT_FALSIFIED",
+    "DUAL_GEOMETRY_UNRESOLVED"
+  ],
+  "policy": {
+    "inherited_frozen_centers_required": true,
+    "exact_even_boundary_flat_basis_required": true,
+    "direct_canonical_arb_required": true,
+    "channel_reconstruction_crosscheck_required": true,
+    "wedge_is_primary_classifier": true,
+    "new_q_n_k_parity_search_permitted": false,
+    "adaptive_point_search_permitted": false,
+    "adaptive_precision_increase_permitted": false,
+    "component_sign_selection_permitted": false,
+    "known_209_sign_import_permitted": false,
+    "retained_state_refit_permitted": false,
+    "riesz_same_observable_assumption_permitted": false,
+    "theorem_promotion_permitted": false
+  },
+  "nonclaims": [
+    "This is rigorous bounded Arb research/falsification tooling, not Lean theorem authority.",
+    "The evaluated source functional is the finite matrix observable identified with the #213 source-coordinate kernel by Lean.",
+    "The seventh-jet comparison uses the exact #163 identity through M4; the research classifier itself works with the unscaled M4 covector.",
+    "A full-space sign-indefiniteness certificate does not exclude a sign law restricted to retained negative eigenmodes or first-bad states.",
+    "Generalized Rayleigh extrema are quantitative diagnostics, not a theorem-derived contradiction threshold.",
+    "No existing sourceAtomRealEnergy Riesz theorem is treated as a theorem about quadraticNormalSourceAtom.",
+    "No componentwise pole/arch/prime sign inference is permitted.",
+    "No FB-05 closure, simultaneous odd-bad exclusion, odd-selected closure, negative-root exclusion, finite-to-infinite closure, or RH claim is established.",
+    "RH remains OPEN."
+  ]
+}

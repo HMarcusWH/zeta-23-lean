@@ -1,0 +1,63 @@
+name: RHRC post-214 kernel dual geometry
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+concurrency:
+  group: rhrc-post214-kernel-dual-geometry-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  post214-kernel-dual-geometry:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install R003 numerical audit requirements
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Check post-#214 kernel dual-geometry scope
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post214_fb05_kernel_dual_geometry_scope.py
+      - name: Freeze inherited post-#214 dual-geometry centers
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post214_fb05_kernel_dual_geometry_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post214_fb05_kernel_dual_geometry_v1.json \
+            --output /tmp/POST214_FB05_KERNEL_DUAL_GEOMETRY_SCHEDULE.json
+      - name: Independently check dual-geometry implementation
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post214_fb05_kernel_dual_geometry_independent.py
+      - name: Certify post-#214 kernel dual geometry
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post214_fb05_kernel_dual_geometry_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post214_fb05_kernel_dual_geometry_v1.json \
+            --schedule /tmp/POST214_FB05_KERNEL_DUAL_GEOMETRY_SCHEDULE.json \
+            --output /tmp/POST214_FB05_KERNEL_DUAL_GEOMETRY_CERTIFICATE.json
+      - name: Check certificate claim firewall
+        run: |
+          python - <<'PY'
+          import json
+          p = json.load(open('/tmp/POST214_FB05_KERNEL_DUAL_GEOMETRY_CERTIFICATE.json'))
+          assert p['status'] == 'PASS'
+          assert p['claim_cap'] == 'POST214_EXACT_KERNEL_DUAL_GEOMETRY_RESEARCH_ONLY'
+          assert p['classification'] in {
+              'FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED',
+              'DUAL_PROPORTIONALITY_NOT_FALSIFIED',
+              'DUAL_GEOMETRY_UNRESOLVED',
+          }
+          assert p['theorem_promotion'] is False
+          assert p['obs_059i_closed'] is False
+          assert p['simultaneous_odd_bad_excluded'] is False
+          assert p['odd_selected_closed'] is False
+          assert p['negative_root_exclusion'] is False
+          assert p['finite_to_infinite_closure'] is False
+          assert p['rh_claim'] is False
+          print(json.dumps({
+              'status': 'PASS',
+              'classification': p['classification'],
+              'sign_route_classification': p['sign_route_classification'],
+              'control_transfer_status': p['control_transfer_status'],
+              'rh_claim': p['rh_claim'],
+          }, indent=2))
+          PY
