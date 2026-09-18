@@ -185,7 +185,17 @@ theorem cubicSecularTrialVector_odd_eq_evenIndex_sub_source_resolvent_of_even_ro
               (oddCubicGeneratorPredecessorPart N) :
             intrinsicParityPredecessorSubspace .odd N) :
             euclideanParityBoundaryFlatSubspace .odd (N + 1)) := by
-  dsimp
+  let uPlus := cubicSecularTrialVector .even hL N hprevEven lam hlam
+  let S := evenQuadraticSourceMoment L (N + 1) uPlus
+  change
+    cubicSecularTrialVector .odd hL N hprevOdd lam hlam =
+      evenIndexParityLinearMap (N + 1) uPlus -
+        S •
+          ((shiftedIntrinsicPredecessorResolvent
+              .odd hL N hprevOdd lam hlam
+              (oddCubicGeneratorPredecessorPart N) :
+            intrinsicParityPredecessorSubspace .odd N) :
+            euclideanParityBoundaryFlatSubspace .odd (N + 1))
   rw [cubicSecularTrialVector_odd_eq_evenIndex_sub_resolvent_forcing
     hL N hN hprevEven hprevOdd lam hlam]
   rw [crossParityPredecessorForcing_eq_source_smul_generator_of_even_root
@@ -218,9 +228,17 @@ theorem inner_oddCubicGenerator_oddTrial_eq_source_completion_of_even_root
         (cubicSecularTrialVector .odd hL N hprevOdd lam hlam) =
       M4 - S *
         oddCubicGeneratorResolventQuadratic hL N hprevOdd lam hlam := by
-  dsimp
   let uPlus := cubicSecularTrialVector .even hL N hprevEven lam hlam
   let S := evenQuadraticSourceMoment L (N + 1) uPlus
+  let M4 :=
+    centeredMoment (N + 1) 4
+      (evenBoundaryFlatRawCoefficients (N + 1) uPlus)
+  change
+    inner ℂ
+        (successorParityCubicVector .odd N)
+        (cubicSecularTrialVector .odd hL N hprevOdd lam hlam) =
+      M4 - S *
+        oddCubicGeneratorResolventQuadratic hL N hprevOdd lam hlam
   let g : euclideanParityBoundaryFlatSubspace .odd (N + 1) :=
     successorParityCubicVector .odd N
   let a := oddCubicGeneratorPredecessorPart N
@@ -315,12 +333,21 @@ theorem star_cubicSecularScalar_odd_mul_shellInner_eq_source_completion_of_even_
       star S *
         (M4 - S *
           oddCubicGeneratorResolventQuadratic hL N hprevOdd lam hlam) := by
-  dsimp
   let uPlus := cubicSecularTrialVector .even hL N hprevEven lam hlam
   let S := evenQuadraticSourceMoment L (N + 1) uPlus
   let M4 :=
     centeredMoment (N + 1) 4
       (evenBoundaryFlatRawCoefficients (N + 1) uPlus)
+  change
+    star (cubicSecularScalar .odd hL N hprevOdd lam hlam) *
+        inner ℂ
+          (intrinsicCubicShellPart .odd N :
+            euclideanParityBoundaryFlatSubspace .odd (N + 1))
+          (intrinsicCubicShellPart .odd N :
+            euclideanParityBoundaryFlatSubspace .odd (N + 1)) =
+      star S *
+        (M4 - S *
+          oddCubicGeneratorResolventQuadratic hL N hprevOdd lam hlam)
   let den :=
     inner ℂ
       (intrinsicCubicShellPart .odd N :
@@ -398,14 +425,35 @@ theorem neg_lam_mul_oddTrial_norm_sq_le_completedSource_of_even_root_of_not_oddB
         (star S *
           (M4 - S *
             oddCubicGeneratorResolventQuadratic hL N hprevOdd lam hlam)) := by
-  dsimp
+  let uPlus := cubicSecularTrialVector .even hL N hprevEven lam hlam
+  let S := evenQuadraticSourceMoment L (N + 1) uPlus
+  let M4 :=
+    centeredMoment (N + 1) 4
+      (evenBoundaryFlatRawCoefficients (N + 1) uPlus)
+  change
+    (-lam) *
+        ‖cubicSecularTrialVector .odd hL N hprevOdd lam hlam‖ ^ 2 ≤
+      Complex.re
+        (star S *
+          (M4 - S *
+            oddCubicGeneratorResolventQuadratic hL N hprevOdd lam hlam))
   have hmargin :=
     neg_lam_mul_cubicSecularTrialVector_norm_sq_le_shellPairing
       .odd hL N hN hprevOdd lam hlam hodd
   have hcompletion :=
     star_cubicSecularScalar_odd_mul_shellInner_eq_source_completion_of_even_root
       hL N hN hprevEven hprevOdd lam hlam hroot
-  dsimp at hcompletion
+  change
+    star (cubicSecularScalar .odd hL N hprevOdd lam hlam) *
+        inner ℂ
+          (intrinsicCubicShellPart .odd N :
+            euclideanParityBoundaryFlatSubspace .odd (N + 1))
+          (intrinsicCubicShellPart .odd N :
+            euclideanParityBoundaryFlatSubspace .odd (N + 1)) =
+      star S *
+        (M4 - S *
+          oddCubicGeneratorResolventQuadratic hL N hprevOdd lam hlam)
+      at hcompletion
   rw [hcompletion] at hmargin
   exact hmargin
 
