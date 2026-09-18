@@ -143,8 +143,13 @@ theorem
       c.lam c.lam_neg hroot
   have hsource :=
     evenQuadraticSourceMoment_eq_explicitCanonicalSourceMoment
-      c.firstBad.L_pos (c.firstBad.Nstar + 1) c.evenShiftedTrial
-  simpa [RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial, hsource]
+      c.firstBad.L_pos (c.firstBad.Nstar + 1)
+      (cubicSecularTrialVector
+        .even c.firstBad.L_pos c.firstBad.Nstar
+        (c.firstBad.predecessorNonnegative_anyParity .even)
+        c.lam c.lam_neg)
+  rw [hsource] at hcompletion
+  simpa [RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial]
     using hcompletion
 
 /-- Retained completed odd-secular budget on the odd-good branch. -/
@@ -203,8 +208,13 @@ theorem
       c.lam c.lam_neg hroot hodd
   have hsource :=
     evenQuadraticSourceMoment_eq_explicitCanonicalSourceMoment
-      c.firstBad.L_pos (c.firstBad.Nstar + 1) c.evenShiftedTrial
-  simpa [RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial, hsource]
+      c.firstBad.L_pos (c.firstBad.Nstar + 1)
+      (cubicSecularTrialVector
+        .even c.firstBad.L_pos c.firstBad.Nstar
+        (c.firstBad.predecessorNonnegative_anyParity .even)
+        c.lam c.lam_neg)
+  rw [hsource] at hbudget
+  simpa [RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial]
     using hbudget
 
 end Zeta23.CCM
