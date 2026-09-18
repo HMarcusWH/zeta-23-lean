@@ -141,6 +141,7 @@ theorem oddCubicGeneratorResolventQuadratic_eq_zero_iff
     rw [show R a = 0 by exact hRa, map_zero] at hright
     exact hright.symm
   · intro ha
+    unfold oddCubicGeneratorResolventQuadratic
     rw [ha]
     have hR0 :
         shiftedIntrinsicPredecessorResolvent
@@ -222,7 +223,7 @@ theorem cubicSecularTrialVector_odd_eq_evenIndex_sub_source_resolvent_of_even_ro
   rw [crossParityPredecessorForcing_eq_source_smul_generator_of_even_root
     hL N hN hprevEven lam hlam hroot]
   rw [map_smul]
-  simp only [Submodule.coe_smul]
+  simpa [uPlus, S]
 
 /-- Completed metric overlap of the odd trial with the odd cubic generator. -/
 theorem inner_oddCubicGenerator_oddTrial_eq_source_completion_of_even_root
@@ -278,6 +279,14 @@ theorem inner_oddCubicGenerator_oddTrial_eq_source_completion_of_even_root
       inner ℂ g (evenIndexParityLinearMap (N + 1) uPlus) =
         centeredMoment (N + 1) 4
           (evenBoundaryFlatRawCoefficients (N + 1) uPlus) := by
+    change
+      inner ℂ
+          (g : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
+          ((evenIndexParityLinearMap (N + 1) uPlus :
+              euclideanParityBoundaryFlatSubspace .odd (N + 1)) :
+            EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) =
+        centeredMoment (N + 1) 4
+          (evenBoundaryFlatRawCoefficients (N + 1) uPlus)
     simpa [g, successorParityCubicVector, evenIndexParityLinearMap] using
       inner_oddCubicCompressionVector_evenToOddIndex_eq_momentFour
         (N + 1) uPlus
@@ -403,27 +412,61 @@ theorem star_cubicSecularScalar_odd_mul_shellInner_eq_source_completion_of_even_
         oddCubicGeneratorResolventQuadratic hL N hprevOdd lam hlam at hoverlap
   have hdenStar : star den = den := by
     simp [den]
-  have hstarTransfer := congrArg (starRingEnd ℂ) htransfer
-  simp only [map_mul, map_div, hdenStar] at hstarTransfer
+  have hdenStarEnd : (starRingEnd ℂ) den = den := by
+    exact hdenStar
+  have htransferDen :
+      cubicSecularScalar .odd hL N hprevOdd lam hlam * den =
+        inner ℂ
+            (cubicSecularTrialVector .odd hL N hprevOdd lam hlam)
+            (successorParityCubicVector .odd N) *
+          S := by
+    rw [htransfer]
+    field_simp [hden]
+    ring
+  have hstarTransferDen := congrArg (starRingEnd ℂ) htransferDen
+  simp only [map_mul, hdenStarEnd] at hstarTransferDen
   have hinnerStar :
-      star
+      (starRingEnd ℂ)
         (inner ℂ
           (cubicSecularTrialVector .odd hL N hprevOdd lam hlam)
           (successorParityCubicVector .odd N)) =
         M4 - S *
           oddCubicGeneratorResolventQuadratic hL N hprevOdd lam hlam := by
     calc
-      star
+      (starRingEnd ℂ)
           (inner ℂ
             (cubicSecularTrialVector .odd hL N hprevOdd lam hlam)
             (successorParityCubicVector .odd N)) =
         inner ℂ
           (successorParityCubicVector .odd N)
-          (cubicSecularTrialVector .odd hL N hprevOdd lam hlam) := by simp
+          (cubicSecularTrialVector .odd hL N hprevOdd lam hlam) :=
+            inner_conj_symm
+              (successorParityCubicVector .odd N)
+              (cubicSecularTrialVector .odd hL N hprevOdd lam hlam)
       _ = _ := hoverlap
-  rw [hstarTransfer, hinnerStar]
-  field_simp [hden]
-  ring
+  change
+    (starRingEnd ℂ)
+        (cubicSecularScalar .odd hL N hprevOdd lam hlam) * den =
+      (starRingEnd ℂ) S *
+        (M4 - S *
+          oddCubicGeneratorResolventQuadratic hL N hprevOdd lam hlam)
+  calc
+    (starRingEnd ℂ)
+        (cubicSecularScalar .odd hL N hprevOdd lam hlam) * den =
+      (starRingEnd ℂ)
+          (inner ℂ
+            (cubicSecularTrialVector .odd hL N hprevOdd lam hlam)
+            (successorParityCubicVector .odd N)) *
+        (starRingEnd ℂ) S := hstarTransferDen
+    _ =
+      (M4 - S *
+          oddCubicGeneratorResolventQuadratic hL N hprevOdd lam hlam) *
+        (starRingEnd ℂ) S := by rw [hinnerStar]
+    _ =
+      (starRingEnd ℂ) S *
+        (M4 - S *
+          oddCubicGeneratorResolventQuadratic hL N hprevOdd lam hlam) := by
+      ring
 
 /-- Good odd successor sector: the exact completed source side must pay the
 whole negative shift of the odd canonical trial. -/
