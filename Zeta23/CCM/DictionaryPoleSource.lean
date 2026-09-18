@@ -17,7 +17,7 @@ uses the compiler-checked source divided-difference identity to close every
 off-diagonal matrix entry.
 -/
 
-private theorem dictionaryPoleRHS_eq_spatial_weights
+theorem dictionaryPoleRHS_eq_spatial_weights
     {k : ℝ → ℂ} (hk : Continuous k) (hkc : HasCompactSupport k) :
     dictionaryPoleRHS k =
       (∫ u : ℝ, k u * (Real.exp (-|u| / 2) : ℂ)) +
@@ -54,7 +54,7 @@ private theorem dictionaryPoleRHS_eq_spatial_weights
   · rw [abs_of_nonneg hu, neg_div]
   · rw [abs_of_nonpos hu, neg_neg, add_comm, neg_div]
 
-private theorem intervalIntegral_eq_integral_of_support_subset_Icc
+theorem intervalIntegral_eq_integral_of_support_subset_Icc
     {a b : ℝ} (hab : a ≤ b) {f : ℝ → ℂ}
     (h : Function.support f ⊆ Icc a b) :
     (∫ x in a..b, f x) = ∫ x : ℝ, f x := by

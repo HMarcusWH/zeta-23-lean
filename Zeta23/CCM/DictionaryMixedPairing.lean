@@ -1,4 +1,5 @@
 import Zeta23.CCM.DictionaryRHSIdentity
+import Zeta23.CCM.DictionaryFiniteExpansion
 
 noncomputable section
 
@@ -67,6 +68,44 @@ theorem dictionaryMixedTest_tsupport_subset
     (L : ℝ) :
     tsupport (dictionaryMixedTest N x y L) ⊆ Icc (-L) L := by
   exact closure_minimal (dictionaryMixedTest_support_subset N x y L) isClosed_Icc
+
+/-- Mixed dictionary tests inherit evenness from every production basis test. -/
+@[simp] theorem dictionaryMixedTest_neg
+    (N : ℕ)
+    (x y : Fin (2 * N + 1) → ℂ)
+    (L t : ℝ) :
+    dictionaryMixedTest N x y L (-t) =
+      dictionaryMixedTest N x y L t := by
+  unfold dictionaryMixedTest
+  simp [dictionaryBasisTest_neg]
+
+/-- Mixed dictionary tests are continuous for positive aperture. -/
+theorem continuous_dictionaryMixedTest
+    (N : ℕ)
+    (x y : Fin (2 * N + 1) → ℂ)
+    {L : ℝ} (hL : 0 < L) :
+    Continuous (dictionaryMixedTest N x y L) := by
+  unfold dictionaryMixedTest
+  apply continuous_finset_sum
+  intro i hi
+  apply continuous_finset_sum
+  intro j hj
+  exact
+    (continuous_const.mul
+      (continuous_dictionaryBasisTest hL
+        (centeredIndex N i) (centeredIndex N j))).mul
+      continuous_const
+
+/-- Mixed dictionary tests have compact support inside their physical aperture. -/
+theorem dictionaryMixedTest_hasCompactSupport
+    (N : ℕ)
+    (x y : Fin (2 * N + 1) → ℂ)
+    (L : ℝ) :
+    HasCompactSupport (dictionaryMixedTest N x y L) := by
+  refine HasCompactSupport.intro (K := Icc (-L) L) isCompact_Icc ?_
+  intro t ht
+  by_contra hzero
+  exact ht (dictionaryMixedTest_support_subset N x y L hzero)
 
 /-- Fourier transform of the mixed finite dictionary as the corresponding
 finite basis-transform contraction. -/

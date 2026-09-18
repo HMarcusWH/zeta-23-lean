@@ -66,7 +66,7 @@ private theorem continuous_paperFT_real_of_integrable
 
 /-- Convert real-frequency paper-transform integrability to Mathlib Fourier
 integrability using the repository's pinned convention bridge. -/
-private theorem integrable_fourier_of_integrable_paperFT
+theorem integrable_fourier_of_integrable_paperFT
     {k : ℝ → ℂ}
     (hk : Integrable (fun r : ℝ => Zeta23.paperFT k (r : ℂ))) :
     Integrable (𝓕 k) := by
