@@ -92,9 +92,25 @@ theorem re_inner_cubicSecularTrialVector_eq
     simpa only [RCLike.re_to_complex] using
       (norm_sq_eq_re_inner (𝕜 := ℂ) u).symm
   rw [hTu, inner_add_left]
+  have hcuAmbient :
+      inner ℂ
+          (c : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
+          (u : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) =
+        inner ℂ
+          (c : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
+          (c : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) := by
+    exact hcu
   have hF :
       inner ℂ (F • c) u = star F * inner ℂ c c := by
-    simpa [hcu]
+    change
+      inner ℂ
+          (F • (c : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))))
+          (u : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) =
+        star F *
+          inner ℂ
+            (c : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
+            (c : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
+    rw [inner_smul_left, hcuAmbient]
   have hlamInnerComplex :
       inner ℂ ((lam : ℂ) • u) u =
         lam • inner ℂ u u := by
