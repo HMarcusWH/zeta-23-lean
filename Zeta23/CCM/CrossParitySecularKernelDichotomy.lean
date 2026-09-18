@@ -158,7 +158,7 @@ theorem oddCubicGeneratorKernelPart_norm_sq_le_neg_lam_mul_resolventQuadratic_re
         (oddCubicGeneratorResolventQuadratic_re_nonnegative
           hL N hprevOdd lam hlam)
     rw [hk]
-    simpa only [norm_zero, zero_pow (by norm_num : (2 : ℕ) ≠ 0)] using hnonneg
+    simpa only [norm_zero, pow_two, zero_mul] using hnonneg
   · have hkAmbient :
         (k : intrinsicParityPredecessorSubspace .odd N) ≠ 0 := by
       intro hzero
