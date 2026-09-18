@@ -4,7 +4,55 @@
 
 Live GitHub head + exact compiler/CI evidence are authoritative dynamically. This file is the current execution SSOT.
 
-## Authority split
+<!-- RHRC_CURRENT_STATE_BEGIN -->
+## Current repository state
+
+```text
+THEOREM AUTHORITY = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE = PR #215
+validated research head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
+merged research commit = 191b1b648448c92010286dae54df8502df1f55ce
+validated research tree = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
+
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+active subobligation = OBS-059I
+next research target = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+
+R003 phase = DISCOVERY
+confirmatory execution = NOT AUTHORIZED
+terminal claim = RH_OPEN
+```
+
+PR #215 is rigorous bounded research, not theorem promotion. Universal full-carrier source/M4 sign and proportionality are consumed in the tested scope; the retained first-bad/eigenvector implication was not tested. The live route stays on the exact retained negative secular root. Contact substitution remains unauthorized without a same-state contact bridge; zero-shift response and the resonant `1/(-lambda)` route remain secondary.
+<!-- RHRC_CURRENT_STATE_END -->
+
+### Current execution ladder
+
+```text
+#209  quantitative Pair-D coercivity / anti-alignment          PROVED
+#211  complete source functional representation                PROVED
+#213  exact source-coordinate complete kernel                  PROVED
+#215  full-carrier source/M4 dual/sign audit                   RESEARCH-CERTIFIED
+      universal full-carrier sign/proportionality              CONSUMED
+NEXT  retained negative-root cross-parity secular completion   OPEN / OBS-059I
+
+SECONDARY
+      zero-shift cross-parity response completion              OPEN / RESURRECTED
+      resonant 1/(-lambda) kernel-pole / magnitude squeeze     OPEN / RESURRECTED
+
+OPEN
+      canonical simultaneous odd-bad branch
+      odd-selected first-bad branch
+      negative-root exclusion
+      RH
+```
+
+## Historical authority split through PR #201
 
 ```text
 THEOREM AUTHORITY
@@ -26,7 +74,7 @@ selected formal first break = E4A4-SCHUR-FB-05
 terminal claim = RH_OPEN
 ```
 
-## One-screen frontier
+## Historical one-screen frontier through PR #201
 
 ```text
 PROVED THROUGH #184
@@ -272,7 +320,7 @@ rh_claim = false
 
 This does not falsify the Q14 ordering. It shows that preserving pole-prime cancellation at the matrix-jet level is still insufficient for the present interval-attribution graph to expose the direct sign.
 
-## Active lead A — full-composite parity-gap mechanism
+## Historical lead A — full-composite parity-gap mechanism
 
 **Status:** HIGHEST INFORMATION / NEXT RESEARCH PR, subject to exact-center kill-switch.
 
@@ -397,7 +445,7 @@ RiemannHypothesis                                                  OPEN
 
 # Post-#203 authoritative execution state
 
-Everything above remains preserved as historical ancestry. This section is the current execution SSOT and supersedes the earlier `LATEST RESEARCH EVIDENCE`, `NOW`, `Active lead A`, and "next composite test" wording.
+Everything above remains preserved as historical ancestry. Historical note: at this point in the chronology, this section became the execution SSOT and supersedes the earlier `LATEST RESEARCH EVIDENCE`, `NOW`, `Active lead A`, and "next composite test" wording.
 
 ## Current authority
 
@@ -505,9 +553,9 @@ Theorem authority remains #184. R003 remains `DISCOVERY`; confirmatory execution
 
 # Post-#205 authoritative execution state
 
-This section is now the current execution SSOT and supersedes the post-#203 `LATEST RESEARCH EVIDENCE` and Pair-D-next wording above while preserving it as history.
+Historical note: at this point in the chronology, this section became the execution SSOT and supersedes the post-#203 `LATEST RESEARCH EVIDENCE` and Pair-D-next wording above while preserving it as history.
 
-## Current authority through #205
+## Historical authority through #205
 
 ```text
 THEOREM AUTHORITY
@@ -643,7 +691,7 @@ R003 remains `DISCOVERY`; confirmatory execution is not authorized. `ACTION_REGI
 
 # Post-#207 authoritative execution state
 
-This section is now the current execution SSOT and supersedes the post-#205 theorem/frontier wording above while preserving it as history.
+Historical note: at this point in the chronology, this section became the execution SSOT and supersedes the post-#205 theorem/frontier wording above while preserving it as history.
 
 ```text
 THEOREM AUTHORITY = PR #207
@@ -711,7 +759,7 @@ R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-roo
 
 # Post-#209 authoritative execution state
 
-This section is now the current execution SSOT and supersedes the post-#207 "highest-information next theorem" wording while preserving all earlier sections as history.
+Historical note: at this point in the chronology, this section became the execution SSOT and supersedes the post-#207 "highest-information next theorem" wording while preserving all earlier sections as history.
 
 ```text
 THEOREM AUTHORITY = PR #209
@@ -808,7 +856,7 @@ R003 remains `DISCOVERY`; confirmatory execution is not authorized. `ACTION_REGI
 
 # Post-#211 authoritative execution state
 
-This section is now the current execution SSOT and supersedes the post-#209 next-step wording while preserving all earlier sections as history.
+Historical note: at this point in the chronology, this section became the execution SSOT and supersedes the post-#209 next-step wording while preserving all earlier sections as history.
 
 ```text
 THEOREM AUTHORITY = PR #211
@@ -879,7 +927,7 @@ R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-roo
 
 # Post-#213 authoritative execution state
 
-This section is the current execution SSOT and supersedes the post-#211 next-step wording while preserving earlier sections as history.
+Historical note: at this point in the chronology, this section became the execution SSOT and supersedes the post-#211 next-step wording while preserving earlier sections as history.
 
 ```text
 THEOREM AUTHORITY = PR #213
@@ -938,7 +986,7 @@ The existing real-energy Riesz machinery acts on `sourceAtomRealEnergy`; #213 ac
 
 The required new information remains `INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY`. R003 remains `DISCOVERY`; confirmatory execution is not authorized. **RH remains OPEN.**
 
-## Post-#215 authoritative execution state
+## Detailed post-#215 authoritative execution state
 
 ```text
 STEP 1  Quantitative Pair-D coercivity

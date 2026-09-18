@@ -4,7 +4,43 @@
 >
 > This is a research inventory, not theorem authority. Exact Lean/compiler/CI state wins.
 
-## Current authority
+<!-- RHRC_CURRENT_STATE_BEGIN -->
+## Current repository state
+
+```text
+THEOREM AUTHORITY = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE = PR #215
+validated research head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
+merged research commit = 191b1b648448c92010286dae54df8502df1f55ce
+validated research tree = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
+
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+active subobligation = OBS-059I
+next research target = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+
+R003 phase = DISCOVERY
+confirmatory execution = NOT AUTHORIZED
+terminal claim = RH_OPEN
+```
+
+PR #215 is rigorous bounded research, not theorem promotion. Universal full-carrier source/M4 sign and proportionality are consumed in the tested scope; the retained first-bad/eigenvector implication was not tested. The live route stays on the exact retained negative secular root. Contact substitution remains unauthorized without a same-state contact bridge; zero-shift response and the resonant `1/(-lambda)` route remain secondary.
+<!-- RHRC_CURRENT_STATE_END -->
+
+## Current lead ordering
+
+1. **Retained negative-root cross-parity secular completion — HIGHEST INFORMATION / NEXT.**
+2. **Zero-shift cross-parity response completion — RESURRECTED SECONDARY.**
+3. **Resonant `1/(-lambda)` kernel-pole / magnitude squeeze — RESURRECTED SECONDARY.**
+4. **Pair B negative-index versus localized critical-line sampling rigidity — INDEPENDENT FALLBACK.**
+
+Universal full-carrier source/M4 sign and proportionality are consumed by #215 and must not be relabelled as live leads.
+
+## Historical authority through PR #201
 
 ```text
 THEOREM AUTHORITY
@@ -27,7 +63,7 @@ newest post-green delta = RESEARCH_LEADS_POST_201_Q14_DISCREPANCY_MECHANISM_DELT
 terminal claim = RH_OPEN
 ```
 
-## Promoted theorem inputs
+## Historical theorem/lead ancestry through PR #201
 
 The theorem inventory through #184 remains unchanged. The decisive production-facing input is still
 
@@ -125,7 +161,7 @@ NO_UNIQUE_PRIMARY_LOCK
 
 This strengthens the representation diagnosis without weakening direct `J_POSITIVE`.
 
-## Active lead 1 — full-composite parity-gap mechanism
+## Historical lead — full-composite parity-gap mechanism (#201 state)
 
 **Research status:** HIGHEST LEVERAGE / NEXT  
 **Formal status:** OPEN / algebraic factorization DERIVED
@@ -242,7 +278,7 @@ Do not rerun consumed steps as if they were new mathematics.
 
 Any RH-directed composition must refer to the same retained state, aperture, parity, normalization and production object. Ambient exact-rational countermodels do not automatically satisfy canonical constraints. Rigorous bounded Q14 monotonicity does not automatically hold on arbitrary retained states. Source groups must not be declared independent when known cancellation identities couple them. Equivalent reformulations of `J` must not be counted as independent constraints.
 
-## Post-#203 current leads
+## Historical post-#203 leads
 
 ### Research authority
 
@@ -294,7 +330,7 @@ Do not rescue #203 with another post-hoc component sign pattern, source regroupi
 
 Theorem authority remains #184, the selected first break remains `E4A4-SCHUR-FB-05`, R003 remains `DISCOVERY`, and **RH remains OPEN.**
 
-## Post-#205 current leads
+## Historical post-#205 leads
 
 ### Research authority
 
@@ -350,7 +386,7 @@ Pair B remains secondary and independent: negative-index separation versus local
 
 DR-012 and DR-013 are strengthened by #205; no new dead-route identifier is required. Theorem authority remains #184, R003 remains `DISCOVERY`, and **RH remains OPEN.**
 
-## Post-#207 current leads
+## Historical post-#207 leads
 
 ### Theorem authority
 
@@ -410,7 +446,7 @@ Pair B remains secondary and independent: negative-index separation versus local
 
 The selected formal first break remains `E4A4-SCHUR-FB-05`, R003 remains `DISCOVERY`, and **RH remains OPEN.**
 
-## Post-#209 current leads
+## Historical post-#209 leads
 
 ### Theorem authority
 
@@ -474,7 +510,7 @@ Pair B remains secondary and independent: negative-index separation versus local
 
 The selected formal first break remains `E4A4-SCHUR-FB-05`, R003 remains `DISCOVERY`, and **RH remains OPEN.**
 
-## Post-#211 current leads
+## Historical post-#211 leads
 
 ### Theorem authority
 
@@ -534,7 +570,7 @@ terminal same-state incompatibility = OPEN
 
 Pair B remains secondary. The selected formal first break remains `E4A4-SCHUR-FB-05`; R003 remains `DISCOVERY`; **RH remains OPEN.**
 
-## Post-#213 current leads
+## Historical post-#213 leads
 
 ### Active lead 1 — exact-kernel adversarial falsification
 

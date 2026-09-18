@@ -2,16 +2,36 @@
 
 > **RH remains OPEN.**
 
-## Authority
+## Current authority and route
+
+<!-- RHRC_CURRENT_STATE_BEGIN -->
+## Current repository state
 
 ```text
-Lean theorem authority = PR #184
-latest research evidence = PR #201
-control semantic authority = PR #117
-route phase = DISCOVERY
+THEOREM AUTHORITY = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE = PR #215
+validated research head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
+merged research commit = 191b1b648448c92010286dae54df8502df1f55ce
+validated research tree = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
+
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+active subobligation = OBS-059I
+next research target = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+
+R003 phase = DISCOVERY
+confirmatory execution = NOT AUTHORIZED
+terminal claim = RH_OPEN
 ```
 
-PR #184 proves the complex-Hermitian production/log-cover/contact algebra. No later research PR promotes theorem authority.
+PR #215 is rigorous bounded research, not theorem promotion. Universal full-carrier source/M4 sign and proportionality are consumed in the tested scope; the retained first-bad/eigenvector implication was not tested. The live route stays on the exact retained negative secular root. Contact substitution remains unauthorized without a same-state contact bridge; zero-shift response and the resonant `1/(-lambda)` route remain secondary.
+<!-- RHRC_CURRENT_STATE_END -->
+
+The active R003 question is **Pair D2 — retained negative-root cross-parity secular completion** on the exact forced negative root. The first theorem-extraction question is whether opposite-good at the same negative shift forces a strict positive real secular margin; the second is whether the exact overlap/resolvent correction yields an independent completion inequality compatible with the #209 compulsory source/M4 budget.
 
 ## Preserved research ancestry
 
@@ -24,7 +44,7 @@ PR #184 proves the complex-Hermitian production/log-cover/contact algebra. No la
 - PR #199: exact #197 replay succeeds; the four-way and collapsed three-way source interaction representations both classify `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED`; no unique collapsed uniform lock is selected. Direct `J_POSITIVE` remains intact.
 - PR #201: `D = pole + prime_signed` and `A = direct_arch_signed` are formed at matrix-jet level before parity restriction and interval transport. Paired `M,M',M''` reconstruction passes and direct `J_POSITIVE` replays, but `0/49` paired source sums certify positive and `49/49` remain unresolved. Final disposition `DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED`, no uniform lock, `NO_UNIQUE_PRIMARY_LOCK`.
 
-## Current route question
+## Historical post-#201 route question
 
 The frozen Q14 bounded sign question is consumed. The first independent source-attribution graph is consumed. The theorem-motivated discrepancy-first representation is also consumed.
 
@@ -59,7 +79,7 @@ If the full-composite candidate is also mixed or dependency-unresolved, stop Pai
 
 `GLOBAL_MONOTONE_ORIENTATION` remains rigorous bounded research on the exact frozen Q14 domain. `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED` (#199) and `DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED` (#201) are mechanism-attribution results and do not weaken the direct sign certificate. Neither establishes arbitrary-Q ordering, global canonical injectivity, FB-05 closure, negative-root exclusion or RH.
 
-## Post-#203 active route
+## Historical post-#203 active route
 
 The older full-composite candidate above has now been executed and falsified at its preregistered center gate.
 
@@ -95,7 +115,7 @@ Pair-A representation engineering is `CONSUMED / DOWNGRADED`, not mathematically
 
 No claim_ids are changed by this synchronization. Theorem authority remains #184. R003 remains `DISCOVERY`; confirmatory execution is not authorized. The production theorem interface retains `M~(t)=-tI+R~(t)`. Negative-root exclusion remains OPEN. **RH remains OPEN.**
 
-## Post-#205 active route
+## Historical post-#205 active route
 
 ```text
 latest research evidence = PR #205
@@ -123,7 +143,7 @@ The next cheap falsifier is the generic quadratic-normal-defect-versus-`M4` impl
 
 No claim_ids are changed. Theorem authority remains #184. R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
 
-## Post-#207 active theorem frontier
+## Historical post-#207 theorem frontier
 
 ```text
 Lean theorem authority = PR #207
@@ -157,7 +177,7 @@ The old `genericQuadraticNormalPairing != 0 ?-> M4 != 0` falsifier is **SUPERSED
 
 No claim_ids are changed by this synchronization. R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
 
-## Post-#209 active theorem frontier
+## Historical post-#209 theorem frontier
 
 ```text
 Lean theorem authority = PR #209
@@ -200,7 +220,7 @@ The next route is a preregistered cheap falsification search for an **independen
 
 No claim_ids are changed by this synchronization. R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
 
-## Post-#211 active theorem frontier
+## Historical post-#211 theorem frontier
 
 ```text
 Lean theorem authority = PR #211
@@ -224,7 +244,7 @@ The representation prerequisite inside OBS-059I is CLOSED / PROVED BY #211. The 
 
 No claim IDs change. R003 remains `DISCOVERY`; `confirmatory_execution_authorized=false`; route and boundary digests remain null. Negative-root exclusion and **RH remain OPEN.**
 
-## Post-#213 active theorem frontier
+## Historical post-#213 theorem frontier
 
 ```text
 Lean theorem authority = PR #213

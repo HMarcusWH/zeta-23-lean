@@ -4,22 +4,45 @@
 
 Control-v2 is routing/governance infrastructure, not theorem authority.
 
-## Anchors
+## Current anchors and semantic split
+
+<!-- RHRC_CURRENT_STATE_BEGIN -->
+## Current repository state
 
 ```text
-THEOREM AUTHORITY
-PR #184
+THEOREM AUTHORITY = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
 
-LATEST RESEARCH EVIDENCE
-PR #201
-DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED
+LATEST RESEARCH EVIDENCE = PR #215
+validated research head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
+merged research commit = 191b1b648448c92010286dae54df8502df1f55ce
+validated research tree = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
 
-CONTROL SEMANTIC AUTHORITY
-PR #117
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+active subobligation = OBS-059I
+next research target = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
 
 R003 phase = DISCOVERY
-confirmatory execution = not authorized
+confirmatory execution = NOT AUTHORIZED
+terminal claim = RH_OPEN
 ```
+
+PR #215 is rigorous bounded research, not theorem promotion. Universal full-carrier source/M4 sign and proportionality are consumed in the tested scope; the retained first-bad/eigenvector implication was not tested. The live route stays on the exact retained negative secular root. Contact substitution remains unauthorized without a same-state contact bridge; zero-shift response and the resonant `1/(-lambda)` route remain secondary.
+<!-- RHRC_CURRENT_STATE_END -->
+
+```text
+ACTION_REGISTRY.current_frontier
+  = frozen PR #117 control-semantic frontier
+
+CONTROL_STATE.active_research_route.next_research_target
+  = current descriptive research operation
+  = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+```
+
+The two fields serve different layers. Updating the current research operation does not authorize changing action scores, the selected first break, route digests, confirmation permissions, or the PR #117 control-semantic contract.
 
 ## Historical evidence retained
 
@@ -36,7 +59,7 @@ The control plane must preserve the consumed research chain:
 
 Historical regression tests continue to verify their own state; new current-state tests must not erase earlier evidence.
 
-## Current route
+## Historical route after PR #201
 
 The bounded Q14 sign-recovery task, the independent source-interaction audit and the theorem-motivated discrepancy-first audit are consumed.
 
@@ -48,7 +71,7 @@ The production theorem interface remains `M~(t)=-tI+R~(t)`. Equivalent ratio ref
 
 PR #190, #192, #193, #195, #197, #199 and #201 remain research evidence, not Lean theorem promotion.
 
-## Post-#203 current descriptive state
+## Historical post-#203 descriptive state
 
 ```text
 THEOREM AUTHORITY = PR #184
@@ -68,7 +91,7 @@ The machine action registry remains unchanged because the formal frontier, conce
 
 Theorem authority remains #184. **RH remains OPEN.**
 
-## Post-#205 current descriptive state
+## Historical post-#205 descriptive state
 
 ```text
 THEOREM AUTHORITY = PR #184
@@ -88,7 +111,7 @@ The control implication is descriptive, not semantic: the **generic** two-parity
 
 Theorem authority remains #184. Negative-root exclusion and **RH remain OPEN.**
 
-## Post-#207 current descriptive state
+## Historical post-#207 descriptive state
 
 ```text
 THEOREM AUTHORITY = PR #207
@@ -120,7 +143,7 @@ The generic `genericQuadraticNormalPairing != 0 ?-> M4 != 0` gate is **SUPERSEDE
 
 `ACTION_REGISTRY.json`, action scores, first-break IDs, claim IDs, route digests and confirmation permissions remain unchanged. Negative-root exclusion and **RH remain OPEN.**
 
-## Post-#209 current descriptive state
+## Historical post-#209 descriptive state
 
 ```text
 THEOREM AUTHORITY = PR #209
@@ -148,7 +171,7 @@ The active descriptive research target is an independent complete canonical func
 
 `ACTION_REGISTRY.json`, action scores, first-break IDs, claim IDs, route digests and confirmation permissions remain unchanged. R003 remains `DISCOVERY`; confirmatory execution is not authorized. **RH remains OPEN.**
 
-## Post-#211 current descriptive state
+## Historical post-#211 descriptive state
 
 ```text
 THEOREM AUTHORITY = PR #211
@@ -175,7 +198,7 @@ required new information = INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBI
 
 `ACTION_REGISTRY.json`, action scores, first-break IDs, claim IDs, route digests and confirmation permissions remain unchanged. **RH remains OPEN.**
 
-## Post-#213 current descriptive state
+## Historical post-#213 descriptive state
 
 ```text
 THEOREM AUTHORITY = PR #213

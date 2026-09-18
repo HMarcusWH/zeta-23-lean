@@ -4,7 +4,34 @@
 
 Live GitHub/compiler/CI evidence is authoritative.
 
-## Authority split
+<!-- RHRC_CURRENT_STATE_BEGIN -->
+## Current repository state
+
+```text
+THEOREM AUTHORITY = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE = PR #215
+validated research head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
+merged research commit = 191b1b648448c92010286dae54df8502df1f55ce
+validated research tree = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
+
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+active subobligation = OBS-059I
+next research target = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+
+R003 phase = DISCOVERY
+confirmatory execution = NOT AUTHORIZED
+terminal claim = RH_OPEN
+```
+
+PR #215 is rigorous bounded research, not theorem promotion. Universal full-carrier source/M4 sign and proportionality are consumed in the tested scope; the retained first-bad/eigenvector implication was not tested. The live route stays on the exact retained negative secular root. Contact substitution remains unauthorized without a same-state contact bridge; zero-shift response and the resonant `1/(-lambda)` route remain secondary.
+<!-- RHRC_CURRENT_STATE_END -->
+
+## Historical authority split through PR #201
 
 ```text
 THEOREM AUTHORITY
@@ -36,7 +63,7 @@ terminal claim = RH_OPEN
 - #199: exact #197 replay succeeds; direct Method-C remains `J_POSITIVE` on all 49 completed leaves, but the four-way and collapsed three-way source interaction graphs classify `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED`.
 - #201: pole-prime pairing is moved upstream to the matrix-jet level before parity restriction and interval transport. Paired `M,M',M''` reconstruction passes, direct `J_POSITIVE` still replays, but `paired_source_sum_positive_leaf_count = 0` and `paired_source_sum_unresolved_leaf_count = 49`; final classification `DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED` with `NO_UNIQUE_PRIMARY_LOCK`.
 
-## Current R003 frontier
+## Historical R003 frontier after PR #201
 
 The bounded Q14 orientation itself remains complete. The source-attribution lane has now been tested both with independent source groups and with theorem-motivated pole-prime cancellation preserved upstream; neither representation exposes the sign of the already-certified correlated total.
 

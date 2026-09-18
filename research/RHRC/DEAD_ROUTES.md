@@ -4,6 +4,39 @@ A route is listed here when it fails for a reusable reason. Failure is a valid r
 
 Do not silently resurrect a dead route. A revival must state **which blocking premise changed** and why that change is theorem-relevant.
 
+<!-- RHRC_CURRENT_STATE_BEGIN -->
+## Current repository state
+
+```text
+THEOREM AUTHORITY = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE = PR #215
+validated research head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
+merged research commit = 191b1b648448c92010286dae54df8502df1f55ce
+validated research tree = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
+
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+active subobligation = OBS-059I
+next research target = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+
+R003 phase = DISCOVERY
+confirmatory execution = NOT AUTHORIZED
+terminal claim = RH_OPEN
+```
+
+PR #215 is rigorous bounded research, not theorem promotion. Universal full-carrier source/M4 sign and proportionality are consumed in the tested scope; the retained first-bad/eigenvector implication was not tested. The live route stays on the exact retained negative secular root. Contact substitution remains unauthorized without a same-state contact bridge; zero-shift response and the resonant `1/(-lambda)` route remain secondary.
+<!-- RHRC_CURRENT_STATE_END -->
+
+## Current dead-route pointer
+
+The base entries below preserve reusable failure reasons at the time they were recorded. The newest dead-route update is `DEAD_ROUTES_POST_215_DELTA.md`: DR-029 and DR-030 kill only universal full-carrier complete-source/M4 sign and proportionality. **Pair D2 retained negative-root secular completion is not dead.**
+
+Any phrase such as “next step” inside an older entry is historical routing at that point, not authorization to replace the current retained-root target.
+
 ## DR-001 — TightMult-visible scalar improvement
 
 Improve RH by a new scalar inequality consuming only the TightMult-visible single-compression statistics.
@@ -155,7 +188,7 @@ The final regular Schur endpoint can be a tiny residue of much larger channel te
 
 **Post-#153/#155 clarification:** pole-prime cancellation and its legal Riesz representation are theorem-backed interfaces. Splitting pole and prime apart again, or replacing the transformed exact residual with loose independent envelopes, requires a quantitative justification for the lost cancellation.
 
-**Post-#199 clarification:** the warning is strengthened by the exact frozen-Q14 mechanism audit. The independent direct Method-C parity-Wronskian transport remains rigorously `J_POSITIVE` on the complete #197 cover, while both the four-way source-interaction representation and the collapsed pole/direct-arch/prime representation classify `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED`. This does **not** show that no source mechanism exists and does not weaken the direct sign certificate. It shows that independently enclosing the currently separated source interactions loses too much correlated information. A valid next escape should preserve an exact cancellation **before** interval transport, beginning with the theorem-motivated pole-prime discrepancy, or replace source attribution by a higher-level exact composite identity.
+**Historical post-#199 clarification:** the warning is strengthened by the exact frozen-Q14 mechanism audit. The independent direct Method-C parity-Wronskian transport remains rigorously `J_POSITIVE` on the complete #197 cover, while both the four-way source-interaction representation and the collapsed pole/direct-arch/prime representation classify `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED`. This does **not** show that no source mechanism exists and does not weaken the direct sign certificate. It shows that independently enclosing the currently separated source interactions loses too much correlated information. A valid next escape should preserve an exact cancellation **before** interval transport, beginning with the theorem-motivated pole-prime discrepancy, or replace source attribution by a higher-level exact composite identity.
 
 **Post-#201 clarification:** PR #201 executes that exact paired-channel escape rather than merely regrouping already-enclosed interaction intervals. It forms `D = pole + prime_signed` and `A = direct_arch_signed` at matrix `M,M',M''` level before parity restriction and centered second-order interval transport. Paired reconstruction and implementation checks pass, and the independent direct Method-C cover remains `J_POSITIVE`, but the paired representation still returns `paired_source_sum_positive_leaf_count = 0`, `paired_source_sum_unresolved_leaf_count = 49` and `DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED`. Therefore arbitrary further **linear source regrouping** is not the default escape from DR-020 merely because the parentheses change. A changed route now requires a genuinely higher-level exact composite identity of the assembled canonical object, a new theorem-motivated structure that is not another bucket regrouping, or a different same-state incompatibility pair.
 
@@ -187,7 +220,7 @@ The envelope identity `S'(L)=<M'(L)u(L),u(L)>`, if theoremized, remains useful d
 
 **Post-#174 clarification:** using derivative/variation bounds locally to tighten one scalar enclosure does not revive DR-022. The forbidden shortcut is a global fixed sign for the minimizing Schur derivative; local Taylor/interval-Newton control of a specific minimum/contact problem is a different method.
 
-**Post-#182 clarification:** PR #182 theoremizes the generic real 2x2 Schur-envelope derivative and proves that at an H1 contact determinant and pivot derivative orientations agree. This revives only the **local contact calculus** as theorem-backed infrastructure. It does not prove a global sign for `S'(L)`, does not supply a production arithmetic sign, and does not change the empirical sign-changing behavior that quarantined DR-022. The live structural route is contact-local: attach the production `-log(L)I + remainder` decomposition and seek a source-specific remainder bound at the same contact.
+**Historical post-#182 clarification:** PR #182 theoremizes the generic real 2x2 Schur-envelope derivative and proves that at an H1 contact determinant and pivot derivative orientations agree. This revives only the **local contact calculus** as theorem-backed infrastructure. It does not prove a global sign for `S'(L)`, does not supply a production arithmetic sign, and does not change the empirical sign-changing behavior that quarantined DR-022. The live structural route is contact-local: attach the production `-log(L)I + remainder` decomposition and seek a source-specific remainder bound at the same contact.
 
 **Revival firewall:** any future proof that assumes or concludes one global sign for `S'(L)` is still DR-022 unless it supplies genuinely new hypotheses excluding the known sign-changing behavior.
 

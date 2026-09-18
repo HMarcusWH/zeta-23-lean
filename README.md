@@ -4,7 +4,34 @@
 
 This fork preserves the upstream Zeta23 theorem package while adding an opt-in RH-directed research programme under `Zeta23/CCM`, `Zeta23/ExceptionalZero` and `research/RHRC`.
 
-## Current authority snapshot
+<!-- RHRC_CURRENT_STATE_BEGIN -->
+## Current repository state
+
+```text
+THEOREM AUTHORITY = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE = PR #215
+validated research head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
+merged research commit = 191b1b648448c92010286dae54df8502df1f55ce
+validated research tree = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
+
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+active subobligation = OBS-059I
+next research target = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+
+R003 phase = DISCOVERY
+confirmatory execution = NOT AUTHORIZED
+terminal claim = RH_OPEN
+```
+
+PR #215 is rigorous bounded research, not theorem promotion. Universal full-carrier source/M4 sign and proportionality are consumed in the tested scope; the retained first-bad/eigenvector implication was not tested. The live route stays on the exact retained negative secular root. Contact substitution remains unauthorized without a same-state contact bridge; zero-shift response and the resonant `1/(-lambda)` route remain secondary.
+<!-- RHRC_CURRENT_STATE_END -->
+
+## Historical authority snapshot through PR #201
 
 Live GitHub head + exact compiler/CI evidence are authoritative dynamically.
 
@@ -30,7 +57,7 @@ terminal claim = RH_OPEN
 
 Research green is not theorem promotion.
 
-## Theorem frontier
+## Historical theorem frontier through PR #184
 
 The compiler-validated theorem ladder remains through PR #184. Lean proves the complex-Hermitian 2x2 Schur calculus, the frozen production family on the logarithmic cover, the exact fixed-cell bridge to `parityCompressedCanonical`, N2 predecessor/canonical-shell reconstruction and orthogonality, and
 
@@ -97,7 +124,7 @@ PR #184 does **not** prove source-specific remainder domination, contact existen
 
 PR #201 advances the research-evidence anchor because it consumes the theorem-motivated paired-channel escape left open by #199. It does **not** weaken the bounded #197 sign certificate. Instead it shows that even upstream pole-prime pairing does not preserve enough interval correlation to expose the already-certified direct sign.
 
-## Current active path — FB-05 / full-composite parity mechanism
+## Historical active path after PR #201 — FB-05 / full-composite parity mechanism
 
 Do not resume selector mining, threshold refits, the #192 replay, blind precision/depth escalation, the consumed #199 independent source split, or nearby linear source regroupings merely to search for a sign.
 

@@ -1,8 +1,35 @@
-# Fork notes — RHRC state through PR #201
+# Fork notes — RHRC current state through PR #215
 
 > **RH remains OPEN.**
 
-Theorem authority remains PR #184. Latest research evidence is PR #201. Control semantic authority remains PR #117.
+<!-- RHRC_CURRENT_STATE_BEGIN -->
+## Current repository state
+
+```text
+THEOREM AUTHORITY = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE = PR #215
+validated research head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
+merged research commit = 191b1b648448c92010286dae54df8502df1f55ce
+validated research tree = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
+
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+active subobligation = OBS-059I
+next research target = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+
+R003 phase = DISCOVERY
+confirmatory execution = NOT AUTHORIZED
+terminal claim = RH_OPEN
+```
+
+PR #215 is rigorous bounded research, not theorem promotion. Universal full-carrier source/M4 sign and proportionality are consumed in the tested scope; the retained first-bad/eigenvector implication was not tested. The live route stays on the exact retained negative secular root. Contact substitution remains unauthorized without a same-state contact bridge; zero-shift response and the resonant `1/(-lambda)` route remain secondary.
+<!-- RHRC_CURRENT_STATE_END -->
+
+**Historical opening snapshot through PR #201:** theorem authority PR #184; research evidence PR #201; control semantic authority PR #117.
 
 ## Preserved history
 
@@ -15,7 +42,7 @@ Theorem authority remains PR #184. Latest research evidence is PR #201. Control 
 - PR #199: exact #197 replay plus source-mechanism audit; both the four-way and collapsed pole/direct-arch/prime representations classify `SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED`. Direct bounded `J_POSITIVE` is unchanged.
 - PR #201: upstream cancellation-preserving pairing `D = pole + prime_signed`, `A = direct_arch_signed` is performed at `M,M',M''` level before parity restriction/transport. Paired reconstruction passes, direct `J_POSITIVE` remains intact, but `0/49` paired source sums certify positive and `49/49` remain unresolved. Final disposition: `DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED`; `selected_uniform_lock_group = null`; `NO_UNIQUE_PRIMARY_LOCK`.
 
-## Current route
+## Historical route after PR #201
 
 The canonical Q14 bounded sign-recovery problem is complete at research-certification level. Two successive mechanism-attribution strategies are now consumed:
 
@@ -37,7 +64,7 @@ The first composite candidate should have a frozen exact-center kill-switch and 
 
 The #197 result remains rigorous bounded research on the exact frozen Q14 domain. PR #199 and PR #201 do not downgrade it; they classify two mechanism representations as dependency-unresolved. Neither result is arbitrary-Q canonical injectivity, FB-05 closure, negative-root exclusion, or RH. Theorem authority stays #184 and the production theorem interface still includes `M~(t)=-tI+R~(t)`.
 
-## Post-#203 current state
+## Historical post-#203 state
 
 PR #203 is now the latest merged research evidence:
 
@@ -58,7 +85,7 @@ Pair-A representation engineering is therefore **CONSUMED / DOWNGRADED** as the 
 
 Theorem authority remains #184. **RH remains OPEN.**
 
-## Post-#205 current state
+## Historical post-#205 state
 
 PR #205 is now the latest merged research evidence:
 
@@ -75,7 +102,7 @@ Therefore generic predecessor positivity + parity/boundary-flat/shell geometry +
 
 `sourceMoment <-> M4` canonical-state rigidity and the odd-selected first-bad branch remain OPEN. Pair B remains secondary. The selected first break remains `E4A4-SCHUR-FB-05`; theorem authority remains #184; **RH remains OPEN.**
 
-## Post-#207 current theorem state
+## Historical post-#207 theorem state
 
 ```text
 THEOREM AUTHORITY = PR #207
@@ -106,7 +133,7 @@ No unconditional `sourceMoment -> M4` theorem was proved. The proposed generic d
 
 then composition with the #163 mixed-jet/Riesz boundary package. Pair B remains secondary. `E4A4-SCHUR-FB-05` remains the selected first break; **RH remains OPEN.**
 
-## Post-#209 current theorem state
+## Historical post-#209 theorem state
 
 ```text
 THEOREM AUTHORITY = PR #209

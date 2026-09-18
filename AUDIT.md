@@ -1,10 +1,37 @@
-# RHRC formal audit — theorem authority through PR #184; research evidence through PR #201
+# RHRC formal audit — current authority PR #213; research evidence PR #215
 
 > **RH remains OPEN.**
 
+<!-- RHRC_CURRENT_STATE_BEGIN -->
+## Current repository state
+
+```text
+THEOREM AUTHORITY = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE = PR #215
+validated research head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
+merged research commit = 191b1b648448c92010286dae54df8502df1f55ce
+validated research tree = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
+
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+active subobligation = OBS-059I
+next research target = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+
+R003 phase = DISCOVERY
+confirmatory execution = NOT AUTHORIZED
+terminal claim = RH_OPEN
+```
+
+PR #215 is rigorous bounded research, not theorem promotion. Universal full-carrier source/M4 sign and proportionality are consumed in the tested scope; the retained first-bad/eigenvector implication was not tested. The live route stays on the exact retained negative secular root. Contact substitution remains unauthorized without a same-state contact bridge; zero-shift response and the resonant `1/(-lambda)` route remain secondary.
+<!-- RHRC_CURRENT_STATE_END -->
+
 Live GitHub head + exact compiler/CI evidence outrank this prose.
 
-## Authority split
+## Historical authority split through PR #201
 
 ```text
 THEOREM AUTHORITY
@@ -26,7 +53,7 @@ selected first break = E4A4-SCHUR-FB-05
 terminal claim = RH_OPEN
 ```
 
-## Formal theorem state
+## Historical formal theorem state through PR #184
 
 No Lean theorem has been added after PR #184. The formal package still proves the Hermitian Schur/contact algebra, frozen parity production/log-cover family, exact fixed-cell production bridge, N2 predecessor/canonical-shell geometry, and the conditional decomposition
 
@@ -38,7 +65,7 @@ remainderEnvelopeDerivative < envelopeNormSq -> P_t' < 0.
 
 Still not proved: source-specific domination, contact existence/uniqueness, same-state opposing first-bad orientation, first-bad exclusion, negative-root exclusion or RH.
 
-## Research audit: #186 -> #201
+## Historical research audit: #186 -> #201
 
 ### #186 -> #190 — ambient selector surface consumed
 
@@ -174,7 +201,7 @@ The next Pair-A test should preserve the fully assembled canonical parity object
   -/-> RH
 ```
 
-## Post-#203 audit addendum — current research authority
+## Historical post-#203 audit addendum — research authority at that point
 
 The stale #201 authority/frontier wording above is preserved as history. Current research authority is PR #203:
 
@@ -197,7 +224,7 @@ Pair-A **representation engineering** is therefore consumed/downgraded as the de
 
 ## Post-#205 audit addendum — generic Pair-D lane consumed
 
-Current research authority is now PR #205:
+Historical post-#205 research authority was PR #205:
 
 ```text
 head  = 73b78297da54b9f5b2d47584a8033356a6b2e2a8
