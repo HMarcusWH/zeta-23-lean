@@ -174,3 +174,23 @@ required new information = INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBI
 ```
 
 `ACTION_REGISTRY.json`, action scores, first-break IDs, claim IDs, route digests and confirmation permissions remain unchanged. **RH remains OPEN.**
+
+## Post-#213 current descriptive state
+
+```text
+THEOREM AUTHORITY = PR #213
+head  = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merge = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+tree  = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE = PR #205
+CONTROL SEMANTIC AUTHORITY = PR #117
+
+OBS-059Q = CLOSED / PROVED #209
+complete-functional representation = PROVED #211
+source-coordinate kernel = PROVED #213
+OBS-059I = OPEN / ACTIVE
+next research target = EXACT_KERNEL_ADVERSARIAL_FALSIFICATION
+```
+
+R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. **RH remains OPEN.**
