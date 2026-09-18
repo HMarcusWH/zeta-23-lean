@@ -2,11 +2,37 @@
 
 This ledger records reusable blockers that should shape future route design.
 
-> **Current theorem anchor:** merged PR #182, `a69160d37a84049711aaff6c3d5db804583a7306`.  
-> **Validated theorem head:** `0c3f63cdc4774ba1a68b21d1558ea0ee860a938d`.  
-> **Validated theorem tree:** `e0b260b3b3a1ed470d54c14d8c0c46b32379f3fb`.  
-> **Latest research-evidence anchor:** merged PR #180, validated head `a87469da9e611b53ae400cb4b18ce4afeb94e6d2`.  
+> **Base-ledger coverage:** theorem state through PR #182; research evidence through PR #180.  
+> **Current obstruction delta:** `OBSTRUCTION_LEDGER_POST_215_DELTA.md`.  
+> **Current active obstruction:** `OBS-059I` — retained-dynamical-locus information required.  
 > **Claim firewall:** RH remains OPEN.
+
+<!-- RHRC_CURRENT_STATE_BEGIN -->
+## Current repository state
+
+```text
+THEOREM AUTHORITY = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE = PR #215
+validated research head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
+merged research commit = 191b1b648448c92010286dae54df8502df1f55ce
+validated research tree = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
+
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+active subobligation = OBS-059I
+next research target = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+
+R003 phase = DISCOVERY
+confirmatory execution = NOT AUTHORIZED
+terminal claim = RH_OPEN
+```
+
+PR #215 is rigorous bounded research, not theorem promotion. Universal full-carrier source/M4 sign and proportionality are consumed in the tested scope; the retained first-bad/eigenvector implication was not tested. The live route stays on the exact retained negative secular root. Contact substitution remains unauthorized without a same-state contact bridge; zero-shift response and the resonant `1/(-lambda)` route remain secondary.
+<!-- RHRC_CURRENT_STATE_END -->
 
 Historical obstruction origins below retain the PR number at which they were discovered/classified. A later theorem may close an escape without deleting the reusable warning.
 

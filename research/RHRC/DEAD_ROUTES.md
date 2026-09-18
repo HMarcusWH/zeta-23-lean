@@ -4,6 +4,39 @@ A route is listed here when it fails for a reusable reason. Failure is a valid r
 
 Do not silently resurrect a dead route. A revival must state **which blocking premise changed** and why that change is theorem-relevant.
 
+<!-- RHRC_CURRENT_STATE_BEGIN -->
+## Current repository state
+
+```text
+THEOREM AUTHORITY = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE = PR #215
+validated research head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
+merged research commit = 191b1b648448c92010286dae54df8502df1f55ce
+validated research tree = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
+
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+active subobligation = OBS-059I
+next research target = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+
+R003 phase = DISCOVERY
+confirmatory execution = NOT AUTHORIZED
+terminal claim = RH_OPEN
+```
+
+PR #215 is rigorous bounded research, not theorem promotion. Universal full-carrier source/M4 sign and proportionality are consumed in the tested scope; the retained first-bad/eigenvector implication was not tested. The live route stays on the exact retained negative secular root. Contact substitution remains unauthorized without a same-state contact bridge; zero-shift response and the resonant `1/(-lambda)` route remain secondary.
+<!-- RHRC_CURRENT_STATE_END -->
+
+## Current dead-route pointer
+
+The base entries below preserve reusable failure reasons at the time they were recorded. The newest dead-route update is `DEAD_ROUTES_POST_215_DELTA.md`: DR-029 and DR-030 kill only universal full-carrier complete-source/M4 sign and proportionality. **Pair D2 retained negative-root secular completion is not dead.**
+
+Any phrase such as “next step” inside an older entry is historical routing at that point, not authorization to replace the current retained-root target.
+
 ## DR-001 — TightMult-visible scalar improvement
 
 Improve RH by a new scalar inequality consuming only the TightMult-visible single-compression statistics.

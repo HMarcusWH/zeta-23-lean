@@ -16,7 +16,40 @@ When sources disagree:
 
 Research certificates, exact-rational audits, Arb output and external reviews are routing evidence unless separately theoremized in Lean.
 
-## Three-anchor model
+<!-- RHRC_CURRENT_STATE_BEGIN -->
+## Current repository state
+
+```text
+THEOREM AUTHORITY = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE = PR #215
+validated research head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
+merged research commit = 191b1b648448c92010286dae54df8502df1f55ce
+validated research tree = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
+
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+active subobligation = OBS-059I
+next research target = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+
+R003 phase = DISCOVERY
+confirmatory execution = NOT AUTHORIZED
+terminal claim = RH_OPEN
+```
+
+PR #215 is rigorous bounded research, not theorem promotion. Universal full-carrier source/M4 sign and proportionality are consumed in the tested scope; the retained first-bad/eigenvector implication was not tested. The live route stays on the exact retained negative secular root. Contact substitution remains unauthorized without a same-state contact bridge; zero-shift response and the resonant `1/(-lambda)` route remain secondary.
+<!-- RHRC_CURRENT_STATE_END -->
+
+## Living-current-surface rule
+
+Every file designated as a living/current SSOT must expose the current three-anchor state before historical material. A later append-only override does **not** cure a stale top-level declaration of what is current.
+
+`control_v2/CONTROL_STATE.json` is the machine source for the present descriptive research state. `control_v2/ACTION_REGISTRY.json` remains the frozen PR #117 control-semantic contract unless a deliberate semantic migration changes that contract and its tests together. In particular, `ACTION_REGISTRY.current_frontier` must not be silently reinterpreted as the latest research operation.
+
+## Historical three-anchor model through PR #201
 
 ### Theorem-state anchor
 
@@ -69,7 +102,7 @@ Update these when their underlying state changes:
 
 Historical dated deltas are not rewritten to look current. Historical regression tests are not repurposed to erase earlier consumed layers.
 
-## Current synchronized state
+## Historical synchronized state through PR #201
 
 ### Theorem authority through #184
 
@@ -112,7 +145,7 @@ No later research PR promotes additional Lean theorem authority.
 
 Historical #195, #197 and #199 states remain preserved. PR #201 advances only the latest research-evidence anchor.
 
-### Current route
+### Historical route after PR #201
 
 ```text
 PROVED THROUGH #184
@@ -157,11 +190,11 @@ Historical `test_post195_sync.py`, `test_post197_sync.py` and `test_post199_sync
 - negative-root exclusion remains OPEN;
 - **RH remains OPEN.**
 
-## Post-#203 authority override
+## Historical post-#203 authority override
 
 This section is the current synchronization and supersedes any earlier `latest merged research PR`, `newest current delta`, or `NOW` wording above while preserving that wording as history.
 
-### Current research-evidence anchor
+### Historical research-evidence anchor at that point
 
 ```text
 latest merged research PR = #203
@@ -175,7 +208,7 @@ PR #203 is research/falsification authority only. Its repaired theorem-aligned p
 
 The direct #197 `GLOBAL_MONOTONE_ORIENTATION / J_POSITIVE` certificate is unchanged. The failure consumes the planned simple Pair-A representation-engineering lane; it does not prove every Pair-A theorem impossible.
 
-### Current route after #203
+### Historical route after #203
 
 ```text
 Pair-A representation engineering = CONSUMED / DOWNGRADED
@@ -190,11 +223,11 @@ The theorem anchor remains PR #184. The control-plane semantic anchor remains PR
 
 R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
 
-## Post-#205 authority override
+## Historical post-#205 authority override
 
 This section supersedes the post-#203 authority pointer while preserving all earlier state as history.
 
-### Current research-evidence anchor
+### Historical research-evidence anchor at that point
 
 ```text
 latest merged research PR = #205
@@ -215,7 +248,7 @@ RIGOROUS FINITE SYNTHETIC COUNTERMODEL
 
 This strengthens the old DR-012/DR-013 structural countermodel conclusion: generic first-bad/parity/shell/displacement structure is insufficient for simultaneous-badness exclusion. It does not show a canonical retained state has both parities bad.
 
-### Current route after #205
+### Historical route after #205
 
 ```text
 Pair-A representation engineering = CONSUMED / DOWNGRADED
@@ -231,11 +264,11 @@ The next research falsifier is the generic quadratic-normal-defect-versus-`M4` i
 
 The theorem anchor remains PR #184. The control-plane semantic anchor remains PR #117. `ACTION_REGISTRY.json` remains unchanged because the formal first break and action semantics do not move. R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
 
-## Post-#207 authority override
+## Historical post-#207 authority override
 
 This section supersedes the post-#205 theorem pointer while preserving all earlier state as history.
 
-### Current theorem-state anchor
+### Historical theorem-state anchor at that point
 
 ```text
 latest theorem-bearing PR = #207
@@ -244,7 +277,7 @@ merged theorem commit = 76cf4e3b5ef4b7ab904a861b6d4cb01fdcd8d0e0
 validated theorem tree = d6509407cc7b667b0ff3e7faab2acd525ae32db9
 ```
 
-### Current research-evidence anchor
+### Historical research-evidence anchor at that point
 
 ```text
 latest merged research PR = #205
@@ -268,11 +301,11 @@ The old generic `genericQuadraticNormalPairing != 0 ?-> M4 != 0` next-step propo
 
 The next theorem extraction is quantitative Pair-D coercivity `-lam * ||Dv||^2 <= re(star(sourceMoment) * M4)` and its retained specialization, followed by #163 mixed-jet/Riesz composition. `ACTION_REGISTRY.json` remains unchanged because the first-break semantics do not move. R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
 
-## Post-#209 authority override
+## Historical post-#209 authority override
 
 This section supersedes the post-#207 current theorem pointer while preserving all earlier state as history.
 
-### Current theorem-state anchor
+### Historical theorem-state anchor at that point
 
 ```text
 latest theorem-bearing PR = #209
@@ -281,7 +314,7 @@ merged theorem commit = e029af769e01a547ebbc6ed045509bb2cbdd6cff
 validated theorem tree = 6a75278ebf3f2bd19a77419238872cb81835ec13
 ```
 
-### Current research-evidence anchor
+### Historical research-evidence anchor at that point
 
 ```text
 latest merged research PR = #205
@@ -298,11 +331,11 @@ The next research step is not another extraction from the #207/#209 energy ident
 
 `ACTION_REGISTRY.json` remains unchanged because the first-break semantics do not move. R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. Endpoint-scalar sign, simultaneous odd-bad exclusion, odd-selected closure, negative-root exclusion and **RH remain OPEN.**
 
-## Post-#211 authority override
+## Historical post-#211 authority override
 
 This section supersedes the post-#209 current theorem pointer while preserving all earlier state as history.
 
-### Current theorem-state anchor
+### Historical theorem-state anchor at that point
 
 ```text
 latest theorem-bearing PR = #211
@@ -311,7 +344,7 @@ merged theorem commit = dd42e6368e48957c9922a9e917e10f60a2582b9f
 validated theorem tree = a735f6149aeaa9f8358394c33fd6dcee8062f68e
 ```
 
-### Current research-evidence anchor
+### Historical research-evidence anchor at that point
 
 ```text
 latest merged research PR = #205
@@ -332,7 +365,7 @@ PR #211 closes the complete-functional representation prerequisite but not OBS-0
 
 `ACTION_REGISTRY.json`, claim IDs, route digests, action scores and first-break semantics remain unchanged. R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. **RH remains OPEN.**
 
-## Post-#213 authority override
+## Historical post-#213 authority override
 
 ```text
 latest theorem-bearing PR = #213

@@ -33,9 +33,40 @@ same production object
 
 A valid incompatibility side must be a property of the canonical composite object, not an artifact created by decomposing a cancellation-sensitive quantity into independently enclosed pieces.
 
+<!-- RHRC_CURRENT_STATE_BEGIN -->
+## Current repository state
+
+```text
+THEOREM AUTHORITY = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE = PR #215
+validated research head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
+merged research commit = 191b1b648448c92010286dae54df8502df1f55ce
+validated research tree = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
+
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+active subobligation = OBS-059I
+next research target = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+
+R003 phase = DISCOVERY
+confirmatory execution = NOT AUTHORIZED
+terminal claim = RH_OPEN
+```
+
+PR #215 is rigorous bounded research, not theorem promotion. Universal full-carrier source/M4 sign and proportionality are consumed in the tested scope; the retained first-bad/eigenvector implication was not tested. The live route stays on the exact retained negative secular root. Contact substitution remains unauthorized without a same-state contact bridge; zero-shift response and the resonant `1/(-lambda)` route remain secondary.
+<!-- RHRC_CURRENT_STATE_END -->
+
+### Current theorem/research stack
+
+The current same-state Pair-D stack is #209 quantitative coercivity, #211 complete-functional representation, #213 exact source-coordinate kernel, and #215 bounded falsification of universal full-carrier source/M4 sign/proportionality. The highest-information live route is **Pair D2 — retained negative-root secular completion**.
+
 ## Existing theorem inputs
 
-### PROVED — PR #184
+### Foundational PROVED — PR #184
 
 The actual complex-Hermitian production/log-cover package proves the generic contact algebra, exact fixed-cell production bridge, N2 predecessor/canonical-shell geometry and
 
@@ -65,7 +96,7 @@ The project also has theorem-backed pole-prime discrepancy identities and legal 
 - Same-state composition is mandatory.
 - Source decomposition must preserve known cancellation before interval enclosure when independent boxing would destroy the relevant residue.
 
-## Research inputs through #201
+## Historical research inputs through #201
 
 ### #186 — broad Pair-A domination falsifier
 

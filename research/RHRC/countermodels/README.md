@@ -1,5 +1,36 @@
 # Countermodel and regression-fixture registry
 
+<!-- RHRC_CURRENT_STATE_BEGIN -->
+## Current repository state
+
+```text
+THEOREM AUTHORITY = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE = PR #215
+validated research head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
+merged research commit = 191b1b648448c92010286dae54df8502df1f55ce
+validated research tree = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
+
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+active subobligation = OBS-059I
+next research target = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+
+R003 phase = DISCOVERY
+confirmatory execution = NOT AUTHORIZED
+terminal claim = RH_OPEN
+```
+
+PR #215 is rigorous bounded research, not theorem promotion. Universal full-carrier source/M4 sign and proportionality are consumed in the tested scope; the retained first-bad/eigenvector implication was not tested. The live route stays on the exact retained negative secular root. Contact substitution remains unauthorized without a same-state contact bridge; zero-shift response and the resonant `1/(-lambda)` route remain secondary.
+<!-- RHRC_CURRENT_STATE_END -->
+
+## Current falsification target
+
+Countermodels should now attack proposed **retained-root secular-completion mechanisms** without replacing the retained first-bad/eigenvector hypotheses by arbitrary-vector full-carrier claims. PR #215 has already consumed universal full-carrier source/M4 sign and proportionality in its tested scope.
+
 Countermodels are typed by what they refute.
 
 A synthetic configuration may refute a solver/research claim without being a realizable zeta-zero configuration. Mathematical realizability must be proved separately before a synthetic construction is used against a theorem about zeta.
@@ -59,7 +90,7 @@ Therefore complex D-transport and unconditional production Riesz order 6 are no 
 
 The exact post-#155 `K=2` fixtures kill only the pointwise fixed-sign interpretation. They do not refute the Riesz identities or prove anything about RH.
 
-The actual canonical pole/archimedean/von-Mangoldt channels must supply any decisive exclusion theorem. The current falsification target is a **specific mechanism for the complete theorem-backed transformed residual**, not merely sign frequency of the old selected residual.
+The actual canonical pole/archimedean/von-Mangoldt channels must supply any decisive exclusion theorem. Historical transformed-residual falsifiers remain regression evidence; the current hostile target is a proposed **retained-root secular-completion mechanism** on the exact forced state.
 
 A regression fixture may protect a semantic firewall even when it is not itself a zeta counterexample.
 

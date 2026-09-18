@@ -8,40 +8,46 @@ This document defines what "green", "proved", "validated" and "promoted" mean in
 
 For theorem-bearing PRs, compiler validity attaches only to the exact checked head/tree and its successful import closure. For research-only PRs, record exact head/merge/tree and CI evidence separately. A green research PR validates faithful execution; it does not convert executable algebra, numerical output or Arb certification into Lean theorem authority.
 
-## Authority classes
+## Current authority classes
 
-### Theorem authority
-
-```text
-latest theorem-bearing PR = #184
-validated theorem head = a756494ebe7e2530715e996b9a9a341fbe07c683
-merged theorem commit = 6f04e94473eb112b59eeaa2c6fc6ac6cbe7fe30e
-validated theorem tree = 6c77cd470809959a403b3bcc5f08d39f4076fa4c
-```
-
-### Latest research-evidence anchor
+<!-- RHRC_CURRENT_STATE_BEGIN -->
+## Current repository state
 
 ```text
-merged research PR = #201
-validated research head = be5b98dfce12777436bc40b39a37b04669ae4311
-merged research commit = 319db6f68f65bdcffc0657c03bea76502da59a57
-validated research tree = 840a2e8b0bf690507bc3385fbe122210e6d32c7a
-research disposition = DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED
+THEOREM AUTHORITY = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE = PR #215
+validated research head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
+merged research commit = 191b1b648448c92010286dae54df8502df1f55ce
+validated research tree = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
+
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+active subobligation = OBS-059I
+next research target = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+
+R003 phase = DISCOVERY
+confirmatory execution = NOT AUTHORIZED
+terminal claim = RH_OPEN
 ```
 
-### Control authority
+PR #215 is rigorous bounded research, not theorem promotion. Universal full-carrier source/M4 sign and proportionality are consumed in the tested scope; the retained first-bad/eigenvector implication was not tested. The live route stays on the exact retained negative secular root. Contact substitution remains unauthorized without a same-state contact bridge; zero-shift response and the resonant `1/(-lambda)` route remain secondary.
+<!-- RHRC_CURRENT_STATE_END -->
 
-```text
-control-plane anchor = PR #117
-merge = 19346f4c00d13bf33db95cbe5325233f86e54c12
-control-plane tree = c0d28740806ec22b5b477b426a2a31e459672dd1
-```
+### Positional living-surface validation
 
-Theorem, research and control anchors are deliberately separate.
+For living/current documentation, validation is positional rather than mere token presence: the marked `RHRC_CURRENT_STATE` block near the front of each living surface must agree with `control_v2/CONTROL_STATE.json`. A correct later append-only override does not validate a stale front-matter declaration.
+
+Historical files, dated deltas, frozen fixtures and receipts retain their original authority metadata and are not rewritten to the latest PR numbers.
 
 ## Authoritative repository gates
 
 Current gates include:
+
+- post-#215 living-current-surface positional synchronization;
 
 ```text
 python research/RHRC/tools/run_suite.py
@@ -64,7 +70,7 @@ post-#200 / #201 Q14 discrepancy-mechanism regression
 
 A skipped downstream step is not a passed gate.
 
-## Exact #184 theorem evidence
+## Historical exact #184 theorem evidence
 
 PR #184 remains the latest Lean-bearing authority. Validated mathematical content includes Hermitian 2x2 pivot/determinant identities, contact-local derivative sign transfer under H1, the full frozen parity production family, the fixed-cell bridge, N2 predecessor/canonical-shell reconstruction and
 
@@ -76,7 +82,7 @@ remainder drift < envelopeNormSq -> negative pivot orientation.
 
 Not proved by #184: actual source-specific remainder derivative witnesses, source-specific domination, contact existence/uniqueness, opposing first-bad orientation, negative-root exclusion or RH.
 
-## Research evidence through #201
+## Historical research evidence through #201
 
 ### #186 / #190 / #192 historical constraints
 
