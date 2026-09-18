@@ -99,7 +99,10 @@ theorem re_inner_cubicSecularTrialVector_eq
   have hlamInner :
       Complex.re (inner ℂ ((lam : ℂ) • u) u) =
         lam * ‖u‖ ^ 2 := by
-    rw [hlamInnerComplex, Complex.smul_re, huu, smul_eq_mul]
+    rw [hlamInnerComplex]
+    change Complex.re ((lam : ℂ) * inner ℂ u u) = lam * ‖u‖ ^ 2
+    rw [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im,
+      zero_mul, sub_zero, huu]
   rw [hF, Complex.add_re, hlamInner]
   ring
 
