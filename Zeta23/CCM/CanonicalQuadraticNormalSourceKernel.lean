@@ -121,7 +121,7 @@ theorem canonicalQuadraticNormalSourceFunctional_eq_sourceKernelRHS
     rw [canonicalSourcePhysicalLift_eq_one_sub_of_mem hL hx.1 hx.2]
   rw [hinterval (fun x => (completeSourcePoleWeight x : ℂ))]
   rw [hinterval (fun x => (archDensity x : ℂ))]
-  apply congrArg (fun z : ℂ => _ - _ - z)
+  congr 1
   apply Finset.sum_congr rfl
   intro q hq
   rw [← congrFun hlift (Real.log q)]
