@@ -92,13 +92,14 @@ theorem re_inner_cubicSecularTrialVector_eq
   have hF :
       inner ℂ (F • c) u = star F * inner ℂ c c := by
     rw [inner_smul_left, hcu]
+  have hlamInnerComplex :
+      inner ℂ ((lam : ℂ) • u) u =
+        lam • inner ℂ u u := by
+    exact inner_smul_real_left (𝕜 := ℂ) u u lam
   have hlamInner :
       Complex.re (inner ℂ ((lam : ℂ) • u) u) =
         lam * ‖u‖ ^ 2 := by
-    rw [inner_smul_left]
-    simp only [map_natCast, RCLike.star_def, starRingEnd_apply,
-      Complex.conj_ofReal, Complex.mul_re, Complex.ofReal_re,
-      Complex.ofReal_im, zero_mul, sub_zero, huu]
+    rw [hlamInnerComplex, Complex.smul_re, huu, smul_eq_mul]
   rw [hF, Complex.add_re, hlamInner]
   ring
 
@@ -185,6 +186,9 @@ theorem cubicSecularScalar_shellPairing_pos_of_not_parityBad
   have hune :
       cubicSecularTrialVector p hL N hprev lam hlam ≠ 0 :=
     cubicSecularTrialVector_ne_zero p hL N hN hprev lam hlam
+  have hnorm0 :
+      0 < ‖cubicSecularTrialVector p hL N hprev lam hlam‖ :=
+    norm_pos_iff.mpr hune
   have hnorm : 0 < ‖cubicSecularTrialVector p hL N hprev lam hlam‖ ^ 2 := by
     positivity
   have hshift :
