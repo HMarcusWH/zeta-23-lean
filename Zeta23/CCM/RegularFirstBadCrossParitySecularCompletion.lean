@@ -148,8 +148,10 @@ theorem
         .even c.firstBad.L_pos c.firstBad.Nstar
         (c.firstBad.predecessorNonnegative_anyParity .even)
         c.lam c.lam_neg)
+  dsimp only at hcompletion
   rw [hsource] at hcompletion
-  simpa [RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial]
+  dsimp only [S, M4]
+  simpa only [RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial]
     using hcompletion
 
 /-- Retained completed odd-secular budget on the odd-good branch. -/
@@ -213,8 +215,10 @@ theorem
         .even c.firstBad.L_pos c.firstBad.Nstar
         (c.firstBad.predecessorNonnegative_anyParity .even)
         c.lam c.lam_neg)
+  dsimp only at hbudget
   rw [hsource] at hbudget
-  simpa [RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial]
+  dsimp only [S, M4]
+  simpa only [RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial]
     using hbudget
 
 end Zeta23.CCM
