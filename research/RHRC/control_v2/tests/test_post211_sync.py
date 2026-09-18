@@ -41,9 +41,10 @@ class Post211SyncTests(unittest.TestCase):
         self.assertEqual(route["same_observable_global_local_interface"], "PROVED_PR_211")
         self.assertEqual(route["complete_functional_antialignment_rewrite"], "PROVED_PR_211")
         self.assertEqual(route["representation_prerequisite"], "CLOSED_PROVED_PR_211")
+        self.assertNotIn("next_theoremization", route)
         self.assertEqual(
-            route["next_theoremization"],
-            "SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL",
+            route["source_coordinate_kernel_representation"],
+            "PROVED_PR_213",
         )
         self.assertEqual(route["closed_subobligation"], "OBS-059Q")
         self.assertEqual(route["active_subobligation"], "OBS-059I")
