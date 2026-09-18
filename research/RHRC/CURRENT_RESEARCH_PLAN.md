@@ -876,3 +876,64 @@ RIESZ / KERNEL:
 `OBS-059Q` remains CLOSED / PROVED BY #209. `OBS-059I = OPEN / ACTIVE`. The required new information remains `INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY`.
 
 R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+# Post-#213 authoritative execution state
+
+This section is the current execution SSOT and supersedes the post-#211 next-step wording while preserving earlier sections as history.
+
+```text
+THEOREM AUTHORITY = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE = PR #205
+CONTROL AUTHORITY = PR #117
+terminal claim = RH_OPEN
+```
+
+## Execution stack
+
+```text
+STEP 1  quantitative Pair-D coercivity
+        CLOSED / PROVED #209
+
+STEP 2  retained specialization
+        CLOSED / PROVED #209
+
+STEP 3  mixed seventh-jet / Riesz composition
+        CLOSED / PROVED #209
+
+STEP 4  complete source moment = Λ_L(h)
+        CLOSED / PROVED #211
+
+STEP 5  exact source-coordinate complete kernel
+        CLOSED / PROVED #213
+
+STEP 6  independent complete-functional incompatibility
+        OPEN / ACTIVE / OBS-059I
+
+STEP 7  canonical simultaneous odd-bad
+        OPEN
+
+STEP 8  odd-selected first-bad
+        OPEN
+```
+
+## Next research operation
+
+```text
+EXACT_KERNEL_ADVERSARIAL_FALSIFICATION
+```
+
+Preregister three lanes:
+
+```text
+SIGN
+MAGNITUDE
+DUAL / GRAM / EXTREMAL GEOMETRY
+```
+
+The existing real-energy Riesz machinery acts on `sourceAtomRealEnergy`; #213 acts on `quadraticNormalSourceAtom`. Direct composition is not established.
+
+The required new information remains `INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY`. R003 remains `DISCOVERY`; confirmatory execution is not authorized. **RH remains OPEN.**

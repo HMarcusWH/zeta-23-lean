@@ -533,3 +533,43 @@ terminal same-state incompatibility = OPEN
 ```
 
 Pair B remains secondary. The selected formal first break remains `E4A4-SCHUR-FB-05`; R003 remains `DISCOVERY`; **RH remains OPEN.**
+
+## Post-#213 current leads
+
+### Active lead 1 — exact-kernel adversarial falsification
+
+**Status:** HIGHEST LEVERAGE / NEXT RESEARCH
+
+The exact functional is now theorem-backed through #213:
+
+```text
+explicitCanonicalSourceMoment
+  = quadraticNormalSourceKernelRHS
+```
+
+The next operation is `EXACT_KERNEL_ADVERSARIAL_FALSIFICATION`.
+
+Test, in order:
+
+```text
+SIGN
+MAGNITUDE
+DUAL / GRAM / EXTREMAL GEOMETRY
+```
+
+### Active lead 2 — dual-functional geometry
+
+**DERIVED / NOT YET PACKAGED AS LINEARMAPS.**
+
+For fixed L,K, investigate the two functionals
+```text
+F(v) = quadraticNormalSourceKernelRHS L K v
+G(v) = seventh jet of quadraticNormalSourceAtom K v
+```
+for proportionality, joint rank, Gram geometry, sign range, and energy-normalized extrema.
+
+### Active lead 3 — mixed-observable Riesz bridge
+
+Existing `CanonicalPolePrimeRiesz` machinery acts on `sourceAtomRealEnergy`, not the #213 `quadraticNormalSourceAtom`. A same-observable mixed analogue is OPEN.
+
+`OBS-059I`, simultaneous odd-bad, odd-selected first-bad, endpoint-scalar sign, negative-root exclusion and **RH remain OPEN.**

@@ -15,14 +15,14 @@ from control_v2.state import load_research_state
 class ControlV2Tests(unittest.TestCase):
     def test_control_state_tracks_latest_theorem_anchor_without_moving_control_anchor(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 211)
+        self.assertEqual(state.anchor.pr, 213)
         self.assertEqual(
             state.anchor.merge_commit,
-            "dd42e6368e48957c9922a9e917e10f60a2582b9f",
+            "ee341a6071d177c75bbea0a5f92ebe3b3bb16696",
         )
         self.assertEqual(
             state.anchor.tree,
-            "a735f6149aeaa9f8358394c33fd6dcee8062f68e",
+            "db00686b2bbb821adb857e5c68f422d19c4f91cd",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -36,7 +36,7 @@ class ControlV2Tests(unittest.TestCase):
             "FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN",
         )
 
-    def test_control_note_preserves_history_and_records_post211_theorem(self):
+    def test_control_note_preserves_history_and_records_post213_theorem(self):
         control = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
@@ -73,11 +73,18 @@ class ControlV2Tests(unittest.TestCase):
             "oddBad_or_completeSourceFunctionalMixedJet_re_neg_of_even",
             "OBS-059I remains OPEN / ACTIVE",
             "SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL",
+            "PR #213",
+            "703c3764a7d35aa4801e791a1929efa54c2533a1",
+            "explicitCanonicalSourceMoment_eq_sourceKernelRHS",
+            "oddBad_or_sourceKernelMixedJet_re_neg_of_even",
+            "EXACT_KERNEL_ADVERSARIAL_FALSIFICATION",
+            "sourceAtomRealEnergy",
+            "quadraticNormalSourceAtom",
             "simultaneous odd-bad branch",
             "RH remains OPEN",
         ):
             self.assertIn(token, note)
-        self.assertEqual(control["merged_theorem_anchor"]["pr"], 211)
+        self.assertEqual(control["merged_theorem_anchor"]["pr"], 213)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
         self.assertEqual(control["terminal_claim"], "RH_OPEN")
 

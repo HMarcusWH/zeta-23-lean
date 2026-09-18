@@ -349,3 +349,35 @@ This is a representation/interface rewrite of the #209 obstruction, not an indep
 `OBS-059I` remains **OPEN / ACTIVE**. Its representation prerequisite is CLOSED / PROVED BY #211. The next theoremization target is `SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL`: derive the exact source-coordinate integral-plus-prime representation from the theorem-authoritative `literatureRHS` and the proved endpoint identities, without prerecording guessed constants or signs.
 
 The required new information remains `INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY`. The simultaneous odd-bad branch, odd-selected first-bad branch, endpoint-scalar sign, negative-root exclusion and **RH remain OPEN.**
+
+## Post-#213 theorem-authority synchronization
+
+```text
+THEOREM AUTHORITY = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE = PR #205
+CONTROL SEMANTIC AUTHORITY = PR #117
+terminal claim = RH_OPEN
+```
+
+PR #209 remains the provenance of quantitative Pair-D coercivity and strict anti-alignment. PR #211 remains the complete-functional interface milestone. PR #213 proves the exact complete physical/source-coordinate kernel and the retained source-kernel anti-alignment rewrite.
+
+```text
+SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL
+  = CLOSED / PROVED #213
+
+OBS-059I
+  = OPEN / ACTIVE
+
+next research operation
+  = EXACT_KERNEL_ADVERSARIAL_FALSIFICATION
+```
+
+The next research lanes are SIGN, MAGNITUDE, and DUAL / GRAM / EXTREMAL GEOMETRY.
+
+Same-observable firewall: existing `CanonicalPolePrimeRiesz` results act on `sourceAtomRealEnergy`; #213 acts on `quadraticNormalSourceAtom`. Direct composition is not established.
+
+No claim IDs, action scores, first-break semantics, route digests, or confirmation permissions change. **RH remains OPEN.**

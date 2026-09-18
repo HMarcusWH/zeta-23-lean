@@ -164,3 +164,35 @@ re(star(Λ_L(h_v)) * h_v^(7)(0)) < 0.
 This does not close OBS-059I. The representation prerequisite is CLOSED / PROVED BY #211; the next theoremization target is `SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL`; the required independent incompatibility remains OPEN.
 
 R003 remains `DISCOVERY`; no action scores, first-break IDs, claim IDs, route digests or confirmation permissions change. **RH remains OPEN.**
+
+## Post-#213 theorem-authority synchronization
+
+```text
+THEOREM AUTHORITY = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+LATEST RESEARCH EVIDENCE = PR #205
+CONTROL SEMANTIC AUTHORITY = PR #117
+terminal claim = RH_OPEN
+```
+
+PR #209 remains the provenance of quantitative Pair-D coercivity and strict anti-alignment. PR #211 remains the complete-functional interface milestone. PR #213 proves the exact complete physical/source-coordinate kernel and the retained source-kernel anti-alignment rewrite.
+
+```text
+SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL
+  = CLOSED / PROVED #213
+
+OBS-059I
+  = OPEN / ACTIVE
+
+next research operation
+  = EXACT_KERNEL_ADVERSARIAL_FALSIFICATION
+```
+
+The next research lanes are SIGN, MAGNITUDE, and DUAL / GRAM / EXTREMAL GEOMETRY.
+
+Same-observable firewall: existing `CanonicalPolePrimeRiesz` results act on `sourceAtomRealEnergy`; #213 acts on `quadraticNormalSourceAtom`. Direct composition is not established.
+
+No claim IDs, action scores, first-break semantics, route digests, or confirmation permissions change. **RH remains OPEN.**

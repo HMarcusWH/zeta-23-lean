@@ -223,3 +223,28 @@ literatureRHS
 The representation prerequisite inside OBS-059I is CLOSED / PROVED BY #211. The next theoremization target is `SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL`. Do not re-split the complete functional into independently enclosed pole/arch/prime pieces unless cancellation preservation is theorem-backed.
 
 No claim IDs change. R003 remains `DISCOVERY`; `confirmatory_execution_authorized=false`; route and boundary digests remain null. Negative-root exclusion and **RH remain OPEN.**
+
+## Post-#213 active theorem frontier
+
+```text
+Lean theorem authority = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+latest research evidence = PR #205
+```
+
+The explicit-formula chain is now
+
+```text
+literatureRHS
+  -> #211 complete functional Λ_L(h_v)
+  -> #213 exact source-coordinate continuous-minus-prime kernel
+  -> OBS-059I independent incompatibility
+```
+
+`SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL` is CLOSED / PROVED #213. The next research operation is `EXACT_KERNEL_ADVERSARIAL_FALSIFICATION`.
+
+Existing real-energy Riesz machinery uses `sourceAtomRealEnergy`; #213 uses `quadraticNormalSourceAtom`. A direct same-observable Riesz bridge is not yet proved.
+
+R003 remains `DISCOVERY`; `confirmatory_execution_authorized=false`; route and boundary digests remain null. **RH remains OPEN.**

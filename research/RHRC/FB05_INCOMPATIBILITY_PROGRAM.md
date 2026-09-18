@@ -610,3 +610,30 @@ The next theoremization target is `SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIO
 Hard firewall after #211: do not regress to independently enclosing/signing pole, archimedean and prime components merely because the full functional can now be written in source coordinates. PRs #199/#201 show that such decomposition can destroy the dependency carrying the direct sign.
 
 The ultimate required information remains `INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY`. Simultaneous odd-bad exclusion, odd-selected closure, endpoint-scalar sign, negative-root exclusion and **RH remain OPEN.**
+
+## Post-#213 complete source-kernel frontier
+
+PR #213 closes the representation/kernel layer for the even-selected odd-good branch:
+
+```text
+explicitCanonicalSourceMoment L K v
+  = quadraticNormalSourceKernelRHS L K v
+```
+
+and retains
+
+```text
+odd successor bad
+OR
+re(star(quadraticNormalSourceKernelRHS L K v) * h_v^(7)(0)) < 0.
+```
+
+This does not close FB-05. `OBS-059I` remains OPEN / ACTIVE.
+
+The next research operation is `EXACT_KERNEL_ADVERSARIAL_FALSIFICATION`, with SIGN, MAGNITUDE, and DUAL/GRAM/EXTREMAL lanes.
+
+Hard same-observable firewall: existing pole-prime/Riesz results for `sourceAtomRealEnergy` do not directly compose with the #213 `quadraticNormalSourceAtom`.
+
+Hard dependency firewall: exposing pole/arch/prime pieces does not license independent component signs; #199/#201 remain relevant warnings.
+
+**RH remains OPEN.**
