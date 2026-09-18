@@ -403,7 +403,8 @@ theorem star_cubicSecularScalar_odd_mul_shellInner_eq_source_completion_of_even_
         oddCubicGeneratorResolventQuadratic hL N hprevOdd lam hlam at hoverlap
   have hdenStar : star den = den := by
     simp [den]
-  rw [htransfer, star_mul, star_div, hdenStar]
+  have hstarTransfer := congrArg (starRingEnd ℂ) htransfer
+  simp only [map_mul, map_div, hdenStar] at hstarTransfer
   have hinnerStar :
       star
         (inner ℂ
@@ -420,7 +421,7 @@ theorem star_cubicSecularScalar_odd_mul_shellInner_eq_source_completion_of_even_
           (successorParityCubicVector .odd N)
           (cubicSecularTrialVector .odd hL N hprevOdd lam hlam) := by simp
       _ = _ := hoverlap
-  rw [hinnerStar]
+  rw [hstarTransfer, hinnerStar]
   field_simp [hden]
   ring
 
