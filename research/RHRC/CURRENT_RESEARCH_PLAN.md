@@ -937,3 +937,76 @@ DUAL / GRAM / EXTREMAL GEOMETRY
 The existing real-energy Riesz machinery acts on `sourceAtomRealEnergy`; #213 acts on `quadraticNormalSourceAtom`. Direct composition is not established.
 
 The required new information remains `INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY`. R003 remains `DISCOVERY`; confirmatory execution is not authorized. **RH remains OPEN.**
+
+## Post-#215 authoritative execution state
+
+```text
+STEP 1  Quantitative Pair-D coercivity
+        CLOSED / PROVED #209
+STEP 2  Retained evenShiftedTrial specialization
+        CLOSED / PROVED #209
+STEP 3  Mixed seventh-jet / Riesz composition
+        CLOSED / PROVED #209
+STEP 4  Complete source functional
+        CLOSED / PROVED #211
+STEP 5  Source-coordinate complete kernel
+        CLOSED / PROVED #213
+STEP 6  Full-carrier source/M4 dual and sign audit
+        CLOSED / RESEARCH #215
+        FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED
+        FULL_SPACE_SIGN_INDEFINITE_CERTIFIED
+STEP 7  Retained negative-root cross-parity secular completion
+        OPEN / NEXT / OBS-059I
+STEP 8  Zero-shift cross-parity response completion
+        OPEN / RESURRECTED SECONDARY
+STEP 9  Resonant 1/(-lambda) pole versus spectral/magnitude tube
+        OPEN / RESURRECTED SECONDARY
+STEP 10 Canonical simultaneous odd-bad branch
+        OPEN
+STEP 11 Odd-selected first-bad branch
+        OPEN
+```
+
+### Why Step 7 replaced the contact-locus proposal
+
+The repository proves a retained negative secular root at a fixed canonical state. It does **not** currently prove that this retained state can be moved to a genuine zero-contact while preserving the same state/aperture data required by the claim firewall. Fixed-cell witness persistence gives an open interval of strict negativity, not a zero crossing.
+
+Therefore `CONTACT_LOCUS_SOURCE_M4_FALSIFICATION` is a lead only. It is not the current execution target.
+
+### Retained-root theorem inventory to compose
+
+The old global-first-bad cross-parity stack already proves an exact same-state certificate at the forced negative root. In the even-selected case:
+
+```text
+F_plus(lambda) = 0
+F_minus(lambda) = Gamma(lambda) * S(v_lambda)
+```
+
+where `S` is the actual canonical source functional subsequently identified in #211/#213.
+
+The new information that did not coexist when this route was first built is:
+
+```text
+#209:
+  -lambda * ||D v_lambda||^2
+    <= re(star(S(v_lambda)) * M4(v_lambda))
+#213:
+  S(v_lambda) = exact complete source-coordinate kernel
+#215:
+  no universal full-carrier sign/proportionality law exists;
+  retained-state dynamics must supply the missing information.
+```
+
+The first theorem-extraction question for the next PR is whether opposite-good at the same negative shift upgrades the opposite secular scalar from mere nonvanishing to a strict positive real sign. The second is whether the exact overlap factor can be rewritten/bounded in a way that produces a genuinely independent secular-completion inequality.
+
+### Secondary same-state routes
+
+**Zero shift.** The selected regular branch already has `re sigma_selected < 0` at the forced negative root, and the repository already has an exact zero-shift cross-parity response transfer if both predecessor couplings admit preimages. The missing candidate bridge is the standard block-PSD range consequence on the opposite-good successor: good successor -> cubic coupling annihilates the predecessor kernel -> zero-shift preimage.
+
+**Resonant branch.** The global first-bad dichotomy already contains an exact kernel response scaling like `1/(-lambda)`. Combine this only after checking whether #209/#215 can force a sufficiently narrow near-zero spectral tube and whether the nonzero coupling can be bounded below independently.
+
+### Large-aperture leverage
+
+`ExceptionalZero.ApertureFreedom` proves that a hypothetical off-line zero forces canonical badness at every sufficiently large aperture. Therefore an eventual large-`L` incompatibility may suffice; do not impose an unnecessary uniform-in-`L` theorem.
+
+**RH remains OPEN.**

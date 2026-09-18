@@ -573,3 +573,29 @@ for proportionality, joint rank, Gram geometry, sign range, and energy-normalize
 Existing `CanonicalPolePrimeRiesz` machinery acts on `sourceAtomRealEnergy`, not the #213 `quadraticNormalSourceAtom`. A same-observable mixed analogue is OPEN.
 
 `OBS-059I`, simultaneous odd-bad, odd-selected first-bad, endpoint-scalar sign, negative-root exclusion and **RH remain OPEN.**
+
+## Post-#215 retained-root routing
+
+**Research authority:** PR #215, head `5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a`, merge `191b1b648448c92010286dae54df8502df1f55ce`, tree `4e6111c974ae8abbf59a5063d4b1ea760fa39ffd`.
+
+The full K=3 even carrier is now known, in rigorous bounded research, to have independent source and M4 duals and an indefinite pairing. This consumes universal full-carrier sign/proportionality as the default Pair-D completion.
+
+### Active lead 1 — retained negative-root cross-parity secular completion
+
+**HIGHEST INFORMATION / NEXT.**
+
+Use `crossParityFirstBadRootCertificate` and `cubicSecularScalar_odd_eq_overlap_mul_source_of_even_root` on the exact retained negative root, then combine with #209 coercivity and #213's exact complete source functional. First extract the strongest sign/nonvanishing consequence of opposite-good actually supported by the definitions; then derive the exact overlap/resolvent completion before any numerical classifier.
+
+### Active lead 2 — zero-shift response completion
+
+Resurrect `cubicZeroShiftShellResponseScalar_crossParity_explicitSource_transfer`. The selected regular response is already strictly negative. Investigate whether opposite-good forces the opposite cubic coupling into the predecessor range, giving the second zero-shift preimage and a same-state response squeeze.
+
+### Active lead 3 — resonant pole versus spectral tube
+
+The resonant branch has exact `1/(-lambda)` amplification. Test composition with the quantitative #209 budget and #215 bounded magnitude diagnostics before formal investment.
+
+### Quarantined lead — contact locus
+
+Do not promote a zero-contact state without a same-state bridge from the retained negative-root certificate. Contact geometry remains a useful laboratory only.
+
+Pair B remains secondary and independent. **RH remains OPEN.**

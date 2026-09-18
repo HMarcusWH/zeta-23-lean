@@ -196,3 +196,19 @@ The next research lanes are SIGN, MAGNITUDE, and DUAL / GRAM / EXTREMAL GEOMETRY
 Same-observable firewall: existing `CanonicalPolePrimeRiesz` results act on `sourceAtomRealEnergy`; #213 acts on `quadraticNormalSourceAtom`. Direct composition is not established.
 
 No claim IDs, action scores, first-break semantics, route digests, or confirmation permissions change. **RH remains OPEN.**
+
+## Post-#215 fork
+
+The live even-selected Pair-D fork is now read as:
+```text
+selected even negative root
+  -> odd bad
+     OR
+     odd good + #209 compulsory source/M4 coercivity
+               + exact #213 complete source functional
+               + old same-root cross-parity secular transfer
+```
+
+PR #215 says only that arbitrary vectors on the full frozen K=3 even carrier admit both signs. Therefore the surviving information must come from retained root/eigenvector/secular dynamics, first-bad ancestry, zero-shift branch response, or resonant structure.
+
+Contact-locus substitution is not licensed without a same-state bridge. Simultaneous odd-bad and odd-selected branches remain open. **RH remains OPEN.**
