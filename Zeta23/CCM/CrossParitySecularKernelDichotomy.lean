@@ -140,21 +140,31 @@ theorem oddCubicGeneratorKernelPart_norm_sq_le_neg_lam_mul_resolventQuadratic_re
             hL N hprevOdd lam hlam) := by
   let a := oddCubicGeneratorPredecessorPart N
   let k := oddCubicGeneratorKernelPart L N
+  change
+    ‖k‖ ^ 2 ≤
+      (-lam) *
+        Complex.re
+          (oddCubicGeneratorResolventQuadratic
+            hL N hprevOdd lam hlam)
   by_cases hk : k = 0
-  · change
-      ‖k‖ ^ 2 ≤
-        (-lam) *
-          Complex.re
-            (oddCubicGeneratorResolventQuadratic
-              hL N hprevOdd lam hlam)
-    rw [hk]
-    simp only [norm_zero, zero_pow, OfNat.ofNat_ne_zero, not_false_eq_true]
-    exact mul_nonneg
-      (le_of_lt (neg_pos.mpr hlam))
-      (oddCubicGeneratorResolventQuadratic_re_nonnegative
-        hL N hprevOdd lam hlam)
-  · have hknormpos : (0 : ℝ) < ‖k‖ := by
-      exact norm_pos_iff.mpr hk
+  · have hnonneg :
+        0 ≤
+          (-lam) *
+            Complex.re
+              (oddCubicGeneratorResolventQuadratic
+                hL N hprevOdd lam hlam) :=
+      mul_nonneg
+        (le_of_lt (neg_pos.mpr hlam))
+        (oddCubicGeneratorResolventQuadratic_re_nonnegative
+          hL N hprevOdd lam hlam)
+    simpa only [hk, norm_zero, zero_pow, OfNat.ofNat_ne_zero,
+      not_false_eq_true] using hnonneg
+  · have hknormne : ‖k‖ ≠ 0 := by
+      intro hnorm
+      apply hk
+      exact norm_eq_zero.mp hnorm
+    have hknormpos : (0 : ℝ) < ‖k‖ :=
+      lt_of_le_of_ne (norm_nonneg k) (Ne.symm hknormne)
     have hkpos : 0 < ‖k‖ ^ 2 := sq_pos_of_pos hknormpos
     have hbase :=
       norm_sq_inner_kernel_coupling_le_neg_mul_norm_sq_re_inner_resolvent
@@ -174,16 +184,28 @@ theorem oddCubicGeneratorKernelPart_norm_sq_le_neg_lam_mul_resolventQuadratic_re
           ((k : intrinsicParityPredecessorSubspace .odd N) :
             euclideanParityBoundaryFlatSubspace .odd (N + 1)) at hpair
     rw [hpair] at hbase
-    have hbase' :
+    have hinnernorm :
+        ‖inner ℂ
+            ((k : intrinsicParityPredecessorSubspace .odd N) :
+              euclideanParityBoundaryFlatSubspace .odd (N + 1))
+            ((k : intrinsicParityPredecessorSubspace .odd N) :
+              euclideanParityBoundaryFlatSubspace .odd (N + 1))‖ =
+          ‖k‖ ^ 2 := by
+      rw [inner_self_eq_norm_sq_to_K, norm_pow]
+      simp only [Complex.norm_real, Real.norm_eq_abs, abs_norm,
+        Submodule.norm_coe]
+    rw [hinnernorm] at hbase
+    have hfactor :
         (‖k‖ ^ 2) * (‖k‖ ^ 2) ≤
           (‖k‖ ^ 2) *
             ((-lam) *
               Complex.re
                 (oddCubicGeneratorResolventQuadratic
                   hL N hprevOdd lam hlam)) := by
-      simpa [k, a, oddCubicGeneratorResolventQuadratic,
-        norm_inner_self, mul_assoc, mul_left_comm, mul_comm] using hbase
-    exact (mul_le_mul_left hkpos).mp hbase'
+      simpa only [Submodule.norm_coe, a, k,
+        oddCubicGeneratorResolventQuadratic, pow_two,
+        mul_assoc, mul_left_comm, mul_comm] using hbase
+    exact le_of_mul_le_mul_left hfactor hkpos
 
 /-- Exhaustive regular-or-resonant split for the exact #218 odd cubic
 correction. -/
