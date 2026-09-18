@@ -1,5 +1,5 @@
 import Zeta23.CCM.ParitySourceMomentFourRigidity
-import Zeta23.CCM.CubicSecularMetric
+import Zeta23.CCM.CrossParityQuotientTransport
 
 noncomputable section
 
