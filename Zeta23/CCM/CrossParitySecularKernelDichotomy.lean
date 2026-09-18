@@ -141,9 +141,21 @@ theorem oddCubicGeneratorKernelPart_norm_sq_le_neg_lam_mul_resolventQuadratic_re
   let a := oddCubicGeneratorPredecessorPart N
   let k := oddCubicGeneratorKernelPart L N
   by_cases hk : k = 0
-  · simp [hk, oddCubicGeneratorResolventQuadratic_re_nonnegative
-      hL N hprevOdd lam hlam, neg_nonneg.mpr (le_of_lt hlam)]
-  · have hkpos : 0 < ‖k‖ ^ 2 := sq_pos_of_pos (norm_pos_iff.mpr hk)
+  · change
+      ‖k‖ ^ 2 ≤
+        (-lam) *
+          Complex.re
+            (oddCubicGeneratorResolventQuadratic
+              hL N hprevOdd lam hlam)
+    rw [hk]
+    simp only [norm_zero, zero_pow, OfNat.ofNat_ne_zero, not_false_eq_true]
+    exact mul_nonneg
+      (le_of_lt (neg_pos.mpr hlam))
+      (oddCubicGeneratorResolventQuadratic_re_nonnegative
+        hL N hprevOdd lam hlam)
+  · have hknormpos : (0 : ℝ) < ‖k‖ := by
+      exact norm_pos_iff.mpr hk
+    have hkpos : 0 < ‖k‖ ^ 2 := sq_pos_of_pos hknormpos
     have hbase :=
       norm_sq_inner_kernel_coupling_le_neg_mul_norm_sq_re_inner_resolvent
         .odd hL N hprevOdd hlam
