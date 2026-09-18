@@ -331,3 +331,24 @@ The newest current post-green delta is `RESEARCH_LEADS_POST_211_COMPLETE_FUNCTIO
 PR #211 closes the complete-functional representation prerequisite but not OBS-059I. The next theoremization target is `SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL`; the required new information remains `INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY`.
 
 `ACTION_REGISTRY.json`, claim IDs, route digests, action scores and first-break semantics remain unchanged. R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. **RH remains OPEN.**
+
+## Post-#213 authority override
+
+```text
+latest theorem-bearing PR = #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+
+latest research-only evidence = PR #205
+control semantic authority = PR #117
+terminal claim = RH_OPEN
+```
+
+Newest post-green delta: `RESEARCH_LEADS_POST_213_COMPLETE_SOURCE_KERNEL_DELTA.md`.
+
+Newest obstruction delta: `OBSTRUCTION_LEDGER_POST_213_DELTA.md`.
+
+PR #213 closes `SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL` but does not close `OBS-059I`. The next research operation is `EXACT_KERNEL_ADVERSARIAL_FALSIFICATION`.
+
+Historical post-#211 files remain immutable evidence. No claim IDs, action scores, first-break semantics, route digests, or confirmation permissions change. **RH remains OPEN.**
