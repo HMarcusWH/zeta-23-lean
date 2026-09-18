@@ -525,3 +525,38 @@ The exact #211 theorem head passed all nine PR workflow families. RHRC research 
 PR #209 remains the provenance for quantitative coercivity and strict anti-alignment. PR #211 only proves the representation/interface rewrite.
 
 R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. Negative-root exclusion and **RH remain OPEN.**
+
+## Post-#213 validation addendum
+
+```text
+THEOREM AUTHORITY = PR #213
+validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
+merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
+validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+```
+
+Validated theorem state:
+
+```text
+half_literatureRHS_dictionaryMixedTest_eq_completePhysicalRHS_of_zero
+  = PROVED
+
+canonicalQuadraticNormalSourceFunctional_eq_sourceKernelRHS
+  = PROVED
+
+explicitCanonicalSourceMoment_eq_sourceKernelRHS
+  = PROVED
+
+retained source-kernel anti-alignment rewrite
+  = PROVED
+
+SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL
+  = CLOSED / PROVED #213
+
+independent complete-functional incompatibility
+  = NOT PROVED
+```
+
+All nine #213 workflow families passed on the exact theorem head. The merge tree equals the validated theorem-head tree.
+
+The old real-energy Riesz chain and the new mixed source-kernel observable are not yet a same-object theorem chain. **RH remains OPEN.**
