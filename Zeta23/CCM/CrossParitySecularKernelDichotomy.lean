@@ -157,14 +157,12 @@ theorem oddCubicGeneratorKernelPart_norm_sq_le_neg_lam_mul_resolventQuadratic_re
         (le_of_lt (neg_pos.mpr hlam))
         (oddCubicGeneratorResolventQuadratic_re_nonnegative
           hL N hprevOdd lam hlam)
-    simpa only [hk, norm_zero, zero_pow, OfNat.ofNat_ne_zero,
-      not_false_eq_true] using hnonneg
-  · have hknormne : ‖k‖ ≠ 0 := by
-      intro hnorm
-      apply hk
-      exact norm_eq_zero.mp hnorm
-    have hknormpos : (0 : ℝ) < ‖k‖ :=
-      lt_of_le_of_ne (norm_nonneg k) (Ne.symm hknormne)
+    have hkzero : ‖k‖ ^ 2 = 0 := by
+      simp [hk]
+    rw [hkzero]
+    exact hnonneg
+  · have hknormpos : (0 : ℝ) < ‖k‖ :=
+      norm_pos_iff.mpr hk
     have hkpos : 0 < ‖k‖ ^ 2 := sq_pos_of_pos hknormpos
     have hbase :=
       norm_sq_inner_kernel_coupling_le_neg_mul_norm_sq_re_inner_resolvent
@@ -191,21 +189,19 @@ theorem oddCubicGeneratorKernelPart_norm_sq_le_neg_lam_mul_resolventQuadratic_re
             ((k : intrinsicParityPredecessorSubspace .odd N) :
               euclideanParityBoundaryFlatSubspace .odd (N + 1))‖ =
           ‖k‖ ^ 2 := by
-      rw [inner_self_eq_norm_sq_to_K, norm_pow]
-      simp only [Complex.norm_real, Real.norm_eq_abs, abs_norm,
-        Submodule.norm_coe]
+      rw [inner_self_eq_norm_sq_to_K, Complex.norm_real,
+        Real.norm_eq_abs, abs_of_nonneg (sq_nonneg _)]
+      simp only [Submodule.norm_coe]
     rw [hinnernorm] at hbase
-    have hfactor :
-        (‖k‖ ^ 2) * (‖k‖ ^ 2) ≤
-          (‖k‖ ^ 2) *
-            ((-lam) *
-              Complex.re
-                (oddCubicGeneratorResolventQuadratic
-                  hL N hprevOdd lam hlam)) := by
-      simpa only [Submodule.norm_coe, a, k,
-        oddCubicGeneratorResolventQuadratic, pow_two,
-        mul_assoc, mul_left_comm, mul_comm] using hbase
-    exact le_of_mul_le_mul_left hfactor hkpos
+    have hbase' :
+        (‖k‖ ^ 2) ^ 2 ≤
+          (-lam) * (‖k‖ ^ 2) *
+            Complex.re
+              (oddCubicGeneratorResolventQuadratic
+                hL N hprevOdd lam hlam) := by
+      simpa only [Submodule.norm_coe, a,
+        oddCubicGeneratorResolventQuadratic] using hbase
+    nlinarith
 
 /-- Exhaustive regular-or-resonant split for the exact #218 odd cubic
 correction. -/
