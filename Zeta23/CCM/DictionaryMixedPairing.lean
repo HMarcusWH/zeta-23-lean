@@ -105,7 +105,7 @@ theorem dictionaryMixedTest_hasCompactSupport
   refine HasCompactSupport.intro (K := Icc (-L) L) isCompact_Icc ?_
   intro t ht
   by_contra hzero
-  exact ht (dictionaryMixedTest_support_subset N x y L t hzero)
+  exact ht (dictionaryMixedTest_support_subset N x y L hzero)
 
 /-- Fourier transform of the mixed finite dictionary as the corresponding
 finite basis-transform contraction. -/
