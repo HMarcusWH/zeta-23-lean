@@ -186,9 +186,26 @@ theorem oddCubicGeneratorKernelPart_norm_sq_le_neg_lam_mul_resolventQuadratic_re
           ((k : intrinsicParityPredecessorSubspace .odd N) :
             euclideanParityBoundaryFlatSubspace .odd (N + 1))‖ =
         ‖(k : intrinsicParityPredecessorSubspace .odd N)‖ ^ 2 := by
-    rw [inner_self_eq_norm_sq_to_K, Complex.norm_real,
-      Real.norm_eq_abs, abs_of_nonneg (sq_nonneg _)]
-    rfl
+    calc
+      ‖inner ℂ
+          ((k : intrinsicParityPredecessorSubspace .odd N) :
+            euclideanParityBoundaryFlatSubspace .odd (N + 1))
+          ((k : intrinsicParityPredecessorSubspace .odd N) :
+            euclideanParityBoundaryFlatSubspace .odd (N + 1))‖ =
+          Complex.re
+            (inner ℂ
+              ((k : intrinsicParityPredecessorSubspace .odd N) :
+                euclideanParityBoundaryFlatSubspace .odd (N + 1))
+              ((k : intrinsicParityPredecessorSubspace .odd N) :
+                euclideanParityBoundaryFlatSubspace .odd (N + 1))) := by
+            symm
+            exact inner_self_re_eq_norm _
+      _ =
+          ‖((k : intrinsicParityPredecessorSubspace .odd N) :
+            euclideanParityBoundaryFlatSubspace .odd (N + 1))‖ ^ 2 := by
+            exact inner_self_eq_norm_sq _
+      _ = ‖(k : intrinsicParityPredecessorSubspace .odd N)‖ ^ 2 := by
+            rfl
   rw [hinnernorm] at hbase
   have hbase' :
       (‖(k : intrinsicParityPredecessorSubspace .odd N)‖ ^ 2) ^ 2 ≤
