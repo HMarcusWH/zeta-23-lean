@@ -108,7 +108,32 @@ theorem
             c.firstBad.L_pos c.firstBad.Nstar
             (c.firstBad.predecessorNonnegative_anyParity .odd)
             c.lam c.lam_neg) := by
-  dsimp
+  let S :=
+    explicitCanonicalSourceMoment
+      c.firstBad.L (c.firstBad.Nstar + 1) c.evenShiftedTrial
+  let M4 :=
+    centeredMoment (c.firstBad.Nstar + 1) 4
+      (evenBoundaryFlatRawCoefficients
+        (c.firstBad.Nstar + 1) c.evenShiftedTrial)
+  change
+    star
+        (cubicSecularScalar
+          .odd c.firstBad.L_pos c.firstBad.Nstar
+          (c.firstBad.predecessorNonnegative_anyParity .odd)
+          c.lam c.lam_neg) *
+      inner ℂ
+        (intrinsicCubicShellPart .odd c.firstBad.Nstar :
+          euclideanParityBoundaryFlatSubspace .odd
+            (c.firstBad.Nstar + 1))
+        (intrinsicCubicShellPart .odd c.firstBad.Nstar :
+          euclideanParityBoundaryFlatSubspace .odd
+            (c.firstBad.Nstar + 1)) =
+      star S *
+        (M4 - S *
+          oddCubicGeneratorResolventQuadratic
+            c.firstBad.L_pos c.firstBad.Nstar
+            (c.firstBad.predecessorNonnegative_anyParity .odd)
+            c.lam c.lam_neg)
   have hroot := c.evenSecularRoot_of_even hp
   have hcompletion :=
     star_cubicSecularScalar_odd_mul_shellInner_eq_source_completion_of_even_root
@@ -149,7 +174,26 @@ theorem
               c.firstBad.L_pos c.firstBad.Nstar
               (c.firstBad.predecessorNonnegative_anyParity .odd)
               c.lam c.lam_neg)) := by
-  dsimp
+  let S :=
+    explicitCanonicalSourceMoment
+      c.firstBad.L (c.firstBad.Nstar + 1) c.evenShiftedTrial
+  let M4 :=
+    centeredMoment (c.firstBad.Nstar + 1) 4
+      (evenBoundaryFlatRawCoefficients
+        (c.firstBad.Nstar + 1) c.evenShiftedTrial)
+  change
+    (-c.lam) *
+        ‖cubicSecularTrialVector
+          .odd c.firstBad.L_pos c.firstBad.Nstar
+          (c.firstBad.predecessorNonnegative_anyParity .odd)
+          c.lam c.lam_neg‖ ^ 2 ≤
+      Complex.re
+        (star S *
+          (M4 - S *
+            oddCubicGeneratorResolventQuadratic
+              c.firstBad.L_pos c.firstBad.Nstar
+              (c.firstBad.predecessorNonnegative_anyParity .odd)
+              c.lam c.lam_neg))
   have hroot := c.evenSecularRoot_of_even hp
   have hbudget :=
     neg_lam_mul_oddTrial_norm_sq_le_completedSource_of_even_root_of_not_oddBad
