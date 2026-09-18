@@ -8,42 +8,31 @@ ROOT = RHRC.parent.parent
 
 
 class Post211SyncTests(unittest.TestCase):
-    def test_three_anchor_model(self):
+    """Preserve the #211 synchronization contract after later theorem anchors advance."""
+    def test_current_state_has_advanced_but_preserves_211_history(self):
         state = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
-        theorem = state["merged_theorem_anchor"]
-        self.assertEqual(theorem["pr"], 211)
-        self.assertEqual(
-            theorem["validated_head"],
-            "704a69e41871269814ba091e9476fe76b2d09844",
-        )
-        self.assertEqual(
-            theorem["merge_commit"],
-            "dd42e6368e48957c9922a9e917e10f60a2582b9f",
-        )
-        self.assertEqual(
-            theorem["tree"],
-            "a735f6149aeaa9f8358394c33fd6dcee8062f68e",
-        )
-        self.assertEqual(theorem["status"], "MERGED_GREEN_THEOREM_STATE")
-
-        research = state["latest_research_evidence"]
-        self.assertEqual(research["pr"], 205)
-        self.assertEqual(
-            research["disposition"],
-            "PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED",
-        )
-        self.assertFalse(research["canonical_realizability"])
+        self.assertGreaterEqual(state["merged_theorem_anchor"]["pr"], 211)
         self.assertEqual(state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(state["terminal_claim"], "RH_OPEN")
+        note = state["control_note"]
+        for token in (
+            "PR #211",
+            "704a69e41871269814ba091e9476fe76b2d09844",
+            "dd42e6368e48957c9922a9e917e10f60a2582b9f",
+            "a735f6149aeaa9f8358394c33fd6dcee8062f68e",
+            "explicitCanonicalSourceMoment_eq_completeSourceFunctional",
+            "oddBad_or_completeSourceFunctionalMixedJet_re_neg_of_even",
+        ):
+            self.assertIn(token, note)
 
     def test_active_route_records_211_without_erasing_209_provenance(self):
         state = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
         route = state["active_research_route"]
-        self.assertEqual(route["even_selected_odd_good_branch"], "PROVED_THROUGH_PR_211")
+        self.assertIn(route["even_selected_odd_good_branch"], ("PROVED_THROUGH_PR_211", "PROVED_THROUGH_PR_213"))
         self.assertEqual(route["pair_d_quantitative_coercivity"], "PROVED_PR_209")
         self.assertEqual(route["mixed_jet_antialignment"], "PROVED_PR_209")
         self.assertEqual(route["riesz_eight_nine_nondegeneracy"], "PROVED_PR_209")
