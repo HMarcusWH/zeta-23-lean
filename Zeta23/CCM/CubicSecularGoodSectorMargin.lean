@@ -40,11 +40,14 @@ theorem re_inner_cubicSecularTrialVector_eq
         (inner ℂ (parityCompressedCanonical p L (N + 1) u) u) =
       lam * ‖u‖ ^ 2 +
         Complex.re (star F * inner ℂ c c) := by
-  dsimp
   let u := cubicSecularTrialVector p hL N hprev lam hlam
   let c : euclideanParityBoundaryFlatSubspace p (N + 1) :=
     intrinsicCubicShellPart p N
   let F := cubicSecularScalar p hL N hprev lam hlam
+  change
+    Complex.re
+        (inner ℂ (parityCompressedCanonical p L (N + 1) u) u) =
+      lam * ‖u‖ ^ 2 + Complex.re (star F * inner ℂ c c)
   have hres :=
     cubicSecularResidual_eq_scalar_smul_intrinsicCubicShellPart
       p hL N hN hprev lam hlam
@@ -135,7 +138,6 @@ theorem neg_lam_mul_cubicSecularTrialVector_norm_sq_le_shellPairing
   have henergy :=
     re_inner_cubicSecularTrialVector_eq
       p hL N hN hprev lam hlam
-  dsimp at henergy
   change
     0 ≤ Complex.re
       (inner ℂ (parityCompressedCanonical p L (N + 1) u) u) at hnonneg
