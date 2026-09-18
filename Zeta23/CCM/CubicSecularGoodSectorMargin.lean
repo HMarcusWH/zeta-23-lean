@@ -111,6 +111,7 @@ theorem re_inner_cubicSecularTrialVector_eq
             (c : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
             (c : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
     rw [inner_smul_left, hcuAmbient]
+    simp
   have hlamInnerComplex :
       inner ℂ ((lam : ℂ) • u) u =
         lam • inner ℂ u u := by
