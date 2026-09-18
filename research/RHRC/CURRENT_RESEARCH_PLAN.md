@@ -805,3 +805,74 @@ The complete canonical functional must be preserved. Do not return to pole/archi
 The Riesz lane is **REACTIVATED / NONDEGENERATE ON THE EVEN-SELECTED ODD-GOOD BRANCH**, not solved: #209 removes the `J7 = 0` escape hatch and proves `R8 = R9 <-> endpointScalar(L,8)=0`, but no endpoint-scalar sign or high-order Riesz limit theorem is claimed.
 
 R003 remains `DISCOVERY`; confirmatory execution is not authorized. `ACTION_REGISTRY.json` semantics do not change. Negative-root exclusion remains OPEN. **RH remains OPEN.**
+
+# Post-#211 authoritative execution state
+
+This section is now the current execution SSOT and supersedes the post-#209 next-step wording while preserving all earlier sections as history.
+
+```text
+THEOREM AUTHORITY = PR #211
+validated theorem head = 704a69e41871269814ba091e9476fe76b2d09844
+merged theorem commit = dd42e6368e48957c9922a9e917e10f60a2582b9f
+validated theorem tree = a735f6149aeaa9f8358394c33fd6dcee8062f68e
+
+LATEST RESEARCH EVIDENCE = PR #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+
+CONTROL AUTHORITY = PR #117
+selected formal first break = E4A4-SCHUR-FB-05
+terminal claim = RH_OPEN
+```
+
+## Execution stack
+
+```text
+STEP 1  Quantitative Pair-D coercivity
+        CLOSED / PROVED #209
+
+STEP 2  Retained evenShiftedTrial specialization
+        CLOSED / PROVED #209
+
+STEP 3  Mixed seventh-jet / Riesz composition
+        CLOSED / PROVED #209
+
+STEP 4  Identify complete source moment with Λ_L(h)
+        CLOSED / PROVED #211
+
+STEP 5  SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL
+        OPEN / NEXT THEOREMIZATION
+
+STEP 6  Independent complete-functional incompatibility
+        OPEN / ACTIVE / OBS-059I
+
+STEP 7  Canonical simultaneous odd-bad branch
+        OPEN
+
+STEP 8  Odd-selected first-bad branch
+        OPEN
+```
+
+PR #211 proves `explicitCanonicalSourceMoment_eq_completeSourceFunctional` and the retained `oddBad_or_completeSourceFunctionalMixedJet_re_neg_of_even` fork. It does not introduce independent information opposing #209.
+
+For STEP 5, derive the exact source-coordinate representation from the existing theorem-authoritative `literatureRHS`, dictionary normalization and the proved endpoint identities (h_v(0)=h_v(1)=0). Do not freeze a guessed integral formula in this documentation.
+
+After STEP 5, preregister cheap falsifiers for:
+
+```text
+SIGN:
+  independent lower/opposite-sign restriction on
+  re(star(Λ_L(h)) * h^(7)(0))
+
+MAGNITUDE:
+  independent upper bound on
+  |Λ_L(h)| * |h^(7)(0)|
+  strong enough to violate the #209 compulsory budget
+
+RIESZ / KERNEL:
+  independent high-order limit, kernel sign, or extremal theorem
+  that composes with the same exact retained state
+```
+
+`OBS-059Q` remains CLOSED / PROVED BY #209. `OBS-059I = OPEN / ACTIVE`. The required new information remains `INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY`.
+
+R003 remains `DISCOVERY`; confirmatory execution is not authorized. Negative-root exclusion remains OPEN. **RH remains OPEN.**

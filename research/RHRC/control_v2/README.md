@@ -147,3 +147,30 @@ OBS-059I = OPEN / ACTIVE
 The active descriptive research target is an independent complete canonical functional incompatibility on the same state. A rearrangement of #209 does not count as independent information. The simultaneous odd-bad branch, odd-selected first-bad branch, endpoint-scalar sign, negative-root exclusion and RH remain OPEN.
 
 `ACTION_REGISTRY.json`, action scores, first-break IDs, claim IDs, route digests and confirmation permissions remain unchanged. R003 remains `DISCOVERY`; confirmatory execution is not authorized. **RH remains OPEN.**
+
+## Post-#211 current descriptive state
+
+```text
+THEOREM AUTHORITY = PR #211
+validated theorem head = 704a69e41871269814ba091e9476fe76b2d09844
+merged theorem commit = dd42e6368e48957c9922a9e917e10f60a2582b9f
+validated theorem tree = a735f6149aeaa9f8358394c33fd6dcee8062f68e
+
+LATEST RESEARCH EVIDENCE = PR #205
+CONTROL SEMANTIC AUTHORITY = PR #117
+selected first break = E4A4-SCHUR-FB-05
+R003 phase = DISCOVERY
+confirmatory execution = not authorized
+```
+
+PR #209 retains provenance for `pair_d_quantitative_coercivity`, `mixed_jet_antialignment` and `riesz_eight_nine_nondegeneracy`. PR #211 adds `mixed_dictionary_pairing`, `complete_source_functional_representation`, `same_observable_global_local_interface` and the retained complete-functional anti-alignment rewrite.
+
+```text
+OBS-059Q = CLOSED / PROVED BY #209
+OBS-059I = OPEN / ACTIVE
+representation prerequisite = CLOSED / PROVED BY #211
+next theoremization = SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL
+required new information = INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY
+```
+
+`ACTION_REGISTRY.json`, action scores, first-break IDs, claim IDs, route digests and confirmation permissions remain unchanged. **RH remains OPEN.**

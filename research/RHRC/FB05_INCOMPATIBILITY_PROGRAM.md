@@ -585,3 +585,28 @@ negative-root exclusion                       OPEN
 ```
 
 Pair B remains secondary. The selected first break remains `E4A4-SCHUR-FB-05`; R003 remains `DISCOVERY`; confirmatory execution is not authorized. **RH remains OPEN.**
+
+## Post-#211 Pair-D complete-functional interface
+
+PR #211 upgrades the active Pair-D representation to the exact same-observable interface
+
+```text
+Λ_L(h_v) = explicitCanonicalSourceMoment L K v
+h_v^(7)(0) = the #163 local mixed seventh jet
+```
+
+with retained fork
+
+```text
+odd successor bad
+OR
+re(star(Λ_L(h_v)) * h_v^(7)(0)) < 0.
+```
+
+This closes the representation prerequisite only. `OBS-059I` remains OPEN.
+
+The next theoremization target is `SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL`: expose `Λ_L(h_v)` in exact source coordinates through the existing theorem-authoritative `literatureRHS` and dictionary normalization. The resulting formula must preserve the complete functional and all cancellations.
+
+Hard firewall after #211: do not regress to independently enclosing/signing pole, archimedean and prime components merely because the full functional can now be written in source coordinates. PRs #199/#201 show that such decomposition can destroy the dependency carrying the direct sign.
+
+The ultimate required information remains `INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY`. Simultaneous odd-bad exclusion, odd-selected closure, endpoint-scalar sign, negative-root exclusion and **RH remain OPEN.**

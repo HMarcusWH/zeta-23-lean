@@ -297,3 +297,37 @@ PR #209 proves quantitative Pair-D coercivity, strict complete-source/seventh-je
 The next research step is not another extraction from the #207/#209 energy identity. It is a preregistered falsification search for genuinely independent complete-canonical-functional sign/magnitude information, or an independent Riesz high-order limit/sign theorem, on the same retained state.
 
 `ACTION_REGISTRY.json` remains unchanged because the first-break semantics do not move. R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. Endpoint-scalar sign, simultaneous odd-bad exclusion, odd-selected closure, negative-root exclusion and **RH remain OPEN.**
+
+## Post-#211 authority override
+
+This section supersedes the post-#209 current theorem pointer while preserving all earlier state as history.
+
+### Current theorem-state anchor
+
+```text
+latest theorem-bearing PR = #211
+validated theorem head = 704a69e41871269814ba091e9476fe76b2d09844
+merged theorem commit = dd42e6368e48957c9922a9e917e10f60a2582b9f
+validated theorem tree = a735f6149aeaa9f8358394c33fd6dcee8062f68e
+```
+
+### Current research-evidence anchor
+
+```text
+latest merged research PR = #205
+research disposition = PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED
+```
+
+### Control-semantic anchor
+
+```text
+PR #117
+selected first break = E4A4-SCHUR-FB-05
+terminal claim = RH_OPEN
+```
+
+The newest current post-green delta is `RESEARCH_LEADS_POST_211_COMPLETE_FUNCTIONAL_REPRESENTATION_DELTA.md`. The newest obstruction delta is `OBSTRUCTION_LEDGER_POST_211_DELTA.md`. Historical post-#209 files remain historical and are not rewritten.
+
+PR #211 closes the complete-functional representation prerequisite but not OBS-059I. The next theoremization target is `SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL`; the required new information remains `INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY`.
+
+`ACTION_REGISTRY.json`, claim IDs, route digests, action scores and first-break semantics remain unchanged. R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. **RH remains OPEN.**
