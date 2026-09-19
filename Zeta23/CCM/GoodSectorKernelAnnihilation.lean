@@ -86,24 +86,49 @@ theorem parityCompressedCanonical_eq_zero_of_not_parityBad_of_selfEnergy_eq_zero
   have hyty :
       Complex.re (inner ℂ y ((t : ℂ) • y)) =
         t * ‖y‖ ^ 2 := by
-    rw [inner_smul_right]
-    simp [Complex.mul_re, hyy]
+    calc
+      Complex.re (inner ℂ y ((t : ℂ) • y)) =
+          Complex.re ((t : ℂ) * inner ℂ y y) :=
+        congrArg Complex.re
+          (inner_smul_right (𝕜 := ℂ) y y (t : ℂ))
+      _ = t * Complex.re (inner ℂ y y) := by
+        simp [Complex.mul_re]
+      _ = t * ‖y‖ ^ 2 := by rw [hyy]
   have htTyv :
       Complex.re (inner ℂ ((t : ℂ) • T y) v) =
         t * ‖y‖ ^ 2 := by
-    rw [inner_smul_left]
-    simp [Complex.mul_re, hTyvRe]
+    calc
+      Complex.re (inner ℂ ((t : ℂ) • T y) v) =
+          Complex.re (star (t : ℂ) * inner ℂ (T y) v) :=
+        congrArg Complex.re
+          (inner_smul_left (𝕜 := ℂ) (T y) v (t : ℂ))
+      _ = t * Complex.re (inner ℂ (T y) v) := by
+        simp [Complex.mul_re]
+      _ = t * ‖y‖ ^ 2 := by rw [hTyvRe]
   have hTyty :
       Complex.re (inner ℂ (T y) ((t : ℂ) • y)) =
         t * q := by
-    rw [inner_smul_right]
-    simp [Complex.mul_re, hTyy]
+    calc
+      Complex.re (inner ℂ (T y) ((t : ℂ) • y)) =
+          Complex.re ((t : ℂ) * inner ℂ (T y) y) :=
+        congrArg Complex.re
+          (inner_smul_right (𝕜 := ℂ) (T y) y (t : ℂ))
+      _ = t * Complex.re (inner ℂ (T y) y) := by
+        simp [Complex.mul_re]
+      _ = t * q := by rw [hTyy]
   have htTyty :
       Complex.re (inner ℂ ((t : ℂ) • T y) ((t : ℂ) • y)) =
         t ^ 2 * q := by
-    rw [inner_smul_left]
-    simp [Complex.mul_re, hTyty]
-    ring
+    calc
+      Complex.re (inner ℂ ((t : ℂ) • T y) ((t : ℂ) • y)) =
+          Complex.re
+            (star (t : ℂ) * inner ℂ (T y) ((t : ℂ) • y)) :=
+        congrArg Complex.re
+          (inner_smul_left (𝕜 := ℂ) (T y) ((t : ℂ) • y) (t : ℂ))
+      _ = t * Complex.re (inner ℂ (T y) ((t : ℂ) • y)) := by
+        simp [Complex.mul_re]
+      _ = t * (t * q) := by rw [hTyty]
+      _ = t ^ 2 * q := by ring
   have hTw :
       T w = y - (t : ℂ) • T y := by
     dsimp [w]
