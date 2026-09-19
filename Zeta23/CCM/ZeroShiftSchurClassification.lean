@@ -87,8 +87,8 @@ theorem exists_negative_cubicExplicitSchurRoot_of_parityBad
           0 ≤ Complex.re
             (inner ℂ ((canonicalSourceMatrix L N).toEuclideanLin x) x))
     (hbad : ParityBad p L (N + 1)) :
-    ∃ lam : ℝ, lam < 0 ∧
-      cubicExplicitSchurScalar p hL N hprev lam ‹lam < 0› = 0 := by
+    ∃ lam : ℝ, ∃ hlam : lam < 0,
+      cubicExplicitSchurScalar p hL N hprev lam hlam = 0 := by
   obtain ⟨lam, hlam, v, hvne, hveig⟩ :=
     exists_negative_eigenmode_of_parityBad hbad
   refine ⟨lam, hlam, ?_⟩
