@@ -120,14 +120,26 @@ private theorem centered_fourth_sum_rat (N : ℕ) :
       (∑ k ∈ Finset.range (2 * N + 1),
           (((k : ℚ) - (N : ℚ)) ^ 4)) =
         ∑ k ∈ Finset.range (2 * N + 1),
-          ((k : ℚ) ^ 4 -
-            4 * (N : ℚ) * (k : ℚ) ^ 3 +
-            6 * (N : ℚ) ^ 2 * (k : ℚ) ^ 2 -
-            4 * (N : ℚ) ^ 3 * (k : ℚ) +
+          ((k : ℚ) ^ 4 +
+            (-4 * (N : ℚ)) * (k : ℚ) ^ 3 +
+            (6 * (N : ℚ) ^ 2) * (k : ℚ) ^ 2 +
+            (-4 * (N : ℚ) ^ 3) * (k : ℚ) +
             (N : ℚ) ^ 4) := by
               apply Finset.sum_congr rfl
               intro k _
               ring
+      _ =
+        (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ) ^ 4) +
+          (-4 * (N : ℚ)) *
+            (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ) ^ 3) +
+          (6 * (N : ℚ) ^ 2) *
+            (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ) ^ 2) +
+          (-4 * (N : ℚ) ^ 3) *
+            (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ)) +
+          ((2 * N + 1 : ℕ) : ℚ) * (N : ℚ) ^ 4 := by
+              simp_rw [Finset.sum_add_distrib]
+              simp_rw [← Finset.mul_sum]
+              simp [Finset.sum_const, Finset.card_range, nsmul_eq_mul]
       _ =
         (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ) ^ 4) -
           4 * (N : ℚ) *
@@ -137,8 +149,6 @@ private theorem centered_fourth_sum_rat (N : ℕ) :
           4 * (N : ℚ) ^ 3 *
             (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ)) +
           ((2 * N + 1 : ℕ) : ℚ) * (N : ℚ) ^ 4 := by
-              simp_rw [Finset.sum_add_distrib, Finset.sum_sub_distrib]
-              ring_nf
               ring
   rw [hsum, sum_range_pow_four_rat, sum_range_pow_three_rat,
     sum_range_pow_two_rat]
