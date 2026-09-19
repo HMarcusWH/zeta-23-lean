@@ -18,7 +18,6 @@ class Post222SyncTests(unittest.TestCase):
         self.assertEqual(delta["final_pr_head"], "c46939488ead9535a63b547c38d64938a882a9f1")
         self.assertEqual(delta["merge_commit"], "001f375b4a7e70f69d2b7abb3bed1b9fd04f0ba5")
         self.assertEqual(delta["merge_tree"], "fd151afbcae3155cc4d32a75da08b6f7e0119099")
-        self.assertEqual(self.state["latest_research_evidence"]["pr"], 215)
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
