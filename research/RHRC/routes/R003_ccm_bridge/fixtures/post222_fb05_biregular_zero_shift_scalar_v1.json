@@ -1,0 +1,69 @@
+{
+  "schema_version": "POST222_FB05_BIREGULAR_ZERO_SHIFT_SCALAR_FIXTURE_v1",
+  "claim_cap": "RIGOROUS_FINITE_RETAINED_ALIGNMENT_AUDIT_ONLY",
+  "base_main_sha": "001f375b4a7e70f69d2b7abb3bed1b9fd04f0ba5",
+  "base_main_tree": "fd151afbcae3155cc4d32a75da08b6f7e0119099",
+  "theorem_authority_pr": 222,
+  "theorem_stage_head_sha": "e42dbce1bbbc68b5cf9612e7c8a8dab2a2eca543",
+  "theorem_stage_tree": "48d8752950c28e0d3bbd385646e71075abef9e76",
+  "validated_final_head_sha": "c46939488ead9535a63b547c38d64938a882a9f1",
+  "merge_commit_sha": "001f375b4a7e70f69d2b7abb3bed1b9fd04f0ba5",
+  "merge_tree": "fd151afbcae3155cc4d32a75da08b6f7e0119099",
+  "latest_research_authority_pr": 215,
+  "source_schedule_fixture": "post177_fb05_q13_fixed_unit_derivative_v1.json",
+  "selected_target": {
+    "q_start": 13,
+    "q_end": 15,
+    "predecessor_N": 2,
+    "successor_K": 3,
+    "selected_parity": "even",
+    "primary_Q": 14
+  },
+  "selected_center_labels": [
+    "Q13_midpoint",
+    "Q14_left_of_determinant_basin",
+    "Q14_determinant_basin",
+    "Q14_right_of_determinant_basin",
+    "Q15_midpoint"
+  ],
+  "inherited_points": [
+    {"label": "Q13_midpoint", "Q": 13, "t": 0.5},
+    {"label": "Q14_left_of_determinant_basin", "Q": 14, "t": 0.4066715305566347},
+    {"label": "Q14_determinant_basin", "Q": 14, "t": 0.4071598118066347},
+    {"label": "Q14_right_of_determinant_basin", "Q": 14, "t": 0.4076480930566347},
+    {"label": "Q15_midpoint", "Q": 15, "t": 0.5}
+  ],
+  "point_quantization_bits": 48,
+  "arb_precision_bits": 384,
+  "implementation_check_precision_bits": 192,
+  "whole_cell_ancestry": {
+    "smaller_successor_K": 2,
+    "predecessor_N_for_cover": 1,
+    "parities": ["even", "odd"],
+    "max_depth": 8
+  },
+  "policy": {
+    "new_q_search_permitted": false,
+    "new_n_search_permitted": false,
+    "parity_refit_permitted": false,
+    "adaptive_point_search_permitted": false,
+    "adaptive_center_movement_permitted": false,
+    "target_sign_selection_permitted": false,
+    "alpha_sign_selection_permitted": false,
+    "gamma_sign_selection_permitted": false,
+    "mu_sign_selection_permitted": false,
+    "retained_state_refit_permitted": false,
+    "adaptive_interval_bisection_permitted": true,
+    "adaptive_precision_increase_permitted": false,
+    "theorem_promotion_permitted": false
+  },
+  "nonclaims": [
+    "This is a finite Arb research audit, not Lean theorem authority.",
+    "Same-aperture H3 is not identified with cell-minimal retained ancestry.",
+    "Only whole-cell K=2 positivity in both parities upgrades a K=3 point to CELL_MINIMAL_BIREGULAR_ALIGNED.",
+    "A negative qualified sigma_minus falsifies only the audited finite retained-scalar positivity candidate.",
+    "A positive frozen sample does not prove arbitrary-Q positivity.",
+    "No negative-root exclusion, finite-to-infinite closure, FB-05 closure, or RH theorem is claimed.",
+    "RH remains OPEN."
+  ]
+}
