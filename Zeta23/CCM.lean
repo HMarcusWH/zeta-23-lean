@@ -156,6 +156,8 @@ import Zeta23.CCM.ParitySourceMomentFourCoercivity
 import Zeta23.CCM.RegularFirstBadPairDCoercivity
 import Zeta23.CCM.RegularFirstBadCrossParitySecularCompletion
 import Zeta23.CCM.RegularFirstBadSecularBudgetDichotomy
+import Zeta23.CCM.GoodSectorKernelAnnihilation
+import Zeta23.CCM.RegularFirstBadZeroShiftKernelBalance
 import Zeta23.CCM.CanonicalSourcePairing
 import Zeta23.CCM.CanonicalQuadraticNormalSourceFunctional
 import Zeta23.CCM.RegularFirstBadCompleteSourceFunctional
