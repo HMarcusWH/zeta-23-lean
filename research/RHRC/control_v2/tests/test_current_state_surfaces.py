@@ -31,8 +31,8 @@ class CurrentStateSurfaceTests(unittest.TestCase):
     def setUp(self):
         self.state = json.loads((RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8"))
 
-    def test_machine_state_is_post222_delta(self):
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 221)
+    def test_machine_state_is_merged_post222(self):
+        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 222)
         self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 222)
         self.assertEqual(self.state["latest_research_evidence"]["pr"], 215)
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
@@ -42,9 +42,9 @@ class CurrentStateSurfaceTests(unittest.TestCase):
 
     def test_every_living_surface_frontloads_machine_state(self):
         required = (
-            "PR #221", "a26f3a9ef2d40fc0522a20c5d184fc0a8968325b", "ab5f29ba01899362ab03fdb509a04c4d5afc2744", "4fda17717de7b7644c267e98b5c61b7dc3e36547",
-            "PR #222", "e42dbce1bbbc68b5cf9612e7c8a8dab2a2eca543", "48d8752950c28e0d3bbd385646e71075abef9e76",
-            "GREEN_PR_THEOREM_DELTA_PENDING_MERGE",
+            "PR #222", "c46939488ead9535a63b547c38d64938a882a9f1", "001f375b4a7e70f69d2b7abb3bed1b9fd04f0ba5", "fd151afbcae3155cc4d32a75da08b6f7e0119099",
+            "e42dbce1bbbc68b5cf9612e7c8a8dab2a2eca543", "48d8752950c28e0d3bbd385646e71075abef9e76",
+            "MERGED_VIA_PR_222",
             "BIREGULAR_FIRST_BAD_ZERO_SHIFT_NORMAL_FORM",
             "PR #215", "5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a",
             "191b1b648448c92010286dae54df8502df1f55ce",

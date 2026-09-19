@@ -32,7 +32,7 @@ class Post211SyncTests(unittest.TestCase):
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
         route = state["active_research_route"]
-        self.assertIn(route["even_selected_odd_good_branch"], ("PROVED_THROUGH_PR_211", "PROVED_THROUGH_PR_213", "PROVED_THROUGH_PR_220", "PROVED_THROUGH_PR_222_DELTA"))
+        self.assertIn(route["even_selected_odd_good_branch"], ("PROVED_THROUGH_PR_211", "PROVED_THROUGH_PR_213", "PROVED_THROUGH_PR_220", "PROVED_THROUGH_PR_222_DELTA", "PROVED_THROUGH_PR_222"))
         self.assertEqual(route["pair_d_quantitative_coercivity"], "PROVED_PR_209")
         self.assertEqual(route["mixed_jet_antialignment"], "PROVED_PR_209")
         self.assertEqual(route["riesz_eight_nine_nondegeneracy"], "PROVED_PR_209")

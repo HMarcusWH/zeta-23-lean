@@ -10,22 +10,25 @@ class Post222SyncTests(unittest.TestCase):
 
     def test_authority_split_is_exact(self):
         merged = self.state["merged_theorem_anchor"]; delta = self.state["latest_validated_theorem_delta"]
-        self.assertEqual(merged["pr"], 221); self.assertEqual(merged["validated_head"], "a26f3a9ef2d40fc0522a20c5d184fc0a8968325b")
-        self.assertEqual(merged["merge_commit"], "ab5f29ba01899362ab03fdb509a04c4d5afc2744"); self.assertEqual(merged["tree"], "4fda17717de7b7644c267e98b5c61b7dc3e36547")
+        self.assertEqual(merged["pr"], 222); self.assertEqual(merged["validated_head"], "c46939488ead9535a63b547c38d64938a882a9f1")
+        self.assertEqual(merged["merge_commit"], "001f375b4a7e70f69d2b7abb3bed1b9fd04f0ba5"); self.assertEqual(merged["tree"], "fd151afbcae3155cc4d32a75da08b6f7e0119099")
         self.assertEqual(delta["pr"], 222); self.assertEqual(delta["validated_head"], "e42dbce1bbbc68b5cf9612e7c8a8dab2a2eca543")
-        self.assertEqual(delta["tree"], "48d8752950c28e0d3bbd385646e71075abef9e76"); self.assertEqual(delta["status"], "GREEN_PR_THEOREM_DELTA_PENDING_MERGE")
+        self.assertEqual(delta["tree"], "48d8752950c28e0d3bbd385646e71075abef9e76"); self.assertEqual(delta["status"], "MERGED_VIA_PR_222")
         self.assertEqual(delta["theorem_family"], "BIREGULAR_FIRST_BAD_ZERO_SHIFT_NORMAL_FORM")
+        self.assertEqual(delta["final_pr_head"], "c46939488ead9535a63b547c38d64938a882a9f1")
+        self.assertEqual(delta["merge_commit"], "001f375b4a7e70f69d2b7abb3bed1b9fd04f0ba5")
+        self.assertEqual(delta["merge_tree"], "fd151afbcae3155cc4d32a75da08b6f7e0119099")
         self.assertEqual(self.state["latest_research_evidence"]["pr"], 215)
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
     def test_biregular_route_is_scalarized_not_closed(self):
         route = self.state["active_research_route"]
-        self.assertEqual(route["biregular_first_bad_selection"], "VALIDATED_PR_222_DELTA")
-        self.assertEqual(route["retained_actual_shell_resonance"], "ELIMINATED_ON_BIREGULAR_RETAINED_STATE_PR_222_DELTA")
-        self.assertEqual(route["retained_source_correction_resonance"], "ELIMINATED_ON_BIREGULAR_RETAINED_STATE_PR_222_DELTA")
-        self.assertEqual(route["retained_transported_index_resonance"], "ELIMINATED_ON_BIREGULAR_RETAINED_STATE_PR_222_DELTA")
-        self.assertEqual(route["canonical_simultaneous_odd_bad_branch"], "OPEN_SCALAR_SIGN_CLASSIFIED_BY_PR_222_DELTA")
+        self.assertEqual(route["biregular_first_bad_selection"], "MERGED_PR_222")
+        self.assertEqual(route["retained_actual_shell_resonance"], "ELIMINATED_ON_BIREGULAR_RETAINED_STATE_PR_222")
+        self.assertEqual(route["retained_source_correction_resonance"], "ELIMINATED_ON_BIREGULAR_RETAINED_STATE_PR_222")
+        self.assertEqual(route["retained_transported_index_resonance"], "ELIMINATED_ON_BIREGULAR_RETAINED_STATE_PR_222")
+        self.assertEqual(route["canonical_simultaneous_odd_bad_branch"], "OPEN_SCALAR_SIGN_CLASSIFIED_BY_PR_222")
         self.assertEqual(route["active_subobligation"], "OBS-059I")
         self.assertEqual(route["next_research_target"], "RETAINED_BIREGULAR_ZERO_SHIFT_SCALAR_DISCRIMINATION")
 

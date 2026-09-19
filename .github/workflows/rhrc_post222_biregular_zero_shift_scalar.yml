@@ -1,0 +1,66 @@
+name: RHRC post-222 bi-regular zero-shift scalar
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+concurrency:
+  group: rhrc-post222-biregular-zero-shift-scalar-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  post222-biregular-zero-shift-scalar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install R003 numerical audit requirements
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Check post-#222 scalar scope and provenance
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post222_fb05_biregular_zero_shift_scalar_scope.py
+      - name: Freeze inherited post-#177 centers for post-#222 replay
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/probe_post222_fb05_biregular_zero_shift_scalar_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post222_fb05_biregular_zero_shift_scalar_v1.json \
+            --output /tmp/POST222_BIREGULAR_ZERO_SHIFT_SCALAR_SCHEDULE.json
+      - name: Independently check post-#222 zero-shift reconstruction
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/check_post222_fb05_biregular_zero_shift_scalar_independent.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post222_fb05_biregular_zero_shift_scalar_v1.json \
+            --schedule /tmp/POST222_BIREGULAR_ZERO_SHIFT_SCALAR_SCHEDULE.json
+      - name: Certify post-#222 retained scalar discrimination
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post222_fb05_biregular_zero_shift_scalar_scope.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post222_fb05_biregular_zero_shift_scalar_v1.json \
+            --schedule /tmp/POST222_BIREGULAR_ZERO_SHIFT_SCALAR_SCHEDULE.json \
+            --output /tmp/POST222_BIREGULAR_ZERO_SHIFT_SCALAR_CERTIFICATE.json
+      - name: Check certificate claim firewall
+        run: |
+          python - <<'PY'
+          import json
+          p = json.load(open('/tmp/POST222_BIREGULAR_ZERO_SHIFT_SCALAR_CERTIFICATE.json'))
+          assert p['status'] == 'PASS'
+          assert p['claim_cap'] == 'RIGOROUS_FINITE_RETAINED_ALIGNMENT_AUDIT_ONLY'
+          assert p['overall_classification'] in {
+              'NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED',
+              'BIREGULAR_RETAINED_SCALAR_NEGATIVE_WITNESS_CERTIFIED',
+              'BIREGULAR_RETAINED_SCALAR_SIGN_MIXED_ON_QUALIFIED_SCOPE',
+              'BIREGULAR_RETAINED_SCALAR_SIGN_UNRESOLVED',
+              'BIREGULAR_RETAINED_SCALAR_POSITIVE_ON_QUALIFIED_FROZEN_SCOPE',
+          }
+          assert p['theorem_promotion'] is False
+          assert p['obs_059i_closed'] is False
+          assert p['simultaneous_odd_bad_excluded'] is False
+          assert p['negative_root_exclusion'] is False
+          assert p['finite_to_infinite_closure'] is False
+          assert p['rh_claim'] is False
+          print(json.dumps({
+              'status': 'PASS',
+              'overall_classification': p['overall_classification'],
+              'qualified_cell_minimal_point_count': p['qualified_cell_minimal_point_count'],
+              'rh_claim': p['rh_claim'],
+          }, indent=2))
+          PY
