@@ -63,13 +63,14 @@ structure RegularCellMinimalNegativeEnergyCertificate (Q : ℕ) where
           firstBad.p firstBad.L firstBad.Nstar x₀ :
           EuclideanSpace ℂ (Fin (2 * (firstBad.Nstar + 1) + 1))) < 0
 
-/-- A bad cutoff cell produces the complete regular cell-minimal negative-energy
-certificate. -/
-theorem exists_regular_cellMinimal_negativeCanonicalEnergyCertificate
-    (Q : ℕ) (hQ : 1 ≤ Q)
-    (hex : ∃ K : ℕ, CellAnyParityBad Q K) :
-    Nonempty (RegularCellMinimalNegativeEnergyCertificate Q) := by
-  obtain ⟨c⟩ := exists_regular_cellMinimal_firstBadCertificate Q hQ hex
+/-- Build the complete negative-energy certificate from one specific retained
+regular first-bad certificate.  Keeping the supplied certificate fixed is
+important for later strengthened constructions that carry extra structure at
+the same aperture. -/
+theorem exists_regularCellMinimalNegativeEnergyCertificate_of_firstBad
+    {Q : ℕ}
+    (c : RegularCellMinimalFirstBadCertificate Q) :
+    ∃ e : RegularCellMinimalNegativeEnergyCertificate Q, e.firstBad = c := by
   have hNlt : c.Nstar < c.Kstar := by
     rw [← c.succ_eq]
     exact Nat.lt_succ_self c.Nstar
@@ -108,7 +109,7 @@ theorem exists_regular_cellMinimal_negativeCanonicalEnergyCertificate
           EuclideanSpace ℂ (Fin (2 * (c.Nstar + 1) + 1))) < 0 := by
     rw [← henergyEq]
     exact henergyNeg
-  exact ⟨{
+  refine ⟨{
     firstBad := c
     predecessorNonnegative := hprev
     x₀ := x₀
@@ -118,7 +119,18 @@ theorem exists_regular_cellMinimal_negativeCanonicalEnergyCertificate
     preimage := hx₀
     parityEnergyNeg := henergyNeg
     channelEnergyNeg := hchannelNeg
-  }⟩
+  }, rfl⟩
+
+/-- A bad cutoff cell produces the complete regular cell-minimal negative-energy
+certificate. -/
+theorem exists_regular_cellMinimal_negativeCanonicalEnergyCertificate
+    (Q : ℕ) (hQ : 1 ≤ Q)
+    (hex : ∃ K : ℕ, CellAnyParityBad Q K) :
+    Nonempty (RegularCellMinimalNegativeEnergyCertificate Q) := by
+  obtain ⟨c⟩ := exists_regular_cellMinimal_firstBadCertificate Q hQ hex
+  obtain ⟨e, _heq⟩ :=
+    exists_regularCellMinimalNegativeEnergyCertificate_of_firstBad c
+  exact ⟨e⟩
 
 /-- Compatibility projection retaining the pre-#153 theorem surface. -/
 theorem exists_regular_cellMinimal_negativeCanonicalEnergy
@@ -150,5 +162,6 @@ theorem exists_regular_cellMinimal_negativeCanonicalEnergy
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.RegularCellMinimalNegativeEnergyCertificate
+#print axioms Zeta23.CCM.exists_regularCellMinimalNegativeEnergyCertificate_of_firstBad
 #print axioms Zeta23.CCM.exists_regular_cellMinimal_negativeCanonicalEnergyCertificate
 #print axioms Zeta23.CCM.exists_regular_cellMinimal_negativeCanonicalEnergy

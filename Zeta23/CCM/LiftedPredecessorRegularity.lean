@@ -270,6 +270,80 @@ theorem exists_intrinsicPredecessorRegular_in_open_fixedCell
     (liftedFrozenIntrinsicPredecessorDet_not_zero_on_rigidityDomain Q p N)
       hidenticallyZero
 
+
+/-- Regularity of one physical predecessor block is locally persistent inside
+one fixed cutoff cell.  This is only openness of determinant nonvanishing:
+analyticity of the lifted determinant supplies continuity, and the exact
+log-axis bridge returns the statement to the production predecessor block. -/
+theorem exists_open_fixedCell_intrinsicPredecessorRegular_persistence
+    {Q : ℕ} (hQ : 1 ≤ Q)
+    (p : ReversalParity) (N : ℕ)
+    {L₀ : ℝ}
+    (hL₀cell : L₀ ∈ fixedCanonicalCutoffCell Q)
+    (hreg : IntrinsicPredecessorRegular p L₀ N) :
+    ∃ U : Set ℝ,
+      IsOpen U ∧
+      L₀ ∈ U ∧
+      U ⊆ fixedCanonicalCutoffCell Q ∧
+      ∀ L ∈ U, IntrinsicPredecessorRegular p L N := by
+  let f : ℂ → ℂ := liftedFrozenIntrinsicPredecessorDet Q p N
+  have hL₀pos : 0 < L₀ :=
+    fixedCanonicalCutoffCell_subset_Ioi hQ hL₀cell
+  have hbridge₀ :=
+    liftedFrozenIntrinsicPredecessorBlock_of_log_fixedCell
+      hQ hL₀cell p N
+  have hf₀ : f (Real.log L₀ : ℂ) ≠ 0 := by
+    dsimp [f, liftedFrozenIntrinsicPredecessorDet]
+    rw [hbridge₀]
+    exact hreg
+  have hanalytic :
+      AnalyticAt ℂ f (Real.log L₀ : ℂ) := by
+    exact
+      analyticOnNhd_liftedFrozenIntrinsicPredecessorDet Q p N
+        (Real.log L₀ : ℂ)
+        (liftedFrozenRigidityDomain_subset_liftedFrozenPredecessorDomain
+          (ofReal_mem_liftedFrozenRigidityDomain (Real.log L₀)))
+  have hfTendsto :
+      Tendsto f (𝓝 (Real.log L₀ : ℂ)) (𝓝 (f (Real.log L₀ : ℂ))) :=
+    hanalytic.continuousAt
+  have hlogTendsto :
+      Tendsto (fun L : ℝ => (Real.log L : ℂ))
+        (𝓝 L₀) (𝓝 (Real.log L₀ : ℂ)) := by
+    rw [tendsto_ofReal_iff]
+    exact (Real.continuousAt_log hL₀pos.ne').tendsto
+  have hcomp :
+      Tendsto (fun L : ℝ => f (Real.log L : ℂ))
+        (𝓝 L₀) (𝓝 (f (Real.log L₀ : ℂ))) :=
+    hfTendsto.comp hlogTendsto
+  have hneNhds :
+      ({0}ᶜ : Set ℂ) ∈ 𝓝 (f (Real.log L₀ : ℂ)) :=
+    isOpen_compl_singleton.mem_nhds (by simpa using hf₀)
+  let V : Set ℝ :=
+    (fun L : ℝ => f (Real.log L : ℂ)) ⁻¹' ({0}ᶜ : Set ℂ)
+  have hregNhds : V ∈ 𝓝 L₀ := by
+    exact hcomp hneNhds
+  have hcellNhds :
+      fixedCanonicalCutoffCell Q ∈ 𝓝 L₀ :=
+    (isOpen_fixedCanonicalCutoffCell Q).mem_nhds hL₀cell
+  have hinter :
+      (V ∩ fixedCanonicalCutoffCell Q) ∈ 𝓝 L₀ :=
+    inter_mem hregNhds hcellNhds
+  obtain ⟨U, hUsub, hUopen, hL₀U⟩ := mem_nhds_iff.mp hinter
+  refine ⟨U, hUopen, hL₀U, ?_, ?_⟩
+  · intro L hLU
+    exact (hUsub hLU).2
+  · intro L hLU
+    have hLint := hUsub hLU
+    have hLcell : L ∈ fixedCanonicalCutoffCell Q := hLint.2
+    have hdet : f (Real.log L : ℂ) ≠ 0 := by
+      have hmem : f (Real.log L : ℂ) ∈ ({0}ᶜ : Set ℂ) := hLint.1
+      simpa using hmem
+    have hbridge :=
+      liftedFrozenIntrinsicPredecessorBlock_of_log_fixedCell hQ hLcell p N
+    dsimp [f, liftedFrozenIntrinsicPredecessorDet] at hdet
+    rw [hbridge] at hdet
+    exact hdet
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.isPreconnected_liftedFrozenRigidityDomain
@@ -278,3 +352,4 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.analyticOnNhd_liftedFrozenIntrinsicPredecessorDet
 #print axioms Zeta23.CCM.exists_mem_liftedFrozenRigidityDomain_det_ne_zero
 #print axioms Zeta23.CCM.exists_intrinsicPredecessorRegular_in_open_fixedCell
+#print axioms Zeta23.CCM.exists_open_fixedCell_intrinsicPredecessorRegular_persistence
