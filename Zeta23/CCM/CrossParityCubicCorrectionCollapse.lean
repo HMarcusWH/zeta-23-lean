@@ -1,5 +1,4 @@
 import Zeta23.CCM.CrossParityQuotientTransport
-import Mathlib.NumberTheory.Bernoulli
 
 noncomputable section
 
@@ -21,37 +20,50 @@ certificate, or RH-directed assumption.
 private theorem sum_range_pow_one_rat (m : ℕ) :
     (∑ k ∈ Finset.range m, (k : ℚ) ^ 1) =
       (m : ℚ) * (m - 1 : ℚ) / 2 := by
-  rw [Finset.sum_range_pow]
-  norm_num [Finset.sum_range_succ]
-  ring
+  induction m with
+  | zero => norm_num
+  | succ m ih =>
+      rw [Finset.sum_range_succ, ih]
+      push_cast
+      ring
 
 private theorem sum_range_pow_two_rat (m : ℕ) :
     (∑ k ∈ Finset.range m, (k : ℚ) ^ 2) =
       (m : ℚ) * (m - 1 : ℚ) * (2 * m - 1 : ℚ) / 6 := by
-  rw [Finset.sum_range_pow]
-  norm_num [Finset.sum_range_succ]
-  ring
+  induction m with
+  | zero => norm_num
+  | succ m ih =>
+      rw [Finset.sum_range_succ, ih]
+      push_cast
+      ring
 
 private theorem sum_range_pow_three_rat (m : ℕ) :
     (∑ k ∈ Finset.range m, (k : ℚ) ^ 3) =
       ((m : ℚ) * (m - 1 : ℚ) / 2) ^ 2 := by
-  rw [Finset.sum_range_pow]
-  norm_num [Finset.sum_range_succ]
-  ring
+  induction m with
+  | zero => norm_num
+  | succ m ih =>
+      rw [Finset.sum_range_succ, ih]
+      push_cast
+      ring
 
 private theorem sum_range_pow_four_rat (m : ℕ) :
     (∑ k ∈ Finset.range m, (k : ℚ) ^ 4) =
       (m : ℚ) * (m - 1 : ℚ) * (2 * m - 1 : ℚ) *
         (3 * m ^ 2 - 3 * m - 1 : ℚ) / 30 := by
-  rw [Finset.sum_range_pow]
-  norm_num [Finset.sum_range_succ]
-  ring
+  induction m with
+  | zero => norm_num
+  | succ m ih =>
+      rw [Finset.sum_range_succ, ih]
+      push_cast
+      ring
 
 private theorem centered_square_sum_rat (N : ℕ) :
     (∑ i : Fin (2 * N + 1),
         (((i.1 : ℚ) - (N : ℚ)) ^ 2)) =
       (N : ℚ) * (N + 1 : ℚ) * (2 * N + 1 : ℚ) / 3 := by
-  rw [Fin.sum_univ_eq_sum_range]
+  rw [Fin.sum_univ_eq_sum_range
+    (fun k => (((k : ℚ) - (N : ℚ)) ^ 2))]
   simp_rw [sub_sq]
   rw [Finset.sum_sub_distrib, Finset.sum_add_distrib]
   simp_rw [Finset.sum_sub_distrib]
@@ -64,14 +76,16 @@ private theorem centered_fourth_sum_rat (N : ℕ) :
         (((i.1 : ℚ) - (N : ℚ)) ^ 4)) =
       (N : ℚ) * (N + 1 : ℚ) * (2 * N + 1 : ℚ) *
         (3 * N ^ 2 + 3 * N - 1 : ℚ) / 15 := by
-  rw [Fin.sum_univ_eq_sum_range]
+  rw [Fin.sum_univ_eq_sum_range
+    (fun k => (((k : ℚ) - (N : ℚ)) ^ 4))]
   have hexpand (k : ℕ) :
       ((k : ℚ) - (N : ℚ)) ^ 4 =
         (k : ℚ) ^ 4 -
           4 * (N : ℚ) * (k : ℚ) ^ 3 +
           6 * (N : ℚ) ^ 2 * (k : ℚ) ^ 2 -
           4 * (N : ℚ) ^ 3 * (k : ℚ) +
-          (N : ℚ) ^ 4 := by ring
+          (N : ℚ) ^ 4 := by
+    ring
   simp_rw [hexpand]
   repeat' rw [Finset.sum_add_distrib]
   repeat' rw [Finset.sum_sub_distrib]
@@ -146,19 +160,23 @@ theorem cubicProjectionResidual_eq_oddCubicProjectionSlope_smul
               EuclideanSpace ℂ (Fin (2 * K + 1))))) = 0 :=
     ((mem_boundaryFlatSubspace_iff K _).mp hgFlat).2.1
 
+  have hgInner :
+      inner ℂ (centeredPowerVector K 1)
+          (((oddCubicCompressionVector K : euclideanOddBoundaryFlatSubspace K) :
+            EuclideanSpace ℂ (Fin (2 * K + 1)))) = 0 := by
+    rw [inner_centeredPowerVector]
+    exact hgMoment
+
   have hpair := congrArg
     (fun x : EuclideanSpace ℂ (Fin (2 * K + 1)) =>
       inner ℂ (centeredPowerVector K 1) x) ha
-  rw [inner_sub_right,
-    inner_centeredPowerVector,
-    inner_centeredPowerVector] at hpair
-  rw [hgMoment] at hpair
-  simp only [sub_zero] at hpair
-  rw [centeredMoment_one_centeredPowerVector_three,
+  rw [inner_smul_right, inner_sub_right, hgInner, sub_zero,
+    inner_centeredPowerVector, inner_centeredPowerVector,
+    centeredMoment_one_centeredPowerVector_three,
     centeredMoment_one_centeredPowerVector_one,
     centered_fourth_sum_complex,
     centered_square_sum_complex] at hpair
-  simp only [inner_smul_right, smul_eq_mul] at hpair
+  simp only [smul_eq_mul] at hpair
 
   have hK0 : (K : ℂ) ≠ 0 := by
     exact_mod_cast (Nat.ne_of_gt hK)
