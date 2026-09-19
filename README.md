@@ -39,6 +39,86 @@ CONTROL AUTHORITY
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## RH closure plan — current synthesis target
+
+This is the current **research/proof plan**, not a claim that RH is closed. Compiler/CI evidence remains authoritative, and every step below must be proved without adding project axioms or hidden RH-equivalent assumptions.
+
+### Already established in the live theorem stack
+
+1. **Exceptional-zero seam:** an off-critical-line zeta zero feeds the finite exceptional-zero/CCM obstruction machinery and yields a canonical negative finite witness.
+2. **First-bad reduction:** a negative finite witness can be reduced to a regular, cell-minimal first-bad certificate.
+3. **Bi-regularization (#222):** the retained cell-minimal first-bad state can be chosen with both predecessor parities regular at the same aperture and cutoff.
+4. **Zero-shift classification (#221/#222):** predecessor resonance disappears on that bi-regular retained state; successor badness is therefore carried by the zero-shift scalar response. In the selected-even form:
+   ```text
+   Re sigmaPlus < 0
+   sigmaMinus = alpha0 * sigmaPlus + Gamma0 * mu0
+   odd badness <-> Re sigmaMinus < 0
+   ```
+
+### Immediate theorem target — PR #224
+
+PR #224 is attempting to prove the exact finite-geometry collapse
+```text
+oddCubicGeneratorPredecessorPart N
+  = -((2N - 1)/6) * oddIndexCubicShellPredecessorPart N.
+```
+
+If Lean proves this exact identity, the two apparent cross-parity correction directions are one canonical direction. The transfer coefficients then satisfy an affine relation, and the retained scalar normal form collapses to the one-coefficient equation
+```text
+6 * sigmaMinus
+  = alpha0 * (6 * sigmaPlus - (2N - 1) * mu0)
+    + (2N + 5) * mu0.
+```
+
+Until the corresponding Lean declarations pass the full theorem gates, this remains a **LEAD**, not theorem authority.
+
+### Decisive finite closure target
+
+The next mathematical objective is to prove that the strongest retained finite counterexample structure cannot exist. A successful endpoint would have the shape
+```lean
+theorem no_biRegular_cellMinimal_negativeEnergyCertificate
+    (Q : ℕ) :
+    IsEmpty (BiRegularCellMinimalNegativeEnergyCertificate Q) := by
+  ...
+```
+or an equivalent theorem excluding the surviving retained scalar sign configuration.
+
+The exhaustive PR-history synthesis pass should be used here: combine every still-live theorem, revisit historically dead routes whose prerequisites have changed, and look for a composition of cell minimality, bi-regularity, source/moment identities, cross-parity transport, aperture continuity/analyticity, Riesz/energy identities, and the collapsed zero-shift scalar that forces a contradiction.
+
+### Final zeta-level composition
+
+Only after the finite impossibility theorem is green should the terminal wrapper be added:
+
+```text
+off-critical-line zeta zero
+    -> canonical finite negative witness
+    -> regular cell-minimal first-bad certificate
+    -> bi-regular retained negative-energy certificate
+    -> contradiction
+    -> every nontrivial zeta zero has Re rho = 1/2.
+```
+
+The final promoted theorem must pass:
+
+```text
+lake build Zeta23.CCM
+lake build Zeta23.ExceptionalZero
+lake build <final RH module>
+no-sorry / no-project-axiom gates
+#print axioms <final RH theorem>
+```
+
+### Claim firewall
+
+- PR #223's bounded Arb audit did **not** locate a frozen retained first-bad state; it certified zero qualified retained points in its frozen scope.
+- PR #224 is currently a draft theorem search and is not theorem authority.
+- OBS-059I remains OPEN.
+- simultaneous odd-bad exclusion remains OPEN.
+- negative-root exclusion remains OPEN.
+- finite-to-zeta closure remains OPEN until the finite impossibility theorem and terminal wrapper are actually compiler-validated.
+- **RH remains OPEN.**
+
+
 ## Historical authority snapshot through PR #201
 
 Live GitHub head + exact compiler/CI evidence are authoritative dynamically.
