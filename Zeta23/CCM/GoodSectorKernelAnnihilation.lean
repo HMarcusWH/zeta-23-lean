@@ -86,19 +86,36 @@ theorem parityCompressedCanonical_eq_zero_of_not_parityBad_of_selfEnergy_eq_zero
   have hyty :
       Complex.re (inner ℂ y ((t : ℂ) • y)) =
         t * ‖y‖ ^ 2 := by
-    rw [inner_smul_right]
-    simp [Complex.mul_re, hyy]
+    have h :=
+      congrArg Complex.re
+        (inner_smul_real_right (𝕜 := ℂ) y y t)
+    simpa [Complex.smul_re, hyy] using h
   have htTyv :
       Complex.re (inner ℂ ((t : ℂ) • T y) v) =
         t * ‖y‖ ^ 2 := by
-    rw [inner_smul_left]
-    simp [Complex.mul_re, hTyvRe]
+    have h :=
+      congrArg Complex.re
+        (inner_smul_real_left (𝕜 := ℂ) (T y) v t)
+    simpa [Complex.smul_re, hTyvRe] using h
+  have hTyty :
+      Complex.re (inner ℂ (T y) ((t : ℂ) • y)) =
+        t * q := by
+    have h :=
+      congrArg Complex.re
+        (inner_smul_real_right (𝕜 := ℂ) (T y) y t)
+    simpa [Complex.smul_re, hTyy] using h
   have htTyty :
       Complex.re (inner ℂ ((t : ℂ) • T y) ((t : ℂ) • y)) =
         t ^ 2 * q := by
-    rw [inner_smul_left, inner_smul_right]
-    simp [Complex.mul_re, hTyy]
-    ring
+    have h :=
+      congrArg Complex.re
+        (inner_smul_real_left (𝕜 := ℂ) (T y) ((t : ℂ) • y) t)
+    calc
+      Complex.re (inner ℂ ((t : ℂ) • T y) ((t : ℂ) • y)) =
+          t * Complex.re (inner ℂ (T y) ((t : ℂ) • y)) := by
+            simpa [Complex.smul_re] using h
+      _ = t * (t * q) := by rw [hTyty]
+      _ = t ^ 2 * q := by ring
   have hTw :
       T w = y - (t : ℂ) • T y := by
     dsimp [w]
