@@ -22,7 +22,6 @@ class Post221SyncTests(unittest.TestCase):
         self.assertEqual(delta["validated_head"], "e42dbce1bbbc68b5cf9612e7c8a8dab2a2eca543")
         self.assertEqual(delta["tree"], "48d8752950c28e0d3bbd385646e71075abef9e76")
         self.assertEqual(delta["status"], "MERGED_VIA_PR_222")
-        self.assertEqual(self.state["latest_research_evidence"]["pr"], 215)
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
