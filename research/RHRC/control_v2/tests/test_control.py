@@ -15,7 +15,7 @@ from control_v2.state import load_research_state
 class ControlV2Tests(unittest.TestCase):
     def test_control_state_tracks_latest_theorem_anchor_without_moving_control_anchor(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 220)
+        self.assertEqual(state.anchor.pr, 221)
         self.assertEqual(
             state.anchor.merge_commit,
             "d1ce40c83f4771be6529119fbdda9598bf07baad",
@@ -84,8 +84,8 @@ class ControlV2Tests(unittest.TestCase):
             "RH remains OPEN",
         ):
             self.assertIn(token, note)
-        self.assertEqual(control["merged_theorem_anchor"]["pr"], 220)
-        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 221)
+        self.assertEqual(control["merged_theorem_anchor"]["pr"], 221)
+        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 222)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
         self.assertEqual(control["terminal_claim"], "RH_OPEN")
 

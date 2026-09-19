@@ -14,13 +14,13 @@ class Post221SyncTests(unittest.TestCase):
     def test_merged_anchor_and_validated_delta_are_separate(self):
         merged = self.state["merged_theorem_anchor"]
         delta = self.state["latest_validated_theorem_delta"]
-        self.assertEqual(merged["pr"], 220)
-        self.assertEqual(merged["validated_head"], "f61844ed2c0ae3a83fca20f0d287e0b66d2bf64b")
-        self.assertEqual(merged["merge_commit"], "d1ce40c83f4771be6529119fbdda9598bf07baad")
-        self.assertEqual(merged["tree"], "c127bf1a5fa6394eadd435d613ced0d1b2b178bd")
-        self.assertEqual(delta["pr"], 221)
-        self.assertEqual(delta["validated_head"], "20018c931f4516432ace5bd06788276be656641b")
-        self.assertEqual(delta["tree"], "bc82b7604d95ccce8f1a46e4b25e0485bf68a4c2")
+        self.assertEqual(merged["pr"], 221)
+        self.assertEqual(merged["validated_head"], "a26f3a9ef2d40fc0522a20c5d184fc0a8968325b")
+        self.assertEqual(merged["merge_commit"], "ab5f29ba01899362ab03fdb509a04c4d5afc2744")
+        self.assertEqual(merged["tree"], "4fda17717de7b7644c267e98b5c61b7dc3e36547")
+        self.assertEqual(delta["pr"], 222)
+        self.assertEqual(delta["validated_head"], "e42dbce1bbbc68b5cf9612e7c8a8dab2a2eca543")
+        self.assertEqual(delta["tree"], "48d8752950c28e0d3bbd385646e71075abef9e76")
         self.assertEqual(delta["status"], "GREEN_PR_THEOREM_DELTA_PENDING_MERGE")
         self.assertEqual(self.state["latest_research_evidence"]["pr"], 215)
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
@@ -30,10 +30,10 @@ class Post221SyncTests(unittest.TestCase):
         route = self.state["active_research_route"]
         self.assertEqual(route["actual_shell_coupling_good_sector_annihilation"], "PROVED_PR_220")
         self.assertEqual(route["zero_shift_kernel_balance"], "PROVED_PR_220")
-        self.assertEqual(route["zero_shift_schur_good_bad_classification"], "VALIDATED_PR_221_DELTA")
-        self.assertEqual(route["canonical_simultaneous_odd_bad_branch"], "OPEN_BRANCH_CLASSIFIED_BY_PR_221_DELTA")
+        self.assertEqual(route["zero_shift_schur_good_bad_classification"], "MERGED_PR_221")
+        self.assertEqual(route["canonical_simultaneous_odd_bad_branch"], "OPEN_SCALAR_SIGN_CLASSIFIED_BY_PR_222_DELTA")
         self.assertEqual(route["active_subobligation"], "OBS-059I")
-        self.assertEqual(route["next_research_target"], "RETAINED_BRANCH_ARITHMETIC_DISCRIMINATION")
+        self.assertEqual(route["next_research_target"], "RETAINED_BIREGULAR_ZERO_SHIFT_SCALAR_DISCRIMINATION")
 
     def test_post221_delta_has_required_post_green_sections(self):
         text = (RHRC / "RESEARCH_LEADS_POST_221_ZERO_SHIFT_SCHUR_CLASSIFICATION_DELTA.md").read_text(encoding="utf-8")
