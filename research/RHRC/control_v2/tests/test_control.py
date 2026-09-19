@@ -18,11 +18,11 @@ class ControlV2Tests(unittest.TestCase):
         self.assertEqual(state.anchor.pr, 221)
         self.assertEqual(
             state.anchor.merge_commit,
-            "d1ce40c83f4771be6529119fbdda9598bf07baad",
+            "ab5f29ba01899362ab03fdb509a04c4d5afc2744",
         )
         self.assertEqual(
             state.anchor.tree,
-            "c127bf1a5fa6394eadd435d613ced0d1b2b178bd",
+            "4fda17717de7b7644c267e98b5c61b7dc3e36547",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
