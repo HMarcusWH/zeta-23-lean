@@ -229,8 +229,55 @@ theorem cubicZeroShiftSchurEndpoint_eq_star_shellResponse_mul_inner
             euclideanParityBoundaryFlatSubspace p (N + 1)) := by
       rfl
 
+
+/-- Real-part form of the exact zero-shift endpoint/response identity.  The
+endpoint sign is therefore the response sign times the positive cubic-shell
+norm square whenever the shell is nonzero. -/
+theorem cubicZeroShiftSchurEndpoint_re_eq_shellResponse_re_mul_norm_sq
+    (p : ReversalParity) (L : ℝ) (N : ℕ) (hN : 1 ≤ N)
+    (x₀ : intrinsicParityPredecessorSubspace p N)
+    (hx₀ : intrinsicPredecessorBlock p L N x₀ =
+      intrinsicShellToPredecessor p L N (intrinsicCubicShellPart p N)) :
+    Complex.re (cubicZeroShiftSchurEndpoint p L N x₀) =
+      Complex.re (cubicZeroShiftShellResponseScalar p L N x₀) *
+        ‖(intrinsicCubicShellPart p N :
+          euclideanParityBoundaryFlatSubspace p (N + 1))‖ ^ 2 := by
+  let c := intrinsicCubicShellPart p N
+  let sigma := cubicZeroShiftShellResponseScalar p L N x₀
+  have hendpoint :=
+    cubicZeroShiftSchurEndpoint_eq_star_shellResponse_mul_inner
+      p L N hN x₀ hx₀
+  have hinner :
+      inner ℂ
+          (c : euclideanParityBoundaryFlatSubspace p (N + 1))
+          (c : euclideanParityBoundaryFlatSubspace p (N + 1)) =
+        ((‖(c : euclideanParityBoundaryFlatSubspace p (N + 1))‖ ^ 2 : ℝ) : ℂ) := by
+    rw [inner_self_eq_norm_sq_to_K]
+    norm_cast
+  have hre := congrArg Complex.re hendpoint
+  change
+    Complex.re (cubicZeroShiftSchurEndpoint p L N x₀) =
+      Complex.re
+        (star sigma *
+          inner ℂ
+            (c : euclideanParityBoundaryFlatSubspace p (N + 1))
+            (c : euclideanParityBoundaryFlatSubspace p (N + 1))) at hre
+  calc
+    Complex.re (cubicZeroShiftSchurEndpoint p L N x₀) =
+        Complex.re
+          (star sigma *
+            inner ℂ
+              (c : euclideanParityBoundaryFlatSubspace p (N + 1))
+              (c : euclideanParityBoundaryFlatSubspace p (N + 1))) := hre
+    _ = Complex.re sigma *
+        ‖(c : euclideanParityBoundaryFlatSubspace p (N + 1))‖ ^ 2 := by
+      rw [hinner]
+      simp only [Complex.mul_re, Complex.star_def, Complex.conj_re,
+        Complex.conj_im, Complex.ofReal_re, Complex.ofReal_im, mul_zero, sub_zero]
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.parityCompressedCanonical_cubicZeroShiftTrialVector_eq_shellPart
 #print axioms Zeta23.CCM.cubicZeroShiftShellResponseScalar_smul_cubic_eq
 #print axioms Zeta23.CCM.cubicZeroShiftSchurEndpoint_eq_star_shellResponse_mul_inner
+#print axioms Zeta23.CCM.cubicZeroShiftSchurEndpoint_re_eq_shellResponse_re_mul_norm_sq

@@ -125,6 +125,7 @@ import Zeta23.CCM.FrozenIntrinsicPredecessorHolomorphy
 import Zeta23.CCM.LiftedPredecessorDeterminantRigidity
 import Zeta23.CCM.LiftedPredecessorRegularity
 import Zeta23.CCM.CellMinimalRegularFirstBad
+import Zeta23.CCM.CellMinimalBiRegularFirstBad
 import Zeta23.CCM.FirstBadSpectralInterfaces
 import Zeta23.CCM.SourceMomentDecomposition
 import Zeta23.CCM.CrossParitySecularTransfer
@@ -143,6 +144,7 @@ import Zeta23.CCM.CanonicalRieszBoundary
 import Zeta23.CCM.QuadraticNormalSourceJets
 import Zeta23.CCM.SecularRootRieszBoundary
 import Zeta23.CCM.RegularFirstBadCanonicalEnergy
+import Zeta23.CCM.BiRegularFirstBadCanonicalEnergy
 import Zeta23.CCM.RegularFirstBadRieszEnergy
 import Zeta23.CCM.RegularFirstBadRieszBoundary
 import Zeta23.CCM.RegularFirstBadCrossParityRiesz
@@ -160,6 +162,7 @@ import Zeta23.CCM.GoodSectorKernelAnnihilation
 import Zeta23.CCM.RegularFirstBadZeroShiftKernelBalance
 import Zeta23.CCM.ZeroShiftSchurClassification
 import Zeta23.CCM.RegularFirstBadZeroShiftSchurClassification
+import Zeta23.CCM.BiRegularFirstBadZeroShiftNormalForm
 import Zeta23.CCM.CanonicalSourcePairing
 import Zeta23.CCM.CanonicalQuadraticNormalSourceFunctional
 import Zeta23.CCM.RegularFirstBadCompleteSourceFunctional
