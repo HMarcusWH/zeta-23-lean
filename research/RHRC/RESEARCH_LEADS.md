@@ -5,35 +5,35 @@
 > This is a research inventory, not theorem authority. Exact Lean/compiler/CI state wins.
 
 <!-- RHRC_CURRENT_STATE_BEGIN -->
-## Current repository state
+## Current RHRC state
 
-```text
-THEOREM AUTHORITY = PR #220 (latest merged)
-validated theorem head = f61844ed2c0ae3a83fca20f0d287e0b66d2bf64b
-merged theorem commit = d1ce40c83f4771be6529119fbdda9598bf07baad
-validated theorem tree = c127bf1a5fa6394eadd435d613ced0d1b2b178bd
+THEOREM AUTHORITY
+- merged theorem authority = PR #221
+- validated final head = a26f3a9ef2d40fc0522a20c5d184fc0a8968325b
+- merge commit = ab5f29ba01899362ab03fdb509a04c4d5afc2744
+- tree = 4fda17717de7b7644c267e98b5c61b7dc3e36547
 
-LATEST VALIDATED THEOREM DELTA = PR #221
-validated theorem head = 20018c931f4516432ace5bd06788276be656641b
-validated theorem tree = bc82b7604d95ccce8f1a46e4b25e0485bf68a4c2
-merge status = OPEN / MERGE COMMIT NOT YET AVAILABLE
+LATEST VALIDATED THEOREM DELTA
+- PR #222
+- validated theorem head = e42dbce1bbbc68b5cf9612e7c8a8dab2a2eca543
+- validated theorem tree = 48d8752950c28e0d3bbd385646e71075abef9e76
+- status = GREEN_PR_THEOREM_DELTA_PENDING_MERGE
+- theorem family = BIREGULAR_FIRST_BAD_ZERO_SHIFT_NORMAL_FORM
 
-LATEST RESEARCH EVIDENCE = PR #215
-validated research head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
-merged research commit = 191b1b648448c92010286dae54df8502df1f55ce
-validated research tree = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
+LATEST RESEARCH EVIDENCE
+- PR #215
+- validated head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
+- merge commit = 191b1b648448c92010286dae54df8502df1f55ce
+- tree = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
 
-CONTROL SEMANTIC AUTHORITY = PR #117
-selected first break = E4A4-SCHUR-FB-05
-active subobligation = OBS-059I
-next research target = RETAINED_BRANCH_ARITHMETIC_DISCRIMINATION
-
-R003 phase = DISCOVERY
-confirmatory execution = NOT AUTHORIZED
-terminal claim = RH_OPEN
-```
-
-PR #220 is the latest merged compiler-validated theorem authority. Exact PR #221 theorem head `20018c931f4516432ace5bd06788276be656641b` has passed the CCM build, exceptional-zero build, and forbidden-placeholder gates and classifies one-step successor badness exactly as resonant actual shell coupling or regular coupling with a negative zero-shift Schur endpoint; successor goodness is exactly regular zero-shift solvability with a nonnegative endpoint. Because #221 is not yet merged, the machine merged-theorem anchor remains #220. PR #215 remains the latest bounded research-evidence anchor. OBS-059I remains open: the new classification narrows the admissible first-bad geometry but excludes neither branch.
+CONTROL AUTHORITY
+- PR #117
+- selected formal first break = E4A4-SCHUR-FB-05
+- active subobligation = OBS-059I
+- next research target = RETAINED_BIREGULAR_ZERO_SHIFT_SCALAR_DISCRIMINATION
+- R003 phase = DISCOVERY
+- confirmatory execution = NOT AUTHORIZED
+- terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
 ## Current lead ordering
