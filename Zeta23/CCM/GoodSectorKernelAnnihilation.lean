@@ -89,21 +89,33 @@ theorem parityCompressedCanonical_eq_zero_of_not_parityBad_of_selfEnergy_eq_zero
     have h :=
       congrArg Complex.re
         (inner_smul_real_right (𝕜 := ℂ) y y t)
-    simpa [Complex.smul_re, hyy] using h
+    calc
+      Complex.re (inner ℂ y ((t : ℂ) • y)) =
+          t * Complex.re (inner ℂ y y) := by
+            simpa only [Complex.smul_re] using h
+      _ = t * ‖y‖ ^ 2 := by rw [hyy]
   have htTyv :
       Complex.re (inner ℂ ((t : ℂ) • T y) v) =
         t * ‖y‖ ^ 2 := by
     have h :=
       congrArg Complex.re
         (inner_smul_real_left (𝕜 := ℂ) (T y) v t)
-    simpa [Complex.smul_re, hTyvRe] using h
+    calc
+      Complex.re (inner ℂ ((t : ℂ) • T y) v) =
+          t * Complex.re (inner ℂ (T y) v) := by
+            simpa only [Complex.smul_re] using h
+      _ = t * ‖y‖ ^ 2 := by rw [hTyvRe]
   have hTyty :
       Complex.re (inner ℂ (T y) ((t : ℂ) • y)) =
         t * q := by
     have h :=
       congrArg Complex.re
         (inner_smul_real_right (𝕜 := ℂ) (T y) y t)
-    simpa [Complex.smul_re, hTyy] using h
+    calc
+      Complex.re (inner ℂ (T y) ((t : ℂ) • y)) =
+          t * Complex.re (inner ℂ (T y) y) := by
+            simpa only [Complex.smul_re] using h
+      _ = t * q := by rw [hTyy]
   have htTyty :
       Complex.re (inner ℂ ((t : ℂ) • T y) ((t : ℂ) • y)) =
         t ^ 2 * q := by
