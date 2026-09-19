@@ -12,11 +12,16 @@ class Post213SyncTests(unittest.TestCase):
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
         theorem = state["merged_theorem_anchor"]
-        self.assertEqual(theorem["pr"], 213)
-        self.assertEqual(theorem["validated_head"], "703c3764a7d35aa4801e791a1929efa54c2533a1")
-        self.assertEqual(theorem["merge_commit"], "ee341a6071d177c75bbea0a5f92ebe3b3bb16696")
-        self.assertEqual(theorem["tree"], "db00686b2bbb821adb857e5c68f422d19c4f91cd")
+        self.assertGreaterEqual(theorem["pr"], 213)
         self.assertEqual(theorem["status"], "MERGED_GREEN_THEOREM_STATE")
+        note = state["control_note"]
+        for token in (
+            "PR #213",
+            "703c3764a7d35aa4801e791a1929efa54c2533a1",
+            "ee341a6071d177c75bbea0a5f92ebe3b3bb16696",
+            "db00686b2bbb821adb857e5c68f422d19c4f91cd",
+        ):
+            self.assertIn(token, note)
         self.assertIn("latest_research_evidence", state)
         self.assertEqual(state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(state["terminal_claim"], "RH_OPEN")
@@ -26,7 +31,7 @@ class Post213SyncTests(unittest.TestCase):
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
         route = state["active_research_route"]
-        self.assertEqual(route["even_selected_odd_good_branch"], "PROVED_THROUGH_PR_213")
+        self.assertIn(route["even_selected_odd_good_branch"], ("PROVED_THROUGH_PR_213", "PROVED_THROUGH_PR_220"))
         self.assertEqual(route["pair_d_quantitative_coercivity"], "PROVED_PR_209")
         self.assertEqual(route["complete_source_functional_representation"], "PROVED_PR_211")
         self.assertEqual(route["complete_physical_rhs"], "PROVED_PR_213")
@@ -39,7 +44,7 @@ class Post213SyncTests(unittest.TestCase):
             "INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY",
         )
         self.assertIn("next_research_target", route)
-        self.assertEqual(route["canonical_simultaneous_odd_bad_branch"], "OPEN")
+        self.assertTrue(route["canonical_simultaneous_odd_bad_branch"].startswith("OPEN"))
         self.assertEqual(route["odd_selected_first_bad_branch"], "OPEN")
 
     def test_post213_research_delta_has_required_post_green_sections(self):

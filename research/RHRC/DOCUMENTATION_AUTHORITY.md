@@ -20,10 +20,15 @@ Research certificates, exact-rational audits, Arb output and external reviews ar
 ## Current repository state
 
 ```text
-THEOREM AUTHORITY = PR #213
-validated theorem head = 703c3764a7d35aa4801e791a1929efa54c2533a1
-merged theorem commit = ee341a6071d177c75bbea0a5f92ebe3b3bb16696
-validated theorem tree = db00686b2bbb821adb857e5c68f422d19c4f91cd
+THEOREM AUTHORITY = PR #220 (latest merged)
+validated theorem head = f61844ed2c0ae3a83fca20f0d287e0b66d2bf64b
+merged theorem commit = d1ce40c83f4771be6529119fbdda9598bf07baad
+validated theorem tree = c127bf1a5fa6394eadd435d613ced0d1b2b178bd
+
+LATEST VALIDATED THEOREM DELTA = PR #221
+validated theorem head = 20018c931f4516432ace5bd06788276be656641b
+validated theorem tree = bc82b7604d95ccce8f1a46e4b25e0485bf68a4c2
+merge status = OPEN / MERGE COMMIT NOT YET AVAILABLE
 
 LATEST RESEARCH EVIDENCE = PR #215
 validated research head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
@@ -33,14 +38,14 @@ validated research tree = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
 CONTROL SEMANTIC AUTHORITY = PR #117
 selected first break = E4A4-SCHUR-FB-05
 active subobligation = OBS-059I
-next research target = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+next research target = RETAINED_BRANCH_ARITHMETIC_DISCRIMINATION
 
 R003 phase = DISCOVERY
 confirmatory execution = NOT AUTHORIZED
 terminal claim = RH_OPEN
 ```
 
-PR #215 is rigorous bounded research, not theorem promotion. Universal full-carrier source/M4 sign and proportionality are consumed in the tested scope; the retained first-bad/eigenvector implication was not tested. The live route stays on the exact retained negative secular root. Contact substitution remains unauthorized without a same-state contact bridge; zero-shift response and the resonant `1/(-lambda)` route remain secondary.
+PR #220 is the latest merged compiler-validated theorem authority. Exact PR #221 theorem head `20018c931f4516432ace5bd06788276be656641b` has passed the CCM build, exceptional-zero build, and forbidden-placeholder gates and classifies one-step successor badness exactly as resonant actual shell coupling or regular coupling with a negative zero-shift Schur endpoint; successor goodness is exactly regular zero-shift solvability with a nonnegative endpoint. Because #221 is not yet merged, the machine merged-theorem anchor remains #220. PR #215 remains the latest bounded research-evidence anchor. OBS-059I remains open: the new classification narrows the admissible first-bad geometry but excludes neither branch.
 <!-- RHRC_CURRENT_STATE_END -->
 
 ## Living-current-surface rule

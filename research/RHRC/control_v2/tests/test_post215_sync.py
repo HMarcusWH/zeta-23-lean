@@ -11,10 +11,10 @@ class Post215SyncTests(unittest.TestCase):
         theorem = state["merged_theorem_anchor"]
         research = state["latest_research_evidence"]
         control = state["merged_control_anchor"]
-        self.assertEqual(theorem["pr"], 213)
-        self.assertEqual(theorem["validated_head"], "703c3764a7d35aa4801e791a1929efa54c2533a1")
-        self.assertEqual(theorem["merge_commit"], "ee341a6071d177c75bbea0a5f92ebe3b3bb16696")
-        self.assertEqual(theorem["tree"], "db00686b2bbb821adb857e5c68f422d19c4f91cd")
+        self.assertEqual(theorem["pr"], 220)
+        self.assertEqual(theorem["validated_head"], "f61844ed2c0ae3a83fca20f0d287e0b66d2bf64b")
+        self.assertEqual(theorem["merge_commit"], "d1ce40c83f4771be6529119fbdda9598bf07baad")
+        self.assertEqual(theorem["tree"], "c127bf1a5fa6394eadd435d613ced0d1b2b178bd")
         self.assertEqual(research["pr"], 215)
         self.assertEqual(research["validated_head"], "5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a")
         self.assertEqual(research["merge_commit"], "191b1b648448c92010286dae54df8502df1f55ce")
@@ -43,12 +43,12 @@ class Post215SyncTests(unittest.TestCase):
         self.assertEqual(route["full_space_dual_geometry"], "DUAL_INDEPENDENCE_CERTIFIED_RESEARCH_PR_215")
         self.assertEqual(route["full_space_complete_functional_sign"], "SIGN_INDEFINITE_CERTIFIED_RESEARCH_PR_215")
         self.assertEqual(route["full_space_dual_proportionality"], "FALSIFIED_RESEARCH_PR_215")
-        self.assertEqual(route["retained_state_implication"], "OPEN_NOT_TESTED_PR_215")
+        self.assertEqual(route["retained_state_implication"], "THEOREM_COMPOSED_THROUGH_PR_220_AND_CLASSIFIED_PR_221_DELTA")
         self.assertEqual(route["contact_locus_route"], "LEAD_REQUIRES_SAME_STATE_CONTACT_BRIDGE")
-        self.assertEqual(route["retained_negative_root_secular_route"], "ACTIVE_HIGHEST_INFORMATION")
-        self.assertEqual(route["zero_shift_response_route"], "RESURRECTED_ACTIVE_SECONDARY")
+        self.assertEqual(route["retained_negative_root_secular_route"], "COMPOSED_THROUGH_PR_220")
+        self.assertEqual(route["zero_shift_response_route"], "CLASSIFIED_BY_VALIDATED_PR_221_DELTA")
         self.assertEqual(route["resonant_spectral_tube_route"], "RESURRECTED_ACTIVE_SECONDARY")
-        self.assertEqual(route["next_research_target"], "RETAINED_CROSS_PARITY_SECULAR_COMPLETION")
+        self.assertEqual(route["next_research_target"], "RETAINED_BRANCH_ARITHMETIC_DISCRIMINATION")
         self.assertEqual(route["active_subobligation"], "OBS-059I")
 
     def test_post215_delta_has_post_green_sections_and_firewalls(self):

@@ -32,7 +32,7 @@ class Post211SyncTests(unittest.TestCase):
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
         route = state["active_research_route"]
-        self.assertIn(route["even_selected_odd_good_branch"], ("PROVED_THROUGH_PR_211", "PROVED_THROUGH_PR_213"))
+        self.assertIn(route["even_selected_odd_good_branch"], ("PROVED_THROUGH_PR_211", "PROVED_THROUGH_PR_213", "PROVED_THROUGH_PR_220"))
         self.assertEqual(route["pair_d_quantitative_coercivity"], "PROVED_PR_209")
         self.assertEqual(route["mixed_jet_antialignment"], "PROVED_PR_209")
         self.assertEqual(route["riesz_eight_nine_nondegeneracy"], "PROVED_PR_209")
@@ -52,7 +52,7 @@ class Post211SyncTests(unittest.TestCase):
             route["required_new_information"],
             "INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY",
         )
-        self.assertEqual(route["canonical_simultaneous_odd_bad_branch"], "OPEN")
+        self.assertTrue(route["canonical_simultaneous_odd_bad_branch"].startswith("OPEN"))
         self.assertEqual(route["odd_selected_first_bad_branch"], "OPEN")
 
     def test_post211_research_delta_has_required_post_green_sections(self):
