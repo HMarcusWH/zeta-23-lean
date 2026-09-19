@@ -84,7 +84,8 @@ class ControlV2Tests(unittest.TestCase):
             "RH remains OPEN",
         ):
             self.assertIn(token, note)
-        self.assertEqual(control["merged_theorem_anchor"]["pr"], 220)\n        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 221)
+        self.assertEqual(control["merged_theorem_anchor"]["pr"], 220)
+        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 221)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
         self.assertEqual(control["terminal_claim"], "RH_OPEN")
 
