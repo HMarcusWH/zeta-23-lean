@@ -45,7 +45,8 @@ class CurrentStateSurfaceTests(unittest.TestCase):
         )
 
     def test_machine_state_is_post221_delta(self):
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 220)\n        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 221)
+        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 220)
+        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 221)
         self.assertEqual(self.state["latest_research_evidence"]["pr"], 215)
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(
