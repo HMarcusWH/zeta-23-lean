@@ -64,11 +64,39 @@ private theorem centered_square_sum_rat (N : ℕ) :
       (N : ℚ) * (N + 1 : ℚ) * (2 * N + 1 : ℚ) / 3 := by
   rw [Fin.sum_univ_eq_sum_range
     (fun k => (((k : ℚ) - (N : ℚ)) ^ 2))]
-  simp_rw [sub_sq]
-  rw [Finset.sum_sub_distrib, Finset.sum_add_distrib]
-  simp_rw [Finset.sum_sub_distrib]
-  rw [sum_range_pow_two_rat, sum_range_pow_one_rat]
-  simp
+  have hsum :
+      (∑ k ∈ Finset.range (2 * N + 1),
+          (((k : ℚ) - (N : ℚ)) ^ 2)) =
+        (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ) ^ 2) -
+          2 * (N : ℚ) *
+            (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ)) +
+          ((2 * N + 1 : ℕ) : ℚ) * (N : ℚ) ^ 2 := by
+    calc
+      (∑ k ∈ Finset.range (2 * N + 1),
+          (((k : ℚ) - (N : ℚ)) ^ 2)) =
+        ∑ k ∈ Finset.range (2 * N + 1),
+          ((k : ℚ) ^ 2 - 2 * (N : ℚ) * (k : ℚ) + (N : ℚ) ^ 2) := by
+            apply Finset.sum_congr rfl
+            intro k _
+            ring
+      _ =
+        (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ) ^ 2) -
+          2 * (N : ℚ) *
+            (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ)) +
+          ((2 * N + 1 : ℕ) : ℚ) * (N : ℚ) ^ 2 := by
+            simp_rw [Finset.sum_add_distrib, Finset.sum_sub_distrib]
+            rw [Finset.mul_sum]
+            simp
+            ring
+  rw [hsum, sum_range_pow_two_rat]
+  have hone :
+      (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ)) =
+        ∑ k ∈ Finset.range (2 * N + 1), (k : ℚ) ^ 1 := by
+    apply Finset.sum_congr rfl
+    intro k _
+    ring
+  rw [hone, sum_range_pow_one_rat]
+  push_cast
   ring
 
 private theorem centered_fourth_sum_rat (N : ℕ) :
@@ -78,21 +106,52 @@ private theorem centered_fourth_sum_rat (N : ℕ) :
         (3 * N ^ 2 + 3 * N - 1 : ℚ) / 15 := by
   rw [Fin.sum_univ_eq_sum_range
     (fun k => (((k : ℚ) - (N : ℚ)) ^ 4))]
-  have hexpand (k : ℕ) :
-      ((k : ℚ) - (N : ℚ)) ^ 4 =
-        (k : ℚ) ^ 4 -
-          4 * (N : ℚ) * (k : ℚ) ^ 3 +
-          6 * (N : ℚ) ^ 2 * (k : ℚ) ^ 2 -
-          4 * (N : ℚ) ^ 3 * (k : ℚ) +
-          (N : ℚ) ^ 4 := by
+  have hsum :
+      (∑ k ∈ Finset.range (2 * N + 1),
+          (((k : ℚ) - (N : ℚ)) ^ 4)) =
+        (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ) ^ 4) -
+          4 * (N : ℚ) *
+            (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ) ^ 3) +
+          6 * (N : ℚ) ^ 2 *
+            (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ) ^ 2) -
+          4 * (N : ℚ) ^ 3 *
+            (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ)) +
+          ((2 * N + 1 : ℕ) : ℚ) * (N : ℚ) ^ 4 := by
+    calc
+      (∑ k ∈ Finset.range (2 * N + 1),
+          (((k : ℚ) - (N : ℚ)) ^ 4)) =
+        ∑ k ∈ Finset.range (2 * N + 1),
+          ((k : ℚ) ^ 4 -
+            4 * (N : ℚ) * (k : ℚ) ^ 3 +
+            6 * (N : ℚ) ^ 2 * (k : ℚ) ^ 2 -
+            4 * (N : ℚ) ^ 3 * (k : ℚ) +
+            (N : ℚ) ^ 4) := by
+              apply Finset.sum_congr rfl
+              intro k _
+              ring
+      _ =
+        (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ) ^ 4) -
+          4 * (N : ℚ) *
+            (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ) ^ 3) +
+          6 * (N : ℚ) ^ 2 *
+            (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ) ^ 2) -
+          4 * (N : ℚ) ^ 3 *
+            (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ)) +
+          ((2 * N + 1 : ℕ) : ℚ) * (N : ℚ) ^ 4 := by
+              simp_rw [Finset.sum_add_distrib, Finset.sum_sub_distrib]
+              rw [Finset.mul_sum, Finset.mul_sum, Finset.mul_sum]
+              simp
+              ring
+  rw [hsum, sum_range_pow_four_rat, sum_range_pow_three_rat,
+    sum_range_pow_two_rat]
+  have hone :
+      (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ)) =
+        ∑ k ∈ Finset.range (2 * N + 1), (k : ℚ) ^ 1 := by
+    apply Finset.sum_congr rfl
+    intro k _
     ring
-  simp_rw [hexpand]
-  repeat' rw [Finset.sum_add_distrib]
-  repeat' rw [Finset.sum_sub_distrib]
-  simp_rw [← Finset.mul_sum]
-  rw [sum_range_pow_four_rat, sum_range_pow_three_rat,
-    sum_range_pow_two_rat, sum_range_pow_one_rat]
-  simp
+  rw [hone, sum_range_pow_one_rat]
+  push_cast
   ring
 
 private theorem centered_square_sum_complex (N : ℕ) :
@@ -176,8 +235,6 @@ theorem cubicProjectionResidual_eq_oddCubicProjectionSlope_smul
     centeredMoment_one_centeredPowerVector_one,
     centered_fourth_sum_complex,
     centered_square_sum_complex] at hpair
-  simp only [smul_eq_mul] at hpair
-
   have hK0 : (K : ℂ) ≠ 0 := by
     exact_mod_cast (Nat.ne_of_gt hK)
   have hK1 : (K : ℂ) + 1 ≠ 0 := by
@@ -197,7 +254,7 @@ theorem cubicProjectionResidual_eq_oddCubicProjectionSlope_smul
 
   have haCoeff : a = oddCubicProjectionSlope K := by
     apply (mul_right_cancel₀ hS2)
-    rw [← hpair]
+    rw [hpair]
     unfold oddCubicProjectionSlope
     field_simp
     ring
