@@ -4,16 +4,16 @@
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #221
-- validated final head = a26f3a9ef2d40fc0522a20c5d184fc0a8968325b
-- merge commit = ab5f29ba01899362ab03fdb509a04c4d5afc2744
-- tree = 4fda17717de7b7644c267e98b5c61b7dc3e36547
+- merged theorem authority = PR #222
+- validated final head = c46939488ead9535a63b547c38d64938a882a9f1
+- merge commit = 001f375b4a7e70f69d2b7abb3bed1b9fd04f0ba5
+- tree = fd151afbcae3155cc4d32a75da08b6f7e0119099
 
-LATEST VALIDATED THEOREM DELTA
+MERGED THEOREM-STAGE PROVENANCE
 - PR #222
 - validated theorem head = e42dbce1bbbc68b5cf9612e7c8a8dab2a2eca543
 - validated theorem tree = 48d8752950c28e0d3bbd385646e71075abef9e76
-- status = GREEN_PR_THEOREM_DELTA_PENDING_MERGE
+- status = MERGED_VIA_PR_222
 - theorem family = BIREGULAR_FIRST_BAD_ZERO_SHIFT_NORMAL_FORM
 
 LATEST RESEARCH EVIDENCE
