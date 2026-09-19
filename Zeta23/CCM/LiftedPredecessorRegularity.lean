@@ -318,17 +318,15 @@ theorem exists_open_fixedCell_intrinsicPredecessorRegular_persistence
   have hneNhds :
       ({0}ᶜ : Set ℂ) ∈ 𝓝 (f (Real.log L₀ : ℂ)) :=
     isOpen_compl_singleton.mem_nhds (by simpa using hf₀)
-  have hregNhds :
-      {L : ℝ | f (Real.log L : ℂ) ≠ 0} ∈ 𝓝 L₀ := by
-    have hpre := hcomp hneNhds
-    simpa only [Set.mem_compl_iff, Set.mem_singleton_iff, Set.mem_setOf_eq,
-      Set.preimage_compl, Set.preimage_singleton] using hpre
+  let V : Set ℝ :=
+    (fun L : ℝ => f (Real.log L : ℂ)) ⁻¹' ({0}ᶜ : Set ℂ)
+  have hregNhds : V ∈ 𝓝 L₀ := by
+    exact hcomp hneNhds
   have hcellNhds :
       fixedCanonicalCutoffCell Q ∈ 𝓝 L₀ :=
     (isOpen_fixedCanonicalCutoffCell Q).mem_nhds hL₀cell
   have hinter :
-      ({L : ℝ | f (Real.log L : ℂ) ≠ 0} ∩
-        fixedCanonicalCutoffCell Q) ∈ 𝓝 L₀ :=
+      (V ∩ fixedCanonicalCutoffCell Q) ∈ 𝓝 L₀ :=
     inter_mem hregNhds hcellNhds
   obtain ⟨U, hUsub, hUopen, hL₀U⟩ := mem_nhds_iff.mp hinter
   refine ⟨U, hUopen, hL₀U, ?_, ?_⟩
@@ -337,7 +335,9 @@ theorem exists_open_fixedCell_intrinsicPredecessorRegular_persistence
   · intro L hLU
     have hLint := hUsub hLU
     have hLcell : L ∈ fixedCanonicalCutoffCell Q := hLint.2
-    have hdet : f (Real.log L : ℂ) ≠ 0 := hLint.1
+    have hdet : f (Real.log L : ℂ) ≠ 0 := by
+      have hmem : f (Real.log L : ℂ) ∈ ({0}ᶜ : Set ℂ) := hLint.1
+      simpa using hmem
     have hbridge :=
       liftedFrozenIntrinsicPredecessorBlock_of_log_fixedCell hQ hLcell p N
     dsimp [f, liftedFrozenIntrinsicPredecessorDet] at hdet
