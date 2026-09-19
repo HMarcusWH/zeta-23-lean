@@ -44,13 +44,13 @@ class CurrentStateSurfaceTests(unittest.TestCase):
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
 
-    def test_machine_state_is_post215(self):
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 213)
+    def test_machine_state_is_post221_delta(self):
+        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 220)\n        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 221)
         self.assertEqual(self.state["latest_research_evidence"]["pr"], 215)
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(
             self.state["active_research_route"]["next_research_target"],
-            "RETAINED_CROSS_PARITY_SECULAR_COMPLETION",
+            "RETAINED_BRANCH_ARITHMETIC_DISCRIMINATION",
         )
         self.assertEqual(
             self.state["active_research_route"]["active_subobligation"],
@@ -60,10 +60,13 @@ class CurrentStateSurfaceTests(unittest.TestCase):
 
     def test_every_living_surface_frontloads_machine_state(self):
         required = (
-            "PR #213",
-            "703c3764a7d35aa4801e791a1929efa54c2533a1",
-            "ee341a6071d177c75bbea0a5f92ebe3b3bb16696",
-            "db00686b2bbb821adb857e5c68f422d19c4f91cd",
+            "PR #220",
+            "f61844ed2c0ae3a83fca20f0d287e0b66d2bf64b",
+            "d1ce40c83f4771be6529119fbdda9598bf07baad",
+            "c127bf1a5fa6394eadd435d613ced0d1b2b178bd",
+            "PR #221",
+            "20018c931f4516432ace5bd06788276be656641b",
+            "bc82b7604d95ccce8f1a46e4b25e0485bf68a4c2",
             "PR #215",
             "5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a",
             "191b1b648448c92010286dae54df8502df1f55ce",
@@ -71,7 +74,7 @@ class CurrentStateSurfaceTests(unittest.TestCase):
             "PR #117",
             "E4A4-SCHUR-FB-05",
             "OBS-059I",
-            "RETAINED_CROSS_PARITY_SECULAR_COMPLETION",
+            "RETAINED_BRANCH_ARITHMETIC_DISCRIMINATION",
             "R003 phase = DISCOVERY",
             "confirmatory execution = NOT AUTHORIZED",
             "terminal claim = RH_OPEN",

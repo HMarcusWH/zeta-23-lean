@@ -15,14 +15,14 @@ from control_v2.state import load_research_state
 class ControlV2Tests(unittest.TestCase):
     def test_control_state_tracks_latest_theorem_anchor_without_moving_control_anchor(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 213)
+        self.assertEqual(state.anchor.pr, 220)
         self.assertEqual(
             state.anchor.merge_commit,
-            "ee341a6071d177c75bbea0a5f92ebe3b3bb16696",
+            "d1ce40c83f4771be6529119fbdda9598bf07baad",
         )
         self.assertEqual(
             state.anchor.tree,
-            "db00686b2bbb821adb857e5c68f422d19c4f91cd",
+            "c127bf1a5fa6394eadd435d613ced0d1b2b178bd",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -36,7 +36,7 @@ class ControlV2Tests(unittest.TestCase):
             "FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN",
         )
 
-    def test_control_note_preserves_history_and_records_post213_theorem(self):
+    def test_control_note_preserves_history_and_records_current_theorem_state(self):
         control = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
@@ -84,7 +84,7 @@ class ControlV2Tests(unittest.TestCase):
             "RH remains OPEN",
         ):
             self.assertIn(token, note)
-        self.assertEqual(control["merged_theorem_anchor"]["pr"], 213)
+        self.assertEqual(control["merged_theorem_anchor"]["pr"], 220)\n        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 221)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
         self.assertEqual(control["terminal_claim"], "RH_OPEN")
 
