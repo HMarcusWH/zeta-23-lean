@@ -40,7 +40,8 @@ theorem parityCompressedCanonical_eq_zero_of_not_parityBad_of_selfEnergy_eq_zero
   let y := T v
   by_contra hyzero
   have hyne : y ≠ 0 := by
-    simpa [y] using hyzero
+    change T v ≠ 0
+    exact hyzero
   have hynormpos : 0 < ‖y‖ ^ 2 :=
     sq_pos_of_pos (norm_pos_iff.mpr hyne)
   let q : ℝ := Complex.re (inner ℂ (T y) y)
@@ -85,24 +86,27 @@ theorem parityCompressedCanonical_eq_zero_of_not_parityBad_of_selfEnergy_eq_zero
   have hyty :
       Complex.re (inner ℂ y ((t : ℂ) • y)) =
         t * ‖y‖ ^ 2 := by
-    rw [inner_smul_real_right (𝕜 := ℂ), Complex.smul_re, hyy]
-    rfl
+    rw [inner_smul_right]
+    simp [Complex.mul_re, hyy]
   have htTyv :
       Complex.re (inner ℂ ((t : ℂ) • T y) v) =
         t * ‖y‖ ^ 2 := by
-    rw [inner_smul_real_left (𝕜 := ℂ), Complex.smul_re, hTyvRe]
-    rfl
+    rw [inner_smul_left]
+    simp [Complex.mul_re, hTyvRe]
   have htTyty :
       Complex.re (inner ℂ ((t : ℂ) • T y) ((t : ℂ) • y)) =
         t ^ 2 * q := by
-    rw [inner_smul_real_left (𝕜 := ℂ),
-      inner_smul_real_right (𝕜 := ℂ),
-      Complex.smul_re, Complex.smul_re, hTyy]
+    rw [inner_smul_left, inner_smul_right]
+    simp [Complex.mul_re, hTyy]
     ring
   have hTw :
       T w = y - (t : ℂ) • T y := by
     dsimp [w]
-    rw [map_sub, map_smul, hTv]
+    calc
+      T (v - (t : ℂ) • y) =
+          T v - T ((t : ℂ) • y) := by rw [map_sub]
+      _ = y - (t : ℂ) • T y := by
+        rw [hTv, map_smul]
   rw [hTw] at hw
   change
     0 ≤
