@@ -84,8 +84,8 @@ private theorem centered_square_sum_rat (N : ℕ) :
           2 * (N : ℚ) *
             (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ)) +
           ((2 * N + 1 : ℕ) : ℚ) * (N : ℚ) ^ 2 := by
-            simp_rw [Finset.sum_add_distrib, Finset.sum_sub_distrib]
-            rw [Finset.mul_sum]
+            simp_rw [Finset.sum_add_distrib, Finset.sum_sub_distrib,
+              ← Finset.mul_sum]
             simp
             ring
   rw [hsum, sum_range_pow_two_rat]
@@ -138,8 +138,8 @@ private theorem centered_fourth_sum_rat (N : ℕ) :
           4 * (N : ℚ) ^ 3 *
             (∑ k ∈ Finset.range (2 * N + 1), (k : ℚ)) +
           ((2 * N + 1 : ℕ) : ℚ) * (N : ℚ) ^ 4 := by
-              simp_rw [Finset.sum_add_distrib, Finset.sum_sub_distrib]
-              rw [Finset.mul_sum, Finset.mul_sum, Finset.mul_sum]
+              simp_rw [Finset.sum_add_distrib, Finset.sum_sub_distrib,
+                ← Finset.mul_sum]
               simp
               ring
   rw [hsum, sum_range_pow_four_rat, sum_range_pow_three_rat,
