@@ -60,7 +60,29 @@ theorem
       hp hodd xPlus hxPlus
   rw [oddCubicGeneratorKernelPart_eq_neg_kappa_smul_indexKernelPart
     c.firstBad.L c.firstBad.Nstar c.firstBad.one_le_Nstar] at hbal
-  module at hbal ⊢
+  calc
+    (cubicZeroShiftShellResponseScalar .even
+        c.firstBad.L c.firstBad.Nstar xPlus -
+      crossParityCubicCorrectionKappa c.firstBad.Nstar *
+        explicitCanonicalSourceMoment
+          c.firstBad.L (c.firstBad.Nstar + 1)
+          (cubicZeroShiftTrialVector .even
+            c.firstBad.L c.firstBad.Nstar xPlus)) •
+        oddIndexCubicShellKernelPart
+          c.firstBad.L c.firstBad.Nstar =
+      cubicZeroShiftShellResponseScalar .even
+          c.firstBad.L c.firstBad.Nstar xPlus •
+        oddIndexCubicShellKernelPart
+          c.firstBad.L c.firstBad.Nstar +
+      explicitCanonicalSourceMoment
+          c.firstBad.L (c.firstBad.Nstar + 1)
+          (cubicZeroShiftTrialVector .even
+            c.firstBad.L c.firstBad.Nstar xPlus) •
+        (-(crossParityCubicCorrectionKappa c.firstBad.Nstar) •
+          oddIndexCubicShellKernelPart
+            c.firstBad.L c.firstBad.Nstar) := by
+      module
+    _ = 0 := hbal
 
 /-- Exhaustive pre-bi-regular classification of the factorized retained kernel
 balance: either the exceptional scalar equality holds or the common kernel
