@@ -167,6 +167,7 @@ import Zeta23.CCM.RegularFirstBadZeroShiftKernelBalance
 import Zeta23.CCM.ZeroShiftSchurClassification
 import Zeta23.CCM.RegularFirstBadZeroShiftSchurClassification
 import Zeta23.CCM.BiRegularFirstBadZeroShiftNormalForm
+import Zeta23.CCM.BiRegularFirstBadZeroShiftCorrectionCollapse
 import Zeta23.CCM.CanonicalSourcePairing
 import Zeta23.CCM.CanonicalQuadraticNormalSourceFunctional
 import Zeta23.CCM.RegularFirstBadCompleteSourceFunctional
