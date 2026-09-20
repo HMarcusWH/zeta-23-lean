@@ -29,17 +29,52 @@ theorem crossParityZeroShiftGamma_eq_one_add_kappa_mul_one_sub_alpha
         (1 - crossParityZeroShiftAlpha N xMinus) := by
   have hcorr :=
     oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul N hN
-  have hcorrAmbient := congrArg
-    (fun y : intrinsicParityPredecessorSubspace .odd N =>
-      (y : euclideanParityBoundaryFlatSubspace .odd (N + 1))) hcorr
   have hinner := congrArg
-    (fun y : euclideanParityBoundaryFlatSubspace .odd (N + 1) =>
+    (fun y : intrinsicParityPredecessorSubspace .odd N =>
       inner ℂ
-        (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1)) y)
-    hcorrAmbient
-  simp only [Submodule.coe_smul, inner_smul_right, smul_eq_mul] at hinner
+        (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
+        (y : euclideanParityBoundaryFlatSubspace .odd (N + 1)))
+    hcorr
+  have hinner' :
+      inner ℂ
+          (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
+          ((oddCubicGeneratorPredecessorPart N :
+              intrinsicParityPredecessorSubspace .odd N) :
+            euclideanParityBoundaryFlatSubspace .odd (N + 1)) =
+        -(crossParityCubicCorrectionKappa N) *
+          inner ℂ
+            (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
+            ((oddIndexCubicShellPredecessorPart N :
+                intrinsicParityPredecessorSubspace .odd N) :
+              euclideanParityBoundaryFlatSubspace .odd (N + 1)) := by
+    calc
+      inner ℂ
+          (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
+          ((oddCubicGeneratorPredecessorPart N :
+              intrinsicParityPredecessorSubspace .odd N) :
+            euclideanParityBoundaryFlatSubspace .odd (N + 1)) =
+        inner ℂ
+          (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
+          (((-(crossParityCubicCorrectionKappa N)) •
+              oddIndexCubicShellPredecessorPart N :
+                intrinsicParityPredecessorSubspace .odd N) :
+            euclideanParityBoundaryFlatSubspace .odd (N + 1)) := hinner
+      _ = inner ℂ
+          (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
+          (-(crossParityCubicCorrectionKappa N) •
+            ((oddIndexCubicShellPredecessorPart N :
+                intrinsicParityPredecessorSubspace .odd N) :
+              euclideanParityBoundaryFlatSubspace .odd (N + 1))) := by
+            rfl
+      _ = -(crossParityCubicCorrectionKappa N) *
+          inner ℂ
+            (xMinus : euclideanParityBoundaryFlatSubspace .odd (N + 1))
+            ((oddIndexCubicShellPredecessorPart N :
+                intrinsicParityPredecessorSubspace .odd N) :
+              euclideanParityBoundaryFlatSubspace .odd (N + 1)) := by
+            rw [inner_smul_right]
   unfold crossParityZeroShiftGamma crossParityZeroShiftAlpha
-  rw [hinner]
+  rw [hinner']
   ring
 
 /-- Integer-coefficient form of the selected zero-shift alpha/Gamma relation. -/
