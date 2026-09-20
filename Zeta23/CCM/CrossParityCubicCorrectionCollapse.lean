@@ -954,7 +954,7 @@ theorem oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul
             euclideanParityBoundaryFlatSubspace .odd (N + 1)) :
             EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
               (centeredEmbedding N (N + 1) (Nat.le_succ N) i) = _
-    linear_combination hga + kappa * hdd - hgR - kappa * hdR +
+    linear_combination -hga - kappa * hdd + hgR + kappa * hdR +
       (1 + kappa) * hcR
   have hzBoundary :
       oneStepCenteredRestrict N
