@@ -37,7 +37,7 @@ theorem six_mul_crossParityCubicCorrectionKappa
     (6 : ℂ) * crossParityCubicCorrectionKappa N =
       2 * (N : ℂ) - 1 := by
   unfold crossParityCubicCorrectionKappa
-  field_simp
+  ring
 
 /-- Closed form for `1 + κ_N`, useful in one-coefficient transfer formulas. -/
 theorem one_add_crossParityCubicCorrectionKappa
@@ -45,7 +45,6 @@ theorem one_add_crossParityCubicCorrectionKappa
     1 + crossParityCubicCorrectionKappa N =
       (2 * (N : ℂ) + 5) / 6 := by
   unfold crossParityCubicCorrectionKappa
-  field_simp
   ring
 
 end Zeta23.CCM
