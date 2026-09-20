@@ -129,6 +129,7 @@ import Zeta23.CCM.CellMinimalBiRegularFirstBad
 import Zeta23.CCM.FirstBadSpectralInterfaces
 import Zeta23.CCM.SourceMomentDecomposition
 import Zeta23.CCM.CrossParityCorrectionFunctionalRiesz
+import Zeta23.CCM.CrossParityCorrectionSourceCoupling
 import Zeta23.CCM.CrossParitySecularTransfer
 import Zeta23.CCM.CrossParityCubicCorrectionCollapse
 import Zeta23.CCM.CrossParityCorrectionFunctionalCollapse
@@ -162,6 +163,7 @@ import Zeta23.CCM.RegularFirstBadParitySourceMomentRigidity
 import Zeta23.CCM.ParitySourceMomentFourCoercivity
 import Zeta23.CCM.RegularFirstBadPairDCoercivity
 import Zeta23.CCM.RegularFirstBadCrossParitySecularCompletion
+import Zeta23.CCM.RegularFirstBadCrossParitySourceBalance
 import Zeta23.CCM.RegularFirstBadSecularBudgetDichotomy
 import Zeta23.CCM.GoodSectorKernelAnnihilation
 import Zeta23.CCM.RegularFirstBadZeroShiftKernelBalance
