@@ -187,16 +187,22 @@ theorem
         (shiftedIntrinsicPredecessorResolvent
           .odd hL N hprevOdd lam hlam
           (oddIndexCubicShellPredecessorPart N)) := by
-  change
-    star
-        (oddSafeSecularCorrectionFunctional
+  have halpha :
+      1 - crossParitySecularAlpha hL N hprevOdd lam hlam =
+        oddSafeSecularCorrectionFunctional
           hL N hprevOdd lam hlam
-          (oddIndexCubicShellPredecessorPart N)) *
-      inner ℂ
-        (intrinsicCubicShellPart .odd N :
-          euclideanParityBoundaryFlatSubspace .odd (N + 1))
-        (intrinsicCubicShellPart .odd N :
-          euclideanParityBoundaryFlatSubspace .odd (N + 1)) = _
+          (oddIndexCubicShellPredecessorPart N) := by
+    change
+      1 -
+          (1 -
+            oddSafeSecularCorrectionFunctional
+              hL N hprevOdd lam hlam
+              (oddIndexCubicShellPredecessorPart N)) =
+        oddSafeSecularCorrectionFunctional
+          hL N hprevOdd lam hlam
+          (oddIndexCubicShellPredecessorPart N)
+    ring
+  rw [halpha]
   exact
     star_oddSafeSecularCorrectionFunctional_mul_shellInner_eq_cubicShellCoupling
       hL N hN hprevOdd lam hlam (oddIndexCubicShellPredecessorPart N)
@@ -225,16 +231,22 @@ theorem
         (shiftedIntrinsicPredecessorResolvent
           .odd hL N hprevOdd lam hlam
           (oddCubicGeneratorPredecessorPart N)) := by
-  change
-    star
-        (oddSafeSecularCorrectionFunctional
+  have hgamma :
+      1 - crossParitySecularGamma hL N hprevOdd lam hlam =
+        oddSafeSecularCorrectionFunctional
           hL N hprevOdd lam hlam
-          (oddCubicGeneratorPredecessorPart N)) *
-      inner ℂ
-        (intrinsicCubicShellPart .odd N :
-          euclideanParityBoundaryFlatSubspace .odd (N + 1))
-        (intrinsicCubicShellPart .odd N :
-          euclideanParityBoundaryFlatSubspace .odd (N + 1)) = _
+          (oddCubicGeneratorPredecessorPart N) := by
+    change
+      1 -
+          (1 -
+            oddSafeSecularCorrectionFunctional
+              hL N hprevOdd lam hlam
+              (oddCubicGeneratorPredecessorPart N)) =
+        oddSafeSecularCorrectionFunctional
+          hL N hprevOdd lam hlam
+          (oddCubicGeneratorPredecessorPart N)
+    ring
+  rw [hgamma]
   exact
     star_oddSafeSecularCorrectionFunctional_mul_shellInner_eq_cubicShellCoupling
       hL N hN hprevOdd lam hlam (oddCubicGeneratorPredecessorPart N)
