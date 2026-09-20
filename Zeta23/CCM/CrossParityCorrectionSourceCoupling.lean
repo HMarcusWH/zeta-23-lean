@@ -60,8 +60,13 @@ theorem
       (c : euclideanParityBoundaryFlatSubspace .odd (N + 1))
       (c : euclideanParityBoundaryFlatSubspace .odd (N + 1))
   have hden : den ≠ 0 := by
-    simpa [den, c] using
-      inner_intrinsicCubicShellPart_self_ne_zero .odd N hN
+    change
+      inner ℂ
+        (intrinsicCubicShellPart .odd N :
+          euclideanParityBoundaryFlatSubspace .odd (N + 1))
+        (intrinsicCubicShellPart .odd N :
+          euclideanParityBoundaryFlatSubspace .odd (N + 1)) ≠ 0
+    exact inner_intrinsicCubicShellPart_self_ne_zero .odd N hN
   have hrepr :=
     oddSafeSecularCorrectionFunctional_eq_resolvent_pairing_div
       hL N hN hprevOdd lam hlam y
@@ -117,13 +122,17 @@ theorem
         rfl
   have hdenStar : (starRingEnd ℂ) den = den := by
     simp [den]
-  have hreprStar := congrArg (starRingEnd ℂ) hrepr
-  simp only [map_div] at hreprStar
-  rw [hdenStar, hnumStar] at hreprStar
-  change (starRingEnd ℂ) (chi y) * den =
-    cubicShellCoupling .odd L N (R y)
-  rw [hreprStar]
-  field_simp [hden]
+  have hreprMul :
+      chi y * den =
+        inner ℂ
+          ((R b : intrinsicParityPredecessorSubspace .odd N) :
+            euclideanParityBoundaryFlatSubspace .odd (N + 1))
+          (y : euclideanParityBoundaryFlatSubspace .odd (N + 1)) := by
+    rw [hrepr]
+    field_simp [hden]
+  have hreprStar := congrArg (starRingEnd ℂ) hreprMul
+  rw [map_mul, hdenStar, hnumStar] at hreprStar
+  exact hreprStar
 
 /-- Production-channel form of the correction-functional source-coupling
 identity. -/
@@ -283,7 +292,16 @@ theorem
   have h :=
     star_one_sub_crossParitySecularGamma_mul_shellInner_eq_cubicShellCoupling
       hL N hN hprevOdd lam hlam
-  simp only [map_sub, map_one] at h
+  have hstarSub :
+      star
+          (1 - crossParitySecularGamma
+            hL N hprevOdd lam hlam) =
+        1 -
+          star
+            (crossParitySecularGamma
+              hL N hprevOdd lam hlam) := by
+    rw [star_sub, star_one]
+  rw [hstarSub] at h
   calc
     star
         (crossParitySecularGamma
