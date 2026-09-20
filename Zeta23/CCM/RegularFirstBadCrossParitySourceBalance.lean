@@ -108,21 +108,20 @@ theorem
   change star S * (q - J) = star S * (M4 - S * C)
   have hcompletion :
       star F * q = star S * (M4 - S * C) := by
-    simpa [S, M4, q, F, C] using
-      c.evenShiftedCrossParitySecularCompletion hp
+    exact c.evenShiftedCrossParitySecularCompletion hp
   have htransfer :
       F = Gamma * S := by
-    simpa [F, Gamma, S] using
-      c.oddSecularScalar_eq_gamma_mul_explicitSource_of_even hp
+    exact c.oddSecularScalar_eq_gamma_mul_explicitSource_of_even hp
   have hgamma :
       star Gamma * q = q - J := by
-    simpa [Gamma, q, J, R, a] using
+    exact
       star_crossParitySecularGamma_mul_shellInner_eq_shellInner_sub_cubicShellCoupling
         c.firstBad.L_pos c.firstBad.Nstar c.firstBad.one_le_Nstar
         (c.firstBad.predecessorNonnegative_anyParity .odd)
         c.lam c.lam_neg
   have htransferStar := congrArg (starRingEnd ℂ) htransfer
   rw [map_mul] at htransferStar
+  change star F = star Gamma * star S at htransferStar
   calc
     star S * (q - J) =
         star S * (star Gamma * q) := by rw [hgamma]
@@ -197,8 +196,7 @@ theorem
   change q - J = M4 - S * C
   have hfact :
       star S * (q - J) = star S * (M4 - S * C) := by
-    simpa [S, M4, q, J, R, a, C] using
-      c.evenShiftedCrossParitySourceBalanceFactored_of_even hp
+    exact c.evenShiftedCrossParitySourceBalanceFactored_of_even hp
   have hstarS : star S ≠ 0 :=
     star_ne_zero.mpr hS
   have hmul :
