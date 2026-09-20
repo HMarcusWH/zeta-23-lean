@@ -121,5 +121,15 @@ class Post224SyncTests(unittest.TestCase):
             with self.subTest(path=path):
                 self.assertIn(marker, path.read_text(encoding="utf-8"))
 
+    def test_post224_countermodel_and_dead_route_targets_are_current(self):
+        countermodels = (RHRC / "countermodels" / "README.md").read_text(encoding="utf-8")
+        dead_routes = (RHRC / "DEAD_ROUTES.md").read_text(encoding="utf-8")
+        self.assertIn("CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY", countermodels)
+        self.assertIn("downstream/historical falsification target", countermodels)
+        self.assertNotIn("current hostile target is a proposed **retained-root secular-completion mechanism**", countermodels)
+        self.assertIn("downstream/historical relative to the current predecessor-correction target", dead_routes)
+        self.assertIn("current `CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY` target", dead_routes)
+        self.assertNotIn("current retained-root target", dead_routes)
+
 if __name__ == "__main__":
     unittest.main()

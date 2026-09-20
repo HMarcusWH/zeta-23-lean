@@ -40,7 +40,7 @@ CONTROL AUTHORITY
 
 ## Current falsification target
 
-Countermodels should now attack proposed **retained-root secular-completion mechanisms** without replacing the retained first-bad/eigenvector hypotheses by arbitrary-vector full-carrier claims. PR #215 has already consumed universal full-carrier source/M4 sign and proportionality in its tested scope.
+Countermodels should now attack overstrong derivations or consequences around **CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY**: in particular, any argument that obtains the proportionality from hypotheses weaker than the exact predecessor/shell geometry, or that treats the proportionality alone as a retained-state exclusion theorem. PR #215 has already consumed universal full-carrier source/M4 sign and proportionality in its tested scope. Pair D2 retained-root secular completion remains a downstream/historical falsification target after the predecessor collapse is formalized.
 
 Countermodels are typed by what they refute.
 
@@ -101,7 +101,7 @@ Therefore complex D-transport and unconditional production Riesz order 6 are no 
 
 The exact post-#155 `K=2` fixtures kill only the pointwise fixed-sign interpretation. They do not refute the Riesz identities or prove anything about RH.
 
-The actual canonical pole/archimedean/von-Mangoldt channels must supply any decisive exclusion theorem. Historical transformed-residual falsifiers remain regression evidence; the current hostile target is a proposed **retained-root secular-completion mechanism** on the exact forced state.
+The actual canonical pole/archimedean/von-Mangoldt channels must supply any decisive exclusion theorem. Historical transformed-residual falsifiers remain regression evidence; the current hostile target is an overstrong proposed derivation or exclusion consequence of **CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY**. Retained-root secular completion remains downstream/historical until the predecessor collapse is formalized.
 
 A regression fixture may protect a semantic firewall even when it is not itself a zeta counterexample.
 

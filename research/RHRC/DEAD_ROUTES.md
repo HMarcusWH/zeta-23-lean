@@ -44,9 +44,9 @@ CONTROL AUTHORITY
 
 ## Current dead-route pointer
 
-The base entries below preserve reusable failure reasons at the time they were recorded. The newest dead-route update is `DEAD_ROUTES_POST_215_DELTA.md`: DR-029 and DR-030 kill only universal full-carrier complete-source/M4 sign and proportionality. **Pair D2 retained negative-root secular completion is not dead.**
+The base entries below preserve reusable failure reasons at the time they were recorded. The newest dead-route update is `DEAD_ROUTES_POST_215_DELTA.md`: DR-029 and DR-030 kill only universal full-carrier complete-source/M4 sign and proportionality. **Pair D2 retained negative-root secular completion is not dead, but it is downstream/historical relative to the current predecessor-correction target.**
 
-Any phrase such as “next step” inside an older entry is historical routing at that point, not authorization to replace the current retained-root target.
+Any phrase such as “next step” inside an older entry is historical routing at that point, not authorization to replace the current `CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY` target.
 
 ## DR-001 — TightMult-visible scalar improvement
 
