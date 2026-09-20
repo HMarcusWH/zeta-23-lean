@@ -679,7 +679,7 @@ private theorem evenShell_rightOuter_eq
       (intrinsicPredecessorPart .even N e).property
   have hcoord := congrArg
     (fun y : euclideanParityBoundaryFlatSubspace .even (N + 1) =>
-      ((y : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) r) hrec
+      ((y : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) r)) hrec
   have hs :
       intrinsicShellPart .even N e = intrinsicCubicShellPart .even N := by
     rfl
