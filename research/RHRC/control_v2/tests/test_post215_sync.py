@@ -9,34 +9,30 @@ class Post215SyncTests(unittest.TestCase):
     def test_three_anchor_model(self):
         state = json.loads((RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8"))
         theorem = state["merged_theorem_anchor"]
-        research = state["latest_research_evidence"]
         control = state["merged_control_anchor"]
         self.assertEqual(theorem["pr"], 222)
         self.assertEqual(theorem["validated_head"], "c46939488ead9535a63b547c38d64938a882a9f1")
         self.assertEqual(theorem["merge_commit"], "001f375b4a7e70f69d2b7abb3bed1b9fd04f0ba5")
         self.assertEqual(theorem["tree"], "fd151afbcae3155cc4d32a75da08b6f7e0119099")
-        self.assertEqual(research["pr"], 215)
-        self.assertEqual(research["validated_head"], "5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a")
-        self.assertEqual(research["merge_commit"], "191b1b648448c92010286dae54df8502df1f55ce")
-        self.assertEqual(research["tree"], "4e6111c974ae8abbf59a5063d4b1ea760fa39ffd")
-        self.assertEqual(research["disposition"], "FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED")
-        self.assertEqual(research["sign_route_classification"], "FULL_SPACE_SIGN_INDEFINITE_CERTIFIED")
-        self.assertEqual(research["control_transfer_status"], "DUAL_INDEPENDENCE_SURVIVES_Q13_Q15_CONTROLS")
-        self.assertFalse(research["theorem_promotion"])
         self.assertEqual(control["pr"], 117)
         self.assertEqual(state["terminal_claim"], "RH_OPEN")
 
     def test_exact_post215_geometry_is_locked(self):
-        research = json.loads((RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8"))["latest_research_evidence"]
-        self.assertEqual(research["predecessor_N"], 2)
-        self.assertEqual(research["successor_K"], 3)
-        self.assertEqual(research["selected_parity"], "even")
-        self.assertEqual(research["primary_Q"], 14)
-        self.assertEqual(research["moment_four_covector"], ["24", "144"])
-        self.assertEqual(research["primary_wedge"], "-7.92856142933793718521707742118e-7")
-        self.assertEqual(research["primary_R_min"], "-7.60547660138399452560501190345e-11")
-        self.assertEqual(research["primary_R_max"], "1.02497161190896926446719955942e-6")
-        self.assertEqual(research["retained_state_implication"], "NOT_TESTED")
+        text = (RHRC / "RESEARCH_LEADS_POST_215_RETAINED_SECULAR_DELTA.md").read_text(encoding="utf-8")
+        for token in (
+            "PR #215",
+            "5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a",
+            "191b1b648448c92010286dae54df8502df1f55ce",
+            "4e6111c974ae8abbf59a5063d4b1ea760fa39ffd",
+            "FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED",
+            "FULL_SPACE_SIGN_INDEFINITE_CERTIFIED",
+            "M4 covector = (24,144)",
+            "wedge = [-7.92856142933793718521707742118e-7",
+            "R_min = [-7.60547660138399452560501190345e-11",
+            "R_max = [1.02497161190896926446719955942e-6",
+            "retained eigenmode / first-bad restriction was `NOT_TESTED`",
+        ):
+            self.assertIn(token, text)
 
     def test_active_route_moves_to_retained_negative_root(self):
         route = json.loads((RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8"))["active_research_route"]

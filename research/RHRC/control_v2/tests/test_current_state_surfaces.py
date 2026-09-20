@@ -34,7 +34,7 @@ class CurrentStateSurfaceTests(unittest.TestCase):
     def test_machine_state_is_merged_post222(self):
         self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 222)
         self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 222)
-        self.assertEqual(self.state["latest_research_evidence"]["pr"], 215)
+        self.assertEqual(self.state["latest_research_evidence"]["pr"], 223)
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(self.state["active_research_route"]["next_research_target"], "RETAINED_BIREGULAR_ZERO_SHIFT_SCALAR_DISCRIMINATION")
         self.assertEqual(self.state["active_research_route"]["active_subobligation"], "OBS-059I")
@@ -46,9 +46,11 @@ class CurrentStateSurfaceTests(unittest.TestCase):
             "e42dbce1bbbc68b5cf9612e7c8a8dab2a2eca543", "48d8752950c28e0d3bbd385646e71075abef9e76",
             "MERGED_VIA_PR_222",
             "BIREGULAR_FIRST_BAD_ZERO_SHIFT_NORMAL_FORM",
-            "PR #215", "5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a",
-            "191b1b648448c92010286dae54df8502df1f55ce",
-            "4e6111c974ae8abbf59a5063d4b1ea760fa39ffd",
+            "PR #223", "5e01e55544be937b0f0e389f1f279e13a89f2b3a",
+            "8c57ce445a2223dab4a3e8aedbd3db67171e96b0",
+            "3588cd964a3346b20e359b41c02eb8caaed3221a",
+            "NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED",
+            "FROZEN_SCOPE_DID_NOT_REACH_RETAINED_STATE",
             "PR #117", "E4A4-SCHUR-FB-05", "OBS-059I", "RETAINED_BIREGULAR_ZERO_SHIFT_SCALAR_DISCRIMINATION",
             "R003 phase = DISCOVERY", "confirmatory execution = NOT AUTHORIZED",
             "terminal claim = RH_OPEN",

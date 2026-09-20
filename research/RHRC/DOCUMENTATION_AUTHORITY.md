@@ -33,10 +33,13 @@ MERGED THEOREM-STAGE PROVENANCE
 - theorem family = BIREGULAR_FIRST_BAD_ZERO_SHIFT_NORMAL_FORM
 
 LATEST RESEARCH EVIDENCE
-- PR #215
-- validated head = 5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a
-- merge commit = 191b1b648448c92010286dae54df8502df1f55ce
-- tree = 4e6111c974ae8abbf59a5063d4b1ea760fa39ffd
+- PR #223
+- validated head = 5e01e55544be937b0f0e389f1f279e13a89f2b3a
+- merge commit = 8c57ce445a2223dab4a3e8aedbd3db67171e96b0
+- tree = 3588cd964a3346b20e359b41c02eb8caaed3221a
+- disposition = NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED
+- qualified retained points = 0
+- retained-state implication = FROZEN_SCOPE_DID_NOT_REACH_RETAINED_STATE
 
 CONTROL AUTHORITY
 - PR #117
