@@ -45,6 +45,25 @@ CONTROL AUTHORITY
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#224 current obstruction override
+
+`OBS-059I` remains OPEN.
+
+#224 closes the explicit cubic projection coefficient:
+[
+d^3-g_K=rac{3K^2+3K-1}{5}d.
+]
+
+It does **not** close
+[
+a_N=-rac{2N-1}{6}d_N.
+]
+
+The latter is the immediate theorem target. The alpha/Gamma affine relation and one-coefficient scalar form are **DERIVED CONDITIONAL / NOT FORMALIZED**. Canonical simultaneous odd-bad exclusion, odd-selected closure, parity-complete retained-state impossibility and the exact Mathlib RH seam remain OPEN.
+
+Detailed ledger delta: `OBSTRUCTION_LEDGER_POST_224_DELTA.md`.
+
+
 Historical obstruction origins below retain the PR number at which they were discovered/classified. A later theorem may close an escape without deleting the reusable warning.
 
 ## OBS-001 — TightMult information wall
