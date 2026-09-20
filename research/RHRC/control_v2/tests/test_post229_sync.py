@@ -38,6 +38,22 @@ class Post229SyncTests(unittest.TestCase):
         self.assertEqual(route["terminal_mathlib_rh_seam"], "OPEN")
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
+    def test_control_readme_current_operation_matches_post229_target(self):
+        text = (RHRC / "control_v2" / "README.md").read_text(encoding="utf-8")
+        override = text.split("## Post-#229 current-state override", 1)[1].split(
+            "## Historical evidence retained", 1
+        )[0]
+        self.assertIn(
+            "CONTROL_STATE.active_research_route.next_research_target\n"
+            "  = current descriptive research operation\n"
+            "  = CROSS_PARITY_CORRECTION_SOURCE_COUPLING",
+            override,
+        )
+        self.assertNotIn(
+            "  = CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION",
+            override,
+        )
+
     def test_research_and_control_anchors_do_not_move(self):
         self.assertEqual(self.state["latest_research_evidence"]["pr"], 223)
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
