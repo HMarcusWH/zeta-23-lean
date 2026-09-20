@@ -31,27 +31,30 @@ class CurrentStateSurfaceTests(unittest.TestCase):
     def setUp(self):
         self.state = json.loads((RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8"))
 
-    def test_machine_state_is_merged_post222(self):
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 222)
-        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 222)
+    def test_machine_state_is_merged_post224(self):
+        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 224)
+        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 224)
         self.assertEqual(self.state["latest_research_evidence"]["pr"], 223)
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
-        self.assertEqual(self.state["active_research_route"]["next_research_target"], "RETAINED_BIREGULAR_ZERO_SHIFT_SCALAR_DISCRIMINATION")
+        self.assertEqual(self.state["active_research_route"]["next_research_target"], "CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY")
         self.assertEqual(self.state["active_research_route"]["active_subobligation"], "OBS-059I")
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
     def test_every_living_surface_frontloads_machine_state(self):
         required = (
-            "PR #222", "c46939488ead9535a63b547c38d64938a882a9f1", "001f375b4a7e70f69d2b7abb3bed1b9fd04f0ba5", "fd151afbcae3155cc4d32a75da08b6f7e0119099",
-            "e42dbce1bbbc68b5cf9612e7c8a8dab2a2eca543", "48d8752950c28e0d3bbd385646e71075abef9e76",
-            "MERGED_VIA_PR_222",
-            "BIREGULAR_FIRST_BAD_ZERO_SHIFT_NORMAL_FORM",
+            "PR #224", "83de9193dffba12097d950d2291348db76d047f7",
+            "0f8f5ad468b337622942f76725c9d76db74e27e4",
+            "aaedc131612393a1198837b3e5288e48538a94ae",
+            "MERGED_VIA_PR_224", "ODD_CUBIC_PROJECTION_CLOSED_FORM",
+            "cubicProjectionResidual_eq_oddCubicProjectionSlope_smul",
+            "stronger predecessor correction proportionality = OPEN / NOT PROVED BY #224",
             "PR #223", "5e01e55544be937b0f0e389f1f279e13a89f2b3a",
             "8c57ce445a2223dab4a3e8aedbd3db67171e96b0",
             "3588cd964a3346b20e359b41c02eb8caaed3221a",
             "NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED",
             "FROZEN_SCOPE_DID_NOT_REACH_RETAINED_STATE",
-            "PR #117", "E4A4-SCHUR-FB-05", "OBS-059I", "RETAINED_BIREGULAR_ZERO_SHIFT_SCALAR_DISCRIMINATION",
+            "PR #117", "E4A4-SCHUR-FB-05", "OBS-059I",
+            "CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY",
             "R003 phase = DISCOVERY", "confirmatory execution = NOT AUTHORIZED",
             "terminal claim = RH_OPEN",
         )
