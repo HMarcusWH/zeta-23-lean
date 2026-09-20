@@ -8,20 +8,22 @@
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #224
-- validated final head = 83de9193dffba12097d950d2291348db76d047f7
-- merge commit = 0f8f5ad468b337622942f76725c9d76db74e27e4
-- tree = aaedc131612393a1198837b3e5288e48538a94ae
-- exact promoted theorem = `cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`
-- exact proved identity = `d^3 - g_K = ((3*K^2 + 3*K - 1)/5) * d`
-- stronger predecessor correction proportionality = OPEN / NOT PROVED BY #224
+- merged theorem authority = PR #227
+- validated final head = b8d29733167a95e16f5721eddfced6b650a3b641
+- merge commit = 7aace87a5644f837e2c8b64bdcf5e66b2dc0b020
+- tree = 1dd1cdefcf4f4f7929b310697fdd1615a861ca1a
+- theorem family = CROSS_PARITY_ONE_COEFFICIENT_TRANSFER_COLLAPSE
+- prerequisite theorem = PR #226 `oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul`
+- exact flagship theorem = `BiRegularCellMinimalNegativeEnergyCertificate.exists_evenOddZeroShiftOneCoefficientNormalForm_of_even`
+- exact coefficient collapse = `Gamma = 1 + kappa * (1 - alpha)`
+- alpha reality/sign = OPEN / NOT PROVED BY #227
 
 MERGED THEOREM-STAGE PROVENANCE
-- PR #224
-- validated theorem head = 83de9193dffba12097d950d2291348db76d047f7
-- validated theorem tree = aaedc131612393a1198837b3e5288e48538a94ae
-- status = MERGED_VIA_PR_224
-- theorem family = ODD_CUBIC_PROJECTION_CLOSED_FORM
+- PR #227
+- validated theorem head = b8d29733167a95e16f5721eddfced6b650a3b641
+- validated theorem tree = 1dd1cdefcf4f4f7929b310697fdd1615a861ca1a
+- status = MERGED_VIA_PR_227
+- theorem family = CROSS_PARITY_ONE_COEFFICIENT_TRANSFER_COLLAPSE
 
 LATEST RESEARCH EVIDENCE
 - PR #223
@@ -36,13 +38,34 @@ CONTROL AUTHORITY
 - PR #117
 - selected formal first break = E4A4-SCHUR-FB-05
 - active subobligation = OBS-059I
-- next research target = CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY
+- next research target = CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
-## Post-#224 current lead override
+## Post-#227 current lead override
+
+PR #226 proves the exact predecessor correction proportionality. PR #227 propagates it through all currently relevant linear transfer constructions, so alpha/Gamma are affine-dependent and the retained selected-even state has a one-coefficient zero-shift normal form.
+
+The existing `crossParitySecularGamma_eq_trial_cubic_overlap_div` proof already derives the mixed-resolvent formula for the cubic-generator correction internally. The highest-information next move is to export the generic theorem for an arbitrary predecessor direction.
+
+## Current lead ordering
+
+1. **CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION — HIGHEST INFORMATION / NEXT.**
+2. **Derive the exact alpha mixed-resolvent formula — IMMEDIATE COROLLARY.**
+3. **Cauchy-Schwarz / resolvent norm bounds for the mixed pairing — SAFE QUANTITATIVE CONTROL.**
+4. **Canonical phase/angle/Gram relation between the shell coupling and transported-index correction — ARITHMETIC BOTTLENECK.**
+5. **Compose with the #209/#211/#213 source-functional stack — SAME-STATE CONTRADICTION ATTEMPT.**
+6. **Mirror or eliminate the odd-selected branch — PARITY-COMPLETE OBLIGATION.**
+7. **Terminal Mathlib RH seam — OPEN.**
+
+Do not promote "alpha is real" or "alpha has fixed sign" from resolvent positivity alone: the relevant pairing is mixed. Universal full-carrier source/M4 sign and proportionality remain consumed by #215. Geometry-only simultaneous-bad exclusion remains blocked by #205.
+
+Detailed post-green pass: `RESEARCH_LEADS_POST_227_ONE_COEFFICIENT_TRANSFER_DELTA.md`.
+
+
+## Historical post-#224 lead override
 
 PR #224 closes the exact cubic-projection coefficient and does **not** prove the stronger predecessor-correction proportionality.
 

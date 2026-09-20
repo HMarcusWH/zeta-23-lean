@@ -20,20 +20,22 @@ Research certificates, exact-rational audits, Arb output and external reviews ar
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #224
-- validated final head = 83de9193dffba12097d950d2291348db76d047f7
-- merge commit = 0f8f5ad468b337622942f76725c9d76db74e27e4
-- tree = aaedc131612393a1198837b3e5288e48538a94ae
-- exact promoted theorem = `cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`
-- exact proved identity = `d^3 - g_K = ((3*K^2 + 3*K - 1)/5) * d`
-- stronger predecessor correction proportionality = OPEN / NOT PROVED BY #224
+- merged theorem authority = PR #227
+- validated final head = b8d29733167a95e16f5721eddfced6b650a3b641
+- merge commit = 7aace87a5644f837e2c8b64bdcf5e66b2dc0b020
+- tree = 1dd1cdefcf4f4f7929b310697fdd1615a861ca1a
+- theorem family = CROSS_PARITY_ONE_COEFFICIENT_TRANSFER_COLLAPSE
+- prerequisite theorem = PR #226 `oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul`
+- exact flagship theorem = `BiRegularCellMinimalNegativeEnergyCertificate.exists_evenOddZeroShiftOneCoefficientNormalForm_of_even`
+- exact coefficient collapse = `Gamma = 1 + kappa * (1 - alpha)`
+- alpha reality/sign = OPEN / NOT PROVED BY #227
 
 MERGED THEOREM-STAGE PROVENANCE
-- PR #224
-- validated theorem head = 83de9193dffba12097d950d2291348db76d047f7
-- validated theorem tree = aaedc131612393a1198837b3e5288e48538a94ae
-- status = MERGED_VIA_PR_224
-- theorem family = ODD_CUBIC_PROJECTION_CLOSED_FORM
+- PR #227
+- validated theorem head = b8d29733167a95e16f5721eddfced6b650a3b641
+- validated theorem tree = 1dd1cdefcf4f4f7929b310697fdd1615a861ca1a
+- status = MERGED_VIA_PR_227
+- theorem family = CROSS_PARITY_ONE_COEFFICIENT_TRANSFER_COLLAPSE
 
 LATEST RESEARCH EVIDENCE
 - PR #223
@@ -48,13 +50,28 @@ CONTROL AUTHORITY
 - PR #117
 - selected formal first break = E4A4-SCHUR-FB-05
 - active subobligation = OBS-059I
-- next research target = CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY
+- next research target = CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
-## Post-#224 documentation-authority override
+## Post-#227 documentation-authority override
+
+The current three-anchor model is:
+
+```text
+theorem authority = PR #227
+research evidence = PR #223
+control semantics = PR #117
+```
+
+PR #226 is prerequisite theorem provenance for the exact predecessor-correction identity. PR #227 is the merged theorem authority for the one-coefficient cross-parity transfer family. The exact validated head is `b8d29733167a95e16f5721eddfced6b650a3b641`; merged commit `7aace87a5644f837e2c8b64bdcf5e66b2dc0b020`; tree `1dd1cdefcf4f4f7929b310697fdd1615a861ca1a`.
+
+The next theorem target is `CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION`. Alpha reality/sign remains explicitly unproved. Historical post-#224 documents remain frozen and are not rewritten to pretend #226/#227 existed earlier.
+
+
+## Historical post-#224 documentation-authority override
 
 The current three-anchor model is:
 

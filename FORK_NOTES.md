@@ -1,4 +1,4 @@
-# Fork notes — RHRC current state through merged PR #224
+# Fork notes — RHRC current state through merged PR #227
 
 > **RH remains OPEN.**
 
@@ -6,20 +6,22 @@
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #224
-- validated final head = 83de9193dffba12097d950d2291348db76d047f7
-- merge commit = 0f8f5ad468b337622942f76725c9d76db74e27e4
-- tree = aaedc131612393a1198837b3e5288e48538a94ae
-- exact promoted theorem = `cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`
-- exact proved identity = `d^3 - g_K = ((3*K^2 + 3*K - 1)/5) * d`
-- stronger predecessor correction proportionality = OPEN / NOT PROVED BY #224
+- merged theorem authority = PR #227
+- validated final head = b8d29733167a95e16f5721eddfced6b650a3b641
+- merge commit = 7aace87a5644f837e2c8b64bdcf5e66b2dc0b020
+- tree = 1dd1cdefcf4f4f7929b310697fdd1615a861ca1a
+- theorem family = CROSS_PARITY_ONE_COEFFICIENT_TRANSFER_COLLAPSE
+- prerequisite theorem = PR #226 `oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul`
+- exact flagship theorem = `BiRegularCellMinimalNegativeEnergyCertificate.exists_evenOddZeroShiftOneCoefficientNormalForm_of_even`
+- exact coefficient collapse = `Gamma = 1 + kappa * (1 - alpha)`
+- alpha reality/sign = OPEN / NOT PROVED BY #227
 
 MERGED THEOREM-STAGE PROVENANCE
-- PR #224
-- validated theorem head = 83de9193dffba12097d950d2291348db76d047f7
-- validated theorem tree = aaedc131612393a1198837b3e5288e48538a94ae
-- status = MERGED_VIA_PR_224
-- theorem family = ODD_CUBIC_PROJECTION_CLOSED_FORM
+- PR #227
+- validated theorem head = b8d29733167a95e16f5721eddfced6b650a3b641
+- validated theorem tree = 1dd1cdefcf4f4f7929b310697fdd1615a861ca1a
+- status = MERGED_VIA_PR_227
+- theorem family = CROSS_PARITY_ONE_COEFFICIENT_TRANSFER_COLLAPSE
 
 LATEST RESEARCH EVIDENCE
 - PR #223
@@ -34,11 +36,18 @@ CONTROL AUTHORITY
 - PR #117
 - selected formal first break = E4A4-SCHUR-FB-05
 - active subobligation = OBS-059I
-- next research target = CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY
+- next research target = CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#227 current fork settlement
+
+A fork at current `main` inherits the #226 predecessor-correction theorem and the #227 one-coefficient transfer stack. The formerly independent alpha/Gamma correction channels have collapsed to one coefficient; the remaining high-information question is the generic Riesz representation of the correction functional and then canonical control of its mixed resolvent pairing.
+
+The #205 generic simultaneous-bad countermodel still blocks geometry-only closure. PR #223 remains the latest bounded Arb research evidence. Control semantics remain frozen at PR #117. RH remains OPEN.
+
 
 **Historical opening snapshot through PR #201:** theorem authority PR #184; research evidence PR #201; control semantic authority PR #117.
 

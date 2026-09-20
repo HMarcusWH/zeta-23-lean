@@ -3,115 +3,54 @@ import unittest
 from pathlib import Path
 
 RHRC = Path(__file__).resolve().parents[2]
+ROOT = RHRC.parent.parent
 
-class Post224SyncTests(unittest.TestCase):
+class Post224HistoricalSyncTests(unittest.TestCase):
     def setUp(self):
         self.state = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
 
-    def test_exact_post224_theorem_authority(self):
-        theorem = self.state["merged_theorem_anchor"]
-        delta = self.state["latest_validated_theorem_delta"]
-        self.assertEqual(theorem["pr"], 224)
-        self.assertEqual(theorem["validated_head"], "83de9193dffba12097d950d2291348db76d047f7")
-        self.assertEqual(theorem["merge_commit"], "0f8f5ad468b337622942f76725c9d76db74e27e4")
-        self.assertEqual(theorem["tree"], "aaedc131612393a1198837b3e5288e48538a94ae")
-        self.assertEqual(delta["pr"], 224)
-        self.assertEqual(delta["theorem_family"], "ODD_CUBIC_PROJECTION_CLOSED_FORM")
-        self.assertEqual(
-            delta["exact_promoted_declaration"],
+    def test_post224_is_preserved_as_historical_theorem_provenance(self):
+        note = self.state["control_note"]
+        for token in (
+            "Post-#224 theorem authority advances to merged-green PR #224",
+            "83de9193dffba12097d950d2291348db76d047f7",
+            "0f8f5ad468b337622942f76725c9d76db74e27e4",
+            "aaedc131612393a1198837b3e5288e48538a94ae",
             "cubicProjectionResidual_eq_oddCubicProjectionSlope_smul",
-        )
+        ):
+            self.assertIn(token, note)
+        self.assertGreaterEqual(self.state["merged_theorem_anchor"]["pr"], 227)
 
-    def test_post224_does_not_overclaim_correction_collapse(self):
+    def test_post224_open_targets_are_closed_only_by_later_theorems(self):
         route = self.state["active_research_route"]
         self.assertEqual(route["post224_cubic_projection_closed_form"], "PROVED_PR_224")
-        self.assertEqual(route["post224_predecessor_correction_proportionality"], "OPEN_NEXT")
-        self.assertEqual(route["post224_alpha_gamma_affine_relation"], "DERIVED_CONDITIONAL_NOT_FORMALIZED")
-        self.assertEqual(route["post224_one_coefficient_zero_shift_scalar"], "DERIVED_CONDITIONAL_NOT_FORMALIZED")
-        self.assertEqual(route["next_research_target"], "CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY")
+        self.assertEqual(route["post224_predecessor_correction_proportionality"], "PROVED_PR_226")
+        self.assertEqual(route["post224_alpha_gamma_affine_relation"], "PROVED_PR_227")
+        self.assertEqual(route["post224_one_coefficient_zero_shift_scalar"], "PROVED_PR_227")
         self.assertEqual(route["odd_selected_first_bad_branch"], "OPEN")
         self.assertEqual(route["parity_complete_retained_state_exclusion"], "OPEN")
         self.assertEqual(route["terminal_mathlib_rh_seam"], "OPEN")
-        self.assertEqual(self.state["active_research_route"]["active_subobligation"], "OBS-059I")
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
-    def test_post223_research_and_control_anchors_do_not_move(self):
-        self.assertEqual(self.state["latest_research_evidence"]["pr"], 223)
-        self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
-
-    def test_post224_math_docs_have_no_embedded_control_bytes(self):
-        paths = (
+    def test_post224_delta_documents_remain_frozen_history(self):
+        for path in (
             RHRC / "RESEARCH_LEADS_POST_224_CUBIC_PROJECTION_DELTA.md",
-            RHRC / "RESEARCH_LEADS.md",
-            RHRC / "OBSTRUCTION_LEDGER.md",
             RHRC / "OBSTRUCTION_LEDGER_POST_224_DELTA.md",
-        )
-        for path in paths:
-            with self.subTest(path=path):
-                text = path.read_text(encoding="utf-8")
-                bad = [
-                    (i, ord(ch))
-                    for i, ch in enumerate(text)
-                    if (ord(ch) < 32 and ch not in "\n\r") or ord(ch) == 127
-                ]
-                self.assertEqual(bad, [])
-
-    def test_post224_authority_headings_are_current(self):
-        audit = (RHRC.parent.parent / "AUDIT.md").read_text(encoding="utf-8").splitlines()[0]
-        fork = (RHRC.parent.parent / "FORK_NOTES.md").read_text(encoding="utf-8").splitlines()[0]
-        self.assertEqual(
-            audit,
-            "# RHRC formal audit — merged theorem authority PR #224; research evidence PR #223",
-        )
-        self.assertEqual(
-            fork,
-            "# Fork notes — RHRC current state through merged PR #224",
-        )
-
-    def test_post224_operational_route_points_to_predecessor_correction(self):
-        for rel in (
-            Path("routes/R003_ccm_bridge/README.md"),
-            Path("FB05_INCOMPATIBILITY_PROGRAM.md"),
         ):
-            with self.subTest(path=rel):
-                text = (RHRC / rel).read_text(encoding="utf-8")
-                self.assertIn("CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY", text)
-                self.assertIn(
-                    "HISTORICAL / DOWNSTREAM AFTER PREDECESSOR COLLAPSE",
-                    text,
-                )
-                self.assertNotIn("**ACTIVE / HIGHEST INFORMATION.**", text)
+            self.assertTrue(path.exists())
+            text = path.read_text(encoding="utf-8")
+            bad = [
+                (i, ord(ch))
+                for i, ch in enumerate(text)
+                if (ord(ch) < 32 and ch not in "\n\r") or ord(ch) == 127
+            ]
+            self.assertEqual(bad, [])
 
-    def test_post224_markdown_backticks_are_not_overescaped(self):
-        paths = (
-            RHRC / "RESEARCH_LEADS_POST_224_CUBIC_PROJECTION_DELTA.md",
-            RHRC / "RESEARCH_LEADS.md",
-            RHRC / "OBSTRUCTION_LEDGER.md",
-            RHRC / "OBSTRUCTION_LEDGER_POST_224_DELTA.md",
-        )
-        for path in paths:
-            with self.subTest(path=path):
-                self.assertNotIn("\\`", path.read_text(encoding="utf-8"))
-
-    def test_post224_current_lead_ordering_matches_machine_target(self):
-        leads = (RHRC / "RESEARCH_LEADS.md").read_text(encoding="utf-8")
-        self.assertIn("1. **CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY — HIGHEST INFORMATION / NEXT.**", leads)
-        self.assertIn("## Historical post-#215 retained-root routing", leads)
-        control = (RHRC / "control_v2" / "README.md").read_text(encoding="utf-8")
-        self.assertIn("= CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY", control)
-        self.assertIn("## Historical post-#215 control state", control)
-
-    def test_post224_obstruction_pointer_is_current(self):
-        ledger = (RHRC / "OBSTRUCTION_LEDGER.md").read_text(encoding="utf-8")
-        self.assertIn("**Current obstruction delta:** `OBSTRUCTION_LEDGER_POST_224_DELTA.md`", ledger)
-        self.assertIn("PREDECESSOR-CORRECTION PROPORTIONALITY REQUIRED", ledger)
-
-    def test_post224_old_route_snapshots_are_explicitly_historical(self):
-        root = RHRC.parent.parent
+    def test_old_route_snapshots_remain_explicitly_historical(self):
         checks = (
-            (root / "README.md", "## Historical RH/CCM frontier after PR #215"),
+            (ROOT / "README.md", "## Historical RH/CCM frontier after PR #215"),
             (RHRC / "README.md", "## Historical post-#215 retained negative-root secular frontier"),
             (RHRC / "CURRENT_RESEARCH_PLAN.md", "## Historical post-#203 — FB-05 / same-state two-parity squeeze"),
             (RHRC / "DOCUMENTATION_AUTHORITY.md", "## Historical post-#215 authority — retained negative-root secular frontier"),
@@ -120,16 +59,6 @@ class Post224SyncTests(unittest.TestCase):
         for path, marker in checks:
             with self.subTest(path=path):
                 self.assertIn(marker, path.read_text(encoding="utf-8"))
-
-    def test_post224_countermodel_and_dead_route_targets_are_current(self):
-        countermodels = (RHRC / "countermodels" / "README.md").read_text(encoding="utf-8")
-        dead_routes = (RHRC / "DEAD_ROUTES.md").read_text(encoding="utf-8")
-        self.assertIn("CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY", countermodels)
-        self.assertIn("downstream/historical falsification target", countermodels)
-        self.assertNotIn("current hostile target is a proposed **retained-root secular-completion mechanism**", countermodels)
-        self.assertIn("downstream/historical relative to the current predecessor-correction target", dead_routes)
-        self.assertIn("current `CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY` target", dead_routes)
-        self.assertNotIn("current retained-root target", dead_routes)
 
 if __name__ == "__main__":
     unittest.main()

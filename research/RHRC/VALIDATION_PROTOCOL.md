@@ -14,20 +14,22 @@ For theorem-bearing PRs, compiler validity attaches only to the exact checked he
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #224
-- validated final head = 83de9193dffba12097d950d2291348db76d047f7
-- merge commit = 0f8f5ad468b337622942f76725c9d76db74e27e4
-- tree = aaedc131612393a1198837b3e5288e48538a94ae
-- exact promoted theorem = `cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`
-- exact proved identity = `d^3 - g_K = ((3*K^2 + 3*K - 1)/5) * d`
-- stronger predecessor correction proportionality = OPEN / NOT PROVED BY #224
+- merged theorem authority = PR #227
+- validated final head = b8d29733167a95e16f5721eddfced6b650a3b641
+- merge commit = 7aace87a5644f837e2c8b64bdcf5e66b2dc0b020
+- tree = 1dd1cdefcf4f4f7929b310697fdd1615a861ca1a
+- theorem family = CROSS_PARITY_ONE_COEFFICIENT_TRANSFER_COLLAPSE
+- prerequisite theorem = PR #226 `oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul`
+- exact flagship theorem = `BiRegularCellMinimalNegativeEnergyCertificate.exists_evenOddZeroShiftOneCoefficientNormalForm_of_even`
+- exact coefficient collapse = `Gamma = 1 + kappa * (1 - alpha)`
+- alpha reality/sign = OPEN / NOT PROVED BY #227
 
 MERGED THEOREM-STAGE PROVENANCE
-- PR #224
-- validated theorem head = 83de9193dffba12097d950d2291348db76d047f7
-- validated theorem tree = aaedc131612393a1198837b3e5288e48538a94ae
-- status = MERGED_VIA_PR_224
-- theorem family = ODD_CUBIC_PROJECTION_CLOSED_FORM
+- PR #227
+- validated theorem head = b8d29733167a95e16f5721eddfced6b650a3b641
+- validated theorem tree = 1dd1cdefcf4f4f7929b310697fdd1615a861ca1a
+- status = MERGED_VIA_PR_227
+- theorem family = CROSS_PARITY_ONE_COEFFICIENT_TRANSFER_COLLAPSE
 
 LATEST RESEARCH EVIDENCE
 - PR #223
@@ -42,13 +44,33 @@ CONTROL AUTHORITY
 - PR #117
 - selected formal first break = E4A4-SCHUR-FB-05
 - active subobligation = OBS-059I
-- next research target = CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY
+- next research target = CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
-## Post-#224 exact-object promotion record
+## Post-#227 exact-object promotion record
+
+PR #227 is theorem authority because the exact validated final head `b8d29733167a95e16f5721eddfced6b650a3b641` passed the PR merge gate on tree `1dd1cdefcf4f4f7929b310697fdd1615a861ca1a`; the real merged commit `7aace87a5644f837e2c8b64bdcf5e66b2dc0b020` has the same tree and parents.
+
+Passed gates include:
+- `lake build Zeta23.CCM`;
+- `lake build Zeta23.ExceptionalZero`;
+- RHRC claim/regression suite;
+- Control-v2 real-history smoke;
+- forbidden `sorry` / project-axiom scan.
+
+The headline #227 declarations print only `propext`, `Classical.choice`, and `Quot.sound`. No `sorryAx` remains.
+
+Promoted theorem family: `CROSS_PARITY_ONE_COEFFICIENT_TRANSFER_COLLAPSE`.
+Prerequisite theorem provenance: PR #226 `oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul`.
+Current next target: `CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION`.
+
+Not promoted: alpha reality/sign, simultaneous odd-bad exclusion, selected-even WLOG, odd-selected closure, negative-root exclusion, the terminal Mathlib RH seam, or RH.
+
+
+## Historical post-#224 exact-object promotion record
 
 PR #224 is theorem authority because its exact final head compiled through the promoted CCM/ExceptionalZero import closure and passed the repository's forbidden-placeholder scan.
 

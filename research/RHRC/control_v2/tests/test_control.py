@@ -15,14 +15,14 @@ from control_v2.state import load_research_state
 class ControlV2Tests(unittest.TestCase):
     def test_control_state_tracks_latest_theorem_anchor_without_moving_control_anchor(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 224)
+        self.assertEqual(state.anchor.pr, 227)
         self.assertEqual(
             state.anchor.merge_commit,
-            "0f8f5ad468b337622942f76725c9d76db74e27e4",
+            "7aace87a5644f837e2c8b64bdcf5e66b2dc0b020",
         )
         self.assertEqual(
             state.anchor.tree,
-            "aaedc131612393a1198837b3e5288e48538a94ae",
+            "1dd1cdefcf4f4f7929b310697fdd1615a861ca1a",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -86,11 +86,21 @@ class ControlV2Tests(unittest.TestCase):
             "0f8f5ad468b337622942f76725c9d76db74e27e4",
             "cubicProjectionResidual_eq_oddCubicProjectionSlope_smul",
             "predecessor-correction proportionality is the next theorem target",
+            "PR #226",
+            "8279384b0dfe44f3853bb8532789107ec59d0f82",
+            "oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul",
+            "PR #227",
+            "b8d29733167a95e16f5721eddfced6b650a3b641",
+            "7aace87a5644f837e2c8b64bdcf5e66b2dc0b020",
+            "crossParitySecularGamma_eq_one_add_kappa_mul_one_sub_alpha",
+            "BiRegularCellMinimalNegativeEnergyCertificate.exists_evenOddZeroShiftOneCoefficientNormalForm_of_even",
+            "CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION",
+            "Alpha reality/sign is NOT proved",
             "RH remains OPEN",
         ):
             self.assertIn(token, note)
-        self.assertEqual(control["merged_theorem_anchor"]["pr"], 224)
-        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 224)
+        self.assertEqual(control["merged_theorem_anchor"]["pr"], 227)
+        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 227)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
         self.assertEqual(control["terminal_claim"], "RH_OPEN")
 
