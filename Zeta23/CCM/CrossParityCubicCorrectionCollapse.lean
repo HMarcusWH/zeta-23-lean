@@ -343,20 +343,27 @@ private theorem sum_oneStepCentered_split
         ((∑ i : Fin (2 * N + 1),
             f (centeredEmbedding N (N + 1) (Nat.le_succ N) i)) +
           f (successorRightOuterIndex N)) := by
-  rw [Fin.sum_univ_succ, Fin.sum_univ_castSucc]
-  have hinner :
-      (fun i : Fin (2 * N + 1) => f i.castSucc.succ) =
-        (fun i : Fin (2 * N + 1) =>
-          f (centeredEmbedding N (N + 1) (Nat.le_succ N) i)) := by
-    funext i
+  rw [Fin.sum_univ_succ]
+  have hsize : 2 * (N + 1) = (2 * N + 1) + 1 := by
+    omega
+  rw [hsize, Fin.sum_univ_castSucc]
+  have hmiddle :
+      (∑ i : Fin (2 * N + 1), f i.castSucc.succ) =
+        ∑ i : Fin (2 * N + 1),
+          f (centeredEmbedding N (N + 1) (Nat.le_succ N) i) := by
+    apply Finset.sum_congr rfl
+    intro i _
     congr 1
     apply Fin.ext
     simp [centeredEmbedding]
+    omega
   have hright :
       (Fin.last (2 * N + 1)).succ = successorRightOuterIndex N := by
     apply Fin.ext
     simp [successorRightOuterIndex]
-  simpa [successorLeftOuterIndex, hinner, hright]
+    omega
+  rw [hmiddle, hright]
+  rfl
 
 private theorem inner_oneStepCenteredRestrict
     (N : ℕ)
@@ -365,13 +372,21 @@ private theorem inner_oneStepCenteredRestrict
     inner ℂ x (oneStepCenteredRestrict N y) =
       inner ℂ (euclideanCenteredZeroExtend (Nat.le_succ N) x) y := by
   rw [PiLp.inner_apply, PiLp.inner_apply]
-  rw [sum_oneStepCentered_split N]
+  have hsplit := sum_oneStepCentered_split N
+    (fun j =>
+      inner ℂ
+        ((euclideanCenteredZeroExtend (Nat.le_succ N) x) j)
+        (y j))
   have hleft :=
     euclideanCenteredZeroExtend_succ_leftOuter_eq_zero N x
   have hright :=
     euclideanCenteredZeroExtend_succ_rightOuter_eq_zero N x
-  simp only [hleft, hright, inner_zero_left, zero_add,
-    oneStepCenteredRestrict_apply,
+  rw [hleft, hright] at hsplit
+  simp only [inner_zero_left, zero_add, add_zero] at hsplit
+  rw [hsplit]
+  apply Finset.sum_congr rfl
+  intro i _
+  rw [oneStepCenteredRestrict_apply,
     euclideanCenteredZeroExtendLinearMap_apply_centeredEmbedding]
 
 private theorem oneStepCenteredRestrict_mem_evenCoefficient
@@ -535,12 +550,16 @@ private theorem centeredMoment_two_successor_split
   have h := sum_oneStepCentered_split N
     (fun j =>
       (((centeredIndex (N + 1) j : ℤ) : ℂ) ^ 2) * x j)
+  have hnegSq :
+      ((-(N : ℂ) + -1) ^ 2) = (((N + 1 : ℕ) : ℂ) ^ 2) := by
+    push_cast
+    ring
   unfold centeredMoment
   simpa [oneStepCenteredRestrict,
     centeredIndex_centeredEmbedding,
     centeredIndex_successorLeftOuterIndex,
     centeredIndex_successorRightOuterIndex,
-    add_assoc, add_comm, add_left_comm] using h
+    hnegSq, add_assoc, add_comm, add_left_comm] using h
 
 private theorem centeredMoment_zero_centeredPowerVector_zero
     (N : ℕ) :
@@ -577,7 +596,8 @@ private theorem centeredMoment_two_centeredPowerVector_two
       ((N : ℂ) * (N + 1 : ℂ) * (2 * N + 1 : ℂ) *
         (3 * (N : ℂ) ^ 2 + 3 * N - 1)) / 15 := by
   unfold centeredMoment
-  simpa [centeredPowerVector_apply, pow_succ] using centered_fourth_sum_complex N
+  simpa [centeredPowerVector_apply, pow_two, mul_assoc] using
+    centered_fourth_sum_complex N
 
 private theorem evenShell_rightOuter_eq
     (N : ℕ) :
@@ -596,7 +616,7 @@ private theorem evenShell_rightOuter_eq
     evenIndex_successorPulledBackCubicCompressionVector N
   have hDcoord := congrArg
     (fun y : euclideanOddBoundaryFlatSubspace (N + 1) =>
-      ((y : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) r) hD
+      ((y : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) r)) hD
   have hmul :
       (((N + 1 : ℕ) : ℂ) *
         ((e : euclideanParityBoundaryFlatSubspace .even (N + 1)) :
@@ -793,12 +813,12 @@ private theorem evenShell_restrict_eq_const_add_quadratic
     rw [h]
     exact_mod_cast hnat
   have h2Nm1 : 2 * (N : ℂ) - 1 ≠ 0 := by
-    have hle : 1 ≤ 2 * N := by omega
-    have hnat : 2 * N - 1 ≠ 0 := by omega
-    have h : 2 * (N : ℂ) - 1 = ((2 * N - 1 : ℕ) : ℂ) := by
-      rw [← Nat.cast_ofNat, ← Nat.cast_mul, ← Nat.cast_sub hle]
-    rw [h]
-    exact_mod_cast hnat
+    intro hzero
+    have hre := congrArg Complex.re hzero
+    have hNr : (1 : ℝ) ≤ (N : ℝ) := by
+      exact_mod_cast hN
+    norm_num at hre
+    nlinarith
   let C : ℂ :=
     (N : ℂ) * ((N : ℂ) + 1) *
       (2 * (N : ℂ) + 1) ^ 2 * (2 * (N : ℂ) + 3)
@@ -809,11 +829,12 @@ private theorem evenShell_restrict_eq_const_add_quadratic
         (mul_ne_zero hN0 hNp1)
         (pow_ne_zero 2 h2Np1))
       h2Np3
+  push_cast at hsplit2
   have hcomb :
       C * ((2 * (N : ℂ) - 1) * B + 6) = 0 := by
     dsimp [C]
     linear_combination
-      45 * ((2 * (N : ℂ) + 1) * hsplit2 -
+      -45 * ((2 * (N : ℂ) + 1) * hsplit2 -
         (((N : ℂ) * ((N : ℂ) + 1) *
           (2 * (N : ℂ) + 1)) / 3) * hsplit0)
   have hBlinear : (2 * (N : ℂ) - 1) * B + 6 = 0 :=
@@ -859,16 +880,19 @@ theorem oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul
     have hi := congrArg
       (fun y : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)) =>
         y (centeredEmbedding N (N + 1) (Nat.le_succ N) i)) hproj
-    change
-      (((centeredIndex N i : ℤ) : ℂ) ^ 3 -
-        oneStepCenteredRestrict N
-          (((successorParityCubicVector .odd N :
-              euclideanParityBoundaryFlatSubspace .odd (N + 1)) :
-            EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))) i) =
-        oddCubicProjectionSlope (N + 1) *
-          (((centeredIndex N i : ℤ) : ℂ) ^ 1) at hi
+    have hi' :
+        (((centeredIndex N i : ℤ) : ℂ) ^ 3 -
+          oneStepCenteredRestrict N
+            (((successorParityCubicVector .odd N :
+                euclideanParityBoundaryFlatSubspace .odd (N + 1)) :
+              EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))) i) =
+          oddCubicProjectionSlope (N + 1) *
+            (((centeredIndex N i : ℤ) : ℂ) ^ 1) := by
+      simpa [oneStepCenteredRestrict_apply, successorParityCubicVector,
+        centeredPowerVector_apply, centeredIndex_centeredEmbedding,
+        smul_eq_mul] using hi
     simp [centeredPowerVector_apply]
-    linear_combination -hi
+    linear_combination -hi'
   have hrestrictD :
       oneStepCenteredRestrict N
         (((evenIndexParityLinearMap (N + 1)
@@ -877,7 +901,7 @@ theorem oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul
             euclideanParityBoundaryFlatSubspace .odd (N + 1)) :
           EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))) =
         A • centeredPowerVector N 1 -
-          (6 : ℂ) / (2 * (N : ℂ) - 1) • centeredPowerVector N 3 := by
+          ((6 : ℂ) / (2 * (N : ℂ) - 1)) • centeredPowerVector N 3 := by
     ext i
     have hc := congrArg
       (fun y : EuclideanSpace ℂ (Fin (2 * N + 1)) => y i)
@@ -913,13 +937,13 @@ theorem oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul
   have hkappa :
       kappa * ((6 : ℂ) / (2 * (N : ℂ) - 1)) = 1 := by
     dsimp [kappa, crossParityCubicCorrectionKappa]
-    have hle : 1 ≤ 2 * N := by omega
-    have hnat : 2 * N - 1 ≠ 0 := by omega
     have hden : 2 * (N : ℂ) - 1 ≠ 0 := by
-      have h : 2 * (N : ℂ) - 1 = ((2 * N - 1 : ℕ) : ℂ) := by
-        rw [← Nat.cast_ofNat, ← Nat.cast_mul, ← Nat.cast_sub hle]
-      rw [h]
-      exact_mod_cast hnat
+      intro hzero
+      have hre := congrArg Complex.re hzero
+      have hNr : (1 : ℝ) ≤ (N : ℝ) := by
+        exact_mod_cast hN
+      norm_num at hre
+      nlinarith
     field_simp [hden]
   have hzRestrictNormal :
       oneStepCenteredRestrict N
@@ -935,11 +959,11 @@ theorem oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul
     have hga := congrArg
       (fun y : euclideanParityBoundaryFlatSubspace .odd (N + 1) =>
         ((y : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
-          (centeredEmbedding N (N + 1) (Nat.le_succ N) i)) hg
+          (centeredEmbedding N (N + 1) (Nat.le_succ N) i))) hg
     have hdd := congrArg
       (fun y : euclideanParityBoundaryFlatSubspace .odd (N + 1) =>
         ((y : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
-          (centeredEmbedding N (N + 1) (Nat.le_succ N) i)) hd
+          (centeredEmbedding N (N + 1) (Nat.le_succ N) i))) hd
     have hgR := congrArg
       (fun y : EuclideanSpace ℂ (Fin (2 * N + 1)) => y i) hrestrictG
     have hdR := congrArg
@@ -1021,7 +1045,8 @@ theorem oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul
     rw [← hxz, hx0]
     simp
   dsimp [z, a, d, kappa] at hzZero
-  exact add_eq_zero_iff_eq_neg.mp hzZero
+  have hneg := add_eq_zero_iff_eq_neg.mp hzZero
+  simpa [neg_smul] using hneg
 
 theorem oddCubicGenerator_add_kappa_evenIndexCubicShell_eq_shell
     (N : ℕ) (hN : 1 ≤ N) :
@@ -1033,14 +1058,48 @@ theorem oddCubicGenerator_add_kappa_evenIndexCubicShell_eq_shell
       (1 + crossParityCubicCorrectionKappa N) •
         (intrinsicCubicShellPart .odd N :
           euclideanParityBoundaryFlatSubspace .odd (N + 1)) := by
-  rw [oddCubicCompressionVector_eq_predecessor_add_cubicShellPart N]
-  rw [evenIndex_cubicShellPart_eq_predecessor_add_oddCubicShellPart N hN]
-  rw [smul_add]
+  let kappa := crossParityCubicCorrectionKappa N
+  let a := oddCubicGeneratorPredecessorPart N
+  let d := oddIndexCubicShellPredecessorPart N
+  let c : euclideanParityBoundaryFlatSubspace .odd (N + 1) :=
+    intrinsicCubicShellPart .odd N
   have hpred :=
     oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul N hN
-  rw [hpred]
-  rw [add_smul, one_smul, neg_smul]
-  abel
+  have hpredAmbient :
+      (a : euclideanParityBoundaryFlatSubspace .odd (N + 1)) =
+        (-kappa) •
+          (d : euclideanParityBoundaryFlatSubspace .odd (N + 1)) := by
+    apply Subtype.ext
+    have h := congrArg
+      (fun x : intrinsicParityPredecessorSubspace .odd N =>
+        ((x : euclideanParityBoundaryFlatSubspace .odd (N + 1)) :
+          EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))) hpred
+    simpa [a, d, kappa] using h
+  have hcancel :
+      (a : euclideanParityBoundaryFlatSubspace .odd (N + 1)) +
+          kappa •
+            (d : euclideanParityBoundaryFlatSubspace .odd (N + 1)) = 0 := by
+    rw [hpredAmbient]
+    module
+  rw [oddCubicCompressionVector_eq_predecessor_add_cubicShellPart N]
+  rw [evenIndex_cubicShellPart_eq_predecessor_add_oddCubicShellPart N hN]
+  change
+    (a : euclideanParityBoundaryFlatSubspace .odd (N + 1)) + c +
+        kappa •
+          ((d : euclideanParityBoundaryFlatSubspace .odd (N + 1)) + c) =
+      (1 + kappa) • c
+  rw [smul_add]
+  calc
+    (a : euclideanParityBoundaryFlatSubspace .odd (N + 1)) + c +
+          (kappa •
+              (d : euclideanParityBoundaryFlatSubspace .odd (N + 1)) +
+            kappa • c) =
+        ((a : euclideanParityBoundaryFlatSubspace .odd (N + 1)) +
+            kappa •
+              (d : euclideanParityBoundaryFlatSubspace .odd (N + 1))) +
+          (c + kappa • c) := by abel
+    _ = c + kappa • c := by rw [hcancel, zero_add]
+    _ = (1 + kappa) • c := by module
 
 #print axioms Zeta23.CCM.oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul
 #print axioms Zeta23.CCM.oddCubicGenerator_add_kappa_evenIndexCubicShell_eq_shell
