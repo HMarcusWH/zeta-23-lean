@@ -199,11 +199,8 @@ theorem
       star S * (q - J) = star S * (M4 - S * C) := by
     simpa [S, M4, q, J, R, a, C] using
       c.evenShiftedCrossParitySourceBalanceFactored_of_even hp
-  have hstarS : star S ≠ 0 := by
-    intro hstar
-    apply hS
-    have hback := congrArg (starRingEnd ℂ) hstar
-    simpa [S] using hback
+  have hstarS : star S ≠ 0 :=
+    star_ne_zero.mpr hS
   have hmul :
       star S * ((q - J) - (M4 - S * C)) = 0 := by
     calc
