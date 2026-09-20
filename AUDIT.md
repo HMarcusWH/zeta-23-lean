@@ -40,6 +40,16 @@ CONTROL AUTHORITY
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#224 audit settlement
+
+PR #224 advances theorem authority only for the exact cubic projection closed form
+`cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`.
+
+The advertised predecessor-correction proportionality remains OPEN. The current next theorem target is `CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY`; the alpha/Gamma and one-coefficient zero-shift collapses remain derived conditional statements until separately formalized.
+
+The odd-selected branch and terminal Mathlib RH seam remain OPEN. **RH remains OPEN.**
+
+
 Live GitHub head + exact compiler/CI evidence outrank this prose.
 
 ## Historical authority split through PR #201
