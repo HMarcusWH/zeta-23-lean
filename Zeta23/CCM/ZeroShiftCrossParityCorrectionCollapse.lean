@@ -52,7 +52,6 @@ theorem six_mul_crossParityZeroShiftGamma_add_index_mul_alpha
   rw [crossParityZeroShiftGamma_eq_one_add_kappa_mul_one_sub_alpha
     N hN xMinus]
   unfold crossParityCubicCorrectionKappa
-  field_simp
   ring
 
 /-- Direct zero-shift cross-parity transfer with Gamma eliminated. -/
