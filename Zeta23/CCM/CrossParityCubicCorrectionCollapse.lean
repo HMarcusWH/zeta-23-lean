@@ -596,7 +596,7 @@ private theorem centeredMoment_two_centeredPowerVector_two
       ((N : ℂ) * (N + 1 : ℂ) * (2 * N + 1 : ℂ) *
         (3 * (N : ℂ) ^ 2 + 3 * N - 1)) / 15 := by
   unfold centeredMoment
-  simpa [centeredPowerVector_apply, pow_two, mul_assoc] using
+  simpa [centeredPowerVector_apply, pow_succ, pow_two, mul_assoc] using
     centered_fourth_sum_complex N
 
 private theorem evenShell_rightOuter_eq
