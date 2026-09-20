@@ -54,6 +54,23 @@ CONTROL AUTHORITY
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#224 documentation-authority override
+
+The current three-anchor model is:
+
+```text
+theorem authority = PR #224
+research evidence = PR #223
+control semantics = PR #117
+```
+
+Theorem promotion is exact-object specific. The promoted #224 declaration is
+`cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`.
+The PR title/body is not authority for the unproved predecessor-correction proportionality.
+
+Historical post-#222/#223 delta documents remain frozen history and are not rewritten to pretend that #224 existed earlier.
+
+
 ## Living-current-surface rule
 
 Every file designated as a living/current SSOT must expose the current three-anchor state before historical material. A later append-only override does **not** cure a stale top-level declaration of what is current.
