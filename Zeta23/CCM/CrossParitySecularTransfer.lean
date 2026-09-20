@@ -7,12 +7,14 @@ namespace Zeta23.CCM
 /-!
 # FIRST-BAD-RIGIDITY-E4-A3c: cross-parity secular transfer
 
-The implementation is split into three compiler-facing layers:
+The implementation is split into four compiler-facing layers:
 
 * `CrossParityQuotientTransport` — quotient/shell transport and exact
   predecessor corrections;
 * `CrossParityTrialReconstruction` — transported residual, predecessor forcing,
   and safe-resolvent reconstruction;
+* `CrossParityCorrectionFunctionalRiesz` — generic Riesz representation of the
+  safe predecessor-correction functional;
 * `CrossParitySecularTransferCore` — scalar transfer, overlap representation,
   and source-explicit specialization.
 
@@ -27,6 +29,9 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.intrinsicCubicQuotientCoordinate_evenIndex
 #print axioms Zeta23.CCM.cubicSecularResidual_eq_scalar_smul_intrinsicCubicShellPart
 #print axioms Zeta23.CCM.cubicSecularTrialVector_odd_eq_evenIndex_sub_resolvent_forcing
+#print axioms Zeta23.CCM.oddSafeSecularCorrectionFunctional_eq_resolvent_pairing_div
+#print axioms Zeta23.CCM.one_sub_crossParitySecularAlpha_eq_resolvent_pairing_div
+#print axioms Zeta23.CCM.one_sub_crossParitySecularGamma_eq_resolvent_pairing_div
 #print axioms Zeta23.CCM.cubicSecularScalar_odd_eq_alpha_mul_even_add_gamma_mul_defect
 #print axioms Zeta23.CCM.crossParitySecularGamma_eq_trial_cubic_overlap_div
 #print axioms Zeta23.CCM.cubicSecularScalar_crossParity_source_transfer

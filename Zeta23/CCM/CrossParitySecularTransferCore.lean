@@ -1,4 +1,4 @@
-import Zeta23.CCM.CrossParityTrialReconstruction
+import Zeta23.CCM.CrossParityCorrectionFunctionalRiesz
 
 noncomputable section
 
@@ -224,127 +224,15 @@ theorem crossParitySecularGamma_eq_trial_cubic_overlap_div
         (intrinsicCubicShellPart .odd N :
           euclideanParityBoundaryFlatSubspace .odd (N + 1)) ≠ 0
     exact inner_intrinsicCubicShellPart_self_ne_zero .odd N hN
-  have hchiInner :
-      chi a =
-        inner ℂ cV
-            (parityCompressedCanonical .odd L (N + 1)
-              ((R a : intrinsicParityPredecessorSubspace .odd N) :
-                euclideanParityBoundaryFlatSubspace .odd (N + 1))) / den := by
-    change
-      intrinsicCubicQuotientCoordinate .odd N
-          (parityCompressedCanonical .odd L (N + 1)
-            ((R a : intrinsicParityPredecessorSubspace .odd N) :
-              euclideanParityBoundaryFlatSubspace .odd (N + 1))) =
-        inner ℂ cV
-            (parityCompressedCanonical .odd L (N + 1)
-              ((R a : intrinsicParityPredecessorSubspace .odd N) :
-                euclideanParityBoundaryFlatSubspace .odd (N + 1))) /
-          inner ℂ cV cV
-    exact
-      intrinsicCubicQuotientCoordinate_eq_inner_div
-        .odd N hN
-        (parityCompressedCanonical .odd L (N + 1)
-          ((R a : intrinsicParityPredecessorSubspace .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1)))
-  have hsymT :
-      inner ℂ cV
-          (parityCompressedCanonical .odd L (N + 1)
-            ((R a : intrinsicParityPredecessorSubspace .odd N) :
-              euclideanParityBoundaryFlatSubspace .odd (N + 1))) =
-        inner ℂ
-          (parityCompressedCanonical .odd L (N + 1) cV)
-          ((R a : intrinsicParityPredecessorSubspace .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1)) := by
-    exact
-      (parityCompressedCanonical_isSymmetric .odd L (N + 1)
-        cV
-        ((R a : intrinsicParityPredecessorSubspace .odd N) :
-          euclideanParityBoundaryFlatSubspace .odd (N + 1))).symm
-  have hTcRa :
-      inner ℂ
-          (parityCompressedCanonical .odd L (N + 1) cV)
-          ((R a : intrinsicParityPredecessorSubspace .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1)) =
-        inner ℂ
-          (b : euclideanParityBoundaryFlatSubspace .odd (N + 1))
-          ((R a : intrinsicParityPredecessorSubspace .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1)) := by
-    let y := parityCompressedCanonical .odd L (N + 1) cV
-    have hrec := intrinsicPredecessorPart_add_shellPart .odd N y
-    have hpredY : intrinsicPredecessorPart .odd N y = b := by rfl
-    have hort := inner_intrinsicShell_predecessor_eq_zero
-      .odd N (intrinsicShellPart .odd N y) (R a)
-    calc
-      inner ℂ y
-          ((R a : intrinsicParityPredecessorSubspace .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1)) =
-        inner ℂ
-          ((intrinsicPredecessorPart .odd N y :
-              intrinsicParityPredecessorSubspace .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1))
-          ((R a : intrinsicParityPredecessorSubspace .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1)) +
-        inner ℂ
-          ((intrinsicShellPart .odd N y : intrinsicParitySuccShell .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1))
-          ((R a : intrinsicParityPredecessorSubspace .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1)) := by
-          rw [← inner_add_left]
-          exact congrArg
-            (fun z : euclideanParityBoundaryFlatSubspace .odd (N + 1) =>
-              inner ℂ z
-                ((R a : intrinsicParityPredecessorSubspace .odd N) :
-                  euclideanParityBoundaryFlatSubspace .odd (N + 1))) hrec.symm
-      _ = inner ℂ
-          ((intrinsicPredecessorPart .odd N y :
-              intrinsicParityPredecessorSubspace .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1))
-          ((R a : intrinsicParityPredecessorSubspace .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1)) := by
-        rw [hort, add_zero]
-      _ = inner ℂ
-          (b : euclideanParityBoundaryFlatSubspace .odd (N + 1))
-          ((R a : intrinsicParityPredecessorSubspace .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1)) := by
-        rw [hpredY]
-  have hRba :
-      inner ℂ
-          ((R b : intrinsicParityPredecessorSubspace .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1))
-          (a : euclideanParityBoundaryFlatSubspace .odd (N + 1)) =
-        inner ℂ
-          (b : euclideanParityBoundaryFlatSubspace .odd (N + 1))
-          ((R a : intrinsicParityPredecessorSubspace .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1)) := by
-    simpa [R] using
-      shiftedIntrinsicPredecessorResolvent_isSymmetric
-        .odd hL N hprevOdd hlam b a
   have hchi :
       chi a =
         inner ℂ
             ((R b : intrinsicParityPredecessorSubspace .odd N) :
               euclideanParityBoundaryFlatSubspace .odd (N + 1))
             (a : euclideanParityBoundaryFlatSubspace .odd (N + 1)) / den := by
-    calc
-      chi a = inner ℂ cV
-          (parityCompressedCanonical .odd L (N + 1)
-            ((R a : intrinsicParityPredecessorSubspace .odd N) :
-              euclideanParityBoundaryFlatSubspace .odd (N + 1))) / den := hchiInner
-      _ = inner ℂ
-          (parityCompressedCanonical .odd L (N + 1) cV)
-          ((R a : intrinsicParityPredecessorSubspace .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1)) / den := by
-        rw [hsymT]
-      _ = inner ℂ
-          (b : euclideanParityBoundaryFlatSubspace .odd (N + 1))
-          ((R a : intrinsicParityPredecessorSubspace .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1)) / den := by
-        rw [hTcRa]
-      _ = inner ℂ
-          ((R b : intrinsicParityPredecessorSubspace .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1))
-          (a : euclideanParityBoundaryFlatSubspace .odd (N + 1)) / den := by
-        rw [← hRba]
+    simpa [c, a, b, R, chi, cV, den] using
+      oddSafeSecularCorrectionFunctional_eq_resolvent_pairing_div
+        hL N hN hprevOdd lam hlam a
   have hRaC := inner_intrinsicPredecessor_shell_eq_zero .odd N (R b) c
   have hCa := inner_intrinsicShell_predecessor_eq_zero .odd N c a
   have hg :
