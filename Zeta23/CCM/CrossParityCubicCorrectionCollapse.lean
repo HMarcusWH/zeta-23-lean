@@ -1029,7 +1029,8 @@ theorem oddCubicGenerator_add_kappa_evenIndexCubicShell_eq_shell
   have hpred :=
     oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul N hN
   rw [hpred]
-  module
+  rw [add_smul, one_smul, neg_smul]
+  abel
 
 #print axioms Zeta23.CCM.oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul
 #print axioms Zeta23.CCM.oddCubicGenerator_add_kappa_evenIndexCubicShell_eq_shell
