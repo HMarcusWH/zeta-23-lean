@@ -42,7 +42,7 @@ CONTROL AUTHORITY
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
-The active R003 question is **Pair D2 — retained negative-root cross-parity secular completion** on the exact forced negative root. The first theorem-extraction question is whether opposite-good at the same negative shift forces a strict positive real secular margin; the second is whether the exact overlap/resolvent correction yields an independent completion inequality compatible with the #209 compulsory source/M4 budget.
+The active R003 theorem-extraction question is **CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY**: prove the exact predecessor correction relation advertised but not established by PR #224. Pair D2 retained negative-root secular completion remains a downstream/historical route to revisit after that collapse is formalized.
 
 ## Preserved research ancestry
 
@@ -296,9 +296,9 @@ Therefore a universal sign theorem for `re(star(S(v))*M4(v))`, or a universal pr
 
 **Status: FALSIFIED / CONSUMED as a universal full-carrier route by #215.**
 
-### Pair D2 — retained negative-root secular locus
+### Pair D2 — retained negative-root secular locus (historical / downstream)
 
-**ACTIVE / HIGHEST INFORMATION.**
+**HISTORICAL / DOWNSTREAM AFTER PREDECESSOR COLLAPSE.**
 
 Stay on the exact first-bad state and use the already-proved negative-root cross-parity certificate. In the even-selected branch the theorem inventory gives
 
@@ -314,7 +314,7 @@ Compose this with #209's compulsory
 `-lambda * ||D v_lambda||^2 <= re(star(S(v_lambda))*M4(v_lambda))`
 and #213's exact complete source-coordinate representation.
 
-The next preregistered questions are:
+The downstream preregistered questions are:
 
 1. **Opposite-good secular sign.** Does `¬ParityBad opposite` at `lambda < 0` force the opposite secular scalar to have strictly positive real part?
 2. **Secular completion.** Can the exact `Gamma(lambda) * S(v_lambda)` product be rewritten or bounded using `re(star(S)*M4)` minus a nonnegative resolvent correction, strongly enough to exclude the retained negative root?

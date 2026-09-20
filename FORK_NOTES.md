@@ -1,4 +1,4 @@
-# Fork notes — RHRC current state through merged PR #222
+# Fork notes — RHRC current state through merged PR #224
 
 > **RH remains OPEN.**
 

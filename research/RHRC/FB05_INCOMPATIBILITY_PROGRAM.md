@@ -73,7 +73,7 @@ CONTROL AUTHORITY
 
 ### Current theorem/research stack
 
-The current same-state Pair-D stack is #209 quantitative coercivity, #211 complete-functional representation, #213 exact source-coordinate kernel, and #215 bounded falsification of universal full-carrier source/M4 sign/proportionality. The highest-information live route is **Pair D2 — retained negative-root secular completion**.
+The current same-state stack includes #209 quantitative coercivity, #211 complete-functional representation, #213 exact source-coordinate kernel, #215 bounded falsification of universal full-carrier source/M4 sign/proportionality, #222 bi-regular zero-shift scalarization, and #224 the exact cubic-projection closed form. The immediate live theorem target is **CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY**. Pair D2 retained negative-root secular completion remains downstream/historical after that collapse is formalized.
 
 ## Existing theorem inputs
 
@@ -696,9 +696,9 @@ Therefore a universal sign theorem for `re(star(S(v))*M4(v))`, or a universal pr
 
 **Status: FALSIFIED / CONSUMED as a universal full-carrier route by #215.**
 
-### Pair D2 — retained negative-root secular locus
+### Pair D2 — retained negative-root secular locus (historical / downstream)
 
-**ACTIVE / HIGHEST INFORMATION.**
+**HISTORICAL / DOWNSTREAM AFTER PREDECESSOR COLLAPSE.**
 
 Stay on the exact first-bad state and use the already-proved negative-root cross-parity certificate. In the even-selected branch the theorem inventory gives
 
@@ -714,7 +714,7 @@ Compose this with #209's compulsory
 `-lambda * ||D v_lambda||^2 <= re(star(S(v_lambda))*M4(v_lambda))`
 and #213's exact complete source-coordinate representation.
 
-The next preregistered questions are:
+The downstream preregistered questions are:
 
 1. **Opposite-good secular sign.** Does `¬ParityBad opposite` at `lambda < 0` force the opposite secular scalar to have strictly positive real part?
 2. **Secular completion.** Can the exact `Gamma(lambda) * S(v_lambda)` product be rewritten or bounded using `re(star(S)*M4)` minus a nonnegative resolvent correction, strongly enough to exclude the retained negative root?

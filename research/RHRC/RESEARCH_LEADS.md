@@ -47,11 +47,11 @@ CONTROL AUTHORITY
 PR #224 closes the exact cubic-projection coefficient and does **not** prove the stronger predecessor-correction proportionality.
 
 Highest-leverage current lead:
-[
-oddCubicGeneratorPredecessorPart(N)
-=
--rac{2N-1}{6},oddIndexCubicShellPredecessorPart(N).
-]
+
+\`\`\`text
+oddCubicGeneratorPredecessorPart N
+  = -((2*N - 1)/6) * oddIndexCubicShellPredecessorPart N
+\`\`\`
 
 Status: **OPEN / NEXT**.
 
@@ -59,8 +59,7 @@ If proved, the alpha/Gamma affine collapse and one-coefficient selected-even zer
 
 The odd-selected first-bad branch and the terminal Mathlib RH seam remain explicit obligations.
 
-Detailed post-green pass: `RESEARCH_LEADS_POST_224_CUBIC_PROJECTION_DELTA.md`.
-
+Detailed post-green pass: \`RESEARCH_LEADS_POST_224_CUBIC_PROJECTION_DELTA.md\`.
 
 ## Current lead ordering
 

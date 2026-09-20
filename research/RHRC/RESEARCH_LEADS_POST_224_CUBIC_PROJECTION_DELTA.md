@@ -3,27 +3,30 @@
 ## Exact authority
 
 - PR: #224
-- validated/final head: `83de9193dffba12097d950d2291348db76d047f7`
-- merge: `0f8f5ad468b337622942f76725c9d76db74e27e4`
-- tree: `aaedc131612393a1198837b3e5288e48538a94ae`
-- exact promoted declaration: `Zeta23.CCM.cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`
+- validated/final head: \`83de9193dffba12097d950d2291348db76d047f7\`
+- merge: \`0f8f5ad468b337622942f76725c9d76db74e27e4\`
+- tree: \`aaedc131612393a1198837b3e5288e48538a94ae\`
+- exact promoted declaration: \`Zeta23.CCM.cubicProjectionResidual_eq_oddCubicProjectionSlope_smul\`
 - terminal claim: **RH remains OPEN**
 
 # What became formally true
 
-**PROVED.** For `K >= 1`, the residual between the centered cubic power vector and the constrained odd cubic compression is exactly one-dimensional with explicit slope
-[
-d^3-g_K = rac{3K^2+3K-1}{5},d.
-]
+**PROVED.** For \`K >= 1\`, the residual between the centered cubic power vector and the constrained odd cubic compression is exactly one-dimensional with explicit slope:
 
-This strengthens the pre-#224 statement that the residual merely lies in `span{d}`.
+\`\`\`text
+d^3 - g_K = ((3*K^2 + 3*K - 1)/5) * d
+\`\`\`
 
-**NOT PROVED BY #224.** PR #224 does not establish
-[
-a_N=-rac{2N-1}{6}d_N,
-]
-where `a_N = oddCubicGeneratorPredecessorPart N` and
-`d_N = oddIndexCubicShellPredecessorPart N`.
+This strengthens the pre-#224 statement that the residual merely lies in \`span{d}\`.
+
+**NOT PROVED BY #224.** PR #224 does not establish:
+
+\`\`\`text
+a_N = -((2*N - 1)/6) * d_N
+\`\`\`
+
+where \`a_N = oddCubicGeneratorPredecessorPart N\` and
+\`d_N = oddIndexCubicShellPredecessorPart N\`.
 
 # What changed
 
@@ -33,42 +36,43 @@ The theorem authority advances to #224, while the latest rigorous bounded resear
 
 # Upstream implications
 
-The exact coefficient is the ratio of the centered fourth and second moments on the symmetric discrete grid. This supports viewing `oddCubicCompressionVector` as a discrete Gram-Schmidt projection of (d^3) against (d).
+The exact coefficient is the ratio of the centered fourth and second moments on the symmetric discrete grid. This supports viewing \`oddCubicCompressionVector\` as a discrete Gram-Schmidt projection of \`d^3\` against \`d\`.
 
 **LEAD / HYPOTHESIS.** The parity-shell hierarchy may admit a discrete orthogonal-polynomial connection calculus. This is not theorem authority.
 
 # Downstream implications
 
-The immediate theorem target is the predecessor-correction proportionality
-[
-a_N=-kappa_N d_N,qquad
-kappa_N=rac{2N-1}{6}.
-]
+The immediate theorem target is the predecessor-correction proportionality:
 
-For Lean, define (kappa_N) in (mathbb C):
-```lean
+\`\`\`text
+a_N = -kappa_N * d_N
+kappa_N = (2*N - 1)/6
+\`\`\`
+
+For Lean, define \`kappa_N\` in \`Complex\`:
+
+\`\`\`lean
 def crossParityCubicCorrectionKappa (N : ℕ) : ℂ :=
   (2 * (N : ℂ) - 1) / 6
-```
-so that no `Nat.sub` or natural-number division ambiguity can enter the proof.
+\`\`\`
 
-If this theorem is proved, then **DERIVED / NOT YET FORMALIZED**
-[
-Gamma_0=1+kappa_N(1-alpha_0),
-]
-equivalently
-[
-6Gamma_0+(2N-1)alpha_0=2N+5,
-]
-and therefore
-[
-6sigma_-=
-alpha_0igl(6sigma_+-(2N-1)mu_0igr)+(2N+5)mu_0.
-]
+so that no \`Nat.sub\` or natural-number division ambiguity can enter the proof.
+
+If this theorem is proved, then **DERIVED / NOT YET FORMALIZED**:
+
+\`\`\`text
+Gamma0 = 1 + kappa_N*(1 - alpha0)
+
+6*Gamma0 + (2*N - 1)*alpha0 = 2*N + 5
+
+6*sigmaMinus
+  = alpha0*(6*sigmaPlus - (2*N - 1)*mu0)
+    + (2*N + 5)*mu0
+\`\`\`
 
 # Resurrected routes
 
-The large-aperture route remains worth reconsidering after scalar compression because an off-line zero generates finite badness for all sufficiently large apertures. Once the retained state has fewer free coefficients, a bounded-(N_*(L)) versus (N_*(L)	oinfty) dichotomy may expose new canonical arithmetic rigidity.
+The large-aperture route remains worth reconsidering after scalar compression because an off-line zero generates finite badness for all sufficiently large apertures. Once the retained state has fewer free coefficients, a bounded-\`N_*(L)\` versus \`N_*(L) -> infinity\` dichotomy may expose new canonical arithmetic rigidity.
 
 Pair B remains independent and secondary; it was deprioritized, not falsified.
 
@@ -76,7 +80,7 @@ Pair B remains independent and secondary; it was deprioritized, not falsified.
 
 **LEAD / HYPOTHESIS.** The exact #224 slope and the experimentally reconstructed predecessor ratio may be adjacent connection coefficients in a discrete orthogonal-polynomial hierarchy.
 
-**LEAD / HYPOTHESIS.** The terminal contradiction is more likely to constrain the complete collapsed scalar combination than to provide independent signs for (alpha_0,Gamma_0,mu_0,sigma_+). Historical failures repeatedly show that factorwise enclosure destroys useful canonical correlation.
+**LEAD / HYPOTHESIS.** The terminal contradiction is more likely to constrain the complete collapsed scalar combination than to provide independent signs for \`alpha0\`, \`Gamma0\`, \`mu0\`, and \`sigmaPlus\`. Historical failures repeatedly show that factorwise enclosure destroys useful canonical correlation.
 
 # Falsification checks
 
@@ -88,18 +92,18 @@ Pair B remains independent and secondary; it was deprioritized, not falsified.
 
 # Highest-leverage next moves
 
-1. Prove
-   ```lean
+1. Prove:
+   \`\`\`lean
    oddCubicGeneratorPredecessorPart N =
      -(crossParityCubicCorrectionKappa N) •
        oddIndexCubicShellPredecessorPart N
-   ```
-   for `1 ≤ N`.
-2. Immediately formalize the (alpha_0/Gamma_0) affine relation.
+   \`\`\`
+   for \`1 <= N\`.
+2. Immediately formalize the \`alpha0/Gamma0\` affine relation.
 3. Immediately formalize the one-coefficient selected-even scalar normal form.
 4. Re-compose the accumulated canonical source/Riesz/kernel/aperture theorem inventory against the **whole** collapsed scalar expression.
 5. Keep the terminal retained-state theorem parity-complete.
-6. Separately close the final seam from the project's open-strip zero carrier to Mathlib's exact `RiemannHypothesis`.
+6. Separately close the final seam from the project's open-strip zero carrier to Mathlib's exact \`RiemannHypothesis\`.
 
 # Standing questions
 

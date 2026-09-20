@@ -1,4 +1,4 @@
-# RHRC formal audit — merged theorem authority PR #222; research evidence PR #215
+# RHRC formal audit — merged theorem authority PR #224; research evidence PR #223
 
 > **RH remains OPEN.**
 

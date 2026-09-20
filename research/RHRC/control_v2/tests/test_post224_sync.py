@@ -41,5 +41,48 @@ class Post224SyncTests(unittest.TestCase):
         self.assertEqual(self.state["latest_research_evidence"]["pr"], 223)
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
 
+    def test_post224_math_docs_have_no_embedded_control_bytes(self):
+        paths = (
+            RHRC / "RESEARCH_LEADS_POST_224_CUBIC_PROJECTION_DELTA.md",
+            RHRC / "RESEARCH_LEADS.md",
+            RHRC / "OBSTRUCTION_LEDGER.md",
+            RHRC / "OBSTRUCTION_LEDGER_POST_224_DELTA.md",
+        )
+        for path in paths:
+            with self.subTest(path=path):
+                text = path.read_text(encoding="utf-8")
+                bad = [
+                    (i, ord(ch))
+                    for i, ch in enumerate(text)
+                    if (ord(ch) < 32 and ch not in "\n\r") or ord(ch) == 127
+                ]
+                self.assertEqual(bad, [])
+
+    def test_post224_authority_headings_are_current(self):
+        audit = (RHRC.parent.parent / "AUDIT.md").read_text(encoding="utf-8").splitlines()[0]
+        fork = (RHRC.parent.parent / "FORK_NOTES.md").read_text(encoding="utf-8").splitlines()[0]
+        self.assertEqual(
+            audit,
+            "# RHRC formal audit — merged theorem authority PR #224; research evidence PR #223",
+        )
+        self.assertEqual(
+            fork,
+            "# Fork notes — RHRC current state through merged PR #224",
+        )
+
+    def test_post224_operational_route_points_to_predecessor_correction(self):
+        for rel in (
+            Path("routes/R003_ccm_bridge/README.md"),
+            Path("FB05_INCOMPATIBILITY_PROGRAM.md"),
+        ):
+            with self.subTest(path=rel):
+                text = (RHRC / rel).read_text(encoding="utf-8")
+                self.assertIn("CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY", text)
+                self.assertIn(
+                    "HISTORICAL / DOWNSTREAM AFTER PREDECESSOR COLLAPSE",
+                    text,
+                )
+                self.assertNotIn("**ACTIVE / HIGHEST INFORMATION.**", text)
+
 if __name__ == "__main__":
     unittest.main()
