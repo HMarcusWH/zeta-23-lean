@@ -42,6 +42,38 @@ CONTROL AUTHORITY
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#224 authoritative execution override
+
+This section is the current execution override; older step lists below are preserved as history.
+
+```text
+PROVED #224
+  cubicProjectionResidual_eq_oddCubicProjectionSlope_smul
+  d^3 - g_K = ((3*K^2 + 3*K - 1)/5) d
+
+NEXT / OPEN
+  CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY
+  a_N = -((2N - 1)/6) d_N
+
+THEN / DERIVED CONDITIONAL, NOT FORMALIZED
+  6*Gamma0 + (2N - 1)*alpha0 = 2N + 5
+  6*sigmaMinus =
+    alpha0*(6*sigmaPlus - (2N - 1)*mu0) + (2N + 5)*mu0
+
+AFTER THAT / OPEN
+  canonical retained-state arithmetic incompatibility
+  odd-selected first-bad closure
+  parity-complete retained-state exclusion
+  open-strip carrier -> exact Mathlib RiemannHypothesis seam
+```
+
+Do not treat selected-even as WLOG. Do not reopen a finite-to-infinite convergence problem: the proved zeta route runs from a hypothetical off-line zero **down to** the finite obstruction. A universal `IsEmpty (BiRegularCellMinimalNegativeEnergyCertificate Q)` theorem is sufficient but stronger than required; an off-line-generated retained-certificate contradiction also suffices.
+
+See `RESEARCH_LEADS_POST_224_CUBIC_PROJECTION_DELTA.md` and `OBSTRUCTION_LEDGER_POST_224_DELTA.md`.
+
+**OBS-059I remains OPEN. RH remains OPEN.**
+
+
 ### Current execution ladder
 
 ```text
