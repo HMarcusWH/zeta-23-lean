@@ -72,7 +72,14 @@ theorem crossParityZeroShiftGamma_eq_one_add_kappa_mul_one_sub_alpha
             ((oddIndexCubicShellPredecessorPart N :
                 intrinsicParityPredecessorSubspace .odd N) :
               euclideanParityBoundaryFlatSubspace .odd (N + 1)) := by
-            exact inner_smul_right _ _ _
+            exact inner_smul_right
+              (𝕜 := ℂ)
+              (xMinus :
+                euclideanParityBoundaryFlatSubspace .odd (N + 1))
+              ((oddIndexCubicShellPredecessorPart N :
+                  intrinsicParityPredecessorSubspace .odd N) :
+                euclideanParityBoundaryFlatSubspace .odd (N + 1))
+              (-(crossParityCubicCorrectionKappa N))
   unfold crossParityZeroShiftGamma crossParityZeroShiftAlpha
   rw [hinner']
   ring
