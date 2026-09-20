@@ -80,7 +80,7 @@ ACTION_REGISTRY.current_frontier
 
 CONTROL_STATE.active_research_route.next_research_target
   = current descriptive research operation
-  = CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION
+  = CROSS_PARITY_CORRECTION_SOURCE_COUPLING
 ```
 
 The two fields serve different layers. Updating the current research operation does not authorize changing action scores, the selected first break, route digests, confirmation permissions, or the PR #117 control-semantic contract.
