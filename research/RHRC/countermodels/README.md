@@ -4,22 +4,24 @@
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #227
-- validated final head = b8d29733167a95e16f5721eddfced6b650a3b641
-- merge commit = 7aace87a5644f837e2c8b64bdcf5e66b2dc0b020
-- tree = 1dd1cdefcf4f4f7929b310697fdd1615a861ca1a
-- theorem family = CROSS_PARITY_ONE_COEFFICIENT_TRANSFER_COLLAPSE
-- prerequisite theorem = PR #226 `oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul`
-- exact flagship theorem = `BiRegularCellMinimalNegativeEnergyCertificate.exists_evenOddZeroShiftOneCoefficientNormalForm_of_even`
-- exact coefficient collapse = `Gamma = 1 + kappa * (1 - alpha)`
-- alpha reality/sign = OPEN / NOT PROVED BY #227
+- merged theorem authority = PR #229
+- validated final head = 9d4f81c171264be424fbac40f1211263c3cc6abd
+- merge commit = 992398c810de5fb84919846fc4192d709d51e783
+- tree = d9ae07d1ca92cb23b4a3ae3ccae0b32e9b7d38c8
+- theorem family = CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION
+- prior theorem authority = PR #227 `CROSS_PARITY_ONE_COEFFICIENT_TRANSFER_COLLAPSE`
+- exact flagship theorem = `oddSafeSecularCorrectionFunctional_eq_resolvent_pairing_div`
+- exact alpha consequence = `one_sub_crossParitySecularAlpha_eq_resolvent_pairing_div`
+- exact Gamma consequence = `one_sub_crossParitySecularGamma_eq_resolvent_pairing_div`
+- alpha reality/sign = OPEN / NOT PROVED BY #229
+- workflow harvest = 13/13 GREEN JOBS on the validated #229 head
 
 MERGED THEOREM-STAGE PROVENANCE
-- PR #227
-- validated theorem head = b8d29733167a95e16f5721eddfced6b650a3b641
-- validated theorem tree = 1dd1cdefcf4f4f7929b310697fdd1615a861ca1a
-- status = MERGED_VIA_PR_227
-- theorem family = CROSS_PARITY_ONE_COEFFICIENT_TRANSFER_COLLAPSE
+- PR #229
+- validated theorem head = 9d4f81c171264be424fbac40f1211263c3cc6abd
+- validated theorem tree = d9ae07d1ca92cb23b4a3ae3ccae0b32e9b7d38c8
+- status = MERGED_VIA_PR_229
+- theorem family = CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION
 
 LATEST RESEARCH EVIDENCE
 - PR #223
@@ -34,11 +36,37 @@ CONTROL AUTHORITY
 - PR #117
 - selected formal first break = E4A4-SCHUR-FB-05
 - active subobligation = OBS-059I
-- next research target = CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION
+- next research target = CROSS_PARITY_CORRECTION_SOURCE_COUPLING
+- required new information = CANONICAL_SOURCE_COUPLING_AND_RETAINED_SOURCE_BALANCE
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#229 current-state override
+
+PR #229 proves the generic correction-functional Riesz representation
+`chi(y) = <R b,y>/<c,c>` and the exact alpha/Gamma mixed-resolvent corollaries.
+It does **not** prove that alpha is real, positive, or sign-controlled.
+
+The next theorem target is `CROSS_PARITY_CORRECTION_SOURCE_COUPLING`: formalize
+the derived bridge `star (1-alpha) * <c,c> = cubicShellCoupling (R d)`, rewrite
+it through the production canonical source channels, and then derive the
+retained source-balance identity under an explicit nonzero source moment.
+Those statements are **OPEN / NEXT**, not theorem authority yet.
+
+The #229 workflow harvest completed 13/13 green jobs. Latest independent
+research evidence remains PR #223; Control-v2 semantic authority remains PR #117.
+OBS-059I, simultaneous odd-bad exclusion, odd-selected closure,
+parity-complete retained-state exclusion, the terminal Mathlib RH seam, and RH
+remain OPEN.
+
+Detailed post-green pass:
+`RESEARCH_LEADS_POST_229_RIESZ_DELTA.md` and
+`OBSTRUCTION_LEDGER_POST_229_DELTA.md`.
+
+Any older "current", "next", or routing labels below this override are
+historical snapshots unless re-established above.
 
 ## Current falsification target
 

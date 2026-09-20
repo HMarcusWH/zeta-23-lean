@@ -15,14 +15,14 @@ from control_v2.state import load_research_state
 class ControlV2Tests(unittest.TestCase):
     def test_control_state_tracks_latest_theorem_anchor_without_moving_control_anchor(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 227)
+        self.assertEqual(state.anchor.pr, 229)
         self.assertEqual(
             state.anchor.merge_commit,
-            "7aace87a5644f837e2c8b64bdcf5e66b2dc0b020",
+            "992398c810de5fb84919846fc4192d709d51e783",
         )
         self.assertEqual(
             state.anchor.tree,
-            "1dd1cdefcf4f4f7929b310697fdd1615a861ca1a",
+            "d9ae07d1ca92cb23b4a3ae3ccae0b32e9b7d38c8",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -96,11 +96,21 @@ class ControlV2Tests(unittest.TestCase):
             "BiRegularCellMinimalNegativeEnergyCertificate.exists_evenOddZeroShiftOneCoefficientNormalForm_of_even",
             "CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION",
             "Alpha reality/sign is NOT proved",
+            "PR #229",
+            "9d4f81c171264be424fbac40f1211263c3cc6abd",
+            "992398c810de5fb84919846fc4192d709d51e783",
+            "oddSafeSecularCorrectionFunctional_eq_resolvent_pairing_div",
+            "one_sub_crossParitySecularAlpha_eq_resolvent_pairing_div",
+            "one_sub_crossParitySecularGamma_eq_resolvent_pairing_div",
+            "13/13 GREEN JOBS",
+            "CROSS_PARITY_CORRECTION_SOURCE_COUPLING",
+            "CANONICAL_SOURCE_COUPLING_AND_RETAINED_SOURCE_BALANCE",
+            "Alpha reality/sign remains OPEN after #229",
             "RH remains OPEN",
         ):
             self.assertIn(token, note)
-        self.assertEqual(control["merged_theorem_anchor"]["pr"], 227)
-        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 227)
+        self.assertEqual(control["merged_theorem_anchor"]["pr"], 229)
+        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 229)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
         self.assertEqual(control["terminal_claim"], "RH_OPEN")
 

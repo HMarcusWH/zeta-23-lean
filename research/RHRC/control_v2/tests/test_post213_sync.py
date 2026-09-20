@@ -39,9 +39,13 @@ class Post213SyncTests(unittest.TestCase):
         self.assertEqual(route["retained_source_kernel_antialignment_rewrite"], "PROVED_PR_213")
         self.assertEqual(route["source_coordinate_kernel_subobligation"], "CLOSED_PROVED_PR_213")
         self.assertEqual(route["active_subobligation"], "OBS-059I")
+        self.assertIn(
+            "INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY",
+            state["control_note"],
+        )
         self.assertEqual(
             route["required_new_information"],
-            "INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY",
+            "CANONICAL_SOURCE_COUPLING_AND_RETAINED_SOURCE_BALANCE",
         )
         self.assertIn("next_research_target", route)
         self.assertTrue(route["canonical_simultaneous_odd_bad_branch"].startswith("OPEN"))
