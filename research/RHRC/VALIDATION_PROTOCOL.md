@@ -58,6 +58,9 @@ Promoted object:
 Not promoted:
 `oddCubicGeneratorPredecessorPart N = -((2N-1)/6) • oddIndexCubicShellPredecessorPart N`.
 
+Current next research target:
+`CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY`.
+
 A PR title, body or intended target never outranks the exact compiled declaration surface. An explicit `#print axioms` line remains desirable for future headline theorems but is not, by itself, the current machine promotion gate.
 
 
@@ -591,12 +594,12 @@ All nine #213 workflow families passed on the exact theorem head. The merge tree
 
 The old real-energy Riesz chain and the new mixed source-kernel observable are not yet a same-object theorem chain. **RH remains OPEN.**
 
-## Post-#215 validation refinement
+## Historical post-#215 validation refinement
 
-A post-#215 RH-directed claim must preserve the exact retained `L`, `N/K`, selected parity, negative shift `lambda`, normalization and source observable. Do not infer a retained-state law from #215's arbitrary-vector K=3 full-carrier classifier, and do not move to a contact state unless an explicit theorem preserves the required state data.
+At that stage, a post-#215 RH-directed claim had to preserve the exact retained `L`, `N/K`, selected parity, negative shift `lambda`, normalization and source observable. Do not infer a retained-state law from #215's arbitrary-vector K=3 full-carrier classifier, and do not move to a contact state unless an explicit theorem preserves the required state data.
 
 Derive all conjugation/orientation factors in the secular overlap identity from Lean definitions before assigning a sign. Keep #215's `R_min < 0 < R_max` as a falsification of universal full-carrier sign, not as evidence for a retained-eigenmode sign. Treat zero-shift and resonant alternatives as separate branches until a theorem composes them.
 
-The next research target is `RETAINED_CROSS_PARITY_SECULAR_COMPLETION`. Research certificate != Lean theorem; supporting lemma != negative-root exclusion; neither implies RH.
+At that stage, the next research target was `RETAINED_CROSS_PARITY_SECULAR_COMPLETION`. Research certificate != Lean theorem; supporting lemma != negative-root exclusion; neither implies RH.
 
 **RH remains OPEN.**

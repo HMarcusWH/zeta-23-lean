@@ -50,7 +50,7 @@ ACTION_REGISTRY.current_frontier
 
 CONTROL_STATE.active_research_route.next_research_target
   = current descriptive research operation
-  = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+  = CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY
 ```
 
 The two fields serve different layers. Updating the current research operation does not authorize changing action scores, the selected first break, route digests, confirmation permissions, or the PR #117 control-semantic contract.
@@ -229,9 +229,9 @@ next research target = EXACT_KERNEL_ADVERSARIAL_FALSIFICATION
 
 R003 remains `DISCOVERY`; confirmatory execution remains unauthorized. **RH remains OPEN.**
 
-## Post-#215 control state
+## Historical post-#215 control state
 
-Current authority split after merged-green research PR #215:
+Historical authority split at that stage after merged-green research PR #215:
 
 ```text
 THEOREM AUTHORITY
@@ -265,10 +265,10 @@ R_max =  1.02497161190896926446719955942e-6
 
 so the full-carrier pairing is sign-indefinite. Universal full-carrier source/M4 sign and proportionality routes are therefore consumed at this research scope.
 
-The retained-state implication was explicitly `NOT_TESTED` by #215. The next route is not a guessed contact state. It is the already theorem-backed **retained negative-root cross-parity secular state**: preserve the same aperture, size, selected parity, negative shift and canonical source functional, and investigate whether the old exact cross-parity secular transfer combines with #209/#213 into an independent incompatibility.
+The retained-state implication was explicitly `NOT_TESTED` by #215. At that stage, the next route was not a guessed contact state. It was the already theorem-backed **retained negative-root cross-parity secular state**: preserve the same aperture, size, selected parity, negative shift and canonical source functional, and investigate whether the old exact cross-parity secular transfer combines with #209/#213 into an independent incompatibility.
 
 ```text
-next research target = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+next research target at that stage = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
 contact-locus route  = LEAD / REQUIRES SAME-STATE CONTACT BRIDGE
 zero-shift response  = RESURRECTED SECONDARY
 resonant pole/tube   = RESURRECTED SECONDARY

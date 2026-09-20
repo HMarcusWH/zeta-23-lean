@@ -550,7 +550,7 @@ rh_claim = false
 
 Do not infer which individual primitive sign reversed from this summary. The exact research claim is only that the complete frozen conjunction failed its required center gate.
 
-## NOW — FB-05 / same-state two-parity squeeze
+## Historical post-#203 — FB-05 / same-state two-parity squeeze
 
 ```text
 OBS-056 CLOSED in exact frozen Q14 research scope
@@ -559,13 +559,13 @@ OBS-058 OPEN / SOURCE-REPRESENTATION LANE CONSUMED AS DEFAULT
 OBS-059 OPEN / ACTIVE: same-state two-parity squeeze / simultaneous-badness exclusion gap
 
 Pair-A representation engineering = CONSUMED / DOWNGRADED
-Pair D — two-parity squeeze = HIGHEST INFORMATION / NEXT RESEARCH ROUTE
+Pair D — two-parity squeeze = HIGHEST INFORMATION / NEXT RESEARCH ROUTE AT THAT STAGE
 Pair B — negative-index separation vs localized critical-line sampling rigidity = SECONDARY
 ```
 
 Do not rescue #203 by fitting a new sign pattern to the same six centers. Do not rerun the #197 Q14 cover, increase precision/depth, or return to source-parenthesis changes. A Pair-A revival now requires a genuinely new theorem-level invariant derived independently of the failed target data.
 
-The Pair-D planning question is:
+At that stage, the Pair-D planning question was:
 
 > On the exact same retained canonical first-bad state, what independent arithmetic restriction relates the two parity successors strongly enough to exclude simultaneous badness, or forces the alternative source-moment branch into a contradiction?
 

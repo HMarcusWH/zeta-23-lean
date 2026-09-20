@@ -3,8 +3,8 @@
 This ledger records reusable blockers that should shape future route design.
 
 > **Base-ledger coverage:** theorem state through PR #182; research evidence through PR #180.  
-> **Current obstruction delta:** `OBSTRUCTION_LEDGER_POST_221_DELTA.md`.  
-> **Current active obstruction:** `OBS-059I` — branch-classified; canonical-arithmetic discrimination required. — retained-dynamical-locus information required.  
+> **Current obstruction delta:** `OBSTRUCTION_LEDGER_POST_224_DELTA.md`.  
+> **Current active obstruction:** `OBS-059I` — OPEN / BIREGULAR-SCALARIZED / CUBIC-PROJECTION CLOSED / PREDECESSOR-CORRECTION PROPORTIONALITY REQUIRED / CANONICAL-ARITHMETIC INCOMPATIBILITY STILL REQUIRED.  
 > **Claim firewall:** RH remains OPEN.
 
 <!-- RHRC_CURRENT_STATE_BEGIN -->
@@ -47,23 +47,23 @@ CONTROL AUTHORITY
 
 ## Post-#224 current obstruction override
 
-\`OBS-059I\` remains OPEN.
+`OBS-059I` remains OPEN.
 
 #224 closes the explicit cubic projection coefficient:
 
-\`\`\`text
+```text
 d^3 - g_K = ((3*K^2 + 3*K - 1)/5) * d
-\`\`\`
+```
 
 It does **not** close:
 
-\`\`\`text
+```text
 a_N = -((2*N - 1)/6) * d_N
-\`\`\`
+```
 
 The latter is the immediate theorem target. The alpha/Gamma affine relation and one-coefficient scalar form are **DERIVED CONDITIONAL / NOT FORMALIZED**. Canonical simultaneous odd-bad exclusion, odd-selected closure, parity-complete retained-state impossibility and the exact Mathlib RH seam remain OPEN.
 
-Detailed ledger delta: \`OBSTRUCTION_LEDGER_POST_224_DELTA.md\`.
+Detailed ledger delta: `OBSTRUCTION_LEDGER_POST_224_DELTA.md`.
 
 ## OBS-001 — TightMult information wall
 

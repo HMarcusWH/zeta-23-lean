@@ -84,5 +84,42 @@ class Post224SyncTests(unittest.TestCase):
                 )
                 self.assertNotIn("**ACTIVE / HIGHEST INFORMATION.**", text)
 
+    def test_post224_markdown_backticks_are_not_overescaped(self):
+        paths = (
+            RHRC / "RESEARCH_LEADS_POST_224_CUBIC_PROJECTION_DELTA.md",
+            RHRC / "RESEARCH_LEADS.md",
+            RHRC / "OBSTRUCTION_LEDGER.md",
+            RHRC / "OBSTRUCTION_LEDGER_POST_224_DELTA.md",
+        )
+        for path in paths:
+            with self.subTest(path=path):
+                self.assertNotIn("\\`", path.read_text(encoding="utf-8"))
+
+    def test_post224_current_lead_ordering_matches_machine_target(self):
+        leads = (RHRC / "RESEARCH_LEADS.md").read_text(encoding="utf-8")
+        self.assertIn("1. **CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY — HIGHEST INFORMATION / NEXT.**", leads)
+        self.assertIn("## Historical post-#215 retained-root routing", leads)
+        control = (RHRC / "control_v2" / "README.md").read_text(encoding="utf-8")
+        self.assertIn("= CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY", control)
+        self.assertIn("## Historical post-#215 control state", control)
+
+    def test_post224_obstruction_pointer_is_current(self):
+        ledger = (RHRC / "OBSTRUCTION_LEDGER.md").read_text(encoding="utf-8")
+        self.assertIn("**Current obstruction delta:** `OBSTRUCTION_LEDGER_POST_224_DELTA.md`", ledger)
+        self.assertIn("PREDECESSOR-CORRECTION PROPORTIONALITY REQUIRED", ledger)
+
+    def test_post224_old_route_snapshots_are_explicitly_historical(self):
+        root = RHRC.parent.parent
+        checks = (
+            (root / "README.md", "## Historical RH/CCM frontier after PR #215"),
+            (RHRC / "README.md", "## Historical post-#215 retained negative-root secular frontier"),
+            (RHRC / "CURRENT_RESEARCH_PLAN.md", "## Historical post-#203 — FB-05 / same-state two-parity squeeze"),
+            (RHRC / "DOCUMENTATION_AUTHORITY.md", "## Historical post-#215 authority — retained negative-root secular frontier"),
+            (RHRC / "VALIDATION_PROTOCOL.md", "## Historical post-#215 validation refinement"),
+        )
+        for path, marker in checks:
+            with self.subTest(path=path):
+                self.assertIn(marker, path.read_text(encoding="utf-8"))
+
 if __name__ == "__main__":
     unittest.main()
