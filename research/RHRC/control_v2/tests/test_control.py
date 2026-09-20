@@ -96,11 +96,21 @@ class ControlV2Tests(unittest.TestCase):
             "BiRegularCellMinimalNegativeEnergyCertificate.exists_evenOddZeroShiftOneCoefficientNormalForm_of_even",
             "CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION",
             "Alpha reality/sign is NOT proved",
+            "PR #229",
+            "9d4f81c171264be424fbac40f1211263c3cc6abd",
+            "992398c810de5fb84919846fc4192d709d51e783",
+            "oddSafeSecularCorrectionFunctional_eq_resolvent_pairing_div",
+            "one_sub_crossParitySecularAlpha_eq_resolvent_pairing_div",
+            "one_sub_crossParitySecularGamma_eq_resolvent_pairing_div",
+            "13/13 GREEN JOBS",
+            "CROSS_PARITY_CORRECTION_SOURCE_COUPLING",
+            "CANONICAL_SOURCE_COUPLING_AND_RETAINED_SOURCE_BALANCE",
+            "Alpha reality/sign remains OPEN after #229",
             "RH remains OPEN",
         ):
             self.assertIn(token, note)
-        self.assertEqual(control["merged_theorem_anchor"]["pr"], 227)
-        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 227)
+        self.assertEqual(control["merged_theorem_anchor"]["pr"], 229)
+        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 229)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
         self.assertEqual(control["terminal_claim"], "RH_OPEN")
 
