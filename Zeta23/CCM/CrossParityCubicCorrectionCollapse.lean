@@ -977,7 +977,7 @@ theorem oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul
           ((z : intrinsicParityPredecessorSubspace .odd N) :
             EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) ∈
         (euclideanOddBoundaryFlatSubspace N)ᗮ := by
-    rw [oddBoundaryFlat_normal_eq_oddNormalSubspace N] at hzRestrictNormal
+    rw [← oddBoundaryFlat_normal_eq_oddNormalSubspace N] at hzRestrictNormal
     exact hzRestrictNormal.1
   have hzInner :
       inner ℂ
