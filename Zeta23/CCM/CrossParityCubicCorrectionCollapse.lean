@@ -616,7 +616,7 @@ private theorem evenShell_rightOuter_eq
           EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))))
     rw [indexMatrix_mulVec_apply,
       centeredIndex_successorRightOuterIndex] at hcoords
-    simpa using hDcoord.trans hcoords.symm
+    simpa using hcoords.symm.trans hDcoord
   have hproj :=
     cubicProjectionResidual_eq_oddCubicProjectionSlope_smul
       (N + 1) (by omega)
