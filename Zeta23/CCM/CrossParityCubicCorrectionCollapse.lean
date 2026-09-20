@@ -892,11 +892,21 @@ theorem oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul
         _
     rw [oneStepCenteredRestrict_apply]
     change
-      (((centeredIndex N i : ℤ) : ℂ) *
-        oneStepCenteredRestrict N
-          (((cPlus :
-              euclideanParityBoundaryFlatSubspace .even (N + 1)) :
-            EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))) i) = _
+      (euclideanIndexLinearMap (N + 1)
+        ((cPlus :
+            euclideanParityBoundaryFlatSubspace .even (N + 1)) :
+          EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))))
+          (centeredEmbedding N (N + 1) (Nat.le_succ N) i) = _
+    have hcoords := congrArg
+      (fun z : Fin (2 * (N + 1) + 1) → ℂ =>
+        z (centeredEmbedding N (N + 1) (Nat.le_succ N) i))
+      (euclideanIndexLinearMap_coordinates (N + 1)
+        ((cPlus :
+            euclideanParityBoundaryFlatSubspace .even (N + 1)) :
+          EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))))
+    rw [indexMatrix_mulVec_apply,
+      centeredIndex_centeredEmbedding] at hcoords
+    rw [hcoords]
     rw [hc]
     simp [centeredPowerVector_apply]
     ring
