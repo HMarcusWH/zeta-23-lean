@@ -344,7 +344,10 @@ private theorem sum_oneStepCentered_split
         ((∑ i : Fin (2 * N + 1),
             f (centeredEmbedding N (N + 1) (Nat.le_succ N) i)) +
           f (successorRightOuterIndex N)) := by
-  rw [Fin.sum_univ_succ, Fin.sum_univ_castSucc]
+  have houter := Fin.sum_univ_succ f
+  have hinner :=
+    Fin.sum_univ_castSucc
+      (fun i : Fin (2 * N + 2) => f i.succ)
   have hmiddle :
       (∑ i : Fin (2 * N + 1), f i.castSucc.succ) =
         ∑ i : Fin (2 * N + 1),
@@ -354,14 +357,27 @@ private theorem sum_oneStepCentered_split
     congr 1
     apply Fin.ext
     simp [centeredEmbedding]
-    omega
   have hright :
       (Fin.last (2 * N + 1)).succ = successorRightOuterIndex N := by
     apply Fin.ext
     simp [successorRightOuterIndex]
     omega
-  rw [hmiddle, hright]
-  rfl
+  calc
+    (∑ j, f j) =
+        f 0 + ∑ i : Fin (2 * N + 2), f i.succ := by
+      simpa only [Nat.mul_add, Nat.mul_one, Nat.add_assoc] using houter
+    _ =
+        f 0 +
+          ((∑ i : Fin (2 * N + 1), f i.castSucc.succ) +
+            f (Fin.last (2 * N + 1)).succ) := by
+      exact congrArg (fun t => f 0 + t) hinner
+    _ =
+        f (successorLeftOuterIndex N) +
+          ((∑ i : Fin (2 * N + 1),
+              f (centeredEmbedding N (N + 1) (Nat.le_succ N) i)) +
+            f (successorRightOuterIndex N)) := by
+      rw [hmiddle, hright]
+      rfl
 
 private theorem inner_oneStepCenteredRestrict
     (N : ℕ)
@@ -1076,15 +1092,15 @@ theorem oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul
               centeredPowerVector N 3) i := by
       simpa [oneStepCenteredRestrict_apply] using hdR
     have hcR' :
-        (((cMinus : intrinsicParitySuccShell .odd N) :
-            euclideanParityBoundaryFlatSubspace .odd (N + 1)) :
-          EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
-          (centeredEmbedding N (N + 1) (Nat.le_succ N) i)) =
-          (C • centeredPowerVector N 1) i := by
-      simpa [oneStepCenteredRestrict_apply] using hcR.symm
+        (C • centeredPowerVector N 1) i =
+          (((cMinus : intrinsicParitySuccShell .odd N) :
+              euclideanParityBoundaryFlatSubspace .odd (N + 1)) :
+            EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
+              (centeredEmbedding N (N + 1) (Nat.le_succ N) i) := by
+      simpa [oneStepCenteredRestrict_apply] using hcR
     simp [centeredPowerVector_apply] at hgR' hdR' hcR' ⊢
     linear_combination
-      -hga' - kappa * hdd' + hgR' + kappa * hdR' -
+      -hga' - kappa * hdd' + hgR' + kappa * hdR' +
         (1 + kappa) * hcR' -
         ((((centeredIndex N i : ℤ) : ℂ) ^ 3) * hkappa)
   have hzBoundary :
