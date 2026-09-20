@@ -48,6 +48,19 @@ CONTROL AUTHORITY
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#224 exact-object promotion record
+
+PR #224 is theorem authority because its exact final head compiled through the promoted CCM/ExceptionalZero import closure and passed the repository's forbidden-placeholder scan.
+
+Promoted object:
+`cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`.
+
+Not promoted:
+`oddCubicGeneratorPredecessorPart N = -((2N-1)/6) • oddIndexCubicShellPredecessorPart N`.
+
+A PR title, body or intended target never outranks the exact compiled declaration surface. An explicit `#print axioms` line remains desirable for future headline theorems but is not, by itself, the current machine promotion gate.
+
+
 ### Positional living-surface validation
 
 For living/current documentation, validation is positional rather than mere token presence: the marked `RHRC_CURRENT_STATE` block near the front of each living surface must agree with `control_v2/CONTROL_STATE.json`. A correct later append-only override does not validate a stale front-matter declaration.
