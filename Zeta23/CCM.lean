@@ -130,8 +130,11 @@ import Zeta23.CCM.FirstBadSpectralInterfaces
 import Zeta23.CCM.SourceMomentDecomposition
 import Zeta23.CCM.CrossParitySecularTransfer
 import Zeta23.CCM.CrossParityCubicCorrectionCollapse
+import Zeta23.CCM.CrossParityCorrectionFunctionalCollapse
+import Zeta23.CCM.CrossParitySecularCorrectionCollapse
 import Zeta23.CCM.KernelSourceTransport
 import Zeta23.CCM.ZeroShiftCrossParityTransfer
+import Zeta23.CCM.ZeroShiftCrossParityCorrectionCollapse
 import Zeta23.CCM.CanonicalSourceEnergy
 import Zeta23.CCM.CanonicalPolePrimeDiscrepancy
 import Zeta23.CCM.SourceDerivativeTransport
@@ -161,9 +164,11 @@ import Zeta23.CCM.RegularFirstBadCrossParitySecularCompletion
 import Zeta23.CCM.RegularFirstBadSecularBudgetDichotomy
 import Zeta23.CCM.GoodSectorKernelAnnihilation
 import Zeta23.CCM.RegularFirstBadZeroShiftKernelBalance
+import Zeta23.CCM.RegularFirstBadZeroShiftKernelCollapse
 import Zeta23.CCM.ZeroShiftSchurClassification
 import Zeta23.CCM.RegularFirstBadZeroShiftSchurClassification
 import Zeta23.CCM.BiRegularFirstBadZeroShiftNormalForm
+import Zeta23.CCM.BiRegularFirstBadZeroShiftCorrectionCollapse
 import Zeta23.CCM.CanonicalSourcePairing
 import Zeta23.CCM.CanonicalQuadraticNormalSourceFunctional
 import Zeta23.CCM.RegularFirstBadCompleteSourceFunctional
