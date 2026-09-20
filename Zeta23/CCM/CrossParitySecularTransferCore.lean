@@ -230,7 +230,7 @@ theorem crossParitySecularGamma_eq_trial_cubic_overlap_div
             ((R b : intrinsicParityPredecessorSubspace .odd N) :
               euclideanParityBoundaryFlatSubspace .odd (N + 1))
             (a : euclideanParityBoundaryFlatSubspace .odd (N + 1)) / den := by
-    simpa [c, a, b, R, chi, cV, den] using
+    simpa only [c, a, b, R, chi, cV, den] using
       oddSafeSecularCorrectionFunctional_eq_resolvent_pairing_div
         hL N hN hprevOdd lam hlam a
   have hRaC := inner_intrinsicPredecessor_shell_eq_zero .odd N (R b) c
