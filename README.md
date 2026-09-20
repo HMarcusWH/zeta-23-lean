@@ -8,17 +8,20 @@ This fork preserves the upstream Zeta23 theorem package while adding an opt-in R
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #222
-- validated final head = c46939488ead9535a63b547c38d64938a882a9f1
-- merge commit = 001f375b4a7e70f69d2b7abb3bed1b9fd04f0ba5
-- tree = fd151afbcae3155cc4d32a75da08b6f7e0119099
+- merged theorem authority = PR #224
+- validated final head = 83de9193dffba12097d950d2291348db76d047f7
+- merge commit = 0f8f5ad468b337622942f76725c9d76db74e27e4
+- tree = aaedc131612393a1198837b3e5288e48538a94ae
+- exact promoted theorem = `cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`
+- exact proved identity = `d^3 - g_K = ((3*K^2 + 3*K - 1)/5) * d`
+- stronger predecessor correction proportionality = OPEN / NOT PROVED BY #224
 
 MERGED THEOREM-STAGE PROVENANCE
-- PR #222
-- validated theorem head = e42dbce1bbbc68b5cf9612e7c8a8dab2a2eca543
-- validated theorem tree = 48d8752950c28e0d3bbd385646e71075abef9e76
-- status = MERGED_VIA_PR_222
-- theorem family = BIREGULAR_FIRST_BAD_ZERO_SHIFT_NORMAL_FORM
+- PR #224
+- validated theorem head = 83de9193dffba12097d950d2291348db76d047f7
+- validated theorem tree = aaedc131612393a1198837b3e5288e48538a94ae
+- status = MERGED_VIA_PR_224
+- theorem family = ODD_CUBIC_PROJECTION_CLOSED_FORM
 
 LATEST RESEARCH EVIDENCE
 - PR #223
@@ -33,7 +36,7 @@ CONTROL AUTHORITY
 - PR #117
 - selected formal first break = E4A4-SCHUR-FB-05
 - active subobligation = OBS-059I
-- next research target = RETAINED_BIREGULAR_ZERO_SHIFT_SCALAR_DISCRIMINATION
+- next research target = CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
@@ -41,83 +44,127 @@ CONTROL AUTHORITY
 
 ## RH closure plan — current synthesis target
 
-This is the current **research/proof plan**, not a claim that RH is closed. Compiler/CI evidence remains authoritative, and every step below must be proved without adding project axioms or hidden RH-equivalent assumptions.
+This is the current **research/proof plan**, not a claim that RH is closed. Compiler/CI evidence remains authoritative, and every step below must be proved without project axioms, `sorry`, hidden RH-equivalent assumptions, or promotion beyond the exact checked declaration.
 
 ### Already established in the live theorem stack
 
-1. **Exceptional-zero seam:** an off-critical-line zeta zero feeds the finite exceptional-zero/CCM obstruction machinery and yields a canonical negative finite witness.
-2. **First-bad reduction:** a negative finite witness can be reduced to a regular, cell-minimal first-bad certificate.
-3. **Bi-regularization (#222):** the retained cell-minimal first-bad state can be chosen with both predecessor parities regular at the same aperture and cutoff.
-4. **Zero-shift classification (#221/#222):** predecessor resonance disappears on that bi-regular retained state; successor badness is therefore carried by the zero-shift scalar response. In the selected-even form:
+1. **Exceptional-zero seam — PROVED:** a hypothetical off-critical-line zero in the project's open-strip `zetaZeroConfig` feeds the finite exceptional-zero/CCM obstruction machinery and yields a canonical negative finite witness.
+2. **First-bad reduction — PROVED:** a negative finite witness reduces to a regular, cell-minimal first-bad certificate.
+3. **Bi-regularization (#222) — PROVED:** the retained cell-minimal first-bad state can be chosen with both predecessor parities regular at the same aperture and cutoff.
+4. **Zero-shift classification (#221/#222) — PROVED:** on the bi-regular retained state predecessor resonance is eliminated. In the selected-even branch,
    ```text
    Re sigmaPlus < 0
    sigmaMinus = alpha0 * sigmaPlus + Gamma0 * mu0
    odd badness <-> Re sigmaMinus < 0
    ```
+5. **Exact odd cubic projection (#224) — PROVED:** Lean proves
+   ```text
+   d^3 - g_K = ((3*K^2 + 3*K - 1)/5) * d.
+   ```
+   Exact promoted declaration: `cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`.
 
-### Immediate theorem target — PR #224
+### Immediate theorem target after #224
 
-PR #224 is attempting to prove the exact finite-geometry collapse
-```text
-oddCubicGeneratorPredecessorPart N
-  = -((2N - 1)/6) * oddIndexCubicShellPredecessorPart N.
+The next theorem is **not** already proved by #224. Define the coefficient in the scalar field, not with natural-number subtraction/division:
+
+```lean
+def crossParityCubicCorrectionKappa (N : ℕ) : ℂ :=
+  (2 * (N : ℂ) - 1) / 6
 ```
 
-If Lean proves this exact identity, the two apparent cross-parity correction directions are one canonical direction. The transfer coefficients then satisfy an affine relation, and the retained scalar normal form collapses to the one-coefficient equation
-```text
-6 * sigmaMinus
-  = alpha0 * (6 * sigmaPlus - (2N - 1) * mu0)
-    + (2N + 5) * mu0.
+Then prove, for the nontrivial range used by the shell machinery,
+
+```lean
+theorem oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul
+    (N : ℕ) (hN : 1 ≤ N) :
+    oddCubicGeneratorPredecessorPart N =
+      -(crossParityCubicCorrectionKappa N) •
+        oddIndexCubicShellPredecessorPart N := by
+  ...
 ```
 
-Until the corresponding Lean declarations pass the full theorem gates, this remains a **LEAD**, not theorem authority.
+Mathematically this is
 
-### Decisive finite closure target
+```text
+a_N = -((2N - 1)/6) d_N.
+```
 
-The next mathematical objective is to prove that the strongest retained finite counterexample structure cannot exist. A successful endpoint would have the shape
+Status: **OPEN / NEXT**.
+
+### Conditional downstream collapse
+
+If the predecessor-correction proportionality is proved, then the existing definitions give the affine transfer-coefficient relation
+
+```text
+Gamma0 = 1 + ((2N - 1)/6) * (1 - alpha0)
+6*Gamma0 + (2N - 1)*alpha0 = 2N + 5
+```
+
+and the selected-even retained scalar becomes
+
+```text
+6*sigmaMinus
+  = alpha0 * (6*sigmaPlus - (2N - 1)*mu0)
+    + (2N + 5)*mu0.
+```
+
+These are currently **DERIVED CONDITIONAL / NOT YET FORMALIZED**, not theorem authority.
+
+### Parity-complete retained-state closure
+
+The selected-even normal form is not by itself a complete finite contradiction: the retained first-bad certificate may have selected parity `odd`, and the repo does not prove the centered-index map preserves canonical energy strongly enough to make the even case WLOG.
+
+The terminal finite argument therefore must do at least one of:
+
+1. prove the selected parity may be taken even;
+2. build the mirrored odd-to-even arithmetic squeeze; or
+3. prove one parity-symmetric retained-state contradiction covering both cases.
+
+A sufficient strong endpoint remains
+
 ```lean
 theorem no_biRegular_cellMinimal_negativeEnergyCertificate
     (Q : ℕ) :
     IsEmpty (BiRegularCellMinimalNegativeEnergyCertificate Q) := by
   ...
 ```
-or an equivalent theorem excluding the surviving retained scalar sign configuration.
 
-The exhaustive PR-history synthesis pass should be used here: combine every still-live theorem, revisit historically dead routes whose prerequisites have changed, and look for a composition of cell minimality, bi-regularity, source/moment identities, cross-parity transport, aperture continuity/analyticity, Riesz/energy identities, and the collapsed zero-shift scalar that forces a contradiction.
+but this is **stronger than required**. A contradiction specialized to the off-line-zero-generated retained certificate also closes the route and may use extra canonical ancestry that arbitrary finite certificates do not possess.
 
-### Final zeta-level composition
+### Zeta-level contradiction direction
 
-Only after the finite impossibility theorem is green should the terminal wrapper be added:
+The route does **not** require a new finite-to-infinite spectral convergence theorem. The proved direction already runs from a hypothetical off-line zeta zero down to the finite obstruction:
 
 ```text
-off-critical-line zeta zero
+hypothetical off-line strip zero
     -> canonical finite negative witness
     -> regular cell-minimal first-bad certificate
     -> bi-regular retained negative-energy certificate
-    -> contradiction
-    -> every nontrivial zeta zero has Re rho = 1/2.
+    -> parity-complete retained-state contradiction
+    -> no off-line zero in zetaZeroConfig.
 ```
 
-The final promoted theorem must pass:
+The final result is obtained by contradiction/contrapositive packaging.
 
-```text
-lake build Zeta23.CCM
-lake build Zeta23.ExceptionalZero
-lake build <final RH module>
-no-sorry / no-project-axiom gates
-#print axioms <final RH theorem>
-```
+### Terminal Mathlib RH seam
+
+The project's `zetaZeroConfig` carrier already restricts to zeros in the open critical strip. Mathlib's exact `RiemannHypothesis` quantifies over every nontrivial zeta zero except the known trivial negative even zeros and the pole point.
+
+Therefore, after proving all `zetaZeroConfig` zeros lie on `Re = 1/2`, one final formal seam remains: show every Mathlib-nontrivial zero is either one of the excluded trivial zeros or lies in the open critical strip, using the available nonvanishing/functional-equation machinery.
+
+Status: **OPEN terminal seam**.
 
 ### Claim firewall
 
-- PR #223's bounded Arb audit did **not** locate a frozen retained first-bad state; it certified zero qualified retained points in its frozen scope.
-- PR #224 is currently a draft theorem search and is not theorem authority.
+- PR #224 is theorem authority **only** for its exact compiled cubic-projection declaration; its PR title/body do not prove the stronger predecessor-correction proportionality.
+- PR #223 remains the latest rigorous bounded research evidence and did not reach the theorem-guaranteed retained state.
 - OBS-059I remains OPEN.
-- simultaneous odd-bad exclusion remains OPEN.
-- negative-root exclusion remains OPEN.
-- finite-to-zeta closure remains OPEN until the finite impossibility theorem and terminal wrapper are actually compiler-validated.
+- simultaneous canonical odd-bad exclusion remains OPEN.
+- odd-selected first-bad closure remains OPEN.
+- parity-complete retained-state exclusion remains OPEN.
+- negative-root exclusion remains OPEN as a stronger historical route, but a direct retained-certificate contradiction could bypass it.
+- the terminal Mathlib `RiemannHypothesis` seam remains OPEN.
 - **RH remains OPEN.**
-
 
 ## Historical authority snapshot through PR #201
 
