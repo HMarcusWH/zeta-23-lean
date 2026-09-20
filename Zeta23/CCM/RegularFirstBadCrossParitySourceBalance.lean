@@ -121,13 +121,14 @@ theorem
         c.firstBad.L_pos c.firstBad.Nstar c.firstBad.one_le_Nstar
         (c.firstBad.predecessorNonnegative_anyParity .odd)
         c.lam c.lam_neg
+  have htransferStar := congrArg (starRingEnd ℂ) htransfer
+  rw [map_mul] at htransferStar
   calc
     star S * (q - J) =
         star S * (star Gamma * q) := by rw [hgamma]
-    _ = star (Gamma * S) * q := by
-      simp only [map_mul]
-      ring
-    _ = star F * q := by rw [← htransfer]
+    _ = (star Gamma * star S) * q := by ring
+    _ = star F * q := by
+      rw [← htransferStar]
     _ = star S * (M4 - S * C) := hcompletion
 
 /-- Cancelling an explicitly nonzero retained source moment yields the exact
