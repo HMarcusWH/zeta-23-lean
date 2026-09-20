@@ -520,7 +520,7 @@ private theorem centeredMoment_zero_successor_split
         x (successorRightOuterIndex N) := by
   have h := sum_oneStepCentered_split N (fun j => x j)
   unfold centeredMoment
-  simpa [oneStepCenteredRestrict, add_assoc] using h
+  simpa [oneStepCenteredRestrict, add_assoc, add_comm, add_left_comm] using h
 
 private theorem centeredMoment_two_successor_split
     (N : ℕ)
@@ -540,7 +540,7 @@ private theorem centeredMoment_two_successor_split
     centeredIndex_centeredEmbedding,
     centeredIndex_successorLeftOuterIndex,
     centeredIndex_successorRightOuterIndex,
-    add_assoc] using h
+    add_assoc, add_comm, add_left_comm] using h
 
 private theorem centeredMoment_zero_centeredPowerVector_zero
     (N : ℕ) :
