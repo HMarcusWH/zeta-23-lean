@@ -42,6 +42,26 @@ CONTROL AUTHORITY
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#224 current lead override
+
+PR #224 closes the exact cubic-projection coefficient and does **not** prove the stronger predecessor-correction proportionality.
+
+Highest-leverage current lead:
+[
+oddCubicGeneratorPredecessorPart(N)
+=
+-rac{2N-1}{6},oddIndexCubicShellPredecessorPart(N).
+]
+
+Status: **OPEN / NEXT**.
+
+If proved, the alpha/Gamma affine collapse and one-coefficient selected-even zero-shift equation are straightforward **DERIVED CONDITIONAL** consequences and should be formalized immediately. Geometry-only consequences must be tested against the #205 synthetic countermodel; universal full-carrier sign/proportionality must respect the #215 falsification.
+
+The odd-selected first-bad branch and the terminal Mathlib RH seam remain explicit obligations.
+
+Detailed post-green pass: `RESEARCH_LEADS_POST_224_CUBIC_PROJECTION_DELTA.md`.
+
+
 ## Current lead ordering
 
 1. **Retained negative-root cross-parity secular completion — HIGHEST INFORMATION / NEXT.**
