@@ -58,7 +58,6 @@ theorem six_mul_crossParitySecularGamma_add_index_mul_alpha
   rw [crossParitySecularGamma_eq_one_add_kappa_mul_one_sub_alpha
     hL N hN hprevOdd lam hlam]
   unfold crossParityCubicCorrectionKappa
-  field_simp
   ring
 
 /-- Safe cross-parity secular transfer with Gamma eliminated. -/
