@@ -365,7 +365,7 @@ private theorem sum_oneStepCentered_split
   calc
     (∑ j, f j) =
         f 0 + ∑ i : Fin (2 * N + 2), f i.succ := by
-      simpa only [Nat.mul_add, Nat.mul_one, Nat.add_assoc] using houter
+      exact houter
     _ =
         f 0 +
           ((∑ i : Fin (2 * N + 1), f i.castSucc.succ) +
@@ -1109,6 +1109,10 @@ theorem oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul
             EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) ∈
         euclideanOddBoundaryFlatSubspace N := by
     rcases z.property with ⟨x, hx, hxz⟩
+    change
+      ((euclideanCenteredZeroExtend (Nat.le_succ N)).toLinearMap x) =
+        ((z : intrinsicParityPredecessorSubspace .odd N) :
+          EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) at hxz
     have hrestrict := congrArg
       (oneStepCenteredRestrict N) hxz
     have hleft :
@@ -1152,6 +1156,10 @@ theorem oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul
     (inner_self_eq_zero).mp hzInner
   have hzZero : z = 0 := by
     rcases z.property with ⟨x, hx, hxz⟩
+    change
+      ((euclideanCenteredZeroExtend (Nat.le_succ N)).toLinearMap x) =
+        ((z : intrinsicParityPredecessorSubspace .odd N) :
+          EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) at hxz
     have hrestrict := congrArg
       (oneStepCenteredRestrict N) hxz
     have hleft :
@@ -1173,6 +1181,9 @@ theorem oddCubicGeneratorPredecessorPart_eq_neg_kappa_smul
     have hx0 : x = 0 := hrestrict'
     apply Subtype.ext
     apply Subtype.ext
+    change
+      ((z : intrinsicParityPredecessorSubspace .odd N) :
+        EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) = 0
     rw [← hxz, hx0]
     simp
   dsimp [z, a, d, kappa] at hzZero
