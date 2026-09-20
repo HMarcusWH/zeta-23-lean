@@ -15,14 +15,14 @@ from control_v2.state import load_research_state
 class ControlV2Tests(unittest.TestCase):
     def test_control_state_tracks_latest_theorem_anchor_without_moving_control_anchor(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 222)
+        self.assertEqual(state.anchor.pr, 224)
         self.assertEqual(
             state.anchor.merge_commit,
-            "001f375b4a7e70f69d2b7abb3bed1b9fd04f0ba5",
+            "0f8f5ad468b337622942f76725c9d76db74e27e4",
         )
         self.assertEqual(
             state.anchor.tree,
-            "fd151afbcae3155cc4d32a75da08b6f7e0119099",
+            "aaedc131612393a1198837b3e5288e48538a94ae",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -81,11 +81,16 @@ class ControlV2Tests(unittest.TestCase):
             "sourceAtomRealEnergy",
             "quadraticNormalSourceAtom",
             "simultaneous odd-bad branch",
+            "PR #224",
+            "83de9193dffba12097d950d2291348db76d047f7",
+            "0f8f5ad468b337622942f76725c9d76db74e27e4",
+            "cubicProjectionResidual_eq_oddCubicProjectionSlope_smul",
+            "predecessor-correction proportionality is the next theorem target",
             "RH remains OPEN",
         ):
             self.assertIn(token, note)
-        self.assertEqual(control["merged_theorem_anchor"]["pr"], 222)
-        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 222)
+        self.assertEqual(control["merged_theorem_anchor"]["pr"], 224)
+        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 224)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
         self.assertEqual(control["terminal_claim"], "RH_OPEN")
 
