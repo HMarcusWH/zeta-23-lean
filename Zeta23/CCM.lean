@@ -131,6 +131,7 @@ import Zeta23.CCM.SourceMomentDecomposition
 import Zeta23.CCM.CrossParitySecularTransfer
 import Zeta23.CCM.CrossParityCubicCorrectionCollapse
 import Zeta23.CCM.CrossParityCorrectionFunctionalCollapse
+import Zeta23.CCM.CrossParitySecularCorrectionCollapse
 import Zeta23.CCM.KernelSourceTransport
 import Zeta23.CCM.ZeroShiftCrossParityTransfer
 import Zeta23.CCM.CanonicalSourceEnergy
