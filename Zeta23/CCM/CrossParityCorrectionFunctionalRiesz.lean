@@ -203,10 +203,16 @@ theorem one_sub_crossParitySecularAlpha_eq_resolvent_pairing_div
         (1 -
           oddSafeSecularCorrectionFunctional hL N hprevOdd lam hlam
             (oddIndexCubicShellPredecessorPart N)) = _
-  rw [sub_sub_cancel_left]
-  exact
-    oddSafeSecularCorrectionFunctional_eq_resolvent_pairing_div
-      hL N hN hprevOdd lam hlam (oddIndexCubicShellPredecessorPart N)
+  calc
+    1 -
+        (1 -
+          oddSafeSecularCorrectionFunctional hL N hprevOdd lam hlam
+            (oddIndexCubicShellPredecessorPart N)) =
+      oddSafeSecularCorrectionFunctional hL N hprevOdd lam hlam
+        (oddIndexCubicShellPredecessorPart N) := by ring
+    _ = _ :=
+      oddSafeSecularCorrectionFunctional_eq_resolvent_pairing_div
+        hL N hN hprevOdd lam hlam (oddIndexCubicShellPredecessorPart N)
 
 /-- The Gamma correction has the same Riesz representative, evaluated on the
 odd cubic-generator predecessor direction. -/
@@ -239,10 +245,16 @@ theorem one_sub_crossParitySecularGamma_eq_resolvent_pairing_div
         (1 -
           oddSafeSecularCorrectionFunctional hL N hprevOdd lam hlam
             (oddCubicGeneratorPredecessorPart N)) = _
-  rw [sub_sub_cancel_left]
-  exact
-    oddSafeSecularCorrectionFunctional_eq_resolvent_pairing_div
-      hL N hN hprevOdd lam hlam (oddCubicGeneratorPredecessorPart N)
+  calc
+    1 -
+        (1 -
+          oddSafeSecularCorrectionFunctional hL N hprevOdd lam hlam
+            (oddCubicGeneratorPredecessorPart N)) =
+      oddSafeSecularCorrectionFunctional hL N hprevOdd lam hlam
+        (oddCubicGeneratorPredecessorPart N) := by ring
+    _ = _ :=
+      oddSafeSecularCorrectionFunctional_eq_resolvent_pairing_div
+        hL N hN hprevOdd lam hlam (oddCubicGeneratorPredecessorPart N)
 
 end Zeta23.CCM
 
