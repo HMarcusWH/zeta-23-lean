@@ -8,17 +8,20 @@
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #222
-- validated final head = c46939488ead9535a63b547c38d64938a882a9f1
-- merge commit = 001f375b4a7e70f69d2b7abb3bed1b9fd04f0ba5
-- tree = fd151afbcae3155cc4d32a75da08b6f7e0119099
+- merged theorem authority = PR #224
+- validated final head = 83de9193dffba12097d950d2291348db76d047f7
+- merge commit = 0f8f5ad468b337622942f76725c9d76db74e27e4
+- tree = aaedc131612393a1198837b3e5288e48538a94ae
+- exact promoted theorem = `cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`
+- exact proved identity = `d^3 - g_K = ((3*K^2 + 3*K - 1)/5) * d`
+- stronger predecessor correction proportionality = OPEN / NOT PROVED BY #224
 
 MERGED THEOREM-STAGE PROVENANCE
-- PR #222
-- validated theorem head = e42dbce1bbbc68b5cf9612e7c8a8dab2a2eca543
-- validated theorem tree = 48d8752950c28e0d3bbd385646e71075abef9e76
-- status = MERGED_VIA_PR_222
-- theorem family = BIREGULAR_FIRST_BAD_ZERO_SHIFT_NORMAL_FORM
+- PR #224
+- validated theorem head = 83de9193dffba12097d950d2291348db76d047f7
+- validated theorem tree = aaedc131612393a1198837b3e5288e48538a94ae
+- status = MERGED_VIA_PR_224
+- theorem family = ODD_CUBIC_PROJECTION_CLOSED_FORM
 
 LATEST RESEARCH EVIDENCE
 - PR #223
@@ -33,13 +36,13 @@ CONTROL AUTHORITY
 - PR #117
 - selected formal first break = E4A4-SCHUR-FB-05
 - active subobligation = OBS-059I
-- next research target = RETAINED_BIREGULAR_ZERO_SHIFT_SCALAR_DISCRIMINATION
+- next research target = CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
-The active R003 question is **Pair D2 — retained negative-root cross-parity secular completion** on the exact forced negative root. The first theorem-extraction question is whether opposite-good at the same negative shift forces a strict positive real secular margin; the second is whether the exact overlap/resolvent correction yields an independent completion inequality compatible with the #209 compulsory source/M4 budget.
+The active R003 theorem-extraction question is **CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY**: prove the exact predecessor correction relation advertised but not established by PR #224. Pair D2 retained negative-root secular completion remains a downstream/historical route to revisit after that collapse is formalized.
 
 ## Preserved research ancestry
 
@@ -293,9 +296,9 @@ Therefore a universal sign theorem for `re(star(S(v))*M4(v))`, or a universal pr
 
 **Status: FALSIFIED / CONSUMED as a universal full-carrier route by #215.**
 
-### Pair D2 — retained negative-root secular locus
+### Pair D2 — retained negative-root secular locus (historical / downstream)
 
-**ACTIVE / HIGHEST INFORMATION.**
+**HISTORICAL / DOWNSTREAM AFTER PREDECESSOR COLLAPSE.**
 
 Stay on the exact first-bad state and use the already-proved negative-root cross-parity certificate. In the even-selected branch the theorem inventory gives
 
@@ -311,7 +314,7 @@ Compose this with #209's compulsory
 `-lambda * ||D v_lambda||^2 <= re(star(S(v_lambda))*M4(v_lambda))`
 and #213's exact complete source-coordinate representation.
 
-The next preregistered questions are:
+The downstream preregistered questions are:
 
 1. **Opposite-good secular sign.** Does `¬ParityBad opposite` at `lambda < 0` force the opposite secular scalar to have strictly positive real part?
 2. **Secular completion.** Can the exact `Gamma(lambda) * S(v_lambda)` product be rewritten or bounded using `re(star(S)*M4)` minus a nonnegative resolvent correction, strongly enough to exclude the retained negative root?

@@ -8,17 +8,20 @@ Live GitHub head + exact compiler/CI evidence are authoritative dynamically. Thi
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #222
-- validated final head = c46939488ead9535a63b547c38d64938a882a9f1
-- merge commit = 001f375b4a7e70f69d2b7abb3bed1b9fd04f0ba5
-- tree = fd151afbcae3155cc4d32a75da08b6f7e0119099
+- merged theorem authority = PR #224
+- validated final head = 83de9193dffba12097d950d2291348db76d047f7
+- merge commit = 0f8f5ad468b337622942f76725c9d76db74e27e4
+- tree = aaedc131612393a1198837b3e5288e48538a94ae
+- exact promoted theorem = `cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`
+- exact proved identity = `d^3 - g_K = ((3*K^2 + 3*K - 1)/5) * d`
+- stronger predecessor correction proportionality = OPEN / NOT PROVED BY #224
 
 MERGED THEOREM-STAGE PROVENANCE
-- PR #222
-- validated theorem head = e42dbce1bbbc68b5cf9612e7c8a8dab2a2eca543
-- validated theorem tree = 48d8752950c28e0d3bbd385646e71075abef9e76
-- status = MERGED_VIA_PR_222
-- theorem family = BIREGULAR_FIRST_BAD_ZERO_SHIFT_NORMAL_FORM
+- PR #224
+- validated theorem head = 83de9193dffba12097d950d2291348db76d047f7
+- validated theorem tree = aaedc131612393a1198837b3e5288e48538a94ae
+- status = MERGED_VIA_PR_224
+- theorem family = ODD_CUBIC_PROJECTION_CLOSED_FORM
 
 LATEST RESEARCH EVIDENCE
 - PR #223
@@ -33,11 +36,43 @@ CONTROL AUTHORITY
 - PR #117
 - selected formal first break = E4A4-SCHUR-FB-05
 - active subobligation = OBS-059I
-- next research target = RETAINED_BIREGULAR_ZERO_SHIFT_SCALAR_DISCRIMINATION
+- next research target = CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#224 authoritative execution override
+
+This section is the current execution override; older step lists below are preserved as history.
+
+```text
+PROVED #224
+  cubicProjectionResidual_eq_oddCubicProjectionSlope_smul
+  d^3 - g_K = ((3*K^2 + 3*K - 1)/5) d
+
+NEXT / OPEN
+  CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY
+  a_N = -((2N - 1)/6) d_N
+
+THEN / DERIVED CONDITIONAL, NOT FORMALIZED
+  6*Gamma0 + (2N - 1)*alpha0 = 2N + 5
+  6*sigmaMinus =
+    alpha0*(6*sigmaPlus - (2N - 1)*mu0) + (2N + 5)*mu0
+
+AFTER THAT / OPEN
+  canonical retained-state arithmetic incompatibility
+  odd-selected first-bad closure
+  parity-complete retained-state exclusion
+  open-strip carrier -> exact Mathlib RiemannHypothesis seam
+```
+
+Do not treat selected-even as WLOG. Do not reopen a finite-to-infinite convergence problem: the proved zeta route runs from a hypothetical off-line zero **down to** the finite obstruction. A universal `IsEmpty (BiRegularCellMinimalNegativeEnergyCertificate Q)` theorem is sufficient but stronger than required; an off-line-generated retained-certificate contradiction also suffices.
+
+See `RESEARCH_LEADS_POST_224_CUBIC_PROJECTION_DELTA.md` and `OBSTRUCTION_LEDGER_POST_224_DELTA.md`.
+
+**OBS-059I remains OPEN. RH remains OPEN.**
+
 
 ### Current execution ladder
 
@@ -515,7 +550,7 @@ rh_claim = false
 
 Do not infer which individual primitive sign reversed from this summary. The exact research claim is only that the complete frozen conjunction failed its required center gate.
 
-## NOW — FB-05 / same-state two-parity squeeze
+## Historical post-#203 — FB-05 / same-state two-parity squeeze
 
 ```text
 OBS-056 CLOSED in exact frozen Q14 research scope
@@ -524,13 +559,13 @@ OBS-058 OPEN / SOURCE-REPRESENTATION LANE CONSUMED AS DEFAULT
 OBS-059 OPEN / ACTIVE: same-state two-parity squeeze / simultaneous-badness exclusion gap
 
 Pair-A representation engineering = CONSUMED / DOWNGRADED
-Pair D — two-parity squeeze = HIGHEST INFORMATION / NEXT RESEARCH ROUTE
+Pair D — two-parity squeeze = HIGHEST INFORMATION / NEXT RESEARCH ROUTE AT THAT STAGE
 Pair B — negative-index separation vs localized critical-line sampling rigidity = SECONDARY
 ```
 
 Do not rescue #203 by fitting a new sign pattern to the same six centers. Do not rerun the #197 Q14 cover, increase precision/depth, or return to source-parenthesis changes. A Pair-A revival now requires a genuinely new theorem-level invariant derived independently of the failed target data.
 
-The Pair-D planning question is:
+At that stage, the Pair-D planning question was:
 
 > On the exact same retained canonical first-bad state, what independent arithmetic restriction relates the two parity successors strongly enough to exclude simultaneous badness, or forces the alternative source-moment branch into a contradiction?
 

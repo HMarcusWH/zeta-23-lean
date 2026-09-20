@@ -8,17 +8,20 @@ Live GitHub/compiler/CI evidence is authoritative.
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #222
-- validated final head = c46939488ead9535a63b547c38d64938a882a9f1
-- merge commit = 001f375b4a7e70f69d2b7abb3bed1b9fd04f0ba5
-- tree = fd151afbcae3155cc4d32a75da08b6f7e0119099
+- merged theorem authority = PR #224
+- validated final head = 83de9193dffba12097d950d2291348db76d047f7
+- merge commit = 0f8f5ad468b337622942f76725c9d76db74e27e4
+- tree = aaedc131612393a1198837b3e5288e48538a94ae
+- exact promoted theorem = `cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`
+- exact proved identity = `d^3 - g_K = ((3*K^2 + 3*K - 1)/5) * d`
+- stronger predecessor correction proportionality = OPEN / NOT PROVED BY #224
 
 MERGED THEOREM-STAGE PROVENANCE
-- PR #222
-- validated theorem head = e42dbce1bbbc68b5cf9612e7c8a8dab2a2eca543
-- validated theorem tree = 48d8752950c28e0d3bbd385646e71075abef9e76
-- status = MERGED_VIA_PR_222
-- theorem family = BIREGULAR_FIRST_BAD_ZERO_SHIFT_NORMAL_FORM
+- PR #224
+- validated theorem head = 83de9193dffba12097d950d2291348db76d047f7
+- validated theorem tree = aaedc131612393a1198837b3e5288e48538a94ae
+- status = MERGED_VIA_PR_224
+- theorem family = ODD_CUBIC_PROJECTION_CLOSED_FORM
 
 LATEST RESEARCH EVIDENCE
 - PR #223
@@ -33,7 +36,7 @@ CONTROL AUTHORITY
 - PR #117
 - selected formal first break = E4A4-SCHUR-FB-05
 - active subobligation = OBS-059I
-- next research target = RETAINED_BIREGULAR_ZERO_SHIFT_SCALAR_DISCRIMINATION
+- next research target = CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
@@ -273,10 +276,10 @@ Same-observable firewall: existing `CanonicalPolePrimeRiesz` results act on `sou
 
 No claim IDs, action scores, first-break semantics, route digests, or confirmation permissions change. **RH remains OPEN.**
 
-## Post-#215 retained negative-root secular frontier
+## Historical post-#215 retained negative-root secular frontier
 
 Theorem authority remains merged-green **PR #213**. Latest research evidence is merged-green **PR #215**, which rigorously certifies on the frozen K=3 even carrier that the complete source functional and M4 are independent duals and that their full-carrier pairing is sign-indefinite. This kills the universal arbitrary-vector sign/proportionality version of Pair D, not the retained first-bad route.
 
-The next target is **RETAINED_CROSS_PARITY_SECULAR_COMPLETION** on the exact forced negative root. Contact-locus ideas are explicitly demoted until a same-state contact bridge exists. The exact zero-shift response and resonant `1/(-lambda)` branch are resurrected secondary routes.
+At that stage, the next target was **RETAINED_CROSS_PARITY_SECULAR_COMPLETION** on the exact forced negative root. Contact-locus ideas are explicitly demoted until a same-state contact bridge exists. The exact zero-shift response and resonant `1/(-lambda)` branch are resurrected secondary routes.
 
 **RH remains OPEN.**

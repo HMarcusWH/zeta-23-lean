@@ -14,17 +14,20 @@ For theorem-bearing PRs, compiler validity attaches only to the exact checked he
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #222
-- validated final head = c46939488ead9535a63b547c38d64938a882a9f1
-- merge commit = 001f375b4a7e70f69d2b7abb3bed1b9fd04f0ba5
-- tree = fd151afbcae3155cc4d32a75da08b6f7e0119099
+- merged theorem authority = PR #224
+- validated final head = 83de9193dffba12097d950d2291348db76d047f7
+- merge commit = 0f8f5ad468b337622942f76725c9d76db74e27e4
+- tree = aaedc131612393a1198837b3e5288e48538a94ae
+- exact promoted theorem = `cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`
+- exact proved identity = `d^3 - g_K = ((3*K^2 + 3*K - 1)/5) * d`
+- stronger predecessor correction proportionality = OPEN / NOT PROVED BY #224
 
 MERGED THEOREM-STAGE PROVENANCE
-- PR #222
-- validated theorem head = e42dbce1bbbc68b5cf9612e7c8a8dab2a2eca543
-- validated theorem tree = 48d8752950c28e0d3bbd385646e71075abef9e76
-- status = MERGED_VIA_PR_222
-- theorem family = BIREGULAR_FIRST_BAD_ZERO_SHIFT_NORMAL_FORM
+- PR #224
+- validated theorem head = 83de9193dffba12097d950d2291348db76d047f7
+- validated theorem tree = aaedc131612393a1198837b3e5288e48538a94ae
+- status = MERGED_VIA_PR_224
+- theorem family = ODD_CUBIC_PROJECTION_CLOSED_FORM
 
 LATEST RESEARCH EVIDENCE
 - PR #223
@@ -39,11 +42,27 @@ CONTROL AUTHORITY
 - PR #117
 - selected formal first break = E4A4-SCHUR-FB-05
 - active subobligation = OBS-059I
-- next research target = RETAINED_BIREGULAR_ZERO_SHIFT_SCALAR_DISCRIMINATION
+- next research target = CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#224 exact-object promotion record
+
+PR #224 is theorem authority because its exact final head compiled through the promoted CCM/ExceptionalZero import closure and passed the repository's forbidden-placeholder scan.
+
+Promoted object:
+`cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`.
+
+Not promoted:
+`oddCubicGeneratorPredecessorPart N = -((2N-1)/6) • oddIndexCubicShellPredecessorPart N`.
+
+Current next research target:
+`CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY`.
+
+A PR title, body or intended target never outranks the exact compiled declaration surface. An explicit `#print axioms` line remains desirable for future headline theorems but is not, by itself, the current machine promotion gate.
+
 
 ### Positional living-surface validation
 
@@ -575,12 +594,12 @@ All nine #213 workflow families passed on the exact theorem head. The merge tree
 
 The old real-energy Riesz chain and the new mixed source-kernel observable are not yet a same-object theorem chain. **RH remains OPEN.**
 
-## Post-#215 validation refinement
+## Historical post-#215 validation refinement
 
-A post-#215 RH-directed claim must preserve the exact retained `L`, `N/K`, selected parity, negative shift `lambda`, normalization and source observable. Do not infer a retained-state law from #215's arbitrary-vector K=3 full-carrier classifier, and do not move to a contact state unless an explicit theorem preserves the required state data.
+At that stage, a post-#215 RH-directed claim had to preserve the exact retained `L`, `N/K`, selected parity, negative shift `lambda`, normalization and source observable. Do not infer a retained-state law from #215's arbitrary-vector K=3 full-carrier classifier, and do not move to a contact state unless an explicit theorem preserves the required state data.
 
 Derive all conjugation/orientation factors in the secular overlap identity from Lean definitions before assigning a sign. Keep #215's `R_min < 0 < R_max` as a falsification of universal full-carrier sign, not as evidence for a retained-eigenmode sign. Treat zero-shift and resonant alternatives as separate branches until a theorem composes them.
 
-The next research target is `RETAINED_CROSS_PARITY_SECULAR_COMPLETION`. Research certificate != Lean theorem; supporting lemma != negative-root exclusion; neither implies RH.
+At that stage, the next research target was `RETAINED_CROSS_PARITY_SECULAR_COMPLETION`. Research certificate != Lean theorem; supporting lemma != negative-root exclusion; neither implies RH.
 
 **RH remains OPEN.**

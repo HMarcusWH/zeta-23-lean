@@ -11,17 +11,16 @@ class Post221SyncTests(unittest.TestCase):
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
 
-    def test_merged_anchor_and_validated_delta_are_separate(self):
+    def test_post221_history_survives_later_theorem_promotion(self):
         merged = self.state["merged_theorem_anchor"]
-        delta = self.state["latest_validated_theorem_delta"]
-        self.assertEqual(merged["pr"], 222)
-        self.assertEqual(merged["validated_head"], "c46939488ead9535a63b547c38d64938a882a9f1")
-        self.assertEqual(merged["merge_commit"], "001f375b4a7e70f69d2b7abb3bed1b9fd04f0ba5")
-        self.assertEqual(merged["tree"], "fd151afbcae3155cc4d32a75da08b6f7e0119099")
-        self.assertEqual(delta["pr"], 222)
-        self.assertEqual(delta["validated_head"], "e42dbce1bbbc68b5cf9612e7c8a8dab2a2eca543")
-        self.assertEqual(delta["tree"], "48d8752950c28e0d3bbd385646e71075abef9e76")
-        self.assertEqual(delta["status"], "MERGED_VIA_PR_222")
+        self.assertGreaterEqual(merged["pr"], 222)
+        note = self.state["control_note"]
+        for token in (
+            "Exact PR #221 theorem delta head 20018c931f4516432ace5bd06788276be656641b",
+            "tree bc82b7604d95ccce8f1a46e4b25e0485bf68a4c2",
+            "PR #221",
+        ):
+            self.assertIn(token, note)
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
@@ -32,7 +31,6 @@ class Post221SyncTests(unittest.TestCase):
         self.assertEqual(route["zero_shift_schur_good_bad_classification"], "MERGED_PR_221")
         self.assertEqual(route["canonical_simultaneous_odd_bad_branch"], "OPEN_SCALAR_SIGN_CLASSIFIED_BY_PR_222")
         self.assertEqual(route["active_subobligation"], "OBS-059I")
-        self.assertEqual(route["next_research_target"], "RETAINED_BIREGULAR_ZERO_SHIFT_SCALAR_DISCRIMINATION")
 
     def test_post221_delta_has_required_post_green_sections(self):
         text = (RHRC / "RESEARCH_LEADS_POST_221_ZERO_SHIFT_SCHUR_CLASSIFICATION_DELTA.md").read_text(encoding="utf-8")

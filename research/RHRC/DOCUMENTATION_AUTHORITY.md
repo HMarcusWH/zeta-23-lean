@@ -20,17 +20,20 @@ Research certificates, exact-rational audits, Arb output and external reviews ar
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #222
-- validated final head = c46939488ead9535a63b547c38d64938a882a9f1
-- merge commit = 001f375b4a7e70f69d2b7abb3bed1b9fd04f0ba5
-- tree = fd151afbcae3155cc4d32a75da08b6f7e0119099
+- merged theorem authority = PR #224
+- validated final head = 83de9193dffba12097d950d2291348db76d047f7
+- merge commit = 0f8f5ad468b337622942f76725c9d76db74e27e4
+- tree = aaedc131612393a1198837b3e5288e48538a94ae
+- exact promoted theorem = `cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`
+- exact proved identity = `d^3 - g_K = ((3*K^2 + 3*K - 1)/5) * d`
+- stronger predecessor correction proportionality = OPEN / NOT PROVED BY #224
 
 MERGED THEOREM-STAGE PROVENANCE
-- PR #222
-- validated theorem head = e42dbce1bbbc68b5cf9612e7c8a8dab2a2eca543
-- validated theorem tree = 48d8752950c28e0d3bbd385646e71075abef9e76
-- status = MERGED_VIA_PR_222
-- theorem family = BIREGULAR_FIRST_BAD_ZERO_SHIFT_NORMAL_FORM
+- PR #224
+- validated theorem head = 83de9193dffba12097d950d2291348db76d047f7
+- validated theorem tree = aaedc131612393a1198837b3e5288e48538a94ae
+- status = MERGED_VIA_PR_224
+- theorem family = ODD_CUBIC_PROJECTION_CLOSED_FORM
 
 LATEST RESEARCH EVIDENCE
 - PR #223
@@ -45,11 +48,28 @@ CONTROL AUTHORITY
 - PR #117
 - selected formal first break = E4A4-SCHUR-FB-05
 - active subobligation = OBS-059I
-- next research target = RETAINED_BIREGULAR_ZERO_SHIFT_SCALAR_DISCRIMINATION
+- next research target = CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#224 documentation-authority override
+
+The current three-anchor model is:
+
+```text
+theorem authority = PR #224
+research evidence = PR #223
+control semantics = PR #117
+```
+
+Theorem promotion is exact-object specific. The promoted #224 declaration is
+`cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`.
+The PR title/body is not authority for the unproved predecessor-correction proportionality.
+
+Historical post-#222/#223 delta documents remain frozen history and are not rewritten to pretend that #224 existed earlier.
+
 
 ## Living-current-surface rule
 
@@ -394,9 +414,9 @@ PR #213 closes `SOURCE_COORDINATE_KERNEL_FOR_COMPLETE_FUNCTIONAL` but does not c
 
 Historical post-#211 files remain immutable evidence. No claim IDs, action scores, first-break semantics, route digests, or confirmation permissions change. **RH remains OPEN.**
 
-## Post-#215 authority — retained negative-root secular frontier
+## Historical post-#215 authority — retained negative-root secular frontier
 
-Current authority split after merged-green research PR #215:
+Historical authority split at that stage after merged-green research PR #215:
 
 ```text
 THEOREM AUTHORITY
@@ -430,10 +450,10 @@ R_max =  1.02497161190896926446719955942e-6
 
 so the full-carrier pairing is sign-indefinite. Universal full-carrier source/M4 sign and proportionality routes are therefore consumed at this research scope.
 
-The retained-state implication was explicitly `NOT_TESTED` by #215. The next route is not a guessed contact state. It is the already theorem-backed **retained negative-root cross-parity secular state**: preserve the same aperture, size, selected parity, negative shift and canonical source functional, and investigate whether the old exact cross-parity secular transfer combines with #209/#213 into an independent incompatibility.
+The retained-state implication was explicitly `NOT_TESTED` by #215. At that stage, the next route was not a guessed contact state. It was the already theorem-backed **retained negative-root cross-parity secular state**: preserve the same aperture, size, selected parity, negative shift and canonical source functional, and investigate whether the old exact cross-parity secular transfer combines with #209/#213 into an independent incompatibility.
 
 ```text
-next research target = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
+next research target at that stage = RETAINED_CROSS_PARITY_SECULAR_COMPLETION
 contact-locus route  = LEAD / REQUIRES SAME-STATE CONTACT BRIDGE
 zero-shift response  = RESURRECTED SECONDARY
 resonant pole/tube   = RESURRECTED SECONDARY

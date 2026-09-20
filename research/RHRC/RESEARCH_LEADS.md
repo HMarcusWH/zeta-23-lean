@@ -8,17 +8,20 @@
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #222
-- validated final head = c46939488ead9535a63b547c38d64938a882a9f1
-- merge commit = 001f375b4a7e70f69d2b7abb3bed1b9fd04f0ba5
-- tree = fd151afbcae3155cc4d32a75da08b6f7e0119099
+- merged theorem authority = PR #224
+- validated final head = 83de9193dffba12097d950d2291348db76d047f7
+- merge commit = 0f8f5ad468b337622942f76725c9d76db74e27e4
+- tree = aaedc131612393a1198837b3e5288e48538a94ae
+- exact promoted theorem = `cubicProjectionResidual_eq_oddCubicProjectionSlope_smul`
+- exact proved identity = `d^3 - g_K = ((3*K^2 + 3*K - 1)/5) * d`
+- stronger predecessor correction proportionality = OPEN / NOT PROVED BY #224
 
 MERGED THEOREM-STAGE PROVENANCE
-- PR #222
-- validated theorem head = e42dbce1bbbc68b5cf9612e7c8a8dab2a2eca543
-- validated theorem tree = 48d8752950c28e0d3bbd385646e71075abef9e76
-- status = MERGED_VIA_PR_222
-- theorem family = BIREGULAR_FIRST_BAD_ZERO_SHIFT_NORMAL_FORM
+- PR #224
+- validated theorem head = 83de9193dffba12097d950d2291348db76d047f7
+- validated theorem tree = aaedc131612393a1198837b3e5288e48538a94ae
+- status = MERGED_VIA_PR_224
+- theorem family = ODD_CUBIC_PROJECTION_CLOSED_FORM
 
 LATEST RESEARCH EVIDENCE
 - PR #223
@@ -33,21 +36,41 @@ CONTROL AUTHORITY
 - PR #117
 - selected formal first break = E4A4-SCHUR-FB-05
 - active subobligation = OBS-059I
-- next research target = RETAINED_BIREGULAR_ZERO_SHIFT_SCALAR_DISCRIMINATION
+- next research target = CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#224 current lead override
+
+PR #224 closes the exact cubic-projection coefficient and does **not** prove the stronger predecessor-correction proportionality.
+
+Highest-leverage current lead:
+
+```text
+oddCubicGeneratorPredecessorPart N
+  = -((2*N - 1)/6) * oddIndexCubicShellPredecessorPart N
+```
+
+Status: **OPEN / NEXT**.
+
+If proved, the alpha/Gamma affine collapse and one-coefficient selected-even zero-shift equation are straightforward **DERIVED CONDITIONAL** consequences and should be formalized immediately. Geometry-only consequences must be tested against the #205 synthetic countermodel; universal full-carrier sign/proportionality must respect the #215 falsification.
+
+The odd-selected first-bad branch and the terminal Mathlib RH seam remain explicit obligations.
+
+Detailed post-green pass: `RESEARCH_LEADS_POST_224_CUBIC_PROJECTION_DELTA.md`.
+
 ## Current lead ordering
 
-1. **Retained negative-root cross-parity secular completion — HIGHEST INFORMATION / NEXT.**
-2. **Zero-shift cross-parity response completion — RESURRECTED SECONDARY.**
-3. **Resonant `1/(-lambda)` kernel-pole / magnitude squeeze — RESURRECTED SECONDARY.**
-4. **Pair B negative-index versus localized critical-line sampling rigidity — INDEPENDENT FALLBACK.**
+1. **CROSS_PARITY_PREDECESSOR_CORRECTION_PROPORTIONALITY — HIGHEST INFORMATION / NEXT.**
+2. **Alpha/Gamma affine composition — IMMEDIATE DOWNSTREAM AFTER 1.**
+3. **One-coefficient selected-even zero-shift scalar — IMMEDIATE DOWNSTREAM AFTER 1/2.**
+4. **Canonical parity-complete retained-state incompatibility — TERMINAL FINITE TARGET.**
+5. **Pair D2 retained negative-root secular completion — HISTORICAL / DOWNSTREAM ALTERNATIVE.**
+6. **Pair B negative-index versus localized critical-line sampling rigidity — INDEPENDENT FALLBACK.**
 
 Universal full-carrier source/M4 sign and proportionality are consumed by #215 and must not be relabelled as live leads.
-
 ## Historical authority through PR #201
 
 ```text
@@ -618,23 +641,23 @@ Existing `CanonicalPolePrimeRiesz` machinery acts on `sourceAtomRealEnergy`, not
 
 `OBS-059I`, simultaneous odd-bad, odd-selected first-bad, endpoint-scalar sign, negative-root exclusion and **RH remain OPEN.**
 
-## Post-#215 retained-root routing
+## Historical post-#215 retained-root routing
 
 **Research authority:** PR #215, head `5469fbac77c82ccfc9dad0da4c7ce2b0ba67c47a`, merge `191b1b648448c92010286dae54df8502df1f55ce`, tree `4e6111c974ae8abbf59a5063d4b1ea760fa39ffd`.
 
 The full K=3 even carrier is now known, in rigorous bounded research, to have independent source and M4 duals and an indefinite pairing. This consumes universal full-carrier sign/proportionality as the default Pair-D completion.
 
-### Active lead 1 — retained negative-root cross-parity secular completion
+### Historical lead 1 — retained negative-root cross-parity secular completion
 
-**HIGHEST INFORMATION / NEXT.**
+**HISTORICAL STATUS AT PR #215: HIGHEST INFORMATION / NEXT.**
 
 Use `crossParityFirstBadRootCertificate` and `cubicSecularScalar_odd_eq_overlap_mul_source_of_even_root` on the exact retained negative root, then combine with #209 coercivity and #213's exact complete source functional. First extract the strongest sign/nonvanishing consequence of opposite-good actually supported by the definitions; then derive the exact overlap/resolvent completion before any numerical classifier.
 
-### Active lead 2 — zero-shift response completion
+### Historical lead 2 — zero-shift response completion
 
 Resurrect `cubicZeroShiftShellResponseScalar_crossParity_explicitSource_transfer`. The selected regular response is already strictly negative. Investigate whether opposite-good forces the opposite cubic coupling into the predecessor range, giving the second zero-shift preimage and a same-state response squeeze.
 
-### Active lead 3 — resonant pole versus spectral tube
+### Historical lead 3 — resonant pole versus spectral tube
 
 The resonant branch has exact `1/(-lambda)` amplification. Test composition with the quantitative #209 budget and #215 bounded magnitude diagnostics before formal investment.
 
