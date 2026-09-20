@@ -48,9 +48,13 @@ class Post211SyncTests(unittest.TestCase):
         )
         self.assertEqual(route["closed_subobligation"], "OBS-059Q")
         self.assertEqual(route["active_subobligation"], "OBS-059I")
+        self.assertIn(
+            "INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY",
+            state["control_note"],
+        )
         self.assertEqual(
             route["required_new_information"],
-            "INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY",
+            "CANONICAL_SOURCE_COUPLING_AND_RETAINED_SOURCE_BALANCE",
         )
         self.assertTrue(route["canonical_simultaneous_odd_bad_branch"].startswith("OPEN"))
         self.assertEqual(route["odd_selected_first_bad_branch"], "OPEN")

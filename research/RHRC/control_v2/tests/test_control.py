@@ -15,14 +15,14 @@ from control_v2.state import load_research_state
 class ControlV2Tests(unittest.TestCase):
     def test_control_state_tracks_latest_theorem_anchor_without_moving_control_anchor(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 227)
+        self.assertEqual(state.anchor.pr, 229)
         self.assertEqual(
             state.anchor.merge_commit,
-            "7aace87a5644f837e2c8b64bdcf5e66b2dc0b020",
+            "992398c810de5fb84919846fc4192d709d51e783",
         )
         self.assertEqual(
             state.anchor.tree,
-            "1dd1cdefcf4f4f7929b310697fdd1615a861ca1a",
+            "d9ae07d1ca92cb23b4a3ae3ccae0b32e9b7d38c8",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
