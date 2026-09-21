@@ -628,7 +628,7 @@ theorem intrinsicCubicShellCoordinate_conj
               euclideanParityBoundaryFlatSubspace p (N + 1))
             (s : euclideanParityBoundaryFlatSubspace p (N + 1))) := by
     simpa only [coe_intrinsicShellConj, coe_parityConj] using hnum0
-  rw [hnum, star_div, hdenReal]
+  rw [hnum, star_div₀, hdenReal]
 
 /-- The canonical cubic quotient coordinate commutes with conjugation. -/
 theorem intrinsicCubicQuotientCoordinate_conj
