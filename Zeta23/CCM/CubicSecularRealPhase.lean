@@ -56,12 +56,27 @@ theorem cubicSecularTrialVector_conj_fixed_of_secularRoot
         (lam : ℂ) • parityConj p (N + 1) v := by
     rw [parityCompressedCanonical_conj, hveig]
     apply Subtype.ext
-    simp [parityConj, euclideanConj_smul]
+    change
+      euclideanConj
+          ((lam : ℂ) •
+            (v : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))) =
+        (lam : ℂ) •
+          euclideanConj
+            (v : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
+    rw [euclideanConj_smul]
+    simp
   have hconjNe : parityConj p (N + 1) v ≠ 0 := by
     intro hz
     apply hvne
     have hz' := congrArg (parityConj p (N + 1)) hz
-    simpa using hz'
+    rw [parityConj_involutive] at hz'
+    have hzero :
+        parityConj p (N + 1)
+            (0 : euclideanParityBoundaryFlatSubspace p (N + 1)) = 0 := by
+      apply Subtype.ext
+      exact euclideanConj_zero
+    rw [hzero] at hz'
+    exact hz'
   have hk :
       intrinsicCubicQuotientCoordinate p N v = 1 := by
     simpa [v] using
