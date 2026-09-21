@@ -45,45 +45,42 @@ CONTROL AUTHORITY
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
-## Post-#234 execution target
+## Post-#235 execution target
 
-The next theorem interface is `RETAINED_SOURCE_KERNEL_FORBIDDEN_QUADRANT`.
+The next theorem target is `RETAINED_CANONICAL_REAL_PHASE_COLLAPSE`.
 
-Define the exact canonical-source quantities
-
-```text
-D = (-lam)||u_-||^2 - ||c_-||^2 Re(S)
-
-Rsharp =
-  Ec * (Re(C) + lam ||R a||^2)
-
-E = D^2 - normSq(S) * Rsharp
-```
-
-with `S` rewritten through PR #213 as
-`quadraticNormalSourceKernelRHS`.
-
-PR #234 already proves, on selected-even / odd-good,
+PR #235 proved the selected-even / odd-good forbidden-quadrant interface
 
 ```text
-D <= 0 OR E <= 0.
+D <= 0 OR E <= 0,
+D > 0 AND E > 0 -> odd successor ParityBad.
 ```
 
-The next Lean target is therefore the exact contradiction interface
+The new structural target is to exploit the fact that the canonical finite
+matrix is entrywise real and the E3-A negative-root eigenmode has canonical
+cubic quotient coordinate one.
+
+The planned chain is
 
 ```text
-D > 0 AND E > 0
-  -> odd successor ParityBad.
+canonical real matrix
+  -> parity compression commutes with conjugation
+  -> conjugate retained trial is a same-lambda eigenmode
+  -> cubic quotient conjugates
+  -> quotient 1 is preserved
+  -> existing normalized-eigenmode uniqueness fixes the phase
+  -> retained source kernel is real
+  -> normSq(S) = (Re S)^2.
 ```
 
-This PR does not prove either strict sign. Required genuinely new information
-remains `CANONICAL_SOURCE_DEFICIT_AND_EXCESS_SIGN_CONTROL`.
+Writing `s = Re(S)`, the post-#235 compatibility law then becomes
 
-Numerical follow-up is deliberately deferred: the older post-#165 shifted-state
-tool uses an arbitrary integer shell generator that is ray-equivalent but not
-the raw canonical normalization needed for D/E magnitude comparison. A later
-audit must use `CANONICAL_CUBIC_SHELL_NORMALIZATION`, and the current frozen
-post-#165 scout found 0 shifted states among 672 attempted states.
+```text
+D <= 0 OR D^2 <= s^2 Rsharp.
+```
+
+This target proves no sign of `s`, `D`, or the radius gap. Required new
+information is `CONJUGATION_COMPATIBLE_CANONICAL_NORMALIZATION`.
 
 ## Post-#231 current-state override
 
