@@ -110,7 +110,7 @@ theorem intrinsicPredecessorRealEnergy_shiftedIntrinsicPredecessorResolvent_eq
             (w : euclideanParityBoundaryFlatSubspace p (N + 1))
             (w : euclideanParityBoundaryFlatSubspace p (N + 1))) =
         ‖w‖ ^ 2 := by
-    simpa only [RCLike.re_to_complex] using
+    simpa only [RCLike.re_to_complex, Submodule.norm_coe] using
       (norm_sq_eq_re_inner (𝕜 := ℂ)
         (w : euclideanParityBoundaryFlatSubspace p (N + 1))).symm
   unfold intrinsicPredecessorRealEnergy
@@ -151,6 +151,13 @@ theorem intrinsicPredecessorRealEnergy_shiftedIntrinsicPredecessorResolvent_le_r
               euclideanParityBoundaryFlatSubspace p (N + 1))
             (b : euclideanParityBoundaryFlatSubspace p (N + 1))) +
         lam * ‖R b‖ ^ 2 at hEq
+  change
+    intrinsicPredecessorRealEnergy p L N (R b) ≤
+      Complex.re
+        (inner ℂ
+          ((R b : intrinsicParityPredecessorSubspace p N) :
+            euclideanParityBoundaryFlatSubspace p (N + 1))
+          (b : euclideanParityBoundaryFlatSubspace p (N + 1)))
   rw [hEq]
   have hshiftTerm : lam * ‖R b‖ ^ 2 ≤ 0 :=
     mul_nonpos_of_nonpos_of_nonneg (le_of_lt hlam) (sq_nonneg _)
