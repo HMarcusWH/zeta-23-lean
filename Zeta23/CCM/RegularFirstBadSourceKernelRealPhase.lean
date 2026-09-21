@@ -44,6 +44,12 @@ theorem centeredQuadraticNormal_conj_fixed
   rw [hp0] at h00
   have hmu : star mu = mu := by
     dsimp [mu]
+    have h02' :
+        (starRingEnd ℂ) (inner ℂ p0 p2) = inner ℂ p0 p2 := by
+      simpa only [starRingEnd_apply] using h02.symm
+    have h00' :
+        (starRingEnd ℂ) (inner ℂ p0 p0) = inner ℂ p0 p0 := by
+      simpa only [starRingEnd_apply] using h00.symm
     calc
       (starRingEnd ℂ) (inner ℂ p0 p2 / inner ℂ p0 p0) =
           (starRingEnd ℂ) (inner ℂ p0 p2) /
@@ -51,7 +57,7 @@ theorem centeredQuadraticNormal_conj_fixed
         simpa using
           (star_div₀ (inner ℂ p0 p2) (inner ℂ p0 p0))
       _ = inner ℂ p0 p2 / inner ℂ p0 p0 := by
-        rw [← h02, ← h00]
+        rw [h02', h00']
   change euclideanConj (p2 - mu • p0) = p2 - mu • p0
   rw [euclideanConj_sub, euclideanConj_smul, hp0, hp2, hmu]
 
