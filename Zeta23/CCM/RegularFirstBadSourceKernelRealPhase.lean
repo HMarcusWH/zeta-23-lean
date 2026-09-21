@@ -44,7 +44,7 @@ theorem centeredQuadraticNormal_conj_fixed
   rw [hp0] at h00
   have hmu : star mu = mu := by
     dsimp [mu]
-    rw [star_div, ← h02, ← h00]
+    rw [star_div₀, ← h02, ← h00]
   change euclideanConj (p2 - mu • p0) = p2 - mu • p0
   rw [euclideanConj_sub, euclideanConj_smul, hp0, hp2, hmu]
 
@@ -78,7 +78,7 @@ theorem evenQuadraticSourceMoment_star_eq_of_conj_fixed
   change
     star (inner ℂ n2 Mx / inner ℂ n2 n2) =
       inner ℂ n2 Mx / inner ℂ n2 n2
-  rw [star_div, ← hnum, ← hden]
+  rw [star_div₀, ← hnum, ← hden]
 
 /-- The retained selected-even cubic trial has canonical real phase. -/
 theorem
