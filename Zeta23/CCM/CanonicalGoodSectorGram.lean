@@ -146,10 +146,10 @@ theorem parityCanonicalSourceEnergy_completion_of_square
   rw [inner_sub_left, inner_sub_right, inner_sub_right]
   rw [h11, h12, h21, h22, hxy, hyx]
   rw [hEyStar]
-  simp only [Complex.ofReal_re, Complex.ofReal_im,
-    Complex.sub_re, Complex.mul_re, Complex.star_def, Complex.conj_re,
-    Complex.conj_im, Complex.conj_conj, zero_mul, mul_zero, sub_zero, add_zero]
-  rw [hTxIm, hTyIm, hEx, hEy, Complex.sq_norm, Complex.normSq_apply]
+  simp only [starRingEnd_apply, Complex.ofReal_re, Complex.ofReal_im,
+    Complex.sub_re, Complex.mul_re, Complex.mul_im, Complex.star_def, Complex.conj_re,
+    Complex.conj_im, Complex.conj_conj, zero_mul, mul_zero, sub_zero, add_zero, neg_neg]
+  rw [hTyIm, hEx, hEy, Complex.sq_norm, Complex.normSq_apply]
   ring
 
 /-- Cauchy--Schwarz for the canonical pairing on a good parity sector. -/
