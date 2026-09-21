@@ -8,27 +8,25 @@ Do not silently resurrect a dead route. A revival must state **which blocking pr
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #233
-- validated final head = 565428e066004e559490fbe1d21d46ef14494de3
-- merge commit = 9dfee4f50d5b57c92327da564ddf2f6159223fe1
-- tree = 5713b8d8088864cb126aae48a3a5a5ac8304807a
-- theorem family = RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK
-- prior theorem authority = PR #231 `CROSS_PARITY_CORRECTION_SOURCE_COUPLING_AND_RETAINED_SOURCE_BALANCE`
-- exact flagship theorem = `evenShiftedCrossParitySourceGramDiskSharp_of_even_of_not_oddBad`
-- exact energy-form consequence = `evenShiftedCrossParitySourceGramDiskEnergy_of_even_of_not_oddBad`
-- exact outer-disk consequence = `evenShiftedCrossParitySourceGramDisk_of_even_of_not_oddBad`
-- exact good-sector Gram theorem = `norm_sq_parityCanonicalSourcePairing_le_mul_energy_of_not_parityBad`
-- exact shifted-resolvent energy theorem = `intrinsicPredecessorRealEnergy_shiftedIntrinsicPredecessorResolvent_eq`
-- `canonicalOneStepDomination_of_not_parityBad` = PROVED STRUCTURAL CONSEQUENCE / NOT INDEPENDENT ARITHMETIC INFORMATION
-- retained disk emptiness = OPEN / NOT PROVED BY #233
-- workflow harvest = 11/11 ATTACHED WORKFLOWS GREEN on the validated #233 head
+- merged theorem authority = PR #234
+- validated final head = 6d9b60752f7a4f164113bb0602fcdee87e2a54a1
+- merge commit = b18d81f11a04982e438b7e196853ae665dab0cc2
+- tree = 94a0db085c35d2aba753a8359e452e4189c5c897
+- theorem family = RETAINED_SOURCE_DISK_SECULAR_INTERSECTION
+- prior theorem authority = PR #233 `RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK`
+- exact flagship theorem = `evenShiftedSourceRealPartOrSharpRadius_of_even_of_not_oddBad`
+- exact sharp intersection theorem = `evenShiftedDiskSecularIntersectionSharp_of_even_of_not_oddBad`
+- exact outer intersection theorem = `evenShiftedDiskSecularIntersection_of_even_of_not_oddBad`
+- M4 eliminated from final retained compatibility law
+- retained disk/half-plane emptiness = OPEN / NOT PROVED BY #234
+- workflow harvest = 11/11 ATTACHED WORKFLOWS GREEN on the validated #234 head
 
 MERGED THEOREM-STAGE PROVENANCE
-- PR #233
-- validated theorem head = 565428e066004e559490fbe1d21d46ef14494de3
-- validated theorem tree = 5713b8d8088864cb126aae48a3a5a5ac8304807a
-- status = MERGED_VIA_PR_233
-- theorem family = RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK
+- PR #234
+- validated theorem head = 6d9b60752f7a4f164113bb0602fcdee87e2a54a1
+- validated theorem tree = 94a0db085c35d2aba753a8359e452e4189c5c897
+- status = MERGED_VIA_PR_234
+- theorem family = RETAINED_SOURCE_DISK_SECULAR_INTERSECTION
 
 LATEST RESEARCH EVIDENCE
 - PR #223
@@ -39,12 +37,18 @@ LATEST RESEARCH EVIDENCE
 - qualified retained points = 0
 - retained-state implication = FROZEN_SCOPE_DID_NOT_REACH_RETAINED_STATE
 
+POST-#234 RESEARCH FIREWALL
+- latest post-#165 shifted-state scout = 672 attempted / 0 shifted states
+- numerical D/E prerequisite = CANONICAL_CUBIC_SHELL_NORMALIZATION
+- arbitrary integer shell rays are not authority for raw D/E magnitudes
+- theorem promotion from numerical scope = NOT AUTHORIZED
+
 CONTROL AUTHORITY
 - PR #117
 - selected formal first break = E4A4-SCHUR-FB-05
 - active subobligation = OBS-059I
-- next research target = RETAINED_SOURCE_DISK_SECULAR_INTERSECTION
-- required new information = M4_FREE_RETAINED_DISK_HALFPLANE_COMPATIBILITY
+- next research target = RETAINED_SOURCE_KERNEL_FORBIDDEN_QUADRANT
+- required new information = CANONICAL_SOURCE_DEFICIT_AND_EXCESS_SIGN_CONTROL
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - simultaneous odd-bad branch = OPEN
@@ -136,6 +140,25 @@ already assuming the successor parity sector is good.
 directly from successor-sector goodness. It may still be used as a convenient
 derived interface, but it cannot be counted as an additional independent input
 toward OBS-059I.
+
+## DR-032 — arbitrary shell-ray normalization for raw D/E magnitudes
+
+Use the historical post-#165 integer `exact_shell_generator` directly to
+numerically evaluate the raw post-#234 center-deficit/radius-excess scalars.
+
+**Status:** FORBIDDEN NORMALIZATION SHORTCUT after PR #234.
+
+**Reason:** the post-#165 generator is only a nonzero ray representative of the
+one-dimensional shell. That is sufficient for root/sign diagnostics whose
+meaning is ray-invariant, but the raw D/E magnitudes mix canonically normalized
+even and odd retained quantities. Lean #234 uses
+`intrinsicCubicShellPart`, the projection of the canonical cubic channel onto
+the shell. Any numerical D/E audit must reconstruct that canonical
+normalization, for example via the exact post-#222
+`canonical_cubic_shell_exact` geometry or an equivalent shared helper.
+
+This does not kill the numerical route; it specifies the required
+normalization before the route can produce theorem-relevant evidence.
 
 ## DR-001 — TightMult-visible scalar improvement
 

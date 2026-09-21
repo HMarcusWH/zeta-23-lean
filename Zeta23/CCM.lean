@@ -183,6 +183,7 @@ import Zeta23.CCM.RegularFirstBadCompleteSourceFunctional
 import Zeta23.CCM.DictionaryCompletePhysicalRHS
 import Zeta23.CCM.CanonicalQuadraticNormalSourceKernel
 import Zeta23.CCM.RegularFirstBadSourceKernel
+import Zeta23.CCM.RegularFirstBadSourceKernelCompatibility
 import Zeta23.CCM.CanonicalOneStepDomination
 import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.ClaimBindings

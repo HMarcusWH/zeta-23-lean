@@ -35,56 +35,52 @@ class CurrentStateSurfaceTests(unittest.TestCase):
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
 
-    def test_machine_state_is_merged_post233(self):
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 233)
-        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 233)
+    def test_machine_state_is_merged_post234(self):
+        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 234)
+        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 234)
         self.assertEqual(self.state["latest_research_evidence"]["pr"], 223)
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
         route = self.state["active_research_route"]
         self.assertEqual(
             route["next_research_target"],
-            "RETAINED_SOURCE_DISK_SECULAR_INTERSECTION",
+            "RETAINED_SOURCE_KERNEL_FORBIDDEN_QUADRANT",
         )
         self.assertEqual(
             route["required_new_information"],
-            "M4_FREE_RETAINED_DISK_HALFPLANE_COMPATIBILITY",
+            "CANONICAL_SOURCE_DEFICIT_AND_EXCESS_SIGN_CONTROL",
         )
         self.assertEqual(route["active_subobligation"], "OBS-059I")
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
     def test_every_living_surface_frontloads_machine_state(self):
         required = (
-            "PR #233",
-            "565428e066004e559490fbe1d21d46ef14494de3",
-            "9dfee4f50d5b57c92327da564ddf2f6159223fe1",
-            "5713b8d8088864cb126aae48a3a5a5ac8304807a",
-            "MERGED_VIA_PR_233",
-            "RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK",
-            "evenShiftedCrossParitySourceGramDiskSharp_of_even_of_not_oddBad",
-            "evenShiftedCrossParitySourceGramDiskEnergy_of_even_of_not_oddBad",
-            "evenShiftedCrossParitySourceGramDisk_of_even_of_not_oddBad",
-            "norm_sq_parityCanonicalSourcePairing_le_mul_energy_of_not_parityBad",
-            "intrinsicPredecessorRealEnergy_shiftedIntrinsicPredecessorResolvent_eq",
-            "PROVED STRUCTURAL CONSEQUENCE / NOT INDEPENDENT ARITHMETIC INFORMATION",
-            "retained disk emptiness = OPEN / NOT PROVED BY #233",
-            "11/11 ATTACHED WORKFLOWS GREEN",
+            "PR #234",
+            "6d9b60752f7a4f164113bb0602fcdee87e2a54a1",
+            "b18d81f11a04982e438b7e196853ae665dab0cc2",
+            "94a0db085c35d2aba753a8359e452e4189c5c897",
+            "MERGED_VIA_PR_234",
+            "RETAINED_SOURCE_DISK_SECULAR_INTERSECTION",
+            "evenShiftedSourceRealPartOrSharpRadius_of_even_of_not_oddBad",
+            "evenShiftedDiskSecularIntersectionSharp_of_even_of_not_oddBad",
+            "M4 eliminated from final retained compatibility law",
             "PR #223",
             "NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED",
             "FROZEN_SCOPE_DID_NOT_REACH_RETAINED_STATE",
             "PR #117",
             "E4A4-SCHUR-FB-05",
             "OBS-059I",
-            "RETAINED_SOURCE_DISK_SECULAR_INTERSECTION",
-            "M4_FREE_RETAINED_DISK_HALFPLANE_COMPATIBILITY",
+            "RETAINED_SOURCE_KERNEL_FORBIDDEN_QUADRANT",
+            "CANONICAL_SOURCE_DEFICIT_AND_EXCESS_SIGN_CONTROL",
+            "CANONICAL_CUBIC_SHELL_NORMALIZATION",
+            "672 attempted / 0 shifted states",
             "R003 phase = DISCOVERY",
             "confirmatory execution = NOT AUTHORIZED",
             "terminal claim = RH_OPEN",
         )
         forbidden = (
-            "merged theorem authority = PR #231",
-            "next research target = RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK",
-            "required new information = GOOD_SECTOR_GRAM_CONTROL_COMPOSED_WITH_RETAINED_SOURCE_BALANCE",
-            "EXACT_KERNEL_ADVERSARIAL_FALSIFICATION",
+            "merged theorem authority = PR #233",
+            "next research target = RETAINED_SOURCE_DISK_SECULAR_INTERSECTION",
+            "required new information = M4_FREE_RETAINED_DISK_HALFPLANE_COMPATIBILITY",
             "full-composite parity mechanism = current",
         )
         for path in LIVING_SURFACES:

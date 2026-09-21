@@ -10,27 +10,25 @@ Control-v2 is routing/governance infrastructure, not theorem authority.
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #233
-- validated final head = 565428e066004e559490fbe1d21d46ef14494de3
-- merge commit = 9dfee4f50d5b57c92327da564ddf2f6159223fe1
-- tree = 5713b8d8088864cb126aae48a3a5a5ac8304807a
-- theorem family = RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK
-- prior theorem authority = PR #231 `CROSS_PARITY_CORRECTION_SOURCE_COUPLING_AND_RETAINED_SOURCE_BALANCE`
-- exact flagship theorem = `evenShiftedCrossParitySourceGramDiskSharp_of_even_of_not_oddBad`
-- exact energy-form consequence = `evenShiftedCrossParitySourceGramDiskEnergy_of_even_of_not_oddBad`
-- exact outer-disk consequence = `evenShiftedCrossParitySourceGramDisk_of_even_of_not_oddBad`
-- exact good-sector Gram theorem = `norm_sq_parityCanonicalSourcePairing_le_mul_energy_of_not_parityBad`
-- exact shifted-resolvent energy theorem = `intrinsicPredecessorRealEnergy_shiftedIntrinsicPredecessorResolvent_eq`
-- `canonicalOneStepDomination_of_not_parityBad` = PROVED STRUCTURAL CONSEQUENCE / NOT INDEPENDENT ARITHMETIC INFORMATION
-- retained disk emptiness = OPEN / NOT PROVED BY #233
-- workflow harvest = 11/11 ATTACHED WORKFLOWS GREEN on the validated #233 head
+- merged theorem authority = PR #234
+- validated final head = 6d9b60752f7a4f164113bb0602fcdee87e2a54a1
+- merge commit = b18d81f11a04982e438b7e196853ae665dab0cc2
+- tree = 94a0db085c35d2aba753a8359e452e4189c5c897
+- theorem family = RETAINED_SOURCE_DISK_SECULAR_INTERSECTION
+- prior theorem authority = PR #233 `RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK`
+- exact flagship theorem = `evenShiftedSourceRealPartOrSharpRadius_of_even_of_not_oddBad`
+- exact sharp intersection theorem = `evenShiftedDiskSecularIntersectionSharp_of_even_of_not_oddBad`
+- exact outer intersection theorem = `evenShiftedDiskSecularIntersection_of_even_of_not_oddBad`
+- M4 eliminated from final retained compatibility law
+- retained disk/half-plane emptiness = OPEN / NOT PROVED BY #234
+- workflow harvest = 11/11 ATTACHED WORKFLOWS GREEN on the validated #234 head
 
 MERGED THEOREM-STAGE PROVENANCE
-- PR #233
-- validated theorem head = 565428e066004e559490fbe1d21d46ef14494de3
-- validated theorem tree = 5713b8d8088864cb126aae48a3a5a5ac8304807a
-- status = MERGED_VIA_PR_233
-- theorem family = RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK
+- PR #234
+- validated theorem head = 6d9b60752f7a4f164113bb0602fcdee87e2a54a1
+- validated theorem tree = 94a0db085c35d2aba753a8359e452e4189c5c897
+- status = MERGED_VIA_PR_234
+- theorem family = RETAINED_SOURCE_DISK_SECULAR_INTERSECTION
 
 LATEST RESEARCH EVIDENCE
 - PR #223
@@ -41,12 +39,18 @@ LATEST RESEARCH EVIDENCE
 - qualified retained points = 0
 - retained-state implication = FROZEN_SCOPE_DID_NOT_REACH_RETAINED_STATE
 
+POST-#234 RESEARCH FIREWALL
+- latest post-#165 shifted-state scout = 672 attempted / 0 shifted states
+- numerical D/E prerequisite = CANONICAL_CUBIC_SHELL_NORMALIZATION
+- arbitrary integer shell rays are not authority for raw D/E magnitudes
+- theorem promotion from numerical scope = NOT AUTHORIZED
+
 CONTROL AUTHORITY
 - PR #117
 - selected formal first break = E4A4-SCHUR-FB-05
 - active subobligation = OBS-059I
-- next research target = RETAINED_SOURCE_DISK_SECULAR_INTERSECTION
-- required new information = M4_FREE_RETAINED_DISK_HALFPLANE_COMPATIBILITY
+- next research target = RETAINED_SOURCE_KERNEL_FORBIDDEN_QUADRANT
+- required new information = CANONICAL_SOURCE_DEFICIT_AND_EXCESS_SIGN_CONTROL
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - simultaneous odd-bad branch = OPEN
@@ -54,6 +58,42 @@ CONTROL AUTHORITY
 - parity-complete retained-state exclusion = OPEN
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#234 current-state override
+
+PR #234 proves the selected-even / odd-good disk/secular intersection, removes
+`M4` from the final retained compatibility law, and exposes the exact
+source-real/radius alternative. Exact authority is head
+`6d9b60752f7a4f164113bb0602fcdee87e2a54a1`, merge
+`b18d81f11a04982e438b7e196853ae665dab0cc2`, tree
+`94a0db085c35d2aba753a8359e452e4189c5c897`.
+
+The next theorem interface is
+`RETAINED_SOURCE_KERNEL_FORBIDDEN_QUADRANT`. Rewrite the #234 source moment
+through PR #213, define the real center deficit D and sharp radius excess E,
+and theoremize
+
+```text
+odd-good -> D <= 0 OR E <= 0
+D > 0 AND E > 0 -> odd-bad.
+```
+
+No positivity of D or E is claimed. Required new information is
+`CANONICAL_SOURCE_DEFICIT_AND_EXCESS_SIGN_CONTROL`.
+
+Numerical follow-up is not authorized to compare raw D/E magnitudes using the
+older arbitrary integer shell ray. It must first use
+`CANONICAL_CUBIC_SHELL_NORMALIZATION`. The latest post-#165 scout attempted
+672 states and found 0 shifted states.
+
+OBS-059I, simultaneous odd-bad exclusion, odd-selected closure,
+parity-complete retained-state exclusion, the terminal Mathlib RH seam, and RH
+remain OPEN. Control semantic authority remains PR #117; latest research
+evidence remains PR #223.
+
+Detailed post-green pass:
+`RESEARCH_LEADS_POST_234_DISK_SECULAR_INTERSECTION_DELTA.md` and
+`OBSTRUCTION_LEDGER_POST_234_DELTA.md`.
 
 ## Post-#233 current-state override
 
