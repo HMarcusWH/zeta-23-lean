@@ -251,8 +251,7 @@ theorem euclideanConj_mem_euclideanParityEmbeddedSuccSubspace
   rcases hx with ⟨y, hy, rfl⟩
   refine ⟨euclideanConj y,
     euclideanConj_mem_euclideanParityBoundaryFlatSubspace p N hy, ?_⟩
-  simpa only [euclideanCenteredZeroExtend_apply] using
-    euclideanCenteredZeroExtend_conj (Nat.le_succ N) y
+  exact euclideanCenteredZeroExtend_conj (Nat.le_succ N) y
 
 /-- Orthogonal complements of conjugation-stable parity subspaces are stable. -/
 theorem euclideanConj_mem_orthogonal_of_mem
@@ -628,8 +627,7 @@ theorem oddCubicCompressionVector_conj_fixed
     parityOrthogonalProjection_conj .odd N (centeredPowerVector N 3)
   have hv := congrArg Subtype.val h
   rw [centeredPowerVector_conj_fixed] at hv
-  simpa [oddCubicCompressionVector,
-    Submodule.coe_orthogonalProjectionOnto_apply] using hv.symm
+  simpa [oddCubicCompressionVector] using hv.symm
 
 /-- The pulled-back even cubic compression vector is fixed by conjugation. -/
 theorem successorPulledBackCubicCompressionVector_conj_fixed
