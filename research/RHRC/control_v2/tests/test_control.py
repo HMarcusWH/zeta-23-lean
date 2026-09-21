@@ -15,10 +15,10 @@ from control_v2.state import load_research_state
 class ControlV2Tests(unittest.TestCase):
     def test_control_state_tracks_latest_theorem_anchor_without_moving_control_anchor(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 229)
+        self.assertEqual(state.anchor.pr, 231)
         self.assertEqual(
             state.anchor.merge_commit,
-            "992398c810de5fb84919846fc4192d709d51e783",
+            "0d0305da1390206a4531ac2cbca52e45b19f2cad",
         )
         self.assertEqual(
             state.anchor.tree,
@@ -106,11 +106,19 @@ class ControlV2Tests(unittest.TestCase):
             "CROSS_PARITY_CORRECTION_SOURCE_COUPLING",
             "CANONICAL_SOURCE_COUPLING_AND_RETAINED_SOURCE_BALANCE",
             "Alpha reality/sign remains OPEN after #229",
+            "PR #231",
+            "f9623be705955bd98ef563aa75d3244712009cac",
+            "0d0305da1390206a4531ac2cbca52e45b19f2cad",
+            "5d50bd188db58e76b47e768bcad0e815356fb9dd",
+            "star_oddSafeSecularCorrectionFunctional_mul_shellInner_eq_cubicShellCoupling",
+            "evenShiftedCrossParitySourceBalance_of_even_of_not_oddBad",
+            "RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK",
+            "GOOD_SECTOR_GRAM_CONTROL_COMPOSED_WITH_RETAINED_SOURCE_BALANCE",
             "RH remains OPEN",
         ):
             self.assertIn(token, note)
-        self.assertEqual(control["merged_theorem_anchor"]["pr"], 229)
-        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 229)
+        self.assertEqual(control["merged_theorem_anchor"]["pr"], 231)
+        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 231)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
         self.assertEqual(control["terminal_claim"], "RH_OPEN")
 

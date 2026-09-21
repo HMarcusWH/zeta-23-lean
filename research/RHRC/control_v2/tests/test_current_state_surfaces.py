@@ -31,31 +31,36 @@ class CurrentStateSurfaceTests(unittest.TestCase):
     def setUp(self):
         self.state = json.loads((RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8"))
 
-    def test_machine_state_is_merged_post229(self):
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 229)
-        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 229)
+    def test_machine_state_is_merged_post231(self):
+        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 231)
+        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 231)
         self.assertEqual(self.state["latest_research_evidence"]["pr"], 223)
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
-        self.assertEqual(self.state["active_research_route"]["next_research_target"], "CROSS_PARITY_CORRECTION_SOURCE_COUPLING")
-        self.assertEqual(self.state["active_research_route"]["required_new_information"], "CANONICAL_SOURCE_COUPLING_AND_RETAINED_SOURCE_BALANCE")
+        self.assertEqual(self.state["active_research_route"]["next_research_target"], "RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK")
+        self.assertEqual(self.state["active_research_route"]["required_new_information"], "GOOD_SECTOR_GRAM_CONTROL_COMPOSED_WITH_RETAINED_SOURCE_BALANCE")
         self.assertEqual(self.state["active_research_route"]["active_subobligation"], "OBS-059I")
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
     def test_every_living_surface_frontloads_machine_state(self):
         required = (
-            "PR #229", "9d4f81c171264be424fbac40f1211263c3cc6abd",
-            "992398c810de5fb84919846fc4192d709d51e783",
-            "d9ae07d1ca92cb23b4a3ae3ccae0b32e9b7d38c8",
-            "MERGED_VIA_PR_229", "CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION",
-            "oddSafeSecularCorrectionFunctional_eq_resolvent_pairing_div",
-            "one_sub_crossParitySecularAlpha_eq_resolvent_pairing_div",
-            "one_sub_crossParitySecularGamma_eq_resolvent_pairing_div",
-            "alpha reality/sign = OPEN / NOT PROVED BY #229",
-            "13/13 GREEN JOBS", "PR #223",
+            "PR #231", "f9623be705955bd98ef563aa75d3244712009cac",
+            "0d0305da1390206a4531ac2cbca52e45b19f2cad",
+            "5d50bd188db58e76b47e768bcad0e815356fb9dd",
+            "MERGED_VIA_PR_231",
+            "CROSS_PARITY_CORRECTION_SOURCE_COUPLING_AND_RETAINED_SOURCE_BALANCE",
+            "star_oddSafeSecularCorrectionFunctional_mul_shellInner_eq_cubicShellCoupling",
+            "star_oddSafeSecularCorrectionFunctional_mul_shellInner_eq_channels",
+            "star_crossParitySecularGamma_mul_shellInner_eq_shellInner_sub_cubicShellCoupling",
+            "evenShiftedCrossParitySourceBalanceFactored_of_even",
+            "evenShiftedCrossParitySourceBalance_of_even_of_not_oddBad",
+            "alpha reality/sign = OPEN / NOT PROVED BY #231",
+            "source-coupling sign = OPEN / NOT PROVED BY #231",
+            "11/11 ATTACHED WORKFLOWS GREEN", "PR #223",
             "NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED",
             "FROZEN_SCOPE_DID_NOT_REACH_RETAINED_STATE", "PR #117",
-            "E4A4-SCHUR-FB-05", "OBS-059I", "CROSS_PARITY_CORRECTION_SOURCE_COUPLING",
-            "CANONICAL_SOURCE_COUPLING_AND_RETAINED_SOURCE_BALANCE",
+            "E4A4-SCHUR-FB-05", "OBS-059I",
+            "RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK",
+            "GOOD_SECTOR_GRAM_CONTROL_COMPOSED_WITH_RETAINED_SOURCE_BALANCE",
             "R003 phase = DISCOVERY", "confirmatory execution = NOT AUTHORIZED",
             "terminal claim = RH_OPEN",
         )
