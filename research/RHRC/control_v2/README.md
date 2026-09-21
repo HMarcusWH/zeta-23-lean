@@ -59,6 +59,42 @@ CONTROL AUTHORITY
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#234 current-state override
+
+PR #234 proves the selected-even / odd-good disk/secular intersection, removes
+`M4` from the final retained compatibility law, and exposes the exact
+source-real/radius alternative. Exact authority is head
+`6d9b60752f7a4f164113bb0602fcdee87e2a54a1`, merge
+`b18d81f11a04982e438b7e196853ae665dab0cc2`, tree
+`94a0db085c35d2aba753a8359e452e4189c5c897`.
+
+The next theorem interface is
+`RETAINED_SOURCE_KERNEL_FORBIDDEN_QUADRANT`. Rewrite the #234 source moment
+through PR #213, define the real center deficit D and sharp radius excess E,
+and theoremize
+
+```text
+odd-good -> D <= 0 OR E <= 0
+D > 0 AND E > 0 -> odd-bad.
+```
+
+No positivity of D or E is claimed. Required new information is
+`CANONICAL_SOURCE_DEFICIT_AND_EXCESS_SIGN_CONTROL`.
+
+Numerical follow-up is not authorized to compare raw D/E magnitudes using the
+older arbitrary integer shell ray. It must first use
+`CANONICAL_CUBIC_SHELL_NORMALIZATION`. The latest post-#165 scout attempted
+672 states and found 0 shifted states.
+
+OBS-059I, simultaneous odd-bad exclusion, odd-selected closure,
+parity-complete retained-state exclusion, the terminal Mathlib RH seam, and RH
+remain OPEN. Control semantic authority remains PR #117; latest research
+evidence remains PR #223.
+
+Detailed post-green pass:
+`RESEARCH_LEADS_POST_234_DISK_SECULAR_INTERSECTION_DELTA.md` and
+`OBSTRUCTION_LEDGER_POST_234_DELTA.md`.
+
 ## Post-#233 current-state override
 
 PR #233 proves good-sector canonical Gram/Cauchy--Schwarz control, exact
