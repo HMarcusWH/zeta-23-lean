@@ -129,6 +129,20 @@ directly from successor-sector goodness. It may still be used as a convenient
 derived interface, but it cannot be counted as an additional independent input
 toward OBS-059I.
 
+## DR-033 — infer a real retained eigenvector from Hermitianity alone
+
+Use Hermitianity of the compressed canonical operator to assert that the
+retained complex eigenvector may simply be taken real.
+
+**Status:** FORBIDDEN / INSUFFICIENT.
+
+**Reason:** Hermitianity gives real eigenvalues and orthogonal eigenspaces, but
+does not canonically fix a real phase for a complex eigenvector. The viable
+post-#235 route uses the stronger combination of entrywise-real canonical
+matrix data, conjugation stability of the constrained carrier, and the
+canonical E3-A cubic quotient normalization `κ=1`. No eigenvalue-simplicity
+assumption is authorized.
+
 ## DR-032 — arbitrary shell-ray normalization for raw D/E magnitudes
 
 Use the historical post-#165 integer `exact_shell_generator` directly to
