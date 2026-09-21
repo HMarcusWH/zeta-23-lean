@@ -3,10 +3,11 @@ import unittest
 from pathlib import Path
 
 RHRC = Path(__file__).resolve().parents[2]
+ROOT = RHRC.parent.parent
 
 
 class Post235SyncTests(unittest.TestCase):
-    """Historical PR #235 theorem state must remain represented after later advances."""
+    """Historical PR #235 provenance must survive after #236 becomes authority."""
 
     def setUp(self):
         self.state = json.loads(
@@ -15,14 +16,18 @@ class Post235SyncTests(unittest.TestCase):
 
     def test_post235_route_provenance_is_preserved(self):
         route = self.state["active_research_route"]
-        self.assertEqual(route["post235_source_kernel_forbidden_quadrant"], "PROVED_PR_235")
+        self.assertEqual(
+            route["post235_source_kernel_forbidden_quadrant"], "PROVED_PR_235"
+        )
         self.assertEqual(route["post235_deficit_excess_interface"], "PROVED_PR_235")
-        self.assertEqual(route["post235_source_kernel_seventh_jet_package"], "PROVED_PR_235")
+        self.assertEqual(
+            route["post235_source_kernel_seventh_jet_package"], "PROVED_PR_235"
+        )
         self.assertEqual(route["post235_real_phase_collapse"], "PROVED_PR_236")
         self.assertEqual(route["post235_source_kernel_reality"], "PROVED_PR_236")
         self.assertEqual(route["post235_one_real_scalar_reduction"], "PROVED_PR_236")
 
-    def test_post235_delta_documents_remain_complete(self):
+    def test_post235_delta_documents_are_complete(self):
         required_sections = (
             "What became formally true", "Workflow harvest", "What changed",
             "Upstream implications", "Downstream implications",
@@ -38,12 +43,30 @@ class Post235SyncTests(unittest.TestCase):
             for section in required_sections:
                 self.assertIn(section, text)
 
-    def test_later_authority_does_not_mutate_control_semantics(self):
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 236)
-        self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
-        self.assertEqual(self.state["latest_research_evidence"]["pr"], 223)
-        self.assertEqual(self.state["active_research_route"]["active_subobligation"], "OBS-059I")
+    def test_later_authority_is_post236(self):
+        theorem = self.state["merged_theorem_anchor"]
+        delta = self.state["latest_validated_theorem_delta"]
+        self.assertEqual(theorem["pr"], 236)
+        self.assertEqual(delta["pr"], 236)
+        self.assertEqual(
+            self.state["active_research_route"]["next_research_target"],
+            "RETAINED_REAL_COMPLETED_SOURCE_CORRIDOR",
+        )
+        self.assertEqual(
+            self.state["active_research_route"]["required_new_information"],
+            "REALITY_OF_RETAINED_M4_AND_SCALAR_COMPOSITION",
+        )
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
+
+    def test_current_headings_match_post236(self):
+        self.assertEqual(
+            (ROOT / "AUDIT.md").read_text(encoding="utf-8").splitlines()[0],
+            "# RHRC formal audit — merged theorem authority PR #236; research evidence PR #223",
+        )
+        self.assertEqual(
+            (ROOT / "FORK_NOTES.md").read_text(encoding="utf-8").splitlines()[0],
+            "# Fork notes — RHRC current state through merged PR #236",
+        )
 
 
 if __name__ == "__main__":
