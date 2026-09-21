@@ -15,14 +15,14 @@ from control_v2.state import load_research_state
 class ControlV2Tests(unittest.TestCase):
     def test_control_state_tracks_latest_theorem_anchor_without_moving_control_anchor(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 234)
+        self.assertEqual(state.anchor.pr, 235)
         self.assertEqual(
             state.anchor.merge_commit,
-            "b18d81f11a04982e438b7e196853ae665dab0cc2",
+            "0c347a99a02157798109ffb5a4718e201e6fa083",
         )
         self.assertEqual(
             state.anchor.tree,
-            "94a0db085c35d2aba753a8359e452e4189c5c897",
+            "ba6d8e6f5a714742353678e36cbc90d869b31798",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -127,11 +127,18 @@ class ControlV2Tests(unittest.TestCase):
             "RETAINED_SOURCE_KERNEL_FORBIDDEN_QUADRANT",
             "CANONICAL_SOURCE_DEFICIT_AND_EXCESS_SIGN_CONTROL",
             "CANONICAL_CUBIC_SHELL_NORMALIZATION",
+            "PR #235",
+            "d7ae288e874b2cf3462a8e00c35c7b713607a192",
+            "0c347a99a02157798109ffb5a4718e201e6fa083",
+            "ba6d8e6f5a714742353678e36cbc90d869b31798",
+            "RETAINED_SOURCE_KERNEL_FORBIDDEN_QUADRANT",
+            "RETAINED_CANONICAL_REAL_PHASE_COLLAPSE",
+            "CONJUGATION_COMPATIBLE_CANONICAL_NORMALIZATION",
             "RH remains OPEN",
         ):
             self.assertIn(token, note)
-        self.assertEqual(control["merged_theorem_anchor"]["pr"], 234)
-        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 234)
+        self.assertEqual(control["merged_theorem_anchor"]["pr"], 235)
+        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 235)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
         self.assertEqual(control["terminal_claim"], "RH_OPEN")
 
