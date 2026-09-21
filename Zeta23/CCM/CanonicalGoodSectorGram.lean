@@ -159,11 +159,11 @@ theorem parityCanonicalSourceEnergy_completion_of_square
     rw [inner_sub_left, inner_sub_right, inner_sub_right]
     rw [h11, h12, h21, h22, hxy, hyx]
     rw [hEyStar, hTxx, hTyy]
-    simp only [star_star, Complex.star_def, RCLike.conj_mul, RCLike.mul_conj]
+    simp only [Complex.star_def, RCLike.conj_mul]
     push_cast
-    ring
+    ring_nf
   rw [hinner]
-  simp
+  exact Complex.ofReal_re _
 
 /-- Cauchy--Schwarz for the canonical pairing on a good parity sector. -/
 theorem norm_sq_parityCanonicalSourcePairing_le_mul_energy_of_not_parityBad
