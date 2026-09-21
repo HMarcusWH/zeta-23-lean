@@ -22,7 +22,7 @@ class ControlV2Tests(unittest.TestCase):
         )
         self.assertEqual(
             state.anchor.tree,
-            "d9ae07d1ca92cb23b4a3ae3ccae0b32e9b7d38c8",
+            "5d50bd188db58e76b47e768bcad0e815356fb9dd",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
