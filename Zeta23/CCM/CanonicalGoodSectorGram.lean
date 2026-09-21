@@ -93,7 +93,6 @@ theorem parityCanonicalSourceEnergy_completion_of_square
     rfl
   rw [map_sub, map_smul, map_smul]
   rw [inner_sub_left, inner_sub_right, inner_sub_right]
-  simp only [inner_smul_left, inner_smul_right]
   rw [hxy, hyx]
   simp only [map_ofNat, Complex.ofReal_re, Complex.ofReal_im,
     Complex.sub_re, Complex.mul_re, starRingEnd_apply, Complex.conj_ofReal, Complex.conj_re,
@@ -149,7 +148,7 @@ theorem norm_sq_parityCanonicalSourcePairing_le_mul_energy_of_not_parityBad
         ((Ey : ℂ) • x - star z • y) at hvnonneg
     rw [hcomp] at hvnonneg
     have hdiff : 0 ≤ Ex * Ey - ‖z‖ ^ 2 :=
-      nonneg_of_mul_nonneg_left hvnonneg hEypos
+      nonneg_of_mul_nonneg_right hvnonneg hEypos
     exact sub_nonneg.mp hdiff
 
 /-- A good successor sector makes the canonical cubic shell energy
