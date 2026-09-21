@@ -61,10 +61,7 @@ theorem complexDisk_halfPlane_gap_sq_le
     rw [Complex.norm_mul, norm_star, Complex.normSq_eq_norm_sq]
     ring
   have hdisk' : ‖d‖ ^ 2 ≤ radiusSq := by
-    have hneg :
-        center - z = -(z - center) := by ring
-    rw [hneg, norm_neg]
-    simpa [d] using hdisk
+    simpa [d, norm_sub_rev] using hdisk
   have hmul :
       Complex.normSq weight * ‖d‖ ^ 2 ≤
         Complex.normSq weight * radiusSq :=
