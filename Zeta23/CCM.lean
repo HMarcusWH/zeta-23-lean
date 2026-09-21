@@ -165,6 +165,8 @@ import Zeta23.CCM.RegularFirstBadPairDCoercivity
 import Zeta23.CCM.RegularFirstBadCrossParitySecularCompletion
 import Zeta23.CCM.RegularFirstBadCrossParitySourceBalance
 import Zeta23.CCM.RegularFirstBadCrossParityGramDisk
+import Zeta23.CCM.ComplexDiskHalfPlane
+import Zeta23.CCM.RegularFirstBadCrossParityDiskSecularIntersection
 import Zeta23.CCM.RegularFirstBadSecularBudgetDichotomy
 import Zeta23.CCM.GoodSectorKernelAnnihilation
 import Zeta23.CCM.CanonicalGoodSectorGram
