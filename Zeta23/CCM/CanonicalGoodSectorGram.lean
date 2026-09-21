@@ -162,6 +162,7 @@ theorem parityCanonicalSourceEnergy_completion_of_square
     simp only [Complex.star_def, RCLike.conj_mul]
     push_cast
     ring_nf
+    rfl
   rw [hinner]
   exact Complex.ofReal_re _
 
