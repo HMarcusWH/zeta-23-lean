@@ -141,6 +141,25 @@ directly from successor-sector goodness. It may still be used as a convenient
 derived interface, but it cannot be counted as an additional independent input
 toward OBS-059I.
 
+## DR-032 — arbitrary shell-ray normalization for raw D/E magnitudes
+
+Use the historical post-#165 integer `exact_shell_generator` directly to
+numerically evaluate the raw post-#234 center-deficit/radius-excess scalars.
+
+**Status:** FORBIDDEN NORMALIZATION SHORTCUT after PR #234.
+
+**Reason:** the post-#165 generator is only a nonzero ray representative of the
+one-dimensional shell. That is sufficient for root/sign diagnostics whose
+meaning is ray-invariant, but the raw D/E magnitudes mix canonically normalized
+even and odd retained quantities. Lean #234 uses
+`intrinsicCubicShellPart`, the projection of the canonical cubic channel onto
+the shell. Any numerical D/E audit must reconstruct that canonical
+normalization, for example via the exact post-#222
+`canonical_cubic_shell_exact` geometry or an equivalent shared helper.
+
+This does not kill the numerical route; it specifies the required
+normalization before the route can produce theorem-relevant evidence.
+
 ## DR-001 — TightMult-visible scalar improvement
 
 Improve RH by a new scalar inequality consuming only the TightMult-visible single-compression statistics.
