@@ -95,7 +95,7 @@ theorem parityCanonicalSourceEnergy_completion_of_square
   rw [inner_sub_left, inner_sub_right, inner_sub_right]
   simp only [inner_smul_left, inner_smul_right]
   rw [hxy, hyx]
-  simp only [map_ofNat, star_ofReal, Complex.ofReal_re, Complex.ofReal_im,
+  simp only [map_ofNat, Complex.ofReal_re, Complex.ofReal_im,
     Complex.sub_re, Complex.mul_re, starRingEnd_apply, Complex.conj_re,
     Complex.conj_im, zero_mul, mul_zero, sub_zero, add_zero]
   rw [hEx, hEy, Complex.sq_norm, Complex.normSq_apply]
