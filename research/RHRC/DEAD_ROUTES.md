@@ -125,6 +125,18 @@ The base entries below preserve reusable failure reasons at the time they were r
 
 Any phrase such as “next step” inside an older entry is historical routing at that point, not authorization to replace the current `CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION` target.
 
+## DR-031 — good-sector one-step domination as independent arithmetic information
+
+Treat `canonicalOneStepDomination` as an additional arithmetic constraint after
+already assuming the successor parity sector is good.
+
+**Status:** CONSUMED / NOT INDEPENDENT after PR #233.
+
+**Reason:** `canonicalOneStepDomination_of_not_parityBad` proves the certificate
+directly from successor-sector goodness. It may still be used as a convenient
+derived interface, but it cannot be counted as an additional independent input
+toward OBS-059I.
+
 ## DR-001 — TightMult-visible scalar improvement
 
 Improve RH by a new scalar inequality consuming only the TightMult-visible single-compression statistics.
