@@ -193,6 +193,24 @@ def parityConj
   apply Subtype.ext
   exact euclideanConj_involutive _
 
+/-- Conjugating both vectors inside a parity carrier conjugates their inner product. -/
+theorem inner_parityConj
+    (p : ReversalParity) (N : ℕ)
+    (x y : euclideanParityBoundaryFlatSubspace p N) :
+    inner ℂ (parityConj p N x) (parityConj p N y) =
+      star (inner ℂ x y) := by
+  change
+    inner ℂ
+      (euclideanConj
+        (x : EuclideanSpace ℂ (Fin (2 * N + 1))))
+      (euclideanConj
+        (y : EuclideanSpace ℂ (Fin (2 * N + 1)))) =
+      star
+        (inner ℂ
+          (x : EuclideanSpace ℂ (Fin (2 * N + 1)))
+          (y : EuclideanSpace ℂ (Fin (2 * N + 1))))
+  exact inner_euclideanConj _ _
+
 /-- Centered zero extension commutes with raw coordinate conjugation. -/
 theorem centeredZeroExtend_star
     {N M : ℕ} (hNM : N ≤ M)
@@ -538,20 +556,34 @@ theorem euclideanEvenToOddIndexLinearMap_conj
       parityConj .odd N
         (euclideanEvenToOddIndexLinearMap N v) := by
   apply Subtype.ext
-  simpa only [coe_euclideanEvenToOddIndexLinearMap, coe_parityConj] using
-    euclideanIndexLinearMap_conj N
-      (v : EuclideanSpace ℂ (Fin (2 * N + 1)))
+  change
+    euclideanIndexLinearMap N
+        (euclideanConj
+          (v : EuclideanSpace ℂ (Fin (2 * N + 1)))) =
+      euclideanConj
+        (euclideanIndexLinearMap N
+          (v : EuclideanSpace ℂ (Fin (2 * N + 1))))
+  exact euclideanIndexLinearMap_conj N _
 
 /-- The odd cubic compression vector is fixed by conjugation. -/
 theorem oddCubicCompressionVector_conj_fixed
     (N : ℕ) :
     parityConj .odd N (oddCubicCompressionVector N) =
       oddCubicCompressionVector N := by
+  apply Subtype.ext
+  change
+    euclideanConj
+        (((oddCubicCompressionVector N :
+            euclideanOddBoundaryFlatSubspace N) :
+          EuclideanSpace ℂ (Fin (2 * N + 1)))) =
+      ((oddCubicCompressionVector N :
+          euclideanOddBoundaryFlatSubspace N) :
+        EuclideanSpace ℂ (Fin (2 * N + 1)))
   have h :=
     parityOrthogonalProjection_conj .odd N (centeredPowerVector N 3)
-  rw [centeredPowerVector_conj_fixed] at h
-  apply Subtype.ext
-  exact congrArg Subtype.val h.symm
+  have hv := congrArg Subtype.val h
+  rw [centeredPowerVector_conj_fixed] at hv
+  simpa [oddCubicCompressionVector] using hv.symm
 
 /-- The pulled-back even cubic compression vector is fixed by conjugation. -/
 theorem successorPulledBackCubicCompressionVector_conj_fixed
@@ -560,10 +592,23 @@ theorem successorPulledBackCubicCompressionVector_conj_fixed
         (successorPulledBackCubicCompressionVector N) =
       successorPulledBackCubicCompressionVector N := by
   apply euclideanEvenToOddIndexLinearMap_injective (N + 1)
-  rw [euclideanEvenToOddIndexLinearMap_conj,
-    evenIndex_successorPulledBackCubicCompressionVector,
-    evenIndex_successorPulledBackCubicCompressionVector,
-    oddCubicCompressionVector_conj_fixed]
+  calc
+    euclideanEvenToOddIndexLinearMap (N + 1)
+        (parityConj .even (N + 1)
+          (successorPulledBackCubicCompressionVector N)) =
+      parityConj .odd (N + 1)
+        (euclideanEvenToOddIndexLinearMap (N + 1)
+          (successorPulledBackCubicCompressionVector N)) :=
+      euclideanEvenToOddIndexLinearMap_conj (N + 1)
+        (successorPulledBackCubicCompressionVector N)
+    _ = parityConj .odd (N + 1)
+        (oddCubicCompressionVector (N + 1)) := by
+      rw [evenIndex_successorPulledBackCubicCompressionVector]
+    _ = oddCubicCompressionVector (N + 1) :=
+      oddCubicCompressionVector_conj_fixed (N + 1)
+    _ = euclideanEvenToOddIndexLinearMap (N + 1)
+        (successorPulledBackCubicCompressionVector N) := by
+      rw [evenIndex_successorPulledBackCubicCompressionVector]
 
 /-- The parity-uniform cubic successor vector is fixed by conjugation. -/
 theorem successorParityCubicVector_conj_fixed
@@ -593,89 +638,50 @@ theorem intrinsicCubicShellCoordinate_conj
     intrinsicCubicShellCoordinate p N (intrinsicShellConj p N s) =
       star (intrinsicCubicShellCoordinate p N s) := by
   let c := intrinsicCubicShellPart p N
-  have hcShell : intrinsicShellConj p N c = c := by
-    simpa [c] using intrinsicCubicShellPart_conj_fixed p N
-  have hcCarrier :
+  have hc :
       parityConj p (N + 1)
           (c : euclideanParityBoundaryFlatSubspace p (N + 1)) =
         (c : euclideanParityBoundaryFlatSubspace p (N + 1)) := by
-    simpa only [coe_intrinsicShellConj] using
-      congrArg
-        (fun z : intrinsicParitySuccShell p N =>
-          (z : euclideanParityBoundaryFlatSubspace p (N + 1)))
-        hcShell
-  have hcAmbient :
-      euclideanConj
-          (((c : intrinsicParitySuccShell p N) :
-            euclideanParityBoundaryFlatSubspace p (N + 1)) :
-            EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) =
-        (((c : intrinsicParitySuccShell p N) :
-          euclideanParityBoundaryFlatSubspace p (N + 1)) :
-          EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) := by
-    exact congrArg Subtype.val hcCarrier
-  have hnum0 := inner_euclideanConj
-    (((c : intrinsicParitySuccShell p N) :
-      euclideanParityBoundaryFlatSubspace p (N + 1)) :
-      EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
-    (((s : intrinsicParitySuccShell p N) :
-      euclideanParityBoundaryFlatSubspace p (N + 1)) :
-      EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
-  rw [hcAmbient] at hnum0
-  have hden0 := inner_euclideanConj
-    (((c : intrinsicParitySuccShell p N) :
-      euclideanParityBoundaryFlatSubspace p (N + 1)) :
-      EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
-    (((c : intrinsicParitySuccShell p N) :
-      euclideanParityBoundaryFlatSubspace p (N + 1)) :
-      EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
-  rw [hcAmbient] at hden0
-  have hdenReal :
-      star
-          (inner ℂ
-            ((c : intrinsicParitySuccShell p N) :
-              euclideanParityBoundaryFlatSubspace p (N + 1))
-            ((c : intrinsicParitySuccShell p N) :
-              euclideanParityBoundaryFlatSubspace p (N + 1))) =
-        inner ℂ
-          ((c : intrinsicParitySuccShell p N) :
-            euclideanParityBoundaryFlatSubspace p (N + 1))
-          ((c : intrinsicParitySuccShell p N) :
-            euclideanParityBoundaryFlatSubspace p (N + 1)) := by
-    simpa using hden0.symm
+    have hfix := intrinsicCubicShellPart_conj_fixed p N
+    exact congrArg
+      (fun z : intrinsicParitySuccShell p N =>
+        (z : euclideanParityBoundaryFlatSubspace p (N + 1))) hfix
+  have hnum :=
+    inner_parityConj p (N + 1)
+      (c : euclideanParityBoundaryFlatSubspace p (N + 1))
+      (s : euclideanParityBoundaryFlatSubspace p (N + 1))
+  rw [hc] at hnum
+  have hden :=
+    inner_parityConj p (N + 1)
+      (c : euclideanParityBoundaryFlatSubspace p (N + 1))
+      (c : euclideanParityBoundaryFlatSubspace p (N + 1))
+  rw [hc] at hden
   change
     inner ℂ
-        ((c : intrinsicParitySuccShell p N) :
-          euclideanParityBoundaryFlatSubspace p (N + 1))
+        (c : euclideanParityBoundaryFlatSubspace p (N + 1))
         ((intrinsicShellConj p N s : intrinsicParitySuccShell p N) :
           euclideanParityBoundaryFlatSubspace p (N + 1)) /
       inner ℂ
-        ((c : intrinsicParitySuccShell p N) :
-          euclideanParityBoundaryFlatSubspace p (N + 1))
-        ((c : intrinsicParitySuccShell p N) :
-          euclideanParityBoundaryFlatSubspace p (N + 1)) =
+        (c : euclideanParityBoundaryFlatSubspace p (N + 1))
+        (c : euclideanParityBoundaryFlatSubspace p (N + 1)) =
     star
       (inner ℂ
-          ((c : intrinsicParitySuccShell p N) :
-            euclideanParityBoundaryFlatSubspace p (N + 1))
+          (c : euclideanParityBoundaryFlatSubspace p (N + 1))
           (s : euclideanParityBoundaryFlatSubspace p (N + 1)) /
         inner ℂ
-          ((c : intrinsicParitySuccShell p N) :
-            euclideanParityBoundaryFlatSubspace p (N + 1))
-          ((c : intrinsicParitySuccShell p N) :
-            euclideanParityBoundaryFlatSubspace p (N + 1)))
-  have hnum :
+          (c : euclideanParityBoundaryFlatSubspace p (N + 1))
+          (c : euclideanParityBoundaryFlatSubspace p (N + 1)))
+  have hnum' :
       inner ℂ
-          ((c : intrinsicParitySuccShell p N) :
-            euclideanParityBoundaryFlatSubspace p (N + 1))
+          (c : euclideanParityBoundaryFlatSubspace p (N + 1))
           ((intrinsicShellConj p N s : intrinsicParitySuccShell p N) :
             euclideanParityBoundaryFlatSubspace p (N + 1)) =
         star
           (inner ℂ
-            ((c : intrinsicParitySuccShell p N) :
-              euclideanParityBoundaryFlatSubspace p (N + 1))
+            (c : euclideanParityBoundaryFlatSubspace p (N + 1))
             (s : euclideanParityBoundaryFlatSubspace p (N + 1))) := by
-    simpa only [coe_intrinsicShellConj, coe_parityConj] using hnum0
-  rw [hnum, star_div₀, hdenReal]
+    simpa only [coe_intrinsicShellConj] using hnum
+  rw [hnum', star_div₀, ← hden]
 
 /-- The canonical cubic quotient coordinate commutes with conjugation. -/
 theorem intrinsicCubicQuotientCoordinate_conj
