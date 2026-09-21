@@ -94,25 +94,48 @@ theorem parityCanonicalSourceEnergy_completion_of_square
   have h11 :
       inner ℂ ((Ey : ℂ) • T x) ((Ey : ℂ) • x) =
         star (Ey : ℂ) * ((Ey : ℂ) * inner ℂ (T x) x) := by
-    rw [inner_smul_left, inner_smul_right]
+    calc
+      inner ℂ ((Ey : ℂ) • T x) ((Ey : ℂ) • x) =
+          star (Ey : ℂ) *
+            inner ℂ (T x) ((Ey : ℂ) • x) := by
+              exact inner_smul_left (𝕜 := ℂ) (T x) ((Ey : ℂ) • x)
+      _ = star (Ey : ℂ) *
+          ((Ey : ℂ) * inner ℂ (T x) x) := by
+            rw [inner_smul_right]
   have h12 :
       inner ℂ ((Ey : ℂ) • T x) (star z • y) =
         star (Ey : ℂ) * (star z * inner ℂ (T x) y) := by
-    rw [inner_smul_left, inner_smul_right]
+    calc
+      inner ℂ ((Ey : ℂ) • T x) (star z • y) =
+          star (Ey : ℂ) * inner ℂ (T x) (star z • y) := by
+            exact inner_smul_left (𝕜 := ℂ) (T x) (star z • y)
+      _ = star (Ey : ℂ) * (star z * inner ℂ (T x) y) := by
+            rw [inner_smul_right]
   have h21 :
       inner ℂ (star z • T y) ((Ey : ℂ) • x) =
         star (star z) * ((Ey : ℂ) * inner ℂ (T y) x) := by
-    rw [inner_smul_left, inner_smul_right]
+    calc
+      inner ℂ (star z • T y) ((Ey : ℂ) • x) =
+          star (star z) * inner ℂ (T y) ((Ey : ℂ) • x) := by
+            exact inner_smul_left (𝕜 := ℂ) (T y) ((Ey : ℂ) • x)
+      _ = star (star z) *
+          ((Ey : ℂ) * inner ℂ (T y) x) := by
+            rw [inner_smul_right]
   have h22 :
       inner ℂ (star z • T y) (star z • y) =
         star (star z) * (star z * inner ℂ (T y) y) := by
-    rw [inner_smul_left, inner_smul_right]
+    calc
+      inner ℂ (star z • T y) (star z • y) =
+          star (star z) * inner ℂ (T y) (star z • y) := by
+            exact inner_smul_left (𝕜 := ℂ) (T y) (star z • y)
+      _ = star (star z) * (star z * inner ℂ (T y) y) := by
+            rw [inner_smul_right]
   rw [map_sub, map_smul, map_smul]
   rw [inner_sub_left, inner_sub_right, inner_sub_right]
   rw [h11, h12, h21, h22, hxy, hyx]
   simp only [map_ofNat, Complex.ofReal_re, Complex.ofReal_im,
     Complex.sub_re, Complex.mul_re, starRingEnd_apply, Complex.conj_ofReal, Complex.conj_re,
-    Complex.conj_im, map_star, star_star, zero_mul, mul_zero, sub_zero, add_zero]
+    Complex.conj_im, star_star, zero_mul, mul_zero, sub_zero, add_zero]
   rw [hEx, hEy, Complex.sq_norm, Complex.normSq_apply]
   ring
 
