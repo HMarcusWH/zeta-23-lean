@@ -53,6 +53,31 @@ CONTROL AUTHORITY
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#233 execution target
+
+The next theorem PR is `RETAINED_SOURCE_DISK_SECULAR_INTERSECTION`.
+
+Use the same retained selected-even / odd-good state and compose:
+
+```text
+B = (-lam) ||u_-||^2 <= Re(star(S) * F),
+F = M4 - S*C,
+|q - F|^2 <= Rsharp.
+```
+
+Target denominator-free consequence:
+
+```text
+B <= Re(star(S) q)
+OR
+(B - Re(star(S) q))^2 <= normSq(S) * Rsharp.
+```
+
+Then rewrite `Re(star(S)q)` as shell-norm-squared times `Re(S)`. The final
+necessary condition should be `M4`-free. Do not claim the intersection empty;
+that remains the downstream research question.
+
+
 ## Post-#231 current-state override
 
 PR #231 proves the generic correction/source-coupling bridge, its production-channel
