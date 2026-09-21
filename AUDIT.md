@@ -1,4 +1,4 @@
-# RHRC formal audit — merged theorem authority PR #231; research evidence PR #223
+# RHRC formal audit — merged theorem authority PR #233; research evidence PR #223
 
 > **RH remains OPEN.**
 
@@ -6,27 +6,27 @@
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #231
-- validated final head = f9623be705955bd98ef563aa75d3244712009cac
-- merge commit = 0d0305da1390206a4531ac2cbca52e45b19f2cad
-- tree = 5d50bd188db58e76b47e768bcad0e815356fb9dd
-- theorem family = CROSS_PARITY_CORRECTION_SOURCE_COUPLING_AND_RETAINED_SOURCE_BALANCE
-- prior theorem authority = PR #229 `CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION`
-- exact flagship theorem = `star_oddSafeSecularCorrectionFunctional_mul_shellInner_eq_cubicShellCoupling`
-- exact production-channel consequence = `star_oddSafeSecularCorrectionFunctional_mul_shellInner_eq_channels`
-- exact Gamma balance = `star_crossParitySecularGamma_mul_shellInner_eq_shellInner_sub_cubicShellCoupling`
-- exact retained factored balance = `evenShiftedCrossParitySourceBalanceFactored_of_even`
-- exact retained odd-good balance = `evenShiftedCrossParitySourceBalance_of_even_of_not_oddBad`
-- alpha reality/sign = OPEN / NOT PROVED BY #231
-- source-coupling sign = OPEN / NOT PROVED BY #231
-- workflow harvest = 11/11 ATTACHED WORKFLOWS GREEN on the validated #231 head
+- merged theorem authority = PR #233
+- validated final head = 565428e066004e559490fbe1d21d46ef14494de3
+- merge commit = 9dfee4f50d5b57c92327da564ddf2f6159223fe1
+- tree = 5713b8d8088864cb126aae48a3a5a5ac8304807a
+- theorem family = RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK
+- prior theorem authority = PR #231 `CROSS_PARITY_CORRECTION_SOURCE_COUPLING_AND_RETAINED_SOURCE_BALANCE`
+- exact flagship theorem = `evenShiftedCrossParitySourceGramDiskSharp_of_even_of_not_oddBad`
+- exact energy-form consequence = `evenShiftedCrossParitySourceGramDiskEnergy_of_even_of_not_oddBad`
+- exact outer-disk consequence = `evenShiftedCrossParitySourceGramDisk_of_even_of_not_oddBad`
+- exact good-sector Gram theorem = `norm_sq_parityCanonicalSourcePairing_le_mul_energy_of_not_parityBad`
+- exact shifted-resolvent energy theorem = `intrinsicPredecessorRealEnergy_shiftedIntrinsicPredecessorResolvent_eq`
+- `canonicalOneStepDomination_of_not_parityBad` = PROVED STRUCTURAL CONSEQUENCE / NOT INDEPENDENT ARITHMETIC INFORMATION
+- retained disk emptiness = OPEN / NOT PROVED BY #233
+- workflow harvest = 11/11 ATTACHED WORKFLOWS GREEN on the validated #233 head
 
 MERGED THEOREM-STAGE PROVENANCE
-- PR #231
-- validated theorem head = f9623be705955bd98ef563aa75d3244712009cac
-- validated theorem tree = 5d50bd188db58e76b47e768bcad0e815356fb9dd
-- status = MERGED_VIA_PR_231
-- theorem family = CROSS_PARITY_CORRECTION_SOURCE_COUPLING_AND_RETAINED_SOURCE_BALANCE
+- PR #233
+- validated theorem head = 565428e066004e559490fbe1d21d46ef14494de3
+- validated theorem tree = 5713b8d8088864cb126aae48a3a5a5ac8304807a
+- status = MERGED_VIA_PR_233
+- theorem family = RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK
 
 LATEST RESEARCH EVIDENCE
 - PR #223
@@ -41,10 +41,13 @@ CONTROL AUTHORITY
 - PR #117
 - selected formal first break = E4A4-SCHUR-FB-05
 - active subobligation = OBS-059I
-- next research target = RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK
-- required new information = GOOD_SECTOR_GRAM_CONTROL_COMPOSED_WITH_RETAINED_SOURCE_BALANCE
+- next research target = RETAINED_SOURCE_DISK_SECULAR_INTERSECTION
+- required new information = M4_FREE_RETAINED_DISK_HALFPLANE_COMPATIBILITY
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
+- simultaneous odd-bad branch = OPEN
+- odd-selected first-bad branch = OPEN
+- parity-complete retained-state exclusion = OPEN
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
