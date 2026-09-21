@@ -164,8 +164,11 @@ import Zeta23.CCM.ParitySourceMomentFourCoercivity
 import Zeta23.CCM.RegularFirstBadPairDCoercivity
 import Zeta23.CCM.RegularFirstBadCrossParitySecularCompletion
 import Zeta23.CCM.RegularFirstBadCrossParitySourceBalance
+import Zeta23.CCM.RegularFirstBadCrossParityGramDisk
 import Zeta23.CCM.RegularFirstBadSecularBudgetDichotomy
 import Zeta23.CCM.GoodSectorKernelAnnihilation
+import Zeta23.CCM.CanonicalGoodSectorGram
+import Zeta23.CCM.ShiftedPredecessorResolventEnergy
 import Zeta23.CCM.RegularFirstBadZeroShiftKernelBalance
 import Zeta23.CCM.RegularFirstBadZeroShiftKernelCollapse
 import Zeta23.CCM.ZeroShiftSchurClassification
