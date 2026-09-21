@@ -42,8 +42,8 @@ theorem complexDisk_halfPlane_gap_sq_le
           star weight * center + star weight * (z - center) := by
       ring
     rw [hdecomp, Complex.add_re] at hhalf
-    simpa [gap, d] using
-      (sub_le_iff_le_add.mpr hhalf)
+    dsimp [gap, d]
+    linarith
   have hprojNonneg :
       0 ≤ Complex.re (star weight * d) :=
     le_trans (le_of_lt hgap) hproj
