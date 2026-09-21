@@ -20,24 +20,27 @@ Research certificates, exact-rational audits, Arb output and external reviews ar
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #229
-- validated final head = 9d4f81c171264be424fbac40f1211263c3cc6abd
-- merge commit = 992398c810de5fb84919846fc4192d709d51e783
-- tree = d9ae07d1ca92cb23b4a3ae3ccae0b32e9b7d38c8
-- theorem family = CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION
-- prior theorem authority = PR #227 `CROSS_PARITY_ONE_COEFFICIENT_TRANSFER_COLLAPSE`
-- exact flagship theorem = `oddSafeSecularCorrectionFunctional_eq_resolvent_pairing_div`
-- exact alpha consequence = `one_sub_crossParitySecularAlpha_eq_resolvent_pairing_div`
-- exact Gamma consequence = `one_sub_crossParitySecularGamma_eq_resolvent_pairing_div`
-- alpha reality/sign = OPEN / NOT PROVED BY #229
-- workflow harvest = 13/13 GREEN JOBS on the validated #229 head
+- merged theorem authority = PR #231
+- validated final head = f9623be705955bd98ef563aa75d3244712009cac
+- merge commit = 0d0305da1390206a4531ac2cbca52e45b19f2cad
+- tree = 5d50bd188db58e76b47e768bcad0e815356fb9dd
+- theorem family = CROSS_PARITY_CORRECTION_SOURCE_COUPLING_AND_RETAINED_SOURCE_BALANCE
+- prior theorem authority = PR #229 `CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION`
+- exact flagship theorem = `star_oddSafeSecularCorrectionFunctional_mul_shellInner_eq_cubicShellCoupling`
+- exact production-channel consequence = `star_oddSafeSecularCorrectionFunctional_mul_shellInner_eq_channels`
+- exact Gamma balance = `star_crossParitySecularGamma_mul_shellInner_eq_shellInner_sub_cubicShellCoupling`
+- exact retained factored balance = `evenShiftedCrossParitySourceBalanceFactored_of_even`
+- exact retained odd-good balance = `evenShiftedCrossParitySourceBalance_of_even_of_not_oddBad`
+- alpha reality/sign = OPEN / NOT PROVED BY #231
+- source-coupling sign = OPEN / NOT PROVED BY #231
+- workflow harvest = 11/11 ATTACHED WORKFLOWS GREEN on the validated #231 head
 
 MERGED THEOREM-STAGE PROVENANCE
-- PR #229
-- validated theorem head = 9d4f81c171264be424fbac40f1211263c3cc6abd
-- validated theorem tree = d9ae07d1ca92cb23b4a3ae3ccae0b32e9b7d38c8
-- status = MERGED_VIA_PR_229
-- theorem family = CROSS_PARITY_CORRECTION_FUNCTIONAL_RIESZ_REPRESENTATION
+- PR #231
+- validated theorem head = f9623be705955bd98ef563aa75d3244712009cac
+- validated theorem tree = 5d50bd188db58e76b47e768bcad0e815356fb9dd
+- status = MERGED_VIA_PR_231
+- theorem family = CROSS_PARITY_CORRECTION_SOURCE_COUPLING_AND_RETAINED_SOURCE_BALANCE
 
 LATEST RESEARCH EVIDENCE
 - PR #223
@@ -52,12 +55,53 @@ CONTROL AUTHORITY
 - PR #117
 - selected formal first break = E4A4-SCHUR-FB-05
 - active subobligation = OBS-059I
-- next research target = CROSS_PARITY_CORRECTION_SOURCE_COUPLING
-- required new information = CANONICAL_SOURCE_COUPLING_AND_RETAINED_SOURCE_BALANCE
+- next research target = RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK
+- required new information = GOOD_SECTOR_GRAM_CONTROL_COMPOSED_WITH_RETAINED_SOURCE_BALANCE
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#231 current-state override
+
+PR #231 proves the generic correction/source-coupling bridge, its production-channel
+rewrite, the exact Gamma shell balance, and the retained factor-preserving source
+balance. On the selected-even / odd-good retained branch, the existing source
+nonvanishing theorem cancels the source factor and gives the exact same-state
+balance
+`q - J = M4 - S*C`.
+
+PR #231 does **not** prove alpha reality/sign, a sign for the source coupling,
+canonical simultaneous odd-bad exclusion, odd-selected closure, parity-complete
+retained-state exclusion, negative-root exclusion, the terminal Mathlib RH seam,
+or RH.
+
+The #231 workflow harvest completed 11/11 attached workflows green on the exact
+validated head `f9623be705955bd98ef563aa75d3244712009cac`. Latest independent
+research evidence remains PR #223; Control-v2 semantic authority remains PR #117.
+
+The next theorem target is `RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK`: use
+good-sector Gram control only as an intermediate bridge, then compose it with
+the #231 same-state source balance. The required new information is
+`GOOD_SECTOR_GRAM_CONTROL_COMPOSED_WITH_RETAINED_SOURCE_BALANCE`.
+A proof of `canonicalOneStepDomination` obtained merely by restating successor
+positivity is not by itself independent FB-05 information.
+
+Detailed post-green pass:
+`RESEARCH_LEADS_POST_231_SOURCE_BALANCE_DELTA.md` and
+`OBSTRUCTION_LEDGER_POST_231_DELTA.md`.
+
+Any older "current", "next", or routing labels below this override are historical
+snapshots unless re-established above.
+
+```text
+ACTION_REGISTRY.current_frontier
+  = frozen PR #117 control-semantic frontier
+
+CONTROL_STATE.active_research_route.next_research_target
+  = current descriptive research operation
+  = RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK
+```
 
 ## Post-#229 current-state override
 
