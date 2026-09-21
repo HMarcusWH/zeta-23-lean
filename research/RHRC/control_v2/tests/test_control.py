@@ -15,14 +15,14 @@ from control_v2.state import load_research_state
 class ControlV2Tests(unittest.TestCase):
     def test_control_state_tracks_latest_theorem_anchor_without_moving_control_anchor(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 231)
+        self.assertEqual(state.anchor.pr, 233)
         self.assertEqual(
             state.anchor.merge_commit,
-            "0d0305da1390206a4531ac2cbca52e45b19f2cad",
+            "9dfee4f50d5b57c92327da564ddf2f6159223fe1",
         )
         self.assertEqual(
             state.anchor.tree,
-            "5d50bd188db58e76b47e768bcad0e815356fb9dd",
+            "5713b8d8088864cb126aae48a3a5a5ac8304807a",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -114,11 +114,17 @@ class ControlV2Tests(unittest.TestCase):
             "evenShiftedCrossParitySourceBalance_of_even_of_not_oddBad",
             "RETAINED_CROSS_PARITY_SOURCE_GRAM_DISK",
             "GOOD_SECTOR_GRAM_CONTROL_COMPOSED_WITH_RETAINED_SOURCE_BALANCE",
+            "PR #233",
+            "565428e066004e559490fbe1d21d46ef14494de3",
+            "9dfee4f50d5b57c92327da564ddf2f6159223fe1",
+            "5713b8d8088864cb126aae48a3a5a5ac8304807a",
+            "RETAINED_SOURCE_DISK_SECULAR_INTERSECTION",
+            "M4_FREE_RETAINED_DISK_HALFPLANE_COMPATIBILITY",
             "RH remains OPEN",
         ):
             self.assertIn(token, note)
-        self.assertEqual(control["merged_theorem_anchor"]["pr"], 231)
-        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 231)
+        self.assertEqual(control["merged_theorem_anchor"]["pr"], 233)
+        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 233)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
         self.assertEqual(control["terminal_claim"], "RH_OPEN")
 
