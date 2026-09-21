@@ -94,7 +94,6 @@ theorem inner_euclideanConj
   apply Finset.sum_congr rfl
   intro i _
   simp [euclideanConj_apply]
-  ring
 
 /-- Centered moments commute with coordinatewise conjugation. -/
 theorem centeredMoment_star_coefficients
@@ -253,7 +252,7 @@ theorem euclideanConj_mem_euclideanParityEmbeddedSuccSubspace
   refine ⟨euclideanConj y,
     euclideanConj_mem_euclideanParityBoundaryFlatSubspace p N hy, ?_⟩
   simpa only [euclideanCenteredZeroExtend_apply] using
-    (euclideanCenteredZeroExtend_conj (Nat.le_succ N) y).symm
+    euclideanCenteredZeroExtend_conj (Nat.le_succ N) y
 
 /-- Orthogonal complements of conjugation-stable parity subspaces are stable. -/
 theorem euclideanConj_mem_orthogonal_of_mem
@@ -341,32 +340,52 @@ theorem intrinsicPredecessorPart_conj
     apply Subtype.ext
     have hc := congrArg euclideanConj (congrArg Subtype.val hrec)
     simpa [w, s] using hc.symm
-  rw [hrecC]
+  rw [hrecC, map_add]
   change
-    Submodule.projectionOnto
-        (intrinsicParityPredecessorSubspace p N)
-        (intrinsicParitySuccShell p N)
-        (intrinsicPredecessor_isCompl_shell p N)
+    intrinsicPredecessorPart p N
         ((intrinsicPredecessorConj p N w :
             intrinsicParityPredecessorSubspace p N) :
           euclideanParityBoundaryFlatSubspace p (N + 1)) +
-      Submodule.projectionOnto
-        (intrinsicParityPredecessorSubspace p N)
-        (intrinsicParitySuccShell p N)
-        (intrinsicPredecessor_isCompl_shell p N)
+      intrinsicPredecessorPart p N
         ((intrinsicShellConj p N s :
             intrinsicParitySuccShell p N) :
           euclideanParityBoundaryFlatSubspace p (N + 1)) =
       intrinsicPredecessorConj p N w
-  rw [
-    Submodule.projectionOnto_apply_of_mem_left
+  have hw :
+      intrinsicPredecessorPart p N
+          ((intrinsicPredecessorConj p N w :
+              intrinsicParityPredecessorSubspace p N) :
+            euclideanParityBoundaryFlatSubspace p (N + 1)) =
+        intrinsicPredecessorConj p N w := by
+    change
+      Submodule.projectionOnto
+          (intrinsicParityPredecessorSubspace p N)
+          (intrinsicParitySuccShell p N)
+          (intrinsicPredecessor_isCompl_shell p N)
+          ((intrinsicPredecessorConj p N w :
+              intrinsicParityPredecessorSubspace p N) :
+            euclideanParityBoundaryFlatSubspace p (N + 1)) =
+        intrinsicPredecessorConj p N w
+    exact Submodule.projectionOnto_apply_of_mem_left
       (intrinsicPredecessor_isCompl_shell p N)
-      (intrinsicPredecessorConj p N w).property,
-    Submodule.projectionOnto_apply_of_mem_right
+      (intrinsicPredecessorConj p N w).property
+  have hs :
+      intrinsicPredecessorPart p N
+          ((intrinsicShellConj p N s :
+              intrinsicParitySuccShell p N) :
+            euclideanParityBoundaryFlatSubspace p (N + 1)) = 0 := by
+    change
+      Submodule.projectionOnto
+          (intrinsicParityPredecessorSubspace p N)
+          (intrinsicParitySuccShell p N)
+          (intrinsicPredecessor_isCompl_shell p N)
+          ((intrinsicShellConj p N s :
+              intrinsicParitySuccShell p N) :
+            euclideanParityBoundaryFlatSubspace p (N + 1)) = 0
+    exact Submodule.projectionOnto_apply_of_mem_right
       (intrinsicPredecessor_isCompl_shell p N)
       (intrinsicShellConj p N s).property
-  ]
-  simp [w]
+  rw [hw, hs, add_zero]
 
 /-- Algebraic shell projection commutes with conjugation. -/
 theorem intrinsicShellPart_conj
@@ -386,32 +405,52 @@ theorem intrinsicShellPart_conj
     apply Subtype.ext
     have hc := congrArg euclideanConj (congrArg Subtype.val hrec)
     simpa [w, s] using hc.symm
-  rw [hrecC]
+  rw [hrecC, map_add]
   change
-    Submodule.projectionOnto
-        (intrinsicParitySuccShell p N)
-        (intrinsicParityPredecessorSubspace p N)
-        (intrinsicPredecessor_isCompl_shell p N).symm
+    intrinsicShellPart p N
         ((intrinsicPredecessorConj p N w :
             intrinsicParityPredecessorSubspace p N) :
           euclideanParityBoundaryFlatSubspace p (N + 1)) +
-      Submodule.projectionOnto
-        (intrinsicParitySuccShell p N)
-        (intrinsicParityPredecessorSubspace p N)
-        (intrinsicPredecessor_isCompl_shell p N).symm
+      intrinsicShellPart p N
         ((intrinsicShellConj p N s :
             intrinsicParitySuccShell p N) :
           euclideanParityBoundaryFlatSubspace p (N + 1)) =
       intrinsicShellConj p N s
-  rw [
-    Submodule.projectionOnto_apply_of_mem_right
+  have hw :
+      intrinsicShellPart p N
+          ((intrinsicPredecessorConj p N w :
+              intrinsicParityPredecessorSubspace p N) :
+            euclideanParityBoundaryFlatSubspace p (N + 1)) = 0 := by
+    change
+      Submodule.projectionOnto
+          (intrinsicParitySuccShell p N)
+          (intrinsicParityPredecessorSubspace p N)
+          (intrinsicPredecessor_isCompl_shell p N).symm
+          ((intrinsicPredecessorConj p N w :
+              intrinsicParityPredecessorSubspace p N) :
+            euclideanParityBoundaryFlatSubspace p (N + 1)) = 0
+    exact Submodule.projectionOnto_apply_of_mem_right
       (intrinsicPredecessor_isCompl_shell p N).symm
-      (intrinsicPredecessorConj p N w).property,
-    Submodule.projectionOnto_apply_of_mem_left
+      (intrinsicPredecessorConj p N w).property
+  have hs :
+      intrinsicShellPart p N
+          ((intrinsicShellConj p N s :
+              intrinsicParitySuccShell p N) :
+            euclideanParityBoundaryFlatSubspace p (N + 1)) =
+        intrinsicShellConj p N s := by
+    change
+      Submodule.projectionOnto
+          (intrinsicParitySuccShell p N)
+          (intrinsicParityPredecessorSubspace p N)
+          (intrinsicPredecessor_isCompl_shell p N).symm
+          ((intrinsicShellConj p N s :
+              intrinsicParitySuccShell p N) :
+            euclideanParityBoundaryFlatSubspace p (N + 1)) =
+        intrinsicShellConj p N s
+    exact Submodule.projectionOnto_apply_of_mem_left
       (intrinsicPredecessor_isCompl_shell p N).symm
       (intrinsicShellConj p N s).property
-  ]
-  simp [s]
+  rw [hw, hs, zero_add]
 
 /-- The canonical source matrix action commutes with coordinate conjugation. -/
 theorem canonicalSourceMatrix_mulVec_star
@@ -537,6 +576,12 @@ theorem euclideanIndexLinearMap_conj
         (indexMatrix N *ᵥ
           ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x)) := by
       ext i
+      change
+        (indexMatrix N *ᵥ
+            star ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x)) i =
+          star
+            ((indexMatrix N *ᵥ
+              ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x)) i)
       rw [indexMatrix_mulVec_apply, indexMatrix_mulVec_apply]
       simp
     _ = star
@@ -583,7 +628,8 @@ theorem oddCubicCompressionVector_conj_fixed
     parityOrthogonalProjection_conj .odd N (centeredPowerVector N 3)
   have hv := congrArg Subtype.val h
   rw [centeredPowerVector_conj_fixed] at hv
-  simpa [oddCubicCompressionVector] using hv.symm
+  simpa [oddCubicCompressionVector,
+    Submodule.coe_orthogonalProjectionOnto_apply] using hv.symm
 
 /-- The pulled-back even cubic compression vector is fixed by conjugation. -/
 theorem successorPulledBackCubicCompressionVector_conj_fixed
@@ -592,23 +638,15 @@ theorem successorPulledBackCubicCompressionVector_conj_fixed
         (successorPulledBackCubicCompressionVector N) =
       successorPulledBackCubicCompressionVector N := by
   apply euclideanEvenToOddIndexLinearMap_injective (N + 1)
-  calc
-    euclideanEvenToOddIndexLinearMap (N + 1)
-        (parityConj .even (N + 1)
-          (successorPulledBackCubicCompressionVector N)) =
-      parityConj .odd (N + 1)
-        (euclideanEvenToOddIndexLinearMap (N + 1)
-          (successorPulledBackCubicCompressionVector N)) :=
-      euclideanEvenToOddIndexLinearMap_conj (N + 1)
-        (successorPulledBackCubicCompressionVector N)
-    _ = parityConj .odd (N + 1)
-        (oddCubicCompressionVector (N + 1)) := by
-      rw [evenIndex_successorPulledBackCubicCompressionVector]
-    _ = oddCubicCompressionVector (N + 1) :=
-      oddCubicCompressionVector_conj_fixed (N + 1)
-    _ = euclideanEvenToOddIndexLinearMap (N + 1)
-        (successorPulledBackCubicCompressionVector N) := by
-      rw [evenIndex_successorPulledBackCubicCompressionVector]
+  have hconj :=
+    euclideanEvenToOddIndexLinearMap_conj (N + 1)
+      (successorPulledBackCubicCompressionVector N)
+  have hmap :=
+    evenIndex_successorPulledBackCubicCompressionVector N
+  rw [hmap] at hconj
+  have hfixed := oddCubicCompressionVector_conj_fixed (N + 1)
+  rw [hfixed] at hconj
+  simpa only [hmap] using hconj
 
 /-- The parity-uniform cubic successor vector is fixed by conjugation. -/
 theorem successorParityCubicVector_conj_fixed
