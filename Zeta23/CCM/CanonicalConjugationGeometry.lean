@@ -58,6 +58,12 @@ def euclideanConj
   ext i
   simp [Pi.add_apply]
 
+@[simp] theorem euclideanConj_sub
+    {ι : Type*} [Fintype ι]
+    (x y : EuclideanSpace ℂ ι) :
+    euclideanConj (x - y) = euclideanConj x - euclideanConj y := by
+  simp [sub_eq_add_neg]
+
 @[simp] theorem euclideanConj_neg
     {ι : Type*} [Fintype ι]
     (x : EuclideanSpace ℂ ι) :
