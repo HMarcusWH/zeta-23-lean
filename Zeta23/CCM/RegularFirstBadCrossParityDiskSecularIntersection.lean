@@ -47,8 +47,7 @@ theorem re_star_mul_cubicShellSelf_eq_norm_sq_mul_re
           euclideanParityBoundaryFlatSubspace .odd (N + 1))‖ ^ 2 *
         Complex.re S := by
   rw [inner_self_eq_norm_sq_to_K]
-  simp [Complex.mul_re, Complex.star_def]
-  ring
+  simp [Complex.mul_re, Complex.star_def] <;> ring
 
 /-- Sharp M4-free retained compatibility law.
 
