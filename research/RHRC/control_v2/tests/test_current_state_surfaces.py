@@ -66,6 +66,8 @@ class CurrentStateSurfaceTests(unittest.TestCase):
             "PR #223",
             "NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED",
             "FROZEN_SCOPE_DID_NOT_REACH_RETAINED_STATE",
+            "DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED",
+            "COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED",
             "PR #117",
             "E4A4-SCHUR-FB-05",
             "OBS-059I",
