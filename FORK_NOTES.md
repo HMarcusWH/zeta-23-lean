@@ -1,4 +1,4 @@
-# Fork notes — RHRC current state through merged PR #235
+# Fork notes — RHRC current state through merged PR #236
 
 > **RH remains OPEN.**
 
@@ -6,22 +6,29 @@
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #235
-- validated final head = d7ae288e874b2cf3462a8e00c35c7b713607a192
-- merge commit = 0c347a99a02157798109ffb5a4718e201e6fa083
-- tree = ba6d8e6f5a714742353678e36cbc90d869b31798
-- status = MERGED_VIA_PR_235
-- theorem family = RETAINED_SOURCE_KERNEL_FORBIDDEN_QUADRANT
-- exact flagship theorem = `oddBad_of_even_of_sourceKernelDeficit_pos_of_sharpExcess_pos`
-- exact compatibility theorem = `retainedSourceKernelDeficit_or_excess_nonpos_of_even_of_not_oddBad`
-- D > 0 and E > 0 forces odd badness
-- no positivity of D or E is proved
-- workflow harvest = 11/11 ATTACHED WORKFLOWS GREEN on the validated #235 head
+- merged theorem authority = PR #236
+- validated final head = 45491342f5661429679579c7889c1ad8b96728b6
+- merge commit = a66e1c617033f4adaa52e935668399efb93048ac
+- tree = 5ef597b1d75075ec2299261a4193432a36932ffe
+- status = MERGED_VIA_PR_236
+- theorem family = RETAINED_CANONICAL_REAL_PHASE_COLLAPSE
+- exact flagship theorem = `oddBad_of_even_of_realSourceDeficit_pos_of_radius_gap`
+- exact compatibility theorem = `retainedRealSourceDeficit_or_radius_of_even_of_not_oddBad`
+- retained canonical trial/source phase = conjugation-fixed / real
+- `normSq(S) = (Re S)^2`
+- workflow harvest = 13/13 ATTACHED WORKFLOWS GREEN on the validated #236 head
 
 LATEST RESEARCH EVIDENCE
 - PR #223
 - disposition = NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED
 - retained-state implication = FROZEN_SCOPE_DID_NOT_REACH_RETAINED_STATE
+
+POST-#236 WORKFLOW HARVEST
+- post-200 = DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED / NO_UNIQUE_PRIMARY_LOCK
+- post-202 = COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
+- post-214 = full-space dual independence preserved; full-space complete-functional sign remains indefinite
+- post-222 = NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED
+- theorem promotion from research replays = false
 
 POST-#234 NUMERICAL FIREWALL
 - numerical D/E prerequisite = CANONICAL_CUBIC_SHELL_NORMALIZATION
@@ -32,10 +39,11 @@ CONTROL AUTHORITY
 - PR #117
 - selected formal first break = E4A4-SCHUR-FB-05
 - active subobligation = OBS-059I
-- next research target = RETAINED_CANONICAL_REAL_PHASE_COLLAPSE
-- required new information = CONJUGATION_COMPATIBLE_CANONICAL_NORMALIZATION
+- next research target = RETAINED_REAL_COMPLETED_SOURCE_CORRIDOR
+- required new information = REALITY_OF_RETAINED_M4_AND_SCALAR_COMPOSITION
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
+- sharp radius / shell barrier = OPEN
 - simultaneous odd-bad branch = OPEN
 - odd-selected first-bad branch = OPEN
 - parity-complete retained-state exclusion = OPEN
