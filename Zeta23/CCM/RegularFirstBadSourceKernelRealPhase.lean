@@ -167,7 +167,11 @@ theorem
   have hstar : star S = S := by
     simpa [S] using c.star_evenShiftedSourceKernel_eq_of_even hp
   have him := congrArg Complex.im hstar
-  simpa [S] using him
+  have him' : -S.im = S.im := by
+    simpa using him
+  have hzero : S.im = 0 := by
+    linarith
+  simpa [S] using hzero
 
 /-- The single real source scalar left after canonical phase collapse. -/
 def
@@ -190,7 +194,7 @@ theorem
           c.firstBad.L (c.firstBad.Nstar + 1) c.evenShiftedTrial) =
       c.retainedRealSourceScalar ^ 2 := by
   have him := c.evenShiftedSourceKernel_im_eq_zero_of_even hp
-  simp [Complex.normSq, retainedRealSourceScalar, him]
+  simp [Complex.normSq, retainedRealSourceScalar, him, pow_two]
 
 /-- The post-#235 sharp excess rewritten with one real source scalar. -/
 theorem
