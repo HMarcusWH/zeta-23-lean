@@ -102,7 +102,7 @@ theorem parityCanonicalSourceEnergy_completion_of_square
       Complex.im (inner ℂ (T y) y) = 0 := by
     exact hTSymm.im_inner_apply_self y
   have hEyStar : star (Ey : ℂ) = (Ey : ℂ) := by
-    simp [Complex.star_def]
+    simp
   have h11 :
       inner ℂ ((Ey : ℂ) • T x) ((Ey : ℂ) • x) =
         star (Ey : ℂ) * ((Ey : ℂ) * inner ℂ (T x) x) := by
@@ -146,9 +146,10 @@ theorem parityCanonicalSourceEnergy_completion_of_square
   rw [inner_sub_left, inner_sub_right, inner_sub_right]
   rw [h11, h12, h21, h22, hxy, hyx]
   rw [hEyStar]
-  simp only [starRingEnd_apply, Complex.ofReal_re, Complex.ofReal_im,
-    Complex.sub_re, Complex.mul_re, Complex.mul_im, Complex.star_def, Complex.conj_re,
-    Complex.conj_im, Complex.conj_conj, zero_mul, mul_zero, sub_zero, add_zero, neg_neg]
+  set_option maxRecDepth 10000 in
+    simp only [starRingEnd_apply, Complex.ofReal_re, Complex.ofReal_im,
+      Complex.sub_re, Complex.mul_re, Complex.mul_im, Complex.star_def, Complex.conj_re,
+      Complex.conj_im, Complex.conj_conj, zero_mul, mul_zero, sub_zero, add_zero, neg_neg]
   rw [hTyIm, hEx, hEy, Complex.sq_norm, Complex.normSq_apply]
   ring
 
