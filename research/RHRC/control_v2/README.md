@@ -55,6 +55,33 @@ CONTROL AUTHORITY
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#233 current-state override
+
+PR #233 proves good-sector canonical Gram/Cauchy--Schwarz control, exact
+negative-shift predecessor-resolvent energy, and the retained selected-even /
+odd-good sharp and outer source Gram disks. The exact validated head is
+`565428e066004e559490fbe1d21d46ef14494de3`; the merged tree is
+`5713b8d8088864cb126aae48a3a5a5ac8304807a`.
+
+The successful proof also establishes that
+`canonicalOneStepDomination_of_not_parityBad` is structural fallout from
+successor goodness, not independent arithmetic information.
+
+The next descriptive target is
+`RETAINED_SOURCE_DISK_SECULAR_INTERSECTION`: compose the #233 sharp disk with
+the already-proved completed odd-secular half-plane and eliminate `M4` from
+the resulting necessary retained-state condition. Required new information:
+`M4_FREE_RETAINED_DISK_HALFPLANE_COMPATIBILITY`.
+
+OBS-059I remains OPEN. The simultaneous odd-bad branch, odd-selected branch,
+parity-complete retained-state exclusion, terminal Mathlib RH seam, and RH all
+remain OPEN. Control semantic authority remains PR #117; latest research
+evidence remains PR #223.
+
+Detailed post-green pass:
+`RESEARCH_LEADS_POST_233_GRAM_DISK_DELTA.md` and
+`OBSTRUCTION_LEDGER_POST_233_DELTA.md`.
+
 ## Post-#231 current-state override
 
 PR #231 proves the generic correction/source-coupling bridge, its production-channel
