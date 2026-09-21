@@ -57,30 +57,45 @@ CONTROL AUTHORITY
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
-## Post-#233 execution target
+## Post-#234 execution target
 
-The next theorem PR is `RETAINED_SOURCE_DISK_SECULAR_INTERSECTION`.
+The next theorem interface is `RETAINED_SOURCE_KERNEL_FORBIDDEN_QUADRANT`.
 
-Use the same retained selected-even / odd-good state and compose:
-
-```text
-B = (-lam) ||u_-||^2 <= Re(star(S) * F),
-F = M4 - S*C,
-|q - F|^2 <= Rsharp.
-```
-
-Target denominator-free consequence:
+Define the exact canonical-source quantities
 
 ```text
-B <= Re(star(S) q)
-OR
-(B - Re(star(S) q))^2 <= normSq(S) * Rsharp.
+D = (-lam)||u_-||^2 - ||c_-||^2 Re(S)
+
+Rsharp =
+  Ec * (Re(C) + lam ||R a||^2)
+
+E = D^2 - normSq(S) * Rsharp
 ```
 
-Then rewrite `Re(star(S)q)` as shell-norm-squared times `Re(S)`. The final
-necessary condition should be `M4`-free. Do not claim the intersection empty;
-that remains the downstream research question.
+with `S` rewritten through PR #213 as
+`quadraticNormalSourceKernelRHS`.
 
+PR #234 already proves, on selected-even / odd-good,
+
+```text
+D <= 0 OR E <= 0.
+```
+
+The next Lean target is therefore the exact contradiction interface
+
+```text
+D > 0 AND E > 0
+  -> odd successor ParityBad.
+```
+
+This PR does not prove either strict sign. Required genuinely new information
+remains `CANONICAL_SOURCE_DEFICIT_AND_EXCESS_SIGN_CONTROL`.
+
+Numerical follow-up is deliberately deferred: the older post-#165 shifted-state
+tool uses an arbitrary integer shell generator that is ray-equivalent but not
+the raw canonical normalization needed for D/E magnitude comparison. A later
+audit must use `CANONICAL_CUBIC_SHELL_NORMALIZATION`, and the current frozen
+post-#165 scout found 0 shifted states among 672 attempted states.
 
 ## Post-#231 current-state override
 
