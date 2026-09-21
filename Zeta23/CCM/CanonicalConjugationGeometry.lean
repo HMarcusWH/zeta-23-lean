@@ -627,7 +627,17 @@ theorem oddCubicCompressionVector_conj_fixed
     parityOrthogonalProjection_conj .odd N (centeredPowerVector N 3)
   have hv := congrArg Subtype.val h
   rw [centeredPowerVector_conj_fixed] at hv
-  simpa [oddCubicCompressionVector] using hv.symm
+  change
+    euclideanConj
+        (((euclideanOddBoundaryFlatSubspace N).orthogonalProjectionOnto
+            (centeredPowerVector N 3) :
+          euclideanOddBoundaryFlatSubspace N) :
+        EuclideanSpace ℂ (Fin (2 * N + 1))) =
+      (((euclideanOddBoundaryFlatSubspace N).orthogonalProjectionOnto
+          (centeredPowerVector N 3) :
+        euclideanOddBoundaryFlatSubspace N) :
+      EuclideanSpace ℂ (Fin (2 * N + 1)))
+  exact hv.symm
 
 /-- The pulled-back even cubic compression vector is fixed by conjugation. -/
 theorem successorPulledBackCubicCompressionVector_conj_fixed
