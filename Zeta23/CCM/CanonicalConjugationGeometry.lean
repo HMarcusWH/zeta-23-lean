@@ -234,7 +234,8 @@ theorem euclideanConj_mem_euclideanParityEmbeddedSuccSubspace
   rcases hx with ⟨y, hy, rfl⟩
   refine ⟨euclideanConj y,
     euclideanConj_mem_euclideanParityBoundaryFlatSubspace p N hy, ?_⟩
-  exact (euclideanCenteredZeroExtend_conj (Nat.le_succ N) y).symm
+  simpa only [euclideanCenteredZeroExtend_apply] using
+    (euclideanCenteredZeroExtend_conj (Nat.le_succ N) y).symm
 
 /-- Orthogonal complements of conjugation-stable parity subspaces are stable. -/
 theorem euclideanConj_mem_orthogonal_of_mem
@@ -320,13 +321,34 @@ theorem intrinsicPredecessorPart_conj
         (intrinsicShellConj p N s :
           euclideanParityBoundaryFlatSubspace p (N + 1)) := by
     apply Subtype.ext
-    have hc := congrArg euclideanConj
-      (congrArg Subtype.val hrec)
-    simpa [w, s, euclideanConj_add] using hc.symm
-  rw [hrecC, map_add]
-  rw [Submodule.projectionOnto_apply_of_mem_left,
-    Submodule.projectionOnto_apply_of_mem_right]
-  simp [intrinsicPredecessorPart]
+    have hc := congrArg euclideanConj (congrArg Subtype.val hrec)
+    simpa [w, s] using hc.symm
+  rw [hrecC]
+  change
+    Submodule.projectionOnto
+        (intrinsicParityPredecessorSubspace p N)
+        (intrinsicParitySuccShell p N)
+        (intrinsicPredecessor_isCompl_shell p N)
+        ((intrinsicPredecessorConj p N w :
+            intrinsicParityPredecessorSubspace p N) :
+          euclideanParityBoundaryFlatSubspace p (N + 1)) +
+      Submodule.projectionOnto
+        (intrinsicParityPredecessorSubspace p N)
+        (intrinsicParitySuccShell p N)
+        (intrinsicPredecessor_isCompl_shell p N)
+        ((intrinsicShellConj p N s :
+            intrinsicParitySuccShell p N) :
+          euclideanParityBoundaryFlatSubspace p (N + 1)) =
+      intrinsicPredecessorConj p N w
+  rw [
+    Submodule.projectionOnto_apply_of_mem_left
+      (intrinsicPredecessor_isCompl_shell p N)
+      (intrinsicPredecessorConj p N w).property,
+    Submodule.projectionOnto_apply_of_mem_right
+      (intrinsicPredecessor_isCompl_shell p N)
+      (intrinsicShellConj p N s).property
+  ]
+  simp [w]
 
 /-- Algebraic shell projection commutes with conjugation. -/
 theorem intrinsicShellPart_conj
@@ -344,13 +366,34 @@ theorem intrinsicShellPart_conj
         (intrinsicShellConj p N s :
           euclideanParityBoundaryFlatSubspace p (N + 1)) := by
     apply Subtype.ext
-    have hc := congrArg euclideanConj
-      (congrArg Subtype.val hrec)
-    simpa [w, s, euclideanConj_add] using hc.symm
-  rw [hrecC, map_add]
-  rw [Submodule.projectionOnto_apply_of_mem_right,
-    Submodule.projectionOnto_apply_of_mem_left]
-  simp [intrinsicShellPart]
+    have hc := congrArg euclideanConj (congrArg Subtype.val hrec)
+    simpa [w, s] using hc.symm
+  rw [hrecC]
+  change
+    Submodule.projectionOnto
+        (intrinsicParitySuccShell p N)
+        (intrinsicParityPredecessorSubspace p N)
+        (intrinsicPredecessor_isCompl_shell p N).symm
+        ((intrinsicPredecessorConj p N w :
+            intrinsicParityPredecessorSubspace p N) :
+          euclideanParityBoundaryFlatSubspace p (N + 1)) +
+      Submodule.projectionOnto
+        (intrinsicParitySuccShell p N)
+        (intrinsicParityPredecessorSubspace p N)
+        (intrinsicPredecessor_isCompl_shell p N).symm
+        ((intrinsicShellConj p N s :
+            intrinsicParitySuccShell p N) :
+          euclideanParityBoundaryFlatSubspace p (N + 1)) =
+      intrinsicShellConj p N s
+  rw [
+    Submodule.projectionOnto_apply_of_mem_right
+      (intrinsicPredecessor_isCompl_shell p N).symm
+      (intrinsicPredecessorConj p N w).property,
+    Submodule.projectionOnto_apply_of_mem_left
+      (intrinsicPredecessor_isCompl_shell p N).symm
+      (intrinsicShellConj p N s).property
+  ]
+  simp [s]
 
 /-- The canonical source matrix action commutes with coordinate conjugation. -/
 theorem canonicalSourceMatrix_mulVec_star
@@ -419,18 +462,9 @@ theorem parityOrthogonalProjection_conj
     have h0 := K.starProjection_inner_eq_zero x
       (euclideanConj w) hwc
     have hc := inner_euclideanConj
-      (x - ((K.orthogonalProjectionOnto x : K) :
-        EuclideanSpace ℂ (Fin (2 * N + 1))))
-      (euclideanConj w)
-    rw [euclideanConj_involutive] at hc
-    have hconjsub :
-        euclideanConj
-          (x - ((K.orthogonalProjectionOnto x : K) :
-            EuclideanSpace ℂ (Fin (2 * N + 1)))) =
-          euclideanConj x - y := by
-      simp [y, sub_eq_add_neg]
-    rw [hconjsub, h0] at hc
-    simpa using hc
+      (x - K.starProjection x) (euclideanConj w)
+    rw [euclideanConj_involutive, h0] at hc
+    simpa [y, Submodule.coe_orthogonalProjectionOnto_apply] using hc
   apply Subtype.ext
   change K.starProjection (euclideanConj x) = y
   exact K.eq_starProjection_of_mem_of_inner_eq_zero hy horth
@@ -472,12 +506,28 @@ theorem euclideanIndexLinearMap_conj
     euclideanIndexLinearMap N (euclideanConj x) =
       euclideanConj (euclideanIndexLinearMap N x) := by
   apply (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ).injective
-  rw [euclideanIndexLinearMap_coordinates,
-    euclideanIndexLinearMap_coordinates,
-    euclideanConj_coordinates, euclideanConj_coordinates]
-  ext i
-  rw [indexMatrix_mulVec_apply, indexMatrix_mulVec_apply]
-  simp
+  calc
+    (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ)
+        (euclideanIndexLinearMap N (euclideanConj x)) =
+      indexMatrix N *ᵥ
+        ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) (euclideanConj x)) :=
+      euclideanIndexLinearMap_coordinates N (euclideanConj x)
+    _ = indexMatrix N *ᵥ
+        star ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x) := by
+      rw [euclideanConj_coordinates]
+    _ = star
+        (indexMatrix N *ᵥ
+          ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x)) := by
+      ext i
+      rw [indexMatrix_mulVec_apply, indexMatrix_mulVec_apply]
+      simp
+    _ = star
+        ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ)
+          (euclideanIndexLinearMap N x)) := by
+      rw [euclideanIndexLinearMap_coordinates]
+    _ = (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ)
+        (euclideanConj (euclideanIndexLinearMap N x)) := by
+      rw [euclideanConj_coordinates]
 
 /-- The even-to-odd centered-index restriction commutes with conjugation. -/
 theorem euclideanEvenToOddIndexLinearMap_conj
