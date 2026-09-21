@@ -47,6 +47,30 @@ CONTROL AUTHORITY
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#235 current-state override
+
+PR #235 is merged theorem authority: validated head
+`d7ae288e874b2cf3462a8e00c35c7b713607a192`, merge
+`0c347a99a02157798109ffb5a4718e201e6fa083`, tree
+`ba6d8e6f5a714742353678e36cbc90d869b31798`.
+
+It proves the exact retained source-kernel forbidden-quadrant interface:
+selected-even / odd-good implies `D<=0 OR E<=0`, and therefore
+`D>0 AND E>0` forces odd badness.
+
+The next theorem target is `RETAINED_CANONICAL_REAL_PHASE_COLLAPSE`, with
+required structural input `CONJUGATION_COMPATIBLE_CANONICAL_NORMALIZATION`.
+The intended gain is `normSq(S)=(Re S)^2` on the selected-even retained
+state, reducing the complex source coordinate to one real scalar.
+
+No sign of the real source scalar, D, E, or the sharp radius gap is promoted.
+Control semantic authority remains PR #117, latest research evidence remains
+PR #223, OBS-059I remains OPEN, and RH remains OPEN.
+
+Detailed post-green pass:
+`RESEARCH_LEADS_POST_235_SOURCE_KERNEL_QUADRANT_DELTA.md` and
+`OBSTRUCTION_LEDGER_POST_235_DELTA.md`.
+
 ## Post-#234 current-state override
 
 PR #234 proves the selected-even / odd-good disk/secular intersection, removes
