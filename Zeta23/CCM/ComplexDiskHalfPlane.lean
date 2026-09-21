@@ -43,7 +43,8 @@ theorem complexDisk_halfPlane_gap_sq_le
       ring
     rw [hdecomp, Complex.add_re] at hhalf
     dsimp [gap, d]
-    linarith
+    apply (sub_le_iff_le_add).2
+    simpa [add_comm] using hhalf
   have hprojNonneg :
       0 ≤ Complex.re (star weight * d) :=
     le_trans (le_of_lt hgap) hproj
@@ -58,7 +59,8 @@ theorem complexDisk_halfPlane_gap_sq_le
   have hnormProd :
       ‖star weight * d‖ ^ 2 =
         Complex.normSq weight * ‖d‖ ^ 2 := by
-    rw [Complex.norm_mul, norm_star, Complex.normSq_eq_norm_sq]
+    rw [Complex.norm_mul, Complex.star_def, Complex.norm_conj,
+      Complex.normSq_eq_norm_sq]
     ring
   have hdisk' : ‖d‖ ^ 2 ≤ radiusSq := by
     simpa [d, norm_sub_rev] using hdisk
