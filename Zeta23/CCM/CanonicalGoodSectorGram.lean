@@ -98,38 +98,38 @@ theorem parityCanonicalSourceEnergy_completion_of_square
       inner ℂ ((Ey : ℂ) • T x) ((Ey : ℂ) • x) =
           star (Ey : ℂ) *
             inner ℂ (T x) ((Ey : ℂ) • x) := by
-              exact inner_smul_left (𝕜 := ℂ) (T x) ((Ey : ℂ) • x)
+              exact inner_smul_left (𝕜 := ℂ) (T x) ((Ey : ℂ) • x) (r := (Ey : ℂ))
       _ = star (Ey : ℂ) *
           ((Ey : ℂ) * inner ℂ (T x) x) := by
-            rw [inner_smul_right]
+            rw [inner_smul_right (𝕜 := ℂ) (T x) x (r := (Ey : ℂ))]
   have h12 :
       inner ℂ ((Ey : ℂ) • T x) (star z • y) =
         star (Ey : ℂ) * (star z * inner ℂ (T x) y) := by
     calc
       inner ℂ ((Ey : ℂ) • T x) (star z • y) =
           star (Ey : ℂ) * inner ℂ (T x) (star z • y) := by
-            exact inner_smul_left (𝕜 := ℂ) (T x) (star z • y)
+            exact inner_smul_left (𝕜 := ℂ) (T x) (star z • y) (r := (Ey : ℂ))
       _ = star (Ey : ℂ) * (star z * inner ℂ (T x) y) := by
-            rw [inner_smul_right]
+            rw [inner_smul_right (𝕜 := ℂ) (T x) y (r := star z)]
   have h21 :
       inner ℂ (star z • T y) ((Ey : ℂ) • x) =
         star (star z) * ((Ey : ℂ) * inner ℂ (T y) x) := by
     calc
       inner ℂ (star z • T y) ((Ey : ℂ) • x) =
           star (star z) * inner ℂ (T y) ((Ey : ℂ) • x) := by
-            exact inner_smul_left (𝕜 := ℂ) (T y) ((Ey : ℂ) • x)
+            exact inner_smul_left (𝕜 := ℂ) (T y) ((Ey : ℂ) • x) (r := star z)
       _ = star (star z) *
           ((Ey : ℂ) * inner ℂ (T y) x) := by
-            rw [inner_smul_right]
+            rw [inner_smul_right (𝕜 := ℂ) (T y) x (r := (Ey : ℂ))]
   have h22 :
       inner ℂ (star z • T y) (star z • y) =
         star (star z) * (star z * inner ℂ (T y) y) := by
     calc
       inner ℂ (star z • T y) (star z • y) =
           star (star z) * inner ℂ (T y) (star z • y) := by
-            exact inner_smul_left (𝕜 := ℂ) (T y) (star z • y)
+            exact inner_smul_left (𝕜 := ℂ) (T y) (star z • y) (r := star z)
       _ = star (star z) * (star z * inner ℂ (T y) y) := by
-            rw [inner_smul_right]
+            rw [inner_smul_right (𝕜 := ℂ) (T y) y (r := star z)]
   rw [map_sub, map_smul, map_smul]
   rw [inner_sub_left, inner_sub_right, inner_sub_right]
   rw [h11, h12, h21, h22, hxy, hyx]
