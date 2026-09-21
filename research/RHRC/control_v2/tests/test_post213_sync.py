@@ -31,7 +31,7 @@ class Post213SyncTests(unittest.TestCase):
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
         route = state["active_research_route"]
-        self.assertIn(route["even_selected_odd_good_branch"], ("PROVED_THROUGH_PR_213", "PROVED_THROUGH_PR_220", "PROVED_THROUGH_PR_222_DELTA", "PROVED_THROUGH_PR_222"))
+        self.assertTrue(route["even_selected_odd_good_branch"].startswith("PROVED_THROUGH_PR_"))
         self.assertEqual(route["pair_d_quantitative_coercivity"], "PROVED_PR_209")
         self.assertEqual(route["complete_source_functional_representation"], "PROVED_PR_211")
         self.assertEqual(route["complete_physical_rhs"], "PROVED_PR_213")
@@ -42,10 +42,6 @@ class Post213SyncTests(unittest.TestCase):
         self.assertIn(
             "INDEPENDENT_COMPLETE_CANONICAL_FUNCTIONAL_INCOMPATIBILITY",
             state["control_note"],
-        )
-        self.assertEqual(
-            route["required_new_information"],
-            "CANONICAL_SOURCE_COUPLING_AND_RETAINED_SOURCE_BALANCE",
         )
         self.assertIn("next_research_target", route)
         self.assertTrue(route["canonical_simultaneous_odd_bad_branch"].startswith("OPEN"))

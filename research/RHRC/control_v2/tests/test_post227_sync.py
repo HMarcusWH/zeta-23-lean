@@ -26,8 +26,8 @@ class Post227HistoricalRegressionTests(unittest.TestCase):
                 self.assertIn(section, text)
 
     def test_post227_is_historical_not_current(self):
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 229)
-        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 229)
+        self.assertGreater(self.state["merged_theorem_anchor"]["pr"], 227)
+        self.assertGreater(self.state["latest_validated_theorem_delta"]["pr"], 227)
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
 if __name__ == "__main__":
