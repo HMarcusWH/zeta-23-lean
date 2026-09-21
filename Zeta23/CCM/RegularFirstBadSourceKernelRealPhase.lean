@@ -44,7 +44,14 @@ theorem centeredQuadraticNormal_conj_fixed
   rw [hp0] at h00
   have hmu : star mu = mu := by
     dsimp [mu]
-    rw [star_div₀, ← h02, ← h00]
+    calc
+      (starRingEnd ℂ) (inner ℂ p0 p2 / inner ℂ p0 p0) =
+          (starRingEnd ℂ) (inner ℂ p0 p2) /
+            (starRingEnd ℂ) (inner ℂ p0 p0) := by
+        simpa using
+          (star_div₀ (inner ℂ p0 p2) (inner ℂ p0 p0))
+      _ = inner ℂ p0 p2 / inner ℂ p0 p0 := by
+        rw [← h02, ← h00]
   change euclideanConj (p2 - mu • p0) = p2 - mu • p0
   rw [euclideanConj_sub, euclideanConj_smul, hp0, hp2, hmu]
 
@@ -196,8 +203,16 @@ theorem
         c.retainedRealSourceScalar ^ 2 *
           c.retainedSourceKernelSharpRadiusSq := by
   unfold RegularCellMinimalNegativeEnergyCertificate.retainedSourceKernelSharpExcess
+  change
+    c.retainedSourceKernelCenterDeficit ^ 2 -
+        Complex.normSq
+          (quadraticNormalSourceKernelRHS
+            c.firstBad.L (c.firstBad.Nstar + 1) c.evenShiftedTrial) *
+          c.retainedSourceKernelSharpRadiusSq =
+      c.retainedSourceKernelCenterDeficit ^ 2 -
+        c.retainedRealSourceScalar ^ 2 *
+          c.retainedSourceKernelSharpRadiusSq
   rw [c.retainedSourceKernel_normSq_eq_realScalar_sq_of_even hp]
-  rfl
 
 /-- One-real-scalar form of the #235 selected-even / odd-good compatibility
 law. -/
