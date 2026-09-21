@@ -25,50 +25,45 @@ def euclideanConj
     {ι : Type*} [Fintype ι]
     (x : EuclideanSpace ℂ ι) :
     EuclideanSpace ℂ ι :=
-  (EuclideanSpace.equiv ι ℂ).symm
-    (star ((EuclideanSpace.equiv ι ℂ) x))
+  WithLp.toLp 2 (fun i => star (x i))
+
+@[simp] theorem euclideanConj_apply
+    {ι : Type*} [Fintype ι]
+    (x : EuclideanSpace ℂ ι) (i : ι) :
+    euclideanConj x i = star (x i) := rfl
 
 @[simp] theorem euclideanConj_coordinates
     {ι : Type*} [Fintype ι]
     (x : EuclideanSpace ℂ ι) :
     (EuclideanSpace.equiv ι ℂ) (euclideanConj x) =
       star ((EuclideanSpace.equiv ι ℂ) x) := by
-  simp [euclideanConj]
-
-@[simp] theorem euclideanConj_apply
-    {ι : Type*} [Fintype ι]
-    (x : EuclideanSpace ℂ ι) (i : ι) :
-    euclideanConj x i = star (x i) := by
-  change
-    ((EuclideanSpace.equiv ι ℂ) (euclideanConj x)) i =
-      star (((EuclideanSpace.equiv ι ℂ) x) i)
-  simp
+  funext i
+  rfl
 
 @[simp] theorem euclideanConj_zero
     {ι : Type*} [Fintype ι] :
     euclideanConj (0 : EuclideanSpace ℂ ι) = 0 := by
-  apply (EuclideanSpace.equiv ι ℂ).injective
+  ext i
   simp
 
 @[simp] theorem euclideanConj_add
     {ι : Type*} [Fintype ι]
     (x y : EuclideanSpace ℂ ι) :
     euclideanConj (x + y) = euclideanConj x + euclideanConj y := by
-  apply (EuclideanSpace.equiv ι ℂ).injective
   ext i
-  simp [Pi.add_apply]
-
-@[simp] theorem euclideanConj_sub
-    {ι : Type*} [Fintype ι]
-    (x y : EuclideanSpace ℂ ι) :
-    euclideanConj (x - y) = euclideanConj x - euclideanConj y := by
-  simp [sub_eq_add_neg]
+  simp
 
 @[simp] theorem euclideanConj_neg
     {ι : Type*} [Fintype ι]
     (x : EuclideanSpace ℂ ι) :
     euclideanConj (-x) = -euclideanConj x := by
-  apply (EuclideanSpace.equiv ι ℂ).injective
+  ext i
+  simp
+
+@[simp] theorem euclideanConj_sub
+    {ι : Type*} [Fintype ι]
+    (x y : EuclideanSpace ℂ ι) :
+    euclideanConj (x - y) = euclideanConj x - euclideanConj y := by
   ext i
   simp
 
@@ -76,7 +71,6 @@ def euclideanConj
     {ι : Type*} [Fintype ι]
     (a : ℂ) (x : EuclideanSpace ℂ ι) :
     euclideanConj (a • x) = star a • euclideanConj x := by
-  apply (EuclideanSpace.equiv ι ℂ).injective
   ext i
   simp
 
@@ -84,7 +78,6 @@ def euclideanConj
     {ι : Type*} [Fintype ι]
     (x : EuclideanSpace ℂ ι) :
     euclideanConj (euclideanConj x) = x := by
-  apply (EuclideanSpace.equiv ι ℂ).injective
   ext i
   simp
 
@@ -96,12 +89,11 @@ theorem inner_euclideanConj
       star (inner ℂ x y) := by
   rw [EuclideanSpace.inner_eq_star_dotProduct,
     EuclideanSpace.inner_eq_star_dotProduct]
-  simp only [euclideanConj_coordinates, dotProduct, Pi.star_apply,
-    starRingEnd_apply]
+  unfold dotProduct
   rw [star_sum]
   apply Finset.sum_congr rfl
   intro i _
-  simp only [Pi.star_apply, starRingEnd_apply, star_mul, star_star]
+  simp [euclideanConj_apply]
   ring
 
 /-- Centered moments commute with coordinatewise conjugation. -/
@@ -211,8 +203,13 @@ theorem centeredZeroExtend_star
   by_cases hj : j ∈ Set.range (centeredEmbedding N M hNM)
   · obtain ⟨i, rfl⟩ := hj
     simp
-  · rw [centeredZeroExtend_apply_of_not_mem_range hNM (star u) j hj,
-      centeredZeroExtend_apply_of_not_mem_range hNM u j hj]
+  · have hleft :=
+      centeredZeroExtend_apply_of_not_mem_range hNM (star u) j hj
+    have hright :=
+      centeredZeroExtend_apply_of_not_mem_range hNM u j hj
+    change centeredZeroExtend hNM (star u) j =
+      star (centeredZeroExtend hNM u j)
+    rw [hleft, hright]
     simp
 
 /-- Euclidean centered zero extension commutes with conjugation. -/
@@ -223,8 +220,8 @@ theorem euclideanCenteredZeroExtend_conj
       euclideanConj (euclideanCenteredZeroExtend hNM x) := by
   apply (EuclideanSpace.equiv (Fin (2 * M + 1)) ℂ).injective
   rw [euclideanCenteredZeroExtend_coordinates,
-    euclideanCenteredZeroExtend_coordinates,
-    euclideanConj_coordinates, euclideanConj_coordinates]
+    euclideanConj_coordinates]
+  rw [euclideanConj_coordinates]
   exact centeredZeroExtend_star hNM
     ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x)
 
