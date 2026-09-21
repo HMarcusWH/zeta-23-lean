@@ -91,7 +91,9 @@ theorem parityCanonicalSourceEnergy_completion_of_square
   have hEy :
       Complex.re (inner ℂ (T y) y) = Ey := by
     rfl
-  have hTSymm : T.IsSymmetric := by
+  have hTSymm :
+      LinearMap.IsSymmetric (𝕜 := ℂ)
+        (E := euclideanParityBoundaryFlatSubspace p K) T := by
     simpa [T] using parityCompressedCanonical_isSymmetric p L K
   have hTxIm :
       Complex.im (inner ℂ (T x) x) = 0 := by
