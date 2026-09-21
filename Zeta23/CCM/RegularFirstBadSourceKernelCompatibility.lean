@@ -107,9 +107,10 @@ theorem
   have h :=
     c.evenShiftedSourceRealPartOrSharpRadius_of_even_of_not_oddBad hp hodd
   rw [c.evenShiftedExplicitCanonicalSourceMoment_eq_sourceKernelRHS] at h
-  simpa [retainedSourceKernelCenterDeficit,
-    retainedSourceKernelSharpExcess,
-    retainedSourceKernelSharpRadiusSq,
+  simpa [
+    RegularCellMinimalNegativeEnergyCertificate.retainedSourceKernelCenterDeficit,
+    RegularCellMinimalNegativeEnergyCertificate.retainedSourceKernelSharpExcess,
+    RegularCellMinimalNegativeEnergyCertificate.retainedSourceKernelSharpRadiusSq,
     sub_nonpos] using h
 
 /-- Flagship contradiction interface.
