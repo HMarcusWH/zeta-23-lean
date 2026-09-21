@@ -101,6 +101,14 @@ theorem parityCanonicalSourceEnergy_completion_of_square
   have hTyIm :
       Complex.im (inner ℂ (T y) y) = 0 := by
     exact hTSymm.im_inner_apply_self y
+  have hTxx : inner ℂ (T x) x = (Ex : ℂ) := by
+    apply Complex.ext
+    · simpa using hEx
+    · simpa using hTxIm
+  have hTyy : inner ℂ (T y) y = (Ey : ℂ) := by
+    apply Complex.ext
+    · simpa using hEy
+    · simpa using hTyIm
   have hEyStar : star (Ey : ℂ) = (Ey : ℂ) := by
     simp
   have h11 :
@@ -142,16 +150,20 @@ theorem parityCanonicalSourceEnergy_completion_of_square
             exact inner_smul_left (𝕜 := ℂ) (T y) (star z • y) (r := star z)
       _ = star (star z) * (star z * inner ℂ (T y) y) := by
             rw [inner_smul_right (𝕜 := ℂ) (T y) y (r := star z)]
-  rw [map_sub, map_smul, map_smul]
-  rw [inner_sub_left, inner_sub_right, inner_sub_right]
-  rw [h11, h12, h21, h22, hxy, hyx]
-  rw [hEyStar]
-  set_option maxRecDepth 100000 in
-    simp only [starRingEnd_apply, Complex.ofReal_re, Complex.ofReal_im,
-      Complex.sub_re, Complex.mul_re, Complex.mul_im, Complex.star_def, Complex.conj_re,
-      Complex.conj_im, Complex.conj_conj, zero_mul, mul_zero, sub_zero, add_zero, neg_neg]
-  rw [hTyIm, hEx, hEy, Complex.sq_norm, Complex.normSq_apply]
-  ring
+  have hinner :
+      inner ℂ
+          (T ((Ey : ℂ) • x - star z • y))
+          ((Ey : ℂ) • x - star z • y) =
+        ((Ey * (Ex * Ey - ‖z‖ ^ 2) : ℝ) : ℂ) := by
+    rw [map_sub, map_smul, map_smul]
+    rw [inner_sub_left, inner_sub_right, inner_sub_right]
+    rw [h11, h12, h21, h22, hxy, hyx]
+    rw [hEyStar, hTxx, hTyy]
+    simp only [star_star, Complex.star_def, RCLike.conj_mul, RCLike.mul_conj]
+    push_cast
+    ring
+  rw [hinner]
+  simp
 
 /-- Cauchy--Schwarz for the canonical pairing on a good parity sector. -/
 theorem norm_sq_parityCanonicalSourcePairing_le_mul_energy_of_not_parityBad
