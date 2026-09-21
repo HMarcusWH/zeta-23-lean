@@ -146,7 +146,7 @@ theorem parityCanonicalSourceEnergy_completion_of_square
   rw [inner_sub_left, inner_sub_right, inner_sub_right]
   rw [h11, h12, h21, h22, hxy, hyx]
   rw [hEyStar]
-  set_option maxRecDepth 10000 in
+  set_option maxRecDepth 100000 in
     simp only [starRingEnd_apply, Complex.ofReal_re, Complex.ofReal_im,
       Complex.sub_re, Complex.mul_re, Complex.mul_im, Complex.star_def, Complex.conj_re,
       Complex.conj_im, Complex.conj_conj, zero_mul, mul_zero, sub_zero, add_zero, neg_neg]
