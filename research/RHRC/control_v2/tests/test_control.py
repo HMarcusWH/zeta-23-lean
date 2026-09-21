@@ -15,14 +15,14 @@ from control_v2.state import load_research_state
 class ControlV2Tests(unittest.TestCase):
     def test_control_state_tracks_latest_theorem_anchor_without_moving_control_anchor(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 233)
+        self.assertEqual(state.anchor.pr, 234)
         self.assertEqual(
             state.anchor.merge_commit,
-            "9dfee4f50d5b57c92327da564ddf2f6159223fe1",
+            "b18d81f11a04982e438b7e196853ae665dab0cc2",
         )
         self.assertEqual(
             state.anchor.tree,
-            "5713b8d8088864cb126aae48a3a5a5ac8304807a",
+            "94a0db085c35d2aba753a8359e452e4189c5c897",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -120,11 +120,18 @@ class ControlV2Tests(unittest.TestCase):
             "5713b8d8088864cb126aae48a3a5a5ac8304807a",
             "RETAINED_SOURCE_DISK_SECULAR_INTERSECTION",
             "M4_FREE_RETAINED_DISK_HALFPLANE_COMPATIBILITY",
+            "PR #234",
+            "6d9b60752f7a4f164113bb0602fcdee87e2a54a1",
+            "b18d81f11a04982e438b7e196853ae665dab0cc2",
+            "94a0db085c35d2aba753a8359e452e4189c5c897",
+            "RETAINED_SOURCE_KERNEL_FORBIDDEN_QUADRANT",
+            "CANONICAL_SOURCE_DEFICIT_AND_EXCESS_SIGN_CONTROL",
+            "CANONICAL_CUBIC_SHELL_NORMALIZATION",
             "RH remains OPEN",
         ):
             self.assertIn(token, note)
-        self.assertEqual(control["merged_theorem_anchor"]["pr"], 233)
-        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 233)
+        self.assertEqual(control["merged_theorem_anchor"]["pr"], 234)
+        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 234)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
         self.assertEqual(control["terminal_claim"], "RH_OPEN")
 
