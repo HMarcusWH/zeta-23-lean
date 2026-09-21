@@ -91,6 +91,16 @@ theorem parityCanonicalSourceEnergy_completion_of_square
   have hEy :
       Complex.re (inner ℂ (T y) y) = Ey := by
     rfl
+  have hTSymm : T.IsSymmetric := by
+    simpa [T] using parityCompressedCanonical_isSymmetric p L K
+  have hTxIm :
+      Complex.im (inner ℂ (T x) x) = 0 := by
+    exact hTSymm.im_inner_apply_self x
+  have hTyIm :
+      Complex.im (inner ℂ (T y) y) = 0 := by
+    exact hTSymm.im_inner_apply_self y
+  have hEyStar : star (Ey : ℂ) = (Ey : ℂ) := by
+    simp [Complex.star_def]
   have h11 :
       inner ℂ ((Ey : ℂ) • T x) ((Ey : ℂ) • x) =
         star (Ey : ℂ) * ((Ey : ℂ) * inner ℂ (T x) x) := by
@@ -133,9 +143,10 @@ theorem parityCanonicalSourceEnergy_completion_of_square
   rw [map_sub, map_smul, map_smul]
   rw [inner_sub_left, inner_sub_right, inner_sub_right]
   rw [h11, h12, h21, h22, hxy, hyx]
-  simp only [map_ofNat, Complex.ofReal_re, Complex.ofReal_im,
-    Complex.sub_re, Complex.mul_re, starRingEnd_apply, Complex.conj_ofReal, Complex.conj_re,
-    Complex.conj_im, star_star, zero_mul, mul_zero, sub_zero, add_zero]
+  rw [hEyStar, hTxIm, hTyIm]
+  simp only [Complex.ofReal_re, Complex.ofReal_im,
+    Complex.sub_re, Complex.mul_re, Complex.star_def, Complex.conj_re,
+    Complex.conj_im, Complex.conj_conj, zero_mul, mul_zero, sub_zero, add_zero]
   rw [hEx, hEy, Complex.sq_norm, Complex.normSq_apply]
   ring
 
