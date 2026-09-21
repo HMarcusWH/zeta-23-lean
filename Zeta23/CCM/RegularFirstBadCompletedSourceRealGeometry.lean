@@ -107,13 +107,19 @@ theorem
   let u := evenBoundaryFlatRawCoefficients K v
   have hv := c.evenShiftedTrial_conj_fixed_of_even hp
   have hval := congrArg Subtype.val hv
+  have hconj :
+      euclideanConj
+          (v : EuclideanSpace ℂ (Fin (2 * K + 1))) =
+        (v : EuclideanSpace ℂ (Fin (2 * K + 1))) := by
+    simpa [K, v, parityConj] using hval
   have hcoords :=
     congrArg
       (fun x : EuclideanSpace ℂ (Fin (2 * K + 1)) =>
         (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x)
-      hval
+      hconj
+  rw [euclideanConj_coordinates] at hcoords
   have hu : star u = u := by
-    simpa [K, v, u, evenBoundaryFlatRawCoefficients] using hcoords
+    simpa [u, evenBoundaryFlatRawCoefficients] using hcoords
   have hm := centeredMoment_star_coefficients K 4 u
   rw [hu] at hm
   simpa [K, v, u] using hm.symm
@@ -259,12 +265,20 @@ theorem
       intrinsicCubicShellPart .odd c.firstBad.Nstar ≠ 0 :=
     intrinsicCubicShellPart_ne_zero
       .odd c.firstBad.Nstar c.firstBad.one_le_Nstar
+  have hshell' :
+      (intrinsicCubicShellPart .odd c.firstBad.Nstar :
+        euclideanParityBoundaryFlatSubspace .odd
+          (c.firstBad.Nstar + 1)) ≠ 0 := by
+    intro hzero
+    apply hshell
+    apply Subtype.ext
+    exact congrArg Subtype.val hzero
   have hnorm :
       0 <
         ‖(intrinsicCubicShellPart .odd c.firstBad.Nstar :
           euclideanParityBoundaryFlatSubspace .odd
             (c.firstBad.Nstar + 1))‖ := by
-    exact norm_pos_iff.mpr hshell
+    exact norm_pos_iff.mpr hshell'
   simpa [RegularCellMinimalNegativeEnergyCertificate.retainedOddShellCenter]
     using sq_pos_of_pos hnorm
 
@@ -294,8 +308,8 @@ theorem
   have h :=
     c.evenShiftedCrossParitySecularBudget_of_even_of_not_oddBad hp hodd
   dsimp only at h
-  rw [c.evenShiftedSourceMoment_eq_realScalar_of_even hp,
-    c.evenShiftedCompletedSource_eq_realScalar_of_even hp] at h
+  rw [c.evenShiftedCompletedSource_eq_realScalar_of_even hp,
+    c.evenShiftedSourceMoment_eq_realScalar_of_even hp] at h
   simpa [RegularCellMinimalNegativeEnergyCertificate.retainedOddShiftBudget]
     using h
 
@@ -318,24 +332,32 @@ theorem
         (c.firstBad.Nstar + 1))
   have hq :
       inner ℂ shell shell = (c.retainedOddShellCenter : ℂ) := by
-    rw [inner_self_eq_norm_sq_to_K]
-    simp [shell,
+    simpa [shell,
       RegularCellMinimalNegativeEnergyCertificate.retainedOddShellCenter]
-  have hF :=
-    c.evenShiftedCompletedSource_eq_realScalar_of_even hp
+      using (inner_self_eq_norm_sq_to_K (𝕜 := ℂ) shell)
+  let M4 :=
+    centeredMoment (c.firstBad.Nstar + 1) 4
+      (evenBoundaryFlatRawCoefficients
+        (c.firstBad.Nstar + 1) c.evenShiftedTrial)
+  let S :=
+    explicitCanonicalSourceMoment
+      c.firstBad.L (c.firstBad.Nstar + 1) c.evenShiftedTrial
+  let C :=
+    oddCubicGeneratorResolventQuadratic
+      c.firstBad.L_pos c.firstBad.Nstar
+      (c.firstBad.predecessorNonnegative_anyParity .odd)
+      c.lam c.lam_neg
   change
-    ‖inner ℂ shell shell -
-        (centeredMoment (c.firstBad.Nstar + 1) 4
-          (evenBoundaryFlatRawCoefficients
-            (c.firstBad.Nstar + 1) c.evenShiftedTrial) -
-          explicitCanonicalSourceMoment
-              c.firstBad.L (c.firstBad.Nstar + 1) c.evenShiftedTrial *
-            oddCubicGeneratorResolventQuadratic
-              c.firstBad.L_pos c.firstBad.Nstar
-              (c.firstBad.predecessorNonnegative_anyParity .odd)
-              c.lam c.lam_neg)‖ ^ 2 ≤
+    ‖inner ℂ shell shell - M4 + S * C‖ ^ 2 ≤
       c.retainedSourceKernelSharpRadiusSq at h
-  rw [hq, hF] at h
+  have hcenter :
+      inner ℂ shell shell - M4 + S * C =
+        inner ℂ shell shell - (M4 - S * C) := by
+    ring
+  have hF : M4 - S * C = (c.retainedRealCompletedSourceScalar : ℂ) := by
+    simpa [M4, S, C] using
+      c.evenShiftedCompletedSource_eq_realScalar_of_even hp
+  rw [hcenter, hq, hF] at h
   simpa [sq_abs] using h
 
 /-- Quantitative real coercivity of the source/M4 pairing. -/
@@ -359,7 +381,7 @@ theorem
         c.retainedRealSourceScalar * c.retainedRealCompletedSourceScalar +
           c.retainedRealSourceScalar ^ 2 *
             c.retainedOddResolventCorrection := by
-      exact add_le_add_right hbudget _
+      exact add_le_add hbudget (le_refl _)
     _ = c.retainedRealSourceScalar * c.retainedRealMomentFour := by
       simp [RegularCellMinimalNegativeEnergyCertificate.retainedRealCompletedSourceScalar]
       ring
