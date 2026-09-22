@@ -1,6 +1,6 @@
 import Zeta23.ExceptionalZero.GeneratedFamilyFinalGate
 import Zeta23.ExceptionalZero.BoundaryFlatFiniteWeil
-import Zeta23.ExceptionalZero.TwoTranslateWeil
+import Zeta23.ExceptionalZero.TwoTranslateDeterminant
 import Zeta23.CCM.RegularFirstBadRieszEnergy
 
 noncomputable section
@@ -32,19 +32,13 @@ or prime-side upper-bound premise has not simplified RH; it has merely restated
 it.  Any closing argument must supply genuinely new unconditional mathematics.
 -/
 
-/-- A point on the critical line is fixed by zeta reflection. -/
-theorem reflect_eq_self_of_re_eq_half
-    {rho : ℂ} (hrho : rho.re = 1 / 2) :
-    Zeta23.reflect rho = rho := by
-  apply Complex.ext <;> simp [Zeta23.reflect, hrho]
-
-/-- Hence its centered spectral coordinate is fixed by conjugation. -/
+/-- Reuse the theoremized critical-line reality of the centered spectral
+coordinate. -/
 theorem star_gammaOf_eq_gammaOf_of_re_eq_half
-    {rho : ℂ} (hrho : rho.re = 1 / 2) :
-    star (Zeta23.gammaOf rho) = Zeta23.gammaOf rho := by
-  have h := gammaOf_reflect_weil rho
-  rw [reflect_eq_self_of_re_eq_half hrho] at h
-  exact h.symm
+    (rho : zetaZeroConfig.carrier)
+    (hrho : (rho : ℂ).re = 1 / 2) :
+    star (Zeta23.gammaOf (rho : ℂ)) = Zeta23.gammaOf (rho : ℂ) :=
+  gammaOf_star_eq_self_of_criticalLine rho hrho
 
 /-- One diagonal Weil summand is nonnegative when its zero lies on the
 critical line. -/
@@ -54,7 +48,7 @@ theorem zeta_Wsummand_self_re_nonnegative_of_re_eq_half
     (hrho : (rho : ℂ).re = 1 / 2) :
     0 ≤ Complex.re (zetaZeroConfig.Wsummand f f rho) := by
   have hgamma :=
-    star_gammaOf_eq_gammaOf_of_re_eq_half hrho
+    star_gammaOf_eq_gammaOf_of_re_eq_half rho hrho
   unfold ZeroConfig.Wsummand
   rw [hgamma]
   let z : ℂ := Zeta23.paperFT f (Zeta23.gammaOf (rho : ℂ))
@@ -81,7 +75,7 @@ theorem zeta_W_self_re_nonnegative_of_criticalLine
     0 ≤ Complex.re
       (∑' rho : zetaZeroConfig.carrier,
         zetaZeroConfig.Wsummand f f rho)
-  rw [Complex.reCLM.map_tsum hsum]
+  rw [Complex.re_tsum hsum]
   exact tsum_nonneg fun rho =>
     zeta_Wsummand_self_re_nonnegative_of_re_eq_half
       f rho (hline (rho : ℂ) rho.2)
