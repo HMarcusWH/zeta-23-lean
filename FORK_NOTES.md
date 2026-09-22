@@ -1,4 +1,4 @@
-# Fork notes — RHRC current state through merged PR #236
+# Fork notes — RHRC current state through merged PR #237
 
 > **RH remains OPEN.**
 
@@ -6,29 +6,39 @@
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #236
-- validated final head = 45491342f5661429679579c7889c1ad8b96728b6
-- merge commit = a66e1c617033f4adaa52e935668399efb93048ac
-- tree = 5ef597b1d75075ec2299261a4193432a36932ffe
-- status = MERGED_VIA_PR_236
-- theorem family = RETAINED_CANONICAL_REAL_PHASE_COLLAPSE
-- exact flagship theorem = `oddBad_of_even_of_realSourceDeficit_pos_of_radius_gap`
-- exact compatibility theorem = `retainedRealSourceDeficit_or_radius_of_even_of_not_oddBad`
-- retained canonical trial/source phase = conjugation-fixed / real
-- `normSq(S) = (Re S)^2`
-- workflow harvest = 13/13 ATTACHED WORKFLOWS GREEN on the validated #236 head
+- merged theorem authority = PR #237
+- validated final head = 8b7ba6b25c6f8977ff27890196e5b43ca3459b78
+- merge commit = 267d417216f1731c6860b7553ba87397843fe258
+- tree = 28b22a2a4c96f32874fc09cd1e73f2fb09807e9d
+- status = MERGED_VIA_PR_237
+- theorem family = RETAINED_REAL_COMPLETED_SOURCE_CORRIDOR
+- exact flagship theorem = `retainedRealCompletedSourceCorridor_of_even_of_not_oddBad`
+- conditional sign interface = `retainedRealSourceScalar_pos_of_sharpRadius_le_shellCenter_sq`
+- selected-even / odd-good real corridor proves B > 0, q > 0, c >= 0, B <= s*f, (q-f)^2 <= Rsharp, B+s^2*c <= s*m, and D <= s*(f-q)
+- workflow harvest = 13/13 ATTACHED WORKFLOWS GREEN on the validated #237 head
 
 LATEST RESEARCH EVIDENCE
 - PR #223
 - disposition = NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED
 - retained-state implication = FROZEN_SCOPE_DID_NOT_REACH_RETAINED_STATE
 
-POST-#236 WORKFLOW HARVEST
+POST-#237 WORKFLOW HARVEST
+- post-192 = TRAJECTORY_RIGIDITY_UNRESOLVED
+- post-194 = PARTIAL_TRAJECTORY_ORIENTATION / certified_t_fraction = 63/64
+- post-196 = GLOBAL_MONOTONE_ORIENTATION / J_POSITIVE / certified_t_fraction = 1 / global_positive_hull = true / bounded_distinct_aperture_twin_exclusion = true
+- post-198 = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED / NO_UNIQUE_COLLAPSED_UNIFORM_LOCK
 - post-200 = DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED / NO_UNIQUE_PRIMARY_LOCK
 - post-202 = COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
-- post-214 = full-space dual independence preserved; full-space complete-functional sign remains indefinite
+- post-214 = FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED / FULL_SPACE_SIGN_INDEFINITE_CERTIFIED
 - post-222 = NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED
 - theorem promotion from research replays = false
+
+DERIVED COMPOSITION — NOT YET SEPARATELY FORMALIZED
+- retained Gamma is real
+- retained completed-source scalar satisfies f = q*Gamma
+- retained alpha is real via 6*Gamma + (2*N-1)*alpha = 2*N+5
+- retained s*Gamma > 0
+- retained sharp disk rewrites to q^2*(1-Gamma)^2 <= Rsharp
 
 POST-#234 NUMERICAL FIREWALL
 - numerical D/E prerequisite = CANONICAL_CUBIC_SHELL_NORMALIZATION
@@ -39,17 +49,24 @@ CONTROL AUTHORITY
 - PR #117
 - selected formal first break = E4A4-SCHUR-FB-05
 - active subobligation = OBS-059I
-- next research target = RETAINED_REAL_COMPLETED_SOURCE_CORRIDOR
-- required new information = REALITY_OF_RETAINED_M4_AND_SCALAR_COMPOSITION
-- R003 phase = DISCOVERY
-- confirmatory execution = NOT AUTHORIZED
-- sharp radius / shell barrier = OPEN
+- next research target = CANONICAL_REAL_NEGATIVE_SHIFT_TRANSFER_GEOMETRY
+- required new information = CONJUGATION_COMPATIBLE_SHIFTED_RESOLVENT_AND_REAL_TRANSFER_COEFFICIENTS
+- generic safe-shift transfer reality = OPEN / NEXT THEOREMIZATION
+- retained Gamma sign = OPEN
+- sharp radius / shell barrier = OPEN / SUFFICIENT GAMMA-ORIENTATION ROUTE / NOT PRIMARY
 - simultaneous odd-bad branch = OPEN
 - odd-selected first-bad branch = OPEN
 - parity-complete retained-state exclusion = OPEN
 - terminal Mathlib RH seam = OPEN
+- R003 phase = DISCOVERY
+- confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#237 fork note
+
+The active Pair-D branch is now a real transfer-coefficient problem rather than a free complex-phase problem. Pair B remains the strongest explicitly maintained independent fallback. Pair A's old representation-engineering sequence remains consumed/down-ranked, but the mathematical possibility of a genuinely new same-state invariant is not declared dead. Zero-shift, resonance and high-order Riesz remain secondary theorem inventories/suppliers rather than untouched fallback programs. **RH remains OPEN.**
+
 
 ## Post-#231 current-state override
 
