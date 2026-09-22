@@ -272,7 +272,7 @@ theorem
     intro hzero
     apply hshell
     apply Subtype.ext
-    exact congrArg Subtype.val hzero
+    simpa using hzero
   have hnorm :
       0 <
         ‖(intrinsicCubicShellPart .odd c.firstBad.Nstar :
@@ -358,7 +358,7 @@ theorem
     simpa [M4, S, C] using
       c.evenShiftedCompletedSource_eq_realScalar_of_even hp
   rw [hcenter, hq, hF] at h
-  simpa [sq_abs] using h
+  simpa [Complex.norm_real, Real.norm_eq_abs, sq_abs] using h
 
 /-- Quantitative real coercivity of the source/M4 pairing. -/
 theorem
