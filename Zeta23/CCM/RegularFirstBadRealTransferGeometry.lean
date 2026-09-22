@@ -123,9 +123,9 @@ theorem
     simp
   have hq :
       qC = (c.retainedOddShellCenter : ℂ) := by
-    change inner ℂ shell shell = ((‖shell‖ ^ 2 : ℝ) : ℂ)
-    rw [inner_self_eq_norm_sq_to_K]
-    norm_num
+    simpa [qC, shell,
+      RegularCellMinimalNegativeEnergyCertificate.retainedOddShellCenter]
+      using (inner_self_eq_norm_sq_to_K (𝕜 := ℂ) shell)
   have hcomplex :
       (c.retainedRealCrossParityGamma : ℂ) *
           (c.retainedOddShellCenter : ℂ) =
