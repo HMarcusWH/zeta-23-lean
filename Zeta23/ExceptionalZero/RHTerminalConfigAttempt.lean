@@ -123,7 +123,8 @@ theorem riemannZeta_neg_odd_ne_zero
   have htRe : 1 ≤ t.re := by
     dsimp [t, s]
     norm_num
-    positivity
+    have hk : (0 : ℝ) ≤ (k : ℝ) := by positivity
+    linarith
   have ht0 : t ≠ 0 := by
     intro ht
     have h := htRe
