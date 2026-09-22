@@ -358,7 +358,13 @@ theorem
     simpa [M4, S, C] using
       c.evenShiftedCompletedSource_eq_realScalar_of_even hp
   rw [hcenter, hq, hF] at h
-  simpa [Complex.norm_real, Real.norm_eq_abs, sq_abs] using h
+  have hnorm :
+      ‖(c.retainedOddShellCenter : ℂ) -
+          (c.retainedRealCompletedSourceScalar : ℂ)‖ =
+        |c.retainedOddShellCenter - c.retainedRealCompletedSourceScalar| := by
+    rw [← Complex.ofReal_sub, Complex.norm_real, Real.norm_eq_abs]
+  rw [hnorm, sq_abs] at h
+  exact h
 
 /-- Quantitative real coercivity of the source/M4 pairing. -/
 theorem
