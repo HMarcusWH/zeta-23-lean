@@ -121,11 +121,14 @@ theorem
       star Gamma = (c.retainedRealCrossParityGamma : ℂ) := by
     rw [hGamma]
     simp
-  have hq :
-      qC = (c.retainedOddShellCenter : ℂ) := by
-    simpa [qC, shell,
+  have hq0 :
+      inner ℂ shell shell = (c.retainedOddShellCenter : ℂ) := by
+    simpa [shell,
       RegularCellMinimalNegativeEnergyCertificate.retainedOddShellCenter]
       using (inner_self_eq_norm_sq_to_K (𝕜 := ℂ) shell)
+  have hq :
+      qC = (c.retainedOddShellCenter : ℂ) := by
+    simpa only [qC] using hq0
   have hcomplex :
       (c.retainedRealCrossParityGamma : ℂ) *
           (c.retainedOddShellCenter : ℂ) =
