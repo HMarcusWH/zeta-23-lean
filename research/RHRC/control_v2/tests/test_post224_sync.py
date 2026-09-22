@@ -31,7 +31,7 @@ class Post224HistoricalSyncTests(unittest.TestCase):
         self.assertEqual(route["post224_one_coefficient_zero_shift_scalar"], "PROVED_PR_227")
         self.assertEqual(route["odd_selected_first_bad_branch"], "OPEN")
         self.assertEqual(route["parity_complete_retained_state_exclusion"], "OPEN")
-        self.assertEqual(route["terminal_mathlib_rh_seam"], "OPEN")
+        self.assertEqual(route["terminal_mathlib_rh_seam"], "PROVED_PR_242")
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
     def test_post224_delta_documents_remain_frozen_history(self):
