@@ -151,6 +151,7 @@ import Zeta23.CCM.QuadraticNormalSourceJets
 import Zeta23.CCM.SecularRootRieszBoundary
 import Zeta23.CCM.RegularFirstBadCanonicalEnergy
 import Zeta23.CCM.BiRegularFirstBadCanonicalEnergy
+import Zeta23.CCM.WholeCellBiRegularCanonicalEnergy
 import Zeta23.CCM.RegularFirstBadRieszEnergy
 import Zeta23.CCM.RegularFirstBadRieszBoundary
 import Zeta23.CCM.RegularFirstBadCrossParityRiesz

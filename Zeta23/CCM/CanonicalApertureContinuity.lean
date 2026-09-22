@@ -517,6 +517,52 @@ theorem fixedCanonicalCutoffCell_subset_Ioi
     Real.log_nonneg (by exact_mod_cast hQ)
   exact lt_of_le_of_lt hlogQ hL.1
 
+/-- Every physical cutoff cell with `Q >= 1` is nonempty. -/
+theorem fixedCanonicalCutoffCell_nonempty
+    (Q : ℕ) (hQ : 1 ≤ Q) :
+    (fixedCanonicalCutoffCell Q).Nonempty := by
+  have hQpos : (0 : ℝ) < (Q : ℝ) := by
+    exact_mod_cast (Nat.zero_lt_of_lt hQ)
+  have hQ1pos : (0 : ℝ) < ((Q + 1 : ℕ) : ℝ) := by positivity
+  have hQQ1 : (Q : ℝ) < ((Q + 1 : ℕ) : ℝ) := by
+    exact_mod_cast Nat.lt_succ_self Q
+  have hloglt :
+      Real.log (Q : ℝ) < Real.log ((Q + 1 : ℕ) : ℝ) :=
+    Real.strictMonoOn_log hQpos hQ1pos hQQ1
+  refine ⟨(Real.log (Q : ℝ) + Real.log ((Q + 1 : ℕ) : ℝ)) / 2, ?_⟩
+  change
+    Real.log (Q : ℝ) <
+        (Real.log (Q : ℝ) + Real.log ((Q + 1 : ℕ) : ℝ)) / 2 ∧
+      (Real.log (Q : ℝ) + Real.log ((Q + 1 : ℕ) : ℝ)) / 2 <
+        Real.log ((Q + 1 : ℕ) : ℝ)
+  constructor <;> linarith
+
+/-- Physical cutoff cells can be chosen with their entire left endpoint beyond
+an arbitrary real threshold. -/
+theorem exists_fixedCanonicalCutoffCell_above
+    (A : ℝ) :
+    ∃ Q : ℕ, 1 ≤ Q ∧ A < Real.log (Q : ℝ) := by
+  obtain ⟨Q, hQbig⟩ := exists_nat_gt (Real.exp A + 1)
+  have hQoneR : (1 : ℝ) < (Q : ℝ) := by
+    have hexppos : 0 < Real.exp A := Real.exp_pos A
+    linarith
+  have hQone : 1 < Q := by exact_mod_cast hQoneR
+  have hQ : 1 ≤ Q := by omega
+  have hQpos : (0 : ℝ) < (Q : ℝ) := by positivity
+  have hexpQ : Real.exp A < (Q : ℝ) := by linarith
+  have hAlogQ : A < Real.log (Q : ℝ) :=
+    (Real.lt_log_iff_exp_lt hQpos).2 hexpQ
+  exact ⟨Q, hQ, hAlogQ⟩
+
+/-- If the left endpoint of a physical cutoff cell lies above `A`, then the
+whole cell lies above `A`. -/
+theorem fixedCanonicalCutoffCell_subset_Ioi_of_lt_log
+    {A : ℝ} {Q : ℕ}
+    (hAQ : A < Real.log (Q : ℝ)) :
+    fixedCanonicalCutoffCell Q ⊆ Ioi A := by
+  intro L hL
+  exact lt_trans hAQ hL.1
+
 /-- On the physical cell `(log Q, log(Q+1))`, the natural floor of `exp L` is
 exactly `Q`. -/
 theorem natFloor_exp_eq_on_fixedCanonicalCutoffCell
