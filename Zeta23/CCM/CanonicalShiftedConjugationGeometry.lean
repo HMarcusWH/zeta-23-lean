@@ -19,6 +19,22 @@ No secular-root hypothesis, eigenvalue-simplicity hypothesis, sign conclusion,
 branch exclusion, negative-root exclusion, or RH claim is used.
 -/
 
+@[simp] theorem parityConj_add
+    (p : ReversalParity) (K : ℕ)
+    (x y : euclideanParityBoundaryFlatSubspace p K) :
+    parityConj p K (x + y) =
+      parityConj p K x + parityConj p K y := by
+  apply Subtype.ext
+  exact euclideanConj_add _ _
+
+@[simp] theorem parityConj_neg
+    (p : ReversalParity) (K : ℕ)
+    (x : euclideanParityBoundaryFlatSubspace p K) :
+    parityConj p K (-x) =
+      - parityConj p K x := by
+  apply Subtype.ext
+  exact euclideanConj_neg _
+
 @[simp] theorem intrinsicPredecessorConj_add
     (p : ReversalParity) (N : ℕ)
     (x y : intrinsicParityPredecessorSubspace p N) :
