@@ -22,6 +22,8 @@ canonical conjugation symmetry
   -> real alpha/Gamma
 ```
 
+The precise reclassification is: **mixed-pairing reality from canonical conjugation symmetry = RESURRECTED / OPEN GENERIC THEOREM ROUTE**.
+
 This route was not available in its present form before the #236/#237 real-structure theorems. It is therefore **OPEN / WORTH THEOREMIZING**, not dead.
 
 ### Reclassified but still open
