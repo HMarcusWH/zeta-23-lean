@@ -42,3 +42,4 @@ import Zeta23.ExceptionalZero.OffLineGeneratedRetainedFamily
 import Zeta23.ExceptionalZero.RegularFirstBadRieszClosure
 import Zeta23.ExceptionalZero.RHTerminalConfigAttempt
 import Zeta23.ExceptionalZero.GeneratedFamilyFinalGate
+import Zeta23.ExceptionalZero.GeneratedFamilyFinalGateEquivalence
