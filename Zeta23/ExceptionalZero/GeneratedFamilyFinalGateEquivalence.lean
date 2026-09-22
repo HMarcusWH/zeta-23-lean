@@ -47,12 +47,10 @@ theorem zeta_Wsummand_self_re_nonnegative_of_re_eq_half
     (rho : zetaZeroConfig.carrier)
     (hrho : (rho : ℂ).re = 1 / 2) :
     0 ≤ Complex.re (zetaZeroConfig.Wsummand f f rho) := by
-  have hgamma :=
-    star_gammaOf_eq_gammaOf_of_re_eq_half rho hrho
   have hgamma' :
       (starRingEnd ℂ) (Zeta23.gammaOf (rho : ℂ)) =
-        Zeta23.gammaOf (rho : ℂ) := by
-    simpa only [Complex.star_def] using hgamma
+        Zeta23.gammaOf (rho : ℂ) :=
+    gammaOf_star_eq_self_of_criticalLine rho hrho
   unfold ZeroConfig.Wsummand
   rw [hgamma']
   let z : ℂ := Zeta23.paperFT f (Zeta23.gammaOf (rho : ℂ))
