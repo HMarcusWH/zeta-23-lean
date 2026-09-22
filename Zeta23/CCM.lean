@@ -193,6 +193,7 @@ import Zeta23.CCM.RegularFirstBadSourceKernelRealPhase
 import Zeta23.CCM.RealBudgetDisk
 import Zeta23.CCM.RegularFirstBadCompletedSourceRealGeometry
 import Zeta23.CCM.RegularFirstBadRealTransferGeometry
+import Zeta23.CCM.RegularFirstBadGammaObstruction
 import Zeta23.CCM.CanonicalOneStepDomination
 import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.ClaimBindings
