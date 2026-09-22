@@ -83,7 +83,7 @@
     "post224_alpha_gamma_affine_relation": "PROVED_PR_227",
     "post224_one_coefficient_zero_shift_scalar": "PROVED_PR_227",
     "parity_complete_retained_state_exclusion": "OPEN",
-    "terminal_mathlib_rh_seam": "PROVED_PR_242",
+    "terminal_mathlib_rh_seam": "OPEN",
     "negative_root_exclusion_role": "OPEN_STRONGER_ROUTE_NOT_REQUIRED_IF_RETAINED_CERTIFICATE_EXCLUDED_DIRECTLY",
     "post226_predecessor_correction_proportionality": "PROVED_PR_226",
     "post227_safe_negative_shift_one_coefficient_transfer": "PROVED_PR_227",
