@@ -57,8 +57,12 @@ theorem zeta_Wsummand_self_re_nonnegative_of_re_eq_half
       (((zetaZeroConfig.mult (rho : ℂ) : ℕ) : ℂ) * z * star z)
   have hm : 0 ≤ (zetaZeroConfig.mult (rho : ℂ) : ℝ) :=
     Nat.cast_nonneg _
+  have h1 : 0 ≤ (zetaZeroConfig.mult (rho : ℂ) : ℝ) * z.re ^ 2 :=
+    mul_nonneg hm (sq_nonneg z.re)
+  have h2 : 0 ≤ (zetaZeroConfig.mult (rho : ℂ) : ℝ) * z.im ^ 2 :=
+    mul_nonneg hm (sq_nonneg z.im)
   simp [Complex.star_def, Complex.mul_re]
-  nlinarith [hm, sq_nonneg z.re, sq_nonneg z.im]
+  nlinarith [h1, h2]
 
 /-- If every nontrivial zeta zero is on the critical line, every legal
 diagonal zeta Weil form is nonnegative. -/
