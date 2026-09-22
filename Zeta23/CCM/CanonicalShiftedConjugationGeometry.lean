@@ -162,7 +162,7 @@ theorem shiftedIntrinsicPredecessorResolvent_conj
     let E := shiftedIntrinsicPredecessorEquiv p hL N hprev lam hlam
     change E (E.symm z) = z
     exact E.apply_symm_apply z
-  apply shiftedIntrinsicPredecessorBlock_injective p hL N hprev hlam
+  apply shiftedIntrinsicPredecessorBlock_injective p hL N hprev (lam := lam) hlam
   change A (R (intrinsicPredecessorConj p N y)) =
     A (intrinsicPredecessorConj p N (R y))
   rw [hright]
