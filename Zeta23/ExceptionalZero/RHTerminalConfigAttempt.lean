@@ -1,7 +1,6 @@
 import Zeta23.ExceptionalZero.RegularFirstBadClosure
 import Zeta23.Statement.SeamClosed
 import Mathlib.NumberTheory.LSeries.Nonvanishing
-import Mathlib.NumberTheory.LSeries.HurwitzZetaValues
 
 noncomputable section
 
@@ -24,8 +23,9 @@ The rest of this module attacks the statement seam directly:
 * zeros cannot lie on or to the right of `Re s = 1`;
 * away from non-positive integers, the functional equation excludes
   `Re s <= 0`;
-* negative odd integers are not zeros, using Mathlib's Bernoulli special-value
-  formula plus nonvanishing of zeta at positive even integers.
+* negative odd integers are not zeros, using the completed-zeta functional
+  equation, the exact Gamma-factor zero classification, and right-half-plane
+  nonvanishing.
 
 No `sorry`, project axiom, hidden RH assumption, or theorem promotion is used.
 -/
@@ -86,40 +86,59 @@ theorem re_pos_of_riemannZeta_zero_of_not_neg_nat
     linarith
   exact (riemannZeta_ne_zero_of_one_le_re hre) hreflect
 
-/-- Positive even Bernoulli indices are nonzero.
+/-/ Zeta is nonzero at every negative odd integer.
 
-Rather than importing a Bernoulli sign theorem, we read this directly off
-Mathlib's exact formula for zeta at positive even integers and the already
-proved nonvanishing of zeta on `Re s >= 1`. -/
-theorem bernoulli_two_mul_ne_zero
-    (k : ℕ)
-    (hk : k ≠ 0) :
-    bernoulli (2 * k) ≠ 0 := by
-  intro hb
-  have hz := riemannZeta_two_mul_nat (k := k) hk
-  rw [hb] at hz
-  simp at hz
-  have hk1 : 1 ≤ k := Nat.one_le_iff_ne_zero.mpr hk
-  have hnat : 1 ≤ 2 * k := by omega
-  have hreReal : (1 : ℝ) ≤ (2 * k : ℕ) := by
-    exact_mod_cast hnat
-  have hre : (1 : ℝ) ≤ ((2 * k : ℕ) : ℂ).re := by
-    simpa using hreReal
-  exact (riemannZeta_ne_zero_of_one_le_re hre) hz
-
-/-- Zeta is nonzero at every negative odd integer. -/
+This route deliberately avoids the special-value theorem
+`riemannZeta_two_mul_nat`: on the pinned Mathlib revision that theorem carries
+`sorryAx` through its Fourier-series ancestry.  Instead, a hypothetical zero
+at a negative odd integer would force the completed zeta function to vanish
+there because `Gammaℝ` is nonzero exactly away from negative even integers.
+The completed functional equation then transports that zero to real part at
+least one, contradicting `riemannZeta_ne_zero_of_one_le_re`. -/
 theorem riemannZeta_neg_odd_ne_zero
     (k : ℕ) :
     riemannZeta (-(2 * k + 1 : ℂ)) ≠ 0 := by
-  rw [riemannZeta_neg_nat_eq_bernoulli]
-  apply div_ne_zero
-  · apply mul_ne_zero
-    · exact pow_ne_zero _ (by norm_num)
-    · have hbq : bernoulli (2 * k + 1 + 1) ≠ 0 := by
-        rw [show 2 * k + 1 + 1 = 2 * (k + 1) by omega]
-        exact bernoulli_two_mul_ne_zero (k + 1) (by omega)
-      exact_mod_cast hbq
-  · exact_mod_cast (show 2 * k + 1 + 1 ≠ 0 by omega)
+  intro hz
+  let s : ℂ := -(2 * k + 1 : ℂ)
+  have hs0 : s ≠ 0 := by
+    intro hs
+    have hre := congrArg Complex.re hs
+    dsimp [s] at hre
+    norm_num at hre
+  have hGamma : Gammaℝ s ≠ 0 := by
+    intro hzero
+    rw [Gammaℝ_eq_zero_iff] at hzero
+    obtain ⟨n, hn⟩ := hzero
+    have hnat : 2 * k + 1 = 2 * n := by
+      have h := neg_inj.mp hn
+      have hre := congrArg Complex.re h
+      norm_num at hre
+      exact_mod_cast hre
+    omega
+  have hz_s : riemannZeta s = 0 := by
+    simpa [s] using hz
+  have hcomp_s : completedRiemannZeta s = 0 := by
+    rw [riemannZeta_def_of_ne_zero hs0] at hz_s
+    rcases (div_eq_zero_iff.mp hz_s) with h | h
+    · exact h
+    · exact (hGamma h).elim
+  let t : ℂ := 1 - s
+  have htRe : 1 ≤ t.re := by
+    dsimp [t, s]
+    norm_num
+  have ht0 : t ≠ 0 := by
+    intro ht
+    have h := htRe
+    rw [ht] at h
+    norm_num at h
+  have hcomp_t : completedRiemannZeta t = 0 := by
+    change completedRiemannZeta (1 - s) = 0
+    rw [completedRiemannZeta_one_sub]
+    exact hcomp_s
+  have hz_t : riemannZeta t = 0 := by
+    rw [riemannZeta_def_of_ne_zero ht0, hcomp_t]
+    simp
+  exact (riemannZeta_ne_zero_of_one_le_re htRe) hz_t
 
 /-- The only non-positive integer zeros of zeta are the standard negative even
 trivial zeros. -/
@@ -176,7 +195,6 @@ end Zeta23.ExceptionalZero
 #print axioms Zeta23.ExceptionalZero.criticalLine_of_noRegularFirstBadCertificates
 #print axioms Zeta23.ExceptionalZero.re_lt_one_of_riemannZeta_zero
 #print axioms Zeta23.ExceptionalZero.re_pos_of_riemannZeta_zero_of_not_neg_nat
-#print axioms Zeta23.ExceptionalZero.bernoulli_two_mul_ne_zero
 #print axioms Zeta23.ExceptionalZero.riemannZeta_neg_odd_ne_zero
 #print axioms Zeta23.ExceptionalZero.negativeIntegerZeroClassification
 #print axioms Zeta23.ExceptionalZero.isNontrivialZero_of_mathlib_nontrivialZero
