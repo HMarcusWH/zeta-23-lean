@@ -53,7 +53,7 @@ class Post242SyncTests(unittest.TestCase):
             "PROVED_PR_240",
         )
         self.assertEqual(route["post240_center_deficit_positive"], "OPEN_NOT_PROVED")
-        self.assertEqual(route["terminal_mathlib_rh_seam"], "PROVED_PR_242")
+        self.assertEqual(route["post242_terminal_mathlib_rh_seam"], "PROVED_PR_242")
         self.assertEqual(
             route["post242_no_regular_first_bad_certificates"],
             "OPEN_STRONG_SUFFICIENT_ENDPOINT",
