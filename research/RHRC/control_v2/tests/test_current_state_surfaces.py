@@ -61,7 +61,7 @@ class CurrentStateSurfaceTests(unittest.TestCase):
             route["required_new_information"],
             "PRESERVE_ARBITRARILY_LARGE_APERTURE_AND_WHOLE_CELL_BADNESS_THROUGH_BIREGULAR_SELECTION",
         )
-        self.assertEqual(route["terminal_mathlib_rh_seam"], "PROVED_PR_242")
+        self.assertEqual(route["post242_terminal_mathlib_rh_seam"], "PROVED_PR_242")
         self.assertEqual(route["active_subobligation"], "OBS-059I")
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
