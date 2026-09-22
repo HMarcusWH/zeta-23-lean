@@ -7,7 +7,7 @@ noncomputable section
 
 namespace Zeta23.ExceptionalZero
 
-open Complex
+open Complex Matrix Set
 open Zeta23.CCM
 open scoped ComplexConjugate
 
