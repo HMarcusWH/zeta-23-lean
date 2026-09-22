@@ -28,10 +28,13 @@ jobs:
           python - <<'PY'
           import json
           p = json.load(open('/tmp/RHRC_CONTROL_V2.json'))
+          state = json.load(open('research/RHRC/control_v2/CONTROL_STATE.json'))
+          theorem = state['merged_theorem_anchor']
           assert p['terminal_claim'] == 'RH_OPEN'
-          assert p['theorem_anchor']['pr'] == 237
-          assert p['theorem_anchor']['merge_commit'] == '267d417216f1731c6860b7553ba87397843fe258'
-          assert p['theorem_anchor']['tree'] == '28b22a2a4c96f32874fc09cd1e73f2fb09807e9d'
+          assert p['theorem_anchor']['pr'] == theorem['pr']
+          assert p['theorem_anchor']['merge_commit'] == theorem['merge_commit']
+          assert p['theorem_anchor']['tree'] == theorem['tree']
+          assert p['theorem_anchor']['pr'] == 242
           assert p['control_anchor']['pr'] == 117
           assert p['theorem_anchor']['merge_commit'] != p['control_anchor']['merge_commit']
           assert p['route_certificate']['frontier_id'] == 'FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN'
