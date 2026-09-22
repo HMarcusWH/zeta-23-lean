@@ -35,44 +35,47 @@ class CurrentStateSurfaceTests(unittest.TestCase):
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
 
-    def test_machine_state_is_merged_post236(self):
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 236)
-        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 236)
+    def test_machine_state_is_merged_post237(self):
+        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 237)
+        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 237)
         self.assertEqual(self.state["latest_research_evidence"]["pr"], 223)
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
         route = self.state["active_research_route"]
         self.assertEqual(
             route["next_research_target"],
-            "RETAINED_REAL_COMPLETED_SOURCE_CORRIDOR",
+            "CANONICAL_REAL_NEGATIVE_SHIFT_TRANSFER_GEOMETRY",
         )
         self.assertEqual(
             route["required_new_information"],
-            "REALITY_OF_RETAINED_M4_AND_SCALAR_COMPOSITION",
+            "CONJUGATION_COMPATIBLE_SHIFTED_RESOLVENT_AND_REAL_TRANSFER_COEFFICIENTS",
         )
         self.assertEqual(route["active_subobligation"], "OBS-059I")
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
     def test_every_living_surface_frontloads_machine_state(self):
         required = (
-            "PR #236",
-            "45491342f5661429679579c7889c1ad8b96728b6",
-            "a66e1c617033f4adaa52e935668399efb93048ac",
-            "5ef597b1d75075ec2299261a4193432a36932ffe",
-            "MERGED_VIA_PR_236",
-            "RETAINED_CANONICAL_REAL_PHASE_COLLAPSE",
-            "oddBad_of_even_of_realSourceDeficit_pos_of_radius_gap",
-            "retainedRealSourceDeficit_or_radius_of_even_of_not_oddBad",
+            "PR #237",
+            "8b7ba6b25c6f8977ff27890196e5b43ca3459b78",
+            "267d417216f1731c6860b7553ba87397843fe258",
+            "28b22a2a4c96f32874fc09cd1e73f2fb09807e9d",
+            "MERGED_VIA_PR_237",
+            "RETAINED_REAL_COMPLETED_SOURCE_CORRIDOR",
+            "retainedRealCompletedSourceCorridor_of_even_of_not_oddBad",
+            "retainedRealSourceScalar_pos_of_sharpRadius_le_shellCenter_sq",
             "13/13 ATTACHED WORKFLOWS GREEN",
             "PR #223",
             "NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED",
             "FROZEN_SCOPE_DID_NOT_REACH_RETAINED_STATE",
             "DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED",
             "COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED",
+            "FULL_SPACE_SIGN_INDEFINITE_CERTIFIED",
+            "retained Gamma is real",
+            "f = q*Gamma",
             "PR #117",
             "E4A4-SCHUR-FB-05",
             "OBS-059I",
-            "RETAINED_REAL_COMPLETED_SOURCE_CORRIDOR",
-            "REALITY_OF_RETAINED_M4_AND_SCALAR_COMPOSITION",
+            "CANONICAL_REAL_NEGATIVE_SHIFT_TRANSFER_GEOMETRY",
+            "CONJUGATION_COMPATIBLE_SHIFTED_RESOLVENT_AND_REAL_TRANSFER_COEFFICIENTS",
             "CANONICAL_CUBIC_SHELL_NORMALIZATION",
             "672 attempted / 0 shifted states",
             "R003 phase = DISCOVERY",
@@ -80,7 +83,9 @@ class CurrentStateSurfaceTests(unittest.TestCase):
             "terminal claim = RH_OPEN",
         )
         forbidden = (
-            "merged theorem authority = PR #235",
+            "merged theorem authority = PR #236",
+            "next research target = RETAINED_REAL_COMPLETED_SOURCE_CORRIDOR",
+            "required new information = REALITY_OF_RETAINED_M4_AND_SCALAR_COMPOSITION",
             "next research target = RETAINED_CANONICAL_REAL_PHASE_COLLAPSE",
             "required new information = CONJUGATION_COMPATIBLE_CANONICAL_NORMALIZATION",
             "full-composite parity mechanism = current",
