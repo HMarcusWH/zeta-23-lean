@@ -86,7 +86,7 @@ theorem re_pos_of_riemannZeta_zero_of_not_neg_nat
     linarith
   exact (riemannZeta_ne_zero_of_one_le_re hre) hreflect
 
-/-/ Zeta is nonzero at every negative odd integer.
+/-- Zeta is nonzero at every negative odd integer.
 
 This route deliberately avoids the special-value theorem
 `riemannZeta_two_mul_nat`: on the pinned Mathlib revision that theorem carries
