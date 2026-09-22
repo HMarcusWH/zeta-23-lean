@@ -42,26 +42,26 @@ class Post236SyncTests(unittest.TestCase):
                 self.assertIn(section, text)
 
     def test_current_authority_has_advanced_without_erasing_236(self):
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 242)
-        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 242)
+        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 243)
+        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 243)
         self.assertEqual(
             self.state["active_research_route"]["next_research_target"],
-            "OFFLINE_GENERATED_WHOLE_CELL_RETAINED_FAMILY",
+            "GENERATED_FAMILY_FINAL_GATE",
         )
         self.assertEqual(
             self.state["active_research_route"]["required_new_information"],
-            "PRESERVE_ARBITRARILY_LARGE_APERTURE_AND_WHOLE_CELL_BADNESS_THROUGH_BIREGULAR_SELECTION",
+            "EVENTUAL_CANONICAL_UPPER_BOUND_ON_WHOLE_CELL_RETAINED_APERTURE",
         )
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
-    def test_current_headings_match_post242(self):
+    def test_current_headings_match_post243(self):
         self.assertEqual(
             (ROOT / "AUDIT.md").read_text(encoding="utf-8").splitlines()[0],
-            "# RHRC formal audit — merged theorem authority PR #242; research evidence PR #223",
+            "# RHRC formal audit — merged theorem authority PR #243; research evidence PR #223",
         )
         self.assertEqual(
             (ROOT / "FORK_NOTES.md").read_text(encoding="utf-8").splitlines()[0],
-            "# Fork notes — RHRC current state through merged PR #242",
+            "# Fork notes — RHRC current state through merged PR #243",
         )
 
 
