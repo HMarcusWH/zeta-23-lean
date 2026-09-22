@@ -35,74 +35,74 @@ class CurrentStateSurfaceTests(unittest.TestCase):
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
 
-    def test_machine_state_is_merged_post242(self):
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 242)
+    def test_machine_state_is_merged_post243(self):
+        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 243)
         self.assertEqual(
             self.state["merged_theorem_anchor"]["validated_head"],
-            "d4ccbd67223278e95e3aef728f0f42891aff6fd7",
+            "7b9cc503c50478000ce4ac53c61d4a96ed2d4050",
         )
         self.assertEqual(
             self.state["merged_theorem_anchor"]["merge_commit"],
-            "d2ba055243cdf0765a58ce2068a98744b7ae9432",
+            "be58e98a843ceeceb93a7729d95a3fb6bb0b60df",
         )
         self.assertEqual(
             self.state["merged_theorem_anchor"]["tree"],
-            "0f4f82b5fc43024c52c75ec8940108830ceaf7c1",
+            "abf8ff5b429adea4adaaec28e182dc30495b1ba8",
         )
-        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 242)
+        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 243)
         self.assertEqual(self.state["latest_research_evidence"]["pr"], 223)
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
         route = self.state["active_research_route"]
-        self.assertEqual(
-            route["next_research_target"],
-            "OFFLINE_GENERATED_WHOLE_CELL_RETAINED_FAMILY",
-        )
+        self.assertEqual(route["next_research_target"], "GENERATED_FAMILY_FINAL_GATE")
         self.assertEqual(
             route["required_new_information"],
-            "PRESERVE_ARBITRARILY_LARGE_APERTURE_AND_WHOLE_CELL_BADNESS_THROUGH_BIREGULAR_SELECTION",
+            "EVENTUAL_CANONICAL_UPPER_BOUND_ON_WHOLE_CELL_RETAINED_APERTURE",
         )
-        self.assertEqual(route["post242_terminal_mathlib_rh_seam"], "PROVED_PR_242")
-        self.assertEqual(route["active_subobligation"], "OBS-059I")
+        self.assertEqual(route["post243_whole_cell_provenance"], "PROVED_PR_243")
+        self.assertEqual(
+            route["post243_arbitrarily_large_retained_family"], "PROVED_PR_243"
+        )
+        self.assertEqual(
+            route["post243_generated_family_final_gate"],
+            "OPEN_EVENTUAL_APERTURE_BOUND",
+        )
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
     def test_every_living_surface_frontloads_machine_state(self):
         required = (
-            "PR #242",
-            "d4ccbd67223278e95e3aef728f0f42891aff6fd7",
-            "d2ba055243cdf0765a58ce2068a98744b7ae9432",
-            "0f4f82b5fc43024c52c75ec8940108830ceaf7c1",
-            "MERGED_VIA_PR_242",
-            "CONDITIONAL_TERMINAL_RH_SEAM",
-            "riemannHypothesis_of_noRegularFirstBadCertificates",
-            "NoRegularFirstBadCertificates -> RiemannHypothesis",
+            "PR #243",
+            "7b9cc503c50478000ce4ac53c61d4a96ed2d4050",
+            "be58e98a843ceeceb93a7729d95a3fb6bb0b60df",
+            "abf8ff5b429adea4adaaec28e182dc30495b1ba8",
+            "MERGED_VIA_PR_243",
+            "OFFLINE_GENERATED_WHOLE_CELL_RETAINED_FAMILY",
+            "exists_arbitrarilyLarge_wholeCellBiRegular_negativeEnergyCertificate_of_offLine_zero",
+            "off-line zero -> arbitrarily-large whole-cell bi-regular retained negative-energy certificates",
             "11/11 ATTACHED WORKFLOWS GREEN",
             "terminal Mathlib RH seam = PROVED / PR #242",
-            "STRONG SUFFICIENT ENDPOINT / NOT PRIMARY RESEARCH TARGET",
-            "generic safe negative-shift transfer reality = PROVED / PR #239",
-            "positive-center-deficit transfer escape = PROVED / PR #240",
-            "D > 0",
-            "OPEN / NOT PROVED",
-            "odd-selected exact cross-parity negative-root endpoint = PROVED",
-            "simultaneous odd-bad exclusion = OPEN",
-            "PR #223",
-            "NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED",
+            "whole-cell provenance preservation = PROVED / PR #243",
+            "arbitrary-large retained aperture family = PROVED / PR #243",
+            "NoArbitrarilyLargeWholeCellRetainedFamily",
+            "eventual generated-family aperture bound = OPEN",
+            "contact theory = FALLBACK ONLY",
             "DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED",
             "COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED",
             "FULL_SPACE_SIGN_INDEFINITE_CERTIFIED",
             "PR #117",
             "E4A4-SCHUR-FB-05",
             "OBS-059I",
-            "OFFLINE_GENERATED_WHOLE_CELL_RETAINED_FAMILY",
-            "PRESERVE_ARBITRARILY_LARGE_APERTURE_AND_WHOLE_CELL_BADNESS_THROUGH_BIREGULAR_SELECTION",
+            "GENERATED_FAMILY_FINAL_GATE",
+            "EVENTUAL_CANONICAL_UPPER_BOUND_ON_WHOLE_CELL_RETAINED_APERTURE",
             "R003 phase = DISCOVERY",
             "confirmatory execution = NOT AUTHORIZED",
             "terminal claim = RH_OPEN",
         )
         forbidden = (
             "merged theorem authority = PR #237",
+            "merged theorem authority = PR #242",
             "next research target = CANONICAL_REAL_NEGATIVE_SHIFT_TRANSFER_GEOMETRY",
+            "next research target = OFFLINE_GENERATED_WHOLE_CELL_RETAINED_FAMILY",
             "terminal Mathlib RH seam = OPEN",
-            "generic safe-shift transfer reality = OPEN / NEXT THEOREMIZATION",
             "NoRegularFirstBadCertificates = PROVED",
         )
         for path in LIVING_SURFACES:
