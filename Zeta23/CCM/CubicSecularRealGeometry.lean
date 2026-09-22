@@ -51,53 +51,18 @@ theorem cubicSecularTrialVector_conj_fixed
   have hRfix :
       intrinsicPredecessorConj p N (R b) = R b := by
     simpa [R] using hRconj.symm
-  have hRambient :
-      euclideanConj
-          ((((R b : intrinsicParityPredecessorSubspace p N) :
-              euclideanParityBoundaryFlatSubspace p (N + 1))) :
-            EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))) =
-        (((R b : intrinsicParityPredecessorSubspace p N) :
-            euclideanParityBoundaryFlatSubspace p (N + 1)) :
-          EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) := by
-    have h :=
-      congrArg
-        (fun z : intrinsicParityPredecessorSubspace p N =>
-          (((z : intrinsicParityPredecessorSubspace p N) :
-              euclideanParityBoundaryFlatSubspace p (N + 1)) :
-            EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))) hRfix
-    simpa [intrinsicPredecessorConj, parityConj] using h
-  have hcfix := intrinsicCubicShellPart_conj_fixed p N
-  have hcambient :
-      euclideanConj
-          ((((c : intrinsicParitySuccShell p N) :
-              euclideanParityBoundaryFlatSubspace p (N + 1))) :
-            EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))) =
-        (((c : intrinsicParitySuccShell p N) :
-            euclideanParityBoundaryFlatSubspace p (N + 1)) :
-          EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) := by
-    have h :=
-      congrArg
-        (fun z : intrinsicParitySuccShell p N =>
-          (((z : intrinsicParitySuccShell p N) :
-              euclideanParityBoundaryFlatSubspace p (N + 1)) :
-            EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))) hcfix
-    simpa [intrinsicShellConj, parityConj, c] using h
-  apply Subtype.ext
   change
-    euclideanConj
-        (- (((R b : intrinsicParityPredecessorSubspace p N) :
-              euclideanParityBoundaryFlatSubspace p (N + 1)) :
-            EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) +
-          (((c : intrinsicParitySuccShell p N) :
-              euclideanParityBoundaryFlatSubspace p (N + 1)) :
-            EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))) =
-      - (((R b : intrinsicParityPredecessorSubspace p N) :
-            euclideanParityBoundaryFlatSubspace p (N + 1)) :
-          EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) +
-        (((c : intrinsicParitySuccShell p N) :
-            euclideanParityBoundaryFlatSubspace p (N + 1)) :
-          EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
-  rw [euclideanConj_add, euclideanConj_neg, hRambient, hcambient]
+    parityConj p (N + 1)
+        (((- R b : intrinsicParityPredecessorSubspace p N) :
+            euclideanParityBoundaryFlatSubspace p (N + 1)) +
+          (c : euclideanParityBoundaryFlatSubspace p (N + 1))) =
+      (((- R b : intrinsicParityPredecessorSubspace p N) :
+          euclideanParityBoundaryFlatSubspace p (N + 1)) +
+        (c : euclideanParityBoundaryFlatSubspace p (N + 1)))
+  rw [parityConj_add]
+  rw [← coe_intrinsicPredecessorConj, ← coe_intrinsicShellConj]
+  rw [intrinsicPredecessorConj_neg, hRfix,
+    intrinsicCubicShellPart_conj_fixed]
 
 end Zeta23.CCM
 
