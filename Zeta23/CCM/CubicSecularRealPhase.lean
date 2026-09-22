@@ -1,5 +1,4 @@
-import Zeta23.CCM.CanonicalConjugationGeometry
-import Zeta23.CCM.CubicSecularEquation
+import Zeta23.CCM.CubicSecularRealGeometry
 
 noncomputable section
 
@@ -11,97 +10,32 @@ open scoped BigOperators ComplexConjugate
 /-!
 # Canonical cubic secular real phase
 
-A safe negative secular root produces a canonically normalized eigenmode whose
-cubic quotient coordinate is exactly one.  Because the compressed canonical
-operator commutes with coordinate conjugation, the conjugate is another
-eigenmode at the same real eigenvalue.  The quotient coordinate also conjugates
-and therefore remains one.  Existing E3-A normalization uniqueness then forces
-the conjugated state to equal the original canonical trial.
+The canonical cubic trial is now known to be fixed by coordinate conjugation
+for every safe real negative shift, before any secular-root condition is
+imposed.  The historical root-specific theorem is retained as a compatibility
+interface for downstream code.
 
-No eigenvalue-simplicity assumption and no reality theorem for the shifted
-resolvent are used.
+No sign, branch exclusion, negative-root exclusion, or RH claim is asserted.
 -/
 
-/-- A canonical cubic secular trial at a genuine safe negative root is fixed
-by coordinatewise complex conjugation. -/
+/-- Compatibility corollary: a canonical cubic secular trial at a genuine safe
+negative root is fixed by coordinatewise complex conjugation. -/
 theorem cubicSecularTrialVector_conj_fixed_of_secularRoot
     (p : ReversalParity)
     {L : ℝ} (hL : 0 < L)
-    (N : ℕ) (hN : 1 ≤ N)
+    (N : ℕ) (_hN : 1 ≤ N)
     (hprev :
       ∀ x : EuclideanSpace ℂ (Fin (2 * N + 1)),
         x ∈ euclideanParityBoundaryFlatSubspace p N →
           0 ≤ Complex.re
             (inner ℂ ((canonicalSourceMatrix L N).toEuclideanLin x) x))
     (lam : ℝ) (hlam : lam < 0)
-    (hroot :
+    (_hroot :
       cubicSecularScalar p hL N hprev lam hlam = 0) :
     parityConj p (N + 1)
         (cubicSecularTrialVector p hL N hprev lam hlam) =
       cubicSecularTrialVector p hL N hprev lam hlam := by
-  let v :=
-    cubicSecularTrialVector p hL N hprev lam hlam
-  have hvne : v ≠ 0 := by
-    simpa [v] using
-      cubicSecularTrialVector_ne_zero p hL N hN hprev lam hlam
-  have hveig :
-      parityCompressedCanonical p L (N + 1) v =
-        (lam : ℂ) • v := by
-    simpa [v] using
-      (cubicSecularScalar_eq_zero_iff_trial_eigenmode
-        p hL N hN hprev lam hlam).mp hroot
-  have hconjEig :
-      parityCompressedCanonical p L (N + 1)
-          (parityConj p (N + 1) v) =
-        (lam : ℂ) • parityConj p (N + 1) v := by
-    rw [parityCompressedCanonical_conj, hveig]
-    apply Subtype.ext
-    change
-      euclideanConj
-          ((lam : ℂ) •
-            (v : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))) =
-        (lam : ℂ) •
-          euclideanConj
-            (v : EuclideanSpace ℂ (Fin (2 * (N + 1) + 1)))
-    rw [euclideanConj_smul]
-    simp
-  have hconjNe : parityConj p (N + 1) v ≠ 0 := by
-    intro hz
-    apply hvne
-    have hz' := congrArg (parityConj p (N + 1)) hz
-    rw [parityConj_involutive] at hz'
-    have hzero :
-        parityConj p (N + 1)
-            (0 : euclideanParityBoundaryFlatSubspace p (N + 1)) = 0 := by
-      apply Subtype.ext
-      exact euclideanConj_zero
-    rw [hzero] at hz'
-    exact hz'
-  have hk :
-      intrinsicCubicQuotientCoordinate p N v = 1 := by
-    simpa [v] using
-      intrinsicCubicQuotientCoordinate_cubicSecularTrialVector
-        p hL N hN hprev lam hlam
-  have hkc :
-      intrinsicCubicQuotientCoordinate p N
-          (parityConj p (N + 1) v) = 1 := by
-    have h :=
-      intrinsicCubicQuotientCoordinate_conj p N v
-    rw [hk] at h
-    simpa using h
-  have hnormSelf :
-      cubicNormalizedSuccessorVector p N
-          (parityConj p (N + 1) v) =
-        parityConj p (N + 1) v := by
-    simp [cubicNormalizedSuccessorVector, hkc]
-  have hnorm :
-      cubicNormalizedSuccessorVector p N
-          (parityConj p (N + 1) v) =
-        v := by
-    simpa [v] using
-      cubicNormalizedSuccessorVector_eq_cubicSecularTrialVector
-        p hL N hN hprev hlam hconjNe hconjEig
-  exact hnormSelf.symm.trans hnorm
+  exact cubicSecularTrialVector_conj_fixed p hL N hprev lam hlam
 
 end Zeta23.CCM
 
