@@ -135,6 +135,29 @@ theorem no_regularCellMinimalNegativeEnergyCertificate_of_criticalLine
       c.trial_boundaryFlat
   exact (not_lt_of_ge hnonneg) c.channelEnergyNeg
 
+/-- Critical-line positivity also discharges the older PR #242 terminal
+certificate gate. -/
+theorem noRegularFirstBadCertificates_of_criticalLine
+    (hline : ∀ rho ∈ zetaZeroConfig.carrier, rho.re = 1 / 2) :
+    NoRegularFirstBadCertificates := by
+  intro Q c
+  exact no_regularCellMinimalNegativeEnergyCertificate_of_criticalLine
+    hline Q c
+
+/-- Mathlib RH implies the older PR #242 certificate gate. -/
+theorem noRegularFirstBadCertificates_of_riemannHypothesis
+    (hRH : RiemannHypothesis) :
+    NoRegularFirstBadCertificates := by
+  apply noRegularFirstBadCertificates_of_criticalLine
+  intro rho hrho
+  exact RH_implies_on_line hRH (by simpa using hrho)
+
+/-- The PR #242 terminal certificate gate is itself RH-equivalent. -/
+theorem noRegularFirstBadCertificates_iff_riemannHypothesis :
+    NoRegularFirstBadCertificates ↔ RiemannHypothesis :=
+  ⟨riemannHypothesis_of_noRegularFirstBadCertificates,
+    noRegularFirstBadCertificates_of_riemannHypothesis⟩
+
 /-- The critical-line statement therefore implies the PR #244 generated-family
 gate, in fact for the stronger reason that no retained certificate exists at
 any aperture. -/
@@ -173,5 +196,6 @@ end Zeta23.ExceptionalZero
 #print axioms Zeta23.ExceptionalZero.zeta_W_self_re_nonnegative_of_criticalLine
 #print axioms Zeta23.ExceptionalZero.canonicalSourceQuadraticForm_re_nonnegative_of_criticalLine
 #print axioms Zeta23.ExceptionalZero.no_regularCellMinimalNegativeEnergyCertificate_of_criticalLine
+#print axioms Zeta23.ExceptionalZero.noRegularFirstBadCertificates_iff_riemannHypothesis
 #print axioms Zeta23.ExceptionalZero.noArbitrarilyLargeWholeCellRetainedFamily_of_riemannHypothesis
 #print axioms Zeta23.ExceptionalZero.noArbitrarilyLargeWholeCellRetainedFamily_iff_riemannHypothesis
