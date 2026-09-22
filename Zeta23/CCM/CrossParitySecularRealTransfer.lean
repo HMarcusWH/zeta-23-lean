@@ -54,9 +54,31 @@ theorem star_crossParitySecularGamma_eq_self
       star (inner ℂ c c) = inner ℂ c c := by
     rw [inner_self_eq_norm_sq_to_K]
     simp
+  have hnumStarRaw :
+      star
+          (inner ℂ
+            (cubicSecularTrialVector .odd hL N hprevOdd lam hlam)
+            (successorParityCubicVector .odd N)) =
+        inner ℂ
+          (cubicSecularTrialVector .odd hL N hprevOdd lam hlam)
+          (successorParityCubicVector .odd N) := by
+    simpa [u, g] using hnumStar
+  have hdenStarRaw :
+      star
+          (inner ℂ
+            (intrinsicCubicShellPart .odd N :
+              euclideanParityBoundaryFlatSubspace .odd (N + 1))
+            (intrinsicCubicShellPart .odd N :
+              euclideanParityBoundaryFlatSubspace .odd (N + 1))) =
+        inner ℂ
+          (intrinsicCubicShellPart .odd N :
+            euclideanParityBoundaryFlatSubspace .odd (N + 1))
+          (intrinsicCubicShellPart .odd N :
+            euclideanParityBoundaryFlatSubspace .odd (N + 1)) := by
+    simpa [c] using hdenStar
   rw [crossParitySecularGamma_eq_trial_cubic_overlap_div
     hL N hN hprevOdd lam hlam]
-  rw [star_div₀, hnumStar, hdenStar]
+  rw [star_div₀, hnumStarRaw, hdenStarRaw]
 
 /-- The safe cross-parity Gamma coefficient has zero imaginary part. -/
 theorem crossParitySecularGamma_im_eq_zero
