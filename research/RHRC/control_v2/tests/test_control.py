@@ -15,14 +15,14 @@ from control_v2.state import load_research_state
 class ControlV2Tests(unittest.TestCase):
     def test_control_state_tracks_latest_theorem_anchor_without_moving_control_anchor(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 235)
+        self.assertEqual(state.anchor.pr, 236)
         self.assertEqual(
             state.anchor.merge_commit,
-            "0c347a99a02157798109ffb5a4718e201e6fa083",
+            "a66e1c617033f4adaa52e935668399efb93048ac",
         )
         self.assertEqual(
             state.anchor.tree,
-            "ba6d8e6f5a714742353678e36cbc90d869b31798",
+            "5ef597b1d75075ec2299261a4193432a36932ffe",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -129,16 +129,30 @@ class ControlV2Tests(unittest.TestCase):
             "CANONICAL_CUBIC_SHELL_NORMALIZATION",
             "PR #235",
             "d7ae288e874b2cf3462a8e00c35c7b713607a192",
-            "0c347a99a02157798109ffb5a4718e201e6fa083",
-            "ba6d8e6f5a714742353678e36cbc90d869b31798",
+            "a66e1c617033f4adaa52e935668399efb93048ac",
+            "5ef597b1d75075ec2299261a4193432a36932ffe",
             "RETAINED_SOURCE_KERNEL_FORBIDDEN_QUADRANT",
             "RETAINED_CANONICAL_REAL_PHASE_COLLAPSE",
             "CONJUGATION_COMPATIBLE_CANONICAL_NORMALIZATION",
+            "PR #236",
+            "45491342f5661429679579c7889c1ad8b96728b6",
+            "a66e1c617033f4adaa52e935668399efb93048ac",
+            "5ef597b1d75075ec2299261a4193432a36932ffe",
+            "RETAINED_CANONICAL_REAL_PHASE_COLLAPSE",
+            "RETAINED_REAL_COMPLETED_SOURCE_CORRIDOR",
+            "REALITY_OF_RETAINED_M4_AND_SCALAR_COMPOSITION",
+            "PR #236",
+            "45491342f5661429679579c7889c1ad8b96728b6",
+            "a66e1c617033f4adaa52e935668399efb93048ac",
+            "5ef597b1d75075ec2299261a4193432a36932ffe",
+            "RETAINED_CANONICAL_REAL_PHASE_COLLAPSE",
+            "RETAINED_REAL_COMPLETED_SOURCE_CORRIDOR",
+            "REALITY_OF_RETAINED_M4_AND_SCALAR_COMPOSITION",
             "RH remains OPEN",
         ):
             self.assertIn(token, note)
-        self.assertEqual(control["merged_theorem_anchor"]["pr"], 235)
-        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 235)
+        self.assertEqual(control["merged_theorem_anchor"]["pr"], 236)
+        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 236)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
         self.assertEqual(control["terminal_claim"], "RH_OPEN")
 
