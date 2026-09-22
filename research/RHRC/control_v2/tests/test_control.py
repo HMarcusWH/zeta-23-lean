@@ -15,14 +15,14 @@ from control_v2.state import load_research_state
 class ControlV2Tests(unittest.TestCase):
     def test_control_state_tracks_latest_theorem_anchor_without_moving_control_anchor(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 242)
+        self.assertEqual(state.anchor.pr, 243)
         self.assertEqual(
             state.anchor.merge_commit,
-            "d2ba055243cdf0765a58ce2068a98744b7ae9432",
+            "be58e98a843ceeceb93a7729d95a3fb6bb0b60df",
         )
         self.assertEqual(
             state.anchor.tree,
-            "0f4f82b5fc43024c52c75ec8940108830ceaf7c1",
+            "abf8ff5b429adea4adaaec28e182dc30495b1ba8",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -160,10 +160,13 @@ class ControlV2Tests(unittest.TestCase):
             "PR #242",
             "NoRegularFirstBadCertificates -> Mathlib.RiemannHypothesis",
             "OFFLINE_GENERATED_WHOLE_CELL_RETAINED_FAMILY",
+            "PR #243",
+            "arbitrarily large retained aperture",
+            "GENERATED_FAMILY_FINAL_GATE",
         ):
             self.assertIn(token, note)
-        self.assertEqual(control["merged_theorem_anchor"]["pr"], 242)
-        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 242)
+        self.assertEqual(control["merged_theorem_anchor"]["pr"], 243)
+        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 243)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
         self.assertEqual(control["terminal_claim"], "RH_OPEN")
 

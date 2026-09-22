@@ -34,7 +34,7 @@ jobs:
           assert p['theorem_anchor']['pr'] == theorem['pr']
           assert p['theorem_anchor']['merge_commit'] == theorem['merge_commit']
           assert p['theorem_anchor']['tree'] == theorem['tree']
-          assert p['theorem_anchor']['pr'] == 242
+          assert p['theorem_anchor']['pr'] == 243
           assert p['control_anchor']['pr'] == 117
           assert p['theorem_anchor']['merge_commit'] != p['control_anchor']['merge_commit']
           assert p['route_certificate']['frontier_id'] == 'FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN'

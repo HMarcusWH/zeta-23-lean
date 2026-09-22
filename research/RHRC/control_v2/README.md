@@ -10,51 +10,45 @@ Control-v2 is routing/governance infrastructure, not theorem authority.
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #242
-- validated final head = d4ccbd67223278e95e3aef728f0f42891aff6fd7
-- merge commit = d2ba055243cdf0765a58ce2068a98744b7ae9432
-- tree = 0f4f82b5fc43024c52c75ec8940108830ceaf7c1
-- status = MERGED_VIA_PR_242
-- theorem family = CONDITIONAL_TERMINAL_RH_SEAM
-- exact flagship theorem = `Zeta23.ExceptionalZero.riemannHypothesis_of_noRegularFirstBadCertificates`
-- exact proved implication = `NoRegularFirstBadCertificates -> RiemannHypothesis`
-- workflow harvest = 11/11 ATTACHED WORKFLOWS GREEN on the validated #242 head
+- merged theorem authority = PR #243
+- validated final head = 7b9cc503c50478000ce4ac53c61d4a96ed2d4050
+- merge commit = be58e98a843ceeceb93a7729d95a3fb6bb0b60df
+- tree = abf8ff5b429adea4adaaec28e182dc30495b1ba8
+- status = MERGED_VIA_PR_243
+- theorem family = OFFLINE_GENERATED_WHOLE_CELL_RETAINED_FAMILY
+- exact generated-family theorem = `Zeta23.ExceptionalZero.exists_arbitrarilyLarge_wholeCellBiRegular_negativeEnergyCertificate_of_offLine_zero`
+- proved implication = off-line zero -> arbitrarily-large whole-cell bi-regular retained negative-energy certificates
+- workflow harvest = 11/11 ATTACHED WORKFLOWS GREEN on the validated #243 head
 - terminal Mathlib RH seam = PROVED / PR #242
-- `NoRegularFirstBadCertificates` = OPEN / STRONG SUFFICIENT ENDPOINT / NOT PRIMARY RESEARCH TARGET
+- RH = OPEN
 
-POST-#239 / POST-#240 FORMAL STATE
-- generic safe negative-shift transfer reality = PROVED / PR #239
-- retained Gamma reality = PROVED / PR #239
-- retained Alpha reality = PROVED / PR #239
-- retained real transfer corridor = PROVED / PR #239
-- affine law `6*Gamma + (2*N-1)*Alpha = 2*N+5` = PROVED
-- positive-center-deficit transfer escape = PROVED / PR #240
-- `D > 0` = OPEN / NOT PROVED
-- negative-Gamma escape = `Gamma < 0 -> q^2 < Rsharp`
-- high-Gamma escape = `Gamma > 1 -> Alpha < 1`
-- `0 < Gamma <= 1 -> D <= 0`
+POST-#243 FINAL-GATE STATE
+- whole-cell provenance preservation = PROVED / PR #243
+- arbitrary-large retained aperture family = PROVED / PR #243
+- `NoRegularFirstBadCertificates` = OPEN / STRONG SUFFICIENT ENDPOINT / NOT PRIMARY TARGET
+- exact generated-family final gate = boundedness of retained aperture over `WholeCellBiRegularNegativeEnergyCertificate`
+- candidate proposition = `NoArbitrarilyLargeWholeCellRetainedFamily`
+- candidate closing implication = `NoArbitrarilyLargeWholeCellRetainedFamily -> RiemannHypothesis`
+- eventual generated-family aperture bound = OPEN
+- contact theory = FALLBACK ONLY
 - simultaneous odd-bad exclusion = OPEN
-- odd-selected exact cross-parity negative-root endpoint = PROVED
 - odd-selected downstream orientation/closure = OPEN
-- parity-complete retained-state exclusion = OPEN
 
-LATEST RESEARCH EVIDENCE
-- PR #223
-- disposition = NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED
-- retained-state implication = FROZEN_SCOPE_DID_NOT_REACH_RETAINED_STATE
+RESEARCH / REGRESSION HARVEST
+- PR #223 remains the latest independent bounded research evidence anchor
 - post-198 = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED / NO_UNIQUE_COLLAPSED_UNIFORM_LOCK
 - post-200 = DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED / NO_UNIQUE_PRIMARY_LOCK
 - post-202 = COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
 - post-214 = FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED / FULL_SPACE_SIGN_INDEFINITE_CERTIFIED
+- post-222 = NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED
 - theorem promotion from research replays = false
 
 CONTROL AUTHORITY
 - PR #117
 - selected formal first break = E4A4-SCHUR-FB-05
 - active subobligation = OBS-059I
-- next research target = OFFLINE_GENERATED_WHOLE_CELL_RETAINED_FAMILY
-- required new information = PRESERVE_ARBITRARILY_LARGE_APERTURE_AND_WHOLE_CELL_BADNESS_THROUGH_BIREGULAR_SELECTION
-- whole-cell/contact route = RESURRECTED LEAD / NOT YET A CONTACT THEOREM
+- next research target = GENERATED_FAMILY_FINAL_GATE
+- required new information = EVENTUAL_CANONICAL_UPPER_BOUND_ON_WHOLE_CELL_RETAINED_APERTURE
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
