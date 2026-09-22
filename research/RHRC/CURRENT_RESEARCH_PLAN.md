@@ -8,26 +8,30 @@ Live GitHub head + exact compiler/CI evidence are authoritative dynamically. Thi
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #243
-- validated final head = 7b9cc503c50478000ce4ac53c61d4a96ed2d4050
-- merge commit = be58e98a843ceeceb93a7729d95a3fb6bb0b60df
-- tree = abf8ff5b429adea4adaaec28e182dc30495b1ba8
-- status = MERGED_VIA_PR_243
-- theorem family = OFFLINE_GENERATED_WHOLE_CELL_RETAINED_FAMILY
-- exact generated-family theorem = `Zeta23.ExceptionalZero.exists_arbitrarilyLarge_wholeCellBiRegular_negativeEnergyCertificate_of_offLine_zero`
-- proved implication = off-line zero -> arbitrarily-large whole-cell bi-regular retained negative-energy certificates
-- workflow harvest = 11/11 ATTACHED WORKFLOWS GREEN on the validated #243 head
+- merged theorem authority = PR #245
+- validated final head = 766579346ec86b25d63fb61f8e0b46752a028f6c
+- merge commit = ad0347ef07e2c7717f88bd9d8bf7555be75ad88e
+- tree = 0466006ec23b3f24f6ea113b303014ae42a680dd
+- status = MERGED_VIA_PR_245
+- theorem family = TERMINAL_GATE_RH_EQUIVALENCE
+- exact equivalence theorem = `Zeta23.ExceptionalZero.noArbitrarilyLargeWholeCellRetainedFamily_iff_riemannHypothesis`
+- companion equivalence theorem = `Zeta23.ExceptionalZero.noRegularFirstBadCertificates_iff_riemannHypothesis`
+- proved equivalences = NoArbitrarilyLargeWholeCellRetainedFamily <-> RiemannHypothesis; NoRegularFirstBadCertificates <-> RiemannHypothesis
+- workflow harvest = 11/11 ATTACHED WORKFLOWS GREEN on the validated #245 head (13/13 check runs)
 - terminal Mathlib RH seam = PROVED / PR #242
 - RH = OPEN
 
-POST-#243 FINAL-GATE STATE
+POST-#245 TERMINAL STATE
 - whole-cell provenance preservation = PROVED / PR #243
 - arbitrary-large retained aperture family = PROVED / PR #243
-- `NoRegularFirstBadCertificates` = OPEN / STRONG SUFFICIENT ENDPOINT / NOT PRIMARY TARGET
-- exact generated-family final gate = boundedness of retained aperture over `WholeCellBiRegularNegativeEnergyCertificate`
-- candidate proposition = `NoArbitrarilyLargeWholeCellRetainedFamily`
-- candidate closing implication = `NoArbitrarilyLargeWholeCellRetainedFamily -> RiemannHypothesis`
-- eventual generated-family aperture bound = OPEN
+- PR #243 implication = off-line zero -> arbitrarily-large whole-cell bi-regular retained negative-energy certificates (`exists_arbitrarilyLarge_wholeCellBiRegular_negativeEnergyCertificate_of_offLine_zero`)
+- `NoRegularFirstBadCertificates` = RH-EQUIVALENT / PR #245
+- `NoArbitrarilyLargeWholeCellRetainedFamily` = RH-EQUIVALENT / PR #245
+- eventual generated-family aperture bound = OPEN / RH-EQUIVALENT
+- sub-RH gate remaining on this route = NONE
+- canonical prime-remainder normal form = CANDIDATE / POST-#245 ARITHMETIC-CRITERION PR / NOT YET THEOREM AUTHORITY
+- `CanonicalPrimeRemainderDominance` <-> RiemannHypothesis = CANDIDATE / POST-#245 ARITHMETIC-CRITERION PR
+- generated retained Riesz-six eventual nonnegativity <-> RiemannHypothesis = CANDIDATE / POST-#245 ARITHMETIC-CRITERION PR
 - contact theory = FALLBACK ONLY
 - simultaneous odd-bad exclusion = OPEN
 - odd-selected downstream orientation/closure = OPEN
@@ -45,8 +49,10 @@ CONTROL AUTHORITY
 - PR #117
 - selected formal first break = E4A4-SCHUR-FB-05
 - active subobligation = OBS-059I
-- next research target = GENERATED_FAMILY_FINAL_GATE
-- required new information = EVENTUAL_CANONICAL_UPPER_BOUND_ON_WHOLE_CELL_RETAINED_APERTURE
+- historical target GENERATED_FAMILY_FINAL_GATE = RH-EQUIVALENT / PR #245
+- historical required information EVENTUAL_CANONICAL_UPPER_BOUND_ON_WHOLE_CELL_RETAINED_APERTURE = RH-EQUIVALENT / PR #245
+- next research target = CANONICAL_PRIME_REMAINDER_DOMINANCE
+- required new information = RH_STRENGTH_WEIGHTED_CHEBYSHEV_REMAINDER_INFORMATION
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN

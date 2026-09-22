@@ -22,8 +22,8 @@ class Post242SyncTests(unittest.TestCase):
             "NoRegularFirstBadCertificates -> Mathlib.RiemannHypothesis",
         ):
             self.assertIn(token, note)
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 243)
-        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 243)
+        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 245)
+        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 245)
 
     def test_post239_post240_post242_route_state_is_preserved(self):
         route = self.state["active_research_route"]
@@ -46,10 +46,10 @@ class Post242SyncTests(unittest.TestCase):
             route["post242_no_regular_first_bad_certificates"],
             "OPEN_STRONG_SUFFICIENT_ENDPOINT",
         )
-        self.assertEqual(route["next_research_target"], "GENERATED_FAMILY_FINAL_GATE")
+        self.assertEqual(route["next_research_target"], "CANONICAL_PRIME_REMAINDER_DOMINANCE")
         self.assertEqual(
             route["required_new_information"],
-            "EVENTUAL_CANONICAL_UPPER_BOUND_ON_WHOLE_CELL_RETAINED_APERTURE",
+            "RH_STRENGTH_WEIGHTED_CHEBYSHEV_REMAINDER_INFORMATION",
         )
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(self.state["latest_research_evidence"]["pr"], 223)
@@ -85,14 +85,14 @@ class Post242SyncTests(unittest.TestCase):
         ):
             self.assertIn(token, reconciliation)
 
-    def test_current_headings_match_post243(self):
+    def test_current_headings_match_post245(self):
         self.assertEqual(
             (ROOT / "AUDIT.md").read_text(encoding="utf-8").splitlines()[0],
-            "# RHRC formal audit — merged theorem authority PR #243; research evidence PR #223",
+            "# RHRC formal audit — merged theorem authority PR #245; research evidence PR #223",
         )
         self.assertEqual(
             (ROOT / "FORK_NOTES.md").read_text(encoding="utf-8").splitlines()[0],
-            "# Fork notes — RHRC current state through merged PR #243",
+            "# Fork notes — RHRC current state through merged PR #245",
         )
 
 

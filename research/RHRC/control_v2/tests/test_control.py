@@ -15,14 +15,14 @@ from control_v2.state import load_research_state
 class ControlV2Tests(unittest.TestCase):
     def test_control_state_tracks_latest_theorem_anchor_without_moving_control_anchor(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 243)
+        self.assertEqual(state.anchor.pr, 245)
         self.assertEqual(
             state.anchor.merge_commit,
-            "be58e98a843ceeceb93a7729d95a3fb6bb0b60df",
+            "ad0347ef07e2c7717f88bd9d8bf7555be75ad88e",
         )
         self.assertEqual(
             state.anchor.tree,
-            "abf8ff5b429adea4adaaec28e182dc30495b1ba8",
+            "0466006ec23b3f24f6ea113b303014ae42a680dd",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -165,8 +165,8 @@ class ControlV2Tests(unittest.TestCase):
             "GENERATED_FAMILY_FINAL_GATE",
         ):
             self.assertIn(token, note)
-        self.assertEqual(control["merged_theorem_anchor"]["pr"], 243)
-        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 243)
+        self.assertEqual(control["merged_theorem_anchor"]["pr"], 245)
+        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 245)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
         self.assertEqual(control["terminal_claim"], "RH_OPEN")
 

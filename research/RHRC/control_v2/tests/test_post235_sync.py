@@ -43,29 +43,29 @@ class Post235SyncTests(unittest.TestCase):
             for section in required_sections:
                 self.assertIn(section, text)
 
-    def test_later_authority_is_post243(self):
+    def test_later_authority_is_post245(self):
         theorem = self.state["merged_theorem_anchor"]
         delta = self.state["latest_validated_theorem_delta"]
-        self.assertEqual(theorem["pr"], 243)
-        self.assertEqual(delta["pr"], 243)
+        self.assertEqual(theorem["pr"], 245)
+        self.assertEqual(delta["pr"], 245)
         self.assertEqual(
             self.state["active_research_route"]["next_research_target"],
-            "GENERATED_FAMILY_FINAL_GATE",
+            "CANONICAL_PRIME_REMAINDER_DOMINANCE",
         )
         self.assertEqual(
             self.state["active_research_route"]["required_new_information"],
-            "EVENTUAL_CANONICAL_UPPER_BOUND_ON_WHOLE_CELL_RETAINED_APERTURE",
+            "RH_STRENGTH_WEIGHTED_CHEBYSHEV_REMAINDER_INFORMATION",
         )
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
-    def test_current_headings_match_post243(self):
+    def test_current_headings_match_post245(self):
         self.assertEqual(
             (ROOT / "AUDIT.md").read_text(encoding="utf-8").splitlines()[0],
-            "# RHRC formal audit — merged theorem authority PR #243; research evidence PR #223",
+            "# RHRC formal audit — merged theorem authority PR #245; research evidence PR #223",
         )
         self.assertEqual(
             (ROOT / "FORK_NOTES.md").read_text(encoding="utf-8").splitlines()[0],
-            "# Fork notes — RHRC current state through merged PR #243",
+            "# Fork notes — RHRC current state through merged PR #245",
         )
 
 
