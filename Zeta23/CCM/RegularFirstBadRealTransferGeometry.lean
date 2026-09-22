@@ -101,14 +101,14 @@ theorem
       c.lam c.lam_neg
   have hgamma :
       star Gamma * qC = qC - J := by
-    simpa [Gamma, qC, J, shell] using
+    simpa only [Gamma, qC, J] using
       (star_crossParitySecularGamma_mul_shellInner_eq_shellInner_sub_cubicShellCoupling
         c.firstBad.L_pos c.firstBad.Nstar c.firstBad.one_le_Nstar
         (c.firstBad.predecessorNonnegative_anyParity .odd)
         c.lam c.lam_neg)
   have hbalance :
       qC - J = M4 - S * C := by
-    simpa [qC, J, M4, S, C, shell] using
+    simpa only [qC, J, M4, S, C] using
       c.evenShiftedCrossParitySourceBalance_of_even_of_not_oddBad hp hodd
   have hF :
       M4 - S * C = (c.retainedRealCompletedSourceScalar : ℂ) := by
@@ -123,7 +123,7 @@ theorem
     simp
   have hq :
       qC = (c.retainedOddShellCenter : ℂ) := by
-    simpa [qC, shell,
+    simpa only [qC,
       RegularCellMinimalNegativeEnergyCertificate.retainedOddShellCenter]
       using (inner_self_eq_norm_sq_to_K (𝕜 := ℂ) shell)
   have hcomplex :
