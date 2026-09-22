@@ -133,7 +133,7 @@ theorem
     calc
       (c.retainedRealCrossParityGamma : ℂ) *
           (c.retainedOddShellCenter : ℂ) =
-        star Gamma * qC := by rw [hGammaStar, hq]
+        star Gamma * qC := by rw [← hGammaStar, ← hq]
       _ = qC - J := hgamma
       _ = M4 - S * C := hbalance
       _ = (c.retainedRealCompletedSourceScalar : ℂ) := hF
