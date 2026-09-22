@@ -168,7 +168,7 @@ theorem
           c.retainedRealSourceScalar *
             (c.retainedOddShellCenter * c.retainedRealCrossParityGamma) :=
       lt_of_lt_of_le hB hbudget
-    nlinarith
+    simpa [mul_assoc, mul_left_comm, mul_comm] using hsf
   rcases (mul_pos_iff.mp hprod) with hpos | hneg
   · exact hpos.2
   · exfalso
