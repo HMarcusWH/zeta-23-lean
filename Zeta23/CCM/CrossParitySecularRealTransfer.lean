@@ -113,10 +113,9 @@ theorem star_crossParitySecularAlpha_eq_self
     (lam : ℝ) (hlam : lam < 0) :
     star (crossParitySecularAlpha hL N hprevOdd lam hlam) =
       crossParitySecularAlpha hL N hprevOdd lam hlam := by
+  let Gamma := crossParitySecularGamma hL N hprevOdd lam hlam
+  let Alpha := crossParitySecularAlpha hL N hprevOdd lam hlam
   let coeff : ℂ := 2 * (N : ℂ) - 1
-  let rhs : ℂ :=
-    2 * (N : ℂ) + 5 -
-      6 * crossParitySecularGamma hL N hprevOdd lam hlam
   have hcoeff : coeff ≠ 0 := by
     intro hz
     have hre := congrArg Complex.re hz
@@ -124,23 +123,27 @@ theorem star_crossParitySecularAlpha_eq_self
       exact_mod_cast hN
     simp [coeff] at hre
     linarith
-  have hlin :=
-    six_mul_crossParitySecularGamma_add_index_mul_alpha
-      hL N hN hprevOdd lam hlam
-  have halphaMul :
-      coeff * crossParitySecularAlpha hL N hprevOdd lam hlam = rhs := by
-    dsimp [coeff, rhs]
-    linear_combination hlin
-  have halpha :
-      crossParitySecularAlpha hL N hprevOdd lam hlam = rhs / coeff := by
-    apply (eq_div_iff hcoeff).2
-    rw [mul_comm]
-    exact halphaMul
-  rw [halpha, star_div₀]
-  have hgamma :=
-    star_crossParitySecularGamma_eq_self
-      hL N hN hprevOdd lam hlam
-  simp [rhs, coeff, hgamma]
+  have hlin :
+      (6 : ℂ) * Gamma + coeff * Alpha = 2 * (N : ℂ) + 5 := by
+    simpa [Gamma, Alpha, coeff] using
+      (six_mul_crossParitySecularGamma_add_index_mul_alpha
+        hL N hN hprevOdd lam hlam)
+  have hgamma :
+      star Gamma = Gamma := by
+    simpa [Gamma] using
+      (star_crossParitySecularGamma_eq_self
+        hL N hN hprevOdd lam hlam)
+  have hstar := congrArg star hlin
+  have hstarLin :
+      (6 : ℂ) * Gamma + coeff * star Alpha = 2 * (N : ℂ) + 5 := by
+    simpa [star_add, star_mul, hgamma, coeff] using hstar
+  have hmul :
+      coeff * (star Alpha - Alpha) = 0 := by
+    linear_combination hstarLin - hlin
+  have hdiff :
+      star Alpha - Alpha = 0 :=
+    (mul_eq_zero.mp hmul).resolve_left hcoeff
+  simpa [Alpha] using sub_eq_zero.mp hdiff
 
 /-- The safe cross-parity Alpha coefficient has zero imaginary part. -/
 theorem crossParitySecularAlpha_im_eq_zero
