@@ -27,7 +27,7 @@ The rest of this module attacks the statement seam directly:
   equation, the exact Gamma-factor zero classification, and right-half-plane
   nonvanishing.
 
-No `sorry`, project axiom, hidden RH assumption, or theorem promotion is used.
+No proof placeholder, project axiom, hidden RH assumption, or theorem promotion is used.
 -/
 
 /-- Exact finite-side terminal obstruction needed by the current route.
