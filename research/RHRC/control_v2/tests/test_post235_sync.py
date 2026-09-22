@@ -7,7 +7,7 @@ ROOT = RHRC.parent.parent
 
 
 class Post235SyncTests(unittest.TestCase):
-    """Historical PR #235 provenance must survive after #236 becomes authority."""
+    """Historical PR #235 provenance must survive after later authority advances."""
 
     def setUp(self):
         self.state = json.loads(
@@ -43,29 +43,29 @@ class Post235SyncTests(unittest.TestCase):
             for section in required_sections:
                 self.assertIn(section, text)
 
-    def test_later_authority_is_post236(self):
+    def test_later_authority_is_post237(self):
         theorem = self.state["merged_theorem_anchor"]
         delta = self.state["latest_validated_theorem_delta"]
-        self.assertEqual(theorem["pr"], 236)
-        self.assertEqual(delta["pr"], 236)
+        self.assertEqual(theorem["pr"], 237)
+        self.assertEqual(delta["pr"], 237)
         self.assertEqual(
             self.state["active_research_route"]["next_research_target"],
-            "RETAINED_REAL_COMPLETED_SOURCE_CORRIDOR",
+            "CANONICAL_REAL_NEGATIVE_SHIFT_TRANSFER_GEOMETRY",
         )
         self.assertEqual(
             self.state["active_research_route"]["required_new_information"],
-            "REALITY_OF_RETAINED_M4_AND_SCALAR_COMPOSITION",
+            "CONJUGATION_COMPATIBLE_SHIFTED_RESOLVENT_AND_REAL_TRANSFER_COEFFICIENTS",
         )
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
-    def test_current_headings_match_post236(self):
+    def test_current_headings_match_post237(self):
         self.assertEqual(
             (ROOT / "AUDIT.md").read_text(encoding="utf-8").splitlines()[0],
-            "# RHRC formal audit — merged theorem authority PR #236; research evidence PR #223",
+            "# RHRC formal audit — merged theorem authority PR #237; research evidence PR #223",
         )
         self.assertEqual(
             (ROOT / "FORK_NOTES.md").read_text(encoding="utf-8").splitlines()[0],
-            "# Fork notes — RHRC current state through merged PR #236",
+            "# Fork notes — RHRC current state through merged PR #237",
         )
 
 
