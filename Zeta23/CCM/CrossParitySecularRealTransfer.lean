@@ -135,7 +135,9 @@ theorem star_crossParitySecularAlpha_eq_self
         hL N hN hprevOdd lam hlam)
   have hstar := congrArg star hlin
   have hstarLin :
-      (6 : ℂ) * Gamma + coeff * star Alpha = 2 * (N : ℂ) + 5 := by
+      Gamma * (6 : ℂ) +
+          star Alpha * ((N : ℂ) * 2 - 1) =
+        (N : ℂ) * 2 + 5 := by
     simpa [star_add, star_mul, hgamma, coeff] using hstar
   have hmul :
       coeff * (star Alpha - Alpha) = 0 := by
