@@ -1,4 +1,5 @@
 import Zeta23.CCM.CrossParitySecularTransferCore
+import Zeta23.CCM.CrossParitySecularRealTransfer
 
 noncomputable section
 
@@ -16,7 +17,9 @@ The implementation is split into four compiler-facing layers:
 * `CrossParityCorrectionFunctionalRiesz` — generic Riesz representation of the
   safe predecessor-correction functional;
 * `CrossParitySecularTransferCore` — scalar transfer, overlap representation,
-  and source-explicit specialization.
+  and source-explicit specialization;
+* `CrossParitySecularRealTransfer` — canonical safe-shift reality of Gamma
+  and Alpha.
 
 The mathematical interface is unchanged.  D remains algebraic only; no
 unitary/isometric transport, coefficient sign/nonzeroness, branch exclusion,
@@ -36,3 +39,7 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.crossParitySecularGamma_eq_trial_cubic_overlap_div
 #print axioms Zeta23.CCM.cubicSecularScalar_crossParity_source_transfer
 #print axioms Zeta23.CCM.cubicSecularScalar_odd_eq_overlap_mul_source_of_even_root
+#print axioms Zeta23.CCM.star_crossParitySecularGamma_eq_self
+#print axioms Zeta23.CCM.crossParitySecularGamma_im_eq_zero
+#print axioms Zeta23.CCM.star_crossParitySecularAlpha_eq_self
+#print axioms Zeta23.CCM.crossParitySecularAlpha_im_eq_zero
