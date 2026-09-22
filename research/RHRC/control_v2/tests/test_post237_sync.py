@@ -22,8 +22,8 @@ class Post237SyncTests(unittest.TestCase):
             "RETAINED_REAL_COMPLETED_SOURCE_CORRIDOR",
         ):
             self.assertIn(token, note)
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 242)
-        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 242)
+        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 243)
+        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 243)
 
     def test_post237_route_and_claim_firewall(self):
         route = self.state["active_research_route"]
@@ -43,7 +43,7 @@ class Post237SyncTests(unittest.TestCase):
         )
         self.assertEqual(
             route["next_research_target"],
-            "OFFLINE_GENERATED_WHOLE_CELL_RETAINED_FAMILY",
+            "GENERATED_FAMILY_FINAL_GATE",
         )
         self.assertEqual(route["active_subobligation"], "OBS-059I")
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
@@ -82,14 +82,14 @@ class Post237SyncTests(unittest.TestCase):
         self.assertIn("mixed-pairing reality from canonical conjugation symmetry", dead)
         self.assertIn("Rsharp <= q^2", dead)
 
-    def test_current_headings_match_post242(self):
+    def test_current_headings_match_post243(self):
         self.assertEqual(
             (ROOT / "AUDIT.md").read_text(encoding="utf-8").splitlines()[0],
-            "# RHRC formal audit — merged theorem authority PR #242; research evidence PR #223",
+            "# RHRC formal audit — merged theorem authority PR #243; research evidence PR #223",
         )
         self.assertEqual(
             (ROOT / "FORK_NOTES.md").read_text(encoding="utf-8").splitlines()[0],
-            "# Fork notes — RHRC current state through merged PR #242",
+            "# Fork notes — RHRC current state through merged PR #243",
         )
 
 
