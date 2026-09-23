@@ -56,16 +56,20 @@ private def emitEdge (source target : Name) (channel : String) : CommandElabM Un
   liftIO <| IO.println s!"RHKG_DEP_EDGE\t{source}\t{target}\t{channel}"
 
 private partial def visit
-    (env : Environment) (pending : List Name) (visited : NameHashSet) : CommandElabM Unit := do
+    (env : Environment) (pending : List Name)
+    (visited emitted : NameHashSet) : CommandElabM Unit := do
   match pending with
   | [] => return
   | decl :: rest =>
       if visited.contains decl then
-        visit env rest visited
+        visit env rest visited emitted
       else
         let some info := env.find? decl
           | throwError "RHKG dependency export: unknown declaration {decl}"
-        emitDeclaration env decl
+        let mut emitted := emitted
+        if !(emitted.contains decl) then
+          emitDeclaration env decl
+          emitted := emitted.insert decl
         let typeDeps := info.type.getUsedConstants
         let valueDeps := match info.value? (allowOpaque := true) with
           | some value => value.getUsedConstants
@@ -76,21 +80,27 @@ private partial def visit
         -- Structural membership self-links are filtered below because they are
         -- declaration-family bookkeeping rather than constant use.
         for dep in typeDeps do
-          emitDeclaration env dep
+          if !(emitted.contains dep) then
+            emitDeclaration env dep
+            emitted := emitted.insert dep
           emitEdge decl dep "TYPE"
         for dep in valueDeps do
-          emitDeclaration env dep
+          if !(emitted.contains dep) then
+            emitDeclaration env dep
+            emitted := emitted.insert dep
           emitEdge decl dep "VALUE"
         for dep in structureDeps do
           if dep != decl then
-            emitDeclaration env dep
+            if !(emitted.contains dep) then
+              emitDeclaration env dep
+              emitted := emitted.insert dep
             emitEdge decl dep "STRUCTURE"
 
         let mut next := rest
         for dep in typeDeps ++ valueDeps ++ structureDeps do
           if isProjectLocalModule (moduleOf? env dep) then
             next := dep :: next
-        visit env next (visited.insert decl)
+        visit env next (visited.insert decl) emitted
 
 /--
 Emit the local Zeta23 dependency closure rooted at the supplied declarations.
@@ -98,6 +108,6 @@ External constants are emitted as boundary nodes but are not recursively expande
 -/
 public def exportDependencies (roots : Array Name) : CommandElabM Unit := do
   let env ← getEnv
-  visit env roots.toList {}
+  visit env roots.toList {} {}
 
 end Zeta23.RHRC
