@@ -69,6 +69,7 @@ theorem globalBottom_oddStrict_gamma_ne_zero
     simpa [alpha, Gamma, Fplus, S] using hbalance
   have hF : Fplus ≠ 0 := by
     simpa [Fplus] using hFne
+  refine ⟨hneg, ?_⟩
   intro hGammaRaw
   have hGamma : Gamma = 0 := by
     simpa [Gamma] using hGammaRaw
@@ -124,6 +125,7 @@ theorem globalBottom_oddStrict_alpha_eq_zero_iff_source_eq_zero
   have hf : hnegF = hneg := Subsingleton.elim _ _
   subst hnegGamma
   subst hnegF
+  refine ⟨hneg, ?_⟩
   dsimp
   constructor
   · intro hAlpha
