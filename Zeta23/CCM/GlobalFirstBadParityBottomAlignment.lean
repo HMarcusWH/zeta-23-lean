@@ -165,7 +165,7 @@ theorem
     have hbadSucc :
         ParityBad .even fb.L (fb.Nstar + 1) :=
       parityBad_of_negative_eigenmode hlam hvne hveig
-    rw [fb.succ_eq]
+    rw [← fb.succ_eq]
     exact hbadSucc
   let c :=
     b.toBiRegularFirstBad.reselectParity .even hbadEven
@@ -186,7 +186,7 @@ theorem
     rfl
   · rw [heq]
     rfl
-  · rw [hlamEq, heq]
+  · rw [hlamEq]
     rfl
 
 /-- Odd-attained global bottom: symmetric re-selection to the odd parity. -/
