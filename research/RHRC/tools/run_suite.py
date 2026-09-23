@@ -34,6 +34,7 @@ def main() -> int:
     run([sys.executable, str(ROOT / "tools" / "lean_imports.py")])
     run([sys.executable, str(ROOT / "tools" / "arithmetic_firewall_lint.py")])
     run([sys.executable, str(ROOT / "tools" / "million_dollar_firewall_lint.py")])
+    run([sys.executable, "-m", "unittest", "discover", "-s", str(ROOT / "graph" / "tests"), "-p", "test_*.py", "-v"])
     if compiler_receipt_bootstrap_pending():
         print(
             "RHKG graph checks: DEFERRED (Phase 2B compiler receipt bootstrap pending)",

@@ -77,8 +77,16 @@ authority:
   dependency closures for research queries.
 
 `IMPORTS` remains module availability and is not treated as `USES_CONSTANT`.
-Dependency-only declarations cannot receive `PROVES` edges. The graph remains a
-derived integration layer and **RH remains OPEN**.
+Dependency-only declarations cannot receive `PROVES` edges. Genuine
+expression-level self dependencies are retained when the compiler reports them;
+structural self-membership bookkeeping is not promoted into a usage edge.
+
+A materialized Phase 2B state requires the checked-in compiler receipt to match a
+fresh extraction from the pinned Lean environment and all generated graph products
+to be byte-current. The bootstrap-pending marker is transitional only and is not a
+valid steady state.
+
+The graph remains a derived integration layer and **RH remains OPEN**.
 
 ## Commands
 

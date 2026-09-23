@@ -86,6 +86,8 @@ def parse_output(stdout: str, roots: list[dict]) -> list[dict]:
             if len(parts) != 5:
                 fail(f"malformed declaration line: {raw!r}")
             _, name, module_raw, kind, internal_raw = parts
+            if internal_raw not in {"0", "1"}:
+                fail(f"invalid private/internal flag for {name}: {internal_raw!r}")
             module = None if module_raw == "-" else module_raw
             row = {
                 "declaration": name,
@@ -104,8 +106,6 @@ def parse_output(stdout: str, roots: list[dict]) -> list[dict]:
             _, source, target, channel = parts
             if channel not in {"TYPE", "VALUE", "STRUCTURE"}:
                 fail(f"unknown dependency channel {channel!r}")
-            if source == target:
-                fail(f"self dependency emitted for {source}")
             edge_channels.setdefault((source, target), set()).add(channel)
 
     root_by_theorem = {row["theorem"]: row for row in roots}
@@ -165,6 +165,14 @@ def parse_output(stdout: str, roots: list[dict]) -> list[dict]:
         fail("registered-root declaration set drift")
     if {row["registered_claim_id"] for row in root_rows} != {row["id"] for row in roots}:
         fail("registered-root claim-id set drift")
+    root_claim_map = {
+        row["declaration"]: row["registered_claim_id"] for row in root_rows
+    }
+    expected_claim_map = {
+        row["theorem"]: row["id"] for row in roots
+    }
+    if root_claim_map != expected_claim_map:
+        fail("registered-root theorem/claim mapping drift")
     return result
 
 

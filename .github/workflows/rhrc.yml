@@ -34,6 +34,13 @@ jobs:
               exit 1
             fi
           fi
+      - name: Upload RHKG generated bootstrap products
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rhkg-generated-products
+          path: research/RHRC/graph/generated
+          if-no-files-found: error
       - name: RHRC claim and regression suite
         run: python research/RHRC/tools/run_suite.py
       - name: Control v2 real-history smoke run
@@ -60,6 +67,42 @@ jobs:
           assert all(r['search_paths'] for r in p['retro_receipts'])
           print('Control v2 smoke: PASS')
           PY
+
+
+  rhkg-compiler-receipt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build complete registered theorem authority surface
+        run: lake build Zeta23.RHRC.RegisteredClaimBindings
+      - name: Validate complete registered theorem bindings
+        run: python3 research/RHRC/tools/registered_theorem_binding_lint.py
+      - name: Build RHKG compiler dependency exporter
+        run: lake build Zeta23.RHRC.DeclarationDependencyExport
+      - name: Materialize RHKG compiler dependency receipt
+        env:
+          RHKG_DEP_BOOTSTRAP_LOG: "1"
+        run: |
+          python3 research/RHRC/tools/lean_dependency_extract.py --write
+          if [ -n "$(git status --porcelain -- research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl)" ]; then
+            echo "RHKG compiler dependency receipt is stale or bootstrap-pending; exact artifact uploaded below."
+            git status --short -- research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl
+            exit 1
+          fi
+      - name: Upload RHKG compiler dependency receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rhkg-compiler-receipt
+          path: research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl
+          if-no-files-found: error
 
   r003-normalization-audit:
     runs-on: ubuntu-latest
@@ -331,18 +374,6 @@ jobs:
         run: lake build Zeta23.RHRC.RegisteredClaimBindings
       - name: Validate complete registered theorem bindings
         run: python3 research/RHRC/tools/registered_theorem_binding_lint.py
-      - name: Build RHKG compiler dependency exporter
-        run: lake build Zeta23.RHRC.DeclarationDependencyExport
-      - name: RHKG compiler dependency receipt gate
-        env:
-          RHKG_DEP_BOOTSTRAP_LOG: "1"
-        run: |
-          python3 research/RHRC/tools/lean_dependency_extract.py --write
-          if [ -n "$(git status --porcelain -- research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl)" ]; then
-            echo "RHKG compiler dependency receipt is stale or bootstrap-pending; payload emitted above."
-            git status --short -- research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl
-            exit 1
-          fi
       - name: Build exceptional-zero foundation
         run: lake build Zeta23.ExceptionalZero
       - name: "Build PR #247 explicit terminal target"
