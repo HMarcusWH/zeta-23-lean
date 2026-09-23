@@ -290,16 +290,16 @@ jobs:
       - name: Build exceptional-zero foundation
         run: lake build Zeta23.ExceptionalZero
       - name: "Build PR #247 explicit terminal target"
-        run: lake env lean Zeta23/ExceptionalZero/GlobalParityBottomTerminalTarget.lean
+        run: lake build Zeta23.ExceptionalZero.GlobalParityBottomTerminalTarget
       - name: "Build PR #247 arithmetic-equivalence audit"
-        run: lake env lean Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean
+        run: lake build Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit
       - name: "Build PR #247 audit-only conditional RH seam"
-        run: lake env lean Zeta23/ExceptionalZero/GlobalParityBottomConditionalRH.lean
+        run: lake build Zeta23.ExceptionalZero.GlobalParityBottomConditionalRH
       - name: Validate future premise-free RH closure exact type
         run: |
           if [ -f Zeta23/ExceptionalZero/GlobalParityBottomRHClosure.lean ]; then
             test -f Zeta23/ExceptionalZero/GlobalParityBottomExactTypeAudit.lean
-            lake env lean Zeta23/ExceptionalZero/GlobalParityBottomExactTypeAudit.lean
+            lake build Zeta23.ExceptionalZero.GlobalParityBottomExactTypeAudit
           else
             echo "PR #247 premise-free RH closure absent: RH remains OPEN"
           fi
