@@ -46,23 +46,25 @@ theorem
           centeredMoment (c.firstBad.Nstar + 1) 4
             (evenBoundaryFlatRawCoefficients
               (c.firstBad.Nstar + 1) c.evenShiftedTrial)) := by
-  have hvne :
-      c.evenShiftedTrial ≠ 0 := by
-    simpa [RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial] using
-      cubicSecularTrialVector_ne_zero
-        .even c.firstBad.L_pos c.firstBad.Nstar c.firstBad.one_le_Nstar
-        (c.firstBad.predecessorNonnegative_anyParity .even)
-        c.lam c.lam_neg
-  have hveig := c.evenShiftedTrial_eigenmode_of_even hp
+  obtain ⟨hvne, hveig⟩ :=
+    c.evenShiftedTrial_eigenmode_of_even hp
   have hveigGround :
       parityCompressedCanonical .even c.firstBad.L
           (c.firstBad.Nstar + 1) c.evenShiftedTrial =
         (parityRayleighBottom .even c.firstBad.L
           (c.firstBad.Nstar + 1) : ℂ) • c.evenShiftedTrial := by
-    simpa [hground] using hveig
+    change
+      evenCompressedCanonical c.firstBad.L
+          (c.firstBad.Nstar + 1) c.evenShiftedTrial =
+        (parityRayleighBottom .even c.firstBad.L
+          (c.firstBad.Nstar + 1) : ℂ) • c.evenShiftedTrial
+    rw [← hground]
+    exact hveig
+  have hK : 2 ≤ c.firstBad.Nstar + 1 := by
+    simpa using Nat.succ_le_succ c.firstBad.one_le_Nstar
   exact
     re_star_source_mul_momentFour_pos_of_evenGround_strict
-      c.firstBad.L_pos (c.firstBad.Nstar + 1) (by omega)
+      c.firstBad.L_pos (c.firstBad.Nstar + 1) hK
       c.evenShiftedTrial hvne hveigGround hstrict
 
 theorem
