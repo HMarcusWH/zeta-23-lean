@@ -82,7 +82,7 @@ theorem exists_evenGround_source_gap_bound_of_strict
     intro hDv
     apply hvne
     apply euclideanEvenToOddIndexLinearMap_injective (N + 1)
-    simpa [Dv] using hDv
+    exact hDv.trans (map_zero (euclideanEvenToOddIndexLinearMap (N + 1))).symm
   have hshift :=
     parityRayleighBottom_gap_mul_norm_sq_le_shifted
       .odd L (N + 1)
@@ -223,7 +223,7 @@ theorem exists_pulledBackOddGround_source_gap_bound_of_strict
     intro hv
     apply hwne
     apply E.symm.injective
-    simpa [v] using hv
+    exact hv.trans (map_zero E.symm).symm
   have hshift :=
     parityRayleighBottom_gap_mul_norm_sq_le_shifted
       .even L (N + 1)
