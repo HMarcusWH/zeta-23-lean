@@ -1,7 +1,7 @@
-# RHKG Phase-1 Graph Contract
+# RHKG Phase-2A Graph Contract
 
-**Version:** 0.1  
-**Scope:** repository census, classification, Lean module imports, claim/route mirrors  
+**Version:** 0.2  
+**Scope:** Phase-1 repository census/import graph plus exact promoted R003 declaration/claim bindings  
 **Authority:** derived only; subordinate to the RHKG Constitution and existing RHRC sources
 
 ## 1. Stable IDs
@@ -13,17 +13,19 @@ Phase 1 uses:
 - `rh:module:<Lean module name>`
 - `rh:claim:<CLAIM_REGISTRY id>`
 - `rh:route:<ROUTE_REGISTRY route_id>`
+- `rh:decl:<fully-qualified Lean declaration name>`
 - `rh:rel:<sha256(kind|source|target)>`
 
 Concept identity is separate from Git revision identity. Subject `RepoFile`
 records carry their current Git blob hash. Generated RHKG products deliberately
 do not carry their own blob hash, preventing recursive self-hashing.
 
-## 2. Phase-1 node types
+## 2. Node types through Phase 2A
 
 - `Repository`
 - `RepoFile`
 - `LeanModule`
+- `LeanDeclaration`
 - `RegisteredClaim`
 - `Route`
 - `ControlObject`
@@ -38,9 +40,9 @@ carry no additional scientific interpretation.
 External Lean imports are represented as `LeanModule` records with
 `repository_scope = EXTERNAL`; they are not treated as local formal authority.
 
-## 3. Phase-1 relations
+## 3. Relations through Phase 2A
 
-Only structurally exact relations are emitted:
+Phase 1 structural relations remain:
 
 - `CONTAINS`
 - `LOCATED_AT`
@@ -51,15 +53,31 @@ Only structurally exact relations are emitted:
 - `GOVERNED_BY`
 - `GENERATED_BY`
 
-Phase 1 MUST NOT emit `PROVES`, `USES_CONSTANT`, mathematical
-`DEPENDS_ON`, `KILLS_ROUTE`, `REOPENS`, or scientific supersession edges.
+Phase 2A additionally emits exactly:
+
+- `LeanModule DECLARES LeanDeclaration`
+- `LeanDeclaration PROVES RegisteredClaim`
+
+The Phase-2A declaration population is restricted to the exact reviewed
+`R003_PROMOTED_BINDINGS.json` surface. It does not discover or promote new
+claims.
+
+Phase 2A MUST NOT emit `USES_CONSTANT`, mathematical `DEPENDS_ON`,
+`KILLS_ROUTE`, `REOPENS`, or scientific supersession edges.
 
 ## 4. Provenance
 
 - file/module location and local imports: `GIT_EXACT`
 - claim/route mirrors and memberships: `REGISTRY_EXACT`
+- Phase-2A `DECLARES` and `PROVES`: `REGISTRY_EXACT`, derived only from
+  the reviewed promoted-binding manifest plus exact claim-registry source/theorem fields.
 
-No text-mined or LLM-derived relation is emitted by Phase 1.
+The explicit `ClaimBindings.lean` compiler surface independently checks that
+every promoted theorem name exists and exposes its axiom printout. Phase 2A does
+not yet claim elaborated declaration dependency provenance; that belongs to the
+later `USES_CONSTANT` phase.
+
+No text-mined or LLM-derived relation is emitted through Phase 2A.
 
 ## 5. Import semantics
 
@@ -97,6 +115,9 @@ all local import targets     -> resolvable local module
 all other imports            -> explicit EXTERNAL LeanModule
 
 generated regeneration       = byte-deterministic
+promoted declaration set     = R003_PROMOTED_BINDINGS exact
+DECLARES projection          = exact
+PROVES projection            = exact
 terminal claim               = RH_OPEN
 graph theorem promotion      = false
 ```
@@ -136,5 +157,27 @@ access.
 ## 10. Claim firewall
 
 RHKG reports repository structure. It does not create theorem authority.
+
+**RH remains OPEN.**
+
+
+## 11. Phase-2A promoted declaration authority
+
+`R003_PROMOTED_BINDINGS.json` is the sole Phase-2A binding authority.
+
+For every binding, RHKG requires:
+
+- an existing `PROVED_UNCONDITIONAL` R003 registered claim;
+- exact theorem-name equality between the binding manifest and claim registry;
+- an indexed local Lean source from the claim registry;
+- one `LeanDeclaration` node;
+- one exact `DECLARES` edge from that source module;
+- one exact `PROVES` edge to the registered claim.
+
+The generated `THEOREM_CLAIM_MAP.json` is a derived view of this authority.
+Claims outside this binding surface are reported as unlinked, never as unproved.
+
+Repository-wide declaration discovery and declaration-level
+`USES_CONSTANT` edges remain deferred.
 
 **RH remains OPEN.**
