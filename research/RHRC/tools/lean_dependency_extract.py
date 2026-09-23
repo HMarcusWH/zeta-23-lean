@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 import argparse
-import base64
 import json
 import os
 import subprocess
 import tempfile
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -13,7 +13,6 @@ REPO = ROOT.parents[1]
 MANIFEST = ROOT / "REGISTERED_THEOREM_BINDINGS.json"
 RECEIPT = ROOT / "graph" / "compiler" / "REGISTERED_DECLARATION_DEPENDENCIES.jsonl"
 SCHEMA_VERSION = "RHKG-phase2b-compiler-dependencies-0.4"
-BOOTSTRAP_PREFIX = "RHKG_DEP_BOOTSTRAP"
 
 
 def fail(message: str) -> None:
@@ -78,7 +77,11 @@ def is_local_module(module: str | None) -> bool:
 
 def parse_output(stdout: str, roots: list[dict]) -> list[dict]:
     declarations: dict[str, dict] = {}
-    edge_channels: dict[tuple[str, str], set[str]] = {}
+    # Index dependency channels by source while parsing. The previous
+    # representation stored one global edge map and rescanned every edge for
+    # every declaration when rendering rows, making receipt construction
+    # O(declarations * edges). This adjacency index makes it O(edges).
+    edge_channels_by_source: dict[str, dict[str, set[str]]] = {}
 
     for raw in stdout.splitlines():
         if raw.startswith("RHKG_DEP_DECL\t"):
@@ -106,18 +109,21 @@ def parse_output(stdout: str, roots: list[dict]) -> list[dict]:
             _, source, target, channel = parts
             if channel not in {"TYPE", "VALUE", "STRUCTURE"}:
                 fail(f"unknown dependency channel {channel!r}")
-            edge_channels.setdefault((source, target), set()).add(channel)
+            edge_channels_by_source.setdefault(source, {}).setdefault(
+                target, set()
+            ).add(channel)
 
     root_by_theorem = {row["theorem"]: row for row in roots}
     missing_roots = sorted(set(root_by_theorem) - set(declarations))
     if missing_roots:
         fail(f"compiler output omitted registered roots: {missing_roots}")
 
-    for source, target in edge_channels:
+    for source, targets in edge_channels_by_source.items():
         if source not in declarations:
             fail(f"dependency source lacks declaration metadata: {source}")
-        if target not in declarations:
-            fail(f"dependency target lacks declaration metadata: {target}")
+        for target in targets:
+            if target not in declarations:
+                fail(f"dependency target lacks declaration metadata: {target}")
 
     result: list[dict] = []
     for name in sorted(declarations):
@@ -134,9 +140,7 @@ def parse_output(stdout: str, roots: list[dict]) -> list[dict]:
             claim_id = None
 
         deps = []
-        for (source, target), channels in sorted(edge_channels.items()):
-            if source != name:
-                continue
+        for target, channels in sorted(edge_channels_by_source.get(name, {}).items()):
             deps.append(
                 {
                     "constant": target,
@@ -183,13 +187,6 @@ def render_receipt(rows: list[dict]) -> bytes:
     ).encode("utf-8")
 
 
-def emit_bootstrap(data: bytes) -> None:
-    encoded = base64.b64encode(data).decode("ascii")
-    for index in range(0, len(encoded), 3000):
-        chunk = encoded[index:index + 3000]
-        print(f"{BOOTSTRAP_PREFIX}|{RECEIPT.relative_to(REPO)}|{index // 3000:06d}|{chunk}")
-
-
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Extract/check compiler-derived Lean declaration dependencies"
@@ -200,13 +197,33 @@ def main() -> int:
     args = parser.parse_args()
 
     roots = load_roots()
-    rows = parse_output(run_lean(roots), roots)
+    print(
+        f"lean_dependency_extract: extracting from {len(roots)} registered roots",
+        flush=True,
+    )
+    started = time.monotonic()
+    stdout = run_lean(roots)
+    lean_elapsed = time.monotonic() - started
+    print(
+        "lean_dependency_extract: Lean exporter completed "
+        f"in {lean_elapsed:.2f}s ({stdout.count(chr(10))} protocol lines)",
+        flush=True,
+    )
+
+    parse_started = time.monotonic()
+    rows = parse_output(stdout, roots)
+    parse_elapsed = time.monotonic() - parse_started
     rendered = render_receipt(rows)
+    dependency_count = sum(len(row["dependencies"]) for row in rows)
+    print(
+        "lean_dependency_extract: parsed "
+        f"{len(rows)} declarations / {dependency_count} dependencies "
+        f"in {parse_elapsed:.2f}s; receipt={len(rendered)} bytes",
+        flush=True,
+    )
     current = RECEIPT.read_bytes() if RECEIPT.exists() else None
 
     if args.write:
-        if current != rendered and os.environ.get("RHKG_DEP_BOOTSTRAP_LOG") == "1":
-            emit_bootstrap(rendered)
         RECEIPT.parent.mkdir(parents=True, exist_ok=True)
         RECEIPT.write_bytes(rendered)
         print(
@@ -216,8 +233,6 @@ def main() -> int:
         return 0
 
     if current != rendered:
-        if os.environ.get("RHKG_DEP_BOOTSTRAP_LOG") == "1":
-            emit_bootstrap(rendered)
         fail("checked-in compiler dependency receipt is stale or missing")
 
     print(
