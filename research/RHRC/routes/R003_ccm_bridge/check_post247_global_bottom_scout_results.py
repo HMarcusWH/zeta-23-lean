@@ -9,20 +9,48 @@ from __future__ import annotations
 
 import math
 
+import numpy as np
+
 from post247_global_bottom_scout import classify_bottoms, run as run_ground
 from post247_global_bottom_arithmetic_scout import run as run_arithmetic
 
 
+def _synthetic_bottom(A: np.ndarray) -> float:
+    A = np.asarray(A, dtype=float)
+    assert np.allclose(A, A.T)
+    return float(np.linalg.eigvalsh(A)[0])
+
+
 def _assert_synthetic_controls() -> None:
     controls = [
-        ((-2.0, 1.0), ("EVEN_BELOW_ODD", True, "EVEN_STRICT")),
-        ((1.0, -2.0), ("ODD_BELOW_EVEN", True, "ODD_STRICT")),
-        ((-2.0, -2.0), ("TIE", True, "TIE")),
-        ((1.0, 2.0), ("EVEN_BELOW_ODD", False, "NONE")),
-        ((2.0, 1.0), ("ODD_BELOW_EVEN", False, "NONE")),
-        ((1.0, 1.0), ("TIE", False, "NONE")),
+        (
+            (np.diag([-2.0, 3.0]), np.diag([1.0, 4.0])),
+            ("EVEN_BELOW_ODD", True, "EVEN_STRICT"),
+        ),
+        (
+            (np.diag([1.0, 3.0]), np.diag([-2.0, 4.0])),
+            ("ODD_BELOW_EVEN", True, "ODD_STRICT"),
+        ),
+        (
+            (np.diag([-2.0, 4.0]), np.diag([-2.0, 7.0])),
+            ("TIE", True, "TIE"),
+        ),
+        (
+            (np.diag([1.0, 3.0]), np.diag([2.0, 4.0])),
+            ("EVEN_BELOW_ODD", False, "NONE"),
+        ),
+        (
+            (np.diag([2.0, 4.0]), np.diag([1.0, 3.0])),
+            ("ODD_BELOW_EVEN", False, "NONE"),
+        ),
+        (
+            (np.diag([1.0, 4.0]), np.diag([1.0, 7.0])),
+            ("TIE", False, "NONE"),
+        ),
     ]
-    for (le, lo), expected in controls:
+    for (even_matrix, odd_matrix), expected in controls:
+        le = _synthetic_bottom(even_matrix)
+        lo = _synthetic_bottom(odd_matrix)
         got = classify_bottoms(le, lo)
         assert (
             got["ordering"],
