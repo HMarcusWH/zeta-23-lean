@@ -943,6 +943,120 @@
         "Zeta23.CCM.ParitySourceMomentFourRigidity",
         "Zeta23.CCM.CrossParityQuotientTransport"
       ]
+    },
+    {
+      "path": "Zeta23/CCM/CubicSecularMetric.lean",
+      "blob_sha": "1be9ec4d58d48a50dc45b0fa39a531e5e220cfe1",
+      "imports": [
+        "Zeta23.CCM.CubicExplicitSecular",
+        "Mathlib.Analysis.InnerProductSpace.Symmetric"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CubicSecularRealGeometry.lean",
+      "blob_sha": "79c0e201c28ae8bfdf673685f60c98be72821812",
+      "imports": [
+        "Zeta23.CCM.CanonicalShiftedConjugationGeometry",
+        "Zeta23.CCM.CubicSecularEquation"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CubicSecularRealPhase.lean",
+      "blob_sha": "19c535d9c483a8e3fb48b544e1884f16a3045ab1",
+      "imports": [
+        "Zeta23.CCM.CubicSecularRealGeometry"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CubicShellIncidence.lean",
+      "blob_sha": "6df04977890635c5671eeb475ea172d46a70b7b2",
+      "imports": [
+        "Zeta23.CCM.FirstBadShiftedSchur",
+        "Zeta23.CCM.ParityCubicFactorization",
+        "Mathlib.Algebra.Order.BigOperators.Group.Finset"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CutoffFreeMatrix.lean",
+      "blob_sha": "48023a2694ef2892191f615bc42fdbc1a2ecc393",
+      "imports": [
+        "Zeta23.CCM.DictionaryZeroSideBridge"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryAnalysis.lean",
+      "blob_sha": "b3f26933587741d01b6fdde5f1dfba44399dbbdd",
+      "imports": [
+        "Zeta23.CCM.FiniteDictionary",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchBridge.lean",
+      "blob_sha": "8267b4a27e95f86d8d863d730edb11c54a04d5e8",
+      "imports": [
+        "Zeta23.CCM.DictionaryArchPhysical",
+        "Zeta23.GammaFacts.Mu",
+        "Mathlib.Analysis.SpecialFunctions.ImproperIntegrals",
+        "Mathlib.MeasureTheory.Integral.DominatedConvergence",
+        "Mathlib.Analysis.SpecificLimits.Basic"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchCompletion.lean",
+      "blob_sha": "bf3a394b27b4c975796c1014e1fe6b6f3bb3a6bb",
+      "imports": [
+        "Zeta23.CCM.DictionaryArchLaplace"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchDensityBridge.lean",
+      "blob_sha": "9995c6c9a21a8830f8078034b2deea321825a041",
+      "imports": [
+        "Zeta23.CCM.DictionaryArchSourceMuIntegrability",
+        "Zeta23.CCM.DictionaryArchCompletion"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchDiagonal.lean",
+      "blob_sha": "69cd6e05b8e0ee36c7427e3fe853c1d29165d367",
+      "imports": [
+        "Zeta23.CCM.DictionaryArchSourceBridge",
+        "Mathlib.Analysis.SpecialFunctions.Gamma.Beta",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.ArctanDeriv",
+        "Mathlib.MeasureTheory.Integral.IntegralEqImproper"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchDiagonalEvaluation.lean",
+      "blob_sha": "8e65d6287eec24ea300949c1d46e97506700968b",
+      "imports": [
+        "Zeta23.CCM.DictionaryArchDiagonalPhysical"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchDiagonalPhysical.lean",
+      "blob_sha": "68b6308582da357b5981ae1884130d18e52a1b5f",
+      "imports": [
+        "Zeta23.CCM.DictionaryArchDiagonal"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchEntries.lean",
+      "blob_sha": "9033df069d12e735a8c26b73925a6a9c80f26407",
+      "imports": [
+        "Zeta23.CCM.DictionaryArchOffDiagonal",
+        "Zeta23.CCM.DictionaryArchDiagonalEvaluation"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchFourier.lean",
+      "blob_sha": "0ca1435b1b25275d06f88be68847f98f5a7a0cd8",
+      "imports": [
+        "Zeta23.CCM.DictionaryArchCompletion",
+        "Zeta23.CCM.DictionaryTentDecay",
+        "Mathlib.Analysis.SpecialFunctions.ImproperIntegrals"
+      ]
     }
   ],
   "all_lean": [
