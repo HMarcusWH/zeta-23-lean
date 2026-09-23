@@ -13,8 +13,11 @@ Phase 1 provides:
 
 - complete tracked-file census and deterministic file classification;
 - trust-zone classification independent of file class;
+- mechanical nodes for control objects, historical deltas, research executables,
+  fixtures, and workflow definitions;
 - one local `LeanModule` node for every tracked Lean source;
-- import edges parsed with the same import regex used by the arithmetic firewall;
+- import edges parsed by the shared comment-aware parser also used by the
+  arithmetic firewall;
 - explicit external-module targets for non-local Lean imports;
 - exact normalized mirrors of `CLAIM_REGISTRY.json` and `ROUTE_REGISTRY.json`;
 - entrypoint reachability views;
