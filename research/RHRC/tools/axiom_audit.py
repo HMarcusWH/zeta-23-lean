@@ -21,6 +21,29 @@ NO_AXIOMS = re.compile(r"'([^']+)' does not depend on any axioms")
 DEFAULT_MODULES = (
     "Zeta23/CCM/CanonicalPrimeRemainder.lean",
     "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean",
+    # PR #247 — Million Dollar PR promoted stack.
+    "Zeta23/CCM/GlobalParityBottomSpectrum.lean",
+    "Zeta23/CCM/GlobalParityBottomSecular.lean",
+    "Zeta23/CCM/GlobalParityBottomCrossParity.lean",
+    "Zeta23/CCM/GlobalParityBottomIntertwining.lean",
+    "Zeta23/CCM/GlobalParityBottomSourceMoment.lean",
+    "Zeta23/CCM/GlobalFirstBadParityBottom.lean",
+    "Zeta23/CCM/GlobalFirstBadParityBottomAlignment.lean",
+    "Zeta23/CCM/GlobalParityBottomRetainedGeometry.lean",
+    "Zeta23/CCM/GlobalParityBottomEvenStrictNormalForm.lean",
+    "Zeta23/CCM/GlobalParityBottomOddStrictNormalForm.lean",
+    "Zeta23/CCM/GlobalParityBottomReverseGroundTransfer.lean",
+    "Zeta23/CCM/GlobalParityBottomTieNormalForm.lean",
+    "Zeta23/CCM/GlobalParityBottomResidualState.lean",
+    "Zeta23/CCM/GlobalParityBottomBranchPackage.lean",
+    "Zeta23/CCM/GlobalParityBottomGroundTrial.lean",
+    "Zeta23/CCM/GlobalParityBottomPrimeRemainder.lean",
+    "Zeta23/CCM/GlobalParityBottomPrimeWeight.lean",
+    "Zeta23/CCM/GlobalParityBottomArithmeticTarget.lean",
+    "Zeta23/ExceptionalZero/GlobalParityBottomGeneratedState.lean",
+    "Zeta23/ExceptionalZero/GlobalParityBottomTerminalTarget.lean",
+    "Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean",
+    "Zeta23/ExceptionalZero/GlobalParityBottomConditionalRH.lean",
 )
 
 

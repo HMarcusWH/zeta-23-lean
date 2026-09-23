@@ -1,0 +1,60 @@
+{
+  "schema_version": "POST247_GLOBAL_BOTTOM_SCOUT_FIXTURE_v2",
+  "claim_cap": "EXPERIMENTAL_SIGNAL_ONLY",
+  "base_pr": 247,
+  "selection_head": "2a94647b25bf4e4c7dc9c94ef692cd48c1bd4674",
+  "selection_note": "Frozen Q13/Q14/Q15 midpoint scope selected on the pre-correction PR #247 head. This is provenance, not the validated final head.",
+  "predecessor_N": 2,
+  "successor_K": 3,
+  "frozen_points": [
+    {
+      "label": "Q13_midpoint",
+      "Q": 13,
+      "t": 0.5
+    },
+    {
+      "label": "Q14_midpoint",
+      "Q": 14,
+      "t": 0.5
+    },
+    {
+      "label": "Q15_midpoint",
+      "Q": 15,
+      "t": 0.5
+    }
+  ],
+  "observables": [
+    "lambda_even",
+    "lambda_odd",
+    "lambda_global",
+    "absolute_gap",
+    "ordering",
+    "bad_regime",
+    "applicable_branch",
+    "source_kernel_coordinate",
+    "moment_four",
+    "source_times_moment_four"
+  ],
+  "classifier": {
+    "ordering_values": [
+      "EVEN_BELOW_ODD",
+      "TIE",
+      "ODD_BELOW_EVEN"
+    ],
+    "bad_regime_rule": "lambda_global < 0",
+    "applicable_branch_rule": "NONE outside bad_regime; otherwise EVEN_STRICT/TIE/ODD_STRICT follows ordering"
+  },
+  "policy": {
+    "frozen_points_required": true,
+    "adaptive_search_permitted": false,
+    "threshold_refit_permitted": false,
+    "sign_selector_permitted": false,
+    "theorem_promotion_permitted": false
+  },
+  "nonclaims": [
+    "This is research/falsification tooling, not Lean theorem authority.",
+    "The selected points are frozen implementation checks, not generated retained states.",
+    "Float64 signs near zero are not certified interval statements.",
+    "No uniform sign, branch exclusion, negative-root exclusion, or RH claim is established."
+  ]
+}

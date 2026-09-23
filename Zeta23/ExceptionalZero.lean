@@ -44,3 +44,5 @@ import Zeta23.ExceptionalZero.RHTerminalConfigAttempt
 import Zeta23.ExceptionalZero.GeneratedFamilyFinalGate
 import Zeta23.ExceptionalZero.GeneratedFamilyFinalGateEquivalence
 import Zeta23.ExceptionalZero.CanonicalArithmeticCriterion
+import Zeta23.ExceptionalZero.GlobalParityBottomGeneratedState
+import Zeta23.ExceptionalZero.GlobalParityBottomTerminalTarget

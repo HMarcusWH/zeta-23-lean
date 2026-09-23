@@ -257,6 +257,14 @@ jobs:
             --input research/RHRC/routes/R003_ccm_bridge/fixtures/post189_fb05_joint_selector_separability_v1.json \
             --schedule /tmp/POST189_FB05_JOINT_SELECTOR_SCHEDULE.json \
             --output /tmp/POST189_FB05_JOINT_SELECTOR_CERTIFICATE.json
+      - name: "Check PR #247 frozen global-bottom scout scope"
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post247_global_bottom_scout_scope.py
+      - name: "Run PR #247 frozen global-bottom canonical scout"
+        run: python research/RHRC/routes/R003_ccm_bridge/post247_global_bottom_scout.py > /tmp/POST247_GLOBAL_BOTTOM_SCOUT.json
+      - name: "Run PR #247 frozen global-bottom arithmetic scout"
+        run: python research/RHRC/routes/R003_ccm_bridge/post247_global_bottom_arithmetic_scout.py > /tmp/POST247_GLOBAL_BOTTOM_ARITHMETIC_SCOUT.json
+      - name: "Assert PR #247 global-bottom scout controls and semantics"
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post247_global_bottom_scout_results.py
       - name: Audit R004 scalar-shift invariants
         run: python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
       - name: Reject external reference code as a Lean dependency
@@ -281,6 +289,20 @@ jobs:
         run: lake build Zeta23.CCM
       - name: Build exceptional-zero foundation
         run: lake build Zeta23.ExceptionalZero
+      - name: "Build PR #247 explicit terminal target"
+        run: lake build Zeta23.ExceptionalZero.GlobalParityBottomTerminalTarget
+      - name: "Build PR #247 arithmetic-equivalence audit"
+        run: lake build Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit
+      - name: "Build PR #247 audit-only conditional RH seam"
+        run: lake build Zeta23.ExceptionalZero.GlobalParityBottomConditionalRH
+      - name: Validate future premise-free RH closure exact type
+        run: |
+          if [ -f Zeta23/ExceptionalZero/GlobalParityBottomRHClosure.lean ]; then
+            test -f Zeta23/ExceptionalZero/GlobalParityBottomExactTypeAudit.lean
+            lake build Zeta23.ExceptionalZero.GlobalParityBottomExactTypeAudit
+          else
+            echo "PR #247 premise-free RH closure absent: RH remains OPEN"
+          fi
       - name: Reject forbidden placeholders in promoted subtrees
         run: |
           if grep -R -n -E '\bsorry\b|^[[:space:]]*axiom[[:space:]]' \
@@ -290,5 +312,7 @@ jobs:
           fi
       - name: Enforce post-245 arithmetic anti-circularity firewall
         run: python3 research/RHRC/tools/arithmetic_firewall_lint.py
+      - name: "Enforce PR #247 Million Dollar anti-circularity firewall"
+        run: python3 research/RHRC/tools/million_dollar_firewall_lint.py
       - name: Audit kernel axioms of post-245 arithmetic modules
         run: python3 research/RHRC/tools/axiom_audit.py
