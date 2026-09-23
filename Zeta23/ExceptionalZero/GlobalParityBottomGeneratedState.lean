@@ -27,13 +27,15 @@ theorem
     (A : ℝ) :
     ∃ Q : ℕ,
       ∃ s : GlobalBottomResidualState Q,
-        A < s.whole.retained.energy.firstBad.L := by
+        A < s.aligned.firstBad.L := by
   obtain ⟨Q, c, hlarge⟩ :=
     exists_arbitrarilyLarge_wholeCellBiRegular_negativeEnergyCertificate_of_offLine_zero
       ρ₀ hoff A
-  obtain ⟨s, rfl⟩ :=
+  obtain ⟨s, hs⟩ :=
     exists_globalBottomResidualState_of_wholeCell c
-  exact ⟨Q, s, hlarge⟩
+  refine ⟨Q, s, ?_⟩
+  rw [s.same_L, hs]
+  exact hlarge
 
 /-- Existential off-line-zero wrapper for the residual state. -/
 theorem
