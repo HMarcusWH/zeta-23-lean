@@ -35,12 +35,14 @@ DEFAULT_MODULES = (
     "Zeta23/CCM/GlobalParityBottomReverseGroundTransfer.lean",
     "Zeta23/CCM/GlobalParityBottomTieNormalForm.lean",
     "Zeta23/CCM/GlobalParityBottomResidualState.lean",
+    "Zeta23/CCM/GlobalParityBottomBranchPackage.lean",
+    "Zeta23/CCM/GlobalParityBottomGroundTrial.lean",
     "Zeta23/CCM/GlobalParityBottomPrimeRemainder.lean",
     "Zeta23/CCM/GlobalParityBottomPrimeWeight.lean",
     "Zeta23/CCM/GlobalParityBottomArithmeticTarget.lean",
-    "Zeta23/ExceptionalZero/GlobalParityBottomObstruction.lean",
     "Zeta23/ExceptionalZero/GlobalParityBottomGeneratedState.lean",
     "Zeta23/ExceptionalZero/GlobalParityBottomTerminalTarget.lean",
+    "Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean",
     "Zeta23/ExceptionalZero/GlobalParityBottomConditionalRH.lean",
 )
 
