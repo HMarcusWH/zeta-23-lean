@@ -57,9 +57,10 @@ def coverage_view(
     }
 
 
-def reachability_view(local_import_graph: dict[str, list[str]]) -> dict:
-    comparator_candidates = ("Challenge", "ChallengeDeps", "Solution", "PrintAxioms")
-    comparator_roots = [m for m in comparator_candidates if m in local_import_graph]
+def reachability_view(
+    local_import_graph: dict[str, list[str]], comparator_roots: list[str]
+) -> dict:
+    comparator_roots = sorted(m for m in comparator_roots if m in local_import_graph)
     zeta = _closure(local_import_graph, "Zeta23")
     ccm = _closure(local_import_graph, "Zeta23.CCM")
     exceptional = _closure(local_import_graph, "Zeta23.ExceptionalZero")
