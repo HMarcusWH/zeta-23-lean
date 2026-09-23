@@ -33,6 +33,38 @@ def GlobalBottomResidualState.groundTrial
     s.aligned.lam
     s.aligned.lam_neg
 
+/-- Transport a cubic secular trial across a parity equality only after both
+trials are viewed in the common ambient Euclidean space.  Generalizing both
+parities keeps dependent elimination away from projections of retained
+certificate structures; after substitution the predecessor bounds are equal by
+proof irrelevance. -/
+private theorem cubicSecularTrialVector_coe_eq_of_parity_eq
+    (p q : ReversalParity)
+    (hpq : p = q)
+    {L : ℝ} (hL : 0 < L)
+    (N : ℕ)
+    (hprevP :
+      ∀ x : EuclideanSpace ℂ (Fin (2 * N + 1)),
+        x ∈ euclideanParityBoundaryFlatSubspace p N →
+          0 ≤ Complex.re
+            (inner ℂ ((canonicalSourceMatrix L N).toEuclideanLin x) x))
+    (hprevQ :
+      ∀ x : EuclideanSpace ℂ (Fin (2 * N + 1)),
+        x ∈ euclideanParityBoundaryFlatSubspace q N →
+          0 ≤ Complex.re
+            (inner ℂ ((canonicalSourceMatrix L N).toEuclideanLin x) x))
+    (lam : ℝ) (hlam : lam < 0) :
+    ((cubicSecularTrialVector p hL N hprevP lam hlam :
+        euclideanParityBoundaryFlatSubspace p (N + 1)) :
+      EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) =
+    ((cubicSecularTrialVector q hL N hprevQ lam hlam :
+        euclideanParityBoundaryFlatSubspace q (N + 1)) :
+      EuclideanSpace ℂ (Fin (2 * (N + 1) + 1))) := by
+  subst q
+  have hprev : hprevP = hprevQ := Subsingleton.elim _ _
+  subst hprevQ
+  rfl
+
 /-- On an even-selected branch, the true global-ground trial is exactly the
 same ambient vector as the retained even shifted trial used by the source/M4
 geometry.  Proof-valued predecessor-nonnegativity arguments do not create a
@@ -67,7 +99,14 @@ theorem GlobalBottomResidualState.groundTrial_coe_eq_evenShiftedTrial_of_even
           (s.aligned.firstBad.Nstar + 1)) :
       EuclideanSpace ℂ
         (Fin (2 * (s.aligned.firstBad.Nstar + 1) + 1)))
-  rw [hp]
+  exact
+    cubicSecularTrialVector_coe_eq_of_parity_eq
+      s.aligned.firstBad.p .even hp
+      s.aligned.firstBad.L_pos
+      s.aligned.firstBad.Nstar
+      s.aligned.predecessorNonnegative
+      (s.aligned.firstBad.predecessorNonnegative_anyParity .even)
+      s.aligned.lam s.aligned.lam_neg
 
 /-- The globally aligned cubic trial is nonzero. -/
 theorem GlobalBottomResidualState.groundTrial_ne_zero
