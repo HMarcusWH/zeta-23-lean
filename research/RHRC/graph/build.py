@@ -36,6 +36,8 @@ CLAIM_REGISTRY = "research/RHRC/CLAIM_REGISTRY.json"
 ROUTE_REGISTRY = "research/RHRC/routes/ROUTE_REGISTRY.json"
 PROMOTED_BINDINGS = "research/RHRC/R003_PROMOTED_BINDINGS.json"
 CLAIM_BINDINGS_LEAN = "Zeta23/CCM/ClaimBindings.lean"
+REGISTERED_BINDINGS = "research/RHRC/REGISTERED_THEOREM_BINDINGS.json"
+REGISTERED_BINDINGS_LEAN = "Zeta23/RHRC/RegisteredClaimBindings.lean"
 BOUNDARY = "research/RHRC/BOUNDARY.json"
 
 
@@ -229,6 +231,10 @@ def build_records() -> dict[str, object]:
     claims_data = json.loads((REPO / CLAIM_REGISTRY).read_text(encoding="utf-8"))
     routes_data = json.loads((REPO / ROUTE_REGISTRY).read_text(encoding="utf-8"))
     promoted_data = json.loads((REPO / PROMOTED_BINDINGS).read_text(encoding="utf-8"))
+    registered_binding_data = json.loads(
+        (REPO / REGISTERED_BINDINGS).read_text(encoding="utf-8")
+    )
+    promoted_ids = {row["id"] for row in promoted_data["bindings"]}
     known_routes = {r["route_id"] for r in routes_data["routes"]}
     known_claims = {c["id"] for c in claims_data["claims"]}
     claim_by_id = {c["id"]: c for c in claims_data["claims"]}
@@ -298,41 +304,46 @@ def build_records() -> dict[str, object]:
 
     lean_declarations: list[dict] = []
     declaration_by_name: dict[str, dict] = {}
-    for binding in promoted_data["bindings"]:
+    for binding in registered_binding_data["bindings"]:
         claim = claim_by_id.get(binding["id"])
         if claim is None:
-            raise RuntimeError(f"promoted binding references unknown claim {binding['id']}")
-        if claim.get("route") != "R003_ccm_bridge":
-            raise RuntimeError(
-                f"promoted binding {binding['id']} is not an R003_ccm_bridge claim"
-            )
+            raise RuntimeError(f"registered theorem binding references unknown claim {binding['id']}")
         if claim.get("status") != "PROVED_UNCONDITIONAL":
             raise RuntimeError(
-                f"promoted binding {binding['id']} is not PROVED_UNCONDITIONAL"
+                f"registered theorem binding {binding['id']} is not PROVED_UNCONDITIONAL"
             )
-        if claim.get("theorem") != binding["theorem"]:
+        expected_binding = {
+            "id": claim["id"],
+            "theorem": claim.get("theorem"),
+            "source": claim.get("source"),
+        }
+        if claim.get("route"):
+            expected_binding["route"] = claim["route"]
+        if binding != expected_binding:
             raise RuntimeError(
-                f"promoted binding theorem drift for {binding['id']}: "
-                f"{binding['theorem']!r} != {claim.get('theorem')!r}"
+                f"registered theorem binding drift for {binding['id']}: "
+                f"{binding!r} != {expected_binding!r}"
             )
-        source_path = claim.get("source")
+        source_path = binding["source"]
         if not isinstance(source_path, str) or source_path not in by_path:
             raise RuntimeError(
-                f"promoted binding {binding['id']} has no indexed Lean source: {source_path!r}"
+                f"registered theorem binding {binding['id']} has no indexed Lean source: "
+                f"{source_path!r}"
             )
         source = by_path[source_path]
         if source["file_class"] not in {"LEAN_SOURCE", "LEAN_ROOT"}:
             raise RuntimeError(
-                f"promoted binding {binding['id']} source is not Lean: {source_path}"
+                f"registered theorem binding {binding['id']} source is not Lean: {source_path}"
             )
         source_module = module_name(source_path)
         if source_module not in local_by_module:
             raise RuntimeError(
-                f"promoted binding {binding['id']} source module is not local: {source_module}"
+                f"registered theorem binding {binding['id']} source module is not local: "
+                f"{source_module}"
             )
         theorem = binding["theorem"]
         if theorem in declaration_by_name:
-            raise RuntimeError(f"duplicate promoted Lean declaration: {theorem}")
+            raise RuntimeError(f"duplicate registered Lean declaration: {theorem}")
         record = {
             "id": declaration_id(theorem),
             "type": "LeanDeclaration",
@@ -341,10 +352,11 @@ def build_records() -> dict[str, object]:
             "module_id": module_id(source_module),
             "source_path": source_path,
             "source_file_id": source["id"],
-            "binding_scope": "R003_PROMOTED",
-            "authority_role": "PROMOTED_CLAIM_DECLARATION",
-            "binding_source": PROMOTED_BINDINGS,
-            "compiler_binding_source": CLAIM_BINDINGS_LEAN,
+            "binding_scope": "REGISTERED_PROVED",
+            "authority_role": "REGISTERED_CLAIM_DECLARATION",
+            "binding_source": REGISTERED_BINDINGS,
+            "compiler_binding_source": REGISTERED_BINDINGS_LEAN,
+            "historical_r003_promoted": binding["id"] in promoted_ids,
             "source_locator": source["source_locator"],
         }
         lean_declarations.append(record)
@@ -420,7 +432,7 @@ def build_records() -> dict[str, object]:
             "REGISTRY_EXACT",
         )
 
-    for binding in promoted_data["bindings"]:
+    for binding in registered_binding_data["bindings"]:
         add_rel(
             "PROVES",
             declaration_id(binding["theorem"]),
@@ -448,8 +460,8 @@ def build_records() -> dict[str, object]:
     theorem_claim_map = theorem_claim_view(
         lean_declarations,
         claims_data,
-        promoted_data,
-        CLAIM_BINDINGS_LEAN,
+        registered_binding_data,
+        REGISTERED_BINDINGS_LEAN,
     )
     comparator_roots = sorted(
         name
@@ -466,9 +478,8 @@ def build_records() -> dict[str, object]:
         "external_import_targets": sorted(external_imports),
         "standalone_or_auxiliary_modules": reachability["standalone_or_auxiliary"],
         "deferred_to_later_phases": [
-            "repository-wide Lean declaration extraction beyond promoted R003 authority",
+            "repository-wide Lean declaration extraction beyond registered theorem authority",
             "declaration-level USES_CONSTANT dependencies",
-            "non-R003 explicit promoted-binding normalization",
             "build/reachability status for standalone Lean modules",
             "multi-axis authority/current-state resolution",
             "Git/PR/workflow provenance graph",
