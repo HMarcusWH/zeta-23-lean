@@ -835,6 +835,114 @@
       "imports": [
         "Zeta23.CCM.CrossParityTrialReconstruction"
       ]
+    },
+    {
+      "path": "Zeta23/CCM/CrossParityCorrectionSourceCoupling.lean",
+      "blob_sha": "01bee18adf9236d1734b994b54e7e89aca4291c5",
+      "imports": [
+        "Zeta23.CCM.CrossParityCorrectionFunctionalRiesz",
+        "Zeta23.CCM.CanonicalOneStepDomination"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CrossParityCubicCorrectionCollapse.lean",
+      "blob_sha": "7a08f9e0e66c126228b9c46d5ba62925ed4081f4",
+      "imports": [
+        "Zeta23.CCM.CrossParityQuotientTransport"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CrossParityQuotientTransport.lean",
+      "blob_sha": "19e49e7f3d48319c8c7e00db072017324135bd8f",
+      "imports": [
+        "Zeta23.CCM.SourceExplicitCubicDefect",
+        "Zeta23.CCM.CubicSecularMetric"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CrossParitySecularCompletion.lean",
+      "blob_sha": "e8e8726c7f6af9fc433586488861d2964a0e2459",
+      "imports": [
+        "Zeta23.CCM.CubicSecularGoodSectorMargin",
+        "Zeta23.CCM.CrossParitySecularTransfer",
+        "Zeta23.CCM.ParitySourceMomentFourRigidity"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CrossParitySecularCorrectionCollapse.lean",
+      "blob_sha": "9cbd9d457fc406158bd9a91c0c3933d3d4756efd",
+      "imports": [
+        "Zeta23.CCM.CrossParityCorrectionFunctionalCollapse",
+        "Zeta23.CCM.CrossParitySecularTransferCore"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CrossParitySecularKernelDichotomy.lean",
+      "blob_sha": "bd14a4c3223be085dc537f2f9a4628ef7b6dd8ee",
+      "imports": [
+        "Zeta23.CCM.CrossParitySecularCompletion",
+        "Zeta23.CCM.ZeroShiftBranchResponse"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CrossParitySecularRealTransfer.lean",
+      "blob_sha": "3aa5a51f7cd29df1fda1bf94caf17140d897be3d",
+      "imports": [
+        "Zeta23.CCM.CubicSecularRealGeometry",
+        "Zeta23.CCM.CrossParitySecularCorrectionCollapse"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CrossParitySecularTransfer.lean",
+      "blob_sha": "6497569878a68cb6f92e1d045b7770bad60c930f",
+      "imports": [
+        "Zeta23.CCM.CrossParitySecularTransferCore",
+        "Zeta23.CCM.CrossParitySecularRealTransfer"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CrossParitySecularTransferCore.lean",
+      "blob_sha": "a893c7a56f5ea72bc81e63d68ff1a9940a19b79e",
+      "imports": [
+        "Zeta23.CCM.CrossParityCorrectionFunctionalRiesz"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CrossParityTrialReconstruction.lean",
+      "blob_sha": "82666ad431c1452affcebe405fbf60a551c0818f",
+      "imports": [
+        "Zeta23.CCM.CrossParityQuotientTransport"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CubicExplicitSecular.lean",
+      "blob_sha": "3f6661bb954253945018d8be1e9313b3dbc78ed4",
+      "imports": [
+        "Zeta23.CCM.CubicSecularEquation"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CubicNormalizedSchur.lean",
+      "blob_sha": "f92251e621d4f79589c5ef0feefec8cd3e39bceb",
+      "imports": [
+        "Zeta23.CCM.CubicShellIncidence",
+        "Mathlib.LinearAlgebra.FiniteDimensional.Basic"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CubicSecularEquation.lean",
+      "blob_sha": "85b75ac27705e9cefe87ac03a56bfb06acc8c8bb",
+      "imports": [
+        "Zeta23.CCM.CubicNormalizedSchur"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CubicSecularGoodSectorMargin.lean",
+      "blob_sha": "05b0390c08332829571aa5338ebf9851dd0ffb30",
+      "imports": [
+        "Zeta23.CCM.ParitySourceMomentFourRigidity",
+        "Zeta23.CCM.CrossParityQuotientTransport"
+      ]
     }
   ],
   "all_lean": [
