@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
-"""PR #247 frozen arithmetic/channel scout.
+"""PR #247 frozen true-ground channel scout.
 
-Research-only companion to post247_global_bottom_scout.py.  It evaluates the
-canonical channel decomposition on the normalized parity ground vectors at the
-same preregistered Q13/Q14/Q15 midpoint points.
+Research-only companion to post247_global_bottom_scout.py. It evaluates the
+canonical channel decomposition on normalized parity ground vectors at the
+same preregistered Q13/Q14/Q15 midpoint points and carries the corrected
+ordering/bad-regime classifier into the arithmetic record.
 
-This is deliberately not the generated retained zero-shift witness and is not
-used as theorem authority.  Its purpose is adversarial: candidate sign or
-magnitude laws proposed for the formal global-bottom route should survive this
-cheap canonical check before being promoted to a Lean theorem target.
+These are float64 implementation checks, not interval certificates and not
+off-line-zero-generated retained states.
 """
 from __future__ import annotations
 
@@ -24,6 +23,7 @@ from post247_global_bottom_scout import (
     FROZEN_POINTS,
     TARGET_K,
     _orthonormal_parity_basis,
+    classify_bottoms,
 )
 from post166_fb05_cell_interval import cell_coordinate_L
 
@@ -43,8 +43,11 @@ def evaluate(label: str, q: int, t: float) -> dict:
     M = np.asarray(canonical_source_matrix_L(L, TARGET_K), dtype=float)
     M = 0.5 * (M + M.T)
     out = {"label": label, "Q": q, "t": t, "L": L, "parities": {}}
+
+    vals: dict[str, float] = {}
     for parity in ("even", "odd"):
         lam, x = ground_vector(M, parity)
+        vals[parity] = lam
         channels = canonical_channel_energies_L(L, TARGET_K, x)
         out["parities"][parity] = {
             "lambda": lam,
@@ -53,13 +56,15 @@ def evaluate(label: str, q: int, t: float) -> dict:
                 channels["total_direct"] - lam
             ),
         }
+
+    out.update(classify_bottoms(vals["even"], vals["odd"]))
     out["claim_cap"] = "EXPERIMENTAL_SIGNAL_ONLY"
     return out
 
 
-def main() -> int:
-    payload = {
-        "schema_version": "POST247_GLOBAL_BOTTOM_ARITHMETIC_SCOUT_v1",
+def run() -> dict:
+    return {
+        "schema_version": "POST247_GLOBAL_BOTTOM_ARITHMETIC_SCOUT_v2",
         "claim_cap": "EXPERIMENTAL_SIGNAL_ONLY",
         "scope": {
             "K": TARGET_K,
@@ -73,11 +78,15 @@ def main() -> int:
         "nonclaims": [
             "Ground-vector channel data are numerical research signals only.",
             "These vectors are not off-line-zero-generated retained witnesses.",
+            "Float64 signs near zero are not certified interval statements.",
             "No channel sign is promoted to a theorem.",
             "No branch exclusion or RH claim is established.",
         ],
     }
-    print(json.dumps(payload, indent=2, sort_keys=True))
+
+
+def main() -> int:
+    print(json.dumps(run(), indent=2, sort_keys=True))
     return 0
 
 
