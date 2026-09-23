@@ -26,6 +26,14 @@ do not carry their own blob hash, preventing recursive self-hashing.
 - `LeanModule`
 - `RegisteredClaim`
 - `Route`
+- `ControlObject`
+- `HistoricalDelta`
+- `ResearchExecutable`
+- `Fixture`
+- `WorkflowDefinition`
+
+The last five types are mechanically projected from deterministic file classes and
+carry no additional scientific interpretation.
 
 External Lean imports are represented as `LeanModule` records with
 `repository_scope = EXTERNAL`; they are not treated as local formal authority.
@@ -34,10 +42,14 @@ External Lean imports are represented as `LeanModule` records with
 
 Only structurally exact relations are emitted:
 
+- `CONTAINS`
 - `LOCATED_AT`
 - `IMPORTS`
+- `REGISTERED_IN`
 - `MIRRORS`
 - `PART_OF_ROUTE`
+- `GOVERNED_BY`
+- `GENERATED_BY`
 
 Phase 1 MUST NOT emit `PROVES`, `USES_CONSTANT`, mathematical
 `DEPENDS_ON`, `KILLS_ROUTE`, `REOPENS`, or scientific supersession edges.
