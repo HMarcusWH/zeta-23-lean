@@ -216,6 +216,97 @@ theorem globalBottom_tie_alpha_equation_of_gamma_zero
   rw [hGamma, mul_zero, zero_add] at h
   exact h
 
+
+/-- Strict-even ground separation forces both factors in the transferred
+source term to be nonzero.  This is the first branch where global-bottom
+selection removes the historical need for successor goodness at zero merely
+to obtain source/Gamma nonvanishing. -/
+theorem globalBottom_evenStrict_gamma_source_ne_zero
+    {L : ℝ} (hL : 0 < L)
+    (N : ℕ) (hN : 1 ≤ N)
+    (hprevBoth :
+      ∀ q : ReversalParity,
+        ∀ x : EuclideanSpace ℂ (Fin (2 * N + 1)),
+          x ∈ euclideanParityBoundaryFlatSubspace q N →
+            0 ≤ Complex.re
+              (inner ℂ ((canonicalSourceMatrix L N).toEuclideanLin x) x))
+    (hbad : AnyParityBad L (N + 1))
+    (hstrict :
+      parityRayleighBottom .even L (N + 1) <
+        parityRayleighBottom .odd L (N + 1)) :
+    ∃ hneg : parityRayleighBottom .even L (N + 1) < 0,
+      crossParitySecularGamma hL N (hprevBoth .odd)
+          (parityRayleighBottom .even L (N + 1)) hneg ≠ 0 ∧
+      evenQuadraticSourceMoment L (N + 1)
+          (cubicSecularTrialVector .even hL N (hprevBoth .even)
+            (parityRayleighBottom .even L (N + 1)) hneg) ≠ 0 := by
+  obtain ⟨hneg, hplus, htransfer, hpos⟩ :=
+    globalBottom_evenStrict_crossParity
+      hL N hN hprevBoth hbad hstrict
+  let Fminus :=
+    cubicSecularScalar .odd hL N (hprevBoth .odd)
+      (parityRayleighBottom .even L (N + 1)) hneg
+  let Gamma :=
+    crossParitySecularGamma hL N (hprevBoth .odd)
+      (parityRayleighBottom .even L (N + 1)) hneg
+  let S :=
+    evenQuadraticSourceMoment L (N + 1)
+      (cubicSecularTrialVector .even hL N (hprevBoth .even)
+        (parityRayleighBottom .even L (N + 1)) hneg)
+  have hFne : Fminus ≠ 0 := by
+    intro hzero
+    have hp := hpos
+    change
+      0 <
+        Complex.re
+          (star Fminus *
+            inner ℂ
+              (intrinsicCubicShellPart .odd N :
+                euclideanParityBoundaryFlatSubspace .odd (N + 1))
+              (intrinsicCubicShellPart .odd N :
+                euclideanParityBoundaryFlatSubspace .odd (N + 1))) at hp
+    rw [hzero] at hp
+    simp at hp
+  have hGS : Fminus = Gamma * S := by
+    simpa [Fminus, Gamma, S] using htransfer
+  have hGamma : Gamma ≠ 0 := by
+    intro hzero
+    apply hFne
+    rw [hGS, hzero]
+    simp
+  have hS : S ≠ 0 := by
+    intro hzero
+    apply hFne
+    rw [hGS, hzero]
+    simp
+  exact ⟨hneg, by simpa [Gamma] using hGamma, by simpa [S] using hS⟩
+
+/-- In the strict-odd branch the even secular scalar at the odd ground shift
+is necessarily nonzero. -/
+theorem globalBottom_oddStrict_evenSecular_ne_zero
+    {L : ℝ} (hL : 0 < L)
+    (N : ℕ) (hN : 1 ≤ N)
+    (hprevBoth :
+      ∀ q : ReversalParity,
+        ∀ x : EuclideanSpace ℂ (Fin (2 * N + 1)),
+          x ∈ euclideanParityBoundaryFlatSubspace q N →
+            0 ≤ Complex.re
+              (inner ℂ ((canonicalSourceMatrix L N).toEuclideanLin x) x))
+    (hbad : AnyParityBad L (N + 1))
+    (hstrict :
+      parityRayleighBottom .odd L (N + 1) <
+        parityRayleighBottom .even L (N + 1)) :
+    ∃ hneg : parityRayleighBottom .odd L (N + 1) < 0,
+      cubicSecularScalar .even hL N (hprevBoth .even)
+          (parityRayleighBottom .odd L (N + 1)) hneg ≠ 0 := by
+  obtain ⟨hneg, _hminus, _hbalance, hpos⟩ :=
+    globalBottom_oddStrict_crossParity
+      hL N hN hprevBoth hbad hstrict
+  refine ⟨hneg, ?_⟩
+  intro hzero
+  rw [hzero] at hpos
+  simp at hpos
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.globalBottom_evenStrict_crossParity
@@ -223,3 +314,5 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.globalBottom_tie_crossParity
 #print axioms Zeta23.CCM.globalBottom_tie_gamma_or_source_zero
 #print axioms Zeta23.CCM.globalBottom_tie_alpha_equation_of_gamma_zero
+#print axioms Zeta23.CCM.globalBottom_evenStrict_gamma_source_ne_zero
+#print axioms Zeta23.CCM.globalBottom_oddStrict_evenSecular_ne_zero
