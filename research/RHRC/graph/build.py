@@ -10,7 +10,12 @@ import re
 import subprocess
 from pathlib import Path
 
-from views import coverage_view, reachability_view, theorem_claim_view
+from views import (
+    coverage_view,
+    reachability_view,
+    theorem_claim_view,
+    theorem_dependency_closure_view,
+)
 
 GRAPH = Path(__file__).resolve().parent
 RHRC = GRAPH.parent
@@ -27,6 +32,7 @@ DECLARED_GENERATED_PRODUCTS = [
     "research/RHRC/graph/generated/lean_declarations.jsonl",
     "research/RHRC/graph/generated/relations.jsonl",
     "research/RHRC/graph/generated/THEOREM_CLAIM_MAP.json",
+    "research/RHRC/graph/generated/THEOREM_DEPENDENCY_CLOSURE.json",
     "research/RHRC/graph/generated/REPOSITORY_COVERAGE.json",
     "research/RHRC/graph/generated/ENTRYPOINT_REACHABILITY.json",
     "research/RHRC/graph/generated/UNRESOLVED_GRAPH_ITEMS.json",
@@ -38,6 +44,7 @@ PROMOTED_BINDINGS = "research/RHRC/R003_PROMOTED_BINDINGS.json"
 CLAIM_BINDINGS_LEAN = "Zeta23/CCM/ClaimBindings.lean"
 REGISTERED_BINDINGS = "research/RHRC/REGISTERED_THEOREM_BINDINGS.json"
 REGISTERED_BINDINGS_LEAN = "Zeta23/RHRC/RegisteredClaimBindings.lean"
+COMPILER_DEPENDENCIES = "research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl"
 BOUNDARY = "research/RHRC/BOUNDARY.json"
 
 
@@ -65,6 +72,37 @@ def tracked_files() -> list[str]:
     # first bootstrap before they have been added to Git.
     tracked.update(DECLARED_GENERATED_PRODUCTS)
     return sorted(tracked)
+
+
+def load_compiler_dependency_receipt() -> list[dict]:
+    path = REPO / COMPILER_DEPENDENCIES
+    rows: list[dict] = []
+    for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+        if not line.strip():
+            continue
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError as exc:
+            raise RuntimeError(f"{path}:{number}: invalid JSON: {exc}") from exc
+        if row.get("schema_version") != "RHKG-phase2b-compiler-dependencies-0.4":
+            raise RuntimeError(
+                f"{path}:{number}: compiler dependency receipt is not Phase 2B current"
+            )
+        rows.append(row)
+    if not rows:
+        raise RuntimeError("compiler dependency receipt is empty")
+    names = [row["declaration"] for row in rows]
+    if len(set(names)) != len(names):
+        raise RuntimeError("duplicate declarations in compiler dependency receipt")
+    known = set(names)
+    for row in rows:
+        for dep in row.get("dependencies", []):
+            if dep.get("constant") not in known:
+                raise RuntimeError(
+                    f"compiler receipt dependency target missing metadata: "
+                    f"{row['declaration']} -> {dep.get('constant')}"
+                )
+    return sorted(rows, key=lambda row: row["declaration"])
 
 
 def load_classification_contract() -> dict:
@@ -108,14 +146,20 @@ def module_name(path: str) -> str:
     raise ValueError(f"no Lean module mapping for {path}")
 
 
-def relation(kind: str, source: str, target: str, provenance: str) -> dict:
+def relation(
+    kind: str,
+    source: str,
+    target: str,
+    provenance: str,
+    metadata: dict | None = None,
+) -> dict:
     # Relation identity is conceptual: provenance describes the evidence for the
     # edge, but does not split one (kind, source, target) relation into multiple
     # graph identities. This matches GRAPH_CONTRACT.md.
     digest = hashlib.sha256(
         f"{kind}|{source}|{target}".encode("utf-8")
     ).hexdigest()
-    return {
+    row = {
         "id": "rh:rel:" + digest,
         "type": "Relation",
         "kind": kind,
@@ -123,6 +167,9 @@ def relation(kind: str, source: str, target: str, provenance: str) -> dict:
         "target": target,
         "provenance": provenance,
     }
+    if metadata:
+        row.update(metadata)
+    return row
 
 
 def _jsonl(rows: list[dict]) -> bytes:
@@ -234,6 +281,27 @@ def build_records() -> dict[str, object]:
     registered_binding_data = json.loads(
         (REPO / REGISTERED_BINDINGS).read_text(encoding="utf-8")
     )
+    compiler_receipt = load_compiler_dependency_receipt()
+    compiler_external_modules = sorted(
+        {
+            row["module"]
+            for row in compiler_receipt
+            if row.get("repository_scope") == "EXTERNAL" and row.get("module")
+        }
+    )
+    existing_module_names = {row["module"] for row in lean_modules}
+    for name in compiler_external_modules:
+        if name not in existing_module_names:
+            lean_modules.append(
+                {
+                    "id": module_id(name),
+                    "type": "LeanModule",
+                    "module": name,
+                    "repository_scope": "EXTERNAL",
+                    "authority_role": "COMPILER_EXTERNAL_BOUNDARY_MODULE",
+                }
+            )
+            existing_module_names.add(name)
     promoted_ids = {row["id"] for row in promoted_data["bindings"]}
     known_routes = {r["route_id"] for r in routes_data["routes"]}
     known_claims = {c["id"] for c in claims_data["claims"]}
@@ -304,67 +372,105 @@ def build_records() -> dict[str, object]:
 
     lean_declarations: list[dict] = []
     declaration_by_name: dict[str, dict] = {}
-    for binding in registered_binding_data["bindings"]:
-        claim = claim_by_id.get(binding["id"])
-        if claim is None:
-            raise RuntimeError(f"registered theorem binding references unknown claim {binding['id']}")
-        if claim.get("status") != "PROVED_UNCONDITIONAL":
-            raise RuntimeError(
-                f"registered theorem binding {binding['id']} is not PROVED_UNCONDITIONAL"
-            )
-        expected_binding = {
-            "id": claim["id"],
-            "theorem": claim.get("theorem"),
-            "source": claim.get("source"),
-        }
-        if claim.get("route"):
-            expected_binding["route"] = claim["route"]
-        if binding != expected_binding:
-            raise RuntimeError(
-                f"registered theorem binding drift for {binding['id']}: "
-                f"{binding!r} != {expected_binding!r}"
-            )
-        source_path = binding["source"]
-        if not isinstance(source_path, str) or source_path not in by_path:
-            raise RuntimeError(
-                f"registered theorem binding {binding['id']} has no indexed Lean source: "
-                f"{source_path!r}"
-            )
-        source = by_path[source_path]
-        if source["file_class"] not in {"LEAN_SOURCE", "LEAN_ROOT"}:
-            raise RuntimeError(
-                f"registered theorem binding {binding['id']} source is not Lean: {source_path}"
-            )
-        source_module = module_name(source_path)
-        if source_module not in local_by_module:
-            raise RuntimeError(
-                f"registered theorem binding {binding['id']} source module is not local: "
-                f"{source_module}"
-            )
-        theorem = binding["theorem"]
-        if theorem in declaration_by_name:
-            raise RuntimeError(f"duplicate registered Lean declaration: {theorem}")
+    root_binding_by_theorem = {
+        row["theorem"]: row for row in registered_binding_data["bindings"]
+    }
+    receipt_root_names = {
+        row["declaration"]
+        for row in compiler_receipt
+        if row.get("graph_role") == "REGISTERED_CLAIM_ROOT"
+    }
+    if receipt_root_names != set(root_binding_by_theorem):
+        raise RuntimeError(
+            "compiler receipt registered-root drift; "
+            f"missing={sorted(set(root_binding_by_theorem) - receipt_root_names)} "
+            f"extra={sorted(receipt_root_names - set(root_binding_by_theorem))}"
+        )
+
+    for compiler_row in compiler_receipt:
+        theorem = compiler_row["declaration"]
+        scope = compiler_row["repository_scope"]
+        role = compiler_row["graph_role"]
+        source_module = compiler_row.get("module")
         record = {
             "id": declaration_id(theorem),
             "type": "LeanDeclaration",
             "declaration": theorem,
             "module": source_module,
-            "module_id": module_id(source_module),
-            "source_path": source_path,
-            "source_file_id": source["id"],
-            "binding_scope": "REGISTERED_PROVED",
-            "authority_role": "REGISTERED_CLAIM_DECLARATION",
-            "binding_source": REGISTERED_BINDINGS,
-            "compiler_binding_source": REGISTERED_BINDINGS_LEAN,
-            "historical_r003_promoted": binding["id"] in promoted_ids,
-            "source_locator": source["source_locator"],
+            "repository_scope": scope,
+            "graph_role": role,
+            "declaration_kind": compiler_row["declaration_kind"],
+            "private_or_internal": compiler_row["private_or_internal"],
         }
+
+        if scope == "LOCAL":
+            if not source_module or source_module not in local_by_module:
+                raise RuntimeError(
+                    f"compiler-local declaration has no indexed local module: "
+                    f"{theorem} -> {source_module!r}"
+                )
+            source_path = local_by_module[source_module]
+            source = by_path[source_path]
+            record.update(
+                {
+                    "module_id": module_id(source_module),
+                    "source_path": source_path,
+                    "source_file_id": source["id"],
+                    "source_locator": source["source_locator"],
+                }
+            )
+        elif scope == "EXTERNAL":
+            if role != "EXTERNAL_BOUNDARY":
+                raise RuntimeError(
+                    f"external compiler declaration has non-boundary role: {theorem} -> {role}"
+                )
+            record["module_id"] = module_id(source_module) if source_module else None
+        else:
+            raise RuntimeError(f"unknown compiler declaration scope {scope!r}")
+
+        if role == "REGISTERED_CLAIM_ROOT":
+            binding = root_binding_by_theorem.get(theorem)
+            if binding is None:
+                raise RuntimeError(f"compiler root is not registered: {theorem}")
+            source_path = binding["source"]
+            expected_module = module_name(source_path)
+            if source_module != expected_module:
+                raise RuntimeError(
+                    f"compiler/registry module drift for {binding['id']}: "
+                    f"{source_module!r} != {expected_module!r}"
+                )
+            record.update(
+                {
+                    "binding_scope": "REGISTERED_PROVED",
+                    "authority_role": "REGISTERED_CLAIM_DECLARATION",
+                    "binding_source": REGISTERED_BINDINGS,
+                    "compiler_binding_source": REGISTERED_BINDINGS_LEAN,
+                    "historical_r003_promoted": binding["id"] in promoted_ids,
+                }
+            )
+        elif role == "LOCAL_DEPENDENCY":
+            if scope != "LOCAL":
+                raise RuntimeError(f"LOCAL_DEPENDENCY is not local: {theorem}")
+            record["authority_role"] = "DEPENDENCY_DECLARATION"
+        elif role == "EXTERNAL_BOUNDARY":
+            record["authority_role"] = "EXTERNAL_BOUNDARY_DECLARATION"
+        else:
+            raise RuntimeError(f"unknown compiler graph role {role!r}")
+
+        if theorem in declaration_by_name:
+            raise RuntimeError(f"duplicate compiler Lean declaration: {theorem}")
         lean_declarations.append(record)
         declaration_by_name[theorem] = record
 
     relations_by_key: dict[tuple[str, str, str], dict] = {}
 
-    def add_rel(kind: str, source: str, target: str, provenance: str) -> None:
+    def add_rel(
+        kind: str,
+        source: str,
+        target: str,
+        provenance: str,
+        metadata: dict | None = None,
+    ) -> None:
         key = (kind, source, target)
         existing = relations_by_key.get(key)
         if existing is not None:
@@ -374,8 +480,16 @@ def build_records() -> dict[str, object]:
                     f"{kind} {source} -> {target}: "
                     f"{existing['provenance']} vs {provenance}"
                 )
+            if metadata:
+                for field, value in metadata.items():
+                    if existing.get(field) != value:
+                        raise RuntimeError(
+                            f"conflicting relation metadata for {kind} {source} -> {target}"
+                        )
             return
-        relations_by_key[key] = relation(kind, source, target, provenance)
+        relations_by_key[key] = relation(
+            kind, source, target, provenance, metadata=metadata
+        )
 
     for source in repo_files:
         add_rel("CONTAINS", REPOSITORY_ID, source["id"], "GIT_EXACT")
@@ -425,11 +539,18 @@ def build_records() -> dict[str, object]:
                 add_rel("PART_OF_ROUTE", claim_id(cid_raw), rid, "REGISTRY_EXACT")
 
     for declaration in lean_declarations:
+        if declaration["repository_scope"] != "LOCAL":
+            continue
+        provenance = (
+            "REGISTRY_EXACT"
+            if declaration["graph_role"] == "REGISTERED_CLAIM_ROOT"
+            else "LEAN_ENV_EXACT"
+        )
         add_rel(
             "DECLARES",
             declaration["module_id"],
             declaration["id"],
-            "REGISTRY_EXACT",
+            provenance,
         )
 
     for binding in registered_binding_data["bindings"]:
@@ -439,6 +560,21 @@ def build_records() -> dict[str, object]:
             claim_id(binding["id"]),
             "REGISTRY_EXACT",
         )
+
+    for compiler_row in compiler_receipt:
+        source = declaration_id(compiler_row["declaration"])
+        for dep in compiler_row["dependencies"]:
+            add_rel(
+                "USES_CONSTANT",
+                source,
+                declaration_id(dep["constant"]),
+                "LEAN_ENV_EXACT",
+                metadata={
+                    "used_in_type": dep["used_in_type"],
+                    "used_in_value": dep["used_in_value"],
+                    "used_in_structure": dep["used_in_structure"],
+                },
+            )
 
     relations = list(relations_by_key.values())
 
@@ -469,17 +605,20 @@ def build_records() -> dict[str, object]:
         if path.startswith("comparator/") and path.count("/") == 1
     )
     reachability = reachability_view(local_import_graph, comparator_roots)
+    dependency_closure = theorem_dependency_closure_view(
+        compiler_receipt,
+        registered_binding_data,
+    )
     unresolved = {
-        "schema_version": "RHKG-phase2a-unresolved-0.3",
-        "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_2A",
+        "schema_version": "RHKG-phase2b-unresolved-0.4",
+        "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_2B",
         "unknown_file_classes": sorted(
             row["path"] for row in repo_files if row["file_class"] == "UNKNOWN_FILE_CLASS"
         ),
         "external_import_targets": sorted(external_imports),
         "standalone_or_auxiliary_modules": reachability["standalone_or_auxiliary"],
         "deferred_to_later_phases": [
-            "repository-wide Lean declaration extraction beyond registered theorem authority",
-            "declaration-level USES_CONSTANT dependencies",
+            "repository-wide Lean declaration census beyond registered dependency closure",
             "build/reachability status for standalone Lean modules",
             "multi-axis authority/current-state resolution",
             "Git/PR/workflow provenance graph",
@@ -498,6 +637,7 @@ def build_records() -> dict[str, object]:
         "coverage": coverage,
         "reachability": reachability,
         "theorem_claim_map": theorem_claim_map,
+        "dependency_closure": dependency_closure,
         "unresolved": unresolved,
     }
 
@@ -513,6 +653,7 @@ def rendered_outputs() -> dict[str, bytes]:
         "research/RHRC/graph/generated/REPOSITORY_COVERAGE.json": _pretty(records["coverage"]),
         "research/RHRC/graph/generated/ENTRYPOINT_REACHABILITY.json": _pretty(records["reachability"]),
         "research/RHRC/graph/generated/THEOREM_CLAIM_MAP.json": _pretty(records["theorem_claim_map"]),
+        "research/RHRC/graph/generated/THEOREM_DEPENDENCY_CLOSURE.json": _pretty(records["dependency_closure"]),
         "research/RHRC/graph/generated/UNRESOLVED_GRAPH_ITEMS.json": _pretty(records["unresolved"]),
     }
 
@@ -563,7 +704,7 @@ def emit_bootstrap_payload(outputs: dict[str, bytes]) -> None:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Build/check RHKG Phase-1 generated products")
+    parser = argparse.ArgumentParser(description="Build/check RHKG Phase-2B generated products")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--write", action="store_true", help="regenerate checked-in products")
     group.add_argument("--check", action="store_true", help="verify checked-in products are byte-current")
