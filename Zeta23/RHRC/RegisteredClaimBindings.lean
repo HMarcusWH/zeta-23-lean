@@ -1,0 +1,366 @@
+/-
+RHRC complete registered-theorem compiler audit.
+
+This file is AUDIT_ONLY. It creates no theorem authority and proves no new
+mathematics. It makes the exact theorem names backing every current
+PROVED_UNCONDITIONAL registered claim explicit to Lean and prints each axiom
+surface. OPEN claims are intentionally absent. RH remains OPEN.
+-/
+
+import Zeta23.CCM.BoundaryFlatApproximation
+import Zeta23.CCM.BoundaryFlatProjection
+import Zeta23.CCM.CanonicalPrimeRemainder
+import Zeta23.CCM.ConstrainedCanonicalSector
+import Zeta23.CCM.ConstrainedEuclideanSector
+import Zeta23.CCM.ConstrainedParity
+import Zeta23.CCM.ConstrainedParityGeometry
+import Zeta23.CCM.ConstrainedParitySpectrum
+import Zeta23.CCM.CutoffFreeMatrix
+import Zeta23.CCM.DictionaryKernelEFExtension
+import Zeta23.CCM.DictionaryRHSIdentity
+import Zeta23.CCM.DictionaryResidualSecondOrderGluing
+import Zeta23.CCM.DictionaryTentEFExtension
+import Zeta23.CCM.DictionaryTentMollifierSupport
+import Zeta23.CCM.DictionaryTentZeroSummability
+import Zeta23.CCM.DictionaryZeroSideBridge
+import Zeta23.CCM.DictionaryZeroSideDisplacement
+import Zeta23.CCM.FirstBadRigidity
+import Zeta23.CCM.GlobalParityBottomBranchPackage
+import Zeta23.CCM.GlobalParityBottomGroundTrial
+import Zeta23.CCM.GlobalParityBottomPrimeWeight
+import Zeta23.CCM.GlobalParityBottomSpectrum
+import Zeta23.CCM.LocalizedBasis
+import Zeta23.CCM.LocalizedFiniteSpace
+import Zeta23.CCM.LocalizedFourierApproximation
+import Zeta23.CCM.LocalizedWeilRestriction
+import Zeta23.CCM.NestedFinite
+import Zeta23.CCM.ParityBadness
+import Zeta23.CCM.ParityCompressionRankOne
+import Zeta23.CCM.ParityNormalSpace
+import Zeta23.CCM.RawKernelZeroSideBridge
+import Zeta23.CCM.SourceKappa
+import Zeta23.CCM.SourceNormalizationRepair
+import Zeta23.CCM.SourceWeilMatrixReconciliation
+import Zeta23.ExceptionalZero.ArithmeticReduction
+import Zeta23.ExceptionalZero.BoundaryFlatFiniteWeil
+import Zeta23.ExceptionalZero.CanonicalArithmeticCriterion
+import Zeta23.ExceptionalZero.ConstrainedFiniteObstruction
+import Zeta23.ExceptionalZero.DisplacementTransfer
+import Zeta23.ExceptionalZero.EuclideanConstrainedObstruction
+import Zeta23.ExceptionalZero.ExposedPole
+import Zeta23.ExceptionalZero.FiniteNegativeObstruction
+import Zeta23.ExceptionalZero.FirstBadParitySpectrum
+import Zeta23.ExceptionalZero.FirstBadRigidity
+import Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit
+import Zeta23.ExceptionalZero.GlobalParityBottomTerminalTarget
+import Zeta23.ExceptionalZero.NegativeWeilTestSupport
+import Zeta23.ExceptionalZero.NestedEuclideanObstruction
+import Zeta23.ExceptionalZero.ParityFirstBadObstruction
+import Zeta23.ExceptionalZero.ProbeGramNegativity
+import Zeta23.ExceptionalZero.TwoTranslateContraction
+import Zeta23.ExceptionalZero.WeilContinuity
+import Zeta23.ExceptionalZero.WeilFilter
+import Zeta23.ExceptionalZero.WeilLiteratureBridge
+import Zeta23.ExceptionalZero.WeilZeroSideEvenization
+import Zeta23.ZeroSide.TightMult
+
+-- AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE
+#check Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis
+#print axioms Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis
+
+-- AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE
+#check Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis
+#print axioms Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis
+
+-- EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL
+#check Zeta23.ExceptionalZero.exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_offLine_zero
+
+-- OBS_TIGHTMULT
+#check Zeta23.ZeroSide.TightMult.lemmaR_tight_two
+#print axioms Zeta23.ZeroSide.TightMult.lemmaR_tight_two
+
+-- R001_FILTERED_ZERO_POLE
+#check Zeta23.ExceptionalZero.not_subexponential_filteredZeroFamily_of_right_zero
+#print axioms Zeta23.ExceptionalZero.not_subexponential_filteredZeroFamily_of_right_zero
+
+-- R001_PRIME_UPPER_EQUIV_RH
+#check Zeta23.ExceptionalZero.arithmeticSideSubexponential_iff_criticalLine
+#print axioms Zeta23.ExceptionalZero.arithmeticSideSubexponential_iff_criticalLine
+
+-- R001_WEIL_BRIDGE
+#check Zeta23.ExceptionalZero.filteredZeroFamily_weilZeroFilter_eq_literatureRHS
+#print axioms Zeta23.ExceptionalZero.filteredZeroFamily_weilZeroFilter_eq_literatureRHS
+
+-- R001_ZERO_GROWTH
+#check Zeta23.ExceptionalZero.exists_poleKilled_test_not_subexponential_of_right_zero
+#print axioms Zeta23.ExceptionalZero.exists_poleKilled_test_not_subexponential_of_right_zero
+
+-- R002_KERNEL_ZERO_SIDE_BRIDGE
+#check Zeta23.CCM.rawKernelZeroSideMatrix_eq_two_finiteMatrix_add_four_correction
+#print axioms Zeta23.CCM.rawKernelZeroSideMatrix_eq_two_finiteMatrix_add_four_correction
+
+-- R002_MULTI_PROBE_SEPARATION
+#check Zeta23.ExceptionalZero.not_onLineCombination_of_pairBlock
+#print axioms Zeta23.ExceptionalZero.not_onLineCombination_of_pairBlock
+
+-- R003_BOUNDARY_FLAT_EXACT_DIMENSION
+#check Zeta23.CCM.finrank_boundaryFlatSubspace
+#print axioms Zeta23.CCM.finrank_boundaryFlatSubspace
+
+-- R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION
+#check Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm
+#print axioms Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm
+
+-- R003_BOUNDARY_FLAT_MOMENT_FLAG
+#check Zeta23.CCM.boundaryFlat_moment_flag
+#print axioms Zeta23.CCM.boundaryFlat_moment_flag
+
+-- R003_BOUNDARY_FLAT_PROJECTION
+#check Zeta23.CCM.boundaryFlatProject_boundaryFlat
+#print axioms Zeta23.CCM.boundaryFlatProject_boundaryFlat
+
+-- R003_BOUNDARY_FLAT_WCONT_APPROXIMATION
+#check Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx
+#print axioms Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx
+
+-- R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE
+#check Zeta23.CCM.quadraticForm_re_eq_re_inner_apply_self
+#print axioms Zeta23.CCM.quadraticForm_re_eq_re_inner_apply_self
+
+-- R003_CANONICAL_EUCLIDEAN_SYMMETRIC
+#check Zeta23.CCM.canonicalSourceMatrix_toEuclideanLin_isSymmetric
+#print axioms Zeta23.CCM.canonicalSourceMatrix_toEuclideanLin_isSymmetric
+
+-- R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM
+#check Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget
+#print axioms Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget
+
+-- R003_CANONICAL_SOURCE_HERMITIAN
+#check Zeta23.CCM.canonicalSourceMatrix_isHermitian
+#print axioms Zeta23.CCM.canonicalSourceMatrix_isHermitian
+
+-- R003_CCM_BRIDGE
+#check Zeta23.CCM.zeroSideMatrix_eq_finiteMatrix_add_correction
+#print axioms Zeta23.CCM.zeroSideMatrix_eq_finiteMatrix_add_correction
+
+-- R003_CCM_RHS_IDENTITY
+#check Zeta23.CCM.literatureRHS_dictionaryTest_eq_quadraticForm
+#print axioms Zeta23.CCM.literatureRHS_dictionaryTest_eq_quadraticForm
+
+-- R003_CONSTRAINED_CANONICAL_DISPLACEMENT
+#check Zeta23.CCM.boundaryFlat_canonical_displacement_package
+#print axioms Zeta23.CCM.boundaryFlat_canonical_displacement_package
+
+-- R003_CONSTRAINED_PARITY_EXACT_DIMENSION
+#check Zeta23.CCM.finrank_euclideanEvenBoundaryFlatSubspace
+#print axioms Zeta23.CCM.finrank_euclideanEvenBoundaryFlatSubspace
+
+-- R003_CONSTRAINED_PARITY_LINEAR_EQUIV
+#check Zeta23.CCM.evenOddBoundaryFlatLinearEquiv
+#print axioms Zeta23.CCM.evenOddBoundaryFlatLinearEquiv
+
+-- R003_CONSTRAINED_REVERSAL_SYMMETRY
+#check Zeta23.CCM.canonicalSourceMatrix_mulVec_reverseCoefficients
+#print axioms Zeta23.CCM.canonicalSourceMatrix_mulVec_reverseCoefficients
+
+-- R003_CUTOFF_FREE_MATRIX_MAP
+#check Zeta23.CCM.zeroSideMatrix_eq_cutoffFreeMatrix
+#print axioms Zeta23.CCM.zeroSideMatrix_eq_cutoffFreeMatrix
+
+-- R003_DISPLACEMENT_TRANSFER
+#check Zeta23.ExceptionalZero.rank_displacement_le_two_of_eq_smul_add_scalar
+#print axioms Zeta23.ExceptionalZero.rank_displacement_le_two_of_eq_smul_add_scalar
+
+-- R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR
+#check Zeta23.CCM.finrank_euclideanBoundaryFlatSubspace
+#print axioms Zeta23.CCM.finrank_euclideanBoundaryFlatSubspace
+
+-- R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION
+#check Zeta23.ExceptionalZero.exists_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero
+
+-- R003_EUCLIDEAN_CONSTRAINED_NESTING
+#check Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanBoundaryFlatSubspace
+#print axioms Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanBoundaryFlatSubspace
+
+-- R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE
+#check Zeta23.CCM.canonicalSourceMatrix_displacement_mulVec_even_boundaryFlat
+#print axioms Zeta23.CCM.canonicalSourceMatrix_displacement_mulVec_even_boundaryFlat
+
+-- R003_EXACT_CENTERED_FINITE_NESTING
+#check Zeta23.CCM.canonicalSourceMatrix_submatrix_centeredEmbedding
+#print axioms Zeta23.CCM.canonicalSourceMatrix_submatrix_centeredEmbedding
+
+-- R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION
+#check Zeta23.ExceptionalZero.exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_offLine_zero
+
+-- R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED
+#check Zeta23.CCM.negative_eigenmode_not_centeredImage
+#print axioms Zeta23.CCM.negative_eigenmode_not_centeredImage
+
+-- R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO
+#check Zeta23.ExceptionalZero.exists_firstBadParity_negativeEigenmode_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_firstBadParity_negativeEigenmode_of_offLine_zero
+
+-- R003_FIRST_BAD_PARITY_ONE_DIM_SHELL
+#check Zeta23.ExceptionalZero.exists_leastParityBad_oneDimShell_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_leastParityBad_oneDimShell_of_offLine_zero
+
+-- R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO
+#check Zeta23.ExceptionalZero.exists_firstBadParity_shell_KKT_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_firstBadParity_shell_KKT_of_offLine_zero
+
+-- R003_FIRST_BAD_SHELL_PROJECTION
+#check Zeta23.CCM.negative_eigenmode_paritySuccShell_projection_ne_zero
+#print axioms Zeta23.CCM.negative_eigenmode_paritySuccShell_projection_ne_zero
+
+-- R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO
+#check Zeta23.ExceptionalZero.exists_fixedAperture_parityBad_tail_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_fixedAperture_parityBad_tail_of_offLine_zero
+
+-- R003_GLOBAL_BOTTOM_BRANCH_PACKAGE
+#check Zeta23.CCM.GlobalBottomResidualState.exists_branchPackage
+#print axioms Zeta23.CCM.GlobalBottomResidualState.exists_branchPackage
+
+-- R003_GLOBAL_BOTTOM_GROUND_TRIAL
+#check Zeta23.CCM.GlobalBottomResidualState.groundTrial_eigenmode
+#print axioms Zeta23.CCM.GlobalBottomResidualState.groundTrial_eigenmode
+
+-- R003_GLOBAL_BOTTOM_PRIME_WEIGHT
+#check Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral
+#print axioms Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral
+
+-- R003_GLOBAL_PARITY_BOTTOM_SPECTRUM
+#check Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad
+#print axioms Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad
+
+-- R003_KERNEL_EF_EXTENSION
+#check Zeta23.CCM.dictionaryTransform_zero_sum_eq_literatureRHS
+#print axioms Zeta23.CCM.dictionaryTransform_zero_sum_eq_literatureRHS
+
+-- R003_LEAST_PARITY_BAD_SHELL
+#check Zeta23.CCM.finrank_euclideanParitySuccShell
+#print axioms Zeta23.CCM.finrank_euclideanParitySuccShell
+
+-- R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION
+#check Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_cutoffFreeQuadraticForm
+#print axioms Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_cutoffFreeQuadraticForm
+
+-- R003_LOCALIZED_BASIS_CORRELATION
+#check Zeta23.CCM.hardWindowCharacterCorrelation_eq_qBasis
+#print axioms Zeta23.CCM.hardWindowCharacterCorrelation_eq_qBasis
+
+-- R003_LOCALIZED_FINITE_SPACE_CORRELATION
+#check Zeta23.CCM.localizedWeilCorrelation_finiteVector_eq_two_mul_dictionaryTest
+#print axioms Zeta23.CCM.localizedWeilCorrelation_finiteVector_eq_two_mul_dictionaryTest
+
+-- R003_LOCALIZED_UNIFORM_C2_APPROXIMATION
+#check Zeta23.CCM.exists_localizedFinite_uniform_C2_approx
+#print axioms Zeta23.CCM.exists_localizedFinite_uniform_C2_approx
+
+-- R003_NEGATIVE_WEIL_TEST_CONTRACTION
+#check Zeta23.ExceptionalZero.exists_poleNeutral_negativeWeilTest_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_poleNeutral_negativeWeilTest_of_offLine_zero
+
+-- R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION
+#check Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero
+
+-- R003_PARITY_BAD_NEGATIVE_EIGENMODE
+#check Zeta23.CCM.exists_negative_eigenmode_of_parityBad
+#print axioms Zeta23.CCM.exists_negative_eigenmode_of_parityBad
+
+-- R003_PARITY_BAD_NFLOW
+#check Zeta23.CCM.parityBad_persists_of_le
+#print axioms Zeta23.CCM.parityBad_persists_of_le
+
+-- R003_PARITY_COMPRESSION_RANK_ONE_DEFECT
+#check Zeta23.CCM.finrank_range_conjugatedParityCompressionDefect_le_one
+#print axioms Zeta23.CCM.finrank_range_conjugatedParityCompressionDefect_le_one
+
+-- R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION
+#check Zeta23.CCM.parityCompressedCanonical_isSymmetric
+#print axioms Zeta23.CCM.parityCompressedCanonical_isSymmetric
+
+-- R003_PARITY_NORMAL_KKT
+#check Zeta23.CCM.parityKKTResidual_of_eigenmode
+#print axioms Zeta23.CCM.parityKKTResidual_of_eigenmode
+
+-- R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW
+#check Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanOddBoundaryFlatSubspace
+#print axioms Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanOddBoundaryFlatSubspace
+
+-- R003_PARITY_QUADRATIC_SPLIT
+#check Zeta23.CCM.quadraticForm_evenPart_add_oddPart
+#print axioms Zeta23.CCM.quadraticForm_evenPart_add_oddPart
+
+-- R003_RESIDUAL_C2
+#check Zeta23.CCM.dictionaryResidualTest_admissible
+#print axioms Zeta23.CCM.dictionaryResidualTest_admissible
+
+-- R003_SOURCE_KAPPA_FINITE_SECTOR
+#check Zeta23.CCM.sourceKappaFiniteVector_eq_sourceFiniteVector
+#print axioms Zeta23.CCM.sourceKappaFiniteVector_eq_sourceFiniteVector
+
+-- R003_SOURCE_NORMALIZATION_REPAIR
+#check Zeta23.CCM.canonicalSourceMatrix_eq_legacyPrintedMatrix_add_correction
+#print axioms Zeta23.CCM.canonicalSourceMatrix_eq_legacyPrintedMatrix_add_correction
+
+-- R003_SOURCE_WEIL_NORMALIZATION_FIREWALL
+#check Zeta23.CCM.sourceEq44Matrix_eq_cutoffFreeMatrix
+#print axioms Zeta23.CCM.sourceEq44Matrix_eq_cutoffFreeMatrix
+
+-- R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS
+#check Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeLocalizedWeilAdditiveRHS_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeLocalizedWeilAdditiveRHS_of_offLine_zero
+
+-- R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST
+#check Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero
+
+-- R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER
+#check Zeta23.ExceptionalZero.exists_boundaryFlatFinite_negativeW_of_strictAperture
+#print axioms Zeta23.ExceptionalZero.exists_boundaryFlatFinite_negativeW_of_strictAperture
+
+-- R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY
+#check Zeta23.CCM.re_inner_successor_nonnegative_on_centeredImage
+#print axioms Zeta23.CCM.re_inner_successor_nonnegative_on_centeredImage
+
+-- R003_TENT_ANALYTICS
+#check Zeta23.CCM.dictionaryTent_analytic_package
+#print axioms Zeta23.CCM.dictionaryTent_analytic_package
+
+-- R003_TENT_EF_EXTENSION
+#check Zeta23.CCM.dictionaryTent_explicitFormula
+#print axioms Zeta23.CCM.dictionaryTent_explicitFormula
+
+-- R003_TENT_MOLLIFIER_ARCHITECTURE
+#check Zeta23.CCM.dictionaryTent_mollifier_architecture_package
+#print axioms Zeta23.CCM.dictionaryTent_mollifier_architecture_package
+
+-- R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION
+#check Zeta23.ExceptionalZero.exists_unit_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_unit_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero
+
+-- R003_WEIL_COMMON_SUPPORT_BOUND
+#check Zeta23.ExceptionalZero.zeta_W_norm_le_commonSupport
+#print axioms Zeta23.ExceptionalZero.zeta_W_norm_le_commonSupport
+
+-- R003_WEIL_DISPLACEMENT
+#check Zeta23.CCM.rank_zeroSideMatrix_displacement_le_two
+#print axioms Zeta23.CCM.rank_zeroSideMatrix_displacement_le_two
+
+-- R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE
+#check Zeta23.ExceptionalZero.zeta_W_self_eq_localizedWeilAdditiveRHS
+#print axioms Zeta23.ExceptionalZero.zeta_W_self_eq_localizedWeilAdditiveRHS
+
+-- R003_WEIL_PAIR_LITERATURE_BRIDGE
+#check Zeta23.ExceptionalZero.zeta_W_literatureRHS_package
+#print axioms Zeta23.ExceptionalZero.zeta_W_literatureRHS_package
+
+-- R004_CCM_DISPLACEMENT_FORMAL
+#check Zeta23.CCM.rank_canonicalSourceMatrix_displacement_le_two
+#print axioms Zeta23.CCM.rank_canonicalSourceMatrix_displacement_le_two
+
