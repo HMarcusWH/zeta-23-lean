@@ -13,7 +13,6 @@ GENERATED = GRAPH / "generated"
 GRAPH_SCHEMA = GRAPH / "GRAPH_SCHEMA.json"
 
 FORBIDDEN_CURRENT_RELATIONS = {
-    "USES_CONSTANT",
     "DEPENDS_ON",
     "KILLS_ROUTE",
     "REOPENS",
@@ -257,6 +256,7 @@ def main() -> int:
     local_module_ids = {m["id"] for m in local_modules}
     local_module_by_path = {m["path"]: m for m in local_modules}
     declaration_ids = {d["id"] for d in lean_declarations}
+    declaration_by_id = {d["id"]: d for d in lean_declarations}
     claim_node_ids = {
         n["id"] for n in registry_nodes if n["type"] == "RegisteredClaim"
     }
@@ -289,15 +289,41 @@ def main() -> int:
                 errors.append(f"DECLARES source is not a local module: {rel}")
             if rel["target"] not in declaration_ids:
                 errors.append(f"DECLARES target is not a LeanDeclaration: {rel}")
-            if rel.get("provenance") != "REGISTRY_EXACT":
-                errors.append(f"Phase-2A DECLARES provenance is not REGISTRY_EXACT: {rel}")
+            target_decl = declaration_by_id.get(rel["target"])
+            expected_provenance = (
+                "REGISTRY_EXACT"
+                if target_decl and target_decl.get("graph_role") == "REGISTERED_CLAIM_ROOT"
+                else "LEAN_ENV_EXACT"
+            )
+            if rel.get("provenance") != expected_provenance:
+                errors.append(
+                    f"DECLARES provenance drift: {rel.get('provenance')} != "
+                    f"{expected_provenance}: {rel}"
+                )
         if rel.get("kind") == "PROVES":
             if rel["source"] not in declaration_ids:
                 errors.append(f"PROVES source is not a LeanDeclaration: {rel}")
             if rel["target"] not in claim_node_ids:
                 errors.append(f"PROVES target is not a RegisteredClaim: {rel}")
+            source_decl = declaration_by_id.get(rel["source"])
+            if source_decl and source_decl.get("graph_role") != "REGISTERED_CLAIM_ROOT":
+                errors.append(f"non-root declaration has PROVES edge: {rel}")
             if rel.get("provenance") != "REGISTRY_EXACT":
-                errors.append(f"Phase-2A PROVES provenance is not REGISTRY_EXACT: {rel}")
+                errors.append(f"PROVES provenance is not REGISTRY_EXACT: {rel}")
+        if rel.get("kind") == "USES_CONSTANT":
+            if rel["source"] not in declaration_ids or rel["target"] not in declaration_ids:
+                errors.append(f"USES_CONSTANT endpoints are not declarations: {rel}")
+            if rel["source"] == rel["target"]:
+                errors.append(f"USES_CONSTANT self-edge: {rel}")
+            if rel.get("provenance") != "LEAN_ENV_EXACT":
+                errors.append(f"USES_CONSTANT provenance is not LEAN_ENV_EXACT: {rel}")
+            flags = [
+                rel.get("used_in_type"),
+                rel.get("used_in_value"),
+                rel.get("used_in_structure"),
+            ]
+            if not all(isinstance(flag, bool) for flag in flags) or not any(flags):
+                errors.append(f"USES_CONSTANT channel metadata invalid: {rel}")
 
 
     expected_artifact_classes = {
@@ -392,67 +418,113 @@ def main() -> int:
         elif registered.get("theorem") != row.get("theorem"):
             errors.append(f"historical R003 theorem drift in complete manifest: {claim_id}")
 
+    compiler_receipt = graph_build.load_compiler_dependency_receipt()
+    compiler_by_name = {row["declaration"]: row for row in compiler_receipt}
     declaration_by_name = {d["declaration"]: d for d in lean_declarations}
-    expected_declarations: dict[str, dict] = {}
+    if set(declaration_by_name) != set(compiler_by_name):
+        errors.append(
+            "compiler declaration population mismatch: "
+            f"missing={sorted(set(compiler_by_name) - set(declaration_by_name))} "
+            f"extra={sorted(set(declaration_by_name) - set(compiler_by_name))}"
+        )
+
     expected_declares: set[tuple[str, str]] = set()
     expected_proves: set[tuple[str, str]] = set()
+    expected_uses: dict[tuple[str, str], tuple[bool, bool, bool]] = {}
+    binding_by_theorem = {row["theorem"]: row for row in registered_bindings["bindings"]}
 
-    for claim_id, claim in proved_claims.items():
-        binding = binding_by_id.get(claim_id)
-        if binding is None:
-            continue
-        expected_binding = {
-            "id": claim_id,
-            "theorem": claim.get("theorem"),
-            "source": claim.get("source"),
-        }
-        if claim.get("route"):
-            expected_binding["route"] = claim["route"]
-        if binding != expected_binding:
-            errors.append(
-                f"registered theorem binding row drift for {claim_id}: "
-                f"expected={expected_binding!r} actual={binding!r}"
-            )
-            continue
-
-        source_path = binding["source"]
-        module = local_module_by_path.get(source_path)
-        if module is None:
-            errors.append(
-                "registered theorem binding source is not an indexed local Lean module: "
-                f"{claim_id} -> {source_path!r}"
-            )
-            continue
-
-        decl_id = graph_build.declaration_id(binding["theorem"])
-        expected = {
-            "id": decl_id,
-            "type": "LeanDeclaration",
-            "declaration": binding["theorem"],
-            "module": module["module"],
-            "module_id": module["id"],
-            "source_path": source_path,
-            "source_file_id": module["file_id"],
-            "binding_scope": "REGISTERED_PROVED",
-            "authority_role": "REGISTERED_CLAIM_DECLARATION",
-            "binding_source": graph_build.REGISTERED_BINDINGS,
-            "compiler_binding_source": graph_build.REGISTERED_BINDINGS_LEAN,
-            "historical_r003_promoted": claim_id in promoted_by_id,
-            "source_locator": module["source_locator"],
-        }
-        expected_declarations[binding["theorem"]] = expected
-        expected_declares.add((module["id"], decl_id))
-        expected_proves.add((decl_id, graph_build.claim_id(claim_id)))
-
-    if set(declaration_by_name) != set(expected_declarations):
+    receipt_root_names = {
+        row["declaration"]
+        for row in compiler_receipt
+        if row.get("graph_role") == "REGISTERED_CLAIM_ROOT"
+    }
+    if receipt_root_names != set(binding_by_theorem):
         errors.append(
-            "registered proved Lean declaration population mismatch: "
-            f"missing={sorted(set(expected_declarations) - set(declaration_by_name))} "
-            f"extra={sorted(set(declaration_by_name) - set(expected_declarations))}"
+            "compiler receipt registered-root set mismatch: "
+            f"missing={sorted(set(binding_by_theorem) - receipt_root_names)} "
+            f"extra={sorted(receipt_root_names - set(binding_by_theorem))}"
         )
-    for theorem, expected in expected_declarations.items():
-        if declaration_by_name.get(theorem) != expected:
-            errors.append(f"LeanDeclaration record drift for {theorem}")
+
+    local_module_by_name = {m["module"]: m for m in local_modules}
+    for compiler_row in compiler_receipt:
+        theorem = compiler_row["declaration"]
+        actual = declaration_by_name.get(theorem)
+        if actual is None:
+            continue
+        for field in (
+            "repository_scope",
+            "graph_role",
+            "declaration_kind",
+            "private_or_internal",
+            "module",
+        ):
+            if actual.get(field) != compiler_row.get(field):
+                errors.append(
+                    f"compiler declaration field drift for {theorem}: {field}"
+                )
+
+        scope = compiler_row["repository_scope"]
+        role = compiler_row["graph_role"]
+        module_name = compiler_row.get("module")
+        decl_id = graph_build.declaration_id(theorem)
+
+        if scope == "LOCAL":
+            module = local_module_by_name.get(module_name)
+            if module is None:
+                errors.append(
+                    f"compiler-local declaration module is not indexed: {theorem} -> {module_name}"
+                )
+            else:
+                if actual.get("module_id") != module["id"]:
+                    errors.append(f"compiler-local module_id drift for {theorem}")
+                if actual.get("source_path") != module["path"]:
+                    errors.append(f"compiler-local source_path drift for {theorem}")
+                if actual.get("source_file_id") != module["file_id"]:
+                    errors.append(f"compiler-local source_file_id drift for {theorem}")
+                expected_declares.add((module["id"], decl_id))
+        elif scope == "EXTERNAL":
+            if role != "EXTERNAL_BOUNDARY":
+                errors.append(f"external declaration has non-boundary role: {theorem}")
+            if actual.get("source_path") is not None:
+                errors.append(f"external declaration fabricates local source path: {theorem}")
+        else:
+            errors.append(f"unknown compiler declaration scope: {theorem} -> {scope}")
+
+        if role == "REGISTERED_CLAIM_ROOT":
+            binding = binding_by_theorem.get(theorem)
+            if binding is None:
+                errors.append(f"registered compiler root lacks binding: {theorem}")
+            else:
+                claim = claim_by_id[binding["id"]]
+                if actual.get("binding_scope") != "REGISTERED_PROVED":
+                    errors.append(f"registered root binding_scope drift: {theorem}")
+                if actual.get("authority_role") != "REGISTERED_CLAIM_DECLARATION":
+                    errors.append(f"registered root authority_role drift: {theorem}")
+                if actual.get("binding_source") != graph_build.REGISTERED_BINDINGS:
+                    errors.append(f"registered root binding_source drift: {theorem}")
+                if actual.get("compiler_binding_source") != graph_build.REGISTERED_BINDINGS_LEAN:
+                    errors.append(f"registered root compiler binding source drift: {theorem}")
+                if actual.get("historical_r003_promoted") != (binding["id"] in promoted_by_id):
+                    errors.append(f"registered root historical-R003 flag drift: {theorem}")
+                expected_proves.add((decl_id, graph_build.claim_id(binding["id"])))
+                if claim.get("status") != "PROVED_UNCONDITIONAL":
+                    errors.append(f"registered root claim is not proved: {binding['id']}")
+        elif role == "LOCAL_DEPENDENCY":
+            if actual.get("authority_role") != "DEPENDENCY_DECLARATION":
+                errors.append(f"local dependency authority_role drift: {theorem}")
+        elif role == "EXTERNAL_BOUNDARY":
+            if actual.get("authority_role") != "EXTERNAL_BOUNDARY_DECLARATION":
+                errors.append(f"external boundary authority_role drift: {theorem}")
+        else:
+            errors.append(f"unknown compiler graph role: {theorem} -> {role}")
+
+        for dep in compiler_row["dependencies"]:
+            key = (decl_id, graph_build.declaration_id(dep["constant"]))
+            expected_uses[key] = (
+                dep["used_in_type"],
+                dep["used_in_value"],
+                dep["used_in_structure"],
+            )
 
     actual_declares = {
         (rel["source"], rel["target"])
@@ -463,6 +535,15 @@ def main() -> int:
         (rel["source"], rel["target"])
         for rel in relations
         if rel.get("kind") == "PROVES"
+    }
+    actual_uses = {
+        (rel["source"], rel["target"]): (
+            rel.get("used_in_type"),
+            rel.get("used_in_value"),
+            rel.get("used_in_structure"),
+        )
+        for rel in relations
+        if rel.get("kind") == "USES_CONSTANT"
     }
     if actual_declares != expected_declares:
         errors.append(
@@ -475,6 +556,10 @@ def main() -> int:
             "PROVES relation projection mismatch: "
             f"missing={sorted(expected_proves - actual_proves)} "
             f"extra={sorted(actual_proves - expected_proves)}"
+        )
+    if actual_uses != expected_uses:
+        errors.append(
+            "USES_CONSTANT relation projection does not exactly match compiler receipt"
         )
 
     theorem_claim_map = json.loads(
@@ -490,6 +575,18 @@ def main() -> int:
         errors.append("THEOREM_CLAIM_MAP does not preserve RH_OPEN")
     if theorem_claim_map.get("graph_theorem_promotion") is not False:
         errors.append("THEOREM_CLAIM_MAP permits graph theorem promotion")
+
+    dependency_closure = json.loads(
+        (GENERATED / "THEOREM_DEPENDENCY_CLOSURE.json").read_text(encoding="utf-8")
+    )
+    if dependency_closure.get("scope") != "ALL_PROVED_UNCONDITIONAL_REGISTERED_CLAIMS":
+        errors.append("THEOREM_DEPENDENCY_CLOSURE scope drift")
+    if {row["claim_id"] for row in dependency_closure.get("entries", [])} != set(binding_by_id):
+        errors.append("THEOREM_DEPENDENCY_CLOSURE registered-root coverage drift")
+    if dependency_closure.get("terminal_claim") != "RH_OPEN":
+        errors.append("THEOREM_DEPENDENCY_CLOSURE does not preserve RH_OPEN")
+    if dependency_closure.get("graph_theorem_promotion") is not False:
+        errors.append("THEOREM_DEPENDENCY_CLOSURE permits graph theorem promotion")
 
     boundary = json.loads((REPO / graph_build.BOUNDARY).read_text(encoding="utf-8"))
     if boundary.get("terminal_claim_id") != "C_RH":
@@ -518,7 +615,9 @@ def main() -> int:
         "RHKG VALIDATION: PASS "
         f"({len(repo_files)} files; {len(local_modules)} local Lean modules; "
         f"{len(external_modules)} external import targets; "
-        f"{len(lean_declarations)} registered proved Lean declarations; "
+        f"{sum(d.get('graph_role') == 'REGISTERED_CLAIM_ROOT' for d in lean_declarations)} registered roots; "
+        f"{sum(d.get('graph_role') == 'LOCAL_DEPENDENCY' for d in lean_declarations)} local dependencies; "
+        f"{sum(d.get('graph_role') == 'EXTERNAL_BOUNDARY' for d in lean_declarations)} external boundaries; "
         f"{len(claim_nodes)} claim mirrors; {len(route_nodes)} route mirrors; "
         f"{len(relations)} relations; terminal claim RH_OPEN)"
     )
