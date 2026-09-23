@@ -1,4 +1,4 @@
-# Fork notes — RHRC current state through merged PR #245
+# Fork notes — RHRC current state through merged PR #247
 
 > **RH remains OPEN.**
 
@@ -6,33 +6,36 @@
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #245
-- validated final head = 766579346ec86b25d63fb61f8e0b46752a028f6c
-- merge commit = ad0347ef07e2c7717f88bd9d8bf7555be75ad88e
-- tree = 0466006ec23b3f24f6ea113b303014ae42a680dd
-- status = MERGED_VIA_PR_245
-- theorem family = TERMINAL_GATE_RH_EQUIVALENCE
-- exact equivalence theorem = `Zeta23.ExceptionalZero.noArbitrarilyLargeWholeCellRetainedFamily_iff_riemannHypothesis`
-- companion equivalence theorem = `Zeta23.ExceptionalZero.noRegularFirstBadCertificates_iff_riemannHypothesis`
-- proved equivalences = NoArbitrarilyLargeWholeCellRetainedFamily <-> RiemannHypothesis; NoRegularFirstBadCertificates <-> RiemannHypothesis
-- workflow harvest = 11/11 ATTACHED WORKFLOWS GREEN on the validated #245 head (13/13 check runs)
+- merged theorem authority = PR #247
+- validated final head = 7438f2a23750b1f4133c12b989eb9d81c1e99eea
+- merge commit = 070c0a08a924d0c917d5366755f9c4d50067ce51
+- tree = 1672e49e092682343a2eace1e8e6e4799c102f35
+- status = MERGED_VIA_PR_247
+- theorem family = GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL_REDUCTION
+- workflow harvest = 11/11 ATTACHED WORKFLOWS COMPLETED SUCCESSFULLY on the validated #247 head
 - terminal Mathlib RH seam = PROVED / PR #242
 - RH = OPEN
 
-POST-#245 TERMINAL STATE
-- whole-cell provenance preservation = PROVED / PR #243
-- arbitrary-large retained aperture family = PROVED / PR #243
-- PR #243 implication = off-line zero -> arbitrarily-large whole-cell bi-regular retained negative-energy certificates (`exists_arbitrarilyLarge_wholeCellBiRegular_negativeEnergyCertificate_of_offLine_zero`)
-- `NoRegularFirstBadCertificates` = RH-EQUIVALENT / PR #245
-- `NoArbitrarilyLargeWholeCellRetainedFamily` = RH-EQUIVALENT / PR #245
-- eventual generated-family aperture bound = OPEN / RH-EQUIVALENT
-- sub-RH gate remaining on this route = NONE
-- canonical prime-remainder normal form = CANDIDATE / POST-#245 ARITHMETIC-CRITERION PR / NOT YET THEOREM AUTHORITY
-- `CanonicalPrimeRemainderDominance` <-> RiemannHypothesis = CANDIDATE / POST-#245 ARITHMETIC-CRITERION PR
-- generated retained Riesz-six eventual nonnegativity <-> RiemannHypothesis = CANDIDATE / POST-#245 ARITHMETIC-CRITERION PR
-- contact theory = FALLBACK ONLY
-- simultaneous odd-bad exclusion = OPEN
-- odd-selected downstream orientation/closure = OPEN
+PR #246 ARITHMETIC NORMAL FORM
+- canonical weighted-von-Mangoldt prime-remainder normal form = PROVED / PR #246
+- CanonicalFiniteWeilPositivity <-> RiemannHypothesis = PROVED / PR #246
+- CanonicalRieszSixPositivity <-> RiemannHypothesis = PROVED / PR #246
+- GeneratedRetainedRieszSixEventuallyNonnegative <-> RiemannHypothesis = PROVED / PR #246
+- CanonicalPrimeRemainderDominance <-> RiemannHypothesis = PROVED / PR #246
+- GeneratedRetainedPrimeRemainderDominance <-> RiemannHypothesis = PROVED / PR #246
+- interpretation = RH-equivalent criteria / arithmetic normal forms, NOT a proof of RH
+
+PR #247 GLOBAL-BOTTOM REDUCTION
+- unconditional parity Rayleigh bottoms and successor global-bottom trichotomy = PROVED / PR #247
+- GlobalBottomResidualState -> dependent GlobalBottomBranchPackage = PROVED / PR #247
+- residual-state true global-ground trial is nonzero and an exact eigenmode = PROVED / PR #247
+- residual-state ground channel energy = lambda_* * ||u_*||^2 < 0 = PROVED / PR #247
+- same true ground trial satisfies the #246 prime-remainder failure = PROVED / PR #247
+- primeTestWeight is continuous and primeRemainderEnergy has the exact weighted-remainder integral = PROVED / PR #247
+- off-line zero -> arbitrarily-large GlobalBottomArithmeticResidual = PROVED / PR #247
+- GlobalBottomResidualExclusion <-> RiemannHypothesis = PROVED / AUDIT-ONLY / PR #247
+- active route stops at GlobalBottomArithmeticResidual
+- RH = OPEN
 
 RESEARCH / REGRESSION HARVEST
 - PR #223 remains the latest independent bounded research evidence anchor
@@ -43,18 +46,48 @@ RESEARCH / REGRESSION HARVEST
 - post-222 = NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED
 - theorem promotion from research replays = false
 
+CURRENT RESEARCH PROGRAM
+- active programme = RIEMANN_WEARING_GLASSES_V2
+- next research target = UNCONDITIONAL_GROUND_SPECTRUM_ATLAS
+- required new information = NONVACUOUS_ARITHMETIC_CONTROL_OF_GROUND_SPECTRUM_ACROSS_PRIME_POWER_THRESHOLDS
+- secondary route = THRESHOLD_LOCAL_FIRST_CROSSING_BARRIER
+- full-space <-> boundary-flat <-> parity spectral bridge = ACTIVE LEAD
+- R004 prolate/full-space ground-space bridge = RESURRECTED LEAD
+- Pair-D = GENERIC LINEAR-ALGEBRA FILTER ONLY
+- planted off-line canonical-style control = TO BUILD / PRIMARY FALSIFIER
+- global aperture Loewner monotonicity = QUARANTINED / DR-021
+- global minimizing-Schur monotonicity = QUARANTINED / DR-022
+- exact-equality holonomy = DROPPED / TAUTOLOGICAL
+- ordinary Hilbert-space Gram PSD = DROPPED / TAUTOLOGICAL
+- relation zeta = PARKED / SPECULATIVE
+- small-aperture positive base = OPEN
+- multiplicity-safe fixed-cell L dynamics = OPEN
+- exact prime-power threshold update for the unconditional ground spectrum = OPEN
+
 CONTROL AUTHORITY
-- PR #117
-- selected formal first break = E4A4-SCHUR-FB-05
-- active subobligation = OBS-059I
-- historical target GENERATED_FAMILY_FINAL_GATE = RH-EQUIVALENT / PR #245
-- historical required information EVENTUAL_CANONICAL_UPPER_BOUND_ON_WHOLE_CELL_RETAINED_APERTURE = RH-EQUIVALENT / PR #245
-- next research target = CANONICAL_PRIME_REMAINDER_DOMINANCE
-- required new information = RH_STRENGTH_WEIGHTED_CHEBYSHEV_REMAINDER_INFORMATION
+- PR #117 remains the Control-v2 semantic authority
+- selected formal first break = E4A4-SCHUR-FB-05 (historical/frozen control semantics)
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#247 programme override
+
+PR #246 and PR #247 supersede older "current", "next", and candidate labels below. Historical sections are retained as provenance unless this override explicitly reactivates them.
+
+The active research interpretation is **Riemann Wearing Glasses v2**: one canonical Weil object is viewed through exact spectral, carrier, source and arithmetic coordinates. Coordinate changes do not create information; they are used to expose a nonvacuous arithmetic/analytic law on unconditional objects. Residual-state-only compatibility laws cannot count as new closure information merely because they are renamed: #247 proves residual-state exclusion itself is RH-equivalent.
+
+Canonical post-#247 programme: research/RHRC/routes/R003_ccm_bridge/POST_247_RIEMANN_WEARING_GLASSES_PROGRAM.md. Frozen post-green deltas: RESEARCH_LEADS_POST_247_GLOBAL_BOTTOM_GLASSES_DELTA.md, OBSTRUCTION_LEDGER_POST_247_DELTA.md, and DEAD_ROUTES_POST_247_DELTA.md.
+
+**Claim firewall:** RH remains OPEN.
+
+## Post-#247 fork note
+
+#246 changed the terminal arithmetic question from an unnamed "last lemma" to an exact weighted-von-Mangoldt remainder criterion and simultaneously proved the obvious universal formulations RH-equivalent. #247 then moved the same arithmetic failure onto the true globally aligned ground trial and attached the even/odd/tie branch geometry to that state.
+
+The fork now treats the next problem as **unconditional ground-spectrum dynamics**, not as another renamed universal residual closure.
+
 
 ## Post-#237 fork note
 
