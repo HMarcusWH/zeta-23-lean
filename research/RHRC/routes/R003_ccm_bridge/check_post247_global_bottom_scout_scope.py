@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Scope check for the frozen PR #247 global-bottom scout."""
+"""Scope and semantics check for the frozen PR #247 global-bottom scout."""
 from __future__ import annotations
 
 import json
@@ -26,9 +26,12 @@ def main() -> int:
     assert got == expected
     assert fixture["successor_K"] == 3
     assert fixture["predecessor_N"] == 2
+    assert fixture["selection_head"] == "2a94647b25bf4e4c7dc9c94ef692cd48c1bd4674"
     assert fixture["policy"]["adaptive_search_permitted"] is False
     assert fixture["policy"]["threshold_refit_permitted"] is False
     assert fixture["policy"]["theorem_promotion_permitted"] is False
+    assert "bad_regime" in fixture["observables"]
+    assert "applicable_branch" in fixture["observables"]
 
     for forbidden in (
         "optimize.",
@@ -38,6 +41,9 @@ def main() -> int:
         "np.random",
     ):
         assert forbidden not in text
+
+    assert "def classify_bottoms" in text
+    assert 'applicable = "NONE"' in text
 
     print("POST247 GLOBAL BOTTOM SCOUT SCOPE: PASS")
     return 0
