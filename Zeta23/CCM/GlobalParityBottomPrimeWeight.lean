@@ -43,10 +43,14 @@ theorem GlobalBottomResidualState.continuous_primeTestWeight
       (s.groundTrial : EuclideanSpace ℂ
         (Fin (2 * (s.aligned.firstBad.Nstar + 1) + 1)))
   have hd := hsmooth.continuous_deriv (by simp)
-  simpa [GlobalBottomResidualState.primeTestWeight] using
-    hd.comp
-      (continuous_const.sub
-        (continuous_id.div_const s.aligned.firstBad.L))
+  change Continuous (fun t : ℝ =>
+    deriv
+      (sourceAtomRealEnergy
+        (s.aligned.firstBad.Nstar + 1)
+        (s.groundTrial : EuclideanSpace ℂ
+          (Fin (2 * (s.aligned.firstBad.Nstar + 1) + 1))))
+      (1 - t / s.aligned.firstBad.L))
+  fun_prop
 
 /-- Exact prime-remainder pairing against the named true-ground weight. -/
 theorem GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral
