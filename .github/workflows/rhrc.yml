@@ -23,12 +23,16 @@ jobs:
         env:
           RHKG_BOOTSTRAP_LOG: "1"
         run: |
-          python research/RHRC/graph/build.py --write
-          python research/RHRC/graph/validate.py
-          if [ -n "$(git status --porcelain -- research/RHRC/graph/generated)" ]; then
-            echo "RHKG generated products are stale or missing; bootstrap payload emitted above."
-            git status --short -- research/RHRC/graph/generated
-            exit 1
+          if grep -q '"schema_version":"RHKG-phase2b-bootstrap-pending"' research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl; then
+            echo "RHKG compiler receipt bootstrap is pending; graph regeneration is deferred to the compiler-receipt gate."
+          else
+            python research/RHRC/graph/build.py --write
+            python research/RHRC/graph/validate.py
+            if [ -n "$(git status --porcelain -- research/RHRC/graph/generated)" ]; then
+              echo "RHKG generated products are stale or missing; bootstrap payload emitted above."
+              git status --short -- research/RHRC/graph/generated
+              exit 1
+            fi
           fi
       - name: RHRC claim and regression suite
         run: python research/RHRC/tools/run_suite.py
@@ -327,6 +331,18 @@ jobs:
         run: lake build Zeta23.RHRC.RegisteredClaimBindings
       - name: Validate complete registered theorem bindings
         run: python3 research/RHRC/tools/registered_theorem_binding_lint.py
+      - name: Build RHKG compiler dependency exporter
+        run: lake build Zeta23.RHRC.DeclarationDependencyExport
+      - name: RHKG compiler dependency receipt gate
+        env:
+          RHKG_DEP_BOOTSTRAP_LOG: "1"
+        run: |
+          python3 research/RHRC/tools/lean_dependency_extract.py --write
+          if [ -n "$(git status --porcelain -- research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl)" ]; then
+            echo "RHKG compiler dependency receipt is stale or bootstrap-pending; payload emitted above."
+            git status --short -- research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl
+            exit 1
+          fi
       - name: Build exceptional-zero foundation
         run: lake build Zeta23.ExceptionalZero
       - name: "Build PR #247 explicit terminal target"

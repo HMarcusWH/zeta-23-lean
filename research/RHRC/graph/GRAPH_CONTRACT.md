@@ -1,7 +1,7 @@
-# RHKG Phase-2A Graph Contract
+# RHKG Phase-2B Graph Contract
 
-**Version:** 0.3  
-**Scope:** Phase-1 repository census/import graph plus complete exact registered proved declaration/claim bindings  
+**Version:** 0.4  
+**Scope:** Phase-1 repository census/import graph plus complete registered theorem bindings and compiler-derived declaration dependencies  
 **Authority:** derived only; subordinate to the RHKG Constitution and existing RHRC sources
 
 ## 1. Stable IDs
@@ -20,7 +20,7 @@ Concept identity is separate from Git revision identity. Subject `RepoFile`
 records carry their current Git blob hash. Generated RHKG products deliberately
 do not carry their own blob hash, preventing recursive self-hashing.
 
-## 2. Node types through Phase 2A
+## 2. Node types through Phase 2B
 
 - `Repository`
 - `RepoFile`
@@ -40,7 +40,7 @@ carry no additional scientific interpretation.
 External Lean imports are represented as `LeanModule` records with
 `repository_scope = EXTERNAL`; they are not treated as local formal authority.
 
-## 3. Relations through Phase 2A
+## 3. Relations through Phase 2B
 
 Phase 1 structural relations remain:
 
@@ -64,7 +64,9 @@ The Phase-2A declaration population is complete over the exact reviewed
 `R003_PROMOTED_BINDINGS.json` surface remains an independently linted historical
 subset. RHKG does not discover or promote new claims.
 
-Phase 2A MUST NOT emit `USES_CONSTANT`, mathematical `DEPENDS_ON`,
+Phase 2B additionally authorizes `LeanDeclaration USES_CONSTANT LeanDeclaration`
+with provenance `LEAN_ENV_EXACT`. `IMPORTS` remains distinct from declaration
+usage. Phase 2B still MUST NOT emit semantic mathematical `DEPENDS_ON`,
 `KILLS_ROUTE`, `REOPENS`, or scientific supersession edges.
 
 ## 4. Provenance
@@ -82,7 +84,9 @@ continues to independently protect the frozen R003 promoted subset. Phase 2A doe
 not yet claim elaborated declaration dependency provenance; that belongs to the
 later `USES_CONSTANT` phase.
 
-No text-mined or LLM-derived relation is emitted through Phase 2A.
+- compiler-derived declaration usage: `LEAN_ENV_EXACT`
+
+No text-mined or LLM-derived relation is emitted through Phase 2B.
 
 ## 5. Import semantics
 
@@ -121,9 +125,12 @@ all other imports            -> explicit EXTERNAL LeanModule
 
 generated regeneration       = byte-deterministic
 registered proved declarations = all PROVED_UNCONDITIONAL claims exact
-historical R003 subset          = R003_PROMOTED_BINDINGS exact
-DECLARES projection            = exact
-PROVES projection              = exact
+compiler receipt roots           = registered theorem bindings exact
+local dependency closure          = compiler receipt exact
+historical R003 subset            = R003_PROMOTED_BINDINGS exact
+DECLARES projection               = exact
+PROVES projection                 = exact
+USES_CONSTANT projection          = compiler receipt exact
 unlinked registered claims     = exactly OPEN claims
 terminal claim               = RH_OPEN
 graph theorem promotion      = false
@@ -201,7 +208,37 @@ set. At this state that set is:
 
 An unlinked OPEN claim is not a graph error. Binding one of these as proved is.
 
-Repository-wide declaration discovery beyond registered theorem authority and
-declaration-level `USES_CONSTANT` edges remain deferred.
+Repository-wide declaration census beyond the compiler-reachable closure remains
+deferred. Phase 2B only follows local `Zeta23` dependencies rooted at the complete
+registered proved theorem surface; external dependencies terminate at explicit
+boundary declarations.
+
+**RH remains OPEN.**
+
+
+## 12. Phase-2B compiler-derived declaration dependencies
+
+The checked-in compiler receipt is
+`research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl`.
+It is derived from the pinned Lean environment by
+`Zeta23/RHRC/DeclarationDependencyExport.lean` and
+`research/RHRC/tools/lean_dependency_extract.py`.
+
+For every compiler-reachable declaration, the receipt records declaration kind,
+module, local/external scope, internal/private status, graph role, and exact direct
+constant usage split into type, value/proof body, and structural channels.
+
+The recursive traversal begins at every theorem in
+`REGISTERED_THEOREM_BINDINGS.json`, follows only declarations whose defining
+module is local `Zeta23`, and retains external constants as non-recursive boundary
+nodes. The graph must project this receipt exactly.
+
+A dependency present in more than one channel remains one conceptual
+`USES_CONSTANT` edge under the stable relation identity
+`sha256(kind|source|target)`; channel booleans are metadata on that edge.
+
+`REGISTERED_CLAIM_ROOT` declarations are the only declarations permitted to
+participate in `PROVES`. `LOCAL_DEPENDENCY` and `EXTERNAL_BOUNDARY` declarations
+never acquire theorem authority merely by appearing in the dependency graph.
 
 **RH remains OPEN.**
