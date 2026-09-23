@@ -48,9 +48,6 @@ import Zeta23.CCM.GlobalParityBottomSpectrum
 import Zeta23.CCM.GlobalParityBottomBranchPackage
 import Zeta23.CCM.GlobalParityBottomGroundTrial
 import Zeta23.CCM.GlobalParityBottomPrimeWeight
-import Zeta23.ExceptionalZero.CanonicalArithmeticCriterion
-import Zeta23.ExceptionalZero.GlobalParityBottomTerminalTarget
-import Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit
 /-!
 R003 promoted-claim completeness is machine-checked by research/RHRC/tools/promoted_binding_lint.py against research/RHRC/R003_PROMOTED_BINDINGS.json and CLAIM_REGISTRY.json. Supporting #check declarations may exist without registry promotion; every PROVED_UNCONDITIONAL R003 registry theorem must have both #check and #print axioms here.
 
@@ -573,8 +570,6 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 -- # Post-#247 promoted bindings
 #check Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget
 #print axioms Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget
-#check Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis
-#print axioms Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis
 #check Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad
 #print axioms Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad
 #check Zeta23.CCM.GlobalBottomResidualState.exists_branchPackage
@@ -583,7 +578,3 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.CCM.GlobalBottomResidualState.groundTrial_eigenmode
 #check Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral
 #print axioms Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral
-#check Zeta23.ExceptionalZero.exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_offLine_zero
-#print axioms Zeta23.ExceptionalZero.exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_offLine_zero
-#check Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis
-#print axioms Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis

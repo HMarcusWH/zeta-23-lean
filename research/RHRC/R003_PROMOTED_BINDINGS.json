@@ -245,10 +245,6 @@
       "theorem": "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget"
     },
     {
-      "id": "R003_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
-      "theorem": "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis"
-    },
-    {
       "id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
       "theorem": "Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad"
     },
@@ -263,14 +259,6 @@
     {
       "id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
       "theorem": "Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral"
-    },
-    {
-      "id": "R003_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
-      "theorem": "Zeta23.ExceptionalZero.exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_offLine_zero"
-    },
-    {
-      "id": "R003_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
-      "theorem": "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis"
     }
   ]
 }

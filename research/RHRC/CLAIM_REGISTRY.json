@@ -953,7 +953,7 @@
       "note": "PR #246 arithmetic normal form. This is an identity, not an RH proof."
     },
     {
-      "id": "R003_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
       "statement": "CanonicalPrimeRemainderDominance is equivalent to Mathlib.RiemannHypothesis; companion finite-Weil, Riesz-six and generated-family criteria are likewise theoremized as RH-equivalent.",
       "status": "PROVED_UNCONDITIONAL",
       "dependencies": [
@@ -961,9 +961,8 @@
       ],
       "source": "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean",
       "theorem": "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis",
-      "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "PR #246 anti-circularity audit. The equivalence theorem does not prove either side unconditionally; RH remains OPEN."
+      "note": "PR #246 anti-circularity audit. The equivalence theorem does not prove either side unconditionally; RH remains OPEN. This claim is intentionally not bound through the R003 CCM root because the arithmetic anti-circularity firewall forbids terminal ExceptionalZero imports into Zeta23.CCM."
     },
     {
       "id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
@@ -1020,7 +1019,7 @@
       "note": "PR #247 same-witness arithmetic interface."
     },
     {
-      "id": "R003_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "statement": "Every hypothetical off-line zeta zero produces branch-constrained GlobalBottomArithmeticResidual states at arbitrarily large aperture, with the #246 prime-remainder failure imposed on the same true global-ground trial.",
       "status": "PROVED_UNCONDITIONAL",
       "dependencies": [
@@ -1029,12 +1028,11 @@
       ],
       "source": "Zeta23/ExceptionalZero/GlobalParityBottomTerminalTarget.lean",
       "theorem": "Zeta23.ExceptionalZero.exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_offLine_zero",
-      "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "PR #247 active reduction endpoint. A specific new unconditional arithmetic/spectral exclusion is still OPEN."
+      "note": "PR #247 active reduction endpoint. A specific new unconditional arithmetic/spectral exclusion is still OPEN. This claim is intentionally not bound through the R003 CCM root because the arithmetic anti-circularity firewall forbids terminal ExceptionalZero imports into Zeta23.CCM."
     },
     {
-      "id": "R003_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
       "statement": "The proposition that no GlobalBottomResidualState exists is equivalent to Mathlib.RiemannHypothesis.",
       "status": "PROVED_UNCONDITIONAL",
       "dependencies": [
@@ -1042,9 +1040,8 @@
       ],
       "source": "Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean",
       "theorem": "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis",
-      "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "PR #247 AUDIT-ONLY. This mechanically warns that a universal law which merely excludes every residual state is RH-strength/vacuous under RH; it is not active closure information."
+      "note": "PR #247 AUDIT-ONLY. This mechanically warns that a universal law which merely excludes every residual state is RH-strength/vacuous under RH; it is not active closure information. This claim is intentionally not bound through the R003 CCM root because the arithmetic anti-circularity firewall forbids terminal ExceptionalZero imports into Zeta23.CCM."
     }
   ]
 }
