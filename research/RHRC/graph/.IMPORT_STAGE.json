@@ -674,6 +674,167 @@
         "Zeta23.CCM.CanonicalSourceEnergyJets",
         "Zeta23.CCM.CanonicalPolePrimeRiesz"
       ]
+    },
+    {
+      "path": "Zeta23/CCM/CellMinimalBiRegularFirstBad.lean",
+      "blob_sha": "e7d370b063b67b1d8d689e145de52017d2911de2",
+      "imports": [
+        "Zeta23.CCM.CellMinimalRegularFirstBad"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CellMinimalRegularFirstBad.lean",
+      "blob_sha": "9fe182722404ea20f1317352e2e6e6c93c491e74",
+      "imports": [
+        "Zeta23.CCM.LiftedPredecessorRegularity",
+        "Zeta23.CCM.CanonicalApertureContinuity",
+        "Zeta23.CCM.GlobalFirstBad"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/ClaimBindings.lean",
+      "blob_sha": "04f2a36c0849b8b5b87849ed694554a89609a62a",
+      "imports": [
+        "Zeta23.CCM.DictionaryResidualSecondOrderGluing",
+        "Zeta23.CCM.DictionaryTentZeroSummability",
+        "Zeta23.CCM.DictionaryTentMollifierSupport",
+        "Zeta23.CCM.DictionaryTentEFExtension",
+        "Zeta23.CCM.DictionaryZeroSideBridge",
+        "Zeta23.CCM.DictionaryKernelEFExtension",
+        "Zeta23.CCM.DictionaryZeroSideDisplacement",
+        "Zeta23.CCM.RawKernelZeroSideBridge",
+        "Zeta23.CCM.CutoffFreeMatrix",
+        "Zeta23.CCM.LocalizedBasis",
+        "Zeta23.CCM.LocalizedFiniteSpace",
+        "Zeta23.CCM.BoundaryFlatFiniteSpace",
+        "Zeta23.CCM.LocalizedFourierApproximation",
+        "Zeta23.CCM.BoundaryFlatProjection",
+        "Zeta23.CCM.BoundaryFlatApproximation",
+        "Zeta23.CCM.LocalizedWeilRestriction",
+        "Zeta23.CCM.SourceWeilMatrixReconciliation",
+        "Zeta23.CCM.SourceNormalizationRepair",
+        "Zeta23.CCM.ConstrainedCanonicalSector",
+        "Zeta23.CCM.ConstrainedEuclideanSector",
+        "Zeta23.CCM.NestedFinite",
+        "Zeta23.CCM.ConstrainedParity",
+        "Zeta23.CCM.ConstrainedParityGeometry",
+        "Zeta23.CCM.ParityBadness",
+        "Zeta23.CCM.ConstrainedParitySpectrum",
+        "Zeta23.CCM.FirstBadRigidity",
+        "Zeta23.CCM.ParityNormalSpace",
+        "Zeta23.CCM.ParityCompressionRankOne",
+        "Zeta23.CCM.SourceKappa",
+        "Zeta23.CCM.DictionaryRHSIdentity",
+        "Zeta23.ExceptionalZero.DisplacementTransfer",
+        "Zeta23.ExceptionalZero.WeilLiteratureBridge",
+        "Zeta23.ExceptionalZero.WeilContinuity",
+        "Zeta23.ExceptionalZero.TwoTranslateContraction",
+        "Zeta23.ExceptionalZero.NegativeWeilTestSupport",
+        "Zeta23.ExceptionalZero.WeilZeroSideEvenization",
+        "Zeta23.ExceptionalZero.BoundaryFlatFiniteWeil",
+        "Zeta23.ExceptionalZero.FiniteNegativeObstruction",
+        "Zeta23.ExceptionalZero.ConstrainedFiniteObstruction",
+        "Zeta23.ExceptionalZero.EuclideanConstrainedObstruction",
+        "Zeta23.ExceptionalZero.NestedEuclideanObstruction",
+        "Zeta23.ExceptionalZero.ParityFirstBadObstruction",
+        "Zeta23.ExceptionalZero.FirstBadParitySpectrum",
+        "Zeta23.ExceptionalZero.FirstBadRigidity"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CodimOneMatrixCompletion.lean",
+      "blob_sha": "a43c36055ce25fd521c512f7d018fa1b47e5351e",
+      "imports": [
+        "Zeta23.CCM.DictionaryAnalysis",
+        "Mathlib.LinearAlgebra.Matrix.Rank"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/ComplexDiskHalfPlane.lean",
+      "blob_sha": "cb50baba8681e1a2dd6575c2af7f3bc6c1f82fdf",
+      "imports": [
+        "Mathlib.Analysis.Complex.Norm"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/ComplexMomentIntegral.lean",
+      "blob_sha": "9f99d07392a3febeb113581e9fa2fac930efb7ed",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Integrals.Basic"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/Components.lean",
+      "blob_sha": "e682bffd9f87ebb12afa606c0c810ba79e35681b",
+      "imports": [
+        "Zeta23.CCM.Kernel",
+        "Zeta23.ExplicitFormula",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Gamma.Deriv",
+        "Mathlib.NumberTheory.Harmonic.EulerMascheroni"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/ConstrainedCanonicalSector.lean",
+      "blob_sha": "5d35a6f0da8966a3e52fd8ff112f0df7f7c233a2",
+      "imports": [
+        "Zeta23.CCM.BoundaryFlatFiniteSpace",
+        "Zeta23.CCM.FiniteDictionary",
+        "Zeta23.CCM.SourceNormalizationRepair",
+        "Zeta23.CCM.DictionarySymmetry",
+        "Mathlib.LinearAlgebra.Matrix.Hermitian"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/ConstrainedEuclideanSector.lean",
+      "blob_sha": "2ef60150a02c615d1c5179d8880d8c402749d012",
+      "imports": [
+        "Zeta23.CCM.ConstrainedCanonicalSector",
+        "Zeta23.CCM.BoundaryFlatProjection",
+        "Mathlib.Analysis.InnerProductSpace.PiL2",
+        "Mathlib.Analysis.Matrix.Hermitian",
+        "Mathlib.LinearAlgebra.FiniteDimensional.Lemmas"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/ConstrainedParity.lean",
+      "blob_sha": "df301311f73f62155fdcd33bcfc24af289bca1e8",
+      "imports": [
+        "Zeta23.CCM.NestedFinite",
+        "Zeta23.CCM.Displacement",
+        "Mathlib.Data.Fin.Rev"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/ConstrainedParityGeometry.lean",
+      "blob_sha": "d4a39983976992b37ff90889a801df7a122eff14",
+      "imports": [
+        "Zeta23.CCM.ConstrainedParity",
+        "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/ConstrainedParitySpectrum.lean",
+      "blob_sha": "f1c77c9f865287b3c54f8d56d173bcf1995fc7fe",
+      "imports": [
+        "Zeta23.CCM.ParityBadness",
+        "Mathlib.Analysis.InnerProductSpace.Rayleigh",
+        "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CrossParityCorrectionFunctionalCollapse.lean",
+      "blob_sha": "940e1b7456f1f84b4a38184c7e674fed69fe498e",
+      "imports": [
+        "Zeta23.CCM.CrossParityCubicCorrectionCollapse"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CrossParityCorrectionFunctionalRiesz.lean",
+      "blob_sha": "f5db5f6b63ad551b746ed02a4d8287efd027c38d",
+      "imports": [
+        "Zeta23.CCM.CrossParityTrialReconstruction"
+      ]
     }
   ],
   "all_lean": [
