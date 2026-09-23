@@ -289,6 +289,8 @@ jobs:
         run: lake build Zeta23.ExceptionalZero
       - name: Build PR #247 explicit terminal target
         run: lake env lean Zeta23/ExceptionalZero/GlobalParityBottomTerminalTarget.lean
+      - name: Build PR #247 conditional literal RH seam
+        run: lake env lean Zeta23/ExceptionalZero/GlobalParityBottomConditionalRH.lean
       - name: Reject forbidden placeholders in promoted subtrees
         run: |
           if grep -R -n -E '\bsorry\b|^[[:space:]]*axiom[[:space:]]' \
