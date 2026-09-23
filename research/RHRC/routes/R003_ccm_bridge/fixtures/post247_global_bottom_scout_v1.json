@@ -1,0 +1,46 @@
+{
+  "schema_version": "POST247_GLOBAL_BOTTOM_SCOUT_FIXTURE_v1",
+  "claim_cap": "EXPERIMENTAL_SIGNAL_ONLY",
+  "base_pr": 247,
+  "base_head": "2a94647b25bf4e4c7dc9c94ef692cd48c1bd4674",
+  "predecessor_N": 2,
+  "successor_K": 3,
+  "frozen_points": [
+    {
+      "label": "Q13_midpoint",
+      "Q": 13,
+      "t": 0.5
+    },
+    {
+      "label": "Q14_midpoint",
+      "Q": 14,
+      "t": 0.5
+    },
+    {
+      "label": "Q15_midpoint",
+      "Q": 15,
+      "t": 0.5
+    }
+  ],
+  "observables": [
+    "lambda_even",
+    "lambda_odd",
+    "lambda_global",
+    "absolute_gap",
+    "source_kernel_coordinate",
+    "moment_four",
+    "source_times_moment_four"
+  ],
+  "policy": {
+    "frozen_points_required": true,
+    "adaptive_search_permitted": false,
+    "threshold_refit_permitted": false,
+    "sign_selector_permitted": false,
+    "theorem_promotion_permitted": false
+  },
+  "nonclaims": [
+    "This is research/falsification tooling, not Lean theorem authority.",
+    "The selected points are frozen implementation checks, not generated retained states.",
+    "No uniform sign, branch exclusion, negative-root exclusion, or RH claim is established."
+  ]
+}
