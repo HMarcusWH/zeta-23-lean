@@ -32,8 +32,13 @@ theorem
   obtain ⟨Q, s, hlarge⟩ :=
     exists_arbitrarilyLarge_globalBottomResidualState_of_offLine_zero
       ρ₀ hoff A
-  obtain ⟨a⟩ := s.exists_arithmeticResidual
-  exact ⟨Q, a, hlarge⟩
+  obtain ⟨pkg⟩ := s.exists_branchPackage
+  refine ⟨Q, {
+    state := s
+    branchPackage := pkg
+    primeFailure := s.groundTrial_primeRemainder_failure
+  }, ?_⟩
+  exact hlarge
 
 /-- Existential off-line-zero wrapper for the concrete arithmetic residual. -/
 theorem
