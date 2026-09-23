@@ -89,7 +89,7 @@ theorem re_star_source_mul_momentFour_pos_of_evenGround_strict
     intro hw
     apply hvne
     apply euclideanEvenToOddIndexLinearMap_injective K
-    simpa using hw
+    exact hw.trans (map_zero (euclideanEvenToOddIndexLinearMap K)).symm
   have hnorm :
       0 < ‖euclideanEvenToOddIndexLinearMap K v‖ ^ 2 := by
     positivity
