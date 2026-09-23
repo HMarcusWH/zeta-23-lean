@@ -289,6 +289,7 @@ def build_records() -> dict[str, object]:
             if row.get("repository_scope") == "EXTERNAL" and row.get("module")
         }
     )
+    external_imports.update(compiler_external_modules)
     existing_module_names = {row["module"] for row in lean_modules}
     for name in compiler_external_modules:
         if name not in existing_module_names:
