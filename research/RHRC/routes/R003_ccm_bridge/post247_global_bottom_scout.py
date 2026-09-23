@@ -1,24 +1,13 @@
 #!/usr/bin/env python3
 """PR #247 global-parity-bottom canonical scout.
 
-Research/falsification tooling only.
-
-This evaluates a frozen three-point canonical scope (Q=13,14,15, midpoint
-apertures, K=3) and reports the exact object introduced by PR #247 in numerical
-coordinates:
-
-  lambda_even, lambda_odd, lambda_* = min(lambda_even, lambda_odd),
-
-together with the branch classification, the spectral gap, and the two
-canonical observables singled out by the retained source/M4 geometry.
-
-The scout does not search over Q, K, parity, t, thresholds, signs, or
-normalizations.  It is not theorem authority and it does not test RH.
+Research/falsification tooling only. The scout separates parity ordering from
+entry into the theorem-relevant bad regime. A strict ordering with
+lambda_global >= 0 is *not* called an EVEN_STRICT/ODD_STRICT bad branch.
 """
 from __future__ import annotations
 
 import json
-from pathlib import Path
 
 import numpy as np
 
@@ -33,6 +22,34 @@ FROZEN_POINTS = (
     ("Q14_midpoint", 14, 0.5),
     ("Q15_midpoint", 15, 0.5),
 )
+
+
+def classify_bottoms(le: float, lo: float) -> dict:
+    if le < lo:
+        ordering = "EVEN_BELOW_ODD"
+    elif lo < le:
+        ordering = "ODD_BELOW_EVEN"
+    else:
+        ordering = "TIE"
+
+    lam = min(le, lo)
+    bad = lam < 0.0
+    if not bad:
+        applicable = "NONE"
+    elif le < lo:
+        applicable = "EVEN_STRICT"
+    elif lo < le:
+        applicable = "ODD_STRICT"
+    else:
+        applicable = "TIE"
+
+    return {
+        "ordering": ordering,
+        "bad_regime": bad,
+        "applicable_branch": applicable,
+        "lambda_global": lam,
+        "absolute_gap": abs(le - lo),
+    }
 
 
 def _orthonormal_parity_basis(parity: str, K: int = TARGET_K) -> np.ndarray:
@@ -73,15 +90,7 @@ def evaluate_point(label: str, Qcell: int, t: float) -> dict:
 
     even = _ground_record(M, "even")
     odd = _ground_record(M, "odd")
-    le = even["lambda"]
-    lo = odd["lambda"]
-
-    if le < lo:
-        branch = "EVEN_STRICT"
-    elif lo < le:
-        branch = "ODD_STRICT"
-    else:
-        branch = "TIE_NUMERIC"
+    cls = classify_bottoms(even["lambda"], odd["lambda"])
 
     return {
         "label": label,
@@ -90,12 +99,10 @@ def evaluate_point(label: str, Qcell: int, t: float) -> dict:
         "L": L,
         "K": TARGET_K,
         "N": TARGET_K - 1,
-        "branch": branch,
-        "lambda_even": le,
-        "lambda_odd": lo,
-        "lambda_global": min(le, lo),
-        "absolute_gap": abs(le - lo),
-        "any_parity_bad_numeric": min(le, lo) < 0.0,
+        "lambda_even": even["lambda"],
+        "lambda_odd": odd["lambda"],
+        **cls,
+        "any_parity_bad_numeric": cls["bad_regime"],
         "even": even,
         "odd": odd,
         "claim_cap": "EXPERIMENTAL_SIGNAL_ONLY",
@@ -105,7 +112,7 @@ def evaluate_point(label: str, Qcell: int, t: float) -> dict:
 def run() -> dict:
     rows = [evaluate_point(*p) for p in FROZEN_POINTS]
     return {
-        "schema_version": "POST247_GLOBAL_BOTTOM_SCOUT_v1",
+        "schema_version": "POST247_GLOBAL_BOTTOM_SCOUT_v2",
         "claim_cap": "EXPERIMENTAL_SIGNAL_ONLY",
         "scope": {
             "K": TARGET_K,
@@ -118,7 +125,7 @@ def run() -> dict:
         "rows": rows,
         "nonclaims": [
             "Numerical eigenvalues are not Lean theorem authority.",
-            "A strict branch at a frozen point is not a uniform branch theorem.",
+            "Parity ordering outside lambda_global<0 is not a theorem branch.",
             "A sign at a frozen point is not a retained-state sign theorem.",
             "This scout does not evaluate an off-line-zero-generated state.",
             "No branch exclusion or RH claim is established.",
