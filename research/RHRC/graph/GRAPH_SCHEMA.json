@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "rhkg-phase2a-graph-schema-0.3",
-  "title": "RHKG Phase-2A complete registered theorem record schema",
+  "$id": "rhkg-phase2b-graph-schema-0.4",
+  "title": "RHKG Phase-2B compiler dependency graph record schema",
   "type": "object",
   "oneOf": [
     {
@@ -216,6 +216,15 @@
             },
             "provenance": {
               "type": "string"
+            },
+            "used_in_type": {
+              "type": "boolean"
+            },
+            "used_in_value": {
+              "type": "boolean"
+            },
+            "used_in_structure": {
+              "type": "boolean"
             }
           },
           "required": [
@@ -362,12 +371,26 @@
               "minLength": 1
             },
             "module": {
-              "type": "string",
-              "minLength": 1
+              "oneOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
             },
             "module_id": {
-              "type": "string",
-              "minLength": 1
+              "oneOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
             },
             "source_path": {
               "type": "string",
@@ -378,10 +401,16 @@
               "minLength": 1
             },
             "binding_scope": {
-              "const": "REGISTERED_PROVED"
+              "enum": [
+                "REGISTERED_PROVED"
+              ]
             },
             "authority_role": {
-              "const": "REGISTERED_CLAIM_DECLARATION"
+              "enum": [
+                "REGISTERED_CLAIM_DECLARATION",
+                "DEPENDENCY_DECLARATION",
+                "EXTERNAL_BOUNDARY_DECLARATION"
+              ]
             },
             "binding_source": {
               "type": "string",
@@ -396,20 +425,36 @@
             },
             "historical_r003_promoted": {
               "type": "boolean"
+            },
+            "repository_scope": {
+              "enum": [
+                "LOCAL",
+                "EXTERNAL"
+              ]
+            },
+            "graph_role": {
+              "enum": [
+                "REGISTERED_CLAIM_ROOT",
+                "LOCAL_DEPENDENCY",
+                "EXTERNAL_BOUNDARY"
+              ]
+            },
+            "declaration_kind": {
+              "type": "string",
+              "minLength": 1
+            },
+            "private_or_internal": {
+              "type": "boolean"
             }
           },
           "required": [
             "declaration",
             "module",
-            "module_id",
-            "source_path",
-            "source_file_id",
-            "binding_scope",
-            "authority_role",
-            "binding_source",
-            "compiler_binding_source",
-            "source_locator",
-            "historical_r003_promoted"
+            "repository_scope",
+            "graph_role",
+            "declaration_kind",
+            "private_or_internal",
+            "authority_role"
           ]
         }
       ]
