@@ -265,6 +265,27 @@ jobs:
         run: python research/RHRC/routes/R003_ccm_bridge/post247_global_bottom_arithmetic_scout.py > /tmp/POST247_GLOBAL_BOTTOM_ARITHMETIC_SCOUT.json
       - name: "Assert PR #247 global-bottom scout controls and semantics"
         run: python research/RHRC/routes/R003_ccm_bridge/check_post247_global_bottom_scout_results.py
+      - name: "Check post-#247 remainder/budget ratio scout scope and fixture"
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post247_remainder_budget_ratio_scope.py
+      - name: "Replay post-#247 remainder/budget ratio scout controls (Arb)"
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post247_remainder_budget_ratio_results.py
+      - name: "Run post-#247 remainder/budget ratio scout quick grid"
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post247_remainder_budget_ratio_scout.py \
+            --quick --out /tmp/POST247_REMAINDER_BUDGET_RATIO_QUICK.json
+          python - <<'PY'
+          import json
+          d = json.load(open('/tmp/POST247_REMAINDER_BUDGET_RATIO_QUICK.json'))
+          s = d['summary']
+          assert d['claim_cap'] == 'EXPERIMENTAL_SIGNAL_ONLY'
+          assert s['real_points'] == s['real_energy_certified_positive'] > 0
+          assert s['A_positive_definite_everywhere'] and s['B_positive_definite_everywhere']
+          assert s['planted_on_line_certified_bad'] == 0
+          assert s['planted_on_line_increment_rank_one_psd_per_parity']
+          assert s['planted_off_line_increment_signature_1_1_per_parity']
+          assert s['planted_off_line_certified_bad'] > 0
+          print('Post-#247 ratio scout quick grid: PASS')
+          PY
       - name: Audit R004 scalar-shift invariants
         run: python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
       - name: Reject external reference code as a Lean dependency
