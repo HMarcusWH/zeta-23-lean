@@ -10,9 +10,9 @@ open Zeta23.CCM
 open scoped ComplexConjugate
 
 /-!
-# PR #247 — off-line zero to global parity ground state
+# PR #247 — historical compatibility projection: off-line zero to global parity ground state
 
-This is the exceptional-zero attachment for the new global-bottom geometry.
+This file is retained as a historical compatibility projection. The active #247\nroute now runs through `GlobalParityBottomGeneratedState` and the typed\n`GlobalBottomArithmeticResidual`; this naked trichotomy projection is not\nimported by `Zeta23.ExceptionalZero`.\n\nThis was the original exceptional-zero attachment for the new global-bottom geometry.
 A hypothetical off-line zero already produces whole-cell bi-regular retained
 negative-energy certificates at arbitrarily large aperture.  The retained
 first-bad state now additionally carries a strictly negative common parity
