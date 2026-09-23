@@ -20,6 +20,21 @@
       "$ref": "#/$defs/route"
     },
     {
+      "$ref": "#/$defs/controlObject"
+    },
+    {
+      "$ref": "#/$defs/historicalDelta"
+    },
+    {
+      "$ref": "#/$defs/researchExecutable"
+    },
+    {
+      "$ref": "#/$defs/fixture"
+    },
+    {
+      "$ref": "#/$defs/workflowDefinition"
+    },
+    {
       "$ref": "#/$defs/relation"
     }
   ],
@@ -205,6 +220,126 @@
             "source",
             "target",
             "provenance"
+          ]
+        }
+      ]
+    },
+    "controlObject": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "ControlObject"
+            },
+            "path": {
+              "type": "string"
+            },
+            "file_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "path",
+            "file_id"
+          ]
+        }
+      ]
+    },
+    "historicalDelta": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "HistoricalDelta"
+            },
+            "path": {
+              "type": "string"
+            },
+            "file_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "path",
+            "file_id"
+          ]
+        }
+      ]
+    },
+    "researchExecutable": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "ResearchExecutable"
+            },
+            "path": {
+              "type": "string"
+            },
+            "file_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "path",
+            "file_id"
+          ]
+        }
+      ]
+    },
+    "fixture": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "Fixture"
+            },
+            "path": {
+              "type": "string"
+            },
+            "file_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "path",
+            "file_id"
+          ]
+        }
+      ]
+    },
+    "workflowDefinition": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "WorkflowDefinition"
+            },
+            "path": {
+              "type": "string"
+            },
+            "file_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "path",
+            "file_id"
           ]
         }
       ]
