@@ -46,6 +46,8 @@ RESEARCH / REGRESSION HARVEST
 - post-202 = COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
 - post-214 = FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED / FULL_SPACE_SIGN_INDEFINITE_CERTIFIED
 - post-222 = NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED
+- post-249 = FINITE_GRID_SHARP_CANCELLATION / ZERO_SIDE_PERTURBATION_CONTROL_BUILT / EXPERIMENTAL_SIGNAL_ONLY
+- post-249 interpretation firewall = NO ASYMPTOTIC RATE / NO EXACT FIRST-ZERO SWITCH / SIGN-CHANGE BRACKETS NOT GLOBAL MINIMA
 - theorem promotion from research replays = false
 
 CURRENT RESEARCH PROGRAM
@@ -56,7 +58,8 @@ CURRENT RESEARCH PROGRAM
 - full-space <-> boundary-flat <-> parity spectral bridge = ACTIVE LEAD
 - R004 prolate/full-space ground-space bridge = RESURRECTED LEAD
 - Pair-D = GENERIC LINEAR-ALGEBRA FILTER ONLY
-- planted off-line canonical-style control = TO BUILD / PRIMARY FALSIFIER
+- planted zero-side perturbation control = BUILT / PR #249 / EXPERIMENTAL_SIGNAL_ONLY
+- globally consistent planted zeta/Euler-product control = OPEN
 - global aperture Loewner monotonicity = QUARANTINED / DR-021
 - global minimizing-Schur monotonicity = QUARANTINED / DR-022
 - exact-equality holonomy = DROPPED / TAUTOLOGICAL
@@ -95,7 +98,7 @@ Canonical post-#247 programme: research/RHRC/routes/R003_ccm_bridge/POST_247_RIE
 7. **Positive base.** Prove, rather than assume, a genuine nonnegative starting regime.
 8. **Threshold-local first crossing.** Combine cell evolution, contact calculus and arithmetic threshold updates to exclude a first zero crossing. This route does not assert global derivative sign.
 9. **R004 support.** Revisit the analytic prolate/full-space spectral bridge and the external QW_lambda/kappa/PsiSharp correspondence as supporting structure.
-10. **Adversarial controls.** Pair-D filters generic finite-dimensional algebra; build a planted off-line canonical-style control with explicit semantics; use zeta-adjacent external controls only as research falsifiers.
+10. **Adversarial controls.** Pair-D filters generic finite-dimensional algebra. PR #249 now supplies a scoped synthetic zero-side perturbation falsifier with explicit semantics; a globally prime/Euler-product-consistent planted-zeta control remains OPEN. Use zeta-adjacent external controls only as research falsifiers.
 
 Relation-zeta is parked. Exact-equality holonomy and ordinary Gram-PSD hunting are dropped. DR-021/DR-022 remain quarantined globally.
 
