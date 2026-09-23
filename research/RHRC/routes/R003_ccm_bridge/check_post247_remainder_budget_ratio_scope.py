@@ -114,9 +114,32 @@ def _check_semantics(d: dict) -> None:
     for forbidden in ("optimize.", "minimize(", "differential_evolution", "np.random", "import random"):
         assert forbidden not in text, forbidden
     assert "sort(key=lambda a: a.mid())" in text  # exact ordering, not float keys
+    note = NOTE.read_text(encoding="utf-8")
     for claim in ("proves RH", "RH is proved", "RH proved", "RH is true", "RH_PROVED"):
         assert claim not in text, claim
-        assert claim not in NOTE.read_text(encoding="utf-8"), claim
+        assert claim not in note, claim
+    for overclaim in (
+        "super-exponentially small slack",
+        "collapses super-exponentially",
+        "switches on exactly at the first zeta zero",
+        "negative eigenvalue scales as `δ²`",
+        "smallest `δ` certified bad",
+        "Only the prime-free regime has a real margin",
+        "PNT-strength or zero-density-strength) cannot supply this",
+    ):
+        assert overclaim not in note, overclaim
+    for required in (
+        "no asymptotic decay law is claimed",
+        "nominal resolution scale",
+        "not a hard Fourier cutoff theorem",
+        "leading-order `O(δ²)` behavior",
+        "certified sign-change brackets",
+        "not globally minimal deltas",
+        "not a globally self-consistent alternate zeta function",
+        "does not rule out PNT-strength",
+    ):
+        assert required in note, required
+    assert "not a global minimum certificate" in text
 
 
 def _check_note(d: dict) -> None:

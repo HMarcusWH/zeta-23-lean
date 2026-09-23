@@ -53,6 +53,16 @@ class CurrentStateSurfaceTests(unittest.TestCase):
         self.assertEqual(route["post247_global_aperture_loewner_monotonicity"], "QUARANTINED_DR_021")
         self.assertEqual(route["post247_global_minimizing_schur_monotonicity"], "QUARANTINED_DR_022")
         self.assertEqual(route["post247_relation_zeta"], "PARKED_SPECULATIVE")
+        self.assertEqual(route["post249_zero_side_perturbation_control"], "BUILT_EXPERIMENTAL_PR_249")
+        self.assertEqual(route["post249_globally_consistent_planted_zeta_control"], "OPEN")
+        self.assertEqual(route["post249_ratio_asymptotic_rate"], "NOT_ESTABLISHED")
+        self.assertEqual(route["post249_first_zero_scale_signal"], "COARSE_GRID_SEPARATION_NOT_EXACT_SWITCH")
+        scout = self.state["post249_research_scout"]
+        self.assertEqual(scout["pr"], 249)
+        self.assertEqual(scout["validated_head"], "1758ed7fd1fd0bbae6b6929b3793fa8e97288b55")
+        self.assertEqual(scout["merge_commit"], "caec6773664458bde0eac55cf1ad60446c385efd")
+        self.assertEqual(scout["workflow_harvest"], "11_OF_11_ATTACHED_WORKFLOWS_SUCCESS")
+        self.assertFalse(scout["theorem_promotion"])
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
     def test_every_living_surface_frontloads_machine_state(self):
@@ -74,6 +84,10 @@ class CurrentStateSurfaceTests(unittest.TestCase):
             "global aperture Loewner monotonicity = QUARANTINED / DR-021",
             "global minimizing-Schur monotonicity = QUARANTINED / DR-022",
             "relation zeta = PARKED / SPECULATIVE",
+            "post-249 = FINITE_GRID_SHARP_CANCELLATION / ZERO_SIDE_PERTURBATION_CONTROL_BUILT / EXPERIMENTAL_SIGNAL_ONLY",
+            "post-249 interpretation firewall = NO ASYMPTOTIC RATE / NO EXACT FIRST-ZERO SWITCH / SIGN-CHANGE BRACKETS NOT GLOBAL MINIMA",
+            "planted zero-side perturbation control = BUILT / PR #249 / EXPERIMENTAL_SIGNAL_ONLY",
+            "globally consistent planted zeta/Euler-product control = OPEN",
             "PR #117",
             "PR #223",
             "terminal claim = RH_OPEN",
@@ -83,6 +97,7 @@ class CurrentStateSurfaceTests(unittest.TestCase):
             "canonical prime-remainder normal form = CANDIDATE",
             "next research target = CANONICAL_PRIME_REMAINDER_DOMINANCE",
             "required new information = RH_STRENGTH_WEIGHTED_CHEBYSHEV_REMAINDER_INFORMATION",
+            "planted off-line canonical-style control = TO BUILD / PRIMARY FALSIFIER",
             "RH = PROVED",
         )
         for path in LIVING_SURFACES:

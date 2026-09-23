@@ -19,10 +19,15 @@ RH is equivalent to ``B(x) <= A(x)`` on every boundary-flat carrier.  This scout
 measures that ratio, in Arb ball arithmetic, on
 
 1. the real canonical data, and
-2. a planted-zero control: ``R(x)`` receives the explicit-formula contribution
+2. a synthetic zero-side perturbation control: the real canonical prime data
+   remain fixed while ``R(x)`` receives the local explicit-formula contribution
    ``-sum x^(rho-1/2)/(rho-1/2)`` of an extra zero quadruplet
    ``1/2 +- delta +- i*gamma``.  ``delta = 0`` plants an on-line double pair and
    must add a positive semidefinite form; ``delta > 0`` plants an off-line pair.
+
+The planted object is not a globally self-consistent alternate zeta function:
+no modified Euler product or von Mangoldt sequence is constructed to generate
+the extra zeros.  It is a route-level falsifier for the local zero-side response.
 
 Matrix conventions follow ``Zeta23/CCM/CanonicalPrimeRemainder.lean``:
 
@@ -498,10 +503,12 @@ def _planted_min_lambda(ch: dict, L: arb, K: int, gamma: arb, delta: arb) -> arb
 
 
 def detection_threshold(Lnum: int, Lden: int, K: int, gam: tuple[int, int], steps: int = 48) -> dict:
-    """Smallest planted delta (geometric bisection) with a certified bad state.
+    """Narrow certified sign-change bracket found by geometric search.
 
     Every bracket endpoint is an exact rational delta; ``hi`` is certified bad
-    and ``lo`` is certified not bad at the recorded precision.
+    and ``lo`` is certified not bad at the recorded precision.  This is not a
+    global minimum certificate: monotonicity of the lowest eigenvalue in delta
+    is not proved by this scout.
     """
     ctx.prec = 512
     L = _q(Lnum, Lden)
