@@ -30,7 +30,16 @@ DEFAULT_MODULES = (
     "Zeta23/CCM/GlobalFirstBadParityBottom.lean",
     "Zeta23/CCM/GlobalFirstBadParityBottomAlignment.lean",
     "Zeta23/CCM/GlobalParityBottomRetainedGeometry.lean",
+    "Zeta23/CCM/GlobalParityBottomEvenStrictNormalForm.lean",
+    "Zeta23/CCM/GlobalParityBottomOddStrictNormalForm.lean",
+    "Zeta23/CCM/GlobalParityBottomReverseGroundTransfer.lean",
+    "Zeta23/CCM/GlobalParityBottomTieNormalForm.lean",
+    "Zeta23/CCM/GlobalParityBottomResidualState.lean",
+    "Zeta23/CCM/GlobalParityBottomPrimeRemainder.lean",
+    "Zeta23/CCM/GlobalParityBottomPrimeWeight.lean",
     "Zeta23/ExceptionalZero/GlobalParityBottomObstruction.lean",
+    "Zeta23/ExceptionalZero/GlobalParityBottomGeneratedState.lean",
+    "Zeta23/ExceptionalZero/GlobalParityBottomTerminalTarget.lean",
 )
 
 
