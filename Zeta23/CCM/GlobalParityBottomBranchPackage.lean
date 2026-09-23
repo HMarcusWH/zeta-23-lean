@@ -1,4 +1,5 @@
 import Zeta23.CCM.GlobalParityBottomResidualState
+import Zeta23.CCM.GlobalParityBottomGroundTrial
 import Zeta23.CCM.GlobalParityBottomEvenStrictNormalForm
 import Zeta23.CCM.GlobalParityBottomOddStrictNormalForm
 import Zeta23.CCM.GlobalParityBottomReverseGroundTransfer
@@ -35,6 +36,11 @@ inductive GlobalBottomBranchPackage {Q : ℕ}
         s.aligned.lam =
           parityRayleighBottom .even s.aligned.firstBad.L
             (s.aligned.firstBad.Nstar + 1))
+      (hsame :
+        (s.groundTrial : EuclideanSpace ℂ
+          (Fin (2 * (s.aligned.firstBad.Nstar + 1) + 1))) =
+          (s.aligned.evenShiftedTrial : EuclideanSpace ℂ
+            (Fin (2 * (s.aligned.firstBad.Nstar + 1) + 1))))
       (horient :
         0 < s.aligned.retainedRealSourceScalar *
               s.aligned.retainedRealMomentFour ∧
@@ -105,6 +111,11 @@ inductive GlobalBottomBranchPackage {Q : ℕ}
         s.aligned.lam =
           parityRayleighBottom .even s.aligned.firstBad.L
             (s.aligned.firstBad.Nstar + 1))
+      (hsame :
+        (s.groundTrial : EuclideanSpace ℂ
+          (Fin (2 * (s.aligned.firstBad.Nstar + 1) + 1))) =
+          (s.aligned.evenShiftedTrial : EuclideanSpace ℂ
+            (Fin (2 * (s.aligned.firstBad.Nstar + 1) + 1))))
       (hsaturation :
         ∃ hneg : parityRayleighBottom .even s.aligned.firstBad.L
               (s.aligned.firstBad.Nstar + 1) < 0,
@@ -153,10 +164,12 @@ theorem GlobalBottomResidualState.exists_branchPackage
               (s.aligned.firstBad.Nstar + 1) := by
         rw [s.aligned_lam_is_global, globalParitySuccessorBottom,
           min_eq_left (le_of_lt hstrict)]
+      have hsame :=
+        s.groundTrial_coe_eq_evenShiftedTrial_of_even hp
       have horient :=
         s.aligned.retainedEvenStrict_orientationPackage
           hp hground hstrict
-      exact ⟨.evenStrict hp hstrict hground horient⟩
+      exact ⟨.evenStrict hp hstrict hground hsame horient⟩
   | oddStrict hp hstrict =>
       have hground :
           s.aligned.lam =
@@ -200,6 +213,8 @@ theorem GlobalBottomResidualState.exists_branchPackage
               (s.aligned.firstBad.Nstar + 1) := by
         rw [s.aligned_lam_is_global, globalParitySuccessorBottom,
           min_eq_left (le_of_eq htie)]
+      have hsame :=
+        s.groundTrial_coe_eq_evenShiftedTrial_of_even hp
       have hbad := s.aligned.firstBad.anyParityBad_succ
       obtain ⟨hneg, hsaturation⟩ :=
         globalBottom_tie_saturation
@@ -207,7 +222,7 @@ theorem GlobalBottomResidualState.exists_branchPackage
           s.aligned.firstBad.one_le_Nstar
           s.aligned.firstBad.predecessorNonnegative_anyParity
           hbad htie
-      exact ⟨.tieEven hp htie hground ⟨hneg, hsaturation⟩⟩
+      exact ⟨.tieEven hp htie hground hsame ⟨hneg, hsaturation⟩⟩
 
 end Zeta23.CCM
 
