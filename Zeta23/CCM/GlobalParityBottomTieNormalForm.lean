@@ -127,7 +127,7 @@ theorem globalBottom_tie_sourceZero_gives_nonzero_oddGround
     intro hDu
     apply hune
     apply euclideanEvenToOddIndexLinearMap_injective (N + 1)
-    simpa [u] using hDu
+    exact hDu.trans (map_zero (euclideanEvenToOddIndexLinearMap (N + 1))).symm
   have hveig :
       parityCompressedCanonical .even L (N + 1) u =
         (lam : ℂ) • u :=
