@@ -169,6 +169,7 @@ import Zeta23.CCM.GlobalParityBottomRetainedGeometry
 import Zeta23.CCM.GlobalParityBottomEvenStrictNormalForm
 import Zeta23.CCM.GlobalParityBottomOddStrictNormalForm
 import Zeta23.CCM.GlobalParityBottomReverseGroundTransfer
+import Zeta23.CCM.GlobalParityBottomTieNormalForm
 import Zeta23.CCM.CrossParitySecularCompletion
 import Zeta23.CCM.CrossParitySecularKernelDichotomy
 import Zeta23.CCM.RegularFirstBadParitySourceMomentRigidity
