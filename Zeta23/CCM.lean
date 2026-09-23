@@ -165,6 +165,7 @@ import Zeta23.CCM.GlobalParityBottomIntertwining
 import Zeta23.CCM.GlobalParityBottomSourceMoment
 import Zeta23.CCM.GlobalFirstBadParityBottom
 import Zeta23.CCM.GlobalFirstBadParityBottomAlignment
+import Zeta23.CCM.GlobalParityBottomRetainedGeometry
 import Zeta23.CCM.CrossParitySecularCompletion
 import Zeta23.CCM.CrossParitySecularKernelDichotomy
 import Zeta23.CCM.RegularFirstBadParitySourceMomentRigidity
