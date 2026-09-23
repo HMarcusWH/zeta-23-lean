@@ -23,6 +23,8 @@ import re
 import sys
 from pathlib import Path
 
+from lean_imports import import_modules
+
 ROOT = Path(__file__).resolve().parents[1]
 REPO = ROOT.parents[1]
 ZETA = REPO / "Zeta23"
@@ -56,7 +58,7 @@ def import_graph() -> dict[str, list[str]]:
     for path in list(ZETA.rglob("*.lean")) + [REPO / "Zeta23.lean"]:
         text = path.read_text(encoding="utf-8")
         graph[module_name(path)] = [
-            m for m in IMPORT.findall(text) if m == "Zeta23" or m.startswith("Zeta23.")
+            m for m in import_modules(text) if m == "Zeta23" or m.startswith("Zeta23.")
         ]
     return graph
 

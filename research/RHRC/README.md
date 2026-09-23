@@ -77,6 +77,25 @@ CONTROL AUTHORITY
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## RHKG repository knowledge graph
+
+The RHRC repository knowledge graph lives in `research/RHRC/graph/` and is governed by
+`graph/CONSTITUTION.md`.
+
+Phase 1 provides deterministic repository census, file/trust classification, Lean module
+imports, exact claim/route mirrors, entrypoint reachability, and explicit unresolved-item
+reporting. Generated graph products are derived views only: they cannot promote claims,
+change control state, reopen dead routes, or alter the terminal claim.
+
+Validation is part of the main RHRC suite:
+
+```bash
+python research/RHRC/graph/build.py --check
+python research/RHRC/graph/validate.py
+```
+
+**RH remains OPEN.**
+
 ## Post-#247 programme override
 
 PR #246 and PR #247 supersede older "current", "next", and candidate labels below. Historical sections are retained as provenance unless this override explicitly reactivates them.

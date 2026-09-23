@@ -1,0 +1,272 @@
+{
+  "schema_version": "RHKG-file-classes-0.1",
+  "unknown_class": "UNKNOWN_FILE_CLASS",
+  "unknown_trust_zone": "UNKNOWN",
+  "classes": [
+    "LEAN_SOURCE",
+    "LEAN_ROOT",
+    "RESEARCH_EXECUTABLE",
+    "RESEARCH_FIXTURE",
+    "RESEARCH_RECEIPT",
+    "COUNTERMODEL",
+    "LIVING_SSOT",
+    "FROZEN_RESEARCH_DELTA",
+    "FROZEN_OBSTRUCTION_DELTA",
+    "FROZEN_DEAD_ROUTE_DELTA",
+    "REGISTRY",
+    "CONTROL_STATE",
+    "CI_WORKFLOW",
+    "DOCUMENTATION",
+    "EXTERNAL_SOURCE_MANIFEST",
+    "BUILD_CONFIGURATION",
+    "GENERATED_GRAPH_PRODUCT",
+    "LICENSE_OR_METADATA",
+    "OTHER_CLASSIFIED"
+  ],
+  "trust_zones": [
+    "RH_FORMAL_CORE",
+    "UPSTREAM_DERIVED",
+    "AUXILIARY_FORMALIZATION",
+    "COMPARATOR_TRUSTED_MATHLIB_ONLY",
+    "COMPARATOR_UNTRUSTED_ZETA_IMPORTS",
+    "RESEARCH_ONLY",
+    "AUDIT_ONLY"
+  ],
+  "generated_prefix": "research/RHRC/graph/generated/",
+  "rules": [
+    {
+      "id": "generated_graph",
+      "pattern": "^research/RHRC/graph/generated/.*$",
+      "file_class": "GENERATED_GRAPH_PRODUCT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "ci_workflows",
+      "pattern": "^\\.github/workflows/.*\\.ya?ml$",
+      "file_class": "CI_WORKFLOW",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "ccm_formal_core",
+      "pattern": "^Zeta23/CCM/.*\\.lean$",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "id": "exceptional_zero_formal_core",
+      "pattern": "^Zeta23/ExceptionalZero/.*\\.lean$",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "id": "upstream_derived",
+      "pattern": "^Zeta23/FromPNTPlus/.*\\.lean$",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "UPSTREAM_DERIVED"
+    },
+    {
+      "id": "zeta_root",
+      "pattern": "^Zeta23\\.lean$",
+      "file_class": "LEAN_ROOT",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "id": "zeta_lean",
+      "pattern": "^Zeta23/.*\\.lean$",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "AUXILIARY_FORMALIZATION"
+    },
+    {
+      "id": "comparator_trusted",
+      "pattern": "^comparator/(ChallengeDeps(?:/.*)?|Challenge(?:/.*)?)\\.lean$",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "COMPARATOR_TRUSTED_MATHLIB_ONLY"
+    },
+    {
+      "id": "comparator_solution",
+      "pattern": "^comparator/Solution(?:/.*)?\\.lean$",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "COMPARATOR_UNTRUSTED_ZETA_IMPORTS"
+    },
+    {
+      "id": "comparator_audit",
+      "pattern": "^comparator/PrintAxioms(?:/.*)?\\.lean$",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "countermodels",
+      "pattern": "^research/RHRC/countermodels/.*$",
+      "file_class": "COUNTERMODEL",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "receipts",
+      "pattern": "^research/RHRC/receipts/.*$",
+      "file_class": "RESEARCH_RECEIPT",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "frozen_research_delta",
+      "pattern": "^research/RHRC/RESEARCH_LEADS_POST_.*\\.md$",
+      "file_class": "FROZEN_RESEARCH_DELTA",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "frozen_obstruction_delta",
+      "pattern": "^research/RHRC/OBSTRUCTION_LEDGER_POST_.*\\.md$",
+      "file_class": "FROZEN_OBSTRUCTION_DELTA",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "frozen_dead_route_delta",
+      "pattern": "^research/RHRC/DEAD_ROUTES_POST_.*\\.md$",
+      "file_class": "FROZEN_DEAD_ROUTE_DELTA",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "graph_config",
+      "pattern": "^research/RHRC/graph/(GRAPH_SCHEMA|FILE_CLASSES)\\.json$",
+      "file_class": "BUILD_CONFIGURATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "control_state",
+      "pattern": "^research/RHRC/control_v2/(CONTROL_STATE|CONTROL_BOUNDARY|ACTION_REGISTRY)\\.json$",
+      "file_class": "CONTROL_STATE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "rhrc_boundary",
+      "pattern": "^research/RHRC/BOUNDARY\\.json$",
+      "file_class": "CONTROL_STATE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "living_ssot",
+      "pattern": "^research/RHRC/(README|DOCUMENTATION_AUTHORITY|VALIDATION_PROTOCOL|RESEARCH_LEADS|OBSTRUCTION_LEDGER)\\.md$",
+      "file_class": "LIVING_SSOT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "audit_python",
+      "pattern": "^research/RHRC/(?:tools|graph|control_v2)(?:/.*)?\\.py$",
+      "file_class": "OTHER_CLASSIFIED",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "test_python",
+      "pattern": "^research/RHRC/(?:ffbbp|ool|runner)/tests/.*\\.py$",
+      "file_class": "OTHER_CLASSIFIED",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "route_python",
+      "pattern": "^research/RHRC/routes/.*\\.py$",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "core_registry",
+      "pattern": "^research/RHRC/(CLAIM_REGISTRY|R003_PROMOTED_BINDINGS)\\.json$",
+      "file_class": "REGISTRY",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "route_registry",
+      "pattern": "^research/RHRC/routes/ROUTE_REGISTRY\\.json$",
+      "file_class": "REGISTRY",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "external_sources",
+      "pattern": "^research/RHRC/external/.*$",
+      "file_class": "EXTERNAL_SOURCE_MANIFEST",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "route_fixtures_dir",
+      "pattern": "^research/RHRC/routes/.*/fixtures/.*$",
+      "file_class": "RESEARCH_FIXTURE",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "route_fixture_named",
+      "pattern": "^research/RHRC/routes/.*(?:fixture|input|config|threshold|seed|case|baseline|preflight).*(?:\\.json|\\.txt|\\.csv)$",
+      "file_class": "RESEARCH_FIXTURE",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "route_receipt_named",
+      "pattern": "^research/RHRC/routes/.*(?:result|receipt|certificate|report|output|summary).*(?:\\.json|\\.txt|\\.csv)$",
+      "file_class": "RESEARCH_RECEIPT",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "rhrc_executable",
+      "pattern": "^research/RHRC/.*(?:\\.py|\\.ipynb)$",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "rhrc_docs",
+      "pattern": "^research/RHRC/.*\\.md$",
+      "file_class": "DOCUMENTATION",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "rhrc_json",
+      "pattern": "^research/RHRC/.*\\.json$",
+      "file_class": "REGISTRY",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
+      "id": "requirements",
+      "pattern": "^(?:research/RHRC/.*/)?requirements\\.txt$|^research/RHRC/requirements\\.txt$",
+      "file_class": "BUILD_CONFIGURATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "gitignore",
+      "pattern": "^(?:.*/)?\\.gitignore$",
+      "file_class": "BUILD_CONFIGURATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "root_build",
+      "pattern": "^(?:lakefile\\.toml|lake-manifest\\.json|lean-toolchain|formalization\\.yaml)$",
+      "file_class": "BUILD_CONFIGURATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "comparator_config",
+      "pattern": "^comparator/.*\\.json$",
+      "file_class": "BUILD_CONFIGURATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "license_metadata",
+      "pattern": "^(?:LICENSE|NOTICE)$",
+      "file_class": "LICENSE_OR_METADATA",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "documentation",
+      "pattern": "^.*\\.md$",
+      "file_class": "DOCUMENTATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "json_registry",
+      "pattern": "^.*\\.json$",
+      "file_class": "REGISTRY",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "text_metadata",
+      "pattern": "^.*\\.txt$",
+      "file_class": "LICENSE_OR_METADATA",
+      "trust_zone": "AUDIT_ONLY"
+    }
+  ]
+}

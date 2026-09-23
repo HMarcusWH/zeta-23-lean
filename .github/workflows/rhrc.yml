@@ -19,6 +19,17 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
+      - name: RHKG deterministic regeneration gate
+        env:
+          RHKG_BOOTSTRAP_LOG: "1"
+        run: |
+          python research/RHRC/graph/build.py --write
+          python research/RHRC/graph/validate.py
+          if [ -n "$(git status --porcelain -- research/RHRC/graph/generated)" ]; then
+            echo "RHKG generated products are stale or missing; bootstrap payload emitted above."
+            git status --short -- research/RHRC/graph/generated
+            exit 1
+          fi
       - name: RHRC claim and regression suite
         run: python research/RHRC/tools/run_suite.py
       - name: Control v2 real-history smoke run
