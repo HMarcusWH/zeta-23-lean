@@ -126,7 +126,11 @@ theorem parityRayleighBottom_gap_mul_norm_sq_le_shifted
       (norm_sq_eq_re_inner (𝕜 := ℂ) x).symm
   rw [inner_sub_left, Complex.sub_re, hsmul, Complex.smul_re,
     hnorm, smul_eq_mul]
-  simpa only [RCLike.re_to_complex] at hbottom
+  have hbottom' :
+      parityRayleighBottom p L K * ‖x‖ ^ 2 ≤
+        Complex.re
+          (inner ℂ (parityCompressedCanonical p L K x) x) := by
+    simpa only [RCLike.re_to_complex] using hbottom
   linarith
 
 /-- Every shift at or below the parity bottom is positive semidefinite. -/

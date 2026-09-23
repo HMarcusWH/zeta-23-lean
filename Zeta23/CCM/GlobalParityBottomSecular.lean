@@ -66,8 +66,12 @@ theorem parityBottom_gap_mul_cubicTrial_norm_sq_le_shellPairing
                 euclideanParityBoundaryFlatSubspace p (N + 1))
               (intrinsicCubicShellPart p N :
                 euclideanParityBoundaryFlatSubspace p (N + 1))) at henergy
-  simpa only [RCLike.re_to_complex] at hbottom
-  rw [henergy] at hbottom
+  have hbottom' :
+      parityRayleighBottom p L (N + 1) * ‖u‖ ^ 2 ≤
+        Complex.re
+          (inner ℂ (parityCompressedCanonical p L (N + 1) u) u) := by
+    simpa only [RCLike.re_to_complex] using hbottom
+  rw [henergy] at hbottom'
   simpa [u] using (show
     (parityRayleighBottom p L (N + 1) - lam) * ‖u‖ ^ 2 ≤
       Complex.re
