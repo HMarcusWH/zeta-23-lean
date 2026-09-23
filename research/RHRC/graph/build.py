@@ -77,6 +77,11 @@ def tracked_files() -> list[str]:
 def load_compiler_dependency_receipt() -> list[dict]:
     path = REPO / COMPILER_DEPENDENCIES
     rows: list[dict] = []
+    allowed_roles = {
+        "REGISTERED_CLAIM_ROOT",
+        "LOCAL_DEPENDENCY",
+        "EXTERNAL_BOUNDARY",
+    }
     for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
         if not line.strip():
             continue
@@ -88,6 +93,58 @@ def load_compiler_dependency_receipt() -> list[dict]:
             raise RuntimeError(
                 f"{path}:{number}: compiler dependency receipt is not Phase 2B current"
             )
+        if row.get("graph_role") not in allowed_roles:
+            raise RuntimeError(
+                f"{path}:{number}: invalid compiler graph role {row.get('graph_role')!r}"
+            )
+        scope = row.get("repository_scope")
+        role = row.get("graph_role")
+        module = row.get("module")
+        if scope not in {"LOCAL", "EXTERNAL"}:
+            raise RuntimeError(
+                f"{path}:{number}: invalid repository scope {scope!r}"
+            )
+        if scope == "LOCAL" and role == "EXTERNAL_BOUNDARY":
+            raise RuntimeError(f"{path}:{number}: local declaration marked external boundary")
+        if scope == "EXTERNAL" and role != "EXTERNAL_BOUNDARY":
+            raise RuntimeError(f"{path}:{number}: external declaration has non-boundary role")
+        if scope == "LOCAL" and not (
+            isinstance(module, str) and (module == "Zeta23" or module.startswith("Zeta23."))
+        ):
+            raise RuntimeError(
+                f"{path}:{number}: local declaration has non-Zeta23 module {module!r}"
+            )
+        if role == "REGISTERED_CLAIM_ROOT":
+            if not isinstance(row.get("registered_claim_id"), str):
+                raise RuntimeError(
+                    f"{path}:{number}: registered root lacks registered_claim_id"
+                )
+        elif "registered_claim_id" in row:
+            raise RuntimeError(
+                f"{path}:{number}: non-root declaration carries registered_claim_id"
+            )
+        deps = row.get("dependencies")
+        if not isinstance(deps, list):
+            raise RuntimeError(f"{path}:{number}: dependencies is not a list")
+        seen_deps: set[str] = set()
+        for dep in deps:
+            constant = dep.get("constant")
+            if not isinstance(constant, str) or not constant:
+                raise RuntimeError(f"{path}:{number}: invalid dependency constant")
+            if constant in seen_deps:
+                raise RuntimeError(
+                    f"{path}:{number}: duplicate dependency constant {constant}"
+                )
+            seen_deps.add(constant)
+            flags = (
+                dep.get("used_in_type"),
+                dep.get("used_in_value"),
+                dep.get("used_in_structure"),
+            )
+            if not all(isinstance(flag, bool) for flag in flags) or not any(flags):
+                raise RuntimeError(
+                    f"{path}:{number}: invalid dependency channel flags for {constant}"
+                )
         rows.append(row)
     if not rows:
         raise RuntimeError("compiler dependency receipt is empty")
@@ -96,11 +153,11 @@ def load_compiler_dependency_receipt() -> list[dict]:
         raise RuntimeError("duplicate declarations in compiler dependency receipt")
     known = set(names)
     for row in rows:
-        for dep in row.get("dependencies", []):
-            if dep.get("constant") not in known:
+        for dep in row["dependencies"]:
+            if dep["constant"] not in known:
                 raise RuntimeError(
                     f"compiler receipt dependency target missing metadata: "
-                    f"{row['declaration']} -> {dep.get('constant')}"
+                    f"{row['declaration']} -> {dep['constant']}"
                 )
     return sorted(rows, key=lambda row: row["declaration"])
 
