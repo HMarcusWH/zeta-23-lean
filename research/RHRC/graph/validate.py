@@ -42,16 +42,19 @@ def main() -> int:
     relations = read_jsonl("relations.jsonl")
 
     all_nodes = repo_files + lean_modules + registry_nodes
-    ids: set[str] = set()
+    node_ids: set[str] = set()
+    all_ids: set[str] = set()
     duplicates: set[str] = set()
-    for row in all_nodes:
+    for row in all_nodes + relations:
         rid = row.get("id")
         if not rid:
             errors.append(f"node missing id: {row}")
             continue
-        if rid in ids:
+        if rid in all_ids:
             duplicates.add(rid)
-        ids.add(rid)
+        all_ids.add(rid)
+        if row.get("type") != "Relation":
+            node_ids.add(rid)
     if duplicates:
         errors.append(f"duplicate graph IDs: {sorted(duplicates)}")
 
@@ -105,9 +108,9 @@ def main() -> int:
     module_ids = {m["id"] for m in lean_modules}
     local_module_ids = {m["id"] for m in local_modules}
     for rel in relations:
-        if rel.get("source") not in ids:
+        if rel.get("source") not in node_ids:
             errors.append(f"missing relation source endpoint: {rel}")
-        if rel.get("target") not in ids:
+        if rel.get("target") not in node_ids:
             errors.append(f"missing relation target endpoint: {rel}")
         if rel.get("kind") in FORBIDDEN_PHASE1_RELATIONS:
             errors.append(f"forbidden Phase-1 claim-bearing relation: {rel['kind']}")
@@ -116,6 +119,31 @@ def main() -> int:
                 errors.append(f"IMPORTS source is not a local module: {rel}")
             if rel["target"] not in module_ids:
                 errors.append(f"IMPORTS target is not an explicit module node: {rel}")
+
+
+    expected_artifact_classes = {
+        "ControlObject": {"CONTROL_STATE"},
+        "HistoricalDelta": {
+            "FROZEN_RESEARCH_DELTA",
+            "FROZEN_OBSTRUCTION_DELTA",
+            "FROZEN_DEAD_ROUTE_DELTA",
+        },
+        "ResearchExecutable": {"RESEARCH_EXECUTABLE"},
+        "Fixture": {"RESEARCH_FIXTURE"},
+        "WorkflowDefinition": {"CI_WORKFLOW"},
+    }
+    file_by_id = {row["id"]: row for row in repo_files}
+    for node in registry_nodes:
+        allowed = expected_artifact_classes.get(node["type"])
+        if allowed is None:
+            continue
+        source = file_by_id.get(node.get("file_id"))
+        if source is None:
+            errors.append(f"artifact node missing RepoFile endpoint: {node}")
+        elif source["file_class"] not in allowed:
+            errors.append(
+                f"artifact node/file-class mismatch: {node['id']} -> {source['file_class']}"
+            )
 
     claim_source = json.loads((REPO / graph_build.CLAIM_REGISTRY).read_text(encoding="utf-8"))
     route_source = json.loads((REPO / graph_build.ROUTE_REGISTRY).read_text(encoding="utf-8"))
