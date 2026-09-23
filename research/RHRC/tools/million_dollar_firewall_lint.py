@@ -1,15 +1,14 @@
-"""Claim firewall for PR #247 ("Million Dollar PR").
+"""Claim/dependency firewall for PR #247 ("Million Dollar PR").
 
-This is a source/import-graph guard, not mathematical theorem authority.
+This guard enforces architecture, not mathematical truth:
+- the active route may not import earlier RH-equivalent shortcut gates;
+- the active terminal reduction must actually depend on the typed branch package,
+  true global-ground trial, and prime-weight layers;
+- audit-only equivalence modules may not leak back into the active route;
+- if a future premise-free RH closure file appears, an independent Lean exact-
+  type audit file must appear with it.
 
-The global-bottom reduction may use unconditional CCM arithmetic, but its
-terminal target must not borrow any theorem that already packages an
-RH-equivalent endpoint.  If a literal RH-closure module is later added, this
-linter also checks that it does not reach those shortcut modules.
-
-Logical strength is *not* inferred from imports: a genuine unconditional
-residual-state contradiction would itself be RH-strength.  The purpose here is
-only to prevent accidental circularity through already-proved equivalences.
+Compiler/axiom checks remain authoritative for theorem validity.
 """
 from __future__ import annotations
 
@@ -21,13 +20,19 @@ ROOT = Path(__file__).resolve().parents[1]
 REPO = ROOT.parents[1]
 ZETA = REPO / "Zeta23"
 
-FORBIDDEN = {
+FORBIDDEN_SHORTCUTS = {
     "Zeta23.ExceptionalZero.GeneratedFamilyFinalGate",
     "Zeta23.ExceptionalZero.GeneratedFamilyFinalGateEquivalence",
     "Zeta23.ExceptionalZero.CanonicalArithmeticCriterion",
 }
 
-PR247_CCM = {
+AUDIT_ONLY = {
+    "Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit",
+    "Zeta23.ExceptionalZero.GlobalParityBottomConditionalRH",
+    "Zeta23.ExceptionalZero.GlobalParityBottomObstruction",
+}
+
+ACTIVE_CCM = {
     "Zeta23.CCM.GlobalParityBottomSpectrum",
     "Zeta23.CCM.GlobalParityBottomSecular",
     "Zeta23.CCM.GlobalParityBottomCrossParity",
@@ -41,17 +46,16 @@ PR247_CCM = {
     "Zeta23.CCM.GlobalParityBottomReverseGroundTransfer",
     "Zeta23.CCM.GlobalParityBottomTieNormalForm",
     "Zeta23.CCM.GlobalParityBottomResidualState",
+    "Zeta23.CCM.GlobalParityBottomBranchPackage",
+    "Zeta23.CCM.GlobalParityBottomGroundTrial",
     "Zeta23.CCM.GlobalParityBottomPrimeRemainder",
     "Zeta23.CCM.GlobalParityBottomPrimeWeight",
     "Zeta23.CCM.GlobalParityBottomArithmeticTarget",
 }
 
-PR247_TERMINAL = {
-    "Zeta23.ExceptionalZero.GlobalParityBottomObstruction",
+ACTIVE_TERMINAL = {
     "Zeta23.ExceptionalZero.GlobalParityBottomGeneratedState",
     "Zeta23.ExceptionalZero.GlobalParityBottomTerminalTarget",
-    "Zeta23.ExceptionalZero.GlobalParityBottomConditionalRH",
-    "Zeta23.ExceptionalZero.GlobalParityBottomRHClosure",
 }
 
 IMPORT = re.compile(r"(?m)^import\s+(\S+)")
@@ -88,46 +92,91 @@ def lint() -> list[str]:
     errors: list[str] = []
     g = graph()
 
-    for module in sorted(PR247_CCM):
+    for module in sorted(ACTIVE_CCM | ACTIVE_TERMINAL):
         if module not in g:
-            errors.append(f"PR247 CCM module missing: {module}")
+            errors.append(f"active PR247 module missing: {module}")
             continue
-        reached = closure(g, module) & FORBIDDEN
-        if reached:
+        reached = closure(g, module)
+        bad_shortcuts = reached & FORBIDDEN_SHORTCUTS
+        if bad_shortcuts:
             errors.append(
-                f"{module} reaches RH-equivalent shortcut modules {sorted(reached)}"
+                f"{module} reaches RH-equivalent shortcut modules "
+                f"{sorted(bad_shortcuts)}"
+            )
+        bad_audits = reached & AUDIT_ONLY
+        if bad_audits:
+            errors.append(
+                f"{module} reaches audit-only modules {sorted(bad_audits)}"
             )
 
-    for module in sorted(PR247_TERMINAL):
-        # The literal closure file is optional until an assumption-free theorem
-        # actually exists; all other listed terminal modules are required.
-        if module not in g:
-            if module.endswith("GlobalParityBottomRHClosure"):
-                continue
-            errors.append(f"PR247 terminal module missing: {module}")
-            continue
-        reached = closure(g, module) & FORBIDDEN
-        if reached:
+    terminal = "Zeta23.ExceptionalZero.GlobalParityBottomTerminalTarget"
+    required_terminal = {
+        "Zeta23.CCM.GlobalParityBottomArithmeticTarget",
+        "Zeta23.CCM.GlobalParityBottomPrimeWeight",
+        "Zeta23.CCM.GlobalParityBottomPrimeRemainder",
+        "Zeta23.CCM.GlobalParityBottomGroundTrial",
+        "Zeta23.CCM.GlobalParityBottomBranchPackage",
+    }
+    if terminal in g:
+        missing = required_terminal - closure(g, terminal)
+        if missing:
             errors.append(
-                f"{module} reaches RH-equivalent shortcut modules {sorted(reached)}"
+                "active terminal route bypasses required global-bottom layers: "
+                f"{sorted(missing)}"
+            )
+
+    arithmetic = "Zeta23.CCM.GlobalParityBottomArithmeticTarget"
+    required_arithmetic = {
+        "Zeta23.CCM.GlobalParityBottomPrimeWeight",
+        "Zeta23.CCM.GlobalParityBottomPrimeRemainder",
+        "Zeta23.CCM.GlobalParityBottomGroundTrial",
+        "Zeta23.CCM.GlobalParityBottomBranchPackage",
+    }
+    if arithmetic in g:
+        missing = required_arithmetic - closure(g, arithmetic)
+        if missing:
+            errors.append(
+                "arithmetic residual bypasses required branch/ground layers: "
+                f"{sorted(missing)}"
+            )
+
+    exceptional_root = "Zeta23.ExceptionalZero"
+    if exceptional_root in g:
+        leaked = set(g[exceptional_root]) & AUDIT_ONLY
+        if leaked:
+            errors.append(
+                "audit-only global-bottom modules imported by active "
+                f"ExceptionalZero root: {sorted(leaked)}"
             )
 
     target = REPO / "Zeta23/ExceptionalZero/GlobalParityBottomTerminalTarget.lean"
     if target.exists():
         text = target.read_text(encoding="utf-8")
-        if "OPEN: no proof of this proposition is supplied" not in text:
-            errors.append(
-                "terminal target must explicitly retain its OPEN status until closure"
-            )
+        if "RH remains OPEN." not in text:
+            errors.append("active terminal target must explicitly retain RH OPEN status")
 
     closure_file = REPO / "Zeta23/ExceptionalZero/GlobalParityBottomRHClosure.lean"
+    exact_audit = REPO / "Zeta23/ExceptionalZero/GlobalParityBottomExactTypeAudit.lean"
     if closure_file.exists():
-        text = closure_file.read_text(encoding="utf-8")
-        required = "theorem riemannHypothesis_globalParityBottom"
-        if required not in text:
-            errors.append(f"closure module exists but lacks {required}")
-        if "RiemannHypothesis" not in text:
-            errors.append("closure module exists but has no literal RiemannHypothesis target")
+        if not exact_audit.exists():
+            errors.append(
+                "premise-free closure file exists without independent exact-type audit"
+            )
+        else:
+            audit_text = exact_audit.read_text(encoding="utf-8")
+            required = (
+                "theorem millionDollarExactTypeAudit :\n"
+                "    RiemannHypothesis :="
+            )
+            if required not in audit_text:
+                errors.append(
+                    "exact-type audit must declare theorem "
+                    "millionDollarExactTypeAudit : RiemannHypothesis"
+                )
+            if "#print axioms" not in audit_text:
+                errors.append("exact-type audit lacks #print axioms")
+    elif exact_audit.exists():
+        errors.append("exact-type audit exists before a premise-free closure file")
 
     return errors
 
@@ -141,9 +190,9 @@ def main() -> int:
         return 1
     print(
         "PR247 MILLION DOLLAR FIREWALL: PASS "
-        f"({len(PR247_CCM)} CCM modules; "
-        f"{len(PR247_TERMINAL) - 1} required terminal modules; "
-        f"{len(FORBIDDEN)} shortcut modules fenced)"
+        f"({len(ACTIVE_CCM)} active CCM modules; "
+        f"{len(ACTIVE_TERMINAL)} active terminal modules; "
+        f"{len(AUDIT_ONLY)} audit-only modules)"
     )
     return 0
 
