@@ -346,7 +346,6 @@ def build_records() -> dict[str, object]:
             if row.get("repository_scope") == "EXTERNAL" and row.get("module")
         }
     )
-    external_imports.update(compiler_external_modules)
     existing_module_names = {row["module"] for row in lean_modules}
     for name in compiler_external_modules:
         if name not in existing_module_names:
@@ -674,6 +673,7 @@ def build_records() -> dict[str, object]:
             row["path"] for row in repo_files if row["file_class"] == "UNKNOWN_FILE_CLASS"
         ),
         "external_import_targets": sorted(external_imports),
+        "compiler_external_boundary_modules": compiler_external_modules,
         "standalone_or_auxiliary_modules": reachability["standalone_or_auxiliary"],
         "deferred_to_later_phases": [
             "repository-wide Lean declaration census beyond registered dependency closure",
