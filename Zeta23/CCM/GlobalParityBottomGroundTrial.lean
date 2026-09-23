@@ -44,13 +44,14 @@ theorem GlobalBottomResidualState.groundTrial_coe_eq_evenShiftedTrial_of_even
       (Fin (2 * (s.aligned.firstBad.Nstar + 1) + 1))) =
       (s.aligned.evenShiftedTrial : EuclideanSpace ℂ
         (Fin (2 * (s.aligned.firstBad.Nstar + 1) + 1))) := by
-  cases hp
   have hprev :
       s.aligned.predecessorNonnegative =
-        s.aligned.firstBad.predecessorNonnegative_anyParity .even :=
+        s.aligned.firstBad.predecessorNonnegative_anyParity
+          s.aligned.firstBad.p :=
     Subsingleton.elim _ _
   simp [GlobalBottomResidualState.groundTrial,
-    RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial, hprev]
+    RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial,
+    hprev, hp]
 
 /-- The globally aligned cubic trial is nonzero. -/
 theorem GlobalBottomResidualState.groundTrial_ne_zero
