@@ -9,67 +9,46 @@ open Complex
 open Zeta23.CCM
 
 /-!
-# PR #247 — explicit terminal target
+# PR #247 — active terminal reduction
 
-This module does not prove the missing RH-strength statement.  It names it
-without disguising its logical strength and records the exact conditional
-composition already available from the generated global-bottom reduction.
+The active route stops at a concrete `GlobalBottomArithmeticResidual`.  No
+renamed universal exclusion or dominance gate is introduced here.  A future
+closure must prove a specific unconditional arithmetic theorem about the
+branch-constrained true-ground weight carried by this object.
 
-The open proposition says that no CCM global-bottom residual state exists.
-That is a strong finite endpoint.  A weaker generated-state-specific arithmetic
-contradiction would also suffice for RH, but is not assumed here.
+RH remains OPEN.
 -/
 
-/-- Strong finite endpoint exposed by PR #247.
-
-OPEN: no proof of this proposition is supplied in this module. -/
-def GlobalBottomResidualExclusion : Prop :=
-  ∀ Q : ℕ, ∀ s : GlobalBottomResidualState Q, False
-
-/-- The strong residual exclusion would rule out every off-line zeta zero. -/
-theorem no_offLine_zero_of_globalBottomResidualExclusion
-    (hkill : GlobalBottomResidualExclusion) :
-    ¬ ∃ ρ : zetaZeroConfig.carrier, (ρ : ℂ).re ≠ 1 / 2 := by
-  rintro ⟨ρ₀, hoff⟩
-  obtain ⟨Q, s, _hlarge⟩ :=
+/-- A hypothetical off-line zero produces concrete branch-constrained
+arithmetic residuals at arbitrarily large aperture. -/
+theorem
+    exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_offLine_zero
+    (ρ₀ : zetaZeroConfig.carrier)
+    (hoff : (ρ₀ : ℂ).re ≠ 1 / 2)
+    (A : ℝ) :
+    ∃ Q : ℕ,
+      ∃ a : GlobalBottomArithmeticResidual Q,
+        A < a.state.whole.retained.energy.firstBad.L := by
+  obtain ⟨Q, s, hlarge⟩ :=
     exists_arbitrarilyLarge_globalBottomResidualState_of_offLine_zero
-      ρ₀ hoff 0
-  exact hkill Q s
+      ρ₀ hoff A
+  obtain ⟨a⟩ := s.exists_arithmeticResidual
+  exact ⟨Q, a, hlarge⟩
 
-/-- Repository-carrier critical-line form, conditional only on the explicit
-open residual exclusion above. -/
-theorem criticalLine_of_globalBottomResidualExclusion
-    (hkill : GlobalBottomResidualExclusion) :
-    ∀ ρ ∈ zetaZeroConfig.carrier, ρ.re = 1 / 2 := by
-  intro ρ hρ
-  by_contra hoff
+/-- Existential off-line-zero wrapper for the concrete arithmetic residual. -/
+theorem
+    exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_exists_offLine_zero
+    (hoff : ∃ ρ : zetaZeroConfig.carrier, (ρ : ℂ).re ≠ 1 / 2)
+    (A : ℝ) :
+    ∃ Q : ℕ,
+      ∃ a : GlobalBottomArithmeticResidual Q,
+        A < a.state.whole.retained.energy.firstBad.L := by
+  obtain ⟨ρ₀, hρ₀⟩ := hoff
   exact
-    no_offLine_zero_of_globalBottomResidualExclusion hkill
-      ⟨⟨ρ, hρ⟩, hoff⟩
-
-
-/-- Exact conditional arithmetic route: the explicit open global-bottom
-arithmetic closure target would rule out every off-line zero. -/
-theorem no_offLine_zero_of_globalBottomArithmeticClosure
-    (hclose : GlobalBottomArithmeticClosure) :
-    ¬ ∃ ρ : zetaZeroConfig.carrier, (ρ : ℂ).re ≠ 1 / 2 := by
-  apply no_offLine_zero_of_globalBottomResidualExclusion
-  intro Q s
-  exact residual_exclusion_of_globalBottomArithmeticClosure hclose Q s
-
-/-- Repository-carrier critical-line form of the same conditional arithmetic
-closure. -/
-theorem criticalLine_of_globalBottomArithmeticClosure
-    (hclose : GlobalBottomArithmeticClosure) :
-    ∀ ρ ∈ zetaZeroConfig.carrier, ρ.re = 1 / 2 := by
-  apply criticalLine_of_globalBottomResidualExclusion
-  intro Q s
-  exact residual_exclusion_of_globalBottomArithmeticClosure hclose Q s
+    exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_offLine_zero
+      ρ₀ hρ₀ A
 
 end Zeta23.ExceptionalZero
 
-#print axioms Zeta23.ExceptionalZero.GlobalBottomResidualExclusion
-#print axioms Zeta23.ExceptionalZero.no_offLine_zero_of_globalBottomResidualExclusion
-#print axioms Zeta23.ExceptionalZero.criticalLine_of_globalBottomResidualExclusion
-#print axioms Zeta23.ExceptionalZero.no_offLine_zero_of_globalBottomArithmeticClosure
-#print axioms Zeta23.ExceptionalZero.criticalLine_of_globalBottomArithmeticClosure
+#print axioms Zeta23.ExceptionalZero.exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_exists_offLine_zero
