@@ -37,6 +37,7 @@ theorem oddGround_pulledBack_source_ne_zero_of_strict
       euclideanEvenOddBoundaryFlatLinearEquiv (N + 1) (by omega)
     let v := E.symm w
     evenQuadraticSourceMoment L (N + 1) v ≠ 0 := by
+  dsimp only
   let E :=
     euclideanEvenOddBoundaryFlatLinearEquiv (N + 1) (by omega)
   let v : euclideanEvenBoundaryFlatSubspace (N + 1) := E.symm w
@@ -96,6 +97,7 @@ theorem oddGround_reverse_rankOne_package
         (parityRayleighBottom .odd L (N + 1) : ℂ) • v =
       -(evenQuadraticSourceMoment L (N + 1) v) •
         pulledBackCubicCompressionVector (N + 1) (by omega) := by
+  dsimp only
   let E :=
     euclideanEvenOddBoundaryFlatLinearEquiv (N + 1) (by omega)
   let v : euclideanEvenBoundaryFlatSubspace (N + 1) := E.symm w
