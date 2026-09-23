@@ -354,7 +354,7 @@ def build_records() -> dict[str, object]:
     comparator_roots = sorted(
         name
         for name, path in local_by_module.items()
-        if path.startswith("comparator/")
+        if path.startswith("comparator/") and path.count("/") == 1
     )
     reachability = reachability_view(local_import_graph, comparator_roots)
     unresolved = {
