@@ -432,6 +432,136 @@
       "imports": [
         "Zeta23.CCM.BoundaryFlatFiniteSpace"
       ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalApertureAnalyticPrimitives.lean",
+      "blob_sha": "74a4f91f201830d91043a0fa2844d000e5694b90",
+      "imports": [
+        "Zeta23.CCM.CanonicalApertureContinuity",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.IntegrationByParts",
+        "Mathlib.Analysis.Complex.RemovableSingularity",
+        "Mathlib.Analysis.Calculus.ParametricIntervalIntegral"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalApertureArchDomain.lean",
+      "blob_sha": "797d5eabb37c3a1ecd2413d487a140eb3a7478da",
+      "imports": [
+        "Zeta23.CCM.CanonicalApertureAnalyticPrimitives",
+        "Mathlib.Analysis.SpecialFunctions.Complex.Log",
+        "Mathlib.Analysis.Convex.PathConnected",
+        "Mathlib.Analysis.Complex.CauchyIntegral"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalApertureComplexBridge.lean",
+      "blob_sha": "04201b50ecb872afb315fd49a588b22c20087ce4",
+      "imports": [
+        "Zeta23.CCM.CanonicalApertureAnalyticPrimitives"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalApertureComplexSource.lean",
+      "blob_sha": "5346ef1a52c769fb73d9bcc04103cfbe3e3bde7b",
+      "imports": [
+        "Zeta23.CCM.CanonicalApertureAnalyticPrimitives",
+        "Zeta23.CCM.CanonicalApertureRegularityScaffold"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalApertureContinuity.lean",
+      "blob_sha": "1d384832e4d1faefa7ac808598e3b8bad0f2e267",
+      "imports": [
+        "Zeta23.CCM.CanonicalApertureRegularityScaffold",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Sinc",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp",
+        "Mathlib.MeasureTheory.Integral.DominatedConvergence"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalApertureHolomorphy.lean",
+      "blob_sha": "33b4e602e3191c4b5cf0c773b079ddf389381967",
+      "imports": [
+        "Zeta23.CCM.FrozenCanonicalSourceComplex",
+        "Zeta23.CCM.CanonicalApertureArchDomain",
+        "Mathlib.Analysis.SpecialFunctions.Complex.Analytic"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalApertureParameterHolomorphy.lean",
+      "blob_sha": "9b4a5b51ff1b00cdb3ee2e94f384c88c43f4d332",
+      "imports": [
+        "Zeta23.CCM.CanonicalApertureArchDomain",
+        "Mathlib.Analysis.Calculus.ParametricIntervalIntegral",
+        "Mathlib.Analysis.Calculus.FDeriv.Analytic",
+        "Mathlib.Topology.Order.Compact"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalApertureRegularityScaffold.lean",
+      "blob_sha": "86b62f9847009ed06aa0465263ea1f21d117d6a5",
+      "imports": [
+        "Zeta23.CCM.CanonicalSourceMomentAtoms",
+        "Zeta23.CCM.FirstBadShiftedSchur",
+        "Zeta23.CCM.SourceNormalizationRepair",
+        "Mathlib.LinearAlgebra.Determinant"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalApertureScalarHalfPlane.lean",
+      "blob_sha": "5eecd527a63cd115cd7ba478671d9cc33d691456",
+      "imports": [
+        "Zeta23.CCM.CanonicalApertureHolomorphy",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalApertureSourceHolomorphy.lean",
+      "blob_sha": "dcdaad3d4aa862124231b0ff494c510b3950d893",
+      "imports": [
+        "Zeta23.CCM.CanonicalApertureParameterHolomorphy",
+        "Zeta23.CCM.CanonicalApertureScalarHalfPlane",
+        "Zeta23.CCM.FrozenCanonicalSourceComplex",
+        "Mathlib.Analysis.Analytic.Constructions",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalConjugationGeometry.lean",
+      "blob_sha": "8a32a2c045014eaf7a9008b34489579040d45b0b",
+      "imports": [
+        "Zeta23.CCM.CubicNormalizedSchur",
+        "Zeta23.CCM.CutoffFreeMatrix"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalGoodSectorGram.lean",
+      "blob_sha": "68e9925e87e6fb9dbe9c2e2775aa1d3d01916f83",
+      "imports": [
+        "Zeta23.CCM.GoodSectorKernelAnnihilation",
+        "Zeta23.CCM.CanonicalOneStepDomination"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalOneStepDomination.lean",
+      "blob_sha": "a82df8347a277002d9b9f7fb937f306f90cd5e6c",
+      "imports": [
+        "Zeta23.CCM.CanonicalSourcePairing",
+        "Zeta23.CCM.ZeroShiftSchurEndpoint"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalPolePrimeDiscrepancy.lean",
+      "blob_sha": "19c3b2b451f3afd1a550a24c510548492ef92b91",
+      "imports": [
+        "Zeta23.CCM.CanonicalSourceEnergy",
+        "Zeta23.CCM.DictionaryPoleLift",
+        "Mathlib.Analysis.Calculus.ContDiff.Deriv",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.IntegrationByParts"
+      ]
     }
   ],
   "all_lean": [
