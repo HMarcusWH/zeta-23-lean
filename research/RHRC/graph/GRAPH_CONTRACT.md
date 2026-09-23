@@ -51,10 +51,12 @@ No text-mined or LLM-derived relation is emitted by Phase 1.
 
 ## 5. Import semantics
 
-The builder loads the import regex from
-`research/RHRC/tools/arithmetic_firewall_lint.py` and applies that parser to all
-local Lean files. This preserves the existing anti-circularity parser semantics
-instead of inventing a second incompatible import grammar.
+The import parser is factored into
+`research/RHRC/tools/lean_imports.py` and is consumed by both the arithmetic
+firewall and RHKG. It preserves the existing first-token import-regex semantics
+while stripping Lean line comments and nested block comments first. A regression
+self-test runs in the RHRC suite, and the arithmetic firewall remains an
+independent fail-closed consumer of the shared parser.
 
 Module import is availability, not theorem dependency.
 
