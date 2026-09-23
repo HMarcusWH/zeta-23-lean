@@ -1,5 +1,6 @@
 import Zeta23.CCM.CubicShellIncidence
 import Zeta23.CCM.ConstrainedParitySpectrum
+import Zeta23.CCM.FirstBadSpectralInterfaces
 import Mathlib.Analysis.InnerProductSpace.Symmetric
 
 noncomputable section
