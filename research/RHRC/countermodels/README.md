@@ -42,6 +42,8 @@ RESEARCH / REGRESSION HARVEST
 - post-202 = COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
 - post-214 = FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED / FULL_SPACE_SIGN_INDEFINITE_CERTIFIED
 - post-222 = NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED
+- post-249 = FINITE_GRID_SHARP_CANCELLATION / ZERO_SIDE_PERTURBATION_CONTROL_BUILT / EXPERIMENTAL_SIGNAL_ONLY
+- post-249 interpretation firewall = NO ASYMPTOTIC RATE / NO EXACT FIRST-ZERO SWITCH / SIGN-CHANGE BRACKETS NOT GLOBAL MINIMA
 - theorem promotion from research replays = false
 
 CURRENT RESEARCH PROGRAM
@@ -52,7 +54,8 @@ CURRENT RESEARCH PROGRAM
 - full-space <-> boundary-flat <-> parity spectral bridge = ACTIVE LEAD
 - R004 prolate/full-space ground-space bridge = RESURRECTED LEAD
 - Pair-D = GENERIC LINEAR-ALGEBRA FILTER ONLY
-- planted off-line canonical-style control = TO BUILD / PRIMARY FALSIFIER
+- planted zero-side perturbation control = BUILT / PR #249 / EXPERIMENTAL_SIGNAL_ONLY
+- globally consistent planted zeta/Euler-product control = OPEN
 - global aperture Loewner monotonicity = QUARANTINED / DR-021
 - global minimizing-Schur monotonicity = QUARANTINED / DR-022
 - exact-equality holonomy = DROPPED / TAUTOLOGICAL
@@ -85,7 +88,8 @@ Canonical post-#247 programme: research/RHRC/routes/R003_ccm_bridge/POST_247_RIE
 Countermodels now have distinct jobs:
 
 - **Pair-D / C1:** generic finite Hermitian/parity/shell/displacement filter. Passing Pair-D means only that a candidate is not generic linear algebra.
-- **Planted off-line canonical-style control:** PRIMARY NEXT FALSIFIER TO BUILD. Its semantics must state which canonical entries, explicit-formula identities, Euler-product/prime data and zero data are preserved versus deliberately altered.
+- **PR #249 zero-side perturbation control:** BUILT / EXPERIMENTAL_SIGNAL_ONLY. It preserves the real canonical operator/carrier and adds the local explicit-formula contribution of an extra zero quartet; it does **not** construct a modified Euler product or von Mangoldt system consistent with that quartet.
+- **Globally consistent planted-zeta control:** OPEN. A stronger control would have to state and realize which Euler-product/prime, explicit-formula, functional-equation and zero-set structures are preserved.
 - **Functional-equation-only zeta-like controls:** external research falsifiers for mechanisms that use symmetry but not arithmetic.
 - **Generalized-prime controls:** external research falsifiers for mechanisms that use only abstract prime/Euler-product structure rather than the classical von Mangoldt system.
 

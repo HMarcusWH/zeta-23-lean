@@ -93,7 +93,10 @@ def check_planted_structure() -> None:
         assert row1[p]["increment_inertia"]["positive"] == 1
         assert row1[p]["increment_inertia"]["negative"] == 1
         ratio = float(row2[p]["increment_eig_min"]["mid"]) / float(row1[p]["increment_eig_min"]["mid"])
-        assert 0.0099 < ratio < 0.0101, ratio  # delta^2 scaling
+        # Near-zero leading-order quadratic response only:
+        # delta shrinks by 10, so a delta^2 term shrinks by about 100.
+        # This is not an exact global scaling law in delta.
+        assert 0.0099 < ratio < 0.0101, ratio
 
 
 def check_explicit_formula_sign() -> None:

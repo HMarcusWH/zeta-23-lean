@@ -219,16 +219,31 @@ Question: is the proposed law just Hermitian/parity/shell/displacement algebra?
 
 Passing Pair-D is necessary but not sufficient for zeta-specificity.
 
-### Planted off-line canonical-style control
-Role: primary next falsifier to build.
-Requirements:
-- explicit fake zero data;
-- explicit resulting arithmetic/explicit-formula data;
-- declaration of which canonical relations are preserved;
-- declaration of which zeta/Euler-product facts are broken;
-- no arbitrary "edit R(x)" shortcut presented as a genuine zeta model.
+### PR #249 zero-side perturbation control — BUILT / EXPERIMENTAL
 
-Question: does the candidate unconditional law hold on real canonical data but fail in a controlled off-line world for a specifically identified arithmetic reason?
+PR #249 supplies a scoped falsifier:
+- start from the real canonical prime/Euler-product matrix;
+- add the local explicit-formula contribution of a symmetric planted zero quartet;
+- keep the exact boundary-flat/parity carriers;
+- certify the resulting finite matrix signs with Arb.
+
+Observed on the frozen grid:
+- an on-line planted double pair gives a rank-one PSD increment in each parity block;
+- an off-line quartet gives signature (1,1) in each parity block;
+- 82/90 tested off-line cases become canonically bad;
+- near zero, the negative increment shows a leading-order quadratic response in delta.
+
+Semantics firewall:
+- this does **not** construct a modified Euler product or von Mangoldt sequence consistent with the planted zeros;
+- it is not an alternate zeta/L-function;
+- the reported delta transition values are certified sign-change brackets, not globally minimal thresholds;
+- the finite-grid ratio decay establishes no asymptotic rate.
+
+Question: does a candidate unconditional law distinguish the real canonical data from this controlled local off-line zero-side response for a structurally identified reason?
+
+### Globally consistent planted-zeta control — OPEN
+
+A stronger falsifier would simultaneously realize prime/Euler-product data, explicit-formula data, functional-equation symmetry and a planted off-line zero set. PR #249 does not supply that object.
 
 ### External zeta-adjacent controls
 Use only as research falsifiers, with source/normalization caveats.
