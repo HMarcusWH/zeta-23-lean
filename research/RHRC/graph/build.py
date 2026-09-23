@@ -226,6 +226,38 @@ def build_records() -> dict[str, object]:
             "authority_role": "CONTAINER_ONLY",
         }
     ]
+
+    artifact_type_by_class = {
+        "CONTROL_STATE": "ControlObject",
+        "FROZEN_RESEARCH_DELTA": "HistoricalDelta",
+        "FROZEN_OBSTRUCTION_DELTA": "HistoricalDelta",
+        "FROZEN_DEAD_ROUTE_DELTA": "HistoricalDelta",
+        "RESEARCH_EXECUTABLE": "ResearchExecutable",
+        "RESEARCH_FIXTURE": "Fixture",
+        "CI_WORKFLOW": "WorkflowDefinition",
+    }
+    for source in repo_files:
+        artifact_type = artifact_type_by_class.get(source["file_class"])
+        if artifact_type is None:
+            continue
+        prefix = {
+            "ControlObject": "control",
+            "HistoricalDelta": "historical-delta",
+            "ResearchExecutable": "research-executable",
+            "Fixture": "fixture",
+            "WorkflowDefinition": "workflow-definition",
+        }[artifact_type]
+        registry_nodes.append(
+            {
+                "id": f"rh:{prefix}:{source['path']}",
+                "type": artifact_type,
+                "path": source["path"],
+                "file_id": source["id"],
+                "file_class": source["file_class"],
+                "trust_zone": source["trust_zone"],
+                "source_locator": source["source_locator"],
+            }
+        )
     for claim in claims_data["claims"]:
         registry_nodes.append(
             {
@@ -256,6 +288,33 @@ def build_records() -> dict[str, object]:
             kind, source, target, provenance
         )
 
+    for source in repo_files:
+        add_rel("CONTAINS", REPOSITORY_ID, source["id"], "GIT_EXACT")
+        if source["generated_product"]:
+            add_rel(
+                "GENERATED_BY",
+                source["id"],
+                file_id("research/RHRC/graph/build.py"),
+                "GIT_EXACT",
+            )
+
+    add_rel(
+        "GOVERNED_BY",
+        REPOSITORY_ID,
+        file_id("research/RHRC/graph/CONSTITUTION.md"),
+        "GIT_EXACT",
+    )
+
+    for node in registry_nodes:
+        if node["type"] in {
+            "ControlObject",
+            "HistoricalDelta",
+            "ResearchExecutable",
+            "Fixture",
+            "WorkflowDefinition",
+        }:
+            add_rel("LOCATED_AT", node["id"], node["file_id"], "GIT_EXACT")
+
     for name, path in sorted(local_by_module.items()):
         add_rel("LOCATED_AT", module_id(name), file_id(path), "GIT_EXACT")
         for dep in import_map[name]:
@@ -264,12 +323,14 @@ def build_records() -> dict[str, object]:
     for claim in claims_data["claims"]:
         cid = claim_id(claim["id"])
         add_rel("MIRRORS", cid, file_id(CLAIM_REGISTRY), "REGISTRY_EXACT")
+        add_rel("REGISTERED_IN", cid, file_id(CLAIM_REGISTRY), "REGISTRY_EXACT")
         if claim.get("route") in known_routes:
             add_rel("PART_OF_ROUTE", cid, route_id(claim["route"]), "REGISTRY_EXACT")
 
     for route in routes_data["routes"]:
         rid = route_id(route["route_id"])
         add_rel("MIRRORS", rid, file_id(ROUTE_REGISTRY), "REGISTRY_EXACT")
+        add_rel("REGISTERED_IN", rid, file_id(ROUTE_REGISTRY), "REGISTRY_EXACT")
         for cid_raw in route.get("claim_ids", []):
             if cid_raw in known_claims:
                 add_rel("PART_OF_ROUTE", claim_id(cid_raw), rid, "REGISTRY_EXACT")
