@@ -1,4 +1,5 @@
 import Zeta23.ExceptionalZero.GlobalParityBottomGeneratedState
+import Zeta23.CCM.GlobalParityBottomArithmeticTarget
 
 noncomputable section
 
@@ -46,8 +47,29 @@ theorem criticalLine_of_globalBottomResidualExclusion
     no_offLine_zero_of_globalBottomResidualExclusion hkill
       ⟨⟨ρ, hρ⟩, hoff⟩
 
+
+/-- Exact conditional arithmetic route: the explicit open global-bottom
+arithmetic closure target would rule out every off-line zero. -/
+theorem no_offLine_zero_of_globalBottomArithmeticClosure
+    (hclose : GlobalBottomArithmeticClosure) :
+    ¬ ∃ ρ : zetaZeroConfig.carrier, (ρ : ℂ).re ≠ 1 / 2 := by
+  apply no_offLine_zero_of_globalBottomResidualExclusion
+  intro Q s
+  exact residual_exclusion_of_globalBottomArithmeticClosure hclose Q s
+
+/-- Repository-carrier critical-line form of the same conditional arithmetic
+closure. -/
+theorem criticalLine_of_globalBottomArithmeticClosure
+    (hclose : GlobalBottomArithmeticClosure) :
+    ∀ ρ ∈ zetaZeroConfig.carrier, ρ.re = 1 / 2 := by
+  apply criticalLine_of_globalBottomResidualExclusion
+  intro Q s
+  exact residual_exclusion_of_globalBottomArithmeticClosure hclose Q s
+
 end Zeta23.ExceptionalZero
 
 #print axioms Zeta23.ExceptionalZero.GlobalBottomResidualExclusion
 #print axioms Zeta23.ExceptionalZero.no_offLine_zero_of_globalBottomResidualExclusion
 #print axioms Zeta23.ExceptionalZero.criticalLine_of_globalBottomResidualExclusion
+#print axioms Zeta23.ExceptionalZero.no_offLine_zero_of_globalBottomArithmeticClosure
+#print axioms Zeta23.ExceptionalZero.criticalLine_of_globalBottomArithmeticClosure
