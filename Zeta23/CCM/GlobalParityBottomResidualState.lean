@@ -10,16 +10,35 @@ open Complex Set
 /-!
 # PR #247 — canonical global-bottom residual state
 
-This is the finite object left after global-bottom reparameterization.  It does
-not assert a contradiction.  It packages whole-cell provenance, an aligned
-negative-energy certificate at the true two-parity ground value, and the exact
-strict-even / tie / strict-odd case split.
+The residual object keeps whole-cell provenance together with one retained
+negative-energy certificate reselected at the true two-parity spectral bottom.
 
-The object is deliberately RH-neutral and lives in CCM rather than the
-ExceptionalZero namespace.  A hypothetical off-line zero will later be shown
-to generate such states at arbitrarily large aperture.
+The branch is not stored as a naked trichotomy.  Its type records that the
+selected certificate parity agrees with the branch that attained the global
+bottom.  In the tied case we use the repository's canonical even selection.
 -/
 
+/-- Exact branch together with the parity actually selected by the aligned
+retained certificate. -/
+inductive GlobalBottomAlignedBranch
+    (L : ℝ) (N : ℕ) (p : ReversalParity) : Type
+  | evenStrict
+      (hp : p = .even)
+      (hstrict :
+        parityRayleighBottom .even L (N + 1) <
+          parityRayleighBottom .odd L (N + 1))
+  | tieEven
+      (hp : p = .even)
+      (htie :
+        parityRayleighBottom .even L (N + 1) =
+          parityRayleighBottom .odd L (N + 1))
+  | oddStrict
+      (hp : p = .odd)
+      (hstrict :
+        parityRayleighBottom .odd L (N + 1) <
+          parityRayleighBottom .even L (N + 1))
+
+/-- Whole-cell retained provenance plus the exact globally aligned certificate. -/
 structure GlobalBottomResidualState (Q : ℕ) where
   whole : WholeCellBiRegularNegativeEnergyCertificate Q
   aligned : RegularCellMinimalNegativeEnergyCertificate Q
@@ -30,31 +49,17 @@ structure GlobalBottomResidualState (Q : ℕ) where
   aligned_lam_is_global :
     aligned.lam =
       globalParitySuccessorBottom
-        whole.retained.energy.firstBad.L
-        whole.retained.energy.firstBad.Nstar
+        aligned.firstBad.L
+        aligned.firstBad.Nstar
   global_neg :
     globalParitySuccessorBottom
-        whole.retained.energy.firstBad.L
-        whole.retained.energy.firstBad.Nstar < 0
+        aligned.firstBad.L
+        aligned.firstBad.Nstar < 0
   branch :
-    parityRayleighBottom .even
-          whole.retained.energy.firstBad.L
-          (whole.retained.energy.firstBad.Nstar + 1) <
-        parityRayleighBottom .odd
-          whole.retained.energy.firstBad.L
-          (whole.retained.energy.firstBad.Nstar + 1) ∨
-      parityRayleighBottom .even
-          whole.retained.energy.firstBad.L
-          (whole.retained.energy.firstBad.Nstar + 1) =
-        parityRayleighBottom .odd
-          whole.retained.energy.firstBad.L
-          (whole.retained.energy.firstBad.Nstar + 1) ∨
-      parityRayleighBottom .odd
-          whole.retained.energy.firstBad.L
-          (whole.retained.energy.firstBad.Nstar + 1) <
-        parityRayleighBottom .even
-          whole.retained.energy.firstBad.L
-          (whole.retained.energy.firstBad.Nstar + 1)
+    GlobalBottomAlignedBranch
+      aligned.firstBad.L
+      aligned.firstBad.Nstar
+      aligned.firstBad.p
 
 /-- Every whole-cell bi-regular state admits the canonical global-bottom
 residual packaging. -/
@@ -70,51 +75,60 @@ theorem exists_globalBottomResidualState_of_wholeCell
   by_cases hle :
       parityRayleighBottom .even fb.L (fb.Nstar + 1) ≤
         parityRayleighBottom .odd fb.L (fb.Nstar + 1)
-  · obtain ⟨e, hL, hN, _hp, hlam⟩ :=
+  · obtain ⟨e, hL, hN, hp, hlam⟩ :=
       exists_globalBottomAligned_negativeEnergyCertificate_even
         c.retained hle
     have hlamGlobal :
-        e.lam = globalParitySuccessorBottom fb.L fb.Nstar := by
-      rw [hlam, globalParitySuccessorBottom, min_eq_left hle]
+        e.lam = globalParitySuccessorBottom e.firstBad.L e.firstBad.Nstar := by
+      rw [hlam, hL, hN, globalParitySuccessorBottom, min_eq_left hle]
+    have hglobal' :
+        globalParitySuccessorBottom e.firstBad.L e.firstBad.Nstar < 0 := by
+      simpa [hL, hN] using hglobal
     rcases lt_or_eq_of_le hle with hstrict | htie
     · refine ⟨{
         whole := c
         aligned := e
-        same_L := by simpa [fb] using hL
-        same_N := by simpa [fb] using hN
-        aligned_lam_is_global := by simpa [fb] using hlamGlobal
-        global_neg := by simpa [fb] using hglobal
-        branch := Or.inl hstrict
+        same_L := hL
+        same_N := hN
+        aligned_lam_is_global := hlamGlobal
+        global_neg := hglobal'
+        branch := .evenStrict hp ?_
       }, rfl⟩
+      simpa [hL, hN] using hstrict
     · refine ⟨{
         whole := c
         aligned := e
-        same_L := by simpa [fb] using hL
-        same_N := by simpa [fb] using hN
-        aligned_lam_is_global := by simpa [fb] using hlamGlobal
-        global_neg := by simpa [fb] using hglobal
-        branch := Or.inr (Or.inl htie)
+        same_L := hL
+        same_N := hN
+        aligned_lam_is_global := hlamGlobal
+        global_neg := hglobal'
+        branch := .tieEven hp ?_
       }, rfl⟩
+      simpa [hL, hN] using htie
   · have hodd :
       parityRayleighBottom .odd fb.L (fb.Nstar + 1) <
         parityRayleighBottom .even fb.L (fb.Nstar + 1) :=
       lt_of_not_ge hle
-    obtain ⟨e, hL, hN, _hp, hlam⟩ :=
+    obtain ⟨e, hL, hN, hp, hlam⟩ :=
       exists_globalBottomAligned_negativeEnergyCertificate_odd
         c.retained hodd
     have hlamGlobal :
-        e.lam = globalParitySuccessorBottom fb.L fb.Nstar := by
-      rw [hlam, globalParitySuccessorBottom,
+        e.lam = globalParitySuccessorBottom e.firstBad.L e.firstBad.Nstar := by
+      rw [hlam, hL, hN, globalParitySuccessorBottom,
         min_eq_right (le_of_lt hodd)]
+    have hglobal' :
+        globalParitySuccessorBottom e.firstBad.L e.firstBad.Nstar < 0 := by
+      simpa [hL, hN] using hglobal
     refine ⟨{
       whole := c
       aligned := e
-      same_L := by simpa [fb] using hL
-      same_N := by simpa [fb] using hN
-      aligned_lam_is_global := by simpa [fb] using hlamGlobal
-      global_neg := by simpa [fb] using hglobal
-      branch := Or.inr (Or.inr hodd)
+      same_L := hL
+      same_N := hN
+      aligned_lam_is_global := hlamGlobal
+      global_neg := hglobal'
+      branch := .oddStrict hp ?_
     }, rfl⟩
+    simpa [hL, hN] using hodd
 
 /-- The residual state's aligned certificate stores a strictly negative shift. -/
 theorem GlobalBottomResidualState.aligned_lam_neg
@@ -124,8 +138,31 @@ theorem GlobalBottomResidualState.aligned_lam_neg
   rw [s.aligned_lam_is_global]
   exact s.global_neg
 
+/-- The branch can never disagree with the selected parity. -/
+theorem GlobalBottomResidualState.selectedParity_spec
+    {Q : ℕ}
+    (s : GlobalBottomResidualState Q) :
+    (s.aligned.firstBad.p = .even ∧
+        (parityRayleighBottom .even s.aligned.firstBad.L
+            (s.aligned.firstBad.Nstar + 1) ≤
+          parityRayleighBottom .odd s.aligned.firstBad.L
+            (s.aligned.firstBad.Nstar + 1))) ∨
+      (s.aligned.firstBad.p = .odd ∧
+        parityRayleighBottom .odd s.aligned.firstBad.L
+            (s.aligned.firstBad.Nstar + 1) <
+          parityRayleighBottom .even s.aligned.firstBad.L
+            (s.aligned.firstBad.Nstar + 1)) := by
+  cases s.branch with
+  | evenStrict hp hstrict =>
+      exact Or.inl ⟨hp, le_of_lt hstrict⟩
+  | tieEven hp htie =>
+      exact Or.inl ⟨hp, le_of_eq htie⟩
+  | oddStrict hp hstrict =>
+      exact Or.inr ⟨hp, hstrict⟩
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.GlobalBottomResidualState
 #print axioms Zeta23.CCM.exists_globalBottomResidualState_of_wholeCell
 #print axioms Zeta23.CCM.GlobalBottomResidualState.aligned_lam_neg
+#print axioms Zeta23.CCM.GlobalBottomResidualState.selectedParity_spec
