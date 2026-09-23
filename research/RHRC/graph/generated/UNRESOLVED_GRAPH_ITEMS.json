@@ -1,9 +1,10 @@
 {
   "claim_firewall": "RH_OPEN",
   "deferred_to_later_phases": [
-    "Lean declaration extraction",
+    "repository-wide Lean declaration extraction beyond promoted R003 authority",
     "declaration-level USES_CONSTANT dependencies",
-    "PROVES claim bindings beyond exact registry projection",
+    "non-R003 explicit promoted-binding normalization",
+    "build/reachability status for standalone Lean modules",
     "multi-axis authority/current-state resolution",
     "Git/PR/workflow provenance graph",
     "dead-route/obstruction/revival semantic graph",
@@ -227,8 +228,8 @@
     "Mathlib.Topology.Order.Compact",
     "Mathlib.Topology.Piecewise"
   ],
-  "schema_version": "RHKG-phase1-unresolved-0.1",
-  "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_1",
+  "schema_version": "RHKG-phase2a-unresolved-0.2",
+  "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_2A",
   "standalone_or_auxiliary_modules": [
     "Challenge.XiPrime",
     "ChallengeDeps.XiPrime",

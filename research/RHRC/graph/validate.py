@@ -12,8 +12,7 @@ REPO = RHRC.parents[1]
 GENERATED = GRAPH / "generated"
 GRAPH_SCHEMA = GRAPH / "GRAPH_SCHEMA.json"
 
-FORBIDDEN_PHASE1_RELATIONS = {
-    "PROVES",
+FORBIDDEN_CURRENT_RELATIONS = {
     "USES_CONSTANT",
     "DEPENDS_ON",
     "KILLS_ROUTE",
@@ -169,6 +168,7 @@ def main() -> int:
 
     repo_files = read_jsonl("repository_files.jsonl")
     lean_modules = read_jsonl("lean_modules.jsonl")
+    lean_declarations = read_jsonl("lean_declarations.jsonl")
     registry_nodes = read_jsonl("registry_nodes.jsonl")
     relations = read_jsonl("relations.jsonl")
 
@@ -179,6 +179,7 @@ def main() -> int:
         for collection_name, rows in (
             ("repository_files.jsonl", repo_files),
             ("lean_modules.jsonl", lean_modules),
+            ("lean_declarations.jsonl", lean_declarations),
             ("registry_nodes.jsonl", registry_nodes),
             ("relations.jsonl", relations),
         ):
@@ -188,7 +189,7 @@ def main() -> int:
                         f"{collection_name}:{index}: schema validation failed: {error}"
                     )
 
-    all_nodes = repo_files + lean_modules + registry_nodes
+    all_nodes = repo_files + lean_modules + lean_declarations + registry_nodes
     node_ids: set[str] = set()
     all_ids: set[str] = set()
     duplicates: set[str] = set()
@@ -254,6 +255,11 @@ def main() -> int:
 
     module_ids = {m["id"] for m in lean_modules}
     local_module_ids = {m["id"] for m in local_modules}
+    local_module_by_path = {m["path"]: m for m in local_modules}
+    declaration_ids = {d["id"] for d in lean_declarations}
+    claim_node_ids = {
+        n["id"] for n in registry_nodes if n["type"] == "RegisteredClaim"
+    }
     for rel in relations:
         kind = rel.get("kind")
         source = rel.get("source")
@@ -271,13 +277,27 @@ def main() -> int:
             errors.append(f"missing relation source endpoint: {rel}")
         if rel.get("target") not in node_ids:
             errors.append(f"missing relation target endpoint: {rel}")
-        if rel.get("kind") in FORBIDDEN_PHASE1_RELATIONS:
-            errors.append(f"forbidden Phase-1 claim-bearing relation: {rel['kind']}")
+        if rel.get("kind") in FORBIDDEN_CURRENT_RELATIONS:
+            errors.append(f"relation not yet authorized in Phase 2A: {rel['kind']}")
         if rel.get("kind") == "IMPORTS":
             if rel["source"] not in local_module_ids:
                 errors.append(f"IMPORTS source is not a local module: {rel}")
             if rel["target"] not in module_ids:
                 errors.append(f"IMPORTS target is not an explicit module node: {rel}")
+        if rel.get("kind") == "DECLARES":
+            if rel["source"] not in local_module_ids:
+                errors.append(f"DECLARES source is not a local module: {rel}")
+            if rel["target"] not in declaration_ids:
+                errors.append(f"DECLARES target is not a LeanDeclaration: {rel}")
+            if rel.get("provenance") != "REGISTRY_EXACT":
+                errors.append(f"Phase-2A DECLARES provenance is not REGISTRY_EXACT: {rel}")
+        if rel.get("kind") == "PROVES":
+            if rel["source"] not in declaration_ids:
+                errors.append(f"PROVES source is not a LeanDeclaration: {rel}")
+            if rel["target"] not in claim_node_ids:
+                errors.append(f"PROVES target is not a RegisteredClaim: {rel}")
+            if rel.get("provenance") != "REGISTRY_EXACT":
+                errors.append(f"Phase-2A PROVES provenance is not REGISTRY_EXACT: {rel}")
 
 
     expected_artifact_classes = {
@@ -319,6 +339,105 @@ def main() -> int:
     if route_projection != source_routes:
         errors.append("ROUTE_REGISTRY projection is not exact")
 
+
+    promoted = json.loads(
+        (REPO / graph_build.PROMOTED_BINDINGS).read_text(encoding="utf-8")
+    )
+    claim_by_id = {claim["id"]: claim for claim in claim_source["claims"]}
+    declaration_by_name = {d["declaration"]: d for d in lean_declarations}
+    expected_declarations: dict[str, dict] = {}
+    expected_declares: set[tuple[str, str]] = set()
+    expected_proves: set[tuple[str, str]] = set()
+
+    for binding in promoted["bindings"]:
+        claim = claim_by_id.get(binding["id"])
+        if claim is None:
+            errors.append(f"promoted binding references unknown claim: {binding['id']}")
+            continue
+        if claim.get("route") != "R003_ccm_bridge":
+            errors.append(f"promoted binding is outside R003_ccm_bridge: {binding['id']}")
+        if claim.get("status") != "PROVED_UNCONDITIONAL":
+            errors.append(f"promoted binding is not PROVED_UNCONDITIONAL: {binding['id']}")
+        if claim.get("theorem") != binding["theorem"]:
+            errors.append(
+                f"promoted binding theorem mismatch for {binding['id']}: "
+                f"{binding['theorem']!r} != {claim.get('theorem')!r}"
+            )
+            continue
+
+        source_path = claim.get("source")
+        module = local_module_by_path.get(source_path)
+        if module is None:
+            errors.append(
+                f"promoted binding source is not an indexed local Lean module: "
+                f"{binding['id']} -> {source_path!r}"
+            )
+            continue
+
+        decl_id = graph_build.declaration_id(binding["theorem"])
+        expected = {
+            "id": decl_id,
+            "type": "LeanDeclaration",
+            "declaration": binding["theorem"],
+            "module": module["module"],
+            "module_id": module["id"],
+            "source_path": source_path,
+            "source_file_id": module["file_id"],
+            "binding_scope": "R003_PROMOTED",
+            "authority_role": "PROMOTED_CLAIM_DECLARATION",
+            "binding_source": graph_build.PROMOTED_BINDINGS,
+            "compiler_binding_source": graph_build.CLAIM_BINDINGS_LEAN,
+            "source_locator": module["source_locator"],
+        }
+        expected_declarations[binding["theorem"]] = expected
+        expected_declares.add((module["id"], decl_id))
+        expected_proves.add((decl_id, graph_build.claim_id(binding["id"])))
+
+    if set(declaration_by_name) != set(expected_declarations):
+        errors.append(
+            "promoted Lean declaration population mismatch: "
+            f"missing={sorted(set(expected_declarations) - set(declaration_by_name))} "
+            f"extra={sorted(set(declaration_by_name) - set(expected_declarations))}"
+        )
+    for theorem, expected in expected_declarations.items():
+        if declaration_by_name.get(theorem) != expected:
+            errors.append(f"LeanDeclaration record drift for {theorem}")
+
+    actual_declares = {
+        (rel["source"], rel["target"])
+        for rel in relations
+        if rel.get("kind") == "DECLARES"
+    }
+    actual_proves = {
+        (rel["source"], rel["target"])
+        for rel in relations
+        if rel.get("kind") == "PROVES"
+    }
+    if actual_declares != expected_declares:
+        errors.append(
+            "DECLARES relation projection mismatch: "
+            f"missing={sorted(expected_declares - actual_declares)} "
+            f"extra={sorted(actual_declares - expected_declares)}"
+        )
+    if actual_proves != expected_proves:
+        errors.append(
+            "PROVES relation projection mismatch: "
+            f"missing={sorted(expected_proves - actual_proves)} "
+            f"extra={sorted(actual_proves - expected_proves)}"
+        )
+
+    theorem_claim_map = json.loads(
+        (GENERATED / "THEOREM_CLAIM_MAP.json").read_text(encoding="utf-8")
+    )
+    if theorem_claim_map.get("scope") != "R003_PROMOTED_BINDINGS_ONLY":
+        errors.append("THEOREM_CLAIM_MAP scope drift")
+    if theorem_claim_map.get("promoted_binding_count") != len(promoted["bindings"]):
+        errors.append("THEOREM_CLAIM_MAP promoted-binding count drift")
+    if theorem_claim_map.get("terminal_claim") != "RH_OPEN":
+        errors.append("THEOREM_CLAIM_MAP does not preserve RH_OPEN")
+    if theorem_claim_map.get("graph_theorem_promotion") is not False:
+        errors.append("THEOREM_CLAIM_MAP permits graph theorem promotion")
+
     boundary = json.loads((REPO / graph_build.BOUNDARY).read_text(encoding="utf-8"))
     if boundary.get("terminal_claim_id") != "C_RH":
         errors.append(f"unexpected terminal claim id: {boundary.get('terminal_claim_id')!r}")
@@ -346,6 +465,7 @@ def main() -> int:
         "RHKG VALIDATION: PASS "
         f"({len(repo_files)} files; {len(local_modules)} local Lean modules; "
         f"{len(external_modules)} external import targets; "
+        f"{len(lean_declarations)} promoted Lean declarations; "
         f"{len(claim_nodes)} claim mirrors; {len(route_nodes)} route mirrors; "
         f"{len(relations)} relations; terminal claim RH_OPEN)"
     )
