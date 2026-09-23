@@ -10,7 +10,7 @@ import re
 import subprocess
 from pathlib import Path
 
-from views import coverage_view, reachability_view
+from views import coverage_view, reachability_view, theorem_claim_view
 
 GRAPH = Path(__file__).resolve().parent
 RHRC = GRAPH.parent
@@ -24,7 +24,9 @@ DECLARED_GENERATED_PRODUCTS = [
     "research/RHRC/graph/generated/repository_files.jsonl",
     "research/RHRC/graph/generated/lean_modules.jsonl",
     "research/RHRC/graph/generated/registry_nodes.jsonl",
+    "research/RHRC/graph/generated/lean_declarations.jsonl",
     "research/RHRC/graph/generated/relations.jsonl",
+    "research/RHRC/graph/generated/THEOREM_CLAIM_MAP.json",
     "research/RHRC/graph/generated/REPOSITORY_COVERAGE.json",
     "research/RHRC/graph/generated/ENTRYPOINT_REACHABILITY.json",
     "research/RHRC/graph/generated/UNRESOLVED_GRAPH_ITEMS.json",
@@ -32,6 +34,8 @@ DECLARED_GENERATED_PRODUCTS = [
 
 CLAIM_REGISTRY = "research/RHRC/CLAIM_REGISTRY.json"
 ROUTE_REGISTRY = "research/RHRC/routes/ROUTE_REGISTRY.json"
+PROMOTED_BINDINGS = "research/RHRC/R003_PROMOTED_BINDINGS.json"
+CLAIM_BINDINGS_LEAN = "Zeta23/CCM/ClaimBindings.lean"
 BOUNDARY = "research/RHRC/BOUNDARY.json"
 
 
@@ -86,6 +90,10 @@ def claim_id(claim: str) -> str:
 
 def route_id(route: str) -> str:
     return "rh:route:" + route
+
+
+def declaration_id(declaration: str) -> str:
+    return "rh:decl:" + declaration
 
 
 def module_name(path: str) -> str:
@@ -220,8 +228,10 @@ def build_records() -> dict[str, object]:
 
     claims_data = json.loads((REPO / CLAIM_REGISTRY).read_text(encoding="utf-8"))
     routes_data = json.loads((REPO / ROUTE_REGISTRY).read_text(encoding="utf-8"))
+    promoted_data = json.loads((REPO / PROMOTED_BINDINGS).read_text(encoding="utf-8"))
     known_routes = {r["route_id"] for r in routes_data["routes"]}
     known_claims = {c["id"] for c in claims_data["claims"]}
+    claim_by_id = {c["id"]: c for c in claims_data["claims"]}
 
     registry_nodes: list[dict] = [
         {
@@ -286,6 +296,60 @@ def build_records() -> dict[str, object]:
             }
         )
 
+    lean_declarations: list[dict] = []
+    declaration_by_name: dict[str, dict] = {}
+    for binding in promoted_data["bindings"]:
+        claim = claim_by_id.get(binding["id"])
+        if claim is None:
+            raise RuntimeError(f"promoted binding references unknown claim {binding['id']}")
+        if claim.get("route") != "R003_ccm_bridge":
+            raise RuntimeError(
+                f"promoted binding {binding['id']} is not an R003_ccm_bridge claim"
+            )
+        if claim.get("status") != "PROVED_UNCONDITIONAL":
+            raise RuntimeError(
+                f"promoted binding {binding['id']} is not PROVED_UNCONDITIONAL"
+            )
+        if claim.get("theorem") != binding["theorem"]:
+            raise RuntimeError(
+                f"promoted binding theorem drift for {binding['id']}: "
+                f"{binding['theorem']!r} != {claim.get('theorem')!r}"
+            )
+        source_path = claim.get("source")
+        if not isinstance(source_path, str) or source_path not in by_path:
+            raise RuntimeError(
+                f"promoted binding {binding['id']} has no indexed Lean source: {source_path!r}"
+            )
+        source = by_path[source_path]
+        if source["file_class"] not in {"LEAN_SOURCE", "LEAN_ROOT"}:
+            raise RuntimeError(
+                f"promoted binding {binding['id']} source is not Lean: {source_path}"
+            )
+        source_module = module_name(source_path)
+        if source_module not in local_by_module:
+            raise RuntimeError(
+                f"promoted binding {binding['id']} source module is not local: {source_module}"
+            )
+        theorem = binding["theorem"]
+        if theorem in declaration_by_name:
+            raise RuntimeError(f"duplicate promoted Lean declaration: {theorem}")
+        record = {
+            "id": declaration_id(theorem),
+            "type": "LeanDeclaration",
+            "declaration": theorem,
+            "module": source_module,
+            "module_id": module_id(source_module),
+            "source_path": source_path,
+            "source_file_id": source["id"],
+            "binding_scope": "R003_PROMOTED",
+            "authority_role": "PROMOTED_CLAIM_DECLARATION",
+            "binding_source": PROMOTED_BINDINGS,
+            "compiler_binding_source": CLAIM_BINDINGS_LEAN,
+            "source_locator": source["source_locator"],
+        }
+        lean_declarations.append(record)
+        declaration_by_name[theorem] = record
+
     relations_by_key: dict[tuple[str, str, str], dict] = {}
 
     def add_rel(kind: str, source: str, target: str, provenance: str) -> None:
@@ -348,6 +412,22 @@ def build_records() -> dict[str, object]:
             if cid_raw in known_claims:
                 add_rel("PART_OF_ROUTE", claim_id(cid_raw), rid, "REGISTRY_EXACT")
 
+    for declaration in lean_declarations:
+        add_rel(
+            "DECLARES",
+            declaration["module_id"],
+            declaration["id"],
+            "REGISTRY_EXACT",
+        )
+
+    for binding in promoted_data["bindings"]:
+        add_rel(
+            "PROVES",
+            declaration_id(binding["theorem"]),
+            claim_id(binding["id"]),
+            "REGISTRY_EXACT",
+        )
+
     relations = list(relations_by_key.values())
 
     local_import_graph = {
@@ -359,10 +439,17 @@ def build_records() -> dict[str, object]:
     coverage = coverage_view(
         repo_files,
         lean_modules,
+        lean_declarations,
         registry_nodes,
         relations,
         subject_digest,
         DECLARED_GENERATED_PRODUCTS,
+    )
+    theorem_claim_map = theorem_claim_view(
+        lean_declarations,
+        claims_data,
+        promoted_data,
+        CLAIM_BINDINGS_LEAN,
     )
     comparator_roots = sorted(
         name
@@ -371,17 +458,18 @@ def build_records() -> dict[str, object]:
     )
     reachability = reachability_view(local_import_graph, comparator_roots)
     unresolved = {
-        "schema_version": "RHKG-phase1-unresolved-0.1",
-        "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_1",
+        "schema_version": "RHKG-phase2a-unresolved-0.2",
+        "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_2A",
         "unknown_file_classes": sorted(
             row["path"] for row in repo_files if row["file_class"] == "UNKNOWN_FILE_CLASS"
         ),
         "external_import_targets": sorted(external_imports),
         "standalone_or_auxiliary_modules": reachability["standalone_or_auxiliary"],
         "deferred_to_later_phases": [
-            "Lean declaration extraction",
+            "repository-wide Lean declaration extraction beyond promoted R003 authority",
             "declaration-level USES_CONSTANT dependencies",
-            "PROVES claim bindings beyond exact registry projection",
+            "non-R003 explicit promoted-binding normalization",
+            "build/reachability status for standalone Lean modules",
             "multi-axis authority/current-state resolution",
             "Git/PR/workflow provenance graph",
             "dead-route/obstruction/revival semantic graph",
@@ -393,10 +481,12 @@ def build_records() -> dict[str, object]:
     return {
         "repo_files": repo_files,
         "lean_modules": lean_modules,
+        "lean_declarations": lean_declarations,
         "registry_nodes": registry_nodes,
         "relations": relations,
         "coverage": coverage,
         "reachability": reachability,
+        "theorem_claim_map": theorem_claim_map,
         "unresolved": unresolved,
     }
 
@@ -406,10 +496,12 @@ def rendered_outputs() -> dict[str, bytes]:
     return {
         "research/RHRC/graph/generated/repository_files.jsonl": _jsonl(records["repo_files"]),
         "research/RHRC/graph/generated/lean_modules.jsonl": _jsonl(records["lean_modules"]),
+        "research/RHRC/graph/generated/lean_declarations.jsonl": _jsonl(records["lean_declarations"]),
         "research/RHRC/graph/generated/registry_nodes.jsonl": _jsonl(records["registry_nodes"]),
         "research/RHRC/graph/generated/relations.jsonl": _jsonl(records["relations"]),
         "research/RHRC/graph/generated/REPOSITORY_COVERAGE.json": _pretty(records["coverage"]),
         "research/RHRC/graph/generated/ENTRYPOINT_REACHABILITY.json": _pretty(records["reachability"]),
+        "research/RHRC/graph/generated/THEOREM_CLAIM_MAP.json": _pretty(records["theorem_claim_map"]),
         "research/RHRC/graph/generated/UNRESOLVED_GRAPH_ITEMS.json": _pretty(records["unresolved"]),
     }
 
