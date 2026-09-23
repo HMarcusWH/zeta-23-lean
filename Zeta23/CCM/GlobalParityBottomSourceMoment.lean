@@ -52,24 +52,8 @@ theorem parityGap_mul_evenIndex_norm_sq_le_re_star_source_mul_momentFour
       hL K hK hveig
   change
     parityRayleighBottom .odd L K * ‖w‖ ^ 2 ≤
-      RCLike.re
-        (inner ℂ (parityCompressedCanonical .odd L K w) w) at hbottom
-  change
-    Complex.re
-        (inner ℂ (oddCompressedCanonical L K w) w) =
-      parityRayleighBottom .even L K * ‖w‖ ^ 2 +
-        Complex.re
-          (star (explicitCanonicalSourceMoment L K v) *
-            centeredMoment K 4
-              (evenBoundaryFlatRawCoefficients K v)) at henergy
-  change
-    RCLike.re
-        (inner ℂ (parityCompressedCanonical .odd L K w) w) =
-      parityRayleighBottom .even L K * ‖w‖ ^ 2 +
-        Complex.re
-          (star (explicitCanonicalSourceMoment L K v) *
-            centeredMoment K 4
-              (evenBoundaryFlatRawCoefficients K v)) at henergy
+      Complex.re
+        (inner ℂ (oddCompressedCanonical L K w) w) at hbottom
   rw [henergy] at hbottom
   simpa [w] using (show
     (parityRayleighBottom .odd L K -
