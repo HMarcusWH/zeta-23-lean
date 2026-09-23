@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import argparse
+import base64
 import hashlib
 import importlib.util
 import json
+import os
 import re
 import subprocess
 from pathlib import Path
@@ -53,9 +55,9 @@ def _git(*args: str) -> str:
 def tracked_files() -> list[str]:
     raw = subprocess.check_output(["git", "ls-files", "-z"], cwd=REPO)
     tracked = {p.decode("utf-8") for p in raw.split(b"\0") if p}
-    for path in DECLARED_GENERATED_PRODUCTS:
-        if (REPO / path).exists():
-            tracked.add(path)
+    # Generated RHKG products belong to physical coverage even during the
+    # first bootstrap before they have been added to Git.
+    tracked.update(DECLARED_GENERATED_PRODUCTS)
     return sorted(tracked)
 
 
@@ -369,6 +371,15 @@ def check_outputs(outputs: dict[str, bytes]) -> list[str]:
     return errors
 
 
+def emit_bootstrap_payload(outputs: dict[str, bytes]) -> None:
+    """Emit repairable base64 chunks only when CI detects stale/missing products."""
+    for path in sorted(outputs):
+        encoded = base64.b64encode(outputs[path]).decode("ascii")
+        for index in range(0, len(encoded), 3000):
+            chunk = encoded[index:index + 3000]
+            print(f"RHKG_BOOTSTRAP|{path}|{index // 3000:06d}|{chunk}", flush=True)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build/check RHKG Phase-1 generated products")
     group = parser.add_mutually_exclusive_group(required=True)
@@ -378,7 +389,10 @@ def main() -> int:
 
     outputs = rendered_outputs()
     if args.write:
+        pre_errors = check_outputs(outputs)
         write_outputs(outputs)
+        if pre_errors and os.environ.get("RHKG_BOOTSTRAP_LOG") == "1":
+            emit_bootstrap_payload(outputs)
         print(f"RHKG BUILD: WROTE {len(outputs)} deterministic products")
         return 0
 
