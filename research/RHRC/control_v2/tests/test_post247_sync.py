@@ -69,7 +69,7 @@ class Post247SyncTests(unittest.TestCase):
             "unconditional ground-spectrum atlas",
             "Residual-state vacuity firewall",
             "Threshold-local first crossing",
-            "relation-zeta",
+            "Relation-zeta",
             "RH remains OPEN",
         ):
             self.assertIn(token,program)
