@@ -225,9 +225,7 @@
     "Mathlib.Topology.Instances.Matrix",
     "Mathlib.Topology.MetricSpace.Thickening",
     "Mathlib.Topology.Order.Compact",
-    "Mathlib.Topology.Piecewise",
-    "this",
-    "to"
+    "Mathlib.Topology.Piecewise"
   ],
   "schema_version": "RHKG-phase1-unresolved-0.1",
   "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_1",
