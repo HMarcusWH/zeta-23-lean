@@ -4,6 +4,9 @@ noncomputable section
 
 namespace Zeta23.CCM
 
+open MeasureTheory
+open scoped Interval
+
 /-!
 # PR #247 — concrete branch-constrained arithmetic residual
 
