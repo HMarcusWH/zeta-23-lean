@@ -319,6 +319,10 @@ jobs:
           use-mathlib-cache: true
       - name: Build CCM formalization
         run: lake build Zeta23.CCM
+      - name: Build promoted ClaimBindings authority surface
+        run: lake build Zeta23.CCM.ClaimBindings
+      - name: Validate promoted R003 theorem bindings
+        run: python3 research/RHRC/tools/promoted_binding_lint.py
       - name: Build exceptional-zero foundation
         run: lake build Zeta23.ExceptionalZero
       - name: "Build PR #247 explicit terminal target"
