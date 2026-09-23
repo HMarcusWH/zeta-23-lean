@@ -28,7 +28,7 @@ theorem
     (A : ℝ) :
     ∃ Q : ℕ,
       ∃ a : GlobalBottomArithmeticResidual Q,
-        A < a.state.whole.retained.energy.firstBad.L := by
+        A < a.state.aligned.firstBad.L := by
   obtain ⟨Q, s, hlarge⟩ :=
     exists_arbitrarilyLarge_globalBottomResidualState_of_offLine_zero
       ρ₀ hoff A
