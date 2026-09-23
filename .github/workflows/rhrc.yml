@@ -34,6 +34,13 @@ jobs:
               exit 1
             fi
           fi
+      - name: Upload RHKG generated bootstrap products
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rhkg-generated-products
+          path: research/RHRC/graph/generated
+          if-no-files-found: error
       - name: RHRC claim and regression suite
         run: python research/RHRC/tools/run_suite.py
       - name: Control v2 real-history smoke run
@@ -343,6 +350,13 @@ jobs:
             git status --short -- research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl
             exit 1
           fi
+      - name: Upload RHKG compiler dependency receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rhkg-compiler-receipt
+          path: research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl
+          if-no-files-found: error
       - name: Build exceptional-zero foundation
         run: lake build Zeta23.ExceptionalZero
       - name: "Build PR #247 explicit terminal target"
