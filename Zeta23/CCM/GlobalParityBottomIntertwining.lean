@@ -35,7 +35,7 @@ theorem evenEigenmode_shiftedOdd_eq_sourceCubic
     (v : euclideanEvenBoundaryFlatSubspace K)
     (hveig :
       parityCompressedCanonical .even L K v = (lam : ℂ) • v) :
-    parityCompressedCanonical .odd L K
+    oddCompressedCanonical L K
           (euclideanEvenToOddIndexLinearMap K v) -
         (lam : ℂ) • euclideanEvenToOddIndexLinearMap K v =
       evenQuadraticSourceMoment L K v • oddCubicCompressionVector K := by
@@ -49,11 +49,9 @@ theorem evenEigenmode_shiftedOdd_eq_sourceCubic
     oddCompressedCanonical L K (euclideanEvenToOddIndexLinearMap K v) -
         euclideanEvenToOddIndexLinearMap K (evenCompressedCanonical L K v) =
       cubicDefectFunctional L K v • oddCubicCompressionVector K at hfac
-  have hveig' :
-      evenCompressedCanonical L K v = (lam : ℂ) • v := by
-    simpa [evenCompressedCanonical] using hveig
-  rw [hveig', map_smul, hsource] at hfac
-  simpa [oddCompressedCanonical] using hfac
+  change evenCompressedCanonical L K v = (lam : ℂ) • v at hveig
+  rw [hveig, map_smul, hsource] at hfac
+  exact hfac
 
 /-- In the strict-even branch, an even ground eigenvector carries a nonzero
 canonical source defect.  The denominator-free inequality records the exact
@@ -81,20 +79,26 @@ theorem exists_evenGround_source_gap_bound_of_strict
   let Dv : euclideanOddBoundaryFlatSubspace (N + 1) :=
     euclideanEvenToOddIndexLinearMap (N + 1) v
   have hDvne : Dv ≠ 0 := by
-    exact euclideanEvenToOddIndexLinearMap_injective (N + 1) hvne
+    intro hDv
+    apply hvne
+    apply euclideanEvenToOddIndexLinearMap_injective (N + 1)
+    simpa [Dv] using hDv
   have hshift :=
     parityRayleighBottom_gap_mul_norm_sq_le_shifted
       .odd L (N + 1)
       (parityRayleighBottom .even L (N + 1)) Dv
+  change
+    (parityRayleighBottom .odd L (N + 1) -
+        parityRayleighBottom .even L (N + 1)) * ‖Dv‖ ^ 2 ≤
+      Complex.re
+        (inner ℂ
+          (oddCompressedCanonical L (N + 1) Dv -
+            (parityRayleighBottom .even L (N + 1) : ℂ) • Dv)
+          Dv) at hshift
   have hident :=
     evenEigenmode_shiftedOdd_eq_sourceCubic
       hL (N + 1) (by omega)
       (parityRayleighBottom .even L (N + 1)) v hveig
-  change
-    parityCompressedCanonical .odd L (N + 1) Dv -
-        (parityRayleighBottom .even L (N + 1) : ℂ) • Dv =
-      evenQuadraticSourceMoment L (N + 1) v •
-        oddCubicCompressionVector (N + 1) at hident
   rw [hident] at hshift
   have hupp :
       Complex.re
@@ -154,7 +158,7 @@ theorem oddEigenmode_pulledBack_shiftedEven_eq_neg_sourceCubic
       parityCompressedCanonical .odd L K w = (lam : ℂ) • w) :
     let E := euclideanEvenOddBoundaryFlatLinearEquiv K (by omega)
     let v := E.symm w
-    parityCompressedCanonical .even L K v - (lam : ℂ) • v =
+    evenCompressedCanonical L K v - (lam : ℂ) • v =
       -(evenQuadraticSourceMoment L K v) •
         pulledBackCubicCompressionVector K hK := by
   let E := euclideanEvenOddBoundaryFlatLinearEquiv K (by omega)
@@ -173,10 +177,8 @@ theorem oddEigenmode_pulledBack_shiftedEven_eq_neg_sourceCubic
           (oddCompressedCanonical L K (E v)) =
         (lam : ℂ) • v
     rw [show E v = w by simp [v, E]]
-    have hweig' :
-        oddCompressedCanonical L K w = (lam : ℂ) • w := by
-      simpa [oddCompressedCanonical] using hweig
-    rw [hweig', map_smul]
+    change oddCompressedCanonical L K w = (lam : ℂ) • w at hweig
+    rw [hweig, map_smul]
     simp [v, E]
   change
     oddCompressedCanonicalConjugated L K (by omega) v -
@@ -186,7 +188,7 @@ theorem oddEigenmode_pulledBack_shiftedEven_eq_neg_sourceCubic
   rw [hconj, hsource] at hfac
   dsimp
   change
-    parityCompressedCanonical .even L K v - (lam : ℂ) • v =
+    evenCompressedCanonical L K v - (lam : ℂ) • v =
       -(evenQuadraticSourceMoment L K v) •
         pulledBackCubicCompressionVector K hK
   simpa [evenCompressedCanonical, sub_eq_add_neg, add_comm, add_left_comm,
@@ -217,22 +219,25 @@ theorem exists_pulledBackOddGround_source_gap_bound_of_strict
   have hvne : v ≠ 0 := by
     intro hv
     apply hwne
-    have hmap := congrArg E hv
-    simpa [v, E] using hmap
+    apply E.symm.injective
+    simpa [v] using hv
   have hshift :=
     parityRayleighBottom_gap_mul_norm_sq_le_shifted
       .even L (N + 1)
       (parityRayleighBottom .odd L (N + 1)) v
+  change
+    (parityRayleighBottom .even L (N + 1) -
+        parityRayleighBottom .odd L (N + 1)) * ‖v‖ ^ 2 ≤
+      Complex.re
+        (inner ℂ
+          (evenCompressedCanonical L (N + 1) v -
+            (parityRayleighBottom .odd L (N + 1) : ℂ) • v)
+          v) at hshift
   have hident :=
     oddEigenmode_pulledBack_shiftedEven_eq_neg_sourceCubic
       hL (N + 1) (by omega)
       (parityRayleighBottom .odd L (N + 1)) w hweig
   dsimp only at hident
-  change
-    parityCompressedCanonical .even L (N + 1) v -
-        (parityRayleighBottom .odd L (N + 1) : ℂ) • v =
-      -(evenQuadraticSourceMoment L (N + 1) v) •
-        pulledBackCubicCompressionVector (N + 1) (by omega) at hident
   rw [hident] at hshift
   have hupp :
       Complex.re
@@ -301,6 +306,11 @@ theorem evenGround_maps_to_oddEigenmode_of_source_zero
       hL (N + 1) (by omega)
       (parityRayleighBottom .even L (N + 1)) v hveig
   rw [hsource, zero_smul] at hident
+  change
+    oddCompressedCanonical L (N + 1)
+        (euclideanEvenToOddIndexLinearMap (N + 1) v) =
+      (parityRayleighBottom .even L (N + 1) : ℂ) •
+        euclideanEvenToOddIndexLinearMap (N + 1) v
   exact sub_eq_zero.mp hident
 
 end Zeta23.CCM
