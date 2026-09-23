@@ -54,9 +54,31 @@ At the current state this means 75 proved registered claims are bound and the
 three OPEN claims `C_RH`, `R001_PRIME_UPPER`, and
 `R002_WINDOWED_VISIBILITY` are intentionally unbound.
 
-Phase 2A still does **not** infer theorem dependencies from imports, emit
-`USES_CONSTANT`, create claims, or promote RH. The complete binding surface is
-the prerequisite for compiler-derived declaration dependency work in Phase 2B.
+Phase 2A deliberately stopped before declaration-level dependency extraction.
+
+## Phase 2B
+
+Phase 2B adds compiler-derived declaration dependencies without widening theorem
+authority:
+
+- `Zeta23/RHRC/DeclarationDependencyExport.lean` interrogates the elaborated Lean
+  environment rather than source text or module imports;
+- `research/RHRC/tools/lean_dependency_extract.py` deterministically checks the
+  checked-in compiler receipt against the current Lean environment;
+- recursion follows the local `Zeta23` dependency closure rooted at all registered
+  proved declarations, while external Lean/Mathlib constants are retained as
+  auditable boundary nodes and are not recursively expanded;
+- `LeanDeclaration` is generalized into `REGISTERED_CLAIM_ROOT`,
+  `LOCAL_DEPENDENCY`, and `EXTERNAL_BOUNDARY` graph roles;
+- exact `LeanDeclaration USES_CONSTANT LeanDeclaration` relations use
+  `LEAN_ENV_EXACT` provenance and distinguish use in declaration type, value/proof
+  body, and structural declaration metadata;
+- `THEOREM_DEPENDENCY_CLOSURE.json` exposes direct/transitive registered-root
+  dependency closures for research queries.
+
+`IMPORTS` remains module availability and is not treated as `USES_CONSTANT`.
+Dependency-only declarations cannot receive `PROVES` edges. The graph remains a
+derived integration layer and **RH remains OPEN**.
 
 ## Commands
 
@@ -74,7 +96,9 @@ python research/RHRC/graph/build.py --write
 python research/RHRC/graph/validate.py
 ```
 
-Generated products live under `research/RHRC/graph/generated/`. Phase 2A adds
-`lean_declarations.jsonl` and `THEOREM_CLAIM_MAP.json`. They are
-non-authoritative views and mirrors. If a generated record disagrees with an
-authoritative source, the generated graph is wrong.
+Generated products live under `research/RHRC/graph/generated/`. Phase 2B adds
+`THEOREM_DEPENDENCY_CLOSURE.json`; the compiler-derived receipt lives separately
+under `research/RHRC/graph/compiler/` and is checked by Lean CI before RHKG
+consumes it. Generated graph products remain non-authoritative views and mirrors.
+If a generated record disagrees with an authoritative or compiler-derived source,
+the generated graph is wrong.
