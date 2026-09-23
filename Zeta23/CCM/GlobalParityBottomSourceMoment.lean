@@ -44,9 +44,12 @@ theorem parityGap_mul_evenIndex_norm_sq_le_re_star_source_mul_momentFour
   let w := euclideanEvenToOddIndexLinearMap K v
   have hbottom :=
     parityRayleighBottom_mul_norm_sq_le .odd L K w
+  change
+    evenCompressedCanonical L K v =
+      (parityRayleighBottom .even L K : ℂ) • v at hveig
   have henergy :=
     re_inner_oddCompressedCanonical_evenIndex_eigenmode_eq
-      hL K hK (by simpa [evenCompressedCanonical] using hveig)
+      hL K hK hveig
   change
     parityRayleighBottom .odd L K * ‖w‖ ^ 2 ≤
       RCLike.re
@@ -98,8 +101,11 @@ theorem re_star_source_mul_momentFour_pos_of_evenGround_strict
     parityGap_mul_evenIndex_norm_sq_le_re_star_source_mul_momentFour
       hL K hK v hveig
   have hwne :
-      euclideanEvenToOddIndexLinearMap K v ≠ 0 :=
-    euclideanEvenToOddIndexLinearMap_injective K hvne
+      euclideanEvenToOddIndexLinearMap K v ≠ 0 := by
+    intro hw
+    apply hvne
+    apply euclideanEvenToOddIndexLinearMap_injective K
+    simpa using hw
   have hnorm :
       0 < ‖euclideanEvenToOddIndexLinearMap K v‖ ^ 2 := by
     positivity
