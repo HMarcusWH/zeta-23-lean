@@ -43,12 +43,14 @@ PR247_CCM = {
     "Zeta23.CCM.GlobalParityBottomResidualState",
     "Zeta23.CCM.GlobalParityBottomPrimeRemainder",
     "Zeta23.CCM.GlobalParityBottomPrimeWeight",
+    "Zeta23.CCM.GlobalParityBottomArithmeticTarget",
 }
 
 PR247_TERMINAL = {
     "Zeta23.ExceptionalZero.GlobalParityBottomObstruction",
     "Zeta23.ExceptionalZero.GlobalParityBottomGeneratedState",
     "Zeta23.ExceptionalZero.GlobalParityBottomTerminalTarget",
+    "Zeta23.ExceptionalZero.GlobalParityBottomConditionalRH",
     "Zeta23.ExceptionalZero.GlobalParityBottomRHClosure",
 }
 
