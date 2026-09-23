@@ -263,6 +263,8 @@ jobs:
         run: python research/RHRC/routes/R003_ccm_bridge/post247_global_bottom_scout.py > /tmp/POST247_GLOBAL_BOTTOM_SCOUT.json
       - name: Run PR #247 frozen global-bottom arithmetic scout
         run: python research/RHRC/routes/R003_ccm_bridge/post247_global_bottom_arithmetic_scout.py > /tmp/POST247_GLOBAL_BOTTOM_ARITHMETIC_SCOUT.json
+      - name: Assert PR #247 global-bottom scout controls and semantics
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post247_global_bottom_scout_results.py
       - name: Audit R004 scalar-shift invariants
         run: python research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
       - name: Reject external reference code as a Lean dependency
@@ -289,8 +291,18 @@ jobs:
         run: lake build Zeta23.ExceptionalZero
       - name: Build PR #247 explicit terminal target
         run: lake env lean Zeta23/ExceptionalZero/GlobalParityBottomTerminalTarget.lean
-      - name: Build PR #247 conditional literal RH seam
+      - name: Build PR #247 arithmetic-equivalence audit
+        run: lake env lean Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean
+      - name: Build PR #247 audit-only conditional RH seam
         run: lake env lean Zeta23/ExceptionalZero/GlobalParityBottomConditionalRH.lean
+      - name: Validate future premise-free RH closure exact type
+        run: |
+          if [ -f Zeta23/ExceptionalZero/GlobalParityBottomRHClosure.lean ]; then
+            test -f Zeta23/ExceptionalZero/GlobalParityBottomExactTypeAudit.lean
+            lake env lean Zeta23/ExceptionalZero/GlobalParityBottomExactTypeAudit.lean
+          else
+            echo "PR #247 premise-free RH closure absent: RH remains OPEN"
+          fi
       - name: Reject forbidden placeholders in promoted subtrees
         run: |
           if grep -R -n -E '\bsorry\b|^[[:space:]]*axiom[[:space:]]' \
