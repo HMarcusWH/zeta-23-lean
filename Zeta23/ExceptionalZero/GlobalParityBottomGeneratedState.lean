@@ -44,7 +44,7 @@ theorem
     (A : ℝ) :
     ∃ Q : ℕ,
       ∃ s : GlobalBottomResidualState Q,
-        A < s.whole.retained.energy.firstBad.L := by
+        A < s.aligned.firstBad.L := by
   obtain ⟨ρ₀, hρ₀⟩ := hoff
   exact
     exists_arbitrarilyLarge_globalBottomResidualState_of_offLine_zero
