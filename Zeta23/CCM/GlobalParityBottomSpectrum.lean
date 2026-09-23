@@ -28,7 +28,7 @@ is strictly larger than lambda_*, its shifted form has a quantitative positive
 gap.
 
 This module is unconditional CCM mathematics.  It imports no exceptional-zero
-terminal layer, mentions no RiemannHypothesis proposition, and proves no RH
+terminal layer, does not mention the terminal conjecture proposition, and proves no RH
 claim.
 -/
 
