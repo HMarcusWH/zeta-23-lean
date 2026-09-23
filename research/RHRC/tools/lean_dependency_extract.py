@@ -103,6 +103,8 @@ def parse_output(stdout: str, roots: list[dict]) -> list[dict]:
                 fail(f"inconsistent duplicate declaration metadata for {name}")
             declarations[name] = row
         elif raw.startswith("RHKG_DEP_EDGE\t"):
+            # Backward-compatible parser support for the original one-edge-per-line
+            # protocol. Current Lean emits RHKG_DEP_CHANNEL records instead.
             parts = raw.split("\t")
             if len(parts) != 4:
                 fail(f"malformed dependency line: {raw!r}")
@@ -112,6 +114,18 @@ def parse_output(stdout: str, roots: list[dict]) -> list[dict]:
             edge_channels_by_source.setdefault(source, {}).setdefault(
                 target, set()
             ).add(channel)
+        elif raw.startswith("RHKG_DEP_CHANNEL\t"):
+            parts = raw.split("\t")
+            if len(parts) < 3:
+                fail(f"malformed dependency channel line: {raw!r}")
+            _, source, channel, *targets = parts
+            if channel not in {"TYPE", "VALUE", "STRUCTURE"}:
+                fail(f"unknown dependency channel {channel!r}")
+            target_map = edge_channels_by_source.setdefault(source, {})
+            for target in targets:
+                if not target:
+                    fail(f"empty dependency target in channel line: {raw!r}")
+                target_map.setdefault(target, set()).add(channel)
 
     root_by_theorem = {row["theorem"]: row for row in roots}
     missing_roots = sorted(set(root_by_theorem) - set(declarations))
