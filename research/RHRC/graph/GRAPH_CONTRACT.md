@@ -80,11 +80,12 @@ usage. Phase 2B still MUST NOT emit semantic mathematical `DEPENDS_ON`,
 The explicit `Zeta23/RHRC/RegisteredClaimBindings.lean` compiler surface
 independently checks that every registered proved theorem name exists and exposes
 its axiom printout. The historical `Zeta23/CCM/ClaimBindings.lean` surface
-continues to independently protect the frozen R003 promoted subset. Phase 2A does
-not yet claim elaborated declaration dependency provenance; that belongs to the
-later `USES_CONSTANT` phase.
+continues to independently protect the frozen R003 promoted subset.
 
-- compiler-derived declaration usage: `LEAN_ENV_EXACT`
+Phase 2B compiler-derived declaration usage has provenance `LEAN_ENV_EXACT`
+only when the checked-in compiler receipt byte-matches a fresh extraction from the
+pinned Lean environment. A bootstrap marker is a transient construction state,
+not a valid materialized Phase-2B steady state.
 
 No text-mined or LLM-derived relation is emitted through Phase 2B.
 
@@ -231,11 +232,17 @@ constant usage split into type, value/proof body, and structural channels.
 The recursive traversal begins at every theorem in
 `REGISTERED_THEOREM_BINDINGS.json`, follows only declarations whose defining
 module is local `Zeta23`, and retains external constants as non-recursive boundary
-nodes. The graph must project this receipt exactly.
+nodes. The graph must project this receipt exactly. The steady-state receipt MUST use
+schema `RHKG-phase2b-compiler-dependencies-0.4`; the
+`RHKG-phase2b-bootstrap-pending` marker is forbidden once Phase 2B is
+materialized and sealed.
 
 A dependency present in more than one channel remains one conceptual
 `USES_CONSTANT` edge under the stable relation identity
 `sha256(kind|source|target)`; channel booleans are metadata on that edge.
+Expression-level self dependencies are preserved when Lean reports them in the
+TYPE or VALUE channel. Trivial self-membership introduced only by structural
+declaration-family metadata is not emitted as a dependency edge.
 
 `REGISTERED_CLAIM_ROOT` declarations are the only declarations permitted to
 participate in `PROVES`. `LOCAL_DEPENDENCY` and `EXTERNAL_BOUNDARY` declarations
