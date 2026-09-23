@@ -52,6 +52,8 @@ RESEARCH / REGRESSION HARVEST
 - post-202 = COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
 - post-214 = FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED / FULL_SPACE_SIGN_INDEFINITE_CERTIFIED
 - post-222 = NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED
+- post-249 = FINITE_GRID_SHARP_CANCELLATION / ZERO_SIDE_PERTURBATION_CONTROL_BUILT / EXPERIMENTAL_SIGNAL_ONLY
+- post-249 interpretation firewall = NO ASYMPTOTIC RATE / NO EXACT FIRST-ZERO SWITCH / SIGN-CHANGE BRACKETS NOT GLOBAL MINIMA
 - theorem promotion from research replays = false
 
 CURRENT RESEARCH PROGRAM
@@ -62,7 +64,8 @@ CURRENT RESEARCH PROGRAM
 - full-space <-> boundary-flat <-> parity spectral bridge = ACTIVE LEAD
 - R004 prolate/full-space ground-space bridge = RESURRECTED LEAD
 - Pair-D = GENERIC LINEAR-ALGEBRA FILTER ONLY
-- planted off-line canonical-style control = TO BUILD / PRIMARY FALSIFIER
+- planted zero-side perturbation control = BUILT / PR #249 / EXPERIMENTAL_SIGNAL_ONLY
+- globally consistent planted zeta/Euler-product control = OPEN
 - global aperture Loewner monotonicity = QUARANTINED / DR-021
 - global minimizing-Schur monotonicity = QUARANTINED / DR-022
 - exact-equality holonomy = DROPPED / TAUTOLOGICAL
@@ -99,7 +102,7 @@ Before investing theorem work in a proposed closing law C, record explicit answe
 3. Is C merely residual-state nonexistence or another theorem already proved RH-equivalent?
 4. Does the proposed mechanism use arithmetic/analytic structure not forced by generic Hermitian/parity geometry?
 5. Does it survive Pair-D as a generic-algebra filter?
-6. Can a planted off-line canonical-style control be specified, including exactly which zeta structures it preserves and breaks?
+6. Does the candidate survive PR #249's scoped zero-side perturbation falsifier? If a stronger planted model is needed, can a globally prime/Euler-product-consistent control be specified, including exactly which zeta structures it preserves and breaks?
 7. Does the argument accidentally assume global aperture or global minimizing-Schur monotonicity quarantined by DR-021/DR-022?
 
 For spectral derivatives, multiplicity must be handled explicitly: a chosen ground vector is not globally canonical unless simplicity is separately proved. For external literature bridges, normalization/source-domain identification must be theorem-locked before imported conclusions become project authority.
