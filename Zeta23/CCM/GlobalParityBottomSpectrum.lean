@@ -252,6 +252,43 @@ theorem globalParitySuccessorBottom_neg_of_anyParityBad
       (globalParitySuccessorBottom_le_odd L N)
       (parityRayleighBottom_neg_of_parityBad hodd)
 
+/-- At successor size N+1 with N nonzero, negativity of the common
+parity bottom is exactly the existing AnyParityBad condition.  This theorem
+makes explicit that the global-bottom coordinate is a spectral normal form for
+badness, not an independent terminal obstruction. -/
+theorem globalParitySuccessorBottom_neg_iff_anyParityBad
+    {L : ℝ} {N : ℕ}
+    (hN : 1 ≤ N) :
+    globalParitySuccessorBottom L N < 0 ↔
+      AnyParityBad L (N + 1) := by
+  constructor
+  · intro hneg
+    by_cases hle :
+        parityRayleighBottom .even L (N + 1) ≤
+          parityRayleighBottom .odd L (N + 1)
+    · have hevenNeg :
+          parityRayleighBottom .even L (N + 1) < 0 := by
+        rw [globalParitySuccessorBottom, min_eq_left hle] at hneg
+        exact hneg
+      obtain ⟨v, hvne, hveig⟩ :=
+        exists_eigenmode_at_parityRayleighBottom_succ .even L N hN
+      exact Or.inl
+        (parityBad_of_negative_eigenmode hevenNeg hvne hveig)
+    · have hoddlt :
+          parityRayleighBottom .odd L (N + 1) <
+            parityRayleighBottom .even L (N + 1) :=
+        lt_of_not_ge hle
+      have hoddNeg :
+          parityRayleighBottom .odd L (N + 1) < 0 := by
+        rw [globalParitySuccessorBottom,
+          min_eq_right (le_of_lt hoddlt)] at hneg
+        exact hneg
+      obtain ⟨v, hvne, hveig⟩ :=
+        exists_eigenmode_at_parityRayleighBottom_succ .odd L N hN
+      exact Or.inr
+        (parityBad_of_negative_eigenmode hoddNeg hvne hveig)
+  · exact globalParitySuccessorBottom_neg_of_anyParityBad
+
 /-- At the common minimum shift both successor parity operators are
 positive semidefinite. -/
 theorem globalParitySuccessorBottom_shifted_nonnegative
@@ -293,4 +330,5 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.exists_eigenmode_at_parityRayleighBottom_succ
 #print axioms Zeta23.CCM.parityRayleighBottom_neg_of_parityBad
 #print axioms Zeta23.CCM.globalParitySuccessorBottom_neg_of_anyParityBad
+#print axioms Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad
 #print axioms Zeta23.CCM.globalParitySuccessorBottom_shifted_nonnegative
