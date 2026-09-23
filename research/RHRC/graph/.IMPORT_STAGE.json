@@ -1057,6 +1057,122 @@
         "Zeta23.CCM.DictionaryTentDecay",
         "Mathlib.Analysis.SpecialFunctions.ImproperIntegrals"
       ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchLaplace.lean",
+      "blob_sha": "24cfa5432fe2b9a5f962c4facdf8f9ff1c005f78",
+      "imports": [
+        "Zeta23.CCM.DictionaryArchBridge",
+        "Mathlib.Analysis.SpecialFunctions.ImproperIntegrals",
+        "Mathlib.MeasureTheory.Integral.DominatedConvergence"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchLift.lean",
+      "blob_sha": "7d848f26f1d8db3481005f1b73364ef77de91c91",
+      "imports": [
+        "Zeta23.CCM.DictionaryPrimeLift"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchMuGrowth.lean",
+      "blob_sha": "4fdf074fc2631798a037fd20d27aec54ed299e56",
+      "imports": [
+        "Zeta23.CCM.DictionaryArchWeight",
+        "Mathlib.Analysis.PSeries"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchOffDiagonal.lean",
+      "blob_sha": "d7fd6a8ef85c4710d50c1fceedd71d413f6e1f35",
+      "imports": [
+        "Zeta23.CCM.DictionaryArchSourceBridge",
+        "Zeta23.CCM.Displacement"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchPhysical.lean",
+      "blob_sha": "3ae893d38505f4d8c552c76924991db84b9ae4c3",
+      "imports": [
+        "Zeta23.CCM.DictionaryPoleSource"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchSourceBridge.lean",
+      "blob_sha": "e23c4efda60abe30f12ab4265e4eef9cbadb6bb2",
+      "imports": [
+        "Zeta23.CCM.DictionaryArchDensityBridge"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchSourceDecay.lean",
+      "blob_sha": "b62e005d9152b40aa5991474b699eb1fedd0204b",
+      "imports": [
+        "Zeta23.CCM.DictionaryArchSourceIntegrability"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchSourceFourier.lean",
+      "blob_sha": "034748f0036dd0ae31ee81e2d5e7202b780ef66e",
+      "imports": [
+        "Zeta23.CCM.DictionaryArchFourier",
+        "Mathlib.Analysis.SpecialFunctions.Integrals.Basic"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchSourceIntegrability.lean",
+      "blob_sha": "128a60e67ce59ed48e689a50db0de2d6e029daf5",
+      "imports": [
+        "Zeta23.CCM.DictionaryArchSourceFourier",
+        "Mathlib.Analysis.SpecialFunctions.ImproperIntegrals"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchSourceMuIntegrability.lean",
+      "blob_sha": "c50db8da12ae036001b918e92abe095715bad2d0",
+      "imports": [
+        "Zeta23.CCM.DictionaryArchMuGrowth",
+        "Zeta23.CCM.DictionaryArchSourceDecay",
+        "Mathlib.Analysis.SpecialFunctions.JapaneseBracket"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchWeight.lean",
+      "blob_sha": "5c813b7b6b7e9a3e9dca91a63d8e02e7c6a2a421",
+      "imports": [
+        "Zeta23.CCM.DictionaryArchSourceIntegrability",
+        "Zeta23.CCM.DictionaryArchBridge",
+        "Mathlib.Analysis.SpecialFunctions.ImproperIntegrals"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryCompletePhysicalRHS.lean",
+      "blob_sha": "f65aa4dea991a0e9ac41ae05c39df1ddb8348f39",
+      "imports": [
+        "Zeta23.CCM.DictionaryMixedPairing",
+        "Zeta23.CCM.DictionaryArchSourceBridge",
+        "Zeta23.CCM.DictionaryArchSourceIntegrability",
+        "Zeta23.CCM.DictionaryArchFourier",
+        "Zeta23.CCM.CanonicalSourceMomentAtoms"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryDeterministicRHS.lean",
+      "blob_sha": "21cf8aba62059508fae8db6e207f5bc349843aca",
+      "imports": [
+        "Zeta23.CCM.FiniteDictionary",
+        "Zeta23.CCM.FiniteMatrix",
+        "Zeta23.CCM.KernelAnalysis",
+        "Zeta23.ExplicitFormula"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryFiniteExpansion.lean",
+      "blob_sha": "5b8314d1a898c0f9bf09cd80831e94504cef3ab9",
+      "imports": [
+        "Zeta23.CCM.DictionaryPoleSource",
+        "Zeta23.CCM.DictionaryArchEntries"
+      ]
     }
   ],
   "all_lean": [
