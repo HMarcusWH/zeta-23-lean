@@ -42,55 +42,55 @@
     },
     {
       "id": "ci_workflows",
-      "pattern": "^\\\\.github/workflows/.*\\\\.ya?ml$",
+      "pattern": "^\\.github/workflows/.*\\.ya?ml$",
       "file_class": "CI_WORKFLOW",
       "trust_zone": "AUDIT_ONLY"
     },
     {
       "id": "ccm_formal_core",
-      "pattern": "^Zeta23/CCM/.*\\\\.lean$",
+      "pattern": "^Zeta23/CCM/.*\\.lean$",
       "file_class": "LEAN_SOURCE",
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
       "id": "exceptional_zero_formal_core",
-      "pattern": "^Zeta23/ExceptionalZero/.*\\\\.lean$",
+      "pattern": "^Zeta23/ExceptionalZero/.*\\.lean$",
       "file_class": "LEAN_SOURCE",
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
       "id": "upstream_derived",
-      "pattern": "^Zeta23/FromPNTPlus/.*\\\\.lean$",
+      "pattern": "^Zeta23/FromPNTPlus/.*\\.lean$",
       "file_class": "LEAN_SOURCE",
       "trust_zone": "UPSTREAM_DERIVED"
     },
     {
       "id": "zeta_root",
-      "pattern": "^Zeta23\\\\.lean$",
+      "pattern": "^Zeta23\\.lean$",
       "file_class": "LEAN_ROOT",
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
       "id": "zeta_lean",
-      "pattern": "^Zeta23/.*\\\\.lean$",
+      "pattern": "^Zeta23/.*\\.lean$",
       "file_class": "LEAN_SOURCE",
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
       "id": "comparator_trusted",
-      "pattern": "^comparator/(ChallengeDeps(?:/.*)?|Challenge(?:/.*)?)\\\\.lean$",
+      "pattern": "^comparator/(ChallengeDeps(?:/.*)?|Challenge(?:/.*)?)\\.lean$",
       "file_class": "LEAN_SOURCE",
       "trust_zone": "COMPARATOR_TRUSTED_MATHLIB_ONLY"
     },
     {
       "id": "comparator_solution",
-      "pattern": "^comparator/Solution(?:/.*)?\\\\.lean$",
+      "pattern": "^comparator/Solution(?:/.*)?\\.lean$",
       "file_class": "LEAN_SOURCE",
       "trust_zone": "COMPARATOR_UNTRUSTED_ZETA_IMPORTS"
     },
     {
       "id": "comparator_audit",
-      "pattern": "^comparator/PrintAxioms(?:/.*)?\\\\.lean$",
+      "pattern": "^comparator/PrintAxioms(?:/.*)?\\.lean$",
       "file_class": "LEAN_SOURCE",
       "trust_zone": "AUDIT_ONLY"
     },
@@ -108,43 +108,43 @@
     },
     {
       "id": "frozen_research_delta",
-      "pattern": "^research/RHRC/RESEARCH_LEADS_POST_.*\\\\.md$",
+      "pattern": "^research/RHRC/RESEARCH_LEADS_POST_.*\\.md$",
       "file_class": "FROZEN_RESEARCH_DELTA",
       "trust_zone": "RESEARCH_ONLY"
     },
     {
       "id": "frozen_obstruction_delta",
-      "pattern": "^research/RHRC/OBSTRUCTION_LEDGER_POST_.*\\\\.md$",
+      "pattern": "^research/RHRC/OBSTRUCTION_LEDGER_POST_.*\\.md$",
       "file_class": "FROZEN_OBSTRUCTION_DELTA",
       "trust_zone": "RESEARCH_ONLY"
     },
     {
       "id": "frozen_dead_route_delta",
-      "pattern": "^research/RHRC/DEAD_ROUTES_POST_.*\\\\.md$",
+      "pattern": "^research/RHRC/DEAD_ROUTES_POST_.*\\.md$",
       "file_class": "FROZEN_DEAD_ROUTE_DELTA",
       "trust_zone": "RESEARCH_ONLY"
     },
     {
       "id": "graph_config",
-      "pattern": "^research/RHRC/graph/(GRAPH_SCHEMA|FILE_CLASSES)\\\\.json$",
+      "pattern": "^research/RHRC/graph/(GRAPH_SCHEMA|FILE_CLASSES)\\.json$",
       "file_class": "BUILD_CONFIGURATION",
       "trust_zone": "AUDIT_ONLY"
     },
     {
       "id": "control_state",
-      "pattern": "^research/RHRC/control_v2/(CONTROL_STATE|ACTION_REGISTRY)\\\\.json$",
+      "pattern": "^research/RHRC/control_v2/(CONTROL_STATE|ACTION_REGISTRY)\\.json$",
       "file_class": "CONTROL_STATE",
       "trust_zone": "AUDIT_ONLY"
     },
     {
       "id": "core_registry",
-      "pattern": "^research/RHRC/(BOUNDARY|CLAIM_REGISTRY|R003_PROMOTED_BINDINGS)\\\\.json$",
+      "pattern": "^research/RHRC/(BOUNDARY|CLAIM_REGISTRY|R003_PROMOTED_BINDINGS)\\.json$",
       "file_class": "REGISTRY",
       "trust_zone": "AUDIT_ONLY"
     },
     {
       "id": "route_registry",
-      "pattern": "^research/RHRC/routes/ROUTE_REGISTRY\\\\.json$",
+      "pattern": "^research/RHRC/routes/ROUTE_REGISTRY\\.json$",
       "file_class": "REGISTRY",
       "trust_zone": "AUDIT_ONLY"
     },
@@ -162,55 +162,55 @@
     },
     {
       "id": "route_fixture_named",
-      "pattern": "^research/RHRC/routes/.*(?:fixture|input|config|threshold|seed|case|baseline|preflight).*(?:\\\\.json|\\\\.txt|\\\\.csv)$",
+      "pattern": "^research/RHRC/routes/.*(?:fixture|input|config|threshold|seed|case|baseline|preflight).*(?:\\.json|\\.txt|\\.csv)$",
       "file_class": "RESEARCH_FIXTURE",
       "trust_zone": "RESEARCH_ONLY"
     },
     {
       "id": "route_receipt_named",
-      "pattern": "^research/RHRC/routes/.*(?:result|receipt|certificate|report|output|summary).*(?:\\\\.json|\\\\.txt|\\\\.csv)$",
+      "pattern": "^research/RHRC/routes/.*(?:result|receipt|certificate|report|output|summary).*(?:\\.json|\\.txt|\\.csv)$",
       "file_class": "RESEARCH_RECEIPT",
       "trust_zone": "RESEARCH_ONLY"
     },
     {
       "id": "rhrc_executable",
-      "pattern": "^research/RHRC/.*(?:\\\\.py|\\\\.ipynb)$",
+      "pattern": "^research/RHRC/.*(?:\\.py|\\.ipynb)$",
       "file_class": "RESEARCH_EXECUTABLE",
       "trust_zone": "RESEARCH_ONLY"
     },
     {
       "id": "rhrc_docs",
-      "pattern": "^research/RHRC/.*\\\\.md$",
+      "pattern": "^research/RHRC/.*\\.md$",
       "file_class": "DOCUMENTATION",
       "trust_zone": "RESEARCH_ONLY"
     },
     {
       "id": "rhrc_json",
-      "pattern": "^research/RHRC/.*\\\\.json$",
+      "pattern": "^research/RHRC/.*\\.json$",
       "file_class": "REGISTRY",
       "trust_zone": "RESEARCH_ONLY"
     },
     {
       "id": "requirements",
-      "pattern": "^(?:research/RHRC/.*/)?requirements\\\\.txt$|^research/RHRC/requirements\\\\.txt$",
+      "pattern": "^(?:research/RHRC/.*/)?requirements\\.txt$|^research/RHRC/requirements\\.txt$",
       "file_class": "BUILD_CONFIGURATION",
       "trust_zone": "AUDIT_ONLY"
     },
     {
       "id": "gitignore",
-      "pattern": "^(?:.*/)?\\\\.gitignore$",
+      "pattern": "^(?:.*/)?\\.gitignore$",
       "file_class": "BUILD_CONFIGURATION",
       "trust_zone": "AUDIT_ONLY"
     },
     {
       "id": "root_build",
-      "pattern": "^(?:lakefile\\\\.toml|lake-manifest\\\\.json|lean-toolchain|formalization\\\\.yaml)$",
+      "pattern": "^(?:lakefile\\.toml|lake-manifest\\.json|lean-toolchain|formalization\\.yaml)$",
       "file_class": "BUILD_CONFIGURATION",
       "trust_zone": "AUDIT_ONLY"
     },
     {
       "id": "comparator_config",
-      "pattern": "^comparator/.*\\\\.json$",
+      "pattern": "^comparator/.*\\.json$",
       "file_class": "BUILD_CONFIGURATION",
       "trust_zone": "AUDIT_ONLY"
     },
@@ -222,19 +222,19 @@
     },
     {
       "id": "documentation",
-      "pattern": "^.*\\\\.md$",
+      "pattern": "^.*\\.md$",
       "file_class": "DOCUMENTATION",
       "trust_zone": "AUDIT_ONLY"
     },
     {
       "id": "json_registry",
-      "pattern": "^.*\\\\.json$",
+      "pattern": "^.*\\.json$",
       "file_class": "REGISTRY",
       "trust_zone": "AUDIT_ONLY"
     },
     {
       "id": "text_metadata",
-      "pattern": "^.*\\\\.txt$",
+      "pattern": "^.*\\.txt$",
       "file_class": "LICENSE_OR_METADATA",
       "trust_zone": "AUDIT_ONLY"
     }
