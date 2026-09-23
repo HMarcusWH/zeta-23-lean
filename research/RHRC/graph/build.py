@@ -351,7 +351,12 @@ def build_records() -> dict[str, object]:
         subject_digest,
         DECLARED_GENERATED_PRODUCTS,
     )
-    reachability = reachability_view(local_import_graph)
+    comparator_roots = sorted(
+        name
+        for name, path in local_by_module.items()
+        if path.startswith("comparator/")
+    )
+    reachability = reachability_view(local_import_graph, comparator_roots)
     unresolved = {
         "schema_version": "RHKG-phase1-unresolved-0.1",
         "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_1",
