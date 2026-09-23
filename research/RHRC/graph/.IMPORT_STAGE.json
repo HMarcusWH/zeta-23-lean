@@ -1281,6 +1281,124 @@
         "Zeta23.CCM.DictionaryResidualDerivativeIdentities",
         "Mathlib.Analysis.Complex.RealDeriv"
       ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryRHSIdentity.lean",
+      "blob_sha": "6e0ee95e80698ae38c6d8bdb455d717cc425e0de",
+      "imports": [
+        "Zeta23.CCM.DictionaryArchLift"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionarySmoothCoreBridge.lean",
+      "blob_sha": "7921ede340697264b01229009f227aeb3bc8e8be",
+      "imports": [
+        "Zeta23.CCM.DictionaryRHSIdentity",
+        "Zeta23.CCM.DictionaryResidualSecondOrderGluing",
+        "Zeta23.WeilEF.Main"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionarySmoothCorePolarization.lean",
+      "blob_sha": "c246eab553e9962e1cd1fbe91048608f2961bda5",
+      "imports": [
+        "Zeta23.CCM.DictionarySymmetry",
+        "Zeta23.CCM.DictionarySmoothCoreBridge"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionarySourceTest.lean",
+      "blob_sha": "1320c950147bd5c99454b06ead9c7dbae14662f3",
+      "imports": [
+        "Zeta23.CCM.DictionaryDeterministicRHS",
+        "Zeta23.CCM.DictionaryResidualBranches"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionarySymmetry.lean",
+      "blob_sha": "694ed1ce23483b9e6f63366f0a2a881eb4ee7404",
+      "imports": [
+        "Zeta23.CCM.DictionaryDeterministicRHS"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTent.lean",
+      "blob_sha": "4d471e5229944eac4e5d08ea9bb2340f861d6336",
+      "imports": [
+        "Zeta23.CCM.DictionaryResidualSecondOrderGluing",
+        "Zeta23.Poisson.PaperFT",
+        "Mathlib.Analysis.SpecialFunctions.Integrals.Basic"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentArchLimit.lean",
+      "blob_sha": "0ed3fd734a8399e9b24b1e16bb43494c2b3c2508",
+      "imports": [
+        "Zeta23.CCM.DictionaryTentMollifierLimit",
+        "Zeta23.CCM.DictionaryArchSourceBridge",
+        "Mathlib.Analysis.SpecialFunctions.JapaneseBracket",
+        "Mathlib.MeasureTheory.Integral.DominatedConvergence"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentDecay.lean",
+      "blob_sha": "cf0e34beacc9bcb157fb34d9e3787a788cb00a60",
+      "imports": [
+        "Zeta23.CCM.DictionaryTentTransform",
+        "Mathlib.Analysis.Complex.Trigonometric"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentEFExtension.lean",
+      "blob_sha": "6e59a904d1a23130678f746853c843f9071a445c",
+      "imports": [
+        "Zeta23.CCM.DictionaryTentZeroLimit",
+        "Zeta23.CCM.DictionaryTentArchLimit",
+        "Zeta23.CCM.DictionaryTentPolePrimeLimit",
+        "Zeta23.WeilEF.Main"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentMollifier.lean",
+      "blob_sha": "4a801051f49f7cea9e9876b97dfb5e53f9f8f641",
+      "imports": [
+        "Zeta23.CCM.DictionaryTent",
+        "Mathlib.Analysis.Calculus.BumpFunction.Convolution",
+        "Mathlib.Analysis.Calculus.ContDiff.Convolution",
+        "Mathlib.Analysis.SpecificLimits.Basic"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentMollifierLimit.lean",
+      "blob_sha": "3e29b9d46228db5c21b841e8ccc1f266ce782860",
+      "imports": [
+        "Zeta23.CCM.DictionaryTentMollifierTransform"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentMollifierSupport.lean",
+      "blob_sha": "dee46969de39473154075e3afb3579cb69168e10",
+      "imports": [
+        "Zeta23.CCM.DictionaryTentMollifierTransform"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentMollifierTransform.lean",
+      "blob_sha": "552080d0b166dd46962c409b915e576511ce72ff",
+      "imports": [
+        "Zeta23.CCM.DictionaryTentMollifier",
+        "Zeta23.CCM.DictionaryTentDecay",
+        "Zeta23.Poisson.PaperFTConvolution"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentPolePrimeLimit.lean",
+      "blob_sha": "aa09750b5a9bce29b9b8d77a0b82efa18c7655ce",
+      "imports": [
+        "Zeta23.CCM.DictionaryTentMollifierLimit",
+        "Zeta23.CCM.DictionaryTentMollifierSupport",
+        "Zeta23.CCM.DictionaryDeterministicRHS"
+      ]
     }
   ],
   "all_lean": [
