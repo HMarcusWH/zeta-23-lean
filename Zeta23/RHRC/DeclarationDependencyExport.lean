@@ -52,8 +52,12 @@ private def emitDeclaration (env : Environment) (decl : Name) : CommandElabM Uni
   let privateOrInternalText := if decl.isInternal || isPrivateName decl then "1" else "0"
   liftIO <| IO.println s!"RHKG_DEP_DECL\t{decl}\t{moduleText}\t{kindString info}\t{privateOrInternalText}"
 
-private def emitEdge (source target : Name) (channel : String) : CommandElabM Unit := do
-  liftIO <| IO.println s!"RHKG_DEP_EDGE\t{source}\t{target}\t{channel}"
+private def emitChannel
+    (source : Name) (deps : NameSet) (channel : String) : CommandElabM Unit := do
+  let mut line := s!"RHKG_DEP_CHANNEL\t{source}\t{channel}"
+  for dep in deps do
+    line := line ++ "\t" ++ dep.toString
+  liftIO <| IO.println line
 
 private partial def visit
     (env : Environment) (pending : List Name)
@@ -77,27 +81,31 @@ private partial def visit
         let valueDeps := match info.value? (allowOpaque := true) with
           | some value => value.getUsedConstantsAsSet
           | none => ({} : NameSet)
-        let structureDeps := NameSet.ofArray (structuralDependencies info)
+        let structureDeps :=
+          (NameSet.ofArray (structuralDependencies info)).filter fun dep => dep != decl
 
         -- Preserve exact expression-level self references if Lean emits them.
-        -- Structural membership self-links are filtered below because they are
+        -- Structural membership self-links are excluded because they are
         -- declaration-family bookkeeping rather than constant use.
         for dep in typeDeps do
           if !(emitted.contains dep) then
             emitDeclaration env dep
             emitted := emitted.insert dep
-          emitEdge decl dep "TYPE"
         for dep in valueDeps do
           if !(emitted.contains dep) then
             emitDeclaration env dep
             emitted := emitted.insert dep
-          emitEdge decl dep "VALUE"
         for dep in structureDeps do
-          if dep != decl then
-            if !(emitted.contains dep) then
-              emitDeclaration env dep
-              emitted := emitted.insert dep
-            emitEdge decl dep "STRUCTURE"
+          if !(emitted.contains dep) then
+            emitDeclaration env dep
+            emitted := emitted.insert dep
+
+        -- Emit at most one protocol record per declaration/channel rather than
+        -- one IO.println per edge. The Python side reconstructs the same exact
+        -- channel presence relation from the batched records.
+        emitChannel decl typeDeps "TYPE"
+        emitChannel decl valueDeps "VALUE"
+        emitChannel decl structureDeps "STRUCTURE"
 
         -- A visited set alone does not deduplicate declarations that are
         -- queued many times before their first visit. Track scheduled names
