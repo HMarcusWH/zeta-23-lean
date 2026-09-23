@@ -1173,6 +1173,114 @@
         "Zeta23.CCM.DictionaryPoleSource",
         "Zeta23.CCM.DictionaryArchEntries"
       ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryKernelEFExtension.lean",
+      "blob_sha": "008d22d1ae467fb113c368450e115a2d71ac4e87",
+      "imports": [
+        "Zeta23.CCM.DictionaryZeroSideBridge",
+        "Zeta23.CCM.DictionaryRHSIdentity"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryMixedPairing.lean",
+      "blob_sha": "d712cf8d753701b5434667b710e989dbd2e7a57e",
+      "imports": [
+        "Zeta23.CCM.DictionaryRHSIdentity",
+        "Zeta23.CCM.DictionaryFiniteExpansion"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryPole.lean",
+      "blob_sha": "3ee30ccf9f627071b187ce45931e0a0d35adb274",
+      "imports": [
+        "Zeta23.CCM.DictionaryDeterministicRHS",
+        "Zeta23.CCM.DictionaryTentTransform",
+        "Zeta23.CCM.Displacement"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryPoleCompletion.lean",
+      "blob_sha": "08ef6b3e2ffec9c49de2bb8619f55215291ffa8c",
+      "imports": [
+        "Zeta23.CCM.DictionaryPole"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryPoleLift.lean",
+      "blob_sha": "81263ac6e45023dd32548f58dbad26fa04e9858e",
+      "imports": [
+        "Zeta23.CCM.DictionaryFiniteExpansion"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryPoleSource.lean",
+      "blob_sha": "edc0c7e3c8871e2bf19584f864d681232a1530a5",
+      "imports": [
+        "Zeta23.CCM.DictionaryPoleCompletion",
+        "Zeta23.CCM.DictionarySourceTest",
+        "Zeta23.CCM.Displacement"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryPrimeLift.lean",
+      "blob_sha": "26929eab9ee476e155818cb0f7372c6f0db4d77e",
+      "imports": [
+        "Zeta23.CCM.DictionaryPoleLift"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryRegularity.lean",
+      "blob_sha": "99a13bb9abe8c5512ada7b28b45bea6a3ee8b720",
+      "imports": [
+        "Zeta23.CCM.DictionaryAnalysis",
+        "Mathlib.Analysis.Calculus.Deriv.Abs",
+        "Mathlib.Analysis.Calculus.ContDiff.Deriv"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryResidualBranches.lean",
+      "blob_sha": "e504c897894be6431459fe889d06a3e6bc5af3b7",
+      "imports": [
+        "Zeta23.CCM.DictionaryRegularity"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryResidualDerivativeIdentities.lean",
+      "blob_sha": "70baa4f6d7f0e8906ac8d8a914b00e08aa8afe1d",
+      "imports": [
+        "Zeta23.CCM.DictionaryResidualFirstOrderGluing"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryResidualFirstOrderGluing.lean",
+      "blob_sha": "3c652b22d7949d4520cdc11e8077f4d3b06a4c8a",
+      "imports": [
+        "Zeta23.CCM.DictionaryResidualGluing"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryResidualGluing.lean",
+      "blob_sha": "80e628661ef7a0ee0b5778ab7f90e500b9e8e111",
+      "imports": [
+        "Zeta23.CCM.DictionaryResidualSecondOrder",
+        "Mathlib.Analysis.Calculus.ContDiff.Deriv"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryResidualSecondOrder.lean",
+      "blob_sha": "393086ca9eb0657af01b5f3cecc5ed0d308b2bd8",
+      "imports": [
+        "Zeta23.CCM.DictionaryResidualBranches"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryResidualSecondOrderGluing.lean",
+      "blob_sha": "422e0779994461bd6b3b0cea141ba98035c96aab",
+      "imports": [
+        "Zeta23.CCM.DictionaryResidualDerivativeIdentities",
+        "Mathlib.Analysis.Complex.RealDeriv"
+      ]
     }
   ],
   "all_lean": [
