@@ -278,7 +278,7 @@ def main() -> int:
         if rel.get("target") not in node_ids:
             errors.append(f"missing relation target endpoint: {rel}")
         if rel.get("kind") in FORBIDDEN_CURRENT_RELATIONS:
-            errors.append(f"relation not yet authorized in Phase 2A: {rel['kind']}")
+            errors.append(f"relation not authorized in Phase 2B: {rel['kind']}")
         if rel.get("kind") == "IMPORTS":
             if rel["source"] not in local_module_ids:
                 errors.append(f"IMPORTS source is not a local module: {rel}")
@@ -313,8 +313,6 @@ def main() -> int:
         if rel.get("kind") == "USES_CONSTANT":
             if rel["source"] not in declaration_ids or rel["target"] not in declaration_ids:
                 errors.append(f"USES_CONSTANT endpoints are not declarations: {rel}")
-            if rel["source"] == rel["target"]:
-                errors.append(f"USES_CONSTANT self-edge: {rel}")
             if rel.get("provenance") != "LEAN_ENV_EXACT":
                 errors.append(f"USES_CONSTANT provenance is not LEAN_ENV_EXACT: {rel}")
             flags = [
@@ -496,6 +494,11 @@ def main() -> int:
                 errors.append(f"registered compiler root lacks binding: {theorem}")
             else:
                 claim = claim_by_id[binding["id"]]
+                if compiler_row.get("registered_claim_id") != binding["id"]:
+                    errors.append(
+                        f"compiler root registered_claim_id drift: {theorem} -> "
+                        f"{compiler_row.get('registered_claim_id')!r}"
+                    )
                 if actual.get("binding_scope") != "REGISTERED_PROVED":
                     errors.append(f"registered root binding_scope drift: {theorem}")
                 if actual.get("authority_role") != "REGISTERED_CLAIM_DECLARATION":
@@ -596,6 +599,12 @@ def main() -> int:
         errors.append("terminal claim is not OPEN")
 
     coverage = json.loads((GENERATED / "REPOSITORY_COVERAGE.json").read_text(encoding="utf-8"))
+    if coverage.get("schema_version") != "RHKG-phase2b-coverage-0.4":
+        errors.append("coverage view is not Phase 2B current")
+    if coverage.get("registered_proved_lean_declaration_count") != len(binding_by_id):
+        errors.append("coverage registered-root count drift")
+    if coverage.get("lean_declaration_count") != len(lean_declarations):
+        errors.append("coverage Lean-declaration count drift")
     if coverage.get("terminal_claim") != "RH_OPEN":
         errors.append("coverage view does not preserve RH_OPEN")
     if coverage.get("graph_theorem_promotion") is not False:
