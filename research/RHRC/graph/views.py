@@ -42,6 +42,9 @@ def coverage_view(
         "external_lean_module_count": len(external_modules),
         "registered_claim_count": len(claims),
         "route_count": len(routes),
+        "node_type_counts": dict(
+            sorted(Counter(r["type"] for r in (repo_files + lean_modules + registry_nodes)).items())
+        ),
         "relation_count": len(relations),
         "subject_digest_sha256": subject_digest,
         "declared_generated_products": sorted(declared_generated_products),
