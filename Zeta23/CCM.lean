@@ -161,6 +161,7 @@ import Zeta23.CCM.CubicSecularGoodSectorMargin
 import Zeta23.CCM.GlobalParityBottomSpectrum
 import Zeta23.CCM.GlobalParityBottomSecular
 import Zeta23.CCM.GlobalParityBottomCrossParity
+import Zeta23.CCM.GlobalParityBottomIntertwining
 import Zeta23.CCM.CrossParitySecularCompletion
 import Zeta23.CCM.CrossParitySecularKernelDichotomy
 import Zeta23.CCM.RegularFirstBadParitySourceMomentRigidity
