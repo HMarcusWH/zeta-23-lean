@@ -17,7 +17,6 @@ LIVING_SURFACES = (
 BEGIN = "<!-- RHRC_CURRENT_STATE_BEGIN -->"
 END = "<!-- RHRC_CURRENT_STATE_END -->"
 
-
 def current_block(path: Path) -> str:
     text = path.read_text(encoding="utf-8")
     if text.count(BEGIN) != 1 or text.count(END) != 1:
@@ -28,88 +27,62 @@ def current_block(path: Path) -> str:
         raise AssertionError(f"{path}: current-state block is not front-loaded")
     return block
 
-
 class CurrentStateSurfaceTests(unittest.TestCase):
     def setUp(self):
         self.state = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
 
-    def test_machine_state_is_merged_post245(self):
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 245)
-        self.assertEqual(
-            self.state["merged_theorem_anchor"]["validated_head"],
-            "766579346ec86b25d63fb61f8e0b46752a028f6c",
-        )
-        self.assertEqual(
-            self.state["merged_theorem_anchor"]["merge_commit"],
-            "ad0347ef07e2c7717f88bd9d8bf7555be75ad88e",
-        )
-        self.assertEqual(
-            self.state["merged_theorem_anchor"]["tree"],
-            "0466006ec23b3f24f6ea113b303014ae42a680dd",
-        )
-        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 245)
+    def test_machine_state_is_merged_post247(self):
+        theorem = self.state["merged_theorem_anchor"]
+        self.assertEqual(theorem["pr"], 247)
+        self.assertEqual(theorem["validated_head"], "7438f2a23750b1f4133c12b989eb9d81c1e99eea")
+        self.assertEqual(theorem["merge_commit"], "070c0a08a924d0c917d5366755f9c4d50067ce51")
+        self.assertEqual(theorem["tree"], "1672e49e092682343a2eace1e8e6e4799c102f35")
+        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 247)
         self.assertEqual(self.state["latest_research_evidence"]["pr"], 223)
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
         route = self.state["active_research_route"]
+        self.assertEqual(route["post247_next_research_target"], "UNCONDITIONAL_GROUND_SPECTRUM_ATLAS")
         self.assertEqual(
-            route["next_research_target"], "CANONICAL_PRIME_REMAINDER_DOMINANCE"
+            route["post247_required_new_information"],
+            "NONVACUOUS_ARITHMETIC_CONTROL_OF_GROUND_SPECTRUM_ACROSS_PRIME_POWER_THRESHOLDS",
         )
-        self.assertEqual(
-            route["required_new_information"],
-            "RH_STRENGTH_WEIGHTED_CHEBYSHEV_REMAINDER_INFORMATION",
-        )
-        self.assertEqual(route["terminal_mathlib_rh_seam"], "PROVED_PR_242")
-        self.assertEqual(
-            route["post245_no_regular_first_bad_certificates"], "RH_EQUIVALENT_PR_245"
-        )
-        self.assertEqual(
-            route["post245_generated_family_final_gate"], "RH_EQUIVALENT_PR_245"
-        )
-        self.assertEqual(route["post245_sub_rh_gate_remaining_on_route"], "NONE")
+        self.assertEqual(route["post246_canonical_prime_remainder_normal_form"], "PROVED_PR_246")
+        self.assertEqual(route["post247_glasses_program"], "ACTIVE_RIEMANN_WEARING_GLASSES_V2")
+        self.assertEqual(route["post247_global_aperture_loewner_monotonicity"], "QUARANTINED_DR_021")
+        self.assertEqual(route["post247_global_minimizing_schur_monotonicity"], "QUARANTINED_DR_022")
+        self.assertEqual(route["post247_relation_zeta"], "PARKED_SPECULATIVE")
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
     def test_every_living_surface_frontloads_machine_state(self):
         required = (
-            "PR #245",
-            "766579346ec86b25d63fb61f8e0b46752a028f6c",
-            "ad0347ef07e2c7717f88bd9d8bf7555be75ad88e",
-            "0466006ec23b3f24f6ea113b303014ae42a680dd",
-            "MERGED_VIA_PR_245",
-            "TERMINAL_GATE_RH_EQUIVALENCE",
-            "noArbitrarilyLargeWholeCellRetainedFamily_iff_riemannHypothesis",
-            "noRegularFirstBadCertificates_iff_riemannHypothesis",
-            "NoArbitrarilyLargeWholeCellRetainedFamily <-> RiemannHypothesis",
-            "NoRegularFirstBadCertificates <-> RiemannHypothesis",
-            "11/11 ATTACHED WORKFLOWS GREEN",
+            "PR #247",
+            "7438f2a23750b1f4133c12b989eb9d81c1e99eea",
+            "070c0a08a924d0c917d5366755f9c4d50067ce51",
+            "1672e49e092682343a2eace1e8e6e4799c102f35",
+            "MERGED_VIA_PR_247",
+            "11/11 ATTACHED WORKFLOWS COMPLETED SUCCESSFULLY",
             "terminal Mathlib RH seam = PROVED / PR #242",
-            "whole-cell provenance preservation = PROVED / PR #243",
-            "arbitrary-large retained aperture family = PROVED / PR #243",
-            "off-line zero -> arbitrarily-large whole-cell bi-regular retained negative-energy certificates",
-            "eventual generated-family aperture bound = OPEN / RH-EQUIVALENT",
-            "sub-RH gate remaining on this route = NONE",
-            "contact theory = FALLBACK ONLY",
-            "DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED",
-            "COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED",
-            "FULL_SPACE_SIGN_INDEFINITE_CERTIFIED",
+            "PR #246 ARITHMETIC NORMAL FORM",
+            "CanonicalPrimeRemainderDominance <-> RiemannHypothesis = PROVED / PR #246",
+            "PR #247 GLOBAL-BOTTOM REDUCTION",
+            "off-line zero -> arbitrarily-large GlobalBottomArithmeticResidual = PROVED / PR #247",
+            "GlobalBottomResidualExclusion <-> RiemannHypothesis = PROVED / AUDIT-ONLY / PR #247",
+            "active programme = RIEMANN_WEARING_GLASSES_V2",
+            "next research target = UNCONDITIONAL_GROUND_SPECTRUM_ATLAS",
+            "global aperture Loewner monotonicity = QUARANTINED / DR-021",
+            "global minimizing-Schur monotonicity = QUARANTINED / DR-022",
+            "relation zeta = PARKED / SPECULATIVE",
             "PR #117",
-            "E4A4-SCHUR-FB-05",
-            "OBS-059I",
-            "next research target = CANONICAL_PRIME_REMAINDER_DOMINANCE",
-            "required new information = RH_STRENGTH_WEIGHTED_CHEBYSHEV_REMAINDER_INFORMATION",
-            "R003 phase = DISCOVERY",
-            "confirmatory execution = NOT AUTHORIZED",
+            "PR #223",
             "terminal claim = RH_OPEN",
         )
         forbidden = (
-            "merged theorem authority = PR #242",
-            "merged theorem authority = PR #243",
-            "next research target = GENERATED_FAMILY_FINAL_GATE",
-            "terminal Mathlib RH seam = OPEN",
-            "NoRegularFirstBadCertificates = PROVED",
-            "NoArbitrarilyLargeWholeCellRetainedFamily = PROVED",
-            "strictly weaker than NoRegularFirstBadCertificates",
+            "merged theorem authority = PR #245",
+            "canonical prime-remainder normal form = CANDIDATE",
+            "next research target = CANONICAL_PRIME_REMAINDER_DOMINANCE",
+            "required new information = RH_STRENGTH_WEIGHTED_CHEBYSHEV_REMAINDER_INFORMATION",
             "RH = PROVED",
         )
         for path in LIVING_SURFACES:
@@ -129,15 +102,9 @@ class CurrentStateSurfaceTests(unittest.TestCase):
             "FIRST_BAD_RIGIDITY_E4_A4R_REGULAR_SCHUR_ENERGY_SIGN",
         )
         self.assertEqual(
-            [
-                b["id"]
-                for b in action_registry["actions"][
-                    "E4_A4_REGULAR_SCHUR_ENERGY_SIGN"
-                ]["first_breaks"]
-            ],
+            [b["id"] for b in action_registry["actions"]["E4_A4_REGULAR_SCHUR_ENERGY_SIGN"]["first_breaks"]],
             ["E4A4-SCHUR-FB-05"],
         )
-
 
 if __name__ == "__main__":
     unittest.main()

@@ -938,6 +938,105 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "FIRST-BAD-RIGIDITY-C / PR #110. Supporting theorems give the Euclidean algebraic D-equivalence, exact even compression residual span{1,d^2}, M(Du)=D(Mu), explicit cubic generator g_N=P_-d^3, g_N!=0 for N>=2, and range(T_-D-DT_+)<=C g_N. This proves rank at most one, not rank exactly one; D is not unitary/isometric; no equal-spectrum, interlacing, inertia, positivity or RH theorem is claimed."
+    },
+    {
+      "id": "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
+      "statement": "The canonical source-channel energy admits the exact decomposition -canonicalPrimeRemainderEnergy - canonicalPrimeFreeBudget, with the prime-dependent term a linear functional of the weighted von Mangoldt square-root remainder.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_CCM_RHS_IDENTITY"
+      ],
+      "source": "Zeta23/CCM/CanonicalPrimeRemainder.lean",
+      "theorem": "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #246 arithmetic normal form. This is an identity, not an RH proof. Post-#247 state-sync registry note: recorded as theorem inventory without changing the historically frozen R003 promoted-binding surface or CCM import graph."
+    },
+    {
+      "id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "statement": "CanonicalPrimeRemainderDominance is equivalent to Mathlib.RiemannHypothesis; companion finite-Weil, Riesz-six and generated-family criteria are likewise theoremized as RH-equivalent.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM"
+      ],
+      "source": "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean",
+      "theorem": "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #246 anti-circularity audit. The equivalence theorem does not prove either side unconditionally; RH remains OPEN. Post-#247 state-sync registry note: recorded as theorem inventory without changing the historically frozen R003 promoted-binding surface or CCM import graph."
+    },
+    {
+      "id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+      "statement": "For every parity/aperture/successor size the parity Rayleigh bottom is defined and attained; in the legal successor regime the common global successor bottom is negative exactly when at least one parity is bad.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+        "R003_PARITY_BAD_NFLOW"
+      ],
+      "source": "Zeta23/CCM/GlobalParityBottomSpectrum.lean",
+      "theorem": "Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #247 unconditional spectral layer. This does not assert negativity for the actual zeta system. Post-#247 state-sync registry note: recorded as theorem inventory without changing the historically frozen R003 promoted-binding surface or CCM import graph."
+    },
+    {
+      "id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "statement": "Every GlobalBottomResidualState carries a dependent even-strict, odd-strict, or tie branch package, keeping the branch-specific source/transfer identities attached to the same residual state.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM"
+      ],
+      "source": "Zeta23/CCM/GlobalParityBottomBranchPackage.lean",
+      "theorem": "Zeta23.CCM.GlobalBottomResidualState.exists_branchPackage",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #247 same-state branch packaging. The object is conditional in use because GlobalBottomResidualState itself encodes badness. Post-#247 state-sync registry note: recorded as theorem inventory without changing the historically frozen R003 promoted-binding surface or CCM import graph."
+    },
+    {
+      "id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+      "statement": "On every GlobalBottomResidualState the selected ground trial is nonzero and an exact eigenmode at the stored global bottom; its canonical channel energy is strictly negative.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE"
+      ],
+      "source": "Zeta23/CCM/GlobalParityBottomGroundTrial.lean",
+      "theorem": "Zeta23.CCM.GlobalBottomResidualState.groundTrial_eigenmode",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #247. The theorem is universally quantified over residual states; it is not an unconditional existence theorem for a negative state. Post-#247 state-sync registry note: recorded as theorem inventory without changing the historically frozen R003 promoted-binding surface or CCM import graph."
+    },
+    {
+      "id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+      "statement": "On every GlobalBottomResidualState the true ground trial defines a continuous prime-test weight and its canonical prime-remainder energy equals the exact weighted remainder integral.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+        "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM"
+      ],
+      "source": "Zeta23/CCM/GlobalParityBottomPrimeWeight.lean",
+      "theorem": "Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #247 same-witness arithmetic interface. Post-#247 state-sync registry note: recorded as theorem inventory without changing the historically frozen R003 promoted-binding surface or CCM import graph."
+    },
+    {
+      "id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "statement": "Every hypothetical off-line zeta zero produces branch-constrained GlobalBottomArithmeticResidual states at arbitrarily large aperture, with the #246 prime-remainder failure imposed on the same true global-ground trial.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+        "R003_GLOBAL_BOTTOM_PRIME_WEIGHT"
+      ],
+      "source": "Zeta23/ExceptionalZero/GlobalParityBottomTerminalTarget.lean",
+      "theorem": "Zeta23.ExceptionalZero.exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_offLine_zero",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #247 active reduction endpoint. A specific new unconditional arithmetic/spectral exclusion is still OPEN. Post-#247 state-sync registry note: recorded as theorem inventory without changing the historically frozen R003 promoted-binding surface or CCM import graph."
+    },
+    {
+      "id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "statement": "The proposition that no GlobalBottomResidualState exists is equivalent to Mathlib.RiemannHypothesis.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM"
+      ],
+      "source": "Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean",
+      "theorem": "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #247 AUDIT-ONLY. This mechanically warns that a universal law which merely excludes every residual state is RH-strength/vacuous under RH; it is not active closure information. Post-#247 state-sync registry note: recorded as theorem inventory without changing the historically frozen R003 promoted-binding surface or CCM import graph."
     }
   ]
 }
