@@ -57,12 +57,12 @@ private def emitEdge (source target : Name) (channel : String) : CommandElabM Un
 
 private partial def visit
     (env : Environment) (pending : List Name)
-    (visited emitted : NameHashSet) : CommandElabM Unit := do
+    (visited emitted scheduled : NameHashSet) : CommandElabM Unit := do
   match pending with
   | [] => return
   | decl :: rest =>
       if visited.contains decl then
-        visit env rest visited emitted
+        visit env rest visited emitted scheduled
       else
         let some info := env.find? decl
           | throwError "RHKG dependency export: unknown declaration {decl}"
@@ -70,11 +70,14 @@ private partial def visit
         if !(emitted.contains decl) then
           emitDeclaration env decl
           emitted := emitted.insert decl
-        let typeDeps := info.type.getUsedConstants
+        -- The receipt records presence-by-channel, not occurrence multiplicity.
+        -- NameSet prevents repeated appearances in a large proof term from
+        -- creating duplicate protocol edges or duplicate traversal work.
+        let typeDeps := info.type.getUsedConstantsAsSet
         let valueDeps := match info.value? (allowOpaque := true) with
-          | some value => value.getUsedConstants
-          | none => #[]
-        let structureDeps := structuralDependencies info
+          | some value => value.getUsedConstantsAsSet
+          | none => ({} : NameSet)
+        let structureDeps := NameSet.ofArray (structuralDependencies info)
 
         -- Preserve exact expression-level self references if Lean emits them.
         -- Structural membership self-links are filtered below because they are
@@ -96,11 +99,24 @@ private partial def visit
               emitted := emitted.insert dep
             emitEdge decl dep "STRUCTURE"
 
+        -- A visited set alone does not deduplicate declarations that are
+        -- queued many times before their first visit. Track scheduled names
+        -- so highly shared dependencies enter the pending list only once.
         let mut next := rest
-        for dep in typeDeps ++ valueDeps ++ structureDeps do
-          if isProjectLocalModule (moduleOf? env dep) then
+        let mut scheduled := scheduled
+        for dep in typeDeps do
+          if isProjectLocalModule (moduleOf? env dep) && !(scheduled.contains dep) then
             next := dep :: next
-        visit env next (visited.insert decl) emitted
+            scheduled := scheduled.insert dep
+        for dep in valueDeps do
+          if isProjectLocalModule (moduleOf? env dep) && !(scheduled.contains dep) then
+            next := dep :: next
+            scheduled := scheduled.insert dep
+        for dep in structureDeps do
+          if isProjectLocalModule (moduleOf? env dep) && !(scheduled.contains dep) then
+            next := dep :: next
+            scheduled := scheduled.insert dep
+        visit env next (visited.insert decl) emitted scheduled
 
 /--
 Emit the local Zeta23 dependency closure rooted at the supplied declarations.
@@ -108,6 +124,9 @@ External constants are emitted as boundary nodes but are not recursively expande
 -/
 public def exportDependencies (roots : Array Name) : CommandElabM Unit := do
   let env ← getEnv
-  visit env roots.toList {} {}
+  let mut scheduled : NameHashSet := {}
+  for root in roots do
+    scheduled := scheduled.insert root
+  visit env roots.toList {} {} scheduled
 
 end Zeta23.RHRC
