@@ -1642,6 +1642,126 @@
         "Zeta23.CCM.GlobalParityBottomReverseGroundTransfer",
         "Zeta23.CCM.GlobalParityBottomTieNormalForm"
       ]
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomCrossParity.lean",
+      "blob_sha": "f38c74c1dc53f7985ad1fb651fc85141e571221c",
+      "imports": [
+        "Zeta23.CCM.GlobalParityBottomSecular",
+        "Zeta23.CCM.CrossParitySecularTransfer",
+        "Zeta23.CCM.CrossParitySecularCorrectionCollapse"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomEvenStrictNormalForm.lean",
+      "blob_sha": "67c69b48dc7838987eb196c61c9352ea02c41e86",
+      "imports": [
+        "Zeta23.CCM.GlobalParityBottomRetainedGeometry",
+        "Zeta23.CCM.RegularFirstBadGammaObstruction"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomGroundTrial.lean",
+      "blob_sha": "55736df7c60b3acbfc98cba61637ab92ea910e61",
+      "imports": [
+        "Zeta23.CCM.GlobalParityBottomResidualState",
+        "Zeta23.CCM.CubicExplicitSecular",
+        "Zeta23.CCM.CanonicalSourceEnergy",
+        "Zeta23.CCM.RegularFirstBadCrossParityRiesz"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomIntertwining.lean",
+      "blob_sha": "294a452644dd9e280b44eb64e247765e1ba45379",
+      "imports": [
+        "Zeta23.CCM.GlobalParityBottomSpectrum",
+        "Zeta23.CCM.SourceExplicitCubicDefect",
+        "Zeta23.CCM.ParityCubicFactorization"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomOddStrictNormalForm.lean",
+      "blob_sha": "69678741db3ee75c2f6e626dbcca62bdd141d9ca",
+      "imports": [
+        "Zeta23.CCM.GlobalParityBottomCrossParity",
+        "Zeta23.CCM.CrossParitySecularRealTransfer"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomPrimeRemainder.lean",
+      "blob_sha": "45969f86721b6ca972dfbadf9e61befb750b9811",
+      "imports": [
+        "Zeta23.CCM.GlobalParityBottomGroundTrial",
+        "Zeta23.CCM.CanonicalPrimeRemainder"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomPrimeWeight.lean",
+      "blob_sha": "2cb9b176d26636318d0276c62cd30f9107388ddd",
+      "imports": [
+        "Zeta23.CCM.GlobalParityBottomPrimeRemainder",
+        "Zeta23.CCM.GlobalParityBottomBranchPackage",
+        "Mathlib.Analysis.Calculus.ContDiff.Deriv"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomResidualState.lean",
+      "blob_sha": "1bc47e7aa45da68d0d31208978d7ea85d99e0b02",
+      "imports": [
+        "Zeta23.CCM.WholeCellBiRegularCanonicalEnergy",
+        "Zeta23.CCM.GlobalFirstBadParityBottomAlignment"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomRetainedGeometry.lean",
+      "blob_sha": "3438fcefae9a7811e67555367ca690931a07535b",
+      "imports": [
+        "Zeta23.CCM.GlobalFirstBadParityBottomAlignment",
+        "Zeta23.CCM.GlobalParityBottomSourceMoment",
+        "Zeta23.CCM.RegularFirstBadGammaObstruction"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomReverseGroundTransfer.lean",
+      "blob_sha": "d852db369d895e841a85def099776cf42e136e14",
+      "imports": [
+        "Zeta23.CCM.GlobalParityBottomIntertwining"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomSecular.lean",
+      "blob_sha": "d0a8dfd844fbee2fee927b385abd9edb00237ff0",
+      "imports": [
+        "Zeta23.CCM.GlobalParityBottomSpectrum",
+        "Zeta23.CCM.CubicSecularGoodSectorMargin"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomSourceMoment.lean",
+      "blob_sha": "c645c52ea6bc2d90ca59fa0fd6ff82d1bee12d3c",
+      "imports": [
+        "Zeta23.CCM.GlobalParityBottomSpectrum",
+        "Zeta23.CCM.ParitySourceMomentFourRigidity"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomSpectrum.lean",
+      "blob_sha": "8c68c594027fb2001b4353c4ab7cfcccf16ed46a",
+      "imports": [
+        "Zeta23.CCM.CubicShellIncidence",
+        "Zeta23.CCM.ConstrainedParitySpectrum",
+        "Zeta23.CCM.FirstBadSpectralInterfaces",
+        "Mathlib.Analysis.InnerProductSpace.Symmetric"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomTieNormalForm.lean",
+      "blob_sha": "00636e3239edfa942d8db545f7fda711a0219d3f",
+      "imports": [
+        "Zeta23.CCM.GlobalParityBottomCrossParity",
+        "Zeta23.CCM.GlobalParityBottomIntertwining",
+        "Zeta23.CCM.CubicSecularEquation"
+      ]
     }
   ],
   "all_lean": [
