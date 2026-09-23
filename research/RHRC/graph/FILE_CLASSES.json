@@ -19,6 +19,7 @@
     "DOCUMENTATION",
     "EXTERNAL_SOURCE_MANIFEST",
     "BUILD_CONFIGURATION",
+    "COMPILER_RECEIPT",
     "GENERATED_GRAPH_PRODUCT",
     "LICENSE_OR_METADATA",
     "OTHER_CLASSIFIED"
@@ -38,6 +39,12 @@
       "id": "generated_graph",
       "pattern": "^research/RHRC/graph/generated/.*$",
       "file_class": "GENERATED_GRAPH_PRODUCT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "compiler_dependency_receipt",
+      "pattern": "^research/RHRC/graph/compiler/.*\\.jsonl$",
+      "file_class": "COMPILER_RECEIPT",
       "trust_zone": "AUDIT_ONLY"
     },
     {
