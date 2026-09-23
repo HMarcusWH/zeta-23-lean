@@ -99,7 +99,9 @@ def module_name(path: str) -> str:
 
 
 def relation(kind: str, source: str, target: str, provenance: str) -> dict:
-    digest = hashlib.sha256(f"{kind}|{source}|{target}".encode("utf-8")).hexdigest()
+    digest = hashlib.sha256(
+        f"{kind}|{source}|{target}|{provenance}".encode("utf-8")
+    ).hexdigest()
     return {
         "id": "rh:rel:" + digest,
         "type": "Relation",
@@ -281,10 +283,10 @@ def build_records() -> dict[str, object]:
             }
         )
 
-    relations_by_key: dict[tuple[str, str, str], dict] = {}
+    relations_by_key: dict[tuple[str, str, str, str], dict] = {}
 
     def add_rel(kind: str, source: str, target: str, provenance: str) -> None:
-        relations_by_key[(kind, source, target)] = relation(
+        relations_by_key[(kind, source, target, provenance)] = relation(
             kind, source, target, provenance
         )
 
