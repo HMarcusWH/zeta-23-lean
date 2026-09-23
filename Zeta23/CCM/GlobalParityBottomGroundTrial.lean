@@ -1,6 +1,7 @@
 import Zeta23.CCM.GlobalParityBottomResidualState
 import Zeta23.CCM.CubicExplicitSecular
 import Zeta23.CCM.CanonicalSourceEnergy
+import Zeta23.CCM.RegularFirstBadCrossParityRiesz
 
 noncomputable section
 
@@ -31,6 +32,20 @@ def GlobalBottomResidualState.groundTrial
     s.aligned.predecessorNonnegative
     s.aligned.lam
     s.aligned.lam_neg
+
+/-- On an even-selected branch, the true global-ground trial is exactly the
+same ambient vector as the retained even shifted trial used by the source/M4
+geometry.  Proof-valued predecessor-nonnegativity arguments do not create a
+second mathematical vector. -/
+theorem GlobalBottomResidualState.groundTrial_coe_eq_evenShiftedTrial_of_even
+    {Q : ℕ} (s : GlobalBottomResidualState Q)
+    (hp : s.aligned.firstBad.p = ReversalParity.even) :
+    (s.groundTrial : EuclideanSpace ℂ
+      (Fin (2 * (s.aligned.firstBad.Nstar + 1) + 1))) =
+      (s.aligned.evenShiftedTrial : EuclideanSpace ℂ
+        (Fin (2 * (s.aligned.firstBad.Nstar + 1) + 1))) := by
+  simpa [GlobalBottomResidualState.groundTrial,
+    RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial, hp]
 
 /-- The globally aligned cubic trial is nonzero. -/
 theorem GlobalBottomResidualState.groundTrial_ne_zero
@@ -116,6 +131,7 @@ theorem GlobalBottomResidualState.groundTrial_channelEnergy_neg
 
 end Zeta23.CCM
 
+#print axioms Zeta23.CCM.GlobalBottomResidualState.groundTrial_coe_eq_evenShiftedTrial_of_even
 #print axioms Zeta23.CCM.GlobalBottomResidualState.groundTrial_ne_zero
 #print axioms Zeta23.CCM.GlobalBottomResidualState.groundTrial_eigenmode
 #print axioms Zeta23.CCM.GlobalBottomResidualState.groundTrial_parityEnergy_eq
