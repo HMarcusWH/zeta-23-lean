@@ -43,22 +43,25 @@ theorem oddGround_pulledBack_source_ne_zero_of_strict
   have hvne : v ≠ 0 := by
     intro hv
     apply hwne
-    have hmap := congrArg E hv
-    simpa [v, E] using hmap
+    apply E.symm.injective
+    simpa [v] using hv
   have hshift :=
     parityRayleighBottom_gap_mul_norm_sq_le_shifted
       .even L (N + 1)
       (parityRayleighBottom .odd L (N + 1)) v
+  change
+    (parityRayleighBottom .even L (N + 1) -
+        parityRayleighBottom .odd L (N + 1)) * ‖v‖ ^ 2 ≤
+      Complex.re
+        (inner ℂ
+          (evenCompressedCanonical L (N + 1) v -
+            (parityRayleighBottom .odd L (N + 1) : ℂ) • v)
+          v) at hshift
   have hident :=
     oddEigenmode_pulledBack_shiftedEven_eq_neg_sourceCubic
       hL (N + 1) (by omega)
       (parityRayleighBottom .odd L (N + 1)) w hweig
   dsimp only at hident
-  change
-    parityCompressedCanonical .even L (N + 1) v -
-        (parityRayleighBottom .odd L (N + 1) : ℂ) • v =
-      -(evenQuadraticSourceMoment L (N + 1) v) •
-        pulledBackCubicCompressionVector (N + 1) (by omega) at hident
   rw [hident] at hshift
   intro hsource
   rw [hsource] at hshift
@@ -89,7 +92,7 @@ theorem oddGround_reverse_rankOne_package
     let v := E.symm w
     v ≠ 0 ∧
     evenQuadraticSourceMoment L (N + 1) v ≠ 0 ∧
-    parityCompressedCanonical .even L (N + 1) v -
+    evenCompressedCanonical L (N + 1) v -
         (parityRayleighBottom .odd L (N + 1) : ℂ) • v =
       -(evenQuadraticSourceMoment L (N + 1) v) •
         pulledBackCubicCompressionVector (N + 1) (by omega) := by
@@ -99,8 +102,8 @@ theorem oddGround_reverse_rankOne_package
   have hvne : v ≠ 0 := by
     intro hv
     apply hwne
-    have hmap := congrArg E hv
-    simpa [v, E] using hmap
+    apply E.symm.injective
+    simpa [v] using hv
   have hsource :
       evenQuadraticSourceMoment L (N + 1) v ≠ 0 := by
     simpa [v, E] using
