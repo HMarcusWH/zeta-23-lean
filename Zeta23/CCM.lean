@@ -173,6 +173,7 @@ import Zeta23.CCM.GlobalParityBottomTieNormalForm
 import Zeta23.CCM.GlobalParityBottomResidualState
 import Zeta23.CCM.GlobalParityBottomPrimeRemainder
 import Zeta23.CCM.GlobalParityBottomPrimeWeight
+import Zeta23.CCM.GlobalParityBottomArithmeticTarget
 import Zeta23.CCM.CrossParitySecularCompletion
 import Zeta23.CCM.CrossParitySecularKernelDichotomy
 import Zeta23.CCM.RegularFirstBadParitySourceMomentRigidity
