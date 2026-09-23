@@ -95,5 +95,2539 @@
         "Zeta23.PairCeiling.Signed"
       ]
     }
+  ],
+  "all_lean": [
+    {
+      "path": "comparator/Challenge.lean",
+      "blob_sha": "7ff8d17e183a8484c0f8ea29adb7f6477704d813"
+    },
+    {
+      "path": "comparator/Challenge/XiPrime.lean",
+      "blob_sha": "47c06bb64acb088cd0aaabb1d3aaf71344cf0b33"
+    },
+    {
+      "path": "comparator/ChallengeDeps.lean",
+      "blob_sha": "34c754c7ddd9ae06fb16b3e180696694b883f9c5"
+    },
+    {
+      "path": "comparator/ChallengeDeps/XiPrime.lean",
+      "blob_sha": "851118523d7291f292485f8d4de1fd89de92f127"
+    },
+    {
+      "path": "comparator/PrintAxioms.lean",
+      "blob_sha": "99385cf210927a8c78418131b35905acb4499c91"
+    },
+    {
+      "path": "comparator/PrintAxioms/PairCeiling.lean",
+      "blob_sha": "88a2fe976ba0747f2c5a7d4563f7e838f5f3fadf"
+    },
+    {
+      "path": "comparator/PrintAxioms/XiPrime.lean",
+      "blob_sha": "4655fa74168877ef059c0a9fc02328773bb86b07"
+    },
+    {
+      "path": "comparator/Solution.lean",
+      "blob_sha": "bd5dd641b10983884cafb0a4d7d964a10de32d11"
+    },
+    {
+      "path": "comparator/Solution/XiPrime.lean",
+      "blob_sha": "b5763ff3d75f649f72a3aa5bbee000f73644194c"
+    },
+    {
+      "path": "Zeta23.lean",
+      "blob_sha": "0c6f17a3a7eefe1be1421b2721f5d68b351a5b08"
+    },
+    {
+      "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+      "blob_sha": "db30df619c414827f45a20b95fd173edd3600ee1"
+    },
+    {
+      "path": "Zeta23/Analytic/Stirling.lean",
+      "blob_sha": "6d8da4241ef2a5831e8cb120a4c195ee75c6297f"
+    },
+    {
+      "path": "Zeta23/Assembly.lean",
+      "blob_sha": "3e08238ba18d831cfa7ecdcbddda6ee5b1e8df26"
+    },
+    {
+      "path": "Zeta23/Assembly/Certificate.lean",
+      "blob_sha": "9264619347e998173efe785f60f559088636afc1"
+    },
+    {
+      "path": "Zeta23/Assembly/CertificateC3.lean",
+      "blob_sha": "ae9d1d3ae43d01b3cd8daab6271ffae92e292f10"
+    },
+    {
+      "path": "Zeta23/Assembly/Inputs.lean",
+      "blob_sha": "f07e04a2a9f636874853c5b4769662d6882d3ca5"
+    },
+    {
+      "path": "Zeta23/Assembly/SeamMult.lean",
+      "blob_sha": "78c291cd4623486dfc4cbe20df83195979b7d771"
+    },
+    {
+      "path": "Zeta23/CCM.lean",
+      "blob_sha": "24ecbc61df749b142980be48c47eeafb9e8a3526"
+    },
+    {
+      "path": "Zeta23/CCM/BiRegularFirstBadCanonicalEnergy.lean",
+      "blob_sha": "e9832d2de20b5e9c3b24e40f971cfe0d78126424"
+    },
+    {
+      "path": "Zeta23/CCM/BiRegularFirstBadZeroShiftCorrectionCollapse.lean",
+      "blob_sha": "6255792c2d5bc440e3f9e893bb75db5f917e08e3"
+    },
+    {
+      "path": "Zeta23/CCM/BiRegularFirstBadZeroShiftNormalForm.lean",
+      "blob_sha": "0d394fc446dc7e95b313a6df91bfb87829d8481e"
+    },
+    {
+      "path": "Zeta23/CCM/BoundaryFlatApproximation.lean",
+      "blob_sha": "affdfea9181f7a9310c3b1fced16d14c1573c797"
+    },
+    {
+      "path": "Zeta23/CCM/BoundaryFlatFiniteSpace.lean",
+      "blob_sha": "9a97a5a01c5cc9285f9ae626bcdb15d1d51fef07"
+    },
+    {
+      "path": "Zeta23/CCM/BoundaryFlatProjection.lean",
+      "blob_sha": "ccad52b06c052e02e49ab220c6ea2b387c726876"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalApertureAnalyticPrimitives.lean",
+      "blob_sha": "74a4f91f201830d91043a0fa2844d000e5694b90"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalApertureArchDomain.lean",
+      "blob_sha": "797d5eabb37c3a1ecd2413d487a140eb3a7478da"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalApertureComplexBridge.lean",
+      "blob_sha": "04201b50ecb872afb315fd49a588b22c20087ce4"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalApertureComplexSource.lean",
+      "blob_sha": "5346ef1a52c769fb73d9bcc04103cfbe3e3bde7b"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalApertureContinuity.lean",
+      "blob_sha": "1d384832e4d1faefa7ac808598e3b8bad0f2e267"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalApertureHolomorphy.lean",
+      "blob_sha": "33b4e602e3191c4b5cf0c773b079ddf389381967"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalApertureParameterHolomorphy.lean",
+      "blob_sha": "9b4a5b51ff1b00cdb3ee2e94f384c88c43f4d332"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalApertureRegularityScaffold.lean",
+      "blob_sha": "86b62f9847009ed06aa0465263ea1f21d117d6a5"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalApertureScalarHalfPlane.lean",
+      "blob_sha": "5eecd527a63cd115cd7ba478671d9cc33d691456"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalApertureSourceHolomorphy.lean",
+      "blob_sha": "dcdaad3d4aa862124231b0ff494c510b3950d893"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalConjugationGeometry.lean",
+      "blob_sha": "8a32a2c045014eaf7a9008b34489579040d45b0b"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalGoodSectorGram.lean",
+      "blob_sha": "68e9925e87e6fb9dbe9c2e2775aa1d3d01916f83"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalOneStepDomination.lean",
+      "blob_sha": "a82df8347a277002d9b9f7fb937f306f90cd5e6c"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalPolePrimeDiscrepancy.lean",
+      "blob_sha": "19c3b2b451f3afd1a550a24c510548492ef92b91"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalPolePrimeDiscrepancyIntegrability.lean",
+      "blob_sha": "1751da10aedab77da377a42dda9f8bdc1d0ad4a2"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalPolePrimeRiesz.lean",
+      "blob_sha": "93e091aa927eccfd1fbfcc709cd51ceddf28e5ea"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalPrimeRemainder.lean",
+      "blob_sha": "d961e98d412f0a78dcd0a8af8af70dc35682b08a"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalQuadraticNormalSourceFunctional.lean",
+      "blob_sha": "5ef5c198846f6a70c385d7a472ccae84b8af4aef"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalQuadraticNormalSourceKernel.lean",
+      "blob_sha": "c4075c85f4d772b7972124df993c5ac61965d8ef"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalRieszBoundary.lean",
+      "blob_sha": "1812fe79d3adb6c6d2f5d4a34b69ebe3cfc2cb93"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalShiftedConjugationGeometry.lean",
+      "blob_sha": "6036b8d78c2b22d69520f77398aa2a4a1aaadc98"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalSourceChannels.lean",
+      "blob_sha": "6d517c3066cd198bd590bc6d74ff47a14621a608"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalSourceEnergy.lean",
+      "blob_sha": "39462108705884296434bf3d24b6c0b1b8c018e7"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalSourceEnergyJets.lean",
+      "blob_sha": "651ae7676d873afb2bf41bf2f25a7731a3b68d1a"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalSourceMomentAtoms.lean",
+      "blob_sha": "f87547f6a86d6c986cace713ac0476d1e1d30326"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalSourceMomentJets.lean",
+      "blob_sha": "94e325805f6a7cc0978c76d431bde16dc6af1844"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalSourcePairing.lean",
+      "blob_sha": "8d8e79e3446070c765300a0a68bd861e482ea80a"
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalSourceRieszEnergy.lean",
+      "blob_sha": "73d87052defd2596a32be78bbc2c5055baccab13"
+    },
+    {
+      "path": "Zeta23/CCM/CellMinimalBiRegularFirstBad.lean",
+      "blob_sha": "e7d370b063b67b1d8d689e145de52017d2911de2"
+    },
+    {
+      "path": "Zeta23/CCM/CellMinimalRegularFirstBad.lean",
+      "blob_sha": "9fe182722404ea20f1317352e2e6e6c93c491e74"
+    },
+    {
+      "path": "Zeta23/CCM/ClaimBindings.lean",
+      "blob_sha": "04f2a36c0849b8b5b87849ed694554a89609a62a"
+    },
+    {
+      "path": "Zeta23/CCM/CodimOneMatrixCompletion.lean",
+      "blob_sha": "a43c36055ce25fd521c512f7d018fa1b47e5351e"
+    },
+    {
+      "path": "Zeta23/CCM/ComplexDiskHalfPlane.lean",
+      "blob_sha": "cb50baba8681e1a2dd6575c2af7f3bc6c1f82fdf"
+    },
+    {
+      "path": "Zeta23/CCM/ComplexMomentIntegral.lean",
+      "blob_sha": "9f99d07392a3febeb113581e9fa2fac930efb7ed"
+    },
+    {
+      "path": "Zeta23/CCM/Components.lean",
+      "blob_sha": "e682bffd9f87ebb12afa606c0c810ba79e35681b"
+    },
+    {
+      "path": "Zeta23/CCM/ConstrainedCanonicalSector.lean",
+      "blob_sha": "5d35a6f0da8966a3e52fd8ff112f0df7f7c233a2"
+    },
+    {
+      "path": "Zeta23/CCM/ConstrainedEuclideanSector.lean",
+      "blob_sha": "2ef60150a02c615d1c5179d8880d8c402749d012"
+    },
+    {
+      "path": "Zeta23/CCM/ConstrainedParity.lean",
+      "blob_sha": "df301311f73f62155fdcd33bcfc24af289bca1e8"
+    },
+    {
+      "path": "Zeta23/CCM/ConstrainedParityGeometry.lean",
+      "blob_sha": "d4a39983976992b37ff90889a801df7a122eff14"
+    },
+    {
+      "path": "Zeta23/CCM/ConstrainedParitySpectrum.lean",
+      "blob_sha": "f1c77c9f865287b3c54f8d56d173bcf1995fc7fe"
+    },
+    {
+      "path": "Zeta23/CCM/CrossParityCorrectionFunctionalCollapse.lean",
+      "blob_sha": "940e1b7456f1f84b4a38184c7e674fed69fe498e"
+    },
+    {
+      "path": "Zeta23/CCM/CrossParityCorrectionFunctionalRiesz.lean",
+      "blob_sha": "f5db5f6b63ad551b746ed02a4d8287efd027c38d"
+    },
+    {
+      "path": "Zeta23/CCM/CrossParityCorrectionSourceCoupling.lean",
+      "blob_sha": "01bee18adf9236d1734b994b54e7e89aca4291c5"
+    },
+    {
+      "path": "Zeta23/CCM/CrossParityCubicCorrectionCollapse.lean",
+      "blob_sha": "7a08f9e0e66c126228b9c46d5ba62925ed4081f4"
+    },
+    {
+      "path": "Zeta23/CCM/CrossParityQuotientTransport.lean",
+      "blob_sha": "19e49e7f3d48319c8c7e00db072017324135bd8f"
+    },
+    {
+      "path": "Zeta23/CCM/CrossParitySecularCompletion.lean",
+      "blob_sha": "e8e8726c7f6af9fc433586488861d2964a0e2459"
+    },
+    {
+      "path": "Zeta23/CCM/CrossParitySecularCorrectionCollapse.lean",
+      "blob_sha": "9cbd9d457fc406158bd9a91c0c3933d3d4756efd"
+    },
+    {
+      "path": "Zeta23/CCM/CrossParitySecularKernelDichotomy.lean",
+      "blob_sha": "bd14a4c3223be085dc537f2f9a4628ef7b6dd8ee"
+    },
+    {
+      "path": "Zeta23/CCM/CrossParitySecularRealTransfer.lean",
+      "blob_sha": "3aa5a51f7cd29df1fda1bf94caf17140d897be3d"
+    },
+    {
+      "path": "Zeta23/CCM/CrossParitySecularTransfer.lean",
+      "blob_sha": "6497569878a68cb6f92e1d045b7770bad60c930f"
+    },
+    {
+      "path": "Zeta23/CCM/CrossParitySecularTransferCore.lean",
+      "blob_sha": "a893c7a56f5ea72bc81e63d68ff1a9940a19b79e"
+    },
+    {
+      "path": "Zeta23/CCM/CrossParityTrialReconstruction.lean",
+      "blob_sha": "82666ad431c1452affcebe405fbf60a551c0818f"
+    },
+    {
+      "path": "Zeta23/CCM/CubicExplicitSecular.lean",
+      "blob_sha": "3f6661bb954253945018d8be1e9313b3dbc78ed4"
+    },
+    {
+      "path": "Zeta23/CCM/CubicNormalizedSchur.lean",
+      "blob_sha": "f92251e621d4f79589c5ef0feefec8cd3e39bceb"
+    },
+    {
+      "path": "Zeta23/CCM/CubicSecularEquation.lean",
+      "blob_sha": "85b75ac27705e9cefe87ac03a56bfb06acc8c8bb"
+    },
+    {
+      "path": "Zeta23/CCM/CubicSecularGoodSectorMargin.lean",
+      "blob_sha": "05b0390c08332829571aa5338ebf9851dd0ffb30"
+    },
+    {
+      "path": "Zeta23/CCM/CubicSecularMetric.lean",
+      "blob_sha": "1be9ec4d58d48a50dc45b0fa39a531e5e220cfe1"
+    },
+    {
+      "path": "Zeta23/CCM/CubicSecularRealGeometry.lean",
+      "blob_sha": "79c0e201c28ae8bfdf673685f60c98be72821812"
+    },
+    {
+      "path": "Zeta23/CCM/CubicSecularRealPhase.lean",
+      "blob_sha": "19c535d9c483a8e3fb48b544e1884f16a3045ab1"
+    },
+    {
+      "path": "Zeta23/CCM/CubicShellIncidence.lean",
+      "blob_sha": "6df04977890635c5671eeb475ea172d46a70b7b2"
+    },
+    {
+      "path": "Zeta23/CCM/CutoffFreeMatrix.lean",
+      "blob_sha": "48023a2694ef2892191f615bc42fdbc1a2ecc393"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryAnalysis.lean",
+      "blob_sha": "b3f26933587741d01b6fdde5f1dfba44399dbbdd"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchBridge.lean",
+      "blob_sha": "8267b4a27e95f86d8d863d730edb11c54a04d5e8"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchCompletion.lean",
+      "blob_sha": "bf3a394b27b4c975796c1014e1fe6b6f3bb3a6bb"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchDensityBridge.lean",
+      "blob_sha": "9995c6c9a21a8830f8078034b2deea321825a041"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchDiagonal.lean",
+      "blob_sha": "69cd6e05b8e0ee36c7427e3fe853c1d29165d367"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchDiagonalEvaluation.lean",
+      "blob_sha": "8e65d6287eec24ea300949c1d46e97506700968b"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchDiagonalPhysical.lean",
+      "blob_sha": "68b6308582da357b5981ae1884130d18e52a1b5f"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchEntries.lean",
+      "blob_sha": "9033df069d12e735a8c26b73925a6a9c80f26407"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchFourier.lean",
+      "blob_sha": "0ca1435b1b25275d06f88be68847f98f5a7a0cd8"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchLaplace.lean",
+      "blob_sha": "24cfa5432fe2b9a5f962c4facdf8f9ff1c005f78"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchLift.lean",
+      "blob_sha": "7d848f26f1d8db3481005f1b73364ef77de91c91"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchMuGrowth.lean",
+      "blob_sha": "4fdf074fc2631798a037fd20d27aec54ed299e56"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchOffDiagonal.lean",
+      "blob_sha": "d7fd6a8ef85c4710d50c1fceedd71d413f6e1f35"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchPhysical.lean",
+      "blob_sha": "3ae893d38505f4d8c552c76924991db84b9ae4c3"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchSourceBridge.lean",
+      "blob_sha": "e23c4efda60abe30f12ab4265e4eef9cbadb6bb2"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchSourceDecay.lean",
+      "blob_sha": "b62e005d9152b40aa5991474b699eb1fedd0204b"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchSourceFourier.lean",
+      "blob_sha": "034748f0036dd0ae31ee81e2d5e7202b780ef66e"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchSourceIntegrability.lean",
+      "blob_sha": "128a60e67ce59ed48e689a50db0de2d6e029daf5"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchSourceMuIntegrability.lean",
+      "blob_sha": "c50db8da12ae036001b918e92abe095715bad2d0"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryArchWeight.lean",
+      "blob_sha": "5c813b7b6b7e9a3e9dca91a63d8e02e7c6a2a421"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryCompletePhysicalRHS.lean",
+      "blob_sha": "f65aa4dea991a0e9ac41ae05c39df1ddb8348f39"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryDeterministicRHS.lean",
+      "blob_sha": "21cf8aba62059508fae8db6e207f5bc349843aca"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryFiniteExpansion.lean",
+      "blob_sha": "5b8314d1a898c0f9bf09cd80831e94504cef3ab9"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryKernelEFExtension.lean",
+      "blob_sha": "008d22d1ae467fb113c368450e115a2d71ac4e87"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryMixedPairing.lean",
+      "blob_sha": "d712cf8d753701b5434667b710e989dbd2e7a57e"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryPole.lean",
+      "blob_sha": "3ee30ccf9f627071b187ce45931e0a0d35adb274"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryPoleCompletion.lean",
+      "blob_sha": "08ef6b3e2ffec9c49de2bb8619f55215291ffa8c"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryPoleLift.lean",
+      "blob_sha": "81263ac6e45023dd32548f58dbad26fa04e9858e"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryPoleSource.lean",
+      "blob_sha": "edc0c7e3c8871e2bf19584f864d681232a1530a5"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryPrimeLift.lean",
+      "blob_sha": "26929eab9ee476e155818cb0f7372c6f0db4d77e"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryRegularity.lean",
+      "blob_sha": "99a13bb9abe8c5512ada7b28b45bea6a3ee8b720"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryResidualBranches.lean",
+      "blob_sha": "e504c897894be6431459fe889d06a3e6bc5af3b7"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryResidualDerivativeIdentities.lean",
+      "blob_sha": "70baa4f6d7f0e8906ac8d8a914b00e08aa8afe1d"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryResidualFirstOrderGluing.lean",
+      "blob_sha": "3c652b22d7949d4520cdc11e8077f4d3b06a4c8a"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryResidualGluing.lean",
+      "blob_sha": "80e628661ef7a0ee0b5778ab7f90e500b9e8e111"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryResidualSecondOrder.lean",
+      "blob_sha": "393086ca9eb0657af01b5f3cecc5ed0d308b2bd8"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryResidualSecondOrderGluing.lean",
+      "blob_sha": "422e0779994461bd6b3b0cea141ba98035c96aab"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryRHSIdentity.lean",
+      "blob_sha": "6e0ee95e80698ae38c6d8bdb455d717cc425e0de"
+    },
+    {
+      "path": "Zeta23/CCM/DictionarySmoothCoreBridge.lean",
+      "blob_sha": "7921ede340697264b01229009f227aeb3bc8e8be"
+    },
+    {
+      "path": "Zeta23/CCM/DictionarySmoothCorePolarization.lean",
+      "blob_sha": "c246eab553e9962e1cd1fbe91048608f2961bda5"
+    },
+    {
+      "path": "Zeta23/CCM/DictionarySourceTest.lean",
+      "blob_sha": "1320c950147bd5c99454b06ead9c7dbae14662f3"
+    },
+    {
+      "path": "Zeta23/CCM/DictionarySymmetry.lean",
+      "blob_sha": "694ed1ce23483b9e6f63366f0a2a881eb4ee7404"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTent.lean",
+      "blob_sha": "4d471e5229944eac4e5d08ea9bb2340f861d6336"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentArchLimit.lean",
+      "blob_sha": "0ed3fd734a8399e9b24b1e16bb43494c2b3c2508"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentDecay.lean",
+      "blob_sha": "cf0e34beacc9bcb157fb34d9e3787a788cb00a60"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentEFExtension.lean",
+      "blob_sha": "6e59a904d1a23130678f746853c843f9071a445c"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentMollifier.lean",
+      "blob_sha": "4a801051f49f7cea9e9876b97dfb5e53f9f8f641"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentMollifierLimit.lean",
+      "blob_sha": "3e29b9d46228db5c21b841e8ccc1f266ce782860"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentMollifierSupport.lean",
+      "blob_sha": "dee46969de39473154075e3afb3579cb69168e10"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentMollifierTransform.lean",
+      "blob_sha": "552080d0b166dd46962c409b915e576511ce72ff"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentPolePrimeLimit.lean",
+      "blob_sha": "aa09750b5a9bce29b9b8d77a0b82efa18c7655ce"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentTransform.lean",
+      "blob_sha": "43a9b2b6af8e7be05478a9c6788eab91625e4463"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentZeroLimit.lean",
+      "blob_sha": "95aa14595297c86b0462067e317869682901cd5e"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentZeroSummability.lean",
+      "blob_sha": "157101a33aa649693bfcfc9efa37de45bcac7d78"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryZeroSideBridge.lean",
+      "blob_sha": "31ce30a38c2d3c537e0aae7bbb82197058a989c2"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryZeroSideCompletion.lean",
+      "blob_sha": "4c1f63c78a5b566a4944f271fa19d6abf0879f5c"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryZeroSideDisplacement.lean",
+      "blob_sha": "299d427ade299ebec27ed88bf34f360f2d594662"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryZeroSideMatrix.lean",
+      "blob_sha": "4dde05b4dcb98bf0253ffb328ffca2e1599ff1f3"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryZeroSideSummability.lean",
+      "blob_sha": "8f0eee30ad79a918471f054ba7fd14dd6b2dfd22"
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryZeroSideTentDefect.lean",
+      "blob_sha": "7ee8cb4e7b39b272f93cbd100c1e5a6d123c3eeb"
+    },
+    {
+      "path": "Zeta23/CCM/Displacement.lean",
+      "blob_sha": "18859d81e629f9158bb958fa7ad3a218ffaa7658"
+    },
+    {
+      "path": "Zeta23/CCM/DividedDifference.lean",
+      "blob_sha": "b062fe69b35c73bda5d67a0b08c57efdd9ecb4a1"
+    },
+    {
+      "path": "Zeta23/CCM/FiniteDictionary.lean",
+      "blob_sha": "b7f221e8f7ac96ffd9df03c31d63567e17757b7a"
+    },
+    {
+      "path": "Zeta23/CCM/FiniteMatrix.lean",
+      "blob_sha": "bc4f798f03becdabccdce05aff96ccdfa4b61c53"
+    },
+    {
+      "path": "Zeta23/CCM/FirstBadIntrinsicBlock.lean",
+      "blob_sha": "e74ec4c072741449ddbbad9e47d7627b48e9eefd"
+    },
+    {
+      "path": "Zeta23/CCM/FirstBadRigidity.lean",
+      "blob_sha": "fb6fc1d850d6cebc3f21002e75aade076d5c8b5a"
+    },
+    {
+      "path": "Zeta23/CCM/FirstBadShiftedSchur.lean",
+      "blob_sha": "a4f061f5ae5f15fd455f3284bc1001b07d3dbdfa"
+    },
+    {
+      "path": "Zeta23/CCM/FirstBadSpectralInterfaces.lean",
+      "blob_sha": "c567adcdf94c56b4995a354fdd62d9dfe395cc37"
+    },
+    {
+      "path": "Zeta23/CCM/FrozenCanonicalSourceAnalytic.lean",
+      "blob_sha": "0c4e76ee7aa6afa666b84472976cd9268afb5672"
+    },
+    {
+      "path": "Zeta23/CCM/FrozenCanonicalSourceComplex.lean",
+      "blob_sha": "be8ef03a3adf6074aac5cff048801a16455a375a"
+    },
+    {
+      "path": "Zeta23/CCM/FrozenIntrinsicPredecessorAnalytic.lean",
+      "blob_sha": "3aa4de41f46aedd9b3577ad0c32e8c36f5f70748"
+    },
+    {
+      "path": "Zeta23/CCM/FrozenIntrinsicPredecessorComplex.lean",
+      "blob_sha": "846f200eec76f300bd552820dbeb29ba8475abc4"
+    },
+    {
+      "path": "Zeta23/CCM/FrozenIntrinsicPredecessorHolomorphy.lean",
+      "blob_sha": "add47b509e15cc985b6c0068afbc09fbd99bcc4a"
+    },
+    {
+      "path": "Zeta23/CCM/FrozenN2SchurLogDrift.lean",
+      "blob_sha": "456464607afcd86266025ea9dd3ae62cad6b5087"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalFirstBad.lean",
+      "blob_sha": "3a679ebc1f620027bd5727fbd7c3a07c50ac7667"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalFirstBadParityBottom.lean",
+      "blob_sha": "789cb75635d58751823ac2362a665a0fe807e6f6"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalFirstBadParityBottomAlignment.lean",
+      "blob_sha": "82ed70f63783469bb602eb63c43aa77d870ee79d"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomArithmeticTarget.lean",
+      "blob_sha": "2277da218833935bb6dbb86185d9ade8d07538c1"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomBranchPackage.lean",
+      "blob_sha": "af1aa1794367da2b8b36a6d0a0d6ce6efa614336"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomCrossParity.lean",
+      "blob_sha": "f38c74c1dc53f7985ad1fb651fc85141e571221c"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomEvenStrictNormalForm.lean",
+      "blob_sha": "67c69b48dc7838987eb196c61c9352ea02c41e86"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomGroundTrial.lean",
+      "blob_sha": "55736df7c60b3acbfc98cba61637ab92ea910e61"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomIntertwining.lean",
+      "blob_sha": "294a452644dd9e280b44eb64e247765e1ba45379"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomOddStrictNormalForm.lean",
+      "blob_sha": "69678741db3ee75c2f6e626dbcca62bdd141d9ca"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomPrimeRemainder.lean",
+      "blob_sha": "45969f86721b6ca972dfbadf9e61befb750b9811"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomPrimeWeight.lean",
+      "blob_sha": "2cb9b176d26636318d0276c62cd30f9107388ddd"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomResidualState.lean",
+      "blob_sha": "1bc47e7aa45da68d0d31208978d7ea85d99e0b02"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomRetainedGeometry.lean",
+      "blob_sha": "3438fcefae9a7811e67555367ca690931a07535b"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomReverseGroundTransfer.lean",
+      "blob_sha": "d852db369d895e841a85def099776cf42e136e14"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomSecular.lean",
+      "blob_sha": "d0a8dfd844fbee2fee927b385abd9edb00237ff0"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomSourceMoment.lean",
+      "blob_sha": "c645c52ea6bc2d90ca59fa0fd6ff82d1bee12d3c"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomSpectrum.lean",
+      "blob_sha": "8c68c594027fb2001b4353c4ab7cfcccf16ed46a"
+    },
+    {
+      "path": "Zeta23/CCM/GlobalParityBottomTieNormalForm.lean",
+      "blob_sha": "00636e3239edfa942d8db545f7fda711a0219d3f"
+    },
+    {
+      "path": "Zeta23/CCM/GoodSectorKernelAnnihilation.lean",
+      "blob_sha": "8a361475be58ddc9573a587b0a37f70dba8688a2"
+    },
+    {
+      "path": "Zeta23/CCM/HermitianSchurEnvelopeDerivative.lean",
+      "blob_sha": "5c3eb83a02ee15564f7706749363e47654e7c574"
+    },
+    {
+      "path": "Zeta23/CCM/Kernel.lean",
+      "blob_sha": "372c90ad1ae7cd7b6a7d23eb0c61c92091643127"
+    },
+    {
+      "path": "Zeta23/CCM/KernelAnalysis.lean",
+      "blob_sha": "4a0c73f9a58c58f26570006faede562d4e45fa7b"
+    },
+    {
+      "path": "Zeta23/CCM/KernelSourceTransport.lean",
+      "blob_sha": "9b435df265203694ed433ebb076bf34c62457161"
+    },
+    {
+      "path": "Zeta23/CCM/LiftedPredecessorDeterminantRigidity.lean",
+      "blob_sha": "31f2530c45e944f7f2e932210e738e53db09fcfb"
+    },
+    {
+      "path": "Zeta23/CCM/LiftedPredecessorRegularity.lean",
+      "blob_sha": "e18333faa4a20de901c6845f3f75efb6cc1aa68d"
+    },
+    {
+      "path": "Zeta23/CCM/LocalizedBasis.lean",
+      "blob_sha": "e58e9f212c52fa7ead42baad6f804d74550f0346"
+    },
+    {
+      "path": "Zeta23/CCM/LocalizedFiniteSpace.lean",
+      "blob_sha": "4b07e9191a15730b791eee9d7512ec0a708ef071"
+    },
+    {
+      "path": "Zeta23/CCM/LocalizedFourierApproximation.lean",
+      "blob_sha": "e5bd6c64fdb622796a39714c31a728956b1eb10a"
+    },
+    {
+      "path": "Zeta23/CCM/LocalizedWeilRestriction.lean",
+      "blob_sha": "203ecc0ac322b55016fbf861ee1cfd94a64157d3"
+    },
+    {
+      "path": "Zeta23/CCM/MixedSourceDerivativeTransport.lean",
+      "blob_sha": "03d393b3ea72e16850bf628cb759910fb78ec4ff"
+    },
+    {
+      "path": "Zeta23/CCM/NestedFinite.lean",
+      "blob_sha": "804816b8650482ecd65b48d6d822d16e89c88ef7"
+    },
+    {
+      "path": "Zeta23/CCM/ParityBadness.lean",
+      "blob_sha": "3791b430c5c599580fcd0651c06e7c3190f1aee0"
+    },
+    {
+      "path": "Zeta23/CCM/ParityCompressionRankOne.lean",
+      "blob_sha": "3af22702bb6caf5faf2b1e558023403138468f3d"
+    },
+    {
+      "path": "Zeta23/CCM/ParityCubicFactorization.lean",
+      "blob_sha": "b26f4c5930fb9fc5189922c556f800df10ca4607"
+    },
+    {
+      "path": "Zeta23/CCM/ParityNormalSpace.lean",
+      "blob_sha": "4ac738dd403b1855530b808b3d3dbb3b3b085013"
+    },
+    {
+      "path": "Zeta23/CCM/ParitySourceMomentFourCoercivity.lean",
+      "blob_sha": "0b8f2502fe5b03cd93f32fe8200469943da2ccd0"
+    },
+    {
+      "path": "Zeta23/CCM/ParitySourceMomentFourRigidity.lean",
+      "blob_sha": "348e69edea13541180f06fb7251c93a4c3e9a352"
+    },
+    {
+      "path": "Zeta23/CCM/QuadraticNormalMatrixMoment.lean",
+      "blob_sha": "cbfd2d10fe98d3ca3641d58ca53c1320ea43f0f2"
+    },
+    {
+      "path": "Zeta23/CCM/QuadraticNormalSourceJets.lean",
+      "blob_sha": "fa1865cfdac91c5ee02755a68f97a286a5b43ac8"
+    },
+    {
+      "path": "Zeta23/CCM/RawKernelZeroSideBridge.lean",
+      "blob_sha": "5dd811f5a19cb6b39817b04aafd04ddf26886472"
+    },
+    {
+      "path": "Zeta23/CCM/RealBudgetDisk.lean",
+      "blob_sha": "49d004ac60b94abbc5062b536a065f9a324e9b7d"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadCanonicalEnergy.lean",
+      "blob_sha": "86d11efea2e0d2165ea5e342006b10964ac8d65c"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadCompletedSourceRealGeometry.lean",
+      "blob_sha": "4c1a54ee3bff880b103948de75fc97da15009a51"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadCompleteSourceFunctional.lean",
+      "blob_sha": "01cb539c412e5b3088877d8b6d25a71cfbb71da2"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadCrossParityDiskSecularIntersection.lean",
+      "blob_sha": "fbab6136c1bdb6d7f85a0b0d303cb0539f3be06c"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadCrossParityGramDisk.lean",
+      "blob_sha": "fdda74a47b105dbcb5f3e110eab7cfaf8a2efbef"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadCrossParityRiesz.lean",
+      "blob_sha": "fcb98e121827d2a71d9588c1042f533bb44bd4af"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadCrossParitySecularCompletion.lean",
+      "blob_sha": "bb4dabbb18418c805ca2651b34f1f62e7bd72c96"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadCrossParitySourceBalance.lean",
+      "blob_sha": "ee39308f85f84b586bebb8d2a5070e7db12d270f"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadGammaObstruction.lean",
+      "blob_sha": "08e779e626d6b38ecaecad4e82702a94dcc54bf7"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadMixedSourceRigidity.lean",
+      "blob_sha": "16f5f79d5d7c42db8e39b71ea430c486cf13a0f8"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadPairDCoercivity.lean",
+      "blob_sha": "4ed2a429b4cad1f548b292f7f4078cd12bd92fed"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadParitySourceMomentRigidity.lean",
+      "blob_sha": "0fae0dd1973a81ad9bdb798389f119c5e3012a8c"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadRealTransferGeometry.lean",
+      "blob_sha": "ee4efe110510b6c02d3feac3baf7503605751525"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadRieszBoundary.lean",
+      "blob_sha": "1138b3f95ccd2124fa180b1f912e42d097516cb2"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadRieszEnergy.lean",
+      "blob_sha": "fe149df012bfad38a9737d150b625817bab366d6"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadSecularBudgetDichotomy.lean",
+      "blob_sha": "a93cf230acf9fb1982f5a4fe199364814ce4a9bb"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadSourceKernel.lean",
+      "blob_sha": "7ee19415fba5c0f8d253a214370876349d78f0d7"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadSourceKernelCompatibility.lean",
+      "blob_sha": "06daa9b7c74c67107d6744498b3a61f9ef71b84d"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadSourceKernelRealPhase.lean",
+      "blob_sha": "9f60038d5091cb1f05cad5cca37a5fbfd38e1261"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadZeroShiftKernelBalance.lean",
+      "blob_sha": "58c8c69231095f31179aaea7219f3886457ae5b4"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadZeroShiftKernelCollapse.lean",
+      "blob_sha": "6abfd961e8b159a266b68c1dd4f40f65dc566907"
+    },
+    {
+      "path": "Zeta23/CCM/RegularFirstBadZeroShiftSchurClassification.lean",
+      "blob_sha": "6b9fe7a598d9bbdcbfe5b6ef31df03e9a1187bb9"
+    },
+    {
+      "path": "Zeta23/CCM/SchurEnvelopeDerivative.lean",
+      "blob_sha": "b5a7b26f6a895c749e94be95de724da4de26ce1f"
+    },
+    {
+      "path": "Zeta23/CCM/SecularRootRieszBoundary.lean",
+      "blob_sha": "a22b923f52ce0a07289a4d8ca9e6d328c4977041"
+    },
+    {
+      "path": "Zeta23/CCM/ShiftedPredecessorResolventEnergy.lean",
+      "blob_sha": "1dd9d352f9de8a87acb3bb6039e5f17beb15ab00"
+    },
+    {
+      "path": "Zeta23/CCM/SourceDerivativeTransport.lean",
+      "blob_sha": "2a07f48f67c6aa194816d59c69d40f4a7dc3d5e3"
+    },
+    {
+      "path": "Zeta23/CCM/SourceExplicitCubicDefect.lean",
+      "blob_sha": "e069219aeb275865048b1d0beda07ed2bae9aecd"
+    },
+    {
+      "path": "Zeta23/CCM/SourceKappa.lean",
+      "blob_sha": "d7c01622a98b5bbe29e435bb66589af06fa7509b"
+    },
+    {
+      "path": "Zeta23/CCM/SourceMatrix.lean",
+      "blob_sha": "45125dbe9bb484b132c2d43213d67f7916148ea0"
+    },
+    {
+      "path": "Zeta23/CCM/SourceMomentDecomposition.lean",
+      "blob_sha": "645fd09cafd41c4852178fd15c5414d882f41ba7"
+    },
+    {
+      "path": "Zeta23/CCM/SourceNormalizationRepair.lean",
+      "blob_sha": "07efc5cb6e202e6ae176eed5ed14f3f19e90db00"
+    },
+    {
+      "path": "Zeta23/CCM/SourceWeilMatrixReconciliation.lean",
+      "blob_sha": "76ba36a53b9913447587803614cba85d38656d87"
+    },
+    {
+      "path": "Zeta23/CCM/WholeCellBiRegularCanonicalEnergy.lean",
+      "blob_sha": "d8eee126fb337b3a3a6a7d9abe074730e7a6c125"
+    },
+    {
+      "path": "Zeta23/CCM/ZeroResonanceCoupling.lean",
+      "blob_sha": "97756d6677d2122b17e2c3a8168dcfa2af67d76e"
+    },
+    {
+      "path": "Zeta23/CCM/ZeroShiftBranchResponse.lean",
+      "blob_sha": "23c72d57e19c96814a4e2b83d6f6824ae6fa1556"
+    },
+    {
+      "path": "Zeta23/CCM/ZeroShiftCrossParityCorrectionCollapse.lean",
+      "blob_sha": "519bdeeb66281fb9834225733a01e765d02d6f39"
+    },
+    {
+      "path": "Zeta23/CCM/ZeroShiftCrossParityTransfer.lean",
+      "blob_sha": "16ac4f46ee5d838bd7bce748f4095336181cd40a"
+    },
+    {
+      "path": "Zeta23/CCM/ZeroShiftSchurClassification.lean",
+      "blob_sha": "707eb34e1f8223060af170b80a4b983c3ac4075a"
+    },
+    {
+      "path": "Zeta23/CCM/ZeroShiftSchurDichotomy.lean",
+      "blob_sha": "c4654ab8230112f8d500e442032746b3b878e35a"
+    },
+    {
+      "path": "Zeta23/CCM/ZeroShiftSchurEndpoint.lean",
+      "blob_sha": "d59dfa7c60d72c05c9f44dc609d21c6e7fef0d4e"
+    },
+    {
+      "path": "Zeta23/CCM/ZeroShiftShellResponse.lean",
+      "blob_sha": "f373ead9a05d27fcbf4e06a5e5e590ffbc0e1f8c"
+    },
+    {
+      "path": "Zeta23/Chebyshev.lean",
+      "blob_sha": "5f527e07a44c44619e45eb142a7aa0d20a239b39"
+    },
+    {
+      "path": "Zeta23/Defs.lean",
+      "blob_sha": "8024700cbfefb54d763b487afa84c03fef58a550"
+    },
+    {
+      "path": "Zeta23/Defs/Counting.lean",
+      "blob_sha": "fdd946ca26170f088b8f7ad50480b815f57c058c"
+    },
+    {
+      "path": "Zeta23/Defs/LeafIntegrals.lean",
+      "blob_sha": "a5efa2fe3e7ab9ab30ea42b6298fc43fb95667a1"
+    },
+    {
+      "path": "Zeta23/Defs/Profile.lean",
+      "blob_sha": "5a1345a9f27d89461ff8e768585f9f93789e5fae"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero.lean",
+      "blob_sha": "17ff98da5f2984456d0af86da2c14b76a0b1ff49"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/ApertureFreedom.lean",
+      "blob_sha": "2271a1df16f255395d4e828520f7b72db244adf8"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/ArithmeticReduction.lean",
+      "blob_sha": "31df8845bcd134ddaeb929538073721098a31f88"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/BoundaryFlatFiniteWeil.lean",
+      "blob_sha": "d456cf86c558c76c87867fa78c98538f8d1617c5"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/Cancellation.lean",
+      "blob_sha": "d3addef4f9ab22cd9ad8a0c2094a445894d2babc"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean",
+      "blob_sha": "a4fce5e7925c668a5d57801632970543d5d2358a"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/ConditionalClosure.lean",
+      "blob_sha": "5e40dc577ac97e9473ccadf76ddeff1ea2e12fa3"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/ConstrainedFiniteObstruction.lean",
+      "blob_sha": "f202c6235f11e732ee4e88bc1d141b9611896638"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/Defs.lean",
+      "blob_sha": "7dabf95b6783dd742b2b2364f47b41bbde2fb053"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/DisplacementTransfer.lean",
+      "blob_sha": "5be4b78b67933ba62faf3b307465c10a091d0d5e"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/EuclideanConstrainedObstruction.lean",
+      "blob_sha": "2d70dba2986ba10602ed82d237ed894052ebaec5"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/ExposedPole.lean",
+      "blob_sha": "e3a954aad7e2344239e5663d8852dc4c5b71d0ec"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/FilteredGrowthEnvelope.lean",
+      "blob_sha": "55488f7c4d1ea922c442d72b9cccf3267386615a"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/FilteredLaplace.lean",
+      "blob_sha": "78902af01f65b5cfc310ce914ba48a1aa5d143dc"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/FilteredLaplaceSubexp.lean",
+      "blob_sha": "16254201eea7b35293e719b8917877724fcc5511"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/FilteredPolePersistence.lean",
+      "blob_sha": "8286e9da2b1ed6ce4143e18d6b45470e4d87cd49"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/FilteredResolvent.lean",
+      "blob_sha": "76f06b122fbda4bb91cd47bec89145a35eddbf74"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/FilteredResolventMeromorphic.lean",
+      "blob_sha": "b9e78ff857496a9043e0c04193b76309a43cf2e7"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/FilteredZeroFamily.lean",
+      "blob_sha": "ade8190b6696ab6d1852f742d5da3a3e3ec6e8de"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/FilteredZeroRegularity.lean",
+      "blob_sha": "2f2053e0083de44a5e156900e9bacc52aca6dea3"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/Final.lean",
+      "blob_sha": "be6e8d6840c5f1edd1eb31a91ffb7ab05ff5bc9b"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/FiniteNegativeObstruction.lean",
+      "blob_sha": "acba8c5cba15a59c7d3c66cd966a551421150b49"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/FirstBadParitySpectrum.lean",
+      "blob_sha": "561ea22df21bb321f9da497c730a7599192b9e11"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/FirstBadRigidity.lean",
+      "blob_sha": "da2369548a8b1fc242a89ca11db0645a3db9f9a0"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/FixedCellWitnessPersistence.lean",
+      "blob_sha": "fc11f4b3499e998233c56639b4c96f9bb3ef73fb"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GeneratedFamilyFinalGate.lean",
+      "blob_sha": "afb08120da6946136f110e7b4fed4d443c91ac75"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GeneratedFamilyFinalGateEquivalence.lean",
+      "blob_sha": "55d03a760f4a6b38bd69161228aaf7572db8e474"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GlobalFirstBadCrossParitySecularTransfer.lean",
+      "blob_sha": "e9c080ce5da008e422559961202156a448a2bb43"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GlobalFirstBadCubicExplicitSecular.lean",
+      "blob_sha": "fde11a27c1274a90625a5271b491e3a1a57fd36a"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GlobalFirstBadCubicMetricResonance.lean",
+      "blob_sha": "eda0097ca44f742a9c69b59ac07a7f55f240693f"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GlobalFirstBadCubicNormalizedSchur.lean",
+      "blob_sha": "96fb63b25ec7e0a24aecbc74b01fc601de9545c3"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GlobalFirstBadCubicSecularEquation.lean",
+      "blob_sha": "2f47a768fdfc889a6bfd7e73ff099d5e1934e640"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GlobalFirstBadCubicShell.lean",
+      "blob_sha": "e34186c7923fa4302d145655221796cd239b61e6"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GlobalFirstBadOneStepDomination.lean",
+      "blob_sha": "0c39e92fd8e53a281cffb8a9b4b144528dc96b80"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GlobalFirstBadRigidity.lean",
+      "blob_sha": "ce91a33761705e061f2e0f091640eafb8e356695"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GlobalFirstBadShiftedSchur.lean",
+      "blob_sha": "737a4d8c8e21d61a921918a0f672c8e8bb068c09"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GlobalFirstBadZeroShiftBranchResponse.lean",
+      "blob_sha": "f4bab24c978a3a3c7decc9352aaa51e83f28bfa6"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GlobalFirstBadZeroShiftSchurDichotomy.lean",
+      "blob_sha": "cc653176bf7cc4582b8c655ec9014f7bc7dae168"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GlobalFirstBadZeroShiftSchurEndpoint.lean",
+      "blob_sha": "bb20987b8642b348443fdd0a669d9890178e3b58"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GlobalFirstBadZeroShiftShellResponse.lean",
+      "blob_sha": "60e076bfa0ebe4d54b20a7874b120f3e0fd46fe1"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean",
+      "blob_sha": "03355ea38643676dd52ef4a8fd347700a01c8c42"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GlobalParityBottomConditionalRH.lean",
+      "blob_sha": "5069cc7d1410f825f37551a57eb35a2a25acef62"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GlobalParityBottomGeneratedState.lean",
+      "blob_sha": "3124997f699566afede8bf0ede7834981cbffb61"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GlobalParityBottomObstruction.lean",
+      "blob_sha": "1932ac6d396a3d17a54d534ac356fffde759b19c"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/GlobalParityBottomTerminalTarget.lean",
+      "blob_sha": "cbbea2c5f6f0a778c87da6cd5550d6afa1eb600f"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/LaplacePole.lean",
+      "blob_sha": "31f0b893d6de1767f18f3b564b9ae2d55215cc86"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/LaplaceZeroFamily.lean",
+      "blob_sha": "a9a4ca25f6a0b874080e42426f306702ad7f0f68"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/MeromorphicIdentity.lean",
+      "blob_sha": "f61fb4e47beeb147ae5b0b098e37b87f694ca50c"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/NegativeWeilTestSupport.lean",
+      "blob_sha": "c544c13b92e31463b880bd93ca1885ca41122de0"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/NestedEuclideanObstruction.lean",
+      "blob_sha": "d0073491e08257130f638cf6189b7c7877688c9e"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/Obstruction.lean",
+      "blob_sha": "6436fd81e1e92a6d7b6bb4ef54b3e1e93dee3882"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/OffLineGeneratedRetainedFamily.lean",
+      "blob_sha": "3c1448e6a9b979f21215167581bef93df9299dc9"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/ParityFirstBadObstruction.lean",
+      "blob_sha": "e9c19ce061b9d17354f127a08d9592b43cacb9c5"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/PoleKiller.lean",
+      "blob_sha": "e3ab4d9c5d0b7685536a8f0daaae19ff337a7692"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/PrimeUpper.lean",
+      "blob_sha": "71b9bf497f2ba2d12dab9a79d7cd0c4f91357a1d"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/ProbeFamily.lean",
+      "blob_sha": "3b606780e77ad97149f72598517e1909b0a7f6b5"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/ProbeGramNegativity.lean",
+      "blob_sha": "ecc4b574a657c3e90331440a18cbfdefe32faa70"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/R002CCMRepresentation.lean",
+      "blob_sha": "61164c71bb6a2209f0dc6f17c960d24b004c0497"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/RegularFirstBadClosure.lean",
+      "blob_sha": "918c4033fc5e500d3332a15a654b64b6a6e4788d"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/RegularFirstBadRieszClosure.lean",
+      "blob_sha": "6e799e736b1fe6a9fbe5650c4d40198dcc7f691c"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/RHTerminalConfigAttempt.lean",
+      "blob_sha": "5447943e95401c822ef0afa7a65105a1484b377b"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/RMSGrowth.lean",
+      "blob_sha": "2169edcdc004bb07158af2bb625eeec781bb7a28"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/ScaleRate.lean",
+      "blob_sha": "3dff9362d486e03f807dc0015f3bc521b7c8784d"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/TwoTranslateContraction.lean",
+      "blob_sha": "902de13fb9281c11652efbda923c4da68093784d"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/TwoTranslateCorrelation.lean",
+      "blob_sha": "5a57a1de764e631f262b9f42e1f9ec734c3953fe"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/TwoTranslateCountableCriterion.lean",
+      "blob_sha": "ff6377b4246abe65d34f5735bd1948aa3c1f9f9b"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/TwoTranslateDeterminant.lean",
+      "blob_sha": "798df5a2cd0cc168594596dfb2eae3a58342b00c"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/TwoTranslateFixedTest.lean",
+      "blob_sha": "5102f4fa3158973e7407e33e637ffd0894141c88"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/TwoTranslateNegativity.lean",
+      "blob_sha": "3471e8683558b8347f6f0e0058094f686478b846"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/TwoTranslateRadiusCompleteness.lean",
+      "blob_sha": "268e5c6661b8778cee2221a128c6049f039c8b0a"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/TwoTranslateSpectrum.lean",
+      "blob_sha": "9d5dee0917661ee1b9a88683e692656819f89c1f"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/TwoTranslateVisibility.lean",
+      "blob_sha": "1bab15ade3b8a0305fcd9e2a8372b8f470195fe4"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/TwoTranslateWeil.lean",
+      "blob_sha": "c93226a48c78c4c1f028c23c3edd2d1a3b293935"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/WeilBridge.lean",
+      "blob_sha": "07c6239b74d199014c53abb73674a5d4f530fc50"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/WeilContinuity.lean",
+      "blob_sha": "893175d5d5777e9737bfac7a5af8e2c5bd8a2612"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/WeilFilter.lean",
+      "blob_sha": "c6619915e6266eeba10d7c66a962790642d1bec1"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/WeilLiteratureBridge.lean",
+      "blob_sha": "8c104eca4bafba6f6e249353383b5f105eaece4c"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/WeilZeroSideEvenization.lean",
+      "blob_sha": "6da58390011eacf774fd00ae4f4ddc01b745be2e"
+    },
+    {
+      "path": "Zeta23/ExceptionalZero/ZeroIsolation.lean",
+      "blob_sha": "529a71cbfd7e627cdb19c92214af695b2c8e45cd"
+    },
+    {
+      "path": "Zeta23/ExplicitFormula.lean",
+      "blob_sha": "11119489556113fd419d7b6fb45ccbaa2e493e2a"
+    },
+    {
+      "path": "Zeta23/ExplicitFormula/Bridge.lean",
+      "blob_sha": "faa550820f77d9a30084b43fcb1b073ae5550001"
+    },
+    {
+      "path": "Zeta23/Final.lean",
+      "blob_sha": "7d1309e6d3bbc3e3f3c6b093f07af257dbe40b82"
+    },
+    {
+      "path": "Zeta23/FinalMult.lean",
+      "blob_sha": "c2034d2311be8eb2687b5f7c7cd2d7a1f9ada422"
+    },
+    {
+      "path": "Zeta23/FromPNTPlus/Auxiliary.lean",
+      "blob_sha": "eb99dba6c696d3e360c1a32cd3fc2900c53b5eaf"
+    },
+    {
+      "path": "Zeta23/FromPNTPlus/EulerMaclaurin.lean",
+      "blob_sha": "f3ca3c690fab42b9c3dacef30669f66259bf826f"
+    },
+    {
+      "path": "Zeta23/FromPNTPlus/Fourier.lean",
+      "blob_sha": "4e3f24af43b78dfe109a344c5517956c1cd4fbfe"
+    },
+    {
+      "path": "Zeta23/FromPNTPlus/Mathlib/Algebra/Notation/Support.lean",
+      "blob_sha": "d589682c680fb2d1ab987f11db82e93f1a78157a"
+    },
+    {
+      "path": "Zeta23/FromPNTPlus/Mathlib/Analysis/SpecialFunctions/Log/Basic.lean",
+      "blob_sha": "1ad929811e6b59b1a8c853d2243f4b568aa753e6"
+    },
+    {
+      "path": "Zeta23/FromPNTPlus/MediumPNT.lean",
+      "blob_sha": "dd0090e4a15b15a774a62017b81284b601871ee8"
+    },
+    {
+      "path": "Zeta23/FromPNTPlus/MellinCalculus.lean",
+      "blob_sha": "777619836d60555d8a9103b384489d1e66f2fe88"
+    },
+    {
+      "path": "Zeta23/FromPNTPlus/Mertens.lean",
+      "blob_sha": "fa1774ae9ecb334b91d963bbfdadd6ead018e022"
+    },
+    {
+      "path": "Zeta23/FromPNTPlus/Rectangle.lean",
+      "blob_sha": "fbb1fb510c9ec1697495975294055607e5d38d9b"
+    },
+    {
+      "path": "Zeta23/FromPNTPlus/ResidueCalcOnRectangles.lean",
+      "blob_sha": "1f0119d42de0d67b003b84a66cb7eddc6e16d6d7"
+    },
+    {
+      "path": "Zeta23/FromPNTPlus/SmoothExistence.lean",
+      "blob_sha": "571ddc94784d8e3249130f32c246c69ba13d1c8c"
+    },
+    {
+      "path": "Zeta23/FromPNTPlus/Sobolev.lean",
+      "blob_sha": "4cc5a5a46d98f4b603b44282490fa1d35ff2de56"
+    },
+    {
+      "path": "Zeta23/FromPNTPlus/StrongPNTPrefix.lean",
+      "blob_sha": "3edad168ab314e283c54b58da800fcc076946b18"
+    },
+    {
+      "path": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+      "blob_sha": "2832808d7b80914afed648efe8cae5b860ea9b85"
+    },
+    {
+      "path": "Zeta23/FromPNTPlus/ZetaBounds.lean",
+      "blob_sha": "978d953c0490ba116c4d3fadefd50215a07807a7"
+    },
+    {
+      "path": "Zeta23/FromPNTPlus/ZetaConj.lean",
+      "blob_sha": "668254545fdc393b51e5c2e0fa26d68f2f53f356"
+    },
+    {
+      "path": "Zeta23/GammaFacts.lean",
+      "blob_sha": "893f83b41d3989ec7d7ab68ec0f82819158a6bcc"
+    },
+    {
+      "path": "Zeta23/GammaFacts/Complete.lean",
+      "blob_sha": "d4916d3b649443aee891a9beb7c6cd4ba89bd563"
+    },
+    {
+      "path": "Zeta23/GammaFacts/IntMu.lean",
+      "blob_sha": "4e74f60e72515bed2145c42853ff667980b03105"
+    },
+    {
+      "path": "Zeta23/GammaFacts/Mu.lean",
+      "blob_sha": "744e30031e69bfe25e10559ca71b12a53ccc1c14"
+    },
+    {
+      "path": "Zeta23/GammaFacts/Series.lean",
+      "blob_sha": "2c6cf90050c2e6d5cbef0745d0445e3a8d02394a"
+    },
+    {
+      "path": "Zeta23/GammaFacts/StirlingVert.lean",
+      "blob_sha": "21a325dbb2d6adf4ffe058ef03674bd9c1b03cc5"
+    },
+    {
+      "path": "Zeta23/Hypotheses.lean",
+      "blob_sha": "9f5b868e26ecc1e9d33afd56b11b123c931c3638"
+    },
+    {
+      "path": "Zeta23/Hypotheses/GzGp.lean",
+      "blob_sha": "1d2f4b6cb9a60cd0a1a29c4c32fe8f2ed9d804b8"
+    },
+    {
+      "path": "Zeta23/LinAlg.lean",
+      "blob_sha": "bbf60ec4d0141d4619db0cbb8ed2040dd3734bec"
+    },
+    {
+      "path": "Zeta23/LinAlg/HermitianPosPart.lean",
+      "blob_sha": "bbbd2f1cf33c599984ca27e5c0072000ca51319b"
+    },
+    {
+      "path": "Zeta23/LinAlg/Inertia.lean",
+      "blob_sha": "838c397bdd080f8c01128c9942b789b3955585e6"
+    },
+    {
+      "path": "Zeta23/LinAlg/PosIndex.lean",
+      "blob_sha": "0617aeb0c424d43a4e449b819bef4a18e6030083"
+    },
+    {
+      "path": "Zeta23/LinAlg/RankTrace.lean",
+      "blob_sha": "987231791483dc7626c30f78ba83ee3244894cde"
+    },
+    {
+      "path": "Zeta23/LinAlg/Sylvester.lean",
+      "blob_sha": "a8a662e47dc8adf7442e41bc58e732f0bba70d04"
+    },
+    {
+      "path": "Zeta23/LinAlg/VonNeumann.lean",
+      "blob_sha": "5ef8c701b65ada5ecdfd8d1fe0842e482d6c7981"
+    },
+    {
+      "path": "Zeta23/LinAlg/Weyl.lean",
+      "blob_sha": "ed92ad7b79ba030ecb9b1625edc8ebb1cda1ec42"
+    },
+    {
+      "path": "Zeta23/Main.lean",
+      "blob_sha": "2166ec31b9b6a6d1e7ad3355a36a1f24dafd27e9"
+    },
+    {
+      "path": "Zeta23/MV.lean",
+      "blob_sha": "9766f4d9aa789d375046b1349d51cf038a79ebdf"
+    },
+    {
+      "path": "Zeta23/MV/Duality.lean",
+      "blob_sha": "c6f84251a398dd8c52cebec115b57c366c25ff8b"
+    },
+    {
+      "path": "Zeta23/MV/Eigen.lean",
+      "blob_sha": "a9c00efa5b715543b0be5ac0425c952600f8196a"
+    },
+    {
+      "path": "Zeta23/MV/EigenIdentity.lean",
+      "blob_sha": "416af410b7c55fb0e5208ea1a66c9e531ab4f651"
+    },
+    {
+      "path": "Zeta23/MV/Final.lean",
+      "blob_sha": "fc132a213b3d46212ac4b3251e9d55403460a7c7"
+    },
+    {
+      "path": "Zeta23/MV/Quadratic.lean",
+      "blob_sha": "413ebcc32145e53d933c64c1a39b51396b46a0c3"
+    },
+    {
+      "path": "Zeta23/MV/Spacing.lean",
+      "blob_sha": "d1dc640c83577c69f29c1e55e9581e5e13a2c40a"
+    },
+    {
+      "path": "Zeta23/PairCeiling/Bridge.lean",
+      "blob_sha": "e7d0d26e944e626559e985530a2ec6d3e3e97b70"
+    },
+    {
+      "path": "Zeta23/PairCeiling/Ceiling.lean",
+      "blob_sha": "4e9807583ebb83de51133d43b45db7d668f254af"
+    },
+    {
+      "path": "Zeta23/PairCeiling/CeilingLaw256.lean",
+      "blob_sha": "b470b5b2a90ce807792c8358412478838f2ac62f"
+    },
+    {
+      "path": "Zeta23/PairCeiling/Defs.lean",
+      "blob_sha": "3fdcd8d9a29c50d22f51f0de13a3cdffa2101594"
+    },
+    {
+      "path": "Zeta23/PairCeiling/Grid.lean",
+      "blob_sha": "56a88165815718a2b4fae75a5150097103446bbd"
+    },
+    {
+      "path": "Zeta23/PairCeiling/LawN256.lean",
+      "blob_sha": "02f51f3377a70cf9f0c50e0aa2b0526b7f59425b"
+    },
+    {
+      "path": "Zeta23/PairCeiling/NearCUE.lean",
+      "blob_sha": "b654e8cb36264ab066d261168879ca5f94e91fc8"
+    },
+    {
+      "path": "Zeta23/PairCeiling/NumericCert.lean",
+      "blob_sha": "2c34ebf406adcf64d891fdb369f7cdcd9e52100f"
+    },
+    {
+      "path": "Zeta23/PairCeiling/RowCert.lean",
+      "blob_sha": "14e0cdf58aef84f0eee74e4f54275339f5fd3d30"
+    },
+    {
+      "path": "Zeta23/PairCeiling/Signed.lean",
+      "blob_sha": "0ccc342ba3ca646fa37062c25a163634ff1a56ea"
+    },
+    {
+      "path": "Zeta23/PairCeiling/Stability.lean",
+      "blob_sha": "6d3ece8d57d60fa3ab47657e589d10dc8d18d12e"
+    },
+    {
+      "path": "Zeta23/Permansson/GeneralFramework.lean",
+      "blob_sha": "08ba7113a7e46e9e70cb79608ab12f76ce0fd88c"
+    },
+    {
+      "path": "Zeta23/Permansson/Theorem31.lean",
+      "blob_sha": "01039708b343f02efd8a204c925db650b40d6b49"
+    },
+    {
+      "path": "Zeta23/PiFacts.lean",
+      "blob_sha": "cfc6ff9dc2649b5928f3bbed3e2fbcc702bc3b71"
+    },
+    {
+      "path": "Zeta23/Poisson.lean",
+      "blob_sha": "78a61f9d425c3c55b23c4ddb612b986f0bcb34f3"
+    },
+    {
+      "path": "Zeta23/Poisson/PaperFT.lean",
+      "blob_sha": "38722cd78fba206f52392800b9708f0f59d24464"
+    },
+    {
+      "path": "Zeta23/Poisson/PaperFTConvolution.lean",
+      "blob_sha": "008822efdcfa927eda51df60fe40ea412f0704e6"
+    },
+    {
+      "path": "Zeta23/Prelude/InstancePriorities.lean",
+      "blob_sha": "84abeb8ef59a2b184dc6f9e9a5943bb6feac37e1"
+    },
+    {
+      "path": "Zeta23/PrimeSideA.lean",
+      "blob_sha": "86845fc27b863a2b3c433d644666cb46aa375705"
+    },
+    {
+      "path": "Zeta23/PrimeSideA/Basic.lean",
+      "blob_sha": "7555aaf5deacab10b78c258feefd3537a539fd36"
+    },
+    {
+      "path": "Zeta23/PrimeSideA/Bridge.lean",
+      "blob_sha": "71066668de15a1b0af347366b8276fbcf84325ec"
+    },
+    {
+      "path": "Zeta23/PrimeSideA/CrossMuP.lean",
+      "blob_sha": "b91d8da0f439e5f83a78f1470e7f57f02cb779c5"
+    },
+    {
+      "path": "Zeta23/PrimeSideA/CrossMuPCore.lean",
+      "blob_sha": "e010fcb4ea1553e1e0e674f05839954799b6061d"
+    },
+    {
+      "path": "Zeta23/PrimeSideA/Defs.lean",
+      "blob_sha": "33ddda1630f077a612cd639d28b7d43b183a53a4"
+    },
+    {
+      "path": "Zeta23/PrimeSideA/Ends.lean",
+      "blob_sha": "dc87104549a5f19b01b85d510c1b958b6f52132c"
+    },
+    {
+      "path": "Zeta23/PrimeSideA/EndsCore.lean",
+      "blob_sha": "a25c85d7b9ce75b04c4a0e1b913105f1afcabe0c"
+    },
+    {
+      "path": "Zeta23/PrimeSideA/EndsE1.lean",
+      "blob_sha": "2ffe779b70efce4c0c54915abcb2286eaa0edfca"
+    },
+    {
+      "path": "Zeta23/PrimeSideA/EndsE2.lean",
+      "blob_sha": "2d6fd06e00cad8d39301d7f9084d8c358b8400b2"
+    },
+    {
+      "path": "Zeta23/PrimeSideA/EndsNu.lean",
+      "blob_sha": "592d4fb46536da54f3f44c17fa380bb8f4c19d10"
+    },
+    {
+      "path": "Zeta23/PrimeSideA/EndsWeighted.lean",
+      "blob_sha": "2278475a5def48b05af157cb9bfffefd6023b35b"
+    },
+    {
+      "path": "Zeta23/PrimeSideA/MuMu.lean",
+      "blob_sha": "6f5f8e530f86783026d26a6a32bf33740922896a"
+    },
+    {
+      "path": "Zeta23/PrimeSideB.lean",
+      "blob_sha": "562865ec2246891b67f3fba67e897c39c83cdf16"
+    },
+    {
+      "path": "Zeta23/PrimeSideB/Concrete.lean",
+      "blob_sha": "3a3642f991c3ec1a1c56344e77fd7e7689e5dc4b"
+    },
+    {
+      "path": "Zeta23/PrimeSideB/Final.lean",
+      "blob_sha": "d1be90b44d73d76792d9d2c4197b92f759b873bf"
+    },
+    {
+      "path": "Zeta23/PrimeSideB/PP.lean",
+      "blob_sha": "ee8ffe11d7c3b3f45bcdd4ab1996dcb657ef18cb"
+    },
+    {
+      "path": "Zeta23/PrimeSideB/PPKernel.lean",
+      "blob_sha": "58f64603997f6b0032f476beef11592a3c6ffce1"
+    },
+    {
+      "path": "Zeta23/PrimeSideB/PPOffDiag.lean",
+      "blob_sha": "cea7b4898e0cc9c777b1a0aad8adb748c7ab3f61"
+    },
+    {
+      "path": "Zeta23/PrimeSideB/Traces.lean",
+      "blob_sha": "69edbb47e546d3d15e15be67cc1cce5684e873d5"
+    },
+    {
+      "path": "Zeta23/PrimeSideTemp.lean",
+      "blob_sha": "f9e2839242bf849085c73292751c344fc7e53ea6"
+    },
+    {
+      "path": "Zeta23/RvM/Backlund.lean",
+      "blob_sha": "824f9aa7e3b29ce2a6cbe5c78f7815aec8ab0ab0"
+    },
+    {
+      "path": "Zeta23/RvM/BacklundDefs.lean",
+      "blob_sha": "745e89a1bd9e1bdd600de1d171787372f78ffa8c"
+    },
+    {
+      "path": "Zeta23/RvM/CountByIntegral.lean",
+      "blob_sha": "c6dc0b19f21a4a031573ad63c3edd2c75c193e00"
+    },
+    {
+      "path": "Zeta23/RvM/Defs.lean",
+      "blob_sha": "fb25ee7a60454f9a3da00c22994b3ee5fdb86cd4"
+    },
+    {
+      "path": "Zeta23/RvM/Fold.lean",
+      "blob_sha": "5ffac60c4659efa429b8d07d54b13c30acc5c845"
+    },
+    {
+      "path": "Zeta23/RvM/GammaSide.lean",
+      "blob_sha": "de2771c636a6e2f4353dc63ba44fc32c62b63779"
+    },
+    {
+      "path": "Zeta23/RvM/Halving.lean",
+      "blob_sha": "f3a8f429bde3e9038d31f492f3404b52e1c2f3a0"
+    },
+    {
+      "path": "Zeta23/RvM/LocalCount.lean",
+      "blob_sha": "42f9e1e712587991f2b9ea6e8edf074c9055375c"
+    },
+    {
+      "path": "Zeta23/RvM/MainTerm.lean",
+      "blob_sha": "54bffbb76eda3bf06bc919689e7c5010a9e830d2"
+    },
+    {
+      "path": "Zeta23/RvM/NcountWindow.lean",
+      "blob_sha": "b35d7be1a49f3bc3d178b5e80fe81e60398cce72"
+    },
+    {
+      "path": "Zeta23/RvM/ReZeroCount.lean",
+      "blob_sha": "2c603bf0886048e1f6fa4431aeb1e4d24af16658"
+    },
+    {
+      "path": "Zeta23/RvM/Statement.lean",
+      "blob_sha": "0218a9fe6adaef4168726eb84dd0ecb659c51786"
+    },
+    {
+      "path": "Zeta23/RvM/ZetaGrowth.lean",
+      "blob_sha": "79523c00f44c58bd648d60906369762e89044d27"
+    },
+    {
+      "path": "Zeta23/Statement.lean",
+      "blob_sha": "b8a95eb20cbade61a33f165004c34d1ce1674947"
+    },
+    {
+      "path": "Zeta23/Statement/Seam.lean",
+      "blob_sha": "2fd6c9d89e9da4a6c3810a5e4a0f4d033e72fd40"
+    },
+    {
+      "path": "Zeta23/Statement/SeamClosed.lean",
+      "blob_sha": "16935e20a02d7d650344428eef2912c6f7fc0c65"
+    },
+    {
+      "path": "Zeta23/Tail.lean",
+      "blob_sha": "b4d913b40612a2af4d950b0c83ce59cb7d7a0ff3"
+    },
+    {
+      "path": "Zeta23/Tail/Basic.lean",
+      "blob_sha": "ef90f43b624f1781980bbc8da3f4b0128781e363"
+    },
+    {
+      "path": "Zeta23/Tail/Count.lean",
+      "blob_sha": "3b9921557758c132db22727b91adfc063f9ca5a3"
+    },
+    {
+      "path": "Zeta23/Tail/Grid.lean",
+      "blob_sha": "d6153778406ddd1c251d3e3d2d5b354acad63114"
+    },
+    {
+      "path": "Zeta23/Tail/Package.lean",
+      "blob_sha": "2d01ee7d839940b3ad4c1a92250a18f45c51e176"
+    },
+    {
+      "path": "Zeta23/Tail/RankOne.lean",
+      "blob_sha": "dd65943f873b3960a7f3e6b510c440bf77910cd1"
+    },
+    {
+      "path": "Zeta23/Taper.lean",
+      "blob_sha": "b7dd4ff5b00d71035db1d3311007d19148004f78"
+    },
+    {
+      "path": "Zeta23/Taper/Basic.lean",
+      "blob_sha": "46c2dd65ed6917a6d31195e4e2c4c3edd7a1e208"
+    },
+    {
+      "path": "Zeta23/Taper/Decay.lean",
+      "blob_sha": "67c96e7c3575ca2a9acaf1f66e4172a190ed7a42"
+    },
+    {
+      "path": "Zeta23/Taper/Fourier.lean",
+      "blob_sha": "41ef273659adeaf754c97c5613253e7bfe5be01f"
+    },
+    {
+      "path": "Zeta23/Taper/Gevrey.lean",
+      "blob_sha": "df944f8bb21f78243c91cc7bbfdd5d03ccac1987"
+    },
+    {
+      "path": "Zeta23/Taper/GevreyPhi.lean",
+      "blob_sha": "a684395a18eab9a81fea0f66170b2ccae941ac7b"
+    },
+    {
+      "path": "Zeta23/Taper/GevreyRamps.lean",
+      "blob_sha": "7b826885dbe6402f5cf219920a1667afaffb4f06"
+    },
+    {
+      "path": "Zeta23/Taper/Norms.lean",
+      "blob_sha": "bacc3dc794637292679c0c4fe4e9f2ed74c05b70"
+    },
+    {
+      "path": "Zeta23/Taper/Params.lean",
+      "blob_sha": "bec20859e5d0cc8da838a0deb71b503e3502857a"
+    },
+    {
+      "path": "Zeta23/Taper/Strip.lean",
+      "blob_sha": "c9f0745b73ec50906dafebaea1a31c78b55b8066"
+    },
+    {
+      "path": "Zeta23/ThmD/AssemblyD.lean",
+      "blob_sha": "023fb03749c1a0900e9ac80655da273b9117fb2a"
+    },
+    {
+      "path": "Zeta23/ThmD/BridgeD.lean",
+      "blob_sha": "fa363dd3573b33ba3b7fb9269a4fd75598007132"
+    },
+    {
+      "path": "Zeta23/ThmD/Concrete.lean",
+      "blob_sha": "e8092bef6bbccba1b112de5e1c7f83dc8c767c04"
+    },
+    {
+      "path": "Zeta23/ThmD/Endgame.lean",
+      "blob_sha": "1f4c561d05d5e2c091254ac15d92baf18b0ab628"
+    },
+    {
+      "path": "Zeta23/ThmD/Final.lean",
+      "blob_sha": "abd5c3c9d4cc24df82a4209a913e7e6cb289bdbc"
+    },
+    {
+      "path": "Zeta23/ThmD/Functional.lean",
+      "blob_sha": "41cc13afae8e4e068f991ab1a0d14908c398e1e3"
+    },
+    {
+      "path": "Zeta23/ThmD/Limit.lean",
+      "blob_sha": "6013bdd232f102af31e856f1e0116e42e3ff01b6"
+    },
+    {
+      "path": "Zeta23/ThmD/Mult.lean",
+      "blob_sha": "a36b073fd6b04b568aac377026eafcce129946d1"
+    },
+    {
+      "path": "Zeta23/ThmD/ParamsD.lean",
+      "blob_sha": "cae614e55a9a7222bd2e16749cd70e535734594d"
+    },
+    {
+      "path": "Zeta23/ThmD/PP.lean",
+      "blob_sha": "a6e31fd189e82edf2b54f95f5fd74a990f917cfe"
+    },
+    {
+      "path": "Zeta23/ThmD/PsiC.lean",
+      "blob_sha": "9776201c0bb8454ae8f607c7f90145cf34db5a53"
+    },
+    {
+      "path": "Zeta23/ThmD/Traces.lean",
+      "blob_sha": "0bfd1870e7ee5227d0d98bdea570bfc4853c9ca4"
+    },
+    {
+      "path": "Zeta23/ThmD/Window.lean",
+      "blob_sha": "749ca9b7ad43eb4a407475d2aa8aa7c8324b5f67"
+    },
+    {
+      "path": "Zeta23/ThmD/WindowCore.lean",
+      "blob_sha": "ee3be51a876222c3617067f2992ab85393e4e40a"
+    },
+    {
+      "path": "Zeta23/ThmD/WindowLocalHyps.lean",
+      "blob_sha": "32cd11676436af642e4d7233d21364d70bcbb8c5"
+    },
+    {
+      "path": "Zeta23/ThmD/ZeroSideD.lean",
+      "blob_sha": "7cf0e9a21cebd097e515b16a20b1c80c5ff1854d"
+    },
+    {
+      "path": "Zeta23/ThmDE/Concrete.lean",
+      "blob_sha": "c01dda163263b4af9bf107adba3dd84f9297a0e1"
+    },
+    {
+      "path": "Zeta23/ThmDE/Endgame.lean",
+      "blob_sha": "2880863db6ffe2d682e9a5608058b1cc61eca6ee"
+    },
+    {
+      "path": "Zeta23/ThmDE/Final.lean",
+      "blob_sha": "bcdb9d9ee9dee46e1561b8d82834056b298fff37"
+    },
+    {
+      "path": "Zeta23/ThmDE/Limit.lean",
+      "blob_sha": "f886a98137d460fdf95b4fcd7300cb2478876706"
+    },
+    {
+      "path": "Zeta23/ThmDE/Mult.lean",
+      "blob_sha": "c76052f9810171e7781c852c9137792e5eae2faa"
+    },
+    {
+      "path": "Zeta23/ThmDE/PP.lean",
+      "blob_sha": "77cc60966b6d701d5da44f6f15e291e64976cbc6"
+    },
+    {
+      "path": "Zeta23/ThmDE/Traces.lean",
+      "blob_sha": "6b9eb56351a9d22d380fc5c786127e9098671597"
+    },
+    {
+      "path": "Zeta23/ThmDE/TracesHyp.lean",
+      "blob_sha": "9965c30438a48b4140b365d9a1a3439f8be9cdaf"
+    },
+    {
+      "path": "Zeta23/ThmDE/ZeroSide.lean",
+      "blob_sha": "ad5b0f7c9fb6f8baee77eec39120a88b41918075"
+    },
+    {
+      "path": "Zeta23/ThmE/AssemblyQ.lean",
+      "blob_sha": "97133fcbca06259ea84eb596e061c03b52f484d9"
+    },
+    {
+      "path": "Zeta23/ThmE/BacklundChi.lean",
+      "blob_sha": "3e9a7b0ff894a2eec2d58f7cd0fc09a7c51e9738"
+    },
+    {
+      "path": "Zeta23/ThmE/ChebCoprime.lean",
+      "blob_sha": "242ddd0dc8878e093738083a2baf71fbd53260a1"
+    },
+    {
+      "path": "Zeta23/ThmE/ContourChi.lean",
+      "blob_sha": "174a65a6e6ac9c6b2cced65086223424ca61151d"
+    },
+    {
+      "path": "Zeta23/ThmE/CountByIntegralChi.lean",
+      "blob_sha": "924cc5c863b9429d18c53faf2ddb99bf66010592"
+    },
+    {
+      "path": "Zeta23/ThmE/CrossMuPChi.lean",
+      "blob_sha": "72aadaadc7e2f50ecb19bfc695fb68f4d9b7ab11"
+    },
+    {
+      "path": "Zeta23/ThmE/EFLitChi.lean",
+      "blob_sha": "d205e0cebae5970e1f9ff2b11c203999f6b75b9c"
+    },
+    {
+      "path": "Zeta23/ThmE/Final.lean",
+      "blob_sha": "70fa805abaa2c73a650dc04556a813934b97d3de"
+    },
+    {
+      "path": "Zeta23/ThmE/FoldChi.lean",
+      "blob_sha": "593eaa2bea3a05cdd7384cc7689a231513b63e82"
+    },
+    {
+      "path": "Zeta23/ThmE/FullLineChi.lean",
+      "blob_sha": "b7bb191530c723adbf736cc86475dfc886f394ad"
+    },
+    {
+      "path": "Zeta23/ThmE/FullLineChiAssembly.lean",
+      "blob_sha": "d2b8da4f4226a668cb8a6102ad529304e7ba7452"
+    },
+    {
+      "path": "Zeta23/ThmE/FullLineChiFold.lean",
+      "blob_sha": "0091aebaa9bb2aedbbde68bbb5b12377654cc3d0"
+    },
+    {
+      "path": "Zeta23/ThmE/FullLineChiProof.lean",
+      "blob_sha": "9416a67313657b74c4c490f7fc262e07c4d0ce9c"
+    },
+    {
+      "path": "Zeta23/ThmE/GammaFactsChiProof.lean",
+      "blob_sha": "ffde98d45c12e4fe47fc916d8fb3b1ec5fd77b0a"
+    },
+    {
+      "path": "Zeta23/ThmE/GammaSideChi.lean",
+      "blob_sha": "07b64e0a553cf16d7498fb2ec52901ec7537d4ab"
+    },
+    {
+      "path": "Zeta23/ThmE/GzGpChi.lean",
+      "blob_sha": "7a9e4eee8176d095c9c019ce1873c280358ce2c9"
+    },
+    {
+      "path": "Zeta23/ThmE/HorizontalChi.lean",
+      "blob_sha": "941f67dbe9db753d63cf1bc01c609caebcee2ea8"
+    },
+    {
+      "path": "Zeta23/ThmE/Hypotheses.lean",
+      "blob_sha": "65062889f76af387d3e9feebf0d972e482aa4e16"
+    },
+    {
+      "path": "Zeta23/ThmE/IntMuChi.lean",
+      "blob_sha": "8b2456f220cacdefa91b0e945a06455de9992333"
+    },
+    {
+      "path": "Zeta23/ThmE/LandauChi.lean",
+      "blob_sha": "9b9f9a330778f58c963002e2b488fb5d6661669b"
+    },
+    {
+      "path": "Zeta23/ThmE/LGrowth.lean",
+      "blob_sha": "5ff8a852835dd7a8f90a4ecfbe2f6fd058563dff"
+    },
+    {
+      "path": "Zeta23/ThmE/LocalCountChi.lean",
+      "blob_sha": "603d34e2374063f482905e72c84e5666f23275ad"
+    },
+    {
+      "path": "Zeta23/ThmE/Main.lean",
+      "blob_sha": "04b1fb17f416b15ab6948debfd8585a9821e2d24"
+    },
+    {
+      "path": "Zeta23/ThmE/MainChi.lean",
+      "blob_sha": "8152319d611d6a0fa0144ce96ad28b81750e9b34"
+    },
+    {
+      "path": "Zeta23/ThmE/MainTermChi.lean",
+      "blob_sha": "be2de34516f6248636513b16bb9571ab47c39d3f"
+    },
+    {
+      "path": "Zeta23/ThmE/Mult.lean",
+      "blob_sha": "5cd648bfc6d095b350048a2f9aadaad3219b6219"
+    },
+    {
+      "path": "Zeta23/ThmE/MuMuChi.lean",
+      "blob_sha": "f1166eda0c9f917460939fab9809839d538c53e2"
+    },
+    {
+      "path": "Zeta23/ThmE/PPChi.lean",
+      "blob_sha": "db2e3d52969f93d93f479a49e8e0c273da06f899"
+    },
+    {
+      "path": "Zeta23/ThmE/PrimeSideChi.lean",
+      "blob_sha": "bdfbbe56c3098980c3d63ba72430b2e80671deeb"
+    },
+    {
+      "path": "Zeta23/ThmE/ReZeroCountChi.lean",
+      "blob_sha": "af934bdf53717e621ad3fd60f957561b546fffe6"
+    },
+    {
+      "path": "Zeta23/ThmE/RvMChi.lean",
+      "blob_sha": "dbd208e727e5661db1e9d99034de7f06ab55fa04"
+    },
+    {
+      "path": "Zeta23/ThmE/RvMChiDefs.lean",
+      "blob_sha": "779bda1ffe67ea937e705b465d9a69f400a48d0d"
+    },
+    {
+      "path": "Zeta23/ThmE/SeamL.lean",
+      "blob_sha": "a3ea63e64d7797979babbd0b3690aa95ded64f2b"
+    },
+    {
+      "path": "Zeta23/ThmE/Statement.lean",
+      "blob_sha": "1aaec6accad36bad8fb204a4b974a58524d3bc98"
+    },
+    {
+      "path": "Zeta23/ThmE/TracesChi.lean",
+      "blob_sha": "27944502232eac80c7f2ae0c95bbd1998c72d40a"
+    },
+    {
+      "path": "Zeta23/ThmE/TracesHypChi.lean",
+      "blob_sha": "c8dfa95eeb6b427582bfac10cceaa16f7400d322"
+    },
+    {
+      "path": "Zeta23/ThmE/VerticalLineChi.lean",
+      "blob_sha": "59b02623e04e65e37288e68b82a1ed1d32090612"
+    },
+    {
+      "path": "Zeta23/TracesBoundsE.lean",
+      "blob_sha": "2cc51f3ef9cbfeee4e3f33622df0053e74d2907e"
+    },
+    {
+      "path": "Zeta23/Unconditional.lean",
+      "blob_sha": "660f47f8cf9b49f151444f2695584b771ea239f3"
+    },
+    {
+      "path": "Zeta23/WeilEF/Contour.lean",
+      "blob_sha": "a97c1b07b45089293901d09fa7ab9034b0c1ac6c"
+    },
+    {
+      "path": "Zeta23/WeilEF/Effective.lean",
+      "blob_sha": "401f1318bdac29d95211200b7315ce03b0c8f64d"
+    },
+    {
+      "path": "Zeta23/WeilEF/FullLine.lean",
+      "blob_sha": "a2ae92dfd3852a435f3b7d5adc13cdde73073280"
+    },
+    {
+      "path": "Zeta23/WeilEF/FullLineAssembly.lean",
+      "blob_sha": "a6f27d0578ca8007771b7694f2bd24a8556ba14b"
+    },
+    {
+      "path": "Zeta23/WeilEF/GammaRBracket.lean",
+      "blob_sha": "48eba58762cccfc47ac06b7af5c386b68fdba20c"
+    },
+    {
+      "path": "Zeta23/WeilEF/GoodHeights.lean",
+      "blob_sha": "dba3f39a75f2bde58693a7099808443cac7773ca"
+    },
+    {
+      "path": "Zeta23/WeilEF/Horizontal.lean",
+      "blob_sha": "837c38c48d64d88a392eeb6876cb93bdaa540bec"
+    },
+    {
+      "path": "Zeta23/WeilEF/Landau.lean",
+      "blob_sha": "5b6d356d64a6e7a1bf6bc0e98406d3dfe5a7f4d6"
+    },
+    {
+      "path": "Zeta23/WeilEF/Main.lean",
+      "blob_sha": "75a3ef8d5ea39205412e007bc80b22ba17993e04"
+    },
+    {
+      "path": "Zeta23/WeilEF/VerticalLine.lean",
+      "blob_sha": "cfc4a8b030c00845c3242faa3dbec21eaae5522b"
+    },
+    {
+      "path": "Zeta23/WeilEF/XiLogDeriv.lean",
+      "blob_sha": "71b1eaed44eee2f700c68453a76ff012a30a5717"
+    },
+    {
+      "path": "Zeta23/WeilEF/ZeroSumLimit.lean",
+      "blob_sha": "703785534b5ac7080fcc0dfefb9c333e15196c6a"
+    },
+    {
+      "path": "Zeta23/WeilEF/ZeroSummability.lean",
+      "blob_sha": "7b5e1595f7828376f08754258199dc4ab042d175"
+    },
+    {
+      "path": "Zeta23/WeilEF/ZeroSummabilityGen.lean",
+      "blob_sha": "d755fbae5a38c7daaa93c6f7a5437090b9c696be"
+    },
+    {
+      "path": "Zeta23/XiPrime/Assembly.lean",
+      "blob_sha": "48f192ac51d33c4dd49f21a3ece15426538bd026"
+    },
+    {
+      "path": "Zeta23/XiPrime/Certificate.lean",
+      "blob_sha": "716cda2053282e8b337617a95bee367f23eeb9be"
+    },
+    {
+      "path": "Zeta23/XiPrime/Certificate/AtOne.lean",
+      "blob_sha": "6db8fb465fa0825bd9faecbe00918f00c3fd95d9"
+    },
+    {
+      "path": "Zeta23/XiPrime/Certificate/D1.lean",
+      "blob_sha": "9e457cd652649fe9d66c7b561b2fa80e2a99b145"
+    },
+    {
+      "path": "Zeta23/XiPrime/Certificate/Poly.lean",
+      "blob_sha": "f702f4975646ede439df49e223b8e83266f8dca3"
+    },
+    {
+      "path": "Zeta23/XiPrime/CertificateFn.lean",
+      "blob_sha": "af2ad3b0304d08df30f43054cf799a50b9c84ad4"
+    },
+    {
+      "path": "Zeta23/XiPrime/Coeff.lean",
+      "blob_sha": "9b414760c03b68a15245d0d25e99e5a9d08d1330"
+    },
+    {
+      "path": "Zeta23/XiPrime/Coeff/Abel.lean",
+      "blob_sha": "dd5cc13ad2b370435d0c41571df10828d325d823"
+    },
+    {
+      "path": "Zeta23/XiPrime/Coeff/Basic.lean",
+      "blob_sha": "c09349957b62a9be3d79786a903b80e6048ac221"
+    },
+    {
+      "path": "Zeta23/XiPrime/Coeff/DiagLaw.lean",
+      "blob_sha": "5a1ead751faa8933ff3be87e4e7713190b476296"
+    },
+    {
+      "path": "Zeta23/XiPrime/Coeff/H3.lean",
+      "blob_sha": "ca268656ef06a4e31a52fffb2a0eac51aa4beb2a"
+    },
+    {
+      "path": "Zeta23/XiPrime/Coeff/LayerOne.lean",
+      "blob_sha": "5627e313051e182825d48bb489edc6d136a21ed1"
+    },
+    {
+      "path": "Zeta23/XiPrime/Coeff/LSeries.lean",
+      "blob_sha": "da9c0a5732be3b22f84ae924d4f18e9332658251"
+    },
+    {
+      "path": "Zeta23/XiPrime/Coeff/LT.lean",
+      "blob_sha": "0ab55b45baabea0bbf3b43dcb104900ab981777e"
+    },
+    {
+      "path": "Zeta23/XiPrime/Coeff/MainTerm/Asymp.lean",
+      "blob_sha": "9a8a36520d32d1ef8fed9e0bb77c79640cd6edd0"
+    },
+    {
+      "path": "Zeta23/XiPrime/Coeff/MainTerm/Squarefree.lean",
+      "blob_sha": "1b432b40601406036d22e5331727584d8c3c0dfb"
+    },
+    {
+      "path": "Zeta23/XiPrime/Coeff/NonSquarefree.lean",
+      "blob_sha": "668f6e396659b6f207692e888320091a765ab18c"
+    },
+    {
+      "path": "Zeta23/XiPrime/Coeff/Param.lean",
+      "blob_sha": "cbbb95d893ed0ab4dc5cdd58e9f09650fba8f682"
+    },
+    {
+      "path": "Zeta23/XiPrime/Coeff/PowerSums.lean",
+      "blob_sha": "9bf05b03b9bd492f525ac242ba339d7bae1fb443"
+    },
+    {
+      "path": "Zeta23/XiPrime/Coeff/PrimeSums.lean",
+      "blob_sha": "17da169e0814ca6cf64425c8276565660731d843"
+    },
+    {
+      "path": "Zeta23/XiPrime/Coeff/Reexpansion.lean",
+      "blob_sha": "c106d05fb29d6e3903ac9ec5d8181d5f8fbf804a"
+    },
+    {
+      "path": "Zeta23/XiPrime/Coeff/ReexpansionGen.lean",
+      "blob_sha": "1d233844ceff2b99cb3dff48e4a49b6c3e2b3fb3"
+    },
+    {
+      "path": "Zeta23/XiPrime/Coeff/ReexpansionW.lean",
+      "blob_sha": "f40f64aeb310c587566007634733abeacf67176f"
+    },
+    {
+      "path": "Zeta23/XiPrime/Coeff/Tail.lean",
+      "blob_sha": "92d81b3c5b3310a472f99bfde088821dc9db1328"
+    },
+    {
+      "path": "Zeta23/XiPrime/Coeff/Upper.lean",
+      "blob_sha": "c60e8d08effd98dcb500b7a5c4ae72c83888fac1"
+    },
+    {
+      "path": "Zeta23/XiPrime/Defs.lean",
+      "blob_sha": "16460e4d68013c156e91012fcdc6cb72b028ef9f"
+    },
+    {
+      "path": "Zeta23/XiPrime/ExplicitFormula.lean",
+      "blob_sha": "753bc765e763ed45428d1f6152c33f98c08de1ba"
+    },
+    {
+      "path": "Zeta23/XiPrime/ExplicitFormula/Contour.lean",
+      "blob_sha": "a006417c0697e9b1bd346a546679415672b8b7b5"
+    },
+    {
+      "path": "Zeta23/XiPrime/ExplicitFormula/DirichletLine.lean",
+      "blob_sha": "623d2728545fdcf928c20af733ee17858b74c2d8"
+    },
+    {
+      "path": "Zeta23/XiPrime/ExplicitFormula/EntryError.lean",
+      "blob_sha": "4f8720428b276926fb1310827167a982a1006e88"
+    },
+    {
+      "path": "Zeta23/XiPrime/ExplicitFormula/Expansion.lean",
+      "blob_sha": "73d287e15c2b4042e99aa14e63e405cf8c577743"
+    },
+    {
+      "path": "Zeta23/XiPrime/ExplicitFormula/FamilyFacts.lean",
+      "blob_sha": "ec9036881886eb1597f9fc4fe58c48bc127df65f"
+    },
+    {
+      "path": "Zeta23/XiPrime/ExplicitFormula/FullLine.lean",
+      "blob_sha": "c153464c65a1419b366735889c1f9cc641239cb3"
+    },
+    {
+      "path": "Zeta23/XiPrime/ExplicitFormula/GramBridge.lean",
+      "blob_sha": "3366cab977b88a81cbafd150f4f705ebce00768d"
+    },
+    {
+      "path": "Zeta23/XiPrime/ExplicitFormula/JTerm.lean",
+      "blob_sha": "e275a6048927d61fe39cbccf371f484f0b334c51"
+    },
+    {
+      "path": "Zeta23/XiPrime/ExplicitFormula/LineBound.lean",
+      "blob_sha": "93df6faaf4d5ea7b62f0ed9f4447dc646eafe17b"
+    },
+    {
+      "path": "Zeta23/XiPrime/ExplicitFormula/LitCorr.lean",
+      "blob_sha": "6642936e98187cf5821a3af9634301cceee123fa"
+    },
+    {
+      "path": "Zeta23/XiPrime/ExplicitFormula/Main.lean",
+      "blob_sha": "dad48c2ecd554aae3f8a4d3f721f4438f23368ec"
+    },
+    {
+      "path": "Zeta23/XiPrime/ExplicitFormula/PrimeTermJ.lean",
+      "blob_sha": "f24bafedc67ad05f8029cd7507b5989ae3f7db16"
+    },
+    {
+      "path": "Zeta23/XiPrime/ExplicitFormula/TestWeight.lean",
+      "blob_sha": "545614fe9736c8813f20df2657488a97b4f6ec48"
+    },
+    {
+      "path": "Zeta23/XiPrime/ExplicitFormula/XiEFAssembly.lean",
+      "blob_sha": "cf03915a109a2b9b107a3ad56259ade850ccbc13"
+    },
+    {
+      "path": "Zeta23/XiPrime/ExplicitFormula/ZeroFree.lean",
+      "blob_sha": "9b486018e86ff3fab9a3e0bcf36e9d28c00063a5"
+    },
+    {
+      "path": "Zeta23/XiPrime/FamilyFlat.lean",
+      "blob_sha": "b37f71bf4f4eb930e3f8ec89b185a7f51ac803b4"
+    },
+    {
+      "path": "Zeta23/XiPrime/FamilyHyps.lean",
+      "blob_sha": "e8809a5400e3378f2b0ff197da0aa74786efc02a"
+    },
+    {
+      "path": "Zeta23/XiPrime/FamilyHypsV.lean",
+      "blob_sha": "cda9409e7d4b7818fe8c522c8ddda6ed8180fc54"
+    },
+    {
+      "path": "Zeta23/XiPrime/Final.lean",
+      "blob_sha": "e977c23ce5839e0cbd49741cf48f80606e3e8071"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/Basic.lean",
+      "blob_sha": "4d33d26edcbb986938c335bb99f43dedafa396fb"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/Contour.lean",
+      "blob_sha": "a887d946c92892bd16d61d6efc4d295ace8245ae"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/Count.lean",
+      "blob_sha": "91b42d31544152997406a974300dcd4454a01c43"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/EFBasic.lean",
+      "blob_sha": "3be1b63d6b73cf535968d8bb367401c8ae167f3d"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/EFContour.lean",
+      "blob_sha": "2cf2d75db2f44cb0dd99e2160fd273caf639f807"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/EFContour/Analytic.lean",
+      "blob_sha": "1c011999da1dd9eabfb77cb1ac6ab523a4f6b0e4"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/EFContour/Limit.lean",
+      "blob_sha": "66105030b2ad462e8a841993cd691e95e785ed36"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/EFContour/Poles.lean",
+      "blob_sha": "edc5c5039aad733ad0afb8dda12029f6595dc25c"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/EFContour/Rectangle.lean",
+      "blob_sha": "96bd1bc274ce2ce54309784184b38eeb568d6650"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/EFExpansion.lean",
+      "blob_sha": "2dfd7f9c0da96f5740c52033032152259e5a67eb"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/EFFinal.lean",
+      "blob_sha": "1a81ae71b1f1d22884f80350d974243a628aa228"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/EFJTermW.lean",
+      "blob_sha": "78e33bd9eac267eae7841a9776c68083ca01bf89"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/EFLitCorrW.lean",
+      "blob_sha": "7e784373cdb1ae478234d41ed95a5fbe029cd140"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/EFMain.lean",
+      "blob_sha": "269b3177e0c20517884d2f537ea9802e25e06d96"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/EFWeights.lean",
+      "blob_sha": "71a45b411c154e05a52f3a8952886c53a6dd6e09"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/GoodHeightsW.lean",
+      "blob_sha": "a0d193b60f2347616e6583c075d03ad029d33582"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/GramBridgeW.lean",
+      "blob_sha": "ad4155c89a793180a9154d0a3735ec021b6b0932"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/Omega.lean",
+      "blob_sha": "e9565d414385077f8d935726eee8ac85859b825c"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/Seam.lean",
+      "blob_sha": "aa2ca10c56ecc0787023bb2455ed5603653b2814"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/TwoLine.lean",
+      "blob_sha": "b1e7070a1eaf13e0fff8bb3b6e83a86e3be7a21a"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/ZeroFree.lean",
+      "blob_sha": "0bf0396dd18bbd64fbbbbda7263d8add161afe60"
+    },
+    {
+      "path": "Zeta23/XiPrime/Hardy/ZFunction.lean",
+      "blob_sha": "dc2399d604cba333cc3cd93c2755c0a9960273fa"
+    },
+    {
+      "path": "Zeta23/XiPrime/Inputs.lean",
+      "blob_sha": "eec9cecd4a86639ea8e55727b1f2a01d92758af7"
+    },
+    {
+      "path": "Zeta23/XiPrime/PrimeSide/Abel.lean",
+      "blob_sha": "78282e146fb5b1865535228f66f1e6864d0f4bfc"
+    },
+    {
+      "path": "Zeta23/XiPrime/PrimeSide/Concrete.lean",
+      "blob_sha": "164f6f3185ff95d6357bc7b46819ba8a6e294823"
+    },
+    {
+      "path": "Zeta23/XiPrime/PrimeSide/Cross.lean",
+      "blob_sha": "dbd51e50e7f34ac94e479fa362e9a2e5295f1c7e"
+    },
+    {
+      "path": "Zeta23/XiPrime/PrimeSide/Density.lean",
+      "blob_sha": "e74f9fd90272fe3385a64aa959fca5432822eb30"
+    },
+    {
+      "path": "Zeta23/XiPrime/PrimeSide/Final.lean",
+      "blob_sha": "29e0adc8f7c08fc7fb9053a45620403942e640c6"
+    },
+    {
+      "path": "Zeta23/XiPrime/PrimeSide/Moments.lean",
+      "blob_sha": "2b5ce24d2b678336f44cab3cd309621829ae60ad"
+    },
+    {
+      "path": "Zeta23/XiPrime/PrimeSide/PP.lean",
+      "blob_sha": "53f44380c7a4ec8099d45d329c081f43824d4a9e"
+    },
+    {
+      "path": "Zeta23/XiPrime/PrimeSide/PPUpper.lean",
+      "blob_sha": "a8fb46792d7bc884492129a2913c8034583c480a"
+    },
+    {
+      "path": "Zeta23/XiPrime/PrimeSide/Trace.lean",
+      "blob_sha": "c998f5b65d3f23b8c6d530068e9af4d4b2e1b0ca"
+    },
+    {
+      "path": "Zeta23/XiPrime/PrimeSide/Traces.lean",
+      "blob_sha": "29d12a9fe1b528ebf619cae5991a5f852ed80f9e"
+    },
+    {
+      "path": "Zeta23/XiPrime/QuarticWindow.lean",
+      "blob_sha": "ee89a16234978f01a8b0dcbc6a1d507ebea45ce9"
+    },
+    {
+      "path": "Zeta23/XiPrime/QuarticWindow/Family.lean",
+      "blob_sha": "a5fd33334e3ede49eea3c1d4c6b34cf9f2fdab1d"
+    },
+    {
+      "path": "Zeta23/XiPrime/QuarticWindow/ModWindow.lean",
+      "blob_sha": "401612063d52225f560f886499cc0e07a3c7ba67"
+    },
+    {
+      "path": "Zeta23/XiPrime/QuarticWindow/Moments.lean",
+      "blob_sha": "3b986f9e1d27b12f03120458974c03cff4d8dd46"
+    },
+    {
+      "path": "Zeta23/XiPrime/QuarticWindow/Params.lean",
+      "blob_sha": "23d868be196375b10f81f0ade17ed2a9230275bc"
+    },
+    {
+      "path": "Zeta23/XiPrime/QuarticWindow/Quartic.lean",
+      "blob_sha": "4af68999694eed7a92ae7ce5929aa3a6582582b6"
+    },
+    {
+      "path": "Zeta23/XiPrime/QuarticWindow/ZeroSide.lean",
+      "blob_sha": "df7fe234ca4ee0815795e5b1e3a8e278742112a3"
+    },
+    {
+      "path": "Zeta23/XiPrime/Seam.lean",
+      "blob_sha": "f3cf3101f93dfcf07bb85e48e647927410a6ff1e"
+    },
+    {
+      "path": "Zeta23/XiPrime/Statement.lean",
+      "blob_sha": "b1339c09f5e7b9f07de9a533850183e905d8c138"
+    },
+    {
+      "path": "Zeta23/XiPrime/StatementW.lean",
+      "blob_sha": "7f646e74fde41a5405bf5718bf76234c9d1f0f9c"
+    },
+    {
+      "path": "Zeta23/XiPrime/Transfer.lean",
+      "blob_sha": "469a31ec055d6db903e9095cdca737f5b904f019"
+    },
+    {
+      "path": "Zeta23/XiPrime/Transfer/Abstract.lean",
+      "blob_sha": "5a42f917d626b73389cf92ccd34f949a5e813862"
+    },
+    {
+      "path": "Zeta23/XiPrime/Transfer/Dependence.lean",
+      "blob_sha": "192647ee4b2e7d3959d3e8bb09e974a7200c7616"
+    },
+    {
+      "path": "Zeta23/XiPrime/Transfer/Inputs.lean",
+      "blob_sha": "9ccd29e1f0da1d7dd9b903e981b7bd614578b74a"
+    },
+    {
+      "path": "Zeta23/XiPrime/Transfer/InputsW.lean",
+      "blob_sha": "5eb3ce21271c67183d51f5b3279e6a408b66e069"
+    },
+    {
+      "path": "Zeta23/XiPrime/Transfer/W.lean",
+      "blob_sha": "812c26bf4f3b41e667569f13aaee85f1df82df1d"
+    },
+    {
+      "path": "Zeta23/XiPrime/Window.lean",
+      "blob_sha": "335299492dfbf25c3a74e8acfbe583f84ebb2a9a"
+    },
+    {
+      "path": "Zeta23/XiPrime/Window/FlatAdm.lean",
+      "blob_sha": "55f571e40a0700960db0c211e4247c0ae9c16ac6"
+    },
+    {
+      "path": "Zeta23/XiPrime/Window/Quartic.lean",
+      "blob_sha": "282effa9c3758192cbef75f8323437363b039b6d"
+    },
+    {
+      "path": "Zeta23/XiPrime/ZeroCount.lean",
+      "blob_sha": "9fa8e4703df69d60e537b5ecef1c3888d474e904"
+    },
+    {
+      "path": "Zeta23/XiPrime/ZeroCount/ArgBound.lean",
+      "blob_sha": "d423497ad4094e1b0ce85926c78132fbe710c7ba"
+    },
+    {
+      "path": "Zeta23/XiPrime/ZeroCount/Basic.lean",
+      "blob_sha": "40c1d93d03d90b2f90cb3141269af9bd2208fe9e"
+    },
+    {
+      "path": "Zeta23/XiPrime/ZeroCount/Contour.lean",
+      "blob_sha": "81548e1e7a17365f261fff763ed955ceca997060"
+    },
+    {
+      "path": "Zeta23/XiPrime/ZeroCount/Generic.lean",
+      "blob_sha": "58012f458575d1efeb286634aea144124e4207a3"
+    },
+    {
+      "path": "Zeta23/XiPrime/ZeroCount/GenericRvM.lean",
+      "blob_sha": "29a5022721d4c466f23a8bb07e519816e03e05cd"
+    },
+    {
+      "path": "Zeta23/XiPrime/ZeroCount/GoodHeights.lean",
+      "blob_sha": "21fb495a9c82c83f518106e78f53edc662a44be5"
+    },
+    {
+      "path": "Zeta23/XiPrime/ZeroCount/Landau.lean",
+      "blob_sha": "adba6ba7d0a59f3d93a138ec46716cab2aac3df1"
+    },
+    {
+      "path": "Zeta23/XiPrime/ZeroCount/Sides.lean",
+      "blob_sha": "c6befe86b10230e4d760832461349890375289e1"
+    },
+    {
+      "path": "Zeta23/XiPrime/ZeroCount/Y.lean",
+      "blob_sha": "fe197cb5f0b3d92c9227c55fc92283fd0b26dfbb"
+    },
+    {
+      "path": "Zeta23/ZeroSide.lean",
+      "blob_sha": "6314b10374daf4ea5582a3010bce0fb4ec4813d5"
+    },
+    {
+      "path": "Zeta23/ZeroSide/Final.lean",
+      "blob_sha": "1c18086f00d8fe080e16210ef4ef9a48f0662cf9"
+    },
+    {
+      "path": "Zeta23/ZeroSide/Mult.lean",
+      "blob_sha": "f53b61b1cf916bf7d51eed333567a22bb011e0d4"
+    },
+    {
+      "path": "Zeta23/ZeroSide/RankTraceMult.lean",
+      "blob_sha": "56727106c5990a07e3f7e29eae3122be737a1cbc"
+    },
+    {
+      "path": "Zeta23/ZeroSide/TightMult.lean",
+      "blob_sha": "78d32636c75713a9abf67ded8af47bd416e4dc00"
+    },
+    {
+      "path": "Zeta23/ZetaReflect.lean",
+      "blob_sha": "2856954a4a15c84b76029dd9282806daffa4c78f"
+    }
   ]
 }
