@@ -470,7 +470,7 @@ def build_records() -> dict[str, object]:
     )
     reachability = reachability_view(local_import_graph, comparator_roots)
     unresolved = {
-        "schema_version": "RHKG-phase2a-unresolved-0.2",
+        "schema_version": "RHKG-phase2a-unresolved-0.3",
         "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_2A",
         "unknown_file_classes": sorted(
             row["path"] for row in repo_files if row["file_class"] == "UNKNOWN_FILE_CLASS"
