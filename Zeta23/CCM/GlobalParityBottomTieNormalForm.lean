@@ -123,8 +123,11 @@ theorem globalBottom_tie_sourceZero_gives_nonzero_oddGround
     cubicSecularTrialVector_ne_zero
       .even hL N hN (hprevBoth .even) lam hlam
   have hmapne :
-      euclideanEvenToOddIndexLinearMap (N + 1) u ≠ 0 :=
-    euclideanEvenToOddIndexLinearMap_injective (N + 1) hune
+      euclideanEvenToOddIndexLinearMap (N + 1) u ≠ 0 := by
+    intro hDu
+    apply hune
+    apply euclideanEvenToOddIndexLinearMap_injective (N + 1)
+    simpa [u] using hDu
   have hveig :
       parityCompressedCanonical .even L (N + 1) u =
         (lam : ℂ) • u :=
@@ -133,14 +136,13 @@ theorem globalBottom_tie_sourceZero_gives_nonzero_oddGround
   have hodd :=
     evenEigenmode_shiftedOdd_eq_sourceCubic
       hL (N + 1) (by omega) lam u hveig
-  change
-    parityCompressedCanonical .odd L (N + 1)
-          (euclideanEvenToOddIndexLinearMap (N + 1) u) -
-        (lam : ℂ) • euclideanEvenToOddIndexLinearMap (N + 1) u =
-      evenQuadraticSourceMoment L (N + 1) u •
-        oddCubicCompressionVector (N + 1) at hodd
   rw [hS, zero_smul] at hodd
-  exact ⟨hmapne, sub_eq_zero.mp hodd⟩
+  refine ⟨hmapne, ?_⟩
+  change
+    oddCompressedCanonical L (N + 1)
+        (euclideanEvenToOddIndexLinearMap (N + 1) u) =
+      (lam : ℂ) • euclideanEvenToOddIndexLinearMap (N + 1) u
+  exact sub_eq_zero.mp hodd
 
 end Zeta23.CCM
 
