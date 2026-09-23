@@ -37,6 +37,25 @@ class LeanDependencyExtractTests(unittest.TestCase):
         self.assertTrue(dep["used_in_value"])
         self.assertFalse(dep["used_in_structure"])
 
+    def test_batched_channel_protocol_preserves_channel_union(self) -> None:
+        stdout = "\n".join(
+            [
+                "RHKG_DEP_DECL\tZeta23.Test.root\tZeta23.Test\tTHEOREM\t0",
+                "RHKG_DEP_DECL\tZeta23.Test.helper\tZeta23.Test\tTHEOREM\t0",
+                "RHKG_DEP_CHANNEL\tZeta23.Test.root\tTYPE\tZeta23.Test.helper",
+                "RHKG_DEP_CHANNEL\tZeta23.Test.root\tVALUE\tZeta23.Test.helper",
+                "RHKG_DEP_CHANNEL\tZeta23.Test.root\tSTRUCTURE",
+            ]
+        )
+        rows = extract.parse_output(stdout, self.roots())
+        root = next(row for row in rows if row["declaration"] == "Zeta23.Test.root")
+        self.assertEqual(len(root["dependencies"]), 1)
+        dep = root["dependencies"][0]
+        self.assertEqual(dep["constant"], "Zeta23.Test.helper")
+        self.assertTrue(dep["used_in_type"])
+        self.assertTrue(dep["used_in_value"])
+        self.assertFalse(dep["used_in_structure"])
+
     def test_external_constant_is_boundary_only(self) -> None:
         stdout = "\n".join(
             [
