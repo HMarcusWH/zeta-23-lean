@@ -35,17 +35,17 @@ ROUTE_REGISTRY = "research/RHRC/routes/ROUTE_REGISTRY.json"
 BOUNDARY = "research/RHRC/BOUNDARY.json"
 
 
-def _load_firewall_import_regex():
-    path = RHRC / "tools" / "arithmetic_firewall_lint.py"
-    spec = importlib.util.spec_from_file_location("rhrc_arithmetic_firewall", path)
+def _load_shared_import_parser():
+    path = RHRC / "tools" / "lean_imports.py"
+    spec = importlib.util.spec_from_file_location("rhrc_lean_imports", path)
     if spec is None or spec.loader is None:
-        raise RuntimeError(f"cannot load arithmetic firewall from {path}")
+        raise RuntimeError(f"cannot load shared Lean import parser from {path}")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-    return module.IMPORT
+    return module.import_modules
 
 
-IMPORT_RE = _load_firewall_import_regex()
+IMPORT_MODULES = _load_shared_import_parser()
 
 
 def _git(*args: str) -> str:
@@ -183,7 +183,7 @@ def build_records() -> dict[str, object]:
     external_imports: set[str] = set()
     for name, path in sorted(local_by_module.items()):
         text = (REPO / path).read_text(encoding="utf-8")
-        imports = IMPORT_RE.findall(text)
+        imports = IMPORT_MODULES(text)
         import_map[name] = imports
         external_imports.update(dep for dep in imports if dep not in local_by_module)
 
