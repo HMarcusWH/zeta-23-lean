@@ -31,24 +31,32 @@ research preflight. Those belong to later constitutional phases.
 
 ## Phase 2A
 
-Phase 2A normalizes the repository's existing reviewed R003 promoted theorem
-bindings without widening theorem authority:
+Phase 2A now normalizes the complete registered proved theorem surface without
+widening theorem authority:
 
-- one `LeanDeclaration` node for every exact entry in
-  `R003_PROMOTED_BINDINGS.json`;
-- exact `LeanModule DECLARES LeanDeclaration` relations using the registered
+- `REGISTERED_THEOREM_BINDINGS.json` exactly mirrors all current
+  `PROVED_UNCONDITIONAL` registered claims;
+- `Zeta23/RHRC/RegisteredClaimBindings.lean` explicitly `#check`s and
+  `#print axioms` for every one of those theorems;
+- one `LeanDeclaration` node exists for every complete registered binding;
+- exact `LeanModule DECLARES LeanDeclaration` relations use the registered
   source file/module;
-- exact `LeanDeclaration PROVES RegisteredClaim` relations using the promoted
+- exact `LeanDeclaration PROVES RegisteredClaim` relations use the complete
   binding manifest;
-- generated `THEOREM_CLAIM_MAP.json` with explicit scope
-  `R003_PROMOTED_BINDINGS_ONLY`;
-- fail-closed equality checks between manifest, claim registry, declaration
-  population, and binding relations;
-- an explicit Lean CI build of `Zeta23.CCM.ClaimBindings`.
+- generated `THEOREM_CLAIM_MAP.json` has scope
+  `ALL_PROVED_UNCONDITIONAL_REGISTERED_CLAIMS`;
+- the unlinked set is required to equal the OPEN claim set exactly;
+- the older `R003_PROMOTED_BINDINGS.json` and
+  `Zeta23/CCM/ClaimBindings.lean` remain intact as an independently checked
+  historical subset.
 
-Phase 2A does **not** discover new claims, infer theorem dependencies from imports,
-or emit `USES_CONSTANT`. Claims outside the promoted R003 binding surface are
-reported as unlinked, not unproved.
+At the current state this means 75 proved registered claims are bound and the
+three OPEN claims `C_RH`, `R001_PRIME_UPPER`, and
+`R002_WINDOWED_VISIBILITY` are intentionally unbound.
+
+Phase 2A still does **not** infer theorem dependencies from imports, emit
+`USES_CONSTANT`, create claims, or promote RH. The complete binding surface is
+the prerequisite for compiler-derived declaration dependency work in Phase 2B.
 
 ## Commands
 
