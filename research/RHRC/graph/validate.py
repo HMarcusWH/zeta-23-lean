@@ -614,6 +614,41 @@ def main() -> int:
     if coverage.get("unclassified_files") != []:
         errors.append("coverage view reports unclassified files")
 
+    unresolved = json.loads(
+        (GENERATED / "UNRESOLVED_GRAPH_ITEMS.json").read_text(encoding="utf-8")
+    )
+    module_by_id = {module["id"]: module for module in lean_modules}
+    expected_external_import_targets = {
+        module_by_id[rel["target"]]["module"]
+        for rel in relations
+        if rel.get("kind") == "IMPORTS"
+        and rel["target"] in module_by_id
+        and module_by_id[rel["target"]].get("repository_scope") == "EXTERNAL"
+    }
+    actual_external_import_targets = set(
+        unresolved.get("external_import_targets", [])
+    )
+    if actual_external_import_targets != expected_external_import_targets:
+        errors.append(
+            "UNRESOLVED external import target set drift: "
+            f"missing={sorted(expected_external_import_targets - actual_external_import_targets)} "
+            f"extra={sorted(actual_external_import_targets - expected_external_import_targets)}"
+        )
+    expected_compiler_boundary_modules = {
+        row["module"]
+        for row in compiler_receipt
+        if row.get("repository_scope") == "EXTERNAL" and row.get("module")
+    }
+    actual_compiler_boundary_modules = set(
+        unresolved.get("compiler_external_boundary_modules", [])
+    )
+    if actual_compiler_boundary_modules != expected_compiler_boundary_modules:
+        errors.append(
+            "UNRESOLVED compiler boundary module set drift: "
+            f"missing={sorted(expected_compiler_boundary_modules - actual_compiler_boundary_modules)} "
+            f"extra={sorted(actual_compiler_boundary_modules - expected_compiler_boundary_modules)}"
+        )
+
     if errors:
         print("RHKG VALIDATION: FAIL")
         for error in errors:
