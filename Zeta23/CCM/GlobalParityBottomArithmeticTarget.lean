@@ -1,66 +1,67 @@
-import Zeta23.CCM.GlobalParityBottomPrimeRemainder
+import Zeta23.CCM.GlobalParityBottomPrimeWeight
 
 noncomputable section
 
 namespace Zeta23.CCM
 
 /-!
-# PR #247 — explicit RH-strength arithmetic target
+# PR #247 — concrete branch-constrained arithmetic residual
 
-PR #246 identified the exact prime-remainder dominance equivalent to
-nonnegativity of the complete source energy.  A global-bottom residual state
-carries a concrete negative-energy zero-shift witness, so it carries the exact
-strict failure of that dominance.
+This file deliberately does not introduce another universal closure gate.
+Instead it packages exactly the object any future arithmetic theorem must
+exclude: a globally aligned residual state, its strengthened branch package,
+and the strict #246 prime-remainder failure on the same true ground vector.
 
-This file names the remaining arithmetic closure proposition instead of hiding
-it behind a generic "final gate".  The proposition is OPEN here.  Proving it
-unconditionally for every residual state would immediately exclude every
-residual state and is therefore RH-strength once composed with the generated
-off-line-zero route.
+The next missing theorem must be a specific unconditional arithmetic property
+of this constrained weight.  No such property is assumed here.
 -/
 
-/-- Prime-remainder dominance specialized to the exact zero-shift witness
-carried by one global-bottom residual state. -/
-def GlobalBottomResidualPrimeDominance
-    {Q : ℕ}
-    (s : GlobalBottomResidualState Q) : Prop :=
-  canonicalPrimeFreeBudget
-      s.aligned.firstBad.L
-      (s.aligned.firstBad.Nstar + 1)
-      s.zeroShiftWitness ≤
+/-- Concrete arithmetic state left by the current reduction. -/
+structure GlobalBottomArithmeticResidual (Q : ℕ) where
+  state : GlobalBottomResidualState Q
+  branchPackage : GlobalBottomBranchPackage state
+  primeFailure :
     -canonicalPrimeRemainderEnergy
-      s.aligned.firstBad.L
-      (s.aligned.firstBad.Nstar + 1)
-      s.zeroShiftWitness
+        state.aligned.firstBad.L
+        (state.aligned.firstBad.Nstar + 1)
+        (state.groundTrial : EuclideanSpace ℂ
+          (Fin (2 * (state.aligned.firstBad.Nstar + 1) + 1))) <
+      canonicalPrimeFreeBudget
+        state.aligned.firstBad.L
+        (state.aligned.firstBad.Nstar + 1)
+        (state.groundTrial : EuclideanSpace ℂ
+          (Fin (2 * (state.aligned.firstBad.Nstar + 1) + 1)))
 
-/-- Every actual residual state violates its specialized prime-remainder
-dominance, exactly because its aligned zero-shift witness has negative channel
-energy. -/
-theorem GlobalBottomResidualState.not_primeDominance
-    {Q : ℕ}
-    (s : GlobalBottomResidualState Q) :
-    ¬ GlobalBottomResidualPrimeDominance s := by
-  intro hdom
-  have hfail := s.zeroShift_primeRemainder_failure
-  exact (not_lt_of_ge hdom) hfail
+/-- Every globally aligned residual state canonically produces the concrete
+arithmetic residual. -/
+theorem GlobalBottomResidualState.exists_arithmeticResidual
+    {Q : ℕ} (s : GlobalBottomResidualState Q) :
+    Nonempty (GlobalBottomArithmeticResidual Q) := by
+  obtain ⟨pkg⟩ := s.exists_branchPackage
+  exact ⟨{
+    state := s
+    branchPackage := pkg
+    primeFailure := s.groundTrial_primeRemainder_failure
+  }⟩
 
-/-- Explicit open arithmetic closure target.
-
-No theorem proving this proposition is supplied in PR #247 at this stage. -/
-def GlobalBottomArithmeticClosure : Prop :=
-  ∀ Q : ℕ, ∀ s : GlobalBottomResidualState Q,
-    GlobalBottomResidualPrimeDominance s
-
-/-- The open arithmetic closure target would exclude every residual state. -/
-theorem residual_exclusion_of_globalBottomArithmeticClosure
-    (hclose : GlobalBottomArithmeticClosure) :
-    ∀ Q : ℕ, ∀ s : GlobalBottomResidualState Q, False := by
-  intro Q s
-  exact s.not_primeDominance (hclose Q s)
+/-- The arithmetic residual exposes the same exact prime-weight integral; this
+is a projection, not a new estimate. -/
+theorem GlobalBottomArithmeticResidual.primeFailure_integral_form
+    {Q : ℕ} (a : GlobalBottomArithmeticResidual Q) :
+    -((1 / a.state.aligned.firstBad.L) *
+        ∫ t in (0 : ℝ)..a.state.aligned.firstBad.L,
+          weightedVonMangoldtSqrtRemainder (Real.exp t) *
+            a.state.primeTestWeight t) <
+      canonicalPrimeFreeBudget
+        a.state.aligned.firstBad.L
+        (a.state.aligned.firstBad.Nstar + 1)
+        (a.state.groundTrial : EuclideanSpace ℂ
+          (Fin (2 * (a.state.aligned.firstBad.Nstar + 1) + 1))) := by
+  rw [← a.state.primeRemainderEnergy_eq_weight_integral]
+  exact a.primeFailure
 
 end Zeta23.CCM
 
-#print axioms Zeta23.CCM.GlobalBottomResidualPrimeDominance
-#print axioms Zeta23.CCM.GlobalBottomResidualState.not_primeDominance
-#print axioms Zeta23.CCM.GlobalBottomArithmeticClosure
-#print axioms Zeta23.CCM.residual_exclusion_of_globalBottomArithmeticClosure
+#print axioms Zeta23.CCM.GlobalBottomArithmeticResidual
+#print axioms Zeta23.CCM.GlobalBottomResidualState.exists_arithmeticResidual
+#print axioms Zeta23.CCM.GlobalBottomArithmeticResidual.primeFailure_integral_form
