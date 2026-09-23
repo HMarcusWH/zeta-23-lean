@@ -132,13 +132,43 @@
     },
     {
       "id": "control_state",
-      "pattern": "^research/RHRC/control_v2/(CONTROL_STATE|ACTION_REGISTRY)\\.json$",
+      "pattern": "^research/RHRC/control_v2/(CONTROL_STATE|CONTROL_BOUNDARY|ACTION_REGISTRY)\\.json$",
       "file_class": "CONTROL_STATE",
       "trust_zone": "AUDIT_ONLY"
     },
     {
+      "id": "rhrc_boundary",
+      "pattern": "^research/RHRC/BOUNDARY\\.json$",
+      "file_class": "CONTROL_STATE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "living_ssot",
+      "pattern": "^research/RHRC/(README|DOCUMENTATION_AUTHORITY|VALIDATION_PROTOCOL|RESEARCH_LEADS|OBSTRUCTION_LEDGER)\\.md$",
+      "file_class": "LIVING_SSOT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "audit_python",
+      "pattern": "^research/RHRC/(?:tools|graph|control_v2)(?:/.*)?\\.py$",
+      "file_class": "OTHER_CLASSIFIED",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "test_python",
+      "pattern": "^research/RHRC/(?:ffbbp|ool|runner)/tests/.*\\.py$",
+      "file_class": "OTHER_CLASSIFIED",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "route_python",
+      "pattern": "^research/RHRC/routes/.*\\.py$",
+      "file_class": "RESEARCH_EXECUTABLE",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
       "id": "core_registry",
-      "pattern": "^research/RHRC/(BOUNDARY|CLAIM_REGISTRY|R003_PROMOTED_BINDINGS)\\.json$",
+      "pattern": "^research/RHRC/(CLAIM_REGISTRY|R003_PROMOTED_BINDINGS)\\.json$",
       "file_class": "REGISTRY",
       "trust_zone": "AUDIT_ONLY"
     },
