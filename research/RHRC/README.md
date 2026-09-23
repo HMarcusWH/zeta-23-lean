@@ -46,6 +46,8 @@ RESEARCH / REGRESSION HARVEST
 - post-202 = COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
 - post-214 = FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED / FULL_SPACE_SIGN_INDEFINITE_CERTIFIED
 - post-222 = NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED
+- post-249 = FINITE_GRID_SHARP_CANCELLATION / ZERO_SIDE_PERTURBATION_CONTROL_BUILT / EXPERIMENTAL_SIGNAL_ONLY
+- post-249 interpretation firewall = NO ASYMPTOTIC RATE / NO EXACT FIRST-ZERO SWITCH / SIGN-CHANGE BRACKETS NOT GLOBAL MINIMA
 - theorem promotion from research replays = false
 
 CURRENT RESEARCH PROGRAM
@@ -56,7 +58,8 @@ CURRENT RESEARCH PROGRAM
 - full-space <-> boundary-flat <-> parity spectral bridge = ACTIVE LEAD
 - R004 prolate/full-space ground-space bridge = RESURRECTED LEAD
 - Pair-D = GENERIC LINEAR-ALGEBRA FILTER ONLY
-- planted off-line canonical-style control = TO BUILD / PRIMARY FALSIFIER
+- planted zero-side perturbation control = BUILT / PR #249 / EXPERIMENTAL_SIGNAL_ONLY
+- globally consistent planted zeta/Euler-product control = OPEN
 - global aperture Loewner monotonicity = QUARANTINED / DR-021
 - global minimizing-Schur monotonicity = QUARANTINED / DR-022
 - exact-equality holonomy = DROPPED / TAUTOLOGICAL
@@ -92,6 +95,7 @@ Start with the current programme:
 - OBSTRUCTION_LEDGER_POST_247_DELTA.md — current obstruction compression;
 - DEAD_ROUTES_POST_247_DELTA.md — post-#247 killed/parked/resurrected routes;
 - HISTORICAL_ROUTE_AUDIT_POST_247_RECONCILIATION.md — historical route reclassification.
+- RESEARCH_LEADS_POST_249_REMAINDER_BUDGET_RATIO_DELTA.md — post-green harvest and repaired interpretation of the #249 Arb scout.
 
 The machine truth is control_v2/CONTROL_STATE.json; exact mathematical authority remains Lean/compiler/CI.
 

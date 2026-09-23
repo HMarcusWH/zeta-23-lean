@@ -46,6 +46,8 @@ RESEARCH / REGRESSION HARVEST
 - post-202 = COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
 - post-214 = FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED / FULL_SPACE_SIGN_INDEFINITE_CERTIFIED
 - post-222 = NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED
+- post-249 = FINITE_GRID_SHARP_CANCELLATION / ZERO_SIDE_PERTURBATION_CONTROL_BUILT / EXPERIMENTAL_SIGNAL_ONLY
+- post-249 interpretation firewall = NO ASYMPTOTIC RATE / NO EXACT FIRST-ZERO SWITCH / SIGN-CHANGE BRACKETS NOT GLOBAL MINIMA
 - theorem promotion from research replays = false
 
 CURRENT RESEARCH PROGRAM
@@ -56,7 +58,8 @@ CURRENT RESEARCH PROGRAM
 - full-space <-> boundary-flat <-> parity spectral bridge = ACTIVE LEAD
 - R004 prolate/full-space ground-space bridge = RESURRECTED LEAD
 - Pair-D = GENERIC LINEAR-ALGEBRA FILTER ONLY
-- planted off-line canonical-style control = TO BUILD / PRIMARY FALSIFIER
+- planted zero-side perturbation control = BUILT / PR #249 / EXPERIMENTAL_SIGNAL_ONLY
+- globally consistent planted zeta/Euler-product control = OPEN
 - global aperture Loewner monotonicity = QUARANTINED / DR-021
 - global minimizing-Schur monotonicity = QUARANTINED / DR-022
 - exact-equality holonomy = DROPPED / TAUTOLOGICAL
@@ -95,7 +98,7 @@ Canonical post-#247 programme: research/RHRC/routes/R003_ccm_bridge/POST_247_RIE
 7. **R004 prolate/source bridge** — relate the repo carrier to published full-space ground/prolate structure without identifying them by fiat.
 8. **Unconditional prime-test-weight characterization** — determine what endpoint/moment/support/arithmetic restrictions the ground eigenspace forces before negativity is assumed.
 
-**Secondary falsifiers:** Pair-D for generic linear algebra; planted off-line canonical-style control for zeta-specific candidate laws.
+**Secondary falsifiers:** Pair-D for generic linear algebra; PR #249's zero-side perturbation control for low-rank on-line/off-line response. A globally prime/Euler-product-consistent planted-zeta control remains OPEN.
 
 **Parked:** relation-zeta. **Dropped:** exact-equality holonomy and ordinary Gram-PSD hunting.
 
