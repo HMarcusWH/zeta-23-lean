@@ -506,9 +506,9 @@ def detection_threshold(Lnum: int, Lden: int, K: int, gam: tuple[int, int], step
     """Narrow certified sign-change bracket found by geometric search.
 
     Every bracket endpoint is an exact rational delta; ``hi`` is certified bad
-    and ``lo`` is certified not bad at the recorded precision.  This is not a
-    global minimum certificate: monotonicity of the lowest eigenvalue in delta
-    is not proved by this scout.
+    and ``lo`` is certified not bad at the recorded precision.  This search is
+    not a global minimum certificate: monotonicity of the lowest eigenvalue in
+    delta is not proved by this scout.
     """
     ctx.prec = 512
     L = _q(Lnum, Lden)
