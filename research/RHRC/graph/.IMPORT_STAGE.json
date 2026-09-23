@@ -562,6 +562,118 @@
         "Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp",
         "Mathlib.MeasureTheory.Integral.IntervalIntegral.IntegrationByParts"
       ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalPolePrimeDiscrepancyIntegrability.lean",
+      "blob_sha": "1751da10aedab77da377a42dda9f8bdc1d0ad4a2",
+      "imports": [
+        "Zeta23.CCM.CanonicalPolePrimeDiscrepancy"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalPolePrimeRiesz.lean",
+      "blob_sha": "93e091aa927eccfd1fbfcc709cd51ceddf28e5ea",
+      "imports": [
+        "Zeta23.CCM.CanonicalPolePrimeDiscrepancyIntegrability",
+        "Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.AbsolutelyContinuousFun"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalPrimeRemainder.lean",
+      "blob_sha": "d961e98d412f0a78dcd0a8af8af70dc35682b08a",
+      "imports": [
+        "Zeta23.CCM.CanonicalPolePrimeDiscrepancy"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalQuadraticNormalSourceFunctional.lean",
+      "blob_sha": "5ef5c198846f6a70c385d7a472ccae84b8af4aef",
+      "imports": [
+        "Zeta23.CCM.DictionaryMixedPairing",
+        "Zeta23.CCM.QuadraticNormalSourceJets",
+        "Zeta23.CCM.SourceNormalizationRepair"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalQuadraticNormalSourceKernel.lean",
+      "blob_sha": "c4075c85f4d772b7972124df993c5ac61965d8ef",
+      "imports": [
+        "Zeta23.CCM.DictionaryCompletePhysicalRHS",
+        "Zeta23.CCM.CanonicalQuadraticNormalSourceFunctional"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalRieszBoundary.lean",
+      "blob_sha": "1812fe79d3adb6c6d2f5d4a34b69ebe3cfc2cb93",
+      "imports": [
+        "Zeta23.CCM.CanonicalSourceMomentJets",
+        "Zeta23.CCM.CanonicalSourceRieszEnergy"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalShiftedConjugationGeometry.lean",
+      "blob_sha": "6036b8d78c2b22d69520f77398aa2a4a1aaadc98",
+      "imports": [
+        "Zeta23.CCM.CanonicalConjugationGeometry",
+        "Zeta23.CCM.FirstBadShiftedSchur"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalSourceChannels.lean",
+      "blob_sha": "6d517c3066cd198bd590bc6d74ff47a14621a608",
+      "imports": [
+        "Zeta23.CCM.SourceNormalizationRepair"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalSourceEnergy.lean",
+      "blob_sha": "39462108705884296434bf3d24b6c0b1b8c018e7",
+      "imports": [
+        "Zeta23.CCM.CanonicalSourceMomentAtoms",
+        "Zeta23.CCM.ZeroShiftShellResponse"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalSourceEnergyJets.lean",
+      "blob_sha": "651ae7676d873afb2bf41bf2f25a7731a3b68d1a",
+      "imports": [
+        "Zeta23.CCM.CanonicalPolePrimeDiscrepancy",
+        "Zeta23.CCM.SourceDerivativeTransport",
+        "Zeta23.CCM.ConstrainedParity",
+        "Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalSourceMomentAtoms.lean",
+      "blob_sha": "f87547f6a86d6c986cace713ac0476d1e1d30326",
+      "imports": [
+        "Zeta23.CCM.QuadraticNormalMatrixMoment",
+        "Zeta23.CCM.SourceMatrix",
+        "Zeta23.CCM.ConstrainedParity"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalSourceMomentJets.lean",
+      "blob_sha": "94e325805f6a7cc0978c76d431bde16dc6af1844",
+      "imports": [
+        "Zeta23.CCM.CanonicalSourceEnergyJets"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalSourcePairing.lean",
+      "blob_sha": "8d8e79e3446070c765300a0a68bd861e482ea80a",
+      "imports": [
+        "Zeta23.CCM.CanonicalSourceEnergy"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/CanonicalSourceRieszEnergy.lean",
+      "blob_sha": "73d87052defd2596a32be78bbc2c5055baccab13",
+      "imports": [
+        "Zeta23.CCM.CanonicalSourceEnergyJets",
+        "Zeta23.CCM.CanonicalPolePrimeRiesz"
+      ]
     }
   ],
   "all_lean": [
