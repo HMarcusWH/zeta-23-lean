@@ -191,8 +191,7 @@ theorem oddEigenmode_pulledBack_shiftedEven_eq_neg_sourceCubic
     evenCompressedCanonical L K v - (lam : ℂ) • v =
       -(evenQuadraticSourceMoment L K v) •
         pulledBackCubicCompressionVector K hK
-  simpa [evenCompressedCanonical, sub_eq_add_neg, add_comm, add_left_comm,
-    add_assoc, neg_smul] using congrArg Neg.neg hfac
+  simpa only [neg_sub, neg_smul] using congrArg Neg.neg hfac
 
 /-- Strict-odd analogue of the source-gap theorem.  The source moment is now
 evaluated on the even vector obtained by pulling the odd ground state back
