@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from collections import Counter
+from collections import Counter, deque
 
 
 def _closure(graph: dict[str, list[str]], start: str) -> list[str]:
@@ -32,8 +32,11 @@ def coverage_view(
     external_modules = [m for m in lean_modules if m["repository_scope"] == "EXTERNAL"]
     claims = [n for n in registry_nodes if n["type"] == "RegisteredClaim"]
     routes = [n for n in registry_nodes if n["type"] == "Route"]
+    roots = [d for d in lean_declarations if d["graph_role"] == "REGISTERED_CLAIM_ROOT"]
+    local_deps = [d for d in lean_declarations if d["graph_role"] == "LOCAL_DEPENDENCY"]
+    external_deps = [d for d in lean_declarations if d["graph_role"] == "EXTERNAL_BOUNDARY"]
     return {
-        "schema_version": "RHKG-phase2a-coverage-0.3",
+        "schema_version": "RHKG-phase2b-coverage-0.4",
         "tracked_file_count": len(repo_files),
         "subject_file_count": sum(not row["generated_product"] for row in repo_files),
         "generated_product_count": sum(row["generated_product"] for row in repo_files),
@@ -42,7 +45,10 @@ def coverage_view(
         "local_lean_module_count": len(local_modules),
         "external_lean_module_count": len(external_modules),
         "registered_claim_count": len(claims),
-        "registered_proved_lean_declaration_count": len(lean_declarations),
+        "registered_proved_lean_declaration_count": len(roots),
+        "local_dependency_lean_declaration_count": len(local_deps),
+        "external_boundary_lean_declaration_count": len(external_deps),
+        "lean_declaration_count": len(lean_declarations),
         "route_count": len(routes),
         "node_type_counts": dict(
             sorted(
@@ -100,7 +106,6 @@ def reachability_view(
     }
 
 
-
 def theorem_claim_view(
     lean_declarations: list[dict],
     claims_data: dict,
@@ -109,7 +114,9 @@ def theorem_claim_view(
 ) -> dict:
     claim_by_id = {claim["id"]: claim for claim in claims_data["claims"]}
     declaration_by_name = {
-        declaration["declaration"]: declaration for declaration in lean_declarations
+        declaration["declaration"]: declaration
+        for declaration in lean_declarations
+        if declaration["graph_role"] == "REGISTERED_CLAIM_ROOT"
     }
     entries: list[dict] = []
     bound_claim_ids: set[str] = set()
@@ -137,18 +144,80 @@ def theorem_claim_view(
         )
     entries.sort(key=lambda row: row["claim_id"])
     return {
-        "schema_version": "RHKG-phase2a-theorem-claim-map-0.3",
+        "schema_version": "RHKG-phase2b-theorem-claim-map-0.4",
         "scope": "ALL_PROVED_UNCONDITIONAL_REGISTERED_CLAIMS",
         "binding_authority": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
         "compiler_binding_surface": compiler_binding_source,
         "registered_proved_binding_count": len(entries),
         "entries": entries,
-        "unlinked_registered_claim_ids": sorted(
-            set(claim_by_id) - bound_claim_ids
-        ),
+        "unlinked_registered_claim_ids": sorted(set(claim_by_id) - bound_claim_ids),
         "unlinked_interpretation": (
-            "Unlinked means not PROVED_UNCONDITIONAL under the complete Phase-2A "
-            "registered theorem binding surface; RHKG does not infer proof status."
+            "Unlinked means not PROVED_UNCONDITIONAL under the complete registered "
+            "theorem binding surface; RHKG does not infer proof status."
+        ),
+        "terminal_claim": "RH_OPEN",
+        "graph_theorem_promotion": False,
+    }
+
+
+def theorem_dependency_closure_view(
+    compiler_receipt: list[dict],
+    binding_data: dict,
+) -> dict:
+    row_by_name = {row["declaration"]: row for row in compiler_receipt}
+    entries: list[dict] = []
+
+    for binding in sorted(binding_data["bindings"], key=lambda row: row["id"]):
+        root = binding["theorem"]
+        root_row = row_by_name[root]
+        direct_local = sorted(
+            dep["constant"]
+            for dep in root_row["dependencies"]
+            if row_by_name[dep["constant"]]["repository_scope"] == "LOCAL"
+        )
+        direct_external = sorted(
+            dep["constant"]
+            for dep in root_row["dependencies"]
+            if row_by_name[dep["constant"]]["repository_scope"] == "EXTERNAL"
+        )
+
+        depths: dict[str, int] = {root: 0}
+        external: set[str] = set(direct_external)
+        queue: deque[str] = deque([root])
+        while queue:
+            current = queue.popleft()
+            depth = depths[current]
+            for dep in row_by_name[current]["dependencies"]:
+                target = dep["constant"]
+                target_row = row_by_name[target]
+                if target_row["repository_scope"] == "EXTERNAL":
+                    external.add(target)
+                    continue
+                if target not in depths:
+                    depths[target] = depth + 1
+                    queue.append(target)
+
+        entries.append(
+            {
+                "claim_id": binding["id"],
+                "root_theorem": root,
+                "direct_local_dependencies": direct_local,
+                "transitive_local_dependencies": sorted(name for name in depths if name != root),
+                "direct_external_boundaries": direct_external,
+                "transitive_external_boundaries": sorted(external),
+                "minimum_local_depth": {
+                    name: depths[name] for name in sorted(depths) if name != root
+                },
+            }
+        )
+
+    return {
+        "schema_version": "RHKG-phase2b-theorem-dependency-closure-0.4",
+        "scope": "ALL_PROVED_UNCONDITIONAL_REGISTERED_CLAIMS",
+        "entries": entries,
+        "interpretation": (
+            "Compiler-derived dependency reachability is descriptive. Shared dependencies "
+            "are not automatically mathematically decisive and do not promote claims."
         ),
         "terminal_claim": "RH_OPEN",
         "graph_theorem_promotion": False,
