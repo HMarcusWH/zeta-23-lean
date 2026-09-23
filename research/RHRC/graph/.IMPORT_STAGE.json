@@ -1,0 +1,99 @@
+{
+  "schema_version": "RHKG-import-stage-0.1",
+  "source_commit": "b82b6f1eb2cc5c5cfac09b128e0d358a1b710a3e",
+  "total_expected": 633,
+  "rows": [
+    {
+      "path": "comparator/Challenge.lean",
+      "blob_sha": "7ff8d17e183a8484c0f8ea29adb7f6477704d813",
+      "imports": [
+        "Mathlib"
+      ]
+    },
+    {
+      "path": "comparator/Challenge/XiPrime.lean",
+      "blob_sha": "47c06bb64acb088cd0aaabb1d3aaf71344cf0b33",
+      "imports": [
+        "Mathlib"
+      ]
+    },
+    {
+      "path": "comparator/ChallengeDeps.lean",
+      "blob_sha": "34c754c7ddd9ae06fb16b3e180696694b883f9c5",
+      "imports": [
+        "Mathlib"
+      ]
+    },
+    {
+      "path": "comparator/ChallengeDeps/XiPrime.lean",
+      "blob_sha": "851118523d7291f292485f8d4de1fd89de92f127",
+      "imports": [
+        "Mathlib"
+      ]
+    },
+    {
+      "path": "comparator/PrintAxioms.lean",
+      "blob_sha": "99385cf210927a8c78418131b35905acb4499c91",
+      "imports": [
+        "Solution"
+      ]
+    },
+    {
+      "path": "comparator/PrintAxioms/PairCeiling.lean",
+      "blob_sha": "88a2fe976ba0747f2c5a7d4563f7e838f5f3fadf",
+      "imports": [
+        "Zeta23.PairCeiling.CeilingLaw256",
+        "Zeta23.PairCeiling.Signed"
+      ]
+    },
+    {
+      "path": "comparator/PrintAxioms/XiPrime.lean",
+      "blob_sha": "4655fa74168877ef059c0a9fc02328773bb86b07",
+      "imports": [
+        "Solution.XiPrime"
+      ]
+    },
+    {
+      "path": "comparator/Solution.lean",
+      "blob_sha": "bd5dd641b10983884cafb0a4d7d964a10de32d11",
+      "imports": [
+        "ChallengeDeps",
+        "Zeta23.Unconditional",
+        "Zeta23.FinalMult",
+        "Zeta23.ThmD.Final",
+        "Zeta23.ThmD.Mult",
+        "Zeta23.ThmE.Final",
+        "Zeta23.ThmE.Mult",
+        "Zeta23.ThmDE.Final",
+        "Zeta23.ThmDE.Mult"
+      ]
+    },
+    {
+      "path": "comparator/Solution/XiPrime.lean",
+      "blob_sha": "b5763ff3d75f649f72a3aa5bbee000f73644194c",
+      "imports": [
+        "ChallengeDeps.XiPrime",
+        "Zeta23.XiPrime.ExplicitFormula.ZeroFree",
+        "Zeta23.XiPrime.Final"
+      ]
+    },
+    {
+      "path": "Zeta23.lean",
+      "blob_sha": "0c6f17a3a7eefe1be1421b2721f5d68b351a5b08",
+      "imports": [
+        "Zeta23.Unconditional",
+        "Zeta23.ThmD.Final",
+        "Zeta23.ThmE.Final",
+        "Zeta23.ThmDE.Final",
+        "Zeta23.FinalMult",
+        "Zeta23.ThmD.Mult",
+        "Zeta23.ThmE.Mult",
+        "Zeta23.ThmDE.Mult",
+        "Zeta23.ZeroSide.TightMult",
+        "Zeta23.XiPrime.Final",
+        "Zeta23.PairCeiling.CeilingLaw256",
+        "Zeta23.PairCeiling.Signed"
+      ]
+    }
+  ]
+}
