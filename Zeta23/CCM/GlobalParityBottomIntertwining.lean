@@ -176,10 +176,14 @@ theorem oddEigenmode_pulledBack_shiftedEven_eq_neg_sourceCubic
       E.symm
           (oddCompressedCanonical L K (E v)) =
         (lam : ℂ) • v
-    rw [show E v = w by simp [v, E]]
     change oddCompressedCanonical L K w = (lam : ℂ) • w at hweig
-    rw [hweig, map_smul]
-    simp [v, E]
+    calc
+      E.symm (oddCompressedCanonical L K (E v)) =
+          E.symm (oddCompressedCanonical L K w) := by
+            rw [show E v = w by simp [v, E]]
+      _ = E.symm ((lam : ℂ) • w) := by rw [hweig]
+      _ = (lam : ℂ) • E.symm w := by rw [map_smul]
+      _ = (lam : ℂ) • v := by rfl
   change
     oddCompressedCanonicalConjugated L K (by omega) v -
         evenCompressedCanonical L K v =
