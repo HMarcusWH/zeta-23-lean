@@ -44,7 +44,7 @@ theorem oddGround_pulledBack_source_ne_zero_of_strict
     intro hv
     apply hwne
     apply E.symm.injective
-    simpa [v] using hv
+    exact hv.trans (map_zero E.symm).symm
   have hshift :=
     parityRayleighBottom_gap_mul_norm_sq_le_shifted
       .even L (N + 1)
@@ -103,7 +103,7 @@ theorem oddGround_reverse_rankOne_package
     intro hv
     apply hwne
     apply E.symm.injective
-    simpa [v] using hv
+    exact hv.trans (map_zero E.symm).symm
   have hsource :
       evenQuadraticSourceMoment L (N + 1) v ≠ 0 := by
     simpa [v, E] using
