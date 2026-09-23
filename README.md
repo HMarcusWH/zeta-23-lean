@@ -77,6 +77,17 @@ CONTROL AUTHORITY
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Repository knowledge graph
+
+The repository is adopting a first-class RHRC knowledge graph so formal declarations, registered claims, research routes, experiments, dead ends, Git/PR provenance, and workflow evidence can be traversed as one auditable system instead of rediscovered file by file.
+
+The governing document is [research/RHRC/graph/CONSTITUTION.md](research/RHRC/graph/CONSTITUTION.md).
+
+Key rule: **the graph is a derived integration layer, not a new mathematical authority.** Lean/compiler/CI evidence and the existing RHRC registries/firewalls remain authoritative for the domains they govern. The graph may report, index, and connect those sources; it may not silently promote claims, resurrect dead routes, supersede historical evidence, or change RH_OPEN.
+
+Implementation is staged: repository census and module imports first, then declaration/claim bindings, authority resolution, Git/PR/workflow provenance, historical route memory, and finally operational research preflight.
+
+
 ## Post-#247 programme override
 
 PR #246 and PR #247 supersede older "current", "next", and candidate labels below. Historical sections are retained as provenance unless this override explicitly reactivates them.
