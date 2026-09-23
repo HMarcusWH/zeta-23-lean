@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 
@@ -9,6 +10,7 @@ GRAPH = Path(__file__).resolve().parent
 RHRC = GRAPH.parent
 REPO = RHRC.parents[1]
 GENERATED = GRAPH / "generated"
+GRAPH_SCHEMA = GRAPH / "GRAPH_SCHEMA.json"
 
 FORBIDDEN_PHASE1_RELATIONS = {
     "PROVES",
@@ -33,6 +35,135 @@ def read_jsonl(name: str) -> list[dict]:
     return rows
 
 
+SUPPORTED_SCHEMA_KEYS = {
+    "$schema",
+    "$id",
+    "$defs",
+    "$ref",
+    "title",
+    "type",
+    "oneOf",
+    "allOf",
+    "required",
+    "properties",
+    "additionalProperties",
+    "const",
+    "enum",
+    "minLength",
+}
+
+
+def schema_definition_errors(schema: dict, path: str = "$") -> list[str]:
+    """Fail closed if GRAPH_SCHEMA starts using keywords this validator ignores."""
+    errors: list[str] = []
+    for key in schema:
+        if key not in SUPPORTED_SCHEMA_KEYS:
+            errors.append(f"{path}: unsupported schema keyword {key!r}")
+
+    for key in ("allOf", "oneOf"):
+        for index, child in enumerate(schema.get(key, [])):
+            errors.extend(schema_definition_errors(child, f"{path}.{key}[{index}]"))
+
+    for name, child in schema.get("$defs", {}).items():
+        errors.extend(schema_definition_errors(child, f"{path}.$defs.{name}"))
+
+    for name, child in schema.get("properties", {}).items():
+        errors.extend(schema_definition_errors(child, f"{path}.properties.{name}"))
+
+    return errors
+
+
+def _resolve_ref(ref: str, root: dict) -> dict:
+    prefix = "#/$defs/"
+    if not ref.startswith(prefix):
+        raise ValueError(f"unsupported local schema ref: {ref!r}")
+    name = ref[len(prefix):]
+    try:
+        return root["$defs"][name]
+    except KeyError as exc:
+        raise ValueError(f"unknown local schema ref: {ref!r}") from exc
+
+
+def _type_matches(value: object, expected: str) -> bool:
+    if expected == "object":
+        return isinstance(value, dict)
+    if expected == "array":
+        return isinstance(value, list)
+    if expected == "string":
+        return isinstance(value, str)
+    if expected == "boolean":
+        return isinstance(value, bool)
+    if expected == "integer":
+        return isinstance(value, int) and not isinstance(value, bool)
+    if expected == "number":
+        return isinstance(value, (int, float)) and not isinstance(value, bool)
+    if expected == "null":
+        return value is None
+    raise ValueError(f"unsupported schema type: {expected!r}")
+
+
+def validate_schema_value(
+    value: object,
+    schema: dict,
+    root: dict,
+    path: str = "$",
+) -> list[str]:
+    errors: list[str] = []
+
+    if "$ref" in schema:
+        return validate_schema_value(value, _resolve_ref(schema["$ref"], root), root, path)
+
+    for child in schema.get("allOf", []):
+        errors.extend(validate_schema_value(value, child, root, path))
+
+    if "oneOf" in schema:
+        matches = [
+            index
+            for index, child in enumerate(schema["oneOf"])
+            if not validate_schema_value(value, child, root, path)
+        ]
+        if len(matches) != 1:
+            errors.append(f"{path}: expected exactly one oneOf branch, matched {matches}")
+
+    if "const" in schema and value != schema["const"]:
+        errors.append(f"{path}: expected const {schema['const']!r}, got {value!r}")
+
+    if "enum" in schema and value not in schema["enum"]:
+        errors.append(f"{path}: value {value!r} not in enum {schema['enum']!r}")
+
+    expected_type = schema.get("type")
+    if expected_type is not None and not _type_matches(value, expected_type):
+        errors.append(
+            f"{path}: expected type {expected_type!r}, got {type(value).__name__}"
+        )
+        return errors
+
+    if isinstance(value, str) and "minLength" in schema:
+        if len(value) < schema["minLength"]:
+            errors.append(
+                f"{path}: string shorter than minLength {schema['minLength']}"
+            )
+
+    if isinstance(value, dict):
+        for required in schema.get("required", []):
+            if required not in value:
+                errors.append(f"{path}: missing required property {required!r}")
+
+        properties = schema.get("properties", {})
+        for name, child in properties.items():
+            if name in value:
+                errors.extend(
+                    validate_schema_value(value[name], child, root, f"{path}.{name}")
+                )
+
+        if schema.get("additionalProperties") is False:
+            extras = sorted(set(value) - set(properties))
+            if extras:
+                errors.append(f"{path}: additional properties forbidden: {extras}")
+
+    return errors
+
+
 def main() -> int:
     errors: list[str] = []
 
@@ -40,6 +171,22 @@ def main() -> int:
     lean_modules = read_jsonl("lean_modules.jsonl")
     registry_nodes = read_jsonl("registry_nodes.jsonl")
     relations = read_jsonl("relations.jsonl")
+
+    schema = json.loads(GRAPH_SCHEMA.read_text(encoding="utf-8"))
+    for error in schema_definition_errors(schema):
+        errors.append(f"GRAPH_SCHEMA invalid: {error}")
+    if not errors:
+        for collection_name, rows in (
+            ("repository_files.jsonl", repo_files),
+            ("lean_modules.jsonl", lean_modules),
+            ("registry_nodes.jsonl", registry_nodes),
+            ("relations.jsonl", relations),
+        ):
+            for index, row in enumerate(rows, start=1):
+                for error in validate_schema_value(row, schema, schema):
+                    errors.append(
+                        f"{collection_name}:{index}: schema validation failed: {error}"
+                    )
 
     all_nodes = repo_files + lean_modules + registry_nodes
     node_ids: set[str] = set()
@@ -108,6 +255,18 @@ def main() -> int:
     module_ids = {m["id"] for m in lean_modules}
     local_module_ids = {m["id"] for m in local_modules}
     for rel in relations:
+        kind = rel.get("kind")
+        source = rel.get("source")
+        target = rel.get("target")
+        if all(isinstance(value, str) for value in (kind, source, target)):
+            expected_relation_id = "rh:rel:" + hashlib.sha256(
+                f"{kind}|{source}|{target}".encode("utf-8")
+            ).hexdigest()
+            if rel.get("id") != expected_relation_id:
+                errors.append(
+                    "relation stable-ID mismatch: "
+                    f"{rel.get('id')!r} != {expected_relation_id!r}"
+                )
         if rel.get("source") not in node_ids:
             errors.append(f"missing relation source endpoint: {rel}")
         if rel.get("target") not in node_ids:
