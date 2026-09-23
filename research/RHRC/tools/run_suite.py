@@ -17,6 +17,7 @@ def main() -> int:
     run([sys.executable, str(ROOT / "tools" / "claim_lint.py")])
     run([sys.executable, str(ROOT / "tools" / "registry_lint.py")])
     run([sys.executable, str(ROOT / "tools" / "promoted_binding_lint.py")])
+    run([sys.executable, str(ROOT / "tools" / "registered_theorem_binding_lint.py")])
     run([sys.executable, str(ROOT / "tools" / "lean_imports.py")])
     run([sys.executable, str(ROOT / "tools" / "arithmetic_firewall_lint.py")])
     run([sys.executable, str(ROOT / "tools" / "million_dollar_firewall_lint.py")])

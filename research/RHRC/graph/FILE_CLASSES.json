@@ -47,6 +47,12 @@
       "trust_zone": "AUDIT_ONLY"
     },
     {
+      "id": "rhrc_lean_audit",
+      "pattern": "^Zeta23/RHRC/.*\\.lean$",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
       "id": "ccm_formal_core",
       "pattern": "^Zeta23/CCM/.*\\.lean$",
       "file_class": "LEAN_SOURCE",
@@ -168,7 +174,7 @@
     },
     {
       "id": "core_registry",
-      "pattern": "^research/RHRC/(CLAIM_REGISTRY|R003_PROMOTED_BINDINGS)\\.json$",
+      "pattern": "^research/RHRC/(CLAIM_REGISTRY|R003_PROMOTED_BINDINGS|REGISTERED_THEOREM_BINDINGS)\\.json$",
       "file_class": "REGISTRY",
       "trust_zone": "AUDIT_ONLY"
     },

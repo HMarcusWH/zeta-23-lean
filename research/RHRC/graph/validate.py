@@ -340,37 +340,87 @@ def main() -> int:
         errors.append("ROUTE_REGISTRY projection is not exact")
 
 
+    registered_bindings = json.loads(
+        (REPO / graph_build.REGISTERED_BINDINGS).read_text(encoding="utf-8")
+    )
     promoted = json.loads(
         (REPO / graph_build.PROMOTED_BINDINGS).read_text(encoding="utf-8")
     )
     claim_by_id = {claim["id"]: claim for claim in claim_source["claims"]}
+    proved_claims = {
+        claim["id"]: claim
+        for claim in claim_source["claims"]
+        if claim.get("status") == "PROVED_UNCONDITIONAL"
+    }
+    open_claim_ids = {
+        claim["id"]
+        for claim in claim_source["claims"]
+        if claim.get("status") == "OPEN"
+    }
+    expected_open_claim_ids = {
+        "C_RH",
+        "R001_PRIME_UPPER",
+        "R002_WINDOWED_VISIBILITY",
+    }
+    if open_claim_ids != expected_open_claim_ids:
+        errors.append(
+            "OPEN registered-claim set drift: "
+            f"expected={sorted(expected_open_claim_ids)} "
+            f"actual={sorted(open_claim_ids)}"
+        )
+
+    if registered_bindings.get("scope") != "ALL_PROVED_UNCONDITIONAL_REGISTERED_CLAIMS":
+        errors.append("registered theorem binding manifest scope drift")
+    if registered_bindings.get("terminal_claim") != "RH_OPEN":
+        errors.append("registered theorem binding manifest does not preserve RH_OPEN")
+
+    binding_by_id = {row["id"]: row for row in registered_bindings["bindings"]}
+    if len(binding_by_id) != len(registered_bindings["bindings"]):
+        errors.append("duplicate claim IDs in registered theorem binding manifest")
+    if set(binding_by_id) != set(proved_claims):
+        errors.append(
+            "registered theorem binding completeness mismatch: "
+            f"missing={sorted(set(proved_claims) - set(binding_by_id))} "
+            f"extra={sorted(set(binding_by_id) - set(proved_claims))}"
+        )
+
+    promoted_by_id = {row["id"]: row for row in promoted["bindings"]}
+    for claim_id, row in promoted_by_id.items():
+        registered = binding_by_id.get(claim_id)
+        if registered is None:
+            errors.append(f"historical R003 binding missing from complete manifest: {claim_id}")
+        elif registered.get("theorem") != row.get("theorem"):
+            errors.append(f"historical R003 theorem drift in complete manifest: {claim_id}")
+
     declaration_by_name = {d["declaration"]: d for d in lean_declarations}
     expected_declarations: dict[str, dict] = {}
     expected_declares: set[tuple[str, str]] = set()
     expected_proves: set[tuple[str, str]] = set()
 
-    for binding in promoted["bindings"]:
-        claim = claim_by_id.get(binding["id"])
-        if claim is None:
-            errors.append(f"promoted binding references unknown claim: {binding['id']}")
+    for claim_id, claim in proved_claims.items():
+        binding = binding_by_id.get(claim_id)
+        if binding is None:
             continue
-        if claim.get("route") != "R003_ccm_bridge":
-            errors.append(f"promoted binding is outside R003_ccm_bridge: {binding['id']}")
-        if claim.get("status") != "PROVED_UNCONDITIONAL":
-            errors.append(f"promoted binding is not PROVED_UNCONDITIONAL: {binding['id']}")
-        if claim.get("theorem") != binding["theorem"]:
+        expected_binding = {
+            "id": claim_id,
+            "theorem": claim.get("theorem"),
+            "source": claim.get("source"),
+        }
+        if claim.get("route"):
+            expected_binding["route"] = claim["route"]
+        if binding != expected_binding:
             errors.append(
-                f"promoted binding theorem mismatch for {binding['id']}: "
-                f"{binding['theorem']!r} != {claim.get('theorem')!r}"
+                f"registered theorem binding row drift for {claim_id}: "
+                f"expected={expected_binding!r} actual={binding!r}"
             )
             continue
 
-        source_path = claim.get("source")
+        source_path = binding["source"]
         module = local_module_by_path.get(source_path)
         if module is None:
             errors.append(
-                f"promoted binding source is not an indexed local Lean module: "
-                f"{binding['id']} -> {source_path!r}"
+                "registered theorem binding source is not an indexed local Lean module: "
+                f"{claim_id} -> {source_path!r}"
             )
             continue
 
@@ -383,19 +433,20 @@ def main() -> int:
             "module_id": module["id"],
             "source_path": source_path,
             "source_file_id": module["file_id"],
-            "binding_scope": "R003_PROMOTED",
-            "authority_role": "PROMOTED_CLAIM_DECLARATION",
-            "binding_source": graph_build.PROMOTED_BINDINGS,
-            "compiler_binding_source": graph_build.CLAIM_BINDINGS_LEAN,
+            "binding_scope": "REGISTERED_PROVED",
+            "authority_role": "REGISTERED_CLAIM_DECLARATION",
+            "binding_source": graph_build.REGISTERED_BINDINGS,
+            "compiler_binding_source": graph_build.REGISTERED_BINDINGS_LEAN,
+            "historical_r003_promoted": claim_id in promoted_by_id,
             "source_locator": module["source_locator"],
         }
         expected_declarations[binding["theorem"]] = expected
         expected_declares.add((module["id"], decl_id))
-        expected_proves.add((decl_id, graph_build.claim_id(binding["id"])))
+        expected_proves.add((decl_id, graph_build.claim_id(claim_id)))
 
     if set(declaration_by_name) != set(expected_declarations):
         errors.append(
-            "promoted Lean declaration population mismatch: "
+            "registered proved Lean declaration population mismatch: "
             f"missing={sorted(set(expected_declarations) - set(declaration_by_name))} "
             f"extra={sorted(set(declaration_by_name) - set(expected_declarations))}"
         )
@@ -429,10 +480,12 @@ def main() -> int:
     theorem_claim_map = json.loads(
         (GENERATED / "THEOREM_CLAIM_MAP.json").read_text(encoding="utf-8")
     )
-    if theorem_claim_map.get("scope") != "R003_PROMOTED_BINDINGS_ONLY":
+    if theorem_claim_map.get("scope") != "ALL_PROVED_UNCONDITIONAL_REGISTERED_CLAIMS":
         errors.append("THEOREM_CLAIM_MAP scope drift")
-    if theorem_claim_map.get("promoted_binding_count") != len(promoted["bindings"]):
-        errors.append("THEOREM_CLAIM_MAP promoted-binding count drift")
+    if theorem_claim_map.get("registered_proved_binding_count") != len(proved_claims):
+        errors.append("THEOREM_CLAIM_MAP proved-binding count drift")
+    if set(theorem_claim_map.get("unlinked_registered_claim_ids", [])) != open_claim_ids:
+        errors.append("THEOREM_CLAIM_MAP unlinked set is not exactly the OPEN claim set")
     if theorem_claim_map.get("terminal_claim") != "RH_OPEN":
         errors.append("THEOREM_CLAIM_MAP does not preserve RH_OPEN")
     if theorem_claim_map.get("graph_theorem_promotion") is not False:
@@ -465,7 +518,7 @@ def main() -> int:
         "RHKG VALIDATION: PASS "
         f"({len(repo_files)} files; {len(local_modules)} local Lean modules; "
         f"{len(external_modules)} external import targets; "
-        f"{len(lean_declarations)} promoted Lean declarations; "
+        f"{len(lean_declarations)} registered proved Lean declarations; "
         f"{len(claim_nodes)} claim mirrors; {len(route_nodes)} route mirrors; "
         f"{len(relations)} relations; terminal claim RH_OPEN)"
     )

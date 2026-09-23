@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "rhkg-phase2a-graph-schema-0.2",
-  "title": "RHKG Phase-2A record schema",
+  "$id": "rhkg-phase2a-graph-schema-0.3",
+  "title": "RHKG Phase-2A complete registered theorem record schema",
   "type": "object",
   "oneOf": [
     {
@@ -378,10 +378,10 @@
               "minLength": 1
             },
             "binding_scope": {
-              "const": "R003_PROMOTED"
+              "const": "REGISTERED_PROVED"
             },
             "authority_role": {
-              "const": "PROMOTED_CLAIM_DECLARATION"
+              "const": "REGISTERED_CLAIM_DECLARATION"
             },
             "binding_source": {
               "type": "string",
@@ -393,6 +393,9 @@
             },
             "source_locator": {
               "type": "object"
+            },
+            "historical_r003_promoted": {
+              "type": "boolean"
             }
           },
           "required": [
@@ -405,7 +408,8 @@
             "authority_role",
             "binding_source",
             "compiler_binding_source",
-            "source_locator"
+            "source_locator",
+            "historical_r003_promoted"
           ]
         }
       ]

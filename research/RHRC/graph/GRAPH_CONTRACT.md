@@ -1,7 +1,7 @@
 # RHKG Phase-2A Graph Contract
 
-**Version:** 0.2  
-**Scope:** Phase-1 repository census/import graph plus exact promoted R003 declaration/claim bindings  
+**Version:** 0.3  
+**Scope:** Phase-1 repository census/import graph plus complete exact registered proved declaration/claim bindings  
 **Authority:** derived only; subordinate to the RHKG Constitution and existing RHRC sources
 
 ## 1. Stable IDs
@@ -58,9 +58,11 @@ Phase 2A additionally emits exactly:
 - `LeanModule DECLARES LeanDeclaration`
 - `LeanDeclaration PROVES RegisteredClaim`
 
-The Phase-2A declaration population is restricted to the exact reviewed
-`R003_PROMOTED_BINDINGS.json` surface. It does not discover or promote new
-claims.
+The Phase-2A declaration population is complete over the exact reviewed
+`REGISTERED_THEOREM_BINDINGS.json` surface: every current
+`PROVED_UNCONDITIONAL` registered claim and no OPEN claim. The frozen
+`R003_PROMOTED_BINDINGS.json` surface remains an independently linted historical
+subset. RHKG does not discover or promote new claims.
 
 Phase 2A MUST NOT emit `USES_CONSTANT`, mathematical `DEPENDS_ON`,
 `KILLS_ROUTE`, `REOPENS`, or scientific supersession edges.
@@ -70,10 +72,13 @@ Phase 2A MUST NOT emit `USES_CONSTANT`, mathematical `DEPENDS_ON`,
 - file/module location and local imports: `GIT_EXACT`
 - claim/route mirrors and memberships: `REGISTRY_EXACT`
 - Phase-2A `DECLARES` and `PROVES`: `REGISTRY_EXACT`, derived only from
-  the reviewed promoted-binding manifest plus exact claim-registry source/theorem fields.
+  the complete registered-theorem manifest plus exact claim-registry
+  source/theorem/route fields.
 
-The explicit `ClaimBindings.lean` compiler surface independently checks that
-every promoted theorem name exists and exposes its axiom printout. Phase 2A does
+The explicit `Zeta23/RHRC/RegisteredClaimBindings.lean` compiler surface
+independently checks that every registered proved theorem name exists and exposes
+its axiom printout. The historical `Zeta23/CCM/ClaimBindings.lean` surface
+continues to independently protect the frozen R003 promoted subset. Phase 2A does
 not yet claim elaborated declaration dependency provenance; that belongs to the
 later `USES_CONSTANT` phase.
 
@@ -115,9 +120,11 @@ all local import targets     -> resolvable local module
 all other imports            -> explicit EXTERNAL LeanModule
 
 generated regeneration       = byte-deterministic
-promoted declaration set     = R003_PROMOTED_BINDINGS exact
-DECLARES projection          = exact
-PROVES projection            = exact
+registered proved declarations = all PROVED_UNCONDITIONAL claims exact
+historical R003 subset          = R003_PROMOTED_BINDINGS exact
+DECLARES projection            = exact
+PROVES projection              = exact
+unlinked registered claims     = exactly OPEN claims
 terminal claim               = RH_OPEN
 graph theorem promotion      = false
 ```
@@ -161,23 +168,40 @@ RHKG reports repository structure. It does not create theorem authority.
 **RH remains OPEN.**
 
 
-## 11. Phase-2A promoted declaration authority
+## 11. Phase-2A complete registered theorem authority
 
-`R003_PROMOTED_BINDINGS.json` is the sole Phase-2A binding authority.
+`REGISTERED_THEOREM_BINDINGS.json` is the complete Phase-2A binding authority.
+It must be exactly equal to the set of current registered claims with
+`status = PROVED_UNCONDITIONAL`, carrying the exact registered theorem, source,
+and route where present.
 
-For every binding, RHKG requires:
+For every complete binding, RHKG requires:
 
-- an existing `PROVED_UNCONDITIONAL` R003 registered claim;
-- exact theorem-name equality between the binding manifest and claim registry;
+- an existing `PROVED_UNCONDITIONAL` registered claim;
+- exact theorem/source/route equality between manifest and claim registry;
 - an indexed local Lean source from the claim registry;
 - one `LeanDeclaration` node;
 - one exact `DECLARES` edge from that source module;
-- one exact `PROVES` edge to the registered claim.
+- one exact `PROVES` edge to the registered claim;
+- explicit `#check` and `#print axioms` coverage in
+  `Zeta23/RHRC/RegisteredClaimBindings.lean`.
 
-The generated `THEOREM_CLAIM_MAP.json` is a derived view of this authority.
-Claims outside this binding surface are reported as unlinked, never as unproved.
+The frozen `R003_PROMOTED_BINDINGS.json` and
+`Zeta23/CCM/ClaimBindings.lean` remain intact as an independently checked
+historical subset. Each declaration record marks whether it belongs to that
+historical R003 surface.
 
-Repository-wide declaration discovery and declaration-level
-`USES_CONSTANT` edges remain deferred.
+The generated `THEOREM_CLAIM_MAP.json` must therefore bind all and only the
+current proved registered claims. Its unlinked set must be exactly the OPEN claim
+set. At this state that set is:
+
+- `C_RH`
+- `R001_PRIME_UPPER`
+- `R002_WINDOWED_VISIBILITY`
+
+An unlinked OPEN claim is not a graph error. Binding one of these as proved is.
+
+Repository-wide declaration discovery beyond registered theorem authority and
+declaration-level `USES_CONSTANT` edges remain deferred.
 
 **RH remains OPEN.**

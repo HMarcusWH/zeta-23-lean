@@ -1,9 +1,8 @@
 {
   "claim_firewall": "RH_OPEN",
   "deferred_to_later_phases": [
-    "repository-wide Lean declaration extraction beyond promoted R003 authority",
+    "repository-wide Lean declaration extraction beyond registered theorem authority",
     "declaration-level USES_CONSTANT dependencies",
-    "non-R003 explicit promoted-binding normalization",
     "build/reachability status for standalone Lean modules",
     "multi-axis authority/current-state resolution",
     "Git/PR/workflow provenance graph",
@@ -228,7 +227,7 @@
     "Mathlib.Topology.Order.Compact",
     "Mathlib.Topology.Piecewise"
   ],
-  "schema_version": "RHKG-phase2a-unresolved-0.2",
+  "schema_version": "RHKG-phase2a-unresolved-0.3",
   "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_2A",
   "standalone_or_auxiliary_modules": [
     "Challenge.XiPrime",
@@ -244,7 +243,8 @@
     "Zeta23.FromPNTPlus.MellinCalculus",
     "Zeta23.FromPNTPlus.SmoothExistence",
     "Zeta23.Permansson.GeneralFramework",
-    "Zeta23.Permansson.Theorem31"
+    "Zeta23.Permansson.Theorem31",
+    "Zeta23.RHRC.RegisteredClaimBindings"
   ],
   "unknown_file_classes": []
 }

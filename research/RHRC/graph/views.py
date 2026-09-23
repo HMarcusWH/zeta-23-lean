@@ -33,7 +33,7 @@ def coverage_view(
     claims = [n for n in registry_nodes if n["type"] == "RegisteredClaim"]
     routes = [n for n in registry_nodes if n["type"] == "Route"]
     return {
-        "schema_version": "RHKG-phase2a-coverage-0.2",
+        "schema_version": "RHKG-phase2a-coverage-0.3",
         "tracked_file_count": len(repo_files),
         "subject_file_count": sum(not row["generated_product"] for row in repo_files),
         "generated_product_count": sum(row["generated_product"] for row in repo_files),
@@ -42,7 +42,7 @@ def coverage_view(
         "local_lean_module_count": len(local_modules),
         "external_lean_module_count": len(external_modules),
         "registered_claim_count": len(claims),
-        "promoted_lean_declaration_count": len(lean_declarations),
+        "registered_proved_lean_declaration_count": len(lean_declarations),
         "route_count": len(routes),
         "node_type_counts": dict(
             sorted(
@@ -104,7 +104,7 @@ def reachability_view(
 def theorem_claim_view(
     lean_declarations: list[dict],
     claims_data: dict,
-    promoted_data: dict,
+    binding_data: dict,
     compiler_binding_source: str,
 ) -> dict:
     claim_by_id = {claim["id"]: claim for claim in claims_data["claims"]}
@@ -112,11 +112,11 @@ def theorem_claim_view(
         declaration["declaration"]: declaration for declaration in lean_declarations
     }
     entries: list[dict] = []
-    promoted_claim_ids: set[str] = set()
-    for binding in promoted_data["bindings"]:
+    bound_claim_ids: set[str] = set()
+    for binding in binding_data["bindings"]:
         claim = claim_by_id[binding["id"]]
         declaration = declaration_by_name[binding["theorem"]]
-        promoted_claim_ids.add(binding["id"])
+        bound_claim_ids.add(binding["id"])
         entries.append(
             {
                 "claim_id": binding["id"],
@@ -131,23 +131,24 @@ def theorem_claim_view(
                 "source_file_id": declaration["source_file_id"],
                 "binding_source": declaration["binding_source"],
                 "compiler_binding_source": compiler_binding_source,
+                "historical_r003_promoted": declaration["historical_r003_promoted"],
                 "provenance": "REGISTRY_EXACT",
             }
         )
     entries.sort(key=lambda row: row["claim_id"])
     return {
-        "schema_version": "RHKG-phase2a-theorem-claim-map-0.2",
-        "scope": "R003_PROMOTED_BINDINGS_ONLY",
-        "binding_authority": "research/RHRC/R003_PROMOTED_BINDINGS.json",
+        "schema_version": "RHKG-phase2a-theorem-claim-map-0.3",
+        "scope": "ALL_PROVED_UNCONDITIONAL_REGISTERED_CLAIMS",
+        "binding_authority": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
         "compiler_binding_surface": compiler_binding_source,
-        "promoted_binding_count": len(entries),
+        "registered_proved_binding_count": len(entries),
         "entries": entries,
         "unlinked_registered_claim_ids": sorted(
-            set(claim_by_id) - promoted_claim_ids
+            set(claim_by_id) - bound_claim_ids
         ),
         "unlinked_interpretation": (
-            "Unlinked means outside the exact Phase-2A promoted-binding authority "
-            "surface; it does not mean unproved."
+            "Unlinked means not PROVED_UNCONDITIONAL under the complete Phase-2A "
+            "registered theorem binding surface; RHKG does not infer proof status."
         ),
         "terminal_claim": "RH_OPEN",
         "graph_theorem_promotion": False,
