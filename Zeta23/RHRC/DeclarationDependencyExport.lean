@@ -1,5 +1,6 @@
 import Zeta23.RHRC.RegisteredClaimBindings
 import Lean.Elab.Command
+import Lean.PrivateName
 import Lean.Util.FoldConsts
 
 open Lean
@@ -48,8 +49,8 @@ private def emitDeclaration (env : Environment) (decl : Name) : CommandElabM Uni
   let moduleText := match moduleOf? env decl with
     | some modName => modName.toString
     | none => "-"
-  let internalText := if decl.isInternal then "1" else "0"
-  liftIO <| IO.println s!"RHKG_DEP_DECL\t{decl}\t{moduleText}\t{kindString info}\t{internalText}"
+  let privateOrInternalText := if decl.isInternal || isPrivateName decl then "1" else "0"
+  liftIO <| IO.println s!"RHKG_DEP_DECL\t{decl}\t{moduleText}\t{kindString info}\t{privateOrInternalText}"
 
 private def emitEdge (source target : Name) (channel : String) : CommandElabM Unit := do
   liftIO <| IO.println s!"RHKG_DEP_EDGE\t{source}\t{target}\t{channel}"
@@ -71,14 +72,15 @@ private partial def visit
           | none => #[]
         let structureDeps := structuralDependencies info
 
+        -- Preserve exact expression-level self references if Lean emits them.
+        -- Structural membership self-links are filtered below because they are
+        -- declaration-family bookkeeping rather than constant use.
         for dep in typeDeps do
-          if dep != decl then
-            emitDeclaration env dep
-            emitEdge decl dep "TYPE"
+          emitDeclaration env dep
+          emitEdge decl dep "TYPE"
         for dep in valueDeps do
-          if dep != decl then
-            emitDeclaration env dep
-            emitEdge decl dep "VALUE"
+          emitDeclaration env dep
+          emitEdge decl dep "VALUE"
         for dep in structureDeps do
           if dep != decl then
             emitDeclaration env dep
@@ -86,7 +88,7 @@ private partial def visit
 
         let mut next := rest
         for dep in typeDeps ++ valueDeps ++ structureDeps do
-          if dep != decl && isProjectLocalModule (moduleOf? env dep) then
+          if isProjectLocalModule (moduleOf? env dep) then
             next := dep :: next
         visit env next (visited.insert decl)
 
