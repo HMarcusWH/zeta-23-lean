@@ -99,8 +99,11 @@ def module_name(path: str) -> str:
 
 
 def relation(kind: str, source: str, target: str, provenance: str) -> dict:
+    # Relation identity is conceptual: provenance describes the evidence for the
+    # edge, but does not split one (kind, source, target) relation into multiple
+    # graph identities. This matches GRAPH_CONTRACT.md.
     digest = hashlib.sha256(
-        f"{kind}|{source}|{target}|{provenance}".encode("utf-8")
+        f"{kind}|{source}|{target}".encode("utf-8")
     ).hexdigest()
     return {
         "id": "rh:rel:" + digest,
@@ -283,12 +286,20 @@ def build_records() -> dict[str, object]:
             }
         )
 
-    relations_by_key: dict[tuple[str, str, str, str], dict] = {}
+    relations_by_key: dict[tuple[str, str, str], dict] = {}
 
     def add_rel(kind: str, source: str, target: str, provenance: str) -> None:
-        relations_by_key[(kind, source, target, provenance)] = relation(
-            kind, source, target, provenance
-        )
+        key = (kind, source, target)
+        existing = relations_by_key.get(key)
+        if existing is not None:
+            if existing["provenance"] != provenance:
+                raise RuntimeError(
+                    "conflicting provenance for conceptual relation "
+                    f"{kind} {source} -> {target}: "
+                    f"{existing['provenance']} vs {provenance}"
+                )
+            return
+        relations_by_key[key] = relation(kind, source, target, provenance)
 
     for source in repo_files:
         add_rel("CONTAINS", REPOSITORY_ID, source["id"], "GIT_EXACT")

@@ -49,7 +49,7 @@
   "relation_count": 4508,
   "route_count": 4,
   "schema_version": "RHKG-phase1-coverage-0.1",
-  "subject_digest_sha256": "5662376d22f53ff879c94ea63815099fd4874552dd30c975a4176d67209d25af",
+  "subject_digest_sha256": "614200135390f067dafb173941cc32fa633be597651c270439b3f0a6d9ee5b50",
   "subject_file_count": 1141,
   "terminal_claim": "RH_OPEN",
   "tracked_file_count": 1148,
