@@ -256,9 +256,10 @@ theorem
         (c.retainedRealSourceScalar * c.retainedRealCrossParityGamma) *
           c.retainedOddShellCenter := by
     simpa [mul_assoc, mul_left_comm, mul_comm] using hpos
-  exact (mul_pos_iff.mp hprodq).resolve_right (by
-    right
-    exact ⟨by linarith, by linarith⟩) |>.2
+  rcases (mul_pos_iff.mp hprodq) with hpp | hnn
+  · exact hpp.1
+  · exfalso
+    linarith [hqpos, hnn.2]
 
 /-- Compact strict-even ground package. -/
 theorem
