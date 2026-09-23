@@ -1399,6 +1399,123 @@
         "Zeta23.CCM.DictionaryTentMollifierSupport",
         "Zeta23.CCM.DictionaryDeterministicRHS"
       ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentTransform.lean",
+      "blob_sha": "43a9b2b6af8e7be05478a9c6788eab91625e4463",
+      "imports": [
+        "Zeta23.CCM.DictionaryTent",
+        "Zeta23.CCM.ComplexMomentIntegral"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentZeroLimit.lean",
+      "blob_sha": "95aa14595297c86b0462067e317869682901cd5e",
+      "imports": [
+        "Zeta23.CCM.DictionaryTentMollifierLimit",
+        "Zeta23.CCM.DictionaryTentZeroSummability",
+        "Mathlib.Analysis.Normed.Group.Tannery",
+        "Mathlib.Analysis.Normed.Module.FiniteDimension"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryTentZeroSummability.lean",
+      "blob_sha": "157101a33aa649693bfcfc9efa37de45bcac7d78",
+      "imports": [
+        "Zeta23.CCM.DictionaryTentDecay",
+        "Zeta23.WeilEF.ZeroSummability"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryZeroSideBridge.lean",
+      "blob_sha": "31ce30a38c2d3c537e0aae7bbb82197058a989c2",
+      "imports": [
+        "Zeta23.CCM.DictionaryZeroSideTentDefect",
+        "Zeta23.CCM.DictionaryTentEFExtension"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryZeroSideCompletion.lean",
+      "blob_sha": "4c1f63c78a5b566a4944f271fa19d6abf0879f5c",
+      "imports": [
+        "Zeta23.CCM.DictionaryZeroSideMatrix",
+        "Zeta23.CCM.CodimOneMatrixCompletion"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryZeroSideDisplacement.lean",
+      "blob_sha": "299d427ade299ebec27ed88bf34f360f2d594662",
+      "imports": [
+        "Zeta23.CCM.DictionaryZeroSideBridge",
+        "Zeta23.CCM.Displacement"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryZeroSideMatrix.lean",
+      "blob_sha": "4dde05b4dcb98bf0253ffb328ffca2e1599ff1f3",
+      "imports": [
+        "Zeta23.CCM.DictionaryZeroSideSummability",
+        "Zeta23.CCM.DictionaryFiniteExpansion",
+        "Zeta23.CCM.DictionarySmoothCorePolarization",
+        "Zeta23.CCM.CodimOneMatrixCompletion"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryZeroSideSummability.lean",
+      "blob_sha": "8f0eee30ad79a918471f054ba7fd14dd6b2dfd22",
+      "imports": [
+        "Zeta23.CCM.DictionaryTentZeroSummability",
+        "Zeta23.CCM.DictionaryResidualSecondOrderGluing",
+        "Zeta23.WeilEF.ZeroSummability"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DictionaryZeroSideTentDefect.lean",
+      "blob_sha": "7ee8cb4e7b39b272f93cbd100c1e5a6d123c3eeb",
+      "imports": [
+        "Zeta23.CCM.DictionaryZeroSideCompletion"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/Displacement.lean",
+      "blob_sha": "18859d81e629f9158bb958fa7ad3a218ffaa7658",
+      "imports": [
+        "Zeta23.CCM.DividedDifference",
+        "Zeta23.ExceptionalZero.DisplacementTransfer"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/DividedDifference.lean",
+      "blob_sha": "b062fe69b35c73bda5d67a0b08c57efdd9ecb4a1",
+      "imports": [
+        "Zeta23.CCM.FiniteMatrix",
+        "Zeta23.ExceptionalZero.DisplacementTransfer"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/FiniteDictionary.lean",
+      "blob_sha": "b7f221e8f7ac96ffd9df03c31d63567e17757b7a",
+      "imports": [
+        "Zeta23.CCM.SourceMatrix",
+        "Zeta23.ExplicitFormula"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/FiniteMatrix.lean",
+      "blob_sha": "bc4f798f03becdabccdce05aff96ccdfa4b61c53",
+      "imports": [
+        "Zeta23.CCM.Components",
+        "Mathlib.Data.Matrix.Mul"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/FirstBadIntrinsicBlock.lean",
+      "blob_sha": "e74ec4c072741449ddbbad9e47d7627b48e9eefd",
+      "imports": [
+        "Zeta23.CCM.FirstBadRigidity",
+        "Zeta23.CCM.GlobalFirstBad",
+        "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional"
+      ]
     }
   ],
   "all_lean": [
