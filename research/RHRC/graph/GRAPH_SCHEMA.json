@@ -1,0 +1,213 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rhkg-phase1-graph-schema-0.1",
+  "title": "RHKG Phase-1 record schema",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/repository"
+    },
+    {
+      "$ref": "#/$defs/repoFile"
+    },
+    {
+      "$ref": "#/$defs/leanModule"
+    },
+    {
+      "$ref": "#/$defs/registeredClaim"
+    },
+    {
+      "$ref": "#/$defs/route"
+    },
+    {
+      "$ref": "#/$defs/relation"
+    }
+  ],
+  "$defs": {
+    "base": {
+      "type": "object",
+      "required": [
+        "id",
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "repository": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "Repository"
+            },
+            "repository": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "repository"
+          ]
+        }
+      ]
+    },
+    "repoFile": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "RepoFile"
+            },
+            "path": {
+              "type": "string"
+            },
+            "file_class": {
+              "type": "string"
+            },
+            "trust_zone": {
+              "type": "string"
+            },
+            "generated_product": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "path",
+            "file_class",
+            "trust_zone",
+            "generated_product"
+          ]
+        }
+      ]
+    },
+    "leanModule": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "LeanModule"
+            },
+            "module": {
+              "type": "string"
+            },
+            "repository_scope": {
+              "enum": [
+                "LOCAL",
+                "EXTERNAL"
+              ]
+            }
+          },
+          "required": [
+            "module",
+            "repository_scope"
+          ]
+        }
+      ]
+    },
+    "registeredClaim": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "RegisteredClaim"
+            },
+            "claim_id": {
+              "type": "string"
+            },
+            "authority_role": {
+              "const": "NORMALIZED_MIRROR"
+            },
+            "projection": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "claim_id",
+            "authority_role",
+            "projection"
+          ]
+        }
+      ]
+    },
+    "route": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "Route"
+            },
+            "route_id": {
+              "type": "string"
+            },
+            "authority_role": {
+              "const": "NORMALIZED_MIRROR"
+            },
+            "projection": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "route_id",
+            "authority_role",
+            "projection"
+          ]
+        }
+      ]
+    },
+    "relation": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "Relation"
+            },
+            "kind": {
+              "type": "string"
+            },
+            "source": {
+              "type": "string"
+            },
+            "target": {
+              "type": "string"
+            },
+            "provenance": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "source",
+            "target",
+            "provenance"
+          ]
+        }
+      ]
+    }
+  }
+}
