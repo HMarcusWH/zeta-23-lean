@@ -223,7 +223,7 @@ theorem
     have hbadSucc :
         ParityBad .odd fb.L (fb.Nstar + 1) :=
       parityBad_of_negative_eigenmode hlam hvne hveig
-    rw [fb.succ_eq]
+    rw [← fb.succ_eq]
     exact hbadSucc
   let c :=
     b.toBiRegularFirstBad.reselectParity .odd hbadOdd
@@ -244,7 +244,7 @@ theorem
     rfl
   · rw [heq]
     rfl
-  · rw [hlamEq, heq]
+  · rw [hlamEq]
     rfl
 
 end Zeta23.CCM
