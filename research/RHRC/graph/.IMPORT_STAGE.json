@@ -1762,6 +1762,131 @@
         "Zeta23.CCM.GlobalParityBottomIntertwining",
         "Zeta23.CCM.CubicSecularEquation"
       ]
+    },
+    {
+      "path": "Zeta23/CCM/GoodSectorKernelAnnihilation.lean",
+      "blob_sha": "8a361475be58ddc9573a587b0a37f70dba8688a2",
+      "imports": [
+        "Zeta23.CCM.ParitySourceMomentFourRigidity",
+        "Zeta23.CCM.ZeroShiftBranchResponse"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/HermitianSchurEnvelopeDerivative.lean",
+      "blob_sha": "5c3eb83a02ee15564f7706749363e47654e7c574",
+      "imports": [
+        "Zeta23.CCM.SchurEnvelopeDerivative",
+        "Mathlib.Analysis.Complex.Basic"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/Kernel.lean",
+      "blob_sha": "372c90ad1ae7cd7b6a7d23eb0c61c92091643127",
+      "imports": [
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/KernelAnalysis.lean",
+      "blob_sha": "4a0c73f9a58c58f26570006faede562d4e45fa7b",
+      "imports": [
+        "Zeta23.CCM.Kernel",
+        "Zeta23.ExplicitFormula",
+        "Mathlib.MeasureTheory.Integral.CompactlySupported"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/KernelSourceTransport.lean",
+      "blob_sha": "9b435df265203694ed433ebb076bf34c62457161",
+      "imports": [
+        "Zeta23.CCM.CrossParityQuotientTransport",
+        "Zeta23.CCM.ZeroShiftBranchResponse",
+        "Zeta23.CCM.SourceMomentDecomposition"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/LiftedPredecessorDeterminantRigidity.lean",
+      "blob_sha": "31f2530c45e944f7f2e932210e738e53db09fcfb",
+      "imports": [
+        "Zeta23.CCM.FrozenIntrinsicPredecessorComplex",
+        "Mathlib.Algebra.Polynomial.Roots",
+        "Mathlib.LinearAlgebra.Charpoly.Basic"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/LiftedPredecessorRegularity.lean",
+      "blob_sha": "e18333faa4a20de901c6845f3f75efb6cc1aa68d",
+      "imports": [
+        "Zeta23.CCM.FrozenIntrinsicPredecessorHolomorphy",
+        "Zeta23.CCM.LiftedPredecessorDeterminantRigidity",
+        "Zeta23.CCM.CanonicalApertureRegularityScaffold",
+        "Mathlib.Analysis.Analytic.IsolatedZeros",
+        "Mathlib.Analysis.Complex.Convex",
+        "Mathlib.Analysis.Real.Pi.Bounds"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/LocalizedBasis.lean",
+      "blob_sha": "e58e9f212c52fa7ead42baad6f804d74550f0346",
+      "imports": [
+        "Zeta23.CCM.DictionaryDeterministicRHS",
+        "Mathlib.Analysis.SpecialFunctions.Integrals.Basic",
+        "Mathlib.Analysis.SpecialFunctions.ExpDeriv"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/LocalizedFiniteSpace.lean",
+      "blob_sha": "4b07e9191a15730b791eee9d7512ec0a708ef071",
+      "imports": [
+        "Zeta23.CCM.LocalizedBasis",
+        "Zeta23.CCM.DictionaryFiniteExpansion",
+        "Mathlib.MeasureTheory.Function.LpSpace.Indicator"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/LocalizedFourierApproximation.lean",
+      "blob_sha": "e5bd6c64fdb622796a39714c31a728956b1eb10a",
+      "imports": [
+        "Zeta23.CCM.BoundaryFlatFiniteSpace",
+        "Mathlib.Analysis.Fourier.AddCircle",
+        "Mathlib.Analysis.Calculus.Deriv.Support",
+        "Mathlib.Analysis.Calculus.MeanValue",
+        "Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus",
+        "Mathlib.LinearAlgebra.Finsupp.LinearCombination"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/LocalizedWeilRestriction.lean",
+      "blob_sha": "203ecc0ac322b55016fbf861ee1cfd94a64157d3",
+      "imports": [
+        "Zeta23.CCM.LocalizedFiniteSpace",
+        "Zeta23.CCM.DictionaryRHSIdentity",
+        "Zeta23.CCM.CutoffFreeMatrix"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/MixedSourceDerivativeTransport.lean",
+      "blob_sha": "03d393b3ea72e16850bf628cb759910fb78ec4ff",
+      "imports": [
+        "Zeta23.CCM.CanonicalSourceEnergyJets"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/NestedFinite.lean",
+      "blob_sha": "804816b8650482ecd65b48d6d822d16e89c88ef7",
+      "imports": [
+        "Zeta23.CCM.ConstrainedEuclideanSector",
+        "Zeta23.CCM.LocalizedWeilRestriction",
+        "Mathlib.Analysis.InnerProductSpace.LinearMap"
+      ]
+    },
+    {
+      "path": "Zeta23/CCM/ParityBadness.lean",
+      "blob_sha": "3791b430c5c599580fcd0651c06e7c3190f1aee0",
+      "imports": [
+        "Zeta23.CCM.ConstrainedParityGeometry",
+        "Mathlib.Data.Nat.Find"
+      ]
     }
   ],
   "all_lean": [
