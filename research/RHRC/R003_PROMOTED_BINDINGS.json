@@ -239,26 +239,6 @@
     {
       "id": "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
       "theorem": "Zeta23.CCM.finrank_range_conjugatedParityCompressionDefect_le_one"
-    },
-    {
-      "id": "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
-      "theorem": "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget"
-    },
-    {
-      "id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
-      "theorem": "Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad"
-    },
-    {
-      "id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
-      "theorem": "Zeta23.CCM.GlobalBottomResidualState.exists_branchPackage"
-    },
-    {
-      "id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
-      "theorem": "Zeta23.CCM.GlobalBottomResidualState.groundTrial_eigenmode"
-    },
-    {
-      "id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
-      "theorem": "Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral"
     }
   ]
 }

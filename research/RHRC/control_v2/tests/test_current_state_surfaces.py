@@ -43,9 +43,9 @@ class CurrentStateSurfaceTests(unittest.TestCase):
         self.assertEqual(self.state["latest_research_evidence"]["pr"], 223)
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
         route = self.state["active_research_route"]
-        self.assertEqual(route["next_research_target"], "UNCONDITIONAL_GROUND_SPECTRUM_ATLAS")
+        self.assertEqual(route["post247_next_research_target"], "UNCONDITIONAL_GROUND_SPECTRUM_ATLAS")
         self.assertEqual(
-            route["required_new_information"],
+            route["post247_required_new_information"],
             "NONVACUOUS_ARITHMETIC_CONTROL_OF_GROUND_SPECTRUM_ACROSS_PRIME_POWER_THRESHOLDS",
         )
         self.assertEqual(route["post246_canonical_prime_remainder_normal_form"], "PROVED_PR_246")

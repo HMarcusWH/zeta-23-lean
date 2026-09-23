@@ -66,7 +66,7 @@ class Post247SyncTests(unittest.TestCase):
         self.assertEqual(route["post247_relation_zeta"],"PARKED_SPECULATIVE")
         program=(RHRC/"routes"/"R003_ccm_bridge"/"POST_247_RIEMANN_WEARING_GLASSES_PROGRAM.md").read_text(encoding="utf-8")
         for token in (
-            "Unconditional ground-spectrum atlas",
+            "unconditional ground-spectrum atlas",
             "Residual-state vacuity firewall",
             "Threshold-local first crossing",
             "relation-zeta",

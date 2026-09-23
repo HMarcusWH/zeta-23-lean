@@ -28,7 +28,7 @@ class Post245SyncTests(unittest.TestCase):
         self.assertEqual(route["post245_no_regular_first_bad_certificates"], "RH_EQUIVALENT_PR_245")
         self.assertEqual(route["post245_generated_family_final_gate"], "RH_EQUIVALENT_PR_245")
         self.assertEqual(route["post245_sub_rh_gate_remaining_on_route"], "NONE")
-        self.assertEqual(route["post245_canonical_prime_remainder_normal_form"], "HISTORICAL_CANDIDATE_PROMOTED_PR_246")
+        self.assertEqual(route["post245_canonical_prime_remainder_normal_form"], "CANDIDATE_POST245_ARITHMETIC_CRITERION_PR")
 
     def test_post245_documents_remain_frozen_complete_history(self):
         required_sections = (

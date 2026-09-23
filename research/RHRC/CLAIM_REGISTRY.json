@@ -948,9 +948,8 @@
       ],
       "source": "Zeta23/CCM/CanonicalPrimeRemainder.lean",
       "theorem": "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget",
-      "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "PR #246 arithmetic normal form. This is an identity, not an RH proof."
+      "note": "PR #246 arithmetic normal form. This is an identity, not an RH proof. Post-#247 state-sync registry note: recorded as theorem inventory without changing the historically frozen R003 promoted-binding surface or CCM import graph."
     },
     {
       "id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
@@ -962,7 +961,7 @@
       "source": "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean",
       "theorem": "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "PR #246 anti-circularity audit. The equivalence theorem does not prove either side unconditionally; RH remains OPEN. This claim is intentionally not bound through the R003 CCM root because the arithmetic anti-circularity firewall forbids terminal ExceptionalZero imports into Zeta23.CCM."
+      "note": "PR #246 anti-circularity audit. The equivalence theorem does not prove either side unconditionally; RH remains OPEN. Post-#247 state-sync registry note: recorded as theorem inventory without changing the historically frozen R003 promoted-binding surface or CCM import graph."
     },
     {
       "id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
@@ -974,9 +973,8 @@
       ],
       "source": "Zeta23/CCM/GlobalParityBottomSpectrum.lean",
       "theorem": "Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad",
-      "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "PR #247 unconditional spectral layer. This does not assert negativity for the actual zeta system."
+      "note": "PR #247 unconditional spectral layer. This does not assert negativity for the actual zeta system. Post-#247 state-sync registry note: recorded as theorem inventory without changing the historically frozen R003 promoted-binding surface or CCM import graph."
     },
     {
       "id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
@@ -987,9 +985,8 @@
       ],
       "source": "Zeta23/CCM/GlobalParityBottomBranchPackage.lean",
       "theorem": "Zeta23.CCM.GlobalBottomResidualState.exists_branchPackage",
-      "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "PR #247 same-state branch packaging. The object is conditional in use because GlobalBottomResidualState itself encodes badness."
+      "note": "PR #247 same-state branch packaging. The object is conditional in use because GlobalBottomResidualState itself encodes badness. Post-#247 state-sync registry note: recorded as theorem inventory without changing the historically frozen R003 promoted-binding surface or CCM import graph."
     },
     {
       "id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
@@ -1000,9 +997,8 @@
       ],
       "source": "Zeta23/CCM/GlobalParityBottomGroundTrial.lean",
       "theorem": "Zeta23.CCM.GlobalBottomResidualState.groundTrial_eigenmode",
-      "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "PR #247. The theorem is universally quantified over residual states; it is not an unconditional existence theorem for a negative state."
+      "note": "PR #247. The theorem is universally quantified over residual states; it is not an unconditional existence theorem for a negative state. Post-#247 state-sync registry note: recorded as theorem inventory without changing the historically frozen R003 promoted-binding surface or CCM import graph."
     },
     {
       "id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
@@ -1014,9 +1010,8 @@
       ],
       "source": "Zeta23/CCM/GlobalParityBottomPrimeWeight.lean",
       "theorem": "Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral",
-      "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "PR #247 same-witness arithmetic interface."
+      "note": "PR #247 same-witness arithmetic interface. Post-#247 state-sync registry note: recorded as theorem inventory without changing the historically frozen R003 promoted-binding surface or CCM import graph."
     },
     {
       "id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
@@ -1029,7 +1024,7 @@
       "source": "Zeta23/ExceptionalZero/GlobalParityBottomTerminalTarget.lean",
       "theorem": "Zeta23.ExceptionalZero.exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_offLine_zero",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "PR #247 active reduction endpoint. A specific new unconditional arithmetic/spectral exclusion is still OPEN. This claim is intentionally not bound through the R003 CCM root because the arithmetic anti-circularity firewall forbids terminal ExceptionalZero imports into Zeta23.CCM."
+      "note": "PR #247 active reduction endpoint. A specific new unconditional arithmetic/spectral exclusion is still OPEN. Post-#247 state-sync registry note: recorded as theorem inventory without changing the historically frozen R003 promoted-binding surface or CCM import graph."
     },
     {
       "id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
@@ -1041,7 +1036,7 @@
       "source": "Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean",
       "theorem": "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "PR #247 AUDIT-ONLY. This mechanically warns that a universal law which merely excludes every residual state is RH-strength/vacuous under RH; it is not active closure information. This claim is intentionally not bound through the R003 CCM root because the arithmetic anti-circularity firewall forbids terminal ExceptionalZero imports into Zeta23.CCM."
+      "note": "PR #247 AUDIT-ONLY. This mechanically warns that a universal law which merely excludes every residual state is RH-strength/vacuous under RH; it is not active closure information. Post-#247 state-sync registry note: recorded as theorem inventory without changing the historically frozen R003 promoted-binding surface or CCM import graph."
     }
   ]
 }

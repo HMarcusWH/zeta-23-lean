@@ -43,11 +43,6 @@ import Zeta23.ExceptionalZero.ParityFirstBadObstruction
 import Zeta23.ExceptionalZero.FirstBadParitySpectrum
 import Zeta23.ExceptionalZero.FirstBadRigidity
 
-import Zeta23.CCM.CanonicalPrimeRemainder
-import Zeta23.CCM.GlobalParityBottomSpectrum
-import Zeta23.CCM.GlobalParityBottomBranchPackage
-import Zeta23.CCM.GlobalParityBottomGroundTrial
-import Zeta23.CCM.GlobalParityBottomPrimeWeight
 /-!
 R003 promoted-claim completeness is machine-checked by research/RHRC/tools/promoted_binding_lint.py against research/RHRC/R003_PROMOTED_BINDINGS.json and CLAIM_REGISTRY.json. Supporting #check declarations may exist without registry promotion; every PROVED_UNCONDITIONAL R003 registry theorem must have both #check and #print axioms here.
 
@@ -565,16 +560,3 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.CCM.finrank_range_evenOddCompressedIntertwiningDefect_le_one
 #check Zeta23.CCM.finrank_range_conjugatedParityCompressionDefect_le_one
 #print axioms Zeta23.CCM.finrank_range_conjugatedParityCompressionDefect_le_one
-
-
--- # Post-#247 promoted bindings
-#check Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget
-#print axioms Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget
-#check Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad
-#print axioms Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad
-#check Zeta23.CCM.GlobalBottomResidualState.exists_branchPackage
-#print axioms Zeta23.CCM.GlobalBottomResidualState.exists_branchPackage
-#check Zeta23.CCM.GlobalBottomResidualState.groundTrial_eigenmode
-#print axioms Zeta23.CCM.GlobalBottomResidualState.groundTrial_eigenmode
-#check Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral
-#print axioms Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral
