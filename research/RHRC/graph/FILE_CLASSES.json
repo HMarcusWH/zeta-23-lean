@@ -216,6 +216,30 @@
       "trust_zone": "RESEARCH_ONLY"
     },
     {
+      "id": "integration_generated",
+      "pattern": "^research/RHRC/integration/generated/.*$",
+      "file_class": "RESEARCH_RECEIPT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "integration_python",
+      "pattern": "^research/RHRC/integration/.*\\.py$",
+      "file_class": "OTHER_CLASSIFIED",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "integration_json",
+      "pattern": "^research/RHRC/integration/.*\\.json$",
+      "file_class": "BUILD_CONFIGURATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "integration_docs",
+      "pattern": "^research/RHRC/integration/.*\\.md$",
+      "file_class": "DOCUMENTATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
       "id": "rhrc_executable",
       "pattern": "^research/RHRC/.*(?:\\.py|\\.ipynb)$",
       "file_class": "RESEARCH_EXECUTABLE",
