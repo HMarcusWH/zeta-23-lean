@@ -1,0 +1,73 @@
+name: RHKG Phase 2B finalize generated graph
+
+on:
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: write
+
+jobs:
+  finalize-generated-products:
+    if: github.event.pull_request.number == 258
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Remove one-shot finalizer from final graph subject
+        run: git rm .github/workflows/rhkg_phase2b_finalize_commit.yml
+      - name: Regenerate sealed Phase 2B graph
+        run: |
+          python research/RHRC/graph/build.py --write
+          python research/RHRC/graph/validate.py
+      - name: Assert sealed Phase 2B measured state
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          g = Path("research/RHRC/graph/generated")
+          coverage = json.loads((g / "REPOSITORY_COVERAGE.json").read_text(encoding="utf-8"))
+          assert coverage["schema_version"] == "RHKG-phase2b-coverage-0.4"
+          assert coverage["registered_proved_lean_declaration_count"] == 75
+          assert coverage["local_dependency_lean_declaration_count"] == 3064
+          assert coverage["external_boundary_lean_declaration_count"] == 4425
+          assert coverage["lean_declaration_count"] == 7564
+          assert coverage["terminal_claim"] == "RH_OPEN"
+          assert coverage["graph_theorem_promotion"] is False
+
+          uses = 0
+          with (g / "relations.jsonl").open(encoding="utf-8") as handle:
+              for line in handle:
+                  if line.strip() and json.loads(line)["kind"] == "USES_CONSTANT":
+                      uses += 1
+          assert uses == 270951, uses
+
+          unresolved = json.loads((g / "UNRESOLVED_GRAPH_ITEMS.json").read_text(encoding="utf-8"))
+          assert unresolved["schema_version"] == "RHKG-phase2b-unresolved-0.4"
+          assert "declaration-level USES_CONSTANT dependencies" not in unresolved["deferred_to_later_phases"]
+          assert "compiler_external_boundary_modules" in unresolved
+          assert unresolved["claim_firewall"] == "RH_OPEN"
+
+          closure = json.loads((g / "THEOREM_DEPENDENCY_CLOSURE.json").read_text(encoding="utf-8"))
+          assert len(closure["entries"]) == 75
+          assert closure["terminal_claim"] == "RH_OPEN"
+          assert closure["graph_theorem_promotion"] is False
+          print("RHKG Phase 2B sealed-state assertions: PASS")
+          PY
+      - name: Commit final generated products and self-delete
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A research/RHRC/graph/generated .github/workflows/rhkg_phase2b_finalize_commit.yml
+          if git diff --cached --quiet; then
+            echo "No finalization changes to commit."
+            exit 0
+          fi
+          git commit -m "RHKG: seal Phase 2B generated dependency graph"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
