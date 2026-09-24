@@ -6564,6 +6564,19 @@
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/RHRC/SourceCandidateResolution.lean",
+      "module": "Zeta23.RHRC.SourceCandidateResolution",
+      "module_id": "rh:module:Zeta23.RHRC.SourceCandidateResolution",
+      "named_source_declaration_count": 11,
+      "path": "Zeta23/RHRC/SourceCandidateResolution.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "GRAPH_AUDIT_INFRASTRUCTURE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
       "file_id": "rh:file:Zeta23/RvM/Backlund.lean",
       "module": "Zeta23.RvM.Backlund",
       "module_id": "rh:module:Zeta23.RvM.Backlund",
@@ -10126,7 +10139,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 636,
+  "entry_count": 637,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",

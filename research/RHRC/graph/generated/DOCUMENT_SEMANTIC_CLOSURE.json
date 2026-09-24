@@ -320,7 +320,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/graph/GRAPH_CONTRACT.md",
-      "heading_count": 32,
+      "heading_count": 33,
       "path": "research/RHRC/graph/GRAPH_CONTRACT.md",
       "route_mentions": []
     },
@@ -336,8 +336,18 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/graph/README.md",
-      "heading_count": 9,
+      "heading_count": 10,
       "path": "research/RHRC/graph/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/integration/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/integration/README.md",
+      "heading_count": 4,
+      "path": "research/RHRC/integration/README.md",
       "route_mentions": []
     },
     {
@@ -763,7 +773,7 @@
       ]
     }
   ],
-  "entry_count": 64,
+  "entry_count": 65,
   "graph_theorem_promotion": false,
   "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
   "schema_version": "RHKG-final-document-closure-1.0",
