@@ -1014,6 +1014,19 @@
       "note": "PR #247 same-witness arithmetic interface. Post-#247 state-sync registry note: recorded as theorem inventory without changing the historically frozen R003 promoted-binding surface or CCM import graph."
     },
     {
+      "id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "statement": "For every GlobalBottomResidualState with even selected parity, the exact true-ground prime-test weight has endpoint derivatives of orders 0 through 7 equal to zero at t=L; on a strict-even global-bottom branch its eighth endpoint derivative is strictly positive.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+        "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE"
+      ],
+      "source": "Zeta23/CCM/GlobalParityBottomPrimeWeightJets.lean",
+      "theorem": "Zeta23.CCM.GlobalBottomResidualState.primeTestWeight_endpoint_order_eight_of_evenStrict",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "Post-#261 theorem target. This transports the already-proved source-coordinate endpoint jets to the exact #247 prime-test weight on the same true ground. It is a local endpoint-shape theorem under the strict-even branch hypotheses, not a global sign theorem, residual-state exclusion, prime-dominance theorem, or RH theorem."
+    },
+    {
       "id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "statement": "Every hypothetical off-line zeta zero produces branch-constrained GlobalBottomArithmeticResidual states at arbitrarily large aperture, with the #246 prime-remainder failure imposed on the same true global-ground trial.",
       "status": "PROVED_UNCONDITIONAL",
