@@ -411,3 +411,133 @@ graph_theorem_promotion = false
 ```
 
 **RH remains OPEN.**
+
+## 15. Phase-2E theorem-value erasure and dependency projections
+
+Phase 2E does not alter the Phase-2B compiler receipt or the sealed Phase-2D
+`ANY` dependency semantics. It derives additional traversal projections over the
+same exact `USES_CONSTANT` edges.
+
+The supported projection names are:
+
+```text
+ANY
+TYPE_ONLY
+VALUE_ONLY
+THEOREM_VALUE_ERASED_SUPPORT
+```
+
+Their exact traversal laws are:
+
+```text
+ANY
+    admit every compiler dependency edge
+
+TYPE_ONLY
+    admit iff used_in_type = true
+
+VALUE_ONLY
+    admit iff used_in_value = true
+
+THEOREM_VALUE_ERASED_SUPPORT
+    admit TYPE edges
+    admit STRUCTURE edges
+    admit VALUE edges only when source declaration_kind != THEOREM
+```
+
+`THEOREM_VALUE_ERASED_SUPPORT` removes recursive traversal through theorem
+VALUE/proof bodies while preserving declaration TYPE support, structural
+declaration-family support, and VALUE bodies of non-theorem declarations. It does
+not claim to erase every proof object that may occur inside definitions and does
+not create a semantic or logical dependency relation.
+
+### Phase-2D regression lock
+
+The `ANY` projection MUST remain exactly equivalent to the pre-existing
+Phase-2D dependency traversal. For the current sealed RH-equivalence quotient this
+includes the exact atom counts
+
+```text
+A   = 12
+B   = 78
+C   = 72
+AB  = 0
+AC  = 0
+BC  = 1463
+ABC = 599
+```
+
+and the exact 1,026 cross-atom frontier edges.
+
+The canonical-prime-remainder/global-bottom `ANY` pair must reproduce the
+Phase-2D counts 224, 2,659, 2,435 right-only, 972 cross-region edges, and 949
+eligible cross-region edges.
+
+### Neutral pair semantics
+
+Projected pair analysis MUST NOT assume Phase-2D containment survives. The two
+closures are partitioned as:
+
+```text
+LEFT_ONLY
+RIGHT_ONLY
+SHARED
+```
+
+and the exact relation is reported as one of:
+
+```text
+EQUAL
+LEFT_STRICT_SUBSET
+RIGHT_STRICT_SUBSET
+INCOMPARABLE
+```
+
+Containment or incomparability under a compiler-support projection is descriptive
+only.
+
+### Projection reachability invariant
+
+For any projection, if a root reaches a source declaration and the projected
+graph admits an edge from that source to a local target declaration, then the root
+also reaches the target. Therefore cross-atom edges in a projection must move from
+a strict subset of root-membership labels to a strict superset.
+
+This is a graph-closure invariant, not evidence of mathematical reconvergence.
+
+### Generated products
+
+Phase 2E adds:
+
+- `DEPENDENCY_PROJECTION_SUMMARY.json`
+- `DEPENDENCY_PROJECTION_QUOTIENTS.json`
+- `DEPENDENCY_PROJECTION_FRONTIERS.json`
+
+The summary materializes compact count/hash data across the complete 75-root
+registered proved surface. Full declaration lists are materialized only for the
+configured RH-equivalence quotient and its pair probe to avoid duplicating the
+entire compiler closure several times.
+
+### Normative firewalls
+
+```text
+TYPE_ONLY closure                    != theorem-statement semantics
+VALUE_ONLY closure                   != proof necessity
+THEOREM_VALUE_ERASED_SUPPORT         != logical dependency
+THEOREM_VALUE_ERASED_SUPPORT         != theorem equivalence
+projection overlap                   != mathematical importance
+projection collapse                  != missing theorem
+small projected frontier             != mathematical sufficiency
+large projected frontier             != route falsification
+projected containment                != logical implication
+Phase-2E output                      != claim promotion
+```
+
+All Phase-2E products must preserve:
+
+```text
+terminal_claim = RH_OPEN
+graph_theorem_promotion = false
+```
+
+**RH remains OPEN.**
