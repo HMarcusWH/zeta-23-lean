@@ -11,7 +11,7 @@ Compiler-facing source-candidate resolver for the RHRC integration layer.
 
 AUDIT_ONLY. This module does not create theorem authority. It resolves
 source-discovery candidates against Lean's elaborated environment using an exact
-(module, final-name-component) key. Ambiguity and missing matches fail closed.
+(module, final-name-component) key. Ambiguity and missing candidateMatches fail closed.
 RH remains OPEN.
 -/
 
@@ -83,14 +83,14 @@ public def resolveSourceCandidates (queries : Array SourceCandidateQuery) : Comm
     | _, _ => pure ()
 
   for query in queries do
-    let matches := index.getD (candidateKey query.moduleName query.shortName) #[]
-    if matches.isEmpty then
+    let candidateMatches := index.getD (candidateKey query.moduleName query.shortName) #[]
+    if candidateMatches.isEmpty then
       liftIO <| IO.println s!"RHRC_CANDIDATE_RESULT\t{query.sourceId}\tNO_COMPILER_MATCH\t0\t-\t-\t-\t-\t-\t-"
-    else if matches.size > 1 then
-      let names := String.intercalate "," <| matches.toList.map (·.toString)
-      liftIO <| IO.println s!"RHRC_CANDIDATE_RESULT\t{query.sourceId}\tAMBIGUOUS_COMPILER_MATCH\t{matches.size}\t-\t{query.moduleName}\t-\t-\t-\t{names}"
+    else if candidateMatches.size > 1 then
+      let names := String.intercalate "," <| candidateMatches.toList.map (·.toString)
+      liftIO <| IO.println s!"RHRC_CANDIDATE_RESULT\t{query.sourceId}\tAMBIGUOUS_COMPILER_MATCH\t{candidateMatches.size}\t-\t{query.moduleName}\t-\t-\t-\t{names}"
     else
-      let decl := matches[0]!
+      let decl := candidateMatches[0]!
       let some info := env.find? decl
         | throwError "candidate resolver: environment index lost declaration {decl}"
       let moduleText :=
