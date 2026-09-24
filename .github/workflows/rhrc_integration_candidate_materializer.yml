@@ -40,11 +40,11 @@ jobs:
       - name: Remove one-shot materializer before final graph generation
         run: git rm .github/workflows/rhrc_integration_candidate_materializer.yml
 
-      - name: Materialize Lean-exact candidate receipts
-        run: python3 research/RHRC/integration/candidate_exactify.py --write
-
       - name: Materialize deterministic RHKG steady state
         run: python3 research/RHRC/graph/build.py --write
+
+      - name: Materialize Lean-exact candidate receipts
+        run: python3 research/RHRC/integration/candidate_exactify.py --write
 
       - name: Recheck exactification against regenerated source surface
         run: python3 research/RHRC/integration/candidate_exactify.py --check
