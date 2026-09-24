@@ -45,9 +45,27 @@ def lean_string(value: str) -> str:
 
 def render_driver(candidates: list[dict]) -> str:
     modules = sorted({row["module"] for row in candidates})
+    unsupported = [
+        module
+        for module in modules
+        if not (
+            module == "Zeta23.CCM"
+            or module.startswith("Zeta23.CCM.")
+            or module == "Zeta23.ExceptionalZero"
+            or module.startswith("Zeta23.ExceptionalZero.")
+        )
+    ]
+    if unsupported:
+        fail(
+            "RH_FORMAL_CORE candidate scope escaped the audited CCM/ExceptionalZero "
+            f"aggregators: {unsupported[:10]}"
+        )
     imports = "\n".join(
-        ["import Zeta23.RHRC.SourceCandidateResolution"]
-        + [f"import {module}" for module in modules]
+        [
+            "import Zeta23.RHRC.SourceCandidateResolution",
+            "import Zeta23.CCM",
+            "import Zeta23.ExceptionalZero",
+        ]
     )
     entries = []
     for row in candidates:
