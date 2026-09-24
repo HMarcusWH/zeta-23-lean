@@ -26,6 +26,7 @@
     "Zeta23.Permansson.GeneralFramework": "INDEPENDENT_FORMALIZATION",
     "Zeta23.Permansson.Theorem31": "INDEPENDENT_FORMALIZATION",
     "Zeta23.RHRC.DeclarationDependencyExport": "GRAPH_AUDIT_INFRASTRUCTURE",
-    "Zeta23.RHRC.RegisteredClaimBindings": "GRAPH_AUDIT_INFRASTRUCTURE"
+    "Zeta23.RHRC.RegisteredClaimBindings": "GRAPH_AUDIT_INFRASTRUCTURE",
+    "Zeta23.RHRC.SourceCandidateResolution": "GRAPH_AUDIT_INFRASTRUCTURE"
   }
 }
