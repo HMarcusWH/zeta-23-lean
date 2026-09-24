@@ -30,8 +30,8 @@ jobs:
       - name: Run integration foundation unit tests
         run: python3 -m unittest discover -s research/RHRC/integration/tests -p 'test_*.py' -v
 
-      - name: Build source-candidate resolver
-        run: lake build Zeta23.RHRC.SourceCandidateResolution
+      - name: Build RH formal-core source surface and candidate resolver
+        run: lake build Zeta23.CCM Zeta23.ExceptionalZero Zeta23.RHRC.SourceCandidateResolution
 
       - name: Remove one-shot materializer before final graph generation
         run: git rm .github/workflows/rhrc_integration_candidate_materializer.yml
