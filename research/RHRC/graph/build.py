@@ -1,11 +1,9 @@
 from __future__ import annotations
 
 import argparse
-import base64
 import hashlib
 import importlib.util
 import json
-import os
 import re
 import subprocess
 from pathlib import Path
@@ -346,7 +344,9 @@ def build_records() -> dict[str, object]:
             if row.get("repository_scope") == "EXTERNAL" and row.get("module")
         }
     )
-    external_imports.update(compiler_external_modules)
+    # Keep syntactic module imports and compiler dependency-boundary modules
+    # semantically distinct. A constant originating in an external module does
+    # not imply that a local source file directly imports that module.
     existing_module_names = {row["module"] for row in lean_modules}
     for name in compiler_external_modules:
         if name not in existing_module_names:
@@ -674,6 +674,7 @@ def build_records() -> dict[str, object]:
             row["path"] for row in repo_files if row["file_class"] == "UNKNOWN_FILE_CLASS"
         ),
         "external_import_targets": sorted(external_imports),
+        "compiler_external_boundary_modules": compiler_external_modules,
         "standalone_or_auxiliary_modules": reachability["standalone_or_auxiliary"],
         "deferred_to_later_phases": [
             "repository-wide Lean declaration census beyond registered dependency closure",
@@ -752,15 +753,6 @@ def check_outputs(outputs: dict[str, bytes]) -> list[str]:
     return errors
 
 
-def emit_bootstrap_payload(outputs: dict[str, bytes]) -> None:
-    """Emit repairable base64 chunks only when CI detects stale/missing products."""
-    for path in sorted(outputs):
-        encoded = base64.b64encode(outputs[path]).decode("ascii")
-        for index in range(0, len(encoded), 3000):
-            chunk = encoded[index:index + 3000]
-            print(f"RHKG_BOOTSTRAP|{path}|{index // 3000:06d}|{chunk}", flush=True)
-
-
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build/check RHKG Phase-2B generated products")
     group = parser.add_mutually_exclusive_group(required=True)
@@ -770,10 +762,7 @@ def main() -> int:
 
     outputs = rendered_outputs()
     if args.write:
-        pre_errors = check_outputs(outputs)
         write_outputs(outputs)
-        if pre_errors and os.environ.get("RHKG_BOOTSTRAP_LOG") == "1":
-            emit_bootstrap_payload(outputs)
         print(f"RHKG BUILD: WROTE {len(outputs)} deterministic products")
         return 0
 
