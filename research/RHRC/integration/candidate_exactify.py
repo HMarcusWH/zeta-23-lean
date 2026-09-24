@@ -22,6 +22,7 @@ GENERATED = RHRC / "integration" / "generated"
 RESOLUTION = GENERATED / "SOURCE_CANDIDATE_RESOLUTION.jsonl"
 SOURCE_ONLY = GENERATED / "RH_CORE_SOURCE_ONLY_THEOREMS.jsonl"
 SUMMARY = GENERATED / "SOURCE_CANDIDATE_SUMMARY.json"
+LEAN_TOOLCHAIN = REPO / "lean-toolchain"
 
 SCHEMA_VERSION = "RHRC-lean-candidate-receipt-1.0"
 PROTOCOL_PREFIX = "RHRC_CANDIDATE_RESULT\t"
@@ -176,6 +177,12 @@ def build_receipts() -> list[dict]:
     state = json.loads(STATE.read_text(encoding="utf-8"))
     if state.get("terminal_claim") != "RH_OPEN":
         fail("integration state does not preserve RH_OPEN")
+    source_surface_bytes = SOURCE_DECLARATIONS.read_bytes()
+    compiler_receipt_bytes = COMPILER_RECEIPT.read_bytes()
+    source_surface_sha256 = hashlib.sha256(source_surface_bytes).hexdigest()
+    compiler_receipt_sha256 = hashlib.sha256(compiler_receipt_bytes).hexdigest()
+    lean_toolchain = LEAN_TOOLCHAIN.read_text(encoding="utf-8").strip()
+
     source_rows = load_jsonl(SOURCE_DECLARATIONS)
     candidates = select_rh_core_theorem_sources(source_rows)
     if not candidates:
@@ -206,6 +213,9 @@ def build_receipts() -> list[dict]:
         receipt = LeanCandidateReceipt(
             schema_version=SCHEMA_VERSION,
             repository_graph_authority=anchor,
+            source_surface_sha256=source_surface_sha256,
+            registered_compiler_receipt_sha256=compiler_receipt_sha256,
+            lean_toolchain=lean_toolchain,
             source_declaration_id=source["id"],
             path=source["path"],
             line=int(source["line"]),
@@ -237,8 +247,15 @@ def render_jsonl(rows: list[dict]) -> bytes:
 
 
 def render_summary(rows: list[dict]) -> bytes:
+    data = summarize(rows)
+    if rows:
+        data["source_surface_sha256"] = rows[0]["source_surface_sha256"]
+        data["registered_compiler_receipt_sha256"] = rows[0][
+            "registered_compiler_receipt_sha256"
+        ]
+        data["lean_toolchain"] = rows[0]["lean_toolchain"]
     return (
-        json.dumps(summarize(rows), sort_keys=True, indent=2, ensure_ascii=False)
+        json.dumps(data, sort_keys=True, indent=2, ensure_ascii=False)
         + "\n"
     ).encode("utf-8")
 
