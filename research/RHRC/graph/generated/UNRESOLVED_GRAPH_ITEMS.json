@@ -1,5 +1,12 @@
 {
   "claim_firewall": "RH_OPEN",
+  "closed_in_final_closure_pass": [
+    "all tracked files classified and indexed",
+    "all local Lean files mapped to LeanModule nodes",
+    "all local Lean modules receive deterministic named source-declaration discovery coverage",
+    "all standalone_or_auxiliary Lean modules receive explicit reviewed dispositions",
+    "all DOCUMENTATION and LIVING_SSOT files receive Document nodes and exact claim/route textual-navigation hints"
+  ],
   "compiler_external_boundary_modules": [
     "Aesop.BuiltinRules",
     "Batteries.Classes.RatCast",
@@ -727,11 +734,10 @@
     "Mathlib.Topology.UnitInterval"
   ],
   "deferred_to_later_phases": [
-    "repository-wide Lean declaration census beyond registered dependency closure",
-    "build/reachability status for standalone Lean modules",
-    "multi-axis authority/current-state resolution",
+    "compiler-wide local declaration census beyond the source-navigation surface and registered dependency closure",
+    "multi-axis authority/current-state resolution beyond document-role indexing",
     "Git/PR/workflow provenance graph",
-    "dead-route/obstruction/revival semantic graph",
+    "dead-route/obstruction/revival semantic graph beyond historical-delta file nodes",
     "operational concept preflight"
   ],
   "external_import_targets": [
@@ -955,8 +961,8 @@
     "Mathlib.Topology.Order.Compact",
     "Mathlib.Topology.Piecewise"
   ],
-  "schema_version": "RHKG-phase2e-unresolved-0.7",
-  "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_2E",
+  "schema_version": "RHKG-final-closure-unresolved-1.0",
+  "semantic_coverage_status": "REPOSITORY_ACCOUNTING_CLOSED_SEMANTIC_DEEPENING_OPEN",
   "standalone_or_auxiliary_modules": [
     "Challenge.XiPrime",
     "ChallengeDeps.XiPrime",
