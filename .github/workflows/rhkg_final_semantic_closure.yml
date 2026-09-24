@@ -1,17 +1,17 @@
-# trigger-refresh
 name: RHKG final semantic closure materializer
 
 on:
-  push:
+  pull_request:
     branches:
-      - rhkg/final-semantic-closure
+      - main
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: write
 
 jobs:
   materialize:
-    if: github.actor != 'github-actions[bot]'
+    if: github.head_ref == 'rhkg/final-semantic-closure' && github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
