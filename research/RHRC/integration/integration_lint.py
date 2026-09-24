@@ -145,6 +145,39 @@ def main() -> int:
             if row.get("registered_claim_id") is not None:
                 raise SystemExit("integration_lint: source-only candidate carries registered claim")
 
+        if resolution_rows:
+            by_full_name = {
+                row["resolved_full_name"]: row
+                for row in resolution_rows
+                if row.get("resolved_full_name") is not None
+            }
+            known_root = (
+                "Zeta23.CCM.GlobalBottomResidualState."
+                "primeTestWeight_endpoint_order_eight_of_evenStrict"
+            )
+            root_row = by_full_name.get(known_root)
+            if root_row is None:
+                raise SystemExit("integration_lint: known PR #262 theorem did not exactify")
+            if root_row.get("visibility_class") != "ALREADY_REGISTERED_ROOT":
+                raise SystemExit(
+                    "integration_lint: known PR #262 theorem lost registered-root visibility"
+                )
+            if root_row.get("registered_claim_id") != "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS":
+                raise SystemExit(
+                    "integration_lint: known PR #262 theorem/claim binding drift"
+                )
+
+            known_hidden = "Zeta23.CCM.hasDerivAt_sourceAtomPairing"
+            hidden_row = by_full_name.get(known_hidden)
+            if hidden_row is None:
+                raise SystemExit(
+                    "integration_lint: known MixedSourceDerivativeTransport theorem did not exactify"
+                )
+            if hidden_row.get("visibility_class") != "SOURCE_ONLY_PUBLIC_THEOREM":
+                raise SystemExit(
+                    "integration_lint: hidden-body sentinel unexpectedly entered registered closure"
+                )
+
     print("RHRC INTEGRATION LINT: PASS")
     return 0
 
