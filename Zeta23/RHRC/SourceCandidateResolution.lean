@@ -110,4 +110,27 @@ public def resolveSourceCandidates (queries : Array SourceCandidateQuery) : Comm
       let privateText := if privateOrInternal then "1" else "0"
       liftIO <| IO.println s!"RHRC_CANDIDATE_RESULT\t{query.sourceId}\t{status}\t1\t{decl}\t{moduleText}\t{compilerKind}\t{privateText}\t{typeText}\t-"
 
+private def parseSourceCandidateLine (line : String) : Except String SourceCandidateQuery :=
+  match line.splitOn "\t" with
+  | [sourceId, moduleName, shortName, sourceKind] =>
+      .ok { sourceId, moduleName, shortName, sourceKind }
+  | fields =>
+      .error s!"expected 4 tab-separated fields, got {fields.length}"
+
+/--
+Read candidate queries from a UTF-8 TSV file and resolve them in one imported
+Lean environment. The file protocol avoids embedding thousands of candidate
+records into one Lean syntax tree.
+-/
+public def resolveSourceCandidatesFile (path : String) : CommandElabM Unit := do
+  let text ← liftIO <| IO.FS.readFile path
+  let mut queries : Array SourceCandidateQuery := #[]
+  for line in text.splitOn "\n" do
+    unless line.isEmpty do
+      match parseSourceCandidateLine line with
+      | .ok query => queries := queries.push query
+      | .error message =>
+          throwError "candidate resolver query file {path}: {message}: {line}"
+  resolveSourceCandidates queries
+
 end Zeta23.RHRC
