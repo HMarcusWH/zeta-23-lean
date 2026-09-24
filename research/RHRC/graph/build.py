@@ -15,6 +15,9 @@ from views import (
     dependency_cohort_overlap_view,
     dependency_kernel_atlas_view,
     dependency_kernel_quotient_view,
+    dependency_projection_frontiers_view,
+    dependency_projection_quotients_view,
+    dependency_projection_summary_view,
     dependency_signature_classes_view,
     reachability_view,
     resolve_dependency_farming_cohorts,
@@ -45,6 +48,9 @@ DECLARED_GENERATED_PRODUCTS = [
     "research/RHRC/graph/generated/DEPENDENCY_COHORT_ATOMS.json",
     "research/RHRC/graph/generated/DEPENDENCY_KERNEL_QUOTIENT.json",
     "research/RHRC/graph/generated/DEPENDENCY_BRIDGE_FRONTIERS.json",
+    "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_SUMMARY.json",
+    "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_QUOTIENTS.json",
+    "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_FRONTIERS.json",
     "research/RHRC/graph/generated/REPOSITORY_COVERAGE.json",
     "research/RHRC/graph/generated/ENTRYPOINT_REACHABILITY.json",
     "research/RHRC/graph/generated/UNRESOLVED_GRAPH_ITEMS.json",
@@ -60,6 +66,7 @@ COMPILER_DEPENDENCIES = "research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEP
 DEPENDENCY_FARMING_COHORTS = "research/RHRC/graph/DEPENDENCY_FARMING_COHORTS.json"
 DEPENDENCY_QUOTIENT_CONFIG = "research/RHRC/graph/DEPENDENCY_QUOTIENT_CONFIG.json"
 POST259_KERNEL_RECEIPT = "research/RHRC/receipts/RHKG_POST259_KERNEL_FIRST_CONTACT_2026_09_24.json"
+POST260_QUOTIENT_RECEIPT = "research/RHRC/receipts/RHKG_POST260_QUOTIENT_FRONTIER_FIRST_CONTACT_2026_09_24.json"
 BOUNDARY = "research/RHRC/BOUNDARY.json"
 
 
@@ -728,9 +735,26 @@ def build_records() -> dict[str, object]:
         dependency_cohort_atoms,
         dependency_quotient,
     )
+    dependency_projection_summary = dependency_projection_summary_view(
+        compiler_receipt,
+        registered_binding_data,
+        dependency_farming_cohorts,
+    )
+    dependency_projection_quotients = dependency_projection_quotients_view(
+        compiler_receipt,
+        lean_declarations,
+        registered_binding_data,
+        dependency_quotient,
+    )
+    dependency_projection_frontiers = dependency_projection_frontiers_view(
+        compiler_receipt,
+        registered_binding_data,
+        dependency_quotient,
+        dependency_projection_quotients,
+    )
     unresolved = {
-        "schema_version": "RHKG-phase2d-unresolved-0.6",
-        "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_2D",
+        "schema_version": "RHKG-phase2e-unresolved-0.7",
+        "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_2E",
         "unknown_file_classes": sorted(
             row["path"] for row in repo_files if row["file_class"] == "UNKNOWN_FILE_CLASS"
         ),
@@ -764,6 +788,9 @@ def build_records() -> dict[str, object]:
         "dependency_cohort_atoms": dependency_cohort_atoms,
         "dependency_kernel_quotient": dependency_kernel_quotient,
         "dependency_bridge_frontiers": dependency_bridge_frontiers,
+        "dependency_projection_summary": dependency_projection_summary,
+        "dependency_projection_quotients": dependency_projection_quotients,
+        "dependency_projection_frontiers": dependency_projection_frontiers,
         "unresolved": unresolved,
     }
 
@@ -786,6 +813,9 @@ def rendered_outputs() -> dict[str, bytes]:
         "research/RHRC/graph/generated/DEPENDENCY_COHORT_ATOMS.json": _pretty(records["dependency_cohort_atoms"]),
         "research/RHRC/graph/generated/DEPENDENCY_KERNEL_QUOTIENT.json": _pretty(records["dependency_kernel_quotient"]),
         "research/RHRC/graph/generated/DEPENDENCY_BRIDGE_FRONTIERS.json": _pretty(records["dependency_bridge_frontiers"]),
+        "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_SUMMARY.json": _pretty(records["dependency_projection_summary"]),
+        "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_QUOTIENTS.json": _pretty(records["dependency_projection_quotients"]),
+        "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_FRONTIERS.json": _pretty(records["dependency_projection_frontiers"]),
         "research/RHRC/graph/generated/UNRESOLVED_GRAPH_ITEMS.json": _pretty(records["unresolved"]),
     }
 
