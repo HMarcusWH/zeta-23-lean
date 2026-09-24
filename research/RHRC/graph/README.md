@@ -283,3 +283,28 @@ under `research/RHRC/graph/compiler/` and is checked by Lean CI before RHKG
 consumes it. Generated graph products remain non-authoritative views and mirrors.
 If a generated record disagrees with an authoritative or compiler-derived source,
 the generated graph is wrong.
+
+
+## Final semantic-closure pass
+
+The repository-accounting closure layer adds three deterministic products:
+
+- `lean_source_declarations.jsonl` — a source-navigation census of named Lean
+  declaration commands across every local Lean module;
+- `MODULE_SEMANTIC_CLOSURE.json` — one entry for every local Lean module,
+  including explicit dispositions for every module outside the declared
+  entrypoint closures;
+- `DOCUMENT_SEMANTIC_CLOSURE.json` — one entry for every
+  `DOCUMENTATION`/`LIVING_SSOT` file, with document role and exact textual
+  claim/route navigation hints.
+
+The source-declaration surface is intentionally separate from the exact compiler
+dependency surface. It makes potentially forgotten source declarations
+discoverable, but only the sealed compiler receipt may generate
+`LeanDeclaration USES_CONSTANT LeanDeclaration` edges.
+
+Document `MENTIONS` edges use `TEXTUAL_HINT` provenance and carry no
+mathematical authority.
+
+The generated unresolved report now distinguishes closed repository accounting
+from deeper semantic work that remains optional/future. RH remains OPEN.
