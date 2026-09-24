@@ -1,7 +1,7 @@
-# RHKG Phase-2B Graph Contract
+# RHKG Phase-2C Graph Contract
 
-**Version:** 0.4  
-**Scope:** Phase-1 repository census/import graph plus complete registered theorem bindings and compiler-derived declaration dependencies  
+**Version:** 0.5  
+**Scope:** Phase-1 repository census/import graph plus complete registered theorem bindings, compiler-derived declaration dependencies, and deterministic dependency-kernel research views  
 **Authority:** derived only; subordinate to the RHKG Constitution and existing RHRC sources
 
 ## 1. Stable IDs
@@ -20,7 +20,7 @@ Concept identity is separate from Git revision identity. Subject `RepoFile`
 records carry their current Git blob hash. Generated RHKG products deliberately
 do not carry their own blob hash, preventing recursive self-hashing.
 
-## 2. Node types through Phase 2B
+## 2. Node types through Phase 2C
 
 - `Repository`
 - `RepoFile`
@@ -40,7 +40,7 @@ carry no additional scientific interpretation.
 External Lean imports are represented as `LeanModule` records with
 `repository_scope = EXTERNAL`; they are not treated as local formal authority.
 
-## 3. Relations through Phase 2B
+## 3. Relations through Phase 2C
 
 Phase 1 structural relations remain:
 
@@ -247,5 +247,61 @@ declaration-family metadata is not emitted as a dependency edge.
 `REGISTERED_CLAIM_ROOT` declarations are the only declarations permitted to
 participate in `PROVES`. `LOCAL_DEPENDENCY` and `EXTERNAL_BOUNDARY` declarations
 never acquire theorem authority merely by appearing in the dependency graph.
+
+**RH remains OPEN.**
+
+
+## 13. Phase-2C dependency-kernel research views
+
+Phase 2C introduces no new graph relation kind and no Lean theorem authority. It
+derives deterministic research views from the exact Phase-2B compiler receipt and
+the complete registered proved-root surface.
+
+`research/RHRC/graph/DEPENDENCY_FARMING_COHORTS.json` is an audit-only
+configuration. Route cohorts are resolved mechanically from the live claim
+registry and complete proved binding manifest. Explicit cohorts fail closed if a
+member is unknown, OPEN, duplicated, or absent from the complete proved binding
+surface.
+
+The generated products are:
+
+- `DEPENDENCY_KERNEL_ATLAS.json`
+- `DEPENDENCY_COHORT_OVERLAP.json`
+- `DEPENDENCY_SIGNATURE_CLASSES.json`
+
+The following firewalls are normative:
+
+```text
+shared dependency            != theorem equivalence
+equal dependency closure     != theorem equivalence
+closure containment          != logical implication
+high root coverage           != mathematical importance
+graph centrality             != mathematical importance
+module IMPORTS               != declaration USES_CONSTANT
+registry dependency          != declaration USES_CONSTANT
+external-library overlap     != project-local mathematical kernel
+cohort membership            != theorem authority
+Phase-2C output              != claim promotion
+```
+
+Project-local kernel views include only compiler declarations with
+`repository_scope = LOCAL`. External Lean/Mathlib constants remain available in
+the Phase-2B closure as audit boundaries but are excluded from the primary kernel
+and shell calculations.
+
+Cohort overlap is reported as exact integer set arithmetic. Pairwise Jaccard data
+is stored as numerator/denominator counts rather than floating-point scores.
+Per-member shells are exact set differences from the cohort-wide intersection.
+
+Dependency signatures are SHA-256 hashes over the sorted, NUL-delimited local
+dependency names. Equal signatures mean exact equality of those dependency sets
+only. Strict closure containment is an exact set relation only.
+
+All Phase-2C products must carry:
+
+```text
+terminal_claim = RH_OPEN
+graph_theorem_promotion = false
+```
 
 **RH remains OPEN.**
