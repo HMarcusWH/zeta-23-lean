@@ -77,6 +77,10 @@ theorem GlobalBottomResidualState.iteratedDeriv_primeTestWeight_at_aperture
   rw [iteratedDeriv_comp_const_mul hsub (1 / L)]
   have hscale : (1 / L) * L = 1 := by
     field_simp [hLne]
+  change
+    (1 / L) ^ j *
+        iteratedDeriv j (fun z : ℝ => deriv E (1 - z)) ((1 / L) * L) =
+      (-1 / L) ^ j * iteratedDeriv (j + 1) E 0
   rw [hscale]
   rw [iteratedDeriv_comp_const_sub]
   simp only [sub_self, smul_eq_mul]
@@ -171,11 +175,20 @@ theorem GlobalBottomResidualState.primeTestWeight_eighth_deriv_eq_momentFour_of_
     hmem.2
   rw [s.iteratedDeriv_primeTestWeight_at_aperture 8]
   rw [htrial]
-  simpa [K, v, evenBoundaryFlatRawCoefficients] using
-    (iteratedDeriv_nine_sourceAtomRealEnergy_eq_moment_four_of_even_boundaryFlat
-      K
-      (v : EuclideanSpace ℂ (Fin (2 * K + 1)))
-      hflat heven)
+  have hsource :
+      iteratedDeriv 9
+          (sourceAtomRealEnergy K
+            (v : EuclideanSpace ℂ (Fin (2 * K + 1)))) 0 =
+        2 * (2 * Real.pi) ^ 8 *
+          Complex.normSq
+            (centeredMoment K 4
+              (evenBoundaryFlatRawCoefficients K v)) := by
+    simpa [evenBoundaryFlatRawCoefficients] using
+      (iteratedDeriv_nine_sourceAtomRealEnergy_eq_moment_four_of_even_boundaryFlat
+        K
+        (v : EuclideanSpace ℂ (Fin (2 * K + 1)))
+        hflat heven)
+  rw [hsource]
 
 /-- Even selection alone gives nonnegativity of the first potentially
 nonvanishing prime-weight endpoint jet. -/
@@ -184,7 +197,17 @@ theorem GlobalBottomResidualState.primeTestWeight_eighth_deriv_nonneg_of_even
     (hp : s.aligned.firstBad.p = ReversalParity.even) :
     0 ≤ iteratedDeriv 8 s.primeTestWeight s.aligned.firstBad.L := by
   rw [s.primeTestWeight_eighth_deriv_eq_momentFour_of_even hp]
-  positivity
+  have hscale :
+      0 ≤ (-1 / s.aligned.firstBad.L) ^ (8 : ℕ) := by
+    rw [show
+      (-1 / s.aligned.firstBad.L) ^ (8 : ℕ) =
+        ((-1 / s.aligned.firstBad.L) ^ (4 : ℕ)) ^ 2 by ring]
+    exact sq_nonneg _
+  have hcoeff : 0 ≤ 2 * (2 * Real.pi) ^ (8 : ℕ) := by
+    positivity
+  exact
+    mul_nonneg hscale
+      (mul_nonneg hcoeff (Complex.normSq_nonneg _))
 
 /-- Headline cross-view compatibility law.
 
@@ -219,8 +242,14 @@ theorem GlobalBottomResidualState.primeTestWeight_endpoint_order_eight_of_evenSt
     s.aligned.retainedMomentFour_ne_zero_of_evenGround_strict
       hp hground hstrict
   rw [s.primeTestWeight_eighth_deriv_eq_momentFour_of_even hp]
+  have hbase :
+      -1 / s.aligned.firstBad.L ≠ 0 := by
+    exact div_ne_zero (by norm_num) (ne_of_gt s.aligned.firstBad.L_pos)
   have hscale : 0 < (-1 / s.aligned.firstBad.L) ^ (8 : ℕ) := by
-    positivity
+    rw [show
+      (-1 / s.aligned.firstBad.L) ^ (8 : ℕ) =
+        ((-1 / s.aligned.firstBad.L) ^ (4 : ℕ)) ^ 2 by ring]
+    exact sq_pos_of_ne_zero (pow_ne_zero 4 hbase)
   have hmoment :
       0 <
         Complex.normSq
@@ -229,7 +258,9 @@ theorem GlobalBottomResidualState.primeTestWeight_endpoint_order_eight_of_evenSt
               (s.aligned.firstBad.Nstar + 1)
               s.aligned.evenShiftedTrial)) :=
     Complex.normSq_pos.mpr hM4ne
-  positivity
+  have hcoeff : 0 < 2 * (2 * Real.pi) ^ (8 : ℕ) := by
+    positivity
+  exact mul_pos hscale (mul_pos hcoeff hmoment)
 
 end Zeta23.CCM
 
