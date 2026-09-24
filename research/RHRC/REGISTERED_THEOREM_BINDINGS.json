@@ -248,6 +248,11 @@
       "source": "Zeta23/CCM/GlobalParityBottomPrimeWeight.lean"
     },
     {
+      "id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "theorem": "Zeta23.CCM.GlobalBottomResidualState.primeTestWeight_endpoint_order_eight_of_evenStrict",
+      "source": "Zeta23/CCM/GlobalParityBottomPrimeWeightJets.lean"
+    },
+    {
       "id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
       "theorem": "Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad",
       "source": "Zeta23/CCM/GlobalParityBottomSpectrum.lean"
