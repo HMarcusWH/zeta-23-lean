@@ -459,6 +459,17 @@ def dependency_cohort_overlap_view(
             intersection &= current
         dependency_only_intersection = intersection - registered_root_declarations
         union_by_cohort[cohort_id] = union
+        member_shells = []
+        for claim_id in sorted(members):
+            shell = closure_by_claim[claim_id] - intersection
+            member_shells.append(
+                {
+                    "claim_id": claim_id,
+                    "shell_against_cohort_intersection_count": len(shell),
+                    "shell_against_cohort_intersection": sorted(shell),
+                    "shell_sha256": _sha256_names(shell),
+                }
+            )
         row = {
             "cohort_id": cohort_id,
             "kind": cohort["kind"],
@@ -474,6 +485,7 @@ def dependency_cohort_overlap_view(
             "local_dependency_intersection_excluding_registered_roots": sorted(
                 dependency_only_intersection
             ),
+            "member_shells": member_shells,
             "union_sha256": _sha256_names(union),
             "intersection_sha256": _sha256_names(intersection),
         }
