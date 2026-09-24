@@ -21,7 +21,9 @@
     "small local residual -> horizon safety",
     "local witness separation -> full-system separation without masking clearance",
     "FFBBP assurance output -> mathematical theorem",
-    "FFBBP assurance output -> RH evidence"
+    "FFBBP assurance output -> RH evidence",
+    "finite snapshot decision sufficiency -> future repository sufficiency",
+    "post-reference cohort navigation -> mathematical relevance ranking"
   ],
   "rhkg_snapshot_adapter": {
     "config": "research/RHRC/ffbbp/configs/rhkg_candidate_reduction_v1.json",
