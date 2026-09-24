@@ -591,6 +591,65 @@ def main() -> int:
     if dependency_closure.get("graph_theorem_promotion") is not False:
         errors.append("THEOREM_DEPENDENCY_CLOSURE permits graph theorem promotion")
 
+    unresolved = json.loads(
+        (GENERATED / "UNRESOLVED_GRAPH_ITEMS.json").read_text(encoding="utf-8")
+    )
+    if unresolved.get("schema_version") != "RHKG-phase2b-unresolved-0.4":
+        errors.append("UNRESOLVED_GRAPH_ITEMS is not Phase 2B current")
+    if unresolved.get("semantic_coverage_status") != "PARTIAL_BY_DESIGN_PHASE_2B":
+        errors.append("UNRESOLVED_GRAPH_ITEMS semantic coverage status drift")
+    if unresolved.get("claim_firewall") != "RH_OPEN":
+        errors.append("UNRESOLVED_GRAPH_ITEMS does not preserve RH_OPEN")
+
+    local_module_names = {m["module"] for m in local_modules}
+    expected_external_import_targets: set[str] = set()
+    for module in local_modules:
+        source_text = (REPO / module["path"]).read_text(encoding="utf-8")
+        expected_external_import_targets.update(
+            dep
+            for dep in graph_build.IMPORT_MODULES(source_text)
+            if dep not in local_module_names
+        )
+    if set(unresolved.get("external_import_targets", [])) != expected_external_import_targets:
+        errors.append(
+            "UNRESOLVED_GRAPH_ITEMS external_import_targets does not exactly match "
+            "syntactic Lean imports"
+        )
+
+    expected_compiler_boundary_modules = {
+        row["module"]
+        for row in compiler_receipt
+        if row.get("repository_scope") == "EXTERNAL" and row.get("module")
+    }
+    if set(unresolved.get("compiler_external_boundary_modules", [])) != expected_compiler_boundary_modules:
+        errors.append(
+            "UNRESOLVED_GRAPH_ITEMS compiler_external_boundary_modules does not exactly "
+            "match compiler receipt"
+        )
+
+    expected_external_modules = (
+        expected_external_import_targets | expected_compiler_boundary_modules
+    )
+    actual_external_modules = {m["module"] for m in external_modules}
+    if actual_external_modules != expected_external_modules:
+        errors.append(
+            "external Lean module node set mismatch: "
+            f"missing={sorted(expected_external_modules - actual_external_modules)} "
+            f"extra={sorted(actual_external_modules - expected_external_modules)}"
+        )
+    for module in external_modules:
+        name = module["module"]
+        expected_role = (
+            "EXPLICIT_EXTERNAL_IMPORT_TARGET"
+            if name in expected_external_import_targets
+            else "COMPILER_EXTERNAL_BOUNDARY_MODULE"
+        )
+        if module.get("authority_role") != expected_role:
+            errors.append(
+                f"external module authority-role drift for {name}: "
+                f"{module.get('authority_role')!r} != {expected_role!r}"
+            )
+
     boundary = json.loads((REPO / graph_build.BOUNDARY).read_text(encoding="utf-8"))
     if boundary.get("terminal_claim_id") != "C_RH":
         errors.append(f"unexpected terminal claim id: {boundary.get('terminal_claim_id')!r}")
@@ -605,6 +664,14 @@ def main() -> int:
         errors.append("coverage registered-root count drift")
     if coverage.get("lean_declaration_count") != len(lean_declarations):
         errors.append("coverage Lean-declaration count drift")
+    if coverage.get("local_dependency_lean_declaration_count") != sum(
+        d.get("graph_role") == "LOCAL_DEPENDENCY" for d in lean_declarations
+    ):
+        errors.append("coverage local-dependency declaration count drift")
+    if coverage.get("external_boundary_lean_declaration_count") != sum(
+        d.get("graph_role") == "EXTERNAL_BOUNDARY" for d in lean_declarations
+    ):
+        errors.append("coverage external-boundary declaration count drift")
     if coverage.get("terminal_claim") != "RH_OPEN":
         errors.append("coverage view does not preserve RH_OPEN")
     if coverage.get("graph_theorem_promotion") is not False:
@@ -623,7 +690,7 @@ def main() -> int:
     print(
         "RHKG VALIDATION: PASS "
         f"({len(repo_files)} files; {len(local_modules)} local Lean modules; "
-        f"{len(external_modules)} external import targets; "
+        f"{len(external_modules)} external module nodes; "
         f"{sum(d.get('graph_role') == 'REGISTERED_CLAIM_ROOT' for d in lean_declarations)} registered roots; "
         f"{sum(d.get('graph_role') == 'LOCAL_DEPENDENCY' for d in lean_declarations)} local dependencies; "
         f"{sum(d.get('graph_role') == 'EXTERNAL_BOUNDARY' for d in lean_declarations)} external boundaries; "

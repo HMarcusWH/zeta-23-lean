@@ -86,6 +86,17 @@ fresh extraction from the pinned Lean environment and all generated graph produc
 to be byte-current. The bootstrap-pending marker is transitional only and is not a
 valid steady state.
 
+The materialized receipt currently records **75 registered roots**, **3,064 local
+dependency declarations**, and **4,425 external-boundary declarations**: **7,564
+declarations total** with **270,951 exact declaration dependency relations**. The
+first sealed extraction completed the Lean exporter in 126.71 seconds; Python
+receipt parsing took 0.40 seconds. These are measured properties of the current
+receipt, not theorem counts beyond the registered-root authority surface.
+
+External compiler-boundary modules are tracked separately from syntactic Lean
+`IMPORTS` targets. A declaration dependency on a constant from an external module
+does not imply that a local source file directly imports that module.
+
 The graph remains a derived integration layer and **RH remains OPEN**.
 
 ## Commands
