@@ -342,6 +342,19 @@ source declaration -> compiler-reported used constant
 
 It is not reversed to match an intuitive mathematical dependency narrative.
 
+### Reachability-monotonicity invariant
+
+For the A/B/C atom quotient, every cross-atom compiler edge must move from a
+strictly smaller root-membership set to a strictly larger one. If a declaration
+reachable from a given root uses another local declaration, that dependency is
+reachable from the same root as well.
+
+Therefore transitions such as `A -> ABC`, `B -> BC`, or `BC -> ABC` are
+structurally compatible with the closure construction, while `ABC -> A` is not.
+
+This monotonicity is a graph invariant, **not** independent evidence that the
+larger-membership declaration is a mathematically decisive reconvergence point.
+
 ### Generated products
 
 Phase 2D adds:
