@@ -34,6 +34,9 @@ class RepositoryAnchor:
 class LeanCandidateReceipt:
     schema_version: str
     repository_graph_authority: RepositoryAnchor
+    source_surface_sha256: str
+    registered_compiler_receipt_sha256: str
+    lean_toolchain: str
     source_declaration_id: str
     path: str
     line: int
