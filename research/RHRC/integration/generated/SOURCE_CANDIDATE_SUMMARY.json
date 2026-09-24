@@ -1,0 +1,10 @@
+{
+  "schema_version": "RHRC-source-candidate-summary-1.0",
+  "scope": "PENDING_MATERIALIZATION",
+  "candidate_count": 0,
+  "visibility_counts": {},
+  "resolution_counts": {},
+  "source_only_public_theorem_count": 0,
+  "terminal_claim": "RH_OPEN",
+  "theorem_promotion": false
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "RHRC-framework-registry-1.0",
+  "terminal_claim": "RH_OPEN",
+  "frameworks": [
+    {
+      "id": "FFBBP_RUNTIME",
+      "name": "FFBBP",
+      "version": "1.5.1+RUN42C_inductive_firewall_closure_overlay",
+      "status": "QUALIFIED_DIAGNOSTIC_RUNTIME",
+      "scope": "finite_synthetic_unknown_field_diagnostic_only",
+      "claim_cap": "DIAGNOSTIC_ONLY",
+      "reference": "research/RHRC/BOUNDARY.json"
+    },
+    {
+      "id": "FFBBP_ASSURANCE",
+      "name": "FFBBP typed reduction assurance",
+      "version": "1.6.0",
+      "status": "INTEGRATED_OVERLAY_NOT_RUN42C_QUALIFIED",
+      "scope": "reduction_assurance_and_research_control",
+      "claim_cap": "RESEARCH_CONTROL_ONLY",
+      "inherits_run42c_qualification": false,
+      "reference": "research/RHRC/ffbbp/FFBBP_V16_ASSURANCE_REFERENCE.json"
+    },
+    {
+      "id": "OOL_MVS",
+      "name": "OoL-MVS operational semantics",
+      "version": "2.7.6",
+      "status": "OPERATIONAL_SEMANTICS_INTEGRATED_PHASE_ATLAS_PENDING",
+      "scope": "operational_semantics_and_governance_only",
+      "claim_cap": "RESEARCH_CONTROL_ONLY",
+      "reference": "research/RHRC/ool/OOL_REFERENCE.json"
+    },
+    {
+      "id": "PERMANSSON_EMBEDDED",
+      "name": "Permansson embedded formalization",
+      "version": "v0.1.6-Theorem31-subset",
+      "status": "INDEPENDENT_AUXILIARY_FORMALIZATION",
+      "scope": "embedded_theorem31_only",
+      "claim_cap": "AUXILIARY_FORMAL_ONLY",
+      "reference": "Zeta23/Permansson/FORMAL_VERIFICATION_NOTES.md"
+    },
+    {
+      "id": "PERMANSSON_EXTERNAL",
+      "name": "Permansson regimes external formal snapshot",
+      "version": "v0.1.8",
+      "status": "PINNED_EXTERNAL_FORMAL_BRIDGE_PENDING",
+      "scope": "research_regime_and_intervention_semantics",
+      "claim_cap": "EXTERNAL_FORMAL_REFERENCE_ONLY",
+      "repository": "HMarcusWH/PermanssonLean",
+      "commit": "c018f79ea4ce46f4f679ad5bca254509778fc53c",
+      "lean_toolchain": "v4.34.0",
+      "host_lean_toolchain": "v4.33.0-rc2"
+    },
+    {
+      "id": "MCM_HMWH",
+      "name": "MCM-HMWH Recursive Governed OODA",
+      "version": "2.0",
+      "status": "NOT_YET_INTEGRATED",
+      "scope": "future_research_federation",
+      "claim_cap": "DISCOVERY_ONLY"
+    }
+  ],
+  "forbidden_global_promotion": "Framework output does not create PROVED authority; Lean/compiler and registered claim gates remain authoritative."
+}
