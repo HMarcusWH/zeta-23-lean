@@ -698,8 +698,8 @@ def build_records() -> dict[str, object]:
         dependency_closure,
     )
     unresolved = {
-        "schema_version": "RHKG-phase2b-unresolved-0.4",
-        "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_2B",
+        "schema_version": "RHKG-phase2c-unresolved-0.5",
+        "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_2C",
         "unknown_file_classes": sorted(
             row["path"] for row in repo_files if row["file_class"] == "UNKNOWN_FILE_CLASS"
         ),
