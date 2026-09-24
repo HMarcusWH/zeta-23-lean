@@ -197,6 +197,67 @@ into the canonical prime-remainder substrate.
 
 **RH remains OPEN.**
 
+## Phase 2E
+
+Phase 2E asks whether the Phase-2C/2D shared dependency structure survives when
+the graph stops traversing theorem VALUE bodies.
+
+The compiler receipt is unchanged. Phase 2E derives four deterministic traversal
+projections from the exact `used_in_type`, `used_in_value`, and
+`used_in_structure` flags already sealed by Phase 2B:
+
+- `ANY`: the existing Phase-2D traversal over every compiler dependency edge;
+- `TYPE_ONLY`: homogeneous traversal over TYPE edges only;
+- `VALUE_ONLY`: homogeneous traversal over VALUE edges only;
+- `THEOREM_VALUE_ERASED_SUPPORT`: TYPE and STRUCTURE edges are always followed,
+  while VALUE edges are followed only when the source declaration is not a
+  `THEOREM`.
+
+The last projection is deliberately named narrowly. It erases traversal through
+Lean theorem proof bodies while retaining definitional VALUE bodies needed by
+the support graph. It is **not** a semantic dependency graph, a statement-meaning
+graph, or a logical implication graph.
+
+The generated products are:
+
+- `DEPENDENCY_PROJECTION_SUMMARY.json`: count/hash summaries for all 75 proved
+  registered roots and all existing farming cohorts;
+- `DEPENDENCY_PROJECTION_QUOTIENTS.json`: exact A/B/C quotient atoms for the
+  existing `RH_EQUIVALENCE_SURFACE` under each projection;
+- `DEPENDENCY_PROJECTION_FRONTIERS.json`: exact projected cross-atom frontiers
+  and a neutral `LEFT_ONLY / RIGHT_ONLY / SHARED` comparison of the canonical
+  prime-remainder and global-bottom arithmetic closures.
+
+The `ANY` projection is a regression baseline and must reproduce the sealed
+Phase-2D results exactly. Other projections are allowed to change containment
+relations; the pair comparison therefore reports one of `EQUAL`,
+`LEFT_STRICT_SUBSET`, `RIGHT_STRICT_SUBSET`, or `INCOMPARABLE` rather than
+assuming the Phase-2D strict containment survives.
+
+Read-only queries accept an optional projection:
+
+```bash
+python research/RHRC/tools/query_dependencies.py \
+  --claim R001_PRIME_UPPER_EQUIV_RH \
+  --projection THEOREM_VALUE_ERASED_SUPPORT
+
+python research/RHRC/tools/query_dependencies.py \
+  --atoms RH_EQUIVALENCE_SURFACE \
+  --projection THEOREM_VALUE_ERASED_SUPPORT
+
+python research/RHRC/tools/query_dependencies.py \
+  --frontier RH_EQUIVALENCE_SURFACE \
+  --projection VALUE_ONLY
+```
+
+Omitting `--projection` preserves the existing `ANY` behavior.
+
+Phase 2E remains research-only. A small projected frontier is not a missing
+theorem, a large projected frontier does not falsify an RH route, and no
+projection can promote a registered claim.
+
+**RH remains OPEN.**
+
 ## Commands
 
 From the repository root:
@@ -216,7 +277,8 @@ python research/RHRC/graph/validate.py
 Generated products live under `research/RHRC/graph/generated/`. Phase 2B adds
 `THEOREM_DEPENDENCY_CLOSURE.json`; Phase 2C adds the dependency kernel atlas,
 cohort-overlap view, and signature classes; Phase 2D adds dependency atoms,
-kernel quotient, and bridge frontiers. The compiler-derived receipt lives separately
+kernel quotient, and bridge frontiers; Phase 2E adds dependency projection
+summaries, quotients, and frontiers. The compiler-derived receipt lives separately
 under `research/RHRC/graph/compiler/` and is checked by Lean CI before RHKG
 consumes it. Generated graph products remain non-authoritative views and mirrors.
 If a generated record disagrees with an authoritative or compiler-derived source,
