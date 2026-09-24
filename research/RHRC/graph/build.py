@@ -764,7 +764,8 @@ def build_records() -> dict[str, object]:
     )
     coverage["schema_version"] = "RHKG-final-closure-coverage-1.0"
     coverage["lean_source_declaration_count"] = len(source_declarations)
-    coverage["source_surface_module_count"] = len(
+    coverage["source_surface_module_count"] = len(local_by_module)
+    coverage["source_surface_nonempty_module_count"] = len(
         {row["module"] for row in source_declarations}
     )
     coverage["document_node_count"] = len(document_nodes)
