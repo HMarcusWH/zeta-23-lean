@@ -591,12 +591,111 @@ def main() -> int:
     if dependency_closure.get("graph_theorem_promotion") is not False:
         errors.append("THEOREM_DEPENDENCY_CLOSURE permits graph theorem promotion")
 
+    cohort_config = json.loads(
+        (REPO / graph_build.DEPENDENCY_FARMING_COHORTS).read_text(encoding="utf-8")
+    )
+    try:
+        resolved_cohorts = graph_build.resolve_dependency_farming_cohorts(
+            claim_source,
+            registered_bindings,
+            route_source,
+            cohort_config,
+        )
+    except ValueError as exc:
+        errors.append(f"dependency farming cohort configuration invalid: {exc}")
+        resolved_cohorts = []
+
+    if cohort_config.get("terminal_claim") != "RH_OPEN":
+        errors.append("dependency farming cohorts do not preserve RH_OPEN")
+    if cohort_config.get("graph_theorem_promotion") is not False:
+        errors.append("dependency farming cohorts permit theorem promotion")
+
+    expected_cohort_ids = {
+        "ROUTE_R001",
+        "ROUTE_R002",
+        "ROUTE_R003",
+        "ROUTE_R004",
+        "RH_EQUIVALENCE_SURFACE",
+        "GLOBAL_BOTTOM_CHAIN",
+        "CANONICAL_ARITHMETIC_SURFACE",
+    }
+    if {row["cohort_id"] for row in resolved_cohorts} != expected_cohort_ids:
+        errors.append("dependency farming cohort ID surface drift")
+
+    if resolved_cohorts:
+        expected_kernel_atlas = graph_build.dependency_kernel_atlas_view(
+            compiler_receipt,
+            dependency_closure,
+            resolved_cohorts,
+        )
+        expected_overlap = graph_build.dependency_cohort_overlap_view(
+            compiler_receipt,
+            dependency_closure,
+            resolved_cohorts,
+        )
+        expected_signatures = graph_build.dependency_signature_classes_view(
+            dependency_closure
+        )
+
+        kernel_atlas = json.loads(
+            (GENERATED / "DEPENDENCY_KERNEL_ATLAS.json").read_text(encoding="utf-8")
+        )
+        cohort_overlap = json.loads(
+            (GENERATED / "DEPENDENCY_COHORT_OVERLAP.json").read_text(encoding="utf-8")
+        )
+        signature_classes = json.loads(
+            (GENERATED / "DEPENDENCY_SIGNATURE_CLASSES.json").read_text(encoding="utf-8")
+        )
+
+        if kernel_atlas != expected_kernel_atlas:
+            errors.append("DEPENDENCY_KERNEL_ATLAS exact projection drift")
+        if cohort_overlap != expected_overlap:
+            errors.append("DEPENDENCY_COHORT_OVERLAP exact projection drift")
+        if signature_classes != expected_signatures:
+            errors.append("DEPENDENCY_SIGNATURE_CLASSES exact projection drift")
+
+        for name, product in (
+            ("DEPENDENCY_KERNEL_ATLAS", kernel_atlas),
+            ("DEPENDENCY_COHORT_OVERLAP", cohort_overlap),
+            ("DEPENDENCY_SIGNATURE_CLASSES", signature_classes),
+        ):
+            if product.get("terminal_claim") != "RH_OPEN":
+                errors.append(f"{name} does not preserve RH_OPEN")
+            if product.get("graph_theorem_promotion") is not False:
+                errors.append(f"{name} permits graph theorem promotion")
+
+        proved_ids = set(binding_by_id)
+        open_in_cohorts = sorted(
+            open_claim_ids
+            & {
+                claim_id
+                for cohort in resolved_cohorts
+                for claim_id in cohort["claim_ids"]
+            }
+        )
+        if open_in_cohorts:
+            errors.append(
+                f"OPEN claims entered proved dependency farming cohorts: {open_in_cohorts}"
+            )
+        unknown_in_cohorts = sorted(
+            {
+                claim_id
+                for cohort in resolved_cohorts
+                for claim_id in cohort["claim_ids"]
+            }
+            - proved_ids
+        )
+        if unknown_in_cohorts:
+            errors.append(
+                f"non-proved claims entered dependency farming cohorts: {unknown_in_cohorts}"
+            )
+
     unresolved = json.loads(
         (GENERATED / "UNRESOLVED_GRAPH_ITEMS.json").read_text(encoding="utf-8")
     )
-    if unresolved.get("schema_version") != "RHKG-phase2b-unresolved-0.4":
-        errors.append("UNRESOLVED_GRAPH_ITEMS is not Phase 2B current")
-    if unresolved.get("semantic_coverage_status") != "PARTIAL_BY_DESIGN_PHASE_2B":
+    if unresolved.get("schema_version") != "RHKG-phase2c-unresolved-0.5":
+        errors.append("UNRESOLVED_GRAPH_ITEMS is not Phase 2C current")
+    if unresolved.get("semantic_coverage_status") != "PARTIAL_BY_DESIGN_PHASE_2C":
         errors.append("UNRESOLVED_GRAPH_ITEMS semantic coverage status drift")
     if unresolved.get("claim_firewall") != "RH_OPEN":
         errors.append("UNRESOLVED_GRAPH_ITEMS does not preserve RH_OPEN")
@@ -658,8 +757,8 @@ def main() -> int:
         errors.append("terminal claim is not OPEN")
 
     coverage = json.loads((GENERATED / "REPOSITORY_COVERAGE.json").read_text(encoding="utf-8"))
-    if coverage.get("schema_version") != "RHKG-phase2b-coverage-0.4":
-        errors.append("coverage view is not Phase 2B current")
+    if coverage.get("schema_version") != "RHKG-phase2c-coverage-0.5":
+        errors.append("coverage view is not Phase 2C current")
     if coverage.get("registered_proved_lean_declaration_count") != len(binding_by_id):
         errors.append("coverage registered-root count drift")
     if coverage.get("lean_declaration_count") != len(lean_declarations):
