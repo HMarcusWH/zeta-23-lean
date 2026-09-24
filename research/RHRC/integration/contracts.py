@@ -46,8 +46,8 @@ class LeanCandidateReceipt:
     resolved_full_name: str | None
     compiler_kind: str | None
     private_or_internal: bool | None
-    exact_type_text: str | None
-    exact_type_sha256: str | None
+    compiler_type_text: str | None
+    compiler_type_sha256: str | None
     registered_claim_id: str | None
     claim_cap: str = "DISCOVERY_ONLY"
     terminal_claim: str = "RH_OPEN"
