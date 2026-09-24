@@ -1,0 +1,3877 @@
+{
+  "entries": [
+    {
+      "claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "closure_sha256": "6d1a9ecd7c951ac5035df0a0f171be81941e98f293f5b0124f160f0d1f1c1361",
+      "local_dependency_count": 2140,
+      "root_theorem": "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis"
+    },
+    {
+      "claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "closure_sha256": "43b932b1e11397f6a846870a8e0accd586e9f821c6e2ce9b26ea160350911beb",
+      "local_dependency_count": 2134,
+      "root_theorem": "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis"
+    },
+    {
+      "claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "closure_sha256": "924e64e57e1b36338f3a315e9128a10fa839d5e5fb1105391f0fc3b613df467c",
+      "local_dependency_count": 2659,
+      "root_theorem": "Zeta23.ExceptionalZero.exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_offLine_zero"
+    },
+    {
+      "claim_id": "OBS_TIGHTMULT",
+      "closure_sha256": "d27f74b7af2986330bf2ff53eda6774a70c8fd960469ad85d22b10e2a546f4fd",
+      "local_dependency_count": 28,
+      "root_theorem": "Zeta23.ZeroSide.TightMult.lemmaR_tight_two"
+    },
+    {
+      "claim_id": "R001_FILTERED_ZERO_POLE",
+      "closure_sha256": "ad2b02016bb68bd3988bb5e3b8305dafb0f91af8bbb9cb6793f13abc5f9173a6",
+      "local_dependency_count": 115,
+      "root_theorem": "Zeta23.ExceptionalZero.not_subexponential_filteredZeroFamily_of_right_zero"
+    },
+    {
+      "claim_id": "R001_PRIME_UPPER_EQUIV_RH",
+      "closure_sha256": "3e1e3708497f357d6ec4a60c4f419f13eb0645a412468fdc2ced490f5a484c4f",
+      "local_dependency_count": 611,
+      "root_theorem": "Zeta23.ExceptionalZero.arithmeticSideSubexponential_iff_criticalLine"
+    },
+    {
+      "claim_id": "R001_WEIL_BRIDGE",
+      "closure_sha256": "c78a1c293e0d96ed3a78c861b0059ea57ecb6887f848d4bd474f46d5454e81d7",
+      "local_dependency_count": 528,
+      "root_theorem": "Zeta23.ExceptionalZero.filteredZeroFamily_weilZeroFilter_eq_literatureRHS"
+    },
+    {
+      "claim_id": "R001_ZERO_GROWTH",
+      "closure_sha256": "8254f26ed15999e30aba5be67aa29a5e72d924f722d0f2b290e9f9fcccf7fcdd",
+      "local_dependency_count": 603,
+      "root_theorem": "Zeta23.ExceptionalZero.exists_poleKilled_test_not_subexponential_of_right_zero"
+    },
+    {
+      "claim_id": "R002_KERNEL_ZERO_SIDE_BRIDGE",
+      "closure_sha256": "c67adf5827e1e9d1c2c43175ea79c97b7d1f547f2465a23a507311d464fdc0c6",
+      "local_dependency_count": 1165,
+      "root_theorem": "Zeta23.CCM.rawKernelZeroSideMatrix_eq_two_finiteMatrix_add_four_correction"
+    },
+    {
+      "claim_id": "R002_MULTI_PROBE_SEPARATION",
+      "closure_sha256": "8e95b15c5e71c4bd2b5d97e24023058f42204a3443cccb59c938432e80b85903",
+      "local_dependency_count": 12,
+      "root_theorem": "Zeta23.ExceptionalZero.not_onLineCombination_of_pairBlock"
+    },
+    {
+      "claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "closure_sha256": "52c25fe556db627419c29f69157e2bc7e7a41d45504b108291d8cdec20119a0c",
+      "local_dependency_count": 27,
+      "root_theorem": "Zeta23.CCM.finrank_boundaryFlatSubspace"
+    },
+    {
+      "claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "closure_sha256": "dba9511e354d780b4539fbf74b3420c7f5a68f6b33dca9531706fe624b4b39d3",
+      "local_dependency_count": 993,
+      "root_theorem": "Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm"
+    },
+    {
+      "claim_id": "R003_BOUNDARY_FLAT_MOMENT_FLAG",
+      "closure_sha256": "2af80e8d6fa72a518c5038d333260081c4c39bf93146fef2a077c7b07cb527cc",
+      "local_dependency_count": 9,
+      "root_theorem": "Zeta23.CCM.boundaryFlat_moment_flag"
+    },
+    {
+      "claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "closure_sha256": "75de9512855f37a83e1f6b33841888e44a04bbd1e8f9dea6e8a609352ce58d1e",
+      "local_dependency_count": 26,
+      "root_theorem": "Zeta23.CCM.boundaryFlatProject_boundaryFlat"
+    },
+    {
+      "claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "closure_sha256": "be735bd5814a908d6bd535354d55a9331465c9fe21818f169293b85c0a592b6d",
+      "local_dependency_count": 151,
+      "root_theorem": "Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx"
+    },
+    {
+      "claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "closure_sha256": "962f03a9785a96eb6c32386cff4fe4f888add225b0cb5f0552381c83b0738474",
+      "local_dependency_count": 3,
+      "root_theorem": "Zeta23.CCM.quadraticForm_re_eq_re_inner_apply_self"
+    },
+    {
+      "claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "closure_sha256": "7b4f677c8c0428a141466ecd075faac6f34a95d32c622f7291c6b19a99218680",
+      "local_dependency_count": 51,
+      "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_toEuclideanLin_isSymmetric"
+    },
+    {
+      "claim_id": "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
+      "closure_sha256": "c59fbe0831495967b9e54456d6bc63dc4518621fde42a5cfe1d63a1f4ae92335",
+      "local_dependency_count": 224,
+      "root_theorem": "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget"
+    },
+    {
+      "claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "closure_sha256": "6e030c60ca6a0386e3063f8528e863174909bde45988418b8e6de8d1c94ad24a",
+      "local_dependency_count": 50,
+      "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_isHermitian"
+    },
+    {
+      "claim_id": "R003_CCM_BRIDGE",
+      "closure_sha256": "e16172323b21000b1437e38a11fdb8566bb94f72a9a0d1924bc50a2121968962",
+      "local_dependency_count": 1160,
+      "root_theorem": "Zeta23.CCM.zeroSideMatrix_eq_finiteMatrix_add_correction"
+    },
+    {
+      "claim_id": "R003_CCM_RHS_IDENTITY",
+      "closure_sha256": "c522df023d5e60d26f55f386f69ab0da1db02ef6bd7eb662eabd9efa5474f9c9",
+      "local_dependency_count": 373,
+      "root_theorem": "Zeta23.CCM.literatureRHS_dictionaryTest_eq_quadraticForm"
+    },
+    {
+      "claim_id": "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
+      "closure_sha256": "71bcade8a8b47b0fdaaa70731f01e42d134ab7743ddb7e71524caf4d1ef1c52a",
+      "local_dependency_count": 83,
+      "root_theorem": "Zeta23.CCM.boundaryFlat_canonical_displacement_package"
+    },
+    {
+      "claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "closure_sha256": "a7c001bb92038f287143bc852d9eb5f9c8e3ee915a7e72abde77afe237df6fed",
+      "local_dependency_count": 97,
+      "root_theorem": "Zeta23.CCM.finrank_euclideanEvenBoundaryFlatSubspace"
+    },
+    {
+      "claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "closure_sha256": "2350a0fd11268faed3aaf5a75ed75060e7a84d0184609427583a792c7cd41d1b",
+      "local_dependency_count": 60,
+      "root_theorem": "Zeta23.CCM.evenOddBoundaryFlatLinearEquiv"
+    },
+    {
+      "claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "closure_sha256": "ff859672967c3d48c2f649822e18f33dcbd1a2ab3315cabf1a76092fc5ec8f57",
+      "local_dependency_count": 37,
+      "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_mulVec_reverseCoefficients"
+    },
+    {
+      "claim_id": "R003_CUTOFF_FREE_MATRIX_MAP",
+      "closure_sha256": "4478cae1e8993a9df84a7a8c2a60520bab8ebad118066c939440845ad7d626dc",
+      "local_dependency_count": 1170,
+      "root_theorem": "Zeta23.CCM.zeroSideMatrix_eq_cutoffFreeMatrix"
+    },
+    {
+      "claim_id": "R003_DISPLACEMENT_TRANSFER",
+      "closure_sha256": "c0bb335d4f1c78d824209897bec96f91f698f0db2e2afee3968f1b4d982b9f33",
+      "local_dependency_count": 10,
+      "root_theorem": "Zeta23.ExceptionalZero.rank_displacement_le_two_of_eq_smul_add_scalar"
+    },
+    {
+      "claim_id": "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+      "closure_sha256": "7eb3b27ddf177ccc62d7e31ebfb32607d44f95b4f621d47e35dbc6198638a331",
+      "local_dependency_count": 30,
+      "root_theorem": "Zeta23.CCM.finrank_euclideanBoundaryFlatSubspace"
+    },
+    {
+      "claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "closure_sha256": "cc982e2b253933fffadf9096811f65697b734bd971df75efd1bd1efd056ac986",
+      "local_dependency_count": 1288,
+      "root_theorem": "Zeta23.ExceptionalZero.exists_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
+    },
+    {
+      "claim_id": "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+      "closure_sha256": "1049d9be25db436655b3eb64abd0e70597301b5870a6da767bb460275e5f25ea",
+      "local_dependency_count": 35,
+      "root_theorem": "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanBoundaryFlatSubspace"
+    },
+    {
+      "claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+      "closure_sha256": "0ee0d1a65ae58ba7f0e93964455153f9f65df3f1eb16cee807840c194cbef20b",
+      "local_dependency_count": 95,
+      "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_displacement_mulVec_even_boundaryFlat"
+    },
+    {
+      "claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "closure_sha256": "6015bfa8a07497bb495b52a5343ecdf25e54c76699281b266d8325ae10aed6c0",
+      "local_dependency_count": 29,
+      "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_submatrix_centeredEmbedding"
+    },
+    {
+      "claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "closure_sha256": "f273ee845ea6f656925931118a06b274a5e46a810f8ebbcfb133c3e0b4648288",
+      "local_dependency_count": 1261,
+      "root_theorem": "Zeta23.ExceptionalZero.exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_offLine_zero"
+    },
+    {
+      "claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "closure_sha256": "bcd2389145a2aba4b9cf8e1b69b87a166dbd92438872185ae370ff9b7c98bfa2",
+      "local_dependency_count": 503,
+      "root_theorem": "Zeta23.CCM.negative_eigenmode_not_centeredImage"
+    },
+    {
+      "claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "closure_sha256": "2eb46459bf098ff6ff7f3436a93b9742d950e89251bb568c785e2913fa0f3987",
+      "local_dependency_count": 1479,
+      "root_theorem": "Zeta23.ExceptionalZero.exists_firstBadParity_negativeEigenmode_of_offLine_zero"
+    },
+    {
+      "claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "closure_sha256": "4c0b62828d05fef2044d19d267b837f786cd6bacc772bfcca63d6dc2c383c8cd",
+      "local_dependency_count": 1440,
+      "root_theorem": "Zeta23.ExceptionalZero.exists_leastParityBad_oneDimShell_of_offLine_zero"
+    },
+    {
+      "claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "closure_sha256": "b8bd0aa450eda9a3f65ca9d213351bb6227e74c78a8676466acb62deea5eb8d6",
+      "local_dependency_count": 1526,
+      "root_theorem": "Zeta23.ExceptionalZero.exists_firstBadParity_shell_KKT_of_offLine_zero"
+    },
+    {
+      "claim_id": "R003_FIRST_BAD_SHELL_PROJECTION",
+      "closure_sha256": "8d5e89a62a09564d37ac5794e68aed323ce1ec6aec01b8ffea3924b136ee697e",
+      "local_dependency_count": 527,
+      "root_theorem": "Zeta23.CCM.negative_eigenmode_paritySuccShell_projection_ne_zero"
+    },
+    {
+      "claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "closure_sha256": "d15b9757a45390aa73814677c7de0f8525838cc5ae7709da5ae8c66183b2e6d1",
+      "local_dependency_count": 1355,
+      "root_theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_parityBad_tail_of_offLine_zero"
+    },
+    {
+      "claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "closure_sha256": "2f60a32745a786e6ac06ac23d2bd514aa9b1b58f509371dfffb0c3e6d9770981",
+      "local_dependency_count": 1382,
+      "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.exists_branchPackage"
+    },
+    {
+      "claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+      "closure_sha256": "600c41ad34085db67b3308a2776e2047a3dca0c51ba73729e59b334fc986d394",
+      "local_dependency_count": 843,
+      "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.groundTrial_eigenmode"
+    },
+    {
+      "claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+      "closure_sha256": "20a4b9cb434ff9b6f66836481a6c47819955361628b9146d36811bedc4922ff6",
+      "local_dependency_count": 737,
+      "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral"
+    },
+    {
+      "claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+      "closure_sha256": "0a5bf90e19fd39dc576a8074a8230b7d48ae25e8474b360fb1ed0215b5200617",
+      "local_dependency_count": 315,
+      "root_theorem": "Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad"
+    },
+    {
+      "claim_id": "R003_KERNEL_EF_EXTENSION",
+      "closure_sha256": "74c30d275dccf2ccfc233e58a071f3785cad16202f32f152d05471c642918292",
+      "local_dependency_count": 1161,
+      "root_theorem": "Zeta23.CCM.dictionaryTransform_zero_sum_eq_literatureRHS"
+    },
+    {
+      "claim_id": "R003_LEAST_PARITY_BAD_SHELL",
+      "closure_sha256": "ec56a9ff8ea24a8ac788db5ae685794fbb5a427d8309d1936adc703c4d64ec5d",
+      "local_dependency_count": 149,
+      "root_theorem": "Zeta23.CCM.finrank_euclideanParitySuccShell"
+    },
+    {
+      "claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "closure_sha256": "1e15f08146eda4f846bf634d496a70e1b098d7815aafce81db33149f60404409",
+      "local_dependency_count": 431,
+      "root_theorem": "Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_cutoffFreeQuadraticForm"
+    },
+    {
+      "claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "closure_sha256": "862a61170df4fb0cbf0a6ff95c811d4705810af8738658e6943cc71cdd89a5dd",
+      "local_dependency_count": 6,
+      "root_theorem": "Zeta23.CCM.hardWindowCharacterCorrelation_eq_qBasis"
+    },
+    {
+      "claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "closure_sha256": "adfa7d4f1e9c899774fea75e41606d3b5cb6e3177387603adbc2fc41a6f29373",
+      "local_dependency_count": 67,
+      "root_theorem": "Zeta23.CCM.localizedWeilCorrelation_finiteVector_eq_two_mul_dictionaryTest"
+    },
+    {
+      "claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "closure_sha256": "7e837112d9fe3bdcba77062f67a164596dcc94f04dabcbc3e7b02bb1d8288502",
+      "local_dependency_count": 68,
+      "root_theorem": "Zeta23.CCM.exists_localizedFinite_uniform_C2_approx"
+    },
+    {
+      "claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "closure_sha256": "9fa41199554698a28b388c3afe56dcfe649e2cf57320ac62f8b16e2ac3cf534d",
+      "local_dependency_count": 666,
+      "root_theorem": "Zeta23.ExceptionalZero.exists_poleNeutral_negativeWeilTest_of_offLine_zero"
+    },
+    {
+      "claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "closure_sha256": "7ba1e421b721e205a64d41a4cd1bdbaadd287abc90dd79ca0730805a4d991e25",
+      "local_dependency_count": 1320,
+      "root_theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
+    },
+    {
+      "claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+      "closure_sha256": "7c871cae759c639aa65b86f59cc3d2c1d161402367ada774026f16c0a31b2bbd",
+      "local_dependency_count": 101,
+      "root_theorem": "Zeta23.CCM.exists_negative_eigenmode_of_parityBad"
+    },
+    {
+      "claim_id": "R003_PARITY_BAD_NFLOW",
+      "closure_sha256": "7f6abe9711cb04a22d4cd13760136524dadc3ae75fa688c71e28751617a14a1f",
+      "local_dependency_count": 481,
+      "root_theorem": "Zeta23.CCM.parityBad_persists_of_le"
+    },
+    {
+      "claim_id": "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
+      "closure_sha256": "5be5142289f2c7735fd414623baae28d6d11e82207d30c1e161c9da7f5d42fa0",
+      "local_dependency_count": 273,
+      "root_theorem": "Zeta23.CCM.finrank_range_conjugatedParityCompressionDefect_le_one"
+    },
+    {
+      "claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "closure_sha256": "bbb161441ff2bdef6f5977804bb80a5a3a32af4386fd88aeb32ce974bd0143a0",
+      "local_dependency_count": 90,
+      "root_theorem": "Zeta23.CCM.parityCompressedCanonical_isSymmetric"
+    },
+    {
+      "claim_id": "R003_PARITY_NORMAL_KKT",
+      "closure_sha256": "fccf31ab65a451d8965346986a5c59d1fa1feb227aeae47ba9818151c85d82d6",
+      "local_dependency_count": 121,
+      "root_theorem": "Zeta23.CCM.parityKKTResidual_of_eigenmode"
+    },
+    {
+      "claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "closure_sha256": "6292505d1ccc8478a0158352b5e45f86291ead62617bda7e8b2f86e172909916",
+      "local_dependency_count": 47,
+      "root_theorem": "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanOddBoundaryFlatSubspace"
+    },
+    {
+      "claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "closure_sha256": "92328af8929071790e57bb8611ed7f39cc70d8a835ece6fce88cc889ce2cf17f",
+      "local_dependency_count": 45,
+      "root_theorem": "Zeta23.CCM.quadraticForm_evenPart_add_oddPart"
+    },
+    {
+      "claim_id": "R003_RESIDUAL_C2",
+      "closure_sha256": "dc0f9f1040fe1dc0f6a692d4469213db1136e5fc3e6b12947276ada8a64441f1",
+      "local_dependency_count": 130,
+      "root_theorem": "Zeta23.CCM.dictionaryResidualTest_admissible"
+    },
+    {
+      "claim_id": "R003_SOURCE_KAPPA_FINITE_SECTOR",
+      "closure_sha256": "72167ffcc0a21a6cf6307000277ccef7bbdfe934473709df3b90087b286b9fab",
+      "local_dependency_count": 13,
+      "root_theorem": "Zeta23.CCM.sourceKappaFiniteVector_eq_sourceFiniteVector"
+    },
+    {
+      "claim_id": "R003_SOURCE_NORMALIZATION_REPAIR",
+      "closure_sha256": "7a30ec213355ec540ffb7693cffc3ce78fcad6c395dfe9ea13d57bc7030209bf",
+      "local_dependency_count": 40,
+      "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_eq_legacyPrintedMatrix_add_correction"
+    },
+    {
+      "claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+      "closure_sha256": "5ae44c47bf753ab534b4f2e2419afc7dc9e5a597f60679008fc20b3cc38aeef6",
+      "local_dependency_count": 33,
+      "root_theorem": "Zeta23.CCM.sourceEq44Matrix_eq_cutoffFreeMatrix"
+    },
+    {
+      "claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "closure_sha256": "acfa5323b782dc564533459764a22bcf13e74f8b7be5d891a14ad9d2a3e68624",
+      "local_dependency_count": 707,
+      "root_theorem": "Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeLocalizedWeilAdditiveRHS_of_offLine_zero"
+    },
+    {
+      "claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "closure_sha256": "dffa59f5eeb412375ff0f9bf9fa030253766693f6b83506b3ecec0f5af93276e",
+      "local_dependency_count": 672,
+      "root_theorem": "Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero"
+    },
+    {
+      "claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "closure_sha256": "b4c362da9d96a4b0a7df873de7bdae321b7086ed9663c774f667de9d849662fb",
+      "local_dependency_count": 700,
+      "root_theorem": "Zeta23.ExceptionalZero.exists_boundaryFlatFinite_negativeW_of_strictAperture"
+    },
+    {
+      "claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "closure_sha256": "02180458c61a15ff7a17ca5121757a544272e6bb5d3693ddb80eb0edfcd83605",
+      "local_dependency_count": 485,
+      "root_theorem": "Zeta23.CCM.re_inner_successor_nonnegative_on_centeredImage"
+    },
+    {
+      "claim_id": "R003_TENT_ANALYTICS",
+      "closure_sha256": "2c1b13e7fb98af882d6716389eb1b1da6af47c6fdbc4d1cc30aed9aa00214388",
+      "local_dependency_count": 263,
+      "root_theorem": "Zeta23.CCM.dictionaryTent_analytic_package"
+    },
+    {
+      "claim_id": "R003_TENT_EF_EXTENSION",
+      "closure_sha256": "e024aeaf6135d0c0953ad5327a25138e80faa6dc45f9a8329de1ec7a4785bc54",
+      "local_dependency_count": 665,
+      "root_theorem": "Zeta23.CCM.dictionaryTent_explicitFormula"
+    },
+    {
+      "claim_id": "R003_TENT_MOLLIFIER_ARCHITECTURE",
+      "closure_sha256": "55cf78fc2928485b00d372c4b2c74ddc1507c2396d1637a1221b63cb4e7cb3d3",
+      "local_dependency_count": 69,
+      "root_theorem": "Zeta23.CCM.dictionaryTent_mollifier_architecture_package"
+    },
+    {
+      "claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "closure_sha256": "e375bd41bef48f2dd8e4694f124a191bba312bd83ca9be0eb45a8462b2ef5b0a",
+      "local_dependency_count": 1273,
+      "root_theorem": "Zeta23.ExceptionalZero.exists_unit_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero"
+    },
+    {
+      "claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "closure_sha256": "675fe3bff41b0710350694ee99daafee45ec8c38dd8fe050679b2af0747c080b",
+      "local_dependency_count": 245,
+      "root_theorem": "Zeta23.ExceptionalZero.zeta_W_norm_le_commonSupport"
+    },
+    {
+      "claim_id": "R003_WEIL_DISPLACEMENT",
+      "closure_sha256": "6806e6037c66a50a9523f1daaa1bc03234106275a5d4636e994867bebe1691fe",
+      "local_dependency_count": 1189,
+      "root_theorem": "Zeta23.CCM.rank_zeroSideMatrix_displacement_le_two"
+    },
+    {
+      "claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "closure_sha256": "558ab56fea891d51b84932c581b5bb6396b03cf467d1b1a4cf47f8e2fd062f07",
+      "local_dependency_count": 567,
+      "root_theorem": "Zeta23.ExceptionalZero.zeta_W_self_eq_localizedWeilAdditiveRHS"
+    },
+    {
+      "claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "closure_sha256": "143a084d79886352b149f31163e1eac3f2b5caed09a138d5f6b2c9982371e1ca",
+      "local_dependency_count": 533,
+      "root_theorem": "Zeta23.ExceptionalZero.zeta_W_literatureRHS_package"
+    },
+    {
+      "claim_id": "R004_CCM_DISPLACEMENT_FORMAL",
+      "closure_sha256": "a4bba6ff681d1a5ea11e758d1729a264b52f2445418bc1725e29bdff8a81b7e8",
+      "local_dependency_count": 76,
+      "root_theorem": "Zeta23.CCM.rank_canonicalSourceMatrix_displacement_le_two"
+    }
+  ],
+  "exact_equal_closure_classes": [],
+  "graph_theorem_promotion": false,
+  "interpretation": "Exact dependency signatures and strict set containments describe proof implementation structure only. Equal closure is not theorem equivalence, and closure containment is not logical implication.",
+  "schema_version": "RHKG-phase2c-dependency-signature-classes-0.5",
+  "strict_local_closure_containments": [
+    {
+      "difference_count": 2025,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 2019,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2544,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 496,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "R001_PRIME_UPPER_EQUIV_RH",
+      "superset_count": 611
+    },
+    {
+      "difference_count": 488,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "R001_ZERO_GROWTH",
+      "superset_count": 603
+    },
+    {
+      "difference_count": 1173,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 1146,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1261
+    },
+    {
+      "difference_count": 1364,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1325,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 1411,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 1240,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 551,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "superset_count": 666
+    },
+    {
+      "difference_count": 1205,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 592,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "superset_count": 707
+    },
+    {
+      "difference_count": 557,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "superset_count": 672
+    },
+    {
+      "difference_count": 1158,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1273
+    },
+    {
+      "difference_count": 1612,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 1606,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2131,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 83,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "R001_PRIME_UPPER_EQUIV_RH",
+      "superset_count": 611
+    },
+    {
+      "difference_count": 75,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "R001_ZERO_GROWTH",
+      "superset_count": 603
+    },
+    {
+      "difference_count": 760,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 733,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1261
+    },
+    {
+      "difference_count": 951,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 912,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 998,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 827,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 138,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "superset_count": 666
+    },
+    {
+      "difference_count": 792,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 179,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "superset_count": 707
+    },
+    {
+      "difference_count": 144,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "superset_count": 672
+    },
+    {
+      "difference_count": 745,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1273
+    },
+    {
+      "difference_count": 8,
+      "subset_claim_id": "R001_ZERO_GROWTH",
+      "subset_count": 603,
+      "superset_claim_id": "R001_PRIME_UPPER_EQUIV_RH",
+      "superset_count": 611
+    },
+    {
+      "difference_count": 2113,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 2107,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2632,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 70,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "superset_count": 97
+    },
+    {
+      "difference_count": 3,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+      "superset_count": 30
+    },
+    {
+      "difference_count": 1261,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 1452,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1413,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 1499,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 1328,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 1355,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "superset_count": 1382
+    },
+    {
+      "difference_count": 816,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+      "superset_count": 843
+    },
+    {
+      "difference_count": 710,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+      "superset_count": 737
+    },
+    {
+      "difference_count": 288,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+      "superset_count": 315
+    },
+    {
+      "difference_count": 122,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_LEAST_PARITY_BAD_SHELL",
+      "superset_count": 149
+    },
+    {
+      "difference_count": 1293,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 246,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
+      "superset_count": 273
+    },
+    {
+      "difference_count": 1147,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "subset_count": 993,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 1141,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "subset_count": 993,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 1666,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "subset_count": 993,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 295,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "subset_count": 993,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 268,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "subset_count": 993,
+      "superset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1261
+    },
+    {
+      "difference_count": 486,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "subset_count": 993,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 447,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "subset_count": 993,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 533,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "subset_count": 993,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 362,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "subset_count": 993,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 327,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "subset_count": 993,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 280,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "subset_count": 993,
+      "superset_claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1273
+    },
+    {
+      "difference_count": 74,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_MOMENT_FLAG",
+      "subset_count": 9,
+      "superset_claim_id": "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
+      "superset_count": 83
+    },
+    {
+      "difference_count": 2114,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 2108,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2633,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 125,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "superset_count": 151
+    },
+    {
+      "difference_count": 1262,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 1235,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1261
+    },
+    {
+      "difference_count": 1453,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1414,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 1500,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 1329,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 1294,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 674,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "superset_count": 700
+    },
+    {
+      "difference_count": 1247,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1273
+    },
+    {
+      "difference_count": 1989,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 1983,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2508,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 1137,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 1110,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1261
+    },
+    {
+      "difference_count": 1328,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1289,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 1375,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 1204,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 1169,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 549,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "superset_count": 700
+    },
+    {
+      "difference_count": 1122,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1273
+    },
+    {
+      "difference_count": 2137,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 2131,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2656,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 1285,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 500,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "superset_count": 503
+    },
+    {
+      "difference_count": 1476,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1437,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 1523,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 524,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_PROJECTION",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 1379,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "superset_count": 1382
+    },
+    {
+      "difference_count": 840,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+      "superset_count": 843
+    },
+    {
+      "difference_count": 734,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+      "superset_count": 737
+    },
+    {
+      "difference_count": 312,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+      "superset_count": 315
+    },
+    {
+      "difference_count": 1317,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 98,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+      "superset_count": 101
+    },
+    {
+      "difference_count": 482,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "superset_count": 485
+    },
+    {
+      "difference_count": 2089,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 2083,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2608,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 1428,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1475,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 1331,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "superset_count": 1382
+    },
+    {
+      "difference_count": 792,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+      "superset_count": 843
+    },
+    {
+      "difference_count": 264,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+      "superset_count": 315
+    },
+    {
+      "difference_count": 50,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+      "superset_count": 101
+    },
+    {
+      "difference_count": 39,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "superset_count": 90
+    },
+    {
+      "difference_count": 1916,
+      "subset_claim_id": "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
+      "subset_count": 224,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 2435,
+      "subset_claim_id": "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
+      "subset_count": 224,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 2090,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 2084,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2609,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 1,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "superset_count": 51
+    },
+    {
+      "difference_count": 1429,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1476,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 1332,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "superset_count": 1382
+    },
+    {
+      "difference_count": 793,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+      "superset_count": 843
+    },
+    {
+      "difference_count": 265,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+      "superset_count": 315
+    },
+    {
+      "difference_count": 51,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+      "superset_count": 101
+    },
+    {
+      "difference_count": 40,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "superset_count": 90
+    },
+    {
+      "difference_count": 5,
+      "subset_claim_id": "R003_CCM_BRIDGE",
+      "subset_count": 1160,
+      "superset_claim_id": "R002_KERNEL_ZERO_SIDE_BRIDGE",
+      "superset_count": 1165
+    },
+    {
+      "difference_count": 10,
+      "subset_claim_id": "R003_CCM_BRIDGE",
+      "subset_count": 1160,
+      "superset_claim_id": "R003_CUTOFF_FREE_MATRIX_MAP",
+      "superset_count": 1170
+    },
+    {
+      "difference_count": 1,
+      "subset_claim_id": "R003_CCM_BRIDGE",
+      "subset_count": 1160,
+      "superset_claim_id": "R003_KERNEL_EF_EXTENSION",
+      "superset_count": 1161
+    },
+    {
+      "difference_count": 29,
+      "subset_claim_id": "R003_CCM_BRIDGE",
+      "subset_count": 1160,
+      "superset_claim_id": "R003_WEIL_DISPLACEMENT",
+      "superset_count": 1189
+    },
+    {
+      "difference_count": 1767,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 1761,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2286,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 792,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R002_KERNEL_ZERO_SIDE_BRIDGE",
+      "superset_count": 1165
+    },
+    {
+      "difference_count": 620,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "superset_count": 993
+    },
+    {
+      "difference_count": 787,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_CCM_BRIDGE",
+      "superset_count": 1160
+    },
+    {
+      "difference_count": 797,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_CUTOFF_FREE_MATRIX_MAP",
+      "superset_count": 1170
+    },
+    {
+      "difference_count": 915,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 888,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1261
+    },
+    {
+      "difference_count": 130,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "superset_count": 503
+    },
+    {
+      "difference_count": 1106,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1067,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 1153,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 154,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_PROJECTION",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 982,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 1009,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "superset_count": 1382
+    },
+    {
+      "difference_count": 470,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+      "superset_count": 843
+    },
+    {
+      "difference_count": 364,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+      "superset_count": 737
+    },
+    {
+      "difference_count": 788,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_KERNEL_EF_EXTENSION",
+      "superset_count": 1161
+    },
+    {
+      "difference_count": 58,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "superset_count": 431
+    },
+    {
+      "difference_count": 947,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 108,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_PARITY_BAD_NFLOW",
+      "superset_count": 481
+    },
+    {
+      "difference_count": 112,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "superset_count": 485
+    },
+    {
+      "difference_count": 900,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1273
+    },
+    {
+      "difference_count": 816,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_WEIL_DISPLACEMENT",
+      "superset_count": 1189
+    },
+    {
+      "difference_count": 2043,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 2037,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2562,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 1382,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1343,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 1429,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 1285,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "superset_count": 1382
+    },
+    {
+      "difference_count": 746,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+      "superset_count": 843
+    },
+    {
+      "difference_count": 640,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+      "superset_count": 737
+    },
+    {
+      "difference_count": 218,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+      "superset_count": 315
+    },
+    {
+      "difference_count": 52,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_LEAST_PARITY_BAD_SHELL",
+      "superset_count": 149
+    },
+    {
+      "difference_count": 176,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
+      "superset_count": 273
+    },
+    {
+      "difference_count": 2080,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 2074,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2599,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 37,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "superset_count": 97
+    },
+    {
+      "difference_count": 1419,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1380,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 1466,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 1322,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "superset_count": 1382
+    },
+    {
+      "difference_count": 783,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+      "superset_count": 843
+    },
+    {
+      "difference_count": 677,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+      "superset_count": 737
+    },
+    {
+      "difference_count": 255,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+      "superset_count": 315
+    },
+    {
+      "difference_count": 89,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_LEAST_PARITY_BAD_SHELL",
+      "superset_count": 149
+    },
+    {
+      "difference_count": 213,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
+      "superset_count": 273
+    },
+    {
+      "difference_count": 2103,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 2097,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2622,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 1442,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1403,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 1489,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 1318,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 1345,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "superset_count": 1382
+    },
+    {
+      "difference_count": 236,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
+      "superset_count": 273
+    },
+    {
+      "difference_count": 84,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "R003_PARITY_NORMAL_KKT",
+      "superset_count": 121
+    },
+    {
+      "difference_count": 8,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "superset_count": 45
+    },
+    {
+      "difference_count": 1179,
+      "subset_claim_id": "R003_DISPLACEMENT_TRANSFER",
+      "subset_count": 10,
+      "superset_claim_id": "R003_WEIL_DISPLACEMENT",
+      "superset_count": 1189
+    },
+    {
+      "difference_count": 66,
+      "subset_claim_id": "R003_DISPLACEMENT_TRANSFER",
+      "subset_count": 10,
+      "superset_claim_id": "R004_CCM_DISPLACEMENT_FORMAL",
+      "superset_count": 76
+    },
+    {
+      "difference_count": 1258,
+      "subset_claim_id": "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+      "subset_count": 30,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 1290,
+      "subset_claim_id": "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+      "subset_count": 30,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 32,
+      "subset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "subset_count": 1288,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 1285,
+      "subset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+      "subset_count": 35,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 2564,
+      "subset_claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+      "subset_count": 95,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 1287,
+      "subset_claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+      "subset_count": 95,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "superset_count": 1382
+    },
+    {
+      "difference_count": 178,
+      "subset_claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+      "subset_count": 95,
+      "superset_claim_id": "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
+      "superset_count": 273
+    },
+    {
+      "difference_count": 2111,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 2105,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2630,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 474,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "superset_count": 503
+    },
+    {
+      "difference_count": 1450,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1411,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 1497,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 498,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_PROJECTION",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 1326,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 1353,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "superset_count": 1382
+    },
+    {
+      "difference_count": 814,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+      "superset_count": 843
+    },
+    {
+      "difference_count": 708,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+      "superset_count": 737
+    },
+    {
+      "difference_count": 286,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+      "superset_count": 315
+    },
+    {
+      "difference_count": 1291,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 452,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_PARITY_BAD_NFLOW",
+      "superset_count": 481
+    },
+    {
+      "difference_count": 456,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "superset_count": 485
+    },
+    {
+      "difference_count": 27,
+      "subset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "subset_count": 1261,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 218,
+      "subset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "subset_count": 1261,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 179,
+      "subset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "subset_count": 1261,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 265,
+      "subset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "subset_count": 1261,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 94,
+      "subset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "subset_count": 1261,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 59,
+      "subset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "subset_count": 1261,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 12,
+      "subset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "subset_count": 1261,
+      "superset_claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1273
+    },
+    {
+      "difference_count": 1637,
+      "subset_claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "subset_count": 503,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 1631,
+      "subset_claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "subset_count": 503,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2156,
+      "subset_claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "subset_count": 503,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 976,
+      "subset_claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "subset_count": 503,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1023,
+      "subset_claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "subset_count": 503,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 24,
+      "subset_claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "subset_count": 503,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_PROJECTION",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 879,
+      "subset_claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "subset_count": 503,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "superset_count": 1382
+    },
+    {
+      "difference_count": 340,
+      "subset_claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "subset_count": 503,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+      "superset_count": 843
+    },
+    {
+      "difference_count": 234,
+      "subset_claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "subset_count": 503,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+      "superset_count": 737
+    },
+    {
+      "difference_count": 47,
+      "subset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "subset_count": 1479,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 39,
+      "subset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "subset_count": 1440,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 86,
+      "subset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "subset_count": 1440,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 999,
+      "subset_claim_id": "R003_FIRST_BAD_SHELL_PROJECTION",
+      "subset_count": 527,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 124,
+      "subset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "subset_count": 1355,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 85,
+      "subset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "subset_count": 1355,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 171,
+      "subset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "subset_count": 1355,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 1277,
+      "subset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "subset_count": 1382,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 1816,
+      "subset_claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+      "subset_count": 843,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 1819,
+      "subset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+      "subset_count": 315,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2344,
+      "subset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+      "subset_count": 315,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 1991,
+      "subset_claim_id": "R003_LEAST_PARITY_BAD_SHELL",
+      "subset_count": 149,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 1985,
+      "subset_claim_id": "R003_LEAST_PARITY_BAD_SHELL",
+      "subset_count": 149,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2510,
+      "subset_claim_id": "R003_LEAST_PARITY_BAD_SHELL",
+      "subset_count": 149,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 1330,
+      "subset_claim_id": "R003_LEAST_PARITY_BAD_SHELL",
+      "subset_count": 149,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1291,
+      "subset_claim_id": "R003_LEAST_PARITY_BAD_SHELL",
+      "subset_count": 149,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 1377,
+      "subset_claim_id": "R003_LEAST_PARITY_BAD_SHELL",
+      "subset_count": 149,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 1233,
+      "subset_claim_id": "R003_LEAST_PARITY_BAD_SHELL",
+      "subset_count": 149,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "superset_count": 1382
+    },
+    {
+      "difference_count": 694,
+      "subset_claim_id": "R003_LEAST_PARITY_BAD_SHELL",
+      "subset_count": 149,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+      "superset_count": 843
+    },
+    {
+      "difference_count": 1709,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 1703,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2228,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 562,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "superset_count": 993
+    },
+    {
+      "difference_count": 857,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 830,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1261
+    },
+    {
+      "difference_count": 72,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "superset_count": 503
+    },
+    {
+      "difference_count": 1048,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1009,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 1095,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 96,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_PROJECTION",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 924,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 951,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "superset_count": 1382
+    },
+    {
+      "difference_count": 412,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+      "superset_count": 843
+    },
+    {
+      "difference_count": 306,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+      "superset_count": 737
+    },
+    {
+      "difference_count": 889,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 50,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_PARITY_BAD_NFLOW",
+      "superset_count": 481
+    },
+    {
+      "difference_count": 54,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "superset_count": 485
+    },
+    {
+      "difference_count": 842,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1273
+    },
+    {
+      "difference_count": 2134,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 2128,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2653,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 987,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "superset_count": 993
+    },
+    {
+      "difference_count": 1282,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 1255,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1261
+    },
+    {
+      "difference_count": 497,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "superset_count": 503
+    },
+    {
+      "difference_count": 1473,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1434,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 1520,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 521,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_PROJECTION",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 1349,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 1376,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "superset_count": 1382
+    },
+    {
+      "difference_count": 837,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+      "superset_count": 843
+    },
+    {
+      "difference_count": 731,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+      "superset_count": 737
+    },
+    {
+      "difference_count": 425,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "superset_count": 431
+    },
+    {
+      "difference_count": 61,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "superset_count": 67
+    },
+    {
+      "difference_count": 1314,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 475,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_PARITY_BAD_NFLOW",
+      "superset_count": 481
+    },
+    {
+      "difference_count": 479,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "superset_count": 485
+    },
+    {
+      "difference_count": 1267,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1273
+    },
+    {
+      "difference_count": 2073,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 2067,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2592,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 926,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "superset_count": 993
+    },
+    {
+      "difference_count": 1221,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 1194,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1261
+    },
+    {
+      "difference_count": 436,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "superset_count": 503
+    },
+    {
+      "difference_count": 1412,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1373,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 1459,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 460,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_PROJECTION",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 1288,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 1315,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "superset_count": 1382
+    },
+    {
+      "difference_count": 776,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+      "superset_count": 843
+    },
+    {
+      "difference_count": 670,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+      "superset_count": 737
+    },
+    {
+      "difference_count": 364,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "superset_count": 431
+    },
+    {
+      "difference_count": 1253,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 414,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_PARITY_BAD_NFLOW",
+      "superset_count": 481
+    },
+    {
+      "difference_count": 418,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "superset_count": 485
+    },
+    {
+      "difference_count": 1206,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1273
+    },
+    {
+      "difference_count": 2072,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 2066,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2591,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 83,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "superset_count": 151
+    },
+    {
+      "difference_count": 1220,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 1193,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1261
+    },
+    {
+      "difference_count": 1411,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1372,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 1458,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 1287,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 1252,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 632,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "superset_count": 700
+    },
+    {
+      "difference_count": 1205,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1273
+    },
+    {
+      "difference_count": 1474,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 1468,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 1993,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 622,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 595,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1261
+    },
+    {
+      "difference_count": 813,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 774,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 860,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 689,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 654,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 41,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "superset_count": 707
+    },
+    {
+      "difference_count": 6,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "superset_count": 672
+    },
+    {
+      "difference_count": 607,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1273
+    },
+    {
+      "difference_count": 2039,
+      "subset_claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+      "subset_count": 101,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 2033,
+      "subset_claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+      "subset_count": 101,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2558,
+      "subset_claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+      "subset_count": 101,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 1378,
+      "subset_claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+      "subset_count": 101,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1425,
+      "subset_claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+      "subset_count": 101,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 1281,
+      "subset_claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+      "subset_count": 101,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "superset_count": 1382
+    },
+    {
+      "difference_count": 214,
+      "subset_claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+      "subset_count": 101,
+      "superset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+      "superset_count": 315
+    },
+    {
+      "difference_count": 998,
+      "subset_claim_id": "R003_PARITY_BAD_NFLOW",
+      "subset_count": 481,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 959,
+      "subset_claim_id": "R003_PARITY_BAD_NFLOW",
+      "subset_count": 481,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 1045,
+      "subset_claim_id": "R003_PARITY_BAD_NFLOW",
+      "subset_count": 481,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 874,
+      "subset_claim_id": "R003_PARITY_BAD_NFLOW",
+      "subset_count": 481,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 2050,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 2044,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2569,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 1389,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1436,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 1292,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "superset_count": 1382
+    },
+    {
+      "difference_count": 753,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+      "superset_count": 843
+    },
+    {
+      "difference_count": 225,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+      "superset_count": 315
+    },
+    {
+      "difference_count": 11,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+      "superset_count": 101
+    },
+    {
+      "difference_count": 1405,
+      "subset_claim_id": "R003_PARITY_NORMAL_KKT",
+      "subset_count": 121,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 2093,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 2087,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2612,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 1432,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1393,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 1479,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 480,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_PROJECTION",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 1335,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "superset_count": 1382
+    },
+    {
+      "difference_count": 796,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+      "superset_count": 843
+    },
+    {
+      "difference_count": 690,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+      "superset_count": 737
+    },
+    {
+      "difference_count": 268,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+      "superset_count": 315
+    },
+    {
+      "difference_count": 102,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "R003_LEAST_PARITY_BAD_SHELL",
+      "superset_count": 149
+    },
+    {
+      "difference_count": 2095,
+      "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "subset_count": 45,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 2089,
+      "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "subset_count": 45,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2614,
+      "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "subset_count": 45,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 1434,
+      "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "subset_count": 45,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1395,
+      "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "subset_count": 45,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 1481,
+      "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "subset_count": 45,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 1310,
+      "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "subset_count": 45,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 1035,
+      "subset_claim_id": "R003_RESIDUAL_C2",
+      "subset_count": 130,
+      "superset_claim_id": "R002_KERNEL_ZERO_SIDE_BRIDGE",
+      "superset_count": 1165
+    },
+    {
+      "difference_count": 1030,
+      "subset_claim_id": "R003_RESIDUAL_C2",
+      "subset_count": 130,
+      "superset_claim_id": "R003_CCM_BRIDGE",
+      "superset_count": 1160
+    },
+    {
+      "difference_count": 1040,
+      "subset_claim_id": "R003_RESIDUAL_C2",
+      "subset_count": 130,
+      "superset_claim_id": "R003_CUTOFF_FREE_MATRIX_MAP",
+      "superset_count": 1170
+    },
+    {
+      "difference_count": 1031,
+      "subset_claim_id": "R003_RESIDUAL_C2",
+      "subset_count": 130,
+      "superset_claim_id": "R003_KERNEL_EF_EXTENSION",
+      "superset_count": 1161
+    },
+    {
+      "difference_count": 1059,
+      "subset_claim_id": "R003_RESIDUAL_C2",
+      "subset_count": 130,
+      "superset_claim_id": "R003_WEIL_DISPLACEMENT",
+      "superset_count": 1189
+    },
+    {
+      "difference_count": 2107,
+      "subset_claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+      "subset_count": 33,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 2101,
+      "subset_claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+      "subset_count": 33,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2626,
+      "subset_claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+      "subset_count": 33,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 1349,
+      "subset_claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+      "subset_count": 33,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "superset_count": 1382
+    },
+    {
+      "difference_count": 1433,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "subset_count": 707,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 1427,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "subset_count": 707,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 1952,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "subset_count": 707,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 581,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "subset_count": 707,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 554,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "subset_count": 707,
+      "superset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1261
+    },
+    {
+      "difference_count": 772,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "subset_count": 707,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 733,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "subset_count": 707,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 819,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "subset_count": 707,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 648,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "subset_count": 707,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 613,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "subset_count": 707,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 566,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "subset_count": 707,
+      "superset_claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1273
+    },
+    {
+      "difference_count": 1468,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 1462,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 1987,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 616,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 589,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1261
+    },
+    {
+      "difference_count": 807,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 768,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 854,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 683,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 648,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 35,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "superset_count": 707
+    },
+    {
+      "difference_count": 601,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1273
+    },
+    {
+      "difference_count": 1440,
+      "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "subset_count": 700,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 1434,
+      "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "subset_count": 700,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 1959,
+      "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "subset_count": 700,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 588,
+      "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "subset_count": 700,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 561,
+      "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "subset_count": 700,
+      "superset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1261
+    },
+    {
+      "difference_count": 779,
+      "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "subset_count": 700,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 740,
+      "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "subset_count": 700,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 826,
+      "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "subset_count": 700,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 655,
+      "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "subset_count": 700,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 620,
+      "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "subset_count": 700,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 573,
+      "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "subset_count": 700,
+      "superset_claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1273
+    },
+    {
+      "difference_count": 1655,
+      "subset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "subset_count": 485,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 1649,
+      "subset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "subset_count": 485,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2174,
+      "subset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "subset_count": 485,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 18,
+      "subset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "subset_count": 485,
+      "superset_claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "superset_count": 503
+    },
+    {
+      "difference_count": 994,
+      "subset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "subset_count": 485,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1041,
+      "subset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "subset_count": 485,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 42,
+      "subset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "subset_count": 485,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_PROJECTION",
+      "superset_count": 527
+    },
+    {
+      "difference_count": 897,
+      "subset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "subset_count": 485,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+      "superset_count": 1382
+    },
+    {
+      "difference_count": 358,
+      "subset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "subset_count": 485,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+      "superset_count": 843
+    },
+    {
+      "difference_count": 252,
+      "subset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "subset_count": 485,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+      "superset_count": 737
+    },
+    {
+      "difference_count": 500,
+      "subset_claim_id": "R003_TENT_EF_EXTENSION",
+      "subset_count": 665,
+      "superset_claim_id": "R002_KERNEL_ZERO_SIDE_BRIDGE",
+      "superset_count": 1165
+    },
+    {
+      "difference_count": 495,
+      "subset_claim_id": "R003_TENT_EF_EXTENSION",
+      "subset_count": 665,
+      "superset_claim_id": "R003_CCM_BRIDGE",
+      "superset_count": 1160
+    },
+    {
+      "difference_count": 505,
+      "subset_claim_id": "R003_TENT_EF_EXTENSION",
+      "subset_count": 665,
+      "superset_claim_id": "R003_CUTOFF_FREE_MATRIX_MAP",
+      "superset_count": 1170
+    },
+    {
+      "difference_count": 496,
+      "subset_claim_id": "R003_TENT_EF_EXTENSION",
+      "subset_count": 665,
+      "superset_claim_id": "R003_KERNEL_EF_EXTENSION",
+      "superset_count": 1161
+    },
+    {
+      "difference_count": 524,
+      "subset_claim_id": "R003_TENT_EF_EXTENSION",
+      "subset_count": 665,
+      "superset_claim_id": "R003_WEIL_DISPLACEMENT",
+      "superset_count": 1189
+    },
+    {
+      "difference_count": 1895,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 1889,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2414,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 1043,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 1016,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1261
+    },
+    {
+      "difference_count": 1234,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 1195,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 1281,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 1110,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 1075,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 455,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "superset_count": 700
+    },
+    {
+      "difference_count": 1028,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1273
+    },
+    {
+      "difference_count": 1573,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 1567,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2092,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 426,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "superset_count": 993
+    },
+    {
+      "difference_count": 721,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 694,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1261
+    },
+    {
+      "difference_count": 912,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 873,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 959,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 788,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 753,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 140,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "superset_count": 707
+    },
+    {
+      "difference_count": 706,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1273
+    },
+    {
+      "difference_count": 1607,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "superset_count": 2140
+    },
+    {
+      "difference_count": 1601,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+      "superset_count": 2134
+    },
+    {
+      "difference_count": 2126,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+      "superset_count": 2659
+    },
+    {
+      "difference_count": 460,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "superset_count": 993
+    },
+    {
+      "difference_count": 755,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1288
+    },
+    {
+      "difference_count": 728,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1261
+    },
+    {
+      "difference_count": 946,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+      "superset_count": 1479
+    },
+    {
+      "difference_count": 907,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+      "superset_count": 1440
+    },
+    {
+      "difference_count": 993,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+      "superset_count": 1526
+    },
+    {
+      "difference_count": 822,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+      "superset_count": 1355
+    },
+    {
+      "difference_count": 133,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "superset_count": 666
+    },
+    {
+      "difference_count": 787,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1320
+    },
+    {
+      "difference_count": 174,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "superset_count": 707
+    },
+    {
+      "difference_count": 139,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "superset_count": 672
+    },
+    {
+      "difference_count": 167,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "superset_count": 700
+    },
+    {
+      "difference_count": 740,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+      "superset_count": 1273
+    },
+    {
+      "difference_count": 34,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "superset_count": 567
+    }
+  ],
+  "terminal_claim": "RH_OPEN",
+  "unique_signature_claim_ids": [
+    "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+    "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+    "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+    "OBS_TIGHTMULT",
+    "R001_FILTERED_ZERO_POLE",
+    "R001_PRIME_UPPER_EQUIV_RH",
+    "R001_WEIL_BRIDGE",
+    "R001_ZERO_GROWTH",
+    "R002_KERNEL_ZERO_SIDE_BRIDGE",
+    "R002_MULTI_PROBE_SEPARATION",
+    "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+    "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+    "R003_BOUNDARY_FLAT_MOMENT_FLAG",
+    "R003_BOUNDARY_FLAT_PROJECTION",
+    "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+    "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+    "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+    "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
+    "R003_CANONICAL_SOURCE_HERMITIAN",
+    "R003_CCM_BRIDGE",
+    "R003_CCM_RHS_IDENTITY",
+    "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
+    "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+    "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+    "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+    "R003_CUTOFF_FREE_MATRIX_MAP",
+    "R003_DISPLACEMENT_TRANSFER",
+    "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+    "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+    "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+    "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+    "R003_EXACT_CENTERED_FINITE_NESTING",
+    "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+    "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+    "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+    "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+    "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+    "R003_FIRST_BAD_SHELL_PROJECTION",
+    "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+    "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+    "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+    "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+    "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+    "R003_KERNEL_EF_EXTENSION",
+    "R003_LEAST_PARITY_BAD_SHELL",
+    "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+    "R003_LOCALIZED_BASIS_CORRELATION",
+    "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+    "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+    "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+    "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+    "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+    "R003_PARITY_BAD_NFLOW",
+    "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
+    "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+    "R003_PARITY_NORMAL_KKT",
+    "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+    "R003_PARITY_QUADRATIC_SPLIT",
+    "R003_RESIDUAL_C2",
+    "R003_SOURCE_KAPPA_FINITE_SECTOR",
+    "R003_SOURCE_NORMALIZATION_REPAIR",
+    "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+    "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+    "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+    "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+    "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+    "R003_TENT_ANALYTICS",
+    "R003_TENT_EF_EXTENSION",
+    "R003_TENT_MOLLIFIER_ARCHITECTURE",
+    "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+    "R003_WEIL_COMMON_SUPPORT_BOUND",
+    "R003_WEIL_DISPLACEMENT",
+    "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+    "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+    "R004_CCM_DISPLACEMENT_FORMAL"
+  ]
+}
