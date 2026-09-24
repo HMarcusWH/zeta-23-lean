@@ -1,0 +1,114 @@
+name: RHKG Phase 2D finalize quotient frontiers
+
+on:
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: write
+
+jobs:
+  finalize-phase2d:
+    if: github.event.pull_request.number == 260
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Remove one-shot finalizer from final graph subject
+        run: git rm .github/workflows/rhkg_phase2d_finalize_commit.yml
+      - name: Run RHKG unit tests
+        run: python -m unittest discover -s research/RHRC/graph/tests -p 'test_*.py' -v
+      - name: Regenerate Phase 2D deterministic products
+        run: |
+          python research/RHRC/graph/build.py --write
+          python research/RHRC/graph/validate.py
+      - name: Assert Phase 2D quotient state and firewall
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          g = Path("research/RHRC/graph/generated")
+          atoms = json.loads((g / "DEPENDENCY_COHORT_ATOMS.json").read_text())
+          quotient = json.loads((g / "DEPENDENCY_KERNEL_QUOTIENT.json").read_text())
+          frontiers = json.loads((g / "DEPENDENCY_BRIDGE_FRONTIERS.json").read_text())
+          coverage = json.loads((g / "REPOSITORY_COVERAGE.json").read_text())
+          unresolved = json.loads((g / "UNRESOLVED_GRAPH_ITEMS.json").read_text())
+
+          assert atoms["schema_version"] == "RHKG-phase2d-dependency-cohort-atoms-0.6"
+          assert atoms["target_cohort_id"] == "RH_EQUIVALENCE_SURFACE"
+          assert atoms["closure_semantics"] == "ROOT_EXCLUDED_TRANSITIVE_LOCAL_DEPENDENCIES"
+          assert atoms["union_count"] == 2224
+          counts = {row["signature"]: row["count"] for row in atoms["atoms"]}
+          assert counts == {
+              "A": 12,
+              "B": 78,
+              "C": 72,
+              "AB": 0,
+              "AC": 0,
+              "BC": 1463,
+              "ABC": 599,
+          }
+
+          label_sets = {
+              row["signature"]: set(row["member_labels"])
+              for row in atoms["atoms"]
+          }
+
+          assert quotient["schema_version"] == "RHKG-phase2d-dependency-kernel-quotient-0.6"
+          assert quotient["union_count"] == 2224
+
+          assert frontiers["schema_version"] == "RHKG-phase2d-dependency-bridge-frontiers-0.6"
+          assert frontiers["edge_direction"] == "SOURCE_DECLARATION_TO_COMPILER_USED_CONSTANT"
+          assert frontiers["cross_atom_edge_count"] == 1026
+          for edge in frontiers["cross_atom_edges"]:
+              assert label_sets[edge["source_atom"]] < label_sets[edge["target_atom"]]
+
+          probe = frontiers["containment_probe"]
+          assert probe["subset_claim_id"] == "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM"
+          assert probe["superset_claim_id"] == "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL"
+          assert probe["subset_count"] == 224
+          assert probe["superset_count"] == 2659
+          assert probe["superset_only_count"] == 2435
+          assert len(probe["cross_region_edges"]) == 972
+          assert all(
+              edge["transition"] == "SUPERSET_ONLY->SHARED"
+              for edge in probe["cross_region_edges"]
+          )
+          assert all(
+              not edge["source_registered_root"] and not edge["target_registered_root"]
+              for edge in frontiers["cross_atom_edges"]
+              if edge["bridge_candidate_eligible"]
+          )
+
+          for product in (atoms, quotient, frontiers):
+              assert product["terminal_claim"] == "RH_OPEN"
+              assert product["graph_theorem_promotion"] is False
+
+          assert coverage["schema_version"] == "RHKG-phase2d-coverage-0.6"
+          assert coverage["registered_proved_lean_declaration_count"] == 75
+          assert coverage["terminal_claim"] == "RH_OPEN"
+          assert coverage["graph_theorem_promotion"] is False
+          assert unresolved["schema_version"] == "RHKG-phase2d-unresolved-0.6"
+          assert unresolved["claim_firewall"] == "RH_OPEN"
+
+          print("RHKG Phase 2D exact quotient assertions: PASS")
+          print("Cross-atom edges:", frontiers["cross_atom_edge_count"])
+          print("Active endpoint cross-region edges:", len(probe["cross_region_edges"]))
+          PY
+      - name: Commit generated products and self-delete
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A research/RHRC/graph/generated
+          if git diff --cached --quiet; then
+            echo "No Phase 2D finalization changes to commit."
+            exit 0
+          fi
+          git commit -m "RHKG Phase 2D: reseal quotient and bridge frontiers"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
