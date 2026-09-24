@@ -10,8 +10,9 @@ namespace Zeta23.RHRC
 Compiler-facing source-candidate resolver for the RHRC integration layer.
 
 AUDIT_ONLY. This module does not create theorem authority. It resolves
-source-discovery candidates against Lean's elaborated environment using an exact
-(module, final-name-component) key. Ambiguity and missing candidateMatches fail closed.
+source-discovery candidates against Lean's elaborated environment using the exact
+originating module plus the source-spelled declaration-name suffix. Ambiguity and
+missing matches fail closed.
 RH remains OPEN.
 -/
 
@@ -40,8 +41,15 @@ private def kindString : ConstantInfo → String
 private def finalComponentString? (decl : Name) : Option String :=
   decl.components.getLast?.map (·.toString)
 
-private def candidateKey (moduleName shortName : String) : String :=
-  moduleName ++ "\u001f" ++ shortName
+private def candidateKey (moduleName leafName : String) : String :=
+  moduleName ++ "\u001f" ++ leafName
+
+private def sourceLeafName (sourceName : String) : String :=
+  (sourceName.splitOn ".").getLast!
+
+private def sourceNameMatches (decl : Name) (sourceName : String) : Bool :=
+  let full := decl.toString
+  full == sourceName || full.endsWith ("." ++ sourceName)
 
 private def sanitizeProtocolField (s : String) : String :=
   ((s.replace "\t" " ").replace "\n" " ").replace "\r" " "
@@ -83,7 +91,10 @@ public def resolveSourceCandidates (queries : Array SourceCandidateQuery) : Comm
     | _, _ => pure ()
 
   for query in queries do
-    let candidateMatches := index.getD (candidateKey query.moduleName query.shortName) #[]
+    let leafName := sourceLeafName query.shortName
+    let candidateMatches :=
+      (index.getD (candidateKey query.moduleName leafName) #[]).filter
+        (fun decl => sourceNameMatches decl query.shortName)
     if candidateMatches.isEmpty then
       liftIO <| IO.println s!"RHRC_CANDIDATE_RESULT\t{query.sourceId}\tNO_COMPILER_MATCH\t0\t-\t-\t-\t-\t-\t-"
     else if candidateMatches.size > 1 then
