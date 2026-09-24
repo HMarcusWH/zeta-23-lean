@@ -308,3 +308,14 @@ mathematical authority.
 
 The generated unresolved report now distinguishes closed repository accounting
 from deeper semantic work that remains optional/future. RH remains OPEN.
+
+
+## Integration-derived receipts
+
+The candidate-exactification products under
+`research/RHRC/integration/generated/` are declared generated products in the
+repository graph but are owned by
+`research/RHRC/integration/candidate_exactify.py`. RHKG indexes them and records
+their producer while excluding their bytes from the subject digest. This avoids a
+self-referential graph/receipt hash cycle. They remain discovery-only and carry no
+theorem authority.
