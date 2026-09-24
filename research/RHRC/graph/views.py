@@ -612,3 +612,353 @@ def dependency_signature_classes_view(dependency_closure: dict) -> dict:
         "terminal_claim": "RH_OPEN",
         "graph_theorem_promotion": False,
     }
+
+def resolve_dependency_quotient_config(
+    binding_data: dict,
+    cohorts: list[dict],
+    config: dict,
+) -> dict:
+    if config.get("schema_version") != "RHKG-phase2d-kernel-quotient-config-0.6":
+        raise ValueError("dependency quotient config schema drift")
+    if config.get("terminal_claim") != "RH_OPEN":
+        raise ValueError("dependency quotient config does not preserve RH_OPEN")
+    if config.get("graph_theorem_promotion") is not False:
+        raise ValueError("dependency quotient config permits theorem promotion")
+
+    binding_ids = {row["id"] for row in binding_data["bindings"]}
+    cohort_by_id = {row["cohort_id"]: row for row in cohorts}
+    target_id = config.get("target_cohort_id")
+    if target_id not in cohort_by_id:
+        raise ValueError(f"unknown quotient target cohort: {target_id!r}")
+
+    members = config.get("members", [])
+    labels = [row.get("label") for row in members]
+    claim_ids = [row.get("claim_id") for row in members]
+    if len(members) < 2:
+        raise ValueError("dependency quotient requires at least two members")
+    if any(not isinstance(x, str) or not x for x in labels + claim_ids):
+        raise ValueError("dependency quotient member label/claim_id invalid")
+    if len(set(labels)) != len(labels):
+        raise ValueError("dependency quotient labels are not unique")
+    if len(set(claim_ids)) != len(claim_ids):
+        raise ValueError("dependency quotient claim IDs are not unique")
+    if set(claim_ids) != set(cohort_by_id[target_id]["claim_ids"]):
+        raise ValueError(
+            "dependency quotient member set does not exactly match target cohort"
+        )
+    unbound = sorted(set(claim_ids) - binding_ids)
+    if unbound:
+        raise ValueError(f"dependency quotient contains unbound claims: {unbound}")
+
+    semantics = config.get("semantics", {})
+    if semantics.get("root_inclusion") is not False:
+        raise ValueError("Phase 2D requires root-excluding closure semantics")
+    if semantics.get("edge_direction") != (
+        "source declaration -> compiler-reported used constant"
+    ):
+        raise ValueError("Phase 2D compiler edge-direction declaration drift")
+    if semantics.get("external_dependencies_in_atoms") is not False:
+        raise ValueError("Phase 2D atoms must remain project-local")
+
+    probe = config.get("containment_probe", {})
+    subset_id = probe.get("subset_claim_id")
+    superset_id = probe.get("superset_claim_id")
+    if subset_id not in binding_ids or superset_id not in binding_ids:
+        raise ValueError("Phase 2D containment probe claims must be proved bindings")
+    if subset_id == superset_id:
+        raise ValueError("Phase 2D containment probe claims must be distinct")
+
+    return {
+        "target_cohort_id": target_id,
+        "members": sorted(
+            [{"label": l, "claim_id": c} for l, c in zip(labels, claim_ids)],
+            key=lambda row: row["label"],
+        ),
+        "containment_probe": {
+            "subset_claim_id": subset_id,
+            "superset_claim_id": superset_id,
+        },
+    }
+
+
+def dependency_cohort_atoms_view(
+    lean_declarations: list[dict],
+    dependency_closure: dict,
+    quotient: dict,
+) -> dict:
+    declaration_by_name = {row["declaration"]: row for row in lean_declarations}
+    entry_by_claim = {row["claim_id"]: row for row in dependency_closure["entries"]}
+    members = quotient["members"]
+    closure_by_label: dict[str, set[str]] = {}
+
+    for member in members:
+        label = member["label"]
+        claim_id = member["claim_id"]
+        entry = entry_by_claim[claim_id]
+        closure = set(entry["transitive_local_dependencies"])
+        if entry["root_theorem"] in closure:
+            raise ValueError(
+                f"root-including closure drift for Phase 2D member {claim_id}"
+            )
+        closure_by_label[label] = closure
+
+    all_labels = [row["label"] for row in members]
+    union = set().union(*(closure_by_label[label] for label in all_labels))
+
+    atom_signatures = [
+        "".join(combo)
+        for size in range(1, len(all_labels) + 1)
+        for combo in combinations(all_labels, size)
+    ]
+    atoms: dict[str, list[str]] = {signature: [] for signature in atom_signatures}
+    declaration_atom: dict[str, str] = {}
+
+    for declaration in sorted(union):
+        signature = "".join(
+            label for label in all_labels if declaration in closure_by_label[label]
+        )
+        if not signature:
+            raise ValueError(f"quotient union declaration has empty atom: {declaration}")
+        atoms[signature].append(declaration)
+        declaration_atom[declaration] = signature
+
+    atom_rows: list[dict] = []
+    for signature in atom_signatures:
+        declarations = atoms[signature]
+        module_counts = Counter(
+            declaration_by_name[name]["module"] for name in declarations
+        )
+        kind_counts = Counter(
+            declaration_by_name[name]["declaration_kind"] for name in declarations
+        )
+        role_counts = Counter(
+            declaration_by_name[name]["graph_role"] for name in declarations
+        )
+        private_count = sum(
+            bool(declaration_by_name[name]["private_or_internal"])
+            for name in declarations
+        )
+        atom_rows.append(
+            {
+                "signature": signature,
+                "member_labels": [label for label in all_labels if label in signature],
+                "count": len(declarations),
+                "sha256": _sha256_names(declarations),
+                "declarations": declarations,
+                "module_counts": dict(sorted(module_counts.items())),
+                "declaration_kind_counts": dict(sorted(kind_counts.items())),
+                "graph_role_counts": dict(sorted(role_counts.items())),
+                "private_or_internal_count": private_count,
+                "public_count": len(declarations) - private_count,
+                "registered_root_count": sum(
+                    declaration_by_name[name]["graph_role"] == "REGISTERED_CLAIM_ROOT"
+                    for name in declarations
+                ),
+            }
+        )
+
+    return {
+        "schema_version": "RHKG-phase2d-dependency-cohort-atoms-0.6",
+        "target_cohort_id": quotient["target_cohort_id"],
+        "members": members,
+        "closure_semantics": "ROOT_EXCLUDED_TRANSITIVE_LOCAL_DEPENDENCIES",
+        "union_count": len(union),
+        "union_sha256": _sha256_names(union),
+        "atoms": atom_rows,
+        "declaration_atoms": [
+            {"declaration": name, "signature": declaration_atom[name]}
+            for name in sorted(declaration_atom)
+        ],
+        "interpretation": (
+            "Atoms are exact membership classes over root-excluding compiler-derived "
+            "project-local dependency closures. Atom membership is not logical "
+            "classification or theorem equivalence."
+        ),
+        "terminal_claim": "RH_OPEN",
+        "graph_theorem_promotion": False,
+    }
+
+
+def dependency_kernel_quotient_view(atoms_view: dict) -> dict:
+    rows = []
+    for atom in atoms_view["atoms"]:
+        rows.append(
+            {
+                "signature": atom["signature"],
+                "count": atom["count"],
+                "sha256": atom["sha256"],
+                "module_counts": atom["module_counts"],
+                "declaration_kind_counts": atom["declaration_kind_counts"],
+                "graph_role_counts": atom["graph_role_counts"],
+                "private_or_internal_count": atom["private_or_internal_count"],
+                "public_count": atom["public_count"],
+                "registered_root_count": atom["registered_root_count"],
+            }
+        )
+    return {
+        "schema_version": "RHKG-phase2d-dependency-kernel-quotient-0.6",
+        "target_cohort_id": atoms_view["target_cohort_id"],
+        "closure_semantics": atoms_view["closure_semantics"],
+        "union_count": atoms_view["union_count"],
+        "atoms": rows,
+        "interpretation": (
+            "This is a factual module/kind/visibility profile of exact dependency "
+            "atoms. Concentration in a module, declaration kind, or visibility class "
+            "does not establish mathematical importance."
+        ),
+        "terminal_claim": "RH_OPEN",
+        "graph_theorem_promotion": False,
+    }
+
+
+def _cross_atom_edges(
+    compiler_receipt: list[dict],
+    declaration_atom: dict[str, str],
+) -> list[dict]:
+    row_by_name = {row["declaration"]: row for row in compiler_receipt}
+    edges: list[dict] = []
+    for source_row in compiler_receipt:
+        source = source_row["declaration"]
+        if source_row["repository_scope"] != "LOCAL" or source not in declaration_atom:
+            continue
+        for dep in source_row["dependencies"]:
+            target = dep["constant"]
+            target_row = row_by_name[target]
+            if target_row["repository_scope"] != "LOCAL":
+                continue
+            if target not in declaration_atom:
+                continue
+            source_atom = declaration_atom[source]
+            target_atom = declaration_atom[target]
+            if source_atom == target_atom:
+                continue
+            source_root = source_row["graph_role"] == "REGISTERED_CLAIM_ROOT"
+            target_root = target_row["graph_role"] == "REGISTERED_CLAIM_ROOT"
+            edges.append(
+                {
+                    "source": source,
+                    "target": target,
+                    "source_atom": source_atom,
+                    "target_atom": target_atom,
+                    "transition": f"{source_atom}->{target_atom}",
+                    "used_in_type": dep["used_in_type"],
+                    "used_in_value": dep["used_in_value"],
+                    "used_in_structure": dep["used_in_structure"],
+                    "source_module": source_row["module"],
+                    "target_module": target_row["module"],
+                    "source_private_or_internal": source_row["private_or_internal"],
+                    "target_private_or_internal": target_row["private_or_internal"],
+                    "source_registered_root": source_root,
+                    "target_registered_root": target_root,
+                    "bridge_candidate_eligible": not source_root and not target_root,
+                }
+            )
+    return sorted(
+        edges,
+        key=lambda row: (
+            row["transition"],
+            row["source"],
+            row["target"],
+        ),
+    )
+
+
+def dependency_bridge_frontiers_view(
+    compiler_receipt: list[dict],
+    dependency_closure: dict,
+    atoms_view: dict,
+    quotient: dict,
+) -> dict:
+    declaration_atom = {
+        row["declaration"]: row["signature"]
+        for row in atoms_view["declaration_atoms"]
+    }
+    edges = _cross_atom_edges(compiler_receipt, declaration_atom)
+
+    transition_rows: list[dict] = []
+    transitions = sorted({row["transition"] for row in edges})
+    for transition in transitions:
+        group = [row for row in edges if row["transition"] == transition]
+        eligible = [row for row in group if row["bridge_candidate_eligible"]]
+        transition_rows.append(
+            {
+                "transition": transition,
+                "edge_count": len(group),
+                "eligible_edge_count": len(eligible),
+                "source_declarations": sorted({row["source"] for row in group}),
+                "target_declarations": sorted({row["target"] for row in group}),
+                "eligible_source_declarations": sorted(
+                    {row["source"] for row in eligible}
+                ),
+                "eligible_target_declarations": sorted(
+                    {row["target"] for row in eligible}
+                ),
+            }
+        )
+
+    entry_by_claim = {row["claim_id"]: row for row in dependency_closure["entries"]}
+    subset_id = quotient["containment_probe"]["subset_claim_id"]
+    superset_id = quotient["containment_probe"]["superset_claim_id"]
+    subset = set(entry_by_claim[subset_id]["transitive_local_dependencies"])
+    superset = set(entry_by_claim[superset_id]["transitive_local_dependencies"])
+    if not subset < superset:
+        raise ValueError(
+            "Phase 2D configured containment probe is not a strict local-closure subset"
+        )
+    superset_only = superset - subset
+
+    pair_atom = {
+        name: ("SHARED" if name in subset else "SUPERSET_ONLY")
+        for name in superset
+    }
+    pair_edges = _cross_atom_edges(compiler_receipt, pair_atom)
+    pair_transition_rows: list[dict] = []
+    for transition in sorted({row["transition"] for row in pair_edges}):
+        group = [row for row in pair_edges if row["transition"] == transition]
+        eligible = [row for row in group if row["bridge_candidate_eligible"]]
+        pair_transition_rows.append(
+            {
+                "transition": transition,
+                "edge_count": len(group),
+                "eligible_edge_count": len(eligible),
+                "eligible_source_declarations": sorted(
+                    {row["source"] for row in eligible}
+                ),
+                "eligible_target_declarations": sorted(
+                    {row["target"] for row in eligible}
+                ),
+            }
+        )
+
+    return {
+        "schema_version": "RHKG-phase2d-dependency-bridge-frontiers-0.6",
+        "target_cohort_id": atoms_view["target_cohort_id"],
+        "edge_direction": "SOURCE_DECLARATION_TO_COMPILER_USED_CONSTANT",
+        "cross_atom_edge_count": len(edges),
+        "cross_atom_edges": edges,
+        "transition_frontiers": transition_rows,
+        "containment_probe": {
+            "subset_claim_id": subset_id,
+            "superset_claim_id": superset_id,
+            "subset_count": len(subset),
+            "superset_count": len(superset),
+            "superset_only_count": len(superset_only),
+            "subset_sha256": _sha256_names(subset),
+            "superset_only_sha256": _sha256_names(superset_only),
+            "cross_region_edges": pair_edges,
+            "transition_frontiers": pair_transition_rows,
+        },
+        "candidate_policy": (
+            "bridge_candidate_eligible excludes edges touching REGISTERED_CLAIM_ROOT "
+            "declarations. Eligibility is a discovery filter only and is not a ranking "
+            "or theorem claim."
+        ),
+        "interpretation": (
+            "A frontier edge is an exact compiler USES_CONSTANT edge crossing dependency "
+            "membership regions in the direction source -> used constant. It is not a "
+            "logical implication or proof of a missing mathematical bridge."
+        ),
+        "terminal_claim": "RH_OPEN",
+        "graph_theorem_promotion": False,
+    }
+
