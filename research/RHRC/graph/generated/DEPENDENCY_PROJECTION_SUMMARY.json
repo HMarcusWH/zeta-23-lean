@@ -1,0 +1,3006 @@
+{
+  "graph_theorem_promotion": false,
+  "interpretation": "These are compiler-support projections over the sealed dependency receipt. They are not logical dependency, theorem equivalence, mathematical necessity, or claim promotion.",
+  "projection_semantics": {
+    "ANY": "Follow every compiler USES_CONSTANT edge.",
+    "THEOREM_VALUE_ERASED_SUPPORT": "Follow TYPE and STRUCTURE edges from every declaration and VALUE edges only when the source declaration kind is not THEOREM.",
+    "TYPE_ONLY": "Follow only edges with used_in_type=true.",
+    "VALUE_ONLY": "Follow only edges with used_in_value=true."
+  },
+  "projections": [
+    {
+      "cohorts": [
+        {
+          "claim_ids": [
+            "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+            "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+            "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM"
+          ],
+          "cohort_id": "CANONICAL_ARITHMETIC_SURFACE",
+          "intersection_count": 224,
+          "intersection_sha256": "c59fbe0831495967b9e54456d6bc63dc4518621fde42a5cfe1d63a1f4ae92335",
+          "union_count": 2692,
+          "union_sha256": "78a8f1d50d97b41a0fbc69d49f72bcde7b6712db8fbbe7d796ae21ca59ebe2b2"
+        },
+        {
+          "claim_ids": [
+            "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+            "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+            "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+            "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+            "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+            "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM"
+          ],
+          "cohort_id": "GLOBAL_BOTTOM_CHAIN",
+          "intersection_count": 242,
+          "intersection_sha256": "973c11b2073bf5309cbc4e4d7f576e278ba92c9ac8cbeb0a04ce0956f34d030d",
+          "union_count": 2682,
+          "union_sha256": "a1a5d1e6cf9e78b32b4f9aed921c6bee43f57c78f0b9c3452925805b6fc35788"
+        },
+        {
+          "claim_ids": [
+            "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+            "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+            "R001_PRIME_UPPER_EQUIV_RH"
+          ],
+          "cohort_id": "RH_EQUIVALENCE_SURFACE",
+          "intersection_count": 599,
+          "intersection_sha256": "4c3bc08c7ae032deae81b2263eaaabe4588af8a445a919f376aa59c38a781aec",
+          "union_count": 2224,
+          "union_sha256": "a85fed41c04c929221e52f47b32fb88389c04d4526d8b27941db40d9f3f3fbe4"
+        },
+        {
+          "claim_ids": [
+            "R001_FILTERED_ZERO_POLE",
+            "R001_PRIME_UPPER_EQUIV_RH",
+            "R001_WEIL_BRIDGE",
+            "R001_ZERO_GROWTH"
+          ],
+          "cohort_id": "ROUTE_R001",
+          "intersection_count": 55,
+          "intersection_sha256": "c1ca62a070350403e239c5363a7b765a46980991629445982a047a026d785133",
+          "union_count": 611,
+          "union_sha256": "3e1e3708497f357d6ec4a60c4f419f13eb0645a412468fdc2ced490f5a484c4f"
+        },
+        {
+          "claim_ids": [
+            "R002_KERNEL_ZERO_SIDE_BRIDGE",
+            "R002_MULTI_PROBE_SEPARATION"
+          ],
+          "cohort_id": "ROUTE_R002",
+          "intersection_count": 0,
+          "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "union_count": 1177,
+          "union_sha256": "318e2f2913bd1300d224270beecf3cb9b3d93e9189a08b1e208b4dc2b67294d4"
+        },
+        {
+          "claim_ids": [
+            "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+            "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+            "R003_BOUNDARY_FLAT_MOMENT_FLAG",
+            "R003_BOUNDARY_FLAT_PROJECTION",
+            "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+            "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+            "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+            "R003_CANONICAL_SOURCE_HERMITIAN",
+            "R003_CCM_BRIDGE",
+            "R003_CCM_RHS_IDENTITY",
+            "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
+            "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+            "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+            "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+            "R003_CUTOFF_FREE_MATRIX_MAP",
+            "R003_DISPLACEMENT_TRANSFER",
+            "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+            "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+            "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+            "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+            "R003_EXACT_CENTERED_FINITE_NESTING",
+            "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+            "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+            "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+            "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+            "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+            "R003_FIRST_BAD_SHELL_PROJECTION",
+            "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+            "R003_KERNEL_EF_EXTENSION",
+            "R003_LEAST_PARITY_BAD_SHELL",
+            "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+            "R003_LOCALIZED_BASIS_CORRELATION",
+            "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+            "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+            "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+            "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+            "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+            "R003_PARITY_BAD_NFLOW",
+            "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
+            "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+            "R003_PARITY_NORMAL_KKT",
+            "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+            "R003_PARITY_QUADRATIC_SPLIT",
+            "R003_RESIDUAL_C2",
+            "R003_SOURCE_KAPPA_FINITE_SECTOR",
+            "R003_SOURCE_NORMALIZATION_REPAIR",
+            "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+            "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+            "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+            "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+            "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+            "R003_TENT_ANALYTICS",
+            "R003_TENT_EF_EXTENSION",
+            "R003_TENT_MOLLIFIER_ARCHITECTURE",
+            "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+            "R003_WEIL_COMMON_SUPPORT_BOUND",
+            "R003_WEIL_DISPLACEMENT",
+            "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+            "R003_WEIL_PAIR_LITERATURE_BRIDGE"
+          ],
+          "cohort_id": "ROUTE_R003",
+          "intersection_count": 0,
+          "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "union_count": 1935,
+          "union_sha256": "49413f178996a04987987c4c16f7cecaa2e9f298df03a924ee108a724dcb7254"
+        },
+        {
+          "claim_ids": [
+            "R004_CCM_DISPLACEMENT_FORMAL"
+          ],
+          "cohort_id": "ROUTE_R004",
+          "intersection_count": 76,
+          "intersection_sha256": "a4bba6ff681d1a5ea11e758d1729a264b52f2445418bc1725e29bdff8a81b7e8",
+          "union_count": 76,
+          "union_sha256": "a4bba6ff681d1a5ea11e758d1729a264b52f2445418bc1725e29bdff8a81b7e8"
+        }
+      ],
+      "projection": "ANY",
+      "registered_roots": [
+        {
+          "claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+          "external_boundary_count": 4176,
+          "external_boundary_sha256": "e3b9e87a3ec9eb3cb2174aa30a8a6ad854c2d1fd92f908b10edfc612d30c501c",
+          "local_dependency_count": 2140,
+          "local_dependency_sha256": "6d1a9ecd7c951ac5035df0a0f171be81941e98f293f5b0124f160f0d1f1c1361",
+          "root_theorem": "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis"
+        },
+        {
+          "claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+          "external_boundary_count": 4150,
+          "external_boundary_sha256": "9aec7fdb3fe9e4db6c7a225536b5f6790566923b0bff7760e77acf8c50e81b6e",
+          "local_dependency_count": 2134,
+          "local_dependency_sha256": "43b932b1e11397f6a846870a8e0accd586e9f821c6e2ce9b26ea160350911beb",
+          "root_theorem": "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis"
+        },
+        {
+          "claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+          "external_boundary_count": 4275,
+          "external_boundary_sha256": "202bd5f61abaeb3f58244f7cb323b9fdaeb764debe1f783d9c6f8ffceca54ec0",
+          "local_dependency_count": 2659,
+          "local_dependency_sha256": "924e64e57e1b36338f3a315e9128a10fa839d5e5fb1105391f0fc3b613df467c",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_offLine_zero"
+        },
+        {
+          "claim_id": "OBS_TIGHTMULT",
+          "external_boundary_count": 442,
+          "external_boundary_sha256": "8dc918329ac91d229905a9572530c243bac9b36e843a6fd360c78308022f4302",
+          "local_dependency_count": 28,
+          "local_dependency_sha256": "d27f74b7af2986330bf2ff53eda6774a70c8fd960469ad85d22b10e2a546f4fd",
+          "root_theorem": "Zeta23.ZeroSide.TightMult.lemmaR_tight_two"
+        },
+        {
+          "claim_id": "R001_FILTERED_ZERO_POLE",
+          "external_boundary_count": 1139,
+          "external_boundary_sha256": "b8c8b2d99f078b6f285bc99ff0cff031697284c56bfbae84cc25eb8c1de49046",
+          "local_dependency_count": 115,
+          "local_dependency_sha256": "ad2b02016bb68bd3988bb5e3b8305dafb0f91af8bbb9cb6793f13abc5f9173a6",
+          "root_theorem": "Zeta23.ExceptionalZero.not_subexponential_filteredZeroFamily_of_right_zero"
+        },
+        {
+          "claim_id": "R001_PRIME_UPPER_EQUIV_RH",
+          "external_boundary_count": 2948,
+          "external_boundary_sha256": "e1fc95fe6a2aa384c1c582cd20eaa1b0787d14204ff3fc89943338c0d748f081",
+          "local_dependency_count": 611,
+          "local_dependency_sha256": "3e1e3708497f357d6ec4a60c4f419f13eb0645a412468fdc2ced490f5a484c4f",
+          "root_theorem": "Zeta23.ExceptionalZero.arithmeticSideSubexponential_iff_criticalLine"
+        },
+        {
+          "claim_id": "R001_WEIL_BRIDGE",
+          "external_boundary_count": 2838,
+          "external_boundary_sha256": "9fbd23406121ed9c23532bccbc0634a0d97090ea2243b49e25e5a677e6eefcdb",
+          "local_dependency_count": 528,
+          "local_dependency_sha256": "c78a1c293e0d96ed3a78c861b0059ea57ecb6887f848d4bd474f46d5454e81d7",
+          "root_theorem": "Zeta23.ExceptionalZero.filteredZeroFamily_weilZeroFilter_eq_literatureRHS"
+        },
+        {
+          "claim_id": "R001_ZERO_GROWTH",
+          "external_boundary_count": 2947,
+          "external_boundary_sha256": "f2b2281721ddb6619ce4fdf76ffbef109f220299e642055d6880337ca29e9d93",
+          "local_dependency_count": 603,
+          "local_dependency_sha256": "8254f26ed15999e30aba5be67aa29a5e72d924f722d0f2b290e9f9fcccf7fcdd",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_poleKilled_test_not_subexponential_of_right_zero"
+        },
+        {
+          "claim_id": "R002_KERNEL_ZERO_SIDE_BRIDGE",
+          "external_boundary_count": 3261,
+          "external_boundary_sha256": "0feb099404516ff5e889921d717a0de9385313193b07139c3265ab9e563f753e",
+          "local_dependency_count": 1165,
+          "local_dependency_sha256": "c67adf5827e1e9d1c2c43175ea79c97b7d1f547f2465a23a507311d464fdc0c6",
+          "root_theorem": "Zeta23.CCM.rawKernelZeroSideMatrix_eq_two_finiteMatrix_add_four_correction"
+        },
+        {
+          "claim_id": "R002_MULTI_PROBE_SEPARATION",
+          "external_boundary_count": 297,
+          "external_boundary_sha256": "663f1da24106ed01a1175e532426d8ea288ed66b5a32aa232453930df14baed4",
+          "local_dependency_count": 12,
+          "local_dependency_sha256": "8e95b15c5e71c4bd2b5d97e24023058f42204a3443cccb59c938432e80b85903",
+          "root_theorem": "Zeta23.ExceptionalZero.not_onLineCombination_of_pairBlock"
+        },
+        {
+          "claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+          "external_boundary_count": 422,
+          "external_boundary_sha256": "8faff3aef4a03fe912ae58a284fd969418acd7783c85e56d21004ca47d02a2cd",
+          "local_dependency_count": 27,
+          "local_dependency_sha256": "52c25fe556db627419c29f69157e2bc7e7a41d45504b108291d8cdec20119a0c",
+          "root_theorem": "Zeta23.CCM.finrank_boundaryFlatSubspace"
+        },
+        {
+          "claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+          "external_boundary_count": 3228,
+          "external_boundary_sha256": "9f573be5c6429a0c451aa22700c3ca621a7c1999489fcb2264b267ee15097a98",
+          "local_dependency_count": 993,
+          "local_dependency_sha256": "dba9511e354d780b4539fbf74b3420c7f5a68f6b33dca9531706fe624b4b39d3",
+          "root_theorem": "Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm"
+        },
+        {
+          "claim_id": "R003_BOUNDARY_FLAT_MOMENT_FLAG",
+          "external_boundary_count": 97,
+          "external_boundary_sha256": "ecf4e02ebdde204d4248d840a64054fe74a572c5496c38221fbcdd39c4ff7d76",
+          "local_dependency_count": 9,
+          "local_dependency_sha256": "2af80e8d6fa72a518c5038d333260081c4c39bf93146fef2a077c7b07cb527cc",
+          "root_theorem": "Zeta23.CCM.boundaryFlat_moment_flag"
+        },
+        {
+          "claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+          "external_boundary_count": 329,
+          "external_boundary_sha256": "a7ac3f12e8ef706fef7a2e35789a5235f8c0c471eb8cecbf00bbefcea3b0bc18",
+          "local_dependency_count": 26,
+          "local_dependency_sha256": "75de9512855f37a83e1f6b33841888e44a04bbd1e8f9dea6e8a609352ce58d1e",
+          "root_theorem": "Zeta23.CCM.boundaryFlatProject_boundaryFlat"
+        },
+        {
+          "claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+          "external_boundary_count": 1186,
+          "external_boundary_sha256": "b5f56f611940e9bdf859f34bad53ea6916fe02500053ce53e8754156b13d7f1f",
+          "local_dependency_count": 151,
+          "local_dependency_sha256": "be735bd5814a908d6bd535354d55a9331465c9fe21818f169293b85c0a592b6d",
+          "root_theorem": "Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx"
+        },
+        {
+          "claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+          "external_boundary_count": 160,
+          "external_boundary_sha256": "519ed04e84b59e44f6afe4b091134c26e626ec78a6636081eebc49f68ddf82ef",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "962f03a9785a96eb6c32386cff4fe4f888add225b0cb5f0552381c83b0738474",
+          "root_theorem": "Zeta23.CCM.quadraticForm_re_eq_re_inner_apply_self"
+        },
+        {
+          "claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+          "external_boundary_count": 437,
+          "external_boundary_sha256": "eee3eb517f058f9514aea9e6ff184654bee3e19cc826e28eeb88387283134d68",
+          "local_dependency_count": 51,
+          "local_dependency_sha256": "7b4f677c8c0428a141466ecd075faac6f34a95d32c622f7291c6b19a99218680",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_toEuclideanLin_isSymmetric"
+        },
+        {
+          "claim_id": "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
+          "external_boundary_count": 1082,
+          "external_boundary_sha256": "b161b3ad565736911b27489e08b37222909a9fac2d09293ac16ff801770d208a",
+          "local_dependency_count": 224,
+          "local_dependency_sha256": "c59fbe0831495967b9e54456d6bc63dc4518621fde42a5cfe1d63a1f4ae92335",
+          "root_theorem": "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget"
+        },
+        {
+          "claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+          "external_boundary_count": 376,
+          "external_boundary_sha256": "aba3df9581f050f474b6e7db4948b247f010993f1b51745db7aab87d05e2eb6a",
+          "local_dependency_count": 50,
+          "local_dependency_sha256": "6e030c60ca6a0386e3063f8528e863174909bde45988418b8e6de8d1c94ad24a",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_isHermitian"
+        },
+        {
+          "claim_id": "R003_CCM_BRIDGE",
+          "external_boundary_count": 3260,
+          "external_boundary_sha256": "2a7067d20f7ab0f5721698226382db04ced2d26ed844752daff90ea1b3e38299",
+          "local_dependency_count": 1160,
+          "local_dependency_sha256": "e16172323b21000b1437e38a11fdb8566bb94f72a9a0d1924bc50a2121968962",
+          "root_theorem": "Zeta23.CCM.zeroSideMatrix_eq_finiteMatrix_add_correction"
+        },
+        {
+          "claim_id": "R003_CCM_RHS_IDENTITY",
+          "external_boundary_count": 1718,
+          "external_boundary_sha256": "59e5d678040887bf2c224d26d9767157e18e506ff95c85b421a41565324098a6",
+          "local_dependency_count": 373,
+          "local_dependency_sha256": "c522df023d5e60d26f55f386f69ab0da1db02ef6bd7eb662eabd9efa5474f9c9",
+          "root_theorem": "Zeta23.CCM.literatureRHS_dictionaryTest_eq_quadraticForm"
+        },
+        {
+          "claim_id": "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
+          "external_boundary_count": 526,
+          "external_boundary_sha256": "6343c0d917057e45d994065b83d6cb6a9f8fbd4214b8822d23878c3b753dc506",
+          "local_dependency_count": 83,
+          "local_dependency_sha256": "71bcade8a8b47b0fdaaa70731f01e42d134ab7743ddb7e71524caf4d1ef1c52a",
+          "root_theorem": "Zeta23.CCM.boundaryFlat_canonical_displacement_package"
+        },
+        {
+          "claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+          "external_boundary_count": 632,
+          "external_boundary_sha256": "95ce2cf7f6b3c2f12638d4e4ef0f795f4c29c2f4b95f59f9ac447ec9decd76f5",
+          "local_dependency_count": 97,
+          "local_dependency_sha256": "a7c001bb92038f287143bc852d9eb5f9c8e3ee915a7e72abde77afe237df6fed",
+          "root_theorem": "Zeta23.CCM.finrank_euclideanEvenBoundaryFlatSubspace"
+        },
+        {
+          "claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+          "external_boundary_count": 497,
+          "external_boundary_sha256": "b548199c669251d6285d715d9df9050cec25f9fbe83fbfaa4175a4ea76f0864f",
+          "local_dependency_count": 60,
+          "local_dependency_sha256": "2350a0fd11268faed3aaf5a75ed75060e7a84d0184609427583a792c7cd41d1b",
+          "root_theorem": "Zeta23.CCM.evenOddBoundaryFlatLinearEquiv"
+        },
+        {
+          "claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+          "external_boundary_count": 423,
+          "external_boundary_sha256": "9b306b0a9cce308c95aa5561699454504f9bd147c76cd452c8af6af633e1573b",
+          "local_dependency_count": 37,
+          "local_dependency_sha256": "ff859672967c3d48c2f649822e18f33dcbd1a2ab3315cabf1a76092fc5ec8f57",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_mulVec_reverseCoefficients"
+        },
+        {
+          "claim_id": "R003_CUTOFF_FREE_MATRIX_MAP",
+          "external_boundary_count": 3260,
+          "external_boundary_sha256": "2a7067d20f7ab0f5721698226382db04ced2d26ed844752daff90ea1b3e38299",
+          "local_dependency_count": 1170,
+          "local_dependency_sha256": "4478cae1e8993a9df84a7a8c2a60520bab8ebad118066c939440845ad7d626dc",
+          "root_theorem": "Zeta23.CCM.zeroSideMatrix_eq_cutoffFreeMatrix"
+        },
+        {
+          "claim_id": "R003_DISPLACEMENT_TRANSFER",
+          "external_boundary_count": 247,
+          "external_boundary_sha256": "6b977eac87268ef3d0220e6e563bfd7545be193aea292f60b6063bbeefbb6d3e",
+          "local_dependency_count": 10,
+          "local_dependency_sha256": "c0bb335d4f1c78d824209897bec96f91f698f0db2e2afee3968f1b4d982b9f33",
+          "root_theorem": "Zeta23.ExceptionalZero.rank_displacement_le_two_of_eq_smul_add_scalar"
+        },
+        {
+          "claim_id": "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+          "external_boundary_count": 450,
+          "external_boundary_sha256": "e51d0d6051a73dbb83512dc22d5f0a9e73414f5abfe02aa2571dc10f371e32ea",
+          "local_dependency_count": 30,
+          "local_dependency_sha256": "7eb3b27ddf177ccc62d7e31ebfb32607d44f95b4f621d47e35dbc6198638a331",
+          "root_theorem": "Zeta23.CCM.finrank_euclideanBoundaryFlatSubspace"
+        },
+        {
+          "claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+          "external_boundary_count": 3657,
+          "external_boundary_sha256": "5b02fd625e99fd7250cfa9918f0f8ad6843c1f1f4fa0122f3a8d310f2e43c035",
+          "local_dependency_count": 1288,
+          "local_dependency_sha256": "cc982e2b253933fffadf9096811f65697b734bd971df75efd1bd1efd056ac986",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+          "external_boundary_count": 365,
+          "external_boundary_sha256": "36123598dc4fe865a34a6f604a1b6dbe55811c235c4f10b36e028bfbf877721d",
+          "local_dependency_count": 35,
+          "local_dependency_sha256": "1049d9be25db436655b3eb64abd0e70597301b5870a6da767bb460275e5f25ea",
+          "root_theorem": "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanBoundaryFlatSubspace"
+        },
+        {
+          "claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+          "external_boundary_count": 614,
+          "external_boundary_sha256": "51b30d0b09f2cc8a101abe0e2e0781aa3247fbfbb525b89e4f53551c5ca683f8",
+          "local_dependency_count": 95,
+          "local_dependency_sha256": "0ee0d1a65ae58ba7f0e93964455153f9f65df3f1eb16cee807840c194cbef20b",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_displacement_mulVec_even_boundaryFlat"
+        },
+        {
+          "claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+          "external_boundary_count": 234,
+          "external_boundary_sha256": "175183496e86e3b45ffcb820ee988bb44ec72b41056e76bb41d269d23307bc4c",
+          "local_dependency_count": 29,
+          "local_dependency_sha256": "6015bfa8a07497bb495b52a5343ecdf25e54c76699281b266d8325ae10aed6c0",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_submatrix_centeredEmbedding"
+        },
+        {
+          "claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+          "external_boundary_count": 3565,
+          "external_boundary_sha256": "5c6441c6c701cd1d71bc7e575e25701eb2a48d38b0444816cb7c0cd4a1209e3e",
+          "local_dependency_count": 1261,
+          "local_dependency_sha256": "f273ee845ea6f656925931118a06b274a5e46a810f8ebbcfb133c3e0b4648288",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+          "external_boundary_count": 1947,
+          "external_boundary_sha256": "75fa46543fd9f696ee175725b4edc270f0a5468e3099dc135e7cd8d5198af9c1",
+          "local_dependency_count": 503,
+          "local_dependency_sha256": "bcd2389145a2aba4b9cf8e1b69b87a166dbd92438872185ae370ff9b7c98bfa2",
+          "root_theorem": "Zeta23.CCM.negative_eigenmode_not_centeredImage"
+        },
+        {
+          "claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+          "external_boundary_count": 3814,
+          "external_boundary_sha256": "6b295cc6f21f9357915b48a96594f566375800bc86c4e5ecb5220cc8239fd50c",
+          "local_dependency_count": 1479,
+          "local_dependency_sha256": "2eb46459bf098ff6ff7f3436a93b9742d950e89251bb568c785e2913fa0f3987",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_firstBadParity_negativeEigenmode_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+          "external_boundary_count": 3746,
+          "external_boundary_sha256": "207b96fde09328897f3000ad12101ba606d862a8086111ba27766aefed7aaddf",
+          "local_dependency_count": 1440,
+          "local_dependency_sha256": "4c0b62828d05fef2044d19d267b837f786cd6bacc772bfcca63d6dc2c383c8cd",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_leastParityBad_oneDimShell_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+          "external_boundary_count": 3835,
+          "external_boundary_sha256": "79349fbe693bbb29f3adb9a9e0fc56609e41609d82cef6be8caf339dc8314e13",
+          "local_dependency_count": 1526,
+          "local_dependency_sha256": "b8bd0aa450eda9a3f65ca9d213351bb6227e74c78a8676466acb62deea5eb8d6",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_firstBadParity_shell_KKT_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_FIRST_BAD_SHELL_PROJECTION",
+          "external_boundary_count": 1989,
+          "external_boundary_sha256": "5fc7d04230955fd0e51cd37db4da3c5f1c358b46cf2fb8fc6ccfeb0aad3fbec5",
+          "local_dependency_count": 527,
+          "local_dependency_sha256": "8d5e89a62a09564d37ac5794e68aed323ce1ec6aec01b8ffea3924b136ee697e",
+          "root_theorem": "Zeta23.CCM.negative_eigenmode_paritySuccShell_projection_ne_zero"
+        },
+        {
+          "claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+          "external_boundary_count": 3648,
+          "external_boundary_sha256": "b49be3e0dc04e71e98a5ea8d02a9973d331a6857248347b35e31e1e98620cf91",
+          "local_dependency_count": 1355,
+          "local_dependency_sha256": "d15b9757a45390aa73814677c7de0f8525838cc5ae7709da5ae8c66183b2e6d1",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_parityBad_tail_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+          "external_boundary_count": 2449,
+          "external_boundary_sha256": "59bebbeec92dc0e7e97e8532cfc0fc256fb8d5854d3a436999fbe24c28ac25ba",
+          "local_dependency_count": 1382,
+          "local_dependency_sha256": "2f60a32745a786e6ac06ac23d2bd514aa9b1b58f509371dfffb0c3e6d9770981",
+          "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.exists_branchPackage"
+        },
+        {
+          "claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+          "external_boundary_count": 2232,
+          "external_boundary_sha256": "a21a7a99e40c3d916a343647d2aa6b13060f4b236616723ffd852b3a05874c6a",
+          "local_dependency_count": 843,
+          "local_dependency_sha256": "600c41ad34085db67b3308a2776e2047a3dca0c51ba73729e59b334fc986d394",
+          "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.groundTrial_eigenmode"
+        },
+        {
+          "claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+          "external_boundary_count": 2128,
+          "external_boundary_sha256": "868e5e42cd401081044cb38a857f1041d9f886ee2ce973802123bf626d18dbfb",
+          "local_dependency_count": 737,
+          "local_dependency_sha256": "20a4b9cb434ff9b6f66836481a6c47819955361628b9146d36811bedc4922ff6",
+          "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral"
+        },
+        {
+          "claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+          "external_boundary_count": 1135,
+          "external_boundary_sha256": "ada3f631b29707e37e04fde1dd2d6e7a79c9a389f01d44374e0cf0531fad9a6d",
+          "local_dependency_count": 315,
+          "local_dependency_sha256": "0a5bf90e19fd39dc576a8074a8230b7d48ae25e8474b360fb1ed0215b5200617",
+          "root_theorem": "Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad"
+        },
+        {
+          "claim_id": "R003_KERNEL_EF_EXTENSION",
+          "external_boundary_count": 3262,
+          "external_boundary_sha256": "d99e03b193e8f4c4a646bfeebaa8e00d7c8a757de7108785e224fe43883437dd",
+          "local_dependency_count": 1161,
+          "local_dependency_sha256": "74c30d275dccf2ccfc233e58a071f3785cad16202f32f152d05471c642918292",
+          "root_theorem": "Zeta23.CCM.dictionaryTransform_zero_sum_eq_literatureRHS"
+        },
+        {
+          "claim_id": "R003_LEAST_PARITY_BAD_SHELL",
+          "external_boundary_count": 714,
+          "external_boundary_sha256": "89602fee283a01fad30f04fdafb8cff3ad78da753fc785de3be2350ee65d86f6",
+          "local_dependency_count": 149,
+          "local_dependency_sha256": "ec56a9ff8ea24a8ac788db5ae685794fbb5a427d8309d1936adc703c4d64ec5d",
+          "root_theorem": "Zeta23.CCM.finrank_euclideanParitySuccShell"
+        },
+        {
+          "claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+          "external_boundary_count": 1777,
+          "external_boundary_sha256": "43feb6d178e4980ed8dd46301a405a1a376ff1dc2da81e201325a4b3e0a1d9bb",
+          "local_dependency_count": 431,
+          "local_dependency_sha256": "1e15f08146eda4f846bf634d496a70e1b098d7815aafce81db33149f60404409",
+          "root_theorem": "Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_cutoffFreeQuadraticForm"
+        },
+        {
+          "claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+          "external_boundary_count": 317,
+          "external_boundary_sha256": "63a7d78fe60ac3b16a7e5d9b916da6888623bc7bf5bf0ccc3befdc5924c6e6fa",
+          "local_dependency_count": 6,
+          "local_dependency_sha256": "862a61170df4fb0cbf0a6ff95c811d4705810af8738658e6943cc71cdd89a5dd",
+          "root_theorem": "Zeta23.CCM.hardWindowCharacterCorrelation_eq_qBasis"
+        },
+        {
+          "claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+          "external_boundary_count": 649,
+          "external_boundary_sha256": "b54293b51bd170cce0a4521a12ef6d2399846efcdc6dfbc5d663f517372150c4",
+          "local_dependency_count": 67,
+          "local_dependency_sha256": "adfa7d4f1e9c899774fea75e41606d3b5cb6e3177387603adbc2fc41a6f29373",
+          "root_theorem": "Zeta23.CCM.localizedWeilCorrelation_finiteVector_eq_two_mul_dictionaryTest"
+        },
+        {
+          "claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+          "external_boundary_count": 959,
+          "external_boundary_sha256": "bb41b1a56ad370deeef395f349fac57cac32c1f0f316450e54a067e3410de293",
+          "local_dependency_count": 68,
+          "local_dependency_sha256": "7e837112d9fe3bdcba77062f67a164596dcc94f04dabcbc3e7b02bb1d8288502",
+          "root_theorem": "Zeta23.CCM.exists_localizedFinite_uniform_C2_approx"
+        },
+        {
+          "claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+          "external_boundary_count": 3038,
+          "external_boundary_sha256": "743d07a4a86032559f4fdc25038a45bc18dd2925ef7b9f5031a19b84c5d0c49e",
+          "local_dependency_count": 666,
+          "local_dependency_sha256": "9fa41199554698a28b388c3afe56dcfe649e2cf57320ac62f8b16e2ac3cf534d",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_poleNeutral_negativeWeilTest_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+          "external_boundary_count": 3683,
+          "external_boundary_sha256": "af569fe7f23424c909c935cca591fdca62705104a18a57e4e35570920bcc76d5",
+          "local_dependency_count": 1320,
+          "local_dependency_sha256": "7ba1e421b721e205a64d41a4cd1bdbaadd287abc90dd79ca0730805a4d991e25",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+          "external_boundary_count": 675,
+          "external_boundary_sha256": "c0613e185eb9987d633ea5ddf2a42c7776e41458a9ad9966dc8490a47590a5b8",
+          "local_dependency_count": 101,
+          "local_dependency_sha256": "7c871cae759c639aa65b86f59cc3d2c1d161402367ada774026f16c0a31b2bbd",
+          "root_theorem": "Zeta23.CCM.exists_negative_eigenmode_of_parityBad"
+        },
+        {
+          "claim_id": "R003_PARITY_BAD_NFLOW",
+          "external_boundary_count": 1838,
+          "external_boundary_sha256": "6ad7460bc1471f8169b0ede6ef27fb8f68c6a660f29a1908d37810880d01c804",
+          "local_dependency_count": 481,
+          "local_dependency_sha256": "7f6abe9711cb04a22d4cd13760136524dadc3ae75fa688c71e28751617a14a1f",
+          "root_theorem": "Zeta23.CCM.parityBad_persists_of_le"
+        },
+        {
+          "claim_id": "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
+          "external_boundary_count": 1008,
+          "external_boundary_sha256": "e27f6e7af1d4aa1b2f4e415f250b83761e4d63dff1ef5392a8f4c7629566627d",
+          "local_dependency_count": 273,
+          "local_dependency_sha256": "5be5142289f2c7735fd414623baae28d6d11e82207d30c1e161c9da7f5d42fa0",
+          "root_theorem": "Zeta23.CCM.finrank_range_conjugatedParityCompressionDefect_le_one"
+        },
+        {
+          "claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+          "external_boundary_count": 555,
+          "external_boundary_sha256": "7def786994357f78d0cb2ec6f144cf617b54144292f96ca7350e398bd9d7b417",
+          "local_dependency_count": 90,
+          "local_dependency_sha256": "bbb161441ff2bdef6f5977804bb80a5a3a32af4386fd88aeb32ce974bd0143a0",
+          "root_theorem": "Zeta23.CCM.parityCompressedCanonical_isSymmetric"
+        },
+        {
+          "claim_id": "R003_PARITY_NORMAL_KKT",
+          "external_boundary_count": 746,
+          "external_boundary_sha256": "04e66be68bd1857e34ce450119e5698c7b713093cf87b94cecded06051ea29d6",
+          "local_dependency_count": 121,
+          "local_dependency_sha256": "fccf31ab65a451d8965346986a5c59d1fa1feb227aeae47ba9818151c85d82d6",
+          "root_theorem": "Zeta23.CCM.parityKKTResidual_of_eigenmode"
+        },
+        {
+          "claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+          "external_boundary_count": 392,
+          "external_boundary_sha256": "f3610c843ff6e3b2b1c12216e476585d6c6d5a9306e11a1caa275f1fa722b7f5",
+          "local_dependency_count": 47,
+          "local_dependency_sha256": "6292505d1ccc8478a0158352b5e45f86291ead62617bda7e8b2f86e172909916",
+          "root_theorem": "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanOddBoundaryFlatSubspace"
+        },
+        {
+          "claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+          "external_boundary_count": 503,
+          "external_boundary_sha256": "bc466178a3b254c0a2e54fdeb44722919cbab4e3e1e4a7572fb4c4d643677a4f",
+          "local_dependency_count": 45,
+          "local_dependency_sha256": "92328af8929071790e57bb8611ed7f39cc70d8a835ece6fce88cc889ce2cf17f",
+          "root_theorem": "Zeta23.CCM.quadraticForm_evenPart_add_oddPart"
+        },
+        {
+          "claim_id": "R003_RESIDUAL_C2",
+          "external_boundary_count": 638,
+          "external_boundary_sha256": "b4d43cff88ec5a9d0198626e951f1484f14df8656c714345354dd410ee92cca7",
+          "local_dependency_count": 130,
+          "local_dependency_sha256": "dc0f9f1040fe1dc0f6a692d4469213db1136e5fc3e6b12947276ada8a64441f1",
+          "root_theorem": "Zeta23.CCM.dictionaryResidualTest_admissible"
+        },
+        {
+          "claim_id": "R003_SOURCE_KAPPA_FINITE_SECTOR",
+          "external_boundary_count": 78,
+          "external_boundary_sha256": "91b2729ba779b216568f27c5b7f5d3f64d82c096e167214c83327a03fa98eab1",
+          "local_dependency_count": 13,
+          "local_dependency_sha256": "72167ffcc0a21a6cf6307000277ccef7bbdfe934473709df3b90087b286b9fab",
+          "root_theorem": "Zeta23.CCM.sourceKappaFiniteVector_eq_sourceFiniteVector"
+        },
+        {
+          "claim_id": "R003_SOURCE_NORMALIZATION_REPAIR",
+          "external_boundary_count": 248,
+          "external_boundary_sha256": "81f355f5fdd32d2a069e1f0ae9e5c7c00dda9c5d580429054abb2d18e0fc526f",
+          "local_dependency_count": 40,
+          "local_dependency_sha256": "7a30ec213355ec540ffb7693cffc3ce78fcad6c395dfe9ea13d57bc7030209bf",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_eq_legacyPrintedMatrix_add_correction"
+        },
+        {
+          "claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+          "external_boundary_count": 156,
+          "external_boundary_sha256": "f44fd4936c2a7fd9a240326c61fdb7857edd76b12dab25321698d1aee1b9fe6c",
+          "local_dependency_count": 33,
+          "local_dependency_sha256": "5ae44c47bf753ab534b4f2e2419afc7dc9e5a597f60679008fc20b3cc38aeef6",
+          "root_theorem": "Zeta23.CCM.sourceEq44Matrix_eq_cutoffFreeMatrix"
+        },
+        {
+          "claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+          "external_boundary_count": 3041,
+          "external_boundary_sha256": "378bbe4cd2fd1ce84966c961cbb477128be8a9c46cf2913e2e74f5b84ca1e135",
+          "local_dependency_count": 707,
+          "local_dependency_sha256": "acfa5323b782dc564533459764a22bcf13e74f8b7be5d891a14ad9d2a3e68624",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeLocalizedWeilAdditiveRHS_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+          "external_boundary_count": 3040,
+          "external_boundary_sha256": "08658be6222d914da773939f452f90f2d1f3db79ac8633a0129b26f7c4d55df0",
+          "local_dependency_count": 672,
+          "local_dependency_sha256": "dffa59f5eeb412375ff0f9bf9fa030253766693f6b83506b3ecec0f5af93276e",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+          "external_boundary_count": 3135,
+          "external_boundary_sha256": "32a354f2afaab02441cb125512ad405ac99545281c9b356c6399638c6159a905",
+          "local_dependency_count": 700,
+          "local_dependency_sha256": "b4c362da9d96a4b0a7df873de7bdae321b7086ed9663c774f667de9d849662fb",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_boundaryFlatFinite_negativeW_of_strictAperture"
+        },
+        {
+          "claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+          "external_boundary_count": 1893,
+          "external_boundary_sha256": "f7f1a1c4bbb813c7e1e35f8d740114cc9cbe42b147df39939c14e1f862858c9a",
+          "local_dependency_count": 485,
+          "local_dependency_sha256": "02180458c61a15ff7a17ca5121757a544272e6bb5d3693ddb80eb0edfcd83605",
+          "root_theorem": "Zeta23.CCM.re_inner_successor_nonnegative_on_centeredImage"
+        },
+        {
+          "claim_id": "R003_TENT_ANALYTICS",
+          "external_boundary_count": 2026,
+          "external_boundary_sha256": "bdbc8944b7e077a771016b065b4aa472c8aa46b21823ae1b182994d1de76e506",
+          "local_dependency_count": 263,
+          "local_dependency_sha256": "2c1b13e7fb98af882d6716389eb1b1da6af47c6fdbc4d1cc30aed9aa00214388",
+          "root_theorem": "Zeta23.CCM.dictionaryTent_analytic_package"
+        },
+        {
+          "claim_id": "R003_TENT_EF_EXTENSION",
+          "external_boundary_count": 2956,
+          "external_boundary_sha256": "55c7f2e6d18c91e9d04f666c48dc823b5aecac307ef75de32c477ac3f67ea8c5",
+          "local_dependency_count": 665,
+          "local_dependency_sha256": "e024aeaf6135d0c0953ad5327a25138e80faa6dc45f9a8329de1ec7a4785bc54",
+          "root_theorem": "Zeta23.CCM.dictionaryTent_explicitFormula"
+        },
+        {
+          "claim_id": "R003_TENT_MOLLIFIER_ARCHITECTURE",
+          "external_boundary_count": 822,
+          "external_boundary_sha256": "430c308835020dc6fd5d88f40198a4e9268bc925099edc02ec6a663bb7db8a12",
+          "local_dependency_count": 69,
+          "local_dependency_sha256": "55cf78fc2928485b00d372c4b2c74ddc1507c2396d1637a1221b63cb4e7cb3d3",
+          "root_theorem": "Zeta23.CCM.dictionaryTent_mollifier_architecture_package"
+        },
+        {
+          "claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+          "external_boundary_count": 3582,
+          "external_boundary_sha256": "02291a961a1feb3230781be5331c71a93ef7be813e3a636a1f578e56c6da2261",
+          "local_dependency_count": 1273,
+          "local_dependency_sha256": "e375bd41bef48f2dd8e4694f124a191bba312bd83ca9be0eb45a8462b2ef5b0a",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_unit_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+          "external_boundary_count": 2027,
+          "external_boundary_sha256": "8a6eb7bcb95b43ea26fe93a023d4932a45f433e26ab78a9e6d2bcfd90e22293a",
+          "local_dependency_count": 245,
+          "local_dependency_sha256": "675fe3bff41b0710350694ee99daafee45ec8c38dd8fe050679b2af0747c080b",
+          "root_theorem": "Zeta23.ExceptionalZero.zeta_W_norm_le_commonSupport"
+        },
+        {
+          "claim_id": "R003_WEIL_DISPLACEMENT",
+          "external_boundary_count": 3317,
+          "external_boundary_sha256": "2d1aa56b93a45cce551e7fda3da0f8a6d66449e1c20ef5cdfecc1326e59f194e",
+          "local_dependency_count": 1189,
+          "local_dependency_sha256": "6806e6037c66a50a9523f1daaa1bc03234106275a5d4636e994867bebe1691fe",
+          "root_theorem": "Zeta23.CCM.rank_zeroSideMatrix_displacement_le_two"
+        },
+        {
+          "claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+          "external_boundary_count": 2880,
+          "external_boundary_sha256": "8f1d626a6c7dd12b120229f2e6f0735c454655089902e434576d6c6c78787141",
+          "local_dependency_count": 567,
+          "local_dependency_sha256": "558ab56fea891d51b84932c581b5bb6396b03cf467d1b1a4cf47f8e2fd062f07",
+          "root_theorem": "Zeta23.ExceptionalZero.zeta_W_self_eq_localizedWeilAdditiveRHS"
+        },
+        {
+          "claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+          "external_boundary_count": 2870,
+          "external_boundary_sha256": "1f1f025c523a188bdd8756e339ea29a5705b6feab346b8312fbe9fbe586e492f",
+          "local_dependency_count": 533,
+          "local_dependency_sha256": "143a084d79886352b149f31163e1eac3f2b5caed09a138d5f6b2c9982371e1ca",
+          "root_theorem": "Zeta23.ExceptionalZero.zeta_W_literatureRHS_package"
+        },
+        {
+          "claim_id": "R004_CCM_DISPLACEMENT_FORMAL",
+          "external_boundary_count": 568,
+          "external_boundary_sha256": "50ab48e4257271a2be5b3a71daf052f671eac32a2bd49eea377d169ca12944fd",
+          "local_dependency_count": 76,
+          "local_dependency_sha256": "a4bba6ff681d1a5ea11e758d1729a264b52f2445418bc1725e29bdff8a81b7e8",
+          "root_theorem": "Zeta23.CCM.rank_canonicalSourceMatrix_displacement_le_two"
+        }
+      ]
+    },
+    {
+      "cohorts": [
+        {
+          "claim_ids": [
+            "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+            "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+            "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM"
+          ],
+          "cohort_id": "CANONICAL_ARITHMETIC_SURFACE",
+          "intersection_count": 0,
+          "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "union_count": 15,
+          "union_sha256": "a56438111d970946b1d8442b05ee5469a2b6eb6c5a77462f23d25fb6640ce154"
+        },
+        {
+          "claim_ids": [
+            "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+            "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+            "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+            "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+            "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+            "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM"
+          ],
+          "cohort_id": "GLOBAL_BOTTOM_CHAIN",
+          "intersection_count": 0,
+          "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "union_count": 25,
+          "union_sha256": "41a5ac52f5c0ad5f655864156c1fb002641e3b470a8db0e3d0a60b12dcd0f88f"
+        },
+        {
+          "claim_ids": [
+            "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+            "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+            "R001_PRIME_UPPER_EQUIV_RH"
+          ],
+          "cohort_id": "RH_EQUIVALENCE_SURFACE",
+          "intersection_count": 0,
+          "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "union_count": 6,
+          "union_sha256": "48966d61a013eaf6ff320383a79080169d52982f66672f35c7805013770b7f04"
+        },
+        {
+          "claim_ids": [
+            "R001_FILTERED_ZERO_POLE",
+            "R001_PRIME_UPPER_EQUIV_RH",
+            "R001_WEIL_BRIDGE",
+            "R001_ZERO_GROWTH"
+          ],
+          "cohort_id": "ROUTE_R001",
+          "intersection_count": 0,
+          "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "union_count": 14,
+          "union_sha256": "e77adab50888e2fef07720a8bf256a9ed4a723dbb2d73f00b4111acf180e45e0"
+        },
+        {
+          "claim_ids": [
+            "R002_KERNEL_ZERO_SIDE_BRIDGE",
+            "R002_MULTI_PROBE_SEPARATION"
+          ],
+          "cohort_id": "ROUTE_R002",
+          "intersection_count": 0,
+          "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "union_count": 6,
+          "union_sha256": "155ce8e9302e937b2291cf925eaf91956869d3738ae2f1c1d76f0852aa2e880f"
+        },
+        {
+          "claim_ids": [
+            "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+            "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+            "R003_BOUNDARY_FLAT_MOMENT_FLAG",
+            "R003_BOUNDARY_FLAT_PROJECTION",
+            "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+            "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+            "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+            "R003_CANONICAL_SOURCE_HERMITIAN",
+            "R003_CCM_BRIDGE",
+            "R003_CCM_RHS_IDENTITY",
+            "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
+            "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+            "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+            "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+            "R003_CUTOFF_FREE_MATRIX_MAP",
+            "R003_DISPLACEMENT_TRANSFER",
+            "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+            "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+            "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+            "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+            "R003_EXACT_CENTERED_FINITE_NESTING",
+            "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+            "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+            "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+            "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+            "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+            "R003_FIRST_BAD_SHELL_PROJECTION",
+            "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+            "R003_KERNEL_EF_EXTENSION",
+            "R003_LEAST_PARITY_BAD_SHELL",
+            "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+            "R003_LOCALIZED_BASIS_CORRELATION",
+            "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+            "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+            "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+            "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+            "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+            "R003_PARITY_BAD_NFLOW",
+            "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
+            "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+            "R003_PARITY_NORMAL_KKT",
+            "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+            "R003_PARITY_QUADRATIC_SPLIT",
+            "R003_RESIDUAL_C2",
+            "R003_SOURCE_KAPPA_FINITE_SECTOR",
+            "R003_SOURCE_NORMALIZATION_REPAIR",
+            "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+            "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+            "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+            "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+            "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+            "R003_TENT_ANALYTICS",
+            "R003_TENT_EF_EXTENSION",
+            "R003_TENT_MOLLIFIER_ARCHITECTURE",
+            "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+            "R003_WEIL_COMMON_SUPPORT_BOUND",
+            "R003_WEIL_DISPLACEMENT",
+            "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+            "R003_WEIL_PAIR_LITERATURE_BRIDGE"
+          ],
+          "cohort_id": "ROUTE_R003",
+          "intersection_count": 0,
+          "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "union_count": 67,
+          "union_sha256": "2c1aaae5e4961f950f17f812dcb8a50fb8b1cb33dc614667bdbc1379a4985f9d"
+        },
+        {
+          "claim_ids": [
+            "R004_CCM_DISPLACEMENT_FORMAL"
+          ],
+          "cohort_id": "ROUTE_R004",
+          "intersection_count": 2,
+          "intersection_sha256": "fc2fdfeeb5e19493555543538b5a3a130261223637660009d459c2a1ec516c3d",
+          "union_count": 2,
+          "union_sha256": "fc2fdfeeb5e19493555543538b5a3a130261223637660009d459c2a1ec516c3d"
+        }
+      ],
+      "projection": "TYPE_ONLY",
+      "registered_roots": [
+        {
+          "claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+          "external_boundary_count": 2,
+          "external_boundary_sha256": "eb8848bc1d0b1559d7c6dfb6258a31461ac4f07296e16d4b15101195f27ba1a1",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "a38e772eb1574dffe6267556d6844a9b58d97075c4b1924bd3fb1f12f8572a9d",
+          "root_theorem": "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis"
+        },
+        {
+          "claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+          "external_boundary_count": 2,
+          "external_boundary_sha256": "eb8848bc1d0b1559d7c6dfb6258a31461ac4f07296e16d4b15101195f27ba1a1",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "f2107549c8331c9cd3a3f43798d0eb482a5ae53d536536abf7aed37176052b2e",
+          "root_theorem": "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis"
+        },
+        {
+          "claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+          "external_boundary_count": 25,
+          "external_boundary_sha256": "1627ef48374d9974dedc007c88d5f7cf05b414f43469e8b8bce60fbbeb55332e",
+          "local_dependency_count": 11,
+          "local_dependency_sha256": "2f610b571b85053279f3fd622cd183c8beab210f33d4876497e35792b9b4cb02",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_offLine_zero"
+        },
+        {
+          "claim_id": "OBS_TIGHTMULT",
+          "external_boundary_count": 39,
+          "external_boundary_sha256": "78f26e2eaf407bbc14a10aa1db5ffb66943fc929fd40c8a699a260ba95bffe14",
+          "local_dependency_count": 7,
+          "local_dependency_sha256": "7619473cef17faf7b00f4318a5924aa54e1d506146313e9e1995bd0d812fcb27",
+          "root_theorem": "Zeta23.ZeroSide.TightMult.lemmaR_tight_two"
+        },
+        {
+          "claim_id": "R001_FILTERED_ZERO_POLE",
+          "external_boundary_count": 30,
+          "external_boundary_sha256": "f7cc29a47ff99e59b01238830ee3e071d8d4d56e7d526750bc67c7e3c814a238",
+          "local_dependency_count": 9,
+          "local_dependency_sha256": "bc04b1acba0e6b92ee4585b31b1c63cb0fc106dfb3b6d62bdecd9d6faef64db3",
+          "root_theorem": "Zeta23.ExceptionalZero.not_subexponential_filteredZeroFamily_of_right_zero"
+        },
+        {
+          "claim_id": "R001_PRIME_UPPER_EQUIV_RH",
+          "external_boundary_count": 21,
+          "external_boundary_sha256": "962a4305f7647a8cfb4e171e637fdecf3405efb4edb2b2fb6409d1e180adf59b",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "d684e650d2fef505f08e9a9fca99d314510cfd1f6262c5e9d64281ce9bbc6add",
+          "root_theorem": "Zeta23.ExceptionalZero.arithmeticSideSubexponential_iff_criticalLine"
+        },
+        {
+          "claim_id": "R001_WEIL_BRIDGE",
+          "external_boundary_count": 39,
+          "external_boundary_sha256": "73c1583dc63d72f563d7ca19a0bb68d6a923ed153f4e503ff10565935db6bf1e",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "e594696a56020b5ce4d4dad56b229105f3f1e0c81f587c62e7b938d30d59dc06",
+          "root_theorem": "Zeta23.ExceptionalZero.filteredZeroFamily_weilZeroFilter_eq_literatureRHS"
+        },
+        {
+          "claim_id": "R001_ZERO_GROWTH",
+          "external_boundary_count": 57,
+          "external_boundary_sha256": "b3ddef65623a142ef22e85b22a18af86710bf158a6dbec2197f07deaa25ec9ee",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "04291cc71a5fbdb1a07d071a1d2667d200f6e59a6c169ae1da5c503de4f4f24d",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_poleKilled_test_not_subexponential_of_right_zero"
+        },
+        {
+          "claim_id": "R002_KERNEL_ZERO_SIDE_BRIDGE",
+          "external_boundary_count": 37,
+          "external_boundary_sha256": "6640235e79053acd15d1fedf728db60f964acb9a5e3f354e4e88f79a2f66dd68",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "eab7b64154888ea84c5673e7ba1485af903693c6f555310576599c93d91d7bc8",
+          "root_theorem": "Zeta23.CCM.rawKernelZeroSideMatrix_eq_two_finiteMatrix_add_four_correction"
+        },
+        {
+          "claim_id": "R002_MULTI_PROBE_SEPARATION",
+          "external_boundary_count": 40,
+          "external_boundary_sha256": "90323ddfb71a0affb421fe3cb82b23a9089bc6c6fcbe8391d3bd80a1b78e1b58",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "a45b541395d754d0d790e0c487830a1ac9493aa5aca1d5ccdb2c6dabfccfe23b",
+          "root_theorem": "Zeta23.ExceptionalZero.not_onLineCombination_of_pairBlock"
+        },
+        {
+          "claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+          "external_boundary_count": 30,
+          "external_boundary_sha256": "e4cf27522c22bc687da9a2a86fc4e42a664da3f6c3b9116c0d7afb72d96d5e69",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "161ae1ff020233e5868dc1f5f0731f1beab77da53548e0d0e70e4e331fb8c09a",
+          "root_theorem": "Zeta23.CCM.finrank_boundaryFlatSubspace"
+        },
+        {
+          "claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+          "external_boundary_count": 20,
+          "external_boundary_sha256": "23a8436e1ac371a3be2c016481426d9571609861bf0bf7df58813d5722460dcd",
+          "local_dependency_count": 7,
+          "local_dependency_sha256": "2606a45431b44587701ae94f0424dfa8055b46ceeca811e5bcb2ad06aa88d95e",
+          "root_theorem": "Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm"
+        },
+        {
+          "claim_id": "R003_BOUNDARY_FLAT_MOMENT_FLAG",
+          "external_boundary_count": 22,
+          "external_boundary_sha256": "7ef92679b0c563ee1e02a878895df6601bf28b5745680d9d708ac6f5e98150c6",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "edc1d29fc7d79eefcf06eab29cd78df3e1558a64ec8b25165cca543f65ae06f7",
+          "root_theorem": "Zeta23.CCM.boundaryFlat_moment_flag"
+        },
+        {
+          "claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+          "external_boundary_count": 13,
+          "external_boundary_sha256": "ace0a2ea3d9ba9e3fc00200907e17a81995ca50f8db84bdc02a30655f311f945",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "f4825691ea79929429bcdb3b147862e810e9b98c5649b73a859dba4c8dc8137d",
+          "root_theorem": "Zeta23.CCM.boundaryFlatProject_boundaryFlat"
+        },
+        {
+          "claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+          "external_boundary_count": 68,
+          "external_boundary_sha256": "bf3132cfcfd3a4748f6ebd3933148258409c96c55d2ee8e88f73df090f604479",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "77d01f5839b6e18304a8d89181170c70668847dcd463b0354255a65cc5c83d1f",
+          "root_theorem": "Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx"
+        },
+        {
+          "claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+          "external_boundary_count": 87,
+          "external_boundary_sha256": "cb06c199fab2874fcf149a226c9d42d7f20a7f88623174453215984bb69bc523",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "298573c015c670d7ed0cad77ec869303acaa405d1d2f1f288cd2c85fbceae7d3",
+          "root_theorem": "Zeta23.CCM.quadraticForm_re_eq_re_inner_apply_self"
+        },
+        {
+          "claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+          "external_boundary_count": 81,
+          "external_boundary_sha256": "35c2f0de2a0eb032e3a2e4aeb28d56a09eefda8584dde6dd74f70baf918807e5",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "6d66318f90c730db71e6bfb6008cf587502fcd3af93d14ec269dcd4a2193dbff",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_toEuclideanLin_isSymmetric"
+        },
+        {
+          "claim_id": "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
+          "external_boundary_count": 23,
+          "external_boundary_sha256": "15c2c52c0433f164268abd5036e65490452b0dd58600e303dec6481e4db73e2e",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "f9d83b58bb6816fb8eed33a5f8d39e057fd9e69d39f8037822490d865170f7f1",
+          "root_theorem": "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget"
+        },
+        {
+          "claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+          "external_boundary_count": 24,
+          "external_boundary_sha256": "40f511b3c0ef040e2dd7e1a99fe5bacc9cc9315305f22c2ba60e09ba076fb89a",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "6d66318f90c730db71e6bfb6008cf587502fcd3af93d14ec269dcd4a2193dbff",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_isHermitian"
+        },
+        {
+          "claim_id": "R003_CCM_BRIDGE",
+          "external_boundary_count": 36,
+          "external_boundary_sha256": "ef4897b53a129945b0e5a290a61474028496b56225e8979dfeb544f77b491344",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "09321bf056f6787f3e554fbb121cb307b58b906869307cc7552ede52bf8a94fc",
+          "root_theorem": "Zeta23.CCM.zeroSideMatrix_eq_finiteMatrix_add_correction"
+        },
+        {
+          "claim_id": "R003_CCM_RHS_IDENTITY",
+          "external_boundary_count": 21,
+          "external_boundary_sha256": "b28f311f1432c7fa48026da3cf68a2c178c59b0804975ad48d2cc72504ab5a6c",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "272a2bacfcec8bed0daab3bdfb056ca45b177fcba67aed052f301a574f585ace",
+          "root_theorem": "Zeta23.CCM.literatureRHS_dictionaryTest_eq_quadraticForm"
+        },
+        {
+          "claim_id": "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
+          "external_boundary_count": 34,
+          "external_boundary_sha256": "25be4f4fe835b0d7a976ae58f07dd831a850334714b6308edf019f859dcb9b0b",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "3bcabcda62cb3ab55480b376c1c2426127603585147df2219e23a2add707d8eb",
+          "root_theorem": "Zeta23.CCM.boundaryFlat_canonical_displacement_package"
+        },
+        {
+          "claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+          "external_boundary_count": 41,
+          "external_boundary_sha256": "a62580a991a5ff52cade81d3fab7dad0c066dec10ec58e7483b58baea3454236",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "c497ed78e0d9598cb8c7a287f993ffeee4ac191a4f05eea03309ff506f94c8d6",
+          "root_theorem": "Zeta23.CCM.finrank_euclideanEvenBoundaryFlatSubspace"
+        },
+        {
+          "claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+          "external_boundary_count": 27,
+          "external_boundary_sha256": "fd8ca94fe0374acf8024e77c86f92270ff34af9fbd7ef5b946fbe5580663b08f",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "368d8d2dab643e3faa12415703f96cc7dd6ed8fc31a97c1d8f195a2a8edc701d",
+          "root_theorem": "Zeta23.CCM.evenOddBoundaryFlatLinearEquiv"
+        },
+        {
+          "claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+          "external_boundary_count": 20,
+          "external_boundary_sha256": "f088e0ba79521f68aa256c0fa9925ef623bc62b085b926702f770bf1ac87319e",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "03c0d3a90daa33f5ff4f5d3c84d4221cdab7ea036928f63ae468bc2abf401076",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_mulVec_reverseCoefficients"
+        },
+        {
+          "claim_id": "R003_CUTOFF_FREE_MATRIX_MAP",
+          "external_boundary_count": 18,
+          "external_boundary_sha256": "a3848a7cf897b14961aa1a917d9a4374bb960a28c0be555918b0468427d1e4b5",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "0a67d3769fcef92273495b4fffd4b040a7d5d562d0708023e6952d4fba53de67",
+          "root_theorem": "Zeta23.CCM.zeroSideMatrix_eq_cutoffFreeMatrix"
+        },
+        {
+          "claim_id": "R003_DISPLACEMENT_TRANSFER",
+          "external_boundary_count": 30,
+          "external_boundary_sha256": "cc18d6c1db72cfb2cb2a132def39b67d633a258aa24c9c495a85ff990a67a230",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "b46f6a3d6029f3b006c0417f1a52cab790596ba7a66b35d957024c491ed86ff3",
+          "root_theorem": "Zeta23.ExceptionalZero.rank_displacement_le_two_of_eq_smul_add_scalar"
+        },
+        {
+          "claim_id": "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+          "external_boundary_count": 41,
+          "external_boundary_sha256": "a62580a991a5ff52cade81d3fab7dad0c066dec10ec58e7483b58baea3454236",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "58383f91dd81230cbecf4aa95dd8020710f76ecbcb81235bd786859056951ef9",
+          "root_theorem": "Zeta23.CCM.finrank_euclideanBoundaryFlatSubspace"
+        },
+        {
+          "claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+          "external_boundary_count": 113,
+          "external_boundary_sha256": "b7829ed524d25b93b03d75d2bf105ce028128e915afe71b11fcea825b1d159c4",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "e8472034c14bb1f599af232ca1570d71ba9bd3b430745a88a03e478855021b52",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+          "external_boundary_count": 52,
+          "external_boundary_sha256": "924ebe928c4ff15411c23426f00ad7221d63e835ea5f395d9304c941ab93db7b",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "903ac425de3167a832835b90269888de3b94e18d1b73c1d3e34d060b32cbedf0",
+          "root_theorem": "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanBoundaryFlatSubspace"
+        },
+        {
+          "claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+          "external_boundary_count": 41,
+          "external_boundary_sha256": "ac2da494bb973a5251ef225047b89f117348dbfe14fdf1e50f970390b5b3e356",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "436a86eabbc9a834a21764312ec4b3d51c9c83addeaec10a6142a322c1b694cc",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_displacement_mulVec_even_boundaryFlat"
+        },
+        {
+          "claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+          "external_boundary_count": 20,
+          "external_boundary_sha256": "0a7284baea8b459db5e36e6628a95bae154e7f2d7ec3531265e1a58598286d63",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "060166a33e26c9ec6f5e4680ca9fb4721a0655a5036d68334382cfc8ec434ac8",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_submatrix_centeredEmbedding"
+        },
+        {
+          "claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+          "external_boundary_count": 40,
+          "external_boundary_sha256": "edafd13a7ef638fb7f65d4f8fe9cda76e0b513357422086d6544d3b414570cea",
+          "local_dependency_count": 6,
+          "local_dependency_sha256": "c54d65a5d1becb45358960a048461fb244360fada2b99bfd86762f21ea54b467",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+          "external_boundary_count": 130,
+          "external_boundary_sha256": "a520ef457eafeaf409f14893d24e0759e436646afb7e6c613307f3aa07c95021",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "ab871652b7d641d471949e59272cd9b477d94c589ffa21f4a5f3a50107b0346d",
+          "root_theorem": "Zeta23.CCM.negative_eigenmode_not_centeredImage"
+        },
+        {
+          "claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+          "external_boundary_count": 141,
+          "external_boundary_sha256": "73e89377c579a5a7a56f5dc8b107d91cd7cb328b8a9e4dfd04b067d6963a9dd2",
+          "local_dependency_count": 9,
+          "local_dependency_sha256": "0d019292a29f9b92da6614b1a67331e6fbb46fd514e45fbccf1bf311588e7a26",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_firstBadParity_negativeEigenmode_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+          "external_boundary_count": 118,
+          "external_boundary_sha256": "c4a62363b81236c5574fdc2d397b6b03cbb51db847ea2799d551f20181d12b61",
+          "local_dependency_count": 10,
+          "local_dependency_sha256": "08d02181eb85aa5b6c5083290cb152f040a84047fa4fde46e549ded617577121",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_leastParityBad_oneDimShell_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+          "external_boundary_count": 138,
+          "external_boundary_sha256": "f4a0dfad50994b959d7e9834f85f28144582d2e271c603bb73c567826f45e5a2",
+          "local_dependency_count": 10,
+          "local_dependency_sha256": "af2f063a4f4d60a2b90d4fca760473ecfc9421d131c56f4c8e521e45b7dd4d38",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_firstBadParity_shell_KKT_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_FIRST_BAD_SHELL_PROJECTION",
+          "external_boundary_count": 124,
+          "external_boundary_sha256": "a6ea8c63b727e4dcda6ee6a7c147ec3946b7f12e8f0811014c59bd12a533b675",
+          "local_dependency_count": 6,
+          "local_dependency_sha256": "5f2edd0d287b9aac04aad9bd55a6b99fafdc4d270f326d22e101ae0e90de32a4",
+          "root_theorem": "Zeta23.CCM.negative_eigenmode_paritySuccShell_projection_ne_zero"
+        },
+        {
+          "claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+          "external_boundary_count": 30,
+          "external_boundary_sha256": "57a49c1366fc5fab4b92fad675038fa6371568dd441251e6a093093ef176ae3d",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "2e0114971f081dd29a1e273319d956837388c0a9de075a8d4ac6e591d1516781",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_parityBad_tail_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+          "external_boundary_count": 2,
+          "external_boundary_sha256": "e693b4c115c544ad576e74d4beb60f814174096ea144d308a23e8b083e1a0e1a",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "141c900d70792994e531579ec08268ec34b2065af0d01caea944f810f4a7026c",
+          "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.exists_branchPackage"
+        },
+        {
+          "claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+          "external_boundary_count": 64,
+          "external_boundary_sha256": "8e4f614c6da5ebaece108335bc2d92a305743d1f5571de31b54aedd6562e72a5",
+          "local_dependency_count": 13,
+          "local_dependency_sha256": "3b4bcb7fde8d45594d34bd470da9bc12a6345d5397d58e81657bd5850a6d3493",
+          "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.groundTrial_eigenmode"
+        },
+        {
+          "claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+          "external_boundary_count": 53,
+          "external_boundary_sha256": "1e9b518b12d59508d73b50e6637cfe902beb10f678996f613d95d90f5aff78cc",
+          "local_dependency_count": 14,
+          "local_dependency_sha256": "fdaeac35eb2fae3e949fcdd4cec8ed33b87fb3e4da169c175de2c06571d7dbd6",
+          "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral"
+        },
+        {
+          "claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+          "external_boundary_count": 14,
+          "external_boundary_sha256": "8ce24c9c1c70e9d48cebffdfa2f82ff4c5dd522fc960a15919d6d3d7d7c7e73b",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "540b682687a61acd6e6828531da4b685ae4d578684ef0a77032146a1e3f714e4",
+          "root_theorem": "Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad"
+        },
+        {
+          "claim_id": "R003_KERNEL_EF_EXTENSION",
+          "external_boundary_count": 36,
+          "external_boundary_sha256": "6315b37c9b9ad577c90711b0a36f309f15e60b6c092fea0c277cfea65d2ea847",
+          "local_dependency_count": 9,
+          "local_dependency_sha256": "0da32cce8373fbc1580a394aeeffd1aa86e0c944b68992209251f218fe14fdaf",
+          "root_theorem": "Zeta23.CCM.dictionaryTransform_zero_sum_eq_literatureRHS"
+        },
+        {
+          "claim_id": "R003_LEAST_PARITY_BAD_SHELL",
+          "external_boundary_count": 38,
+          "external_boundary_sha256": "e7df62bd7758542556f316cafcf71b98b1948c8fc2397b20611439067a9f5e80",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "794b876c5160516dbeb0d6d927a3a7e8fa0684bad1b1c6f4563b1511ab5cc4f8",
+          "root_theorem": "Zeta23.CCM.finrank_euclideanParitySuccShell"
+        },
+        {
+          "claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+          "external_boundary_count": 20,
+          "external_boundary_sha256": "23a8436e1ac371a3be2c016481426d9571609861bf0bf7df58813d5722460dcd",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "1d730329dc3d11f1ca9f31a5f66f27c86449c12cf03523553e80ed0679409b54",
+          "root_theorem": "Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_cutoffFreeQuadraticForm"
+        },
+        {
+          "claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+          "external_boundary_count": 10,
+          "external_boundary_sha256": "32e2a22519d7112b224ab1791e7194ac12920cc2c426315ee4a0fad211a2ad30",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "53eb2dc8067944673cdc011e8461c7427241070674aa52396ac3c9a258ad75ee",
+          "root_theorem": "Zeta23.CCM.hardWindowCharacterCorrelation_eq_qBasis"
+        },
+        {
+          "claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+          "external_boundary_count": 22,
+          "external_boundary_sha256": "c6c159bf65108a9422e03d0ad28bed99c7ecd5f77d2e8556bb9c5914c5a288e6",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "433a2831ce658cfc574ccace4f8f47d5057a4ef130c9b0e669be9d2c314853a4",
+          "root_theorem": "Zeta23.CCM.localizedWeilCorrelation_finiteVector_eq_two_mul_dictionaryTest"
+        },
+        {
+          "claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+          "external_boundary_count": 67,
+          "external_boundary_sha256": "760bac08317a8f8ea9332deba06b676227152b4f90f79ea047c207f8498158cd",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "33415da9ab01c8081522d8f78ddbf85bc2c4380f4526501550a40671417f0287",
+          "root_theorem": "Zeta23.CCM.exists_localizedFinite_uniform_C2_approx"
+        },
+        {
+          "claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+          "external_boundary_count": 53,
+          "external_boundary_sha256": "1e513d730619ab71f3c6e026c2f6921d351eeda1578bfc56fafb47cd703094f8",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "c0bb05373683b06f871f6d386ad10593aa506203da11eb927fc39717b80899bf",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_poleNeutral_negativeWeilTest_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+          "external_boundary_count": 113,
+          "external_boundary_sha256": "b7829ed524d25b93b03d75d2bf105ce028128e915afe71b11fcea825b1d159c4",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "e8472034c14bb1f599af232ca1570d71ba9bd3b430745a88a03e478855021b52",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+          "external_boundary_count": 72,
+          "external_boundary_sha256": "a331efde306533b63db9012377762e01a86a7b25c47d93062ea14cf5c6d01d7f",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "8a41afd6c0150930bc0889dfe35049bad697f0bd8eedc8fc409d6bde47d2af17",
+          "root_theorem": "Zeta23.CCM.exists_negative_eigenmode_of_parityBad"
+        },
+        {
+          "claim_id": "R003_PARITY_BAD_NFLOW",
+          "external_boundary_count": 9,
+          "external_boundary_sha256": "ccec3d9c55bfdc4cfa980588fed3c1acb78fa042398d0b60c9010fe80cf42bff",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "62ddd0433ca6b9fc4edd0da65a361acc94f4fd24b4730da5513b8602190a24f0",
+          "root_theorem": "Zeta23.CCM.parityBad_persists_of_le"
+        },
+        {
+          "claim_id": "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
+          "external_boundary_count": 47,
+          "external_boundary_sha256": "53d08db78f60de415cd482114a3da01c10ce9666402c0e1bf8ecc0ebfc2601e6",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "b1ef9668f484817e7af6b9e6b14051c09d693a81dbfec26af80a98d4dd206833",
+          "root_theorem": "Zeta23.CCM.finrank_range_conjugatedParityCompressionDefect_le_one"
+        },
+        {
+          "claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+          "external_boundary_count": 55,
+          "external_boundary_sha256": "d176bd403cedb86836fd94a0b721e916518ce45d443b24a4432667102139d32c",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "e1ad8854932c8f04ff64a00f5dd5a37d0bed5dbb46fc338225e081986a9d851e",
+          "root_theorem": "Zeta23.CCM.parityCompressedCanonical_isSymmetric"
+        },
+        {
+          "claim_id": "R003_PARITY_NORMAL_KKT",
+          "external_boundary_count": 64,
+          "external_boundary_sha256": "8e4f614c6da5ebaece108335bc2d92a305743d1f5571de31b54aedd6562e72a5",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "5bc00550e75393ae96f60c5bf4c39cdc6f05feaf56debe73cf5ed068de5411ae",
+          "root_theorem": "Zeta23.CCM.parityKKTResidual_of_eigenmode"
+        },
+        {
+          "claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+          "external_boundary_count": 52,
+          "external_boundary_sha256": "924ebe928c4ff15411c23426f00ad7221d63e835ea5f395d9304c941ab93db7b",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "bc4974d31fd598512e773b374c87e3ecd0bb56d79e88cfe01537ae207fc105c2",
+          "root_theorem": "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanOddBoundaryFlatSubspace"
+        },
+        {
+          "claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+          "external_boundary_count": 17,
+          "external_boundary_sha256": "f5da1a240e82951bf26abf204c3c5ee5fbf25fdee9d1bf1206ff00a79889e45a",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "0fc4958eca915ea3c1d6665691d733512e8d07253d0536c6770a3ce66b4e8414",
+          "root_theorem": "Zeta23.CCM.quadraticForm_evenPart_add_oddPart"
+        },
+        {
+          "claim_id": "R003_RESIDUAL_C2",
+          "external_boundary_count": 39,
+          "external_boundary_sha256": "77ce9c7b4efcfc46faf0024150404c03666a4d3b7d3679074663b0275d3287ef",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "b398884c847c40ebec9659e66adbb75d3b4bebe1d0710a666071dc5a49602993",
+          "root_theorem": "Zeta23.CCM.dictionaryResidualTest_admissible"
+        },
+        {
+          "claim_id": "R003_SOURCE_KAPPA_FINITE_SECTOR",
+          "external_boundary_count": 17,
+          "external_boundary_sha256": "ff909b641fd70bf65eea60d6fd0498b45e0d64906a06bb569b774c7a79416255",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "703516884662290b6b99c2527f6cc63df1d39c53d8665527ec63169a76f846c0",
+          "root_theorem": "Zeta23.CCM.sourceKappaFiniteVector_eq_sourceFiniteVector"
+        },
+        {
+          "claim_id": "R003_SOURCE_NORMALIZATION_REPAIR",
+          "external_boundary_count": 32,
+          "external_boundary_sha256": "12b68c0dbfb279ecc616751b9ef8b951086c3ce8e681bc21d354385fd9543c8a",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "0780e584668ddb209b65cb002438bfcbfb5640ce55c9d9aa9a052b7f952ee3b8",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_eq_legacyPrintedMatrix_add_correction"
+        },
+        {
+          "claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+          "external_boundary_count": 14,
+          "external_boundary_sha256": "8e0a6c5309f65be30dc96ebf49d7f24cfc5b45c53ad6ef922481aa80f559c674",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "e2f904594e7866231f0d16f2d7811926a7a994fb2b1506f9ad87483ecc57d820",
+          "root_theorem": "Zeta23.CCM.sourceEq44Matrix_eq_cutoffFreeMatrix"
+        },
+        {
+          "claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+          "external_boundary_count": 61,
+          "external_boundary_sha256": "5109552355853c186d5185f76f978d6cd50c36e06ace1aefd695735ef6b18ac5",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "841f48f5c4ee0570611683edf56e2d607bb2a6e3727ad76968f20b1dc5f6d4ed",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeLocalizedWeilAdditiveRHS_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+          "external_boundary_count": 61,
+          "external_boundary_sha256": "5109552355853c186d5185f76f978d6cd50c36e06ace1aefd695735ef6b18ac5",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "c0bb05373683b06f871f6d386ad10593aa506203da11eb927fc39717b80899bf",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+          "external_boundary_count": 48,
+          "external_boundary_sha256": "9063a84a3d0debd541dc24faa5c5de695fb802975f86b8525ee3d094c6dcd258",
+          "local_dependency_count": 5,
+          "local_dependency_sha256": "d041be8b1bccb6903eb7554ebc7255d2aa37b720838e3706cc35b20c8ed18772",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_boundaryFlatFinite_negativeW_of_strictAperture"
+        },
+        {
+          "claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+          "external_boundary_count": 108,
+          "external_boundary_sha256": "ccace1835885771476bb8e6f51fb452dacb1cf45e6b4bbb0c83913d4ecca771f",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "8d3483d130ed1ee20bd4165fe91cb8d0a78a3b732c4bbad7b01ecbee582ffbb3",
+          "root_theorem": "Zeta23.CCM.re_inner_successor_nonnegative_on_centeredImage"
+        },
+        {
+          "claim_id": "R003_TENT_ANALYTICS",
+          "external_boundary_count": 70,
+          "external_boundary_sha256": "d5485d524451341e908621e075c4b60e65bd7015b2124747097f14e97e98d95a",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "eef43685a5962843633c4495e7fe73ea9a7db0f57c8a3f46656772cc02264880",
+          "root_theorem": "Zeta23.CCM.dictionaryTent_analytic_package"
+        },
+        {
+          "claim_id": "R003_TENT_EF_EXTENSION",
+          "external_boundary_count": 31,
+          "external_boundary_sha256": "08a9efe4cd1adf3dd9602167bb671e2d6ef2e36ad68547560f8de7e95e6571d0",
+          "local_dependency_count": 9,
+          "local_dependency_sha256": "5620347341c5b08f8661f01d9d163a68c7cee87811413eef435d70c1650fbc05",
+          "root_theorem": "Zeta23.CCM.dictionaryTent_explicitFormula"
+        },
+        {
+          "claim_id": "R003_TENT_MOLLIFIER_ARCHITECTURE",
+          "external_boundary_count": 69,
+          "external_boundary_sha256": "d7b7bbc726a82deb95828e734e88b574686614750db9a12df83c893ea636a428",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "c82ec855bceb6c990818a144d13a1f6ce34d14b93f95bca0fc45e327e84ded3e",
+          "root_theorem": "Zeta23.CCM.dictionaryTent_mollifier_architecture_package"
+        },
+        {
+          "claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+          "external_boundary_count": 55,
+          "external_boundary_sha256": "d3bca13fcec26a4f91d58d0d5b67e81cce60b4d38ce4b36972ec9306a6a66299",
+          "local_dependency_count": 6,
+          "local_dependency_sha256": "1bf92f7aab9bb6645aa77ce194ea8c893ca84fd9bb4d49082e7c61acb6d6aa40",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_unit_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+          "external_boundary_count": 60,
+          "external_boundary_sha256": "bcc9190de03885b9debb2f43104691ee190fc0ec135ca5dc1d2627ff0ddd5445",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "b61b9b1595eb036f707dd5784a71d0a14890dd0e347fd2aedab95f3a177b3bd1",
+          "root_theorem": "Zeta23.ExceptionalZero.zeta_W_norm_le_commonSupport"
+        },
+        {
+          "claim_id": "R003_WEIL_DISPLACEMENT",
+          "external_boundary_count": 29,
+          "external_boundary_sha256": "645f912a449bcfd5d653de2dcfc083dc8685d5f0678527d92437515cfc4f7417",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "a34fd2e751e803ef996ad1274458e8335311e92dc61d294b590c548e7d6c621a",
+          "root_theorem": "Zeta23.CCM.rank_zeroSideMatrix_displacement_le_two"
+        },
+        {
+          "claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+          "external_boundary_count": 28,
+          "external_boundary_sha256": "b0fb8246938f3d6ef58163b4e6409097cb84a0c78741a89f4b42554f14034027",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "e9273055ea9120ca1e36a59e3b385771a1fdb72763e3a9ebbb8794852afd3c26",
+          "root_theorem": "Zeta23.ExceptionalZero.zeta_W_self_eq_localizedWeilAdditiveRHS"
+        },
+        {
+          "claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+          "external_boundary_count": 43,
+          "external_boundary_sha256": "959f84de26d15e7a98391d187e9cf38a6a4a5587fd0e874f2f8d832419ba9232",
+          "local_dependency_count": 7,
+          "local_dependency_sha256": "2edae20556f56397c98d1b17f0c5f6dceb3f0623592d92c234ed1ce13a51e263",
+          "root_theorem": "Zeta23.ExceptionalZero.zeta_W_literatureRHS_package"
+        },
+        {
+          "claim_id": "R004_CCM_DISPLACEMENT_FORMAL",
+          "external_boundary_count": 29,
+          "external_boundary_sha256": "645f912a449bcfd5d653de2dcfc083dc8685d5f0678527d92437515cfc4f7417",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "fc2fdfeeb5e19493555543538b5a3a130261223637660009d459c2a1ec516c3d",
+          "root_theorem": "Zeta23.CCM.rank_canonicalSourceMatrix_displacement_le_two"
+        }
+      ]
+    },
+    {
+      "cohorts": [
+        {
+          "claim_ids": [
+            "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+            "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+            "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM"
+          ],
+          "cohort_id": "CANONICAL_ARITHMETIC_SURFACE",
+          "intersection_count": 224,
+          "intersection_sha256": "c59fbe0831495967b9e54456d6bc63dc4518621fde42a5cfe1d63a1f4ae92335",
+          "union_count": 2664,
+          "union_sha256": "fbd61a1d95227e7dae5874968b3a55cbf749bfb56496df02d476c912869c6150"
+        },
+        {
+          "claim_ids": [
+            "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+            "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+            "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+            "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+            "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+            "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM"
+          ],
+          "cohort_id": "GLOBAL_BOTTOM_CHAIN",
+          "intersection_count": 231,
+          "intersection_sha256": "342e360e750fb77b6191cd661ef265fed872e843a8468b7d8d0bb5a3c9da9a0f",
+          "union_count": 2653,
+          "union_sha256": "e5d8391906e7ae982007e4512a2112aa6ce1a5e8c9b1251a24b1ca0e2caa5790"
+        },
+        {
+          "claim_ids": [
+            "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+            "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+            "R001_PRIME_UPPER_EQUIV_RH"
+          ],
+          "cohort_id": "RH_EQUIVALENCE_SURFACE",
+          "intersection_count": 599,
+          "intersection_sha256": "4c3bc08c7ae032deae81b2263eaaabe4588af8a445a919f376aa59c38a781aec",
+          "union_count": 2208,
+          "union_sha256": "3a29e4f9fe513888bc47542333b5a77bb963873a3ee80aff9f7627876bed2e58"
+        },
+        {
+          "claim_ids": [
+            "R001_FILTERED_ZERO_POLE",
+            "R001_PRIME_UPPER_EQUIV_RH",
+            "R001_WEIL_BRIDGE",
+            "R001_ZERO_GROWTH"
+          ],
+          "cohort_id": "ROUTE_R001",
+          "intersection_count": 55,
+          "intersection_sha256": "c1ca62a070350403e239c5363a7b765a46980991629445982a047a026d785133",
+          "union_count": 611,
+          "union_sha256": "3e1e3708497f357d6ec4a60c4f419f13eb0645a412468fdc2ced490f5a484c4f"
+        },
+        {
+          "claim_ids": [
+            "R002_KERNEL_ZERO_SIDE_BRIDGE",
+            "R002_MULTI_PROBE_SEPARATION"
+          ],
+          "cohort_id": "ROUTE_R002",
+          "intersection_count": 0,
+          "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "union_count": 1177,
+          "union_sha256": "318e2f2913bd1300d224270beecf3cb9b3d93e9189a08b1e208b4dc2b67294d4"
+        },
+        {
+          "claim_ids": [
+            "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+            "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+            "R003_BOUNDARY_FLAT_MOMENT_FLAG",
+            "R003_BOUNDARY_FLAT_PROJECTION",
+            "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+            "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+            "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+            "R003_CANONICAL_SOURCE_HERMITIAN",
+            "R003_CCM_BRIDGE",
+            "R003_CCM_RHS_IDENTITY",
+            "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
+            "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+            "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+            "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+            "R003_CUTOFF_FREE_MATRIX_MAP",
+            "R003_DISPLACEMENT_TRANSFER",
+            "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+            "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+            "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+            "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+            "R003_EXACT_CENTERED_FINITE_NESTING",
+            "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+            "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+            "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+            "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+            "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+            "R003_FIRST_BAD_SHELL_PROJECTION",
+            "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+            "R003_KERNEL_EF_EXTENSION",
+            "R003_LEAST_PARITY_BAD_SHELL",
+            "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+            "R003_LOCALIZED_BASIS_CORRELATION",
+            "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+            "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+            "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+            "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+            "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+            "R003_PARITY_BAD_NFLOW",
+            "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
+            "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+            "R003_PARITY_NORMAL_KKT",
+            "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+            "R003_PARITY_QUADRATIC_SPLIT",
+            "R003_RESIDUAL_C2",
+            "R003_SOURCE_KAPPA_FINITE_SECTOR",
+            "R003_SOURCE_NORMALIZATION_REPAIR",
+            "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+            "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+            "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+            "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+            "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+            "R003_TENT_ANALYTICS",
+            "R003_TENT_EF_EXTENSION",
+            "R003_TENT_MOLLIFIER_ARCHITECTURE",
+            "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+            "R003_WEIL_COMMON_SUPPORT_BOUND",
+            "R003_WEIL_DISPLACEMENT",
+            "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+            "R003_WEIL_PAIR_LITERATURE_BRIDGE"
+          ],
+          "cohort_id": "ROUTE_R003",
+          "intersection_count": 0,
+          "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "union_count": 1928,
+          "union_sha256": "0e9291de3a21ef6f666932a8de69856accf11f9cb1b2045fc6cb5bb64a5d372e"
+        },
+        {
+          "claim_ids": [
+            "R004_CCM_DISPLACEMENT_FORMAL"
+          ],
+          "cohort_id": "ROUTE_R004",
+          "intersection_count": 76,
+          "intersection_sha256": "a4bba6ff681d1a5ea11e758d1729a264b52f2445418bc1725e29bdff8a81b7e8",
+          "union_count": 76,
+          "union_sha256": "a4bba6ff681d1a5ea11e758d1729a264b52f2445418bc1725e29bdff8a81b7e8"
+        }
+      ],
+      "projection": "VALUE_ONLY",
+      "registered_roots": [
+        {
+          "claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+          "external_boundary_count": 4161,
+          "external_boundary_sha256": "01f7224372160e421fd42ca71df8571cb1810627add02e694d674d9f9b336490",
+          "local_dependency_count": 2125,
+          "local_dependency_sha256": "ee45c55429a49d7b21614656f12d934c0aa0af0f6d43404bda383c81c8a6640d",
+          "root_theorem": "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis"
+        },
+        {
+          "claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+          "external_boundary_count": 4135,
+          "external_boundary_sha256": "6f7b18d76fa0a48b708bc1534ad3ff178ed1ac4837e3d00655b1e5c710ed834a",
+          "local_dependency_count": 2118,
+          "local_dependency_sha256": "780517be601bd7847a29cadace6d0fd63129e79b7638738023eef6bf58511292",
+          "root_theorem": "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis"
+        },
+        {
+          "claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+          "external_boundary_count": 4260,
+          "external_boundary_sha256": "8c77cc9bc53e40156c9dc8c4ededf79621da196e8e0d471ef1079066b22f39ad",
+          "local_dependency_count": 2631,
+          "local_dependency_sha256": "de791911be8ebbd008f19bd5aa2752f705ea9e4f6ebdc83efd10369b44cf1db9",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_offLine_zero"
+        },
+        {
+          "claim_id": "OBS_TIGHTMULT",
+          "external_boundary_count": 442,
+          "external_boundary_sha256": "8dc918329ac91d229905a9572530c243bac9b36e843a6fd360c78308022f4302",
+          "local_dependency_count": 28,
+          "local_dependency_sha256": "d27f74b7af2986330bf2ff53eda6774a70c8fd960469ad85d22b10e2a546f4fd",
+          "root_theorem": "Zeta23.ZeroSide.TightMult.lemmaR_tight_two"
+        },
+        {
+          "claim_id": "R001_FILTERED_ZERO_POLE",
+          "external_boundary_count": 1137,
+          "external_boundary_sha256": "3362848bb13c1beca205de86858a73a61504db98920ed56b76126ca436c2826b",
+          "local_dependency_count": 115,
+          "local_dependency_sha256": "ad2b02016bb68bd3988bb5e3b8305dafb0f91af8bbb9cb6793f13abc5f9173a6",
+          "root_theorem": "Zeta23.ExceptionalZero.not_subexponential_filteredZeroFamily_of_right_zero"
+        },
+        {
+          "claim_id": "R001_PRIME_UPPER_EQUIV_RH",
+          "external_boundary_count": 2946,
+          "external_boundary_sha256": "dc31fb06c570f6a6b22ffc12a216d58baead2ff87bfa2b387951669ac3f25e38",
+          "local_dependency_count": 611,
+          "local_dependency_sha256": "3e1e3708497f357d6ec4a60c4f419f13eb0645a412468fdc2ced490f5a484c4f",
+          "root_theorem": "Zeta23.ExceptionalZero.arithmeticSideSubexponential_iff_criticalLine"
+        },
+        {
+          "claim_id": "R001_WEIL_BRIDGE",
+          "external_boundary_count": 2836,
+          "external_boundary_sha256": "0fc1dbcc4c66ef92e046319704c15e0e7039b22e5efb3c69065b82fbbae37ee8",
+          "local_dependency_count": 528,
+          "local_dependency_sha256": "c78a1c293e0d96ed3a78c861b0059ea57ecb6887f848d4bd474f46d5454e81d7",
+          "root_theorem": "Zeta23.ExceptionalZero.filteredZeroFamily_weilZeroFilter_eq_literatureRHS"
+        },
+        {
+          "claim_id": "R001_ZERO_GROWTH",
+          "external_boundary_count": 2945,
+          "external_boundary_sha256": "012a86050e470ac8384c3b2271221ec3e3f97f3652fd2917ff873000e3d79417",
+          "local_dependency_count": 603,
+          "local_dependency_sha256": "8254f26ed15999e30aba5be67aa29a5e72d924f722d0f2b290e9f9fcccf7fcdd",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_poleKilled_test_not_subexponential_of_right_zero"
+        },
+        {
+          "claim_id": "R002_KERNEL_ZERO_SIDE_BRIDGE",
+          "external_boundary_count": 3255,
+          "external_boundary_sha256": "fc7731d1c5ba3d1cb91695f00651d3db93de7ef11fa3c10d944ac3cb948eb815",
+          "local_dependency_count": 1165,
+          "local_dependency_sha256": "c67adf5827e1e9d1c2c43175ea79c97b7d1f547f2465a23a507311d464fdc0c6",
+          "root_theorem": "Zeta23.CCM.rawKernelZeroSideMatrix_eq_two_finiteMatrix_add_four_correction"
+        },
+        {
+          "claim_id": "R002_MULTI_PROBE_SEPARATION",
+          "external_boundary_count": 297,
+          "external_boundary_sha256": "663f1da24106ed01a1175e532426d8ea288ed66b5a32aa232453930df14baed4",
+          "local_dependency_count": 12,
+          "local_dependency_sha256": "8e95b15c5e71c4bd2b5d97e24023058f42204a3443cccb59c938432e80b85903",
+          "root_theorem": "Zeta23.ExceptionalZero.not_onLineCombination_of_pairBlock"
+        },
+        {
+          "claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+          "external_boundary_count": 422,
+          "external_boundary_sha256": "8faff3aef4a03fe912ae58a284fd969418acd7783c85e56d21004ca47d02a2cd",
+          "local_dependency_count": 27,
+          "local_dependency_sha256": "52c25fe556db627419c29f69157e2bc7e7a41d45504b108291d8cdec20119a0c",
+          "root_theorem": "Zeta23.CCM.finrank_boundaryFlatSubspace"
+        },
+        {
+          "claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+          "external_boundary_count": 3223,
+          "external_boundary_sha256": "ea4d38a25633003204b5b3e995d5d9a0f698d01c0e64160a5a31248cd5a989ad",
+          "local_dependency_count": 993,
+          "local_dependency_sha256": "dba9511e354d780b4539fbf74b3420c7f5a68f6b33dca9531706fe624b4b39d3",
+          "root_theorem": "Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm"
+        },
+        {
+          "claim_id": "R003_BOUNDARY_FLAT_MOMENT_FLAG",
+          "external_boundary_count": 97,
+          "external_boundary_sha256": "ecf4e02ebdde204d4248d840a64054fe74a572c5496c38221fbcdd39c4ff7d76",
+          "local_dependency_count": 9,
+          "local_dependency_sha256": "2af80e8d6fa72a518c5038d333260081c4c39bf93146fef2a077c7b07cb527cc",
+          "root_theorem": "Zeta23.CCM.boundaryFlat_moment_flag"
+        },
+        {
+          "claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+          "external_boundary_count": 328,
+          "external_boundary_sha256": "29c291dae04936b81db6e0c45dbc3e51b39a5c1acf00dc54acfea7042e2233ae",
+          "local_dependency_count": 25,
+          "local_dependency_sha256": "160e9efcc9e972e4039128775c066edd69c8092946db4f388649979c7348ede8",
+          "root_theorem": "Zeta23.CCM.boundaryFlatProject_boundaryFlat"
+        },
+        {
+          "claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+          "external_boundary_count": 1182,
+          "external_boundary_sha256": "3d2eb0f6e7497f6afcde72ebe262b4f42fc4ac0e50352c99e291dad9cb70af1e",
+          "local_dependency_count": 151,
+          "local_dependency_sha256": "be735bd5814a908d6bd535354d55a9331465c9fe21818f169293b85c0a592b6d",
+          "root_theorem": "Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx"
+        },
+        {
+          "claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+          "external_boundary_count": 160,
+          "external_boundary_sha256": "519ed04e84b59e44f6afe4b091134c26e626ec78a6636081eebc49f68ddf82ef",
+          "local_dependency_count": 3,
+          "local_dependency_sha256": "962f03a9785a96eb6c32386cff4fe4f888add225b0cb5f0552381c83b0738474",
+          "root_theorem": "Zeta23.CCM.quadraticForm_re_eq_re_inner_apply_self"
+        },
+        {
+          "claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+          "external_boundary_count": 432,
+          "external_boundary_sha256": "3851317a97b12367bae0b6f1d6f66d7dbc44b274fc683c19b72f70b4d463b6d3",
+          "local_dependency_count": 51,
+          "local_dependency_sha256": "7b4f677c8c0428a141466ecd075faac6f34a95d32c622f7291c6b19a99218680",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_toEuclideanLin_isSymmetric"
+        },
+        {
+          "claim_id": "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
+          "external_boundary_count": 1079,
+          "external_boundary_sha256": "6af1884fcbc1e48a8e8457662edef5ad2a5fed647c034f82d0d342d2a09f0c39",
+          "local_dependency_count": 224,
+          "local_dependency_sha256": "c59fbe0831495967b9e54456d6bc63dc4518621fde42a5cfe1d63a1f4ae92335",
+          "root_theorem": "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget"
+        },
+        {
+          "claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+          "external_boundary_count": 373,
+          "external_boundary_sha256": "258efec8e13690866995cab4518290be6c95dbbebca4f34440fa92b4ffadd2e7",
+          "local_dependency_count": 50,
+          "local_dependency_sha256": "6e030c60ca6a0386e3063f8528e863174909bde45988418b8e6de8d1c94ad24a",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_isHermitian"
+        },
+        {
+          "claim_id": "R003_CCM_BRIDGE",
+          "external_boundary_count": 3254,
+          "external_boundary_sha256": "9e0555657c65fc9215ec7de8e3354a1a4f57c31688e6ca624748039b4b6255d0",
+          "local_dependency_count": 1160,
+          "local_dependency_sha256": "e16172323b21000b1437e38a11fdb8566bb94f72a9a0d1924bc50a2121968962",
+          "root_theorem": "Zeta23.CCM.zeroSideMatrix_eq_finiteMatrix_add_correction"
+        },
+        {
+          "claim_id": "R003_CCM_RHS_IDENTITY",
+          "external_boundary_count": 1714,
+          "external_boundary_sha256": "ea2769620f349986170b66e08f7aa2f6f6bf8e49e9abe665eb3042fcaf03d441",
+          "local_dependency_count": 373,
+          "local_dependency_sha256": "c522df023d5e60d26f55f386f69ab0da1db02ef6bd7eb662eabd9efa5474f9c9",
+          "root_theorem": "Zeta23.CCM.literatureRHS_dictionaryTest_eq_quadraticForm"
+        },
+        {
+          "claim_id": "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
+          "external_boundary_count": 524,
+          "external_boundary_sha256": "fcaf08e0b8d37c8d8aaeb6f3b5e308d34aa8babbd24b1efda978351457d1e007",
+          "local_dependency_count": 83,
+          "local_dependency_sha256": "71bcade8a8b47b0fdaaa70731f01e42d134ab7743ddb7e71524caf4d1ef1c52a",
+          "root_theorem": "Zeta23.CCM.boundaryFlat_canonical_displacement_package"
+        },
+        {
+          "claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+          "external_boundary_count": 629,
+          "external_boundary_sha256": "9bd0838d1da31a0cb50cbc27ab41552ab9c98a6b6f97c1a4b9056c508909f4bf",
+          "local_dependency_count": 94,
+          "local_dependency_sha256": "f379c77edda4afaae0044d1b3a0aba4c39f3bf05a0ee06c025613a42361b36d5",
+          "root_theorem": "Zeta23.CCM.finrank_euclideanEvenBoundaryFlatSubspace"
+        },
+        {
+          "claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+          "external_boundary_count": 496,
+          "external_boundary_sha256": "c089093f76b8cdad9d478ed867a51f04aa057bd457aaf98a828681944e877b33",
+          "local_dependency_count": 57,
+          "local_dependency_sha256": "cd0fc8b985ba1d57ee7a70666b6afe77f40209f3a9c06a348e5f7c32c0e9809b",
+          "root_theorem": "Zeta23.CCM.evenOddBoundaryFlatLinearEquiv"
+        },
+        {
+          "claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+          "external_boundary_count": 421,
+          "external_boundary_sha256": "960b99b5300a33c8546c6a4928c2a99d14d266ba0bad739c4bda80990d67cbed",
+          "local_dependency_count": 37,
+          "local_dependency_sha256": "ff859672967c3d48c2f649822e18f33dcbd1a2ab3315cabf1a76092fc5ec8f57",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_mulVec_reverseCoefficients"
+        },
+        {
+          "claim_id": "R003_CUTOFF_FREE_MATRIX_MAP",
+          "external_boundary_count": 3254,
+          "external_boundary_sha256": "9e0555657c65fc9215ec7de8e3354a1a4f57c31688e6ca624748039b4b6255d0",
+          "local_dependency_count": 1170,
+          "local_dependency_sha256": "4478cae1e8993a9df84a7a8c2a60520bab8ebad118066c939440845ad7d626dc",
+          "root_theorem": "Zeta23.CCM.zeroSideMatrix_eq_cutoffFreeMatrix"
+        },
+        {
+          "claim_id": "R003_DISPLACEMENT_TRANSFER",
+          "external_boundary_count": 246,
+          "external_boundary_sha256": "cadb7271e18afe5d2090182f4b5d741e0f1bb7bfd5ae433225e0249393706035",
+          "local_dependency_count": 10,
+          "local_dependency_sha256": "c0bb335d4f1c78d824209897bec96f91f698f0db2e2afee3968f1b4d982b9f33",
+          "root_theorem": "Zeta23.ExceptionalZero.rank_displacement_le_two_of_eq_smul_add_scalar"
+        },
+        {
+          "claim_id": "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+          "external_boundary_count": 449,
+          "external_boundary_sha256": "7bfe17efa7b40f2174f1ba9dd55b59dec6967ec4dd940472586c746a44216dd5",
+          "local_dependency_count": 30,
+          "local_dependency_sha256": "7eb3b27ddf177ccc62d7e31ebfb32607d44f95b4f621d47e35dbc6198638a331",
+          "root_theorem": "Zeta23.CCM.finrank_euclideanBoundaryFlatSubspace"
+        },
+        {
+          "claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+          "external_boundary_count": 3651,
+          "external_boundary_sha256": "50fa4343068b433156ac3e2c5186df957017c78c1fa73fc15dfbaf27712c155d",
+          "local_dependency_count": 1287,
+          "local_dependency_sha256": "ea3a6443f65a6a090c6c251d8c7eff05f82e630c2baea7d9c8fff8392709c35d",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+          "external_boundary_count": 363,
+          "external_boundary_sha256": "6b205616d11e6b529e3eac65f591ad8787704518851ad737f25d5182e33254ae",
+          "local_dependency_count": 35,
+          "local_dependency_sha256": "1049d9be25db436655b3eb64abd0e70597301b5870a6da767bb460275e5f25ea",
+          "root_theorem": "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanBoundaryFlatSubspace"
+        },
+        {
+          "claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+          "external_boundary_count": 612,
+          "external_boundary_sha256": "6a6631999cb399f813c6fd683ce2ca019de8d95e54d495a1112915318d5e5737",
+          "local_dependency_count": 95,
+          "local_dependency_sha256": "0ee0d1a65ae58ba7f0e93964455153f9f65df3f1eb16cee807840c194cbef20b",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_displacement_mulVec_even_boundaryFlat"
+        },
+        {
+          "claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+          "external_boundary_count": 232,
+          "external_boundary_sha256": "be70cb55265653c099330be1c009f74eee17e8e4773ddfebd4b6991433ad45db",
+          "local_dependency_count": 29,
+          "local_dependency_sha256": "6015bfa8a07497bb495b52a5343ecdf25e54c76699281b266d8325ae10aed6c0",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_submatrix_centeredEmbedding"
+        },
+        {
+          "claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+          "external_boundary_count": 3560,
+          "external_boundary_sha256": "5f89d40f3dc712e90ef817bf1e63b58f594bd624514c9eadb49f275b164844f6",
+          "local_dependency_count": 1260,
+          "local_dependency_sha256": "dadb3aadc19e11847229f2a28182b075061c2e87e844f5e5237e6880c8986891",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+          "external_boundary_count": 1933,
+          "external_boundary_sha256": "cb15048a748f3c9302827e00a5d5c36aba99530df402ab5f74958ea83bcb291b",
+          "local_dependency_count": 503,
+          "local_dependency_sha256": "bcd2389145a2aba4b9cf8e1b69b87a166dbd92438872185ae370ff9b7c98bfa2",
+          "root_theorem": "Zeta23.CCM.negative_eigenmode_not_centeredImage"
+        },
+        {
+          "claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+          "external_boundary_count": 3803,
+          "external_boundary_sha256": "9d904e598d0855e3fb7be69c483edf1a1c8a6415315d76ee6215cdca14f18d1a",
+          "local_dependency_count": 1475,
+          "local_dependency_sha256": "8709e0b99b889d79c26bd7f904f0316bbc285f8695db8e41e406e738d60f02d2",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_firstBadParity_negativeEigenmode_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+          "external_boundary_count": 3739,
+          "external_boundary_sha256": "1c47b0d12bd715d702f979aa166447d06e3ef4a8f50f94c0830369377b4cc219",
+          "local_dependency_count": 1436,
+          "local_dependency_sha256": "04089bf3ebcea6661a33af0c46f20bef9b055aaf52b3d718cc5fe5c38be86466",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_leastParityBad_oneDimShell_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+          "external_boundary_count": 3824,
+          "external_boundary_sha256": "e234e099505d8169575e96c5a379d71e0a54b50b8fb3a34160aea8f244b6f887",
+          "local_dependency_count": 1522,
+          "local_dependency_sha256": "74855d7b5fe2a229e63942468fe76c5d36847786800a298fc58dd40e425d23e7",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_firstBadParity_shell_KKT_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_FIRST_BAD_SHELL_PROJECTION",
+          "external_boundary_count": 1974,
+          "external_boundary_sha256": "c88c9d0e956f898c716b4837a61d34a889c93c0b6c936b9aaa51e03eda4d996f",
+          "local_dependency_count": 527,
+          "local_dependency_sha256": "8d5e89a62a09564d37ac5794e68aed323ce1ec6aec01b8ffea3924b136ee697e",
+          "root_theorem": "Zeta23.CCM.negative_eigenmode_paritySuccShell_projection_ne_zero"
+        },
+        {
+          "claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+          "external_boundary_count": 3643,
+          "external_boundary_sha256": "f9b4928e6f6970f35492aa1ac9285b7d642caec5a85062e9a690411d23bc91a5",
+          "local_dependency_count": 1354,
+          "local_dependency_sha256": "7733d024aff9444db0667ccd67326c5ede17bd7d1b5c30bd74b86d6aeb939967",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_parityBad_tail_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+          "external_boundary_count": 2427,
+          "external_boundary_sha256": "13b953dfa76f1ec0757bf37c88b947067f624d4ca817952ea491cdc11fc59b0a",
+          "local_dependency_count": 1335,
+          "local_dependency_sha256": "19aa9f93f44484893251f0a179cf5be0bc5bad9cd69933eb0e01c48b71588315",
+          "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.exists_branchPackage"
+        },
+        {
+          "claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+          "external_boundary_count": 2208,
+          "external_boundary_sha256": "5b913d4f81331e47f9865366fd2bcaff17ad756403727f5a7688bba938d286e4",
+          "local_dependency_count": 784,
+          "local_dependency_sha256": "ad9447673a68c04979d6eaa8a5e8001ca3ccb6f175182af6b656795bd94bfc41",
+          "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.groundTrial_eigenmode"
+        },
+        {
+          "claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+          "external_boundary_count": 2105,
+          "external_boundary_sha256": "ccc5cf0ec84a1198a5abf4f08251d0eb313c1395b368f130c41adf3478ef09f8",
+          "local_dependency_count": 683,
+          "local_dependency_sha256": "3bf760628691a04aacdb804f6da73dd4f700d7121e614715dee34696dc8b87f3",
+          "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral"
+        },
+        {
+          "claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+          "external_boundary_count": 1122,
+          "external_boundary_sha256": "c3ea9d26e7637634e7193a07f6db0eec10e580aa4bd91e9156c08afc6dab5372",
+          "local_dependency_count": 309,
+          "local_dependency_sha256": "d974641d554a7c2b5c10b8f723bbd5ac4ed42c884a92cff3fd66b607c13fcd50",
+          "root_theorem": "Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad"
+        },
+        {
+          "claim_id": "R003_KERNEL_EF_EXTENSION",
+          "external_boundary_count": 3256,
+          "external_boundary_sha256": "8c735953f5257ef47d0a26eb7771ad225221b8520c936ab4ac400c8450e66f03",
+          "local_dependency_count": 1161,
+          "local_dependency_sha256": "74c30d275dccf2ccfc233e58a071f3785cad16202f32f152d05471c642918292",
+          "root_theorem": "Zeta23.CCM.dictionaryTransform_zero_sum_eq_literatureRHS"
+        },
+        {
+          "claim_id": "R003_LEAST_PARITY_BAD_SHELL",
+          "external_boundary_count": 711,
+          "external_boundary_sha256": "f18cfa2297716c686b4d3bcb23093f022393f695ec0fe97c35556b0ddd9a6e41",
+          "local_dependency_count": 146,
+          "local_dependency_sha256": "468d8908ade78bdc3a4c74970084416cb95b2985ed9d20b565f2ce9a7b3e6e59",
+          "root_theorem": "Zeta23.CCM.finrank_euclideanParitySuccShell"
+        },
+        {
+          "claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+          "external_boundary_count": 1770,
+          "external_boundary_sha256": "995a798e85029c627654254316a3136ea0485d286d84474f1e152993ddeec516",
+          "local_dependency_count": 431,
+          "local_dependency_sha256": "1e15f08146eda4f846bf634d496a70e1b098d7815aafce81db33149f60404409",
+          "root_theorem": "Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_cutoffFreeQuadraticForm"
+        },
+        {
+          "claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+          "external_boundary_count": 315,
+          "external_boundary_sha256": "f09b0528c20e1e035724df2988ffd74f688e1522e2e0ba5a17bb6a9dd127cbb5",
+          "local_dependency_count": 6,
+          "local_dependency_sha256": "862a61170df4fb0cbf0a6ff95c811d4705810af8738658e6943cc71cdd89a5dd",
+          "root_theorem": "Zeta23.CCM.hardWindowCharacterCorrelation_eq_qBasis"
+        },
+        {
+          "claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+          "external_boundary_count": 644,
+          "external_boundary_sha256": "d33d2387e2df551b59df49bf911eaa136fcab9a870aafc5aab8afa2431f7d037",
+          "local_dependency_count": 67,
+          "local_dependency_sha256": "adfa7d4f1e9c899774fea75e41606d3b5cb6e3177387603adbc2fc41a6f29373",
+          "root_theorem": "Zeta23.CCM.localizedWeilCorrelation_finiteVector_eq_two_mul_dictionaryTest"
+        },
+        {
+          "claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+          "external_boundary_count": 955,
+          "external_boundary_sha256": "16eac18779abc24a92993e9e7711062ea61769bbf739aa003e64e36429c791de",
+          "local_dependency_count": 68,
+          "local_dependency_sha256": "7e837112d9fe3bdcba77062f67a164596dcc94f04dabcbc3e7b02bb1d8288502",
+          "root_theorem": "Zeta23.CCM.exists_localizedFinite_uniform_C2_approx"
+        },
+        {
+          "claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+          "external_boundary_count": 3034,
+          "external_boundary_sha256": "8415094065da8598a5fbdd1156361c1a6619b1877c3264aba1ed14e0f73384dd",
+          "local_dependency_count": 665,
+          "local_dependency_sha256": "66ea0ff1494e8d89e8bcda7cfdc0a20b7628b4fabbe9603b58c6797829abe142",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_poleNeutral_negativeWeilTest_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+          "external_boundary_count": 3676,
+          "external_boundary_sha256": "88b01136f6cd111a9531583fa5f556970d3100d62306e815ca9d7e77409de4a2",
+          "local_dependency_count": 1319,
+          "local_dependency_sha256": "1a877bd17a3bf171b5f25daa57a6b39ec367b42bafeed4bee4536140abad152b",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+          "external_boundary_count": 663,
+          "external_boundary_sha256": "5ed6d2c9d1a861d21eb059020eb56ab46c6dfbe213529f2eba6272c4e2ce80e6",
+          "local_dependency_count": 101,
+          "local_dependency_sha256": "7c871cae759c639aa65b86f59cc3d2c1d161402367ada774026f16c0a31b2bbd",
+          "root_theorem": "Zeta23.CCM.exists_negative_eigenmode_of_parityBad"
+        },
+        {
+          "claim_id": "R003_PARITY_BAD_NFLOW",
+          "external_boundary_count": 1831,
+          "external_boundary_sha256": "55b5d110928c395fe91f1e542152bffd4ed58e73d09f83a4e64a31963b51d48a",
+          "local_dependency_count": 481,
+          "local_dependency_sha256": "7f6abe9711cb04a22d4cd13760136524dadc3ae75fa688c71e28751617a14a1f",
+          "root_theorem": "Zeta23.CCM.parityBad_persists_of_le"
+        },
+        {
+          "claim_id": "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
+          "external_boundary_count": 996,
+          "external_boundary_sha256": "04a0554d13e5a2108ddfe5c677c1d7a0a09bc52864261295895e8e2f0c5aad7a",
+          "local_dependency_count": 267,
+          "local_dependency_sha256": "7d86c3aa54a3fdec842a6360b101b9744ab99257931421be9aabbd60f6875cfe",
+          "root_theorem": "Zeta23.CCM.finrank_range_conjugatedParityCompressionDefect_le_one"
+        },
+        {
+          "claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+          "external_boundary_count": 541,
+          "external_boundary_sha256": "14e813b7fa4af8de45ad0b6ac11d3da1a94ca4865f4703ae99b7fb0f5d701a28",
+          "local_dependency_count": 90,
+          "local_dependency_sha256": "bbb161441ff2bdef6f5977804bb80a5a3a32af4386fd88aeb32ce974bd0143a0",
+          "root_theorem": "Zeta23.CCM.parityCompressedCanonical_isSymmetric"
+        },
+        {
+          "claim_id": "R003_PARITY_NORMAL_KKT",
+          "external_boundary_count": 734,
+          "external_boundary_sha256": "6e16ba9bffb1f702dfd236af55c05995bfef20639344d91ca3b9ee94a84c0783",
+          "local_dependency_count": 121,
+          "local_dependency_sha256": "fccf31ab65a451d8965346986a5c59d1fa1feb227aeae47ba9818151c85d82d6",
+          "root_theorem": "Zeta23.CCM.parityKKTResidual_of_eigenmode"
+        },
+        {
+          "claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+          "external_boundary_count": 390,
+          "external_boundary_sha256": "56ae3b3ae5810f7fa72b30b3a10dd953e2f988cc2bbf7d431f89c6cc93ec632e",
+          "local_dependency_count": 47,
+          "local_dependency_sha256": "6292505d1ccc8478a0158352b5e45f86291ead62617bda7e8b2f86e172909916",
+          "root_theorem": "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanOddBoundaryFlatSubspace"
+        },
+        {
+          "claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+          "external_boundary_count": 502,
+          "external_boundary_sha256": "deb26bc51a26e5b91ca3d764b6d056fa9123e2f3c34b5b3f33b460d93af3b4e7",
+          "local_dependency_count": 45,
+          "local_dependency_sha256": "92328af8929071790e57bb8611ed7f39cc70d8a835ece6fce88cc889ce2cf17f",
+          "root_theorem": "Zeta23.CCM.quadraticForm_evenPart_add_oddPart"
+        },
+        {
+          "claim_id": "R003_RESIDUAL_C2",
+          "external_boundary_count": 636,
+          "external_boundary_sha256": "c71dbf7f16012e3d59266bffe432b6c5df177981c748af24739c8800f5c15697",
+          "local_dependency_count": 130,
+          "local_dependency_sha256": "dc0f9f1040fe1dc0f6a692d4469213db1136e5fc3e6b12947276ada8a64441f1",
+          "root_theorem": "Zeta23.CCM.dictionaryResidualTest_admissible"
+        },
+        {
+          "claim_id": "R003_SOURCE_KAPPA_FINITE_SECTOR",
+          "external_boundary_count": 77,
+          "external_boundary_sha256": "2c45af4e023a3518eb7bfd42165725fc2a4b335b55ebce2e5b08a56efffa6b95",
+          "local_dependency_count": 13,
+          "local_dependency_sha256": "72167ffcc0a21a6cf6307000277ccef7bbdfe934473709df3b90087b286b9fab",
+          "root_theorem": "Zeta23.CCM.sourceKappaFiniteVector_eq_sourceFiniteVector"
+        },
+        {
+          "claim_id": "R003_SOURCE_NORMALIZATION_REPAIR",
+          "external_boundary_count": 246,
+          "external_boundary_sha256": "bcbbeaedb447a1a7c29510e0655d7258e16ad81a22629c8eb742b9d0fc4da3ba",
+          "local_dependency_count": 40,
+          "local_dependency_sha256": "7a30ec213355ec540ffb7693cffc3ce78fcad6c395dfe9ea13d57bc7030209bf",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_eq_legacyPrintedMatrix_add_correction"
+        },
+        {
+          "claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+          "external_boundary_count": 154,
+          "external_boundary_sha256": "bc3555f86617a391a424247eb0cb292f9bfe4a42059b631db99474553329a62d",
+          "local_dependency_count": 33,
+          "local_dependency_sha256": "5ae44c47bf753ab534b4f2e2419afc7dc9e5a597f60679008fc20b3cc38aeef6",
+          "root_theorem": "Zeta23.CCM.sourceEq44Matrix_eq_cutoffFreeMatrix"
+        },
+        {
+          "claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+          "external_boundary_count": 3037,
+          "external_boundary_sha256": "59866a52d62ad5da498e386ed3bb41e4faf149e5daec49d15e22a4bb13254bb3",
+          "local_dependency_count": 706,
+          "local_dependency_sha256": "6e33a3a6c822d5fb64ffa959cbb300061050c47e424215089e839399f9d357be",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeLocalizedWeilAdditiveRHS_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+          "external_boundary_count": 3036,
+          "external_boundary_sha256": "d07dbb725a423e5544e85386a51feb847667b8bae5e9b0424c61c7cd953284da",
+          "local_dependency_count": 671,
+          "local_dependency_sha256": "fb013be4e23f31f25583a6b144bd632bb525fe23f9f62b5b798ac4a7771cf787",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+          "external_boundary_count": 3129,
+          "external_boundary_sha256": "45eae9497643c413440f89753eb481ea269987c9bc1cbcd1b78f26581a43235d",
+          "local_dependency_count": 700,
+          "local_dependency_sha256": "b4c362da9d96a4b0a7df873de7bdae321b7086ed9663c774f667de9d849662fb",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_boundaryFlatFinite_negativeW_of_strictAperture"
+        },
+        {
+          "claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+          "external_boundary_count": 1884,
+          "external_boundary_sha256": "2b1bc8ccf33b1fda5b8244ebcd83c7755a69d52c894cbf9793e4cc8ade600625",
+          "local_dependency_count": 485,
+          "local_dependency_sha256": "02180458c61a15ff7a17ca5121757a544272e6bb5d3693ddb80eb0edfcd83605",
+          "root_theorem": "Zeta23.CCM.re_inner_successor_nonnegative_on_centeredImage"
+        },
+        {
+          "claim_id": "R003_TENT_ANALYTICS",
+          "external_boundary_count": 2025,
+          "external_boundary_sha256": "f999b12cb29b50ef3786435440c037b5cd6b2d1443e6af9100e20463e25807cb",
+          "local_dependency_count": 262,
+          "local_dependency_sha256": "8c7bcfd11852b2451495debc147ecdd7d8e637134e057224a37306c8a6b2096d",
+          "root_theorem": "Zeta23.CCM.dictionaryTent_analytic_package"
+        },
+        {
+          "claim_id": "R003_TENT_EF_EXTENSION",
+          "external_boundary_count": 2951,
+          "external_boundary_sha256": "5f04f6f9e101f49a447ef8cb073f19d6c08afb95316cd207761f790681d2a0e2",
+          "local_dependency_count": 665,
+          "local_dependency_sha256": "e024aeaf6135d0c0953ad5327a25138e80faa6dc45f9a8329de1ec7a4785bc54",
+          "root_theorem": "Zeta23.CCM.dictionaryTent_explicitFormula"
+        },
+        {
+          "claim_id": "R003_TENT_MOLLIFIER_ARCHITECTURE",
+          "external_boundary_count": 815,
+          "external_boundary_sha256": "c79f4a69058f9f1f309f89b7f0d49e691e88bde5eb429249e7d0048aa46a165e",
+          "local_dependency_count": 69,
+          "local_dependency_sha256": "55cf78fc2928485b00d372c4b2c74ddc1507c2396d1637a1221b63cb4e7cb3d3",
+          "root_theorem": "Zeta23.CCM.dictionaryTent_mollifier_architecture_package"
+        },
+        {
+          "claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+          "external_boundary_count": 3576,
+          "external_boundary_sha256": "c588eec5db763d7bde7ddc9e2c99a73769547b2b82af3badde1e024e7080581f",
+          "local_dependency_count": 1272,
+          "local_dependency_sha256": "ba3cc8de2f28adca711c3e1d0dfc883c98679e9699df9eddf7c79103b4c3fdc7",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_unit_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+          "external_boundary_count": 2026,
+          "external_boundary_sha256": "13442f7a3bf40660c158136c6bb52c70f0dcb7c48f2b67c661b0dc7c710993cf",
+          "local_dependency_count": 244,
+          "local_dependency_sha256": "946a25742de556cb8ef8d57e55fcf1c8f28237364af137fa8917e4cd9ce41df0",
+          "root_theorem": "Zeta23.ExceptionalZero.zeta_W_norm_le_commonSupport"
+        },
+        {
+          "claim_id": "R003_WEIL_DISPLACEMENT",
+          "external_boundary_count": 3311,
+          "external_boundary_sha256": "68f7948b67f542dcc3a16bcb468e932ce291ba22f06f4a315db3d4f0854e401e",
+          "local_dependency_count": 1189,
+          "local_dependency_sha256": "6806e6037c66a50a9523f1daaa1bc03234106275a5d4636e994867bebe1691fe",
+          "root_theorem": "Zeta23.CCM.rank_zeroSideMatrix_displacement_le_two"
+        },
+        {
+          "claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+          "external_boundary_count": 2875,
+          "external_boundary_sha256": "eddcdc3afc206149d43dcd17c55175e5328bbeb4c79b2b7dc563e47750ac6c2e",
+          "local_dependency_count": 567,
+          "local_dependency_sha256": "558ab56fea891d51b84932c581b5bb6396b03cf467d1b1a4cf47f8e2fd062f07",
+          "root_theorem": "Zeta23.ExceptionalZero.zeta_W_self_eq_localizedWeilAdditiveRHS"
+        },
+        {
+          "claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+          "external_boundary_count": 2865,
+          "external_boundary_sha256": "920d917e2eda386f01af4c29c38e3f13ff34b45eb017dc8709237c75a208a36b",
+          "local_dependency_count": 533,
+          "local_dependency_sha256": "143a084d79886352b149f31163e1eac3f2b5caed09a138d5f6b2c9982371e1ca",
+          "root_theorem": "Zeta23.ExceptionalZero.zeta_W_literatureRHS_package"
+        },
+        {
+          "claim_id": "R004_CCM_DISPLACEMENT_FORMAL",
+          "external_boundary_count": 566,
+          "external_boundary_sha256": "7264bd4ae2da4d61adb637481ff4d7ad9da2e43b375bf89895f142d19df28214",
+          "local_dependency_count": 76,
+          "local_dependency_sha256": "a4bba6ff681d1a5ea11e758d1729a264b52f2445418bc1725e29bdff8a81b7e8",
+          "root_theorem": "Zeta23.CCM.rank_canonicalSourceMatrix_displacement_le_two"
+        }
+      ]
+    },
+    {
+      "cohorts": [
+        {
+          "claim_ids": [
+            "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+            "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+            "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM"
+          ],
+          "cohort_id": "CANONICAL_ARITHMETIC_SURFACE",
+          "intersection_count": 34,
+          "intersection_sha256": "7c5c9b597631bb5fe5334d4fba6196c4eabb289627d055fb6adaa83ab3d167fd",
+          "union_count": 287,
+          "union_sha256": "fcf632b41a5b4f2904f19b81bfc05a4cb2106d9473e5c538227035ae9594b586"
+        },
+        {
+          "claim_ids": [
+            "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+            "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+            "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+            "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+            "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+            "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM"
+          ],
+          "cohort_id": "GLOBAL_BOTTOM_CHAIN",
+          "intersection_count": 66,
+          "intersection_sha256": "fc04023a47281c9820552605a53675059f392fc908b06284ef56623a269319b2",
+          "union_count": 285,
+          "union_sha256": "503912f762696c03e0629f00be1ed9313562d5eaca09a0de50239116b81a472b"
+        },
+        {
+          "claim_ids": [
+            "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+            "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+            "R001_PRIME_UPPER_EQUIV_RH"
+          ],
+          "cohort_id": "RH_EQUIVALENCE_SURFACE",
+          "intersection_count": 0,
+          "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "union_count": 219,
+          "union_sha256": "147eb3945f3157104fee08f39b97a8f807acb634d81c946855bf1e80a6a74143"
+        },
+        {
+          "claim_ids": [
+            "R001_FILTERED_ZERO_POLE",
+            "R001_PRIME_UPPER_EQUIV_RH",
+            "R001_WEIL_BRIDGE",
+            "R001_ZERO_GROWTH"
+          ],
+          "cohort_id": "ROUTE_R001",
+          "intersection_count": 16,
+          "intersection_sha256": "5ea58570308b40195e97b28f73699f3ec25fe6cce868d6bec1141728df0b581c",
+          "union_count": 35,
+          "union_sha256": "60586d3b438ff0ea562e4442ed13e3977dac38860d11d46a5ab5154370e71870"
+        },
+        {
+          "claim_ids": [
+            "R002_KERNEL_ZERO_SIDE_BRIDGE",
+            "R002_MULTI_PROBE_SEPARATION"
+          ],
+          "cohort_id": "ROUTE_R002",
+          "intersection_count": 0,
+          "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "union_count": 41,
+          "union_sha256": "745b2877906c3660ef6421ee25c26367a9d49ab585a2f16c138ec1ced8459e5e"
+        },
+        {
+          "claim_ids": [
+            "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+            "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+            "R003_BOUNDARY_FLAT_MOMENT_FLAG",
+            "R003_BOUNDARY_FLAT_PROJECTION",
+            "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+            "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+            "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+            "R003_CANONICAL_SOURCE_HERMITIAN",
+            "R003_CCM_BRIDGE",
+            "R003_CCM_RHS_IDENTITY",
+            "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
+            "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+            "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+            "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+            "R003_CUTOFF_FREE_MATRIX_MAP",
+            "R003_DISPLACEMENT_TRANSFER",
+            "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+            "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+            "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+            "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+            "R003_EXACT_CENTERED_FINITE_NESTING",
+            "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+            "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+            "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+            "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+            "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+            "R003_FIRST_BAD_SHELL_PROJECTION",
+            "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+            "R003_KERNEL_EF_EXTENSION",
+            "R003_LEAST_PARITY_BAD_SHELL",
+            "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+            "R003_LOCALIZED_BASIS_CORRELATION",
+            "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+            "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+            "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+            "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+            "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+            "R003_PARITY_BAD_NFLOW",
+            "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
+            "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+            "R003_PARITY_NORMAL_KKT",
+            "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+            "R003_PARITY_QUADRATIC_SPLIT",
+            "R003_RESIDUAL_C2",
+            "R003_SOURCE_KAPPA_FINITE_SECTOR",
+            "R003_SOURCE_NORMALIZATION_REPAIR",
+            "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+            "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+            "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+            "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+            "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+            "R003_TENT_ANALYTICS",
+            "R003_TENT_EF_EXTENSION",
+            "R003_TENT_MOLLIFIER_ARCHITECTURE",
+            "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+            "R003_WEIL_COMMON_SUPPORT_BOUND",
+            "R003_WEIL_DISPLACEMENT",
+            "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+            "R003_WEIL_PAIR_LITERATURE_BRIDGE"
+          ],
+          "cohort_id": "ROUTE_R003",
+          "intersection_count": 0,
+          "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "union_count": 256,
+          "union_sha256": "c03f1190666f076f8c860bc2c338e7a288338feaaf016bc5087b3f8ae4d73670"
+        },
+        {
+          "claim_ids": [
+            "R004_CCM_DISPLACEMENT_FORMAL"
+          ],
+          "cohort_id": "ROUTE_R004",
+          "intersection_count": 23,
+          "intersection_sha256": "c9de70c70c90dd78a6f178f4c5194b77ea64a5c345fa42c674cdd2eaa6f99495",
+          "union_count": 23,
+          "union_sha256": "c9de70c70c90dd78a6f178f4c5194b77ea64a5c345fa42c674cdd2eaa6f99495"
+        }
+      ],
+      "projection": "THEOREM_VALUE_ERASED_SUPPORT",
+      "registered_roots": [
+        {
+          "claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+          "external_boundary_count": 156,
+          "external_boundary_sha256": "16d27f77dddc3f35ea56eff4c7c9b7f345265b5fa11554f180fdb84f647913c8",
+          "local_dependency_count": 39,
+          "local_dependency_sha256": "db0906a93aa002b5473303edeed13558e69898cdc3e2e27000c0f941723f94f4",
+          "root_theorem": "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis"
+        },
+        {
+          "claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+          "external_boundary_count": 345,
+          "external_boundary_sha256": "f244c3b9036ffdec52cc4a3c03fece6b8ff616312ace05c499a8ae39109e15f2",
+          "local_dependency_count": 182,
+          "local_dependency_sha256": "68691d40a7d0a9a190506b289b140cb840498573f71e09e9ff15bbd62a741345",
+          "root_theorem": "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis"
+        },
+        {
+          "claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+          "external_boundary_count": 381,
+          "external_boundary_sha256": "f0cd5b8bfe1c2382631bf217b27a0c5eabcfa92e4a804f039ba69daad2c8cd0d",
+          "local_dependency_count": 283,
+          "local_dependency_sha256": "3ea43e273fe9ccea7952d9b298e9d0e92d9f098651aede1c2b194ba79f91f19b",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_offLine_zero"
+        },
+        {
+          "claim_id": "OBS_TIGHTMULT",
+          "external_boundary_count": 88,
+          "external_boundary_sha256": "31e669dc25e22bf2dc7ba8154b40c20521e85ce009b0661b25765548828c8ab0",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "9308cf34d8cf603ed88e79a5876efa2c6c25ea1c3314eeeb271bd2c7e011367d",
+          "root_theorem": "Zeta23.ZeroSide.TightMult.lemmaR_tight_two"
+        },
+        {
+          "claim_id": "R001_FILTERED_ZERO_POLE",
+          "external_boundary_count": 88,
+          "external_boundary_sha256": "0df5075a1d9db5a32ae9e73b24de0fdcdc49eba20612c301dbdc881555d6449b",
+          "local_dependency_count": 24,
+          "local_dependency_sha256": "f142d8790479aeaf6f30dfa34493a09dfa8b77b4d4099db3126aeb8d73abff8b",
+          "root_theorem": "Zeta23.ExceptionalZero.not_subexponential_filteredZeroFamily_of_right_zero"
+        },
+        {
+          "claim_id": "R001_PRIME_UPPER_EQUIV_RH",
+          "external_boundary_count": 114,
+          "external_boundary_sha256": "33e547b09a1ffad8939659cb92db7720650f3724f60a5333ad1f94f831fb4d2d",
+          "local_dependency_count": 26,
+          "local_dependency_sha256": "83add26b21c92af62613d3c7a85008c6faf668fda2589ab7ed02050dca3c496e",
+          "root_theorem": "Zeta23.ExceptionalZero.arithmeticSideSubexponential_iff_criticalLine"
+        },
+        {
+          "claim_id": "R001_WEIL_BRIDGE",
+          "external_boundary_count": 111,
+          "external_boundary_sha256": "27bc520844953bee71ef8bd15b6997378f88162743ed0efb92608b72e4ee009b",
+          "local_dependency_count": 30,
+          "local_dependency_sha256": "8b441f1ec704b16837abc52285dc4fd095c55d9bf3cca3ea7b10ba76f6443465",
+          "root_theorem": "Zeta23.ExceptionalZero.filteredZeroFamily_weilZeroFilter_eq_literatureRHS"
+        },
+        {
+          "claim_id": "R001_ZERO_GROWTH",
+          "external_boundary_count": 116,
+          "external_boundary_sha256": "5a4aee1bb9fe99d58795cdc1c84f18ecd240b630140ec961b5dd4699e35a1a0c",
+          "local_dependency_count": 24,
+          "local_dependency_sha256": "4ef243e283cd87651e1f77de42342cdc7d5f8634e6f15e8e650f413e9c7e5d35",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_poleKilled_test_not_subexponential_of_right_zero"
+        },
+        {
+          "claim_id": "R002_KERNEL_ZERO_SIDE_BRIDGE",
+          "external_boundary_count": 150,
+          "external_boundary_sha256": "412d97e2a243e489b9cc3b97f535d983502508d1e84d8b278c46c90c359da93d",
+          "local_dependency_count": 39,
+          "local_dependency_sha256": "4eaafe9f042865ce58f644a18232dab11f9c57d2bb79a121f13b40ad52d70434",
+          "root_theorem": "Zeta23.CCM.rawKernelZeroSideMatrix_eq_two_finiteMatrix_add_four_correction"
+        },
+        {
+          "claim_id": "R002_MULTI_PROBE_SEPARATION",
+          "external_boundary_count": 47,
+          "external_boundary_sha256": "a088144f9356197f15ec0b04fdc442a6660ee4fdf83310e3c5206d632dd12125",
+          "local_dependency_count": 2,
+          "local_dependency_sha256": "a45b541395d754d0d790e0c487830a1ac9493aa5aca1d5ccdb2c6dabfccfe23b",
+          "root_theorem": "Zeta23.ExceptionalZero.not_onLineCombination_of_pairBlock"
+        },
+        {
+          "claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+          "external_boundary_count": 70,
+          "external_boundary_sha256": "57a59e1d09bc492bdc62bb6a04b33cb9f29681c8c78820ee2641b2aa5bf1b1d9",
+          "local_dependency_count": 6,
+          "local_dependency_sha256": "fbf55620559da6dd1537bca1c7304babc7aa43429a28d583add60637edc8b2d5",
+          "root_theorem": "Zeta23.CCM.finrank_boundaryFlatSubspace"
+        },
+        {
+          "claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+          "external_boundary_count": 145,
+          "external_boundary_sha256": "a7a1b523353d153ab8f6a4d41ddeeee8c277322a73ee9acabcfa3d63413a8ed3",
+          "local_dependency_count": 51,
+          "local_dependency_sha256": "861b5b96a4076b65fa0bc6d4df29aa15fb60bb44657c1fa84a50d63126bbd594",
+          "root_theorem": "Zeta23.ExceptionalZero.zeta_W_boundaryFlatFiniteVector_eq_canonicalSourceQuadraticForm"
+        },
+        {
+          "claim_id": "R003_BOUNDARY_FLAT_MOMENT_FLAG",
+          "external_boundary_count": 43,
+          "external_boundary_sha256": "9f92add8ba3cf8584d249bc401ebd908b354a1f9306d5c4406df6007a6862dd8",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "4084644be2b7037945cb5cee36bdb1ea8077e5bab74c4a46fbd0b30ccea779f4",
+          "root_theorem": "Zeta23.CCM.boundaryFlat_moment_flag"
+        },
+        {
+          "claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+          "external_boundary_count": 54,
+          "external_boundary_sha256": "c7b8b04441cb72833178e3d376e05d94de05e3f3ac4b1e51c1d51fbbf9ae21d0",
+          "local_dependency_count": 13,
+          "local_dependency_sha256": "2287ccc535c81dad2a2957b0fd97a53298f03248411792b73e1dbacba5893236",
+          "root_theorem": "Zeta23.CCM.boundaryFlatProject_boundaryFlat"
+        },
+        {
+          "claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+          "external_boundary_count": 104,
+          "external_boundary_sha256": "21a98baf5f9d3099ab2c7419635f6877fc17e1066dad960c3cfac6ba7db7170a",
+          "local_dependency_count": 7,
+          "local_dependency_sha256": "c6206b63e62ac147540d35b33c99e16e751fe3ec7ad75141ef863b041ebab113",
+          "root_theorem": "Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx"
+        },
+        {
+          "claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+          "external_boundary_count": 98,
+          "external_boundary_sha256": "220e257257b93b649808153e64b68ebc8f45dcc751c8264cb9e7226030438292",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "298573c015c670d7ed0cad77ec869303acaa405d1d2f1f288cd2c85fbceae7d3",
+          "root_theorem": "Zeta23.CCM.quadraticForm_re_eq_re_inner_apply_self"
+        },
+        {
+          "claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+          "external_boundary_count": 148,
+          "external_boundary_sha256": "1e6efb91c1e9b3035983ee759d8d5d7765d14fb996e581329650dc2c211f8af1",
+          "local_dependency_count": 22,
+          "local_dependency_sha256": "36f9af18ffe6e1984c5940ce2fbe18e02666a3b1808702a733d5b1cb7ec9cbc8",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_toEuclideanLin_isSymmetric"
+        },
+        {
+          "claim_id": "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
+          "external_boundary_count": 152,
+          "external_boundary_sha256": "864c833776e229db53e8f15487a83e93714b16be6296016e49e87760ca2e3bec",
+          "local_dependency_count": 40,
+          "local_dependency_sha256": "25b91a3e6e0161f3210d58b3deb2f9b4fa8d09643678f31423c469246bb4e63d",
+          "root_theorem": "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget"
+        },
+        {
+          "claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+          "external_boundary_count": 93,
+          "external_boundary_sha256": "8f782c62b67673e8c38e561d7e929c409734130378e248a5bd453364fec486f6",
+          "local_dependency_count": 22,
+          "local_dependency_sha256": "36f9af18ffe6e1984c5940ce2fbe18e02666a3b1808702a733d5b1cb7ec9cbc8",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_isHermitian"
+        },
+        {
+          "claim_id": "R003_CCM_BRIDGE",
+          "external_boundary_count": 150,
+          "external_boundary_sha256": "412d97e2a243e489b9cc3b97f535d983502508d1e84d8b278c46c90c359da93d",
+          "local_dependency_count": 42,
+          "local_dependency_sha256": "bf2da2a2d4ca086b8bfa537ea900ecb2f82dff4e6444a07e7e5cf393b394ebf5",
+          "root_theorem": "Zeta23.CCM.zeroSideMatrix_eq_finiteMatrix_add_correction"
+        },
+        {
+          "claim_id": "R003_CCM_RHS_IDENTITY",
+          "external_boundary_count": 134,
+          "external_boundary_sha256": "974e90d833b25e682b6fe39f33591335fcdcc0c4f2ec20e3db5fb27230c97fe8",
+          "local_dependency_count": 37,
+          "local_dependency_sha256": "8b328e37a8a4260c520acfd9ce5bb6b476e88cadeb6ecfa9b4499700bd0de079",
+          "root_theorem": "Zeta23.CCM.literatureRHS_dictionaryTest_eq_quadraticForm"
+        },
+        {
+          "claim_id": "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
+          "external_boundary_count": 104,
+          "external_boundary_sha256": "0de5432ebe3bdfa2e8f14694246533b04ae6222b70a494439b410f4c8611bfcb",
+          "local_dependency_count": 36,
+          "local_dependency_sha256": "861d56ff6376e46d12efb2d5ce8cbd0f2a93f6e409782d88abb944def6b7a363",
+          "root_theorem": "Zeta23.CCM.boundaryFlat_canonical_displacement_package"
+        },
+        {
+          "claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+          "external_boundary_count": 110,
+          "external_boundary_sha256": "59ac4fd7f1e7b86f8e255909ce6cbe18d10cfbf3db9737e6463325ebe120a5c8",
+          "local_dependency_count": 14,
+          "local_dependency_sha256": "414f0584418febfcc4d28908b6b3f28851ca854734b3c3a21d2e554562478357",
+          "root_theorem": "Zeta23.CCM.finrank_euclideanEvenBoundaryFlatSubspace"
+        },
+        {
+          "claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+          "external_boundary_count": 97,
+          "external_boundary_sha256": "5ab89fe2e2970187fd092d055b8b03eee45a56389a5bfa33091000f6492fd584",
+          "local_dependency_count": 32,
+          "local_dependency_sha256": "dca6bec41ae1c872919b006fc1b97d44f4f310f984477a734de30943a7937bd8",
+          "root_theorem": "Zeta23.CCM.evenOddBoundaryFlatLinearEquiv"
+        },
+        {
+          "claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+          "external_boundary_count": 89,
+          "external_boundary_sha256": "5de88490a793fcb8ad75ca9afe42d6abba223ff3bedbf32cb4b38aae82cae146",
+          "local_dependency_count": 23,
+          "local_dependency_sha256": "1e9fc19e8eeb5019533c3ddd9b4997f25a439e71f9630850224108fe8263a90c",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_mulVec_reverseCoefficients"
+        },
+        {
+          "claim_id": "R003_CUTOFF_FREE_MATRIX_MAP",
+          "external_boundary_count": 140,
+          "external_boundary_sha256": "ba599c4d9c86f5160eac6ac0105a075dc9610c32f246dc7e7ffa652b0cf2fffd",
+          "local_dependency_count": 44,
+          "local_dependency_sha256": "5def9189af9719b7697230c6793d16cddbcd5a3336ec8e30d6ea786aa76391e9",
+          "root_theorem": "Zeta23.CCM.zeroSideMatrix_eq_cutoffFreeMatrix"
+        },
+        {
+          "claim_id": "R003_DISPLACEMENT_TRANSFER",
+          "external_boundary_count": 33,
+          "external_boundary_sha256": "76d25d059163be22eea337457a54904d9cb288210b6cf6d56dd5c5fd739b2ade",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "b46f6a3d6029f3b006c0417f1a52cab790596ba7a66b35d957024c491ed86ff3",
+          "root_theorem": "Zeta23.ExceptionalZero.rank_displacement_le_two_of_eq_smul_add_scalar"
+        },
+        {
+          "claim_id": "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+          "external_boundary_count": 107,
+          "external_boundary_sha256": "941adc1e654b19e813087f41ebb798634ef64afd348db7ac0a31904273edbcca",
+          "local_dependency_count": 8,
+          "local_dependency_sha256": "e424b41415574aae9cb150a8b3559c9a0d49eda69ce9bbcdcdcdf6d889fe0b28",
+          "root_theorem": "Zeta23.CCM.finrank_euclideanBoundaryFlatSubspace"
+        },
+        {
+          "claim_id": "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
+          "external_boundary_count": 226,
+          "external_boundary_sha256": "c7545fdbcb89b26902bbf272fd0cda4b21f7635f47a5d0df9060acff2027445d",
+          "local_dependency_count": 45,
+          "local_dependency_sha256": "e1c40152cb23159e57297f3327cb5db9df504f26104b9062cd2a1028e8f2b229",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+          "external_boundary_count": 136,
+          "external_boundary_sha256": "9eaeff14066201c77c75d984dd15f902e6304bd18b3da71e049f8214f0f94cce",
+          "local_dependency_count": 21,
+          "local_dependency_sha256": "d63acac00d4f0588b4cfca4b6464d6259f64c526ed5f4d1319f5d25167d33754",
+          "root_theorem": "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanBoundaryFlatSubspace"
+        },
+        {
+          "claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+          "external_boundary_count": 138,
+          "external_boundary_sha256": "c44fe391c186175a8ffa3626245fdc18a0d03f78c23d9bedb81acab5090c5fdd",
+          "local_dependency_count": 33,
+          "local_dependency_sha256": "d455b04a796f2655ccb186812541cf9a000916dd6d5db7b2245feae3e92b3648",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_displacement_mulVec_even_boundaryFlat"
+        },
+        {
+          "claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+          "external_boundary_count": 92,
+          "external_boundary_sha256": "260e6b1c8e812304d1c922c6d0115a360191cf96dfab09a361beb5cce5e5885b",
+          "local_dependency_count": 25,
+          "local_dependency_sha256": "9153c757efd93c1cb3b5c45f7ba3e7e3fab4d6ab736301943bd29d67ef88f20e",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_submatrix_centeredEmbedding"
+        },
+        {
+          "claim_id": "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+          "external_boundary_count": 131,
+          "external_boundary_sha256": "20f8fbd27370289569bf9af4285a0ee7b3727cddb8596b14ca57531b8c47dade",
+          "local_dependency_count": 41,
+          "local_dependency_sha256": "069100a63d8c5a0a461fb9a8dc0dbd43d9456d78aa4acc2a607f1c525d986991",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_boundaryFlat_negativeCanonicalSourceQuadraticForm_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+          "external_boundary_count": 273,
+          "external_boundary_sha256": "3ec5c980f424be6c2541858d54b12d347972b8ea26db61fde0691a773a2ce9a6",
+          "local_dependency_count": 73,
+          "local_dependency_sha256": "7a0bf06fb7dfe0b64a7e6fe014df6db20283707b6b1f7a8ca8933042f2e62f82",
+          "root_theorem": "Zeta23.CCM.negative_eigenmode_not_centeredImage"
+        },
+        {
+          "claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
+          "external_boundary_count": 296,
+          "external_boundary_sha256": "7833a2e3adcab745c00287c22f4b6418786d22c494f2a654f0fa0b5b9574b537",
+          "local_dependency_count": 91,
+          "local_dependency_sha256": "aa0cd1567c9d555dab74340b8db0c17f4607878c87ca14998cf5a38765dc8a5a",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_firstBadParity_negativeEigenmode_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
+          "external_boundary_count": 259,
+          "external_boundary_sha256": "d13b53fc0950fa3e928a0c693c2771dee3d8f44137ae770cc4ba590a49d75c3d",
+          "local_dependency_count": 79,
+          "local_dependency_sha256": "2c8d3d70e045e6b674be859953a145707edf8cc1b2eb12ef6f6fc42f6de34370",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_leastParityBad_oneDimShell_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
+          "external_boundary_count": 296,
+          "external_boundary_sha256": "7c4e0b390a5475776c67ec182a49e69f915670e7986c50479bf494a9499adb70",
+          "local_dependency_count": 99,
+          "local_dependency_sha256": "7b2e7152f9d33dfc570b4c39ab81b35d65f9d775bf6d3fce22ce57367f9d5937",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_firstBadParity_shell_KKT_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_FIRST_BAD_SHELL_PROJECTION",
+          "external_boundary_count": 274,
+          "external_boundary_sha256": "c3ac38649b700a4cb75b8458c22555598b846ac42c5309c7fe23b0575e86168a",
+          "local_dependency_count": 77,
+          "local_dependency_sha256": "f62c87aea1762a8bdf34e2869d36c33fa67313228d655868da23ef453b54a3fa",
+          "root_theorem": "Zeta23.CCM.negative_eigenmode_paritySuccShell_projection_ne_zero"
+        },
+        {
+          "claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
+          "external_boundary_count": 166,
+          "external_boundary_sha256": "01c09d3100edadcc5292bd2b84b80df718351d9b5881cfd1daed3368accfabb4",
+          "local_dependency_count": 60,
+          "local_dependency_sha256": "142ae5eac029b139933551a370f821b5be6b04923a78ffd1f08c46a99501cb6e",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_parityBad_tail_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+          "external_boundary_count": 365,
+          "external_boundary_sha256": "03d0ba820c7cf514e43183bceb139c4e4a89d87baf4de3750f9e8002b31bdf55",
+          "local_dependency_count": 257,
+          "local_dependency_sha256": "6737aa38f84398331ef2b882f4c2f882a5b7d9ca8ea6a172e433363c8d2eaddb",
+          "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.exists_branchPackage"
+        },
+        {
+          "claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+          "external_boundary_count": 348,
+          "external_boundary_sha256": "54c4077deaa98eb76cafae13e8d640ce8f71f275d43c164852810266dcaf6d8f",
+          "local_dependency_count": 195,
+          "local_dependency_sha256": "4ef9f47d16d73d98dc630a98511b830950884344a3d2364faae3b5c852f2e268",
+          "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.groundTrial_eigenmode"
+        },
+        {
+          "claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+          "external_boundary_count": 347,
+          "external_boundary_sha256": "e1afff6756d52770287687460c08c2c71a1dba1ff0c89e6e37d29d2a8116652b",
+          "local_dependency_count": 201,
+          "local_dependency_sha256": "ddf82ea15e0a2b081b260e011334295c71fb9f353dccdc393c45aa08423d4867",
+          "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral"
+        },
+        {
+          "claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+          "external_boundary_count": 264,
+          "external_boundary_sha256": "5e3bc867d3341ef6133f7d85c6308c0e48bf6e8c9fe9871a918e25c04df93e0c",
+          "local_dependency_count": 66,
+          "local_dependency_sha256": "fc04023a47281c9820552605a53675059f392fc908b06284ef56623a269319b2",
+          "root_theorem": "Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad"
+        },
+        {
+          "claim_id": "R003_KERNEL_EF_EXTENSION",
+          "external_boundary_count": 121,
+          "external_boundary_sha256": "100283ed2cb765d03c6bfc372c301ba221382b2f247324c7c1df771a8cfc8b0d",
+          "local_dependency_count": 35,
+          "local_dependency_sha256": "71415f900e8feeaa546da695efb6212ee2468c03b0ebe8404b7dbd9e6f3a1901",
+          "root_theorem": "Zeta23.CCM.dictionaryTransform_zero_sum_eq_literatureRHS"
+        },
+        {
+          "claim_id": "R003_LEAST_PARITY_BAD_SHELL",
+          "external_boundary_count": 152,
+          "external_boundary_sha256": "0ca78d2ca5efc4d22dfb3d11f6c5f21c0863f7644af115f4e9fb774cd005071d",
+          "local_dependency_count": 39,
+          "local_dependency_sha256": "683bc3ca324dae934891763e39a8da04b2aae115589598e4999b0f9b897e205a",
+          "root_theorem": "Zeta23.CCM.finrank_euclideanParitySuccShell"
+        },
+        {
+          "claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+          "external_boundary_count": 145,
+          "external_boundary_sha256": "7174aac08c457fe99dec2a1c07e0be5970c5b6a22c15a96e6c69c9eca90d4088",
+          "local_dependency_count": 39,
+          "local_dependency_sha256": "1b846bdb6203b048d2c6393246b164154dd71f3729e13beca3315788dd19c621",
+          "root_theorem": "Zeta23.CCM.localizedWeilAdditiveRHS_finiteVector_eq_cutoffFreeQuadraticForm"
+        },
+        {
+          "claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+          "external_boundary_count": 46,
+          "external_boundary_sha256": "55f1b85a78860cfa6ec447fcd7507d5738c55f871455eb45b2d239dd73db1851",
+          "local_dependency_count": 4,
+          "local_dependency_sha256": "5cc785a9b0161fdde2d02a6886a5735d2645850a192034687ad6fe98ce8f7591",
+          "root_theorem": "Zeta23.CCM.hardWindowCharacterCorrelation_eq_qBasis"
+        },
+        {
+          "claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+          "external_boundary_count": 115,
+          "external_boundary_sha256": "a00fc0d1bf9327857c1c598db62f48b68bed815c9c8982b6af2e627ce41a3dad",
+          "local_dependency_count": 21,
+          "local_dependency_sha256": "0d4cd0705554e902b8bbbb4f59a15a8e2a569c53b3760f46ed8b9fa5a15b54ae",
+          "root_theorem": "Zeta23.CCM.localizedWeilCorrelation_finiteVector_eq_two_mul_dictionaryTest"
+        },
+        {
+          "claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+          "external_boundary_count": 100,
+          "external_boundary_sha256": "a320d8251628d149ef801244ef3e43716dd8666ce7ce701aeb40c6da0ddd63af",
+          "local_dependency_count": 9,
+          "local_dependency_sha256": "dd380ab89044c4807846fc6f4504448aea038bb5fa2c410a36e3ba1de9e3ff80",
+          "root_theorem": "Zeta23.CCM.exists_localizedFinite_uniform_C2_approx"
+        },
+        {
+          "claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+          "external_boundary_count": 102,
+          "external_boundary_sha256": "8f82436bcf62f648702ba3a3fabdda1bc3cb5aab3747f6c403aed3fcb52e757b",
+          "local_dependency_count": 22,
+          "local_dependency_sha256": "5ef2f9b5228ab2e3b8526ab79d48614cb7133c3eb49548fe2b07e3cc04dc4950",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_poleNeutral_negativeWeilTest_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
+          "external_boundary_count": 226,
+          "external_boundary_sha256": "c7545fdbcb89b26902bbf272fd0cda4b21f7635f47a5d0df9060acff2027445d",
+          "local_dependency_count": 45,
+          "local_dependency_sha256": "e1c40152cb23159e57297f3327cb5db9df504f26104b9062cd2a1028e8f2b229",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+          "external_boundary_count": 248,
+          "external_boundary_sha256": "8875470c233ff8b7d95751356bab590508accf0cc02ede542492d31354175c06",
+          "local_dependency_count": 63,
+          "local_dependency_sha256": "681b8671057e36cc7ee7b0ff6365e4e95b7ddfa5560e6ae1e0cb4ce0816f1e62",
+          "root_theorem": "Zeta23.CCM.exists_negative_eigenmode_of_parityBad"
+        },
+        {
+          "claim_id": "R003_PARITY_BAD_NFLOW",
+          "external_boundary_count": 142,
+          "external_boundary_sha256": "002d20554a48371bfb698787c3f9c85bf3ae40bda70ccb3384dd1d11142c01d2",
+          "local_dependency_count": 44,
+          "local_dependency_sha256": "45bd92145545bd980fcf4b9669d31e4ce0b1ca5458a6e38a279b83711394e070",
+          "root_theorem": "Zeta23.CCM.parityBad_persists_of_le"
+        },
+        {
+          "claim_id": "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
+          "external_boundary_count": 254,
+          "external_boundary_sha256": "d6693758df52f06c45553f552c917e4568c402a4e13a39061d3eb2040ec10c0c",
+          "local_dependency_count": 80,
+          "local_dependency_sha256": "db8095455bd9a5aac5f1b9fdc09f3541c6287bb85c0abf9c7769abd585784d01",
+          "root_theorem": "Zeta23.CCM.finrank_range_conjugatedParityCompressionDefect_le_one"
+        },
+        {
+          "claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+          "external_boundary_count": 230,
+          "external_boundary_sha256": "3631da50c5646e360f3c19550a6e882e999b38c8f57e6192c50a867a10577053",
+          "local_dependency_count": 60,
+          "local_dependency_sha256": "dcb0de11f318cdb86d6ee40597039c0ee4c7bb957f67112aad6dbc4d3e585d7c",
+          "root_theorem": "Zeta23.CCM.parityCompressedCanonical_isSymmetric"
+        },
+        {
+          "claim_id": "R003_PARITY_NORMAL_KKT",
+          "external_boundary_count": 238,
+          "external_boundary_sha256": "1970d29cd6a49848623272b30f71b04364511b8e9d35b0682b58aa5abfa73bd7",
+          "local_dependency_count": 66,
+          "local_dependency_sha256": "692a9bfa6d2fcb487db2a7981f4a613f4af3da6152c7cf9ac9ddf10990bf88c8",
+          "root_theorem": "Zeta23.CCM.parityKKTResidual_of_eigenmode"
+        },
+        {
+          "claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+          "external_boundary_count": 139,
+          "external_boundary_sha256": "e1b7de103ca3bf57ee5e30ee1bfaffb4fba7ce966a1535c7e29313662823c320",
+          "local_dependency_count": 27,
+          "local_dependency_sha256": "0a31f5be3d1300e2f91f36dec46f9f37736958fad48920e9bdd41dc9b066f2ef",
+          "root_theorem": "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanOddBoundaryFlatSubspace"
+        },
+        {
+          "claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+          "external_boundary_count": 100,
+          "external_boundary_sha256": "06be768b7967b51099d7123272ef5c1319015c88236fb84ad83bc4f4b6cdd74f",
+          "local_dependency_count": 26,
+          "local_dependency_sha256": "318c69766e92d49fdfcc302c2362fb90882d73b4bd09ca9b41871dfecac4ed30",
+          "root_theorem": "Zeta23.CCM.quadraticForm_evenPart_add_oddPart"
+        },
+        {
+          "claim_id": "R003_RESIDUAL_C2",
+          "external_boundary_count": 79,
+          "external_boundary_sha256": "edbaf5acac2739934291f0f4cdaab12c6a11186ea892acbd4058045cadc4991d",
+          "local_dependency_count": 11,
+          "local_dependency_sha256": "e067d8abcb25781bf7a2bde8ddb1cfc25c2da031c321a4dd9807024636868434",
+          "root_theorem": "Zeta23.CCM.dictionaryResidualTest_admissible"
+        },
+        {
+          "claim_id": "R003_SOURCE_KAPPA_FINITE_SECTOR",
+          "external_boundary_count": 51,
+          "external_boundary_sha256": "a7b0d718d6363dfeaf8084316249023c7f78a2402f9ba56f9d82418db7e0a6af",
+          "local_dependency_count": 12,
+          "local_dependency_sha256": "c40fbd40698f00e178e5f3257b7ee92db66edbbc5265d936030eebcfc243944d",
+          "root_theorem": "Zeta23.CCM.sourceKappaFiniteVector_eq_sourceFiniteVector"
+        },
+        {
+          "claim_id": "R003_SOURCE_NORMALIZATION_REPAIR",
+          "external_boundary_count": 95,
+          "external_boundary_sha256": "d128270c527d07feca4f8d5ae63c78351a86b560d3e560bc735a3ea90e88ee6b",
+          "local_dependency_count": 27,
+          "local_dependency_sha256": "6dbb79e57b511ed12ea1d273df9c5af1abfbc8b74d917298064b51b704f511a8",
+          "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_eq_legacyPrintedMatrix_add_correction"
+        },
+        {
+          "claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+          "external_boundary_count": 82,
+          "external_boundary_sha256": "59e3c7f7e1710d9f8414cda2d9d33e532436c617ba714a715f703cafc2cb50f5",
+          "local_dependency_count": 28,
+          "local_dependency_sha256": "55cbd5868a7bda0e1c94bc33cba1cbb8f147205dac82d3e95e18fea798b26bbe",
+          "root_theorem": "Zeta23.CCM.sourceEq44Matrix_eq_cutoffFreeMatrix"
+        },
+        {
+          "claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+          "external_boundary_count": 137,
+          "external_boundary_sha256": "25bdbc5446fcf636e103729543163c4533912c4c94348c7b3d58317d771efc7d",
+          "local_dependency_count": 29,
+          "local_dependency_sha256": "f42ba1bcdc14e80eb02c279b9036443aebf0a3630eb7586ef0165818f295d6d3",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeLocalizedWeilAdditiveRHS_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+          "external_boundary_count": 107,
+          "external_boundary_sha256": "3c95fb21a68e51391a5030c95dfe75b81aa5997624969210ff58819d4b4b827e",
+          "local_dependency_count": 22,
+          "local_dependency_sha256": "5ef2f9b5228ab2e3b8526ab79d48614cb7133c3eb49548fe2b07e3cc04dc4950",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_strictAperture_poleNeutral_negativeWeilTest_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+          "external_boundary_count": 126,
+          "external_boundary_sha256": "7d7b6a06ab8f36348626882053c4eedece5bd7b42c4cf327c8976d92d1c51119",
+          "local_dependency_count": 29,
+          "local_dependency_sha256": "f664506479f682d7f252fceee6979f9837bbb71ad337c8e8f8fa19b25bacea7e",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_boundaryFlatFinite_negativeW_of_strictAperture"
+        },
+        {
+          "claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+          "external_boundary_count": 223,
+          "external_boundary_sha256": "dbb56296bf11fe608ac85408f8e620ddb7da7d85ea3def9d7d1be3227bbbce0f",
+          "local_dependency_count": 58,
+          "local_dependency_sha256": "b7791a97307308683fc0614256bba2a36872538c0ae775c724c0bdf0a8d3abc4",
+          "root_theorem": "Zeta23.CCM.re_inner_successor_nonnegative_on_centeredImage"
+        },
+        {
+          "claim_id": "R003_TENT_ANALYTICS",
+          "external_boundary_count": 108,
+          "external_boundary_sha256": "ed269fc3c4fced098413b58444789ea0b3234d3b77d485bbc3afce523fb71a68",
+          "local_dependency_count": 20,
+          "local_dependency_sha256": "7bc450bf241457ee95871ab3c0c988d6dab19accb1338d5f7d2afe73b513d6f6",
+          "root_theorem": "Zeta23.CCM.dictionaryTent_analytic_package"
+        },
+        {
+          "claim_id": "R003_TENT_EF_EXTENSION",
+          "external_boundary_count": 104,
+          "external_boundary_sha256": "4373ca0c0d6ae220c0e8abb773158f741f0d3be3a4610b1094bf4fa6c31069e4",
+          "local_dependency_count": 24,
+          "local_dependency_sha256": "c48f7eee267cc70bb4577372a0fe88de5cd4da020e2f68374b88023ff3838854",
+          "root_theorem": "Zeta23.CCM.dictionaryTent_explicitFormula"
+        },
+        {
+          "claim_id": "R003_TENT_MOLLIFIER_ARCHITECTURE",
+          "external_boundary_count": 112,
+          "external_boundary_sha256": "888b4e07e77e5a0e03f26e51f47d45f4d288994d9252f8b53b8beee03bcd1e30",
+          "local_dependency_count": 15,
+          "local_dependency_sha256": "173c569b25824fab943f061be531264565a4afbd6a34a15908455b7a1ceacf1d",
+          "root_theorem": "Zeta23.CCM.dictionaryTent_mollifier_architecture_package"
+        },
+        {
+          "claim_id": "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION",
+          "external_boundary_count": 162,
+          "external_boundary_sha256": "98e5715027be48a8d0d0aaf6a82ea51d963932cfa73dc17ca2fcf105f8b5896e",
+          "local_dependency_count": 44,
+          "local_dependency_sha256": "b9d6526dbfc2d99d601d1193ecac8a46faf5697f12d2d6c876783122c2c66dd6",
+          "root_theorem": "Zeta23.ExceptionalZero.exists_unit_mem_boundaryFlatSubspace_negativeCanonicalSourceQuadraticForm_of_offLine_zero"
+        },
+        {
+          "claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+          "external_boundary_count": 121,
+          "external_boundary_sha256": "f15d23bf7b57172a53e0a0f7403e7f8d4c00e07534c7d5f59420c4ef82a06a32",
+          "local_dependency_count": 23,
+          "local_dependency_sha256": "1c1b66a38e818c802fe98d983be7a62fea5b421622dd25ca65cf7e5a178d43c3",
+          "root_theorem": "Zeta23.ExceptionalZero.zeta_W_norm_le_commonSupport"
+        },
+        {
+          "claim_id": "R003_WEIL_DISPLACEMENT",
+          "external_boundary_count": 113,
+          "external_boundary_sha256": "f78b0ba4e0ec460d98546be96a4bf379e2eb35616530dd560f4f52511afd3a9a",
+          "local_dependency_count": 27,
+          "local_dependency_sha256": "980c3d0d8efc47085a3ff2f7b9cc3f547e19ddfa1f019d18c64de44e05dfc94e",
+          "root_theorem": "Zeta23.CCM.rank_zeroSideMatrix_displacement_le_two"
+        },
+        {
+          "claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+          "external_boundary_count": 130,
+          "external_boundary_sha256": "364df3ed8925e970d9b6428c1bee86ddd7367a057c7e6e94a5881bcf0c4782de",
+          "local_dependency_count": 34,
+          "local_dependency_sha256": "631b0391c381f01b563ccd595a6d804290678dfcac45f3bc56b94ff9fd211b97",
+          "root_theorem": "Zeta23.ExceptionalZero.zeta_W_self_eq_localizedWeilAdditiveRHS"
+        },
+        {
+          "claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+          "external_boundary_count": 132,
+          "external_boundary_sha256": "84c6b5dd9bd35d71f93207a670f2632a68c3cfadf8875962499c017f8449c2e6",
+          "local_dependency_count": 30,
+          "local_dependency_sha256": "03aa294e15e18d572001a7b606ba6c76164d0223b1ca5549741c868d9d7af497",
+          "root_theorem": "Zeta23.ExceptionalZero.zeta_W_literatureRHS_package"
+        },
+        {
+          "claim_id": "R004_CCM_DISPLACEMENT_FORMAL",
+          "external_boundary_count": 98,
+          "external_boundary_sha256": "594b1854b84b462fef56d1911ae428d270c6d579f2f8cba2ccd574f53fcd5c65",
+          "local_dependency_count": 23,
+          "local_dependency_sha256": "c9de70c70c90dd78a6f178f4c5194b77ea64a5c345fa42c674cdd2eaa6f99495",
+          "root_theorem": "Zeta23.CCM.rank_canonicalSourceMatrix_displacement_le_two"
+        }
+      ]
+    }
+  ],
+  "schema_version": "RHKG-phase2e-dependency-projection-summary-0.7",
+  "terminal_claim": "RH_OPEN"
+}

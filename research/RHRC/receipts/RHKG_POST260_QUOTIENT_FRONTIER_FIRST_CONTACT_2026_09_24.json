@@ -1,0 +1,67 @@
+{
+  "schema_version": "RHKG-post260-quotient-frontier-first-contact-1.0",
+  "status": "FROZEN_RESEARCH_RECEIPT",
+  "source": {
+    "pull_request": 260,
+    "merge_commit": "7893126bb3b3291e37faf5ea0f8d8e3fa78cf882",
+    "merge_tree": "ee0794c12da199bc4079499987c34a6deee624ed",
+    "final_head": "91d8ea51409c4dc264a0a1a79493b39323d4fa10",
+    "workflow_disposition": "FULLY_GREEN_FINAL_HEAD",
+    "completed_check_count": 14,
+    "successful_check_count": 14,
+    "generated_product_blobs": {
+      "theorem_dependency_closure": "0dc8cc7b284f83276a02bbbb1a69d56c894bd9d0",
+      "dependency_cohort_atoms": "f01aebc712170ddbbb9b05fc28d621f04def4f5c",
+      "dependency_kernel_quotient": "95e7a756fab4e9871e2e91b020794b3d4b2d7ea0",
+      "dependency_bridge_frontiers": "cc4dbb74b446d1b1b5e54a8b7cc8aa4d3b6076b6"
+    }
+  },
+  "authority": {
+    "theorem_authority": false,
+    "research_only": true,
+    "terminal_claim": "RH_OPEN",
+    "graph_theorem_promotion": false
+  },
+  "rh_equivalence_surface": {
+    "claim_ids": [
+      "R001_PRIME_UPPER_EQUIV_RH",
+      "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+      "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE"
+    ],
+    "local_dependency_union_count": 2224,
+    "venn_atoms": {
+      "A_only": 12,
+      "B_only": 78,
+      "C_only": 72,
+      "AB_only": 0,
+      "AC_only": 0,
+      "BC_only": 1463,
+      "ABC": 599
+    },
+    "cross_atom_edge_count": 1026,
+    "allowed_transitions": [
+      "A->ABC",
+      "B->ABC",
+      "B->BC",
+      "BC->ABC",
+      "C->ABC",
+      "C->BC"
+    ]
+  },
+  "active_arithmetic_containment": {
+    "left_claim_id": "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
+    "left_count": 224,
+    "right_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+    "right_count": 2659,
+    "relation": "LEFT_STRICT_SUBSET",
+    "right_only_count": 2435,
+    "cross_region_edge_count": 972,
+    "eligible_cross_region_edge_count": 949
+  },
+  "interpretation": [
+    "All counts are exact properties of the frozen PR #260 compiler-derived dependency quotient and frontier views.",
+    "The raw implementation-level frontier is broad; this does not establish or refute a smaller theorem-value-erased support interface.",
+    "Dependency atoms, frontier edges, and set containment do not imply theorem equivalence, logical implication, or mathematical sufficiency.",
+    "RH remained OPEN at the frozen source state."
+  ]
+}

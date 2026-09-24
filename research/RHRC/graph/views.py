@@ -46,7 +46,7 @@ def coverage_view(
     local_deps = [d for d in lean_declarations if d["graph_role"] == "LOCAL_DEPENDENCY"]
     external_deps = [d for d in lean_declarations if d["graph_role"] == "EXTERNAL_BOUNDARY"]
     return {
-        "schema_version": "RHKG-phase2d-coverage-0.6",
+        "schema_version": "RHKG-phase2e-coverage-0.7",
         "tracked_file_count": len(repo_files),
         "subject_file_count": sum(not row["generated_product"] for row in repo_files),
         "generated_product_count": sum(row["generated_product"] for row in repo_files),
@@ -811,9 +811,319 @@ def dependency_kernel_quotient_view(atoms_view: dict) -> dict:
     }
 
 
+DEPENDENCY_PROJECTIONS = (
+    "ANY",
+    "TYPE_ONLY",
+    "VALUE_ONLY",
+    "THEOREM_VALUE_ERASED_SUPPORT",
+)
+
+
+def dependency_edge_allowed(source_row: dict, dep: dict, projection: str) -> bool:
+    if projection not in DEPENDENCY_PROJECTIONS:
+        raise ValueError(f"unknown dependency projection: {projection}")
+    if projection == "ANY":
+        return True
+    if projection == "TYPE_ONLY":
+        return bool(dep["used_in_type"])
+    if projection == "VALUE_ONLY":
+        return bool(dep["used_in_value"])
+    # THEOREM_VALUE_ERASED_SUPPORT removes VALUE-only traversal out of theorem
+    # declarations while preserving declaration types, structural relations, and
+    # definitional bodies. It is a compiler-support projection, not a logical or
+    # mathematical dependency relation.
+    return bool(
+        dep["used_in_type"]
+        or dep["used_in_structure"]
+        or (
+            source_row["declaration_kind"] != "THEOREM"
+            and dep["used_in_value"]
+        )
+    )
+
+
+def dependency_projection_closure_entry(
+    compiler_receipt: list[dict],
+    root: str,
+    projection: str,
+) -> dict:
+    row_by_name = {row["declaration"]: row for row in compiler_receipt}
+    if root not in row_by_name:
+        raise ValueError(f"unknown dependency root: {root}")
+    if row_by_name[root]["repository_scope"] != "LOCAL":
+        raise ValueError(f"dependency root is not project-local: {root}")
+
+    direct_local: list[str] = []
+    direct_external: list[str] = []
+    for dep in row_by_name[root]["dependencies"]:
+        if not dependency_edge_allowed(row_by_name[root], dep, projection):
+            continue
+        target = dep["constant"]
+        if row_by_name[target]["repository_scope"] == "LOCAL":
+            direct_local.append(target)
+        else:
+            direct_external.append(target)
+
+    depths: dict[str, int] = {root: 0}
+    external: set[str] = set(direct_external)
+    queue: deque[str] = deque([root])
+    while queue:
+        current = queue.popleft()
+        current_row = row_by_name[current]
+        depth = depths[current]
+        for dep in current_row["dependencies"]:
+            if not dependency_edge_allowed(current_row, dep, projection):
+                continue
+            target = dep["constant"]
+            target_row = row_by_name[target]
+            if target_row["repository_scope"] == "EXTERNAL":
+                external.add(target)
+                continue
+            if target not in depths:
+                depths[target] = depth + 1
+                queue.append(target)
+
+    return {
+        "root_theorem": root,
+        "projection": projection,
+        "direct_local_dependencies": sorted(set(direct_local)),
+        "transitive_local_dependencies": sorted(name for name in depths if name != root),
+        "direct_external_boundaries": sorted(set(direct_external)),
+        "transitive_external_boundaries": sorted(external),
+        "minimum_local_depth": {
+            name: depths[name] for name in sorted(depths) if name != root
+        },
+    }
+
+
+def dependency_projection_closure_view(
+    compiler_receipt: list[dict],
+    binding_data: dict,
+    projection: str,
+) -> dict:
+    entries = []
+    for binding in sorted(binding_data["bindings"], key=lambda row: row["id"]):
+        row = dependency_projection_closure_entry(
+            compiler_receipt, binding["theorem"], projection
+        )
+        row["claim_id"] = binding["id"]
+        entries.append(row)
+    return {
+        "projection": projection,
+        "entries": entries,
+        "terminal_claim": "RH_OPEN",
+        "graph_theorem_promotion": False,
+    }
+
+
+def _set_relation(left: set[str], right: set[str]) -> str:
+    if left == right:
+        return "EQUAL"
+    if left < right:
+        return "LEFT_STRICT_SUBSET"
+    if right < left:
+        return "RIGHT_STRICT_SUBSET"
+    return "INCOMPARABLE"
+
+
+def dependency_projection_summary_view(
+    compiler_receipt: list[dict],
+    binding_data: dict,
+    cohorts: list[dict],
+) -> dict:
+    projection_rows = []
+    for projection in DEPENDENCY_PROJECTIONS:
+        closure = dependency_projection_closure_view(
+            compiler_receipt, binding_data, projection
+        )
+        by_claim = {row["claim_id"]: row for row in closure["entries"]}
+        root_rows = []
+        for binding in sorted(binding_data["bindings"], key=lambda row: row["id"]):
+            entry = by_claim[binding["id"]]
+            local = set(entry["transitive_local_dependencies"])
+            external = set(entry["transitive_external_boundaries"])
+            root_rows.append(
+                {
+                    "claim_id": binding["id"],
+                    "root_theorem": binding["theorem"],
+                    "local_dependency_count": len(local),
+                    "local_dependency_sha256": _sha256_names(local),
+                    "external_boundary_count": len(external),
+                    "external_boundary_sha256": _sha256_names(external),
+                }
+            )
+
+        cohort_rows = []
+        for cohort in sorted(cohorts, key=lambda row: row["cohort_id"]):
+            sets = [
+                set(by_claim[claim_id]["transitive_local_dependencies"])
+                for claim_id in cohort["claim_ids"]
+            ]
+            union = set().union(*sets)
+            intersection = set(sets[0])
+            for current in sets[1:]:
+                intersection &= current
+            cohort_rows.append(
+                {
+                    "cohort_id": cohort["cohort_id"],
+                    "claim_ids": cohort["claim_ids"],
+                    "union_count": len(union),
+                    "union_sha256": _sha256_names(union),
+                    "intersection_count": len(intersection),
+                    "intersection_sha256": _sha256_names(intersection),
+                }
+            )
+        projection_rows.append(
+            {
+                "projection": projection,
+                "registered_roots": root_rows,
+                "cohorts": cohort_rows,
+            }
+        )
+
+    return {
+        "schema_version": "RHKG-phase2e-dependency-projection-summary-0.7",
+        "projections": projection_rows,
+        "projection_semantics": {
+            "ANY": "Follow every compiler USES_CONSTANT edge.",
+            "TYPE_ONLY": "Follow only edges with used_in_type=true.",
+            "VALUE_ONLY": "Follow only edges with used_in_value=true.",
+            "THEOREM_VALUE_ERASED_SUPPORT": (
+                "Follow TYPE and STRUCTURE edges from every declaration and VALUE "
+                "edges only when the source declaration kind is not THEOREM."
+            ),
+        },
+        "interpretation": (
+            "These are compiler-support projections over the sealed dependency receipt. "
+            "They are not logical dependency, theorem equivalence, mathematical necessity, "
+            "or claim promotion."
+        ),
+        "terminal_claim": "RH_OPEN",
+        "graph_theorem_promotion": False,
+    }
+
+
+def _projection_atoms(
+    lean_declarations: list[dict],
+    closure_by_label: dict[str, set[str]],
+    members: list[dict],
+    projection: str,
+) -> dict:
+    declaration_by_name = {row["declaration"]: row for row in lean_declarations}
+    all_labels = [row["label"] for row in members]
+    union = set().union(*(closure_by_label[label] for label in all_labels))
+    atom_signatures = [
+        "".join(combo)
+        for size in range(1, len(all_labels) + 1)
+        for combo in combinations(all_labels, size)
+    ]
+    atoms: dict[str, list[str]] = {signature: [] for signature in atom_signatures}
+    declaration_atom: dict[str, str] = {}
+    for declaration in sorted(union):
+        signature = "".join(
+            label for label in all_labels if declaration in closure_by_label[label]
+        )
+        if not signature:
+            raise ValueError(
+                f"projection quotient declaration has empty atom: {declaration}"
+            )
+        atoms[signature].append(declaration)
+        declaration_atom[declaration] = signature
+
+    atom_rows = []
+    for signature in atom_signatures:
+        declarations = atoms[signature]
+        module_counts = Counter(
+            declaration_by_name[name]["module"] for name in declarations
+        )
+        kind_counts = Counter(
+            declaration_by_name[name]["declaration_kind"] for name in declarations
+        )
+        role_counts = Counter(
+            declaration_by_name[name]["graph_role"] for name in declarations
+        )
+        private_count = sum(
+            bool(declaration_by_name[name]["private_or_internal"])
+            for name in declarations
+        )
+        atom_rows.append(
+            {
+                "signature": signature,
+                "member_labels": [label for label in all_labels if label in signature],
+                "count": len(declarations),
+                "sha256": _sha256_names(declarations),
+                "declarations": declarations,
+                "module_counts": dict(sorted(module_counts.items())),
+                "declaration_kind_counts": dict(sorted(kind_counts.items())),
+                "graph_role_counts": dict(sorted(role_counts.items())),
+                "private_or_internal_count": private_count,
+                "public_count": len(declarations) - private_count,
+                "registered_root_count": sum(
+                    declaration_by_name[name]["graph_role"] == "REGISTERED_CLAIM_ROOT"
+                    for name in declarations
+                ),
+            }
+        )
+    return {
+        "projection": projection,
+        "union_count": len(union),
+        "union_sha256": _sha256_names(union),
+        "atoms": atom_rows,
+        "declaration_atoms": [
+            {"declaration": name, "signature": declaration_atom[name]}
+            for name in sorted(declaration_atom)
+        ],
+    }
+
+
+def dependency_projection_quotients_view(
+    compiler_receipt: list[dict],
+    lean_declarations: list[dict],
+    binding_data: dict,
+    quotient: dict,
+) -> dict:
+    binding_by_id = {row["id"]: row for row in binding_data["bindings"]}
+    rows = []
+    for projection in DEPENDENCY_PROJECTIONS:
+        closure_by_label: dict[str, set[str]] = {}
+        for member in quotient["members"]:
+            root = binding_by_id[member["claim_id"]]["theorem"]
+            entry = dependency_projection_closure_entry(
+                compiler_receipt, root, projection
+            )
+            closure = set(entry["transitive_local_dependencies"])
+            if root in closure:
+                raise ValueError(
+                    f"root-including projection closure drift for {member['claim_id']}"
+                )
+            closure_by_label[member["label"]] = closure
+        rows.append(
+            _projection_atoms(
+                lean_declarations,
+                closure_by_label,
+                quotient["members"],
+                projection,
+            )
+        )
+    return {
+        "schema_version": "RHKG-phase2e-dependency-projection-quotients-0.7",
+        "target_cohort_id": quotient["target_cohort_id"],
+        "members": quotient["members"],
+        "projections": rows,
+        "interpretation": (
+            "Projection atoms are exact set partitions of compiler-derived project-local "
+            "support closures. Projection membership is not a logical class and does not "
+            "establish theorem equivalence or mathematical necessity."
+        ),
+        "terminal_claim": "RH_OPEN",
+        "graph_theorem_promotion": False,
+    }
+
+
 def _cross_atom_edges(
     compiler_receipt: list[dict],
     declaration_atom: dict[str, str],
+    projection: str = "ANY",
 ) -> list[dict]:
     row_by_name = {row["declaration"]: row for row in compiler_receipt}
     edges: list[dict] = []
@@ -822,6 +1132,8 @@ def _cross_atom_edges(
         if source_row["repository_scope"] != "LOCAL" or source not in declaration_atom:
             continue
         for dep in source_row["dependencies"]:
+            if not dependency_edge_allowed(source_row, dep, projection):
+                continue
             target = dep["constant"]
             target_row = row_by_name[target]
             if target_row["repository_scope"] != "LOCAL":
@@ -861,6 +1173,131 @@ def _cross_atom_edges(
             row["target"],
         ),
     )
+
+
+
+def _transition_frontier_rows(edges: list[dict]) -> list[dict]:
+    rows = []
+    for transition in sorted({row["transition"] for row in edges}):
+        group = [row for row in edges if row["transition"] == transition]
+        eligible = [row for row in group if row["bridge_candidate_eligible"]]
+        rows.append(
+            {
+                "transition": transition,
+                "edge_count": len(group),
+                "eligible_edge_count": len(eligible),
+                "source_declarations": sorted({row["source"] for row in group}),
+                "target_declarations": sorted({row["target"] for row in group}),
+                "eligible_source_declarations": sorted(
+                    {row["source"] for row in eligible}
+                ),
+                "eligible_target_declarations": sorted(
+                    {row["target"] for row in eligible}
+                ),
+            }
+        )
+    return rows
+
+
+def dependency_projection_frontiers_view(
+    compiler_receipt: list[dict],
+    binding_data: dict,
+    quotient: dict,
+    projection_quotients: dict,
+) -> dict:
+    binding_by_id = {row["id"]: row for row in binding_data["bindings"]}
+    quotient_by_projection = {
+        row["projection"]: row for row in projection_quotients["projections"]
+    }
+    left_id = quotient["containment_probe"]["subset_claim_id"]
+    right_id = quotient["containment_probe"]["superset_claim_id"]
+    rows = []
+
+    for projection in DEPENDENCY_PROJECTIONS:
+        atoms = quotient_by_projection[projection]
+        declaration_atom = {
+            row["declaration"]: row["signature"]
+            for row in atoms["declaration_atoms"]
+        }
+        cross_edges = _cross_atom_edges(
+            compiler_receipt, declaration_atom, projection=projection
+        )
+
+        left_root = binding_by_id[left_id]["theorem"]
+        right_root = binding_by_id[right_id]["theorem"]
+        left = set(
+            dependency_projection_closure_entry(
+                compiler_receipt, left_root, projection
+            )["transitive_local_dependencies"]
+        )
+        right = set(
+            dependency_projection_closure_entry(
+                compiler_receipt, right_root, projection
+            )["transitive_local_dependencies"]
+        )
+        shared = left & right
+        left_only = left - right
+        right_only = right - left
+        pair_atom = {}
+        for name in sorted(left | right):
+            if name in shared:
+                pair_atom[name] = "SHARED"
+            elif name in left_only:
+                pair_atom[name] = "LEFT_ONLY"
+            else:
+                pair_atom[name] = "RIGHT_ONLY"
+        pair_edges = _cross_atom_edges(
+            compiler_receipt, pair_atom, projection=projection
+        )
+        eligible_pair_edges = [
+            row for row in pair_edges if row["bridge_candidate_eligible"]
+        ]
+
+        rows.append(
+            {
+                "projection": projection,
+                "cross_atom_edge_count": len(cross_edges),
+                "cross_atom_edges": cross_edges,
+                "transition_frontiers": _transition_frontier_rows(cross_edges),
+                "pair_probe": {
+                    "left_claim_id": left_id,
+                    "right_claim_id": right_id,
+                    "relation": _set_relation(left, right),
+                    "left_count": len(left),
+                    "right_count": len(right),
+                    "shared_count": len(shared),
+                    "left_only_count": len(left_only),
+                    "right_only_count": len(right_only),
+                    "left_sha256": _sha256_names(left),
+                    "right_sha256": _sha256_names(right),
+                    "shared_sha256": _sha256_names(shared),
+                    "left_only_sha256": _sha256_names(left_only),
+                    "right_only_sha256": _sha256_names(right_only),
+                    "cross_region_edge_count": len(pair_edges),
+                    "eligible_cross_region_edge_count": len(eligible_pair_edges),
+                    "cross_region_edges": pair_edges,
+                    "transition_frontiers": _transition_frontier_rows(pair_edges),
+                },
+            }
+        )
+
+    return {
+        "schema_version": "RHKG-phase2e-dependency-projection-frontiers-0.7",
+        "target_cohort_id": quotient["target_cohort_id"],
+        "edge_direction": "SOURCE_DECLARATION_TO_COMPILER_USED_CONSTANT",
+        "projections": rows,
+        "candidate_policy": (
+            "bridge_candidate_eligible excludes edges touching REGISTERED_CLAIM_ROOT "
+            "declarations. Eligibility is discovery-only and is not a ranking or theorem claim."
+        ),
+        "interpretation": (
+            "Projected frontier edges are exact compiler USES_CONSTANT edges admitted by "
+            "the named traversal projection. They do not establish logical implication, "
+            "mathematical necessity, or a missing theorem."
+        ),
+        "terminal_claim": "RH_OPEN",
+        "graph_theorem_promotion": False,
+    }
 
 
 def dependency_bridge_frontiers_view(

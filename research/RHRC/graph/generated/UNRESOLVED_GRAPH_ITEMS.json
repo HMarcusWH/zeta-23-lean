@@ -951,8 +951,8 @@
     "Mathlib.Topology.Order.Compact",
     "Mathlib.Topology.Piecewise"
   ],
-  "schema_version": "RHKG-phase2d-unresolved-0.6",
-  "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_2D",
+  "schema_version": "RHKG-phase2e-unresolved-0.7",
+  "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_2E",
   "standalone_or_auxiliary_modules": [
     "Challenge.XiPrime",
     "ChallengeDeps.XiPrime",
