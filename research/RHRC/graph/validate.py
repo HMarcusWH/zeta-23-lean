@@ -438,6 +438,36 @@ def main() -> int:
     if source.get("merge_tree") != "d2851f6c1b04d8b54a5d387acafe87b0803adc66":
         errors.append("post-259 research receipt merge tree drift")
 
+    post260_receipt = json.loads(
+        (REPO / graph_build.POST260_QUOTIENT_RECEIPT).read_text(encoding="utf-8")
+    )
+    if post260_receipt.get("schema_version") != "RHKG-post260-quotient-frontier-first-contact-1.0":
+        errors.append("post-260 quotient/frontier receipt schema drift")
+    post260_authority = post260_receipt.get("authority", {})
+    if post260_authority.get("theorem_authority") is not False:
+        errors.append("post-260 research receipt claims theorem authority")
+    if post260_authority.get("research_only") is not True:
+        errors.append("post-260 research receipt lost research-only status")
+    if post260_authority.get("terminal_claim") != "RH_OPEN":
+        errors.append("post-260 research receipt does not preserve RH_OPEN")
+    if post260_authority.get("graph_theorem_promotion") is not False:
+        errors.append("post-260 research receipt permits theorem promotion")
+    post260_source = post260_receipt.get("source", {})
+    if post260_source.get("pull_request") != 260:
+        errors.append("post-260 research receipt source PR drift")
+    if post260_source.get("final_head") != "91d8ea51409c4dc264a0a1a79493b39323d4fa10":
+        errors.append("post-260 research receipt final head drift")
+    if post260_source.get("merge_commit") != "7893126bb3b3291e37faf5ea0f8d8e3fa78cf882":
+        errors.append("post-260 research receipt merge commit drift")
+    if post260_source.get("merge_tree") != "ee0794c12da199bc4079499987c34a6deee624ed":
+        errors.append("post-260 research receipt merge tree drift")
+    if post260_source.get("workflow_disposition") != "FULLY_GREEN_FINAL_HEAD":
+        errors.append("post-260 research receipt workflow disposition drift")
+    if post260_source.get("completed_check_count") != 14 or post260_source.get(
+        "successful_check_count"
+    ) != 14:
+        errors.append("post-260 research receipt final-head check count drift")
+
     compiler_receipt = graph_build.load_compiler_dependency_receipt()
     compiler_by_name = {row["declaration"]: row for row in compiler_receipt}
     declaration_by_name = {d["declaration"]: d for d in lean_declarations}
@@ -803,6 +833,192 @@ def main() -> int:
             if product.get("graph_theorem_promotion") is not False:
                 errors.append(f"{name} permits graph theorem promotion")
 
+        expected_projection_summary = graph_build.dependency_projection_summary_view(
+            compiler_receipt,
+            registered_bindings,
+            resolved_cohorts,
+        )
+        expected_projection_quotients = graph_build.dependency_projection_quotients_view(
+            compiler_receipt,
+            lean_declarations,
+            registered_bindings,
+            resolved_quotient,
+        )
+        expected_projection_frontiers = graph_build.dependency_projection_frontiers_view(
+            compiler_receipt,
+            registered_bindings,
+            resolved_quotient,
+            expected_projection_quotients,
+        )
+
+        projection_summary = json.loads(
+            (GENERATED / "DEPENDENCY_PROJECTION_SUMMARY.json").read_text(encoding="utf-8")
+        )
+        projection_quotients = json.loads(
+            (GENERATED / "DEPENDENCY_PROJECTION_QUOTIENTS.json").read_text(encoding="utf-8")
+        )
+        projection_frontiers = json.loads(
+            (GENERATED / "DEPENDENCY_PROJECTION_FRONTIERS.json").read_text(encoding="utf-8")
+        )
+
+        if projection_summary != expected_projection_summary:
+            errors.append("DEPENDENCY_PROJECTION_SUMMARY exact projection drift")
+        if projection_quotients != expected_projection_quotients:
+            errors.append("DEPENDENCY_PROJECTION_QUOTIENTS exact projection drift")
+        if projection_frontiers != expected_projection_frontiers:
+            errors.append("DEPENDENCY_PROJECTION_FRONTIERS exact projection drift")
+
+        expected_projection_names = set(graph_build.DEPENDENCY_PROJECTIONS)
+        if {
+            row.get("projection") for row in projection_summary.get("projections", [])
+        } != expected_projection_names:
+            errors.append("Phase 2E projection summary surface drift")
+        if {
+            row.get("projection") for row in projection_quotients.get("projections", [])
+        } != expected_projection_names:
+            errors.append("Phase 2E quotient projection surface drift")
+        if {
+            row.get("projection") for row in projection_frontiers.get("projections", [])
+        } != expected_projection_names:
+            errors.append("Phase 2E frontier projection surface drift")
+
+        # ANY is a regression baseline, not a redefinition of Phase 2D.
+        old_by_claim = {
+            row["claim_id"]: row for row in dependency_closure.get("entries", [])
+        }
+        for binding in registered_bindings["bindings"]:
+            root = binding["theorem"]
+            any_entry = graph_build.dependency_projection_closure_entry(
+                compiler_receipt, root, "ANY"
+            )
+            if set(any_entry["transitive_local_dependencies"]) != set(
+                old_by_claim[binding["id"]]["transitive_local_dependencies"]
+            ):
+                errors.append(
+                    f"Phase 2E ANY local closure drift for {binding['id']}"
+                )
+            any_local = set(any_entry["transitive_local_dependencies"])
+            for projection in (
+                "TYPE_ONLY",
+                "VALUE_ONLY",
+                "THEOREM_VALUE_ERASED_SUPPORT",
+            ):
+                projected = set(
+                    graph_build.dependency_projection_closure_entry(
+                        compiler_receipt, root, projection
+                    )["transitive_local_dependencies"]
+                )
+                if not projected <= any_local:
+                    errors.append(
+                        f"Phase 2E {projection} is not a subset of ANY for {binding['id']}"
+                    )
+
+        any_quotient = next(
+            row
+            for row in projection_quotients["projections"]
+            if row["projection"] == "ANY"
+        )
+        if any_quotient.get("union_count") != dependency_atoms.get("union_count"):
+            errors.append("Phase 2E ANY quotient union drift from Phase 2D")
+        old_atoms_by_sig = {
+            row["signature"]: row for row in dependency_atoms.get("atoms", [])
+        }
+        new_atoms_by_sig = {
+            row["signature"]: row for row in any_quotient.get("atoms", [])
+        }
+        if set(old_atoms_by_sig) != set(new_atoms_by_sig):
+            errors.append("Phase 2E ANY atom signature surface drift")
+        else:
+            for signature in sorted(old_atoms_by_sig):
+                old_atom = old_atoms_by_sig[signature]
+                new_atom = new_atoms_by_sig[signature]
+                if (
+                    old_atom.get("count") != new_atom.get("count")
+                    or old_atom.get("sha256") != new_atom.get("sha256")
+                    or old_atom.get("declarations") != new_atom.get("declarations")
+                ):
+                    errors.append(
+                        f"Phase 2E ANY atom drift from Phase 2D: {signature}"
+                    )
+
+        any_frontier = next(
+            row
+            for row in projection_frontiers["projections"]
+            if row["projection"] == "ANY"
+        )
+        if any_frontier.get("cross_atom_edges") != bridge_frontiers.get(
+            "cross_atom_edges"
+        ):
+            errors.append("Phase 2E ANY cross-atom frontier drift from Phase 2D")
+        any_pair = any_frontier.get("pair_probe", {})
+        if (
+            any_pair.get("relation") != "LEFT_STRICT_SUBSET"
+            or any_pair.get("left_count") != 224
+            or any_pair.get("right_count") != 2659
+            or any_pair.get("left_only_count") != 0
+            or any_pair.get("right_only_count") != 2435
+            or any_pair.get("cross_region_edge_count") != 972
+            or any_pair.get("eligible_cross_region_edge_count") != 949
+        ):
+            errors.append("Phase 2E ANY pair probe does not reproduce Phase 2D baseline")
+
+        quotient_by_projection = {
+            row["projection"]: row
+            for row in projection_quotients.get("projections", [])
+        }
+        pair_memberships = {
+            "LEFT_ONLY": {"LEFT"},
+            "RIGHT_ONLY": {"RIGHT"},
+            "SHARED": {"LEFT", "RIGHT"},
+        }
+        for frontier in projection_frontiers.get("projections", []):
+            projection = frontier["projection"]
+            quotient_row = quotient_by_projection[projection]
+            label_sets = {
+                row["signature"]: set(row["member_labels"])
+                for row in quotient_row["atoms"]
+            }
+            for edge in frontier.get("cross_atom_edges", []):
+                source_labels = label_sets.get(edge["source_atom"])
+                target_labels = label_sets.get(edge["target_atom"])
+                if source_labels is None or target_labels is None:
+                    errors.append(
+                        f"Phase 2E {projection} frontier references unknown atom"
+                    )
+                elif not source_labels < target_labels:
+                    errors.append(
+                        f"Phase 2E {projection} cross-atom edge violates reachability monotonicity"
+                    )
+                if edge.get("bridge_candidate_eligible") and (
+                    edge.get("source_registered_root")
+                    or edge.get("target_registered_root")
+                ):
+                    errors.append(
+                        f"Phase 2E {projection} bridge candidate includes registered root"
+                    )
+
+            for edge in frontier.get("pair_probe", {}).get("cross_region_edges", []):
+                source_membership = pair_memberships.get(edge["source_atom"])
+                target_membership = pair_memberships.get(edge["target_atom"])
+                if source_membership is None or target_membership is None:
+                    errors.append(
+                        f"Phase 2E {projection} pair frontier references unknown region"
+                    )
+                elif not source_membership < target_membership:
+                    errors.append(
+                        f"Phase 2E {projection} pair frontier violates reachability monotonicity"
+                    )
+
+        for name, product in (
+            ("DEPENDENCY_PROJECTION_SUMMARY", projection_summary),
+            ("DEPENDENCY_PROJECTION_QUOTIENTS", projection_quotients),
+            ("DEPENDENCY_PROJECTION_FRONTIERS", projection_frontiers),
+        ):
+            if product.get("terminal_claim") != "RH_OPEN":
+                errors.append(f"{name} does not preserve RH_OPEN")
+            if product.get("graph_theorem_promotion") is not False:
+                errors.append(f"{name} permits graph theorem promotion")
+
         proved_ids = set(binding_by_id)
         open_in_cohorts = sorted(
             open_claim_ids
@@ -832,9 +1048,9 @@ def main() -> int:
     unresolved = json.loads(
         (GENERATED / "UNRESOLVED_GRAPH_ITEMS.json").read_text(encoding="utf-8")
     )
-    if unresolved.get("schema_version") != "RHKG-phase2d-unresolved-0.6":
-        errors.append("UNRESOLVED_GRAPH_ITEMS is not Phase 2D current")
-    if unresolved.get("semantic_coverage_status") != "PARTIAL_BY_DESIGN_PHASE_2D":
+    if unresolved.get("schema_version") != "RHKG-phase2e-unresolved-0.7":
+        errors.append("UNRESOLVED_GRAPH_ITEMS is not Phase 2E current")
+    if unresolved.get("semantic_coverage_status") != "PARTIAL_BY_DESIGN_PHASE_2E":
         errors.append("UNRESOLVED_GRAPH_ITEMS semantic coverage status drift")
     if unresolved.get("claim_firewall") != "RH_OPEN":
         errors.append("UNRESOLVED_GRAPH_ITEMS does not preserve RH_OPEN")
@@ -896,8 +1112,8 @@ def main() -> int:
         errors.append("terminal claim is not OPEN")
 
     coverage = json.loads((GENERATED / "REPOSITORY_COVERAGE.json").read_text(encoding="utf-8"))
-    if coverage.get("schema_version") != "RHKG-phase2d-coverage-0.6":
-        errors.append("coverage view is not Phase 2D current")
+    if coverage.get("schema_version") != "RHKG-phase2e-coverage-0.7":
+        errors.append("coverage view is not Phase 2E current")
     if coverage.get("registered_proved_lean_declaration_count") != len(binding_by_id):
         errors.append("coverage registered-root count drift")
     if coverage.get("lean_declaration_count") != len(lean_declarations):
