@@ -8,6 +8,12 @@ import re
 import subprocess
 from pathlib import Path
 
+from source_surface import (
+    document_semantic_closure_view,
+    exact_token_mentions,
+    module_semantic_closure_view,
+    scan_named_source_declarations,
+)
 from views import (
     DEPENDENCY_PROJECTIONS,
     coverage_view,
@@ -41,6 +47,7 @@ DECLARED_GENERATED_PRODUCTS = [
     "research/RHRC/graph/generated/lean_modules.jsonl",
     "research/RHRC/graph/generated/registry_nodes.jsonl",
     "research/RHRC/graph/generated/lean_declarations.jsonl",
+    "research/RHRC/graph/generated/lean_source_declarations.jsonl",
     "research/RHRC/graph/generated/relations.jsonl",
     "research/RHRC/graph/generated/THEOREM_CLAIM_MAP.json",
     "research/RHRC/graph/generated/THEOREM_DEPENDENCY_CLOSURE.json",
@@ -56,6 +63,8 @@ DECLARED_GENERATED_PRODUCTS = [
     "research/RHRC/graph/generated/REPOSITORY_COVERAGE.json",
     "research/RHRC/graph/generated/ENTRYPOINT_REACHABILITY.json",
     "research/RHRC/graph/generated/UNRESOLVED_GRAPH_ITEMS.json",
+    "research/RHRC/graph/generated/MODULE_SEMANTIC_CLOSURE.json",
+    "research/RHRC/graph/generated/DOCUMENT_SEMANTIC_CLOSURE.json",
 ]
 
 CLAIM_REGISTRY = "research/RHRC/CLAIM_REGISTRY.json"
@@ -70,19 +79,22 @@ DEPENDENCY_QUOTIENT_CONFIG = "research/RHRC/graph/DEPENDENCY_QUOTIENT_CONFIG.jso
 POST259_KERNEL_RECEIPT = "research/RHRC/receipts/RHKG_POST259_KERNEL_FIRST_CONTACT_2026_09_24.json"
 POST260_QUOTIENT_RECEIPT = "research/RHRC/receipts/RHKG_POST260_QUOTIENT_FRONTIER_FIRST_CONTACT_2026_09_24.json"
 BOUNDARY = "research/RHRC/BOUNDARY.json"
+SEMANTIC_CLOSURE_CONFIG = "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json"
 
 
-def _load_shared_import_parser():
+def _load_shared_lean_parser():
     path = RHRC / "tools" / "lean_imports.py"
     spec = importlib.util.spec_from_file_location("rhrc_lean_imports", path)
     if spec is None or spec.loader is None:
         raise RuntimeError(f"cannot load shared Lean import parser from {path}")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-    return module.import_modules
+    return module
 
 
-IMPORT_MODULES = _load_shared_import_parser()
+LEAN_PARSER = _load_shared_lean_parser()
+IMPORT_MODULES = LEAN_PARSER.import_modules
+STRIP_LEAN_COMMENTS = LEAN_PARSER.strip_lean_comments
 
 
 def _git(*args: str) -> str:
@@ -356,12 +368,40 @@ def build_records() -> dict[str, object]:
             }
         )
 
+    # Complete source-navigation surface over every local Lean module.  These
+    # anchors are deliberately weaker than compiler declaration authority: they
+    # ensure forgotten named source commands remain discoverable even when no
+    # registered theorem root currently depends on them.
+    source_declarations: list[dict] = []
+    for name, path in sorted(local_by_module.items()):
+        source = by_path[path]
+        text = (REPO / path).read_text(encoding="utf-8")
+        source_declarations.extend(
+            scan_named_source_declarations(
+                path=path,
+                module=name,
+                trust_zone=source["trust_zone"],
+                source_locator=source["source_locator"],
+                text=text,
+                strip_comments=STRIP_LEAN_COMMENTS,
+            )
+        )
+
     claims_data = json.loads((REPO / CLAIM_REGISTRY).read_text(encoding="utf-8"))
     routes_data = json.loads((REPO / ROUTE_REGISTRY).read_text(encoding="utf-8"))
     promoted_data = json.loads((REPO / PROMOTED_BINDINGS).read_text(encoding="utf-8"))
     registered_binding_data = json.loads(
         (REPO / REGISTERED_BINDINGS).read_text(encoding="utf-8")
     )
+    semantic_closure_config = json.loads(
+        (REPO / SEMANTIC_CLOSURE_CONFIG).read_text(encoding="utf-8")
+    )
+    if semantic_closure_config.get("schema_version") != "RHKG-final-semantic-closure-config-1.0":
+        raise RuntimeError("semantic closure config schema drift")
+    if semantic_closure_config.get("terminal_claim") != "RH_OPEN":
+        raise RuntimeError("semantic closure config does not preserve RH_OPEN")
+    if semantic_closure_config.get("graph_theorem_promotion") is not False:
+        raise RuntimeError("semantic closure config attempts theorem promotion")
     dependency_farming_config = json.loads(
         (REPO / DEPENDENCY_FARMING_COHORTS).read_text(encoding="utf-8")
     )
@@ -414,6 +454,8 @@ def build_records() -> dict[str, object]:
         "RESEARCH_EXECUTABLE": "ResearchExecutable",
         "RESEARCH_FIXTURE": "Fixture",
         "CI_WORKFLOW": "WorkflowDefinition",
+        "DOCUMENTATION": "Document",
+        "LIVING_SSOT": "Document",
     }
     for source in repo_files:
         artifact_type = artifact_type_by_class.get(source["file_class"])
@@ -425,18 +467,26 @@ def build_records() -> dict[str, object]:
             "ResearchExecutable": "research-executable",
             "Fixture": "fixture",
             "WorkflowDefinition": "workflow-definition",
+            "Document": "document",
         }[artifact_type]
-        registry_nodes.append(
-            {
-                "id": f"rh:{prefix}:{source['path']}",
-                "type": artifact_type,
-                "path": source["path"],
-                "file_id": source["id"],
-                "file_class": source["file_class"],
-                "trust_zone": source["trust_zone"],
-                "source_locator": source["source_locator"],
-            }
-        )
+        node = {
+            "id": f"rh:{prefix}:{source['path']}",
+            "type": artifact_type,
+            "path": source["path"],
+            "file_id": source["id"],
+            "file_class": source["file_class"],
+            "trust_zone": source["trust_zone"],
+            "source_locator": source["source_locator"],
+        }
+        if artifact_type == "Document":
+            node["authority_role"] = "SOURCE_BACKED_DOCUMENT"
+            node["document_role"] = semantic_closure_config.get(
+                "living_ssot_roles", {}
+            ).get(
+                source["path"],
+                semantic_closure_config["default_document_role"],
+            )
+        registry_nodes.append(node)
     for claim in claims_data["claims"]:
         registry_nodes.append(
             {
@@ -605,6 +655,7 @@ def build_records() -> dict[str, object]:
             "ResearchExecutable",
             "Fixture",
             "WorkflowDefinition",
+            "Document",
         }:
             add_rel("LOCATED_AT", node["id"], node["file_id"], "GIT_EXACT")
 
@@ -612,6 +663,14 @@ def build_records() -> dict[str, object]:
         add_rel("LOCATED_AT", module_id(name), file_id(path), "GIT_EXACT")
         for dep in import_map[name]:
             add_rel("IMPORTS", module_id(name), module_id(dep), "GIT_EXACT")
+
+    for source_decl in source_declarations:
+        add_rel(
+            "SOURCE_DECLARES",
+            source_decl["module_id"],
+            source_decl["id"],
+            "LEAN_SOURCE_EXACT",
+        )
 
     for claim in claims_data["claims"]:
         cid = claim_id(claim["id"])
@@ -627,6 +686,26 @@ def build_records() -> dict[str, object]:
         for cid_raw in route.get("claim_ids", []):
             if cid_raw in known_claims:
                 add_rel("PART_OF_ROUTE", claim_id(cid_raw), rid, "REGISTRY_EXACT")
+
+    document_nodes = [node for node in registry_nodes if node["type"] == "Document"]
+    known_claim_ids = {claim["id"] for claim in claims_data["claims"]}
+    known_route_ids = {route["route_id"] for route in routes_data["routes"]}
+    for document in document_nodes:
+        text = (REPO / document["path"]).read_text(encoding="utf-8")
+        for mentioned_claim in exact_token_mentions(text, known_claim_ids):
+            add_rel(
+                "MENTIONS",
+                document["id"],
+                claim_id(mentioned_claim),
+                "TEXTUAL_HINT",
+            )
+        for mentioned_route in exact_token_mentions(text, known_route_ids):
+            add_rel(
+                "MENTIONS",
+                document["id"],
+                route_id(mentioned_route),
+                "TEXTUAL_HINT",
+            )
 
     for declaration in lean_declarations:
         if declaration["repository_scope"] != "LOCAL":
@@ -683,6 +762,17 @@ def build_records() -> dict[str, object]:
         subject_digest,
         DECLARED_GENERATED_PRODUCTS,
     )
+    coverage["schema_version"] = "RHKG-final-closure-coverage-1.0"
+    coverage["lean_source_declaration_count"] = len(source_declarations)
+    coverage["source_surface_module_count"] = len(
+        {row["module"] for row in source_declarations}
+    )
+    coverage["document_node_count"] = len(document_nodes)
+    coverage["semantic_accounting_status"] = (
+        "FILE_MODULE_DOCUMENT_AND_NAMED_SOURCE_SURFACE_CLOSED"
+    )
+    coverage["node_type_counts"]["LeanSourceDeclaration"] = len(source_declarations)
+    coverage["node_type_counts"] = dict(sorted(coverage["node_type_counts"].items()))
     theorem_claim_map = theorem_claim_view(
         lean_declarations,
         claims_data,
@@ -695,6 +785,28 @@ def build_records() -> dict[str, object]:
         if path.startswith("comparator/") and path.count("/") == 1
     )
     reachability = reachability_view(local_import_graph, comparator_roots)
+    standalone_roles = semantic_closure_config.get("standalone_module_roles", {})
+    if set(standalone_roles) != set(reachability["standalone_or_auxiliary"]):
+        raise RuntimeError(
+            "standalone module disposition drift; "
+            f"missing={sorted(set(reachability['standalone_or_auxiliary']) - set(standalone_roles))} "
+            f"extra={sorted(set(standalone_roles) - set(reachability['standalone_or_auxiliary']))}"
+        )
+    module_semantic_closure = module_semantic_closure_view(
+        local_modules=[
+            row for row in lean_modules if row["repository_scope"] == "LOCAL"
+        ],
+        reachability=reachability,
+        source_declarations=source_declarations,
+        compiler_declarations=lean_declarations,
+        standalone_roles=standalone_roles,
+    )
+    document_semantic_closure = document_semantic_closure_view(
+        document_nodes=document_nodes,
+        claim_ids=known_claim_ids,
+        route_ids=known_route_ids,
+        repo_root=REPO,
+    )
     dependency_closure = theorem_dependency_closure_view(
         compiler_receipt,
         registered_binding_data,
@@ -755,20 +867,28 @@ def build_records() -> dict[str, object]:
         dependency_projection_quotients,
     )
     unresolved = {
-        "schema_version": "RHKG-phase2e-unresolved-0.7",
-        "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_2E",
+        "schema_version": "RHKG-final-closure-unresolved-1.0",
+        "semantic_coverage_status": (
+            "REPOSITORY_ACCOUNTING_CLOSED_SEMANTIC_DEEPENING_OPEN"
+        ),
         "unknown_file_classes": sorted(
             row["path"] for row in repo_files if row["file_class"] == "UNKNOWN_FILE_CLASS"
         ),
         "external_import_targets": sorted(external_imports),
         "compiler_external_boundary_modules": compiler_external_modules,
         "standalone_or_auxiliary_modules": reachability["standalone_or_auxiliary"],
+        "closed_in_final_closure_pass": [
+            "all tracked files classified and indexed",
+            "all local Lean files mapped to LeanModule nodes",
+            "all local Lean modules receive deterministic named source-declaration discovery coverage",
+            "all standalone_or_auxiliary Lean modules receive explicit reviewed dispositions",
+            "all DOCUMENTATION and LIVING_SSOT files receive Document nodes and exact claim/route textual-navigation hints",
+        ],
         "deferred_to_later_phases": [
-            "repository-wide Lean declaration census beyond registered dependency closure",
-            "build/reachability status for standalone Lean modules",
-            "multi-axis authority/current-state resolution",
+            "compiler-wide local declaration census beyond the source-navigation surface and registered dependency closure",
+            "multi-axis authority/current-state resolution beyond document-role indexing",
             "Git/PR/workflow provenance graph",
-            "dead-route/obstruction/revival semantic graph",
+            "dead-route/obstruction/revival semantic graph beyond historical-delta file nodes",
             "operational concept preflight",
         ],
         "claim_firewall": "RH_OPEN",
@@ -778,6 +898,7 @@ def build_records() -> dict[str, object]:
         "repo_files": repo_files,
         "lean_modules": lean_modules,
         "lean_declarations": lean_declarations,
+        "lean_source_declarations": source_declarations,
         "registry_nodes": registry_nodes,
         "relations": relations,
         "coverage": coverage,
@@ -793,6 +914,8 @@ def build_records() -> dict[str, object]:
         "dependency_projection_summary": dependency_projection_summary,
         "dependency_projection_quotients": dependency_projection_quotients,
         "dependency_projection_frontiers": dependency_projection_frontiers,
+        "module_semantic_closure": module_semantic_closure,
+        "document_semantic_closure": document_semantic_closure,
         "unresolved": unresolved,
     }
 
@@ -803,6 +926,7 @@ def rendered_outputs() -> dict[str, bytes]:
         "research/RHRC/graph/generated/repository_files.jsonl": _jsonl(records["repo_files"]),
         "research/RHRC/graph/generated/lean_modules.jsonl": _jsonl(records["lean_modules"]),
         "research/RHRC/graph/generated/lean_declarations.jsonl": _jsonl(records["lean_declarations"]),
+        "research/RHRC/graph/generated/lean_source_declarations.jsonl": _jsonl(records["lean_source_declarations"]),
         "research/RHRC/graph/generated/registry_nodes.jsonl": _jsonl(records["registry_nodes"]),
         "research/RHRC/graph/generated/relations.jsonl": _jsonl(records["relations"]),
         "research/RHRC/graph/generated/REPOSITORY_COVERAGE.json": _pretty(records["coverage"]),
@@ -819,6 +943,8 @@ def rendered_outputs() -> dict[str, bytes]:
         "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_QUOTIENTS.json": _pretty(records["dependency_projection_quotients"]),
         "research/RHRC/graph/generated/DEPENDENCY_PROJECTION_FRONTIERS.json": _pretty(records["dependency_projection_frontiers"]),
         "research/RHRC/graph/generated/UNRESOLVED_GRAPH_ITEMS.json": _pretty(records["unresolved"]),
+        "research/RHRC/graph/generated/MODULE_SEMANTIC_CLOSURE.json": _pretty(records["module_semantic_closure"]),
+        "research/RHRC/graph/generated/DOCUMENT_SEMANTIC_CLOSURE.json": _pretty(records["document_semantic_closure"]),
     }
 
 
@@ -859,7 +985,7 @@ def check_outputs(outputs: dict[str, bytes]) -> list[str]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Build/check RHKG Phase-2D generated products")
+    parser = argparse.ArgumentParser(description="Build/check RHKG final semantic-closure products")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--write", action="store_true", help="regenerate checked-in products")
     group.add_argument("--check", action="store_true", help="verify checked-in products are byte-current")
