@@ -1,0 +1,61 @@
+name: RHRC integration candidate exactification materializer
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.head_ref == 'rhrc/integration-candidate-exactification' && github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: rhrc/integration-candidate-exactification
+          fetch-depth: 0
+
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+
+      - name: Run integration foundation unit tests
+        run: python3 -m unittest discover -s research/RHRC/integration/tests -p 'test_*.py' -v
+
+      - name: Build source-candidate resolver
+        run: lake build Zeta23.RHRC.SourceCandidateResolution
+
+      - name: Remove one-shot materializer before final graph generation
+        run: git rm .github/workflows/rhrc_integration_candidate_materializer.yml
+
+      - name: Materialize Lean-exact candidate receipts
+        run: python3 research/RHRC/integration/candidate_exactify.py --write
+
+      - name: Materialize deterministic RHKG steady state
+        run: python3 research/RHRC/graph/build.py --write
+
+      - name: Recheck exactification against regenerated source surface
+        run: python3 research/RHRC/integration/candidate_exactify.py --check
+
+      - name: Validate integration and graph firewalls
+        run: |
+          python3 research/RHRC/integration/integration_lint.py
+          python3 research/RHRC/graph/build.py --check
+          python3 research/RHRC/graph/validate.py
+
+      - name: Commit materialized steady state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --stat
+          git commit -m "RHRC integration: materialize exact candidate steady state"
+          git push origin HEAD:rhrc/integration-candidate-exactification
