@@ -111,11 +111,16 @@ def main() -> int:
             raise SystemExit("integration_lint: source-only summary/product count drift")
 
         if resolution_rows:
+            subject_hashes = {
+                row.get("rhkg_subject_digest_sha256") for row in resolution_rows
+            }
             source_hashes = {row.get("source_surface_sha256") for row in resolution_rows}
             compiler_hashes = {
                 row.get("registered_compiler_receipt_sha256") for row in resolution_rows
             }
             toolchains = {row.get("lean_toolchain") for row in resolution_rows}
+            if subject_hashes != {data.get("rhkg_subject_digest_sha256")}:
+                raise SystemExit("integration_lint: RHKG subject digest drift")
             if source_hashes != {data.get("source_surface_sha256")}:
                 raise SystemExit("integration_lint: source-surface digest drift")
             if compiler_hashes != {data.get("registered_compiler_receipt_sha256")}:
