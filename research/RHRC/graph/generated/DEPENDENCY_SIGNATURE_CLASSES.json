@@ -253,6 +253,12 @@
       "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral"
     },
     {
+      "claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "closure_sha256": "edb5b2387bc25e9e52fce47084388bea800a09c0481e40e2267ba9315f60cf19",
+      "local_dependency_count": 1167,
+      "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.primeTestWeight_endpoint_order_eight_of_evenStrict"
+    },
+    {
       "claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
       "closure_sha256": "0a5bf90e19fd39dc576a8074a8230b7d48ae25e8474b360fb1ed0215b5200617",
       "local_dependency_count": 315,
@@ -779,6 +785,13 @@
       "superset_count": 737
     },
     {
+      "difference_count": 1140,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "superset_count": 1167
+    },
+    {
       "difference_count": 288,
       "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
       "subset_count": 27,
@@ -1150,6 +1163,13 @@
       "superset_count": 737
     },
     {
+      "difference_count": 1164,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "superset_count": 1167
+    },
+    {
       "difference_count": 312,
       "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
       "subset_count": 3,
@@ -1225,6 +1245,13 @@
       "subset_count": 51,
       "superset_claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
       "superset_count": 843
+    },
+    {
+      "difference_count": 1116,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "superset_count": 1167
     },
     {
       "difference_count": 264,
@@ -1316,6 +1343,13 @@
       "subset_count": 50,
       "superset_claim_id": "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
       "superset_count": 843
+    },
+    {
+      "difference_count": 1117,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "superset_count": 1167
     },
     {
       "difference_count": 265,
@@ -1493,6 +1527,13 @@
       "superset_count": 737
     },
     {
+      "difference_count": 794,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "superset_count": 1167
+    },
+    {
       "difference_count": 788,
       "subset_claim_id": "R003_CCM_RHS_IDENTITY",
       "subset_count": 373,
@@ -1605,6 +1646,13 @@
       "superset_count": 737
     },
     {
+      "difference_count": 1070,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "superset_count": 1167
+    },
+    {
       "difference_count": 218,
       "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
       "subset_count": 97,
@@ -1696,6 +1744,13 @@
       "superset_count": 737
     },
     {
+      "difference_count": 1107,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "superset_count": 1167
+    },
+    {
       "difference_count": 255,
       "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
       "subset_count": 60,
@@ -1773,6 +1828,13 @@
       "superset_count": 1382
     },
     {
+      "difference_count": 1130,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "superset_count": 1167
+    },
+    {
       "difference_count": 236,
       "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
       "subset_count": 37,
@@ -1848,6 +1910,13 @@
       "subset_count": 95,
       "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
       "superset_count": 1382
+    },
+    {
+      "difference_count": 1072,
+      "subset_claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+      "subset_count": 95,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "superset_count": 1167
     },
     {
       "difference_count": 178,
@@ -1939,6 +2008,13 @@
       "subset_count": 29,
       "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
       "superset_count": 737
+    },
+    {
+      "difference_count": 1138,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "superset_count": 1167
     },
     {
       "difference_count": 286,
@@ -2081,6 +2157,13 @@
       "superset_count": 737
     },
     {
+      "difference_count": 664,
+      "subset_claim_id": "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
+      "subset_count": 503,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "superset_count": 1167
+    },
+    {
       "difference_count": 47,
       "subset_claim_id": "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
       "subset_count": 1479,
@@ -2214,6 +2297,13 @@
       "superset_count": 843
     },
     {
+      "difference_count": 1018,
+      "subset_claim_id": "R003_LEAST_PARITY_BAD_SHELL",
+      "subset_count": 149,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "superset_count": 1167
+    },
+    {
       "difference_count": 1709,
       "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
       "subset_count": 431,
@@ -2317,6 +2407,13 @@
       "subset_count": 431,
       "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
       "superset_count": 737
+    },
+    {
+      "difference_count": 736,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "superset_count": 1167
     },
     {
       "difference_count": 889,
@@ -2450,6 +2547,13 @@
       "subset_count": 6,
       "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
       "superset_count": 737
+    },
+    {
+      "difference_count": 1161,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "superset_count": 1167
     },
     {
       "difference_count": 425,
@@ -2597,6 +2701,13 @@
       "subset_count": 67,
       "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
       "superset_count": 737
+    },
+    {
+      "difference_count": 1100,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "superset_count": 1167
     },
     {
       "difference_count": 364,
@@ -2942,6 +3053,13 @@
       "superset_count": 843
     },
     {
+      "difference_count": 1077,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "superset_count": 1167
+    },
+    {
       "difference_count": 225,
       "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
       "subset_count": 90,
@@ -3031,6 +3149,13 @@
       "subset_count": 47,
       "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
       "superset_count": 737
+    },
+    {
+      "difference_count": 1120,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "superset_count": 1167
     },
     {
       "difference_count": 268,
@@ -3157,6 +3282,13 @@
       "subset_count": 33,
       "superset_claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
       "superset_count": 1382
+    },
+    {
+      "difference_count": 1134,
+      "subset_claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+      "subset_count": 33,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "superset_count": 1167
     },
     {
       "difference_count": 1433,
@@ -3465,6 +3597,13 @@
       "subset_count": 485,
       "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
       "superset_count": 737
+    },
+    {
+      "difference_count": 682,
+      "subset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "subset_count": 485,
+      "superset_claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "superset_count": 1167
     },
     {
       "difference_count": 500,
@@ -3840,6 +3979,7 @@
     "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
     "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
     "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+    "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
     "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
     "R003_KERNEL_EF_EXTENSION",
     "R003_LEAST_PARITY_BAD_SHELL",

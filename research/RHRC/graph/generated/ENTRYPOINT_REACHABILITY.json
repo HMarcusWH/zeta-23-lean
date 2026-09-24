@@ -170,6 +170,7 @@
     "Zeta23.CCM.GlobalParityBottomOddStrictNormalForm",
     "Zeta23.CCM.GlobalParityBottomPrimeRemainder",
     "Zeta23.CCM.GlobalParityBottomPrimeWeight",
+    "Zeta23.CCM.GlobalParityBottomPrimeWeightJets",
     "Zeta23.CCM.GlobalParityBottomResidualState",
     "Zeta23.CCM.GlobalParityBottomRetainedGeometry",
     "Zeta23.CCM.GlobalParityBottomReverseGroundTransfer",
