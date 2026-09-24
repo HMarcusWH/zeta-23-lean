@@ -631,3 +631,25 @@ semantic accounting closure      != RH closure
 terminal claim                   = RH_OPEN
 graph theorem promotion          = false
 ```
+
+
+### Integration-derived generated products
+
+The integration foundation adds generated receipts outside
+`research/RHRC/graph/generated/`:
+
+- `research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl`
+- `research/RHRC/integration/generated/RH_CORE_SOURCE_ONLY_THEOREMS.jsonl`
+- `research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json`
+
+These files are declared generated products for RHKG subject-digest purposes and
+are therefore excluded from the repository subject digest, avoiding a recursive
+graph -> exactification receipt -> graph hash cycle. Their exact producer is
+`research/RHRC/integration/candidate_exactify.py`, not `graph/build.py`.
+
+They remain covered `RepoFile` nodes and receive exact `GENERATED_BY`
+relations. The graph builder continues to byte-regenerate only its own
+`graph/generated` product set; the candidate exactifier independently
+byte-checks the integration-derived receipts.
+
+This separation is an authority and determinism boundary, not a theorem claim.
