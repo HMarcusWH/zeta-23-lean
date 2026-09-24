@@ -70,6 +70,20 @@ jobs:
         run: lake build Zeta23.RHRC.DeclarationDependencyExport
       - name: Check RHKG compiler dependency receipt
         run: python3 research/RHRC/tools/lean_dependency_extract.py --check
+      - name: Build source-candidate compiler resolver
+        run: lake build Zeta23.RHRC.SourceCandidateResolution
+      - name: Check RH_FORMAL_CORE source-candidate exactification
+        run: python3 research/RHRC/integration/candidate_exactify.py --check
+      - name: Upload source-candidate exactification receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rhrc-source-candidate-exactification
+          path: |
+            research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl
+            research/RHRC/integration/generated/RH_CORE_SOURCE_ONLY_THEOREMS.jsonl
+            research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json
+          if-no-files-found: error
       - name: Upload RHKG compiler dependency receipt
         if: always()
         uses: actions/upload-artifact@v4
