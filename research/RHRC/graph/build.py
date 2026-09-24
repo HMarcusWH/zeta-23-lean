@@ -9,12 +9,14 @@ import subprocess
 from pathlib import Path
 
 from views import (
+    DEPENDENCY_PROJECTIONS,
     coverage_view,
     dependency_bridge_frontiers_view,
     dependency_cohort_atoms_view,
     dependency_cohort_overlap_view,
     dependency_kernel_atlas_view,
     dependency_kernel_quotient_view,
+    dependency_projection_closure_entry,
     dependency_projection_frontiers_view,
     dependency_projection_quotients_view,
     dependency_projection_summary_view,
