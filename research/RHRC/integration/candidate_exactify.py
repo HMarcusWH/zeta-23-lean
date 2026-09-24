@@ -14,6 +14,7 @@ from source_candidates import classify_visibility, select_rh_core_theorem_source
 RHRC = Path(__file__).resolve().parents[1]
 REPO = RHRC.parents[1]
 SOURCE_DECLARATIONS = RHRC / "graph" / "generated" / "lean_source_declarations.jsonl"
+RHKG_COVERAGE = RHRC / "graph" / "generated" / "REPOSITORY_COVERAGE.json"
 COMPILER_RECEIPT = (
     RHRC / "graph" / "compiler" / "REGISTERED_DECLARATION_DEPENDENCIES.jsonl"
 )
@@ -177,6 +178,11 @@ def build_receipts() -> list[dict]:
     state = json.loads(STATE.read_text(encoding="utf-8"))
     if state.get("terminal_claim") != "RH_OPEN":
         fail("integration state does not preserve RH_OPEN")
+    coverage = json.loads(RHKG_COVERAGE.read_text(encoding="utf-8"))
+    rhkg_subject_digest = coverage.get("subject_digest_sha256")
+    if not isinstance(rhkg_subject_digest, str) or len(rhkg_subject_digest) != 64:
+        fail("RHKG coverage does not expose a valid subject digest")
+
     source_surface_bytes = SOURCE_DECLARATIONS.read_bytes()
     compiler_receipt_bytes = COMPILER_RECEIPT.read_bytes()
     source_surface_sha256 = hashlib.sha256(source_surface_bytes).hexdigest()
@@ -213,6 +219,7 @@ def build_receipts() -> list[dict]:
         receipt = LeanCandidateReceipt(
             schema_version=SCHEMA_VERSION,
             repository_graph_authority=anchor,
+            rhkg_subject_digest_sha256=rhkg_subject_digest,
             source_surface_sha256=source_surface_sha256,
             registered_compiler_receipt_sha256=compiler_receipt_sha256,
             lean_toolchain=lean_toolchain,
@@ -249,6 +256,7 @@ def render_jsonl(rows: list[dict]) -> bytes:
 def render_summary(rows: list[dict]) -> bytes:
     data = summarize(rows)
     if rows:
+        data["rhkg_subject_digest_sha256"] = rows[0]["rhkg_subject_digest_sha256"]
         data["source_surface_sha256"] = rows[0]["source_surface_sha256"]
         data["registered_compiler_receipt_sha256"] = rows[0][
             "registered_compiler_receipt_sha256"
