@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 RHRC = Path(__file__).resolve().parents[1]
+REPO = RHRC.parents[1]
 INTEGRATION = RHRC / "integration"
 
 
@@ -53,6 +54,36 @@ def main() -> int:
         raise SystemExit("integration_lint: FFBBP v1.6 may not inherit RUN42C qualification")
     if by_id["MCM_HMWH"]["status"] != "NOT_YET_INTEGRATED":
         raise SystemExit("integration_lint: MCM-HMWH must remain not-yet-integrated in foundation PR")
+
+    boundary_source = json.loads((RHRC / "BOUNDARY.json").read_text(encoding="utf-8"))
+    diagnostic = boundary_source["diagnostic_engine"]
+    route_engine = boundary_source["route_closure_engine"]
+    if by_id["FFBBP_RUNTIME"]["version"] != diagnostic["reference_architecture_version"]:
+        raise SystemExit("integration_lint: FFBBP runtime version drift from BOUNDARY.json")
+    if by_id["FFBBP_RUNTIME"]["scope"] != diagnostic["qualification_scope"]:
+        raise SystemExit("integration_lint: FFBBP runtime qualification scope drift")
+    if by_id["OOL_MVS"]["version"] != route_engine["kernel_version"]:
+        raise SystemExit("integration_lint: OoL-MVS version drift from BOUNDARY.json")
+    if by_id["OOL_MVS"]["scope"] != route_engine["import_scope"]:
+        raise SystemExit("integration_lint: OoL-MVS import scope drift")
+
+    ffbbp_v16 = json.loads(
+        (RHRC / "ffbbp" / "FFBBP_V16_ASSURANCE_REFERENCE.json").read_text(encoding="utf-8")
+    )
+    if by_id["FFBBP_ASSURANCE"]["version"] != ffbbp_v16["theory_version"]:
+        raise SystemExit("integration_lint: FFBBP v1.6 theory version drift")
+    if ffbbp_v16.get("inherits_run42c_qualification") is not False:
+        raise SystemExit("integration_lint: source FFBBP v1.6 overlay qualification drift")
+
+    ool_reference = json.loads(
+        (RHRC / "ool" / "OOL_REFERENCE.json").read_text(encoding="utf-8")
+    )
+    if by_id["OOL_MVS"]["version"] != ool_reference["version"]:
+        raise SystemExit("integration_lint: OoL reference version drift")
+
+    host_toolchain = (REPO / "lean-toolchain").read_text(encoding="utf-8").strip()
+    if not host_toolchain.endswith(by_id["PERMANSSON_EXTERNAL"]["host_lean_toolchain"]):
+        raise SystemExit("integration_lint: recorded host Lean toolchain drift")
 
     summary = INTEGRATION / "generated" / "SOURCE_CANDIDATE_SUMMARY.json"
     if summary.exists():
