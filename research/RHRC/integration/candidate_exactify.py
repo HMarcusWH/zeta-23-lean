@@ -152,7 +152,7 @@ def parse_output(stdout: str, candidates: list[dict]) -> dict[str, dict]:
             "private_or_internal": (
                 None if private_raw == "-" else private_raw == "1"
             ),
-            "exact_type_text": None if type_text == "-" else type_text,
+            "compiler_type_text": None if type_text == "-" else type_text,
             "ambiguous_names": (
                 [] if ambiguous_names == "-" else ambiguous_names.split(",")
             ),
@@ -188,7 +188,7 @@ def build_receipts() -> list[dict]:
     for source in candidates:
         resolved = resolver[source["id"]]
         visibility, claim_id = classify_visibility(resolved, compiler_by_name)
-        type_text = resolved["exact_type_text"]
+        type_text = resolved["compiler_type_text"]
         type_digest = (
             hashlib.sha256(type_text.encode("utf-8")).hexdigest()
             if type_text is not None
@@ -209,8 +209,8 @@ def build_receipts() -> list[dict]:
             resolved_full_name=resolved["resolved_full_name"],
             compiler_kind=resolved["compiler_kind"],
             private_or_internal=resolved["private_or_internal"],
-            exact_type_text=type_text,
-            exact_type_sha256=type_digest,
+            compiler_type_text=type_text,
+            compiler_type_sha256=type_digest,
             registered_claim_id=claim_id,
         ).to_dict()
         receipt["match_count"] = resolved["match_count"]
