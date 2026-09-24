@@ -3,14 +3,17 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
+
+RHRC = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(RHRC))
 
 from ffbbp.v16_commutation import assess_categorical_snapshot_sufficiency
 from ffbbp.v16_contracts import XiMode, XiReductionContract
 from ffbbp.v16_gates import reduction_assurance_gate
 
-RHRC = Path(__file__).resolve().parents[1]
 REPO = RHRC.parents[1]
 CONFIG = RHRC / "ffbbp" / "configs" / "rhkg_candidate_reduction_v1.json"
 CANDIDATES = RHRC / "integration" / "generated" / "SOURCE_CANDIDATE_RESOLUTION.jsonl"
