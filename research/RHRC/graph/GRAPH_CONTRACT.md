@@ -1,7 +1,7 @@
-# RHKG Phase-2C Graph Contract
+# RHKG Phase-2D Graph Contract
 
-**Version:** 0.5  
-**Scope:** Phase-1 repository census/import graph plus complete registered theorem bindings, compiler-derived declaration dependencies, and deterministic dependency-kernel research views  
+**Version:** 0.6  
+**Scope:** Phase-1 repository census/import graph plus complete registered theorem bindings, compiler-derived declaration dependencies, deterministic dependency-kernel research views, and exact quotient/frontier analysis  
 **Authority:** derived only; subordinate to the RHKG Constitution and existing RHRC sources
 
 ## 1. Stable IDs
@@ -298,6 +298,112 @@ dependency names. Equal signatures mean exact equality of those dependency sets
 only. Strict closure containment is an exact set relation only.
 
 All Phase-2C products must carry:
+
+```text
+terminal_claim = RH_OPEN
+graph_theorem_promotion = false
+```
+
+**RH remains OPEN.**
+
+
+## 14. Phase-2D kernel quotient and bridge frontiers
+
+Phase 2D consumes the Phase-2C dependency closures without changing theorem
+authority. It partitions one configured proved-root cohort into exact Venn-style
+dependency atoms, profiles those atoms, and projects the compiler
+`USES_CONSTANT` graph across atom boundaries.
+
+The configured target is `RH_EQUIVALENCE_SURFACE`, with labels:
+
+```text
+A = R001_PRIME_UPPER_EQUIV_RH
+B = AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE
+C = AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE
+```
+
+### Root-exclusion invariant
+
+Phase-2D atoms are computed from each root's
+`transitive_local_dependencies` exactly as emitted by
+`THEOREM_DEPENDENCY_CLOSURE.json`. The root theorem itself is **not** inserted
+into its own dependency closure.
+
+This invariant is fail-closed. A root-including closure changes the partition and
+is not an equivalent representation.
+
+### Edge-direction invariant
+
+A frontier edge has the exact compiler direction
+
+```text
+source declaration -> compiler-reported used constant
+```
+
+It is not reversed to match an intuitive mathematical dependency narrative.
+
+### Reachability-monotonicity invariant
+
+For the A/B/C atom quotient, every cross-atom compiler edge must move from a
+strictly smaller root-membership set to a strictly larger one. If a declaration
+reachable from a given root uses another local declaration, that dependency is
+reachable from the same root as well.
+
+Therefore transitions such as `A -> ABC`, `B -> BC`, or `BC -> ABC` are
+structurally compatible with the closure construction, while `ABC -> A` is not.
+
+This monotonicity is a graph invariant, **not** independent evidence that the
+larger-membership declaration is a mathematically decisive reconvergence point.
+
+### Generated products
+
+Phase 2D adds:
+
+- `DEPENDENCY_COHORT_ATOMS.json`
+- `DEPENDENCY_KERNEL_QUOTIENT.json`
+- `DEPENDENCY_BRIDGE_FRONTIERS.json`
+
+The atom product records all nonempty membership signatures, including zero-count
+atoms, exact declaration sets, module/kind/role profiles, visibility counts, and
+hashes.
+
+The quotient product is a factual compression of those profiles. It does not
+label any module or declaration as generic, important, canonical, or decisive.
+
+The frontier product records exact local compiler edges whose endpoints lie in
+different atoms. It also separately probes the exact strict dependency-set
+containment
+
+```text
+R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM
+  subset of
+EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL
+```
+
+to expose the compiler boundary between the canonical prime-remainder substrate
+and the larger global-bottom arithmetic-residual implementation.
+
+### Candidate firewall
+
+A `bridge_candidate_eligible` edge is only an exact cross-region edge whose
+endpoints are not `REGISTERED_CLAIM_ROOT` declarations. Eligibility is a filter,
+not a ranking or theorem claim.
+
+Normative firewalls:
+
+```text
+dependency atom              != logical class
+cross-atom edge              != logical implication
+frontier declaration         != missing theorem
+small frontier               != mathematical sufficiency
+large frontier               != mathematical irrelevance
+module concentration         != mathematical importance
+shortest dependency path     != proof of semantic necessity
+bridge-candidate eligibility != theorem authority
+Phase-2D output              != claim promotion
+```
+
+All Phase-2D products must preserve:
 
 ```text
 terminal_claim = RH_OPEN

@@ -97,6 +97,131 @@ class DependencyViewTests(unittest.TestCase):
         pair = got["pairwise"][0]
         self.assertEqual(pair["containment"], "RIGHT_STRICT_SUBSET")
 
+    def phase2d_quotient(self) -> dict:
+        return {
+            "target_cohort_id": "ABC",
+            "members": [
+                {"label": "A", "claim_id": "A"},
+                {"label": "B", "claim_id": "B"},
+                {"label": "C", "claim_id": "C"},
+            ],
+            "containment_probe": {
+                "subset_claim_id": "C",
+                "superset_claim_id": "B",
+            },
+        }
+
+    def phase2d_declarations(self) -> list[dict]:
+        return [
+            {
+                "declaration": name,
+                "module": "Zeta23.T",
+                "declaration_kind": "THEOREM",
+                "graph_role": "LOCAL_DEPENDENCY",
+                "private_or_internal": False,
+            }
+            for name in ["Zeta23.T.x", "Zeta23.T.y", "Zeta23.T.z"]
+        ]
+
+    def test_phase2d_atoms_preserve_root_excluding_semantics(self) -> None:
+        got = views.dependency_cohort_atoms_view(
+            self.phase2d_declarations(),
+            self.closure(),
+            self.phase2d_quotient(),
+        )
+        by_sig = {row["signature"]: row for row in got["atoms"]}
+        self.assertEqual(got["union_count"], 3)
+        self.assertEqual(by_sig["ABC"]["declarations"], ["Zeta23.T.x"])
+        self.assertEqual(by_sig["AB"]["declarations"], ["Zeta23.T.y"])
+        self.assertEqual(by_sig["B"]["declarations"], ["Zeta23.T.z"])
+        self.assertEqual(by_sig["A"]["count"], 0)
+        self.assertNotIn(
+            "Zeta23.T.a",
+            {row["declaration"] for row in got["declaration_atoms"]},
+        )
+
+    def test_phase2d_frontier_direction_and_registered_root_filter(self) -> None:
+        closure = self.closure()
+        atoms = views.dependency_cohort_atoms_view(
+            self.phase2d_declarations(),
+            closure,
+            self.phase2d_quotient(),
+        )
+        receipt = [
+            {
+                "declaration": "Zeta23.T.x",
+                "repository_scope": "LOCAL",
+                "module": "Zeta23.T",
+                "graph_role": "LOCAL_DEPENDENCY",
+                "private_or_internal": False,
+                "dependencies": [],
+            },
+            {
+                "declaration": "Zeta23.T.y",
+                "repository_scope": "LOCAL",
+                "module": "Zeta23.T",
+                "graph_role": "LOCAL_DEPENDENCY",
+                "private_or_internal": False,
+                "dependencies": [
+                    {
+                        "constant": "Zeta23.T.x",
+                        "used_in_type": False,
+                        "used_in_value": True,
+                        "used_in_structure": False,
+                    }
+                ],
+            },
+            {
+                "declaration": "Zeta23.T.z",
+                "repository_scope": "LOCAL",
+                "module": "Zeta23.T",
+                "graph_role": "REGISTERED_CLAIM_ROOT",
+                "private_or_internal": False,
+                "dependencies": [
+                    {
+                        "constant": "Zeta23.T.y",
+                        "used_in_type": True,
+                        "used_in_value": False,
+                        "used_in_structure": False,
+                    }
+                ],
+            },
+        ]
+        got = views.dependency_bridge_frontiers_view(
+            receipt, closure, atoms, self.phase2d_quotient()
+        )
+        transitions = {
+            (row["source"], row["target"]): row
+            for row in got["cross_atom_edges"]
+        }
+        self.assertIn(("Zeta23.T.y", "Zeta23.T.x"), transitions)
+        self.assertEqual(
+            transitions[("Zeta23.T.y", "Zeta23.T.x")]["transition"],
+            "AB->ABC",
+        )
+        root_edge = transitions[("Zeta23.T.z", "Zeta23.T.y")]
+        self.assertFalse(root_edge["bridge_candidate_eligible"])
+        self.assertTrue(root_edge["source_registered_root"])
+
+    def test_phase2d_rejects_root_including_closure(self) -> None:
+        closure = self.closure()
+        closure["entries"][0]["transitive_local_dependencies"].append("Zeta23.T.a")
+        declarations = self.phase2d_declarations() + [
+            {
+                "declaration": "Zeta23.T.a",
+                "module": "Zeta23.T",
+                "declaration_kind": "THEOREM",
+                "graph_role": "REGISTERED_CLAIM_ROOT",
+                "private_or_internal": False,
+            }
+        ]
+        with self.assertRaises(ValueError):
+            views.dependency_cohort_atoms_view(
+                declarations,
+                closure,
+                self.phase2d_quotient(),
+            )
+
     def test_signature_classes_detect_equal_and_strict_containment(self) -> None:
         closure = self.closure()
         closure["entries"].append(

@@ -1,0 +1,43 @@
+{
+  "schema_version": "RHKG-phase2d-kernel-quotient-config-0.6",
+  "target_cohort_id": "RH_EQUIVALENCE_SURFACE",
+  "members": [
+    {
+      "label": "A",
+      "claim_id": "R001_PRIME_UPPER_EQUIV_RH"
+    },
+    {
+      "label": "B",
+      "claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE"
+    },
+    {
+      "label": "C",
+      "claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE"
+    }
+  ],
+  "semantics": {
+    "closure": "transitive_local_dependencies from THEOREM_DEPENDENCY_CLOSURE.json",
+    "root_inclusion": false,
+    "edge_direction": "source declaration -> compiler-reported used constant",
+    "external_dependencies_in_atoms": false
+  },
+  "bridge_candidate_policy": {
+    "exclude_registered_root_endpoints": true,
+    "interpretation": "Eligibility only removes registered theorem-root endpoints from the bridge-candidate subset. It does not rank or certify mathematical importance."
+  },
+  "firewalls": [
+    "atom membership is exact dependency-set membership, not logical classification",
+    "cross-atom edge is compiler usage, not semantic implication",
+    "bridge frontier is discovery-only and does not establish a missing theorem",
+    "module or namespace concentration does not establish mathematical importance",
+    "registered RH-equivalent roots are excluded from bridge-candidate endpoints",
+    "Phase 2D cannot promote claims"
+  ],
+  "terminal_claim": "RH_OPEN",
+  "graph_theorem_promotion": false,
+  "containment_probe": {
+    "subset_claim_id": "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
+    "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+    "interpretation": "Exact local-dependency-set containment probe connecting the canonical prime-remainder normal form to the live global-bottom arithmetic residual endpoint."
+  }
+}

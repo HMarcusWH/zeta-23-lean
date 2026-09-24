@@ -10,11 +10,15 @@ from pathlib import Path
 
 from views import (
     coverage_view,
+    dependency_bridge_frontiers_view,
+    dependency_cohort_atoms_view,
     dependency_cohort_overlap_view,
     dependency_kernel_atlas_view,
+    dependency_kernel_quotient_view,
     dependency_signature_classes_view,
     reachability_view,
     resolve_dependency_farming_cohorts,
+    resolve_dependency_quotient_config,
     theorem_claim_view,
     theorem_dependency_closure_view,
 )
@@ -38,6 +42,9 @@ DECLARED_GENERATED_PRODUCTS = [
     "research/RHRC/graph/generated/DEPENDENCY_KERNEL_ATLAS.json",
     "research/RHRC/graph/generated/DEPENDENCY_COHORT_OVERLAP.json",
     "research/RHRC/graph/generated/DEPENDENCY_SIGNATURE_CLASSES.json",
+    "research/RHRC/graph/generated/DEPENDENCY_COHORT_ATOMS.json",
+    "research/RHRC/graph/generated/DEPENDENCY_KERNEL_QUOTIENT.json",
+    "research/RHRC/graph/generated/DEPENDENCY_BRIDGE_FRONTIERS.json",
     "research/RHRC/graph/generated/REPOSITORY_COVERAGE.json",
     "research/RHRC/graph/generated/ENTRYPOINT_REACHABILITY.json",
     "research/RHRC/graph/generated/UNRESOLVED_GRAPH_ITEMS.json",
@@ -51,6 +58,8 @@ REGISTERED_BINDINGS = "research/RHRC/REGISTERED_THEOREM_BINDINGS.json"
 REGISTERED_BINDINGS_LEAN = "Zeta23/RHRC/RegisteredClaimBindings.lean"
 COMPILER_DEPENDENCIES = "research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl"
 DEPENDENCY_FARMING_COHORTS = "research/RHRC/graph/DEPENDENCY_FARMING_COHORTS.json"
+DEPENDENCY_QUOTIENT_CONFIG = "research/RHRC/graph/DEPENDENCY_QUOTIENT_CONFIG.json"
+POST259_KERNEL_RECEIPT = "research/RHRC/receipts/RHKG_POST259_KERNEL_FIRST_CONTACT_2026_09_24.json"
 BOUNDARY = "research/RHRC/BOUNDARY.json"
 
 
@@ -346,6 +355,9 @@ def build_records() -> dict[str, object]:
     )
     dependency_farming_config = json.loads(
         (REPO / DEPENDENCY_FARMING_COHORTS).read_text(encoding="utf-8")
+    )
+    dependency_quotient_config = json.loads(
+        (REPO / DEPENDENCY_QUOTIENT_CONFIG).read_text(encoding="utf-8")
     )
     compiler_receipt = load_compiler_dependency_receipt()
     compiler_external_modules = sorted(
@@ -697,9 +709,28 @@ def build_records() -> dict[str, object]:
     dependency_signature_classes = dependency_signature_classes_view(
         dependency_closure,
     )
+    dependency_quotient = resolve_dependency_quotient_config(
+        registered_binding_data,
+        dependency_farming_cohorts,
+        dependency_quotient_config,
+    )
+    dependency_cohort_atoms = dependency_cohort_atoms_view(
+        lean_declarations,
+        dependency_closure,
+        dependency_quotient,
+    )
+    dependency_kernel_quotient = dependency_kernel_quotient_view(
+        dependency_cohort_atoms,
+    )
+    dependency_bridge_frontiers = dependency_bridge_frontiers_view(
+        compiler_receipt,
+        dependency_closure,
+        dependency_cohort_atoms,
+        dependency_quotient,
+    )
     unresolved = {
-        "schema_version": "RHKG-phase2c-unresolved-0.5",
-        "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_2C",
+        "schema_version": "RHKG-phase2d-unresolved-0.6",
+        "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_2D",
         "unknown_file_classes": sorted(
             row["path"] for row in repo_files if row["file_class"] == "UNKNOWN_FILE_CLASS"
         ),
@@ -730,6 +761,9 @@ def build_records() -> dict[str, object]:
         "dependency_kernel_atlas": dependency_kernel_atlas,
         "dependency_cohort_overlap": dependency_cohort_overlap,
         "dependency_signature_classes": dependency_signature_classes,
+        "dependency_cohort_atoms": dependency_cohort_atoms,
+        "dependency_kernel_quotient": dependency_kernel_quotient,
+        "dependency_bridge_frontiers": dependency_bridge_frontiers,
         "unresolved": unresolved,
     }
 
@@ -749,6 +783,9 @@ def rendered_outputs() -> dict[str, bytes]:
         "research/RHRC/graph/generated/DEPENDENCY_KERNEL_ATLAS.json": _pretty(records["dependency_kernel_atlas"]),
         "research/RHRC/graph/generated/DEPENDENCY_COHORT_OVERLAP.json": _pretty(records["dependency_cohort_overlap"]),
         "research/RHRC/graph/generated/DEPENDENCY_SIGNATURE_CLASSES.json": _pretty(records["dependency_signature_classes"]),
+        "research/RHRC/graph/generated/DEPENDENCY_COHORT_ATOMS.json": _pretty(records["dependency_cohort_atoms"]),
+        "research/RHRC/graph/generated/DEPENDENCY_KERNEL_QUOTIENT.json": _pretty(records["dependency_kernel_quotient"]),
+        "research/RHRC/graph/generated/DEPENDENCY_BRIDGE_FRONTIERS.json": _pretty(records["dependency_bridge_frontiers"]),
         "research/RHRC/graph/generated/UNRESOLVED_GRAPH_ITEMS.json": _pretty(records["unresolved"]),
     }
 
@@ -790,7 +827,7 @@ def check_outputs(outputs: dict[str, bytes]) -> list[str]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Build/check RHKG Phase-2C generated products")
+    parser = argparse.ArgumentParser(description="Build/check RHKG Phase-2D generated products")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--write", action="store_true", help="regenerate checked-in products")
     group.add_argument("--check", action="store_true", help="verify checked-in products are byte-current")
