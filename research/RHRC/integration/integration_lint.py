@@ -8,6 +8,11 @@ REPO = RHRC.parents[1]
 INTEGRATION = RHRC / "integration"
 
 
+def bootstrap_materializer_present() -> bool:
+    workflow_dir = REPO / ".github" / "workflows"
+    return any(workflow_dir.glob("rhrc_*_materializer.yml"))
+
+
 def load(name: str) -> dict:
     return json.loads((INTEGRATION / name).read_text(encoding="utf-8"))
 
@@ -31,6 +36,10 @@ def main() -> int:
         raise SystemExit("integration_lint: frozen control authority must remain PR #117")
     if state["repository_graph_authority"]["pr"] != 263:
         raise SystemExit("integration_lint: graph authority must remain PR #263")
+    if state.get("integration_foundation_authority", {}).get("pr") != 264:
+        raise SystemExit("integration_lint: integration foundation authority must remain PR #264")
+    if state.get("current_operation") != "FFBBP_RHKG_SNAPSHOT_REDUCTION_ASSURANCE":
+        raise SystemExit("integration_lint: current integration operation drift")
     if state.get("theorem_promotion") is not False:
         raise SystemExit("integration_lint: integration state attempts theorem promotion")
     if boundary["claim_firewall"].get("theorem_promotion") is not False:
@@ -52,6 +61,8 @@ def main() -> int:
         )
     if by_id["FFBBP_ASSURANCE"].get("inherits_run42c_qualification") is not False:
         raise SystemExit("integration_lint: FFBBP v1.6 may not inherit RUN42C qualification")
+    if by_id["FFBBP_ASSURANCE"].get("status") != "RHKG_SNAPSHOT_ASSURANCE_INTEGRATED_NOT_RUN42C_QUALIFIED":
+        raise SystemExit("integration_lint: FFBBP RHKG assurance status drift")
     if by_id["MCM_HMWH"]["status"] != "NOT_YET_INTEGRATED":
         raise SystemExit("integration_lint: MCM-HMWH must remain not-yet-integrated in foundation PR")
 
@@ -182,6 +193,45 @@ def main() -> int:
                 raise SystemExit(
                     "integration_lint: hidden-body sentinel unexpectedly entered registered closure"
                 )
+
+    ffbbp_config_path = RHRC / "ffbbp" / "configs" / "rhkg_candidate_reduction_v1.json"
+    ffbbp_report_path = RHRC / "ffbbp" / "generated" / "RHKG_CANDIDATE_REDUCTION_ASSURANCE.json"
+    ffbbp_config = json.loads(ffbbp_config_path.read_text(encoding="utf-8"))
+    if ffbbp_config.get("theory_version") != "1.6.0":
+        raise SystemExit("integration_lint: FFBBP RHKG config theory-version drift")
+    if ffbbp_config.get("xi_mode") != "SNAPSHOT":
+        raise SystemExit("integration_lint: FFBBP RHKG adapter must remain snapshot Xi")
+    if ffbbp_config.get("inherits_run42c_qualification") is not False:
+        raise SystemExit("integration_lint: FFBBP RHKG adapter may not inherit RUN42C qualification")
+    if ffbbp_config.get("theorem_promotion") is not False:
+        raise SystemExit("integration_lint: FFBBP RHKG config attempts theorem promotion")
+
+    if bootstrap_materializer_present():
+        print("integration_lint: FFBBP RHKG generated-report validation deferred during one-shot bootstrap")
+    else:
+        report = json.loads(ffbbp_report_path.read_text(encoding="utf-8"))
+        if report.get("schema_version") != "RHRC-FFBBP-RHKG-assurance-report-1.0":
+            raise SystemExit("integration_lint: FFBBP RHKG report schema drift")
+        if report.get("terminal_claim") != "RH_OPEN" or report.get("theorem_promotion") is not False:
+            raise SystemExit("integration_lint: FFBBP RHKG report authority drift")
+        if report.get("inherits_run42c_qualification") is not False:
+            raise SystemExit("integration_lint: FFBBP RHKG report qualification drift")
+        if report["input_snapshot"]["candidate_count"] != 2356:
+            raise SystemExit("integration_lint: FFBBP RHKG candidate-count drift")
+        if report["input_snapshot"]["source_only_public_theorem_count"] != 680:
+            raise SystemExit("integration_lint: FFBBP RHKG source-only-count drift")
+        module_only = report["reductions"]["MODULE_ONLY_SNAPSHOT"]
+        if module_only["assurance_gate"]["passed"] is not False:
+            raise SystemExit("integration_lint: module-only negative control unexpectedly passed")
+        if module_only["decision_factorization"]["mixed_value_fiber_count"] != 128:
+            raise SystemExit("integration_lint: module-only decision counterexample count drift")
+        selected = report["reductions"][report["selected_reduction"]]
+        if report["selected_reduction"] != "MODULE_VISIBILITY_SNAPSHOT":
+            raise SystemExit("integration_lint: selected FFBBP reduction drift")
+        if selected["assurance_gate"]["passed"] is not True:
+            raise SystemExit("integration_lint: selected FFBBP reduction no longer assured")
+        if report["source_only_module_cohort_count"] != 195:
+            raise SystemExit("integration_lint: source-only module cohort count drift")
 
     print("RHRC INTEGRATION LINT: PASS")
     return 0
