@@ -1,0 +1,64 @@
+{
+  "schema_version": "RHKG-phase2c-farming-cohorts-0.5",
+  "purpose": "Deterministic research cohorts for exact compiler-derived dependency-kernel, shell, overlap, and containment analysis. Cohort membership is discovery-only and cannot create theorem authority.",
+  "route_cohorts": [
+    {
+      "id": "ROUTE_R001",
+      "route_id": "R001_exceptional_zero"
+    },
+    {
+      "id": "ROUTE_R002",
+      "route_id": "R002_multi_probe"
+    },
+    {
+      "id": "ROUTE_R003",
+      "route_id": "R003_ccm_bridge"
+    },
+    {
+      "id": "ROUTE_R004",
+      "route_id": "R004_prolate_v2"
+    }
+  ],
+  "explicit_cohorts": [
+    {
+      "id": "RH_EQUIVALENCE_SURFACE",
+      "claim_ids": [
+        "R001_PRIME_UPPER_EQUIV_RH",
+        "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+        "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE"
+      ]
+    },
+    {
+      "id": "GLOBAL_BOTTOM_CHAIN",
+      "claim_ids": [
+        "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+        "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+        "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+        "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
+        "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE"
+      ]
+    },
+    {
+      "id": "CANONICAL_ARITHMETIC_SURFACE",
+      "claim_ids": [
+        "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
+        "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+        "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL"
+      ]
+    }
+  ],
+  "firewalls": [
+    "shared dependency does not imply theorem equivalence",
+    "equal dependency closure does not imply theorem equivalence",
+    "closure containment does not imply logical implication",
+    "high root coverage does not imply mathematical importance",
+    "module import does not imply declaration dependency",
+    "registry dependency does not imply Lean USES_CONSTANT",
+    "external Mathlib overlap is not a project-local mathematical kernel",
+    "cohort membership does not create theorem authority",
+    "Phase 2C cannot promote claims"
+  ],
+  "terminal_claim": "RH_OPEN",
+  "graph_theorem_promotion": false
+}
