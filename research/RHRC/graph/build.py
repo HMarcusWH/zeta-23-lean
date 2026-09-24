@@ -10,7 +10,11 @@ from pathlib import Path
 
 from views import (
     coverage_view,
+    dependency_cohort_overlap_view,
+    dependency_kernel_atlas_view,
+    dependency_signature_classes_view,
     reachability_view,
+    resolve_dependency_farming_cohorts,
     theorem_claim_view,
     theorem_dependency_closure_view,
 )
@@ -31,6 +35,9 @@ DECLARED_GENERATED_PRODUCTS = [
     "research/RHRC/graph/generated/relations.jsonl",
     "research/RHRC/graph/generated/THEOREM_CLAIM_MAP.json",
     "research/RHRC/graph/generated/THEOREM_DEPENDENCY_CLOSURE.json",
+    "research/RHRC/graph/generated/DEPENDENCY_KERNEL_ATLAS.json",
+    "research/RHRC/graph/generated/DEPENDENCY_COHORT_OVERLAP.json",
+    "research/RHRC/graph/generated/DEPENDENCY_SIGNATURE_CLASSES.json",
     "research/RHRC/graph/generated/REPOSITORY_COVERAGE.json",
     "research/RHRC/graph/generated/ENTRYPOINT_REACHABILITY.json",
     "research/RHRC/graph/generated/UNRESOLVED_GRAPH_ITEMS.json",
@@ -43,6 +50,7 @@ CLAIM_BINDINGS_LEAN = "Zeta23/CCM/ClaimBindings.lean"
 REGISTERED_BINDINGS = "research/RHRC/REGISTERED_THEOREM_BINDINGS.json"
 REGISTERED_BINDINGS_LEAN = "Zeta23/RHRC/RegisteredClaimBindings.lean"
 COMPILER_DEPENDENCIES = "research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl"
+DEPENDENCY_FARMING_COHORTS = "research/RHRC/graph/DEPENDENCY_FARMING_COHORTS.json"
 BOUNDARY = "research/RHRC/BOUNDARY.json"
 
 
@@ -335,6 +343,9 @@ def build_records() -> dict[str, object]:
     promoted_data = json.loads((REPO / PROMOTED_BINDINGS).read_text(encoding="utf-8"))
     registered_binding_data = json.loads(
         (REPO / REGISTERED_BINDINGS).read_text(encoding="utf-8")
+    )
+    dependency_farming_config = json.loads(
+        (REPO / DEPENDENCY_FARMING_COHORTS).read_text(encoding="utf-8")
     )
     compiler_receipt = load_compiler_dependency_receipt()
     compiler_external_modules = sorted(
@@ -667,6 +678,25 @@ def build_records() -> dict[str, object]:
         compiler_receipt,
         registered_binding_data,
     )
+    dependency_farming_cohorts = resolve_dependency_farming_cohorts(
+        claims_data,
+        registered_binding_data,
+        routes_data,
+        dependency_farming_config,
+    )
+    dependency_kernel_atlas = dependency_kernel_atlas_view(
+        compiler_receipt,
+        dependency_closure,
+        dependency_farming_cohorts,
+    )
+    dependency_cohort_overlap = dependency_cohort_overlap_view(
+        compiler_receipt,
+        dependency_closure,
+        dependency_farming_cohorts,
+    )
+    dependency_signature_classes = dependency_signature_classes_view(
+        dependency_closure,
+    )
     unresolved = {
         "schema_version": "RHKG-phase2b-unresolved-0.4",
         "semantic_coverage_status": "PARTIAL_BY_DESIGN_PHASE_2B",
@@ -697,6 +727,9 @@ def build_records() -> dict[str, object]:
         "reachability": reachability,
         "theorem_claim_map": theorem_claim_map,
         "dependency_closure": dependency_closure,
+        "dependency_kernel_atlas": dependency_kernel_atlas,
+        "dependency_cohort_overlap": dependency_cohort_overlap,
+        "dependency_signature_classes": dependency_signature_classes,
         "unresolved": unresolved,
     }
 
@@ -713,6 +746,9 @@ def rendered_outputs() -> dict[str, bytes]:
         "research/RHRC/graph/generated/ENTRYPOINT_REACHABILITY.json": _pretty(records["reachability"]),
         "research/RHRC/graph/generated/THEOREM_CLAIM_MAP.json": _pretty(records["theorem_claim_map"]),
         "research/RHRC/graph/generated/THEOREM_DEPENDENCY_CLOSURE.json": _pretty(records["dependency_closure"]),
+        "research/RHRC/graph/generated/DEPENDENCY_KERNEL_ATLAS.json": _pretty(records["dependency_kernel_atlas"]),
+        "research/RHRC/graph/generated/DEPENDENCY_COHORT_OVERLAP.json": _pretty(records["dependency_cohort_overlap"]),
+        "research/RHRC/graph/generated/DEPENDENCY_SIGNATURE_CLASSES.json": _pretty(records["dependency_signature_classes"]),
         "research/RHRC/graph/generated/UNRESOLVED_GRAPH_ITEMS.json": _pretty(records["unresolved"]),
     }
 
@@ -754,7 +790,7 @@ def check_outputs(outputs: dict[str, bytes]) -> list[str]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Build/check RHKG Phase-2B generated products")
+    parser = argparse.ArgumentParser(description="Build/check RHKG Phase-2C generated products")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--write", action="store_true", help="regenerate checked-in products")
     group.add_argument("--check", action="store_true", help="verify checked-in products are byte-current")
