@@ -70,8 +70,8 @@ jobs:
         run: lake build Zeta23.RHRC.DeclarationDependencyExport
       - name: Check RHKG compiler dependency receipt
         run: python3 research/RHRC/tools/lean_dependency_extract.py --check
-      - name: Build source-candidate compiler resolver
-        run: lake build Zeta23.RHRC.SourceCandidateResolution
+      - name: Build RH formal-core source surface and candidate resolver
+        run: lake build Zeta23.CCM Zeta23.ExceptionalZero Zeta23.RHRC.SourceCandidateResolution
       - name: Check RH_FORMAL_CORE source-candidate exactification
         run: python3 research/RHRC/integration/candidate_exactify.py --check
       - name: Upload source-candidate exactification receipts
