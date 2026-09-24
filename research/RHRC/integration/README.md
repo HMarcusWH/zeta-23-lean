@@ -24,11 +24,12 @@ objects are source-discovery records, not compiler declarations.
 
 The candidate exactifier takes the RH_FORMAL_CORE theorem/lemma source surface
 and asks Lean to resolve each source item against the exact elaborated
-environment using the pair:
-
-```text
-(module, final declaration-name component)
-```
+environment using the exact originating module together with the source-spelled declaration
+name as a suffix constraint on the compiler declaration. This handles both
+unqualified source spellings such as `hasDerivAt_sourceAtomPairing` and
+qualified source spellings such as
+`GlobalBottomResidualState.primeTestWeight_endpoint_order_eight_of_evenStrict`
+without guessing a namespace.
 
 Resolution is fail-closed:
 
