@@ -40,7 +40,9 @@ Resolution is fail-closed:
 
 A uniquely resolved public theorem is then compared against the sealed
 registered-root compiler dependency receipt and classified as already visible
-or source-only.
+or source-only. Receipts also carry a compiler-rendered type string and digest;
+that rendering is descriptive and the resolved Lean declaration identity remains
+the authority-bearing identity.
 
 `SOURCE_ONLY_PUBLIC_THEOREM` means only that the declaration is absent from
 the current registered-root compiler dependency closure. It does **not** mean
