@@ -34,6 +34,8 @@ jobs:
         run: lake build Zeta23.RHRC.RegisteredClaimBindings
       - name: Validate complete registered theorem bindings
         run: python3 research/RHRC/tools/registered_theorem_binding_lint.py
+      - name: Build RHKG compiler dependency exporter
+        run: lake build Zeta23.RHRC.DeclarationDependencyExport
       - name: Materialize compiler dependency receipt
         run: python3 research/RHRC/tools/lean_dependency_extract.py --write
       - name: Regenerate deterministic RHKG products
