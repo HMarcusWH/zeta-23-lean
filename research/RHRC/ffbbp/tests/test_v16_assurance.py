@@ -7,7 +7,7 @@ RHRC = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(RHRC))
 
 from ffbbp.v16_commutation import assess_decision, assess_diagnostic
-from ffbbp.v16_contracts import ExplicitWitnessCertificate, MaskingStatus
+from ffbbp.v16_contracts import ExplicitWitnessCertificate, MaskingStatus, XiMode, XiReductionContract
 from ffbbp.v16_gates import reduction_assurance_gate
 from ffbbp.v16_horizon import ResidualHorizonContract, HorizonStatus, certify_horizon
 from ffbbp.v16_witness import assess_witness
@@ -53,7 +53,10 @@ class FFBBPV16AssuranceTests(unittest.TestCase):
         result = reduction_assurance_gate(
             diagnostic_commutation_pass=True,
             decision_bearing=True,
+            decision_sufficiency_pass=True,
             decision_commutation_pass=False,
+            stateful_reduction=False,
+            transition_closure_pass=None,
             horizon_bearing=False,
             horizon_certificate=None,
             witness_bearing=False,
@@ -61,6 +64,56 @@ class FFBBPV16AssuranceTests(unittest.TestCase):
         )
         self.assertFalse(result.passed)
         self.assertIn("DECISION_COMMUTATION_NOT_ESTABLISHED", result.blockers)
+
+    def test_decision_gate_requires_snapshot_sufficiency(self):
+        result = reduction_assurance_gate(
+            diagnostic_commutation_pass=True,
+            decision_bearing=True,
+            decision_sufficiency_pass=False,
+            decision_commutation_pass=True,
+            stateful_reduction=False,
+            transition_closure_pass=None,
+            horizon_bearing=False,
+            horizon_certificate=None,
+            witness_bearing=False,
+            witness_pass=None,
+        )
+        self.assertFalse(result.passed)
+        self.assertIn("DECISION_SUFFICIENCY_NOT_ESTABLISHED", result.blockers)
+
+    def test_stateful_reduction_requires_transition_closure(self):
+        result = reduction_assurance_gate(
+            diagnostic_commutation_pass=True,
+            decision_bearing=False,
+            decision_sufficiency_pass=None,
+            decision_commutation_pass=None,
+            stateful_reduction=True,
+            transition_closure_pass=None,
+            horizon_bearing=False,
+            horizon_certificate=None,
+            witness_bearing=False,
+            witness_pass=None,
+        )
+        self.assertFalse(result.passed)
+        self.assertIn("STATEFUL_TRANSITION_CLOSURE_NOT_ESTABLISHED", result.blockers)
+
+    def test_snapshot_contract_matches_v16_typed_surface(self):
+        contract = XiReductionContract(
+            reduction_id="r",
+            xi_mode=XiMode.SNAPSHOT,
+            source_state_schema="full",
+            xi_schema="xi",
+            reduction_map_version="1",
+            reference_path_id="ref",
+            diagnostic_map_id="diag",
+            decision_map_id="decision",
+            metric_refs=("exact-categorical",),
+            clock_contract_refs=("not-applicable-static",),
+            trust_region={"scope": "fixture"},
+            claim_cap_ref="cap",
+            provenance_hash="0" * 64,
+        )
+        contract.validate()
 
 
 if __name__ == "__main__":
