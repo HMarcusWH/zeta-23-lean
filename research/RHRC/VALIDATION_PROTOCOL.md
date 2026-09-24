@@ -756,3 +756,30 @@ Derive all conjugation/orientation factors in the secular overlap identity from 
 At that stage, the next research target was `RETAINED_CROSS_PARITY_SECULAR_COMPLETION`. Research certificate != Lean theorem; supporting lemma != negative-root exclusion; neither implies RH.
 
 **RH remains OPEN.**
+
+
+## FFBBP v1.6 RHKG reduction-assurance gate
+
+The FFBBP RHKG adapter is a **snapshot-only research-control gate**. It consumes
+the Lean-exact source-candidate receipt produced by the integration foundation
+and must reproduce
+`research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json`.
+
+Validation requirements:
+
+1. FFBBP v1.6 must not inherit RUN42C qualification.
+2. The full reference path is the exact `LeanCandidateReceipt` population.
+3. The diagnostic map is exact `visibility_class`.
+4. The categorical decision is
+   `visibility_class == SOURCE_ONLY_PUBLIC_THEOREM`.
+5. Decision sufficiency is checked fiber-by-fiber on the finite snapshot.
+6. `MODULE_ONLY_SNAPSHOT` is a frozen negative control and must fail.
+7. `MODULE_VISIBILITY_SNAPSHOT` is the selected post-reference cohort
+   projection and must pass exact diagnostic/decision factorization.
+8. No stateful Xi transition closure, horizon theorem, mathematical relevance
+   ranking, or theorem promotion is authorized.
+9. The report must remain byte-current after all source-candidate and RHKG
+   generated products are materialized.
+
+A pass authorizes only the declared post-reference cohort-navigation use. RH
+remains OPEN.
