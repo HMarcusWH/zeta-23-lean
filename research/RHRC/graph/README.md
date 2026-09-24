@@ -99,6 +99,50 @@ does not imply that a local source file directly imports that module.
 
 The graph remains a derived integration layer and **RH remains OPEN**.
 
+
+## Phase 2C
+
+Phase 2C consumes the exact Phase-2B compiler closure as a **research-analysis
+surface**. It does not add Lean theorem authority.
+
+`DEPENDENCY_FARMING_COHORTS.json` defines deterministic route selectors and
+explicit proved-root cohorts. Every explicit member must resolve to the complete
+registered `PROVED_UNCONDITIONAL` binding surface; OPEN or unknown claims fail
+closed.
+
+The generated research views are:
+
+- `DEPENDENCY_KERNEL_ATLAS.json`: project-local declarations annotated by the
+  registered roots and research cohorts that reach them;
+- `DEPENDENCY_COHORT_OVERLAP.json`: exact cohort unions, intersections,
+  per-member subtraction shells, pairwise overlaps, and exact set containments;
+- `DEPENDENCY_SIGNATURE_CLASSES.json`: SHA-256 fingerprints of sorted local
+  dependency closures, exact-equal closure classes, and strict closure
+  containments.
+
+The analysis deliberately separates the project-local kernel from external
+Mathlib/Lean boundaries. Shared dependencies, equal closures, set containment,
+high reach, and cohort membership are structural facts about the checked proof
+implementation; none imply theorem equivalence, logical implication, mathematical
+importance, or claim promotion.
+
+A read-only query surface is available:
+
+```bash
+python research/RHRC/tools/query_dependencies.py --claim R001_PRIME_UPPER_EQUIV_RH
+python research/RHRC/tools/query_dependencies.py --compare \
+  R001_PRIME_UPPER_EQUIV_RH \
+  AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE
+python research/RHRC/tools/query_dependencies.py --intersect RH_EQUIVALENCE_SURFACE
+```
+
+The primary Phase-2C research question is whether differently presented
+RH-equivalent results share a nontrivial project-local dependency kernel after
+their theorem-specific shells are subtracted. A negative result is informative:
+it falsifies the naive implementation-level common-kernel hypothesis.
+
+**RH remains OPEN.**
+
 ## Commands
 
 From the repository root:
@@ -116,7 +160,8 @@ python research/RHRC/graph/validate.py
 ```
 
 Generated products live under `research/RHRC/graph/generated/`. Phase 2B adds
-`THEOREM_DEPENDENCY_CLOSURE.json`; the compiler-derived receipt lives separately
+`THEOREM_DEPENDENCY_CLOSURE.json`; Phase 2C adds the dependency kernel atlas,
+cohort-overlap view, and signature classes. The compiler-derived receipt lives separately
 under `research/RHRC/graph/compiler/` and is checked by Lean CI before RHKG
 consumes it. Generated graph products remain non-authoritative views and mirrors.
 If a generated record disagrees with an authoritative or compiler-derived source,
