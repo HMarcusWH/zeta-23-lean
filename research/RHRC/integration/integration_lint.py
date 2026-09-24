@@ -85,13 +85,65 @@ def main() -> int:
     if not host_toolchain.endswith(by_id["PERMANSSON_EXTERNAL"]["host_lean_toolchain"]):
         raise SystemExit("integration_lint: recorded host Lean toolchain drift")
 
-    summary = INTEGRATION / "generated" / "SOURCE_CANDIDATE_SUMMARY.json"
-    if summary.exists():
-        data = json.loads(summary.read_text(encoding="utf-8"))
+    summary_path = INTEGRATION / "generated" / "SOURCE_CANDIDATE_SUMMARY.json"
+    resolution_path = INTEGRATION / "generated" / "SOURCE_CANDIDATE_RESOLUTION.jsonl"
+    source_only_path = INTEGRATION / "generated" / "RH_CORE_SOURCE_ONLY_THEOREMS.jsonl"
+    if summary_path.exists():
+        data = json.loads(summary_path.read_text(encoding="utf-8"))
         if data.get("terminal_claim") != "RH_OPEN":
             raise SystemExit("integration_lint: candidate summary does not preserve RH_OPEN")
         if data.get("theorem_promotion") is not False:
             raise SystemExit("integration_lint: candidate summary attempts theorem promotion")
+
+        resolution_rows = [
+            json.loads(line)
+            for line in resolution_path.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        ]
+        source_only_rows = [
+            json.loads(line)
+            for line in source_only_path.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        ]
+        if data.get("candidate_count") != len(resolution_rows):
+            raise SystemExit("integration_lint: candidate summary/resolution count drift")
+        if data.get("source_only_public_theorem_count") != len(source_only_rows):
+            raise SystemExit("integration_lint: source-only summary/product count drift")
+
+        if resolution_rows:
+            source_hashes = {row.get("source_surface_sha256") for row in resolution_rows}
+            compiler_hashes = {
+                row.get("registered_compiler_receipt_sha256") for row in resolution_rows
+            }
+            toolchains = {row.get("lean_toolchain") for row in resolution_rows}
+            if source_hashes != {data.get("source_surface_sha256")}:
+                raise SystemExit("integration_lint: source-surface digest drift")
+            if compiler_hashes != {data.get("registered_compiler_receipt_sha256")}:
+                raise SystemExit("integration_lint: compiler-receipt digest drift")
+            if toolchains != {data.get("lean_toolchain")}:
+                raise SystemExit("integration_lint: Lean toolchain receipt drift")
+
+        for row in resolution_rows:
+            if row.get("claim_cap") != "DISCOVERY_ONLY":
+                raise SystemExit("integration_lint: candidate claim-cap widening")
+            if row.get("terminal_claim") != "RH_OPEN" or row.get("theorem_promotion") is not False:
+                raise SystemExit("integration_lint: candidate authority firewall drift")
+            if row.get("trust_zone") != "RH_FORMAL_CORE":
+                raise SystemExit("integration_lint: candidate escaped RH_FORMAL_CORE")
+            if row.get("source_command_kind") not in {"THEOREM", "LEMMA"}:
+                raise SystemExit("integration_lint: non theorem/lemma candidate entered farming set")
+
+        source_only_ids = {row["source_declaration_id"] for row in source_only_rows}
+        expected_source_only_ids = {
+            row["source_declaration_id"]
+            for row in resolution_rows
+            if row.get("visibility_class") == "SOURCE_ONLY_PUBLIC_THEOREM"
+        }
+        if source_only_ids != expected_source_only_ids:
+            raise SystemExit("integration_lint: source-only projection drift")
+        for row in source_only_rows:
+            if row.get("registered_claim_id") is not None:
+                raise SystemExit("integration_lint: source-only candidate carries registered claim")
 
     print("RHRC INTEGRATION LINT: PASS")
     return 0
