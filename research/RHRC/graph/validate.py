@@ -1149,9 +1149,9 @@ def main() -> int:
     unresolved = json.loads(
         (GENERATED / "UNRESOLVED_GRAPH_ITEMS.json").read_text(encoding="utf-8")
     )
-    if unresolved.get("schema_version") != "RHKG-phase2e-unresolved-0.7":
-        errors.append("UNRESOLVED_GRAPH_ITEMS is not Phase 2E current")
-    if unresolved.get("semantic_coverage_status") != "PARTIAL_BY_DESIGN_PHASE_2E":
+    if unresolved.get("schema_version") != "RHKG-final-closure-unresolved-1.0":
+        errors.append("UNRESOLVED_GRAPH_ITEMS is not final-closure current")
+    if unresolved.get("semantic_coverage_status") != "REPOSITORY_ACCOUNTING_CLOSED_SEMANTIC_DEEPENING_OPEN":
         errors.append("UNRESOLVED_GRAPH_ITEMS semantic coverage status drift")
     if unresolved.get("claim_firewall") != "RH_OPEN":
         errors.append("UNRESOLVED_GRAPH_ITEMS does not preserve RH_OPEN")
@@ -1213,8 +1213,20 @@ def main() -> int:
         errors.append("terminal claim is not OPEN")
 
     coverage = json.loads((GENERATED / "REPOSITORY_COVERAGE.json").read_text(encoding="utf-8"))
-    if coverage.get("schema_version") != "RHKG-phase2e-coverage-0.7":
-        errors.append("coverage view is not Phase 2E current")
+    if coverage.get("schema_version") != "RHKG-final-closure-coverage-1.0":
+        errors.append("coverage view is not final-closure current")
+    if coverage.get("lean_source_declaration_count") != len(lean_source_declarations):
+        errors.append("coverage source-declaration count drift")
+    if coverage.get("source_surface_module_count") != len(local_modules):
+        errors.append("coverage source-surface module count drift")
+    if coverage.get("source_surface_nonempty_module_count") != len(
+        {row["module"] for row in lean_source_declarations}
+    ):
+        errors.append("coverage nonempty source-surface module count drift")
+    if coverage.get("document_node_count") != len(document_nodes):
+        errors.append("coverage Document-node count drift")
+    if coverage.get("semantic_accounting_status") != "FILE_MODULE_DOCUMENT_AND_NAMED_SOURCE_SURFACE_CLOSED":
+        errors.append("coverage semantic-accounting status drift")
     if coverage.get("registered_proved_lean_declaration_count") != len(binding_by_id):
         errors.append("coverage registered-root count drift")
     if coverage.get("lean_declaration_count") != len(lean_declarations):
@@ -1246,6 +1258,8 @@ def main() -> int:
         "RHKG VALIDATION: PASS "
         f"({len(repo_files)} files; {len(local_modules)} local Lean modules; "
         f"{len(external_modules)} external module nodes; "
+        f"{len(lean_source_declarations)} named source declarations; "
+        f"{len(document_nodes)} document nodes; "
         f"{sum(d.get('graph_role') == 'REGISTERED_CLAIM_ROOT' for d in lean_declarations)} registered roots; "
         f"{sum(d.get('graph_role') == 'LOCAL_DEPENDENCY' for d in lean_declarations)} local dependencies; "
         f"{sum(d.get('graph_role') == 'EXTERNAL_BOUNDARY' for d in lean_declarations)} external boundaries; "
