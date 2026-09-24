@@ -1,8 +1,17 @@
 from __future__ import annotations
 
+import importlib.util
 import unittest
+from pathlib import Path
 
-from source_surface import exact_token_mentions, scan_named_source_declarations
+GRAPH = Path(__file__).resolve().parents[1]
+SPEC = importlib.util.spec_from_file_location("rhkg_source_surface", GRAPH / "source_surface.py")
+if SPEC is None or SPEC.loader is None:
+    raise RuntimeError("cannot load source_surface.py")
+source_surface = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(source_surface)
+exact_token_mentions = source_surface.exact_token_mentions
+scan_named_source_declarations = source_surface.scan_named_source_declarations
 
 
 def strip_comments(text: str) -> str:
