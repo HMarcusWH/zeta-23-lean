@@ -16,6 +16,7 @@ from pathlib import Path
 DECLARATION_RE = re.compile(
     r"""(?mx)
     ^[ \t]*
+    (?:@\[[^\]\n]*\][ \t]*)*
     (?:(?:private|protected|noncomputable|unsafe|scoped|local|partial)\s+)*
     (?P<kind>theorem|lemma|def|abbrev|opaque|axiom|structure|class|inductive)\s+
     (?P<name>[^\s(:={\[]+)
@@ -25,6 +26,7 @@ DECLARATION_RE = re.compile(
 NAMED_INSTANCE_RE = re.compile(
     r"""(?mx)
     ^[ \t]*
+    (?:@\[[^\]\n]*\][ \t]*)*
     (?:(?:private|protected|noncomputable|unsafe|scoped|local)\s+)*
     instance\s+(?P<name>[^\s:({\[]+)\s*(?:\([^\n]*?\)\s*)*:
     """
