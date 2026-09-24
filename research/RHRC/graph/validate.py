@@ -654,6 +654,99 @@ def main() -> int:
         if signature_classes != expected_signatures:
             errors.append("DEPENDENCY_SIGNATURE_CLASSES exact projection drift")
 
+        quotient_config = json.loads(
+            (REPO / graph_build.DEPENDENCY_QUOTIENT_CONFIG).read_text(encoding="utf-8")
+        )
+        try:
+            resolved_quotient = graph_build.resolve_dependency_quotient_config(
+                registered_bindings,
+                resolved_cohorts,
+                quotient_config,
+            )
+            expected_atoms = graph_build.dependency_cohort_atoms_view(
+                lean_declarations,
+                dependency_closure,
+                resolved_quotient,
+            )
+            expected_quotient = graph_build.dependency_kernel_quotient_view(
+                expected_atoms
+            )
+            expected_frontiers = graph_build.dependency_bridge_frontiers_view(
+                compiler_receipt,
+                dependency_closure,
+                expected_atoms,
+                resolved_quotient,
+            )
+        except ValueError as exc:
+            errors.append(f"dependency quotient configuration/view invalid: {exc}")
+            expected_atoms = expected_quotient = expected_frontiers = None
+
+        if expected_atoms is not None:
+            dependency_atoms = json.loads(
+                (GENERATED / "DEPENDENCY_COHORT_ATOMS.json").read_text(encoding="utf-8")
+            )
+            kernel_quotient = json.loads(
+                (GENERATED / "DEPENDENCY_KERNEL_QUOTIENT.json").read_text(encoding="utf-8")
+            )
+            bridge_frontiers = json.loads(
+                (GENERATED / "DEPENDENCY_BRIDGE_FRONTIERS.json").read_text(encoding="utf-8")
+            )
+            if dependency_atoms != expected_atoms:
+                errors.append("DEPENDENCY_COHORT_ATOMS exact projection drift")
+            if kernel_quotient != expected_quotient:
+                errors.append("DEPENDENCY_KERNEL_QUOTIENT exact projection drift")
+            if bridge_frontiers != expected_frontiers:
+                errors.append("DEPENDENCY_BRIDGE_FRONTIERS exact projection drift")
+
+            target_overlap = next(
+                (
+                    row
+                    for row in cohort_overlap["cohorts"]
+                    if row["cohort_id"] == resolved_quotient["target_cohort_id"]
+                ),
+                None,
+            )
+            if target_overlap is None:
+                errors.append("Phase 2D target cohort missing from Phase 2C overlap")
+            elif dependency_atoms.get("union_count") != target_overlap.get(
+                "local_dependency_union_count"
+            ):
+                errors.append(
+                    "Phase 2D atom union does not equal target cohort dependency union"
+                )
+
+            atom_rows = dependency_atoms.get("atoms", [])
+            declaration_rows = dependency_atoms.get("declaration_atoms", [])
+            if sum(row.get("count", 0) for row in atom_rows) != dependency_atoms.get(
+                "union_count"
+            ):
+                errors.append("Phase 2D atom partition count does not sum to union")
+            if len({row["declaration"] for row in declaration_rows}) != len(
+                declaration_rows
+            ):
+                errors.append("Phase 2D atom declaration mapping contains duplicates")
+
+            for edge in bridge_frontiers.get("cross_atom_edges", []):
+                if edge["source_atom"] == edge["target_atom"]:
+                    errors.append("Phase 2D frontier contains same-atom edge")
+                if edge.get("bridge_candidate_eligible") and (
+                    edge.get("source_registered_root")
+                    or edge.get("target_registered_root")
+                ):
+                    errors.append(
+                        "Phase 2D bridge candidate includes registered-root endpoint"
+                    )
+
+            for name, product in (
+                ("DEPENDENCY_COHORT_ATOMS", dependency_atoms),
+                ("DEPENDENCY_KERNEL_QUOTIENT", kernel_quotient),
+                ("DEPENDENCY_BRIDGE_FRONTIERS", bridge_frontiers),
+            ):
+                if product.get("terminal_claim") != "RH_OPEN":
+                    errors.append(f"{name} does not preserve RH_OPEN")
+                if product.get("graph_theorem_promotion") is not False:
+                    errors.append(f"{name} permits graph theorem promotion")
+
         for name, product in (
             ("DEPENDENCY_KERNEL_ATLAS", kernel_atlas),
             ("DEPENDENCY_COHORT_OVERLAP", cohort_overlap),
@@ -693,9 +786,9 @@ def main() -> int:
     unresolved = json.loads(
         (GENERATED / "UNRESOLVED_GRAPH_ITEMS.json").read_text(encoding="utf-8")
     )
-    if unresolved.get("schema_version") != "RHKG-phase2c-unresolved-0.5":
-        errors.append("UNRESOLVED_GRAPH_ITEMS is not Phase 2C current")
-    if unresolved.get("semantic_coverage_status") != "PARTIAL_BY_DESIGN_PHASE_2C":
+    if unresolved.get("schema_version") != "RHKG-phase2d-unresolved-0.6":
+        errors.append("UNRESOLVED_GRAPH_ITEMS is not Phase 2D current")
+    if unresolved.get("semantic_coverage_status") != "PARTIAL_BY_DESIGN_PHASE_2D":
         errors.append("UNRESOLVED_GRAPH_ITEMS semantic coverage status drift")
     if unresolved.get("claim_firewall") != "RH_OPEN":
         errors.append("UNRESOLVED_GRAPH_ITEMS does not preserve RH_OPEN")
@@ -757,8 +850,8 @@ def main() -> int:
         errors.append("terminal claim is not OPEN")
 
     coverage = json.loads((GENERATED / "REPOSITORY_COVERAGE.json").read_text(encoding="utf-8"))
-    if coverage.get("schema_version") != "RHKG-phase2c-coverage-0.5":
-        errors.append("coverage view is not Phase 2C current")
+    if coverage.get("schema_version") != "RHKG-phase2d-coverage-0.6":
+        errors.append("coverage view is not Phase 2D current")
     if coverage.get("registered_proved_lean_declaration_count") != len(binding_by_id):
         errors.append("coverage registered-root count drift")
     if coverage.get("lean_declaration_count") != len(lean_declarations):
