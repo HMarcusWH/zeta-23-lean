@@ -67,6 +67,28 @@ DECLARED_GENERATED_PRODUCTS = [
     "research/RHRC/graph/generated/DOCUMENT_SEMANTIC_CLOSURE.json",
 ]
 
+
+DECLARED_INTEGRATION_GENERATED_PRODUCTS = [
+    "research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl",
+    "research/RHRC/integration/generated/RH_CORE_SOURCE_ONLY_THEOREMS.jsonl",
+    "research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json",
+]
+
+ALL_DECLARED_GENERATED_PRODUCTS = (
+    DECLARED_GENERATED_PRODUCTS + DECLARED_INTEGRATION_GENERATED_PRODUCTS
+)
+
+GENERATED_PRODUCT_PRODUCER = {
+    **{
+        path: "research/RHRC/graph/build.py"
+        for path in DECLARED_GENERATED_PRODUCTS
+    },
+    **{
+        path: "research/RHRC/integration/candidate_exactify.py"
+        for path in DECLARED_INTEGRATION_GENERATED_PRODUCTS
+    },
+}
+
 CLAIM_REGISTRY = "research/RHRC/CLAIM_REGISTRY.json"
 ROUTE_REGISTRY = "research/RHRC/routes/ROUTE_REGISTRY.json"
 PROMOTED_BINDINGS = "research/RHRC/R003_PROMOTED_BINDINGS.json"
@@ -106,7 +128,7 @@ def tracked_files() -> list[str]:
     tracked = {p.decode("utf-8") for p in raw.split(b"\0") if p}
     # Generated RHKG products belong to physical coverage even during the
     # first bootstrap before they have been added to Git.
-    tracked.update(DECLARED_GENERATED_PRODUCTS)
+    tracked.update(ALL_DECLARED_GENERATED_PRODUCTS)
     return sorted(tracked)
 
 
@@ -293,7 +315,7 @@ def _subject_digest(repo_files: list[dict]) -> str:
 def build_records() -> dict[str, object]:
     contract = load_classification_contract()
     paths = tracked_files()
-    generated_set = set(DECLARED_GENERATED_PRODUCTS)
+    generated_set = set(ALL_DECLARED_GENERATED_PRODUCTS)
 
     repo_files: list[dict] = []
     for path in paths:
@@ -637,7 +659,7 @@ def build_records() -> dict[str, object]:
             add_rel(
                 "GENERATED_BY",
                 source["id"],
-                file_id("research/RHRC/graph/build.py"),
+                file_id(GENERATED_PRODUCT_PRODUCER[source["path"]]),
                 "GIT_EXACT",
             )
 
@@ -760,7 +782,7 @@ def build_records() -> dict[str, object]:
         registry_nodes,
         relations,
         subject_digest,
-        DECLARED_GENERATED_PRODUCTS,
+        ALL_DECLARED_GENERATED_PRODUCTS,
     )
     coverage["schema_version"] = "RHKG-final-closure-coverage-1.0"
     coverage["lean_source_declaration_count"] = len(source_declarations)
