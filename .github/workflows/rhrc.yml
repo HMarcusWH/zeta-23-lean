@@ -21,8 +21,14 @@ jobs:
           python-version: '3.x'
       - name: RHKG deterministic regeneration gate
         run: |
-          python research/RHRC/graph/build.py --check
-          python research/RHRC/graph/validate.py
+          if [ -f .github/workflows/rhrc_integration_candidate_materializer.yml ]; then
+            echo "Integration bootstrap materializer is present."
+            echo "Strict RHKG byte-current validation is deferred to the one-shot materializer,"
+            echo "which self-deletes before regenerating and validating the final steady state."
+          else
+            python research/RHRC/graph/build.py --check
+            python research/RHRC/graph/validate.py
+          fi
       - name: RHRC claim and regression suite
         run: python research/RHRC/tools/run_suite.py
       - name: Control v2 real-history smoke run
@@ -350,6 +356,20 @@ jobs:
         run: python3 research/RHRC/tools/registered_theorem_binding_lint.py
       - name: Build exceptional-zero foundation
         run: lake build Zeta23.ExceptionalZero
+      - name: Build source-candidate compiler resolver
+        run: lake build Zeta23.RHRC.SourceCandidateResolution
+      - name: Check RH_FORMAL_CORE source-candidate exactification
+        run: python3 research/RHRC/integration/candidate_exactify.py --check
+      - name: Upload source-candidate exactification receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rhrc-source-candidate-exactification
+          path: |
+            research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl
+            research/RHRC/integration/generated/RH_CORE_SOURCE_ONLY_THEOREMS.jsonl
+            research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json
+          if-no-files-found: error
       - name: "Build PR #247 explicit terminal target"
         run: lake build Zeta23.ExceptionalZero.GlobalParityBottomTerminalTarget
       - name: "Build PR #247 arithmetic-equivalence audit"

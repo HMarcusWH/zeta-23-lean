@@ -222,7 +222,7 @@ def main() -> int:
     if unknown:
         errors.append(f"unclassified tracked files: {unknown}")
 
-    declared_generated = set(graph_build.DECLARED_GENERATED_PRODUCTS)
+    declared_generated = set(graph_build.ALL_DECLARED_GENERATED_PRODUCTS)
     actual_generated = {row["path"] for row in repo_files if row["generated_product"]}
     if actual_generated != declared_generated:
         errors.append(
@@ -230,6 +230,18 @@ def main() -> int:
             f"missing={sorted(declared_generated - actual_generated)} "
             f"extra={sorted(actual_generated - declared_generated)}"
         )
+
+    generated_by_pairs = {
+        (rel["source"], rel["target"])
+        for rel in relations
+        if rel.get("kind") == "GENERATED_BY"
+    }
+    for path, producer in graph_build.GENERATED_PRODUCT_PRODUCER.items():
+        expected = (graph_build.file_id(path), graph_build.file_id(producer))
+        if expected not in generated_by_pairs:
+            errors.append(
+                f"generated product producer mismatch: {path} expected producer {producer}"
+            )
 
     for row in repo_files:
         if not (REPO / row["path"]).exists():

@@ -1,0 +1,41 @@
+{
+  "schema_version": "RHRC-integration-state-1.0",
+  "terminal_claim": "RH_OPEN",
+  "theorem_authority": {
+    "pr": 262,
+    "validated_head": "77cb78d86921cdd23f4d9279d5b47f2ced962fda",
+    "merge_commit": "cd2c5d3a2c5eda06712d67157524ad3a714772ea",
+    "tree": "19cd31f9508dadb54e06fe4adff6c1732f038527",
+    "status": "MERGED_GREEN_THEOREM_STATE"
+  },
+  "frozen_control_authority": {
+    "pr": 117,
+    "merge_commit": "19346f4c00d13bf33db95cbe5325233f86e54c12",
+    "tree": "c0d28740806ec22b5b477b426a2a31e459672dd1",
+    "status": "MERGED_GREEN_CONTROL_STATE",
+    "note": "Control v2 remains a frozen historical baseline and is not rewritten by the integration programme."
+  },
+  "repository_graph_authority": {
+    "pr": 263,
+    "merge_commit": "6f4c69f6435c3ecd09acae06c153cfaf906e9ca4",
+    "tree": "7632d1c4417922d7fd160f1f3199e83b0f25b38a",
+    "status": "MERGED_GREEN_SEMANTIC_CLOSURE",
+    "tracked_files": 1181,
+    "local_lean_modules": 636,
+    "named_source_declarations": 8311,
+    "document_nodes": 64,
+    "registered_roots": 76,
+    "graph_relations": 294007
+  },
+  "current_operation": "RH_CORE_SOURCE_CANDIDATE_EXACTIFICATION",
+  "candidate_scope": {
+    "trust_zone": "RH_FORMAL_CORE",
+    "source_command_kinds": [
+      "THEOREM",
+      "LEMMA"
+    ],
+    "authority_cap": "DISCOVERY_ONLY"
+  },
+  "theorem_promotion": false,
+  "graph_theorem_promotion": false
+}

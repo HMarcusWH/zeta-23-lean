@@ -1,0 +1,29 @@
+{
+  "schema_version": "RHRC-integration-boundary-1.0",
+  "terminal_claim": "RH_OPEN",
+  "claim_firewall": {
+    "proof_authority": "Lean/compiler plus registered claim-validation gates only",
+    "source_candidate_authority": "DISCOVERY_ONLY",
+    "framework_consensus_authority": "DISCOVERY_ONLY",
+    "theorem_promotion": false
+  },
+  "forbidden_promotions": [
+    "source text match->theorem authority",
+    "source candidate exactification->registered theorem",
+    "source-only declaration->independent mathematical information",
+    "graph proximity->mathematical implication",
+    "FFBBP PASS->mathematical theorem",
+    "FFBBP v1.6 assurance->RUN42C qualification",
+    "OoL route closure->mathematical theorem",
+    "Permansson regime classification->mathematical theorem",
+    "MCM-HMWH consensus->mathematical theorem",
+    "multi-framework agreement->PROVED",
+    "candidate dependency receipt->registered theorem dependency authority"
+  ],
+  "allowed_candidate_transitions": [
+    "LeanSourceDeclaration->LeanCandidateReceipt",
+    "LeanCandidateReceipt->DISCOVERY_ONLY_CANDIDATE_DEPENDENCY_RECEIPT",
+    "candidate->new Lean theorem attempt",
+    "successful Lean theorem attempt->normal claim-registration gates"
+  ]
+}

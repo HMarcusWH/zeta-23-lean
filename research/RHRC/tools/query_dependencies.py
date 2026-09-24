@@ -9,6 +9,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 GENERATED = ROOT / "graph" / "generated"
 COMPILER_RECEIPT = ROOT / "graph" / "compiler" / "REGISTERED_DECLARATION_DEPENDENCIES.jsonl"
+INTEGRATION_GENERATED = ROOT / "integration" / "generated"
+CANDIDATE_RESOLUTION = INTEGRATION_GENERATED / "SOURCE_CANDIDATE_RESOLUTION.jsonl"
+SOURCE_ONLY_THEOREMS = INTEGRATION_GENERATED / "RH_CORE_SOURCE_ONLY_THEOREMS.jsonl"
+SOURCE_CANDIDATE_SUMMARY = INTEGRATION_GENERATED / "SOURCE_CANDIDATE_SUMMARY.json"
 
 SPEC = importlib.util.spec_from_file_location("rhkg_views", ROOT / "graph" / "views.py")
 if SPEC is None or SPEC.loader is None:
@@ -19,6 +23,14 @@ SPEC.loader.exec_module(views)
 
 def load(name: str) -> dict:
     return json.loads((GENERATED / name).read_text(encoding="utf-8"))
+
+
+def load_jsonl(path: Path) -> list[dict]:
+    return [
+        json.loads(line)
+        for line in path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
 
 
 def load_compiler_receipt() -> list[dict]:
@@ -100,6 +112,9 @@ def main() -> int:
     group.add_argument("--atoms", metavar="COHORT")
     group.add_argument("--frontier", metavar="COHORT")
     group.add_argument("--path", nargs=2, metavar=("ROOT_CLAIM", "TARGET_DECLARATION"))
+    group.add_argument("--source-summary", action="store_true")
+    group.add_argument("--source-only", action="store_true")
+    group.add_argument("--source-candidate", metavar="SOURCE_DECLARATION_ID")
     parser.add_argument(
         "--projection",
         choices=views.DEPENDENCY_PROJECTIONS,
@@ -111,6 +126,34 @@ def main() -> int:
         ),
     )
     args = parser.parse_args()
+
+    if args.source_summary:
+        print(SOURCE_CANDIDATE_SUMMARY.read_text(encoding="utf-8"), end="")
+        return 0
+
+    if args.source_only:
+        rows = load_jsonl(SOURCE_ONLY_THEOREMS)
+        print(json.dumps({
+            "scope": "RH_FORMAL_CORE_SOURCE_ONLY_PUBLIC_THEOREMS",
+            "count": len(rows),
+            "entries": rows,
+            "interpretation": (
+                "Lean-exact source-discovery candidates absent from the current "
+                "registered-root compiler dependency closure; discovery only."
+            ),
+            "terminal_claim": "RH_OPEN",
+            "theorem_promotion": False,
+        }, sort_keys=True, indent=2, ensure_ascii=False))
+        return 0
+
+    if args.source_candidate:
+        rows = load_jsonl(CANDIDATE_RESOLUTION)
+        by_id = {row["source_declaration_id"]: row for row in rows}
+        row = by_id.get(args.source_candidate)
+        if row is None:
+            raise SystemExit(f"unknown source candidate: {args.source_candidate}")
+        print(json.dumps(row, sort_keys=True, indent=2, ensure_ascii=False))
+        return 0
 
     closure = load("THEOREM_DEPENDENCY_CLOSURE.json")
     overlap = load("DEPENDENCY_COHORT_OVERLAP.json")
