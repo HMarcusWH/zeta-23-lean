@@ -46,7 +46,7 @@ def coverage_view(
     local_deps = [d for d in lean_declarations if d["graph_role"] == "LOCAL_DEPENDENCY"]
     external_deps = [d for d in lean_declarations if d["graph_role"] == "EXTERNAL_BOUNDARY"]
     return {
-        "schema_version": "RHKG-phase2c-coverage-0.5",
+        "schema_version": "RHKG-phase2d-coverage-0.6",
         "tracked_file_count": len(repo_files),
         "subject_file_count": sum(not row["generated_product"] for row in repo_files),
         "generated_product_count": sum(row["generated_product"] for row in repo_files),
