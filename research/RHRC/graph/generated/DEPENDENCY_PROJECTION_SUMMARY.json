@@ -491,6 +491,14 @@
           "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral"
         },
         {
+          "claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+          "external_boundary_count": 2381,
+          "external_boundary_sha256": "97396bb637dd816bc5e640746b1e004de677899524c91db1ed9077ddfb3bf839",
+          "local_dependency_count": 1167,
+          "local_dependency_sha256": "edb5b2387bc25e9e52fce47084388bea800a09c0481e40e2267ba9315f60cf19",
+          "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.primeTestWeight_endpoint_order_eight_of_evenStrict"
+        },
+        {
           "claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
           "external_boundary_count": 1135,
           "external_boundary_sha256": "ada3f631b29707e37e04fde1dd2d6e7a79c9a389f01d44374e0cf0531fad9a6d",
@@ -1237,6 +1245,14 @@
           "local_dependency_count": 14,
           "local_dependency_sha256": "fdaeac35eb2fae3e949fcdd4cec8ed33b87fb3e4da169c175de2c06571d7dbd6",
           "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral"
+        },
+        {
+          "claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+          "external_boundary_count": 23,
+          "external_boundary_sha256": "22b072af6a10d4adc8948db39ce3a43d2f0abd0bd490b1ab2d831464c343b870",
+          "local_dependency_count": 13,
+          "local_dependency_sha256": "4e70e88e9e29008fd107bb5064c9c21ac7f2b8a2e6dc9c236803199c6f59c196",
+          "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.primeTestWeight_endpoint_order_eight_of_evenStrict"
         },
         {
           "claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
@@ -1987,6 +2003,14 @@
           "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral"
         },
         {
+          "claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+          "external_boundary_count": 2359,
+          "external_boundary_sha256": "c94ea558348403f0fcfe482677a35d94b1180b2487a37641fdffa68fb6efa8c4",
+          "local_dependency_count": 1125,
+          "local_dependency_sha256": "993a195a1e1f48168f3f2ecf1a3bd7e2ba466b1ac992767bb827692588c3761d",
+          "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.primeTestWeight_endpoint_order_eight_of_evenStrict"
+        },
+        {
           "claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
           "external_boundary_count": 1122,
           "external_boundary_sha256": "c3ea9d26e7637634e7193a07f6db0eec10e580aa4bd91e9156c08afc6dab5372",
@@ -2733,6 +2757,14 @@
           "local_dependency_count": 201,
           "local_dependency_sha256": "ddf82ea15e0a2b081b260e011334295c71fb9f353dccdc393c45aa08423d4867",
           "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral"
+        },
+        {
+          "claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+          "external_boundary_count": 347,
+          "external_boundary_sha256": "8bbf286dbae75c67b268e4d41d74167f779bd2d63911539f663a440dd5d7dd98",
+          "local_dependency_count": 197,
+          "local_dependency_sha256": "8a22378d42f71a6c1f9d74e3c424d0663899cf32fb58ba5c86d64b16782ebe04",
+          "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.primeTestWeight_endpoint_order_eight_of_evenStrict"
         },
         {
           "claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",

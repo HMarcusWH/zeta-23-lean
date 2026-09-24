@@ -676,6 +676,22 @@
     },
     {
       "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "claim_id": "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "claim_node_id": "rh:claim:R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
+      "claim_status": "PROVED_UNCONDITIONAL",
+      "compiler_binding_source": "Zeta23/RHRC/RegisteredClaimBindings.lean",
+      "declaration_id": "rh:decl:Zeta23.CCM.GlobalBottomResidualState.primeTestWeight_endpoint_order_eight_of_evenStrict",
+      "historical_r003_promoted": false,
+      "module": "Zeta23.CCM.GlobalParityBottomPrimeWeightJets",
+      "module_id": "rh:module:Zeta23.CCM.GlobalParityBottomPrimeWeightJets",
+      "provenance": "REGISTRY_EXACT",
+      "route": null,
+      "source_file_id": "rh:file:Zeta23/CCM/GlobalParityBottomPrimeWeightJets.lean",
+      "source_path": "Zeta23/CCM/GlobalParityBottomPrimeWeightJets.lean",
+      "theorem": "Zeta23.CCM.GlobalBottomResidualState.primeTestWeight_endpoint_order_eight_of_evenStrict"
+    },
+    {
+      "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
       "claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
       "claim_node_id": "rh:claim:R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
       "claim_status": "PROVED_UNCONDITIONAL",
@@ -1204,7 +1220,7 @@
     }
   ],
   "graph_theorem_promotion": false,
-  "registered_proved_binding_count": 75,
+  "registered_proved_binding_count": 76,
   "schema_version": "RHKG-phase2b-theorem-claim-map-0.4",
   "scope": "ALL_PROVED_UNCONDITIONAL_REGISTERED_CLAIMS",
   "terminal_claim": "RH_OPEN",

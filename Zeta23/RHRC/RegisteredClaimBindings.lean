@@ -28,6 +28,7 @@ import Zeta23.CCM.FirstBadRigidity
 import Zeta23.CCM.GlobalParityBottomBranchPackage
 import Zeta23.CCM.GlobalParityBottomGroundTrial
 import Zeta23.CCM.GlobalParityBottomPrimeWeight
+import Zeta23.CCM.GlobalParityBottomPrimeWeightJets
 import Zeta23.CCM.GlobalParityBottomSpectrum
 import Zeta23.CCM.LocalizedBasis
 import Zeta23.CCM.LocalizedFiniteSpace
@@ -231,6 +232,10 @@ import Zeta23.ZeroSide.TightMult
 -- R003_GLOBAL_BOTTOM_PRIME_WEIGHT
 #check Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral
 #print axioms Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral
+
+-- R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS
+#check Zeta23.CCM.GlobalBottomResidualState.primeTestWeight_endpoint_order_eight_of_evenStrict
+#print axioms Zeta23.CCM.GlobalBottomResidualState.primeTestWeight_endpoint_order_eight_of_evenStrict
 
 -- R003_GLOBAL_PARITY_BOTTOM_SPECTRUM
 #check Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad

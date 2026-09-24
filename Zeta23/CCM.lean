@@ -175,6 +175,7 @@ import Zeta23.CCM.GlobalParityBottomBranchPackage
 import Zeta23.CCM.GlobalParityBottomGroundTrial
 import Zeta23.CCM.GlobalParityBottomPrimeRemainder
 import Zeta23.CCM.GlobalParityBottomPrimeWeight
+import Zeta23.CCM.GlobalParityBottomPrimeWeightJets
 import Zeta23.CCM.GlobalParityBottomArithmeticTarget
 import Zeta23.CCM.CrossParitySecularCompletion
 import Zeta23.CCM.CrossParitySecularKernelDichotomy
