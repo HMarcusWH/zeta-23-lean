@@ -67,10 +67,10 @@ def render_driver(candidates: list[dict]) -> str:
             "import Zeta23.ExceptionalZero",
         ]
     )
-    entries = []
+    pushes = []
     for row in candidates:
-        entries.append(
-            "    { sourceId := "
+        pushes.append(
+            "  queries := queries.push { sourceId := "
             + lean_string(row["id"])
             + ", moduleName := "
             + lean_string(row["module"])
@@ -80,13 +80,14 @@ def render_driver(candidates: list[dict]) -> str:
             + lean_string(row["command_kind"])
             + " }"
         )
-    joined = ",\n".join(entries)
     return (
         imports
-        + "\n\nopen Zeta23.RHRC\n\nset_option maxRecDepth 100000 in\nrun_cmd do\n"
-        + "  Zeta23.RHRC.resolveSourceCandidates #[\n"
-        + joined
-        + "\n  ]\n"
+        + "\n\nopen Zeta23.RHRC\n\n"
+        + "set_option maxRecDepth 100000 maxHeartbeats 10000000 in\n"
+        + "run_cmd do\n"
+        + "  let mut queries : Array Zeta23.RHRC.SourceCandidateQuery := #[]\n"
+        + "\n".join(pushes)
+        + "\n  Zeta23.RHRC.resolveSourceCandidates queries\n"
     )
 
 
