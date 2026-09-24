@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: rhrc-integration-materialize-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   materialize:
     if: github.head_ref == 'rhrc/integration-candidate-exactification' && github.actor != 'github-actions[bot]'
