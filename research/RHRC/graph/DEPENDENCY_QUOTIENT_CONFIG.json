@@ -34,5 +34,10 @@
     "Phase 2D cannot promote claims"
   ],
   "terminal_claim": "RH_OPEN",
-  "graph_theorem_promotion": false
+  "graph_theorem_promotion": false,
+  "containment_probe": {
+    "subset_claim_id": "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
+    "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+    "interpretation": "Exact local-dependency-set containment probe connecting the canonical prime-remainder normal form to the live global-bottom arithmetic residual endpoint."
+  }
 }
