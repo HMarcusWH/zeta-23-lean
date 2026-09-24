@@ -43,7 +43,7 @@ def lean_string(value: str) -> str:
     return json.dumps(value, ensure_ascii=False)
 
 
-def render_driver(candidates: list[dict]) -> str:
+def validate_candidate_modules(candidates: list[dict]) -> None:
     modules = sorted({row["module"] for row in candidates})
     unsupported = [
         module
@@ -60,54 +60,62 @@ def render_driver(candidates: list[dict]) -> str:
             "RH_FORMAL_CORE candidate scope escaped the audited CCM/ExceptionalZero "
             f"aggregators: {unsupported[:10]}"
         )
-    imports = "\n".join(
-        [
-            "import Zeta23.RHRC.SourceCandidateResolution",
-            "import Zeta23.CCM",
-            "import Zeta23.ExceptionalZero",
-        ]
-    )
-    pushes = []
+
+
+def render_query_tsv(candidates: list[dict]) -> str:
+    lines = []
     for row in candidates:
-        pushes.append(
-            "  queries := queries.push { sourceId := "
-            + lean_string(row["id"])
-            + ", moduleName := "
-            + lean_string(row["module"])
-            + ", shortName := "
-            + lean_string(row["declared_name"])
-            + ", sourceKind := "
-            + lean_string(row["command_kind"])
-            + " }"
-        )
+        fields = [
+            row["id"],
+            row["module"],
+            row["declared_name"],
+            row["command_kind"],
+        ]
+        if any("\t" in value or "\n" in value or "\r" in value for value in fields):
+            fail(f"candidate contains invalid TSV control characters: {row['id']}")
+        lines.append("\t".join(fields))
+    return "\n".join(lines) + "\n"
+
+
+def render_driver(query_path: Path) -> str:
     return (
-        imports
-        + "\n\nopen Zeta23.RHRC\n\n"
-        + "set_option maxRecDepth 100000 maxHeartbeats 10000000 in\n"
-        + "run_cmd do\n"
-        + "  let mut queries : Array Zeta23.RHRC.SourceCandidateQuery := #[]\n"
-        + "\n".join(pushes)
-        + "\n  Zeta23.RHRC.resolveSourceCandidates queries\n"
+        "import Zeta23.RHRC.SourceCandidateResolution\n"
+        "import Zeta23.CCM\n"
+        "import Zeta23.ExceptionalZero\n\n"
+        "run_cmd do\n"
+        "  Zeta23.RHRC.resolveSourceCandidatesFile "
+        + lean_string(str(query_path))
+        + "\n"
     )
 
 
 def run_lean(candidates: list[dict]) -> str:
-    driver = render_driver(candidates)
-    with tempfile.NamedTemporaryFile(
-        mode="w", suffix=".lean", encoding="utf-8", delete=False
-    ) as handle:
-        handle.write(driver)
-        path = Path(handle.name)
+    validate_candidate_modules(candidates)
+    query_path: Path | None = None
+    driver_path: Path | None = None
     try:
+        with tempfile.NamedTemporaryFile(
+            mode="w", suffix=".tsv", encoding="utf-8", delete=False
+        ) as query_handle:
+            query_handle.write(render_query_tsv(candidates))
+            query_path = Path(query_handle.name)
+        with tempfile.NamedTemporaryFile(
+            mode="w", suffix=".lean", encoding="utf-8", delete=False
+        ) as driver_handle:
+            driver_handle.write(render_driver(query_path))
+            driver_path = Path(driver_handle.name)
         proc = subprocess.run(
-            ["lake", "env", "lean", str(path)],
+            ["lake", "env", "lean", str(driver_path)],
             cwd=REPO,
             text=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
         )
     finally:
-        path.unlink(missing_ok=True)
+        if driver_path is not None:
+            driver_path.unlink(missing_ok=True)
+        if query_path is not None:
+            query_path.unlink(missing_ok=True)
     if proc.returncode != 0:
         print(proc.stdout, end="")
         print(proc.stderr, end="", file=os.sys.stderr)
