@@ -143,6 +143,60 @@ it falsifies the naive implementation-level common-kernel hypothesis.
 
 **RH remains OPEN.**
 
+## Phase 2D
+
+Phase 2D quotients the exact Phase-2C RH-equivalence dependency surface rather
+than adding another theorem layer.
+
+It fixes the current target cohort to the three proved RH-equivalent roots and
+partitions their **root-excluding** project-local dependency closures into exact
+membership atoms `A/B/C/AB/AC/BC/ABC`.
+
+The generated products are:
+
+- `DEPENDENCY_COHORT_ATOMS.json`: exact Venn-style dependency atoms;
+- `DEPENDENCY_KERNEL_QUOTIENT.json`: factual module/kind/visibility profiles of
+  those atoms;
+- `DEPENDENCY_BRIDGE_FRONTIERS.json`: exact compiler `USES_CONSTANT` edges
+  crossing atom boundaries, plus a separate containment-frontier probe from the
+  global-bottom arithmetic residual back into the canonical prime-remainder
+  normal-form substrate.
+
+The compiler edge direction is always
+
+```text
+source declaration -> used constant
+```
+
+and is never reversed for narrative convenience.
+
+Registered theorem-root endpoints are excluded from the
+`bridge_candidate_eligible` subset. That subset is a discovery filter only; a
+frontier edge is not a theorem implication and a small frontier is not a proof
+that one missing lemma closes the mathematics.
+
+The frozen research receipt
+`research/RHRC/receipts/RHKG_POST259_KERNEL_FIRST_CONTACT_2026_09_24.json`
+preserves the merged #259 first-contact counts and source Git objects without
+turning those historical measurements into live theorem authority.
+
+Additional read-only queries:
+
+```bash
+python research/RHRC/tools/query_dependencies.py --atoms RH_EQUIVALENCE_SURFACE
+python research/RHRC/tools/query_dependencies.py --frontier RH_EQUIVALENCE_SURFACE
+python research/RHRC/tools/query_dependencies.py --path \
+  AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE \
+  Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget
+```
+
+The Phase-2D research question is no longer merely whether a common kernel
+exists. It asks where theorem-specific dependency shells attach to shared
+structure and where the live global-bottom arithmetic endpoint first crosses
+into the canonical prime-remainder substrate.
+
+**RH remains OPEN.**
+
 ## Commands
 
 From the repository root:
@@ -161,7 +215,8 @@ python research/RHRC/graph/validate.py
 
 Generated products live under `research/RHRC/graph/generated/`. Phase 2B adds
 `THEOREM_DEPENDENCY_CLOSURE.json`; Phase 2C adds the dependency kernel atlas,
-cohort-overlap view, and signature classes. The compiler-derived receipt lives separately
+cohort-overlap view, and signature classes; Phase 2D adds dependency atoms,
+kernel quotient, and bridge frontiers. The compiler-derived receipt lives separately
 under `research/RHRC/graph/compiler/` and is checked by Lean CI before RHKG
 consumes it. Generated graph products remain non-authoritative views and mirrors.
 If a generated record disagrees with an authoritative or compiler-derived source,
