@@ -1205,10 +1205,10 @@
   ],
   "graph_theorem_promotion": false,
   "registered_proved_binding_count": 75,
-  "schema_version": "RHKG-phase2a-theorem-claim-map-0.3",
+  "schema_version": "RHKG-phase2b-theorem-claim-map-0.4",
   "scope": "ALL_PROVED_UNCONDITIONAL_REGISTERED_CLAIMS",
   "terminal_claim": "RH_OPEN",
-  "unlinked_interpretation": "Unlinked means not PROVED_UNCONDITIONAL under the complete Phase-2A registered theorem binding surface; RHKG does not infer proof status.",
+  "unlinked_interpretation": "Unlinked means not PROVED_UNCONDITIONAL under the complete registered theorem binding surface; RHKG does not infer proof status.",
   "unlinked_registered_claim_ids": [
     "C_RH",
     "R001_PRIME_UPPER",

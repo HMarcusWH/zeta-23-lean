@@ -1270,6 +1270,7 @@
     "Zeta23.FromPNTPlus.SmoothExistence",
     "Zeta23.Permansson.GeneralFramework",
     "Zeta23.Permansson.Theorem31",
+    "Zeta23.RHRC.DeclarationDependencyExport",
     "Zeta23.RHRC.RegisteredClaimBindings"
   ]
 }
