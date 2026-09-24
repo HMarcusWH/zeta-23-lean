@@ -83,50 +83,35 @@ def render_driver(candidates: list[dict]) -> str:
     joined = ",\n".join(entries)
     return (
         imports
-        + "\n\nopen Zeta23.RHRC\n\nrun_cmd do\n"
+        + "\n\nopen Zeta23.RHRC\n\nset_option maxRecDepth 100000 in\nrun_cmd do\n"
         + "  Zeta23.RHRC.resolveSourceCandidates #[\n"
         + joined
         + "\n  ]\n"
     )
 
 
-def run_lean(candidates: list[dict], *, chunk_size: int = 128) -> str:
-    if chunk_size < 1:
-        fail("chunk_size must be positive")
-    outputs: list[str] = []
-    total = (len(candidates) + chunk_size - 1) // chunk_size
-    for chunk_index, start in enumerate(range(0, len(candidates), chunk_size), start=1):
-        chunk = candidates[start : start + chunk_size]
-        driver = render_driver(chunk)
-        with tempfile.NamedTemporaryFile(
-            mode="w", suffix=".lean", encoding="utf-8", delete=False
-        ) as handle:
-            handle.write(driver)
-            path = Path(handle.name)
-        try:
-            proc = subprocess.run(
-                ["lake", "env", "lean", str(path)],
-                cwd=REPO,
-                text=True,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-            )
-        finally:
-            path.unlink(missing_ok=True)
-        if proc.returncode != 0:
-            print(proc.stdout, end="")
-            print(proc.stderr, end="", file=os.sys.stderr)
-            fail(
-                "Lean candidate resolver failed "
-                f"in chunk {chunk_index}/{total} with exit code {proc.returncode}"
-            )
-        outputs.append(proc.stdout)
-        print(
-            f"candidate_exactify: resolved chunk {chunk_index}/{total} "
-            f"({len(chunk)} candidates)",
-            flush=True,
+def run_lean(candidates: list[dict]) -> str:
+    driver = render_driver(candidates)
+    with tempfile.NamedTemporaryFile(
+        mode="w", suffix=".lean", encoding="utf-8", delete=False
+    ) as handle:
+        handle.write(driver)
+        path = Path(handle.name)
+    try:
+        proc = subprocess.run(
+            ["lake", "env", "lean", str(path)],
+            cwd=REPO,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
         )
-    return "\n".join(outputs)
+    finally:
+        path.unlink(missing_ok=True)
+    if proc.returncode != 0:
+        print(proc.stdout, end="")
+        print(proc.stderr, end="", file=os.sys.stderr)
+        fail(f"Lean candidate resolver failed with exit code {proc.returncode}")
+    return proc.stdout
 
 
 def parse_output(stdout: str, candidates: list[dict]) -> dict[str, dict]:
