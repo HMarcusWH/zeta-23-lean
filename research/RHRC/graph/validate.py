@@ -416,6 +416,28 @@ def main() -> int:
         elif registered.get("theorem") != row.get("theorem"):
             errors.append(f"historical R003 theorem drift in complete manifest: {claim_id}")
 
+    post259_receipt = json.loads(
+        (REPO / graph_build.POST259_KERNEL_RECEIPT).read_text(encoding="utf-8")
+    )
+    if post259_receipt.get("schema_version") != "RHKG-post259-kernel-first-contact-1.0":
+        errors.append("post-259 kernel first-contact receipt schema drift")
+    authority = post259_receipt.get("authority", {})
+    if authority.get("theorem_authority") is not False:
+        errors.append("post-259 research receipt claims theorem authority")
+    if authority.get("research_only") is not True:
+        errors.append("post-259 research receipt lost research-only status")
+    if authority.get("terminal_claim") != "RH_OPEN":
+        errors.append("post-259 research receipt does not preserve RH_OPEN")
+    if authority.get("graph_theorem_promotion") is not False:
+        errors.append("post-259 research receipt permits theorem promotion")
+    source = post259_receipt.get("source", {})
+    if source.get("pull_request") != 259:
+        errors.append("post-259 research receipt source PR drift")
+    if source.get("merge_commit") != "6be76581362680fc0f43574c762ba7fd512bb3e7":
+        errors.append("post-259 research receipt merge commit drift")
+    if source.get("merge_tree") != "d2851f6c1b04d8b54a5d387acafe87b0803adc66":
+        errors.append("post-259 research receipt merge tree drift")
+
     compiler_receipt = graph_build.load_compiler_dependency_receipt()
     compiler_by_name = {row["declaration"]: row for row in compiler_receipt}
     declaration_by_name = {d["declaration"]: d for d in lean_declarations}
