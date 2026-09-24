@@ -748,9 +748,22 @@ def main() -> int:
             ):
                 errors.append("Phase 2D atom declaration mapping contains duplicates")
 
+            atom_label_sets = {
+                row["signature"]: set(row["member_labels"])
+                for row in dependency_atoms.get("atoms", [])
+            }
             for edge in bridge_frontiers.get("cross_atom_edges", []):
                 if edge["source_atom"] == edge["target_atom"]:
                     errors.append("Phase 2D frontier contains same-atom edge")
+                source_labels = atom_label_sets.get(edge["source_atom"])
+                target_labels = atom_label_sets.get(edge["target_atom"])
+                if source_labels is None or target_labels is None:
+                    errors.append("Phase 2D frontier references unknown atom signature")
+                elif not source_labels < target_labels:
+                    errors.append(
+                        "Phase 2D cross-atom edge violates reachability monotonicity: "
+                        f"{edge['source_atom']} -> {edge['target_atom']}"
+                    )
                 if edge.get("bridge_candidate_eligible") and (
                     edge.get("source_registered_root")
                     or edge.get("target_registered_root")
@@ -758,6 +771,17 @@ def main() -> int:
                     errors.append(
                         "Phase 2D bridge candidate includes registered-root endpoint"
                     )
+
+            probe_edges = bridge_frontiers.get("containment_probe", {}).get(
+                "cross_region_edges", []
+            )
+            if any(
+                edge.get("transition") != "SUPERSET_ONLY->SHARED"
+                for edge in probe_edges
+            ):
+                errors.append(
+                    "Phase 2D containment probe has non-monotone cross-region direction"
+                )
 
             for name, product in (
                 ("DEPENDENCY_COHORT_ATOMS", dependency_atoms),
