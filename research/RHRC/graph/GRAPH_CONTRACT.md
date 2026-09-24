@@ -1,7 +1,7 @@
 # RHKG Phase-2D Graph Contract
 
-**Version:** 0.6  
-**Scope:** Phase-1 repository census/import graph plus complete registered theorem bindings, compiler-derived declaration dependencies, deterministic dependency-kernel research views, and exact quotient/frontier analysis  
+**Version:** 1.0  
+**Scope:** complete repository accounting through the final semantic-closure pass: file/module/import census, registered compiler dependency graph, dependency-kernel research views, source-declaration discovery surface, document nodes, and explicit standalone-module dispositions  
 **Authority:** derived only; subordinate to the RHKG Constitution and existing RHRC sources
 
 ## 1. Stable IDs
@@ -541,3 +541,93 @@ graph_theorem_promotion = false
 ```
 
 **RH remains OPEN.**
+
+
+## 18. Final semantic-closure pass
+
+The final closure pass closes the repository-accounting blind spots exposed by
+the post-#262 audit without widening theorem authority.
+
+### 18.1 Named Lean source-declaration surface
+
+Every local Lean module is scanned deterministically after Lean comments are
+removed by the same shared comment-aware parser used by the import firewall.
+Named source commands (`theorem`, `lemma`, `def`, `abbrev`, `opaque`, `axiom`,
+`structure`, `class`, `inductive`, and explicitly named `instance`s) are emitted
+as `LeanSourceDeclaration` nodes and connected by
+`LeanModule SOURCE_DECLARES LeanSourceDeclaration`.
+
+This surface has provenance `LEAN_SOURCE_EXACT` and authority role
+`SOURCE_DISCOVERY_ONLY`.
+
+It exists to make named source material discoverable even when the declaration
+is outside every registered theorem dependency closure. It is **not** a
+compiler declaration census, it does not create `USES_CONSTANT` edges, and it
+does not promote a declaration to a registered claim.
+
+The existing compiler-derived `LeanDeclaration` / `USES_CONSTANT` layer
+remains the only declaration-dependency authority.
+
+### 18.2 Document semantic coverage
+
+Every file classified as `DOCUMENTATION` or `LIVING_SSOT` receives one
+source-backed `Document` node with an exact `LOCATED_AT` relation.
+
+Exact textual mentions of existing registered claim IDs and route IDs generate
+`MENTIONS` edges with provenance `TEXTUAL_HINT`. These are navigation hints
+only. They do not mean support, implication, supersession, equivalence, or
+theorem authority.
+
+The five living SSOT documents receive explicit document roles in
+`SEMANTIC_CLOSURE_CONFIG.json`; ordinary documentation receives the default
+`DOCUMENTATION_ARTIFACT` role.
+
+### 18.3 Standalone-module dispositions
+
+The exact current `standalone_or_auxiliary` module set must equal the keys of
+`SEMANTIC_CLOSURE_CONFIG.json::standalone_module_roles`.
+
+This converts reachability from an unresolved orphan-like bucket into a reviewed
+operational disposition while preserving the constitutional rule that lack of
+entrypoint reachability does not imply irrelevance.
+
+### 18.4 Generated closure products
+
+The final pass adds:
+
+- `lean_source_declarations.jsonl`
+- `MODULE_SEMANTIC_CLOSURE.json`
+- `DOCUMENT_SEMANTIC_CLOSURE.json`
+
+`MODULE_SEMANTIC_CLOSURE.json` covers every local Lean module, records its
+entrypoint reachability/disposition, named source-declaration count, exact
+registered dependency-surface declaration count, and registered-root count.
+
+`DOCUMENT_SEMANTIC_CLOSURE.json` covers every documentation/living-SSOT file
+and records its document role plus exact claim/route token mentions.
+
+### 18.5 What remains deliberately open
+
+Repository accounting is closed at the file, module, document, and named
+source-command discovery layers. Later semantic deepening may still add:
+
+- a compiler-wide local declaration census beyond the registered dependency
+  closure and source-navigation surface;
+- multi-axis current-state/authority resolution beyond document-role indexing;
+- Git/PR/workflow execution provenance;
+- explicit dead-route/obstruction/revival semantic objects and relations;
+- operational concept preflight.
+
+These are deeper semantic layers, not missing repository artifacts.
+
+Final-closure firewall:
+
+```text
+LeanSourceDeclaration            != compiler LeanDeclaration
+SOURCE_DECLARES                  != USES_CONSTANT
+Document MENTIONS claim/route    != support or implication
+standalone disposition           != theorem authority
+semantic accounting closure      != RH closure
+terminal claim                   = RH_OPEN
+graph theorem promotion          = false
+```

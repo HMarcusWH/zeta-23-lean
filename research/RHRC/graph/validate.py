@@ -168,6 +168,7 @@ def main() -> int:
     repo_files = read_jsonl("repository_files.jsonl")
     lean_modules = read_jsonl("lean_modules.jsonl")
     lean_declarations = read_jsonl("lean_declarations.jsonl")
+    lean_source_declarations = read_jsonl("lean_source_declarations.jsonl")
     registry_nodes = read_jsonl("registry_nodes.jsonl")
     relations = read_jsonl("relations.jsonl")
 
@@ -179,6 +180,7 @@ def main() -> int:
             ("repository_files.jsonl", repo_files),
             ("lean_modules.jsonl", lean_modules),
             ("lean_declarations.jsonl", lean_declarations),
+            ("lean_source_declarations.jsonl", lean_source_declarations),
             ("registry_nodes.jsonl", registry_nodes),
             ("relations.jsonl", relations),
         ):
@@ -188,7 +190,7 @@ def main() -> int:
                         f"{collection_name}:{index}: schema validation failed: {error}"
                     )
 
-    all_nodes = repo_files + lean_modules + lean_declarations + registry_nodes
+    all_nodes = repo_files + lean_modules + lean_declarations + lean_source_declarations + registry_nodes
     node_ids: set[str] = set()
     all_ids: set[str] = set()
     duplicates: set[str] = set()
@@ -256,6 +258,8 @@ def main() -> int:
     local_module_ids = {m["id"] for m in local_modules}
     local_module_by_path = {m["path"]: m for m in local_modules}
     declaration_ids = {d["id"] for d in lean_declarations}
+    source_declaration_ids = {d["id"] for d in lean_source_declarations}
+    source_declaration_by_id = {d["id"]: d for d in lean_source_declarations}
     declaration_by_id = {d["id"]: d for d in lean_declarations}
     claim_node_ids = {
         n["id"] for n in registry_nodes if n["type"] == "RegisteredClaim"
@@ -284,6 +288,19 @@ def main() -> int:
                 errors.append(f"IMPORTS source is not a local module: {rel}")
             if rel["target"] not in module_ids:
                 errors.append(f"IMPORTS target is not an explicit module node: {rel}")
+        if rel.get("kind") == "SOURCE_DECLARES":
+            if rel["source"] not in local_module_ids:
+                errors.append(f"SOURCE_DECLARES source is not a local module: {rel}")
+            if rel["target"] not in source_declaration_ids:
+                errors.append(f"SOURCE_DECLARES target is not a LeanSourceDeclaration: {rel}")
+            if rel.get("provenance") != "LEAN_SOURCE_EXACT":
+                errors.append(f"SOURCE_DECLARES provenance is not LEAN_SOURCE_EXACT: {rel}")
+        if rel.get("kind") == "MENTIONS":
+            source_node = next((node for node in registry_nodes if node["id"] == rel["source"]), None)
+            if source_node is None or source_node.get("type") != "Document":
+                errors.append(f"MENTIONS source is not a Document: {rel}")
+            if rel.get("provenance") != "TEXTUAL_HINT":
+                errors.append(f"MENTIONS provenance is not TEXTUAL_HINT: {rel}")
         if rel.get("kind") == "DECLARES":
             if rel["source"] not in local_module_ids:
                 errors.append(f"DECLARES source is not a local module: {rel}")
@@ -334,6 +351,7 @@ def main() -> int:
         "ResearchExecutable": {"RESEARCH_EXECUTABLE"},
         "Fixture": {"RESEARCH_FIXTURE"},
         "WorkflowDefinition": {"CI_WORKFLOW"},
+        "Document": {"DOCUMENTATION", "LIVING_SSOT"},
     }
     file_by_id = {row["id"]: row for row in repo_files}
     for node in registry_nodes:
@@ -347,6 +365,89 @@ def main() -> int:
             errors.append(
                 f"artifact node/file-class mismatch: {node['id']} -> {source['file_class']}"
             )
+
+    # Final closure source-surface invariants.
+    for source_decl in lean_source_declarations:
+        module = source_decl.get("module_id")
+        file_id = source_decl.get("file_id")
+        if module not in local_module_ids:
+            errors.append(f"source declaration points to non-local module: {source_decl}")
+        source_file = file_by_id.get(file_id)
+        if source_file is None:
+            errors.append(f"source declaration missing source file: {source_decl}")
+        elif source_file.get("file_class") not in {"LEAN_SOURCE", "LEAN_ROOT"}:
+            errors.append(f"source declaration points to non-Lean file: {source_decl}")
+        if source_decl.get("authority_role") != "SOURCE_DISCOVERY_ONLY":
+            errors.append(f"source declaration authority drift: {source_decl}")
+        if not isinstance(source_decl.get("line"), int) or source_decl["line"] < 1:
+            errors.append(f"source declaration has invalid line: {source_decl}")
+        if not isinstance(source_decl.get("ordinal"), int) or source_decl["ordinal"] < 1:
+            errors.append(f"source declaration has invalid ordinal: {source_decl}")
+
+    source_decl_relation_targets = {
+        rel["target"] for rel in relations if rel.get("kind") == "SOURCE_DECLARES"
+    }
+    if source_decl_relation_targets != source_declaration_ids:
+        errors.append(
+            "SOURCE_DECLARES coverage mismatch: "
+            f"missing={sorted(source_declaration_ids - source_decl_relation_targets)} "
+            f"extra={sorted(source_decl_relation_targets - source_declaration_ids)}"
+        )
+
+    document_files = {
+        row["id"]: row
+        for row in repo_files
+        if row["file_class"] in {"DOCUMENTATION", "LIVING_SSOT"}
+    }
+    document_nodes = [node for node in registry_nodes if node["type"] == "Document"]
+    document_file_ids = {node["file_id"] for node in document_nodes}
+    if document_file_ids != set(document_files):
+        errors.append(
+            "Document semantic coverage mismatch: "
+            f"missing={sorted(set(document_files) - document_file_ids)} "
+            f"extra={sorted(document_file_ids - set(document_files))}"
+        )
+    for node in document_nodes:
+        if node.get("authority_role") != "SOURCE_BACKED_DOCUMENT":
+            errors.append(f"Document authority-role drift: {node}")
+
+    module_closure = json.loads(
+        (GENERATED / "MODULE_SEMANTIC_CLOSURE.json").read_text(encoding="utf-8")
+    )
+    closure_modules = {entry["module"] for entry in module_closure.get("entries", [])}
+    expected_local_module_names = {module["module"] for module in local_modules}
+    if closure_modules != expected_local_module_names:
+        errors.append(
+            "module semantic closure mismatch: "
+            f"missing={sorted(expected_local_module_names - closure_modules)} "
+            f"extra={sorted(closure_modules - expected_local_module_names)}"
+        )
+
+    document_closure = json.loads(
+        (GENERATED / "DOCUMENT_SEMANTIC_CLOSURE.json").read_text(encoding="utf-8")
+    )
+    closure_documents = {entry["file_id"] for entry in document_closure.get("entries", [])}
+    if closure_documents != set(document_files):
+        errors.append(
+            "document semantic closure product mismatch: "
+            f"missing={sorted(set(document_files) - closure_documents)} "
+            f"extra={sorted(closure_documents - set(document_files))}"
+        )
+
+    semantic_config = json.loads(
+        (REPO / graph_build.SEMANTIC_CLOSURE_CONFIG).read_text(encoding="utf-8")
+    )
+    reachability = json.loads(
+        (GENERATED / "ENTRYPOINT_REACHABILITY.json").read_text(encoding="utf-8")
+    )
+    configured_standalone = set(semantic_config.get("standalone_module_roles", {}))
+    actual_standalone = set(reachability.get("standalone_or_auxiliary", []))
+    if configured_standalone != actual_standalone:
+        errors.append(
+            "standalone module disposition mismatch: "
+            f"missing={sorted(actual_standalone - configured_standalone)} "
+            f"extra={sorted(configured_standalone - actual_standalone)}"
+        )
 
     claim_source = json.loads((REPO / graph_build.CLAIM_REGISTRY).read_text(encoding="utf-8"))
     route_source = json.loads((REPO / graph_build.ROUTE_REGISTRY).read_text(encoding="utf-8"))
@@ -1048,9 +1149,9 @@ def main() -> int:
     unresolved = json.loads(
         (GENERATED / "UNRESOLVED_GRAPH_ITEMS.json").read_text(encoding="utf-8")
     )
-    if unresolved.get("schema_version") != "RHKG-phase2e-unresolved-0.7":
-        errors.append("UNRESOLVED_GRAPH_ITEMS is not Phase 2E current")
-    if unresolved.get("semantic_coverage_status") != "PARTIAL_BY_DESIGN_PHASE_2E":
+    if unresolved.get("schema_version") != "RHKG-final-closure-unresolved-1.0":
+        errors.append("UNRESOLVED_GRAPH_ITEMS is not final-closure current")
+    if unresolved.get("semantic_coverage_status") != "REPOSITORY_ACCOUNTING_CLOSED_SEMANTIC_DEEPENING_OPEN":
         errors.append("UNRESOLVED_GRAPH_ITEMS semantic coverage status drift")
     if unresolved.get("claim_firewall") != "RH_OPEN":
         errors.append("UNRESOLVED_GRAPH_ITEMS does not preserve RH_OPEN")
@@ -1112,8 +1213,20 @@ def main() -> int:
         errors.append("terminal claim is not OPEN")
 
     coverage = json.loads((GENERATED / "REPOSITORY_COVERAGE.json").read_text(encoding="utf-8"))
-    if coverage.get("schema_version") != "RHKG-phase2e-coverage-0.7":
-        errors.append("coverage view is not Phase 2E current")
+    if coverage.get("schema_version") != "RHKG-final-closure-coverage-1.0":
+        errors.append("coverage view is not final-closure current")
+    if coverage.get("lean_source_declaration_count") != len(lean_source_declarations):
+        errors.append("coverage source-declaration count drift")
+    if coverage.get("source_surface_module_count") != len(local_modules):
+        errors.append("coverage source-surface module count drift")
+    if coverage.get("source_surface_nonempty_module_count") != len(
+        {row["module"] for row in lean_source_declarations}
+    ):
+        errors.append("coverage nonempty source-surface module count drift")
+    if coverage.get("document_node_count") != len(document_nodes):
+        errors.append("coverage Document-node count drift")
+    if coverage.get("semantic_accounting_status") != "FILE_MODULE_DOCUMENT_AND_NAMED_SOURCE_SURFACE_CLOSED":
+        errors.append("coverage semantic-accounting status drift")
     if coverage.get("registered_proved_lean_declaration_count") != len(binding_by_id):
         errors.append("coverage registered-root count drift")
     if coverage.get("lean_declaration_count") != len(lean_declarations):
@@ -1145,6 +1258,8 @@ def main() -> int:
         "RHKG VALIDATION: PASS "
         f"({len(repo_files)} files; {len(local_modules)} local Lean modules; "
         f"{len(external_modules)} external module nodes; "
+        f"{len(lean_source_declarations)} named source declarations; "
+        f"{len(document_nodes)} document nodes; "
         f"{sum(d.get('graph_role') == 'REGISTERED_CLAIM_ROOT' for d in lean_declarations)} registered roots; "
         f"{sum(d.get('graph_role') == 'LOCAL_DEPENDENCY' for d in lean_declarations)} local dependencies; "
         f"{sum(d.get('graph_role') == 'EXTERNAL_BOUNDARY' for d in lean_declarations)} external boundaries; "

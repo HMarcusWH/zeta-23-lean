@@ -1,0 +1,31 @@
+{
+  "schema_version": "RHKG-final-semantic-closure-config-1.0",
+  "terminal_claim": "RH_OPEN",
+  "graph_theorem_promotion": false,
+  "default_document_role": "DOCUMENTATION_ARTIFACT",
+  "living_ssot_roles": {
+    "research/RHRC/README.md": "LIVING_PROJECT_STATE",
+    "research/RHRC/DOCUMENTATION_AUTHORITY.md": "LIVING_AUTHORITY_INDEX",
+    "research/RHRC/VALIDATION_PROTOCOL.md": "LIVING_VALIDATION_PROTOCOL",
+    "research/RHRC/RESEARCH_LEADS.md": "LIVING_RESEARCH_LEADS",
+    "research/RHRC/OBSTRUCTION_LEDGER.md": "LIVING_OBSTRUCTION_LEDGER"
+  },
+  "standalone_module_roles": {
+    "Challenge.XiPrime": "COMPARATOR_STANDALONE_CHALLENGE",
+    "ChallengeDeps.XiPrime": "COMPARATOR_STANDALONE_DEFINITION_LAYER",
+    "PrintAxioms.PairCeiling": "COMPARATOR_STANDALONE_AXIOM_AUDIT",
+    "PrintAxioms.XiPrime": "COMPARATOR_STANDALONE_AXIOM_AUDIT",
+    "Solution.XiPrime": "COMPARATOR_STANDALONE_SOLUTION",
+    "Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit": "QUARANTINED_EQUIVALENCE_AUDIT",
+    "Zeta23.ExceptionalZero.GlobalParityBottomConditionalRH": "QUARANTINED_CONDITIONAL_RH_SEAM",
+    "Zeta23.ExceptionalZero.GlobalParityBottomObstruction": "HISTORICAL_COMPATIBILITY_PROJECTION",
+    "Zeta23.FromPNTPlus.Mathlib.Algebra.Notation.Support": "UPSTREAM_DERIVED_STANDALONE",
+    "Zeta23.FromPNTPlus.MediumPNT": "UPSTREAM_DERIVED_STANDALONE",
+    "Zeta23.FromPNTPlus.MellinCalculus": "UPSTREAM_DERIVED_STANDALONE",
+    "Zeta23.FromPNTPlus.SmoothExistence": "UPSTREAM_DERIVED_STANDALONE",
+    "Zeta23.Permansson.GeneralFramework": "INDEPENDENT_FORMALIZATION",
+    "Zeta23.Permansson.Theorem31": "INDEPENDENT_FORMALIZATION",
+    "Zeta23.RHRC.DeclarationDependencyExport": "GRAPH_AUDIT_INFRASTRUCTURE",
+    "Zeta23.RHRC.RegisteredClaimBindings": "GRAPH_AUDIT_INFRASTRUCTURE"
+  }
+}

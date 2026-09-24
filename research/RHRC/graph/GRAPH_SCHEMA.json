@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "rhkg-phase2b-graph-schema-0.4",
-  "title": "RHKG Phase-2B compiler dependency graph record schema",
+  "$id": "rhkg-final-closure-graph-schema-1.0",
+  "title": "RHKG final semantic closure graph record schema",
   "type": "object",
   "oneOf": [
     {
@@ -39,6 +39,12 @@
     },
     {
       "$ref": "#/$defs/relation"
+    },
+    {
+      "$ref": "#/$defs/document"
+    },
+    {
+      "$ref": "#/$defs/leanSourceDeclaration"
     }
   ],
   "$defs": {
@@ -455,6 +461,119 @@
             "declaration_kind",
             "private_or_internal",
             "authority_role"
+          ]
+        }
+      ]
+    },
+    "document": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "Document"
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "file_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "file_class": {
+              "enum": [
+                "DOCUMENTATION",
+                "LIVING_SSOT"
+              ]
+            },
+            "document_role": {
+              "type": "string",
+              "minLength": 1
+            },
+            "authority_role": {
+              "const": "SOURCE_BACKED_DOCUMENT"
+            },
+            "source_locator": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "path",
+            "file_id",
+            "file_class",
+            "document_role",
+            "authority_role",
+            "source_locator"
+          ]
+        }
+      ]
+    },
+    "leanSourceDeclaration": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "LeanSourceDeclaration"
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "file_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "module": {
+              "type": "string",
+              "minLength": 1
+            },
+            "module_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "declared_name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "command_kind": {
+              "type": "string",
+              "minLength": 1
+            },
+            "line": {
+              "type": "integer"
+            },
+            "ordinal": {
+              "type": "integer"
+            },
+            "trust_zone": {
+              "type": "string",
+              "minLength": 1
+            },
+            "authority_role": {
+              "const": "SOURCE_DISCOVERY_ONLY"
+            },
+            "source_locator": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "path",
+            "file_id",
+            "module",
+            "module_id",
+            "declared_name",
+            "command_kind",
+            "line",
+            "ordinal",
+            "trust_zone",
+            "authority_role",
+            "source_locator"
           ]
         }
       ]

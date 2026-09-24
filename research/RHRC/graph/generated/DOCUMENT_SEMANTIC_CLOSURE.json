@@ -1,0 +1,772 @@
+{
+  "entries": [
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:AUDIT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:AUDIT.md",
+      "heading_count": 28,
+      "path": "AUDIT.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:FORK_NOTES.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:FORK_NOTES.md",
+      "heading_count": 18,
+      "path": "FORK_NOTES.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:README.md",
+      "heading_count": 31,
+      "path": "README.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:UPSTREAM_AUDIT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:UPSTREAM_AUDIT.md",
+      "heading_count": 10,
+      "path": "UPSTREAM_AUDIT.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:UPSTREAM_README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:UPSTREAM_README.md",
+      "heading_count": 5,
+      "path": "UPSTREAM_README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:Zeta23/Permansson/FORMAL_VERIFICATION_NOTES.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:Zeta23/Permansson/FORMAL_VERIFICATION_NOTES.md",
+      "heading_count": 1,
+      "path": "Zeta23/Permansson/FORMAL_VERIFICATION_NOTES.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:comparator/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:comparator/README.md",
+      "heading_count": 5,
+      "path": "comparator/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/CURRENT_RESEARCH_PLAN.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/CURRENT_RESEARCH_PLAN.md",
+      "heading_count": 54,
+      "path": "research/RHRC/CURRENT_RESEARCH_PLAN.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [
+        "R001_PRIME_UPPER"
+      ],
+      "document_id": "rh:document:research/RHRC/DEAD_ROUTES.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/DEAD_ROUTES.md",
+      "heading_count": 43,
+      "path": "research/RHRC/DEAD_ROUTES.md",
+      "route_mentions": [
+        "R002_multi_probe",
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/DOCUMENTATION_AUTHORITY.md",
+      "document_role": "LIVING_AUTHORITY_INDEX",
+      "file_class": "LIVING_SSOT",
+      "file_id": "rh:file:research/RHRC/DOCUMENTATION_AUTHORITY.md",
+      "heading_count": 40,
+      "path": "research/RHRC/DOCUMENTATION_AUTHORITY.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/FB05_INCOMPATIBILITY_PROGRAM.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/FB05_INCOMPATIBILITY_PROGRAM.md",
+      "heading_count": 58,
+      "path": "research/RHRC/FB05_INCOMPATIBILITY_PROGRAM.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/HISTORICAL_ROUTE_AUDIT_POST_237_RECONCILIATION.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/HISTORICAL_ROUTE_AUDIT_POST_237_RECONCILIATION.md",
+      "heading_count": 7,
+      "path": "research/RHRC/HISTORICAL_ROUTE_AUDIT_POST_237_RECONCILIATION.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/HISTORICAL_ROUTE_AUDIT_POST_242_RECONCILIATION.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/HISTORICAL_ROUTE_AUDIT_POST_242_RECONCILIATION.md",
+      "heading_count": 10,
+      "path": "research/RHRC/HISTORICAL_ROUTE_AUDIT_POST_242_RECONCILIATION.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/HISTORICAL_ROUTE_AUDIT_POST_247_RECONCILIATION.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/HISTORICAL_ROUTE_AUDIT_POST_247_RECONCILIATION.md",
+      "heading_count": 21,
+      "path": "research/RHRC/HISTORICAL_ROUTE_AUDIT_POST_247_RECONCILIATION.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/OBSTRUCTION_LEDGER.md",
+      "document_role": "LIVING_OBSTRUCTION_LEDGER",
+      "file_class": "LIVING_SSOT",
+      "file_id": "rh:file:research/RHRC/OBSTRUCTION_LEDGER.md",
+      "heading_count": 61,
+      "path": "research/RHRC/OBSTRUCTION_LEDGER.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/README.md",
+      "document_role": "LIVING_PROJECT_STATE",
+      "file_class": "LIVING_SSOT",
+      "file_id": "rh:file:research/RHRC/README.md",
+      "heading_count": 19,
+      "path": "research/RHRC/README.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/RELEASE_CLOSURE_AUDIT_2026_08_19.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/RELEASE_CLOSURE_AUDIT_2026_08_19.md",
+      "heading_count": 4,
+      "path": "research/RHRC/RELEASE_CLOSURE_AUDIT_2026_08_19.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/RELEASE_CLOSURE_AUDIT_2026_08_20.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/RELEASE_CLOSURE_AUDIT_2026_08_20.md",
+      "heading_count": 5,
+      "path": "research/RHRC/RELEASE_CLOSURE_AUDIT_2026_08_20.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/RESEARCH_LEADS.md",
+      "document_role": "LIVING_RESEARCH_LEADS",
+      "file_class": "LIVING_SSOT",
+      "file_id": "rh:file:research/RHRC/RESEARCH_LEADS.md",
+      "heading_count": 65,
+      "path": "research/RHRC/RESEARCH_LEADS.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [
+        "R001_PRIME_UPPER",
+        "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+        "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+        "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+        "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+        "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+        "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+        "R003_SOURCE_KAPPA_FINITE_SECTOR",
+        "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+        "R003_WEIL_COMMON_SUPPORT_BOUND",
+        "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+        "R003_WEIL_PAIR_LITERATURE_BRIDGE"
+      ],
+      "document_id": "rh:document:research/RHRC/RESEARCH_LEADS_LEGACY_FULL_THROUGH_110.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/RESEARCH_LEADS_LEGACY_FULL_THROUGH_110.md",
+      "heading_count": 118,
+      "path": "research/RHRC/RESEARCH_LEADS_LEGACY_FULL_THROUGH_110.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/VALIDATION_PROTOCOL.md",
+      "document_role": "LIVING_VALIDATION_PROTOCOL",
+      "file_class": "LIVING_SSOT",
+      "file_id": "rh:file:research/RHRC/VALIDATION_PROTOCOL.md",
+      "heading_count": 36,
+      "path": "research/RHRC/VALIDATION_PROTOCOL.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/control_v2/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/control_v2/README.md",
+      "heading_count": 20,
+      "path": "research/RHRC/control_v2/README.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/external_reviews/ASTRA_POST_138_RH_PATH_ASSESSMENT_2026_09_09.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/external_reviews/ASTRA_POST_138_RH_PATH_ASSESSMENT_2026_09_09.md",
+      "heading_count": 11,
+      "path": "research/RHRC/external_reviews/ASTRA_POST_138_RH_PATH_ASSESSMENT_2026_09_09.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/external_reviews/ASTRA_POST_150_ARITHMETIC_FRONTIER_ASSESSMENT_2026_09_12.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/external_reviews/ASTRA_POST_150_ARITHMETIC_FRONTIER_ASSESSMENT_2026_09_12.md",
+      "heading_count": 13,
+      "path": "research/RHRC/external_reviews/ASTRA_POST_150_ARITHMETIC_FRONTIER_ASSESSMENT_2026_09_12.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/external_reviews/ASTRA_POST_155_RH_PATH_ASSESSMENT_2026_09_13.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/external_reviews/ASTRA_POST_155_RH_PATH_ASSESSMENT_2026_09_13.md",
+      "heading_count": 10,
+      "path": "research/RHRC/external_reviews/ASTRA_POST_155_RH_PATH_ASSESSMENT_2026_09_13.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [
+        "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM"
+      ],
+      "document_id": "rh:document:research/RHRC/graph/CONSTITUTION.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/graph/CONSTITUTION.md",
+      "heading_count": 61,
+      "path": "research/RHRC/graph/CONSTITUTION.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [
+        "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+        "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+        "C_RH",
+        "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R001_PRIME_UPPER",
+        "R001_PRIME_UPPER_EQUIV_RH",
+        "R002_WINDOWED_VISIBILITY",
+        "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM"
+      ],
+      "document_id": "rh:document:research/RHRC/graph/GRAPH_CONTRACT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/graph/GRAPH_CONTRACT.md",
+      "heading_count": 32,
+      "path": "research/RHRC/graph/GRAPH_CONTRACT.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [
+        "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
+        "C_RH",
+        "R001_PRIME_UPPER",
+        "R001_PRIME_UPPER_EQUIV_RH",
+        "R002_WINDOWED_VISIBILITY"
+      ],
+      "document_id": "rh:document:research/RHRC/graph/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/graph/README.md",
+      "heading_count": 9,
+      "path": "research/RHRC/graph/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/interventions/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/interventions/README.md",
+      "heading_count": 1,
+      "path": "research/RHRC/interventions/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [
+        "R001_PRIME_UPPER",
+        "R001_ZERO_GROWTH"
+      ],
+      "document_id": "rh:document:research/RHRC/routes/R001_exceptional_zero/LAPLACE_POLE_PROOF_SEARCH.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R001_exceptional_zero/LAPLACE_POLE_PROOF_SEARCH.md",
+      "heading_count": 6,
+      "path": "research/RHRC/routes/R001_exceptional_zero/LAPLACE_POLE_PROOF_SEARCH.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [
+        "R001_PRIME_UPPER"
+      ],
+      "document_id": "rh:document:research/RHRC/routes/R001_exceptional_zero/PRIME_SIDE_FEASIBILITY_2026_08_20.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R001_exceptional_zero/PRIME_SIDE_FEASIBILITY_2026_08_20.md",
+      "heading_count": 11,
+      "path": "research/RHRC/routes/R001_exceptional_zero/PRIME_SIDE_FEASIBILITY_2026_08_20.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [
+        "R001_FILTERED_ZERO_POLE",
+        "R001_PRIME_UPPER",
+        "R001_WEIL_BRIDGE",
+        "R001_ZERO_GROWTH"
+      ],
+      "document_id": "rh:document:research/RHRC/routes/R001_exceptional_zero/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R001_exceptional_zero/README.md",
+      "heading_count": 6,
+      "path": "research/RHRC/routes/R001_exceptional_zero/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [
+        "R002_WINDOWED_VISIBILITY"
+      ],
+      "document_id": "rh:document:research/RHRC/routes/R002_multi_probe/D0_R_R002_CCM_MAP_AUDIT_2026_08_30.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R002_multi_probe/D0_R_R002_CCM_MAP_AUDIT_2026_08_30.md",
+      "heading_count": 8,
+      "path": "research/RHRC/routes/R002_multi_probe/D0_R_R002_CCM_MAP_AUDIT_2026_08_30.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [
+        "C_RH",
+        "R001_PRIME_UPPER",
+        "R002_MULTI_PROBE_SEPARATION"
+      ],
+      "document_id": "rh:document:research/RHRC/routes/R002_multi_probe/MULTI_PROBE_GRAM_OPERATOR_FEASIBILITY_2026_08_21.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R002_multi_probe/MULTI_PROBE_GRAM_OPERATOR_FEASIBILITY_2026_08_21.md",
+      "heading_count": 15,
+      "path": "research/RHRC/routes/R002_multi_probe/MULTI_PROBE_GRAM_OPERATOR_FEASIBILITY_2026_08_21.md",
+      "route_mentions": [
+        "R002_multi_probe"
+      ]
+    },
+    {
+      "claim_mentions": [
+        "C_RH",
+        "R002_KERNEL_ZERO_SIDE_BRIDGE",
+        "R002_MULTI_PROBE_SEPARATION"
+      ],
+      "document_id": "rh:document:research/RHRC/routes/R002_multi_probe/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R002_multi_probe/README.md",
+      "heading_count": 9,
+      "path": "research/RHRC/routes/R002_multi_probe/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/D0_B_BOMBIERI_CORRESPONDENCE_2026_08_30.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/D0_B_BOMBIERI_CORRESPONDENCE_2026_08_30.md",
+      "heading_count": 13,
+      "path": "research/RHRC/routes/R003_ccm_bridge/D0_B_BOMBIERI_CORRESPONDENCE_2026_08_30.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/D0_C_CUTOFF_FREE_MATRIX_MAP_2026_08_30.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/D0_C_CUTOFF_FREE_MATRIX_MAP_2026_08_30.md",
+      "heading_count": 10,
+      "path": "research/RHRC/routes/R003_ccm_bridge/D0_C_CUTOFF_FREE_MATRIX_MAP_2026_08_30.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/F0_B1A_POST_GREEN_PROJECTION_CONTINUITY_FRONTIER_2026_09_01.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/F0_B1A_POST_GREEN_PROJECTION_CONTINUITY_FRONTIER_2026_09_01.md",
+      "heading_count": 11,
+      "path": "research/RHRC/routes/R003_ccm_bridge/F0_B1A_POST_GREEN_PROJECTION_CONTINUITY_FRONTIER_2026_09_01.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/F0_B1B_POST_GREEN_WCONT_FRONTIER_2026_09_01.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/F0_B1B_POST_GREEN_WCONT_FRONTIER_2026_09_01.md",
+      "heading_count": 26,
+      "path": "research/RHRC/routes/R003_ccm_bridge/F0_B1B_POST_GREEN_WCONT_FRONTIER_2026_09_01.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/F0_B1C_A_POST_GREEN_PROJECTION_STABILITY_FRONTIER_2026_09_02.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/F0_B1C_A_POST_GREEN_PROJECTION_STABILITY_FRONTIER_2026_09_02.md",
+      "heading_count": 20,
+      "path": "research/RHRC/routes/R003_ccm_bridge/F0_B1C_A_POST_GREEN_PROJECTION_STABILITY_FRONTIER_2026_09_02.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/F1_POST_GREEN_FINITE_WALL_RESET_2026_09_02.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/F1_POST_GREEN_FINITE_WALL_RESET_2026_09_02.md",
+      "heading_count": 10,
+      "path": "research/RHRC/routes/R003_ccm_bridge/F1_POST_GREEN_FINITE_WALL_RESET_2026_09_02.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/G0_B_LOCALIZED_FINITE_SPACE_SETTLEMENT_2026_08_31.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/G0_B_LOCALIZED_FINITE_SPACE_SETTLEMENT_2026_08_31.md",
+      "heading_count": 12,
+      "path": "research/RHRC/routes/R003_ccm_bridge/G0_B_LOCALIZED_FINITE_SPACE_SETTLEMENT_2026_08_31.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/G0_LOCALIZED_BASIS_MAP_2026_08_30.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/G0_LOCALIZED_BASIS_MAP_2026_08_30.md",
+      "heading_count": 8,
+      "path": "research/RHRC/routes/R003_ccm_bridge/G0_LOCALIZED_BASIS_MAP_2026_08_30.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/G1_A_ADDITIVE_WEIL_RESTRICTION_SETTLEMENT_2026_08_31.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/G1_A_ADDITIVE_WEIL_RESTRICTION_SETTLEMENT_2026_08_31.md",
+      "heading_count": 13,
+      "path": "research/RHRC/routes/R003_ccm_bridge/G1_A_ADDITIVE_WEIL_RESTRICTION_SETTLEMENT_2026_08_31.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/G1_B0_SOURCE_WEIL_NORMALIZATION_FIREWALL_2026_08_31.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/G1_B0_SOURCE_WEIL_NORMALIZATION_FIREWALL_2026_08_31.md",
+      "heading_count": 14,
+      "path": "research/RHRC/routes/R003_ccm_bridge/G1_B0_SOURCE_WEIL_NORMALIZATION_FIREWALL_2026_08_31.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/G1_B1A_SOURCE_KAPPA_SETTLEMENT_2026_08_31.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/G1_B1A_SOURCE_KAPPA_SETTLEMENT_2026_08_31.md",
+      "heading_count": 8,
+      "path": "research/RHRC/routes/R003_ccm_bridge/G1_B1A_SOURCE_KAPPA_SETTLEMENT_2026_08_31.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/K0F1E_POST_GREEN_EUCLIDEAN_RESET_2026_09_02.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/K0F1E_POST_GREEN_EUCLIDEAN_RESET_2026_09_02.md",
+      "heading_count": 11,
+      "path": "research/RHRC/routes/R003_ccm_bridge/K0F1E_POST_GREEN_EUCLIDEAN_RESET_2026_09_02.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/K0F1_POST_GREEN_CONSTRAINED_FINITE_WALL_RESET_2026_09_02.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/K0F1_POST_GREEN_CONSTRAINED_FINITE_WALL_RESET_2026_09_02.md",
+      "heading_count": 32,
+      "path": "research/RHRC/routes/R003_ccm_bridge/K0F1_POST_GREEN_CONSTRAINED_FINITE_WALL_RESET_2026_09_02.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [
+        "R003_CCM_BRIDGE"
+      ],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/NORMALIZATION_AUDIT_2026_08_21.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/NORMALIZATION_AUDIT_2026_08_21.md",
+      "heading_count": 7,
+      "path": "research/RHRC/routes/R003_ccm_bridge/NORMALIZATION_AUDIT_2026_08_21.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/PARITY_BAD_POST_GREEN_RESET_2026_09_03.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/PARITY_BAD_POST_GREEN_RESET_2026_09_03.md",
+      "heading_count": 5,
+      "path": "research/RHRC/routes/R003_ccm_bridge/PARITY_BAD_POST_GREEN_RESET_2026_09_03.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/PARITY_FLOW_GEOMETRY_POST_GREEN_RESET_2026_09_03.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/PARITY_FLOW_GEOMETRY_POST_GREEN_RESET_2026_09_03.md",
+      "heading_count": 6,
+      "path": "research/RHRC/routes/R003_ccm_bridge/PARITY_FLOW_GEOMETRY_POST_GREEN_RESET_2026_09_03.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/PARITY_POST_GREEN_RESET_2026_09_03.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/PARITY_POST_GREEN_RESET_2026_09_03.md",
+      "heading_count": 5,
+      "path": "research/RHRC/routes/R003_ccm_bridge/PARITY_POST_GREEN_RESET_2026_09_03.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/POST247_REMAINDER_BUDGET_RATIO_SCOUT_2026_09_23.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/POST247_REMAINDER_BUDGET_RATIO_SCOUT_2026_09_23.md",
+      "heading_count": 13,
+      "path": "research/RHRC/routes/R003_ccm_bridge/POST247_REMAINDER_BUDGET_RATIO_SCOUT_2026_09_23.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/POST_247_RIEMANN_WEARING_GLASSES_PROGRAM.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/POST_247_RIEMANN_WEARING_GLASSES_PROGRAM.md",
+      "heading_count": 36,
+      "path": "research/RHRC/routes/R003_ccm_bridge/POST_247_RIEMANN_WEARING_GLASSES_PROGRAM.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [
+        "C_RH",
+        "R003_CCM_BRIDGE",
+        "R003_CCM_RHS_IDENTITY",
+        "R003_KERNEL_EF_EXTENSION",
+        "R003_WEIL_DISPLACEMENT",
+        "R004_CCM_DISPLACEMENT_FORMAL"
+      ],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/PR34_GENERIC_SOURCE_CALCULUS.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/PR34_GENERIC_SOURCE_CALCULUS.md",
+      "heading_count": 7,
+      "path": "research/RHRC/routes/R003_ccm_bridge/PR34_GENERIC_SOURCE_CALCULUS.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [
+        "C_RH",
+        "R003_CCM_BRIDGE",
+        "R003_CCM_RHS_IDENTITY",
+        "R003_KERNEL_EF_EXTENSION",
+        "R003_WEIL_DISPLACEMENT"
+      ],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/PR35_FINITE_DICTIONARY.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/PR35_FINITE_DICTIONARY.md",
+      "heading_count": 13,
+      "path": "research/RHRC/routes/R003_ccm_bridge/PR35_FINITE_DICTIONARY.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [
+        "R003_CCM_BRIDGE",
+        "R003_CCM_RHS_IDENTITY",
+        "R003_KERNEL_EF_EXTENSION",
+        "R003_WEIL_DISPLACEMENT",
+        "R004_CCM_DISPLACEMENT_FORMAL"
+      ],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/PRE_GROSKIN_ROADMAP_2026_08_21.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/PRE_GROSKIN_ROADMAP_2026_08_21.md",
+      "heading_count": 32,
+      "path": "research/RHRC/routes/R003_ccm_bridge/PRE_GROSKIN_ROADMAP_2026_08_21.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/README.md",
+      "heading_count": 24,
+      "path": "research/RHRC/routes/R003_ccm_bridge/README.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/SOURCE_NORMALIZATION_REPAIR_SETTLEMENT_2026_08_31.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/SOURCE_NORMALIZATION_REPAIR_SETTLEMENT_2026_08_31.md",
+      "heading_count": 9,
+      "path": "research/RHRC/routes/R003_ccm_bridge/SOURCE_NORMALIZATION_REPAIR_SETTLEMENT_2026_08_31.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/W1_POST_GREEN_ZERO_SIDE_EVENIZATION_2026_09_01.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/W1_POST_GREEN_ZERO_SIDE_EVENIZATION_2026_09_01.md",
+      "heading_count": 32,
+      "path": "research/RHRC/routes/R003_ccm_bridge/W1_POST_GREEN_ZERO_SIDE_EVENIZATION_2026_09_01.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [
+        "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+        "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE"
+      ],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/W2_ZS_POST_GREEN_F0B_FRONTIER_2026_09_01.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/W2_ZS_POST_GREEN_F0B_FRONTIER_2026_09_01.md",
+      "heading_count": 36,
+      "path": "research/RHRC/routes/R003_ccm_bridge/W2_ZS_POST_GREEN_F0B_FRONTIER_2026_09_01.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/WCONT_A_POST_GREEN_F0B1C_FRONTIER_2026_09_01.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/WCONT_A_POST_GREEN_F0B1C_FRONTIER_2026_09_01.md",
+      "heading_count": 27,
+      "path": "research/RHRC/routes/R003_ccm_bridge/WCONT_A_POST_GREEN_F0B1C_FRONTIER_2026_09_01.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R004_prolate_v2/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R004_prolate_v2/README.md",
+      "heading_count": 14,
+      "path": "research/RHRC/routes/R004_prolate_v2/README.md",
+      "route_mentions": [
+        "R004_prolate_v2"
+      ]
+    },
+    {
+      "claim_mentions": [
+        "C_RH"
+      ],
+      "document_id": "rh:document:research/RHRC/runner/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/runner/README.md",
+      "heading_count": 2,
+      "path": "research/RHRC/runner/README.md",
+      "route_mentions": [
+        "R003_ccm_bridge"
+      ]
+    }
+  ],
+  "entry_count": 64,
+  "graph_theorem_promotion": false,
+  "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
+  "schema_version": "RHKG-final-document-closure-1.0",
+  "scope": "ALL_DOCUMENTATION_AND_LIVING_SSOT_FILES",
+  "terminal_claim": "RH_OPEN"
+}

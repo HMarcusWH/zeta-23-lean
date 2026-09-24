@@ -139,7 +139,7 @@
     },
     {
       "id": "graph_config",
-      "pattern": "^research/RHRC/graph/(GRAPH_SCHEMA|FILE_CLASSES|DEPENDENCY_FARMING_COHORTS|DEPENDENCY_QUOTIENT_CONFIG)\\.json$",
+      "pattern": "^research/RHRC/graph/(GRAPH_SCHEMA|FILE_CLASSES|DEPENDENCY_FARMING_COHORTS|DEPENDENCY_QUOTIENT_CONFIG|SEMANTIC_CLOSURE_CONFIG)\\.json$",
       "file_class": "BUILD_CONFIGURATION",
       "trust_zone": "AUDIT_ONLY"
     },
