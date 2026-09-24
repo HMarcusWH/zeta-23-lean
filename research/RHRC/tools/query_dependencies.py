@@ -2,22 +2,73 @@ from __future__ import annotations
 
 import argparse
 import json
+from collections import deque
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 GENERATED = ROOT / "graph" / "generated"
+COMPILER_RECEIPT = ROOT / "graph" / "compiler" / "REGISTERED_DECLARATION_DEPENDENCIES.jsonl"
 
 
 def load(name: str) -> dict:
     return json.loads((GENERATED / name).read_text(encoding="utf-8"))
 
 
+def load_compiler_receipt() -> list[dict]:
+    return [
+        json.loads(line)
+        for line in COMPILER_RECEIPT.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+
+
+def shortest_local_dependency_path(
+    receipt: list[dict], start: str, target: str
+) -> list[str] | None:
+    by_name = {row["declaration"]: row for row in receipt}
+    if start not in by_name or target not in by_name:
+        return None
+    if by_name[start]["repository_scope"] != "LOCAL":
+        return None
+    if by_name[target]["repository_scope"] != "LOCAL":
+        return None
+    if start == target:
+        return [start]
+
+    parent: dict[str, str | None] = {start: None}
+    queue: deque[str] = deque([start])
+    while queue:
+        current = queue.popleft()
+        neighbors = sorted(
+            dep["constant"]
+            for dep in by_name[current]["dependencies"]
+            if dep["constant"] in by_name
+            and by_name[dep["constant"]]["repository_scope"] == "LOCAL"
+        )
+        for neighbor in neighbors:
+            if neighbor in parent:
+                continue
+            parent[neighbor] = current
+            if neighbor == target:
+                path = [target]
+                cursor = target
+                while parent[cursor] is not None:
+                    cursor = parent[cursor]  # type: ignore[index]
+                    path.append(cursor)
+                return list(reversed(path))
+            queue.append(neighbor)
+    return None
+
+
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Query RHKG Phase-2C dependency products")
+    parser = argparse.ArgumentParser(description="Query RHKG Phase-2D dependency products")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--claim")
     group.add_argument("--compare", nargs=2, metavar=("LEFT", "RIGHT"))
     group.add_argument("--intersect")
+    group.add_argument("--atoms", metavar="COHORT")
+    group.add_argument("--frontier", metavar="COHORT")
+    group.add_argument("--path", nargs=2, metavar=("ROOT_CLAIM", "TARGET_DECLARATION"))
     args = parser.parse_args()
 
     closure = load("THEOREM_DEPENDENCY_CLOSURE.json")
@@ -57,22 +108,83 @@ def main() -> int:
         print(json.dumps(out, sort_keys=True, indent=2, ensure_ascii=False))
         return 0
 
-    row = by_cohort.get(args.intersect)
-    if row is None:
-        raise SystemExit(f"unknown dependency cohort: {args.intersect}")
+    if args.intersect:
+        row = by_cohort.get(args.intersect)
+        if row is None:
+            raise SystemExit(f"unknown dependency cohort: {args.intersect}")
+        out = {
+            "cohort_id": row["cohort_id"],
+            "claim_ids": row["claim_ids"],
+            "intersection_count": row["local_dependency_intersection_count"],
+            "intersection_excluding_registered_roots_count": row[
+                "local_dependency_intersection_excluding_registered_roots_count"
+            ],
+            "intersection": row["local_dependency_intersection"],
+            "intersection_excluding_registered_roots": row[
+                "local_dependency_intersection_excluding_registered_roots"
+            ],
+            "member_shells": row["member_shells"],
+            "interpretation": "Exact cohort dependency intersection and subtraction shells; discovery-only.",
+            "terminal_claim": "RH_OPEN",
+            "graph_theorem_promotion": False,
+        }
+        print(json.dumps(out, sort_keys=True, indent=2, ensure_ascii=False))
+        return 0
+
+    if args.atoms:
+        atoms = load("DEPENDENCY_COHORT_ATOMS.json")
+        if args.atoms != atoms["target_cohort_id"]:
+            raise SystemExit(
+                f"Phase 2D atom view is configured for {atoms['target_cohort_id']}, "
+                f"not {args.atoms}"
+            )
+        print(json.dumps(atoms, sort_keys=True, indent=2, ensure_ascii=False))
+        return 0
+
+    if args.frontier:
+        frontiers = load("DEPENDENCY_BRIDGE_FRONTIERS.json")
+        if args.frontier != frontiers["target_cohort_id"]:
+            raise SystemExit(
+                f"Phase 2D frontier view is configured for {frontiers['target_cohort_id']}, "
+                f"not {args.frontier}"
+            )
+        print(json.dumps(frontiers, sort_keys=True, indent=2, ensure_ascii=False))
+        return 0
+
+    root_claim, target = args.path
+    entry = by_claim.get(root_claim)
+    if entry is None:
+        raise SystemExit(f"unknown proved registered root claim: {root_claim}")
+    receipt = load_compiler_receipt()
+    path = shortest_local_dependency_path(receipt, entry["root_theorem"], target)
+    if path is None:
+        raise SystemExit(
+            f"no project-local compiler dependency path from {root_claim} to {target}"
+        )
+    by_name = {row["declaration"]: row for row in receipt}
+    edges = []
+    for source, dest in zip(path, path[1:]):
+        dep = next(
+            dep for dep in by_name[source]["dependencies"] if dep["constant"] == dest
+        )
+        edges.append(
+            {
+                "source": source,
+                "target": dest,
+                "used_in_type": dep["used_in_type"],
+                "used_in_value": dep["used_in_value"],
+                "used_in_structure": dep["used_in_structure"],
+            }
+        )
     out = {
-        "cohort_id": row["cohort_id"],
-        "claim_ids": row["claim_ids"],
-        "intersection_count": row["local_dependency_intersection_count"],
-        "intersection_excluding_registered_roots_count": row[
-            "local_dependency_intersection_excluding_registered_roots_count"
-        ],
-        "intersection": row["local_dependency_intersection"],
-        "intersection_excluding_registered_roots": row[
-            "local_dependency_intersection_excluding_registered_roots"
-        ],
-        "member_shells": row["member_shells"],
-        "interpretation": "Exact cohort dependency intersection and subtraction shells; discovery-only.",
+        "root_claim_id": root_claim,
+        "root_theorem": entry["root_theorem"],
+        "target_declaration": target,
+        "path_length": len(path) - 1,
+        "path": path,
+        "edges": edges,
+        "edge_direction": "SOURCE_DECLARATION_TO_COMPILER_USED_CONSTANT",
+        "interpretation": "Deterministic shortest path in the exact local compiler dependency graph; not logical implication.",
         "terminal_claim": "RH_OPEN",
         "graph_theorem_promotion": False,
     }
