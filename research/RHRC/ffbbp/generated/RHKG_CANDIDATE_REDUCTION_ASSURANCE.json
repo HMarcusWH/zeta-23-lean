@@ -1,0 +1,7 @@
+{
+  "schema_version": "RHRC-FFBBP-RHKG-assurance-report-1.0",
+  "status": "PENDING_MATERIALIZATION",
+  "terminal_claim": "RH_OPEN",
+  "theorem_promotion": false,
+  "inherits_run42c_qualification": false
+}

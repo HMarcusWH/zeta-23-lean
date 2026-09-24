@@ -1,0 +1,61 @@
+{
+  "schema_version": "RHRC-FFBBP-RHKG-assurance-config-1.0",
+  "theory_version": "1.6.0",
+  "profile_id": "RHRC_FFBBP_V16_RHKG_CANDIDATE_ASSURANCE_V1",
+  "status": "RESEARCH_CONTROL_ONLY",
+  "terminal_claim": "RH_OPEN",
+  "theorem_promotion": false,
+  "inherits_run42c_qualification": false,
+  "xi_mode": "SNAPSHOT",
+  "contract": {
+    "reduction_id": "RHKG_SOURCE_CANDIDATE_SNAPSHOT_V1",
+    "source_state_schema": "RHRC-lean-candidate-receipt-1.0",
+    "xi_schema": "RHRC-FFBBP-RHKG-candidate-Xi-1.0",
+    "reduction_map_version": "1.0",
+    "reference_path_id": "FULL_LEAN_EXACT_SOURCE_CANDIDATE_RECEIPT",
+    "diagnostic_map_id": "EXACT_VISIBILITY_CLASS",
+    "decision_map_id": "IS_SOURCE_ONLY_PUBLIC_THEOREM",
+    "metric_refs": [
+      "EXACT_CATEGORICAL_EQUALITY"
+    ],
+    "clock_contract_refs": [
+      "NOT_APPLICABLE_STATIC_REPOSITORY_SNAPSHOT"
+    ],
+    "trust_region": {
+      "repository": "HMarcusWH/zeta-23-lean",
+      "base_pr": 264,
+      "base_merge_commit": "dd4636d021ccc95d915bcdd9635fe100b8e4c5bb",
+      "source_population": "RH_FORMAL_CORE theorem/lemma LeanCandidateReceipt surface",
+      "mode": "STATIC_REPOSITORY_SNAPSHOT"
+    },
+    "claim_cap_ref": "research/RHRC/integration/INTEGRATION_BOUNDARY.json#claim_firewall"
+  },
+  "reductions": [
+    {
+      "id": "MODULE_ONLY_SNAPSHOT",
+      "key_fields": [
+        "module"
+      ],
+      "declared_use": "NEGATIVE_CONTROL_ONLY",
+      "description": "Module-only Xi. Expected to falsify decision sufficiency when one module contains both source-only and already-visible declarations."
+    },
+    {
+      "id": "TYPE_DIGEST_SNAPSHOT",
+      "key_fields": [
+        "compiler_type_sha256"
+      ],
+      "declared_use": "CURRENT_SNAPSHOT_DECISION_PROBE_ONLY",
+      "description": "Compiler-rendered type-digest Xi. Tests whether current-snapshot source-only decision factors through type digest; no future-state or semantic-equivalence claim."
+    },
+    {
+      "id": "MODULE_VISIBILITY_SNAPSHOT",
+      "key_fields": [
+        "module",
+        "visibility_class"
+      ],
+      "declared_use": "POST_REFERENCE_COHORT_NAVIGATION_ONLY",
+      "description": "Post-reference Xi retaining module and exact visibility disposition. Intended for cohort navigation after full Lean exactification, not pre-reference theorem ranking."
+    }
+  ],
+  "selected_reduction": "MODULE_VISIBILITY_SNAPSHOT"
+}
