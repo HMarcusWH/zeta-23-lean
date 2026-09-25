@@ -5,32 +5,6 @@
 Live GitHub head + exact compiler/CI evidence are authoritative dynamically. This file is the current execution SSOT.
 
 
-## Post-#265 integration override
-
-This block supersedes the post-#264 integration-current label below.
-
-- PR #265 merged green from validated steady-state head
-  `fabdef96784f427092a769198ef12a616cfe857d`;
-- #265 merge commit = `ae7bae97b1351fe048b679fe2db42b734946dff9`;
-- #265 steady-state tree = `6741f43d81aa34ddb3169a425e9d451a41214704`;
-- FFBBP selected reduction = `MODULE_VISIBILITY_SNAPSHOT`;
-- exact source-only population = 680 declarations in 195 assured navigation cohorts;
-- current integration operation = OoL RHKG Phase Atlas;
-- Phase Atlas projection = `THEOREM_VALUE_ERASED_SUPPORT`;
-- theorem proof-body VALUE edges are not allowed to manufacture interface contact;
-- shared support common to multiple interface families is removed before a
-  contact can count as interface-distinctive;
-- the exact #261 21-edge theorem-value-erased arithmetic frontier is retained
-  as a separate discovery probe;
-- no scalar theorem ranking, graph-proximity implication, theorem promotion,
-  or RH claim is authorized;
-- theorem authority remains PR #262 and RH remains OPEN.
-
-The purpose of this PR is to decide whether any exact source-only theorem
-surface survives a stronger interface-contact screen. A null result is a valid
-falsification outcome. A non-null result is a LEAD requiring a new Lean
-composition theorem.
-
 ## Post-#264 integration override
 
 This block supersedes older repository/integration-current labels below without
@@ -126,7 +100,31 @@ CONTROL AUTHORITY
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
-<!-- RHRC_CURRENT_STATE_END -->
+<!-- RHRC_CURRENT_STATE_END -->\n\n## Post-#265 integration override
+
+This block supersedes the post-#264 integration-current label below.
+
+- PR #265 merged green from validated steady-state head
+  `fabdef96784f427092a769198ef12a616cfe857d`;
+- #265 merge commit = `ae7bae97b1351fe048b679fe2db42b734946dff9`;
+- #265 steady-state tree = `6741f43d81aa34ddb3169a425e9d451a41214704`;
+- FFBBP selected reduction = `MODULE_VISIBILITY_SNAPSHOT`;
+- exact source-only population = 680 declarations in 195 assured navigation cohorts;
+- current integration operation = OoL RHKG Phase Atlas;
+- Phase Atlas projection = `THEOREM_VALUE_ERASED_SUPPORT`;
+- theorem proof-body VALUE edges are not allowed to manufacture interface contact;
+- shared support common to multiple interface families is removed before a
+  contact can count as interface-distinctive;
+- the exact #261 21-edge theorem-value-erased arithmetic frontier is retained
+  as a separate discovery probe;
+- no scalar theorem ranking, graph-proximity implication, theorem promotion,
+  or RH claim is authorized;
+- theorem authority remains PR #262 and RH remains OPEN.
+
+The purpose of this PR is to decide whether any exact source-only theorem
+surface survives a stronger interface-contact screen. A null result is a valid
+falsification outcome. A non-null result is a LEAD requiring a new Lean
+composition theorem.
 
 ## Post-#247 programme override
 
