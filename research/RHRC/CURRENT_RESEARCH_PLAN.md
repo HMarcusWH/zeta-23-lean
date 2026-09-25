@@ -102,27 +102,28 @@ CONTROL AUTHORITY
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
-## Post-#267 theoremization override
+## Post-#267 carrier-ground theoremization override
 
-This block records the theorem programme after merged PR #267 without altering
-the frozen Control-v2 current-state block above.
+This block records the theorem-bearing continuation after merged PR #267
+without altering the frozen Control-v2 current-state block above.
 
 - PR #267 proves unconditional fixed-aperture N-flow antitonicity of each
   successor parity Rayleigh bottom and of `globalParitySuccessorBottom`;
-- the direction is larger N -> spectral bottom can only move down;
-- small-N positivity does not propagate upward from #267;
-- the next theoremization target is the exact carrier-ground hierarchy
+- this theoremization adds exact full-space and complete boundary-flat
+  Rayleigh bottoms for the same canonical finite matrix;
+- in the legal successor regime it proves
   `full <= boundary-flat = min(even, odd)`;
-- this carrier result is a ground-Rayleigh comparison, not ordered spectral
-  interlacing;
-- the existing `globalParitySuccessorBottom` should become identified with
-  the actual ground Rayleigh value of the complete legal boundary-flat carrier;
-- after that, the active downstream theorem target is unconditional
-  ground-eigenspace prime-test-weight/arithmetic control across fixed cells and
-  prime-power seams.
+- it identifies `globalParitySuccessorBottom` with the actual ground Rayleigh
+  value of the complete legal boundary-flat carrier;
+- this is a ground-Rayleigh hierarchy, not ordered eigenvalue interlacing;
+- the next downstream theorem target is unconditional ground-eigenspace
+  prime-test-weight/arithmetic control across fixed cells and prime-power seams.
 
-The integration/OoL authority split remains unchanged. RH remains OPEN.
-\n\n## Post-#265 integration override
+The integration/OoL authority split remains unchanged. No sign, aperture
+monotonicity, prime-remainder domination, residual-state exclusion, or RH
+theorem is claimed. RH remains OPEN.
+
+## Post-#265 integration override
 
 This block supersedes the post-#264 integration-current label below.
 
