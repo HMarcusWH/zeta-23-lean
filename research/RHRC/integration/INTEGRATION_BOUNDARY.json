@@ -18,12 +18,17 @@
     "Permansson regime classification->mathematical theorem",
     "MCM-HMWH consensus->mathematical theorem",
     "multi-framework agreement->PROVED",
-    "candidate dependency receipt->registered theorem dependency authority"
+    "candidate dependency receipt->registered theorem dependency authority",
+    "OoL Phase Atlas interface contact->mathematical implication",
+    "OoL Phase Atlas cross-interface contact->theorem composition",
+    "theorem-value-erased support contact->RH evidence"
   ],
   "allowed_candidate_transitions": [
     "LeanSourceDeclaration->LeanCandidateReceipt",
     "LeanCandidateReceipt->DISCOVERY_ONLY_CANDIDATE_DEPENDENCY_RECEIPT",
     "candidate->new Lean theorem attempt",
-    "successful Lean theorem attempt->normal claim-registration gates"
+    "successful Lean theorem attempt->normal claim-registration gates",
+    "candidate dependency receipt->OoL DISCOVERY_ONLY interface-contact atlas",
+    "OoL candidate contact->new Lean theorem attempt"
   ]
 }
