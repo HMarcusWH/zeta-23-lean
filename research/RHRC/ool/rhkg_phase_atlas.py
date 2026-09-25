@@ -9,6 +9,7 @@ from pathlib import Path
 RHRC = Path(__file__).resolve().parents[1]
 REPO = RHRC.parents[1]
 CONFIG = RHRC / "ool" / "configs" / "rhkg_phase_atlas_v2.json"
+REFERENCE = RHRC / "ool" / "OOL_REFERENCE.json"
 SOURCE_ONLY = RHRC / "integration" / "generated" / "RH_CORE_SOURCE_ONLY_THEOREMS.jsonl"
 SOURCE_DEPS = RHRC / "integration" / "generated" / "SOURCE_ONLY_CANDIDATE_DEPENDENCIES.jsonl"
 REGISTERED_DEPS = RHRC / "graph" / "compiler" / "REGISTERED_DECLARATION_DEPENDENCIES.jsonl"
@@ -162,10 +163,19 @@ def find_frontier_probe(data: dict, config: dict) -> tuple[set[str], dict]:
 
 def build() -> tuple[list[dict], dict]:
     config = json.loads(CONFIG.read_text(encoding="utf-8"))
+    reference = json.loads(REFERENCE.read_text(encoding="utf-8"))
     if config.get("terminal_claim") != "RH_OPEN" or config.get("theorem_promotion") is not False:
         fail("config authority firewall drift")
     if config.get("projection") != PROJECTION:
         fail("atlas projection drift")
+    if config.get("ool_kernel_version") != reference.get("version"):
+        fail("OoL config/reference kernel-version drift")
+    if reference.get("version") != "2.7.7":
+        fail("OoL 2.7.7 reference drift")
+    if reference.get("default_certificate") != "INCOMPLETE without independently configured policy and reviewed signatures":
+        fail("OoL default-certificate authority drift")
+    if reference.get("valid_certificate_meaning") != "attested binding; NOT physical truth":
+        fail("OoL certificate-meaning authority drift")
     families = config.get("interface_families", [])
     family_ids = [row["id"] for row in families]
     if len(family_ids) != len(set(family_ids)):
@@ -303,6 +313,7 @@ def build() -> tuple[list[dict], dict]:
             "source_only_dependency_sha256": digest_path(SOURCE_DEPS),
             "registered_dependency_sha256": digest_path(REGISTERED_DEPS),
             "ffbbp_assurance_sha256": digest_path(FFBBP),
+            "ool_reference_sha256": digest_path(REFERENCE),
             "projection_frontiers_sha256": digest_path(FRONTIERS),
         },
         "interface_families": {
@@ -322,6 +333,12 @@ def build() -> tuple[list[dict], dict]:
         },
         "disposition_counts": dict(sorted(disposition_counts.items())),
         "candidate_count": len(contacts),
+        "certificate_semantics": {
+            "default": reference["default_certificate"],
+            "valid_meaning": reference["valid_certificate_meaning"],
+            "mathematical_theorem_authority": false,
+            "physical_truth_authority": false
+        },
         "claim_firewall": [
             "module identity is not an OoL handoff",
             "FFBBP cohort membership is navigation only",
@@ -329,6 +346,7 @@ def build() -> tuple[list[dict], dict]:
             "proof-body-only contact is separated from theorem-value-erased support",
             "cross-interface support contact is not theorem composition",
             "theorem-value-erased frontier contact is not mathematical implication",
+            "OoL certificate VALID authenticates a reviewed binding, not physical or mathematical truth",
             "OoL output does not create PROVED authority",
             "RH remains OPEN",
         ],
