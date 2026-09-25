@@ -232,8 +232,9 @@ def main() -> int:
             raise SystemExit("integration_lint: FFBBP RHKG report authority drift")
         if report.get("inherits_run42c_qualification") is not False:
             raise SystemExit("integration_lint: FFBBP RHKG report qualification drift")
-        if report["input_snapshot"]["candidate_count"] != 2358:
-            raise SystemExit("integration_lint: FFBBP RHKG candidate-count drift")
+        candidate_summary = json.loads(summary_path.read_text(encoding="utf-8"))
+        if report["input_snapshot"]["candidate_count"] != candidate_summary.get("candidate_count"):
+            raise SystemExit("integration_lint: FFBBP/source-candidate count mismatch")
         if report["input_snapshot"]["source_only_public_theorem_count"] != 680:
             raise SystemExit("integration_lint: FFBBP RHKG source-only-count drift")
         module_only = report["reductions"]["MODULE_ONLY_SNAPSHOT"]
