@@ -21,6 +21,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Preserve the exact audit corpus and prepare proof repairs
+        run: python .github/post268_prepare.py
       - uses: leanprover/lean-action@v1
         with:
           auto-config: false
@@ -36,5 +38,5 @@ jobs:
           python research/RHRC/tools/axiom_audit.py Zeta23/CCM/RankOneEigenline.lean Zeta23/CCM/GlobalParityBottomSimplicity.lean Zeta23/CCM/GlobalParityBottomGroundSpace.lean Zeta23/CCM/SourceWeightCounterexample.lean Zeta23/CCM/CanonicalArithmeticLowerBound.lean Zeta23/CCM/CofinalLowerBound.lean Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean
       - name: Bootstrap status
         run: |
-          echo 'STAGING: audit corpus and full test deployment are being assembled. Not merge-ready.'
-          echo 'The materializer is replaced by the final deterministic regeneration workflow before merge.'
+          echo 'STAGING: full test deployment and deterministic final graph regeneration are being assembled. Not merge-ready.'
+          echo 'Prepared proof edits and preserved corpus will be committed only by the final validated materializer.'
