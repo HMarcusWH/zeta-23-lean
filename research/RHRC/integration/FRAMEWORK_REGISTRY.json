@@ -31,10 +31,18 @@
       "id": "OOL_MVS",
       "name": "OoL-MVS operational semantics",
       "version": "2.7.6",
-      "status": "OPERATIONAL_SEMANTICS_INTEGRATED_PHASE_ATLAS_PENDING",
+      "status": "RHKG_PHASE_ATLAS_INTEGRATION_ACTIVE",
       "scope": "operational_semantics_and_governance_only",
       "claim_cap": "RESEARCH_CONTROL_ONLY",
-      "reference": "research/RHRC/ool/OOL_REFERENCE.json"
+      "reference": "research/RHRC/ool/OOL_REFERENCE.json",
+      "rhkg_adapter": {
+        "config": "research/RHRC/ool/configs/rhkg_phase_atlas_v1.json",
+        "route_contacts": "research/RHRC/ool/generated/RHKG_OOL_ROUTE_CONTACTS.jsonl",
+        "report": "research/RHRC/ool/generated/RHKG_OOL_PHASE_ATLAS.json",
+        "compiler_receipt": "research/RHRC/integration/generated/SOURCE_ONLY_CANDIDATE_DEPENDENCIES.jsonl",
+        "projection": "THEOREM_VALUE_ERASED_SUPPORT",
+        "claim_cap": "RESEARCH_CONTROL_ONLY"
+      }
     },
     {
       "id": "PERMANSSON_EMBEDDED",
