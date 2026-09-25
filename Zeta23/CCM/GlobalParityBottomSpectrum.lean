@@ -667,7 +667,28 @@ theorem boundaryFlatRayleighBottom_eq_min_parity
         change ‖x0‖ ^ 2 = ‖e0‖ ^ 2 + ‖o0‖ ^ 2
         exact hnorm
       rw [hxquad]
-      nlinarith [heLower', hoLower', hminEven, hminOdd, hsplit, hnorm']
+      let m : ℝ :=
+        min
+          (parityRayleighBottom .even L N)
+          (parityRayleighBottom .odd L N)
+      have heChain :
+          m * ‖e‖ ^ 2 ≤
+            (quadraticForm (canonicalSourceMatrix L N) (evenPart N u)).re := by
+        exact le_trans hminEven heLower'
+      have hoChain :
+          m * ‖o‖ ^ 2 ≤
+            (quadraticForm (canonicalSourceMatrix L N) (oddPart N u)).re := by
+        exact le_trans hminOdd hoLower'
+      change m * ‖x‖ ^ 2 ≤ (quadraticForm (canonicalSourceMatrix L N) u).re
+      calc
+        m * ‖x‖ ^ 2
+            = m * (‖e‖ ^ 2 + ‖o‖ ^ 2) := by rw [hnorm']
+        _ = m * ‖e‖ ^ 2 + m * ‖o‖ ^ 2 := by ring
+        _ ≤
+            (quadraticForm (canonicalSourceMatrix L N) (evenPart N u)).re +
+              (quadraticForm (canonicalSourceMatrix L N) (oddPart N u)).re :=
+          add_le_add heChain hoChain
+        _ = (quadraticForm (canonicalSourceMatrix L N) u).re := hsplit
     exact (le_div_iff₀ hden).2 hquad
 
 /-- The common #247 shift: minimum of the two successor parity bottoms. -/
