@@ -104,7 +104,7 @@ def run_lean(candidates: list[dict]) -> str:
         with tempfile.NamedTemporaryFile(
             mode="w", suffix=".lean", encoding="utf-8", delete=False
         ) as driver_handle:
-            driver_handle.write(render_driver(query_path))
+            driver_handle.write(render_driver(query_path, candidates))
             driver_path = Path(driver_handle.name)
         proc = subprocess.run(
             ["lake", "env", "lean", str(driver_path)],
