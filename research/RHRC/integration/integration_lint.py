@@ -63,8 +63,10 @@ def main() -> int:
             "integration_lint: framework registry drift "
             f"missing={sorted(required - set(by_id))} extra={sorted(set(by_id) - required)}"
         )
-    if by_id["FFBBP_ASSURANCE"].get("inherits_run42c_qualification") is not False:
-        raise SystemExit("integration_lint: FFBBP assurance may not inherit RUN42C qualification")
+    if by_id["FFBBP_ASSURANCE"].get("inherits_runtime_qualification") is not False:
+        raise SystemExit("integration_lint: FFBBP assurance may not inherit runtime qualification")
+    if by_id["FFBBP_ASSURANCE"].get("run46f_runtime_promoted") is not False:
+        raise SystemExit("integration_lint: FFBBP 1.7 paper may not promote RUN46F runtime authority")
     if by_id["FFBBP_ASSURANCE"].get("status") != "RHKG_SNAPSHOT_ASSURANCE_V17_INTEGRATED_RUNTIME_NOT_PROMOTED":
         raise SystemExit("integration_lint: FFBBP RHKG assurance status drift")
     if by_id["MCM_HMWH"]["status"] != "NOT_YET_INTEGRATED":
