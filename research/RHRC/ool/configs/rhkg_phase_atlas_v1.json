@@ -1,0 +1,55 @@
+{
+  "schema_version": "RHRC-OOL-RHKG-phase-atlas-config-1.0",
+  "atlas_version": "1.0",
+  "ool_kernel_version": "2.7.6",
+  "terminal_claim": "RH_OPEN",
+  "theorem_promotion": false,
+  "mode": "DISCOVERY_INTERFACE_CONTACT_ONLY",
+  "claim_cap": "RESEARCH_CONTROL_ONLY",
+  "source_population": "SOURCE_ONLY_PUBLIC_THEOREM",
+  "source_only_candidate_count": 680,
+  "ffbbp": {
+    "required_selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
+    "required_source_only_module_cohort_count": 195,
+    "navigation_only": true
+  },
+  "projection": "THEOREM_VALUE_ERASED_SUPPORT",
+  "interface_families": [
+    {
+      "id": "CARRIER_SPECTRUM",
+      "claim_ids": [
+        "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+        "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+        "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM"
+      ]
+    },
+    {
+      "id": "APERTURE_ARITHMETIC",
+      "claim_ids": [
+        "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
+        "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS"
+      ]
+    },
+    {
+      "id": "GROUND_SOURCE",
+      "claim_ids": [
+        "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
+        "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
+        "R003_GLOBAL_BOTTOM_PRIME_WEIGHT"
+      ]
+    }
+  ],
+  "theorem_value_erased_frontier_probe": {
+    "left_claim_id": "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
+    "right_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+    "required_eligible_cross_region_edge_count": 21
+  },
+  "contact_semantics": {
+    "local_declarations_only": true,
+    "shared_multi_family_support_is_not_distinctive_contact": true,
+    "module_identity_is_not_contact": true,
+    "type_digest_identity_is_not_contact": true,
+    "graph_proximity_is_not_implication": true,
+    "proof_body_only_contact_is_separate": true
+  }
+}

@@ -76,12 +76,21 @@ jobs:
         run: lake build Zeta23.RHRC.DeclarationDependencyExport
       - name: Check RHKG compiler dependency receipt
         run: python3 research/RHRC/tools/lean_dependency_extract.py --check
+      - name: Check source-only candidate compiler dependency receipt
+        run: |
+          if compgen -G ".github/workflows/rhrc_*_materializer.yml" > /dev/null; then
+            echo "Source-only compiler dependency byte check deferred to one-shot materializer."
+          else
+            python3 research/RHRC/integration/source_only_dependency_extract.py --check
+          fi
       - name: Upload RHKG compiler dependency receipt
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: rhkg-compiler-receipt
-          path: research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl
+          path: |
+            research/RHRC/graph/compiler/REGISTERED_DECLARATION_DEPENDENCIES.jsonl
+            research/RHRC/integration/generated/SOURCE_ONLY_CANDIDATE_DEPENDENCIES.jsonl
           if-no-files-found: error
 
   r003-normalization-audit:

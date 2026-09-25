@@ -38,8 +38,17 @@ def main() -> int:
         raise SystemExit("integration_lint: graph authority must remain PR #263")
     if state.get("integration_foundation_authority", {}).get("pr") != 264:
         raise SystemExit("integration_lint: integration foundation authority must remain PR #264")
-    if state.get("current_operation") != "FFBBP_RHKG_SNAPSHOT_REDUCTION_ASSURANCE":
+    if state.get("current_operation") != "OOL_RHKG_PHASE_ATLAS":
         raise SystemExit("integration_lint: current integration operation drift")
+    ffbbp_authority = state.get("ffbbp_assurance_authority", {})
+    if ffbbp_authority.get("pr") != 265:
+        raise SystemExit("integration_lint: FFBBP assurance authority must be PR #265")
+    if ffbbp_authority.get("validated_head") != "fabdef96784f427092a769198ef12a616cfe857d":
+        raise SystemExit("integration_lint: FFBBP assurance validated-head drift")
+    if ffbbp_authority.get("merge_commit") != "ae7bae97b1351fe048b679fe2db42b734946dff9":
+        raise SystemExit("integration_lint: FFBBP assurance merge-commit drift")
+    if ffbbp_authority.get("tree") != "6741f43d81aa34ddb3169a425e9d451a41214704":
+        raise SystemExit("integration_lint: FFBBP assurance tree drift")
     if state.get("theorem_promotion") is not False:
         raise SystemExit("integration_lint: integration state attempts theorem promotion")
     if boundary["claim_firewall"].get("theorem_promotion") is not False:
@@ -91,6 +100,13 @@ def main() -> int:
     )
     if by_id["OOL_MVS"]["version"] != ool_reference["version"]:
         raise SystemExit("integration_lint: OoL reference version drift")
+    if by_id["OOL_MVS"].get("status") != "RHKG_PHASE_ATLAS_INTEGRATION_ACTIVE":
+        raise SystemExit("integration_lint: OoL Phase Atlas integration status drift")
+    ool_adapter = by_id["OOL_MVS"].get("rhkg_adapter", {})
+    if ool_adapter.get("projection") != "THEOREM_VALUE_ERASED_SUPPORT":
+        raise SystemExit("integration_lint: OoL projection drift")
+    if ool_adapter.get("claim_cap") != "RESEARCH_CONTROL_ONLY":
+        raise SystemExit("integration_lint: OoL claim-cap widening")
 
     host_toolchain = (REPO / "lean-toolchain").read_text(encoding="utf-8").strip()
     if not host_toolchain.endswith(by_id["PERMANSSON_EXTERNAL"]["host_lean_toolchain"]):
@@ -232,6 +248,49 @@ def main() -> int:
             raise SystemExit("integration_lint: selected FFBBP reduction no longer assured")
         if report["source_only_module_cohort_count"] != 195:
             raise SystemExit("integration_lint: source-only module cohort count drift")
+
+    ool_config_path = RHRC / "ool" / "configs" / "rhkg_phase_atlas_v1.json"
+    ool_report_path = RHRC / "ool" / "generated" / "RHKG_OOL_PHASE_ATLAS.json"
+    ool_contacts_path = RHRC / "ool" / "generated" / "RHKG_OOL_ROUTE_CONTACTS.jsonl"
+    ool_deps_path = INTEGRATION / "generated" / "SOURCE_ONLY_CANDIDATE_DEPENDENCIES.jsonl"
+    ool_config = json.loads(ool_config_path.read_text(encoding="utf-8"))
+    if ool_config.get("terminal_claim") != "RH_OPEN" or ool_config.get("theorem_promotion") is not False:
+        raise SystemExit("integration_lint: OoL config authority drift")
+    if ool_config.get("mode") != "DISCOVERY_INTERFACE_CONTACT_ONLY":
+        raise SystemExit("integration_lint: OoL Phase Atlas mode drift")
+    if ool_config.get("projection") != "THEOREM_VALUE_ERASED_SUPPORT":
+        raise SystemExit("integration_lint: OoL Phase Atlas projection drift")
+
+    if bootstrap_materializer_present():
+        print("integration_lint: OoL Phase Atlas generated-product validation deferred during one-shot bootstrap")
+    else:
+        ool_report = json.loads(ool_report_path.read_text(encoding="utf-8"))
+        if ool_report.get("schema_version") != "RHRC-OOL-RHKG-phase-atlas-report-1.0":
+            raise SystemExit("integration_lint: OoL Phase Atlas report schema drift")
+        if ool_report.get("terminal_claim") != "RH_OPEN" or ool_report.get("theorem_promotion") is not False:
+            raise SystemExit("integration_lint: OoL Phase Atlas report authority drift")
+        if ool_report.get("candidate_count") != 680:
+            raise SystemExit("integration_lint: OoL candidate-count drift")
+        if ool_report["input_snapshot"].get("ffbbp_source_only_module_cohort_count") != 195:
+            raise SystemExit("integration_lint: OoL/FFBBP cohort-count drift")
+        if ool_report["frontier_probe"].get("eligible_cross_region_edge_count") != 21:
+            raise SystemExit("integration_lint: OoL theorem-value-erased frontier drift")
+        dep_rows = [
+            json.loads(line)
+            for line in ool_deps_path.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        ]
+        if sum(row.get("graph_role") == "SOURCE_ONLY_ROOT" for row in dep_rows) != 680:
+            raise SystemExit("integration_lint: OoL source-only dependency-root drift")
+        contact_rows = [
+            json.loads(line)
+            for line in ool_contacts_path.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        ]
+        if len(contact_rows) != 680:
+            raise SystemExit("integration_lint: OoL route-contact count drift")
+        if any(row.get("theorem_promotion") is not False for row in contact_rows):
+            raise SystemExit("integration_lint: OoL route contact attempts theorem promotion")
 
     print("RHRC INTEGRATION LINT: PASS")
     return 0

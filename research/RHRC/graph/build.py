@@ -72,16 +72,23 @@ DECLARED_INTEGRATION_GENERATED_PRODUCTS = [
     "research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl",
     "research/RHRC/integration/generated/RH_CORE_SOURCE_ONLY_THEOREMS.jsonl",
     "research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json",
+    "research/RHRC/integration/generated/SOURCE_ONLY_CANDIDATE_DEPENDENCIES.jsonl",
 ]
 
 DECLARED_FFBBP_GENERATED_PRODUCTS = [
     "research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json",
 ]
 
+DECLARED_OOL_GENERATED_PRODUCTS = [
+    "research/RHRC/ool/generated/RHKG_OOL_ROUTE_CONTACTS.jsonl",
+    "research/RHRC/ool/generated/RHKG_OOL_PHASE_ATLAS.json",
+]
+
 ALL_DECLARED_GENERATED_PRODUCTS = (
     DECLARED_GENERATED_PRODUCTS
     + DECLARED_INTEGRATION_GENERATED_PRODUCTS
     + DECLARED_FFBBP_GENERATED_PRODUCTS
+    + DECLARED_OOL_GENERATED_PRODUCTS
 )
 
 GENERATED_PRODUCT_PRODUCER = {
@@ -90,12 +97,20 @@ GENERATED_PRODUCT_PRODUCER = {
         for path in DECLARED_GENERATED_PRODUCTS
     },
     **{
-        path: "research/RHRC/integration/candidate_exactify.py"
+        path: (
+            "research/RHRC/integration/source_only_dependency_extract.py"
+            if path.endswith("SOURCE_ONLY_CANDIDATE_DEPENDENCIES.jsonl")
+            else "research/RHRC/integration/candidate_exactify.py"
+        )
         for path in DECLARED_INTEGRATION_GENERATED_PRODUCTS
     },
     **{
         path: "research/RHRC/ffbbp/rhkg_assurance.py"
         for path in DECLARED_FFBBP_GENERATED_PRODUCTS
+    },
+    **{
+        path: "research/RHRC/ool/rhkg_phase_atlas.py"
+        for path in DECLARED_OOL_GENERATED_PRODUCTS
     },
 }
 

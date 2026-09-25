@@ -94,3 +94,19 @@ Passing FFBBP assurance means only that the declared reduction preserves the
 declared finite-snapshot diagnostic/decision surface. It does not rank theorem
 importance, prove mathematical implication, inherit RUN42C qualification, or
 change RH status.
+
+
+## OoL RHKG Phase Atlas
+
+After merged-green PR #265, the exact 680 source-only public theorem/lemma
+declarations are available through 195 FFBBP-assured module/visibility
+navigation cohorts. The next integration layer does not rank those cohorts.
+
+OoL consumes a separate compiler dependency receipt rooted at the exact 680
+Lean declarations and applies the theorem-value-erased support projection.
+Contacts are tested against three disjoint registered-claim interface families
+and against the exact #261 21-edge arithmetic frontier.
+
+A contact means only that an exact declaration survives the declared support
+filter. It is not theorem composition, implication, independence, usefulness,
+or RH evidence. Surviving contacts must return to exact Lean theorem work.
