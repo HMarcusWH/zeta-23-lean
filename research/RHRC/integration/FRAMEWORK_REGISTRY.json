@@ -14,14 +14,14 @@
     {
       "id": "FFBBP_ASSURANCE",
       "name": "FFBBP typed reduction assurance",
-      "version": "1.6.0",
-      "status": "RHKG_SNAPSHOT_ASSURANCE_INTEGRATED_NOT_RUN42C_QUALIFIED",
+      "version": "1.7",
+      "status": "RHKG_SNAPSHOT_ASSURANCE_V17_INTEGRATED_RUNTIME_NOT_PROMOTED",
       "scope": "typed_reduction_assurance_and_post_reference_candidate_cohorting",
       "claim_cap": "RESEARCH_CONTROL_ONLY",
       "inherits_run42c_qualification": false,
-      "reference": "research/RHRC/ffbbp/FFBBP_V16_ASSURANCE_REFERENCE.json",
+      "reference": "research/RHRC/ffbbp/FFBBP_V17_ASSURANCE_REFERENCE.json",
       "rhkg_adapter": {
-        "config": "research/RHRC/ffbbp/configs/rhkg_candidate_reduction_v1.json",
+        "config": "research/RHRC/ffbbp/configs/rhkg_candidate_reduction_v2.json",
         "report": "research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json",
         "selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
         "claim_cap": "RESEARCH_CONTROL_ONLY"
@@ -30,13 +30,13 @@
     {
       "id": "OOL_MVS",
       "name": "OoL-MVS operational semantics",
-      "version": "2.7.6",
-      "status": "RHKG_PHASE_ATLAS_INTEGRATION_ACTIVE",
+      "version": "2.7.7",
+      "status": "RHKG_PHASE_ATLAS_V277_INTEGRATION_ACTIVE",
       "scope": "operational_semantics_and_governance_only",
       "claim_cap": "RESEARCH_CONTROL_ONLY",
       "reference": "research/RHRC/ool/OOL_REFERENCE.json",
       "rhkg_adapter": {
-        "config": "research/RHRC/ool/configs/rhkg_phase_atlas_v1.json",
+        "config": "research/RHRC/ool/configs/rhkg_phase_atlas_v2.json",
         "route_contacts": "research/RHRC/ool/generated/RHKG_OOL_ROUTE_CONTACTS.jsonl",
         "report": "research/RHRC/ool/generated/RHKG_OOL_PHASE_ATLAS.json",
         "compiler_receipt": "research/RHRC/integration/generated/SOURCE_ONLY_CANDIDATE_DEPENDENCIES.jsonl",
