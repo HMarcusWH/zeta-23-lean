@@ -100,7 +100,7 @@ def main() -> int:
     )
     if by_id["OOL_MVS"]["version"] != ool_reference["version"]:
         raise SystemExit("integration_lint: OoL reference version drift")
-    if by_id["OOL_MVS"].get("status") != "RHKG_PHASE_ATLAS_INTEGRATION_ACTIVE":
+    if by_id["OOL_MVS"].get("status") != "RHKG_PHASE_ATLAS_V277_INTEGRATION_ACTIVE":
         raise SystemExit("integration_lint: OoL Phase Atlas integration status drift")
     ool_adapter = by_id["OOL_MVS"].get("rhkg_adapter", {})
     if ool_adapter.get("projection") != "THEOREM_VALUE_ERASED_SUPPORT":
@@ -210,7 +210,7 @@ def main() -> int:
                     "integration_lint: hidden-body sentinel unexpectedly entered registered closure"
                 )
 
-    ffbbp_config_path = RHRC / "ffbbp" / "configs" / "rhkg_candidate_reduction_v1.json"
+    ffbbp_config_path = RHRC / "ffbbp" / "configs" / "rhkg_candidate_reduction_v2.json"
     ffbbp_report_path = RHRC / "ffbbp" / "generated" / "RHKG_CANDIDATE_REDUCTION_ASSURANCE.json"
     ffbbp_config = json.loads(ffbbp_config_path.read_text(encoding="utf-8"))
     if ffbbp_config.get("theory_version") != "1.6.0":
@@ -226,7 +226,7 @@ def main() -> int:
         print("integration_lint: FFBBP RHKG generated-report validation deferred during one-shot bootstrap")
     else:
         report = json.loads(ffbbp_report_path.read_text(encoding="utf-8"))
-        if report.get("schema_version") != "RHRC-FFBBP-RHKG-assurance-report-1.0":
+        if report.get("schema_version") != "RHRC-FFBBP-RHKG-assurance-report-2.0":
             raise SystemExit("integration_lint: FFBBP RHKG report schema drift")
         if report.get("terminal_claim") != "RH_OPEN" or report.get("theorem_promotion") is not False:
             raise SystemExit("integration_lint: FFBBP RHKG report authority drift")
@@ -250,7 +250,7 @@ def main() -> int:
         if report["source_only_module_cohort_count"] != 195:
             raise SystemExit("integration_lint: source-only module cohort count drift")
 
-    ool_config_path = RHRC / "ool" / "configs" / "rhkg_phase_atlas_v1.json"
+    ool_config_path = RHRC / "ool" / "configs" / "rhkg_phase_atlas_v2.json"
     ool_report_path = RHRC / "ool" / "generated" / "RHKG_OOL_PHASE_ATLAS.json"
     ool_contacts_path = RHRC / "ool" / "generated" / "RHKG_OOL_ROUTE_CONTACTS.jsonl"
     ool_deps_path = INTEGRATION / "generated" / "SOURCE_ONLY_CANDIDATE_DEPENDENCIES.jsonl"
@@ -266,7 +266,7 @@ def main() -> int:
         print("integration_lint: OoL Phase Atlas generated-product validation deferred during one-shot bootstrap")
     else:
         ool_report = json.loads(ool_report_path.read_text(encoding="utf-8"))
-        if ool_report.get("schema_version") != "RHRC-OOL-RHKG-phase-atlas-report-1.0":
+        if ool_report.get("schema_version") != "RHRC-OOL-RHKG-phase-atlas-report-2.0":
             raise SystemExit("integration_lint: OoL Phase Atlas report schema drift")
         if ool_report.get("terminal_claim") != "RH_OPEN" or ool_report.get("theorem_promotion") is not False:
             raise SystemExit("integration_lint: OoL Phase Atlas report authority drift")
