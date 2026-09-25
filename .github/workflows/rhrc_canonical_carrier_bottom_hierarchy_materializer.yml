@@ -1,0 +1,155 @@
+name: RHRC canonical carrier bottom hierarchy materializer
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rhrc-canonical-carrier-bottom-hierarchy-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  materialize:
+    if: github.head_ref == 'ccm/canonical-carrier-bottom-hierarchy' && github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ccm/canonical-carrier-bottom-hierarchy
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+
+      - name: Compile carrier hierarchy and authority surfaces
+        run: |
+          lake build Zeta23.CCM.GlobalParityBottomSpectrum
+          lake build Zeta23.CCM
+          lake build Zeta23.RHRC.RegisteredClaimBindings
+          python3 research/RHRC/tools/claim_lint.py
+          python3 research/RHRC/tools/registry_lint.py
+          python3 research/RHRC/tools/registered_theorem_binding_lint.py
+          python3 research/RHRC/tools/arithmetic_firewall_lint.py
+          python3 research/RHRC/tools/million_dollar_firewall_lint.py
+
+      - name: Run bootstrap-safe RHRC suite
+        run: python3 research/RHRC/tools/run_suite.py
+
+      - name: Remove one-shot materializer
+        run: git rm .github/workflows/rhrc_canonical_carrier_bottom_hierarchy_materializer.yml
+
+      - name: Regenerate registered compiler dependency receipt
+        run: |
+          lake build Zeta23.RHRC.DeclarationDependencyExport
+          python3 research/RHRC/tools/lean_dependency_extract.py --write
+          python3 research/RHRC/tools/lean_dependency_extract.py --check
+
+      - name: Regenerate RHKG
+        run: |
+          python3 research/RHRC/graph/build.py --write
+          python3 research/RHRC/graph/build.py --check
+          python3 research/RHRC/graph/validate.py
+
+      - name: Re-exactify source candidates
+        run: |
+          lake build Zeta23.ExceptionalZero Zeta23.RHRC.SourceCandidateResolution
+          python3 research/RHRC/integration/candidate_exactify.py --write
+          python3 research/RHRC/integration/candidate_exactify.py --check
+          python3 - <<'PY'
+          import json
+          p = json.load(open('research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json'))
+          assert p['candidate_count'] == 2361, p
+          assert p['source_only_public_theorem_count'] == 680, p
+          v = p['visibility_counts']
+          assert v['ALREADY_REGISTERED_ROOT'] == 75, v
+          assert v['ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE'] == 1380, v
+          assert v['PRIVATE_OR_INTERNAL_SOURCE_OBJECT'] == 216, v
+          assert v['SOURCE_ONLY_PUBLIC_THEOREM'] == 680, v
+          assert v['UNRESOLVED_SOURCE_IDENTITY'] == 10, v
+          assert p['terminal_claim'] == 'RH_OPEN'
+          assert p['theorem_promotion'] is False
+          print('post-carrier candidate exactification invariants: PASS')
+          PY
+
+      - name: Re-materialize FFBBP assurance
+        run: |
+          python3 research/RHRC/ffbbp/rhkg_assurance.py --write
+          python3 research/RHRC/ffbbp/rhkg_assurance.py --check
+          python3 - <<'PY'
+          import json
+          p = json.load(open('research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json'))
+          assert p['input_snapshot']['candidate_count'] == 2361, p['input_snapshot']
+          assert p['input_snapshot']['source_only_public_theorem_count'] == 680, p['input_snapshot']
+          m = p['reductions']['MODULE_ONLY_SNAPSHOT']
+          assert m['assurance_gate']['passed'] is False, m
+          assert m['decision_factorization']['fiber_count'] == 298, m
+          assert m['decision_factorization']['mixed_value_fiber_count'] == 128, m
+          assert m['diagnostic_factorization']['mixed_value_fiber_count'] == 167, m
+          t = p['reductions']['TYPE_DIGEST_SNAPSHOT']
+          assert t['decision_factorization']['passed'] is True, t
+          assert t['diagnostic_factorization']['passed'] is False, t
+          assert t['diagnostic_factorization']['mixed_value_fiber_count'] == 7, t
+          s = p['reductions']['MODULE_VISIBILITY_SNAPSHOT']
+          assert s['assurance_gate']['passed'] is True, s
+          assert s['decision_factorization']['fiber_count'] == 515, s
+          assert p['source_only_module_cohort_count'] == 195, p
+          assert p['terminal_claim'] == 'RH_OPEN'
+          assert p['theorem_promotion'] is False
+          print('post-carrier FFBBP structural invariants: PASS')
+          PY
+
+      - name: Re-materialize source-only compiler receipt and OoL atlas
+        run: |
+          python3 research/RHRC/integration/source_only_dependency_extract.py --write
+          python3 research/RHRC/integration/source_only_dependency_extract.py --check
+          python3 research/RHRC/ool/rhkg_phase_atlas.py --write
+          python3 research/RHRC/ool/rhkg_phase_atlas.py --check
+          python3 - <<'PY'
+          import json
+          p = json.load(open('research/RHRC/ool/generated/RHKG_OOL_PHASE_ATLAS.json'))
+          assert p['candidate_count'] == 680, p
+          assert p['input_snapshot']['ffbbp_source_only_module_cohort_count'] == 195, p
+          assert p['frontier_probe']['eligible_cross_region_edge_count'] == 21, p
+          assert p['terminal_claim'] == 'RH_OPEN'
+          assert p['theorem_promotion'] is False
+          print('post-carrier OoL population/firewall: PASS')
+          PY
+
+      - name: Validate final steady state
+        run: |
+          python3 research/RHRC/integration/integration_lint.py
+          python3 research/RHRC/graph/build.py --check
+          python3 research/RHRC/graph/validate.py
+          python3 research/RHRC/tools/run_suite.py
+          lake build Zeta23.RHRC.RegisteredClaimBindings
+          if grep -R -n -E '\bsorry\b|^[[:space:]]*axiom[[:space:]]' \
+              Zeta23/ExceptionalZero Zeta23/ExceptionalZero.lean Zeta23/CCM Zeta23/CCM.lean; then
+            echo 'Forbidden placeholder detected'
+            exit 1
+          fi
+          python3 research/RHRC/tools/axiom_audit.py
+
+      - name: Commit deterministic steady state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --stat
+          git commit -m "CCM: materialize canonical carrier bottom hierarchy steady state"
+          echo "STEADY_STATE_HEAD=$(git rev-parse HEAD)"
+          echo "STEADY_STATE_TREE=$(git rev-parse HEAD^{tree})"
+          git push origin HEAD:ccm/canonical-carrier-bottom-hierarchy
