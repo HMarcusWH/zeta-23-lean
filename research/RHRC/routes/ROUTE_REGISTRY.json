@@ -99,7 +99,8 @@
         "R003_FIRST_BAD_SHELL_PROJECTION",
         "R003_PARITY_NORMAL_KKT",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
-        "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
+        "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
       ],
       "route_spec_digest": null,
       "boundary_digest": null,
