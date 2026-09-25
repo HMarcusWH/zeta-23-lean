@@ -1,0 +1,90 @@
+name: RHRC OoL RHKG Phase Atlas materializer
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rhrc-ool-phase-atlas-materialize-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  materialize:
+    if: github.head_ref == 'rhrc/ool-rhkg-phase-atlas' && github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: rhrc/ool-rhkg-phase-atlas
+          fetch-depth: 0
+
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+
+      - name: Run FFBBP, OoL and integration tests
+        run: |
+          python3 -m unittest discover -s research/RHRC/ffbbp/tests -p 'test_*.py' -v
+          python3 -m unittest discover -s research/RHRC/ool/tests -p 'test_*.py' -v
+          python3 -m unittest discover -s research/RHRC/integration/tests -p 'test_*.py' -v
+
+      - name: Build exact source-candidate and dependency exporters
+        run: |
+          lake build Zeta23.CCM Zeta23.ExceptionalZero
+          lake build Zeta23.RHRC.SourceCandidateResolution
+          lake build Zeta23.RHRC.DeclarationDependencyExport
+
+      - name: Remove one-shot materializer before final graph generation
+        run: git rm .github/workflows/rhrc_ool_rhkg_phase_atlas_materializer.yml
+
+      - name: Materialize deterministic RHKG steady state
+        run: python3 research/RHRC/graph/build.py --write
+
+      - name: Rebind Lean-exact candidate receipts to current RHKG state
+        run: |
+          python3 research/RHRC/integration/candidate_exactify.py --write
+          python3 research/RHRC/integration/candidate_exactify.py --check
+
+      - name: Re-materialize FFBBP assurance on current candidate snapshot
+        run: |
+          python3 research/RHRC/ffbbp/rhkg_assurance.py --write
+          python3 research/RHRC/ffbbp/rhkg_assurance.py --check
+
+      - name: Materialize source-only compiler dependency receipt
+        run: |
+          python3 research/RHRC/integration/source_only_dependency_extract.py --write
+          python3 research/RHRC/integration/source_only_dependency_extract.py --check
+
+      - name: Materialize OoL RHKG Phase Atlas
+        run: |
+          python3 research/RHRC/ool/rhkg_phase_atlas.py --write
+          python3 research/RHRC/ool/rhkg_phase_atlas.py --check
+
+      - name: Validate integration and graph firewalls
+        run: |
+          python3 research/RHRC/integration/integration_lint.py
+          python3 research/RHRC/graph/build.py --check
+          python3 research/RHRC/graph/validate.py
+
+      - name: Record exact steady-state head and tree
+        run: |
+          echo "HEAD=$(git rev-parse HEAD)"
+          echo "TREE=$(git rev-parse HEAD^{tree})"
+
+      - name: Commit materialized steady state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --stat
+          git commit -m "RHRC OoL: materialize RHKG Phase Atlas steady state"
+          git push origin HEAD:rhrc/ool-rhkg-phase-atlas
