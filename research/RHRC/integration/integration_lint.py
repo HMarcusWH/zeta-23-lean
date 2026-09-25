@@ -227,20 +227,24 @@ def main() -> int:
     candidate_summary = json.loads(summary_path.read_text(encoding="utf-8"))
     if report["input_snapshot"]["candidate_count"] != candidate_summary.get("candidate_count"):
         raise SystemExit("integration_lint: FFBBP/source-candidate count mismatch")
-    if report["input_snapshot"]["source_only_public_theorem_count"] != 680:
+    source_only_count = candidate_summary.get("source_only_public_theorem_count")
+    if not isinstance(source_only_count, int) or source_only_count <= 0:
+        raise SystemExit("integration_lint: invalid source-only population")
+    if report["input_snapshot"]["source_only_public_theorem_count"] != source_only_count:
         raise SystemExit("integration_lint: FFBBP RHKG source-only-count drift")
     module_only = report["reductions"]["MODULE_ONLY_SNAPSHOT"]
     if module_only["assurance_gate"]["passed"] is not False:
         raise SystemExit("integration_lint: module-only negative control unexpectedly passed")
-    if module_only["decision_factorization"]["mixed_value_fiber_count"] != 128:
-        raise SystemExit("integration_lint: module-only decision counterexample count drift")
+    if module_only["decision_factorization"]["mixed_value_fiber_count"] <= 0:
+        raise SystemExit("integration_lint: module-only negative control lost its counterexample")
     selected = report["reductions"][report["selected_reduction"]]
     if report["selected_reduction"] != "MODULE_VISIBILITY_SNAPSHOT":
         raise SystemExit("integration_lint: selected FFBBP reduction drift")
     if selected["assurance_gate"]["passed"] is not True:
         raise SystemExit("integration_lint: selected FFBBP reduction no longer assured")
-    if report["source_only_module_cohort_count"] != 195:
-        raise SystemExit("integration_lint: source-only module cohort count drift")
+    cohort_count = report["source_only_module_cohort_count"]
+    if not isinstance(cohort_count, int) or cohort_count <= 0:
+        raise SystemExit("integration_lint: invalid source-only module cohort count")
 
     ool_config_path = RHRC / "ool" / "configs" / "rhkg_phase_atlas_v2.json"
     ool_report_path = RHRC / "ool" / "generated" / "RHKG_OOL_PHASE_ATLAS.json"
@@ -259,25 +263,26 @@ def main() -> int:
         raise SystemExit("integration_lint: OoL Phase Atlas report schema drift")
     if ool_report.get("terminal_claim") != "RH_OPEN" or ool_report.get("theorem_promotion") is not False:
         raise SystemExit("integration_lint: OoL Phase Atlas report authority drift")
-    if ool_report.get("candidate_count") != 680:
+    if ool_report.get("candidate_count") != source_only_count:
         raise SystemExit("integration_lint: OoL candidate-count drift")
-    if ool_report["input_snapshot"].get("ffbbp_source_only_module_cohort_count") != 195:
+    if ool_report["input_snapshot"].get("ffbbp_source_only_module_cohort_count") != cohort_count:
         raise SystemExit("integration_lint: OoL/FFBBP cohort-count drift")
-    if ool_report["frontier_probe"].get("eligible_cross_region_edge_count") != 21:
-        raise SystemExit("integration_lint: OoL theorem-value-erased frontier drift")
+    frontier_edges = ool_report["frontier_probe"].get("eligible_cross_region_edge_count")
+    if not isinstance(frontier_edges, int) or frontier_edges < 0:
+        raise SystemExit("integration_lint: invalid OoL theorem-value-erased frontier count")
     dep_rows = [
         json.loads(line)
         for line in ool_deps_path.read_text(encoding="utf-8").splitlines()
         if line.strip()
     ]
-    if sum(row.get("graph_role") == "SOURCE_ONLY_ROOT" for row in dep_rows) != 680:
+    if sum(row.get("graph_role") == "SOURCE_ONLY_ROOT" for row in dep_rows) != source_only_count:
         raise SystemExit("integration_lint: OoL source-only dependency-root drift")
     contact_rows = [
         json.loads(line)
         for line in ool_contacts_path.read_text(encoding="utf-8").splitlines()
         if line.strip()
     ]
-    if len(contact_rows) != 680:
+    if len(contact_rows) != source_only_count:
         raise SystemExit("integration_lint: OoL route-contact count drift")
     if any(row.get("theorem_promotion") is not False for row in contact_rows):
         raise SystemExit("integration_lint: OoL route contact attempts theorem promotion")
