@@ -18,14 +18,15 @@
       "status": "RHKG_SNAPSHOT_ASSURANCE_V17_INTEGRATED_RUNTIME_NOT_PROMOTED",
       "scope": "typed_reduction_assurance_and_post_reference_candidate_cohorting",
       "claim_cap": "RESEARCH_CONTROL_ONLY",
-      "inherits_run42c_qualification": false,
       "reference": "research/RHRC/ffbbp/FFBBP_V17_ASSURANCE_REFERENCE.json",
       "rhkg_adapter": {
         "config": "research/RHRC/ffbbp/configs/rhkg_candidate_reduction_v2.json",
         "report": "research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json",
         "selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
         "claim_cap": "RESEARCH_CONTROL_ONLY"
-      }
+      },
+      "inherits_runtime_qualification": false,
+      "run46f_runtime_promoted": false
     },
     {
       "id": "OOL_MVS",
