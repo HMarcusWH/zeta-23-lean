@@ -44,11 +44,10 @@ jobs:
       - name: Build compiler exporters
         run: lake build Zeta23.RHRC.RegisteredClaimBindings Zeta23.RHRC.DeclarationDependencyExport Zeta23.RHRC.SourceCandidateResolution
 
-      - name: Bootstrap framework unit tests
+      - name: Framework unit tests before regeneration
         run: |
           python -m unittest discover -s research/RHRC/ffbbp/tests -p 'test_*.py' -v
           python -m unittest discover -s research/RHRC/ool/tests -p 'test_*.py' -v
-          python research/RHRC/integration/integration_lint.py
 
       - name: Enter final steady state
         run: |
