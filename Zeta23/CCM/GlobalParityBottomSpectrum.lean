@@ -100,10 +100,8 @@ theorem parityRayleighBottom_mul_norm_sq_le
     simp
   · have h :=
       parityRayleighBottom_le_rayleigh p L K x hx
-    have hxne : x ≠ 0 := by
-      simpa [x] using z.property
     have hden : 0 < ‖x‖ ^ 2 := by
-      simpa only [sq_pos_iff, norm_ne_zero_iff] using hxne
+      positivity
     exact (le_div_iff₀ hden).mp h
 
 /-- At an arbitrary real shift lambda, the shifted quadratic form lies above
@@ -643,8 +641,10 @@ theorem boundaryFlatRayleighBottom_eq_min_parity
             (parityRayleighBottom .odd L N) * ‖o‖ ^ 2 ≤
           parityRayleighBottom .odd L N * ‖o‖ ^ 2 :=
       mul_le_mul_of_nonneg_right (min_le_right _ _) (sq_nonneg ‖o‖)
+    have hxne : x ≠ 0 := by
+      simpa [x] using z.property
     have hden : 0 < ‖x‖ ^ 2 := by
-      positivity
+      simpa only [sq_pos_iff, norm_ne_zero_iff] using hxne
     have hquad :
         min
             (parityRayleighBottom .even L N)
@@ -664,7 +664,8 @@ theorem boundaryFlatRayleighBottom_eq_min_parity
             (canonicalSourceMatrix L N) x0).symm
       have hnorm' :
           ‖x‖ ^ 2 = ‖e‖ ^ 2 + ‖o‖ ^ 2 := by
-        simpa [x, e, o] using hnorm
+        change ‖x0‖ ^ 2 = ‖e0‖ ^ 2 + ‖o0‖ ^ 2
+        exact hnorm
       rw [hxquad]
       nlinarith [heLower', hoLower', hminEven, hminOdd, hsplit, hnorm']
     exact (le_div_iff₀ hden).2 hquad
