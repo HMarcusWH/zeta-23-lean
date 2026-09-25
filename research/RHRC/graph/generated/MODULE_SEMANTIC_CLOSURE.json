@@ -2828,18 +2828,18 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 13,
+      "compiler_dependency_surface_declaration_count": 35,
       "file_id": "rh:file:Zeta23/CCM/GlobalParityBottomSpectrum.lean",
       "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
       "module_id": "rh:module:Zeta23.CCM.GlobalParityBottomSpectrum",
-      "named_source_declaration_count": 16,
+      "named_source_declaration_count": 27,
       "path": "Zeta23/CCM/GlobalParityBottomSpectrum.lean",
       "reachability": "ENTRYPOINT_REACHABLE",
       "reachable_from": [
         "Zeta23.CCM",
         "Zeta23.ExceptionalZero"
       ],
-      "registered_root_count": 1,
+      "registered_root_count": 2,
       "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
