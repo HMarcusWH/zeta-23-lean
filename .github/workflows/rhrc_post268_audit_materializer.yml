@@ -1,0 +1,40 @@
+name: RHRC post268 proof bootstrap and materializer
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+permissions:
+  contents: write
+concurrency:
+  group: post268-materializer-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  materialize:
+    if: github.head_ref == 'research/post268-audit-proof-and-ci' && github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Compile exact post268 proof candidates
+        run: |
+          lake build Zeta23.CCM.RankOneEigenline Zeta23.CCM.GlobalParityBottomSimplicity Zeta23.CCM.CofinalLowerBound Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH
+      - name: Audit new theorem axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py Zeta23/CCM/RankOneEigenline.lean Zeta23/CCM/GlobalParityBottomSimplicity.lean Zeta23/CCM/CofinalLowerBound.lean Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean
+      - name: Bootstrap status
+        run: |
+          echo 'STAGING: audit corpus and full test deployment are being assembled. Not merge-ready.'
+          echo 'The materializer is replaced by the final deterministic regeneration workflow before merge.'
