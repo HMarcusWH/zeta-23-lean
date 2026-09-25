@@ -46,6 +46,14 @@ def main() -> int:
     else:
         run([sys.executable, str(ROOT / "ffbbp" / "rhkg_assurance.py"), "--check"])
     run([sys.executable, "-m", "unittest", "discover", "-s", str(ROOT / "ool" / "tests"), "-p", "test_*.py", "-v"])
+    if bootstrap_materializer_present():
+        print(
+            "RHRC SUITE: deferring OoL RHKG Phase Atlas byte check "
+            "while a one-shot materializer exists",
+            flush=True,
+        )
+    else:
+        run([sys.executable, str(ROOT / "ool" / "rhkg_phase_atlas.py"), "--check"])
     run([sys.executable, "-m", "unittest", "discover", "-s", str(ROOT / "runner" / "tests"), "-p", "test_*.py", "-v"])
     run([sys.executable, "-m", "unittest", "discover", "-s", str(ROOT / "control_v2" / "tests"), "-p", "test_*.py", "-v"])
     run([sys.executable, "-m", "unittest", "discover", "-s", str(ROOT / "integration" / "tests"), "-p", "test_*.py", "-v"])
