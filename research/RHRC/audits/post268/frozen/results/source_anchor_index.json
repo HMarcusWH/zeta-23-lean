@@ -1,0 +1,202 @@
+[
+  {
+    "path": "Zeta23/CCM/GlobalParityBottomIntertwining.lean",
+    "symbol_or_text": "evenEigenmode_shiftedOdd_eq_sourceCubic",
+    "start_line": 31,
+    "end_line": 53,
+    "sha256": "d4162bfcde3f06134873969c4d0cc6e820fe4fcb3136706f79f72e5fd9db381e",
+    "git_blob": "294a452644dd9e280b44eb64e247765e1ba45379",
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/ab545e71bfb1b11c647597bee014fad6d9ac291a/Zeta23/CCM/GlobalParityBottomIntertwining.lean#L31-L53",
+    "excerpt": "theorem evenEigenmode_shiftedOdd_eq_sourceCubic\n    {L : ℝ} (hL : 0 < L)\n    (K : ℕ) (hK : 2 ≤ K)\n    (lam : ℝ)\n    (v : euclideanEvenBoundaryFlatSubspace K)\n    (hveig :\n      parityCompressedCanonical .even L K v = (lam : ℂ) • v) :\n    oddCompressedCanonical L K\n          (euclideanEvenToOddIndexLinearMap K v) -\n        (lam : ℂ) • euclideanEvenToOddIndexLinearMap K v =\n      evenQuadraticSourceMoment L K v • oddCubicCompressionVector K := by\n  have hfac :=\n    evenOddCompressedIntertwiningDefect_eq_cubicFunctional_smul\n      hL K hK v\n  have hsource :=\n    cubicDefectFunctional_eq_evenQuadraticSourceMoment\n      hL K hK v\n  change\n    oddCompressedCanonical L K (euclideanEvenToOddIndexLinearMap K v) -\n        euclideanEvenToOddIndexLinearMap K (evenCompressedCanonical L K v) =\n      cubicDefectFunctional L K v • oddCubicCompressionVector K at hfac\n  change evenCompressedCanonical L K v = (lam : ℂ) • v at hveig\n  rw [hveig, map_smul, hsource] at hfac"
+  },
+  {
+    "path": "Zeta23/CCM/GlobalParityBottomIntertwining.lean",
+    "symbol_or_text": "oddEigenmode_pulledBack_shiftedEven_eq_neg_sourceCubic",
+    "start_line": 152,
+    "end_line": 174,
+    "sha256": "d4162bfcde3f06134873969c4d0cc6e820fe4fcb3136706f79f72e5fd9db381e",
+    "git_blob": "294a452644dd9e280b44eb64e247765e1ba45379",
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/ab545e71bfb1b11c647597bee014fad6d9ac291a/Zeta23/CCM/GlobalParityBottomIntertwining.lean#L152-L174",
+    "excerpt": "theorem oddEigenmode_pulledBack_shiftedEven_eq_neg_sourceCubic\n    {L : ℝ} (hL : 0 < L)\n    (K : ℕ) (hK : 2 ≤ K)\n    (lam : ℝ)\n    (w : euclideanOddBoundaryFlatSubspace K)\n    (hweig :\n      parityCompressedCanonical .odd L K w = (lam : ℂ) • w) :\n    let E := euclideanEvenOddBoundaryFlatLinearEquiv K (by omega)\n    let v := E.symm w\n    evenCompressedCanonical L K v - (lam : ℂ) • v =\n      -(evenQuadraticSourceMoment L K v) •\n        pulledBackCubicCompressionVector K hK := by\n  let E := euclideanEvenOddBoundaryFlatLinearEquiv K (by omega)\n  let v : euclideanEvenBoundaryFlatSubspace K := E.symm w\n  have hfac :=\n    conjugatedParityCompressionDefect_eq_cubicFunctional_smul\n      hL K hK v\n  have hsource :=\n    cubicDefectFunctional_eq_evenQuadraticSourceMoment\n      hL K hK v\n  have hconj :\n      oddCompressedCanonicalConjugated L K (by omega) v =\n        (lam : ℂ) • v := by"
+  },
+  {
+    "path": "Zeta23/CCM/GlobalParityBottomSourceMoment.lean",
+    "symbol_or_text": "momentFour_ne_zero_of_evenGround_strict",
+    "start_line": 123,
+    "end_line": 145,
+    "sha256": "4e8ac020521de9a92ae4d37066133e1be2cd371fa9f9dbf60b13f764388f51a0",
+    "git_blob": "c645c52ea6bc2d90ca59fa0fd6ff82d1bee12d3c",
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/ab545e71bfb1b11c647597bee014fad6d9ac291a/Zeta23/CCM/GlobalParityBottomSourceMoment.lean#L123-L145",
+    "excerpt": "theorem momentFour_ne_zero_of_evenGround_strict\n    {L : ℝ} (hL : 0 < L)\n    (K : ℕ) (hK : 2 ≤ K)\n    (v : euclideanEvenBoundaryFlatSubspace K)\n    (hvne : v ≠ 0)\n    (hveig :\n      parityCompressedCanonical .even L K v =\n        (parityRayleighBottom .even L K : ℂ) • v)\n    (hstrict :\n      parityRayleighBottom .even L K <\n        parityRayleighBottom .odd L K) :\n    centeredMoment K 4 (evenBoundaryFlatRawCoefficients K v) ≠ 0 := by\n  have hpos :=\n    re_star_source_mul_momentFour_pos_of_evenGround_strict\n      hL K hK v hvne hveig hstrict\n  intro hzero\n  rw [hzero] at hpos\n  norm_num at hpos\n\nend Zeta23.CCM\n\n#print axioms Zeta23.CCM.parityGap_mul_evenIndex_norm_sq_le_re_star_source_mul_momentFour\n#print axioms Zeta23.CCM.re_star_source_mul_momentFour_pos_of_evenGround_strict"
+  },
+  {
+    "path": "Zeta23/CCM/GlobalParityBottomReverseGroundTransfer.lean",
+    "symbol_or_text": "oddGround_pulledBack_source_ne_zero_of_strict",
+    "start_line": 25,
+    "end_line": 47,
+    "sha256": "2b7205357d58bcaa1c68c14d3327d30964ca5e4e01b1f5ab23aab459f6913981",
+    "git_blob": "d852db369d895e841a85def099776cf42e136e14",
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/ab545e71bfb1b11c647597bee014fad6d9ac291a/Zeta23/CCM/GlobalParityBottomReverseGroundTransfer.lean#L25-L47",
+    "excerpt": "theorem oddGround_pulledBack_source_ne_zero_of_strict\n    {L : ℝ} (hL : 0 < L)\n    (N : ℕ) (hN : 1 ≤ N)\n    (hstrict :\n      parityRayleighBottom .odd L (N + 1) <\n        parityRayleighBottom .even L (N + 1))\n    (w : euclideanOddBoundaryFlatSubspace (N + 1))\n    (hwne : w ≠ 0)\n    (hweig :\n      parityCompressedCanonical .odd L (N + 1) w =\n        (parityRayleighBottom .odd L (N + 1) : ℂ) • w) :\n    let E :=\n      euclideanEvenOddBoundaryFlatLinearEquiv (N + 1) (by omega)\n    let v := E.symm w\n    evenQuadraticSourceMoment L (N + 1) v ≠ 0 := by\n  dsimp only\n  let E :=\n    euclideanEvenOddBoundaryFlatLinearEquiv (N + 1) (by omega)\n  let v : euclideanEvenBoundaryFlatSubspace (N + 1) := E.symm w\n  have hvne : v ≠ 0 := by\n    intro hv\n    apply hwne\n    apply E.symm.injective"
+  },
+  {
+    "path": "Zeta23/CCM/GlobalParityBottomSpectrum.lean",
+    "symbol_or_text": "exists_eigenmode_at_parityRayleighBottom_succ",
+    "start_line": 181,
+    "end_line": 203,
+    "sha256": "f3bb61facfd756df13bd5d402b3790766ebae2fc66fc0f62226b28b95fede83c",
+    "git_blob": "a658f284ab776a1b22ecf3a35fb502ebe9a38715",
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/ab545e71bfb1b11c647597bee014fad6d9ac291a/Zeta23/CCM/GlobalParityBottomSpectrum.lean#L181-L203",
+    "excerpt": "theorem exists_eigenmode_at_parityRayleighBottom_succ\n    (p : ReversalParity) (L : ℝ) (N : ℕ)\n    (hN : 1 ≤ N) :\n    ∃ v : euclideanParityBoundaryFlatSubspace p (N + 1),\n      v ≠ 0 ∧\n      parityCompressedCanonical p L (N + 1) v =\n        (parityRayleighBottom p L (N + 1) : ℂ) • v := by\n  let V := euclideanParityBoundaryFlatSubspace p (N + 1)\n  let T : V →ₗ[ℂ] V := parityCompressedCanonical p L (N + 1)\n  let c : V :=\n    (intrinsicCubicShellPart p N :\n      euclideanParityBoundaryFlatSubspace p (N + 1))\n  have hc : c ≠ 0 := by\n    intro hc0\n    apply intrinsicCubicShellPart_ne_zero p N hN\n    apply Subtype.ext\n    exact hc0\n  letI : Nontrivial V := nontrivial_of_ne c 0 hc\n  have hsym : LinearMap.IsSymmetric (𝕜 := ℂ) (E := V) T := by\n    simpa only [T, V] using\n      parityCompressedCanonical_isSymmetric p L (N + 1)\n  have hbottomEig := hsym.hasEigenvalue_iInf_of_finiteDimensional\n  obtain ⟨v, hv⟩ := hbottomEig.exists_hasEigenvector"
+  },
+  {
+    "path": "Zeta23/CCM/GlobalParityBottomSpectrum.lean",
+    "symbol_or_text": "boundaryFlatRayleighBottom_eq_min_parity",
+    "start_line": 462,
+    "end_line": 484,
+    "sha256": "f3bb61facfd756df13bd5d402b3790766ebae2fc66fc0f62226b28b95fede83c",
+    "git_blob": "a658f284ab776a1b22ecf3a35fb502ebe9a38715",
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/ab545e71bfb1b11c647597bee014fad6d9ac291a/Zeta23/CCM/GlobalParityBottomSpectrum.lean#L462-L484",
+    "excerpt": "theorem boundaryFlatRayleighBottom_eq_min_parity\n    (L : ℝ) {N : ℕ} (hN : 2 ≤ N) :\n    boundaryFlatRayleighBottom L N =\n      min\n        (parityRayleighBottom .even L N)\n        (parityRayleighBottom .odd L N) := by\n  have hN1 : 1 ≤ N := by omega\n  have hfinBF :\n      0 < Module.finrank ℂ (euclideanBoundaryFlatSubspace N) := by\n    rw [finrank_euclideanBoundaryFlatSubspace N (by omega)]\n    omega\n  letI : Nontrivial (euclideanBoundaryFlatSubspace N) :=\n    Module.nontrivial_of_finrank_pos hfinBF\n  letI : Nonempty\n      {z : euclideanBoundaryFlatSubspace N // z ≠ 0} := by\n    obtain ⟨z, hz⟩ : ∃ z : euclideanBoundaryFlatSubspace N, z ≠ 0 :=\n      exists_ne 0\n    exact ⟨⟨z, hz⟩⟩\n\n  have hleParity :\n      ∀ p : ReversalParity,\n        boundaryFlatRayleighBottom L N ≤\n          parityRayleighBottom p L N := by"
+  },
+  {
+    "path": "Zeta23/CCM/GlobalParityBottomSpectrum.lean",
+    "symbol_or_text": "canonicalCarrierBottom_hierarchy",
+    "start_line": 705,
+    "end_line": 727,
+    "sha256": "f3bb61facfd756df13bd5d402b3790766ebae2fc66fc0f62226b28b95fede83c",
+    "git_blob": "a658f284ab776a1b22ecf3a35fb502ebe9a38715",
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/ab545e71bfb1b11c647597bee014fad6d9ac291a/Zeta23/CCM/GlobalParityBottomSpectrum.lean#L705-L727",
+    "excerpt": "theorem canonicalCarrierBottom_hierarchy\n    (L : ℝ) (N : ℕ) (hN : 1 ≤ N) :\n    fullCanonicalRayleighBottom L (N + 1) ≤\n        boundaryFlatRayleighBottom L (N + 1) ∧\n      boundaryFlatRayleighBottom L (N + 1) =\n        min\n          (parityRayleighBottom .even L (N + 1))\n          (parityRayleighBottom .odd L (N + 1)) ∧\n      boundaryFlatRayleighBottom L (N + 1) =\n        globalParitySuccessorBottom L N := by\n  have hN2 : 2 ≤ N + 1 := by omega\n  have hfull :=\n    fullCanonicalRayleighBottom_le_boundaryFlatRayleighBottom L hN2\n  have hsplit :=\n    boundaryFlatRayleighBottom_eq_min_parity L hN2\n  refine ⟨hfull, hsplit, ?_⟩\n  rw [hsplit]\n  rfl\n\ntheorem globalParitySuccessorBottom_le_even\n    (L : ℝ) (N : ℕ) :\n    globalParitySuccessorBottom L N ≤\n      parityRayleighBottom .even L (N + 1) :="
+  },
+  {
+    "path": "Zeta23/CCM/GlobalParityBottomSpectrum.lean",
+    "symbol_or_text": "globalParitySuccessorBottom_neg_iff_anyParityBad",
+    "start_line": 753,
+    "end_line": 775,
+    "sha256": "f3bb61facfd756df13bd5d402b3790766ebae2fc66fc0f62226b28b95fede83c",
+    "git_blob": "a658f284ab776a1b22ecf3a35fb502ebe9a38715",
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/ab545e71bfb1b11c647597bee014fad6d9ac291a/Zeta23/CCM/GlobalParityBottomSpectrum.lean#L753-L775",
+    "excerpt": "theorem globalParitySuccessorBottom_neg_iff_anyParityBad\n    {L : ℝ} {N : ℕ}\n    (hN : 1 ≤ N) :\n    globalParitySuccessorBottom L N < 0 ↔\n      AnyParityBad L (N + 1) := by\n  constructor\n  · intro hneg\n    by_cases hle :\n        parityRayleighBottom .even L (N + 1) ≤\n          parityRayleighBottom .odd L (N + 1)\n    · have hevenNeg :\n          parityRayleighBottom .even L (N + 1) < 0 := by\n        rw [globalParitySuccessorBottom, min_eq_left hle] at hneg\n        exact hneg\n      obtain ⟨v, hvne, hveig⟩ :=\n        exists_eigenmode_at_parityRayleighBottom_succ .even L N hN\n      exact Or.inl\n        (parityBad_of_negative_eigenmode hevenNeg hvne hveig)\n    · have hoddlt :\n          parityRayleighBottom .odd L (N + 1) <\n            parityRayleighBottom .even L (N + 1) :=\n        lt_of_not_ge hle\n      have hoddNeg :"
+  },
+  {
+    "path": "Zeta23/CCM/GlobalParityBottomNFlow.lean",
+    "symbol_or_text": "globalParitySuccessorBottom_antitone_of_le",
+    "start_line": 127,
+    "end_line": 142,
+    "sha256": "352ef5cb755d829081d465cb294619cb26eb4a89798f560e2cea9aebc2d812e2",
+    "git_blob": "ef86268a94d300089b53c62720681afc7f8e5889",
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/ab545e71bfb1b11c647597bee014fad6d9ac291a/Zeta23/CCM/GlobalParityBottomNFlow.lean#L127-L142",
+    "excerpt": "theorem globalParitySuccessorBottom_antitone_of_le\n    {L : ℝ} (hL : 0 < L)\n    {N M : ℕ}\n    (hN : 1 ≤ N)\n    (hNM : N ≤ M) :\n    globalParitySuccessorBottom L M ≤\n      globalParitySuccessorBottom L N := by\n  unfold globalParitySuccessorBottom\n  exact min_le_min\n    (parityRayleighBottom_succ_antitone_of_le .even hL hN hNM)\n    (parityRayleighBottom_succ_antitone_of_le .odd hL hN hNM)\n\nend Zeta23.CCM\n\n#print axioms Zeta23.CCM.parityRayleighBottom_succ_antitone_of_le\n#print axioms Zeta23.CCM.globalParitySuccessorBottom_antitone_of_le"
+  },
+  {
+    "path": "Zeta23/CCM/CanonicalPrimeRemainder.lean",
+    "symbol_or_text": "canonicalPrimeRemainderEnergy",
+    "start_line": 148,
+    "end_line": 170,
+    "sha256": "48ff5e8cbae0579445ccabe91b1f16aab59ea73490218d130dc60d34b6409cdb",
+    "git_blob": "d961e98d412f0a78dcd0a8af8af70dc35682b08a",
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/ab545e71bfb1b11c647597bee014fad6d9ac291a/Zeta23/CCM/CanonicalPrimeRemainder.lean#L148-L170",
+    "excerpt": "def canonicalPrimeRemainderEnergy\n    (L : ℝ)\n    (K : ℕ)\n    (x : EuclideanSpace ℂ (Fin (2 * K + 1))) : ℝ :=\n  (1 / L) *\n    ∫ t in (0 : ℝ)..L,\n      weightedVonMangoldtSqrtRemainder (Real.exp t) *\n        deriv (sourceAtomRealEnergy K x) (1 - t / L)\n\n/-- Energy of the exponentially small pole tail `2 e^{-t/2}`. -/\ndef canonicalPoleTailEnergy\n    (L : ℝ)\n    (K : ℕ)\n    (x : EuclideanSpace ℂ (Fin (2 * K + 1))) : ℝ :=\n  (1 / L) *\n    ∫ t in (0 : ℝ)..L,\n      2 * Real.exp (-(t / 2)) *\n        deriv (sourceAtomRealEnergy K x) (1 - t / L)\n\n/-- Every prime-free term of the complete canonical source energy: the pole\ntail, the reduced archimedean diagonal and off-diagonal channels, and the\narchimedean scalar normalization. -/\ndef canonicalPrimeFreeBudget"
+  },
+  {
+    "path": "Zeta23/CCM/CanonicalPrimeRemainder.lean",
+    "symbol_or_text": "canonicalPrimeFreeBudget",
+    "start_line": 170,
+    "end_line": 192,
+    "sha256": "48ff5e8cbae0579445ccabe91b1f16aab59ea73490218d130dc60d34b6409cdb",
+    "git_blob": "d961e98d412f0a78dcd0a8af8af70dc35682b08a",
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/ab545e71bfb1b11c647597bee014fad6d9ac291a/Zeta23/CCM/CanonicalPrimeRemainder.lean#L170-L192",
+    "excerpt": "def canonicalPrimeFreeBudget\n    (L : ℝ)\n    (K : ℕ)\n    (x : EuclideanSpace ℂ (Fin (2 * K + 1))) : ℝ :=\n  canonicalPoleTailEnergy L K x\n    + matrixRealEnergy (reducedCanonicalArchDiagonalMatrix L K) x\n    + matrixRealEnergy (reducedCanonicalArchOffDiagonalMatrix L K) x\n    + canonicalArchScalarCorrection L * ‖x‖ ^ 2\n\nprivate theorem continuous_sourceAtomDeriv_cpr\n    (L : ℝ)\n    (K : ℕ)\n    (x : EuclideanSpace ℂ (Fin (2 * K + 1))) :\n    Continuous (fun t : ℝ => deriv (sourceAtomRealEnergy K x) (1 - t / L)) := by\n  have hsmooth : ContDiff ℝ ⊤ (sourceAtomRealEnergy K x) :=\n    contDiff_sourceAtomRealEnergy K x\n  have hd := hsmooth.continuous_deriv (by simp)\n  fun_prop\n\n/-- The pole-prime discrepancy energy splits exactly into the pole-tail energy\nand the classical prime-remainder energy. -/\ntheorem canonicalPolePrimeDiscrepancyEnergy_eq_neg_tail_sub_remainder\n    {L : ℝ} (hL : 0 < L)"
+  },
+  {
+    "path": "Zeta23/CCM/CanonicalPrimeRemainder.lean",
+    "symbol_or_text": "canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget",
+    "start_line": 267,
+    "end_line": 289,
+    "sha256": "48ff5e8cbae0579445ccabe91b1f16aab59ea73490218d130dc60d34b6409cdb",
+    "git_blob": "d961e98d412f0a78dcd0a8af8af70dc35682b08a",
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/ab545e71bfb1b11c647597bee014fad6d9ac291a/Zeta23/CCM/CanonicalPrimeRemainder.lean#L267-L289",
+    "excerpt": "theorem canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget\n    {L : ℝ} (hL : 0 < L)\n    (K : ℕ)\n    (x : EuclideanSpace ℂ (Fin (2 * K + 1))) :\n    canonicalSourceChannelEnergy L K x =\n      -canonicalPrimeRemainderEnergy L K x - canonicalPrimeFreeBudget L K x := by\n  rw [canonicalSourceChannelEnergy_eq_discrepancy hL K x,\n    canonicalPolePrimeDiscrepancyEnergy_eq_neg_tail_sub_remainder hL K x]\n  unfold canonicalPrimeFreeBudget\n  ring\n\n/-- Nonnegativity of the complete canonical source energy is exactly the\ndominance of the prime-free budget by minus the prime-remainder energy. -/\ntheorem canonicalSourceChannelEnergy_nonneg_iff_budget_le\n    {L : ℝ} (hL : 0 < L)\n    (K : ℕ)\n    (x : EuclideanSpace ℂ (Fin (2 * K + 1))) :\n    0 ≤ canonicalSourceChannelEnergy L K x ↔\n      canonicalPrimeFreeBudget L K x ≤ -canonicalPrimeRemainderEnergy L K x := by\n  rw [canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget hL K x]\n  constructor <;> intro h <;> linarith\n\nend Zeta23.CCM"
+  },
+  {
+    "path": "Zeta23/CCM/GlobalParityBottomPrimeWeightJets.lean",
+    "symbol_or_text": "primeTestWeight_endpoint_order_eight_of_evenStrict",
+    "start_line": 223,
+    "end_line": 245,
+    "sha256": "31f02dd9cd00840b53d1a70f11744536d7e6e9d46b69a114dd8344bf0890e296",
+    "git_blob": "1c597c81bec0ec174be19bb99542fa57e75d210c",
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/ab545e71bfb1b11c647597bee014fad6d9ac291a/Zeta23/CCM/GlobalParityBottomPrimeWeightJets.lean#L223-L245",
+    "excerpt": "theorem GlobalBottomResidualState.primeTestWeight_endpoint_order_eight_of_evenStrict\n    {Q : ℕ} (s : GlobalBottomResidualState Q)\n    (hp : s.aligned.firstBad.p = ReversalParity.even)\n    (hstrict :\n      parityRayleighBottom .even s.aligned.firstBad.L\n          (s.aligned.firstBad.Nstar + 1) <\n        parityRayleighBottom .odd s.aligned.firstBad.L\n          (s.aligned.firstBad.Nstar + 1)) :\n    (∀ j : ℕ, j ≤ 7 →\n      iteratedDeriv j s.primeTestWeight s.aligned.firstBad.L = 0) ∧\n    0 < iteratedDeriv 8 s.primeTestWeight s.aligned.firstBad.L := by\n  refine ⟨s.primeTestWeight_endpoint_jets_through_seven_of_even hp, ?_⟩\n  have hground :\n      s.aligned.lam =\n        parityRayleighBottom .even s.aligned.firstBad.L\n          (s.aligned.firstBad.Nstar + 1) := by\n    rw [s.aligned_lam_is_global, globalParitySuccessorBottom,\n      min_eq_left (le_of_lt hstrict)]\n  have hM4ne :=\n    s.aligned.retainedMomentFour_ne_zero_of_evenGround_strict\n      hp hground hstrict\n  rw [s.primeTestWeight_eighth_deriv_eq_momentFour_of_even hp]\n  have hbase :"
+  },
+  {
+    "path": "Zeta23/ExceptionalZero/ApertureFreedom.lean",
+    "symbol_or_text": "eventually_all_apertures_have_anyParityBad_of_offLine_zero",
+    "start_line": 82,
+    "end_line": 104,
+    "sha256": "11c2ad5eb61c71d689453c7f01e189f75d582f55a4880a6395696a7b21a4b015",
+    "git_blob": "2271a1df16f255395d4e828520f7b72db244adf8",
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/ab545e71bfb1b11c647597bee014fad6d9ac291a/Zeta23/ExceptionalZero/ApertureFreedom.lean#L82-L104",
+    "excerpt": "    eventually_all_apertures_have_anyParityBad_of_offLine_zero\n    (ρ₀ : zetaZeroConfig.carrier)\n    (hoff : (ρ₀ : ℂ).re ≠ 1 / 2) :\n    ∃ L₀ : ℝ, 0 < L₀ ∧\n      ∀ L : ℝ, L₀ < L →\n        ∃ N : ℕ, Zeta23.CCM.AnyParityBad L N := by\n  obtain ⟨L₀, hL₀, hnegAll⟩ :=\n    eventually_all_apertures_have_negativeCanonicalSourceWitness_of_offLine_zero\n      ρ₀ hoff\n  refine ⟨L₀, hL₀, ?_⟩\n  intro L hLbig\n  obtain ⟨N, _hN, u, hflat, hneg⟩ := hnegAll L hLbig\n  have hmem : u ∈ Zeta23.CCM.boundaryFlatSubspace N :=\n    (Zeta23.CCM.mem_boundaryFlatSubspace_iff N u).2 hflat\n  exact ⟨N, Zeta23.CCM.anyParityBad_of_negative hmem hneg⟩\n\n/-- At every sufficiently large aperture forced by an off-line zero, the\nrepository can freshly select a least globally bad finite size. -/\ntheorem\n    eventually_all_apertures_have_globalFirstBad_of_offLine_zero\n    (ρ₀ : zetaZeroConfig.carrier)\n    (hoff : (ρ₀ : ℂ).re ≠ 1 / 2) :\n    ∃ L₀ : ℝ, 0 < L₀ ∧"
+  },
+  {
+    "path": "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean",
+    "symbol_or_text": "canonicalFiniteWeilPositivity_iff_riemannHypothesis",
+    "start_line": 93,
+    "end_line": 115,
+    "sha256": "7f14d903b66d390767bbd62ade7b87250402f29da2c08e7a1b3ce80e04c0333d",
+    "git_blob": "a4fce5e7925c668a5d57801632970543d5d2358a",
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/ab545e71bfb1b11c647597bee014fad6d9ac291a/Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean#L93-L115",
+    "excerpt": "theorem canonicalFiniteWeilPositivity_iff_riemannHypothesis :\n    CanonicalFiniteWeilPositivity ↔ RiemannHypothesis :=\n  ⟨fun h =>\n      riemannHypothesis_of_noRegularFirstBadCertificates\n        (noRegularFirstBadCertificates_of_canonicalFiniteWeilPositivity h),\n    canonicalFiniteWeilPositivity_of_riemannHypothesis⟩\n\n/-! ## Complete order-six Riesz channel -/\n\n/-- Nonnegativity of the complete order-six Riesz source channel on every legal\nboundary-flat carrier at every positive aperture. -/\ndef CanonicalRieszSixPositivity : Prop :=\n  ∀ L : ℝ, 0 < L →\n    ∀ K : ℕ, ∀ x : EuclideanSpace ℂ (Fin (2 * K + 1)),\n      EuclideanBoundaryFlat K x →\n        0 ≤ canonicalRieszSourceChannelEnergy L 6 K x\n\n/-- Order-six Riesz positivity and canonical finite Weil positivity are the same\nstatement: the two energies coincide on every boundary-flat carrier. -/\ntheorem canonicalRieszSixPositivity_iff_canonicalFiniteWeilPositivity :\n    CanonicalRieszSixPositivity ↔ CanonicalFiniteWeilPositivity := by\n  constructor\n  · intro h L hL K x hx"
+  },
+  {
+    "path": "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean",
+    "symbol_or_text": "canonicalPrimeRemainderDominance_iff_riemannHypothesis",
+    "start_line": 190,
+    "end_line": 212,
+    "sha256": "7f14d903b66d390767bbd62ade7b87250402f29da2c08e7a1b3ce80e04c0333d",
+    "git_blob": "a4fce5e7925c668a5d57801632970543d5d2358a",
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/ab545e71bfb1b11c647597bee014fad6d9ac291a/Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean#L190-L212",
+    "excerpt": "theorem canonicalPrimeRemainderDominance_iff_riemannHypothesis :\n    CanonicalPrimeRemainderDominance ↔ RiemannHypothesis :=\n  canonicalPrimeRemainderDominance_iff_canonicalFiniteWeilPositivity.trans\n    canonicalFiniteWeilPositivity_iff_riemannHypothesis\n\n/-- Prime-remainder dominance required only eventually along the generated\nwhole-cell retained family, on its exact cubic trial. -/\ndef GeneratedRetainedPrimeRemainderDominance : Prop :=\n  ∃ A : ℝ,\n    ∀ Q : ℕ, ∀ c : WholeCellBiRegularNegativeEnergyCertificate Q,\n      A < c.retained.energy.firstBad.L →\n        canonicalPrimeFreeBudget\n            c.retained.energy.firstBad.L\n            (c.retained.energy.firstBad.Nstar + 1) (wholeCellRetainedTrial c) ≤\n          -canonicalPrimeRemainderEnergy\n            c.retained.energy.firstBad.L\n            (c.retained.energy.firstBad.Nstar + 1) (wholeCellRetainedTrial c)\n\n/-- The generated-family arithmetic dominance is exactly Mathlib's RH. -/\ntheorem generatedRetainedPrimeRemainderDominance_iff_riemannHypothesis :\n    GeneratedRetainedPrimeRemainderDominance ↔ RiemannHypothesis := by\n  constructor\n  · intro h"
+  },
+  {
+    "path": "Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean",
+    "symbol_or_text": "globalBottomResidualExclusion_iff_riemannHypothesis",
+    "start_line": 90,
+    "end_line": 106,
+    "sha256": "da64801c1d0af82780af7c2d83d798e00ef9ea7511af7fc72c46e1f7e3c995bb",
+    "git_blob": "03355ea38643676dd52ef4a8fd347700a01c8c42",
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/ab545e71bfb1b11c647597bee014fad6d9ac291a/Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean#L90-L106",
+    "excerpt": "theorem globalBottomResidualExclusion_iff_riemannHypothesis :\n    GlobalBottomResidualExclusion ↔ RiemannHypothesis :=\n  ⟨riemannHypothesis_of_globalBottomResidualExclusion,\n    globalBottomResidualExclusion_of_riemannHypothesis⟩\n\n/-- Dumbassery firewall: the old universal arithmetic closure is exactly RH\nin logical strength. -/\ntheorem legacyGlobalBottomArithmeticClosure_iff_riemannHypothesis :\n    LegacyGlobalBottomArithmeticClosure ↔ RiemannHypothesis := by\n  rw [legacyGlobalBottomArithmeticClosure_iff_residualExclusion,\n    globalBottomResidualExclusion_iff_riemannHypothesis]\n\nend Zeta23.ExceptionalZero\n\n#print axioms Zeta23.ExceptionalZero.legacyGlobalBottomArithmeticClosure_iff_residualExclusion\n#print axioms Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis\n#print axioms Zeta23.ExceptionalZero.legacyGlobalBottomArithmeticClosure_iff_riemannHypothesis"
+  },
+  {
+    "path": "Zeta23/ExceptionalZero/ProbeGramNegativity.lean",
+    "symbol_or_text": "not_onLineCombination_of_pairBlock",
+    "start_line": 180,
+    "end_line": 191,
+    "sha256": "309581a647bf92fecfbb26f0d2816494c0df818e2e99d863ac6e6d6d12dedca7",
+    "git_blob": "ecc4b574a657c3e90331440a18cbfdefe32faa70",
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/ab545e71bfb1b11c647597bee014fad6d9ac291a/Zeta23/ExceptionalZero/ProbeGramNegativity.lean#L180-L191",
+    "excerpt": "theorem not_onLineCombination_of_pairBlock {x y : d → ℂ}\n    (hx : star x = x) (hy : star y = y) {c : ℝ} (hc : 0 < c)\n    (hindep : gramDet x y ≠ 0) {ι : Type*} (s : Finset ι) (cc : ι → ℝ)\n    (v : ι → d → ℂ) (hcc : ∀ i ∈ s, 0 ≤ cc i) (hv : ∀ i ∈ s, star (v i) = v i) :\n    pairBlock c x y ≠ ∑ i ∈ s, (cc i : ℂ) • vecMulVec (v i) (v i) := by\n  intro hEq\n  have hneg := dotProduct_pairBlock_orthoWitness_neg hx hy hc hindep\n  rw [hEq] at hneg\n  exact absurd hneg (not_lt.mpr\n    (dotProduct_nonneg_of_onLineCombination s cc v hcc hv (orthoWitness x y)))\n\nend Zeta23.ExceptionalZero"
+  },
+  {
+    "path": "research/RHRC/integration/candidate_exactify.py",
+    "symbol_or_text": "import Zeta23.CCM",
+    "start_line": 85,
+    "end_line": 107,
+    "sha256": "6c5b1eb8871cb70c73c4e54d9798715bad2c1df169ca0ee44bf04ee730d258ef",
+    "git_blob": "37b0e40205f003da887136ef2c37879ca2578090",
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/ab545e71bfb1b11c647597bee014fad6d9ac291a/research/RHRC/integration/candidate_exactify.py#L85-L107",
+    "excerpt": "        \"import Zeta23.CCM\\n\"\n        \"import Zeta23.ExceptionalZero\\n\\n\"\n        \"run_cmd do\\n\"\n        \"  Zeta23.RHRC.resolveSourceCandidatesFile \"\n        + lean_string(str(query_path))\n        + \"\\n\"\n    )\n\n\ndef run_lean(candidates: list[dict]) -> str:\n    validate_candidate_modules(candidates)\n    query_path: Path | None = None\n    driver_path: Path | None = None\n    try:\n        with tempfile.NamedTemporaryFile(\n            mode=\"w\", suffix=\".tsv\", encoding=\"utf-8\", delete=False\n        ) as query_handle:\n            query_handle.write(render_query_tsv(candidates))\n            query_path = Path(query_handle.name)\n        with tempfile.NamedTemporaryFile(\n            mode=\"w\", suffix=\".lean\", encoding=\"utf-8\", delete=False\n        ) as driver_handle:\n            driver_handle.write(render_driver(query_path))"
+  },
+  {
+    "path": "research/RHRC/integration/candidate_exactify.py",
+    "symbol_or_text": "import Zeta23.ExceptionalZero",
+    "start_line": 86,
+    "end_line": 108,
+    "sha256": "6c5b1eb8871cb70c73c4e54d9798715bad2c1df169ca0ee44bf04ee730d258ef",
+    "git_blob": "37b0e40205f003da887136ef2c37879ca2578090",
+    "url": "https://github.com/HMarcusWH/zeta-23-lean/blob/ab545e71bfb1b11c647597bee014fad6d9ac291a/research/RHRC/integration/candidate_exactify.py#L86-L108",
+    "excerpt": "        \"import Zeta23.ExceptionalZero\\n\\n\"\n        \"run_cmd do\\n\"\n        \"  Zeta23.RHRC.resolveSourceCandidatesFile \"\n        + lean_string(str(query_path))\n        + \"\\n\"\n    )\n\n\ndef run_lean(candidates: list[dict]) -> str:\n    validate_candidate_modules(candidates)\n    query_path: Path | None = None\n    driver_path: Path | None = None\n    try:\n        with tempfile.NamedTemporaryFile(\n            mode=\"w\", suffix=\".tsv\", encoding=\"utf-8\", delete=False\n        ) as query_handle:\n            query_handle.write(render_query_tsv(candidates))\n            query_path = Path(query_handle.name)\n        with tempfile.NamedTemporaryFile(\n            mode=\"w\", suffix=\".lean\", encoding=\"utf-8\", delete=False\n        ) as driver_handle:\n            driver_handle.write(render_driver(query_path))\n            driver_path = Path(driver_handle.name)"
+  }
+]

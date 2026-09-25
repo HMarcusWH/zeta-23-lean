@@ -19,16 +19,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
+      - name: Install RHRC framework requirements
+        run: python -m pip install -r research/RHRC/requirements.txt
       - name: RHKG deterministic regeneration gate
         run: |
-          if compgen -G ".github/workflows/rhrc_*_materializer.yml" > /dev/null; then
-            echo "RHRC one-shot bootstrap materializer is present."
-            echo "Strict RHKG byte-current validation is deferred to that materializer,"
-            echo "which self-deletes before regenerating and validating the final steady state."
-          else
-            python research/RHRC/graph/build.py --check
-            python research/RHRC/graph/validate.py
-          fi
+          python research/RHRC/graph/build.py --check
+          python research/RHRC/graph/validate.py
       - name: RHRC claim and regression suite
         run: python research/RHRC/tools/run_suite.py
       - name: Control v2 real-history smoke run
@@ -75,19 +71,9 @@ jobs:
       - name: Build RHKG compiler dependency exporter
         run: lake build Zeta23.RHRC.DeclarationDependencyExport
       - name: Check RHKG compiler dependency receipt
-        run: |
-          if compgen -G ".github/workflows/rhrc_*_materializer.yml" > /dev/null; then
-            echo "Registered compiler dependency byte check deferred to one-shot materializer."
-          else
-            python3 research/RHRC/tools/lean_dependency_extract.py --check
-          fi
+        run: python3 research/RHRC/tools/lean_dependency_extract.py --check
       - name: Check source-only candidate compiler dependency receipt
-        run: |
-          if compgen -G ".github/workflows/rhrc_*_materializer.yml" > /dev/null; then
-            echo "Source-only compiler dependency byte check deferred to one-shot materializer."
-          else
-            python3 research/RHRC/integration/source_only_dependency_extract.py --check
-          fi
+        run: python3 research/RHRC/integration/source_only_dependency_extract.py --check
       - name: Upload RHKG compiler dependency receipt
         if: always()
         uses: actions/upload-artifact@v4
@@ -373,12 +359,7 @@ jobs:
       - name: Build source-candidate compiler resolver
         run: lake build Zeta23.RHRC.SourceCandidateResolution
       - name: Check RH_FORMAL_CORE source-candidate exactification
-        run: |
-          if compgen -G ".github/workflows/rhrc_*_materializer.yml" > /dev/null; then
-            echo "Source-candidate exactification byte check deferred to one-shot materializer."
-          else
-            python3 research/RHRC/integration/candidate_exactify.py --check
-          fi
+        run: python3 research/RHRC/integration/candidate_exactify.py --check
       - name: Upload source-candidate exactification receipts
         if: always()
         uses: actions/upload-artifact@v4

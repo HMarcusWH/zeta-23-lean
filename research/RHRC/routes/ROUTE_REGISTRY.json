@@ -1,6 +1,6 @@
 {
   "schema_version": "RHRC-routes-1.0",
-  "ool_kernel_version": "2.7.6",
+  "ool_kernel_version": "2.7.7",
   "boundary_id": "B0_RH_2026_08_20",
   "lifecycle_law": {
     "DISCOVERY": "adaptation allowed and must be logged",

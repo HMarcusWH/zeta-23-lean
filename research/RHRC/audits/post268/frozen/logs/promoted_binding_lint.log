@@ -1,0 +1,2 @@
+$ /opt/pyvenv/bin/python research/RHRC/tools/promoted_binding_lint.py
+promoted_binding_lint: PASS (59 PROVED_UNCONDITIONAL R003 bindings)

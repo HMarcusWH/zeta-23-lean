@@ -1,0 +1,25 @@
+{
+  "archive": "/mnt/data/zeta-23-lean-main (6)(1).zip",
+  "archive_sha256": "b8cc6843ccb7788afa5e787f367df4aa96f404319234268d543b8be324ac9a54",
+  "archive_commit_comment": "ab545e71bfb1b11c647597bee014fad6d9ac291a",
+  "computed_git_tree": "0fdd3151c86989f7cf7123be322b3968e89e3263",
+  "expected_live_tree": "0fdd3151c86989f7cf7123be322b3968e89e3263",
+  "tree_matches_live": true,
+  "file_count": 1207,
+  "extensions": {
+    ".yml": 12,
+    "": 6,
+    ".md": 188,
+    ".json": 96,
+    ".lean": 638,
+    ".yaml": 1,
+    ".toml": 1,
+    ".ipynb": 1,
+    ".py": 249,
+    ".jsonl": 11,
+    ".txt": 4
+  },
+  "uncompressed_bytes": 229578108,
+  "git_history_available": false,
+  "git_index_added_for_census_only": true
+}

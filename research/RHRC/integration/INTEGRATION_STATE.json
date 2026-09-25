@@ -47,11 +47,19 @@
     "source_only_public_theorem_count": 680
   },
   "ffbbp_assurance_scope": {
-    "theory_version": "1.6.0",
+    "theory_version": "1.7",
     "xi_mode": "SNAPSHOT",
-    "reference_population": "RH_FORMAL_CORE theorem/lemma LeanCandidateReceipt surface",
+    "reference_population": "live RH_FORMAL_CORE theorem/lemma LeanCandidateReceipt surface",
     "decision": "IS_SOURCE_ONLY_PUBLIC_THEOREM",
     "selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
+    "gate_status_model": "PASS_FAIL_NOT_APPLICABLE_NOT_EVALUATED",
+    "qualification_identity": [
+      "profile",
+      "protocol",
+      "execution"
+    ],
+    "inherits_runtime_qualification": false,
+    "run46f_runtime_promoted": false,
     "authority_cap": "RESEARCH_CONTROL_ONLY"
   },
   "ffbbp_assurance_authority": {
@@ -64,12 +72,15 @@
     "source_only_module_cohort_count": 195
   },
   "ool_phase_atlas_scope": {
-    "kernel_version": "2.7.6",
+    "kernel_version": "2.7.7",
     "mode": "DISCOVERY_INTERFACE_CONTACT_ONLY",
-    "reference_population": "680 SOURCE_ONLY_PUBLIC_THEOREM LeanCandidateReceipt roots",
+    "reference_population": "live SOURCE_ONLY_PUBLIC_THEOREM LeanCandidateReceipt roots",
     "compiler_projection": "THEOREM_VALUE_ERASED_SUPPORT",
     "ffbbp_navigation_reduction": "MODULE_VISIBILITY_SNAPSHOT",
-    "source_only_module_cohorts": 195,
+    "population_counts": "DERIVED_FROM_CURRENT_GENERATED_RECEIPTS",
+    "certificate_default": "INCOMPLETE_WITHOUT_TRUSTED_POLICY_AND_REVIEWED_ATTESTATION",
+    "certificate_valid_meaning": "ATTESTED_BINDING_NOT_PHYSICAL_OR_MATHEMATICAL_TRUTH",
+    "domain_completeness": "ROUTE_SCOPE_BOUND",
     "authority_cap": "RESEARCH_CONTROL_ONLY"
   }
 }

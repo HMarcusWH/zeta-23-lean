@@ -1,0 +1,2 @@
+$ /opt/pyvenv/bin/python research/RHRC/tools/arithmetic_firewall_lint.py
+RHRC ARITHMETIC FIREWALL: PASS (4 terminal modules fenced; 1 arithmetic modules checked)

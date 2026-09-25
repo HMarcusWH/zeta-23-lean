@@ -1,0 +1,2 @@
+$ /opt/pyvenv/bin/python research/RHRC/graph/validate.py
+RHKG VALIDATION: PASS (1207 files; 638 local Lean modules; 796 external module nodes; 8335 named source declarations; 66 document nodes; 78 registered roots; 3153 local dependencies; 4463 external boundaries; 81 claim mirrors; 4 route mirrors; 296976 relations; terminal claim RH_OPEN)

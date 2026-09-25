@@ -1,0 +1,43 @@
+$ /opt/pyvenv/bin/python -m unittest discover -s research/RHRC/ffbbp/tests -p test_*.py -v
+test_certificate_shrink (test_contracts.FFBBPImplementationClosureTests.test_certificate_shrink) ... ok
+test_knockoff_cannot_be_generated_from_confirm (test_contracts.FFBBPImplementationClosureTests.test_knockoff_cannot_be_generated_from_confirm) ... ok
+test_masked_distance_renormalizes_and_gates_overlap (test_contracts.FFBBPImplementationClosureTests.test_masked_distance_renormalizes_and_gates_overlap) ... ok
+test_partition_build_is_train_union_select (test_contracts.FFBBPImplementationClosureTests.test_partition_build_is_train_union_select) ... ok
+test_partition_overlap_rejected (test_contracts.FFBBPImplementationClosureTests.test_partition_overlap_rejected) ... ok
+test_qualification_pair_is_explicit (test_contracts.FFBBPImplementationClosureTests.test_qualification_pair_is_explicit) ... ok
+test_reference_refit_semantics (test_contracts.FFBBPImplementationClosureTests.test_reference_refit_semantics) ... ok
+test_run42b_lift_and_weight (test_contracts.FFBBPImplementationClosureTests.test_run42b_lift_and_weight) ... ok
+test_run_phase_and_fidelity_are_orthogonal (test_contracts.FFBBPImplementationClosureTests.test_run_phase_and_fidelity_are_orthogonal) ... ok
+test_live_snapshot_produces_expected_ffbbp_separation (test_rhkg_assurance.FFBBPRHKGAssuranceTests.test_live_snapshot_produces_expected_ffbbp_separation) ... ok
+test_mixed_fiber_fails_snapshot_decision_sufficiency (test_rhkg_assurance.FFBBPRHKGAssuranceTests.test_mixed_fiber_fails_snapshot_decision_sufficiency) ... ok
+test_retaining_decision_field_passes (test_rhkg_assurance.FFBBPRHKGAssuranceTests.test_retaining_decision_field_passes) ... ok
+test_best_null_gate_fails_closed (test_rhrc.RHRCTests.test_best_null_gate_fails_closed) ... ok
+test_candidate_aligned_ablation (test_rhrc.RHRCTests.test_candidate_aligned_ablation) ... ok
+test_claim_registry (test_rhrc.RHRCTests.test_claim_registry) ... ok
+test_commutation (test_rhrc.RHRCTests.test_commutation) ... ok
+test_ffbbp_reference_is_run42c_closed (test_rhrc.RHRCTests.test_ffbbp_reference_is_run42c_closed) ... ok
+test_full_gauntlet_fixture_ids (test_rhrc.RHRCTests.test_full_gauntlet_fixture_ids) ... ok
+test_intervention_enforces_hold_fixed (test_rhrc.RHRCTests.test_intervention_enforces_hold_fixed) ... ok
+test_new_channel_can_change_information (test_rhrc.RHRCTests.test_new_channel_can_change_information) ... ok
+test_run38_null_regression_remains_clean (test_rhrc.RHRCTests.test_run38_null_regression_remains_clean) ... ok
+test_run42b_is_quarantined_as_development_lineage (test_rhrc.RHRCTests.test_run42b_is_quarantined_as_development_lineage) ... ok
+test_run42c_frozen_split_shape (test_rhrc.RHRCTests.test_run42c_frozen_split_shape) ... ok
+test_run42c_profile_is_exactly_bound (test_rhrc.RHRCTests.test_run42c_profile_is_exactly_bound) ... ok
+test_source_target_firewall (test_rhrc.RHRCTests.test_source_target_firewall) ... ok
+test_tightmult_sanity (test_rhrc.RHRCTests.test_tightmult_sanity) ... ok
+test_transfer_fails_closed_on_missing_relock (test_rhrc.RHRCTests.test_transfer_fails_closed_on_missing_relock) ... ok
+test_unknown_field_admission_is_two_sided (test_rhrc.RHRCTests.test_unknown_field_admission_is_two_sided) ... ok
+test_decision_gate_requires_decision_commutation (test_v16_assurance.FFBBPV16AssuranceTests.test_decision_gate_requires_decision_commutation) ... ok
+test_decision_gate_requires_snapshot_sufficiency (test_v16_assurance.FFBBPV16AssuranceTests.test_decision_gate_requires_snapshot_sufficiency) ... ok
+test_diagnostic_close_can_still_flip_decision (test_v16_assurance.FFBBPV16AssuranceTests.test_diagnostic_close_can_still_flip_decision) ... ok
+test_outside_trust_region_fails_closed (test_v16_assurance.FFBBPV16AssuranceTests.test_outside_trust_region_fails_closed) ... ok
+test_overlay_does_not_inherit_run42c_qualification (test_v16_assurance.FFBBPV16AssuranceTests.test_overlay_does_not_inherit_run42c_qualification) ... ok
+test_small_local_residual_is_not_horizon_certificate (test_v16_assurance.FFBBPV16AssuranceTests.test_small_local_residual_is_not_horizon_certificate) ... ok
+test_snapshot_contract_matches_v16_typed_surface (test_v16_assurance.FFBBPV16AssuranceTests.test_snapshot_contract_matches_v16_typed_surface) ... ok
+test_stateful_reduction_requires_transition_closure (test_v16_assurance.FFBBPV16AssuranceTests.test_stateful_reduction_requires_transition_closure) ... ok
+test_witness_requires_masking_clearance (test_v16_assurance.FFBBPV16AssuranceTests.test_witness_requires_masking_clearance) ... ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 0.133s
+
+OK

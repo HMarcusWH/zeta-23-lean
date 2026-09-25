@@ -1,0 +1,2 @@
+$ /opt/pyvenv/bin/python research/RHRC/ffbbp/rhkg_assurance.py --check
+FFBBP RHKG ASSURANCE: PASS

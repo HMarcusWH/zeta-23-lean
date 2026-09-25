@@ -1,0 +1,52 @@
+{
+  "schema_version": "RHRC-FFBBP-RHKG-assurance-config-2.0",
+  "theory_version": "1.7",
+  "profile_id": "RHRC_FFBBP_V17_RHKG_CANDIDATE_ASSURANCE_V2",
+  "status": "RESEARCH_CONTROL_ONLY",
+  "terminal_claim": "RH_OPEN",
+  "theorem_promotion": false,
+  "inherits_runtime_qualification": false,
+  "xi_mode": "SNAPSHOT",
+  "qualification_identity": {
+    "profile_id": "RHRC_FFBBP_V17_RHKG_SNAPSHOT_PROFILE",
+    "protocol_id": "RHRC_FFBBP_V17_RHKG_SNAPSHOT_PROTOCOL"
+  },
+  "contract": {
+    "reduction_id": "RHKG_SOURCE_CANDIDATE_SNAPSHOT_V2",
+    "source_state_schema": "RHRC-lean-candidate-receipt-1.0",
+    "xi_schema": "RHRC-FFBBP-RHKG-candidate-Xi-2.0",
+    "reduction_map_version": "2.0",
+    "reference_path_id": "FULL_LEAN_EXACT_SOURCE_CANDIDATE_RECEIPT",
+    "diagnostic_map_id": "EXACT_VISIBILITY_CLASS",
+    "decision_map_id": "IS_SOURCE_ONLY_PUBLIC_THEOREM",
+    "metric_refs": ["EXACT_CATEGORICAL_EQUALITY"],
+    "clock_contract_refs": ["NOT_APPLICABLE_STATIC_REPOSITORY_SNAPSHOT"],
+    "trust_region": {
+      "repository": "HMarcusWH/zeta-23-lean",
+      "source_population": "RH_FORMAL_CORE theorem/lemma LeanCandidateReceipt surface",
+      "mode": "STATIC_REPOSITORY_SNAPSHOT"
+    },
+    "claim_cap_ref": "research/RHRC/integration/INTEGRATION_BOUNDARY.json#claim_firewall"
+  },
+  "reductions": [
+    {
+      "id": "MODULE_ONLY_SNAPSHOT",
+      "key_fields": ["module"],
+      "declared_use": "NEGATIVE_CONTROL_ONLY",
+      "description": "Module-only Xi; retained as the exact decision-sufficiency falsifier."
+    },
+    {
+      "id": "TYPE_DIGEST_SNAPSHOT",
+      "key_fields": ["compiler_type_sha256"],
+      "declared_use": "CURRENT_SNAPSHOT_DECISION_PROBE_ONLY",
+      "description": "Compiler type-digest Xi; current-snapshot probe only, not semantic equivalence."
+    },
+    {
+      "id": "MODULE_VISIBILITY_SNAPSHOT",
+      "key_fields": ["module", "visibility_class"],
+      "declared_use": "POST_REFERENCE_COHORT_NAVIGATION_ONLY",
+      "description": "Retains module and exact visibility disposition for post-reference cohort navigation."
+    }
+  ],
+  "selected_reduction": "MODULE_VISIBILITY_SNAPSHOT"
+}

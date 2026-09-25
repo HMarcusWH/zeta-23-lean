@@ -1,0 +1,10 @@
+$ /opt/pyvenv/bin/python -m unittest discover -s research/RHRC/integration/tests -p test_*.py -v
+test_authority_anchors_are_separate (test_integration_foundation.IntegrationFoundationTests.test_authority_anchors_are_separate) ... ok
+test_selector_is_exactly_rh_core_theorem_and_lemma (test_integration_foundation.IntegrationFoundationTests.test_selector_is_exactly_rh_core_theorem_and_lemma) ... ok
+test_summary_cannot_promote (test_integration_foundation.IntegrationFoundationTests.test_summary_cannot_promote) ... ok
+test_visibility_classification_is_fail_closed (test_integration_foundation.IntegrationFoundationTests.test_visibility_classification_is_fail_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

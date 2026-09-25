@@ -79,11 +79,13 @@ def render_query_tsv(candidates: list[dict]) -> str:
     return "\n".join(lines) + "\n"
 
 
-def render_driver(query_path: Path) -> str:
+def render_driver(query_path: Path, candidates: list[dict]) -> str:
+    modules = sorted({row["module"] for row in candidates})
+    imports = "\n".join(
+        ["import Zeta23.RHRC.SourceCandidateResolution", *[f"import {module}" for module in modules]]
+    )
     return (
-        "import Zeta23.RHRC.SourceCandidateResolution\n"
-        "import Zeta23.CCM\n"
-        "import Zeta23.ExceptionalZero\n\n"
+        imports + "\n\n"
         "run_cmd do\n"
         "  Zeta23.RHRC.resolveSourceCandidatesFile "
         + lean_string(str(query_path))
@@ -91,8 +93,24 @@ def render_driver(query_path: Path) -> str:
     )
 
 
+def build_candidate_modules(candidates: list[dict]) -> None:
+    modules = sorted({row["module"] for row in candidates})
+    proc = subprocess.run(
+        ["lake", "build", *modules],
+        cwd=REPO,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    if proc.returncode != 0:
+        print(proc.stdout, end="")
+        print(proc.stderr, end="", file=os.sys.stderr)
+        fail(f"candidate module build failed with exit code {proc.returncode}")
+
+
 def run_lean(candidates: list[dict]) -> str:
     validate_candidate_modules(candidates)
+    build_candidate_modules(candidates)
     query_path: Path | None = None
     driver_path: Path | None = None
     try:
@@ -104,7 +122,7 @@ def run_lean(candidates: list[dict]) -> str:
         with tempfile.NamedTemporaryFile(
             mode="w", suffix=".lean", encoding="utf-8", delete=False
         ) as driver_handle:
-            driver_handle.write(render_driver(query_path))
+            driver_handle.write(render_driver(query_path, candidates))
             driver_path = Path(driver_handle.name)
         proc = subprocess.run(
             ["lake", "env", "lean", str(driver_path)],

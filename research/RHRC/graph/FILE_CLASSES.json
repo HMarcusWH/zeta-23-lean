@@ -66,6 +66,12 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
+      "id": "exceptional_zero_quarantined_terminal_audits",
+      "pattern": "^Zeta23/ExceptionalZero/(?:GlobalParityBottomArithmeticEquivalenceAudit|GlobalParityBottomConditionalRH|CofinalLowerBoundConditionalRH)\\.lean$",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
       "id": "exceptional_zero_formal_core",
       "pattern": "^Zeta23/ExceptionalZero/.*\\.lean$",
       "file_class": "LEAN_SOURCE",
@@ -159,6 +165,24 @@
       "id": "living_ssot",
       "pattern": "^research/RHRC/(README|DOCUMENTATION_AUTHORITY|VALIDATION_PROTOCOL|RESEARCH_LEADS|OBSTRUCTION_LEDGER)\\.md$",
       "file_class": "LIVING_SSOT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "frozen_audit_docs",
+      "pattern": "^research/RHRC/audits/.*\\.md$",
+      "file_class": "DOCUMENTATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "frozen_audit_receipts",
+      "pattern": "^research/RHRC/audits/.*\\.(?:json|jsonl|txt|log)$",
+      "file_class": "RESEARCH_RECEIPT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "frozen_audit_scripts",
+      "pattern": "^research/RHRC/audits/.*\\.py$",
+      "file_class": "OTHER_CLASSIFIED",
       "trust_zone": "AUDIT_ONLY"
     },
     {

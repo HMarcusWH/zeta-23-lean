@@ -1,0 +1,375 @@
+[
+  {
+    "name": "original_rhrc_suite",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "research/RHRC/tools/run_suite.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 100.696,
+    "log": "logs/original_rhrc_suite.log",
+    "unittest_summaries": [
+      {
+        "tests": 20,
+        "seconds": 0.003
+      },
+      {
+        "tests": 37,
+        "seconds": 0.133
+      },
+      {
+        "tests": 21,
+        "seconds": 0.001
+      },
+      {
+        "tests": 3,
+        "seconds": 0.003
+      },
+      {
+        "tests": 221,
+        "seconds": 2.783
+      },
+      {
+        "tests": 4,
+        "seconds": 0.001
+      }
+    ],
+    "tail": "rce_and_checks_hash (test_retro.RetroTests.test_external_counterfactual_excludes_future_source_and_checks_hash) ... ok\ntest_external_counterfactual_requires_manifest (test_retro.RetroTests.test_external_counterfactual_requires_manifest) ... ok\ntest_git_history_handles_dash_leading_fixed_string_terms (test_retro.RetroTests.test_git_history_handles_dash_leading_fixed_string_terms) ... ok\ntest_ingest_builds_hash_bound_manifest (test_retro.RetroTests.test_ingest_builds_hash_bound_manifest) ... ok\ntest_receipt_hash_binds_declared_paths (test_retro.RetroTests.test_receipt_hash_binds_declared_paths) ... ok\ntest_receipt_hash_is_deterministic (test_retro.RetroTests.test_receipt_hash_is_deterministic) ... ok\ntest_changed_premise_record_can_cover_route (test_revival.RevivalTests.test_changed_premise_record_can_cover_route) ... ok\ntest_dead_route_requires_explicit_revival (test_revival.RevivalTests.test_dead_route_requires_explicit_revival) ... ok\n\n----------------------------------------------------------------------\nRan 221 tests in 2.783s\n\nOK\n+ /opt/pyvenv/bin/python -m unittest discover -s /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/integration/tests -p test_*.py -v\ntest_authority_anchors_are_separate (test_integration_foundation.IntegrationFoundationTests.test_authority_anchors_are_separate) ... ok\ntest_selector_is_exactly_rh_core_theorem_and_lemma (test_integration_foundation.IntegrationFoundationTests.test_selector_is_exactly_rh_core_theorem_and_lemma) ... ok\ntest_summary_cannot_promote (test_integration_foundation.IntegrationFoundationTests.test_summary_cannot_promote) ... ok\ntest_visibility_classification_is_fail_closed (test_integration_foundation.IntegrationFoundationTests.test_visibility_classification_is_fail_closed) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.001s\n\nOK\n+ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/integration/integration_lint.py\nRHRC INTEGRATION LINT: PASS\n+ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/countermodels/check_post155_riesz_pointwise_sign.py\npost-155 exact Riesz pointwise-sign regression: PASS\neven: g^9(0) / [2(2pi)^8] = 576\neven: g^9(1/4) / [2(2pi)^8] = -1024/3 - 16*pi\nodd:  g^7(0) / [2(2pi)^6] = -144\nodd:  g^7(1/4) / [2(2pi)^6] = 256/3 + 4*pi\nRH remains OPEN\n+ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R002_multi_probe/compare_r002_ccm_probe_families.py\nD0-R R002/CCM probe-family falsifier\nhard closed-form max residual : 3.331e-16\nhard quadrature max residual  : 3.219e-09\nsmooth-taper max residual     : 3.400e-01\nCLASSIFICATION: SPECIALIZATION_ONLY\nInterpretation: qBasis matches the hard-window character correlation; the generic smooth R002 taper does not share that exact entry formula.\nAdditional obligations remain: the R002 carrier T, dynamic dimension d(T), finite-window Az versus global Gz, and current lambda<=1 validity.\n"
+  },
+  {
+    "name": "graph_build_check",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "research/RHRC/graph/build.py",
+      "--check"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 18.5,
+    "log": "logs/graph_build_check.log",
+    "unittest_summaries": [],
+    "tail": "$ /opt/pyvenv/bin/python research/RHRC/graph/build.py --check\nRHKG BUILD CHECK: PASS (22 products byte-current)\n"
+  },
+  {
+    "name": "graph_validate",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "research/RHRC/graph/validate.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 35.745,
+    "log": "logs/graph_validate.log",
+    "unittest_summaries": [],
+    "tail": "$ /opt/pyvenv/bin/python research/RHRC/graph/validate.py\nRHKG VALIDATION: PASS (1207 files; 638 local Lean modules; 796 external module nodes; 8335 named source declarations; 66 document nodes; 78 registered roots; 3153 local dependencies; 4463 external boundaries; 81 claim mirrors; 4 route mirrors; 296976 relations; terminal claim RH_OPEN)\n"
+  },
+  {
+    "name": "graph_unittests",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "research/RHRC/graph/tests",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 0.767,
+    "log": "logs/graph_unittests.log",
+    "unittest_summaries": [
+      {
+        "tests": 20,
+        "seconds": 0.002
+      }
+    ],
+    "tail": "ndencyProjectionTests.test_non_theorem_value_edge_survives_erasure) ... ok\ntest_pair_relation_classification_is_neutral (test_dependency_projections.DependencyProjectionTests.test_pair_relation_classification_is_neutral) ... ok\ntest_theorem_type_plus_value_edge_survives_erasure (test_dependency_projections.DependencyProjectionTests.test_theorem_type_plus_value_edge_survives_erasure) ... ok\ntest_theorem_value_erasure_keeps_types_and_definition_bodies (test_dependency_projections.DependencyProjectionTests.test_theorem_value_erasure_keeps_types_and_definition_bodies) ... ok\ntest_type_and_value_projections_are_homogeneous_controls (test_dependency_projections.DependencyProjectionTests.test_type_and_value_projections_are_homogeneous_controls) ... ok\ntest_unknown_projection_fails_closed (test_dependency_projections.DependencyProjectionTests.test_unknown_projection_fails_closed) ... ok\ntest_overlap_shells_and_containment_are_exact (test_dependency_views.DependencyViewTests.test_overlap_shells_and_containment_are_exact) ... ok\ntest_phase2d_atoms_preserve_root_excluding_semantics (test_dependency_views.DependencyViewTests.test_phase2d_atoms_preserve_root_excluding_semantics) ... ok\ntest_phase2d_frontier_direction_and_registered_root_filter (test_dependency_views.DependencyViewTests.test_phase2d_frontier_direction_and_registered_root_filter) ... ok\ntest_phase2d_rejects_root_including_closure (test_dependency_views.DependencyViewTests.test_phase2d_rejects_root_including_closure) ... ok\ntest_route_and_explicit_cohorts_resolve_fail_closed (test_dependency_views.DependencyViewTests.test_route_and_explicit_cohorts_resolve_fail_closed) ... ok\ntest_signature_classes_detect_equal_and_strict_containment (test_dependency_views.DependencyViewTests.test_signature_classes_detect_equal_and_strict_containment) ... ok\ntest_batched_channel_protocol_preserves_channel_union (test_lean_dependency_extract.LeanDependencyExtractTests.test_batched_channel_protocol_preserves_channel_union) ... ok\ntest_channel_sightings_collapse_to_one_dependency (test_lean_dependency_extract.LeanDependencyExtractTests.test_channel_sightings_collapse_to_one_dependency) ... ok\ntest_expression_self_dependency_is_preserved (test_lean_dependency_extract.LeanDependencyExtractTests.test_expression_self_dependency_is_preserved) ... ok\ntest_external_constant_is_boundary_only (test_lean_dependency_extract.LeanDependencyExtractTests.test_external_constant_is_boundary_only) ... ok\ntest_private_internal_flag_is_fail_closed (test_lean_dependency_extract.LeanDependencyExtractTests.test_private_internal_flag_is_fail_closed) ... ok\ntest_exact_token_mentions_do_not_substring_match (test_semantic_closure.SemanticClosureTests.test_exact_token_mentions_do_not_substring_match) ... ok\ntest_named_source_surface_is_discovery_only (test_semantic_closure.SemanticClosureTests.test_named_source_surface_is_discovery_only) ... ok\n\n----------------------------------------------------------------------\nRan 20 tests in 0.002s\n\nOK\n"
+  },
+  {
+    "name": "ffbbp_unittests",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "research/RHRC/ffbbp/tests",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 0.917,
+    "log": "logs/ffbbp_unittests.log",
+    "unittest_summaries": [
+      {
+        "tests": 37,
+        "seconds": 0.133
+      }
+    ],
+    "tail": "g_decision_field_passes) ... ok\ntest_best_null_gate_fails_closed (test_rhrc.RHRCTests.test_best_null_gate_fails_closed) ... ok\ntest_candidate_aligned_ablation (test_rhrc.RHRCTests.test_candidate_aligned_ablation) ... ok\ntest_claim_registry (test_rhrc.RHRCTests.test_claim_registry) ... ok\ntest_commutation (test_rhrc.RHRCTests.test_commutation) ... ok\ntest_ffbbp_reference_is_run42c_closed (test_rhrc.RHRCTests.test_ffbbp_reference_is_run42c_closed) ... ok\ntest_full_gauntlet_fixture_ids (test_rhrc.RHRCTests.test_full_gauntlet_fixture_ids) ... ok\ntest_intervention_enforces_hold_fixed (test_rhrc.RHRCTests.test_intervention_enforces_hold_fixed) ... ok\ntest_new_channel_can_change_information (test_rhrc.RHRCTests.test_new_channel_can_change_information) ... ok\ntest_run38_null_regression_remains_clean (test_rhrc.RHRCTests.test_run38_null_regression_remains_clean) ... ok\ntest_run42b_is_quarantined_as_development_lineage (test_rhrc.RHRCTests.test_run42b_is_quarantined_as_development_lineage) ... ok\ntest_run42c_frozen_split_shape (test_rhrc.RHRCTests.test_run42c_frozen_split_shape) ... ok\ntest_run42c_profile_is_exactly_bound (test_rhrc.RHRCTests.test_run42c_profile_is_exactly_bound) ... ok\ntest_source_target_firewall (test_rhrc.RHRCTests.test_source_target_firewall) ... ok\ntest_tightmult_sanity (test_rhrc.RHRCTests.test_tightmult_sanity) ... ok\ntest_transfer_fails_closed_on_missing_relock (test_rhrc.RHRCTests.test_transfer_fails_closed_on_missing_relock) ... ok\ntest_unknown_field_admission_is_two_sided (test_rhrc.RHRCTests.test_unknown_field_admission_is_two_sided) ... ok\ntest_decision_gate_requires_decision_commutation (test_v16_assurance.FFBBPV16AssuranceTests.test_decision_gate_requires_decision_commutation) ... ok\ntest_decision_gate_requires_snapshot_sufficiency (test_v16_assurance.FFBBPV16AssuranceTests.test_decision_gate_requires_snapshot_sufficiency) ... ok\ntest_diagnostic_close_can_still_flip_decision (test_v16_assurance.FFBBPV16AssuranceTests.test_diagnostic_close_can_still_flip_decision) ... ok\ntest_outside_trust_region_fails_closed (test_v16_assurance.FFBBPV16AssuranceTests.test_outside_trust_region_fails_closed) ... ok\ntest_overlay_does_not_inherit_run42c_qualification (test_v16_assurance.FFBBPV16AssuranceTests.test_overlay_does_not_inherit_run42c_qualification) ... ok\ntest_small_local_residual_is_not_horizon_certificate (test_v16_assurance.FFBBPV16AssuranceTests.test_small_local_residual_is_not_horizon_certificate) ... ok\ntest_snapshot_contract_matches_v16_typed_surface (test_v16_assurance.FFBBPV16AssuranceTests.test_snapshot_contract_matches_v16_typed_surface) ... ok\ntest_stateful_reduction_requires_transition_closure (test_v16_assurance.FFBBPV16AssuranceTests.test_stateful_reduction_requires_transition_closure) ... ok\ntest_witness_requires_masking_clearance (test_v16_assurance.FFBBPV16AssuranceTests.test_witness_requires_masking_clearance) ... ok\n\n----------------------------------------------------------------------\nRan 37 tests in 0.133s\n\nOK\n"
+  },
+  {
+    "name": "ool_unittests",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "research/RHRC/ool/tests",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 0.869,
+    "log": "logs/ool_unittests.log",
+    "unittest_summaries": [
+      {
+        "tests": 21,
+        "seconds": 0.001
+      }
+    ],
+    "tail": "ttest discover -s research/RHRC/ool/tests -p test_*.py -v\ntest_absence_requires_complete_domain (test_ool_runtime.OoL276RuntimeTests.test_absence_requires_complete_domain) ... ok\ntest_architecture_overlay_promotes_full_route_experiment (test_ool_runtime.OoL276RuntimeTests.test_architecture_overlay_promotes_full_route_experiment) ... ok\ntest_binding_mismatch_is_invalid (test_ool_runtime.OoL276RuntimeTests.test_binding_mismatch_is_invalid) ... ok\ntest_boundary_declares_ool_2_7_6_semantics (test_ool_runtime.OoL276RuntimeTests.test_boundary_declares_ool_2_7_6_semantics) ... ok\ntest_confirmatory_route_change_requires_new_digest (test_ool_runtime.OoL276RuntimeTests.test_confirmatory_route_change_requires_new_digest) ... ok\ntest_discovery_is_not_fake_confirmatory (test_ool_runtime.OoL276RuntimeTests.test_discovery_is_not_fake_confirmatory) ... ok\ntest_integrated_route_freeze_requires_actual_output_and_lineage (test_ool_runtime.OoL276RuntimeTests.test_integrated_route_freeze_requires_actual_output_and_lineage) ... ok\ntest_missing_raw_evidence_is_na (test_ool_runtime.OoL276RuntimeTests.test_missing_raw_evidence_is_na) ... ok\ntest_na_certificate_is_incomplete (test_ool_runtime.OoL276RuntimeTests.test_na_certificate_is_incomplete) ... ok\ntest_open_world_quantifiers (test_ool_runtime.OoL276RuntimeTests.test_open_world_quantifiers) ... ok\ntest_reference_is_exact_v2_7_6_release (test_ool_runtime.OoL276RuntimeTests.test_reference_is_exact_v2_7_6_release) ... ok\ntest_route_registry_stays_discovery_until_real_freeze (test_ool_runtime.OoL276RuntimeTests.test_route_registry_stays_discovery_until_real_freeze) ... ok\ntest_strong_kleene_core (test_ool_runtime.OoL276RuntimeTests.test_strong_kleene_core) ... ok\ntest_unconditional_provenance_is_positive_closure (test_ool_runtime.OoL276RuntimeTests.test_unconditional_provenance_is_positive_closure) ... ok\ntest_valid_fail_certificate_is_allowed (test_ool_runtime.OoL276RuntimeTests.test_valid_fail_certificate_is_allowed) ... ok\ntest_cross_interface_contact_is_discovery_only_class (test_rhkg_phase_atlas.RHKGPhaseAtlasTests.test_cross_interface_contact_is_discovery_only_class) ... ok\ntest_frontier_contact_has_explicit_precedence (test_rhkg_phase_atlas.RHKGPhaseAtlasTests.test_frontier_contact_has_explicit_precedence) ... ok\ntest_module_identity_cannot_create_contact (test_rhkg_phase_atlas.RHKGPhaseAtlasTests.test_module_identity_cannot_create_contact) ... ok\ntest_non_theorem_value_support_is_preserved (test_rhkg_phase_atlas.RHKGPhaseAtlasTests.test_non_theorem_value_support_is_preserved) ... ok\ntest_shared_kernel_is_not_distinctive_cross_interface_signal (test_rhkg_phase_atlas.RHKGPhaseAtlasTests.test_shared_kernel_is_not_distinctive_cross_interface_signal) ... ok\ntest_theorem_value_erasure_drops_theorem_proof_body_edges (test_rhkg_phase_atlas.RHKGPhaseAtlasTests.test_theorem_value_erasure_drops_theorem_proof_body_edges) ... ok\n\n----------------------------------------------------------------------\nRan 21 tests in 0.001s\n\nOK\n"
+  },
+  {
+    "name": "runner_unittests",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "research/RHRC/runner/tests",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 0.82,
+    "log": "logs/runner_unittests.log",
+    "unittest_summaries": [
+      {
+        "tests": 3,
+        "seconds": 0.002
+      }
+    ],
+    "tail": "$ /opt/pyvenv/bin/python -m unittest discover -s research/RHRC/runner/tests -p test_*.py -v\ntest_invalid_receipt_blocks (test_terminal_answer.TerminalAnswerTests.test_invalid_receipt_blocks) ... ok\ntest_only_unconditional_closed_chain_prints_true (test_terminal_answer.TerminalAnswerTests.test_only_unconditional_closed_chain_prints_true) ... ok\ntest_open_even_with_valid_diagnostic (test_terminal_answer.TerminalAnswerTests.test_open_even_with_valid_diagnostic) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.002s\n\nOK\n"
+  },
+  {
+    "name": "control_v2_unittests",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "research/RHRC/control_v2/tests",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 3.381,
+    "log": "logs/control_v2_unittests.log",
+    "unittest_summaries": [
+      {
+        "tests": 221,
+        "seconds": 2.457
+      }
+    ],
+    "tail": "ync.Post247SyncTests.test_exact_post247_authority) ... ok\ntest_glasses_v2_is_current_and_tautological_lanes_are_demoted (test_post247_sync.Post247SyncTests.test_glasses_v2_is_current_and_tautological_lanes_are_demoted) ... ok\ntest_global_bottom_declarations_are_present (test_post247_sync.Post247SyncTests.test_global_bottom_declarations_are_present) ... ok\ntest_interpretation_repairs_are_locked (test_post249_sync.Post249SyncTests.test_interpretation_repairs_are_locked) ... ok\ntest_planted_control_scope_is_explicit (test_post249_sync.Post249SyncTests.test_planted_control_scope_is_explicit) ... ok\ntest_post249_is_research_evidence_not_theorem_authority (test_post249_sync.Post249SyncTests.test_post249_is_research_evidence_not_theorem_authority) ... ok\ntest_abab_churn_is_detected (test_regime_monitor.RegimeMonitorTests.test_abab_churn_is_detected) ... ok\ntest_complexity_ratchet_is_detected (test_regime_monitor.RegimeMonitorTests.test_complexity_ratchet_is_detected) ... ok\ntest_no_history_is_read_only (test_regime_monitor.RegimeMonitorTests.test_no_history_is_read_only) ... ok\ntest_aliases_recover_old_vocabulary_without_generic_noise (test_retro.RetroTests.test_aliases_recover_old_vocabulary_without_generic_noise) ... ok\ntest_archaeology_excludes_unmerged_branch_after_anchor (test_retro.RetroTests.test_archaeology_excludes_unmerged_branch_after_anchor) ... ok\ntest_archaeology_searches_unmerged_historical_branch (test_retro.RetroTests.test_archaeology_searches_unmerged_historical_branch) ... ok\ntest_as_of_search_does_not_see_future_commit (test_retro.RetroTests.test_as_of_search_does_not_see_future_commit) ... ok\ntest_counterfactual_replay_enforces_anchor (test_retro.RetroTests.test_counterfactual_replay_enforces_anchor) ... ok\ntest_e4a4_actions_use_post184_remainder_orientation_aliases (test_retro.RetroTests.test_e4a4_actions_use_post184_remainder_orientation_aliases) ... ok\ntest_external_counterfactual_excludes_future_source_and_checks_hash (test_retro.RetroTests.test_external_counterfactual_excludes_future_source_and_checks_hash) ... ok\ntest_external_counterfactual_requires_manifest (test_retro.RetroTests.test_external_counterfactual_requires_manifest) ... ok\ntest_git_history_handles_dash_leading_fixed_string_terms (test_retro.RetroTests.test_git_history_handles_dash_leading_fixed_string_terms) ... ok\ntest_ingest_builds_hash_bound_manifest (test_retro.RetroTests.test_ingest_builds_hash_bound_manifest) ... ok\ntest_receipt_hash_binds_declared_paths (test_retro.RetroTests.test_receipt_hash_binds_declared_paths) ... ok\ntest_receipt_hash_is_deterministic (test_retro.RetroTests.test_receipt_hash_is_deterministic) ... ok\ntest_changed_premise_record_can_cover_route (test_revival.RevivalTests.test_changed_premise_record_can_cover_route) ... ok\ntest_dead_route_requires_explicit_revival (test_revival.RevivalTests.test_dead_route_requires_explicit_revival) ... ok\n\n----------------------------------------------------------------------\nRan 221 tests in 2.457s\n\nOK\n"
+  },
+  {
+    "name": "integration_unittests",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "research/RHRC/integration/tests",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 0.918,
+    "log": "logs/integration_unittests.log",
+    "unittest_summaries": [
+      {
+        "tests": 4,
+        "seconds": 0.0
+      }
+    ],
+    "tail": "$ /opt/pyvenv/bin/python -m unittest discover -s research/RHRC/integration/tests -p test_*.py -v\ntest_authority_anchors_are_separate (test_integration_foundation.IntegrationFoundationTests.test_authority_anchors_are_separate) ... ok\ntest_selector_is_exactly_rh_core_theorem_and_lemma (test_integration_foundation.IntegrationFoundationTests.test_selector_is_exactly_rh_core_theorem_and_lemma) ... ok\ntest_summary_cannot_promote (test_integration_foundation.IntegrationFoundationTests.test_summary_cannot_promote) ... ok\ntest_visibility_classification_is_fail_closed (test_integration_foundation.IntegrationFoundationTests.test_visibility_classification_is_fail_closed) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK\n"
+  },
+  {
+    "name": "ffbbp_assurance",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "research/RHRC/ffbbp/rhkg_assurance.py",
+      "--check"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 1.031,
+    "log": "logs/ffbbp_assurance.log",
+    "unittest_summaries": [],
+    "tail": "$ /opt/pyvenv/bin/python research/RHRC/ffbbp/rhkg_assurance.py --check\nFFBBP RHKG ASSURANCE: PASS\n"
+  },
+  {
+    "name": "ool_phase_atlas",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "research/RHRC/ool/rhkg_phase_atlas.py",
+      "--check"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 10.934,
+    "log": "logs/ool_phase_atlas.log",
+    "unittest_summaries": [],
+    "tail": "$ /opt/pyvenv/bin/python research/RHRC/ool/rhkg_phase_atlas.py --check\nrhkg_phase_atlas: PASS (680 candidates; frontier_contacts=495)\n"
+  },
+  {
+    "name": "integration_lint",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "research/RHRC/integration/integration_lint.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 1.321,
+    "log": "logs/integration_lint.log",
+    "unittest_summaries": [],
+    "tail": "$ /opt/pyvenv/bin/python research/RHRC/integration/integration_lint.py\nRHRC INTEGRATION LINT: PASS\n"
+  },
+  {
+    "name": "claim_lint",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "research/RHRC/tools/claim_lint.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 0.767,
+    "log": "logs/claim_lint.log",
+    "unittest_summaries": [],
+    "tail": "$ /opt/pyvenv/bin/python research/RHRC/tools/claim_lint.py\nRHRC CLAIM LINT: PASS\n"
+  },
+  {
+    "name": "registry_lint",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "research/RHRC/tools/registry_lint.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 0.818,
+    "log": "logs/registry_lint.log",
+    "unittest_summaries": [],
+    "tail": "$ /opt/pyvenv/bin/python research/RHRC/tools/registry_lint.py\nRHRC REGISTRY LINT: PASS\n"
+  },
+  {
+    "name": "promoted_binding_lint",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "research/RHRC/tools/promoted_binding_lint.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 0.867,
+    "log": "logs/promoted_binding_lint.log",
+    "unittest_summaries": [],
+    "tail": "$ /opt/pyvenv/bin/python research/RHRC/tools/promoted_binding_lint.py\npromoted_binding_lint: PASS (59 PROVED_UNCONDITIONAL R003 bindings)\n"
+  },
+  {
+    "name": "registered_theorem_binding_lint",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "research/RHRC/tools/registered_theorem_binding_lint.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 0.817,
+    "log": "logs/registered_theorem_binding_lint.log",
+    "unittest_summaries": [],
+    "tail": "$ /opt/pyvenv/bin/python research/RHRC/tools/registered_theorem_binding_lint.py\nregistered_theorem_binding_lint: PASS (78 proved bindings; 3 OPEN claims intentionally unbound)\n"
+  },
+  {
+    "name": "lean_imports",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "research/RHRC/tools/lean_imports.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 0.868,
+    "log": "logs/lean_imports.log",
+    "unittest_summaries": [],
+    "tail": "$ /opt/pyvenv/bin/python research/RHRC/tools/lean_imports.py\nRHRC LEAN IMPORT PARSER: PASS\n"
+  },
+  {
+    "name": "arithmetic_firewall_lint",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "research/RHRC/tools/arithmetic_firewall_lint.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 2.223,
+    "log": "logs/arithmetic_firewall_lint.log",
+    "unittest_summaries": [],
+    "tail": "$ /opt/pyvenv/bin/python research/RHRC/tools/arithmetic_firewall_lint.py\nRHRC ARITHMETIC FIREWALL: PASS (4 terminal modules fenced; 1 arithmetic modules checked)\n"
+  },
+  {
+    "name": "million_dollar_firewall_lint",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "research/RHRC/tools/million_dollar_firewall_lint.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 0.867,
+    "log": "logs/million_dollar_firewall_lint.log",
+    "unittest_summaries": [],
+    "tail": "$ /opt/pyvenv/bin/python research/RHRC/tools/million_dollar_firewall_lint.py\nPR247 MILLION DOLLAR FIREWALL: PASS (18 active CCM modules; 2 active terminal modules; 3 audit-only modules)\n"
+  },
+  {
+    "name": "post155_countermodel",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "research/RHRC/countermodels/check_post155_riesz_pointwise_sign.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 0.767,
+    "log": "logs/post155_countermodel.log",
+    "unittest_summaries": [],
+    "tail": "$ /opt/pyvenv/bin/python research/RHRC/countermodels/check_post155_riesz_pointwise_sign.py\npost-155 exact Riesz pointwise-sign regression: PASS\neven: g^9(0) / [2(2pi)^8] = 576\neven: g^9(1/4) / [2(2pi)^8] = -1024/3 - 16*pi\nodd:  g^7(0) / [2(2pi)^6] = -144\nodd:  g^7(1/4) / [2(2pi)^6] = 256/3 + 4*pi\nRH remains OPEN\n"
+  },
+  {
+    "name": "r002_ccm_compare",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "research/RHRC/routes/R002_multi_probe/compare_r002_ccm_probe_families.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 0.867,
+    "log": "logs/r002_ccm_compare.log",
+    "unittest_summaries": [],
+    "tail": "$ /opt/pyvenv/bin/python research/RHRC/routes/R002_multi_probe/compare_r002_ccm_probe_families.py\nD0-R R002/CCM probe-family falsifier\nhard closed-form max residual : 3.331e-16\nhard quadrature max residual  : 3.219e-09\nsmooth-taper max residual     : 3.400e-01\nCLASSIFICATION: SPECIALIZATION_ONLY\nInterpretation: qBasis matches the hard-window character correlation; the generic smooth R002 taper does not share that exact entry formula.\nAdditional obligations remain: the R002 carrier T, dynamic dimension d(T), finite-window Az versus global Gz, and current lambda<=1 validity.\n"
+  }
+]

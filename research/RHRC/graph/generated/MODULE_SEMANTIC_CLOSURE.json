@@ -531,6 +531,19 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalArithmeticLowerBound.lean",
+      "module": "Zeta23.CCM.CanonicalArithmeticLowerBound",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalArithmeticLowerBound",
+      "named_source_declaration_count": 3,
+      "path": "Zeta23/CCM/CanonicalArithmeticLowerBound.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "FORMAL_ARITHMETIC_NORMAL_FORM",
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
       "compiler_dependency_surface_declaration_count": 41,
       "file_id": "rh:file:Zeta23/CCM/CanonicalConjugationGeometry.lean",
       "module": "Zeta23.CCM.CanonicalConjugationGeometry",
@@ -879,6 +892,19 @@
       ],
       "registered_root_count": 0,
       "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/CofinalLowerBound.lean",
+      "module": "Zeta23.CCM.CofinalLowerBound",
+      "module_id": "rh:module:Zeta23.CCM.CofinalLowerBound",
+      "named_source_declaration_count": 3,
+      "path": "Zeta23/CCM/CofinalLowerBound.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "FORMAL_COFINAL_ORDER_LEMMA",
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
@@ -2638,6 +2664,19 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/GlobalParityBottomGroundSpace.lean",
+      "module": "Zeta23.CCM.GlobalParityBottomGroundSpace",
+      "module_id": "rh:module:Zeta23.CCM.GlobalParityBottomGroundSpace",
+      "named_source_declaration_count": 6,
+      "path": "Zeta23/CCM/GlobalParityBottomGroundSpace.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "FORMAL_GROUND_MULTIPLICITY_THEOREM",
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
       "compiler_dependency_surface_declaration_count": 14,
       "file_id": "rh:file:Zeta23/CCM/GlobalParityBottomGroundTrial.lean",
       "module": "Zeta23.CCM.GlobalParityBottomGroundTrial",
@@ -2809,6 +2848,19 @@
       ],
       "registered_root_count": 0,
       "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/GlobalParityBottomSimplicity.lean",
+      "module": "Zeta23.CCM.GlobalParityBottomSimplicity",
+      "module_id": "rh:module:Zeta23.CCM.GlobalParityBottomSimplicity",
+      "named_source_declaration_count": 6,
+      "path": "Zeta23/CCM/GlobalParityBottomSimplicity.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "FORMAL_GROUND_SIMPLICITY_THEOREM",
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
@@ -3191,6 +3243,19 @@
       ],
       "registered_root_count": 0,
       "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/RankOneEigenline.lean",
+      "module": "Zeta23.CCM.RankOneEigenline",
+      "module_id": "rh:module:Zeta23.CCM.RankOneEigenline",
+      "named_source_declaration_count": 2,
+      "path": "Zeta23/CCM/RankOneEigenline.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "FORMAL_SUPPORTING_EIGENSPACE_LEMMA",
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
@@ -3714,6 +3779,19 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/CCM/SourceWeightCounterexample.lean",
+      "module": "Zeta23.CCM.SourceWeightCounterexample",
+      "module_id": "rh:module:Zeta23.CCM.SourceWeightCounterexample",
+      "named_source_declaration_count": 17,
+      "path": "Zeta23/CCM/SourceWeightCounterexample.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "FORMAL_ROUTE_FALSIFIER",
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
       "compiler_dependency_surface_declaration_count": 16,
       "file_id": "rh:file:Zeta23/CCM/SourceWeilMatrixReconciliation.lean",
       "module": "Zeta23.CCM.SourceWeilMatrixReconciliation",
@@ -4047,6 +4125,19 @@
       "registered_root_count": 1,
       "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 0,
+      "file_id": "rh:file:Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean",
+      "module": "Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH",
+      "module_id": "rh:module:Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH",
+      "named_source_declaration_count": 3,
+      "path": "Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 0,
+      "standalone_role": "QUARANTINED_CONDITIONAL_RH_SEAM",
+      "trust_zone": "AUDIT_ONLY"
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
@@ -4585,7 +4676,7 @@
       "reachable_from": [],
       "registered_root_count": 1,
       "standalone_role": "QUARANTINED_EQUIVALENCE_AUDIT",
-      "trust_zone": "RH_FORMAL_CORE"
+      "trust_zone": "AUDIT_ONLY"
     },
     {
       "compiler_dependency_surface_declaration_count": 0,
@@ -4598,7 +4689,7 @@
       "reachable_from": [],
       "registered_root_count": 0,
       "standalone_role": "QUARANTINED_CONDITIONAL_RH_SEAM",
-      "trust_zone": "RH_FORMAL_CORE"
+      "trust_zone": "AUDIT_ONLY"
     },
     {
       "compiler_dependency_surface_declaration_count": 1,
@@ -10154,7 +10245,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 638,
+  "entry_count": 645,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",

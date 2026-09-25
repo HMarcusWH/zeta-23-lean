@@ -1,0 +1,19 @@
+$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post222_fb05_biregular_zero_shift_scalar_scope.py
+{
+  "adaptive_interval_bisection": true,
+  "adaptive_point_search": false,
+  "frozen_K": 3,
+  "frozen_N": 2,
+  "frozen_center_count": 5,
+  "frozen_parity": "even",
+  "research_authority_pr": 215,
+  "rh_claim": false,
+  "status": "PASS",
+  "theorem_authority_pr": 222,
+  "theorem_promotion": false,
+  "whole_cell_parities": [
+    "even",
+    "odd"
+  ],
+  "whole_cell_smaller_K": 2
+}

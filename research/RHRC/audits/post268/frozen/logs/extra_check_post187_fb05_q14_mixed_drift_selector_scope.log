@@ -1,0 +1,7 @@
+$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post187_fb05_q14_mixed_drift_selector_scope.py
+Traceback (most recent call last):
+  File "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post187_fb05_q14_mixed_drift_selector_scope.py", line 8, in <module>
+    from canonical_source_arb import set_precision
+  File "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/canonical_source_arb.py", line 21, in <module>
+    from flint import acb, arb, arb_mat, ctx, fmpq
+ModuleNotFoundError: No module named 'flint'

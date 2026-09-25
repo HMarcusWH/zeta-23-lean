@@ -1,0 +1,8 @@
+$ /opt/pyvenv/bin/python research/RHRC/routes/R002_multi_probe/compare_r002_ccm_probe_families.py
+D0-R R002/CCM probe-family falsifier
+hard closed-form max residual : 3.331e-16
+hard quadrature max residual  : 3.219e-09
+smooth-taper max residual     : 3.400e-01
+CLASSIFICATION: SPECIALIZATION_ONLY
+Interpretation: qBasis matches the hard-window character correlation; the generic smooth R002 taper does not share that exact entry formula.
+Additional obligations remain: the R002 carrier T, dynamic dimension d(T), finite-window Az versus global Gz, and current lambda<=1 validity.

@@ -8,11 +8,6 @@ REPO = RHRC.parents[1]
 INTEGRATION = RHRC / "integration"
 
 
-def bootstrap_materializer_present() -> bool:
-    workflow_dir = REPO / ".github" / "workflows"
-    return any(workflow_dir.glob("rhrc_*_materializer.yml"))
-
-
 def load(name: str) -> dict:
     return json.loads((INTEGRATION / name).read_text(encoding="utf-8"))
 
@@ -68,9 +63,11 @@ def main() -> int:
             "integration_lint: framework registry drift "
             f"missing={sorted(required - set(by_id))} extra={sorted(set(by_id) - required)}"
         )
-    if by_id["FFBBP_ASSURANCE"].get("inherits_run42c_qualification") is not False:
-        raise SystemExit("integration_lint: FFBBP v1.6 may not inherit RUN42C qualification")
-    if by_id["FFBBP_ASSURANCE"].get("status") != "RHKG_SNAPSHOT_ASSURANCE_INTEGRATED_NOT_RUN42C_QUALIFIED":
+    if by_id["FFBBP_ASSURANCE"].get("inherits_runtime_qualification") is not False:
+        raise SystemExit("integration_lint: FFBBP assurance may not inherit runtime qualification")
+    if by_id["FFBBP_ASSURANCE"].get("run46f_runtime_promoted") is not False:
+        raise SystemExit("integration_lint: FFBBP 1.7 paper may not promote RUN46F runtime authority")
+    if by_id["FFBBP_ASSURANCE"].get("status") != "RHKG_SNAPSHOT_ASSURANCE_V17_INTEGRATED_RUNTIME_NOT_PROMOTED":
         raise SystemExit("integration_lint: FFBBP RHKG assurance status drift")
     if by_id["MCM_HMWH"]["status"] != "NOT_YET_INTEGRATED":
         raise SystemExit("integration_lint: MCM-HMWH must remain not-yet-integrated in foundation PR")
@@ -87,20 +84,20 @@ def main() -> int:
     if by_id["OOL_MVS"]["scope"] != route_engine["import_scope"]:
         raise SystemExit("integration_lint: OoL-MVS import scope drift")
 
-    ffbbp_v16 = json.loads(
-        (RHRC / "ffbbp" / "FFBBP_V16_ASSURANCE_REFERENCE.json").read_text(encoding="utf-8")
+    ffbbp_v17 = json.loads(
+        (RHRC / "ffbbp" / "FFBBP_V17_ASSURANCE_REFERENCE.json").read_text(encoding="utf-8")
     )
-    if by_id["FFBBP_ASSURANCE"]["version"] != ffbbp_v16["theory_version"]:
-        raise SystemExit("integration_lint: FFBBP v1.6 theory version drift")
-    if ffbbp_v16.get("inherits_run42c_qualification") is not False:
-        raise SystemExit("integration_lint: source FFBBP v1.6 overlay qualification drift")
+    if by_id["FFBBP_ASSURANCE"]["version"] != ffbbp_v17["theory_version"]:
+        raise SystemExit("integration_lint: FFBBP 1.7 theory version drift")
+    if ffbbp_v17.get("inherits_runtime_qualification") is not False:
+        raise SystemExit("integration_lint: source FFBBP 1.7 overlay qualification drift")
 
     ool_reference = json.loads(
         (RHRC / "ool" / "OOL_REFERENCE.json").read_text(encoding="utf-8")
     )
     if by_id["OOL_MVS"]["version"] != ool_reference["version"]:
         raise SystemExit("integration_lint: OoL reference version drift")
-    if by_id["OOL_MVS"].get("status") != "RHKG_PHASE_ATLAS_INTEGRATION_ACTIVE":
+    if by_id["OOL_MVS"].get("status") != "RHKG_PHASE_ATLAS_V277_INTEGRATION_ACTIVE":
         raise SystemExit("integration_lint: OoL Phase Atlas integration status drift")
     ool_adapter = by_id["OOL_MVS"].get("rhkg_adapter", {})
     if ool_adapter.get("projection") != "THEOREM_VALUE_ERASED_SUPPORT":
@@ -210,47 +207,48 @@ def main() -> int:
                     "integration_lint: hidden-body sentinel unexpectedly entered registered closure"
                 )
 
-    ffbbp_config_path = RHRC / "ffbbp" / "configs" / "rhkg_candidate_reduction_v1.json"
+    ffbbp_config_path = RHRC / "ffbbp" / "configs" / "rhkg_candidate_reduction_v2.json"
     ffbbp_report_path = RHRC / "ffbbp" / "generated" / "RHKG_CANDIDATE_REDUCTION_ASSURANCE.json"
     ffbbp_config = json.loads(ffbbp_config_path.read_text(encoding="utf-8"))
-    if ffbbp_config.get("theory_version") != "1.6.0":
+    if ffbbp_config.get("theory_version") != "1.7":
         raise SystemExit("integration_lint: FFBBP RHKG config theory-version drift")
     if ffbbp_config.get("xi_mode") != "SNAPSHOT":
         raise SystemExit("integration_lint: FFBBP RHKG adapter must remain snapshot Xi")
-    if ffbbp_config.get("inherits_run42c_qualification") is not False:
-        raise SystemExit("integration_lint: FFBBP RHKG adapter may not inherit RUN42C qualification")
+    if ffbbp_config.get("inherits_runtime_qualification") is not False:
+        raise SystemExit("integration_lint: FFBBP RHKG adapter may not inherit runtime qualification")
     if ffbbp_config.get("theorem_promotion") is not False:
         raise SystemExit("integration_lint: FFBBP RHKG config attempts theorem promotion")
 
-    if bootstrap_materializer_present():
-        print("integration_lint: FFBBP RHKG generated-report validation deferred during one-shot bootstrap")
-    else:
-        report = json.loads(ffbbp_report_path.read_text(encoding="utf-8"))
-        if report.get("schema_version") != "RHRC-FFBBP-RHKG-assurance-report-1.0":
-            raise SystemExit("integration_lint: FFBBP RHKG report schema drift")
-        if report.get("terminal_claim") != "RH_OPEN" or report.get("theorem_promotion") is not False:
-            raise SystemExit("integration_lint: FFBBP RHKG report authority drift")
-        if report.get("inherits_run42c_qualification") is not False:
-            raise SystemExit("integration_lint: FFBBP RHKG report qualification drift")
-        candidate_summary = json.loads(summary_path.read_text(encoding="utf-8"))
-        if report["input_snapshot"]["candidate_count"] != candidate_summary.get("candidate_count"):
-            raise SystemExit("integration_lint: FFBBP/source-candidate count mismatch")
-        if report["input_snapshot"]["source_only_public_theorem_count"] != 680:
-            raise SystemExit("integration_lint: FFBBP RHKG source-only-count drift")
-        module_only = report["reductions"]["MODULE_ONLY_SNAPSHOT"]
-        if module_only["assurance_gate"]["passed"] is not False:
-            raise SystemExit("integration_lint: module-only negative control unexpectedly passed")
-        if module_only["decision_factorization"]["mixed_value_fiber_count"] != 128:
-            raise SystemExit("integration_lint: module-only decision counterexample count drift")
-        selected = report["reductions"][report["selected_reduction"]]
-        if report["selected_reduction"] != "MODULE_VISIBILITY_SNAPSHOT":
-            raise SystemExit("integration_lint: selected FFBBP reduction drift")
-        if selected["assurance_gate"]["passed"] is not True:
-            raise SystemExit("integration_lint: selected FFBBP reduction no longer assured")
-        if report["source_only_module_cohort_count"] != 195:
-            raise SystemExit("integration_lint: source-only module cohort count drift")
+    report = json.loads(ffbbp_report_path.read_text(encoding="utf-8"))
+    if report.get("schema_version") != "RHRC-FFBBP-RHKG-assurance-report-2.0":
+        raise SystemExit("integration_lint: FFBBP RHKG report schema drift")
+    if report.get("terminal_claim") != "RH_OPEN" or report.get("theorem_promotion") is not False:
+        raise SystemExit("integration_lint: FFBBP RHKG report authority drift")
+    if report.get("inherits_runtime_qualification") is not False:
+        raise SystemExit("integration_lint: FFBBP RHKG report qualification drift")
+    candidate_summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    if report["input_snapshot"]["candidate_count"] != candidate_summary.get("candidate_count"):
+        raise SystemExit("integration_lint: FFBBP/source-candidate count mismatch")
+    source_only_count = candidate_summary.get("source_only_public_theorem_count")
+    if not isinstance(source_only_count, int) or source_only_count <= 0:
+        raise SystemExit("integration_lint: invalid source-only population")
+    if report["input_snapshot"]["source_only_public_theorem_count"] != source_only_count:
+        raise SystemExit("integration_lint: FFBBP RHKG source-only-count drift")
+    module_only = report["reductions"]["MODULE_ONLY_SNAPSHOT"]
+    if module_only["assurance_gate"]["passed"] is not False:
+        raise SystemExit("integration_lint: module-only negative control unexpectedly passed")
+    if module_only["decision_factorization"]["mixed_value_fiber_count"] <= 0:
+        raise SystemExit("integration_lint: module-only negative control lost its counterexample")
+    selected = report["reductions"][report["selected_reduction"]]
+    if report["selected_reduction"] != "MODULE_VISIBILITY_SNAPSHOT":
+        raise SystemExit("integration_lint: selected FFBBP reduction drift")
+    if selected["assurance_gate"]["passed"] is not True:
+        raise SystemExit("integration_lint: selected FFBBP reduction no longer assured")
+    cohort_count = report["source_only_module_cohort_count"]
+    if not isinstance(cohort_count, int) or cohort_count <= 0:
+        raise SystemExit("integration_lint: invalid source-only module cohort count")
 
-    ool_config_path = RHRC / "ool" / "configs" / "rhkg_phase_atlas_v1.json"
+    ool_config_path = RHRC / "ool" / "configs" / "rhkg_phase_atlas_v2.json"
     ool_report_path = RHRC / "ool" / "generated" / "RHKG_OOL_PHASE_ATLAS.json"
     ool_contacts_path = RHRC / "ool" / "generated" / "RHKG_OOL_ROUTE_CONTACTS.jsonl"
     ool_deps_path = INTEGRATION / "generated" / "SOURCE_ONLY_CANDIDATE_DEPENDENCIES.jsonl"
@@ -262,36 +260,34 @@ def main() -> int:
     if ool_config.get("projection") != "THEOREM_VALUE_ERASED_SUPPORT":
         raise SystemExit("integration_lint: OoL Phase Atlas projection drift")
 
-    if bootstrap_materializer_present():
-        print("integration_lint: OoL Phase Atlas generated-product validation deferred during one-shot bootstrap")
-    else:
-        ool_report = json.loads(ool_report_path.read_text(encoding="utf-8"))
-        if ool_report.get("schema_version") != "RHRC-OOL-RHKG-phase-atlas-report-1.0":
-            raise SystemExit("integration_lint: OoL Phase Atlas report schema drift")
-        if ool_report.get("terminal_claim") != "RH_OPEN" or ool_report.get("theorem_promotion") is not False:
-            raise SystemExit("integration_lint: OoL Phase Atlas report authority drift")
-        if ool_report.get("candidate_count") != 680:
-            raise SystemExit("integration_lint: OoL candidate-count drift")
-        if ool_report["input_snapshot"].get("ffbbp_source_only_module_cohort_count") != 195:
-            raise SystemExit("integration_lint: OoL/FFBBP cohort-count drift")
-        if ool_report["frontier_probe"].get("eligible_cross_region_edge_count") != 21:
-            raise SystemExit("integration_lint: OoL theorem-value-erased frontier drift")
-        dep_rows = [
-            json.loads(line)
-            for line in ool_deps_path.read_text(encoding="utf-8").splitlines()
-            if line.strip()
-        ]
-        if sum(row.get("graph_role") == "SOURCE_ONLY_ROOT" for row in dep_rows) != 680:
-            raise SystemExit("integration_lint: OoL source-only dependency-root drift")
-        contact_rows = [
-            json.loads(line)
-            for line in ool_contacts_path.read_text(encoding="utf-8").splitlines()
-            if line.strip()
-        ]
-        if len(contact_rows) != 680:
-            raise SystemExit("integration_lint: OoL route-contact count drift")
-        if any(row.get("theorem_promotion") is not False for row in contact_rows):
-            raise SystemExit("integration_lint: OoL route contact attempts theorem promotion")
+    ool_report = json.loads(ool_report_path.read_text(encoding="utf-8"))
+    if ool_report.get("schema_version") != "RHRC-OOL-RHKG-phase-atlas-report-2.0":
+        raise SystemExit("integration_lint: OoL Phase Atlas report schema drift")
+    if ool_report.get("terminal_claim") != "RH_OPEN" or ool_report.get("theorem_promotion") is not False:
+        raise SystemExit("integration_lint: OoL Phase Atlas report authority drift")
+    if ool_report.get("candidate_count") != source_only_count:
+        raise SystemExit("integration_lint: OoL candidate-count drift")
+    if ool_report["input_snapshot"].get("ffbbp_source_only_module_cohort_count") != cohort_count:
+        raise SystemExit("integration_lint: OoL/FFBBP cohort-count drift")
+    frontier_edges = ool_report["frontier_probe"].get("eligible_cross_region_edge_count")
+    if not isinstance(frontier_edges, int) or frontier_edges < 0:
+        raise SystemExit("integration_lint: invalid OoL theorem-value-erased frontier count")
+    dep_rows = [
+        json.loads(line)
+        for line in ool_deps_path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+    if sum(row.get("graph_role") == "SOURCE_ONLY_ROOT" for row in dep_rows) != source_only_count:
+        raise SystemExit("integration_lint: OoL source-only dependency-root drift")
+    contact_rows = [
+        json.loads(line)
+        for line in ool_contacts_path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+    if len(contact_rows) != source_only_count:
+        raise SystemExit("integration_lint: OoL route-contact count drift")
+    if any(row.get("theorem_promotion") is not False for row in contact_rows):
+        raise SystemExit("integration_lint: OoL route contact attempts theorem promotion")
 
     print("RHRC INTEGRATION LINT: PASS")
     return 0

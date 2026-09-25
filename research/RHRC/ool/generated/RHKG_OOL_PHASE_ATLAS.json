@@ -1,5 +1,11 @@
 {
-  "candidate_count": 680,
+  "candidate_count": 707,
+  "certificate_semantics": {
+    "default": "INCOMPLETE without independently configured policy and reviewed signatures",
+    "mathematical_theorem_authority": false,
+    "physical_truth_authority": false,
+    "valid_meaning": "attested binding; NOT physical truth"
+  },
   "claim_cap": "RESEARCH_CONTROL_ONLY",
   "claim_firewall": [
     "module identity is not an OoL handoff",
@@ -8,15 +14,16 @@
     "proof-body-only contact is separated from theorem-value-erased support",
     "cross-interface support contact is not theorem composition",
     "theorem-value-erased frontier contact is not mathematical implication",
+    "OoL certificate VALID authenticates a reviewed binding, not physical or mathematical truth",
     "OoL output does not create PROVED authority",
     "RH remains OPEN"
   ],
   "disposition_counts": {
-    "NO_ACTIVE_INTERFACE_CONTACT": 185,
-    "THEOREM_VALUE_ERASED_FRONTIER_CONTACT": 495
+    "NO_ACTIVE_INTERFACE_CONTACT": 190,
+    "THEOREM_VALUE_ERASED_FRONTIER_CONTACT": 517
   },
   "frontier_probe": {
-    "candidate_projected_frontier_contact_count": 495,
+    "candidate_projected_frontier_contact_count": 517,
     "eligible_cross_region_edge_count": 21,
     "eligible_declaration_surface": {
       "count": 28,
@@ -49,18 +56,19 @@
     "right_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL"
   },
   "input_snapshot": {
-    "ffbbp_assurance_sha256": "226b2d12e6fa5551df31972591fbdce7d23187d9461e0ec01e6114591d903493",
+    "ffbbp_assurance_sha256": "71589e656084951133ee295507747e9e1242e71c8487b9f4a0a5f63fe91e72cd",
     "ffbbp_selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
-    "ffbbp_source_only_module_cohort_count": 195,
+    "ffbbp_source_only_module_cohort_count": 202,
+    "ool_reference_sha256": "29661d7205b5044fc6fda4c9e733095a2196ba3ce682ed21bef4824616db9bca",
     "projection_frontiers_sha256": "e8e15c22d5fb60ed477083b99b99de2f67bfab1727eb2b9691ce22d1f28cd9c7",
     "registered_dependency_sha256": "ba506ceafd15b0b277d25b3c096e5b65007f71037eb02c11ac186c357ed504ee",
-    "source_only_candidate_count": 680,
-    "source_only_candidate_sha256": "e3e72dd63be25c4cc307f34f7693ec62fa144a42a68951ef5d8c4025cb27be67",
-    "source_only_dependency_sha256": "f5573000419c35b5b3cf2e116ac5ea1a0ccfbb7ec636afe02f0829283516a554"
+    "source_only_candidate_count": 707,
+    "source_only_candidate_sha256": "fda69db6095d537e18a599386dd586ff417b026e581fc99cd63e9c556b4fa045",
+    "source_only_dependency_sha256": "707a9570289f7776e3dc75da2e1aee67bbf88fbc259ec5211f5b80921095a209"
   },
   "interface_families": {
     "APERTURE_ARITHMETIC": {
-      "candidate_projected_contact_count": 6,
+      "candidate_projected_contact_count": 8,
       "distinctive_support": {
         "count": 4,
         "examples": [
@@ -101,7 +109,7 @@
       }
     },
     "CARRIER_SPECTRUM": {
-      "candidate_projected_contact_count": 3,
+      "candidate_projected_contact_count": 4,
       "distinctive_support": {
         "count": 5,
         "examples": [
@@ -200,11 +208,11 @@
       }
     }
   },
-  "interpretation": "Exact compiler-support contact atlas over the 680 source-only public theorem/lemma roots. Contacts are discovery-only and do not establish theorem composition, mathematical implication, relevance ranking, or RH evidence.",
+  "interpretation": "Exact compiler-support contact atlas over 707 source-only public theorem/lemma roots. Contacts are discovery-only and do not establish theorem composition, mathematical implication, relevance ranking, or RH evidence.",
   "mode": "DISCOVERY_INTERFACE_CONTACT_ONLY",
-  "ool_kernel_version": "2.7.6",
+  "ool_kernel_version": "2.7.7",
   "projection": "THEOREM_VALUE_ERASED_SUPPORT",
-  "schema_version": "RHRC-OOL-RHKG-phase-atlas-report-1.0",
+  "schema_version": "RHRC-OOL-RHKG-phase-atlas-report-2.0",
   "status": "RESEARCH_CONTROL_ONLY",
   "terminal_claim": "RH_OPEN",
   "theorem_promotion": false

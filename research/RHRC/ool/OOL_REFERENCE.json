@@ -1,80 +1,82 @@
 {
   "kernel": "OoL_MVS_Kernel",
-  "version": "2.7.6",
-  "release_date": "2026-08-19",
-  "source_archive": {
-    "name": "OoL_MVS_Kernel_v2.7.6 (1).zip",
-    "sha256": "35eef74477b97cfa0f0c5367b51747022ba78c4df16e54869c41614d99e184f2"
+  "version": "2.7.7",
+  "release_date": "2026-09-25",
+  "source_release": {
+    "name": "OoL_MVS_Clean_Submission_and_Laboratory_Release_FINAL.zip",
+    "outer_zip_sha256": "c47c7d568e9822524ccc05b8a2f346cd20ae3218799700b708d78fe5b35ded30",
+    "nested_kernel_zip_sha256": "bdf87d4c8b511f51be381ec4dd9f3cef78276acdd724213f30177ddfb622f251"
   },
   "canonical_authority": {
-    "unified_spec": "OoL_MVS_Kernel_v2.7.6_Mathematically_Unified.md",
-    "claim_registry": "claim_registry_v2_7_6.json",
-    "claim_registry_file_sha256": "5bead5e14603e56a3c68e2be17df2f7761da8aa65544529041c2ca35784d1732",
-    "claim_registry_semantic_hash": "22dfbf6413b8317ab3ef7400b3e966da4d52d2b60868932b0b5adba509aafe9f",
-    "runtime": "claim_registry_runtime_v2_7_6.py"
+    "runtime_hash": "64a15111f3bb655c274d993ae46bb250cf04fda55a05b08256d16d0f93c4f2ad",
+    "registry_hash": "e043d62d11311d7e054735ee3f1b5bf5ce3854ded92dd10fe651ee5fb169872e",
+    "runtime": "claim_registry_runtime_v2_7_7.py",
+    "registry": "claim_registry_v2_7_7.json"
   },
+  "physical_claim_count": 24,
+  "all_v276_claim_expression_asts_unchanged": true,
   "packaged_validation": {
     "formal_claim_algebra": "50/50 PASS",
-    "finite_identity_ancestry_worlds": 256,
     "evidence_semantics": "84/84 PASS",
     "end_to_end": "95/95 PASS",
     "numerical_math": "56/56 PASS",
     "structural_source_scope_stress": "233/233 PASS",
     "hardening": "12/12 PASS",
-    "counted_total": "530/530 PASS"
+    "release_regression": "1180/1180 PASS",
+    "counted_total": "1710/1710 PASS"
   },
-  "local_reverification_2026_08_19": {
-    "executed_from_supplied_archive": true,
-    "formal_claim_algebra": 50,
-    "evidence_semantics": 84,
-    "end_to_end": 95,
-    "numerical_math": 56,
-    "structural_source_scope_stress": 233,
-    "hardening": 12,
-    "total": 530,
-    "failures": 0
-  },
+  "evidence_logic": "Strong Kleene PASS/FAIL/NA",
+  "default_certificate": "INCOMPLETE without independently configured policy and reviewed signatures",
+  "valid_certificate_meaning": "attested binding; NOT physical truth",
+  "qualification_status": "no laboratory-qualified instrument-to-claim adapter supplied",
+  "runtime_integration": "RHRC_DOMAIN_NEUTRAL_GOVERNANCE_SUBSET",
   "rh_import_scope": "operational_semantics_and_governance_only",
   "not_imported": [
     "the 24 origin-of-life physical claims as RH premises",
     "abiogenesis-specific chemistry or natural-history conclusions",
-    "empirical claims outside their stated source scope"
+    "laboratory qualification claims",
+    "scientific truth from certificate signatures"
   ],
   "imported_semantics": [
     "FORMAL_COMPLETE_WORLD is two-valued TRUE/FALSE and cannot issue a scientific certificate",
     "EXPERIMENTAL_EVIDENCE is strong-Kleene PASS/FAIL/NA",
-    "missing or unresolved experimental evidence remains NA",
-    "ClaimResult and CertificateStatus are separate",
-    "a well-supported FAIL may have a VALID certificate",
-    "claim-bearing evidence must bind to raw evidence receipts and exact support digests",
-    "unknown provenance is not admitted provenance",
-    "absence claims require a complete declared search/provenance domain",
+    "missing or unresolved evidence remains NA",
+    "closed type-tagged canonical hashing has no default=str fallback",
+    "raw evidence ancestry and content identity are explicit",
+    "claim results and certificate status are distinct",
+    "default certificate issuance is INCOMPLETE without trusted verifier policy and reviewed attestations",
+    "VALID means attested binding, not physical or mathematical truth",
+    "domain completeness is route-scope bound",
+    "thresholds must be typed, preregistered and frozen before observation when used for claim-bearing decisions",
     "confirmatory execution requires frozen route and boundary digests",
     "claim-bearing route changes after unblinding require a new route digest",
-    "route-specific protocols instantiate and may not weaken the governing kernel",
-    "complete evidence must conservatively collapse PASS/FAIL to the underlying two-valued claim algebra",
-    "full-route freeze requires integrated qualification of every declared interface using actual route outputs; independent module success is insufficient",
-    "claim-bearing continuity requires one admitted provenance/material lineage through the entire frozen route"
+    "full-route freeze requires integrated qualification of every declared interface using actual route outputs",
+    "claim-bearing provenance/lineage must remain continuous"
   ],
   "rh_adaptation": {
     "natural_boundary_analogue": "An unconditional RH route must realize every theorem-relevant entrance assumption from admitted unconditional roots; conditional or unknown ancestry cannot be relabeled as unconditional by downstream transformation.",
     "route_freeze_scope": "diagnostic/confirmatory runs and frozen proof-search experiments; discovery remains adaptive",
     "certificate_scope": "research evidence integrity only; mathematical theorem authority remains Lean/comparator",
-    "integrated_route_analogue": "Local lemmas/boxes may be individually correct while the global proof route remains open. Freeze is eligible only when the actual theorem route closes every declared interface and preserves admitted provenance end to end."
+    "integrated_route_analogue": "Local lemmas may be correct while the global proof route remains open; freeze requires qualified interfaces and admitted provenance end to end."
   },
-  "clean_release_package": {
-    "name": "OoL_MVS_Clean_Submission_and_Laboratory_Release.zip",
-    "sha256": "3fa2d68e6ade43822021444af6573b5fa722d81af80370b26e7abf1f44b30ce3",
-    "embedded_kernel_sha256": "35eef74477b97cfa0f0c5367b51747022ba78c4df16e54869c41614d99e184f2",
-    "release_readiness": "READY_FOR_EXTERNAL_SCIENTIFIC_REVIEW_AND_LAB_HANDOFF_WITHIN_CLAIM_BOUNDARY",
-    "uploaded_2026_08_20_byte_identity": "same outer ZIP SHA as the release already bound on 2026-08-19"
-  },
-  "architecture_overlay": {
-    "path": "research/RHRC/ool/OOL_ARCHITECTURE_OVERLAY_2026_08_20.json",
-    "binary_release_changed": false,
-    "Experiment_A": "Transition-Core Validation",
-    "Experiment_B": "Full Route-Closure Experiment",
-    "integrated_route_qualification_freeze": true,
-    "boundary_debt_tiers": ["Tier_A_transition", "Tier_B_full_laboratory", "Tier_C_natural", "Tier_D_historical"]
+  "implementation_scope": {
+    "status": "ADAPTED_SUBSET_NOT_VENDORED_CANONICAL_RUNTIME",
+    "implemented": [
+      "Strong-Kleene PASS/FAIL/NA helpers",
+      "closed type-tagged canonical hashing",
+      "typed evidence receipts and ancestry closure",
+      "route-scoped domain completeness",
+      "typed threshold freeze validation",
+      "frozen route/boundary binding checks",
+      "integrated interface freeze eligibility",
+      "Ed25519 reviewed-attestation binding with default-INCOMPLETE certificate policy"
+    ],
+    "not_claimed": [
+      "full 24-claim canonical registry runtime",
+      "canonical evidence-bundle replay engine",
+      "laboratory evaluator qualification",
+      "physical claim validity",
+      "byte-identical implementation equivalence to the packaged 2.7.7 kernel"
+    ]
   }
 }

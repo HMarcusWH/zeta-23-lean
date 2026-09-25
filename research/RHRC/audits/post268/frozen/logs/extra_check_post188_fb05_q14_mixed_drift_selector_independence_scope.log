@@ -1,0 +1,11 @@
+$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post188_fb05_q14_mixed_drift_selector_independence_scope.py
+{
+  "status": "PASS",
+  "selector_candidate_count": 10,
+  "abstractly_separable_count": 10,
+  "target_alias_positive_control_count": 3,
+  "source_fixture_blob_locked": true,
+  "source_module_blob_locked": true,
+  "canonical_realizability_claimed": false,
+  "rh_claim": false
+}

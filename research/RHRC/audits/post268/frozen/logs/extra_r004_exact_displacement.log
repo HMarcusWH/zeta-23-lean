@@ -1,0 +1,8 @@
+$ /opt/pyvenv/bin/python research/RHRC/routes/R004_prolate_v2/derive_exact_displacement.py
+R004 exact displacement derivation: PASS
+For n != m:
+  (n-m) M_nm = g_n - g_m
+with
+  g_n = C*n/(L^2+kappa*n^2) + alpha_n + prime_n
+Therefore [D,M] = g*1^T - 1*g^T and rank([D,M]) <= 2.
+The diagonal identity is 0=0, so the formula extends to all entries.

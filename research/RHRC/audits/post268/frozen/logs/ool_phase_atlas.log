@@ -1,0 +1,2 @@
+$ /opt/pyvenv/bin/python research/RHRC/ool/rhkg_phase_atlas.py --check
+rhkg_phase_atlas: PASS (680 candidates; frontier_contacts=495)

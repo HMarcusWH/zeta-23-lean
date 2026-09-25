@@ -1,0 +1,2 @@
+$ /opt/pyvenv/bin/python research/RHRC/tools/registered_theorem_binding_lint.py
+registered_theorem_binding_lint: PASS (78 proved bindings; 3 OPEN claims intentionally unbound)

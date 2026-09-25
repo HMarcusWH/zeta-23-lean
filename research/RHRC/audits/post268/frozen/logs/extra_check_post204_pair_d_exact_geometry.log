@@ -1,0 +1,10 @@
+$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/countermodels/check_post204_pair_d_exact_geometry.py
+{
+  "classification": "PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED",
+  "even_predecessor_form": "70",
+  "even_quadratic_value": "-130",
+  "odd_predecessor_form": "10",
+  "odd_quadratic_value": "-410",
+  "selected_even_root": "-13/42",
+  "status": "PASS"
+}

@@ -1,0 +1,84 @@
+[
+  {
+    "module": "Zeta23.CCM.DictionaryArchDiagonal",
+    "declared_name": "integrable_norm_paperFT_dictionaryTent_mul_sqrt",
+    "path": "Zeta23/CCM/DictionaryArchDiagonal.lean",
+    "line": 612,
+    "candidate_resolution": "NO_COMPILER_MATCH",
+    "separately_registered_claims": []
+  },
+  {
+    "module": "Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit",
+    "declared_name": "legacyGlobalBottomArithmeticClosure_iff_residualExclusion",
+    "path": "Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean",
+    "line": 47,
+    "candidate_resolution": "NO_COMPILER_MATCH",
+    "separately_registered_claims": []
+  },
+  {
+    "module": "Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit",
+    "declared_name": "criticalLine_of_globalBottomResidualExclusion",
+    "path": "Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean",
+    "line": 57,
+    "candidate_resolution": "NO_COMPILER_MATCH",
+    "separately_registered_claims": []
+  },
+  {
+    "module": "Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit",
+    "declared_name": "riemannHypothesis_of_globalBottomResidualExclusion",
+    "path": "Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean",
+    "line": 68,
+    "candidate_resolution": "NO_COMPILER_MATCH",
+    "separately_registered_claims": []
+  },
+  {
+    "module": "Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit",
+    "declared_name": "globalBottomResidualExclusion_of_riemannHypothesis",
+    "path": "Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean",
+    "line": 80,
+    "candidate_resolution": "NO_COMPILER_MATCH",
+    "separately_registered_claims": []
+  },
+  {
+    "module": "Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit",
+    "declared_name": "globalBottomResidualExclusion_iff_riemannHypothesis",
+    "path": "Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean",
+    "line": 90,
+    "candidate_resolution": "NO_COMPILER_MATCH",
+    "separately_registered_claims": [
+      "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE"
+    ]
+  },
+  {
+    "module": "Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit",
+    "declared_name": "legacyGlobalBottomArithmeticClosure_iff_riemannHypothesis",
+    "path": "Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean",
+    "line": 97,
+    "candidate_resolution": "NO_COMPILER_MATCH",
+    "separately_registered_claims": []
+  },
+  {
+    "module": "Zeta23.ExceptionalZero.GlobalParityBottomConditionalRH",
+    "declared_name": "riemannHypothesis_of_legacyGlobalBottomArithmeticClosure",
+    "path": "Zeta23/ExceptionalZero/GlobalParityBottomConditionalRH.lean",
+    "line": 16,
+    "candidate_resolution": "NO_COMPILER_MATCH",
+    "separately_registered_claims": []
+  },
+  {
+    "module": "Zeta23.ExceptionalZero.GlobalParityBottomObstruction",
+    "declared_name": "exists_arbitrarilyLarge_globalParityBottom_state_of_offLine_zero",
+    "path": "Zeta23/ExceptionalZero/GlobalParityBottomObstruction.lean",
+    "line": 28,
+    "candidate_resolution": "NO_COMPILER_MATCH",
+    "separately_registered_claims": []
+  },
+  {
+    "module": "Zeta23.ExceptionalZero.GlobalParityBottomObstruction",
+    "declared_name": "exists_arbitrarilyLarge_globalParityBottom_state_of_exists_offLine_zero",
+    "path": "Zeta23/ExceptionalZero/GlobalParityBottomObstruction.lean",
+    "line": 67,
+    "candidate_resolution": "NO_COMPILER_MATCH",
+    "separately_registered_claims": []
+  }
+]

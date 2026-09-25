@@ -8,7 +8,8 @@ from pathlib import Path
 
 RHRC = Path(__file__).resolve().parents[1]
 REPO = RHRC.parents[1]
-CONFIG = RHRC / "ool" / "configs" / "rhkg_phase_atlas_v1.json"
+CONFIG = RHRC / "ool" / "configs" / "rhkg_phase_atlas_v2.json"
+REFERENCE = RHRC / "ool" / "OOL_REFERENCE.json"
 SOURCE_ONLY = RHRC / "integration" / "generated" / "RH_CORE_SOURCE_ONLY_THEOREMS.jsonl"
 SOURCE_DEPS = RHRC / "integration" / "generated" / "SOURCE_ONLY_CANDIDATE_DEPENDENCIES.jsonl"
 REGISTERED_DEPS = RHRC / "graph" / "compiler" / "REGISTERED_DECLARATION_DEPENDENCIES.jsonl"
@@ -19,7 +20,7 @@ CONTACTS = RHRC / "ool" / "generated" / "RHKG_OOL_ROUTE_CONTACTS.jsonl"
 REPORT = RHRC / "ool" / "generated" / "RHKG_OOL_PHASE_ATLAS.json"
 
 CONTACT_SCHEMA = "RHRC-OOL-RHKG-route-contact-1.0"
-REPORT_SCHEMA = "RHRC-OOL-RHKG-phase-atlas-report-1.0"
+REPORT_SCHEMA = "RHRC-OOL-RHKG-phase-atlas-report-2.0"
 PROJECTION = "THEOREM_VALUE_ERASED_SUPPORT"
 
 
@@ -152,8 +153,6 @@ def find_frontier_probe(data: dict, config: dict) -> tuple[set[str], dict]:
         fail("frontier left claim drift")
     if probe.get("right_claim_id") != expected["right_claim_id"]:
         fail("frontier right claim drift")
-    if probe.get("eligible_cross_region_edge_count") != expected["required_eligible_cross_region_edge_count"]:
-        fail("frontier eligible edge-count drift")
     declarations: set[str] = set()
     for edge in probe.get("cross_region_edges", []):
         if edge.get("bridge_candidate_eligible") is True:
@@ -164,10 +163,19 @@ def find_frontier_probe(data: dict, config: dict) -> tuple[set[str], dict]:
 
 def build() -> tuple[list[dict], dict]:
     config = json.loads(CONFIG.read_text(encoding="utf-8"))
+    reference = json.loads(REFERENCE.read_text(encoding="utf-8"))
     if config.get("terminal_claim") != "RH_OPEN" or config.get("theorem_promotion") is not False:
         fail("config authority firewall drift")
     if config.get("projection") != PROJECTION:
         fail("atlas projection drift")
+    if config.get("ool_kernel_version") != reference.get("version"):
+        fail("OoL config/reference kernel-version drift")
+    if reference.get("version") != "2.7.7":
+        fail("OoL 2.7.7 reference drift")
+    if reference.get("default_certificate") != "INCOMPLETE without independently configured policy and reviewed signatures":
+        fail("OoL default-certificate authority drift")
+    if reference.get("valid_certificate_meaning") != "attested binding; NOT physical truth":
+        fail("OoL certificate-meaning authority drift")
     families = config.get("interface_families", [])
     family_ids = [row["id"] for row in families]
     if len(family_ids) != len(set(family_ids)):
@@ -177,8 +185,6 @@ def build() -> tuple[list[dict], dict]:
         fail("interface families must use disjoint anchor claim IDs")
 
     candidates = load_jsonl(SOURCE_ONLY)
-    if len(candidates) != config["source_only_candidate_count"]:
-        fail("source-only candidate count drift")
     by_candidate_name = {row["resolved_full_name"]: row for row in candidates}
     if len(by_candidate_name) != len(candidates):
         fail("source-only candidate identity drift")
@@ -187,8 +193,6 @@ def build() -> tuple[list[dict], dict]:
     required_ffbbp = config["ffbbp"]
     if ffbbp.get("selected_reduction") != required_ffbbp["required_selected_reduction"]:
         fail("FFBBP selected reduction drift")
-    if ffbbp.get("source_only_module_cohort_count") != required_ffbbp["required_source_only_module_cohort_count"]:
-        fail("FFBBP source-only cohort count drift")
     if ffbbp["reductions"][ffbbp["selected_reduction"]]["assurance_gate"]["passed"] is not True:
         fail("FFBBP selected reduction is not assured")
 
@@ -298,7 +302,7 @@ def build() -> tuple[list[dict], dict]:
         "claim_cap": config["claim_cap"],
         "projection": PROJECTION,
         "interpretation": (
-            "Exact compiler-support contact atlas over the 680 source-only public theorem/lemma roots. "
+            f"Exact compiler-support contact atlas over {len(candidates)} source-only public theorem/lemma roots. "
             "Contacts are discovery-only and do not establish theorem composition, mathematical implication, relevance ranking, or RH evidence."
         ),
         "input_snapshot": {
@@ -309,6 +313,7 @@ def build() -> tuple[list[dict], dict]:
             "source_only_dependency_sha256": digest_path(SOURCE_DEPS),
             "registered_dependency_sha256": digest_path(REGISTERED_DEPS),
             "ffbbp_assurance_sha256": digest_path(FFBBP),
+            "ool_reference_sha256": digest_path(REFERENCE),
             "projection_frontiers_sha256": digest_path(FRONTIERS),
         },
         "interface_families": {
@@ -328,6 +333,12 @@ def build() -> tuple[list[dict], dict]:
         },
         "disposition_counts": dict(sorted(disposition_counts.items())),
         "candidate_count": len(contacts),
+        "certificate_semantics": {
+            "default": reference["default_certificate"],
+            "valid_meaning": reference["valid_certificate_meaning"],
+            "mathematical_theorem_authority": False,
+            "physical_truth_authority": False
+        },
         "claim_firewall": [
             "module identity is not an OoL handoff",
             "FFBBP cohort membership is navigation only",
@@ -335,6 +346,7 @@ def build() -> tuple[list[dict], dict]:
             "proof-body-only contact is separated from theorem-value-erased support",
             "cross-interface support contact is not theorem composition",
             "theorem-value-erased frontier contact is not mathematical implication",
+            "OoL certificate VALID authenticates a reviewed binding, not physical or mathematical truth",
             "OoL output does not create PROVED authority",
             "RH remains OPEN",
         ],

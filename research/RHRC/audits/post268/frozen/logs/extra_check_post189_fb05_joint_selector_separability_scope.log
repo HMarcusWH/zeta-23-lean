@@ -1,0 +1,13 @@
+$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post189_fb05_joint_selector_separability_scope.py
+{
+  "status": "PASS",
+  "strong_selector_count": 7,
+  "same_exact_strong_vector": true,
+  "same_nonboundary_threshold_signature": true,
+  "target_sign_flip": true,
+  "smooth_channel_sign_reflection": true,
+  "derived_nonempty_subset_count": 127,
+  "target_augmented_control_count": 3,
+  "canonical_realizability_claimed": false,
+  "rh_claim": false
+}

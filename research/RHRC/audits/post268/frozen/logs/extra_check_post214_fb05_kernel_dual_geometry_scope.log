@@ -1,0 +1,12 @@
+$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post214_fb05_kernel_dual_geometry_scope.py
+{
+  "adaptive_point_search": false,
+  "adaptive_precision_increase": false,
+  "arb_precision_bits": 384,
+  "frozen_K": 3,
+  "frozen_center_count": 3,
+  "frozen_parity": "even",
+  "rh_claim": false,
+  "status": "PASS",
+  "theorem_promotion": false
+}

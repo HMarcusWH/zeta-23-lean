@@ -1,0 +1,26 @@
+$ /opt/pyvenv/bin/python -m unittest discover -s research/RHRC/graph/tests -p test_*.py -v
+test_any_is_union_traversal_and_root_is_excluded (test_dependency_projections.DependencyProjectionTests.test_any_is_union_traversal_and_root_is_excluded) ... ok
+test_non_theorem_value_edge_survives_erasure (test_dependency_projections.DependencyProjectionTests.test_non_theorem_value_edge_survives_erasure) ... ok
+test_pair_relation_classification_is_neutral (test_dependency_projections.DependencyProjectionTests.test_pair_relation_classification_is_neutral) ... ok
+test_theorem_type_plus_value_edge_survives_erasure (test_dependency_projections.DependencyProjectionTests.test_theorem_type_plus_value_edge_survives_erasure) ... ok
+test_theorem_value_erasure_keeps_types_and_definition_bodies (test_dependency_projections.DependencyProjectionTests.test_theorem_value_erasure_keeps_types_and_definition_bodies) ... ok
+test_type_and_value_projections_are_homogeneous_controls (test_dependency_projections.DependencyProjectionTests.test_type_and_value_projections_are_homogeneous_controls) ... ok
+test_unknown_projection_fails_closed (test_dependency_projections.DependencyProjectionTests.test_unknown_projection_fails_closed) ... ok
+test_overlap_shells_and_containment_are_exact (test_dependency_views.DependencyViewTests.test_overlap_shells_and_containment_are_exact) ... ok
+test_phase2d_atoms_preserve_root_excluding_semantics (test_dependency_views.DependencyViewTests.test_phase2d_atoms_preserve_root_excluding_semantics) ... ok
+test_phase2d_frontier_direction_and_registered_root_filter (test_dependency_views.DependencyViewTests.test_phase2d_frontier_direction_and_registered_root_filter) ... ok
+test_phase2d_rejects_root_including_closure (test_dependency_views.DependencyViewTests.test_phase2d_rejects_root_including_closure) ... ok
+test_route_and_explicit_cohorts_resolve_fail_closed (test_dependency_views.DependencyViewTests.test_route_and_explicit_cohorts_resolve_fail_closed) ... ok
+test_signature_classes_detect_equal_and_strict_containment (test_dependency_views.DependencyViewTests.test_signature_classes_detect_equal_and_strict_containment) ... ok
+test_batched_channel_protocol_preserves_channel_union (test_lean_dependency_extract.LeanDependencyExtractTests.test_batched_channel_protocol_preserves_channel_union) ... ok
+test_channel_sightings_collapse_to_one_dependency (test_lean_dependency_extract.LeanDependencyExtractTests.test_channel_sightings_collapse_to_one_dependency) ... ok
+test_expression_self_dependency_is_preserved (test_lean_dependency_extract.LeanDependencyExtractTests.test_expression_self_dependency_is_preserved) ... ok
+test_external_constant_is_boundary_only (test_lean_dependency_extract.LeanDependencyExtractTests.test_external_constant_is_boundary_only) ... ok
+test_private_internal_flag_is_fail_closed (test_lean_dependency_extract.LeanDependencyExtractTests.test_private_internal_flag_is_fail_closed) ... ok
+test_exact_token_mentions_do_not_substring_match (test_semantic_closure.SemanticClosureTests.test_exact_token_mentions_do_not_substring_match) ... ok
+test_named_source_surface_is_discovery_only (test_semantic_closure.SemanticClosureTests.test_named_source_surface_is_discovery_only) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.002s
+
+OK
