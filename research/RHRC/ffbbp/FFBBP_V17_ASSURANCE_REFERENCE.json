@@ -7,7 +7,9 @@
     "title": "FFBBP: A Reference Framework for Latent-Field Inference and Typed Assurance",
     "version": "1.7",
     "date": "2026-09-25",
-    "publication_status": "PRIVATE_INTERNAL_NOT_FOR_PUBLICATION"
+    "publication_status": "PRIVATE_INTERNAL_NOT_FOR_PUBLICATION",
+    "sha256": "3ee4232a5a3a76061c043779a3b1528952f19e935302506ed2143395e20dcc94",
+    "distribution": "PRIVATE_SOURCE_HASH_ONLY_NOT_COMMITTED"
   },
   "runtime_authority": {
     "version": "1.5.1+RUN42C_inductive_firewall_closure_overlay",
