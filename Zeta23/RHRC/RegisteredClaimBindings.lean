@@ -246,6 +246,10 @@ import Zeta23.ZeroSide.TightMult
 #check Zeta23.CCM.globalParitySuccessorBottom_antitone_of_le
 #print axioms Zeta23.CCM.globalParitySuccessorBottom_antitone_of_le
 
+-- R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY
+#check Zeta23.CCM.canonicalCarrierBottom_hierarchy
+#print axioms Zeta23.CCM.canonicalCarrierBottom_hierarchy
+
 -- R003_KERNEL_EF_EXTENSION
 #check Zeta23.CCM.dictionaryTransform_zero_sum_eq_literatureRHS
 #print axioms Zeta23.CCM.dictionaryTransform_zero_sum_eq_literatureRHS
