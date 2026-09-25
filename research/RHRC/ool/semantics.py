@@ -8,6 +8,7 @@ from ool.v277_evidence import (
     ClaimCertificate,
     ClaimResult,
     DomainCompleteness,
+    DomainReceipt,
     EvidenceReceipt,
     EvidenceValue,
     stable_digest,
@@ -121,9 +122,40 @@ def unconditional_provenance_result(
 
 
 def absence_result(*, forbidden_observed: bool, search_domain_complete: bool) -> EvidenceValue:
+    """Legacy boolean helper retained for frozen callers.
+
+    New claim-bearing code should use absence_result_for_domain so completeness
+    is bound to an exact route scope.
+    """
     if forbidden_observed:
         return EvidenceValue.FAIL
     if not search_domain_complete:
+        return EvidenceValue.NA
+    return EvidenceValue.PASS
+
+
+def absence_result_for_domain(
+    *,
+    forbidden_observed: bool,
+    domain: DomainReceipt,
+    route_digest: str,
+) -> EvidenceValue:
+    """OoL 2.7.7 scoped absence semantics for RHRC.
+
+    A complete enumeration over a different route is not evidence of absence on
+    this route. Missing scope is unresolved, not silently global.
+    """
+    if forbidden_observed:
+        return EvidenceValue.FAIL
+    if not isinstance(domain, DomainReceipt):
+        return EvidenceValue.NA
+    if (
+        domain.completeness is not DomainCompleteness.COMPLETE
+        or not domain.scope_route_digest
+        or domain.scope_route_digest != route_digest
+        or not domain.enumeration_method
+        or not domain.evidence_ref
+    ):
         return EvidenceValue.NA
     return EvidenceValue.PASS
 
@@ -159,6 +191,7 @@ __all__ = [
     "ClaimCertificate",
     "ClaimResult",
     "DomainCompleteness",
+    "DomainReceipt",
     "EvidenceReceipt",
     "EvidenceValue",
     "EvaluatorRegistration",
@@ -167,6 +200,7 @@ __all__ = [
     "RouteInterfaceQualification",
     "VerifierPolicy",
     "absence_result",
+    "absence_result_for_domain",
     "confirmatory_binding_status",
     "exists_result",
     "forall_result",
