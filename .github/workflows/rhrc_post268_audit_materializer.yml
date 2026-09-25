@@ -58,11 +58,11 @@ jobs:
 
       - name: Regenerate compiler and RHKG products
         run: |
-          python research/RHRC/tools/lean_dependency_extract.py
-          python research/RHRC/graph/build.py
-          python research/RHRC/integration/candidate_exactify.py
+          python research/RHRC/tools/lean_dependency_extract.py --write
+          python research/RHRC/graph/build.py --write
+          python research/RHRC/integration/candidate_exactify.py --write
           python research/RHRC/ffbbp/rhkg_assurance.py --write
-          python research/RHRC/integration/source_only_dependency_extract.py
+          python research/RHRC/integration/source_only_dependency_extract.py --write
           python research/RHRC/ool/rhkg_phase_atlas.py --write
 
       - name: Strict steady-state validation
