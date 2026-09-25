@@ -10,6 +10,19 @@ concurrency:
   group: post268-audit-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 jobs:
+  runner-regressions:
+    name: Audit runner adversarial regressions
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test producer-consumer and fail-closed harvest contracts
+        run: python -m unittest discover -s research/RHRC/audits/post268/tests -v
   extended:
     name: Extended audit shard ${{ matrix.shard }}
     runs-on: ubuntu-latest

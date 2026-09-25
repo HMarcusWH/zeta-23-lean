@@ -40,20 +40,5 @@ def preserve():
     assert len([p for p in DEST.rglob('*') if p.is_file()])==103
     print('Original audit: all 103 files preserved byte-for-byte, including reconstructed manifest.')
 
-def repair_proof_candidates():
-    p=ROOT/'Zeta23/CCM/GlobalParityBottomSimplicity.lean'
-    text=p.read_text()
-    old='  let E := euclideanEvenOddBoundaryFlatLinearEquiv K (by omega)\n'
-    new='  have hK1 : 1 ≤ K := by omega\n  let E := euclideanEvenOddBoundaryFlatLinearEquiv K hK1\n'
-    if old in text: p.write_text(text.replace(old,new))
-    else: assert new in text
-    p=ROOT/'Zeta23/CCM/SourceWeightCounterexample.lean'
-    text=p.read_text()
-    if 'set_option maxRecDepth' not in text:
-        text=text.replace('noncomputable section','set_option maxRecDepth 8192\nset_option maxHeartbeats 2000000\n\nnoncomputable section',1)
-    text=text.replace('sourceWeightCounterexampleReal, Fin.rev]','sourceWeightCounterexampleReal]')
-    p.write_text(text)
-
 if __name__=='__main__':
     preserve()
-    repair_proof_candidates()

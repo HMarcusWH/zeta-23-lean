@@ -21,10 +21,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Preserve exact audit and record prepared-source identities
+      - name: Preserve exact audit and record committed-source identities
         run: |
           mkdir -p "${{ runner.temp }}/post268-proof"
           python .github/post268_prepare.py
+          git diff --exit-code -- Zeta23
           git diff > "${{ runner.temp }}/post268-proof/prepared-source.patch"
           git rev-parse HEAD HEAD^{tree} > "${{ runner.temp }}/post268-proof/checkout.txt"
           sha256sum Zeta23/CCM/{RankOneEigenline,GlobalParityBottomSimplicity,GlobalParityBottomGroundSpace,SourceWeightCounterexample,CanonicalArithmeticLowerBound,CofinalLowerBound}.lean Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean > "${{ runner.temp }}/post268-proof/sources.sha256"

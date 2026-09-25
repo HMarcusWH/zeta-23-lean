@@ -48,7 +48,7 @@ theorem sourceWeightCounterexample_even :
   ext i
   change sourceWeightCounterexampleCoefficients i.rev = sourceWeightCounterexampleCoefficients i
   rw [hrev]
-  fin_cases i <;> norm_num [sourceWeightCounterexampleCoefficients, sourceWeightCounterexampleReal]
+  fin_cases i <;> rfl
 
 theorem sourceWeightCounterexample_fourthMoment :
     centeredMoment 4 4 sourceWeightCounterexampleCoefficients = -24 := by

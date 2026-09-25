@@ -54,7 +54,8 @@ theorem oddEigenmode_eq_zero_of_source_eq_zero_below_even
     (w : euclideanOddBoundaryFlatSubspace K)
     (hw : parityCompressedCanonical .odd L K w = (a : ℂ) • w)
     (hS : oddPulledBackSourceFunctional L K (by omega) w = 0) : w = 0 := by
-  let E := euclideanEvenOddBoundaryFlatLinearEquiv K (by omega)
+  have hK1 : 1 ≤ K := by omega
+  let E := euclideanEvenOddBoundaryFlatLinearEquiv K hK1
   let v := E.symm w
   have hSv : cubicDefectFunctional L K v = 0 := hS
   have hi := oddEigenmode_pulledBack_shiftedEven_eq_neg_sourceCubic
