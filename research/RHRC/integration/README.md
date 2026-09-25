@@ -63,3 +63,34 @@ terminal claim                      = RH_OPEN
 
 Only the existing Lean/compiler and registered claim-validation gates may
 promote a mathematical statement to PROVED authority.
+
+
+## FFBBP v1.6 RHKG snapshot assurance
+
+The first post-foundation framework adapter applies FFBBP v1.6 only to a
+static repository snapshot. It does **not** run the qualified RUN42C unknown-field
+solver on Lean theorems.
+
+The full reference state is the Lean-exact RH_FORMAL_CORE theorem/lemma
+candidate receipt surface. The declared diagnostic is exact
+`visibility_class`; the categorical research-control decision is whether a
+candidate is `SOURCE_ONLY_PUBLIC_THEOREM`.
+
+Three frozen reductions are replayed against the full reference path:
+
+- `MODULE_ONLY_SNAPSHOT` — negative control; expected to fail because one
+  module may contain candidates with different visibility decisions.
+- `TYPE_DIGEST_SNAPSHOT` — current-snapshot probe; may preserve the binary
+  decision while losing the fuller visibility diagnostic.
+- `MODULE_VISIBILITY_SNAPSHOT` — selected post-reference cohort projection;
+  retains module plus exact visibility class and is used only for navigation
+  after full Lean exactification.
+
+This imports FFBBP's v1.6 distinction between decision sufficiency, diagnostic
+commutation, and stateful transition closure. Because the adapter is snapshot
+Xi, autonomous transition closure is structurally not claimed.
+
+Passing FFBBP assurance means only that the declared reduction preserves the
+declared finite-snapshot diagnostic/decision surface. It does not rank theorem
+importance, prove mathematical implication, inherit RUN42C qualification, or
+change RH status.

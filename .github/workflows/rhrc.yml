@@ -21,9 +21,9 @@ jobs:
           python-version: '3.x'
       - name: RHKG deterministic regeneration gate
         run: |
-          if [ -f .github/workflows/rhrc_integration_candidate_materializer.yml ]; then
-            echo "Integration bootstrap materializer is present."
-            echo "Strict RHKG byte-current validation is deferred to the one-shot materializer,"
+          if compgen -G ".github/workflows/rhrc_*_materializer.yml" > /dev/null; then
+            echo "RHRC one-shot bootstrap materializer is present."
+            echo "Strict RHKG byte-current validation is deferred to that materializer,"
             echo "which self-deletes before regenerating and validating the final steady state."
           else
             python research/RHRC/graph/build.py --check

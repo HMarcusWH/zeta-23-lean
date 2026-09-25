@@ -27,7 +27,7 @@
     "registered_roots": 76,
     "graph_relations": 294007
   },
-  "current_operation": "RH_CORE_SOURCE_CANDIDATE_EXACTIFICATION",
+  "current_operation": "FFBBP_RHKG_SNAPSHOT_REDUCTION_ASSURANCE",
   "candidate_scope": {
     "trust_zone": "RH_FORMAL_CORE",
     "source_command_kinds": [
@@ -37,5 +37,21 @@
     "authority_cap": "DISCOVERY_ONLY"
   },
   "theorem_promotion": false,
-  "graph_theorem_promotion": false
+  "graph_theorem_promotion": false,
+  "integration_foundation_authority": {
+    "pr": 264,
+    "merge_commit": "dd4636d021ccc95d915bcdd9635fe100b8e4c5bb",
+    "tree": "4e507b8f86de8e7e1bee28d135722d7396a1a8f6",
+    "status": "MERGED_GREEN_LEAN_EXACT_SOURCE_CANDIDATE_DISCOVERY",
+    "candidate_count": 2356,
+    "source_only_public_theorem_count": 680
+  },
+  "ffbbp_assurance_scope": {
+    "theory_version": "1.6.0",
+    "xi_mode": "SNAPSHOT",
+    "reference_population": "RH_FORMAL_CORE theorem/lemma LeanCandidateReceipt surface",
+    "decision": "IS_SOURCE_ONLY_PUBLIC_THEOREM",
+    "selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
+    "authority_cap": "RESEARCH_CONTROL_ONLY"
+  }
 }

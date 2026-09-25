@@ -1,7 +1,7 @@
 {
   "schema_version": "FFBBP-v1.6-assurance-overlay-1.0",
   "theory_version": "1.6.0",
-  "status": "THEORY_ASSURANCE_OVERLAY_ONLY",
+  "status": "THEORY_ASSURANCE_OVERLAY_WITH_RHKG_SNAPSHOT_ADAPTER",
   "purpose": "Expose v1.6 reduction, commutation, horizon and witness assurance contracts to RHRC without rewriting the qualified RUN42C implementation lineage.",
   "inherits_run42c_qualification": false,
   "qualified_runtime_reference": "research/RHRC/ffbbp/FFBBP_REFERENCE.json",
@@ -11,7 +11,8 @@
     "research/RHRC/ffbbp/v16_commutation.py",
     "research/RHRC/ffbbp/v16_horizon.py",
     "research/RHRC/ffbbp/v16_witness.py",
-    "research/RHRC/ffbbp/v16_gates.py"
+    "research/RHRC/ffbbp/v16_gates.py",
+    "research/RHRC/ffbbp/rhkg_assurance.py"
   ],
   "claim_cap": "diagnostic_and_research_control_only",
   "forbidden_promotions": [
@@ -20,6 +21,17 @@
     "small local residual -> horizon safety",
     "local witness separation -> full-system separation without masking clearance",
     "FFBBP assurance output -> mathematical theorem",
-    "FFBBP assurance output -> RH evidence"
-  ]
+    "FFBBP assurance output -> RH evidence",
+    "finite snapshot decision sufficiency -> future repository sufficiency",
+    "post-reference cohort navigation -> mathematical relevance ranking"
+  ],
+  "rhkg_snapshot_adapter": {
+    "config": "research/RHRC/ffbbp/configs/rhkg_candidate_reduction_v1.json",
+    "report": "research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json",
+    "source_population": "research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl",
+    "selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
+    "declared_use": "post-reference cohort navigation only",
+    "stateful_transition_claim": false,
+    "mathematical_relevance_ranking": false
+  }
 }

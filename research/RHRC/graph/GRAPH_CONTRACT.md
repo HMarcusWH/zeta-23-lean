@@ -653,3 +653,19 @@ relations. The graph builder continues to byte-regenerate only its own
 byte-checks the integration-derived receipts.
 
 This separation is an authority and determinism boundary, not a theorem claim.
+
+
+### FFBBP-derived generated product
+
+The FFBBP RHKG assurance report
+
+- `research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json`
+
+is also a declared generated product. Its exact producer is
+`research/RHRC/ffbbp/rhkg_assurance.py`. Its bytes are excluded from the RHKG
+subject digest for the same acyclicity reason as the integration candidate
+receipts: the report is derived from the admitted repository state and must not
+recursively perturb the state digest it records.
+
+This does not grant FFBBP theorem authority. The report remains
+`RESEARCH_CONTROL_ONLY`, and RH remains OPEN.

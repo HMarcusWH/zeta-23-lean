@@ -4,6 +4,31 @@
 
 Live GitHub/compiler/CI evidence is authoritative.
 
+
+## Post-#264 integration override
+
+This block supersedes older repository/integration-current labels below without
+rewriting the historical mathematical roadmap.
+
+- exact theorem authority remains PR #262; RH remains OPEN;
+- RHKG semantic-closure authority = PR #263;
+- Lean-exact source-candidate integration foundation = PR #264;
+- RH_FORMAL_CORE theorem/lemma source surface = 2,356 candidates;
+- uniquely resolved public source-only theorem/lemma population = 680;
+- current integration operation = FFBBP v1.6 RHKG snapshot reduction assurance;
+- FFBBP RUN42C qualification remains restricted to its named finite-synthetic
+  diagnostic profile and is **not** inherited by the v1.6 RHKG assurance layer;
+- the FFBBP RHKG adapter is snapshot Xi only: no autonomous transition-closure
+  claim, no mathematical relevance ranking, no theorem promotion;
+- selected reduction target = module + exact visibility class, for
+  post-reference cohort navigation only;
+- mathematical theorem programme remains the post-#247/#262 Glasses-v2 route,
+  including unconditional arithmetic control, endpoint-weight structure,
+  prime-power seams, and first-crossing mechanisms.
+
+The integration programme is intended to improve theorem selection and route
+falsification; it does not replace Lean as proof authority.
+
 <!-- RHRC_CURRENT_STATE_BEGIN -->
 ## Current RHRC state
 
