@@ -275,6 +275,14 @@
           "root_theorem": "Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx"
         },
         {
+          "claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+          "external_boundary_count": 1043,
+          "external_boundary_sha256": "07eac17711b626b360d77bfef10e66ca23880b4bc5f76fb3af480539fe5f7368",
+          "local_dependency_count": 198,
+          "local_dependency_sha256": "682c58e98b07f815371b9812110d4f564fe9b1da4d4c3694f901622068ad4b01",
+          "root_theorem": "Zeta23.CCM.canonicalCarrierBottom_hierarchy"
+        },
+        {
           "claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
           "external_boundary_count": 160,
           "external_boundary_sha256": "519ed04e84b59e44f6afe4b091134c26e626ec78a6636081eebc49f68ddf82ef",
@@ -1037,6 +1045,14 @@
           "local_dependency_count": 2,
           "local_dependency_sha256": "77d01f5839b6e18304a8d89181170c70668847dcd463b0354255a65cc5c83d1f",
           "root_theorem": "Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx"
+        },
+        {
+          "claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+          "external_boundary_count": 14,
+          "external_boundary_sha256": "113de8a72421c321dd400da911e6129723df99d0262d3cd67538497181cf9365",
+          "local_dependency_count": 7,
+          "local_dependency_sha256": "a7e03185dca22f379c5fc935a3ceb43a8ffd8b9976deea9fc77e5da4654be404",
+          "root_theorem": "Zeta23.CCM.canonicalCarrierBottom_hierarchy"
         },
         {
           "claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
@@ -1803,6 +1819,14 @@
           "root_theorem": "Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx"
         },
         {
+          "claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+          "external_boundary_count": 1031,
+          "external_boundary_sha256": "df31542e6c741c843cfde2e2e5798fb7c74276ba737fc8da0f7442361fc6f9f7",
+          "local_dependency_count": 195,
+          "local_dependency_sha256": "f3756baabddd8757b1458e1d9690d6e2837c62830549e045eb28d1863c6615e8",
+          "root_theorem": "Zeta23.CCM.canonicalCarrierBottom_hierarchy"
+        },
+        {
           "claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
           "external_boundary_count": 160,
           "external_boundary_sha256": "519ed04e84b59e44f6afe4b091134c26e626ec78a6636081eebc49f68ddf82ef",
@@ -2565,6 +2589,14 @@
           "local_dependency_count": 7,
           "local_dependency_sha256": "c6206b63e62ac147540d35b33c99e16e751fe3ec7ad75141ef863b041ebab113",
           "root_theorem": "Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx"
+        },
+        {
+          "claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+          "external_boundary_count": 259,
+          "external_boundary_sha256": "af8dde613ebf43bd0fc28f5f5588a0f578ad926a3565a4b6d71fde6ce9c9d6ca",
+          "local_dependency_count": 69,
+          "local_dependency_sha256": "fce7108b0b5460588b6e89975a9f0c4c69f441709fadc4d3c753ddc4a4a463e3",
+          "root_theorem": "Zeta23.CCM.canonicalCarrierBottom_hierarchy"
         },
         {
           "claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",

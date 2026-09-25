@@ -225,12 +225,501 @@ theorem parityRayleighBottom_neg_of_parityBad
       (by simpa only [RCLike.re_to_complex] using hxneg) hden
   exact lt_of_le_of_lt hle hrqneg
 
+
+/-!
+## Post-#267 exact carrier-bottom hierarchy
+
+The next structural step is to put the unconstrained Euclidean carrier, the
+complete boundary-flat carrier, and the two parity carriers into one exact
+Rayleigh-bottom hierarchy.  This is a ground-value statement, not an ordered
+eigenvalue interlacing theorem.
+
+The boundary-flat bottom is defined directly as the infimum of the ambient
+canonical Rayleigh quotient over the exact Euclidean boundary-flat subspace.
+The parity split then proves that this bottom is exactly the minimum of the
+even and odd parity bottoms.
+
+Direction firewall:
+* full-space bottom <= boundary-flat bottom;
+* boundary-flat bottom = min(even bottom, odd bottom);
+* full-space negativity alone does not imply boundary-flat negativity;
+* no aperture monotonicity, prime-remainder domination, residual exclusion,
+  or RH theorem is asserted.
+-/
+
+/-- Unconstrained Euclidean Rayleigh bottom of the canonical finite matrix. -/
+def fullCanonicalRayleighBottom
+    (L : ℝ) (N : ℕ) : ℝ :=
+  ⨅ z : {z : EuclideanSpace ℂ (Fin (2 * N + 1)) // z ≠ 0},
+    RCLike.re
+        (inner ℂ
+          ((canonicalSourceMatrix L N).toEuclideanLin z)
+          z) /
+      ‖(z : EuclideanSpace ℂ (Fin (2 * N + 1)))‖ ^ 2
+
+/-- Rayleigh bottom of the complete Euclidean boundary-flat carrier. -/
+def boundaryFlatRayleighBottom
+    (L : ℝ) (N : ℕ) : ℝ :=
+  ⨅ z : {z : euclideanBoundaryFlatSubspace N // z ≠ 0},
+    RCLike.re
+        (inner ℂ
+          ((canonicalSourceMatrix L N).toEuclideanLin
+            (z : EuclideanSpace ℂ (Fin (2 * N + 1))))
+          (z : EuclideanSpace ℂ (Fin (2 * N + 1)))) /
+      ‖(z : euclideanBoundaryFlatSubspace N)‖ ^ 2
+
+private def fullCanonicalRayleighRange_bddBelow
+    (L : ℝ) (N : ℕ) :
+    BddBelow
+      (Set.range fun
+        z : {z : EuclideanSpace ℂ (Fin (2 * N + 1)) // z ≠ 0} =>
+          RCLike.re
+              (inner ℂ
+                ((canonicalSourceMatrix L N).toEuclideanLin z)
+                z) /
+            ‖(z : EuclideanSpace ℂ (Fin (2 * N + 1)))‖ ^ 2) := by
+  let E := EuclideanSpace ℂ (Fin (2 * N + 1))
+  let T : E →ₗ[ℂ] E := (canonicalSourceMatrix L N).toEuclideanLin
+  let Tc : E →L[ℂ] E := LinearMap.toContinuousLinearMap T
+  refine ⟨-‖Tc‖, ?_⟩
+  rintro _ ⟨z, rfl⟩
+  have habs :=
+    ContinuousLinearMap.rayleighQuotient_le_norm
+      (𝕜 := ℂ) Tc (z : E)
+  have habs' :
+      |RCLike.re (inner ℂ (Tc (z : E)) (z : E)) /
+          ‖(z : E)‖ ^ 2| ≤ ‖Tc‖ := by
+    simpa only [ContinuousLinearMap.rayleighQuotient,
+      ContinuousLinearMap.reApplyInnerSelf_apply] using habs
+  have hTcT : Tc (z : E) = T z := rfl
+  rw [hTcT] at habs'
+  exact neg_le_of_abs_le habs'
+
+private def boundaryFlatRayleighRange_bddBelow
+    (L : ℝ) (N : ℕ) :
+    BddBelow
+      (Set.range fun
+        z : {z : euclideanBoundaryFlatSubspace N // z ≠ 0} =>
+          RCLike.re
+              (inner ℂ
+                ((canonicalSourceMatrix L N).toEuclideanLin
+                  (z : EuclideanSpace ℂ (Fin (2 * N + 1))))
+                (z : EuclideanSpace ℂ (Fin (2 * N + 1)))) /
+            ‖(z : euclideanBoundaryFlatSubspace N)‖ ^ 2) := by
+  let E := EuclideanSpace ℂ (Fin (2 * N + 1))
+  let T : E →ₗ[ℂ] E := (canonicalSourceMatrix L N).toEuclideanLin
+  let Tc : E →L[ℂ] E := LinearMap.toContinuousLinearMap T
+  refine ⟨-‖Tc‖, ?_⟩
+  rintro _ ⟨z, rfl⟩
+  have habs :=
+    ContinuousLinearMap.rayleighQuotient_le_norm
+      (𝕜 := ℂ) Tc
+      (z : EuclideanSpace ℂ (Fin (2 * N + 1)))
+  have habs' :
+      |RCLike.re
+          (inner ℂ
+            (Tc (z : EuclideanSpace ℂ (Fin (2 * N + 1))))
+            (z : EuclideanSpace ℂ (Fin (2 * N + 1)))) /
+          ‖(z : EuclideanSpace ℂ (Fin (2 * N + 1)))‖ ^ 2| ≤ ‖Tc‖ := by
+    simpa only [ContinuousLinearMap.rayleighQuotient,
+      ContinuousLinearMap.reApplyInnerSelf_apply] using habs
+  have hTcT :
+      Tc (z : EuclideanSpace ℂ (Fin (2 * N + 1))) =
+        T (z : EuclideanSpace ℂ (Fin (2 * N + 1))) := rfl
+  rw [hTcT] at habs'
+  exact neg_le_of_abs_le habs'
+
+private def boundaryFlatRayleighBottom_le_rayleigh
+    (L : ℝ) (N : ℕ)
+    (x : euclideanBoundaryFlatSubspace N)
+    (hx : x ≠ 0) :
+    boundaryFlatRayleighBottom L N ≤
+      RCLike.re
+          (inner ℂ
+            ((canonicalSourceMatrix L N).toEuclideanLin
+              (x : EuclideanSpace ℂ (Fin (2 * N + 1))))
+            (x : EuclideanSpace ℂ (Fin (2 * N + 1)))) /
+        ‖x‖ ^ 2 := by
+  unfold boundaryFlatRayleighBottom
+  exact ciInf_le (boundaryFlatRayleighRange_bddBelow L N) ⟨x, hx⟩
+
+private def fullCanonicalRayleighBottom_le_rayleigh
+    (L : ℝ) (N : ℕ)
+    (x : EuclideanSpace ℂ (Fin (2 * N + 1)))
+    (hx : x ≠ 0) :
+    fullCanonicalRayleighBottom L N ≤
+      RCLike.re
+          (inner ℂ
+            ((canonicalSourceMatrix L N).toEuclideanLin x)
+            x) /
+        ‖x‖ ^ 2 := by
+  unfold fullCanonicalRayleighBottom
+  exact ciInf_le (fullCanonicalRayleighRange_bddBelow L N) ⟨x, hx⟩
+
+private def euclideanReverseNormEq
+    (N : ℕ)
+    (x : EuclideanSpace ℂ (Fin (2 * N + 1))) :
+    ‖(EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ).symm
+        (reverseCoefficients N
+          ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x))‖ =
+      ‖x‖ := by
+  have hsq :
+      ‖(EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ).symm
+          (reverseCoefficients N
+            ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x))‖ ^ 2 =
+        ‖x‖ ^ 2 := by
+    rw [EuclideanSpace.norm_sq_eq, EuclideanSpace.norm_sq_eq]
+    rw [← Equiv.sum_comp Fin.revPerm]
+    simp [reverseCoefficients]
+  nlinarith
+    [norm_nonneg
+      ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ).symm
+        (reverseCoefficients N
+          ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x))),
+     norm_nonneg x]
+
+private theorem euclideanEvenOddNormSqSplit
+    (N : ℕ)
+    (x : EuclideanSpace ℂ (Fin (2 * N + 1))) :
+    ‖x‖ ^ 2 =
+      ‖WithLp.toLp 2
+          (evenPart N
+            ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x))‖ ^ 2 +
+      ‖WithLp.toLp 2
+          (oddPart N
+            ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x))‖ ^ 2 := by
+  let E := EuclideanSpace ℂ (Fin (2 * N + 1))
+  let u : Fin (2 * N + 1) → ℂ :=
+    (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x
+  let r : E := WithLp.toLp 2 (reverseCoefficients N u)
+  let e : E := WithLp.toLp 2 (evenPart N u)
+  let o : E := WithLp.toLp 2 (oddPart N u)
+  have hrnorm : ‖r‖ = ‖x‖ := by
+    simpa [r, u] using euclideanReverseNormEq N x
+  have he :
+      e = (1 / 2 : ℂ) • (x + r) := by
+    apply WithLp.ofLp_injective 2
+    change
+      evenPart N u =
+        WithLp.ofLp ((1 / 2 : ℂ) • (x + r))
+    rw [WithLp.ofLp_smul, WithLp.ofLp_add]
+    change
+      evenPart N u =
+        (1 / 2 : ℂ) •
+          (u + reverseCoefficients N u)
+    ext i
+    simp [evenPart, reverseCoefficients, Pi.smul_apply, smul_eq_mul]
+  have ho :
+      o = (1 / 2 : ℂ) • (x - r) := by
+    apply WithLp.ofLp_injective 2
+    change
+      oddPart N u =
+        WithLp.ofLp ((1 / 2 : ℂ) • (x - r))
+    rw [WithLp.ofLp_smul, WithLp.ofLp_sub]
+    change
+      oddPart N u =
+        (1 / 2 : ℂ) •
+          (u - reverseCoefficients N u)
+    ext i
+    simp [oddPart, reverseCoefficients, Pi.smul_apply, smul_eq_mul]
+  have hpara := parallelogram_law_with_norm ℂ x r
+  rw [hrnorm] at hpara
+  change ‖x‖ ^ 2 = ‖e‖ ^ 2 + ‖o‖ ^ 2
+  rw [he, ho, norm_smul, norm_smul]
+  norm_num at *
+  nlinarith
+
+/-- Restricting from the full finite Euclidean carrier to the exact
+boundary-flat carrier can only raise the ground Rayleigh value. -/
+theorem fullCanonicalRayleighBottom_le_boundaryFlatRayleighBottom
+    (L : ℝ) {N : ℕ} (hN : 2 ≤ N) :
+    fullCanonicalRayleighBottom L N ≤
+      boundaryFlatRayleighBottom L N := by
+  have hfin :
+      0 < Module.finrank ℂ (euclideanBoundaryFlatSubspace N) := by
+    rw [finrank_euclideanBoundaryFlatSubspace N (by omega)]
+    omega
+  letI : Nontrivial (euclideanBoundaryFlatSubspace N) :=
+    Module.nontrivial_of_finrank_pos hfin
+  letI : Nonempty
+      {z : euclideanBoundaryFlatSubspace N // z ≠ 0} := by
+    obtain ⟨z, hz⟩ : ∃ z : euclideanBoundaryFlatSubspace N, z ≠ 0 :=
+      exists_ne 0
+    exact ⟨⟨z, hz⟩⟩
+  unfold boundaryFlatRayleighBottom
+  refine le_ciInf fun z => ?_
+  let x : EuclideanSpace ℂ (Fin (2 * N + 1)) :=
+    (z : euclideanBoundaryFlatSubspace N)
+  have hx : x ≠ 0 := by
+    intro hx0
+    apply z.property
+    apply Subtype.ext
+    exact hx0
+  simpa [x] using fullCanonicalRayleighBottom_le_rayleigh L N x hx
+
+/-- The complete boundary-flat ground is exactly the minimum of the two
+parity-compressed grounds. -/
+theorem boundaryFlatRayleighBottom_eq_min_parity
+    (L : ℝ) {N : ℕ} (hN : 2 ≤ N) :
+    boundaryFlatRayleighBottom L N =
+      min
+        (parityRayleighBottom .even L N)
+        (parityRayleighBottom .odd L N) := by
+  have hN1 : 1 ≤ N := by omega
+  have hfinBF :
+      0 < Module.finrank ℂ (euclideanBoundaryFlatSubspace N) := by
+    rw [finrank_euclideanBoundaryFlatSubspace N (by omega)]
+    omega
+  letI : Nontrivial (euclideanBoundaryFlatSubspace N) :=
+    Module.nontrivial_of_finrank_pos hfinBF
+  letI : Nonempty
+      {z : euclideanBoundaryFlatSubspace N // z ≠ 0} := by
+    obtain ⟨z, hz⟩ : ∃ z : euclideanBoundaryFlatSubspace N, z ≠ 0 :=
+      exists_ne 0
+    exact ⟨⟨z, hz⟩⟩
+
+  have hleParity :
+      ∀ p : ReversalParity,
+        boundaryFlatRayleighBottom L N ≤
+          parityRayleighBottom p L N := by
+    intro p
+    have hfin :
+        0 < Module.finrank ℂ
+          (euclideanParityBoundaryFlatSubspace p N) := by
+      rw [finrank_euclideanParityBoundaryFlatSubspace p N hN1]
+      omega
+    letI : Nontrivial
+        (euclideanParityBoundaryFlatSubspace p N) :=
+      Module.nontrivial_of_finrank_pos hfin
+    letI : Nonempty
+        {z : euclideanParityBoundaryFlatSubspace p N // z ≠ 0} := by
+      obtain ⟨z, hz⟩ :
+          ∃ z : euclideanParityBoundaryFlatSubspace p N, z ≠ 0 :=
+        exists_ne 0
+      exact ⟨⟨z, hz⟩⟩
+    unfold parityRayleighBottom
+    refine le_ciInf fun z => ?_
+    let x0 : EuclideanSpace ℂ (Fin (2 * N + 1)) :=
+      (z : euclideanParityBoundaryFlatSubspace p N)
+    have hxflat : x0 ∈ euclideanBoundaryFlatSubspace N := by
+      rw [mem_euclideanBoundaryFlatSubspace_iff]
+      cases p with
+      | even =>
+          exact
+            (show
+              (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x0 ∈
+                evenBoundaryFlatSubspace N from z.val.property).1
+      | odd =>
+          exact
+            (show
+              (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x0 ∈
+                oddBoundaryFlatSubspace N from z.val.property).1
+    let x : euclideanBoundaryFlatSubspace N := ⟨x0, hxflat⟩
+    have hx : x ≠ 0 := by
+      intro hx0
+      apply z.property
+      apply Subtype.ext
+      simpa [x, x0] using congrArg Subtype.val hx0
+    have hbf := boundaryFlatRayleighBottom_le_rayleigh L N x hx
+    have hself :=
+      re_inner_parityCompressedCanonical_self p L N
+        (z : euclideanParityBoundaryFlatSubspace p N)
+    change
+      boundaryFlatRayleighBottom L N ≤
+        (inner ℂ
+            (parityCompressedCanonical p L N z)
+            z).re /
+          ‖(z : euclideanParityBoundaryFlatSubspace p N)‖ ^ 2
+    rw [hself]
+    simpa [x, x0] using hbf
+
+  apply le_antisymm
+  · exact le_min (hleParity .even) (hleParity .odd)
+  · unfold boundaryFlatRayleighBottom
+    refine le_ciInf fun z => ?_
+    let x : euclideanBoundaryFlatSubspace N := z
+    let x0 : EuclideanSpace ℂ (Fin (2 * N + 1)) := x
+    let u : Fin (2 * N + 1) → ℂ :=
+      (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x0
+    have huflat : u ∈ boundaryFlatSubspace N := by
+      exact (mem_euclideanBoundaryFlatSubspace_iff N x0).mp x.property
+    let e0 : EuclideanSpace ℂ (Fin (2 * N + 1)) :=
+      WithLp.toLp 2 (evenPart N u)
+    let o0 : EuclideanSpace ℂ (Fin (2 * N + 1)) :=
+      WithLp.toLp 2 (oddPart N u)
+    have he0 :
+        WithLp.ofLp e0 = evenPart N u := by
+      simp [e0]
+    have ho0 :
+        WithLp.ofLp o0 = oddPart N u := by
+      simp [o0]
+    have heMem :
+        e0 ∈ euclideanParityBoundaryFlatSubspace .even N := by
+      change
+        WithLp.ofLp e0 ∈ evenBoundaryFlatSubspace N
+      rw [he0]
+      exact evenPart_mem_evenBoundaryFlatSubspace huflat
+    have hoMem :
+        o0 ∈ euclideanParityBoundaryFlatSubspace .odd N := by
+      change
+        WithLp.ofLp o0 ∈ oddBoundaryFlatSubspace N
+      rw [ho0]
+      exact oddPart_mem_oddBoundaryFlatSubspace huflat
+    let e : euclideanParityBoundaryFlatSubspace .even N := ⟨e0, heMem⟩
+    let o : euclideanParityBoundaryFlatSubspace .odd N := ⟨o0, hoMem⟩
+    have heLower :=
+      parityRayleighBottom_mul_norm_sq_le .even L N e
+    have hoLower :=
+      parityRayleighBottom_mul_norm_sq_le .odd L N o
+    have heAmbient :
+        Complex.re
+            (inner ℂ
+              (parityCompressedCanonical .even L N e)
+              e) =
+          (quadraticForm (canonicalSourceMatrix L N) (evenPart N u)).re := by
+      rw [re_inner_parityCompressedCanonical_self]
+      rw [← quadraticForm_re_eq_re_inner_apply_self
+        (canonicalSourceMatrix L N) e0]
+      change
+        (quadraticForm (canonicalSourceMatrix L N) (WithLp.ofLp e0)).re =
+          (quadraticForm (canonicalSourceMatrix L N) (evenPart N u)).re
+      rw [he0]
+    have hoAmbient :
+        Complex.re
+            (inner ℂ
+              (parityCompressedCanonical .odd L N o)
+              o) =
+          (quadraticForm (canonicalSourceMatrix L N) (oddPart N u)).re := by
+      rw [re_inner_parityCompressedCanonical_self]
+      rw [← quadraticForm_re_eq_re_inner_apply_self
+        (canonicalSourceMatrix L N) o0]
+      change
+        (quadraticForm (canonicalSourceMatrix L N) (WithLp.ofLp o0)).re =
+          (quadraticForm (canonicalSourceMatrix L N) (oddPart N u)).re
+      rw [ho0]
+    have heLower' :
+        parityRayleighBottom .even L N * ‖e‖ ^ 2 ≤
+          (quadraticForm (canonicalSourceMatrix L N) (evenPart N u)).re := by
+      calc
+        parityRayleighBottom .even L N * ‖e‖ ^ 2
+            ≤ Complex.re
+                (inner ℂ
+                  (parityCompressedCanonical .even L N e)
+                  e) := heLower
+        _ = (quadraticForm (canonicalSourceMatrix L N) (evenPart N u)).re :=
+          heAmbient
+    have hoLower' :
+        parityRayleighBottom .odd L N * ‖o‖ ^ 2 ≤
+          (quadraticForm (canonicalSourceMatrix L N) (oddPart N u)).re := by
+      calc
+        parityRayleighBottom .odd L N * ‖o‖ ^ 2
+            ≤ Complex.re
+                (inner ℂ
+                  (parityCompressedCanonical .odd L N o)
+                  o) := hoLower
+        _ = (quadraticForm (canonicalSourceMatrix L N) (oddPart N u)).re :=
+          hoAmbient
+    have hsplitC :=
+      quadraticForm_evenPart_add_oddPart L N u
+    have hsplit :
+        (quadraticForm (canonicalSourceMatrix L N) (evenPart N u)).re +
+            (quadraticForm (canonicalSourceMatrix L N) (oddPart N u)).re =
+          (quadraticForm (canonicalSourceMatrix L N) u).re := by
+      simpa only [Complex.add_re] using congrArg Complex.re hsplitC
+    have hnorm :
+        ‖x0‖ ^ 2 = ‖e0‖ ^ 2 + ‖o0‖ ^ 2 := by
+      simpa [e0, o0, u] using euclideanEvenOddNormSqSplit N x0
+    have hminEven :
+        min
+            (parityRayleighBottom .even L N)
+            (parityRayleighBottom .odd L N) * ‖e‖ ^ 2 ≤
+          parityRayleighBottom .even L N * ‖e‖ ^ 2 :=
+      mul_le_mul_of_nonneg_right (min_le_left _ _) (sq_nonneg ‖e‖)
+    have hminOdd :
+        min
+            (parityRayleighBottom .even L N)
+            (parityRayleighBottom .odd L N) * ‖o‖ ^ 2 ≤
+          parityRayleighBottom .odd L N * ‖o‖ ^ 2 :=
+      mul_le_mul_of_nonneg_right (min_le_right _ _) (sq_nonneg ‖o‖)
+    have hxne : x ≠ 0 := by
+      simpa [x] using z.property
+    have hden : 0 < ‖x‖ ^ 2 := by
+      simpa only [sq_pos_iff, norm_ne_zero_iff] using hxne
+    have hquad :
+        min
+            (parityRayleighBottom .even L N)
+            (parityRayleighBottom .odd L N) * ‖x‖ ^ 2 ≤
+          RCLike.re
+            (inner ℂ
+              ((canonicalSourceMatrix L N).toEuclideanLin x0)
+              x0) := by
+      have hxquad :
+          RCLike.re
+              (inner ℂ
+                ((canonicalSourceMatrix L N).toEuclideanLin x0)
+                x0) =
+            (quadraticForm (canonicalSourceMatrix L N) u).re := by
+        simpa [u, RCLike.re_to_complex] using
+          (quadraticForm_re_eq_re_inner_apply_self
+            (canonicalSourceMatrix L N) x0).symm
+      have hnorm' :
+          ‖x‖ ^ 2 = ‖e‖ ^ 2 + ‖o‖ ^ 2 := by
+        change ‖x0‖ ^ 2 = ‖e0‖ ^ 2 + ‖o0‖ ^ 2
+        exact hnorm
+      rw [hxquad]
+      let m : ℝ :=
+        min
+          (parityRayleighBottom .even L N)
+          (parityRayleighBottom .odd L N)
+      have heChain :
+          m * ‖e‖ ^ 2 ≤
+            (quadraticForm (canonicalSourceMatrix L N) (evenPart N u)).re := by
+        exact le_trans hminEven heLower'
+      have hoChain :
+          m * ‖o‖ ^ 2 ≤
+            (quadraticForm (canonicalSourceMatrix L N) (oddPart N u)).re := by
+        exact le_trans hminOdd hoLower'
+      change m * ‖x‖ ^ 2 ≤ (quadraticForm (canonicalSourceMatrix L N) u).re
+      calc
+        m * ‖x‖ ^ 2
+            = m * (‖e‖ ^ 2 + ‖o‖ ^ 2) := by rw [hnorm']
+        _ = m * ‖e‖ ^ 2 + m * ‖o‖ ^ 2 := by ring
+        _ ≤
+            (quadraticForm (canonicalSourceMatrix L N) (evenPart N u)).re +
+              (quadraticForm (canonicalSourceMatrix L N) (oddPart N u)).re :=
+          add_le_add heChain hoChain
+        _ = (quadraticForm (canonicalSourceMatrix L N) u).re := hsplit
+    exact (le_div_iff₀ hden).2 hquad
+
 /-- The common #247 shift: minimum of the two successor parity bottoms. -/
 def globalParitySuccessorBottom
     (L : ℝ) (N : ℕ) : ℝ :=
   min
     (parityRayleighBottom .even L (N + 1))
     (parityRayleighBottom .odd L (N + 1))
+
+
+/-- Exact successor-level carrier hierarchy.  The existing #247 global parity
+bottom is the ground Rayleigh value of the complete legal boundary-flat
+carrier, and that carrier ground sits above the unconstrained Euclidean ground. -/
+theorem canonicalCarrierBottom_hierarchy
+    (L : ℝ) (N : ℕ) (hN : 1 ≤ N) :
+    fullCanonicalRayleighBottom L (N + 1) ≤
+        boundaryFlatRayleighBottom L (N + 1) ∧
+      boundaryFlatRayleighBottom L (N + 1) =
+        min
+          (parityRayleighBottom .even L (N + 1))
+          (parityRayleighBottom .odd L (N + 1)) ∧
+      boundaryFlatRayleighBottom L (N + 1) =
+        globalParitySuccessorBottom L N := by
+  have hN2 : 2 ≤ N + 1 := by omega
+  have hfull :=
+    fullCanonicalRayleighBottom_le_boundaryFlatRayleighBottom L hN2
+  have hsplit :=
+    boundaryFlatRayleighBottom_eq_min_parity L hN2
+  refine ⟨hfull, hsplit, ?_⟩
+  rw [hsplit]
+  rfl
 
 theorem globalParitySuccessorBottom_le_even
     (L : ℝ) (N : ℕ) :
@@ -337,3 +826,4 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.globalParitySuccessorBottom_neg_of_anyParityBad
 #print axioms Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad
 #print axioms Zeta23.CCM.globalParitySuccessorBottom_shifted_nonnegative
+#print axioms Zeta23.CCM.canonicalCarrierBottom_hierarchy

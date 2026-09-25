@@ -91,6 +91,12 @@
       "root_theorem": "Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx"
     },
     {
+      "claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+      "closure_sha256": "682c58e98b07f815371b9812110d4f564fe9b1da4d4c3694f901622068ad4b01",
+      "local_dependency_count": 198,
+      "root_theorem": "Zeta23.CCM.canonicalCarrierBottom_hierarchy"
+    },
+    {
       "claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
       "closure_sha256": "962f03a9785a96eb6c32386cff4fe4f888add225b0cb5f0552381c83b0738474",
       "local_dependency_count": 3,
@@ -721,6 +727,13 @@
       "superset_count": 2659
     },
     {
+      "difference_count": 171,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+      "superset_count": 198
+    },
+    {
       "difference_count": 70,
       "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
       "subset_count": 27,
@@ -1111,6 +1124,13 @@
       "subset_count": 3,
       "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "superset_count": 2659
+    },
+    {
+      "difference_count": 195,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+      "superset_count": 198
     },
     {
       "difference_count": 1285,
@@ -1645,6 +1665,13 @@
       "superset_count": 2659
     },
     {
+      "difference_count": 101,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+      "superset_count": 198
+    },
+    {
       "difference_count": 1382,
       "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
       "subset_count": 97,
@@ -1741,6 +1768,13 @@
       "subset_count": 60,
       "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "superset_count": 2659
+    },
+    {
+      "difference_count": 138,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+      "superset_count": 198
     },
     {
       "difference_count": 37,
@@ -1848,6 +1882,13 @@
       "superset_count": 2659
     },
     {
+      "difference_count": 161,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+      "superset_count": 198
+    },
+    {
       "difference_count": 1442,
       "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
       "subset_count": 37,
@@ -1923,6 +1964,13 @@
       "subset_count": 10,
       "superset_claim_id": "R004_CCM_DISPLACEMENT_FORMAL",
       "superset_count": 76
+    },
+    {
+      "difference_count": 168,
+      "subset_claim_id": "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+      "subset_count": 30,
+      "superset_claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+      "superset_count": 198
     },
     {
       "difference_count": 1258,
@@ -3290,6 +3338,13 @@
       "superset_count": 2659
     },
     {
+      "difference_count": 153,
+      "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "subset_count": 45,
+      "superset_claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+      "superset_count": 198
+    },
+    {
       "difference_count": 1434,
       "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
       "subset_count": 45,
@@ -4056,6 +4111,7 @@
     "R003_BOUNDARY_FLAT_MOMENT_FLAG",
     "R003_BOUNDARY_FLAT_PROJECTION",
     "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+    "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
     "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
     "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
     "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",

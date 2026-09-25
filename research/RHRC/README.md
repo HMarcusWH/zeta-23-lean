@@ -101,7 +101,30 @@ CONTROL AUTHORITY
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
-<!-- RHRC_CURRENT_STATE_END -->\n\n## Post-#265 OoL integration state
+<!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#267 carrier-ground theoremization state
+
+Merged PR #267 supplies unconditional N-flow antitonicity.  The next
+theorem-bearing layer now packages the same canonical finite problem into the
+exact ground-value hierarchy
+
+```text
+full finite Euclidean ground
+  <= complete boundary-flat ground
+  = min(even parity ground, odd parity ground)
+  = globalParitySuccessorBottom   [at legal successor size]
+```
+
+The final equality is an identification of the existing #247 global parity
+minimum with the actual ground Rayleigh value of the complete boundary-flat
+carrier.  This is not ordered spectral interlacing and does not supply a sign,
+aperture monotonicity, prime-remainder domination, residual-state exclusion,
+or RH.
+
+The current integration/OoL authority remains separate and unchanged. RH remains OPEN.
+
+## Post-#265 OoL integration state
 
 PR #265 is merged green. FFBBP has certified only the bounded
 module+visibility navigation reduction over the exact source-candidate

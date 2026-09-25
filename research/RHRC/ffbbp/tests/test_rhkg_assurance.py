@@ -45,7 +45,7 @@ class FFBBPRHKGAssuranceTests(unittest.TestCase):
             self.skipTest("one-shot theorem materializer has not rebound the live snapshot yet")
 
         report = build_report()
-        self.assertEqual(report["input_snapshot"]["candidate_count"], 2358)
+        self.assertEqual(report["input_snapshot"]["candidate_count"], 2362)
         self.assertEqual(report["input_snapshot"]["source_only_public_theorem_count"], 680)
 
         module_only = report["reductions"]["MODULE_ONLY_SNAPSHOT"]
@@ -58,7 +58,7 @@ class FFBBPRHKGAssuranceTests(unittest.TestCase):
         self.assertTrue(type_digest["decision_factorization"]["passed"])
         self.assertFalse(type_digest["diagnostic_factorization"]["passed"])
         self.assertGreaterEqual(type_digest["decision_factorization"]["fiber_count"], 2324)
-        self.assertLessEqual(type_digest["decision_factorization"]["fiber_count"], 2358)
+        self.assertLessEqual(type_digest["decision_factorization"]["fiber_count"], 2362)
         self.assertEqual(type_digest["diagnostic_factorization"]["mixed_value_fiber_count"], 7)
 
         selected = report["reductions"]["MODULE_VISIBILITY_SNAPSHOT"]

@@ -6788,6 +6788,7 @@
         "R003_BOUNDARY_FLAT_MOMENT_FLAG",
         "R003_BOUNDARY_FLAT_PROJECTION",
         "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
@@ -6816,7 +6817,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 33,
+      "root_reach_count": 34,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -10268,10 +10269,10 @@
       ],
       "direct_root_count": 14,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 341,
+      "incoming_local_edge_count": 342,
       "incoming_structure_edge_count": 3,
       "incoming_type_edge_count": 336,
-      "incoming_value_edge_count": 328,
+      "incoming_value_edge_count": 329,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.ParityBadness",
       "private_or_internal": false,
@@ -10285,6 +10286,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -10306,7 +10308,7 @@
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 22,
+      "root_reach_count": 23,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -10318,10 +10320,10 @@
       ],
       "direct_root_count": 1,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 23,
+      "incoming_local_edge_count": 24,
       "incoming_structure_edge_count": 0,
       "incoming_type_edge_count": 0,
-      "incoming_value_edge_count": 23,
+      "incoming_value_edge_count": 24,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.ParityBadness",
       "private_or_internal": false,
@@ -10335,6 +10337,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -10356,7 +10359,7 @@
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 22,
+      "root_reach_count": 23,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -10364,6 +10367,7 @@
     {
       "declaration": "Zeta23.CCM.ReversalParity.even",
       "direct_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
         "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
         "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
@@ -10371,12 +10375,12 @@
         "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
         "R003_PARITY_NORMAL_KKT"
       ],
-      "direct_root_count": 6,
+      "direct_root_count": 7,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 138,
+      "incoming_local_edge_count": 140,
       "incoming_structure_edge_count": 1,
-      "incoming_type_edge_count": 101,
-      "incoming_value_edge_count": 121,
+      "incoming_type_edge_count": 103,
+      "incoming_value_edge_count": 123,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.ParityBadness",
       "private_or_internal": false,
@@ -10390,6 +10394,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -10411,7 +10416,7 @@
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 22,
+      "root_reach_count": 23,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -10419,6 +10424,7 @@
     {
       "declaration": "Zeta23.CCM.ReversalParity.odd",
       "direct_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
         "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
         "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
@@ -10426,12 +10432,12 @@
         "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
         "R003_PARITY_NORMAL_KKT"
       ],
-      "direct_root_count": 6,
+      "direct_root_count": 7,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 148,
+      "incoming_local_edge_count": 150,
       "incoming_structure_edge_count": 1,
-      "incoming_type_edge_count": 107,
-      "incoming_value_edge_count": 132,
+      "incoming_type_edge_count": 109,
+      "incoming_value_edge_count": 134,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.ParityBadness",
       "private_or_internal": false,
@@ -10445,6 +10451,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -10466,7 +10473,7 @@
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 22,
+      "root_reach_count": 23,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -10493,6 +10500,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -10514,7 +10522,7 @@
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 22,
+      "root_reach_count": 23,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -10982,6 +10990,7 @@
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R002_KERNEL_ZERO_SIDE_BRIDGE",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
         "R003_CANONICAL_SOURCE_HERMITIAN",
@@ -11023,7 +11032,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 44,
+      "root_reach_count": 45,
       "universal_cohort_ids": [
         "CANONICAL_ARITHMETIC_SURFACE",
         "GLOBAL_BOTTOM_CHAIN",
@@ -11104,6 +11113,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_REVERSAL_SYMMETRY",
         "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -11117,7 +11127,7 @@
         "R003_PARITY_QUADRATIC_SPLIT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 14,
+      "root_reach_count": 15,
       "universal_cohort_ids": []
     },
     {
@@ -12129,6 +12139,7 @@
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R002_KERNEL_ZERO_SIDE_BRIDGE",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
         "R003_CANONICAL_SOURCE_HERMITIAN",
@@ -12170,7 +12181,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 44,
+      "root_reach_count": 45,
       "universal_cohort_ids": [
         "CANONICAL_ARITHMETIC_SURFACE",
         "GLOBAL_BOTTOM_CHAIN",
@@ -12203,6 +12214,7 @@
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R002_KERNEL_ZERO_SIDE_BRIDGE",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
         "R003_CANONICAL_SOURCE_HERMITIAN",
@@ -12244,7 +12256,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 44,
+      "root_reach_count": 45,
       "universal_cohort_ids": [
         "CANONICAL_ARITHMETIC_SURFACE",
         "GLOBAL_BOTTOM_CHAIN",
@@ -13668,6 +13680,7 @@
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R002_KERNEL_ZERO_SIDE_BRIDGE",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
         "R003_CANONICAL_SOURCE_HERMITIAN",
@@ -13709,7 +13722,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 44,
+      "root_reach_count": 45,
       "universal_cohort_ids": [
         "CANONICAL_ARITHMETIC_SURFACE",
         "GLOBAL_BOTTOM_CHAIN",
@@ -13790,6 +13803,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_REVERSAL_SYMMETRY",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -13802,7 +13816,7 @@
         "R003_PARITY_QUADRATIC_SPLIT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 13,
+      "root_reach_count": 14,
       "universal_cohort_ids": []
     },
     {
@@ -14119,6 +14133,7 @@
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
         "R003_BOUNDARY_FLAT_PROJECTION",
         "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
@@ -14140,7 +14155,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 25,
+      "root_reach_count": 26,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -14170,6 +14185,7 @@
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
         "R003_BOUNDARY_FLAT_PROJECTION",
         "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
@@ -14191,7 +14207,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 25,
+      "root_reach_count": 26,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -14221,6 +14237,7 @@
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
         "R003_BOUNDARY_FLAT_PROJECTION",
         "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
@@ -14242,7 +14259,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 25,
+      "root_reach_count": 26,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -14383,6 +14400,7 @@
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
         "R003_BOUNDARY_FLAT_PROJECTION",
         "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
@@ -14404,7 +14422,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 25,
+      "root_reach_count": 26,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -14434,6 +14452,7 @@
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
         "R003_BOUNDARY_FLAT_PROJECTION",
         "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
@@ -14455,7 +14474,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 25,
+      "root_reach_count": 26,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -14485,6 +14504,7 @@
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
         "R003_BOUNDARY_FLAT_PROJECTION",
         "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
@@ -14506,7 +14526,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 25,
+      "root_reach_count": 26,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -14669,6 +14689,150 @@
       "universal_cohort_ids": []
     },
     {
+      "declaration": "Zeta23.CCM.boundaryFlatRayleighBottom",
+      "direct_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "direct_root_count": 1,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 4,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 4,
+      "incoming_value_edge_count": 4,
+      "minimum_depth_from_any_root": 1,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": false,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
+      "declaration": "Zeta23.CCM.boundaryFlatRayleighBottom_eq_min_parity",
+      "direct_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "direct_root_count": 1,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 1,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 0,
+      "incoming_value_edge_count": 1,
+      "minimum_depth_from_any_root": 1,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": false,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
+      "declaration": "Zeta23.CCM.boundaryFlatRayleighBottom_eq_min_parity._proof_1_1",
+      "direct_root_claim_ids": [],
+      "direct_root_count": 0,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 1,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 0,
+      "incoming_value_edge_count": 1,
+      "minimum_depth_from_any_root": 2,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": true,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
+      "declaration": "Zeta23.CCM.boundaryFlatRayleighBottom_eq_min_parity._proof_1_2",
+      "direct_root_claim_ids": [],
+      "direct_root_count": 0,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 1,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 0,
+      "incoming_value_edge_count": 1,
+      "minimum_depth_from_any_root": 2,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": true,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
+      "declaration": "Zeta23.CCM.boundaryFlatRayleighBottom_eq_min_parity._proof_1_3",
+      "direct_root_claim_ids": [],
+      "direct_root_count": 0,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 1,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 0,
+      "incoming_value_edge_count": 1,
+      "minimum_depth_from_any_root": 2,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": true,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
+      "declaration": "Zeta23.CCM.boundaryFlatRayleighBottom_eq_min_parity._simp_1_4",
+      "direct_root_claim_ids": [],
+      "direct_root_count": 0,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 1,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 0,
+      "incoming_value_edge_count": 1,
+      "minimum_depth_from_any_root": 2,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": true,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
+      "declaration": "Zeta23.CCM.boundaryFlatRayleighBottom_eq_min_parity._simp_1_5",
+      "direct_root_claim_ids": [],
+      "direct_root_count": 0,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 1,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 0,
+      "incoming_value_edge_count": 1,
+      "minimum_depth_from_any_root": 2,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": true,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
       "declaration": "Zeta23.CCM.boundaryFlatSubspace",
       "direct_root_claim_ids": [
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
@@ -14682,10 +14846,10 @@
       ],
       "direct_root_count": 8,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 69,
+      "incoming_local_edge_count": 70,
       "incoming_structure_edge_count": 0,
       "incoming_type_edge_count": 30,
-      "incoming_value_edge_count": 68,
+      "incoming_value_edge_count": 69,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.ConstrainedCanonicalSector",
       "private_or_internal": false,
@@ -14700,6 +14864,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
@@ -14730,7 +14895,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 32,
+      "root_reach_count": 33,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -14826,6 +14991,7 @@
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
         "R003_BOUNDARY_FLAT_PROJECTION",
         "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
@@ -14848,7 +15014,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 26,
+      "root_reach_count": 27,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -14878,6 +15044,7 @@
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
         "R003_BOUNDARY_FLAT_PROJECTION",
         "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
@@ -14900,7 +15067,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 26,
+      "root_reach_count": 27,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -14930,6 +15097,7 @@
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
         "R003_BOUNDARY_FLAT_PROJECTION",
         "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
@@ -14952,7 +15120,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 26,
+      "root_reach_count": 27,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -15053,6 +15221,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -15068,7 +15237,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -15095,6 +15264,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -15110,7 +15280,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -15188,6 +15358,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
@@ -15206,7 +15377,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 20,
+      "root_reach_count": 21,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -15236,6 +15407,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
@@ -15254,7 +15426,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 20,
+      "root_reach_count": 21,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -15291,6 +15463,7 @@
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R002_KERNEL_ZERO_SIDE_BRIDGE",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_SOURCE_HERMITIAN",
         "R003_CCM_BRIDGE",
@@ -15331,7 +15504,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 43,
+      "root_reach_count": 44,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN",
         "ROUTE_R004"
@@ -15363,6 +15536,7 @@
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R002_KERNEL_ZERO_SIDE_BRIDGE",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_SOURCE_HERMITIAN",
         "R003_CCM_BRIDGE",
@@ -15403,7 +15577,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 43,
+      "root_reach_count": 44,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN",
         "ROUTE_R004"
@@ -15435,6 +15609,7 @@
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R002_KERNEL_ZERO_SIDE_BRIDGE",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
         "R003_CANONICAL_SOURCE_HERMITIAN",
@@ -15476,7 +15651,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 44,
+      "root_reach_count": 45,
       "universal_cohort_ids": [
         "CANONICAL_ARITHMETIC_SURFACE",
         "GLOBAL_BOTTOM_CHAIN",
@@ -15761,6 +15936,50 @@
       ],
       "root_claim_ids": [],
       "root_reach_count": 3,
+      "universal_cohort_ids": []
+    },
+    {
+      "declaration": "Zeta23.CCM.canonicalCarrierBottom_hierarchy",
+      "direct_root_claim_ids": [],
+      "direct_root_count": 0,
+      "graph_role": "REGISTERED_CLAIM_ROOT",
+      "incoming_local_edge_count": 0,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 0,
+      "incoming_value_edge_count": 0,
+      "minimum_depth_from_any_root": 0,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": false,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
+      "declaration": "Zeta23.CCM.canonicalCarrierBottom_hierarchy._proof_1_1",
+      "direct_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "direct_root_count": 1,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 1,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 0,
+      "incoming_value_edge_count": 1,
+      "minimum_depth_from_any_root": 1,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": true,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
       "universal_cohort_ids": []
     },
     {
@@ -16643,10 +16862,10 @@
       ],
       "direct_root_count": 24,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 201,
+      "incoming_local_edge_count": 209,
       "incoming_structure_edge_count": 0,
-      "incoming_type_edge_count": 163,
-      "incoming_value_edge_count": 188,
+      "incoming_type_edge_count": 167,
+      "incoming_value_edge_count": 196,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.SourceNormalizationRepair",
       "private_or_internal": false,
@@ -16662,6 +16881,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_SOURCE_HERMITIAN",
         "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
@@ -16695,7 +16915,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 35,
+      "root_reach_count": 36,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN",
         "ROUTE_R004"
@@ -16753,6 +16973,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_REVERSAL_SYMMETRY",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -16765,7 +16986,7 @@
         "R003_PARITY_QUADRATIC_SPLIT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 13,
+      "root_reach_count": 14,
       "universal_cohort_ids": []
     },
     {
@@ -18063,6 +18284,7 @@
         "R003_BOUNDARY_FLAT_MOMENT_FLAG",
         "R003_BOUNDARY_FLAT_PROJECTION",
         "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
         "R003_CANONICAL_SOURCE_HERMITIAN",
@@ -18115,7 +18337,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 59,
+      "root_reach_count": 60,
       "universal_cohort_ids": [
         "CANONICAL_ARITHMETIC_SURFACE",
         "GLOBAL_BOTTOM_CHAIN",
@@ -18147,6 +18369,7 @@
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
         "R003_BOUNDARY_FLAT_PROJECTION",
         "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
@@ -18168,7 +18391,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 25,
+      "root_reach_count": 26,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -18198,6 +18421,7 @@
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
         "R003_BOUNDARY_FLAT_PROJECTION",
         "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
@@ -18219,7 +18443,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 25,
+      "root_reach_count": 26,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -18249,6 +18473,7 @@
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
         "R003_BOUNDARY_FLAT_PROJECTION",
         "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
@@ -18270,7 +18495,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 25,
+      "root_reach_count": 26,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -18300,6 +18525,7 @@
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
         "R003_BOUNDARY_FLAT_PROJECTION",
         "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
@@ -18322,7 +18548,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 26,
+      "root_reach_count": 27,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -18464,6 +18690,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -18479,7 +18706,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -18506,6 +18733,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -18521,7 +18749,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -18750,6 +18978,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -18765,7 +18994,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -18792,6 +19021,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_CONSTRAINED_REVERSAL_SYMMETRY",
@@ -18812,7 +19042,7 @@
         "R003_PARITY_QUADRATIC_SPLIT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 21,
+      "root_reach_count": 22,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -18839,6 +19069,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_CONSTRAINED_REVERSAL_SYMMETRY",
@@ -18859,7 +19090,7 @@
         "R003_PARITY_QUADRATIC_SPLIT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 21,
+      "root_reach_count": 22,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -19013,6 +19244,7 @@
         "R003_BOUNDARY_FLAT_MOMENT_FLAG",
         "R003_BOUNDARY_FLAT_PROJECTION",
         "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
@@ -19046,7 +19278,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 39,
+      "root_reach_count": 40,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -19074,6 +19306,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
@@ -19104,7 +19337,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 32,
+      "root_reach_count": 33,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -19132,6 +19365,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
@@ -19162,7 +19396,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 32,
+      "root_reach_count": 33,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -19190,6 +19424,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
@@ -19220,7 +19455,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 32,
+      "root_reach_count": 33,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -19252,6 +19487,7 @@
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
         "R003_BOUNDARY_FLAT_PROJECTION",
         "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
@@ -19273,7 +19509,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 25,
+      "root_reach_count": 26,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -19386,6 +19622,7 @@
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
         "R003_BOUNDARY_FLAT_PROJECTION",
         "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
@@ -19407,7 +19644,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 25,
+      "root_reach_count": 26,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -19435,6 +19672,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R003_BOUNDARY_FLAT_MOMENT_FLAG",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
@@ -19451,7 +19689,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 18,
+      "root_reach_count": 19,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -19598,6 +19836,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -19615,7 +19854,7 @@
         "R003_PARITY_NORMAL_KKT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 18,
+      "root_reach_count": 19,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -19821,6 +20060,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
@@ -19841,7 +20081,7 @@
         "R003_PARITY_NORMAL_KKT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 22,
+      "root_reach_count": 23,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -19941,6 +20181,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -19956,7 +20197,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -21451,6 +21692,7 @@
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
         "R003_BOUNDARY_FLAT_PROJECTION",
         "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
@@ -21472,7 +21714,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 25,
+      "root_reach_count": 26,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -28232,6 +28474,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_SOURCE_HERMITIAN",
         "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
@@ -28268,7 +28511,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 38,
+      "root_reach_count": 39,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN",
         "ROUTE_R004"
@@ -28298,6 +28541,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_SOURCE_HERMITIAN",
         "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
@@ -28334,7 +28578,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 38,
+      "root_reach_count": 39,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN",
         "ROUTE_R004"
@@ -28362,6 +28606,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_REVERSAL_SYMMETRY",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -28374,7 +28619,7 @@
         "R003_PARITY_QUADRATIC_SPLIT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 13,
+      "root_reach_count": 14,
       "universal_cohort_ids": []
     },
     {
@@ -28460,6 +28705,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_REVERSAL_SYMMETRY",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -28472,7 +28718,7 @@
         "R003_PARITY_QUADRATIC_SPLIT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 13,
+      "root_reach_count": 14,
       "universal_cohort_ids": []
     },
     {
@@ -28502,6 +28748,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_SOURCE_HERMITIAN",
         "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
@@ -28538,7 +28785,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 38,
+      "root_reach_count": 39,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN",
         "ROUTE_R004"
@@ -28689,6 +28936,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_REVERSAL_SYMMETRY",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -28701,7 +28949,7 @@
         "R003_PARITY_QUADRATIC_SPLIT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 13,
+      "root_reach_count": 14,
       "universal_cohort_ids": []
     },
     {
@@ -28728,6 +28976,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_SOURCE_HERMITIAN",
         "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
@@ -28764,7 +29013,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 38,
+      "root_reach_count": 39,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN",
         "ROUTE_R004"
@@ -28792,6 +29041,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_REVERSAL_SYMMETRY",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -28804,7 +29054,7 @@
         "R003_PARITY_QUADRATIC_SPLIT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 13,
+      "root_reach_count": 14,
       "universal_cohort_ids": []
     },
     {
@@ -28837,6 +29087,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_SOURCE_HERMITIAN",
         "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
@@ -28873,7 +29124,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 38,
+      "root_reach_count": 39,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN",
         "ROUTE_R004"
@@ -38768,10 +39019,10 @@
       ],
       "direct_root_count": 4,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 6,
+      "incoming_local_edge_count": 12,
       "incoming_structure_edge_count": 0,
-      "incoming_type_edge_count": 6,
-      "incoming_value_edge_count": 6,
+      "incoming_type_edge_count": 8,
+      "incoming_value_edge_count": 12,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.ConstrainedEuclideanSector",
       "private_or_internal": false,
@@ -38779,13 +39030,14 @@
         "ROUTE_R003"
       ],
       "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
         "R003_EUCLIDEAN_CONSTRAINED_NESTING",
         "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 4,
+      "root_reach_count": 5,
       "universal_cohort_ids": []
     },
     {
@@ -38804,13 +39056,14 @@
         "ROUTE_R003"
       ],
       "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
         "R003_EUCLIDEAN_CONSTRAINED_NESTING",
         "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 4,
+      "root_reach_count": 5,
       "universal_cohort_ids": []
     },
     {
@@ -39746,6 +39999,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -39766,7 +40020,7 @@
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 21,
+      "root_reach_count": 22,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -39793,6 +40047,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -39814,7 +40069,7 @@
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 22,
+      "root_reach_count": 23,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -40637,6 +40892,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -40657,7 +40913,7 @@
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 21,
+      "root_reach_count": 22,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -40718,10 +40974,10 @@
       ],
       "direct_root_count": 14,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 375,
+      "incoming_local_edge_count": 376,
       "incoming_structure_edge_count": 0,
       "incoming_type_edge_count": 338,
-      "incoming_value_edge_count": 358,
+      "incoming_value_edge_count": 359,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.ParityBadness",
       "private_or_internal": false,
@@ -40735,6 +40991,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -40754,7 +41011,7 @@
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 20,
+      "root_reach_count": 21,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -41107,10 +41364,10 @@
       ],
       "direct_root_count": 2,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 56,
+      "incoming_local_edge_count": 57,
       "incoming_structure_edge_count": 0,
       "incoming_type_edge_count": 29,
-      "incoming_value_edge_count": 54,
+      "incoming_value_edge_count": 55,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.ConstrainedParity",
       "private_or_internal": false,
@@ -41124,6 +41381,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
@@ -41147,7 +41405,7 @@
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 24,
+      "root_reach_count": 25,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -41174,6 +41432,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -41188,7 +41447,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 15,
+      "root_reach_count": 16,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -41215,6 +41474,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -41229,7 +41489,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 15,
+      "root_reach_count": 16,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -41272,10 +41532,10 @@
       ],
       "direct_root_count": 1,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 52,
+      "incoming_local_edge_count": 53,
       "incoming_structure_edge_count": 0,
       "incoming_type_edge_count": 15,
-      "incoming_value_edge_count": 51,
+      "incoming_value_edge_count": 52,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.ConstrainedParity",
       "private_or_internal": false,
@@ -41289,6 +41549,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
@@ -41313,7 +41574,7 @@
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 25,
+      "root_reach_count": 26,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -41755,6 +42016,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -41772,7 +42034,7 @@
       "root_claim_ids": [
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV"
       ],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -41801,6 +42063,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -41816,7 +42079,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -42003,10 +42266,10 @@
       ],
       "direct_root_count": 1,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 7,
+      "incoming_local_edge_count": 9,
       "incoming_structure_edge_count": 0,
-      "incoming_type_edge_count": 5,
-      "incoming_value_edge_count": 7,
+      "incoming_type_edge_count": 6,
+      "incoming_value_edge_count": 9,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.ConstrainedParityGeometry",
       "private_or_internal": false,
@@ -42020,6 +42283,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -42036,7 +42300,7 @@
         "R003_PARITY_QUADRATIC_SPLIT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 17,
+      "root_reach_count": 18,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -42048,10 +42312,10 @@
       ],
       "direct_root_count": 1,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 8,
+      "incoming_local_edge_count": 9,
       "incoming_structure_edge_count": 0,
       "incoming_type_edge_count": 0,
-      "incoming_value_edge_count": 8,
+      "incoming_value_edge_count": 9,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.ConstrainedParityGeometry",
       "private_or_internal": true,
@@ -42065,6 +42329,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -42081,7 +42346,7 @@
         "R003_PARITY_QUADRATIC_SPLIT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 17,
+      "root_reach_count": 18,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -42108,6 +42373,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -42122,7 +42388,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 15,
+      "root_reach_count": 16,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -42149,6 +42415,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -42164,7 +42431,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -42174,10 +42441,10 @@
       "direct_root_claim_ids": [],
       "direct_root_count": 0,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 2,
+      "incoming_local_edge_count": 3,
       "incoming_structure_edge_count": 0,
       "incoming_type_edge_count": 0,
-      "incoming_value_edge_count": 2,
+      "incoming_value_edge_count": 3,
       "minimum_depth_from_any_root": 2,
       "module": "Zeta23.CCM.ConstrainedParityGeometry",
       "private_or_internal": false,
@@ -42191,6 +42458,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -42206,7 +42474,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -42436,6 +42704,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -42451,7 +42720,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -42478,6 +42747,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -42493,7 +42763,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -42520,6 +42790,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -42535,7 +42806,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -42562,6 +42833,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -42577,7 +42849,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -42604,6 +42876,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -42619,7 +42892,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -42646,6 +42919,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -42661,7 +42935,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -42688,6 +42962,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -42703,7 +42978,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -42730,6 +43005,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -42745,7 +43021,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -42772,6 +43048,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -42787,7 +43064,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -42814,6 +43091,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -42829,7 +43107,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -42856,6 +43134,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -42871,7 +43150,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -42898,6 +43177,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -42913,7 +43193,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -42940,6 +43220,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -42955,7 +43236,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -42982,6 +43263,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -42997,7 +43279,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -43024,6 +43306,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -43039,7 +43322,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -43066,6 +43349,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -43081,7 +43365,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -43108,6 +43392,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -43123,7 +43408,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -44985,6 +45270,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
@@ -45005,7 +45291,7 @@
       "root_claim_ids": [
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION"
       ],
-      "root_reach_count": 20,
+      "root_reach_count": 21,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -45035,6 +45321,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
@@ -45053,7 +45340,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 20,
+      "root_reach_count": 21,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -45063,10 +45350,10 @@
       "direct_root_claim_ids": [],
       "direct_root_count": 0,
       "graph_role": "REGISTERED_CLAIM_ROOT",
-      "incoming_local_edge_count": 0,
+      "incoming_local_edge_count": 2,
       "incoming_structure_edge_count": 0,
       "incoming_type_edge_count": 0,
-      "incoming_value_edge_count": 0,
+      "incoming_value_edge_count": 2,
       "minimum_depth_from_any_root": 0,
       "module": "Zeta23.CCM.ConstrainedEuclideanSector",
       "private_or_internal": false,
@@ -45074,12 +45361,13 @@
         "ROUTE_R003"
       ],
       "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR"
       ],
       "root_claim_ids": [
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR"
       ],
-      "root_reach_count": 1,
+      "root_reach_count": 2,
       "universal_cohort_ids": []
     },
     {
@@ -45104,6 +45392,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -45120,7 +45409,7 @@
       "root_claim_ids": [
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION"
       ],
-      "root_reach_count": 15,
+      "root_reach_count": 16,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -45147,6 +45436,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -45160,7 +45450,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 14,
+      "root_reach_count": 15,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -45172,10 +45462,10 @@
       ],
       "direct_root_count": 1,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 2,
+      "incoming_local_edge_count": 3,
       "incoming_structure_edge_count": 0,
       "incoming_type_edge_count": 0,
-      "incoming_value_edge_count": 2,
+      "incoming_value_edge_count": 3,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.ParityBadness",
       "private_or_internal": false,
@@ -45189,6 +45479,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -45198,7 +45489,7 @@
         "R003_LEAST_PARITY_BAD_SHELL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 10,
+      "root_reach_count": 11,
       "universal_cohort_ids": []
     },
     {
@@ -45372,6 +45663,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -45386,7 +45678,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 15,
+      "root_reach_count": 16,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -45413,6 +45705,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -45427,7 +45720,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 15,
+      "root_reach_count": 16,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -45454,6 +45747,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -45468,7 +45762,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 15,
+      "root_reach_count": 16,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -45524,6 +45818,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -45537,7 +45832,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 14,
+      "root_reach_count": 15,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -46715,6 +47010,150 @@
       "universal_cohort_ids": []
     },
     {
+      "declaration": "Zeta23.CCM.fullCanonicalRayleighBottom",
+      "direct_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "direct_root_count": 1,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 3,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 3,
+      "incoming_value_edge_count": 3,
+      "minimum_depth_from_any_root": 1,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": false,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
+      "declaration": "Zeta23.CCM.fullCanonicalRayleighBottom._proof_1",
+      "direct_root_claim_ids": [],
+      "direct_root_count": 0,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 4,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 0,
+      "incoming_value_edge_count": 4,
+      "minimum_depth_from_any_root": 2,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": true,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
+      "declaration": "Zeta23.CCM.fullCanonicalRayleighBottom._proof_2",
+      "direct_root_claim_ids": [],
+      "direct_root_count": 0,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 4,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 0,
+      "incoming_value_edge_count": 4,
+      "minimum_depth_from_any_root": 2,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": true,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
+      "declaration": "Zeta23.CCM.fullCanonicalRayleighBottom._proof_3",
+      "direct_root_claim_ids": [],
+      "direct_root_count": 0,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 4,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 0,
+      "incoming_value_edge_count": 4,
+      "minimum_depth_from_any_root": 2,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": true,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
+      "declaration": "Zeta23.CCM.fullCanonicalRayleighBottom_le_boundaryFlatRayleighBottom",
+      "direct_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "direct_root_count": 1,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 1,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 0,
+      "incoming_value_edge_count": 1,
+      "minimum_depth_from_any_root": 1,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": false,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
+      "declaration": "Zeta23.CCM.fullCanonicalRayleighBottom_le_boundaryFlatRayleighBottom._proof_1_1",
+      "direct_root_claim_ids": [],
+      "direct_root_count": 0,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 1,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 0,
+      "incoming_value_edge_count": 1,
+      "minimum_depth_from_any_root": 2,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": true,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
+      "declaration": "Zeta23.CCM.fullCanonicalRayleighBottom_le_boundaryFlatRayleighBottom._proof_1_2",
+      "direct_root_claim_ids": [],
+      "direct_root_count": 0,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 1,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 0,
+      "incoming_value_edge_count": 1,
+      "minimum_depth_from_any_root": 2,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": true,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
       "declaration": "Zeta23.CCM.function_error_norm_le_of_firstJet_error",
       "direct_root_claim_ids": [
         "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION"
@@ -46780,6 +47219,7 @@
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R002_KERNEL_ZERO_SIDE_BRIDGE",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_SOURCE_HERMITIAN",
         "R003_CCM_BRIDGE",
@@ -46820,7 +47260,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 43,
+      "root_reach_count": 44,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN",
         "ROUTE_R004"
@@ -46848,6 +47288,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_REVERSAL_SYMMETRY",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -46860,7 +47301,7 @@
         "R003_PARITY_QUADRATIC_SPLIT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 13,
+      "root_reach_count": 14,
       "universal_cohort_ids": []
     },
     {
@@ -47112,17 +47553,18 @@
     {
       "declaration": "Zeta23.CCM.globalParitySuccessorBottom",
       "direct_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
         "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
         "R003_GLOBAL_PARITY_BOTTOM_NFLOW",
         "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM"
       ],
-      "direct_root_count": 4,
+      "direct_root_count": 5,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 16,
+      "incoming_local_edge_count": 17,
       "incoming_structure_edge_count": 0,
-      "incoming_type_edge_count": 9,
-      "incoming_value_edge_count": 11,
+      "incoming_type_edge_count": 10,
+      "incoming_value_edge_count": 12,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
       "private_or_internal": false,
@@ -47134,6 +47576,7 @@
       "reaching_root_claim_ids": [
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
         "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
         "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
@@ -47142,7 +47585,7 @@
         "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 8,
+      "root_reach_count": 9,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -48207,6 +48650,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R003_BOUNDARY_FLAT_MOMENT_FLAG",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
@@ -48226,7 +48670,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 21,
+      "root_reach_count": 22,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN",
         "ROUTE_R004"
@@ -48255,6 +48699,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R003_BOUNDARY_FLAT_MOMENT_FLAG",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
@@ -48271,7 +48716,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 18,
+      "root_reach_count": 19,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -48299,6 +48744,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R003_BOUNDARY_FLAT_MOMENT_FLAG",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
@@ -48315,7 +48761,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 18,
+      "root_reach_count": 19,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -48398,6 +48844,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -48413,7 +48860,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -49116,6 +49563,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -49129,7 +49577,7 @@
         "R003_PARITY_BAD_NEGATIVE_EIGENMODE"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 14,
+      "root_reach_count": 15,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -49180,6 +49628,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -49201,7 +49650,7 @@
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 22,
+      "root_reach_count": 23,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -54425,6 +54874,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
@@ -54443,7 +54893,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 20,
+      "root_reach_count": 21,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -59366,6 +59816,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
@@ -59391,7 +59842,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 26,
+      "root_reach_count": 27,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -59404,10 +59855,10 @@
       ],
       "direct_root_count": 2,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 2,
+      "incoming_local_edge_count": 3,
       "incoming_structure_edge_count": 0,
       "incoming_type_edge_count": 0,
-      "incoming_value_edge_count": 2,
+      "incoming_value_edge_count": 3,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.ConstrainedEuclideanSector",
       "private_or_internal": false,
@@ -59415,12 +59866,13 @@
         "ROUTE_R003"
       ],
       "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
         "R003_EUCLIDEAN_CONSTRAINED_NESTING",
         "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 3,
+      "root_reach_count": 4,
       "universal_cohort_ids": []
     },
     {
@@ -59706,6 +60158,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
@@ -59726,7 +60179,7 @@
         "R003_PARITY_NORMAL_KKT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 21,
+      "root_reach_count": 22,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -59807,6 +60260,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -59827,7 +60281,7 @@
         "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 21,
+      "root_reach_count": 22,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -60981,10 +61435,10 @@
       ],
       "direct_root_count": 2,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 38,
+      "incoming_local_edge_count": 39,
       "incoming_structure_edge_count": 0,
       "incoming_type_edge_count": 16,
-      "incoming_value_edge_count": 36,
+      "incoming_value_edge_count": 37,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.ConstrainedParity",
       "private_or_internal": false,
@@ -60998,6 +61452,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
@@ -61022,7 +61477,7 @@
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 25,
+      "root_reach_count": 26,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -61070,10 +61525,10 @@
       ],
       "direct_root_count": 1,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 36,
+      "incoming_local_edge_count": 37,
       "incoming_structure_edge_count": 0,
       "incoming_type_edge_count": 10,
-      "incoming_value_edge_count": 35,
+      "incoming_value_edge_count": 36,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.ConstrainedParity",
       "private_or_internal": false,
@@ -61087,6 +61542,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
@@ -61111,7 +61567,7 @@
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 25,
+      "root_reach_count": 26,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -61947,6 +62403,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -61962,7 +62419,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -61989,6 +62446,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -62004,7 +62462,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -62031,6 +62489,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -62046,7 +62505,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -62198,10 +62657,10 @@
       ],
       "direct_root_count": 1,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 7,
+      "incoming_local_edge_count": 9,
       "incoming_structure_edge_count": 0,
-      "incoming_type_edge_count": 5,
-      "incoming_value_edge_count": 7,
+      "incoming_type_edge_count": 6,
+      "incoming_value_edge_count": 9,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.ConstrainedParityGeometry",
       "private_or_internal": false,
@@ -62215,6 +62674,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -62231,7 +62691,7 @@
         "R003_PARITY_QUADRATIC_SPLIT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 17,
+      "root_reach_count": 18,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -62258,6 +62718,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -62273,7 +62734,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -62283,10 +62744,10 @@
       "direct_root_claim_ids": [],
       "direct_root_count": 0,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 2,
+      "incoming_local_edge_count": 3,
       "incoming_structure_edge_count": 0,
       "incoming_type_edge_count": 0,
-      "incoming_value_edge_count": 2,
+      "incoming_value_edge_count": 3,
       "minimum_depth_from_any_root": 2,
       "module": "Zeta23.CCM.ConstrainedParityGeometry",
       "private_or_internal": false,
@@ -62300,6 +62761,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -62315,7 +62777,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -63444,10 +63906,10 @@
       ],
       "direct_root_count": 10,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 91,
+      "incoming_local_edge_count": 92,
       "incoming_structure_edge_count": 0,
       "incoming_type_edge_count": 55,
-      "incoming_value_edge_count": 89,
+      "incoming_value_edge_count": 90,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.ConstrainedParitySpectrum",
       "private_or_internal": false,
@@ -63461,6 +63923,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -63477,7 +63940,7 @@
         "R003_PARITY_NORMAL_KKT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 17,
+      "root_reach_count": 18,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -63506,6 +63969,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -63522,7 +63986,7 @@
         "R003_PARITY_NORMAL_KKT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 17,
+      "root_reach_count": 18,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -63549,6 +64013,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -63565,7 +64030,7 @@
         "R003_PARITY_NORMAL_KKT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 17,
+      "root_reach_count": 18,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -63592,6 +64057,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -63608,7 +64074,7 @@
         "R003_PARITY_NORMAL_KKT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 17,
+      "root_reach_count": 18,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -63635,6 +64101,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -63651,7 +64118,7 @@
         "R003_PARITY_NORMAL_KKT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 17,
+      "root_reach_count": 18,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -63678,6 +64145,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -63694,7 +64162,7 @@
         "R003_PARITY_NORMAL_KKT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 17,
+      "root_reach_count": 18,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -63721,6 +64189,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -63737,7 +64206,7 @@
         "R003_PARITY_NORMAL_KKT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 17,
+      "root_reach_count": 18,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -63764,6 +64233,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -63780,7 +64250,7 @@
         "R003_PARITY_NORMAL_KKT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 17,
+      "root_reach_count": 18,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -63807,6 +64277,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -63823,7 +64294,7 @@
         "R003_PARITY_NORMAL_KKT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 17,
+      "root_reach_count": 18,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -63850,6 +64321,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -63866,7 +64338,7 @@
         "R003_PARITY_NORMAL_KKT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 17,
+      "root_reach_count": 18,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -63893,6 +64365,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -63909,7 +64382,7 @@
         "R003_PARITY_NORMAL_KKT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 17,
+      "root_reach_count": 18,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -63936,6 +64409,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -63952,7 +64426,7 @@
         "R003_PARITY_NORMAL_KKT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 17,
+      "root_reach_count": 18,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -63979,6 +64453,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -63995,7 +64470,7 @@
         "R003_PARITY_NORMAL_KKT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 17,
+      "root_reach_count": 18,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -64022,6 +64497,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -64038,7 +64514,7 @@
         "R003_PARITY_NORMAL_KKT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 17,
+      "root_reach_count": 18,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -64065,6 +64541,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -64081,7 +64558,7 @@
         "R003_PARITY_NORMAL_KKT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 17,
+      "root_reach_count": 18,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -64427,17 +64904,18 @@
     {
       "declaration": "Zeta23.CCM.parityRayleighBottom",
       "direct_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
         "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
         "R003_GLOBAL_PARITY_BOTTOM_NFLOW",
         "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM"
       ],
-      "direct_root_count": 4,
+      "direct_root_count": 5,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 50,
+      "incoming_local_edge_count": 52,
       "incoming_structure_edge_count": 0,
-      "incoming_type_edge_count": 44,
-      "incoming_value_edge_count": 42,
+      "incoming_type_edge_count": 46,
+      "incoming_value_edge_count": 44,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
       "private_or_internal": false,
@@ -64449,6 +64927,7 @@
       "reaching_root_claim_ids": [
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
         "R003_GLOBAL_BOTTOM_GROUND_TRIAL",
         "R003_GLOBAL_BOTTOM_PRIME_WEIGHT",
@@ -64457,7 +64936,7 @@
         "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 8,
+      "root_reach_count": 9,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -64506,13 +64985,14 @@
       "reaching_root_claim_ids": [
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
         "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
         "R003_GLOBAL_PARITY_BOTTOM_NFLOW",
         "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 6,
+      "root_reach_count": 7,
       "universal_cohort_ids": []
     },
     {
@@ -64520,10 +65000,10 @@
       "direct_root_claim_ids": [],
       "direct_root_count": 0,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 4,
+      "incoming_local_edge_count": 5,
       "incoming_structure_edge_count": 0,
       "incoming_type_edge_count": 0,
-      "incoming_value_edge_count": 4,
+      "incoming_value_edge_count": 5,
       "minimum_depth_from_any_root": 2,
       "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
       "private_or_internal": false,
@@ -64533,12 +65013,13 @@
       ],
       "reaching_root_claim_ids": [
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
         "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
         "R003_GLOBAL_PARITY_BOTTOM_NFLOW"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 4,
+      "root_reach_count": 5,
       "universal_cohort_ids": []
     },
     {
@@ -65049,6 +65530,7 @@
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R002_KERNEL_ZERO_SIDE_BRIDGE",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
         "R003_CANONICAL_SOURCE_HERMITIAN",
@@ -65090,7 +65572,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 44,
+      "root_reach_count": 45,
       "universal_cohort_ids": [
         "CANONICAL_ARITHMETIC_SURFACE",
         "GLOBAL_BOTTOM_CHAIN",
@@ -65123,6 +65605,7 @@
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R002_KERNEL_ZERO_SIDE_BRIDGE",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
         "R003_CANONICAL_SOURCE_HERMITIAN",
@@ -65164,7 +65647,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 44,
+      "root_reach_count": 45,
       "universal_cohort_ids": [
         "CANONICAL_ARITHMETIC_SURFACE",
         "GLOBAL_BOTTOM_CHAIN",
@@ -65197,6 +65680,7 @@
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R002_KERNEL_ZERO_SIDE_BRIDGE",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
         "R003_CANONICAL_SOURCE_HERMITIAN",
@@ -65238,7 +65722,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 44,
+      "root_reach_count": 45,
       "universal_cohort_ids": [
         "CANONICAL_ARITHMETIC_SURFACE",
         "GLOBAL_BOTTOM_CHAIN",
@@ -65398,6 +65882,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_REVERSAL_SYMMETRY",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -65410,7 +65895,7 @@
         "R003_PARITY_QUADRATIC_SPLIT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 13,
+      "root_reach_count": 14,
       "universal_cohort_ids": []
     },
     {
@@ -66015,6 +66500,7 @@
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R002_KERNEL_ZERO_SIDE_BRIDGE",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
         "R003_CANONICAL_SOURCE_HERMITIAN",
@@ -66056,7 +66542,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 44,
+      "root_reach_count": 45,
       "universal_cohort_ids": [
         "CANONICAL_ARITHMETIC_SURFACE",
         "GLOBAL_BOTTOM_CHAIN",
@@ -66163,6 +66649,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_REVERSAL_SYMMETRY",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -66175,7 +66662,7 @@
         "R003_PARITY_QUADRATIC_SPLIT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 13,
+      "root_reach_count": 14,
       "universal_cohort_ids": []
     },
     {
@@ -66438,6 +66925,7 @@
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R002_KERNEL_ZERO_SIDE_BRIDGE",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
         "R003_CANONICAL_SOURCE_HERMITIAN",
@@ -66481,7 +66969,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 46,
+      "root_reach_count": 47,
       "universal_cohort_ids": [
         "CANONICAL_ARITHMETIC_SURFACE",
         "GLOBAL_BOTTOM_CHAIN",
@@ -66516,6 +67004,7 @@
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R002_KERNEL_ZERO_SIDE_BRIDGE",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
         "R003_CANONICAL_SOURCE_HERMITIAN",
@@ -66559,7 +67048,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 46,
+      "root_reach_count": 47,
       "universal_cohort_ids": [
         "CANONICAL_ARITHMETIC_SURFACE",
         "GLOBAL_BOTTOM_CHAIN",
@@ -66590,6 +67079,7 @@
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R002_KERNEL_ZERO_SIDE_BRIDGE",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_SOURCE_HERMITIAN",
         "R003_CCM_BRIDGE",
@@ -66613,7 +67103,7 @@
         "R003_WEIL_DISPLACEMENT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 25,
+      "root_reach_count": 26,
       "universal_cohort_ids": []
     },
     {
@@ -66828,6 +67318,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_REVERSAL_SYMMETRY",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -66840,7 +67331,7 @@
         "R003_PARITY_QUADRATIC_SPLIT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 13,
+      "root_reach_count": 14,
       "universal_cohort_ids": []
     },
     {
@@ -66862,10 +67353,10 @@
       ],
       "direct_root_count": 13,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 67,
+      "incoming_local_edge_count": 68,
       "incoming_structure_edge_count": 0,
       "incoming_type_edge_count": 39,
-      "incoming_value_edge_count": 66,
+      "incoming_value_edge_count": 67,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.FiniteDictionary",
       "private_or_internal": false,
@@ -66882,6 +67373,7 @@
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R002_KERNEL_ZERO_SIDE_BRIDGE",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
         "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
         "R003_CCM_BRIDGE",
@@ -66913,7 +67405,7 @@
         "R003_WEIL_DISPLACEMENT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 34,
+      "root_reach_count": 35,
       "universal_cohort_ids": [
         "CANONICAL_ARITHMETIC_SURFACE",
         "GLOBAL_BOTTOM_CHAIN"
@@ -66943,6 +67435,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -66950,7 +67443,7 @@
         "R003_PARITY_QUADRATIC_SPLIT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 8,
+      "root_reach_count": 9,
       "universal_cohort_ids": []
     },
     {
@@ -66975,6 +67468,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -66982,7 +67476,7 @@
         "R003_PARITY_QUADRATIC_SPLIT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 8,
+      "root_reach_count": 9,
       "universal_cohort_ids": []
     },
     {
@@ -67052,6 +67546,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -67059,7 +67554,7 @@
         "R003_PARITY_QUADRATIC_SPLIT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 8,
+      "root_reach_count": 9,
       "universal_cohort_ids": []
     },
     {
@@ -67086,6 +67581,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
@@ -67104,7 +67600,7 @@
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 19,
+      "root_reach_count": 20,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -67131,6 +67627,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
@@ -67149,7 +67646,7 @@
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 19,
+      "root_reach_count": 20,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -67159,10 +67656,10 @@
       "direct_root_claim_ids": [],
       "direct_root_count": 0,
       "graph_role": "REGISTERED_CLAIM_ROOT",
-      "incoming_local_edge_count": 1,
+      "incoming_local_edge_count": 2,
       "incoming_structure_edge_count": 0,
       "incoming_type_edge_count": 0,
-      "incoming_value_edge_count": 1,
+      "incoming_value_edge_count": 2,
       "minimum_depth_from_any_root": 0,
       "module": "Zeta23.CCM.ParityBadness",
       "private_or_internal": false,
@@ -67176,6 +67673,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -67185,7 +67683,7 @@
       "root_claim_ids": [
         "R003_PARITY_QUADRATIC_SPLIT"
       ],
-      "root_reach_count": 8,
+      "root_reach_count": 9,
       "universal_cohort_ids": []
     },
     {
@@ -67195,10 +67693,10 @@
       ],
       "direct_root_count": 1,
       "graph_role": "REGISTERED_CLAIM_ROOT",
-      "incoming_local_edge_count": 7,
+      "incoming_local_edge_count": 8,
       "incoming_structure_edge_count": 0,
       "incoming_type_edge_count": 0,
-      "incoming_value_edge_count": 7,
+      "incoming_value_edge_count": 8,
       "minimum_depth_from_any_root": 0,
       "module": "Zeta23.CCM.ConstrainedEuclideanSector",
       "private_or_internal": false,
@@ -67212,6 +67710,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
         "R003_EUCLIDEAN_CONSTRAINED_NEGATIVE_OBSTRUCTION",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
@@ -67232,7 +67731,7 @@
       "root_claim_ids": [
         "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE"
       ],
-      "root_reach_count": 19,
+      "root_reach_count": 20,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -67288,6 +67787,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -67296,7 +67796,7 @@
         "R003_UNIT_CONSTRAINED_CANONICAL_NEGATIVE_OBSTRUCTION"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 9,
+      "root_reach_count": 10,
       "universal_cohort_ids": []
     },
     {
@@ -68257,10 +68757,10 @@
       ],
       "direct_root_count": 1,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 6,
+      "incoming_local_edge_count": 7,
       "incoming_structure_edge_count": 0,
       "incoming_type_edge_count": 0,
-      "incoming_value_edge_count": 6,
+      "incoming_value_edge_count": 7,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.ConstrainedParitySpectrum",
       "private_or_internal": false,
@@ -68274,6 +68774,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_FIRST_BAD_NEGATIVE_EIGENMODE_NOT_INHERITED",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_SHELL_KKT_FROM_OFFLINE_ZERO",
@@ -68287,7 +68788,7 @@
         "R003_PARITY_BAD_NEGATIVE_EIGENMODE"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 14,
+      "root_reach_count": 15,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -69120,6 +69621,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
@@ -69145,7 +69647,7 @@
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 26,
+      "root_reach_count": 27,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -69172,6 +69674,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
@@ -69197,7 +69700,7 @@
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 26,
+      "root_reach_count": 27,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -69224,6 +69727,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
@@ -69249,7 +69753,7 @@
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 26,
+      "root_reach_count": 27,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -69263,10 +69767,10 @@
       ],
       "direct_root_count": 3,
       "graph_role": "LOCAL_DEPENDENCY",
-      "incoming_local_edge_count": 59,
+      "incoming_local_edge_count": 61,
       "incoming_structure_edge_count": 0,
-      "incoming_type_edge_count": 24,
-      "incoming_value_edge_count": 59,
+      "incoming_type_edge_count": 25,
+      "incoming_value_edge_count": 61,
       "minimum_depth_from_any_root": 1,
       "module": "Zeta23.CCM.ConstrainedParity",
       "private_or_internal": false,
@@ -69280,6 +69784,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_CONSTRAINED_REVERSAL_SYMMETRY",
@@ -69307,7 +69812,7 @@
         "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 28,
+      "root_reach_count": 29,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -69334,6 +69839,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -69349,7 +69855,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -69376,6 +69882,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -69391,7 +69898,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -69418,6 +69925,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -69433,7 +69941,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -69460,6 +69968,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -69475,7 +69984,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -69502,6 +70011,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
         "R003_FIRST_BAD_PARITY_ONE_DIM_SHELL",
@@ -69517,7 +70027,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -75002,6 +75512,7 @@
         "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
         "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
         "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO",
@@ -75017,7 +75528,7 @@
         "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 16,
+      "root_reach_count": 17,
       "universal_cohort_ids": [
         "GLOBAL_BOTTOM_CHAIN"
       ]
@@ -75731,6 +76242,7 @@
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
         "R002_KERNEL_ZERO_SIDE_BRIDGE",
         "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
         "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
         "R003_CANONICAL_SOURCE_HERMITIAN",
@@ -75772,7 +76284,7 @@
         "R004_CCM_DISPLACEMENT_FORMAL"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 44,
+      "root_reach_count": 45,
       "universal_cohort_ids": [
         "CANONICAL_ARITHMETIC_SURFACE",
         "GLOBAL_BOTTOM_CHAIN",
@@ -116199,6 +116711,126 @@
       "universal_cohort_ids": []
     },
     {
+      "declaration": "_private.Zeta23.CCM.GlobalParityBottomSpectrum.0.Zeta23.CCM.boundaryFlatRayleighBottom_le_rayleigh",
+      "direct_root_claim_ids": [],
+      "direct_root_count": 0,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 1,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 0,
+      "incoming_value_edge_count": 1,
+      "minimum_depth_from_any_root": 2,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": true,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
+      "declaration": "_private.Zeta23.CCM.GlobalParityBottomSpectrum.0.Zeta23.CCM.boundaryFlatRayleighRange_bddBelow",
+      "direct_root_claim_ids": [],
+      "direct_root_count": 0,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 1,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 0,
+      "incoming_value_edge_count": 1,
+      "minimum_depth_from_any_root": 3,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": true,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
+      "declaration": "_private.Zeta23.CCM.GlobalParityBottomSpectrum.0.Zeta23.CCM.euclideanEvenOddNormSqSplit",
+      "direct_root_claim_ids": [],
+      "direct_root_count": 0,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 1,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 0,
+      "incoming_value_edge_count": 1,
+      "minimum_depth_from_any_root": 2,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": true,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
+      "declaration": "_private.Zeta23.CCM.GlobalParityBottomSpectrum.0.Zeta23.CCM.euclideanReverseNormEq",
+      "direct_root_claim_ids": [],
+      "direct_root_count": 0,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 1,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 0,
+      "incoming_value_edge_count": 1,
+      "minimum_depth_from_any_root": 3,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": true,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
+      "declaration": "_private.Zeta23.CCM.GlobalParityBottomSpectrum.0.Zeta23.CCM.fullCanonicalRayleighBottom_le_rayleigh",
+      "direct_root_claim_ids": [],
+      "direct_root_count": 0,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 1,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 0,
+      "incoming_value_edge_count": 1,
+      "minimum_depth_from_any_root": 2,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": true,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
+      "declaration": "_private.Zeta23.CCM.GlobalParityBottomSpectrum.0.Zeta23.CCM.fullCanonicalRayleighRange_bddBelow",
+      "direct_root_claim_ids": [],
+      "direct_root_count": 0,
+      "graph_role": "LOCAL_DEPENDENCY",
+      "incoming_local_edge_count": 1,
+      "incoming_structure_edge_count": 0,
+      "incoming_type_edge_count": 0,
+      "incoming_value_edge_count": 1,
+      "minimum_depth_from_any_root": 3,
+      "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
+      "private_or_internal": true,
+      "reaching_cohort_ids": [],
+      "reaching_root_claim_ids": [
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "root_claim_ids": [],
+      "root_reach_count": 1,
+      "universal_cohort_ids": []
+    },
+    {
       "declaration": "_private.Zeta23.CCM.GlobalParityBottomSpectrum.0.Zeta23.CCM.parityRayleighRange_bddBelow",
       "direct_root_claim_ids": [],
       "direct_root_count": 0,
@@ -116218,13 +116850,14 @@
       "reaching_root_claim_ids": [
         "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
         "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
         "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
         "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS",
         "R003_GLOBAL_PARITY_BOTTOM_NFLOW",
         "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM"
       ],
       "root_claim_ids": [],
-      "root_reach_count": 6,
+      "root_reach_count": 7,
       "universal_cohort_ids": []
     },
     {
@@ -121115,8 +121748,8 @@
   ],
   "graph_theorem_promotion": false,
   "interpretation": "Reach and overlap describe exact compiler dependency structure only. High reach, shared dependencies, or cohort universality do not establish mathematical importance or theorem equivalence.",
-  "local_declaration_count": 3209,
-  "registered_root_count": 77,
+  "local_declaration_count": 3231,
+  "registered_root_count": 78,
   "schema_version": "RHKG-phase2c-dependency-kernel-atlas-0.5",
   "scope": "COMPILER_LOCAL_CLOSURE_OF_ALL_PROVED_REGISTERED_ROOTS",
   "terminal_claim": "RH_OPEN"

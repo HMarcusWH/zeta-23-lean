@@ -991,6 +991,22 @@
       "note": "Post-#266 theorem return. Exact centered zero extension embeds the old parity carrier isometrically into every larger carrier and preserves the canonical quadratic energy, so the variational bottom cannot increase. Direction firewall: larger N can lower the bottom; this propagates negativity upward in N and nonnegativity downward, but does not propagate small-N positivity upward. No L-monotonicity, prime-remainder dominance, residual-state exclusion, or RH theorem is claimed."
     },
     {
+      "id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+      "statement": "For every legal nontrivial canonical finite CCM problem, the unconstrained Euclidean Rayleigh bottom is at most the complete boundary-flat Rayleigh bottom, and the boundary-flat bottom equals the minimum of the even and odd parity Rayleigh bottoms. At successor size this boundary-flat ground is exactly globalParitySuccessorBottom.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+        "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+        "R003_PARITY_QUADRATIC_SPLIT",
+        "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+        "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE"
+      ],
+      "source": "Zeta23/CCM/GlobalParityBottomSpectrum.lean",
+      "theorem": "Zeta23.CCM.canonicalCarrierBottom_hierarchy",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "Post-#267 carrier theoremization. This is a ground-Rayleigh hierarchy, not ordered eigenvalue interlacing. Direction firewall: full-space bottom <= boundary-flat bottom = min(even, odd); full-space negativity alone does not imply boundary-flat negativity. No aperture monotonicity, prime-remainder dominance, residual-state exclusion, or RH theorem is claimed."
+    },
+    {
       "id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
       "statement": "Every GlobalBottomResidualState carries a dependent even-strict, odd-strict, or tie branch package, keeping the branch-specific source/transfer identities attached to the same residual state.",
       "status": "PROVED_UNCONDITIONAL",

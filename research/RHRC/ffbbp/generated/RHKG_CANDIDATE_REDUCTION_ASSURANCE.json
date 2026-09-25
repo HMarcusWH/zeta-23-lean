@@ -50,13 +50,13 @@
     "base_merge_commit": "dd4636d021ccc95d915bcdd9635fe100b8e4c5bb",
     "base_pr": 264,
     "base_tree": "4e507b8f86de8e7e1bee28d135722d7396a1a8f6",
-    "candidate_count": 2358,
-    "candidate_resolution_sha256": "8154525ca384ec131062228d3f6846c5d77a9a8956dabce8f4ee71317bc35b64",
-    "candidate_source_surface_sha256": "939b3ca322608ccb8b47f6240208b78a89f5570744056cf02882ffde2002cef1",
-    "candidate_summary_sha256": "28a27d05d4d84b443928d74aec44728f5f609c49349d159a74bd9198d02d37bc",
+    "candidate_count": 2362,
+    "candidate_resolution_sha256": "e02418221de4693b3ae99c29ac8928ca3476ebdc2994923888f1ad16a29ee38f",
+    "candidate_source_surface_sha256": "00e50a77061cf68a16d89498cbf2ff77369bd3b3d778836c8c8530a8d701f0e1",
+    "candidate_summary_sha256": "cbc6830ae95c22a1ed4c18bdf235b555adb45a1c44d5cdec98582257934b99ca",
     "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
-    "registered_compiler_receipt_sha256": "43a92c103233d3f359d32b39705e93481012c593ecf8c3138f1ec2732aa716b8",
-    "rhkg_subject_digest_sha256": "3c99eb7dde0166f13520dc26224939467c08ae0f7125d56994f1442c8088d36a",
+    "registered_compiler_receipt_sha256": "ba506ceafd15b0b277d25b3c096e5b65007f71037eb02c11ac186c357ed504ee",
+    "rhkg_subject_digest_sha256": "c39ebaa92316e472f4b65193278dc085a8210167976e36359729b4ee90243e7b",
     "source_only_public_theorem_count": 680
   },
   "reductions": {
@@ -587,7 +587,7 @@
           }
         ],
         "fiber_count": 298,
-        "full_state_count": 2358,
+        "full_state_count": 2362,
         "max_fiber_size": 42,
         "mixed_value_fiber_count": 128,
         "passed": false
@@ -1139,7 +1139,7 @@
           }
         ],
         "fiber_count": 298,
-        "full_state_count": 2358,
+        "full_state_count": 2362,
         "max_fiber_size": 42,
         "mixed_value_fiber_count": 167,
         "passed": false
@@ -1155,10 +1155,10 @@
         "passed": true
       },
       "decision_factorization": {
-        "collision_fiber_count": 367,
+        "collision_fiber_count": 369,
         "counterexamples": [],
         "fiber_count": 515,
-        "full_state_count": 2358,
+        "full_state_count": 2362,
         "max_fiber_size": 33,
         "mixed_value_fiber_count": 0,
         "passed": true
@@ -1166,10 +1166,10 @@
       "declared_use": "POST_REFERENCE_COHORT_NAVIGATION_ONLY",
       "description": "Post-reference Xi retaining module and exact visibility disposition. Intended for cohort navigation after full Lean exactification, not pre-reference theorem ranking.",
       "diagnostic_factorization": {
-        "collision_fiber_count": 367,
+        "collision_fiber_count": 369,
         "counterexamples": [],
         "fiber_count": 515,
-        "full_state_count": 2358,
+        "full_state_count": 2362,
         "max_fiber_size": 33,
         "mixed_value_fiber_count": 0,
         "passed": true
@@ -1190,8 +1190,8 @@
       "decision_factorization": {
         "collision_fiber_count": 19,
         "counterexamples": [],
-        "fiber_count": 2326,
-        "full_state_count": 2358,
+        "fiber_count": 2330,
+        "full_state_count": 2362,
         "max_fiber_size": 10,
         "mixed_value_fiber_count": 0,
         "passed": true
@@ -1280,8 +1280,8 @@
             ]
           }
         ],
-        "fiber_count": 2326,
-        "full_state_count": 2358,
+        "fiber_count": 2330,
+        "full_state_count": 2362,
         "max_fiber_size": 10,
         "mixed_value_fiber_count": 7,
         "passed": false
@@ -3153,9 +3153,9 @@
   "theorem_promotion": false,
   "theory_version": "1.6.0",
   "visibility_counts": {
-    "ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE": 1378,
-    "ALREADY_REGISTERED_ROOT": 74,
-    "PRIVATE_OR_INTERNAL_SOURCE_OBJECT": 216,
+    "ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE": 1380,
+    "ALREADY_REGISTERED_ROOT": 75,
+    "PRIVATE_OR_INTERNAL_SOURCE_OBJECT": 217,
     "SOURCE_ONLY_PUBLIC_THEOREM": 680,
     "UNRESOLVED_SOURCE_IDENTITY": 10
   }

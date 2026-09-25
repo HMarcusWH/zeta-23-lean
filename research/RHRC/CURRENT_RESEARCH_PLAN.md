@@ -100,7 +100,30 @@ CONTROL AUTHORITY
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
-<!-- RHRC_CURRENT_STATE_END -->\n\n## Post-#265 integration override
+<!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#267 carrier-ground theoremization override
+
+This block records the theorem-bearing continuation after merged PR #267
+without altering the frozen Control-v2 current-state block above.
+
+- PR #267 proves unconditional fixed-aperture N-flow antitonicity of each
+  successor parity Rayleigh bottom and of `globalParitySuccessorBottom`;
+- this theoremization adds exact full-space and complete boundary-flat
+  Rayleigh bottoms for the same canonical finite matrix;
+- in the legal successor regime it proves
+  `full <= boundary-flat = min(even, odd)`;
+- it identifies `globalParitySuccessorBottom` with the actual ground Rayleigh
+  value of the complete legal boundary-flat carrier;
+- this is a ground-Rayleigh hierarchy, not ordered eigenvalue interlacing;
+- the next downstream theorem target is unconditional ground-eigenspace
+  prime-test-weight/arithmetic control across fixed cells and prime-power seams.
+
+The integration/OoL authority split remains unchanged. No sign, aperture
+monotonicity, prime-remainder domination, residual-state exclusion, or RH
+theorem is claimed. RH remains OPEN.
+
+## Post-#265 integration override
 
 This block supersedes the post-#264 integration-current label below.
 

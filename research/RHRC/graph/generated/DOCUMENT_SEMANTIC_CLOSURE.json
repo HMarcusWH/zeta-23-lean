@@ -82,7 +82,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/CURRENT_RESEARCH_PLAN.md",
-      "heading_count": 55,
+      "heading_count": 57,
       "path": "research/RHRC/CURRENT_RESEARCH_PLAN.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -175,7 +175,7 @@
       "document_role": "LIVING_PROJECT_STATE",
       "file_class": "LIVING_SSOT",
       "file_id": "rh:file:research/RHRC/README.md",
-      "heading_count": 20,
+      "heading_count": 22,
       "path": "research/RHRC/README.md",
       "route_mentions": [
         "R003_ccm_bridge"
