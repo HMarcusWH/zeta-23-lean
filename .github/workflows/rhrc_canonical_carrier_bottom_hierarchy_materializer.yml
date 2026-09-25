@@ -72,12 +72,12 @@ jobs:
           python3 - <<'PY'
           import json
           p = json.load(open('research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json'))
-          assert p['candidate_count'] == 2361, p
+          assert p['candidate_count'] == 2362, p
           assert p['source_only_public_theorem_count'] == 680, p
           v = p['visibility_counts']
           assert v['ALREADY_REGISTERED_ROOT'] == 75, v
           assert v['ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE'] == 1380, v
-          assert v['PRIVATE_OR_INTERNAL_SOURCE_OBJECT'] == 216, v
+          assert v['PRIVATE_OR_INTERNAL_SOURCE_OBJECT'] == 217, v
           assert v['SOURCE_ONLY_PUBLIC_THEOREM'] == 680, v
           assert v['UNRESOLVED_SOURCE_IDENTITY'] == 10, v
           assert p['terminal_claim'] == 'RH_OPEN'
@@ -92,7 +92,7 @@ jobs:
           python3 - <<'PY'
           import json
           p = json.load(open('research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json'))
-          assert p['input_snapshot']['candidate_count'] == 2361, p['input_snapshot']
+          assert p['input_snapshot']['candidate_count'] == 2362, p['input_snapshot']
           assert p['input_snapshot']['source_only_public_theorem_count'] == 680, p['input_snapshot']
           m = p['reductions']['MODULE_ONLY_SNAPSHOT']
           assert m['assurance_gate']['passed'] is False, m
