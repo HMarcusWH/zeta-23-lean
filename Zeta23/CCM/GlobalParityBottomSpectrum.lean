@@ -320,7 +320,7 @@ private def boundaryFlatRayleighRange_bddBelow
           (inner ℂ
             (Tc (z : EuclideanSpace ℂ (Fin (2 * N + 1))))
             (z : EuclideanSpace ℂ (Fin (2 * N + 1)))) /
-          ‖(z : euclideanBoundaryFlatSubspace N)‖ ^ 2| ≤ ‖Tc‖ := by
+          ‖(z : EuclideanSpace ℂ (Fin (2 * N + 1)))‖ ^ 2| ≤ ‖Tc‖ := by
     simpa only [ContinuousLinearMap.rayleighQuotient,
       ContinuousLinearMap.reApplyInnerSelf_apply] using habs
   have hTcT :
@@ -412,7 +412,8 @@ private def euclideanEvenOddNormSqSplit
       o = (1 / 2 : ℂ) • (x - r) := by
     apply (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ).injective
     ext i
-    simp [o, r, u, oddPart, reverseCoefficients, Pi.smul_apply, smul_eq_mul]
+    simp [o, r, u, oddPart, reverseCoefficients, WithLp.ofLp_sub,
+      Pi.smul_apply, smul_eq_mul]
     ring
   have hpara := parallelogram_law_with_norm ℂ x r
   rw [hrnorm] at hpara
@@ -458,6 +459,17 @@ theorem boundaryFlatRayleighBottom_eq_min_parity
         (parityRayleighBottom .even L N)
         (parityRayleighBottom .odd L N) := by
   have hN1 : 1 ≤ N := by omega
+  have hfinBF :
+      0 < Module.finrank ℂ (euclideanBoundaryFlatSubspace N) := by
+    rw [finrank_euclideanBoundaryFlatSubspace N (by omega)]
+    omega
+  letI : Nontrivial (euclideanBoundaryFlatSubspace N) :=
+    Module.nontrivial_of_finrank_pos hfinBF
+  letI : Nonempty
+      {z : euclideanBoundaryFlatSubspace N // z ≠ 0} := by
+    obtain ⟨z, hz⟩ : ∃ z : euclideanBoundaryFlatSubspace N, z ≠ 0 :=
+      exists_ne 0
+    exact ⟨⟨z, hz⟩⟩
 
   have hleParity :
       ∀ p : ReversalParity,
@@ -500,17 +512,16 @@ theorem boundaryFlatRayleighBottom_eq_min_parity
       intro hx0
       apply z.property
       apply Subtype.ext
-      exact congrArg Subtype.val hx0
+      simpa [x, x0] using congrArg Subtype.val hx0
     have hbf := boundaryFlatRayleighBottom_le_rayleigh L N x hx
     have hself :=
       re_inner_parityCompressedCanonical_self p L N
         (z : euclideanParityBoundaryFlatSubspace p N)
     change
       boundaryFlatRayleighBottom L N ≤
-        RCLike.re
-            (inner ℂ
-              (parityCompressedCanonical p L N z)
-              z) /
+        (inner ℂ
+            (parityCompressedCanonical p L N z)
+            z).re /
           ‖(z : euclideanParityBoundaryFlatSubspace p N)‖ ^ 2
     rw [hself]
     simpa [x, x0] using hbf
