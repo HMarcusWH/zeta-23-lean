@@ -618,20 +618,6 @@ theorem boundaryFlatRayleighBottom_eq_min_parity
       nlinarith
     exact (le_div_iff₀ hden).2 hquad
 
-/-- Exact full/boundary-flat/parity ground hierarchy for the canonical finite
-CCM problem. -/
-theorem canonicalCarrierBottom_hierarchy
-    (L : ℝ) {N : ℕ} (hN : 2 ≤ N) :
-    fullCanonicalRayleighBottom L N ≤
-        boundaryFlatRayleighBottom L N ∧
-      boundaryFlatRayleighBottom L N =
-        min
-          (parityRayleighBottom .even L N)
-          (parityRayleighBottom .odd L N) := by
-  exact ⟨
-    fullCanonicalRayleighBottom_le_boundaryFlatRayleighBottom L hN,
-    boundaryFlatRayleighBottom_eq_min_parity L hN⟩
-
 /-- The common #247 shift: minimum of the two successor parity bottoms. -/
 def globalParitySuccessorBottom
     (L : ℝ) (N : ℕ) : ℝ :=
@@ -640,13 +626,26 @@ def globalParitySuccessorBottom
     (parityRayleighBottom .odd L (N + 1))
 
 
-/-- At every legal successor size, the existing #247 global parity bottom is
-exactly the Rayleigh ground value of the complete boundary-flat carrier. -/
-theorem boundaryFlatRayleighBottom_succ_eq_globalParitySuccessorBottom
+/-- Exact successor-level carrier hierarchy.  The existing #247 global parity
+bottom is the ground Rayleigh value of the complete legal boundary-flat
+carrier, and that carrier ground sits above the unconstrained Euclidean ground. -/
+theorem canonicalCarrierBottom_hierarchy
     (L : ℝ) (N : ℕ) (hN : 1 ≤ N) :
-    boundaryFlatRayleighBottom L (N + 1) =
-      globalParitySuccessorBottom L N := by
-  rw [boundaryFlatRayleighBottom_eq_min_parity L (by omega)]
+    fullCanonicalRayleighBottom L (N + 1) ≤
+        boundaryFlatRayleighBottom L (N + 1) ∧
+      boundaryFlatRayleighBottom L (N + 1) =
+        min
+          (parityRayleighBottom .even L (N + 1))
+          (parityRayleighBottom .odd L (N + 1)) ∧
+      boundaryFlatRayleighBottom L (N + 1) =
+        globalParitySuccessorBottom L N := by
+  have hN2 : 2 ≤ N + 1 := by omega
+  have hfull :=
+    fullCanonicalRayleighBottom_le_boundaryFlatRayleighBottom L hN2
+  have hsplit :=
+    boundaryFlatRayleighBottom_eq_min_parity L hN2
+  refine ⟨hfull, hsplit, ?_⟩
+  rw [hsplit]
   rfl
 
 theorem globalParitySuccessorBottom_le_even
@@ -755,4 +754,3 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad
 #print axioms Zeta23.CCM.globalParitySuccessorBottom_shifted_nonnegative
 #print axioms Zeta23.CCM.canonicalCarrierBottom_hierarchy
-#print axioms Zeta23.CCM.boundaryFlatRayleighBottom_succ_eq_globalParitySuccessorBottom
