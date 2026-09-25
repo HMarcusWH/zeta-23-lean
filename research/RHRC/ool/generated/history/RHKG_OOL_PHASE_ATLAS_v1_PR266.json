@@ -1,0 +1,211 @@
+{
+  "candidate_count": 680,
+  "claim_cap": "RESEARCH_CONTROL_ONLY",
+  "claim_firewall": [
+    "module identity is not an OoL handoff",
+    "FFBBP cohort membership is navigation only",
+    "type digest equality is not semantic equivalence",
+    "proof-body-only contact is separated from theorem-value-erased support",
+    "cross-interface support contact is not theorem composition",
+    "theorem-value-erased frontier contact is not mathematical implication",
+    "OoL output does not create PROVED authority",
+    "RH remains OPEN"
+  ],
+  "disposition_counts": {
+    "NO_ACTIVE_INTERFACE_CONTACT": 185,
+    "THEOREM_VALUE_ERASED_FRONTIER_CONTACT": 495
+  },
+  "frontier_probe": {
+    "candidate_projected_frontier_contact_count": 495,
+    "eligible_cross_region_edge_count": 21,
+    "eligible_declaration_surface": {
+      "count": 28,
+      "examples": [
+        "Zeta23.CCM.GlobalBottomArithmeticResidual.mk",
+        "Zeta23.CCM.ParityBad",
+        "Zeta23.CCM.RegularCellMinimalNegativeEnergyCertificate.mk",
+        "Zeta23.CCM.alphaL",
+        "Zeta23.CCM.archDensity",
+        "Zeta23.CCM.archDensity._proof_1",
+        "Zeta23.CCM.betaL",
+        "Zeta23.CCM.cCorrectionIntegrand",
+        "Zeta23.CCM.cCorrectionIntegrand._proof_1",
+        "Zeta23.CCM.canonicalPrimeFreeBudget",
+        "Zeta23.CCM.canonicalPrimeRemainderEnergy",
+        "Zeta23.CCM.canonicalSourceChannelEnergy",
+        "Zeta23.CCM.centeredIndex",
+        "Zeta23.CCM.centeredMoment",
+        "Zeta23.CCM.centeredMomentLinearMap._proof_1",
+        "Zeta23.CCM.centeredPowerVector",
+        "Zeta23.CCM.cutoffFreeArchComponent",
+        "Zeta23.CCM.cutoffFreeEntry",
+        "Zeta23.CCM.cutoffFreeMatrix",
+        "Zeta23.CCM.gammaL"
+      ],
+      "sha256": "a8caa963caec2018db5d6a5ee80107da5647c6340fba53611742cd7c3040bd89",
+      "truncated": true
+    },
+    "left_claim_id": "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
+    "right_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL"
+  },
+  "input_snapshot": {
+    "ffbbp_assurance_sha256": "226b2d12e6fa5551df31972591fbdce7d23187d9461e0ec01e6114591d903493",
+    "ffbbp_selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
+    "ffbbp_source_only_module_cohort_count": 195,
+    "projection_frontiers_sha256": "e8e15c22d5fb60ed477083b99b99de2f67bfab1727eb2b9691ce22d1f28cd9c7",
+    "registered_dependency_sha256": "ba506ceafd15b0b277d25b3c096e5b65007f71037eb02c11ac186c357ed504ee",
+    "source_only_candidate_count": 680,
+    "source_only_candidate_sha256": "e3e72dd63be25c4cc307f34f7693ec62fa144a42a68951ef5d8c4025cb27be67",
+    "source_only_dependency_sha256": "f5573000419c35b5b3cf2e116ac5ea1a0ccfbb7ec636afe02f0829283516a554"
+  },
+  "interface_families": {
+    "APERTURE_ARITHMETIC": {
+      "candidate_projected_contact_count": 6,
+      "distinctive_support": {
+        "count": 4,
+        "examples": [
+          "Zeta23.CCM.GlobalBottomResidualState.primeTestWeight_endpoint_order_eight_of_evenStrict",
+          "Zeta23.CCM.canonicalPoleTailEnergy",
+          "Zeta23.CCM.canonicalPrimeFreeBudget",
+          "Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget"
+        ],
+        "sha256": "657acd853d222f07f45b74b25e46cc3328932e9baa5abe0673cabade5cc725d6",
+        "truncated": false
+      },
+      "support": {
+        "count": 205,
+        "examples": [
+          "Zeta23.CCM.AnyParityBad",
+          "Zeta23.CCM.BiRegularCellMinimalNegativeEnergyCertificate",
+          "Zeta23.CCM.BiRegularCellMinimalNegativeEnergyCertificate.energy",
+          "Zeta23.CCM.BiRegularCellMinimalNegativeEnergyCertificate.mk",
+          "Zeta23.CCM.CellAnyParityBad",
+          "Zeta23.CCM.GlobalBottomAlignedBranch",
+          "Zeta23.CCM.GlobalBottomAlignedBranch.evenStrict",
+          "Zeta23.CCM.GlobalBottomAlignedBranch.oddStrict",
+          "Zeta23.CCM.GlobalBottomAlignedBranch.tieEven",
+          "Zeta23.CCM.GlobalBottomResidualState",
+          "Zeta23.CCM.GlobalBottomResidualState.aligned",
+          "Zeta23.CCM.GlobalBottomResidualState.groundTrial",
+          "Zeta23.CCM.GlobalBottomResidualState.groundTrial._proof_1",
+          "Zeta23.CCM.GlobalBottomResidualState.groundTrial._proof_2",
+          "Zeta23.CCM.GlobalBottomResidualState.groundTrial._proof_3",
+          "Zeta23.CCM.GlobalBottomResidualState.groundTrial._proof_4",
+          "Zeta23.CCM.GlobalBottomResidualState.groundTrial._proof_5",
+          "Zeta23.CCM.GlobalBottomResidualState.groundTrial._proof_6",
+          "Zeta23.CCM.GlobalBottomResidualState.mk",
+          "Zeta23.CCM.GlobalBottomResidualState.primeTestWeight"
+        ],
+        "sha256": "b79f0adc805d0d7fda09c68d29a797fd56b0bf5fefbf236c0fef1011ef57e7e8",
+        "truncated": true
+      }
+    },
+    "CARRIER_SPECTRUM": {
+      "candidate_projected_contact_count": 3,
+      "distinctive_support": {
+        "count": 5,
+        "examples": [
+          "Zeta23.CCM.euclideanBoundaryFlatSubspace",
+          "Zeta23.CCM.euclideanBoundaryFlatSubspace._proof_1",
+          "Zeta23.CCM.euclideanCenteredZeroExtend_mem_euclideanBoundaryFlatSubspace",
+          "Zeta23.CCM.finrank_boundaryFlatSubspace",
+          "Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad"
+        ],
+        "sha256": "f2e6b8ee788ce82229a3c6efa0d6595d4cd718c8e13f679a347985a4ed9aca7a",
+        "truncated": false
+      },
+      "support": {
+        "count": 84,
+        "examples": [
+          "Zeta23.CCM.AnyParityBad",
+          "Zeta23.CCM.ParityBad",
+          "Zeta23.CCM.ReversalParity",
+          "Zeta23.CCM.ReversalParity.casesOn",
+          "Zeta23.CCM.ReversalParity.even",
+          "Zeta23.CCM.ReversalParity.odd",
+          "Zeta23.CCM.ReversalParity.rec",
+          "Zeta23.CCM.alphaL",
+          "Zeta23.CCM.archDensity",
+          "Zeta23.CCM.archDensity._proof_1",
+          "Zeta23.CCM.betaL",
+          "Zeta23.CCM.boundaryFlatSubspace",
+          "Zeta23.CCM.cCorrection",
+          "Zeta23.CCM.cCorrectionIntegrand",
+          "Zeta23.CCM.cCorrectionIntegrand._proof_1",
+          "Zeta23.CCM.canonicalSourceMatrix",
+          "Zeta23.CCM.centeredEmbedding",
+          "Zeta23.CCM.centeredEmbedding._proof_3",
+          "Zeta23.CCM.centeredEmbedding._proof_4",
+          "Zeta23.CCM.centeredIndex"
+        ],
+        "sha256": "2814ae31c54a4084a26f297980bfd2930eda169f3b59edd976ec782867217f7d",
+        "truncated": true
+      }
+    },
+    "GROUND_SOURCE": {
+      "candidate_projected_contact_count": 208,
+      "distinctive_support": {
+        "count": 65,
+        "examples": [
+          "Zeta23.CCM.GlobalBottomBranchPackage",
+          "Zeta23.CCM.GlobalBottomBranchPackage._proof_1",
+          "Zeta23.CCM.GlobalBottomBranchPackage.evenStrict",
+          "Zeta23.CCM.GlobalBottomBranchPackage.oddStrict",
+          "Zeta23.CCM.GlobalBottomBranchPackage.tieEven",
+          "Zeta23.CCM.GlobalBottomResidualState.exists_branchPackage",
+          "Zeta23.CCM.GlobalBottomResidualState.groundTrial_eigenmode",
+          "Zeta23.CCM.GlobalBottomResidualState.primeRemainderEnergy_eq_weight_integral",
+          "Zeta23.CCM.RegularCellMinimalFirstBadCertificate.predecessorNonnegative_anyParity",
+          "Zeta23.CCM.RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial",
+          "Zeta23.CCM.RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial._proof_1",
+          "Zeta23.CCM.RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial._proof_2",
+          "Zeta23.CCM.RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial._proof_3",
+          "Zeta23.CCM.RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial._proof_4",
+          "Zeta23.CCM.RegularCellMinimalNegativeEnergyCertificate.evenShiftedTrial._proof_5",
+          "Zeta23.CCM.RegularCellMinimalNegativeEnergyCertificate.lam_neg",
+          "Zeta23.CCM.RegularCellMinimalNegativeEnergyCertificate.retainedOddResolventCorrection",
+          "Zeta23.CCM.RegularCellMinimalNegativeEnergyCertificate.retainedOddResolventCorrection._proof_1",
+          "Zeta23.CCM.RegularCellMinimalNegativeEnergyCertificate.retainedOddResolventCorrection._proof_2",
+          "Zeta23.CCM.RegularCellMinimalNegativeEnergyCertificate.retainedOddResolventCorrection._proof_3"
+        ],
+        "sha256": "dcec34990509ce82efc9e872a0cebc1c1dbb71fc4ddfb96e164bbe809dbfeea4",
+        "truncated": true
+      },
+      "support": {
+        "count": 266,
+        "examples": [
+          "Zeta23.CCM.AnyParityBad",
+          "Zeta23.CCM.BiRegularCellMinimalNegativeEnergyCertificate",
+          "Zeta23.CCM.BiRegularCellMinimalNegativeEnergyCertificate.energy",
+          "Zeta23.CCM.BiRegularCellMinimalNegativeEnergyCertificate.mk",
+          "Zeta23.CCM.CellAnyParityBad",
+          "Zeta23.CCM.GlobalBottomAlignedBranch",
+          "Zeta23.CCM.GlobalBottomAlignedBranch.evenStrict",
+          "Zeta23.CCM.GlobalBottomAlignedBranch.oddStrict",
+          "Zeta23.CCM.GlobalBottomAlignedBranch.tieEven",
+          "Zeta23.CCM.GlobalBottomBranchPackage",
+          "Zeta23.CCM.GlobalBottomBranchPackage._proof_1",
+          "Zeta23.CCM.GlobalBottomBranchPackage.evenStrict",
+          "Zeta23.CCM.GlobalBottomBranchPackage.oddStrict",
+          "Zeta23.CCM.GlobalBottomBranchPackage.tieEven",
+          "Zeta23.CCM.GlobalBottomResidualState",
+          "Zeta23.CCM.GlobalBottomResidualState.aligned",
+          "Zeta23.CCM.GlobalBottomResidualState.exists_branchPackage",
+          "Zeta23.CCM.GlobalBottomResidualState.groundTrial",
+          "Zeta23.CCM.GlobalBottomResidualState.groundTrial._proof_1",
+          "Zeta23.CCM.GlobalBottomResidualState.groundTrial._proof_2"
+        ],
+        "sha256": "75bdfdf9b0860135b5226c68426e4da1ce91a015cc0751189d402337c6771998",
+        "truncated": true
+      }
+    }
+  },
+  "interpretation": "Exact compiler-support contact atlas over the 680 source-only public theorem/lemma roots. Contacts are discovery-only and do not establish theorem composition, mathematical implication, relevance ranking, or RH evidence.",
+  "mode": "DISCOVERY_INTERFACE_CONTACT_ONLY",
+  "ool_kernel_version": "2.7.6",
+  "projection": "THEOREM_VALUE_ERASED_SUPPORT",
+  "schema_version": "RHRC-OOL-RHKG-phase-atlas-report-1.0",
+  "status": "RESEARCH_CONTROL_ONLY",
+  "terminal_claim": "RH_OPEN",
+  "theorem_promotion": false
+}
