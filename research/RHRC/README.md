@@ -1,23 +1,6 @@
 # RHRC — current research state
 
 
-## Post-#265 OoL integration state
-
-PR #265 is merged green. FFBBP has certified only the bounded
-module+visibility navigation reduction over the exact source-candidate
-snapshot: 680 source-only public theorem/lemmas compress to 195 navigation
-cohorts without changing their source-only disposition.
-
-The active integration operation is now the OoL RHKG Phase Atlas. It uses a
-separate DISCOVERY_ONLY compiler dependency closure rooted at all 680 exact
-Lean declarations and the existing `THEOREM_VALUE_ERASED_SUPPORT` semantics.
-The atlas asks for exact support contact with the carrier/spectrum,
-aperture/arithmetic and ground/source interfaces and with the #261 21-edge
-arithmetic frontier. It does not rank theorem importance and cannot promote a
-claim.
-
-Exact Lean theorem authority remains PR #262. RH remains OPEN.
-
 > **RH remains OPEN.**
 
 Live GitHub/compiler/CI evidence is authoritative.
@@ -118,7 +101,22 @@ CONTROL AUTHORITY
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
-<!-- RHRC_CURRENT_STATE_END -->
+<!-- RHRC_CURRENT_STATE_END -->\n\n## Post-#265 OoL integration state
+
+PR #265 is merged green. FFBBP has certified only the bounded
+module+visibility navigation reduction over the exact source-candidate
+snapshot: 680 source-only public theorem/lemmas compress to 195 navigation
+cohorts without changing their source-only disposition.
+
+The active integration operation is now the OoL RHKG Phase Atlas. It uses a
+separate DISCOVERY_ONLY compiler dependency closure rooted at all 680 exact
+Lean declarations and the existing `THEOREM_VALUE_ERASED_SUPPORT` semantics.
+The atlas asks for exact support contact with the carrier/spectrum,
+aperture/arithmetic and ground/source interfaces and with the #261 21-edge
+arithmetic frontier. It does not rank theorem importance and cannot promote a
+claim.
+
+Exact Lean theorem authority remains PR #262. RH remains OPEN.
 
 ## RHKG repository knowledge graph
 
