@@ -378,43 +378,50 @@ private def euclideanReverseNormEq
           ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x))),
      norm_nonneg x]
 
-private def euclideanEvenOddNormSqSplit
+private theorem euclideanEvenOddNormSqSplit
     (N : ℕ)
     (x : EuclideanSpace ℂ (Fin (2 * N + 1))) :
     ‖x‖ ^ 2 =
-      ‖(EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ).symm
+      ‖WithLp.toLp 2
           (evenPart N
             ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x))‖ ^ 2 +
-      ‖(EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ).symm
+      ‖WithLp.toLp 2
           (oddPart N
             ((EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x))‖ ^ 2 := by
   let E := EuclideanSpace ℂ (Fin (2 * N + 1))
   let u : Fin (2 * N + 1) → ℂ :=
     (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) x
-  let r : E :=
-    (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ).symm
-      (reverseCoefficients N u)
-  let e : E :=
-    (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ).symm
-      (evenPart N u)
-  let o : E :=
-    (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ).symm
-      (oddPart N u)
+  let r : E := WithLp.toLp 2 (reverseCoefficients N u)
+  let e : E := WithLp.toLp 2 (evenPart N u)
+  let o : E := WithLp.toLp 2 (oddPart N u)
   have hrnorm : ‖r‖ = ‖x‖ := by
     simpa [r, u] using euclideanReverseNormEq N x
   have he :
       e = (1 / 2 : ℂ) • (x + r) := by
-    apply (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ).injective
+    apply WithLp.ofLp_injective 2
+    change
+      evenPart N u =
+        WithLp.ofLp ((1 / 2 : ℂ) • (x + r))
+    rw [WithLp.ofLp_smul, WithLp.ofLp_add]
+    change
+      evenPart N u =
+        (1 / 2 : ℂ) •
+          (u + reverseCoefficients N u)
     ext i
-    simp [e, r, u, evenPart, reverseCoefficients, Pi.smul_apply, smul_eq_mul]
-    ring
+    simp [evenPart, reverseCoefficients, Pi.smul_apply, smul_eq_mul]
   have ho :
       o = (1 / 2 : ℂ) • (x - r) := by
-    apply (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ).injective
+    apply WithLp.ofLp_injective 2
+    change
+      oddPart N u =
+        WithLp.ofLp ((1 / 2 : ℂ) • (x - r))
+    rw [WithLp.ofLp_smul, WithLp.ofLp_sub]
+    change
+      oddPart N u =
+        (1 / 2 : ℂ) •
+          (u - reverseCoefficients N u)
     ext i
-    simp [o, r, u, oddPart, reverseCoefficients, WithLp.ofLp_sub,
-      Pi.smul_apply, smul_eq_mul]
-    ring
+    simp [oddPart, reverseCoefficients, Pi.smul_apply, smul_eq_mul]
   have hpara := parallelogram_law_with_norm ℂ x r
   rw [hrnorm] at hpara
   change ‖x‖ ^ 2 = ‖e‖ ^ 2 + ‖o‖ ^ 2
@@ -537,21 +544,27 @@ theorem boundaryFlatRayleighBottom_eq_min_parity
     have huflat : u ∈ boundaryFlatSubspace N := by
       exact (mem_euclideanBoundaryFlatSubspace_iff N x0).mp x.property
     let e0 : EuclideanSpace ℂ (Fin (2 * N + 1)) :=
-      (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ).symm (evenPart N u)
+      WithLp.toLp 2 (evenPart N u)
     let o0 : EuclideanSpace ℂ (Fin (2 * N + 1)) :=
-      (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ).symm (oddPart N u)
+      WithLp.toLp 2 (oddPart N u)
+    have he0 :
+        WithLp.ofLp e0 = evenPart N u := by
+      simp [e0]
+    have ho0 :
+        WithLp.ofLp o0 = oddPart N u := by
+      simp [o0]
     have heMem :
         e0 ∈ euclideanParityBoundaryFlatSubspace .even N := by
       change
-        (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) e0 ∈
-          evenBoundaryFlatSubspace N
-      simpa [e0] using evenPart_mem_evenBoundaryFlatSubspace huflat
+        WithLp.ofLp e0 ∈ evenBoundaryFlatSubspace N
+      rw [he0]
+      exact evenPart_mem_evenBoundaryFlatSubspace huflat
     have hoMem :
         o0 ∈ euclideanParityBoundaryFlatSubspace .odd N := by
       change
-        (EuclideanSpace.equiv (Fin (2 * N + 1)) ℂ) o0 ∈
-          oddBoundaryFlatSubspace N
-      simpa [o0] using oddPart_mem_oddBoundaryFlatSubspace huflat
+        WithLp.ofLp o0 ∈ oddBoundaryFlatSubspace N
+      rw [ho0]
+      exact oddPart_mem_oddBoundaryFlatSubspace huflat
     let e : euclideanParityBoundaryFlatSubspace .even N := ⟨e0, heMem⟩
     let o : euclideanParityBoundaryFlatSubspace .odd N := ⟨o0, hoMem⟩
     have heLower :=
@@ -567,7 +580,10 @@ theorem boundaryFlatRayleighBottom_eq_min_parity
       rw [re_inner_parityCompressedCanonical_self]
       rw [← quadraticForm_re_eq_re_inner_apply_self
         (canonicalSourceMatrix L N) e0]
-      simp [e, e0, u]
+      change
+        (quadraticForm (canonicalSourceMatrix L N) (WithLp.ofLp e0)).re =
+          (quadraticForm (canonicalSourceMatrix L N) (evenPart N u)).re
+      rw [he0]
     have hoAmbient :
         Complex.re
             (inner ℂ
@@ -577,9 +593,32 @@ theorem boundaryFlatRayleighBottom_eq_min_parity
       rw [re_inner_parityCompressedCanonical_self]
       rw [← quadraticForm_re_eq_re_inner_apply_self
         (canonicalSourceMatrix L N) o0]
-      simp [o, o0, u]
-    rw [heAmbient] at heLower
-    rw [hoAmbient] at hoLower
+      change
+        (quadraticForm (canonicalSourceMatrix L N) (WithLp.ofLp o0)).re =
+          (quadraticForm (canonicalSourceMatrix L N) (oddPart N u)).re
+      rw [ho0]
+    have heLower' :
+        parityRayleighBottom .even L N * ‖e‖ ^ 2 ≤
+          (quadraticForm (canonicalSourceMatrix L N) (evenPart N u)).re := by
+      calc
+        parityRayleighBottom .even L N * ‖e‖ ^ 2
+            ≤ Complex.re
+                (inner ℂ
+                  (parityCompressedCanonical .even L N e)
+                  e) := heLower
+        _ = (quadraticForm (canonicalSourceMatrix L N) (evenPart N u)).re :=
+          heAmbient
+    have hoLower' :
+        parityRayleighBottom .odd L N * ‖o‖ ^ 2 ≤
+          (quadraticForm (canonicalSourceMatrix L N) (oddPart N u)).re := by
+      calc
+        parityRayleighBottom .odd L N * ‖o‖ ^ 2
+            ≤ Complex.re
+                (inner ℂ
+                  (parityCompressedCanonical .odd L N o)
+                  o) := hoLower
+        _ = (quadraticForm (canonicalSourceMatrix L N) (oddPart N u)).re :=
+          hoAmbient
     have hsplitC :=
       quadraticForm_evenPart_add_oddPart L N u
     have hsplit :
@@ -626,7 +665,7 @@ theorem boundaryFlatRayleighBottom_eq_min_parity
       have honorm : ‖o‖ = ‖o0‖ := rfl
       have hxnorm : ‖x‖ = ‖x0‖ := rfl
       rw [henorm, honorm, hxnorm]
-      nlinarith
+      nlinarith [heLower', hoLower', hminEven, hminOdd, hsplit]
     exact (le_div_iff₀ hden).2 hquad
 
 /-- The common #247 shift: minimum of the two successor parity bottoms. -/
