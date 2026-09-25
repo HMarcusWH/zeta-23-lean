@@ -70,7 +70,7 @@ def main() -> int:
         )
     if by_id["FFBBP_ASSURANCE"].get("inherits_run42c_qualification") is not False:
         raise SystemExit("integration_lint: FFBBP v1.6 may not inherit RUN42C qualification")
-    if by_id["FFBBP_ASSURANCE"].get("status") != "RHKG_SNAPSHOT_ASSURANCE_INTEGRATED_NOT_RUN42C_QUALIFIED":
+    if by_id["FFBBP_ASSURANCE"].get("status") != "RHKG_SNAPSHOT_ASSURANCE_V17_INTEGRATED_RUNTIME_NOT_PROMOTED":
         raise SystemExit("integration_lint: FFBBP RHKG assurance status drift")
     if by_id["MCM_HMWH"]["status"] != "NOT_YET_INTEGRATED":
         raise SystemExit("integration_lint: MCM-HMWH must remain not-yet-integrated in foundation PR")
@@ -213,7 +213,7 @@ def main() -> int:
     ffbbp_config_path = RHRC / "ffbbp" / "configs" / "rhkg_candidate_reduction_v2.json"
     ffbbp_report_path = RHRC / "ffbbp" / "generated" / "RHKG_CANDIDATE_REDUCTION_ASSURANCE.json"
     ffbbp_config = json.loads(ffbbp_config_path.read_text(encoding="utf-8"))
-    if ffbbp_config.get("theory_version") != "1.6.0":
+    if ffbbp_config.get("theory_version") != "1.7":
         raise SystemExit("integration_lint: FFBBP RHKG config theory-version drift")
     if ffbbp_config.get("xi_mode") != "SNAPSHOT":
         raise SystemExit("integration_lint: FFBBP RHKG adapter must remain snapshot Xi")
