@@ -29,7 +29,7 @@
   "default_certificate": "INCOMPLETE without independently configured policy and reviewed signatures",
   "valid_certificate_meaning": "attested binding; NOT physical truth",
   "qualification_status": "no laboratory-qualified instrument-to-claim adapter supplied",
-  "runtime_integration": "NONE",
+  "runtime_integration": "RHRC_DOMAIN_NEUTRAL_GOVERNANCE_SUBSET",
   "rh_import_scope": "operational_semantics_and_governance_only",
   "not_imported": [
     "the 24 origin-of-life physical claims as RH premises",
@@ -58,5 +58,25 @@
     "route_freeze_scope": "diagnostic/confirmatory runs and frozen proof-search experiments; discovery remains adaptive",
     "certificate_scope": "research evidence integrity only; mathematical theorem authority remains Lean/comparator",
     "integrated_route_analogue": "Local lemmas may be correct while the global proof route remains open; freeze requires qualified interfaces and admitted provenance end to end."
+  },
+  "implementation_scope": {
+    "status": "ADAPTED_SUBSET_NOT_VENDORED_CANONICAL_RUNTIME",
+    "implemented": [
+      "Strong-Kleene PASS/FAIL/NA helpers",
+      "closed type-tagged canonical hashing",
+      "typed evidence receipts and ancestry closure",
+      "route-scoped domain completeness",
+      "typed threshold freeze validation",
+      "frozen route/boundary binding checks",
+      "integrated interface freeze eligibility",
+      "Ed25519 reviewed-attestation binding with default-INCOMPLETE certificate policy"
+    ],
+    "not_claimed": [
+      "full 24-claim canonical registry runtime",
+      "canonical evidence-bundle replay engine",
+      "laboratory evaluator qualification",
+      "physical claim validity",
+      "byte-identical implementation equivalence to the packaged 2.7.7 kernel"
+    ]
   }
 }
