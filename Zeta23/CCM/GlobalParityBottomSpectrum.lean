@@ -100,8 +100,10 @@ theorem parityRayleighBottom_mul_norm_sq_le
     simp
   · have h :=
       parityRayleighBottom_le_rayleigh p L K x hx
+    have hxne : x ≠ 0 := by
+      simpa [x] using z.property
     have hden : 0 < ‖x‖ ^ 2 := by
-      positivity
+      simpa only [sq_pos_iff, norm_ne_zero_iff] using hxne
     exact (le_div_iff₀ hden).mp h
 
 /-- At an arbitrary real shift lambda, the shifted quadratic form lies above
@@ -657,15 +659,14 @@ theorem boundaryFlatRayleighBottom_eq_min_parity
                 ((canonicalSourceMatrix L N).toEuclideanLin x0)
                 x0) =
             (quadraticForm (canonicalSourceMatrix L N) u).re := by
-        rw [← quadraticForm_re_eq_re_inner_apply_self
-          (canonicalSourceMatrix L N) x0]
-        simp [u]
+        simpa [u, RCLike.re_to_complex] using
+          (quadraticForm_re_eq_re_inner_apply_self
+            (canonicalSourceMatrix L N) x0).symm
+      have hnorm' :
+          ‖x‖ ^ 2 = ‖e‖ ^ 2 + ‖o‖ ^ 2 := by
+        simpa [x, e, o] using hnorm
       rw [hxquad]
-      have henorm : ‖e‖ = ‖e0‖ := rfl
-      have honorm : ‖o‖ = ‖o0‖ := rfl
-      have hxnorm : ‖x‖ = ‖x0‖ := rfl
-      rw [henorm, honorm, hxnorm]
-      nlinarith [heLower', hoLower', hminEven, hminOdd, hsplit]
+      nlinarith [heLower', hoLower', hminEven, hminOdd, hsplit, hnorm']
     exact (le_div_iff₀ hden).2 hquad
 
 /-- The common #247 shift: minimum of the two successor parity bottoms. -/
