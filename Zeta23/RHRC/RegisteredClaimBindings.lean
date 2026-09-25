@@ -30,6 +30,7 @@ import Zeta23.CCM.GlobalParityBottomGroundTrial
 import Zeta23.CCM.GlobalParityBottomPrimeWeight
 import Zeta23.CCM.GlobalParityBottomPrimeWeightJets
 import Zeta23.CCM.GlobalParityBottomSpectrum
+import Zeta23.CCM.GlobalParityBottomNFlow
 import Zeta23.CCM.LocalizedBasis
 import Zeta23.CCM.LocalizedFiniteSpace
 import Zeta23.CCM.LocalizedFourierApproximation
@@ -240,6 +241,10 @@ import Zeta23.ZeroSide.TightMult
 -- R003_GLOBAL_PARITY_BOTTOM_SPECTRUM
 #check Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad
 #print axioms Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad
+
+-- R003_GLOBAL_PARITY_BOTTOM_NFLOW
+#check Zeta23.CCM.globalParitySuccessorBottom_antitone_of_le
+#print axioms Zeta23.CCM.globalParitySuccessorBottom_antitone_of_le
 
 -- R003_KERNEL_EF_EXTENSION
 #check Zeta23.CCM.dictionaryTransform_zero_sum_eq_literatureRHS
