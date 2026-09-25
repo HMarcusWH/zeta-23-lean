@@ -1,28 +1,18 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from enum import Enum
-from hashlib import sha256
-import json
 from typing import Iterable, Mapping
 
-
-class EvidenceValue(str, Enum):
-    PASS = "PASS"
-    FAIL = "FAIL"
-    NA = "NA"
-
-
-class CertificateStatus(str, Enum):
-    VALID = "VALID"
-    INCOMPLETE = "INCOMPLETE"
-    INVALID = "INVALID"
-
-
-class DomainCompleteness(str, Enum):
-    COMPLETE = "COMPLETE"
-    PARTIAL = "PARTIAL"
-    UNKNOWN = "UNKNOWN"
+from ool.v277_evidence import (
+    CertificateStatus,
+    ClaimCertificate,
+    ClaimResult,
+    DomainCompleteness,
+    EvidenceReceipt,
+    EvidenceValue,
+    stable_digest,
+)
+from ool.v277_authority import Attestation, EvaluatorRegistration, VerifierPolicy, issue_certificate
 
 
 def k_not(x: EvidenceValue) -> EvidenceValue:
@@ -69,11 +59,6 @@ def forall_result(xs: Iterable[EvidenceValue], completeness: DomainCompleteness)
     return EvidenceValue.NA
 
 
-def stable_digest(obj: object) -> str:
-    payload = json.dumps(obj, sort_keys=True, separators=(",", ":"), default=str).encode()
-    return sha256(payload).hexdigest()
-
-
 @dataclass(frozen=True)
 class RouteBinding:
     route_id: str
@@ -96,35 +81,11 @@ def confirmatory_binding_status(expected: RouteBinding, observed: RouteBinding) 
 
 
 @dataclass(frozen=True)
-class EvidenceReceipt:
-    evidence_id: str
-    input_digest: str
-
-
-@dataclass(frozen=True)
 class LeafEvaluationReceipt:
     predicate_id: str
     evidence_receipt_refs: tuple[str, ...]
     result: EvidenceValue
     authority_mode: str = "AUTHORIZED_EVALUATOR"
-
-
-@dataclass(frozen=True)
-class ClaimResult:
-    claim_id: str
-    result: EvidenceValue
-    support_receipt_digests: tuple[str, ...]
-    registry_hash: str
-    evaluation_mode: str = "EXPERIMENTAL_EVIDENCE"
-
-
-@dataclass(frozen=True)
-class ClaimCertificate:
-    claim_id: str
-    physical_witness_ref: str
-    claim_result: EvidenceValue
-    certificate_status: CertificateStatus
-    registry_hash: str
 
 
 def validate_leaf_receipt(
@@ -138,28 +99,6 @@ def validate_leaf_receipt(
     if any(ref not in raw_evidence for ref in leaf.evidence_receipt_refs):
         return EvidenceValue.NA
     return leaf.result
-
-
-def issue_certificate(
-    result: ClaimResult,
-    *,
-    physical_witness_ref: str,
-    raw_support_complete: bool,
-    binding_valid: bool,
-) -> ClaimCertificate:
-    if not binding_valid:
-        status = CertificateStatus.INVALID
-    elif result.result is EvidenceValue.NA or not raw_support_complete:
-        status = CertificateStatus.INCOMPLETE
-    else:
-        status = CertificateStatus.VALID
-    return ClaimCertificate(
-        claim_id=result.claim_id,
-        physical_witness_ref=physical_witness_ref,
-        claim_result=result.result,
-        certificate_status=status,
-        registry_hash=result.registry_hash,
-    )
 
 
 def unconditional_provenance_result(
@@ -200,12 +139,6 @@ class RouteInterfaceQualification:
 def integrated_route_freeze_status(
     interfaces: Iterable[RouteInterfaceQualification],
 ) -> str:
-    """Domain-neutral full-route freeze gate.
-
-    Independent module success is insufficient. Every declared interface must be positively
-    qualified, claim-bearing evidence must use actual route output, and provenance must remain
-    continuous through the integrated route before confirmatory freeze is eligible.
-    """
     vals = tuple(interfaces)
     if not vals:
         return "INCOMPLETE"
@@ -218,3 +151,31 @@ def integrated_route_freeze_status(
     if any(not x.provenance_continuous for x in vals):
         return "NOT_READY_FOR_FREEZE"
     return "FULL_ROUTE_FREEZE_ELIGIBLE"
+
+
+__all__ = [
+    "Attestation",
+    "CertificateStatus",
+    "ClaimCertificate",
+    "ClaimResult",
+    "DomainCompleteness",
+    "EvidenceReceipt",
+    "EvidenceValue",
+    "EvaluatorRegistration",
+    "LeafEvaluationReceipt",
+    "RouteBinding",
+    "RouteInterfaceQualification",
+    "VerifierPolicy",
+    "absence_result",
+    "confirmatory_binding_status",
+    "exists_result",
+    "forall_result",
+    "integrated_route_freeze_status",
+    "issue_certificate",
+    "k_and",
+    "k_not",
+    "k_or",
+    "stable_digest",
+    "unconditional_provenance_result",
+    "validate_leaf_receipt",
+]
