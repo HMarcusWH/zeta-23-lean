@@ -1,0 +1,65 @@
+{
+  "status": "PASS_EXACT_RATIONAL_AND_SYMBOLIC_CHECKS",
+  "claim_cap": "DERIVED_COUNTEREXAMPLE_NOT_LEAN_THEOREM_NOT_RH_COUNTEREXAMPLE",
+  "K": 4,
+  "centered_indices": [
+    -4,
+    -3,
+    -2,
+    -1,
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "real_even_vector": [
+    -1,
+    3,
+    1,
+    -15,
+    24,
+    -15,
+    1,
+    3,
+    -1
+  ],
+  "moments": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": -24,
+    "5": 0,
+    "6": -3720,
+    "7": 0,
+    "8": -91224,
+    "9": 0
+  },
+  "omega": "1/8",
+  "source_first_derivative_exact": "-15962*sqrt(2)/35 - 126*sqrt(2)*pi - 2*pi + 25432/21",
+  "source_first_derivative_decimal_diagnostic": "-0.00101311321020509538025577616452789276340903438",
+  "sqrt2_lower": "282842712474619/200000000000000",
+  "pi_rational_lower": "3141592653589793/1000000000000000",
+  "pi_lower_certificate": "Machin identity pi=16 atan(1/5)-4 atan(1/239), alternating series (16,9) terms",
+  "machin_pi_lower": "71527363123307329116374530182578866250256113561906685644445349994039661052/22767866814806621975756089441217692523657473676954596303403377532958984375",
+  "machin_pi_upper": "31305195603765396752671795402116750608074097324463388784298133541918416/9964753249595867533724938919669514068231243184185586869716644287109375",
+  "negative_upper_bound_exact": "-2127537741253160308202196041/2100000000000000000000000000000",
+  "negative_upper_bound_decimal_diagnostic": -0.0010131132101205526,
+  "scaled_odd_taylor_moment_coefficients": {
+    "1": "0",
+    "3": "0",
+    "5": "0",
+    "7": "0",
+    "9": "576"
+  },
+  "g9_at_zero": "1152*(2*pi)^8",
+  "prime_weight_at_t_7L_over_8": "strictly negative for every L>0",
+  "prime_weight_endpoint_jets": "orders 0 through 7 vanish; order 8 equals 1152*(2*pi)^8/L^8 > 0",
+  "falsifies": "pointwise nonnegativity of the prime-test weight on all even boundary-flat vectors",
+  "does_not_falsify": [
+    "ground-eigenvector-specific sign hypotheses",
+    "canonical energy positivity",
+    "RiemannHypothesis"
+  ]
+}

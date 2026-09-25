@@ -1,0 +1,7 @@
+$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post192_fb05_q14_parity_trajectory_rigidity_scope.py
+Traceback (most recent call last):
+  File "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post192_fb05_q14_parity_trajectory_rigidity_scope.py", line 9, in <module>
+    from post192_fb05_q14_parity_trajectory_rigidity import synthetic_orientation_controls
+  File "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/post192_fb05_q14_parity_trajectory_rigidity.py", line 37, in <module>
+    from flint import arb
+ModuleNotFoundError: No module named 'flint'

@@ -1,0 +1,2 @@
+$ /opt/pyvenv/bin/python research/RHRC/graph/build.py --check
+RHKG BUILD CHECK: PASS (22 products byte-current)

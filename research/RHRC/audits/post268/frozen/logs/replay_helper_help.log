@@ -1,0 +1,15 @@
+usage: replay_checks.py [-h] --repo REPO --output OUTPUT
+                        [--batch {primary,expanded,both}] [--timeout TIMEOUT]
+
+Replay the recorded repository commands on a user-provided checkout. This
+writes new logs only under --output. It does not overwrite the frozen audit. A
+Git checkout/index is needed by the repository's census tools. Existing Lean
+and Arb dependencies are not installed automatically. Numerical checks can be
+expensive; --batch primary is the default.
+
+options:
+  -h, --help            show this help message and exit
+  --repo REPO
+  --output OUTPUT
+  --batch {primary,expanded,both}
+  --timeout TIMEOUT

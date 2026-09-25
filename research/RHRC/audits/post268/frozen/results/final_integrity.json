@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "tracked_files_checked": 1207,
+  "changes": [],
+  "original_tree": "0fdd3151c86989f7cf7123be322b3968e89e3263",
+  "current_index_tree": "0fdd3151c86989f7cf7123be322b3968e89e3263",
+  "note": "Working-tree source hashes checked against the original ZIP manifest; untracked __pycache__ and local .git are not source changes."
+}

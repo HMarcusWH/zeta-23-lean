@@ -1,0 +1,10 @@
+$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/countermodels/check_post204_pair_d_scope.py
+{
+  "adaptive_search": false,
+  "canonical_search": false,
+  "exact_rational_only": true,
+  "pair_a_imports": false,
+  "rh_claim": false,
+  "status": "PASS",
+  "theorem_promotion": false
+}

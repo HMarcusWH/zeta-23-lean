@@ -254,6 +254,54 @@
     },
     {
       "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/audits/post268/CI_REPAIR_NOTES.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/audits/post268/CI_REPAIR_NOTES.md",
+      "heading_count": 6,
+      "path": "research/RHRC/audits/post268/CI_REPAIR_NOTES.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [
+        "C_RH",
+        "R001_PRIME_UPPER",
+        "R002_WINDOWED_VISIBILITY"
+      ],
+      "document_id": "rh:document:research/RHRC/audits/post268/frozen/AUDIT_REPORT.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/audits/post268/frozen/AUDIT_REPORT.md",
+      "heading_count": 21,
+      "path": "research/RHRC/audits/post268/frozen/AUDIT_REPORT.md",
+      "route_mentions": [
+        "R002_multi_probe",
+        "R003_ccm_bridge",
+        "R004_prolate_v2"
+      ]
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/audits/post268/frozen/PROOF_NOTES.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/audits/post268/frozen/PROOF_NOTES.md",
+      "heading_count": 17,
+      "path": "research/RHRC/audits/post268/frozen/PROOF_NOTES.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/audits/post268/frozen/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/audits/post268/frozen/README.md",
+      "heading_count": 5,
+      "path": "research/RHRC/audits/post268/frozen/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
       "document_id": "rh:document:research/RHRC/control_v2/README.md",
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
@@ -786,7 +834,7 @@
       ]
     }
   ],
-  "entry_count": 66,
+  "entry_count": 70,
   "graph_theorem_promotion": false,
   "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
   "schema_version": "RHKG-final-document-closure-1.0",

@@ -1,0 +1,103 @@
+NODE_COUNT 19125 DUPLICATES 0 MISSING 0
+[]
+KIND_COUNTS {'USES_CONSTANT': 280507, 'DECLARES': 3231, 'SOURCE_DECLARES': 8335, 'CONTAINS': 1207, 'IMPORTS': 2256, 'LOCATED_AT': 1007, 'REGISTERED_IN': 85, 'GENERATED_BY': 29, 'PROVES': 78, 'MIRRORS': 85, 'MENTIONS': 86, 'PART_OF_ROUTE': 69, 'GOVERNED_BY': 1}
+RES_KEYS dict_keys(['ambiguous_names', 'claim_cap', 'compiler_kind', 'compiler_type_sha256', 'compiler_type_text', 'declared_name', 'lean_toolchain', 'line', 'match_count', 'module', 'path', 'private_or_internal', 'registered_claim_id', 'registered_compiler_receipt_sha256', 'repository_graph_authority', 'resolution_status', 'resolved_full_name', 'rhkg_subject_digest_sha256', 'schema_version', 'source_command_kind', 'source_declaration_id', 'source_surface_sha256', 'terminal_claim', 'theorem_promotion', 'trust_zone', 'visibility_class'])
+RES_SAMPLE {'ambiguous_names': [], 'claim_cap': 'DISCOVERY_ONLY', 'compiler_kind': 'THEOREM', 'compiler_type_sha256': '8a321492d97398918b6e8ed2072ca8a1c06bd95ef24f93a5ea06c46f4b15683c', 'compiler_type_text': '∀ (Q : ℕ),   1 ≤ Q → (∃ K, Zeta23.CCM.CellAnyParityBad Q K) → Nonempty (Zeta23.CCM.BiRegularCellMinimalNegativeEnergyCertificate Q)', 'declared_name': 'exists_biRegular_cellMinimal_negativeCanonicalEnergyCertificate', 'lean_toolchain': 'leanprover/lean4:v4.33.0-rc2', 'line': 32, 'match_count': 1, 'module': 'Zeta23.CCM.BiRegularFirstBadCanonicalEnergy', 'path': 'Zeta23/CCM/BiRegularFirstBadCanonicalEnergy.lean', 'private_or_internal': False, 'registered_claim_id': None, 'registered_compiler_receipt_sha256': 'ba506ceafd15b0b277d25b3c096e5b65007f71037eb02c11ac186c357ed504ee', 'repository_graph_authority': {'merge_commit': '6f4c69f6435c3ecd09acae06c153cfaf906e9ca4', 'pr': 263, 'status': 'MERGED_GREEN_SEMANTIC_CLOSURE', 'tree': '7632d1c4417922d7fd160f1f3199e83b0f25b38a'}, 'resolution_status': 'RESOLVED_UNIQUE', 'resolved_full_name': 'Zeta23.CCM.exists_biRegular_cellMinimal_negativeCanonicalEnergyCertificate', 'rhkg_subject_digest_sha256': 'c39ebaa92316e472f4b65193278dc085a8210167976e36359729b4ee90243e7b', 'schema_version': 'RHRC-lean-candidate-receipt-1.0', 'source_command_kind': 'THEOREM', 'source_declaration_id': 'rh:source-decl:1cb4d86170194cb8a486ffb7f5f951534e81676c3a9acf17a1632e340c742b41', 'source_surface_sha256': '00e50a77061cf68a16d89498cbf2ff77369bd3b3d778836c8c8530a8d701f0e1', 'terminal_claim': 'RH_OPEN', 'theorem_promotion': False, 'trust_zone': 'RH_FORMAL_CORE', 'visibility_class': 'ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE'}
+FILE_KEYS {'classification_rule': 'ci_workflows', 'file_class': 'CI_WORKFLOW', 'generated_product': False, 'git_blob': '7926007c27b81f71e658ef29549bd5ef5bb98444', 'id': 'rh:file:.github/workflows/permansson-formal.yml', 'path': '.github/workflows/permansson-formal.yml', 'source_locator': {'blob_sha': '7926007c27b81f71e658ef29549bd5ef5bb98444', 'path': '.github/workflows/permansson-formal.yml', 'repository': 'HMarcusWH/zeta-23-lean'}, 'trust_zone': 'AUDIT_ONLY', 'type': 'RepoFile'}
+{
+  "scope": "INDEPENDENT_STATIC_GRAPH_AUDIT_NOT_LEAN_COMPILATION",
+  "node_count": 19125,
+  "unique_node_count": 19125,
+  "duplicate_node_ids": [],
+  "relation_count": 296976,
+  "relation_kind_counts": {
+    "USES_CONSTANT": 280507,
+    "DECLARES": 3231,
+    "SOURCE_DECLARES": 8335,
+    "CONTAINS": 1207,
+    "IMPORTS": 2256,
+    "LOCATED_AT": 1007,
+    "REGISTERED_IN": 85,
+    "GENERATED_BY": 29,
+    "PROVES": 78,
+    "MIRRORS": 85,
+    "MENTIONS": 86,
+    "PART_OF_ROUTE": 69,
+    "GOVERNED_BY": 1
+  },
+  "duplicate_relation_ids": 0,
+  "file_count": 1207,
+  "tracked_files_missing_from_graph": [],
+  "graph_files_not_in_index": [],
+  "dependency_nodes": 7694,
+  "dependency_edges": 280507,
+  "dependency_nontrivial_sccs": [
+    [
+      "rh:decl:Zeta23.CCM.ReversalParity",
+      "rh:decl:Zeta23.CCM.ReversalParity.even",
+      "rh:decl:Zeta23.CCM.ReversalParity.odd"
+    ],
+    [
+      "rh:decl:Zeta23.CCM.RegularCellMinimalFirstBadCertificate",
+      "rh:decl:Zeta23.CCM.RegularCellMinimalFirstBadCertificate.mk"
+    ],
+    [
+      "rh:decl:Zeta23.CCM.BiRegularCellMinimalFirstBadCertificate",
+      "rh:decl:Zeta23.CCM.BiRegularCellMinimalFirstBadCertificate.mk"
+    ],
+    [
+      "rh:decl:Zeta23.CCM.RegularCellMinimalNegativeEnergyCertificate",
+      "rh:decl:Zeta23.CCM.RegularCellMinimalNegativeEnergyCertificate.mk"
+    ],
+    [
+      "rh:decl:Zeta23.CCM.BiRegularCellMinimalNegativeEnergyCertificate",
+      "rh:decl:Zeta23.CCM.BiRegularCellMinimalNegativeEnergyCertificate.mk"
+    ],
+    [
+      "rh:decl:Zeta23.CCM.GlobalBottomAlignedBranch",
+      "rh:decl:Zeta23.CCM.GlobalBottomAlignedBranch.evenStrict",
+      "rh:decl:Zeta23.CCM.GlobalBottomAlignedBranch.oddStrict",
+      "rh:decl:Zeta23.CCM.GlobalBottomAlignedBranch.tieEven"
+    ],
+    [
+      "rh:decl:Zeta23.CCM.WholeCellBiRegularNegativeEnergyCertificate",
+      "rh:decl:Zeta23.CCM.WholeCellBiRegularNegativeEnergyCertificate.mk"
+    ],
+    [
+      "rh:decl:Zeta23.CCM.GlobalBottomResidualState",
+      "rh:decl:Zeta23.CCM.GlobalBottomResidualState.mk"
+    ],
+    [
+      "rh:decl:Zeta23.CCM.GlobalBottomBranchPackage",
+      "rh:decl:Zeta23.CCM.GlobalBottomBranchPackage.evenStrict",
+      "rh:decl:Zeta23.CCM.GlobalBottomBranchPackage.oddStrict",
+      "rh:decl:Zeta23.CCM.GlobalBottomBranchPackage.tieEven"
+    ],
+    [
+      "rh:decl:Zeta23.CCM.GlobalBottomArithmeticResidual",
+      "rh:decl:Zeta23.CCM.GlobalBottomArithmeticResidual.mk"
+    ],
+    [
+      "rh:decl:Zeta23.ZeroConfig",
+      "rh:decl:Zeta23.ZeroConfig.mk"
+    ],
+    [
+      "rh:decl:Zeta23.ZetaSeam",
+      "rh:decl:Zeta23.ZetaSeam.mk"
+    ],
+    [
+      "rh:decl:Zeta23.Tail.LocalCount",
+      "rh:decl:Zeta23.Tail.LocalCount.mk"
+    ]
+  ],
+  "import_nontrivial_sccs": [],
+  "import_self_loops": [],
+  "proves_edges": 78,
+  "proves_open_or_unregistered": [],
+  "open_claims": [
+    "rh:claim:C_RH",
+    "rh:claim:R001_PRIME_UPPER",
+    "rh:claim:R002_WINDOWED_VISIBILITY"
+  ]
+}
+SELF_LOOPS []

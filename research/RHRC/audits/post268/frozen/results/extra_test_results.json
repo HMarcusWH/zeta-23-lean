@@ -1,0 +1,530 @@
+[
+  {
+    "name": "check_post155_riesz_pointwise_sign",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/countermodels/check_post155_riesz_pointwise_sign.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 0.869,
+    "log": "logs/extra_check_post155_riesz_pointwise_sign.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/countermodels/check_post155_riesz_pointwise_sign.py\npost-155 exact Riesz pointwise-sign regression: PASS\neven: g^9(0) / [2(2pi)^8] = 576\neven: g^9(1/4) / [2(2pi)^8] = -1024/3 - 16*pi\nodd:  g^7(0) / [2(2pi)^6] = -144\nodd:  g^7(1/4) / [2(2pi)^6] = 256/3 + 4*pi\nRH remains OPEN\n"
+  },
+  {
+    "name": "check_post204_pair_d_exact_geometry",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/countermodels/check_post204_pair_d_exact_geometry.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 1.82,
+    "log": "logs/extra_check_post204_pair_d_exact_geometry.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/countermodels/check_post204_pair_d_exact_geometry.py\n{\n  \"classification\": \"PAIR_D_GENERIC_SIMULTANEOUS_BAD_COUNTERMODEL_CERTIFIED\",\n  \"even_predecessor_form\": \"70\",\n  \"even_quadratic_value\": \"-130\",\n  \"odd_predecessor_form\": \"10\",\n  \"odd_quadratic_value\": \"-410\",\n  \"selected_even_root\": \"-13/42\",\n  \"status\": \"PASS\"\n}\n"
+  },
+  {
+    "name": "check_post204_pair_d_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/countermodels/check_post204_pair_d_scope.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 0.918,
+    "log": "logs/extra_check_post204_pair_d_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/countermodels/check_post204_pair_d_scope.py\n{\n  \"adaptive_search\": false,\n  \"canonical_search\": false,\n  \"exact_rational_only\": true,\n  \"pair_a_imports\": false,\n  \"rh_claim\": false,\n  \"status\": \"PASS\",\n  \"theorem_promotion\": false\n}\n"
+  },
+  {
+    "name": "check_ccm_weil_bridge",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R002_multi_probe/check_ccm_weil_bridge.py"
+    ],
+    "returncode": 1,
+    "disposition": "FAIL_OR_MISSING_INPUT",
+    "elapsed_seconds": 0.971,
+    "log": "logs/extra_check_ccm_weil_bridge.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R002_multi_probe/check_ccm_weil_bridge.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R002_multi_probe/check_ccm_weil_bridge.py\", line 23, in <module>\n    from run_commutator_gauntlet_v2 import (pole_component, arch_component,\n                                            prime_component, q_basis, von_mangoldt)\nModuleNotFoundError: No module named 'run_commutator_gauntlet_v2'\n"
+  },
+  {
+    "name": "check_diagonal_shift",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_diagonal_shift.py"
+    ],
+    "returncode": null,
+    "disposition": "TIMEOUT",
+    "elapsed_seconds": 80.032,
+    "log": "logs/extra_check_diagonal_shift.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_diagonal_shift.py\n"
+  },
+  {
+    "name": "check_finite_dictionary_reference",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_finite_dictionary_reference.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 2.24,
+    "log": "logs/extra_check_finite_dictionary_reference.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_finite_dictionary_reference.py\nfinite dictionary reference guard: PASS\n  K_closed_vs_quad: 3.0336525e-70\n  g_closed_vs_quad: 3.9844988e-70\n  complex reflection residual: 9.1713023e-72\n  300-dps series residual: 0.0\n"
+  },
+  {
+    "name": "check_post150_selected_residual_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post150_selected_residual_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 1.118,
+    "log": "logs/extra_check_post150_selected_residual_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post150_selected_residual_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post150_selected_residual_scope.py\", line 13, in <module>\n    from canonical_source_arb import (\n    ...<4 lines>...\n    )\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/canonical_source_arb.py\", line 21, in <module>\n    from flint import acb, arb, arb_mat, ctx, fmpq\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post163_endpoint_scalar_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post163_endpoint_scalar_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 1.17,
+    "log": "logs/extra_check_post163_endpoint_scalar_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post163_endpoint_scalar_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post163_endpoint_scalar_scope.py\", line 13, in <module>\n    from flint import arb\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post165_fb05_shifted_state_arb_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post165_fb05_shifted_state_arb_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 1.168,
+    "log": "logs/extra_check_post165_fb05_shifted_state_arb_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post165_fb05_shifted_state_arb_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post165_fb05_shifted_state_arb_scope.py\", line 31, in <module>\n    from flint import arb, arb_mat\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post165_fb05_shifted_state_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post165_fb05_shifted_state_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 1.169,
+    "log": "logs/extra_check_post165_fb05_shifted_state_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post165_fb05_shifted_state_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post165_fb05_shifted_state_scope.py\", line 17, in <module>\n    from canonical_riesz_endpoint_scalar import canonical_riesz_eight_endpoint_scalar_mp\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/canonical_riesz_endpoint_scalar.py\", line 28, in <module>\n    from flint import arb\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post166_fb05_cell_barrier_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post166_fb05_cell_barrier_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 0.816,
+    "log": "logs/extra_check_post166_fb05_cell_barrier_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post166_fb05_cell_barrier_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post166_fb05_cell_barrier_scope.py\", line 8, in <module>\n    from flint import arb_mat\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post167_fb05_threshold_jet_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post167_fb05_threshold_jet_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 1.47,
+    "log": "logs/extra_check_post167_fb05_threshold_jet_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post167_fb05_threshold_jet_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post167_fb05_threshold_jet_scope.py\", line 12, in <module>\n    from post167_fb05_threshold_jet import (\n    ...<6 lines>...\n    )\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/post167_fb05_threshold_jet.py\", line 25, in <module>\n    from flint import arb, arb_mat\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post169_fb05_schur_visibility_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post169_fb05_schur_visibility_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 1.519,
+    "log": "logs/extra_check_post169_fb05_schur_visibility_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post169_fb05_schur_visibility_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post169_fb05_schur_visibility_scope.py\", line 13, in <module>\n    from post167_fb05_threshold_jet import centered_moment_row, normalized_source_series_coefficient_sympy\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/post167_fb05_threshold_jet.py\", line 25, in <module>\n    from flint import arb, arb_mat\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post171_fb05_schur_barrier_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post171_fb05_schur_barrier_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 1.468,
+    "log": "logs/extra_check_post171_fb05_schur_barrier_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post171_fb05_schur_barrier_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post171_fb05_schur_barrier_scope.py\", line 10, in <module>\n    from post169_fb05_schur_visibility import directional_schur_derivative_float, schur_pivot_float\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/post169_fb05_schur_visibility.py\", line 28, in <module>\n    from post167_fb05_threshold_jet import (\n    ...<4 lines>...\n    )\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/post167_fb05_threshold_jet.py\", line 25, in <module>\n    from flint import arb, arb_mat\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post173_fb05_q13_scalar_barrier_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post173_fb05_q13_scalar_barrier_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 0.766,
+    "log": "logs/extra_check_post173_fb05_q13_scalar_barrier_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post173_fb05_q13_scalar_barrier_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post173_fb05_q13_scalar_barrier_scope.py\", line 7, in <module>\n    from flint import arb\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post175_fb05_q13_fixed_unit_enclosure_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post175_fb05_q13_fixed_unit_enclosure_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 0.867,
+    "log": "logs/extra_check_post175_fb05_q13_fixed_unit_enclosure_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post175_fb05_q13_fixed_unit_enclosure_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post175_fb05_q13_fixed_unit_enclosure_scope.py\", line 8, in <module>\n    from flint import arb\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post177_fb05_q13_fixed_unit_derivative_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post177_fb05_q13_fixed_unit_derivative_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 0.918,
+    "log": "logs/extra_check_post177_fb05_q13_fixed_unit_derivative_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post177_fb05_q13_fixed_unit_derivative_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post177_fb05_q13_fixed_unit_derivative_scope.py\", line 9, in <module>\n    from flint import arb\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post179_fb05_q13_correlation_preserving_derivative_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post179_fb05_q13_correlation_preserving_derivative_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 0.867,
+    "log": "logs/extra_check_post179_fb05_q13_correlation_preserving_derivative_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post179_fb05_q13_correlation_preserving_derivative_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post179_fb05_q13_correlation_preserving_derivative_scope.py\", line 8, in <module>\n    from flint import arb\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post185_fb05_q13_remainder_drift_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post185_fb05_q13_remainder_drift_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 1.371,
+    "log": "logs/extra_check_post185_fb05_q13_remainder_drift_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post185_fb05_q13_remainder_drift_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post185_fb05_q13_remainder_drift_scope.py\", line 8, in <module>\n    from canonical_source_arb import ball_record, set_precision\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/canonical_source_arb.py\", line 21, in <module>\n    from flint import acb, arb, arb_mat, ctx, fmpq\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post187_fb05_q14_mixed_drift_selector_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post187_fb05_q14_mixed_drift_selector_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 1.168,
+    "log": "logs/extra_check_post187_fb05_q14_mixed_drift_selector_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post187_fb05_q14_mixed_drift_selector_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post187_fb05_q14_mixed_drift_selector_scope.py\", line 8, in <module>\n    from canonical_source_arb import set_precision\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/canonical_source_arb.py\", line 21, in <module>\n    from flint import acb, arb, arb_mat, ctx, fmpq\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post188_fb05_q14_mixed_drift_selector_independence_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post188_fb05_q14_mixed_drift_selector_independence_scope.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 0.867,
+    "log": "logs/extra_check_post188_fb05_q14_mixed_drift_selector_independence_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post188_fb05_q14_mixed_drift_selector_independence_scope.py\n{\n  \"status\": \"PASS\",\n  \"selector_candidate_count\": 10,\n  \"abstractly_separable_count\": 10,\n  \"target_alias_positive_control_count\": 3,\n  \"source_fixture_blob_locked\": true,\n  \"source_module_blob_locked\": true,\n  \"canonical_realizability_claimed\": false,\n  \"rh_claim\": false\n}\n"
+  },
+  {
+    "name": "check_post189_fb05_joint_selector_separability_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post189_fb05_joint_selector_separability_scope.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 0.767,
+    "log": "logs/extra_check_post189_fb05_joint_selector_separability_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post189_fb05_joint_selector_separability_scope.py\n{\n  \"status\": \"PASS\",\n  \"strong_selector_count\": 7,\n  \"same_exact_strong_vector\": true,\n  \"same_nonboundary_threshold_signature\": true,\n  \"target_sign_flip\": true,\n  \"smooth_channel_sign_reflection\": true,\n  \"derived_nonempty_subset_count\": 127,\n  \"target_augmented_control_count\": 3,\n  \"canonical_realizability_claimed\": false,\n  \"rh_claim\": false\n}\n"
+  },
+  {
+    "name": "check_post190_fb05_canonical_realizability_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post190_fb05_canonical_realizability_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 0.768,
+    "log": "logs/extra_check_post190_fb05_canonical_realizability_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post190_fb05_canonical_realizability_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post190_fb05_canonical_realizability_scope.py\", line 9, in <module>\n    from post190_fb05_canonical_realizability import (\n    ...<6 lines>...\n    )\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/post190_fb05_canonical_realizability.py\", line 16, in <module>\n    from flint import arb, arb_mat\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post192_fb05_q14_parity_trajectory_rigidity_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post192_fb05_q14_parity_trajectory_rigidity_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 0.817,
+    "log": "logs/extra_check_post192_fb05_q14_parity_trajectory_rigidity_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post192_fb05_q14_parity_trajectory_rigidity_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post192_fb05_q14_parity_trajectory_rigidity_scope.py\", line 9, in <module>\n    from post192_fb05_q14_parity_trajectory_rigidity import synthetic_orientation_controls\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/post192_fb05_q14_parity_trajectory_rigidity.py\", line 37, in <module>\n    from flint import arb\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post194_fb05_q14_fixed_unit_second_derivative_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post194_fb05_q14_fixed_unit_second_derivative_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 0.817,
+    "log": "logs/extra_check_post194_fb05_q14_fixed_unit_second_derivative_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post194_fb05_q14_fixed_unit_second_derivative_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post194_fb05_q14_fixed_unit_second_derivative_scope.py\", line 8, in <module>\n    from flint import arb\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post194_fb05_q14_parity_trajectory_sharp_enclosure_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post194_fb05_q14_parity_trajectory_sharp_enclosure_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 0.767,
+    "log": "logs/extra_check_post194_fb05_q14_parity_trajectory_sharp_enclosure_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post194_fb05_q14_parity_trajectory_sharp_enclosure_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post194_fb05_q14_parity_trajectory_sharp_enclosure_scope.py\", line 9, in <module>\n    from post194_fb05_q14_parity_trajectory_sharp_enclosure import (\n        synthetic_second_order_controls,\n    )\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/post194_fb05_q14_parity_trajectory_sharp_enclosure.py\", line 16, in <module>\n    from flint import arb\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post196_fb05_q14_residual_cell_replay_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post196_fb05_q14_residual_cell_replay_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 0.817,
+    "log": "logs/extra_check_post196_fb05_q14_residual_cell_replay_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post196_fb05_q14_residual_cell_replay_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post196_fb05_q14_residual_cell_replay_scope.py\", line 9, in <module>\n    from probe_post196_fb05_q14_residual_cell_replay_scope import residual_replay_schedule\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/probe_post196_fb05_q14_residual_cell_replay_scope.py\", line 9, in <module>\n    from probe_post194_fb05_q14_parity_trajectory_sharp_enclosure_scope import (\n        sharp_trajectory_schedule,\n    )\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/probe_post194_fb05_q14_parity_trajectory_sharp_enclosure_scope.py\", line 9, in <module>\n    from post192_fb05_q14_parity_trajectory_rigidity import primary_hull\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/post192_fb05_q14_parity_trajectory_rigidity.py\", line 37, in <module>\n    from flint import arb\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post198_fb05_q14_four_way_channel_second_derivative_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post198_fb05_q14_four_way_channel_second_derivative_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 0.817,
+    "log": "logs/extra_check_post198_fb05_q14_four_way_channel_second_derivative_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post198_fb05_q14_four_way_channel_second_derivative_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post198_fb05_q14_four_way_channel_second_derivative_scope.py\", line 8, in <module>\n    from flint import arb\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post198_fb05_q14_parity_source_mechanism_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post198_fb05_q14_parity_source_mechanism_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 0.767,
+    "log": "logs/extra_check_post198_fb05_q14_parity_source_mechanism_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post198_fb05_q14_parity_source_mechanism_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post198_fb05_q14_parity_source_mechanism_scope.py\", line 9, in <module>\n    from post198_fb05_q14_parity_source_mechanism import joint_mechanism_classification\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/post198_fb05_q14_parity_source_mechanism.py\", line 14, in <module>\n    from flint import arb\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post200_fb05_q14_discrepancy_channel_jets_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post200_fb05_q14_discrepancy_channel_jets_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 0.817,
+    "log": "logs/extra_check_post200_fb05_q14_discrepancy_channel_jets_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post200_fb05_q14_discrepancy_channel_jets_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post200_fb05_q14_discrepancy_channel_jets_scope.py\", line 8, in <module>\n    from flint import arb\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post200_fb05_q14_discrepancy_mechanism_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post200_fb05_q14_discrepancy_mechanism_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 0.816,
+    "log": "logs/extra_check_post200_fb05_q14_discrepancy_mechanism_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post200_fb05_q14_discrepancy_mechanism_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post200_fb05_q14_discrepancy_mechanism_scope.py\", line 9, in <module>\n    from post200_fb05_q14_discrepancy_mechanism import (\n    ...<4 lines>...\n    )\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/post200_fb05_q14_discrepancy_mechanism.py\", line 18, in <module>\n    from flint import arb\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post202_fb05_q14_composite_parity_gap_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post202_fb05_q14_composite_parity_gap_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 0.767,
+    "log": "logs/extra_check_post202_fb05_q14_composite_parity_gap_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post202_fb05_q14_composite_parity_gap_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post202_fb05_q14_composite_parity_gap_scope.py\", line 9, in <module>\n    from post202_fb05_q14_composite_parity_gap_mechanism import (\n    ...<6 lines>...\n    )\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/post202_fb05_q14_composite_parity_gap_mechanism.py\", line 21, in <module>\n    from flint import arb\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post202_fb05_q14_parity_contrast_jets_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post202_fb05_q14_parity_contrast_jets_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 0.817,
+    "log": "logs/extra_check_post202_fb05_q14_parity_contrast_jets_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post202_fb05_q14_parity_contrast_jets_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post202_fb05_q14_parity_contrast_jets_scope.py\", line 8, in <module>\n    from flint import arb\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post214_fb05_kernel_dual_geometry_independent",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post214_fb05_kernel_dual_geometry_independent.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 1.168,
+    "log": "logs/extra_check_post214_fb05_kernel_dual_geometry_independent.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post214_fb05_kernel_dual_geometry_independent.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post214_fb05_kernel_dual_geometry_independent.py\", line 8, in <module>\n    from flint import arb\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post214_fb05_kernel_dual_geometry_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post214_fb05_kernel_dual_geometry_scope.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 0.817,
+    "log": "logs/extra_check_post214_fb05_kernel_dual_geometry_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post214_fb05_kernel_dual_geometry_scope.py\n{\n  \"adaptive_point_search\": false,\n  \"adaptive_precision_increase\": false,\n  \"arb_precision_bits\": 384,\n  \"frozen_K\": 3,\n  \"frozen_center_count\": 3,\n  \"frozen_parity\": \"even\",\n  \"rh_claim\": false,\n  \"status\": \"PASS\",\n  \"theorem_promotion\": false\n}\n"
+  },
+  {
+    "name": "check_post222_fb05_biregular_zero_shift_scalar_independent",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post222_fb05_biregular_zero_shift_scalar_independent.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 1.167,
+    "log": "logs/extra_check_post222_fb05_biregular_zero_shift_scalar_independent.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post222_fb05_biregular_zero_shift_scalar_independent.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post222_fb05_biregular_zero_shift_scalar_independent.py\", line 15, in <module>\n    from flint import arb, arb_mat\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post222_fb05_biregular_zero_shift_scalar_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post222_fb05_biregular_zero_shift_scalar_scope.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 0.817,
+    "log": "logs/extra_check_post222_fb05_biregular_zero_shift_scalar_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post222_fb05_biregular_zero_shift_scalar_scope.py\n{\n  \"adaptive_interval_bisection\": true,\n  \"adaptive_point_search\": false,\n  \"frozen_K\": 3,\n  \"frozen_N\": 2,\n  \"frozen_center_count\": 5,\n  \"frozen_parity\": \"even\",\n  \"research_authority_pr\": 215,\n  \"rh_claim\": false,\n  \"status\": \"PASS\",\n  \"theorem_authority_pr\": 222,\n  \"theorem_promotion\": false,\n  \"whole_cell_parities\": [\n    \"even\",\n    \"odd\"\n  ],\n  \"whole_cell_smaller_K\": 2\n}\n"
+  },
+  {
+    "name": "check_post247_global_bottom_scout_results",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post247_global_bottom_scout_results.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 1.669,
+    "log": "logs/extra_check_post247_global_bottom_scout_results.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post247_global_bottom_scout_results.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post247_global_bottom_scout_results.py\", line 14, in <module>\n    from post247_global_bottom_scout import classify_bottoms, run as run_ground\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/post247_global_bottom_scout.py\", line 16, in <module>\n    from post166_fb05_cell_interval import cell_coordinate_L\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/post166_fb05_cell_interval.py\", line 24, in <module>\n    from flint import arb, arb_mat\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post247_global_bottom_scout_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post247_global_bottom_scout_scope.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 0.867,
+    "log": "logs/extra_check_post247_global_bottom_scout_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post247_global_bottom_scout_scope.py\nPOST247 GLOBAL BOTTOM SCOUT SCOPE: PASS\n"
+  },
+  {
+    "name": "check_post247_remainder_budget_ratio_results",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post247_remainder_budget_ratio_results.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 0.868,
+    "log": "logs/extra_check_post247_remainder_budget_ratio_results.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post247_remainder_budget_ratio_results.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post247_remainder_budget_ratio_results.py\", line 15, in <module>\n    from flint import arb, arb_mat, ctx, fmpq\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_post247_remainder_budget_ratio_scope",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post247_remainder_budget_ratio_scope.py"
+    ],
+    "returncode": 1,
+    "disposition": "ENVIRONMENT_BLOCKED",
+    "elapsed_seconds": 0.867,
+    "log": "logs/extra_check_post247_remainder_budget_ratio_scope.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post247_remainder_budget_ratio_scope.py\nTraceback (most recent call last):\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post247_remainder_budget_ratio_scope.py\", line 15, in <module>\n    import post247_remainder_budget_ratio_scout as scout\n  File \"/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/post247_remainder_budget_ratio_scout.py\", line 57, in <module>\n    from flint import acb, arb, arb_mat, ctx, fmpq\nModuleNotFoundError: No module named 'flint'\n"
+  },
+  {
+    "name": "check_source_normalization_firewall",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_source_normalization_firewall.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 1.219,
+    "log": "logs/extra_check_source_normalization_firewall.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_source_normalization_firewall.py\nSOURCE NORMALIZATION FIREWALL: PASS\n- Python build_ccm_matrix -> Zeta23.CCM.finiteMatrixOfLambda (legacy)\n- canonical lambda wrapper -> Zeta23.CCM.cutoffFreeMatrixOfLambda\n- canonical source matrix -> Zeta23.CCM.canonicalSourceMatrix\n- scanned relevant files: 414\n- ambient QW_lambda finite restriction remains a separate bridge\n"
+  },
+  {
+    "name": "check_normalization_shift_invariants",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 1.52,
+    "log": "logs/extra_check_normalization_shift_invariants.log",
+    "tail": "$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py\n{\n  \"status\": \"PASS\",\n  \"max_matrix_shift_residual\": 0.0,\n  \"max_commutator_delta\": 0.0,\n  \"max_eigenvalue_shift_residual\": 5.551115123125783e-16,\n  \"max_gap_delta\": 7.808424046240603e-16,\n  \"max_legacy_eigenbasis_canonical_equation_residual\": 1.6726210011586302e-15,\n  \"max_trace_shift_residual\": 8.881784197001252e-16\n}\n"
+  },
+  {
+    "name": "r004_exact_displacement",
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "research/RHRC/routes/R004_prolate_v2/derive_exact_displacement.py"
+    ],
+    "returncode": 0,
+    "disposition": "PASS",
+    "elapsed_seconds": 1.219,
+    "log": "logs/extra_r004_exact_displacement.log",
+    "tail": "$ /opt/pyvenv/bin/python research/RHRC/routes/R004_prolate_v2/derive_exact_displacement.py\nR004 exact displacement derivation: PASS\nFor n != m:\n  (n-m) M_nm = g_n - g_m\nwith\n  g_n = C*n/(L^2+kappa*n^2) + alpha_n + prime_n\nTherefore [D,M] = g*1^T - 1*g^T and rank([D,M]) <= 2.\nThe diagonal identity is 0=0, so the formula extends to all entries.\n"
+  }
+]

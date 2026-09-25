@@ -1,0 +1,17 @@
+{
+  "closed": [
+    "all tracked files classified and indexed",
+    "all local Lean files mapped to LeanModule nodes",
+    "all local Lean modules receive deterministic named source-declaration discovery coverage",
+    "all standalone_or_auxiliary Lean modules receive explicit reviewed dispositions",
+    "all DOCUMENTATION and LIVING_SSOT files receive Document nodes and exact claim/route textual-navigation hints"
+  ],
+  "deferred": [
+    "compiler-wide local declaration census beyond the source-navigation surface and registered dependency closure",
+    "multi-axis authority/current-state resolution beyond document-role indexing",
+    "Git/PR/workflow provenance graph",
+    "dead-route/obstruction/revival semantic graph beyond historical-delta file nodes",
+    "operational concept preflight"
+  ],
+  "warning": "File/import/declaration coverage is not complete historical or mathematical-premise semantics."
+}

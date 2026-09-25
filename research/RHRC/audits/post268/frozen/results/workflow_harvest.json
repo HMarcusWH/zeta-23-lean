@@ -1,0 +1,183 @@
+{
+  "scope": "EXTRACTED_LIVE_GITHUB_OBSERVATIONS_NOT_FULL_RAW_LOG_ARCHIVE",
+  "as_of": "2026-09-25",
+  "job_count": 15,
+  "workflow_run_count": 12,
+  "all_remote_conclusions_success": true,
+  "associated_head": "8c6c49cff82d4dec1b5d496089f0d644fe72ab88",
+  "ordinary_checkout_commit": "40024eb14f2b220e5d5f0d64a2f1920273df4dd7",
+  "ordinary_checkout_tree": "5ff508904a92ee936edf10600e86f30f77ece30b",
+  "associated_head_tree": "5ff508904a92ee936edf10600e86f30f77ece30b",
+  "materialized_head": "8bb0f5f7b6c778d58bf9a30810fa9f1db29d7e5e",
+  "materialized_and_merged_tree": "0fdd3151c86989f7cf7123be322b3968e89e3263",
+  "finalization_delta": "Temporary materializer workflow removal and generated evidence products; no Lean source delta. GitHub comparison fetched separately.",
+  "final_head_separate_check_runs": 0,
+  "merge_commit_separate_check_runs": 0,
+  "jobs": [
+    {
+      "name": "lean",
+      "run_id": 36146664342,
+      "job_id": 108109428281,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/36146664342/job/108109428281",
+      "github_conclusion": "success",
+      "classification": "FORMAL VALIDITY GATE",
+      "disposition": "CCM/ExceptionalZero and declared audit builds, placeholder rejection and axiom gates succeeded.",
+      "claim_limit": "Existing theorem authority preserved; no RH theorem proved.",
+      "comparison": "Frozen research semantics preserved where the job is a regression; this audit is not a byte-for-byte comparison of every artifact from every historical run."
+    },
+    {
+      "name": "python-rhrc",
+      "run_id": 36146664342,
+      "job_id": 108109428763,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/36146664342/job/108109428763",
+      "github_conclusion": "success",
+      "classification": "REGRESSION GATE",
+      "disposition": "RHRC registries, integration, graph, control and Python test suite succeeded.",
+      "claim_limit": "Software/control consistency, not arithmetic positivity.",
+      "comparison": "Frozen research semantics preserved where the job is a regression; this audit is not a byte-for-byte comparison of every artifact from every historical run."
+    },
+    {
+      "name": "r003-normalization-audit",
+      "run_id": 36146664342,
+      "job_id": 108109428619,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/36146664342/job/108109428619",
+      "github_conclusion": "success",
+      "classification": "REGRESSION GATE",
+      "disposition": "Frozen normalization, source/energy identities, threshold and research-scope checks succeeded.",
+      "claim_limit": "A normalization/research replay does not promote bounded signals to universal statements.",
+      "comparison": "Frozen research semantics preserved where the job is a regression; this audit is not a byte-for-byte comparison of every artifact from every historical run."
+    },
+    {
+      "name": "rhkg-compiler-receipt",
+      "run_id": 36146664342,
+      "job_id": 108109428602,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/36146664342/job/108109428602",
+      "github_conclusion": "success",
+      "classification": "FORMAL VALIDITY GATE",
+      "disposition": "Compiler dependency receipt/export comparison succeeded.",
+      "claim_limit": "Certifies its declared import/root scope, not all source declarations in all audit modules.",
+      "comparison": "Frozen research semantics preserved where the job is a regression; this audit is not a byte-for-byte comparison of every artifact from every historical run."
+    },
+    {
+      "name": "materialize",
+      "run_id": 36146664275,
+      "job_id": 108109427730,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/36146664275/job/108109427730",
+      "github_conclusion": "success",
+      "classification": "FORMAL VALIDITY GATE + RESEARCH-PRODUCING CHECK",
+      "disposition": "Regenerated compiler/graph/candidate/FFBBP/OoL products; steady-state gate passed; committed 8bb0f5f7b6c778d58bf9a30810fa9f1db29d7e5e.",
+      "claim_limit": "New candidate visibility is metadata, not new mathematical proof. Final commit has no separate attached check runs.",
+      "comparison": "Frozen research semantics preserved where the job is a regression; this audit is not a byte-for-byte comparison of every artifact from every historical run."
+    },
+    {
+      "name": "lean-permansson",
+      "run_id": 36146664277,
+      "job_id": 108109426955,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/36146664277/job/108109426955",
+      "github_conclusion": "success",
+      "classification": "FORMAL VALIDITY GATE",
+      "disposition": "Separate Permansson formalization job succeeded.",
+      "claim_limit": "Separate domain/theorem scope; not RH and not every claim in the Permansson paper.",
+      "comparison": "Frozen research semantics preserved where the job is a regression; this audit is not a byte-for-byte comparison of every artifact from every historical run."
+    },
+    {
+      "name": "post190-canonical-realizability",
+      "run_id": 36146664439,
+      "job_id": 108109428234,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/36146664439/job/108109428234",
+      "github_conclusion": "success",
+      "classification": "REGRESSION GATE",
+      "disposition": "REALIZABILITY_TARGET_IDENTIFIED; BASE_UNKNOWN; BLOCKED_TIGHTENED; QUOTIENT_SPACE_SCAN_DEFERRED_BASE_UNKNOWN.",
+      "claim_limit": "Frozen pressure result; quotient scan was not executed.",
+      "comparison": "Frozen research semantics preserved where the job is a regression; this audit is not a byte-for-byte comparison of every artifact from every historical run."
+    },
+    {
+      "name": "post192-parity-trajectory-rigidity",
+      "run_id": 36146664278,
+      "job_id": 108109428012,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/36146664278/job/108109428012",
+      "github_conclusion": "success",
+      "classification": "REGRESSION GATE",
+      "disposition": "LOCAL_TAYLOR_FAILURE_ACCEPTED; REFUTED_TIGHTENED_PACKAGE; MULTIMODE_LOCAL_TAYLOR_DISMISSAL_ALL_MODES.",
+      "claim_limit": "Preserves failure of the tested local Taylor closure, not a positivity theorem.",
+      "comparison": "Frozen research semantics preserved where the job is a regression; this audit is not a byte-for-byte comparison of every artifact from every historical run."
+    },
+    {
+      "name": "post194-parity-trajectory-sharp-enclosure",
+      "run_id": 36146664457,
+      "job_id": 108109428399,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/36146664457/job/108109428399",
+      "github_conclusion": "success",
+      "classification": "REGRESSION GATE",
+      "disposition": "PARTIAL_TRAJECTORY_ORIENTATION; 49 leaves with 48 certified and 1 unresolved span.",
+      "claim_limit": "Partial frozen coverage only.",
+      "comparison": "Frozen research semantics preserved where the job is a regression; this audit is not a byte-for-byte comparison of every artifact from every historical run."
+    },
+    {
+      "name": "post196-q14-residual-cell-replay",
+      "run_id": 36146664402,
+      "job_id": 108109428105,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/36146664402/job/108109428105",
+      "github_conclusion": "success",
+      "classification": "REGRESSION GATE",
+      "disposition": "GLOBAL_MONOTONE_ORIENTATION / J_POSITIVE; remaining frozen span resolved.",
+      "claim_limit": "GLOBAL is the frozen Q14 hull, not all apertures or Loewner monotonicity.",
+      "comparison": "Frozen research semantics preserved where the job is a regression; this audit is not a byte-for-byte comparison of every artifact from every historical run."
+    },
+    {
+      "name": "post198-q14-source-mechanism",
+      "run_id": 36146664438,
+      "job_id": 108109428682,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/36146664438/job/108109428682",
+      "github_conclusion": "success",
+      "classification": "REGRESSION GATE",
+      "disposition": "SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED; NO_UNIQUE_COLLAPSED_UNIFORM_LOCK; chosen lock null.",
+      "claim_limit": "No uniform source mechanism selected.",
+      "comparison": "Frozen research semantics preserved where the job is a regression; this audit is not a byte-for-byte comparison of every artifact from every historical run."
+    },
+    {
+      "name": "post200-q14-discrepancy-mechanism",
+      "run_id": 36146664411,
+      "job_id": 108109428383,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/36146664411/job/108109428383",
+      "github_conclusion": "success",
+      "classification": "REGRESSION GATE",
+      "disposition": "DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED; NO_UNIQUE_PRIMARY_LOCK; paired enclosure 0/49 positive leaves.",
+      "claim_limit": "Identity compatibility did not yield required sign.",
+      "comparison": "Frozen research semantics preserved where the job is a regression; this audit is not a byte-for-byte comparison of every artifact from every historical run."
+    },
+    {
+      "name": "post202-q14-composite-parity-gap",
+      "run_id": 36146664334,
+      "job_id": 108109427810,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/36146664334/job/108109427810",
+      "github_conclusion": "success",
+      "classification": "REGRESSION GATE",
+      "disposition": "COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED; PATTERN_FALSIFIED_BEFORE_FULL_COVER.",
+      "claim_limit": "Full cover was not executed after the central falsifier.",
+      "comparison": "Frozen research semantics preserved where the job is a regression; this audit is not a byte-for-byte comparison of every artifact from every historical run."
+    },
+    {
+      "name": "post214-kernel-dual-geometry",
+      "run_id": 36146664395,
+      "job_id": 108109428559,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/36146664395/job/108109428559",
+      "github_conclusion": "success",
+      "classification": "REGRESSION GATE",
+      "disposition": "FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED; FULL_SPACE_SIGN_INDEFINITE_CERTIFIED; Q13/Q15 controls preserved.",
+      "claim_limit": "FULL_SPACE is the tested dual/kernel geometry, not the unrestricted canonical carrier of PR268.",
+      "comparison": "Frozen research semantics preserved where the job is a regression; this audit is not a byte-for-byte comparison of every artifact from every historical run."
+    },
+    {
+      "name": "post222-biregular-zero-shift-scalar",
+      "run_id": 36146664310,
+      "job_id": 108109428526,
+      "url": "https://github.com/HMarcusWH/zeta-23-lean/actions/runs/36146664310/job/108109428526",
+      "github_conclusion": "success",
+      "classification": "REGRESSION GATE",
+      "disposition": "NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED; qualified cell-minimal states 0.",
+      "claim_limit": "Pointwise bi-regular scalar identities do not certify the retained whole-cell state and do not exclude it.",
+      "comparison": "Frozen research semantics preserved where the job is a regression; this audit is not a byte-for-byte comparison of every artifact from every historical run."
+    }
+  ]
+}

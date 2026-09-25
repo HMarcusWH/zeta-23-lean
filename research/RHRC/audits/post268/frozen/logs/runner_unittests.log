@@ -1,0 +1,9 @@
+$ /opt/pyvenv/bin/python -m unittest discover -s research/RHRC/runner/tests -p test_*.py -v
+test_invalid_receipt_blocks (test_terminal_answer.TerminalAnswerTests.test_invalid_receipt_blocks) ... ok
+test_only_unconditional_closed_chain_prints_true (test_terminal_answer.TerminalAnswerTests.test_only_unconditional_closed_chain_prints_true) ... ok
+test_open_even_with_valid_diagnostic (test_terminal_answer.TerminalAnswerTests.test_open_even_with_valid_diagnostic) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK

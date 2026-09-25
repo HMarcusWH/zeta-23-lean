@@ -1,0 +1,2 @@
+$ /opt/pyvenv/bin/python research/RHRC/tools/registry_lint.py
+RHRC REGISTRY LINT: PASS

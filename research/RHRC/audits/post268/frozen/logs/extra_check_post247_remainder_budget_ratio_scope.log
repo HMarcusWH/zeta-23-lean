@@ -1,0 +1,7 @@
+$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post247_remainder_budget_ratio_scope.py
+Traceback (most recent call last):
+  File "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/check_post247_remainder_budget_ratio_scope.py", line 15, in <module>
+    import post247_remainder_budget_ratio_scout as scout
+  File "/mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R003_ccm_bridge/post247_remainder_budget_ratio_scout.py", line 57, in <module>
+    from flint import acb, arb, arb_mat, ctx, fmpq
+ModuleNotFoundError: No module named 'flint'

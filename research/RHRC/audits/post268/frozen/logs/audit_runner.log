@@ -1,0 +1,43 @@
+START original_rhrc_suite
+END original_rhrc_suite PASS 100.696
+START graph_build_check
+END graph_build_check PASS 18.5
+START graph_validate
+END graph_validate PASS 35.745
+START graph_unittests
+END graph_unittests PASS 0.767
+START ffbbp_unittests
+END ffbbp_unittests PASS 0.917
+START ool_unittests
+END ool_unittests PASS 0.869
+START runner_unittests
+END runner_unittests PASS 0.82
+START control_v2_unittests
+END control_v2_unittests PASS 3.381
+START integration_unittests
+END integration_unittests PASS 0.918
+START ffbbp_assurance
+END ffbbp_assurance PASS 1.031
+START ool_phase_atlas
+END ool_phase_atlas PASS 10.934
+START integration_lint
+END integration_lint PASS 1.321
+START claim_lint
+END claim_lint PASS 0.767
+START registry_lint
+END registry_lint PASS 0.818
+START promoted_binding_lint
+END promoted_binding_lint PASS 0.867
+START registered_theorem_binding_lint
+END registered_theorem_binding_lint PASS 0.817
+START lean_imports
+END lean_imports PASS 0.868
+START arithmetic_firewall_lint
+END arithmetic_firewall_lint PASS 2.223
+START million_dollar_firewall_lint
+END million_dollar_firewall_lint PASS 0.867
+START post155_countermodel
+END post155_countermodel PASS 0.767
+START r002_ccm_compare
+END r002_ccm_compare PASS 0.867
+COMPLETE

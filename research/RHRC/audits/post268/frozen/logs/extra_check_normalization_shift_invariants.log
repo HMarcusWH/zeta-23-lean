@@ -1,0 +1,10 @@
+$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/routes/R004_prolate_v2/check_normalization_shift_invariants.py
+{
+  "status": "PASS",
+  "max_matrix_shift_residual": 0.0,
+  "max_commutator_delta": 0.0,
+  "max_eigenvalue_shift_residual": 5.551115123125783e-16,
+  "max_gap_delta": 7.808424046240603e-16,
+  "max_legacy_eigenbasis_canonical_equation_residual": 1.6726210011586302e-15,
+  "max_trace_shift_residual": 8.881784197001252e-16
+}

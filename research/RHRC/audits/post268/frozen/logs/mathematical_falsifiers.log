@@ -1,0 +1,56 @@
+{
+  "claim_cap": "EXACT_COUNTEREXAMPLES_TO_GENERIC_INFERENCES; NOT_CANONICAL_COUNTEREXAMPLES; RH_OPEN",
+  "canonical_source_weight_examples": [],
+  "first_contact": {
+    "f": "-t^3",
+    "f_at0": "0",
+    "fprime_at0": "0",
+    "f_at_minus1": "1",
+    "f_at_plus1": "-1",
+    "conclusion": "A nonnegative first derivative at contact does not exclude a higher-order downward crossing."
+  },
+  "endpoint_weight": {
+    "weight": "(1 - t)**8*(20*t - 19)",
+    "jets0to8_at1": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "40320"
+    ],
+    "integral0to1": "-17/9",
+    "conclusion": "Vanishing through order7 and a positive eighth endpoint derivative do not imply global weight sign or a nonnegative integral."
+  },
+  "carrier": {
+    "full_diagonal": [
+      -2,
+      -1,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "carrier_basis": "last four coordinate vectors, codimension3",
+    "restricted_diagonal": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "conclusion": "Negative full bottom does not force negative constrained bottom."
+  },
+  "scalar_shift": {
+    "base": "I7",
+    "shift": "-2 I7",
+    "new": "-I7",
+    "commutator_difference_zero": true,
+    "base_positive": true,
+    "shifted_negative": true,
+    "conclusion": "Displacement/reversal/nesting are insensitive to a scalar shift that reverses positivity."
+  }
+}

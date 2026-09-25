@@ -1,0 +1,27 @@
+$ /opt/pyvenv/bin/python -m unittest discover -s research/RHRC/ool/tests -p test_*.py -v
+test_absence_requires_complete_domain (test_ool_runtime.OoL276RuntimeTests.test_absence_requires_complete_domain) ... ok
+test_architecture_overlay_promotes_full_route_experiment (test_ool_runtime.OoL276RuntimeTests.test_architecture_overlay_promotes_full_route_experiment) ... ok
+test_binding_mismatch_is_invalid (test_ool_runtime.OoL276RuntimeTests.test_binding_mismatch_is_invalid) ... ok
+test_boundary_declares_ool_2_7_6_semantics (test_ool_runtime.OoL276RuntimeTests.test_boundary_declares_ool_2_7_6_semantics) ... ok
+test_confirmatory_route_change_requires_new_digest (test_ool_runtime.OoL276RuntimeTests.test_confirmatory_route_change_requires_new_digest) ... ok
+test_discovery_is_not_fake_confirmatory (test_ool_runtime.OoL276RuntimeTests.test_discovery_is_not_fake_confirmatory) ... ok
+test_integrated_route_freeze_requires_actual_output_and_lineage (test_ool_runtime.OoL276RuntimeTests.test_integrated_route_freeze_requires_actual_output_and_lineage) ... ok
+test_missing_raw_evidence_is_na (test_ool_runtime.OoL276RuntimeTests.test_missing_raw_evidence_is_na) ... ok
+test_na_certificate_is_incomplete (test_ool_runtime.OoL276RuntimeTests.test_na_certificate_is_incomplete) ... ok
+test_open_world_quantifiers (test_ool_runtime.OoL276RuntimeTests.test_open_world_quantifiers) ... ok
+test_reference_is_exact_v2_7_6_release (test_ool_runtime.OoL276RuntimeTests.test_reference_is_exact_v2_7_6_release) ... ok
+test_route_registry_stays_discovery_until_real_freeze (test_ool_runtime.OoL276RuntimeTests.test_route_registry_stays_discovery_until_real_freeze) ... ok
+test_strong_kleene_core (test_ool_runtime.OoL276RuntimeTests.test_strong_kleene_core) ... ok
+test_unconditional_provenance_is_positive_closure (test_ool_runtime.OoL276RuntimeTests.test_unconditional_provenance_is_positive_closure) ... ok
+test_valid_fail_certificate_is_allowed (test_ool_runtime.OoL276RuntimeTests.test_valid_fail_certificate_is_allowed) ... ok
+test_cross_interface_contact_is_discovery_only_class (test_rhkg_phase_atlas.RHKGPhaseAtlasTests.test_cross_interface_contact_is_discovery_only_class) ... ok
+test_frontier_contact_has_explicit_precedence (test_rhkg_phase_atlas.RHKGPhaseAtlasTests.test_frontier_contact_has_explicit_precedence) ... ok
+test_module_identity_cannot_create_contact (test_rhkg_phase_atlas.RHKGPhaseAtlasTests.test_module_identity_cannot_create_contact) ... ok
+test_non_theorem_value_support_is_preserved (test_rhkg_phase_atlas.RHKGPhaseAtlasTests.test_non_theorem_value_support_is_preserved) ... ok
+test_shared_kernel_is_not_distinctive_cross_interface_signal (test_rhkg_phase_atlas.RHKGPhaseAtlasTests.test_shared_kernel_is_not_distinctive_cross_interface_signal) ... ok
+test_theorem_value_erasure_drops_theorem_proof_body_edges (test_rhkg_phase_atlas.RHKGPhaseAtlasTests.test_theorem_value_erasure_drops_theorem_proof_body_edges) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.001s
+
+OK

@@ -1,0 +1,7 @@
+$ /opt/pyvenv/bin/python /mnt/data/rh_audit/snapshot/zeta-23-lean-main/research/RHRC/countermodels/check_post155_riesz_pointwise_sign.py
+post-155 exact Riesz pointwise-sign regression: PASS
+even: g^9(0) / [2(2pi)^8] = 576
+even: g^9(1/4) / [2(2pi)^8] = -1024/3 - 16*pi
+odd:  g^7(0) / [2(2pi)^6] = -144
+odd:  g^7(1/4) / [2(2pi)^6] = 256/3 + 4*pi
+RH remains OPEN
