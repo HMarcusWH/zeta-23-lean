@@ -1003,7 +1003,6 @@
       ],
       "source": "Zeta23/CCM/GlobalParityBottomSpectrum.lean",
       "theorem": "Zeta23.CCM.canonicalCarrierBottom_hierarchy",
-      "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "Post-#267 carrier theoremization. This is a ground-Rayleigh hierarchy, not ordered eigenvalue interlacing. Direction firewall: full-space bottom <= boundary-flat bottom = min(even, odd); full-space negativity alone does not imply boundary-flat negativity. No aperture monotonicity, prime-remainder dominance, residual-state exclusion, or RH theorem is claimed."
     },
