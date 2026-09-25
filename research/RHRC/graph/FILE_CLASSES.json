@@ -222,6 +222,12 @@
       "trust_zone": "RESEARCH_ONLY"
     },
     {
+      "id": "ool_generated_receipts",
+      "pattern": "^research/RHRC/ool/generated/.*$",
+      "file_class": "RESEARCH_RECEIPT",
+      "trust_zone": "RESEARCH_ONLY"
+    },
+    {
       "id": "integration_generated",
       "pattern": "^research/RHRC/integration/generated/.*$",
       "file_class": "RESEARCH_RECEIPT",
