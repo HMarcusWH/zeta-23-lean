@@ -336,8 +336,8 @@ def build() -> tuple[list[dict], dict]:
         "certificate_semantics": {
             "default": reference["default_certificate"],
             "valid_meaning": reference["valid_certificate_meaning"],
-            "mathematical_theorem_authority": false,
-            "physical_truth_authority": false
+            "mathematical_theorem_authority": False,
+            "physical_truth_authority": False
         },
         "claim_firewall": [
             "module identity is not an OoL handoff",
