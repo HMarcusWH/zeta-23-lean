@@ -13,6 +13,7 @@ from ool.semantics import (
     CertificateStatus,
     ClaimResult,
     DomainCompleteness,
+    DomainReceipt,
     EvidenceReceipt,
     EvidenceValue,
     LeafEvaluationReceipt,
@@ -20,6 +21,7 @@ from ool.semantics import (
     RouteInterfaceQualification,
     VerifierPolicy,
     absence_result,
+    absence_result_for_domain,
     confirmatory_binding_status,
     exists_result,
     forall_result,
@@ -101,6 +103,23 @@ class OoL277RuntimeTests(unittest.TestCase):
         self.assertEqual(cert.assurance_scope, "ATTESTED_EVIDENCE_BINDING")
         self.assertEqual(cert.scientific_validation, "NOT_ESTABLISHED_BY_SOFTWARE")
 
+    def test_attestation_for_different_object_does_not_validate_claim(self):
+        key = Ed25519PrivateKey.generate()
+        pub = key.public_key().public_bytes(
+            encoding=serialization.Encoding.Raw,
+            format=serialization.PublicFormat.Raw,
+        )
+        result = ClaimResult("C", EvidenceValue.PASS, ("support",), "registry", runtime_digest="runtime")
+        other = ClaimResult("OTHER", EvidenceValue.PASS, ("support",), "registry", runtime_digest="runtime")
+        policy = VerifierPolicy("P", ("registry",), ("runtime",), (("reviewer", pub),))
+        att = sign_reviewed_object(other, "CLAIM_RESULT", "reviewer", key, signed_at="2026-09-25T12:00:00+00:00")
+        cert = issue_certificate(
+            result, physical_witness_ref="w", raw_support_complete=True, binding_valid=True,
+            policy=policy, attestations=(att,)
+        )
+        self.assertEqual(cert.certificate_status, CertificateStatus.INCOMPLETE)
+        self.assertIn("reviewed_attestation_for_exact_claim_result_required", cert.reason_codes)
+
     def test_confirmatory_route_change_requires_new_digest(self):
         expected = RouteBinding("R001", "B0", "bhash", "routehash", "CONFIRMATORY_FROZEN")
         changed = RouteBinding("R001", "B0", "bhash", "different", "CONFIRMATORY_FROZEN")
@@ -124,6 +143,21 @@ class OoL277RuntimeTests(unittest.TestCase):
         self.assertEqual(absence_result(forbidden_observed=False, search_domain_complete=False), EvidenceValue.NA)
         self.assertEqual(absence_result(forbidden_observed=False, search_domain_complete=True), EvidenceValue.PASS)
         self.assertEqual(absence_result(forbidden_observed=True, search_domain_complete=False), EvidenceValue.FAIL)
+
+    def test_absence_completeness_is_route_scoped(self):
+        domain = DomainReceipt(
+            "LEAN_DECLARATIONS", ("a", "b"), DomainCompleteness.COMPLETE,
+            enumeration_method="compiler_receipt", evidence_ref="receipt",
+            scope_route_digest="route-a",
+        )
+        self.assertEqual(
+            absence_result_for_domain(forbidden_observed=False, domain=domain, route_digest="route-a"),
+            EvidenceValue.PASS,
+        )
+        self.assertEqual(
+            absence_result_for_domain(forbidden_observed=False, domain=domain, route_digest="route-b"),
+            EvidenceValue.NA,
+        )
 
     def test_integrated_route_freeze_requires_actual_output_and_lineage(self):
         interfaces = [
