@@ -783,3 +783,30 @@ Validation requirements:
 
 A pass authorizes only the declared post-reference cohort-navigation use. RH
 remains OPEN.
+
+
+## OoL RHKG Phase Atlas validation gate
+
+The post-#265 Phase Atlas is RESEARCH_CONTROL_ONLY.
+
+Required steady-state checks:
+
+1. the source-only compiler dependency receipt has exactly 680
+   `SOURCE_ONLY_ROOT` declarations;
+2. the exact roots equal the 680 Lean-exact source-only candidate identities;
+3. `THEOREM_VALUE_ERASED_SUPPORT` removes theorem proof-body VALUE edges while
+   retaining TYPE/STRUCTURE and non-theorem implementation support;
+4. the three interface anchor claim sets are disjoint;
+5. support shared across multiple interface families cannot create a
+   cross-interface contact;
+6. the #261 pair probe remains exactly
+   `R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM` versus
+   `EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL` with 21 eligible cross-region edges;
+7. module identity, FFBBP cohort membership and type digest equality cannot by
+   themselves create an OoL contact;
+8. every generated contact remains `DISCOVERY_ONLY`,
+   `theorem_promotion=false`, and `terminal_claim=RH_OPEN`;
+9. generated products are byte-current after the one-shot materializer deletes
+   itself and the RHKG/candidate/FFBBP state is rebound.
+
+A green atlas is not a theorem and does not imply that any candidate composes.
