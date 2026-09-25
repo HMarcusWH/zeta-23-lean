@@ -69,7 +69,7 @@ def main() -> int:
             f"missing={sorted(required - set(by_id))} extra={sorted(set(by_id) - required)}"
         )
     if by_id["FFBBP_ASSURANCE"].get("inherits_run42c_qualification") is not False:
-        raise SystemExit("integration_lint: FFBBP v1.6 may not inherit RUN42C qualification")
+        raise SystemExit("integration_lint: FFBBP assurance may not inherit RUN42C qualification")
     if by_id["FFBBP_ASSURANCE"].get("status") != "RHKG_SNAPSHOT_ASSURANCE_V17_INTEGRATED_RUNTIME_NOT_PROMOTED":
         raise SystemExit("integration_lint: FFBBP RHKG assurance status drift")
     if by_id["MCM_HMWH"]["status"] != "NOT_YET_INTEGRATED":
@@ -87,13 +87,13 @@ def main() -> int:
     if by_id["OOL_MVS"]["scope"] != route_engine["import_scope"]:
         raise SystemExit("integration_lint: OoL-MVS import scope drift")
 
-    ffbbp_v16 = json.loads(
-        (RHRC / "ffbbp" / "FFBBP_V16_ASSURANCE_REFERENCE.json").read_text(encoding="utf-8")
+    ffbbp_v17 = json.loads(
+        (RHRC / "ffbbp" / "FFBBP_V17_ASSURANCE_REFERENCE.json").read_text(encoding="utf-8")
     )
-    if by_id["FFBBP_ASSURANCE"]["version"] != ffbbp_v16["theory_version"]:
-        raise SystemExit("integration_lint: FFBBP v1.6 theory version drift")
-    if ffbbp_v16.get("inherits_run42c_qualification") is not False:
-        raise SystemExit("integration_lint: source FFBBP v1.6 overlay qualification drift")
+    if by_id["FFBBP_ASSURANCE"]["version"] != ffbbp_v17["theory_version"]:
+        raise SystemExit("integration_lint: FFBBP 1.7 theory version drift")
+    if ffbbp_v17.get("inherits_runtime_qualification") is not False:
+        raise SystemExit("integration_lint: source FFBBP 1.7 overlay qualification drift")
 
     ool_reference = json.loads(
         (RHRC / "ool" / "OOL_REFERENCE.json").read_text(encoding="utf-8")
@@ -217,8 +217,8 @@ def main() -> int:
         raise SystemExit("integration_lint: FFBBP RHKG config theory-version drift")
     if ffbbp_config.get("xi_mode") != "SNAPSHOT":
         raise SystemExit("integration_lint: FFBBP RHKG adapter must remain snapshot Xi")
-    if ffbbp_config.get("inherits_run42c_qualification") is not False:
-        raise SystemExit("integration_lint: FFBBP RHKG adapter may not inherit RUN42C qualification")
+    if ffbbp_config.get("inherits_runtime_qualification") is not False:
+        raise SystemExit("integration_lint: FFBBP RHKG adapter may not inherit runtime qualification")
     if ffbbp_config.get("theorem_promotion") is not False:
         raise SystemExit("integration_lint: FFBBP RHKG config attempts theorem promotion")
 
@@ -230,7 +230,7 @@ def main() -> int:
             raise SystemExit("integration_lint: FFBBP RHKG report schema drift")
         if report.get("terminal_claim") != "RH_OPEN" or report.get("theorem_promotion") is not False:
             raise SystemExit("integration_lint: FFBBP RHKG report authority drift")
-        if report.get("inherits_run42c_qualification") is not False:
+        if report.get("inherits_runtime_qualification") is not False:
             raise SystemExit("integration_lint: FFBBP RHKG report qualification drift")
         candidate_summary = json.loads(summary_path.read_text(encoding="utf-8"))
         if report["input_snapshot"]["candidate_count"] != candidate_summary.get("candidate_count"):
