@@ -54,6 +54,7 @@ jobs:
 
       - name: Regenerate registered compiler dependency receipt
         run: |
+          lake build Zeta23.RHRC.DeclarationDependencyExport
           python3 research/RHRC/tools/lean_dependency_extract.py --write
           python3 research/RHRC/tools/lean_dependency_extract.py --check
 
