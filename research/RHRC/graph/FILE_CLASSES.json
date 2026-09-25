@@ -66,6 +66,12 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
+      "id": "exceptional_zero_quarantined_terminal_audits",
+      "pattern": "^Zeta23/ExceptionalZero/(?:GlobalParityBottomArithmeticEquivalenceAudit|GlobalParityBottomConditionalRH|CofinalLowerBoundConditionalRH)\\.lean$",
+      "file_class": "LEAN_SOURCE",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
       "id": "exceptional_zero_formal_core",
       "pattern": "^Zeta23/ExceptionalZero/.*\\.lean$",
       "file_class": "LEAN_SOURCE",
