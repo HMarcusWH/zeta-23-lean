@@ -265,7 +265,8 @@
     {
       "id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
       "theorem": "Zeta23.CCM.canonicalCarrierBottom_hierarchy",
-      "source": "Zeta23/CCM/GlobalParityBottomSpectrum.lean"
+      "source": "Zeta23/CCM/GlobalParityBottomSpectrum.lean",
+      "route": "R003_ccm_bridge"
     },
     {
       "id": "R003_KERNEL_EF_EXTENSION",
