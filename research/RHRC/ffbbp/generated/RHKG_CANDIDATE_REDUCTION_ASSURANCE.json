@@ -51,12 +51,12 @@
     "base_pr": 264,
     "base_tree": "4e507b8f86de8e7e1bee28d135722d7396a1a8f6",
     "candidate_count": 2356,
-    "candidate_resolution_sha256": "1683f0bba518981c0956aa181ae20e7a65d3ce74a8d0f3f96c13b47d13a5944f",
+    "candidate_resolution_sha256": "2b15e5513239a6d7cef9e8780686832bc99d31212b6cf8386c9d854bec85692a",
     "candidate_source_surface_sha256": "96f8467ce08de9c64db547df5d7ada4d44bed069674116e871916df61e438242",
-    "candidate_summary_sha256": "8875d3649b28f4c6a48d0372e69f150333f55bcf7de6565452f29315e20588f8",
+    "candidate_summary_sha256": "ff62b56014725805fabbac821ed280de1520d680ad075349ab995d979e6f06bc",
     "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
     "registered_compiler_receipt_sha256": "b679afac77efdf1a13d4e9119dddc1267ab68e90cdb8ff758ff6580abf583bb1",
-    "rhkg_subject_digest_sha256": "895aa9da6d2917e7801df2babe41eaccda89c10efdc828593db429deb2ec1a61",
+    "rhkg_subject_digest_sha256": "57085c3df9de9fc4dfbc38810900d4d588b579fdef82b1bc9068aece55ff874d",
     "source_only_public_theorem_count": 680
   },
   "reductions": {
