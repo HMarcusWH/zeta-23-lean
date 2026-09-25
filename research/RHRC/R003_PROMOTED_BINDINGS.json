@@ -239,6 +239,10 @@
     {
       "id": "R003_PARITY_COMPRESSION_RANK_ONE_DEFECT",
       "theorem": "Zeta23.CCM.finrank_range_conjugatedParityCompressionDefect_le_one"
+    },
+    {
+      "id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+      "theorem": "Zeta23.CCM.canonicalCarrierBottom_hierarchy"
     }
   ]
 }
