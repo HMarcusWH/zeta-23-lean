@@ -1,0 +1,55 @@
+{
+  "schema_version": "FFBBP-v1.7-assurance-overlay-1.0",
+  "theory_version": "1.7",
+  "status": "ARCHITECTURE_ASSURANCE_IMPORTED_RUNTIME_NOT_PROMOTED",
+  "purpose": "Expose FFBBP 1.7 typed assurance semantics to RHRC while preserving the independently qualified RUN42C executable lineage and refusing to infer RUN46F runtime authority from the paper alone.",
+  "source": {
+    "title": "FFBBP: A Reference Framework for Latent-Field Inference and Typed Assurance",
+    "version": "1.7",
+    "date": "2026-09-25",
+    "publication_status": "PRIVATE_INTERNAL_NOT_FOR_PUBLICATION"
+  },
+  "runtime_authority": {
+    "version": "1.5.1+RUN42C_inductive_firewall_closure_overlay",
+    "reference": "research/RHRC/ffbbp/FFBBP_REFERENCE.json",
+    "run46f_promoted": false,
+    "reason": "FFBBP 1.7 implementation/release bytes were not imported into RHRC in this migration."
+  },
+  "inherits_runtime_qualification": false,
+  "modules": [
+    "research/RHRC/ffbbp/v16_contracts.py",
+    "research/RHRC/ffbbp/v16_commutation.py",
+    "research/RHRC/ffbbp/v16_horizon.py",
+    "research/RHRC/ffbbp/v16_witness.py",
+    "research/RHRC/ffbbp/v17_contracts.py",
+    "research/RHRC/ffbbp/v17_gates.py",
+    "research/RHRC/ffbbp/rhkg_assurance.py"
+  ],
+  "imported_semantics": [
+    "snapshot decision sufficiency is separate from stateful transition closure",
+    "gate statuses are PASS/FAIL/NOT_APPLICABLE/NOT_EVALUATED",
+    "NOT_EVALUATED is never success",
+    "NOT_APPLICABLE cannot be used as a post-hoc waiver of a required gate",
+    "profile, protocol and execution identities are distinct qualification objects",
+    "diagnostic agreement does not imply categorical decision preservation",
+    "local witness separation does not imply unmasked full-system separation",
+    "material claim-bearing changes require new evidence or a separately justified equivalence result"
+  ],
+  "claim_cap": "RESEARCH_CONTROL_ONLY",
+  "forbidden_promotions": [
+    "FFBBP 1.7 paper -> RUN46F executable qualification",
+    "FFBBP 1.7 assurance -> RUN42C qualification inheritance",
+    "diagnostic commutation -> decision commutation",
+    "snapshot sufficiency -> autonomous transition closure",
+    "local witness -> full-system separation without masking clearance",
+    "FFBBP assurance output -> mathematical theorem",
+    "FFBBP assurance output -> RH evidence"
+  ],
+  "rhkg_snapshot_adapter": {
+    "config": "research/RHRC/ffbbp/configs/rhkg_candidate_reduction_v2.json",
+    "report": "research/RHRC/ffbbp/generated/RHKG_CANDIDATE_REDUCTION_ASSURANCE.json",
+    "selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
+    "stateful_transition_claim": false,
+    "mathematical_relevance_ranking": false
+  }
+}
