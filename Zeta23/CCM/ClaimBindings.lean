@@ -23,6 +23,7 @@ import Zeta23.CCM.ConstrainedParity
 import Zeta23.CCM.ConstrainedParityGeometry
 import Zeta23.CCM.ParityBadness
 import Zeta23.CCM.ConstrainedParitySpectrum
+import Zeta23.CCM.GlobalParityBottomSpectrum
 import Zeta23.CCM.FirstBadRigidity
 import Zeta23.CCM.ParityNormalSpace
 import Zeta23.CCM.ParityCompressionRankOne
@@ -560,3 +561,8 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.CCM.finrank_range_evenOddCompressedIntertwiningDefect_le_one
 #check Zeta23.CCM.finrank_range_conjugatedParityCompressionDefect_le_one
 #print axioms Zeta23.CCM.finrank_range_conjugatedParityCompressionDefect_le_one
+
+
+-- R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY
+#check Zeta23.CCM.canonicalCarrierBottom_hierarchy
+#print axioms Zeta23.CCM.canonicalCarrierBottom_hierarchy
