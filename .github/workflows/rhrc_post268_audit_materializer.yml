@@ -54,6 +54,9 @@ jobs:
           rm -rf .github/post268_archive
           rm -f .github/post268_prepare.py
           rm -f .github/workflows/rhrc_post268_audit_materializer.yml
+          # RHKG enumerates git ls-files. Stage additions/deletions now so every
+          # generated receipt describes the exact final repository surface.
+          git add -A
 
       - name: Regenerate compiler and RHKG products
         run: |
