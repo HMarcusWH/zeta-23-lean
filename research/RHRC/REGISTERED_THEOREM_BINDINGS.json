@@ -258,6 +258,11 @@
       "source": "Zeta23/CCM/GlobalParityBottomSpectrum.lean"
     },
     {
+      "id": "R003_GLOBAL_PARITY_BOTTOM_NFLOW",
+      "theorem": "Zeta23.CCM.globalParitySuccessorBottom_antitone_of_le",
+      "source": "Zeta23/CCM/GlobalParityBottomNFlow.lean"
+    },
+    {
       "id": "R003_KERNEL_EF_EXTENSION",
       "theorem": "Zeta23.CCM.dictionaryTransform_zero_sum_eq_literatureRHS",
       "source": "Zeta23/CCM/DictionaryKernelEFExtension.lean",
