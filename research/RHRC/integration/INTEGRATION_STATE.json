@@ -27,7 +27,7 @@
     "registered_roots": 76,
     "graph_relations": 294007
   },
-  "current_operation": "FFBBP_RHKG_SNAPSHOT_REDUCTION_ASSURANCE",
+  "current_operation": "OOL_RHKG_PHASE_ATLAS",
   "candidate_scope": {
     "trust_zone": "RH_FORMAL_CORE",
     "source_command_kinds": [
@@ -52,6 +52,24 @@
     "reference_population": "RH_FORMAL_CORE theorem/lemma LeanCandidateReceipt surface",
     "decision": "IS_SOURCE_ONLY_PUBLIC_THEOREM",
     "selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
+    "authority_cap": "RESEARCH_CONTROL_ONLY"
+  },
+  "ffbbp_assurance_authority": {
+    "pr": 265,
+    "validated_head": "fabdef96784f427092a769198ef12a616cfe857d",
+    "merge_commit": "ae7bae97b1351fe048b679fe2db42b734946dff9",
+    "tree": "6741f43d81aa34ddb3169a425e9d451a41214704",
+    "status": "MERGED_GREEN_RHKG_SNAPSHOT_REDUCTION_ASSURANCE",
+    "selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
+    "source_only_module_cohort_count": 195
+  },
+  "ool_phase_atlas_scope": {
+    "kernel_version": "2.7.6",
+    "mode": "DISCOVERY_INTERFACE_CONTACT_ONLY",
+    "reference_population": "680 SOURCE_ONLY_PUBLIC_THEOREM LeanCandidateReceipt roots",
+    "compiler_projection": "THEOREM_VALUE_ERASED_SUPPORT",
+    "ffbbp_navigation_reduction": "MODULE_VISIBILITY_SNAPSHOT",
+    "source_only_module_cohorts": 195,
     "authority_cap": "RESEARCH_CONTROL_ONLY"
   }
 }
