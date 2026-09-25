@@ -120,7 +120,7 @@ theorem parityRayleighBottom_succ_antitone_of_le
     simpa only [RCLike.re_to_complex, hnorm, htransport, hold] using hlarge
   have hvnormpos : 0 < ‖v‖ ^ 2 := by
     positivity
-  exact (mul_le_mul_right hvnormpos).mp hlarge'
+  nlinarith [hlarge']
 
 /-- The global successor bottom, the minimum of the even and odd successor
 parity bottoms, is antitone in the predecessor-size index. -/
