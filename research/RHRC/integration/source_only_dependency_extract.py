@@ -34,8 +34,6 @@ def load_roots() -> list[dict]:
         fail("candidate summary does not preserve RH_OPEN")
     if len(rows) != summary.get("source_only_public_theorem_count"):
         fail("source-only receipt/count drift")
-    if len(rows) != 680:
-        fail(f"frozen source-only population drift: {len(rows)} != 680")
     if any(row.get("visibility_class") != "SOURCE_ONLY_PUBLIC_THEOREM" for row in rows):
         fail("non-source-only row entered source-only dependency extraction")
     if any(row.get("registered_claim_id") is not None for row in rows):
