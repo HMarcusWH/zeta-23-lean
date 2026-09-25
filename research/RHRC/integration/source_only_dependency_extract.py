@@ -49,10 +49,12 @@ def load_roots() -> list[dict]:
 def render_driver(roots: list[dict]) -> str:
     tick2 = chr(96) * 2
     root_names = ",\n    ".join(tick2 + row["resolved_full_name"] for row in roots)
+    modules = sorted({row["module"] for row in roots})
+    imports = "\n".join(
+        ["import Zeta23.RHRC.DeclarationDependencyExport", *[f"import {module}" for module in modules]]
+    )
     return (
-        "import Zeta23.RHRC.DeclarationDependencyExport\n"
-        "import Zeta23.CCM\n"
-        "import Zeta23.ExceptionalZero\n\n"
+        imports + "\n\n"
         "open Lean\n"
         "open Lean.Elab Command\n\n"
         "run_cmd do\n"
