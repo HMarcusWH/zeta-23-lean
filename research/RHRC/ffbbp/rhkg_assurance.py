@@ -12,10 +12,12 @@ sys.path.insert(0, str(RHRC))
 
 from ffbbp.v16_commutation import assess_categorical_snapshot_sufficiency
 from ffbbp.v16_contracts import XiMode, XiReductionContract
-from ffbbp.v16_gates import reduction_assurance_gate
+from ffbbp.v17_contracts import GateStatus, QualificationIdentity, TypedGateResult
+from ffbbp.v17_gates import reduction_assurance_gate
 
 REPO = RHRC.parents[1]
-CONFIG = RHRC / "ffbbp" / "configs" / "rhkg_candidate_reduction_v1.json"
+CONFIG = RHRC / "ffbbp" / "configs" / "rhkg_candidate_reduction_v2.json"
+REFERENCE = RHRC / "ffbbp" / "FFBBP_V17_ASSURANCE_REFERENCE.json"
 CANDIDATES = RHRC / "integration" / "generated" / "SOURCE_CANDIDATE_RESOLUTION.jsonl"
 CANDIDATE_SUMMARY = RHRC / "integration" / "generated" / "SOURCE_CANDIDATE_SUMMARY.json"
 COVERAGE = RHRC / "graph" / "generated" / "REPOSITORY_COVERAGE.json"
@@ -36,14 +38,7 @@ def canonical_hash(obj: object) -> str:
 
 
 def reduction_key(row: dict, fields: list[str]) -> tuple[str, ...]:
-    vals: list[str] = []
-    for field in fields:
-        value = row.get(field)
-        if value is None:
-            vals.append("<NONE>")
-        else:
-            vals.append(str(value))
-    return tuple(vals)
+    return tuple("<NONE>" if row.get(field) is None else str(row.get(field)) for field in fields)
 
 
 def source_only_decision(row: dict) -> str:
@@ -54,22 +49,37 @@ def visibility_diagnostic(row: dict) -> str:
     return str(row.get("visibility_class"))
 
 
+def typed_result(key: str, passed: bool, execution_identity: str) -> TypedGateResult:
+    return TypedGateResult(
+        key=key,
+        status=GateStatus.PASS if passed else GateStatus.FAIL,
+        owner="REFERENCE",
+        identity=execution_identity,
+        scope="STATIC_REPOSITORY_SNAPSHOT",
+        evidence_kind="EXACT_REPOSITORY_RECEIPT",
+        evidence_ref="SOURCE_CANDIDATE_RESOLUTION",
+    )
+
+
 def build_report() -> dict:
     config = json.loads(CONFIG.read_text(encoding="utf-8"))
+    reference = json.loads(REFERENCE.read_text(encoding="utf-8"))
     summary = json.loads(CANDIDATE_SUMMARY.read_text(encoding="utf-8"))
     coverage = json.loads(COVERAGE.read_text(encoding="utf-8"))
     rows = load_jsonl(CANDIDATES)
 
-    if config.get("schema_version") != "RHRC-FFBBP-RHKG-assurance-config-1.0":
+    if config.get("schema_version") != "RHRC-FFBBP-RHKG-assurance-config-2.0":
         raise RuntimeError("FFBBP RHKG config schema drift")
-    if config.get("theory_version") != "1.6.0":
-        raise RuntimeError("FFBBP RHKG adapter must bind v1.6.0")
+    if config.get("theory_version") != "1.7":
+        raise RuntimeError("FFBBP RHKG adapter must bind FFBBP 1.7 assurance architecture")
+    if reference.get("theory_version") != "1.7":
+        raise RuntimeError("FFBBP 1.7 reference drift")
     if config.get("xi_mode") != "SNAPSHOT":
         raise RuntimeError("RHKG candidate assurance is snapshot-only")
-    if config.get("terminal_claim") != "RH_OPEN":
-        raise RuntimeError("FFBBP RHKG config does not preserve RH_OPEN")
-    if config.get("theorem_promotion") is not False:
-        raise RuntimeError("FFBBP RHKG config attempts theorem promotion")
+    if config.get("terminal_claim") != "RH_OPEN" or config.get("theorem_promotion") is not False:
+        raise RuntimeError("FFBBP RHKG authority firewall drift")
+    if config.get("inherits_runtime_qualification") is not False:
+        raise RuntimeError("FFBBP 1.7 assurance may not inherit RUN42C runtime qualification")
     if summary.get("candidate_count") != len(rows):
         raise RuntimeError("candidate summary/count drift")
     if summary.get("source_only_public_theorem_count") != sum(
@@ -78,6 +88,21 @@ def build_report() -> dict:
         raise RuntimeError("source-only candidate count drift")
 
     config_hash = canonical_hash(config)
+    execution_digest = canonical_hash({
+        "candidate_resolution_sha256": sha256_bytes(CANDIDATES),
+        "candidate_summary_sha256": sha256_bytes(CANDIDATE_SUMMARY),
+        "rhkg_subject_digest_sha256": coverage["subject_digest_sha256"],
+    })
+    identity = QualificationIdentity(
+        profile_id=config["qualification_identity"]["profile_id"],
+        profile_digest=sha256_bytes(REFERENCE),
+        protocol_id=config["qualification_identity"]["protocol_id"],
+        protocol_digest=config_hash,
+        execution_id="RHKG_CANDIDATE_SNAPSHOT:" + coverage["subject_digest_sha256"][:16],
+        execution_digest=execution_digest,
+    )
+    identity.validate()
+
     contract = XiReductionContract(
         reduction_id=config["contract"]["reduction_id"],
         xi_mode=XiMode.SNAPSHOT,
@@ -113,16 +138,11 @@ def build_report() -> dict:
             max_counterexamples=20,
         )
         gate = reduction_assurance_gate(
-            diagnostic_commutation_pass=diagnostic.passed,
-            decision_bearing=True,
-            decision_sufficiency_pass=decision.passed,
-            decision_commutation_pass=decision.passed,
-            stateful_reduction=False,
-            transition_closure_pass=None,
-            horizon_bearing=False,
-            horizon_certificate=None,
-            witness_bearing=False,
-            witness_pass=None,
+            required_results=(
+                typed_result("diagnostic_factorization", diagnostic.passed, identity.execution_id),
+                typed_result("decision_factorization", decision.passed, identity.execution_id),
+            ),
+            structurally_inapplicable=("stateful_transition_closure", "horizon", "witness"),
         )
         reduction_results[spec["id"]] = {
             "id": spec["id"],
@@ -132,14 +152,14 @@ def build_report() -> dict:
             "diagnostic_factorization": diagnostic.to_dict(),
             "decision_factorization": decision.to_dict(),
             "assurance_gate": {
+                "status": gate.status.value,
                 "passed": gate.passed,
                 "blockers": list(gate.blockers),
             },
         }
 
     selected = config["selected_reduction"]
-    selected_result = reduction_results[selected]
-    if not selected_result["assurance_gate"]["passed"]:
+    if not reduction_results[selected]["assurance_gate"]["passed"]:
         raise RuntimeError("selected FFBBP RHKG reduction failed assurance gate")
 
     source_only_rows = [row for row in rows if row.get("visibility_class") == "SOURCE_ONLY_PUBLIC_THEOREM"]
@@ -147,28 +167,29 @@ def build_report() -> dict:
     for row in source_only_rows:
         cohorts[row["module"]].append(row["resolved_full_name"])
     cohort_rows = [
-        {
-            "module": module,
-            "count": len(names),
-            "declarations": sorted(names),
-        }
+        {"module": module, "count": len(names), "declarations": sorted(names)}
         for module, names in sorted(cohorts.items())
     ]
     cohort_rows.sort(key=lambda row: (-row["count"], row["module"]))
 
     visibility_counts = Counter(row["visibility_class"] for row in rows)
-
     report = {
-        "schema_version": "RHRC-FFBBP-RHKG-assurance-report-1.0",
-        "theory_version": "1.6.0",
+        "schema_version": "RHRC-FFBBP-RHKG-assurance-report-2.0",
+        "theory_version": "1.7",
         "status": "RESEARCH_CONTROL_ONLY",
         "terminal_claim": "RH_OPEN",
         "theorem_promotion": False,
-        "inherits_run42c_qualification": False,
+        "inherits_runtime_qualification": False,
+        "runtime_authority": reference["runtime_authority"],
+        "qualification_identity": {
+            "profile_id": identity.profile_id,
+            "profile_digest": identity.profile_digest,
+            "protocol_id": identity.protocol_id,
+            "protocol_digest": identity.protocol_digest,
+            "execution_id": identity.execution_id,
+            "execution_digest": identity.execution_digest,
+        },
         "input_snapshot": {
-            "base_pr": 264,
-            "base_merge_commit": "dd4636d021ccc95d915bcdd9635fe100b8e4c5bb",
-            "base_tree": "4e507b8f86de8e7e1bee28d135722d7396a1a8f6",
             "candidate_resolution_sha256": sha256_bytes(CANDIDATES),
             "candidate_summary_sha256": sha256_bytes(CANDIDATE_SUMMARY),
             "candidate_count": len(rows),
@@ -196,9 +217,11 @@ def build_report() -> dict:
         "decision_semantics": {
             "diagnostic": "exact visibility_class categorical value",
             "decision": "visibility_class == SOURCE_ONLY_PUBLIC_THEOREM",
-            "decision_tolerance": "exact categorical equality",
+            "required_gate_satisfaction": "PASS_ONLY",
+            "not_evaluated_is_success": False,
+            "not_applicable_is_waiver": False,
             "stateful_transition_claim": False,
-            "transition_closure_status": "NOT_APPLICABLE_SNAPSHOT_XI",
+            "transition_closure_status": "STRUCTURALLY_NOT_APPLICABLE_SNAPSHOT_XI",
             "horizon_claim": False,
             "witness_claim": False,
         },
@@ -210,17 +233,15 @@ def build_report() -> dict:
         "source_only_module_cohorts": cohort_rows,
         "falsification_result": {
             "module_only_reduction_passed": reduction_results["MODULE_ONLY_SNAPSHOT"]["assurance_gate"]["passed"],
-            "interpretation": (
-                "Module identity alone is not decision-sufficient for source-only visibility on the current snapshot; "
-                "the mixed fibers are an exact repository-backed counterexample to module-only collapse."
-            ),
+            "interpretation": "Module identity alone is not decision-sufficient for source-only visibility on this snapshot.",
         },
         "claim_firewall": [
-            "FFBBP v1.6 assurance does not inherit RUN42C qualification",
+            "FFBBP 1.7 assurance does not promote the RUN42C runtime or claim RUN46F execution authority",
             "snapshot decision sufficiency does not establish stateful transition closure",
+            "NOT_EVALUATED is never success",
+            "NOT_APPLICABLE is legal only through frozen protocol scope, not post-hoc waiver",
             "post-reference cohorting does not rank mathematical relevance",
-            "type-digest current-snapshot sufficiency does not generalize to future repository states",
-            "FFBBP assurance output is not a mathematical theorem",
+            "FFBBP assurance output is not a mathematical theorem or RH evidence",
             "RH remains OPEN",
         ],
     }
@@ -232,32 +253,25 @@ def render(report: dict) -> bytes:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Build/check FFBBP v1.6 RHKG candidate reduction assurance")
+    parser = argparse.ArgumentParser(description="Build/check FFBBP 1.7 RHKG candidate reduction assurance")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--write", action="store_true")
     group.add_argument("--check", action="store_true")
     args = parser.parse_args()
-
     payload = render(build_report())
     if args.write:
         OUTPUT.parent.mkdir(parents=True, exist_ok=True)
         OUTPUT.write_bytes(payload)
         data = json.loads(payload)
-        module_only = data["reductions"]["MODULE_ONLY_SNAPSHOT"]
-        selected = data["reductions"][data["selected_reduction"]]
         print(
-            "FFBBP RHKG ASSURANCE: WROTE "
+            "FFBBP 1.7 RHKG ASSURANCE: WROTE "
             f"{data['input_snapshot']['candidate_count']} candidates; "
-            f"{data['input_snapshot']['source_only_public_theorem_count']} source-only; "
-            f"module-only mixed decision fibers="
-            f"{module_only['decision_factorization']['mixed_value_fiber_count']}; "
-            f"selected fibers={selected['decision_factorization']['fiber_count']}"
+            f"{data['input_snapshot']['source_only_public_theorem_count']} source-only"
         )
         return 0
-
     if not OUTPUT.exists() or OUTPUT.read_bytes() != payload:
-        raise SystemExit("FFBBP RHKG ASSURANCE: FAIL (checked-in report is stale)")
-    print("FFBBP RHKG ASSURANCE: PASS")
+        raise SystemExit("FFBBP 1.7 RHKG ASSURANCE: FAIL (checked-in report is stale)")
+    print("FFBBP 1.7 RHKG ASSURANCE: PASS")
     return 0
 
 
