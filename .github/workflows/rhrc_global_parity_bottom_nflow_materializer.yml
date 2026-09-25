@@ -66,6 +66,7 @@ jobs:
 
       - name: Re-exactify source candidates
         run: |
+          lake build Zeta23.ExceptionalZero Zeta23.RHRC.SourceCandidateResolution
           python3 research/RHRC/integration/candidate_exactify.py --write
           python3 research/RHRC/integration/candidate_exactify.py --check
           python3 - <<'PY'
