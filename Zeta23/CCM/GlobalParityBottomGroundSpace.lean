@@ -50,7 +50,6 @@ theorem paritySplitGroundSpace_finrank_eq_one_of_even_strict
   have he := evenGround_eigenspace_finrank_eq_one_of_strict hL N hN h
   unfold paritySplitGroundSpace
   rw [Module.finrank_prod, hb, hz, finrank_bot, he]
-  omega
 
 /-- On the strict-odd branch only the odd eigenline contributes. -/
 theorem paritySplitGroundSpace_finrank_eq_one_of_odd_strict
@@ -64,7 +63,6 @@ theorem paritySplitGroundSpace_finrank_eq_one_of_odd_strict
   have ho := oddGround_eigenspace_finrank_eq_one_of_strict hL N hN h
   unfold paritySplitGroundSpace
   rw [Module.finrank_prod, hb, hz, finrank_bot, ho]
-  omega
 
 /-- A parity tie contributes a nonzero mode in each carrier. This lower bound
 of two does NOT assume that either tied sector is simple. -/
