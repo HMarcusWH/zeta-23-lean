@@ -20,6 +20,10 @@ identically.  So H is a statement about the ARCHIMEDEAN channel alone, testable
 with NO zero sums and hence no slowly-converging zero tail.  That is what this
 script measures.
 
+Post-#268 repair: preserves the original domain and diagnostic, uses an entire
+sinc transform and bounded QUADPACK rather than nested quadrature. Transform
+validation now fails the process. A tail heuristic is never a certified bound.
+
 CLOSED FORM for h.  With a = 2*pi*m/L, b = 2*pi*n/L (so aL, bL in 2*pi*Z):
   n != m:  h(r) = (2/(pi*(n-m))) * (1 - cos(rL)) * [ a/(a^2-r^2) - b/(b^2-r^2) ]
   n == m:  h(r) = (2/L) * (1 - cos(rL)) * [ 1/(b+r)^2 + 1/(b-r)^2 ]
@@ -45,48 +49,8 @@ from run_commutator_gauntlet_v2 import (  # noqa: E402
 )
 
 mp.mp.dps = 30
-EPS = mp.mpf(10) ** (-12)
-
-
-def h_closed(n: int, m: int, r, L):
-    """Exact h_{nm}(r) = int K(y) e^{iry} dy, K even, supp [-L,L]."""
-    r = mp.mpmathify(r)
-    Lm = mp.mpf(L)
-    onemc = 1 - mp.cos(r * Lm)
-
-    def sq_term(c):
-        """(1 - cos(rL)) / (c - r)^2, with the removable limit at r = c."""
-        d = c - r
-        if abs(d) < EPS:
-            return Lm ** 2 / 2
-        return onemc / d ** 2
-
-    if n == m:
-        b = 2 * mp.pi * n / Lm
-        return (2 / Lm) * (sq_term(-b) + sq_term(b))
-
-    a = 2 * mp.pi * m / Lm
-    b = 2 * mp.pi * n / Lm
-
-    def lin_term(c):
-        """(1 - cos(rL)) * c / (c^2 - r^2), removable limit at r = +-c."""
-        if abs(c) < EPS:
-            return mp.mpf(0)
-        if abs(c - r) < EPS or abs(c + r) < EPS:
-            # c^2 - r^2 = (c-r)(c+r); one factor vanishes, the double zero of
-            # (1-cos) supplies it back, leaving a finite limit.
-            s = c - r if abs(c - r) < EPS else c + r
-            other = c + r if abs(c - r) < EPS else c - r
-            return (Lm ** 2 / 2) * s * c / other if abs(other) > EPS else mp.mpf(0)
-        return onemc * c / (c ** 2 - r ** 2)
-
-    return (2 / (mp.pi * (n - m))) * (lin_term(a) - lin_term(b))
-
-
-def h_quad(n: int, m: int, r, L):
-    """Reference: h by direct quadrature, for validating h_closed."""
-    f = lambda y: 2 * q_basis(n, m, float(y), L) * mp.cos(r * y)
-    return mp.quad(f, [0, L])
+from finite_transform_quadrature import h_mp as h_closed, h_direct as h_quad
+from finite_transform_quadrature import finite_arch_integral, validate_transform
 
 
 def bracket(r):
@@ -97,17 +61,12 @@ def arch_lit(n: int, m: int, L, R=mp.mpf(3000), panels=240):
     """(1/2pi) int_R h*bracket dr, h even => (1/pi) int_0^inf, with an analytic
     tail:  h(r) ~ (4/L)(1-cos(rL))/r^2  and  bracket(r) ~ log(r/(2pi)), whose
     non-oscillatory part contributes (4/L)(log(R/2pi)+1)/R."""
-    Lm = mp.mpf(L)
-    nodes = [mp.mpf(k) * R / panels for k in range(panels + 1)]
-    # add the removable-singularity abscissae as panel breaks
-    for c in (2 * mp.pi * abs(n) / Lm, 2 * mp.pi * abs(m) / Lm):
-        if 0 < c < R:
-            nodes.append(c)
-    nodes = sorted(set(nodes))
-    f = lambda r: h_closed(n, m, r, L) * bracket(r)
-    main = mp.quad(f, nodes)
-    tail = (4 / Lm) * (mp.log(R / (2 * mp.pi)) + 1) / R
-    return (main + tail) / mp.pi
+    # Same frozen R=3000/panels=240 domain as the legacy diagnostic.
+    # Replace repeated high-precision quadrature by validated entire sinc
+    # evaluation + QUADPACK. The tail below remains a HEURISTIC, not a bound.
+    main, _estimated_error = finite_arch_integral(n, m, float(L), float(R), panels)
+    tail = (4 / float(L)) * (math.log(float(R) / (2 * math.pi)) + 1) / float(R)
+    return mp.mpf(main + tail / math.pi)
 
 
 def residual(n: int, m: int, L):
@@ -142,7 +101,11 @@ def main() -> int:
     args = ap.parse_args()
     t0 = time.time()
 
-    validate_closed_form(2 * math.log(args.lambdas[0]))
+    if not args.lambdas or not args.ns or any(x <= 1 for x in args.lambdas):
+        ap.error("nonempty indices and lambdas > 1 are required")
+    validate_transform(2 * math.log(args.lambdas[0]))
+    if not validate_closed_form(2 * math.log(args.lambdas[0])):
+        raise ArithmeticError("closed-form/pole validation failed")
 
     print("\n=== Q1: diagonal residual  Delta(n) = ArchLit(n,n) + 2*arch(n,n) ===")
     q1 = {}
@@ -208,7 +171,7 @@ def main() -> int:
     print("\n=== VERDICT ===")
     print(f"  diagonal residual index-independent : {'YES' if diag_ok else 'NO'}")
     print(f"  off-diagonal residual vanishes      : {'YES' if offdiag_ok else 'NO'}")
-    print(f"  hypothesis H                        : {'SUPPORTED' if diag_ok and offdiag_ok else 'REFUTED'}")
+    print(f"  hypothesis H                        : {'FINITE_TOLERANCE_MET' if diag_ok and offdiag_ok else 'NOT_RESOLVED_BY_HEURISTIC_TAIL'}")
 
     result = {
         "run_id": "R003_DIAGONAL_SHIFT_ARCH_CHANNEL_001",
@@ -216,16 +179,21 @@ def main() -> int:
         "claim_cap": "FINITE_NUMERICAL_DIAGNOSTIC_ONLY",
         "reduction": "WeilGram - 2M = ArchLit + 2*arch_component (pole and prime channels cancel exactly)",
         "configuration": {"lambdas": args.lambdas, "ns": args.ns, "mp_dps": mp.mp.dps,
-                          "arch_R": 3000, "arch_panels": 240},
+                          "arch_R": 3000, "arch_panels": 240,
+                          "finite_integrator": "SCIPY_QUAD_ENTIRE_SINC",
+                          "tail_status": "HEURISTIC_NONOSCILLATING_LEADING_TERM_NOT_CERTIFIED"},
         "q1_diagonal": {str(k): v for k, v in q1.items()},
         "q2_offdiagonal": {str(k): v for k, v in q2.items()},
         "q3_closed_form": {str(k): v for k, v in q3.items()},
         "diagonal_index_independent": diag_ok,
         "offdiagonal_vanishes": offdiag_ok,
-        "hypothesis_H_supported": diag_ok and offdiag_ok,
+        "finite_diagnostic_tolerance_passed": diag_ok and offdiag_ok,
+        "mathematical_verdict": "NOT_CERTIFIED; INFINITE_TAIL_UNCONTROLLED",
         "runtime_seconds": round(time.time() - t0, 1),
         "nonclaims": ["No RH evidence and no CCM identity is claimed.",
-                      "Finite numerics have no theorem authority; Lean/comparator is the gate."],
+                      "Finite numerics have no theorem authority; Lean/comparator is the gate.",
+                      "The infinite archimedean tail is not certified.",
+                      "A returned zero code certifies execution, not support for hypothesis H."],
     }
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
