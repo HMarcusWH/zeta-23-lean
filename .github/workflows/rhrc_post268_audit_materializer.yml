@@ -4,7 +4,7 @@ on:
     branches: [main]
     types: [opened, synchronize, reopened, ready_for_review]
 permissions:
-  contents: write
+  contents: read
 concurrency:
   group: post268-materializer-${{ github.event.pull_request.number }}
   cancel-in-progress: true
@@ -21,8 +21,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Preserve the exact audit corpus and prepare proof repairs
-        run: python .github/post268_prepare.py
+      - name: Preserve exact audit and record prepared-source identities
+        run: |
+          mkdir -p "${{ runner.temp }}/post268-proof"
+          python .github/post268_prepare.py
+          git diff > "${{ runner.temp }}/post268-proof/prepared-source.patch"
+          git rev-parse HEAD HEAD^{tree} > "${{ runner.temp }}/post268-proof/checkout.txt"
+          sha256sum Zeta23/CCM/{RankOneEigenline,GlobalParityBottomSimplicity,GlobalParityBottomGroundSpace,SourceWeightCounterexample,CanonicalArithmeticLowerBound,CofinalLowerBound}.lean Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean > "${{ runner.temp }}/post268-proof/sources.sha256"
       - uses: leanprover/lean-action@v1
         with:
           auto-config: false
@@ -30,13 +35,18 @@ jobs:
           test: false
           lint: false
           use-mathlib-cache: true
-      - name: Compile exact post268 proof candidates
+      - name: Compile all seven exact proof modules
         run: |
-          lake build Zeta23.CCM.RankOneEigenline Zeta23.CCM.GlobalParityBottomSimplicity Zeta23.CCM.GlobalParityBottomGroundSpace Zeta23.CCM.SourceWeightCounterexample Zeta23.CCM.CanonicalArithmeticLowerBound Zeta23.CCM.CofinalLowerBound Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH
+          lake build Zeta23.CCM.RankOneEigenline Zeta23.CCM.GlobalParityBottomSimplicity Zeta23.CCM.GlobalParityBottomGroundSpace Zeta23.CCM.SourceWeightCounterexample Zeta23.CCM.CanonicalArithmeticLowerBound Zeta23.CCM.CofinalLowerBound Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH > "${{ runner.temp }}/post268-proof/compiler.log" 2>&1 || { tail -n 180 "${{ runner.temp }}/post268-proof/compiler.log"; exit 1; }
+          tail -n 80 "${{ runner.temp }}/post268-proof/compiler.log"
       - name: Audit new theorem axioms
         run: |
-          python research/RHRC/tools/axiom_audit.py Zeta23/CCM/RankOneEigenline.lean Zeta23/CCM/GlobalParityBottomSimplicity.lean Zeta23/CCM/GlobalParityBottomGroundSpace.lean Zeta23/CCM/SourceWeightCounterexample.lean Zeta23/CCM/CanonicalArithmeticLowerBound.lean Zeta23/CCM/CofinalLowerBound.lean Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean
-      - name: Bootstrap status
-        run: |
-          echo 'STAGING: full test deployment and deterministic final graph regeneration are being assembled. Not merge-ready.'
-          echo 'Prepared proof edits and preserved corpus will be committed only by the final validated materializer.'
+          python research/RHRC/tools/axiom_audit.py Zeta23/CCM/RankOneEigenline.lean Zeta23/CCM/GlobalParityBottomSimplicity.lean Zeta23/CCM/GlobalParityBottomGroundSpace.lean Zeta23/CCM/SourceWeightCounterexample.lean Zeta23/CCM/CanonicalArithmeticLowerBound.lean Zeta23/CCM/CofinalLowerBound.lean Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean > "${{ runner.temp }}/post268-proof/axioms.log" 2>&1
+          cat "${{ runner.temp }}/post268-proof/axioms.log"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post268-proof-${{ github.event.pull_request.head.sha }}
+          path: ${{ runner.temp }}/post268-proof
+          if-no-files-found: error
+          retention-days: 30

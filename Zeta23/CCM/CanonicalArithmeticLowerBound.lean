@@ -9,12 +9,12 @@ namespace Zeta23.CCM
 # Exact arithmetic form of a lower certificate
 
 This file fixes the signs and Euclidean norm in the remaining estimate.
-It does not construct any certificate. In particular the error must bound
-ALL legal vectors at the same size, not just a computed trial vector.
+It does not construct any certificate. The error must bound ALL legal vectors
+at the same size, not just a computed trial vector.
 -/
 
-/-- The exact signed arithmetic estimate is equivalent to a lower bound on
-canonical energy, with no absolute-value relaxation and no normalization loss. -/
+/-- The signed arithmetic estimate is equivalent to a canonical energy lower
+bound, without an absolute-value relaxation or normalization loss. -/
 theorem canonicalSourceChannelEnergy_lowerBound_iff
     {L : ℝ} (hL : 0 < L) (K : ℕ) (ε : ℝ)
     (x : EuclideanSpace ℂ (Fin (2 * K + 1))) :
@@ -24,11 +24,11 @@ theorem canonicalSourceChannelEnergy_lowerBound_iff
   rw [canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget hL K x]
   constructor <;> intro h <;> linarith
 
-/-- The all-vector boundary-flat lower-bound obligation, in the same norm as
-the canonical Rayleigh bottom. It is not satisfied by a finite vector sample. -/
+/-- All-vector lower-bound obligation on the existing Euclidean boundary-flat
+subspace. This is not satisfied by a finite vector sample. -/
 def CanonicalArithmeticLowerBound (L : ℝ) (K : ℕ) (ε : ℝ) : Prop :=
   ∀ x : EuclideanSpace ℂ (Fin (2 * K + 1)),
-    EuclideanBoundaryFlat K x →
+    x ∈ euclideanBoundaryFlatSubspace K →
       canonicalPrimeFreeBudget L K x + canonicalPrimeRemainderEnergy L K x ≤
         ε * ‖x‖ ^ 2
 
@@ -37,7 +37,7 @@ theorem canonicalArithmeticLowerBound_iff_energy
     {L : ℝ} (hL : 0 < L) (K : ℕ) (ε : ℝ) :
     CanonicalArithmeticLowerBound L K ε ↔
       ∀ x : EuclideanSpace ℂ (Fin (2 * K + 1)),
-        EuclideanBoundaryFlat K x →
+        x ∈ euclideanBoundaryFlatSubspace K →
           -ε * ‖x‖ ^ 2 ≤ canonicalSourceChannelEnergy L K x := by
   constructor
   · intro h x hx

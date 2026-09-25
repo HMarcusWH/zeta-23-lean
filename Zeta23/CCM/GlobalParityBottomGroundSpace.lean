@@ -8,18 +8,14 @@ namespace Zeta23.CCM
 /-!
 # Multiplicity of the parity-split legal ground space
 
-This is the direct-sum representation of the two legal parity ground spaces
-at their common minimum. The underlying complete boundary-flat carrier is the
-sum of these parity carriers by `ConstrainedParityGeometry`; the ground value
-is its Rayleigh bottom by `GlobalParityBottomSpectrum`.
-
-No conclusion is made about the unconstrained full-space ground. In particular
-this does not discharge the original unconstrained CCM even-simple gate.
+The product represents both legal parity ground spaces at their common minimum.
+No conclusion is made about the unconstrained full-space ground; this does not
+discharge the original unconstrained CCM even-simple gate.
 -/
 
-/-- The full legal ground in parity coordinates: both eigenspaces at the SAME
-minimum, rather than one independently chosen ground value in each sector. -/
-def paritySplitGroundSpace (L : ℝ) (N : ℕ) :=
+/-- Both eigenspaces at the SAME minimum, not independent sector ground values.
+A reducible type alias retains the product's inherited algebraic instances. -/
+abbrev paritySplitGroundSpace (L : ℝ) (N : ℕ) :=
   (Module.End.eigenspace (parityCompressedCanonical .even L (N + 1))
     (globalParitySuccessorBottom L N : ℂ)) ×
   (Module.End.eigenspace (parityCompressedCanonical .odd L (N + 1))
@@ -32,10 +28,12 @@ theorem parityEigenspace_eq_bot_of_lt_bottom
     Module.End.eigenspace (parityCompressedCanonical p L K) (a : ℂ) = ⊥ := by
   apply le_antisymm
   · intro x hx
-    apply Submodule.mem_bot.mpr
+    change x = 0
     by_contra hxne
     have he := Module.End.mem_eigenspace_iff.mp hx
     have hp := shiftedParityCompressed_pos_of_lt_bottom p L K ha x hxne
+    change 0 < Complex.re (inner ℂ
+      (parityCompressedCanonical p L K x - (a : ℂ) • x) x) at hp
     rw [he, sub_self] at hp
     simpa using hp
   · exact bot_le
@@ -68,8 +66,8 @@ theorem paritySplitGroundSpace_finrank_eq_one_of_odd_strict
   rw [Module.finrank_prod, hb, hz, Module.finrank_bot, ho]
   omega
 
-/-- A parity tie contributes a nonzero mode from each orthogonal carrier.
-The lower bound is two; the theorem does NOT assume each tied sector is simple. -/
+/-- A parity tie contributes a nonzero mode in each carrier. This lower bound
+of two does NOT assume that either tied sector is simple. -/
 theorem two_le_paritySplitGroundSpace_finrank_of_tie
     (L : ℝ) (N : ℕ) (hN : 1 ≤ N)
     (h : parityRayleighBottom .even L (N + 1) =
@@ -93,8 +91,7 @@ theorem two_le_paritySplitGroundSpace_finrank_of_tie
   rw [Module.finrank_prod]
   omega
 
-/-- Simplicity of the complete legal ground in parity coordinates is EXACTLY
-strict separation of the two sector bottoms. Ties are not discarded. -/
+/-- Simplicity in parity coordinates is exactly strict sector separation. -/
 theorem paritySplitGroundSpace_simple_iff_ne
     {L : ℝ} (hL : 0 < L) (N : ℕ) (hN : 1 ≤ N) :
     Module.finrank ℂ (paritySplitGroundSpace L N) = 1 ↔

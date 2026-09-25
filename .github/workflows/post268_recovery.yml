@@ -6,7 +6,7 @@ on:
 permissions:
   contents: read
 jobs:
-  recover:
+  snapshot:
     if: github.head_ref == 'research/post268-audit-proof-and-ci'
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -15,43 +15,15 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
-      - name: Recover prior uncommitted objects as data only
+      - name: Archive exact committed source for repair review
         env:
-          GH_TOKEN: ${{ github.token }}
           OUTPUT: ${{ runner.temp }}/post268-recovery
         run: |
-          python - <<'PY'
-          import base64, hashlib, json, lzma, os, pathlib, subprocess, urllib.request
-          out = pathlib.Path(os.environ['OUTPUT']); out.mkdir(parents=True)
-          shas = ['edec96c272c016e160e4e01e9b694982060678d0',
-                  '499be7168bdbf1e3a22eedf450229e08642bee74',
-                  '416ad4ec2f441ccbeace2ae75d4e874cb67e622b',
-                  '5824b1616ae566e28fa05d31eaf25801efd374c8',
-                  'd7263efe589070a02a1b44f60394a3bad3991938']
-          parts = []
-          for sha in shas:
-              req = urllib.request.Request(
-                  'https://api.github.com/repos/HMarcusWH/zeta-23-lean/git/blobs/' + sha,
-                  headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'],
-                           'Accept': 'application/vnd.github+json'})
-              with urllib.request.urlopen(req, timeout=30) as response:
-                  obj = json.load(response)
-              part = base64.b64decode(obj['content'])
-              assert hashlib.sha1(b'blob ' + str(len(part)).encode() + b'\0' + part).hexdigest() == sha
-              parts.append(part)
-          raw = b''.join(parts)
-          digest = hashlib.sha256(raw).hexdigest()
-          (out/'transport.sha256').write_text(digest+'\n')
-          print('Recovered transport:', digest)
-          payload = json.loads(lzma.decompress(raw))
-          (out/'core.json').write_text(json.dumps(payload, ensure_ascii=False))
-          print('Payload keys:', list(payload))
-          print('Files:', sorted(payload.get('files', {})))
-          subprocess.run(['git', 'archive', '--format=zip', '-o', str(out/'head.zip'), 'HEAD'], check=True)
-          (out/'source.txt').write_text(subprocess.check_output(['git','rev-parse','HEAD','HEAD^{tree}'],text=True))
-          PY
+          mkdir -p "$OUTPUT"
+          git archive --format=zip -o "$OUTPUT/head.zip" HEAD
+          git rev-parse HEAD HEAD^{tree} > "$OUTPUT/source.txt"
+          printf '%s\n' 'Prior uncommitted core transport: CORRUPT, never executed or deployed.' 'Recovered concatenation SHA256: 547bdf3e52c6972adac9325ef68e227bfafe47d78d45041326df0e581578ad0e' > "$OUTPUT/pending-transport-status.txt"
       - uses: actions/upload-artifact@v4
-        if: always()
         with:
           name: post268-recovery-${{ github.event.pull_request.head.sha }}
           path: ${{ runner.temp }}/post268-recovery
