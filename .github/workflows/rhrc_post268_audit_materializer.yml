@@ -1,34 +1,38 @@
-name: RHRC post268 proof bootstrap and materializer
+name: RHRC framework migration and steady-state materializer
+
 on:
   pull_request:
     branches: [main]
     types: [opened, synchronize, reopened, ready_for_review]
+
 permissions:
-  contents: read
+  contents: write
+
 concurrency:
-  group: post268-materializer-${{ github.event.pull_request.number }}
+  group: framework270-materializer-${{ github.event.pull_request.number }}
   cancel-in-progress: true
+
 jobs:
   materialize:
-    if: github.head_ref == 'research/post268-audit-proof-and-ci' && github.actor != 'github-actions[bot]'
+    if: github.head_ref == 'repair/frameworks-v17-ool277-strict-state' && github.actor != 'github-actions[bot]' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Preserve exact audit and record committed-source identities
-        run: |
-          mkdir -p "${{ runner.temp }}/post268-proof"
-          python .github/post268_prepare.py
-          git diff --exit-code -- Zeta23
-          git diff > "${{ runner.temp }}/post268-proof/prepared-source.patch"
-          git rev-parse HEAD HEAD^{tree} > "${{ runner.temp }}/post268-proof/checkout.txt"
-          sha256sum Zeta23/CCM/{RankOneEigenline,GlobalParityBottomSimplicity,GlobalParityBottomGroundSpace,SourceWeightCounterexample,CanonicalArithmeticLowerBound,CofinalLowerBound}.lean Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean > "${{ runner.temp }}/post268-proof/sources.sha256"
+
+      - name: Install RHRC framework requirements
+        run: python -m pip install -r research/RHRC/requirements.txt
+
+      - name: Materialize and hash-verify the frozen post-268 audit
+        run: python .github/post268_prepare.py
+
       - uses: leanprover/lean-action@v1
         with:
           auto-config: false
@@ -36,18 +40,46 @@ jobs:
           test: false
           lint: false
           use-mathlib-cache: true
-      - name: Compile all seven exact proof modules
+
+      - name: Build compiler exporters
+        run: lake build Zeta23.RHRC.RegisteredClaimBindings Zeta23.RHRC.DeclarationDependencyExport Zeta23.RHRC.SourceCandidateResolution
+
+      - name: Bootstrap framework unit tests
         run: |
-          lake build Zeta23.CCM.RankOneEigenline Zeta23.CCM.GlobalParityBottomSimplicity Zeta23.CCM.GlobalParityBottomGroundSpace Zeta23.CCM.SourceWeightCounterexample Zeta23.CCM.CanonicalArithmeticLowerBound Zeta23.CCM.CofinalLowerBound Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH > "${{ runner.temp }}/post268-proof/compiler.log" 2>&1 || { tail -n 180 "${{ runner.temp }}/post268-proof/compiler.log"; exit 1; }
-          tail -n 80 "${{ runner.temp }}/post268-proof/compiler.log"
-      - name: Audit new theorem axioms
+          python -m unittest discover -s research/RHRC/ffbbp/tests -p 'test_*.py' -v
+          python -m unittest discover -s research/RHRC/ool/tests -p 'test_*.py' -v
+          python research/RHRC/integration/integration_lint.py
+
+      - name: Enter final steady state
         run: |
-          python research/RHRC/tools/axiom_audit.py Zeta23/CCM/RankOneEigenline.lean Zeta23/CCM/GlobalParityBottomSimplicity.lean Zeta23/CCM/GlobalParityBottomGroundSpace.lean Zeta23/CCM/SourceWeightCounterexample.lean Zeta23/CCM/CanonicalArithmeticLowerBound.lean Zeta23/CCM/CofinalLowerBound.lean Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean > "${{ runner.temp }}/post268-proof/axioms.log" 2>&1
-          cat "${{ runner.temp }}/post268-proof/axioms.log"
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: post268-proof-${{ github.event.pull_request.head.sha }}
-          path: ${{ runner.temp }}/post268-proof
-          if-no-files-found: error
-          retention-days: 30
+          rm -rf .github/post268_archive
+          rm -f .github/post268_prepare.py
+          rm -f .github/workflows/rhrc_post268_audit_materializer.yml
+
+      - name: Regenerate compiler and RHKG products
+        run: |
+          python research/RHRC/tools/lean_dependency_extract.py
+          python research/RHRC/graph/build.py
+          python research/RHRC/integration/candidate_exactify.py
+          python research/RHRC/ffbbp/rhkg_assurance.py --write
+          python research/RHRC/integration/source_only_dependency_extract.py
+          python research/RHRC/ool/rhkg_phase_atlas.py --write
+
+      - name: Strict steady-state validation
+        run: |
+          python research/RHRC/graph/build.py --check
+          python research/RHRC/graph/validate.py
+          python research/RHRC/tools/run_suite.py
+          python research/RHRC/audits/post268/verify_frozen.py
+
+      - name: Commit validated steady state
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          TARGET_BRANCH: repair/frameworks-v17-ool277-strict-state
+        run: |
+          test "$(git ls-remote origin refs/heads/$TARGET_BRANCH | cut -f1)" = "$EXPECTED_HEAD"
+          git add -A
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'frameworks: materialize frozen audit and regenerate strict FFBBP/OoL state'
+          git push origin HEAD:refs/heads/$TARGET_BRANCH
