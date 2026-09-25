@@ -93,8 +93,24 @@ def render_driver(query_path: Path, candidates: list[dict]) -> str:
     )
 
 
+def build_candidate_modules(candidates: list[dict]) -> None:
+    modules = sorted({row["module"] for row in candidates})
+    proc = subprocess.run(
+        ["lake", "build", *modules],
+        cwd=REPO,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    if proc.returncode != 0:
+        print(proc.stdout, end="")
+        print(proc.stderr, end="", file=os.sys.stderr)
+        fail(f"candidate module build failed with exit code {proc.returncode}")
+
+
 def run_lean(candidates: list[dict]) -> str:
     validate_candidate_modules(candidates)
+    build_candidate_modules(candidates)
     query_path: Path | None = None
     driver_path: Path | None = None
     try:
