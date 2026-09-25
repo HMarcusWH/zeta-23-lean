@@ -41,9 +41,9 @@ theorem eigenspace_finrank_eq_one_of_functional_kernel
     (T : V →ₗ[𝕜] V) (a : 𝕜) (S : V →ₗ[𝕜] 𝕜)
     (hker : ∀ x : V, T x = a • x → S x = 0 → x = 0)
     (hex : ∃ v : V, v ≠ 0 ∧ T v = a • v) :
-    Module.finrank 𝕜 (T.eigenspace a) = 1 := by
+    Module.finrank 𝕜 (Module.End.eigenspace T a) = 1 := by
   obtain ⟨v, hvne, hv⟩ := hex
-  let v' : T.eigenspace a := ⟨v, Module.End.mem_eigenspace_iff.mpr hv⟩
+  let v' : Module.End.eigenspace T a := ⟨v, Module.End.mem_eigenspace_iff.mpr hv⟩
   apply finrank_eq_one_iff'.mpr
   refine ⟨v', ?_, ?_⟩
   · intro hz

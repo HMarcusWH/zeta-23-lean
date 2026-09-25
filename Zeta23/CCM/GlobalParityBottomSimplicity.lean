@@ -81,7 +81,7 @@ theorem evenGround_eigenspace_finrank_eq_one_of_strict
     (hstrict : parityRayleighBottom .even L (N + 1) <
       parityRayleighBottom .odd L (N + 1)) :
     Module.finrank ℂ
-      ((parityCompressedCanonical .even L (N + 1)).eigenspace
+      (Module.End.eigenspace (parityCompressedCanonical .even L (N + 1))
         (parityRayleighBottom .even L (N + 1) : ℂ)) = 1 := by
   apply eigenspace_finrank_eq_one_of_functional_kernel
     _ _ (cubicDefectFunctional L (N + 1))
@@ -97,7 +97,7 @@ theorem oddGround_eigenspace_finrank_eq_one_of_strict
     (hstrict : parityRayleighBottom .odd L (N + 1) <
       parityRayleighBottom .even L (N + 1)) :
     Module.finrank ℂ
-      ((parityCompressedCanonical .odd L (N + 1)).eigenspace
+      (Module.End.eigenspace (parityCompressedCanonical .odd L (N + 1))
         (parityRayleighBottom .odd L (N + 1) : ℂ)) = 1 := by
   apply eigenspace_finrank_eq_one_of_functional_kernel
     _ _ (oddPulledBackSourceFunctional L (N + 1) (by omega))

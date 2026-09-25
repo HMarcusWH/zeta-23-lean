@@ -30,10 +30,10 @@ jobs:
           use-mathlib-cache: true
       - name: Compile exact post268 proof candidates
         run: |
-          lake build Zeta23.CCM.RankOneEigenline Zeta23.CCM.GlobalParityBottomSimplicity Zeta23.CCM.CofinalLowerBound Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH
+          lake build Zeta23.CCM.RankOneEigenline Zeta23.CCM.GlobalParityBottomSimplicity Zeta23.CCM.GlobalParityBottomGroundSpace Zeta23.CCM.SourceWeightCounterexample Zeta23.CCM.CanonicalArithmeticLowerBound Zeta23.CCM.CofinalLowerBound Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH
       - name: Audit new theorem axioms
         run: |
-          python research/RHRC/tools/axiom_audit.py Zeta23/CCM/RankOneEigenline.lean Zeta23/CCM/GlobalParityBottomSimplicity.lean Zeta23/CCM/CofinalLowerBound.lean Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean
+          python research/RHRC/tools/axiom_audit.py Zeta23/CCM/RankOneEigenline.lean Zeta23/CCM/GlobalParityBottomSimplicity.lean Zeta23/CCM/GlobalParityBottomGroundSpace.lean Zeta23/CCM/SourceWeightCounterexample.lean Zeta23/CCM/CanonicalArithmeticLowerBound.lean Zeta23/CCM/CofinalLowerBound.lean Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean
       - name: Bootstrap status
         run: |
           echo 'STAGING: audit corpus and full test deployment are being assembled. Not merge-ready.'
