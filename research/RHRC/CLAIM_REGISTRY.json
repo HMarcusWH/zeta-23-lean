@@ -977,6 +977,20 @@
       "note": "PR #247 unconditional spectral layer. This does not assert negativity for the actual zeta system. Post-#247 state-sync registry note: recorded as theorem inventory without changing the historically frozen R003 promoted-binding surface or CCM import graph."
     },
     {
+      "id": "R003_GLOBAL_PARITY_BOTTOM_NFLOW",
+      "statement": "For every positive aperture and predecessor sizes 1 <= N <= M, each parity Rayleigh bottom at successor size M+1 is no larger than at N+1; consequently the common global successor bottom is antitone in the N-direction.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+        "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+        "R003_EXACT_CENTERED_FINITE_NESTING"
+      ],
+      "source": "Zeta23/CCM/GlobalParityBottomNFlow.lean",
+      "theorem": "Zeta23.CCM.globalParitySuccessorBottom_antitone_of_le",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "Post-#266 theorem return. Exact centered zero extension embeds the old parity carrier isometrically into every larger carrier and preserves the canonical quadratic energy, so the variational bottom cannot increase. Direction firewall: larger N can lower the bottom; this propagates negativity upward in N and nonnegativity downward, but does not propagate small-N positivity upward. No L-monotonicity, prime-remainder dominance, residual-state exclusion, or RH theorem is claimed."
+    },
+    {
       "id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
       "statement": "Every GlobalBottomResidualState carries a dependent even-strict, odd-strict, or tie branch package, keeping the branch-specific source/transfer identities attached to the same residual state.",
       "status": "PROVED_UNCONDITIONAL",
