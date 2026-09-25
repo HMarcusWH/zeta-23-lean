@@ -79,11 +79,13 @@ def render_query_tsv(candidates: list[dict]) -> str:
     return "\n".join(lines) + "\n"
 
 
-def render_driver(query_path: Path) -> str:
+def render_driver(query_path: Path, candidates: list[dict]) -> str:
+    modules = sorted({row["module"] for row in candidates})
+    imports = "\n".join(
+        ["import Zeta23.RHRC.SourceCandidateResolution", *[f"import {module}" for module in modules]]
+    )
     return (
-        "import Zeta23.RHRC.SourceCandidateResolution\n"
-        "import Zeta23.CCM\n"
-        "import Zeta23.ExceptionalZero\n\n"
+        imports + "\n\n"
         "run_cmd do\n"
         "  Zeta23.RHRC.resolveSourceCandidatesFile "
         + lean_string(str(query_path))
