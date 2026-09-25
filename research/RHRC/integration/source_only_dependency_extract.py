@@ -64,7 +64,23 @@ def render_driver(roots: list[dict]) -> str:
     )
 
 
+def build_root_modules(roots: list[dict]) -> None:
+    modules = sorted({row["module"] for row in roots})
+    proc = subprocess.run(
+        ["lake", "build", *modules],
+        cwd=REPO,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    if proc.returncode != 0:
+        print(proc.stdout, end="")
+        print(proc.stderr, end="", file=os.sys.stderr)
+        fail(f"source-only root module build failed with exit code {proc.returncode}")
+
+
 def run_lean(roots: list[dict]) -> str:
+    build_root_modules(roots)
     driver = render_driver(roots)
     with tempfile.NamedTemporaryFile(
         mode="w", suffix=".lean", encoding="utf-8", delete=False
