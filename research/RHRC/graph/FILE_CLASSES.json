@@ -162,6 +162,24 @@
       "trust_zone": "AUDIT_ONLY"
     },
     {
+      "id": "frozen_audit_docs",
+      "pattern": "^research/RHRC/audits/.*\\.md$",
+      "file_class": "DOCUMENTATION",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "frozen_audit_receipts",
+      "pattern": "^research/RHRC/audits/.*\\.(?:json|jsonl|txt|log)$",
+      "file_class": "RESEARCH_RECEIPT",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
+      "id": "frozen_audit_scripts",
+      "pattern": "^research/RHRC/audits/.*\\.py$",
+      "file_class": "OTHER_CLASSIFIED",
+      "trust_zone": "AUDIT_ONLY"
+    },
+    {
       "id": "audit_python",
       "pattern": "^research/RHRC/(?:tools|graph|control_v2)(?:/.*)?\\.py$",
       "file_class": "OTHER_CLASSIFIED",
