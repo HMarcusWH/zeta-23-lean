@@ -2671,6 +2671,21 @@
     },
     {
       "compiler_dependency_surface_declaration_count": 2,
+      "file_id": "rh:file:Zeta23/CCM/GlobalParityBottomNFlow.lean",
+      "module": "Zeta23.CCM.GlobalParityBottomNFlow",
+      "module_id": "rh:module:Zeta23.CCM.GlobalParityBottomNFlow",
+      "named_source_declaration_count": 2,
+      "path": "Zeta23/CCM/GlobalParityBottomNFlow.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 1,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/CCM/GlobalParityBottomOddStrictNormalForm.lean",
       "module": "Zeta23.CCM.GlobalParityBottomOddStrictNormalForm",
       "module_id": "rh:module:Zeta23.CCM.GlobalParityBottomOddStrictNormalForm",
@@ -10139,7 +10154,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 637,
+  "entry_count": 638,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",

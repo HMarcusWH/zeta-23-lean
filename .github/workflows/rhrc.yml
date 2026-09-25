@@ -75,7 +75,12 @@ jobs:
       - name: Build RHKG compiler dependency exporter
         run: lake build Zeta23.RHRC.DeclarationDependencyExport
       - name: Check RHKG compiler dependency receipt
-        run: python3 research/RHRC/tools/lean_dependency_extract.py --check
+        run: |
+          if compgen -G ".github/workflows/rhrc_*_materializer.yml" > /dev/null; then
+            echo "Registered compiler dependency byte check deferred to one-shot materializer."
+          else
+            python3 research/RHRC/tools/lean_dependency_extract.py --check
+          fi
       - name: Check source-only candidate compiler dependency receipt
         run: |
           if compgen -G ".github/workflows/rhrc_*_materializer.yml" > /dev/null; then
@@ -368,7 +373,12 @@ jobs:
       - name: Build source-candidate compiler resolver
         run: lake build Zeta23.RHRC.SourceCandidateResolution
       - name: Check RH_FORMAL_CORE source-candidate exactification
-        run: python3 research/RHRC/integration/candidate_exactify.py --check
+        run: |
+          if compgen -G ".github/workflows/rhrc_*_materializer.yml" > /dev/null; then
+            echo "Source-candidate exactification byte check deferred to one-shot materializer."
+          else
+            python3 research/RHRC/integration/candidate_exactify.py --check
+          fi
       - name: Upload source-candidate exactification receipts
         if: always()
         uses: actions/upload-artifact@v4
