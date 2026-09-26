@@ -6,35 +6,34 @@
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #269
-- validated final head = d228f35ca3338520131a883b9091fad16ef9c9b9
-- merge commit = b7912d13801389a4c6e3236f98c28435254d685d
-- tree = 9d2fff6ed5b0ecc3ea55e363de6df80410a720c3
+- merged theorem authority = PR #271
+- validated final head = 3b1dfb8337125b10ce99febbb974ff8c7086394e
+- merge commit = c9fb1a6462e5cc828acb951aefd4e9fae33ddaaa
+- tree = 10ba766b13e63fb5e5567c3da7a3910f54fe6812
 - status = MERGED_GREEN_THEOREM_STATE
 - PR #269 legal parity-ground simplicity iff strict parity separation = PROVED
 - PR #269 parity tie -> parity-split ground finrank >= 2 = PROVED
 - PR #269 carrier-wide source-weight derivative nonnegativity = REFUTED / FORMAL COUNTEREXAMPLE
 - PR #269 canonical arithmetic lower-bound normal form = PROVED
-- PR #269 jointly cofinal bottom lower bounds -> finite-bottom nonnegativity = PROVED
-- PR #269 cofinal lower certificates -> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY / CONDITIONAL
+- PR #271 arithmetic all-vector certificate -> global legal bottom lower bound = PROVED
+- PR #271 cofinal canonical arithmetic certificates -> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY / CONDITIONAL
 - RH = OPEN
 
-CURRENT IMPLEMENTATION / OPEN TARGET
-- current PR target = CANONICAL_ARITHMETIC_TO_GLOBAL_BOTTOM_AND_COFINAL_CERTIFICATE_BRIDGE
-- arithmetic all-vector certificate -> -epsilon <= globalParitySuccessorBottom = CURRENT PR THEOREM TARGET
-- CofinalCanonicalArithmeticCertificates -> RiemannHypothesis = CURRENT PR AUDIT TARGET
-- cofinal arithmetic certificate construction = OPEN
-- active obstruction = OBS-061
-- next research target = COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES
-- required new information = UNIFORM_ALL_VECTOR_CANONICAL_ARITHMETIC_DECAY_ON_COFINAL_APERTURES_AND_SIZES
-- no reverse RH-equivalence claim is made for CofinalCanonicalArithmeticCertificates
+CURRENT AUDIT / NEXT RESEARCH TARGET
+- current PR = #272 / AUDIT_CANDIDATE_NOT_MERGED_THEOREM_AUTHORITY
+- current audit target = CofinalCanonicalArithmeticCertificates <-> RiemannHypothesis
+- RH -> cofinal arithmetic certificates = CURRENT PR AUDIT CANDIDATE
+- direct cofinal certificate construction = OPEN on merged theorem authority
+- active obstruction = OBS-061_RECLASSIFICATION_FIREWALL
+- next research target = GROUND_SPECIFIC_FIRST_CONTACT_ARITHMETIC_SEAM
+- required new information = TRUE_GROUND_FIXED_CELL_AND_PRIME_POWER_SEAM_DISCRIMINANT
+- equivalence audit cannot promote RH; it only classifies the terminal premise
 
-FRAMEWORK / GRAPH AUTHORITY
-- PR #270 = FFBBP 1.7 assurance + OoL-MVS 2.7.7 governance + strict RHKG steady state
-- FFBBP RUN46F executable authority = NOT PROMOTED
-- OoL certificate VALID = attested binding, NOT physical or mathematical truth
-- post-270 source-only theorem/lemma roots = 707
-- post-270 FFBBP source-only module cohorts = 202
+FRAMEWORK / GRAPH STATE
+- PR #270 = FFBBP 1.7 / OoL-MVS 2.7.7 framework architecture authority
+- PR #271 exactified source-only theorem/lemma roots = 683
+- PR #271 FFBBP source-only module cohorts = 198
+- PR #271 OoL theorem-value-erased frontier contacts = 498
 - framework output -> Lean theorem authority = FORBIDDEN
 
 RESEARCH / CONTROL FIREWALL

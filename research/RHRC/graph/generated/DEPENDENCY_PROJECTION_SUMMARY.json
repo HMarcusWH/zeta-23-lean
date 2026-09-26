@@ -176,6 +176,14 @@
           "root_theorem": "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates"
         },
         {
+          "claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_RH_EQUIVALENCE",
+          "external_boundary_count": 3942,
+          "external_boundary_sha256": "fa37a9d82f347f8815d183b04f01453ed07c5137bc92a02d4c5bd4ff8881c482",
+          "local_dependency_count": 1745,
+          "local_dependency_sha256": "64416a93fc47f67b95636df90038d1c86567c75334154799d5e10955e22b5cb8",
+          "root_theorem": "Zeta23.ExceptionalZero.cofinalCanonicalArithmeticCertificates_iff_riemannHypothesis"
+        },
+        {
           "claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
           "external_boundary_count": 3881,
           "external_boundary_sha256": "0b0aedec73af13d6e474677314cbaf22bbba992f852add9c47597d2db173afc7",
@@ -1015,6 +1023,14 @@
           "local_dependency_count": 1,
           "local_dependency_sha256": "cf27ee7446d16a804df070f6c00f2399afdf608304894d74ba388f524af8b25a",
           "root_theorem": "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates"
+        },
+        {
+          "claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_RH_EQUIVALENCE",
+          "external_boundary_count": 2,
+          "external_boundary_sha256": "eb8848bc1d0b1559d7c6dfb6258a31461ac4f07296e16d4b15101195f27ba1a1",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "cf27ee7446d16a804df070f6c00f2399afdf608304894d74ba388f524af8b25a",
+          "root_theorem": "Zeta23.ExceptionalZero.cofinalCanonicalArithmeticCertificates_iff_riemannHypothesis"
         },
         {
           "claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
@@ -1858,6 +1874,14 @@
           "root_theorem": "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates"
         },
         {
+          "claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_RH_EQUIVALENCE",
+          "external_boundary_count": 3929,
+          "external_boundary_sha256": "4d3e15c603bf5c462c5ceb258597674bcf792503475addb9cb600574cd637ce2",
+          "local_dependency_count": 1737,
+          "local_dependency_sha256": "0c99882b283b0767fbc82d23c307a3084945910416bb3edf47e0ad8318e4bba4",
+          "root_theorem": "Zeta23.ExceptionalZero.cofinalCanonicalArithmeticCertificates_iff_riemannHypothesis"
+        },
+        {
           "claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
           "external_boundary_count": 3867,
           "external_boundary_sha256": "3f6635c1557b16d08ca2c6dddbaf097d6ba0faf91dc372a634f6b8b5c05bc16e",
@@ -2697,6 +2721,14 @@
           "local_dependency_count": 44,
           "local_dependency_sha256": "076de8b544c692be9cde9e5d30d2b546a9046f55202ca7b63299ccfb17c37f80",
           "root_theorem": "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates"
+        },
+        {
+          "claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_RH_EQUIVALENCE",
+          "external_boundary_count": 185,
+          "external_boundary_sha256": "4de3174b25295fa06132766243c9ed7be88392510d0eff3015c39709e8c5b9a6",
+          "local_dependency_count": 44,
+          "local_dependency_sha256": "076de8b544c692be9cde9e5d30d2b546a9046f55202ca7b63299ccfb17c37f80",
+          "root_theorem": "Zeta23.ExceptionalZero.cofinalCanonicalArithmeticCertificates_iff_riemannHypothesis"
         },
         {
           "claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",

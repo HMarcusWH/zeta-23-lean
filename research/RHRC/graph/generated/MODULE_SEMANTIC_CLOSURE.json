@@ -991,7 +991,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 17,
+      "compiler_dependency_surface_declaration_count": 18,
       "file_id": "rh:file:Zeta23/CCM/ConstrainedEuclideanSector.lean",
       "module": "Zeta23.CCM.ConstrainedEuclideanSector",
       "module_id": "rh:module:Zeta23.CCM.ConstrainedEuclideanSector",
@@ -4162,6 +4162,19 @@
       "reachable_from": [],
       "registered_root_count": 1,
       "standalone_role": "QUARANTINED_CONDITIONAL_RH_SEAM",
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 2,
+      "file_id": "rh:file:Zeta23/ExceptionalZero/CofinalArithmeticEquivalenceAudit.lean",
+      "module": "Zeta23.ExceptionalZero.CofinalArithmeticEquivalenceAudit",
+      "module_id": "rh:module:Zeta23.ExceptionalZero.CofinalArithmeticEquivalenceAudit",
+      "named_source_declaration_count": 2,
+      "path": "Zeta23/ExceptionalZero/CofinalArithmeticEquivalenceAudit.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 1,
+      "standalone_role": "QUARANTINED_EQUIVALENCE_AUDIT",
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
@@ -10283,7 +10296,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 647,
+  "entry_count": 648,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",
