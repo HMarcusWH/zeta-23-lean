@@ -22,8 +22,8 @@ class Post237SyncTests(unittest.TestCase):
             "RETAINED_REAL_COMPLETED_SOURCE_CORRIDOR",
         ):
             self.assertIn(token, note)
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 247)
-        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 247)
+        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 269)
+        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 269)
 
     def test_post237_route_and_claim_firewall(self):
         route = self.state["active_research_route"]
