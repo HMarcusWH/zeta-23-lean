@@ -82,7 +82,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/CURRENT_RESEARCH_PLAN.md",
-      "heading_count": 57,
+      "heading_count": 58,
       "path": "research/RHRC/CURRENT_RESEARCH_PLAN.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -96,7 +96,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/DEAD_ROUTES.md",
-      "heading_count": 43,
+      "heading_count": 44,
       "path": "research/RHRC/DEAD_ROUTES.md",
       "route_mentions": [
         "R002_multi_probe",
@@ -163,7 +163,7 @@
       "document_role": "LIVING_OBSTRUCTION_LEDGER",
       "file_class": "LIVING_SSOT",
       "file_id": "rh:file:research/RHRC/OBSTRUCTION_LEDGER.md",
-      "heading_count": 61,
+      "heading_count": 64,
       "path": "research/RHRC/OBSTRUCTION_LEDGER.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -207,7 +207,7 @@
       "document_role": "LIVING_RESEARCH_LEADS",
       "file_class": "LIVING_SSOT",
       "file_id": "rh:file:research/RHRC/RESEARCH_LEADS.md",
-      "heading_count": 65,
+      "heading_count": 66,
       "path": "research/RHRC/RESEARCH_LEADS.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -691,6 +691,16 @@
     },
     {
       "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/POST272_FIRST_CONTACT_ATLAS_2026_09_26.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/POST272_FIRST_CONTACT_ATLAS_2026_09_26.md",
+      "heading_count": 7,
+      "path": "research/RHRC/routes/R003_ccm_bridge/POST272_FIRST_CONTACT_ATLAS_2026_09_26.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
       "document_id": "rh:document:research/RHRC/routes/R003_ccm_bridge/POST_247_RIEMANN_WEARING_GLASSES_PROGRAM.md",
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
@@ -758,7 +768,7 @@
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/routes/R003_ccm_bridge/README.md",
-      "heading_count": 24,
+      "heading_count": 25,
       "path": "research/RHRC/routes/R003_ccm_bridge/README.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -834,7 +844,7 @@
       ]
     }
   ],
-  "entry_count": 70,
+  "entry_count": 71,
   "graph_theorem_promotion": false,
   "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
   "schema_version": "RHKG-final-document-closure-1.0",
