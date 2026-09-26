@@ -59,6 +59,8 @@ class Post247SyncTests(unittest.TestCase):
         root=(ROOT/"Zeta23"/"ExceptionalZero.lean").read_text(encoding="utf-8")
         self.assertNotIn("GlobalParityBottomArithmeticEquivalenceAudit",root)
         self.assertNotIn("GlobalParityBottomConditionalRH",root)
+        self.assertNotIn("CofinalArithmeticConditionalRH",root)
+        self.assertNotIn("CofinalArithmeticEquivalenceAudit",root)
 
     def test_glasses_v2_is_current_and_tautological_lanes_are_demoted(self):
         route=self.state["active_research_route"]
