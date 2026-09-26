@@ -209,10 +209,6 @@
       "theorem": "Zeta23.CCM.canonicalSourceMatrix_eq_legacyPrintedMatrix_add_correction"
     },
     {
-      "id": "R003_SOURCE_WEIGHT_CARRIER_COUNTEREXAMPLE",
-      "theorem": "Zeta23.CCM.not_all_evenBoundaryFlat_sourceDerivatives_nonneg"
-    },
-    {
       "id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
       "theorem": "Zeta23.CCM.sourceEq44Matrix_eq_cutoffFreeMatrix"
     },
