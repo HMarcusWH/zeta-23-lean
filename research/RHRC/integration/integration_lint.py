@@ -25,25 +25,30 @@ def main() -> int:
         if data.get("terminal_claim") != "RH_OPEN":
             raise SystemExit(f"integration_lint: {name} does not preserve RH_OPEN")
 
-    if state["theorem_authority"]["pr"] != 262:
-        raise SystemExit("integration_lint: theorem authority must remain PR #262")
+    if state["theorem_authority"]["pr"] != 269:
+        raise SystemExit("integration_lint: theorem authority must be PR #269")
     if state["frozen_control_authority"]["pr"] != 117:
         raise SystemExit("integration_lint: frozen control authority must remain PR #117")
-    if state["repository_graph_authority"]["pr"] != 263:
-        raise SystemExit("integration_lint: graph authority must remain PR #263")
-    if state.get("integration_foundation_authority", {}).get("pr") != 264:
-        raise SystemExit("integration_lint: integration foundation authority must remain PR #264")
-    if state.get("current_operation") != "OOL_RHKG_PHASE_ATLAS":
+    if state["repository_graph_authority"]["pr"] != 270:
+        raise SystemExit("integration_lint: graph/framework authority must be PR #270")
+    if state.get("integration_foundation_authority", {}).get("pr") != 270:
+        raise SystemExit("integration_lint: integration exactification authority must be PR #270")
+    if state.get("current_operation") != "POST269_THEOREM_CONTROL_COFINAL_ARITHMETIC_SYNC":
         raise SystemExit("integration_lint: current integration operation drift")
     ffbbp_authority = state.get("ffbbp_assurance_authority", {})
-    if ffbbp_authority.get("pr") != 265:
-        raise SystemExit("integration_lint: FFBBP assurance authority must be PR #265")
-    if ffbbp_authority.get("validated_head") != "fabdef96784f427092a769198ef12a616cfe857d":
-        raise SystemExit("integration_lint: FFBBP assurance validated-head drift")
-    if ffbbp_authority.get("merge_commit") != "ae7bae97b1351fe048b679fe2db42b734946dff9":
+    if ffbbp_authority.get("pr") != 270:
+        raise SystemExit("integration_lint: FFBBP assurance authority must be PR #270")
+    if ffbbp_authority.get("merge_commit") != "9a2c39403b3d5f9a0ac55b7cd27340ff1833a14f":
         raise SystemExit("integration_lint: FFBBP assurance merge-commit drift")
-    if ffbbp_authority.get("tree") != "6741f43d81aa34ddb3169a425e9d451a41214704":
+    if ffbbp_authority.get("tree") != "880bc13fdeae8b5422ee10c61519dbd019991b11":
         raise SystemExit("integration_lint: FFBBP assurance tree drift")
+    if ffbbp_authority.get("inherits_runtime_qualification") is not False:
+        raise SystemExit("integration_lint: FFBBP authority may not inherit runtime qualification")
+    if ffbbp_authority.get("run46f_runtime_promoted") is not False:
+        raise SystemExit("integration_lint: FFBBP authority may not promote RUN46F")
+    ool_authority = state.get("ool_phase_atlas_authority", {})
+    if ool_authority.get("pr") != 270 or ool_authority.get("kernel_version") != "2.7.7":
+        raise SystemExit("integration_lint: OoL 2.7.7 authority drift")
     if state.get("theorem_promotion") is not False:
         raise SystemExit("integration_lint: integration state attempts theorem promotion")
     if boundary["claim_firewall"].get("theorem_promotion") is not False:
@@ -186,14 +191,14 @@ def main() -> int:
             )
             root_row = by_full_name.get(known_root)
             if root_row is None:
-                raise SystemExit("integration_lint: known PR #262 theorem did not exactify")
+                raise SystemExit("integration_lint: known registered theorem did not exactify")
             if root_row.get("visibility_class") != "ALREADY_REGISTERED_ROOT":
                 raise SystemExit(
-                    "integration_lint: known PR #262 theorem lost registered-root visibility"
+                    "integration_lint: known registered theorem lost registered-root visibility"
                 )
             if root_row.get("registered_claim_id") != "R003_GLOBAL_BOTTOM_PRIME_WEIGHT_ENDPOINT_JETS":
                 raise SystemExit(
-                    "integration_lint: known PR #262 theorem/claim binding drift"
+                    "integration_lint: known registered theorem/claim binding drift"
                 )
 
             known_hidden = "Zeta23.CCM.hasDerivAt_sourceAtomPairing"
