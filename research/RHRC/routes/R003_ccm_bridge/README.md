@@ -47,6 +47,10 @@ RESEARCH / CONTROL FIREWALL
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+## Post-#272 first-contact atlas
+
+The current research-producing operation is `POST272_TRUE_GROUND_FIRST_CONTACT_ATLAS`. It is preregistered in `fixtures/post272_first_contact_atlas_v1.json`, uses Arb enclosures on the exact boundary-flat parity carriers, treats parity ties multiplicity-safely, and compares genuine von-Mangoldt seams with current-q ablations, exact Λ(q)=0 controls, and the scoped #249 planted-zero falsifiers. The seam atom vanishes at `L=log(q)`; the atlas tests one-sided response, not a value jump. Claim cap: EXPERIMENTAL_SIGNAL_ONLY. RH remains OPEN.
+
 
 ## Post-#247 programme override
 

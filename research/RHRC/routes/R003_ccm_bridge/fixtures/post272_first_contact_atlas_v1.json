@@ -1,0 +1,25 @@
+{
+  "schema_version": "POST272_TRUE_GROUND_FIRST_CONTACT_ATLAS_v1",
+  "claim_cap": "EXPERIMENTAL_SIGNAL_ONLY",
+  "adaptive_search": false,
+  "primary_cases": [
+    {"q": 13, "K": 3, "kind": "VON_MANGOLDT_SEAM"},
+    {"q": 16, "K": 3, "kind": "VON_MANGOLDT_SEAM"},
+    {"q": 17, "K": 3, "kind": "VON_MANGOLDT_SEAM"},
+    {"q": 14, "K": 3, "kind": "ZERO_VON_MANGOLDT_CONTROL"},
+    {"q": 15, "K": 3, "kind": "ZERO_VON_MANGOLDT_CONTROL"}
+  ],
+  "replication_cases": [
+    {"q": 16, "K": 4, "kind": "VON_MANGOLDT_SEAM"},
+    {"q": 17, "K": 4, "kind": "VON_MANGOLDT_SEAM"}
+  ],
+  "offset_powers": [8, 10, 12],
+  "planted_gamma": [10, 1],
+  "planted_off_line_delta": [1, 20],
+  "notes": [
+    "At L=log(q) the entering q atom vanishes; the atlas tests one-sided response, not a value jump.",
+    "q=14 and q=15 are exact Lambda(q)=0 controls.",
+    "No center, K, q, offset, gamma or delta may be adapted after seeing results.",
+    "Planted-zero controls are local zero-side perturbations, not alternate Euler products."
+  ]
+}

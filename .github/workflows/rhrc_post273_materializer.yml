@@ -1,0 +1,88 @@
+name: RHRC post272 first-contact steady-state materializer
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: post273-materializer-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  materialize:
+    if: github.head_ref == 'research/post272-first-contact-atlas' && github.actor != 'github-actions[bot]' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install framework and R003 requirements
+        run: |
+          python -m pip install -r research/RHRC/requirements.txt
+          python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build unchanged theorem and source resolver surfaces
+        run: |
+          lake build Zeta23.RHRC.RegisteredClaimBindings
+          lake build Zeta23.RHRC.SourceCandidateResolution
+      - name: Freeze post-272 first-contact certificate
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/check_post272_first_contact_atlas_scope.py
+          python research/RHRC/routes/R003_ccm_bridge/post272_first_contact_atlas.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post272_first_contact_atlas_v1.json \
+            --output /tmp/POST272_FIRST_CONTACT_ATLAS_RAW.json
+          python research/RHRC/routes/R003_ccm_bridge/certify_post272_first_contact_atlas.py \
+            --input /tmp/POST272_FIRST_CONTACT_ATLAS_RAW.json \
+            --output research/RHRC/receipts/POST272_FIRST_CONTACT_ATLAS.json
+      - name: Remove one-shot materializer and render living state
+        run: |
+          rm -f .github/workflows/rhrc_post273_materializer.yml
+          python research/RHRC/control_v2/render_current_state.py --write
+          git add -A
+      - name: Regenerate RHKG, source exactification, FFBBP and OoL
+        run: |
+          python research/RHRC/graph/build.py --write
+          python research/RHRC/integration/candidate_exactify.py --write
+          python research/RHRC/ffbbp/rhkg_assurance.py --write
+          python research/RHRC/integration/source_only_dependency_extract.py --write
+          python research/RHRC/ool/rhkg_phase_atlas.py --write
+      - name: Strict final-state validation
+        run: |
+          python research/RHRC/graph/build.py --check
+          python research/RHRC/graph/validate.py
+          python research/RHRC/control_v2/render_current_state.py --check
+          python research/RHRC/tools/run_suite.py
+          python research/RHRC/audits/post268/verify_frozen.py
+          python research/RHRC/routes/R003_ccm_bridge/post272_first_contact_atlas.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post272_first_contact_atlas_v1.json \
+            --output /tmp/POST272_FIRST_CONTACT_ATLAS_RAW_REPLAY.json
+          python research/RHRC/routes/R003_ccm_bridge/certify_post272_first_contact_atlas.py \
+            --input /tmp/POST272_FIRST_CONTACT_ATLAS_RAW_REPLAY.json \
+            --output /tmp/POST272_FIRST_CONTACT_ATLAS_REPLAY.json
+          cmp /tmp/POST272_FIRST_CONTACT_ATLAS_REPLAY.json research/RHRC/receipts/POST272_FIRST_CONTACT_ATLAS.json
+      - name: Commit validated final state
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          TARGET_BRANCH: research/post272-first-contact-atlas
+        run: |
+          test "$(git ls-remote origin refs/heads/$TARGET_BRANCH | cut -f1)" = "$EXPECTED_HEAD"
+          git add -A
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'rhrc: materialize post272 first-contact atlas state'
+          git push origin HEAD:refs/heads/$TARGET_BRANCH
