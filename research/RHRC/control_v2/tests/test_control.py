@@ -15,14 +15,14 @@ from control_v2.state import load_research_state
 class ControlV2Tests(unittest.TestCase):
     def test_control_state_tracks_latest_theorem_anchor_without_moving_control_anchor(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 247)
+        self.assertEqual(state.anchor.pr, 269)
         self.assertEqual(
             state.anchor.merge_commit,
-            "070c0a08a924d0c917d5366755f9c4d50067ce51",
+            "b7912d13801389a4c6e3236f98c28435254d685d",
         )
         self.assertEqual(
             state.anchor.tree,
-            "1672e49e092682343a2eace1e8e6e4799c102f35",
+            "9d2fff6ed5b0ecc3ea55e363de6df80410a720c3",
         )
         self.assertEqual(state.control_anchor.pr, 117)
         self.assertEqual(
@@ -163,10 +163,16 @@ class ControlV2Tests(unittest.TestCase):
             "PR #243",
             "arbitrarily large retained aperture",
             "GENERATED_FAMILY_FINAL_GATE",
+            "Post-#269/#270 current override",
+            "PR #269 is the latest merged theorem authority",
+            "legal parity-ground simplicity iff strict parity separation",
+            "carrier-wide source-weight monotonicity counterexample",
+            "CofinalCanonicalArithmeticCertificates",
+            "PR #270 is framework/graph authority only",
         ):
             self.assertIn(token, note)
-        self.assertEqual(control["merged_theorem_anchor"]["pr"], 247)
-        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 247)
+        self.assertEqual(control["merged_theorem_anchor"]["pr"], 269)
+        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 269)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
         self.assertEqual(control["terminal_claim"], "RH_OPEN")
 
