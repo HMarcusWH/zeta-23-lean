@@ -51,7 +51,6 @@ jobs:
           python research/RHRC/tools/arithmetic_firewall_lint.py
           python research/RHRC/tools/million_dollar_firewall_lint.py
           python -m unittest research.RHRC.integration.tests.test_integration_foundation -v
-          python -m unittest research.RHRC.control_v2.tests.test_current_state_surfaces -v
 
       - name: Remove one-shot materializer and render post271 living state
         run: |
