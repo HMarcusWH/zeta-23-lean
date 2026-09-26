@@ -1171,7 +1171,6 @@
       ],
       "source": "Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean",
       "theorem": "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalLowerCertificates",
-      "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "PR #269 AUDIT-ONLY conditional seam. The premise is not constructed. RH remains OPEN."
     },
@@ -1185,7 +1184,6 @@
       ],
       "source": "Zeta23/ExceptionalZero/CofinalArithmeticConditionalRH.lean",
       "theorem": "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates",
-      "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "PR #271 AUDIT-ONLY sufficient implication. No reverse implication is claimed and the arithmetic certificate family remains OPEN."
     },
