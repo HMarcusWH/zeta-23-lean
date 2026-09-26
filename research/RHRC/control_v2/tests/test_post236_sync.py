@@ -42,8 +42,8 @@ class Post236SyncTests(unittest.TestCase):
                 self.assertIn(section, text)
 
     def test_current_authority_has_advanced_without_erasing_236(self):
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 247)
-        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 247)
+        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 269)
+        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 269)
         self.assertEqual(
             self.state["active_research_route"]["next_research_target"],
             "CANONICAL_PRIME_REMAINDER_DOMINANCE",
