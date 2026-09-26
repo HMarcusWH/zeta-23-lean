@@ -22,8 +22,8 @@ class Post242SyncTests(unittest.TestCase):
             "NoRegularFirstBadCertificates -> Mathlib.RiemannHypothesis",
         ):
             self.assertIn(token, note)
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 247)
-        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 247)
+        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 269)
+        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 269)
 
     def test_post239_post240_post242_route_state_is_preserved(self):
         route = self.state["active_research_route"]
