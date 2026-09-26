@@ -498,6 +498,7 @@ def main() -> int:
         "C_RH",
         "R001_PRIME_UPPER",
         "R002_WINDOWED_VISIBILITY",
+        "R003_COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES",
     }
     if open_claim_ids != expected_open_claim_ids:
         errors.append(
