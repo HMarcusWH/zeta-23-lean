@@ -58,6 +58,15 @@ Canonical post-#247 programme: research/RHRC/routes/R003_ccm_bridge/POST_247_RIE
 
 **Claim firewall:** RH remains OPEN.
 
+
+## Post-#272 active lead — true-ground first-contact atlas
+
+**LEAD / EXPERIMENTAL PROGRAM.** Use the theoremized #267 N-flow, #268 carrier hierarchy, #269 parity-ground multiplicity classification, #262 endpoint jets, historical fixed-cell threshold machinery, and #249 planted-zero controls on the same unconditional legal ground object.
+
+The first falsification gate is deliberately numerical/Arb rather than another Lean terminal criterion. At a real threshold the entering atom is zero at the seam, so the atlas tests the right-hand response against a current-q-ablated smooth continuation. q=14 and q=15 are exact `Λ(q)=0` controls. Any candidate local law that also appears under the planted off-line control without a specifically arithmetic distinction is downgraded.
+
+If a robust discriminant survives, the next theorem PR should formalize only that fixed-cell/seam statement. If it does not survive, redirect to the R004 prolate bridge or Pair B rather than constructing another RH-equivalent all-vector condition.
+
 ## Post-#247 active lead ordering
 
 1. **Unconditional ground-spectrum atlas** — use the existing parity Rayleigh bottoms/common successor bottom without assuming badness.

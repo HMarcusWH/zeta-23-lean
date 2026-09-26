@@ -1,4 +1,4 @@
-# Fork notes — RHRC current state through merged theorem PR #271 and framework PR #270
+# Fork notes — RHRC current state through merged theorem PR #272 and framework PR #270
 
 > **RH remains OPEN.**
 

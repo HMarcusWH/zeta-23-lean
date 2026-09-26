@@ -21,8 +21,8 @@ class Post243SyncTests(unittest.TestCase):
             "arbitrarily large retained aperture",
         ):
             self.assertIn(token, note)
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 271)
-        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 271)
+        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 272)
+        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 272)
 
     def test_generated_family_gate_is_preserved_as_historical_rh_equivalent(self):
         route = self.state["active_research_route"]
@@ -53,11 +53,11 @@ class Post243SyncTests(unittest.TestCase):
     def test_current_headings_match_post247(self):
         self.assertEqual(
             (ROOT / "AUDIT.md").read_text(encoding="utf-8").splitlines()[0],
-            "# RHRC formal audit — merged theorem authority PR #271; research evidence PR #223",
+            "# RHRC formal audit — merged theorem authority PR #272; research evidence PR #223",
         )
         self.assertEqual(
             (ROOT / "FORK_NOTES.md").read_text(encoding="utf-8").splitlines()[0],
-            "# Fork notes — RHRC current state through merged theorem PR #271 and framework PR #270",
+            "# Fork notes — RHRC current state through merged theorem PR #272 and framework PR #270",
         )
 
 if __name__ == "__main__":

@@ -51,6 +51,19 @@ RESEARCH / CONTROL FIREWALL
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+
+## Post-#272 obstruction update
+
+### OBS-061 — cofinal arithmetic certificate reclassification firewall
+**Status: CLOSED / CONSUMED BY PR #272.**
+
+PR #272 proves `CofinalCanonicalArithmeticCertificates ↔ RiemannHypothesis`. The proposition remains OPEN because RH remains OPEN, but direct construction is no longer treated as an independent intermediate lemma.
+
+### OBS-060D/E — true-ground fixed-cell evolution and arithmetic seam
+**Status: OPEN / ACTIVE.**
+
+The next research-producing check is `POST272_TRUE_GROUND_FIRST_CONTACT_ATLAS`. It asks whether the actual legal ground has a certified one-sided response at genuine von-Mangoldt seams that survives exact zero-von-Mangoldt controls and comparison with the #249 planted-zero falsifiers. The seam value itself is continuous: the entering atom vanishes at `L=log(q)`; only the one-sided response is informative.
+
 ## Post-#247 programme override
 
 PR #246 and PR #247 supersede older "current", "next", and candidate labels below. Historical sections are retained as provenance unless this override explicitly reactivates them.

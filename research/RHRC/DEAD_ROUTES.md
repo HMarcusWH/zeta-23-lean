@@ -58,6 +58,12 @@ Canonical post-#247 programme: research/RHRC/routes/R003_ccm_bridge/POST_247_RIE
 
 **Claim firewall:** RH remains OPEN.
 
+
+## DR-037 — direct construction of the post-#271 cofinal arithmetic certificate as an independent sub-RH route
+**DEAD / CONSUMED AS INDEPENDENT ROUTE.** PR #272 proves the exact certificate proposition is equivalent to Mathlib RH. It remains a valid RH-equivalent formulation, but proving it directly is not counted as a smaller intermediate result.
+
+This does not kill the threshold-local first-crossing programme, which is formulated on unconditional finite ground objects and must still pass its own anti-circularity audit before theorem promotion.
+
 ## Post-#247 route reclassification
 
 ### DR-034 — residual-only universal law presented as independent new information
