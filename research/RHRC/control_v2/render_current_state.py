@@ -55,9 +55,9 @@ CURRENT IMPLEMENTATION / OPEN TARGET
 - arithmetic all-vector certificate -> -epsilon <= globalParitySuccessorBottom = CURRENT PR THEOREM TARGET
 - CofinalCanonicalArithmeticCertificates -> RiemannHypothesis = CURRENT PR AUDIT TARGET
 - cofinal arithmetic certificate construction = OPEN
-- active obstruction = {route['new_obstruction']}
-- next research target = {route['next_research_target']}
-- required new information = {route['required_new_information']}
+- active obstruction = {route['current_obstruction']}
+- next research target = {route['current_next_research_target']}
+- required new information = {route['current_required_new_information']}
 - no reverse RH-equivalence claim is made for CofinalCanonicalArithmeticCertificates
 
 FRAMEWORK / GRAPH AUTHORITY
