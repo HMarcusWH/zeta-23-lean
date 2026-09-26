@@ -47,7 +47,7 @@ class Post233SyncTests(unittest.TestCase):
                 self.assertIn(section, text)
 
     def test_later_authority_does_not_mutate_control_semantics(self):
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 269)
+        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 271)
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(self.state["latest_research_evidence"]["pr"], 223)
         self.assertEqual(self.state["active_research_route"]["active_subobligation"], "OBS-059I")
