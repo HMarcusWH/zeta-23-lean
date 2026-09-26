@@ -1,4 +1,4 @@
-# Fork notes — RHRC current state through merged theorem PR #271 and framework PR #270
+# Fork notes — RHRC current state through merged theorem PR #272 and framework PR #270
 
 > **RH remains OPEN.**
 
@@ -6,10 +6,10 @@
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #271
-- validated final head = 3b1dfb8337125b10ce99febbb974ff8c7086394e
-- merge commit = c9fb1a6462e5cc828acb951aefd4e9fae33ddaaa
-- tree = 10ba766b13e63fb5e5567c3da7a3910f54fe6812
+- merged theorem authority = PR #272
+- validated final head = d0cc3aad0181e58d486e464b685fc06559862923
+- merge commit = bca1869e055b802e1099ed86e71314bf61a7a4a8
+- tree = 53f659ff274bdf2218860e1a9dfeda50afcd0fe9
 - status = MERGED_GREEN_THEOREM_STATE
 - PR #269 legal parity-ground simplicity iff strict parity separation = PROVED
 - PR #269 parity tie -> parity-split ground finrank >= 2 = PROVED
@@ -17,23 +17,25 @@ THEOREM AUTHORITY
 - PR #269 canonical arithmetic lower-bound normal form = PROVED
 - PR #271 arithmetic all-vector certificate -> global legal bottom lower bound = PROVED
 - PR #271 cofinal canonical arithmetic certificates -> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY / CONDITIONAL
+- PR #272 CofinalCanonicalArithmeticCertificates <-> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY
 - RH = OPEN
 
-CURRENT AUDIT / NEXT RESEARCH TARGET
-- current PR = #272 / AUDIT_CANDIDATE_NOT_MERGED_THEOREM_AUTHORITY
-- current audit target = CofinalCanonicalArithmeticCertificates <-> RiemannHypothesis
-- RH -> cofinal arithmetic certificates = CURRENT PR AUDIT CANDIDATE
-- direct cofinal certificate construction = OPEN on merged theorem authority
-- active obstruction = OBS-061_RECLASSIFICATION_FIREWALL
-- next research target = GROUND_SPECIFIC_FIRST_CONTACT_ARITHMETIC_SEAM
-- required new information = TRUE_GROUND_FIXED_CELL_AND_PRIME_POWER_SEAM_DISCRIMINANT
-- equivalence audit cannot promote RH; it only classifies the terminal premise
+POST-#272 RESEARCH FRONTIER
+- current PR = #273 / RESEARCH_CANDIDATE_NOT_MERGED_EVIDENCE_AUTHORITY
+- direct cofinal certificate construction = OPEN_RH_EQUIVALENT_TERMINAL_PR_272
+- #272 equivalence audit = PROVED_PR_272_AUDIT_ONLY
+- active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
+- active subobligation = GROUND_SPECIFIC_FIRST_CONTACT_ARITHMETIC_SEAM
+- next research target = POST272_TRUE_GROUND_FIRST_CONTACT_ATLAS
+- required new information = CERTIFIED_TRUE_GROUND_FIXED_CELL_AND_PRIME_POWER_SEAM_RESPONSE
+- RH-equivalent terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE
 - PR #270 = FFBBP 1.7 / OoL-MVS 2.7.7 framework architecture authority
-- PR #271 exactified source-only theorem/lemma roots = 683
-- PR #271 FFBBP source-only module cohorts = 198
-- PR #271 OoL theorem-value-erased frontier contacts = 498
+- post-#272 exactified source-only theorem/lemma roots = 682
+- post-#272 FFBBP source-only module cohorts = 198
+- post-#272 OoL theorem-value-erased frontier contacts = 497
+- post-#272 RHKG relations = 302980
 - framework output -> Lean theorem authority = FORBIDDEN
 
 RESEARCH / CONTROL FIREWALL

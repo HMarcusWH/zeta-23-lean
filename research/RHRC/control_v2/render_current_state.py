@@ -49,23 +49,25 @@ THEOREM AUTHORITY
 - PR #269 canonical arithmetic lower-bound normal form = PROVED
 - PR #271 arithmetic all-vector certificate -> global legal bottom lower bound = PROVED
 - PR #271 cofinal canonical arithmetic certificates -> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY / CONDITIONAL
+- PR #272 CofinalCanonicalArithmeticCertificates <-> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY
 - RH = OPEN
 
-CURRENT AUDIT / NEXT RESEARCH TARGET
+POST-#272 RESEARCH FRONTIER
 - current PR = #{candidate.get('pr', 'NONE')} / {candidate.get('status', 'NONE')}
-- current audit target = CofinalCanonicalArithmeticCertificates <-> RiemannHypothesis
-- RH -> cofinal arithmetic certificates = CURRENT PR AUDIT CANDIDATE
-- direct cofinal certificate construction = OPEN on merged theorem authority
+- direct cofinal certificate construction = {route['post271_cofinal_arithmetic_certificate_construction']}
+- #272 equivalence audit = {route['post272_cofinal_arithmetic_rh_equivalence']}
 - active obstruction = {route['current_obstruction']}
+- active subobligation = {route['current_active_subobligation']}
 - next research target = {route['current_next_research_target']}
 - required new information = {route['current_required_new_information']}
-- equivalence audit cannot promote RH; it only classifies the terminal premise
+- RH-equivalent terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE
 - PR #270 = FFBBP 1.7 / OoL-MVS 2.7.7 framework architecture authority
-- PR #271 exactified source-only theorem/lemma roots = {route['post271_source_only_public_theorem_count']}
-- PR #271 FFBBP source-only module cohorts = {route['post271_ffbbp_source_only_module_cohort_count']}
-- PR #271 OoL theorem-value-erased frontier contacts = {route['post271_ool_frontier_contact_count']}
+- post-#272 exactified source-only theorem/lemma roots = {route['post272_source_only_public_theorem_count']}
+- post-#272 FFBBP source-only module cohorts = {route['post272_ffbbp_source_only_module_cohort_count']}
+- post-#272 OoL theorem-value-erased frontier contacts = {route['post272_ool_frontier_contact_count']}
+- post-#272 RHKG relations = {route['post272_graph_relation_count']}
 - framework output -> Lean theorem authority = FORBIDDEN
 
 RESEARCH / CONTROL FIREWALL

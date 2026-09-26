@@ -33,10 +33,10 @@ falsification; it does not replace Lean as proof authority.
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #271
-- validated final head = 3b1dfb8337125b10ce99febbb974ff8c7086394e
-- merge commit = c9fb1a6462e5cc828acb951aefd4e9fae33ddaaa
-- tree = 10ba766b13e63fb5e5567c3da7a3910f54fe6812
+- merged theorem authority = PR #272
+- validated final head = d0cc3aad0181e58d486e464b685fc06559862923
+- merge commit = bca1869e055b802e1099ed86e71314bf61a7a4a8
+- tree = 53f659ff274bdf2218860e1a9dfeda50afcd0fe9
 - status = MERGED_GREEN_THEOREM_STATE
 - PR #269 legal parity-ground simplicity iff strict parity separation = PROVED
 - PR #269 parity tie -> parity-split ground finrank >= 2 = PROVED
@@ -44,23 +44,25 @@ THEOREM AUTHORITY
 - PR #269 canonical arithmetic lower-bound normal form = PROVED
 - PR #271 arithmetic all-vector certificate -> global legal bottom lower bound = PROVED
 - PR #271 cofinal canonical arithmetic certificates -> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY / CONDITIONAL
+- PR #272 CofinalCanonicalArithmeticCertificates <-> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY
 - RH = OPEN
 
-CURRENT AUDIT / NEXT RESEARCH TARGET
-- current PR = #272 / AUDIT_CANDIDATE_NOT_MERGED_THEOREM_AUTHORITY
-- current audit target = CofinalCanonicalArithmeticCertificates <-> RiemannHypothesis
-- RH -> cofinal arithmetic certificates = CURRENT PR AUDIT CANDIDATE
-- direct cofinal certificate construction = OPEN on merged theorem authority
-- active obstruction = OBS-061_RECLASSIFICATION_FIREWALL
-- next research target = GROUND_SPECIFIC_FIRST_CONTACT_ARITHMETIC_SEAM
-- required new information = TRUE_GROUND_FIXED_CELL_AND_PRIME_POWER_SEAM_DISCRIMINANT
-- equivalence audit cannot promote RH; it only classifies the terminal premise
+POST-#272 RESEARCH FRONTIER
+- current PR = #273 / RESEARCH_CANDIDATE_NOT_MERGED_EVIDENCE_AUTHORITY
+- direct cofinal certificate construction = OPEN_RH_EQUIVALENT_TERMINAL_PR_272
+- #272 equivalence audit = PROVED_PR_272_AUDIT_ONLY
+- active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
+- active subobligation = GROUND_SPECIFIC_FIRST_CONTACT_ARITHMETIC_SEAM
+- next research target = POST272_TRUE_GROUND_FIRST_CONTACT_ATLAS
+- required new information = CERTIFIED_TRUE_GROUND_FIXED_CELL_AND_PRIME_POWER_SEAM_RESPONSE
+- RH-equivalent terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE
 - PR #270 = FFBBP 1.7 / OoL-MVS 2.7.7 framework architecture authority
-- PR #271 exactified source-only theorem/lemma roots = 683
-- PR #271 FFBBP source-only module cohorts = 198
-- PR #271 OoL theorem-value-erased frontier contacts = 498
+- post-#272 exactified source-only theorem/lemma roots = 682
+- post-#272 FFBBP source-only module cohorts = 198
+- post-#272 OoL theorem-value-erased frontier contacts = 497
+- post-#272 RHKG relations = 302980
 - framework output -> Lean theorem authority = FORBIDDEN
 
 RESEARCH / CONTROL FIREWALL
@@ -72,6 +74,16 @@ RESEARCH / CONTROL FIREWALL
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+## Post-#272 first-contact atlas override
+
+PR #272 closes the OBS-061 anti-circularity question: `CofinalCanonicalArithmeticCertificates ↔ RiemannHypothesis` is PROVED / AUDIT-ONLY, while RH remains OPEN. Direct construction of that cofinal all-vector family is therefore consumed as an independent sub-RH target.
+
+The live descriptive bottleneck returns to **OBS-060**, with the next research-producing operation `POST272_TRUE_GROUND_FIRST_CONTACT_ATLAS`.
+
+Dumbassery correction: at `L=log(q)` the entering q atom vanishes, so the experiment does **not** hunt for a discontinuous value jump. It compares the true legal ground immediately on the two sides of a threshold with the smooth current-q-ablated continuation, exact `Λ(q)=0` controls, and the already-scoped #249 planted-zero controls. Strict parity branches may use simple-ground diagnostics only when Arb certifies separation; overlapping parity-bottom enclosures remain multiplicity-safe and unresolved.
+
+Frozen v1 scope: K=3 at q=13,16,17,19 with q=14,15,18 controls; K=4 and K=6 replication at q=16,17; offsets `2^-8,2^-10,2^-12`; planted gamma=10 and off-line delta=1/20. No adaptive center movement is permitted. Output is EXPERIMENTAL_SIGNAL_ONLY and cannot promote RH.
+
 
 ## Post-#267 carrier-ground theoremization override
 

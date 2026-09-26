@@ -43,11 +43,11 @@ class Post235SyncTests(unittest.TestCase):
             for section in required_sections:
                 self.assertIn(section, text)
 
-    def test_later_authority_is_post245(self):
+    def test_later_authority_is_post272(self):
         theorem = self.state["merged_theorem_anchor"]
         delta = self.state["latest_validated_theorem_delta"]
-        self.assertEqual(theorem["pr"], 271)
-        self.assertEqual(delta["pr"], 271)
+        self.assertEqual(theorem["pr"], 272)
+        self.assertEqual(delta["pr"], 272)
         self.assertEqual(
             self.state["active_research_route"]["next_research_target"],
             "CANONICAL_PRIME_REMAINDER_DOMINANCE",
@@ -58,14 +58,14 @@ class Post235SyncTests(unittest.TestCase):
         )
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
-    def test_current_headings_match_post245(self):
+    def test_current_headings_match_post272(self):
         self.assertEqual(
             (ROOT / "AUDIT.md").read_text(encoding="utf-8").splitlines()[0],
-            "# RHRC formal audit — merged theorem authority PR #271; research evidence PR #223",
+            "# RHRC formal audit — merged theorem authority PR #272; research evidence PR #223",
         )
         self.assertEqual(
             (ROOT / "FORK_NOTES.md").read_text(encoding="utf-8").splitlines()[0],
-            "# Fork notes — RHRC current state through merged theorem PR #271 and framework PR #270",
+            "# Fork notes — RHRC current state through merged theorem PR #272 and framework PR #270",
         )
 
 

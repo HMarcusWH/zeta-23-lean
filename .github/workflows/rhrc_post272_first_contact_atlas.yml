@@ -1,0 +1,56 @@
+name: RHRC post272 true-ground first-contact atlas
+
+on:
+  pull_request:
+    branches: ["main"]
+    paths:
+      - '.github/workflows/rhrc_post272_first_contact_atlas.yml'
+      - 'research/RHRC/routes/R003_ccm_bridge/post272_first_contact_atlas.py'
+      - 'research/RHRC/routes/R003_ccm_bridge/check_post272_first_contact_atlas_scope.py'
+      - 'research/RHRC/routes/R003_ccm_bridge/certify_post272_first_contact_atlas.py'
+      - 'research/RHRC/routes/R003_ccm_bridge/fixtures/post272_first_contact_atlas_v1.json'
+      - 'research/RHRC/routes/R003_ccm_bridge/POST272_FIRST_CONTACT_ATLAS_2026_09_26.md'
+      - 'research/RHRC/receipts/POST272_FIRST_CONTACT_ATLAS.json'
+  workflow_dispatch:
+
+concurrency:
+  group: rhrc-post272-first-contact-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  first-contact-atlas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install R003 numerical audit requirements
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Check frozen post-272 atlas scope
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post272_first_contact_atlas_scope.py
+      - name: Run Arb true-ground first-contact atlas
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post272_first_contact_atlas.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post272_first_contact_atlas_v1.json \
+            --output /tmp/POST272_FIRST_CONTACT_ATLAS_RAW.json
+      - name: Certify interpretation and claim firewall
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post272_first_contact_atlas.py \
+            --input /tmp/POST272_FIRST_CONTACT_ATLAS_RAW.json \
+            --output /tmp/POST272_FIRST_CONTACT_ATLAS.json
+          if test -f research/RHRC/receipts/POST272_FIRST_CONTACT_ATLAS.json; then
+            cmp /tmp/POST272_FIRST_CONTACT_ATLAS.json research/RHRC/receipts/POST272_FIRST_CONTACT_ATLAS.json
+          else
+            echo "Frozen receipt awaits one-shot materializer"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post272-first-contact-atlas
+          path: |
+            /tmp/POST272_FIRST_CONTACT_ATLAS_RAW.json
+            /tmp/POST272_FIRST_CONTACT_ATLAS.json
+          if-no-files-found: warn
+          retention-days: 30
