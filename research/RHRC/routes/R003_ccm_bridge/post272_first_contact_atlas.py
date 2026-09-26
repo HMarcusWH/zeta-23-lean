@@ -133,20 +133,45 @@ def _evaluate_point(L: arb, K: int, q: int, side: str, gamma: arb, delta: arb) -
     off_j, off_g = _ground_summary(_sym(canonical - Doff), K)
 
     inc = {}
+    atom_exact_zero = _matrix_exact_zero(Pq)
+    atom_contains_zero = _matrix_contains_zero(Pq)
     for parity in ("even", "odd"):
         V = boundary_flat_parity_basis(K, parity)
         Linv = orthonormalizer(V)
-        vals = _eigs(_sym(-restrict(Pq, V, Linv)))
-        inc[parity] = {
-            "lambda_min": _rec(vals[0]),
-            "lambda_max": _rec(vals[-1]),
-        }
+        if atom_exact_zero:
+            z = arb(0)
+            inc[parity] = {
+                "status": "EXACT_ZERO_OPERATOR",
+                "lambda_min": _rec(z),
+                "lambda_max": _rec(z),
+            }
+            continue
+        if side == "seam" and atom_contains_zero:
+            inc[parity] = {
+                "status": "SEAM_ZERO_MULTIPLICITY_NOT_DIAGONALIZED",
+                "lambda_min": None,
+                "lambda_max": None,
+            }
+            continue
+        try:
+            vals = _eigs(_sym(-restrict(Pq, V, Linv)))
+            inc[parity] = {
+                "status": "CERTIFIED_EIGENVALUE_ENCLOSURES",
+                "lambda_min": _rec(vals[0]),
+                "lambda_max": _rec(vals[-1]),
+            }
+        except ValueError:
+            inc[parity] = {
+                "status": "EIGENVALUE_ISOLATION_UNRESOLVED",
+                "lambda_min": None,
+                "lambda_max": None,
+            }
 
     return {
         "L": ca.ball_record(L),
         "side": side,
-        "current_q_atom_exact_zero": _matrix_exact_zero(Pq),
-        "current_q_atom_contains_zero_entrywise": _matrix_contains_zero(Pq),
+        "current_q_atom_exact_zero": atom_exact_zero,
+        "current_q_atom_contains_zero_entrywise": atom_contains_zero,
         "current_q_atom_max_abs_upper": _matrix_abs_upper(Pq),
         "current_q_energy_increment": inc,
         "canonical": can_j,
