@@ -18,6 +18,7 @@
     "Solution.XiPrime": "COMPARATOR_STANDALONE_SOLUTION",
     "Zeta23.CCM.SourceWeightCounterexample": "FORMAL_ROUTE_FALSIFIER",
     "Zeta23.ExceptionalZero.CofinalArithmeticConditionalRH": "QUARANTINED_CONDITIONAL_RH_SEAM",
+    "Zeta23.ExceptionalZero.CofinalArithmeticEquivalenceAudit": "QUARANTINED_EQUIVALENCE_AUDIT",
     "Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH": "QUARANTINED_CONDITIONAL_RH_SEAM",
     "Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit": "QUARANTINED_EQUIVALENCE_AUDIT",
     "Zeta23.ExceptionalZero.GlobalParityBottomConditionalRH": "QUARANTINED_CONDITIONAL_RH_SEAM",
