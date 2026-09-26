@@ -55,12 +55,14 @@ class IntegrationFoundationTests(unittest.TestCase):
 
     def test_authority_anchors_are_separate(self):
         state = json.loads((INTEGRATION / "INTEGRATION_STATE.json").read_text())
-        self.assertEqual(state["theorem_authority"]["pr"], 269)
+        self.assertEqual(state["theorem_authority"]["pr"], 271)
         self.assertEqual(state["frozen_control_authority"]["pr"], 117)
-        self.assertEqual(state["repository_graph_authority"]["pr"], 270)
-        self.assertEqual(state["integration_foundation_authority"]["pr"], 270)
+        self.assertEqual(state["repository_graph_authority"]["pr"], 271)
+        self.assertEqual(state["integration_foundation_authority"]["pr"], 271)
         self.assertEqual(state["ffbbp_assurance_authority"]["pr"], 270)
+        self.assertEqual(state["ffbbp_assurance_authority"]["snapshot_materialized_pr"], 271)
         self.assertEqual(state["ool_phase_atlas_authority"]["pr"], 270)
+        self.assertEqual(state["ool_phase_atlas_authority"]["snapshot_materialized_pr"], 271)
         self.assertEqual(state["ffbbp_assurance_scope"]["theory_version"], "1.7")
         self.assertEqual(state["ool_phase_atlas_scope"]["kernel_version"], "2.7.7")
         self.assertFalse(state["theorem_promotion"])
