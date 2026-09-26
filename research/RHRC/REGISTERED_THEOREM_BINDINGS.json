@@ -11,14 +11,12 @@
     {
       "id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
       "theorem": "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates",
-      "source": "Zeta23/ExceptionalZero/CofinalArithmeticConditionalRH.lean",
-      "route": "R003_ccm_bridge"
+      "source": "Zeta23/ExceptionalZero/CofinalArithmeticConditionalRH.lean"
     },
     {
       "id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
       "theorem": "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalLowerCertificates",
-      "source": "Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean",
-      "route": "R003_ccm_bridge"
+      "source": "Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean"
     },
     {
       "id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
