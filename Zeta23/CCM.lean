@@ -163,6 +163,8 @@ import Zeta23.CCM.GlobalParityBottomNFlow
 import Zeta23.CCM.GlobalParityBottomSecular
 import Zeta23.CCM.GlobalParityBottomCrossParity
 import Zeta23.CCM.GlobalParityBottomIntertwining
+import Zeta23.CCM.GlobalParityBottomSimplicity
+import Zeta23.CCM.GlobalParityBottomGroundSpace
 import Zeta23.CCM.GlobalParityBottomSourceMoment
 import Zeta23.CCM.GlobalFirstBadParityBottom
 import Zeta23.CCM.GlobalFirstBadParityBottomAlignment
@@ -219,3 +221,6 @@ import Zeta23.CCM.CanonicalOneStepDomination
 import Zeta23.CCM.SourceKappa
 import Zeta23.CCM.ClaimBindings
 import Zeta23.CCM.CanonicalPrimeRemainder
+import Zeta23.CCM.CanonicalArithmeticLowerBound
+import Zeta23.CCM.CofinalLowerBound
+import Zeta23.CCM.CanonicalArithmeticCofinal

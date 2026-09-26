@@ -9,6 +9,16 @@
       "source": "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean"
     },
     {
+      "id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "theorem": "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates",
+      "source": "Zeta23/ExceptionalZero/CofinalArithmeticConditionalRH.lean"
+    },
+    {
+      "id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "theorem": "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalLowerCertificates",
+      "source": "Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean"
+    },
+    {
       "id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
       "theorem": "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis",
       "source": "Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean"
@@ -90,6 +100,23 @@
       "route": "R003_ccm_bridge"
     },
     {
+      "id": "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
+      "theorem": "Zeta23.CCM.globalParitySuccessorBottom_lowerBound_of_canonicalArithmeticLowerBound",
+      "source": "Zeta23/CCM/CanonicalArithmeticLowerBound.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_CANONICAL_ARITHMETIC_LOWER_BOUND_NORMAL_FORM",
+      "theorem": "Zeta23.CCM.canonicalArithmeticLowerBound_iff_energy",
+      "source": "Zeta23/CCM/CanonicalArithmeticLowerBound.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+      "theorem": "Zeta23.CCM.canonicalCarrierBottom_hierarchy",
+      "source": "Zeta23/CCM/GlobalParityBottomSpectrum.lean"
+    },
+    {
       "id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
       "theorem": "Zeta23.CCM.quadraticForm_re_eq_re_inner_apply_self",
       "source": "Zeta23/CCM/ConstrainedEuclideanSector.lean",
@@ -122,6 +149,12 @@
       "id": "R003_CCM_RHS_IDENTITY",
       "theorem": "Zeta23.CCM.literatureRHS_dictionaryTest_eq_quadraticForm",
       "source": "Zeta23/CCM/DictionaryRHSIdentity.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "theorem": "Zeta23.CCM.globalParitySuccessorBottom_nonneg_of_jointCofinal_lowerBounds",
+      "source": "Zeta23/CCM/CofinalLowerBound.lean",
       "route": "R003_ccm_bridge"
     },
     {
@@ -253,18 +286,13 @@
       "source": "Zeta23/CCM/GlobalParityBottomPrimeWeightJets.lean"
     },
     {
-      "id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
-      "theorem": "Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad",
-      "source": "Zeta23/CCM/GlobalParityBottomSpectrum.lean"
-    },
-    {
       "id": "R003_GLOBAL_PARITY_BOTTOM_NFLOW",
       "theorem": "Zeta23.CCM.globalParitySuccessorBottom_antitone_of_le",
       "source": "Zeta23/CCM/GlobalParityBottomNFlow.lean"
     },
     {
-      "id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
-      "theorem": "Zeta23.CCM.canonicalCarrierBottom_hierarchy",
+      "id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
+      "theorem": "Zeta23.CCM.globalParitySuccessorBottom_neg_iff_anyParityBad",
       "source": "Zeta23/CCM/GlobalParityBottomSpectrum.lean"
     },
     {
@@ -358,6 +386,18 @@
       "route": "R003_ccm_bridge"
     },
     {
+      "id": "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
+      "theorem": "Zeta23.CCM.paritySplitGroundSpace_simple_iff_ne",
+      "source": "Zeta23/CCM/GlobalParityBottomGroundSpace.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_PARITY_TIE_GROUND_MULTIPLICITY",
+      "theorem": "Zeta23.CCM.two_le_paritySplitGroundSpace_finrank_of_tie",
+      "source": "Zeta23/CCM/GlobalParityBottomGroundSpace.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
       "id": "R003_RESIDUAL_C2",
       "theorem": "Zeta23.CCM.dictionaryResidualTest_admissible",
       "source": "Zeta23/CCM/DictionaryResidualSecondOrderGluing.lean",
@@ -374,6 +414,11 @@
       "theorem": "Zeta23.CCM.canonicalSourceMatrix_eq_legacyPrintedMatrix_add_correction",
       "source": "Zeta23/CCM/SourceNormalizationRepair.lean",
       "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_SOURCE_WEIGHT_CARRIER_COUNTEREXAMPLE",
+      "theorem": "Zeta23.CCM.not_all_evenBoundaryFlat_sourceDerivatives_nonneg",
+      "source": "Zeta23/CCM/SourceWeightCounterexample.lean"
     },
     {
       "id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",

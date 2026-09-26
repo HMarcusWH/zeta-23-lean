@@ -1,8 +1,8 @@
 {
-  "schema_version": "RHRC-claims-1.2",
+  "schema_version": "RHRC-claims-1.3",
   "runtime_binding": {
     "kernel": "OoL-MVS",
-    "version": "2.7.6",
+    "version": "2.7.7",
     "research_evaluation_mode": "EXPERIMENTAL_EVIDENCE",
     "evidence_values": [
       "PASS",
@@ -16,7 +16,10 @@
       "INVALID"
     ],
     "claim_status_is_separate_from_runtime_evidence_result": true,
-    "mathematical_theorem_authority": "Lean/comparator, not RHRC evidence certificates"
+    "mathematical_theorem_authority": "Lean/comparator, not RHRC evidence certificates",
+    "default_certificate": "INCOMPLETE_WITHOUT_TRUSTED_POLICY_AND_REVIEWED_ATTESTATION",
+    "valid_certificate_meaning": "ATTESTED_BINDING_NOT_PHYSICAL_OR_MATHEMATICAL_TRUTH",
+    "domain_completeness": "ROUTE_SCOPE_BOUND"
   },
   "claims": [
     {
@@ -1080,6 +1083,119 @@
       "theorem": "Zeta23.ExceptionalZero.globalBottomResidualExclusion_iff_riemannHypothesis",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "PR #247 AUDIT-ONLY. This mechanically warns that a universal law which merely excludes every residual state is RH-strength/vacuous under RH; it is not active closure information. Post-#247 state-sync registry note: recorded as theorem inventory without changing the historically frozen R003 promoted-binding surface or CCM import graph."
+    },
+    {
+      "id": "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
+      "statement": "For every positive aperture and successor size N+1 with N>=1, the complete legal parity-split ground space has complex finrank one if and only if the even and odd parity Rayleigh bottoms are unequal.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM"
+      ],
+      "source": "Zeta23/CCM/GlobalParityBottomGroundSpace.lean",
+      "theorem": "Zeta23.CCM.paritySplitGroundSpace_simple_iff_ne",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #269. Strict parity separation gives a one-dimensional winning-sector eigenspace; this is a legal boundary-flat parity statement, not an unconstrained full-space simplicity theorem and not a positivity theorem."
+    },
+    {
+      "id": "R003_PARITY_TIE_GROUND_MULTIPLICITY",
+      "statement": "At a legal successor-size parity tie, the parity-split ground space has complex finrank at least two.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM"
+      ],
+      "source": "Zeta23/CCM/GlobalParityBottomGroundSpace.lean",
+      "theorem": "Zeta23.CCM.two_le_paritySplitGroundSpace_finrank_of_tie",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #269. Both parity sectors contribute nonzero ground modes at the common minimum. No preferred vector or sector simplicity is inferred at a tie."
+    },
+    {
+      "id": "R003_SOURCE_WEIGHT_CARRIER_COUNTEREXAMPLE",
+      "statement": "Carrier-wide nonnegativity of the source-energy derivative on every even boundary-flat K=4 vector is false: an exact legal vector has a negative derivative at omega=1/8 despite vanishing jets through order eight and a positive ninth jet.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [],
+      "source": "Zeta23/CCM/SourceWeightCounterexample.lean",
+      "theorem": "Zeta23.CCM.not_all_evenBoundaryFlat_sourceDerivatives_nonneg",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #269 formal route falsifier. The witness is not asserted to be a canonical ground mode, so only the carrier-wide monotonicity shortcut is refuted."
+    },
+    {
+      "id": "R003_CANONICAL_ARITHMETIC_LOWER_BOUND_NORMAL_FORM",
+      "statement": "At positive aperture, the all-vector canonical arithmetic inequality on the Euclidean boundary-flat carrier is exactly equivalent to the signed canonical source-energy lower bound -epsilon*||x||^2 <= sourceEnergy.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM"
+      ],
+      "source": "Zeta23/CCM/CanonicalArithmeticLowerBound.lean",
+      "theorem": "Zeta23.CCM.canonicalArithmeticLowerBound_iff_energy",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #269 exact sign/norm normalization. This theorem does not construct a certificate."
+    },
+    {
+      "id": "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
+      "statement": "For positive aperture and legal successor size, a CanonicalArithmeticLowerBound certificate at size N+1 implies -epsilon <= globalParitySuccessorBottom L N.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_CANONICAL_ARITHMETIC_LOWER_BOUND_NORMAL_FORM",
+        "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM"
+      ],
+      "source": "Zeta23/CCM/CanonicalArithmeticLowerBound.lean",
+      "theorem": "Zeta23.CCM.globalParitySuccessorBottom_lowerBound_of_canonicalArithmeticLowerBound",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #271 composition target. It passes the all-vector arithmetic inequality through the exact boundary-flat Rayleigh infimum and the #268 carrier hierarchy."
+    },
+    {
+      "id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "statement": "At a positive aperture, jointly cofinal lower bounds -epsilon <= globalParitySuccessorBottom L m with arbitrarily large m and arbitrarily small positive epsilon force every finite successor bottom to be nonnegative.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_GLOBAL_PARITY_BOTTOM_NFLOW"
+      ],
+      "source": "Zeta23/CCM/CofinalLowerBound.lean",
+      "theorem": "Zeta23.CCM.globalParitySuccessorBottom_nonneg_of_jointCofinal_lowerBounds",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #269 conditional order theorem. The jointly quantified certificate family is a premise, not supplied evidence."
+    },
+    {
+      "id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "statement": "If arbitrarily large positive apertures each admit jointly cofinal vanishing lower certificates for the global successor bottom, then literal Mathlib RiemannHypothesis follows.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+        "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL"
+      ],
+      "source": "Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean",
+      "theorem": "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalLowerCertificates",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #269 AUDIT-ONLY conditional seam. The premise is not constructed. RH remains OPEN."
+    },
+    {
+      "id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "statement": "If arbitrarily large positive apertures each admit jointly cofinal exact all-vector CanonicalArithmeticLowerBound certificates, then literal Mathlib RiemannHypothesis follows.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
+        "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH"
+      ],
+      "source": "Zeta23/ExceptionalZero/CofinalArithmeticConditionalRH.lean",
+      "theorem": "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #271 AUDIT-ONLY sufficient implication. No reverse implication is claimed and the arithmetic certificate family remains OPEN."
+    },
+    {
+      "id": "R003_COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES",
+      "statement": "For every real bound B there exists a positive aperture L>B such that, jointly for every starting size n>=1 and every epsilon>0, some m>=n satisfies CanonicalArithmeticLowerBound L (m+1) epsilon on every legal boundary-flat vector.",
+      "status": "OPEN",
+      "dependencies": [
+        "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND"
+      ],
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "OPEN",
+      "note": "Post-#269/#271 active arithmetic construction problem. This exact premise is sufficient for RH by AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH, but no certificate family is constructed and no RH-equivalence claim is made."
     }
   ]
 }

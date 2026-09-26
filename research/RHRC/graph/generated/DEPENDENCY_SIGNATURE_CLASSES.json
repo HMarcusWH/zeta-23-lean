@@ -7,6 +7,18 @@
       "root_theorem": "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis"
     },
     {
+      "claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "closure_sha256": "2394c99925028f94b2241cda5e4b89f3887e9d87b938a7307df68523d710ae12",
+      "local_dependency_count": 1732,
+      "root_theorem": "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates"
+    },
+    {
+      "claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "closure_sha256": "15720039d02a28dd8a3c5b0b284c13c7c41bfa41e91e5fd6eb793f0ca5defde3",
+      "local_dependency_count": 1568,
+      "root_theorem": "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalLowerCertificates"
+    },
+    {
       "claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
       "closure_sha256": "43b932b1e11397f6a846870a8e0accd586e9f821c6e2ce9b26ea160350911beb",
       "local_dependency_count": 2134,
@@ -91,6 +103,18 @@
       "root_theorem": "Zeta23.CCM.exists_boundaryFlatFinite_WCONT_approx"
     },
     {
+      "claim_id": "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
+      "closure_sha256": "9ba08097d8d5dd9a6519aac83887e82ecd33fabb255af926e1b9a2b7693c9b3a",
+      "local_dependency_count": 521,
+      "root_theorem": "Zeta23.CCM.globalParitySuccessorBottom_lowerBound_of_canonicalArithmeticLowerBound"
+    },
+    {
+      "claim_id": "R003_CANONICAL_ARITHMETIC_LOWER_BOUND_NORMAL_FORM",
+      "closure_sha256": "73c2ae3dea024f1676a90113283420b14d21dd0d2fccaaf38d2541b3b86d97ff",
+      "local_dependency_count": 234,
+      "root_theorem": "Zeta23.CCM.canonicalArithmeticLowerBound_iff_energy"
+    },
+    {
       "claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
       "closure_sha256": "682c58e98b07f815371b9812110d4f564fe9b1da4d4c3694f901622068ad4b01",
       "local_dependency_count": 198,
@@ -131,6 +155,12 @@
       "closure_sha256": "c522df023d5e60d26f55f386f69ab0da1db02ef6bd7eb662eabd9efa5474f9c9",
       "local_dependency_count": 373,
       "root_theorem": "Zeta23.CCM.literatureRHS_dictionaryTest_eq_quadraticForm"
+    },
+    {
+      "claim_id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "closure_sha256": "07c7c19ec76688439e588c8a4c05e8da44da7615530010b8dc2c78071e2e3268",
+      "local_dependency_count": 707,
+      "root_theorem": "Zeta23.CCM.globalParitySuccessorBottom_nonneg_of_jointCofinal_lowerBounds"
     },
     {
       "claim_id": "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
@@ -367,6 +397,18 @@
       "root_theorem": "Zeta23.CCM.quadraticForm_evenPart_add_oddPart"
     },
     {
+      "claim_id": "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
+      "closure_sha256": "249119a36fac9d60ef636732537e9d88ea103d84e26496a6d36de4f1ffeae873",
+      "local_dependency_count": 438,
+      "root_theorem": "Zeta23.CCM.paritySplitGroundSpace_simple_iff_ne"
+    },
+    {
+      "claim_id": "R003_PARITY_TIE_GROUND_MULTIPLICITY",
+      "closure_sha256": "ecedab4b40535f977fc1a9e84c1a40ce37d8adcf3aefd2b73cad172f694d7179",
+      "local_dependency_count": 299,
+      "root_theorem": "Zeta23.CCM.two_le_paritySplitGroundSpace_finrank_of_tie"
+    },
+    {
       "claim_id": "R003_RESIDUAL_C2",
       "closure_sha256": "dc0f9f1040fe1dc0f6a692d4469213db1136e5fc3e6b12947276ada8a64441f1",
       "local_dependency_count": 130,
@@ -383,6 +425,12 @@
       "closure_sha256": "7a30ec213355ec540ffb7693cffc3ce78fcad6c395dfe9ea13d57bc7030209bf",
       "local_dependency_count": 40,
       "root_theorem": "Zeta23.CCM.canonicalSourceMatrix_eq_legacyPrintedMatrix_add_correction"
+    },
+    {
+      "claim_id": "R003_SOURCE_WEIGHT_CARRIER_COUNTEREXAMPLE",
+      "closure_sha256": "17454bb6c45a46a0094de8d7878edf0384f51c0875dea77fbd91401a2a5d59cb",
+      "local_dependency_count": 63,
+      "root_theorem": "Zeta23.CCM.not_all_evenBoundaryFlat_sourceDerivatives_nonneg"
     },
     {
       "claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
@@ -475,11 +523,32 @@
   "schema_version": "RHKG-phase2c-dependency-signature-classes-0.5",
   "strict_local_closure_containments": [
     {
+      "difference_count": 164,
+      "subset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "subset_count": 1568,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
       "difference_count": 2025,
       "subset_claim_id": "R001_FILTERED_ZERO_POLE",
       "subset_count": 115,
       "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
       "superset_count": 2140
+    },
+    {
+      "difference_count": 1617,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1453,
+      "subset_claim_id": "R001_FILTERED_ZERO_POLE",
+      "subset_count": 115,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
     },
     {
       "difference_count": 2019,
@@ -592,6 +661,20 @@
       "subset_count": 528,
       "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
       "superset_count": 2140
+    },
+    {
+      "difference_count": 1204,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1040,
+      "subset_claim_id": "R001_WEIL_BRIDGE",
+      "subset_count": 528,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
     },
     {
       "difference_count": 1606,
@@ -713,6 +796,20 @@
       "superset_count": 2140
     },
     {
+      "difference_count": 1705,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1541,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
+    },
+    {
       "difference_count": 2107,
       "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
       "subset_count": 27,
@@ -727,11 +824,25 @@
       "superset_count": 2659
     },
     {
+      "difference_count": 494,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
+      "superset_count": 521
+    },
+    {
       "difference_count": 171,
       "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
       "subset_count": 27,
       "superset_claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
       "superset_count": 198
+    },
+    {
+      "difference_count": 680,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "superset_count": 707
     },
     {
       "difference_count": 70,
@@ -846,11 +957,39 @@
       "superset_count": 273
     },
     {
+      "difference_count": 411,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
+      "superset_count": 438
+    },
+    {
+      "difference_count": 272,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_EXACT_DIMENSION",
+      "subset_count": 27,
+      "superset_claim_id": "R003_PARITY_TIE_GROUND_MULTIPLICITY",
+      "superset_count": 299
+    },
+    {
       "difference_count": 1147,
       "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
       "subset_count": 993,
       "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
       "superset_count": 2140
+    },
+    {
+      "difference_count": 739,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "subset_count": 993,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 575,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
+      "subset_count": 993,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
     },
     {
       "difference_count": 1141,
@@ -935,6 +1074,20 @@
       "subset_count": 26,
       "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
       "superset_count": 2140
+    },
+    {
+      "difference_count": 1706,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1542,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_PROJECTION",
+      "subset_count": 26,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
     },
     {
       "difference_count": 2108,
@@ -1028,6 +1181,20 @@
       "superset_count": 2140
     },
     {
+      "difference_count": 1581,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1417,
+      "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+      "subset_count": 151,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
+    },
+    {
       "difference_count": 1983,
       "subset_claim_id": "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
       "subset_count": 151,
@@ -1105,11 +1272,60 @@
       "superset_count": 1273
     },
     {
+      "difference_count": 1211,
+      "subset_claim_id": "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
+      "subset_count": 521,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1498,
+      "subset_claim_id": "R003_CANONICAL_ARITHMETIC_LOWER_BOUND_NORMAL_FORM",
+      "subset_count": 234,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 287,
+      "subset_claim_id": "R003_CANONICAL_ARITHMETIC_LOWER_BOUND_NORMAL_FORM",
+      "subset_count": 234,
+      "superset_claim_id": "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
+      "superset_count": 521
+    },
+    {
+      "difference_count": 1534,
+      "subset_claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+      "subset_count": 198,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 323,
+      "subset_claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
+      "subset_count": 198,
+      "superset_claim_id": "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
+      "superset_count": 521
+    },
+    {
       "difference_count": 2137,
       "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
       "subset_count": 3,
       "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
       "superset_count": 2140
+    },
+    {
+      "difference_count": 1729,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1565,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
     },
     {
       "difference_count": 2131,
@@ -1126,11 +1342,25 @@
       "superset_count": 2659
     },
     {
+      "difference_count": 518,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
+      "superset_count": 521
+    },
+    {
       "difference_count": 195,
       "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
       "subset_count": 3,
       "superset_claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
       "superset_count": 198
+    },
+    {
+      "difference_count": 704,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
+      "subset_count": 3,
+      "superset_claim_id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "superset_count": 707
     },
     {
       "difference_count": 1285,
@@ -1245,6 +1475,20 @@
       "superset_count": 2140
     },
     {
+      "difference_count": 1681,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1517,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
+    },
+    {
       "difference_count": 2083,
       "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
       "subset_count": 51,
@@ -1257,6 +1501,13 @@
       "subset_count": 51,
       "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "superset_count": 2659
+    },
+    {
+      "difference_count": 656,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "superset_count": 707
     },
     {
       "difference_count": 1428,
@@ -1322,11 +1573,32 @@
       "superset_count": 90
     },
     {
+      "difference_count": 387,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
+      "superset_count": 438
+    },
+    {
+      "difference_count": 248,
+      "subset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
+      "subset_count": 51,
+      "superset_claim_id": "R003_PARITY_TIE_GROUND_MULTIPLICITY",
+      "superset_count": 299
+    },
+    {
       "difference_count": 1916,
       "subset_claim_id": "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
       "subset_count": 224,
       "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
       "superset_count": 2140
+    },
+    {
+      "difference_count": 1508,
+      "subset_claim_id": "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
+      "subset_count": 224,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
     },
     {
       "difference_count": 2435,
@@ -1336,11 +1608,39 @@
       "superset_count": 2659
     },
     {
+      "difference_count": 297,
+      "subset_claim_id": "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
+      "subset_count": 224,
+      "superset_claim_id": "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
+      "superset_count": 521
+    },
+    {
+      "difference_count": 10,
+      "subset_claim_id": "R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM",
+      "subset_count": 224,
+      "superset_claim_id": "R003_CANONICAL_ARITHMETIC_LOWER_BOUND_NORMAL_FORM",
+      "superset_count": 234
+    },
+    {
       "difference_count": 2090,
       "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
       "subset_count": 50,
       "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
       "superset_count": 2140
+    },
+    {
+      "difference_count": 1682,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1518,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
     },
     {
       "difference_count": 2084,
@@ -1362,6 +1662,13 @@
       "subset_count": 50,
       "superset_claim_id": "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
       "superset_count": 51
+    },
+    {
+      "difference_count": 657,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "superset_count": 707
     },
     {
       "difference_count": 1429,
@@ -1427,6 +1734,20 @@
       "superset_count": 90
     },
     {
+      "difference_count": 388,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
+      "superset_count": 438
+    },
+    {
+      "difference_count": 249,
+      "subset_claim_id": "R003_CANONICAL_SOURCE_HERMITIAN",
+      "subset_count": 50,
+      "superset_claim_id": "R003_PARITY_TIE_GROUND_MULTIPLICITY",
+      "superset_count": 299
+    },
+    {
       "difference_count": 5,
       "subset_claim_id": "R003_CCM_BRIDGE",
       "subset_count": 1160,
@@ -1462,6 +1783,20 @@
       "superset_count": 2140
     },
     {
+      "difference_count": 1359,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1195,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
+    },
+    {
       "difference_count": 1761,
       "subset_claim_id": "R003_CCM_RHS_IDENTITY",
       "subset_count": 373,
@@ -1495,6 +1830,13 @@
       "subset_count": 373,
       "superset_claim_id": "R003_CCM_BRIDGE",
       "superset_count": 1160
+    },
+    {
+      "difference_count": 334,
+      "subset_claim_id": "R003_CCM_RHS_IDENTITY",
+      "subset_count": 373,
+      "superset_claim_id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "superset_count": 707
     },
     {
       "difference_count": 797,
@@ -1644,11 +1986,39 @@
       "superset_count": 1189
     },
     {
+      "difference_count": 1025,
+      "subset_claim_id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "subset_count": 707,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 861,
+      "subset_claim_id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "subset_count": 707,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
+    },
+    {
       "difference_count": 2043,
       "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
       "subset_count": 97,
       "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
       "superset_count": 2140
+    },
+    {
+      "difference_count": 1635,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1471,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
     },
     {
       "difference_count": 2037,
@@ -1665,11 +2035,25 @@
       "superset_count": 2659
     },
     {
+      "difference_count": 424,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
+      "superset_count": 521
+    },
+    {
       "difference_count": 101,
       "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
       "subset_count": 97,
       "superset_claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
       "superset_count": 198
+    },
+    {
+      "difference_count": 610,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "superset_count": 707
     },
     {
       "difference_count": 1382,
@@ -1749,11 +2133,39 @@
       "superset_count": 273
     },
     {
+      "difference_count": 341,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
+      "superset_count": 438
+    },
+    {
+      "difference_count": 202,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
+      "subset_count": 97,
+      "superset_claim_id": "R003_PARITY_TIE_GROUND_MULTIPLICITY",
+      "superset_count": 299
+    },
+    {
       "difference_count": 2080,
       "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
       "subset_count": 60,
       "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
       "superset_count": 2140
+    },
+    {
+      "difference_count": 1672,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1508,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
     },
     {
       "difference_count": 2074,
@@ -1770,11 +2182,25 @@
       "superset_count": 2659
     },
     {
+      "difference_count": 461,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
+      "superset_count": 521
+    },
+    {
       "difference_count": 138,
       "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
       "subset_count": 60,
       "superset_claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
       "superset_count": 198
+    },
+    {
+      "difference_count": 647,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "superset_count": 707
     },
     {
       "difference_count": 37,
@@ -1861,11 +2287,39 @@
       "superset_count": 273
     },
     {
+      "difference_count": 378,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
+      "superset_count": 438
+    },
+    {
+      "difference_count": 239,
+      "subset_claim_id": "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
+      "subset_count": 60,
+      "superset_claim_id": "R003_PARITY_TIE_GROUND_MULTIPLICITY",
+      "superset_count": 299
+    },
+    {
       "difference_count": 2103,
       "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
       "subset_count": 37,
       "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
       "superset_count": 2140
+    },
+    {
+      "difference_count": 1695,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1531,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
     },
     {
       "difference_count": 2097,
@@ -1880,6 +2334,13 @@
       "subset_count": 37,
       "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "superset_count": 2659
+    },
+    {
+      "difference_count": 484,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
+      "superset_count": 521
     },
     {
       "difference_count": 161,
@@ -1952,6 +2413,13 @@
       "superset_count": 45
     },
     {
+      "difference_count": 401,
+      "subset_claim_id": "R003_CONSTRAINED_REVERSAL_SYMMETRY",
+      "subset_count": 37,
+      "superset_claim_id": "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
+      "superset_count": 438
+    },
+    {
       "difference_count": 1179,
       "subset_claim_id": "R003_DISPLACEMENT_TRANSFER",
       "subset_count": 10,
@@ -1964,6 +2432,20 @@
       "subset_count": 10,
       "superset_claim_id": "R004_CCM_DISPLACEMENT_FORMAL",
       "superset_count": 76
+    },
+    {
+      "difference_count": 1702,
+      "subset_claim_id": "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+      "subset_count": 30,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 491,
+      "subset_claim_id": "R003_EUCLIDEAN_BOUNDARY_FLAT_SECTOR",
+      "subset_count": 30,
+      "superset_claim_id": "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
+      "superset_count": 521
     },
     {
       "difference_count": 168,
@@ -1992,6 +2474,13 @@
       "subset_count": 1288,
       "superset_claim_id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "superset_count": 1320
+    },
+    {
+      "difference_count": 1697,
+      "subset_claim_id": "R003_EUCLIDEAN_CONSTRAINED_NESTING",
+      "subset_count": 35,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
     },
     {
       "difference_count": 1285,
@@ -2029,11 +2518,32 @@
       "superset_count": 273
     },
     {
+      "difference_count": 343,
+      "subset_claim_id": "R003_EVEN_CONSTRAINED_DISPLACEMENT_COLLAPSE",
+      "subset_count": 95,
+      "superset_claim_id": "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
+      "superset_count": 438
+    },
+    {
       "difference_count": 2111,
       "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
       "subset_count": 29,
       "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
       "superset_count": 2140
+    },
+    {
+      "difference_count": 1703,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1539,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
     },
     {
       "difference_count": 2105,
@@ -2048,6 +2558,13 @@
       "subset_count": 29,
       "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "superset_count": 2659
+    },
+    {
+      "difference_count": 678,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "superset_count": 707
     },
     {
       "difference_count": 474,
@@ -2146,6 +2663,20 @@
       "subset_count": 29,
       "superset_claim_id": "R003_PARITY_BAD_NFLOW",
       "superset_count": 481
+    },
+    {
+      "difference_count": 409,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
+      "superset_count": 438
+    },
+    {
+      "difference_count": 270,
+      "subset_claim_id": "R003_EXACT_CENTERED_FINITE_NESTING",
+      "subset_count": 29,
+      "superset_claim_id": "R003_PARITY_TIE_GROUND_MULTIPLICITY",
+      "superset_count": 299
     },
     {
       "difference_count": 456,
@@ -2337,6 +2868,27 @@
       "superset_count": 2659
     },
     {
+      "difference_count": 1028,
+      "subset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_NFLOW",
+      "subset_count": 704,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 864,
+      "subset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_NFLOW",
+      "subset_count": 704,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
+    },
+    {
+      "difference_count": 3,
+      "subset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_NFLOW",
+      "subset_count": 704,
+      "superset_claim_id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "superset_count": 707
+    },
+    {
       "difference_count": 1819,
       "subset_claim_id": "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM",
       "subset_count": 315,
@@ -2421,6 +2973,20 @@
       "superset_count": 2140
     },
     {
+      "difference_count": 1301,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1137,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
+    },
+    {
       "difference_count": 1703,
       "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
       "subset_count": 431,
@@ -2440,6 +3006,13 @@
       "subset_count": 431,
       "superset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
       "superset_count": 993
+    },
+    {
+      "difference_count": 276,
+      "subset_claim_id": "R003_LOCALIZED_ADDITIVE_RHS_RESTRICTION",
+      "subset_count": 431,
+      "superset_claim_id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "superset_count": 707
     },
     {
       "difference_count": 857,
@@ -2568,6 +3141,20 @@
       "superset_count": 2140
     },
     {
+      "difference_count": 1726,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1562,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
+    },
+    {
       "difference_count": 2128,
       "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
       "subset_count": 6,
@@ -2587,6 +3174,13 @@
       "subset_count": 6,
       "superset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
       "superset_count": 993
+    },
+    {
+      "difference_count": 701,
+      "subset_claim_id": "R003_LOCALIZED_BASIS_CORRELATION",
+      "subset_count": 6,
+      "superset_claim_id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "superset_count": 707
     },
     {
       "difference_count": 1282,
@@ -2729,6 +3323,20 @@
       "superset_count": 2140
     },
     {
+      "difference_count": 1665,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1501,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
+    },
+    {
       "difference_count": 2067,
       "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
       "subset_count": 67,
@@ -2748,6 +3356,13 @@
       "subset_count": 67,
       "superset_claim_id": "R003_BOUNDARY_FLAT_FINITE_WEIL_RESTRICTION",
       "superset_count": 993
+    },
+    {
+      "difference_count": 640,
+      "subset_claim_id": "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+      "subset_count": 67,
+      "superset_claim_id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "superset_count": 707
     },
     {
       "difference_count": 1221,
@@ -2883,6 +3498,20 @@
       "superset_count": 2140
     },
     {
+      "difference_count": 1664,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1500,
+      "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
+      "subset_count": 68,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
+    },
+    {
       "difference_count": 2066,
       "subset_claim_id": "R003_LOCALIZED_UNIFORM_C2_APPROXIMATION",
       "subset_count": 68,
@@ -2972,6 +3601,20 @@
       "subset_count": 666,
       "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
       "superset_count": 2140
+    },
+    {
+      "difference_count": 1066,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 902,
+      "subset_claim_id": "R003_NEGATIVE_WEIL_TEST_CONTRACTION",
+      "subset_count": 666,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
     },
     {
       "difference_count": 1468,
@@ -3065,6 +3708,20 @@
       "superset_count": 2140
     },
     {
+      "difference_count": 1631,
+      "subset_claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+      "subset_count": 101,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1467,
+      "subset_claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
+      "subset_count": 101,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
+    },
+    {
       "difference_count": 2033,
       "subset_claim_id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
       "subset_count": 101,
@@ -3142,6 +3799,20 @@
       "superset_count": 2140
     },
     {
+      "difference_count": 1642,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1478,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
+    },
+    {
       "difference_count": 2044,
       "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
       "subset_count": 90,
@@ -3154,6 +3825,13 @@
       "subset_count": 90,
       "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "superset_count": 2659
+    },
+    {
+      "difference_count": 617,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "superset_count": 707
     },
     {
       "difference_count": 1389,
@@ -3212,6 +3890,20 @@
       "superset_count": 101
     },
     {
+      "difference_count": 348,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
+      "superset_count": 438
+    },
+    {
+      "difference_count": 209,
+      "subset_claim_id": "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION",
+      "subset_count": 90,
+      "superset_claim_id": "R003_PARITY_TIE_GROUND_MULTIPLICITY",
+      "superset_count": 299
+    },
+    {
       "difference_count": 1405,
       "subset_claim_id": "R003_PARITY_NORMAL_KKT",
       "subset_count": 121,
@@ -3226,6 +3918,20 @@
       "superset_count": 2140
     },
     {
+      "difference_count": 1685,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1521,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
+    },
+    {
       "difference_count": 2087,
       "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
       "subset_count": 47,
@@ -3238,6 +3944,13 @@
       "subset_count": 47,
       "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "superset_count": 2659
+    },
+    {
+      "difference_count": 660,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "superset_count": 707
     },
     {
       "difference_count": 1432,
@@ -3317,11 +4030,39 @@
       "superset_count": 149
     },
     {
+      "difference_count": 391,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
+      "superset_count": 438
+    },
+    {
+      "difference_count": 252,
+      "subset_claim_id": "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
+      "subset_count": 47,
+      "superset_claim_id": "R003_PARITY_TIE_GROUND_MULTIPLICITY",
+      "superset_count": 299
+    },
+    {
       "difference_count": 2095,
       "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
       "subset_count": 45,
       "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
       "superset_count": 2140
+    },
+    {
+      "difference_count": 1687,
+      "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "subset_count": 45,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1523,
+      "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "subset_count": 45,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
     },
     {
       "difference_count": 2089,
@@ -3336,6 +4077,13 @@
       "subset_count": 45,
       "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "superset_count": 2659
+    },
+    {
+      "difference_count": 476,
+      "subset_claim_id": "R003_PARITY_QUADRATIC_SPLIT",
+      "subset_count": 45,
+      "superset_claim_id": "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
+      "superset_count": 521
     },
     {
       "difference_count": 153,
@@ -3371,6 +4119,13 @@
       "subset_count": 45,
       "superset_claim_id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
       "superset_count": 1355
+    },
+    {
+      "difference_count": 139,
+      "subset_claim_id": "R003_PARITY_TIE_GROUND_MULTIPLICITY",
+      "subset_count": 299,
+      "superset_claim_id": "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
+      "superset_count": 438
     },
     {
       "difference_count": 1035,
@@ -3415,6 +4170,13 @@
       "superset_count": 2140
     },
     {
+      "difference_count": 1699,
+      "subset_claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+      "subset_count": 33,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
       "difference_count": 2101,
       "subset_claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
       "subset_count": 33,
@@ -3427,6 +4189,13 @@
       "subset_count": 33,
       "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "superset_count": 2659
+    },
+    {
+      "difference_count": 488,
+      "subset_claim_id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
+      "subset_count": 33,
+      "superset_claim_id": "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
+      "superset_count": 521
     },
     {
       "difference_count": 1349,
@@ -3448,6 +4217,20 @@
       "subset_count": 707,
       "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
       "superset_count": 2140
+    },
+    {
+      "difference_count": 1025,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "subset_count": 707,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 861,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
+      "subset_count": 707,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
     },
     {
       "difference_count": 1427,
@@ -3525,6 +4308,20 @@
       "subset_count": 672,
       "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
       "superset_count": 2140
+    },
+    {
+      "difference_count": 1060,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 896,
+      "subset_claim_id": "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",
+      "subset_count": 672,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
     },
     {
       "difference_count": 1462,
@@ -3611,6 +4408,20 @@
       "superset_count": 2140
     },
     {
+      "difference_count": 1032,
+      "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "subset_count": 700,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 868,
+      "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
+      "subset_count": 700,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
+    },
+    {
       "difference_count": 1434,
       "subset_claim_id": "R003_STRICT_FINITE_NEGATIVE_WEIL_TRANSFER",
       "subset_count": 700,
@@ -3688,6 +4499,20 @@
       "superset_count": 2140
     },
     {
+      "difference_count": 1247,
+      "subset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "subset_count": 485,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1083,
+      "subset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "subset_count": 485,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
+    },
+    {
       "difference_count": 1649,
       "subset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
       "subset_count": 485,
@@ -3700,6 +4525,13 @@
       "subset_count": 485,
       "superset_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "superset_count": 2659
+    },
+    {
+      "difference_count": 222,
+      "subset_claim_id": "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY",
+      "subset_count": 485,
+      "superset_claim_id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "superset_count": 707
     },
     {
       "difference_count": 18,
@@ -3807,6 +4639,20 @@
       "superset_count": 2140
     },
     {
+      "difference_count": 1487,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1323,
+      "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
+      "subset_count": 245,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
+    },
+    {
       "difference_count": 1889,
       "subset_claim_id": "R003_WEIL_COMMON_SUPPORT_BOUND",
       "subset_count": 245,
@@ -3889,6 +4735,20 @@
       "subset_count": 567,
       "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
       "superset_count": 2140
+    },
+    {
+      "difference_count": 1165,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1001,
+      "subset_claim_id": "R003_WEIL_LOCALIZED_ADDITIVE_SELF_BRIDGE",
+      "subset_count": 567,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
     },
     {
       "difference_count": 1567,
@@ -3980,6 +4840,20 @@
       "subset_count": 533,
       "superset_claim_id": "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
       "superset_count": 2140
+    },
+    {
+      "difference_count": 1199,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1732
+    },
+    {
+      "difference_count": 1035,
+      "subset_claim_id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
+      "subset_count": 533,
+      "superset_claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "superset_count": 1568
     },
     {
       "difference_count": 1601,
@@ -4097,6 +4971,8 @@
   "terminal_claim": "RH_OPEN",
   "unique_signature_claim_ids": [
     "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE",
+    "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+    "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
     "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
     "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
     "OBS_TIGHTMULT",
@@ -4111,6 +4987,8 @@
     "R003_BOUNDARY_FLAT_MOMENT_FLAG",
     "R003_BOUNDARY_FLAT_PROJECTION",
     "R003_BOUNDARY_FLAT_WCONT_APPROXIMATION",
+    "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
+    "R003_CANONICAL_ARITHMETIC_LOWER_BOUND_NORMAL_FORM",
     "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
     "R003_CANONICAL_EUCLIDEAN_QUADRATIC_BRIDGE",
     "R003_CANONICAL_EUCLIDEAN_SYMMETRIC",
@@ -4118,6 +4996,7 @@
     "R003_CANONICAL_SOURCE_HERMITIAN",
     "R003_CCM_BRIDGE",
     "R003_CCM_RHS_IDENTITY",
+    "R003_COFINAL_BOTTOM_NONNEGATIVITY",
     "R003_CONSTRAINED_CANONICAL_DISPLACEMENT",
     "R003_CONSTRAINED_PARITY_EXACT_DIMENSION",
     "R003_CONSTRAINED_PARITY_LINEAR_EQUIV",
@@ -4157,9 +5036,12 @@
     "R003_PARITY_NORMAL_KKT",
     "R003_PARITY_PRESERVING_EUCLIDEAN_NFLOW",
     "R003_PARITY_QUADRATIC_SPLIT",
+    "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
+    "R003_PARITY_TIE_GROUND_MULTIPLICITY",
     "R003_RESIDUAL_C2",
     "R003_SOURCE_KAPPA_FINITE_SECTOR",
     "R003_SOURCE_NORMALIZATION_REPAIR",
+    "R003_SOURCE_WEIGHT_CARRIER_COUNTEREXAMPLE",
     "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
     "R003_STRICT_APERTURE_NEGATIVE_LOCALIZED_ADDITIVE_WITNESS",
     "R003_STRICT_APERTURE_NEGATIVE_WEIL_TEST",

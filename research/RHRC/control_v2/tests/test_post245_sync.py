@@ -15,8 +15,8 @@ class Post245SyncTests(unittest.TestCase):
         )
 
     def test_post245_provenance_survives_later_authority(self):
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 247)
-        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 247)
+        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 269)
+        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 269)
         note = self.state["control_note"]
         for token in (
             "PR #245", "NoArbitrarilyLargeWholeCellRetainedFamily",
@@ -72,7 +72,7 @@ class Post245SyncTests(unittest.TestCase):
             self.assertIn(f"theorem {name}", criterion)
         self.assertEqual(arithmetic_firewall_lint.lint(), [])
         workflow = (ROOT / ".github" / "workflows" / "rhrc.yml").read_text(encoding="utf-8")
-        self.assertIn("assert p['theorem_anchor']['pr'] == 247", workflow)
+        self.assertIn("assert p['theorem_anchor']['pr'] == 269", workflow)
 
 if __name__ == "__main__":
     unittest.main()

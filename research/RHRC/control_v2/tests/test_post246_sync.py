@@ -14,11 +14,10 @@ class Post246SyncTests(unittest.TestCase):
         self.assertEqual(route["post246_canonical_prime_remainder_normal_form"], "PROVED_PR_246")
         self.assertEqual(route["post246_canonical_prime_remainder_dominance_rh_equivalence"], "PROVED_PR_246")
         self.assertEqual(route["post246_generated_riesz_six_eventual_nonnegativity_rh_equivalence"], "PROVED_PR_246")
-        self.assertEqual(self.state["latest_validated_theorem_delta"]["prior_theorem_authority_pr"], 246)
-        self.assertEqual(
-            self.state["latest_validated_theorem_delta"]["prior_exact_promoted_declaration"],
-            "Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis",
-        )
+        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 269)
+        note = self.state["control_note"]
+        self.assertIn("PR #246", note)
+        self.assertIn("canonicalPrimeRemainderDominance_iff_riemannHypothesis", note)
 
     def test_exact_post246_files_and_theorems_exist(self):
         remainder=(ROOT/"Zeta23"/"CCM"/"CanonicalPrimeRemainder.lean").read_text(encoding="utf-8")

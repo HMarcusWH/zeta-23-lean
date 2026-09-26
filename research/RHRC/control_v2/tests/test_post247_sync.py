@@ -9,12 +9,17 @@ class Post247SyncTests(unittest.TestCase):
     def setUp(self):
         self.state=json.loads((RHRC/"control_v2"/"CONTROL_STATE.json").read_text(encoding="utf-8"))
 
-    def test_exact_post247_authority(self):
+    def test_post247_history_survives_post269_authority(self):
         t=self.state["merged_theorem_anchor"]
-        self.assertEqual(t["pr"],247)
-        self.assertEqual(t["validated_head"],"7438f2a23750b1f4133c12b989eb9d81c1e99eea")
-        self.assertEqual(t["merge_commit"],"070c0a08a924d0c917d5366755f9c4d50067ce51")
-        self.assertEqual(t["tree"],"1672e49e092682343a2eace1e8e6e4799c102f35")
+        self.assertEqual(t["pr"],269)
+        note=self.state["control_note"]
+        for token in (
+            "PR #247",
+            "7438f2a23750b1f4133c12b989eb9d81c1e99eea",
+            "070c0a08a924d0c917d5366755f9c4d50067ce51",
+            "1672e49e092682343a2eace1e8e6e4799c102f35",
+        ):
+            self.assertIn(token,note)
         self.assertEqual(self.state["merged_control_anchor"]["pr"],117)
         self.assertEqual(self.state["latest_research_evidence"]["pr"],223)
         self.assertEqual(self.state["terminal_claim"],"RH_OPEN")

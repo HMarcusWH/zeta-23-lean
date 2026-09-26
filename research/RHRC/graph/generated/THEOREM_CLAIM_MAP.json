@@ -20,6 +20,38 @@
     },
     {
       "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "claim_node_id": "rh:claim:AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+      "claim_status": "PROVED_UNCONDITIONAL",
+      "compiler_binding_source": "Zeta23/RHRC/RegisteredClaimBindings.lean",
+      "declaration_id": "rh:decl:Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates",
+      "historical_r003_promoted": false,
+      "module": "Zeta23.ExceptionalZero.CofinalArithmeticConditionalRH",
+      "module_id": "rh:module:Zeta23.ExceptionalZero.CofinalArithmeticConditionalRH",
+      "provenance": "REGISTRY_EXACT",
+      "route": null,
+      "source_file_id": "rh:file:Zeta23/ExceptionalZero/CofinalArithmeticConditionalRH.lean",
+      "source_path": "Zeta23/ExceptionalZero/CofinalArithmeticConditionalRH.lean",
+      "theorem": "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates"
+    },
+    {
+      "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "claim_node_id": "rh:claim:AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
+      "claim_status": "PROVED_UNCONDITIONAL",
+      "compiler_binding_source": "Zeta23/RHRC/RegisteredClaimBindings.lean",
+      "declaration_id": "rh:decl:Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalLowerCertificates",
+      "historical_r003_promoted": false,
+      "module": "Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH",
+      "module_id": "rh:module:Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH",
+      "provenance": "REGISTRY_EXACT",
+      "route": null,
+      "source_file_id": "rh:file:Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean",
+      "source_path": "Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean",
+      "theorem": "Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalLowerCertificates"
+    },
+    {
+      "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
       "claim_id": "AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
       "claim_node_id": "rh:claim:AUDIT_GLOBAL_BOTTOM_RESIDUAL_EXCLUSION_RH_EQUIVALENCE",
       "claim_status": "PROVED_UNCONDITIONAL",
@@ -244,6 +276,38 @@
     },
     {
       "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "claim_id": "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
+      "claim_node_id": "rh:claim:R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
+      "claim_status": "PROVED_UNCONDITIONAL",
+      "compiler_binding_source": "Zeta23/RHRC/RegisteredClaimBindings.lean",
+      "declaration_id": "rh:decl:Zeta23.CCM.globalParitySuccessorBottom_lowerBound_of_canonicalArithmeticLowerBound",
+      "historical_r003_promoted": true,
+      "module": "Zeta23.CCM.CanonicalArithmeticLowerBound",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalArithmeticLowerBound",
+      "provenance": "REGISTRY_EXACT",
+      "route": "R003_ccm_bridge",
+      "source_file_id": "rh:file:Zeta23/CCM/CanonicalArithmeticLowerBound.lean",
+      "source_path": "Zeta23/CCM/CanonicalArithmeticLowerBound.lean",
+      "theorem": "Zeta23.CCM.globalParitySuccessorBottom_lowerBound_of_canonicalArithmeticLowerBound"
+    },
+    {
+      "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "claim_id": "R003_CANONICAL_ARITHMETIC_LOWER_BOUND_NORMAL_FORM",
+      "claim_node_id": "rh:claim:R003_CANONICAL_ARITHMETIC_LOWER_BOUND_NORMAL_FORM",
+      "claim_status": "PROVED_UNCONDITIONAL",
+      "compiler_binding_source": "Zeta23/RHRC/RegisteredClaimBindings.lean",
+      "declaration_id": "rh:decl:Zeta23.CCM.canonicalArithmeticLowerBound_iff_energy",
+      "historical_r003_promoted": true,
+      "module": "Zeta23.CCM.CanonicalArithmeticLowerBound",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalArithmeticLowerBound",
+      "provenance": "REGISTRY_EXACT",
+      "route": "R003_ccm_bridge",
+      "source_file_id": "rh:file:Zeta23/CCM/CanonicalArithmeticLowerBound.lean",
+      "source_path": "Zeta23/CCM/CanonicalArithmeticLowerBound.lean",
+      "theorem": "Zeta23.CCM.canonicalArithmeticLowerBound_iff_energy"
+    },
+    {
+      "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
       "claim_id": "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
       "claim_node_id": "rh:claim:R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY",
       "claim_status": "PROVED_UNCONDITIONAL",
@@ -353,6 +417,22 @@
       "source_file_id": "rh:file:Zeta23/CCM/DictionaryRHSIdentity.lean",
       "source_path": "Zeta23/CCM/DictionaryRHSIdentity.lean",
       "theorem": "Zeta23.CCM.literatureRHS_dictionaryTest_eq_quadraticForm"
+    },
+    {
+      "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "claim_id": "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "claim_node_id": "rh:claim:R003_COFINAL_BOTTOM_NONNEGATIVITY",
+      "claim_status": "PROVED_UNCONDITIONAL",
+      "compiler_binding_source": "Zeta23/RHRC/RegisteredClaimBindings.lean",
+      "declaration_id": "rh:decl:Zeta23.CCM.globalParitySuccessorBottom_nonneg_of_jointCofinal_lowerBounds",
+      "historical_r003_promoted": true,
+      "module": "Zeta23.CCM.CofinalLowerBound",
+      "module_id": "rh:module:Zeta23.CCM.CofinalLowerBound",
+      "provenance": "REGISTRY_EXACT",
+      "route": "R003_ccm_bridge",
+      "source_file_id": "rh:file:Zeta23/CCM/CofinalLowerBound.lean",
+      "source_path": "Zeta23/CCM/CofinalLowerBound.lean",
+      "theorem": "Zeta23.CCM.globalParitySuccessorBottom_nonneg_of_jointCofinal_lowerBounds"
     },
     {
       "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
@@ -980,6 +1060,38 @@
     },
     {
       "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "claim_id": "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
+      "claim_node_id": "rh:claim:R003_PARITY_SPLIT_GROUND_SIMPLICITY",
+      "claim_status": "PROVED_UNCONDITIONAL",
+      "compiler_binding_source": "Zeta23/RHRC/RegisteredClaimBindings.lean",
+      "declaration_id": "rh:decl:Zeta23.CCM.paritySplitGroundSpace_simple_iff_ne",
+      "historical_r003_promoted": true,
+      "module": "Zeta23.CCM.GlobalParityBottomGroundSpace",
+      "module_id": "rh:module:Zeta23.CCM.GlobalParityBottomGroundSpace",
+      "provenance": "REGISTRY_EXACT",
+      "route": "R003_ccm_bridge",
+      "source_file_id": "rh:file:Zeta23/CCM/GlobalParityBottomGroundSpace.lean",
+      "source_path": "Zeta23/CCM/GlobalParityBottomGroundSpace.lean",
+      "theorem": "Zeta23.CCM.paritySplitGroundSpace_simple_iff_ne"
+    },
+    {
+      "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "claim_id": "R003_PARITY_TIE_GROUND_MULTIPLICITY",
+      "claim_node_id": "rh:claim:R003_PARITY_TIE_GROUND_MULTIPLICITY",
+      "claim_status": "PROVED_UNCONDITIONAL",
+      "compiler_binding_source": "Zeta23/RHRC/RegisteredClaimBindings.lean",
+      "declaration_id": "rh:decl:Zeta23.CCM.two_le_paritySplitGroundSpace_finrank_of_tie",
+      "historical_r003_promoted": true,
+      "module": "Zeta23.CCM.GlobalParityBottomGroundSpace",
+      "module_id": "rh:module:Zeta23.CCM.GlobalParityBottomGroundSpace",
+      "provenance": "REGISTRY_EXACT",
+      "route": "R003_ccm_bridge",
+      "source_file_id": "rh:file:Zeta23/CCM/GlobalParityBottomGroundSpace.lean",
+      "source_path": "Zeta23/CCM/GlobalParityBottomGroundSpace.lean",
+      "theorem": "Zeta23.CCM.two_le_paritySplitGroundSpace_finrank_of_tie"
+    },
+    {
+      "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
       "claim_id": "R003_RESIDUAL_C2",
       "claim_node_id": "rh:claim:R003_RESIDUAL_C2",
       "claim_status": "PROVED_UNCONDITIONAL",
@@ -1025,6 +1137,22 @@
       "source_file_id": "rh:file:Zeta23/CCM/SourceNormalizationRepair.lean",
       "source_path": "Zeta23/CCM/SourceNormalizationRepair.lean",
       "theorem": "Zeta23.CCM.canonicalSourceMatrix_eq_legacyPrintedMatrix_add_correction"
+    },
+    {
+      "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "claim_id": "R003_SOURCE_WEIGHT_CARRIER_COUNTEREXAMPLE",
+      "claim_node_id": "rh:claim:R003_SOURCE_WEIGHT_CARRIER_COUNTEREXAMPLE",
+      "claim_status": "PROVED_UNCONDITIONAL",
+      "compiler_binding_source": "Zeta23/RHRC/RegisteredClaimBindings.lean",
+      "declaration_id": "rh:decl:Zeta23.CCM.not_all_evenBoundaryFlat_sourceDerivatives_nonneg",
+      "historical_r003_promoted": false,
+      "module": "Zeta23.CCM.SourceWeightCounterexample",
+      "module_id": "rh:module:Zeta23.CCM.SourceWeightCounterexample",
+      "provenance": "REGISTRY_EXACT",
+      "route": null,
+      "source_file_id": "rh:file:Zeta23/CCM/SourceWeightCounterexample.lean",
+      "source_path": "Zeta23/CCM/SourceWeightCounterexample.lean",
+      "theorem": "Zeta23.CCM.not_all_evenBoundaryFlat_sourceDerivatives_nonneg"
     },
     {
       "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
@@ -1252,7 +1380,7 @@
     }
   ],
   "graph_theorem_promotion": false,
-  "registered_proved_binding_count": 78,
+  "registered_proved_binding_count": 86,
   "schema_version": "RHKG-phase2b-theorem-claim-map-0.4",
   "scope": "ALL_PROVED_UNCONDITIONAL_REGISTERED_CLAIMS",
   "terminal_claim": "RH_OPEN",
@@ -1260,6 +1388,7 @@
   "unlinked_registered_claim_ids": [
     "C_RH",
     "R001_PRIME_UPPER",
-    "R002_WINDOWED_VISIBILITY"
+    "R002_WINDOWED_VISIBILITY",
+    "R003_COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES"
   ]
 }

@@ -180,14 +180,33 @@ class Post193SyncTests(unittest.TestCase):
         ):
             self.assertIn(token, objections)
 
-    def test_r003_route_claim_ids_are_exactly_unchanged(self):
+    def test_r003_route_preserves_post193_claim_ids(self):
         registry = json.loads(
             (RHRC / "routes" / "ROUTE_REGISTRY.json").read_text(encoding="utf-8")
         )
         route = next(r for r in registry["routes"] if r["route_id"] == "R003_ccm_bridge")
         self.assertEqual(route["phase"], "DISCOVERY")
         self.assertFalse(route["confirmatory_execution_authorized"])
-        self.assertEqual(route["claim_ids"], EXPECTED_R003_CLAIM_IDS)
+
+        # Historical post-#193 synchronization promised not to mutate the then-current
+        # claim surface. Later theorem PRs are allowed to append new reviewed claims.
+        # Preserve the historical block exactly and in order, while permitting only
+        # downstream additions after it.
+        self.assertGreaterEqual(len(route["claim_ids"]), len(EXPECTED_R003_CLAIM_IDS))
+        self.assertEqual(
+            route["claim_ids"][: len(EXPECTED_R003_CLAIM_IDS)],
+            EXPECTED_R003_CLAIM_IDS,
+        )
+        for current_claim in (
+            "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
+            "R003_PARITY_TIE_GROUND_MULTIPLICITY",
+            "R003_CANONICAL_ARITHMETIC_LOWER_BOUND_NORMAL_FORM",
+            "R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND",
+            "R003_COFINAL_BOTTOM_NONNEGATIVITY",
+            "R003_COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES",
+        ):
+            self.assertIn(current_claim, route["claim_ids"])
+
         self.assertIsNone(route["route_spec_digest"])
         self.assertIsNone(route["boundary_digest"])
         note = route["note"]

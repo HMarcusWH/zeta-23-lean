@@ -12,7 +12,7 @@ class Post249SyncTests(unittest.TestCase):
         )
 
     def test_post249_is_research_evidence_not_theorem_authority(self):
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 247)
+        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 269)
         self.assertEqual(self.state["latest_research_evidence"]["pr"], 223)
         scout = self.state["post249_research_scout"]
         self.assertEqual(scout["pr"], 249)

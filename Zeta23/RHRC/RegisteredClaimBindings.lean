@@ -65,6 +65,12 @@ import Zeta23.ExceptionalZero.WeilFilter
 import Zeta23.ExceptionalZero.WeilLiteratureBridge
 import Zeta23.ExceptionalZero.WeilZeroSideEvenization
 import Zeta23.ZeroSide.TightMult
+import Zeta23.CCM.CanonicalArithmeticLowerBound
+import Zeta23.CCM.CofinalLowerBound
+import Zeta23.CCM.GlobalParityBottomGroundSpace
+import Zeta23.CCM.SourceWeightCounterexample
+import Zeta23.ExceptionalZero.CofinalArithmeticConditionalRH
+import Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH
 
 -- AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE
 #check Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis
@@ -378,3 +384,35 @@ import Zeta23.ZeroSide.TightMult
 #check Zeta23.CCM.rank_canonicalSourceMatrix_displacement_le_two
 #print axioms Zeta23.CCM.rank_canonicalSourceMatrix_displacement_le_two
 
+
+-- AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH
+#check Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates
+#print axioms Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalArithmeticCertificates
+
+-- AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH
+#check Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalLowerCertificates
+#print axioms Zeta23.ExceptionalZero.riemannHypothesis_of_cofinalCanonicalLowerCertificates
+
+-- R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND
+#check Zeta23.CCM.globalParitySuccessorBottom_lowerBound_of_canonicalArithmeticLowerBound
+#print axioms Zeta23.CCM.globalParitySuccessorBottom_lowerBound_of_canonicalArithmeticLowerBound
+
+-- R003_CANONICAL_ARITHMETIC_LOWER_BOUND_NORMAL_FORM
+#check Zeta23.CCM.canonicalArithmeticLowerBound_iff_energy
+#print axioms Zeta23.CCM.canonicalArithmeticLowerBound_iff_energy
+
+-- R003_COFINAL_BOTTOM_NONNEGATIVITY
+#check Zeta23.CCM.globalParitySuccessorBottom_nonneg_of_jointCofinal_lowerBounds
+#print axioms Zeta23.CCM.globalParitySuccessorBottom_nonneg_of_jointCofinal_lowerBounds
+
+-- R003_PARITY_SPLIT_GROUND_SIMPLICITY
+#check Zeta23.CCM.paritySplitGroundSpace_simple_iff_ne
+#print axioms Zeta23.CCM.paritySplitGroundSpace_simple_iff_ne
+
+-- R003_PARITY_TIE_GROUND_MULTIPLICITY
+#check Zeta23.CCM.two_le_paritySplitGroundSpace_finrank_of_tie
+#print axioms Zeta23.CCM.two_le_paritySplitGroundSpace_finrank_of_tie
+
+-- R003_SOURCE_WEIGHT_CARRIER_COUNTEREXAMPLE
+#check Zeta23.CCM.not_all_evenBoundaryFlat_sourceDerivatives_nonneg
+#print axioms Zeta23.CCM.not_all_evenBoundaryFlat_sourceDerivatives_nonneg
