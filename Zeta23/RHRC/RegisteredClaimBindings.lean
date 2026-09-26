@@ -70,6 +70,7 @@ import Zeta23.CCM.CofinalLowerBound
 import Zeta23.CCM.GlobalParityBottomGroundSpace
 import Zeta23.CCM.SourceWeightCounterexample
 import Zeta23.ExceptionalZero.CofinalArithmeticConditionalRH
+import Zeta23.ExceptionalZero.CofinalArithmeticEquivalenceAudit
 import Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH
 
 -- AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE
@@ -416,3 +417,7 @@ import Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH
 -- R003_SOURCE_WEIGHT_CARRIER_COUNTEREXAMPLE
 #check Zeta23.CCM.not_all_evenBoundaryFlat_sourceDerivatives_nonneg
 #print axioms Zeta23.CCM.not_all_evenBoundaryFlat_sourceDerivatives_nonneg
+
+-- AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_RH_EQUIVALENCE
+#check Zeta23.ExceptionalZero.cofinalCanonicalArithmeticCertificates_iff_riemannHypothesis
+#print axioms Zeta23.ExceptionalZero.cofinalCanonicalArithmeticCertificates_iff_riemannHypothesis
