@@ -34,6 +34,7 @@ TERMINAL_MODULES = {
     "Zeta23.ExceptionalZero.GeneratedFamilyFinalGate",
     "Zeta23.ExceptionalZero.GeneratedFamilyFinalGateEquivalence",
     "Zeta23.ExceptionalZero.CanonicalArithmeticCriterion",
+    "Zeta23.ExceptionalZero.CofinalArithmeticEquivalenceAudit",
 }
 
 ARITHMETIC_MODULES = (
