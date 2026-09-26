@@ -51,13 +51,13 @@ class CurrentStateSurfaceTests(unittest.TestCase):
             route["post269_carrier_source_weight_monotonicity"],
             "REFUTED_FORMALLY",
         )
-        self.assertEqual(route["new_obstruction"], "OBS-061")
+        self.assertEqual(route["current_obstruction"], "OBS-061")
         self.assertEqual(
-            route["next_research_target"],
+            route["current_next_research_target"],
             "COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES",
         )
         self.assertEqual(
-            route["required_new_information"],
+            route["current_required_new_information"],
             "UNIFORM_ALL_VECTOR_CANONICAL_ARITHMETIC_DECAY_ON_COFINAL_APERTURES_AND_SIZES",
         )
         self.assertEqual(route["post270_source_only_public_theorem_count"], 707)
