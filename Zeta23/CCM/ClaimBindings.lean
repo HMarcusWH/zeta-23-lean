@@ -42,6 +42,10 @@ import Zeta23.ExceptionalZero.NestedEuclideanObstruction
 import Zeta23.ExceptionalZero.ParityFirstBadObstruction
 import Zeta23.ExceptionalZero.FirstBadParitySpectrum
 import Zeta23.ExceptionalZero.FirstBadRigidity
+import Zeta23.CCM.CanonicalArithmeticLowerBound
+import Zeta23.CCM.CofinalLowerBound
+import Zeta23.CCM.GlobalParityBottomGroundSpace
+import Zeta23.CCM.SourceWeightCounterexample
 
 /-!
 R003 promoted-claim completeness is machine-checked by research/RHRC/tools/promoted_binding_lint.py against research/RHRC/R003_PROMOTED_BINDINGS.json and CLAIM_REGISTRY.json. Supporting #check declarations may exist without registry promotion; every PROVED_UNCONDITIONAL R003 registry theorem must have both #check and #print axioms here.
@@ -560,3 +564,27 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 #print axioms Zeta23.CCM.finrank_range_evenOddCompressedIntertwiningDefect_le_one
 #check Zeta23.CCM.finrank_range_conjugatedParityCompressionDefect_le_one
 #print axioms Zeta23.CCM.finrank_range_conjugatedParityCompressionDefect_le_one
+
+-- R003_CANONICAL_ARITHMETIC_GLOBAL_BOTTOM_LOWER_BOUND
+#check Zeta23.CCM.globalParitySuccessorBottom_lowerBound_of_canonicalArithmeticLowerBound
+#print axioms Zeta23.CCM.globalParitySuccessorBottom_lowerBound_of_canonicalArithmeticLowerBound
+
+-- R003_CANONICAL_ARITHMETIC_LOWER_BOUND_NORMAL_FORM
+#check Zeta23.CCM.canonicalArithmeticLowerBound_iff_energy
+#print axioms Zeta23.CCM.canonicalArithmeticLowerBound_iff_energy
+
+-- R003_COFINAL_BOTTOM_NONNEGATIVITY
+#check Zeta23.CCM.globalParitySuccessorBottom_nonneg_of_jointCofinal_lowerBounds
+#print axioms Zeta23.CCM.globalParitySuccessorBottom_nonneg_of_jointCofinal_lowerBounds
+
+-- R003_PARITY_SPLIT_GROUND_SIMPLICITY
+#check Zeta23.CCM.paritySplitGroundSpace_simple_iff_ne
+#print axioms Zeta23.CCM.paritySplitGroundSpace_simple_iff_ne
+
+-- R003_PARITY_TIE_GROUND_MULTIPLICITY
+#check Zeta23.CCM.two_le_paritySplitGroundSpace_finrank_of_tie
+#print axioms Zeta23.CCM.two_le_paritySplitGroundSpace_finrank_of_tie
+
+-- R003_SOURCE_WEIGHT_CARRIER_COUNTEREXAMPLE
+#check Zeta23.CCM.not_all_evenBoundaryFlat_sourceDerivatives_nonneg
+#print axioms Zeta23.CCM.not_all_evenBoundaryFlat_sourceDerivatives_nonneg
