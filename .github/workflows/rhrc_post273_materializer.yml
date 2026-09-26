@@ -36,10 +36,11 @@ jobs:
           test: false
           lint: false
           use-mathlib-cache: true
-      - name: Build unchanged theorem and source resolver surfaces
+      - name: Build unchanged theorem, source resolver, and dependency exporter surfaces
         run: |
           lake build Zeta23.RHRC.RegisteredClaimBindings
           lake build Zeta23.RHRC.SourceCandidateResolution
+          lake build Zeta23.RHRC.DeclarationDependencyExport
       - name: Freeze post-272 first-contact certificate
         run: |
           python research/RHRC/routes/R003_ccm_bridge/check_post272_first_contact_atlas_scope.py
