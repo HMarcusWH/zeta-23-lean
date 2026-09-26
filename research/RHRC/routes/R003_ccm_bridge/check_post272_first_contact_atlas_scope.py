@@ -19,9 +19,11 @@ def main() -> int:
     assert f["claim_cap"] == CLAIM_CAP
     assert f["adaptive_search"] is False
     assert [(x["q"], x["K"]) for x in f["primary_cases"]] == [
-        (13, 3), (16, 3), (17, 3), (14, 3), (15, 3)
+        (13, 3), (16, 3), (17, 3), (19, 3), (14, 3), (15, 3), (18, 3)
     ]
-    assert [(x["q"], x["K"]) for x in f["replication_cases"]] == [(16, 4), (17, 4)]
+    assert [(x["q"], x["K"]) for x in f["replication_cases"]] == [
+        (16, 4), (17, 4), (16, 6), (17, 6)
+    ]
     assert f["offset_powers"] == [8, 10, 12]
     assert f["planted_gamma"] == [10, 1]
     assert f["planted_off_line_delta"] == [1, 20]

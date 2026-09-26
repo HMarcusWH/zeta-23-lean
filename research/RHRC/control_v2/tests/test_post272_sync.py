@@ -46,7 +46,11 @@ class Post272SyncTests(unittest.TestCase):
         self.assertEqual(fixture["offset_powers"], [8, 10, 12])
         self.assertEqual(
             [(x["q"], x["K"]) for x in fixture["primary_cases"]],
-            [(13, 3), (16, 3), (17, 3), (14, 3), (15, 3)],
+            [(13, 3), (16, 3), (17, 3), (19, 3), (14, 3), (15, 3), (18, 3)],
+        )
+        self.assertEqual(
+            [(x["q"], x["K"]) for x in fixture["replication_cases"]],
+            [(16, 4), (17, 4), (16, 6), (17, 6)],
         )
         note = (SCOUT / "POST272_FIRST_CONTACT_ATLAS_2026_09_26.md").read_text(
             encoding="utf-8"

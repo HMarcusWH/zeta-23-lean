@@ -28,12 +28,12 @@ negative controls, so the ablation must be an exact no-op there.
 
 Primary K=3 cases:
 
-- true seams: q=13, 16, 17;
-- zero-von-Mangoldt controls: q=14, 15.
+- true seams: q=13, 16, 17, 19;
+- zero-von-Mangoldt controls: q=14, 15, 18.
 
 Replication:
 
-- (q,K)=(16,4), (17,4).
+- (q,K)=(16,4), (17,4), (16,6), (17,6).
 
 One-sided offsets are fixed at `2^-8`, `2^-10`, and `2^-12`.
 No point is moved after looking at results.
