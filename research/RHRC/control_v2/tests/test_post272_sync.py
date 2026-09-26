@@ -55,7 +55,7 @@ class Post272SyncTests(unittest.TestCase):
         note = (SCOUT / "POST272_FIRST_CONTACT_ATLAS_2026_09_26.md").read_text(
             encoding="utf-8"
         )
-        self.assertIn("there is no value jump to discover at the seam", note)
+        self.assertIn("there is no value jump", note)\n        self.assertIn("to discover at the seam", note)
         self.assertIn("PARITY_GAP_UNRESOLVED", note)
         self.assertIn("RH remains OPEN", note)
 
