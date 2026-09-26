@@ -14,69 +14,41 @@ For theorem-bearing PRs, compiler validity attaches only to the exact checked he
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #247
-- validated final head = 7438f2a23750b1f4133c12b989eb9d81c1e99eea
-- merge commit = 070c0a08a924d0c917d5366755f9c4d50067ce51
-- tree = 1672e49e092682343a2eace1e8e6e4799c102f35
-- status = MERGED_VIA_PR_247
-- theorem family = GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL_REDUCTION
-- workflow harvest = 11/11 ATTACHED WORKFLOWS COMPLETED SUCCESSFULLY on the validated #247 head
-- terminal Mathlib RH seam = PROVED / PR #242
+- merged theorem authority = PR #269
+- validated final head = d228f35ca3338520131a883b9091fad16ef9c9b9
+- merge commit = b7912d13801389a4c6e3236f98c28435254d685d
+- tree = 9d2fff6ed5b0ecc3ea55e363de6df80410a720c3
+- status = MERGED_GREEN_THEOREM_STATE
+- PR #269 legal parity-ground simplicity iff strict parity separation = PROVED
+- PR #269 parity tie -> parity-split ground finrank >= 2 = PROVED
+- PR #269 carrier-wide source-weight derivative nonnegativity = REFUTED / FORMAL COUNTEREXAMPLE
+- PR #269 canonical arithmetic lower-bound normal form = PROVED
+- PR #269 jointly cofinal bottom lower bounds -> finite-bottom nonnegativity = PROVED
+- PR #269 cofinal lower certificates -> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY / CONDITIONAL
 - RH = OPEN
 
-PR #246 ARITHMETIC NORMAL FORM
-- canonical weighted-von-Mangoldt prime-remainder normal form = PROVED / PR #246
-- CanonicalFiniteWeilPositivity <-> RiemannHypothesis = PROVED / PR #246
-- CanonicalRieszSixPositivity <-> RiemannHypothesis = PROVED / PR #246
-- GeneratedRetainedRieszSixEventuallyNonnegative <-> RiemannHypothesis = PROVED / PR #246
-- CanonicalPrimeRemainderDominance <-> RiemannHypothesis = PROVED / PR #246
-- GeneratedRetainedPrimeRemainderDominance <-> RiemannHypothesis = PROVED / PR #246
-- interpretation = RH-equivalent criteria / arithmetic normal forms, NOT a proof of RH
+CURRENT IMPLEMENTATION / OPEN TARGET
+- current PR target = CANONICAL_ARITHMETIC_TO_GLOBAL_BOTTOM_AND_COFINAL_CERTIFICATE_BRIDGE
+- arithmetic all-vector certificate -> -epsilon <= globalParitySuccessorBottom = CURRENT PR THEOREM TARGET
+- CofinalCanonicalArithmeticCertificates -> RiemannHypothesis = CURRENT PR AUDIT TARGET
+- cofinal arithmetic certificate construction = OPEN
+- active obstruction = OBS-061
+- next research target = COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES
+- required new information = UNIFORM_ALL_VECTOR_CANONICAL_ARITHMETIC_DECAY_ON_COFINAL_APERTURES_AND_SIZES
+- no reverse RH-equivalence claim is made for CofinalCanonicalArithmeticCertificates
 
-PR #247 GLOBAL-BOTTOM REDUCTION
-- unconditional parity Rayleigh bottoms and successor global-bottom trichotomy = PROVED / PR #247
-- GlobalBottomResidualState -> dependent GlobalBottomBranchPackage = PROVED / PR #247
-- residual-state true global-ground trial is nonzero and an exact eigenmode = PROVED / PR #247
-- residual-state ground channel energy = lambda_* * ||u_*||^2 < 0 = PROVED / PR #247
-- same true ground trial satisfies the #246 prime-remainder failure = PROVED / PR #247
-- primeTestWeight is continuous and primeRemainderEnergy has the exact weighted-remainder integral = PROVED / PR #247
-- off-line zero -> arbitrarily-large GlobalBottomArithmeticResidual = PROVED / PR #247
-- GlobalBottomResidualExclusion <-> RiemannHypothesis = PROVED / AUDIT-ONLY / PR #247
-- active route stops at GlobalBottomArithmeticResidual
-- RH = OPEN
+FRAMEWORK / GRAPH AUTHORITY
+- PR #270 = FFBBP 1.7 assurance + OoL-MVS 2.7.7 governance + strict RHKG steady state
+- FFBBP RUN46F executable authority = NOT PROMOTED
+- OoL certificate VALID = attested binding, NOT physical or mathematical truth
+- post-270 source-only theorem/lemma roots = 707
+- post-270 FFBBP source-only module cohorts = 202
+- framework output -> Lean theorem authority = FORBIDDEN
 
-RESEARCH / REGRESSION HARVEST
-- PR #223 remains the latest independent bounded research evidence anchor
-- post-198 = SOURCE_DECOMPOSITION_DEPENDENCY_UNRESOLVED / NO_UNIQUE_COLLAPSED_UNIFORM_LOCK
-- post-200 = DISCREPANCY_REPRESENTATION_DEPENDENCY_UNRESOLVED / NO_UNIQUE_PRIMARY_LOCK
-- post-202 = COMPOSITE_PARITY_GAP_PATTERN_FALSIFIED
-- post-214 = FULL_SPACE_DUAL_INDEPENDENCE_CERTIFIED / FULL_SPACE_SIGN_INDEFINITE_CERTIFIED
-- post-222 = NO_FROZEN_CELL_MINIMAL_BIREGULAR_STATE_CERTIFIED
-- post-249 = FINITE_GRID_SHARP_CANCELLATION / ZERO_SIDE_PERTURBATION_CONTROL_BUILT / EXPERIMENTAL_SIGNAL_ONLY
-- post-249 interpretation firewall = NO ASYMPTOTIC RATE / NO EXACT FIRST-ZERO SWITCH / SIGN-CHANGE BRACKETS NOT GLOBAL MINIMA
-- theorem promotion from research replays = false
-
-CURRENT RESEARCH PROGRAM
-- active programme = RIEMANN_WEARING_GLASSES_V2
-- next research target = UNCONDITIONAL_GROUND_SPECTRUM_ATLAS
-- required new information = NONVACUOUS_ARITHMETIC_CONTROL_OF_GROUND_SPECTRUM_ACROSS_PRIME_POWER_THRESHOLDS
-- secondary route = THRESHOLD_LOCAL_FIRST_CROSSING_BARRIER
-- full-space <-> boundary-flat <-> parity spectral bridge = ACTIVE LEAD
-- R004 prolate/full-space ground-space bridge = RESURRECTED LEAD
-- Pair-D = GENERIC LINEAR-ALGEBRA FILTER ONLY
-- planted zero-side perturbation control = BUILT / PR #249 / EXPERIMENTAL_SIGNAL_ONLY
-- globally consistent planted zeta/Euler-product control = OPEN
-- global aperture Loewner monotonicity = QUARANTINED / DR-021
-- global minimizing-Schur monotonicity = QUARANTINED / DR-022
-- exact-equality holonomy = DROPPED / TAUTOLOGICAL
-- ordinary Hilbert-space Gram PSD = DROPPED / TAUTOLOGICAL
-- relation zeta = PARKED / SPECULATIVE
-- small-aperture positive base = OPEN
-- multiplicity-safe fixed-cell L dynamics = OPEN
-- exact prime-power threshold update for the unconditional ground spectrum = OPEN
-
-CONTROL AUTHORITY
-- PR #117 remains the Control-v2 semantic authority
+RESEARCH / CONTROL FIREWALL
+- latest independent bounded research evidence = PR #223
+- post-249 = EXPERIMENTAL_SIGNAL_ONLY / no asymptotic rate / no exact first-zero switch
+- frozen Control-v2 semantic authority = PR #117
 - selected formal first break = E4A4-SCHUR-FB-05 (historical/frozen control semantics)
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
