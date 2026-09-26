@@ -46,6 +46,26 @@ def _zero_matrix(K: int) -> arb_mat:
     return arb_mat(2 * K + 1, 2 * K + 1)
 
 
+def _current_q_prime_matrix(L: arb, K: int, q: int) -> arb_mat:
+    """Exact q-only prime contribution.
+
+    This is deliberately built directly instead of subtracting two independently
+    enclosed cumulative Arb sums.  For Lambda(q)=0 it returns an exact zero
+    matrix; subtraction of two recomputed interval sums would only prove that
+    zero lies in the difference enclosure.
+    """
+    vm = ca.von_mangoldt(q)
+    if vm.is_zero():
+        return _zero_matrix(K)
+    y = arb(q).log()
+    w = vm / arb(q).sqrt()
+    idx = list(range(-K, K + 1))
+    return arb_mat([
+        [w * ca.q_basis(n, m, y, L) for m in idx]
+        for n in idx
+    ])
+
+
 def _fixed_background(L: arb, K: int, q: int) -> tuple[arb_mat, arb_mat]:
     """Return smooth q-ablated energy and the entering-q prime matrix.
 
@@ -54,8 +74,7 @@ def _fixed_background(L: arb, K: int, q: int) -> tuple[arb_mat, arb_mat]:
     For Lambda(q)=0 controls P_q is identically zero.
     """
     Pprev = prime_matrix(L, K, q - 1) if q > 2 else _zero_matrix(K)
-    Pthrough = prime_matrix(L, K, q)
-    Pq = _sym(Pthrough - Pprev)
+    Pq = _sym(_current_q_prime_matrix(L, K, q))
     G = exp_weight_sprime(acb(L / 2), acb(2), K)
     T = exp_weight_sprime(acb(-L / 2), acb(2), K)
     Arch = arch_matrix(L, K)
