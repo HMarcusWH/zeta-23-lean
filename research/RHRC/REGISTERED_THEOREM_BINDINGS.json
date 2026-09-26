@@ -418,8 +418,7 @@
     {
       "id": "R003_SOURCE_WEIGHT_CARRIER_COUNTEREXAMPLE",
       "theorem": "Zeta23.CCM.not_all_evenBoundaryFlat_sourceDerivatives_nonneg",
-      "source": "Zeta23/CCM/SourceWeightCounterexample.lean",
-      "route": "R003_ccm_bridge"
+      "source": "Zeta23/CCM/SourceWeightCounterexample.lean"
     },
     {
       "id": "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
