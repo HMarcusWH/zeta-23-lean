@@ -1,0 +1,84 @@
+name: RHRC closure campaign bootstrap
+
+on:
+  pull_request:
+    branches: [main]
+    paths: ['.github/workflows/rhrc_closure_bootstrap.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  proof-workspace:
+    if: github.head_ref == 'research/rh-closure-parallel-campaign' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build exact existing proof surface
+        run: |
+          lake build Zeta23.CCM Zeta23.ExceptionalZero Zeta23.RHRC.RegisteredClaimBindings Zeta23.RHRC.DeclarationDependencyExport
+      - name: Export pinned offline proof workspace (no credentials)
+        run: |
+          mkdir -p "$RUNNER_TEMP/portable"
+          lean --version | tee "$RUNNER_TEMP/portable/LEAN_VERSION.txt"
+          lean --print-prefix > "$RUNNER_TEMP/portable/LEAN_PREFIX.txt"
+          python - <<'PY'
+          from pathlib import Path
+          import os, tarfile
+          out = Path(os.environ['RUNNER_TEMP']) / 'portable'
+          prefix = Path((out / 'LEAN_PREFIX.txt').read_text().strip())
+          def selected(path):
+              return path.name.endswith(('.lean', '.olean', '.olean.private', '.olean.server', '.so')) or '.so.' in path.name
+          with tarfile.open(out / 'toolchain.tar.gz', 'w:gz', compresslevel=3) as tf:
+              for p in sorted(prefix.rglob('*')):
+                  if p.is_file() and (selected(p) or p.parent == prefix / 'bin'):
+                      tf.add(p, arcname=Path('toolchain') / p.relative_to(prefix), recursive=False)
+          with tarfile.open(out / 'proofbase.tar.gz', 'w:gz', compresslevel=3) as tf:
+              for p in sorted(Path('.lake').rglob('*')):
+                  if '.git' not in p.parts and p.is_file() and selected(p):
+                      tf.add(p, arcname=p, recursive=False)
+          import hashlib, json
+          manifest = {'commit': os.environ.get('GITHUB_SHA'), 'lean': (out / 'LEAN_VERSION.txt').read_text().strip(), 'files': {}}
+          for p in sorted(out.glob('*.tar.gz')):
+              data = p.read_bytes()
+              manifest['files'][p.name] = {'size': len(data), 'sha256': hashlib.sha256(data).hexdigest()}
+          (out / 'MANIFEST.json').write_text(json.dumps(manifest, indent=2) + '\n')
+          print(json.dumps(manifest, indent=2))
+          PY
+          python -m pip download --python-version 313 --implementation cp --abi cp313 --only-binary=:all: --no-deps python-flint==0.9.0 -d "$RUNNER_TEMP/portable"
+          ls -lh "$RUNNER_TEMP/portable"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: closure-pinned-toolchain
+          path: ${{ runner.temp }}/portable/toolchain.tar.gz
+          compression-level: 0
+          retention-days: 3
+      - uses: actions/upload-artifact@v4
+        with:
+          name: closure-pinned-proofbase
+          path: ${{ runner.temp }}/portable/proofbase.tar.gz
+          compression-level: 0
+          retention-days: 3
+      - uses: actions/upload-artifact@v4
+        with:
+          name: closure-pinned-environment
+          path: |
+            ${{ runner.temp }}/portable/*.json
+            ${{ runner.temp }}/portable/*.txt
+            ${{ runner.temp }}/portable/*.whl
+          compression-level: 0
+          retention-days: 3
