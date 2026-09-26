@@ -1187,6 +1187,19 @@
       "note": "PR #271 AUDIT-ONLY sufficient implication. No reverse implication is claimed and the arithmetic certificate family remains OPEN."
     },
     {
+      "id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_RH_EQUIVALENCE",
+      "statement": "CofinalCanonicalArithmeticCertificates is logically equivalent to Mathlib.RiemannHypothesis: PR #271 supplies the forward implication, while RH supplies the certificate family through canonical finite Weil positivity at every positive aperture and finite size.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH",
+        "AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE"
+      ],
+      "source": "Zeta23/ExceptionalZero/CofinalArithmeticEquivalenceAudit.lean",
+      "theorem": "Zeta23.ExceptionalZero.cofinalCanonicalArithmeticCertificates_iff_riemannHypothesis",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #272 AUDIT-ONLY anti-circularity classification. This proves an equivalence theorem, not RH. It shows that direct construction of the #271 cofinal arithmetic certificate proposition is itself RH-strength and must not be treated as a smaller intermediate lemma."
+    },
+    {
       "id": "R003_COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES",
       "statement": "For every real bound B there exists a positive aperture L>B such that, jointly for every starting size n>=1 and every epsilon>0, some m>=n satisfies CanonicalArithmeticLowerBound L (m+1) epsilon on every legal boundary-flat vector.",
       "status": "OPEN",
@@ -1195,7 +1208,7 @@
       ],
       "route": "R003_ccm_bridge",
       "promotion_cap": "OPEN",
-      "note": "Post-#269/#271 active arithmetic construction problem. This exact premise is sufficient for RH by AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_IMPLY_RH, but no certificate family is constructed and no RH-equivalence claim is made."
+      "note": "Post-#271 terminal arithmetic proposition. PR #272 audit classifies this exact proposition as RH-equivalent; it remains OPEN because RH remains OPEN. Direct construction is therefore not treated as an independent sub-RH lemma."
     }
   ]
 }
