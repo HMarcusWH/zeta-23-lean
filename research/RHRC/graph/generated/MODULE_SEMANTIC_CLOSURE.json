@@ -531,16 +531,33 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 3,
+      "file_id": "rh:file:Zeta23/CCM/CanonicalArithmeticCofinal.lean",
+      "module": "Zeta23.CCM.CanonicalArithmeticCofinal",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalArithmeticCofinal",
+      "named_source_declaration_count": 3,
+      "path": "Zeta23/CCM/CanonicalArithmeticCofinal.lean",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 0,
+      "standalone_role": null,
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 10,
       "file_id": "rh:file:Zeta23/CCM/CanonicalArithmeticLowerBound.lean",
       "module": "Zeta23.CCM.CanonicalArithmeticLowerBound",
       "module_id": "rh:module:Zeta23.CCM.CanonicalArithmeticLowerBound",
-      "named_source_declaration_count": 3,
+      "named_source_declaration_count": 5,
       "path": "Zeta23/CCM/CanonicalArithmeticLowerBound.lean",
-      "reachability": "STANDALONE_OR_AUXILIARY",
-      "reachable_from": [],
-      "registered_root_count": 0,
-      "standalone_role": "FORMAL_ARITHMETIC_NORMAL_FORM",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 2,
+      "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
@@ -895,16 +912,18 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 3,
       "file_id": "rh:file:Zeta23/CCM/CofinalLowerBound.lean",
       "module": "Zeta23.CCM.CofinalLowerBound",
       "module_id": "rh:module:Zeta23.CCM.CofinalLowerBound",
       "named_source_declaration_count": 3,
       "path": "Zeta23/CCM/CofinalLowerBound.lean",
-      "reachability": "STANDALONE_OR_AUXILIARY",
-      "reachable_from": [],
-      "registered_root_count": 0,
-      "standalone_role": "FORMAL_COFINAL_ORDER_LEMMA",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 1,
+      "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
@@ -2552,7 +2571,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 5,
+      "compiler_dependency_surface_declaration_count": 6,
       "file_id": "rh:file:Zeta23/CCM/GlobalFirstBad.lean",
       "module": "Zeta23.CCM.GlobalFirstBad",
       "module_id": "rh:module:Zeta23.CCM.GlobalFirstBad",
@@ -2664,16 +2683,18 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 8,
       "file_id": "rh:file:Zeta23/CCM/GlobalParityBottomGroundSpace.lean",
       "module": "Zeta23.CCM.GlobalParityBottomGroundSpace",
       "module_id": "rh:module:Zeta23.CCM.GlobalParityBottomGroundSpace",
       "named_source_declaration_count": 6,
       "path": "Zeta23/CCM/GlobalParityBottomGroundSpace.lean",
-      "reachability": "STANDALONE_OR_AUXILIARY",
-      "reachable_from": [],
-      "registered_root_count": 0,
-      "standalone_role": "FORMAL_GROUND_MULTIPLICITY_THEOREM",
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
+      "registered_root_count": 2,
+      "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
@@ -2851,16 +2872,18 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 11,
       "file_id": "rh:file:Zeta23/CCM/GlobalParityBottomSimplicity.lean",
       "module": "Zeta23.CCM.GlobalParityBottomSimplicity",
       "module_id": "rh:module:Zeta23.CCM.GlobalParityBottomSimplicity",
       "named_source_declaration_count": 6,
       "path": "Zeta23/CCM/GlobalParityBottomSimplicity.lean",
-      "reachability": "STANDALONE_OR_AUXILIARY",
-      "reachable_from": [],
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
       "registered_root_count": 0,
-      "standalone_role": "FORMAL_GROUND_SIMPLICITY_THEOREM",
+      "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
@@ -2880,7 +2903,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 35,
+      "compiler_dependency_surface_declaration_count": 36,
       "file_id": "rh:file:Zeta23/CCM/GlobalParityBottomSpectrum.lean",
       "module": "Zeta23.CCM.GlobalParityBottomSpectrum",
       "module_id": "rh:module:Zeta23.CCM.GlobalParityBottomSpectrum",
@@ -3246,16 +3269,18 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/CCM/RankOneEigenline.lean",
       "module": "Zeta23.CCM.RankOneEigenline",
       "module_id": "rh:module:Zeta23.CCM.RankOneEigenline",
       "named_source_declaration_count": 2,
       "path": "Zeta23/CCM/RankOneEigenline.lean",
-      "reachability": "STANDALONE_OR_AUXILIARY",
-      "reachable_from": [],
+      "reachability": "ENTRYPOINT_REACHABLE",
+      "reachable_from": [
+        "Zeta23.CCM"
+      ],
       "registered_root_count": 0,
-      "standalone_role": "FORMAL_SUPPORTING_EIGENSPACE_LEMMA",
+      "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
@@ -3779,7 +3804,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 19,
       "file_id": "rh:file:Zeta23/CCM/SourceWeightCounterexample.lean",
       "module": "Zeta23.CCM.SourceWeightCounterexample",
       "module_id": "rh:module:Zeta23.CCM.SourceWeightCounterexample",
@@ -3787,7 +3812,7 @@
       "path": "Zeta23/CCM/SourceWeightCounterexample.lean",
       "reachability": "STANDALONE_OR_AUXILIARY",
       "reachable_from": [],
-      "registered_root_count": 0,
+      "registered_root_count": 1,
       "standalone_role": "FORMAL_ROUTE_FALSIFIER",
       "trust_zone": "RH_FORMAL_CORE"
     },
@@ -4050,7 +4075,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     },
     {
-      "compiler_dependency_surface_declaration_count": 2,
+      "compiler_dependency_surface_declaration_count": 3,
       "file_id": "rh:file:Zeta23/ExceptionalZero/ApertureFreedom.lean",
       "module": "Zeta23.ExceptionalZero.ApertureFreedom",
       "module_id": "rh:module:Zeta23.ExceptionalZero.ApertureFreedom",
@@ -4127,7 +4152,20 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 3,
+      "file_id": "rh:file:Zeta23/ExceptionalZero/CofinalArithmeticConditionalRH.lean",
+      "module": "Zeta23.ExceptionalZero.CofinalArithmeticConditionalRH",
+      "module_id": "rh:module:Zeta23.ExceptionalZero.CofinalArithmeticConditionalRH",
+      "named_source_declaration_count": 3,
+      "path": "Zeta23/ExceptionalZero/CofinalArithmeticConditionalRH.lean",
+      "reachability": "STANDALONE_OR_AUXILIARY",
+      "reachable_from": [],
+      "registered_root_count": 1,
+      "standalone_role": "QUARANTINED_CONDITIONAL_RH_SEAM",
+      "trust_zone": "RH_FORMAL_CORE"
+    },
+    {
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean",
       "module": "Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH",
       "module_id": "rh:module:Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH",
@@ -4135,7 +4173,7 @@
       "path": "Zeta23/ExceptionalZero/CofinalLowerBoundConditionalRH.lean",
       "reachability": "STANDALONE_OR_AUXILIARY",
       "reachable_from": [],
-      "registered_root_count": 0,
+      "registered_root_count": 1,
       "standalone_role": "QUARANTINED_CONDITIONAL_RH_SEAM",
       "trust_zone": "AUDIT_ONLY"
     },
@@ -10245,7 +10283,7 @@
       "trust_zone": "AUXILIARY_FORMALIZATION"
     }
   ],
-  "entry_count": 645,
+  "entry_count": 647,
   "graph_theorem_promotion": false,
   "schema_version": "RHKG-final-module-closure-1.0",
   "scope": "ALL_LOCAL_LEAN_MODULES",
