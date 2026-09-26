@@ -22,6 +22,7 @@
     "Zeta23.CCM.GlobalParityBottomSimplicity": "FORMAL_GROUND_SIMPLICITY_THEOREM",
     "Zeta23.CCM.RankOneEigenline": "FORMAL_SUPPORTING_EIGENSPACE_LEMMA",
     "Zeta23.CCM.SourceWeightCounterexample": "FORMAL_ROUTE_FALSIFIER",
+    "Zeta23.ExceptionalZero.CofinalArithmeticConditionalRH": "QUARANTINED_CONDITIONAL_RH_SEAM",
     "Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH": "QUARANTINED_CONDITIONAL_RH_SEAM",
     "Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit": "QUARANTINED_EQUIVALENCE_AUDIT",
     "Zeta23.ExceptionalZero.GlobalParityBottomConditionalRH": "QUARANTINED_CONDITIONAL_RH_SEAM",
