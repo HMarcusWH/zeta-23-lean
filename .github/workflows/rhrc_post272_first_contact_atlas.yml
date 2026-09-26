@@ -52,5 +52,5 @@ jobs:
           path: |
             /tmp/POST272_FIRST_CONTACT_ATLAS_RAW.json
             /tmp/POST272_FIRST_CONTACT_ATLAS.json
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 30
