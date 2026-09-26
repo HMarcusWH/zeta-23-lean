@@ -38,9 +38,9 @@ jobs:
           lint: false
           use-mathlib-cache: true
 
-      - name: Compile post269/post271 theorem surfaces
+      - name: Compile post269/post271 theorem surfaces and compiler exporters
         run: |
-          lake build             Zeta23.CCM.CanonicalArithmeticLowerBound             Zeta23.CCM.CanonicalArithmeticCofinal             Zeta23.CCM.GlobalParityBottomGroundSpace             Zeta23.CCM.SourceWeightCounterexample             Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH             Zeta23.ExceptionalZero.CofinalArithmeticConditionalRH             Zeta23.RHRC.RegisteredClaimBindings             Zeta23.CCM
+          lake build Zeta23.CCM.CanonicalArithmeticLowerBound Zeta23.CCM.CanonicalArithmeticCofinal Zeta23.CCM.GlobalParityBottomGroundSpace Zeta23.CCM.SourceWeightCounterexample Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH Zeta23.ExceptionalZero.CofinalArithmeticConditionalRH Zeta23.RHRC.RegisteredClaimBindings Zeta23.RHRC.DeclarationDependencyExport Zeta23.RHRC.SourceCandidateResolution Zeta23.CCM
 
       - name: Validate registries and rendered living state
         run: |
