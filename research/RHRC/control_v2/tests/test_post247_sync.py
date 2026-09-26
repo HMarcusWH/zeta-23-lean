@@ -9,9 +9,9 @@ class Post247SyncTests(unittest.TestCase):
     def setUp(self):
         self.state=json.loads((RHRC/"control_v2"/"CONTROL_STATE.json").read_text(encoding="utf-8"))
 
-    def test_post247_history_survives_post269_authority(self):
+    def test_post247_history_survives_post271_authority(self):
         t=self.state["merged_theorem_anchor"]
-        self.assertEqual(t["pr"],269)
+        self.assertEqual(t["pr"],271)
         note=self.state["control_note"]
         for token in (
             "PR #247",
