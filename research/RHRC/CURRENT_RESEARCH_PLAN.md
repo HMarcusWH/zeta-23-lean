@@ -80,7 +80,7 @@ The live descriptive bottleneck returns to **OBS-060**, with the next research-p
 
 Dumbassery correction: at `L=log(q)` the entering q atom vanishes, so the experiment does **not** hunt for a discontinuous value jump. It compares the true legal ground immediately on the two sides of a threshold with the smooth current-q-ablated continuation, exact `Λ(q)=0` controls, and the already-scoped #249 planted-zero controls. Strict parity branches may use simple-ground diagnostics only when Arb certifies separation; overlapping parity-bottom enclosures remain multiplicity-safe and unresolved.
 
-Frozen v1 scope: K=3 at q=13,16,17 with q=14,15 controls; K=4 replication at q=16,17; offsets `2^-8,2^-10,2^-12`; planted gamma=10 and off-line delta=1/20. No adaptive center movement is permitted. Output is EXPERIMENTAL_SIGNAL_ONLY and cannot promote RH.
+Frozen v1 scope: K=3 at q=13,16,17,19 with q=14,15,18 controls; K=4 and K=6 replication at q=16,17; offsets `2^-8,2^-10,2^-12`; planted gamma=10 and off-line delta=1/20. No adaptive center movement is permitted. Output is EXPERIMENTAL_SIGNAL_ONLY and cannot promote RH.
 
 
 ## Post-#267 carrier-ground theoremization override
