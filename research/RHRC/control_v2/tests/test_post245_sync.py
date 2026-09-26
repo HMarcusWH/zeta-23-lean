@@ -15,8 +15,8 @@ class Post245SyncTests(unittest.TestCase):
         )
 
     def test_post245_provenance_survives_later_authority(self):
-        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 271)
-        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 271)
+        self.assertEqual(self.state["merged_theorem_anchor"]["pr"], 272)
+        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 272)
         note = self.state["control_note"]
         for token in (
             "PR #245", "NoArbitrarilyLargeWholeCellRetainedFamily",

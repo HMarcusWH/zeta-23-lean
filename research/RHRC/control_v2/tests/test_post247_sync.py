@@ -9,9 +9,9 @@ class Post247SyncTests(unittest.TestCase):
     def setUp(self):
         self.state=json.loads((RHRC/"control_v2"/"CONTROL_STATE.json").read_text(encoding="utf-8"))
 
-    def test_post247_history_survives_post271_authority(self):
+    def test_post247_history_survives_post272_authority(self):
         t=self.state["merged_theorem_anchor"]
-        self.assertEqual(t["pr"],271)
+        self.assertEqual(t["pr"],272)
         note=self.state["control_note"]
         for token in (
             "PR #247",
@@ -65,7 +65,7 @@ class Post247SyncTests(unittest.TestCase):
     def test_glasses_v2_is_current_and_tautological_lanes_are_demoted(self):
         route=self.state["active_research_route"]
         self.assertEqual(route["post247_glasses_program"],"ACTIVE_RIEMANN_WEARING_GLASSES_V2")
-        self.assertEqual(route["post247_unconditional_ground_spectrum_atlas"],"NEXT")
+        self.assertEqual(route["post247_unconditional_ground_spectrum_atlas"],"PARTIALLY_CLOSED_BY_PR_267_268_269")
         self.assertEqual(route["post247_residual_only_universal_law"],"VACUITY_FIREWALL_REQUIRED")
         self.assertEqual(route["post247_pair_d_role"],"GENERIC_LINEAR_ALGEBRA_FILTER_ONLY")
         self.assertEqual(route["post247_exact_equality_holonomy"],"DROPPED_TAUTOLOGICAL")
