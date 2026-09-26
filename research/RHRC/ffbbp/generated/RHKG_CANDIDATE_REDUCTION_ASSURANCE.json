@@ -48,18 +48,18 @@
   },
   "inherits_runtime_qualification": false,
   "input_snapshot": {
-    "candidate_count": 2389,
-    "candidate_resolution_sha256": "9555a57d56dce0903aca16db16d2de960a8b4f82e543ffa03d2b48f104247121",
-    "candidate_source_surface_sha256": "4d5add666f361f02d42493d2c5d772880b720f4f1529038012044a143b34c194",
-    "candidate_summary_sha256": "a2e3f4149f8fb313f0c121fb4eda5739ae21e8774050cfea896fca93d4f30846",
+    "candidate_count": 2391,
+    "candidate_resolution_sha256": "efcfee6f299684b0451ced151751c5df0914aa784593fbeccd2b32779e93c3b4",
+    "candidate_source_surface_sha256": "fb12bcf5e4d652b5885f2e01cc3741ed27905246f0d37e30edd7202a15118f78",
+    "candidate_summary_sha256": "b4e79bc43ad1b9247407d19ce55a2839f396a946bed2b4fcca1e7557e78baa0f",
     "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
-    "registered_compiler_receipt_sha256": "53db17e505db1d15864c80e3dafe15482f6d3f0e01d8c5c124fddb813a6fdf60",
-    "rhkg_subject_digest_sha256": "40780de2947a8930fbb7fe2a7f653a466d53bff03107d65370ba6171d0938016",
-    "source_only_public_theorem_count": 683
+    "registered_compiler_receipt_sha256": "bda459eb1600361d773ee8b50a66f13f522c33144a27a9756bc454688a12bf70",
+    "rhkg_subject_digest_sha256": "864411666a6e6e593a1dce3c64e205211ace044d989f6e7aeb1b480c2a91b9e6",
+    "source_only_public_theorem_count": 682
   },
   "qualification_identity": {
-    "execution_digest": "c275b1dd84fb314fd8d97df58eee6185de7e810e706db2b10a7f9c800352730d",
-    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:40780de2947a8930",
+    "execution_digest": "1e25f6243ca1886f1f4f44f62ab2c4cd3e52f1a7f20593551dbba2c06f669621",
+    "execution_id": "RHKG_CANDIDATE_SNAPSHOT:864411666a6e6e59",
     "profile_digest": "0ab841ca4f9c683bcf206c0cd2e434f07f35b3861073feb370f10195cac49929",
     "profile_id": "RHRC_FFBBP_V17_RHKG_SNAPSHOT_PROFILE",
     "protocol_digest": "30fd49aa7806e29ea8ce750cb91ad0f9edb3d655b9697f6a6dd82d3666a4ac26",
@@ -76,7 +76,7 @@
         "status": "FAIL"
       },
       "decision_factorization": {
-        "collision_fiber_count": 286,
+        "collision_fiber_count": 287,
         "counterexamples": [
           {
             "member_ids": [
@@ -579,8 +579,8 @@
             ]
           }
         ],
-        "fiber_count": 304,
-        "full_state_count": 2389,
+        "fiber_count": 305,
+        "full_state_count": 2391,
         "max_fiber_size": 42,
         "mixed_value_fiber_count": 130,
         "passed": false
@@ -588,7 +588,7 @@
       "declared_use": "NEGATIVE_CONTROL_ONLY",
       "description": "Module-only Xi; retained as the exact decision-sufficiency falsifier.",
       "diagnostic_factorization": {
-        "collision_fiber_count": 286,
+        "collision_fiber_count": 287,
         "counterexamples": [
           {
             "member_ids": [
@@ -1101,10 +1101,10 @@
             ]
           }
         ],
-        "fiber_count": 304,
-        "full_state_count": 2389,
+        "fiber_count": 305,
+        "full_state_count": 2391,
         "max_fiber_size": 42,
-        "mixed_value_fiber_count": 173,
+        "mixed_value_fiber_count": 174,
         "passed": false
       },
       "id": "MODULE_ONLY_SNAPSHOT",
@@ -1119,10 +1119,10 @@
         "status": "PASS"
       },
       "decision_factorization": {
-        "collision_fiber_count": 375,
+        "collision_fiber_count": 374,
         "counterexamples": [],
-        "fiber_count": 529,
-        "full_state_count": 2389,
+        "fiber_count": 531,
+        "full_state_count": 2391,
         "max_fiber_size": 33,
         "mixed_value_fiber_count": 0,
         "passed": true
@@ -1130,10 +1130,10 @@
       "declared_use": "POST_REFERENCE_COHORT_NAVIGATION_ONLY",
       "description": "Retains module and exact visibility disposition for post-reference cohort navigation.",
       "diagnostic_factorization": {
-        "collision_fiber_count": 375,
+        "collision_fiber_count": 374,
         "counterexamples": [],
-        "fiber_count": 529,
-        "full_state_count": 2389,
+        "fiber_count": 531,
+        "full_state_count": 2391,
         "max_fiber_size": 33,
         "mixed_value_fiber_count": 0,
         "passed": true
@@ -1155,8 +1155,8 @@
       "decision_factorization": {
         "collision_fiber_count": 18,
         "counterexamples": [],
-        "fiber_count": 2366,
-        "full_state_count": 2389,
+        "fiber_count": 2368,
+        "full_state_count": 2391,
         "max_fiber_size": 4,
         "mixed_value_fiber_count": 0,
         "passed": true
@@ -1245,8 +1245,8 @@
             ]
           }
         ],
-        "fiber_count": 2366,
-        "full_state_count": 2389,
+        "fiber_count": 2368,
+        "full_state_count": 2391,
         "max_fiber_size": 4,
         "mixed_value_fiber_count": 7,
         "passed": false
@@ -2372,14 +2372,6 @@
     {
       "count": 2,
       "declarations": [
-        "Zeta23.CCM.boundaryMomentTripleMap_apply",
-        "Zeta23.CCM.mem_euclideanBoundaryFlatSubspace_iff_boundaryFlat"
-      ],
-      "module": "Zeta23.CCM.ConstrainedEuclideanSector"
-    },
-    {
-      "count": 2,
-      "declarations": [
         "Zeta23.CCM.one_add_crossParityCubicCorrectionKappa",
         "Zeta23.CCM.six_mul_crossParityCubicCorrectionKappa"
       ],
@@ -2806,6 +2798,13 @@
     {
       "count": 1,
       "declarations": [
+        "Zeta23.CCM.boundaryMomentTripleMap_apply"
+      ],
+      "module": "Zeta23.CCM.ConstrainedEuclideanSector"
+    },
+    {
+      "count": 1,
+      "declarations": [
         "Zeta23.CCM.oddCubicGenerator_add_kappa_evenIndexCubicShell_eq_shell"
       ],
       "module": "Zeta23.CCM.CrossParityCubicCorrectionCollapse"
@@ -3145,10 +3144,10 @@
   "theorem_promotion": false,
   "theory_version": "1.7",
   "visibility_counts": {
-    "ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE": 1403,
-    "ALREADY_REGISTERED_ROOT": 82,
+    "ALREADY_IN_REGISTERED_DEPENDENCY_CLOSURE": 1405,
+    "ALREADY_REGISTERED_ROOT": 83,
     "PRIVATE_OR_INTERNAL_SOURCE_OBJECT": 220,
-    "SOURCE_ONLY_PUBLIC_THEOREM": 683,
+    "SOURCE_ONLY_PUBLIC_THEOREM": 682,
     "UNRESOLVED_SOURCE_IDENTITY": 1
   }
 }

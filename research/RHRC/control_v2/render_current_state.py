@@ -34,6 +34,7 @@ def render_current_state_block(state: dict) -> str:
     route = state["active_research_route"]
     research = state["latest_research_evidence"]
     control = state["merged_control_anchor"]
+    candidate = state.get("candidate_branch") or {}
     return f"""## Current RHRC state
 
 THEOREM AUTHORITY
@@ -46,26 +47,25 @@ THEOREM AUTHORITY
 - PR #269 parity tie -> parity-split ground finrank >= 2 = PROVED
 - PR #269 carrier-wide source-weight derivative nonnegativity = REFUTED / FORMAL COUNTEREXAMPLE
 - PR #269 canonical arithmetic lower-bound normal form = PROVED
-- PR #269 jointly cofinal bottom lower bounds -> finite-bottom nonnegativity = PROVED
-- PR #269 cofinal lower certificates -> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY / CONDITIONAL
+- PR #271 arithmetic all-vector certificate -> global legal bottom lower bound = PROVED
+- PR #271 cofinal canonical arithmetic certificates -> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY / CONDITIONAL
 - RH = OPEN
 
-CURRENT IMPLEMENTATION / OPEN TARGET
-- current PR target = CANONICAL_ARITHMETIC_TO_GLOBAL_BOTTOM_AND_COFINAL_CERTIFICATE_BRIDGE
-- arithmetic all-vector certificate -> -epsilon <= globalParitySuccessorBottom = CURRENT PR THEOREM TARGET
-- CofinalCanonicalArithmeticCertificates -> RiemannHypothesis = CURRENT PR AUDIT TARGET
-- cofinal arithmetic certificate construction = OPEN
+CURRENT AUDIT / NEXT RESEARCH TARGET
+- current PR = #{candidate.get('pr', 'NONE')} / {candidate.get('status', 'NONE')}
+- current audit target = CofinalCanonicalArithmeticCertificates <-> RiemannHypothesis
+- RH -> cofinal arithmetic certificates = CURRENT PR AUDIT CANDIDATE
+- direct cofinal certificate construction = OPEN on merged theorem authority
 - active obstruction = {route['current_obstruction']}
 - next research target = {route['current_next_research_target']}
 - required new information = {route['current_required_new_information']}
-- no reverse RH-equivalence claim is made for CofinalCanonicalArithmeticCertificates
+- equivalence audit cannot promote RH; it only classifies the terminal premise
 
-FRAMEWORK / GRAPH AUTHORITY
-- PR #270 = FFBBP 1.7 assurance + OoL-MVS 2.7.7 governance + strict RHKG steady state
-- FFBBP RUN46F executable authority = NOT PROMOTED
-- OoL certificate VALID = attested binding, NOT physical or mathematical truth
-- post-270 source-only theorem/lemma roots = {route['post270_source_only_public_theorem_count']}
-- post-270 FFBBP source-only module cohorts = {route['post270_ffbbp_source_only_module_cohort_count']}
+FRAMEWORK / GRAPH STATE
+- PR #270 = FFBBP 1.7 / OoL-MVS 2.7.7 framework architecture authority
+- PR #271 exactified source-only theorem/lemma roots = {route['post271_source_only_public_theorem_count']}
+- PR #271 FFBBP source-only module cohorts = {route['post271_ffbbp_source_only_module_cohort_count']}
+- PR #271 OoL theorem-value-erased frontier contacts = {route['post271_ool_frontier_contact_count']}
 - framework output -> Lean theorem authority = FORBIDDEN
 
 RESEARCH / CONTROL FIREWALL

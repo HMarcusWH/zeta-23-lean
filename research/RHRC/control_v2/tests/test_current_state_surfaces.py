@@ -31,13 +31,13 @@ class CurrentStateSurfaceTests(unittest.TestCase):
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
 
-    def test_machine_state_is_merged_post269(self):
+    def test_machine_state_is_merged_post271(self):
         theorem = self.state["merged_theorem_anchor"]
-        self.assertEqual(theorem["pr"], 269)
-        self.assertEqual(theorem["validated_head"], "d228f35ca3338520131a883b9091fad16ef9c9b9")
-        self.assertEqual(theorem["merge_commit"], "b7912d13801389a4c6e3236f98c28435254d685d")
-        self.assertEqual(theorem["tree"], "9d2fff6ed5b0ecc3ea55e363de6df80410a720c3")
-        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 269)
+        self.assertEqual(theorem["pr"], 271)
+        self.assertEqual(theorem["validated_head"], "3b1dfb8337125b10ce99febbb974ff8c7086394e")
+        self.assertEqual(theorem["merge_commit"], "c9fb1a6462e5cc828acb951aefd4e9fae33ddaaa")
+        self.assertEqual(theorem["tree"], "10ba766b13e63fb5e5567c3da7a3910f54fe6812")
+        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 271)
         self.assertEqual(self.state["latest_research_evidence"]["pr"], 223)
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
         route = self.state["active_research_route"]
@@ -51,17 +51,17 @@ class CurrentStateSurfaceTests(unittest.TestCase):
             route["post269_carrier_source_weight_monotonicity"],
             "REFUTED_FORMALLY",
         )
-        self.assertEqual(route["current_obstruction"], "OBS-061")
+        self.assertEqual(route["current_obstruction"], "OBS-061_RECLASSIFICATION_FIREWALL")
         self.assertEqual(
             route["current_next_research_target"],
-            "COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES",
+            "GROUND_SPECIFIC_FIRST_CONTACT_ARITHMETIC_SEAM",
         )
         self.assertEqual(
             route["current_required_new_information"],
-            "UNIFORM_ALL_VECTOR_CANONICAL_ARITHMETIC_DECAY_ON_COFINAL_APERTURES_AND_SIZES",
+            "TRUE_GROUND_FIXED_CELL_AND_PRIME_POWER_SEAM_DISCRIMINANT",
         )
-        self.assertEqual(route["post270_source_only_public_theorem_count"], 707)
-        self.assertEqual(route["post270_ffbbp_source_only_module_cohort_count"], 202)
+        self.assertEqual(route["post271_source_only_public_theorem_count"], 683)
+        self.assertEqual(route["post271_ffbbp_source_only_module_cohort_count"], 198)
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
 
     def test_every_living_surface_exactly_matches_machine_renderer(self):
@@ -73,13 +73,13 @@ class CurrentStateSurfaceTests(unittest.TestCase):
     def test_renderer_preserves_claim_firewall(self):
         block = render_current_state_block(self.state)
         self.assertIn("RH = OPEN", block)
-        self.assertIn("cofinal arithmetic certificate construction = OPEN", block)
+        self.assertIn("direct cofinal certificate construction = OPEN on merged theorem authority", block)
         self.assertIn(
-            "CofinalCanonicalArithmeticCertificates -> RiemannHypothesis = CURRENT PR AUDIT TARGET",
+            "current audit target = CofinalCanonicalArithmeticCertificates <-> RiemannHypothesis",
             block,
         )
         self.assertIn(
-            "no reverse RH-equivalence claim is made for CofinalCanonicalArithmeticCertificates",
+            "equivalence audit cannot promote RH; it only classifies the terminal premise",
             block,
         )
         self.assertNotIn("RH = PROVED", block)

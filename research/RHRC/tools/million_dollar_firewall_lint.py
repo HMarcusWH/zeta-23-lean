@@ -27,6 +27,9 @@ FORBIDDEN_SHORTCUTS = {
 }
 
 AUDIT_ONLY = {
+    "Zeta23.ExceptionalZero.CofinalArithmeticEquivalenceAudit",
+    "Zeta23.ExceptionalZero.CofinalArithmeticConditionalRH",
+    "Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH",
     "Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit",
     "Zeta23.ExceptionalZero.GlobalParityBottomConditionalRH",
     "Zeta23.ExceptionalZero.GlobalParityBottomObstruction",

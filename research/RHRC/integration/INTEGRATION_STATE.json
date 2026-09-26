@@ -2,10 +2,10 @@
   "schema_version": "RHRC-integration-state-1.0",
   "terminal_claim": "RH_OPEN",
   "theorem_authority": {
-    "pr": 269,
-    "validated_head": "d228f35ca3338520131a883b9091fad16ef9c9b9",
-    "merge_commit": "b7912d13801389a4c6e3236f98c28435254d685d",
-    "tree": "9d2fff6ed5b0ecc3ea55e363de6df80410a720c3",
+    "pr": 271,
+    "validated_head": "3b1dfb8337125b10ce99febbb974ff8c7086394e",
+    "merge_commit": "c9fb1a6462e5cc828acb951aefd4e9fae33ddaaa",
+    "tree": "10ba766b13e63fb5e5567c3da7a3910f54fe6812",
     "status": "MERGED_GREEN_THEOREM_STATE"
   },
   "frozen_control_authority": {
@@ -16,19 +16,19 @@
     "note": "Control v2 remains a frozen historical baseline and is not rewritten by the integration programme."
   },
   "repository_graph_authority": {
-    "pr": 270,
-    "validated_head": "9430741f74df4c297c39782a76dafeff0a3ca95c",
-    "merge_commit": "9a2c39403b3d5f9a0ac55b7cd27340ff1833a14f",
-    "tree": "880bc13fdeae8b5422ee10c61519dbd019991b11",
-    "status": "MERGED_GREEN_FRAMEWORK_GRAPH_STEADY_STATE",
-    "tracked_files": 1337,
-    "local_lean_modules": 645,
-    "named_source_declarations": 8375,
+    "pr": 271,
+    "validated_head": "3b1dfb8337125b10ce99febbb974ff8c7086394e",
+    "merge_commit": "c9fb1a6462e5cc828acb951aefd4e9fae33ddaaa",
+    "tree": "10ba766b13e63fb5e5567c3da7a3910f54fe6812",
+    "status": "MERGED_GREEN_POST271_GRAPH_STEADY_STATE",
+    "tracked_files": 1340,
+    "local_lean_modules": 647,
+    "named_source_declarations": 8383,
     "document_nodes": 70,
-    "registered_roots": 78,
-    "graph_relations": 297186
+    "registered_roots": 86,
+    "graph_relations": 302670
   },
-  "current_operation": "POST269_THEOREM_CONTROL_COFINAL_ARITHMETIC_SYNC",
+  "current_operation": "POST271_COFINAL_ARITHMETIC_EQUIVALENCE_AUDIT",
   "candidate_scope": {
     "trust_zone": "RH_FORMAL_CORE",
     "source_command_kinds": [
@@ -40,12 +40,12 @@
   "theorem_promotion": false,
   "graph_theorem_promotion": false,
   "integration_foundation_authority": {
-    "pr": 270,
-    "merge_commit": "9a2c39403b3d5f9a0ac55b7cd27340ff1833a14f",
-    "tree": "880bc13fdeae8b5422ee10c61519dbd019991b11",
-    "status": "MERGED_GREEN_POST269_EXACTIFICATION_STEADY_STATE",
-    "candidate_count": 2383,
-    "source_only_public_theorem_count": 707,
+    "pr": 271,
+    "merge_commit": "c9fb1a6462e5cc828acb951aefd4e9fae33ddaaa",
+    "tree": "10ba766b13e63fb5e5567c3da7a3910f54fe6812",
+    "status": "MERGED_GREEN_POST271_EXACTIFICATION_STEADY_STATE",
+    "candidate_count": 2389,
+    "source_only_public_theorem_count": 683,
     "historical_foundation_pr": 264
   },
   "ffbbp_assurance_scope": {
@@ -70,10 +70,12 @@
     "tree": "880bc13fdeae8b5422ee10c61519dbd019991b11",
     "status": "MERGED_GREEN_FFBBP_1_7_RHKG_SNAPSHOT_ASSURANCE",
     "selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
-    "source_only_module_cohort_count": 202,
+    "source_only_module_cohort_count": 198,
     "inherits_runtime_qualification": false,
     "run46f_runtime_promoted": false,
-    "historical_v16_pr": 265
+    "historical_v16_pr": 265,
+    "snapshot_materialized_pr": 271,
+    "snapshot_materialized_tree": "10ba766b13e63fb5e5567c3da7a3910f54fe6812"
   },
   "ool_phase_atlas_scope": {
     "kernel_version": "2.7.7",
@@ -93,10 +95,12 @@
     "tree": "880bc13fdeae8b5422ee10c61519dbd019991b11",
     "kernel_version": "2.7.7",
     "status": "MERGED_GREEN_OOL_2_7_7_PHASE_ATLAS",
-    "source_only_candidate_count": 707,
-    "candidate_projected_frontier_contact_count": 517,
+    "source_only_candidate_count": 683,
+    "candidate_projected_frontier_contact_count": 498,
     "eligible_cross_region_edge_count": 21,
     "authority_cap": "RESEARCH_CONTROL_ONLY",
-    "historical_phase_atlas_pr": 266
+    "historical_phase_atlas_pr": 266,
+    "snapshot_materialized_pr": 271,
+    "snapshot_materialized_tree": "10ba766b13e63fb5e5567c3da7a3910f54fe6812"
   }
 }

@@ -36,6 +36,22 @@
     },
     {
       "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "claim_id": "AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_RH_EQUIVALENCE",
+      "claim_node_id": "rh:claim:AUDIT_COFINAL_ARITHMETIC_CERTIFICATES_RH_EQUIVALENCE",
+      "claim_status": "PROVED_UNCONDITIONAL",
+      "compiler_binding_source": "Zeta23/RHRC/RegisteredClaimBindings.lean",
+      "declaration_id": "rh:decl:Zeta23.ExceptionalZero.cofinalCanonicalArithmeticCertificates_iff_riemannHypothesis",
+      "historical_r003_promoted": false,
+      "module": "Zeta23.ExceptionalZero.CofinalArithmeticEquivalenceAudit",
+      "module_id": "rh:module:Zeta23.ExceptionalZero.CofinalArithmeticEquivalenceAudit",
+      "provenance": "REGISTRY_EXACT",
+      "route": null,
+      "source_file_id": "rh:file:Zeta23/ExceptionalZero/CofinalArithmeticEquivalenceAudit.lean",
+      "source_path": "Zeta23/ExceptionalZero/CofinalArithmeticEquivalenceAudit.lean",
+      "theorem": "Zeta23.ExceptionalZero.cofinalCanonicalArithmeticCertificates_iff_riemannHypothesis"
+    },
+    {
+      "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
       "claim_id": "AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
       "claim_node_id": "rh:claim:AUDIT_COFINAL_LOWER_CERTIFICATES_IMPLY_RH",
       "claim_status": "PROVED_UNCONDITIONAL",
@@ -1380,7 +1396,7 @@
     }
   ],
   "graph_theorem_promotion": false,
-  "registered_proved_binding_count": 86,
+  "registered_proved_binding_count": 87,
   "schema_version": "RHKG-phase2b-theorem-claim-map-0.4",
   "scope": "ALL_PROVED_UNCONDITIONAL_REGISTERED_CLAIMS",
   "terminal_claim": "RH_OPEN",

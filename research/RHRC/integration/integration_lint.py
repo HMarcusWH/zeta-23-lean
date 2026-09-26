@@ -25,15 +25,15 @@ def main() -> int:
         if data.get("terminal_claim") != "RH_OPEN":
             raise SystemExit(f"integration_lint: {name} does not preserve RH_OPEN")
 
-    if state["theorem_authority"]["pr"] != 269:
-        raise SystemExit("integration_lint: theorem authority must be PR #269")
+    if state["theorem_authority"]["pr"] != 271:
+        raise SystemExit("integration_lint: theorem authority must be PR #271")
     if state["frozen_control_authority"]["pr"] != 117:
         raise SystemExit("integration_lint: frozen control authority must remain PR #117")
-    if state["repository_graph_authority"]["pr"] != 270:
-        raise SystemExit("integration_lint: graph/framework authority must be PR #270")
-    if state.get("integration_foundation_authority", {}).get("pr") != 270:
-        raise SystemExit("integration_lint: integration exactification authority must be PR #270")
-    if state.get("current_operation") != "POST269_THEOREM_CONTROL_COFINAL_ARITHMETIC_SYNC":
+    if state["repository_graph_authority"]["pr"] != 271:
+        raise SystemExit("integration_lint: live repository graph authority must be PR #271")
+    if state.get("integration_foundation_authority", {}).get("pr") != 271:
+        raise SystemExit("integration_lint: integration exactification authority must be PR #271")
+    if state.get("current_operation") != "POST271_COFINAL_ARITHMETIC_EQUIVALENCE_AUDIT":
         raise SystemExit("integration_lint: current integration operation drift")
     ffbbp_authority = state.get("ffbbp_assurance_authority", {})
     if ffbbp_authority.get("pr") != 270:
@@ -46,9 +46,13 @@ def main() -> int:
         raise SystemExit("integration_lint: FFBBP authority may not inherit runtime qualification")
     if ffbbp_authority.get("run46f_runtime_promoted") is not False:
         raise SystemExit("integration_lint: FFBBP authority may not promote RUN46F")
+    if ffbbp_authority.get("snapshot_materialized_pr") != 271:
+        raise SystemExit("integration_lint: FFBBP live snapshot must be materialized by PR #271")
     ool_authority = state.get("ool_phase_atlas_authority", {})
     if ool_authority.get("pr") != 270 or ool_authority.get("kernel_version") != "2.7.7":
         raise SystemExit("integration_lint: OoL 2.7.7 authority drift")
+    if ool_authority.get("snapshot_materialized_pr") != 271:
+        raise SystemExit("integration_lint: OoL live snapshot must be materialized by PR #271")
     if state.get("theorem_promotion") is not False:
         raise SystemExit("integration_lint: integration state attempts theorem promotion")
     if boundary["claim_firewall"].get("theorem_promotion") is not False:
