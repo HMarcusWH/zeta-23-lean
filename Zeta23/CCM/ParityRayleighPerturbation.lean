@@ -1,3 +1,4 @@
+import Mathlib.Algebra.Order.Group.MinMax
 import Zeta23.CCM.GlobalParityBottomSpectrum
 
 noncomputable section
@@ -112,7 +113,40 @@ theorem abs_parityRayleighBottom_sub_le_of_perturbation_succ
       p L₂ L₁ ε N hN hswap
   exact (abs_le).2 ⟨by linarith, h12⟩
 
+/-- Independent multiplicity-safe perturbation bounds for the two parity
+carriers control the actual legal successor ground, which is their minimum.
+This reuses the existing `globalParitySuccessorBottom`; no new ground notion is
+introduced. -/
+theorem abs_globalParitySuccessorBottom_sub_le_of_parity_bounds
+    (L₁ L₂ εeven εodd : ℝ)
+    (N : ℕ) (hN : 1 ≤ N)
+    (heven :
+      ParityRayleighPerturbationBound
+        .even L₁ L₂ (N + 1) εeven)
+    (hodd :
+      ParityRayleighPerturbationBound
+        .odd L₁ L₂ (N + 1) εodd) :
+    |globalParitySuccessorBottom L₁ N -
+      globalParitySuccessorBottom L₂ N| ≤
+        max εeven εodd := by
+  have he :=
+    abs_parityRayleighBottom_sub_le_of_perturbation_succ
+      .even L₁ L₂ εeven N hN heven
+  have ho :=
+    abs_parityRayleighBottom_sub_le_of_perturbation_succ
+      .odd L₁ L₂ εodd N hN hodd
+  unfold globalParitySuccessorBottom
+  exact
+    (abs_min_sub_min_le_max
+      (parityRayleighBottom .even L₁ (N + 1))
+      (parityRayleighBottom .odd L₁ (N + 1))
+      (parityRayleighBottom .even L₂ (N + 1))
+      (parityRayleighBottom .odd L₂ (N + 1))).trans
+        (max_le_max he ho)
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.parityRayleighBottom_sub_le_of_perturbation_succ
 #print axioms Zeta23.CCM.abs_parityRayleighBottom_sub_le_of_perturbation_succ
+
+#print axioms Zeta23.CCM.abs_globalParitySuccessorBottom_sub_le_of_parity_bounds
