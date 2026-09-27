@@ -89,6 +89,19 @@ def verify_receipt(receipt: dict[str, Any], plan: dict[str, Any]) -> dict[str, A
         if int(case.get("precision_bits", -1)) != expected_precision[track]:
             raise ReceiptError(f"{case.get('id')}: precision mismatch")
 
+        source_bounds = case.get("source_bounds")
+        if not isinstance(source_bounds, dict):
+            raise ReceiptError(f"{case.get('id')}: missing source bounds")
+        canonical_interval = DyadicInterval.from_decimal_bounds(
+            str(source_bounds.get("lower")),
+            str(source_bounds.get("upper")),
+            bits=expected_precision[track],
+        )
+        if case.get("interval") != canonical_interval.to_json():
+            raise ReceiptError(
+                f"{case.get('id')}: dyadic interval does not reconstruct "
+                "from frozen source bounds"
+            )
         interval = DyadicInterval.from_json(case["interval"])
         sign = interval.sign()
         if case.get("claimed_sign") != sign:

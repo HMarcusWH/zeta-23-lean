@@ -48,6 +48,10 @@ def add_case(cases: list[dict], *, case_id: str, track: str, observable: str,
         "observable": observable,
         "params": params,
         "precision_bits": bits,
+        "source_bounds": {
+            "lower": str(ball["lower"]),
+            "upper": str(ball["upper"]),
+        },
         "interval": interval.to_json(),
         "claimed_sign": interval.sign(),
     })

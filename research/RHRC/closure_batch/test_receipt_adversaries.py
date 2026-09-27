@@ -45,6 +45,7 @@ class ReceiptAdversaryTests(unittest.TestCase):
                 "observable": "lambda_min",
                 "params": {"L": "1/512", "K": 0},
                 "precision_bits": 16,
+                "source_bounds": {"lower": "1", "upper": "2"},
                 "interval": interval("1", "2", 16),
                 "claimed_sign": "POSITIVE",
             },
@@ -57,6 +58,7 @@ class ReceiptAdversaryTests(unittest.TestCase):
                     "segment": {"lo": 0, "hi": 1, "den": 1},
                 },
                 "precision_bits": 16,
+                "source_bounds": {"lower": "-1", "upper": "1"},
                 "interval": interval("-1", "1", 16),
                 "claimed_sign": "CONTAINS_ZERO",
             },
@@ -66,6 +68,7 @@ class ReceiptAdversaryTests(unittest.TestCase):
                 "observable": "successive_K_delta_abs",
                 "params": {"L": 2, "K_from": 3, "K_to": 4, "z_index": 0},
                 "precision_bits": 16,
+                "source_bounds": {"lower": "0", "upper": "1"},
                 "interval": interval("0", "1", 16),
                 "claimed_sign": "CONTAINS_ZERO",
             },
@@ -75,6 +78,7 @@ class ReceiptAdversaryTests(unittest.TestCase):
                 "observable": "successive_K_delta_abs",
                 "params": {"L": 3, "K_from": 3, "K_to": 4, "z_index": 0},
                 "precision_bits": 16,
+                "source_bounds": {"lower": "0", "upper": "1"},
                 "interval": interval("0", "1", 16),
                 "claimed_sign": "CONTAINS_ZERO",
             },
@@ -84,6 +88,7 @@ class ReceiptAdversaryTests(unittest.TestCase):
                 "observable": "successive_L_delta_abs",
                 "params": {"L_from": 2, "L_to": 3, "K": 3, "z_index": 0},
                 "precision_bits": 16,
+                "source_bounds": {"lower": "0", "upper": "1"},
                 "interval": interval("0", "1", 16),
                 "claimed_sign": "CONTAINS_ZERO",
             },
@@ -93,6 +98,7 @@ class ReceiptAdversaryTests(unittest.TestCase):
                 "observable": "successive_L_delta_abs",
                 "params": {"L_from": 2, "L_to": 3, "K": 4, "z_index": 0},
                 "precision_bits": 16,
+                "source_bounds": {"lower": "0", "upper": "1"},
                 "interval": interval("0", "1", 16),
                 "claimed_sign": "CONTAINS_ZERO",
             },
@@ -157,6 +163,18 @@ class ReceiptAdversaryTests(unittest.TestCase):
         bad = copy.deepcopy(self.receipt)
         bad["cases"][0]["interval"] = {"lo_num": 2, "hi_num": 1, "exp2": 0}
         with self.assertRaises(Exception):
+            verify_receipt(bad, self.plan)
+
+    def test_reject_interval_widening(self):
+        bad = copy.deepcopy(self.receipt)
+        bad["cases"][0]["interval"] = interval("1", "3", 16)
+        with self.assertRaises(ReceiptError):
+            verify_receipt(bad, self.plan)
+
+    def test_reject_interval_narrowing(self):
+        bad = copy.deepcopy(self.receipt)
+        bad["cases"][1]["interval"] = interval("-1/2", "1/2", 16)
+        with self.assertRaises(ReceiptError):
             verify_receipt(bad, self.plan)
 
     def test_reject_precision_schedule_mutation(self):
