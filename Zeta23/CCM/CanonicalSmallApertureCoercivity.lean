@@ -3,6 +3,7 @@ import Zeta23.CCM.CanonicalSourceChannels
 import Zeta23.CCM.CanonicalSourceEnergy
 import Zeta23.CCM.CanonicalArchUpperBound
 import Zeta23.CCM.CanonicalPoleUniformBound
+import Zeta23.CCM.CanonicalPoleSourceBound
 
 noncomputable section
 
@@ -137,6 +138,70 @@ theorem canonicalSmallApertureCoercivity_of_analytic_bounds
   canonicalSmallApertureCoercivity_of_channel_bounds
     (canonicalSmallApertureChannelBounds_of_analytic_bounds h)
 
+/-- Cheaper analytic input package discovered by the closure campaign.
+The cubic pole estimate remains available as a stronger historical target, but
+is not required for the tiny-aperture positive base: source contraction already
+supplies a sufficient uniform pole lower bound. -/
+def CanonicalSmallApertureSourceArchBounds : Prop :=
+  SourceContractionBound ∧ CanonicalArchSmallApertureUpperBound
+
+/-- Source contraction gives a coarse pole estimate strong enough to combine
+with the canonical archimedean upper bound and exact prime vanishing. -/
+theorem canonicalSourceMatrix_small_aperture_lower_of_source_arch
+    (hsrc : SourceContractionBound)
+    (harch : CanonicalArchSmallApertureUpperBound)
+    (L : ℝ) (hL : 0 < L) (hsmall : L ≤ (1 : ℝ) / 512)
+    (K : ℕ) (x : EuclideanSpace ℂ (Fin (2 * K + 1))) :
+    (2 - L - (1 / 64 : ℝ)) * ‖x‖ ^ 2 ≤
+      matrixRealEnergy (canonicalSourceMatrix L K) x := by
+  have ha := harch L hL hsmall K x
+  have hp :
+      -(1 / 64 : ℝ) * ‖x‖ ^ 2 ≤
+        matrixRealEnergy (canonicalPoleMatrix L K) x :=
+    (canonicalPoleSmallApertureLowerBound_of_sourceContraction hsrc)
+      L hL hsmall K x
+  have hprime :=
+    canonicalSmallAperturePrimeVanishing_proved L hL hsmall K x
+  rw [canonicalSourceMatrix_eq_pole_sub_arch_sub_prime,
+    matrixRealEnergy_sub, matrixRealEnergy_sub, hprime]
+  nlinarith
+
+/-- The coarse source-derived pole estimate still leaves a strict margin above
+one throughout the frozen base interval. -/
+theorem smallAperture_source_arch_margin_ge_one
+    (L : ℝ) (_hL : 0 < L) (hsmall : L ≤ (1 : ℝ) / 512) :
+    1 ≤ 2 - L - (1 / 64 : ℝ) := by
+  linarith
+
+/-- Full-space tiny-aperture coercivity from the two genuinely needed analytic
+inputs: source contraction and the canonical archimedean bound. -/
+theorem canonicalSourceMatrix_small_aperture_coercive_of_source_arch
+    (hsrc : SourceContractionBound)
+    (harch : CanonicalArchSmallApertureUpperBound)
+    (L : ℝ) (hL : 0 < L) (hsmall : L ≤ (1 : ℝ) / 512)
+    (K : ℕ) (x : EuclideanSpace ℂ (Fin (2 * K + 1))) :
+    ‖x‖ ^ 2 ≤ matrixRealEnergy (canonicalSourceMatrix L K) x := by
+  have hraw :=
+    canonicalSourceMatrix_small_aperture_lower_of_source_arch
+      hsrc harch L hL hsmall K x
+  have hmargin :=
+    smallAperture_source_arch_margin_ge_one L hL hsmall
+  have hnorm : 0 ≤ ‖x‖ ^ 2 := sq_nonneg ‖x‖
+  have hscale :
+      ‖x‖ ^ 2 ≤
+        (2 - L - (1 / 64 : ℝ)) * ‖x‖ ^ 2 := by
+    nlinarith
+  exact le_trans hscale hraw
+
+/-- Dependency-compressed base theorem.  Prime vanishing and the coarse pole
+bound are discharged internally. -/
+theorem canonicalSmallApertureCoercivity_of_source_arch
+    (h : CanonicalSmallApertureSourceArchBounds) :
+    CanonicalSmallApertureCoercivity := by
+  intro L hL hsmall K x
+  exact canonicalSourceMatrix_small_aperture_coercive_of_source_arch
+    h.1 h.2 L hL hsmall K x
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.canonicalPrimeMatrix_eq_zero_of_small_aperture
@@ -146,3 +211,8 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.canonicalSourceMatrix_small_aperture_lower_of_channel_bounds
 #print axioms Zeta23.CCM.smallAperture_scalar_margin_ge_one
 #print axioms Zeta23.CCM.canonicalSourceMatrix_small_aperture_coercive_of_channel_bounds
+
+#print axioms Zeta23.CCM.canonicalSourceMatrix_small_aperture_lower_of_source_arch
+#print axioms Zeta23.CCM.smallAperture_source_arch_margin_ge_one
+#print axioms Zeta23.CCM.canonicalSourceMatrix_small_aperture_coercive_of_source_arch
+#print axioms Zeta23.CCM.canonicalSmallApertureCoercivity_of_source_arch
