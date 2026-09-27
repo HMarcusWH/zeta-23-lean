@@ -56,7 +56,17 @@ theorem matrixRealEnergy_sourceMatrix_eq_localizedWeilCorrelation_re
           (localizedFiniteVector 1 K
             ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x))
           (1 - ω)) := by
-  unfold matrixRealEnergy sourceContract
+  change
+    Complex.re
+      (sourceContract K
+        ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) ω) =
+      Complex.re
+        (localizedWeilCorrelation
+          (localizedFiniteVector 1 K
+            ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x))
+          (localizedFiniteVector 1 K
+            ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x))
+          (1 - ω))
   rw [sourceContract_eq_localizedWeilCorrelation_unit
     K ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) ω hω0 hω1]
 
