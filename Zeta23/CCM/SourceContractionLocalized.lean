@@ -70,6 +70,68 @@ theorem matrixRealEnergy_sourceMatrix_eq_localizedWeilCorrelation_re
   rw [sourceContract_eq_localizedWeilCorrelation_unit
     K ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) ω hω0 hω1]
 
+/-- The coefficient mass is exactly the Euclidean norm-square after taking
+real parts.  This fixes the normalization used by the L2 reduction. -/
+theorem coefficientMass_re_eq_norm_sq
+    (K : ℕ) (x : EuclideanSpace ℂ (Fin (2 * K + 1))) :
+    Complex.re
+        (coefficientMass K
+          ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x)) =
+      ‖x‖ ^ 2 := by
+  have h := matrixRealEnergy_sourceMatrix_one K x
+  change
+    Complex.re
+        (sourceContract K
+          ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) 1) =
+      2 * ‖x‖ ^ 2 at h
+  rw [sourceContract_one] at h
+  norm_num [Complex.mul_re] at h ⊢
+  nlinarith
+
+/-- Unit-aperture Parseval normalization for the actual finite Fourier
+function, derived from the already-proved zero-shift correlation identity. -/
+theorem localizedFiniteFunction_unit_energy_eq_norm_sq
+    (K : ℕ) (x : EuclideanSpace ℂ (Fin (2 * K + 1))) :
+    (∫ t in (0 : ℝ)..1,
+        ‖localizedFiniteFunction 1 K
+          ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) t‖ ^ 2) =
+      ‖x‖ ^ 2 := by
+  let u := (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x
+  let f := localizedFiniteVector 1 K u
+  have hzero :=
+    localizedWeilCorrelation_finiteVector_zero K u
+      (L := (1 : ℝ)) (by norm_num)
+  have hweil :
+      Zeta23.EF.weilTest f f 0 = coefficientMass K u := by
+    unfold localizedWeilCorrelation at hzero
+    dsimp [f] at hzero
+    linear_combination (1 / 2 : ℂ) * hzero
+  have hpos :=
+    weilTest_localizedFiniteVector_pos K u
+      (L := (1 : ℝ)) (y := (0 : ℝ)) (by norm_num) (by norm_num)
+  have hcomplex :
+      (∫ t in (0 : ℝ)..1,
+          localizedFiniteFunction 1 K u t *
+            conj (localizedFiniteFunction 1 K u t)) =
+        coefficientMass K u := by
+    calc
+      (∫ t in (0 : ℝ)..1,
+          localizedFiniteFunction 1 K u t *
+            conj (localizedFiniteFunction 1 K u t)) =
+          Zeta23.EF.weilTest f f 0 := by
+            simpa [f] using hpos.symm
+      _ = coefficientMass K u := hweil
+  have hcont : Continuous (fun t : ℝ =>
+      localizedFiniteFunction 1 K u t *
+        conj (localizedFiniteFunction 1 K u t)) := by
+    fun_prop
+  have hint := hcont.intervalIntegrable (0 : ℝ) 1
+  have hre := congrArg Complex.re hcomplex
+  rw [← intervalIntegral.intervalIntegral_re hint] at hre
+  simp only [Complex.mul_conj', Complex.ofReal_re] at hre
+  rw [coefficientMass_re_eq_norm_sq K x] at hre
+  simpa [u] using hre
+
 /-- Standard L2 statement still required analytically: the symmetrized
 autocorrelation of the normalized finite Fourier vector is bounded by twice
 its Euclidean coefficient mass. -/
@@ -97,5 +159,7 @@ theorem sourceContractionBound_of_localizedAutocorrelation
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.sourceContract_eq_localizedWeilCorrelation_unit
+#print axioms Zeta23.CCM.coefficientMass_re_eq_norm_sq
+#print axioms Zeta23.CCM.localizedFiniteFunction_unit_energy_eq_norm_sq
 #print axioms Zeta23.CCM.matrixRealEnergy_sourceMatrix_eq_localizedWeilCorrelation_re
 #print axioms Zeta23.CCM.sourceContractionBound_of_localizedAutocorrelation
