@@ -41,6 +41,7 @@ jobs:
           lake build Zeta23.CCM.SourceContractionLocalized
           lake build Zeta23.CCM.ParityRayleighPerturbation
           lake build Zeta23.RHRC.ClosureObligationBindings
+          python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure
       - name: Fast closure integrity tests
         run: |
           python -m compileall -q research/RHRC/closure_batch
@@ -117,11 +118,7 @@ jobs:
           python research/RHRC/tools/arithmetic_firewall_lint.py
           python research/RHRC/tools/million_dollar_firewall_lint.py
           python research/RHRC/tools/axiom_audit.py
-          if grep -R -n -E '\\bsorry\\b|^[[:space:]]*axiom[[:space:]]' \
-              Zeta23/ExceptionalZero Zeta23/ExceptionalZero.lean Zeta23/CCM Zeta23/CCM.lean; then
-            echo 'Forbidden placeholder detected'
-            exit 1
-          fi
+          python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
       - name: Commit validated steady state
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}

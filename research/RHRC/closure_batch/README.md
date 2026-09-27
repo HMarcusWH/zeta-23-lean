@@ -19,5 +19,11 @@ authority. The numerical receipt binds the exact source commit/tree, plan,
 scope/fixture digest, program digest, precision schedule, case parameters and
 outward dyadic intervals.
 
+The campaign and steady-state materializer share
+`check_lean_proof_escapes.py` for comment-stripped Lean source validation.
+The narrow `closure` scope protects the PR274 theorem surface during parallel
+CI; the wider `promoted` scope is rerun before steady-state materialization.
+Neither scan promotes OPEN obligations.
+
 A green campaign with all tracks still open is a valid result. Only an exact
 premise-free theorem of Mathlib RiemannHypothesis can change RH_OPEN.
