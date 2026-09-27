@@ -23,7 +23,9 @@ def main() -> int:
     out.mkdir(parents=True, exist_ok=True)
     py = sys.executable
     run([py, str(HERE / "source_jet_oracle.py"), "--repo", args.repo, "--output", str(out / "track_a.json")])
+    run([py, str(HERE / "small_aperture_arb_audit.py"), "--repo", args.repo, "--output", str(out / "diagnostic_a_small_aperture.json")])
     run([py, str(HERE / "canonical_schur_search.py"), "--output", str(out / "track_b.json")])
+    run([py, str(HERE / "canonical_schur_arb.py"), "--repo", args.repo, "--output", str(out / "diagnostic_b_schur_arb.json")])
     run([py, str(HERE / "canonical_schur_verify.py"), "--input", str(out / "track_b.json")])
     run([py, str(HERE / "independent_mp_oracle.py"), "--output", str(out / "track_c.json")])
     run([py, str(HERE / "canonical_characteristic_scout.py"), "--repo", args.repo, "--output", str(out / "diagnostic_c_characteristic.json")])
