@@ -108,13 +108,23 @@ jobs:
             Zeta23.RHRC.DeclarationDependencyExport
       - name: Render synchronized current-state surfaces
         run: python research/RHRC/control_v2/render_current_state.py --write
-      - name: Remove bootstrap-only workflows before final graph materialization
+      - name: Remove bootstrap-only workflows from tree and index before final graph materialization
         run: |
-          rm -f .github/workflows/rhrc_closure_bootstrap.yml
-          rm -f .github/workflows/rhrc_closure_runtime.yml
-          rm -f .github/workflows/rhrc_closure_workspace_small.yml
-          rm -f .github/workflows/rhrc_closure_workspace_split.yml
-          rm -f .github/workflows/rhrc_closure_materializer.yml
+          bootstrap_workflows=(
+            .github/workflows/rhrc_closure_bootstrap.yml
+            .github/workflows/rhrc_closure_runtime.yml
+            .github/workflows/rhrc_closure_workspace_small.yml
+            .github/workflows/rhrc_closure_workspace_split.yml
+            .github/workflows/rhrc_closure_materializer.yml
+          )
+          git rm -f -- "${bootstrap_workflows[@]}"
+          for path in "${bootstrap_workflows[@]}"; do
+            test ! -e "$path"
+            if git ls-files --error-unmatch "$path" >/dev/null 2>&1; then
+              echo "temporary workflow still tracked after git rm: $path" >&2
+              exit 1
+            fi
+          done
       - name: Regenerate deterministic research graph and assurance layers
         run: |
           python research/RHRC/graph/build.py --write
