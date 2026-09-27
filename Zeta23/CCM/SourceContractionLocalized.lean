@@ -5,6 +5,9 @@ noncomputable section
 
 namespace Zeta23.CCM
 
+open Complex MeasureTheory Set
+open scoped BigOperators Convolution ComplexConjugate Interval
+
 /-!
 # Closure campaign A1: source contraction through the localized autocorrelation
 
@@ -103,8 +106,9 @@ theorem localizedFiniteFunction_unit_energy_eq_norm_sq
       (L := (1 : ℝ)) (by norm_num)
   have hweil :
       Zeta23.EF.weilTest f f 0 = coefficientMass K u := by
-    unfold localizedWeilCorrelation at hzero
-    dsimp [f] at hzero
+    change
+      Zeta23.EF.weilTest f f 0 + Zeta23.EF.weilTest f f 0 =
+        2 * coefficientMass K u at hzero
     linear_combination (1 / 2 : ℂ) * hzero
   have hpos :=
     weilTest_localizedFiniteVector_pos K u
