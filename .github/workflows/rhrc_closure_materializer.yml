@@ -41,6 +41,18 @@ jobs:
           python -m compileall -q research/RHRC/closure_batch
           python -m unittest discover -s research/RHRC/closure_batch -p 'test_*.py' -v
           python research/RHRC/closure_batch/run_campaign.py --repo . --output-dir /tmp/closure-results
+      - name: Freeze closure campaign research receipts
+        env:
+          SOURCE_COMMIT: ${{ github.event.pull_request.head.sha }}
+        run: |
+          SOURCE_TREE="$(git show "${SOURCE_COMMIT}^{tree}" --format=%T --no-patch)"
+          python research/RHRC/closure_batch/freeze_receipts.py \
+            --results /tmp/closure-results \
+            --destination research/RHRC/receipts/PR274_CLOSURE_CAMPAIGN \
+            --source-commit "$SOURCE_COMMIT" \
+            --source-tree "$SOURCE_TREE"
+          python research/RHRC/closure_batch/check_frozen_receipts.py \
+            --receipt-dir research/RHRC/receipts/PR274_CLOSURE_CAMPAIGN
       - name: Build all closure theorem surfaces and graph exporter
         run: |
           lake build Zeta23.CCM.SourceContraction
@@ -81,6 +93,13 @@ jobs:
           python research/RHRC/ffbbp/rhkg_assurance.py --write
           python research/RHRC/integration/source_only_dependency_extract.py --write
           python research/RHRC/ool/rhkg_phase_atlas.py --write
+      - name: Replay closure campaign against frozen dispositions
+        run: |
+          rm -rf /tmp/closure-replay
+          python research/RHRC/closure_batch/run_campaign.py --repo . --output-dir /tmp/closure-replay
+          python research/RHRC/closure_batch/check_frozen_receipts.py \
+            --receipt-dir research/RHRC/receipts/PR274_CLOSURE_CAMPAIGN \
+            --replay-dir /tmp/closure-replay
       - name: Strict steady-state validation
         run: |
           python research/RHRC/graph/build.py --check
