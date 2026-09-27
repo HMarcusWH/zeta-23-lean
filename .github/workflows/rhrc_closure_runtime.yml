@@ -18,17 +18,15 @@ jobs:
           test: false
           lint: false
           use-mathlib-cache: true
-      - name: Export interpreter IR without credentials
+      - name: Export interpreter signatures without credentials
         run: |
           mkdir -p /tmp/runtime
-          PREFIX=$(lean --print-prefix)
-          find "$PREFIX" -name '*.ir' -printf '%P\0' | tar --null -T - -czf /tmp/runtime/toolchain-ir.tgz -C "$PREFIX" || true
           python3 - <<'PY'
           import pathlib,tarfile,subprocess
           prefix=pathlib.Path(subprocess.check_output(['lean','--print-prefix'],text=True).strip())
-          for name,root in [('toolchain-ir',prefix),('package-ir',pathlib.Path('.lake'))]:
+          for name,root in [('toolchain-sig',prefix),('package-sig',pathlib.Path('.lake'))]:
               with tarfile.open('/tmp/runtime/'+name+'.tgz','w:gz',compresslevel=3) as out:
-                  for f in root.rglob('*.ir'):
+                  for f in root.rglob('*.ir.sig'):
                       out.add(f,arcname=f.relative_to(root),recursive=False)
           PY
           cd /tmp/runtime
@@ -36,7 +34,7 @@ jobs:
           ls -lh
       - uses: actions/upload-artifact@v4
         with:
-          name: closure-interpreter-ir
+          name: closure-interpreter-signatures
           path: /tmp/runtime/
           compression-level: 0
           retention-days: 2
