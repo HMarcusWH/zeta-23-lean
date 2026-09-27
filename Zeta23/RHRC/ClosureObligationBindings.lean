@@ -30,6 +30,12 @@ theorem smallApertureBase_of_channelBounds
     CanonicalSmallApertureCoercivity :=
   canonicalSmallApertureCoercivity_of_channel_bounds h
 
+/-- Critical-path small-aperture adapter on the exact legal carrier. -/
+theorem boundaryFlatSmallApertureBase_of_sourceArch
+    (h : CanonicalBoundaryFlatSmallApertureSourceArchBounds) :
+    CanonicalBoundaryFlatSmallApertureCoercivity :=
+  canonicalBoundaryFlatSmallApertureCoercivity_of_source_arch h
+
 theorem pointwiseSchur_of_uniform
     (h : CanonicalUniformDomination)
     (p : ReversalParity) (L : ℝ) (hL : 0 < L) (N : ℕ) :
@@ -73,6 +79,7 @@ end Zeta23.RHRC
 
 #print axioms Zeta23.RHRC.rh_of_canonicalFiniteWeilPositivity
 #print axioms Zeta23.RHRC.smallApertureBase_of_channelBounds
+#print axioms Zeta23.RHRC.boundaryFlatSmallApertureBase_of_sourceArch
 #print axioms Zeta23.RHRC.pointwiseSchur_of_uniform
 #print axioms Zeta23.RHRC.canonicalFiniteWeilPositivity_of_allAperture
 #print axioms Zeta23.RHRC.canonicalAllAperturePositivity_iff_canonicalFiniteWeilPositivity
