@@ -76,7 +76,6 @@ theorem dictionaryArchRHS_dictionaryTest_eq_neg_canonicalArchQuadraticForm
       intro h
       exact hij (centeredIndex_injective K h)
     simp [hij, hidx]
-    ring
 
 /-- Real-energy form of the exact dictionary/canonical bridge. -/
 theorem matrixRealEnergy_canonicalArchMatrix_eq_neg_re_dictionaryArchRHS

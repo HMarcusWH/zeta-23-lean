@@ -19,7 +19,10 @@ def _frac(value: str | int | Fraction | Decimal) -> Fraction:
         return Fraction(value)
     if isinstance(value, int):
         return Fraction(value, 1)
-    return Fraction(Decimal(str(value)))
+    try:
+        return Fraction(str(value))
+    except (ValueError, ZeroDivisionError) as exc:
+        raise IntervalCodecError(f"invalid rational/decimal value: {value!r}") from exc
 
 
 @dataclass(frozen=True)

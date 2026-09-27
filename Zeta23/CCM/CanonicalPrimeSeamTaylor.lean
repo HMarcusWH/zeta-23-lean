@@ -59,7 +59,6 @@ theorem primeSourceCoordinate_eq_aperture_increment_div
       (L - Real.log q) / L := by
   unfold primeSourceCoordinate
   field_simp [hL]
-  ring
 
 /-- At a q-seam, writing the aperture as log(q)+h makes the entering source
 coordinate exactly h/(log(q)+h).  This is an identity, not a remainder bound. -/

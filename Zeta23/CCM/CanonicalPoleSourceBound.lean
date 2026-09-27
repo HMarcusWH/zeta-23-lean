@@ -137,7 +137,13 @@ theorem canonicalPoleEnergy_ge_neg_eight_mul_L_of_sourceContraction
       have hmul := mul_le_mul_of_nonneg_left hlow hw
       have hnorm : 0 ≤ ‖x‖ ^ 2 := sq_nonneg _
       nlinarith
-  convert hmono using 1 <;> ring
+  have hconst_eval :
+      (∫ _t in (0 : ℝ)..L, -(8 * ‖x‖ ^ 2)) =
+        -(8 * L) * ‖x‖ ^ 2 := by
+    simp only [intervalIntegral.integral_const, sub_zero, smul_eq_mul]
+    ring
+  rw [hconst_eval] at hmono
+  exact hmono
 
 /-- Coarse small-aperture pole lower bound used by the closure campaign. -/
 def CanonicalPoleSmallApertureLowerBound : Prop :=

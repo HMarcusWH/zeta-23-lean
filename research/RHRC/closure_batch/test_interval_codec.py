@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from decimal import Decimal
+from fractions import Fraction
 import unittest
 
 from interval_codec import DyadicInterval, IntervalCodecError
@@ -23,6 +24,11 @@ class IntervalCodecTests(unittest.TestCase):
     def test_roundtrip(self):
         d = DyadicInterval.from_decimal_bounds("-0.125", "0.75", bits=64)
         self.assertEqual(DyadicInterval.from_json(d.to_json()), d)
+
+    def test_exact_rational_string_bounds(self):
+        d = DyadicInterval.from_decimal_bounds("-1/2", "1/2", bits=16)
+        self.assertEqual(d.lo, Fraction(-1, 2))
+        self.assertEqual(d.hi, Fraction(1, 2))
 
     def test_reject_reversed(self):
         with self.assertRaises(IntervalCodecError):
