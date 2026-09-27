@@ -60,7 +60,7 @@ class Post272SyncTests(unittest.TestCase):
         self.assertIn("PARITY_GAP_UNRESOLVED", note)
         self.assertIn("RH remains OPEN", note)
 
-    def test_live_target_is_unconditional_first_contact_not_cofinal_certificates(self):
+    def test_post272_terminal_reclassification_survives_post273_and_pr274(self):
         route = self.state["active_research_route"]
         self.assertEqual(
             route["current_obstruction"],
@@ -68,12 +68,13 @@ class Post272SyncTests(unittest.TestCase):
         )
         self.assertEqual(
             route["current_next_research_target"],
-            "POST272_TRUE_GROUND_FIRST_CONTACT_ATLAS",
+            "PR274_PARALLEL_CLOSURE_CAMPAIGN",
         )
         self.assertEqual(
             route["post271_cofinal_arithmetic_certificate_construction"],
             "OPEN_RH_EQUIVALENT_TERMINAL_PR_272",
         )
+        self.assertEqual(route["post273_first_contact_atlas"], "MERGED_EXPERIMENTAL_SIGNAL_PR_273")
 
 
 if __name__ == "__main__":
