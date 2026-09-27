@@ -144,11 +144,7 @@ theorem localizedFiniteFunction_unit_energy_eq_norm_sq
               conj (localizedFiniteFunction 1 K u t))) =
         RCLike.re (coefficientMass K u) :=
     (intervalIntegral.intervalIntegral_re hint).trans hre
-  simp only [Complex.mul_conj'] at hre'
-  change
-    (∫ t in (0 : ℝ)..1,
-        ‖localizedFiniteFunction 1 K u t‖ ^ 2) =
-      RCLike.re (coefficientMass K u) at hre'
+  simp only [Complex.mul_conj', RCLike.ofReal_re] at hre'
   have hmass :
       RCLike.re (coefficientMass K u) = ‖x‖ ^ 2 := by
     simpa [u] using coefficientMass_re_eq_norm_sq K x
