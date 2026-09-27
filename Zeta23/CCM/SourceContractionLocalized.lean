@@ -132,6 +132,165 @@ theorem localizedFiniteFunction_unit_energy_eq_norm_sq
   rw [coefficientMass_re_eq_norm_sq K x] at hre
   simpa [u] using hre
 
+/-- Every nonnegative subinterval of the unit source interval carries at
+most the full finite-Fourier energy. -/
+theorem localizedFiniteFunction_unit_subinterval_energy_le_norm_sq
+    (K : ℕ) (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+    {a b : ℝ} (ha : 0 ≤ a) (hab : a ≤ b) (hb : b ≤ 1) :
+    (∫ t in a..b,
+        ‖localizedFiniteFunction 1 K
+          ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) t‖ ^ 2) ≤
+      ‖x‖ ^ 2 := by
+  rw [← localizedFiniteFunction_unit_energy_eq_norm_sq K x]
+  let F : ℝ → ℂ := fun t =>
+    localizedFiniteFunction 1 K
+      ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) t
+  have hcont : Continuous (fun t : ℝ => ‖F t‖ ^ 2) := by
+    dsimp [F]
+    fun_prop
+  exact intervalIntegral.integral_mono_interval
+    (f := fun t : ℝ => ‖F t‖ ^ 2)
+    (μ := volume) (a := a) (b := b) (c := 0) (d := 1)
+    ha hab hb
+    (Filter.Eventually.of_forall fun _ => sq_nonneg _)
+    (hcont.intervalIntegrable 0 1)
+
+/-- Translation of a unit-source subinterval preserves its available L2
+budget. -/
+theorem localizedFiniteFunction_unit_shifted_energy_le_norm_sq
+    (K : ℕ) (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+    {y : ℝ} (hy0 : 0 ≤ y) (hy1 : y ≤ 1) :
+    (∫ t in (0 : ℝ)..(1 - y),
+        ‖localizedFiniteFunction 1 K
+          ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) (t + y)‖ ^ 2) ≤
+      ‖x‖ ^ 2 := by
+  let F : ℝ → ℂ := fun t =>
+    localizedFiniteFunction 1 K
+      ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) t
+  have hshift :=
+    intervalIntegral.integral_comp_add_right
+      (f := fun t : ℝ => ‖F t‖ ^ 2)
+      (a := (0 : ℝ)) (b := 1 - y) y
+  calc
+    (∫ t in (0 : ℝ)..(1 - y), ‖F (t + y)‖ ^ 2) =
+        ∫ t in y..1, ‖F t‖ ^ 2 := by
+          simpa using hshift
+    _ ≤ ‖x‖ ^ 2 := by
+      simpa [F] using
+        localizedFiniteFunction_unit_subinterval_energy_le_norm_sq
+          K x hy0 hy1 le_rfl
+
+/-- The unshifted part of the same overlap interval is also controlled by the
+full unit-source energy. -/
+theorem localizedFiniteFunction_unit_initial_energy_le_norm_sq
+    (K : ℕ) (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+    {y : ℝ} (hy0 : 0 ≤ y) (hy1 : y ≤ 1) :
+    (∫ t in (0 : ℝ)..(1 - y),
+        ‖localizedFiniteFunction 1 K
+          ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) t‖ ^ 2) ≤
+      ‖x‖ ^ 2 := by
+  exact localizedFiniteFunction_unit_subinterval_energy_le_norm_sq
+    K x le_rfl (sub_nonneg.mpr hy1) (by linarith)
+
+/-- One oriented overlap is bounded by the coefficient norm-square.  This is
+the Cauchy--Schwarz/AM-GM step behind the source contraction bound. -/
+theorem localizedFiniteFunction_positiveOverlap_norm_le_norm_sq
+    (K : ℕ) (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+    {y : ℝ} (hy0 : 0 ≤ y) (hy1 : y ≤ 1) :
+    ‖∫ t in (0 : ℝ)..(1 - y),
+        localizedFiniteFunction 1 K
+            ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) (t + y) *
+          conj (localizedFiniteFunction 1 K
+            ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) t)‖ ≤
+      ‖x‖ ^ 2 := by
+  let F : ℝ → ℂ := fun t =>
+    localizedFiniteFunction 1 K
+      ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) t
+  have hab : 0 ≤ 1 - y := sub_nonneg.mpr hy1
+  have hA : IntervalIntegrable (fun t : ℝ => ‖F (t + y)‖ ^ 2)
+      volume 0 (1 - y) := by
+    apply Continuous.intervalIntegrable
+    dsimp [F]
+    fun_prop
+  have hB : IntervalIntegrable (fun t : ℝ => ‖F t‖ ^ 2)
+      volume 0 (1 - y) := by
+    apply Continuous.intervalIntegrable
+    dsimp [F]
+    fun_prop
+  have hprod : IntervalIntegrable (fun t : ℝ => ‖F (t + y)‖ * ‖F t‖)
+      volume 0 (1 - y) := by
+    apply Continuous.intervalIntegrable
+    dsimp [F]
+    fun_prop
+  have havg : IntervalIntegrable
+      (fun t : ℝ => (‖F (t + y)‖ ^ 2 + ‖F t‖ ^ 2) / 2)
+      volume 0 (1 - y) := by
+    apply Continuous.intervalIntegrable
+    dsimp [F]
+    fun_prop
+  have hmono :
+      (∫ t in (0 : ℝ)..(1 - y), ‖F (t + y)‖ * ‖F t‖) ≤
+        ∫ t in (0 : ℝ)..(1 - y),
+          (‖F (t + y)‖ ^ 2 + ‖F t‖ ^ 2) / 2 := by
+    exact intervalIntegral.integral_mono_on hab hprod havg fun t _ => by
+      nlinarith [sq_nonneg (‖F (t + y)‖ - ‖F t‖)]
+  have havgEq :
+      (∫ t in (0 : ℝ)..(1 - y),
+          (‖F (t + y)‖ ^ 2 + ‖F t‖ ^ 2) / 2) =
+        ((∫ t in (0 : ℝ)..(1 - y), ‖F (t + y)‖ ^ 2) +
+          ∫ t in (0 : ℝ)..(1 - y), ‖F t‖ ^ 2) / 2 := by
+    rw [intervalIntegral.integral_div,
+      intervalIntegral.integral_add hA hB]
+  have hshift :
+      (∫ t in (0 : ℝ)..(1 - y), ‖F (t + y)‖ ^ 2) ≤ ‖x‖ ^ 2 := by
+    simpa [F] using
+      localizedFiniteFunction_unit_shifted_energy_le_norm_sq K x hy0 hy1
+  have hinit :
+      (∫ t in (0 : ℝ)..(1 - y), ‖F t‖ ^ 2) ≤ ‖x‖ ^ 2 := by
+    simpa [F] using
+      localizedFiniteFunction_unit_initial_energy_le_norm_sq K x hy0 hy1
+  calc
+    ‖∫ t in (0 : ℝ)..(1 - y), F (t + y) * conj (F t)‖
+        ≤ ∫ t in (0 : ℝ)..(1 - y), ‖F (t + y) * conj (F t)‖ :=
+          intervalIntegral.norm_integral_le_integral_norm hab
+    _ = ∫ t in (0 : ℝ)..(1 - y), ‖F (t + y)‖ * ‖F t‖ := by
+      apply intervalIntegral.integral_congr
+      intro t _
+      simp [norm_mul]
+    _ ≤ ∫ t in (0 : ℝ)..(1 - y),
+          (‖F (t + y)‖ ^ 2 + ‖F t‖ ^ 2) / 2 := hmono
+    _ = ((∫ t in (0 : ℝ)..(1 - y), ‖F (t + y)‖ ^ 2) +
+          ∫ t in (0 : ℝ)..(1 - y), ‖F t‖ ^ 2) / 2 := havgEq
+    _ ≤ ‖x‖ ^ 2 := by nlinarith
+
+/-- The complementary overlap orientation has the same norm bound. -/
+theorem localizedFiniteFunction_negativeOverlap_norm_le_norm_sq
+    (K : ℕ) (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+    {y : ℝ} (hy0 : 0 ≤ y) (hy1 : y ≤ 1) :
+    ‖∫ t in (0 : ℝ)..(1 - y),
+        localizedFiniteFunction 1 K
+            ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) t *
+          conj (localizedFiniteFunction 1 K
+            ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) (t + y))‖ ≤
+      ‖x‖ ^ 2 := by
+  let F : ℝ → ℂ := fun t =>
+    localizedFiniteFunction 1 K
+      ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) t
+  have hab : 0 ≤ 1 - y := sub_nonneg.mpr hy1
+  calc
+    ‖∫ t in (0 : ℝ)..(1 - y), F t * conj (F (t + y))‖
+        ≤ ∫ t in (0 : ℝ)..(1 - y), ‖F t * conj (F (t + y))‖ :=
+          intervalIntegral.norm_integral_le_integral_norm hab
+    _ = ∫ t in (0 : ℝ)..(1 - y), ‖F (t + y) * conj (F t)‖ := by
+      apply intervalIntegral.integral_congr
+      intro t _
+      simp [norm_mul, mul_comm]
+    _ ≥ ‖∫ t in (0 : ℝ)..(1 - y), F (t + y) * conj (F t)‖ := by
+      exact intervalIntegral.norm_integral_le_integral_norm hab
+    _ ≤ ‖x‖ ^ 2 := by
+      simpa [F] using
+        localizedFiniteFunction_positiveOverlap_norm_le_norm_sq K x hy0 hy1
+
 /-- Standard L2 statement still required analytically: the symmetrized
 autocorrelation of the normalized finite Fourier vector is bounded by twice
 its Euclidean coefficient mass. -/
@@ -146,6 +305,39 @@ def LocalizedFiniteAutocorrelationBound : Prop :=
             ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x))
           y)| ≤ 2 * ‖x‖ ^ 2
 
+/-- The standard L2 autocorrelation estimate is now proved for the actual
+localized finite Fourier vectors. -/
+theorem localizedFiniteAutocorrelationBound_proved :
+    LocalizedFiniteAutocorrelationBound := by
+  intro K x y hy0 hy1
+  let u := (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x
+  let F := localizedFiniteFunction 1 K u
+  have hpos :=
+    weilTest_localizedFiniteVector_pos K u
+      (L := (1 : ℝ)) (y := y) hy0 hy1
+  have hneg :=
+    weilTest_localizedFiniteVector_neg K u
+      (L := (1 : ℝ)) (y := y) hy0 hy1
+  unfold localizedWeilCorrelation
+  rw [hpos, hneg]
+  calc
+    |Complex.re
+        ((∫ t in (0 : ℝ)..(1 - y), F (t + y) * conj (F t)) +
+          ∫ t in (0 : ℝ)..(1 - y), F t * conj (F (t + y)))|
+        ≤ ‖(∫ t in (0 : ℝ)..(1 - y), F (t + y) * conj (F t)) +
+            ∫ t in (0 : ℝ)..(1 - y), F t * conj (F (t + y))‖ :=
+          Complex.abs_re_le_norm _
+    _ ≤ ‖∫ t in (0 : ℝ)..(1 - y), F (t + y) * conj (F t)‖ +
+          ‖∫ t in (0 : ℝ)..(1 - y), F t * conj (F (t + y))‖ :=
+          norm_add_le _ _
+    _ ≤ ‖x‖ ^ 2 + ‖x‖ ^ 2 := by
+      exact add_le_add
+        (by simpa [F, u] using
+          localizedFiniteFunction_positiveOverlap_norm_le_norm_sq K x hy0 hy1)
+        (by simpa [F, u] using
+          localizedFiniteFunction_negativeOverlap_norm_le_norm_sq K x hy0 hy1)
+    _ = 2 * ‖x‖ ^ 2 := by ring
+
 /-- The localized autocorrelation inequality immediately supplies the complete
 source-contraction theorem, including both endpoints. -/
 theorem sourceContractionBound_of_localizedAutocorrelation
@@ -156,10 +348,20 @@ theorem sourceContractionBound_of_localizedAutocorrelation
     K x ω hω0 hω1]
   exact h K x (1 - ω) (sub_nonneg.mpr hω1) (by linarith)
 
+/-- The elementary source contraction is uniformly bounded on the complete
+source interval. -/
+theorem sourceContractionBound_proved : SourceContractionBound :=
+  sourceContractionBound_of_localizedAutocorrelation
+    localizedFiniteAutocorrelationBound_proved
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.sourceContract_eq_localizedWeilCorrelation_unit
 #print axioms Zeta23.CCM.coefficientMass_re_eq_norm_sq
 #print axioms Zeta23.CCM.localizedFiniteFunction_unit_energy_eq_norm_sq
 #print axioms Zeta23.CCM.matrixRealEnergy_sourceMatrix_eq_localizedWeilCorrelation_re
+#print axioms Zeta23.CCM.localizedFiniteFunction_unit_subinterval_energy_le_norm_sq
+#print axioms Zeta23.CCM.localizedFiniteFunction_positiveOverlap_norm_le_norm_sq
+#print axioms Zeta23.CCM.localizedFiniteAutocorrelationBound_proved
+#print axioms Zeta23.CCM.sourceContractionBound_proved
 #print axioms Zeta23.CCM.sourceContractionBound_of_localizedAutocorrelation
