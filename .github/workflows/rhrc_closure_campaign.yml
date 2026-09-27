@@ -70,9 +70,8 @@ jobs:
             Zeta23.CCM.CanonicalSeamGroundTransfer \
             Zeta23.CCM.GroundComparisonPrinciple \
             Zeta23.CCM.CanonicalGroundPropagation \
-            Zeta23.CCM.CanonicalAllAperturePositivity \
+            Zeta23.CCM.CanonicalAllAperturePositivity
 
-  lean-b:
   lean-b:
     runs-on: ubuntu-latest
     timeout-minutes: 120
