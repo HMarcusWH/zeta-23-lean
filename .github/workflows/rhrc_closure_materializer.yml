@@ -45,7 +45,7 @@ jobs:
         env:
           SOURCE_COMMIT: ${{ github.event.pull_request.head.sha }}
         run: |
-          SOURCE_TREE="$(git show "${SOURCE_COMMIT}^{tree}" --format=%T --no-patch)"
+          SOURCE_TREE="$(git rev-parse "${SOURCE_COMMIT}^{tree}")"
           python research/RHRC/closure_batch/freeze_receipts.py \
             --results /tmp/closure-results \
             --destination research/RHRC/receipts/PR274_CLOSURE_CAMPAIGN \
