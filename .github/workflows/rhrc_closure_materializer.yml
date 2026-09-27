@@ -36,6 +36,11 @@ jobs:
           test: false
           lint: false
           use-mathlib-cache: true
+      - name: Formal closure preflight
+        run: |
+          lake build Zeta23.CCM.SourceContractionLocalized
+          lake build Zeta23.CCM.ParityRayleighPerturbation
+          lake build Zeta23.RHRC.ClosureObligationBindings
       - name: Fast closure integrity tests
         run: |
           python -m compileall -q research/RHRC/closure_batch
