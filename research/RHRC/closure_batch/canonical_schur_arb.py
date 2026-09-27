@@ -18,7 +18,7 @@ TRUE_VM_THRESHOLDS = (13, 16, 17, 19)
 ZERO_WEIGHT_CONTROLS = (14, 15, 18)
 SUCCESSOR_K = (3, 4, 6)
 PARITIES = ("even", "odd")
-DEN = 2
+DEN = 4
 PREC = 256
 
 
