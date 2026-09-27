@@ -70,6 +70,15 @@ class ReceiptAdversaryTests(unittest.TestCase):
                 "claimed_sign": "CONTAINS_ZERO",
             },
             {
+                "id": "CK2",
+                "track": "C",
+                "observable": "successive_K_delta_abs",
+                "params": {"L": 3, "K_from": 3, "K_to": 4, "z_index": 0},
+                "precision_bits": 16,
+                "interval": interval("0", "1", 16),
+                "claimed_sign": "CONTAINS_ZERO",
+            },
+            {
                 "id": "CL",
                 "track": "C",
                 "observable": "successive_L_delta_abs",
@@ -88,7 +97,7 @@ class ReceiptAdversaryTests(unittest.TestCase):
                 "claimed_sign": "CONTAINS_ZERO",
             },
         ]
-        signs = {"POSITIVE": 1, "NEGATIVE": 0, "ZERO_ONLY": 0, "CONTAINS_ZERO": 4}
+        signs = {"POSITIVE": 1, "NEGATIVE": 0, "ZERO_ONLY": 0, "CONTAINS_ZERO": 5}
         self.receipt = {
             "schema_version": "RHRC-CLOSURE-NUMERICAL-RECEIPT-1.0",
             "execution_status": "SUCCESS",
