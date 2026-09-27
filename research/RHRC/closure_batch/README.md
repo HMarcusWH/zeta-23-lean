@@ -21,9 +21,11 @@ outward dyadic intervals.
 
 The campaign and steady-state materializer share
 `check_lean_proof_escapes.py` for comment-stripped Lean source validation.
-The narrow `closure` scope protects the PR274 theorem surface during parallel
-CI; the wider `promoted` scope is rerun before steady-state materialization.
-Neither scan promotes OPEN obligations.
+The narrow `closure` scope protects the exact 27-file PR274 Lean surface,
+including the root `Zeta23/Spectral.lean` aggregator; a unit test freezes that
+coverage. The wider `promoted` scope is rerun before steady-state
+materialization. The same theorem-bearing closure modules are re-elaborated by
+the existing kernel axiom auditor, and neither scan promotes OPEN obligations.
 
 A green campaign with all tracks still open is a valid result. Only an exact
 premise-free theorem of Mathlib RiemannHypothesis can change RH_OPEN.

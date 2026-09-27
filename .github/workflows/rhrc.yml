@@ -376,6 +376,30 @@ jobs:
         run: lake build Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit
       - name: "Build PR #247 audit-only conditional RH seam"
         run: lake build Zeta23.ExceptionalZero.GlobalParityBottomConditionalRH
+      - name: Build PR #274 closure formal surface
+        run: |
+          lake build \
+            Zeta23.CCM.SourceContraction \
+            Zeta23.CCM.SourceContractionLocalized \
+            Zeta23.CCM.CanonicalArchUpperBound \
+            Zeta23.CCM.CanonicalPoleUniformBound \
+            Zeta23.CCM.CanonicalPoleSourceBound \
+            Zeta23.CCM.CanonicalSmallApertureCoercivity \
+            Zeta23.CCM.CanonicalPrimeSeamTaylor \
+            Zeta23.CCM.ParityGroundPerturbation \
+            Zeta23.CCM.ParityRayleighPerturbation \
+            Zeta23.CCM.CanonicalSeamGroundTransfer \
+            Zeta23.CCM.GroundComparisonPrinciple \
+            Zeta23.CCM.CanonicalGroundPropagation \
+            Zeta23.CCM.CanonicalAllAperturePositivity \
+            Zeta23.CCM.CanonicalSchurCertificate \
+            Zeta23.CCM.CanonicalModeTailBound \
+            Zeta23.CCM.CanonicalUniformDomination \
+            Zeta23.CCM.CanonicalFullSpaceSourceBridge \
+            Zeta23.Spectral \
+            Zeta23.ExceptionalZero.QuantitativeDetectorFamily \
+            Zeta23.ExceptionalZero.QuantitativeCanonicalWitness \
+            Zeta23.RHRC.ClosureObligationBindings
       - name: Validate future premise-free RH closure exact type
         run: |
           if [ -f Zeta23/ExceptionalZero/GlobalParityBottomRHClosure.lean ]; then
@@ -384,16 +408,38 @@ jobs:
           else
             echo "PR #247 premise-free RH closure absent: RH remains OPEN"
           fi
-      - name: Reject forbidden placeholders in promoted subtrees
+      - name: Reject forbidden placeholders in promoted and closure surfaces
         run: |
-          if grep -R -n -E '\bsorry\b|^[[:space:]]*axiom[[:space:]]' \
-              Zeta23/ExceptionalZero Zeta23/ExceptionalZero.lean Zeta23/CCM Zeta23/CCM.lean; then
-            echo 'Forbidden placeholder detected'
-            exit 1
-          fi
+          python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure
+          python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
+      - name: Enforce post-245 arithmetic anti-circularity firewall
       - name: Enforce post-245 arithmetic anti-circularity firewall
         run: python3 research/RHRC/tools/arithmetic_firewall_lint.py
       - name: "Enforce PR #247 Million Dollar anti-circularity firewall"
         run: python3 research/RHRC/tools/million_dollar_firewall_lint.py
       - name: Audit kernel axioms of post-245 arithmetic modules
         run: python3 research/RHRC/tools/axiom_audit.py
+      - name: Audit kernel axioms of PR #274 closure modules
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/CanonicalArchUpperBound.lean \
+            Zeta23/CCM/CanonicalFullSpaceSourceBridge.lean \
+            Zeta23/CCM/CanonicalModeTailBound.lean \
+            Zeta23/CCM/CanonicalPoleSourceBound.lean \
+            Zeta23/CCM/CanonicalPrimeSeamTaylor.lean \
+            Zeta23/CCM/CanonicalSchurCertificate.lean \
+            Zeta23/CCM/CanonicalSeamGroundTransfer.lean \
+            Zeta23/CCM/CanonicalSmallApertureCoercivity.lean \
+            Zeta23/CCM/CanonicalUniformDomination.lean \
+            Zeta23/CCM/GroundComparisonPrinciple.lean \
+            Zeta23/CCM/ParityRayleighPerturbation.lean \
+            Zeta23/CCM/SourceContraction.lean \
+            Zeta23/CCM/SourceContractionLocalized.lean \
+            Zeta23/ExceptionalZero/QuantitativeDetectorFamily.lean \
+            Zeta23/RHRC/ClosureObligationBindings.lean \
+            Zeta23/Spectral/CanonicalCharacteristic.lean \
+            Zeta23/Spectral/CanonicalOperator.lean \
+            Zeta23/Spectral/CharacteristicCompactBounds.lean \
+            Zeta23/Spectral/CharacteristicNormalization.lean \
+            Zeta23/Spectral/CharacteristicXiIdentification.lean \
+            Zeta23/Spectral/RealZeroLimitTransfer.lean

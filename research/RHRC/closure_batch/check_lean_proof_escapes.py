@@ -32,6 +32,7 @@ CLOSURE_ROOTS = [
     Path("Zeta23/ExceptionalZero/QuantitativeDetectorFamily.lean"),
     Path("Zeta23/ExceptionalZero/QuantitativeCanonicalWitness.lean"),
     Path("Zeta23/RHRC/ClosureObligationBindings.lean"),
+    Path("Zeta23/Spectral.lean"),
 ]
 
 FORBIDDEN = re.compile(r"(?m)(^|\\W)(axiom|sorry|admit)(?=\\W|$)")

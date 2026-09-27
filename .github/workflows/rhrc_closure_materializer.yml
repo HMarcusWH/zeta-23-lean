@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: rhrc-closure-materializer-${{ github.event.pull_request.number }}
@@ -38,10 +39,52 @@ jobs:
           use-mathlib-cache: true
       - name: Formal closure preflight
         run: |
-          lake build Zeta23.CCM.SourceContractionLocalized
-          lake build Zeta23.CCM.ParityRayleighPerturbation
-          lake build Zeta23.RHRC.ClosureObligationBindings
+          lake build \
+            Zeta23.CCM.SourceContraction \
+            Zeta23.CCM.SourceContractionLocalized \
+            Zeta23.CCM.CanonicalArchUpperBound \
+            Zeta23.CCM.CanonicalPoleUniformBound \
+            Zeta23.CCM.CanonicalPoleSourceBound \
+            Zeta23.CCM.CanonicalSmallApertureCoercivity \
+            Zeta23.CCM.CanonicalPrimeSeamTaylor \
+            Zeta23.CCM.ParityGroundPerturbation \
+            Zeta23.CCM.ParityRayleighPerturbation \
+            Zeta23.CCM.CanonicalSeamGroundTransfer \
+            Zeta23.CCM.GroundComparisonPrinciple \
+            Zeta23.CCM.CanonicalGroundPropagation \
+            Zeta23.CCM.CanonicalAllAperturePositivity \
+            Zeta23.CCM.CanonicalSchurCertificate \
+            Zeta23.CCM.CanonicalModeTailBound \
+            Zeta23.CCM.CanonicalUniformDomination \
+            Zeta23.CCM.CanonicalFullSpaceSourceBridge \
+            Zeta23.Spectral \
+            Zeta23.ExceptionalZero.QuantitativeDetectorFamily \
+            Zeta23.ExceptionalZero.QuantitativeCanonicalWitness \
+            Zeta23.RHRC.ClosureObligationBindings
           python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/CanonicalArchUpperBound.lean \
+            Zeta23/CCM/CanonicalFullSpaceSourceBridge.lean \
+            Zeta23/CCM/CanonicalModeTailBound.lean \
+            Zeta23/CCM/CanonicalPoleSourceBound.lean \
+            Zeta23/CCM/CanonicalPrimeSeamTaylor.lean \
+            Zeta23/CCM/CanonicalSchurCertificate.lean \
+            Zeta23/CCM/CanonicalSeamGroundTransfer.lean \
+            Zeta23/CCM/CanonicalSmallApertureCoercivity.lean \
+            Zeta23/CCM/CanonicalUniformDomination.lean \
+            Zeta23/CCM/GroundComparisonPrinciple.lean \
+            Zeta23/CCM/ParityRayleighPerturbation.lean \
+            Zeta23/CCM/SourceContraction.lean \
+            Zeta23/CCM/SourceContractionLocalized.lean \
+            Zeta23/ExceptionalZero/QuantitativeDetectorFamily.lean \
+            Zeta23/RHRC/ClosureObligationBindings.lean \
+            Zeta23/Spectral/CanonicalCharacteristic.lean \
+            Zeta23/Spectral/CanonicalOperator.lean \
+            Zeta23/Spectral/CharacteristicCompactBounds.lean \
+            Zeta23/Spectral/CharacteristicNormalization.lean \
+            Zeta23/Spectral/CharacteristicXiIdentification.lean \
+            Zeta23/Spectral/RealZeroLimitTransfer.lean
+      - name: Fast closure integrity tests
       - name: Fast closure integrity tests
         run: |
           python -m compileall -q research/RHRC/closure_batch
@@ -59,32 +102,12 @@ jobs:
             --source-tree "$SOURCE_TREE"
           python research/RHRC/closure_batch/check_frozen_receipts.py \
             --receipt-dir research/RHRC/receipts/PR274_CLOSURE_CAMPAIGN
-      - name: Build all closure theorem surfaces and graph exporter
+      - name: Build graph exporter surfaces
         run: |
-          lake build Zeta23.CCM.SourceContraction
-          lake build Zeta23.CCM.SourceContractionLocalized
-          lake build Zeta23.CCM.CanonicalArchUpperBound
-          lake build Zeta23.CCM.CanonicalPoleUniformBound
-          lake build Zeta23.CCM.CanonicalPoleSourceBound
-          lake build Zeta23.CCM.CanonicalSmallApertureCoercivity
-          lake build Zeta23.CCM.CanonicalPrimeSeamTaylor
-          lake build Zeta23.CCM.ParityGroundPerturbation
-          lake build Zeta23.CCM.ParityRayleighPerturbation
-          lake build Zeta23.CCM.CanonicalSeamGroundTransfer
-          lake build Zeta23.CCM.GroundComparisonPrinciple
-          lake build Zeta23.CCM.CanonicalGroundPropagation
-          lake build Zeta23.CCM.CanonicalAllAperturePositivity
-          lake build Zeta23.CCM.CanonicalSchurCertificate
-          lake build Zeta23.CCM.CanonicalModeTailBound
-          lake build Zeta23.CCM.CanonicalUniformDomination
-          lake build Zeta23.CCM.CanonicalFullSpaceSourceBridge
-          lake build Zeta23.Spectral
-          lake build Zeta23.ExceptionalZero.QuantitativeDetectorFamily
-          lake build Zeta23.ExceptionalZero.QuantitativeCanonicalWitness
-          lake build Zeta23.RHRC.ClosureObligationBindings
-          lake build Zeta23.RHRC.RegisteredClaimBindings
-          lake build Zeta23.RHRC.SourceCandidateResolution
-          lake build Zeta23.RHRC.DeclarationDependencyExport
+          lake build Zeta23.RHRC.RegisteredClaimBindings \
+            Zeta23.RHRC.SourceCandidateResolution \
+            Zeta23.RHRC.DeclarationDependencyExport
+      - name: Render synchronized current-state surfaces
       - name: Render synchronized current-state surfaces
         run: python research/RHRC/control_v2/render_current_state.py --write
       - name: Remove bootstrap-only workflows before final graph materialization
@@ -109,6 +132,13 @@ jobs:
           python research/RHRC/closure_batch/check_frozen_receipts.py \
             --receipt-dir research/RHRC/receipts/PR274_CLOSURE_CAMPAIGN \
             --replay-dir /tmp/closure-replay
+      - name: Stage candidate steady-state tree
+        run: |
+          git add -A
+          VALIDATED_TREE="$(git write-tree)"
+          test -n "$VALIDATED_TREE"
+          echo "VALIDATED_TREE=$VALIDATED_TREE" >> "$GITHUB_ENV"
+          echo "Candidate steady-state tree: $VALIDATED_TREE" >> "$GITHUB_STEP_SUMMARY"
       - name: Strict steady-state validation
         run: |
           python research/RHRC/graph/build.py --check
@@ -118,19 +148,46 @@ jobs:
           python research/RHRC/tools/arithmetic_firewall_lint.py
           python research/RHRC/tools/million_dollar_firewall_lint.py
           python research/RHRC/tools/axiom_audit.py
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/CanonicalArchUpperBound.lean \
+            Zeta23/CCM/CanonicalFullSpaceSourceBridge.lean \
+            Zeta23/CCM/CanonicalModeTailBound.lean \
+            Zeta23/CCM/CanonicalPoleSourceBound.lean \
+            Zeta23/CCM/CanonicalPrimeSeamTaylor.lean \
+            Zeta23/CCM/CanonicalSchurCertificate.lean \
+            Zeta23/CCM/CanonicalSeamGroundTransfer.lean \
+            Zeta23/CCM/CanonicalSmallApertureCoercivity.lean \
+            Zeta23/CCM/CanonicalUniformDomination.lean \
+            Zeta23/CCM/GroundComparisonPrinciple.lean \
+            Zeta23/CCM/ParityRayleighPerturbation.lean \
+            Zeta23/CCM/SourceContraction.lean \
+            Zeta23/CCM/SourceContractionLocalized.lean \
+            Zeta23/ExceptionalZero/QuantitativeDetectorFamily.lean \
+            Zeta23/RHRC/ClosureObligationBindings.lean \
+            Zeta23/Spectral/CanonicalCharacteristic.lean \
+            Zeta23/Spectral/CanonicalOperator.lean \
+            Zeta23/Spectral/CharacteristicCompactBounds.lean \
+            Zeta23/Spectral/CharacteristicNormalization.lean \
+            Zeta23/Spectral/CharacteristicXiIdentification.lean \
+            Zeta23/Spectral/RealZeroLimitTransfer.lean
+          python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure
           python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
+          git diff --exit-code
+          test -z "$(git ls-files --others --exclude-standard)"
+          test "$(git write-tree)" = "$VALIDATED_TREE"
       - name: Commit validated steady state
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
           TARGET_BRANCH: research/rh-closure-parallel-campaign
         run: |
           test "$(git ls-remote origin refs/heads/$TARGET_BRANCH | cut -f1)" = "$EXPECTED_HEAD"
-          git add -A
+          test "$(git write-tree)" = "$VALIDATED_TREE"
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m 'rhrc: materialize closure campaign steady state'
           FINAL_COMMIT="$(git rev-parse HEAD)"
           FINAL_TREE="$(git rev-parse HEAD^{tree})"
+          test "$FINAL_TREE" = "$VALIDATED_TREE"
           {
             echo "### PR274 steady-state identity"
             echo "- execution input head: $EXPECTED_HEAD"
@@ -138,3 +195,13 @@ jobs:
             echo "- steady-state tree: $FINAL_TREE"
           } >> "$GITHUB_STEP_SUMMARY"
           git push origin HEAD:refs/heads/$TARGET_BRANCH
+          REMOTE_COMMIT="$(git ls-remote origin refs/heads/$TARGET_BRANCH | cut -f1)"
+          test "$REMOTE_COMMIT" = "$FINAL_COMMIT"
+          test "$(git rev-parse "${REMOTE_COMMIT}^{tree}")" = "$VALIDATED_TREE"
+      - name: Dispatch final-head RHRC validation
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET_BRANCH: research/rh-closure-parallel-campaign
+        run: |
+          gh workflow run rhrc.yml --ref "$TARGET_BRANCH"
+          echo "Dispatched rhrc.yml against final branch head $(git rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"

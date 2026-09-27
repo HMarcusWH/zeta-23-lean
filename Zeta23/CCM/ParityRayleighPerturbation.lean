@@ -51,9 +51,8 @@ private theorem parityRayleighQuotientAt_eq_bottom_of_eigen_succ
       (parityRayleighBottom p L (N + 1))
   rw [hsmul, RCLike.smul_re]
   have hnorm :
-      Complex.re (inner ℂ v v) = ‖v‖ ^ 2 := by
-    simpa only [RCLike.re_to_complex] using
-      (norm_sq_eq_re_inner (𝕜 := ℂ) v).symm
+      RCLike.re (inner ℂ v v) = ‖v‖ ^ 2 := by
+    exact (norm_sq_eq_re_inner (𝕜 := ℂ) v).symm
   rw [hnorm]
   have hnormne : ‖v‖ ^ 2 ≠ 0 := by
     positivity

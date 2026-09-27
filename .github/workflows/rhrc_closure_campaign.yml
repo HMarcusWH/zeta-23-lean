@@ -7,6 +7,7 @@ on:
       - 'Zeta23/CCM/**'
       - 'Zeta23/ExceptionalZero/**'
       - 'Zeta23/RHRC/**'
+      - 'Zeta23/Spectral.lean'
       - 'Zeta23/Spectral/**'
       - 'research/RHRC/closure_batch/**'
       - 'research/RHRC/graph/**'
@@ -56,20 +57,22 @@ jobs:
           use-mathlib-cache: true
       - name: Build Track A
         run: |
-          lake build Zeta23.CCM.SourceContraction
-          lake build Zeta23.CCM.SourceContractionLocalized
-          lake build Zeta23.CCM.CanonicalArchUpperBound
-          lake build Zeta23.CCM.CanonicalPoleUniformBound
-          lake build Zeta23.CCM.CanonicalPoleSourceBound
-          lake build Zeta23.CCM.CanonicalSmallApertureCoercivity
-          lake build Zeta23.CCM.CanonicalPrimeSeamTaylor
-          lake build Zeta23.CCM.ParityGroundPerturbation
-          lake build Zeta23.CCM.ParityRayleighPerturbation
-          lake build Zeta23.CCM.CanonicalSeamGroundTransfer
-          lake build Zeta23.CCM.GroundComparisonPrinciple
-          lake build Zeta23.CCM.CanonicalGroundPropagation
-          lake build Zeta23.CCM.CanonicalAllAperturePositivity
+          lake build \
+            Zeta23.CCM.SourceContraction \
+            Zeta23.CCM.SourceContractionLocalized \
+            Zeta23.CCM.CanonicalArchUpperBound \
+            Zeta23.CCM.CanonicalPoleUniformBound \
+            Zeta23.CCM.CanonicalPoleSourceBound \
+            Zeta23.CCM.CanonicalSmallApertureCoercivity \
+            Zeta23.CCM.CanonicalPrimeSeamTaylor \
+            Zeta23.CCM.ParityGroundPerturbation \
+            Zeta23.CCM.ParityRayleighPerturbation \
+            Zeta23.CCM.CanonicalSeamGroundTransfer \
+            Zeta23.CCM.GroundComparisonPrinciple \
+            Zeta23.CCM.CanonicalGroundPropagation \
+            Zeta23.CCM.CanonicalAllAperturePositivity \
 
+  lean-b:
   lean-b:
     runs-on: ubuntu-latest
     timeout-minutes: 120
@@ -124,6 +127,30 @@ jobs:
           lake build Zeta23.RHRC.ClosureObligationBindings
       - name: Reject proof escapes in closure-campaign modules
         run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure
+      - name: Audit closure-campaign theorem axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/CanonicalArchUpperBound.lean \
+            Zeta23/CCM/CanonicalFullSpaceSourceBridge.lean \
+            Zeta23/CCM/CanonicalModeTailBound.lean \
+            Zeta23/CCM/CanonicalPoleSourceBound.lean \
+            Zeta23/CCM/CanonicalPrimeSeamTaylor.lean \
+            Zeta23/CCM/CanonicalSchurCertificate.lean \
+            Zeta23/CCM/CanonicalSeamGroundTransfer.lean \
+            Zeta23/CCM/CanonicalSmallApertureCoercivity.lean \
+            Zeta23/CCM/CanonicalUniformDomination.lean \
+            Zeta23/CCM/GroundComparisonPrinciple.lean \
+            Zeta23/CCM/ParityRayleighPerturbation.lean \
+            Zeta23/CCM/SourceContraction.lean \
+            Zeta23/CCM/SourceContractionLocalized.lean \
+            Zeta23/ExceptionalZero/QuantitativeDetectorFamily.lean \
+            Zeta23/RHRC/ClosureObligationBindings.lean \
+            Zeta23/Spectral/CanonicalCharacteristic.lean \
+            Zeta23/Spectral/CanonicalOperator.lean \
+            Zeta23/Spectral/CharacteristicCompactBounds.lean \
+            Zeta23/Spectral/CharacteristicNormalization.lean \
+            Zeta23/Spectral/CharacteristicXiIdentification.lean \
+            Zeta23/Spectral/RealZeroLimitTransfer.lean
 
   campaign-complete:
     needs: [fast-integrity, lean-a, lean-b, lean-c, lean-d-bindings]
