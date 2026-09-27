@@ -109,6 +109,14 @@ jobs:
           python research/RHRC/graph/validate.py
           python research/RHRC/tools/run_suite.py
           python research/RHRC/audits/post268/verify_frozen.py
+          python research/RHRC/tools/arithmetic_firewall_lint.py
+          python research/RHRC/tools/million_dollar_firewall_lint.py
+          python research/RHRC/tools/axiom_audit.py
+          if grep -R -n -E '\\bsorry\\b|^[[:space:]]*axiom[[:space:]]' \
+              Zeta23/ExceptionalZero Zeta23/ExceptionalZero.lean Zeta23/CCM Zeta23/CCM.lean; then
+            echo 'Forbidden placeholder detected'
+            exit 1
+          fi
       - name: Commit validated steady state
         env:
           EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
