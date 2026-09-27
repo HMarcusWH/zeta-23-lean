@@ -33,7 +33,7 @@ class PlanScopeTests(unittest.TestCase):
         self.assertEqual(b["parities"], list(bscope.PARITIES))
         self.assertEqual(b["segments_per_cell"], bscope.DEN)
         self.assertEqual(b["precision_bits"], bscope.PREC)
-        self.assertEqual(b["backend"], "FIXED_UNIT_CANONICAL_ARB")
+        self.assertEqual(b["backend"], "FIXED_UNIT_MVT_CANONICAL_ARB")
 
     def test_c_scope(self):
         c = self.scope["C"]

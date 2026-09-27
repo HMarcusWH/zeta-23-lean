@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 import sys
 
-from flint import arb, arb_mat, ctx
+from flint import arb, arb_mat, ctx, fmpq
 
 
 # Physical cutoff cells used by the theorem-aligned fixed-Q continuation.
@@ -104,8 +104,39 @@ def main() -> int:
     from post175_fb05_q13_fixed_unit_enclosure import (
         fixed_unit_fixed_q_canonical_source_matrix_arb,
     )
+    from post177_fb05_q13_fixed_unit_derivative import (
+        fixed_unit_fixed_q_canonical_source_matrix_with_derivative_arb,
+    )
 
     ctx.prec = PREC
+
+
+    def mean_value_matrix_interval(Q: int, K: int, lo: int) -> tuple[arb, arb_mat]:
+        """Rigorous fixed-unit mean-value enclosure on one frozen t segment.
+
+        The matrix is evaluated at the exact segment center.  The complete
+        fixed-Q aperture derivative is evaluated on the whole L box and
+        multiplied by L-L_center entrywise.  This preserves the common-L
+        dependency far better than feeding the full L interval independently
+        through every primitive.
+        """
+        t_box = arb_unit_interval(lo, lo + 1, DEN)
+        L_box = cell_coordinate_L_arb(Q, t_box)
+        t_mid = arb(fmpq(2 * lo + 1, 2 * DEN))
+        L_mid = cell_coordinate_L_arb(Q, t_mid)
+        M_mid = fixed_unit_fixed_q_canonical_source_matrix_arb(L_mid, K, Q)
+        _M_box, M_prime_box = (
+            fixed_unit_fixed_q_canonical_source_matrix_with_derivative_arb(
+                L_box, K, Q
+            )
+        )
+        delta_L = L_box - L_mid
+        M = arb_mat(M_mid.nrows(), M_mid.ncols())
+        for i in range(M.nrows()):
+            for j in range(M.ncols()):
+                M[i, j] = M_mid[i, j] + delta_L * M_prime_box[i, j]
+        return L_box, M
+
     rows: list[dict] = []
 
     for Q in PHYSICAL_Q:
@@ -116,8 +147,7 @@ def main() -> int:
                 B = _arb_matrix_from_sympy(geom.step_basis_exact)
                 for lo in range(DEN):
                     t = arb_unit_interval(lo, lo + 1, DEN)
-                    L = cell_coordinate_L_arb(Q, t)
-                    M = fixed_unit_fixed_q_canonical_source_matrix_arb(L, K, Q)
+                    L, M = mean_value_matrix_interval(Q, K, lo)
                     H = B.transpose() * M * B
                     d, b, S = _schur_form(H)
                     classification, reason = _classify(
@@ -155,7 +185,7 @@ def main() -> int:
         "claim_cap": "RIGOROUS_BOUNDED_ARB_RESEARCH",
         "adaptive_search": False,
         "precision_bits": PREC,
-        "backend": "FIXED_UNIT_CANONICAL_ARB",
+        "backend": "FIXED_UNIT_MVT_CANONICAL_ARB",
         "scope": {
             "physical_Q": list(PHYSICAL_Q),
             "true_von_mangoldt_thresholds": list(TRUE_VM_THRESHOLDS),
@@ -188,6 +218,7 @@ def main() -> int:
             "Q=14,15,18 are physical-cell zero-weight controls, not arithmetic threshold starts.",
             "Only rigorous Arb sign separation creates a frozen-scope disposition.",
             "The fixed-unit evaluator is the theorem-aligned production representation selected by the historical enclosure audits.",
+            "Each cell uses a center plus complete fixed-Q derivative mean-value enclosure to reduce interval dependency without adaptive search.",
         ],
     }
     Path(args.output).write_text(json.dumps(out, indent=2, sort_keys=True) + "\n")

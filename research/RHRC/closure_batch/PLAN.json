@@ -62,7 +62,7 @@
         "shell_energy",
         "schur_form_leading_minors"
       ],
-      "backend": "FIXED_UNIT_CANONICAL_ARB"
+      "backend": "FIXED_UNIT_MVT_CANONICAL_ARB"
     },
     "C": {
       "L": [
