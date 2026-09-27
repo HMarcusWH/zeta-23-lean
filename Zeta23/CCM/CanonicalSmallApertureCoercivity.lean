@@ -58,6 +58,16 @@ def CanonicalSmallApertureChannelBounds : Prop :=
     CanonicalPoleCubicLowerBound ∧
       CanonicalSmallAperturePrimeVanishing
 
+/-- After prime vanishing is proved, only the two analytic channel estimates
+remain as genuine premises of the uniform base. -/
+def CanonicalSmallApertureAnalyticBounds : Prop :=
+  CanonicalArchSmallApertureUpperBound ∧ CanonicalPoleCubicLowerBound
+
+theorem canonicalSmallApertureChannelBounds_of_analytic_bounds
+    (h : CanonicalSmallApertureAnalyticBounds) :
+    CanonicalSmallApertureChannelBounds :=
+  ⟨h.1, h.2, canonicalSmallAperturePrimeVanishing_proved⟩
+
 /-- Exact algebraic assembly of the three channel bounds in the production
 normalization. -/
 theorem canonicalSourceMatrix_small_aperture_lower_of_channel_bounds
@@ -120,10 +130,19 @@ theorem canonicalSmallApertureCoercivity_of_channel_bounds
   exact canonicalSourceMatrix_small_aperture_coercive_of_channel_bounds
     hb L hL hsmall K x
 
+/-- Reduced two-premise form of the base theorem after exact prime vanishing. -/
+theorem canonicalSmallApertureCoercivity_of_analytic_bounds
+    (h : CanonicalSmallApertureAnalyticBounds) :
+    CanonicalSmallApertureCoercivity :=
+  canonicalSmallApertureCoercivity_of_channel_bounds
+    (canonicalSmallApertureChannelBounds_of_analytic_bounds h)
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.canonicalPrimeMatrix_eq_zero_of_small_aperture
 #print axioms Zeta23.CCM.canonicalSmallAperturePrimeVanishing_proved
+#print axioms Zeta23.CCM.canonicalSmallApertureChannelBounds_of_analytic_bounds
+#print axioms Zeta23.CCM.canonicalSmallApertureCoercivity_of_analytic_bounds
 #print axioms Zeta23.CCM.canonicalSourceMatrix_small_aperture_lower_of_channel_bounds
 #print axioms Zeta23.CCM.smallAperture_scalar_margin_ge_one
 #print axioms Zeta23.CCM.canonicalSourceMatrix_small_aperture_coercive_of_channel_bounds

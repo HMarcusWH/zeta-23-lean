@@ -44,11 +44,10 @@
       "id": "A1_BASE_ASSEMBLY",
       "track": "A",
       "status": "CANDIDATE_LEAN",
-      "lean_target": "Zeta23.CCM.canonicalSmallApertureCoercivity_of_channel_bounds",
+      "lean_target": "Zeta23.CCM.canonicalSmallApertureCoercivity_of_analytic_bounds",
       "premises": [
         "A1_ARCH_UPPER",
-        "A1_POLE_LOWER",
-        "A1_PRIME_VANISH"
+        "A1_POLE_LOWER"
       ]
     },
     {
@@ -167,7 +166,8 @@
         ]
       ],
       "required_statement": "An exact premise-free theorem of Mathlib RiemannHypothesis with accepted kernel axioms.",
-      "falsification_condition": "Any hidden RH premise, project axiom, sorryAx, or unresolved mathematical premise."
+      "falsification_condition": "Any hidden RH premise, project axiom, sorryAx, or unresolved mathematical premise.",
+      "adapter_target": "Zeta23.RHRC.rh_of_canonicalAllAperturePositivity"
     }
   ]
 }
