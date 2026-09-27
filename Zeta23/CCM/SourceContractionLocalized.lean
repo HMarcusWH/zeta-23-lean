@@ -104,12 +104,13 @@ theorem localizedFiniteFunction_unit_energy_eq_norm_sq
   have hzero :=
     localizedWeilCorrelation_finiteVector_zero K u
       (L := (1 : ℝ)) (by norm_num)
+  have hzero' :
+      Zeta23.EF.weilTest f f 0 + Zeta23.EF.weilTest f f 0 =
+        2 * coefficientMass K u := by
+    simpa [f, localizedWeilCorrelation] using hzero
   have hweil :
       Zeta23.EF.weilTest f f 0 = coefficientMass K u := by
-    change
-      Zeta23.EF.weilTest f f 0 + Zeta23.EF.weilTest f f 0 =
-        2 * coefficientMass K u at hzero
-    linear_combination (1 / 2 : ℂ) * hzero
+    linear_combination (1 / 2 : ℂ) * hzero'
   have hpos :=
     weilTest_localizedFiniteVector_pos K u
       (L := (1 : ℝ)) (y := (0 : ℝ)) (by norm_num) (by norm_num)
