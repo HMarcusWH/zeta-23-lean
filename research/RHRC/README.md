@@ -48,14 +48,16 @@ THEOREM AUTHORITY
 - PR #272 CofinalCanonicalArithmeticCertificates <-> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY
 - RH = OPEN
 
-POST-#272 RESEARCH FRONTIER
-- current PR = #273 / RESEARCH_CANDIDATE_NOT_MERGED_EVIDENCE_AUTHORITY
+POST-#273 / PR #274 RESEARCH FRONTIER
+- current candidate PR = #274 / PARALLEL_CLOSURE_CAMPAIGN_CANDIDATE
+- merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
+- merged experimental evidence class = EXPERIMENTAL_SIGNAL_ONLY / theorem promotion = false
 - direct cofinal certificate construction = OPEN_RH_EQUIVALENT_TERMINAL_PR_272
 - #272 equivalence audit = PROVED_PR_272_AUDIT_ONLY
 - active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
-- active subobligation = GROUND_SPECIFIC_FIRST_CONTACT_ARITHMETIC_SEAM
-- next research target = POST272_TRUE_GROUND_FIRST_CONTACT_ATLAS
-- required new information = CERTIFIED_TRUE_GROUND_FIXED_CELL_AND_PRIME_POWER_SEAM_RESPONSE
+- active subobligation = PR274_PARALLEL_CLOSURE_CAMPAIGN
+- next research target = PR274_PARALLEL_CLOSURE_CAMPAIGN
+- required new information = CANONICAL_PROPAGATION_OR_UNIFORM_DOMINATION_OR_COMPLEX_XI_IDENTIFICATION
 - RH-equivalent terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE
