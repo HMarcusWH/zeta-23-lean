@@ -49,7 +49,7 @@ private theorem parityRayleighQuotientAt_eq_bottom_of_eigen_succ
         parityRayleighBottom p L (N + 1) • inner ℂ v v := by
     exact inner_smul_real_left (𝕜 := ℂ) v v
       (parityRayleighBottom p L (N + 1))
-  rw [hsmul, Complex.smul_re, smul_eq_mul]
+  rw [hsmul, RCLike.smul_re]
   have hnorm :
       Complex.re (inner ℂ v v) = ‖v‖ ^ 2 := by
     simpa only [RCLike.re_to_complex] using
