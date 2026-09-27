@@ -85,7 +85,6 @@ jobs:
             Zeta23/Spectral/CharacteristicXiIdentification.lean \
             Zeta23/Spectral/RealZeroLimitTransfer.lean
       - name: Fast closure integrity tests
-      - name: Fast closure integrity tests
         run: |
           python -m compileall -q research/RHRC/closure_batch
           python -m unittest discover -s research/RHRC/closure_batch -p 'test_*.py' -v
@@ -107,7 +106,6 @@ jobs:
           lake build Zeta23.RHRC.RegisteredClaimBindings \
             Zeta23.RHRC.SourceCandidateResolution \
             Zeta23.RHRC.DeclarationDependencyExport
-      - name: Render synchronized current-state surfaces
       - name: Render synchronized current-state surfaces
         run: python research/RHRC/control_v2/render_current_state.py --write
       - name: Remove bootstrap-only workflows before final graph materialization
