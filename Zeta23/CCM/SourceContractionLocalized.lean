@@ -137,10 +137,16 @@ theorem localizedFiniteFunction_unit_energy_eq_norm_sq
       volume (0 : ℝ) 1 :=
     hcont.intervalIntegrable (0 : ℝ) 1
   have hre := congrArg Complex.re hcomplex
-  rw [← intervalIntegral.intervalIntegral_re hint] at hre
-  simp only [Complex.mul_conj', Complex.ofReal_re] at hre
-  rw [coefficientMass_re_eq_norm_sq K x] at hre
-  simpa [u] using hre
+  have hre' :
+      (∫ t in (0 : ℝ)..1,
+          RCLike.re
+            (localizedFiniteFunction 1 K u t *
+              conj (localizedFiniteFunction 1 K u t))) =
+        RCLike.re (coefficientMass K u) :=
+    (intervalIntegral.intervalIntegral_re hint).trans hre
+  simp only [Complex.mul_conj', Complex.ofReal_re] at hre'
+  rw [coefficientMass_re_eq_norm_sq K x] at hre'
+  simpa [u] using hre'
 
 /-- Every nonnegative subinterval of the unit source interval carries at
 most the full finite-Fourier energy. -/
