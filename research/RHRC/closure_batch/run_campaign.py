@@ -26,7 +26,9 @@ def main() -> int:
     run([py, str(HERE / "canonical_schur_search.py"), "--output", str(out / "track_b.json")])
     run([py, str(HERE / "canonical_schur_verify.py"), "--input", str(out / "track_b.json")])
     run([py, str(HERE / "independent_mp_oracle.py"), "--output", str(out / "track_c.json")])
+    run([py, str(HERE / "canonical_characteristic_scout.py"), "--repo", args.repo, "--output", str(out / "diagnostic_c_characteristic.json")])
     run([py, str(HERE / "detector_family_audit.py"), "--output", str(out / "track_d.json")])
+    run([py, str(HERE / "r002_visibility_audit.py"), "--repo", args.repo, "--output", str(out / "diagnostic_d_r002.json")])
     run([py, str(HERE / "harvest.py"), "--results", str(out), "--output", str(out / "HARVEST.json")])
     return 0
 
