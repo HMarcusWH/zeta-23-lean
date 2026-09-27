@@ -4,27 +4,12 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - 'Zeta23/CCM/SourceContraction.lean'
-      - 'Zeta23/CCM/SourceContractionLocalized.lean'
-      - 'Zeta23/CCM/CanonicalArchUpperBound.lean'
-      - 'Zeta23/CCM/CanonicalPoleUniformBound.lean'
-      - 'Zeta23/CCM/CanonicalPoleSourceBound.lean'
-      - 'Zeta23/CCM/CanonicalSmallApertureCoercivity.lean'
-      - 'Zeta23/CCM/CanonicalPrimeSeamTaylor.lean'
-      - 'Zeta23/CCM/ParityGroundPerturbation.lean'
-      - 'Zeta23/CCM/ParityRayleighPerturbation.lean'
-      - 'Zeta23/CCM/CanonicalSeamGroundTransfer.lean'
-      - 'Zeta23/CCM/GroundComparisonPrinciple.lean'
-      - 'Zeta23/CCM/CanonicalGroundPropagation.lean'
-      - 'Zeta23/CCM/CanonicalAllAperturePositivity.lean'
-      - 'Zeta23/CCM/CanonicalSchurCertificate.lean'
-      - 'Zeta23/CCM/CanonicalModeTailBound.lean'
-      - 'Zeta23/CCM/CanonicalUniformDomination.lean'
-      - 'Zeta23/CCM/CanonicalFullSpaceSourceBridge.lean'
+      - 'Zeta23/CCM/**'
+      - 'Zeta23/ExceptionalZero/**'
+      - 'Zeta23/RHRC/**'
       - 'Zeta23/Spectral/**'
-      - 'Zeta23/ExceptionalZero/Quantitative*.lean'
-      - 'Zeta23/RHRC/ClosureObligationBindings.lean'
       - 'research/RHRC/closure_batch/**'
+      - 'research/RHRC/graph/**'
       - '.github/workflows/rhrc_closure_campaign.yml'
   workflow_dispatch:
 

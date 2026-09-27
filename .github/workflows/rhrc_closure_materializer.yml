@@ -91,6 +91,7 @@ jobs:
       - name: Regenerate deterministic research graph and assurance layers
         run: |
           python research/RHRC/graph/build.py --write
+          python research/RHRC/closure_batch/check_obligation_graph.py
           python research/RHRC/integration/candidate_exactify.py --write
           python research/RHRC/ffbbp/rhkg_assurance.py --write
           python research/RHRC/integration/source_only_dependency_extract.py --write
@@ -118,4 +119,12 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m 'rhrc: materialize closure campaign steady state'
+          FINAL_COMMIT="$(git rev-parse HEAD)"
+          FINAL_TREE="$(git rev-parse HEAD^{tree})"
+          {
+            echo "### PR274 steady-state identity"
+            echo "- execution input head: $EXPECTED_HEAD"
+            echo "- steady-state commit: $FINAL_COMMIT"
+            echo "- steady-state tree: $FINAL_TREE"
+          } >> "$GITHUB_STEP_SUMMARY"
           git push origin HEAD:refs/heads/$TARGET_BRANCH

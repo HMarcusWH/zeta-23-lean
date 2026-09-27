@@ -202,6 +202,81 @@ theorem canonicalSmallApertureCoercivity_of_source_arch
   exact canonicalSourceMatrix_small_aperture_coercive_of_source_arch
     h.1 h.2 L hL hsmall K x
 
+
+/-!
+## Boundary-flat critical path
+
+The terminal canonical finite-Weil proposition is restricted to the legal
+boundary-flat carrier.  The following target is therefore the minimal base
+needed by the closure route.  The stronger full-space coercivity above remains
+available and is not weakened or removed.
+-/
+
+/-- Positive base on the exact legal carrier. -/
+def CanonicalBoundaryFlatSmallApertureCoercivity : Prop :=
+  ∀ L : ℝ, 0 < L → L ≤ (1 : ℝ) / 512 →
+    ∀ K : ℕ, ∀ x : EuclideanSpace ℂ (Fin (2 * K + 1)),
+      BoundaryFlatCoefficients K
+        ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) →
+      ‖x‖ ^ 2 ≤ matrixRealEnergy (canonicalSourceMatrix L K) x
+
+/-- Critical-path analytic inputs: source contraction supplies the coarse pole
+bound, while only a boundary-flat archimedean estimate is required. -/
+def CanonicalBoundaryFlatSmallApertureSourceArchBounds : Prop :=
+  SourceContractionBound ∧
+    CanonicalBoundaryFlatArchSmallApertureUpperBound
+
+theorem canonicalSourceMatrix_small_aperture_lower_of_source_boundaryFlatArch
+    (hsrc : SourceContractionBound)
+    (harch : CanonicalBoundaryFlatArchSmallApertureUpperBound)
+    (L : ℝ) (hL : 0 < L) (hsmall : L ≤ (1 : ℝ) / 512)
+    (K : ℕ) (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+    (hflat : BoundaryFlatCoefficients K
+      ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x)) :
+    (2 - L - (1 / 64 : ℝ)) * ‖x‖ ^ 2 ≤
+      matrixRealEnergy (canonicalSourceMatrix L K) x := by
+  have ha := harch L hL hsmall K x hflat
+  have hp :
+      -(1 / 64 : ℝ) * ‖x‖ ^ 2 ≤
+        matrixRealEnergy (canonicalPoleMatrix L K) x :=
+    (canonicalPoleSmallApertureLowerBound_of_sourceContraction hsrc)
+      L hL hsmall K x
+  have hprime :=
+    canonicalSmallAperturePrimeVanishing_proved L hL hsmall K x
+  rw [canonicalSourceMatrix_eq_pole_sub_arch_sub_prime,
+    matrixRealEnergy_sub, matrixRealEnergy_sub, hprime]
+  nlinarith
+
+/-- Dependency-compressed legal-carrier base theorem.  The exact prime
+vanishing and coarse source-derived pole estimate are discharged internally. -/
+theorem canonicalBoundaryFlatSmallApertureCoercivity_of_source_arch
+    (h : CanonicalBoundaryFlatSmallApertureSourceArchBounds) :
+    CanonicalBoundaryFlatSmallApertureCoercivity := by
+  intro L hL hsmall K x hflat
+  have hraw :=
+    canonicalSourceMatrix_small_aperture_lower_of_source_boundaryFlatArch
+      h.1 h.2 L hL hsmall K x hflat
+  have hmargin :=
+    smallAperture_source_arch_margin_ge_one L hL hsmall
+  have hnorm : 0 ≤ ‖x‖ ^ 2 := sq_nonneg ‖x‖
+  have hscale :
+      ‖x‖ ^ 2 ≤
+        (2 - L - (1 / 64 : ℝ)) * ‖x‖ ^ 2 := by
+    nlinarith
+  exact le_trans hscale hraw
+
+/-- Strong full-space coercivity, when available, projects to the legal carrier
+without additional mathematics. -/
+theorem canonicalBoundaryFlatSmallApertureCoercivity_of_full
+    (h : CanonicalSmallApertureCoercivity) :
+    CanonicalBoundaryFlatSmallApertureCoercivity := by
+  intro L hL hsmall K x _hflat
+  exact h L hL hsmall K x
+
+#print axioms Zeta23.CCM.canonicalSourceMatrix_small_aperture_lower_of_source_boundaryFlatArch
+#print axioms Zeta23.CCM.canonicalBoundaryFlatSmallApertureCoercivity_of_source_arch
+#print axioms Zeta23.CCM.canonicalBoundaryFlatSmallApertureCoercivity_of_full
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.canonicalPrimeMatrix_eq_zero_of_small_aperture

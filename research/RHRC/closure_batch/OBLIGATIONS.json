@@ -1,113 +1,158 @@
 {
-  "schema_version": "RHRC-CLOSURE-OBLIGATIONS-1.1",
+  "schema_version": "RHRC-CLOSURE-OBLIGATIONS-1.2",
   "terminal_claim": "RH_OPEN",
+  "status_vocabulary": [
+    "OPEN",
+    "INTERFACE",
+    "CANDIDATE_THEOREM",
+    "PROVED"
+  ],
   "obligations": [
     {
       "id": "A1_LOCALIZED_AUTOCORRELATION",
       "track": "A",
-      "status": "OPEN",
+      "status": "CANDIDATE_THEOREM",
       "target_module": "Zeta23.CCM.SourceContractionLocalized",
+      "lean_target": "Zeta23.CCM.localizedFiniteAutocorrelationBound_proved",
       "required_statement": "Prove the unit-aperture L2 autocorrelation bound for every zero-extended finite Fourier vector.",
-      "required_inputs": [],
-      "falsification_condition": "Produce a finite Fourier vector and shift y in [0,1] whose symmetrized autocorrelation exceeds twice coefficient norm-square.",
-      "interface_declaration": "Zeta23.CCM.LocalizedFiniteAutocorrelationBound"
+      "premises": [],
+      "falsification_condition": "Produce a finite Fourier vector and shift y in [0,1] whose symmetrized autocorrelation exceeds twice coefficient norm-square."
     },
     {
-      "id": "A1_SOURCE_REDUCTION",
+      "id": "A1_SOURCE_CONTRACTION",
       "track": "A",
-      "status": "CANDIDATE_LEAN",
-      "lean_target": "Zeta23.CCM.sourceContractionBound_of_localizedAutocorrelation",
+      "status": "CANDIDATE_THEOREM",
+      "target_module": "Zeta23.CCM.SourceContractionLocalized",
+      "lean_target": "Zeta23.CCM.sourceContractionBound_proved",
       "premises": [
         "A1_LOCALIZED_AUTOCORRELATION"
-      ]
+      ],
+      "required_statement": "Discharge SourceContractionBound from the localized autocorrelation theorem.",
+      "falsification_condition": "A sourceMatrix energy exceeds 2*norm^2 for some omega in [0,1]."
     },
     {
-      "id": "A1_ARCH_UPPER",
+      "id": "A1_ARCH_BOUNDARY_FLAT",
       "track": "A",
       "status": "OPEN",
       "target_module": "Zeta23.CCM.CanonicalArchUpperBound",
-      "interface_declaration": "Zeta23.CCM.CanonicalArchSmallApertureUpperBound",
-      "required_statement": "Prove the canonical archimedean upper bound for every K and 0 < L <= 1/512.",
-      "required_inputs": [
-        "A1_LOCALIZED_AUTOCORRELATION"
-      ],
-      "falsification_condition": "Certified canonical arch energy exceeds (L-2)*norm^2."
+      "interface_declaration": "Zeta23.CCM.CanonicalBoundaryFlatArchSmallApertureUpperBound",
+      "required_statement": "Prove the canonical archimedean upper bound on every legal boundary-flat carrier for 0 < L <= 1/512.",
+      "required_inputs": [],
+      "falsification_condition": "Certified boundary-flat canonical arch energy exceeds (L-2)*norm^2."
     },
     {
-      "id": "A1_POLE_LOWER",
+      "id": "A1_POLE_COARSE",
+      "track": "A",
+      "status": "CANDIDATE_THEOREM",
+      "target_module": "Zeta23.CCM.CanonicalPoleSourceBound",
+      "lean_target": "Zeta23.CCM.canonicalPoleSmallApertureLowerBound_of_sourceContraction",
+      "premises": [
+        "A1_SOURCE_CONTRACTION"
+      ],
+      "required_statement": "Derive the coarse -1/64 pole lower bound from SourceContractionBound.",
+      "falsification_condition": "Certified pole energy lies below -1/64*norm^2 in the frozen small-aperture range."
+    },
+    {
+      "id": "A1_POLE_CUBIC_STRENGTHENING",
       "track": "A",
       "status": "OPEN",
       "target_module": "Zeta23.CCM.CanonicalPoleUniformBound",
       "interface_declaration": "Zeta23.CCM.CanonicalPoleCubicLowerBound",
-      "required_statement": "Prove the cubic lower bound for the exact pole channel, retaining the odd negative term.",
+      "required_statement": "Optional strengthening: prove the cubic pole lower bound retaining the odd negative term.",
       "required_inputs": [],
       "falsification_condition": "Certified pole energy lies below -(2/9)L^3*norm^2."
     },
     {
       "id": "A1_PRIME_VANISH",
       "track": "A",
-      "status": "CANDIDATE_LEAN",
+      "status": "CANDIDATE_THEOREM",
+      "target_module": "Zeta23.CCM.CanonicalSmallApertureCoercivity",
       "lean_target": "Zeta23.CCM.canonicalSmallAperturePrimeVanishing_proved",
-      "premises": []
+      "premises": [],
+      "required_statement": "Prove exact prime-channel vanishing below the first prime threshold.",
+      "falsification_condition": "A nonzero prime term appears for 0 < L <= 1/512."
     },
     {
       "id": "A1_BASE_ASSEMBLY",
       "track": "A",
-      "status": "CANDIDATE_LEAN",
-      "lean_target": "Zeta23.CCM.canonicalSmallApertureCoercivity_of_analytic_bounds",
+      "status": "CANDIDATE_THEOREM",
+      "target_module": "Zeta23.CCM.CanonicalSmallApertureCoercivity",
+      "lean_target": "Zeta23.CCM.canonicalBoundaryFlatSmallApertureCoercivity_of_source_arch",
       "premises": [
-        "A1_ARCH_UPPER",
-        "A1_POLE_LOWER"
-      ]
+        "A1_SOURCE_CONTRACTION",
+        "A1_ARCH_BOUNDARY_FLAT"
+      ],
+      "required_statement": "Assemble source contraction, coarse pole control, exact prime vanishing and the boundary-flat arch bound into the positive legal-carrier base.",
+      "falsification_condition": "The assembled scalar margin fails to dominate norm-square."
     },
     {
       "id": "A2_FIXED_JETS",
       "track": "A",
-      "status": "CANDIDATE_LEAN",
+      "status": "CANDIDATE_THEOREM",
+      "target_module": "Zeta23.CCM.CanonicalPrimeSeamTaylor",
       "lean_target": "Zeta23.CCM.evenBoundaryFlat_sourceAtom_ninth_jet_package",
-      "premises": []
+      "premises": [],
+      "required_statement": "Establish the fixed-vector seventh/ninth source-coordinate jet packages.",
+      "falsification_condition": "A required endpoint derivative fails to vanish or has the wrong exact moment coefficient."
     },
     {
       "id": "A2_RAYLEIGH_PERTURBATION",
       "track": "A",
-      "status": "CANDIDATE_LEAN",
-      "lean_target": "Zeta23.CCM.abs_parityRayleighBottom_sub_le_of_perturbation_succ",
-      "premises": [
-        "A2_FIXED_JETS"
-      ]
+      "status": "CANDIDATE_THEOREM",
+      "target_module": "Zeta23.CCM.ParityRayleighPerturbation",
+      "lean_target": "Zeta23.CCM.abs_globalParitySuccessorBottom_sub_le_of_parity_bounds",
+      "premises": [],
+      "required_statement": "Control the actual legal successor ground from uniform parity Rayleigh perturbation bounds without a simplicity assumption.",
+      "falsification_condition": "A finite-dimensional parity operator pair violates the stated min-Rayleigh perturbation inequality."
     },
     {
       "id": "A2_GROUND_TRANSFER",
       "track": "A",
       "status": "OPEN",
       "target_module": "Zeta23.CCM.CanonicalSeamGroundTransfer",
-      "interface_declaration": "Zeta23.CCM.CanonicalSeamGroundTransferData",
-      "required_statement": "Prove a multiplicity-safe transfer from fixed source germs to legal parity/global Rayleigh bottoms.",
+      "interface_declaration": "Zeta23.CCM.CanonicalSeamPerturbationEnvelope",
+      "required_statement": "Prove whole-form even/odd perturbation envelopes across every prime-power seam by combining fixed-cell background motion with the entering atom.",
       "required_inputs": [
         "A2_FIXED_JETS",
         "A2_RAYLEIGH_PERTURBATION"
       ],
-      "falsification_condition": "A certified seam case violates the predicted perturbation envelope."
+      "falsification_condition": "A certified seam case violates the whole-form perturbation envelope."
     },
     {
-      "id": "A3_PROPAGATION",
+      "id": "A3_FIXED_CELL_PROPAGATION",
       "track": "A",
       "status": "OPEN",
       "target_module": "Zeta23.CCM.CanonicalGroundPropagation",
-      "interface_declaration": "Zeta23.CCM.CanonicalPropagationCandidate",
-      "required_statement": "Prove nonnegativity propagation from the uniform positive base across every fixed cell and seam.",
+      "interface_declaration": "Zeta23.CCM.CanonicalFixedCellGroundPropagation",
+      "required_statement": "Exclude a negative first crossing of the actual legal successor ground inside every fixed physical cutoff cell.",
+      "required_inputs": [
+        "A1_BASE_ASSEMBLY"
+      ],
+      "falsification_condition": "A canonical legal ground crosses below zero inside one fixed cell from a nonnegative left state."
+    },
+    {
+      "id": "A3_ALL_APERTURE",
+      "track": "A",
+      "status": "OPEN",
+      "target_module": "Zeta23.CCM.CanonicalAllAperturePositivity",
+      "interface_declaration": "Zeta23.CCM.CanonicalAllAperturePositivity",
+      "required_statement": "Combine the positive base, fixed-cell propagation, prime-power seam transfer and small-carrier cases into all-aperture legal-carrier positivity.",
       "required_inputs": [
         "A1_BASE_ASSEMBLY",
-        "A2_GROUND_TRANSFER"
+        "A2_GROUND_TRANSFER",
+        "A3_FIXED_CELL_PROPAGATION"
       ],
-      "falsification_condition": "A canonical legal ground crosses below zero despite the proposed comparison law."
+      "falsification_condition": "Any positive-aperture legal boundary-flat vector has negative canonical source energy."
     },
     {
       "id": "B1_SCHUR_INTERFACE",
       "track": "B",
-      "status": "CANDIDATE_LEAN",
+      "status": "CANDIDATE_THEOREM",
+      "target_module": "Zeta23.CCM.CanonicalSchurCertificate",
       "lean_target": "Zeta23.CCM.not_canonicalSchurCertificateAt_iff",
-      "premises": []
+      "premises": [],
+      "required_statement": "Expose singular-safe one-step domination failure as a negative shell or determinant witness.",
+      "falsification_condition": "The logical equivalence between domination failure and its witnesses fails."
     },
     {
       "id": "B2_UNIFORM_DOMINATION",
@@ -122,11 +167,26 @@
       "falsification_condition": "A certified canonical shell/determinant witness violates domination."
     },
     {
+      "id": "B3_DOMINATION_TO_ALL_APERTURE",
+      "track": "B",
+      "status": "OPEN",
+      "target_module": "Zeta23.CCM.CanonicalUniformDomination",
+      "interface_declaration": "Zeta23.CCM.CanonicalUniformDomination",
+      "required_statement": "Prove that the universal one-step domination certificate is sufficient for CanonicalAllAperturePositivity.",
+      "required_inputs": [
+        "B2_UNIFORM_DOMINATION"
+      ],
+      "falsification_condition": "Uniform one-step domination can coexist with a negative legal canonical energy."
+    },
+    {
       "id": "C1_FULLSPACE_BRIDGE",
       "track": "C",
-      "status": "CANDIDATE_LEAN",
+      "status": "CANDIDATE_THEOREM",
+      "target_module": "Zeta23.CCM.CanonicalFullSpaceSourceBridge",
       "lean_target": "Zeta23.CCM.canonicalFullSpaceOperator_energy",
-      "premises": []
+      "premises": [],
+      "required_statement": "Identify the full-space finite operator energy with the canonical source matrix energy.",
+      "falsification_condition": "The operator/matrix energy bridge fails."
     },
     {
       "id": "C2_XI_IDENTIFICATION",
@@ -134,18 +194,32 @@
       "status": "OPEN",
       "target_module": "Zeta23.Spectral.CharacteristicXiIdentification",
       "interface_declaration": "Zeta23.Spectral.ComplexFunctionIdentification",
-      "required_statement": "Identify the locally-uniform complex limit of normalized canonical characteristics with the intended Xi normalization.",
+      "required_statement": "Identify a locally-uniform complex limit of normalized canonical characteristics with the intended Xi normalization.",
       "required_inputs": [
         "C1_FULLSPACE_BRIDGE"
       ],
-      "falsification_condition": "Complex-grid or analytic evidence shows no stable normalizable limit or a distinct complex zero structure."
+      "falsification_condition": "Rigorous complex-ball evidence or analysis shows no stable normalizable limit or a distinct zero structure."
     },
     {
-      "id": "D1_WITNESS_PACKAGE",
+      "id": "C3_XI_TO_RH",
+      "track": "C",
+      "status": "OPEN",
+      "target_module": "Zeta23.Spectral.RealZeroLimitTransfer",
+      "required_statement": "Supply the missing zero-location/limit theorem that turns the Xi identification route into CanonicalAllAperturePositivity or directly into the literal RH proposition.",
+      "required_inputs": [
+        "C2_XI_IDENTIFICATION"
+      ],
+      "falsification_condition": "The proposed limit/zero transfer is too weak to constrain all nontrivial zeta zeros."
+    },
+    {
+      "id": "D1_WITNESS_INTERFACE",
       "track": "D",
-      "status": "CANDIDATE_LEAN",
-      "lean_target": "Zeta23.ExceptionalZero.QuantitativeCanonicalWitness",
-      "premises": []
+      "status": "INTERFACE",
+      "target_module": "Zeta23.ExceptionalZero.QuantitativeCanonicalWitness",
+      "interface_declaration": "Zeta23.ExceptionalZero.QuantitativeCanonicalWitness",
+      "required_statement": "Preserve same-witness provenance, carrier and normalization data without asserting visibility.",
+      "required_inputs": [],
+      "falsification_condition": "The interface cannot represent the production witness provenance required by D2."
     },
     {
       "id": "D2_VISIBILITY",
@@ -153,9 +227,9 @@
       "status": "OPEN",
       "target_module": "Zeta23.ExceptionalZero.QuantitativeCanonicalWitness",
       "interface_declaration": "Zeta23.ExceptionalZero.QuantitativeCanonicalWitness",
-      "required_statement": "Prove quantitative same-witness masking/window visibility in the production regime.",
+      "required_statement": "Prove quantitative same-witness masking/window visibility in the production-valid R002 regime.",
       "required_inputs": [
-        "D1_WITNESS_PACKAGE"
+        "D1_WITNESS_INTERFACE"
       ],
       "falsification_condition": "Positive bulk or production-envelope constraints mask every certified negative detector pair."
     },
@@ -166,13 +240,13 @@
       "target_statement": "Mathlib.RiemannHypothesis",
       "alternative_premise_sets": [
         [
-          "A3_PROPAGATION"
+          "A3_ALL_APERTURE"
         ],
         [
-          "B2_UNIFORM_DOMINATION"
+          "B3_DOMINATION_TO_ALL_APERTURE"
         ],
         [
-          "C2_XI_IDENTIFICATION"
+          "C3_XI_TO_RH"
         ]
       ],
       "required_statement": "An exact premise-free theorem of Mathlib RiemannHypothesis with accepted kernel axioms.",

@@ -1,5 +1,5 @@
 import Mathlib.Analysis.Complex.Exponential
-import Zeta23.CCM.SourceContractionLocalized
+import Zeta23.CCM.SourceContraction
 import Zeta23.CCM.CanonicalPolePrimeDiscrepancy
 
 noncomputable section

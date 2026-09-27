@@ -44,13 +44,30 @@ theorem canonicalFiniteWeilPositivity_of_allAperture
   intro L hL K x hx
   exact h L hL K x hx
 
+/-- The closure-campaign all-aperture target is definitionally the same
+legal-carrier positivity statement as the already-audited finite-Weil target.
+This equivalence is an audit firewall: proving either side is RH-strength. -/
+theorem canonicalAllAperturePositivity_iff_canonicalFiniteWeilPositivity :
+    CanonicalAllAperturePositivity ↔ CanonicalFiniteWeilPositivity := by
+  constructor
+  · intro h L hL K x hx
+    exact h L hL K x hx
+  · intro h L hL K x hx
+    exact h L hL K x hx
+
+/-- Explicit terminal-strength audit.  This proves an equivalence of
+propositions; it does not prove either proposition. -/
+theorem canonicalAllAperturePositivity_iff_riemannHypothesis :
+    CanonicalAllAperturePositivity ↔ RiemannHypothesis :=
+  canonicalAllAperturePositivity_iff_canonicalFiniteWeilPositivity.trans
+    canonicalFiniteWeilPositivity_iff_riemannHypothesis
+
 /-- Final adapter: a future proof of the unconditional CCM target closes the
 literal Mathlib RH proposition on the RHRC side of the firewall. -/
 theorem rh_of_canonicalAllAperturePositivity
     (h : CanonicalAllAperturePositivity) :
     RiemannHypothesis :=
-  rh_of_canonicalFiniteWeilPositivity
-    (canonicalFiniteWeilPositivity_of_allAperture h)
+  canonicalAllAperturePositivity_iff_riemannHypothesis.mp h
 
 end Zeta23.RHRC
 
@@ -58,4 +75,6 @@ end Zeta23.RHRC
 #print axioms Zeta23.RHRC.smallApertureBase_of_channelBounds
 #print axioms Zeta23.RHRC.pointwiseSchur_of_uniform
 #print axioms Zeta23.RHRC.canonicalFiniteWeilPositivity_of_allAperture
+#print axioms Zeta23.RHRC.canonicalAllAperturePositivity_iff_canonicalFiniteWeilPositivity
+#print axioms Zeta23.RHRC.canonicalAllAperturePositivity_iff_riemannHypothesis
 #print axioms Zeta23.RHRC.rh_of_canonicalAllAperturePositivity
