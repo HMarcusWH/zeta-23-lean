@@ -31,6 +31,7 @@
     "Zeta23.CCM.ParityGroundPerturbation": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
     "Zeta23.CCM.ParityRayleighPerturbation": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
     "Zeta23.CCM.SourceContraction": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
+    "Zeta23.CCM.SourceContractionLocalized": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
     "Zeta23.CCM.SourceWeightCounterexample": "FORMAL_ROUTE_FALSIFIER",
     "Zeta23.ExceptionalZero.CofinalArithmeticConditionalRH": "QUARANTINED_CONDITIONAL_RH_SEAM",
     "Zeta23.ExceptionalZero.CofinalArithmeticEquivalenceAudit": "QUARANTINED_EQUIVALENCE_AUDIT",

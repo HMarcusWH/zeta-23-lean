@@ -3,13 +3,23 @@
   "terminal_claim": "RH_OPEN",
   "obligations": [
     {
-      "id": "A1_SOURCE_INTERIOR",
+      "id": "A1_LOCALIZED_AUTOCORRELATION",
       "track": "A",
       "status": "OPEN",
-      "target_module": "Zeta23.CCM.SourceContraction",
-      "required_statement": "Prove the all-K interior source-contraction bound for 0 < omega < 1.",
+      "target_module": "Zeta23.CCM.SourceContractionLocalized",
+      "required_statement": "Prove the unit-aperture L2 autocorrelation bound for every zero-extended finite Fourier vector.",
       "required_inputs": [],
-      "falsification_condition": "Produce K, omega and a vector violating the 2*norm^2 bound."
+      "falsification_condition": "Produce a finite Fourier vector and shift y in [0,1] whose symmetrized autocorrelation exceeds twice coefficient norm-square.",
+      "interface_declaration": "Zeta23.CCM.LocalizedFiniteAutocorrelationBound"
+    },
+    {
+      "id": "A1_SOURCE_REDUCTION",
+      "track": "A",
+      "status": "CANDIDATE_LEAN",
+      "lean_target": "Zeta23.CCM.sourceContractionBound_of_localizedAutocorrelation",
+      "premises": [
+        "A1_LOCALIZED_AUTOCORRELATION"
+      ]
     },
     {
       "id": "A1_ARCH_UPPER",
@@ -19,7 +29,7 @@
       "interface_declaration": "Zeta23.CCM.CanonicalArchSmallApertureUpperBound",
       "required_statement": "Prove the canonical archimedean upper bound for every K and 0 < L <= 1/512.",
       "required_inputs": [
-        "A1_SOURCE_INTERIOR"
+        "A1_LOCALIZED_AUTOCORRELATION"
       ],
       "falsification_condition": "Certified canonical arch energy exceeds (L-2)*norm^2."
     },

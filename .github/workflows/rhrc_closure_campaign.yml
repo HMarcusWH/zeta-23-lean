@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'Zeta23/CCM/SourceContraction.lean'
+      - 'Zeta23/CCM/SourceContractionLocalized.lean'
       - 'Zeta23/CCM/CanonicalArchUpperBound.lean'
       - 'Zeta23/CCM/CanonicalPoleUniformBound.lean'
       - 'Zeta23/CCM/CanonicalSmallApertureCoercivity.lean'
@@ -70,6 +71,7 @@ jobs:
       - name: Build Track A
         run: |
           lake build Zeta23.CCM.SourceContraction
+          lake build Zeta23.CCM.SourceContractionLocalized
           lake build Zeta23.CCM.CanonicalArchUpperBound
           lake build Zeta23.CCM.CanonicalPoleUniformBound
           lake build Zeta23.CCM.CanonicalSmallApertureCoercivity
@@ -143,6 +145,7 @@ jobs:
 
           roots = [
               Path("Zeta23/CCM/SourceContraction.lean"),
+              Path("Zeta23/CCM/SourceContractionLocalized.lean"),
               Path("Zeta23/CCM/CanonicalArchUpperBound.lean"),
               Path("Zeta23/CCM/CanonicalPoleUniformBound.lean"),
               Path("Zeta23/CCM/CanonicalSmallApertureCoercivity.lean"),

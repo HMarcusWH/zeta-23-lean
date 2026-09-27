@@ -56,6 +56,7 @@ jobs:
       - name: Build all closure theorem surfaces and graph exporter
         run: |
           lake build Zeta23.CCM.SourceContraction
+          lake build Zeta23.CCM.SourceContractionLocalized
           lake build Zeta23.CCM.CanonicalArchUpperBound
           lake build Zeta23.CCM.CanonicalPoleUniformBound
           lake build Zeta23.CCM.CanonicalSmallApertureCoercivity
