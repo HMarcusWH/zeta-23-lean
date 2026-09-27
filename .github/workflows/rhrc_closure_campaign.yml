@@ -10,6 +10,7 @@ on:
       - 'Zeta23/CCM/CanonicalSmallApertureCoercivity.lean'
       - 'Zeta23/CCM/CanonicalPrimeSeamTaylor.lean'
       - 'Zeta23/CCM/ParityGroundPerturbation.lean'
+      - 'Zeta23/CCM/ParityRayleighPerturbation.lean'
       - 'Zeta23/CCM/CanonicalSeamGroundTransfer.lean'
       - 'Zeta23/CCM/GroundComparisonPrinciple.lean'
       - 'Zeta23/CCM/CanonicalGroundPropagation.lean'
@@ -72,6 +73,7 @@ jobs:
           lake build Zeta23.CCM.CanonicalSmallApertureCoercivity
           lake build Zeta23.CCM.CanonicalPrimeSeamTaylor
           lake build Zeta23.CCM.ParityGroundPerturbation
+          lake build Zeta23.CCM.ParityRayleighPerturbation
           lake build Zeta23.CCM.CanonicalSeamGroundTransfer
           lake build Zeta23.CCM.GroundComparisonPrinciple
           lake build Zeta23.CCM.CanonicalGroundPropagation
@@ -144,6 +146,7 @@ jobs:
               Path("Zeta23/CCM/CanonicalSmallApertureCoercivity.lean"),
               Path("Zeta23/CCM/CanonicalPrimeSeamTaylor.lean"),
               Path("Zeta23/CCM/ParityGroundPerturbation.lean"),
+              Path("Zeta23/CCM/ParityRayleighPerturbation.lean"),
               Path("Zeta23/CCM/CanonicalSeamGroundTransfer.lean"),
               Path("Zeta23/CCM/GroundComparisonPrinciple.lean"),
               Path("Zeta23/CCM/CanonicalGroundPropagation.lean"),
