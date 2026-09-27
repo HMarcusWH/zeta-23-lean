@@ -36,12 +36,9 @@
     {
       "id": "A1_PRIME_VANISH",
       "track": "A",
-      "status": "OPEN",
-      "target_module": "Zeta23.CCM.CanonicalSmallApertureCoercivity",
-      "interface_declaration": "Zeta23.CCM.CanonicalSmallAperturePrimeVanishing",
-      "required_statement": "Prove the prime matrix vanishes for 0 < L <= 1/512.",
-      "required_inputs": [],
-      "falsification_condition": "A nonzero prime contribution exists below the exp(L)<2 cutoff."
+      "status": "CANDIDATE_LEAN",
+      "lean_target": "Zeta23.CCM.canonicalSmallAperturePrimeVanishing_proved",
+      "premises": []
     },
     {
       "id": "A1_BASE_ASSEMBLY",

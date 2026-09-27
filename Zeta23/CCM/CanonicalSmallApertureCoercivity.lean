@@ -1,3 +1,4 @@
+import Mathlib.Analysis.Complex.Exponential
 import Zeta23.CCM.CanonicalSourceChannels
 import Zeta23.CCM.CanonicalSourceEnergy
 import Zeta23.CCM.CanonicalArchUpperBound
@@ -19,6 +20,37 @@ def CanonicalSmallAperturePrimeVanishing : Prop :=
   ∀ L : ℝ, 0 < L → L ≤ (1 : ℝ) / 512 →
     ∀ K : ℕ, ∀ x : EuclideanSpace ℂ (Fin (2 * K + 1)),
       matrixRealEnergy (canonicalPrimeMatrix L K) x = 0
+
+/-- The conservative aperture range lies below the first prime
+threshold, so the prime-power channel is exactly empty. -/
+theorem canonicalPrimeMatrix_eq_zero_of_small_aperture
+    (L : ℝ) (hL : 0 < L) (hsmall : L ≤ (1 : ℝ) / 512)
+    (K : ℕ) :
+    canonicalPrimeMatrix L K = 0 := by
+  have hL2 : L < 2 := by
+    linarith
+  have hexpBound := Real.exp_lt_two_add_div_two_sub hL hL2
+  have hden : 0 < 2 - L := by
+    linarith
+  have hratio : (2 + L) / (2 - L) < (2 : ℝ) := by
+    rw [div_lt_iff₀ hden]
+    nlinarith
+  have hexp2 : Real.exp L < (2 : ℝ) :=
+    lt_trans hexpBound hratio
+  have hfloor : ⌊Real.exp L⌋₊ < 2 :=
+    (Nat.floor_lt (Real.exp_pos L).le).2 hexp2
+  have hIcc : Finset.Icc 2 ⌊Real.exp L⌋₊ = ∅ :=
+    Finset.Icc_eq_empty_of_lt hfloor
+  ext i j
+  simp [canonicalPrimeMatrix, primeComponent, hIcc]
+
+/-- The prime-energy vanishing premise of the base theorem is discharged
+unconditionally on the chosen aperture range. -/
+theorem canonicalSmallAperturePrimeVanishing_proved :
+    CanonicalSmallAperturePrimeVanishing := by
+  intro L hL hsmall K x
+  rw [canonicalPrimeMatrix_eq_zero_of_small_aperture L hL hsmall K]
+  exact matrixRealEnergy_zero x
 
 /-- The three exact channel obligations for the paper proof. -/
 def CanonicalSmallApertureChannelBounds : Prop :=
@@ -90,6 +122,8 @@ theorem canonicalSmallApertureCoercivity_of_channel_bounds
 
 end Zeta23.CCM
 
+#print axioms Zeta23.CCM.canonicalPrimeMatrix_eq_zero_of_small_aperture
+#print axioms Zeta23.CCM.canonicalSmallAperturePrimeVanishing_proved
 #print axioms Zeta23.CCM.canonicalSourceMatrix_small_aperture_lower_of_channel_bounds
 #print axioms Zeta23.CCM.smallAperture_scalar_margin_ge_one
 #print axioms Zeta23.CCM.canonicalSourceMatrix_small_aperture_coercive_of_channel_bounds
