@@ -50,6 +50,27 @@ theorem evenBoundaryFlat_sourceAtom_ninth_jet_package
       iteratedDeriv_nine_sourceAtomRealEnergy_eq_moment_four_of_even_boundaryFlat
         K x hflat heven
 
+/-- Exact conversion from aperture displacement to the source coordinate.
+This is the missing algebraic bridge needed before source-coordinate jets can
+be used in an aperture-seam estimate. -/
+theorem primeSourceCoordinate_eq_aperture_increment_div
+    (q : ℕ) {L : ℝ} (hL : L ≠ 0) :
+    primeSourceCoordinate q L =
+      (L - Real.log q) / L := by
+  unfold primeSourceCoordinate
+  field_simp [hL]
+  ring
+
+/-- At a q-seam, writing the aperture as log(q)+h makes the entering source
+coordinate exactly h/(log(q)+h).  This is an identity, not a remainder bound. -/
+theorem primeSourceCoordinate_log_add
+    (q : ℕ) (h : ℝ)
+    (hden : Real.log q + h ≠ 0) :
+    primeSourceCoordinate q (Real.log q + h) =
+      h / (Real.log q + h) := by
+  rw [primeSourceCoordinate_eq_aperture_increment_div q hden]
+  ring
+
 /-- Generic remainder predicate used by the research/obligation layer.  No
 instance for the canonical source is asserted here. -/
 def HasNinthOrderRemainder (f : ℝ → ℝ) : Prop :=
@@ -62,3 +83,5 @@ end Zeta23.CCM
 
 #print axioms Zeta23.CCM.boundaryFlat_sourceAtom_seventh_jet_package
 #print axioms Zeta23.CCM.evenBoundaryFlat_sourceAtom_ninth_jet_package
+#print axioms Zeta23.CCM.primeSourceCoordinate_eq_aperture_increment_div
+#print axioms Zeta23.CCM.primeSourceCoordinate_log_add
