@@ -31,6 +31,7 @@ def main() -> int:
     run([py, str(HERE / "canonical_characteristic_scout.py"), "--repo", args.repo, "--output", str(out / "diagnostic_c_characteristic.json")])
     run([py, str(HERE / "detector_family_audit.py"), "--output", str(out / "track_d.json")])
     run([py, str(HERE / "r002_visibility_audit.py"), "--repo", args.repo, "--output", str(out / "diagnostic_d_r002.json")])
+    run([py, str(HERE / "integrate_diagnostics.py"), "--results", str(out)])
     run([py, str(HERE / "harvest.py"), "--results", str(out), "--output", str(out / "HARVEST.json")])
     return 0
 
