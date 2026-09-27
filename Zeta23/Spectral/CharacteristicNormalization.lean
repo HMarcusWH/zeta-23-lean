@@ -16,8 +16,8 @@ def normalizedCanonicalCharacteristic (L : ℝ) (K : ℕ) (z : ℂ) : ℂ :=
     normalizedCanonicalCharacteristic L K 0 = 1 := by
   have h' : canonicalCharacteristic L K 0 ≠ 0 := by
     simpa [canonicalCharacteristicNormalizer] using h
-  simpa [normalizedCanonicalCharacteristic, canonicalCharacteristicNormalizer]
-    using (div_self (canonicalCharacteristic L K 0) h')
+  change canonicalCharacteristic L K 0 / canonicalCharacteristic L K 0 = 1
+  exact div_self h'
 
 end Zeta23.Spectral
 
