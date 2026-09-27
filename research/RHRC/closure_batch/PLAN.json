@@ -56,7 +56,7 @@
         "even",
         "odd"
       ],
-      "segments_per_cell": 2,
+      "segments_per_cell": 4,
       "precision_bits": 256,
       "observables": [
         "shell_energy",
