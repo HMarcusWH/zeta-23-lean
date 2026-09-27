@@ -21,6 +21,7 @@
     "Zeta23.CCM.CanonicalFullSpaceSourceBridge": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
     "Zeta23.CCM.CanonicalGroundPropagation": "CLOSURE_CAMPAIGN_TARGET_INTERFACE",
     "Zeta23.CCM.CanonicalModeTailBound": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
+    "Zeta23.CCM.CanonicalPoleSourceBound": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
     "Zeta23.CCM.CanonicalPoleUniformBound": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
     "Zeta23.CCM.CanonicalPrimeSeamTaylor": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
     "Zeta23.CCM.CanonicalSchurCertificate": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",

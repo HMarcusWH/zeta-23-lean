@@ -59,6 +59,7 @@ jobs:
           lake build Zeta23.CCM.SourceContractionLocalized
           lake build Zeta23.CCM.CanonicalArchUpperBound
           lake build Zeta23.CCM.CanonicalPoleUniformBound
+          lake build Zeta23.CCM.CanonicalPoleSourceBound
           lake build Zeta23.CCM.CanonicalSmallApertureCoercivity
           lake build Zeta23.CCM.CanonicalPrimeSeamTaylor
           lake build Zeta23.CCM.ParityGroundPerturbation
