@@ -130,14 +130,14 @@ theorem canonicalPoleEnergy_ge_neg_eight_mul_L_of_sourceContraction
             sourceAtomRealEnergy K x (1 - t / L) := by
         unfold sourceAtomRealEnergy
         exact neg_le_of_abs_le habs
-      have hc0 : 0 ≤ Real.cosh (t / 2) := Real.cosh_nonneg _
+      have hc0 : 0 ≤ Real.cosh (t / 2) := by positivity
       have hc2 : Real.cosh (t / 2) ≤ 2 :=
         cosh_half_le_two_of_small hL hsmall ht0 htL
       have hw : 0 ≤ 2 * Real.cosh (t / 2) := by positivity
       have hmul := mul_le_mul_of_nonneg_left hlow hw
       have hnorm : 0 ≤ ‖x‖ ^ 2 := sq_nonneg _
       nlinarith
-  simpa using hmono
+  convert hmono using 1 <;> ring
 
 /-- Coarse small-aperture pole lower bound used by the closure campaign. -/
 def CanonicalPoleSmallApertureLowerBound : Prop :=
