@@ -5,10 +5,14 @@ import hashlib
 import json
 from pathlib import Path
 
+from build_numerical_receipt import build_receipt
+from verify_receipt import verify_receipt
+
 HERE = Path(__file__).resolve().parent
+ROOT = HERE.parents[2]
 PLAN = HERE / "PLAN.json"
 
-EXPECTED = (
+CAMPAIGN_OUTPUTS = (
     "track_a.json",
     "track_b.json",
     "track_c.json",
@@ -19,6 +23,8 @@ EXPECTED = (
     "diagnostic_c_characteristic.json",
     "diagnostic_d_r002.json",
 )
+NUMERICAL_RECEIPT = "CLOSURE_NUMERICAL_RECEIPT.json"
+EXPECTED = CAMPAIGN_OUTPUTS + (NUMERICAL_RECEIPT,)
 
 
 def sha256(path: Path) -> str:
@@ -52,7 +58,7 @@ def main() -> int:
 
     root = Path(args.receipt_dir)
     manifest = load(root / "MANIFEST.json")
-    if manifest.get("schema_version") != "RHRC-PR274-CLOSURE-RECEIPT-MANIFEST-1.0":
+    if manifest.get("schema_version") != "RHRC-PR274-CLOSURE-RECEIPT-MANIFEST-1.1":
         raise SystemExit("manifest schema drift")
     if manifest.get("terminal_claim") != "RH_OPEN":
         raise SystemExit("manifest attempted terminal promotion")
@@ -72,6 +78,9 @@ def main() -> int:
         if row.get("terminal_claim") != "RH_OPEN":
             raise SystemExit(f"{name}: terminal claim drift")
 
+    plan = load(PLAN)
+    verify_receipt(load(root / NUMERICAL_RECEIPT), plan)
+
     harvest = load(root / "HARVEST.json")
     if harvest.get("execution_status") != "SUCCESS" or harvest.get("integrity_status") != "PASS":
         raise SystemExit("campaign harvest is not successful/integrity PASS")
@@ -80,7 +89,7 @@ def main() -> int:
 
     if args.replay_dir:
         replay = Path(args.replay_dir)
-        for name in EXPECTED:
+        for name in CAMPAIGN_OUTPUTS:
             live = load(replay / name)
             frozen = load(root / name)
             if disposition(live) != disposition(frozen):
@@ -93,6 +102,7 @@ def main() -> int:
                     "selected_classification_counts",
                     "scope_classification_counts",
                     "certified_bad_interval_count",
+                    "certified_domination_interval_count",
                 )
                 for key in keys:
                     if live.get(key) != frozen.get(key):
@@ -102,6 +112,17 @@ def main() -> int:
                     r.get("K") for r in frozen.get("rows", [])
                 ]:
                     raise SystemExit(f"{name}: K-scope drift")
+
+        rebuilt = build_receipt(
+            replay,
+            plan,
+            manifest["source_commit"],
+            manifest["source_tree"],
+            ROOT,
+        )
+        verify_receipt(rebuilt, plan)
+        if rebuilt != load(root / NUMERICAL_RECEIPT):
+            raise SystemExit("numerical receipt replay drift")
         print("PR274 CLOSURE RECEIPT REPLAY: PASS")
     else:
         print("PR274 CLOSURE FROZEN RECEIPTS: PASS")

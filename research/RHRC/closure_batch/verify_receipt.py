@@ -15,14 +15,23 @@ class ReceiptError(ValueError):
 
 
 HEX40 = re.compile(r"^[0-9a-f]{40}$")
+HEX64 = re.compile(r"^[0-9a-f]{64}$")
+
+
+def digest(obj: Any) -> str:
+    return hashlib.sha256(canonical_json(obj).encode()).hexdigest()
 
 
 def plan_digest(plan: dict[str, Any]) -> str:
-    return hashlib.sha256(canonical_json(plan).encode()).hexdigest()
+    return digest(plan)
+
+
+def _segment_key(seg: dict) -> tuple[int, int, int]:
+    return int(seg["lo"]), int(seg["hi"]), int(seg["den"])
 
 
 def verify_receipt(receipt: dict[str, Any], plan: dict[str, Any]) -> dict[str, Any]:
-    if receipt.get("schema_version") != "RHRC-CLOSURE-RECEIPT-1.0":
+    if receipt.get("schema_version") != "RHRC-CLOSURE-NUMERICAL-RECEIPT-1.0":
         raise ReceiptError("wrong receipt schema")
     if receipt.get("execution_status") != "SUCCESS":
         raise ReceiptError("execution did not succeed")
@@ -38,12 +47,26 @@ def verify_receipt(receipt: dict[str, Any], plan: dict[str, Any]) -> dict[str, A
         raise ReceiptError("invalid source commit")
     if not HEX40.fullmatch(str(source.get("tree", ""))):
         raise ReceiptError("invalid source tree")
-    if receipt.get("plan_sha256") != plan_digest(plan):
-        raise ReceiptError("plan digest mismatch")
 
-    required = list(plan.get("receipt_scope", {}).get("required_case_ids", []))
-    if not required:
-        raise ReceiptError("empty plan scope")
+    scope = plan.get("numerical_receipt_scope") or {}
+    research_scope = plan.get("research_scope") or {}
+    if not scope.get("tracks"):
+        raise ReceiptError("empty numerical receipt scope")
+    if receipt.get("plan_sha256") != digest(plan):
+        raise ReceiptError("plan digest mismatch")
+    if receipt.get("scope_sha256") != digest(scope):
+        raise ReceiptError("scope digest mismatch")
+    if receipt.get("fixture_sha256") != digest(research_scope):
+        raise ReceiptError("fixture digest mismatch")
+    if not HEX64.fullmatch(str(receipt.get("program_sha256", ""))):
+        raise ReceiptError("invalid program digest")
+
+    expected_precision = {
+        track: int(spec["precision_bits"])
+        for track, spec in scope["tracks"].items()
+    }
+    if receipt.get("precision_bits") != expected_precision:
+        raise ReceiptError("precision schedule mismatch")
 
     cases = receipt.get("cases")
     if not isinstance(cases, list) or not cases:
@@ -51,16 +74,89 @@ def verify_receipt(receipt: dict[str, Any], plan: dict[str, Any]) -> dict[str, A
     ids = [str(c.get("id")) for c in cases]
     if len(ids) != len(set(ids)):
         raise ReceiptError("duplicate case id")
-    if sorted(ids) != sorted(required):
-        raise ReceiptError("case coverage mismatch")
 
     signs = {"POSITIVE": 0, "NEGATIVE": 0, "ZERO_ONLY": 0, "CONTAINS_ZERO": 0}
+    seen_a = set()
+    seen_b_shell = set()
+    seen_ck = set()
+    seen_cl = set()
+
     for case in cases:
+        track = case.get("track")
+        observable = case.get("observable")
+        if track not in expected_precision:
+            raise ReceiptError(f"unsupported receipt track {track}")
+        if int(case.get("precision_bits", -1)) != expected_precision[track]:
+            raise ReceiptError(f"{case.get('id')}: precision mismatch")
+
         interval = DyadicInterval.from_json(case["interval"])
         sign = interval.sign()
         if case.get("claimed_sign") != sign:
             raise ReceiptError(f"forged sign for {case.get('id')}")
         signs[sign] += 1
+        p = case.get("params") or {}
+
+        if track == "A":
+            if observable != "lambda_min":
+                raise ReceiptError("unsupported A observable")
+            seen_a.add((str(p.get("L")), int(p.get("K"))))
+        elif track == "B":
+            seg = _segment_key(p.get("segment") or {})
+            key = (int(p.get("Q")), int(p.get("K")), str(p.get("parity")), seg)
+            if observable == "shell_energy":
+                seen_b_shell.add(key)
+            elif observable == "schur_form_leading_minor":
+                if int(p.get("minor_index", -1)) < 0:
+                    raise ReceiptError("invalid B minor index")
+            else:
+                raise ReceiptError("unsupported B observable")
+        elif track == "C":
+            if observable == "successive_K_delta_abs":
+                seen_ck.add((
+                    int(p.get("L")), int(p.get("K_from")),
+                    int(p.get("K_to")), int(p.get("z_index")),
+                ))
+            elif observable == "successive_L_delta_abs":
+                seen_cl.add((
+                    int(p.get("L_from")), int(p.get("L_to")),
+                    int(p.get("K")), int(p.get("z_index")),
+                ))
+            else:
+                raise ReceiptError("unsupported C observable")
+
+    rs = research_scope
+    expected_a = {(str(rs["A"]["L"]), int(k)) for k in rs["A"]["K"]}
+    if seen_a != expected_a:
+        raise ReceiptError("A interval coverage mismatch")
+
+    den = int(rs["B"]["segments_per_cell"])
+    expected_b = {
+        (int(Q), int(K), str(parity), (lo, lo + 1, den))
+        for Q in rs["B"]["physical_Q"]
+        for K in rs["B"]["successor_K"]
+        for parity in rs["B"]["parities"]
+        for lo in range(den)
+    }
+    if seen_b_shell != expected_b:
+        raise ReceiptError("B shell interval coverage mismatch")
+
+    z_count = len(rs["C"]["z"])
+    expected_ck = {
+        (int(L), int(ka), int(kb), zi)
+        for L in rs["C"]["L"]
+        for ka, kb in zip(rs["C"]["K"], rs["C"]["K"][1:])
+        for zi in range(z_count)
+    }
+    expected_cl = {
+        (int(la), int(lb), int(K), zi)
+        for la, lb in zip(rs["C"]["L"], rs["C"]["L"][1:])
+        for K in rs["C"]["K"]
+        for zi in range(z_count)
+    }
+    if seen_ck != expected_ck:
+        raise ReceiptError("C K-delta coverage mismatch")
+    if seen_cl != expected_cl:
+        raise ReceiptError("C L-delta coverage mismatch")
 
     expected_summary = {"case_count": len(cases), "sign_counts": signs}
     if receipt.get("summary") != expected_summary:

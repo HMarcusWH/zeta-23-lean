@@ -6,9 +6,12 @@ import json
 from pathlib import Path
 import shutil
 
+from build_numerical_receipt import build_receipt
+
 HERE = Path(__file__).resolve().parent
+ROOT = HERE.parents[2]
 PLAN = HERE / "PLAN.json"
-EXPECTED = (
+CAMPAIGN_OUTPUTS = (
     "track_a.json",
     "track_b.json",
     "track_c.json",
@@ -19,6 +22,8 @@ EXPECTED = (
     "diagnostic_c_characteristic.json",
     "diagnostic_d_r002.json",
 )
+NUMERICAL_RECEIPT = "CLOSURE_NUMERICAL_RECEIPT.json"
+EXPECTED = CAMPAIGN_OUTPUTS + (NUMERICAL_RECEIPT,)
 
 
 def sha256(path: Path) -> str:
@@ -41,18 +46,27 @@ def main() -> int:
     dst = Path(args.destination)
     if len(args.source_commit) != 40 or len(args.source_tree) != 40:
         raise SystemExit("source commit/tree must be full Git SHAs")
-    missing = [name for name in EXPECTED if not (src / name).is_file()]
+    missing = [name for name in CAMPAIGN_OUTPUTS if not (src / name).is_file()]
     if missing:
         raise SystemExit(f"missing campaign outputs: {missing}")
 
     dst.mkdir(parents=True, exist_ok=True)
     for old in dst.glob("*.json"):
         old.unlink()
-    for name in EXPECTED:
+    for name in CAMPAIGN_OUTPUTS:
         shutil.copyfile(src / name, dst / name)
 
+    plan = json.loads(PLAN.read_text(encoding="utf-8"))
+    numerical = build_receipt(
+        src, plan, args.source_commit, args.source_tree, ROOT
+    )
+    (dst / NUMERICAL_RECEIPT).write_text(
+        json.dumps(numerical, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
     manifest = {
-        "schema_version": "RHRC-PR274-CLOSURE-RECEIPT-MANIFEST-1.0",
+        "schema_version": "RHRC-PR274-CLOSURE-RECEIPT-MANIFEST-1.1",
         "source_commit": args.source_commit,
         "source_tree": args.source_tree,
         "plan_sha256": sha256(PLAN),

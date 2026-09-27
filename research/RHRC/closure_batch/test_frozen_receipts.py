@@ -1,8 +1,5 @@
 from __future__ import annotations
 
-import json
-from pathlib import Path
-import tempfile
 import unittest
 
 import check_frozen_receipts as checker
@@ -12,8 +9,10 @@ import freeze_receipts as freezer
 class FrozenReceiptContractTests(unittest.TestCase):
     def test_expected_sets_match(self):
         self.assertEqual(set(checker.EXPECTED), set(freezer.EXPECTED))
-        self.assertIn("HARVEST.json", checker.EXPECTED)
-        self.assertIn("diagnostic_b_schur_arb.json", checker.EXPECTED)
+        self.assertEqual(set(checker.CAMPAIGN_OUTPUTS), set(freezer.CAMPAIGN_OUTPUTS))
+        self.assertIn("HARVEST.json", checker.CAMPAIGN_OUTPUTS)
+        self.assertIn("diagnostic_b_schur_arb.json", checker.CAMPAIGN_OUTPUTS)
+        self.assertIn("CLOSURE_NUMERICAL_RECEIPT.json", checker.EXPECTED)
 
     def test_disposition_ignores_raw_float_payload(self):
         a = {

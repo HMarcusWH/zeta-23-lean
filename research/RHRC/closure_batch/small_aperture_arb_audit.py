@@ -7,11 +7,19 @@ import sys
 
 from flint import arb, ctx, fmpq
 
+FROZEN_L_NUM = 1
+FROZEN_L_DEN = 512
+FROZEN_K = (0, 1, 3, 6)
+PREC = 256
+
 
 def rec(x: arb) -> dict:
     return {
-        "mid": x.mid().str(24, radius=False),
-        "rad": x.rad().str(6, radius=False),
+        "mid": x.mid().str(40, radius=False),
+        "rad": x.rad().str(20, radius=False),
+        "lower": x.lower().str(50, radius=False),
+        "upper": x.upper().str(50, radius=False),
+        "rel_accuracy_bits": int(x.rel_accuracy_bits()),
         "certified_positive": bool(x > 0),
         "certified_negative": bool(x < 0),
         "contains_zero": bool(x.contains(0)),
@@ -28,11 +36,11 @@ def main() -> int:
     sys.path.insert(0, str(r003))
     from post247_remainder_budget_ratio_scout import channels, _eigs, _sym
 
-    ctx.prec = 256
-    L = arb(fmpq(1, 512))
+    ctx.prec = PREC
+    L = arb(fmpq(FROZEN_L_NUM, FROZEN_L_DEN))
     lower = arb(2) - L - arb(fmpq(2, 9)) * L ** 3
     rows = []
-    for K in (0, 1, 3, 6):
+    for K in FROZEN_K:
         ch = channels(L, K)
         E = _sym(ch["A"] - ch["B"])
         vals = _eigs(E)
@@ -46,11 +54,12 @@ def main() -> int:
 
     all_positive = all(r["lambda_min"]["certified_positive"] for r in rows)
     out = {
-        "schema_version": "RHRC-CLOSURE-SMALL-APERTURE-ARB-AUDIT-1.0",
-        "claim_cap": "EXPERIMENTAL_SIGNAL_ONLY",
+        "schema_version": "RHRC-CLOSURE-SMALL-APERTURE-ARB-AUDIT-1.1",
+        "claim_cap": "RIGOROUS_BOUNDED_ARB_RESEARCH",
         "adaptive_search": False,
-        "L": "1/512",
-        "K": [0, 1, 3, 6],
+        "precision_bits": PREC,
+        "L": f"{FROZEN_L_NUM}/{FROZEN_L_DEN}",
+        "K": list(FROZEN_K),
         "rows": rows,
         "classification": (
             "FULL_SPACE_POSITIVE_ON_FROZEN_SMALL_APERTURE_SCOPE"
@@ -61,7 +70,8 @@ def main() -> int:
         "terminal_claim": "RH_OPEN",
         "nonclaims": [
             "This finite K audit does not prove the all-K source-contraction, arch, or pole bounds.",
-            "The paper-level lower bound remains a formalization target until its analytic premises are Lean-proved.",
+            "Rigorous bounded Arb evidence is not Lean theorem authority.",
+            "The boundary-flat/full-space analytic base remains open until its premises are Lean-proved.",
         ],
     }
     Path(args.output).write_text(json.dumps(out, indent=2, sort_keys=True) + "\n")
