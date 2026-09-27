@@ -130,7 +130,12 @@ theorem localizedFiniteFunction_unit_energy_eq_norm_sq
       localizedFiniteFunction 1 K u t *
         conj (localizedFiniteFunction 1 K u t)) := by
     fun_prop
-  have hint := hcont.intervalIntegrable (0 : ℝ) 1
+  have hint : IntervalIntegrable
+      (fun t : ℝ =>
+        localizedFiniteFunction 1 K u t *
+          conj (localizedFiniteFunction 1 K u t))
+      volume (0 : ℝ) 1 :=
+    hcont.intervalIntegrable (0 : ℝ) 1
   have hre := congrArg Complex.re hcomplex
   rw [← intervalIntegral.intervalIntegral_re hint] at hre
   simp only [Complex.mul_conj', Complex.ofReal_re] at hre
