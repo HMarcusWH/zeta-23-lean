@@ -31,14 +31,26 @@
       "falsification_condition": "A sourceMatrix energy exceeds 2*norm^2 for some omega in [0,1]."
     },
     {
-      "id": "A1_ARCH_BOUNDARY_FLAT",
+      "id": "A1_ARCH_DICTIONARY_LOWER",
       "track": "A",
       "status": "OPEN",
       "target_module": "Zeta23.CCM.CanonicalArchUpperBound",
-      "interface_declaration": "Zeta23.CCM.CanonicalBoundaryFlatArchSmallApertureUpperBound",
-      "required_statement": "Prove the canonical archimedean upper bound on every legal boundary-flat carrier for 0 < L <= 1/512.",
+      "interface_declaration": "Zeta23.CCM.CanonicalBoundaryFlatDictionaryArchLowerBound",
+      "required_statement": "Prove the physical/dictionary archimedean real-part lower bound on every legal boundary-flat carrier for 0 < L <= 1/512.",
       "required_inputs": [],
-      "falsification_condition": "Certified boundary-flat canonical arch energy exceeds (L-2)*norm^2."
+      "falsification_condition": "A certified legal-carrier dictionary archimedean value falls below (2-L)*norm^2."
+    },
+    {
+      "id": "A1_ARCH_BOUNDARY_FLAT",
+      "track": "A",
+      "status": "CANDIDATE_THEOREM",
+      "target_module": "Zeta23.CCM.CanonicalArchUpperBound",
+      "lean_target": "Zeta23.CCM.canonicalBoundaryFlatArchSmallApertureUpperBound_of_dictionaryLower",
+      "premises": [
+        "A1_ARCH_DICTIONARY_LOWER"
+      ],
+      "required_statement": "Transfer the dictionary lower bound through the exact normalization bridge to the canonical boundary-flat archimedean upper bound.",
+      "falsification_condition": "The exact dictionary/canonical archimedean normalization bridge fails."
     },
     {
       "id": "A1_POLE_COARSE",
