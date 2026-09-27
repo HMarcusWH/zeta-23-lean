@@ -6,20 +6,26 @@ noncomputable section
 namespace Zeta23.CCM
 
 /-!
-# Closure campaign A2: moving-ground transfer contract
+# Closure campaign A2: moving-ground transfer interface
 
-The source-jet package is exact on fixed vectors. What remains is a
-quantitative perturbation theorem transferring those jets to the actual legal
-ground branch, with a gap bound in strict branches and a ground-space minimum
-in parity ties. It is represented as an explicit open proposition rather than
-an axiom.
+No canonical transfer theorem is asserted yet.  The data type records exactly
+what a strict or multiplicity-safe perturbation result must return.
 -/
 
-def StrictParityGroundPerturbationTransfer : Prop := False
-def ParityTieGroundPerturbationTransfer : Prop := False
+inductive GroundBranchKind
+  | evenStrict
+  | oddStrict
+  | parityTie
+  deriving DecidableEq, Repr
 
-def CanonicalGroundPerturbationPackage : Prop :=
-  StrictParityGroundPerturbationTransfer ∧
-    ParityTieGroundPerturbationTransfer
+structure GroundPerturbationResult where
+  branch : GroundBranchKind
+  leadingOrder : ℕ
+  leadingCoefficient : ℝ
+  remainderConstant : ℝ
+  remainder_nonnegative : 0 ≤ remainderConstant
+
+/-- The actual canonical strict/tie transfer remains an OPEN obligation in the
+campaign manifest; open obligations receive metadata, not axioms. -/
 
 end Zeta23.CCM

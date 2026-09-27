@@ -8,13 +8,10 @@ namespace Zeta23.CCM
 /-!
 # Closure campaign A2: exact parity source germs
 
-This file composes existing endpoint-jet theorems into the two packages used by
-the seam analysis. These are fixed-vector source-coordinate statements; they
-are not moving-ground aperture derivative theorems.
+These are fixed-vector source-coordinate statements; they are not
+moving-ground aperture derivative theorems.
 -/
 
-/-- Boundary-flat carriers have zero jets through six and the seventh jet is
-controlled by M3. -/
 theorem boundaryFlat_sourceAtom_seventh_jet_package
     (K : ℕ)
     (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
@@ -31,8 +28,6 @@ theorem boundaryFlat_sourceAtom_seventh_jet_package
   · exact sourceAtomRealEnergy_boundaryFlat_jets_through_six K x hflat
   · exact iteratedDeriv_seven_sourceAtomRealEnergy_eq_moment_three K x hflat
 
-/-- Even boundary-flat carriers have zero jets through eight and the ninth jet
-is controlled by M4. -/
 theorem evenBoundaryFlat_sourceAtom_ninth_jet_package
     (K : ℕ)
     (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
@@ -55,9 +50,13 @@ theorem evenBoundaryFlat_sourceAtom_ninth_jet_package
       iteratedDeriv_nine_sourceAtomRealEnergy_eq_moment_four_of_even_boundaryFlat
         K x hflat heven
 
-/-- Explicit open remainder obligation needed before finite jet data can be
-upgraded to a one-sided asymptotic statement. -/
-def CanonicalPrimeSeamTaylorRemainderControlled : Prop := False
+/-- Generic remainder predicate used by the research/obligation layer.  No
+instance for the canonical source is asserted here. -/
+def HasNinthOrderRemainder (f : ℝ → ℝ) : Prop :=
+  ∃ C : ℝ, 0 ≤ C ∧
+    ∀ ω : ℝ, |ω| ≤ 1 →
+      |f ω - (iteratedDeriv 9 f 0 / ((Nat.factorial 9 : ℕ) : ℝ)) * ω ^ 9| ≤
+        C * |ω| ^ 10
 
 end Zeta23.CCM
 

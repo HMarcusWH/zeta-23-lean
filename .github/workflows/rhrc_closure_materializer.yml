@@ -1,0 +1,93 @@
+name: RHRC closure campaign steady-state materializer
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rhrc-closure-materializer-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  materialize:
+    if: github.head_ref == 'research/rh-closure-parallel-campaign' && github.actor != 'github-actions[bot]' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Fast closure integrity tests
+        run: |
+          python -m compileall -q research/RHRC/closure_batch
+          python -m unittest discover -s research/RHRC/closure_batch -p 'test_*.py' -v
+          python research/RHRC/closure_batch/run_campaign.py --repo . --output-dir /tmp/closure-results
+      - name: Build all closure theorem surfaces and graph exporter
+        run: |
+          lake build Zeta23.CCM.SourceContraction
+          lake build Zeta23.CCM.CanonicalArchUpperBound
+          lake build Zeta23.CCM.CanonicalPoleUniformBound
+          lake build Zeta23.CCM.CanonicalSmallApertureCoercivity
+          lake build Zeta23.CCM.CanonicalPrimeSeamTaylor
+          lake build Zeta23.CCM.ParityGroundPerturbation
+          lake build Zeta23.CCM.CanonicalSeamGroundTransfer
+          lake build Zeta23.CCM.GroundComparisonPrinciple
+          lake build Zeta23.CCM.CanonicalGroundPropagation
+          lake build Zeta23.CCM.CanonicalAllAperturePositivity
+          lake build Zeta23.CCM.CanonicalSchurCertificate
+          lake build Zeta23.CCM.CanonicalModeTailBound
+          lake build Zeta23.CCM.CanonicalUniformDomination
+          lake build Zeta23.CCM.CanonicalFullSpaceSourceBridge
+          lake build Zeta23.Spectral
+          lake build Zeta23.ExceptionalZero.QuantitativeDetectorFamily
+          lake build Zeta23.ExceptionalZero.QuantitativeCanonicalWitness
+          lake build Zeta23.RHRC.ClosureObligationBindings
+          lake build Zeta23.RHRC.RegisteredClaimBindings
+          lake build Zeta23.RHRC.SourceCandidateResolution
+          lake build Zeta23.RHRC.DeclarationDependencyExport
+      - name: Remove bootstrap-only workflows before final graph materialization
+        run: |
+          rm -f .github/workflows/rhrc_closure_bootstrap.yml
+          rm -f .github/workflows/rhrc_closure_runtime.yml
+          rm -f .github/workflows/rhrc_closure_workspace_small.yml
+          rm -f .github/workflows/rhrc_closure_workspace_split.yml
+          rm -f .github/workflows/rhrc_closure_materializer.yml
+      - name: Regenerate deterministic research graph and assurance layers
+        run: |
+          python research/RHRC/graph/build.py --write
+          python research/RHRC/integration/candidate_exactify.py --write
+          python research/RHRC/ffbbp/rhkg_assurance.py --write
+          python research/RHRC/integration/source_only_dependency_extract.py --write
+          python research/RHRC/ool/rhkg_phase_atlas.py --write
+      - name: Strict steady-state validation
+        run: |
+          python research/RHRC/graph/build.py --check
+          python research/RHRC/graph/validate.py
+          python research/RHRC/tools/run_suite.py
+          python research/RHRC/audits/post268/verify_frozen.py
+      - name: Commit validated steady state
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          TARGET_BRANCH: research/rh-closure-parallel-campaign
+        run: |
+          test "$(git ls-remote origin refs/heads/$TARGET_BRANCH | cut -f1)" = "$EXPECTED_HEAD"
+          git add -A
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'rhrc: materialize closure campaign steady state'
+          git push origin HEAD:refs/heads/$TARGET_BRANCH

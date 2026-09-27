@@ -8,6 +8,7 @@ structure QuantitativeCanonicalWitness where
   carrier : String
   normalization : String
 
-def QuantitativeCanonicalWitnessVisibility : Prop := False
+/-- Visibility/masking control is intentionally left as an OPEN obligation in
+the campaign manifest; no axiom or false placeholder proposition is created. -/
 
 end Zeta23.ExceptionalZero

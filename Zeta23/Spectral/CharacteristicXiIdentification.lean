@@ -3,10 +3,10 @@ import Zeta23.Spectral.CharacteristicCompactBounds
 namespace Zeta23.Spectral
 
 /-!
-# Closure campaign C2: complex limit identification contract
+# Closure campaign C2: complex limit identification interface
 
-The hard step is identification of the complex compact limit with the intended
-Xi normalization. No equality with Xi is asserted here.
+The hard theorem identifying a compact complex limit with Xi is still OPEN and
+therefore has no placeholder declaration here.
 -/
 
 def ComplexFunctionIdentification (F G : ℂ → ℂ) : Prop :=
@@ -19,8 +19,6 @@ theorem ComplexFunctionIdentification.trans
     ComplexFunctionIdentification F H := by
   intro z
   exact (hFG z).trans (hGH z)
-
-def CanonicalCharacteristicXiIdentification : Prop := False
 
 end Zeta23.Spectral
 

@@ -1,0 +1,143 @@
+name: RHRC parallel closure campaign
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'Zeta23/CCM/SourceContraction.lean'
+      - 'Zeta23/CCM/CanonicalArchUpperBound.lean'
+      - 'Zeta23/CCM/CanonicalPoleUniformBound.lean'
+      - 'Zeta23/CCM/CanonicalSmallApertureCoercivity.lean'
+      - 'Zeta23/CCM/CanonicalPrimeSeamTaylor.lean'
+      - 'Zeta23/CCM/ParityGroundPerturbation.lean'
+      - 'Zeta23/CCM/CanonicalSeamGroundTransfer.lean'
+      - 'Zeta23/CCM/GroundComparisonPrinciple.lean'
+      - 'Zeta23/CCM/CanonicalGroundPropagation.lean'
+      - 'Zeta23/CCM/CanonicalAllAperturePositivity.lean'
+      - 'Zeta23/CCM/CanonicalSchurCertificate.lean'
+      - 'Zeta23/CCM/CanonicalModeTailBound.lean'
+      - 'Zeta23/CCM/CanonicalUniformDomination.lean'
+      - 'Zeta23/CCM/CanonicalFullSpaceSourceBridge.lean'
+      - 'Zeta23/Spectral/**'
+      - 'Zeta23/ExceptionalZero/Quantitative*.lean'
+      - 'Zeta23/RHRC/ClosureObligationBindings.lean'
+      - 'research/RHRC/closure_batch/**'
+      - '.github/workflows/rhrc_closure_campaign.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rhrc-closure-campaign-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fast-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax, adversarial evidence tests, and four-track research harvest
+        run: |
+          python -m compileall -q research/RHRC/closure_batch
+          python -m unittest discover -s research/RHRC/closure_batch -p 'test_*.py' -v
+          python research/RHRC/closure_batch/run_campaign.py --repo . --output-dir /tmp/closure-results
+      - uses: actions/upload-artifact@v4
+        with:
+          name: closure-fast-results
+          path: /tmp/closure-results
+          retention-days: 30
+
+  lean-a:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build Track A
+        run: |
+          lake build Zeta23.CCM.SourceContraction
+          lake build Zeta23.CCM.CanonicalArchUpperBound
+          lake build Zeta23.CCM.CanonicalPoleUniformBound
+          lake build Zeta23.CCM.CanonicalSmallApertureCoercivity
+          lake build Zeta23.CCM.CanonicalPrimeSeamTaylor
+          lake build Zeta23.CCM.ParityGroundPerturbation
+          lake build Zeta23.CCM.CanonicalSeamGroundTransfer
+          lake build Zeta23.CCM.GroundComparisonPrinciple
+          lake build Zeta23.CCM.CanonicalGroundPropagation
+          lake build Zeta23.CCM.CanonicalAllAperturePositivity
+
+  lean-b:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build Track B
+        run: |
+          lake build Zeta23.CCM.CanonicalSchurCertificate
+          lake build Zeta23.CCM.CanonicalModeTailBound
+          lake build Zeta23.CCM.CanonicalUniformDomination
+
+  lean-c:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build Track C
+        run: |
+          lake build Zeta23.CCM.CanonicalFullSpaceSourceBridge
+          lake build Zeta23.Spectral
+
+  lean-d-bindings:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build Track D and exact obligation bindings
+        run: |
+          lake build Zeta23.ExceptionalZero.QuantitativeDetectorFamily
+          lake build Zeta23.ExceptionalZero.QuantitativeCanonicalWitness
+          lake build Zeta23.RHRC.ClosureObligationBindings
+      - name: Reject proof escapes in closure-campaign modules
+        run: |
+          if grep -R -nE '(^|[^A-Za-z])(axiom|sorry|admit)([^A-Za-z]|$)'             Zeta23/CCM/SourceContraction.lean             Zeta23/CCM/CanonicalArchUpperBound.lean             Zeta23/CCM/CanonicalPoleUniformBound.lean             Zeta23/CCM/CanonicalSmallApertureCoercivity.lean             Zeta23/CCM/CanonicalPrimeSeamTaylor.lean             Zeta23/CCM/ParityGroundPerturbation.lean             Zeta23/CCM/CanonicalSeamGroundTransfer.lean             Zeta23/CCM/GroundComparisonPrinciple.lean             Zeta23/CCM/CanonicalGroundPropagation.lean             Zeta23/CCM/CanonicalAllAperturePositivity.lean             Zeta23/CCM/CanonicalSchurCertificate.lean             Zeta23/CCM/CanonicalModeTailBound.lean             Zeta23/CCM/CanonicalUniformDomination.lean             Zeta23/CCM/CanonicalFullSpaceSourceBridge.lean             Zeta23/Spectral             Zeta23/ExceptionalZero/QuantitativeDetectorFamily.lean             Zeta23/ExceptionalZero/QuantitativeCanonicalWitness.lean             Zeta23/RHRC/ClosureObligationBindings.lean; then
+            echo 'Forbidden proof escape found'
+            exit 1
+          fi
+
+  campaign-complete:
+    needs: [fast-integrity, lean-a, lean-b, lean-c, lean-d-bindings]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Parallel closure campaign completed; theorem and research dispositions remain separately classified.'

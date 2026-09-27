@@ -5,12 +5,11 @@ noncomputable section
 namespace Zeta23.CCM
 
 /-!
-# Closure campaign A3: propagation contract
+# Closure campaign A3: propagation interface
 
-A contact derivative sign alone cannot prevent crossing. The actual route must
-supply a neighborhood comparison law with independently controlled
-coefficients. This module records that obligation and a regression
-counterexample shape without claiming the canonical inequality.
+A contact derivative sign alone cannot prevent crossing. The actual canonical
+route must supply a neighborhood comparison law with independently controlled
+coefficients.
 -/
 
 def GroundMultiplicativeComparison
@@ -18,7 +17,9 @@ def GroundMultiplicativeComparison
   ∀ t, t ∈ Set.Icc a b →
     deriv lam t ≥ -C t * lam t
 
-def CanonicalGroundPropagation : Prop := False
+def GroundNonnegativityPropagation
+    (lam : ℝ → ℝ) (L0 : ℝ) : Prop :=
+  ∀ L : ℝ, L0 ≤ L → 0 ≤ lam L0 → 0 ≤ lam L
 
 def cubicCrossingRegression (t : ℝ) : ℝ := -t ^ 3
 
