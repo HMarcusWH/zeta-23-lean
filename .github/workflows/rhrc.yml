@@ -413,7 +413,6 @@ jobs:
           python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure
           python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
       - name: Enforce post-245 arithmetic anti-circularity firewall
-      - name: Enforce post-245 arithmetic anti-circularity firewall
         run: python3 research/RHRC/tools/arithmetic_firewall_lint.py
       - name: "Enforce PR #247 Million Dollar anti-circularity firewall"
         run: python3 research/RHRC/tools/million_dollar_firewall_lint.py
