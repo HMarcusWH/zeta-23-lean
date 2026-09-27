@@ -99,9 +99,11 @@ def main() -> int:
         _arb_matrix_from_sympy,
         arb_unit_interval,
         cell_coordinate_L_arb,
-        fixed_q_canonical_source_matrix_arb,
     )
     from post169_fb05_schur_visibility import one_step_geometry
+    from post175_fb05_q13_fixed_unit_enclosure import (
+        fixed_unit_fixed_q_canonical_source_matrix_arb,
+    )
 
     ctx.prec = PREC
     rows: list[dict] = []
@@ -115,7 +117,7 @@ def main() -> int:
                 for lo in range(DEN):
                     t = arb_unit_interval(lo, lo + 1, DEN)
                     L = cell_coordinate_L_arb(Q, t)
-                    M = fixed_q_canonical_source_matrix_arb(L, K, Q)
+                    M = fixed_unit_fixed_q_canonical_source_matrix_arb(L, K, Q)
                     H = B.transpose() * M * B
                     d, b, S = _schur_form(H)
                     classification, reason = _classify(
@@ -153,6 +155,7 @@ def main() -> int:
         "claim_cap": "RIGOROUS_BOUNDED_ARB_RESEARCH",
         "adaptive_search": False,
         "precision_bits": PREC,
+        "backend": "FIXED_UNIT_CANONICAL_ARB",
         "scope": {
             "physical_Q": list(PHYSICAL_Q),
             "true_von_mangoldt_thresholds": list(TRUE_VM_THRESHOLDS),
@@ -184,6 +187,7 @@ def main() -> int:
             "UNRESOLVED is not evidence for domination.",
             "Q=14,15,18 are physical-cell zero-weight controls, not arithmetic threshold starts.",
             "Only rigorous Arb sign separation creates a frozen-scope disposition.",
+            "The fixed-unit evaluator is the theorem-aligned production representation selected by the historical enclosure audits.",
         ],
     }
     Path(args.output).write_text(json.dumps(out, indent=2, sort_keys=True) + "\n")
