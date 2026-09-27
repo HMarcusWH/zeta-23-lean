@@ -263,7 +263,8 @@ theorem localizedFiniteFunction_positiveOverlap_norm_le_norm_sq
           ∫ t in (0 : ℝ)..(1 - y), ‖F t‖ ^ 2) / 2 := havgEq
     _ ≤ ‖x‖ ^ 2 := by nlinarith
 
-/-- The complementary overlap orientation has the same norm bound. -/
+/-- The complementary overlap orientation is the conjugate of the positive
+overlap, so it has exactly the same norm bound. -/
 theorem localizedFiniteFunction_negativeOverlap_norm_le_norm_sq
     (K : ℕ) (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
     {y : ℝ} (hy0 : 0 ≤ y) (hy1 : y ≤ 1) :
@@ -276,20 +277,22 @@ theorem localizedFiniteFunction_negativeOverlap_norm_le_norm_sq
   let F : ℝ → ℂ := fun t =>
     localizedFiniteFunction 1 K
       ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) t
-  have hab : 0 ≤ 1 - y := sub_nonneg.mpr hy1
-  calc
-    ‖∫ t in (0 : ℝ)..(1 - y), F t * conj (F (t + y))‖
-        ≤ ∫ t in (0 : ℝ)..(1 - y), ‖F t * conj (F (t + y))‖ :=
-          intervalIntegral.norm_integral_le_integral_norm hab
-    _ = ∫ t in (0 : ℝ)..(1 - y), ‖F (t + y) * conj (F t)‖ := by
-      apply intervalIntegral.integral_congr
-      intro t _
-      simp [norm_mul, mul_comm]
-    _ ≥ ‖∫ t in (0 : ℝ)..(1 - y), F (t + y) * conj (F t)‖ := by
-      exact intervalIntegral.norm_integral_le_integral_norm hab
-    _ ≤ ‖x‖ ^ 2 := by
-      simpa [F] using
-        localizedFiniteFunction_positiveOverlap_norm_le_norm_sq K x hy0 hy1
+  have hconj :
+      (∫ t in (0 : ℝ)..(1 - y), F t * conj (F (t + y))) =
+        conj (∫ t in (0 : ℝ)..(1 - y), F (t + y) * conj (F t)) := by
+    calc
+      (∫ t in (0 : ℝ)..(1 - y), F t * conj (F (t + y))) =
+          ∫ t in (0 : ℝ)..(1 - y),
+            conj (F (t + y) * conj (F t)) := by
+              apply intervalIntegral.integral_congr
+              intro t _
+              simp [map_mul, mul_comm]
+      _ = conj (∫ t in (0 : ℝ)..(1 - y),
+          F (t + y) * conj (F t)) := by
+            exact intervalIntegral.intervalIntegral_conj
+  rw [hconj]
+  simpa using
+    localizedFiniteFunction_positiveOverlap_norm_le_norm_sq K x hy0 hy1
 
 /-- Standard L2 statement still required analytically: the symmetrized
 autocorrelation of the normalized finite Fourier vector is bounded by twice
