@@ -1,0 +1,9 @@
+{
+  "schema_version": "RHRC-CLOSURE-CAMPAIGN-STATE-1.0",
+  "pr": 274,
+  "branch": "research/rh-closure-parallel-campaign",
+  "theorem_authority_pr": 272,
+  "experimental_evidence_pr": 273,
+  "candidate_status": "IMPLEMENTING_PARALLEL_CLOSURE_CAMPAIGN",
+  "terminal_claim": "RH_OPEN"
+}

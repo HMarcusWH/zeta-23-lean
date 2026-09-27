@@ -1,0 +1,30 @@
+{
+  "schema_version": "RHRC-CLOSURE-CAMPAIGN-1.0",
+  "pr": 274,
+  "base_commit": "c45511f3b51f973f81d74d0613be6f76a346ae29",
+  "base_tree": "999be3a65a32c7c6a6915b09512889387c703f50",
+  "adaptive_search": false,
+  "terminal_claim": "RH_OPEN",
+  "receipt_scope": {
+    "required_case_ids": [
+      "A_UNIFORM_BASE",
+      "A_SEAM_TRANSFER",
+      "B_SCHUR",
+      "C_SPECTRAL_LIMIT",
+      "D_DETECTOR"
+    ]
+  },
+  "tracks": [
+    {"id": "A", "name": "uniform-base-and-propagation", "authority": "LEAN_PLUS_RESEARCH", "closure_condition": "all-L all-K legal canonical positivity"},
+    {"id": "B", "name": "canonical-arithmetic-schur", "authority": "LEAN_PLUS_RESEARCH", "closure_condition": "unconditional all-parameter canonical domination"},
+    {"id": "C", "name": "analytic-spectral-limit", "authority": "LEAN_PLUS_RESEARCH", "closure_condition": "complex compact Xi identification plus zero transfer"},
+    {"id": "D", "name": "quantitative-offline-family", "authority": "LEAN_PLUS_RESEARCH", "closure_condition": "same-witness quantitative visibility feeding A/B"}
+  ],
+  "firewalls": [
+    "successful execution is not theorem authority",
+    "finite grids do not promote universal quantifiers",
+    "audit equivalences may be final adapters but not premise providers",
+    "planted-zero controls are not alternate zeta functions",
+    "RH remains OPEN unless exact premise-free Mathlib RiemannHypothesis compiles"
+  ]
+}

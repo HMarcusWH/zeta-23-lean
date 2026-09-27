@@ -1,0 +1,21 @@
+{
+  "schema_version": "RHRC-CLOSURE-OBLIGATIONS-1.0",
+  "terminal_claim": "RH_OPEN",
+  "obligations": [
+    {"id": "A1_SOURCE_INTERIOR", "track": "A", "status": "OPEN", "lean_target": "Zeta23.CCM.SourceContractionInteriorObligation", "quantifier": "all K, 0<omega<1, all vectors"},
+    {"id": "A1_ARCH_UPPER", "track": "A", "status": "OPEN", "lean_target": "Zeta23.CCM.CanonicalArchSmallApertureUpperBound", "quantifier": "all K, 0<L<=1/512, all vectors"},
+    {"id": "A1_POLE_LOWER", "track": "A", "status": "OPEN", "lean_target": "Zeta23.CCM.CanonicalPoleCubicLowerBound", "quantifier": "all K, 0<L<=1/512, all vectors"},
+    {"id": "A1_PRIME_VANISH", "track": "A", "status": "OPEN", "lean_target": "Zeta23.CCM.CanonicalSmallAperturePrimeVanishing", "quantifier": "all K, 0<L<=1/512, all vectors"},
+    {"id": "A1_BASE_ASSEMBLY", "track": "A", "status": "CANDIDATE_LEAN", "lean_target": "Zeta23.CCM.canonicalSmallApertureCoercivity_of_channel_bounds", "premises": ["A1_ARCH_UPPER", "A1_POLE_LOWER", "A1_PRIME_VANISH"]},
+    {"id": "A2_FIXED_JETS", "track": "A", "status": "CANDIDATE_LEAN", "lean_target": "Zeta23.CCM.evenBoundaryFlat_sourceAtom_ninth_jet_package", "premises": []},
+    {"id": "A2_GROUND_TRANSFER", "track": "A", "status": "OPEN", "lean_target": "Zeta23.CCM.CanonicalGroundPerturbationPackage", "premises": ["A2_FIXED_JETS"]},
+    {"id": "A3_PROPAGATION", "track": "A", "status": "OPEN", "lean_target": "Zeta23.CCM.CanonicalGroundPropagation", "premises": ["A1_BASE_ASSEMBLY", "A2_GROUND_TRANSFER"]},
+    {"id": "B1_SCHUR_INTERFACE", "track": "B", "status": "CANDIDATE_LEAN", "lean_target": "Zeta23.CCM.not_canonicalSchurCertificateAt_iff", "premises": []},
+    {"id": "B2_UNIFORM_DOMINATION", "track": "B", "status": "OPEN", "lean_target": "Zeta23.CCM.CanonicalUniformDomination", "premises": ["B1_SCHUR_INTERFACE"]},
+    {"id": "C1_FULLSPACE_BRIDGE", "track": "C", "status": "CANDIDATE_LEAN", "lean_target": "Zeta23.CCM.canonicalFullSpaceOperator_energy", "premises": []},
+    {"id": "C2_XI_IDENTIFICATION", "track": "C", "status": "OPEN", "lean_target": "Zeta23.Spectral.CanonicalCharacteristicXiIdentification", "premises": ["C1_FULLSPACE_BRIDGE"]},
+    {"id": "D1_WITNESS_PACKAGE", "track": "D", "status": "CANDIDATE_LEAN", "lean_target": "Zeta23.ExceptionalZero.QuantitativeCanonicalWitness", "premises": []},
+    {"id": "D2_VISIBILITY", "track": "D", "status": "OPEN", "lean_target": "Zeta23.ExceptionalZero.QuantitativeCanonicalWitnessVisibility", "premises": ["D1_WITNESS_PACKAGE"]},
+    {"id": "RH_FINAL", "track": "FINAL", "status": "OPEN", "lean_target": "Mathlib.RiemannHypothesis", "premises": ["A3_PROPAGATION or B2_UNIFORM_DOMINATION or C2_XI_IDENTIFICATION"]}
+  ]
+}
