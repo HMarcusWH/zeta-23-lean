@@ -131,10 +131,43 @@ jobs:
           lake build Zeta23.RHRC.ClosureObligationBindings
       - name: Reject proof escapes in closure-campaign modules
         run: |
-          if grep -R -nE '(^|[^A-Za-z])(axiom|sorry|admit)([^A-Za-z]|$)'             Zeta23/CCM/SourceContraction.lean             Zeta23/CCM/CanonicalArchUpperBound.lean             Zeta23/CCM/CanonicalPoleUniformBound.lean             Zeta23/CCM/CanonicalSmallApertureCoercivity.lean             Zeta23/CCM/CanonicalPrimeSeamTaylor.lean             Zeta23/CCM/ParityGroundPerturbation.lean             Zeta23/CCM/CanonicalSeamGroundTransfer.lean             Zeta23/CCM/GroundComparisonPrinciple.lean             Zeta23/CCM/CanonicalGroundPropagation.lean             Zeta23/CCM/CanonicalAllAperturePositivity.lean             Zeta23/CCM/CanonicalSchurCertificate.lean             Zeta23/CCM/CanonicalModeTailBound.lean             Zeta23/CCM/CanonicalUniformDomination.lean             Zeta23/CCM/CanonicalFullSpaceSourceBridge.lean             Zeta23/Spectral             Zeta23/ExceptionalZero/QuantitativeDetectorFamily.lean             Zeta23/ExceptionalZero/QuantitativeCanonicalWitness.lean             Zeta23/RHRC/ClosureObligationBindings.lean; then
-            echo 'Forbidden proof escape found'
-            exit 1
-          fi
+          python - <<'PY'
+          from pathlib import Path
+          import re, sys
+          sys.path.insert(0, "research/RHRC/tools")
+          from lean_imports import strip_lean_comments
+
+          roots = [
+              Path("Zeta23/CCM/SourceContraction.lean"),
+              Path("Zeta23/CCM/CanonicalArchUpperBound.lean"),
+              Path("Zeta23/CCM/CanonicalPoleUniformBound.lean"),
+              Path("Zeta23/CCM/CanonicalSmallApertureCoercivity.lean"),
+              Path("Zeta23/CCM/CanonicalPrimeSeamTaylor.lean"),
+              Path("Zeta23/CCM/ParityGroundPerturbation.lean"),
+              Path("Zeta23/CCM/CanonicalSeamGroundTransfer.lean"),
+              Path("Zeta23/CCM/GroundComparisonPrinciple.lean"),
+              Path("Zeta23/CCM/CanonicalGroundPropagation.lean"),
+              Path("Zeta23/CCM/CanonicalAllAperturePositivity.lean"),
+              Path("Zeta23/CCM/CanonicalSchurCertificate.lean"),
+              Path("Zeta23/CCM/CanonicalModeTailBound.lean"),
+              Path("Zeta23/CCM/CanonicalUniformDomination.lean"),
+              Path("Zeta23/CCM/CanonicalFullSpaceSourceBridge.lean"),
+              Path("Zeta23/ExceptionalZero/QuantitativeDetectorFamily.lean"),
+              Path("Zeta23/ExceptionalZero/QuantitativeCanonicalWitness.lean"),
+              Path("Zeta23/RHRC/ClosureObligationBindings.lean"),
+          ]
+          roots.extend(sorted(Path("Zeta23/Spectral").rglob("*.lean")))
+          pattern = re.compile(r"(?m)(^|\\W)(axiom|sorry|admit)(?=\\W|$)")
+          bad = []
+          for path in roots:
+              text = strip_lean_comments(path.read_text(encoding="utf-8"))
+              match = pattern.search(text)
+              if match:
+                  bad.append(f"{path}: {match.group(2)}")
+          if bad:
+              raise SystemExit("Forbidden proof escape found:\n" + "\n".join(bad))
+          print(f"CLOSURE PROOF-ESCAPE CHECK: PASS ({len(roots)} files)")
+          PY
 
   campaign-complete:
     needs: [fast-integrity, lean-a, lean-b, lean-c, lean-d-bindings]

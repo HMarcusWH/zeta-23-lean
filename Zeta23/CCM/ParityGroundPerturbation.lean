@@ -8,7 +8,7 @@ namespace Zeta23.CCM
 /-!
 # Closure campaign A2: moving-ground transfer interface
 
-No canonical transfer theorem is asserted yet.  The data type records exactly
+No canonical transfer theorem is asserted yet. The data type records exactly
 what a strict or multiplicity-safe perturbation result must return.
 -/
 
@@ -25,7 +25,7 @@ structure GroundPerturbationResult where
   remainderConstant : ℝ
   remainder_nonnegative : 0 ≤ remainderConstant
 
-/-- The actual canonical strict/tie transfer remains an OPEN obligation in the
-campaign manifest; open obligations receive metadata, not axioms. -/
+-- The actual canonical strict/tie transfer remains an OPEN obligation in the
+-- campaign manifest; open obligations receive metadata, not theorem claims.
 
 end Zeta23.CCM

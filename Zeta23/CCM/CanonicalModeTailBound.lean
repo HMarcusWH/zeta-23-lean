@@ -17,8 +17,9 @@ def CanonicalTailBudget.total (b : CanonicalTailBudget) : ℝ :=
 
 theorem CanonicalTailBudget.total_nonneg (b : CanonicalTailBudget) :
     0 ≤ b.total := by
-  unfold CanonicalTailBudget.total
-  linarith [b.arch_nonneg, b.fourier_nonneg, b.aperture_nonneg]
+  exact add_nonneg
+    (add_nonneg b.arch_nonneg b.fourier_nonneg)
+    b.aperture_nonneg
 
 end Zeta23.CCM
 
