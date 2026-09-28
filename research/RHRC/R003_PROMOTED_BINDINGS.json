@@ -201,6 +201,10 @@
       "theorem": "Zeta23.CCM.dictionaryResidualTest_admissible"
     },
     {
+      "id": "R003_SMALL_APERTURE_POSITIVE_BASE",
+      "theorem": "Zeta23.CCM.canonicalSmallApertureCoercivity_proved"
+    },
+    {
       "id": "R003_SOURCE_KAPPA_FINITE_SECTOR",
       "theorem": "Zeta23.CCM.sourceKappaFiniteVector_eq_sourceFiniteVector"
     },
