@@ -1,0 +1,118 @@
+name: RHRC PR275 A1 steady-state materializer
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: rhrc-pr275-materializer-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  materialize:
+    if: github.head_ref == 'research/post274-arch-density-a1' && github.actor != 'github-actions[bot]' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install RHRC requirements
+        run: python -m pip install -r research/RHRC/requirements.txt
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Formal A1 preflight
+        run: |
+          lake build \
+            Zeta23.CCM.DictionaryArchFiniteDensity \
+            Zeta23.CCM.CanonicalArchDensityClosure \
+            Zeta23.RHRC.ClosureObligationBindings \
+            Zeta23.RHRC.RegisteredClaimBindings \
+            Zeta23.RHRC.SourceCandidateResolution \
+            Zeta23.RHRC.DeclarationDependencyExport
+          python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure
+          python research/RHRC/tools/registered_theorem_binding_lint.py
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/DictionaryArchFiniteDensity.lean \
+            Zeta23/CCM/CanonicalArchDensityClosure.lean \
+            Zeta23/RHRC/ClosureObligationBindings.lean
+      - name: Remove bootstrap materializer before final graph
+        run: git rm -f .github/workflows/rhrc_pr275_materializer.yml
+      - name: Freeze final tracked-path universe
+        run: |
+          git add -A
+          test -z "$(git ls-files --deleted)"
+          test -z "$(git ls-files --others --exclude-standard)"
+          PATHSET_SHA256="$(git ls-files -z | sha256sum | cut -d' ' -f1)"
+          test -n "$PATHSET_SHA256"
+          echo "PATHSET_SHA256=$PATHSET_SHA256" >> "$GITHUB_ENV"
+      - name: Regenerate RHKG and assurance products
+        run: |
+          python research/RHRC/tools/lean_dependency_extract.py --write
+          python research/RHRC/graph/build.py --write
+          python research/RHRC/closure_batch/check_obligation_graph.py
+          python research/RHRC/integration/candidate_exactify.py --write
+          python research/RHRC/ffbbp/rhkg_assurance.py --write
+          python research/RHRC/integration/source_only_dependency_extract.py --write
+          python research/RHRC/ool/rhkg_phase_atlas.py --write
+      - name: Stage exact steady-state tree
+        run: |
+          git add -A
+          test -z "$(git ls-files --deleted)"
+          test -z "$(git ls-files --others --exclude-standard)"
+          CURRENT_PATHSET_SHA256="$(git ls-files -z | sha256sum | cut -d' ' -f1)"
+          test "$CURRENT_PATHSET_SHA256" = "$PATHSET_SHA256"
+          VALIDATED_TREE="$(git write-tree)"
+          test -n "$VALIDATED_TREE"
+          echo "VALIDATED_TREE=$VALIDATED_TREE" >> "$GITHUB_ENV"
+      - name: Strict steady-state validation
+        run: |
+          python research/RHRC/graph/build.py --check
+          python research/RHRC/graph/validate.py
+          python research/RHRC/tools/run_suite.py
+          python research/RHRC/tools/registered_theorem_binding_lint.py
+          python research/RHRC/tools/promoted_binding_lint.py
+          python research/RHRC/closure_batch/check_obligation_graph.py
+          python research/RHRC/tools/arithmetic_firewall_lint.py
+          python research/RHRC/tools/million_dollar_firewall_lint.py
+          python research/RHRC/tools/lean_dependency_extract.py --check
+          python research/RHRC/integration/source_only_dependency_extract.py --check
+          python research/RHRC/integration/candidate_exactify.py --check
+          python research/RHRC/tools/axiom_audit.py
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/DictionaryArchFiniteDensity.lean \
+            Zeta23/CCM/CanonicalArchDensityClosure.lean \
+            Zeta23/RHRC/ClosureObligationBindings.lean
+          python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure
+          python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
+          git diff --exit-code
+          test -z "$(git ls-files --others --exclude-standard)"
+          test "$(git write-tree)" = "$VALIDATED_TREE"
+      - name: Commit validated PR275 steady state
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          TARGET_BRANCH: research/post274-arch-density-a1
+        run: |
+          test "$(git ls-remote origin refs/heads/$TARGET_BRANCH | cut -f1)" = "$EXPECTED_HEAD"
+          test "$(git write-tree)" = "$VALIDATED_TREE"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'rhrc: materialize PR275 A1 steady state'
+          FINAL_COMMIT="$(git rev-parse HEAD)"
+          FINAL_TREE="$(git rev-parse HEAD^{tree})"
+          test "$FINAL_TREE" = "$VALIDATED_TREE"
+          git push origin HEAD:refs/heads/$TARGET_BRANCH

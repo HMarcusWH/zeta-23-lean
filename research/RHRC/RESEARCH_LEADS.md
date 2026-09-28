@@ -4,6 +4,25 @@
 >
 > This is a research inventory, not theorem authority. Exact Lean/compiler/CI state wins.
 
+## Post-#274 / PR #275 consumed lead — same-object dual certification
+
+**THEOREM TARGET / PROMOTION GATED BY EXACT CI.** The ζ(5) mining produced a real composition in the CCM stack rather than a surface analogy.
+
+The same production `dictionaryTest` now carries two independent theorem-backed views:
+
+1. localized autocorrelation / source contraction, yielding the pointwise real defect bound; and
+2. the positive physical archimedean density representation, yielding a scalar tail lower bound.
+
+Their composition gives the full-space small-aperture archimedean estimate and then the full-space canonical coercive base. Once the PR #275 head passes compiler and axiom gates, this lead is **consumed into theorem authority** and should not be farmed again.
+
+Highest-leverage next leads after A1 are therefore:
+
+1. whole-form multiplicity-safe transfer across real prime-power seams;
+2. fixed-cell propagation of the actual legal ground without a simplicity assumption;
+3. composition of those two with the proved positive base to exclude a first crossing.
+
+The broader reusable heuristic survives: search for two genuinely independent constraints on the same retained object, not merely another equivalent representation. RH remains OPEN.
+
 <!-- RHRC_CURRENT_STATE_BEGIN -->
 ## Current RHRC state
 

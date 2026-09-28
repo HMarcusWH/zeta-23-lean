@@ -5,6 +5,21 @@
 Live GitHub head + exact compiler/CI evidence are authoritative dynamically. This file is the current execution SSOT.
 
 
+## Post-#274 / PR #275 A1 positive-base override
+
+This block supersedes the older positive-base and PR-#274-candidate routing text below. Compiler/CI remains authoritative for the exact PR #275 head.
+
+- PR #274 is merged and supplies `localizedFiniteAutocorrelationBound_proved`, `sourceContractionBound_proved`, the coarse pole bound, and exact small-aperture prime vanishing.
+- PR #275 composes that source/autocorrelation control with the already-proved positive archimedean density representation of the **same** production `dictionaryTest`.
+- theorem target = `Zeta23.CCM.canonicalSmallApertureCoercivity_proved`;
+- strength = full-space: for every `0 < L <= 1/512`, every finite K and every Euclidean coefficient vector, `||x||^2 <= matrixRealEnergy (canonicalSourceMatrix L K) x`;
+- the legal boundary-flat A1 base follows immediately and no boundary-flat hypothesis is used upstream;
+- A1 positive base is therefore consumed once the exact PR #275 compiler/axiom gates pass;
+- the remaining Track-A mathematical obligations are **A2 whole-form prime-power seam transfer** and **A3 multiplicity-safe fixed-cell ground propagation**;
+- `CanonicalAllAperturePositivity` and RH remain OPEN.
+
+The cross-project mining lesson is now concrete rather than metaphorical: one canonical finite test is controlled independently through localized autocorrelation/source geometry and through a positive physical archimedean density, and those views compose into a stronger inequality.
+
 ## Post-#264 integration override
 
 This block supersedes older repository/integration-current labels below without
