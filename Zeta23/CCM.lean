@@ -223,4 +223,6 @@ import Zeta23.CCM.ClaimBindings
 import Zeta23.CCM.CanonicalPrimeRemainder
 import Zeta23.CCM.CanonicalArithmeticLowerBound
 import Zeta23.CCM.CofinalLowerBound
+import Zeta23.CCM.DictionaryArchFiniteDensity
+import Zeta23.CCM.CanonicalArchDensityClosure
 import Zeta23.CCM.CanonicalArithmeticCofinal

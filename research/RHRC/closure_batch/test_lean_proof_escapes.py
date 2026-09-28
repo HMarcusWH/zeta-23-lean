@@ -8,6 +8,8 @@ EXPECTED = {
     Path("Zeta23/CCM/SourceContraction.lean"),
     Path("Zeta23/CCM/SourceContractionLocalized.lean"),
     Path("Zeta23/CCM/CanonicalArchUpperBound.lean"),
+    Path("Zeta23/CCM/DictionaryArchFiniteDensity.lean"),
+    Path("Zeta23/CCM/CanonicalArchDensityClosure.lean"),
     Path("Zeta23/CCM/CanonicalPoleUniformBound.lean"),
     Path("Zeta23/CCM/CanonicalPoleSourceBound.lean"),
     Path("Zeta23/CCM/CanonicalSmallApertureCoercivity.lean"),
@@ -40,7 +42,7 @@ class LeanProofEscapeScopeTests(unittest.TestCase):
         roots = closure_roots()
         self.assertEqual(len(roots), len(set(roots)))
         self.assertEqual(set(roots), EXPECTED)
-        self.assertEqual(len(roots), 27)
+        self.assertEqual(len(roots), 29)
         for path in roots:
             self.assertTrue(path.is_file(), str(path))
 

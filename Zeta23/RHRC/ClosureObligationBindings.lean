@@ -1,4 +1,5 @@
 import Zeta23.CCM.CanonicalSmallApertureCoercivity
+import Zeta23.CCM.CanonicalArchDensityClosure
 import Zeta23.CCM.CanonicalPrimeSeamTaylor
 import Zeta23.CCM.CanonicalUniformDomination
 import Zeta23.CCM.CanonicalAllAperturePositivity
@@ -29,6 +30,17 @@ theorem smallApertureBase_of_channelBounds
     (h : CanonicalSmallApertureChannelBounds) :
     CanonicalSmallApertureCoercivity :=
   canonicalSmallApertureCoercivity_of_channel_bounds h
+
+/-- The zeta5-inspired arch-density composition closes the full-space
+small-aperture base unconditionally. -/
+theorem fullSmallApertureBase_proved :
+    CanonicalSmallApertureCoercivity :=
+  canonicalSmallApertureCoercivity_proved
+
+/-- The legal boundary-flat base follows from the stronger full-space theorem. -/
+theorem boundaryFlatSmallApertureBase_proved :
+    CanonicalBoundaryFlatSmallApertureCoercivity :=
+  canonicalBoundaryFlatSmallApertureCoercivity_proved
 
 /-- Critical-path small-aperture adapter on the exact legal carrier. -/
 theorem boundaryFlatSmallApertureBase_of_sourceArch
@@ -79,6 +91,8 @@ end Zeta23.RHRC
 
 #print axioms Zeta23.RHRC.rh_of_canonicalFiniteWeilPositivity
 #print axioms Zeta23.RHRC.smallApertureBase_of_channelBounds
+#print axioms Zeta23.RHRC.fullSmallApertureBase_proved
+#print axioms Zeta23.RHRC.boundaryFlatSmallApertureBase_proved
 #print axioms Zeta23.RHRC.boundaryFlatSmallApertureBase_of_sourceArch
 #print axioms Zeta23.RHRC.pointwiseSchur_of_uniform
 #print axioms Zeta23.RHRC.canonicalFiniteWeilPositivity_of_allAperture

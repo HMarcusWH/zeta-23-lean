@@ -11,58 +11,63 @@
     {
       "id": "A1_LOCALIZED_AUTOCORRELATION",
       "track": "A",
-      "status": "CANDIDATE_THEOREM",
+      "status": "PROVED",
       "target_module": "Zeta23.CCM.SourceContractionLocalized",
       "lean_target": "Zeta23.CCM.localizedFiniteAutocorrelationBound_proved",
       "required_statement": "Prove the unit-aperture L2 autocorrelation bound for every zero-extended finite Fourier vector.",
       "premises": [],
-      "falsification_condition": "Produce a finite Fourier vector and shift y in [0,1] whose symmetrized autocorrelation exceeds twice coefficient norm-square."
+      "falsification_condition": "Produce a finite Fourier vector and shift y in [0,1] whose symmetrized autocorrelation exceeds twice coefficient norm-square.",
+      "note": "Merged PR #274 theorem authority; consumed by the post-#274 arch-density composition."
     },
     {
       "id": "A1_SOURCE_CONTRACTION",
       "track": "A",
-      "status": "CANDIDATE_THEOREM",
+      "status": "PROVED",
       "target_module": "Zeta23.CCM.SourceContractionLocalized",
       "lean_target": "Zeta23.CCM.sourceContractionBound_proved",
       "premises": [
         "A1_LOCALIZED_AUTOCORRELATION"
       ],
       "required_statement": "Discharge SourceContractionBound from the localized autocorrelation theorem.",
-      "falsification_condition": "A sourceMatrix energy exceeds 2*norm^2 for some omega in [0,1]."
+      "falsification_condition": "A sourceMatrix energy exceeds 2*norm^2 for some omega in [0,1].",
+      "note": "Merged PR #274 theorem authority; now supplies the pointwise dictionary defect bound."
     },
     {
       "id": "A1_ARCH_DICTIONARY_LOWER",
       "track": "A",
-      "status": "OPEN",
+      "status": "PROVED",
       "target_module": "Zeta23.CCM.CanonicalArchUpperBound",
-      "interface_declaration": "Zeta23.CCM.CanonicalBoundaryFlatDictionaryArchLowerBound",
       "required_statement": "Prove the physical/dictionary archimedean real-part lower bound on every legal boundary-flat carrier for 0 < L <= 1/512.",
       "required_inputs": [],
-      "falsification_condition": "A certified legal-carrier dictionary archimedean value falls below (2-L)*norm^2."
+      "falsification_condition": "A certified legal-carrier dictionary archimedean value falls below (2-L)*norm^2.",
+      "lean_target": "Zeta23.CCM.canonicalBoundaryFlatDictionaryArchLowerBound_proved",
+      "note": "PR #275 proves the stronger full-space dictionary lower bound by composing source contraction with the positive arch-density identity."
     },
     {
       "id": "A1_ARCH_BOUNDARY_FLAT",
       "track": "A",
-      "status": "CANDIDATE_THEOREM",
+      "status": "PROVED",
       "target_module": "Zeta23.CCM.CanonicalArchUpperBound",
-      "lean_target": "Zeta23.CCM.canonicalBoundaryFlatArchSmallApertureUpperBound_of_dictionaryLower",
+      "lean_target": "Zeta23.CCM.canonicalBoundaryFlatArchSmallApertureUpperBound_proved",
       "premises": [
         "A1_ARCH_DICTIONARY_LOWER"
       ],
       "required_statement": "Transfer the dictionary lower bound through the exact normalization bridge to the canonical boundary-flat archimedean upper bound.",
-      "falsification_condition": "The exact dictionary/canonical archimedean normalization bridge fails."
+      "falsification_condition": "The exact dictionary/canonical archimedean normalization bridge fails.",
+      "note": "PR #275 inherits the legal-carrier result from a stronger full-space canonical archimedean upper bound."
     },
     {
       "id": "A1_POLE_COARSE",
       "track": "A",
-      "status": "CANDIDATE_THEOREM",
+      "status": "PROVED",
       "target_module": "Zeta23.CCM.CanonicalPoleSourceBound",
       "lean_target": "Zeta23.CCM.canonicalPoleSmallApertureLowerBound_of_sourceContraction",
       "premises": [
         "A1_SOURCE_CONTRACTION"
       ],
       "required_statement": "Derive the coarse -1/64 pole lower bound from SourceContractionBound.",
-      "falsification_condition": "Certified pole energy lies below -1/64*norm^2 in the frozen small-aperture range."
+      "falsification_condition": "Certified pole energy lies below -1/64*norm^2 in the frozen small-aperture range.",
+      "note": "Merged PR #274 theorem authority; source contraction discharges the coarse pole channel."
     },
     {
       "id": "A1_POLE_CUBIC_STRENGTHENING",
@@ -72,30 +77,33 @@
       "interface_declaration": "Zeta23.CCM.CanonicalPoleCubicLowerBound",
       "required_statement": "Optional strengthening: prove the cubic pole lower bound retaining the odd negative term.",
       "required_inputs": [],
-      "falsification_condition": "Certified pole energy lies below -(2/9)L^3*norm^2."
+      "falsification_condition": "Certified pole energy lies below -(2/9)L^3*norm^2.",
+      "note": "Optional strengthening only. It is no longer on the critical A1 path after PR #275 closes the positive base from the coarse pole bound plus the arch-density theorem."
     },
     {
       "id": "A1_PRIME_VANISH",
       "track": "A",
-      "status": "CANDIDATE_THEOREM",
+      "status": "PROVED",
       "target_module": "Zeta23.CCM.CanonicalSmallApertureCoercivity",
       "lean_target": "Zeta23.CCM.canonicalSmallAperturePrimeVanishing_proved",
       "premises": [],
       "required_statement": "Prove exact prime-channel vanishing below the first prime threshold.",
-      "falsification_condition": "A nonzero prime term appears for 0 < L <= 1/512."
+      "falsification_condition": "A nonzero prime term appears for 0 < L <= 1/512.",
+      "note": "Merged PR #274 theorem authority."
     },
     {
       "id": "A1_BASE_ASSEMBLY",
       "track": "A",
-      "status": "CANDIDATE_THEOREM",
+      "status": "PROVED",
       "target_module": "Zeta23.CCM.CanonicalSmallApertureCoercivity",
-      "lean_target": "Zeta23.CCM.canonicalBoundaryFlatSmallApertureCoercivity_of_source_arch",
+      "lean_target": "Zeta23.CCM.canonicalBoundaryFlatSmallApertureCoercivity_proved",
       "premises": [
         "A1_SOURCE_CONTRACTION",
         "A1_ARCH_BOUNDARY_FLAT"
       ],
       "required_statement": "Assemble source contraction, coarse pole control, exact prime vanishing and the boundary-flat arch bound into the positive legal-carrier base.",
-      "falsification_condition": "The assembled scalar margin fails to dominate norm-square."
+      "falsification_condition": "The assembled scalar margin fails to dominate norm-square.",
+      "note": "PR #275 closes the legal small-aperture base; the underlying theorem is actually full-space coercivity."
     },
     {
       "id": "A2_FIXED_JETS",

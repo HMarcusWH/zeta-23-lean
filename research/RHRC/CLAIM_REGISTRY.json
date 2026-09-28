@@ -1200,6 +1200,20 @@
       "note": "PR #272 AUDIT-ONLY anti-circularity classification. This proves an equivalence theorem, not RH. It shows that direct construction of the #271 cofinal arithmetic certificate proposition is itself RH-strength and must not be treated as a smaller intermediate lemma."
     },
     {
+      "id": "R003_SMALL_APERTURE_POSITIVE_BASE",
+      "statement": "For every 0 < L <= 1/512, every finite centered coefficient dimension K and every Euclidean coefficient vector x, the canonical source-matrix real energy is at least ||x||^2. Consequently the legal boundary-flat small-aperture base holds unconditionally.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_LOCALIZED_FINITE_SPACE_CORRELATION",
+        "R003_SOURCE_NORMALIZATION_REPAIR"
+      ],
+      "source": "Zeta23/CCM/CanonicalArchDensityClosure.lean",
+      "theorem": "Zeta23.CCM.canonicalSmallApertureCoercivity_proved",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #275. Composes source/autocorrelation contraction and the positive archimedean density representation of the same production dictionaryTest. The theorem is full-space, stronger than the legal-carrier A1 requirement. It does not prove fixed-cell propagation, prime-power seam transfer, all-aperture positivity, or RH."
+    },
+    {
       "id": "R003_COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES",
       "statement": "For every real bound B there exists a positive aperture L>B such that, jointly for every starting size n>=1 and every epsilon>0, some m>=n satisfies CanonicalArithmeticLowerBound L (m+1) epsilon on every legal boundary-flat vector.",
       "status": "OPEN",

@@ -1065,14 +1065,51 @@ def main() -> int:
         ):
             errors.append("Phase 2E ANY cross-atom frontier drift from Phase 2D")
         any_pair = any_frontier.get("pair_probe", {})
+        phase2d_pair = bridge_frontiers.get("containment_probe", {})
+        phase2d_pair_edges = phase2d_pair.get("cross_region_edges", [])
+        phase2d_eligible_pair_edges = [
+            row for row in phase2d_pair_edges if row.get("bridge_candidate_eligible")
+        ]
+
+        # Phase 2D names the strict-superset-only region SUPERSET_ONLY, while
+        # Phase 2E's generic pair view names the same region RIGHT_ONLY because
+        # the configured left root is the strict subset and the right root is
+        # the superset.  Normalize only these presentation labels before exact
+        # edge comparison; all compiler endpoints/channel metadata remain exact.
+        phase2d_to_phase2e_atom = {
+            "SHARED": "SHARED",
+            "SUPERSET_ONLY": "RIGHT_ONLY",
+        }
+        phase2d_pair_edges_as_phase2e = []
+        for edge in phase2d_pair_edges:
+            normalized = dict(edge)
+            normalized["source_atom"] = phase2d_to_phase2e_atom[edge["source_atom"]]
+            normalized["target_atom"] = phase2d_to_phase2e_atom[edge["target_atom"]]
+            normalized["transition"] = (
+                f"{normalized['source_atom']}->{normalized['target_atom']}"
+            )
+            phase2d_pair_edges_as_phase2e.append(normalized)
+        phase2d_pair_edges_as_phase2e.sort(
+            key=lambda row: (row["transition"], row["source"], row["target"])
+        )
+
         if (
-            any_pair.get("relation") != "LEFT_STRICT_SUBSET"
-            or any_pair.get("left_count") != 224
-            or any_pair.get("right_count") != 2659
+            any_pair.get("left_claim_id") != phase2d_pair.get("subset_claim_id")
+            or any_pair.get("right_claim_id") != phase2d_pair.get("superset_claim_id")
+            or any_pair.get("relation") != "LEFT_STRICT_SUBSET"
+            or any_pair.get("left_count") != phase2d_pair.get("subset_count")
+            or any_pair.get("right_count") != phase2d_pair.get("superset_count")
+            or any_pair.get("shared_count") != phase2d_pair.get("subset_count")
             or any_pair.get("left_only_count") != 0
-            or any_pair.get("right_only_count") != 2435
-            or any_pair.get("cross_region_edge_count") != 972
-            or any_pair.get("eligible_cross_region_edge_count") != 949
+            or any_pair.get("right_only_count") != phase2d_pair.get("superset_only_count")
+            or any_pair.get("left_sha256") != phase2d_pair.get("subset_sha256")
+            or any_pair.get("shared_sha256") != phase2d_pair.get("subset_sha256")
+            or any_pair.get("right_only_sha256") != phase2d_pair.get("superset_only_sha256")
+            or any_pair.get("cross_region_edge_count") != len(phase2d_pair_edges)
+            or any_pair.get("eligible_cross_region_edge_count")
+                != len(phase2d_eligible_pair_edges)
+            or any_pair.get("cross_region_edges")
+                != phase2d_pair_edges_as_phase2e
         ):
             errors.append("Phase 2E ANY pair probe does not reproduce Phase 2D baseline")
 

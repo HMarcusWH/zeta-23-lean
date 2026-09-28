@@ -376,12 +376,14 @@ jobs:
         run: lake build Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit
       - name: "Build PR #247 audit-only conditional RH seam"
         run: lake build Zeta23.ExceptionalZero.GlobalParityBottomConditionalRH
-      - name: Build PR #274 closure formal surface
+      - name: Build closure formal surface
         run: |
           lake build \
             Zeta23.CCM.SourceContraction \
             Zeta23.CCM.SourceContractionLocalized \
             Zeta23.CCM.CanonicalArchUpperBound \
+            Zeta23.CCM.DictionaryArchFiniteDensity \
+            Zeta23.CCM.CanonicalArchDensityClosure \
             Zeta23.CCM.CanonicalPoleUniformBound \
             Zeta23.CCM.CanonicalPoleSourceBound \
             Zeta23.CCM.CanonicalSmallApertureCoercivity \
@@ -422,6 +424,8 @@ jobs:
         run: |
           python research/RHRC/tools/axiom_audit.py \
             Zeta23/CCM/CanonicalArchUpperBound.lean \
+            Zeta23/CCM/DictionaryArchFiniteDensity.lean \
+            Zeta23/CCM/CanonicalArchDensityClosure.lean \
             Zeta23/CCM/CanonicalFullSpaceSourceBridge.lean \
             Zeta23/CCM/CanonicalModeTailBound.lean \
             Zeta23/CCM/CanonicalPoleSourceBound.lean \

@@ -19,8 +19,8 @@
           "cohort_id": "CANONICAL_ARITHMETIC_SURFACE",
           "intersection_count": 224,
           "intersection_sha256": "c59fbe0831495967b9e54456d6bc63dc4518621fde42a5cfe1d63a1f4ae92335",
-          "union_count": 2692,
-          "union_sha256": "78a8f1d50d97b41a0fbc69d49f72bcde7b6712db8fbbe7d796ae21ca59ebe2b2"
+          "union_count": 2693,
+          "union_sha256": "a9e8614f12afc4d3f66113aa6044c99a3fa5ab8b94deeef1e8796ef32ee60f2c"
         },
         {
           "claim_ids": [
@@ -34,8 +34,8 @@
           "cohort_id": "GLOBAL_BOTTOM_CHAIN",
           "intersection_count": 242,
           "intersection_sha256": "973c11b2073bf5309cbc4e4d7f576e278ba92c9ac8cbeb0a04ce0956f34d030d",
-          "union_count": 2682,
-          "union_sha256": "a1a5d1e6cf9e78b32b4f9aed921c6bee43f57c78f0b9c3452925805b6fc35788"
+          "union_count": 2683,
+          "union_sha256": "882c2289e31820bc565af099ce4e9bb2ad64c82b5759624eb0334ac9802a730f"
         },
         {
           "claim_ids": [
@@ -124,6 +124,7 @@
             "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
             "R003_PARITY_TIE_GROUND_MULTIPLICITY",
             "R003_RESIDUAL_C2",
+            "R003_SMALL_APERTURE_POSITIVE_BASE",
             "R003_SOURCE_KAPPA_FINITE_SECTOR",
             "R003_SOURCE_NORMALIZATION_REPAIR",
             "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
@@ -143,8 +144,8 @@
           "cohort_id": "ROUTE_R003",
           "intersection_count": 0,
           "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-          "union_count": 2186,
-          "union_sha256": "0a8ead730dcc7b548a1f8b4123f3c44bd8ec75bcc5f1bf59eac74bc91eec8638"
+          "union_count": 2256,
+          "union_sha256": "c5ea624011147da8eefd767331db764a94584315922bb026480cde682ce78bdf"
         },
         {
           "claim_ids": [
@@ -203,8 +204,8 @@
           "claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
           "external_boundary_count": 4275,
           "external_boundary_sha256": "202bd5f61abaeb3f58244f7cb323b9fdaeb764debe1f783d9c6f8ffceca54ec0",
-          "local_dependency_count": 2659,
-          "local_dependency_sha256": "924e64e57e1b36338f3a315e9128a10fa839d5e5fb1105391f0fc3b613df467c",
+          "local_dependency_count": 2660,
+          "local_dependency_sha256": "a995bc099cd3c1f9b450bb6650e00e43aee18b73d8a33c1a7efe534118de5322",
           "root_theorem": "Zeta23.ExceptionalZero.exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_offLine_zero"
         },
         {
@@ -531,8 +532,8 @@
           "claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
           "external_boundary_count": 2449,
           "external_boundary_sha256": "59bebbeec92dc0e7e97e8532cfc0fc256fb8d5854d3a436999fbe24c28ac25ba",
-          "local_dependency_count": 1382,
-          "local_dependency_sha256": "2f60a32745a786e6ac06ac23d2bd514aa9b1b58f509371dfffb0c3e6d9770981",
+          "local_dependency_count": 1383,
+          "local_dependency_sha256": "c213f01b74a85164db56e32fcc08f66e41bea3cfa3fe941a59d378226a2e413e",
           "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.exists_branchPackage"
         },
         {
@@ -718,6 +719,14 @@
           "local_dependency_count": 130,
           "local_dependency_sha256": "dc0f9f1040fe1dc0f6a692d4469213db1136e5fc3e6b12947276ada8a64441f1",
           "root_theorem": "Zeta23.CCM.dictionaryResidualTest_admissible"
+        },
+        {
+          "claim_id": "R003_SMALL_APERTURE_POSITIVE_BASE",
+          "external_boundary_count": 1908,
+          "external_boundary_sha256": "c489515018a8113481ee62c7938a00742c529569a288766de094bfa003e113f3",
+          "local_dependency_count": 521,
+          "local_dependency_sha256": "c93bd4843803ba4fb9b7d7b4758d6ce3138d151d5ef871029819b0e0c0cacfd9",
+          "root_theorem": "Zeta23.CCM.canonicalSmallApertureCoercivity_proved"
         },
         {
           "claim_id": "R003_SOURCE_KAPPA_FINITE_SECTOR",
@@ -973,6 +982,7 @@
             "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
             "R003_PARITY_TIE_GROUND_MULTIPLICITY",
             "R003_RESIDUAL_C2",
+            "R003_SMALL_APERTURE_POSITIVE_BASE",
             "R003_SOURCE_KAPPA_FINITE_SECTOR",
             "R003_SOURCE_NORMALIZATION_REPAIR",
             "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
@@ -992,8 +1002,8 @@
           "cohort_id": "ROUTE_R003",
           "intersection_count": 0,
           "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-          "union_count": 75,
-          "union_sha256": "62c9dce78a3f64385b34ded8ed41fe293314c713e5690d599265dbb425a08da4"
+          "union_count": 76,
+          "union_sha256": "fd08afe8578111e41b51e0f49ce46f398709861f0454ebad29277512e6a86df2"
         },
         {
           "claim_ids": [
@@ -1569,6 +1579,14 @@
           "root_theorem": "Zeta23.CCM.dictionaryResidualTest_admissible"
         },
         {
+          "claim_id": "R003_SMALL_APERTURE_POSITIVE_BASE",
+          "external_boundary_count": 0,
+          "external_boundary_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "local_dependency_count": 1,
+          "local_dependency_sha256": "b335551fa41ffe0abc86d124f7e68b234297c8b7a7095c7c980c0b755286608c",
+          "root_theorem": "Zeta23.CCM.canonicalSmallApertureCoercivity_proved"
+        },
+        {
           "claim_id": "R003_SOURCE_KAPPA_FINITE_SECTOR",
           "external_boundary_count": 17,
           "external_boundary_sha256": "ff909b641fd70bf65eea60d6fd0498b45e0d64906a06bb569b774c7a79416255",
@@ -1717,8 +1735,8 @@
           "cohort_id": "CANONICAL_ARITHMETIC_SURFACE",
           "intersection_count": 224,
           "intersection_sha256": "c59fbe0831495967b9e54456d6bc63dc4518621fde42a5cfe1d63a1f4ae92335",
-          "union_count": 2664,
-          "union_sha256": "fbd61a1d95227e7dae5874968b3a55cbf749bfb56496df02d476c912869c6150"
+          "union_count": 2665,
+          "union_sha256": "1d318220ece218e935a68b21c6260c6c3c665a7f3031fe87502f4088cb4b9a99"
         },
         {
           "claim_ids": [
@@ -1732,8 +1750,8 @@
           "cohort_id": "GLOBAL_BOTTOM_CHAIN",
           "intersection_count": 231,
           "intersection_sha256": "342e360e750fb77b6191cd661ef265fed872e843a8468b7d8d0bb5a3c9da9a0f",
-          "union_count": 2653,
-          "union_sha256": "e5d8391906e7ae982007e4512a2112aa6ce1a5e8c9b1251a24b1ca0e2caa5790"
+          "union_count": 2654,
+          "union_sha256": "43940802d6ae4b7bd53c486333e5a516d25cde6b53d89d63c2ef13d68ee7ff9f"
         },
         {
           "claim_ids": [
@@ -1822,6 +1840,7 @@
             "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
             "R003_PARITY_TIE_GROUND_MULTIPLICITY",
             "R003_RESIDUAL_C2",
+            "R003_SMALL_APERTURE_POSITIVE_BASE",
             "R003_SOURCE_KAPPA_FINITE_SECTOR",
             "R003_SOURCE_NORMALIZATION_REPAIR",
             "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
@@ -1841,8 +1860,8 @@
           "cohort_id": "ROUTE_R003",
           "intersection_count": 0,
           "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-          "union_count": 2179,
-          "union_sha256": "bc87c17cd78a93ce910d3544d38e399ec0ecc565d49b9900c2d6deffd15efcec"
+          "union_count": 2246,
+          "union_sha256": "468e777e4a66c85ced949342aa4f634818e8db3a9f03688f9290e1bd71ce2569"
         },
         {
           "claim_ids": [
@@ -1901,8 +1920,8 @@
           "claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
           "external_boundary_count": 4260,
           "external_boundary_sha256": "8c77cc9bc53e40156c9dc8c4ededf79621da196e8e0d471ef1079066b22f39ad",
-          "local_dependency_count": 2631,
-          "local_dependency_sha256": "de791911be8ebbd008f19bd5aa2752f705ea9e4f6ebdc83efd10369b44cf1db9",
+          "local_dependency_count": 2632,
+          "local_dependency_sha256": "b3f1886630cc4af7b26cfa0abd166cbfec8c64958f164e8a957f021cedec74e7",
           "root_theorem": "Zeta23.ExceptionalZero.exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_offLine_zero"
         },
         {
@@ -2229,8 +2248,8 @@
           "claim_id": "R003_GLOBAL_BOTTOM_BRANCH_PACKAGE",
           "external_boundary_count": 2427,
           "external_boundary_sha256": "13b953dfa76f1ec0757bf37c88b947067f624d4ca817952ea491cdc11fc59b0a",
-          "local_dependency_count": 1335,
-          "local_dependency_sha256": "19aa9f93f44484893251f0a179cf5be0bc5bad9cd69933eb0e01c48b71588315",
+          "local_dependency_count": 1336,
+          "local_dependency_sha256": "4cb7b19ed33048763ae0687ae932b947d65c8d9cb7454fd50daaa405fa90c7b2",
           "root_theorem": "Zeta23.CCM.GlobalBottomResidualState.exists_branchPackage"
         },
         {
@@ -2416,6 +2435,14 @@
           "local_dependency_count": 130,
           "local_dependency_sha256": "dc0f9f1040fe1dc0f6a692d4469213db1136e5fc3e6b12947276ada8a64441f1",
           "root_theorem": "Zeta23.CCM.dictionaryResidualTest_admissible"
+        },
+        {
+          "claim_id": "R003_SMALL_APERTURE_POSITIVE_BASE",
+          "external_boundary_count": 1900,
+          "external_boundary_sha256": "74eb1a7f9b96ed498c86e0faa6b2af93ca16ca96f865fbd073f24084e81c4b20",
+          "local_dependency_count": 518,
+          "local_dependency_sha256": "fd354d078c4b7b8f7f6decc00c95e6cdfee656ffe11d7896cde15875515d6bcf",
+          "root_theorem": "Zeta23.CCM.canonicalSmallApertureCoercivity_proved"
         },
         {
           "claim_id": "R003_SOURCE_KAPPA_FINITE_SECTOR",
@@ -2671,6 +2698,7 @@
             "R003_PARITY_SPLIT_GROUND_SIMPLICITY",
             "R003_PARITY_TIE_GROUND_MULTIPLICITY",
             "R003_RESIDUAL_C2",
+            "R003_SMALL_APERTURE_POSITIVE_BASE",
             "R003_SOURCE_KAPPA_FINITE_SECTOR",
             "R003_SOURCE_NORMALIZATION_REPAIR",
             "R003_SOURCE_WEIL_NORMALIZATION_FIREWALL",
@@ -2690,8 +2718,8 @@
           "cohort_id": "ROUTE_R003",
           "intersection_count": 0,
           "intersection_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-          "union_count": 282,
-          "union_sha256": "ce91472f0cdce906b1abfd708d684b1079a10ecd958d99a5bc170c7c0f11dce1"
+          "union_count": 284,
+          "union_sha256": "ac94bb2b017e387fc40bb3138341c54cc8b8cf90ff603dd8389a0715ad537be3"
         },
         {
           "claim_ids": [
@@ -3265,6 +3293,14 @@
           "local_dependency_count": 11,
           "local_dependency_sha256": "e067d8abcb25781bf7a2bde8ddb1cfc25c2da031c321a4dd9807024636868434",
           "root_theorem": "Zeta23.CCM.dictionaryResidualTest_admissible"
+        },
+        {
+          "claim_id": "R003_SMALL_APERTURE_POSITIVE_BASE",
+          "external_boundary_count": 143,
+          "external_boundary_sha256": "00dadf4fd4e7e6aa70a71025be7586253e77aed8a849e1b8aa0fe4ac6021cd84",
+          "local_dependency_count": 27,
+          "local_dependency_sha256": "b951ed6221f3be3fd86ab903b417ac7350e9be5526cef70f8411011146ada754",
+          "root_theorem": "Zeta23.CCM.canonicalSmallApertureCoercivity_proved"
         },
         {
           "claim_id": "R003_SOURCE_KAPPA_FINITE_SECTOR",

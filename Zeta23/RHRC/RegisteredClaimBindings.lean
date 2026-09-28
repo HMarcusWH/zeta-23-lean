@@ -72,6 +72,7 @@ import Zeta23.CCM.SourceWeightCounterexample
 import Zeta23.ExceptionalZero.CofinalArithmeticConditionalRH
 import Zeta23.ExceptionalZero.CofinalArithmeticEquivalenceAudit
 import Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH
+import Zeta23.CCM.CanonicalArchDensityClosure
 
 -- AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE
 #check Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis
@@ -140,6 +141,10 @@ import Zeta23.ExceptionalZero.CofinalLowerBoundConditionalRH
 -- R003_CANONICAL_EUCLIDEAN_SYMMETRIC
 #check Zeta23.CCM.canonicalSourceMatrix_toEuclideanLin_isSymmetric
 #print axioms Zeta23.CCM.canonicalSourceMatrix_toEuclideanLin_isSymmetric
+
+-- R003_SMALL_APERTURE_POSITIVE_BASE
+#check Zeta23.CCM.canonicalSmallApertureCoercivity_proved
+#print axioms Zeta23.CCM.canonicalSmallApertureCoercivity_proved
 
 -- R003_CANONICAL_PRIME_REMAINDER_NORMAL_FORM
 #check Zeta23.CCM.canonicalSourceChannelEnergy_eq_neg_primeRemainder_sub_budget

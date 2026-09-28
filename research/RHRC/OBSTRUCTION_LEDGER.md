@@ -7,6 +7,20 @@ This ledger records reusable blockers that should shape future route design.
 > **Current active obstruction:** OBS-060 — OPEN / UNCONDITIONAL GROUND-SPECTRUM FIRST-CROSSING BARRIER.
 > **Claim firewall:** RH remains OPEN.
 
+## Post-#274 / PR #275 obstruction delta
+
+**OBS-060C — positive base: CLOSED by the PR #275 theorem target, subject to exact compiler/axiom validation.**
+
+The new proof is stronger than the historical legal-carrier requirement: it proves full-space small-aperture coercivity for every finite coefficient vector at `0 < L <= 1/512`. The proof uses the already-proved source contraction to show the real dictionary defect is nonnegative and the already-proved positive archimedean density identity to convert that pointwise control into the required canonical archimedean bound.
+
+The active Track-A obstruction therefore narrows to:
+
+- **OBS-060D — fixed-cell ground evolution: OPEN;**
+- **OBS-060E — prime-power seam transfer: OPEN;**
+- **OBS-060F — first-crossing exclusion: OPEN, now with its positive-base prerequisite discharged.**
+
+The optional cubic pole strengthening is no longer on the critical path. All-aperture positivity and RH remain OPEN.
+
 <!-- RHRC_CURRENT_STATE_BEGIN -->
 ## Current RHRC state
 
