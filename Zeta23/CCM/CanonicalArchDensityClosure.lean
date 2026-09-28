@@ -100,7 +100,12 @@ theorem one_sub_exp_neg_half_mul_archDensity_le_one
   unfold archDensity
   have hden : 0 < Real.exp y - Real.exp (-y) :=
     sub_pos.mpr (Real.exp_lt_exp.mpr (by linarith))
-  rw [mul_div_assoc, div_le_iff₀ hden]
+  rw [show
+    (1 - Real.exp (-y / 2)) *
+        (Real.exp (y / 2) / (Real.exp y - Real.exp (-y))) =
+      ((1 - Real.exp (-y / 2)) * Real.exp (y / 2)) /
+        (Real.exp y - Real.exp (-y)) by ring]
+  rw [div_le_iff₀ hden]
   have hcancel :
       Real.exp (-y / 2) * Real.exp (y / 2) = 1 := by
     rw [← Real.exp_add]
@@ -287,15 +292,18 @@ theorem dictionaryTest_archDensity_defect_integral_lower
     fun y => (‖x‖ ^ 2 - Complex.re (k y)) * archDensity y
   have hk0 : Complex.re (k 0) = ‖x‖ ^ 2 := by
     simpa [k, u] using dictionaryTest_zero_re_eq_norm_sq K x hL
+  have hk0' :
+      Complex.re (dictionaryTest K u L 0) = ‖x‖ ^ 2 := by
+    simpa [k] using hk0
   have hcomplex :=
     integrableOn_dictionaryTest_sub_mul_archDensity_Ioi K u hL
   have hg : IntegrableOn g (Ioi 0) := by
     have hre := hcomplex.re
     refine hre.congr (Filter.Eventually.of_forall fun y => ?_)
     dsimp [g, k]
-    simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im,
-      mul_zero, sub_zero]
-    rw [hk0]
+    simp only [Complex.mul_re, Complex.sub_re, Complex.ofReal_re,
+      Complex.ofReal_im, mul_zero, sub_zero]
+    rw [hk0']
   have hgHead : IntegrableOn g (Ioc 0 L) :=
     hg.mono_set Ioc_subset_Ioi_self
   have hgTail : IntegrableOn g (Ioi L) :=
@@ -344,35 +352,38 @@ theorem dictionaryArchRHS_dictionaryTest_smallAperture_lower
           (dictionaryTest K
             ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x) L)) := by
   let u := (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x
-  let k := dictionaryTest K u L
-  have hk0 : Complex.re (k 0) = ‖x‖ ^ 2 := by
-    simpa [k, u] using dictionaryTest_zero_re_eq_norm_sq K x hL
+  have hk0 :
+      Complex.re (dictionaryTest K u L 0) = ‖x‖ ^ 2 := by
+    simpa [u] using dictionaryTest_zero_re_eq_norm_sq K x hL
   have hcomplex :=
     integrableOn_dictionaryTest_sub_mul_archDensity_Ioi K u hL
   have hreIntegral :
       Complex.re
           (∫ y : ℝ in Ioi 0,
-            (k 0 - k y) * (archDensity y : ℂ)) =
+            (dictionaryTest K u L 0 - dictionaryTest K u L y) *
+              (archDensity y : ℂ)) =
         ∫ y : ℝ in Ioi 0,
-          (‖x‖ ^ 2 - Complex.re (k y)) * archDensity y := by
+          (‖x‖ ^ 2 - Complex.re (dictionaryTest K u L y)) *
+            archDensity y := by
     rw [← integral_re hcomplex]
     apply integral_congr_ae
     filter_upwards with y
-    simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im,
-      mul_zero, sub_zero]
+    simp only [Complex.mul_re, Complex.sub_re, Complex.ofReal_re,
+      Complex.ofReal_im, mul_zero, sub_zero]
     rw [hk0]
   have hformula :=
     dictionaryArchRHS_dictionaryTest_eq_mu_zero_add_archDensity_integral
       K u hL
   have harch :
-      Complex.re (dictionaryArchRHS k) =
+      Complex.re (dictionaryArchRHS (dictionaryTest K u L)) =
         (2 * Real.pi * Zeta23.mu 0) * ‖x‖ ^ 2 +
           2 * (∫ y : ℝ in Ioi 0,
-            (‖x‖ ^ 2 - Complex.re (k y)) * archDensity y) := by
-    dsimp [k] at hformula ⊢
+            (‖x‖ ^ 2 - Complex.re (dictionaryTest K u L y)) *
+              archDensity y) := by
     rw [hformula]
     simp only [Complex.add_re, Complex.mul_re, Complex.ofReal_re,
-      Complex.ofReal_im, zero_mul, sub_zero]
+      Complex.ofReal_im, Complex.sub_re, zero_mul, sub_zero]
+    norm_num
     rw [hk0, hreIntegral]
     ring
   have hdefect :=
@@ -381,6 +392,9 @@ theorem dictionaryArchRHS_dictionaryTest_smallAperture_lower
     smallAperture_archDensity_tail_margin hL hsmall
   have hscale :=
     mul_le_mul_of_nonneg_right hscalar (sq_nonneg ‖x‖)
+  change
+    (2 - L) * ‖x‖ ^ 2 ≤
+      Complex.re (dictionaryArchRHS (dictionaryTest K u L))
   rw [harch]
   nlinarith
 
