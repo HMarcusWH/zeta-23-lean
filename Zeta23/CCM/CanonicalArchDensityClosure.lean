@@ -376,6 +376,7 @@ theorem dictionaryArchRHS_dictionaryTest_smallAperture_lower
     rw [← integral_re hcomplex]
     apply integral_congr_ae
     filter_upwards with y
+    rw [RCLike.re_eq_complex_re]
     simp only [Complex.mul_re, Complex.sub_re, Complex.ofReal_re,
       Complex.ofReal_im, mul_zero, sub_zero]
     rw [hk0]
