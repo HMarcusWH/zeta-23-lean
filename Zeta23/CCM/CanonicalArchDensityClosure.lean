@@ -365,6 +365,14 @@ theorem dictionaryArchRHS_dictionaryTest_smallAperture_lower
         ∫ y : ℝ in Ioi 0,
           (‖x‖ ^ 2 - Complex.re (dictionaryTest K u L y)) *
             archDensity y := by
+    change
+      RCLike.re
+          (∫ y : ℝ in Ioi 0,
+            (dictionaryTest K u L 0 - dictionaryTest K u L y) *
+              (archDensity y : ℂ)) =
+        ∫ y : ℝ in Ioi 0,
+          (‖x‖ ^ 2 - Complex.re (dictionaryTest K u L y)) *
+            archDensity y
     rw [← integral_re hcomplex]
     apply integral_congr_ae
     filter_upwards with y
@@ -385,7 +393,6 @@ theorem dictionaryArchRHS_dictionaryTest_smallAperture_lower
       Complex.ofReal_im, Complex.sub_re, zero_mul, sub_zero]
     norm_num
     rw [hk0, hreIntegral]
-    ring
   have hdefect :=
     dictionaryTest_archDensity_defect_integral_lower K x hL
   have hscalar :=
