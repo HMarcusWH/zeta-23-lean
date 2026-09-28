@@ -1,0 +1,167 @@
+name: RHRC parallel closure campaign
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'Zeta23/CCM/**'
+      - 'Zeta23/ExceptionalZero/**'
+      - 'Zeta23/RHRC/**'
+      - 'Zeta23/Spectral.lean'
+      - 'Zeta23/Spectral/**'
+      - 'research/RHRC/closure_batch/**'
+      - 'research/RHRC/graph/**'
+      - '.github/workflows/rhrc_closure_campaign.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rhrc-closure-campaign-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fast-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical research dependencies
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Syntax, adversarial evidence tests, and four-track research harvest
+        run: |
+          python -m compileall -q research/RHRC/closure_batch
+          python -m unittest discover -s research/RHRC/closure_batch -p 'test_*.py' -v
+          python research/RHRC/closure_batch/run_campaign.py --repo . --output-dir /tmp/closure-results
+      - uses: actions/upload-artifact@v4
+        with:
+          name: closure-fast-results
+          path: /tmp/closure-results
+          retention-days: 30
+
+  lean-a:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build Track A
+        run: |
+          lake build \
+            Zeta23.CCM.SourceContraction \
+            Zeta23.CCM.SourceContractionLocalized \
+            Zeta23.CCM.CanonicalArchUpperBound \
+            Zeta23.CCM.CanonicalPoleUniformBound \
+            Zeta23.CCM.CanonicalPoleSourceBound \
+            Zeta23.CCM.CanonicalSmallApertureCoercivity \
+            Zeta23.CCM.CanonicalPrimeSeamTaylor \
+            Zeta23.CCM.ParityGroundPerturbation \
+            Zeta23.CCM.ParityRayleighPerturbation \
+            Zeta23.CCM.CanonicalSeamGroundTransfer \
+            Zeta23.CCM.GroundComparisonPrinciple \
+            Zeta23.CCM.CanonicalGroundPropagation \
+            Zeta23.CCM.CanonicalAllAperturePositivity
+      - name: Audit Track A theorem axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/CanonicalArchUpperBound.lean \
+            Zeta23/CCM/CanonicalPoleSourceBound.lean \
+            Zeta23/CCM/CanonicalPrimeSeamTaylor.lean \
+            Zeta23/CCM/CanonicalSeamGroundTransfer.lean \
+            Zeta23/CCM/CanonicalSmallApertureCoercivity.lean \
+            Zeta23/CCM/GroundComparisonPrinciple.lean \
+            Zeta23/CCM/ParityRayleighPerturbation.lean \
+            Zeta23/CCM/SourceContraction.lean \
+            Zeta23/CCM/SourceContractionLocalized.lean
+
+  lean-b:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build Track B
+        run: |
+          lake build Zeta23.CCM.CanonicalSchurCertificate
+          lake build Zeta23.CCM.CanonicalModeTailBound
+          lake build Zeta23.CCM.CanonicalUniformDomination
+      - name: Audit Track B theorem axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/CanonicalSchurCertificate.lean \
+            Zeta23/CCM/CanonicalModeTailBound.lean \
+            Zeta23/CCM/CanonicalUniformDomination.lean
+
+  lean-c:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build Track C
+        run: |
+          lake build Zeta23.CCM.CanonicalFullSpaceSourceBridge
+          lake build Zeta23.Spectral
+      - name: Audit Track C theorem axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/CanonicalFullSpaceSourceBridge.lean \
+            Zeta23/Spectral/CanonicalCharacteristic.lean \
+            Zeta23/Spectral/CanonicalOperator.lean \
+            Zeta23/Spectral/CharacteristicCompactBounds.lean \
+            Zeta23/Spectral/CharacteristicNormalization.lean \
+            Zeta23/Spectral/CharacteristicXiIdentification.lean \
+            Zeta23/Spectral/RealZeroLimitTransfer.lean
+
+  lean-d-bindings:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build Track D and exact obligation bindings
+        run: |
+          lake build Zeta23.ExceptionalZero.QuantitativeDetectorFamily
+          lake build Zeta23.ExceptionalZero.QuantitativeCanonicalWitness
+          lake build Zeta23.RHRC.ClosureObligationBindings
+      - name: Reject proof escapes in closure-campaign modules
+        run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure
+      - name: Audit Track D and obligation-binding theorem axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/ExceptionalZero/QuantitativeDetectorFamily.lean \
+            Zeta23/RHRC/ClosureObligationBindings.lean
+
+  campaign-complete:
+    needs: [fast-integrity, lean-a, lean-b, lean-c, lean-d-bindings]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Parallel closure campaign completed; theorem and research dispositions remain separately classified.'

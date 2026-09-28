@@ -54,11 +54,17 @@ class CurrentStateSurfaceTests(unittest.TestCase):
         self.assertEqual(route["current_obstruction"], "OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER")
         self.assertEqual(
             route["current_next_research_target"],
-            "POST272_TRUE_GROUND_FIRST_CONTACT_ATLAS",
+            "PR274_PARALLEL_CLOSURE_CAMPAIGN",
         )
         self.assertEqual(
             route["current_required_new_information"],
-            "CERTIFIED_TRUE_GROUND_FIXED_CELL_AND_PRIME_POWER_SEAM_RESPONSE",
+            "CANONICAL_PROPAGATION_OR_UNIFORM_DOMINATION_OR_COMPLEX_XI_IDENTIFICATION",
+        )
+        self.assertEqual(self.state["candidate_branch"]["pr"], 274)
+        self.assertEqual(self.state["merged_experimental_research_evidence"]["pr"], 273)
+        self.assertEqual(
+            self.state["merged_experimental_research_evidence"]["disposition"],
+            "CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE",
         )
         self.assertEqual(route["post272_source_only_public_theorem_count"], 682)
         self.assertEqual(route["post272_ffbbp_source_only_module_cohort_count"], 198)
@@ -73,6 +79,8 @@ class CurrentStateSurfaceTests(unittest.TestCase):
     def test_renderer_preserves_claim_firewall(self):
         block = render_current_state_block(self.state)
         self.assertIn("RH = OPEN", block)
+        self.assertIn("current candidate PR = #274 / PARALLEL_CLOSURE_CAMPAIGN_CANDIDATE", block)
+        self.assertIn("merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE", block)
         self.assertIn("direct cofinal certificate construction = OPEN_RH_EQUIVALENT_TERMINAL_PR_272", block)
         self.assertIn(
             "#272 equivalence audit = PROVED_PR_272_AUDIT_ONLY",

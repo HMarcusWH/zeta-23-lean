@@ -33,6 +33,7 @@ def render_current_state_block(state: dict) -> str:
     theorem = state["merged_theorem_anchor"]
     route = state["active_research_route"]
     research = state["latest_research_evidence"]
+    experimental = state.get("merged_experimental_research_evidence") or {}
     control = state["merged_control_anchor"]
     candidate = state.get("candidate_branch") or {}
     return f"""## Current RHRC state
@@ -52,8 +53,10 @@ THEOREM AUTHORITY
 - PR #272 CofinalCanonicalArithmeticCertificates <-> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY
 - RH = OPEN
 
-POST-#272 RESEARCH FRONTIER
-- current PR = #{candidate.get('pr', 'NONE')} / {candidate.get('status', 'NONE')}
+POST-#273 / PR #274 RESEARCH FRONTIER
+- current candidate PR = #{candidate.get('pr', 'NONE')} / {candidate.get('status', 'NONE')}
+- merged experimental research evidence = PR #{experimental.get('pr', 'NONE')} / {experimental.get('disposition', 'NONE')}
+- merged experimental evidence class = {experimental.get('evidence_class', 'NONE')} / theorem promotion = {experimental.get('theorem_promotion', False)}
 - direct cofinal certificate construction = {route['post271_cofinal_arithmetic_certificate_construction']}
 - #272 equivalence audit = {route['post272_cofinal_arithmetic_rh_equivalence']}
 - active obstruction = {route['current_obstruction']}

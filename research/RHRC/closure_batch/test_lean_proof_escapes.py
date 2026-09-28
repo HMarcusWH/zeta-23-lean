@@ -1,0 +1,49 @@
+from pathlib import Path
+import unittest
+
+from check_lean_proof_escapes import closure_roots
+
+
+EXPECTED = {
+    Path("Zeta23/CCM/SourceContraction.lean"),
+    Path("Zeta23/CCM/SourceContractionLocalized.lean"),
+    Path("Zeta23/CCM/CanonicalArchUpperBound.lean"),
+    Path("Zeta23/CCM/CanonicalPoleUniformBound.lean"),
+    Path("Zeta23/CCM/CanonicalPoleSourceBound.lean"),
+    Path("Zeta23/CCM/CanonicalSmallApertureCoercivity.lean"),
+    Path("Zeta23/CCM/CanonicalPrimeSeamTaylor.lean"),
+    Path("Zeta23/CCM/ParityGroundPerturbation.lean"),
+    Path("Zeta23/CCM/ParityRayleighPerturbation.lean"),
+    Path("Zeta23/CCM/CanonicalSeamGroundTransfer.lean"),
+    Path("Zeta23/CCM/GroundComparisonPrinciple.lean"),
+    Path("Zeta23/CCM/CanonicalGroundPropagation.lean"),
+    Path("Zeta23/CCM/CanonicalAllAperturePositivity.lean"),
+    Path("Zeta23/CCM/CanonicalSchurCertificate.lean"),
+    Path("Zeta23/CCM/CanonicalModeTailBound.lean"),
+    Path("Zeta23/CCM/CanonicalUniformDomination.lean"),
+    Path("Zeta23/CCM/CanonicalFullSpaceSourceBridge.lean"),
+    Path("Zeta23/ExceptionalZero/QuantitativeDetectorFamily.lean"),
+    Path("Zeta23/ExceptionalZero/QuantitativeCanonicalWitness.lean"),
+    Path("Zeta23/RHRC/ClosureObligationBindings.lean"),
+    Path("Zeta23/Spectral.lean"),
+    Path("Zeta23/Spectral/CanonicalCharacteristic.lean"),
+    Path("Zeta23/Spectral/CanonicalOperator.lean"),
+    Path("Zeta23/Spectral/CharacteristicCompactBounds.lean"),
+    Path("Zeta23/Spectral/CharacteristicNormalization.lean"),
+    Path("Zeta23/Spectral/CharacteristicXiIdentification.lean"),
+    Path("Zeta23/Spectral/RealZeroLimitTransfer.lean"),
+}
+
+
+class LeanProofEscapeScopeTests(unittest.TestCase):
+    def test_exact_pr274_closure_surface(self):
+        roots = closure_roots()
+        self.assertEqual(len(roots), len(set(roots)))
+        self.assertEqual(set(roots), EXPECTED)
+        self.assertEqual(len(roots), 27)
+        for path in roots:
+            self.assertTrue(path.is_file(), str(path))
+
+
+if __name__ == "__main__":
+    unittest.main()

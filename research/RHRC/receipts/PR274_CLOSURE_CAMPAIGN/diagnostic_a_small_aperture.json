@@ -1,0 +1,160 @@
+{
+  "K": [
+    0,
+    1,
+    3,
+    6
+  ],
+  "L": "1/512",
+  "adaptive_search": false,
+  "claim_cap": "RIGOROUS_BOUNDED_ARB_RESEARCH",
+  "classification": "FULL_SPACE_POSITIVE_ON_FROZEN_SMALL_APERTURE_SCOPE",
+  "nonclaims": [
+    "This finite K audit does not prove the all-K source-contraction, arch, or pole bounds.",
+    "Rigorous bounded Arb evidence is not Lean theorem authority.",
+    "The boundary-flat/full-space analytic base remains open until its premises are Lean-proved."
+  ],
+  "precision_bits": 256,
+  "rh_claim": false,
+  "rows": [
+    {
+      "K": 0,
+      "analytic_candidate_lower": {
+        "certified_negative": false,
+        "certified_positive": true,
+        "contains_zero": false,
+        "lower": "1.9980468733443154229058159722222222222222222222222",
+        "mid": "1.998046873344315422905815972222222222222",
+        "rad": "1.7272337142361124185e-77",
+        "rel_accuracy_bits": 254,
+        "upper": "1.9980468733443154229058159722222222222222222222222"
+      },
+      "lambda_max": {
+        "certified_negative": false,
+        "certified_positive": true,
+        "contains_zero": false,
+        "lower": "4.8266498893188277590454935669469789589381940331280",
+        "mid": "4.826649889318827759045493566946978958938",
+        "rad": "1.1572976527894925885e-73",
+        "rel_accuracy_bits": 244,
+        "upper": "4.8266498893188277590454935669469789589381940331280"
+      },
+      "lambda_min": {
+        "certified_negative": false,
+        "certified_positive": true,
+        "contains_zero": false,
+        "lower": "4.8266498893188277590454935669469789589381940331280",
+        "mid": "4.826649889318827759045493566946978958938",
+        "rad": "1.1572976527894925885e-73",
+        "rel_accuracy_bits": 244,
+        "upper": "4.8266498893188277590454935669469789589381940331280"
+      },
+      "prime_cutoff_Q": 1
+    },
+    {
+      "K": 1,
+      "analytic_candidate_lower": {
+        "certified_negative": false,
+        "certified_positive": true,
+        "contains_zero": false,
+        "lower": "1.9980468733443154229058159722222222222222222222222",
+        "mid": "1.998046873344315422905815972222222222222",
+        "rad": "1.7272337142361124185e-77",
+        "rel_accuracy_bits": 254,
+        "upper": "1.9980468733443154229058159722222222222222222222222"
+      },
+      "lambda_max": {
+        "certified_negative": false,
+        "certified_positive": true,
+        "contains_zero": false,
+        "lower": "6.5458547066028481087666499310230730750209567795753",
+        "mid": "6.545854706602848108766649931023073075021",
+        "rad": "9.4489032023204435287e-74",
+        "rel_accuracy_bits": 244,
+        "upper": "6.5458547066028481087666499310230730750209567795753"
+      },
+      "lambda_min": {
+        "certified_negative": false,
+        "certified_positive": true,
+        "contains_zero": false,
+        "lower": "4.7673862988707613506932122748109842985440737710458",
+        "mid": "4.767386298870761350693212274810984298544",
+        "rad": "1.9906686340405188404e-73",
+        "rel_accuracy_bits": 243,
+        "upper": "4.7673862988707613506932122748109842985440737710458"
+      },
+      "prime_cutoff_Q": 1
+    },
+    {
+      "K": 3,
+      "analytic_candidate_lower": {
+        "certified_negative": false,
+        "certified_positive": true,
+        "contains_zero": false,
+        "lower": "1.9980468733443154229058159722222222222222222222222",
+        "mid": "1.998046873344315422905815972222222222222",
+        "rad": "1.7272337142361124185e-77",
+        "rel_accuracy_bits": 254,
+        "upper": "1.9980468733443154229058159722222222222222222222222"
+      },
+      "lambda_max": {
+        "certified_negative": false,
+        "certified_positive": true,
+        "contains_zero": false,
+        "lower": "7.4910539774669856557100641372014693285007643975156",
+        "mid": "7.491053977466985655710064137201469328501",
+        "rad": "2.6790092962250767953e-73",
+        "rel_accuracy_bits": 243,
+        "upper": "7.4910539774669856557100641372014693285007643975156"
+      },
+      "lambda_min": {
+        "certified_negative": false,
+        "certified_positive": true,
+        "contains_zero": false,
+        "lower": "4.7567377353071177691164097447481061584579022704628",
+        "mid": "4.756737735307117769116409744748106158458",
+        "rad": "3.7339774969934159674e-73",
+        "rel_accuracy_bits": 242,
+        "upper": "4.7567377353071177691164097447481061584579022704628"
+      },
+      "prime_cutoff_Q": 1
+    },
+    {
+      "K": 6,
+      "analytic_candidate_lower": {
+        "certified_negative": false,
+        "certified_positive": true,
+        "contains_zero": false,
+        "lower": "1.9980468733443154229058159722222222222222222222222",
+        "mid": "1.998046873344315422905815972222222222222",
+        "rad": "1.7272337142361124185e-77",
+        "rel_accuracy_bits": 254,
+        "upper": "1.9980468733443154229058159722222222222222222222222"
+      },
+      "lambda_max": {
+        "certified_negative": false,
+        "certified_positive": true,
+        "contains_zero": false,
+        "lower": "8.1350787960277448669157715620781630727671706694503",
+        "mid": "8.135078796027744866915771562078163072767",
+        "rad": "1.0289982994506740523e-72",
+        "rel_accuracy_bits": 242,
+        "upper": "8.1350787960277448669157715620781630727671706694503"
+      },
+      "lambda_min": {
+        "certified_negative": false,
+        "certified_positive": true,
+        "contains_zero": false,
+        "lower": "4.7543732169179663486203259934259266925818277815823",
+        "mid": "4.754373216917966348620325993425926692582",
+        "rad": "1.1132169353771247681e-72",
+        "rel_accuracy_bits": 241,
+        "upper": "4.7543732169179663486203259934259266925818277815823"
+      },
+      "prime_cutoff_Q": 1
+    }
+  ],
+  "schema_version": "RHRC-CLOSURE-SMALL-APERTURE-ARB-AUDIT-1.1",
+  "terminal_claim": "RH_OPEN",
+  "theorem_promotion": false
+}

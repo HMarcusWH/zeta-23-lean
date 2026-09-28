@@ -302,6 +302,16 @@
     },
     {
       "claim_mentions": [],
+      "document_id": "rh:document:research/RHRC/closure_batch/README.md",
+      "document_role": "DOCUMENTATION_ARTIFACT",
+      "file_class": "DOCUMENTATION",
+      "file_id": "rh:file:research/RHRC/closure_batch/README.md",
+      "heading_count": 1,
+      "path": "research/RHRC/closure_batch/README.md",
+      "route_mentions": []
+    },
+    {
+      "claim_mentions": [],
       "document_id": "rh:document:research/RHRC/control_v2/README.md",
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
@@ -844,7 +854,7 @@
       ]
     }
   ],
-  "entry_count": 71,
+  "entry_count": 72,
   "graph_theorem_promotion": false,
   "mention_semantics": "claim_mentions and route_mentions are exact textual-token navigation hints only; they do not establish support, implication, supersession, or theorem authority.",
   "schema_version": "RHKG-final-document-closure-1.0",

@@ -1,0 +1,230 @@
+{
+  "schema_version": "RHRC-CLOSURE-CAMPAIGN-1.1",
+  "pr": 274,
+  "base_commit": "c45511f3b51f973f81d74d0613be6f76a346ae29",
+  "base_tree": "999be3a65a32c7c6a6915b09512889387c703f50",
+  "adaptive_search": false,
+  "terminal_claim": "RH_OPEN",
+  "research_scope": {
+    "A": {
+      "L": "1/512",
+      "K": [
+        0,
+        1,
+        3,
+        6
+      ],
+      "precision_bits": 256,
+      "observables": [
+        "lambda_min",
+        "lambda_max"
+      ]
+    },
+    "B": {
+      "physical_Q": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "true_von_mangoldt_thresholds": [
+        13,
+        16,
+        17,
+        19
+      ],
+      "zero_weight_controls": [
+        14,
+        15,
+        18
+      ],
+      "successor_K": [
+        3,
+        4,
+        6
+      ],
+      "predecessor_N": [
+        2,
+        3,
+        5
+      ],
+      "parities": [
+        "even",
+        "odd"
+      ],
+      "segments_per_cell": 4,
+      "precision_bits": 256,
+      "observables": [
+        "shell_energy",
+        "schur_form_leading_minors"
+      ],
+      "backend": "FIXED_UNIT_MVT_CANONICAL_ARB"
+    },
+    "C": {
+      "L": [
+        2,
+        3,
+        4
+      ],
+      "physical_Q": [
+        7,
+        20,
+        54
+      ],
+      "K": [
+        3,
+        4,
+        6,
+        8
+      ],
+      "z": [
+        {
+          "re": "0",
+          "im": "1/4"
+        },
+        {
+          "re": "0",
+          "im": "1/2"
+        },
+        {
+          "re": "1/2",
+          "im": "1/4"
+        },
+        {
+          "re": "1",
+          "im": "1/2"
+        },
+        {
+          "re": "-1/2",
+          "im": "3/4"
+        }
+      ],
+      "precision_bits": 192,
+      "observables": [
+        "normalized_characteristic",
+        "successive_K_delta_abs",
+        "successive_L_delta_abs"
+      ]
+    },
+    "D": {
+      "specialization_L": 3.7,
+      "specialization_cases": [
+        {
+          "n": 0,
+          "m": 0,
+          "y_over_L": 0.23
+        },
+        {
+          "n": 1,
+          "m": 0,
+          "y_over_L": 0.31
+        },
+        {
+          "n": 1,
+          "m": 1,
+          "y_over_L": 0.19
+        },
+        {
+          "n": 2,
+          "m": -1,
+          "y_over_L": 0.41
+        },
+        {
+          "n": -2,
+          "m": 1,
+          "y_over_L": 0.67
+        }
+      ],
+      "taper_width_fractions": [
+        0.08,
+        0.17,
+        0.25
+      ],
+      "masking_log_height": 12,
+      "masking_lambdas": [
+        0.5,
+        1,
+        2
+      ],
+      "masking_deltas": [
+        0.01,
+        0.03,
+        0.06,
+        0.1,
+        0.2,
+        0.4
+      ],
+      "production_lambda_max": 1,
+      "synthetic_seed": 0
+    }
+  },
+  "numerical_receipt_scope": {
+    "authority": "RIGOROUS_BOUNDED_INTERVALS_ONLY",
+    "tracks": {
+      "A": {
+        "source": "diagnostic_a_small_aperture.json",
+        "observables": [
+          "lambda_min"
+        ],
+        "precision_bits": 256
+      },
+      "B": {
+        "source": "diagnostic_b_schur_arb.json",
+        "observables": [
+          "shell_energy",
+          "schur_form_leading_minors"
+        ],
+        "precision_bits": 256
+      },
+      "C": {
+        "source": "diagnostic_c_characteristic.json",
+        "observables": [
+          "successive_K_delta_abs",
+          "successive_L_delta_abs"
+        ],
+        "precision_bits": 192
+      }
+    },
+    "excluded_tracks": {
+      "D": "Float/synthetic production-visibility diagnostics are categorical research signals, not interval certificates."
+    }
+  },
+  "tracks": [
+    {
+      "id": "A",
+      "name": "uniform-base-and-propagation",
+      "authority": "LEAN_PLUS_RESEARCH",
+      "closure_condition": "all-L all-K legal canonical positivity"
+    },
+    {
+      "id": "B",
+      "name": "canonical-arithmetic-schur",
+      "authority": "LEAN_PLUS_RESEARCH",
+      "closure_condition": "unconditional all-parameter canonical domination"
+    },
+    {
+      "id": "C",
+      "name": "analytic-spectral-limit",
+      "authority": "LEAN_PLUS_RESEARCH",
+      "closure_condition": "complex compact Xi identification plus zero transfer"
+    },
+    {
+      "id": "D",
+      "name": "quantitative-offline-family",
+      "authority": "LEAN_PLUS_RESEARCH",
+      "closure_condition": "same-witness quantitative visibility feeding A/B"
+    }
+  ],
+  "firewalls": [
+    "successful execution is not theorem authority",
+    "finite grids do not promote universal quantifiers",
+    "audit equivalences may be final adapters but not premise providers",
+    "planted-zero controls are not alternate zeta functions",
+    "only rigorous bounded interval outputs enter CLOSURE_NUMERICAL_RECEIPT",
+    "RH remains OPEN unless exact premise-free Mathlib RiemannHypothesis compiles"
+  ]
+}

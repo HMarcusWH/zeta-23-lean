@@ -1,0 +1,85 @@
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
+import re
+import sys
+
+RHRC = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(RHRC / "tools"))
+
+from lean_imports import strip_lean_comments
+
+
+CLOSURE_ROOTS = [
+    Path("Zeta23/CCM/SourceContraction.lean"),
+    Path("Zeta23/CCM/SourceContractionLocalized.lean"),
+    Path("Zeta23/CCM/CanonicalArchUpperBound.lean"),
+    Path("Zeta23/CCM/CanonicalPoleUniformBound.lean"),
+    Path("Zeta23/CCM/CanonicalPoleSourceBound.lean"),
+    Path("Zeta23/CCM/CanonicalSmallApertureCoercivity.lean"),
+    Path("Zeta23/CCM/CanonicalPrimeSeamTaylor.lean"),
+    Path("Zeta23/CCM/ParityGroundPerturbation.lean"),
+    Path("Zeta23/CCM/ParityRayleighPerturbation.lean"),
+    Path("Zeta23/CCM/CanonicalSeamGroundTransfer.lean"),
+    Path("Zeta23/CCM/GroundComparisonPrinciple.lean"),
+    Path("Zeta23/CCM/CanonicalGroundPropagation.lean"),
+    Path("Zeta23/CCM/CanonicalAllAperturePositivity.lean"),
+    Path("Zeta23/CCM/CanonicalSchurCertificate.lean"),
+    Path("Zeta23/CCM/CanonicalModeTailBound.lean"),
+    Path("Zeta23/CCM/CanonicalUniformDomination.lean"),
+    Path("Zeta23/CCM/CanonicalFullSpaceSourceBridge.lean"),
+    Path("Zeta23/ExceptionalZero/QuantitativeDetectorFamily.lean"),
+    Path("Zeta23/ExceptionalZero/QuantitativeCanonicalWitness.lean"),
+    Path("Zeta23/RHRC/ClosureObligationBindings.lean"),
+    Path("Zeta23/Spectral.lean"),
+]
+
+FORBIDDEN = re.compile(r"(?m)(^|\\W)(axiom|sorry|admit)(?=\\W|$)")
+
+
+def closure_roots() -> list[Path]:
+    roots = list(CLOSURE_ROOTS)
+    roots.extend(sorted(Path("Zeta23/Spectral").rglob("*.lean")))
+    return roots
+
+
+def promoted_roots() -> list[Path]:
+    roots: list[Path] = []
+    for root in (Path("Zeta23/CCM"), Path("Zeta23/ExceptionalZero"), Path("Zeta23/Spectral")):
+        roots.extend(sorted(root.rglob("*.lean")))
+    for root_file in (Path("Zeta23/CCM.lean"), Path("Zeta23/ExceptionalZero.lean"), Path("Zeta23/Spectral.lean")):
+        if root_file.is_file():
+            roots.append(root_file)
+    return roots
+
+
+def check(paths: list[Path]) -> None:
+    missing = [str(path) for path in paths if not path.is_file()]
+    if missing:
+        raise SystemExit("CLOSURE PROOF-ESCAPE CHECK: FAIL\nmissing files:\n" + "\n".join(missing))
+
+    bad: list[str] = []
+    for path in paths:
+        text = strip_lean_comments(path.read_text(encoding="utf-8"))
+        match = FORBIDDEN.search(text)
+        if match:
+            bad.append(f"{path}: {match.group(2)}")
+
+    if bad:
+        raise SystemExit("CLOSURE PROOF-ESCAPE CHECK: FAIL\n" + "\n".join(bad))
+
+    print(f"CLOSURE PROOF-ESCAPE CHECK: PASS ({len(paths)} files)")
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--scope", choices=("closure", "promoted"), default="closure")
+    args = parser.parse_args()
+    roots = closure_roots() if args.scope == "closure" else promoted_roots()
+    check(roots)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
