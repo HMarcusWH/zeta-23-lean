@@ -57,6 +57,10 @@ theorem integrable_fourier_dictionaryBasisTest
               Zeta23.paperFT (dictionarySourceTest m L) (tau : ℂ)) =
           Zeta23.paperFT (dictionaryBasisTest n m L) (tau : ℂ)
       rw [← hrel]
+      change
+        c⁻¹ *
+            (c * Zeta23.paperFT (dictionaryBasisTest n m L) (tau : ℂ)) =
+          Zeta23.paperFT (dictionaryBasisTest n m L) (tau : ℂ)
       rw [inv_mul_cancel₀ hc, one_mul]
     exact integrable_fourier_of_integrable_paperFT hpaper
 
@@ -142,6 +146,16 @@ theorem integrable_paperFT_dictionaryTest_mul_mu
     exact integrable_finsetSum _ fun i _ =>
       integrable_finsetSum _ fun j _ => hint i j
   refine hsum.congr (Filter.Eventually.of_forall fun tau => ?_)
+  change
+    (∑ i, ∑ j,
+      (starRingEnd ℂ) (u i) *
+        (Zeta23.paperFT
+            (dictionaryBasisTest (centeredIndex N i) (centeredIndex N j) L)
+            (tau : ℂ) *
+          (Zeta23.mu tau : ℂ)) *
+        u j) =
+      Zeta23.paperFT (dictionaryTest N u L) (tau : ℂ) *
+        (Zeta23.mu tau : ℂ)
   rw [paperFT_dictionaryTest_eq_basis_sum N u hL (tau : ℂ)]
   rw [Finset.sum_mul]
   apply Finset.sum_congr rfl
@@ -170,6 +184,13 @@ theorem integrable_paperFT_dictionaryTest_mul_mu_sub_mu_zero
     hpaper.mul_const _
   refine (hmu.sub hconst).congr
     (Filter.Eventually.of_forall fun tau => ?_)
+  change
+    Zeta23.paperFT (dictionaryTest N u L) (tau : ℂ) *
+          (Zeta23.mu tau : ℂ) -
+        Zeta23.paperFT (dictionaryTest N u L) (tau : ℂ) *
+          (Zeta23.mu 0 : ℂ) =
+      Zeta23.paperFT (dictionaryTest N u L) (tau : ℂ) *
+        ((Zeta23.mu tau - Zeta23.mu 0 : ℝ) : ℂ)
   push_cast
   ring
 
