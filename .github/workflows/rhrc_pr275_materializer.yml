@@ -117,3 +117,10 @@ jobs:
           FINAL_TREE="$(git rev-parse HEAD^{tree})"
           test "$FINAL_TREE" = "$VALIDATED_TREE"
           git push origin HEAD:refs/heads/$TARGET_BRANCH
+      - name: Dispatch final-head RHRC validation
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET_BRANCH: research/post274-arch-density-a1
+        run: |
+          gh workflow run rhrc.yml --ref "$TARGET_BRANCH"
+          echo "Dispatched rhrc.yml against final branch head $(git rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
