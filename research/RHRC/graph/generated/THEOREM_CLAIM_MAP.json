@@ -1124,6 +1124,22 @@
     },
     {
       "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "claim_id": "R003_SMALL_APERTURE_POSITIVE_BASE",
+      "claim_node_id": "rh:claim:R003_SMALL_APERTURE_POSITIVE_BASE",
+      "claim_status": "PROVED_UNCONDITIONAL",
+      "compiler_binding_source": "Zeta23/RHRC/RegisteredClaimBindings.lean",
+      "declaration_id": "rh:decl:Zeta23.CCM.canonicalSmallApertureCoercivity_proved",
+      "historical_r003_promoted": true,
+      "module": "Zeta23.CCM.CanonicalArchDensityClosure",
+      "module_id": "rh:module:Zeta23.CCM.CanonicalArchDensityClosure",
+      "provenance": "REGISTRY_EXACT",
+      "route": "R003_ccm_bridge",
+      "source_file_id": "rh:file:Zeta23/CCM/CanonicalArchDensityClosure.lean",
+      "source_path": "Zeta23/CCM/CanonicalArchDensityClosure.lean",
+      "theorem": "Zeta23.CCM.canonicalSmallApertureCoercivity_proved"
+    },
+    {
+      "binding_source": "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
       "claim_id": "R003_SOURCE_KAPPA_FINITE_SECTOR",
       "claim_node_id": "rh:claim:R003_SOURCE_KAPPA_FINITE_SECTOR",
       "claim_status": "PROVED_UNCONDITIONAL",
@@ -1396,7 +1412,7 @@
     }
   ],
   "graph_theorem_promotion": false,
-  "registered_proved_binding_count": 87,
+  "registered_proved_binding_count": 88,
   "schema_version": "RHKG-phase2b-theorem-claim-map-0.4",
   "scope": "ALL_PROVED_UNCONDITIONAL_REGISTERED_CLAIMS",
   "terminal_claim": "RH_OPEN",
