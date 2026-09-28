@@ -45,6 +45,7 @@ jobs:
             Zeta23.RHRC.SourceCandidateResolution \
             Zeta23.RHRC.DeclarationDependencyExport
           python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure
+          python research/RHRC/tools/registry_lint.py
           python research/RHRC/tools/registered_theorem_binding_lint.py
           python research/RHRC/tools/promoted_binding_lint.py
           python research/RHRC/tools/axiom_audit.py \
