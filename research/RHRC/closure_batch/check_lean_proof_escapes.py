@@ -15,6 +15,8 @@ CLOSURE_ROOTS = [
     Path("Zeta23/CCM/SourceContraction.lean"),
     Path("Zeta23/CCM/SourceContractionLocalized.lean"),
     Path("Zeta23/CCM/CanonicalArchUpperBound.lean"),
+    Path("Zeta23/CCM/DictionaryArchFiniteDensity.lean"),
+    Path("Zeta23/CCM/CanonicalArchDensityClosure.lean"),
     Path("Zeta23/CCM/CanonicalPoleUniformBound.lean"),
     Path("Zeta23/CCM/CanonicalPoleSourceBound.lean"),
     Path("Zeta23/CCM/CanonicalSmallApertureCoercivity.lean"),
