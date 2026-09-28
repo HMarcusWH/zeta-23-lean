@@ -61,7 +61,7 @@ theorem integrable_fourier_dictionaryBasisTest
         c⁻¹ *
             (c * Zeta23.paperFT (dictionaryBasisTest n m L) (tau : ℂ)) =
           Zeta23.paperFT (dictionaryBasisTest n m L) (tau : ℂ)
-      rw [inv_mul_cancel₀ hc, one_mul]
+      rw [← mul_assoc, inv_mul_cancel₀ hc, one_mul]
     exact integrable_fourier_of_integrable_paperFT hpaper
 
 /-- Every production basis test has an integrable real-frequency paper
