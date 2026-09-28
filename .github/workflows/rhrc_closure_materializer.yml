@@ -125,6 +125,18 @@ jobs:
               exit 1
             fi
           done
+      - name: Freeze materialization index before RHKG regeneration
+        run: |
+          git add -A
+          test -z "$(git ls-files --deleted)"
+          test -z "$(git ls-files --others --exclude-standard)"
+          git ls-files --error-unmatch             research/RHRC/receipts/PR274_CLOSURE_CAMPAIGN/MANIFEST.json             >/dev/null
+          MATERIALIZATION_PATHSET_SHA256="$(
+            git ls-files -z | sha256sum | cut -d' ' -f1
+          )"
+          test -n "$MATERIALIZATION_PATHSET_SHA256"
+          echo "MATERIALIZATION_PATHSET_SHA256=$MATERIALIZATION_PATHSET_SHA256" >> "$GITHUB_ENV"
+          echo "Materialization path-set SHA256: $MATERIALIZATION_PATHSET_SHA256" >> "$GITHUB_STEP_SUMMARY"
       - name: Regenerate deterministic research graph and assurance layers
         run: |
           python research/RHRC/graph/build.py --write
@@ -143,6 +155,12 @@ jobs:
       - name: Stage candidate steady-state tree
         run: |
           git add -A
+          test -z "$(git ls-files --deleted)"
+          test -z "$(git ls-files --others --exclude-standard)"
+          CURRENT_PATHSET_SHA256="$(
+            git ls-files -z | sha256sum | cut -d' ' -f1
+          )"
+          test "$CURRENT_PATHSET_SHA256" = "$MATERIALIZATION_PATHSET_SHA256"
           VALIDATED_TREE="$(git write-tree)"
           test -n "$VALIDATED_TREE"
           echo "VALIDATED_TREE=$VALIDATED_TREE" >> "$GITHUB_ENV"
