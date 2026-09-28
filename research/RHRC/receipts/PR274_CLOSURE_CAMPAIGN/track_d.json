@@ -1,0 +1,27 @@
+{
+  "base_research_disposition": "PAIR_VISIBILITY_REQUIRES_BULK_CONTROL_MASKING_COUNTEREXAMPLE_CONFIRMED",
+  "diagnostic_classification": "SMOOTH_TAPER_SPECIALIZATION_BARRIER_CONFIRMED__SYNTHETIC_PRODUCTION_VISIBILITY_OBSERVED_ON_FROZEN_SCOPE",
+  "diagnostic_file": "diagnostic_d_r002.json",
+  "execution_status": "SUCCESS",
+  "integrity_status": "PASS",
+  "masking_counterexample": {
+    "negative_pair_diagonal": [
+      "-1",
+      "0"
+    ],
+    "positive_bulk_diagonal": [
+      "2",
+      "2"
+    ],
+    "total_diagonal": [
+      "1",
+      "2"
+    ]
+  },
+  "research_disposition": "PAIR_VISIBILITY_REQUIRES_BULK_CONTROL_MASKING_COUNTEREXAMPLE_CONFIRMED__DIAGNOSTIC_SMOOTH_TAPER_SPECIALIZATION_BARRIER_CONFIRMED__SYNTHETIC_PRODUCTION_VISIBILITY_OBSERVED_ON_FROZEN_SCOPE",
+  "rh_closure": false,
+  "schema_version": "RHRC-CLOSURE-TRACK-1.0",
+  "terminal_claim": "RH_OPEN",
+  "theorem_authority": false,
+  "track_id": "D"
+}

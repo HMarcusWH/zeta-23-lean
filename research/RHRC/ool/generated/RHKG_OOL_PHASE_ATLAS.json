@@ -1,5 +1,5 @@
 {
-  "candidate_count": 682,
+  "candidate_count": 736,
   "certificate_semantics": {
     "default": "INCOMPLETE without independently configured policy and reviewed signatures",
     "mathematical_theorem_authority": false,
@@ -19,11 +19,11 @@
     "RH remains OPEN"
   ],
   "disposition_counts": {
-    "NO_ACTIVE_INTERFACE_CONTACT": 185,
-    "THEOREM_VALUE_ERASED_FRONTIER_CONTACT": 497
+    "NO_ACTIVE_INTERFACE_CONTACT": 193,
+    "THEOREM_VALUE_ERASED_FRONTIER_CONTACT": 543
   },
   "frontier_probe": {
-    "candidate_projected_frontier_contact_count": 497,
+    "candidate_projected_frontier_contact_count": 543,
     "eligible_cross_region_edge_count": 21,
     "eligible_declaration_surface": {
       "count": 28,
@@ -56,15 +56,15 @@
     "right_claim_id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL"
   },
   "input_snapshot": {
-    "ffbbp_assurance_sha256": "cd498f40514f650777fb3b1f50d197b1f43db3d0d136aa03f8bf6a37b107dc5d",
+    "ffbbp_assurance_sha256": "96c06254312ae7f49e02e8cef441afbc56d88718626915f55b1b7dff9f82f582",
     "ffbbp_selected_reduction": "MODULE_VISIBILITY_SNAPSHOT",
-    "ffbbp_source_only_module_cohort_count": 198,
+    "ffbbp_source_only_module_cohort_count": 212,
     "ool_reference_sha256": "29661d7205b5044fc6fda4c9e733095a2196ba3ce682ed21bef4824616db9bca",
     "projection_frontiers_sha256": "e8e15c22d5fb60ed477083b99b99de2f67bfab1727eb2b9691ce22d1f28cd9c7",
     "registered_dependency_sha256": "bda459eb1600361d773ee8b50a66f13f522c33144a27a9756bc454688a12bf70",
-    "source_only_candidate_count": 682,
-    "source_only_candidate_sha256": "3461e561186d0348229b1042a84cb387e51b96c9647bfb08e2b454d27ce40756",
-    "source_only_dependency_sha256": "892b732d157043b22869c31a2177199a21644f6eb32215251c18d3b7a5615701"
+    "source_only_candidate_count": 736,
+    "source_only_candidate_sha256": "956d0a16dbd80723da8f2b46475c894e0fd9a1f002f8280a8c643e494c399b98",
+    "source_only_dependency_sha256": "d87d5f3cb71d838090ef09f71e3ed6293db198b6593867af06c27f0ec2ff989e"
   },
   "interface_families": {
     "APERTURE_ARITHMETIC": {
@@ -208,7 +208,7 @@
       }
     }
   },
-  "interpretation": "Exact compiler-support contact atlas over 682 source-only public theorem/lemma roots. Contacts are discovery-only and do not establish theorem composition, mathematical implication, relevance ranking, or RH evidence.",
+  "interpretation": "Exact compiler-support contact atlas over 736 source-only public theorem/lemma roots. Contacts are discovery-only and do not establish theorem composition, mathematical implication, relevance ranking, or RH evidence.",
   "mode": "DISCOVERY_INTERFACE_CONTACT_ONLY",
   "ool_kernel_version": "2.7.7",
   "projection": "THEOREM_VALUE_ERASED_SUPPORT",

@@ -21,7 +21,7 @@ THEOREM AUTHORITY
 POST-#273 / PR #274 RESEARCH FRONTIER
 - current candidate PR = #274 / PARALLEL_CLOSURE_CAMPAIGN_CANDIDATE
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
-- merged experimental evidence class = EXPERIMENTAL_SIGNAL_ONLY / theorem promotion = false
+- merged experimental evidence class = EXPERIMENTAL_SIGNAL_ONLY / theorem promotion = False
 - direct cofinal certificate construction = OPEN_RH_EQUIVALENT_TERMINAL_PR_272
 - #272 equivalence audit = PROVED_PR_272_AUDIT_ONLY
 - active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER

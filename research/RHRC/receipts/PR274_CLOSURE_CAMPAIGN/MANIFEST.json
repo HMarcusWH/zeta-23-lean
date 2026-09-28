@@ -1,0 +1,49 @@
+{
+  "files": {
+    "CLOSURE_NUMERICAL_RECEIPT.json": {
+      "bytes": 582971,
+      "sha256": "41fd2a9c45a4e6f3cc3f8e8fac94edacb589b3d042ff47fe206358aa7f3e7315"
+    },
+    "HARVEST.json": {
+      "bytes": 872,
+      "sha256": "dba56e30273771d57a8f9590534192bf12d475bfebb355b746a20f861bd82f4d"
+    },
+    "diagnostic_a_small_aperture.json": {
+      "bytes": 5952,
+      "sha256": "5fbb18f33900d387c6b507d07a9964ef843e605d594522362ba267fadcc92677"
+    },
+    "diagnostic_b_schur_arb.json": {
+      "bytes": 497431,
+      "sha256": "b89298f6ca31004a2eb84a1cbab6d33efd2f3d878077dadb59312ab995adab0a"
+    },
+    "diagnostic_c_characteristic.json": {
+      "bytes": 155603,
+      "sha256": "ab899e9f923ff22e105679052ce9128e0791702369448f754c933c3d9cf8867d"
+    },
+    "diagnostic_d_r002.json": {
+      "bytes": 13416,
+      "sha256": "40119b8ad82dc596c6168a61a74653017361347e3e047088c2d6894d3418991f"
+    },
+    "track_a.json": {
+      "bytes": 1675,
+      "sha256": "10228df891ff0e736d6b6d2b688d84483ff903c79ee0c8eff9f4f164ada6dc78"
+    },
+    "track_b.json": {
+      "bytes": 1237,
+      "sha256": "1702be050102d1d54eba2da63dcb6a46e5b9683953cb005028096e6ac9df140f"
+    },
+    "track_c.json": {
+      "bytes": 1422,
+      "sha256": "4ca0f8d99c0259f711632a21c1d25ee1d49a7874f3d81a2f85a6875c591b2294"
+    },
+    "track_d.json": {
+      "bytes": 928,
+      "sha256": "503b9687a2fc36b85622f6b4fd73cabebacf881718f02037d7131ae06ba7b126"
+    }
+  },
+  "plan_sha256": "0a2d9b8524a075a689571e27e1910cade25d14fced522c42ab175cf8fabae055",
+  "schema_version": "RHRC-PR274-CLOSURE-RECEIPT-MANIFEST-1.1",
+  "source_commit": "ef9beb56b7a04140b8983e040fdac508eed69112",
+  "source_tree": "eeacfed94b9201190b69450e045660c8f01129b4",
+  "terminal_claim": "RH_OPEN"
+}

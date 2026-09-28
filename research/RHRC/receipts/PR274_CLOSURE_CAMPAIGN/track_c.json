@@ -1,0 +1,55 @@
+{
+  "base_research_disposition": "REAL_ZERO_MATCHING_FALSIFIED_AS_LIMIT_IDENTIFICATION_XI_IDENTIFICATION_OPEN",
+  "diagnostic_classification": "FINITE_COMPLEX_BALL_CHARACTERISTIC_SCOUT_NO_LIMIT_THEOREM",
+  "diagnostic_file": "diagnostic_c_characteristic.json",
+  "execution_status": "SUCCESS",
+  "integrity_status": "PASS",
+  "nonreal_discriminator_at_i": {
+    "f_abs": 11.548739357257748,
+    "g_abs": 0.0
+  },
+  "real_zero_residuals": {
+    "-1": [
+      1.2246467991473532e-16,
+      2.4492935982947064e-16
+    ],
+    "-2": [
+      2.4492935982947064e-16,
+      1.2246467991473533e-15
+    ],
+    "-3": [
+      3.6739403974420594e-16,
+      3.673940397442059e-15
+    ],
+    "-4": [
+      4.898587196589413e-16,
+      8.327598234202001e-15
+    ],
+    "0": [
+      0.0,
+      0.0
+    ],
+    "1": [
+      1.2246467991473532e-16,
+      2.4492935982947064e-16
+    ],
+    "2": [
+      2.4492935982947064e-16,
+      1.2246467991473533e-15
+    ],
+    "3": [
+      3.6739403974420594e-16,
+      3.673940397442059e-15
+    ],
+    "4": [
+      4.898587196589413e-16,
+      8.327598234202001e-15
+    ]
+  },
+  "research_disposition": "REAL_ZERO_MATCHING_FALSIFIED_AS_LIMIT_IDENTIFICATION_XI_IDENTIFICATION_OPEN__DIAGNOSTIC_FINITE_COMPLEX_BALL_CHARACTERISTIC_SCOUT_NO_LIMIT_THEOREM",
+  "rh_closure": false,
+  "schema_version": "RHRC-CLOSURE-TRACK-1.0",
+  "terminal_claim": "RH_OPEN",
+  "theorem_authority": false,
+  "track_id": "C"
+}

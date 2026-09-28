@@ -1,0 +1,64 @@
+{
+  "base_research_disposition": "FIXED_VECTOR_JETS_THEOREM_BACKED_MOVING_GROUND_TRANSFER_OPEN",
+  "diagnostic_classification": "FULL_SPACE_POSITIVE_ON_FROZEN_SMALL_APERTURE_SCOPE",
+  "diagnostic_file": "diagnostic_a_small_aperture.json",
+  "diagnostic_only_effective_powers": [
+    {
+      "K": 3,
+      "p08_p10": 8.988343432244582,
+      "p10_p12": 8.99708642861566,
+      "q": 13
+    },
+    {
+      "K": 3,
+      "p08_p10": 8.989968620008451,
+      "p10_p12": 8.997484498382553,
+      "q": 16
+    },
+    {
+      "K": 3,
+      "p08_p10": 8.990392286871751,
+      "p10_p12": 8.99759035106458,
+      "q": 17
+    },
+    {
+      "K": 3,
+      "p08_p10": 8.990933659890025,
+      "p10_p12": 8.997727811088433,
+      "q": 19
+    },
+    {
+      "K": 4,
+      "p08_p10": 8.988532687743026,
+      "p10_p12": 8.997159836737657,
+      "q": 16
+    },
+    {
+      "K": 4,
+      "p08_p10": 8.986366046650126,
+      "p10_p12": 8.996583705117443,
+      "q": 17
+    },
+    {
+      "K": 6,
+      "p08_p10": 9.096896847139458,
+      "p10_p12": 9.029988283635321,
+      "q": 16
+    },
+    {
+      "K": 6,
+      "p08_p10": 8.965980835680131,
+      "p10_p12": 8.991598601911738,
+      "q": 17
+    }
+  ],
+  "execution_status": "SUCCESS",
+  "integrity_status": "PASS",
+  "note": "Serialized decimal midpoints are diagnostics only; exact fixed-vector seventh/ninth jets are supplied by Lean.",
+  "research_disposition": "FIXED_VECTOR_JETS_THEOREM_BACKED_MOVING_GROUND_TRANSFER_OPEN__DIAGNOSTIC_FULL_SPACE_POSITIVE_ON_FROZEN_SMALL_APERTURE_SCOPE",
+  "rh_closure": false,
+  "schema_version": "RHRC-CLOSURE-TRACK-1.0",
+  "terminal_claim": "RH_OPEN",
+  "theorem_authority": false,
+  "track_id": "A"
+}

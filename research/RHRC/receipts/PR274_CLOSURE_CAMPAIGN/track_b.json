@@ -1,0 +1,40 @@
+{
+  "base_research_disposition": "SINGULAR_SAFE_SCHUR_INTERFACE_CONFIRMED_UNIFORM_CANONICAL_DOMINATION_OPEN",
+  "cases": [
+    {
+      "coupling_sq": "1",
+      "determinant": "3",
+      "id": "REGULAR_POSITIVE",
+      "nonnegative": true,
+      "predecessor": "2",
+      "shell": "2"
+    },
+    {
+      "coupling_sq": "1",
+      "determinant": "-1",
+      "id": "SINGULAR_BAD_COUPLING",
+      "nonnegative": false,
+      "predecessor": "0",
+      "shell": "1"
+    },
+    {
+      "coupling_sq": "0",
+      "determinant": "0",
+      "id": "SINGULAR_ZERO_COUPLING",
+      "nonnegative": true,
+      "predecessor": "0",
+      "shell": "1"
+    }
+  ],
+  "diagnostic_classification": "CANONICAL_SCHUR_SCOPE_UNRESOLVED",
+  "diagnostic_file": "diagnostic_b_schur_arb.json",
+  "execution_status": "SUCCESS",
+  "integrity_status": "PASS",
+  "note": "Exact rational falsifiers test Schur semantics only; they are not canonical finite certificates.",
+  "research_disposition": "SINGULAR_SAFE_SCHUR_INTERFACE_CONFIRMED_UNIFORM_CANONICAL_DOMINATION_OPEN__DIAGNOSTIC_CANONICAL_SCHUR_SCOPE_UNRESOLVED",
+  "rh_closure": false,
+  "schema_version": "RHRC-CLOSURE-TRACK-1.0",
+  "terminal_claim": "RH_OPEN",
+  "theorem_authority": false,
+  "track_id": "B"
+}
