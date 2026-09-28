@@ -21,22 +21,6 @@ No RH hypothesis, positivity hypothesis, project axiom, or placeholder proof is
 introduced.
 -/
 
-/-- Convert Mathlib-Fourier integrability back to real-frequency paper-transform
-integrability using the repository's pinned Fourier convention. -/
-theorem integrable_paperFT_of_integrable_fourier
-    {k : ℝ → ℂ}
-    (hF : Integrable (𝓕 k)) :
-    Integrable (fun r : ℝ => Zeta23.paperFT k (r : ℂ)) := by
-  have hc : (-(1 / (2 * Real.pi)) : ℝ) ≠ 0 := by
-    exact neg_ne_zero.mpr
-      (one_div_ne_zero (mul_ne_zero (by norm_num) Real.pi_ne_zero))
-  have hcomp := hF.comp_mul_left' hc
-  refine hcomp.congr (Filter.Eventually.of_forall fun r => ?_)
-  rw [Zeta23.paperFT_ofReal_eq_fourier]
-  congr 1
-  field_simp [Real.pi_ne_zero]
-  ring
-
 /-- Every production basis test has an integrable Fourier transform.  The
 diagonal case is already theorem-backed.  Off the diagonal, the displacement
 identity reduces the paper transform to a nonzero scalar multiple of a
@@ -53,10 +37,10 @@ theorem integrable_fourier_dictionaryBasisTest
       dsimp [c]
       exact_mod_cast hnmZ
     have hN :=
-      integrable_paperFT_of_integrable_fourier
+      Zeta23.EF.integrable_paperFT_ofReal
         (integrable_fourier_dictionarySourceTest hL n)
     have hM :=
-      integrable_paperFT_of_integrable_fourier
+      Zeta23.EF.integrable_paperFT_ofReal
         (integrable_fourier_dictionarySourceTest hL m)
     have hscaled := (hN.sub hM).const_mul c⁻¹
     have hpaper :
@@ -82,7 +66,7 @@ theorem integrable_paperFT_dictionaryBasisTest
     {L : ℝ} (hL : 0 < L) (n m : ℤ) :
     Integrable
       (fun r : ℝ => Zeta23.paperFT (dictionaryBasisTest n m L) (r : ℂ)) :=
-  integrable_paperFT_of_integrable_fourier
+  Zeta23.EF.integrable_paperFT_ofReal
     (integrable_fourier_dictionaryBasisTest hL n m)
 
 /-- The full finite production dictionary has an integrable real-frequency
