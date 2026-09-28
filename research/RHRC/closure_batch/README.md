@@ -21,9 +21,8 @@ outward dyadic intervals.
 
 The campaign and steady-state materializer share
 `check_lean_proof_escapes.py` for comment-stripped Lean source validation.
-The narrow `closure` scope protects the exact 27-file PR274 Lean surface,
-including the root `Zeta23/Spectral.lean` aggregator; a unit test freezes that
-coverage. The wider `promoted` scope is rerun before steady-state
+The narrow `closure` scope now protects the 29-file closure Lean surface,
+including the two post-#274 arch-density A1 modules and the root `Zeta23/Spectral.lean` aggregator; a unit test freezes that coverage. The wider `promoted` scope is rerun before steady-state
 materialization. The same theorem-bearing closure modules are re-elaborated by
 the existing kernel axiom auditor, and neither scan promotes OPEN obligations.
 
