@@ -5,6 +5,21 @@
 Live GitHub head + exact compiler/CI evidence are authoritative dynamically. This file is the current execution SSOT.
 
 
+## Post-#275 / PR #276 spectral-ground anchor candidate
+
+This is the immediate post-green theoremization target after merged PR #275.
+
+- base theorem authority = PR #275 / `canonicalSmallApertureCoercivity_proved`;
+- target module = `Zeta23.CCM.CanonicalSmallApertureGroundSpectrum`;
+- target regime = nontrivial successor sizes `N + 1` with `1 <= N`;
+- target consequences = complete boundary-flat Rayleigh bottom >= 1, `globalParitySuccessorBottom >= 1`, and each parity Rayleigh bottom >= 1 throughout `0 < L <= 1/512`;
+- no ground simplicity, parity selection, bad-state existence, aperture propagation, seam-transfer, or RH premise is permitted;
+- claim-registry promotion is withheld until exact compiler/axiom gates pass;
+- after green, the next operations are the A3/B2 terminal-strength audits and fixed-K multiplicity-safe aperture continuity/contact work.
+
+RH remains OPEN.
+
+
 ## Post-#264 integration override
 
 This block supersedes older repository/integration-current labels below without
