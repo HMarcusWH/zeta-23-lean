@@ -6,23 +6,23 @@ RHRC = Path(__file__).resolve().parents[2]
 
 
 class Post277SyncTests(unittest.TestCase):
-    def test_post276_authority_and_post277_candidate(self):
+    def test_post277_authority_and_post278_candidate(self):
         state = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
         theorem = state["merged_theorem_anchor"]
-        self.assertEqual(theorem["pr"], 276)
-        self.assertEqual(theorem["validated_head"], "7a42a94fcd963f588613965146d71e2e3324cf6c")
-        self.assertEqual(theorem["merge_commit"], "147705222f8146d44f2cad8ed3081464945cc0e7")
-        self.assertEqual(theorem["tree"], "8745abb37a686163c2cc7c925ca05b50eb3502fa")
+        self.assertEqual(theorem["pr"], 277)
+        self.assertEqual(theorem["validated_head"], "655bbfe77648c545eba82351e075a27c1dc71d3f")
+        self.assertEqual(theorem["merge_commit"], "ea8f54802b1de0c5588dc9d0edfb44d5abb2cb47")
+        self.assertEqual(theorem["tree"], "9a11c4ea404c123b5d29738880e3fd7e9d66ad02")
         candidate = state["candidate_branch"]
-        self.assertEqual(candidate["pr"], 277)
-        self.assertEqual(candidate["branch"], "research/post276-ground-sign-strength-audit")
+        self.assertEqual(candidate["pr"], 278)
+        self.assertEqual(candidate["branch"], "research/post277-first-contact-closure-attempt")
         self.assertEqual(
             candidate["theorem_validation_head"],
-            "66f9791a981e5f0cfc5a2b43622d1862671f26e3",
+            "12d04731f811c0e6303ef29d41bb19ecbfc19963",
         )
-        self.assertEqual(candidate["theorem_validation"], "DEDICATED_LEAN_STRENGTH_AUDIT_PASS")
+        self.assertEqual(candidate["theorem_validation"], "CI_PENDING")
         self.assertEqual(state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(state["terminal_claim"], "RH_OPEN")
 

@@ -16,13 +16,13 @@
     "status": "MERGED_GREEN_CONTROL_STATE"
   },
   "candidate_branch": {
-    "pr": 277,
-    "branch": "research/post276-ground-sign-strength-audit",
-    "status": "POST276_GROUND_SIGN_STRENGTH_AUDIT_CANDIDATE",
-    "theorem_family": "FIXED_N_SIGN_OPPOSITION_PLUS_TERMINAL_STRENGTH_AUDITS",
+    "pr": 278,
+    "branch": "research/post277-first-contact-closure-attempt",
+    "status": "POST277_FIRST_CONTACT_CLOSURE_CANDIDATE",
+    "theorem_family": "FIXED_N_C0_CONTINUITY_AND_ZERO_CONTACT",
     "terminal_claim_change": false,
-    "theorem_validation_head": "66f9791a981e5f0cfc5a2b43622d1862671f26e3",
-    "theorem_validation": "DEDICATED_LEAN_STRENGTH_AUDIT_PASS"
+    "theorem_validation_head": "12d04731f811c0e6303ef29d41bb19ecbfc19963",
+    "theorem_validation": "CI_PENDING"
   },
   "latest_research_evidence": {
     "pr": 223,
@@ -326,5 +326,5 @@
     "theorem_promotion": false,
     "terminal_claim": "RH_OPEN"
   },
-  "current_control_note": "Post-#277 merged override: PR #277 is merged theorem authority for same-fixed-N ground sign opposition under an off-line zero and for audit-only RH sufficiency of CanonicalGlobalGroundPropagation(1/512) and CanonicalUniformDomination. The active subterminal target is production fixed-N multiplicity-safe aperture continuity across fixed cells and every log-integer cutoff seam. Once continuity is proved independently, sign opposition yields an exact zero contact by IVT. Control semantics remain frozen at PR #117. RH remains OPEN."
+  "current_control_note": "Post-#277 / PR #278 candidate override: PR #277 is merged theorem authority for same-fixed-N ground sign opposition under an off-line zero and for audit-only RH sufficiency of CanonicalGlobalGroundPropagation(1/512) and CanonicalUniformDomination. PR #278 is the active fail-closed candidate for production fixed-N multiplicity-safe aperture continuity across fixed cells and every log-integer cutoff seam, followed by exact same-N zero-contact extraction. Candidate theorem validation is pending CI on the repaired theorem-stage head. Control semantics remain frozen at PR #117. RH remains OPEN."
 }

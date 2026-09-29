@@ -6,10 +6,10 @@
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #276
-- validated final head = 7a42a94fcd963f588613965146d71e2e3324cf6c
-- merge commit = 147705222f8146d44f2cad8ed3081464945cc0e7
-- tree = 8745abb37a686163c2cc7c925ca05b50eb3502fa
+- merged theorem authority = PR #277
+- validated final head = 655bbfe77648c545eba82351e075a27c1dc71d3f
+- merge commit = ea8f54802b1de0c5588dc9d0edfb44d5abb2cb47
+- tree = 9a11c4ea404c123b5d29738880e3fd7e9d66ad02
 - status = MERGED_GREEN_THEOREM_STATE
 - PR #275 full-space small-aperture coercive base = PROVED
 - PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
@@ -17,17 +17,17 @@ THEOREM AUTHORITY
 - RH = OPEN
 
 CURRENT RESEARCH FRONTIER
-- current candidate PR = #277 / POST276_GROUND_SIGN_STRENGTH_AUDIT_CANDIDATE
-- candidate theorem-validation head = 66f9791a981e5f0cfc5a2b43622d1862671f26e3
-- candidate theorem-validation status = DEDICATED_LEAN_STRENGTH_AUDIT_PASS
+- current candidate PR = #278 / POST277_FIRST_CONTACT_CLOSURE_CANDIDATE
+- candidate theorem-validation head = 12d04731f811c0e6303ef29d41bb19ecbfc19963
+- candidate theorem-validation status = CI_PENDING
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
-- fixed-N sign opposition = COMPILER_GREEN_CANDIDATE_PR_277
-- global ground propagation strength = RH_SUFFICIENT_AUDIT_COMPILER_GREEN_PR_277_HEAD
-- uniform domination strength = RH_SUFFICIENT_AUDIT_COMPILER_GREEN_PR_277_HEAD
+- fixed-N sign opposition = PROVED_MERGED_PR_277
+- global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
+- uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
 - active subobligation = FIXED_N_MULTIPLICITY_SAFE_APERTURE_CONTINUITY
 - next research target = FIXED_N_MULTIPLICITY_SAFE_APERTURE_CONTINUITY
-- required new information = UNIFORM_PARITY_RAYLEIGH_PERTURBATION_ENVELOPES_ACROSS_FIXED_CELLS_AND_PRIME_POWER_SEAMS
+- required new information = PRODUCTION_C0_APERTURE_CONTINUITY_ACROSS_ALL_LOG_INTEGER_CUTOFF_SEAMS
 - RH-sufficient terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE
