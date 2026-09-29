@@ -258,6 +258,48 @@ projection can promote a registered claim.
 
 **RH remains OPEN.**
 
+
+## PR validation versus materialized snapshots
+
+RHKG generated products are deterministic, disposable views. Their checked-in
+bytes describe a **materialized repository state**. Because the file census
+includes exact Git blob identities for subject files, an ordinary PR that changes
+a Lean source, document, workflow, registry, or other tracked subject file will
+necessarily make those checked-in snapshots stale before materialization.
+
+That byte drift is not by itself a theorem or PR-validity failure.
+
+CI therefore separates two questions:
+
+1. `python-rhrc` runs claim, firewall, regression, graph-unit, FFBBP-unit, OoL-unit,
+   control, integration, and countermodel checks without demanding that the
+   pre-existing checked-in derived snapshots already describe the new PR tree.
+2. `rhkg-compiler-receipt` sets up Lean, regenerates the **complete derived-state
+   chain in dependency order from the exact PR head**, and then runs the strict
+   byte-current checks and RHKG validation on those regenerated products.
+
+The shared entry point is:
+
+```bash
+python research/RHRC/tools/materialize_derived_state.py --write
+python research/RHRC/tools/materialize_derived_state.py --check
+```
+
+The pipeline regenerates, in order, the registered compiler dependency receipt,
+RHKG graph products, source-candidate exactification, FFBBP assurance,
+source-only compiler dependencies, and the OoL phase atlas.
+
+Checked-in generated products may still be refreshed in a final steady-state
+materialization commit when the project wants the repository snapshot itself to
+be current. The blocking PR gate, however, validates **regeneratability and the
+resulting exact PR-head state**, rather than requiring every first-pass PR commit
+to hand-carry generated churn.
+
+This preserves Article XXXIII's deterministic byte-equality requirement for a
+materialized state while removing a structurally guaranteed false-red condition
+from ordinary PR validation.
+
+
 ## Commands
 
 From the repository root:
