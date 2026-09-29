@@ -67,8 +67,9 @@ theorem parityRayleighPerturbationBound_of_clmNorm
     ParityRayleighPerturbationBound p L₁ L₂ K
       ‖parityCompressedCanonicalCLM p L₁ K -
         parityCompressedCanonicalCLM p L₂ K‖ := by
-  let T₁ := parityCompressedCanonicalCLM p L₁ K
-  let T₂ := parityCompressedCanonicalCLM p L₂ K
+  let V := euclideanParityBoundaryFlatSubspace p K
+  let T₁ : V →L[ℂ] V := parityCompressedCanonicalCLM p L₁ K
+  let T₂ : V →L[ℂ] V := parityCompressedCanonicalCLM p L₂ K
   refine ⟨?_, ?_⟩
   · exact norm_nonneg
       (parityCompressedCanonicalCLM p L₁ K -
@@ -76,25 +77,29 @@ theorem parityRayleighPerturbationBound_of_clmNorm
   intro x hx
   have hq₁ :
       parityRayleighQuotientAt p L₁ K x =
-        T₁.rayleighQuotient x := by
-    simp [parityRayleighQuotientAt, T₁,
+        ContinuousLinearMap.rayleighQuotient T₁ (x : V) := by
+    simp [parityRayleighQuotientAt, T₁, V,
       ContinuousLinearMap.rayleighQuotient,
       ContinuousLinearMap.reApplyInnerSelf_apply]
   have hq₂ :
       parityRayleighQuotientAt p L₂ K x =
-        T₂.rayleighQuotient x := by
-    simp [parityRayleighQuotientAt, T₂,
+        ContinuousLinearMap.rayleighQuotient T₂ (x : V) := by
+    simp [parityRayleighQuotientAt, T₂, V,
       ContinuousLinearMap.rayleighQuotient,
       ContinuousLinearMap.reApplyInnerSelf_apply]
   rw [hq₁, hq₂]
   have hdiff :
-      (T₁ - T₂).rayleighQuotient x =
-        T₁.rayleighQuotient x - T₂.rayleighQuotient x := by
+      ContinuousLinearMap.rayleighQuotient (T₁ - T₂) (x : V) =
+        ContinuousLinearMap.rayleighQuotient T₁ (x : V) -
+          ContinuousLinearMap.rayleighQuotient T₂ (x : V) := by
     rw [show T₁ - T₂ = T₁ + (-T₂) by abel,
       ContinuousLinearMap.rayleighQuotient_add,
       ContinuousLinearMap.rayleighQuotient_neg_apply]
   rw [← hdiff]
-  exact ContinuousLinearMap.rayleighQuotient_le_norm (T₁ - T₂) x
+  have habs :=
+    ContinuousLinearMap.rayleighQuotient_le_norm
+      (𝕜 := ℂ) (T₁ - T₂) (x : V)
+  simpa [T₁, T₂, V] using habs
 
 /-- A uniform Rayleigh perturbation controls one directed difference of parity
 bottoms.  No simplicity assumption is used. -/
