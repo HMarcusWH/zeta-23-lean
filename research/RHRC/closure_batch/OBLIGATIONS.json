@@ -108,22 +108,24 @@
     {
       "id": "A2_FIXED_JETS",
       "track": "A",
-      "status": "CANDIDATE_THEOREM",
+      "status": "PROVED",
       "target_module": "Zeta23.CCM.CanonicalPrimeSeamTaylor",
       "lean_target": "Zeta23.CCM.evenBoundaryFlat_sourceAtom_ninth_jet_package",
       "premises": [],
       "required_statement": "Establish the fixed-vector seventh/ninth source-coordinate jet packages.",
-      "falsification_condition": "A required endpoint derivative fails to vanish or has the wrong exact moment coefficient."
+      "falsification_condition": "A required endpoint derivative fails to vanish or has the wrong exact moment coefficient.",
+      "note": "Compiler/axiom validated on the closure surface before PR #277; status synchronized in PR #277."
     },
     {
       "id": "A2_RAYLEIGH_PERTURBATION",
       "track": "A",
-      "status": "CANDIDATE_THEOREM",
+      "status": "PROVED",
       "target_module": "Zeta23.CCM.ParityRayleighPerturbation",
       "lean_target": "Zeta23.CCM.abs_globalParitySuccessorBottom_sub_le_of_parity_bounds",
       "premises": [],
       "required_statement": "Control the actual legal successor ground from uniform parity Rayleigh perturbation bounds without a simplicity assumption.",
-      "falsification_condition": "A finite-dimensional parity operator pair violates the stated min-Rayleigh perturbation inequality."
+      "falsification_condition": "A finite-dimensional parity operator pair violates the stated min-Rayleigh perturbation inequality.",
+      "note": "Compiler/axiom validated on the closure surface before PR #277; status synchronized in PR #277."
     },
     {
       "id": "A2_GROUND_TRANSFER",
@@ -148,7 +150,8 @@
       "required_inputs": [
         "A1_BASE_ASSEMBLY"
       ],
-      "falsification_condition": "A canonical legal ground crosses below zero inside one fixed cell from a nonnegative left state."
+      "falsification_condition": "A canonical legal ground crosses below zero inside one fixed cell from a nonnegative left state.",
+      "note": "Remains OPEN and subterminal. PR #277 classifies only the stronger CanonicalGlobalGroundPropagation(1/512) proposition as RH-sufficient; fixed-cell continuity/propagation remains legitimate intermediate mathematics."
     },
     {
       "id": "A3_ALL_APERTURE",
@@ -167,12 +170,13 @@
     {
       "id": "B1_SCHUR_INTERFACE",
       "track": "B",
-      "status": "CANDIDATE_THEOREM",
+      "status": "PROVED",
       "target_module": "Zeta23.CCM.CanonicalSchurCertificate",
       "lean_target": "Zeta23.CCM.not_canonicalSchurCertificateAt_iff",
       "premises": [],
       "required_statement": "Expose singular-safe one-step domination failure as a negative shell or determinant witness.",
-      "falsification_condition": "The logical equivalence between domination failure and its witnesses fails."
+      "falsification_condition": "The logical equivalence between domination failure and its witnesses fails.",
+      "note": "Compiler/axiom validated on the closure surface before PR #277; status synchronized in PR #277."
     },
     {
       "id": "B2_UNIFORM_DOMINATION",
@@ -184,29 +188,32 @@
       "required_inputs": [
         "B1_SCHUR_INTERFACE"
       ],
-      "falsification_condition": "A certified canonical shell/determinant witness violates domination."
+      "falsification_condition": "A certified canonical shell/determinant witness violates domination.",
+      "note": "Remains OPEN. PR #277 proves audit-only that CanonicalUniformDomination -> Mathlib.RiemannHypothesis, so direct construction is terminal-strength."
     },
     {
       "id": "B3_DOMINATION_TO_ALL_APERTURE",
       "track": "B",
-      "status": "OPEN",
-      "target_module": "Zeta23.CCM.CanonicalUniformDomination",
-      "interface_declaration": "Zeta23.CCM.CanonicalUniformDomination",
+      "status": "PROVED",
+      "target_module": "Zeta23.RHRC.ClosureStrengthAudit",
       "required_statement": "Prove that the universal one-step domination certificate is sufficient for CanonicalAllAperturePositivity.",
       "required_inputs": [
         "B2_UNIFORM_DOMINATION"
       ],
-      "falsification_condition": "Uniform one-step domination can coexist with a negative legal canonical energy."
+      "falsification_condition": "Uniform one-step domination can coexist with a negative legal canonical energy.",
+      "lean_target": "Zeta23.RHRC.canonicalAllAperturePositivity_of_canonicalUniformDomination",
+      "note": "PR #277 conditional bridge; does not prove B2."
     },
     {
       "id": "C1_FULLSPACE_BRIDGE",
       "track": "C",
-      "status": "CANDIDATE_THEOREM",
+      "status": "PROVED",
       "target_module": "Zeta23.CCM.CanonicalFullSpaceSourceBridge",
       "lean_target": "Zeta23.CCM.canonicalFullSpaceOperator_energy",
       "premises": [],
       "required_statement": "Identify the full-space finite operator energy with the canonical source matrix energy.",
-      "falsification_condition": "The operator/matrix energy bridge fails."
+      "falsification_condition": "The operator/matrix energy bridge fails.",
+      "note": "Compiler/axiom validated on the closure surface before PR #277; status synchronized in PR #277."
     },
     {
       "id": "C2_XI_IDENTIFICATION",
@@ -263,7 +270,7 @@
           "A3_ALL_APERTURE"
         ],
         [
-          "B3_DOMINATION_TO_ALL_APERTURE"
+          "B2_UNIFORM_DOMINATION"
         ],
         [
           "C3_XI_TO_RH"
