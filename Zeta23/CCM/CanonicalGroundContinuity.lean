@@ -1,6 +1,8 @@
 import Zeta23.CCM.ParityRayleighPerturbation
 import Zeta23.CCM.CanonicalApertureContinuity
 import Mathlib.Topology.Order.LeftRight
+import Mathlib.Analysis.CStarAlgebra.Matrix
+import Mathlib.Analysis.Normed.Module.FiniteDimension
 
 noncomputable section
 
@@ -307,6 +309,114 @@ theorem continuousOn_canonicalSourceMatrix_Ioi
   intro j
   exact continuousOn_canonicalSourceMatrix_apply_Ioi K i j
 
+/-- The production canonical matrix is continuous after bundling it as the
+ambient Euclidean continuous linear operator.  Finite-dimensionality supplies
+continuity of the linear matrix-to-operator equivalence in the repository's
+ordinary matrix topology. -/
+theorem continuousOn_canonicalSourceMatrix_toEuclideanCLM_Ioi
+    (K : ℕ) :
+    ContinuousOn
+      (fun L : ℝ =>
+        Matrix.toEuclideanCLM
+          (n := Fin (2 * K + 1)) (𝕜 := ℂ)
+          (canonicalSourceMatrix L K))
+      (Ioi (0 : ℝ)) := by
+  have hto :
+      Continuous
+        (Matrix.toEuclideanCLM
+          (n := Fin (2 * K + 1)) (𝕜 := ℂ)) := by
+    exact
+      LinearMap.continuous_of_finiteDimensional
+        (Matrix.toEuclideanCLM
+          (n := Fin (2 * K + 1)) (𝕜 := ℂ)).toLinearEquiv.toLinearMap
+  exact hto.comp_continuousOn (continuousOn_canonicalSourceMatrix_Ioi K)
+
+/-- Aperture-continuity of the exact parity-compressed canonical operator in
+operator norm.  The parity carrier and both orthogonal maps are fixed in L. -/
+theorem continuousOn_parityCompressedCanonicalCLM_Ioi
+    (p : ReversalParity) (K : ℕ) :
+    ContinuousOn
+      (fun L : ℝ => parityCompressedCanonicalCLM p L K)
+      (Ioi (0 : ℝ)) := by
+  let V := euclideanParityBoundaryFlatSubspace p K
+  have hamb :=
+    continuousOn_canonicalSourceMatrix_toEuclideanCLM_Ioi K
+  have hsub :
+      ContinuousOn (fun _ : ℝ => V.subtypeL) (Ioi (0 : ℝ)) :=
+    continuousOn_const
+  have hmid :
+      ContinuousOn
+        (fun L : ℝ =>
+          (Matrix.toEuclideanCLM
+            (n := Fin (2 * K + 1)) (𝕜 := ℂ)
+            (canonicalSourceMatrix L K)).comp V.subtypeL)
+        (Ioi (0 : ℝ)) :=
+    hamb.clm_comp hsub
+  have hproj :
+      ContinuousOn
+        (fun _ : ℝ => V.orthogonalProjectionOnto)
+        (Ioi (0 : ℝ)) :=
+    continuousOn_const
+  have hfull :
+      ContinuousOn
+        (fun L : ℝ =>
+          V.orthogonalProjectionOnto.comp
+            ((Matrix.toEuclideanCLM
+              (n := Fin (2 * K + 1)) (𝕜 := ℂ)
+              (canonicalSourceMatrix L K)).comp V.subtypeL))
+        (Ioi (0 : ℝ)) :=
+    hproj.clm_comp hmid
+  refine hfull.congr ?_
+  intro L hL
+  ext x
+  rfl
+
+/-- Multiplicity-safe continuity of one successor parity Rayleigh bottom.  The
+proof uses only operator-norm continuity and the already-proved Rayleigh
+perturbation inequality; no eigenvector is selected continuously. -/
+theorem continuousOn_parityRayleighBottom_succ_Ioi
+    (p : ReversalParity) (N : ℕ) (hN : 1 ≤ N) :
+    ContinuousOn
+      (fun L : ℝ => parityRayleighBottom p L (N + 1))
+      (Ioi (0 : ℝ)) := by
+  intro L hL
+  apply Metric.continuousWithinAt_iff'.2
+  intro ε hε
+  have hT :=
+    (continuousOn_parityCompressedCanonicalCLM_Ioi p (N + 1)) L hL
+  rw [Metric.continuousWithinAt_iff'] at hT
+  filter_upwards [hT ε hε] with L' hdist
+  have hpert :=
+    parityRayleighPerturbationBound_of_clmNorm
+      p L' L (N + 1)
+  have hbottom :=
+    abs_parityRayleighBottom_sub_le_of_perturbation_succ
+      p L' L
+      ‖parityCompressedCanonicalCLM p L' (N + 1) -
+        parityCompressedCanonicalCLM p L (N + 1)‖
+      N hN hpert
+  have hnormlt :
+      ‖parityCompressedCanonicalCLM p L' (N + 1) -
+        parityCompressedCanonicalCLM p L (N + 1)‖ < ε := by
+    simpa [dist_eq_norm] using hdist
+  have habslt :
+      |parityRayleighBottom p L' (N + 1) -
+        parityRayleighBottom p L (N + 1)| < ε :=
+    lt_of_le_of_lt hbottom hnormlt
+  simpa [Real.dist_eq] using habslt
+
+/-- The actual legal fixed-N successor ground, the minimum of the two parity
+bottoms, is continuous throughout the positive aperture axis. -/
+theorem continuousOn_globalParitySuccessorBottom_Ioi
+    (N : ℕ) (hN : 1 ≤ N) :
+    ContinuousOn
+      (fun L : ℝ => globalParitySuccessorBottom L N)
+      (Ioi (0 : ℝ)) := by
+  unfold globalParitySuccessorBottom
+  exact
+    (continuousOn_parityRayleighBottom_succ_Ioi .even N hN).min
+      (continuousOn_parityRayleighBottom_succ_Ioi .odd N hN)
+
 /-- Exact continuity obligation for every nontrivial fixed successor index.
 The seam-value theorem above is a production ingredient; this proposition is
 not promoted until the full positive-axis ground proof is compiler-closed. -/
@@ -315,6 +425,14 @@ def CanonicalFixedNGroundContinuity : Prop :=
     ContinuousOn
       (fun L : ℝ => globalParitySuccessorBottom L N)
       (Ioi (0 : ℝ))
+
+/-- Production theorem closing the post-#277 topology gate:
+every nontrivial fixed successor ground is continuous for all positive
+apertures. -/
+theorem canonicalFixedNGroundContinuity_proved :
+    CanonicalFixedNGroundContinuity := by
+  intro N hN
+  exact continuousOn_globalParitySuccessorBottom_Ioi N hN
 
 /-- Registry/downstream-facing eliminator for the fixed-N continuity
 interface.  This theorem does not prove the interface. -/
@@ -330,4 +448,8 @@ end Zeta23.CCM
 
 #print axioms Zeta23.CCM.frozenCanonicalPrimeMatrix_log_nat_eq_pred
 #print axioms Zeta23.CCM.continuousAt_canonicalSourceMatrix_apply_log_nat
+#print axioms Zeta23.CCM.continuousOn_canonicalSourceMatrix_apply_Ioi
+#print axioms Zeta23.CCM.continuousOn_parityRayleighBottom_succ_Ioi
+#print axioms Zeta23.CCM.continuousOn_globalParitySuccessorBottom_Ioi
+#print axioms Zeta23.CCM.canonicalFixedNGroundContinuity_proved
 #print axioms Zeta23.CCM.continuousOn_globalParitySuccessorBottom_Ioi_of_fixedN
