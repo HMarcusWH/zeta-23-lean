@@ -189,8 +189,34 @@ jobs:
             Zeta23/ExceptionalZero/GlobalParityBottomSignOpposition.lean \
             Zeta23/RHRC/ClosureStrengthAudit.lean
 
+  lean-contact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build post-#277 fixed-N zero-contact surface
+        run: |
+          lake build Zeta23.CCM.CanonicalGroundContinuity
+          lake build Zeta23.CCM.GlobalParityBottomFirstContact
+          lake build Zeta23.CCM.GlobalParityBottomContactNormalForm
+          lake build Zeta23.ExceptionalZero.GlobalParityBottomFirstContact
+      - name: Audit post-#277 zero-contact theorem axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/CanonicalGroundContinuity.lean \
+            Zeta23/CCM/GlobalParityBottomFirstContact.lean \
+            Zeta23/CCM/GlobalParityBottomContactNormalForm.lean \
+            Zeta23/ExceptionalZero/GlobalParityBottomFirstContact.lean
+
   campaign-complete:
-    needs: [fast-integrity, lean-a, lean-b, lean-c, lean-d-bindings, lean-strength-audit]
+    needs: [fast-integrity, lean-a, lean-b, lean-c, lean-d-bindings, lean-strength-audit, lean-contact]
     runs-on: ubuntu-latest
     steps:
       - run: echo 'Parallel closure campaign completed; theorem and research dispositions remain separately classified.'

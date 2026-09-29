@@ -29,6 +29,17 @@ rewriting the historical mathematical roadmap.
 The integration programme is intended to improve theorem selection and route
 falsification; it does not replace Lean as proof authority.
 
+
+## Post-#277 / PR #278 first-contact closure-attempt override
+
+PR #277 is merged theorem authority: exact same-fixed-N ground sign opposition is PROVED under an off-line zero; the stronger global propagation and uniform domination premises are audit-classified as RH-sufficient and are not treated as sub-RH lemmas.
+
+PR #278 starts from that merged state and is fail-closed. Its first formal target is production fixed-N legal-ground continuity on L > 0, including exact gluing at every logarithmic integer cutoff seam. The first checked-in contact theorem is conditional on the named continuity interface and yields an exact same-N zero contact by IVT. The stronger first-negative-boundary refinement, regular/singular predecessor zero-shift normalization, branch-specific canonical arithmetic exclusion, and any premise-free Mathlib RiemannHypothesis theorem remain OPEN until separately compiler-proved.
+
+The contact route uses the repository's existing IntrinsicPredecessorRegular regular/singular split, not a synthetic predecessor-bottom notion. It does not identify a parity-compressed zero mode with an ambient full-space kernel. A2 whole-form seam envelopes and A3 fixed-cell no-crossing remain separate OPEN obligations.
+
+**Claim firewall: RH remains OPEN.**
+
 <!-- RHRC_CURRENT_STATE_BEGIN -->
 ## Current RHRC state
 

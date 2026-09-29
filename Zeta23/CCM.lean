@@ -226,4 +226,7 @@ import Zeta23.CCM.CofinalLowerBound
 import Zeta23.CCM.DictionaryArchFiniteDensity
 import Zeta23.CCM.CanonicalArchDensityClosure
 import Zeta23.CCM.CanonicalSmallApertureGroundSpectrum
+import Zeta23.CCM.CanonicalGroundContinuity
+import Zeta23.CCM.GlobalParityBottomFirstContact
+import Zeta23.CCM.GlobalParityBottomContactNormalForm
 import Zeta23.CCM.CanonicalArithmeticCofinal

@@ -47,3 +47,4 @@ import Zeta23.ExceptionalZero.CanonicalArithmeticCriterion
 import Zeta23.ExceptionalZero.GlobalParityBottomGeneratedState
 import Zeta23.ExceptionalZero.GlobalParityBottomTerminalTarget
 import Zeta23.ExceptionalZero.GlobalParityBottomSignOpposition
+import Zeta23.ExceptionalZero.GlobalParityBottomFirstContact
