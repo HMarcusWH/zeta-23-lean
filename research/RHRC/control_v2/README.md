@@ -10,43 +10,41 @@ Control-v2 is routing/governance infrastructure, not theorem authority.
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #272
-- validated final head = d0cc3aad0181e58d486e464b685fc06559862923
-- merge commit = bca1869e055b802e1099ed86e71314bf61a7a4a8
-- tree = 53f659ff274bdf2218860e1a9dfeda50afcd0fe9
+- merged theorem authority = PR #276
+- validated final head = 7a42a94fcd963f588613965146d71e2e3324cf6c
+- merge commit = 147705222f8146d44f2cad8ed3081464945cc0e7
+- tree = 8745abb37a686163c2cc7c925ca05b50eb3502fa
 - status = MERGED_GREEN_THEOREM_STATE
-- PR #269 legal parity-ground simplicity iff strict parity separation = PROVED
-- PR #269 parity tie -> parity-split ground finrank >= 2 = PROVED
-- PR #269 carrier-wide source-weight derivative nonnegativity = REFUTED / FORMAL COUNTEREXAMPLE
-- PR #269 canonical arithmetic lower-bound normal form = PROVED
-- PR #271 arithmetic all-vector certificate -> global legal bottom lower bound = PROVED
-- PR #271 cofinal canonical arithmetic certificates -> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY / CONDITIONAL
+- PR #275 full-space small-aperture coercive base = PROVED
+- PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
 - PR #272 CofinalCanonicalArithmeticCertificates <-> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY
 - RH = OPEN
 
-POST-#273 / PR #274 RESEARCH FRONTIER
-- current candidate PR = #274 / PARALLEL_CLOSURE_CAMPAIGN_CANDIDATE
+CURRENT RESEARCH FRONTIER
+- current candidate PR = #277 / POST276_GROUND_SIGN_STRENGTH_AUDIT_CANDIDATE
+- candidate theorem-validation head = 66f9791a981e5f0cfc5a2b43622d1862671f26e3
+- candidate theorem-validation status = DEDICATED_LEAN_STRENGTH_AUDIT_PASS
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
-- merged experimental evidence class = EXPERIMENTAL_SIGNAL_ONLY / theorem promotion = False
-- direct cofinal certificate construction = OPEN_RH_EQUIVALENT_TERMINAL_PR_272
-- #272 equivalence audit = PROVED_PR_272_AUDIT_ONLY
+- fixed-N sign opposition = COMPILER_GREEN_CANDIDATE_PR_277
+- global ground propagation strength = RH_SUFFICIENT_AUDIT_COMPILER_GREEN_PR_277_HEAD
+- uniform domination strength = RH_SUFFICIENT_AUDIT_COMPILER_GREEN_PR_277_HEAD
 - active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
-- active subobligation = PR274_PARALLEL_CLOSURE_CAMPAIGN
-- next research target = PR274_PARALLEL_CLOSURE_CAMPAIGN
-- required new information = CANONICAL_PROPAGATION_OR_UNIFORM_DOMINATION_OR_COMPLEX_XI_IDENTIFICATION
-- RH-equivalent terminal formulations are not counted as independent sub-RH progress
+- active subobligation = FIXED_N_MULTIPLICITY_SAFE_APERTURE_CONTINUITY
+- next research target = FIXED_N_MULTIPLICITY_SAFE_APERTURE_CONTINUITY
+- required new information = UNIFORM_PARITY_RAYLEIGH_PERTURBATION_ENVELOPES_ACROSS_FIXED_CELLS_AND_PRIME_POWER_SEAMS
+- RH-sufficient terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE
 - PR #270 = FFBBP 1.7 / OoL-MVS 2.7.7 framework architecture authority
-- post-#272 exactified source-only theorem/lemma roots = 682
-- post-#272 FFBBP source-only module cohorts = 198
-- post-#272 OoL theorem-value-erased frontier contacts = 497
-- post-#272 RHKG relations = 302980
+- post-#276 exactified source-only theorem/lemma roots = 711
+- post-#276 FFBBP source-only module cohorts = 212
+- post-#276 OoL theorem-value-erased frontier contacts = 522
+- post-#276 RHKG relations = 311826
 - framework output -> Lean theorem authority = FORBIDDEN
 
 RESEARCH / CONTROL FIREWALL
 - latest independent bounded research evidence = PR #223
-- post-249 = EXPERIMENTAL_SIGNAL_ONLY / no asymptotic rate / no exact first-zero switch
+- merged first-contact atlas evidence = PR #273 / EXPERIMENTAL_SIGNAL_ONLY
 - frozen Control-v2 semantic authority = PR #117
 - selected formal first break = E4A4-SCHUR-FB-05 (historical/frozen control semantics)
 - R003 phase = DISCOVERY
