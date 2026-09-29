@@ -169,9 +169,13 @@ theorem continuousAt_canonicalSourceMatrix_apply_log_nat
     have hevent :
         (fun L : ℝ => canonicalSourceMatrix L K i j) =ᶠ[𝓝[<] Real.log (q : ℝ)] f := by
       filter_upwards [Ioo_mem_nhdsLT hpredlt] with L hL
+      have hsucc : q - 1 + 1 = q := by omega
+      have hcell :
+          L ∈ fixedCanonicalCutoffCell (q - 1) := by
+        simpa [fixedCanonicalCutoffCell, hsucc] using hL
       have hfloor :=
         natFloor_exp_eq_on_fixedCanonicalCutoffCell
-          (Q := q - 1) hpred hL
+          (Q := q - 1) hpred hcell
       have heq :=
         frozenCanonicalSourceMatrix_eq_canonicalSourceMatrix_of_floor
           (q - 1) L K hfloor
@@ -373,9 +377,15 @@ theorem continuousOn_parityRayleighBottom_succ_Ioi
   intro ε hε
   have hT :=
     (continuousOn_parityCompressedCanonicalCLM_Ioi p (N + 1)) L hL
-  with_reducible_and_instances
-    rw [Metric.continuousWithinAt_iff'] at hT
-  filter_upwards [hT ε hε] with L' hdist
+  have hTmetric :
+      ∀ δ > 0,
+        ∀ᶠ L' in 𝓝[Ioi (0 : ℝ)] L,
+          dist
+            (parityCompressedCanonicalCLM p L' (N + 1))
+            (parityCompressedCanonicalCLM p L (N + 1)) < δ := by
+    with_reducible_and_instances
+      exact Metric.continuousWithinAt_iff'.1 hT
+  filter_upwards [hTmetric ε hε] with L' hdist
   have hpert :=
     parityRayleighPerturbationBound_of_clmNorm
       p L' L (N + 1)
