@@ -69,7 +69,10 @@ theorem parityRayleighPerturbationBound_of_clmNorm
         parityCompressedCanonicalCLM p L₂ K‖ := by
   let T₁ := parityCompressedCanonicalCLM p L₁ K
   let T₂ := parityCompressedCanonicalCLM p L₂ K
-  refine ⟨norm_nonneg _, ?_⟩
+  refine ⟨?_, ?_⟩
+  · exact norm_nonneg
+      (parityCompressedCanonicalCLM p L₁ K -
+        parityCompressedCanonicalCLM p L₂ K)
   intro x hx
   have hq₁ :
       parityRayleighQuotientAt p L₁ K x =
