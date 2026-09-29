@@ -342,28 +342,39 @@ theorem continuousOn_parityCompressedCanonicalCLM_Ioi
   have hamb :=
     continuousOn_canonicalSourceMatrix_toEuclideanCLM_Ioi K
   have hsub :
-      ContinuousOn (fun _ : ℝ => V.subtypeL) (Ioi (0 : ℝ)) :=
+      ContinuousOn
+        (fun _ : ℝ =>
+          (V.subtypeL :
+            V →L[ℂ] EuclideanSpace ℂ (Fin (2 * K + 1))))
+        (Ioi (0 : ℝ)) :=
     continuousOn_const
   have hmid :
       ContinuousOn
         (fun L : ℝ =>
           (Matrix.toEuclideanCLM
             (n := Fin (2 * K + 1)) (𝕜 := ℂ)
-            (canonicalSourceMatrix L K)).comp V.subtypeL)
+            (canonicalSourceMatrix L K)).comp
+              (V.subtypeL :
+                V →L[ℂ] EuclideanSpace ℂ (Fin (2 * K + 1))))
         (Ioi (0 : ℝ)) :=
     hamb.clm_comp hsub
   have hproj :
       ContinuousOn
-        (fun _ : ℝ => V.orthogonalProjectionOnto)
+        (fun _ : ℝ =>
+          (V.orthogonalProjectionOnto :
+            EuclideanSpace ℂ (Fin (2 * K + 1)) →L[ℂ] V))
         (Ioi (0 : ℝ)) :=
     continuousOn_const
   have hfull :
       ContinuousOn
         (fun L : ℝ =>
-          V.orthogonalProjectionOnto.comp
-            ((Matrix.toEuclideanCLM
-              (n := Fin (2 * K + 1)) (𝕜 := ℂ)
-              (canonicalSourceMatrix L K)).comp V.subtypeL))
+          (V.orthogonalProjectionOnto :
+            EuclideanSpace ℂ (Fin (2 * K + 1)) →L[ℂ] V).comp
+              ((Matrix.toEuclideanCLM
+                (n := Fin (2 * K + 1)) (𝕜 := ℂ)
+                (canonicalSourceMatrix L K)).comp
+                  (V.subtypeL :
+                    V →L[ℂ] EuclideanSpace ℂ (Fin (2 * K + 1)))))
         (Ioi (0 : ℝ)) :=
     hproj.clm_comp hmid
   refine hfull.congr ?_
@@ -413,9 +424,12 @@ theorem continuousOn_globalParitySuccessorBottom_Ioi
       (fun L : ℝ => globalParitySuccessorBottom L N)
       (Ioi (0 : ℝ)) := by
   unfold globalParitySuccessorBottom
-  exact
-    (continuousOn_parityRayleighBottom_succ_Ioi .even N hN).min
-      (continuousOn_parityRayleighBottom_succ_Ioi .odd N hN)
+  have heven :=
+    continuousOn_parityRayleighBottom_succ_Ioi .even N hN
+  have hodd :=
+    continuousOn_parityRayleighBottom_succ_Ioi .odd N hN
+  simpa [Function.comp_def] using
+    continuous_min.comp_continuousOn (heven.prodMk hodd)
 
 /-- Exact continuity obligation for every nontrivial fixed successor index.
 The seam-value theorem above is a production ingredient; this proposition is

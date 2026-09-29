@@ -68,38 +68,24 @@ theorem parityRayleighPerturbationBound_of_clmNorm
       ‖parityCompressedCanonicalCLM p L₁ K -
         parityCompressedCanonicalCLM p L₂ K‖ := by
   let V := euclideanParityBoundaryFlatSubspace p K
-  let T₁ : V →L[ℂ] V := parityCompressedCanonicalCLM p L₁ K
-  let T₂ : V →L[ℂ] V := parityCompressedCanonicalCLM p L₂ K
+  let Δ : V →L[ℂ] V :=
+    parityCompressedCanonicalCLM p L₁ K -
+      parityCompressedCanonicalCLM p L₂ K
   refine ⟨?_, ?_⟩
   · exact norm_nonneg
       (parityCompressedCanonicalCLM p L₁ K -
         parityCompressedCanonicalCLM p L₂ K)
   intro x hx
-  have hq₁ :
-      parityRayleighQuotientAt p L₁ K x =
-        ContinuousLinearMap.rayleighQuotient T₁ (x : V) := by
-    simp [parityRayleighQuotientAt, T₁, V,
-      ContinuousLinearMap.rayleighQuotient,
-      ContinuousLinearMap.reApplyInnerSelf_apply]
-  have hq₂ :
-      parityRayleighQuotientAt p L₂ K x =
-        ContinuousLinearMap.rayleighQuotient T₂ (x : V) := by
-    simp [parityRayleighQuotientAt, T₂, V,
-      ContinuousLinearMap.rayleighQuotient,
-      ContinuousLinearMap.reApplyInnerSelf_apply]
-  rw [hq₁, hq₂]
-  have hdiff :
-      ContinuousLinearMap.rayleighQuotient (T₁ - T₂) (x : V) =
-        ContinuousLinearMap.rayleighQuotient T₁ (x : V) -
-          ContinuousLinearMap.rayleighQuotient T₂ (x : V) := by
-    rw [show T₁ - T₂ = T₁ + (-T₂) by abel,
-      ContinuousLinearMap.rayleighQuotient_add,
-      ContinuousLinearMap.rayleighQuotient_neg_apply]
-  rw [← hdiff]
   have habs :=
     ContinuousLinearMap.rayleighQuotient_le_norm
-      (𝕜 := ℂ) (T₁ - T₂) (x : V)
-  simpa [T₁, T₂, V] using habs
+      (𝕜 := ℂ) Δ (x : V)
+  have habs' :
+      |RCLike.re (inner ℂ (Δ (x : V)) (x : V)) /
+          ‖(x : V)‖ ^ 2| ≤ ‖Δ‖ := by
+    simpa only [ContinuousLinearMap.rayleighQuotient,
+      ContinuousLinearMap.reApplyInnerSelf_apply] using habs
+  simpa [parityRayleighQuotientAt, parityCompressedCanonical,
+    Δ, V, inner_sub_left, Complex.sub_re, _root_.sub_div] using habs'
 
 /-- A uniform Rayleigh perturbation controls one directed difference of parity
 bottoms.  No simplicity assumption is used. -/

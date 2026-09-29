@@ -12,12 +12,13 @@ open Zeta23.CCM
 # Post-#277 counterexample-generated zero contact
 
 This module composes the merged fixed-N sign-opposition theorem with the exact
-continuity interface.  The continuity proposition remains OPEN here; no theorem
-below upgrades it to authority.
+continuity interface.  The production continuity theorem is checked in as a
+candidate, but it does not become theorem authority until the exact PR head
+passes the compiler and axiom-validation gates.
 
-Once production fixed-N continuity is proved independently, an assumed off-line
-zero generates a legal finite zero-contact state at the same successor index.
-RH remains OPEN.
+Once production fixed-N continuity is compiler-validated independently, an
+assumed off-line zero generates a legal finite zero-contact state at the same
+successor index.  RH remains OPEN.
 -/
 
 theorem nonempty_globalParityBottomZeroContact_of_offLine_zero
