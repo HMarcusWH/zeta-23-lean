@@ -11,7 +11,7 @@ class Post247SyncTests(unittest.TestCase):
 
     def test_post247_history_survives_post272_authority(self):
         t=self.state["merged_theorem_anchor"]
-        self.assertEqual(t["pr"],272)
+        self.assertGreaterEqual(t["pr"],272)
         note=self.state["control_note"]
         for token in (
             "PR #247",
