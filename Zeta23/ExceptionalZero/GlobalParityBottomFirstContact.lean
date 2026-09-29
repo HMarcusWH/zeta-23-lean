@@ -45,7 +45,26 @@ theorem nonempty_globalParityBottomZeroContact_of_exists_offLine_zero
   exact nonempty_globalParityBottomZeroContact_of_offLine_zero
     hcont ρ₀ hρ₀
 
+/-- Unconditional post-#277 composition: once the production continuity
+theorem is discharged in CCM, an assumed off-line zero forces an exact same-N
+legal zero contact. -/
+theorem nonempty_globalParityBottomZeroContact_proved_of_offLine_zero
+    (ρ₀ : zetaZeroConfig.carrier)
+    (hoff : (ρ₀ : ℂ).re ≠ 1 / 2) :
+    Nonempty GlobalParityBottomZeroContact :=
+  nonempty_globalParityBottomZeroContact_of_offLine_zero
+    canonicalFixedNGroundContinuity_proved ρ₀ hoff
+
+/-- Existential wrapper of the unconditional zero-contact theorem. -/
+theorem nonempty_globalParityBottomZeroContact_proved_of_exists_offLine_zero
+    (hoff : ∃ ρ : zetaZeroConfig.carrier, (ρ : ℂ).re ≠ 1 / 2) :
+    Nonempty GlobalParityBottomZeroContact :=
+  nonempty_globalParityBottomZeroContact_of_exists_offLine_zero
+    canonicalFixedNGroundContinuity_proved hoff
+
 end Zeta23.ExceptionalZero
 
 #print axioms Zeta23.ExceptionalZero.nonempty_globalParityBottomZeroContact_of_offLine_zero
 #print axioms Zeta23.ExceptionalZero.nonempty_globalParityBottomZeroContact_of_exists_offLine_zero
+#print axioms Zeta23.ExceptionalZero.nonempty_globalParityBottomZeroContact_proved_of_offLine_zero
+#print axioms Zeta23.ExceptionalZero.nonempty_globalParityBottomZeroContact_proved_of_exists_offLine_zero
