@@ -21,7 +21,7 @@
     "status": "POST277_FIRST_CONTACT_CLOSURE_CANDIDATE",
     "theorem_family": "FIXED_N_C0_CONTINUITY_AND_ZERO_CONTACT",
     "terminal_claim_change": false,
-    "theorem_validation_head": "8e47dcb2c44177df06a38a5c98c4f03b4263d07c",
+    "theorem_validation_head": "52a5c2e70fe1a476e6d7322a5a9e28d5213656e2",
     "theorem_validation": "CI_PENDING"
   },
   "latest_research_evidence": {

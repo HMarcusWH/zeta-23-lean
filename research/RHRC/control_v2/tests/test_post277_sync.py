@@ -20,7 +20,7 @@ class Post277SyncTests(unittest.TestCase):
         self.assertEqual(candidate["branch"], "research/post277-first-contact-closure-attempt")
         self.assertEqual(
             candidate["theorem_validation_head"],
-            "8e47dcb2c44177df06a38a5c98c4f03b4263d07c",
+            "52a5c2e70fe1a476e6d7322a5a9e28d5213656e2",
         )
         self.assertEqual(candidate["theorem_validation"], "CI_PENDING")
         self.assertEqual(state["merged_control_anchor"]["pr"], 117)
