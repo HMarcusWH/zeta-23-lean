@@ -29,6 +29,16 @@
       "source": "Zeta23/ExceptionalZero/GlobalParityBottomArithmeticEquivalenceAudit.lean"
     },
     {
+      "id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "theorem": "Zeta23.RHRC.riemannHypothesis_of_canonicalGlobalGroundPropagation_smallAperture",
+      "source": "Zeta23/RHRC/ClosureStrengthAudit.lean"
+    },
+    {
+      "id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "theorem": "Zeta23.RHRC.riemannHypothesis_of_canonicalUniformDomination",
+      "source": "Zeta23/RHRC/ClosureStrengthAudit.lean"
+    },
+    {
       "id": "EZ_GLOBAL_BOTTOM_ARITHMETIC_RESIDUAL",
       "theorem": "Zeta23.ExceptionalZero.exists_arbitrarilyLarge_globalBottomArithmeticResidual_of_offLine_zero",
       "source": "Zeta23/ExceptionalZero/GlobalParityBottomTerminalTarget.lean"
@@ -223,6 +233,12 @@
       "route": "R003_ccm_bridge"
     },
     {
+      "id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "theorem": "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero",
+      "source": "Zeta23/ExceptionalZero/ApertureFreedom.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
       "id": "R003_EXACT_CENTERED_FINITE_NESTING",
       "theorem": "Zeta23.CCM.canonicalSourceMatrix_submatrix_centeredEmbedding",
       "source": "Zeta23/CCM/NestedFinite.lean",
@@ -262,6 +278,12 @@
       "id": "R003_FIRST_BAD_SHELL_PROJECTION",
       "theorem": "Zeta23.CCM.negative_eigenmode_paritySuccShell_projection_ne_zero",
       "source": "Zeta23/CCM/FirstBadRigidity.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "theorem": "Zeta23.ExceptionalZero.exists_fixedN_ground_sign_opposition_of_offLine_zero",
+      "source": "Zeta23/ExceptionalZero/GlobalParityBottomSignOpposition.lean",
       "route": "R003_ccm_bridge"
     },
     {
@@ -349,6 +371,12 @@
       "route": "R003_ccm_bridge"
     },
     {
+      "id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "theorem": "Zeta23.ExceptionalZero.exists_globalFirstBad_not_canonicalOneStepDomination_of_offLine_zero",
+      "source": "Zeta23/ExceptionalZero/GlobalFirstBadOneStepDomination.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
       "id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
       "theorem": "Zeta23.CCM.exists_negative_eigenmode_of_parityBad",
       "source": "Zeta23/CCM/ConstrainedParitySpectrum.lean",
@@ -406,6 +434,12 @@
       "id": "R003_RESIDUAL_C2",
       "theorem": "Zeta23.CCM.dictionaryResidualTest_admissible",
       "source": "Zeta23/CCM/DictionaryResidualSecondOrderGluing.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+      "theorem": "Zeta23.CCM.one_le_globalParitySuccessorBottom_of_smallAperture",
+      "source": "Zeta23/CCM/CanonicalSmallApertureGroundSpectrum.lean",
       "route": "R003_ccm_bridge"
     },
     {
