@@ -59,6 +59,40 @@ private theorem parityRayleighQuotientAt_eq_bottom_of_eigen_succ
   apply (div_eq_iff hnormne).2
   ring
 
+/-- Operator-norm control of the exact parity compression supplies the
+uniform Rayleigh perturbation premise used by the multiplicity-safe bottom
+theorems. -/
+theorem parityRayleighPerturbationBound_of_clmNorm
+    (p : ReversalParity) (L₁ L₂ : ℝ) (K : ℕ) :
+    ParityRayleighPerturbationBound p L₁ L₂ K
+      ‖parityCompressedCanonicalCLM p L₁ K -
+        parityCompressedCanonicalCLM p L₂ K‖ := by
+  let T₁ := parityCompressedCanonicalCLM p L₁ K
+  let T₂ := parityCompressedCanonicalCLM p L₂ K
+  refine ⟨norm_nonneg _, ?_⟩
+  intro x hx
+  have hq₁ :
+      parityRayleighQuotientAt p L₁ K x =
+        T₁.rayleighQuotient x := by
+    simp [parityRayleighQuotientAt, T₁,
+      ContinuousLinearMap.rayleighQuotient,
+      ContinuousLinearMap.reApplyInnerSelf_apply]
+  have hq₂ :
+      parityRayleighQuotientAt p L₂ K x =
+        T₂.rayleighQuotient x := by
+    simp [parityRayleighQuotientAt, T₂,
+      ContinuousLinearMap.rayleighQuotient,
+      ContinuousLinearMap.reApplyInnerSelf_apply]
+  rw [hq₁, hq₂]
+  have hdiff :
+      (T₁ - T₂).rayleighQuotient x =
+        T₁.rayleighQuotient x - T₂.rayleighQuotient x := by
+    rw [show T₁ - T₂ = T₁ + (-T₂) by abel,
+      ContinuousLinearMap.rayleighQuotient_add,
+      ContinuousLinearMap.rayleighQuotient_neg_apply]
+  rw [← hdiff]
+  exact ContinuousLinearMap.rayleighQuotient_le_norm (T₁ - T₂) x
+
 /-- A uniform Rayleigh perturbation controls one directed difference of parity
 bottoms.  No simplicity assumption is used. -/
 theorem parityRayleighBottom_sub_le_of_perturbation_succ
