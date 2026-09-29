@@ -389,6 +389,7 @@ jobs:
             Zeta23.CCM.CanonicalPoleUniformBound \
             Zeta23.CCM.CanonicalPoleSourceBound \
             Zeta23.CCM.CanonicalSmallApertureCoercivity \
+            Zeta23.CCM.CanonicalSmallApertureGroundSpectrum \
             Zeta23.CCM.CanonicalPrimeSeamTaylor \
             Zeta23.CCM.ParityGroundPerturbation \
             Zeta23.CCM.ParityRayleighPerturbation \
@@ -403,7 +404,9 @@ jobs:
             Zeta23.Spectral \
             Zeta23.ExceptionalZero.QuantitativeDetectorFamily \
             Zeta23.ExceptionalZero.QuantitativeCanonicalWitness \
-            Zeta23.RHRC.ClosureObligationBindings
+            Zeta23.ExceptionalZero.GlobalParityBottomSignOpposition \
+            Zeta23.RHRC.ClosureObligationBindings \
+            Zeta23.RHRC.ClosureStrengthAudit
       - name: Validate future premise-free RH closure exact type
         run: |
           if [ -f Zeta23/ExceptionalZero/GlobalParityBottomRHClosure.lean ]; then
@@ -435,13 +438,16 @@ jobs:
             Zeta23/CCM/CanonicalSchurCertificate.lean \
             Zeta23/CCM/CanonicalSeamGroundTransfer.lean \
             Zeta23/CCM/CanonicalSmallApertureCoercivity.lean \
+            Zeta23/CCM/CanonicalSmallApertureGroundSpectrum.lean \
             Zeta23/CCM/CanonicalUniformDomination.lean \
             Zeta23/CCM/GroundComparisonPrinciple.lean \
             Zeta23/CCM/ParityRayleighPerturbation.lean \
             Zeta23/CCM/SourceContraction.lean \
             Zeta23/CCM/SourceContractionLocalized.lean \
             Zeta23/ExceptionalZero/QuantitativeDetectorFamily.lean \
+            Zeta23/ExceptionalZero/GlobalParityBottomSignOpposition.lean \
             Zeta23/RHRC/ClosureObligationBindings.lean \
+            Zeta23/RHRC/ClosureStrengthAudit.lean \
             Zeta23/Spectral/CanonicalCharacteristic.lean \
             Zeta23/Spectral/CanonicalOperator.lean \
             Zeta23/Spectral/CharacteristicCompactBounds.lean \
