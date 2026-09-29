@@ -233,6 +233,80 @@ theorem continuousAt_canonicalSourceMatrix_apply_log_nat
       exact (congrArg (fun M => M i j) heq).symm
     exact hfAt.continuousWithinAt.congr_of_eventuallyEq hevent hvalue
 
+/-- Every positive aperture is either a logarithmic integer seam or lies
+strictly inside the physical cutoff cell selected by its production floor. -/
+theorem continuousAt_canonicalSourceMatrix_apply_of_pos
+    (K : ℕ) (i j : Fin (2 * K + 1))
+    {L : ℝ} (hL : 0 < L) :
+    ContinuousAt
+      (fun t : ℝ => canonicalSourceMatrix t K i j) L := by
+  let Q : ℕ := ⌊Real.exp L⌋₊
+  have hexp1 : (1 : ℝ) < Real.exp L := by
+    rw [← Real.exp_zero]
+    exact Real.exp_lt_exp.mpr hL
+  have hQpos : 0 < Q := by
+    exact Nat.floor_pos.mpr (le_of_lt hexp1)
+  have hQ : 1 ≤ Q := by omega
+  have hQlower : (Q : ℝ) ≤ Real.exp L := by
+    exact Nat.floor_le (Real.exp_pos L).le
+  have hQupper : Real.exp L < ((Q + 1 : ℕ) : ℝ) := by
+    exact Nat.lt_floor_add_one (Real.exp L)
+  by_cases hseam : (Q : ℝ) = Real.exp L
+  · have hQtwo : 2 ≤ Q := by
+      have h1Q : (1 : ℝ) < (Q : ℝ) := by
+        rw [hseam]
+        exact hexp1
+      exact_mod_cast h1Q
+    have hlog : L = Real.log (Q : ℝ) := by
+      calc
+        L = Real.log (Real.exp L) := (Real.log_exp L).symm
+        _ = Real.log (Q : ℝ) := by rw [hseam]
+    rw [hlog]
+    exact continuousAt_canonicalSourceMatrix_apply_log_nat Q K hQtwo i j
+  · have hQstrict : (Q : ℝ) < Real.exp L :=
+      lt_of_le_of_ne hQlower hseam
+    have hQrealpos : (0 : ℝ) < (Q : ℝ) := by
+      exact_mod_cast hQpos
+    have hQ1realpos : (0 : ℝ) < ((Q + 1 : ℕ) : ℝ) := by positivity
+    have hleft : Real.log (Q : ℝ) < L := by
+      have h :=
+        Real.strictMonoOn_log hQrealpos (Real.exp_pos L) hQstrict
+      simpa using h
+    have hright : L < Real.log ((Q + 1 : ℕ) : ℝ) := by
+      have h :=
+        Real.strictMonoOn_log (Real.exp_pos L) hQ1realpos hQupper
+      simpa using h
+    have hcell : L ∈ fixedCanonicalCutoffCell Q := ⟨hleft, hright⟩
+    have hwithin :=
+      (continuousOn_canonicalSourceMatrix_apply_fixedCell
+        Q K hQ i j) L hcell
+    exact hwithin.continuousAt
+      ((isOpen_fixedCanonicalCutoffCell Q).mem_nhds hcell)
+
+/-- Every production canonical matrix entry is continuous on the complete
+positive aperture axis, including all floor cutoffs. -/
+theorem continuousOn_canonicalSourceMatrix_apply_Ioi
+    (K : ℕ) (i j : Fin (2 * K + 1)) :
+    ContinuousOn
+      (fun L : ℝ => canonicalSourceMatrix L K i j)
+      (Ioi (0 : ℝ)) := by
+  intro L hL
+  exact
+    (continuousAt_canonicalSourceMatrix_apply_of_pos K i j hL).continuousWithinAt
+
+/-- Matrix-valued production continuity in the ordinary finite product
+topology.  The legal parity carrier itself is independent of aperture. -/
+theorem continuousOn_canonicalSourceMatrix_Ioi
+    (K : ℕ) :
+    ContinuousOn
+      (fun L : ℝ => canonicalSourceMatrix L K)
+      (Ioi (0 : ℝ)) := by
+  apply continuousOn_pi.mpr
+  intro i
+  apply continuousOn_pi.mpr
+  intro j
+  exact continuousOn_canonicalSourceMatrix_apply_Ioi K i j
+
 /-- Exact continuity obligation for every nontrivial fixed successor index.
 The seam-value theorem above is a production ingredient; this proposition is
 not promoted until the full positive-axis ground proof is compiler-closed. -/
