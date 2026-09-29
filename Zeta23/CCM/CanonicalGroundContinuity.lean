@@ -1,5 +1,6 @@
 import Zeta23.CCM.ParityRayleighPerturbation
 import Zeta23.CCM.CanonicalApertureContinuity
+import Zeta23.CCM.FrozenCanonicalSourceAnalytic
 import Mathlib.Topology.Order.LeftRight
 import Mathlib.Analysis.CStarAlgebra.Matrix
 import Mathlib.Analysis.Normed.Module.FiniteDimension
@@ -9,7 +10,7 @@ noncomputable section
 namespace Zeta23.CCM
 
 open Matrix Set
-open scoped BigOperators
+open scoped BigOperators Topology
 
 /-!
 # Post-#277 fixed-N legal-ground continuity
@@ -27,17 +28,6 @@ No simplicity, moving eigenbranch, aperture monotonicity, all-aperture
 positivity, or RH premise is used.
 -/
 
-/-- The complete canonical source matrix with a frozen finite-prime horizon.
-Unlike the production matrix, this is an ordinary continuous finite expression
-on the positive aperture axis. -/
-def frozenCanonicalSourceMatrix
-    (Q : ℕ) (L : ℝ) (K : ℕ) :
-    Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ :=
-  fun i j =>
-    (poleComponent (centeredIndex K i) (centeredIndex K j) L : ℂ) -
-      (sourceEq44ArchComponent (centeredIndex K i) (centeredIndex K j) L : ℂ) -
-        frozenCanonicalPrimeMatrix Q L K i j
-
 /-- A frozen complete source entry is continuous throughout the positive
 aperture axis. -/
 theorem continuous_frozenCanonicalSourceMatrix_apply_pos
@@ -45,22 +35,33 @@ theorem continuous_frozenCanonicalSourceMatrix_apply_pos
     Continuous
       (fun L : Ioi (0 : ℝ) =>
         frozenCanonicalSourceMatrix Q (L : ℝ) K i j) := by
-  let n : ℤ := centeredIndex K i
-  let m : ℤ := centeredIndex K j
-  have hpoleReal := continuous_poleComponent_pos n m
-  have harchReal := continuous_sourceEq44ArchComponent_pos n m
+  have hpoleReal :=
+    continuous_poleComponent_pos (centeredIndex K i) (centeredIndex K j)
+  have harchReal :=
+    continuous_sourceEq44ArchComponent_pos (centeredIndex K i) (centeredIndex K j)
   have hpole :
-      Continuous (fun L : Ioi (0 : ℝ) => (poleComponent n m (L : ℝ) : ℂ)) := by
+      Continuous
+        (fun L : Ioi (0 : ℝ) =>
+          (poleComponent
+            (centeredIndex K i) (centeredIndex K j) (L : ℝ) : ℂ)) := by
     exact Complex.continuous_ofReal.comp hpoleReal
   have harch :
       Continuous
         (fun L : Ioi (0 : ℝ) =>
-          (sourceEq44ArchComponent n m (L : ℝ) : ℂ)) := by
+          (sourceEq44ArchComponent
+            (centeredIndex K i) (centeredIndex K j) (L : ℝ) : ℂ)) := by
     exact Complex.continuous_ofReal.comp harchReal
   have hprime :=
     continuous_frozenCanonicalPrimeMatrix_apply_pos Q K i j
-  simpa [frozenCanonicalSourceMatrix, n, m] using
-    (hpole.sub harch).sub hprime
+  change
+    Continuous
+      (fun L : Ioi (0 : ℝ) =>
+        (poleComponent
+          (centeredIndex K i) (centeredIndex K j) (L : ℝ) : ℂ) -
+          (sourceEq44ArchComponent
+            (centeredIndex K i) (centeredIndex K j) (L : ℝ) : ℂ) -
+            frozenCanonicalPrimeMatrix Q (L : ℝ) K i j)
+  exact (hpole.sub harch).sub hprime
 
 /-- Frozen and production complete source matrices agree whenever the
 production natural cutoff is the frozen horizon. -/
@@ -68,34 +69,10 @@ theorem frozenCanonicalSourceMatrix_eq_canonicalSourceMatrix_of_floor
     (Q : ℕ) (L : ℝ) (K : ℕ)
     (hfloor : ⌊Real.exp L⌋₊ = Q) :
     frozenCanonicalSourceMatrix Q L K = canonicalSourceMatrix L K := by
-  have hprime :=
+  rw [frozenCanonicalSourceMatrix,
+    canonicalSourceMatrix_eq_pole_sub_arch_sub_prime,
     frozenCanonicalPrimeMatrix_eq_canonicalPrimeMatrix
-      (Q := Q) L K hfloor
-  ext i j
-  let n : ℤ := centeredIndex K i
-  let m : ℤ := centeredIndex K j
-  have hprimeEntry :
-      frozenCanonicalPrimeMatrix Q L K i j =
-        (primeComponent n m L : ℂ) := by
-    calc
-      frozenCanonicalPrimeMatrix Q L K i j =
-          canonicalPrimeMatrix L K i j := by
-        exact congrArg (fun M => M i j) hprime
-      _ = (primeComponent n m L : ℂ) := rfl
-  calc
-    frozenCanonicalSourceMatrix Q L K i j =
-        (poleComponent n m L : ℂ) -
-          (sourceEq44ArchComponent n m L : ℂ) -
-            frozenCanonicalPrimeMatrix Q L K i j := by
-      rfl
-    _ = (sourceEq44Entry n m L : ℂ) := by
-      unfold sourceEq44Entry
-      push_cast
-      rw [hprimeEntry]
-    _ = sourceEq44Matrix L K i j := rfl
-    _ = canonicalSourceMatrix L K i j := by
-      exact congrArg (fun M => M i j)
-        (canonicalSourceMatrix_eq_sourceEq44Matrix L K).symm
+      (Q := Q) L K hfloor]
 
 /-- At a positive natural logarithmic threshold the production cutoff is the
 threshold integer itself. -/
@@ -252,7 +229,8 @@ theorem continuousAt_canonicalSourceMatrix_apply_of_pos
   have hQlower : (Q : ℝ) ≤ Real.exp L := by
     exact Nat.floor_le (Real.exp_pos L).le
   have hQupper : Real.exp L < ((Q + 1 : ℕ) : ℝ) := by
-    exact Nat.lt_floor_add_one (Real.exp L)
+    simpa [Q, Nat.cast_add, Nat.cast_one] using
+      (Nat.lt_floor_add_one (Real.exp L))
   by_cases hseam : (Q : ℝ) = Real.exp L
   · have hQtwo : 2 ≤ Q := by
       have h1Q : (1 : ℝ) < (Q : ℝ) := by
@@ -328,7 +306,7 @@ theorem continuousOn_canonicalSourceMatrix_toEuclideanCLM_Ioi
     exact
       LinearMap.continuous_of_finiteDimensional
         (Matrix.toEuclideanCLM
-          (n := Fin (2 * K + 1)) (𝕜 := ℂ)).toLinearEquiv.toLinearMap
+          (n := Fin (2 * K + 1)) (𝕜 := ℂ)).toAlgEquiv.toLinearEquiv.toLinearMap
   exact hto.comp_continuousOn (continuousOn_canonicalSourceMatrix_Ioi K)
 
 /-- Aperture-continuity of the exact parity-compressed canonical operator in
@@ -395,7 +373,8 @@ theorem continuousOn_parityRayleighBottom_succ_Ioi
   intro ε hε
   have hT :=
     (continuousOn_parityCompressedCanonicalCLM_Ioi p (N + 1)) L hL
-  rw [Metric.continuousWithinAt_iff'] at hT
+  with_reducible_and_instances
+    rw [Metric.continuousWithinAt_iff'] at hT
   filter_upwards [hT ε hε] with L' hdist
   have hpert :=
     parityRayleighPerturbationBound_of_clmNorm
