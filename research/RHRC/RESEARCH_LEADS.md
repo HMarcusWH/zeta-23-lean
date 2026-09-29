@@ -71,6 +71,28 @@ RESEARCH / CONTROL FIREWALL
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#275 active theorem lead — spectralize the positive base
+
+**THEOREM CANDIDATE / PROMOTION GATED BY EXACT CI.** PR #275 proves the stronger full-space inequality
+`||x||^2 <= E_{L,K}(x)` for every finite K and `0 < L <= 1/512`.  The next
+small theorem should move that result into the exact legal ground coordinate
+already used by the first-contact programme.
+
+Target surface:
+
+```text
+0 < L <= 1/512, 1 <= N
+  -> boundaryFlatRayleighBottom L (N+1) >= 1
+  -> globalParitySuccessorBottom L N >= 1
+  -> each successor parity Rayleigh bottom >= 1
+```
+
+This is a consequence/interface theorem, not propagation.  It assumes neither
+simplicity nor badness and makes no statement across fixed cells or prime-power
+seams.  Registry promotion is deferred until compiler and axiom gates validate
+the exact declaration.  Once green, use the theorem as the positive spectral
+anchor for strength audits and the fixed-K continuity/contact campaign.
+
 ## Post-#247 programme override
 
 PR #246 and PR #247 supersede older "current", "next", and candidate labels below. Historical sections are retained as provenance unless this override explicitly reactivates them.

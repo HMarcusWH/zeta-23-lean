@@ -77,6 +77,20 @@ RESEARCH / CONTROL FIREWALL
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#275 / PR #276 spectral-ground anchor candidate
+
+This is the immediate post-green theoremization target after merged PR #275.
+
+- base theorem authority = PR #275 / `canonicalSmallApertureCoercivity_proved`;
+- target module = `Zeta23.CCM.CanonicalSmallApertureGroundSpectrum`;
+- target regime = nontrivial successor sizes `N + 1` with `1 <= N`;
+- target consequences = complete boundary-flat Rayleigh bottom >= 1, `globalParitySuccessorBottom >= 1`, and each parity Rayleigh bottom >= 1 throughout `0 < L <= 1/512`;
+- no ground simplicity, parity selection, bad-state existence, aperture propagation, seam-transfer, or RH premise is permitted;
+- claim-registry promotion is withheld until exact compiler/axiom gates pass;
+- after green, the next operations are the A3/B2 terminal-strength audits and fixed-K multiplicity-safe aperture continuity/contact work.
+
+RH remains OPEN.
+
 ## Post-#274 / PR #275 A1 positive-base override
 
 This block supersedes the older positive-base and PR-#274-candidate routing text below. Compiler/CI remains authoritative for the exact PR #275 head.
