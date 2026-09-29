@@ -1214,6 +1214,86 @@
       "note": "PR #275. Composes source/autocorrelation contraction and the positive archimedean density representation of the same production dictionaryTest. The theorem is full-space, stronger than the legal-carrier A1 requirement. It does not prove fixed-cell propagation, prime-power seam transfer, all-aperture positivity, or RH."
     },
     {
+      "id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+      "statement": "For every 0 < L <= 1/512 and every legal nontrivial successor index N>=1, the exact complete legal successor ground globalParitySuccessorBottom L N is at least one; each successor parity bottom is also at least one.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_SMALL_APERTURE_POSITIVE_BASE",
+        "R003_CANONICAL_CARRIER_BOTTOM_HIERARCHY"
+      ],
+      "source": "Zeta23/CCM/CanonicalSmallApertureGroundSpectrum.lean",
+      "theorem": "Zeta23.CCM.one_le_globalParitySuccessorBottom_of_smallAperture",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #276 exact legal-ground spectralization of the stronger #275 full-space coercive base. No aperture continuity, propagation, seam transfer, all-aperture positivity, or RH claim follows by itself."
+    },
+    {
+      "id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "statement": "Every hypothetical off-critical-line zeta zero forces every sufficiently large aperture to be AnyParityBad at some finite canonical size; the finite size may depend on the aperture.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_FINITE_CANONICAL_NEGATIVE_OBSTRUCTION",
+        "R003_PARITY_QUADRATIC_SPLIT"
+      ],
+      "source": "Zeta23/ExceptionalZero/ApertureFreedom.lean",
+      "theorem": "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "Existing ApertureFreedom theorem promoted into the post-#276 graph because it supplies the direct negative side needed by the fixed-N contact route."
+    },
+    {
+      "id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "statement": "For every chosen 0 < Lsmall <= 1/512, any hypothetical off-line zeta zero forces one fixed successor index N>=1 and a later aperture Lneg>Lsmall such that globalParitySuccessorBottom Lsmall N >= 1 while globalParitySuccessorBottom Lneg N < 0.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+        "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+        "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM"
+      ],
+      "source": "Zeta23/ExceptionalZero/GlobalParityBottomSignOpposition.lean",
+      "theorem": "Zeta23.ExceptionalZero.exists_fixedN_ground_sign_opposition_of_offLine_zero",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #277 theorem head 66f9791a981e5f0cfc5a2b43622d1862671f26e3 passed the dedicated Lean build and axiom audit. This is same-fixed-N sign opposition under an off-line-zero hypothesis, not continuity, zero contact, or RH."
+    },
+    {
+      "id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "statement": "Every hypothetical off-line zeta zero forces a global first-bad finite canonical state at which canonicalOneStepDomination fails.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_FIRST_BAD_PARITY_NEGATIVE_EIGENMODE_FROM_OFFLINE_ZERO"
+      ],
+      "source": "Zeta23/ExceptionalZero/GlobalFirstBadOneStepDomination.lean",
+      "theorem": "Zeta23.ExceptionalZero.exists_globalFirstBad_not_canonicalOneStepDomination_of_offLine_zero",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "Existing first-bad theorem promoted into the post-#276 graph because it supplies the countercertificate used to classify CanonicalUniformDomination as RH-sufficient."
+    },
+    {
+      "id": "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
+      "statement": "CanonicalGlobalGroundPropagation at the small-aperture anchor 1/512 is sufficient for literal Mathlib RiemannHypothesis.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_FIXED_N_GROUND_SIGN_OPPOSITION"
+      ],
+      "source": "Zeta23/RHRC/ClosureStrengthAudit.lean",
+      "theorem": "Zeta23.RHRC.riemannHypothesis_of_canonicalGlobalGroundPropagation_smallAperture",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #277 AUDIT-ONLY strength classification. The OPEN global propagation premise is RH-sufficient; fixed-cell propagation remains a legitimate weaker intermediate target."
+    },
+    {
+      "id": "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
+      "statement": "CanonicalUniformDomination is sufficient for literal Mathlib RiemannHypothesis.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE"
+      ],
+      "source": "Zeta23/RHRC/ClosureStrengthAudit.lean",
+      "theorem": "Zeta23.RHRC.riemannHypothesis_of_canonicalUniformDomination",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "PR #277 AUDIT-ONLY strength classification. CanonicalUniformDomination remains OPEN; the implication does not prove RH by itself."
+    },
+    {
       "id": "R003_COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES",
       "statement": "For every real bound B there exists a positive aperture L>B such that, jointly for every starting size n>=1 and every epsilon>0, some m>=n satisfies CanonicalArithmeticLowerBound L (m+1) epsilon on every legal boundary-flat vector.",
       "status": "OPEN",

@@ -43,11 +43,11 @@ class Post235SyncTests(unittest.TestCase):
             for section in required_sections:
                 self.assertIn(section, text)
 
-    def test_later_authority_is_post272(self):
+    def test_later_authority_preserves_post272_history(self):
         theorem = self.state["merged_theorem_anchor"]
         delta = self.state["latest_validated_theorem_delta"]
-        self.assertEqual(theorem["pr"], 272)
-        self.assertEqual(delta["pr"], 272)
+        self.assertGreaterEqual(theorem["pr"], 272)
+        self.assertGreaterEqual(delta["pr"], 272)
         self.assertEqual(
             self.state["active_research_route"]["next_research_target"],
             "CANONICAL_PRIME_REMAINDER_DOMINANCE",

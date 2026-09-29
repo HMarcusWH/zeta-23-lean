@@ -15,10 +15,15 @@ class Post272SyncTests(unittest.TestCase):
 
     def test_post272_is_merged_audit_authority_not_rh(self):
         t = self.state["merged_theorem_anchor"]
-        self.assertEqual(t["pr"], 272)
-        self.assertEqual(t["validated_head"], "d0cc3aad0181e58d486e464b685fc06559862923")
-        self.assertEqual(t["merge_commit"], "bca1869e055b802e1099ed86e71314bf61a7a4a8")
-        self.assertEqual(t["tree"], "53f659ff274bdf2218860e1a9dfeda50afcd0fe9")
+        self.assertGreaterEqual(t["pr"], 272)
+        note = self.state["control_note"]
+        for token in (
+            "PR #272",
+            "d0cc3aad0181e58d486e464b685fc06559862923",
+            "bca1869e055b802e1099ed86e71314bf61a7a4a8",
+            "53f659ff274bdf2218860e1a9dfeda50afcd0fe9",
+        ):
+            self.assertIn(token, note)
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
         route = self.state["active_research_route"]
         self.assertEqual(route["post272_cofinal_arithmetic_rh_equivalence"], "PROVED_PR_272_AUDIT_ONLY")
@@ -60,15 +65,15 @@ class Post272SyncTests(unittest.TestCase):
         self.assertIn("PARITY_GAP_UNRESOLVED", note)
         self.assertIn("RH remains OPEN", note)
 
-    def test_post272_terminal_reclassification_survives_post273_and_pr274(self):
+    def test_post272_terminal_reclassification_survives_later_frontiers(self):
         route = self.state["active_research_route"]
         self.assertEqual(
             route["current_obstruction"],
             "OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER",
         )
-        self.assertEqual(
+        self.assertIn(
+            "CONTINUITY",
             route["current_next_research_target"],
-            "PR274_PARALLEL_CLOSURE_CAMPAIGN",
         )
         self.assertEqual(
             route["post271_cofinal_arithmetic_certificate_construction"],

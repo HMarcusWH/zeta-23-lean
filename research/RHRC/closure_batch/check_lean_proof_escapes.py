@@ -20,6 +20,7 @@ CLOSURE_ROOTS = [
     Path("Zeta23/CCM/CanonicalPoleUniformBound.lean"),
     Path("Zeta23/CCM/CanonicalPoleSourceBound.lean"),
     Path("Zeta23/CCM/CanonicalSmallApertureCoercivity.lean"),
+    Path("Zeta23/CCM/CanonicalSmallApertureGroundSpectrum.lean"),
     Path("Zeta23/CCM/CanonicalPrimeSeamTaylor.lean"),
     Path("Zeta23/CCM/ParityGroundPerturbation.lean"),
     Path("Zeta23/CCM/ParityRayleighPerturbation.lean"),
@@ -33,7 +34,9 @@ CLOSURE_ROOTS = [
     Path("Zeta23/CCM/CanonicalFullSpaceSourceBridge.lean"),
     Path("Zeta23/ExceptionalZero/QuantitativeDetectorFamily.lean"),
     Path("Zeta23/ExceptionalZero/QuantitativeCanonicalWitness.lean"),
+    Path("Zeta23/ExceptionalZero/GlobalParityBottomSignOpposition.lean"),
     Path("Zeta23/RHRC/ClosureObligationBindings.lean"),
+    Path("Zeta23/RHRC/ClosureStrengthAudit.lean"),
     Path("Zeta23/Spectral.lean"),
 ]
 

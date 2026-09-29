@@ -44,38 +44,36 @@ THEOREM AUTHORITY
 - merge commit = {theorem['merge_commit']}
 - tree = {theorem['tree']}
 - status = {theorem['status']}
-- PR #269 legal parity-ground simplicity iff strict parity separation = PROVED
-- PR #269 parity tie -> parity-split ground finrank >= 2 = PROVED
-- PR #269 carrier-wide source-weight derivative nonnegativity = REFUTED / FORMAL COUNTEREXAMPLE
-- PR #269 canonical arithmetic lower-bound normal form = PROVED
-- PR #271 arithmetic all-vector certificate -> global legal bottom lower bound = PROVED
-- PR #271 cofinal canonical arithmetic certificates -> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY / CONDITIONAL
+- PR #275 full-space small-aperture coercive base = PROVED
+- PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
 - PR #272 CofinalCanonicalArithmeticCertificates <-> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY
 - RH = OPEN
 
-POST-#273 / PR #274 RESEARCH FRONTIER
+CURRENT RESEARCH FRONTIER
 - current candidate PR = #{candidate.get('pr', 'NONE')} / {candidate.get('status', 'NONE')}
+- candidate theorem-validation head = {candidate.get('theorem_validation_head', 'NONE')}
+- candidate theorem-validation status = {candidate.get('theorem_validation', 'NONE')}
 - merged experimental research evidence = PR #{experimental.get('pr', 'NONE')} / {experimental.get('disposition', 'NONE')}
-- merged experimental evidence class = {experimental.get('evidence_class', 'NONE')} / theorem promotion = {experimental.get('theorem_promotion', False)}
-- direct cofinal certificate construction = {route['post271_cofinal_arithmetic_certificate_construction']}
-- #272 equivalence audit = {route['post272_cofinal_arithmetic_rh_equivalence']}
+- fixed-N sign opposition = {route.get('post277_fixedN_ground_sign_opposition', 'OPEN')}
+- global ground propagation strength = {route.get('post277_global_ground_propagation_strength', 'UNAUDITED')}
+- uniform domination strength = {route.get('post277_uniform_domination_strength', 'UNAUDITED')}
 - active obstruction = {route['current_obstruction']}
 - active subobligation = {route['current_active_subobligation']}
 - next research target = {route['current_next_research_target']}
 - required new information = {route['current_required_new_information']}
-- RH-equivalent terminal formulations are not counted as independent sub-RH progress
+- RH-sufficient terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE
 - PR #270 = FFBBP 1.7 / OoL-MVS 2.7.7 framework architecture authority
-- post-#272 exactified source-only theorem/lemma roots = {route['post272_source_only_public_theorem_count']}
-- post-#272 FFBBP source-only module cohorts = {route['post272_ffbbp_source_only_module_cohort_count']}
-- post-#272 OoL theorem-value-erased frontier contacts = {route['post272_ool_frontier_contact_count']}
-- post-#272 RHKG relations = {route['post272_graph_relation_count']}
+- post-#276 exactified source-only theorem/lemma roots = {route['post276_source_only_public_theorem_count']}
+- post-#276 FFBBP source-only module cohorts = {route['post276_ffbbp_source_only_module_cohort_count']}
+- post-#276 OoL theorem-value-erased frontier contacts = {route['post276_ool_frontier_contact_count']}
+- post-#276 RHKG relations = {route['post276_graph_relation_count']}
 - framework output -> Lean theorem authority = FORBIDDEN
 
 RESEARCH / CONTROL FIREWALL
 - latest independent bounded research evidence = PR #{research['pr']}
-- post-249 = EXPERIMENTAL_SIGNAL_ONLY / no asymptotic rate / no exact first-zero switch
+- merged first-contact atlas evidence = PR #{experimental.get('pr', 'NONE')} / EXPERIMENTAL_SIGNAL_ONLY
 - frozen Control-v2 semantic authority = PR #{control['pr']}
 - selected formal first break = E4A4-SCHUR-FB-05 (historical/frozen control semantics)
 - R003 phase = DISCOVERY

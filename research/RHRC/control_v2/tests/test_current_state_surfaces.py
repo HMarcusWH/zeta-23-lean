@@ -14,6 +14,7 @@ from render_current_state import (
     render_current_state_block,
 )
 
+
 def current_block(path: Path) -> str:
     text = path.read_text(encoding="utf-8")
     if text.count(BEGIN) != 1 or text.count(END) != 1:
@@ -31,44 +32,20 @@ class CurrentStateSurfaceTests(unittest.TestCase):
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
 
-    def test_machine_state_is_merged_post272(self):
+    def test_machine_state_contracts(self):
         theorem = self.state["merged_theorem_anchor"]
-        self.assertEqual(theorem["pr"], 272)
-        self.assertEqual(theorem["validated_head"], "d0cc3aad0181e58d486e464b685fc06559862923")
-        self.assertEqual(theorem["merge_commit"], "bca1869e055b802e1099ed86e71314bf61a7a4a8")
-        self.assertEqual(theorem["tree"], "53f659ff274bdf2218860e1a9dfeda50afcd0fe9")
-        self.assertEqual(self.state["latest_validated_theorem_delta"]["pr"], 272)
-        self.assertEqual(self.state["latest_research_evidence"]["pr"], 223)
+        self.assertGreaterEqual(theorem["pr"], 276)
+        self.assertEqual(theorem["status"], "MERGED_GREEN_THEOREM_STATE")
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
-        route = self.state["active_research_route"]
-        self.assertEqual(route["post267_n_flow_bottom_monotonicity"], "PROVED_PR_267")
-        self.assertEqual(route["post268_canonical_carrier_bottom_hierarchy"], "PROVED_PR_268")
-        self.assertEqual(
-            route["post269_parity_split_ground_simplicity"],
-            "PROVED_IFF_STRICT_PARITY_SEPARATION",
-        )
-        self.assertEqual(
-            route["post269_carrier_source_weight_monotonicity"],
-            "REFUTED_FORMALLY",
-        )
-        self.assertEqual(route["current_obstruction"], "OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER")
-        self.assertEqual(
-            route["current_next_research_target"],
-            "PR274_PARALLEL_CLOSURE_CAMPAIGN",
-        )
-        self.assertEqual(
-            route["current_required_new_information"],
-            "CANONICAL_PROPAGATION_OR_UNIFORM_DOMINATION_OR_COMPLEX_XI_IDENTIFICATION",
-        )
-        self.assertEqual(self.state["candidate_branch"]["pr"], 274)
-        self.assertEqual(self.state["merged_experimental_research_evidence"]["pr"], 273)
-        self.assertEqual(
-            self.state["merged_experimental_research_evidence"]["disposition"],
-            "CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE",
-        )
-        self.assertEqual(route["post272_source_only_public_theorem_count"], 682)
-        self.assertEqual(route["post272_ffbbp_source_only_module_cohort_count"], 198)
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
+        self.assertFalse(self.state["candidate_branch"]["terminal_claim_change"])
+        route = self.state["active_research_route"]
+        self.assertEqual(
+            route["current_obstruction"],
+            "OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER",
+        )
+        self.assertIn("CONTINUITY", route["current_next_research_target"])
+        self.assertEqual(route["post276_small_aperture_ground_spectrum"], "PROVED_PR_276")
 
     def test_every_living_surface_exactly_matches_machine_renderer(self):
         expected = render_current_state_block(self.state)
@@ -79,15 +56,13 @@ class CurrentStateSurfaceTests(unittest.TestCase):
     def test_renderer_preserves_claim_firewall(self):
         block = render_current_state_block(self.state)
         self.assertIn("RH = OPEN", block)
-        self.assertIn("current candidate PR = #274 / PARALLEL_CLOSURE_CAMPAIGN_CANDIDATE", block)
-        self.assertIn("merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE", block)
-        self.assertIn("direct cofinal certificate construction = OPEN_RH_EQUIVALENT_TERMINAL_PR_272", block)
         self.assertIn(
-            "#272 equivalence audit = PROVED_PR_272_AUDIT_ONLY",
+            "RH-sufficient terminal formulations are not counted as independent sub-RH progress",
             block,
         )
         self.assertIn(
-            "RH-equivalent terminal formulations are not counted as independent sub-RH progress",
+            f"current candidate PR = #{self.state['candidate_branch']['pr']} / "
+            f"{self.state['candidate_branch']['status']}",
             block,
         )
         self.assertNotIn("RH = PROVED", block)
