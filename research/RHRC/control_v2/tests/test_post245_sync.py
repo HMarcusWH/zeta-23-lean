@@ -72,7 +72,8 @@ class Post245SyncTests(unittest.TestCase):
             self.assertIn(f"theorem {name}", criterion)
         self.assertEqual(arithmetic_firewall_lint.lint(), [])
         workflow = (ROOT / ".github" / "workflows" / "rhrc.yml").read_text(encoding="utf-8")
-        self.assertIn("assert p['theorem_anchor']['pr'] == 272", workflow)
+        self.assertNotIn("assert p['theorem_anchor']['pr'] == 272", workflow)
+        self.assertIn("theorem = state['merged_theorem_anchor']", workflow)
 
 if __name__ == "__main__":
     unittest.main()
