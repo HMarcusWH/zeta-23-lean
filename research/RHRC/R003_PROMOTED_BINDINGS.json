@@ -97,6 +97,10 @@
       "theorem": "Zeta23.CCM.canonicalSourceMatrix_displacement_mulVec_even_boundaryFlat"
     },
     {
+      "id": "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
+      "theorem": "Zeta23.ExceptionalZero.eventually_all_apertures_have_anyParityBad_of_offLine_zero"
+    },
+    {
       "id": "R003_EXACT_CENTERED_FINITE_NESTING",
       "theorem": "Zeta23.CCM.canonicalSourceMatrix_submatrix_centeredEmbedding"
     },
@@ -123,6 +127,10 @@
     {
       "id": "R003_FIRST_BAD_SHELL_PROJECTION",
       "theorem": "Zeta23.CCM.negative_eigenmode_paritySuccShell_projection_ne_zero"
+    },
+    {
+      "id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+      "theorem": "Zeta23.ExceptionalZero.exists_fixedN_ground_sign_opposition_of_offLine_zero"
     },
     {
       "id": "R003_FIXED_PARITY_BAD_TAIL_FROM_OFFLINE_ZERO",
@@ -159,6 +167,10 @@
     {
       "id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
+    },
+    {
+      "id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
+      "theorem": "Zeta23.ExceptionalZero.exists_globalFirstBad_not_canonicalOneStepDomination_of_offLine_zero"
     },
     {
       "id": "R003_PARITY_BAD_NEGATIVE_EIGENMODE",
@@ -199,6 +211,10 @@
     {
       "id": "R003_RESIDUAL_C2",
       "theorem": "Zeta23.CCM.dictionaryResidualTest_admissible"
+    },
+    {
+      "id": "R003_SMALL_APERTURE_GROUND_SPECTRUM",
+      "theorem": "Zeta23.CCM.one_le_globalParitySuccessorBottom_of_smallAperture"
     },
     {
       "id": "R003_SMALL_APERTURE_POSITIVE_BASE",
