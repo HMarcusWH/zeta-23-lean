@@ -231,4 +231,5 @@ import Zeta23.CCM.GlobalParityBottomFirstContact
 import Zeta23.CCM.GlobalParityBottomContactNormalForm
 import Zeta23.CCM.ParityFirstNegativeBoundary
 import Zeta23.CCM.ParityZeroPlateau
+import Zeta23.CCM.ParityKernelTower
 import Zeta23.CCM.CanonicalArithmeticCofinal
