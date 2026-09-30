@@ -33,6 +33,7 @@ AUDIT_ONLY = {
     "Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit",
     "Zeta23.ExceptionalZero.GlobalParityBottomConditionalRH",
     "Zeta23.ExceptionalZero.GlobalParityBottomObstruction",
+    "Zeta23.ExceptionalZero.CanonicalFirstCrossingConditionalRH",
 }
 
 ACTIVE_CCM = {
