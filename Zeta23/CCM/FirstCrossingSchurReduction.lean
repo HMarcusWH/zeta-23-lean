@@ -102,6 +102,69 @@ theorem exists_zeroShiftEndpoint_neg_of_regular_parityBad
     cubicZeroShiftSchurEndpoint_re_neg_of_parityBad_of_preimage
       p hL N hN hprev hbad x₀ hx₀
 
+/-- Every canonical first-crossing shell has successor-bad points arbitrarily
+close to the right at which the one-step predecessor sector is still
+nonnegative.  This is the dynamic bridge from N-flow minimality to the exact
+Schur-classification hypotheses. -/
+theorem CanonicalParityFirstCrossingShell.exists_badPoint_with_nonnegativePredecessor
+    (c : CanonicalParityFirstCrossingShell)
+    (ε : ℝ) (hε : 0 < ε) :
+    ∃ L : ℝ,
+      c.Lstar < L ∧
+      L < c.Lstar + ε ∧
+      PredecessorSectorNonnegative c.p L c.k ∧
+      ParityBad c.p L (c.k + 1) := by
+  have hk1 : 1 ≤ c.k := le_trans c.one_le_n c.n_le_k
+  have hbad_of_ground :
+      ∀ {L : ℝ},
+        paritySuccessorGround c.p c.k L < 0 →
+          ParityBad c.p L (c.k + 1) := by
+    intro L hneg
+    obtain ⟨v, hvne, hveig⟩ :=
+      exists_eigenmode_at_parityRayleighBottom_succ
+        c.p L c.k hk1
+    apply parityBad_of_negative_eigenmode
+      (p := c.p) (L := L) (N := c.k + 1)
+      (lam := parityRayleighBottom c.p L (c.k + 1))
+    · simpa [paritySuccessorGround] using hneg
+    · exact hvne
+    · exact hveig
+
+  rcases c.predecessorGround_stable with hk | hstable
+  · obtain ⟨L, hLlo, hLhi, hLneg⟩ :=
+      c.successor_right_crossing ε hε
+    have hprev :
+        PredecessorSectorNonnegative c.p L c.k := by
+      simpa [hk] using predecessorSectorNonnegative_one c.p L
+    exact ⟨L, hLlo, hLhi, hprev, hbad_of_ground hLneg⟩
+  · obtain ⟨δ, hδ, hstable⟩ := hstable
+    let η : ℝ := min ε δ
+    have hη : 0 < η := lt_min hε hδ
+    obtain ⟨L, hLlo, hLhiη, hLneg⟩ :=
+      c.successor_right_crossing η hη
+    have hLhiε : L < c.Lstar + ε := by
+      have hηε : η ≤ ε := min_le_left _ _
+      linarith
+    have hLhiδ : L < c.Lstar + δ := by
+      have hηδ : η ≤ δ := min_le_right _ _
+      linarith
+    have hpredGround :=
+      hstable L (le_of_lt hLlo) hLhiδ
+    have hk2 : 2 ≤ c.k := by
+      by_contra hnot
+      have hkle : c.k ≤ 1 := by omega
+      have hkEq : c.k = 1 := le_antisymm hkle hk1
+      exact hk hkEq
+    have hsucc : c.k - 1 + 1 = c.k := by omega
+    have hbottom :
+        0 ≤ parityRayleighBottom c.p L c.k := by
+      simpa [paritySuccessorGround, hsucc] using hpredGround
+    have hprev :
+        PredecessorSectorNonnegative c.p L c.k :=
+      predecessorSectorNonnegative_of_parityBottom_nonnegative
+        c.p L c.k hbottom
+    exact ⟨L, hLlo, hLhiε, hprev, hbad_of_ground hLneg⟩
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.predecessorSectorNonnegative_of_parityBottom_nonnegative
