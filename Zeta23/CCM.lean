@@ -229,4 +229,5 @@ import Zeta23.CCM.CanonicalSmallApertureGroundSpectrum
 import Zeta23.CCM.CanonicalGroundContinuity
 import Zeta23.CCM.GlobalParityBottomFirstContact
 import Zeta23.CCM.GlobalParityBottomContactNormalForm
+import Zeta23.CCM.ParityFirstNegativeBoundary
 import Zeta23.CCM.CanonicalArithmeticCofinal
