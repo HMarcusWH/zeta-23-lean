@@ -45,6 +45,7 @@ CLOSURE_ROOTS = [
     Path("Zeta23/CCM/CanonicalParityFirstCrossingShell.lean"),
     Path("Zeta23/CCM/FirstCrossingSchurReduction.lean"),
     Path("Zeta23/CCM/CanonicalApertureLocation.lean"),
+    Path("Zeta23/CCM/CanonicalFirstCrossingBarrier.lean"),
     Path("Zeta23/ExceptionalZero/CanonicalParityFirstCrossingShell.lean"),
     Path("Zeta23/RHRC/ClosureObligationBindings.lean"),
     Path("Zeta23/RHRC/ClosureStrengthAudit.lean"),
