@@ -238,6 +238,7 @@ jobs:
           lake build Zeta23.CCM.CanonicalApertureLocation
           lake build Zeta23.CCM.CanonicalFirstCrossingBarrier
           lake build Zeta23.ExceptionalZero.CanonicalParityFirstCrossingShell
+          lake build Zeta23.ExceptionalZero.CanonicalFirstCrossingConditionalRH
       - name: Audit post-#278 first-crossing theorem axioms
         run: |
           python research/RHRC/tools/axiom_audit.py \
@@ -248,7 +249,8 @@ jobs:
             Zeta23/CCM/FirstCrossingSchurReduction.lean \
             Zeta23/CCM/CanonicalApertureLocation.lean \
             Zeta23/CCM/CanonicalFirstCrossingBarrier.lean \
-            Zeta23/ExceptionalZero/CanonicalParityFirstCrossingShell.lean
+            Zeta23/ExceptionalZero/CanonicalParityFirstCrossingShell.lean \
+            Zeta23/ExceptionalZero/CanonicalFirstCrossingConditionalRH.lean
 
   campaign-complete:
     needs: [fast-integrity, lean-a, lean-b, lean-c, lean-d-bindings, lean-strength-audit, lean-contact, lean-first-crossing]
