@@ -375,34 +375,94 @@ theorem continuousOn_parityRayleighBottom_succ_Ioi
   intro L hL
   apply Metric.continuousWithinAt_iff'.2
   intro ε hε
-  with_reducible_and_instances
-    have hT :=
-      (continuousOn_parityCompressedCanonicalCLM_Ioi p (N + 1)).continuousWithinAt hL
-    have hTmetric :=
-      Metric.continuousWithinAt_iff'.1 hT
-    filter_upwards [hTmetric ε hε] with L' hdist
-    have hnormlt :
-        ‖parityCompressedCanonicalCLM p L' (N + 1) -
-          parityCompressedCanonicalCLM p L (N + 1)‖ < ε := by
-      with_reducible_and_instances
-        change
-          ‖parityCompressedCanonicalCLM p L' (N + 1) -
-            parityCompressedCanonicalCLM p L (N + 1)‖ < ε at hdist
-        exact hdist
-    have hpert :=
-      parityRayleighPerturbationBound_of_clmNorm
-        p L' L (N + 1)
-    have hbottom :=
-      abs_parityRayleighBottom_sub_le_of_perturbation_succ
-        p L' L
-        ‖parityCompressedCanonicalCLM p L' (N + 1) -
-          parityCompressedCanonicalCLM p L (N + 1)‖
-        N hN hpert
-    have habslt :
-        |parityRayleighBottom p L' (N + 1) -
-          parityRayleighBottom p L (N + 1)| < ε :=
-      lt_of_le_of_lt hbottom hnormlt
-    simpa [Real.dist_eq] using habslt
+  have hT :=
+    (continuousOn_parityCompressedCanonicalCLM_Ioi p (N + 1)).continuousWithinAt hL
+  have hconst :
+      ContinuousWithinAt
+        (fun _ : ℝ => parityCompressedCanonicalCLM p L (N + 1))
+        (Ioi (0 : ℝ)) L :=
+    continuousWithinAt_const
+  have hΔ :
+      Tendsto
+        (fun L' : ℝ =>
+          parityCompressedCanonicalCLM p L' (N + 1) -
+            parityCompressedCanonicalCLM p L (N + 1))
+        (𝓝[Ioi (0 : ℝ)] L)
+        (𝓝 (0 :
+          euclideanParityBoundaryFlatSubspace p (N + 1) →L[ℂ]
+            euclideanParityBoundaryFlatSubspace p (N + 1))) := by
+    simpa using hT.sub hconst
+  obtain ⟨c, hc⟩ := NormedField.exists_one_lt_norm ℂ
+  let C : ℝ := ε / 2
+  have hCpos : 0 < C := by
+    dsimp [C]
+    linarith
+  have hcpos : 0 < ‖c‖ := lt_trans zero_lt_one hc
+  let δ : ℝ := C / ‖c‖
+  have hδpos : 0 < δ := by
+    exact div_pos hCpos hcpos
+  have hsmall0 :
+      ∀ᶠ A :
+          euclideanParityBoundaryFlatSubspace p (N + 1) →L[ℂ]
+            euclideanParityBoundaryFlatSubspace p (N + 1) in 𝓝 0,
+        MapsTo A
+          (Metric.closedBall
+            (0 : euclideanParityBoundaryFlatSubspace p (N + 1)) 1)
+          (Metric.ball
+            (0 : euclideanParityBoundaryFlatSubspace p (N + 1)) δ) := by
+    exact
+      ContinuousLinearMap.eventually_nhds_zero_mapsTo
+        (NormedSpace.isVonNBounded_closedBall ℂ
+          (euclideanParityBoundaryFlatSubspace p (N + 1)) 1)
+        (Metric.ball_mem_nhds 0 hδpos)
+  have hsmall := hΔ.eventually hsmall0
+  filter_upwards [hsmall] with L' hmaps
+  have hop :
+      ‖parityCompressedCanonicalCLM p L' (N + 1) -
+        parityCompressedCanonicalCLM p L (N + 1)‖ ≤ C := by
+    refine
+      ContinuousLinearMap.opNorm_le_of_shell
+        (f :=
+          parityCompressedCanonicalCLM p L' (N + 1) -
+            parityCompressedCanonicalCLM p L (N + 1))
+        one_pos hCpos.le hc ?_
+    intro x hxlow hxup
+    have hxball :
+        x ∈ Metric.closedBall
+          (0 : euclideanParityBoundaryFlatSubspace p (N + 1)) 1 := by
+      rw [mem_closedBall_zero_iff]
+      exact hxup.le
+    have himg := hmaps hxball
+    have hAx :
+        ‖(parityCompressedCanonicalCLM p L' (N + 1) -
+          parityCompressedCanonicalCLM p L (N + 1)) x‖ < δ := by
+      simpa only [mem_ball_zero_iff] using himg
+    have hδle : δ ≤ C * ‖x‖ := by
+      dsimp [δ]
+      simpa [div_eq_mul_inv] using
+        mul_le_mul_of_nonneg_left hxlow hCpos.le
+    exact (le_of_lt hAx).trans hδle
+  have hClt : C < ε := by
+    dsimp [C]
+    linarith
+  have hnormlt :
+      ‖parityCompressedCanonicalCLM p L' (N + 1) -
+        parityCompressedCanonicalCLM p L (N + 1)‖ < ε :=
+    lt_of_le_of_lt hop hClt
+  have hpert :=
+    parityRayleighPerturbationBound_of_clmNorm
+      p L' L (N + 1)
+  have hbottom :=
+    abs_parityRayleighBottom_sub_le_of_perturbation_succ
+      p L' L
+      ‖parityCompressedCanonicalCLM p L' (N + 1) -
+        parityCompressedCanonicalCLM p L (N + 1)‖
+      N hN hpert
+  have habslt :
+      |parityRayleighBottom p L' (N + 1) -
+        parityRayleighBottom p L (N + 1)| < ε :=
+    lt_of_le_of_lt hbottom hnormlt
+  simpa [Real.dist_eq] using habslt
 
 /-- The actual legal fixed-N successor ground, the minimum of the two parity
 bottoms, is continuous throughout the positive aperture axis. -/
