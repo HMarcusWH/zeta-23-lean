@@ -16,7 +16,7 @@ THEOREM AUTHORITY
 
 CURRENT RESEARCH FRONTIER
 - current candidate PR = #278 / POST277_FIRST_CONTACT_CLOSURE_CANDIDATE
-- candidate theorem-validation head = 6b1381dc18c632e171a1ef3895ce6f1cb54c5731
+- candidate theorem-validation head = 9ec83d66a3b9e3d94662d9e9d2c574b5d976f668
 - candidate theorem-validation status = CI_PENDING
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
 - fixed-N sign opposition = PROVED_MERGED_PR_277
