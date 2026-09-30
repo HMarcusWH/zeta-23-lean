@@ -60,6 +60,7 @@ ACTIVE_CCM = {
     "Zeta23.CCM.ParityKernelTower",
     "Zeta23.CCM.CanonicalParityFirstCrossingShell",
     "Zeta23.CCM.FirstCrossingSchurReduction",
+    "Zeta23.CCM.FirstCrossingSourceDynamics",
     "Zeta23.CCM.CanonicalApertureLocation",
     "Zeta23.CCM.CanonicalFirstCrossingBarrier",
 }
