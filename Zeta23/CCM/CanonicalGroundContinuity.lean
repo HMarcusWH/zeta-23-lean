@@ -384,8 +384,16 @@ theorem continuousOn_parityRayleighBottom_succ_Ioi
             ‖parityCompressedCanonicalCLM p L' (N + 1) -
               parityCompressedCanonicalCLM p L (N + 1)‖)
           (Ioi (0 : ℝ)) L := by
-      exact
-        (ContinuousWithinAt.sub hT continuousWithinAt_const).norm
+      let V := euclideanParityBoundaryFlatSubspace p (N + 1)
+      letI : TopologicalSpace (V →L[ℂ] V) :=
+        PseudoMetricSpace.toUniformSpace.toTopologicalSpace
+      have hT' :
+          ContinuousWithinAt
+            (fun L' : ℝ => parityCompressedCanonicalCLM p L' (N + 1))
+            (Ioi (0 : ℝ)) L := by
+        with_reducible_and_instances
+          exact hT
+      exact (ContinuousWithinAt.sub hT' continuousWithinAt_const).norm
     have hnormNear :
         ∀ᶠ L' in 𝓝[Ioi (0 : ℝ)] L,
           ‖parityCompressedCanonicalCLM p L' (N + 1) -
@@ -393,7 +401,8 @@ theorem continuousOn_parityRayleighBottom_succ_Ioi
       have hnear :=
         Metric.continuousWithinAt_iff'.1 hnormCont ε hε
       filter_upwards [hnear] with L' hdist
-      simpa [Real.dist_eq] using hdist
+      simpa only [Real.dist_eq, sub_self, norm_zero, sub_zero,
+        abs_of_nonneg (norm_nonneg _)] using hdist
     filter_upwards [hnormNear] with L' hnormlt
     have hpert :=
       parityRayleighPerturbationBound_of_clmNorm
