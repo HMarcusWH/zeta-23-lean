@@ -375,36 +375,29 @@ theorem continuousOn_parityRayleighBottom_succ_Ioi
   intro L hL
   apply Metric.continuousWithinAt_iff'.2
   intro ε hε
-  have hT :=
-    (continuousOn_parityCompressedCanonicalCLM_Ioi p (N + 1)) L hL
-  have hTmetric :
-      ∀ δ > 0,
-        ∀ᶠ L' in 𝓝[Ioi (0 : ℝ)] L,
-          dist
-            (parityCompressedCanonicalCLM p L' (N + 1))
-            (parityCompressedCanonicalCLM p L (N + 1)) < δ := by
-    with_reducible_and_instances
-      exact Metric.continuousWithinAt_iff'.1 hT
-  filter_upwards [hTmetric ε hε] with L' hdist
-  have hpert :=
-    parityRayleighPerturbationBound_of_clmNorm
-      p L' L (N + 1)
-  have hbottom :=
-    abs_parityRayleighBottom_sub_le_of_perturbation_succ
-      p L' L
-      ‖parityCompressedCanonicalCLM p L' (N + 1) -
-        parityCompressedCanonicalCLM p L (N + 1)‖
-      N hN hpert
-  have hnormlt :
-      ‖parityCompressedCanonicalCLM p L' (N + 1) -
-        parityCompressedCanonicalCLM p L (N + 1)‖ < ε := by
-    with_reducible_and_instances
+  with_reducible_and_instances
+    have hT :=
+      (continuousOn_parityCompressedCanonicalCLM_Ioi p (N + 1)) L hL
+    rw [Metric.continuousWithinAt_iff'] at hT
+    filter_upwards [hT ε hε] with L' hdist
+    have hpert :=
+      parityRayleighPerturbationBound_of_clmNorm
+        p L' L (N + 1)
+    have hbottom :=
+      abs_parityRayleighBottom_sub_le_of_perturbation_succ
+        p L' L
+        ‖parityCompressedCanonicalCLM p L' (N + 1) -
+          parityCompressedCanonicalCLM p L (N + 1)‖
+        N hN hpert
+    have hnormlt :
+        ‖parityCompressedCanonicalCLM p L' (N + 1) -
+          parityCompressedCanonicalCLM p L (N + 1)‖ < ε := by
       simpa only [dist_eq_norm_sub] using hdist
-  have habslt :
-      |parityRayleighBottom p L' (N + 1) -
-        parityRayleighBottom p L (N + 1)| < ε :=
-    lt_of_le_of_lt hbottom hnormlt
-  simpa [Real.dist_eq] using habslt
+    have habslt :
+        |parityRayleighBottom p L' (N + 1) -
+          parityRayleighBottom p L (N + 1)| < ε :=
+      lt_of_le_of_lt hbottom hnormlt
+    simpa [Real.dist_eq] using habslt
 
 /-- The actual legal fixed-N successor ground, the minimum of the two parity
 bottoms, is continuous throughout the positive aperture axis. -/
