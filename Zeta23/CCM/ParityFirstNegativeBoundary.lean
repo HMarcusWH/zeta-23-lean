@@ -59,6 +59,31 @@ structure ParityFirstNegativeBoundary where
   right_crossing :
     ParityRightCrossesNegative p N Lstar
 
+/-- A global fixed-N positive/negative bracket contains one fixed parity with
+the same sign opposition.  This is the parity-selection step used before taking
+the first aperture boundary. -/
+theorem exists_parity_ground_sign_opposition_of_global
+    {N : ℕ}
+    {Lsmall Lneg : ℝ}
+    (hbase : 1 ≤ globalParitySuccessorBottom Lsmall N)
+    (hneg : globalParitySuccessorBottom Lneg N < 0) :
+    ∃ p : ReversalParity,
+      1 ≤ paritySuccessorGround p N Lsmall ∧
+      paritySuccessorGround p N Lneg < 0 := by
+  have hevenBase :
+      1 ≤ parityRayleighBottom .even Lsmall (N + 1) :=
+    le_trans hbase (min_le_left _ _)
+  have hoddBase :
+      1 ≤ parityRayleighBottom .odd Lsmall (N + 1) :=
+    le_trans hbase (min_le_right _ _)
+  unfold globalParitySuccessorBottom at hneg
+  rw [min_lt_iff] at hneg
+  rcases hneg with hevenNeg | hoddNeg
+  · exact ⟨.even, by simpa [paritySuccessorGround] using hevenBase,
+      by simpa [paritySuccessorGround] using hevenNeg⟩
+  · exact ⟨.odd, by simpa [paritySuccessorGround] using hoddBase,
+      by simpa [paritySuccessorGround] using hoddNeg⟩
+
 /-- A positive/negative bracket for one fixed parity produces its genuine first
 negative boundary.  The boundary is the infimum of the closure of the negative
 set on the compact bracket, so the outgoing negative approach is part of the
