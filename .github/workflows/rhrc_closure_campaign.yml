@@ -215,8 +215,41 @@ jobs:
             Zeta23/CCM/GlobalParityBottomContactNormalForm.lean \
             Zeta23/ExceptionalZero/GlobalParityBottomFirstContact.lean
 
+
+  lean-first-crossing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build post-#278 parity first-crossing reduction
+        run: |
+          lake build Zeta23.CCM.ParityFirstNegativeBoundary
+          lake build Zeta23.CCM.ParityZeroPlateau
+          lake build Zeta23.CCM.ParityKernelTower
+          lake build Zeta23.CCM.CanonicalParityFirstCrossingShell
+          lake build Zeta23.CCM.FirstCrossingSchurReduction
+          lake build Zeta23.CCM.CanonicalApertureLocation
+          lake build Zeta23.ExceptionalZero.CanonicalParityFirstCrossingShell
+      - name: Audit post-#278 first-crossing theorem axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/ParityFirstNegativeBoundary.lean \
+            Zeta23/CCM/ParityZeroPlateau.lean \
+            Zeta23/CCM/ParityKernelTower.lean \
+            Zeta23/CCM/CanonicalParityFirstCrossingShell.lean \
+            Zeta23/CCM/FirstCrossingSchurReduction.lean \
+            Zeta23/CCM/CanonicalApertureLocation.lean \
+            Zeta23/ExceptionalZero/CanonicalParityFirstCrossingShell.lean
+
   campaign-complete:
-    needs: [fast-integrity, lean-a, lean-b, lean-c, lean-d-bindings, lean-strength-audit, lean-contact]
+    needs: [fast-integrity, lean-a, lean-b, lean-c, lean-d-bindings, lean-strength-audit, lean-contact, lean-first-crossing]
     runs-on: ubuntu-latest
     steps:
       - run: echo 'Parallel closure campaign completed; theorem and research dispositions remain separately classified.'
