@@ -78,12 +78,13 @@ theorem zeroContactParityBranch_of_globalParitySuccessorBottom_eq_zero
     exact .evenStrict heven hodd
   · have heven :
         parityRayleighBottom .even L (N + 1) = 0 := by
-      rw [globalParitySuccessorBottom, htie, min_self] at hzero
-      exact hzero
+      have hzero' := hzero
+      rw [globalParitySuccessorBottom,
+        min_eq_left (le_of_eq htie)] at hzero'
+      exact hzero'
     have hodd :
-        parityRayleighBottom .odd L (N + 1) = 0 := by
-      rw [← htie]
-      exact heven
+        parityRayleighBottom .odd L (N + 1) = 0 :=
+      htie.symm.trans heven
     exact .tie heven hodd
   · have hodd :
         parityRayleighBottom .odd L (N + 1) = 0 := by
