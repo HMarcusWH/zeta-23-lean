@@ -377,7 +377,7 @@ theorem continuousOn_parityRayleighBottom_succ_Ioi
   intro ε hε
   with_reducible_and_instances
     have hT :=
-      (continuousOn_parityCompressedCanonicalCLM_Ioi p (N + 1)) L hL
+      (continuousOn_parityCompressedCanonicalCLM_Ioi p (N + 1)).continuousWithinAt hL
     rw [Metric.continuousWithinAt_iff'] at hT
     filter_upwards [hT ε hε] with L' hdist
     have hpert :=
