@@ -404,6 +404,13 @@ jobs:
             Zeta23.ExceptionalZero.QuantitativeDetectorFamily \
             Zeta23.ExceptionalZero.QuantitativeCanonicalWitness \
             Zeta23.ExceptionalZero.GlobalParityBottomSignOpposition \
+            Zeta23.CCM.ParityFirstNegativeBoundary \
+            Zeta23.CCM.ParityZeroPlateau \
+            Zeta23.CCM.ParityKernelTower \
+            Zeta23.CCM.CanonicalParityFirstCrossingShell \
+            Zeta23.CCM.FirstCrossingSchurReduction \
+            Zeta23.CCM.CanonicalApertureLocation \
+            Zeta23.ExceptionalZero.CanonicalParityFirstCrossingShell \
             Zeta23.RHRC.ClosureObligationBindings \
             Zeta23.RHRC.ClosureStrengthAudit
       - name: Validate future premise-free RH closure exact type
@@ -445,6 +452,13 @@ jobs:
             Zeta23/CCM/SourceContractionLocalized.lean \
             Zeta23/ExceptionalZero/QuantitativeDetectorFamily.lean \
             Zeta23/ExceptionalZero/GlobalParityBottomSignOpposition.lean \
+            Zeta23/CCM/ParityFirstNegativeBoundary.lean \
+            Zeta23/CCM/ParityZeroPlateau.lean \
+            Zeta23/CCM/ParityKernelTower.lean \
+            Zeta23/CCM/CanonicalParityFirstCrossingShell.lean \
+            Zeta23/CCM/FirstCrossingSchurReduction.lean \
+            Zeta23/CCM/CanonicalApertureLocation.lean \
+            Zeta23/ExceptionalZero/CanonicalParityFirstCrossingShell.lean \
             Zeta23/RHRC/ClosureObligationBindings.lean \
             Zeta23/RHRC/ClosureStrengthAudit.lean \
             Zeta23/Spectral/CanonicalCharacteristic.lean \
