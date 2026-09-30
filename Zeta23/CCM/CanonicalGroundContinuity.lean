@@ -378,30 +378,17 @@ theorem continuousOn_parityRayleighBottom_succ_Ioi
   with_reducible_and_instances
     have hT :=
       (continuousOn_parityCompressedCanonicalCLM_Ioi p (N + 1)).continuousWithinAt hL
-    have hnormCont :
-        ContinuousWithinAt
-          (fun L' : ℝ =>
-            ‖parityCompressedCanonicalCLM p L' (N + 1) -
-              parityCompressedCanonicalCLM p L (N + 1)‖)
-          (Ioi (0 : ℝ)) L := by
-      apply ContinuousWithinAt.norm
+    have hTmetric :=
+      Metric.continuousWithinAt_iff'.1 hT
+    filter_upwards [hTmetric ε hε] with L' hdist
+    have hnormlt :
+        ‖parityCompressedCanonicalCLM p L' (N + 1) -
+          parityCompressedCanonicalCLM p L (N + 1)‖ < ε := by
       with_reducible_and_instances
-        exact ContinuousWithinAt.sub hT continuousWithinAt_const
-    have hnormNear :
-        ∀ᶠ L' in 𝓝[Ioi (0 : ℝ)] L,
+        change
           ‖parityCompressedCanonicalCLM p L' (N + 1) -
-            parityCompressedCanonicalCLM p L (N + 1)‖ < ε := by
-      have hnear :=
-        Metric.continuousWithinAt_iff'.1 hnormCont ε hε
-      filter_upwards [hnear] with L' hdist
-      have hzero :
-          ‖parityCompressedCanonicalCLM p L (N + 1) -
-            parityCompressedCanonicalCLM p L (N + 1)‖ = 0 := by
-        simp
-      rw [Real.dist_eq, hzero, sub_zero,
-        abs_of_nonneg (norm_nonneg _)] at hdist
-      exact hdist
-    filter_upwards [hnormNear] with L' hnormlt
+            parityCompressedCanonicalCLM p L (N + 1)‖ < ε at hdist
+        exact hdist
     have hpert :=
       parityRayleighPerturbationBound_of_clmNorm
         p L' L (N + 1)
