@@ -384,23 +384,8 @@ theorem continuousOn_parityRayleighBottom_succ_Ioi
         (fun _ : ℝ => parityCompressedCanonicalCLM p L (N + 1))
         (Ioi (0 : ℝ)) L :=
     continuousWithinAt_const
-  have hΔcont :
-      ContinuousWithinAt
-        (fun L' : ℝ =>
-          parityCompressedCanonicalCLM p L' (N + 1) -
-            parityCompressedCanonicalCLM p L (N + 1))
-        (Ioi (0 : ℝ)) L := by
-    simpa only [Pi.sub_apply] using hT.sub hconst
-  have hΔ :
-      Filter.Tendsto
-        (fun L' : ℝ =>
-          parityCompressedCanonicalCLM p L' (N + 1) -
-            parityCompressedCanonicalCLM p L (N + 1))
-        (𝓝[Ioi (0 : ℝ)] L)
-        (𝓝 (0 :
-          euclideanParityBoundaryFlatSubspace p (N + 1) →L[ℂ]
-            euclideanParityBoundaryFlatSubspace p (N + 1))) := by
-    simpa using hΔcont.tendsto
+  have hΔcont := hT.sub hconst
+  have hΔ := hΔcont.tendsto
   let C : ℝ := ε / 2
   have hCpos : 0 < C := by
     dsimp [C]
@@ -433,7 +418,7 @@ theorem continuousOn_parityRayleighBottom_succ_Ioi
       exact hx.le
     have himg := hmaps hxball
     exact le_of_lt (by
-      simpa only [mem_ball_zero_iff] using himg)
+      simpa only [Pi.sub_apply, mem_ball_zero_iff] using himg)
   have hClt : C < ε := by
     dsimp [C]
     linarith
