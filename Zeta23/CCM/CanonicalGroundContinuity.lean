@@ -378,8 +378,15 @@ theorem continuousOn_parityRayleighBottom_succ_Ioi
   with_reducible_and_instances
     have hT :=
       (continuousOn_parityCompressedCanonicalCLM_Ioi p (N + 1)).continuousWithinAt hL
-    rw [Metric.continuousWithinAt_iff'] at hT
-    filter_upwards [hT ε hε] with L' hdist
+    have hTmetric :
+        ∀ δ > 0, ∀ᶠ L' in 𝓝[Ioi (0 : ℝ)] L,
+          dist
+            (parityCompressedCanonicalCLM p L' (N + 1))
+            (parityCompressedCanonicalCLM p L (N + 1)) < δ := by
+      exact Metric.continuousWithinAt_iff'.1 (by
+        with_reducible_and_instances
+          exact hT)
+    filter_upwards [hTmetric ε hε] with L' hdist
     have hpert :=
       parityRayleighPerturbationBound_of_clmNorm
         p L' L (N + 1)
