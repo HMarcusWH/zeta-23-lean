@@ -129,6 +129,10 @@
       "theorem": "Zeta23.CCM.negative_eigenmode_paritySuccShell_projection_ne_zero"
     },
     {
+      "id": "R003_FIXED_N_GROUND_CONTINUITY",
+      "theorem": "Zeta23.CCM.canonicalFixedNGroundContinuity_proved"
+    },
+    {
       "id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
       "theorem": "Zeta23.ExceptionalZero.exists_fixedN_ground_sign_opposition_of_offLine_zero"
     },
@@ -167,6 +171,10 @@
     {
       "id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero"
+    },
+    {
+      "id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "theorem": "Zeta23.ExceptionalZero.nonempty_globalParityBottomZeroContact_proved_of_offLine_zero"
     },
     {
       "id": "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
