@@ -412,6 +412,7 @@ jobs:
             Zeta23.CCM.CanonicalApertureLocation \
             Zeta23.CCM.CanonicalFirstCrossingBarrier \
             Zeta23.ExceptionalZero.CanonicalParityFirstCrossingShell \
+            Zeta23.ExceptionalZero.CanonicalFirstCrossingConditionalRH \
             Zeta23.RHRC.ClosureObligationBindings \
             Zeta23.RHRC.ClosureStrengthAudit
       - name: Validate future premise-free RH closure exact type
@@ -461,6 +462,7 @@ jobs:
             Zeta23/CCM/CanonicalApertureLocation.lean \
             Zeta23/CCM/CanonicalFirstCrossingBarrier.lean \
             Zeta23/ExceptionalZero/CanonicalParityFirstCrossingShell.lean \
+            Zeta23/ExceptionalZero/CanonicalFirstCrossingConditionalRH.lean \
             Zeta23/RHRC/ClosureObligationBindings.lean \
             Zeta23/RHRC/ClosureStrengthAudit.lean \
             Zeta23/Spectral/CanonicalCharacteristic.lean \
