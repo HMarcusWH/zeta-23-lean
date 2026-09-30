@@ -45,9 +45,10 @@ theorem no_canonicalParityFirstCrossingShell_of_barriers
     False := by
   have hstarpos : 0 < c.Lstar :=
     lt_trans c.Lsmall_pos c.Lsmall_lt_Lstar
-  rcases canonicalApertureLocation_of_pos hstarpos with h | h
-  · exact hseam c h.q h.two_le_q h.eq_log
-  · exact hinterior c h.Q h.one_le_Q h.mem_cell
+  rcases canonicalApertureLocation_of_pos hstarpos with
+      ⟨q, hq, hEq⟩ | ⟨Q, hQ, hcell⟩
+  · exact hseam c q hq hEq
+  · exact hinterior c Q hQ hcell
 
 end Zeta23.CCM
 
