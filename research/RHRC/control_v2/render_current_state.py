@@ -46,6 +46,8 @@ THEOREM AUTHORITY
 - status = {theorem['status']}
 - PR #275 full-space small-aperture coercive base = PROVED
 - PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
+- fixed-N production continuity = ${route.get('post278_fixedN_ground_continuity', 'OPEN')}
+- same-N off-line-zero contact = ${route.get('post278_sameN_zero_contact', 'OPEN')}
 - PR #272 CofinalCanonicalArithmeticCertificates <-> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY
 - RH = OPEN
 
