@@ -59,6 +59,34 @@ private theorem parityRayleighQuotientAt_eq_bottom_of_eigen_succ
   apply (div_eq_iff hnormne).2
   ring
 
+/-- Operator-norm control of the exact parity compression supplies the
+uniform Rayleigh perturbation premise used by the multiplicity-safe bottom
+theorems. -/
+theorem parityRayleighPerturbationBound_of_clmNorm
+    (p : ReversalParity) (L₁ L₂ : ℝ) (K : ℕ) :
+    ParityRayleighPerturbationBound p L₁ L₂ K
+      ‖parityCompressedCanonicalCLM p L₁ K -
+        parityCompressedCanonicalCLM p L₂ K‖ := by
+  let V := euclideanParityBoundaryFlatSubspace p K
+  let Δ : V →L[ℂ] V :=
+    parityCompressedCanonicalCLM p L₁ K -
+      parityCompressedCanonicalCLM p L₂ K
+  refine ⟨?_, ?_⟩
+  · exact norm_nonneg
+      (parityCompressedCanonicalCLM p L₁ K -
+        parityCompressedCanonicalCLM p L₂ K)
+  intro x hx
+  have habs :=
+    ContinuousLinearMap.rayleighQuotient_le_norm
+      (𝕜 := ℂ) Δ (x : V)
+  have habs' :
+      |RCLike.re (inner ℂ (Δ (x : V)) (x : V)) /
+          ‖(x : V)‖ ^ 2| ≤ ‖Δ‖ := by
+    simpa only [ContinuousLinearMap.rayleighQuotient,
+      ContinuousLinearMap.reApplyInnerSelf_apply] using habs
+  simpa [parityRayleighQuotientAt, parityCompressedCanonical,
+    Δ, V, inner_sub_left, Complex.sub_re, _root_.sub_div] using habs'
+
 /-- A uniform Rayleigh perturbation controls one directed difference of parity
 bottoms.  No simplicity assumption is used. -/
 theorem parityRayleighBottom_sub_le_of_perturbation_succ
