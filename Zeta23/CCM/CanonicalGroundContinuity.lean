@@ -398,7 +398,8 @@ theorem continuousOn_parityRayleighBottom_succ_Ioi
   have hnormlt :
       ‖parityCompressedCanonicalCLM p L' (N + 1) -
         parityCompressedCanonicalCLM p L (N + 1)‖ < ε := by
-    simpa [dist_eq_norm] using hdist
+    with_reducible_and_instances
+      simpa only [dist_eq_norm_sub] using hdist
   have habslt :
       |parityRayleighBottom p L' (N + 1) -
         parityRayleighBottom p L (N + 1)| < ε :=
