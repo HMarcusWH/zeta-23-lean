@@ -365,8 +365,10 @@ theorem continuousOn_parityCompressedCanonicalCLM_Ioi
   rfl
 
 /-- Multiplicity-safe continuity of one successor parity Rayleigh bottom.  The
-proof uses only operator-norm continuity and the already-proved Rayleigh
-perturbation inequality; no eigenvector is selected continuously. -/
+proof starts from native bounded-convergence continuity of the compressed
+continuous-linear-map family, converts uniform smallness on the closed unit
+ball into an operator-norm bound, and then applies the already-proved Rayleigh
+perturbation inequality.  No eigenvector is selected continuously. -/
 theorem continuousOn_parityRayleighBottom_succ_Ioi
     (p : ReversalParity) (N : ℕ) (hN : 1 ≤ N) :
     ContinuousOn
@@ -383,7 +385,7 @@ theorem continuousOn_parityRayleighBottom_succ_Ioi
         (Ioi (0 : ℝ)) L :=
     continuousWithinAt_const
   have hΔ :
-      Tendsto
+      Filter.Tendsto
         (fun L' : ℝ =>
           parityCompressedCanonicalCLM p L' (N + 1) -
             parityCompressedCanonicalCLM p L (N + 1))
@@ -391,16 +393,11 @@ theorem continuousOn_parityRayleighBottom_succ_Ioi
         (𝓝 (0 :
           euclideanParityBoundaryFlatSubspace p (N + 1) →L[ℂ]
             euclideanParityBoundaryFlatSubspace p (N + 1))) := by
-    simpa using hT.sub hconst
-  obtain ⟨c, hc⟩ := NormedField.exists_one_lt_norm ℂ
+    simpa using (hT.sub hconst).tendsto
   let C : ℝ := ε / 2
   have hCpos : 0 < C := by
     dsimp [C]
     linarith
-  have hcpos : 0 < ‖c‖ := lt_trans zero_lt_one hc
-  let δ : ℝ := C / ‖c‖
-  have hδpos : 0 < δ := by
-    exact div_pos hCpos hcpos
   have hsmall0 :
       ∀ᶠ A :
           euclideanParityBoundaryFlatSubspace p (N + 1) →L[ℂ]
@@ -409,39 +406,27 @@ theorem continuousOn_parityRayleighBottom_succ_Ioi
           (Metric.closedBall
             (0 : euclideanParityBoundaryFlatSubspace p (N + 1)) 1)
           (Metric.ball
-            (0 : euclideanParityBoundaryFlatSubspace p (N + 1)) δ) := by
+            (0 : euclideanParityBoundaryFlatSubspace p (N + 1)) C) := by
     exact
       ContinuousLinearMap.eventually_nhds_zero_mapsTo
         (NormedSpace.isVonNBounded_closedBall ℂ
           (euclideanParityBoundaryFlatSubspace p (N + 1)) 1)
-        (Metric.ball_mem_nhds 0 hδpos)
+        (Metric.ball_mem_nhds 0 hCpos)
   have hsmall := hΔ.eventually hsmall0
   filter_upwards [hsmall] with L' hmaps
   have hop :
       ‖parityCompressedCanonicalCLM p L' (N + 1) -
         parityCompressedCanonicalCLM p L (N + 1)‖ ≤ C := by
-    refine
-      ContinuousLinearMap.opNorm_le_of_shell
-        (f :=
-          parityCompressedCanonicalCLM p L' (N + 1) -
-            parityCompressedCanonicalCLM p L (N + 1))
-        one_pos hCpos.le hc ?_
-    intro x hxlow hxup
+    refine ContinuousLinearMap.opNorm_le_of_unit_norm hCpos.le ?_
+    intro x hx
     have hxball :
         x ∈ Metric.closedBall
           (0 : euclideanParityBoundaryFlatSubspace p (N + 1)) 1 := by
       rw [mem_closedBall_zero_iff]
-      exact hxup.le
+      exact hx.le
     have himg := hmaps hxball
-    have hAx :
-        ‖(parityCompressedCanonicalCLM p L' (N + 1) -
-          parityCompressedCanonicalCLM p L (N + 1)) x‖ < δ := by
-      simpa only [mem_ball_zero_iff] using himg
-    have hδle : δ ≤ C * ‖x‖ := by
-      dsimp [δ]
-      simpa [div_eq_mul_inv] using
-        mul_le_mul_of_nonneg_left hxlow hCpos.le
-    exact (le_of_lt hAx).trans hδle
+    exact le_of_lt (by
+      simpa only [mem_ball_zero_iff] using himg)
   have hClt : C < ε := by
     dsimp [C]
     linarith
