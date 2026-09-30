@@ -39,9 +39,9 @@ structure ParityKernelTower extends ParityZeroPlateau where
   seed_kernel :
     parityCompressedCanonical p Lstar (n + 1) seed = 0
   extended_kernel :
-    ∀ m : ℕ, n ≤ m → m ≤ N →
+    ∀ m : ℕ, ∀ hnm : n ≤ m, ∀ _hmN : m ≤ N,
       parityCompressedCanonical p Lstar (m + 1)
-        (parityPlateauExtend p ‹n ≤ m› seed) = 0
+        (parityPlateauExtend p hnm seed) = 0
 
 /-- The minimal zero mode of a parity plateau extends to a genuine kernel mode
 at every larger size in the plateau. -/
@@ -58,9 +58,9 @@ theorem ParityZeroPlateau.exists_kernelTower
     simp
 
   have hext :
-      ∀ m : ℕ, z.n ≤ m → m ≤ z.N →
+      ∀ m : ℕ, ∀ hnm : z.n ≤ m, ∀ hmN : m ≤ z.N,
         parityCompressedCanonical z.p z.Lstar (m + 1)
-          (parityPlateauExtend z.p ‹z.n ≤ m› v) = 0 := by
+          (parityPlateauExtend z.p hnm v) = 0 := by
     intro m hnm hmN
     have hm1 : 1 ≤ m := le_trans z.one_le_n hnm
     have hmzero :
