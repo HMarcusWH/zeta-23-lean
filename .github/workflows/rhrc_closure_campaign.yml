@@ -235,6 +235,7 @@ jobs:
           lake build Zeta23.CCM.ParityKernelTower
           lake build Zeta23.CCM.CanonicalParityFirstCrossingShell
           lake build Zeta23.CCM.FirstCrossingSchurReduction
+          lake build Zeta23.CCM.FirstCrossingSourceDynamics
           lake build Zeta23.CCM.CanonicalApertureLocation
           lake build Zeta23.CCM.CanonicalFirstCrossingBarrier
           lake build Zeta23.ExceptionalZero.CanonicalParityFirstCrossingShell
@@ -247,6 +248,7 @@ jobs:
             Zeta23/CCM/ParityKernelTower.lean \
             Zeta23/CCM/CanonicalParityFirstCrossingShell.lean \
             Zeta23/CCM/FirstCrossingSchurReduction.lean \
+            Zeta23/CCM/FirstCrossingSourceDynamics.lean \
             Zeta23/CCM/CanonicalApertureLocation.lean \
             Zeta23/CCM/CanonicalFirstCrossingBarrier.lean \
             Zeta23/ExceptionalZero/CanonicalParityFirstCrossingShell.lean \
