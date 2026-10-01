@@ -236,5 +236,7 @@ import Zeta23.CCM.CanonicalParityFirstCrossingShell
 import Zeta23.CCM.FirstCrossingSchurReduction
 import Zeta23.CCM.FirstCrossingSourceDynamics
 import Zeta23.CCM.CanonicalApertureLocation
+import Zeta23.CCM.CanonicalInteriorFirstCrossingBarrier
+import Zeta23.CCM.CanonicalSeamFirstCrossingBarrier
 import Zeta23.CCM.CanonicalFirstCrossingBarrier
 import Zeta23.CCM.CanonicalArithmeticCofinal
