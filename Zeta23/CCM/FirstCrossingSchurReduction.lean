@@ -164,15 +164,8 @@ theorem CanonicalParityFirstCrossingShell.exists_badPoint_with_nonnegativePredec
         paritySuccessorGround c.p c.k L < 0 →
           ParityBad c.p L (c.k + 1) := by
     intro L hneg
-    obtain ⟨v, hvne, hveig⟩ :=
-      exists_eigenmode_at_parityRayleighBottom_succ
-        c.p L c.k hk1
-    apply parityBad_of_negative_eigenmode
-      (p := c.p) (L := L) (N := c.k + 1)
-      (lam := parityRayleighBottom c.p L (c.k + 1))
-    · simpa [paritySuccessorGround] using hneg
-    · exact hvne
-    · exact hveig
+    exact parityBad_of_paritySuccessorGround_neg
+      c.p c.k hk1 hneg
 
   rcases c.predecessorGround_stable with hk | hstable
   · obtain ⟨L, hLlo, hLhi, hLneg⟩ :=
