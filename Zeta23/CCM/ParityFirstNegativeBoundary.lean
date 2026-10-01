@@ -6,6 +6,7 @@ noncomputable section
 namespace Zeta23.CCM
 
 open Set
+open scoped Topology
 
 /-!
 # Post-#278 parity first-negative boundary
@@ -153,7 +154,9 @@ theorem exists_parityFirstNegativeBoundary_of_signOpposition
   have hsmallstar : Lsmall < Lstar := by
     rcases lt_or_eq_of_le hstarIcc.1 with h | h
     · exact h
-    · subst Lstar
+    · have hnonposSmall : g Lsmall ≤ 0 := by
+        rw [h]
+        exact hstar_nonpos
       have hb : 0 < g Lsmall := by simpa [g] using hbase
       linarith
 
@@ -196,7 +199,9 @@ theorem exists_parityFirstNegativeBoundary_of_signOpposition
   have hstarlneg : Lstar < Lneg := by
     rcases lt_or_eq_of_le hstarIcc.2 with h | h
     · exact h
-    · subst Lstar
+    · have hzeroNeg : g Lneg = 0 := by
+        rw [← h]
+        exact hcontact
       have hn : g Lneg < 0 := by simpa [g] using hneg
       linarith
 
