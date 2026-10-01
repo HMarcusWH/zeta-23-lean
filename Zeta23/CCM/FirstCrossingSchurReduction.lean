@@ -102,6 +102,35 @@ theorem exists_zeroShiftEndpoint_neg_of_regular_parityBad
     cubicZeroShiftSchurEndpoint_re_neg_of_parityBad_of_preimage
       p hL N hN hprev hbad x₀ hx₀
 
+/-- The first-crossing minimality theorem upgrades to the exact all-vector
+predecessor nonnegativity premise on some punctured right-neighborhood of the
+contact.  The k=1 edge is the zero-dimensional predecessor carrier. -/
+theorem CanonicalParityFirstCrossingShell.exists_predecessorSectorNonnegative_right_window
+    (c : CanonicalParityFirstCrossingShell) :
+    ∃ δ : ℝ, 0 < δ ∧
+      ∀ L : ℝ, c.Lstar < L → L < c.Lstar + δ →
+        PredecessorSectorNonnegative c.p L c.k := by
+  rcases c.predecessorGround_stable with hk | hstable
+  · refine ⟨1, by norm_num, ?_⟩
+    intro L _hLlo _hLhi
+    simpa [hk] using predecessorSectorNonnegative_one c.p L
+  · obtain ⟨δ, hδ, hstable⟩ := hstable
+    refine ⟨δ, hδ, ?_⟩
+    intro L hLlo hLhi
+    by_cases hk : c.k = 1
+    · simpa [hk] using predecessorSectorNonnegative_one c.p L
+    · have hk1 : 1 ≤ c.k := le_trans c.one_le_n c.n_le_k
+      have hk2 : 2 ≤ c.k := by omega
+      have hground :=
+        hstable L (le_of_lt hLlo) hLhi
+      have hsucc : c.k - 1 + 1 = c.k := by omega
+      have hbottom :
+          0 ≤ parityRayleighBottom c.p L c.k := by
+        simpa [paritySuccessorGround, hsucc] using hground
+      exact
+        predecessorSectorNonnegative_of_parityBottom_nonnegative
+          c.p L c.k hbottom
+
 /-- Strict negativity of the attained successor parity ground is exactly
 enough to produce the existing finite `ParityBad` witness. -/
 theorem parityBad_of_paritySuccessorGround_neg
