@@ -136,3 +136,4 @@ theorem exists_canonicalRightCellWindow_of_pos
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.canonicalApertureLocation_of_pos
+#print axioms Zeta23.CCM.exists_canonicalRightCellWindow_of_pos
