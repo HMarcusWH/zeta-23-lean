@@ -1,5 +1,5 @@
 {
-  "schema_version": "RHRC-CONTACT-QUOTIENT-VIEW-CONFIG-1.0",
+  "schema_version": "RHRC-CONTACT-QUOTIENT-VIEW-CONFIG-1.1",
   "terminal_claim": "RH_OPEN",
   "theorem_promotion": false,
   "projection": "THEOREM_VALUE_ERASED_SUPPORT",
@@ -7,22 +7,48 @@
     {
       "id": "FIRST_CROSSING_GERM",
       "anchors": [
-        "Zeta23.CCM.CanonicalParityFirstCrossingShell.exists_arbitrarilyClose_regularZeroShiftEndpoint_neg",
-        "Zeta23.CCM.regularZeroShiftSchurEndpoint_re_eq_shell_sub_predecessor"
+        {
+          "declaration": "Zeta23.CCM.CanonicalParityFirstCrossingShell.exists_arbitrarilyClose_regularZeroShiftEndpoint_neg",
+          "module": "Zeta23.CCM.FirstCrossingSourceDynamics"
+        },
+        {
+          "declaration": "Zeta23.CCM.regularZeroShiftSchurEndpoint_re_eq_shell_sub_predecessor",
+          "module": "Zeta23.CCM.FirstCrossingSourceDynamics"
+        }
       ]
     },
     {
       "id": "CONTACT_STRUCTURE",
       "anchors": [
-        "Zeta23.CCM.canonicalFirstCrossingStructuralCompatibility",
-        "Zeta23.CCM.CanonicalParityFirstCrossingShell.predecessorProfile"
+        {
+          "declaration": "Zeta23.CCM.canonicalFirstCrossingStructuralCompatibility",
+          "module": "Zeta23.CCM.FirstCrossingStructuralCompatibility"
+        },
+        {
+          "declaration": "Zeta23.CCM.CanonicalParityFirstCrossingShell.predecessorProfile",
+          "module": "Zeta23.CCM.FirstCrossingBranchBridge"
+        }
       ]
     },
     {
       "id": "PRODUCTION_SOURCE_JET",
       "anchors": [
-        "Zeta23.CCM.canonicalSourceSecondDerivativeCompatibility",
-        "Zeta23.CCM.canonicalEvenBoundaryFlatMomentFourCompatibility"
+        {
+          "declaration": "Zeta23.CCM.canonicalSourceSecondDerivativeCompatibility",
+          "module": "Zeta23.CCM.FirstCrossingArithmeticCompatibility"
+        },
+        {
+          "declaration": "Zeta23.CCM.canonicalEvenBoundaryFlatMomentFourCompatibility",
+          "module": "Zeta23.CCM.FirstCrossingArithmeticCompatibility"
+        },
+        {
+          "declaration": "Zeta23.CCM.strictEvenSourceMomentPairing_eq_oddEnergy_of_even_zero_eigenmode",
+          "module": "Zeta23.CCM.FirstCrossingStrictEvenSourceEnergy"
+        },
+        {
+          "declaration": "Zeta23.CCM.optimizedCurvatureRemainderBalance_zero_iff",
+          "module": "Zeta23.CCM.FirstCrossingOptimizedCurvatureAlgebra"
+        }
       ]
     }
   ]

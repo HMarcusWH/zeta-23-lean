@@ -31,6 +31,7 @@ def materialize() -> None:
         str(ROOT / "integration" / "source_only_dependency_extract.py"),
         "--write",
     ])
+    run([sys.executable, str(ROOT / "graph" / "contact_quotient_dependency_extract.py"), "--write"])
     run([sys.executable, str(ROOT / "graph" / "contact_quotient_view.py"), "--write"])
     run([sys.executable, str(ROOT / "ool" / "rhkg_phase_atlas.py"), "--write"])
 
@@ -46,6 +47,7 @@ def check() -> None:
         str(ROOT / "integration" / "source_only_dependency_extract.py"),
         "--check",
     ])
+    run([sys.executable, str(ROOT / "graph" / "contact_quotient_dependency_extract.py"), "--check"])
     run([sys.executable, str(ROOT / "graph" / "contact_quotient_view.py"), "--check"])
     run([sys.executable, str(ROOT / "ool" / "rhkg_phase_atlas.py"), "--check"])
 
