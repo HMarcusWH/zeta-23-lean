@@ -112,8 +112,9 @@ theorem exists_canonicalRightCellWindow_of_pos
     rw [hEq] at hx
     constructor
     · exact hx.1
-    · dsimp [δ] at hx
-      linarith
+    · have hxupper := hx.2
+      dsimp [δ] at hxupper
+      linarith [hloglt]
   · let δ : ℝ :=
       (Real.log ((Q + 1 : ℕ) : ℝ) - L) / 2
     have hδ : 0 < δ := by
@@ -129,7 +130,8 @@ theorem exists_canonicalRightCellWindow_of_pos
     intro x hx
     constructor
     · exact lt_trans hcell.1 hx.1
-    · dsimp [δ] at hx
+    · have hxupper := hx.2
+      dsimp [δ] at hxupper
       linarith [hcell.2]
 
 
