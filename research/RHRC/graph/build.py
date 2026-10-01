@@ -84,8 +84,14 @@ DECLARED_OOL_GENERATED_PRODUCTS = [
     "research/RHRC/ool/generated/RHKG_OOL_PHASE_ATLAS.json",
 ]
 
+DECLARED_CONTACT_QUOTIENT_GENERATED_PRODUCTS = [
+    "research/RHRC/graph/generated/CONTACT_QUOTIENT_DECLARATION_DEPENDENCIES.jsonl",
+    "research/RHRC/graph/generated/CONTACT_QUOTIENT_VIEW.json",
+]
+
 ALL_DECLARED_GENERATED_PRODUCTS = (
     DECLARED_GENERATED_PRODUCTS
+    + DECLARED_CONTACT_QUOTIENT_GENERATED_PRODUCTS
     + DECLARED_INTEGRATION_GENERATED_PRODUCTS
     + DECLARED_FFBBP_GENERATED_PRODUCTS
     + DECLARED_OOL_GENERATED_PRODUCTS
@@ -95,6 +101,14 @@ GENERATED_PRODUCT_PRODUCER = {
     **{
         path: "research/RHRC/graph/build.py"
         for path in DECLARED_GENERATED_PRODUCTS
+    },
+    **{
+        path: (
+            "research/RHRC/graph/contact_quotient_dependency_extract.py"
+            if path.endswith("CONTACT_QUOTIENT_DECLARATION_DEPENDENCIES.jsonl")
+            else "research/RHRC/graph/contact_quotient_view.py"
+        )
+        for path in DECLARED_CONTACT_QUOTIENT_GENERATED_PRODUCTS
     },
     **{
         path: (
@@ -1006,7 +1020,9 @@ def write_outputs(outputs: dict[str, bytes]) -> None:
 
 def check_outputs(outputs: dict[str, bytes]) -> list[str]:
     errors: list[str] = []
-    expected_paths = set(DECLARED_GENERATED_PRODUCTS)
+    expected_paths = set(
+        DECLARED_GENERATED_PRODUCTS + DECLARED_CONTACT_QUOTIENT_GENERATED_PRODUCTS
+    )
     actual_paths = (
         {
             str(p.relative_to(REPO)).replace("\\", "/")
