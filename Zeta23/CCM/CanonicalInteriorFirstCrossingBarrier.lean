@@ -53,4 +53,36 @@ def CanonicalInteriorRegularEndpointBarrier : Prop :=
               0 ≤ Complex.re
                 (regularZeroShiftSchurEndpoint c.p L c.k hreg)
 
+/-- The scalar regular-endpoint barrier is sufficient for the full interior
+first-crossing exclusion.  The proof spends the arbitrarily-close regular
+negative endpoint theorem and only elementary distance to the right edge of the
+current cutoff cell. -/
+theorem canonicalInteriorFirstCrossingBarrier_of_regularEndpointBarrier
+    (hendpoint : CanonicalInteriorRegularEndpointBarrier) :
+    CanonicalInteriorFirstCrossingBarrier := by
+  intro c Q hQ hcell
+  obtain ⟨δ, hδ, hnonneg⟩ := hendpoint c Q hQ hcell
+  let δcell : ℝ :=
+    (Real.log ((Q + 1 : ℕ) : ℝ) - c.Lstar) / 2
+  have hδcell : 0 < δcell := by
+    dsimp [δcell]
+    linarith [hcell.2]
+  let ε : ℝ := min δ δcell
+  have hε : 0 < ε := lt_min hδ hδcell
+  obtain ⟨L, hLlo, hLhi, hprev, hreg, hneg⟩ :=
+    c.exists_arbitrarilyClose_regularZeroShiftEndpoint_neg ε hε
+  have hεδ : ε ≤ δ := min_le_left _ _
+  have hεδcell : ε ≤ δcell := min_le_right _ _
+  have hLhiδ : L < c.Lstar + δ := by
+    linarith
+  have hLcell : L ∈ fixedCanonicalCutoffCell Q := by
+    constructor
+    · exact lt_trans hcell.1 hLlo
+    · dsimp [δcell] at hεδcell
+      linarith [hcell.2]
+  have hge :=
+    hnonneg L hLlo hLhiδ hLcell hreg hprev
+  linarith
+
+
 end Zeta23.CCM
