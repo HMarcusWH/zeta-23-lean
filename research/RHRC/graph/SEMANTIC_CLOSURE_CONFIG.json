@@ -52,6 +52,14 @@
     "Zeta23.Spectral.CharacteristicNormalization": "CLOSURE_CAMPAIGN_SPECTRAL_SUPPORT",
     "Zeta23.Spectral.CharacteristicXiIdentification": "CLOSURE_CAMPAIGN_TARGET_INTERFACE",
     "Zeta23.Spectral.RealZeroLimitTransfer": "CLOSURE_CAMPAIGN_SPECTRAL_SUPPORT",
-    "Zeta23.ExceptionalZero.CanonicalFirstCrossingConditionalRH": "QUARANTINED_CONDITIONAL_RH_SEAM"
+    "Zeta23.ExceptionalZero.CanonicalFirstCrossingConditionalRH": "QUARANTINED_CONDITIONAL_RH_SEAM",
+    "Zeta23.CCM.FirstCrossingArithmeticCompatibility": "CONTACT_QUOTIENT_FORMAL_SUPPORT",
+    "Zeta23.CCM.FirstCrossingBranchBridge": "CONTACT_QUOTIENT_FORMAL_SUPPORT",
+    "Zeta23.CCM.FirstCrossingLiftedFeatures": "CONTACT_QUOTIENT_FORMAL_SUPPORT",
+    "Zeta23.CCM.FirstCrossingOptimizedCurvatureAlgebra": "CONTACT_QUOTIENT_FORMAL_SUPPORT",
+    "Zeta23.CCM.FirstCrossingSourceCertificate": "CONTACT_QUOTIENT_FORMAL_SUPPORT",
+    "Zeta23.CCM.FirstCrossingSourceQuotient": "CONTACT_QUOTIENT_TARGET_INTERFACE",
+    "Zeta23.CCM.FirstCrossingStrictEvenSourceEnergy": "CONTACT_QUOTIENT_FORMAL_SUPPORT",
+    "Zeta23.CCM.FirstCrossingStructuralCompatibility": "CONTACT_QUOTIENT_FORMAL_SUPPORT"
   }
 }
