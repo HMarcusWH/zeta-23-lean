@@ -207,3 +207,6 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.predecessorSectorNonnegative_of_parityBottom_nonnegative
 #print axioms Zeta23.CCM.predecessorSectorNonnegative_one
 #print axioms Zeta23.CCM.exists_zeroShiftEndpoint_neg_of_regular_parityBad
+#print axioms Zeta23.CCM.CanonicalParityFirstCrossingShell.exists_predecessorSectorNonnegative_right_window
+#print axioms Zeta23.CCM.parityBad_of_paritySuccessorGround_neg
+#print axioms Zeta23.CCM.CanonicalParityFirstCrossingShell.exists_badPoint_with_nonnegativePredecessor
