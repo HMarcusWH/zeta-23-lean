@@ -6,6 +6,8 @@ from pathlib import Path
 
 from canonical_vs_synthetic import compare
 from dual_scout import scout
+from feature_closure_audit import audit_feature_closure
+from countermodel_controls import replay_controls
 from source_authority_lint import lint
 from staged_rank_audit import staged_audit
 
@@ -26,11 +28,15 @@ def main() -> int:
     synthetic = staged_audit(canonical=False)
     comparison = compare()
     dual = scout()
+    feature_closure = audit_feature_closure()
+    countermodels = replay_controls()
 
     dump(canonical, out / "CANONICAL_STAGED_RANK.json")
     dump(synthetic, out / "SYNTHETIC_STAGED_RANK.json")
     dump(comparison, out / "CANONICAL_VS_SYNTHETIC.json")
     dump(dual, out / "QUOTIENT_DUAL_SCOUT.json")
+    dump(feature_closure, out / "FEATURE_CLOSURE_AUDIT.json")
+    dump(countermodels, out / "COUNTERMODEL_CONTROLS.json")
 
     receipt = {
         "schema_version": "RHRC-CONTACT-QUOTIENT-CAMPAIGN-1.0",
@@ -43,6 +49,10 @@ def main() -> int:
         "synthetic_final_nullity": synthetic["stages"][-1]["nullity"],
         "diagnostic_dual_source_derived": False,
         "paper_saturation_used_in_rank": False,
+        "feature_closure_status": feature_closure["status"],
+        "global_basis_completeness_claimed": feature_closure["global_basis_completeness"],
+        "countermodel_controls_status": countermodels["status"],
+        "pair_d_simultaneous_badness_replayed": countermodels["pair_d_c1"]["simultaneous_badness"],
         "terminal_claim": "RH_OPEN",
         "theorem_promotion": False,
     }
