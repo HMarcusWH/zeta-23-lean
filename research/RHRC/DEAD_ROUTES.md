@@ -4,6 +4,15 @@ A route is listed here when it fails for a reusable reason. Failure is a valid r
 
 Do not silently resurrect a dead route. A revival must state **which blocking premise changed** and why that change is theorem-relevant.
 
+## Post-#278 / PR #279 contact-law quarantine
+
+Two tempting generic contact arguments are explicitly rejected by exact rational 2×2 falsifiers in `closure_batch/first_crossing_generic_falsifiers.py`:
+
+- **zero first derivative at a zero contact -> no outgoing negative branch:** FALSE; `diag(1,-t^3)` crosses negative with zero first derivative at the contact;
+- **zero predecessor-shell coupling at contact -> no outgoing negative branch:** FALSE; `[[t^2,t],[t,1/2]]` is decoupled with nonnegative predecessor at the contact but has negative determinant for every nonzero nearby `t`.
+
+These are generic Hermitian countermodels, not canonical CCM counterexamples.  Their role is to forbid proof search from treating contact geometry alone as the missing RH information.  The live route must use production source/aperture structure.
+
 <!-- RHRC_CURRENT_STATE_BEGIN -->
 ## Current RHRC state
 
