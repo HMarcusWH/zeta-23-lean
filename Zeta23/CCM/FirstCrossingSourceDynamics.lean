@@ -209,3 +209,5 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.regularCubicZeroShiftPreimage_spec
 #print axioms Zeta23.CCM.regularZeroShiftSchurEndpoint_re_eq_shell_sub_predecessor
 #print axioms Zeta23.CCM.regularZeroShiftSchurEndpoint_re_neg_of_parityBad
+#print axioms Zeta23.CCM.exists_regularZeroShiftEndpoint_neg_in_open_bad_cell
+#print axioms Zeta23.CCM.CanonicalParityFirstCrossingShell.exists_arbitrarilyClose_regularZeroShiftEndpoint_neg
