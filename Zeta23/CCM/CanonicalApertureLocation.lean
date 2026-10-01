@@ -69,6 +69,70 @@ theorem canonicalApertureLocation_of_pos
       simpa using h
     exact .interior Q hQ ⟨hleft, hright⟩
 
+/-- A fixed cutoff cell occupying a nontrivial right-neighborhood of a
+positive aperture.  At an interior point this is the current cell; at a seam
+`log q` it is the newly entered q-cell. -/
+structure CanonicalRightCellWindow (L : ℝ) where
+  Q : ℕ
+  one_le_Q : 1 ≤ Q
+  δ : ℝ
+  δ_pos : 0 < δ
+  window_subset :
+    Set.Ioo L (L + δ) ⊆ fixedCanonicalCutoffCell Q
+
+/-- Every positive aperture has a nontrivial right-neighborhood contained in
+one fixed production cutoff cell. -/
+theorem exists_canonicalRightCellWindow_of_pos
+    {L : ℝ} (hL : 0 < L) :
+    Nonempty (CanonicalRightCellWindow L) := by
+  rcases canonicalApertureLocation_of_pos hL with
+      ⟨q, hq, hEq⟩ | ⟨Q, hQ, hcell⟩
+  · have hqpos : (0 : ℝ) < (q : ℝ) := by
+      exact_mod_cast (show 0 < q by omega)
+    have hq1pos : (0 : ℝ) < ((q + 1 : ℕ) : ℝ) := by
+      positivity
+    have hloglt :
+        Real.log (q : ℝ) < Real.log ((q + 1 : ℕ) : ℝ) := by
+      exact
+        Real.strictMonoOn_log hqpos hq1pos
+          (by exact_mod_cast Nat.lt_succ_self q)
+    let δ : ℝ :=
+      (Real.log ((q + 1 : ℕ) : ℝ) - Real.log (q : ℝ)) / 2
+    have hδ : 0 < δ := by
+      dsimp [δ]
+      linarith
+    refine ⟨{
+      Q := q
+      one_le_Q := by omega
+      δ := δ
+      δ_pos := hδ
+      window_subset := ?_
+    }⟩
+    intro x hx
+    rw [hEq] at hx
+    constructor
+    · exact hx.1
+    · dsimp [δ] at hx
+      linarith
+  · let δ : ℝ :=
+      (Real.log ((Q + 1 : ℕ) : ℝ) - L) / 2
+    have hδ : 0 < δ := by
+      dsimp [δ]
+      linarith [hcell.2]
+    refine ⟨{
+      Q := Q
+      one_le_Q := hQ
+      δ := δ
+      δ_pos := hδ
+      window_subset := ?_
+    }⟩
+    intro x hx
+    constructor
+    · exact lt_trans hcell.1 hx.1
+    · dsimp [δ] at hx
+      linarith [hcell.2]
+
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.canonicalApertureLocation_of_pos
