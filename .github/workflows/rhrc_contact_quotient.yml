@@ -41,6 +41,9 @@ jobs:
       - name: Run staged relation-rank and diagnostic quotient campaign
         run: |
           python research/RHRC/routes/R003_ccm_bridge/contact_quotient/run_campaign.py             --output-dir /tmp/contact-quotient
+      - name: Replay exact source-remainder algebra check
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/contact_quotient/check_source_remainder_exact.py --output /tmp/contact-quotient/SOURCE_REMAINDER_EXACT.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
