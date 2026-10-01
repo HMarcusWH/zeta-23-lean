@@ -128,6 +128,7 @@ theorem CanonicalParityFirstCrossingShell.exists_arbitrarilyClose_regularZeroShi
       ∃ L : ℝ,
         c.Lstar < L ∧
         L < c.Lstar + ε ∧
+        PredecessorSectorNonnegative c.p L c.k ∧
         ∃ hreg : IntrinsicPredecessorRegular c.p L c.k,
           Complex.re
             (regularZeroShiftSchurEndpoint c.p L c.k hreg) < 0 := by
@@ -196,7 +197,7 @@ theorem CanonicalParityFirstCrossingShell.exists_arbitrarilyClose_regularZeroShi
     exists_regularZeroShiftEndpoint_neg_in_open_bad_cell
       w.one_le_Q c.p c.k hk1
       hJopen hJne hJcell hJpos hJprev hJbad
-  refine ⟨L, hLJ.2.1, ?_, hreg, hend⟩
+  refine ⟨L, hLJ.2.1, ?_, hJprev L hLJ, hreg, hend⟩
   have hηε : η ≤ ε := min_le_left _ _
   linarith [hLJ.2.2]
 
