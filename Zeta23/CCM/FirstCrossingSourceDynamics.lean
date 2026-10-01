@@ -4,6 +4,7 @@ import Zeta23.CCM.MixedSourceDerivativeTransport
 import Zeta23.CCM.CanonicalSourceEnergyJets
 import Zeta23.CCM.CanonicalSourceMomentJets
 import Zeta23.CCM.LiftedPredecessorRegularity
+import Zeta23.CCM.CanonicalApertureLocation
 
 noncomputable section
 
@@ -107,6 +108,97 @@ theorem exists_regularZeroShiftEndpoint_neg_in_open_bad_cell
   exact
     regularZeroShiftSchurEndpoint_re_neg_of_parityBad
       p (hJpos L hLJ) N hN (hprev L hLJ) (hbad L hLJ) hreg
+
+
+/-- Main structural compression before the production sign barrier:
+every canonical first-crossing shell forces regular zero-shift Schur endpoints
+with strictly negative real part arbitrarily close to the right of the contact.
+
+The proof uses only:
+* right-crossing of the selected successor bottom;
+* a right-neighborhood where the predecessor sector is nonnegative;
+* continuity of the successor parity bottom;
+* a fixed right-cell window;
+* dense regularity of the actual intrinsic predecessor determinant.
+
+No production endpoint sign theorem is used. -/
+theorem CanonicalParityFirstCrossingShell.exists_arbitrarilyClose_regularZeroShiftEndpoint_neg
+    (c : CanonicalParityFirstCrossingShell) :
+    ∀ ε : ℝ, 0 < ε →
+      ∃ L : ℝ,
+        c.Lstar < L ∧
+        L < c.Lstar + ε ∧
+        ∃ hreg : IntrinsicPredecessorRegular c.p L c.k,
+          Complex.re
+            (regularZeroShiftSchurEndpoint c.p L c.k hreg) < 0 := by
+  intro ε hε
+  have hk1 : 1 ≤ c.k := le_trans c.one_le_n c.n_le_k
+  have hstarpos : 0 < c.Lstar :=
+    lt_trans c.Lsmall_pos c.Lsmall_lt_Lstar
+  obtain ⟨w⟩ := exists_canonicalRightCellWindow_of_pos hstarpos
+  obtain ⟨δprev, hδprev, hprevWindow⟩ :=
+    c.exists_predecessorSectorNonnegative_right_window
+  let η : ℝ := min ε (min w.δ δprev)
+  have hη : 0 < η := by
+    exact lt_min hε (lt_min w.δ_pos hδprev)
+  obtain ⟨L₀, hL₀lo, hL₀hi, hL₀neg⟩ :=
+    c.successor_right_crossing η hη
+
+  have hL₀pos : 0 < L₀ := lt_trans hstarpos hL₀lo
+  have hcontGround :
+      ContinuousAt (fun L : ℝ => paritySuccessorGround c.p c.k L) L₀ := by
+    have hwithin :=
+      (continuousOn_parityRayleighBottom_succ_Ioi c.p c.k hk1)
+        L₀ hL₀pos
+    have hat :=
+      hwithin.continuousAt (isOpen_Ioi.mem_nhds hL₀pos)
+    simpa [paritySuccessorGround] using hat
+  have hnegNhds :
+      (fun L : ℝ => paritySuccessorGround c.p c.k L) ⁻¹'
+          Set.Iio (0 : ℝ) ∈ 𝓝 L₀ :=
+    hcontGround.tendsto (isOpen_Iio.mem_nhds hL₀neg)
+  obtain ⟨r, hr, hball⟩ := Metric.mem_nhds_iff.mp hnegNhds
+
+  let J : Set ℝ :=
+    Metric.ball L₀ r ∩ Set.Ioo c.Lstar (c.Lstar + η)
+  have hJopen : IsOpen J := by
+    exact Metric.isOpen_ball.inter isOpen_Ioo
+  have hJne : J.Nonempty := by
+    refine ⟨L₀, ?_⟩
+    exact ⟨Metric.mem_ball_self hr, ⟨hL₀lo, hL₀hi⟩⟩
+  have hJcell : J ⊆ fixedCanonicalCutoffCell w.Q := by
+    intro L hLJ
+    apply w.window_subset
+    refine ⟨hLJ.2.1, ?_⟩
+    have hηδ : η ≤ w.δ := le_trans (min_le_right _ _) (min_le_left _ _)
+    linarith [hLJ.2.2]
+  have hJpos : ∀ L ∈ J, 0 < L := by
+    intro L hLJ
+    exact lt_trans hstarpos hLJ.2.1
+  have hJprev :
+      ∀ L ∈ J, PredecessorSectorNonnegative c.p L c.k := by
+    intro L hLJ
+    apply hprevWindow L hLJ.2.1
+    have hηprev : η ≤ δprev :=
+      le_trans (min_le_right _ _) (min_le_right _ _)
+    linarith [hLJ.2.2]
+  have hJbad :
+      ∀ L ∈ J, ParityBad c.p L (c.k + 1) := by
+    intro L hLJ
+    have hmem := hball hLJ.1
+    have hnegL :
+        paritySuccessorGround c.p c.k L < 0 := by
+      simpa using hmem
+    exact parityBad_of_paritySuccessorGround_neg
+      c.p c.k hk1 hnegL
+
+  obtain ⟨L, hLJ, hreg, hend⟩ :=
+    exists_regularZeroShiftEndpoint_neg_in_open_bad_cell
+      w.one_le_Q c.p c.k hk1
+      hJopen hJne hJcell hJpos hJprev hJbad
+  refine ⟨L, hLJ.2.1, ?_, hreg, hend⟩
+  have hηε : η ≤ ε := min_le_left _ _
+  linarith [hLJ.2.2]
 
 
 end Zeta23.CCM
