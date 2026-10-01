@@ -4,6 +4,23 @@
 >
 > This is a research inventory, not theorem authority. Exact Lean/compiler/CI state wins.
 
+## Post-#278 / PR #279 active lead — production regular-endpoint germ
+
+The continuity and arbitrary zero-contact gates are consumed by merged PR #278.  PR #279 compresses any hypothetical off-line zero to a canonical parity first-crossing shell and, using fixed-cell determinant regularity, to regular negative zero-shift Schur endpoints arbitrarily close to the contact.
+
+The live research question is therefore no longer “does a contact exist?” or “can the predecessor be regular?”  It is:
+
+> Can the actual production regular zero-shift Schur endpoint have negative real part arbitrarily close to a first contact?
+
+This must be answered separately for:
+
+1. interior fixed-cell analytic evolution; and
+2. one-sided prime-seam evolution.
+
+The exact source-derivative, mixed-pairing, endpoint-jet, and prime-seam Taylor modules are now wired directly into the regular endpoint interface.  The next information-bearing theorem must constrain that production germ.  Generic Hermitian contact laws are insufficient and are kept only as falsification controls.
+
+RH remains OPEN.
+
 ## Post-#274 / PR #275 consumed lead — same-object dual certification
 
 **THEOREM TARGET / PROMOTION GATED BY EXACT CI.** The ζ(5) mining produced a real composition in the CCM stack rather than a surface analogy.
