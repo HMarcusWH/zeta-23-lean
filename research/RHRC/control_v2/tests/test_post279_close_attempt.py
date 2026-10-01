@@ -15,6 +15,9 @@ class Post279CloseAttemptTests(unittest.TestCase):
             "Zeta23/CCM/ParityZeroPlateau.lean",
             "Zeta23/CCM/ParityKernelTower.lean",
             "Zeta23/CCM/CanonicalParityFirstCrossingShell.lean",
+            "Zeta23/CCM/FirstCrossingContactRegime.lean",
+            "Zeta23/CCM/FirstCrossingContactEquations.lean",
+            "Zeta23/CCM/FirstCrossingSuccessorDeterminant.lean",
             "Zeta23/CCM/FirstCrossingSchurReduction.lean",
             "Zeta23/CCM/FirstCrossingSourceDynamics.lean",
             "Zeta23/CCM/CanonicalApertureLocation.lean",
@@ -39,6 +42,20 @@ class Post279CloseAttemptTests(unittest.TestCase):
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
         self.assertEqual(state["terminal_claim"], "RH_OPEN")
+
+    def test_contact_regime_and_inverse_free_determinant_are_present(self):
+        regime = (
+            ROOT / "Zeta23/CCM/FirstCrossingContactRegime.lean"
+        ).read_text(encoding="utf-8")
+        equations = (
+            ROOT / "Zeta23/CCM/FirstCrossingContactEquations.lean"
+        ).read_text(encoding="utf-8")
+        determinant = (
+            ROOT / "Zeta23/CCM/FirstCrossingSuccessorDeterminant.lean"
+        ).read_text(encoding="utf-8")
+        self.assertIn("FirstCrossingContactRegime", regime)
+        self.assertIn("contact_cubicCouplingKernelPart_eq_zero", equations)
+        self.assertIn("paritySuccessorDet_contact_eq_zero", determinant)
 
     def test_scalar_barriers_are_explicit_open_targets(self):
         interior = (
