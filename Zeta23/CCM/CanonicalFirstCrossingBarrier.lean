@@ -1,43 +1,23 @@
-import Zeta23.CCM.CanonicalParityFirstCrossingShell
-import Zeta23.CCM.CanonicalApertureLocation
+import Zeta23.CCM.CanonicalInteriorFirstCrossingBarrier
+import Zeta23.CCM.CanonicalSeamFirstCrossingBarrier
 
 noncomputable section
 
 namespace Zeta23.CCM
 
 /-!
-# Post-#278 first-crossing barrier interfaces
+# Post-#278 exhaustive first-crossing barrier interface
 
-The remaining production theorem is deliberately split by aperture geometry.
-These are propositions, not assumed facts and not theorem authority.
+The production closure target is split into the interior and seam propositions
+defined in the two dedicated modules.  Positive aperture geometry is exhaustive:
+every contact is either an interior point of one fixed cutoff cell or exactly a
+logarithmic integer seam.
 
-* interior barrier: no canonical parity first-crossing shell can have its
-  contact strictly inside one fixed physical cutoff cell;
-* seam barrier: no canonical parity first-crossing shell can have its contact
-  exactly at a logarithmic integer cutoff seam.
-
-The exhaustive aperture-location theorem proves that these two barriers would
-exclude every first-crossing shell.  Neither barrier is proved here.
+This file proves only the composition of the two still-OPEN barriers.
 -/
 
-/-- OPEN target: exclude a first-crossing shell whose contact lies inside one
-fixed physical cutoff cell. -/
-def CanonicalInteriorFirstCrossingBarrier : Prop :=
-  ∀ c : CanonicalParityFirstCrossingShell,
-    ∀ Q : ℕ, 1 ≤ Q →
-      c.Lstar ∈ fixedCanonicalCutoffCell Q →
-        False
-
-/-- OPEN target: exclude a first-crossing shell whose contact is a logarithmic
-integer seam. -/
-def CanonicalSeamFirstCrossingBarrier : Prop :=
-  ∀ c : CanonicalParityFirstCrossingShell,
-    ∀ q : ℕ, 2 ≤ q →
-      c.Lstar = Real.log (q : ℝ) →
-        False
-
 /-- The interior/seam split is exhaustive, so proofs of both production
-barriers would exclude every canonical parity first-crossing shell. -/
+barriers exclude every canonical parity first-crossing shell. -/
 theorem no_canonicalParityFirstCrossingShell_of_barriers
     (hinterior : CanonicalInteriorFirstCrossingBarrier)
     (hseam : CanonicalSeamFirstCrossingBarrier)
