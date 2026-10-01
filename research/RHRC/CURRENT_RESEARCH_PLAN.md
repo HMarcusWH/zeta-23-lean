@@ -4,36 +4,6 @@
 
 Live GitHub head + exact compiler/CI evidence are authoritative dynamically. This file is the current execution SSOT.
 
-## Post-#278 / PR #279 parity first-crossing-shell override
-
-PR #278 is merged theorem authority for production fixed-N C0 aperture continuity and exact same-N zero-contact extraction under an off-line zero.
-
-PR #279 is a fail-closed theorem-search branch.  Its checked-in formal surface now attempts the following exact compression:
-
-```text
-off-line zero
-  -> one fixed parity with same-N sign opposition
-  -> first negative aperture boundary
-  -> least zero truncation + finite zero plateau
-  -> inherited exact kernel tower
-  -> least N-flow index that right-crosses negative
-  -> predecessor-sector nonnegative right window
-  -> regular bad states arbitrarily close to the contact
-  -> strictly negative canonical regular zero-shift Schur endpoints
-```
-
-The production aperture is then split exhaustively into an interior fixed-cell case and an exact `L = log q` seam case.  The two still-OPEN mathematical targets are:
-
-- `CanonicalInteriorRegularEndpointBarrier`;
-- `CanonicalSeamRegularEndpointBarrier`.
-
-The audit-only theorem `riemannHypothesis_of_regularEndpointBarriers` shows that these two scalar production endpoint barriers are already sufficient for literal Mathlib `RiemannHypothesis`.  Therefore they are treated as terminal-strength open obligations, not as proved facts.
-
-Generic contact geometry is explicitly fenced off: zero first derivative at contact and zero shell coupling at contact both admit exact finite Hermitian crossing countermodels.  Any successful barrier must spend actual production source/aperture information.
-
-No premise-free RH closure file or exact-type audit file is created unless both production barriers are compiler-proved.  RH remains OPEN.
-
-
 ## Post-#264 integration override
 
 This block supersedes older repository/integration-current labels below without
@@ -116,6 +86,35 @@ RESEARCH / CONTROL FIREWALL
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#278 / PR #279 parity first-crossing-shell override
+
+PR #278 is merged theorem authority for production fixed-N C0 aperture continuity and exact same-N zero-contact extraction under an off-line zero.
+
+PR #279 is a fail-closed theorem-search branch.  Its checked-in formal surface now attempts the following exact compression:
+
+```text
+off-line zero
+  -> one fixed parity with same-N sign opposition
+  -> first negative aperture boundary
+  -> least zero truncation + finite zero plateau
+  -> inherited exact kernel tower
+  -> least N-flow index that right-crosses negative
+  -> predecessor-sector nonnegative right window
+  -> regular bad states arbitrarily close to the contact
+  -> strictly negative canonical regular zero-shift Schur endpoints
+```
+
+The production aperture is then split exhaustively into an interior fixed-cell case and an exact `L = log q` seam case.  The two still-OPEN mathematical targets are:
+
+- `CanonicalInteriorRegularEndpointBarrier`;
+- `CanonicalSeamRegularEndpointBarrier`.
+
+The audit-only theorem `riemannHypothesis_of_regularEndpointBarriers` shows that these two scalar production endpoint barriers are already sufficient for literal Mathlib `RiemannHypothesis`.  Therefore they are treated as terminal-strength open obligations, not as proved facts.
+
+Generic contact geometry is explicitly fenced off: zero first derivative at contact and zero shell coupling at contact both admit exact finite Hermitian crossing countermodels.  Any successful barrier must spend actual production source/aperture information.
+
+No premise-free RH closure file or exact-type audit file is created unless both production barriers are compiler-proved.  RH remains OPEN.
 
 ## Post-#276 / PR #277 fixed-N contact-route override
 
