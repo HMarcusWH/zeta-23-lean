@@ -10,6 +10,8 @@ noncomputable section
 
 namespace Zeta23.CCM
 
+open scoped Topology
+
 open Complex Matrix Set
 open scoped BigOperators ComplexConjugate
 
