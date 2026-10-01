@@ -1,4 +1,5 @@
 import Zeta23.CCM.FirstCrossingSchurReduction
+import Zeta23.CCM.CanonicalOneStepDomination
 import Zeta23.CCM.SourceDerivativeTransport
 import Zeta23.CCM.MixedSourceDerivativeTransport
 import Zeta23.CCM.CanonicalSourceEnergyJets
