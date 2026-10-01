@@ -156,3 +156,4 @@ theorem CanonicalParityFirstCrossingShell.predecessorGround_stable
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.ParityKernelTower.exists_firstCrossingShell
+#print axioms Zeta23.CCM.CanonicalParityFirstCrossingShell.predecessorGround_stable
