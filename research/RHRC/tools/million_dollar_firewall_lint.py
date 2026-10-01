@@ -62,6 +62,8 @@ ACTIVE_CCM = {
     "Zeta23.CCM.FirstCrossingSchurReduction",
     "Zeta23.CCM.FirstCrossingSourceDynamics",
     "Zeta23.CCM.CanonicalApertureLocation",
+    "Zeta23.CCM.CanonicalInteriorFirstCrossingBarrier",
+    "Zeta23.CCM.CanonicalSeamFirstCrossingBarrier",
     "Zeta23.CCM.CanonicalFirstCrossingBarrier",
 }
 
