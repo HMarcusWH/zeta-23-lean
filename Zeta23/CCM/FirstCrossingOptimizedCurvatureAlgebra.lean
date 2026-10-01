@@ -1,5 +1,4 @@
 import Zeta23.CCM.FirstCrossingStrictEvenSourceEnergy
-import Mathlib.LinearAlgebra.Basic
 
 noncomputable section
 
