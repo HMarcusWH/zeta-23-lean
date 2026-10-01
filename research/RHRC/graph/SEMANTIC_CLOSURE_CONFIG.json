@@ -20,7 +20,6 @@
     "Zeta23.CCM.CanonicalFullSpaceSourceBridge": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
     "Zeta23.CCM.CanonicalGroundPropagation": "CLOSURE_CAMPAIGN_TARGET_INTERFACE",
     "Zeta23.CCM.CanonicalModeTailBound": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
-    "Zeta23.CCM.CanonicalPrimeSeamTaylor": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
     "Zeta23.CCM.CanonicalSchurCertificate": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
     "Zeta23.CCM.CanonicalSeamGroundTransfer": "CLOSURE_CAMPAIGN_TARGET_INTERFACE",
     "Zeta23.CCM.CanonicalUniformDomination": "CLOSURE_CAMPAIGN_TARGET_INTERFACE",
@@ -53,17 +52,6 @@
     "Zeta23.Spectral.CharacteristicNormalization": "CLOSURE_CAMPAIGN_SPECTRAL_SUPPORT",
     "Zeta23.Spectral.CharacteristicXiIdentification": "CLOSURE_CAMPAIGN_TARGET_INTERFACE",
     "Zeta23.Spectral.RealZeroLimitTransfer": "CLOSURE_CAMPAIGN_SPECTRAL_SUPPORT",
-    "Zeta23.CCM.ParityFirstNegativeBoundary": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
-    "Zeta23.CCM.ParityZeroPlateau": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
-    "Zeta23.CCM.ParityKernelTower": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
-    "Zeta23.CCM.CanonicalParityFirstCrossingShell": "CLOSURE_CAMPAIGN_TARGET_INTERFACE",
-    "Zeta23.CCM.FirstCrossingSchurReduction": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
-    "Zeta23.CCM.CanonicalApertureLocation": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
-    "Zeta23.ExceptionalZero.CanonicalParityFirstCrossingShell": "CLOSURE_CAMPAIGN_COUNTEREXAMPLE_GENERATOR",
-    "Zeta23.CCM.CanonicalFirstCrossingBarrier": "CLOSURE_CAMPAIGN_TARGET_INTERFACE",
-    "Zeta23.ExceptionalZero.CanonicalFirstCrossingConditionalRH": "QUARANTINED_CONDITIONAL_RH_SEAM",
-    "Zeta23.CCM.FirstCrossingSourceDynamics": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
-    "Zeta23.CCM.CanonicalInteriorFirstCrossingBarrier": "CLOSURE_CAMPAIGN_TARGET_INTERFACE",
-    "Zeta23.CCM.CanonicalSeamFirstCrossingBarrier": "CLOSURE_CAMPAIGN_TARGET_INTERFACE"
+    "Zeta23.ExceptionalZero.CanonicalFirstCrossingConditionalRH": "QUARANTINED_CONDITIONAL_RH_SEAM"
   }
 }
