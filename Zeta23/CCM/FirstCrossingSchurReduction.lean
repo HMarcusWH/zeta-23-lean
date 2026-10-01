@@ -102,6 +102,21 @@ theorem exists_zeroShiftEndpoint_neg_of_regular_parityBad
     cubicZeroShiftSchurEndpoint_re_neg_of_parityBad_of_preimage
       p hL N hN hprev hbad x₀ hx₀
 
+/-- Strict negativity of the attained successor parity ground is exactly
+enough to produce the existing finite `ParityBad` witness. -/
+theorem parityBad_of_paritySuccessorGround_neg
+    (p : ReversalParity)
+    {L : ℝ}
+    (N : ℕ) (hN : 1 ≤ N)
+    (hneg : paritySuccessorGround p N L < 0) :
+    ParityBad p L (N + 1) := by
+  obtain ⟨v, hvne, hveig⟩ :=
+    exists_eigenmode_at_parityRayleighBottom_succ p L N hN
+  exact
+    parityBad_of_negative_eigenmode
+      (by simpa [paritySuccessorGround] using hneg)
+      hvne hveig
+
 /-- Every canonical first-crossing shell has successor-bad points arbitrarily
 close to the right at which the one-step predecessor sector is still
 nonnegative.  This is the dynamic bridge from N-flow minimality to the exact
