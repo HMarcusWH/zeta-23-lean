@@ -33,9 +33,12 @@ theorem riemannHypothesis_of_firstCrossingBarriers
   have hmem : s ∈ zetaZeroConfig.carrier := by
     simpa using hs
   by_contra hoff
+  have hoff' :
+      ((⟨s, hmem⟩ : zetaZeroConfig.carrier) : ℂ).re ≠ 1 / 2 := by
+    simpa using hoff
   obtain ⟨c⟩ :=
     nonempty_canonicalParityFirstCrossingShell_of_offLine_zero
-      (⟨s, hmem⟩ : zetaZeroConfig.carrier) hoff
+      (⟨s, hmem⟩ : zetaZeroConfig.carrier) hoff'
   exact no_canonicalParityFirstCrossingShell_of_barriers
     hinterior hseam c
 
