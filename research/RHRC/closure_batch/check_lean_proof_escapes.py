@@ -50,6 +50,7 @@ CLOSURE_ROOTS = [
     Path("Zeta23/CCM/CanonicalSeamFirstCrossingBarrier.lean"),
     Path("Zeta23/CCM/CanonicalFirstCrossingBarrier.lean"),
     Path("Zeta23/ExceptionalZero/CanonicalParityFirstCrossingShell.lean"),
+    Path("Zeta23/ExceptionalZero/CanonicalFirstCrossingConditionalRH.lean"),
     Path("Zeta23/RHRC/ClosureObligationBindings.lean"),
     Path("Zeta23/RHRC/ClosureStrengthAudit.lean"),
     Path("Zeta23/Spectral.lean"),
