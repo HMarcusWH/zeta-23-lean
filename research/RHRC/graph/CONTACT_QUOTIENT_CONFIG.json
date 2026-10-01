@@ -1,0 +1,29 @@
+{
+  "schema_version": "RHRC-CONTACT-QUOTIENT-VIEW-CONFIG-1.0",
+  "terminal_claim": "RH_OPEN",
+  "theorem_promotion": false,
+  "projection": "THEOREM_VALUE_ERASED_SUPPORT",
+  "interface_families": [
+    {
+      "id": "FIRST_CROSSING_GERM",
+      "anchors": [
+        "Zeta23.CCM.CanonicalParityFirstCrossingShell.exists_arbitrarilyClose_regularZeroShiftEndpoint_neg",
+        "Zeta23.CCM.regularZeroShiftSchurEndpoint_re_eq_shell_sub_predecessor"
+      ]
+    },
+    {
+      "id": "CONTACT_STRUCTURE",
+      "anchors": [
+        "Zeta23.CCM.canonicalFirstCrossingStructuralCompatibility",
+        "Zeta23.CCM.CanonicalParityFirstCrossingShell.predecessorProfile"
+      ]
+    },
+    {
+      "id": "PRODUCTION_SOURCE_JET",
+      "anchors": [
+        "Zeta23.CCM.canonicalSourceSecondDerivativeCompatibility",
+        "Zeta23.CCM.canonicalEvenBoundaryFlatMomentFourCompatibility"
+      ]
+    }
+  ]
+}

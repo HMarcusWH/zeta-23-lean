@@ -1,0 +1,50 @@
+name: RHRC post-279 contact quotient research
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'Zeta23/CCM/FirstCrossing*.lean'
+      - 'research/RHRC/routes/R003_ccm_bridge/contact_quotient/**'
+      - 'research/RHRC/graph/CONTACT_QUOTIENT_CONFIG.json'
+      - 'research/RHRC/graph/contact_quotient_view.py'
+      - 'research/RHRC/graph/tests/test_contact_quotient_view.py'
+      - '.github/workflows/rhrc_contact_quotient.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rhrc-contact-quotient-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  contact-quotient-research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install R003 research dependencies
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Compile contact-quotient tooling
+        run: python -m compileall -q research/RHRC/routes/R003_ccm_bridge/contact_quotient
+      - name: Run contact-quotient unit tests
+        run: |
+          python -m unittest discover             -s research/RHRC/routes/R003_ccm_bridge/contact_quotient/tests             -p 'test_*.py' -v
+      - name: Enforce source-authority firewall
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/contact_quotient/source_authority_lint.py
+      - name: Run staged relation-rank and diagnostic quotient campaign
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/contact_quotient/run_campaign.py             --output-dir /tmp/contact-quotient
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rh-contact-quotient-results
+          path: /tmp/contact-quotient
+          if-no-files-found: error
+          retention-days: 30
