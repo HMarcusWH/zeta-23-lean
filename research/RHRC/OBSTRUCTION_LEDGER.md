@@ -7,6 +7,18 @@ This ledger records reusable blockers that should shape future route design.
 > **Current active obstruction:** OBS-060 — OPEN / UNCONDITIONAL GROUND-SPECTRUM FIRST-CROSSING BARRIER.
 > **Claim firewall:** RH remains OPEN.
 
+## Post-#278 / PR #279 OBS-060 refinement
+
+- **OBS-060E fixed-N production C0 continuity:** CLOSED / PROVED by merged PR #278.
+- **OBS-060G same-N exact zero contact:** CLOSED / PROVED by merged PR #278.
+- **OBS-060H parity first-negative-boundary / zero-plateau / kernel-tower compression:** CANDIDATE on PR #279; compiler/axiom validation pending.
+- **OBS-060I arbitrarily-close regular negative zero-shift endpoints:** CANDIDATE on PR #279; compiler/axiom validation pending.
+- **OBS-060J interior production regular-endpoint barrier:** OPEN.
+- **OBS-060K seam production regular-endpoint barrier:** OPEN.
+- **Conditional scalar-barrier -> Mathlib RH seam:** AUDIT-ONLY candidate on PR #279.
+
+The obstruction is now source-germ specific.  Static PSD contact geometry, zero first derivative, or contact decoupling alone do not exclude crossing.  RH remains OPEN.
+
 ## Post-#274 / PR #275 obstruction delta
 
 **OBS-060C — positive base: CLOSED by the PR #275 theorem target, subject to exact compiler/axiom validation.**
