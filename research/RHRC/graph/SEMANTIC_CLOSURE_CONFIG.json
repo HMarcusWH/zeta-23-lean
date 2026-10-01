@@ -62,6 +62,8 @@
     "Zeta23.ExceptionalZero.CanonicalParityFirstCrossingShell": "CLOSURE_CAMPAIGN_COUNTEREXAMPLE_GENERATOR",
     "Zeta23.CCM.CanonicalFirstCrossingBarrier": "CLOSURE_CAMPAIGN_TARGET_INTERFACE",
     "Zeta23.ExceptionalZero.CanonicalFirstCrossingConditionalRH": "QUARANTINED_CONDITIONAL_RH_SEAM",
-    "Zeta23.CCM.FirstCrossingSourceDynamics": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT"
+    "Zeta23.CCM.FirstCrossingSourceDynamics": "CLOSURE_CAMPAIGN_FORMAL_SUPPORT",
+    "Zeta23.CCM.CanonicalInteriorFirstCrossingBarrier": "CLOSURE_CAMPAIGN_TARGET_INTERFACE",
+    "Zeta23.CCM.CanonicalSeamFirstCrossingBarrier": "CLOSURE_CAMPAIGN_TARGET_INTERFACE"
   }
 }
