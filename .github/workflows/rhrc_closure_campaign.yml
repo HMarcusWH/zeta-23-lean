@@ -234,6 +234,9 @@ jobs:
           lake build Zeta23.CCM.ParityZeroPlateau
           lake build Zeta23.CCM.ParityKernelTower
           lake build Zeta23.CCM.CanonicalParityFirstCrossingShell
+          lake build Zeta23.CCM.FirstCrossingContactRegime
+          lake build Zeta23.CCM.FirstCrossingContactEquations
+          lake build Zeta23.CCM.FirstCrossingSuccessorDeterminant
           lake build Zeta23.CCM.FirstCrossingSchurReduction
           lake build Zeta23.CCM.FirstCrossingSourceDynamics
           lake build Zeta23.CCM.CanonicalApertureLocation
@@ -249,6 +252,9 @@ jobs:
             Zeta23/CCM/ParityZeroPlateau.lean \
             Zeta23/CCM/ParityKernelTower.lean \
             Zeta23/CCM/CanonicalParityFirstCrossingShell.lean \
+            Zeta23/CCM/FirstCrossingContactRegime.lean \
+            Zeta23/CCM/FirstCrossingContactEquations.lean \
+            Zeta23/CCM/FirstCrossingSuccessorDeterminant.lean \
             Zeta23/CCM/FirstCrossingSchurReduction.lean \
             Zeta23/CCM/FirstCrossingSourceDynamics.lean \
             Zeta23/CCM/CanonicalApertureLocation.lean \
