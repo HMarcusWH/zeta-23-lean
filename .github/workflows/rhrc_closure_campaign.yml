@@ -239,6 +239,12 @@ jobs:
           lake build Zeta23.CCM.FirstCrossingSuccessorDeterminant
           lake build Zeta23.CCM.FirstCrossingSchurReduction
           lake build Zeta23.CCM.FirstCrossingSourceDynamics
+          lake build Zeta23.CCM.FirstCrossingBranchBridge
+          lake build Zeta23.CCM.FirstCrossingLiftedFeatures
+          lake build Zeta23.CCM.FirstCrossingStructuralCompatibility
+          lake build Zeta23.CCM.FirstCrossingArithmeticCompatibility
+          lake build Zeta23.CCM.FirstCrossingSourceCertificate
+          lake build Zeta23.CCM.FirstCrossingSourceQuotient
           lake build Zeta23.CCM.CanonicalApertureLocation
           lake build Zeta23.CCM.CanonicalInteriorFirstCrossingBarrier
           lake build Zeta23.CCM.CanonicalSeamFirstCrossingBarrier
@@ -257,6 +263,12 @@ jobs:
             Zeta23/CCM/FirstCrossingSuccessorDeterminant.lean \
             Zeta23/CCM/FirstCrossingSchurReduction.lean \
             Zeta23/CCM/FirstCrossingSourceDynamics.lean \
+            Zeta23/CCM/FirstCrossingBranchBridge.lean \
+            Zeta23/CCM/FirstCrossingLiftedFeatures.lean \
+            Zeta23/CCM/FirstCrossingStructuralCompatibility.lean \
+            Zeta23/CCM/FirstCrossingArithmeticCompatibility.lean \
+            Zeta23/CCM/FirstCrossingSourceCertificate.lean \
+            Zeta23/CCM/FirstCrossingSourceQuotient.lean \
             Zeta23/CCM/CanonicalApertureLocation.lean \
             Zeta23/CCM/CanonicalInteriorFirstCrossingBarrier.lean \
             Zeta23/CCM/CanonicalSeamFirstCrossingBarrier.lean \
