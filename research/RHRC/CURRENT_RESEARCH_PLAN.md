@@ -4,7 +4,6 @@
 
 Live GitHub head + exact compiler/CI evidence are authoritative dynamically. This file is the current execution SSOT.
 
-
 ## Post-#264 integration override
 
 This block supersedes older repository/integration-current labels below without
@@ -44,28 +43,30 @@ The contact route uses the repository's existing IntrinsicPredecessorRegular reg
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #277
-- validated final head = 655bbfe77648c545eba82351e075a27c1dc71d3f
-- merge commit = ea8f54802b1de0c5588dc9d0edfb44d5abb2cb47
-- tree = 9a11c4ea404c123b5d29738880e3fd7e9d66ad02
+- merged theorem authority = PR #278
+- validated final head = 53daac5a0690e3ae52a0e758c2ac8ba7a26290e7
+- merge commit = 4c327bb171b0806e0acae3bb658158d028c522df
+- tree = dc9f2186699eed81441ac6a5810405cdc0874eea
 - status = MERGED_GREEN_THEOREM_STATE
 - PR #275 full-space small-aperture coercive base = PROVED
 - PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
+- fixed-N production continuity = PROVED_MERGED_PR_278
+- same-N off-line-zero contact = PROVED_MERGED_PR_278
 - PR #272 CofinalCanonicalArithmeticCertificates <-> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY
 - RH = OPEN
 
 CURRENT RESEARCH FRONTIER
-- current candidate PR = #278 / POST277_FIRST_CONTACT_CLOSURE_CANDIDATE
-- candidate theorem-validation head = 441ebad5914fde80ebf25db129c0af57893daf89
+- current candidate PR = #279 / POST278_PARITY_FIRST_CROSSING_SHELL_CANDIDATE
+- candidate theorem-validation head = 30a15a20f885e92cace1841429534427c5319652
 - candidate theorem-validation status = CI_PENDING
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
 - fixed-N sign opposition = PROVED_MERGED_PR_277
 - global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
-- active subobligation = FIXED_N_MULTIPLICITY_SAFE_APERTURE_CONTINUITY
-- next research target = FIXED_N_MULTIPLICITY_SAFE_APERTURE_CONTINUITY
-- required new information = PRODUCTION_C0_APERTURE_CONTINUITY_ACROSS_ALL_LOG_INTEGER_CUTOFF_SEAMS
+- active subobligation = CANONICAL_PARITY_FIRST_CROSSING_SHELL_BARRIER
+- next research target = PRODUCTION_SOURCE_CONTROL_OF_REGULAR_ZERO_SHIFT_ENDPOINT_NEAR_FIRST_CROSSING
+- required new information = PRODUCTION_SOURCE_GERM_EXCLUSION_FOR_INTERIOR_AND_PRIME_SEAM_FIRST_CROSSINGS
 - RH-sufficient terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE
@@ -85,6 +86,35 @@ RESEARCH / CONTROL FIREWALL
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#278 / PR #279 parity first-crossing-shell override
+
+PR #278 is merged theorem authority for production fixed-N C0 aperture continuity and exact same-N zero-contact extraction under an off-line zero.
+
+PR #279 is a fail-closed theorem-search branch.  Its checked-in formal surface now attempts the following exact compression:
+
+```text
+off-line zero
+  -> one fixed parity with same-N sign opposition
+  -> first negative aperture boundary
+  -> least zero truncation + finite zero plateau
+  -> inherited exact kernel tower
+  -> least N-flow index that right-crosses negative
+  -> predecessor-sector nonnegative right window
+  -> regular bad states arbitrarily close to the contact
+  -> strictly negative canonical regular zero-shift Schur endpoints
+```
+
+The production aperture is then split exhaustively into an interior fixed-cell case and an exact `L = log q` seam case.  The two still-OPEN mathematical targets are:
+
+- `CanonicalInteriorRegularEndpointBarrier`;
+- `CanonicalSeamRegularEndpointBarrier`.
+
+The audit-only theorem `riemannHypothesis_of_regularEndpointBarriers` shows that these two scalar production endpoint barriers are already sufficient for literal Mathlib `RiemannHypothesis`.  Therefore they are treated as terminal-strength open obligations, not as proved facts.
+
+Generic contact geometry is explicitly fenced off: zero first derivative at contact and zero shell coupling at contact both admit exact finite Hermitian crossing countermodels.  Any successful barrier must spend actual production source/aperture information.
+
+No premise-free RH closure file or exact-type audit file is created unless both production barriers are compiler-proved.  RH remains OPEN.
 
 ## Post-#276 / PR #277 fixed-N contact-route override
 

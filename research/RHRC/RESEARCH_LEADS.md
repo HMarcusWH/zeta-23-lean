@@ -4,6 +4,23 @@
 >
 > This is a research inventory, not theorem authority. Exact Lean/compiler/CI state wins.
 
+## Post-#278 / PR #279 active lead — production regular-endpoint germ
+
+The continuity and arbitrary zero-contact gates are consumed by merged PR #278.  PR #279 compresses any hypothetical off-line zero to a canonical parity first-crossing shell and, using fixed-cell determinant regularity, to regular negative zero-shift Schur endpoints arbitrarily close to the contact.
+
+The live research question is therefore no longer “does a contact exist?” or “can the predecessor be regular?”  It is:
+
+> Can the actual production regular zero-shift Schur endpoint have negative real part arbitrarily close to a first contact?
+
+This must be answered separately for:
+
+1. interior fixed-cell analytic evolution; and
+2. one-sided prime-seam evolution.
+
+The exact source-derivative, mixed-pairing, endpoint-jet, and prime-seam Taylor modules are now wired directly into the regular endpoint interface.  The next information-bearing theorem must constrain that production germ.  Generic Hermitian contact laws are insufficient and are kept only as falsification controls.
+
+RH remains OPEN.
+
 ## Post-#274 / PR #275 consumed lead — same-object dual certification
 
 **THEOREM TARGET / PROMOTION GATED BY EXACT CI.** The ζ(5) mining produced a real composition in the CCM stack rather than a surface analogy.
@@ -27,28 +44,30 @@ The broader reusable heuristic survives: search for two genuinely independent co
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #277
-- validated final head = 655bbfe77648c545eba82351e075a27c1dc71d3f
-- merge commit = ea8f54802b1de0c5588dc9d0edfb44d5abb2cb47
-- tree = 9a11c4ea404c123b5d29738880e3fd7e9d66ad02
+- merged theorem authority = PR #278
+- validated final head = 53daac5a0690e3ae52a0e758c2ac8ba7a26290e7
+- merge commit = 4c327bb171b0806e0acae3bb658158d028c522df
+- tree = dc9f2186699eed81441ac6a5810405cdc0874eea
 - status = MERGED_GREEN_THEOREM_STATE
 - PR #275 full-space small-aperture coercive base = PROVED
 - PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
+- fixed-N production continuity = PROVED_MERGED_PR_278
+- same-N off-line-zero contact = PROVED_MERGED_PR_278
 - PR #272 CofinalCanonicalArithmeticCertificates <-> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY
 - RH = OPEN
 
 CURRENT RESEARCH FRONTIER
-- current candidate PR = #278 / POST277_FIRST_CONTACT_CLOSURE_CANDIDATE
-- candidate theorem-validation head = 441ebad5914fde80ebf25db129c0af57893daf89
+- current candidate PR = #279 / POST278_PARITY_FIRST_CROSSING_SHELL_CANDIDATE
+- candidate theorem-validation head = 30a15a20f885e92cace1841429534427c5319652
 - candidate theorem-validation status = CI_PENDING
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
 - fixed-N sign opposition = PROVED_MERGED_PR_277
 - global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
-- active subobligation = FIXED_N_MULTIPLICITY_SAFE_APERTURE_CONTINUITY
-- next research target = FIXED_N_MULTIPLICITY_SAFE_APERTURE_CONTINUITY
-- required new information = PRODUCTION_C0_APERTURE_CONTINUITY_ACROSS_ALL_LOG_INTEGER_CUTOFF_SEAMS
+- active subobligation = CANONICAL_PARITY_FIRST_CROSSING_SHELL_BARRIER
+- next research target = PRODUCTION_SOURCE_CONTROL_OF_REGULAR_ZERO_SHIFT_ENDPOINT_NEAR_FIRST_CROSSING
+- required new information = PRODUCTION_SOURCE_GERM_EXCLUSION_FOR_INTERIOR_AND_PRIME_SEAM_FIRST_CROSSINGS
 - RH-sufficient terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE

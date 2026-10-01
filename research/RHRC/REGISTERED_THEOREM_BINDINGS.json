@@ -281,6 +281,12 @@
       "route": "R003_ccm_bridge"
     },
     {
+      "id": "R003_FIXED_N_GROUND_CONTINUITY",
+      "theorem": "Zeta23.CCM.canonicalFixedNGroundContinuity_proved",
+      "source": "Zeta23/CCM/CanonicalGroundContinuity.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
       "id": "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
       "theorem": "Zeta23.ExceptionalZero.exists_fixedN_ground_sign_opposition_of_offLine_zero",
       "source": "Zeta23/ExceptionalZero/GlobalParityBottomSignOpposition.lean",
@@ -368,6 +374,12 @@
       "id": "R003_NESTED_EUCLIDEAN_NEGATIVE_OBSTRUCTION",
       "theorem": "Zeta23.ExceptionalZero.exists_fixedAperture_forall_ge_ne_zero_mem_euclideanBoundaryFlatSubspace_negativeCanonicalInnerSelf_of_offLine_zero",
       "source": "Zeta23/ExceptionalZero/NestedEuclideanObstruction.lean",
+      "route": "R003_ccm_bridge"
+    },
+    {
+      "id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "theorem": "Zeta23.ExceptionalZero.nonempty_globalParityBottomZeroContact_proved_of_offLine_zero",
+      "source": "Zeta23/ExceptionalZero/GlobalParityBottomFirstContact.lean",
       "route": "R003_ccm_bridge"
     },
     {

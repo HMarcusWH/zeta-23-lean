@@ -71,10 +71,23 @@ class Post272SyncTests(unittest.TestCase):
             route["current_obstruction"],
             "OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER",
         )
-        self.assertIn(
-            "CONTINUITY",
+        # PR #272's cofinal arithmetic construction remains classified as
+        # RH-equivalent/audit-only, but later theorem frontiers are allowed to
+        # advance beyond the now-closed continuity gate.
+        self.assertNotIn(
+            "COFINAL",
             route["current_next_research_target"],
         )
+        if route.get("post278_fixedN_ground_continuity") == "PROVED_MERGED_PR_278":
+            self.assertIn(
+                "PRODUCTION_SOURCE",
+                route["current_next_research_target"],
+            )
+        else:
+            self.assertIn(
+                "CONTINUITY",
+                route["current_next_research_target"],
+            )
         self.assertEqual(
             route["post271_cofinal_arithmetic_certificate_construction"],
             "OPEN_RH_EQUIVALENT_TERMINAL_PR_272",

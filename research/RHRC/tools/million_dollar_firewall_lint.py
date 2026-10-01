@@ -33,6 +33,7 @@ AUDIT_ONLY = {
     "Zeta23.ExceptionalZero.GlobalParityBottomArithmeticEquivalenceAudit",
     "Zeta23.ExceptionalZero.GlobalParityBottomConditionalRH",
     "Zeta23.ExceptionalZero.GlobalParityBottomObstruction",
+    "Zeta23.ExceptionalZero.CanonicalFirstCrossingConditionalRH",
 }
 
 ACTIVE_CCM = {
@@ -54,11 +55,25 @@ ACTIVE_CCM = {
     "Zeta23.CCM.GlobalParityBottomPrimeRemainder",
     "Zeta23.CCM.GlobalParityBottomPrimeWeight",
     "Zeta23.CCM.GlobalParityBottomArithmeticTarget",
+    "Zeta23.CCM.ParityFirstNegativeBoundary",
+    "Zeta23.CCM.ParityZeroPlateau",
+    "Zeta23.CCM.ParityKernelTower",
+    "Zeta23.CCM.CanonicalParityFirstCrossingShell",
+    "Zeta23.CCM.FirstCrossingContactRegime",
+    "Zeta23.CCM.FirstCrossingContactEquations",
+    "Zeta23.CCM.FirstCrossingSuccessorDeterminant",
+    "Zeta23.CCM.FirstCrossingSchurReduction",
+    "Zeta23.CCM.FirstCrossingSourceDynamics",
+    "Zeta23.CCM.CanonicalApertureLocation",
+    "Zeta23.CCM.CanonicalInteriorFirstCrossingBarrier",
+    "Zeta23.CCM.CanonicalSeamFirstCrossingBarrier",
+    "Zeta23.CCM.CanonicalFirstCrossingBarrier",
 }
 
 ACTIVE_TERMINAL = {
     "Zeta23.ExceptionalZero.GlobalParityBottomGeneratedState",
     "Zeta23.ExceptionalZero.GlobalParityBottomTerminalTarget",
+    "Zeta23.ExceptionalZero.CanonicalParityFirstCrossingShell",
 }
 
 IMPORT = re.compile(r"(?m)^import\s+(\S+)")
@@ -159,8 +174,25 @@ def lint() -> list[str]:
             errors.append("active terminal target must explicitly retain RH OPEN status")
 
     closure_file = REPO / "Zeta23/ExceptionalZero/GlobalParityBottomRHClosure.lean"
+    closure_module = "Zeta23.ExceptionalZero.GlobalParityBottomRHClosure"
     exact_audit = REPO / "Zeta23/ExceptionalZero/GlobalParityBottomExactTypeAudit.lean"
     if closure_file.exists():
+        if closure_module not in g:
+            errors.append("premise-free closure file is not present in the import graph")
+        else:
+            reached = closure(g, closure_module)
+            bad_shortcuts = reached & FORBIDDEN_SHORTCUTS
+            bad_audits = reached & AUDIT_ONLY
+            if bad_shortcuts:
+                errors.append(
+                    "premise-free closure reaches forbidden RH-equivalent shortcuts "
+                    f"{sorted(bad_shortcuts)}"
+                )
+            if bad_audits:
+                errors.append(
+                    "premise-free closure reaches audit-only modules "
+                    f"{sorted(bad_audits)}"
+                )
         if not exact_audit.exists():
             errors.append(
                 "premise-free closure file exists without independent exact-type audit"

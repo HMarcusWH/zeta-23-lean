@@ -5,34 +5,48 @@ from pathlib import Path
 RHRC = Path(__file__).resolve().parents[2]
 
 
-class Post277SyncTests(unittest.TestCase):
-    def test_post277_authority_and_post278_candidate(self):
+class Post278SyncTests(unittest.TestCase):
+    def test_post278_authority_and_post279_candidate(self):
         state = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
         theorem = state["merged_theorem_anchor"]
-        self.assertEqual(theorem["pr"], 277)
-        self.assertEqual(theorem["validated_head"], "655bbfe77648c545eba82351e075a27c1dc71d3f")
-        self.assertEqual(theorem["merge_commit"], "ea8f54802b1de0c5588dc9d0edfb44d5abb2cb47")
-        self.assertEqual(theorem["tree"], "9a11c4ea404c123b5d29738880e3fd7e9d66ad02")
-        candidate = state["candidate_branch"]
-        self.assertEqual(candidate["pr"], 278)
-        self.assertEqual(candidate["branch"], "research/post277-first-contact-closure-attempt")
+        self.assertEqual(theorem["pr"], 278)
         self.assertEqual(
-            candidate["theorem_validation_head"],
-            "441ebad5914fde80ebf25db129c0af57893daf89",
+            theorem["validated_head"],
+            "53daac5a0690e3ae52a0e758c2ac8ba7a26290e7",
+        )
+        self.assertEqual(
+            theorem["merge_commit"],
+            "4c327bb171b0806e0acae3bb658158d028c522df",
+        )
+        self.assertEqual(
+            theorem["tree"],
+            "dc9f2186699eed81441ac6a5810405cdc0874eea",
+        )
+        candidate = state["candidate_branch"]
+        self.assertEqual(candidate["pr"], 279)
+        self.assertEqual(
+            candidate["branch"],
+            "research/close-rh-parity-first-crossing-shell",
+        )
+        self.assertEqual(
+            candidate["status"],
+            "POST278_PARITY_FIRST_CROSSING_SHELL_CANDIDATE",
         )
         self.assertEqual(candidate["theorem_validation"], "CI_PENDING")
         self.assertEqual(state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(state["terminal_claim"], "RH_OPEN")
 
-    def test_post277_claim_inventory(self):
+    def test_post278_claim_inventory(self):
         registry = json.loads((RHRC / "CLAIM_REGISTRY.json").read_text(encoding="utf-8"))
         by_id = {c["id"]: c for c in registry["claims"]}
         required = {
             "R003_SMALL_APERTURE_GROUND_SPECTRUM",
             "R003_EVENTUAL_APERTURE_PARITY_BADNESS_FROM_OFFLINE_ZERO",
             "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+            "R003_FIXED_N_GROUND_CONTINUITY",
+            "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
             "R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE",
             "AUDIT_GLOBAL_GROUND_PROPAGATION_IMPLIES_RH",
             "AUDIT_UNIFORM_DOMINATION_IMPLIES_RH",
@@ -50,6 +64,25 @@ class Post277SyncTests(unittest.TestCase):
                 "R003_COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES",
             },
         )
+
+    def test_first_crossing_frontier(self):
+        state = json.loads(
+            (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
+        )
+        route = state["active_research_route"]
+        self.assertEqual(
+            route["post278_fixedN_ground_continuity"],
+            "PROVED_MERGED_PR_278",
+        )
+        self.assertEqual(
+            route["post278_sameN_zero_contact"],
+            "PROVED_MERGED_PR_278",
+        )
+        self.assertEqual(
+            route["current_active_subobligation"],
+            "CANONICAL_PARITY_FIRST_CROSSING_SHELL_BARRIER",
+        )
+        self.assertIn("PRODUCTION_SOURCE", route["current_next_research_target"])
 
     def test_frozen_pr274_campaign_provenance_is_not_rewritten(self):
         campaign = json.loads(

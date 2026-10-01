@@ -1303,6 +1303,33 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "OPEN",
       "note": "Post-#271 terminal arithmetic proposition. PR #272 audit classifies this exact proposition as RH-equivalent; it remains OPEN because RH remains OPEN. Direct construction is therefore not treated as an independent sub-RH lemma."
+    },
+    {
+      "id": "R003_FIXED_N_GROUND_CONTINUITY",
+      "statement": "For every legal successor index N>=1, the exact global parity successor bottom is continuous on the complete positive aperture axis, including every log-integer cutoff seam.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_GLOBAL_PARITY_BOTTOM_SPECTRUM"
+      ],
+      "source": "Zeta23/CCM/CanonicalGroundContinuity.lean",
+      "theorem": "Zeta23.CCM.canonicalFixedNGroundContinuity_proved",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "Merged-green PR #278. Final validated head 53daac5a0690e3ae52a0e758c2ac8ba7a26290e7; merge 4c327bb171b0806e0acae3bb658158d028c522df; tree dc9f2186699eed81441ac6a5810405cdc0874eea. This is fixed-N C0 continuity, not aperture monotonicity or RH."
+    },
+    {
+      "id": "R003_OFFLINE_ZERO_FIXED_N_ZERO_CONTACT",
+      "statement": "Any hypothetical off-line zeta zero forces an exact same-fixed-N legal global parity-bottom zero contact between the proved small-aperture positive anchor and a later negative aperture.",
+      "status": "PROVED_UNCONDITIONAL",
+      "dependencies": [
+        "R003_FIXED_N_GROUND_SIGN_OPPOSITION",
+        "R003_FIXED_N_GROUND_CONTINUITY"
+      ],
+      "source": "Zeta23/ExceptionalZero/GlobalParityBottomFirstContact.lean",
+      "theorem": "Zeta23.ExceptionalZero.nonempty_globalParityBottomZeroContact_proved_of_offLine_zero",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "PROVED_UNCONDITIONAL",
+      "note": "Merged-green PR #278. This proves counterexample-generated same-N zero contact existence; it does not prove a first-negative boundary, outgoing barrier, or RH."
     }
   ]
 }

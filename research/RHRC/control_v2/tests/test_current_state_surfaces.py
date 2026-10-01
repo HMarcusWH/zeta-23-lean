@@ -34,7 +34,7 @@ class CurrentStateSurfaceTests(unittest.TestCase):
 
     def test_machine_state_contracts(self):
         theorem = self.state["merged_theorem_anchor"]
-        self.assertGreaterEqual(theorem["pr"], 276)
+        self.assertGreaterEqual(theorem["pr"], 278)
         self.assertEqual(theorem["status"], "MERGED_GREEN_THEOREM_STATE")
         self.assertEqual(self.state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(self.state["terminal_claim"], "RH_OPEN")
@@ -44,7 +44,9 @@ class CurrentStateSurfaceTests(unittest.TestCase):
             route["current_obstruction"],
             "OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER",
         )
-        self.assertIn("CONTINUITY", route["current_next_research_target"])
+        self.assertIn("PRODUCTION_SOURCE", route["current_next_research_target"])
+        self.assertEqual(route["post278_fixedN_ground_continuity"], "PROVED_MERGED_PR_278")
+        self.assertEqual(route["post278_sameN_zero_contact"], "PROVED_MERGED_PR_278")
         self.assertEqual(route["post276_small_aperture_ground_spectrum"], "PROVED_PR_276")
 
     def test_every_living_surface_exactly_matches_machine_renderer(self):
