@@ -58,6 +58,50 @@ RESEARCH / CONTROL FIREWALL
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#278 / PR #279 first-crossing validation rule
+
+The PR #279 first-crossing lane is theorem-bearing only to the extent that each
+checked module compiles on the exact PR head and passes the ordinary axiom and
+proof-escape gates.
+
+Required dedicated build order:
+
+```text
+ParityFirstNegativeBoundary
+-> ParityZeroPlateau
+-> ParityKernelTower
+-> CanonicalParityFirstCrossingShell
+-> FirstCrossingSchurReduction
+-> FirstCrossingSourceDynamics
+-> CanonicalApertureLocation
+-> CanonicalInteriorFirstCrossingBarrier
+-> CanonicalSeamFirstCrossingBarrier
+-> CanonicalFirstCrossingBarrier
+-> ExceptionalZero.CanonicalParityFirstCrossingShell
+-> ExceptionalZero.CanonicalFirstCrossingConditionalRH
+```
+
+The two `*RegularEndpointBarrier` propositions remain OPEN unless a theorem
+proves them; a compiled definition is not a proof.  The conditional RH seam is
+audit-only and must not enter the active `ExceptionalZero` root.
+
+Before admitting any proposed production barrier, replay the exact generic
+first-crossing falsifiers.  In particular, neither zero first derivative at the
+contact nor zero predecessor-shell coupling at the contact may be used as a
+generic no-crossing law.
+
+A future premise-free closure is allowed to change the terminal claim only if
+both files exist and compile on the same checked head:
+
+```text
+Zeta23/ExceptionalZero/GlobalParityBottomRHClosure.lean
+Zeta23/ExceptionalZero/GlobalParityBottomExactTypeAudit.lean
+```
+
+The exact-type audit must expose a premise-free theorem of literal Mathlib
+`RiemannHypothesis`, print its axioms, and pass the arithmetic/Million-Dollar
+anti-circularity firewalls.  Until then, RH remains OPEN.
+
 ## Post-#247 programme override
 
 PR #246 and PR #247 supersede older "current", "next", and candidate labels below. Historical sections are retained as provenance unless this override explicitly reactivates them.
