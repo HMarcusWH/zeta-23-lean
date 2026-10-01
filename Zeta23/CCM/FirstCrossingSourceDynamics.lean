@@ -3,6 +3,7 @@ import Zeta23.CCM.SourceDerivativeTransport
 import Zeta23.CCM.MixedSourceDerivativeTransport
 import Zeta23.CCM.CanonicalSourceEnergyJets
 import Zeta23.CCM.CanonicalSourceMomentJets
+import Zeta23.CCM.LiftedPredecessorRegularity
 
 noncomputable section
 
@@ -81,6 +82,32 @@ theorem regularZeroShiftSchurEndpoint_re_neg_of_parityBad
       p hL N hN hprev hbad
       (regularCubicZeroShiftPreimage p L N hreg)
       (regularCubicZeroShiftPreimage_spec p L N hreg)
+
+/-- Dense regularity turns any nonempty open fixed-cell region consisting
+of bad successors over nonnegative predecessors into an actual negative
+canonical regular zero-shift endpoint. -/
+theorem exists_regularZeroShiftEndpoint_neg_in_open_bad_cell
+    {Q : ℕ} (hQ : 1 ≤ Q)
+    (p : ReversalParity)
+    (N : ℕ) (hN : 1 ≤ N)
+    {J : Set ℝ}
+    (hJopen : IsOpen J)
+    (hJne : J.Nonempty)
+    (hJcell : J ⊆ fixedCanonicalCutoffCell Q)
+    (hJpos : ∀ L ∈ J, 0 < L)
+    (hprev : ∀ L ∈ J, PredecessorSectorNonnegative p L N)
+    (hbad : ∀ L ∈ J, ParityBad p L (N + 1)) :
+    ∃ L : ℝ, ∃ hLJ : L ∈ J,
+      ∃ hreg : IntrinsicPredecessorRegular p L N,
+        Complex.re (regularZeroShiftSchurEndpoint p L N hreg) < 0 := by
+  obtain ⟨L, hLJ, hreg⟩ :=
+    exists_intrinsicPredecessorRegular_in_open_fixedCell
+      hQ p N hJopen hJne hJcell
+  refine ⟨L, hLJ, hreg, ?_⟩
+  exact
+    regularZeroShiftSchurEndpoint_re_neg_of_parityBad
+      p (hJpos L hLJ) N hN (hprev L hLJ) (hbad L hLJ) hreg
+
 
 end Zeta23.CCM
 
