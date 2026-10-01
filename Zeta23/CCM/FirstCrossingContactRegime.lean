@@ -48,7 +48,8 @@ theorem CanonicalParityFirstCrossingShell.predecessorBottom_zero_of_n_lt_k
     (hnk : c.n < c.k) :
     parityRayleighBottom c.p c.Lstar c.k = 0 := by
   have hjn : c.n ≤ c.k - 1 := by omega
-  have hjN : c.k - 1 ≤ c.N := by omega
+  have hjN : c.k - 1 ≤ c.N :=
+    le_trans (Nat.sub_le c.k 1) c.k_le_N
   have hzero := c.plateau_zero (c.k - 1) hjn hjN
   have hsucc : c.k - 1 + 1 = c.k := by omega
   simpa [paritySuccessorGround, hsucc] using hzero
