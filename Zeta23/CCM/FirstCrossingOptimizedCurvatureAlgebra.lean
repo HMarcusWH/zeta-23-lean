@@ -47,9 +47,32 @@ theorem optimizedCurvatureSourceIntegrand_eq_remainder_sub_source
         (2 * Real.pi) ^ 2 / L ^ 2 * mH := by
   unfold optimizedCurvatureSourceIntegrand
     optimizedCurvatureSourceRemainderIntegrand
+  have hfrac :
+      (2 * Real.pi) ^ 2 * (L ^ 2 - t ^ 2) / L ^ 4 * mH -
+          (2 * Real.pi) ^ 2 / L ^ 2 * mH =
+        -(2 * Real.pi) ^ 2 * t ^ 2 / L ^ 4 * mH := by
+    field_simp [hL]
+    ring
   rw [htransport]
-  field_simp [hL]
-  ring
+  calc
+    t ^ 2 / L ^ 4 * (-(2 * Real.pi) ^ 2 * (ehz + mH)) +
+          2 * t / L ^ 2 * mixedDeriv =
+        -(2 * Real.pi) ^ 2 * t ^ 2 / L ^ 4 * ehz +
+          2 * t / L ^ 2 * mixedDeriv +
+          (-(2 * Real.pi) ^ 2 * t ^ 2 / L ^ 4 * mH) := by
+            ring
+    _ =
+        -(2 * Real.pi) ^ 2 * t ^ 2 / L ^ 4 * ehz +
+          2 * t / L ^ 2 * mixedDeriv +
+          ((2 * Real.pi) ^ 2 * (L ^ 2 - t ^ 2) / L ^ 4 * mH -
+            (2 * Real.pi) ^ 2 / L ^ 2 * mH) := by
+            rw [hfrac]
+    _ =
+        (2 * Real.pi) ^ 2 * (L ^ 2 - t ^ 2) / L ^ 4 * mH -
+          (2 * Real.pi) ^ 2 * t ^ 2 / L ^ 4 * ehz +
+          2 * t / L ^ 2 * mixedDeriv -
+          (2 * Real.pi) ^ 2 / L ^ 2 * mH := by
+            ring
 
 /-- The pointwise identity lifts through any real-linear arithmetic functional.
 This is the precise algebraic step used when the production derivative
