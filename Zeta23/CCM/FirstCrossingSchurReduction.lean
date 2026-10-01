@@ -185,22 +185,23 @@ theorem CanonicalParityFirstCrossingShell.exists_badPoint_with_nonnegativePredec
     have hLhiδ : L < c.Lstar + δ := by
       have hηδ : η ≤ δ := min_le_right _ _
       linarith
-    have hpredGround :=
-      hstable L (le_of_lt hLlo) hLhiδ
-    have hk2 : 2 ≤ c.k := by
-      by_contra hnot
-      have hkle : c.k ≤ 1 := by omega
-      have hkEq : c.k = 1 := le_antisymm hkle hk1
-      exact hk hkEq
-    have hsucc : c.k - 1 + 1 = c.k := by omega
-    have hbottom :
-        0 ≤ parityRayleighBottom c.p L c.k := by
-      simpa [paritySuccessorGround, hsucc] using hpredGround
-    have hprev :
-        PredecessorSectorNonnegative c.p L c.k :=
-      predecessorSectorNonnegative_of_parityBottom_nonnegative
-        c.p L c.k hbottom
-    exact ⟨L, hLlo, hLhiε, hprev, hbad_of_ground hLneg⟩
+    by_cases hk : c.k = 1
+    · have hprev :
+          PredecessorSectorNonnegative c.p L c.k := by
+        simpa [hk] using predecessorSectorNonnegative_one c.p L
+      exact ⟨L, hLlo, hLhiε, hprev, hbad_of_ground hLneg⟩
+    · have hpredGround :=
+        hstable L (le_of_lt hLlo) hLhiδ
+      have hk2 : 2 ≤ c.k := by omega
+      have hsucc : c.k - 1 + 1 = c.k := by omega
+      have hbottom :
+          0 ≤ parityRayleighBottom c.p L c.k := by
+        simpa [paritySuccessorGround, hsucc] using hpredGround
+      have hprev :
+          PredecessorSectorNonnegative c.p L c.k :=
+        predecessorSectorNonnegative_of_parityBottom_nonnegative
+          c.p L c.k hbottom
+      exact ⟨L, hLlo, hLhiε, hprev, hbad_of_ground hLneg⟩
 
 end Zeta23.CCM
 
