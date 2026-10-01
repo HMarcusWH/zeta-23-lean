@@ -42,6 +42,19 @@ theorem riemannHypothesis_of_firstCrossingBarriers
   exact no_canonicalParityFirstCrossingShell_of_barriers
     hinterior hseam c
 
+/-- Sharper audit seam: the two production scalar regular-endpoint
+barriers are already sufficient for literal Mathlib RH.  These premises remain
+OPEN and are not imported by the active ExceptionalZero root. -/
+theorem riemannHypothesis_of_regularEndpointBarriers
+    (hinterior : CanonicalInteriorRegularEndpointBarrier)
+    (hseam : CanonicalSeamRegularEndpointBarrier) :
+    RiemannHypothesis :=
+  riemannHypothesis_of_firstCrossingBarriers
+    (canonicalInteriorFirstCrossingBarrier_of_regularEndpointBarrier hinterior)
+    (canonicalSeamFirstCrossingBarrier_of_regularEndpointBarrier hseam)
+
+
 end Zeta23.ExceptionalZero
 
 #print axioms Zeta23.ExceptionalZero.riemannHypothesis_of_firstCrossingBarriers
+#print axioms Zeta23.ExceptionalZero.riemannHypothesis_of_regularEndpointBarriers
