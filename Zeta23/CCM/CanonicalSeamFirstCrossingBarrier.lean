@@ -50,4 +50,17 @@ def CanonicalSeamRegularEndpointBarrier : Prop :=
               0 ≤ Complex.re
                 (regularZeroShiftSchurEndpoint c.p L c.k hreg)
 
+/-- The scalar one-sided regular-endpoint barrier is sufficient for the
+full seam first-crossing exclusion. -/
+theorem canonicalSeamFirstCrossingBarrier_of_regularEndpointBarrier
+    (hendpoint : CanonicalSeamRegularEndpointBarrier) :
+    CanonicalSeamFirstCrossingBarrier := by
+  intro c q hq hEq
+  obtain ⟨δ, hδ, hnonneg⟩ := hendpoint c q hq hEq
+  obtain ⟨L, hLlo, hLhi, hprev, hreg, hneg⟩ :=
+    c.exists_arbitrarilyClose_regularZeroShiftEndpoint_neg δ hδ
+  have hge := hnonneg L hLlo hLhi hreg hprev
+  linarith
+
+
 end Zeta23.CCM
