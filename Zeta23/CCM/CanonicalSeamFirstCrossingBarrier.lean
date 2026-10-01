@@ -64,3 +64,5 @@ theorem canonicalSeamFirstCrossingBarrier_of_regularEndpointBarrier
 
 
 end Zeta23.CCM
+
+#print axioms Zeta23.CCM.canonicalSeamFirstCrossingBarrier_of_regularEndpointBarrier
