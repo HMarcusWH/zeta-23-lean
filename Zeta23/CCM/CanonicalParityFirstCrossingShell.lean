@@ -5,6 +5,8 @@ noncomputable section
 
 namespace Zeta23.CCM
 
+open scoped Topology
+
 /-!
 # Post-#278 canonical parity first-crossing shell
 
