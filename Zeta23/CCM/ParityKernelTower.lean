@@ -32,6 +32,27 @@ def parityPlateauExtend
     euclideanCenteredZeroExtend_mem_euclideanParityBoundaryFlatSubspace
       p (Nat.succ_le_succ hnm) v.property⟩
 
+/-- Centered zero extension is injective on the parity carrier. -/
+theorem parityPlateauExtend_ne_zero
+    (p : ReversalParity)
+    {n m : ℕ} (hnm : n ≤ m)
+    (v : euclideanParityBoundaryFlatSubspace p (n + 1))
+    (hv : v ≠ 0) :
+    parityPlateauExtend p hnm v ≠ 0 := by
+  intro hzero
+  have hval := congrArg Subtype.val hzero
+  have hzeroAmbient :
+      euclideanCenteredZeroExtend (Nat.succ_le_succ hnm)
+          (v : EuclideanSpace ℂ (Fin (2 * (n + 1) + 1))) = 0 := by
+    simpa [parityPlateauExtend] using hval
+  have hvAmbient :
+      (v : EuclideanSpace ℂ (Fin (2 * (n + 1) + 1))) = 0 :=
+    (euclideanCenteredZeroExtend (Nat.succ_le_succ hnm)).injective
+      (by simpa using hzeroAmbient)
+  apply hv
+  apply Subtype.ext
+  exact hvAmbient
+
 /-- Exact finite kernel-tower package carried by a parity zero plateau. -/
 structure ParityKernelTower extends ParityZeroPlateau where
   seed : euclideanParityBoundaryFlatSubspace p (n + 1)
@@ -54,7 +75,11 @@ theorem ParityZeroPlateau.exists_kernelTower
       z.p z.Lstar z.n z.one_le_n
   have hvkernel :
       parityCompressedCanonical z.p z.Lstar (z.n + 1) v = 0 := by
-    rw [hveig, z.minimal_zero]
+    rw [hveig]
+    have hzmin :
+        parityRayleighBottom z.p z.Lstar (z.n + 1) = 0 := by
+      simpa [paritySuccessorGround] using z.minimal_zero
+    rw [hzmin]
     simp
 
   have hext :
@@ -132,4 +157,5 @@ theorem ParityZeroPlateau.exists_kernelTower
 
 end Zeta23.CCM
 
+#print axioms Zeta23.CCM.parityPlateauExtend_ne_zero
 #print axioms Zeta23.CCM.ParityZeroPlateau.exists_kernelTower
