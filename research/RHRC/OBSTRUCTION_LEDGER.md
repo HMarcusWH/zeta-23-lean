@@ -1,5 +1,20 @@
 # RHRC obstruction ledger
 
+## Post-#279 obstruction refinement
+
+- **OBS-060H parity first-negative-boundary / zero-plateau / kernel tower:** CLOSED / PROVED by merged PR #279.
+- **OBS-060I arbitrarily-close regular negative zero-shift endpoints:** CLOSED / PROVED by merged PR #279.
+- **OBS-060J interior regular-endpoint production barrier:** OPEN.
+- **OBS-060K seam regular-endpoint production barrier:** OPEN.
+- **OBS-060L source-derived equality/contact rigidity:** OPEN / ACTIVE.
+- **OBS-060M structural/source quotient attribution:** IMPLEMENTATION / RESEARCH-PRODUCING.
+
+The new quotient programme does not treat exact symbolic relation rank as a
+first-crossing exclusion theorem. Its purpose is to identify which canonical
+source relation families add information unavailable to the generic structural
+countermodels and to expose the exact surviving degree of freedom.
+
+
 This ledger records reusable blockers that should shape future route design.
 
 > **Base-ledger coverage:** theorem state through PR #182; research evidence through PR #180.  
@@ -37,47 +52,39 @@ The optional cubic pole strengthening is no longer on the critical path. All-ape
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #278
-- validated final head = 53daac5a0690e3ae52a0e758c2ac8ba7a26290e7
-- merge commit = 4c327bb171b0806e0acae3bb658158d028c522df
-- tree = dc9f2186699eed81441ac6a5810405cdc0874eea
+- merged theorem authority = PR #279
+- validated final head = a716d62f386ac6d43c70672c68ac316b62a613e2
+- merge commit = 5b2d78f637b4646fe0b2f4395880b92173d7425e
+- tree = 7458574c81c65fbec71239e21a1221e2469108d4
 - status = MERGED_GREEN_THEOREM_STATE
 - PR #275 full-space small-aperture coercive base = PROVED
 - PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
 - fixed-N production continuity = PROVED_MERGED_PR_278
 - same-N off-line-zero contact = PROVED_MERGED_PR_278
+- canonical parity first-crossing shell and arbitrarily-close regular negative endpoint = PROVED_MERGED_PR_279
 - PR #272 CofinalCanonicalArithmeticCertificates <-> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY
 - RH = OPEN
 
 CURRENT RESEARCH FRONTIER
-- current candidate PR = #279 / POST278_PARITY_FIRST_CROSSING_SHELL_CANDIDATE
-- candidate theorem-validation head = 30a15a20f885e92cace1841429534427c5319652
-- candidate theorem-validation status = CI_PENDING
-- merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
-- fixed-N sign opposition = PROVED_MERGED_PR_277
-- global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
-- uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
-- active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
-- active subobligation = CANONICAL_PARITY_FIRST_CROSSING_SHELL_BARRIER
-- next research target = PRODUCTION_SOURCE_CONTROL_OF_REGULAR_ZERO_SHIFT_ENDPOINT_NEAR_FIRST_CROSSING
-- required new information = PRODUCTION_SOURCE_GERM_EXCLUSION_FOR_INTERIOR_AND_PRIME_SEAM_FIRST_CROSSINGS
+- current implementation branch = research/post279-lifted-contact-quotient
+- active obstruction = PRODUCTION_SOURCE_GERM_EQUALITY_RIGIDITY
+- active subobligation = SOURCE_DERIVED_RELATION_DISTINGUISHING_CANONICAL_FROM_SYNTHETIC_CONTACTS
+- next research target = LIFTED_CONTACT_SOURCE_QUOTIENT
+- exact paper equality decomposition = DERIVED_PAPER_NOT_YET_LEAN
+- diagnostic quotient duals = RESEARCH_ONLY_NOT_SOURCE_DERIVED
+- interior and seam regular-endpoint barriers = OPEN
 - RH-sufficient terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE
-- PR #270 = FFBBP 1.7 / OoL-MVS 2.7.7 framework architecture authority
-- post-#276 exactified source-only theorem/lemma roots = 711
-- post-#276 FFBBP source-only module cohorts = 212
-- post-#276 OoL theorem-value-erased frontier contacts = 522
-- post-#276 RHKG relations = 311826
+- RHKG remains discovery/control infrastructure, not theorem authority
+- post-#279 contact-quotient graph view = IMPLEMENTED_ON_BRANCH / CI_PENDING
 - framework output -> Lean theorem authority = FORBIDDEN
 
 RESEARCH / CONTROL FIREWALL
-- latest independent bounded research evidence = PR #223
-- merged first-contact atlas evidence = PR #273 / EXPERIMENTAL_SIGNAL_ONLY
-- frozen Control-v2 semantic authority = PR #117
-- selected formal first break = E4A4-SCHUR-FB-05 (historical/frozen control semantics)
-- R003 phase = DISCOVERY
-- confirmatory execution = NOT AUTHORIZED
+- generic first-contact crossing countermodels remain active negative controls
+- numerical/full-rank relation receipts do not prove pointwise canonical exclusion
+- pseudoinverse/left-inverse quotient duals are diagnostic only
+- the current paper saturation identity is excluded from theorem-authority rank until Lean-proved
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 

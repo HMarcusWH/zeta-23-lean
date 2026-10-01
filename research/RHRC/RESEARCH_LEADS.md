@@ -1,5 +1,29 @@
 # RHRC living research leads ledger
 
+## Post-#279 source-quotient leads
+
+**LEAD — source-derived quotient annihilator.** Assemble the theorem-backed
+first-contact relation surface in a lifted feature chart, keep structural and
+canonical-source rows separate, and compute the surviving relation-space
+quotient. A diagnostic left inverse is allowed only as a microscope. A promoted
+certificate must be reconstructed from exact pole/archimedean/von-Mangoldt or
+source-transport identities and then proved in Lean.
+
+**LEAD — branch bridge.** Determine which older global-bottom strict/tie source
+packages are actually available on a canonical first-crossing shell. Do not
+identify selected parity with the global even/odd minimum without a theorem.
+
+**LEAD — paper saturation theoremization.** The optimized-curvature remainder
+identity from the handoff is potentially decisive but remains paper-derived.
+The next formal step is to reconstruct its exact production definitions inside
+the repository before it is allowed to participate in theorem-authority rank.
+
+**FALSIFIER — canonical versus synthetic rank.** If the registered canonical
+source rows add no independent relation-space information beyond the synthetic
+controls on a sufficiently complete lifted chart, stop this formulation rather
+than adding fitted selectors.
+
+
 > **Claim firewall: RH remains OPEN.**
 >
 > This is a research inventory, not theorem authority. Exact Lean/compiler/CI state wins.

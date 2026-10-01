@@ -1,5 +1,25 @@
 # Dead and quarantined routes
 
+## Post-#279 consumed / forbidden shortcuts
+
+The following are consumed as independent closing mechanisms unless a new
+source-specific ingredient is supplied:
+
+- generic Hermitian first-contact geometry alone;
+- zero first derivative at contact;
+- contact shell decoupling alone;
+- arbitrary finite null-jet extension alone;
+- raw fixed-vector curvature with the optimized inverse-response term omitted;
+- global monotonicity of the natural resolvent scalar;
+- positivity of prime weights interpreted as positivity of the complete signed
+  prime-archimedean functional;
+- seam flatness interpreted as a positivity barrier;
+- pseudoinverse quotient rows promoted as arithmetic theorems.
+
+These failures are negative knowledge, not claims that the canonical arithmetic
+route is impossible.
+
+
 A route is listed here when it fails for a reusable reason. Failure is a valid research output.
 
 Do not silently resurrect a dead route. A revival must state **which blocking premise changed** and why that change is theorem-relevant.
