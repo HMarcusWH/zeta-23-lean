@@ -411,6 +411,8 @@ jobs:
             Zeta23.CCM.FirstCrossingSchurReduction \
             Zeta23.CCM.FirstCrossingSourceDynamics \
             Zeta23.CCM.CanonicalApertureLocation \
+            Zeta23.CCM.CanonicalInteriorFirstCrossingBarrier \
+            Zeta23.CCM.CanonicalSeamFirstCrossingBarrier \
             Zeta23.CCM.CanonicalFirstCrossingBarrier \
             Zeta23.ExceptionalZero.CanonicalParityFirstCrossingShell \
             Zeta23.ExceptionalZero.CanonicalFirstCrossingConditionalRH \
@@ -462,6 +464,8 @@ jobs:
             Zeta23/CCM/FirstCrossingSchurReduction.lean \
             Zeta23/CCM/FirstCrossingSourceDynamics.lean \
             Zeta23/CCM/CanonicalApertureLocation.lean \
+            Zeta23/CCM/CanonicalInteriorFirstCrossingBarrier.lean \
+            Zeta23/CCM/CanonicalSeamFirstCrossingBarrier.lean \
             Zeta23/CCM/CanonicalFirstCrossingBarrier.lean \
             Zeta23/ExceptionalZero/CanonicalParityFirstCrossingShell.lean \
             Zeta23/ExceptionalZero/CanonicalFirstCrossingConditionalRH.lean \
