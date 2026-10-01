@@ -1,9 +1,11 @@
 import json
+import sys
 import unittest
 from pathlib import Path
 
 RHRC = Path(__file__).resolve().parents[2]
 ROOT = RHRC.parent.parent
+sys.path.insert(0, str(RHRC))
 
 
 class Post279CloseAttemptTests(unittest.TestCase):
