@@ -38,6 +38,7 @@ def optimizedCurvatureSourceRemainderIntegrand
 mathematical input is the production second-derivative transport equation. -/
 theorem optimizedCurvatureSourceIntegrand_eq_remainder_sub_source
     (L t eSecond mixedDeriv mH ehz : ℝ)
+    (hL : L ≠ 0)
     (htransport :
       eSecond = -(2 * Real.pi) ^ 2 * (ehz + mH)) :
     optimizedCurvatureSourceIntegrand L t eSecond mixedDeriv =
@@ -47,6 +48,7 @@ theorem optimizedCurvatureSourceIntegrand_eq_remainder_sub_source
   unfold optimizedCurvatureSourceIntegrand
     optimizedCurvatureSourceRemainderIntegrand
   rw [htransport]
+  field_simp [hL]
   ring
 
 /-- The pointwise identity lifts through any real-linear arithmetic functional.
@@ -55,6 +57,7 @@ functional is eventually instantiated. -/
 theorem optimizedCurvatureLinearFunctional_eq_remainder_sub_source
     (A : (ℝ → ℝ) →ₗ[ℝ] ℝ)
     (L : ℝ)
+    (hL : L ≠ 0)
     (eSecond mixedDeriv mH ehz : ℝ → ℝ)
     (htransport :
       ∀ t : ℝ,
@@ -78,7 +81,7 @@ theorem optimizedCurvatureLinearFunctional_eq_remainder_sub_source
     exact
       optimizedCurvatureSourceIntegrand_eq_remainder_sub_source
         L t (eSecond t) (mixedDeriv t) (mH t) (ehz t)
-        (htransport t)
+        hL (htransport t)
   rw [hfun]
   have hsub :
       (fun t =>
@@ -107,7 +110,7 @@ def OptimizedCurvatureRemainderBalance
 scalar remainder balance. -/
 theorem optimizedCurvatureRemainderBalance_of_linearFunctional
     (A : (ℝ → ℝ) →ₗ[ℝ] ℝ)
-    (L : ℝ) (K : ℕ)
+    (L : ℝ) (hL : L ≠ 0) (K : ℕ)
     (v : euclideanEvenBoundaryFlatSubspace K)
     (eSecond mixedDeriv mH ehz : ℝ → ℝ)
     (kappa : ℝ)
@@ -129,7 +132,7 @@ theorem optimizedCurvatureRemainderBalance_of_linearFunctional
   unfold OptimizedCurvatureRemainderBalance
   rw [hkappa]
   rw [optimizedCurvatureLinearFunctional_eq_remainder_sub_source
-    A L eSecond mixedDeriv mH ehz htransport]
+    A L hL eSecond mixedDeriv mH ehz htransport]
   rw [hsource]
 
 /-- Saturation is exactly equality of the arithmetic remainder and the scaled
