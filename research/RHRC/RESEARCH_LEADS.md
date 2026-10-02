@@ -4,56 +4,6 @@
 >
 > This is a research inventory, not theorem authority. Exact Lean/compiler/CI state wins.
 
-## Post-#280 active lead — production saturation frontier
-
-Merged PR #280 consumes the abstract source/remainder algebra as a missing
-mathematical step.  In the strict-even zero-ground branch the source/M4 pairing
-
-[
-Q(v)=Re(overline{S(v)}M_4(v))
-]
-
-is theorem-identical to the opposite-parity energy and is strictly positive.
-The remaining arithmetic question is therefore relative, not an isolated sign
-claim:
-
-[
-Delta_{m sat}
-=
-mathcal A_L[R]
--
-rac{(2pi)^2}{L^2}Q(v).
-]
-
-PR #281 exposes the theorem-authoritative physical pole/archimedean/von-Mangoldt
-evaluation and names this production saturation gap, while keeping the actual
-aperture-derivative/admissibility bridge explicit and OPEN.
-
-**LEAD — production bridge.**  Prove the actual optimized-curvature derivative
-calculation constructs `ProductionOptimizedCurvatureBridge` on the generated
-strict-even contact, with the exact admissibility hypotheses needed at the
-archimedean origin.
-
-**LEAD — relative arithmetic inequality.**  Search for contact-restricted
-information forcing (Delta_{m sat}
-eq0), or more specifically
-(mathcal A_L[R] < (2pi)^2Q/L^2), rather than reviving a universal sign
-theorem for the complete source functional.
-
-**RESEARCH CHECK — frozen saturation atlas.**  Measure both arithmetic and
-spectral representations of (Q), the handoff remainder and the near-contact
-saturation-gap proxy on the frozen post-#272 seam/control schedule.  Floating
-measurements remain EXPERIMENTAL_SIGNAL_ONLY and must survive the exact
-source/remainder replay plus the independent (Q)-representation consistency
-gate.
-
-Do not add more quotient coordinates merely to increase relation rank.  A new
-quotient row is useful only after an exact theorem couples the structural
-contact side to the production arithmetic side.  Tie, odd-strict, first-zero
-and inherited-zero regimes remain separate; no WLOG-even transfer is allowed.
-
-RH remains OPEN.
-
 ## Post-#278 / PR #279 active lead — production regular-endpoint germ
 
 The continuity and arbitrary zero-contact gates are consumed by merged PR #278.  PR #279 compresses any hypothetical off-line zero to a canonical parity first-crossing shell and, using fixed-cell determinant regularity, to regular negative zero-shift Schur endpoints arbitrarily close to the contact.
@@ -137,6 +87,55 @@ RESEARCH / CONTROL FIREWALL
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#280 active lead — production saturation frontier
+
+Merged PR #280 consumes the abstract source/remainder algebra as a missing
+mathematical step. In the strict-even zero-ground branch the source/M4 pairing
+
+\[
+Q(v)=\Re(\overline{S(v)}M_4(v))
+\]
+
+is theorem-identical to the opposite-parity energy and is strictly positive.
+The remaining arithmetic question is therefore relative, not an isolated sign
+claim:
+
+\[
+\Delta_{\rm sat}
+=
+\mathcal A_L[R]
+-
+\frac{(2\pi)^2}{L^2}Q(v).
+\]
+
+PR #281 exposes the theorem-authoritative physical pole/archimedean/von-Mangoldt
+evaluation and names this production saturation gap, while keeping the actual
+aperture-derivative/admissibility bridge explicit and OPEN.
+
+**LEAD — production bridge.** Prove the actual optimized-curvature derivative
+calculation constructs \`ProductionOptimizedCurvatureBridge\` on the generated
+strict-even contact, with the exact admissibility hypotheses needed at the
+archimedean origin.
+
+**LEAD — relative arithmetic inequality.** Search for contact-restricted
+information forcing \(\Delta_{\rm sat}\neq0\), or more specifically
+\(\mathcal A_L[R] < (2\pi)^2Q/L^2\), rather than reviving a universal sign
+theorem for the complete source functional.
+
+**RESEARCH CHECK — frozen saturation atlas.** Measure both arithmetic and
+spectral representations of \(Q\), the handoff remainder and the near-contact
+saturation-gap proxy on the frozen post-#272 seam/control schedule. Floating
+measurements remain EXPERIMENTAL_SIGNAL_ONLY and must survive the exact
+source/remainder replay plus the independent \(Q\)-representation consistency
+gate.
+
+Do not add more quotient coordinates merely to increase relation rank. A new
+quotient row is useful only after an exact theorem couples the structural
+contact side to the production arithmetic side. Tie, odd-strict, first-zero
+and inherited-zero regimes remain separate; no WLOG-even transfer is allowed.
+
+RH remains OPEN.
 
 ## Post-#279 source-quotient leads
 
