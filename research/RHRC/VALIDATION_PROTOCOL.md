@@ -77,11 +77,15 @@ The post-#280 frontier has two authority layers and they must not be conflated.
 
 1. the frozen post-#280 fixture must match the preregistered q/K/offset schedule;
 2. the exact rational source/remainder replay must pass;
-3. the independent arithmetic and spectral representations of \(Q\) must agree
-   within the declared numerical tolerance;
-4. the resulting saturation-gap signs may be positive, negative, mixed or zero
-   without making CI red;
-5. no floating row may be called an actual contact without separate
+3. the independent arithmetic and spectral representations of \(Q\) must be
+   classified with the declared mixed absolute/relative tolerance and floating
+   resolution floor; under-resolved canonical rows are
+   `Q_NUMERICALLY_UNRESOLVED`, not representation passes;
+4. a resolved canonical \(Q\) mismatch beyond the mixed tolerance is CI-red,
+   while an under-resolved row remains a valid non-promoted research outcome;
+5. saturation-gap sign summaries may use only resolved strict-even/simple
+   canonical rows; positive, negative, mixed or zero signs do not make CI red;
+6. no floating row may be called an actual contact without separate
    zero/stationarity certification.
 
 A green measurement workflow establishes faithful execution on its frozen
