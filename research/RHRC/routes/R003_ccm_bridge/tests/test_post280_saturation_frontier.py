@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import sys
 import unittest
 from pathlib import Path
@@ -39,6 +40,15 @@ class SaturationFrontierTests(unittest.TestCase):
         self.assertEqual(sf.von_mangoldt_float(14), 0.0)
         self.assertEqual(sf.von_mangoldt_float(15), 0.0)
         self.assertEqual(sf.von_mangoldt_float(18), 0.0)
+
+    def test_frozen_fixture_contract(self):
+        fixture_path = ROUTE / "fixtures" / "post280_saturation_frontier_v1.json"
+        fixture = json.loads(fixture_path.read_text(encoding="utf-8"))
+        sf.validate_fixture(fixture)
+        self.assertEqual(fixture["offset_powers"], [8, 10, 12])
+        self.assertEqual(len(fixture["cases"]), 11)
+        self.assertIn({"q": 16, "K": 6, "kind": "VON_MANGOLDT_REPLICATION"}, fixture["cases"])
+        self.assertIn({"q": 17, "K": 6, "kind": "VON_MANGOLDT_REPLICATION"}, fixture["cases"])
 
     def test_source_derivative_matches_finite_difference(self):
         K = 3
