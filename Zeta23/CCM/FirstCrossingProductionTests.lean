@@ -61,9 +61,7 @@ theorem ProductionPhysicalTestAuthority.congr
     (h : ProductionPhysicalTestAuthority L g₁ p₁)
     (hg : g₁ = g₂) (hp : p₁ = p₂) :
     ProductionPhysicalTestAuthority L g₂ p₂ := by
-  subst hg
-  subst hp
-  exact h
+  simpa [hg, hp] using h
 
 end Zeta23.CCM
 
