@@ -44,7 +44,7 @@
     },
     {
       "id": "L09_STRICT_EVEN_FRONTIER",
-      "status": "OPEN",
+      "status": "IMPLEMENTATION_CI_PENDING__SATURATION_HYPOTHESES_OPEN",
       "target": "GeneratedStrictEvenContact.frontier"
     },
     {
