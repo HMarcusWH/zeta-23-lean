@@ -6,33 +6,33 @@ RHRC = Path(__file__).resolve().parents[2]
 
 
 class Post278SyncTests(unittest.TestCase):
-    def test_post278_history_survives_post279_authority(self):
+    def test_post278_history_survives_post280_authority(self):
         state = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
         theorem = state["merged_theorem_anchor"]
-        self.assertEqual(theorem["pr"], 279)
+        self.assertEqual(theorem["pr"], 280)
         self.assertEqual(
             theorem["validated_head"],
-            "a716d62f386ac6d43c70672c68ac316b62a613e2",
+            "3e897765c788c0cbb2b57fa75da62ef0e1766dca",
         )
         self.assertEqual(
             theorem["merge_commit"],
-            "5b2d78f637b4646fe0b2f4395880b92173d7425e",
+            "752e59f7147eec183e649ebe1e9af4d0329dbe73",
         )
         self.assertEqual(
             theorem["tree"],
-            "7458574c81c65fbec71239e21a1221e2469108d4",
+            "807c2cdec6c6fa09cb0ba65915112c9c2dfd19ba",
         )
         candidate = state["candidate_branch"]
-        self.assertEqual(candidate["pr"], 280)
+        self.assertEqual(candidate["pr"], 281)
         self.assertEqual(
             candidate["branch"],
-            "research/post279-lifted-contact-quotient",
+            "research/post280-production-saturation-frontier",
         )
         self.assertEqual(
             candidate["status"],
-            "POST279_LIFTED_CONTACT_SOURCE_QUOTIENT_CANDIDATE",
+            "POST280_PRODUCTION_SATURATION_FRONTIER_CANDIDATE",
         )
         self.assertEqual(candidate["theorem_validation"], "CI_PENDING")
         self.assertEqual(state["merged_control_anchor"]["pr"], 117)
@@ -84,9 +84,21 @@ class Post278SyncTests(unittest.TestCase):
         )
         self.assertEqual(
             route["current_active_subobligation"],
-            "SOURCE_DERIVED_CONTACT_QUOTIENT_EQUALITY_RIGIDITY",
+            "PRODUCTION_OPTIMIZED_CURVATURE_BRIDGE_AND_SATURATION_GAP_MEASUREMENT",
         )
-        self.assertIn("PRODUCTION_SOURCE", route["current_next_research_target"])
+        self.assertEqual(route["current_next_research_target"], "PRODUCTION_ARITHMETIC_SATURATION_FRONTIER")
+        self.assertEqual(
+            route["post280_contact_quotient_lane"],
+            "PROVED_MERGED_PR_280",
+        )
+        self.assertEqual(
+            route["post280_production_optimized_curvature_bridge"],
+            "OPEN_ACTIVE",
+        )
+        self.assertEqual(
+            route["post281_q_representation_integrity"],
+            "REQUIRED_CI_GATE",
+        )
 
     def test_frozen_pr274_campaign_provenance_is_not_rewritten(self):
         campaign = json.loads(

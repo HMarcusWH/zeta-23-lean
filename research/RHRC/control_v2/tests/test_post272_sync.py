@@ -79,9 +79,9 @@ class Post272SyncTests(unittest.TestCase):
             route["current_next_research_target"],
         )
         if route.get("post278_fixedN_ground_continuity") == "PROVED_MERGED_PR_278":
-            self.assertIn(
-                "PRODUCTION_SOURCE",
+            self.assertEqual(
                 route["current_next_research_target"],
+                "PRODUCTION_ARITHMETIC_SATURATION_FRONTIER",
             )
         else:
             self.assertIn(

@@ -1,0 +1,77 @@
+name: RHRC post-280 saturation frontier
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'Zeta23/CCM/FirstCrossingProduction*.lean'
+      - 'research/RHRC/routes/R003_ccm_bridge/post280_saturation_frontier.py'
+      - 'research/RHRC/routes/R003_ccm_bridge/POST280_PRODUCTION_SATURATION_FRONTIER.md'
+      - 'research/RHRC/routes/R003_ccm_bridge/fixtures/post280_saturation_frontier_v1.json'
+      - 'research/RHRC/routes/R003_ccm_bridge/tests/test_post280_saturation_frontier.py'
+      - '.github/workflows/rhrc_post280_saturation_frontier.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rhrc-post280-saturation-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lean-production-frontier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build production saturation frontier
+        run: |
+          lake build Zeta23.CCM.FirstCrossingProductionArithmetic
+          lake build Zeta23.CCM.FirstCrossingProductionSaturation
+      - name: Audit production saturation frontier axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/FirstCrossingProductionArithmetic.lean \
+            Zeta23/CCM/FirstCrossingProductionSaturation.lean
+
+  research-frontier-measurement:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install R003 research dependencies
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Compile and unit-test saturation frontier
+        run: |
+          python -m compileall -q research/RHRC/routes/R003_ccm_bridge/post280_saturation_frontier.py
+          python -m unittest \
+            research/RHRC/routes/R003_ccm_bridge/tests/test_post280_saturation_frontier.py -v
+      - name: Replay exact source/remainder algebra
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/contact_quotient/check_source_remainder_exact.py \
+            --output /tmp/POST280_SOURCE_REMAINDER_EXACT.json
+      - name: Run frozen saturation-frontier measurement
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post280_saturation_frontier.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post280_saturation_frontier_v1.json \
+            --output /tmp/POST280_SATURATION_FRONTIER.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post280-saturation-frontier
+          path: |
+            /tmp/POST280_SOURCE_REMAINDER_EXACT.json
+            /tmp/POST280_SATURATION_FRONTIER.json
+          if-no-files-found: error
+          retention-days: 30

@@ -44,10 +44,10 @@ The broader reusable heuristic survives: search for two genuinely independent co
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #279
-- validated final head = a716d62f386ac6d43c70672c68ac316b62a613e2
-- merge commit = 5b2d78f637b4646fe0b2f4395880b92173d7425e
-- tree = 7458574c81c65fbec71239e21a1221e2469108d4
+- merged theorem authority = PR #280
+- validated final head = 3e897765c788c0cbb2b57fa75da62ef0e1766dca
+- merge commit = 752e59f7147eec183e649ebe1e9af4d0329dbe73
+- tree = 807c2cdec6c6fa09cb0ba65915112c9c2dfd19ba
 - status = MERGED_GREEN_THEOREM_STATE
 - PR #275 full-space small-aperture coercive base = PROVED
 - PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
@@ -57,17 +57,17 @@ THEOREM AUTHORITY
 - RH = OPEN
 
 CURRENT RESEARCH FRONTIER
-- current candidate PR = #280 / POST279_LIFTED_CONTACT_SOURCE_QUOTIENT_CANDIDATE
-- candidate theorem-validation head = 70054d390500896763501f9263b60bcb20bd50b4
+- current candidate PR = #281 / POST280_PRODUCTION_SATURATION_FRONTIER_CANDIDATE
+- candidate theorem-validation head = 318df7a7f5e66768dc6792cb330c1d3325ce1a95
 - candidate theorem-validation status = CI_PENDING
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
 - fixed-N sign opposition = PROVED_MERGED_PR_277
 - global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
-- active subobligation = SOURCE_DERIVED_CONTACT_QUOTIENT_EQUALITY_RIGIDITY
-- next research target = PRODUCTION_SOURCE_LIFTED_CONTACT_QUOTIENT
-- required new information = SOURCE_DERIVED_RELATION_DISTINGUISHING_CANONICAL_FROM_SYNTHETIC_FIRST_CONTACTS
+- active subobligation = PRODUCTION_OPTIMIZED_CURVATURE_BRIDGE_AND_SATURATION_GAP_MEASUREMENT
+- next research target = PRODUCTION_ARITHMETIC_SATURATION_FRONTIER
+- required new information = SIGNED_CANONICAL_ARITHMETIC_COMPARISON_AT_GENERATED_CONTACT
 - RH-sufficient terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE
@@ -87,6 +87,55 @@ RESEARCH / CONTROL FIREWALL
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#280 active lead — production saturation frontier
+
+Merged PR #280 consumes the abstract source/remainder algebra as a missing
+mathematical step. In the strict-even zero-ground branch the source/M4 pairing
+
+\[
+Q(v)=\Re(\overline{S(v)}M_4(v))
+\]
+
+is theorem-identical to the opposite-parity energy and is strictly positive.
+The remaining arithmetic question is therefore relative, not an isolated sign
+claim:
+
+\[
+\Delta_{\rm sat}
+=
+\mathcal A_L[R]
+-
+\frac{(2\pi)^2}{L^2}Q(v).
+\]
+
+PR #281 exposes the theorem-authoritative physical pole/archimedean/von-Mangoldt
+evaluation and names this production saturation gap, while keeping the actual
+aperture-derivative/admissibility bridge explicit and OPEN.
+
+**LEAD — production bridge.** Prove the actual optimized-curvature derivative
+calculation constructs \`ProductionOptimizedCurvatureBridge\` on the generated
+strict-even contact, with the exact admissibility hypotheses needed at the
+archimedean origin.
+
+**LEAD — relative arithmetic inequality.** Search for contact-restricted
+information forcing \(\Delta_{\rm sat}\neq0\), or more specifically
+\(\mathcal A_L[R] < (2\pi)^2Q/L^2\), rather than reviving a universal sign
+theorem for the complete source functional.
+
+**RESEARCH CHECK — frozen saturation atlas.** Measure both arithmetic and
+spectral representations of \(Q\), the handoff remainder and the near-contact
+saturation-gap proxy on the frozen post-#272 seam/control schedule. Floating
+measurements remain EXPERIMENTAL_SIGNAL_ONLY and must survive the exact
+source/remainder replay plus the independent \(Q\)-representation consistency
+gate.
+
+Do not add more quotient coordinates merely to increase relation rank. A new
+quotient row is useful only after an exact theorem couples the structural
+contact side to the production arithmetic side. Tie, odd-strict, first-zero
+and inherited-zero regimes remain separate; no WLOG-even transfer is allowed.
+
+RH remains OPEN.
 
 ## Post-#279 source-quotient leads
 

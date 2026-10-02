@@ -43,10 +43,10 @@ The contact route uses the repository's existing IntrinsicPredecessorRegular reg
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #279
-- validated final head = a716d62f386ac6d43c70672c68ac316b62a613e2
-- merge commit = 5b2d78f637b4646fe0b2f4395880b92173d7425e
-- tree = 7458574c81c65fbec71239e21a1221e2469108d4
+- merged theorem authority = PR #280
+- validated final head = 3e897765c788c0cbb2b57fa75da62ef0e1766dca
+- merge commit = 752e59f7147eec183e649ebe1e9af4d0329dbe73
+- tree = 807c2cdec6c6fa09cb0ba65915112c9c2dfd19ba
 - status = MERGED_GREEN_THEOREM_STATE
 - PR #275 full-space small-aperture coercive base = PROVED
 - PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
@@ -56,17 +56,17 @@ THEOREM AUTHORITY
 - RH = OPEN
 
 CURRENT RESEARCH FRONTIER
-- current candidate PR = #280 / POST279_LIFTED_CONTACT_SOURCE_QUOTIENT_CANDIDATE
-- candidate theorem-validation head = 70054d390500896763501f9263b60bcb20bd50b4
+- current candidate PR = #281 / POST280_PRODUCTION_SATURATION_FRONTIER_CANDIDATE
+- candidate theorem-validation head = 318df7a7f5e66768dc6792cb330c1d3325ce1a95
 - candidate theorem-validation status = CI_PENDING
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
 - fixed-N sign opposition = PROVED_MERGED_PR_277
 - global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
-- active subobligation = SOURCE_DERIVED_CONTACT_QUOTIENT_EQUALITY_RIGIDITY
-- next research target = PRODUCTION_SOURCE_LIFTED_CONTACT_QUOTIENT
-- required new information = SOURCE_DERIVED_RELATION_DISTINGUISHING_CANONICAL_FROM_SYNTHETIC_FIRST_CONTACTS
+- active subobligation = PRODUCTION_OPTIMIZED_CURVATURE_BRIDGE_AND_SATURATION_GAP_MEASUREMENT
+- next research target = PRODUCTION_ARITHMETIC_SATURATION_FRONTIER
+- required new information = SIGNED_CANONICAL_ARITHMETIC_COMPARISON_AT_GENERATED_CONTACT
 - RH-sufficient terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE
@@ -86,6 +86,23 @@ RESEARCH / CONTROL FIREWALL
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#280 production saturation-frontier override
+
+PR #280 is merged-green theorem authority. It proves the theorem-backed strict-even source/M4-to-opposite-parity-energy identity and the abstract optimized-curvature source/remainder algebra, but it does not instantiate the abstract functional with the complete physical production evaluation.
+
+PR #281 moves the repository to that exact arithmetic frontier without promoting an unproved bridge. The candidate exposes the existing theorem-authoritative pole/archimedean/von-Mangoldt physical RHS as the production arithmetic value, identifies its quadratic-normal source specialization with the canonical source moment, names the saturation gap, and starts a frozen EXPERIMENTAL_SIGNAL_ONLY near-seam measurement campaign.
+
+The remaining formal bridge is deliberately explicit:
+
+```text
+actual aperture derivatives + response vector + admissibility
+  -> ProductionOptimizedCurvatureBridge
+  -> kappa = A_L[R] - (2*pi)^2/L^2 * Q(v)
+```
+
+The strict-even equality exclusion, tie/odd-strict branches, interior/seam regular-endpoint barriers, and RH remain OPEN.
+
 
 ## Post-#279 lifted contact quotient override
 

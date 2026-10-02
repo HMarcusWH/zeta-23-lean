@@ -14,10 +14,10 @@ For theorem-bearing PRs, compiler validity attaches only to the exact checked he
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #279
-- validated final head = a716d62f386ac6d43c70672c68ac316b62a613e2
-- merge commit = 5b2d78f637b4646fe0b2f4395880b92173d7425e
-- tree = 7458574c81c65fbec71239e21a1221e2469108d4
+- merged theorem authority = PR #280
+- validated final head = 3e897765c788c0cbb2b57fa75da62ef0e1766dca
+- merge commit = 752e59f7147eec183e649ebe1e9af4d0329dbe73
+- tree = 807c2cdec6c6fa09cb0ba65915112c9c2dfd19ba
 - status = MERGED_GREEN_THEOREM_STATE
 - PR #275 full-space small-aperture coercive base = PROVED
 - PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
@@ -27,17 +27,17 @@ THEOREM AUTHORITY
 - RH = OPEN
 
 CURRENT RESEARCH FRONTIER
-- current candidate PR = #280 / POST279_LIFTED_CONTACT_SOURCE_QUOTIENT_CANDIDATE
-- candidate theorem-validation head = 70054d390500896763501f9263b60bcb20bd50b4
+- current candidate PR = #281 / POST280_PRODUCTION_SATURATION_FRONTIER_CANDIDATE
+- candidate theorem-validation head = 318df7a7f5e66768dc6792cb330c1d3325ce1a95
 - candidate theorem-validation status = CI_PENDING
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
 - fixed-N sign opposition = PROVED_MERGED_PR_277
 - global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
-- active subobligation = SOURCE_DERIVED_CONTACT_QUOTIENT_EQUALITY_RIGIDITY
-- next research target = PRODUCTION_SOURCE_LIFTED_CONTACT_QUOTIENT
-- required new information = SOURCE_DERIVED_RELATION_DISTINGUISHING_CANONICAL_FROM_SYNTHETIC_FIRST_CONTACTS
+- active subobligation = PRODUCTION_OPTIMIZED_CURVATURE_BRIDGE_AND_SATURATION_GAP_MEASUREMENT
+- next research target = PRODUCTION_ARITHMETIC_SATURATION_FRONTIER
+- required new information = SIGNED_CANONICAL_ARITHMETIC_COMPARISON_AT_GENERATED_CONTACT
 - RH-sufficient terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE
@@ -57,6 +57,42 @@ RESEARCH / CONTROL FIREWALL
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#280 / PR #281 production-saturation validation rule
+
+The post-#280 frontier has two authority layers and they must not be conflated.
+
+**Formal validity gates**
+
+1. \`FirstCrossingProductionArithmetic.lean\` must compile and pass the axiom
+   audit on the exact PR head.
+2. \`FirstCrossingProductionSaturation.lean\` must compile and pass the axiom
+   audit on the exact PR head.
+3. The closure proof-escape scope must include both modules.
+4. \`ProductionOptimizedCurvatureBridge\` is an OPEN proposition/interface.
+   Compilation of its definition or theorems conditional on it does not prove
+   the actual aperture-derivative/admissibility bridge.
+
+**Research-producing gates**
+
+1. the frozen post-#280 fixture must match the preregistered q/K/offset schedule;
+2. the exact rational source/remainder replay must pass;
+3. the independent arithmetic and spectral representations of \(Q\) must be
+   classified with the declared mixed absolute/relative tolerance and floating
+   resolution floor; under-resolved canonical rows are
+   `Q_NUMERICALLY_UNRESOLVED`, not representation passes;
+4. a resolved canonical \(Q\) mismatch beyond the mixed tolerance is CI-red,
+   while an under-resolved row remains a valid non-promoted research outcome;
+5. saturation-gap sign summaries may use only resolved strict-even/simple
+   canonical rows; positive, negative, mixed or zero signs do not make CI red;
+6. no floating row may be called an actual contact without separate
+   zero/stationarity certification.
+
+A green measurement workflow establishes faithful execution on its frozen
+scope. It does not update theorem authority or the latest independent research
+evidence before a separate post-green harvest.
+
+RH remains OPEN.
 
 ## Post-#278 / PR #279 first-crossing validation rule
 

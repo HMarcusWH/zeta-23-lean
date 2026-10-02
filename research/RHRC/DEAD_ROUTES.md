@@ -4,6 +4,33 @@ A route is listed here when it fails for a reusable reason. Failure is a valid r
 
 Do not silently resurrect a dead route. A revival must state **which blocking premise changed** and why that change is theorem-relevant.
 
+## Post-#280 saturation-frontier reclassification
+
+The following shortcuts are now consumed or forbidden as independent closure
+mechanisms:
+
+- **more source-only quotient rank:** consumed. PR #280 already shows the
+  canonical source rows add independent rank, but without a structural/arithmetic
+  cross-relation they do not exclude contact;
+- **strict positivity of \(Q(v)\) alone:** consumed. Saturation requires the
+  production remainder to equal a positive scaled \(Q(v)\), so positivity does
+  not contradict the contact;
+- **the sign of the entering prime atom alone:** not a seam barrier. The
+  complete smooth pole/archimedean/background germ must be included;
+- **an unrestricted total real-linear arithmetic functional on all
+  \(\mathbb R\to\mathbb R\) functions:** forbidden as a silent convenience.
+  The physical archimedean density is singular at the origin; admissibility of
+  the actual source/remainder tests must be proved or carried explicitly;
+- **finite near-contact \(\Delta_{\rm sat}\) signs promoted to theorem
+  authority:** forbidden. The frozen campaign is discovery evidence only.
+
+The live route is the exact production derivative/admissibility bridge followed
+by a contact-restricted arithmetic comparison. If the same proposed law holds
+in the generic first-crossing countermodels, the law is not the missing
+canonical information.
+
+RH remains OPEN.
+
 ## Post-#278 / PR #279 contact-law quarantine
 
 Two tempting generic contact arguments are explicitly rejected by exact rational 2×2 falsifiers in `closure_batch/first_crossing_generic_falsifiers.py`:
@@ -17,10 +44,10 @@ These are generic Hermitian countermodels, not canonical CCM counterexamples.  T
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #279
-- validated final head = a716d62f386ac6d43c70672c68ac316b62a613e2
-- merge commit = 5b2d78f637b4646fe0b2f4395880b92173d7425e
-- tree = 7458574c81c65fbec71239e21a1221e2469108d4
+- merged theorem authority = PR #280
+- validated final head = 3e897765c788c0cbb2b57fa75da62ef0e1766dca
+- merge commit = 752e59f7147eec183e649ebe1e9af4d0329dbe73
+- tree = 807c2cdec6c6fa09cb0ba65915112c9c2dfd19ba
 - status = MERGED_GREEN_THEOREM_STATE
 - PR #275 full-space small-aperture coercive base = PROVED
 - PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
@@ -30,17 +57,17 @@ THEOREM AUTHORITY
 - RH = OPEN
 
 CURRENT RESEARCH FRONTIER
-- current candidate PR = #280 / POST279_LIFTED_CONTACT_SOURCE_QUOTIENT_CANDIDATE
-- candidate theorem-validation head = 70054d390500896763501f9263b60bcb20bd50b4
+- current candidate PR = #281 / POST280_PRODUCTION_SATURATION_FRONTIER_CANDIDATE
+- candidate theorem-validation head = 318df7a7f5e66768dc6792cb330c1d3325ce1a95
 - candidate theorem-validation status = CI_PENDING
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
 - fixed-N sign opposition = PROVED_MERGED_PR_277
 - global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
-- active subobligation = SOURCE_DERIVED_CONTACT_QUOTIENT_EQUALITY_RIGIDITY
-- next research target = PRODUCTION_SOURCE_LIFTED_CONTACT_QUOTIENT
-- required new information = SOURCE_DERIVED_RELATION_DISTINGUISHING_CANONICAL_FROM_SYNTHETIC_FIRST_CONTACTS
+- active subobligation = PRODUCTION_OPTIMIZED_CURVATURE_BRIDGE_AND_SATURATION_GAP_MEASUREMENT
+- next research target = PRODUCTION_ARITHMETIC_SATURATION_FRONTIER
+- required new information = SIGNED_CANONICAL_ARITHMETIC_COMPARISON_AT_GENERATED_CONTACT
 - RH-sufficient terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE
