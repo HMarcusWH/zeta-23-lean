@@ -84,7 +84,7 @@ class Post278SyncTests(unittest.TestCase):
         )
         self.assertEqual(
             route["current_active_subobligation"],
-            "SOURCE_DERIVED_CONTACT_QUOTIENT_EQUALITY_RIGIDITY",
+            "PRODUCTION_OPTIMIZED_CURVATURE_BRIDGE_AND_SATURATION_GAP_MEASUREMENT",
         )
         self.assertEqual(route["current_next_research_target"], "PRODUCTION_ARITHMETIC_SATURATION_FRONTIER")
 
