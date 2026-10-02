@@ -81,6 +81,14 @@ RESEARCH / CONTROL FIREWALL
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#281 / PR #282 generated-contact refinement
+
+Stable obstruction meanings are preserved. **OBS-060N** remains the production derivative/admissibility bridge: the concrete weighted tests must be theorem-authoritative and the independently defined optimized curvature must be proved equal to the production arithmetic gap. **OBS-060O** remains saturation/equality exclusion after that identity is established. **OBS-060J/K** remain the interior/seam endpoint barriers.
+
+PR #282 candidate state: global first-negative-boundary construction, global-to-selected cutoff alignment, derivative-operator definitions/Hermitian symmetry, and strict-even stationary-response construction are formal candidates pending exact CI. Weighted derivative realization, concrete curvature-arithmetic identity, stationary saturation necessity, arithmetic exclusion, odd/tie closure and RH remain OPEN.
+
+
+
 ## Post-#280 OBS-060 refinement
 
 - **OBS-060L source-derived equality/contact rigidity:** narrowed by merged PR #280.

@@ -58,6 +58,16 @@ RESEARCH / CONTROL FIREWALL
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## PR #282 generated-contact validation rule
+
+The dedicated workflow has four substantive lanes: `lean-generated-contact`, `lean-production-contact`, `research-generated-contact`, and `arb-generated-contact`, followed by an aggregate completion gate. All nine candidate Lean modules must also be present in the ordinary main/closure build, axiom audit, proof-escape scan and semantic-closure role map; the static generated-contact build-contract checker enforces that wiring.
+
+The research lane replays the repaired #281 production campaign and exact source/remainder/countermodel controls before broad discovery. Discovery output is EXPERIMENTAL_SIGNAL_ONLY. Arb endpoint signs can certify a local sign bracket on the recorded cell; they do not become first-global-boundary certificates without prefix coverage.
+
+Q, remainder, first variation, response, curvature, saturation gap and rho have separate resolution states. A quantity not rigorously certified is marked unresolved/not-applicable rather than inherited from another green field. RH remains OPEN.
+
+
+
 ## Post-#280 / PR #281 production-saturation validation rule
 
 The post-#280 frontier has two authority layers and they must not be conflated.

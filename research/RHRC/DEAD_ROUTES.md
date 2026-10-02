@@ -88,6 +88,14 @@ RESEARCH / CONTROL FIREWALL
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#281 falsification status
+
+Do not revive a universal raw-remainder sign, generic no-crossing theorem, or “the entering current prime is always stabilizing” story merely because a generated contact is now formalized. Generic transverse/stationary/touch/tie controls remain mandatory filters. A proposed law that follows from generic Hermitian crossing geometry is not an RH separator.
+
+A finite search with no located root is not a no-contact theorem. A local sign bracket is not automatically the first global boundary. A floating saturation ratio close to one is not equality rigidity.
+
+
+
 ## Post-#279 consumed / forbidden shortcuts
 
 The following are consumed as independent closing mechanisms unless a new

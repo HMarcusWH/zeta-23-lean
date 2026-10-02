@@ -87,6 +87,16 @@ RESEARCH / CONTROL FIREWALL
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## PR #282 generated production contact candidate override
+
+PR #281 is merged theorem authority. PR #282 constructs the counterexample-generated global first-negative boundary and selected-cutoff alignment, then carries the strict-even lane into explicit first-variation, stationary-response and concrete curvature objects.
+
+The candidate deliberately does **not** relabel the remaining bridge as solved. Weighted production-test authority for the derivative/remainder terms, actual first/second aperture realization including C2 seam gluing, the concrete curvature-arithmetic identity, stationary outgoing-contact saturation necessity, arithmetic equality exclusion, odd/tie closure, endpoint barriers and RH remain OPEN until separately theorem-backed.
+
+The bounded research campaign scans every physical cutoff cell Q=1..64 and K=2..6, freezes candidate selection, replays the inherited #281/source/countermodel controls, and records floating current-Q frozen-state/reoptimized ablations plus generic crossing/touch controls before Arb sign-bracket replay.
+
+
+
 ## Post-#280 production saturation-frontier override
 
 PR #280 is merged-green theorem authority. It proves the theorem-backed strict-even source/M4-to-opposite-parity-energy identity and the abstract optimized-curvature source/remainder algebra, but it does not instantiate the abstract functional with the complete physical production evaluation.
