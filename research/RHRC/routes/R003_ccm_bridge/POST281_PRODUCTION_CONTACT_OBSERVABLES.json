@@ -1,0 +1,31 @@
+{
+  "schema_version": "POST281_PRODUCTION_CONTACT_OBSERVABLES_v1",
+  "claim_cap": "EXPERIMENTAL_SIGNAL_ONLY",
+  "observables": {
+    "global_bottom": {
+      "source": "canonical parity Rayleigh bottoms",
+      "resolution": "Arb eigenvalue enclosure"
+    },
+    "J1": {
+      "source": "complete fixed-Q analytic M'(L)",
+      "resolution": "simple-ground residual/gap budget"
+    },
+    "fixed_second": {
+      "source": "complete fixed-Q analytic M''(L)",
+      "resolution": "simple-ground residual/gap budget"
+    },
+    "Q": {
+      "source": "independent production source and spectral representation",
+      "status": "TO_WIRE_WITH_FORMAL_REMAINDER"
+    },
+    "remainder": {
+      "status": "TO_WIRE_WITH_FORMAL_REMAINDER"
+    },
+    "saturation_gap": {
+      "status": "TO_WIRE_AFTER_FORMAL_BRIDGE"
+    },
+    "rho_sat": {
+      "eligibility": "Q strictly positive and numerator/gap separately resolved"
+    }
+  }
+}

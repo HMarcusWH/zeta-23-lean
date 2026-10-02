@@ -1,0 +1,61 @@
+{
+  "schema_version": "POST281_PRODUCTION_CONTACT_OBLIGATIONS_v1",
+  "claim_cap": "NO_PROMOTION_FROM_THIS_FILE",
+  "obligations": [
+    {
+      "id": "L01_GLOBAL_BOUNDARY",
+      "status": "IMPLEMENTATION",
+      "target": "Zeta23.CCM.exists_globalParityFirstNegativeBoundary_of_signOpposition"
+    },
+    {
+      "id": "L02_ALIGNMENT",
+      "status": "IMPLEMENTATION",
+      "target": "Zeta23.CCM.GeneratedGlobalFirstCrossing.selected_global_bottom_zero"
+    },
+    {
+      "id": "L03_OFFLINE_PROVENANCE",
+      "status": "IMPLEMENTATION",
+      "target": "Zeta23.ExceptionalZero.nonempty_generatedGlobalFirstCrossing_of_offLine_zero"
+    },
+    {
+      "id": "L04_WEIGHTED_TEST_AUTHORITY",
+      "status": "OPEN",
+      "target": "FirstCrossingProductionTests"
+    },
+    {
+      "id": "L05_CONCRETE_REMAINDER",
+      "status": "OPEN",
+      "target": "FirstCrossingProductionRemainder"
+    },
+    {
+      "id": "L06_FIRST_VARIATION",
+      "status": "OPEN",
+      "target": "FirstCrossingProductionFirstVariation"
+    },
+    {
+      "id": "L07_STATIONARY_RESPONSE",
+      "status": "OPEN",
+      "target": "FirstCrossingProductionResponse"
+    },
+    {
+      "id": "L08_CURVATURE_BRIDGE",
+      "status": "OPEN",
+      "target": "productionOptimizedCurvatureBridge_proved"
+    },
+    {
+      "id": "L09_STRICT_EVEN_FRONTIER",
+      "status": "OPEN",
+      "target": "GeneratedStrictEvenContact.frontier"
+    },
+    {
+      "id": "OBS060O_SATURATION_EXCLUSION",
+      "status": "OPEN",
+      "terminal": false
+    },
+    {
+      "id": "RH",
+      "status": "OPEN",
+      "terminal": true
+    }
+  ]
+}
