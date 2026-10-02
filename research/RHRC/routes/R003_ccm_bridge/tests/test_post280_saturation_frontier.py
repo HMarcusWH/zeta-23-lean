@@ -62,6 +62,51 @@ class SaturationFrontierTests(unittest.TestCase):
         self.assertTrue(np.allclose(off, off.T, atol=1e-12))
         self.assertGreater(float(np.linalg.norm(on - off)), 1e-10)
 
+    def test_q_representation_diagnostic_passes_resolved_agreement(self):
+        d = sf.q_representation_diagnostic(
+            1.0e-9,
+            1.0e-9 + 1.0e-16,
+            1.0e-15,
+            theorem_expected=True,
+        )
+        self.assertEqual(d["status"], sf.Q_STATUS_PASS)
+        self.assertTrue(d["consistent"])
+        self.assertTrue(d["resolved"])
+        self.assertLess(d["fractional_discrepancy"], 1.0e-6)
+
+    def test_q_representation_diagnostic_marks_under_resolved_row(self):
+        d = sf.q_representation_diagnostic(
+            2.0e-15,
+            2.1e-15,
+            1.0e-12,
+            theorem_expected=True,
+        )
+        self.assertEqual(d["status"], sf.Q_STATUS_UNRESOLVED)
+        self.assertIsNone(d["consistent"])
+        self.assertFalse(d["resolved"])
+
+    def test_q_representation_diagnostic_rejects_resolved_mismatch(self):
+        d = sf.q_representation_diagnostic(
+            1.0e-6,
+            1.1e-6,
+            1.0e-15,
+            theorem_expected=True,
+        )
+        self.assertEqual(d["status"], sf.Q_STATUS_MISMATCH)
+        self.assertFalse(d["consistent"])
+        self.assertTrue(d["resolved"])
+
+    def test_q_representation_diagnostic_is_not_authority_on_planted_controls(self):
+        d = sf.q_representation_diagnostic(
+            1.0,
+            -1.0,
+            0.0,
+            theorem_expected=False,
+        )
+        self.assertEqual(d["status"], sf.Q_STATUS_NOT_APPLICABLE)
+        self.assertIsNone(d["consistent"])
+        self.assertIsNone(d["resolved"])
+
     def test_source_derivative_matches_finite_difference(self):
         K = 3
         omega = 0.37
