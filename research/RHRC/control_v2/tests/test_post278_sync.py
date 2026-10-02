@@ -87,6 +87,18 @@ class Post278SyncTests(unittest.TestCase):
             "PRODUCTION_OPTIMIZED_CURVATURE_BRIDGE_AND_SATURATION_GAP_MEASUREMENT",
         )
         self.assertEqual(route["current_next_research_target"], "PRODUCTION_ARITHMETIC_SATURATION_FRONTIER")
+        self.assertEqual(
+            route["post280_contact_quotient_lane"],
+            "PROVED_MERGED_PR_280",
+        )
+        self.assertEqual(
+            route["post280_production_optimized_curvature_bridge"],
+            "OPEN_ACTIVE",
+        )
+        self.assertEqual(
+            route["post281_q_representation_integrity"],
+            "REQUIRED_CI_GATE",
+        )
 
     def test_frozen_pr274_campaign_provenance_is_not_rewritten(self):
         campaign = json.loads(
