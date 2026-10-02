@@ -39,6 +39,16 @@ The campaign reuses the post-#272 arithmetic geography:
 
 No center, q, K, or offset is moved after reading results.
 
+The historical scoped zero-side falsifiers are replayed through the same
+floating evaluator at every frozen point:
+
+- on-line planted control: \(\gamma=10,\ \delta=0\);
+- off-line planted control: \(\gamma=10,\ \delta=1/20\).
+
+These are labelled \`PLANTED_CONTROL_ONLY\`. They are local explicit-formula
+zero-side perturbations, not self-consistent alternate zeta functions, Euler
+products, or von-Mangoldt systems.
+
 ## Recorded observables
 
 For the even ground branch, when numerically simple:
@@ -61,6 +71,7 @@ For the even ground branch, when numerically simple:
 - No sample is called a contact without separate zero/stationarity certification.
 - A strict-even label is numerical only in this campaign.
 - The q=14,15,18 cases are arithmetic zero-weight controls, not prime seams.
+- Planted controls never receive theorem-authoritative canonical-Q status; their arithmetic/spectral mismatch is a falsification observable, not a CI failure.
 - A mixed or null signal is a valid green research result.
 - The independent arithmetic/spectral \(Q\) representations must agree within the frozen numerical tolerance; disagreement is CI-red.
 - Malformed scope or execution failure is CI-red.
