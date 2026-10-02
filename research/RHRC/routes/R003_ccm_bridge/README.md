@@ -52,6 +52,31 @@ RESEARCH / CONTROL FIREWALL
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#280 production saturation-frontier override
+
+PR #280 is merged theorem authority for the lifted source/contact surface,
+strict-even source/M4-to-opposite-parity-energy identity, and the abstract
+optimized-curvature remainder algebra.
+
+PR #281 moves the active R003 implementation to the exact production arithmetic
+frontier.  `FirstCrossingProductionArithmetic.lean` reuses the
+theorem-authoritative complete physical pole/archimedean/von-Mangoldt RHS and
+identifies its quadratic-normal source specialization with the canonical source
+moment.  `FirstCrossingProductionSaturation.lean` names the production
+saturation gap but deliberately keeps
+`ProductionOptimizedCurvatureBridge` as an OPEN interface: no aperture
+derivative or admissibility hypothesis is silently assumed.
+
+The companion frozen experiment is
+`post280_saturation_frontier.py`, governed by
+`POST280_PRODUCTION_SATURATION_FRONTIER.md`.  It measures near-contact proxies
+only, reuses the post-#272 seam/control geography, and treats agreement of the
+independent arithmetic/spectral (Q) representations as an execution-integrity
+gate.  Mixed or null saturation-gap signs are valid green research results.
+
+Tie, odd-strict, first-zero and inherited-zero branches remain separately
+classified.  RH remains OPEN.
+
 ## Post-#279 active route
 
 The active R003 route is now the lifted first-contact source quotient. PR #279
