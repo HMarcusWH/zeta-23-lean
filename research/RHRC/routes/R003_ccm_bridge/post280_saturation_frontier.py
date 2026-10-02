@@ -37,9 +37,83 @@ import sympy as sp
 
 from canonical_source_numeric import canonical_source_matrix_L
 
-SCHEMA = "POST280_PRODUCTION_SATURATION_FRONTIER_v1"
+SCHEMA = "POST280_PRODUCTION_SATURATION_FRONTIER_v1_1"
 CLAIM_CAP = "EXPERIMENTAL_SIGNAL_ONLY"
-Q_REPRESENTATION_REL_TOL = 1e-8
+
+# Floating Q-representation integrity policy.
+#
+# The previous implementation divided |Q_arith-Q_spectral| by
+# 1+|Q_arith|+|Q_spectral| and called the result a relative error.  Near the
+# frontier Q can be tiny, so that quantity is effectively an absolute residual
+# and can hide large fractional disagreement.  Use an explicit mixed tolerance
+# instead and fail closed by classifying under-resolved rows separately.
+Q_REPRESENTATION_ATOL = 5e-15
+Q_REPRESENTATION_RTOL = 5e-7
+Q_ARITHMETIC_ERROR_MULTIPLIER = 5.0
+Q_NUMERICAL_RESOLUTION_FACTOR = 20.0
+
+Q_STATUS_PASS = "Q_REPRESENTATION_PASS"
+Q_STATUS_UNRESOLVED = "Q_NUMERICALLY_UNRESOLVED"
+Q_STATUS_MISMATCH = "Q_REPRESENTATION_MISMATCH"
+Q_STATUS_NOT_APPLICABLE = "Q_REPRESENTATION_NOT_APPLICABLE"
+
+
+def q_representation_diagnostic(
+    q_arith: float,
+    q_spectral: float,
+    q_arith_error_estimate: float,
+    *,
+    theorem_expected: bool,
+) -> dict:
+    """Classify the floating arithmetic/spectral Q comparison.
+
+    This is an execution-integrity diagnostic only; the exact equality is Lean
+    theorem authority on the canonical zero-mode branch.  The quadrature error
+    is not a rigorous interval bound, so rows too small relative to that error
+    budget are marked numerically unresolved rather than passed.
+    """
+    abs_error = abs(q_arith - q_spectral)
+    scale = max(abs(q_arith), abs(q_spectral))
+    fractional_discrepancy = abs_error / scale if scale > 0.0 else None
+    arith_error = max(0.0, float(q_arith_error_estimate))
+    error_budget = max(
+        Q_REPRESENTATION_ATOL,
+        Q_ARITHMETIC_ERROR_MULTIPLIER * arith_error,
+    )
+    resolution_threshold = Q_NUMERICAL_RESOLUTION_FACTOR * error_budget
+    mixed_tolerance = (
+        Q_REPRESENTATION_ATOL
+        + Q_REPRESENTATION_RTOL * scale
+        + Q_ARITHMETIC_ERROR_MULTIPLIER * arith_error
+    )
+
+    if not theorem_expected:
+        status = Q_STATUS_NOT_APPLICABLE
+        consistent = None
+        resolved = None
+    elif scale <= resolution_threshold:
+        status = Q_STATUS_UNRESOLVED
+        consistent = None
+        resolved = False
+    elif abs_error <= mixed_tolerance:
+        status = Q_STATUS_PASS
+        consistent = True
+        resolved = True
+    else:
+        status = Q_STATUS_MISMATCH
+        consistent = False
+        resolved = True
+
+    return {
+        "status": status,
+        "consistent": consistent,
+        "resolved": resolved,
+        "abs_error": abs_error,
+        "fractional_discrepancy": fractional_discrepancy,
+        "mixed_tolerance": mixed_tolerance,
+        "resolution_threshold": resolution_threshold,
+        "arithmetic_error_estimate": arith_error,
+    }
 
 
 def centered(K: int) -> np.ndarray:
@@ -311,10 +385,26 @@ def evaluate(
 
     strict_even = bool(lam < odd_bottom)
     simple_even = bool(even_gap > 1e-9)
-    source_identity_error = abs(q_arith - q_spectral)
-    source_identity_scale = 1.0 + abs(q_arith) + abs(q_spectral)
-    source_identity_relative_error = source_identity_error / source_identity_scale
     theorem_q_identity_expected = provenance == "UNCONDITIONAL_CANONICAL"
+    q_arith_error_estimate = abs(m4) * abs(S_err)
+    q_diag = q_representation_diagnostic(
+        q_arith,
+        q_spectral,
+        q_arith_error_estimate,
+        theorem_expected=theorem_q_identity_expected,
+    )
+
+    if strict_even and simple_even:
+        if q_diag["status"] == Q_STATUS_PASS:
+            row_classification = "STRICT_EVEN_SIMPLE_NEAR_CONTACT_PROXY"
+        elif q_diag["status"] == Q_STATUS_UNRESOLVED:
+            row_classification = "STRICT_EVEN_SIMPLE_Q_NUMERICALLY_UNRESOLVED"
+        elif q_diag["status"] == Q_STATUS_MISMATCH:
+            row_classification = "STRICT_EVEN_SIMPLE_Q_REPRESENTATION_MISMATCH"
+        else:
+            row_classification = "STRICT_EVEN_SIMPLE_CONTROL_PROXY"
+    else:
+        row_classification = "NOT_STRICT_EVEN_FRONTIER_ELIGIBLE"
 
     return {
         "provenance": provenance,
@@ -322,11 +412,7 @@ def evaluate(
         "L": L,
         "K": K,
         "cutoff_Q": int(math.floor(math.exp(L))),
-        "classification": (
-            "STRICT_EVEN_SIMPLE_NEAR_CONTACT_PROXY"
-            if strict_even and simple_even
-            else "NOT_STRICT_EVEN_FRONTIER_ELIGIBLE"
-        ),
+        "classification": row_classification,
         "contact_claimed": False,
         "lambda_even": lam,
         "lambda_odd": odd_bottom,
@@ -341,13 +427,14 @@ def evaluate(
         "source_moment_integral_error_estimate": S_err,
         "Q_arithmetic": q_arith,
         "Q_spectral_reduced": q_spectral,
-        "Q_representation_abs_error": source_identity_error,
-        "Q_representation_relative_error": source_identity_relative_error,
-        "Q_representation_consistent": (
-            source_identity_relative_error <= Q_REPRESENTATION_REL_TOL
-            if theorem_q_identity_expected
-            else None
-        ),
+        "Q_representation_abs_error": q_diag["abs_error"],
+        "Q_representation_fractional_discrepancy": q_diag["fractional_discrepancy"],
+        "Q_representation_mixed_tolerance": q_diag["mixed_tolerance"],
+        "Q_representation_resolution_threshold": q_diag["resolution_threshold"],
+        "Q_arithmetic_error_estimate": q_diag["arithmetic_error_estimate"],
+        "Q_representation_status": q_diag["status"],
+        "Q_representation_consistent": q_diag["consistent"],
+        "Q_numerically_resolved": q_diag["resolved"],
         "Q_representation_theorem_expected": theorem_q_identity_expected,
         "production_arithmetic_remainder": arithmetic_remainder,
         "production_remainder_integral_error_estimate": remainder_err,
@@ -359,6 +446,7 @@ def evaluate(
             "This is floating discovery output, not interval certification.",
             "PLANTED_CONTROL_ONLY rows are local zero-side falsifiers, not alternate zeta/Euler products.",
             "No sampled point is asserted to be an actual first contact.",
+            "Canonical Q rows below the floating resolution threshold are Q_NUMERICALLY_UNRESOLVED, not passed.",
             "Delta_sat is a near-contact proxy unless zero energy and stationarity are independently established.",
             "No finite observation is theorem authority or an RH claim."
         ]
@@ -443,22 +531,34 @@ def run(fixture: dict) -> dict:
     canonical_rows = [
         r for r in rows if r["provenance"] == "UNCONDITIONAL_CANONICAL"
     ]
-    inconsistent = [
-        r for r in canonical_rows if not r["Q_representation_consistent"]
+    mismatches = [
+        r for r in canonical_rows
+        if r["Q_representation_status"] == Q_STATUS_MISMATCH
     ]
-    if inconsistent:
+    if mismatches:
         bad = [
             {
                 "q": r["q"],
                 "K": r["K"],
                 "offset_power": r["offset_power"],
-                "relative_error": r["Q_representation_relative_error"],
+                "abs_error": r["Q_representation_abs_error"],
+                "fractional_discrepancy": r["Q_representation_fractional_discrepancy"],
+                "mixed_tolerance": r["Q_representation_mixed_tolerance"],
             }
-            for r in inconsistent
+            for r in mismatches
         ]
         raise AssertionError(f"Q representation disagreement: {bad}")
-    eligible = [
+
+    q_resolved = [
         r for r in canonical_rows
+        if r["Q_representation_status"] == Q_STATUS_PASS
+    ]
+    q_unresolved = [
+        r for r in canonical_rows
+        if r["Q_representation_status"] == Q_STATUS_UNRESOLVED
+    ]
+    eligible = [
+        r for r in q_resolved
         if r["strict_even_numeric"] and r["simple_even_numeric"]
     ]
     planted_rows = [r for r in rows if r["provenance"] == "PLANTED_CONTROL_ONLY"]
@@ -482,9 +582,18 @@ def run(fixture: dict) -> dict:
             "max_Q_representation_abs_error": max(
                 (r["Q_representation_abs_error"] for r in canonical_rows), default=None
             ),
-            "max_Q_representation_relative_error": max(
-                (r["Q_representation_relative_error"] for r in canonical_rows), default=None
+            "max_Q_representation_fractional_discrepancy_resolved": max(
+                (
+                    r["Q_representation_fractional_discrepancy"]
+                    for r in q_resolved
+                    if r["Q_representation_fractional_discrepancy"] is not None
+                ),
+                default=None,
             ),
+            "Q_representation_resolved_count": len(q_resolved),
+            "Q_representation_unresolved_count": len(q_unresolved),
+            "Q_representation_mismatch_count": 0,
+            "Q_representation_integrity_pass": True,
             "Q_representation_consistency_pass": True,
             "delta_sat_signs_on_eligible": [
                 1 if r["delta_sat_proxy"] > 0 else -1 if r["delta_sat_proxy"] < 0 else 0
