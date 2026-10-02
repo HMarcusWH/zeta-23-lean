@@ -194,6 +194,34 @@ theorem GeneratedGlobalFirstCrossing.selectedParity_nonnegative
   rw [← g.same_Lstar] at hterminal hanti
   linarith
 
+/-- The whole global nonnegative prefix also descends to the selected cutoff
+for either parity.  This is the fixed-vector left-side input used by the
+first-variation theorem. -/
+theorem GeneratedGlobalFirstCrossing.selectedParity_prefix_nonnegative
+    (g : GeneratedGlobalFirstCrossing)
+    (p : ReversalParity)
+    {L : ℝ}
+    (hsmall : g.shell.Lsmall ≤ L)
+    (hstar : L ≤ g.shell.Lstar) :
+    0 ≤ parityRayleighBottom p L (g.shell.k + 1) := by
+  have hLpos : 0 < L := lt_of_lt_of_le g.shell.Lsmall_pos hsmall
+  have hterminal :
+      0 ≤ parityRayleighBottom p L (g.global.N + 1) := by
+    have h :=
+      g.global.prefix_eachParity_nonnegative p
+        (by simpa [g.same_Lsmall] using hsmall)
+        (by simpa [g.same_Lstar] using hstar)
+    simpa [paritySuccessorGround] using h
+  have hkN : g.shell.k ≤ g.global.N := by
+    rw [← g.same_N]
+    exact g.shell.k_le_N
+  have hk1 : 1 ≤ g.shell.k :=
+    le_trans g.shell.one_le_n g.shell.n_le_k
+  have hanti :=
+    parityRayleighBottom_succ_antitone_of_le
+      p hLpos hk1 hkN
+  linarith
+
 /-- At the selected cutoff the global bottom is exactly zero, not merely the
 selected-parity bottom. -/
 theorem GeneratedGlobalFirstCrossing.selected_global_bottom_zero
