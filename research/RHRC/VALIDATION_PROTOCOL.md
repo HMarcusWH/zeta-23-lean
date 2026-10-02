@@ -58,6 +58,38 @@ RESEARCH / CONTROL FIREWALL
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#280 / PR #281 production-saturation validation rule
+
+The post-#280 frontier has two authority layers and they must not be conflated.
+
+**Formal validity gates**
+
+1. `FirstCrossingProductionArithmetic.lean` must compile and pass the axiom
+   audit on the exact PR head.
+2. `FirstCrossingProductionSaturation.lean` must compile and pass the axiom
+   audit on the exact PR head.
+3. The closure proof-escape scope must include both modules.
+4. `ProductionOptimizedCurvatureBridge` is an OPEN proposition/interface.
+   Compilation of its definition or theorems conditional on it does not prove
+   the actual aperture-derivative/admissibility bridge.
+
+**Research-producing gates**
+
+1. the frozen post-#280 fixture must match the preregistered q/K/offset schedule;
+2. the exact rational source/remainder replay must pass;
+3. the independent arithmetic and spectral representations of (Q) must agree
+   within the declared numerical tolerance;
+4. the resulting saturation-gap signs may be positive, negative, mixed or zero
+   without making CI red;
+5. no floating row may be called an actual contact without separate
+   zero/stationarity certification.
+
+A green measurement workflow establishes faithful execution on its frozen
+scope.  It does not update theorem authority or the latest independent research
+evidence before a separate post-green harvest.
+
+RH remains OPEN.
+
 ## Post-#278 / PR #279 first-crossing validation rule
 
 The PR #279 first-crossing lane is theorem-bearing only to the extent that each
