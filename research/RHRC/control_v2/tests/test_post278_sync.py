@@ -6,33 +6,33 @@ RHRC = Path(__file__).resolve().parents[2]
 
 
 class Post278SyncTests(unittest.TestCase):
-    def test_post278_history_survives_post280_authority(self):
+    def test_post278_history_survives_post281_authority(self):
         state = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
         theorem = state["merged_theorem_anchor"]
-        self.assertEqual(theorem["pr"], 280)
+        self.assertEqual(theorem["pr"], 281)
         self.assertEqual(
             theorem["validated_head"],
-            "3e897765c788c0cbb2b57fa75da62ef0e1766dca",
+            "d4c6d0804bc642cc6e93dba811cd890d474eb0d0",
         )
         self.assertEqual(
             theorem["merge_commit"],
-            "752e59f7147eec183e649ebe1e9af4d0329dbe73",
+            "0c22ae4101d7ad3e0b1a81029fff1472c52a5750",
         )
         self.assertEqual(
             theorem["tree"],
-            "807c2cdec6c6fa09cb0ba65915112c9c2dfd19ba",
+            "f729b05e6fee9f6fbeb9d18a65e26742086244f8",
         )
         candidate = state["candidate_branch"]
-        self.assertEqual(candidate["pr"], 281)
+        self.assertEqual(candidate["pr"], 282)
         self.assertEqual(
             candidate["branch"],
-            "research/post280-production-saturation-frontier",
+            "research/post281-generated-production-contact",
         )
         self.assertEqual(
             candidate["status"],
-            "POST280_PRODUCTION_SATURATION_FRONTIER_CANDIDATE",
+            "GENERATED_PRODUCTION_CONTACT_FRONTIER_CANDIDATE",
         )
         self.assertEqual(candidate["theorem_validation"], "CI_PENDING")
         self.assertEqual(state["merged_control_anchor"]["pr"], 117)
@@ -84,20 +84,20 @@ class Post278SyncTests(unittest.TestCase):
         )
         self.assertEqual(
             route["current_active_subobligation"],
-            "PRODUCTION_OPTIMIZED_CURVATURE_BRIDGE_AND_SATURATION_GAP_MEASUREMENT",
+            "GENERATED_PRODUCTION_DERIVATIVE_ADMISSIBILITY_AND_CURVATURE_IDENTITY",
         )
-        self.assertEqual(route["current_next_research_target"], "PRODUCTION_ARITHMETIC_SATURATION_FRONTIER")
+        self.assertEqual(route["current_next_research_target"], "GENERATED_PRODUCTION_CONTACT_ARITHMETIC_BRIDGE")
         self.assertEqual(
             route["post280_contact_quotient_lane"],
             "PROVED_MERGED_PR_280",
         )
         self.assertEqual(
             route["post280_production_optimized_curvature_bridge"],
-            "OPEN_ACTIVE",
+            "OPEN_ACTIVE_AFTER_PR_281",
         )
         self.assertEqual(
             route["post281_q_representation_integrity"],
-            "REQUIRED_CI_GATE",
+            "MERGED_GREEN_FAIL_CLOSED_PR_281",
         )
 
     def test_frozen_pr274_campaign_provenance_is_not_rewritten(self):
