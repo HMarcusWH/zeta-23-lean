@@ -96,7 +96,45 @@ theorem productionStrictEvenSourceValue_eq_pairing
   rw [← explicitCanonicalSourceMoment_eq_productionArithmeticComplexValue
     hL K hK v]
 
+/-- At an exact even zero eigenmode, the theorem-authoritative production
+pole/archimedean/von-Mangoldt source value is exactly the opposite-parity
+energy of the centered-index image. -/
+theorem productionStrictEvenSourceValue_eq_oddEnergy_of_even_zero_eigenmode
+    {L : ℝ} (hL : 0 < L)
+    (K : ℕ) (hK : 2 ≤ K)
+    (v : euclideanEvenBoundaryFlatSubspace K)
+    (hveig : evenCompressedCanonical L K v = 0) :
+    productionStrictEvenSourceValue L K v =
+      Complex.re
+        (inner ℂ
+          (oddCompressedCanonical L K
+            (euclideanEvenToOddIndexLinearMap K v))
+          (euclideanEvenToOddIndexLinearMap K v)) := by
+  rw [productionStrictEvenSourceValue_eq_pairing hL K (by omega) v]
+  exact
+    strictEvenSourceMomentPairing_eq_oddEnergy_of_even_zero_eigenmode
+      hL K hK v hveig
+
+/-- In the strict-even zero-ground branch, the exact production source value is
+strictly positive.  This is a production-arithmetic statement about the source
+channel, not a sign theorem for the unresolved remainder. -/
+theorem productionStrictEvenSourceValue_pos_of_even_zero_ground_strict
+    {L : ℝ} (hL : 0 < L)
+    (K : ℕ) (hK : 2 ≤ K)
+    (v : euclideanEvenBoundaryFlatSubspace K)
+    (hvne : v ≠ 0)
+    (hground : parityRayleighBottom .even L K = 0)
+    (hveig : evenCompressedCanonical L K v = 0)
+    (hodd : 0 < parityRayleighBottom .odd L K) :
+    0 < productionStrictEvenSourceValue L K v := by
+  rw [productionStrictEvenSourceValue_eq_pairing hL K (by omega) v]
+  exact
+    strictEvenSourceMomentPairing_pos_of_even_zero_ground_strict
+      hL K hK v hvne hground hveig hodd
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.explicitCanonicalSourceMoment_eq_productionArithmeticComplexValue
 #print axioms Zeta23.CCM.productionStrictEvenSourceValue_eq_pairing
+#print axioms Zeta23.CCM.productionStrictEvenSourceValue_eq_oddEnergy_of_even_zero_eigenmode
+#print axioms Zeta23.CCM.productionStrictEvenSourceValue_pos_of_even_zero_ground_strict
