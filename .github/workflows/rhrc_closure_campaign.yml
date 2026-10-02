@@ -286,14 +286,14 @@ jobs:
             Zeta23/CCM/FirstCrossingOptimizedCurvatureAlgebra.lean \
             Zeta23/CCM/FirstCrossingProductionArithmetic.lean \
             Zeta23/CCM/FirstCrossingProductionSaturation.lean \
-            Zeta23/CCM/GlobalParityFirstNegativeBoundary.lean \\
-            Zeta23/CCM/FirstCrossingGlobalAlignment.lean \\
-            Zeta23/CCM/FirstCrossingProductionTests.lean \\
-            Zeta23/CCM/FirstCrossingProductionRemainder.lean \\
-            Zeta23/CCM/FirstCrossingProductionFirstVariation.lean \\
-            Zeta23/CCM/FirstCrossingProductionResponse.lean \\
-            Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean \\
-            Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean \\
+            Zeta23/CCM/GlobalParityFirstNegativeBoundary.lean \
+            Zeta23/CCM/FirstCrossingGlobalAlignment.lean \
+            Zeta23/CCM/FirstCrossingProductionTests.lean \
+            Zeta23/CCM/FirstCrossingProductionRemainder.lean \
+            Zeta23/CCM/FirstCrossingProductionFirstVariation.lean \
+            Zeta23/CCM/FirstCrossingProductionResponse.lean \
+            Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean \
+            Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean \
             Zeta23/ExceptionalZero/GlobalParityFirstNegativeBoundary.lean \
             Zeta23/CCM/CanonicalApertureLocation.lean \
             Zeta23/CCM/CanonicalInteriorFirstCrossingBarrier.lean \
