@@ -1,0 +1,49 @@
+name: RHRC post-281 generated contact frontier
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'Zeta23/CCM/GlobalParityFirstNegativeBoundary.lean'
+      - 'Zeta23/CCM/FirstCrossingGlobalAlignment.lean'
+      - 'Zeta23/CCM/FirstCrossingProduction*.lean'
+      - 'Zeta23/ExceptionalZero/GlobalParityFirstNegativeBoundary.lean'
+      - 'research/RHRC/routes/R003_ccm_bridge/*generated_contact*'
+      - 'research/RHRC/routes/R003_ccm_bridge/canonical_contact_frontier_arb.py'
+      - 'research/RHRC/routes/R003_ccm_bridge/POST281_*'
+      - 'research/RHRC/routes/R003_ccm_bridge/fixtures/post281_generated_contact_frontier_protocol_v1.json'
+      - 'research/RHRC/routes/R003_ccm_bridge/tests/test_post281_generated_contact_frontier.py'
+      - '.github/workflows/rhrc_post281_generated_contact_frontier.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rhrc-post281-generated-contact-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lean-generated-contact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build generated-contact geometry
+        run: |
+          lake build Zeta23.CCM.GlobalParityFirstNegativeBoundary
+          lake build Zeta23.CCM.FirstCrossingGlobalAlignment
+          lake build Zeta23.ExceptionalZero.GlobalParityFirstNegativeBoundary
+      - name: Audit generated-contact geometry axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/GlobalParityFirstNegativeBoundary.lean \
+            Zeta23/CCM/FirstCrossingGlobalAlignment.lean \
+            Zeta23/ExceptionalZero/GlobalParityFirstNegativeBoundary.lean
