@@ -25,6 +25,13 @@ def _mid_matrix(A: arb_mat) -> np.ndarray:
     return np.array([[float(A[i,j].mid()) for j in range(A.ncols())] for i in range(A.nrows())], dtype=float)
 
 
+def _ball_record_full(x: arb) -> dict:
+    rec = _rec(x)
+    rec["lower"] = float(x.lower())
+    rec["upper"] = float(x.upper())
+    return rec
+
+
 def _arb_col(v: np.ndarray) -> arb_mat:
     return arb_mat([[arb(repr(float(x)))] for x in np.asarray(v, dtype=float)])
 
@@ -70,8 +77,8 @@ def certify_simple_ground_jet(L: arb, K: int, Q: int, parity: str, prec: int) ->
         rec["eigensolver_error"] = str(exc)
         return rec
     rec.update({
-        "lambda_min": _rec(eigs[0]),
-        "lambda_2": _rec(eigs[1]) if len(eigs)>1 else None,
+        "lambda_min": _ball_record_full(eigs[0]),
+        "lambda_2": _ball_record_full(eigs[1]) if len(eigs)>1 else None,
     })
     if H.nrows() == 1:
         v = np.ones(1)
