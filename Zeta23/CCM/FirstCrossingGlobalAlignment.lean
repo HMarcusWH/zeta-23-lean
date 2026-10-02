@@ -40,7 +40,7 @@ theorem GlobalParityFirstNegativeBoundary.exists_responsibleParity
       obtain ⟨δ, hδpos, hδ⟩ := heven
       refine ⟨δ, hδpos, ?_⟩
       intro L hLlo hLhi
-      exact le_of_not_gt (hδ L hLlo hLhi)
+      exact hδ L hLlo hLhi
     obtain ⟨δe, hδe, hevenNonneg⟩ := hevenStable
     refine ⟨.odd, ?_⟩
     intro ε hε
@@ -55,7 +55,10 @@ theorem GlobalParityFirstNegativeBoundary.exists_responsibleParity
       unfold globalParitySuccessorBottom at hglobalNeg
       rw [min_lt_iff] at hglobalNeg
       rcases hglobalNeg with h | h
-      · linarith
+      · have hevenRay :
+            0 ≤ parityRayleighBottom .even L (c.N + 1) := by
+          simpa [paritySuccessorGround] using hevenL
+        linarith
       · exact h
     exact ⟨L, hLlo, by linarith, hoddL⟩
 
@@ -236,12 +239,16 @@ theorem GeneratedGlobalFirstCrossing.selected_global_bottom_zero
   unfold globalParitySuccessorBottom
   cases hp : g.shell.p with
   | even =>
-      change parityRayleighBottom .even g.shell.Lstar (g.shell.k + 1) = 0 at hsel
-      rw [hsel]
+      have hselE :
+          parityRayleighBottom .even g.shell.Lstar (g.shell.k + 1) = 0 := by
+        simpa [hp] using hsel
+      rw [hselE]
       simp [ho]
   | odd =>
-      change parityRayleighBottom .odd g.shell.Lstar (g.shell.k + 1) = 0 at hsel
-      rw [hsel]
+      have hselO :
+          parityRayleighBottom .odd g.shell.Lstar (g.shell.k + 1) = 0 := by
+        simpa [hp] using hsel
+      rw [hselO]
       simp [he]
 
 /-- Exact parity trichotomy at the selected cutoff. -/
