@@ -29,7 +29,7 @@
     },
     {
       "id": "L06_FIRST_VARIATION",
-      "status": "OPEN",
+      "status": "IMPLEMENTATION_CI_PENDING",
       "target": "FirstCrossingProductionFirstVariation"
     },
     {

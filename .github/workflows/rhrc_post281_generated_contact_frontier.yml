@@ -64,11 +64,13 @@ jobs:
         run: |
           lake build Zeta23.CCM.FirstCrossingProductionTests
           lake build Zeta23.CCM.FirstCrossingProductionRemainder
+          lake build Zeta23.CCM.FirstCrossingProductionFirstVariation
       - name: Audit concrete production contact axioms
         run: |
           python research/RHRC/tools/axiom_audit.py \
             Zeta23/CCM/FirstCrossingProductionTests.lean \
-            Zeta23/CCM/FirstCrossingProductionRemainder.lean
+            Zeta23/CCM/FirstCrossingProductionRemainder.lean \
+            Zeta23/CCM/FirstCrossingProductionFirstVariation.lean
 
   research-generated-contact:
     runs-on: ubuntu-latest
