@@ -38,3 +38,16 @@ sensitive Delta.
 Planted controls are local falsifiers, not alternate zeta functions or Euler
 products. Generic matrix controls do not inherit canonical explicit-formula
 authority.
+
+## Interventions and generic controls
+
+For each frozen selected canonical location the discovery artifact also evaluates the inherited #281 floating source/remainder/Delta proxy. The current-Q experiment is split into two non-interchangeable records:
+
+- frozen-state ablation: hold L,K and the original selected vector fixed while removing only the current-Q prime atom;
+- reoptimized ablation: remove that atom and recompute the parity grounds.
+
+Exact zero-von-Mangoldt controls must be no-ops. These are floating research diagnostics, not theorem authority.
+
+Generic transverse, stationary-cubic, positive-quartic-touch, parity-tie, odd-reflected and smallest-complement controls are emitted under GENERIC_SYNTHETIC provenance. They do not inherit the production explicit formula.
+
+The Arb layer currently certifies spectral/first-derivative sign information and local sign brackets. Q, the physical remainder, stationary response, optimized curvature, Delta and rho are not promoted to rigorous generated-contact enclosures until their exact formal bridge and independent interval implementations exist.

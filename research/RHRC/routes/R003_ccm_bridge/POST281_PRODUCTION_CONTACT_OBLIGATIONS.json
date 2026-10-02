@@ -4,37 +4,37 @@
   "obligations": [
     {
       "id": "L01_GLOBAL_BOUNDARY",
-      "status": "IMPLEMENTATION",
+      "status": "CANDIDATE_CI_PENDING",
       "target": "Zeta23.CCM.exists_globalParityFirstNegativeBoundary_of_signOpposition"
     },
     {
       "id": "L02_ALIGNMENT",
-      "status": "IMPLEMENTATION",
+      "status": "CANDIDATE_CI_PENDING",
       "target": "Zeta23.CCM.GeneratedGlobalFirstCrossing.selected_global_bottom_zero"
     },
     {
       "id": "L03_OFFLINE_PROVENANCE",
-      "status": "IMPLEMENTATION",
+      "status": "CANDIDATE_CI_PENDING",
       "target": "Zeta23.ExceptionalZero.nonempty_generatedGlobalFirstCrossing_of_offLine_zero"
     },
     {
       "id": "L04_WEIGHTED_TEST_AUTHORITY",
-      "status": "OPEN",
+      "status": "PARTIAL_INTERFACE_IMPLEMENTED__WEIGHTED_AUTHORITY_OPEN",
       "target": "FirstCrossingProductionTests"
     },
     {
       "id": "L05_CONCRETE_REMAINDER",
-      "status": "OPEN",
+      "status": "CONCRETE_REMAINDER_DEFINED__ADMISSIBILITY_INTRINSIC_IDENTIFICATION_OPEN",
       "target": "FirstCrossingProductionRemainder"
     },
     {
       "id": "L06_FIRST_VARIATION",
-      "status": "IMPLEMENTATION_CI_PENDING",
+      "status": "DERIVATIVE_OPERATORS_DEFINED__REALIZATION_AND_C2_GLUING_OPEN",
       "target": "FirstCrossingProductionFirstVariation"
     },
     {
       "id": "L07_STATIONARY_RESPONSE",
-      "status": "IMPLEMENTATION_CI_PENDING",
+      "status": "CANDIDATE_CI_PENDING",
       "target": "FirstCrossingProductionResponse"
     },
     {
@@ -44,7 +44,7 @@
     },
     {
       "id": "L09_STRICT_EVEN_FRONTIER",
-      "status": "IMPLEMENTATION_CI_PENDING__SATURATION_HYPOTHESES_OPEN",
+      "status": "CONDITIONAL_FRONTIER_IMPLEMENTED__BRIDGE_AND_SATURATION_OPEN",
       "target": "GeneratedStrictEvenContact.frontier"
     },
     {
@@ -57,5 +57,10 @@
       "status": "OPEN",
       "terminal": true
     }
+  ],
+  "notes": [
+    "Candidate statuses are not theorem authority until exact-head Lean/axiom/proof-escape gates pass.",
+    "The concrete curvature-arithmetic identity is still OPEN; defining its proposition is not a proof.",
+    "RH remains OPEN."
   ]
 }

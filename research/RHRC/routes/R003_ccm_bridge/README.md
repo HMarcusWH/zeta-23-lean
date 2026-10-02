@@ -52,6 +52,14 @@ RESEARCH / CONTROL FIREWALL
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#281 generated production contact candidate
+
+PR #281 is merged theorem authority for the exact production source value and conditional saturation consequences. Draft PR #282 is the active candidate for constructing the generated global first-negative boundary, aligning the selected parity/cutoff, defining aperture-variation/response/curvature objects, and running the corresponding bounded contact-frontier campaign.
+
+The genuine mathematical frontier remains explicit: weighted derivative/admissibility realization, `ProductionContactCurvatureArithmeticIdentity`, stationary outgoing-contact saturation necessity and the arithmetic exclusion are OPEN until exact proofs compile and pass the authority gates. The broad/Arb campaign is EXPERIMENTAL_SIGNAL_ONLY and cannot promote those obligations.
+
+
+
 ## Post-#280 production saturation-frontier override
 
 PR #280 is merged theorem authority for the lifted source/contact surface,
