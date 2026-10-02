@@ -2,20 +2,70 @@
   "schema_version": "POST280_PRODUCTION_SATURATION_FRONTIER_PROTOCOL_v1",
   "claim_cap": "EXPERIMENTAL_SIGNAL_ONLY",
   "adaptive_search": false,
-  "offset_powers": [10, 12],
+  "offset_powers": [
+    8,
+    10,
+    12
+  ],
   "cases": [
-    {"q": 13, "K": 3, "kind": "VON_MANGOLDT_SEAM"},
-    {"q": 16, "K": 3, "kind": "VON_MANGOLDT_SEAM"},
-    {"q": 17, "K": 3, "kind": "VON_MANGOLDT_SEAM"},
-    {"q": 19, "K": 3, "kind": "VON_MANGOLDT_SEAM"},
-    {"q": 14, "K": 3, "kind": "ZERO_VON_MANGOLDT_CONTROL"},
-    {"q": 15, "K": 3, "kind": "ZERO_VON_MANGOLDT_CONTROL"},
-    {"q": 18, "K": 3, "kind": "ZERO_VON_MANGOLDT_CONTROL"},
-    {"q": 16, "K": 4, "kind": "VON_MANGOLDT_REPLICATION"},
-    {"q": 17, "K": 4, "kind": "VON_MANGOLDT_REPLICATION"}
+    {
+      "q": 13,
+      "K": 3,
+      "kind": "VON_MANGOLDT_SEAM"
+    },
+    {
+      "q": 16,
+      "K": 3,
+      "kind": "VON_MANGOLDT_SEAM"
+    },
+    {
+      "q": 17,
+      "K": 3,
+      "kind": "VON_MANGOLDT_SEAM"
+    },
+    {
+      "q": 19,
+      "K": 3,
+      "kind": "VON_MANGOLDT_SEAM"
+    },
+    {
+      "q": 14,
+      "K": 3,
+      "kind": "ZERO_VON_MANGOLDT_CONTROL"
+    },
+    {
+      "q": 15,
+      "K": 3,
+      "kind": "ZERO_VON_MANGOLDT_CONTROL"
+    },
+    {
+      "q": 18,
+      "K": 3,
+      "kind": "ZERO_VON_MANGOLDT_CONTROL"
+    },
+    {
+      "q": 16,
+      "K": 4,
+      "kind": "VON_MANGOLDT_REPLICATION"
+    },
+    {
+      "q": 17,
+      "K": 4,
+      "kind": "VON_MANGOLDT_REPLICATION"
+    },
+    {
+      "q": 16,
+      "K": 6,
+      "kind": "VON_MANGOLDT_REPLICATION"
+    },
+    {
+      "q": 17,
+      "K": 6,
+      "kind": "VON_MANGOLDT_REPLICATION"
+    }
   ],
   "notes": [
-    "The campaign reuses the post-#272 seam/control geography but measures the post-#280 saturation-frontier observables.",
+    "The campaign reuses the complete post-#272 seam/control geography but measures the post-#280 saturation-frontier observables.",
     "All samples are strictly to the right of log(q); no seam value jump is claimed.",
     "No sampled point is declared an actual first contact.",
     "Ground-vector observables remain floating discovery data; multiplicity and sign claims require separate certification."
