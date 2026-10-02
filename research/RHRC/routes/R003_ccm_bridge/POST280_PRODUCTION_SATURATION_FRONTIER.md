@@ -61,7 +61,7 @@ For the even ground branch, when numerically simple:
 - optimized-curvature finite-difference proxy;
 - \(M_4\);
 - exact-production source moment evaluated by the pole/archimedean/von-Mangoldt functional;
-- arithmetic and spectral representations of \(Q\);
+- arithmetic and spectral representations of \(Q\), with an explicit floating resolution classification;
 - the handoff remainder \(\mathcal A_L[R]\);
 - the saturation-gap proxy \(\Delta_{\rm sat}\).
 
@@ -73,6 +73,9 @@ For the even ground branch, when numerically simple:
 - The q=14,15,18 cases are arithmetic zero-weight controls, not prime seams.
 - Planted controls never receive theorem-authoritative canonical-Q status; their arithmetic/spectral mismatch is a falsification observable, not a CI failure.
 - A mixed or null signal is a valid green research result.
-- The independent arithmetic/spectral \(Q\) representations must agree within the frozen numerical tolerance; disagreement is CI-red.
+- The independent arithmetic/spectral \(Q\) representations use a mixed absolute/relative tolerance plus a floating resolution floor derived from the source quadrature error estimate.
+- Canonical rows below that resolution floor are labelled `Q_NUMERICALLY_UNRESOLVED`; they are not counted as representation passes and are excluded from the strict-even saturation-sign summary.
+- A resolved canonical row whose arithmetic/spectral \(Q\) values disagree beyond the mixed tolerance is CI-red.
+- The quadrature error estimate is a floating diagnostic, not an interval certificate; Arb certification remains a downstream requirement.
 - Malformed scope or execution failure is CI-red.
 - RH remains OPEN.
