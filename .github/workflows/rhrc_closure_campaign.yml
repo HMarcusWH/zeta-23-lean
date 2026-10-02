@@ -246,7 +246,7 @@ jobs:
           lake build Zeta23.CCM.FirstCrossingSourceCertificate
           lake build Zeta23.CCM.FirstCrossingSourceQuotient
           lake build Zeta23.CCM.FirstCrossingStrictEvenSourceEnergy
-          lake build Zeta23.CCM.FirstCrossingOptimizedCurvatureAlgebra
+          lake build Zeta23.CCM.FirstCrossingOptimizedCurvatureAlgebra\n          lake build Zeta23.CCM.FirstCrossingProductionArithmetic\n          lake build Zeta23.CCM.FirstCrossingProductionSaturation
           lake build Zeta23.CCM.CanonicalApertureLocation
           lake build Zeta23.CCM.CanonicalInteriorFirstCrossingBarrier
           lake build Zeta23.CCM.CanonicalSeamFirstCrossingBarrier
