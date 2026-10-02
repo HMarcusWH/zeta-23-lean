@@ -37,19 +37,10 @@ theorem GlobalParityFirstNegativeBoundary.exists_responsibleParity
               0 ≤ paritySuccessorGround .even c.N L := by
       unfold ParityRightCrossesNegative at heven
       push_neg at heven
-      obtain ⟨δ, hδ0, hδ⟩ := heven
-      have hδpos : 0 < δ := by
-        by_contra hnot
-        have hδnonpos : δ ≤ 0 := le_of_not_gt hnot
-        have h := hδ (1 : ℝ)
-        have hnotOne : ¬ 0 < (1 : ℝ) := by norm_num
-        contradiction
+      obtain ⟨δ, hδpos, hδ⟩ := heven
       refine ⟨δ, hδpos, ?_⟩
       intro L hLlo hLhi
-      by_contra hneg
-      have hlt : paritySuccessorGround .even c.N L < 0 := lt_of_not_ge hneg
-      have hx := hδ δ hδpos L hLlo hLhi
-      exact hx hlt
+      exact le_of_not_gt (hδ L hLlo hLhi)
     obtain ⟨δe, hδe, hevenNonneg⟩ := hevenStable
     refine ⟨.odd, ?_⟩
     intro ε hε
