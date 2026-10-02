@@ -66,13 +66,15 @@ jobs:
           lake build Zeta23.CCM.FirstCrossingProductionRemainder
           lake build Zeta23.CCM.FirstCrossingProductionFirstVariation
           lake build Zeta23.CCM.FirstCrossingProductionResponse
+          lake build Zeta23.CCM.FirstCrossingProductionCurvatureBridge
       - name: Audit concrete production contact axioms
         run: |
           python research/RHRC/tools/axiom_audit.py \
             Zeta23/CCM/FirstCrossingProductionTests.lean \
             Zeta23/CCM/FirstCrossingProductionRemainder.lean \
             Zeta23/CCM/FirstCrossingProductionFirstVariation.lean \
-            Zeta23/CCM/FirstCrossingProductionResponse.lean
+            Zeta23/CCM/FirstCrossingProductionResponse.lean \
+            Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean
 
   research-generated-contact:
     runs-on: ubuntu-latest

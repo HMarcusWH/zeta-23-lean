@@ -39,7 +39,7 @@
     },
     {
       "id": "L08_CURVATURE_BRIDGE",
-      "status": "OPEN",
+      "status": "CONCRETE_IDENTITY_INTERFACE_IMPLEMENTED__ARITHMETIC_DERIVATION_OPEN",
       "target": "productionOptimizedCurvatureBridge_proved"
     },
     {
