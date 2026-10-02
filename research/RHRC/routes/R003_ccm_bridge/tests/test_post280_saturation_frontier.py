@@ -49,6 +49,18 @@ class SaturationFrontierTests(unittest.TestCase):
         self.assertEqual(len(fixture["cases"]), 11)
         self.assertIn({"q": 16, "K": 6, "kind": "VON_MANGOLDT_REPLICATION"}, fixture["cases"])
         self.assertIn({"q": 17, "K": 6, "kind": "VON_MANGOLDT_REPLICATION"}, fixture["cases"])
+        self.assertEqual(fixture["planted_gamma"], [10, 1])
+        self.assertEqual(fixture["planted_on_line_delta"], [0, 1])
+        self.assertEqual(fixture["planted_off_line_delta"], [1, 20])
+
+    def test_planted_controls_are_symmetric_and_distinct(self):
+        L = np.log(16.0) + 2.0 ** -10
+        K = 3
+        on = sf.planted_increment_float(L, K, 10.0, 0.0)
+        off = sf.planted_increment_float(L, K, 10.0, 1.0 / 20.0)
+        self.assertTrue(np.allclose(on, on.T, atol=1e-12))
+        self.assertTrue(np.allclose(off, off.T, atol=1e-12))
+        self.assertGreater(float(np.linalg.norm(on - off)), 1e-10)
 
     def test_source_derivative_matches_finite_difference(self):
         K = 3
