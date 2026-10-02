@@ -9,23 +9,23 @@ Do not silently resurrect a dead route. A revival must state **which blocking pr
 The following shortcuts are now consumed or forbidden as independent closure
 mechanisms:
 
-- **more source-only quotient rank:** consumed.  PR #280 already shows the
+- **more source-only quotient rank:** consumed. PR #280 already shows the
   canonical source rows add independent rank, but without a structural/arithmetic
   cross-relation they do not exclude contact;
-- **strict positivity of (Q(v)) alone:** consumed.  Saturation requires the
-  production remainder to equal a positive scaled (Q(v)), so positivity does
+- **strict positivity of \(Q(v)\) alone:** consumed. Saturation requires the
+  production remainder to equal a positive scaled \(Q(v)\), so positivity does
   not contradict the contact;
-- **the sign of the entering prime atom alone:** not a seam barrier.  The
+- **the sign of the entering prime atom alone:** not a seam barrier. The
   complete smooth pole/archimedean/background germ must be included;
 - **an unrestricted total real-linear arithmetic functional on all
-  (mathbb R	omathbb R) functions:** forbidden as a silent convenience.
+  \(\mathbb R\to\mathbb R\) functions:** forbidden as a silent convenience.
   The physical archimedean density is singular at the origin; admissibility of
   the actual source/remainder tests must be proved or carried explicitly;
-- **finite near-contact (Delta_{m sat}) signs promoted to theorem
-  authority:** forbidden.  The frozen campaign is discovery evidence only.
+- **finite near-contact \(\Delta_{\rm sat}\) signs promoted to theorem
+  authority:** forbidden. The frozen campaign is discovery evidence only.
 
 The live route is the exact production derivative/admissibility bridge followed
-by a contact-restricted arithmetic comparison.  If the same proposed law holds
+by a contact-restricted arithmetic comparison. If the same proposed law holds
 in the generic first-crossing countermodels, the law is not the missing
 canonical information.
 
