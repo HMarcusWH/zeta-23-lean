@@ -38,6 +38,7 @@ from canonical_source_numeric import canonical_source_matrix_L
 
 SCHEMA = "POST280_PRODUCTION_SATURATION_FRONTIER_v1"
 CLAIM_CAP = "EXPERIMENTAL_SIGNAL_ONLY"
+Q_REPRESENTATION_REL_TOL = 1e-8
 
 
 def centered(K: int) -> np.ndarray:
@@ -238,6 +239,8 @@ def evaluate(L: float, K: int) -> dict:
     strict_even = bool(lam < odd_bottom)
     simple_even = bool(even_gap > 1e-9)
     source_identity_error = abs(q_arith - q_spectral)
+    source_identity_scale = 1.0 + abs(q_arith) + abs(q_spectral)
+    source_identity_relative_error = source_identity_error / source_identity_scale
 
     return {
         "L": L,
@@ -263,6 +266,8 @@ def evaluate(L: float, K: int) -> dict:
         "Q_arithmetic": q_arith,
         "Q_spectral_reduced": q_spectral,
         "Q_representation_abs_error": source_identity_error,
+        "Q_representation_relative_error": source_identity_relative_error,
+        "Q_representation_consistent": source_identity_relative_error <= Q_REPRESENTATION_REL_TOL,
         "production_arithmetic_remainder": arithmetic_remainder,
         "production_remainder_integral_error_estimate": remainder_err,
         "delta_sat_proxy": delta_sat,
@@ -285,8 +290,27 @@ def validate_fixture(fixture: dict) -> None:
         raise ValueError("claim cap drift")
     if fixture.get("adaptive_search") is not False:
         raise ValueError("adaptive search is forbidden in this frozen campaign")
-    if fixture.get("offset_powers") != [10, 12]:
+    if fixture.get("offset_powers") != [8, 10, 12]:
         raise ValueError("offset schedule drift")
+    expected_cases = [
+        (13, 3, "VON_MANGOLDT_SEAM"),
+        (16, 3, "VON_MANGOLDT_SEAM"),
+        (17, 3, "VON_MANGOLDT_SEAM"),
+        (19, 3, "VON_MANGOLDT_SEAM"),
+        (14, 3, "ZERO_VON_MANGOLDT_CONTROL"),
+        (15, 3, "ZERO_VON_MANGOLDT_CONTROL"),
+        (18, 3, "ZERO_VON_MANGOLDT_CONTROL"),
+        (16, 4, "VON_MANGOLDT_REPLICATION"),
+        (17, 4, "VON_MANGOLDT_REPLICATION"),
+        (16, 6, "VON_MANGOLDT_REPLICATION"),
+        (17, 6, "VON_MANGOLDT_REPLICATION"),
+    ]
+    actual_cases = [
+        (int(row["q"]), int(row["K"]), row["kind"])
+        for row in fixture.get("cases", [])
+    ]
+    if actual_cases != expected_cases:
+        raise ValueError("frozen case schedule drift")
 
 
 def run(fixture: dict) -> dict:
@@ -301,7 +325,25 @@ def run(fixture: dict) -> dict:
             row = evaluate(L, K)
             row.update({"q": q, "kind": case["kind"], "offset_power": p})
             rows.append(row)
+    inconsistent = [r for r in rows if not r["Q_representation_consistent"]]
+    if inconsistent:
+        bad = [
+            {
+                "q": r["q"],
+                "K": r["K"],
+                "offset_power": r["offset_power"],
+                "relative_error": r["Q_representation_relative_error"],
+            }
+            for r in inconsistent
+        ]
+        raise AssertionError(f"Q representation disagreement: {bad}")
     eligible = [r for r in rows if r["strict_even_numeric"] and r["simple_even_numeric"]]
+    signs_by_kind = {}
+    for kind in sorted({r["kind"] for r in eligible}):
+        signs_by_kind[kind] = [
+            1 if r["delta_sat_proxy"] > 0 else -1 if r["delta_sat_proxy"] < 0 else 0
+            for r in eligible if r["kind"] == kind
+        ]
     return {
         "schema_version": SCHEMA,
         "claim_cap": CLAIM_CAP,
@@ -314,10 +356,15 @@ def run(fixture: dict) -> dict:
             "max_Q_representation_abs_error": max(
                 (r["Q_representation_abs_error"] for r in rows), default=None
             ),
+            "max_Q_representation_relative_error": max(
+                (r["Q_representation_relative_error"] for r in rows), default=None
+            ),
+            "Q_representation_consistency_pass": True,
             "delta_sat_signs_on_eligible": [
                 1 if r["delta_sat_proxy"] > 0 else -1 if r["delta_sat_proxy"] < 0 else 0
                 for r in eligible
             ],
+            "delta_sat_signs_by_kind": signs_by_kind,
             "theorem_promotion": False,
             "terminal_claim": "RH_OPEN"
         }
