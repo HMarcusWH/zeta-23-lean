@@ -18,7 +18,9 @@ from pathlib import Path
 import numpy as np
 
 from canonical_source_numeric import canonical_source_matrix_L
+import post280_saturation_frontier as saturation
 from post280_saturation_frontier import boundary_flat_parity_basis, planted_increment_float
+from run_commutator_gauntlet_v2 import q_basis, von_mangoldt
 
 SCHEMA = "POST281_GENERATED_CONTACT_DISCOVERY_v1"
 CLAIM_CAP = "EXPERIMENTAL_SIGNAL_ONLY"
@@ -110,6 +112,148 @@ def evaluate(L: float, Q: int, K: int, model: str, gamma: float, delta: float) -
         "contact_status": "ORDINARY_STATE",
         "claim_cap": CLAIM_CAP,
     }
+
+
+
+def _ground_state(M: np.ndarray, K: int) -> dict:
+    data = {}
+    for parity in ("even", "odd"):
+        U = boundary_flat_parity_basis(K, parity)
+        H = (U.T @ M @ U)
+        H = (H + H.T) / 2.0
+        vals, vecs = np.linalg.eigh(H)
+        data[parity] = {
+            "bottom": float(vals[0]),
+            "vector": U @ vecs[:, 0],
+        }
+    selected = "even" if data["even"]["bottom"] <= data["odd"]["bottom"] else "odd"
+    z = data[selected]["vector"]
+    z = z / np.linalg.norm(z)
+    return {
+        "selected_parity": selected,
+        "global_bottom": data[selected]["bottom"],
+        "z": z,
+        "even_bottom": data["even"]["bottom"],
+        "odd_bottom": data["odd"]["bottom"],
+    }
+
+
+def current_prime_atom_matrix(L: float, Q: int, K: int) -> np.ndarray:
+    """Unsigned current-Q prime atom; the canonical matrix contains its negative."""
+    weight = float(von_mangoldt(int(Q)))
+    dim = 2 * K + 1
+    if Q < 2 or weight == 0.0:
+        return np.zeros((dim, dim), dtype=float)
+    y = math.log(float(Q))
+    idx = list(range(-K, K + 1))
+    atom = np.empty((dim, dim), dtype=float)
+    scale = weight / math.sqrt(float(Q))
+    for r, n in enumerate(idx):
+        for c, m in enumerate(idx):
+            atom[r, c] = scale * float(q_basis(n, m, y, L))
+    return (atom + atom.T) / 2.0
+
+
+def current_prime_interventions(L: float, Q: int, K: int) -> dict:
+    """Frozen-state and reoptimized removal of the current Q atom.
+
+    This is floating research evidence only.  Removing the atom changes the
+    canonical matrix by +atom because the production prime channel is subtracted.
+    """
+    M = canonical_source_matrix_L(float(L), int(K))
+    atom = current_prime_atom_matrix(float(L), int(Q), int(K))
+    ablated = M + atom
+    base = _ground_state(M, K)
+    after = _ground_state(ablated, K)
+    z = base["z"]
+    frozen_before = float(z @ M @ z)
+    frozen_after = float(z @ ablated @ z)
+    return {
+        "Q": int(Q),
+        "K": int(K),
+        "von_mangoldt_weight": float(von_mangoldt(int(Q))),
+        "atom_fro_norm": float(np.linalg.norm(atom, "fro")),
+        "frozen_state": {
+            "selected_parity": base["selected_parity"],
+            "energy_before": frozen_before,
+            "energy_after_removal": frozen_after,
+            "energy_shift": frozen_after - frozen_before,
+        },
+        "reoptimized": {
+            "global_bottom_before": base["global_bottom"],
+            "global_bottom_after_removal": after["global_bottom"],
+            "global_bottom_shift": after["global_bottom"] - base["global_bottom"],
+            "selected_parity_before": base["selected_parity"],
+            "selected_parity_after": after["selected_parity"],
+        },
+        "authority": "EXPERIMENTAL_FLOATING_ABLATION_ONLY",
+    }
+
+
+def generic_contact_controls() -> list[dict]:
+    """Small generic crossing/touch controls that must not inherit zeta authority."""
+    eps = 2.0 ** -8
+    controls = [
+        ("TRANSVERSE_CROSSING", lambda t: t, lambda t: 1.0),
+        ("STATIONARY_CUBIC_CROSSING", lambda t: t ** 3, lambda t: 1.0),
+        ("POSITIVE_QUARTIC_TOUCH", lambda t: t ** 4, lambda t: 1.0),
+        ("PARITY_TIE", lambda t: t, lambda t: -t),
+        ("ODD_SELECTED_REFLECTION", lambda t: 1.0, lambda t: -t),
+        ("SMALLEST_COMPLEMENT", lambda t: t, lambda t: 2.0),
+    ]
+    out = []
+    for name, even_f, odd_f in controls:
+        samples = []
+        for t in (-eps, 0.0, eps):
+            e, o = float(even_f(t)), float(odd_f(t))
+            samples.append({
+                "t": t,
+                "even_bottom": e,
+                "odd_bottom": o,
+                "global_bottom": min(e, o),
+            })
+        out.append({
+            "model": "GENERIC_SYNTHETIC",
+            "control_name": name,
+            "samples": samples,
+            "canonical_arithmetic_authority": False,
+            "claim_cap": CLAIM_CAP,
+        })
+    return out
+
+
+def candidate_frontier_proxy(cand: dict) -> dict:
+    """Attach the inherited #281 floating Q/remainder/Delta diagnostic."""
+    L = cand.get("L")
+    if L is None:
+        L = (float(cand["L_left"]) + float(cand["L_right"])) / 2.0
+    Q = int(cand["Q"])
+    K = int(cand["K"])
+    row = saturation.evaluate(float(L), K)
+    keep = {
+        "L": float(L),
+        "Q": Q,
+        "K": K,
+        "classification": row["classification"],
+        "lambda_even": row["lambda_even"],
+        "lambda_odd": row["lambda_odd"],
+        "lambda_prime_fd": row["lambda_prime_fd"],
+        "fixed_vector_second_fd": row["fixed_vector_second_fd"],
+        "kappa_fd": row["kappa_fd"],
+        "M4": row["M4"],
+        "source_moment_S": row["source_moment_S"],
+        "Q_arithmetic": row["Q_arithmetic"],
+        "Q_spectral_reduced": row["Q_spectral_reduced"],
+        "Q_representation_status": row["Q_representation_status"],
+        "production_arithmetic_remainder": row["production_arithmetic_remainder"],
+        "production_remainder_integral_error_estimate": row["production_remainder_integral_error_estimate"],
+        "delta_sat_proxy": row["delta_sat_proxy"],
+        "delta_minus_kappa_fd": row["delta_minus_kappa_fd"],
+        "contact_status": "NEAR_CONTACT_PROXY",
+        "authority": "EXPERIMENTAL_FLOATING_PROXY_ONLY",
+    }
+    keep["current_prime_interventions"] = current_prime_interventions(float(L), Q, K)
+    return keep
 
 
 def discover(protocol: dict) -> dict:
@@ -243,6 +387,14 @@ def discover(protocol: dict) -> dict:
         lambda x:(abs(x["global_bottom"]),x["Q"],x["L"]),
     )
 
+    selected_diagnostics = [
+        {
+            "candidate": rec,
+            "frontier_proxy": candidate_frontier_proxy(rec),
+        }
+        for rec in selected
+    ]
+
     return {
         "schema_version": SCHEMA,
         "claim_cap": CLAIM_CAP,
@@ -250,12 +402,16 @@ def discover(protocol: dict) -> dict:
         "measurements": rows,
         "sign_brackets": sign_brackets,
         "selected_neighborhoods": selected,
+        "selected_diagnostics": selected_diagnostics,
+        "generic_controls": generic_contact_controls(),
         "summary": {
             "measurement_count": len(rows),
             "canonical_count": len(canonical),
             "planted_count": len(rows) - len(canonical),
             "sign_bracket_count": len(sign_brackets),
             "selected_count": len(selected),
+            "selected_diagnostic_count": len(selected_diagnostics),
+            "generic_control_count": len(generic_contact_controls()),
             "contact_claimed": False,
             "terminal_claim": "RH_OPEN",
         },

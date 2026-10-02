@@ -16,16 +16,35 @@
     },
     "Q": {
       "source": "independent production source and spectral representation",
-      "status": "TO_WIRE_WITH_FORMAL_REMAINDER"
+      "status": "TO_WIRE_WITH_FORMAL_REMAINDER",
+      "arb_status": "NOT_YET_RIGOROUSLY_CERTIFIED_ON_GENERATED_CONTACT"
     },
     "remainder": {
-      "status": "TO_WIRE_WITH_FORMAL_REMAINDER"
+      "status": "TO_WIRE_WITH_FORMAL_REMAINDER",
+      "arb_status": "NOT_YET_RIGOROUSLY_CERTIFIED_ON_GENERATED_CONTACT"
     },
     "saturation_gap": {
-      "status": "TO_WIRE_AFTER_FORMAL_BRIDGE"
+      "status": "TO_WIRE_AFTER_FORMAL_BRIDGE",
+      "arb_status": "NOT_YET_RIGOROUSLY_CERTIFIED_ON_GENERATED_CONTACT"
     },
     "rho_sat": {
-      "eligibility": "Q strictly positive and numerator/gap separately resolved"
+      "eligibility": "Q strictly positive and numerator/gap separately resolved",
+      "arb_status": "NOT_YET_RIGOROUSLY_CERTIFIED_ON_GENERATED_CONTACT"
+    },
+    "current_prime_frozen_state_ablation": {
+      "source": "selected canonical floating state; remove only current-Q atom with L,K,z fixed",
+      "status": "IMPLEMENTED_FLOATING_RESEARCH_ONLY",
+      "theorem_authority": false
+    },
+    "current_prime_reoptimized_ablation": {
+      "source": "remove current-Q atom and recompute parity grounds",
+      "status": "IMPLEMENTED_FLOATING_RESEARCH_ONLY",
+      "theorem_authority": false
+    },
+    "generic_crossing_controls": {
+      "source": "synthetic transverse/cubic/quartic/tie/odd-reflected/small-complement families",
+      "status": "IMPLEMENTED_RESEARCH_QUALIFICATION",
+      "canonical_arithmetic_authority": false
     }
   }
 }

@@ -38,6 +38,26 @@ class GeneratedContactFrontierTests(unittest.TestCase):
         self.assertIn("rho_distance_to_one",forbidden)
         self.assertIn("preferred_delta_sign",forbidden)
 
+
+    def test_zero_weight_current_q_ablation_is_noop(self):
+        L=(__import__("math").log(14.0)+__import__("math").log(15.0))/2
+        rec=g.current_prime_interventions(L,14,3)
+        self.assertEqual(rec["von_mangoldt_weight"],0.0)
+        self.assertAlmostEqual(rec["atom_fro_norm"],0.0)
+
+    def test_prime_power_current_q_ablation_is_nontrivial(self):
+        L=(__import__("math").log(16.0)+__import__("math").log(17.0))/2
+        rec=g.current_prime_interventions(L,16,3)
+        self.assertGreater(rec["von_mangoldt_weight"],0.0)
+        self.assertGreater(rec["atom_fro_norm"],0.0)
+
+    def test_generic_controls_have_no_canonical_authority(self):
+        controls=g.generic_contact_controls()
+        self.assertGreaterEqual(len(controls),6)
+        self.assertTrue(all(not x["canonical_arithmetic_authority"] for x in controls))
+        self.assertIn("STATIONARY_CUBIC_CROSSING",{x["control_name"] for x in controls})
+        self.assertIn("POSITIVE_QUARTIC_TOUCH",{x["control_name"] for x in controls})
+
     def test_legacy_panel_is_preserved(self):
         legacy=self.p["legacy_replay"]
         self.assertEqual(legacy["offset_powers"],[8,10,12])
