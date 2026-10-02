@@ -34,7 +34,7 @@
     },
     {
       "id": "L07_STATIONARY_RESPONSE",
-      "status": "OPEN",
+      "status": "IMPLEMENTATION_CI_PENDING",
       "target": "FirstCrossingProductionResponse"
     },
     {
