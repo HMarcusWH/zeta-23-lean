@@ -62,13 +62,17 @@ def restricted_jets(L: arb, K: int, Q: int, parity: str):
 def certify_simple_ground_jet(L: arb, K: int, Q: int, parity: str, prec: int) -> dict:
     ctx.prec = int(prec)
     H, Hp, Hpp = restricted_jets(L, K, Q, parity)
-    eigs = _eigs(H)
-    rec = {
-        "precision_bits": int(prec),
+    rec = {"precision_bits": int(prec), "dimension": H.nrows()}
+    try:
+        eigs = _eigs(H)
+    except ValueError as exc:
+        rec["simple_status"] = "EIGENSOLVER_UNRESOLVED"
+        rec["eigensolver_error"] = str(exc)
+        return rec
+    rec.update({
         "lambda_min": _rec(eigs[0]),
         "lambda_2": _rec(eigs[1]) if len(eigs)>1 else None,
-        "dimension": H.nrows(),
-    }
+    })
     if H.nrows() == 1:
         v = np.ones(1)
         rec["simple_status"] = "CERTIFIED_ONE_DIMENSIONAL"
@@ -119,13 +123,17 @@ def certify_point(L_value: float, Q: int, K: int, prec: int) -> dict:
     L = arb(repr(float(L_value)))
     even = certify_simple_ground_jet(L,K,Q,"even",prec)
     odd = certify_simple_ground_jet(L,K,Q,"odd",prec)
-    le = even["lambda_min"]; lo = odd["lambda_min"]
-    even_strict = le["upper"] < lo["lower"]
-    odd_strict = lo["upper"] < le["lower"]
+    if "lambda_min" not in even or "lambda_min" not in odd:
+        regime = "PARITY_UNRESOLVED"
+    else:
+        le = even["lambda_min"]; lo = odd["lambda_min"]
+        even_strict = le["upper"] < lo["lower"]
+        odd_strict = lo["upper"] < le["lower"]
+        regime = "EVEN_STRICT" if even_strict else "ODD_STRICT" if odd_strict else "PARITY_UNRESOLVED"
     return {
         "Q":int(Q),"K":int(K),"L_float":float(L_value),"precision_bits":int(prec),
         "even":even,"odd":odd,
-        "spectral_regime":"EVEN_STRICT" if even_strict else "ODD_STRICT" if odd_strict else "PARITY_UNRESOLVED",
+        "spectral_regime":regime,
         "claim_cap":"EXPERIMENTAL_SIGNAL_ONLY",
         "terminal_claim":"RH_OPEN",
     }
