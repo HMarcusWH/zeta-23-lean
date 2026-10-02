@@ -14,10 +14,10 @@ For theorem-bearing PRs, compiler validity attaches only to the exact checked he
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #278
-- validated final head = 53daac5a0690e3ae52a0e758c2ac8ba7a26290e7
-- merge commit = 4c327bb171b0806e0acae3bb658158d028c522df
-- tree = dc9f2186699eed81441ac6a5810405cdc0874eea
+- merged theorem authority = PR #279
+- validated final head = a716d62f386ac6d43c70672c68ac316b62a613e2
+- merge commit = 5b2d78f637b4646fe0b2f4395880b92173d7425e
+- tree = 7458574c81c65fbec71239e21a1221e2469108d4
 - status = MERGED_GREEN_THEOREM_STATE
 - PR #275 full-space small-aperture coercive base = PROVED
 - PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
@@ -27,17 +27,17 @@ THEOREM AUTHORITY
 - RH = OPEN
 
 CURRENT RESEARCH FRONTIER
-- current candidate PR = #279 / POST278_PARITY_FIRST_CROSSING_SHELL_CANDIDATE
-- candidate theorem-validation head = 30a15a20f885e92cace1841429534427c5319652
+- current candidate PR = #280 / POST279_LIFTED_CONTACT_SOURCE_QUOTIENT_CANDIDATE
+- candidate theorem-validation head = 70054d390500896763501f9263b60bcb20bd50b4
 - candidate theorem-validation status = CI_PENDING
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
 - fixed-N sign opposition = PROVED_MERGED_PR_277
 - global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
-- active subobligation = CANONICAL_PARITY_FIRST_CROSSING_SHELL_BARRIER
-- next research target = PRODUCTION_SOURCE_CONTROL_OF_REGULAR_ZERO_SHIFT_ENDPOINT_NEAR_FIRST_CROSSING
-- required new information = PRODUCTION_SOURCE_GERM_EXCLUSION_FOR_INTERIOR_AND_PRIME_SEAM_FIRST_CROSSINGS
+- active subobligation = SOURCE_DERIVED_CONTACT_QUOTIENT_EQUALITY_RIGIDITY
+- next research target = PRODUCTION_SOURCE_LIFTED_CONTACT_QUOTIENT
+- required new information = SOURCE_DERIVED_RELATION_DISTINGUISHING_CANONICAL_FROM_SYNTHETIC_FIRST_CONTACTS
 - RH-sufficient terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE

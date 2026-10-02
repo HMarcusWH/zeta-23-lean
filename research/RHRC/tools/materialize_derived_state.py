@@ -19,10 +19,10 @@ def materialize() -> None:
     # 1. exact registered compiler dependencies feed RHKG;
     # 2. RHKG source census feeds source-candidate exactification;
     # 3. exactified source candidates feed FFBBP/source-only dependency export;
-    # 4. those products plus RHKG frontiers feed the OoL phase atlas.
+    # 4. source-only compiler products feed the contact-quotient view;
+    # 5. those products plus RHKG frontiers feed the OoL phase atlas.
     run([sys.executable, str(ROOT / "tools" / "lean_dependency_extract.py"), "--write"])
     run([sys.executable, str(ROOT / "graph" / "build.py"), "--write"])
-    run([sys.executable, str(ROOT / "graph" / "validate.py")])
     run([sys.executable, str(ROOT / "integration" / "candidate_exactify.py"), "--write"])
     run([sys.executable, str(ROOT / "ffbbp" / "rhkg_assurance.py"), "--write"])
     run([
@@ -30,7 +30,13 @@ def materialize() -> None:
         str(ROOT / "integration" / "source_only_dependency_extract.py"),
         "--write",
     ])
+    run([sys.executable, str(ROOT / "graph" / "contact_quotient_dependency_extract.py"), "--write"])
+    run([sys.executable, str(ROOT / "graph" / "contact_quotient_view.py"), "--write"])
     run([sys.executable, str(ROOT / "ool" / "rhkg_phase_atlas.py"), "--write"])
+    # Validate only after every declared generated product exists. The
+    # contact-quotient products are generated downstream of source-only
+    # exactification and therefore do not exist immediately after graph/build.
+    run([sys.executable, str(ROOT / "graph" / "validate.py")])
 
 
 def check() -> None:
@@ -44,6 +50,8 @@ def check() -> None:
         str(ROOT / "integration" / "source_only_dependency_extract.py"),
         "--check",
     ])
+    run([sys.executable, str(ROOT / "graph" / "contact_quotient_dependency_extract.py"), "--check"])
+    run([sys.executable, str(ROOT / "graph" / "contact_quotient_view.py"), "--check"])
     run([sys.executable, str(ROOT / "ool" / "rhkg_phase_atlas.py"), "--check"])
 
 

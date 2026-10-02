@@ -6,33 +6,33 @@ RHRC = Path(__file__).resolve().parents[2]
 
 
 class Post278SyncTests(unittest.TestCase):
-    def test_post278_authority_and_post279_candidate(self):
+    def test_post278_history_survives_post279_authority(self):
         state = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
         theorem = state["merged_theorem_anchor"]
-        self.assertEqual(theorem["pr"], 278)
+        self.assertEqual(theorem["pr"], 279)
         self.assertEqual(
             theorem["validated_head"],
-            "53daac5a0690e3ae52a0e758c2ac8ba7a26290e7",
+            "a716d62f386ac6d43c70672c68ac316b62a613e2",
         )
         self.assertEqual(
             theorem["merge_commit"],
-            "4c327bb171b0806e0acae3bb658158d028c522df",
+            "5b2d78f637b4646fe0b2f4395880b92173d7425e",
         )
         self.assertEqual(
             theorem["tree"],
-            "dc9f2186699eed81441ac6a5810405cdc0874eea",
+            "7458574c81c65fbec71239e21a1221e2469108d4",
         )
         candidate = state["candidate_branch"]
-        self.assertEqual(candidate["pr"], 279)
+        self.assertEqual(candidate["pr"], 280)
         self.assertEqual(
             candidate["branch"],
-            "research/close-rh-parity-first-crossing-shell",
+            "research/post279-lifted-contact-quotient",
         )
         self.assertEqual(
             candidate["status"],
-            "POST278_PARITY_FIRST_CROSSING_SHELL_CANDIDATE",
+            "POST279_LIFTED_CONTACT_SOURCE_QUOTIENT_CANDIDATE",
         )
         self.assertEqual(candidate["theorem_validation"], "CI_PENDING")
         self.assertEqual(state["merged_control_anchor"]["pr"], 117)
@@ -65,7 +65,7 @@ class Post278SyncTests(unittest.TestCase):
             },
         )
 
-    def test_first_crossing_frontier(self):
+    def test_first_crossing_frontier_advanced_without_erasing_post278(self):
         state = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
@@ -79,8 +79,12 @@ class Post278SyncTests(unittest.TestCase):
             "PROVED_MERGED_PR_278",
         )
         self.assertEqual(
+            route["post279_first_crossing_shell"],
+            "PROVED_MERGED_PR_279",
+        )
+        self.assertEqual(
             route["current_active_subobligation"],
-            "CANONICAL_PARITY_FIRST_CROSSING_SHELL_BARRIER",
+            "SOURCE_DERIVED_CONTACT_QUOTIENT_EQUALITY_RIGIDITY",
         )
         self.assertIn("PRODUCTION_SOURCE", route["current_next_research_target"])
 

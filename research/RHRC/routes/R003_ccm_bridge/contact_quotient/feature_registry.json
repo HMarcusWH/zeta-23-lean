@@ -1,0 +1,202 @@
+{
+  "schema_version": "RHRC-CONTACT-QUOTIENT-REGISTRY-1.1",
+  "terminal_claim": "RH_OPEN",
+  "theorem_promotion": false,
+  "interpretation": "Exact relation-space registry. Rank here measures independence of registered relation rows on the declared lifted feature chart; it is not a pointwise proof that canonical first-crossing states are excluded.",
+  "feature_classes": [
+    "STRUCTURAL",
+    "CANONICAL_SOURCE",
+    "DERIVED_LIFT"
+  ],
+  "authority_classes": [
+    "PROVED_LEAN",
+    "PAPER_DERIVED_NOT_LEAN",
+    "DIAGNOSTIC_ONLY"
+  ],
+  "stage_order": [
+    "STRUCTURAL",
+    "SOURCE_TRANSPORT",
+    "SOURCE_MOMENT"
+  ],
+  "features": [
+    {
+      "id": "contact_cubic_kernel_part",
+      "class": "STRUCTURAL",
+      "default_active": true
+    },
+    {
+      "id": "endpoint_re",
+      "class": "STRUCTURAL",
+      "default_active": true
+    },
+    {
+      "id": "shell_energy",
+      "class": "STRUCTURAL",
+      "default_active": true
+    },
+    {
+      "id": "predecessor_energy",
+      "class": "STRUCTURAL",
+      "default_active": true
+    },
+    {
+      "id": "source_second_derivative",
+      "class": "CANONICAL_SOURCE",
+      "default_active": true
+    },
+    {
+      "id": "indexed_source_energy",
+      "class": "CANONICAL_SOURCE",
+      "default_active": true
+    },
+    {
+      "id": "mixed_source_second_derivative",
+      "class": "CANONICAL_SOURCE",
+      "default_active": true
+    },
+    {
+      "id": "mixed_indexed_pairing",
+      "class": "CANONICAL_SOURCE",
+      "default_active": true
+    },
+    {
+      "id": "ninth_source_jet",
+      "class": "CANONICAL_SOURCE",
+      "default_active": true
+    },
+    {
+      "id": "m4_norm_sq",
+      "class": "CANONICAL_SOURCE",
+      "default_active": true
+    },
+    {
+      "id": "paper_kappa",
+      "class": "DERIVED_LIFT",
+      "default_active": false
+    },
+    {
+      "id": "paper_arithmetic_remainder",
+      "class": "DERIVED_LIFT",
+      "default_active": false
+    },
+    {
+      "id": "paper_odd_energy",
+      "class": "DERIVED_LIFT",
+      "default_active": false
+    },
+    {
+      "id": "paper_scale",
+      "class": "DERIVED_LIFT",
+      "default_active": false
+    }
+  ],
+  "relations": [
+    {
+      "id": "contact_cubic_kernel_zero",
+      "stage": "STRUCTURAL",
+      "scope": "GENERIC_SHARED",
+      "authority": "PROVED_LEAN",
+      "source_path": "Zeta23/CCM/FirstCrossingContactEquations.lean",
+      "declaration": "contact_cubicCouplingKernelPart_eq_zero",
+      "row": {
+        "contact_cubic_kernel_part": "1"
+      }
+    },
+    {
+      "id": "regular_endpoint_energy_normal_form",
+      "stage": "STRUCTURAL",
+      "scope": "GENERIC_SHARED",
+      "authority": "PROVED_LEAN",
+      "source_path": "Zeta23/CCM/FirstCrossingSourceDynamics.lean",
+      "declaration": "regularZeroShiftSchurEndpoint_re_eq_shell_sub_predecessor",
+      "row": {
+        "endpoint_re": "1",
+        "shell_energy": "-1",
+        "predecessor_energy": "1"
+      }
+    },
+    {
+      "id": "source_second_derivative_transport",
+      "stage": "SOURCE_TRANSPORT",
+      "scope": "CANONICAL_ONLY",
+      "authority": "PROVED_LEAN",
+      "source_path": "Zeta23/CCM/SourceDerivativeTransport.lean",
+      "declaration": "sourceAtomRealEnergySecondDerivative_eq_indexAction",
+      "row": {
+        "source_second_derivative": "1",
+        "indexed_source_energy": "(2*pi)^2"
+      }
+    },
+    {
+      "id": "mixed_source_second_derivative_transport",
+      "stage": "SOURCE_TRANSPORT",
+      "scope": "CANONICAL_ONLY",
+      "authority": "PROVED_LEAN",
+      "source_path": "Zeta23/CCM/MixedSourceDerivativeTransport.lean",
+      "declaration": "sourceAtomPairingSecondDerivative_eq_indexActions",
+      "row": {
+        "mixed_source_second_derivative": "1",
+        "mixed_indexed_pairing": "(2*pi)^2"
+      }
+    },
+    {
+      "id": "even_boundary_flat_m4_ninth_jet",
+      "stage": "SOURCE_MOMENT",
+      "scope": "CANONICAL_ONLY",
+      "authority": "PROVED_LEAN",
+      "source_path": "Zeta23/CCM/CanonicalSourceMomentJets.lean",
+      "declaration": "iteratedDeriv_nine_sourceAtomRealEnergy_eq_moment_four_of_even_boundaryFlat",
+      "row": {
+        "ninth_source_jet": "1",
+        "m4_norm_sq": "-2*(2*pi)^8"
+      }
+    }
+  ],
+  "paper_relations": [
+    {
+      "id": "optimized_curvature_production_instantiation",
+      "authority": "PAPER_DERIVED_NOT_LEAN",
+      "expression": "paper_kappa - paper_arithmetic_remainder + paper_scale*paper_odd_energy",
+      "note": "The abstract source-remainder algebra and strict-even source/odd-energy identity are now formalized on PR #280. The exact production pole/archimedean/von-Mangoldt derivative functional and its hypotheses are not yet instantiated in Lean, so the production equality remains excluded from default exact relation rank."
+    }
+  ],
+  "operation_closure": [
+    {
+      "id": "REGULAR_ENDPOINT_ENERGY_NORMAL_FORM",
+      "relation_id": "regular_endpoint_energy_normal_form",
+      "required_features": [
+        "endpoint_re",
+        "shell_energy",
+        "predecessor_energy"
+      ],
+      "scope": "CURRENT_REGISTERED_FEATURE_SURFACE_ONLY"
+    },
+    {
+      "id": "SOURCE_SECOND_DERIVATIVE_TRANSPORT",
+      "relation_id": "source_second_derivative_transport",
+      "required_features": [
+        "source_second_derivative",
+        "indexed_source_energy"
+      ],
+      "scope": "CURRENT_REGISTERED_FEATURE_SURFACE_ONLY"
+    },
+    {
+      "id": "MIXED_SOURCE_SECOND_DERIVATIVE_TRANSPORT",
+      "relation_id": "mixed_source_second_derivative_transport",
+      "required_features": [
+        "mixed_source_second_derivative",
+        "mixed_indexed_pairing"
+      ],
+      "scope": "CURRENT_REGISTERED_FEATURE_SURFACE_ONLY"
+    },
+    {
+      "id": "EVEN_M4_NINTH_JET",
+      "relation_id": "even_boundary_flat_m4_ninth_jet",
+      "required_features": [
+        "ninth_source_jet",
+        "m4_norm_sq"
+      ],
+      "scope": "CURRENT_REGISTERED_FEATURE_SURFACE_ONLY"
+    }
+  ]
+}
