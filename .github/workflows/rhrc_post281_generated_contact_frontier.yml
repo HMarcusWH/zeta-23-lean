@@ -96,6 +96,15 @@ jobs:
           python -m unittest research/RHRC/routes/R003_ccm_bridge/tests/test_post281_generated_contact_frontier.py -v
           python research/RHRC/routes/R003_ccm_bridge/check_post281_generated_contact_scope.py \
             --protocol research/RHRC/routes/R003_ccm_bridge/fixtures/post281_generated_contact_frontier_protocol_v1.json
+      - name: Replay inherited production and countermodel controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post280_saturation_frontier.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post280_saturation_frontier_v1.json \
+            --output /tmp/POST280_SATURATION_REPLAY.json
+          python research/RHRC/routes/R003_ccm_bridge/contact_quotient/check_source_remainder_exact.py \
+            --output /tmp/POST280_SOURCE_REMAINDER_REPLAY.json
+          python -m unittest \
+            research/RHRC/routes/R003_ccm_bridge/contact_quotient/tests/test_countermodel_controls.py -v
       - name: Broad deterministic contact discovery
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post281_generated_contact_frontier.py \
@@ -104,7 +113,10 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: post281-generated-contact-discovery
-          path: /tmp/POST281_GENERATED_CONTACT_DISCOVERY.json
+          path: |
+            /tmp/POST281_GENERATED_CONTACT_DISCOVERY.json
+            /tmp/POST280_SATURATION_REPLAY.json
+            /tmp/POST280_SOURCE_REMAINDER_REPLAY.json
           retention-days: 30
 
   arb-generated-contact:

@@ -144,3 +144,27 @@ def certify_point(L_value: float, Q: int, K: int, prec: int) -> dict:
         "claim_cap":"EXPERIMENTAL_SIGNAL_ONLY",
         "terminal_claim":"RH_OPEN",
     }
+
+
+def global_bottom_bounds(record: dict):
+    """Return rigorous min(even,odd) enclosure bounds when available."""
+    try:
+        e = record["even"]["lambda_min"]
+        o = record["odd"]["lambda_min"]
+        return {
+            "lower": min(float(e["lower"]), float(o["lower"])),
+            "upper": min(float(e["upper"]), float(o["upper"])),
+        }
+    except (KeyError, TypeError, ValueError):
+        return None
+
+
+def global_bottom_sign(record: dict) -> str:
+    b = global_bottom_bounds(record)
+    if b is None:
+        return "UNRESOLVED"
+    if b["lower"] > 0:
+        return "POSITIVE"
+    if b["upper"] < 0:
+        return "NEGATIVE"
+    return "UNRESOLVED"

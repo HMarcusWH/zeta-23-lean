@@ -148,35 +148,100 @@ def discover(protocol: dict) -> dict:
 
     canonical = [r for r in rows if r["model"] == "canonical"]
     cap = int(d["additional_neighborhood_cap"])
+    quota = d.get("selection_quota", {
+        "sign_bracket": 4,
+        "ground_magnitude": 3,
+        "parity_separation": 2,
+        "sector_gap": 2,
+        "dimension_diversity": 1,
+    })
+    if sum(int(v) for v in quota.values()) != cap:
+        raise ValueError("selection quotas must sum to additional_neighborhood_cap")
+
     selected = []
     used = set()
 
+    def rec_key(rec):
+        return (rec["Q"], rec["K"], rec.get("L", rec.get("L_left")))
+
     def add(rec):
-        key = (rec["Q"], rec["K"], rec.get("L", rec.get("L_left")))
+        key = rec_key(rec)
         if key not in used and len(selected) < cap:
             used.add(key)
             selected.append(rec)
+            return True
+        return False
 
-    for b in sorted(sign_brackets, key=lambda x:(x["Q"],x["K"],x["L_left"])):
-        add(dict(b))
+    def stratified_take(records, limit, sort_key):
+        by_k = {K: [] for K in d["K"]}
+        for rec in records:
+            by_k.setdefault(rec["K"], []).append(rec)
+        for K in by_k:
+            by_k[K].sort(key=sort_key)
+        taken = 0
+        while taken < limit:
+            progressed = False
+            for K in d["K"]:
+                while by_k.get(K):
+                    rec = by_k[K].pop(0)
+                    if add(rec):
+                        taken += 1
+                        progressed = True
+                        break
+                if taken >= limit:
+                    break
+            if not progressed:
+                break
+
+    bracket_records = [dict(b) for b in sign_brackets]
+    stratified_take(
+        bracket_records,
+        int(quota["sign_bracket"]),
+        lambda x: (x["Q"], x["L_left"]),
+    )
 
     criteria = [
         ("ground_magnitude", lambda r: abs(r["global_bottom"])),
         ("parity_separation", lambda r: r["parity_separation"]),
-        ("sector_gap", lambda r: float("inf") if r["selected_sector_gap"] is None else abs(r["selected_sector_gap"])),
+        ("sector_gap", lambda r: float("inf") if r["selected_sector_gap"] is None
+            else abs(r["selected_sector_gap"])),
     ]
     for reason, keyfun in criteria:
-        for r in sorted(canonical, key=lambda x:(keyfun(x), x["K"], x["Q"], x["L"])):
-            add({
-                "reason": reason, "Q": r["Q"], "K": r["K"], "L": r["L"],
-                "global_bottom": r["global_bottom"],
-                "parity_separation": r["parity_separation"],
-                "selected_sector_gap": r["selected_sector_gap"],
+        records = [{
+            "reason": reason, "Q": r["Q"], "K": r["K"], "L": r["L"],
+            "global_bottom": r["global_bottom"],
+            "parity_separation": r["parity_separation"],
+            "selected_sector_gap": r["selected_sector_gap"],
+        } for r in canonical]
+        stratified_take(
+            records,
+            int(quota[reason]),
+            lambda x, _kf=keyfun: (
+                _kf(next(r for r in canonical
+                    if r["Q"] == x["Q"] and r["K"] == x["K"] and r["L"] == x["L"])),
+                x["Q"], x["L"],
+            ),
+        )
+
+    represented = {r["K"] for r in selected}
+    diversity_records = []
+    for K in d["K"]:
+        if K in represented:
+            continue
+        candidates = [r for r in canonical if r["K"] == K]
+        if candidates:
+            r = min(candidates, key=lambda x:(abs(x["global_bottom"]),x["Q"],x["L"]))
+            diversity_records.append({
+                "reason":"dimension_diversity","Q":r["Q"],"K":r["K"],"L":r["L"],
+                "global_bottom":r["global_bottom"],
+                "parity_separation":r["parity_separation"],
+                "selected_sector_gap":r["selected_sector_gap"],
             })
-            if len(selected) >= cap:
-                break
-        if len(selected) >= cap:
-            break
+    stratified_take(
+        diversity_records,
+        int(quota["dimension_diversity"]),
+        lambda x:(abs(x["global_bottom"]),x["Q"],x["L"]),
+    )
 
     return {
         "schema_version": SCHEMA,

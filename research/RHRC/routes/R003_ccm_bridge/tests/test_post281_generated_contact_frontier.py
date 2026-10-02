@@ -25,6 +25,14 @@ class GeneratedContactFrontierTests(unittest.TestCase):
         self.assertAlmostEqual(lo,1/512)
         self.assertGreater(hi,lo)
 
+    def test_selection_quota_is_frozen(self):
+        q=self.p["discovery"]["selection_quota"]
+        self.assertEqual(sum(q.values()),self.p["discovery"]["additional_neighborhood_cap"])
+        self.assertEqual(q["sign_bracket"],4)
+        self.assertGreater(q["ground_magnitude"],0)
+        self.assertGreater(q["parity_separation"],0)
+        self.assertGreater(q["sector_gap"],0)
+
     def test_selection_firewall(self):
         forbidden=self.p["discovery"]["forbidden_selection_features"]
         self.assertIn("rho_distance_to_one",forbidden)

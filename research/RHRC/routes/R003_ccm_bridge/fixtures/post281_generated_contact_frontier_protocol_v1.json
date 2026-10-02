@@ -64,7 +64,15 @@
     "forbidden_selection_features": [
       "rho_distance_to_one",
       "preferred_delta_sign"
-    ]
+    ],
+    "selection_quota": {
+      "sign_bracket": 4,
+      "ground_magnitude": 3,
+      "parity_separation": 2,
+      "sector_gap": 2,
+      "dimension_diversity": 1
+    },
+    "selection_stratification": "ROUND_ROBIN_BY_K_THEN_LEXICAL"
   },
   "arb": {
     "precision_bits": [

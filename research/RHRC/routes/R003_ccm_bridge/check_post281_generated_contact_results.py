@@ -19,8 +19,10 @@ def main():
     assert len(d["selected_neighborhoods"])<=d["protocol"]["discovery"]["additional_neighborhood_cap"]
     assert all(math.isfinite(x) for x in walk(d))
     assert r["claim_cap"]=="EXPERIMENTAL_SIGNAL_ONLY" and r["summary"]["terminal_claim"]=="RH_OPEN"
-    assert not r["summary"]["contact_claimed"]
-    assert all(row["contact_status"]=="NEAR_CONTACT_PROXY" for row in r["rows"])
+    assert r["summary"].get("first_boundary_certified_count",0)==0
+    allowed={"NEAR_CONTACT_PROXY","CERTIFIED_SIGN_BRACKET"}
+    assert all(row["contact_status"] in allowed for row in r["rows"])
+    assert all(not row.get("first_boundary_claimed",False) for row in r["rows"])
     assert all(math.isfinite(x) for x in walk(r))
     print("post281 generated-contact results: PASS")
     return 0

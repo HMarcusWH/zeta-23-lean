@@ -11,6 +11,8 @@ def main():
     assert d["forbidden_selection_features"]==["rho_distance_to_one","preferred_delta_sign"]
     assert p["arb"]["precision_bits"]==[192,384,768]
     assert p["arb"]["root_or_subdivision_cap_per_neighborhood"]==96
+    assert sum(d["selection_quota"].values())==d["additional_neighborhood_cap"]
+    assert d["selection_quota"]["sign_bracket"] < d["additional_neighborhood_cap"]
     assert len(p["legacy_replay"]["cases"])==11
     print("post281 generated-contact scope: PASS")
     return 0
