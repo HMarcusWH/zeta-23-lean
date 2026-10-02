@@ -69,7 +69,8 @@
     "All samples are strictly to the right of log(q); no seam value jump is claimed.",
     "No sampled point is declared an actual first contact.",
     "Ground-vector observables remain floating discovery data; multiplicity and sign claims require separate certification.",
-    "Scoped planted controls reuse the historical gamma=10 on-line delta=0 and off-line delta=1/20 zero-side perturbations; they are PLANTED_CONTROL_ONLY and not alternate zeta/Euler products."
+    "Scoped planted controls reuse the historical gamma=10 on-line delta=0 and off-line delta=1/20 zero-side perturbations; they are PLANTED_CONTROL_ONLY and not alternate zeta/Euler products.",
+    "Canonical Q comparisons below the floating resolution floor are Q_NUMERICALLY_UNRESOLVED and are excluded from representation-pass and saturation-sign summaries."
   ],
   "planted_gamma": [
     10,
