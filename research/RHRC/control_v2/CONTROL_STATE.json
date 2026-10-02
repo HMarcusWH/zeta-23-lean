@@ -21,7 +21,7 @@
     "status": "POST280_PRODUCTION_SATURATION_FRONTIER_CANDIDATE",
     "theorem_family": "PRODUCTION_ARITHMETIC_SATURATION_FRONTIER_AND_MEASUREMENT",
     "terminal_claim_change": false,
-    "theorem_validation_head": "c6fc1988531ae15f26a3429168321e8a88b61f56",
+    "theorem_validation_head": "318df7a7f5e66768dc6792cb330c1d3325ce1a95",
     "theorem_validation": "CI_PENDING"
   },
   "latest_research_evidence": {
