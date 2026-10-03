@@ -37,10 +37,10 @@ The optional cubic pole strengthening is no longer on the critical path. All-ape
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #281
-- validated final head = d4c6d0804bc642cc6e93dba811cd890d474eb0d0
-- merge commit = 0c22ae4101d7ad3e0b1a81029fff1472c52a5750
-- tree = f729b05e6fee9f6fbeb9d18a65e26742086244f8
+- merged theorem authority = PR #282
+- validated final head = de2869d1614d71b5d851d7088be514901af11b74
+- merge commit = 01871f7d2256b1eac2dbd7967346954367c8eef9
+- tree = c7749d37c4b63270818c3fb0d7fb5dbc22638790
 - status = MERGED_GREEN_THEOREM_STATE
 - PR #275 full-space small-aperture coercive base = PROVED
 - PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
@@ -50,7 +50,7 @@ THEOREM AUTHORITY
 - RH = OPEN
 
 CURRENT RESEARCH FRONTIER
-- current candidate PR = #282 / GENERATED_PRODUCTION_CONTACT_FRONTIER_CANDIDATE
+- current candidate PR = #283 / CANONICAL_COMPRESSED_CONTACT_CALCULUS_CANDIDATE
 - candidate theorem-validation head = RUNTIME_PR_HEAD_REQUIRED
 - candidate theorem-validation status = CI_PENDING_EXACT_HEAD_RUNTIME_RECEIPT_REQUIRED
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
@@ -58,9 +58,9 @@ CURRENT RESEARCH FRONTIER
 - global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
-- active subobligation = GENERATED_PRODUCTION_DERIVATIVE_ADMISSIBILITY_AND_CURVATURE_IDENTITY
-- next research target = GENERATED_PRODUCTION_CONTACT_ARITHMETIC_BRIDGE
-- required new information = EXACT_WEIGHTED_PRODUCTION_DIFFERENTIATION_AND_CONTACT_CONDITIONED_ARITHMETIC_EXCLUSION
+- active subobligation = OBS-060N_COMPRESSED_PRODUCTION_DERIVATIVE_AND_ADMISSIBILITY_BRIDGE
+- next research target = POST282_CANONICAL_CONTACT_CALCULUS_AND_INHERITED_SATURATION
+- required new information = EXACT_COMPRESSED_C2_WEIGHTED_PRODUCTION_CALCULUS_AND_CONTACT_CONDITIONED_ARITHMETIC_EXCLUSION
 - RH-sufficient terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE
@@ -850,3 +850,10 @@ The q13 research integer shell generator is only known to span the same one-dime
 **Consequence:** the next formal step must spend actual production structure and preserve normalization. Prefer an invariant/Hermitian envelope theorem attached to the proved fixed-cell `-log(L)I + remainder` decomposition. Only a source-specific remainder/contact inequality can supply the missing opposing orientation.
 
 **RH remains OPEN.**
+
+
+### OBS-060N post-#282 migration
+
+**Status: OPEN / ACTIVE; candidate implementation on PR #283 pending CI.**
+
+The current candidate treats derivatives of the legal compressed real-aperture family as the production object and retains the #282 ambient-entry derivatives as historical candidate interfaces. Discharging OBS-060N requires exact-head compiler/axiom evidence for compressed C2, weighted production authority, and the Euler-corrected pair balance. OBS-060O saturation/equality exclusion remains OPEN; no numerical calibration or green infrastructure job promotes it.
