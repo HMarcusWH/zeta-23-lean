@@ -107,9 +107,15 @@ theorem GeneratedGlobalFirstCrossing.exists_generatedStrictEvenContact_of_evenSt
     exact hz0eig
   let z : euclideanEvenBoundaryFlatSubspace (g.shell.k + 1) :=
     (‖z0‖⁻¹ : ℂ) • z0
+  have hz0coe :
+      (z0 : EuclideanSpace ℂ (Fin (2 * (g.shell.k + 1) + 1))) ≠ 0 := by
+    intro h
+    apply hz0ne
+    apply Subtype.ext
+    simpa using h
   have hznorm : ‖z‖ = 1 := by
     dsimp [z]
-    exact norm_smul_inv_norm hz0ne
+    exact norm_smul_inv_norm hz0coe
   have hzne : z ≠ 0 := by
     intro hz
     rw [hz, norm_zero] at hznorm
