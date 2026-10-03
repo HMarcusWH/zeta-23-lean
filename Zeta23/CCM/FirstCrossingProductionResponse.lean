@@ -153,10 +153,16 @@ theorem neg_firstDerivative_mem_evenRange_of_stationary_strict
   have hzb : inner ℂ z b = 0 := by
     rw [inner_eq_zero_symm]
     exact hbz
-  have hbker :
-      b ∈ (E.ker : Submodule ℂ (euclideanEvenBoundaryFlatSubspace K))ᗮ := by
+  have hEsym :
+      LinearMap.IsSymmetric (𝕜 := ℂ)
+        (E := euclideanEvenBoundaryFlatSubspace K) E := by
+    simpa [E] using evenResponseContactOperator_isSymmetric L K
+  have hbDouble : b ∈ E.rangeᗮᗮ := by
     intro x hx
-    have hxNative : E x = 0 := LinearMap.mem_ker.mp hx
+    have hxker : x ∈ E.ker := by
+      rw [← hEsym.orthogonal_range]
+      exact hx
+    have hxNative : E x = 0 := LinearMap.mem_ker.mp hxker
     have hx0 : evenCompressedCanonical L K x = 0 := by
       rw [← evenResponseContactOperator_apply]
       simpa [E] using hxNative
@@ -165,25 +171,11 @@ theorem neg_firstDerivative_mem_evenRange_of_stationary_strict
     rw [← hc]
     rw [inner_smul_left]
     simp [hzb]
-  have hEsym :
-      LinearMap.IsSymmetric (𝕜 := ℂ)
-        (E := euclideanEvenBoundaryFlatSubspace K) E := by
-    simpa [E] using evenResponseContactOperator_isSymmetric L K
-  have hrangeOrth :
-      (E.range : Submodule ℂ (euclideanEvenBoundaryFlatSubspace K))ᗮ = E.ker :=
-    hEsym.orthogonal_range
-  have hrange :
-      E.range =
-        (E.ker : Submodule ℂ (euclideanEvenBoundaryFlatSubspace K))ᗮ := by
-    calc
-      E.range = E.rangeᗮᗮ := by
-        symm
-        exact Submodule.orthogonal_orthogonal
-      _ = E.kerᗮ := by rw [hrangeOrth]
-  have hmemNative : -b ∈ E.range := by
-    rw [hrange]
-    exact
-      ((E.ker : Submodule ℂ (euclideanEvenBoundaryFlatSubspace K))ᗮ).neg_mem hbker
+  have hbRange : b ∈ E.range := by
+    rw [Submodule.orthogonal_orthogonal] at hbDouble
+    exact hbDouble
+  have hmemNative : -b ∈ E.range :=
+    E.range.neg_mem hbRange
   obtain ⟨w, hw⟩ := hmemNative
   change ∃ w : euclideanEvenBoundaryFlatSubspace K,
     evenCompressedCanonical L K w =
