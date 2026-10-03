@@ -1,6 +1,7 @@
 import Zeta23.CCM.FirstCrossingProductionArithmetic
 import Zeta23.CCM.DictionarySmoothCoreBridge
 import Zeta23.CCM.CanonicalQuadraticNormalSourceFunctional
+import Zeta23.CCM.ProductionWeightedTestCalculus
 
 noncomputable section
 
@@ -63,6 +64,21 @@ theorem ProductionPhysicalTestAuthority.congr
     ProductionPhysicalTestAuthority L g₂ p₂ := by
   simpa [hg, hp] using h
 
+/-- Current production derivative tests are admitted by the versioned weighted
+calculus.  This theorem is a compatibility export for downstream callers; it
+does not turn the production functional into an unrestricted linear map. -/
+theorem productionContactDerivativeTests_admissible
+    {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (z w : euclideanEvenBoundaryFlatSubspace K) :
+    ProductionWeightedPhysicalAdmissible L
+        (productionFirstDerivativePhysicalTest L K z) ∧
+      ProductionWeightedPhysicalAdmissible L
+        (productionSecondDerivativePhysicalTest L K z) ∧
+      ProductionWeightedPhysicalAdmissible L
+        (productionMixedDerivativePhysicalTest L K z w) :=
+  production_derivative_tests_admissible hL K z w
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.quadraticNormalSource_has_physical_authority
+#print axioms Zeta23.CCM.productionContactDerivativeTests_admissible

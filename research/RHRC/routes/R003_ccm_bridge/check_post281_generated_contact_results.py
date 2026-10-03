@@ -3,6 +3,9 @@ from __future__ import annotations
 import argparse,json,math,sys
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
+RHRC=Path(__file__).resolve().parents[2]
+sys.path.insert(0,str(RHRC/"closure_batch"))
+from interval_codec import DyadicInterval, IntervalCodecError
 
 ALLOWED_CONTACT={"NEAR_CONTACT_PROXY","CERTIFIED_SIGN_BRACKET"}
 
@@ -32,6 +35,16 @@ def _decimal(value,label):
 
 def validate_interval_records(x,path="root"):
     if isinstance(x,dict):
+        if "dyadic_interval" in x:
+            try:
+                d=DyadicInterval.from_json(x["dyadic_interval"])
+            except IntervalCodecError as exc:
+                fail("DYADIC_INTERVAL",f"{path}: {exc}")
+            if "lower" in x and "upper" in x:
+                if Decimal(str(x["lower"])) > Decimal(d.lo.numerator) / Decimal(d.lo.denominator):
+                    fail("DYADIC_INTERVAL",f"{path}: display lower cuts inside dyadic enclosure")
+                if Decimal(str(x["upper"])) < Decimal(d.hi.numerator) / Decimal(d.hi.denominator):
+                    fail("DYADIC_INTERVAL",f"{path}: display upper cuts inside dyadic enclosure")
         if "lower" in x and "upper" in x:
             lo=x["lower"]; hi=x["upper"]
             if not isinstance(lo,(int,float)) or not isinstance(hi,(int,float)):
