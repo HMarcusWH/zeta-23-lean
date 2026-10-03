@@ -15,7 +15,7 @@ from control_v2.state import load_research_state
 class ControlV2Tests(unittest.TestCase):
     def test_control_state_tracks_latest_theorem_anchor_without_moving_control_anchor(self):
         state = load_research_state()
-        self.assertEqual(state.anchor.pr, 281)
+        self.assertEqual(state.anchor.pr, 282)
         self.assertEqual(
             state.anchor.merge_commit,
             "0c22ae4101d7ad3e0b1a81029fff1472c52a5750",
@@ -171,8 +171,8 @@ class ControlV2Tests(unittest.TestCase):
             "PR #270 is framework/graph authority only",
         ):
             self.assertIn(token, note)
-        self.assertEqual(control["merged_theorem_anchor"]["pr"], 281)
-        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 281)
+        self.assertEqual(control["merged_theorem_anchor"]["pr"], 282)
+        self.assertEqual(control["latest_validated_theorem_delta"]["pr"], 282)
         self.assertEqual(control["merged_control_anchor"]["pr"], 117)
         self.assertEqual(control["terminal_claim"], "RH_OPEN")
 

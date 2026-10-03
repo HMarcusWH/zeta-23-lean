@@ -79,13 +79,13 @@ class Post272SyncTests(unittest.TestCase):
             route["current_next_research_target"],
         )
         if route.get("post278_fixedN_ground_continuity") == "PROVED_MERGED_PR_278":
-            # Later theorem frontiers may advance beyond the merged PR #281
-            # saturation-value interface.  PR #282 now targets the generated
-            # contact arithmetic bridge while preserving PR #272's audit-only
-            # terminal classification.
+            # Later theorem frontiers may advance beyond the merged PR #282
+            # generated-contact interface.  The current candidate targets
+            # compressed-first production calculus while preserving PR #272's
+            # audit-only terminal classification.
             self.assertEqual(
                 route["current_next_research_target"],
-                "GENERATED_PRODUCTION_CONTACT_ARITHMETIC_BRIDGE",
+                "POST282_CANONICAL_CONTACT_CALCULUS_AND_INHERITED_SATURATION",
             )
         else:
             self.assertIn(

@@ -6,33 +6,33 @@ RHRC = Path(__file__).resolve().parents[2]
 
 
 class Post278SyncTests(unittest.TestCase):
-    def test_post278_history_survives_post281_authority(self):
+    def test_post278_history_survives_post282_authority(self):
         state = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
         theorem = state["merged_theorem_anchor"]
-        self.assertEqual(theorem["pr"], 281)
+        self.assertEqual(theorem["pr"], 282)
         self.assertEqual(
             theorem["validated_head"],
-            "d4c6d0804bc642cc6e93dba811cd890d474eb0d0",
+            "de2869d1614d71b5d851d7088be514901af11b74",
         )
         self.assertEqual(
             theorem["merge_commit"],
-            "0c22ae4101d7ad3e0b1a81029fff1472c52a5750",
+            "01871f7d2256b1eac2dbd7967346954367c8eef9",
         )
         self.assertEqual(
             theorem["tree"],
-            "f729b05e6fee9f6fbeb9d18a65e26742086244f8",
+            "c7749d37c4b63270818c3fb0d7fb5dbc22638790",
         )
         candidate = state["candidate_branch"]
-        self.assertEqual(candidate["pr"], 282)
+        self.assertEqual(candidate["pr"], 283)
         self.assertEqual(
             candidate["branch"],
-            "research/post281-generated-production-contact",
+            "proof/post282-canonical-contact-calculus",
         )
         self.assertEqual(
             candidate["status"],
-            "GENERATED_PRODUCTION_CONTACT_FRONTIER_CANDIDATE",
+            "CANONICAL_COMPRESSED_CONTACT_CALCULUS_CANDIDATE",
         )
         self.assertEqual(candidate["theorem_validation"], "CI_PENDING_EXACT_HEAD_RUNTIME_RECEIPT_REQUIRED")
         self.assertEqual(candidate["theorem_validation_head"], "RUNTIME_PR_HEAD_REQUIRED")
@@ -85,9 +85,9 @@ class Post278SyncTests(unittest.TestCase):
         )
         self.assertEqual(
             route["current_active_subobligation"],
-            "GENERATED_PRODUCTION_DERIVATIVE_ADMISSIBILITY_AND_CURVATURE_IDENTITY",
+            "OBS-060N_COMPRESSED_PRODUCTION_DERIVATIVE_AND_ADMISSIBILITY_BRIDGE",
         )
-        self.assertEqual(route["current_next_research_target"], "GENERATED_PRODUCTION_CONTACT_ARITHMETIC_BRIDGE")
+        self.assertEqual(route["current_next_research_target"], "POST282_CANONICAL_CONTACT_CALCULUS_AND_INHERITED_SATURATION")
         self.assertEqual(
             route["post280_contact_quotient_lane"],
             "PROVED_MERGED_PR_280",
