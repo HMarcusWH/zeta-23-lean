@@ -2,7 +2,11 @@ from __future__ import annotations
 
 from decimal import Decimal
 from fractions import Fraction
+import sys
 import unittest
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from interval_codec import DyadicInterval, IntervalCodecError
 

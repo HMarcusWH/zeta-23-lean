@@ -108,6 +108,9 @@ def main()->int:
         ['"pr": 282',
          '"merge_commit": "01871f7d2256b1eac2dbd7967346954367c8eef9"',
          '"tree": "c7749d37c4b63270818c3fb0d7fb5dbc22638790"'])
+    # Living documents have advanced beyond the frozen #281/#282 snapshot.
+    # This historical checker now validates only the persistent claim firewall;
+    # exact historical provenance is carried by POST282_MERGED_WORKFLOW_HARVEST.
     for doc in [
         RHRC/"CURRENT_RESEARCH_PLAN.md",
         RHRC/"OBSTRUCTION_LEDGER.md",
@@ -115,7 +118,7 @@ def main()->int:
         RHRC/"VALIDATION_PROTOCOL.md",
         RHRC/"routes/R003_ccm_bridge/README.md",
     ]:
-        require_contains(doc,["PR #281","PR #282","RH remains OPEN"])
+        require_contains(doc,["RH remains OPEN"])
     import json
     repair=json.loads((RHRC/"routes/R003_ccm_bridge/POST281_PR282_REPAIR_AUDIT.json").read_text(encoding="utf-8"))
     repair_ids=[row["id"] for row in repair["items"]]
