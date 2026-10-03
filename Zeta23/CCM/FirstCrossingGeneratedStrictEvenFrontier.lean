@@ -6,28 +6,6 @@ namespace Zeta23.CCM
 
 open Complex
 
-/-- Canonical algebraic transport from the generic `.even` parity carrier to
-the native strict-even carrier.  All downstream norm, scalar-action and
-operator calculations are performed after this one explicit transport, so
-Lean never has to identify the two subtype module/inner-product instances
-implicitly. -/
-private def evenParityNativeEquiv
-    (K : ℕ) :
-    euclideanParityBoundaryFlatSubspace .even K ≃ₗ[ℂ]
-      euclideanEvenBoundaryFlatSubspace K :=
-  LinearEquiv.ofEq _ _
-    (euclideanParityBoundaryFlatSubspace_even K)
-
-/-- The carrier transport preserves the underlying Euclidean vector exactly. -/
-@[simp] private theorem coe_evenParityNativeEquiv
-    (K : ℕ)
-    (x : euclideanParityBoundaryFlatSubspace .even K) :
-    ((evenParityNativeEquiv K x :
-        euclideanEvenBoundaryFlatSubspace K) :
-      EuclideanSpace ℂ (Fin (2 * K + 1))) =
-      (x : EuclideanSpace ℂ (Fin (2 * K + 1))) := by
-  rfl
-
 /-!
 # Post-#281 generated strict-even frontier
 
@@ -106,39 +84,35 @@ theorem GeneratedGlobalFirstCrossing.exists_generatedStrictEvenContact_of_evenSt
             g.shell.plateau_zero g.shell.k g.shell.n_le_k g.shell.k_le_N
           simpa [paritySuccessorGround, hpg] using hzero
         linarith
-  obtain ⟨z0Generic, hz0Generic_ne, hz0Generic_eig⟩ :=
-    exists_eigenmode_at_parityRayleighBottom_succ
-      .even g.shell.Lstar g.shell.k hk
-  let z0 : euclideanEvenBoundaryFlatSubspace (g.shell.k + 1) :=
-    evenParityNativeEquiv (g.shell.k + 1) z0Generic
-  have hz0ne : z0 ≠ 0 := by
-    intro hz
-    apply hz0Generic_ne
-    apply (evenParityNativeEquiv (g.shell.k + 1)).injective
-    simpa [z0] using hz
-  have hz0Generic_ker :
-      parityCompressedCanonical .even g.shell.Lstar
-        (g.shell.k + 1) z0Generic = 0 := by
-    rw [heven] at hz0Generic_eig
-    simpa using hz0Generic_eig
+  have hstrict :
+      parityRayleighBottom .even g.shell.Lstar (g.shell.k + 1) <
+        parityRayleighBottom .odd g.shell.Lstar (g.shell.k + 1) := by
+    rw [heven]
+    exact hodd
+  obtain ⟨z0, hz0ne, hz0eig, _hsourceNe, _hsourceGap⟩ :=
+    exists_evenGround_source_gap_bound_of_strict
+      g.shell.Lstar_pos g.shell.k hk hstrict
   have hz0ker :
       evenCompressedCanonical g.shell.Lstar (g.shell.k + 1) z0 = 0 := by
-    apply Subtype.ext
-    have hval := congrArg Subtype.val hz0Generic_ker
-    simpa [z0, evenParityNativeEquiv, evenCompressedCanonical,
-      parityCompressedCanonical_apply,
-      euclideanParityBoundaryFlatSubspace] using hval
+    change
+      evenCompressedCanonical g.shell.Lstar (g.shell.k + 1) z0 =
+        (parityRayleighBottom .even g.shell.Lstar
+          (g.shell.k + 1) : ℂ) • z0 at hz0eig
+    rw [heven, zero_smul] at hz0eig
+    exact hz0eig
   have hnormpos : 0 < ‖z0‖ := norm_pos_iff.mpr hz0ne
+  have hnormne : ‖z0‖ ≠ 0 := hnormpos.ne'
   let z : euclideanEvenBoundaryFlatSubspace (g.shell.k + 1) :=
     ((‖z0‖ : ℂ)⁻¹) • z0
   have hzne : z ≠ 0 := by
     dsimp [z]
     exact smul_ne_zero
-      (inv_ne_zero (by exact_mod_cast hnormpos.ne')) hz0ne
+      (inv_ne_zero (by exact_mod_cast hnormne)) hz0ne
   have hznorm : ‖z‖ = 1 := by
     dsimp [z]
-    rw [norm_smul, norm_inv]
-    simp [hnormpos.ne', abs_of_pos hnormpos]
+    rw [norm_smul, norm_inv, Complex.norm_real,
+      Real.norm_of_nonneg (norm_nonneg z0)]
+    exact inv_mul_cancel₀ hnormne
   have hzker :
       evenCompressedCanonical g.shell.Lstar (g.shell.k + 1) z = 0 := by
     dsimp [z]
