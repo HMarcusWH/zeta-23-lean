@@ -1,0 +1,208 @@
+name: RHRC post-281 generated contact frontier
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'Zeta23/CCM/GlobalParityFirstNegativeBoundary.lean'
+      - 'Zeta23/CCM/FirstCrossingGlobalAlignment.lean'
+      - 'Zeta23/CCM/FirstCrossingProduction*.lean'
+      - 'Zeta23/ExceptionalZero/GlobalParityFirstNegativeBoundary.lean'
+      - 'research/RHRC/routes/R003_ccm_bridge/*generated_contact*'
+      - 'research/RHRC/routes/R003_ccm_bridge/canonical_contact_frontier_arb.py'
+      - 'research/RHRC/routes/R003_ccm_bridge/POST281_*'
+      - 'research/RHRC/routes/R003_ccm_bridge/fixtures/post281_generated_contact_frontier_protocol_v1.json'
+      - 'research/RHRC/routes/R003_ccm_bridge/tests/test_post281_generated_contact_frontier.py'
+      - 'research/RHRC/routes/R003_ccm_bridge/canonical_source_numeric.py'
+      - 'research/RHRC/routes/R003_ccm_bridge/post177_fb05_q13_fixed_unit_derivative.py'
+      - 'research/RHRC/routes/R003_ccm_bridge/post194_fb05_q14_fixed_unit_second_derivative.py'
+      - 'research/RHRC/routes/R003_ccm_bridge/post198_fb05_q14_four_way_channel_second_derivative.py'
+      - 'research/RHRC/routes/R003_ccm_bridge/requirements.txt'
+      - 'research/RHRC/routes/R003_ccm_bridge/post280_saturation_frontier.py'
+      - 'research/RHRC/routes/R003_ccm_bridge/contact_quotient/**'
+      - 'research/RHRC/routes/R003_ccm_bridge/fixtures/post280_saturation_frontier_v1.json'
+      - 'research/RHRC/closure_batch/first_crossing_generic_falsifiers.py'
+      - 'research/RHRC/countermodels/post204_pair_d_exact_geometry.py'
+      - 'research/RHRC/routes/R003_ccm_bridge/post247_remainder_budget_ratio_scout.py'
+      - 'research/RHRC/routes/R003_ccm_bridge/canonical_source_arb.py'
+      - 'research/RHRC/routes/R003_ccm_bridge/POST281_PR282_REPAIR_AUDIT.json'
+      - 'research/RHRC/routes/R003_ccm_bridge/POST281_PR282_REPAIR_AUDIT.md'
+      - 'research/RHRC/routes/R003_ccm_bridge/check_post281_generated_contact_lean_targets.py'
+      - '.github/workflows/rhrc_post281_generated_contact_frontier.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rhrc-post281-generated-contact-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lean-generated-contact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build generated-contact geometry with complete target receipt
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/check_post281_generated_contact_lean_targets.py \
+            --group generated --output /tmp/generated-lean-targets.json
+      - name: Upload generated-contact Lean target receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: post281-generated-contact-lean-targets
+          path: /tmp/generated-lean-targets.json
+          if-no-files-found: warn
+      - name: Audit generated-contact geometry axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/GlobalParityFirstNegativeBoundary.lean \
+            Zeta23/CCM/FirstCrossingGlobalAlignment.lean \
+            Zeta23/ExceptionalZero/GlobalParityFirstNegativeBoundary.lean
+      - name: Reject proof escapes in generated-contact modules
+        run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure
+
+  lean-production-contact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build production-contact surface with complete target receipt
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/check_post281_generated_contact_lean_targets.py \
+            --group production --output /tmp/production-lean-targets.json
+      - name: Upload production-contact Lean target receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: post281-production-contact-lean-targets
+          path: /tmp/production-lean-targets.json
+          if-no-files-found: warn
+      - name: Audit concrete production contact axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/FirstCrossingProductionTests.lean \
+            Zeta23/CCM/FirstCrossingProductionRemainder.lean \
+            Zeta23/CCM/FirstCrossingProductionFirstVariation.lean \
+            Zeta23/CCM/FirstCrossingProductionResponse.lean \
+            Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean \
+            Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean
+      - name: Reject proof escapes in production-contact modules
+        run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure
+
+  research-generated-contact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install R003 research dependencies
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Check generated-contact build contract
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post281_generated_contact_build.py
+      - name: Compile and unit-test generated-contact research
+        run: |
+          python -m compileall -q research/RHRC/routes/R003_ccm_bridge/post281_generated_contact_frontier.py
+          python -m compileall -q research/RHRC/routes/R003_ccm_bridge/canonical_contact_frontier_arb.py
+          python -m compileall -q research/RHRC/routes/R003_ccm_bridge/certify_post281_generated_contact_frontier.py
+          python -m unittest research/RHRC/routes/R003_ccm_bridge/tests/test_post281_generated_contact_frontier.py -v
+          python research/RHRC/routes/R003_ccm_bridge/check_post281_generated_contact_scope.py \
+            --protocol research/RHRC/routes/R003_ccm_bridge/fixtures/post281_generated_contact_frontier_protocol_v1.json
+      - name: Run generated-contact tests under python -O
+        run: python -O -m unittest research/RHRC/routes/R003_ccm_bridge/tests/test_post281_generated_contact_frontier.py -v
+      - name: Replay inherited production and countermodel controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post280_saturation_frontier.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post280_saturation_frontier_v1.json \
+            --output /tmp/POST280_SATURATION_REPLAY.json
+          python research/RHRC/routes/R003_ccm_bridge/contact_quotient/check_source_remainder_exact.py \
+            --output /tmp/POST280_SOURCE_REMAINDER_REPLAY.json
+          python -m unittest \
+            research/RHRC/routes/R003_ccm_bridge/contact_quotient/tests/test_countermodel_controls.py -v
+      - name: Broad deterministic contact discovery
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post281_generated_contact_frontier.py \
+            --input research/RHRC/routes/R003_ccm_bridge/fixtures/post281_generated_contact_frontier_protocol_v1.json \
+            --output /tmp/POST281_GENERATED_CONTACT_DISCOVERY.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: post281-generated-contact-discovery
+          path: |
+            /tmp/POST281_GENERATED_CONTACT_DISCOVERY.json
+            /tmp/POST280_SATURATION_REPLAY.json
+            /tmp/POST280_SOURCE_REMAINDER_REPLAY.json
+          retention-days: 30
+
+  arb-generated-contact:
+    needs: [research-generated-contact]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install R003 research dependencies
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: post281-generated-contact-discovery
+          path: /tmp/discovery
+      - name: Run bounded Arb replay
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/certify_post281_generated_contact_frontier.py \
+            --protocol research/RHRC/routes/R003_ccm_bridge/fixtures/post281_generated_contact_frontier_protocol_v1.json \
+            --discovery /tmp/discovery/POST281_GENERATED_CONTACT_DISCOVERY.json \
+            --output /tmp/POST281_GENERATED_CONTACT_ARB.json
+          python research/RHRC/routes/R003_ccm_bridge/check_post281_generated_contact_results.py \
+            --discovery /tmp/discovery/POST281_GENERATED_CONTACT_DISCOVERY.json \
+            --arb /tmp/POST281_GENERATED_CONTACT_ARB.json
+      - name: Write exact campaign receipt
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/write_post281_generated_contact_receipt.py \
+            --protocol research/RHRC/routes/R003_ccm_bridge/fixtures/post281_generated_contact_frontier_protocol_v1.json \
+            --discovery /tmp/discovery/POST281_GENERATED_CONTACT_DISCOVERY.json \
+            --arb /tmp/POST281_GENERATED_CONTACT_ARB.json \
+            --output /tmp/POST281_GENERATED_CONTACT_RECEIPT.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: post281-generated-contact-arb
+          path: |
+            /tmp/POST281_GENERATED_CONTACT_ARB.json
+            /tmp/POST281_GENERATED_CONTACT_RECEIPT.json
+            /tmp/discovery/POST281_GENERATED_CONTACT_DISCOVERY.json
+            /tmp/discovery/POST280_SATURATION_REPLAY.json
+            /tmp/discovery/POST280_SOURCE_REMAINDER_REPLAY.json
+            research/RHRC/routes/R003_ccm_bridge/POST281_GENERATED_CONTACT_FRONTIER_PROTOCOL.md
+            research/RHRC/routes/R003_ccm_bridge/POST281_PRODUCTION_CONTACT_OBLIGATIONS.json
+            research/RHRC/routes/R003_ccm_bridge/POST281_PRODUCTION_CONTACT_OBSERVABLES.json
+            research/RHRC/routes/R003_ccm_bridge/POST281_PR282_REPAIR_AUDIT.json
+            research/RHRC/routes/R003_ccm_bridge/POST281_PR282_REPAIR_AUDIT.md
+            research/RHRC/routes/R003_ccm_bridge/fixtures/post281_generated_contact_frontier_protocol_v1.json
+          retention-days: 30
+
+  generated-contact-complete:
+    needs: [lean-generated-contact, lean-production-contact, research-generated-contact, arb-generated-contact]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Generated-contact frontier build completed; research and theorem authority remain separate.'

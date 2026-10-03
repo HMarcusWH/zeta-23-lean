@@ -1,0 +1,66 @@
+{
+  "schema_version": "POST281_PRODUCTION_CONTACT_OBLIGATIONS_v1",
+  "claim_cap": "NO_PROMOTION_FROM_THIS_FILE",
+  "obligations": [
+    {
+      "id": "L01_GLOBAL_BOUNDARY",
+      "status": "CANDIDATE_CI_PENDING",
+      "target": "Zeta23.CCM.exists_globalParityFirstNegativeBoundary_of_signOpposition"
+    },
+    {
+      "id": "L02_ALIGNMENT",
+      "status": "CANDIDATE_CI_PENDING",
+      "target": "Zeta23.CCM.GeneratedGlobalFirstCrossing.selected_global_bottom_zero"
+    },
+    {
+      "id": "L03_OFFLINE_PROVENANCE",
+      "status": "CANDIDATE_CI_PENDING",
+      "target": "Zeta23.ExceptionalZero.nonempty_generatedGlobalFirstCrossing_of_offLine_zero"
+    },
+    {
+      "id": "L04_WEIGHTED_TEST_AUTHORITY",
+      "status": "PARTIAL_INTERFACE_IMPLEMENTED__WEIGHTED_AUTHORITY_OPEN",
+      "target": "Zeta23.CCM.ProductionContactTestAdmissible / weighted derivative-test instances OPEN"
+    },
+    {
+      "id": "L05_CONCRETE_REMAINDER",
+      "status": "CONCRETE_REMAINDER_DEFINED__ADMISSIBILITY_INTRINSIC_IDENTIFICATION_OPEN",
+      "target": "Zeta23.CCM.productionContactRemainderSource / productionContactRemainderValue"
+    },
+    {
+      "id": "L06_FIRST_VARIATION",
+      "status": "DERIVATIVE_OPERATORS_DEFINED__REALIZATION_AND_C2_GLUING_OPEN",
+      "target": "Zeta23.CCM.productionContactFirstVariation / ProductionContactFirstVariationRealized / C2 seam gluing OPEN"
+    },
+    {
+      "id": "L07_STATIONARY_RESPONSE",
+      "status": "CANDIDATE_CI_PENDING",
+      "target": "Zeta23.CCM.existsUnique_stationaryEvenResponse / stationaryEvenResponse_spec"
+    },
+    {
+      "id": "L08_CURVATURE_BRIDGE",
+      "status": "CONCRETE_IDENTITY_INTERFACE_IMPLEMENTED__ARITHMETIC_DERIVATION_OPEN",
+      "target": "Zeta23.CCM.ProductionContactCurvatureArithmeticIdentity (OPEN) / productionOptimizedCurvatureBridge_of_concreteIdentity (conditional)"
+    },
+    {
+      "id": "L09_STRICT_EVEN_FRONTIER",
+      "status": "CONDITIONAL_FRONTIER_IMPLEMENTED__BRIDGE_AND_SATURATION_OPEN",
+      "target": "Zeta23.CCM.GeneratedStrictEvenContact.frontier / stationary_saturation_frontier (conditional)"
+    },
+    {
+      "id": "OBS060O_SATURATION_EXCLUSION",
+      "status": "OPEN",
+      "terminal": false
+    },
+    {
+      "id": "RH",
+      "status": "OPEN",
+      "terminal": true
+    }
+  ],
+  "notes": [
+    "Candidate statuses are not theorem authority until exact-head Lean/axiom/proof-escape gates pass.",
+    "The concrete curvature-arithmetic identity is still OPEN; defining its proposition is not a proof.",
+    "RH remains OPEN."
+  ]
+}
