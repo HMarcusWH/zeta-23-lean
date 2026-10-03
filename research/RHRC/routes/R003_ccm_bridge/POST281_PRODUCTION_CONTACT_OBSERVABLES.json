@@ -26,27 +26,31 @@
       "arb_status": "NOT_YET_RIGOROUSLY_CERTIFIED_ON_GENERATED_CONTACT",
       "lean_source": "Zeta23.CCM.productionStrictEvenSourceValue; Zeta23.CCM.productionStrictEvenSourceValue_eq_oddEnergy_of_even_zero_eigenmode",
       "floating_replay_source": "post280_saturation_frontier.py::evaluate[Q_arithmetic,Q_spectral_reduced]",
-      "theorem_authority_scope": "exact canonical strict-even zero-mode hypotheses only"
+      "theorem_authority_scope": "exact canonical strict-even zero-mode hypotheses only",
+      "generated_contact_rigorous_status": "UNIMPLEMENTED_FAIL_CLOSED"
     },
     "remainder": {
       "status": "TO_WIRE_WITH_FORMAL_REMAINDER",
       "arb_status": "NOT_YET_RIGOROUSLY_CERTIFIED_ON_GENERATED_CONTACT",
       "lean_source": "Zeta23.CCM.productionContactRemainderSource / productionContactRemainderValue",
       "floating_replay_source": "post280_saturation_frontier.py::evaluate[production_arithmetic_remainder]",
-      "theorem_authority_scope": "value object defined; weighted explicit-formula admissibility remains open"
+      "theorem_authority_scope": "value object defined; weighted explicit-formula admissibility remains open",
+      "generated_contact_rigorous_status": "UNIMPLEMENTED_FAIL_CLOSED"
     },
     "saturation_gap": {
       "status": "TO_WIRE_AFTER_FORMAL_BRIDGE",
       "arb_status": "NOT_YET_RIGOROUSLY_CERTIFIED_ON_GENERATED_CONTACT",
       "lean_source": "Zeta23.CCM.productionContactSaturationGap / ProductionContactCurvatureArithmeticIdentity",
       "floating_replay_source": "post280_saturation_frontier.py::evaluate[delta_sat_proxy]",
-      "theorem_authority_scope": "curvature equality remains open"
+      "theorem_authority_scope": "curvature equality remains open",
+      "generated_contact_rigorous_status": "UNIMPLEMENTED_FAIL_CLOSED"
     },
     "rho_sat": {
       "eligibility": "Q strictly positive and numerator/gap separately resolved",
       "arb_status": "NOT_YET_RIGOROUSLY_CERTIFIED_ON_GENERATED_CONTACT",
       "definition": "L^2 * A_L[R] / ((2*pi)^2 * Q)",
-      "theorem_authority_scope": "derived diagnostic only after numerator and denominator are independently certified"
+      "theorem_authority_scope": "derived diagnostic only after numerator and denominator are independently certified",
+      "generated_contact_rigorous_status": "UNIMPLEMENTED_FAIL_CLOSED"
     },
     "current_prime_frozen_state_ablation": {
       "source": "selected canonical floating state; remove only current-Q atom with L,K,z fixed",
@@ -62,6 +66,23 @@
       "source": "synthetic transverse/cubic/quartic/tie/odd-reflected/small-complement families",
       "status": "IMPLEMENTED_RESEARCH_QUALIFICATION",
       "canonical_arithmetic_authority": false
+    },
+    "response": {
+      "lean_source": "Zeta23.CCM.stationaryEvenResponse",
+      "arb_status": "NOT_YET_RIGOROUSLY_CERTIFIED_ON_GENERATED_CONTACT",
+      "status": "FORMAL_CANDIDATE_ONLY_UNTIL_EXACT_HEAD_CI"
+    },
+    "optimized_curvature": {
+      "lean_source": "Zeta23.CCM.productionContactOptimizedCurvature",
+      "arb_status": "NOT_YET_RIGOROUSLY_CERTIFIED_ON_GENERATED_CONTACT",
+      "status": "FORMAL_VALUE_DEFINED__ARITHMETIC_IDENTITY_OPEN"
     }
+  },
+  "status_axes": {
+    "surface_presence": "IMPLEMENTED",
+    "build_validity": "CI_PENDING_EXACT_HEAD",
+    "obligation_discharge": "SEE_POST281_PRODUCTION_CONTACT_OBLIGATIONS",
+    "research_integrity": "FAIL_CLOSED_CERTIFIER_REQUIRED",
+    "theorem_authority": "COMPILER_AND_AXIOM_GATES_ONLY"
   }
 }

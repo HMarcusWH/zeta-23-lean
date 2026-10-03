@@ -34,7 +34,8 @@ class Post278SyncTests(unittest.TestCase):
             candidate["status"],
             "GENERATED_PRODUCTION_CONTACT_FRONTIER_CANDIDATE",
         )
-        self.assertEqual(candidate["theorem_validation"], "CI_PENDING")
+        self.assertEqual(candidate["theorem_validation"], "CI_PENDING_EXACT_HEAD_RUNTIME_RECEIPT_REQUIRED")
+        self.assertEqual(candidate["theorem_validation_head"], "RUNTIME_PR_HEAD_REQUIRED")
         self.assertEqual(state["merged_control_anchor"]["pr"], 117)
         self.assertEqual(state["terminal_claim"], "RH_OPEN")
 

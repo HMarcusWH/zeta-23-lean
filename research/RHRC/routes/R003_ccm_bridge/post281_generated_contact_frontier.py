@@ -188,6 +188,8 @@ def current_prime_interventions(L: float, Q: int, K: int) -> dict:
             "selected_parity_before": base["selected_parity"],
             "selected_parity_after": after["selected_parity"],
         },
+        "balance_status": "NOT_AVAILABLE_UNTIL_FORMAL_RESPONSE_REMAINDER_CURVATURE_BRIDGE",
+        "correlated_channel_cross_terms_status": "NOT_AVAILABLE_UNTIL_FORMAL_BRIDGE",
         "authority": "EXPERIMENTAL_FLOATING_ABLATION_ONLY",
     }
 
@@ -287,7 +289,7 @@ def discover(protocol: dict) -> dict:
             ga, gb = a["global_bottom"], b["global_bottom"]
             if ga == 0.0 or gb == 0.0 or (ga < 0.0 < gb) or (gb < 0.0 < ga):
                 sign_brackets.append({
-                    "reason": "sign_bracket", "Q": Q, "K": K,
+                    "reason": "sign_bracket", "model": "CANONICAL", "Q": Q, "K": K,
                     "L_left": a["L"], "L_right": b["L"],
                     "fraction_left": a["cell_fraction"],
                     "fraction_right": b["cell_fraction"],
@@ -360,7 +362,7 @@ def discover(protocol: dict) -> dict:
     ]
     for reason, keyfun in criteria:
         records = [{
-            "reason": reason, "Q": r["Q"], "K": r["K"], "L": r["L"],
+            "reason": reason, "model": "CANONICAL", "Q": r["Q"], "K": r["K"], "L": r["L"],
             "cell_fraction": r["cell_fraction"],
             "cell_left_symbolic": ("1/512" if r["Q"] == 1 else f"log({r['Q']})"),
             "cell_right_symbolic": f"log({r['Q'] + 1})",
@@ -387,7 +389,7 @@ def discover(protocol: dict) -> dict:
         if candidates:
             r = min(candidates, key=lambda x:(abs(x["global_bottom"]),x["Q"],x["L"]))
             diversity_records.append({
-                "reason":"dimension_diversity","Q":r["Q"],"K":r["K"],"L":r["L"],
+                "reason":"dimension_diversity","model":"CANONICAL","Q":r["Q"],"K":r["K"],"L":r["L"],
                 "cell_fraction":r["cell_fraction"],
                 "cell_left_symbolic":("1/512" if r["Q"]==1 else f"log({r['Q']})"),
                 "cell_right_symbolic":f"log({r['Q']+1})",

@@ -21,8 +21,9 @@
     "status": "GENERATED_PRODUCTION_CONTACT_FRONTIER_CANDIDATE",
     "theorem_family": "GENERATED_GLOBAL_CONTACT_PRODUCTION_DERIVATIVE_RESPONSE_CURVATURE_FRONTIER",
     "terminal_claim_change": false,
-    "theorem_validation_head": "b297ce6d7dc12ea27686b5732c54caf40d1337bf",
-    "theorem_validation": "CI_PENDING"
+    "theorem_validation_head": "RUNTIME_PR_HEAD_REQUIRED",
+    "theorem_validation": "CI_PENDING_EXACT_HEAD_RUNTIME_RECEIPT_REQUIRED",
+    "semantic_definition_of_done": "NOT_YET_DISCHARGED"
   },
   "latest_research_evidence": {
     "pr": 223,
