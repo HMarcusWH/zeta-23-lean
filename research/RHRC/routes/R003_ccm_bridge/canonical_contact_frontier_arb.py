@@ -126,8 +126,14 @@ def certify_simple_ground_jet(L: arb, K: int, Q: int, parity: str, prec: int) ->
     return rec
 
 
-def certify_point(L_value: float, Q: int, K: int, prec: int) -> dict:
-    L = arb(repr(float(L_value)))
+def certify_point(L_value, Q: int, K: int, prec: int) -> dict:
+    ctx.prec = int(prec)
+    if isinstance(L_value, arb):
+        L = L_value
+        L_float = float(L.mid())
+    else:
+        L = arb(repr(float(L_value)))
+        L_float = float(L_value)
     even = certify_simple_ground_jet(L,K,Q,"even",prec)
     odd = certify_simple_ground_jet(L,K,Q,"odd",prec)
     if "lambda_min" not in even or "lambda_min" not in odd:
@@ -138,7 +144,7 @@ def certify_point(L_value: float, Q: int, K: int, prec: int) -> dict:
         odd_strict = lo["upper"] < le["lower"]
         regime = "EVEN_STRICT" if even_strict else "ODD_STRICT" if odd_strict else "PARITY_UNRESOLVED"
     return {
-        "Q":int(Q),"K":int(K),"L_float":float(L_value),"precision_bits":int(prec),
+        "Q":int(Q),"K":int(K),"L_float":L_float,"precision_bits":int(prec),
         "even":even,"odd":odd,
         "spectral_regime":regime,
         "claim_cap":"EXPERIMENTAL_SIGNAL_ONLY",

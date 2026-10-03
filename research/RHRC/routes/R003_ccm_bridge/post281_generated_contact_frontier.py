@@ -104,6 +104,8 @@ def evaluate(L: float, Q: int, K: int, model: str, gamma: float, delta: float) -
         ) if any(x is not None for x in (even["sector_gap"], odd["sector_gap"])) else None
     return {
         "Q": Q, "K": K, "L": float(L), "model": model,
+        "cell_left_symbolic": ("1/512" if Q == 1 else f"log({Q})"),
+        "cell_right_symbolic": f"log({Q + 1})",
         "selected_parity_float": selected,
         "global_bottom": float(ground),
         "parity_separation": abs(float(even["bottom"] - odd["bottom"])),
@@ -287,6 +289,12 @@ def discover(protocol: dict) -> dict:
                 sign_brackets.append({
                     "reason": "sign_bracket", "Q": Q, "K": K,
                     "L_left": a["L"], "L_right": b["L"],
+                    "fraction_left": a["cell_fraction"],
+                    "fraction_right": b["cell_fraction"],
+                    "cell_left_symbolic": (
+                        "1/512" if Q == 1 else f"log({Q})"
+                    ),
+                    "cell_right_symbolic": f"log({Q + 1})",
                     "g_left": ga, "g_right": gb,
                 })
 
@@ -353,6 +361,9 @@ def discover(protocol: dict) -> dict:
     for reason, keyfun in criteria:
         records = [{
             "reason": reason, "Q": r["Q"], "K": r["K"], "L": r["L"],
+            "cell_fraction": r["cell_fraction"],
+            "cell_left_symbolic": ("1/512" if r["Q"] == 1 else f"log({r['Q']})"),
+            "cell_right_symbolic": f"log({r['Q'] + 1})",
             "global_bottom": r["global_bottom"],
             "parity_separation": r["parity_separation"],
             "selected_sector_gap": r["selected_sector_gap"],
@@ -377,6 +388,9 @@ def discover(protocol: dict) -> dict:
             r = min(candidates, key=lambda x:(abs(x["global_bottom"]),x["Q"],x["L"]))
             diversity_records.append({
                 "reason":"dimension_diversity","Q":r["Q"],"K":r["K"],"L":r["L"],
+                "cell_fraction":r["cell_fraction"],
+                "cell_left_symbolic":("1/512" if r["Q"]==1 else f"log({r['Q']})"),
+                "cell_right_symbolic":f"log({r['Q']+1})",
                 "global_bottom":r["global_bottom"],
                 "parity_separation":r["parity_separation"],
                 "selected_sector_gap":r["selected_sector_gap"],

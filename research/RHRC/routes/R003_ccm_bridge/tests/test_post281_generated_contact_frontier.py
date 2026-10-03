@@ -20,6 +20,17 @@ class GeneratedContactFrontierTests(unittest.TestCase):
         self.assertEqual(d["K"],[2,3,4,5,6])
         self.assertEqual(d["interior_fractions"]["numerators"],list(range(1,16)))
 
+    def test_sign_brackets_keep_exact_cell_fractions(self):
+        # Exact-cell provenance is required before Arb replay; floating L alone
+        # must never be the only location identity.
+        p=dict(self.p)
+        out=g.discover(p)
+        for row in out["sign_brackets"][:20]:
+            self.assertIn("fraction_left",row)
+            self.assertIn("fraction_right",row)
+            self.assertEqual(row["fraction_left"][1],16)
+            self.assertEqual(row["fraction_right"][1],16)
+
     def test_q1_starts_at_positive_base(self):
         lo,hi=g.cell_bounds(1)
         self.assertAlmostEqual(lo,1/512)

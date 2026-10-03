@@ -9,19 +9,38 @@ not automatically the first global boundary.
 from __future__ import annotations
 import argparse, json
 from pathlib import Path
+from flint import arb, ctx
 from canonical_contact_frontier_arb import certify_point, global_bottom_bounds, global_bottom_sign
 
 SCHEMA="POST281_GENERATED_CONTACT_ARB_v1"
 
-def ladder_point(L,Q,K,precisions):
+def exact_cell_point(Q:int, fraction:list[int], prec:int):
+    ctx.prec=int(prec)
+    j,den=int(fraction[0]),int(fraction[1])
+    lo=arb(1)/512 if Q==1 else arb(Q).log()
+    hi=arb(Q+1).log()
+    return lo+(hi-lo)*arb(j)/den
+
+def ladder_point(L,Q,K,precisions,*,fraction=None):
     attempts=[]
     final=None
+    exact_spec=None
+    last_L=float(L)
     for prec in precisions:
-        rec=certify_point(float(L),int(Q),int(K),int(prec))
+        if fraction is not None:
+            Larg=exact_cell_point(int(Q),fraction,int(prec))
+            last_L=float(Larg.mid())
+            exact_spec={"Q":int(Q),"fraction":[int(fraction[0]),int(fraction[1])],
+                        "left":"1/512" if int(Q)==1 else f"log({int(Q)})",
+                        "right":f"log({int(Q)+1})"}
+        else:
+            Larg=float(L)
+        rec=certify_point(Larg,int(Q),int(K),int(prec))
         attempts.append(rec); final=rec
         if global_bottom_sign(rec)!="UNRESOLVED":
             break
-    return {"L":float(L),"attempts":attempts,"final":final,
+    return {"L":last_L,"exact_cell_spec":exact_spec,
+            "attempts":attempts,"final":final,
             "global_bounds":global_bottom_bounds(final),
             "global_sign":global_bottom_sign(final)}
 
@@ -29,8 +48,10 @@ def certify_bracket(cand, protocol):
     Q=int(cand["Q"]); K=int(cand["K"])
     precisions=protocol["arb"]["precision_bits"]
     cap=int(protocol["arb"]["root_or_subdivision_cap_per_neighborhood"])
-    left=ladder_point(cand["L_left"],Q,K,precisions)
-    right=ladder_point(cand["L_right"],Q,K,precisions)
+    left=ladder_point(cand["L_left"],Q,K,precisions,
+                      fraction=cand.get("fraction_left"))
+    right=ladder_point(cand["L_right"],Q,K,precisions,
+                       fraction=cand.get("fraction_right"))
     opposite={left["global_sign"],right["global_sign"]}=={"POSITIVE","NEGATIVE"}
     steps=[]
     if opposite:
@@ -63,7 +84,8 @@ def run(protocol:dict, discovery:dict)->dict:
             rows.append(certify_bracket(cand,protocol))
             continue
         point=ladder_point(cand["L"],int(cand["Q"]),int(cand["K"]),
-                           protocol["arb"]["precision_bits"])
+                           protocol["arb"]["precision_bits"],
+                           fraction=cand.get("cell_fraction"))
         rows.append({"candidate":cand,"point":point,
                      "final":point["final"],
                      "contact_status":"NEAR_CONTACT_PROXY",
