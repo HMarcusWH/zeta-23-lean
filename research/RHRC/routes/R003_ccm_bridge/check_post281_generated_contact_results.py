@@ -45,7 +45,8 @@ def validate_interval_records(x,path="root"):
                 ehi=_decimal(x["upper_exact"],path+"/upper_exact")
                 if elo>ehi:
                     fail("INVERTED_INTERVAL",f"{path}: exact lower>upper")
-                if float(lo)>float(elo) or float(hi)<float(ehi):
+                dlo=Decimal(str(lo)); dhi=Decimal(str(hi))
+                if dlo>elo or dhi<ehi:
                     fail("NONENCLOSING_SERIALIZATION",f"{path}: display interval fails to enclose exact endpoints")
             if "rad" in x:
                 rad=_decimal(x["rad"],path+"/rad")

@@ -67,8 +67,9 @@ def main() -> int:
     arb=json.loads(arb_path.read_text(encoding="utf-8"))
     checkout_head=git("rev-parse","HEAD")
     tree=git("rev-parse","HEAD^{tree}")
-    base_sha=git("rev-parse","HEAD^1") if os.environ.get("GITHUB_ACTIONS") else None
-    pr_head=git("rev-parse","HEAD^2") if os.environ.get("GITHUB_ACTIONS") else checkout_head
+    is_pr_event=os.environ.get("GITHUB_EVENT_NAME")=="pull_request"
+    base_sha=git("rev-parse","HEAD^1") if is_pr_event else None
+    pr_head=git("rev-parse","HEAD^2") if is_pr_event else checkout_head
     status=git("status","--porcelain")
     if status:
         raise SystemExit("generated-contact receipt: working tree is not clean")

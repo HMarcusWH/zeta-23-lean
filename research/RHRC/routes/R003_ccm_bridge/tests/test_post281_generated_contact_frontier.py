@@ -167,6 +167,9 @@ class GeneratedContactFrontierTests(unittest.TestCase):
         x=copy.deepcopy(a); lm=x["rows"][0]["point"]["final"]["even"]["lambda_min"]
         lm["lower"]=lm["upper"]=0.015; lm["rad"]="0.005"
         mutations.append(("collapsed_interval",d,x))
+        x=copy.deepcopy(a); lm=x["rows"][0]["point"]["final"]["even"]["lambda_min"]
+        lm["lower"]=0.011; lm["upper"]=0.019
+        mutations.append(("non_enclosing_serialization",d,x))
         x=copy.deepcopy(a); x["rows"][0]["point"]["final"]["even"]["lambda_min"]["mid"]="nan"
         mutations.append(("nonfinite_string",d,x))
 
