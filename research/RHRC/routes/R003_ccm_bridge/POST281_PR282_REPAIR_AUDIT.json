@@ -1,0 +1,128 @@
+{
+  "schema_version": "POST281_PR282_REPAIR_AUDIT_v1",
+  "exact_base": {
+    "pr": 281,
+    "merge": "0c22ae4101d7ad3e0b1a81029fff1472c52a5750",
+    "tree": "f729b05e6fee9f6fbeb9d18a65e26742086244f8"
+  },
+  "claim_firewall": "RH_OPEN",
+  "status_semantics": {
+    "FIXED_PENDING_CI": "implementation repaired but exact current head still needs compiler/workflow validation",
+    "OPEN_MATHEMATICAL_OBLIGATION_FAIL_CLOSED": "not a software defect; no theorem promotion until the actual mathematics is proved",
+    "OPEN_DEPENDS_ON_M02_M03_FAIL_CLOSED": "measurement intentionally unavailable until prerequisite formal bridge exists"
+  },
+  "items": [
+    {
+      "id": "L01",
+      "description": "response conjugate-symmetry orientation",
+      "status": "FIXED_PENDING_CI"
+    },
+    {
+      "id": "L02",
+      "description": "response kernel orthogonality orientation",
+      "status": "FIXED_PENDING_CI"
+    },
+    {
+      "id": "L03",
+      "description": "Type-valued flagship theorem",
+      "status": "FIXED_PENDING_CI"
+    },
+    {
+      "id": "L04",
+      "description": "downstream Lean errors masked by first dependency",
+      "status": "FIXED_DIAGNOSTIC_ALL_TARGET_RECEIPT_PENDING_CI"
+    },
+    {
+      "id": "M01",
+      "description": "ambient-entry total derivative unsafe at seams",
+      "status": "FIXED_FAIL_CLOSED_COMPRESSED_DERIVATIVE_REALIZATION_PENDING_CI"
+    },
+    {
+      "id": "M02",
+      "description": "weighted explicit-formula authority and intrinsic remainder identification",
+      "status": "OPEN_MATHEMATICAL_OBLIGATION_FAIL_CLOSED"
+    },
+    {
+      "id": "M03",
+      "description": "curvature-arithmetic identity and outgoing-contact kappa=0",
+      "status": "OPEN_MATHEMATICAL_OBLIGATION_FAIL_CLOSED"
+    },
+    {
+      "id": "M04",
+      "description": "strict-even contact required caller-supplied kernel",
+      "status": "FIXED_GENERATED_NORMALIZED_KERNEL_CONSTRUCTOR_PENDING_CI"
+    },
+    {
+      "id": "N01",
+      "description": "lossy interval serialization",
+      "status": "FIXED_OUTWARD_AND_EXACT_ENDPOINT_SERIALIZATION_PENDING_CI"
+    },
+    {
+      "id": "N02",
+      "description": "float residual underflow",
+      "status": "FIXED_ARB_CERTIFICATION_ARITHMETIC_PENDING_CI"
+    },
+    {
+      "id": "N03",
+      "description": "uncertified eigenvector normalization",
+      "status": "FIXED_RAYLEIGH_QUOTIENT_NORM_AND_ERROR_BUDGET_PENDING_CI"
+    },
+    {
+      "id": "V01",
+      "description": "malformed artifacts accepted",
+      "status": "FIXED_FAIL_CLOSED_SCHEMA_AND_MUTATION_TESTS_PENDING_CI"
+    },
+    {
+      "id": "V02",
+      "description": "assert disabled under python -O",
+      "status": "FIXED_EXPLICIT_VALIDATION_PLUS_OPTIMIZED_PYTHON_TEST_PENDING_CI"
+    },
+    {
+      "id": "V03",
+      "description": "exact-coordinate validation incomplete",
+      "status": "FIXED_EXACT_RATIONAL_CELL_VALIDATION_PENDING_CI"
+    },
+    {
+      "id": "V04",
+      "description": "precision ladder stopped before J1 resolved",
+      "status": "FIXED_PER_OBSERVABLE_RESOLUTION_PENDING_CI"
+    },
+    {
+      "id": "X01",
+      "description": "generic controls bypassed qualification semantics",
+      "status": "FIXED_GENERIC_CONTROL_QUALIFICATION_PENDING_CI"
+    },
+    {
+      "id": "X02",
+      "description": "current-q ablation lacked full contact-balance quantities",
+      "status": "OPEN_DEPENDS_ON_M02_M03_FAIL_CLOSED"
+    },
+    {
+      "id": "X03",
+      "description": "rigorous generated-contact Q/R/response/kappa/Delta/rho absent",
+      "status": "OPEN_DEPENDS_ON_M02_M03_FAIL_CLOSED"
+    },
+    {
+      "id": "G01",
+      "description": "mixed-generation RHKG artifact on materializer failure",
+      "status": "FIXED_TRANSACTIONAL_RESTORE_AND_SUCCESS_ONLY_UPLOAD_PENDING_CI"
+    },
+    {
+      "id": "G02",
+      "description": "campaign provenance under-specified",
+      "status": "FIXED_PR_HEAD_BASE_MERGE_TREE_HASH_AND_RUNTIME_RECEIPT_PENDING_CI"
+    },
+    {
+      "id": "W01",
+      "description": "stop-at-first workflows hide downstream errors",
+      "status": "FIXED_INDEPENDENT_TARGET_RECEIPTS_PENDING_CI"
+    },
+    {
+      "id": "W02",
+      "description": "surface presence conflated with semantic completion/stale candidate head",
+      "status": "FIXED_SEPARATE_SEMANTIC_GATES_AND_RUNTIME_HEAD_PENDING_CI"
+    }
+  ],
+  "definition_of_repair_complete": "All 22 audited issues must occur exactly once; software/integrity issues must be repaired and mathematical obligations must remain explicitly fail-closed until theorem-backed.",
+  "terminal_claim": "RH_OPEN"
+}
