@@ -2,7 +2,7 @@ import Zeta23.CCM.FirstCrossingProductionArithmetic
 import Zeta23.CCM.DictionaryResidualSecondOrderGluing
 import Zeta23.CCM.SourceDerivativeTransport
 import Zeta23.CCM.MixedSourceDerivativeTransport
-import Mathlib.MeasureTheory.Integral.IntervalIntegral
+import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
 
 noncomputable section
 
