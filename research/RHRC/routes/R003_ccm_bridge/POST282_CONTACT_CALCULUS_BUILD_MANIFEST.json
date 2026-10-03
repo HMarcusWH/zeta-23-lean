@@ -1,0 +1,300 @@
+{
+  "schema": "RH_POST282_CONTACT_CALCULUS_SPEC_v1",
+  "status": "IMPLEMENTED_CANDIDATE_PENDING_CI",
+  "repository": "HMarcusWH/zeta-23-lean",
+  "base": {
+    "review_date": "2026-10-04",
+    "repo": "HMarcusWH/zeta-23-lean",
+    "pr": 282,
+    "state": "MERGED",
+    "merged_at": "2026-10-03T22:13:50Z",
+    "validated_head": "de2869d1614d71b5d851d7088be514901af11b74",
+    "test_merge": "e84716bb77dc8579bdb765e2de29e7a206d2b6cf",
+    "merge_commit": "01871f7d2256b1eac2dbd7967346954367c8eef9",
+    "main_at_review": "01871f7d2256b1eac2dbd7967346954367c8eef9",
+    "validated_test_and_merge_tree": "c7749d37c4b63270818c3fb0d7fb5dbc22638790",
+    "base_281": "0c22ae4101d7ad3e0b1a81029fff1472c52a5750",
+    "base_tree_281": "f729b05e6fee9f6fbeb9d18a65e26742086244f8",
+    "compiler": "leanprover/lean4:v4.33.0-rc2",
+    "formal_evidence": "Existing exact-tree GitHub compiler and axiom/proof-escape results; no new local Lean build in this planning turn.",
+    "proof_boundary": "RH_OPEN",
+    "new_pr_number": 283,
+    "new_branch": "proof/post282-canonical-contact-calculus",
+    "no_repository_writes_performed": false
+  },
+  "terminal_claim": "RH_OPEN",
+  "number_provisional": 283,
+  "branch": "proof/post282-canonical-contact-calculus",
+  "lean_add": [
+    "Zeta23/CCM/CanonicalCompressedApertureC2.lean",
+    "Zeta23/CCM/ProductionWeightedTestCalculus.lean",
+    "Zeta23/CCM/StationarySchurContact.lean",
+    "Zeta23/CCM/FirstCrossingInheritedStationarity.lean",
+    "Zeta23/RHRC/ContactCalculusContract.lean"
+  ],
+  "lean_modify": [
+    "Zeta23/CCM/FirstCrossingProductionTests.lean",
+    "Zeta23/CCM/FirstCrossingProductionRemainder.lean",
+    "Zeta23/CCM/FirstCrossingProductionFirstVariation.lean",
+    "Zeta23/CCM/FirstCrossingProductionResponse.lean",
+    "Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean",
+    "Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean"
+  ],
+  "research_and_doc_add": [
+    "research/RHRC/routes/R003_ccm_bridge/canonical_contact_balance_arb.py",
+    "research/RHRC/routes/R003_ccm_bridge/post282_contact_calculus.py",
+    "research/RHRC/routes/R003_ccm_bridge/check_post282_contact_calculus_contract.py",
+    "research/RHRC/routes/R003_ccm_bridge/write_post282_contact_calculus_receipt.py",
+    "research/RHRC/routes/R003_ccm_bridge/fixtures/post282_contact_calculus_v1.json",
+    "research/RHRC/routes/R003_ccm_bridge/tests/test_post282_contact_calculus.py",
+    "research/RHRC/routes/R003_ccm_bridge/POST282_CONTACT_CALCULUS_BUILD_SPEC.md",
+    "research/RHRC/routes/R003_ccm_bridge/POST282_CONTACT_CALCULUS_OBLIGATIONS.json",
+    "research/RHRC/routes/R003_ccm_bridge/POST282_CONTACT_CALCULUS_PROTOCOL.md",
+    "research/RHRC/routes/R003_ccm_bridge/POST282_MERGED_WORKFLOW_HARVEST.json",
+    "research/RHRC/routes/R003_ccm_bridge/POST282_CONTACT_CALCULUS_POST_GREEN.md"
+  ],
+  "workflow_add": ".github/workflows/rhrc_post282_contact_calculus.yml",
+  "tasks": [
+    {
+      "id": "F01",
+      "title": "Compressed operator C2",
+      "depends_on": [],
+      "status": "PLANNED",
+      "acceptance_kind": "EXACT_COMPILER_AND_SCOPE"
+    },
+    {
+      "id": "F02",
+      "title": "Weighted physical-test calculus",
+      "depends_on": [],
+      "status": "PLANNED",
+      "acceptance_kind": "EXACT_COMPILER_AND_SCOPE"
+    },
+    {
+      "id": "F03",
+      "title": "Concrete remainder and normalization",
+      "depends_on": [
+        "F02"
+      ],
+      "status": "PLANNED",
+      "acceptance_kind": "EXACT_COMPILER_AND_SCOPE"
+    },
+    {
+      "id": "F04",
+      "title": "Actual derivative and general pair balance",
+      "depends_on": [
+        "F01",
+        "F02",
+        "F03"
+      ],
+      "status": "PLANNED",
+      "acceptance_kind": "EXACT_COMPILER_AND_SCOPE"
+    },
+    {
+      "id": "F05",
+      "title": "Response and stationary Schur necessity",
+      "depends_on": [
+        "F01",
+        "F04"
+      ],
+      "status": "PLANNED",
+      "acceptance_kind": "EXACT_COMPILER_AND_SCOPE"
+    },
+    {
+      "id": "F06",
+      "title": "Inherited first-variation restriction",
+      "depends_on": [
+        "F01",
+        "F04"
+      ],
+      "status": "PLANNED",
+      "acceptance_kind": "EXACT_COMPILER_AND_SCOPE"
+    },
+    {
+      "id": "F07",
+      "title": "Completed frontier and exact contract",
+      "depends_on": [
+        "F03",
+        "F04",
+        "F05",
+        "F06"
+      ],
+      "status": "PLANNED",
+      "acceptance_kind": "EXACT_COMPILER_AND_SCOPE"
+    },
+    {
+      "id": "N01",
+      "title": "Exact codec",
+      "depends_on": [],
+      "status": "PLANNED",
+      "acceptance_kind": "CERTIFIED_IMPLEMENTATION_AND_REPLAY"
+    },
+    {
+      "id": "N02",
+      "title": "Independent frozen calibration",
+      "depends_on": [
+        "N01"
+      ],
+      "status": "PLANNED",
+      "acceptance_kind": "CERTIFIED_IMPLEMENTATION_AND_REPLAY"
+    },
+    {
+      "id": "N03",
+      "title": "Validated response and physical balance",
+      "depends_on": [
+        "F04",
+        "N01",
+        "N02"
+      ],
+      "status": "PLANNED",
+      "acceptance_kind": "CERTIFIED_IMPLEMENTATION_AND_REPLAY"
+    },
+    {
+      "id": "N04",
+      "title": "Matched adversarial controls",
+      "depends_on": [
+        "N01",
+        "N03"
+      ],
+      "status": "PLANNED",
+      "acceptance_kind": "CERTIFIED_IMPLEMENTATION_AND_REPLAY"
+    },
+    {
+      "id": "X01",
+      "title": "Inherited response arithmetic investigation",
+      "depends_on": [
+        "F06",
+        "N03",
+        "N04"
+      ],
+      "status": "PLANNED",
+      "acceptance_kind": "BOUNDED_HYPOTHESIS_TEST_NO_REQUIRED_POSITIVE_SCIENCE_RESULT"
+    },
+    {
+      "id": "X02",
+      "title": "Explicit dilation residual investigation",
+      "depends_on": [
+        "N03",
+        "N04"
+      ],
+      "status": "PLANNED",
+      "acceptance_kind": "BOUNDED_HYPOTHESIS_TEST_NO_REQUIRED_POSITIVE_SCIENCE_RESULT"
+    }
+  ],
+  "shared_files_to_modify": [
+    "research/RHRC/closure_batch/interval_codec.py",
+    "research/RHRC/closure_batch/test_interval_codec.py",
+    "research/RHRC/routes/R003_ccm_bridge/canonical_contact_frontier_arb.py",
+    "research/RHRC/routes/R003_ccm_bridge/check_post281_generated_contact_results.py",
+    "research/RHRC/routes/R003_ccm_bridge/check_post281_generated_contact_build.py",
+    "research/RHRC/routes/R003_ccm_bridge/tests/test_post281_generated_contact_frontier.py",
+    "research/RHRC/tools/run_suite.py",
+    "research/RHRC/closure_batch/check_lean_proof_escapes.py",
+    "research/RHRC/closure_batch/test_lean_proof_escapes.py",
+    "research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json",
+    ".github/workflows/rhrc.yml",
+    ".github/workflows/rhrc_closure_campaign.yml",
+    ".github/workflows/rhrc_post281_generated_contact_frontier.yml",
+    "research/RHRC/control_v2/CONTROL_STATE.json"
+  ],
+  "conditional_binding_updates": [
+    "research/RHRC/CLAIM_REGISTRY.json",
+    "research/RHRC/R003_PROMOTED_BINDINGS.json",
+    "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+    "Zeta23/CCM/ClaimBindings.lean",
+    "Zeta23/RHRC/RegisteredClaimBindings.lean",
+    "Zeta23/RHRC/ClosureObligationBindings.lean",
+    "research/RHRC/closure_batch/OBLIGATIONS.json"
+  ],
+  "current_state_tests": [
+    "research/RHRC/control_v2/tests/test_control.py",
+    "research/RHRC/control_v2/tests/test_current_state_surfaces.py",
+    "research/RHRC/control_v2/tests/test_post272_sync.py",
+    "research/RHRC/control_v2/tests/test_post278_sync.py"
+  ],
+  "migration": {
+    "old_ambient_derivative_candidates": "RETAIN_LEGACY_MEANING",
+    "old_curvature": "RETAIN_LEGACY_MEANING",
+    "legacy_realization_at_seams": "NOT_UNIVERSALLY_PROVED; REPLACED_BY_CORRECT_OBJECT",
+    "old_scalar_fixed_energy_derivatives": "REUSE_AND_PROVE_ACTUAL_COMPATIBILITY",
+    "current_completion_gate": "VERSIONED_SUCCESSOR_WITH_EXACT_BINDINGS",
+    "historical_evidence": "IMMUTABLE_WITH_SCOPE_SPECIFIC_SUCCESSOR_LINKS"
+  },
+  "forbidden_supplied_frontier_premises": [
+    "RH",
+    "RH_equivalent_positivity",
+    "endpoint_barrier",
+    "legacy_C2_realization",
+    "curvature_arithmetic_identity",
+    "kappa_zero",
+    "arbitrary_kappa",
+    "arbitrary_remainder",
+    "unproved_source_Q_equality"
+  ],
+  "must_preserve": [
+    "original_generated_contact_constructor_fields",
+    "complex_carrier_and_phase",
+    "same_L_K_z_w",
+    "k_eq_N",
+    "smallest_complement",
+    "odd_and_tie_open_branches",
+    "OBS060N_meaning",
+    "OBS060O_open_exclusion",
+    "RH_OPEN"
+  ],
+  "numerical_defaults": {
+    "precision_bits": [
+      192,
+      384,
+      768
+    ],
+    "refinement_cap_per_neighborhood": 96,
+    "additional_neighborhood_cap": 12,
+    "primary_panel": "exact #282 selected list from artifact 11282789337 plus predeclared seam/calibration/controls",
+    "source_artifact_zip_sha256": "67a8dc2e766e2c7ea6ec02809ade4e4d530b055be382901637368e4cf9711e39",
+    "independent_K2_log2_absolute_width_target": "2^-80",
+    "budgets_are_proposed": true
+  },
+  "workflow_jobs": [
+    {
+      "name": "lean-compressed-calculus",
+      "classification": "FORMAL_VALIDITY_GATE"
+    },
+    {
+      "name": "lean-contact-completion",
+      "classification": "FORMAL_VALIDITY_GATE"
+    },
+    {
+      "name": "research-calibration",
+      "classification": "REGRESSION_GATE"
+    },
+    {
+      "name": "arb-contact-balance",
+      "classification": "RESEARCH_PRODUCING_CHECK"
+    },
+    {
+      "name": "contact-calculus-complete",
+      "role": "aggregate_all_required_jobs_no_skipped_success"
+    }
+  ],
+  "closure_extension": "Only if independent branch-complete canonical exclusion is proved, add exact unconditional Mathlib RH endpoint and full claim validation. No placeholder closure theorem in mandatory core.",
+  "new_local_lean_build": false,
+  "new_canonical_arb_certificate": false,
+  "repository_write_performed": true,
+  "renderer_managed_surfaces": [
+    "README.md",
+    "AUDIT.md",
+    "FORK_NOTES.md",
+    "research/RHRC/CURRENT_RESEARCH_PLAN.md",
+    "research/RHRC/DOCUMENTATION_AUTHORITY.md",
+    "research/RHRC/FB05_INCOMPATIBILITY_PROGRAM.md",
+    "research/RHRC/OBSTRUCTION_LEDGER.md",
+    "research/RHRC/DEAD_ROUTES.md",
+    "research/RHRC/README.md",
+    "research/RHRC/RESEARCH_LEADS.md",
+    "research/RHRC/VALIDATION_PROTOCOL.md",
+    "research/RHRC/control_v2/README.md",
+    "research/RHRC/routes/R003_ccm_bridge/README.md",
+    "research/RHRC/countermodels/README.md"
+  ],
+  "implementation_note": "Branch implementation created from exact merged PR #282 tree. Exact-head compiler/CI authority pending; no claim promotion is implied by repository presence."
+}
