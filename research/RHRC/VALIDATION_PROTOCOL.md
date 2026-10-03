@@ -28,8 +28,8 @@ THEOREM AUTHORITY
 
 CURRENT RESEARCH FRONTIER
 - current candidate PR = #282 / GENERATED_PRODUCTION_CONTACT_FRONTIER_CANDIDATE
-- candidate theorem-validation head = b297ce6d7dc12ea27686b5732c54caf40d1337bf
-- candidate theorem-validation status = CI_PENDING
+- candidate theorem-validation head = RUNTIME_PR_HEAD_REQUIRED
+- candidate theorem-validation status = CI_PENDING_EXACT_HEAD_RUNTIME_RECEIPT_REQUIRED
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
 - fixed-N sign opposition = PROVED_MERGED_PR_277
 - global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
