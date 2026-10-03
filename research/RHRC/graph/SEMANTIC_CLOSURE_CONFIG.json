@@ -71,6 +71,11 @@
     "Zeta23.CCM.FirstCrossingProductionResponse": "GENERATED_CONTACT_FORMAL_SUPPORT",
     "Zeta23.CCM.FirstCrossingProductionCurvatureBridge": "GENERATED_CONTACT_TARGET_INTERFACE",
     "Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier": "GENERATED_CONTACT_TARGET_INTERFACE",
-    "Zeta23.ExceptionalZero.GlobalParityFirstNegativeBoundary": "GENERATED_CONTACT_PROVENANCE"
+    "Zeta23.ExceptionalZero.GlobalParityFirstNegativeBoundary": "GENERATED_CONTACT_PROVENANCE",
+    "Zeta23.CCM.CanonicalCompressedApertureC2": "CONTACT_CALCULUS_FORMAL_SUPPORT",
+    "Zeta23.CCM.ProductionWeightedTestCalculus": "CONTACT_CALCULUS_FORMAL_SUPPORT",
+    "Zeta23.CCM.StationarySchurContact": "CONTACT_CALCULUS_FORMAL_SUPPORT",
+    "Zeta23.CCM.FirstCrossingInheritedStationarity": "CONTACT_CALCULUS_FORMAL_SUPPORT",
+    "Zeta23.RHRC.ContactCalculusContract": "CONTACT_CALCULUS_SCOPE_AUDIT"
   }
 }

@@ -1,0 +1,152 @@
+name: RHRC post-282 contact calculus
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lean-compressed-calculus:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          use-mathlib-cache: true
+      - name: Build compressed calculus targets with complete receipt
+        run: |
+          set +e
+          : > /tmp/contact-calculus-targets.txt
+          rc=0
+          for target in             Zeta23.CCM.CanonicalCompressedApertureC2             Zeta23.CCM.ProductionWeightedTestCalculus             Zeta23.CCM.FirstCrossingProductionTests             Zeta23.CCM.FirstCrossingProductionRemainder             Zeta23.CCM.FirstCrossingProductionFirstVariation
+          do
+            if lake build "$target"; then
+              echo "$target PASS" | tee -a /tmp/contact-calculus-targets.txt
+            else
+              echo "$target FAIL" | tee -a /tmp/contact-calculus-targets.txt
+              rc=1
+            fi
+          done
+          exit $rc
+      - name: Audit compressed calculus axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py             Zeta23/CCM/CanonicalCompressedApertureC2.lean             Zeta23/CCM/ProductionWeightedTestCalculus.lean             Zeta23/CCM/FirstCrossingProductionTests.lean             Zeta23/CCM/FirstCrossingProductionRemainder.lean             Zeta23/CCM/FirstCrossingProductionFirstVariation.lean
+      - name: Reject proof escapes
+        run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post282-contact-calculus-lean-a
+          path: /tmp/contact-calculus-targets.txt
+
+  lean-contact-completion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          use-mathlib-cache: true
+      - name: Build contact completion targets with complete receipt
+        run: |
+          set +e
+          : > /tmp/contact-completion-targets.txt
+          rc=0
+          for target in             Zeta23.CCM.StationarySchurContact             Zeta23.CCM.FirstCrossingProductionResponse             Zeta23.CCM.FirstCrossingInheritedStationarity             Zeta23.CCM.FirstCrossingProductionCurvatureBridge             Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier             Zeta23.RHRC.ContactCalculusContract
+          do
+            if lake build "$target"; then
+              echo "$target PASS" | tee -a /tmp/contact-completion-targets.txt
+            else
+              echo "$target FAIL" | tee -a /tmp/contact-completion-targets.txt
+              rc=1
+            fi
+          done
+          exit $rc
+      - name: Audit contact completion axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py             Zeta23/CCM/StationarySchurContact.lean             Zeta23/CCM/FirstCrossingProductionResponse.lean             Zeta23/CCM/FirstCrossingInheritedStationarity.lean             Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean             Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean             Zeta23/RHRC/ContactCalculusContract.lean
+      - name: Validate exact theorem premise contract
+        run: python research/RHRC/routes/R003_ccm_bridge/check_post282_contact_calculus_contract.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post282-contact-calculus-lean-b
+          path: /tmp/contact-completion-targets.txt
+
+  research-calibration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install R003 research dependencies
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Exact codec tests
+        run: python -m unittest research/RHRC/closure_batch/test_interval_codec.py -v
+      - name: Contact calculus tests
+        run: python -m unittest research/RHRC/routes/R003_ccm_bridge/tests/test_post282_contact_calculus.py -v
+      - name: Optimized-mode guards
+        run: python -O -m unittest research/RHRC/routes/R003_ccm_bridge/tests/test_post282_contact_calculus.py -v
+      - name: Run frozen calibration campaign
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post282_contact_calculus.py             --protocol research/RHRC/routes/R003_ccm_bridge/fixtures/post282_contact_calculus_v1.json             --output /tmp/POST282_CONTACT_CALCULUS.json
+          python research/RHRC/routes/R003_ccm_bridge/check_post282_contact_calculus_contract.py             --results /tmp/POST282_CONTACT_CALCULUS.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: post282-contact-calibration
+          path: /tmp/POST282_CONTACT_CALCULUS.json
+
+  arb-contact-balance:
+    needs: [research-calibration]
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install R003 research dependencies
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: post282-contact-calibration
+          path: /tmp/calibration
+      - name: Recheck bounded Arb balance and write receipt
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/check_post282_contact_calculus_contract.py             --results /tmp/calibration/POST282_CONTACT_CALCULUS.json
+          python research/RHRC/routes/R003_ccm_bridge/write_post282_contact_calculus_receipt.py             --protocol research/RHRC/routes/R003_ccm_bridge/fixtures/post282_contact_calculus_v1.json             --results /tmp/calibration/POST282_CONTACT_CALCULUS.json             --output /tmp/POST282_CONTACT_CALCULUS_RECEIPT.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: post282-contact-balance
+          path: |
+            /tmp/calibration/POST282_CONTACT_CALCULUS.json
+            /tmp/POST282_CONTACT_CALCULUS_RECEIPT.json
+            research/RHRC/routes/R003_ccm_bridge/POST282_CONTACT_CALCULUS_OBLIGATIONS.json
+            research/RHRC/routes/R003_ccm_bridge/POST282_CONTACT_CALCULUS_PROTOCOL.md
+
+  contact-calculus-complete:
+    needs:
+      [lean-compressed-calculus, lean-contact-completion, research-calibration, arb-contact-balance]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require every mandatory job to succeed
+        env:
+          A: ${{ needs.lean-compressed-calculus.result }}
+          B: ${{ needs.lean-contact-completion.result }}
+          C: ${{ needs.research-calibration.result }}
+          D: ${{ needs.arb-contact-balance.result }}
+        run: |
+          printf '%s\n' "lean-compressed-calculus=$A" "lean-contact-completion=$B"             "research-calibration=$C" "arb-contact-balance=$D"
+          test "$A" = success
+          test "$B" = success
+          test "$C" = success
+          test "$D" = success
+          echo 'Contact-calculus campaign completed; RH remains separately claim-gated.'

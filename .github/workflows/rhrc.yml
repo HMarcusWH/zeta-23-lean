@@ -415,6 +415,10 @@ jobs:
             Zeta23.CCM.FirstCrossingSourceDynamics \
             Zeta23.CCM.GlobalParityFirstNegativeBoundary \
             Zeta23.CCM.FirstCrossingGlobalAlignment \
+            Zeta23.CCM.CanonicalCompressedApertureC2 \
+            Zeta23.CCM.ProductionWeightedTestCalculus \
+            Zeta23.CCM.StationarySchurContact \
+            Zeta23.CCM.FirstCrossingInheritedStationarity \
             Zeta23.CCM.FirstCrossingProductionTests \
             Zeta23.CCM.FirstCrossingProductionRemainder \
             Zeta23.CCM.FirstCrossingProductionFirstVariation \
@@ -428,6 +432,7 @@ jobs:
             Zeta23.CCM.CanonicalFirstCrossingBarrier \
             Zeta23.ExceptionalZero.CanonicalParityFirstCrossingShell \
             Zeta23.ExceptionalZero.CanonicalFirstCrossingConditionalRH \
+            Zeta23.RHRC.ContactCalculusContract \
             Zeta23.RHRC.ClosureObligationBindings \
             Zeta23.RHRC.ClosureStrengthAudit
       - name: Validate future premise-free RH closure exact type
@@ -477,6 +482,10 @@ jobs:
             Zeta23/CCM/FirstCrossingSourceDynamics.lean \
             Zeta23/CCM/GlobalParityFirstNegativeBoundary.lean \
             Zeta23/CCM/FirstCrossingGlobalAlignment.lean \
+            Zeta23/CCM/CanonicalCompressedApertureC2.lean \
+            Zeta23/CCM/ProductionWeightedTestCalculus.lean \
+            Zeta23/CCM/StationarySchurContact.lean \
+            Zeta23/CCM/FirstCrossingInheritedStationarity.lean \
             Zeta23/CCM/FirstCrossingProductionTests.lean \
             Zeta23/CCM/FirstCrossingProductionRemainder.lean \
             Zeta23/CCM/FirstCrossingProductionFirstVariation.lean \
@@ -490,6 +499,7 @@ jobs:
             Zeta23/CCM/CanonicalFirstCrossingBarrier.lean \
             Zeta23/ExceptionalZero/CanonicalParityFirstCrossingShell.lean \
             Zeta23/ExceptionalZero/CanonicalFirstCrossingConditionalRH.lean \
+            Zeta23/RHRC/ContactCalculusContract.lean \
             Zeta23/RHRC/ClosureObligationBindings.lean \
             Zeta23/RHRC/ClosureStrengthAudit.lean \
             Zeta23/Spectral/CanonicalCharacteristic.lean \
