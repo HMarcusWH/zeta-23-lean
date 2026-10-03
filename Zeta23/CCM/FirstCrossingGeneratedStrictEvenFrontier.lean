@@ -89,9 +89,11 @@ theorem GeneratedGlobalFirstCrossing.exists_generatedStrictEvenContact_of_evenSt
         parityRayleighBottom .odd g.shell.Lstar (g.shell.k + 1) := by
     rw [heven]
     exact hodd
+  have hLstar : 0 < g.shell.Lstar :=
+    lt_trans g.shell.Lsmall_pos g.shell.Lsmall_lt_Lstar
   obtain ⟨z0, hz0ne, hz0eig, _hsourceNe, _hsourceGap⟩ :=
     exists_evenGround_source_gap_bound_of_strict
-      g.shell.Lstar_pos g.shell.k hk hstrict
+      hLstar g.shell.k hk hstrict
   have hz0ker :
       evenCompressedCanonical g.shell.Lstar (g.shell.k + 1) z0 = 0 := by
     change
