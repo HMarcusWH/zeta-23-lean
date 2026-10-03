@@ -82,7 +82,7 @@ jobs:
       - name: Validate exact PR-head RHKG derived state
         run: python3 research/RHRC/tools/materialize_derived_state.py --check
       - name: Upload exact PR-head RHKG derived state
-        if: always()
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: rhkg-derived-state

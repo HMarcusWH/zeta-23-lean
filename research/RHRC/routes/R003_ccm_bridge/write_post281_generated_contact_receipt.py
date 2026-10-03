@@ -55,8 +55,10 @@ def main() -> int:
     protocol=json.loads(protocol_path.read_text(encoding="utf-8"))
     discovery=json.loads(discovery_path.read_text(encoding="utf-8"))
     arb=json.loads(arb_path.read_text(encoding="utf-8"))
-    head=git("rev-parse","HEAD")
+    checkout_head=git("rev-parse","HEAD")
     tree=git("rev-parse","HEAD^{tree}")
+    base_sha=git("rev-parse","HEAD^1") if os.environ.get("GITHUB_ACTIONS") else None
+    pr_head=git("rev-parse","HEAD^2") if os.environ.get("GITHUB_ACTIONS") else checkout_head
     status=git("status","--porcelain")
     if status:
         raise SystemExit("generated-contact receipt: working tree is not clean")
@@ -69,12 +71,18 @@ def main() -> int:
     out={
         "schema_version":"POST281_GENERATED_CONTACT_EXECUTION_RECEIPT_v1",
         "claim_cap":"EXECUTION_INTEGRITY_ONLY",
-        "git":{"head":head,"tree":tree,"base_pr":281,
-               "base_merge":protocol.get("base_merge")},
+        "git":{"checkout_sha":checkout_head,"pr_head_sha":pr_head,
+               "base_sha":base_sha,"tree":tree,"base_pr":281,
+               "base_merge":protocol.get("base_merge"),
+               "synthetic_merge_checkout": checkout_head != pr_head},
         "protocol_sha256":sha256(protocol_path),
         "discovery_sha256":sha256(discovery_path),
         "arb_sha256":sha256(arb_path),
         "tracked_input_sha256":dict(sorted(files.items())),
+        "runtime_versions":{
+            name: importlib.metadata.version(name)
+            for name in ("numpy","scipy","python-flint")
+        },
         "discovery_summary":discovery.get("summary"),
         "arb_summary":arb.get("summary"),
         "formal_status_note":
@@ -83,7 +91,7 @@ def main() -> int:
         "theorem_promotion":False,
     }
     Path(a.output).write_text(json.dumps(out,indent=2,sort_keys=True)+"\n",encoding="utf-8")
-    print(json.dumps({"head":head,"tree":tree,
+    print(json.dumps({"checkout_sha":checkout_head,"pr_head_sha":pr_head,"tree":tree,
       "protocol_sha256":out["protocol_sha256"],
       "discovery_sha256":out["discovery_sha256"],
       "arb_sha256":out["arb_sha256"],
