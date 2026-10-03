@@ -15,7 +15,7 @@ tree `f729b05e6fee9f6fbeb9d18a65e26742086244f8`.
 | M01 | ambient-entry total derivative unsafe at seams | `FIXED_FAIL_CLOSED_COMPRESSED_DERIVATIVE_REALIZATION_PENDING_CI` |
 | M02 | weighted explicit-formula authority and intrinsic remainder identification | `OPEN_MATHEMATICAL_OBLIGATION_FAIL_CLOSED` |
 | M03 | curvature-arithmetic identity and outgoing-contact kappa=0 | `OPEN_MATHEMATICAL_OBLIGATION_FAIL_CLOSED` |
-| M04 | strict-even contact required caller-supplied kernel | `FIXED_EXPLICIT_NATIVE_CARRIER_TRANSPORT_AND_NORMALIZED_KERNEL_CONSTRUCTOR_PENDING_CI` |
+| M04 | strict-even contact required caller-supplied kernel | `FIXED_NATIVE_STRICT_EVEN_GROUND_WITNESS_AND_NORMALIZED_KERNEL_CONSTRUCTOR_PENDING_CI` |
 | N01 | lossy interval serialization | `FIXED_OUTWARD_AND_EXACT_ENDPOINT_SERIALIZATION_PENDING_CI` |
 | N02 | float residual underflow | `FIXED_ARB_CERTIFICATION_ARITHMETIC_PENDING_CI` |
 | N03 | uncertified eigenvector normalization | `FIXED_RAYLEIGH_QUOTIENT_NORM_AND_ERROR_BUDGET_PENDING_CI` |
