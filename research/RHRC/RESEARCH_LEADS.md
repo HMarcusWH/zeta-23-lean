@@ -88,7 +88,7 @@ RESEARCH / CONTROL FIREWALL
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
-## Post-#281 generated-contact leads
+## Post-#281 / PR #282 generated-contact leads
 
 The new measurement lane is designed to attack the obstruction space rather than fit RH: every integer cutoff cell Q=1..64 and K=2..6 is scanned; selection is frozen before confirmatory Arb replay; current-Q effects are measured both at a frozen state and after reoptimization; generic transverse, stationary-cubic, quartic-touch, tie, odd-reflected and smallest-complement controls carry no canonical arithmetic authority.
 

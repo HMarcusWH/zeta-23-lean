@@ -34,14 +34,15 @@ def productionApertureEntryReal
 def productionApertureFirstMatrix
     (L : ℝ) (K : ℕ) :
     Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ :=
-  fun i j => (deriv (productionApertureEntryReal K i j) L : ℂ)
+  fun i j => ((deriv (productionApertureEntryReal K i j) L : ℝ) : ℂ)
 
 /-- Entrywise second aperture derivative of the actual production matrix. -/
 def productionApertureSecondMatrix
     (L : ℝ) (K : ℕ) :
     Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ :=
   fun i j =>
-    (deriv (fun s : ℝ => deriv (productionApertureEntryReal K i j) s) L : ℂ)
+    ((deriv
+      (fun s : ℝ => (deriv (productionApertureEntryReal K i j) s : ℝ)) L : ℝ) : ℂ)
 
 private theorem productionApertureEntryReal_comm
     (K : ℕ) (i j : Fin (2 * K + 1)) :
@@ -50,7 +51,6 @@ private theorem productionApertureEntryReal_comm
   funext L
   unfold productionApertureEntryReal
   rw [canonicalSourceMatrix_eq_dictionaryMatrix,
-      canonicalSourceMatrix_eq_dictionaryMatrix,
       dictionaryMatrix_apply_comm]
 
 /-- The first production derivative is Hermitian. -/
@@ -216,10 +216,10 @@ theorem firstVariation_nonpos_of_leftPrefix
       Lsmall - Lstar ∈ posTangentConeAt (Icc Lsmall Lstar) Lstar :=
     sub_mem_posTangentConeAt_of_segment_subset
       (by rw [segment_symm, segment_eq_Icc (le_of_lt hLt)])
-  have hmul : 0 ≤ J * (Lsmall - Lstar) := by
-    simpa only [ContinuousLinearMap.smulRight_apply, one_apply_eq_self] using!
-      hmin.localize.hasFDerivWithinAt_nonneg
-        hderiv.hasDerivWithinAt htangent
+  have hmul :=
+    hmin.localize.hasFDerivWithinAt_nonneg
+      hderiv.hasDerivWithinAt htangent
+  simp only [ContinuousLinearMap.toSpanSingleton_apply, smul_eq_mul] at hmul
   nlinarith
 
 /-- Global-prefix positivity supplies fixed-vector nonnegativity at the selected
