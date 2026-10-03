@@ -121,20 +121,48 @@ def parityProductionApertureSecond
   (parityProductionApertureSecondCLM p L K).toLinearMap
 
 
-/-- Explicitly typed even first-derivative candidate.  Keeping the carrier
-explicit avoids subtype-instance ambiguity in the strict-even response layer. -/
+/-- Native strict-even orthogonal compression of the first production
+derivative.  Defining this directly on the even carrier keeps the topology and
+inner-product instances identical to the strict-even response layer. -/
+def evenProductionApertureFirstCLM
+    (L : ℝ) (K : ℕ) :
+    euclideanEvenBoundaryFlatSubspace K →L[ℂ]
+      euclideanEvenBoundaryFlatSubspace K :=
+  let V := euclideanEvenBoundaryFlatSubspace K
+  V.orthogonalProjectionOnto.comp
+    ((Matrix.toEuclideanCLM
+        (n := Fin (2 * K + 1)) (𝕜 := ℂ)
+        (productionApertureFirstMatrix L K)).comp
+      (V.subtypeL :
+        V →L[ℂ] EuclideanSpace ℂ (Fin (2 * K + 1))))
+
+/-- Linear-map form of the native strict-even first derivative candidate. -/
 def evenProductionApertureFirst
     (L : ℝ) (K : ℕ) :
     euclideanEvenBoundaryFlatSubspace K →ₗ[ℂ]
       euclideanEvenBoundaryFlatSubspace K :=
-  parityProductionApertureFirst .even L K
+  (evenProductionApertureFirstCLM L K).toLinearMap
 
-/-- Explicitly typed even second-derivative candidate. -/
+/-- Native strict-even orthogonal compression of the second production
+derivative. -/
+def evenProductionApertureSecondCLM
+    (L : ℝ) (K : ℕ) :
+    euclideanEvenBoundaryFlatSubspace K →L[ℂ]
+      euclideanEvenBoundaryFlatSubspace K :=
+  let V := euclideanEvenBoundaryFlatSubspace K
+  V.orthogonalProjectionOnto.comp
+    ((Matrix.toEuclideanCLM
+        (n := Fin (2 * K + 1)) (𝕜 := ℂ)
+        (productionApertureSecondMatrix L K)).comp
+      (V.subtypeL :
+        V →L[ℂ] EuclideanSpace ℂ (Fin (2 * K + 1))))
+
+/-- Linear-map form of the native strict-even second derivative candidate. -/
 def evenProductionApertureSecond
     (L : ℝ) (K : ℕ) :
     euclideanEvenBoundaryFlatSubspace K →ₗ[ℂ]
       euclideanEvenBoundaryFlatSubspace K :=
-  parityProductionApertureSecond .even L K
+  (evenProductionApertureSecondCLM L K).toLinearMap
 
 /-- The compressed first derivative is self-adjoint/symmetric. -/
 theorem parityProductionApertureFirst_isSymmetric
@@ -185,23 +213,55 @@ theorem parityProductionApertureSecond_isSymmetric
       (y : EuclideanSpace ℂ (Fin (2 * K + 1)))
 
 
-/-- Explicit even-carrier symmetry theorem for the first derivative. -/
+/-- Native even-carrier symmetry theorem for the first derivative.  This is
+proved directly on the strict-even carrier rather than transported through the
+definitionally equivalent parity carrier, avoiding typeclass-instance drift. -/
 theorem evenProductionApertureFirst_isSymmetric
     (L : ℝ) (K : ℕ) :
     LinearMap.IsSymmetric (𝕜 := ℂ)
       (E := euclideanEvenBoundaryFlatSubspace K)
       (evenProductionApertureFirst L K) := by
-  simpa [evenProductionApertureFirst] using
-    (parityProductionApertureFirst_isSymmetric .even L K)
+  intro x y
+  change
+    inner ℂ
+      ((euclideanEvenBoundaryFlatSubspace K).orthogonalProjectionOnto
+        ((productionApertureFirstMatrix L K).toEuclideanLin
+          (x : EuclideanSpace ℂ (Fin (2 * K + 1))))) y =
+    inner ℂ x
+      ((euclideanEvenBoundaryFlatSubspace K).orthogonalProjectionOnto
+        ((productionApertureFirstMatrix L K).toEuclideanLin
+          (y : EuclideanSpace ℂ (Fin (2 * K + 1)))))
+  rw [Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right,
+      Submodule.inner_orthogonalProjectionOnto_eq_of_mem_left]
+  exact
+    (Matrix.isSymmetric_toEuclideanLin_iff.mpr
+      (productionApertureFirstMatrix_isHermitian L K))
+      (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+      (y : EuclideanSpace ℂ (Fin (2 * K + 1)))
 
-/-- Explicit even-carrier symmetry theorem for the second derivative. -/
+/-- Native even-carrier symmetry theorem for the second derivative. -/
 theorem evenProductionApertureSecond_isSymmetric
     (L : ℝ) (K : ℕ) :
     LinearMap.IsSymmetric (𝕜 := ℂ)
       (E := euclideanEvenBoundaryFlatSubspace K)
       (evenProductionApertureSecond L K) := by
-  simpa [evenProductionApertureSecond] using
-    (parityProductionApertureSecond_isSymmetric .even L K)
+  intro x y
+  change
+    inner ℂ
+      ((euclideanEvenBoundaryFlatSubspace K).orthogonalProjectionOnto
+        ((productionApertureSecondMatrix L K).toEuclideanLin
+          (x : EuclideanSpace ℂ (Fin (2 * K + 1))))) y =
+    inner ℂ x
+      ((euclideanEvenBoundaryFlatSubspace K).orthogonalProjectionOnto
+        ((productionApertureSecondMatrix L K).toEuclideanLin
+          (y : EuclideanSpace ℂ (Fin (2 * K + 1)))))
+  rw [Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right,
+      Submodule.inner_orthogonalProjectionOnto_eq_of_mem_left]
+  exact
+    (Matrix.isSymmetric_toEuclideanLin_iff.mpr
+      (productionApertureSecondMatrix_isHermitian L K))
+      (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+      (y : EuclideanSpace ℂ (Fin (2 * K + 1)))
 
 /-- Fixed-vector production energy in one parity carrier. -/
 def productionContactFixedEnergy
@@ -371,5 +431,7 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.productionApertureSecondMatrix_isHermitian
 #print axioms Zeta23.CCM.parityProductionApertureFirst_isSymmetric
 #print axioms Zeta23.CCM.parityProductionApertureSecond_isSymmetric
+#print axioms Zeta23.CCM.evenProductionApertureFirst_isSymmetric
+#print axioms Zeta23.CCM.evenProductionApertureSecond_isSymmetric
 #print axioms Zeta23.CCM.firstVariation_nonpos_of_leftPrefix
 #print axioms Zeta23.CCM.GeneratedGlobalFirstCrossing.firstVariation_nonpos_of_kernel
