@@ -126,6 +126,7 @@ theorem inner_firstDerivative_zero_of_stationary
   have hsym := evenProductionApertureFirst_isSymmetric L K
   have him : a.im = 0 := by
     simpa [a] using hsym.im_inner_apply_self z
+  change a = 0
   apply Complex.ext
   · simpa using hre
   · simpa using him
