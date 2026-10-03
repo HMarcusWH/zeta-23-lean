@@ -67,9 +67,22 @@ def main() -> int:
     arb=json.loads(arb_path.read_text(encoding="utf-8"))
     checkout_head=git("rev-parse","HEAD")
     tree=git("rev-parse","HEAD^{tree}")
-    is_pr_event=os.environ.get("GITHUB_EVENT_NAME")=="pull_request"
-    base_sha=git("rev-parse","HEAD^1") if is_pr_event else None
-    pr_head=git("rev-parse","HEAD^2") if is_pr_event else checkout_head
+    event_path=os.environ.get("GITHUB_EVENT_PATH")
+    event={}
+    if event_path and Path(event_path).is_file():
+        event=json.loads(Path(event_path).read_text(encoding="utf-8"))
+    pr=event.get("pull_request") if isinstance(event,dict) else None
+    base_sha=pr["base"]["sha"] if pr else None
+    pr_head=pr["head"]["sha"] if pr else checkout_head
+    pr_head_tree=None
+    if pr:
+        try:
+            pr_head_tree=git("rev-parse",f"{pr_head}^{{tree}}")
+        except subprocess.CalledProcessError:
+            raise SystemExit(
+                "generated-contact receipt: PR head object unavailable; "
+                "checkout must use fetch-depth >= 2"
+            )
     status=git("status","--porcelain")
     if status:
         raise SystemExit("generated-contact receipt: working tree is not clean")
@@ -83,7 +96,8 @@ def main() -> int:
         "schema_version":"POST281_GENERATED_CONTACT_EXECUTION_RECEIPT_v1",
         "claim_cap":"EXECUTION_INTEGRITY_ONLY",
         "git":{"checkout_sha":checkout_head,"pr_head_sha":pr_head,
-               "base_sha":base_sha,"tree":tree,"base_pr":281,
+               "pr_head_tree":pr_head_tree,
+               "base_sha":base_sha,"checkout_tree":tree,"base_pr":281,
                "base_merge":protocol.get("base_merge"),
                "synthetic_merge_checkout": checkout_head != pr_head},
         "protocol_sha256":sha256(protocol_path),

@@ -132,7 +132,7 @@ inductive GeneratedStrictEvenVariationBranch
       (hresponse :
         evenCompressedCanonical c.generated.shell.Lstar
             (c.generated.shell.k + 1) w =
-          -(parityProductionApertureFirst .even
+          -(evenProductionApertureFirst
             c.generated.shell.Lstar (c.generated.shell.k + 1) c.z))
 
 /-- Generated contact forces J1 <= 0 once the exact fixed-vector derivative
@@ -153,7 +153,7 @@ is constructed. -/
 theorem GeneratedStrictEvenContact.frontier
     (c : GeneratedStrictEvenContact)
     (hoperator :
-      ProductionContactFirstOperatorRealized .even
+      EvenProductionContactFirstOperatorRealized
         c.generated.shell.Lstar (c.generated.shell.k + 1))
     (hrealized :
       ProductionContactFirstVariationRealized .even
@@ -190,7 +190,7 @@ actual production differentiation and outgoing-contact zero curvature. -/
 theorem GeneratedStrictEvenContact.stationary_saturation_frontier
     (c : GeneratedStrictEvenContact)
     (hc2 :
-      ProductionContactC2Realized .even
+      EvenProductionContactC2Realized
         c.generated.shell.Lstar (c.generated.shell.k + 1))
     (hstationary :
       productionContactFirstVariation .even

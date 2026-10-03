@@ -120,6 +120,22 @@ def parityProductionApertureSecond
       euclideanParityBoundaryFlatSubspace p K :=
   (parityProductionApertureSecondCLM p L K).toLinearMap
 
+
+/-- Explicitly typed even first-derivative candidate.  Keeping the carrier
+explicit avoids subtype-instance ambiguity in the strict-even response layer. -/
+def evenProductionApertureFirst
+    (L : ℝ) (K : ℕ) :
+    euclideanEvenBoundaryFlatSubspace K →ₗ[ℂ]
+      euclideanEvenBoundaryFlatSubspace K :=
+  parityProductionApertureFirst .even L K
+
+/-- Explicitly typed even second-derivative candidate. -/
+def evenProductionApertureSecond
+    (L : ℝ) (K : ℕ) :
+    euclideanEvenBoundaryFlatSubspace K →ₗ[ℂ]
+      euclideanEvenBoundaryFlatSubspace K :=
+  parityProductionApertureSecond .even L K
+
 /-- The compressed first derivative is self-adjoint/symmetric. -/
 theorem parityProductionApertureFirst_isSymmetric
     (p : ReversalParity) (L : ℝ) (K : ℕ) :
@@ -167,6 +183,25 @@ theorem parityProductionApertureSecond_isSymmetric
       (productionApertureSecondMatrix_isHermitian L K))
       (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
       (y : EuclideanSpace ℂ (Fin (2 * K + 1)))
+
+
+/-- Explicit even-carrier symmetry theorem for the first derivative. -/
+theorem evenProductionApertureFirst_isSymmetric
+    (L : ℝ) (K : ℕ) :
+    LinearMap.IsSymmetric (𝕜 := ℂ)
+      (E := euclideanEvenBoundaryFlatSubspace K)
+      (evenProductionApertureFirst L K) := by
+  simpa [evenProductionApertureFirst] using
+    (parityProductionApertureFirst_isSymmetric .even L K)
+
+/-- Explicit even-carrier symmetry theorem for the second derivative. -/
+theorem evenProductionApertureSecond_isSymmetric
+    (L : ℝ) (K : ℕ) :
+    LinearMap.IsSymmetric (𝕜 := ℂ)
+      (E := euclideanEvenBoundaryFlatSubspace K)
+      (evenProductionApertureSecond L K) := by
+  simpa [evenProductionApertureSecond] using
+    (parityProductionApertureSecond_isSymmetric .even L K)
 
 /-- Fixed-vector production energy in one parity carrier. -/
 def productionContactFixedEnergy
@@ -243,6 +278,30 @@ def ProductionContactC2Realized
     (p : ReversalParity) (L : ℝ) (K : ℕ) : Prop :=
   ProductionContactFirstOperatorRealized p L K ∧
     ProductionContactSecondOperatorRealized p L K
+
+
+/-- Strict-even first-operator realization on the explicitly typed carrier. -/
+def EvenProductionContactFirstOperatorRealized
+    (L : ℝ) (K : ℕ) : Prop :=
+  ∀ z : euclideanEvenBoundaryFlatSubspace K,
+    ProductionContactFirstVariationRealized .even L K z ∧
+      Complex.re (inner ℂ (evenProductionApertureFirst L K z) z) =
+        productionContactFirstVariation .even L K z
+
+/-- Strict-even second-operator realization on the explicitly typed carrier. -/
+def EvenProductionContactSecondOperatorRealized
+    (L : ℝ) (K : ℕ) : Prop :=
+  ∀ z : euclideanEvenBoundaryFlatSubspace K,
+    ProductionContactSecondVariationRealized .even L K z ∧
+      Complex.re (inner ℂ (evenProductionApertureSecond L K z) z) =
+        productionContactFixedSecondVariation .even L K z
+
+/-- Complete strict-even C2 realization, including the seam-safe operator
+identifications. -/
+def EvenProductionContactC2Realized
+    (L : ℝ) (K : ℕ) : Prop :=
+  EvenProductionContactFirstOperatorRealized L K ∧
+    EvenProductionContactSecondOperatorRealized L K
 
 /-- One-sided calculus lemma: a differentiable fixed-vector energy which is
 nonnegative to the left of a zero contact has nonpositive first derivative. -/

@@ -31,7 +31,7 @@ def productionContactOptimizedCurvature
     (z w : euclideanEvenBoundaryFlatSubspace K) : ℝ :=
   productionContactFixedSecondVariation .even L K z +
     2 * Complex.re
-      (inner ℂ z (parityProductionApertureFirst .even L K w))
+      (inner ℂ z (evenProductionApertureFirst L K w))
 
 /-- The response equation turns the mixed term into the usual nonnegative
 complement cost. -/
@@ -40,21 +40,21 @@ theorem productionContactOptimizedCurvature_eq_fixedSecond_sub_response
     (z w : euclideanEvenBoundaryFlatSubspace K)
     (hresponse :
       evenCompressedCanonical L K w =
-        -(parityProductionApertureFirst .even L K z)) :
+        -(evenProductionApertureFirst L K z)) :
     productionContactOptimizedCurvature L K z w =
       productionContactFixedSecondVariation .even L K z -
         2 * productionContactResponseCost L K w := by
   have hsym :=
-    parityProductionApertureFirst_isSymmetric .even L K z w
+    evenProductionApertureFirst_isSymmetric L K z w
   have hDz :
-      parityProductionApertureFirst .even L K z =
+      evenProductionApertureFirst L K z =
         -(evenCompressedCanonical L K w) := by
     rw [hresponse]
     simp
   unfold productionContactOptimizedCurvature productionContactResponseCost
   have hmix :
       Complex.re
-          (inner ℂ z (parityProductionApertureFirst .even L K w)) =
+          (inner ℂ z (evenProductionApertureFirst L K w)) =
         - Complex.re
           (inner ℂ (evenCompressedCanonical L K w) w) := by
     rw [← hsym]
@@ -82,7 +82,7 @@ theorem productionContactOptimizedCurvature_le_fixedSecond
     (hground : parityRayleighBottom .even L K = 0)
     (hresponse :
       evenCompressedCanonical L K w =
-        -(parityProductionApertureFirst .even L K z)) :
+        -(evenProductionApertureFirst L K z)) :
     productionContactOptimizedCurvature L K z w ≤
       productionContactFixedSecondVariation .even L K z := by
   rw [productionContactOptimizedCurvature_eq_fixedSecond_sub_response

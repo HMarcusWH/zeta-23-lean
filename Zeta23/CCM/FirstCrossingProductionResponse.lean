@@ -56,13 +56,13 @@ orthogonal to the zero eigenvector, not merely zero in real part. -/
 theorem inner_firstDerivative_zero_of_stationary
     {L : ℝ} (K : ℕ)
     (z : euclideanEvenBoundaryFlatSubspace K)
-    (hoperator : ProductionContactFirstOperatorRealized .even L K)
+    (hoperator : EvenProductionContactFirstOperatorRealized L K)
     (hstationary :
       productionContactFirstVariation .even L K z = 0) :
     inner ℂ
-      (parityProductionApertureFirst .even L K z) z = 0 := by
+      (evenProductionApertureFirst L K z) z = 0 := by
   let a : ℂ :=
-    inner ℂ (parityProductionApertureFirst .even L K z) z
+    inner ℂ (evenProductionApertureFirst L K z) z
   have hquad := (hoperator z).2
   have hre : a.re = 0 := by
     have hq :
@@ -74,16 +74,16 @@ theorem inner_firstDerivative_zero_of_stationary
   have hstar : star a = a := by
     calc
       star a =
-          inner ℂ z (parityProductionApertureFirst .even L K z) := by
+          inner ℂ z (evenProductionApertureFirst L K z) := by
             simpa [a] using
-              (inner_conj_symm
-                (parityProductionApertureFirst .even L K z) z)
+              (inner_conj_symm (𝕜 := ℂ)
+                (evenProductionApertureFirst L K z) z)
       _ = a := by
         exact hsym.symm
   have him : a.im = 0 := by
     have h := congrArg Complex.im hstar
-    simp only [map_neg, starRingEnd_apply, Complex.star_def,
-      Complex.conj_im] at h
+    have h' : -a.im = a.im := by
+      simpa only [starRingEnd_apply, Complex.star_def, Complex.conj_im] using h
     linarith
   apply Complex.ext
   · simpa [hre]
@@ -98,20 +98,22 @@ theorem neg_firstDerivative_mem_evenRange_of_stationary_strict
     (hzne : z ≠ 0)
     (hzero : evenCompressedCanonical L K z = 0)
     (hodd : 0 < parityRayleighBottom .odd L K)
-    (hoperator : ProductionContactFirstOperatorRealized .even L K)
+    (hoperator : EvenProductionContactFirstOperatorRealized L K)
     (hstationary :
       productionContactFirstVariation .even L K z = 0) :
-    -(parityProductionApertureFirst .even L K z) ∈
+    -(evenProductionApertureFirst L K z) ∈
       (evenCompressedCanonical L K).range := by
   let E := evenCompressedCanonical L K
-  let b := parityProductionApertureFirst .even L K z
+  let b := evenProductionApertureFirst L K z
   have hbz : inner ℂ b z = 0 := by
     simpa [b] using inner_firstDerivative_zero_of_stationary K z hoperator hstationary
   have hzb : inner ℂ z b = 0 := by
-    have hconj := inner_conj_symm b z
-    rw [hbz, map_zero] at hconj
-    simpa using hconj.symm
-  have hbker : b ∈ E.kerᗮ := by
+    calc
+      inner ℂ z b = star (inner ℂ b z) := by
+        exact (inner_conj_symm (𝕜 := ℂ) b z).symm
+      _ = 0 := by rw [hbz]; simp
+  have hbker :
+      b ∈ (E.ker : Submodule ℂ (euclideanEvenBoundaryFlatSubspace K))ᗮ := by
     intro x hx
     have hx0 : E x = 0 := LinearMap.mem_ker.mp hx
     obtain ⟨c, hc⟩ :=
@@ -119,17 +121,25 @@ theorem neg_firstDerivative_mem_evenRange_of_stationary_strict
     rw [← hc]
     rw [inner_smul_left]
     simp [hzb]
+  have hEsym :
+      LinearMap.IsSymmetric (𝕜 := ℂ)
+        (E := euclideanEvenBoundaryFlatSubspace K) E := by
+    simpa [E, evenCompressedCanonical] using
+      (parityCompressedCanonical_isSymmetric .even L K)
   have hrangeOrth :
-      E.rangeᗮ = E.ker :=
-    (parityCompressedCanonical_isSymmetric .even L K).orthogonal_range
-  have hrange : E.range = E.kerᗮ := by
+      (E.range : Submodule ℂ (euclideanEvenBoundaryFlatSubspace K))ᗮ = E.ker :=
+    hEsym.orthogonal_range
+  have hrange :
+      E.range =
+        (E.ker : Submodule ℂ (euclideanEvenBoundaryFlatSubspace K))ᗮ := by
     calc
       E.range = E.rangeᗮᗮ := by
         symm
         exact Submodule.orthogonal_orthogonal
       _ = E.kerᗮ := by rw [hrangeOrth]
   rw [hrange]
-  exact E.kerᗮ.neg_mem hbker
+  exact
+    ((E.ker : Submodule ℂ (euclideanEvenBoundaryFlatSubspace K))ᗮ).neg_mem hbker
 
 /-- Existence and uniqueness of the normalized/perpendicular stationary
 response. -/
@@ -141,15 +151,15 @@ theorem existsUnique_stationaryEvenResponse
     (hznorm : ‖z‖ = 1)
     (hzero : evenCompressedCanonical L K z = 0)
     (hodd : 0 < parityRayleighBottom .odd L K)
-    (hoperator : ProductionContactFirstOperatorRealized .even L K)
+    (hoperator : EvenProductionContactFirstOperatorRealized L K)
     (hstationary :
       productionContactFirstVariation .even L K z = 0) :
     ∃! w : euclideanEvenBoundaryFlatSubspace K,
       inner ℂ z w = 0 ∧
       evenCompressedCanonical L K w =
-        -(parityProductionApertureFirst .even L K z) := by
+        -(evenProductionApertureFirst L K z) := by
   let E := evenCompressedCanonical L K
-  let b := parityProductionApertureFirst .even L K z
+  let b := evenProductionApertureFirst L K z
   have hmem :
       -b ∈ E.range := by
     simpa [E, b] using
@@ -159,12 +169,28 @@ theorem existsUnique_stationaryEvenResponse
   have hzz : inner ℂ z z = 1 := by
     rw [inner_self_eq_norm_sq_to_K, hznorm]
     norm_num
+  have hzzAmbient :
+      inner ℂ
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1))) = 1 := by
+    simpa using hzz
   let w : euclideanEvenBoundaryFlatSubspace K :=
     w0 - (inner ℂ z w0) • z
   have hwperp : inner ℂ z w = 0 := by
     dsimp [w]
-    rw [inner_sub_right, inner_smul_right, hzz]
-    simp
+    rw [inner_sub_right, inner_smul_right]
+    change
+      inner ℂ
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (w0 : EuclideanSpace ℂ (Fin (2 * K + 1))) -
+        inner ℂ
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (w0 : EuclideanSpace ℂ (Fin (2 * K + 1))) *
+        inner ℂ
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0
+    rw [hzzAmbient]
+    ring
   have hwsolve : E w = -b := by
     dsimp [w]
     rw [map_sub, map_smul, hzero, smul_zero, sub_zero]
@@ -172,14 +198,20 @@ theorem existsUnique_stationaryEvenResponse
   refine ⟨w, ⟨hwperp, by simpa [E, b] using hwsolve⟩, ?_⟩
   intro y hy
   have hdiff : E (y - w) = 0 := by
-    rw [map_sub, hy.2, hwsolve, sub_self]
+    have hySolve : E y = -b := by
+      simpa [E, b] using hy.2
+    calc
+      E (y - w) = E y - E w := by rw [map_sub]
+      _ = -b - (-b) := by rw [hySolve, hwsolve]
+      _ = 0 := sub_self (-b)
   obtain ⟨c, hc⟩ :=
     strictEven_zeroKernel_is_line
       hL K hK z hzne hzero hodd (y - w) hdiff
   have horth : inner ℂ z (y - w) = 0 := by
     rw [inner_sub_right, hy.1, hwperp, sub_self]
   have hc0 : c = 0 := by
-    have h := congrArg (fun u => inner ℂ z u) hc
+    have h := congrArg
+      (fun u : euclideanEvenBoundaryFlatSubspace K => inner ℂ z u) hc
     rw [inner_smul_right, hzz, horth] at h
     simpa using h
   have hyw : y - w = 0 := by
@@ -195,7 +227,7 @@ noncomputable def stationaryEvenResponse
     (hznorm : ‖z‖ = 1)
     (hzero : evenCompressedCanonical L K z = 0)
     (hodd : 0 < parityRayleighBottom .odd L K)
-    (hoperator : ProductionContactFirstOperatorRealized .even L K)
+    (hoperator : EvenProductionContactFirstOperatorRealized L K)
     (hstationary :
       productionContactFirstVariation .even L K z = 0) :
     euclideanEvenBoundaryFlatSubspace K :=
@@ -211,14 +243,14 @@ theorem stationaryEvenResponse_spec
     (hznorm : ‖z‖ = 1)
     (hzero : evenCompressedCanonical L K z = 0)
     (hodd : 0 < parityRayleighBottom .odd L K)
-    (hoperator : ProductionContactFirstOperatorRealized .even L K)
+    (hoperator : EvenProductionContactFirstOperatorRealized L K)
     (hstationary :
       productionContactFirstVariation .even L K z = 0) :
     inner ℂ z
         (stationaryEvenResponse hL K hK z hzne hznorm hzero hodd hoperator hstationary) = 0 ∧
       evenCompressedCanonical L K
         (stationaryEvenResponse hL K hK z hzne hznorm hzero hodd hoperator hstationary) =
-          -(parityProductionApertureFirst .even L K z) :=
+          -(evenProductionApertureFirst L K z) :=
   (Classical.choose_spec
     (existsUnique_stationaryEvenResponse
       hL K hK z hzne hznorm hzero hodd hoperator hstationary)).1
