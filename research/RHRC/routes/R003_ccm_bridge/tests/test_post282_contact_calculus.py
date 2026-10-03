@@ -55,7 +55,7 @@ class ContactCalculusTests(unittest.TestCase):
 
     def test_campaign_nonempty(self):
         out=balance.campaign(self.p)
-        self.assertEqual(out["schema_version"],"POST282_CONTACT_BALANCE_ARB_v1")
+        self.assertEqual(out["schema_version"],"POST282_CONTACT_BALANCE_ARB_v2")
         self.assertTrue(out["seam_controls"])
         self.assertFalse(out["summary"]["theorem_promotion"])
         self.assertEqual(out["summary"]["terminal_claim"],"RH_OPEN")

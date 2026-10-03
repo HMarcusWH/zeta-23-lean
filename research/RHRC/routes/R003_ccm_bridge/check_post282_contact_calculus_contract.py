@@ -41,18 +41,15 @@ def check_surface()->None:
 
 def check_results(path:Path)->None:
     d=json.loads(path.read_text())
-    if d.get("schema_version")!="POST282_CONTACT_BALANCE_ARB_v1": fail("SCHEMA","results")
+    if d.get("schema_version")!="POST282_CONTACT_BALANCE_ARB_v2": fail("SCHEMA","results")
     if d.get("claim_cap")!="EXPERIMENTAL_SIGNAL_ONLY": fail("CLAIM_CAP","results")
     s=d.get("summary") or {}
     if s.get("terminal_claim")!="RH_OPEN" or s.get("theorem_promotion") is not False:
         fail("FIREWALL","results")
     if s.get("calibration_qualified") is not True:
         fail("VACUOUS","K2/log2 calibration did not qualify")
-    if s.get("selected_count")!=11 or s.get("selected_sign_bracket_count")!=4:
-        fail("SELECTION","frozen #282 selected-panel identity drift")
-    rows=d.get("selected_replay")
-    if not isinstance(rows,list) or len(rows)!=11:
-        fail("SELECTION","selected replay missing")
+    if s.get("selected_count")!=11 or s.get("selected_sign_bracket_count")!=4:\n        fail("SELECTION","frozen #282 selected-panel identity drift")\n    if s.get("balance_row_count")!=11:\n        fail("BALANCE","all selected rows must receive a balance disposition")\n    if s.get("certified_response_count",0)<1:\n        fail("VACUOUS","no response certificate resolved")
+    rows=d.get("selected_replay")\n    if not isinstance(rows,list) or len(rows)!=11:\n        fail("SELECTION","selected replay missing")\n    balances=d.get("balance_rows")\n    if not isinstance(balances,list) or len(balances)!=11:\n        fail("BALANCE","balance rows missing")
     if any(r.get("first_boundary_claimed") is not False for r in rows):
         fail("FIRST_BOUNDARY","finite replay may not claim first boundary")
     cal=d.get("calibration") or {}
