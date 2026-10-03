@@ -27,7 +27,7 @@ tree `f729b05e6fee9f6fbeb9d18a65e26742086244f8`.
 | X02 | current-q ablation lacked full contact-balance quantities | `OPEN_DEPENDS_ON_M02_M03_FAIL_CLOSED` |
 | X03 | rigorous generated-contact Q/R/response/kappa/Delta/rho absent | `OPEN_DEPENDS_ON_M02_M03_FAIL_CLOSED` |
 | G01 | mixed-generation RHKG artifact on materializer failure | `FIXED_TRANSACTIONAL_RESTORE_AND_SUCCESS_ONLY_UPLOAD_PENDING_CI` |
-| G02 | campaign provenance under-specified | `FIXED_PR_HEAD_BASE_MERGE_TREE_HASH_AND_RUNTIME_RECEIPT_PENDING_CI` |
+| G02 | campaign provenance and tracked-input manifest integrity | `FIXED_EVENT_SHA_TREE_AND_EXISTING_REPLAY_INPUT_MANIFEST_PENDING_CI` |
 | W01 | stop-at-first workflows hide downstream errors | `FIXED_INDEPENDENT_TARGET_RECEIPTS_PENDING_CI` |
 | W02 | surface presence conflated with semantic completion/stale candidate head | `FIXED_SEPARATE_SEMANTIC_GATES_AND_RUNTIME_HEAD_PENDING_CI` |
 

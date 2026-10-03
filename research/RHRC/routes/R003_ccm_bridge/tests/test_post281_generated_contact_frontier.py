@@ -7,6 +7,7 @@ sys.path.insert(0,str(ROUTE))
 import post281_generated_contact_frontier as g
 import check_post281_generated_contact_results as resultcheck
 import certify_post281_generated_contact_frontier as cert
+import write_post281_generated_contact_receipt as receipt_manifest
 
 class GeneratedContactFrontierTests(unittest.TestCase):
     @classmethod
@@ -196,6 +197,21 @@ class GeneratedContactFrontierTests(unittest.TestCase):
         a["rows"]=[row]; a["summary"]["certified_sign_bracket_count"]=1
         with self.assertRaises(SystemExit):
             resultcheck.validate_arb(a,d["selected_neighborhoods"])
+
+    def test_execution_receipt_tracks_only_existing_inputs(self):
+        missing=[rel for rel in receipt_manifest.TRACKED if not (receipt_manifest.ROOT/rel).is_file()]
+        self.assertEqual(missing,[])
+        required={
+            ".github/workflows/rhrc_post281_generated_contact_frontier.yml",
+            "research/RHRC/routes/R003_ccm_bridge/post280_saturation_frontier.py",
+            "research/RHRC/routes/R003_ccm_bridge/fixtures/post280_saturation_frontier_v1.json",
+            "research/RHRC/routes/R003_ccm_bridge/contact_quotient/check_source_remainder_exact.py",
+            "research/RHRC/routes/R003_ccm_bridge/contact_quotient/countermodel_controls.py",
+            "research/RHRC/routes/R003_ccm_bridge/contact_quotient/tests/test_countermodel_controls.py",
+            "research/RHRC/closure_batch/first_crossing_generic_falsifiers.py",
+            "research/RHRC/countermodels/post204_pair_d_exact_geometry.py",
+        }
+        self.assertTrue(required.issubset(set(receipt_manifest.TRACKED)))
 
     def test_legacy_panel_is_preserved(self):
         legacy=self.p["legacy_replay"]

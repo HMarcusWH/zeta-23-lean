@@ -109,8 +109,8 @@
     },
     {
       "id": "G02",
-      "description": "campaign provenance under-specified",
-      "status": "FIXED_PR_HEAD_BASE_MERGE_TREE_HASH_AND_RUNTIME_RECEIPT_PENDING_CI"
+      "description": "campaign provenance and tracked-input manifest integrity",
+      "status": "FIXED_EVENT_SHA_TREE_AND_EXISTING_REPLAY_INPUT_MANIFEST_PENDING_CI"
     },
     {
       "id": "W01",

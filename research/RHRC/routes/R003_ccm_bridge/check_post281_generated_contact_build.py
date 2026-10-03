@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import write_post281_generated_contact_receipt as receipt_manifest
 
 ROOT=Path(__file__).resolve().parents[4]
 RHRC=ROOT/"research"/"RHRC"
@@ -71,6 +72,12 @@ def main()->int:
     missing=[x for x in LEAN_MODULES+RESEARCH_FILES+INTEGRATION_FILES if not (ROOT/x).is_file()]
     if missing:
         raise SystemExit("generated-contact build contract: missing files: "+", ".join(missing))
+    missing_receipt=[rel for rel in receipt_manifest.TRACKED if not (ROOT/rel).is_file()]
+    if missing_receipt:
+        raise SystemExit(
+            "generated-contact receipt manifest contains missing inputs: "
+            + ", ".join(missing_receipt)
+        )
     module_names=[x[:-5].replace("/",".") for x in LEAN_MODULES]
     require_contains(ROOT/".github/workflows/rhrc.yml",module_names)
     require_contains(ROOT/".github/workflows/rhrc_closure_campaign.yml",module_names)
@@ -86,7 +93,10 @@ def main()->int:
         "post247_remainder_budget_ratio_scout.py",
         "canonical_source_arb.py",
         "canonical_source_numeric.py",
-        "run_commutator_gauntlet_v2.py",
+        "contact_quotient/**",
+        "post280_saturation_frontier_v1.json",
+        "first_crossing_generic_falsifiers.py",
+        "post204_pair_d_exact_geometry.py",
     ])
     state=RHRC/"control_v2/CONTROL_STATE.json"
     require_contains(state,[
