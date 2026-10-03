@@ -152,10 +152,14 @@ theorem neg_firstDerivative_mem_evenRange_of_stationary_strict
       productionContactFirstVariation .even L K z = 0) :
     -(evenProductionApertureFirst L K z) ∈
       (evenCompressedCanonical L K).range := by
-  let V := euclideanEvenBoundaryFlatSubspace K
-  let E : V →ₗ[ℂ] V := evenResponseContactOperator L K
-  let b : V := evenProductionApertureFirst L K z
-  let phi : V →ₗ[ℂ] ℂ := innerₛₗ ℂ z
+  let E :
+      euclideanEvenBoundaryFlatSubspace K →ₗ[ℂ]
+        euclideanEvenBoundaryFlatSubspace K :=
+    evenResponseContactOperator L K
+  let b : euclideanEvenBoundaryFlatSubspace K :=
+    evenProductionApertureFirst L K z
+  let phi : euclideanEvenBoundaryFlatSubspace K →ₗ[ℂ] ℂ :=
+    innerₛₗ ℂ z
 
   have hbz : inner ℂ b z = 0 := by
     simpa [b] using
@@ -165,18 +169,22 @@ theorem neg_firstDerivative_mem_evenRange_of_stationary_strict
     exact hbz
 
   have hzE : E z = 0 := by
-    simpa [E] using hzero
+    have hzNative : evenResponseContactOperator L K z = 0 := by
+      simpa using hzero
+    simpa [E] using hzNative
   have hEsym :
-      LinearMap.IsSymmetric (𝕜 := ℂ) (E := V) E := by
-    simpa [V, E] using evenResponseContactOperator_isSymmetric L K
+      LinearMap.IsSymmetric (𝕜 := ℂ)
+        (E := euclideanEvenBoundaryFlatSubspace K) E := by
+    simpa [E] using evenResponseContactOperator_isSymmetric L K
 
   have hkerSpan : E.ker = ℂ ∙ z := by
     apply le_antisymm
     · intro x hx
       have hxNative : E x = 0 := LinearMap.mem_ker.mp hx
-      have hx0 : evenCompressedCanonical L K x = 0 := by
-        rw [← evenResponseContactOperator_apply]
+      have hxResponse : evenResponseContactOperator L K x = 0 := by
         simpa [E] using hxNative
+      have hx0 : evenCompressedCanonical L K x = 0 := by
+        simpa using hxResponse
       obtain ⟨c, hc⟩ :=
         strictEven_zeroKernel_is_line hL K hK z hzne hzero hodd x hx0
       exact Submodule.mem_span_singleton.mpr ⟨c, hc⟩
@@ -189,7 +197,8 @@ theorem neg_firstDerivative_mem_evenRange_of_stationary_strict
   have hphi_ne : phi ≠ 0 := by
     apply DFunLike.ne_iff.mpr
     refine ⟨z, ?_⟩
-    simpa [phi] using (inner_self_ne_zero.mpr hzne)
+    change inner ℂ z z ≠ 0
+    exact (inner_self_ne_zero).2 hzne
 
   have hrange_le : E.range ≤ phi.ker := by
     rintro y ⟨x, rfl⟩
@@ -201,14 +210,18 @@ theorem neg_firstDerivative_mem_evenRange_of_stationary_strict
     simpa [phi] using hinner
 
   have hEFinrank :
-      Module.finrank ℂ E.range + 1 = Module.finrank ℂ V := by
+      Module.finrank ℂ E.range + 1 =
+        Module.finrank ℂ (euclideanEvenBoundaryFlatSubspace K) := by
     have h := E.finrank_range_add_finrank_ker
     rw [hkerFinrank] at h
     exact h
 
   have hphiFinrank :
-      Module.finrank ℂ phi.ker + 1 = Module.finrank ℂ V := by
-    simpa [V] using phi.finrank_ker_add_one_of_ne_zero hphi_ne
+      Module.finrank ℂ phi.ker + 1 =
+        Module.finrank ℂ (euclideanEvenBoundaryFlatSubspace K) := by
+    simpa using
+      (Module.Dual.finrank_ker_add_one_of_ne_zero
+        (f := phi) hphi_ne)
 
   have hfinrank :
       Module.finrank ℂ E.range = Module.finrank ℂ phi.ker := by
@@ -227,12 +240,14 @@ theorem neg_firstDerivative_mem_evenRange_of_stationary_strict
     E.range.neg_mem hbRange
 
   obtain ⟨w, hw⟩ := hmemNative
+  have hwResponse :
+      evenResponseContactOperator L K w =
+        -(evenProductionApertureFirst L K z) := by
+    simpa [E, b] using hw
   change ∃ w : euclideanEvenBoundaryFlatSubspace K,
     evenCompressedCanonical L K w =
       -(evenProductionApertureFirst L K z)
-  refine ⟨w, ?_⟩
-  rw [← evenResponseContactOperator_apply]
-  simpa [E, b] using hw
+  exact ⟨w, by simpa using hwResponse⟩
 
 /-- Existence and uniqueness of the normalized/perpendicular stationary
 response. -/
