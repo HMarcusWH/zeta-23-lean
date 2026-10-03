@@ -218,7 +218,8 @@ theorem GeneratedStrictEvenContact.stationary_saturation_frontier
   have _hfirst := hc2.1 c.z
   have _hsecond := hc2.2 c.z
   exact
-    (productionContactOptimizedCurvature_zero_iff hbridge).mp hkappa
+    (productionContactOptimizedCurvature_zero_iff
+      c.Lstar_pos (by omega : 1 ≤ c.generated.shell.k + 1) hbridge).mp hkappa
 
 end Zeta23.CCM
 
