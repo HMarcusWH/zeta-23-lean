@@ -170,7 +170,7 @@ def certify_generic_controls(controls:list[dict])->list[dict]:
             "canonical_arithmetic_authority":False,
             "qualification_pass": (
                 status=="CERTIFIED_SIGN_BRACKET"
-                if name in {"TRANSVERSE_CROSSING","STATIONARY_CUBIC_CROSSING","PARITY_TIE","ODD_SELECTED_REFLECTION","SMALLEST_COMPLEMENT"}
+                if name in {"TRANSVERSE_CROSSING","STATIONARY_CUBIC_CROSSING","ODD_SELECTED_REFLECTION","SMALLEST_COMPLEMENT"}
                 else status=="NO_SIGN_CHANGE"
             ),
         })

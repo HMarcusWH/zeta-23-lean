@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse,json,math,sys
+import argparse,json,math,sys\nfrom decimal import Decimal, InvalidOperation
 from pathlib import Path
 
 ALLOWED_CONTACT={"NEAR_CONTACT_PROXY","CERTIFIED_SIGN_BRACKET"}
@@ -20,11 +20,51 @@ def finite_payload(x,name):
     bad=[v for v in walk(x) if not math.isfinite(v)]
     if bad: fail("NONFINITE",f"{name} contains nonfinite floats")
 
+def _decimal(value,label):
+    try:
+        d=Decimal(str(value))
+    except (InvalidOperation,ValueError):
+        fail("NONFINITE_STRING",f"{label} is not a finite decimal")
+    if not d.is_finite():
+        fail("NONFINITE_STRING",f"{label} is not finite")
+    return d
+
+def validate_interval_records(x,path="root"):
+    if isinstance(x,dict):
+        if "lower" in x and "upper" in x:
+            lo=x["lower"]; hi=x["upper"]
+            if not isinstance(lo,(int,float)) or not isinstance(hi,(int,float)):
+                fail("INTERVAL_TYPE",f"{path}: numeric display bounds required")
+            if not (math.isfinite(float(lo)) and math.isfinite(float(hi))):
+                fail("NONFINITE",f"{path}: nonfinite interval")
+            if float(lo)>float(hi):
+                fail("INVERTED_INTERVAL",f"{path}: lower>upper")
+            if "lower_exact" in x and "upper_exact" in x:
+                elo=_decimal(x["lower_exact"],path+"/lower_exact")
+                ehi=_decimal(x["upper_exact"],path+"/upper_exact")
+                if elo>ehi:
+                    fail("INVERTED_INTERVAL",f"{path}: exact lower>upper")
+                if float(lo)>float(elo) or float(hi)<float(ehi):
+                    fail("NONENCLOSING_SERIALIZATION",f"{path}: display interval fails to enclose exact endpoints")
+            if "rad" in x:
+                rad=_decimal(x["rad"],path+"/rad")
+                if rad<0: fail("NEGATIVE_RADIUS",path)
+                if rad>0 and float(lo)==float(hi):
+                    fail("COLLAPSED_INTERVAL",f"{path}: positive radius collapsed to a point")
+        for k,v in x.items():
+            if isinstance(v,str) and v.strip().lower() in {"nan","+nan","-nan","inf","+inf","-inf","infinity","+infinity","-infinity"}:
+                fail("NONFINITE_STRING",f"{path}/{k}")
+            validate_interval_records(v,f"{path}/{k}")
+    elif isinstance(x,list):
+        for i,v in enumerate(x): validate_interval_records(v,f"{path}/{i}")
+
 def key(c):
     return json.dumps(c,sort_keys=True,separators=(",",":"))
 
 def validate_discovery(d):
     if not isinstance(d,dict): fail("DISCOVERY_TYPE","discovery must be object")
+    if d.get("schema_version")!="POST281_GENERATED_CONTACT_DISCOVERY_v1":
+        fail("SCHEMA","bad discovery schema")
     if d.get("claim_cap")!="EXPERIMENTAL_SIGNAL_ONLY": fail("CLAIM_CAP","bad discovery claim cap")
     s=d.get("summary")
     if not isinstance(s,dict): fail("SUMMARY","missing discovery summary")
@@ -41,6 +81,7 @@ def validate_discovery(d):
     keys=[key(x) for x in selected]
     if len(keys)!=len(set(keys)): fail("DUPLICATE_SELECTION","duplicate selected candidate")
     finite_payload(d,"discovery")
+    validate_interval_records(d,"discovery")
     return selected
 
 def validate_point(p,label):
@@ -58,6 +99,8 @@ def validate_point(p,label):
 
 def validate_arb(r,selected):
     if not isinstance(r,dict): fail("ARB_TYPE","arb payload must be object")
+    if r.get("schema_version")!="POST281_GENERATED_CONTACT_ARB_v1":
+        fail("SCHEMA","bad arb schema")
     if r.get("claim_cap")!="EXPERIMENTAL_SIGNAL_ONLY": fail("CLAIM_CAP","bad arb claim cap")
     s=r.get("summary")
     rows=r.get("rows")
@@ -102,6 +145,7 @@ def validate_arb(r,selected):
     if not all(c.get("qualification_pass") is True and c.get("canonical_arithmetic_authority") is False for c in controls):
         fail("CONTROL_QUALIFICATION","generic control qualification failed")
     finite_payload(r,"arb")
+    validate_interval_records(r,"arb")
 
 def main():
     ap=argparse.ArgumentParser()
