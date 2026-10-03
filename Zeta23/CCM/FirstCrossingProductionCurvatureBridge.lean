@@ -63,16 +63,58 @@ theorem productionContactOptimizedCurvature_eq_fixedSecond_sub_response
   rw [hmix]
   ring
 
-/-- At a zero even ground, the response cost is nonnegative. -/
+/-- At a zero even ground, the response cost is nonnegative.
+
+The spectral-bottom theorem is stated on the generic parity carrier.  We move
+its scalar quadratic value through the ambient canonical matrix before
+returning to the native strict-even response operator, so no subtype
+inner-product instance equality is required. -/
 theorem productionContactResponseCost_nonnegative
     {L : ℝ} {K : ℕ}
     (hground : parityRayleighBottom .even L K = 0)
     (w : euclideanEvenBoundaryFlatSubspace K) :
     0 ≤ productionContactResponseCost L K w := by
-  have h :=
+  let wg : euclideanParityBoundaryFlatSubspace .even K :=
+    ⟨(w : EuclideanSpace ℂ (Fin (2 * K + 1))),
+      by
+        simpa [euclideanParityBoundaryFlatSubspace] using w.property⟩
+  have hgeneric :=
     shiftedParityCompressed_nonnegative_of_le_bottom
-      .even L K (lam := 0) (by rw [hground]) w
-  simpa [productionContactResponseCost] using h
+      .even L K (lam := 0) (by rw [hground]) wg
+  have hgeneric0 :
+      0 ≤ Complex.re
+        (inner ℂ (parityCompressedCanonical .even L K wg) wg) := by
+    simpa using hgeneric
+  have hambient :
+      0 ≤ Complex.re
+        (inner ℂ
+          ((canonicalSourceMatrix L K).toEuclideanLin
+            (w : EuclideanSpace ℂ (Fin (2 * K + 1))))
+          (w : EuclideanSpace ℂ (Fin (2 * K + 1)))) := by
+    rw [re_inner_parityCompressedCanonical_self .even L K wg] at hgeneric0
+    simpa [wg] using hgeneric0
+  have hcostNative :
+      productionContactResponseCost L K w =
+        Complex.re (inner ℂ (evenResponseContactOperator L K w) w) := by
+    unfold productionContactResponseCost
+    rw [evenResponseContactOperator_apply]
+  have hnativeAmbient :
+      Complex.re (inner ℂ (evenResponseContactOperator L K w) w) =
+        Complex.re
+          (inner ℂ
+            ((canonicalSourceMatrix L K).toEuclideanLin
+              (w : EuclideanSpace ℂ (Fin (2 * K + 1))))
+            (w : EuclideanSpace ℂ (Fin (2 * K + 1)))) := by
+    change
+      Complex.re
+        (inner ℂ
+          ((euclideanEvenBoundaryFlatSubspace K).orthogonalProjectionOnto
+            ((canonicalSourceMatrix L K).toEuclideanLin
+              (w : EuclideanSpace ℂ (Fin (2 * K + 1)))))
+          w) = _
+    rw [Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right]
+  rw [hcostNative, hnativeAmbient]
+  exact hambient
 
 /-- Consequently response optimization can only lower the fixed-vector second
 variation. -/
@@ -102,7 +144,8 @@ def ProductionContactCurvatureArithmeticIdentity
 /-- Once the concrete derivative identity is discharged, it instantiates the
 older #281 bridge with no caller-supplied curvature or remainder source. -/
 theorem productionOptimizedCurvatureBridge_of_concreteIdentity
-    {L : ℝ} {K : ℕ}
+    {L : ℝ} (hL : 0 < L)
+    {K : ℕ} (hK : 1 ≤ K)
     {z w : euclideanEvenBoundaryFlatSubspace K}
     (h :
       ProductionContactCurvatureArithmeticIdentity L K z w) :
@@ -111,14 +154,16 @@ theorem productionOptimizedCurvatureBridge_of_concreteIdentity
       (productionContactOptimizedCurvature L K z w)
       (productionContactRemainderSource L K z w) := by
   unfold ProductionContactCurvatureArithmeticIdentity at h
+  unfold productionContactSaturationGap productionContactRemainderValue at h
+  rw [productionStrictEvenSourceValue_eq_pairing hL K hK z] at h
   unfold ProductionOptimizedCurvatureBridge
   unfold OptimizedCurvatureRemainderBalance
-  unfold productionContactSaturationGap productionContactRemainderValue at h
   exact h
 
 /-- Concrete saturation equivalence after the actual bridge is proved. -/
 theorem productionContactOptimizedCurvature_zero_iff
-    {L : ℝ} {K : ℕ}
+    {L : ℝ} (hL : 0 < L)
+    {K : ℕ} (hK : 1 ≤ K)
     {z w : euclideanEvenBoundaryFlatSubspace K}
     (h :
       ProductionContactCurvatureArithmeticIdentity L K z w) :
@@ -127,10 +172,10 @@ theorem productionContactOptimizedCurvature_zero_iff
         (2 * Real.pi) ^ 2 / L ^ 2 *
           productionStrictEvenSourceValue L K z := by
   have hb :=
-    productionOptimizedCurvatureBridge_of_concreteIdentity h
-  simpa [productionContactOptimizedCurvature,
-    productionContactRemainderValue] using
-      (productionOptimizedCurvatureBridge_zero_iff hb)
+    productionOptimizedCurvatureBridge_of_concreteIdentity hL hK h
+  have hz := productionOptimizedCurvatureBridge_zero_iff hb
+  rw [← productionStrictEvenSourceValue_eq_pairing hL K hK z] at hz
+  simpa [productionContactRemainderValue] using hz
 
 /-- In the strict-even zero-ground branch, concrete saturation forces a
 strictly positive production remainder. -/
@@ -147,9 +192,10 @@ theorem productionContactRemainderValue_pos_of_zeroCurvature_strictEven
     (hkappa : productionContactOptimizedCurvature L K z w = 0) :
     0 < productionContactRemainderValue L K z w := by
   have hb :=
-    productionOptimizedCurvatureBridge_of_concreteIdentity hbridge
+    productionOptimizedCurvatureBridge_of_concreteIdentity
+      hL (by omega : 1 ≤ K) hbridge
   exact productionArithmeticRemainder_pos_of_saturation_strictEven
-    hL hK z hzne hground hzero hodd hb hkappa
+    (v := z) hL hK hzne hground hzero hodd hb hkappa
 
 end Zeta23.CCM
 
