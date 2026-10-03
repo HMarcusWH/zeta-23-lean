@@ -17,6 +17,27 @@ LEAN_MODULES=[
 "Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean",
 "Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean",
 ]
+INTEGRATION_FILES=[
+".github/workflows/rhrc.yml",
+".github/workflows/rhrc_closure_campaign.yml",
+".github/workflows/rhrc_post281_generated_contact_frontier.yml",
+"research/RHRC/closure_batch/check_lean_proof_escapes.py",
+"research/RHRC/closure_batch/test_lean_proof_escapes.py",
+"research/RHRC/tools/run_suite.py",
+"research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json",
+"research/RHRC/control_v2/CONTROL_STATE.json",
+"research/RHRC/control_v2/tests/test_control.py",
+"research/RHRC/control_v2/tests/test_current_state_surfaces.py",
+"research/RHRC/control_v2/tests/test_post272_sync.py",
+"research/RHRC/control_v2/tests/test_post278_sync.py",
+"research/RHRC/CURRENT_RESEARCH_PLAN.md",
+"research/RHRC/OBSTRUCTION_LEDGER.md",
+"research/RHRC/RESEARCH_LEADS.md",
+"research/RHRC/DEAD_ROUTES.md",
+"research/RHRC/VALIDATION_PROTOCOL.md",
+"research/RHRC/routes/R003_ccm_bridge/README.md",
+]
+
 RESEARCH_FILES=[
 "research/RHRC/routes/R003_ccm_bridge/canonical_contact_frontier_arb.py",
 "research/RHRC/routes/R003_ccm_bridge/post281_generated_contact_frontier.py",
@@ -38,7 +59,7 @@ def require_contains(path:Path,tokens:list[str]):
         raise SystemExit(f"generated-contact build contract: {path} missing {missing}")
 
 def main()->int:
-    missing=[x for x in LEAN_MODULES+RESEARCH_FILES if not (ROOT/x).is_file()]
+    missing=[x for x in LEAN_MODULES+RESEARCH_FILES+INTEGRATION_FILES if not (ROOT/x).is_file()]
     if missing:
         raise SystemExit("generated-contact build contract: missing files: "+", ".join(missing))
     module_names=[x[:-5].replace("/",".") for x in LEAN_MODULES]
@@ -50,8 +71,36 @@ def main()->int:
     require_contains(workflow,[
         "lean-generated-contact","lean-production-contact",
         "research-generated-contact","arb-generated-contact","generated-contact-complete",
+        "post280_saturation_frontier.py",
+        "post194_fb05_q14_fixed_unit_second_derivative.py",
+        "post198_fb05_q14_four_way_channel_second_derivative.py",
+        "post247_remainder_budget_ratio_scout.py",
+        "canonical_source_arb.py",
+        "canonical_source_numeric.py",
+        "run_commutator_gauntlet_v2.py",
     ])
-    print(f"generated-contact build contract: PASS ({len(LEAN_MODULES)} Lean + {len(RESEARCH_FILES)} research files)")
+    state=RHRC/"control_v2/CONTROL_STATE.json"
+    require_contains(state,[
+        '"pr": 281',
+        '"merge_commit": "0c22ae4101d7ad3e0b1a81029fff1472c52a5750"',
+        '"tree": "f729b05e6fee9f6fbeb9d18a65e26742086244f8"',
+        '"pr": 282',
+        '"branch": "research/post281-generated-production-contact"',
+        '"terminal_claim": "RH_OPEN"',
+    ])
+    for doc in [
+        RHRC/"CURRENT_RESEARCH_PLAN.md",
+        RHRC/"OBSTRUCTION_LEDGER.md",
+        RHRC/"RESEARCH_LEADS.md",
+        RHRC/"VALIDATION_PROTOCOL.md",
+        RHRC/"routes/R003_ccm_bridge/README.md",
+    ]:
+        require_contains(doc,["PR #281","PR #282","RH remains OPEN"])
+    print(
+        f"generated-contact build contract: PASS "
+        f"({len(LEAN_MODULES)} Lean + {len(RESEARCH_FILES)} research + "
+        f"{len(INTEGRATION_FILES)} integration files)"
+    )
     return 0
 
 if __name__=="__main__":
