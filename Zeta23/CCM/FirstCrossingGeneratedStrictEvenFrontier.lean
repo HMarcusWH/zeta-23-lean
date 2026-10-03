@@ -6,6 +6,28 @@ namespace Zeta23.CCM
 
 open Complex
 
+/-- Canonical algebraic transport from the generic `.even` parity carrier to
+the native strict-even carrier.  All downstream norm, scalar-action and
+operator calculations are performed after this one explicit transport, so
+Lean never has to identify the two subtype module/inner-product instances
+implicitly. -/
+private def evenParityNativeEquiv
+    (K : ℕ) :
+    euclideanParityBoundaryFlatSubspace .even K ≃ₗ[ℂ]
+      euclideanEvenBoundaryFlatSubspace K :=
+  LinearEquiv.ofEq _ _
+    (euclideanParityBoundaryFlatSubspace_even K)
+
+/-- The carrier transport preserves the underlying Euclidean vector exactly. -/
+@[simp] private theorem coe_evenParityNativeEquiv
+    (K : ℕ)
+    (x : euclideanParityBoundaryFlatSubspace .even K) :
+    ((evenParityNativeEquiv K x :
+        euclideanEvenBoundaryFlatSubspace K) :
+      EuclideanSpace ℂ (Fin (2 * K + 1))) =
+      (x : EuclideanSpace ℂ (Fin (2 * K + 1))) := by
+  rfl
+
 /-!
 # Post-#281 generated strict-even frontier
 
@@ -88,14 +110,12 @@ theorem GeneratedGlobalFirstCrossing.exists_generatedStrictEvenContact_of_evenSt
     exists_eigenmode_at_parityRayleighBottom_succ
       .even g.shell.Lstar g.shell.k hk
   let z0 : euclideanEvenBoundaryFlatSubspace (g.shell.k + 1) :=
-    ⟨(z0Generic : EuclideanSpace ℂ (Fin (2 * (g.shell.k + 1) + 1))),
-      by
-        simpa [euclideanParityBoundaryFlatSubspace] using z0Generic.property⟩
+    evenParityNativeEquiv (g.shell.k + 1) z0Generic
   have hz0ne : z0 ≠ 0 := by
     intro hz
     apply hz0Generic_ne
-    apply Subtype.ext
-    simpa [z0] using congrArg Subtype.val hz
+    apply (evenParityNativeEquiv (g.shell.k + 1)).injective
+    simpa [z0] using hz
   have hz0Generic_ker :
       parityCompressedCanonical .even g.shell.Lstar
         (g.shell.k + 1) z0Generic = 0 := by
@@ -105,7 +125,7 @@ theorem GeneratedGlobalFirstCrossing.exists_generatedStrictEvenContact_of_evenSt
       evenCompressedCanonical g.shell.Lstar (g.shell.k + 1) z0 = 0 := by
     apply Subtype.ext
     have hval := congrArg Subtype.val hz0Generic_ker
-    simpa [z0, evenCompressedCanonical,
+    simpa [z0, evenParityNativeEquiv, evenCompressedCanonical,
       parityCompressedCanonical_apply,
       euclideanParityBoundaryFlatSubspace] using hval
   have hnormpos : 0 < ‖z0‖ := norm_pos_iff.mpr hz0ne
@@ -241,6 +261,7 @@ theorem GeneratedStrictEvenContact.stationary_saturation_frontier
 
 end Zeta23.CCM
 
+#print axioms Zeta23.CCM.GeneratedGlobalFirstCrossing.exists_generatedStrictEvenContact_of_evenStrict
 #print axioms Zeta23.CCM.GeneratedStrictEvenContact.frontier
 #print axioms Zeta23.CCM.GeneratedStrictEvenContact.sourceValue_pos
 #print axioms Zeta23.CCM.GeneratedStrictEvenContact.stationary_saturation_frontier
