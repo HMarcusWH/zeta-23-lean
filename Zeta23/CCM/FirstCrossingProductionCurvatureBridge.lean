@@ -78,13 +78,13 @@ theorem productionContactResponseCost_nonnegative
     ⟨(w : EuclideanSpace ℂ (Fin (2 * K + 1))),
       by
         simpa [euclideanParityBoundaryFlatSubspace] using w.property⟩
-  have hgeneric :=
-    shiftedParityCompressed_nonnegative_of_le_bottom
-      .even L K (lam := 0) (by rw [hground]) wg
   have hgeneric0 :
       0 ≤ Complex.re
         (inner ℂ (parityCompressedCanonical .even L K wg) wg) := by
-    simpa using hgeneric
+    have hbottom :=
+      parityRayleighBottom_mul_norm_sq_le .even L K wg
+    rw [hground, zero_mul] at hbottom
+    simpa only [RCLike.re_to_complex] using hbottom
   have hambient :
       0 ≤ Complex.re
         (inner ℂ
