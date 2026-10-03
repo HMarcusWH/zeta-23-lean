@@ -50,7 +50,7 @@
     {
       "id": "M04",
       "description": "strict-even contact required caller-supplied kernel",
-      "status": "FIXED_GENERATED_NORMALIZED_KERNEL_CONSTRUCTOR_PENDING_CI"
+      "status": "FIXED_EXPLICIT_NATIVE_CARRIER_TRANSPORT_AND_NORMALIZED_KERNEL_CONSTRUCTOR_PENDING_CI"
     },
     {
       "id": "N01",
