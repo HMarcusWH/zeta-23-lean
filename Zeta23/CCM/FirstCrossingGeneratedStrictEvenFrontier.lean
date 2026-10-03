@@ -167,12 +167,12 @@ theorem GeneratedStrictEvenContact.frontier
       stationaryEvenResponse
         c.Lstar_pos
         (c.generated.shell.k + 1) c.two_le_K
-        c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hzero
+        c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hoperator hzero
     have hspec :=
       stationaryEvenResponse_spec
         c.Lstar_pos
         (c.generated.shell.k + 1) c.two_le_K
-        c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hzero
+        c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hoperator hzero
     exact ⟨.stationary hzero w hspec.1 hspec.2⟩
 
 /-- Exact positive source value at every generated strict-even contact. -/
@@ -200,18 +200,18 @@ theorem GeneratedStrictEvenContact.stationary_saturation_frontier
         c.generated.shell.Lstar (c.generated.shell.k + 1) c.z
         (stationaryEvenResponse
           c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
-          c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary))
+          c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hc2.1 hstationary))
     (hkappa :
       productionContactOptimizedCurvature
         c.generated.shell.Lstar (c.generated.shell.k + 1) c.z
         (stationaryEvenResponse
           c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
-          c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary) = 0) :
+          c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hc2.1 hstationary) = 0) :
     productionContactRemainderValue
         c.generated.shell.Lstar (c.generated.shell.k + 1) c.z
         (stationaryEvenResponse
           c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
-          c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary) =
+          c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hc2.1 hstationary) =
       (2 * Real.pi) ^ 2 / c.generated.shell.Lstar ^ 2 *
         productionStrictEvenSourceValue
           c.generated.shell.Lstar (c.generated.shell.k + 1) c.z := by

@@ -174,19 +174,31 @@ def productionContactFixedEnergy
     (z : euclideanParityBoundaryFlatSubspace p K) : ℝ :=
   Complex.re (inner ℂ (parityCompressedCanonical p L K z) z)
 
-/-- Actual first variation obtained from the entrywise production derivative. -/
+/-- Seam-safe scalar first variation: differentiate the fixed legal-compressed
+energy itself.  This does not commute differentiation through the ambient
+matrix at a seam. -/
 def productionContactFirstVariation
     (p : ReversalParity) (L : ℝ) (K : ℕ)
     (z : euclideanParityBoundaryFlatSubspace p K) : ℝ :=
-  Complex.re
-    (inner ℂ (parityProductionApertureFirst p L K z) z)
+  deriv (fun s : ℝ => productionContactFixedEnergy p s K z) L
 
-/-- Actual fixed-vector second aperture variation. -/
+/-- Seam-safe fixed-vector second variation. -/
 def productionContactFixedSecondVariation
     (p : ReversalParity) (L : ℝ) (K : ℕ)
     (z : euclideanParityBoundaryFlatSubspace p K) : ℝ :=
-  Complex.re
-    (inner ℂ (parityProductionApertureSecond p L K z) z)
+  deriv (fun s : ℝ => productionContactFirstVariation p s K z) L
+
+/-- Quadratic form of the ambient-entry first-derivative candidate. -/
+def productionContactFirstOperatorQuadratic
+    (p : ReversalParity) (L : ℝ) (K : ℕ)
+    (z : euclideanParityBoundaryFlatSubspace p K) : ℝ :=
+  Complex.re (inner ℂ (parityProductionApertureFirst p L K z) z)
+
+/-- Quadratic form of the ambient-entry second-derivative candidate. -/
+def productionContactSecondOperatorQuadratic
+    (p : ReversalParity) (L : ℝ) (K : ℕ)
+    (z : euclideanParityBoundaryFlatSubspace p K) : ℝ :=
+  Complex.re (inner ℂ (parityProductionApertureSecond p L K z) z)
 
 /-- Exact statement that the entrywise derivative realizes the derivative of
 the fixed-vector production energy at this aperture. -/
@@ -213,13 +225,17 @@ family; at a seam it requires the independent legal-carrier gluing theorem. -/
 def ProductionContactFirstOperatorRealized
     (p : ReversalParity) (L : ℝ) (K : ℕ) : Prop :=
   ∀ z : euclideanParityBoundaryFlatSubspace p K,
-    ProductionContactFirstVariationRealized p L K z
+    ProductionContactFirstVariationRealized p L K z ∧
+      productionContactFirstOperatorQuadratic p L K z =
+        productionContactFirstVariation p L K z
 
 /-- Corresponding second-order realization firewall. -/
 def ProductionContactSecondOperatorRealized
     (p : ReversalParity) (L : ℝ) (K : ℕ) : Prop :=
   ∀ z : euclideanParityBoundaryFlatSubspace p K,
-    ProductionContactSecondVariationRealized p L K z
+    ProductionContactSecondVariationRealized p L K z ∧
+      productionContactSecondOperatorQuadratic p L K z =
+        productionContactFixedSecondVariation p L K z
 
 /-- Complete legal-carrier C2 realization.  This is the seam-safe gate:
 ambient-entry total derivatives do not authorize it automatically. -/

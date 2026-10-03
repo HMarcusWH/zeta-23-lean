@@ -56,14 +56,19 @@ orthogonal to the zero eigenvector, not merely zero in real part. -/
 theorem inner_firstDerivative_zero_of_stationary
     {L : ℝ} (K : ℕ)
     (z : euclideanEvenBoundaryFlatSubspace K)
+    (hoperator : ProductionContactFirstOperatorRealized .even L K)
     (hstationary :
       productionContactFirstVariation .even L K z = 0) :
     inner ℂ
       (parityProductionApertureFirst .even L K z) z = 0 := by
   let a : ℂ :=
     inner ℂ (parityProductionApertureFirst .even L K z) z
+  have hquad := (hoperator z).2
   have hre : a.re = 0 := by
-    simpa [a, productionContactFirstVariation] using hstationary
+    have hq :
+        productionContactFirstOperatorQuadratic .even L K z = 0 := by
+      rw [hquad, hstationary]
+    simpa [a, productionContactFirstOperatorQuadratic] using hq
   have hsym :=
     parityProductionApertureFirst_isSymmetric .even L K z z
   have hstar : star a = a := by
@@ -93,6 +98,7 @@ theorem neg_firstDerivative_mem_evenRange_of_stationary_strict
     (hzne : z ≠ 0)
     (hzero : evenCompressedCanonical L K z = 0)
     (hodd : 0 < parityRayleighBottom .odd L K)
+    (hoperator : ProductionContactFirstOperatorRealized .even L K)
     (hstationary :
       productionContactFirstVariation .even L K z = 0) :
     -(parityProductionApertureFirst .even L K z) ∈
@@ -100,7 +106,7 @@ theorem neg_firstDerivative_mem_evenRange_of_stationary_strict
   let E := evenCompressedCanonical L K
   let b := parityProductionApertureFirst .even L K z
   have hbz : inner ℂ b z = 0 := by
-    simpa [b] using inner_firstDerivative_zero_of_stationary K z hstationary
+    simpa [b] using inner_firstDerivative_zero_of_stationary K z hoperator hstationary
   have hzb : inner ℂ z b = 0 := by
     have hconj := inner_conj_symm b z
     rw [hbz, map_zero] at hconj
@@ -135,6 +141,7 @@ theorem existsUnique_stationaryEvenResponse
     (hznorm : ‖z‖ = 1)
     (hzero : evenCompressedCanonical L K z = 0)
     (hodd : 0 < parityRayleighBottom .odd L K)
+    (hoperator : ProductionContactFirstOperatorRealized .even L K)
     (hstationary :
       productionContactFirstVariation .even L K z = 0) :
     ∃! w : euclideanEvenBoundaryFlatSubspace K,
@@ -147,7 +154,7 @@ theorem existsUnique_stationaryEvenResponse
       -b ∈ E.range := by
     simpa [E, b] using
       neg_firstDerivative_mem_evenRange_of_stationary_strict
-        hL K hK z hzne hzero hodd hstationary
+        hL K hK z hzne hzero hodd hoperator hstationary
   obtain ⟨w0, hw0⟩ := hmem
   have hzz : inner ℂ z z = 1 := by
     rw [inner_self_eq_norm_sq_to_K, hznorm]
@@ -188,12 +195,13 @@ noncomputable def stationaryEvenResponse
     (hznorm : ‖z‖ = 1)
     (hzero : evenCompressedCanonical L K z = 0)
     (hodd : 0 < parityRayleighBottom .odd L K)
+    (hoperator : ProductionContactFirstOperatorRealized .even L K)
     (hstationary :
       productionContactFirstVariation .even L K z = 0) :
     euclideanEvenBoundaryFlatSubspace K :=
   Classical.choose
     (existsUnique_stationaryEvenResponse
-      hL K hK z hzne hznorm hzero hodd hstationary)
+      hL K hK z hzne hznorm hzero hodd hoperator hstationary)
 
 theorem stationaryEvenResponse_spec
     {L : ℝ} (hL : 0 < L)
@@ -203,16 +211,17 @@ theorem stationaryEvenResponse_spec
     (hznorm : ‖z‖ = 1)
     (hzero : evenCompressedCanonical L K z = 0)
     (hodd : 0 < parityRayleighBottom .odd L K)
+    (hoperator : ProductionContactFirstOperatorRealized .even L K)
     (hstationary :
       productionContactFirstVariation .even L K z = 0) :
     inner ℂ z
-        (stationaryEvenResponse hL K hK z hzne hznorm hzero hodd hstationary) = 0 ∧
+        (stationaryEvenResponse hL K hK z hzne hznorm hzero hodd hoperator hstationary) = 0 ∧
       evenCompressedCanonical L K
-        (stationaryEvenResponse hL K hK z hzne hznorm hzero hodd hstationary) =
+        (stationaryEvenResponse hL K hK z hzne hznorm hzero hodd hoperator hstationary) =
           -(parityProductionApertureFirst .even L K z) :=
   (Classical.choose_spec
     (existsUnique_stationaryEvenResponse
-      hL K hK z hzne hznorm hzero hodd hstationary)).1
+      hL K hK z hzne hznorm hzero hodd hoperator hstationary)).1
 
 end Zeta23.CCM
 
