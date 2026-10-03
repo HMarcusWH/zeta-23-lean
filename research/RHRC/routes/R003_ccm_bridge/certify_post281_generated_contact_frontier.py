@@ -44,6 +44,14 @@ def ladder_point(L,Q,K,precisions,*,fraction=None):
             "global_bounds":global_bottom_bounds(final),
             "global_sign":global_bottom_sign(final)}
 
+def midpoint_fraction(a:list[int],b:list[int])->list[int]:
+    from math import gcd
+    an,ad=int(a[0]),int(a[1]); bn,bd=int(b[0]),int(b[1])
+    num=an*bd+bn*ad
+    den=2*ad*bd
+    g=gcd(abs(num),den)
+    return [num//g,den//g]
+
 def certify_bracket(cand, protocol):
     Q=int(cand["Q"]); K=int(cand["K"])
     precisions=protocol["arb"]["precision_bits"]
@@ -56,10 +64,17 @@ def certify_bracket(cand, protocol):
     steps=[]
     if opposite:
         for _ in range(cap):
-            midL=(left["L"]+right["L"])/2.0
-            if not (left["L"] < midL < right["L"]):
-                break
-            mid=ladder_point(midL,Q,K,precisions)
+            lf=left.get("exact_cell_spec",{}).get("fraction") if left.get("exact_cell_spec") else None
+            rf=right.get("exact_cell_spec",{}).get("fraction") if right.get("exact_cell_spec") else None
+            if lf is not None and rf is not None:
+                mf=midpoint_fraction(lf,rf)
+                midL=(left["L"]+right["L"])/2.0
+                mid=ladder_point(midL,Q,K,precisions,fraction=mf)
+            else:
+                midL=(left["L"]+right["L"])/2.0
+                if not (left["L"] < midL < right["L"]):
+                    break
+                mid=ladder_point(midL,Q,K,precisions)
             steps.append(mid)
             if mid["global_sign"]=="UNRESOLVED":
                 break
