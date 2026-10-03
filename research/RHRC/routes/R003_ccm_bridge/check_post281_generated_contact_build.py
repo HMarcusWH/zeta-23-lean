@@ -23,6 +23,7 @@ RESEARCH_FILES=[
 "research/RHRC/routes/R003_ccm_bridge/certify_post281_generated_contact_frontier.py",
 "research/RHRC/routes/R003_ccm_bridge/check_post281_generated_contact_scope.py",
 "research/RHRC/routes/R003_ccm_bridge/check_post281_generated_contact_results.py",
+"research/RHRC/routes/R003_ccm_bridge/write_post281_generated_contact_receipt.py",
 "research/RHRC/routes/R003_ccm_bridge/POST281_GENERATED_CONTACT_FRONTIER_PROTOCOL.md",
 "research/RHRC/routes/R003_ccm_bridge/POST281_PRODUCTION_CONTACT_OBLIGATIONS.json",
 "research/RHRC/routes/R003_ccm_bridge/POST281_PRODUCTION_CONTACT_OBSERVABLES.json",

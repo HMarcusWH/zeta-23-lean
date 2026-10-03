@@ -52,6 +52,8 @@ jobs:
             Zeta23/CCM/GlobalParityFirstNegativeBoundary.lean \
             Zeta23/CCM/FirstCrossingGlobalAlignment.lean \
             Zeta23/ExceptionalZero/GlobalParityFirstNegativeBoundary.lean
+      - name: Reject proof escapes in generated-contact modules
+        run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure
 
   lean-production-contact:
     runs-on: ubuntu-latest
@@ -82,6 +84,8 @@ jobs:
             Zeta23/CCM/FirstCrossingProductionResponse.lean \
             Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean \
             Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean
+      - name: Reject proof escapes in production-contact modules
+        run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure
 
   research-generated-contact:
     runs-on: ubuntu-latest
@@ -150,10 +154,26 @@ jobs:
           python research/RHRC/routes/R003_ccm_bridge/check_post281_generated_contact_results.py \
             --discovery /tmp/discovery/POST281_GENERATED_CONTACT_DISCOVERY.json \
             --arb /tmp/POST281_GENERATED_CONTACT_ARB.json
+      - name: Write exact campaign receipt
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/write_post281_generated_contact_receipt.py \
+            --protocol research/RHRC/routes/R003_ccm_bridge/fixtures/post281_generated_contact_frontier_protocol_v1.json \
+            --discovery /tmp/discovery/POST281_GENERATED_CONTACT_DISCOVERY.json \
+            --arb /tmp/POST281_GENERATED_CONTACT_ARB.json \
+            --output /tmp/POST281_GENERATED_CONTACT_RECEIPT.json
       - uses: actions/upload-artifact@v4
         with:
           name: post281-generated-contact-arb
-          path: /tmp/POST281_GENERATED_CONTACT_ARB.json
+          path: |
+            /tmp/POST281_GENERATED_CONTACT_ARB.json
+            /tmp/POST281_GENERATED_CONTACT_RECEIPT.json
+            /tmp/discovery/POST281_GENERATED_CONTACT_DISCOVERY.json
+            /tmp/discovery/POST280_SATURATION_REPLAY.json
+            /tmp/discovery/POST280_SOURCE_REMAINDER_REPLAY.json
+            research/RHRC/routes/R003_ccm_bridge/POST281_GENERATED_CONTACT_FRONTIER_PROTOCOL.md
+            research/RHRC/routes/R003_ccm_bridge/POST281_PRODUCTION_CONTACT_OBLIGATIONS.json
+            research/RHRC/routes/R003_ccm_bridge/POST281_PRODUCTION_CONTACT_OBSERVABLES.json
+            research/RHRC/routes/R003_ccm_bridge/fixtures/post281_generated_contact_frontier_protocol_v1.json
           retention-days: 30
 
   generated-contact-complete:
