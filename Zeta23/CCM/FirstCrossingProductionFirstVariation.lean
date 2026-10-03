@@ -221,6 +221,13 @@ def ProductionContactSecondOperatorRealized
   ∀ z : euclideanParityBoundaryFlatSubspace p K,
     ProductionContactSecondVariationRealized p L K z
 
+/-- Complete legal-carrier C2 realization.  This is the seam-safe gate:
+ambient-entry total derivatives do not authorize it automatically. -/
+def ProductionContactC2Realized
+    (p : ReversalParity) (L : ℝ) (K : ℕ) : Prop :=
+  ProductionContactFirstOperatorRealized p L K ∧
+    ProductionContactSecondOperatorRealized p L K
+
 /-- One-sided calculus lemma: a differentiable fixed-vector energy which is
 nonnegative to the left of a zero contact has nonpositive first derivative. -/
 theorem firstVariation_nonpos_of_leftPrefix

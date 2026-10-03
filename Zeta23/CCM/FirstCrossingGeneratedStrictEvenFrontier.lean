@@ -63,6 +63,59 @@ theorem GeneratedStrictEvenContact.evenGround_zero
         c.generated.shell.k_le_N
   simpa [c.selected_even] using hsel
 
+/-- A generated even-strict branch supplies its own nonzero normalized even
+kernel representative; callers do not have to inject an unrelated vector. -/
+theorem GeneratedGlobalFirstCrossing.exists_generatedStrictEvenContact_of_evenStrict
+    (g : GeneratedGlobalFirstCrossing)
+    (heven :
+      parityRayleighBottom .even g.shell.Lstar (g.shell.k + 1) = 0)
+    (hodd :
+      0 < parityRayleighBottom .odd g.shell.Lstar (g.shell.k + 1)) :
+    ∃ c : GeneratedStrictEvenContact, c.generated = g := by
+  have hk : 1 ≤ g.shell.k :=
+    le_trans g.shell.one_le_n g.shell.n_le_k
+  have hp : g.shell.p = .even := by
+    cases hpg : g.shell.p with
+    | even => rfl
+    | odd =>
+        have hsel :
+            parityRayleighBottom .odd g.shell.Lstar (g.shell.k + 1) = 0 := by
+          have hzero :=
+            g.shell.plateau_zero g.shell.k g.shell.n_le_k g.shell.k_le_N
+          simpa [paritySuccessorGround, hpg] using hzero
+        linarith
+  obtain ⟨z0, hz0ne, hz0eig⟩ :=
+    exists_eigenmode_at_parityRayleighBottom_succ
+      .even g.shell.Lstar g.shell.k hk
+  have hz0ker :
+      evenCompressedCanonical g.shell.Lstar (g.shell.k + 1) z0 = 0 := by
+    simpa [heven] using hz0eig
+  have hnormpos : 0 < ‖z0‖ := norm_pos_iff.mpr hz0ne
+  let z : euclideanEvenBoundaryFlatSubspace (g.shell.k + 1) :=
+    ((‖z0‖ : ℂ)⁻¹) • z0
+  have hzne : z ≠ 0 := by
+    dsimp [z]
+    exact smul_ne_zero
+      (inv_ne_zero (by exact_mod_cast hnormpos.ne')) hz0ne
+  have hznorm : ‖z‖ = 1 := by
+    dsimp [z]
+    rw [norm_smul, norm_inv]
+    simp [hnormpos.ne', abs_of_pos hnormpos]
+  have hzker :
+      evenCompressedCanonical g.shell.Lstar (g.shell.k + 1) z = 0 := by
+    dsimp [z]
+    rw [map_smul, hz0ker, smul_zero]
+  let c : GeneratedStrictEvenContact := {
+    generated := g
+    selected_even := hp
+    z := z
+    z_ne := hzne
+    z_norm := hznorm
+    z_kernel := hzker
+    odd_positive := hodd
+  }
+  exact ⟨c, rfl⟩
+
 /-- First-order vs stationary generated-contact frontier. -/
 inductive GeneratedStrictEvenVariationBranch
     (c : GeneratedStrictEvenContact) : Type
@@ -136,6 +189,9 @@ two hypotheses are intentionally the exact remaining theorem obligations:
 actual production differentiation and outgoing-contact zero curvature. -/
 theorem GeneratedStrictEvenContact.stationary_saturation_frontier
     (c : GeneratedStrictEvenContact)
+    (hc2 :
+      ProductionContactC2Realized .even
+        c.generated.shell.Lstar (c.generated.shell.k + 1))
     (hstationary :
       productionContactFirstVariation .even
         c.generated.shell.Lstar (c.generated.shell.k + 1) c.z = 0)
@@ -159,6 +215,8 @@ theorem GeneratedStrictEvenContact.stationary_saturation_frontier
       (2 * Real.pi) ^ 2 / c.generated.shell.Lstar ^ 2 *
         productionStrictEvenSourceValue
           c.generated.shell.Lstar (c.generated.shell.k + 1) c.z := by
+  have _hfirst := hc2.1 c.z
+  have _hsecond := hc2.2 c.z
   exact
     (productionContactOptimizedCurvature_zero_iff hbridge).mp hkappa
 
