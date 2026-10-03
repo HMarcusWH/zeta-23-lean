@@ -100,21 +100,20 @@ theorem GeneratedGlobalFirstCrossing.exists_generatedStrictEvenContact_of_evenSt
       evenCompressedCanonical g.shell.Lstar (g.shell.k + 1) z0 =
         (parityRayleighBottom .even g.shell.Lstar
           (g.shell.k + 1) : ℂ) • z0 at hz0eig
-    rw [heven, zero_smul] at hz0eig
+    rw [heven] at hz0eig
+    have hzeroCast : ((0 : ℝ) : ℂ) = 0 := by
+      norm_num
+    rw [hzeroCast, zero_smul] at hz0eig
     exact hz0eig
-  have hnormpos : 0 < ‖z0‖ := norm_pos_iff.mpr hz0ne
-  have hnormne : ‖z0‖ ≠ 0 := hnormpos.ne'
   let z : euclideanEvenBoundaryFlatSubspace (g.shell.k + 1) :=
-    ((‖z0‖ : ℂ)⁻¹) • z0
-  have hzne : z ≠ 0 := by
-    dsimp [z]
-    exact smul_ne_zero
-      (inv_ne_zero (by exact_mod_cast hnormne)) hz0ne
+    (‖z0‖⁻¹ : ℂ) • z0
   have hznorm : ‖z‖ = 1 := by
     dsimp [z]
-    rw [norm_smul, norm_inv, Complex.norm_real,
-      Real.norm_of_nonneg (norm_nonneg z0)]
-    exact inv_mul_cancel₀ hnormne
+    exact norm_smul_inv_norm hz0ne
+  have hzne : z ≠ 0 := by
+    intro hz
+    rw [hz, norm_zero] at hznorm
+    norm_num at hznorm
   have hzker :
       evenCompressedCanonical g.shell.Lstar (g.shell.k + 1) z = 0 := by
     dsimp [z]
