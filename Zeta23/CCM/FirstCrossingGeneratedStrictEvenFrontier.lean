@@ -84,12 +84,30 @@ theorem GeneratedGlobalFirstCrossing.exists_generatedStrictEvenContact_of_evenSt
             g.shell.plateau_zero g.shell.k g.shell.n_le_k g.shell.k_le_N
           simpa [paritySuccessorGround, hpg] using hzero
         linarith
-  obtain ⟨z0, hz0ne, hz0eig⟩ :=
+  obtain ⟨z0Generic, hz0Generic_ne, hz0Generic_eig⟩ :=
     exists_eigenmode_at_parityRayleighBottom_succ
       .even g.shell.Lstar g.shell.k hk
+  let z0 : euclideanEvenBoundaryFlatSubspace (g.shell.k + 1) :=
+    ⟨(z0Generic : EuclideanSpace ℂ (Fin (2 * (g.shell.k + 1) + 1))),
+      by
+        simpa [euclideanParityBoundaryFlatSubspace] using z0Generic.property⟩
+  have hz0ne : z0 ≠ 0 := by
+    intro hz
+    apply hz0Generic_ne
+    apply Subtype.ext
+    simpa [z0] using congrArg Subtype.val hz
+  have hz0Generic_ker :
+      parityCompressedCanonical .even g.shell.Lstar
+        (g.shell.k + 1) z0Generic = 0 := by
+    rw [heven] at hz0Generic_eig
+    simpa using hz0Generic_eig
   have hz0ker :
       evenCompressedCanonical g.shell.Lstar (g.shell.k + 1) z0 = 0 := by
-    simpa [heven] using hz0eig
+    apply Subtype.ext
+    have hval := congrArg Subtype.val hz0Generic_ker
+    simpa [z0, evenCompressedCanonical,
+      parityCompressedCanonical_apply,
+      euclideanParityBoundaryFlatSubspace] using hval
   have hnormpos : 0 < ‖z0‖ := norm_pos_iff.mpr hz0ne
   let z : euclideanEvenBoundaryFlatSubspace (g.shell.k + 1) :=
     ((‖z0‖ : ℂ)⁻¹) • z0
@@ -181,7 +199,7 @@ theorem GeneratedStrictEvenContact.sourceValue_pos
     0 < productionStrictEvenSourceValue
       c.generated.shell.Lstar (c.generated.shell.k + 1) c.z := by
   exact productionStrictEvenSourceValue_pos_of_even_zero_ground_strict
-    c.Lstar_pos c.two_le_K c.z c.z_ne
+    c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K c.z c.z_ne
     c.evenGround_zero c.z_kernel c.odd_positive
 
 /-- Stationary arithmetic saturation endpoint for the concrete response.  The
