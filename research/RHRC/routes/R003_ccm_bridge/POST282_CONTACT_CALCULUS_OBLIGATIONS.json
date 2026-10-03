@@ -1,0 +1,52 @@
+{
+  "schema_version": "POST282_CONTACT_CALCULUS_OBLIGATIONS_v1",
+  "base_merge": "01871f7d2256b1eac2dbd7967346954367c8eef9",
+  "claim_firewall": "RH_OPEN",
+  "obligations": [
+    {
+      "id": "F01_COMPRESSED_C2",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "Zeta23.CCM.canonicalEvenCompressedC2_proved"
+    },
+    {
+      "id": "F02_WEIGHTED_TESTS",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "Zeta23.CCM.production_derivative_tests_admissible"
+    },
+    {
+      "id": "F04_PAIR_BALANCE",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap"
+    },
+    {
+      "id": "F05_STATIONARY_CURVATURE",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "Zeta23.CCM.GeneratedStrictEvenContact.actual_stationary_curvature_eq_zero"
+    },
+    {
+      "id": "F06_INHERITED_STATIONARITY",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited"
+    },
+    {
+      "id": "F07_FRONTIER",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "Zeta23.CCM.GeneratedStrictEvenContact.production_frontier"
+    },
+    {
+      "id": "OBS060O_SATURATION_EXCLUSION",
+      "status": "OPEN",
+      "target": "canonical arithmetic exclusion"
+    },
+    {
+      "id": "ODD_TIE_BRANCHES",
+      "status": "OPEN",
+      "target": "branch-complete contact exclusion"
+    },
+    {
+      "id": "RH",
+      "status": "OPEN",
+      "terminal": true
+    }
+  ]
+}

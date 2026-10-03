@@ -1,0 +1,87 @@
+{
+  "schema_version": "POST282_CONTACT_CALCULUS_PROTOCOL_v1",
+  "claim_cap": "EXPERIMENTAL_SIGNAL_ONLY",
+  "base_pr": 282,
+  "base_merge": "01871f7d2256b1eac2dbd7967346954367c8eef9",
+  "base_tree": "c7749d37c4b63270818c3fb0d7fb5dbc22638790",
+  "precision_bits": [
+    192,
+    384,
+    768
+  ],
+  "refinement_cap_per_neighborhood": 96,
+  "independent_calibration": {
+    "name": "K2_LOG2_COMPRESSED_SEAM",
+    "K": 2,
+    "L": "log(2)",
+    "vector": [
+      1,
+      -4,
+      6,
+      -4,
+      1
+    ],
+    "normalization": "sqrt(70)"
+  },
+  "seam_controls": [
+    {
+      "q": 2,
+      "K": 2,
+      "kind": "VON_MANGOLDT_SEAM"
+    },
+    {
+      "q": 4,
+      "K": 2,
+      "kind": "VON_MANGOLDT_SEAM"
+    },
+    {
+      "q": 8,
+      "K": 2,
+      "kind": "VON_MANGOLDT_SEAM"
+    },
+    {
+      "q": 9,
+      "K": 2,
+      "kind": "VON_MANGOLDT_SEAM"
+    },
+    {
+      "q": 16,
+      "K": 2,
+      "kind": "VON_MANGOLDT_SEAM"
+    },
+    {
+      "q": 6,
+      "K": 2,
+      "kind": "ZERO_WEIGHT_INTEGER_CONTROL"
+    },
+    {
+      "q": 10,
+      "K": 2,
+      "kind": "ZERO_WEIGHT_INTEGER_CONTROL"
+    },
+    {
+      "q": 14,
+      "K": 2,
+      "kind": "ZERO_WEIGHT_INTEGER_CONTROL"
+    },
+    {
+      "q": 15,
+      "K": 2,
+      "kind": "ZERO_WEIGHT_INTEGER_CONTROL"
+    }
+  ],
+  "inherited_artifact": {
+    "run_id": 37149698793,
+    "artifact_id": 11282789337,
+    "zip_sha256": "67a8dc2e766e2c7ea6ec02809ade4e4d530b055be382901637368e4cf9711e39",
+    "discovery_sha256": "9cd30f99a1841e5ef70951f1339ff18b9b9492e5273659bb560fb5e457aedd0a",
+    "arb_sha256": "e137b8db0c726085c1fc9875efa778ff115de705c26fd1205154133541baea29"
+  },
+  "nonclaims": [
+    "Finite calibration is not theorem authority.",
+    "A local bracket is not a first global boundary.",
+    "Scientific falsification is a successful research disposition.",
+    "RH remains OPEN."
+  ],
+  "terminal_claim": "RH_OPEN"
+}

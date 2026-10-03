@@ -10,6 +10,10 @@ from __future__ import annotations
 import math
 import numpy as np
 from flint import arb, arb_mat, ctx
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "closure_batch"))
+from interval_codec import DyadicInterval
 
 from post194_fb05_q14_fixed_unit_second_derivative import (
     fixed_unit_fixed_q_canonical_source_matrix_with_second_derivative_arb,
@@ -39,6 +43,7 @@ def _ball_record_full(x: arb) -> dict:
     lo, hi = x.lower(), x.upper()
     flo, fhi = _outward_float_bounds(lo, hi)
     rec.update({
+        "dyadic_interval": DyadicInterval.from_arb(x).to_json(),
         "lower": flo,
         "upper": fhi,
         "lower_exact": lo.str(40, radius=False),
@@ -53,7 +58,9 @@ def _ball_record_full(x: arb) -> dict:
 
 def _bounds_record(lo: arb, hi: arb) -> dict:
     flo, fhi = _outward_float_bounds(lo, hi)
+    exact_ball = arb((lo + hi) / 2, (hi - lo) / 2)
     return {
+        "dyadic_interval": DyadicInterval.from_arb(exact_ball).to_json(),
         "lower": flo,
         "upper": fhi,
         "lower_exact": lo.str(40, radius=False),
