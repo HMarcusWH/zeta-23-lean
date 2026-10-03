@@ -4,32 +4,49 @@
   "observables": {
     "global_bottom": {
       "source": "canonical parity Rayleigh bottoms",
-      "resolution": "Arb eigenvalue enclosure"
+      "resolution": "Arb eigenvalue enclosure",
+      "lean_source": "Zeta23.CCM.globalParitySuccessorBottom / parityRayleighBottom",
+      "research_source": "canonical_contact_frontier_arb.py::global_bottom_bounds"
     },
     "J1": {
       "source": "complete fixed-Q analytic M'(L)",
-      "resolution": "simple-ground residual/gap budget"
+      "resolution": "simple-ground residual/gap budget",
+      "lean_source": "Zeta23.CCM.productionContactFirstVariation",
+      "research_source": "canonical_contact_frontier_arb.py::certify_simple_ground_jet[j1]"
     },
     "fixed_second": {
       "source": "complete fixed-Q analytic M''(L)",
-      "resolution": "simple-ground residual/gap budget"
+      "resolution": "simple-ground residual/gap budget",
+      "lean_source": "Zeta23.CCM.productionContactFixedSecondVariation",
+      "research_source": "canonical_contact_frontier_arb.py::certify_simple_ground_jet[fixed_second]"
     },
     "Q": {
       "source": "independent production source and spectral representation",
       "status": "TO_WIRE_WITH_FORMAL_REMAINDER",
-      "arb_status": "NOT_YET_RIGOROUSLY_CERTIFIED_ON_GENERATED_CONTACT"
+      "arb_status": "NOT_YET_RIGOROUSLY_CERTIFIED_ON_GENERATED_CONTACT",
+      "lean_source": "Zeta23.CCM.productionStrictEvenSourceValue; Zeta23.CCM.productionStrictEvenSourceValue_eq_oddEnergy_of_even_zero_eigenmode",
+      "floating_replay_source": "post280_saturation_frontier.py::evaluate[Q_arithmetic,Q_spectral_reduced]",
+      "theorem_authority_scope": "exact canonical strict-even zero-mode hypotheses only"
     },
     "remainder": {
       "status": "TO_WIRE_WITH_FORMAL_REMAINDER",
-      "arb_status": "NOT_YET_RIGOROUSLY_CERTIFIED_ON_GENERATED_CONTACT"
+      "arb_status": "NOT_YET_RIGOROUSLY_CERTIFIED_ON_GENERATED_CONTACT",
+      "lean_source": "Zeta23.CCM.productionContactRemainderSource / productionContactRemainderValue",
+      "floating_replay_source": "post280_saturation_frontier.py::evaluate[production_arithmetic_remainder]",
+      "theorem_authority_scope": "value object defined; weighted explicit-formula admissibility remains open"
     },
     "saturation_gap": {
       "status": "TO_WIRE_AFTER_FORMAL_BRIDGE",
-      "arb_status": "NOT_YET_RIGOROUSLY_CERTIFIED_ON_GENERATED_CONTACT"
+      "arb_status": "NOT_YET_RIGOROUSLY_CERTIFIED_ON_GENERATED_CONTACT",
+      "lean_source": "Zeta23.CCM.productionContactSaturationGap / ProductionContactCurvatureArithmeticIdentity",
+      "floating_replay_source": "post280_saturation_frontier.py::evaluate[delta_sat_proxy]",
+      "theorem_authority_scope": "curvature equality remains open"
     },
     "rho_sat": {
       "eligibility": "Q strictly positive and numerator/gap separately resolved",
-      "arb_status": "NOT_YET_RIGOROUSLY_CERTIFIED_ON_GENERATED_CONTACT"
+      "arb_status": "NOT_YET_RIGOROUSLY_CERTIFIED_ON_GENERATED_CONTACT",
+      "definition": "L^2 * A_L[R] / ((2*pi)^2 * Q)",
+      "theorem_authority_scope": "derived diagnostic only after numerator and denominator are independently certified"
     },
     "current_prime_frozen_state_ablation": {
       "source": "selected canonical floating state; remove only current-Q atom with L,K,z fixed",

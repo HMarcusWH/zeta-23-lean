@@ -20,32 +20,32 @@
     {
       "id": "L04_WEIGHTED_TEST_AUTHORITY",
       "status": "PARTIAL_INTERFACE_IMPLEMENTED__WEIGHTED_AUTHORITY_OPEN",
-      "target": "FirstCrossingProductionTests"
+      "target": "Zeta23.CCM.ProductionContactTestAdmissible / weighted derivative-test instances OPEN"
     },
     {
       "id": "L05_CONCRETE_REMAINDER",
       "status": "CONCRETE_REMAINDER_DEFINED__ADMISSIBILITY_INTRINSIC_IDENTIFICATION_OPEN",
-      "target": "FirstCrossingProductionRemainder"
+      "target": "Zeta23.CCM.productionContactRemainderSource / productionContactRemainderValue"
     },
     {
       "id": "L06_FIRST_VARIATION",
       "status": "DERIVATIVE_OPERATORS_DEFINED__REALIZATION_AND_C2_GLUING_OPEN",
-      "target": "FirstCrossingProductionFirstVariation"
+      "target": "Zeta23.CCM.productionContactFirstVariation / ProductionContactFirstVariationRealized / C2 seam gluing OPEN"
     },
     {
       "id": "L07_STATIONARY_RESPONSE",
       "status": "CANDIDATE_CI_PENDING",
-      "target": "FirstCrossingProductionResponse"
+      "target": "Zeta23.CCM.existsUnique_stationaryEvenResponse / stationaryEvenResponse_spec"
     },
     {
       "id": "L08_CURVATURE_BRIDGE",
       "status": "CONCRETE_IDENTITY_INTERFACE_IMPLEMENTED__ARITHMETIC_DERIVATION_OPEN",
-      "target": "productionOptimizedCurvatureBridge_proved"
+      "target": "Zeta23.CCM.ProductionContactCurvatureArithmeticIdentity (OPEN) / productionOptimizedCurvatureBridge_of_concreteIdentity (conditional)"
     },
     {
       "id": "L09_STRICT_EVEN_FRONTIER",
       "status": "CONDITIONAL_FRONTIER_IMPLEMENTED__BRIDGE_AND_SATURATION_OPEN",
-      "target": "GeneratedStrictEvenContact.frontier"
+      "target": "Zeta23.CCM.GeneratedStrictEvenContact.frontier / stationary_saturation_frontier (conditional)"
     },
     {
       "id": "OBS060O_SATURATION_EXCLUSION",
