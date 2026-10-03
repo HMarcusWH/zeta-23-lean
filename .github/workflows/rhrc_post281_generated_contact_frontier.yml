@@ -49,6 +49,13 @@ jobs:
         run: |
           python research/RHRC/routes/R003_ccm_bridge/check_post281_generated_contact_lean_targets.py \
             --group generated --output /tmp/generated-lean-targets.json
+      - name: Upload generated-contact Lean target receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: post281-generated-contact-lean-targets
+          path: /tmp/generated-lean-targets.json
+          if-no-files-found: warn
       - name: Audit generated-contact geometry axioms
         run: |
           python research/RHRC/tools/axiom_audit.py \
@@ -74,6 +81,13 @@ jobs:
         run: |
           python research/RHRC/routes/R003_ccm_bridge/check_post281_generated_contact_lean_targets.py \
             --group production --output /tmp/production-lean-targets.json
+      - name: Upload production-contact Lean target receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: post281-production-contact-lean-targets
+          path: /tmp/production-lean-targets.json
+          if-no-files-found: warn
       - name: Audit concrete production contact axioms
         run: |
           python research/RHRC/tools/axiom_audit.py \
@@ -106,6 +120,8 @@ jobs:
           python -m unittest research/RHRC/routes/R003_ccm_bridge/tests/test_post281_generated_contact_frontier.py -v
           python research/RHRC/routes/R003_ccm_bridge/check_post281_generated_contact_scope.py \
             --protocol research/RHRC/routes/R003_ccm_bridge/fixtures/post281_generated_contact_frontier_protocol_v1.json
+      - name: Run generated-contact tests under python -O
+        run: python -O -m unittest research/RHRC/routes/R003_ccm_bridge/tests/test_post281_generated_contact_frontier.py -v
       - name: Replay inherited production and countermodel controls
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post280_saturation_frontier.py \

@@ -9,6 +9,8 @@ import argparse
 import hashlib
 import json
 import subprocess
+import os
+import importlib.metadata
 from pathlib import Path
 
 ROUTE = Path(__file__).resolve().parent

@@ -13,6 +13,59 @@ class GeneratedContactFrontierTests(unittest.TestCase):
     def setUpClass(cls):
         cls.p=json.loads((ROUTE/"fixtures"/"post281_generated_contact_frontier_protocol_v1.json").read_text())
 
+
+    def _minimal_valid_payloads(self):
+        cand={"reason":"ground_magnitude","model":"CANONICAL","Q":13,"K":3,
+              "L":2.5,"cell_fraction":[8,16],
+              "cell_left_symbolic":"log(13)","cell_right_symbolic":"log(14)",
+              "global_bottom":0.01,"parity_separation":0.1,"selected_sector_gap":0.2}
+        discovery={
+            "schema_version":"POST281_GENERATED_CONTACT_DISCOVERY_v1",
+            "claim_cap":"EXPERIMENTAL_SIGNAL_ONLY",
+            "protocol":{"discovery":{"additional_neighborhood_cap":12}},
+            "measurements":[{"Q":13,"K":3,"L":2.5,"model":"canonical","x":0.0}],
+            "selected_neighborhoods":[cand],
+            "summary":{"terminal_claim":"RH_OPEN","contact_claimed":False,
+                       "measurement_count":1,"selected_count":1},
+        }
+        attempt={
+            "Q":13,"K":3,"L_float":2.5,"L_exact":"2.5",
+            "precision_bits":192,"spectral_regime":"EVEN_STRICT",
+            "claim_cap":"EXPERIMENTAL_SIGNAL_ONLY","terminal_claim":"RH_OPEN",
+            "even":{"lambda_min":{"lower":0.01,"upper":0.02,
+                       "lower_exact":"0.01","upper_exact":"0.02",
+                       "mid":"0.015","rad":"0.005",
+                       "certified_positive":True,"certified_negative":False},
+                    "j1":{"lower":-0.2,"upper":-0.1,
+                          "lower_exact":"-0.2","upper_exact":"-0.1",
+                          "certified_positive":False,"certified_negative":True}},
+            "odd":{"lambda_min":{"lower":0.2,"upper":0.3,
+                      "lower_exact":"0.2","upper_exact":"0.3",
+                      "mid":"0.25","rad":"0.05",
+                      "certified_positive":True,"certified_negative":False}},
+        }
+        point={"L":2.5,
+               "exact_cell_spec":{"Q":13,"K":3,"fraction":[8,16],
+                                  "left":"log(13)","right":"log(14)"},
+               "attempts":[attempt],"final":attempt,
+               "global_bounds":{"lower":0.01,"upper":0.02},
+               "global_sign":"POSITIVE",
+               "resolution":{"ground_sign":"POSITIVE","j1_resolved":True}}
+        controls=[{"control_name":"TRANSVERSE_CROSSING","model":"GENERIC_SYNTHETIC",
+                   "contact_status":"CERTIFIED_SIGN_BRACKET",
+                   "canonical_arithmetic_authority":False,"qualification_pass":True}]
+        arb={"schema_version":"POST281_GENERATED_CONTACT_ARB_v1",
+             "claim_cap":"EXPERIMENTAL_SIGNAL_ONLY",
+             "rows":[{"candidate":cand,"point":point,"final":attempt,
+                      "contact_status":"NEAR_CONTACT_PROXY",
+                      "first_boundary_claimed":False}],
+             "generic_control_certificates":controls,
+             "summary":{"row_count":1,"generic_control_count":1,
+                        "certified_sign_bracket_count":0,
+                        "first_boundary_certified_count":0,
+                        "terminal_claim":"RH_OPEN"}}
+        return discovery,arb
+
     def test_protocol(self):
         g.validate_protocol(self.p)
 
@@ -91,6 +144,55 @@ class GeneratedContactFrontierTests(unittest.TestCase):
         self.assertTrue(all(x["qualification_pass"] for x in rows))
         touch=next(x for x in rows if x["control_name"]=="POSITIVE_QUARTIC_TOUCH")
         self.assertEqual(touch["contact_status"],"NO_SIGN_CHANGE")
+
+
+    def test_mutation_checker_rejects_all_known_bad_artifacts(self):
+        import copy
+        d,a=self._minimal_valid_payloads()
+        resultcheck.validate_discovery(copy.deepcopy(d))
+        resultcheck.validate_arb(copy.deepcopy(a),d["selected_neighborhoods"])
+
+        mutations=[]
+        x=copy.deepcopy(a); x["rows"]=[]; mutations.append(("empty_arb",d,x))
+        x=copy.deepcopy(a); x["schema_version"]="WRONG"; mutations.append(("wrong_schema",d,x))
+        x=copy.deepcopy(a); x["claim_cap"]="WRONG"; mutations.append(("wrong_claim_cap",d,x))
+        x=copy.deepcopy(a); x["summary"]["row_count"]=999; mutations.append(("forged_count",d,x))
+        x=copy.deepcopy(a); x["rows"].append(copy.deepcopy(x["rows"][0])); x["summary"]["row_count"]=2
+        mutations.append(("duplicate_row",d,x))
+        x=copy.deepcopy(a); x["rows"][0]["candidate"]["K"]=999
+        mutations.append(("candidate_mismatch",d,x))
+        x=copy.deepcopy(a); lm=x["rows"][0]["point"]["final"]["even"]["lambda_min"]
+        lm["lower"],lm["upper"]=0.2,0.1
+        mutations.append(("inverted_interval",d,x))
+        x=copy.deepcopy(a); lm=x["rows"][0]["point"]["final"]["even"]["lambda_min"]
+        lm["lower"]=lm["upper"]=0.015; lm["rad"]="0.005"
+        mutations.append(("collapsed_interval",d,x))
+        x=copy.deepcopy(a); x["rows"][0]["point"]["final"]["even"]["lambda_min"]["mid"]="nan"
+        mutations.append(("nonfinite_string",d,x))
+
+        for name,dd,aa in mutations:
+            with self.subTest(name=name):
+                with self.assertRaises(SystemExit):
+                    resultcheck.validate_arb(aa,dd["selected_neighborhoods"])
+
+        x=copy.deepcopy(d); x["selected_neighborhoods"]=[]
+        with self.assertRaises(SystemExit): resultcheck.validate_discovery(x)
+
+    def test_checker_rejects_fake_certified_brackets(self):
+        import copy
+        d,a=self._minimal_valid_payloads()
+        cand=copy.deepcopy(d["selected_neighborhoods"][0])
+        cand.update({"reason":"sign_bracket","L_left":2.4,"L_right":2.5,
+                     "fraction_left":[7,16],"fraction_right":[8,16]})
+        d["selected_neighborhoods"]=[cand]
+        point=copy.deepcopy(a["rows"][0]["point"])
+        point["global_sign"]="POSITIVE"
+        row={"candidate":cand,"left":copy.deepcopy(point),"right":copy.deepcopy(point),
+             "final_bracket_exact":[[7,16],[8,16]],"final_bracket":[2.4,2.5],
+             "contact_status":"CERTIFIED_SIGN_BRACKET","first_boundary_claimed":False}
+        a["rows"]=[row]; a["summary"]["certified_sign_bracket_count"]=1
+        with self.assertRaises(SystemExit):
+            resultcheck.validate_arb(a,d["selected_neighborhoods"])
 
     def test_legacy_panel_is_preserved(self):
         legacy=self.p["legacy_replay"]

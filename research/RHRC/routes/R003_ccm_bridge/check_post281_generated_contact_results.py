@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse,json,math,sys\nfrom decimal import Decimal, InvalidOperation
+import argparse,json,math,sys
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 
 ALLOWED_CONTACT={"NEAR_CONTACT_PROXY","CERTIFIED_SIGN_BRACKET"}
