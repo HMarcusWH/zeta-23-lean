@@ -48,6 +48,13 @@ def check_results(path:Path)->None:
         fail("FIREWALL","results")
     if s.get("calibration_qualified") is not True:
         fail("VACUOUS","K2/log2 calibration did not qualify")
+    if s.get("selected_count")!=11 or s.get("selected_sign_bracket_count")!=4:
+        fail("SELECTION","frozen #282 selected-panel identity drift")
+    rows=d.get("selected_replay")
+    if not isinstance(rows,list) or len(rows)!=11:
+        fail("SELECTION","selected replay missing")
+    if any(r.get("first_boundary_claimed") is not False for r in rows):
+        fail("FIRST_BOUNDARY","finite replay may not claim first boundary")
     cal=d.get("calibration") or {}
     if not all(cal.get(k) is True for k in ("value_overlap","first_overlap","second_overlap")):
         fail("SEAM","compressed seam jets do not overlap")

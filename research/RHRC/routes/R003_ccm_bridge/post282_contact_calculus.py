@@ -20,6 +20,11 @@ def validate_protocol(p:dict)->None:
     seams=p.get("seam_controls")
     if not isinstance(seams,list) or not seams:
         raise SystemExit("post282 protocol: empty seam controls")
+    selected=p.get("selected_neighborhoods")
+    if not isinstance(selected,list) or len(selected)!=11:
+        raise SystemExit("post282 protocol: exact #282 selected panel must contain 11 cases")
+    if sum(1 for x in selected if x.get("reason")=="sign_bracket")!=4:
+        raise SystemExit("post282 protocol: selected bracket count drift")
     for row in seams:
         if not isinstance(row.get("q"),int) or isinstance(row.get("q"),bool) or row["q"]<2:
             raise SystemExit("post282 protocol: bad q")

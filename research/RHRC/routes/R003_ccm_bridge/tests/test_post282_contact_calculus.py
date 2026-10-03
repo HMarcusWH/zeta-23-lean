@@ -30,6 +30,14 @@ class ContactCalculusTests(unittest.TestCase):
         qs={x["q"] for x in self.p["seam_controls"]}
         self.assertTrue({2,4,8,9,16,6,10,14,15}.issubset(qs))
 
+    def test_exact_selected_panel_is_frozen(self):
+        rows=self.p["selected_neighborhoods"]
+        self.assertEqual(len(rows),11)
+        self.assertEqual(sum(x["reason"]=="sign_bracket" for x in rows),4)
+        self.assertEqual(
+            [(x["Q"],x["K"]) for x in rows[:4]],
+            [(24,4),(9,5),(7,6),(24,4)])
+
     def test_interval_json_rejects_bool(self):
         with self.assertRaises(IntervalCodecError):
             DyadicInterval.from_json({"lo_num":False,"hi_num":1,"exp2":10})

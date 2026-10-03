@@ -83,5 +83,161 @@
     "Scientific falsification is a successful research disposition.",
     "RH remains OPEN."
   ],
-  "terminal_claim": "RH_OPEN"
+  "terminal_claim": "RH_OPEN",
+  "selected_neighborhoods": [
+    {
+      "model": "CANONICAL",
+      "reason": "sign_bracket",
+      "Q": 24,
+      "K": 4,
+      "fraction_left": [
+        12,
+        16
+      ],
+      "fraction_right": [
+        13,
+        16
+      ],
+      "cell_left_symbolic": "log(24)",
+      "cell_right_symbolic": "log(25)"
+    },
+    {
+      "model": "CANONICAL",
+      "reason": "sign_bracket",
+      "Q": 9,
+      "K": 5,
+      "fraction_left": [
+        9,
+        16
+      ],
+      "fraction_right": [
+        10,
+        16
+      ],
+      "cell_left_symbolic": "log(9)",
+      "cell_right_symbolic": "log(10)"
+    },
+    {
+      "model": "CANONICAL",
+      "reason": "sign_bracket",
+      "Q": 7,
+      "K": 6,
+      "fraction_left": [
+        8,
+        16
+      ],
+      "fraction_right": [
+        9,
+        16
+      ],
+      "cell_left_symbolic": "log(7)",
+      "cell_right_symbolic": "log(8)"
+    },
+    {
+      "model": "CANONICAL",
+      "reason": "sign_bracket",
+      "Q": 24,
+      "K": 4,
+      "fraction_left": [
+        13,
+        16
+      ],
+      "fraction_right": [
+        14,
+        16
+      ],
+      "cell_left_symbolic": "log(24)",
+      "cell_right_symbolic": "log(25)"
+    },
+    {
+      "model": "CANONICAL",
+      "reason": "ground_magnitude",
+      "Q": 35,
+      "K": 2,
+      "cell_fraction": [
+        1,
+        16
+      ],
+      "cell_left_symbolic": "log(35)",
+      "cell_right_symbolic": "log(36)"
+    },
+    {
+      "model": "CANONICAL",
+      "reason": "ground_magnitude",
+      "Q": 54,
+      "K": 3,
+      "cell_fraction": [
+        10,
+        16
+      ],
+      "cell_left_symbolic": "log(54)",
+      "cell_right_symbolic": "log(55)"
+    },
+    {
+      "model": "CANONICAL",
+      "reason": "ground_magnitude",
+      "Q": 63,
+      "K": 4,
+      "cell_fraction": [
+        2,
+        16
+      ],
+      "cell_left_symbolic": "log(63)",
+      "cell_right_symbolic": "log(64)"
+    },
+    {
+      "model": "CANONICAL",
+      "reason": "parity_separation",
+      "Q": 35,
+      "K": 2,
+      "cell_fraction": [
+        2,
+        16
+      ],
+      "cell_left_symbolic": "log(35)",
+      "cell_right_symbolic": "log(36)"
+    },
+    {
+      "model": "CANONICAL",
+      "reason": "parity_separation",
+      "Q": 54,
+      "K": 3,
+      "cell_fraction": [
+        11,
+        16
+      ],
+      "cell_left_symbolic": "log(54)",
+      "cell_right_symbolic": "log(55)"
+    },
+    {
+      "model": "CANONICAL",
+      "reason": "sector_gap",
+      "Q": 1,
+      "K": 2,
+      "cell_fraction": [
+        1,
+        16
+      ],
+      "cell_left_symbolic": "1/512",
+      "cell_right_symbolic": "log(2)"
+    },
+    {
+      "model": "CANONICAL",
+      "reason": "sector_gap",
+      "Q": 35,
+      "K": 3,
+      "cell_fraction": [
+        1,
+        16
+      ],
+      "cell_left_symbolic": "log(35)",
+      "cell_right_symbolic": "log(36)"
+    }
+  ],
+  "selected_panel_provenance": {
+    "artifact_id": 11282789337,
+    "selected_count": 11,
+    "selected_sign_bracket_count": 4,
+    "note": "Exact Q/K/rational-fraction identities copied from the frozen #282 artifact; floating L/g values are intentionally non-authoritative."
+  }
 }

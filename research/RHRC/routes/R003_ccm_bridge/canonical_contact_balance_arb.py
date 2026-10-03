@@ -21,6 +21,7 @@ sys.path.insert(0,str(RHRC/"closure_batch"))
 from interval_codec import DyadicInterval
 
 from canonical_contact_frontier_arb import restricted_jets
+from certify_post281_generated_contact_frontier import ladder_point
 
 
 def interval_record(x: arb) -> dict:
@@ -114,6 +115,19 @@ def seam_probe(q:int,K:int,prec:int)->dict:
     }
 
 
+def replay_selected_case(cand:dict,precisions:list[int])->dict:
+    Q=int(cand["Q"]); K=int(cand["K"])
+    if cand["reason"]=="sign_bracket":
+        left=ladder_point(Q,K,precisions,fraction=cand["fraction_left"])
+        right=ladder_point(Q,K,precisions,fraction=cand["fraction_right"])
+        opposite={left["global_sign"],right["global_sign"]}=={"POSITIVE","NEGATIVE"}
+        return {"candidate":cand,"kind":"BRACKET","left":left,"right":right,
+                "certified_endpoint_opposition":opposite,
+                "first_boundary_claimed":False}
+    point=ladder_point(Q,K,precisions,fraction=cand["cell_fraction"])
+    return {"candidate":cand,"kind":"POINT","point":point,
+            "first_boundary_claimed":False}
+
 def campaign(protocol:dict)->dict:
     ladder=protocol["precision_bits"]
     calibration=None
@@ -124,14 +138,33 @@ def campaign(protocol:dict)->dict:
     seams=[]
     for item in protocol["seam_controls"]:
         seams.append(seam_probe(int(item["q"]),int(item["K"]),int(ladder[-1])))
+    selected=[replay_selected_case(c,[int(x) for x in ladder])
+              for c in protocol["selected_neighborhoods"]]
+    certified_opposition=sum(
+        1 for row in selected
+        if row["kind"]=="BRACKET" and row["certified_endpoint_opposition"])
+    hypotheses={
+        "X01_INHERITED_RESPONSE_BALANCE":{
+            "status":"NOT_APPLICABLE_WITHOUT_CERTIFIED_GENERATED_INHERITED_CONTACT",
+            "theorem_promotion":False},
+        "X02_PROJECTED_DILATION_RESIDUAL":{
+            "status":"BOUNDED_DIAGNOSTIC_ONLY_NO_CONTACT_AUTHORITY",
+            "pointwise_contact_law_claimed":False,
+            "theorem_promotion":False},
+    }
     return {
         "schema_version":"POST282_CONTACT_BALANCE_ARB_v1",
         "claim_cap":"EXPERIMENTAL_SIGNAL_ONLY",
         "calibration":calibration,
         "seam_controls":seams,
+        "selected_replay":selected,
+        "hypothesis_dispositions":hypotheses,
         "summary":{
             "calibration_qualified":bool(calibration and calibration["qualified"]),
             "seam_control_count":len(seams),
+            "selected_count":len(selected),
+            "selected_sign_bracket_count":sum(1 for r in selected if r["kind"]=="BRACKET"),
+            "selected_certified_endpoint_opposition_count":certified_opposition,
             "theorem_promotion":False,
             "terminal_claim":"RH_OPEN",
         },
