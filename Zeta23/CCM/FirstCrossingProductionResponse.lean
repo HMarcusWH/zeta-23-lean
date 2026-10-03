@@ -2,6 +2,8 @@ import Zeta23.CCM.FirstCrossingProductionFirstVariation
 import Zeta23.CCM.GlobalParityBottomSimplicity
 import Zeta23.CCM.RankOneEigenline
 import Mathlib.Analysis.InnerProductSpace.Symmetric
+import Mathlib.LinearAlgebra.Dual.Lemmas
+import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
 
 noncomputable section
 
@@ -132,7 +134,12 @@ theorem inner_firstDerivative_zero_of_stationary
   · simpa using him
 
 /-- The stationary forcing lies in the range of the strict-even contact
-operator. -/
+operator.  The Fredholm step is expressed algebraically as
+
+  range(E) = ker (innerₛₗ ℂ z),
+
+avoiding Hilbert-space orthogonal-complement elaboration on subtype-built
+submodules. -/
 theorem neg_firstDerivative_mem_evenRange_of_stationary_strict
     {L : ℝ} (hL : 0 < L)
     (K : ℕ) (hK : 2 ≤ K)
@@ -145,37 +152,80 @@ theorem neg_firstDerivative_mem_evenRange_of_stationary_strict
       productionContactFirstVariation .even L K z = 0) :
     -(evenProductionApertureFirst L K z) ∈
       (evenCompressedCanonical L K).range := by
-  let E := evenResponseContactOperator L K
-  let b := evenProductionApertureFirst L K z
+  let V := euclideanEvenBoundaryFlatSubspace K
+  let E : V →ₗ[ℂ] V := evenResponseContactOperator L K
+  let b : V := evenProductionApertureFirst L K z
+  let phi : V →ₗ[ℂ] ℂ := innerₛₗ ℂ z
+
   have hbz : inner ℂ b z = 0 := by
     simpa [b] using
       inner_firstDerivative_zero_of_stationary K z hoperator hstationary
   have hzb : inner ℂ z b = 0 := by
     rw [inner_eq_zero_symm]
     exact hbz
+
+  have hzE : E z = 0 := by
+    simpa [E] using hzero
   have hEsym :
-      LinearMap.IsSymmetric (𝕜 := ℂ)
-        (E := euclideanEvenBoundaryFlatSubspace K) E := by
-    simpa [E] using evenResponseContactOperator_isSymmetric L K
-  have hbDouble : b ∈ E.rangeᗮᗮ := by
-    intro x hx
-    have hxker : x ∈ E.ker := by
-      rw [← hEsym.orthogonal_range]
-      exact hx
-    have hxNative : E x = 0 := LinearMap.mem_ker.mp hxker
-    have hx0 : evenCompressedCanonical L K x = 0 := by
-      rw [← evenResponseContactOperator_apply]
-      simpa [E] using hxNative
-    obtain ⟨c, hc⟩ :=
-      strictEven_zeroKernel_is_line hL K hK z hzne hzero hodd x hx0
-    rw [← hc]
-    rw [inner_smul_left]
-    simp [hzb]
+      LinearMap.IsSymmetric (𝕜 := ℂ) (E := V) E := by
+    simpa [V, E] using evenResponseContactOperator_isSymmetric L K
+
+  have hkerSpan : E.ker = ℂ ∙ z := by
+    apply le_antisymm
+    · intro x hx
+      have hxNative : E x = 0 := LinearMap.mem_ker.mp hx
+      have hx0 : evenCompressedCanonical L K x = 0 := by
+        rw [← evenResponseContactOperator_apply]
+        simpa [E] using hxNative
+      obtain ⟨c, hc⟩ :=
+        strictEven_zeroKernel_is_line hL K hK z hzne hzero hodd x hx0
+      exact Submodule.mem_span_singleton.mpr ⟨c, hc⟩
+    · rw [Submodule.span_singleton_le_iff_mem]
+      exact LinearMap.mem_ker.mpr hzE
+
+  have hkerFinrank : Module.finrank ℂ E.ker = 1 := by
+    rw [hkerSpan, finrank_span_singleton hzne]
+
+  have hphi_ne : phi ≠ 0 := by
+    apply DFunLike.ne_iff.mpr
+    refine ⟨z, ?_⟩
+    simpa [phi] using (inner_self_ne_zero.mpr hzne)
+
+  have hrange_le : E.range ≤ phi.ker := by
+    rintro y ⟨x, rfl⟩
+    apply LinearMap.mem_ker.mpr
+    have hinner : inner ℂ z (E x) = 0 := by
+      calc
+        inner ℂ z (E x) = inner ℂ (E z) x := (hEsym z x).symm
+        _ = 0 := by rw [hzE]; simp
+    simpa [phi] using hinner
+
+  have hEFinrank :
+      Module.finrank ℂ E.range + 1 = Module.finrank ℂ V := by
+    have h := E.finrank_range_add_finrank_ker
+    rw [hkerFinrank] at h
+    exact h
+
+  have hphiFinrank :
+      Module.finrank ℂ phi.ker + 1 = Module.finrank ℂ V := by
+    simpa [V] using phi.finrank_ker_add_one_of_ne_zero hphi_ne
+
+  have hfinrank :
+      Module.finrank ℂ E.range = Module.finrank ℂ phi.ker := by
+    omega
+
+  have hrange_eq : E.range = phi.ker :=
+    Submodule.eq_of_le_of_finrank_eq hrange_le hfinrank
+
+  have hbPhi : b ∈ phi.ker := by
+    apply LinearMap.mem_ker.mpr
+    simpa [phi] using hzb
   have hbRange : b ∈ E.range := by
-    rw [Submodule.orthogonal_orthogonal] at hbDouble
-    exact hbDouble
+    rw [hrange_eq]
+    exact hbPhi
   have hmemNative : -b ∈ E.range :=
     E.range.neg_mem hbRange
+
   obtain ⟨w, hw⟩ := hmemNative
   change ∃ w : euclideanEvenBoundaryFlatSubspace K,
     evenCompressedCanonical L K w =
