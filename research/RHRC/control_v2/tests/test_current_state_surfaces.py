@@ -44,7 +44,7 @@ class CurrentStateSurfaceTests(unittest.TestCase):
             route["current_obstruction"],
             "OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER",
         )
-        self.assertEqual(route["current_next_research_target"], "PRODUCTION_ARITHMETIC_SATURATION_FRONTIER")
+        self.assertEqual(route["current_next_research_target"], "GENERATED_PRODUCTION_CONTACT_ARITHMETIC_BRIDGE")
         self.assertEqual(route["post278_fixedN_ground_continuity"], "PROVED_MERGED_PR_278")
         self.assertEqual(route["post278_sameN_zero_contact"], "PROVED_MERGED_PR_278")
         self.assertEqual(route["post276_small_aperture_ground_spectrum"], "PROVED_PR_276")

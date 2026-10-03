@@ -82,7 +82,7 @@ jobs:
       - name: Validate exact PR-head RHKG derived state
         run: python3 research/RHRC/tools/materialize_derived_state.py --check
       - name: Upload exact PR-head RHKG derived state
-        if: always()
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: rhkg-derived-state
@@ -413,6 +413,15 @@ jobs:
             Zeta23.CCM.FirstCrossingSuccessorDeterminant \
             Zeta23.CCM.FirstCrossingSchurReduction \
             Zeta23.CCM.FirstCrossingSourceDynamics \
+            Zeta23.CCM.GlobalParityFirstNegativeBoundary \
+            Zeta23.CCM.FirstCrossingGlobalAlignment \
+            Zeta23.CCM.FirstCrossingProductionTests \
+            Zeta23.CCM.FirstCrossingProductionRemainder \
+            Zeta23.CCM.FirstCrossingProductionFirstVariation \
+            Zeta23.CCM.FirstCrossingProductionResponse \
+            Zeta23.CCM.FirstCrossingProductionCurvatureBridge \
+            Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier \
+            Zeta23.ExceptionalZero.GlobalParityFirstNegativeBoundary \
             Zeta23.CCM.CanonicalApertureLocation \
             Zeta23.CCM.CanonicalInteriorFirstCrossingBarrier \
             Zeta23.CCM.CanonicalSeamFirstCrossingBarrier \
@@ -466,6 +475,15 @@ jobs:
             Zeta23/CCM/CanonicalParityFirstCrossingShell.lean \
             Zeta23/CCM/FirstCrossingSchurReduction.lean \
             Zeta23/CCM/FirstCrossingSourceDynamics.lean \
+            Zeta23/CCM/GlobalParityFirstNegativeBoundary.lean \
+            Zeta23/CCM/FirstCrossingGlobalAlignment.lean \
+            Zeta23/CCM/FirstCrossingProductionTests.lean \
+            Zeta23/CCM/FirstCrossingProductionRemainder.lean \
+            Zeta23/CCM/FirstCrossingProductionFirstVariation.lean \
+            Zeta23/CCM/FirstCrossingProductionResponse.lean \
+            Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean \
+            Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean \
+            Zeta23/ExceptionalZero/GlobalParityFirstNegativeBoundary.lean \
             Zeta23/CCM/CanonicalApertureLocation.lean \
             Zeta23/CCM/CanonicalInteriorFirstCrossingBarrier.lean \
             Zeta23/CCM/CanonicalSeamFirstCrossingBarrier.lean \

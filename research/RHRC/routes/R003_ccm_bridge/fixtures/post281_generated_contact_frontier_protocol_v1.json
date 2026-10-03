@@ -1,0 +1,173 @@
+{
+  "schema_version": "POST281_GENERATED_CONTACT_FRONTIER_PROTOCOL_v1",
+  "claim_cap": "EXPERIMENTAL_SIGNAL_ONLY",
+  "base_pr": 281,
+  "base_merge": "0c22ae4101d7ad3e0b1a81029fff1472c52a5750",
+  "discovery": {
+    "Q_min": 1,
+    "Q_max": 64,
+    "K": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "interior_fractions": {
+      "denominator": 16,
+      "numerators": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    "parities": [
+      "even",
+      "odd"
+    ],
+    "models": [
+      "canonical",
+      "planted_on_line",
+      "planted_off_line"
+    ],
+    "planted_gamma": [
+      10,
+      1
+    ],
+    "planted_on_line_delta": [
+      0,
+      1
+    ],
+    "planted_off_line_delta": [
+      1,
+      20
+    ],
+    "additional_neighborhood_cap": 12,
+    "selection_priority": [
+      "sign_bracket",
+      "ground_magnitude",
+      "parity_separation",
+      "sector_gap"
+    ],
+    "forbidden_selection_features": [
+      "rho_distance_to_one",
+      "preferred_delta_sign"
+    ],
+    "selection_quota": {
+      "sign_bracket": 4,
+      "ground_magnitude": 3,
+      "parity_separation": 2,
+      "sector_gap": 2,
+      "dimension_diversity": 1
+    },
+    "selection_stratification": "ROUND_ROBIN_BY_K_THEN_LEXICAL"
+  },
+  "arb": {
+    "precision_bits": [
+      192,
+      384,
+      768
+    ],
+    "root_or_subdivision_cap_per_neighborhood": 96
+  },
+  "legacy_replay": {
+    "offset_powers": [
+      8,
+      10,
+      12
+    ],
+    "cases": [
+      {
+        "q": 13,
+        "K": 3,
+        "kind": "VON_MANGOLDT_SEAM"
+      },
+      {
+        "q": 16,
+        "K": 3,
+        "kind": "VON_MANGOLDT_SEAM"
+      },
+      {
+        "q": 17,
+        "K": 3,
+        "kind": "VON_MANGOLDT_SEAM"
+      },
+      {
+        "q": 19,
+        "K": 3,
+        "kind": "VON_MANGOLDT_SEAM"
+      },
+      {
+        "q": 14,
+        "K": 3,
+        "kind": "ZERO_VON_MANGOLDT_CONTROL"
+      },
+      {
+        "q": 15,
+        "K": 3,
+        "kind": "ZERO_VON_MANGOLDT_CONTROL"
+      },
+      {
+        "q": 18,
+        "K": 3,
+        "kind": "ZERO_VON_MANGOLDT_CONTROL"
+      },
+      {
+        "q": 16,
+        "K": 4,
+        "kind": "VON_MANGOLDT_REPLICATION"
+      },
+      {
+        "q": 17,
+        "K": 4,
+        "kind": "VON_MANGOLDT_REPLICATION"
+      },
+      {
+        "q": 16,
+        "K": 6,
+        "kind": "VON_MANGOLDT_REPLICATION"
+      },
+      {
+        "q": 17,
+        "K": 6,
+        "kind": "VON_MANGOLDT_REPLICATION"
+      }
+    ]
+  },
+  "contact_statuses": [
+    "ORDINARY_STATE",
+    "NEAR_CONTACT_PROXY",
+    "CERTIFIED_SIGN_BRACKET",
+    "CERTIFIED_LOCAL_CONTACT",
+    "CERTIFIED_FIRST_NEGATIVE_BOUNDARY",
+    "CONTACT_NOT_LOCATED",
+    "NO_CONTACT_CERTIFIED_ON_COVERED_SCOPE"
+  ],
+  "resolution_axes": [
+    "Q",
+    "remainder",
+    "first_variation",
+    "response",
+    "curvature",
+    "saturation_gap",
+    "rho"
+  ],
+  "nonclaims": [
+    "Finite discovery is not theorem authority.",
+    "A local root is not automatically the first global boundary.",
+    "Planted controls are not alternate zeta functions or Euler products.",
+    "RH remains OPEN."
+  ]
+}

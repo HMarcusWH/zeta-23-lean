@@ -3,6 +3,8 @@ from __future__ import annotations
 import argparse
 import subprocess
 import sys
+import shutil
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -14,7 +16,45 @@ def run(cmd: list[str]) -> None:
     subprocess.run(cmd, cwd=REPO, check=True)
 
 
+GENERATED_TARGETS = [
+    ROOT / "graph" / "compiler",
+    ROOT / "graph" / "generated",
+    ROOT / "integration" / "generated",
+    ROOT / "ffbbp" / "generated",
+    ROOT / "ool" / "generated",
+]
+
+def _snapshot_generated(tmp: Path) -> None:
+    for target in GENERATED_TARGETS:
+        if target.exists():
+            rel = target.relative_to(ROOT)
+            dst = tmp / rel
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copytree(target, dst)
+
+def _restore_generated(tmp: Path) -> None:
+    for target in GENERATED_TARGETS:
+        if target.exists():
+            shutil.rmtree(target)
+        src = tmp / target.relative_to(ROOT)
+        if src.exists():
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copytree(src, target)
+
 def materialize() -> None:
+    # Transactional materialization: a failed downstream producer must not
+    # leave a half-new / half-stale derived-state bundle in the checkout.
+    tmp = Path(tempfile.mkdtemp(prefix="rhrc-derived-state-"))
+    _snapshot_generated(tmp)
+    try:
+        _materialize_impl()
+    except BaseException:
+        _restore_generated(tmp)
+        raise
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+def _materialize_impl() -> None:
     # Ordering is intentional:
     # 1. exact registered compiler dependencies feed RHKG;
     # 2. RHKG source census feeds source-candidate exactification;

@@ -8,10 +8,10 @@ This fork preserves the upstream Zeta23 theorem package while adding an opt-in R
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #280
-- validated final head = 3e897765c788c0cbb2b57fa75da62ef0e1766dca
-- merge commit = 752e59f7147eec183e649ebe1e9af4d0329dbe73
-- tree = 807c2cdec6c6fa09cb0ba65915112c9c2dfd19ba
+- merged theorem authority = PR #281
+- validated final head = d4c6d0804bc642cc6e93dba811cd890d474eb0d0
+- merge commit = 0c22ae4101d7ad3e0b1a81029fff1472c52a5750
+- tree = f729b05e6fee9f6fbeb9d18a65e26742086244f8
 - status = MERGED_GREEN_THEOREM_STATE
 - PR #275 full-space small-aperture coercive base = PROVED
 - PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
@@ -21,17 +21,17 @@ THEOREM AUTHORITY
 - RH = OPEN
 
 CURRENT RESEARCH FRONTIER
-- current candidate PR = #281 / POST280_PRODUCTION_SATURATION_FRONTIER_CANDIDATE
-- candidate theorem-validation head = 318df7a7f5e66768dc6792cb330c1d3325ce1a95
-- candidate theorem-validation status = CI_PENDING
+- current candidate PR = #282 / GENERATED_PRODUCTION_CONTACT_FRONTIER_CANDIDATE
+- candidate theorem-validation head = RUNTIME_PR_HEAD_REQUIRED
+- candidate theorem-validation status = CI_PENDING_EXACT_HEAD_RUNTIME_RECEIPT_REQUIRED
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
 - fixed-N sign opposition = PROVED_MERGED_PR_277
 - global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
-- active subobligation = PRODUCTION_OPTIMIZED_CURVATURE_BRIDGE_AND_SATURATION_GAP_MEASUREMENT
-- next research target = PRODUCTION_ARITHMETIC_SATURATION_FRONTIER
-- required new information = SIGNED_CANONICAL_ARITHMETIC_COMPARISON_AT_GENERATED_CONTACT
+- active subobligation = GENERATED_PRODUCTION_DERIVATIVE_ADMISSIBILITY_AND_CURVATURE_IDENTITY
+- next research target = GENERATED_PRODUCTION_CONTACT_ARITHMETIC_BRIDGE
+- required new information = EXACT_WEIGHTED_PRODUCTION_DIFFERENTIATION_AND_CONTACT_CONDITIONED_ARITHMETIC_EXCLUSION
 - RH-sufficient terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE
