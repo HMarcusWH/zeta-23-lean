@@ -39,6 +39,9 @@ INTEGRATION_FILES=[
 ]
 
 RESEARCH_FILES=[
+"research/RHRC/routes/R003_ccm_bridge/check_post281_generated_contact_lean_targets.py",
+"research/RHRC/routes/R003_ccm_bridge/POST281_PR282_REPAIR_AUDIT.md",
+"research/RHRC/routes/R003_ccm_bridge/POST281_PR282_REPAIR_AUDIT.json",
 "research/RHRC/routes/R003_ccm_bridge/canonical_contact_frontier_arb.py",
 "research/RHRC/routes/R003_ccm_bridge/post281_generated_contact_frontier.py",
 "research/RHRC/routes/R003_ccm_bridge/certify_post281_generated_contact_frontier.py",
@@ -102,6 +105,14 @@ def main()->int:
         RHRC/"routes/R003_ccm_bridge/README.md",
     ]:
         require_contains(doc,["PR #281","PR #282","RH remains OPEN"])
+    import json
+    repair=json.loads((RHRC/"routes/R003_ccm_bridge/POST281_PR282_REPAIR_AUDIT.json").read_text(encoding="utf-8"))
+    repair_ids=[row["id"] for row in repair["items"]]
+    expected=["L01","L02","L03","L04","M01","M02","M03","M04","N01","N02","N03","V01","V02","V03","V04","X01","X02","X03","G01","G02","W01","W02"]
+    if sorted(repair_ids) != sorted(expected) or len(repair_ids) != len(set(repair_ids)):
+        raise SystemExit("generated-contact repair audit: incomplete or duplicate 22-item ledger")
+    if repair.get("terminal_claim") != "RH_OPEN":
+        raise SystemExit("generated-contact repair audit: claim firewall violated")
     statuses=obligation_statuses()
     forbidden={"PROVED","CLOSED","DISCHARGED"}
     for oid in ("L04_WEIGHTED_TEST_AUTHORITY","L06_FIRST_VARIATION","L08_CURVATURE_BRIDGE","OBS060O_SATURATION_EXCLUSION","RH"):

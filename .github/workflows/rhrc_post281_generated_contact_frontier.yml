@@ -22,6 +22,9 @@ on:
       - 'research/RHRC/routes/R003_ccm_bridge/run_commutator_gauntlet_v2.py'
       - 'research/RHRC/routes/R003_ccm_bridge/post247_remainder_budget_ratio_scout.py'
       - 'research/RHRC/routes/R003_ccm_bridge/canonical_source_arb.py'
+      - 'research/RHRC/routes/R003_ccm_bridge/POST281_PR282_REPAIR_AUDIT.json'
+      - 'research/RHRC/routes/R003_ccm_bridge/POST281_PR282_REPAIR_AUDIT.md'
+      - 'research/RHRC/routes/R003_ccm_bridge/check_post281_generated_contact_lean_targets.py'
       - '.github/workflows/rhrc_post281_generated_contact_frontier.yml'
   workflow_dispatch:
 
@@ -188,6 +191,8 @@ jobs:
             research/RHRC/routes/R003_ccm_bridge/POST281_GENERATED_CONTACT_FRONTIER_PROTOCOL.md
             research/RHRC/routes/R003_ccm_bridge/POST281_PRODUCTION_CONTACT_OBLIGATIONS.json
             research/RHRC/routes/R003_ccm_bridge/POST281_PRODUCTION_CONTACT_OBSERVABLES.json
+            research/RHRC/routes/R003_ccm_bridge/POST281_PR282_REPAIR_AUDIT.json
+            research/RHRC/routes/R003_ccm_bridge/POST281_PR282_REPAIR_AUDIT.md
             research/RHRC/routes/R003_ccm_bridge/fixtures/post281_generated_contact_frontier_protocol_v1.json
           retention-days: 30
 
