@@ -14,8 +14,11 @@ open scoped BigOperators ComplexConjugate Topology
 /-!
 # Post-#281 production first variation
 
-This module introduces actual entrywise aperture derivative matrices of the
-production canonical source and proves the derivative matrices are Hermitian.
+This module introduces an ambient-entry derivative candidate for the
+production canonical source and proves those candidate matrices are Hermitian.
+At an interior fixed-cutoff point they are intended to agree with the actual
+compressed derivative; at a cutoff seam that agreement is a separate theorem
+obligation and is never inferred from total `deriv` alone.
 It also packages the exact fixed-vector first/second variation scalars and
 proves the one-sided sign consequence used at a generated first-negative
 boundary whenever the fixed-vector derivative is realized.
@@ -30,13 +33,17 @@ def productionApertureEntryReal
     (K : ℕ) (i j : Fin (2 * K + 1)) (L : ℝ) : ℝ :=
   (canonicalSourceMatrix L K i j).re
 
-/-- Entrywise first aperture derivative of the actual production matrix. -/
+/-- Ambient-entry first derivative candidate.
+
+This object is not by itself authoritative at a cutoff seam: downstream
+contact theorems require `ProductionContactFirstOperatorRealized`. -/
 def productionApertureFirstMatrix
     (L : ℝ) (K : ℕ) :
     Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ :=
   fun i j => ((deriv (productionApertureEntryReal K i j) L : ℝ) : ℂ)
 
-/-- Entrywise second aperture derivative of the actual production matrix. -/
+/-- Ambient-entry second derivative candidate, subject to the same seam
+realization firewall as the first derivative. -/
 def productionApertureSecondMatrix
     (L : ℝ) (K : ℕ) :
     Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ :=
@@ -197,6 +204,22 @@ def ProductionContactSecondVariationRealized
   HasDerivAt
     (fun s : ℝ => productionContactFirstVariation p s K z)
     (productionContactFixedSecondVariation p L K z) L
+
+
+/-- Fail-closed authorization that the candidate first derivative is the
+actual derivative of the compressed legal family in every quadratic
+direction.  On an interior cell this should follow from the frozen analytic
+family; at a seam it requires the independent legal-carrier gluing theorem. -/
+def ProductionContactFirstOperatorRealized
+    (p : ReversalParity) (L : ℝ) (K : ℕ) : Prop :=
+  ∀ z : euclideanParityBoundaryFlatSubspace p K,
+    ProductionContactFirstVariationRealized p L K z
+
+/-- Corresponding second-order realization firewall. -/
+def ProductionContactSecondOperatorRealized
+    (p : ReversalParity) (L : ℝ) (K : ℕ) : Prop :=
+  ∀ z : euclideanParityBoundaryFlatSubspace p K,
+    ProductionContactSecondVariationRealized p L K z
 
 /-- One-sided calculus lemma: a differentiable fixed-vector energy which is
 nonnegative to the left of a zero contact has nonpositive first derivative. -/

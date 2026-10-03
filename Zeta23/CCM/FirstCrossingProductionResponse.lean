@@ -73,7 +73,8 @@ theorem inner_firstDerivative_zero_of_stationary
             simpa [a] using
               (inner_conj_symm
                 (parityProductionApertureFirst .even L K z) z)
-      _ = a := by simpa [a] using hsym.symm
+      _ = a := by
+        exact hsym.symm
   have him : a.im = 0 := by
     have h := congrArg Complex.im hstar
     simp only [map_neg, starRingEnd_apply, Complex.star_def,
@@ -100,6 +101,10 @@ theorem neg_firstDerivative_mem_evenRange_of_stationary_strict
   let b := parityProductionApertureFirst .even L K z
   have hbz : inner ℂ b z = 0 := by
     simpa [b] using inner_firstDerivative_zero_of_stationary K z hstationary
+  have hzb : inner ℂ z b = 0 := by
+    have hconj := inner_conj_symm b z
+    rw [hbz, map_zero] at hconj
+    simpa using hconj.symm
   have hbker : b ∈ E.kerᗮ := by
     intro x hx
     have hx0 : E x = 0 := LinearMap.mem_ker.mp hx
@@ -107,7 +112,7 @@ theorem neg_firstDerivative_mem_evenRange_of_stationary_strict
       strictEven_zeroKernel_is_line hL K hK z hzne hzero hodd x hx0
     rw [← hc]
     rw [inner_smul_left]
-    simp [hbz]
+    simp [hzb]
   have hrangeOrth :
       E.rangeᗮ = E.ker :=
     (parityCompressedCanonical_isSymmetric .even L K).orthogonal_range

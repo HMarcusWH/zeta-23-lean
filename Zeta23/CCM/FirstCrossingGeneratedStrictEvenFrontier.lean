@@ -99,13 +99,17 @@ strictly negative, or it is stationary and the unique perpendicular response
 is constructed. -/
 theorem GeneratedStrictEvenContact.frontier
     (c : GeneratedStrictEvenContact)
+    (hoperator :
+      ProductionContactFirstOperatorRealized .even
+        c.generated.shell.Lstar (c.generated.shell.k + 1))
     (hrealized :
       ProductionContactFirstVariationRealized .even
         c.generated.shell.Lstar (c.generated.shell.k + 1) c.z) :
-    GeneratedStrictEvenVariationBranch c := by
+    Nonempty (GeneratedStrictEvenVariationBranch c) := by
+  have _hactual := hoperator c.z
   have hnonpos := c.firstVariation_nonpos hrealized
   rcases lt_or_eq_of_le hnonpos with hneg | hzero
-  · exact .firstOrder hneg
+  · exact ⟨.firstOrder hneg⟩
   · let w :=
       stationaryEvenResponse
         c.Lstar_pos
@@ -116,7 +120,7 @@ theorem GeneratedStrictEvenContact.frontier
         c.Lstar_pos
         (c.generated.shell.k + 1) c.two_le_K
         c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hzero
-    exact .stationary hzero w hspec.1 hspec.2
+    exact ⟨.stationary hzero w hspec.1 hspec.2⟩
 
 /-- Exact positive source value at every generated strict-even contact. -/
 theorem GeneratedStrictEvenContact.sourceValue_pos
