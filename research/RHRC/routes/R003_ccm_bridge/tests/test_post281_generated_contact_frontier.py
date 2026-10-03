@@ -5,6 +5,8 @@ HERE=Path(__file__).resolve().parent
 ROUTE=HERE.parent
 sys.path.insert(0,str(ROUTE))
 import post281_generated_contact_frontier as g
+import check_post281_generated_contact_results as resultcheck
+import certify_post281_generated_contact_frontier as cert
 
 class GeneratedContactFrontierTests(unittest.TestCase):
     @classmethod
@@ -68,6 +70,27 @@ class GeneratedContactFrontierTests(unittest.TestCase):
         self.assertTrue(all(not x["canonical_arithmetic_authority"] for x in controls))
         self.assertIn("STATIONARY_CUBIC_CROSSING",{x["control_name"] for x in controls})
         self.assertIn("POSITIVE_QUARTIC_TOUCH",{x["control_name"] for x in controls})
+
+    def test_result_checker_rejects_empty_payloads(self):
+        bad={"claim_cap":"EXPERIMENTAL_SIGNAL_ONLY","summary":{"terminal_claim":"RH_OPEN","contact_claimed":False,"measurement_count":0,"selected_count":0},"measurements":[],"selected_neighborhoods":[],"protocol":{"discovery":{"additional_neighborhood_cap":12}}}
+        with self.assertRaises(SystemExit):
+            resultcheck.validate_discovery(bad)
+
+    def test_certifier_rejects_nonintegral_and_reversed_coordinates(self):
+        with self.assertRaises(ValueError):
+            cert.require_fraction([1.5,16],"bad")
+        with self.assertRaises(ValueError):
+            cert.require_fraction([1,0],"bad")
+        cand={"model":"CANONICAL","Q":13,"K":3,"fraction_left":[8,16],"fraction_right":[7,16]}
+        with self.assertRaises(ValueError):
+            cert.validate_candidate(cand,bracket=True)
+
+    def test_generic_control_qualification_is_nonvacuous(self):
+        rows=cert.certify_generic_controls(g.generic_contact_controls())
+        self.assertTrue(rows)
+        self.assertTrue(all(x["qualification_pass"] for x in rows))
+        touch=next(x for x in rows if x["control_name"]=="POSITIVE_QUARTIC_TOUCH")
+        self.assertEqual(touch["contact_status"],"NO_SIGN_CHANGE")
 
     def test_legacy_panel_is_preserved(self):
         legacy=self.p["legacy_replay"]

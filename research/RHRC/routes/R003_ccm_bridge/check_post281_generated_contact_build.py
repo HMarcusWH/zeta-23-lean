@@ -58,6 +58,12 @@ def require_contains(path:Path,tokens:list[str]):
     if missing:
         raise SystemExit(f"generated-contact build contract: {path} missing {missing}")
 
+def obligation_statuses():
+    import json
+    p=RHRC/"routes/R003_ccm_bridge/POST281_PRODUCTION_CONTACT_OBLIGATIONS.json"
+    data=json.loads(p.read_text(encoding="utf-8"))
+    return {row["id"]:row["status"] for row in data["obligations"]}
+
 def main()->int:
     missing=[x for x in LEAN_MODULES+RESEARCH_FILES+INTEGRATION_FILES if not (ROOT/x).is_file()]
     if missing:
@@ -96,10 +102,16 @@ def main()->int:
         RHRC/"routes/R003_ccm_bridge/README.md",
     ]:
         require_contains(doc,["PR #281","PR #282","RH remains OPEN"])
+    statuses=obligation_statuses()
+    forbidden={"PROVED","CLOSED","DISCHARGED"}
+    for oid in ("L04_WEIGHTED_TEST_AUTHORITY","L06_FIRST_VARIATION","L08_CURVATURE_BRIDGE","OBS060O_SATURATION_EXCLUSION","RH"):
+        if statuses.get(oid) in forbidden:
+            raise SystemExit(f"generated-contact semantic contract: {oid} falsely promoted")
     print(
-        f"generated-contact build contract: PASS "
+        f"generated-contact build contract: SURFACE_PASS "
         f"({len(LEAN_MODULES)} Lean + {len(RESEARCH_FILES)} research + "
-        f"{len(INTEGRATION_FILES)} integration files)"
+        f"{len(INTEGRATION_FILES)} integration files); "
+        "semantic obligations remain independently gated"
     )
     return 0
 
