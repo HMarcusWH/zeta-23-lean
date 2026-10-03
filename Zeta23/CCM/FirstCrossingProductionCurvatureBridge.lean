@@ -1,5 +1,6 @@
 import Zeta23.CCM.FirstCrossingProductionResponse
 import Zeta23.CCM.FirstCrossingProductionSaturation
+import Zeta23.CCM.StationarySchurContact
 
 noncomputable section
 
@@ -197,8 +198,66 @@ theorem productionContactRemainderValue_pos_of_zeroCurvature_strictEven
   exact productionArithmeticRemainder_pos_of_saturation_strictEven
     (v := z) hL hK hzne hground hzero hodd hb hkappa
 
+/-- Corrected pair second-order quantity built from the actual compressed
+derivatives. -/
+def canonicalContactSecondPairing
+    (L : ℝ) (K : ℕ)
+    (z w : euclideanEvenBoundaryFlatSubspace K) : ℝ :=
+  productionContactFixedSecondVariation .even L K z +
+    2 * Complex.re (inner ℂ z (canonicalEvenApertureFirst L K w))
+
+/-- Actual optimized curvature: the second pairing evaluated at the unique
+perpendicular response. -/
+def canonicalOptimizedContactCurvature
+    (c : GeneratedStrictEvenContact)
+    (hstationary :
+      productionContactFirstVariation .even
+        c.generated.shell.Lstar (c.generated.shell.k+1) c.z = 0) : ℝ :=
+  canonicalContactSecondPairing c.generated.shell.Lstar
+    (c.generated.shell.k+1) c.z
+    (canonicalStationaryEvenResponse c hstationary)
+
+/-- Euler-corrected production balance for arbitrary fixed legal even z,w. -/
+theorem canonicalSecondPairing_euler_eq_productionSaturationGap
+    {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 2 ≤ K)
+    (z w : euclideanEvenBoundaryFlatSubspace K) :
+    productionContactSaturationGap L K z w =
+      canonicalContactSecondPairing L K z w +
+        2 * productionContactFirstVariation .even L K z / L := by
+  unfold productionContactSaturationGap canonicalContactSecondPairing
+  have hadm := production_derivative_tests_admissible hL K z w
+  have hfirst := canonicalEven_firstVariation_eq_inner hL K z
+  have hsecond := canonicalEven_fixedSecond_eq_inner hL K z
+  rw [productionContactRemainderSource_simplified hL.ne' K z w]
+  -- The weighted physical explicit-formula identities now apply termwise on
+  -- the proved admissible span; source second-derivative transport supplies
+  -- the exact normal-source subtraction.
+  rw [productionArithmeticRealValue_add_of_admissible hadm.1
+      (hadm.2.1.add hadm.2.2)]
+  rw [productionStrictEvenSourceValue_eq_pairing hL K (by omega) z]
+  ring
+
+/-- Stationary specialization: Euler correction disappears. -/
+theorem canonicalStationaryCurvature_eq_productionSaturationGap
+    (c : GeneratedStrictEvenContact)
+    (hstationary :
+      productionContactFirstVariation .even
+        c.generated.shell.Lstar (c.generated.shell.k+1) c.z = 0) :
+    canonicalOptimizedContactCurvature c hstationary =
+      productionContactSaturationGap c.generated.shell.Lstar
+        (c.generated.shell.k+1) c.z
+        (canonicalStationaryEvenResponse c hstationary) := by
+  have h :=
+    canonicalSecondPairing_euler_eq_productionSaturationGap
+      c.Lstar_pos (c.generated.shell.k+1) c.two_le_K c.z
+        (canonicalStationaryEvenResponse c hstationary)
+  simp [canonicalOptimizedContactCurvature,hstationary] at h
+  linarith
+
 end Zeta23.CCM
 
+#print axioms Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap
+#print axioms Zeta23.CCM.canonicalStationaryCurvature_eq_productionSaturationGap
 #print axioms Zeta23.CCM.productionContactOptimizedCurvature_eq_fixedSecond_sub_response
 #print axioms Zeta23.CCM.productionContactResponseCost_nonnegative
 #print axioms Zeta23.CCM.productionOptimizedCurvatureBridge_of_concreteIdentity

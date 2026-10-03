@@ -1,4 +1,5 @@
 import Zeta23.CCM.FirstCrossingProductionTests
+import Zeta23.CCM.ProductionWeightedTestCalculus
 import Zeta23.CCM.FirstCrossingOptimizedCurvatureAlgebra
 import Zeta23.CCM.SourceDerivativeTransport
 import Zeta23.CCM.MixedSourceDerivativeTransport
@@ -117,7 +118,25 @@ def productionContactSaturationGap
     (2 * Real.pi) ^ 2 / L ^ 2 *
       productionStrictEvenSourceValue L K v
 
+/-- Simplified concrete remainder after substituting
+tangential = indexEnergy - normal. -/
+theorem productionContactRemainderSource_simplified
+    {L : ℝ} (hL : L ≠ 0) (K : ℕ)
+    (v w : euclideanEvenBoundaryFlatSubspace K) (t : ℝ) :
+    productionContactRemainderSource L K v w t =
+      (2 * Real.pi) ^ 2 / L ^ 2 *
+          productionContactNormalSourceChannel L K v t -
+        (2 * Real.pi) ^ 2 * t ^ 2 / L ^ 4 *
+          productionContactIndexEnergy L K v t +
+        2 * t / L ^ 2 *
+          productionContactMixedSourceDerivative L K v w t := by
+  rw [productionContactRemainderSource_apply]
+  unfold productionContactTangentialEnergy
+  field_simp [hL]
+  ring
+
 end Zeta23.CCM
 
+#print axioms Zeta23.CCM.productionContactRemainderSource_simplified
 #print axioms Zeta23.CCM.productionContactIndexEnergy_eq_tangential_add_normal
 #print axioms Zeta23.CCM.productionContactRemainderSource_apply

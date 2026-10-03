@@ -1,4 +1,5 @@
 import Zeta23.CCM.FirstCrossingProductionCurvatureBridge
+import Zeta23.CCM.FirstCrossingInheritedStationarity
 
 noncomputable section
 
@@ -240,8 +241,127 @@ theorem GeneratedStrictEvenContact.stationary_saturation_frontier
     (productionContactOptimizedCurvature_zero_iff
       c.Lstar_pos (by omega : 1 ≤ c.generated.shell.k + 1) hbridge).mp hkappa
 
+/-- Production first variation no longer needs a supplied realization witness. -/
+theorem GeneratedStrictEvenContact.firstVariation_nonpos_production
+    (c : GeneratedStrictEvenContact) :
+    productionContactFirstVariation .even c.generated.shell.Lstar
+      (c.generated.shell.k+1) c.z ≤ 0 := by
+  have hC2 := canonicalEvenCompressedC2_proved (c.generated.shell.k+1)
+  have hreal :
+      ProductionContactFirstVariationRealized .even
+        c.generated.shell.Lstar (c.generated.shell.k+1) c.z := by
+    exact
+      ((hC2 c.generated.shell.Lstar c.Lstar_pos).differentiable le_rfl).hasDerivAt
+  exact c.generated.firstVariation_nonpos_of_kernel .even c.z c.z_kernel hreal
+
+/-- Inherited strict-even contacts are stationary; transverse crossing remains
+only in the fresh-born branch. -/
+theorem GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
+    (c : GeneratedStrictEvenContact)
+    (hinh : c.generated.shell.n < c.generated.shell.k) :
+    productionContactFirstVariation .even c.generated.shell.Lstar
+      (c.generated.shell.k+1) c.z = 0 := by
+  have hseed :=
+    c.generated.inheritedSeed_firstVariation_zero hinh
+  have hline :=
+    strictEven_zeroKernel_is_line c.Lstar_pos (c.generated.shell.k+1)
+      c.two_le_K c.z c.z_ne c.z_kernel c.odd_positive
+      (parityPlateauExtend c.generated.shell.p c.generated.shell.n_le_k
+        c.generated.shell.seed)
+      (by
+        simpa [c.selected_even] using
+          c.generated.shell.extended_kernel c.generated.shell.k
+            c.generated.shell.n_le_k c.generated.shell.k_le_N)
+  obtain ⟨a,ha⟩ := hline
+  have ha0 : a ≠ 0 := by
+    intro h
+    rw [h,zero_smul] at ha
+    exact parityPlateauExtend_ne_zero _ _ c.generated.shell.seed
+      c.generated.shell.seed_ne (by simpa [ha])
+  simpa [inheritedSelectedEnergy,ha,ha0] using hseed
+
+/-- Branch split using the actual production derivative and actual response. -/
+theorem GeneratedStrictEvenContact.production_frontier
+    (c : GeneratedStrictEvenContact) :
+    Nonempty (GeneratedStrictEvenVariationBranch c) := by
+  have hnonpos := c.firstVariation_nonpos_production
+  rcases lt_or_eq_of_le hnonpos with hneg | hzero
+  · exact ⟨.firstOrder hneg⟩
+  · have hs := canonicalStationaryEvenResponse_spec c hzero
+    exact ⟨.stationary hzero
+      (canonicalStationaryEvenResponse c hzero)
+      hs.1
+      (by
+        simpa [canonicalEvenApertureFirst,
+          canonicalEvenApertureFirstCLM] using hs.2)⟩
+
+/-- The stationary generated contact has zero actual optimized curvature. -/
+theorem GeneratedStrictEvenContact.actual_stationary_curvature_eq_zero
+    (c : GeneratedStrictEvenContact)
+    (hstationary :
+      productionContactFirstVariation .even c.generated.shell.Lstar
+        (c.generated.shell.k+1) c.z = 0) :
+    canonicalOptimizedContactCurvature c hstationary = 0 := by
+  -- Apply the generic stationary first-contact theorem to the scalar Schur
+  -- profile of the simple even kernel.
+  have hC2 := canonicalEvenCompressedC2_proved (c.generated.shell.k+1)
+  exact stationary_firstContact_secondDerivative_eq_zero
+    c.generated.shell.Lsmall_lt_Lstar
+    c.generated.shell.Lstar_lt_Lneg
+    (by simp [productionContactFixedEnergy,c.z_kernel])
+    (fun L hLs hLstar =>
+      c.generated.selectedFixedEnergy_nonnegative .even c.z hLs hLstar)
+    c.generated.shell.successor_right_crossing
+    (hC2 c.generated.shell.Lstar c.Lstar_pos)
+    hstationary
+
+/-- Exact positive stationary production saturation balance. -/
+theorem GeneratedStrictEvenContact.production_stationary_saturation
+    (c : GeneratedStrictEvenContact)
+    (hstationary :
+      productionContactFirstVariation .even c.generated.shell.Lstar
+        (c.generated.shell.k+1) c.z = 0) :
+    productionContactRemainderValue c.generated.shell.Lstar
+        (c.generated.shell.k+1) c.z
+        (canonicalStationaryEvenResponse c hstationary) =
+      (2*Real.pi)^2 / c.generated.shell.Lstar^2 *
+        productionStrictEvenSourceValue c.generated.shell.Lstar
+          (c.generated.shell.k+1) c.z := by
+  have hk := c.actual_stationary_curvature_eq_zero hstationary
+  have hb := canonicalStationaryCurvature_eq_productionSaturationGap c hstationary
+  unfold productionContactSaturationGap at hb
+  linarith
+
+theorem GeneratedStrictEvenContact.production_stationary_remainder_pos
+    (c : GeneratedStrictEvenContact)
+    (hstationary :
+      productionContactFirstVariation .even c.generated.shell.Lstar
+        (c.generated.shell.k+1) c.z = 0) :
+    0 < productionContactRemainderValue c.generated.shell.Lstar
+      (c.generated.shell.k+1) c.z
+      (canonicalStationaryEvenResponse c hstationary) := by
+  rw [c.production_stationary_saturation hstationary]
+  positivity [c.sourceValue_pos]
+
+/-- Inherited strict-even contacts satisfy the stationary positive balance. -/
+theorem GeneratedStrictEvenContact.inherited_production_saturation
+    (c : GeneratedStrictEvenContact)
+    (hinh : c.generated.shell.n < c.generated.shell.k) :
+    productionContactRemainderValue c.generated.shell.Lstar
+        (c.generated.shell.k+1) c.z
+        (canonicalStationaryEvenResponse c
+          (c.firstVariation_eq_zero_of_inherited hinh)) =
+      (2*Real.pi)^2 / c.generated.shell.Lstar^2 *
+        productionStrictEvenSourceValue c.generated.shell.Lstar
+          (c.generated.shell.k+1) c.z :=
+  c.production_stationary_saturation
+    (c.firstVariation_eq_zero_of_inherited hinh)
+
 end Zeta23.CCM
 
+#print axioms Zeta23.CCM.GeneratedStrictEvenContact.production_frontier
+#print axioms Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
+#print axioms Zeta23.CCM.GeneratedStrictEvenContact.production_stationary_saturation
 #print axioms Zeta23.CCM.GeneratedGlobalFirstCrossing.exists_generatedStrictEvenContact_of_evenStrict
 #print axioms Zeta23.CCM.GeneratedStrictEvenContact.frontier
 #print axioms Zeta23.CCM.GeneratedStrictEvenContact.sourceValue_pos

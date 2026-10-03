@@ -1,4 +1,6 @@
 import Zeta23.CCM.FirstCrossingGlobalAlignment
+import Zeta23.CCM.CanonicalCompressedApertureC2
+import Zeta23.CCM.ProductionWeightedTestCalculus
 import Zeta23.CCM.FirstCrossingProductionRemainder
 import Zeta23.CCM.ConstrainedParitySpectrum
 import Zeta23.CCM.ConstrainedEuclideanSector
@@ -425,8 +427,46 @@ theorem GeneratedGlobalFirstCrossing.firstVariation_nonpos_of_kernel
     exact g.selectedFixedEnergy_nonnegative p z hsmall hstar
   · exact hrealized
 
+/-- Actual compressed first variation equals the scalar derivative used by the
+existing generated-prefix sign theorem. -/
+theorem canonicalEven_firstVariation_eq_inner
+    {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (z : euclideanEvenBoundaryFlatSubspace K) :
+    productionContactFirstVariation .even L K z =
+      Complex.re (inner ℂ (canonicalEvenApertureFirst L K z) z) := by
+  have hC2 := canonicalEvenCompressedC2_proved K
+  have hderiv :=
+    ((hC2 L hL).differentiable le_rfl).hasFDerivAt
+  unfold productionContactFirstVariation productionContactFixedEnergy
+  simpa [canonicalEvenApertureFirst, canonicalEvenApertureFirstCLM,
+    canonicalEvenCompressedFamilyCLM] using
+    congrArg (fun x => Complex.re (inner ℂ x z))
+      (hderiv.fderiv)
+
+ /-- Actual compressed second fixed-vector variation. -/
+theorem canonicalEven_fixedSecond_eq_inner
+    {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (z : euclideanEvenBoundaryFlatSubspace K) :
+    productionContactFixedSecondVariation .even L K z =
+      Complex.re (inner ℂ (canonicalEvenApertureSecond L K z) z) := by
+  have hC2 := canonicalEvenCompressedC2_proved K
+  unfold productionContactFixedSecondVariation
+  have hfirst := canonicalEven_firstVariation_eq_inner hL K z
+  rw [show (fun s : ℝ => productionContactFirstVariation .even s K z) =
+      (fun s : ℝ => Complex.re
+        (inner ℂ (canonicalEvenApertureFirst s K z) z)) by
+        funext s
+        by_cases hs : 0 < s
+        · exact canonicalEven_firstVariation_eq_inner hs K z
+        · simp [productionContactFirstVariation,
+            canonicalEvenApertureFirst, canonicalEvenApertureFirstCLM,
+            fderiv_zero_of_not_differentiableAt]]
+  rfl
+
 end Zeta23.CCM
 
+#print axioms Zeta23.CCM.canonicalEven_firstVariation_eq_inner
+#print axioms Zeta23.CCM.canonicalEven_fixedSecond_eq_inner
 #print axioms Zeta23.CCM.productionApertureFirstMatrix_isHermitian
 #print axioms Zeta23.CCM.productionApertureSecondMatrix_isHermitian
 #print axioms Zeta23.CCM.parityProductionApertureFirst_isSymmetric
