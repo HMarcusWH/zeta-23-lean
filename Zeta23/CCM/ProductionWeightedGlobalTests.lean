@@ -771,6 +771,13 @@ theorem productionFirstDerivativeTest_authority
 
 /-! ## Second and mixed weighted derivative lifts -/
 
+private theorem hasDerivAt_sourceAtomRealEnergySecondDerivative_from_contDiff
+    (K : ℕ) (z : EuclideanSpace ℂ (Fin (2 * K + 1))) (ω : ℝ) :
+    HasDerivAt (sourceAtomRealEnergySecondDerivative K z)
+      (deriv (sourceAtomRealEnergySecondDerivative K z) ω) ω :=
+  ((contDiff_two_sourceAtomRealEnergySecondDerivative K z).differentiable
+    (by norm_num) ω).hasDerivAt
+
 /-- Boundary-flat source energy has zero second through fourth source jets at
 the entering endpoint.  This packages exactly the endpoint information used by
 the t²-weighted second variation. -/
@@ -845,15 +852,21 @@ theorem productionSecondDerivativePhysicalRaw_liftJets
         convert (hasDerivAt_const L (1 : ℝ)).sub
           ((hasDerivAt_id L).div_const L) using 1 <;> field_simp [hL.ne'] <;> ring
       exact
-        ((contDiff_two_sourceAtomRealEnergySecondDerivative K
-          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))).differentiableAt.hasDerivAt).comp L hcoord
+        (by
+        simpa [hL.ne', mul_comm] using
+          (hasDerivAt_sourceAtomRealEnergySecondDerivative_from_contDiff K
+            (z : EuclideanSpace ℂ (Fin (2 * K + 1))) (1 - L / L)).comp L hcoord)
     have hp :=
       ((hasDerivAt_id L).pow 2).div_const (L ^ 4) |>.mul hinner
     simpa [productionSecondDerivativePhysicalRaw, hj.1, hj.2.1] using hp.deriv
   · have hC2 := contDiff_two_productionSecondDerivativePhysicalRaw hL.ne' K z
     have hD1 : ContDiff ℝ 1
         (deriv (productionSecondDerivativePhysicalRaw L K z)) := by
-      simpa using hC2.deriv'
+      have hC2' :
+          ContDiff ℝ (1 + 1)
+            (productionSecondDerivativePhysicalRaw L K z) := by
+        simpa using hC2
+      simpa using hC2'.deriv'
     have hsecond := ((hD1.differentiable (by norm_num)) L).hasDerivAt
     have hzero :
         deriv (productionSecondDerivativePhysicalRaw L K z) L = 0 := by
@@ -870,8 +883,10 @@ theorem productionSecondDerivativePhysicalRaw_liftJets
           convert (hasDerivAt_const L (1 : ℝ)).sub
             ((hasDerivAt_id L).div_const L) using 1 <;> field_simp [hL.ne'] <;> ring
         exact
-          ((contDiff_two_sourceAtomRealEnergySecondDerivative K
-            (z : EuclideanSpace ℂ (Fin (2 * K + 1)))).differentiableAt.hasDerivAt).comp L hcoord
+          (by
+        simpa [hL.ne', mul_comm] using
+          (hasDerivAt_sourceAtomRealEnergySecondDerivative_from_contDiff K
+            (z : EuclideanSpace ℂ (Fin (2 * K + 1))) (1 - L / L)).comp L hcoord)
       have hp :=
         ((hasDerivAt_id L).pow 2).div_const (L ^ 4) |>.mul hinner
       simpa [productionSecondDerivativePhysicalRaw, hj.1, hj.2.1] using hp.deriv
