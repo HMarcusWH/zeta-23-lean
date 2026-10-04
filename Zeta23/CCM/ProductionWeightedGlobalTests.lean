@@ -247,8 +247,10 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
         HasDerivWithinAt (productionEvenCompactLiftReal L f) 0
           (Icc (-L) 0) 0 := by
       have hf := (productionEvenCompactLiftJets_differentiable h 0).hasDerivAt
+      have hf' : HasDerivAt f (deriv f 0) (-0) := by
+        simpa using hf
       have hc : HasDerivAt (fun y : ℝ => f (-y)) 0 0 := by
-        have hh := hf.comp 0 (hasDerivAt_neg (0 : ℝ))
+        have hh := hf'.comp 0 (hasDerivAt_neg (0 : ℝ))
         simpa [h.deriv_zero] using hh
       refine hc.hasDerivWithinAt.congr_of_mem ?_ ?_
       · intro z hz
@@ -434,7 +436,10 @@ private theorem hasDerivAt_productionEvenCompactLiftRealDerivative
     have hleft0 :
         HasDerivWithinAt (productionEvenCompactLiftRealDerivative L f)
           (deriv (deriv f) 0) (Icc (-L) 0) 0 := by
-      have hh := (hdfdiff 0).hasDerivAt.comp 0 (hasDerivAt_neg (0 : ℝ))
+      have hf := (hdfdiff 0).hasDerivAt
+      have hf' : HasDerivAt (deriv f) (deriv (deriv f) 0) (-0) := by
+        simpa using hf
+      have hh := hf'.comp 0 (hasDerivAt_neg (0 : ℝ))
       have hc :
           HasDerivAt (fun z : ℝ => -deriv f (-z))
             (deriv (deriv f) 0) 0 := by
@@ -843,6 +848,9 @@ theorem productionFirstDerivativePhysicalRaw_liftJets
     ProductionEvenCompactLiftJets L
       (productionFirstDerivativePhysicalRaw L K z) := by
   have hend := sourceAtomRealEnergyDerivative_endpoints_zero K z
+  have hcoordL : 1 - L / L = 0 := by
+    rw [div_self hL.ne']
+    ring
   refine ⟨contDiff_two_productionFirstDerivativePhysicalRaw hL.ne' K z,
     ?_, ?_, ?_, ?_, ?_⟩
   · simp [productionFirstDerivativePhysicalRaw]
@@ -859,7 +867,7 @@ theorem productionFirstDerivativePhysicalRaw_liftJets
         (((hasDerivAt_const 0 (L ^ 2)).inv
           (pow_ne_zero 2 hL.ne')).mul hsource)
     simpa [productionFirstDerivativePhysicalRaw, hend.2] using hd.deriv
-  · simp [productionFirstDerivativePhysicalRaw,
+  · simp [productionFirstDerivativePhysicalRaw, hcoordL,
       sourceAtomRealEnergyDerivative_zero_of_boundaryFlat K
         (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
         (evenBoundaryFlatRawCoefficients_boundaryFlat K z)]
@@ -867,12 +875,12 @@ theorem productionFirstDerivativePhysicalRaw_liftJets
       sourceAtomRealEnergy_boundaryFlat_jets_through_six K
         (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
         (evenBoundaryFlatRawCoefficients_boundaryFlat K z)
-    simp [productionFirstDerivativePhysicalRaw, hjet] 
+    simp [productionFirstDerivativePhysicalRaw, hcoordL, hjet] 
   · have hjet :=
       sourceAtomRealEnergy_boundaryFlat_jets_through_six K
         (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
         (evenBoundaryFlatRawCoefficients_boundaryFlat K z)
-    simp [productionFirstDerivativePhysicalRaw, hjet]
+    simp [productionFirstDerivativePhysicalRaw, hcoordL, hjet]
 
 /-- First weighted derivative global test. -/
 def productionFirstDerivativeGlobalTest
@@ -1031,11 +1039,14 @@ theorem productionSecondDerivativePhysicalRaw_liftJets
     ProductionEvenCompactLiftJets L
       (productionSecondDerivativePhysicalRaw L K z) := by
   have hj := sourceAtomRealEnergy_second_through_four_zero K z
+  have hcoordL : 1 - L / L = 0 := by
+    rw [div_self hL.ne']
+    ring
   refine ⟨contDiff_two_productionSecondDerivativePhysicalRaw hL.ne' K z,
     ?_, ?_, ?_, ?_, ?_⟩
   · simp [productionSecondDerivativePhysicalRaw]
   · simp [productionSecondDerivativePhysicalRaw]
-  · simp [productionSecondDerivativePhysicalRaw, hj.1]
+  · simp [productionSecondDerivativePhysicalRaw, hcoordL, hj.1]
   · have hinner :
         HasDerivAt
           (fun t : ℝ =>
@@ -1057,7 +1068,7 @@ theorem productionSecondDerivativePhysicalRaw_liftJets
       simpa [hcoordL, mul_comm] using hs
     have hp :=
       ((hasDerivAt_id L).pow 2).div_const (L ^ 4) |>.mul hinner
-    simpa [productionSecondDerivativePhysicalRaw, hj.1, hj.2.1] using hp.deriv
+    simpa [productionSecondDerivativePhysicalRaw, hcoordL, hj.1, hj.2.1] using hp.deriv
   · have hC2 := contDiff_two_productionSecondDerivativePhysicalRaw hL.ne' K z
     have hD1 : ContDiff ℝ 1
         (deriv (productionSecondDerivativePhysicalRaw L K z)) := by
@@ -1088,10 +1099,10 @@ theorem productionSecondDerivativePhysicalRaw_liftJets
             (z : EuclideanSpace ℂ (Fin (2 * K + 1))) (1 - L / L)).comp L hcoord)
       have hp :=
         ((hasDerivAt_id L).pow 2).div_const (L ^ 4) |>.mul hinner
-      simpa [productionSecondDerivativePhysicalRaw, hj.1, hj.2.1] using hp.deriv
+      simpa [productionSecondDerivativePhysicalRaw, hcoordL, hj.1, hj.2.1] using hp.deriv
     rw [hzero] at hsecond
     have hthird := hj.2.2
-    simpa [productionSecondDerivativePhysicalRaw, hj.1, hj.2.1, hthird] using hsecond.deriv
+    simpa [productionSecondDerivativePhysicalRaw, hcoordL, hj.1, hj.2.1, hthird] using hsecond.deriv
 
 def productionSecondDerivativeGlobalTest
     (L : ℝ) (K : ℕ) (z : euclideanEvenBoundaryFlatSubspace K) : ℝ → ℂ :=
@@ -1250,11 +1261,14 @@ theorem productionMixedDerivativePhysicalRaw_liftJets
     ProductionEvenCompactLiftJets L
       (productionMixedDerivativePhysicalRaw L K z w) := by
   have hend := sourceAtomPairingDerivative_endpoints_zero K z w
+  have hcoordL : 1 - L / L = 0 := by
+    rw [div_self hL.ne']
+    ring
   refine ⟨contDiff_two_productionMixedDerivativePhysicalRaw hL.ne' K z w,
     ?_, ?_, ?_, ?_, ?_⟩
   · simp [productionMixedDerivativePhysicalRaw]
   · simp [productionMixedDerivativePhysicalRaw, hend.2]
-  · simp [productionMixedDerivativePhysicalRaw, hend.1]
+  · simp [productionMixedDerivativePhysicalRaw, hcoordL, hend.1]
   · have hpair2 :
         deriv (sourceAtomPairingDerivative K
           (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
@@ -1274,9 +1288,9 @@ theorem productionMixedDerivativePhysicalRaw_liftJets
         (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
         (w : EuclideanSpace ℂ (Fin (2 * K + 1))) 0 hsumz hsumw]
       simp [sourceAtomPairing]
-    simp [productionMixedDerivativePhysicalRaw, hend.1, hpair2]
+    simp [productionMixedDerivativePhysicalRaw, hcoordL, hend.1, hpair2]
   · have h3 := sourceAtomPairingDerivative_secondDerivative_zero K z w
-    simp [productionMixedDerivativePhysicalRaw, hend.1, h3]
+    simp [productionMixedDerivativePhysicalRaw, hcoordL, hend.1, h3]
 
 def productionMixedDerivativeGlobalTest
     (L : ℝ) (K : ℕ)
