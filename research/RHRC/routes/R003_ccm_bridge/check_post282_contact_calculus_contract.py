@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse,json,math
+import argparse,json,math,sys
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[4]
 ROUTE=Path(__file__).resolve().parent
+sys.path.insert(0,str(ROOT/"research/RHRC/closure_batch"))
+from interval_codec import DyadicInterval,IntervalCodecError
 NEW_LEAN=[
  "Zeta23/CCM/CanonicalCompressedSeamJets.lean",
  "Zeta23/CCM/CanonicalFrozenApertureC2.lean",
@@ -91,10 +93,46 @@ def check_surface()->None:
     if obligations.get("claim_firewall")!="RH_OPEN":
         fail("FIREWALL","obligation ledger terminal claim drift")
 
-def check_results(path:Path)->None:
-    d=json.loads(path.read_text())
+def _validate_dyadic_payload(obj,path="results")->None:
+    if isinstance(obj,dict):
+        if "dyadic_interval" in obj:
+            try:
+                d=DyadicInterval.from_json(obj["dyadic_interval"])
+            except (IntervalCodecError,TypeError,KeyError) as exc:
+                fail("INTERVAL",f"{path}: invalid dyadic interval: {exc}")
+            if obj.get("sign") is not None and obj.get("sign")!=d.sign():
+                fail("INTERVAL",f"{path}: stored sign disagrees with exact interval")
+        for k,v in obj.items():
+            _validate_dyadic_payload(v,f"{path}.{k}")
+    elif isinstance(obj,list):
+        for i,v in enumerate(obj):
+            _validate_dyadic_payload(v,f"{path}[{i}]")
+
+
+def _require_certified_payload(node:dict,path:str)->None:
+    status=node.get("status")
+    if isinstance(status,str) and status.startswith("CERTIFIED"):
+        meaningful=[k for k in node if k not in {"status","display_only"}]
+        if not meaningful:
+            fail("EMPTY_SUCCESS",path)
+
+
+def validate_results_dict(d:dict)->None:
     if d.get("schema_version")!="POST282_CONTACT_BALANCE_ARB_v2": fail("SCHEMA","results")
     if d.get("claim_cap")!="EXPERIMENTAL_SIGNAL_ONLY": fail("CLAIM_CAP","results")
+    prov=d.get("source_provenance") or {}
+    expected={
+        "base_merge":"01871f7d2256b1eac2dbd7967346954367c8eef9",
+        "base_tree":"c7749d37c4b63270818c3fb0d7fb5dbc22638790",
+        "artifact_id":11282789337,
+        "artifact_zip_sha256":"67a8dc2e766e2c7ea6ec02809ade4e4d530b055be382901637368e4cf9711e39",
+        "discovery_sha256":"9cd30f99a1841e5ef70951f1339ff18b9b9492e5273659bb560fb5e457aedd0a",
+        "arb_sha256":"e137b8db0c726085c1fc9875efa778ff115de705c26fd1205154133541baea29",
+        "selected_panel_artifact_id":11282789337,
+    }
+    for k,v in expected.items():
+        if prov.get(k)!=v: fail("PROVENANCE",f"{k} drift")
+    _validate_dyadic_payload(d)
     s=d.get("summary") or {}
     if s.get("terminal_claim")!="RH_OPEN" or s.get("theorem_promotion") is not False:
         fail("FIREWALL","results")
@@ -113,25 +151,91 @@ def check_results(path:Path)->None:
     rows=d.get("selected_replay")
     if not isinstance(rows,list) or len(rows)!=11:
         fail("SELECTION","selected replay missing")
+    keys=[repr(r.get("candidate")) for r in rows]
+    if len(set(keys))!=len(keys):
+        fail("SELECTION","duplicated selected replay row")
     balances=d.get("balance_rows")
     if not isinstance(balances,list) or len(balances)!=11:
         fail("BALANCE","balance rows missing")
     if not any(r.get("physical_remainder",{}).get("status")=="CERTIFIED" for r in balances):
         fail("N03","direct physical remainder lane is vacuous")
-    if not all(isinstance(r.get("matched_ablations"),list) for r in balances if r.get("response")):
-        fail("N04","matched ablation dispositions missing")
-    for row in balances:
-        abl=row.get("matched_ablations") or []
-        if abl and abl[0].get("name")!="ALL":
-            modes={(a.get("name"),a.get("mode")) for a in abl}
-            for channel in ("DROP_POLE","DROP_ARCH","DROP_PRIME"):
-                if (channel,"FROZEN_STATE") not in modes or (channel,"REOPTIMIZED") not in modes:
-                    fail("N04",f"ablation modes incomplete for {channel}")
     if any(r.get("first_boundary_claimed") is not False for r in rows):
         fail("FIRST_BOUNDARY","finite replay may not claim first boundary")
+
     cal=d.get("calibration") or {}
-    if not all(cal.get(k) is True for k in ("value_overlap","first_overlap","second_overlap")):
-        fail("SEAM","compressed seam jets do not overlap")
+    required_cal=(
+        "value_overlap","first_overlap","second_overlap",
+        "derivative_overlap","remainder_overlap","balance_overlap",
+        "seam_balance_overlap","independent_balance_identity_overlap",
+        "derivative_width_le_2^-80","remainder_width_le_2^-80",
+        "balance_width_le_2^-80","width_le_2^-80"
+    )
+    if not all(cal.get(k) is True for k in required_cal):
+        fail("N02","independent K2/log2 derivative/remainder/balance qualification incomplete")
+
+    for i,row in enumerate(balances):
+        contract=row.get("certification_contract") or {}
+        required_contract={
+            "shifted_eigenvalue_subtraction":True,
+            "euler_correction_in_balance":True,
+            "response_gauge":"ORTHOGONAL_TO_CERTIFIED_GROUND",
+            "independent_physical_remainder":True,
+            "midpoint_inverse_requires_rho_lt_one":True,
+            "exact_interval_codec":"DYADIC_DIRECTED_ARB_ENDPOINTS",
+            "theorem_promotion":False,
+        }
+        for k,v in required_contract.items():
+            if contract.get(k)!=v:
+                fail("N03",f"row {i}: certification contract drift: {k}")
+        response=row.get("response") or {}
+        _require_certified_payload(response,f"balance_rows[{i}].response")
+        if response.get("status") in {"CERTIFIED_BORDERED_RESPONSE","CERTIFIED_ZERO_COMPLEMENT_RESPONSE"}:
+            inv=response.get("inverse_certificate")
+            if not isinstance(inv,dict) or "rho_upper_exact" not in inv:
+                fail("N03",f"row {i}: certified response lacks inverse certificate")
+            if response.get("orthogonality") is None:
+                fail("N03",f"row {i}: certified response lacks gauge residual")
+        rem=row.get("physical_remainder") or {}
+        _require_certified_payload(rem,f"balance_rows[{i}].physical_remainder")
+        sat=row.get("saturation_gap") or {}
+        if sat.get("status")=="CERTIFIED_INDEPENDENT_SIDES":
+            if sat.get("delta_sat") is None or sat.get("kappa_plus_euler") is None:
+                fail("EULER",f"row {i}: independent balance omitted one side")
+            if sat.get("identity_overlap") is not True:
+                fail("BALANCE",f"row {i}: certified independent sides do not overlap")
+        abl=row.get("matched_ablations")
+        if not isinstance(abl,list):
+            fail("N04",f"row {i}: matched ablation dispositions missing")
+        if response.get("status") in {"CERTIFIED_BORDERED_RESPONSE","CERTIFIED_ZERO_COMPLEMENT_RESPONSE"}:
+            modes={(a.get("name"),a.get("mode")) for a in abl}
+            required={(f"DROP_{channel}",mode)
+                for channel in ("POLE","ARCH","PRIME")
+                for mode in ("FROZEN_STATE","REOPTIMIZED")}
+            if modes!=required:
+                fail("N04",f"row {i}: ablation family is not exact six-case matched set")
+            for a in abl:
+                if a.get("mode")=="FROZEN_STATE" and a.get("complete_model_inverse_used") is not True:
+                    fail("N04",f"row {i}: frozen-state ablation did not receipt complete-model response")
+                if (a.get("arithmetic_comparison") or {}).get("status")!="NOT_APPLICABLE_NO_MATCHED_PHYSICAL_FUNCTIONAL":
+                    fail("N04",f"row {i}: unmatched ablation arithmetic comparison was promoted")
+                _require_certified_payload(a,f"balance_rows[{i}].matched_ablations")
+
+    hyp=d.get("hypothesis_dispositions") or {}
+    x01=hyp.get("X01_INHERITED_RESPONSE_BALANCE") or {}
+    if x01.get("status") not in {
+        "NO_ELIGIBLE_INHERITED_CONTACT","ELIGIBLE_INHERITED_CONTACTS_EVALUATED"}:
+        fail("X01","missing eligibility-derived disposition")
+    if x01.get("status")=="NO_ELIGIBLE_INHERITED_CONTACT":
+        if x01.get("eligible_count")!=0 or x01.get("rows_examined")!=11:
+            fail("X01","no-eligible disposition is not backed by full panel scan")
+        if not isinstance(x01.get("rejections"),list) or len(x01["rejections"])!=11:
+            fail("X01","no-eligible disposition lacks per-row rejection receipts")
+    if x01.get("theorem_promotion") is not False:
+        fail("X01","experimental lane attempted theorem promotion")
+
+
+def check_results(path:Path)->None:
+    validate_results_dict(json.loads(path.read_text()))
 
 
 def main()->int:
