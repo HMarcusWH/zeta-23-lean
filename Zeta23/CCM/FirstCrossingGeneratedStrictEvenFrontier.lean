@@ -611,12 +611,140 @@ theorem GeneratedStrictEvenContact.inherited_production_saturation
   c.production_stationary_saturation
     (c.firstVariation_eq_zero_of_inherited hinh)
 
+
+/-! ## Completed production frontier -/
+
+/-- Final F07 branch object.  The transverse branch records that strict
+first-order escape is necessarily fresh-born.  The stationary branch carries
+the actual unique perpendicular response, zero Schur curvature, exact
+production saturation, and strict positivity of the concrete remainder. -/
+inductive GeneratedStrictEvenCompletedProductionBranch
+    (c : GeneratedStrictEvenContact) : Type
+  | firstOrder
+      (hfresh : c.generated.shell.k = c.generated.shell.n)
+      (hneg :
+        productionContactFirstVariation .even
+          c.generated.shell.Lstar (c.generated.shell.k + 1) c.z < 0)
+  | stationary
+      (hzero :
+        productionContactFirstVariation .even
+          c.generated.shell.Lstar (c.generated.shell.k + 1) c.z = 0)
+      (w : euclideanEvenBoundaryFlatSubspace (c.generated.shell.k + 1))
+      (hperp : inner ℂ c.z w = 0)
+      (hresponse :
+        evenCompressedCanonical c.generated.shell.Lstar
+            (c.generated.shell.k + 1) w =
+          -(canonicalEvenApertureFirst
+            c.generated.shell.Lstar (c.generated.shell.k + 1) c.z))
+      (hunique :
+        ∀ w' : euclideanEvenBoundaryFlatSubspace (c.generated.shell.k + 1),
+          inner ℂ c.z w' = 0 →
+          evenCompressedCanonical c.generated.shell.Lstar
+              (c.generated.shell.k + 1) w' =
+            -(canonicalEvenApertureFirst
+              c.generated.shell.Lstar (c.generated.shell.k + 1) c.z) →
+          w' = w)
+      (hcurvature :
+        canonicalOptimizedContactCurvature
+          c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
+          c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hzero = 0)
+      (hsaturation :
+        productionContactRemainderValue c.generated.shell.Lstar
+            (c.generated.shell.k + 1) c.z w =
+          (2 * Real.pi)^2 / c.generated.shell.Lstar^2 *
+            productionStrictEvenSourceValue c.generated.shell.Lstar
+              (c.generated.shell.k + 1) c.z)
+      (hremainder_pos :
+        0 < productionContactRemainderValue c.generated.shell.Lstar
+          (c.generated.shell.k + 1) c.z w)
+
+/-- Completed production-authoritative contact split.  No legacy realization,
+curvature bridge, supplied kappa, arbitrary remainder, endpoint barrier, or RH
+premise occurs in the theorem type. -/
+theorem GeneratedStrictEvenContact.completed_production_frontier
+    (c : GeneratedStrictEvenContact) :
+    Nonempty (GeneratedStrictEvenCompletedProductionBranch c) := by
+  have hnonpos := c.firstVariation_nonpos_production
+  rcases lt_or_eq_of_le hnonpos with hneg | hzero
+  · exact ⟨.firstOrder (c.firstOrder_is_fresh hneg) hneg⟩
+  · let w :=
+      canonicalStationaryEvenResponse
+        c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
+        c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hzero
+    have hspec :=
+      canonicalStationaryEvenResponse_spec
+        c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
+        c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hzero
+    have hex :=
+      existsUnique_canonicalStationaryEvenResponse
+        c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
+        c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hzero
+    have huniq :
+        ∀ w' : euclideanEvenBoundaryFlatSubspace (c.generated.shell.k + 1),
+          inner ℂ c.z w' = 0 →
+          evenCompressedCanonical c.generated.shell.Lstar
+              (c.generated.shell.k + 1) w' =
+            -(canonicalEvenApertureFirst
+              c.generated.shell.Lstar (c.generated.shell.k + 1) c.z) →
+          w' = w := by
+      intro w' hp hr
+      exact hex.unique ⟨hp, hr⟩ hspec
+    have hk := c.actual_stationary_curvature_eq_zero hzero
+    have hs := c.production_stationary_saturation hzero
+    have hp := c.production_stationary_remainder_pos hzero
+    refine ⟨.stationary hzero w hspec.1 hspec.2 huniq hk ?_ ?_⟩
+    · simpa [w] using hs
+    · simpa [w] using hp
+
+/-- Inherited contacts enter the completed stationary branch directly. -/
+theorem GeneratedStrictEvenContact.inherited_completed_production_frontier
+    (c : GeneratedStrictEvenContact)
+    (hinh : c.generated.shell.n < c.generated.shell.k) :
+    ∃ b : GeneratedStrictEvenCompletedProductionBranch c,
+      match b with
+      | .firstOrder _ _ => False
+      | .stationary hzero _ _ _ _ _ _ _ =>
+          hzero = c.firstVariation_eq_zero_of_inherited hinh := by
+  let hzero := c.firstVariation_eq_zero_of_inherited hinh
+  let w :=
+    canonicalStationaryEvenResponse
+      c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
+      c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hzero
+  have hspec :=
+    canonicalStationaryEvenResponse_spec
+      c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
+      c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hzero
+  have hex :=
+    existsUnique_canonicalStationaryEvenResponse
+      c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
+      c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hzero
+  have huniq :
+      ∀ w' : euclideanEvenBoundaryFlatSubspace (c.generated.shell.k + 1),
+        inner ℂ c.z w' = 0 →
+        evenCompressedCanonical c.generated.shell.Lstar
+            (c.generated.shell.k + 1) w' =
+          -(canonicalEvenApertureFirst
+            c.generated.shell.Lstar (c.generated.shell.k + 1) c.z) →
+        w' = w := by
+    intro w' hp hr
+    exact hex.unique ⟨hp, hr⟩ hspec
+  let b : GeneratedStrictEvenCompletedProductionBranch c :=
+    .stationary hzero w hspec.1 hspec.2 huniq
+      (c.actual_stationary_curvature_eq_zero hzero)
+      (by simpa [w] using c.production_stationary_saturation hzero)
+      (by simpa [w] using c.production_stationary_remainder_pos hzero)
+  refine ⟨b, ?_⟩
+  rfl
+
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.GeneratedStrictEvenContact.firstOrder_is_fresh
 #print axioms Zeta23.CCM.GeneratedStrictEvenContact.production_frontier
 #print axioms Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
 #print axioms Zeta23.CCM.GeneratedStrictEvenContact.production_stationary_saturation
+#print axioms Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier
+#print axioms Zeta23.CCM.GeneratedStrictEvenContact.inherited_completed_production_frontier
 #print axioms Zeta23.CCM.GeneratedGlobalFirstCrossing.exists_generatedStrictEvenContact_of_evenStrict
 #print axioms Zeta23.CCM.GeneratedStrictEvenContact.frontier
 #print axioms Zeta23.CCM.GeneratedStrictEvenContact.sourceValue_pos
