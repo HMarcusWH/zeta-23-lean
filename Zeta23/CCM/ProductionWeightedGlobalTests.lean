@@ -949,16 +949,63 @@ theorem productionFirstDerivativePhysicalRaw_liftJets
       sourceAtomRealEnergyDerivative_zero_of_boundaryFlat K
         (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
         (evenBoundaryFlatRawCoefficients_boundaryFlat K z)]
-  · have hjet :=
-      sourceAtomRealEnergy_boundaryFlat_jets_through_six K
+  · have hj := sourceAtomRealEnergy_second_through_four_zero K z
+    have hsource0 :
+        sourceAtomRealEnergyDerivative K
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1))) 0 = 0 :=
+      sourceAtomRealEnergyDerivative_zero_of_boundaryFlat K
         (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
         (evenBoundaryFlatRawCoefficients_boundaryFlat K z)
-    simp [productionFirstDerivativePhysicalRaw, hcoordL, hjet] 
-  · have hjet :=
-      sourceAtomRealEnergy_boundaryFlat_jets_through_six K
-        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
-        (evenBoundaryFlatRawCoefficients_boundaryFlat K z)
-    simp [productionFirstDerivativePhysicalRaw, hcoordL, hjet]
+    have hcoord :
+        HasDerivAt (fun t : ℝ => 1 - t / L) (-(1 / L)) L := by
+      simpa only [zero_sub] using
+        (hasDerivAt_const L (1 : ℝ)).sub
+          ((hasDerivAt_id L).div_const L)
+    have hinner :=
+      (hasDerivAt_sourceAtomRealEnergyDerivative_transport K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1))) 0).comp L hcoord
+    have hp :=
+      ((hasDerivAt_id L).div_const (L ^ 2)).mul hinner
+    simpa [productionFirstDerivativePhysicalRaw, hcoordL, hsource0, hj.1,
+      mul_comm, mul_left_comm, mul_assoc] using hp.deriv
+  · have hj := sourceAtomRealEnergy_second_through_four_zero K z
+    let x : EuclideanSpace ℂ (Fin (2 * K + 1)) := z
+    let c : ℝ := -(1 / L)
+    let d : ℝ → ℝ := fun t =>
+      (1 / L ^ 2) *
+          sourceAtomRealEnergyDerivative K x (1 - t / L) +
+        (t / L ^ 2) *
+          (sourceAtomRealEnergySecondDerivative K x (1 - t / L) * c)
+    have hcoord (t : ℝ) :
+        HasDerivAt (fun s : ℝ => 1 - s / L) c t := by
+      dsimp [c]
+      simpa only [zero_sub] using
+        (hasDerivAt_const t (1 : ℝ)).sub
+          ((hasDerivAt_id t).div_const L)
+    have hderiv :
+        deriv (productionFirstDerivativePhysicalRaw L K z) = d := by
+      funext t
+      have hs :=
+        (hasDerivAt_sourceAtomRealEnergyDerivative_transport K x (1 - t / L)).comp
+          t (hcoord t)
+      have hp := ((hasDerivAt_id t).div_const (L ^ 2)).mul hs
+      simpa [productionFirstDerivativePhysicalRaw, d, x, c,
+        mul_comm, mul_left_comm, mul_assoc] using hp.deriv
+    have hs1 :=
+      (hasDerivAt_sourceAtomRealEnergyDerivative_transport K x 0).comp
+        L (hcoord L)
+    have hs2 :=
+      (hasDerivAt_sourceAtomRealEnergySecondDerivative_from_contDiff K x 0).comp
+        L (hcoord L)
+    have hterm1 := hs1.const_mul (1 / L ^ 2)
+    have hterm2 :=
+      ((hasDerivAt_id L).div_const (L ^ 2)).mul (hs2.mul_const c)
+    have hd := hterm1.add hterm2
+    have hd0 : HasDerivAt d 0 L := by
+      simpa [d, x, c, hcoordL, hj.1, hj.2.1,
+        mul_comm, mul_left_comm, mul_assoc] using hd
+    rw [hderiv]
+    exact hd0.deriv
 
 /-- First weighted derivative global test. -/
 def productionFirstDerivativeGlobalTest
