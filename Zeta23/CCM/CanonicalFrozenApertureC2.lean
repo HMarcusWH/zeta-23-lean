@@ -413,7 +413,8 @@ private theorem sourceFirstJetMatrix_zero_energy_of_boundaryFlat
       ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x)
       (sum_eq_zero_of_boundaryFlat hflat)
   have hamb :
-      Matrix.toEuclideanLin (sourceFirstJetMatrix K 0) x = 0 := by
+      Matrix.toEuclideanLin (n := Fin (2 * K + 1)) (𝕜 := ℂ)
+        (sourceFirstJetMatrix K 0) x = 0 := by
     apply (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ).injective
     simpa using hmul
   rw [hamb]
@@ -427,7 +428,7 @@ private theorem primeSourceMatrixFirstApertureJet_log_energy_zero
     matrixRealEnergy
       (primeSourceMatrixFirstApertureJet q (Real.log q) K) x = 0 := by
   have hcoord := primeSourceCoordinate_log_self q hq
-  rw [primeSourceMatrixFirstApertureJet, hcoord]
+  rw [primeSourceMatrixFirstApertureJet, hcoord, Complex.real_smul]
   rw [matrixRealEnergy_smul_real,
     sourceFirstJetMatrix_zero_energy_of_boundaryFlat K x hflat]
   ring
@@ -441,7 +442,7 @@ private theorem primeSourceMatrixSecondApertureJet_log_energy_zero
       (primeSourceMatrixSecondApertureJet q (Real.log q) K) x = 0 := by
   have hcoord := primeSourceCoordinate_log_self q hq
   rw [primeSourceMatrixSecondApertureJet, hcoord, sourceSecondJetMatrix_zero,
-    matrixRealEnergy_add, matrixRealEnergy_smul_real,
+    Complex.real_smul, matrixRealEnergy_add, matrixRealEnergy_smul_real,
     matrixRealEnergy_smul_real,
     sourceFirstJetMatrix_zero_energy_of_boundaryFlat K x hflat]
   simp
@@ -1030,7 +1031,7 @@ theorem continuousAt_productionParitySecondJetCLM_pos
           frozenParityCompressedSecondCLM Q p K L := by
       simp [productionParitySecondJetCLM, Q]
     exact (continuousAt_frozenParityCompressedSecondCLM_pos Q p K hL)
-      |>.congr_of_eventuallyEq hevent hval
+      |>.congr_of_eventuallyEq hevent
 
 
 end Zeta23.CCM
