@@ -92,6 +92,27 @@ RESEARCH / CONTROL FIREWALL
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#282 / PR #283 next lead — exclude exact stationary saturation
+
+PR #283 now implements the planned contact calculus as a candidate. The useful question therefore moves downstream. In the stationary strict-even branch, the candidate theorem chain forces
+
+[
+mathcal A_{L_*}[R_{L_*,z,w}]
+=
+rac{(2pi)^2}{L_*^2}mathcal Q(L_*,z),
+qquad
+mathcal Q(L_*,z)>0,
+]
+
+with (w) the unique perpendicular actual response. Re-proving the derivative calculus in another coordinate system would not add information.
+
+**LEAD — contact-conditioned arithmetic exclusion.** Search for an independently theoremizable property of the exact generated contact/remainder forcing the two sides above to differ. Useful candidates must spend canonical pole/archimedean/von-Mangoldt, prime-seam, source-moment, or generated-contact information that is absent from generic Hermitian crossing controls.
+
+**FALSIFICATION RULE.** Any proposed inequality or rigidity law should first be attacked on the matched frozen/reoptimized channel ablations, zero-von-Mangoldt seams, generic touch/crossing controls, and the exact frozen selected panel. A law that merely restates zero curvature or the saturation equality is circular and is not a new lead.
+
+**BRANCH RULE.** Strict-even stationary progress does not close tie or odd-selected branches. Those remain separate obligations. RH remains OPEN.
+
+
 ## Post-#281 / PR #282 generated-contact leads
 
 The new measurement lane is designed to attack the obstruction space rather than fit RH: every integer cutoff cell Q=1..64 and K=2..6 is scanned; selection is frozen before confirmatory Arb replay; current-Q effects are measured both at a frozen state and after reoptimization; generic transverse, stationary-cubic, quartic-touch, tie, odd-reflected and smallest-complement controls carry no canonical arithmetic authority.
