@@ -1,6 +1,7 @@
 import Zeta23.CCM.ProductionWeightedTestCalculus
 import Zeta23.CCM.QuadraticNormalSourceJets
 import Zeta23.CCM.CanonicalSourceEnergyJets
+import Zeta23.CCM.CanonicalCompressedSeamJets
 import Mathlib.Analysis.Calculus.ContDiff.Deriv
 
 noncomputable section
@@ -690,8 +691,292 @@ theorem productionFirstDerivativeTest_authority
   -- Only values on [0,L] and positive prime logs are sampled.
   simpa [productionFirstDerivativePhysicalTest, productionPhysicalClamp] using hg
 
+
+/-! ## Second and mixed weighted derivative lifts -/
+
+/-- Boundary-flat source energy has zero second through fourth source jets at
+the entering endpoint.  This packages exactly the endpoint information used by
+the t²-weighted second variation. -/
+theorem sourceAtomRealEnergy_second_through_four_zero
+    (K : ℕ) (z : euclideanEvenBoundaryFlatSubspace K) :
+    sourceAtomRealEnergySecondDerivative K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1))) 0 = 0 ∧
+      deriv (sourceAtomRealEnergySecondDerivative K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))) 0 = 0 ∧
+      deriv (deriv (sourceAtomRealEnergySecondDerivative K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1))))) 0 = 0 := by
+  have hflat := evenBoundaryFlatRawCoefficients_boundaryFlat K z
+  have hj :=
+    sourceAtomRealEnergy_boundaryFlat_jets_through_six K
+      (z : EuclideanSpace ℂ (Fin (2 * K + 1))) hflat
+  have h2 : iteratedDeriv 2
+      (sourceAtomRealEnergy K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))) 0 = 0 := hj 2 (by omega) (by omega)
+  have h3 : iteratedDeriv 3
+      (sourceAtomRealEnergy K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))) 0 = 0 := hj 3 (by omega) (by omega)
+  have h4 : iteratedDeriv 4
+      (sourceAtomRealEnergy K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))) 0 = 0 := hj 4 (by omega) (by omega)
+  have hsecond :
+      sourceAtomRealEnergySecondDerivative K
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1))) 0 =
+        iteratedDeriv 2
+          (sourceAtomRealEnergy K
+            (z : EuclideanSpace ℂ (Fin (2 * K + 1)))) 0 := by
+    rw [show iteratedDeriv 2
+        (sourceAtomRealEnergy K
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))) =
+      deriv (deriv (sourceAtomRealEnergy K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1))))) by
+        rw [show 2 = 1 + 1 by norm_num, iteratedDeriv_succ,
+          iteratedDeriv_one]]
+    rw [show deriv (sourceAtomRealEnergy K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))) =
+      sourceAtomRealEnergyDerivative K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1))) by
+        funext ω
+        exact (hasDerivAt_sourceAtomRealEnergy_transport K _ ω).deriv]
+    exact (hasDerivAt_sourceAtomRealEnergyDerivative_transport K _ 0).deriv.symm
+  constructor
+  · rw [hsecond, h2]
+  constructor
+  · rw [← h3]
+    simp only [show 3 = 2 + 1 by norm_num, iteratedDeriv_succ]
+    rw [← hsecond]
+  · rw [← h4]
+    simp only [show 4 = 3 + 1 by norm_num, iteratedDeriv_succ,
+      show 3 = 2 + 1 by norm_num, iteratedDeriv_succ]
+    rw [← hsecond]
+
+theorem productionSecondDerivativePhysicalRaw_liftJets
+    {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (z : euclideanEvenBoundaryFlatSubspace K) :
+    ProductionEvenCompactLiftJets L
+      (productionSecondDerivativePhysicalRaw L K z) := by
+  have hj := sourceAtomRealEnergy_second_through_four_zero K z
+  refine ⟨contDiff_two_productionSecondDerivativePhysicalRaw hL K z,
+    ?_, ?_, ?_, ?_, ?_⟩
+  · simp [productionSecondDerivativePhysicalRaw]
+  · simp [productionSecondDerivativePhysicalRaw]
+  · simp [productionSecondDerivativePhysicalRaw, hj.1]
+  · have hinner :
+        HasDerivAt
+          (fun t : ℝ =>
+            sourceAtomRealEnergySecondDerivative K
+              (z : EuclideanSpace ℂ (Fin (2 * K + 1))) (1 - t / L))
+          (-(1 / L) *
+            deriv (sourceAtomRealEnergySecondDerivative K
+              (z : EuclideanSpace ℂ (Fin (2 * K + 1)))) 0) L := by
+      have hcoord :
+          HasDerivAt (fun t : ℝ => 1 - t / L) (-(1 / L)) L := by
+        convert (hasDerivAt_const L (1 : ℝ)).sub
+          ((hasDerivAt_id L).div_const L) using 1 <;> field_simp [hL.ne'] <;> ring
+      exact
+        ((contDiff_two_sourceAtomRealEnergySecondDerivative K
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))).differentiableAt.hasDerivAt).comp L hcoord
+    have hp :=
+      ((hasDerivAt_id L).pow 2).div_const (L ^ 4) |>.mul hinner
+    simpa [productionSecondDerivativePhysicalRaw, hj.1, hj.2.1] using hp.deriv
+  · have hC2 := contDiff_two_productionSecondDerivativePhysicalRaw hL K z
+    have hsecond := hC2.deriv_contDiffAt.differentiableAt.hasDerivAt
+    have hzero :
+        deriv (productionSecondDerivativePhysicalRaw L K z) L = 0 := by
+      have hinner :
+          HasDerivAt
+            (fun t : ℝ =>
+              sourceAtomRealEnergySecondDerivative K
+                (z : EuclideanSpace ℂ (Fin (2 * K + 1))) (1 - t / L))
+            (-(1 / L) *
+              deriv (sourceAtomRealEnergySecondDerivative K
+                (z : EuclideanSpace ℂ (Fin (2 * K + 1)))) 0) L := by
+        have hcoord :
+            HasDerivAt (fun t : ℝ => 1 - t / L) (-(1 / L)) L := by
+          convert (hasDerivAt_const L (1 : ℝ)).sub
+            ((hasDerivAt_id L).div_const L) using 1 <;> field_simp [hL.ne'] <;> ring
+        exact
+          ((contDiff_two_sourceAtomRealEnergySecondDerivative K
+            (z : EuclideanSpace ℂ (Fin (2 * K + 1)))).differentiableAt.hasDerivAt).comp L hcoord
+      have hp :=
+        ((hasDerivAt_id L).pow 2).div_const (L ^ 4) |>.mul hinner
+      simpa [productionSecondDerivativePhysicalRaw, hj.1, hj.2.1] using hp.deriv
+    rw [hzero] at hsecond
+    have hthird := hj.2.2
+    simpa [productionSecondDerivativePhysicalRaw, hj.1, hj.2.1, hthird] using hsecond.deriv
+
+def productionSecondDerivativeGlobalTest
+    (L : ℝ) (K : ℕ) (z : euclideanEvenBoundaryFlatSubspace K) : ℝ → ℂ :=
+  productionEvenCompactLift L (productionSecondDerivativePhysicalRaw L K z)
+
+theorem productionSecondDerivativeGlobalLift
+    {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (z : euclideanEvenBoundaryFlatSubspace K) :
+    ProductionWeightedGlobalLift L
+      (productionSecondDerivativeGlobalTest L K z)
+      (productionSecondDerivativePhysicalRaw L K z) :=
+  productionEvenCompactLift_toGlobalLift hL
+    (productionSecondDerivativePhysicalRaw_liftJets hL K z)
+
+/-- Mixed source derivative vanishes at both source endpoints when the left
+state has zero coefficient sum. -/
+theorem sourceAtomPairingDerivative_endpoints_zero
+    (K : ℕ)
+    (z w : euclideanEvenBoundaryFlatSubspace K) :
+    sourceAtomPairingDerivative K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+        (w : EuclideanSpace ℂ (Fin (2 * K + 1))) 0 = 0 ∧
+      sourceAtomPairingDerivative K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+        (w : EuclideanSpace ℂ (Fin (2 * K + 1))) 1 = 0 := by
+  have hzsum := evenBoundaryFlat_coordinateSum_zero K z
+  have hwsum := evenBoundaryFlat_coordinateSum_zero K w
+  constructor
+  · unfold sourceAtomPairingDerivative sourceEntryDerivative
+    simp [hzsum, hwsum, sourcePairingCoefficientSum]
+  · unfold sourceAtomPairingDerivative
+    simp_rw [sourceEntryDerivative_one]
+    simp [sourcePairingCoefficientSum, hzsum, hwsum, Finset.mul_sum,
+      Finset.sum_mul]
+
+/-- Third mixed source jet vanishes at the entering endpoint for even
+boundary-flat z,w. -/
+theorem sourceAtomPairingDerivative_secondDerivative_zero
+    (K : ℕ)
+    (z w : euclideanEvenBoundaryFlatSubspace K) :
+    deriv (deriv (sourceAtomPairingDerivative K
+      (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+      (w : EuclideanSpace ℂ (Fin (2 * K + 1))))) 0 = 0 := by
+  have hw0 : sourcePairingCoefficientSum K
+      (w : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0 := by
+    simpa [sourcePairingCoefficientSum, evenBoundaryFlatRawCoefficients] using
+      evenBoundaryFlat_coordinateSum_zero K w
+  have h3 :=
+    iteratedDeriv_three_sourceAtomPairing_eq_moments_of_right_sum_zero
+      K (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+        (w : EuclideanSpace ℂ (Fin (2 * K + 1))) hw0
+  have hzflat := evenBoundaryFlatRawCoefficients_boundaryFlat K z
+  have hwflat := evenBoundaryFlatRawCoefficients_boundaryFlat K w
+  have hzeven := evenBoundaryFlatRawCoefficients_mem_even K z
+  have hweven := evenBoundaryFlatRawCoefficients_mem_even K w
+  have hm1z :
+      centeredMoment K 1 (evenBoundaryFlatRawCoefficients K z) = 0 := hzflat.2.1
+  have hm1w :
+      centeredMoment K 1 (evenBoundaryFlatRawCoefficients K w) = 0 := hwflat.2.1
+  have hm0z :
+      centeredMoment K 0 (evenBoundaryFlatRawCoefficients K z) = 0 := hzflat.1
+  have hm0w :
+      centeredMoment K 0 (evenBoundaryFlatRawCoefficients K w) = 0 := hwflat.1
+  have hz3 :
+      iteratedDeriv 3
+        (sourceAtomPairing K
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (w : EuclideanSpace ℂ (Fin (2 * K + 1)))) 0 = 0 := by
+    rw [h3]
+    simp [hm0z, hm0w, hm1z, hm1w]
+  rw [← hz3]
+  simp [iteratedDeriv_succ', sourceAtomPairingDerivative]
+
+theorem productionMixedDerivativePhysicalRaw_liftJets
+    {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (z w : euclideanEvenBoundaryFlatSubspace K) :
+    ProductionEvenCompactLiftJets L
+      (productionMixedDerivativePhysicalRaw L K z w) := by
+  have hend := sourceAtomPairingDerivative_endpoints_zero K z w
+  refine ⟨contDiff_two_productionMixedDerivativePhysicalRaw hL K z w,
+    ?_, ?_, ?_, ?_, ?_⟩
+  · simp [productionMixedDerivativePhysicalRaw]
+  · simp [productionMixedDerivativePhysicalRaw, hend.2]
+  · simp [productionMixedDerivativePhysicalRaw, hend.1]
+  · have hpair2 :
+        deriv (sourceAtomPairingDerivative K
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (w : EuclideanSpace ℂ (Fin (2 * K + 1)))) 0 = 0 := by
+      have hsumz : sourcePairingCoefficientSum K
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0 := by
+        simpa [sourcePairingCoefficientSum, evenBoundaryFlatRawCoefficients] using
+          evenBoundaryFlat_coordinateSum_zero K z
+      have hsumw : sourcePairingCoefficientSum K
+          (w : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0 := by
+        simpa [sourcePairingCoefficientSum, evenBoundaryFlatRawCoefficients] using
+          evenBoundaryFlat_coordinateSum_zero K w
+      have hh :=
+        sourceAtomPairingSecondDerivative_eq_indexActions K
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (w : EuclideanSpace ℂ (Fin (2 * K + 1))) 0 hsumz hsumw
+      simpa [sourceAtomPairingDerivative] using hh
+    simp [productionMixedDerivativePhysicalRaw, hend.1, hpair2]
+  · have h3 := sourceAtomPairingDerivative_secondDerivative_zero K z w
+    simp [productionMixedDerivativePhysicalRaw, hend.1, h3]
+
+def productionMixedDerivativeGlobalTest
+    (L : ℝ) (K : ℕ)
+    (z w : euclideanEvenBoundaryFlatSubspace K) : ℝ → ℂ :=
+  productionEvenCompactLift L (productionMixedDerivativePhysicalRaw L K z w)
+
+theorem productionMixedDerivativeGlobalLift
+    {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (z w : euclideanEvenBoundaryFlatSubspace K) :
+    ProductionWeightedGlobalLift L
+      (productionMixedDerivativeGlobalTest L K z w)
+      (productionMixedDerivativePhysicalRaw L K z w) :=
+  productionEvenCompactLift_toGlobalLift hL
+    (productionMixedDerivativePhysicalRaw_liftJets hL K z w)
+
+theorem productionSecondDerivativeTest_authority
+    {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (z : euclideanEvenBoundaryFlatSubspace K) :
+    (1 / 2 : ℂ) * Zeta23.EF.literatureRHS
+        (productionSecondDerivativeGlobalTest L K z) =
+      productionArithmeticComplexValue L
+        (fun t => (productionSecondDerivativePhysicalTest L K z t : ℂ)) := by
+  have hg := (productionSecondDerivativeGlobalLift hL K z).physical_authority hL
+  simpa [productionSecondDerivativePhysicalTest, productionPhysicalClamp,
+    productionArithmeticComplexValue, dictionaryCompletePhysicalRHS] using hg
+
+theorem productionMixedDerivativeTest_authority
+    {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (z w : euclideanEvenBoundaryFlatSubspace K) :
+    (1 / 2 : ℂ) * Zeta23.EF.literatureRHS
+        (productionMixedDerivativeGlobalTest L K z w) =
+      productionArithmeticComplexValue L
+        (fun t => (productionMixedDerivativePhysicalTest L K z w t : ℂ)) := by
+  have hg := (productionMixedDerivativeGlobalLift hL K z w).physical_authority hL
+  simpa [productionMixedDerivativePhysicalTest, productionPhysicalClamp,
+    productionArithmeticComplexValue, dictionaryCompletePhysicalRHS] using hg
+
+/-- Full F02 packages for the actual derivative tests. -/
+theorem productionDerivativeWeightedTests_admissible
+    {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (z w : euclideanEvenBoundaryFlatSubspace K) :
+    ProductionWeightedTestAdmissible L
+        (productionFirstDerivativeGlobalTest L K z)
+        (productionFirstDerivativePhysicalTest L K z) ∧
+      ProductionWeightedTestAdmissible L
+        (productionSecondDerivativeGlobalTest L K z)
+        (productionSecondDerivativePhysicalTest L K z) ∧
+      ProductionWeightedTestAdmissible L
+        (productionMixedDerivativeGlobalTest L K z w)
+        (productionMixedDerivativePhysicalTest L K z w) := by
+  have hp := production_derivative_tests_admissible hL K z w
+  refine ⟨?_, ?_, ?_⟩
+  · refine ⟨(productionFirstDerivativeGlobalLift hL K z).contDiff_two,
+      (productionFirstDerivativeGlobalLift hL K z).compact_support,
+      hp.1, ?_⟩
+    exact productionFirstDerivativeTest_authority hL K z
+  · refine ⟨(productionSecondDerivativeGlobalLift hL K z).contDiff_two,
+      (productionSecondDerivativeGlobalLift hL K z).compact_support,
+      hp.2.1, ?_⟩
+    exact productionSecondDerivativeTest_authority hL K z
+  · refine ⟨(productionMixedDerivativeGlobalLift hL K z w).contDiff_two,
+      (productionMixedDerivativeGlobalLift hL K z w).compact_support,
+      hp.2.2, ?_⟩
+    exact productionMixedDerivativeTest_authority hL K z w
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.productionEvenCompactLift_toGlobalLift
 #print axioms Zeta23.CCM.productionFirstDerivativeGlobalLift
 #print axioms Zeta23.CCM.productionFirstDerivativeTest_authority
+#print axioms Zeta23.CCM.productionSecondDerivativeTest_authority
+#print axioms Zeta23.CCM.productionMixedDerivativeTest_authority
+#print axioms Zeta23.CCM.productionDerivativeWeightedTests_admissible
