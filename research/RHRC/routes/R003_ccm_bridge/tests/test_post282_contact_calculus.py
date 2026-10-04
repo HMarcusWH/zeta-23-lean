@@ -11,6 +11,7 @@ sys.path.insert(0,str(RHRC/"closure_batch"))
 from interval_codec import DyadicInterval,IntervalCodecError
 import post282_contact_calculus as campaign
 import canonical_contact_balance_arb as balance
+import check_post282_contact_calculus_contract as contract
 
 
 class ContactCalculusTests(unittest.TestCase):
@@ -18,6 +19,7 @@ class ContactCalculusTests(unittest.TestCase):
     def setUpClass(cls):
         cls.protocol_path=ROUTE/"fixtures/post282_contact_calculus_v1.json"
         cls.p=json.loads(cls.protocol_path.read_text())
+        cls.out=balance.campaign(cls.p)
 
     def test_protocol(self):
         campaign.validate_protocol(self.p)
@@ -54,15 +56,85 @@ class ContactCalculusTests(unittest.TestCase):
         self.assertIn("qualified",out)
 
     def test_campaign_nonempty(self):
-        out=balance.campaign(self.p)
+        out=self.out
         self.assertEqual(out["schema_version"],"POST282_CONTACT_BALANCE_ARB_v2")
         self.assertTrue(out["seam_controls"])
         self.assertFalse(out["summary"]["theorem_promotion"])
         self.assertEqual(out["summary"]["terminal_claim"],"RH_OPEN")
+        contract.validate_results_dict(out)
 
     def test_ablation_contract_names(self):
         required={(f"DROP_{c}",m) for c in ("POLE","ARCH","PRIME")
                   for m in ("FROZEN_STATE","REOPTIMIZED")}
         self.assertEqual(len(required),6)
+
+
+    def test_protocol_rejects_wrong_tree(self):
+        p=copy.deepcopy(self.p);p["base_tree"]="0"*40
+        with self.assertRaises(SystemExit): campaign.validate_protocol(p)
+
+    def test_protocol_rejects_wrong_artifact_digest(self):
+        p=copy.deepcopy(self.p);p["inherited_artifact"]["zip_sha256"]="0"*64
+        with self.assertRaises(SystemExit): campaign.validate_protocol(p)
+
+    def test_protocol_rejects_duplicate_selected_case(self):
+        p=copy.deepcopy(self.p);p["selected_neighborhoods"][1]=copy.deepcopy(p["selected_neighborhoods"][0])
+        with self.assertRaises(SystemExit): campaign.validate_protocol(p)
+
+    def test_protocol_rejects_inexact_or_reversed_fraction(self):
+        p=copy.deepcopy(self.p);p["selected_neighborhoods"][0]["fraction_left"]=[True,16]
+        with self.assertRaises(SystemExit): campaign.validate_protocol(p)
+        p=copy.deepcopy(self.p);p["selected_neighborhoods"][0]["fraction_left"]=[14,16]
+        p["selected_neighborhoods"][0]["fraction_right"]=[13,16]
+        with self.assertRaises(SystemExit): campaign.validate_protocol(p)
+
+    def test_result_rejects_wrong_source_tree(self):
+        out=copy.deepcopy(self.out);out["source_provenance"]["base_tree"]="0"*40
+        with self.assertRaises(SystemExit): contract.validate_results_dict(out)
+
+    def test_result_rejects_duplicate_selected_replay(self):
+        out=copy.deepcopy(self.out);out["selected_replay"][1]=copy.deepcopy(out["selected_replay"][0])
+        with self.assertRaises(SystemExit): contract.validate_results_dict(out)
+
+    def test_result_rejects_fake_first_boundary(self):
+        out=copy.deepcopy(self.out);out["selected_replay"][0]["first_boundary_claimed"]=True
+        with self.assertRaises(SystemExit): contract.validate_results_dict(out)
+
+    def test_result_rejects_omitted_euler_receipt(self):
+        out=copy.deepcopy(self.out)
+        out["balance_rows"][0]["certification_contract"]["euler_correction_in_balance"]=False
+        with self.assertRaises(SystemExit): contract.validate_results_dict(out)
+
+    def test_result_rejects_unreceipted_inverse(self):
+        out=copy.deepcopy(self.out)
+        row=next((r for r in out["balance_rows"]
+                  if r.get("response",{}).get("status") in {
+                      "CERTIFIED_BORDERED_RESPONSE","CERTIFIED_ZERO_COMPLEMENT_RESPONSE"}),None)
+        if row is None:self.skipTest("no certified response in bounded fixture")
+        row["response"].pop("inverse_certificate",None)
+        with self.assertRaises(SystemExit): contract.validate_results_dict(out)
+
+    def test_result_rejects_incomplete_ablation_family(self):
+        out=copy.deepcopy(self.out)
+        row=next((r for r in out["balance_rows"]
+                  if r.get("response",{}).get("status") in {
+                      "CERTIFIED_BORDERED_RESPONSE","CERTIFIED_ZERO_COMPLEMENT_RESPONSE"}),None)
+        if row is None:self.skipTest("no certified response in bounded fixture")
+        row["matched_ablations"]=row["matched_ablations"][:-1]
+        with self.assertRaises(SystemExit): contract.validate_results_dict(out)
+
+    def test_result_rejects_interval_sign_forgery(self):
+        out=copy.deepcopy(self.out)
+        rec=out["calibration"]["left"]["energy"]
+        rec["sign"]="NEGATIVE" if rec["sign"]!="NEGATIVE" else "POSITIVE"
+        with self.assertRaises(SystemExit): contract.validate_results_dict(out)
+
+    def test_x01_is_eligibility_derived(self):
+        x01=self.out["hypothesis_dispositions"]["X01_INHERITED_RESPONSE_BALANCE"]
+        self.assertIn(x01["status"],{
+            "NO_ELIGIBLE_INHERITED_CONTACT","ELIGIBLE_INHERITED_CONTACTS_EVALUATED"})
+        if x01["status"]=="NO_ELIGIBLE_INHERITED_CONTACT":
+            self.assertEqual(x01["eligible_count"],0)
+            self.assertEqual(len(x01["rejections"]),11)
 
 if __name__=="__main__": unittest.main()
