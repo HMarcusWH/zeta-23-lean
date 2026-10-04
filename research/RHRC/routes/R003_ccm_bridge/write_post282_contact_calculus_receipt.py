@@ -7,11 +7,21 @@ ROOT=ROUTE.parents[3]
 TRACKED=[
 "Zeta23/CCM/CanonicalCompressedSeamJets.lean",
 "Zeta23/CCM/CanonicalFrozenApertureC2.lean",
-"Zeta23/CCM/CanonicalCompressedApertureC2.lean","Zeta23/CCM/ProductionWeightedTestCalculus.lean",
-"Zeta23/CCM/StationarySchurContact.lean","Zeta23/CCM/FirstCrossingInheritedStationarity.lean",
-"Zeta23/RHRC/ContactCalculusContract.lean","Zeta23/CCM/FirstCrossingProductionFirstVariation.lean",
-"Zeta23/CCM/FirstCrossingProductionResponse.lean","Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean",
-"Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean","research/RHRC/closure_batch/interval_codec.py",
+"Zeta23/CCM/CanonicalCompressedApertureC2.lean",
+"Zeta23/CCM/ProductionWeightedTestCalculus.lean",
+"Zeta23/CCM/ProductionWeightedGlobalTests.lean",
+"Zeta23/CCM/ProductionNormalSourceAuthority.lean",
+"Zeta23/CCM/FirstCrossingProductionRemainderAuthority.lean",
+"Zeta23/CCM/ProductionPhysicalFunctionalCongruence.lean",
+"Zeta23/CCM/FirstCrossingProductionRemainderValueAuthority.lean",
+"Zeta23/CCM/StationarySchurContact.lean",
+"Zeta23/CCM/FirstCrossingInheritedStationarity.lean",
+"Zeta23/RHRC/ContactCalculusContract.lean",
+"Zeta23/CCM/FirstCrossingProductionFirstVariation.lean",
+"Zeta23/CCM/FirstCrossingProductionResponse.lean",
+"Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean",
+"Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean",
+"research/RHRC/closure_batch/interval_codec.py",
 "research/RHRC/routes/R003_ccm_bridge/canonical_contact_balance_arb.py",
 "research/RHRC/routes/R003_ccm_bridge/canonical_contact_frontier_arb.py",
 "research/RHRC/routes/R003_ccm_bridge/certify_post281_generated_contact_frontier.py",
@@ -19,7 +29,12 @@ TRACKED=[
 "research/RHRC/routes/R003_ccm_bridge/post247_remainder_budget_ratio_scout.py",
 "research/RHRC/routes/R003_ccm_bridge/post280_saturation_frontier.py",
 "research/RHRC/routes/R003_ccm_bridge/post282_contact_calculus.py",
-"research/RHRC/routes/R003_ccm_bridge/fixtures/post282_contact_calculus_v1.json"]
+"research/RHRC/routes/R003_ccm_bridge/check_post282_contact_calculus_contract.py",
+"research/RHRC/routes/R003_ccm_bridge/tests/test_post282_contact_calculus.py",
+"research/RHRC/routes/R003_ccm_bridge/POST282_CONTACT_CALCULUS_OBLIGATIONS.json",
+"research/RHRC/routes/R003_ccm_bridge/POST282_CONTACT_CALCULUS_BUILD_MANIFEST.json",
+"research/RHRC/routes/R003_ccm_bridge/fixtures/post282_contact_calculus_v1.json",
+".github/workflows/rhrc_post282_contact_calculus.yml"]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def git(*a):return subprocess.check_output(["git",*a],cwd=ROOT,text=True).strip()
 def main()->int:
