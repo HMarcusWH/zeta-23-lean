@@ -890,7 +890,7 @@ theorem hasDerivAt_productionParityFirstJetCLM_pos
         Real.log (Q : ℝ) < Real.log ((Q + 1 : ℕ) : ℝ) :=
       Real.strictMonoOn_log hQposR hnextpos
         (by exact_mod_cast Nat.lt_succ_self Q)
-    rw [hasDerivAt_iff_tendsto_slope_left_right]
+    apply hasDerivAt_iff_tendsto_slope_left_right.2
     constructor
     · have hg :=
         hasDerivAt_frozenParityCompressedFirstCLM_pos
