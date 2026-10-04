@@ -967,8 +967,40 @@ theorem productionSecondDerivativeGlobalLift
   productionEvenCompactLift_toGlobalLift hL
     (productionSecondDerivativePhysicalRaw_liftJets hL K z)
 
-/-- Mixed source derivative vanishes at both source endpoints when the left
-state has zero coefficient sum. -/
+private theorem production_sum_sum_pairing_factor
+    {ι : Type*} [Fintype ι]
+    (u v : ι → ℂ) :
+    (∑ i, ∑ j, star (u i) * v j) =
+      star (∑ i, u i) * (∑ j, v j) := by
+  classical
+  calc
+    (∑ i, ∑ j, star (u i) * v j) =
+        ∑ i, star (u i) * (∑ j, v j) := by
+          apply Finset.sum_congr rfl
+          intro i hi
+          rw [Finset.mul_sum]
+    _ = (∑ i, star (u i)) * (∑ j, v j) := by
+          rw [Finset.sum_mul]
+    _ = star (∑ i, u i) * (∑ j, v j) := by
+          congr 1
+          change
+            (∑ i, (starRingEnd ℂ) (u i)) =
+              (starRingEnd ℂ) (∑ i, u i)
+          rw [map_sum]
+
+private theorem production_sum_sum_real_smul
+    {ι κ : Type*} [Fintype ι] [Fintype κ]
+    (a : ℝ) (f : ι → κ → ℂ) :
+    (∑ i, ∑ j, a • f i j) = a • (∑ i, ∑ j, f i j) := by
+  classical
+  symm
+  rw [Finset.smul_sum]
+  apply Finset.sum_congr rfl
+  intro i hi
+  rw [Finset.smul_sum]
+
+/-- Mixed source derivative vanishes at both source endpoints when both legal
+vectors have zero coefficient sum. -/
 theorem sourceAtomPairingDerivative_endpoints_zero
     (K : ℕ)
     (z w : euclideanEvenBoundaryFlatSubspace K) :
@@ -978,15 +1010,40 @@ theorem sourceAtomPairingDerivative_endpoints_zero
       sourceAtomPairingDerivative K
         (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
         (w : EuclideanSpace ℂ (Fin (2 * K + 1))) 1 = 0 := by
-  have hzsum := evenBoundaryFlat_coordinateSum_zero K z
-  have hwsum := evenBoundaryFlat_coordinateSum_zero K w
-  constructor
-  · unfold sourceAtomPairingDerivative sourceEntryDerivative
-    simp [hzsum, hwsum, sourcePairingCoefficientSum]
-  · unfold sourceAtomPairingDerivative
+  let x : EuclideanSpace ℂ (Fin (2 * K + 1)) := z
+  let y : EuclideanSpace ℂ (Fin (2 * K + 1)) := w
+  have hx0 : sourcePairingCoefficientSum K x = 0 := by
+    simpa [x, sourcePairingCoefficientSum, evenBoundaryFlatRawCoefficients] using
+      evenBoundaryFlat_coordinateSum_zero K z
+  have hy0 : sourcePairingCoefficientSum K y = 0 := by
+    simpa [y, sourcePairingCoefficientSum, evenBoundaryFlatRawCoefficients] using
+      evenBoundaryFlat_coordinateSum_zero K w
+  have endpoint_zero :
+      sourceAtomPairingDerivative K x y 0 =
+        (2 : ℝ) •
+          (star (sourcePairingCoefficientSum K x) *
+            sourcePairingCoefficientSum K y) :=
+    sourceAtomPairingDerivative_zero_eq_two_sum_pairing K x y
+  have endpoint_one :
+      sourceAtomPairingDerivative K x y 1 =
+        (2 : ℝ) •
+          (star (sourcePairingCoefficientSum K x) *
+            sourcePairingCoefficientSum K y) := by
+    let ux := (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x
+    let uy := (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) y
+    unfold sourceAtomPairingDerivative
     simp_rw [sourceEntryDerivative_one]
-    simp [sourcePairingCoefficientSum, hzsum, hwsum, Finset.mul_sum,
-      Finset.sum_mul]
+    calc
+      (∑ i, ∑ j, (2 : ℝ) • (star (ux i) * uy j)) =
+          (2 : ℝ) • (∑ i, ∑ j, star (ux i) * uy j) := by
+            exact production_sum_sum_real_smul 2
+              (fun i j => star (ux i) * uy j)
+      _ = (2 : ℝ) • (star (∑ i, ux i) * (∑ j, uy j)) := by
+            rw [production_sum_sum_pairing_factor]
+      _ = _ := by rfl
+  constructor
+  · simpa [x, y, hx0, hy0] using endpoint_zero
+  · simpa [x, y, hx0, hy0] using endpoint_one
 
 /-- Third mixed source jet vanishes at the entering endpoint for even
 boundary-flat z,w. -/
