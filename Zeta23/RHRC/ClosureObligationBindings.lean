@@ -19,6 +19,11 @@ open Zeta23.ExceptionalZero
 
 Only actual Lean applications appear here. OPEN graph obligations have no Lean
 axiom or placeholder declaration.
+
+Post-#282 candidate supporting claims are deliberately not added as terminal
+closure adapters here.  They are audited through ClaimBindings and
+RegisteredClaimBindings while remaining OPEN pending exact-head validation.
+OBS-060O, odd/tie closure, and RH therefore remain unbound in this module.
 -/
 
 theorem rh_of_canonicalFiniteWeilPositivity
