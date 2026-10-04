@@ -7,6 +7,7 @@ import Mathlib.Analysis.Calculus.ContDiff.Deriv
 import Mathlib.Analysis.Complex.RealDeriv
 import Mathlib.Analysis.Matrix.Normed
 import Mathlib.Analysis.SpecialFunctions.Log.Deriv
+import Mathlib.Analysis.Complex.Basic
 
 noncomputable section
 
@@ -15,7 +16,7 @@ set_option backward.isDefEq.respectTransparency false
 namespace Zeta23.CCM
 
 open Complex Matrix Set Filter
-open scoped Topology BigOperators ComplexConjugate
+open scoped Topology BigOperators ComplexConjugate ArithmeticFunction
 
 /-!
 # Post-#282 frozen production aperture calculus
@@ -351,7 +352,10 @@ theorem frozenCanonicalSourceFirstMatrix_eq_pred_sub_enteringFirst
   let w : ℝ := Λ q / Real.sqrt q
   have hqD := hasDerivAt_frozenCanonicalSourceMatrix_pos q K hL
   have hpD := hasDerivAt_frozenCanonicalSourceMatrix_pos (q - 1) K hL
-  have heD :=
+  have heD :
+      HasDerivAt
+        (fun s : ℝ => w • sourceMatrix (primeSourceCoordinate q s) K)
+        (w • primeSourceMatrixFirstApertureJet q L K) L :=
     (hasDerivAt_sourceMatrix_primeSourceCoordinate q K hL.ne').const_smul w
   have heq :
       (fun s : ℝ => frozenCanonicalSourceMatrix q s K) =ᶠ[𝓝 L]
@@ -377,7 +381,10 @@ theorem frozenCanonicalSourceSecondMatrix_eq_pred_sub_enteringSecond
   let w : ℝ := Λ q / Real.sqrt q
   have hqD := hasDerivAt_frozenCanonicalSourceFirstMatrix_pos q K hL
   have hpD := hasDerivAt_frozenCanonicalSourceFirstMatrix_pos (q - 1) K hL
-  have heD :=
+  have heD :
+      HasDerivAt
+        (fun s : ℝ => w • primeSourceMatrixFirstApertureJet q s K)
+        (w • primeSourceMatrixSecondApertureJet q L K) L :=
     (hasDerivAt_primeSourceMatrixFirstApertureJet q K hL.ne').const_smul w
   have heq :
       (fun s : ℝ => frozenCanonicalSourceFirstMatrix q s K) =ᶠ[𝓝 L]
@@ -531,13 +538,13 @@ theorem parityCompressionCLM_primeFirst_log_eq_zero
   ext x
   change
     (euclideanParityBoundaryFlatSubspace p K).orthogonalProjectionOnto
-      (Matrix.toEuclideanCLM
+      (Matrix.toEuclideanCLM (n := Fin (2 * K + 1)) (𝕜 := ℂ)
         (primeSourceMatrixFirstApertureJet q (Real.log q) K)
         (x : EuclideanSpace ℂ (Fin (2 * K + 1)))) = 0
   have hmul :=
     primeSourceMatrixFirstApertureJet_log_mulVec_zero q K hq p x
   have hamb :
-      Matrix.toEuclideanCLM
+      Matrix.toEuclideanCLM (n := Fin (2 * K + 1)) (𝕜 := ℂ)
         (primeSourceMatrixFirstApertureJet q (Real.log q) K)
         (x : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0 := by
     apply (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ).injective
@@ -552,13 +559,13 @@ theorem parityCompressionCLM_primeSecond_log_eq_zero
   ext x
   change
     (euclideanParityBoundaryFlatSubspace p K).orthogonalProjectionOnto
-      (Matrix.toEuclideanCLM
+      (Matrix.toEuclideanCLM (n := Fin (2 * K + 1)) (𝕜 := ℂ)
         (primeSourceMatrixSecondApertureJet q (Real.log q) K)
         (x : EuclideanSpace ℂ (Fin (2 * K + 1)))) = 0
   have hmul :=
     primeSourceMatrixSecondApertureJet_log_mulVec_zero q K hq p x
   have hamb :
-      Matrix.toEuclideanCLM
+      Matrix.toEuclideanCLM (n := Fin (2 * K + 1)) (𝕜 := ℂ)
         (primeSourceMatrixSecondApertureJet q (Real.log q) K)
         (x : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0 := by
     apply (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ).injective
@@ -627,7 +634,8 @@ theorem continuousAt_frozenParityCompressedSecondCLM_pos
       ContinuousAt (parityCompressionCLM p K)
         (frozenCanonicalSourceSecondMatrix Q L K) :=
     (parityCompressionCLM p K).continuous.continuousAt
-  simpa [frozenParityCompressedSecondCLM] using hT.comp L hM
+  simpa [frozenParityCompressedSecondCLM] using
+    ContinuousAt.comp hT hM
 
 
 /-! ## Global compressed production jets -/
