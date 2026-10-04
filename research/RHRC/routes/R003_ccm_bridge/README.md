@@ -536,3 +536,20 @@ Pair B remains the independent fallback. R001 scalar prime-upper and universal t
 ## Post-#282 contact-calculus implementation
 
 PR #283 introduces a versioned compressed-first production-calculus lane. New candidate modules are `CanonicalCompressedApertureC2`, `ProductionWeightedTestCalculus`, `StationarySchurContact`, `FirstCrossingInheritedStationarity`, and `RHRC.ContactCalculusContract`. Research qualification lives in `post282_contact_calculus.py` / `canonical_contact_balance_arb.py` with exact dyadic interval serialization. Until exact CI passes these are candidates, not theorem authority. OBS-060O, odd/tie closure, and RH remain OPEN.
+
+## Post-#282 candidate claim bindings
+
+The four post-#282 supporting theorem families now have collision-checked
+registry IDs and fail-closed OPEN candidate bindings:
+
+- `R003_COMPRESSED_PRODUCTION_C2`;
+- `R003_WEIGHTED_PRODUCTION_PAIR_BALANCE`;
+- `R003_INHERITED_FIRST_VARIATION_RESTRICTION`;
+- `R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER`.
+
+Their exact Lean declarations are audited in both `ClaimBindings.lean` and
+`RegisteredClaimBindings.lean`, and both JSON binding manifests carry
+`OPEN_PENDING_CI` candidate rows.  This is integration/audit coverage, not
+theorem promotion.  Exact-head validation is required before any status becomes
+`PROVED_UNCONDITIONAL`.  OBS-060O, odd/tie closure, and RH remain OPEN.
+
