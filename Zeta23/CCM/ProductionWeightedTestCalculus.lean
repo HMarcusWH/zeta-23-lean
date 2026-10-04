@@ -116,12 +116,9 @@ theorem intervalIntegrable_dictionaryMixedTest_mul_archDensity_of_zero
   constructor
   · exact hpos.mono_set (by
       intro t ht
-      rw [uIoc_of_le hL.le] at ht
       exact ht.1)
-  · exact hpos.mono_set (by
-      intro t ht
-      rw [uIoc_of_le hL.le] at ht
-      exact ht.1)
+  · rw [Ioc_eq_empty hL.le]
+    exact integrableOn_empty
 
 /-- The pole density of a mixed dictionary test is interval-integrable on the
 physical aperture. -/
@@ -133,9 +130,16 @@ theorem intervalIntegrable_dictionaryMixedTest_mul_pole
         dictionaryMixedTest N x y L t *
           (completeSourcePoleWeight t : ℂ))
       volume 0 L := by
-  exact
-    ((continuous_dictionaryMixedTest N x y hL).mul (by fun_prop))
-      .intervalIntegrable 0 L
+  have hpole :
+      Continuous (fun t : ℝ => (completeSourcePoleWeight t : ℂ)) := by
+    unfold completeSourcePoleWeight
+    fun_prop
+  have hprod :
+      Continuous (fun t : ℝ =>
+        dictionaryMixedTest N x y L t *
+          (completeSourcePoleWeight t : ℂ)) :=
+    (continuous_dictionaryMixedTest N x y hL).mul hpole
+  exact hprod.intervalIntegrable 0 L
 
 /-! ### Smoothness of the source-coordinate derivative channels -/
 
@@ -221,6 +225,12 @@ theorem intervalIntegrable_dictionaryMixedTest_mul_pole
     ContDiff ℝ 2 (sourceAtomPairingDerivative K z w) := by
   unfold sourceAtomPairingDerivative
   fun_prop
+
+/-- Real projection preserves C2 regularity of a complex-valued real family. -/
+@[fun_prop] theorem contDiff_two_complex_re_comp
+    {f : ℝ → ℂ} (hf : ContDiff ℝ 2 f) :
+    ContDiff ℝ 2 (fun t : ℝ => Complex.re (f t)) := by
+  exact Complex.reCLM.contDiff.fun_comp hf
 
 /-! ### Continuity of the source-coordinate derivative channels -/
 
@@ -393,8 +403,19 @@ theorem productionArithmeticRealValue_add_of_admissible
     push_cast
     ring
   rw [hp, ha]
-  simp_rw [Complex.ofReal_add, add_mul]
-  rw [Finset.sum_add_distrib]
+  have hsum :
+      (∑ x ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+        primeSourceWeight x * ((f (Real.log x) + g (Real.log x) : ℝ) : ℂ)) =
+      (∑ x ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+        primeSourceWeight x * (f (Real.log x) : ℂ)) +
+      (∑ x ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+        primeSourceWeight x * (g (Real.log x) : ℂ)) := by
+    rw [← Finset.sum_add_distrib]
+    apply Finset.sum_congr rfl
+    intro x hx
+    push_cast
+    ring
+  rw [hsum]
   ring
 
 /-- Real production evaluation is homogeneous on admitted tests. -/
@@ -406,19 +427,37 @@ theorem productionArithmeticRealValue_smul_of_admissible
   unfold productionArithmeticRealValue productionArithmeticComplexValue
     dictionaryCompletePhysicalRHS
   simp_rw [Complex.ofReal_mul]
-  simp_rw [show ∀ x : ℝ,
-      ((a : ℂ) * (f x : ℂ)) * (completeSourcePoleWeight x : ℂ) =
-        (a : ℂ) * ((f x : ℂ) * (completeSourcePoleWeight x : ℂ)) by
-          intro x; ring]
-  simp_rw [show ∀ x : ℝ,
-      ((a : ℂ) * (f x : ℂ)) * (archDensity x : ℂ) =
-        (a : ℂ) * ((f x : ℂ) * (archDensity x : ℂ)) by
-          intro x; ring]
-  rw [intervalIntegral.integral_const_mul,
-      intervalIntegral.integral_const_mul]
-  simp_rw [← mul_assoc]
-  rw [← Finset.mul_sum]
-  norm_cast
+  have hfp :
+      (∫ x in (0 : ℝ)..L,
+        ((a : ℂ) * (f x : ℂ)) * (completeSourcePoleWeight x : ℂ)) =
+      (a : ℂ) * ∫ x in (0 : ℝ)..L,
+        (f x : ℂ) * (completeSourcePoleWeight x : ℂ) := by
+    simpa [mul_assoc] using
+      (intervalIntegral.integral_const_mul
+        (μ := volume) (a := (0 : ℝ)) (b := L) (a : ℂ)
+        (fun x : ℝ => (f x : ℂ) * (completeSourcePoleWeight x : ℂ))).symm
+  have hfa :
+      (∫ x in (0 : ℝ)..L,
+        ((a : ℂ) * (f x : ℂ)) * (archDensity x : ℂ)) =
+      (a : ℂ) * ∫ x in (0 : ℝ)..L,
+        (f x : ℂ) * (archDensity x : ℂ) := by
+    simpa [mul_assoc] using
+      (intervalIntegral.integral_const_mul
+        (μ := volume) (a := (0 : ℝ)) (b := L) (a : ℂ)
+        (fun x : ℝ => (f x : ℂ) * (archDensity x : ℂ))).symm
+  have hsum :
+      (∑ x ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+        primeSourceWeight x * (a : ℂ) * (f (Real.log x) : ℂ)) =
+      (a : ℂ) *
+        (∑ x ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+          primeSourceWeight x * (f (Real.log x) : ℂ)) := by
+    rw [Finset.mul_sum]
+    apply Finset.sum_congr rfl
+    intro x hx
+    ring
+  rw [hfp, hfa, hsum]
+  simp only [Complex.sub_re, Complex.mul_re, Complex.ofReal_re,
+    Complex.ofReal_im, zero_mul, sub_zero]
   ring
 
 
@@ -509,8 +548,9 @@ theorem ProductionWeightedGlobalLift.half_pole_eq_physical
     intro t ht
     rw [uIcc_of_le hL.le] at ht
     have htIcc : t ∈ Icc (0 : ℝ) L := ht
+    dsimp [G]
     rw [show g t = (f t : ℂ) from h.agrees_positive t htIcc]
-    dsimp [G, completeSourcePoleWeight]
+    dsimp [completeSourcePoleWeight]
     rw [abs_of_nonneg ht.1]
     push_cast
     ring
@@ -530,34 +570,33 @@ theorem ProductionWeightedGlobalLift.half_prime_eq_physical
   have htsupp : tsupport g ⊆ Icc (-L) L :=
     closure_minimal h.support_subset isClosed_Icc
   rw [dictionaryPrimeRHS_eq_finset htsupp]
-  have hsamples :
-      ∀ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
-        g (Real.log q) = (f (Real.log q) : ℂ) := by
-    intro q hq
-    have hqpos : (0 : ℝ) < (q : ℝ) := by
-      exact_mod_cast (lt_of_lt_of_le (by norm_num : 0 < 2) hq.1)
-    have hqfloorR : (q : ℝ) ≤ (⌊Real.exp L⌋₊ : ℝ) := by
-      exact_mod_cast hq.2
-    have hfloorExp : (⌊Real.exp L⌋₊ : ℝ) ≤ Real.exp L := by
-      exact_mod_cast Nat.floor_le (Real.exp_pos L).le
-    have hqexp : (q : ℝ) ≤ Real.exp L :=
-      le_trans hqfloorR hfloorExp
-    have hlog0 : 0 ≤ Real.log (q : ℝ) :=
-      (Real.log_nonneg (by exact_mod_cast hq.1)).2
-    have hlogL : Real.log (q : ℝ) ≤ L := by
-      have hh := Real.strictMonoOn_log.monotoneOn hqpos (Real.exp_pos L) hqexp
-      simpa using hh
-    exact h.agrees_positive (Real.log q) ⟨hlog0, hlogL⟩
-  simp_rw [h.even, hsamples]
   have hsum :
       (∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
         ((Λ q / Real.sqrt q : ℝ) : ℂ) *
-          ((f (Real.log q) : ℂ) + (f (Real.log q) : ℂ))) =
+          (g (Real.log q) + g (-Real.log q))) =
       2 * (∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
         primeSourceWeight q * (f (Real.log q) : ℂ)) := by
     rw [Finset.mul_sum]
     apply Finset.sum_congr rfl
     intro q hq
+    have hqmem := Finset.mem_Icc.mp hq
+    have hqpos : (0 : ℝ) < (q : ℝ) := by
+      exact_mod_cast (lt_of_lt_of_le (by norm_num : 0 < 2) hqmem.1)
+    have hqexp : (q : ℝ) ≤ Real.exp L :=
+      (Nat.le_floor_iff (Real.exp_pos L).le).mp hqmem.2
+    have hlog0 : 0 ≤ Real.log (q : ℝ) :=
+      Real.log_natCast_nonneg q
+    have hlogL : Real.log (q : ℝ) ≤ L := by
+      rw [← Real.log_exp L]
+      exact Real.log_le_log hqpos hqexp
+    have hpos :
+        g (Real.log q) = (f (Real.log q) : ℂ) :=
+      h.agrees_positive (Real.log q) ⟨hlog0, hlogL⟩
+    have hneg :
+        g (-Real.log q) = (f (Real.log q) : ℂ) := by
+      rw [h.even]
+      exact hpos
+    rw [hpos, hneg]
     unfold primeSourceWeight
     ring
   rw [hsum]
@@ -595,25 +634,22 @@ theorem ProductionWeightedGlobalLift.half_arch_eq_physical
           ((Zeta23.mu τ - Zeta23.mu 0 : ℝ) : ℂ)) := by
     refine (hmuAll.sub hmu0).congr (Filter.Eventually.of_forall fun τ => ?_)
     push_cast
-    ring
+    ring_nf
   have harch :=
     dictionaryArchRHS_eq_neg_two_mul_archDensity_integral_of_zero
       hg hgi hF h.even hmuSub h.zero
   rw [harch]
   let A : ℝ → ℂ := fun t => g t * (archDensity t : ℂ)
-  have hrestrict :
+  have hrestrictIoc :
       (∫ t : ℝ in Ioi 0, A t) =
-        ∫ t : ℝ in Icc 0 L, A t := by
-    rw [integral_Ici_eq_integral_Ioi]
+        ∫ t : ℝ in Ioc 0 L, A t := by
     apply setIntegral_eq_of_subset_of_forall_sdiff_eq_zero
-      measurableSet_Ici Icc_subset_Ici_self
+      measurableSet_Ioi Ioc_subset_Ioi_self
     intro t ht
-    have ht0 : 0 ≤ t := ht.1
+    have ht0 : 0 < t := ht.1
     have htL : L < t := by
-      have hn : ¬ t ≤ L := by
-        intro htle
-        exact ht.2 ⟨ht0, htle⟩
-      exact lt_of_not_ge hn
+      by_contra hn
+      exact ht.2 ⟨ht0, le_of_not_gt hn⟩
     have hnot : t ∉ Icc (-L) L := by
       intro hmem
       linarith
@@ -621,6 +657,11 @@ theorem ProductionWeightedGlobalLift.half_arch_eq_physical
       by_contra hne
       exact hnot (h.support_subset hne)
     simp [A, hgz]
+  have hrestrict :
+      (∫ t : ℝ in Ioi 0, A t) =
+        ∫ t : ℝ in Icc 0 L, A t := by
+    rw [integral_Icc_eq_integral_Ioc]
+    exact hrestrictIoc
   rw [hrestrict]
   rw [integral_Icc_eq_integral_Ioc]
   rw [← intervalIntegral.integral_of_le hL.le]
@@ -631,8 +672,8 @@ theorem ProductionWeightedGlobalLift.half_arch_eq_physical
     apply intervalIntegral.integral_congr
     intro t ht
     rw [uIcc_of_le hL.le] at ht
+    dsimp [A]
     rw [show g t = (f t : ℂ) from h.agrees_positive t ht]
-    rfl
   rw [hpos]
   ring
 
@@ -650,7 +691,8 @@ theorem ProductionWeightedGlobalLift.physical_authority
   rw [h.half_pole_eq_physical hL,
       h.half_prime_eq_physical hL,
       h.half_arch_eq_physical hL]
-  rfl
+  unfold productionArithmeticComplexValue dictionaryCompletePhysicalRHS
+  ring
 
 /-- Unclamped first source derivative on the physical half-line. -/
 def productionFirstDerivativePhysicalRaw
@@ -704,8 +746,22 @@ theorem contDiff_two_productionMixedDerivativePhysicalRaw
     {L : ℝ} (hL : L ≠ 0) (K : ℕ)
     (z w : euclideanEvenBoundaryFlatSubspace K) :
     ContDiff ℝ 2 (productionMixedDerivativePhysicalRaw L K z w) := by
+  let p : ℝ → ℂ := fun t =>
+    sourceAtomPairingDerivative K
+      (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+      (w : EuclideanSpace ℂ (Fin (2 * K + 1)))
+      (1 - t / L)
+  have hp : ContDiff ℝ 2 p := by
+    dsimp [p]
+    exact (contDiff_two_sourceAtomPairingDerivative K
+      (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+      (w : EuclideanSpace ℂ (Fin (2 * K + 1)))).fun_comp
+        (by fun_prop (disch := exact hL))
+  have hre : ContDiff ℝ 2 (fun t : ℝ => Complex.re (p t)) :=
+    contDiff_two_complex_re_comp hp
   unfold productionMixedDerivativePhysicalRaw
-  fun_prop
+  change ContDiff ℝ 2 (fun t : ℝ => t / L ^ 2 * Complex.re (p t))
+  exact (by fun_prop (disch := exact hL))
 
 /-- Physical first-variation test with honest support. -/
 def productionFirstDerivativePhysicalTest
@@ -770,8 +826,7 @@ private theorem first_arch_eq_regularized
     productionFirstDerivativePhysicalRaw,
     productionFirstDerivativeArchRegularized,
     regularizedArchScale_eq_mul_archDensity ht0]
-  field_simp [hL.ne']
-  ring
+  field_simp [hL.ne'] <;> ring
 
 private theorem second_arch_eq_regularized
     {L t : ℝ} (hL : 0 < L) (ht0 : t ≠ 0) (htL : t ∈ Icc (0 : ℝ) L)
@@ -783,8 +838,7 @@ private theorem second_arch_eq_regularized
     productionSecondDerivativePhysicalRaw,
     productionSecondDerivativeArchRegularized,
     regularizedArchScale_eq_mul_archDensity ht0]
-  field_simp [hL.ne']
-  ring
+  field_simp [hL.ne'] <;> ring
 
 private theorem mixed_arch_eq_regularized
     {L t : ℝ} (hL : 0 < L) (ht0 : t ≠ 0) (htL : t ∈ Icc (0 : ℝ) L)
@@ -796,8 +850,7 @@ private theorem mixed_arch_eq_regularized
     productionMixedDerivativePhysicalRaw,
     productionMixedDerivativeArchRegularized,
     regularizedArchScale_eq_mul_archDensity ht0]
-  field_simp [hL.ne']
-  ring
+  field_simp [hL.ne'] <;> ring
 
 
 private theorem intervalIntegrable_first_pole
@@ -812,12 +865,19 @@ private theorem intervalIntegrable_first_pole
       Continuous (productionFirstDerivativePhysicalRaw L K z) := by
     unfold productionFirstDerivativePhysicalRaw
     fun_prop (disch := exact hL.ne')
+  have hpole : Continuous completeSourcePoleWeight := by
+    unfold completeSourcePoleWeight
+    fun_prop
+  have hprod :
+      Continuous (fun t : ℝ =>
+        productionFirstDerivativePhysicalRaw L K z t * completeSourcePoleWeight t) :=
+    hraw.mul hpole
   have hint :
       IntervalIntegrable
         (fun t =>
           productionFirstDerivativePhysicalRaw L K z t *
             completeSourcePoleWeight t) volume 0 L :=
-    (hraw.mul (by unfold completeSourcePoleWeight; fun_prop)).intervalIntegrable
+    hprod.intervalIntegrable 0 L
   apply hint.congr_ae
   rw [Filter.EventuallyEq, MeasureTheory.ae_restrict_iff' (by measurability)]
   filter_upwards with t ht
@@ -838,12 +898,19 @@ private theorem intervalIntegrable_second_pole
       Continuous (productionSecondDerivativePhysicalRaw L K z) := by
     unfold productionSecondDerivativePhysicalRaw
     fun_prop (disch := exact hL.ne')
+  have hpole : Continuous completeSourcePoleWeight := by
+    unfold completeSourcePoleWeight
+    fun_prop
+  have hprod :
+      Continuous (fun t : ℝ =>
+        productionSecondDerivativePhysicalRaw L K z t * completeSourcePoleWeight t) :=
+    hraw.mul hpole
   have hint :
       IntervalIntegrable
         (fun t =>
           productionSecondDerivativePhysicalRaw L K z t *
             completeSourcePoleWeight t) volume 0 L :=
-    (hraw.mul (by unfold completeSourcePoleWeight; fun_prop)).intervalIntegrable
+    hprod.intervalIntegrable 0 L
   apply hint.congr_ae
   rw [Filter.EventuallyEq, MeasureTheory.ae_restrict_iff' (by measurability)]
   filter_upwards with t ht
@@ -864,12 +931,19 @@ private theorem intervalIntegrable_mixed_pole
       Continuous (productionMixedDerivativePhysicalRaw L K z w) := by
     unfold productionMixedDerivativePhysicalRaw
     fun_prop (disch := exact hL.ne')
+  have hpole : Continuous completeSourcePoleWeight := by
+    unfold completeSourcePoleWeight
+    fun_prop
+  have hprod :
+      Continuous (fun t : ℝ =>
+        productionMixedDerivativePhysicalRaw L K z w t * completeSourcePoleWeight t) :=
+    hraw.mul hpole
   have hint :
       IntervalIntegrable
         (fun t =>
           productionMixedDerivativePhysicalRaw L K z w t *
             completeSourcePoleWeight t) volume 0 L :=
-    (hraw.mul (by unfold completeSourcePoleWeight; fun_prop)).intervalIntegrable
+    hprod.intervalIntegrable 0 L
   apply hint.congr_ae
   rw [Filter.EventuallyEq, MeasureTheory.ae_restrict_iff' (by measurability)]
   filter_upwards with t ht
