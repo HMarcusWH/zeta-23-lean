@@ -18,7 +18,7 @@
   "candidate_branch": {
     "pr": 283,
     "branch": "proof/post282-canonical-contact-calculus",
-    "status": "POST282_COMPLETE_CONTACT_CALCULUS_CANDIDATE_PENDING_CI",
+    "status": "CANONICAL_COMPRESSED_CONTACT_CALCULUS_CANDIDATE",
     "theorem_family": "F01_F07_COMPLETE_COMPRESSED_C2_WEIGHTED_PRODUCTION_SCHUR_INHERITED_FRONTIER",
     "terminal_claim_change": false,
     "theorem_validation_head": "RUNTIME_PR_HEAD_REQUIRED",
