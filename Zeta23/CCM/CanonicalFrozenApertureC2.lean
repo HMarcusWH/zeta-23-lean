@@ -3,9 +3,14 @@ import Zeta23.CCM.FrozenCanonicalSourceComplex
 import Zeta23.CCM.FrozenCanonicalSourceAnalytic
 import Zeta23.CCM.CanonicalCompressedSeamJets
 import Mathlib.Analysis.Calculus.ContDiff.Operations
+import Mathlib.Analysis.Calculus.ContDiff.Deriv
 import Mathlib.Analysis.Complex.RealDeriv
+import Mathlib.Analysis.Matrix.Normed
+import Mathlib.Analysis.SpecialFunctions.Log.Deriv
 
 noncomputable section
+
+set_option backward.isDefEq.respectTransparency false
 
 namespace Zeta23.CCM
 
@@ -86,9 +91,13 @@ theorem contDiffAt_frozenCanonicalSourceMatrix_apply_pos
       ContDiffAt ℝ 2
         (fun s : ℝ => frozenCanonicalSourceRemainderReal Q s K i j) L :=
     hcomp.congr_of_eventuallyEq hev.symm
+  have hlogR :
+      ContDiffAt ℝ 2 (fun s : ℝ => -Real.log s) L :=
+    (Real.contDiffAt_log.2 hL.ne').neg
   have hlog :
       ContDiffAt ℝ 2 (fun s : ℝ => (-(Real.log s : ℂ))) L := by
-    fun_prop (disch := exact hL.ne')
+    have hcast := Complex.ofRealCLM.contDiff.contDiffAt.comp L hlogR
+    simpa using hcast
   have hid :
       ContDiffAt ℝ 2
         (fun s : ℝ =>
@@ -118,9 +127,13 @@ theorem hasDerivAt_frozenCanonicalSourceFirstMatrix_apply_pos
       (fun s : ℝ => frozenCanonicalSourceFirstMatrix Q s K i j)
       (frozenCanonicalSourceSecondMatrix Q L K i j) L := by
   unfold frozenCanonicalSourceFirstMatrix frozenCanonicalSourceSecondMatrix
-  exact
-    (contDiffAt_frozenCanonicalSourceMatrix_apply_pos Q K i j hL).deriv_contDiffAt
-      |>.differentiableAt.hasDerivAt
+  have hD :
+      ContDiffAt ℝ 1
+        (deriv (fun s : ℝ => frozenCanonicalSourceMatrix Q s K i j)) L := by
+    simpa using
+      (contDiffAt_frozenCanonicalSourceMatrix_apply_pos Q K i j hL).derivWithin
+        (m := 1) (by norm_num)
+  exact (hD.differentiableAt (by norm_num)).hasDerivAt
 
 /-- Fixed-cutoff first derivative is the derivative of the actual source entry
 at every interior point of that cutoff cell. -/
@@ -223,10 +236,23 @@ theorem frozenSource_seam_energy_jets_agree
                 ((frozenCanonicalSourceMatrix (q - 1) s K).toEuclideanLin x) x) -
               enteringPrimeSourceEnergy q K x s) := by
           funext s
-          rw [frozenCanonicalSourceMatrix_eq_pred_sub_entering q K hq s]
-          simp [enteringPrimeSourceEnergy, sourceAtomRealEnergy,
-            Matrix.toEuclideanLin_sub, inner_sub_left]
-      rw [hdiff, deriv_sub]
+          rw [← matrixRealEnergy_eq_re_inner_apply_self,
+            ← matrixRealEnergy_eq_re_inner_apply_self]
+          rw [frozenCanonicalSourceMatrix_eq_pred_sub_entering q K hq s,
+            matrixRealEnergy_sub]
+          have henter :
+              matrixRealEnergy
+                  (primeSourceWeight q •
+                    sourceMatrix (primeSourceCoordinate q s) K) x =
+                enteringPrimeSourceEnergy q K x s := by
+            simpa [enteringPrimeSourceEnergy, sourceAtomRealEnergy,
+              primeSourceWeight] using
+              (matrixRealEnergy_smul_real
+                (Λ q / Real.sqrt q)
+                (sourceMatrix (primeSourceCoordinate q s) K) x)
+          rw [henter]
+      rw [hdiff]
+      rw [deriv_fun_sub]
       · rw [enteringPrimeSourceEnergy_firstJet_zero q K hq x hflat, sub_zero]
       · exact
           (contDiffAt_frozenCanonicalSourceMatrix_apply_pos (q - 1) K 0 0
@@ -264,11 +290,25 @@ theorem frozenSource_seam_energy_jets_agree
                   ((frozenCanonicalSourceMatrix (q - 1) r K).toEuclideanLin x) x) -
                 enteringPrimeSourceEnergy q K x r) by
               funext r
-              rw [frozenCanonicalSourceMatrix_eq_pred_sub_entering q K hq r]
-              simp [enteringPrimeSourceEnergy, sourceAtomRealEnergy,
-                Matrix.toEuclideanLin_sub, inner_sub_left]]
+              rw [← matrixRealEnergy_eq_re_inner_apply_self,
+                ← matrixRealEnergy_eq_re_inner_apply_self]
+              rw [frozenCanonicalSourceMatrix_eq_pred_sub_entering q K hq r,
+                matrixRealEnergy_sub]
+              have henter :
+                  matrixRealEnergy
+                      (primeSourceWeight q •
+                        sourceMatrix (primeSourceCoordinate q r) K) x =
+                    enteringPrimeSourceEnergy q K x r := by
+                simpa [enteringPrimeSourceEnergy, sourceAtomRealEnergy,
+                  primeSourceWeight] using
+                  (matrixRealEnergy_smul_real
+                    (Λ q / Real.sqrt q)
+                    (sourceMatrix (primeSourceCoordinate q r) K) x)
+              rw [henter]]
           rw [deriv_sub]
-      rw [hdiff, deriv_sub, hjet, sub_zero]
+      rw [hdiff]
+      rw [deriv_fun_sub]
+      rw [hjet, sub_zero]
 
 /-! ## Matrix-valued frozen derivatives and legal compression -/
 
