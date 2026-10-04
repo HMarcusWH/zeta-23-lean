@@ -85,6 +85,22 @@ RESEARCH / CONTROL FIREWALL
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#282 / PR #283 candidate obstruction refinement
+
+- **OBS-060N — compressed production derivative/admissibility bridge:** **CANDIDATE IMPLEMENTED / PENDING EXACT-HEAD CI.** The candidate source now contains actual compressed C2, weighted k1/k2/kM authority, concrete remainder admissibility/value authority, the Euler-corrected pair balance, and the arbitrary-dimensional stationary Schur specialization.
+- **OBS-060O — contact-conditioned production saturation exclusion:** **OPEN / NEXT MATHEMATICAL OBSTRUCTION.** On the candidate strict-even stationary branch the exact equality
+  [
+  mathcal A_{L_*}[R_{L_*,z,w}]
+  =
+  rac{(2pi)^2}{L_*^2}mathcal Q(L_*,z)
+  ]
+  is derived in source; what is not known is a canonical arithmetic reason this equality cannot occur at a generated contact.
+- **Odd/tie branch-complete exclusion:** **OPEN.**
+- **RH:** **OPEN.**
+
+This reclassification is conditional on exact-head validation of PR #283. Until those gates pass, OBS-060N is not PROVED and cannot be promoted to merged theorem authority. The research campaign is evidence/routing only and cannot supply the missing OBS-060O theorem.
+
+
 ## Post-#281 / PR #282 generated-contact refinement
 
 Stable obstruction meanings are preserved. **OBS-060N** remains the production derivative/admissibility bridge: the concrete weighted tests must be theorem-authoritative and the independently defined optimized curvature must be proved equal to the production arithmetic gap. **OBS-060O** remains saturation/equality exclusion after that identity is established. **OBS-060J/K** remain the interior/seam endpoint barriers.
