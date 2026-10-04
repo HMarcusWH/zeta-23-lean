@@ -30,7 +30,9 @@
     "Zeta23/CCM/ProductionWeightedTestCalculus.lean",
     "Zeta23/CCM/StationarySchurContact.lean",
     "Zeta23/CCM/FirstCrossingInheritedStationarity.lean",
-    "Zeta23/RHRC/ContactCalculusContract.lean"
+    "Zeta23/RHRC/ContactCalculusContract.lean",
+    "Zeta23/CCM/CanonicalCompressedSeamJets.lean",
+    "Zeta23/CCM/CanonicalFrozenApertureC2.lean"
   ],
   "lean_modify": [
     "Zeta23/CCM/FirstCrossingProductionTests.lean",
@@ -296,5 +298,5 @@
     "research/RHRC/routes/R003_ccm_bridge/README.md",
     "research/RHRC/countermodels/README.md"
   ],
-  "implementation_note": "Branch implementation created from exact merged PR #282 tree. Exact-head compiler/CI authority pending; no claim promotion is implied by repository presence."
+  "implementation_note": "Branch implementation created from exact merged PR #282 tree. Exact-head compiler/CI authority pending; no claim promotion is implied by repository presence. Explicit seam-jet and frozen-analytic C2 helpers are now part of the mandatory formal inventory."
 }
