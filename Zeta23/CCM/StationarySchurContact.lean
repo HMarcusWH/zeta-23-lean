@@ -803,6 +803,109 @@ theorem stationarySchurScalar_secondDerivative_eq_pair
   rw [henv, ha2, hpair]
   ring
 
+
+/-! ## Exact arbitrary-dimensional inertia decomposition -/
+
+/-- Exact completed-square decomposition with an arbitrary finite-dimensional
+fixed complement.  The complement can be zero-dimensional. -/
+theorem stationarySchur_completedSquare
+    {F : ℝ → V →L[ℂ] V} {z : V} {s : ℝ}
+    (hFsym : LinearMap.IsSymmetric (𝕜 := ℂ) (F s).toLinearMap)
+    (hC : (stationarySchurBlock F z s).IsInvertible)
+    (α : ℂ) (w : stationarySchurComplement z) :
+    Complex.re
+        (inner ℂ
+          (F s (α • z + (w : V)))
+          (α • z + (w : V))) =
+      ‖α‖ ^ 2 * stationarySchurScalar F z s +
+        Complex.re
+          (inner ℂ
+            (stationarySchurBlock F z s
+              (w + α • stationarySchurResponse F z s))
+            (w + α • stationarySchurResponse F z s)) := by
+  let r := stationarySchurResponse F z s
+  let q := stationarySchurVector F z s
+  let u : stationarySchurComplement z := w + α • r
+  have hres :=
+    stationarySchurVector_complement_residual_zero
+      (F := F) (z := z) (s := s) hC
+  have hcross :
+      inner ℂ (F s q) (u : V) = 0 := by
+    rw [← (stationarySchurComplement z)
+      .inner_orthogonalProjectionOnto_eq_of_mem_right u (F s q)]
+    rw [hres]
+    simp
+  have hcross' :
+      inner ℂ (F s (u : V)) q = 0 := by
+    rw [hFsym]
+    exact hcross
+  have hdecomp :
+      α • z + (w : V) = α • q + (u : V) := by
+    dsimp [q, u, r, stationarySchurVector]
+    simp only [smul_sub, Submodule.coe_add, Submodule.coe_smul]
+    abel
+  rw [hdecomp, map_add, inner_add_left, inner_add_right]
+  rw [map_smul, inner_smul_left, inner_smul_right]
+  simp only [hcross, hcross', mul_zero, zero_mul, add_zero, zero_add,
+    Complex.add_re]
+  have hquad :
+      Complex.re
+        (star α * (inner ℂ (F s q) q * α)) =
+        ‖α‖ ^ 2 * stationarySchurScalar F z s := by
+    have hnorm : star α * α = ((‖α‖ ^ 2 : ℝ) : ℂ) := by
+      rw [Complex.conj_mul']
+      norm_cast
+    rw [← mul_assoc, hnorm]
+    simp [stationarySchurScalar, q]
+  rw [hquad]
+  have hu :
+      Complex.re (inner ℂ (F s (u : V)) (u : V)) =
+        Complex.re
+          (inner ℂ (stationarySchurBlock F z s u) u) := by
+    rw [stationarySchurBlock_inner]
+  rw [hu]
+  rfl
+
+/-- If the complement block is positive, any negative ambient direction forces
+the scalar Schur profile to be negative. -/
+theorem stationarySchurScalar_neg_of_negative_direction
+    {F : ℝ → V →L[ℂ] V} {z v : V} {s : ℝ}
+    (hznorm : ‖z‖ = 1)
+    (hFsym : LinearMap.IsSymmetric (𝕜 := ℂ) (F s).toLinearMap)
+    (hC : (stationarySchurBlock F z s).IsInvertible)
+    (hCnonneg :
+      ∀ w : stationarySchurComplement z,
+        0 ≤ Complex.re
+          (inner ℂ (stationarySchurBlock F z s w) w))
+    (hvneg : Complex.re (inner ℂ (F s v) v) < 0) :
+    stationarySchurScalar F z s < 0 := by
+  let α : ℂ := inner ℂ z v
+  let w : stationarySchurComplement z :=
+    ⟨v - α • z, by
+      change inner ℂ z (v - α • z) = 0
+      rw [inner_sub_right, inner_smul_right]
+      have hzz : inner ℂ z z = 1 := by
+        rw [inner_self_eq_norm_sq_to_K, hznorm]
+        norm_num
+      rw [hzz]
+      simp [α]⟩
+  have hvdecomp : v = α • z + (w : V) := by
+    dsimp [w]
+    abel
+  have hsquare :=
+    stationarySchur_completedSquare
+      (F := F) (z := z) (s := s) hFsym hC α w
+  rw [← hvdecomp] at hsquare
+  have hnonneg :=
+    hCnonneg (w + α • stationarySchurResponse F z s)
+  have ha0 : α ≠ 0 := by
+    intro ha
+    have hα : ‖α‖ ^ 2 = 0 := by simp [ha]
+    rw [hsquare, hα, zero_mul, zero_add] at hvneg
+    linarith
+  have hapos : 0 < ‖α‖ ^ 2 := by positivity
+  nlinarith
+
 /-- Compiler-facing generic Schur certificate.  The complement type is kept in
 the statement, so the theorem is not a disguised 2x2 lemma and also permits
 the zero-dimensional complement.  The production constructor proves the
@@ -839,5 +942,8 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.stationary_firstContact_secondDerivative_eq_zero
 #print axioms Zeta23.CCM.stationarySchurBlock_injective_of_kernel_line
 #print axioms Zeta23.CCM.stationarySchurBlock_isInvertible_of_kernel_line
+#print axioms Zeta23.CCM.contDiffAt_stationarySchurScalar
+#print axioms Zeta23.CCM.stationarySchurScalar_secondDerivative_eq_pair
+#print axioms Zeta23.CCM.stationarySchur_completedSquare
 #print axioms Zeta23.CCM.stationarySchurEnvelope_secondDerivative
 #print axioms Zeta23.CCM.StationarySchurContactCertificate.curvature_eq_zero
