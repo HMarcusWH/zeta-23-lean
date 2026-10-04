@@ -68,7 +68,8 @@ theorem hasDerivAt_primeSourceCoordinate
     (hasDerivAt_const L (1 : ℝ)).sub
       ((hasDerivAt_const L (Real.log q)).div
         (hasDerivAt_id L) hL)
-  simpa [primeSourceCoordinate, Function.id_def] using h
+  simpa only [primeSourceCoordinate, Pi.sub_apply, Pi.div_apply, id_eq,
+    zero_mul, mul_one, zero_sub, sub_neg_eq_add, zero_add] using h
 
 theorem hasDerivAt_primeSourceCoordinate_first
     (q : ℕ) {L : ℝ} (hL : L ≠ 0) :
@@ -77,7 +78,8 @@ theorem hasDerivAt_primeSourceCoordinate_first
   have hden := (hasDerivAt_id L).pow 2
   have h :=
     (hasDerivAt_const L (Real.log q)).div hden (pow_ne_zero 2 hL)
-  simpa [Function.id_def, pow_two] using h
+  simpa only [Pi.pow_apply, id_eq, Nat.cast_ofNat, Nat.reduceSub,
+    pow_one, mul_one, zero_mul, zero_sub, sub_neg_eq_add, zero_add] using h
 
 theorem sourceAtomRealEnergyDerivative_zero_of_boundaryFlat
     (K : ℕ)
@@ -145,40 +147,60 @@ theorem enteringPrimeSourceEnergy_secondJet_zero
       (Real.log q) = 0 := by
   have hlog : Real.log (q : ℝ) ≠ 0 := by
     exact ne_of_gt (Real.log_pos (by exact_mod_cast hq))
-  let omega := primeSourceCoordinate q
-  let omega' := fun L : ℝ => Real.log q / L ^ 2
-  let g' := sourceAtomRealEnergyDerivative K x
+  let omega : ℝ → ℝ := primeSourceCoordinate q
+  let omega' : ℝ → ℝ := fun L : ℝ => Real.log q / L ^ 2
+  let g' : ℝ → ℝ := sourceAtomRealEnergyDerivative K x
+  let c : ℝ := Λ q / Real.sqrt q
   have hfirstFun :
       (fun L : ℝ => deriv (enteringPrimeSourceEnergy q K x) L) =ᶠ[nhds (Real.log q)]
-        fun L : ℝ =>
-          (Λ q / Real.sqrt q : ℝ) *
-            (g' (omega L) * omega' L) := by
+        fun L : ℝ => c * (g' (omega L) * omega' L) := by
     filter_upwards [eventually_ne_nhds hlog] with L hL
     have hc := hasDerivAt_primeSourceCoordinate q hL
     have hg := hasDerivAt_sourceAtomRealEnergy_transport K x (omega L)
-    have hder :=
-      ((hg.comp L hc).const_mul (Λ q / Real.sqrt q : ℝ)).deriv
-    simpa [enteringPrimeSourceEnergy, g', omega, omega'] using hder
+    have hcomp :
+        HasDerivAt
+          (fun t : ℝ => sourceAtomRealEnergy K x (omega t))
+          (g' (omega L) * omega' L) L := by
+      simpa only [g', omega, omega'] using hg.comp L hc
+    have hscaled :
+        HasDerivAt
+          (fun t : ℝ => c * sourceAtomRealEnergy K x (omega t))
+          (c * (g' (omega L) * omega' L)) L :=
+      hcomp.const_mul c
+    have hd := hscaled.deriv
+    simpa only [enteringPrimeSourceEnergy, c, omega] using hd
   rw [Filter.EventuallyEq.deriv_eq hfirstFun]
   have hcoord0 : omega (Real.log q) = 0 := by
-    simpa [omega] using primeSourceCoordinate_log_self q hq
+    simpa only [omega] using primeSourceCoordinate_log_self q hq
   have hg'0 := hasDerivAt_sourceAtomRealEnergyDerivative_transport K x 0
   have hg' :
       HasDerivAt (sourceAtomRealEnergyDerivative K x)
         (sourceAtomRealEnergySecondDerivative K x 0)
         (omega (Real.log q)) := by
-    simpa [hcoord0] using hg'0
+    simpa only [hcoord0] using hg'0
   have homega := hasDerivAt_primeSourceCoordinate q hlog
   have hleft :
       HasDerivAt (fun L : ℝ => g' (omega L))
         (sourceAtomRealEnergySecondDerivative K x 0 *
           (Real.log q / (Real.log q) ^ 2))
         (Real.log q) := by
-    simpa [g'] using hg'.comp (Real.log q) homega
-  have hright := hasDerivAt_primeSourceCoordinate_first q hlog
-  have hscaled := (hleft.mul hright).const_mul (Λ q / Real.sqrt q : ℝ)
-  rw [hscaled.deriv,
-    sourceAtomRealEnergySecondDerivative_zero K x,
+    have hc := hg'.comp (Real.log q) homega
+    simpa only [Function.comp_apply, g', omega] using hc
+  have hright : HasDerivAt omega' (-2 * Real.log q / (Real.log q) ^ 3)
+      (Real.log q) := by
+    simpa only [omega'] using hasDerivAt_primeSourceCoordinate_first q hlog
+  have hscaled :
+      HasDerivAt
+        (fun L : ℝ => c * (g' (omega L) * omega' L))
+        (c * (
+          (sourceAtomRealEnergySecondDerivative K x 0 *
+              (Real.log q / (Real.log q) ^ 2)) * omega' (Real.log q) +
+            g' (omega (Real.log q)) *
+              (-2 * Real.log q / (Real.log q) ^ 3)))
+        (Real.log q) :=
+    (hleft.mul hright).const_mul c
+  rw [hscaled.deriv]
+  rw [sourceAtomRealEnergySecondDerivative_zero K x,
     sourceAtomRealEnergyDerivative_zero_of_boundaryFlat K x hflat]
   simp [g', omega, omega', hcoord0]
 
@@ -242,36 +264,48 @@ theorem hasDerivAt_sourceMatrix_primeSourceCoordinate
     HasDerivAt
       (fun s : ℝ => sourceMatrix (primeSourceCoordinate q s) K)
       (primeSourceMatrixFirstApertureJet q L K) L := by
-  have hs :=
-    hasDerivAt_sourceMatrix_sourceCoordinate K (primeSourceCoordinate q L)
+  change HasDerivAt
+    (fun s : ℝ => fun i j =>
+      sourceMatrix (primeSourceCoordinate q s) K i j)
+    (fun i j => primeSourceMatrixFirstApertureJet q L K i j) L
+  apply hasDerivAt_pi.mpr
+  intro i
+  apply hasDerivAt_pi.mpr
+  intro j
   have hc := hasDerivAt_primeSourceCoordinate q hL
-  have hcomp :
-      HasDerivAt
-        ((fun t : ℝ => sourceMatrix t K) ∘ primeSourceCoordinate q)
-        ((Real.log q / L ^ 2) •
-          sourceFirstJetMatrix K (primeSourceCoordinate q L)) L :=
-    HasDerivAt.scomp (𝕜 := ℝ) (𝕜' := ℝ) L hs hc
-  simpa [Function.comp_def, primeSourceMatrixFirstApertureJet] using hcomp
+  have he :=
+    hasDerivAt_sourceEntryReal
+      (primeSourceCoordinate q L) (centeredIndex K i) (centeredIndex K j)
+  have hcomp := he.comp L hc
+  have hcomplex := hcomp.ofReal_comp
+  simpa [sourceMatrix_apply, sourceEntry_eq_ofReal,
+    primeSourceMatrixFirstApertureJet, sourceFirstJetMatrix,
+    real_smul, mul_comm] using hcomplex
 
 theorem hasDerivAt_primeSourceMatrixFirstApertureJet
     (q K : ℕ) {L : ℝ} (hL : L ≠ 0) :
     HasDerivAt
       (fun s : ℝ => primeSourceMatrixFirstApertureJet q s K)
       (primeSourceMatrixSecondApertureJet q L K) L := by
+  change HasDerivAt
+    (fun s : ℝ => fun i j => primeSourceMatrixFirstApertureJet q s K i j)
+    (fun i j => primeSourceMatrixSecondApertureJet q L K i j) L
+  apply hasDerivAt_pi.mpr
+  intro i
+  apply hasDerivAt_pi.mpr
+  intro j
   have hc := hasDerivAt_primeSourceCoordinate q hL
   have hcoeff := hasDerivAt_primeSourceCoordinate_first q hL
-  have hjet :
-      HasDerivAt
-        ((fun t : ℝ => sourceFirstJetMatrix K t) ∘ primeSourceCoordinate q)
-        ((Real.log q / L ^ 2) •
-          sourceSecondJetMatrix K (primeSourceCoordinate q L)) L :=
-    HasDerivAt.scomp (𝕜 := ℝ) (𝕜' := ℝ) L
-      (hasDerivAt_sourceFirstJetMatrix K (primeSourceCoordinate q L)) hc
-  have hprod := hcoeff.smul hjet
-  simpa [Function.comp_def, primeSourceMatrixFirstApertureJet,
-    primeSourceMatrixSecondApertureJet, pow_two,
-    add_comm, add_left_comm, add_assoc,
-    smul_smul, mul_comm, mul_left_comm, mul_assoc] using hprod
+  have he :=
+    hasDerivAt_sourceEntryDerivative
+      (primeSourceCoordinate q L) (centeredIndex K i) (centeredIndex K j)
+  have hentry := he.comp L hc
+  have hprod := hcoeff.mul hentry
+  have hcomplex := hprod.ofReal_comp
+  simpa [primeSourceMatrixFirstApertureJet,
+    primeSourceMatrixSecondApertureJet, sourceFirstJetMatrix,
+    sourceSecondJetMatrix, real_smul, mul_add, add_mul,
+    mul_comm, mul_left_comm, mul_assoc, pow_two] using hcomplex
 
 /-- Every parity-boundary-flat legal vector has zero coefficient sum. -/
 theorem parityBoundaryFlat_coordinateSum_zero
