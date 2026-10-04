@@ -558,17 +558,19 @@ X01/X02 must never block core theorem acceptance solely because an arithmetic ca
 
 ## 7. File inventory and dependency wiring
 
-### 7.1 Five new Lean modules
+### 7.1 Seven new Lean modules
 
 | Path | Role |
 |---|---|
+| `Zeta23/CCM/CanonicalCompressedSeamJets.lean` | F01 exact entering-atom value/first/second legal seam jets. |
+| `Zeta23/CCM/CanonicalFrozenApertureC2.lean` | F01 frozen analytic C2 and left/right seam continuation identities. |
 | `Zeta23/CCM/CanonicalCompressedApertureC2.lean` | F01 compressed real-aperture C2 family and actual derivatives. |
 | `Zeta23/CCM/ProductionWeightedTestCalculus.lean` | F02 admissible-span physical calculus. |
 | `Zeta23/CCM/StationarySchurContact.lean` | F05 generic arbitrary-complement stationary contact theorem. |
 | `Zeta23/CCM/FirstCrossingInheritedStationarity.lean` | F06 inherited-kernel first variation and strict-even specialization. |
 | `Zeta23/RHRC/ContactCalculusContract.lean` | F07 exact endpoint-type and definition contract. |
 
-Splitting a large helper into another module is permitted only with an updated inventory and import audit. It must not change the mathematical scope or bypass the contract.
+F01 is split into the two explicit helper modules above; both are mandatory build/axiom/proof-escape targets. Further splitting requires an updated inventory and import audit. It must not change the mathematical scope or bypass the contract.
 
 ### 7.2 Six existing Lean modules changed
 
