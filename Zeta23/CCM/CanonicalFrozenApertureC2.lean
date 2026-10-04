@@ -565,8 +565,8 @@ theorem parityCompressionCLM_primeFirst_log_eq_zero
       Matrix.toEuclideanCLM (n := Fin (2 * K + 1)) (𝕜 := ℂ)
         (primeSourceMatrixFirstApertureJet q (Real.log q) K)
         (x : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0 := by
-    simpa [Matrix.toEuclideanCLM, Matrix.toLpLin_apply] using
-      congrArg (fun v => WithLp.toLp 2 v) hmul
+    apply (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ).injective
+    simpa only [Matrix.ofLp_toEuclideanCLM, map_zero] using hmul
   rw [hamb]
   simp
 
@@ -585,8 +585,8 @@ theorem parityCompressionCLM_primeSecond_log_eq_zero
       Matrix.toEuclideanCLM (n := Fin (2 * K + 1)) (𝕜 := ℂ)
         (primeSourceMatrixSecondApertureJet q (Real.log q) K)
         (x : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0 := by
-    simpa [Matrix.toEuclideanCLM, Matrix.toLpLin_apply] using
-      congrArg (fun v => WithLp.toLp 2 v) hmul
+    apply (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ).injective
+    simpa only [Matrix.ofLp_toEuclideanCLM, map_zero] using hmul
   rw [hamb]
   simp
 
