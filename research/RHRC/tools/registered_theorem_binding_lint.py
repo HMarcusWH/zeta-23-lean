@@ -66,6 +66,8 @@ def main() -> int:
         fail(f"unexpected manifest scope {manifest.get('scope')!r}")
     if manifest.get("terminal_claim") != "RH_OPEN":
         fail("manifest does not preserve RH_OPEN")
+    if manifest.get("candidate_scope") != "OPEN_CANDIDATE_BINDINGS_AUDIT_ONLY_NOT_PROVED_AUTHORITY":
+        fail(f"unexpected candidate scope {manifest.get('candidate_scope')!r}")
 
     rows = manifest["bindings"]
     actual = {row["id"]: row for row in rows}
