@@ -81,6 +81,186 @@ theorem stationary_firstContact_secondDerivative_eq_zero
     have hypos : 0 < f y := hball ⟨by linarith, hyx⟩
     linarith
 
+/-! ## Fixed kernel complement and actual Schur objects -/
+
+variable {V : Type*}
+  [NormedAddCommGroup V] [InnerProductSpace ℂ V]
+  [FiniteDimensional ℂ V]
+
+/-- The fixed complement used by the stationary Schur reduction.  It is the
+kernel of the inner-product functional, avoiding a second orthogonal-submodule
+instance stack. -/
+def stationarySchurComplement (z : V) : Submodule ℂ V :=
+  LinearMap.ker (innerₛₗ ℂ z)
+
+/-- Compression of an operator to the fixed complement of `z`. -/
+def stationarySchurBlock
+    (F : ℝ → V →L[ℂ] V) (z : V) (s : ℝ) :
+    stationarySchurComplement z →L[ℂ] stationarySchurComplement z :=
+  let W := stationarySchurComplement z
+  W.orthogonalProjectionOnto.comp
+    ((F s).comp (W.subtypeL : W →L[ℂ] V))
+
+/-- Complement component of `F(s) z`. -/
+def stationarySchurCoupling
+    (F : ℝ → V →L[ℂ] V) (z : V) (s : ℝ) :
+    stationarySchurComplement z :=
+  ⟨(stationarySchurComplement z).orthogonalProjection
+      (F s z),
+    (stationarySchurComplement z).orthogonalProjection_mem _⟩
+
+/-- Totalized Schur response `C(s)⁻¹ b(s)`.  At an invertible block this is
+the genuine inverse response; the totalized inverse keeps the definition
+global while all theorem use is restricted to the invertible neighborhood. -/
+def stationarySchurResponse
+    (F : ℝ → V →L[ℂ] V) (z : V) (s : ℝ) :
+    stationarySchurComplement z :=
+  ContinuousLinearMap.inverse (stationarySchurBlock F z s)
+    (stationarySchurCoupling F z s)
+
+/-- Affine minimizer candidate `z - C⁻¹b` in the ambient carrier. -/
+def stationarySchurVector
+    (F : ℝ → V →L[ℂ] V) (z : V) (s : ℝ) : V :=
+  z - (stationarySchurResponse F z s : V)
+
+/-- Actual scalar Schur profile, defined as the family energy on the Schur
+vector.  On an invertible positive complement it equals
+`a - b* C⁻¹ b`. -/
+def stationarySchurScalar
+    (F : ℝ → V →L[ℂ] V) (z : V) (s : ℝ) : ℝ :=
+  Complex.re
+    (inner ℂ (F s (stationarySchurVector F z s))
+      (stationarySchurVector F z s))
+
+@[simp] theorem stationarySchurComplement_coe_mem
+    (z : V) (w : stationarySchurComplement z) :
+    inner ℂ z (w : V) = 0 := by
+  exact w.property
+
+/-- Symmetry and a kernel vector imply that `F w` stays in the fixed
+complement. -/
+theorem stationarySchur_map_mem_complement
+    {F : V →L[ℂ] V} {z : V}
+    (hF : LinearMap.IsSymmetric (𝕜 := ℂ) F.toLinearMap)
+    (hz : F z = 0)
+    (w : stationarySchurComplement z) :
+    F (w : V) ∈ stationarySchurComplement z := by
+  change inner ℂ z (F (w : V)) = 0
+  rw [← hF z (w : V), hz, inner_zero_left]
+
+/-- At a zero mode, the Schur coupling vanishes. -/
+theorem stationarySchurCoupling_eq_zero_of_kernel
+    {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
+    (hz : F x z = 0) :
+    stationarySchurCoupling F z x = 0 := by
+  apply Subtype.ext
+  simp [stationarySchurCoupling, hz]
+
+/-- At a zero mode the totalized Schur response is zero. -/
+theorem stationarySchurResponse_eq_zero_of_kernel
+    {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
+    (hz : F x z = 0) :
+    stationarySchurResponse F z x = 0 := by
+  unfold stationarySchurResponse
+  rw [stationarySchurCoupling_eq_zero_of_kernel hz]
+  exact map_zero _
+
+@[simp] theorem stationarySchurVector_eq_kernel_of_kernel
+    {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
+    (hz : F x z = 0) :
+    stationarySchurVector F z x = z := by
+  simp [stationarySchurVector,
+    stationarySchurResponse_eq_zero_of_kernel hz]
+
+theorem stationarySchurScalar_eq_zero_of_kernel
+    {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
+    (hz : F x z = 0) :
+    stationarySchurScalar F z x = 0 := by
+  simp [stationarySchurScalar,
+    stationarySchurVector_eq_kernel_of_kernel hz, hz]
+
+/-- The complement block is injective at a simple zero mode.  No positivity
+gap is assumed: symmetry plus `ker F = C z` already forces the restricted
+kernel to be trivial. -/
+theorem stationarySchurBlock_injective_of_kernel_line
+    {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
+    (hznorm : ‖z‖ = 1)
+    (hF : LinearMap.IsSymmetric (𝕜 := ℂ) (F x).toLinearMap)
+    (hz : F x z = 0)
+    (hker : ∀ v : V, F x v = 0 → ∃ a : ℂ, v = a • z) :
+    Function.Injective (stationarySchurBlock F z x) := by
+  intro u v huv
+  apply sub_eq_zero.mp
+  have hzero :
+      stationarySchurBlock F z x (u - v) = 0 := by
+    rw [map_sub, huv, sub_self]
+  let w : stationarySchurComplement z := u - v
+  have hmem :
+      F x (w : V) ∈ stationarySchurComplement z :=
+    stationarySchur_map_mem_complement hF hz w
+  have hambient : F x (w : V) = 0 := by
+    change
+      (stationarySchurComplement z).orthogonalProjectionOnto
+        (F x (w : V)) = 0 at hzero
+    have hproj :
+        (stationarySchurComplement z).orthogonalProjectionOnto
+          (F x (w : V)) =
+        ⟨F x (w : V), hmem⟩ := by
+      apply Subtype.ext
+      exact
+        (stationarySchurComplement z).orthogonalProjection_eq_self.2 hmem
+    rw [hproj] at hzero
+    exact congrArg Subtype.val hzero
+  obtain ⟨a, ha⟩ := hker (w : V) hambient
+  have horth : inner ℂ z (w : V) = 0 := w.property
+  rw [ha, inner_smul_right, inner_self_eq_norm_sq, hznorm] at horth
+  simp at horth
+  have ha0 : a = 0 := by simpa using horth
+  apply Subtype.ext
+  simp [w, ha, ha0]
+
+/-- In finite dimension the simple-kernel complement block is invertible,
+including the zero-dimensional complement. -/
+theorem stationarySchurBlock_isInvertible_of_kernel_line
+    {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
+    (hznorm : ‖z‖ = 1)
+    (hF : LinearMap.IsSymmetric (𝕜 := ℂ) (F x).toLinearMap)
+    (hz : F x z = 0)
+    (hker : ∀ v : V, F x v = 0 → ∃ a : ℂ, v = a • z) :
+    (stationarySchurBlock F z x).IsInvertible := by
+  have hinj :=
+    stationarySchurBlock_injective_of_kernel_line
+      hznorm hF hz hker
+  have hsurj : Function.Surjective (stationarySchurBlock F z x) :=
+    LinearMap.injective_iff_surjective.mp hinj
+  exact ⟨ContinuousLinearEquiv.ofBijective
+    (stationarySchurBlock F z x)
+    (LinearMap.ker_eq_bot.mpr hinj)
+    (LinearMap.range_eq_top.mpr hsurj)⟩
+
+/-- On an invertible block, the response solves the exact complement equation. -/
+theorem stationarySchurBlock_response
+    {F : ℝ → V →L[ℂ] V} {z : V} {s : ℝ}
+    (hC : (stationarySchurBlock F z s).IsInvertible) :
+    stationarySchurBlock F z s
+        (stationarySchurResponse F z s) =
+      stationarySchurCoupling F z s := by
+  exact ContinuousLinearMap.IsInvertible.self_apply_inverse hC _
+
+/-- The Schur vector has no complement residual: its image under `F` is
+orthogonal to the fixed complement. -/
+theorem stationarySchurVector_complement_residual_zero
+    {F : ℝ → V →L[ℂ] V} {z : V} {s : ℝ}
+    (hC : (stationarySchurBlock F z s).IsInvertible) :
+    (stationarySchurComplement z).orthogonalProjectionOnto
+        (F s (stationarySchurVector F z s)) = 0 := by
+  rw [stationarySchurVector, map_sub]
+  change
+    stationarySchurCoupling F z s -
+      stationarySchurBlock F z s
+        (stationarySchurResponse F z s) = 0
+  rw [stationarySchurBlock_response hC, sub_self]
+
 /-! ## Generic arbitrary-complement Schur package -/
 
 variable {W : Type*}
@@ -224,5 +404,7 @@ theorem StationarySchurContactCertificate.curvature_eq_zero
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.stationary_firstContact_secondDerivative_eq_zero
+#print axioms Zeta23.CCM.stationarySchurBlock_injective_of_kernel_line
+#print axioms Zeta23.CCM.stationarySchurBlock_isInvertible_of_kernel_line
 #print axioms Zeta23.CCM.stationarySchurEnvelope_secondDerivative
 #print axioms Zeta23.CCM.StationarySchurContactCertificate.curvature_eq_zero
