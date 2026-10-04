@@ -6,6 +6,8 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[4]
 ROUTE=Path(__file__).resolve().parent
 NEW_LEAN=[
+ "Zeta23/CCM/CanonicalCompressedSeamJets.lean",
+ "Zeta23/CCM/CanonicalFrozenApertureC2.lean",
  "Zeta23/CCM/CanonicalCompressedApertureC2.lean",
  "Zeta23/CCM/ProductionWeightedTestCalculus.lean",
  "Zeta23/CCM/StationarySchurContact.lean",
@@ -13,6 +15,14 @@ NEW_LEAN=[
  "Zeta23/RHRC/ContactCalculusContract.lean",
 ]
 REQUIRED_SYMBOLS={
+ "Zeta23/CCM/CanonicalCompressedSeamJets.lean":[
+   "hasDerivAt_sourceMatrix_primeSourceCoordinate",
+   "primeSourceMatrixFirstApertureJet_log_mulVec_zero",
+   "primeSourceMatrixSecondApertureJet_log_mulVec_zero"],
+ "Zeta23/CCM/CanonicalFrozenApertureC2.lean":[
+   "hasDerivAt_parityCompressedCanonicalCLM_pos",
+   "hasDerivAt_productionParityFirstJetCLM_pos",
+   "continuousAt_productionParitySecondJetCLM_pos"],
  "Zeta23/CCM/CanonicalCompressedApertureC2.lean":[
    "canonicalParityCompressedC2_proved","canonicalEvenCompressedC2_proved",
    "canonicalEvenApertureFirst"],
