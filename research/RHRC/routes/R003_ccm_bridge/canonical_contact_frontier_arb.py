@@ -57,17 +57,23 @@ def _ball_record_full(x: arb) -> dict:
 
 
 def _bounds_record(lo: arb, hi: arb) -> dict:
-    flo, fhi = _outward_float_bounds(lo, hi)
+    # Reconstruct one enclosing Arb ball, then derive *all* serialized endpoints
+    # from that same object.  Mid/radius arithmetic can widen the directed
+    # input endpoints by a few ulps; using the pre-reconstruction lo/hi for
+    # display metadata would then make the display interval cut inside the
+    # exact dyadic certificate.
     exact_ball = arb((lo + hi) / 2, (hi - lo) / 2)
+    enc_lo, enc_hi = exact_ball.lower(), exact_ball.upper()
+    flo, fhi = _outward_float_bounds(enc_lo, enc_hi)
     return {
         "dyadic_interval": DyadicInterval.from_arb(exact_ball).to_json(),
         "lower": flo,
         "upper": fhi,
-        "lower_exact": lo.str(40, radius=False),
-        "upper_exact": hi.str(40, radius=False),
-        "certified_positive": bool(lo > 0),
-        "certified_negative": bool(hi < 0),
-        "contains_zero": not (bool(lo > 0) or bool(hi < 0)),
+        "lower_exact": enc_lo.str(40, radius=False),
+        "upper_exact": enc_hi.str(40, radius=False),
+        "certified_positive": bool(enc_lo > 0),
+        "certified_negative": bool(enc_hi < 0),
+        "contains_zero": not (bool(enc_lo > 0) or bool(enc_hi < 0)),
     }
 
 
