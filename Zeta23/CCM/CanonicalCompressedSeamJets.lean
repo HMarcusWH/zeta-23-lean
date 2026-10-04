@@ -171,9 +171,146 @@ theorem enteringPrimeSourceEnergy_secondJet_zero
     sourceAtomRealEnergyDerivative_zero_of_boundaryFlat K x hflat]
   simp [g', omega, omega', hcoord0]
 
+/-! ## Matrix-valued source jets -/
+
+/-- The elementary source matrix has the entrywise first jet packaged as a
+genuine real derivative in the finite matrix space. -/
+theorem hasDerivAt_sourceMatrix_sourceCoordinate
+    (K : ℕ) (ω : ℝ) :
+    HasDerivAt (fun t : ℝ => sourceMatrix t K)
+      (sourceFirstJetMatrix K ω) ω := by
+  rw [hasDerivAt_pi]
+  intro i
+  rw [hasDerivAt_pi]
+  intro j
+  have hreal :=
+    hasDerivAt_sourceEntryReal
+      ω (centeredIndex K i) (centeredIndex K j)
+  have hcomplex :=
+    Complex.ofRealCLM.hasFDerivAt.comp_hasDerivAt ω hreal
+  simpa [sourceMatrix_apply, sourceEntry_eq_ofReal, sourceFirstJetMatrix] using
+    hcomplex
+
+/-- The first source-matrix jet has the exact second source jet as derivative. -/
+theorem hasDerivAt_sourceFirstJetMatrix
+    (K : ℕ) (ω : ℝ) :
+    HasDerivAt (fun t : ℝ => sourceFirstJetMatrix K t)
+      (sourceSecondJetMatrix K ω) ω := by
+  rw [hasDerivAt_pi]
+  intro i
+  rw [hasDerivAt_pi]
+  intro j
+  have hreal :=
+    hasDerivAt_sourceEntryDerivative
+      ω (centeredIndex K i) (centeredIndex K j)
+  have hcomplex :=
+    Complex.ofRealCLM.hasFDerivAt.comp_hasDerivAt ω hreal
+  simpa [sourceFirstJetMatrix, sourceSecondJetMatrix] using hcomplex
+
+/-- First aperture jet of one frozen entering source atom. -/
+def primeSourceMatrixFirstApertureJet
+    (q : ℕ) (L : ℝ) (K : ℕ) :
+    Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ :=
+  (Real.log q / L ^ 2) •
+    sourceFirstJetMatrix K (primeSourceCoordinate q L)
+
+/-- Second aperture jet of one frozen entering source atom. -/
+def primeSourceMatrixSecondApertureJet
+    (q : ℕ) (L : ℝ) (K : ℕ) :
+    Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ :=
+  (-2 * Real.log q / L ^ 3) •
+      sourceFirstJetMatrix K (primeSourceCoordinate q L) +
+    (Real.log q / L ^ 2) ^ 2 •
+      sourceSecondJetMatrix K (primeSourceCoordinate q L)
+
+theorem hasDerivAt_sourceMatrix_primeSourceCoordinate
+    (q K : ℕ) {L : ℝ} (hL : L ≠ 0) :
+    HasDerivAt
+      (fun s : ℝ => sourceMatrix (primeSourceCoordinate q s) K)
+      (primeSourceMatrixFirstApertureJet q L K) L := by
+  have hs :=
+    hasDerivAt_sourceMatrix_sourceCoordinate K (primeSourceCoordinate q L)
+  have hc := hasDerivAt_primeSourceCoordinate q hL
+  simpa [primeSourceMatrixFirstApertureJet] using hs.comp L hc
+
+theorem hasDerivAt_primeSourceMatrixFirstApertureJet
+    (q K : ℕ) {L : ℝ} (hL : L ≠ 0) :
+    HasDerivAt
+      (fun s : ℝ => primeSourceMatrixFirstApertureJet q s K)
+      (primeSourceMatrixSecondApertureJet q L K) L := by
+  have hc := hasDerivAt_primeSourceCoordinate q hL
+  have hcoeff := hasDerivAt_primeSourceCoordinate_first q hL
+  have hjet :=
+    (hasDerivAt_sourceFirstJetMatrix K (primeSourceCoordinate q L)).comp L hc
+  have hprod := hcoeff.smul hjet
+  simpa [primeSourceMatrixFirstApertureJet,
+    primeSourceMatrixSecondApertureJet, add_comm, add_left_comm, add_assoc,
+    smul_smul, mul_comm, mul_left_comm, mul_assoc] using hprod
+
+/-- Every parity-boundary-flat legal vector has zero coefficient sum. -/
+theorem parityBoundaryFlat_coordinateSum_zero
+    (p : ReversalParity) (K : ℕ)
+    (x : euclideanParityBoundaryFlatSubspace p K) :
+    ∑ i,
+      ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ)
+        (x : EuclideanSpace ℂ (Fin (2 * K + 1)))) i = 0 := by
+  have hx :=
+    (mem_euclideanParityBoundaryFlatSubspace_iff
+      p K (x : EuclideanSpace ℂ (Fin (2 * K + 1)))).mp x.property
+  cases p with
+  | even =>
+      rcases hx with ⟨hflat, _⟩
+      exact sum_eq_zero_of_boundaryFlat
+        ((mem_boundaryFlatSubspace_iff K _).mp hflat)
+  | odd =>
+      rcases hx with ⟨hflat, _⟩
+      exact sum_eq_zero_of_boundaryFlat
+        ((mem_boundaryFlatSubspace_iff K _).mp hflat)
+
+/-- At entry, the first aperture source jet annihilates every legal parity
+carrier vector. -/
+theorem primeSourceMatrixFirstApertureJet_log_mulVec_zero
+    (q K : ℕ) (hq : 2 ≤ q)
+    (p : ReversalParity)
+    (x : euclideanParityBoundaryFlatSubspace p K) :
+    primeSourceMatrixFirstApertureJet q (Real.log q) K *ᵥ
+        (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ)
+          (x : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0 := by
+  have hcoord := primeSourceCoordinate_log_self q hq
+  rw [primeSourceMatrixFirstApertureJet, hcoord]
+  simp only [Matrix.smul_mulVec_assoc]
+  rw [sourceFirstJetMatrix_zero_mulVec_of_sum_zero K _
+    (parityBoundaryFlat_coordinateSum_zero p K x)]
+  simp
+
+/-- At entry, the second aperture source jet also annihilates every legal
+parity carrier vector.  The source-coordinate acceleration only multiplies the
+same rank-one first jet, while the genuine second source jet is zero. -/
+theorem primeSourceMatrixSecondApertureJet_log_mulVec_zero
+    (q K : ℕ) (hq : 2 ≤ q)
+    (p : ReversalParity)
+    (x : euclideanParityBoundaryFlatSubspace p K) :
+    primeSourceMatrixSecondApertureJet q (Real.log q) K *ᵥ
+        (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ)
+          (x : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0 := by
+  have hcoord := primeSourceCoordinate_log_self q hq
+  rw [primeSourceMatrixSecondApertureJet, hcoord, sourceSecondJetMatrix_zero]
+  simp only [Matrix.add_mulVec, Matrix.smul_mulVec_assoc, Matrix.zero_mulVec,
+    smul_zero, add_zero]
+  rw [sourceFirstJetMatrix_zero_mulVec_of_sum_zero K _
+    (parityBoundaryFlat_coordinateSum_zero p K x)]
+  simp
+
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.sourceFirstJetMatrix_zero_mulVec_of_sum_zero
 #print axioms Zeta23.CCM.sourceSecondJetMatrix_zero
+#print axioms Zeta23.CCM.hasDerivAt_sourceMatrix_sourceCoordinate
+#print axioms Zeta23.CCM.hasDerivAt_sourceFirstJetMatrix
+#print axioms Zeta23.CCM.hasDerivAt_sourceMatrix_primeSourceCoordinate
+#print axioms Zeta23.CCM.hasDerivAt_primeSourceMatrixFirstApertureJet
+#print axioms Zeta23.CCM.primeSourceMatrixFirstApertureJet_log_mulVec_zero
+#print axioms Zeta23.CCM.primeSourceMatrixSecondApertureJet_log_mulVec_zero
 #print axioms Zeta23.CCM.enteringPrimeSourceEnergy_firstJet_zero
 #print axioms Zeta23.CCM.enteringPrimeSourceEnergy_secondJet_zero
