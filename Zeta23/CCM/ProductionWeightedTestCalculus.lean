@@ -13,7 +13,7 @@ noncomputable section
 namespace Zeta23.CCM
 
 open Complex MeasureTheory Set
-open scoped BigOperators ComplexConjugate Interval
+open scoped BigOperators ComplexConjugate Interval FourierTransform
 
 /-!
 # Post-#282 weighted production-test calculus
@@ -911,22 +911,22 @@ theorem production_derivative_tests_admissible
       productionPhysicalClamp_support_subset L _⟩
     unfold productionFirstDerivativePhysicalTest productionPhysicalClamp
     exact
-      (Measurable.ite measurableSet_Icc hfirstRaw.measurable measurable_const)
-        .aestronglyMeasurable
+      Measurable.aestronglyMeasurable
+        (Measurable.ite measurableSet_Icc hfirstRaw.measurable measurable_const)
   · refine ⟨?_, intervalIntegrable_second_pole hL K z,
       intervalIntegrable_second_arch hL K z,
       productionPhysicalClamp_support_subset L _⟩
     unfold productionSecondDerivativePhysicalTest productionPhysicalClamp
     exact
-      (Measurable.ite measurableSet_Icc hsecondRaw.measurable measurable_const)
-        .aestronglyMeasurable
+      Measurable.aestronglyMeasurable
+        (Measurable.ite measurableSet_Icc hsecondRaw.measurable measurable_const)
   · refine ⟨?_, intervalIntegrable_mixed_pole hL K z w,
       intervalIntegrable_mixed_arch hL K z w,
       productionPhysicalClamp_support_subset L _⟩
     unfold productionMixedDerivativePhysicalTest productionPhysicalClamp
     exact
-      (Measurable.ite measurableSet_Icc hmixedRaw.measurable measurable_const)
-        .aestronglyMeasurable
+      Measurable.aestronglyMeasurable
+        (Measurable.ite measurableSet_Icc hmixedRaw.measurable measurable_const)
 
 end Zeta23.CCM
 

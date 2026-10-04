@@ -506,10 +506,79 @@ theorem canonicalStationaryEvenResponse_spec
     (existsUnique_canonicalStationaryEvenResponse
       hL K hK z hzne hznorm hzero hodd hstationary)).1
 
+
+/-- The unique actual stationary response is covariant under simultaneous
+unit-phase rotation of the normalized kernel vector. -/
+theorem canonicalStationaryEvenResponse_unitPhase
+    {L : ℝ} (hL : 0 < L)
+    (K : ℕ) (hK : 2 ≤ K)
+    (u : ℂ) (hu : ‖u‖ = 1)
+    (z : euclideanEvenBoundaryFlatSubspace K)
+    (hzne : z ≠ 0)
+    (hznorm : ‖z‖ = 1)
+    (hzero : evenCompressedCanonical L K z = 0)
+    (hodd : 0 < parityRayleighBottom .odd L K)
+    (hstationary :
+      productionContactFirstVariation .even L K z = 0) :
+    canonicalStationaryEvenResponse
+        hL K hK (u • z)
+        (by
+          have hu0 : u ≠ 0 := by
+            intro h
+            rw [h, norm_zero] at hu
+            norm_num at hu
+          exact smul_ne_zero hu0 hzne)
+        (by simp [norm_smul, hu, hznorm])
+        (by simp [map_smul, hzero])
+        hodd
+        (by
+          rw [productionContactFirstVariation_unitPhase hL K u hu z,
+              hstationary]) =
+      u • canonicalStationaryEvenResponse
+        hL K hK z hzne hznorm hzero hodd hstationary := by
+  have hu0 : u ≠ 0 := by
+    intro h
+    rw [h, norm_zero] at hu
+    norm_num at hu
+  have hzne' : u • z ≠ 0 := smul_ne_zero hu0 hzne
+  have hznorm' : ‖u • z‖ = 1 := by
+    simp [norm_smul, hu, hznorm]
+  have hzero' : evenCompressedCanonical L K (u • z) = 0 := by
+    simp [map_smul, hzero]
+  have hstationary' :
+      productionContactFirstVariation .even L K (u • z) = 0 := by
+    rw [productionContactFirstVariation_unitPhase hL K u hu z, hstationary]
+  let w :=
+    canonicalStationaryEvenResponse
+      hL K hK z hzne hznorm hzero hodd hstationary
+  have hw :=
+    canonicalStationaryEvenResponse_spec
+      hL K hK z hzne hznorm hzero hodd hstationary
+  have hcand :
+      inner ℂ (u • z) (u • w) = 0 ∧
+        evenCompressedCanonical L K (u • w) =
+          -(canonicalEvenApertureFirst L K (u • z)) := by
+    constructor
+    · simp [inner_smul_left, inner_smul_right, hw.1]
+    · simp [map_smul, hw.2]
+  have hrot :=
+    canonicalStationaryEvenResponse_spec
+      hL K hK (u • z) hzne' hznorm' hzero' hodd hstationary'
+  have huniq :=
+    existsUnique_canonicalStationaryEvenResponse
+      hL K hK (u • z) hzne' hznorm' hzero' hodd hstationary'
+  change
+    canonicalStationaryEvenResponse
+        hL K hK (u • z) hzne' hznorm' hzero' hodd hstationary' =
+      u • w
+  exact huniq.unique hrot hcand
+
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.existsUnique_canonicalStationaryEvenResponse
 #print axioms Zeta23.CCM.canonicalStationaryEvenResponse_spec
+#print axioms Zeta23.CCM.canonicalStationaryEvenResponse_unitPhase
 #print axioms Zeta23.CCM.evenResponseContactOperator_isSymmetric
 #print axioms Zeta23.CCM.strictEven_zeroKernel_is_line
 #print axioms Zeta23.CCM.inner_firstDerivative_zero_of_stationary

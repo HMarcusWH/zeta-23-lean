@@ -550,6 +550,23 @@ theorem canonicalEven_fixedSecond_eq_inner
     canonicalParityApertureSecond] using
     canonicalParity_fixedSecond_eq_inner .even hL K z
 
+
+/-- Simultaneous unit-phase rotation preserves the seam-safe first variation. -/
+theorem productionContactFirstVariation_unitPhase
+    {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (u : ℂ) (hu : ‖u‖ = 1)
+    (z : euclideanEvenBoundaryFlatSubspace K) :
+    productionContactFirstVariation .even L K (u • z) =
+      productionContactFirstVariation .even L K z := by
+  rw [canonicalEven_firstVariation_eq_inner hL K (u • z),
+      canonicalEven_firstVariation_eq_inner hL K z]
+  have hunit : star u * u = 1 := by
+    rw [← Complex.normSq_eq_abs, Complex.normSq_eq_conj_mul_self]
+    simp [hu]
+  simp only [map_smul, inner_smul_left, inner_smul_right]
+  rw [hunit, one_mul]
+
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.canonicalParity_fixedEnergy_hasDerivAt

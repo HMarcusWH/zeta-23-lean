@@ -8,7 +8,7 @@ noncomputable section
 namespace Zeta23.CCM
 
 open Complex Matrix Set
-open scoped BigOperators ComplexConjugate
+open scoped BigOperators ComplexConjugate ArithmeticFunction
 
 /-!
 # Post-#282 compressed seam jets
@@ -63,18 +63,20 @@ theorem hasDerivAt_primeSourceCoordinate
     (q : ℕ) {L : ℝ} (hL : L ≠ 0) :
     HasDerivAt (primeSourceCoordinate q)
       (Real.log q / L ^ 2) L := by
-  unfold primeSourceCoordinate
-  convert
+  simpa [primeSourceCoordinate] using
     (hasDerivAt_const L (1 : ℝ)).sub
       ((hasDerivAt_const L (Real.log q)).div
-        (hasDerivAt_id L) hL) using 1 <;>
-    field_simp [hL] <;> ring
+        (hasDerivAt_id L) hL)
 
 theorem hasDerivAt_primeSourceCoordinate_first
     (q : ℕ) {L : ℝ} (hL : L ≠ 0) :
     HasDerivAt (fun s : ℝ => Real.log q / s ^ 2)
       (-2 * Real.log q / L ^ 3) L := by
-  fun_prop (disch := assumption)
+  have hden : HasDerivAt (fun s : ℝ => s ^ 2) (2 * L) L := by
+    simpa [pow_two] using (hasDerivAt_id L).mul (hasDerivAt_id L)
+  have h :=
+    (hasDerivAt_const L (Real.log q)).div hden (pow_ne_zero 2 hL)
+  convert h using 1 <;> field_simp [hL] <;> ring
 
 theorem sourceAtomRealEnergyDerivative_zero_of_boundaryFlat
     (K : ℕ)
@@ -279,7 +281,7 @@ theorem primeSourceMatrixFirstApertureJet_log_mulVec_zero
           (x : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0 := by
   have hcoord := primeSourceCoordinate_log_self q hq
   rw [primeSourceMatrixFirstApertureJet, hcoord]
-  simp only [Matrix.smul_mulVec_assoc]
+  simp only [Matrix.smul_mulVec]
   rw [sourceFirstJetMatrix_zero_mulVec_of_sum_zero K _
     (parityBoundaryFlat_coordinateSum_zero p K x)]
   simp
@@ -296,7 +298,7 @@ theorem primeSourceMatrixSecondApertureJet_log_mulVec_zero
           (x : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0 := by
   have hcoord := primeSourceCoordinate_log_self q hq
   rw [primeSourceMatrixSecondApertureJet, hcoord, sourceSecondJetMatrix_zero]
-  simp only [Matrix.add_mulVec, Matrix.smul_mulVec_assoc, Matrix.zero_mulVec,
+  simp only [Matrix.add_mulVec, Matrix.smul_mulVec, Matrix.zero_mulVec,
     smul_zero, add_zero]
   rw [sourceFirstJetMatrix_zero_mulVec_of_sum_zero K _
     (parityBoundaryFlat_coordinateSum_zero p K x)]
