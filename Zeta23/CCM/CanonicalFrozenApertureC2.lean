@@ -185,131 +185,6 @@ theorem frozenCanonicalSourceMatrix_eq_pred_sub_entering
 
 /-- At a seam the entering atom contributes zero value, zero first legal
 quadratic jet and zero second legal quadratic jet. -/
-theorem frozenSource_seam_energy_jets_agree
-    (q K : ℕ) (hq : 2 ≤ q)
-    (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
-    (hflat : BoundaryFlatCoefficients K
-      ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x)) :
-    let L := Real.log (q : ℝ)
-    Complex.re
-      (inner ℂ
-        ((frozenCanonicalSourceMatrix q L K).toEuclideanLin x) x) =
-      Complex.re
-        (inner ℂ
-          ((frozenCanonicalSourceMatrix (q - 1) L K).toEuclideanLin x) x) ∧
-    deriv
-      (fun s : ℝ =>
-        Complex.re
-          (inner ℂ
-            ((frozenCanonicalSourceMatrix q s K).toEuclideanLin x) x)) L =
-      deriv
-        (fun s : ℝ =>
-          Complex.re
-            (inner ℂ
-              ((frozenCanonicalSourceMatrix (q - 1) s K).toEuclideanLin x) x)) L ∧
-    deriv
-      (fun s : ℝ =>
-        deriv
-          (fun r : ℝ =>
-            Complex.re
-              (inner ℂ
-                ((frozenCanonicalSourceMatrix q r K).toEuclideanLin x) x)) s) L =
-      deriv
-        (fun s : ℝ =>
-          deriv
-            (fun r : ℝ =>
-              Complex.re
-                (inner ℂ
-                  ((frozenCanonicalSourceMatrix (q - 1) r K).toEuclideanLin x) x)) s) L := by
-  dsimp
-  constructor
-  · rw [frozenCanonicalSourceMatrix_log_nat_eq_pred q K hq]
-  · constructor
-    · have hdiff :
-          (fun s : ℝ =>
-            Complex.re
-              (inner ℂ
-                ((frozenCanonicalSourceMatrix q s K).toEuclideanLin x) x)) =
-          (fun s : ℝ =>
-            Complex.re
-              (inner ℂ
-                ((frozenCanonicalSourceMatrix (q - 1) s K).toEuclideanLin x) x) -
-              enteringPrimeSourceEnergy q K x s) := by
-          funext s
-          rw [← matrixRealEnergy_eq_re_inner_apply_self,
-            ← matrixRealEnergy_eq_re_inner_apply_self]
-          rw [frozenCanonicalSourceMatrix_eq_pred_sub_entering q K hq s,
-            matrixRealEnergy_sub]
-          have henter :
-              matrixRealEnergy
-                  (primeSourceWeight q •
-                    sourceMatrix (primeSourceCoordinate q s) K) x =
-                enteringPrimeSourceEnergy q K x s := by
-            simpa [enteringPrimeSourceEnergy, sourceAtomRealEnergy,
-              primeSourceWeight] using
-              (matrixRealEnergy_smul_real
-                (Λ q / Real.sqrt q)
-                (sourceMatrix (primeSourceCoordinate q s) K) x)
-          rw [henter]
-      rw [hdiff]
-      rw [deriv_fun_sub]
-      · rw [enteringPrimeSourceEnergy_firstJet_zero q K hq x hflat, sub_zero]
-      · exact
-          (contDiffAt_frozenCanonicalSourceMatrix_apply_pos (q - 1) K 0 0
-            (Real.log_pos (by exact_mod_cast hq))).differentiableAt
-      · exact
-          (show DifferentiableAt ℝ (enteringPrimeSourceEnergy q K x)
-              (Real.log q) from
-            differentiableAt_of_deriv_ne_zero_or_deriv_eq_zero
-              (Or.inr (enteringPrimeSourceEnergy_firstJet_zero q K hq x hflat)))
-    · have hjet :=
-        enteringPrimeSourceEnergy_secondJet_zero q K hq x hflat
-      have hdiff :
-          (fun s : ℝ =>
-            deriv
-              (fun r : ℝ =>
-                Complex.re
-                  (inner ℂ
-                    ((frozenCanonicalSourceMatrix q r K).toEuclideanLin x) x)) s) =
-          (fun s : ℝ =>
-            deriv
-              (fun r : ℝ =>
-                Complex.re
-                  (inner ℂ
-                    ((frozenCanonicalSourceMatrix (q - 1) r K).toEuclideanLin x) x)) s -
-            deriv (enteringPrimeSourceEnergy q K x) s) := by
-          funext s
-          rw [show
-            (fun r : ℝ =>
-              Complex.re
-                (inner ℂ
-                  ((frozenCanonicalSourceMatrix q r K).toEuclideanLin x) x)) =
-            (fun r : ℝ =>
-              Complex.re
-                (inner ℂ
-                  ((frozenCanonicalSourceMatrix (q - 1) r K).toEuclideanLin x) x) -
-                enteringPrimeSourceEnergy q K x r) by
-              funext r
-              rw [← matrixRealEnergy_eq_re_inner_apply_self,
-                ← matrixRealEnergy_eq_re_inner_apply_self]
-              rw [frozenCanonicalSourceMatrix_eq_pred_sub_entering q K hq r,
-                matrixRealEnergy_sub]
-              have henter :
-                  matrixRealEnergy
-                      (primeSourceWeight q •
-                        sourceMatrix (primeSourceCoordinate q r) K) x =
-                    enteringPrimeSourceEnergy q K x r := by
-                simpa [enteringPrimeSourceEnergy, sourceAtomRealEnergy,
-                  primeSourceWeight] using
-                  (matrixRealEnergy_smul_real
-                    (Λ q / Real.sqrt q)
-                    (sourceMatrix (primeSourceCoordinate q r) K) x)
-              rw [henter]]
-          rw [deriv_sub]
-      rw [hdiff]
-      rw [deriv_fun_sub]
-      rw [hjet, sub_zero]
-
 /-! ## Matrix-valued frozen derivatives and legal compression -/
 
 theorem contDiffAt_frozenCanonicalSourceMatrix_pos
@@ -333,7 +208,7 @@ theorem hasDerivAt_frozenCanonicalSourceMatrix_pos
   intro j
   simpa [frozenCanonicalSourceFirstMatrix] using
     (contDiffAt_frozenCanonicalSourceMatrix_apply_pos Q K i j hL)
-      |>.differentiableAt.hasDerivAt
+      |>.differentiableAt (by norm_num) |>.hasDerivAt
 
 theorem hasDerivAt_frozenCanonicalSourceFirstMatrix_pos
     (Q K : ℕ) {L : ℝ} (hL : 0 < L) :
@@ -345,6 +220,48 @@ theorem hasDerivAt_frozenCanonicalSourceFirstMatrix_pos
   rw [hasDerivAt_pi]
   intro j
   exact hasDerivAt_frozenCanonicalSourceFirstMatrix_apply_pos Q K i j hL
+
+
+/-- For fixed carrier data, real matrix energy is a continuous real-linear
+functional of the ambient complex matrix. -/
+private noncomputable def matrixRealEnergyLinearMap
+    (K : ℕ)
+    (x : EuclideanSpace ℂ (Fin (2 * K + 1))) :
+    Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ →ₗ[ℝ] ℝ where
+  toFun M := matrixRealEnergy M x
+  map_add' A B := matrixRealEnergy_add A B x
+  map_smul' a A := by
+    simpa [Complex.real_smul] using matrixRealEnergy_smul_real a A x
+
+private noncomputable def matrixRealEnergyCLM
+    (K : ℕ)
+    (x : EuclideanSpace ℂ (Fin (2 * K + 1))) :
+    Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ →L[ℝ] ℝ :=
+  LinearMap.toContinuousLinearMap (matrixRealEnergyLinearMap K x)
+
+private theorem hasDerivAt_frozenCanonicalSourceEnergy_pos
+    (Q K : ℕ)
+    (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+    {L : ℝ} (hL : 0 < L) :
+    HasDerivAt
+      (fun s : ℝ => matrixRealEnergy (frozenCanonicalSourceMatrix Q s K) x)
+      (matrixRealEnergy (frozenCanonicalSourceFirstMatrix Q L K) x) L := by
+  have hM := hasDerivAt_frozenCanonicalSourceMatrix_pos Q K hL
+  have hT := (matrixRealEnergyCLM K x).hasFDerivAt
+  simpa [matrixRealEnergyCLM, matrixRealEnergyLinearMap, Function.comp_def] using
+    hT.comp_hasDerivAt L hM
+
+private theorem hasDerivAt_frozenCanonicalSourceFirstEnergy_pos
+    (Q K : ℕ)
+    (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+    {L : ℝ} (hL : 0 < L) :
+    HasDerivAt
+      (fun s : ℝ => matrixRealEnergy (frozenCanonicalSourceFirstMatrix Q s K) x)
+      (matrixRealEnergy (frozenCanonicalSourceSecondMatrix Q L K) x) L := by
+  have hM := hasDerivAt_frozenCanonicalSourceFirstMatrix_pos Q K hL
+  have hT := (matrixRealEnergyCLM K x).hasFDerivAt
+  simpa [matrixRealEnergyCLM, matrixRealEnergyLinearMap, Function.comp_def] using
+    hT.comp_hasDerivAt L hM
 
 /-- Fixed legal compression as one continuous complex-linear map of the ambient
 matrix.  This lets matrix-valued aperture derivatives be compressed only after
@@ -476,6 +393,137 @@ theorem frozenCanonicalSourceSecondMatrix_eq_pred_sub_enteringSecond
   have huniq := hqD'.unique hcalc
   simpa [w, Complex.real_smul] using huniq
 
+
+private theorem sourceFirstJetMatrix_zero_energy_of_boundaryFlat
+    (K : ℕ)
+    (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+    (hflat : BoundaryFlatCoefficients K
+      ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x)) :
+    matrixRealEnergy (sourceFirstJetMatrix K 0) x = 0 := by
+  rw [matrixRealEnergy_eq_re_inner_apply_self]
+  have hmul :=
+    sourceFirstJetMatrix_zero_mulVec_of_sum_zero K
+      ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x)
+      (sum_eq_zero_of_boundaryFlat hflat)
+  have hamb :
+      Matrix.toEuclideanLin (sourceFirstJetMatrix K 0) x = 0 := by
+    apply (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ).injective
+    simpa using hmul
+  rw [hamb]
+  simp
+
+private theorem primeSourceMatrixFirstApertureJet_log_energy_zero
+    (q K : ℕ) (hq : 2 ≤ q)
+    (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+    (hflat : BoundaryFlatCoefficients K
+      ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x)) :
+    matrixRealEnergy
+      (primeSourceMatrixFirstApertureJet q (Real.log q) K) x = 0 := by
+  have hcoord := primeSourceCoordinate_log_self q hq
+  rw [primeSourceMatrixFirstApertureJet, hcoord]
+  rw [matrixRealEnergy_smul_real,
+    sourceFirstJetMatrix_zero_energy_of_boundaryFlat K x hflat]
+  ring
+
+private theorem primeSourceMatrixSecondApertureJet_log_energy_zero
+    (q K : ℕ) (hq : 2 ≤ q)
+    (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+    (hflat : BoundaryFlatCoefficients K
+      ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x)) :
+    matrixRealEnergy
+      (primeSourceMatrixSecondApertureJet q (Real.log q) K) x = 0 := by
+  have hcoord := primeSourceCoordinate_log_self q hq
+  rw [primeSourceMatrixSecondApertureJet, hcoord, sourceSecondJetMatrix_zero,
+    matrixRealEnergy_add, matrixRealEnergy_smul_real,
+    matrixRealEnergy_smul_real,
+    sourceFirstJetMatrix_zero_energy_of_boundaryFlat K x hflat]
+  simp
+
+/-- At a seam the two frozen continuations have identical value and first two
+quadratic aperture jets on every boundary-flat carrier. -/
+theorem frozenSource_seam_energy_jets_agree
+    (q K : ℕ) (hq : 2 ≤ q)
+    (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+    (hflat : BoundaryFlatCoefficients K
+      ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x)) :
+    let L := Real.log (q : ℝ)
+    Complex.re
+      (inner ℂ
+        ((frozenCanonicalSourceMatrix q L K).toEuclideanLin x) x) =
+      Complex.re
+        (inner ℂ
+          ((frozenCanonicalSourceMatrix (q - 1) L K).toEuclideanLin x) x) ∧
+    deriv
+      (fun s : ℝ =>
+        Complex.re
+          (inner ℂ
+            ((frozenCanonicalSourceMatrix q s K).toEuclideanLin x) x)) L =
+      deriv
+        (fun s : ℝ =>
+          Complex.re
+            (inner ℂ
+              ((frozenCanonicalSourceMatrix (q - 1) s K).toEuclideanLin x) x)) L ∧
+    deriv
+      (fun s : ℝ =>
+        deriv
+          (fun r : ℝ =>
+            Complex.re
+              (inner ℂ
+                ((frozenCanonicalSourceMatrix q r K).toEuclideanLin x) x)) s) L =
+      deriv
+        (fun s : ℝ =>
+          deriv
+            (fun r : ℝ =>
+              Complex.re
+                (inner ℂ
+                  ((frozenCanonicalSourceMatrix (q - 1) r K).toEuclideanLin x) x)) s) L := by
+  dsimp
+  simp_rw [← matrixRealEnergy_eq_re_inner_apply_self]
+  have hlog : 0 < Real.log (q : ℝ) :=
+    Real.log_pos (by exact_mod_cast hq)
+  constructor
+  · rw [frozenCanonicalSourceMatrix_log_nat_eq_pred q K hq]
+  · constructor
+    · rw [(hasDerivAt_frozenCanonicalSourceEnergy_pos q K x hlog).deriv,
+        (hasDerivAt_frozenCanonicalSourceEnergy_pos (q - 1) K x hlog).deriv]
+      rw [frozenCanonicalSourceFirstMatrix_eq_pred_sub_enteringFirst
+          q K hq hlog,
+        matrixRealEnergy_sub, matrixRealEnergy_smul_real,
+        primeSourceMatrixFirstApertureJet_log_energy_zero q K hq x hflat]
+      ring
+    · have hqD :
+          (fun s : ℝ =>
+            deriv
+              (fun r : ℝ =>
+                matrixRealEnergy (frozenCanonicalSourceMatrix q r K) x) s) =ᶠ[
+              𝓝 (Real.log q)]
+            (fun s : ℝ =>
+              matrixRealEnergy (frozenCanonicalSourceFirstMatrix q s K) x) := by
+          filter_upwards [Ioi_mem_nhds hlog] with s hs
+          exact (hasDerivAt_frozenCanonicalSourceEnergy_pos q K x hs).deriv
+      have hpD :
+          (fun s : ℝ =>
+            deriv
+              (fun r : ℝ =>
+                matrixRealEnergy (frozenCanonicalSourceMatrix (q - 1) r K) x) s) =ᶠ[
+              𝓝 (Real.log q)]
+            (fun s : ℝ =>
+              matrixRealEnergy
+                (frozenCanonicalSourceFirstMatrix (q - 1) s K) x) := by
+          filter_upwards [Ioi_mem_nhds hlog] with s hs
+          exact
+            (hasDerivAt_frozenCanonicalSourceEnergy_pos (q - 1) K x hs).deriv
+      rw [Filter.EventuallyEq.deriv_eq hqD,
+        Filter.EventuallyEq.deriv_eq hpD]
+      rw [(hasDerivAt_frozenCanonicalSourceFirstEnergy_pos q K x hlog).deriv,
+        (hasDerivAt_frozenCanonicalSourceFirstEnergy_pos
+          (q - 1) K x hlog).deriv]
+      rw [frozenCanonicalSourceSecondMatrix_eq_pred_sub_enteringSecond
+          q K hq hlog,
+        matrixRealEnergy_sub, matrixRealEnergy_smul_real,
+        primeSourceMatrixSecondApertureJet_log_energy_zero q K hq x hflat]
+      ring
+
 theorem parityCompressionCLM_primeFirst_log_eq_zero
     (q K : ℕ) (hq : 2 ≤ q) (p : ReversalParity) :
     parityCompressionCLM p K
@@ -556,7 +604,16 @@ theorem continuousAt_frozenCanonicalSourceSecondMatrix_pos
   intro j
   have h :=
     contDiffAt_frozenCanonicalSourceMatrix_apply_pos Q K i j hL
-  have h2 := h.deriv_contDiffAt.deriv_contDiffAt.continuousAt
+  have h1 :
+      ContDiffAt ℝ 1
+        (deriv (fun s : ℝ => frozenCanonicalSourceMatrix Q s K i j)) L := by
+    simpa using h.derivWithin (m := 1) (by norm_num)
+  have h0 :
+      ContDiffAt ℝ 0
+        (deriv (deriv (fun s : ℝ =>
+          frozenCanonicalSourceMatrix Q s K i j))) L := by
+    simpa using h1.derivWithin (m := 0) (by norm_num)
+  have h2 := h0.continuousAt
   simpa [frozenCanonicalSourceFirstMatrix,
     frozenCanonicalSourceSecondMatrix] using h2
 
