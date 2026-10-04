@@ -381,7 +381,7 @@ theorem inner_canonicalFirst_zero_of_stationary
       Complex.re (inner ℂ (canonicalEvenApertureFirst L K z) z) = 0 := by
     rw [← canonicalEven_firstVariation_eq_inner hL K z]
     exact hstationary
-  have hsym := canonicalEvenApertureFirst_isSymmetric L K
+  have hsym := canonicalEvenApertureFirst_isSymmetric hL K
   have him :
       Complex.im (inner ℂ (canonicalEvenApertureFirst L K z) z) = 0 := by
     simpa using hsym.im_inner_apply_self z
