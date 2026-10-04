@@ -859,6 +859,64 @@ theorem sourceAtomRealEnergyDerivative_endpoints_zero
       hri.1, hri.2]
     ring
 
+private theorem hasDerivAt_sourceAtomRealEnergySecondDerivative_from_contDiff
+    (K : ℕ) (z : EuclideanSpace ℂ (Fin (2 * K + 1))) (u : ℝ) :
+    HasDerivAt (sourceAtomRealEnergySecondDerivative K z)
+      (deriv (sourceAtomRealEnergySecondDerivative K z) u) u :=
+  ((contDiff_two_sourceAtomRealEnergySecondDerivative K z).differentiable
+    (by norm_num) u).hasDerivAt
+
+/-- Boundary-flat source energy has zero second through fourth source jets at
+the entering endpoint.  This packages exactly the endpoint information used by
+the t²-weighted second variation. -/
+theorem sourceAtomRealEnergy_second_through_four_zero
+    (K : ℕ) (z : euclideanEvenBoundaryFlatSubspace K) :
+    sourceAtomRealEnergySecondDerivative K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1))) 0 = 0 ∧
+      deriv (sourceAtomRealEnergySecondDerivative K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))) 0 = 0 ∧
+      deriv (deriv (sourceAtomRealEnergySecondDerivative K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1))))) 0 = 0 := by
+  let x : EuclideanSpace ℂ (Fin (2 * K + 1)) := z
+  have hflat := evenBoundaryFlatRawCoefficients_boundaryFlat K z
+  have hj :=
+    sourceAtomRealEnergy_boundaryFlat_jets_through_six K x hflat
+  have h2 : iteratedDeriv 2 (sourceAtomRealEnergy K x) 0 = 0 :=
+    hj 2 (by omega) (by omega)
+  have h3 : iteratedDeriv 3 (sourceAtomRealEnergy K x) 0 = 0 :=
+    hj 3 (by omega) (by omega)
+  have h4 : iteratedDeriv 4 (sourceAtomRealEnergy K x) 0 = 0 :=
+    hj 4 (by omega) (by omega)
+  have hderiv1 :
+      deriv (sourceAtomRealEnergy K x) =
+        sourceAtomRealEnergyDerivative K x := by
+    funext t
+    exact (hasDerivAt_sourceAtomRealEnergy_transport K x t).deriv
+  have hderiv2 :
+      deriv (sourceAtomRealEnergyDerivative K x) =
+        sourceAtomRealEnergySecondDerivative K x := by
+    funext t
+    exact (hasDerivAt_sourceAtomRealEnergyDerivative_transport K x t).deriv
+  have hiter2 :
+      iteratedDeriv 2 (sourceAtomRealEnergy K x) =
+        sourceAtomRealEnergySecondDerivative K x := by
+    rw [show 2 = 1 + 1 by norm_num, iteratedDeriv_succ, iteratedDeriv_one,
+      hderiv1, hderiv2]
+  have hiter3 :
+      iteratedDeriv 3 (sourceAtomRealEnergy K x) =
+        deriv (sourceAtomRealEnergySecondDerivative K x) := by
+    rw [show 3 = 2 + 1 by norm_num, iteratedDeriv_succ, hiter2]
+  have hiter4 :
+      iteratedDeriv 4 (sourceAtomRealEnergy K x) =
+        deriv (deriv (sourceAtomRealEnergySecondDerivative K x)) := by
+    rw [show 4 = 3 + 1 by norm_num, iteratedDeriv_succ, hiter3]
+  constructor
+  · rw [← congrFun hiter2 0, h2]
+  constructor
+  · rw [← congrFun hiter3 0, h3]
+  · rw [← congrFun hiter4 0, h4]
+
+
 /-- The first weighted physical derivative has the endpoint jets needed by the
 compact even lift. -/
 theorem productionFirstDerivativePhysicalRaw_liftJets
@@ -997,63 +1055,6 @@ theorem productionFirstDerivativeTest_authority
 
 
 /-! ## Second and mixed weighted derivative lifts -/
-
-private theorem hasDerivAt_sourceAtomRealEnergySecondDerivative_from_contDiff
-    (K : ℕ) (z : EuclideanSpace ℂ (Fin (2 * K + 1))) (u : ℝ) :
-    HasDerivAt (sourceAtomRealEnergySecondDerivative K z)
-      (deriv (sourceAtomRealEnergySecondDerivative K z) u) u :=
-  ((contDiff_two_sourceAtomRealEnergySecondDerivative K z).differentiable
-    (by norm_num) u).hasDerivAt
-
-/-- Boundary-flat source energy has zero second through fourth source jets at
-the entering endpoint.  This packages exactly the endpoint information used by
-the t²-weighted second variation. -/
-theorem sourceAtomRealEnergy_second_through_four_zero
-    (K : ℕ) (z : euclideanEvenBoundaryFlatSubspace K) :
-    sourceAtomRealEnergySecondDerivative K
-        (z : EuclideanSpace ℂ (Fin (2 * K + 1))) 0 = 0 ∧
-      deriv (sourceAtomRealEnergySecondDerivative K
-        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))) 0 = 0 ∧
-      deriv (deriv (sourceAtomRealEnergySecondDerivative K
-        (z : EuclideanSpace ℂ (Fin (2 * K + 1))))) 0 = 0 := by
-  let x : EuclideanSpace ℂ (Fin (2 * K + 1)) := z
-  have hflat := evenBoundaryFlatRawCoefficients_boundaryFlat K z
-  have hj :=
-    sourceAtomRealEnergy_boundaryFlat_jets_through_six K x hflat
-  have h2 : iteratedDeriv 2 (sourceAtomRealEnergy K x) 0 = 0 :=
-    hj 2 (by omega) (by omega)
-  have h3 : iteratedDeriv 3 (sourceAtomRealEnergy K x) 0 = 0 :=
-    hj 3 (by omega) (by omega)
-  have h4 : iteratedDeriv 4 (sourceAtomRealEnergy K x) 0 = 0 :=
-    hj 4 (by omega) (by omega)
-  have hderiv1 :
-      deriv (sourceAtomRealEnergy K x) =
-        sourceAtomRealEnergyDerivative K x := by
-    funext t
-    exact (hasDerivAt_sourceAtomRealEnergy_transport K x t).deriv
-  have hderiv2 :
-      deriv (sourceAtomRealEnergyDerivative K x) =
-        sourceAtomRealEnergySecondDerivative K x := by
-    funext t
-    exact (hasDerivAt_sourceAtomRealEnergyDerivative_transport K x t).deriv
-  have hiter2 :
-      iteratedDeriv 2 (sourceAtomRealEnergy K x) =
-        sourceAtomRealEnergySecondDerivative K x := by
-    rw [show 2 = 1 + 1 by norm_num, iteratedDeriv_succ, iteratedDeriv_one,
-      hderiv1, hderiv2]
-  have hiter3 :
-      iteratedDeriv 3 (sourceAtomRealEnergy K x) =
-        deriv (sourceAtomRealEnergySecondDerivative K x) := by
-    rw [show 3 = 2 + 1 by norm_num, iteratedDeriv_succ, hiter2]
-  have hiter4 :
-      iteratedDeriv 4 (sourceAtomRealEnergy K x) =
-        deriv (deriv (sourceAtomRealEnergySecondDerivative K x)) := by
-    rw [show 4 = 3 + 1 by norm_num, iteratedDeriv_succ, hiter3]
-  constructor
-  · rw [← congrFun hiter2 0, h2]
-  constructor
-  · rw [← congrFun hiter3 0, h3]
-  · rw [← congrFun hiter4 0, h4]
 
 theorem productionSecondDerivativePhysicalRaw_liftJets
     {L : ℝ} (hL : 0 < L) (K : ℕ)
