@@ -5,6 +5,7 @@ from pathlib import Path
 HERE=Path(__file__).resolve().parent
 ROUTE=HERE.parent
 RHRC=ROUTE.parents[1]
+ROOT=RHRC.parents[1]
 sys.path.insert(0,str(ROUTE))
 sys.path.insert(0,str(RHRC/"closure_batch"))
 
@@ -128,6 +129,34 @@ class ContactCalculusTests(unittest.TestCase):
         rec=out["calibration"]["left"]["energy"]
         rec["sign"]="NEGATIVE" if rec["sign"]!="NEGATIVE" else "POSITIVE"
         with self.assertRaises(SystemExit): contract.validate_results_dict(out)
+
+    def test_post282_claims_are_candidate_bound_not_promoted(self):
+        expected={
+            "R003_COMPRESSED_PRODUCTION_C2":"Zeta23.CCM.canonicalEvenCompressedC2_proved",
+            "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE":"Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap",
+            "R003_INHERITED_FIRST_VARIATION_RESTRICTION":"Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited",
+            "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER":"Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier",
+        }
+        registry=json.loads((RHRC/"CLAIM_REGISTRY.json").read_text())
+        claims={x["id"]:x for x in registry["claims"]}
+        for cid,theorem in expected.items():
+            self.assertEqual(claims[cid]["status"],"OPEN")
+            self.assertEqual(claims[cid]["promotion_cap"],"OPEN")
+            self.assertTrue(claims[cid]["candidate_binding"])
+            self.assertEqual(claims[cid]["theorem"],theorem)
+        r003=json.loads((RHRC/"R003_PROMOTED_BINDINGS.json").read_text())
+        self.assertEqual({x["id"] for x in r003["candidate_bindings"]},set(expected))
+        registered=json.loads((RHRC/"REGISTERED_THEOREM_BINDINGS.json").read_text())
+        self.assertEqual({x["id"] for x in registered["candidate_bindings"]},set(expected))
+        proved_ids={x["id"] for x in registered["bindings"]}
+        self.assertTrue(set(expected).isdisjoint(proved_ids))
+        claim_lean=(ROOT/"Zeta23/CCM/ClaimBindings.lean").read_text()
+        registered_lean=(ROOT/"Zeta23/RHRC/RegisteredClaimBindings.lean").read_text()
+        for theorem in expected.values():
+            self.assertIn(f"#check {theorem}",claim_lean)
+            self.assertIn(f"#print axioms {theorem}",claim_lean)
+            self.assertIn(f"#check {theorem}",registered_lean)
+            self.assertIn(f"#print axioms {theorem}",registered_lean)
 
     def test_x01_is_eligibility_derived(self):
         x01=self.out["hypothesis_dispositions"]["X01_INHERITED_RESPONSE_BALANCE"]
