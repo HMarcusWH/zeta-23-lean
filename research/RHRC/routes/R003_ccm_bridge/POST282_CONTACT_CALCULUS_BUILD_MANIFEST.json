@@ -201,7 +201,13 @@
     ".github/workflows/rhrc.yml",
     ".github/workflows/rhrc_closure_campaign.yml",
     ".github/workflows/rhrc_post281_generated_contact_frontier.yml",
-    "research/RHRC/control_v2/CONTROL_STATE.json"
+    "research/RHRC/control_v2/CONTROL_STATE.json",
+    "research/RHRC/routes/ROUTE_REGISTRY.json",
+    "research/RHRC/tools/claim_lint.py",
+    "research/RHRC/tools/promoted_binding_lint.py",
+    "research/RHRC/tools/registered_theorem_binding_lint.py",
+    "research/RHRC/routes/R003_ccm_bridge/tests/test_post282_contact_calculus.py",
+    "research/RHRC/routes/R003_ccm_bridge/write_post282_contact_calculus_receipt.py"
   ],
   "conditional_binding_updates": [
     "research/RHRC/CLAIM_REGISTRY.json",
@@ -325,5 +331,6 @@
       "research/RHRC/closure_batch/OBLIGATIONS.json"
     ],
     "reason": "No terminal or closure obstruction is discharged by the post-282 supporting claims; OBS-060O, odd/tie closure, and RH remain OPEN. Promotion to PROVED_UNCONDITIONAL is deferred until exact-head compiler/axiom/proof-escape/contract validation succeeds."
-  }
+  },
+  "conditional_binding_updates_note": "The four post-282 theorem families are integrated now as OPEN candidate bindings. ClosureObligationBindings and closure_batch/OBLIGATIONS remain intentionally unpromoted because no terminal closure obligation is discharged before OBS-060O/odd-tie closure."
 }
