@@ -588,6 +588,221 @@ theorem stationarySchurScalar_firstDerivative_eq_fixed
   rw [Filter.EventuallyEq.deriv_eq heq, henv]
   rfl
 
+
+/-! ## Contact jets of the inverse response -/
+
+theorem deriv_stationarySchurCoupling
+    {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
+    (hF : ContDiffAt ℝ 2 F x) :
+    deriv (fun s => stationarySchurCoupling F z s) x =
+      (stationarySchurComplement z).orthogonalProjectionOnto
+        ((deriv F x) z) := by
+  have hFz :=
+    (hF.differentiableAt.hasDerivAt).clm_apply
+      (hasDerivAt_const x z)
+  have hp :=
+    (stationarySchurComplement z).orthogonalProjectionOnto.hasFDerivAt
+      |>.comp_hasDerivAt x hFz
+  simpa [stationarySchurCoupling] using hp.deriv
+
+/-- Differentiating the exact inverse-block equation at a zero mode. -/
+theorem stationarySchurBlock_response_deriv
+    {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
+    (hF : ContDiffAt ℝ 2 F x)
+    (hz : F x z = 0)
+    (hC : (stationarySchurBlock F z x).IsInvertible) :
+    stationarySchurBlock F z x
+        (deriv (fun s => stationarySchurResponse F z s) x) =
+      deriv (fun s => stationarySchurCoupling F z s) x := by
+  have hCev := eventually_stationarySchurBlock_isInvertible hF hC
+  have heq :
+      (fun s =>
+        stationarySchurBlock F z s
+          (stationarySchurResponse F z s)) =ᶠ[𝓝 x]
+        (fun s => stationarySchurCoupling F z s) := by
+    filter_upwards [hCev] with s hs
+    exact stationarySchurBlock_response hs
+  have hblockD :=
+    (contDiffAt_stationarySchurBlock hF).differentiableAt.hasDerivAt
+  have hrespD :=
+    (contDiffAt_stationarySchurResponse hF hC).differentiableAt.hasDerivAt
+  have hlhs := hblockD.clm_apply hrespD
+  have hrhs :=
+    (contDiffAt_stationarySchurCoupling hF).differentiableAt.hasDerivAt
+  have hlhs' := hlhs.congr_of_eventuallyEq heq
+  have hcoeff := hlhs'.unique hrhs
+  have hr0 := stationarySchurResponse_eq_zero_of_kernel hz
+  simpa [hr0] using hcoeff
+
+/-- Symmetry is inherited by the real aperture derivative of a differentiable
+family. -/
+theorem deriv_isSymmetric_of_eventually
+    {F : ℝ → V →L[ℂ] V} {x : ℝ}
+    (hF : DifferentiableAt ℝ F x)
+    (hsym : ∀ᶠ s in 𝓝 x,
+      LinearMap.IsSymmetric (𝕜 := ℂ) (F s).toLinearMap) :
+    LinearMap.IsSymmetric (𝕜 := ℂ) (deriv F x).toLinearMap := by
+  intro u v
+  have hFu :=
+    (hF.hasDerivAt.clm_apply (hasDerivAt_const x u)).inner ℂ
+      (hasDerivAt_const x v)
+  have hFv :=
+    (hasDerivAt_const x u).inner ℂ
+      (hF.hasDerivAt.clm_apply (hasDerivAt_const x v))
+  have heq :
+      (fun s => inner ℂ (F s u) v) =ᶠ[𝓝 x]
+        (fun s => inner ℂ u (F s v)) := by
+    filter_upwards [hsym] with s hs
+    exact hs u v
+  exact (hFu.congr_of_eventuallyEq heq).unique hFv
+
+/-- The derivative of the inverse response is the negative stationary
+eigenbranch response. -/
+theorem deriv_stationarySchurResponse_eq_neg
+    {F : ℝ → V →L[ℂ] V} {z w : V} {x : ℝ}
+    (hF : ContDiffAt ℝ 2 F x)
+    (hFsym : LinearMap.IsSymmetric (𝕜 := ℂ) (F x).toLinearMap)
+    (hz : F x z = 0)
+    (hznorm : ‖z‖ = 1)
+    (hker : ∀ v : V, F x v = 0 → ∃ a : ℂ, v = a • z)
+    (hwperp : inner ℂ z w = 0)
+    (hw : F x w = -((deriv F x) z)) :
+    ((deriv (fun s => stationarySchurResponse F z s) x :
+        stationarySchurComplement z) : V) = -w := by
+  have hC :=
+    stationarySchurBlock_isInvertible_of_kernel_line
+      hznorm hFsym hz hker
+  have hresp :=
+    stationarySchurBlock_response_deriv hF hz hC
+  let ww : stationarySchurComplement z := ⟨w, hwperp⟩
+  have hcandidate :
+      stationarySchurBlock F z x (-ww) =
+        deriv (fun s => stationarySchurCoupling F z s) x := by
+    apply Subtype.ext
+    rw [deriv_stationarySchurCoupling hF]
+    change
+      (stationarySchurComplement z).orthogonalProjectionOnto
+          (F x (-w)) =
+        (stationarySchurComplement z).orthogonalProjectionOnto
+          ((deriv F x) z)
+    rw [map_neg, hw, neg_neg]
+  have hinj :=
+    stationarySchurBlock_injective_of_kernel_line
+      hznorm hFsym hz hker
+  have heq :
+      deriv (fun s => stationarySchurResponse F z s) x = -ww :=
+    hinj (hresp.trans hcandidate.symm)
+  exact congrArg Subtype.val heq
+
+/-- Fixed-vector energy has the expected second aperture derivative. -/
+theorem stationaryFixedEnergy_secondDerivative
+    {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
+    (hF : ContDiffAt ℝ 2 F x) :
+    deriv (deriv (fun s => Complex.re (inner ℂ (F s z) z))) x =
+      Complex.re (inner ℂ ((deriv (deriv F) x) z) z) := by
+  let a : ℝ → ℝ := fun s => Complex.re (inner ℂ (F s z) z)
+  let a1 : ℝ → ℝ := fun s =>
+    Complex.re (inner ℂ ((deriv F s) z) z)
+  have hformula : deriv a =ᶠ[𝓝 x] a1 := by
+    filter_upwards [hF.eventually] with s hs
+    have hFz :=
+      (hs.differentiableAt.hasDerivAt).clm_apply
+        (hasDerivAt_const s z)
+    have hi := hFz.inner ℂ (hasDerivAt_const s z)
+    have hre := Complex.reCLM.hasFDerivAt.comp_hasDerivAt s hi
+    simpa [a, a1] using hre.deriv
+  have hFd := hF.deriv_contDiffAt
+  have hFdz :=
+    (hFd.differentiableAt.hasDerivAt).clm_apply
+      (hasDerivAt_const x z)
+  have hi := hFdz.inner ℂ (hasDerivAt_const x z)
+  have hre := Complex.reCLM.hasFDerivAt.comp_hasDerivAt x hi
+  have ha1 :
+      deriv a1 x =
+        Complex.re (inner ℂ ((deriv (deriv F) x) z) z) := by
+    simpa [a1] using hre.deriv
+  rw [Filter.EventuallyEq.deriv_eq hformula, ha1]
+  rfl
+
+/-- The actual Schur scalar has the optimized second derivative associated
+with the unique perpendicular response. -/
+theorem stationarySchurScalar_secondDerivative_eq_pair
+    {F : ℝ → V →L[ℂ] V} {z w : V} {x : ℝ}
+    (hF : ContDiffAt ℝ 2 F x)
+    (hFsym : ∀ᶠ s in 𝓝 x,
+      LinearMap.IsSymmetric (𝕜 := ℂ) (F s).toLinearMap)
+    (hz : F x z = 0)
+    (hznorm : ‖z‖ = 1)
+    (hker : ∀ v : V, F x v = 0 → ∃ a : ℂ, v = a • z)
+    (hwperp : inner ℂ z w = 0)
+    (hw : F x w = -((deriv F x) z)) :
+    deriv (deriv (fun s => stationarySchurScalar F z s)) x =
+      Complex.re (inner ℂ ((deriv (deriv F) x) z) z) +
+        2 * Complex.re (inner ℂ ((deriv F x) w) z) := by
+  have hFsymx := hFsym.self_of_nhds
+  have hC :=
+    stationarySchurBlock_isInvertible_of_kernel_line
+      hznorm hFsymx hz hker
+  let a : ℝ → ℝ := fun s => Complex.re (inner ℂ (F s z) z)
+  let b : ℝ → stationarySchurComplement z :=
+    fun s => stationarySchurCoupling F z s
+  let r : ℝ → stationarySchurComplement z :=
+    fun s => stationarySchurResponse F z s
+  have heq :
+      (fun s => stationarySchurScalar F z s) =ᶠ[𝓝 x]
+        stationarySchurEnvelope a b r := by
+    simpa [a, b, r] using
+      eventually_stationarySchurScalar_eq_envelope hF hFsym hC
+  have ha : ContDiffAt ℝ 2 a x := by
+    dsimp [a]
+    fun_prop
+  have hb : ContDiffAt ℝ 2 b x := by
+    simpa [b] using contDiffAt_stationarySchurCoupling hF
+  have hr : ContDiffAt ℝ 2 r x := by
+    simpa [r] using contDiffAt_stationarySchurResponse hF hC
+  have hbx : b x = 0 := by
+    simpa [b] using stationarySchurCoupling_eq_zero_of_kernel hz
+  have hrx : r x = 0 := by
+    simpa [r] using stationarySchurResponse_eq_zero_of_kernel hz
+  have henv :=
+    stationarySchurEnvelope_secondDerivative ha hb hr hbx hrx
+  have hrder :
+      ((deriv r x : stationarySchurComplement z) : V) = -w := by
+    simpa [r] using
+      deriv_stationarySchurResponse_eq_neg
+        hF hFsymx hz hznorm hker hwperp hw
+  have hbder :
+      deriv b x =
+        (stationarySchurComplement z).orthogonalProjectionOnto
+          ((deriv F x) z) := by
+    simpa [b] using deriv_stationarySchurCoupling hF
+  have hsymd :=
+    deriv_isSymmetric_of_eventually hF.differentiableAt hFsym
+  have hpair :
+      Complex.re (inner ℂ (deriv r x) (deriv b x)) =
+        -Complex.re (inner ℂ ((deriv F x) w) z) := by
+    rw [hbder]
+    have hp :
+        inner ℂ (deriv r x)
+            ((stationarySchurComplement z).orthogonalProjectionOnto
+              ((deriv F x) z)) =
+          inner ℂ ((deriv r x : stationarySchurComplement z) : V)
+            ((deriv F x) z) := by
+      exact
+        (stationarySchurComplement z)
+          .inner_orthogonalProjectionOnto_eq_of_mem_left
+            (deriv r x) ((deriv F x) z)
+    rw [hp, hrder, inner_neg_left, Complex.neg_re]
+    rw [hsymd w z]
+  have ha2 :
+      deriv (deriv a) x =
+        Complex.re (inner ℂ ((deriv (deriv F) x) z) z) := by
+    simpa [a] using stationaryFixedEnergy_secondDerivative hF
+  rw [← Filter.EventuallyEq.deriv_eq
+      (Filter.EventuallyEq.deriv_eq heq)]
+  rw [henv, ha2, hpair]
+  ring
+
 /-- Compiler-facing generic Schur certificate.  The complement type is kept in
 the statement, so the theorem is not a disguised 2x2 lemma and also permits
 the zero-dimensional complement.  The production constructor proves the
