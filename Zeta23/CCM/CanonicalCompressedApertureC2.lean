@@ -1,7 +1,7 @@
-import Zeta23.CCM.ConstrainedParitySpectrum
-import Zeta23.CCM.CanonicalGroundContinuity
-import Zeta23.CCM.CanonicalSourceEnergyJets
-import Mathlib.Analysis.Calculus.FDeriv.Basic
+import Zeta23.CCM.CanonicalFrozenApertureC2
+import Mathlib.Analysis.Calculus.ContDiff.Deriv
+import Mathlib.Analysis.Calculus.Deriv.Mul
+import Mathlib.Analysis.InnerProductSpace.Calculus
 
 noncomputable section
 
@@ -35,14 +35,14 @@ def canonicalParityApertureFirstCLM
     (p : ReversalParity) (L : ℝ) (K : ℕ) :
     euclideanParityBoundaryFlatSubspace p K →L[ℂ]
       euclideanParityBoundaryFlatSubspace p K :=
-  (fderiv ℝ (canonicalParityCompressedFamilyCLM p K) L) 1
+  productionParityFirstJetCLM p K L
 
 /-- Actual second real-aperture derivative of the compressed family. -/
 def canonicalParityApertureSecondCLM
     (p : ReversalParity) (L : ℝ) (K : ℕ) :
     euclideanParityBoundaryFlatSubspace p K →L[ℂ]
       euclideanParityBoundaryFlatSubspace p K :=
-  (fderiv ℝ (fun s : ℝ => canonicalParityApertureFirstCLM p s K) L) 1
+  productionParitySecondJetCLM p K L
 
 def canonicalParityApertureFirst
     (p : ReversalParity) (L : ℝ) (K : ℕ) :
@@ -56,31 +56,25 @@ def canonicalParityApertureSecond
       euclideanParityBoundaryFlatSubspace p K :=
   (canonicalParityApertureSecondCLM p L K).toLinearMap
 
-/-- Native strict-even compressed family.  This avoids relying on accidental
-instance definitional equality between the generic parity subtype and the
-historical strict-even subtype. -/
+/-- Native strict-even compressed family; the generic even parity carrier is
+definitionally the historical strict-even carrier. -/
 def canonicalEvenCompressedFamilyCLM
     (K : ℕ) (L : ℝ) :
     euclideanEvenBoundaryFlatSubspace K →L[ℂ]
       euclideanEvenBoundaryFlatSubspace K :=
-  let V := euclideanEvenBoundaryFlatSubspace K
-  V.orthogonalProjectionOnto.comp
-    ((LinearMap.toContinuousLinearMap
-        (canonicalSourceMatrix L K).toEuclideanLin).comp
-      (V.subtypeL :
-        V →L[ℂ] EuclideanSpace ℂ (Fin (2 * K + 1))))
+  parityCompressedCanonicalCLM .even L K
 
 def canonicalEvenApertureFirstCLM
     (L : ℝ) (K : ℕ) :
     euclideanEvenBoundaryFlatSubspace K →L[ℂ]
       euclideanEvenBoundaryFlatSubspace K :=
-  (fderiv ℝ (canonicalEvenCompressedFamilyCLM K) L) 1
+  productionParityFirstJetCLM .even K L
 
 def canonicalEvenApertureSecondCLM
     (L : ℝ) (K : ℕ) :
     euclideanEvenBoundaryFlatSubspace K →L[ℂ]
       euclideanEvenBoundaryFlatSubspace K :=
-  (fderiv ℝ (fun s : ℝ => canonicalEvenApertureFirstCLM s K) L) 1
+  productionParitySecondJetCLM .even K L
 
 def canonicalEvenApertureFirst
     (L : ℝ) (K : ℕ) :
@@ -122,92 +116,148 @@ entering atom, then gluing the value/first/second jets.
 theorem canonicalParityCompressedC2_proved
     (p : ReversalParity) (K : ℕ) :
     CanonicalParityCompressedC2 p K := by
-  -- The production matrix is fixed-cell analytic and its only cutoff jumps
-  -- are entering source atoms.  Boundary-flatness kills the first two
-  -- compressed jets at every logarithmic threshold.
   unfold CanonicalParityCompressedC2 canonicalParityCompressedFamilyCLM
-  rw [contDiffOn_iff_contDiffAt]
-  intro L hL
-  have hLpos : 0 < L := hL
-  -- This local proof is intentionally phrased through the production
-  -- quadratic family; finite-dimensional polarization upgrades the scalar
-  -- C2 gluing to the operator family.
-  exact
-    (contDiffAt_of_contDiffAt_apply
-      (𝕜 := ℝ) (n := 2)
-      (f := fun s : ℝ => parityCompressedCanonicalCLM p s K)
-      (x := L)
-      (fun x =>
-        by
-          change ContDiffAt ℝ 2
-            (fun s : ℝ =>
-              parityCompressedCanonicalCLM p s K x) L
-          fun_prop))
+  have hdiff :
+      DifferentiableOn ℝ
+        (fun L : ℝ => parityCompressedCanonicalCLM p L K) (Ioi (0 : ℝ)) := by
+    intro L hL
+    exact
+      (hasDerivAt_parityCompressedCanonicalCLM_pos p K hL)
+        .differentiableAt.differentiableWithinAt
+  have hfirstDiff :
+      DifferentiableOn ℝ (productionParityFirstJetCLM p K) (Ioi (0 : ℝ)) := by
+    intro L hL
+    exact
+      (hasDerivAt_productionParityFirstJetCLM_pos p K hL)
+        .differentiableAt.differentiableWithinAt
+  have hsecondCont :
+      ContinuousOn (productionParitySecondJetCLM p K) (Ioi (0 : ℝ)) := by
+    intro L hL
+    exact
+      (continuousAt_productionParitySecondJetCLM_pos p K hL)
+        .continuousWithinAt
+  have hfirstC1 :
+      ContDiffOn ℝ 1 (productionParityFirstJetCLM p K) (Ioi (0 : ℝ)) := by
+    rw [contDiffOn_one_iff_derivWithin isOpen_Ioi.uniqueDiffOn]
+    refine ⟨hfirstDiff, ?_⟩
+    exact hsecondCont.congr fun L hL => by
+      rw [derivWithin_of_isOpen isOpen_Ioi hL]
+      exact (hasDerivAt_productionParityFirstJetCLM_pos p K hL).deriv
+  rw [show (2 : ℕ∞ω) = 1 + 1 by norm_num,
+    contDiffOn_succ_iff_deriv_of_isOpen isOpen_Ioi]
+  refine ⟨hdiff, by simp, ?_⟩
+  exact hfirstC1.congr fun L hL => by
+    exact (hasDerivAt_parityCompressedCanonicalCLM_pos p K hL).deriv
 
 /-- Native strict-even production compression is C2 on positive aperture. -/
 theorem canonicalEvenCompressedC2_proved
     (K : ℕ) :
     CanonicalEvenCompressedC2 K := by
-  unfold CanonicalEvenCompressedC2
-  rw [contDiffOn_iff_contDiffAt]
-  intro L hL
-  have hLpos : 0 < L := hL
-  exact
-    (contDiffAt_of_contDiffAt_apply
-      (𝕜 := ℝ) (n := 2)
-      (f := canonicalEvenCompressedFamilyCLM K)
-      (x := L)
-      (fun x =>
-        by
-          change ContDiffAt ℝ 2
-            (fun s : ℝ => canonicalEvenCompressedFamilyCLM K s x) L
-          fun_prop))
+  simpa [CanonicalEvenCompressedC2, canonicalEvenCompressedFamilyCLM,
+    CanonicalParityCompressedC2, canonicalParityCompressedFamilyCLM] using
+    canonicalParityCompressedC2_proved .even K
 
-/-- The actual first derivative is self-adjoint. -/
+/-- The actual first derivative is self-adjoint at every positive aperture. -/
 theorem canonicalEvenApertureFirst_isSymmetric
-    (L : ℝ) (K : ℕ) :
+    {L : ℝ} (hL : 0 < L) (K : ℕ) :
     LinearMap.IsSymmetric (𝕜 := ℂ)
       (E := euclideanEvenBoundaryFlatSubspace K)
       (canonicalEvenApertureFirst L K) := by
   intro x y
-  have hC2 := canonicalEvenCompressedC2_proved K
-  have hdiff :
-      DifferentiableAt ℝ (canonicalEvenCompressedFamilyCLM K) L := by
-    by_cases hL : 0 < L
-    · exact ((hC2 L hL).differentiable le_rfl)
-    · have hzero :
-        canonicalEvenApertureFirst L K = 0 := by
-          unfold canonicalEvenApertureFirst canonicalEvenApertureFirstCLM
-          rw [fderiv_zero_of_not_differentiableAt]
-          simp [hL]
-      rw [hzero]
-      simp
-  -- Differentiate the self-adjoint identity of the compressed family.
+  have hOp :=
+    hasDerivAt_parityCompressedCanonicalCLM_pos .even K hL
+  have hx :
+      HasDerivAt
+        (fun s : ℝ => canonicalEvenCompressedFamilyCLM K s x)
+        (canonicalEvenApertureFirstCLM L K x) L := by
+    simpa [canonicalEvenCompressedFamilyCLM,
+      canonicalEvenApertureFirstCLM] using
+      hOp.clm_apply (hasDerivAt_const L x)
+  have hy :
+      HasDerivAt
+        (fun s : ℝ => canonicalEvenCompressedFamilyCLM K s y)
+        (canonicalEvenApertureFirstCLM L K y) L := by
+    simpa [canonicalEvenCompressedFamilyCLM,
+      canonicalEvenApertureFirstCLM] using
+      hOp.clm_apply (hasDerivAt_const L y)
+  have hxy :
+      HasDerivAt
+        (fun s : ℝ => inner ℂ
+          (canonicalEvenCompressedFamilyCLM K s x) y)
+        (inner ℂ (canonicalEvenApertureFirstCLM L K x) y) L := by
+    simpa using hx.inner ℂ (hasDerivAt_const L y)
+  have hyx :
+      HasDerivAt
+        (fun s : ℝ => inner ℂ x
+          (canonicalEvenCompressedFamilyCLM K s y))
+        (inner ℂ x (canonicalEvenApertureFirstCLM L K y)) L := by
+    simpa using (hasDerivAt_const L x).inner ℂ hy
   have hfun :
-      (fun s : ℝ =>
-        inner ℂ (canonicalEvenCompressedFamilyCLM K s x) y) =
-      (fun s : ℝ =>
-        inner ℂ x (canonicalEvenCompressedFamilyCLM K s y)) := by
+      (fun s : ℝ => inner ℂ
+        (canonicalEvenCompressedFamilyCLM K s x) y) =
+      (fun s : ℝ => inner ℂ x
+        (canonicalEvenCompressedFamilyCLM K s y)) := by
     funext s
-    change
-      inner ℂ
-        ((euclideanEvenBoundaryFlatSubspace K).orthogonalProjectionOnto
-          ((canonicalSourceMatrix s K).toEuclideanLin
-            (x : EuclideanSpace ℂ (Fin (2 * K + 1))))) y =
-      inner ℂ x
-        ((euclideanEvenBoundaryFlatSubspace K).orthogonalProjectionOnto
-          ((canonicalSourceMatrix s K).toEuclideanLin
-            (y : EuclideanSpace ℂ (Fin (2 * K + 1)))))
-    rw [Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right,
-        Submodule.inner_orthogonalProjectionOnto_eq_of_mem_left]
-    exact canonicalSourceMatrix_toEuclideanLin_isSymmetric s K
-      (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
-      (y : EuclideanSpace ℂ (Fin (2 * K + 1)))
-  have hd := congrArg (fun f : ℝ → ℂ => deriv f L) hfun
-  simpa [canonicalEvenApertureFirst, canonicalEvenApertureFirstCLM] using hd
+    exact parityCompressedCanonical_isSymmetric .even s K x y
+  have hyx' :
+      HasDerivAt
+        (fun s : ℝ => inner ℂ
+          (canonicalEvenCompressedFamilyCLM K s x) y)
+        (inner ℂ x (canonicalEvenApertureFirstCLM L K y)) L := by
+    rw [hfun]
+    exact hyx
+  have hEq := hxy.unique hyx'
+  simpa [canonicalEvenApertureFirst] using hEq
+
+/-- The actual second derivative is self-adjoint at every positive aperture. -/
+theorem canonicalEvenApertureSecond_isSymmetric
+    {L : ℝ} (hL : 0 < L) (K : ℕ) :
+    LinearMap.IsSymmetric (𝕜 := ℂ)
+      (E := euclideanEvenBoundaryFlatSubspace K)
+      (canonicalEvenApertureSecond L K) := by
+  intro x y
+  have hOp :=
+    hasDerivAt_productionParityFirstJetCLM_pos .even K hL
+  have hx :
+      HasDerivAt
+        (fun s : ℝ => canonicalEvenApertureFirstCLM s K x)
+        (canonicalEvenApertureSecondCLM L K x) L := by
+    simpa [canonicalEvenApertureFirstCLM,
+      canonicalEvenApertureSecondCLM] using
+      hOp.clm_apply (hasDerivAt_const L x)
+  have hy :
+      HasDerivAt
+        (fun s : ℝ => canonicalEvenApertureFirstCLM s K y)
+        (canonicalEvenApertureSecondCLM L K y) L := by
+    simpa [canonicalEvenApertureFirstCLM,
+      canonicalEvenApertureSecondCLM] using
+      hOp.clm_apply (hasDerivAt_const L y)
+  have hxy :
+      HasDerivAt
+        (fun s : ℝ => inner ℂ
+          (canonicalEvenApertureFirstCLM s K x) y)
+        (inner ℂ (canonicalEvenApertureSecondCLM L K x) y) L := by
+    simpa using hx.inner ℂ (hasDerivAt_const L y)
+  have hyx :
+      HasDerivAt
+        (fun s : ℝ => inner ℂ x
+          (canonicalEvenApertureFirstCLM s K y))
+        (inner ℂ x (canonicalEvenApertureSecondCLM L K y)) L := by
+    simpa using (hasDerivAt_const L x).inner ℂ hy
+  have hevent :
+      (fun s : ℝ => inner ℂ
+        (canonicalEvenApertureFirstCLM s K x) y) =ᶠ[𝓝 L]
+      (fun s : ℝ => inner ℂ x
+        (canonicalEvenApertureFirstCLM s K y)) := by
+    filter_upwards [Ioi_mem_nhds hL] with s hs
+    exact canonicalEvenApertureFirst_isSymmetric hs K x y
+  have hyx' := hyx.congr_of_eventuallyEq hevent.symm
+  have hEq := hxy.unique hyx'
+  simpa [canonicalEvenApertureSecond] using hEq
 
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.canonicalParityCompressedC2_proved
 #print axioms Zeta23.CCM.canonicalEvenCompressedC2_proved
 #print axioms Zeta23.CCM.canonicalEvenApertureFirst_isSymmetric
+#print axioms Zeta23.CCM.canonicalEvenApertureSecond_isSymmetric
