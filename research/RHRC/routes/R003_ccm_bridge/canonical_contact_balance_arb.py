@@ -489,27 +489,101 @@ def one_dimensional_calibration(L:arb,K:int,Q:int,parity:str,prec:int)->dict:
             "optimized_curvature":curvature.get("optimized_curvature")}
 
 
+def _calibration_balance_side(L:arb,Q:int,prec:int)->dict:
+    """Independent derivative/remainder/balance certificate on the K=2 seam carrier."""
+    bundle=simple_ground_bundle(L,2,Q,"even",prec)
+    if "H" not in bundle:
+        return {"status":"GROUND_UNRESOLVED","ground":bundle.get("record",{"status":bundle.get("status")})}
+    response=validated_bordered_response(bundle)
+    qrep=q_representations(L,2,Q,bundle)
+    curv=curvature_enclosure(bundle,response)
+    remainder=direct_physical_remainder_certificate(L,2,Q,bundle,response)
+    saturation=saturation_certificate(L,qrep,curv,remainder,bundle)
+    return {
+        "status":"CALIBRATION_CERTIFIED" if (
+            response.get("status") in {"CERTIFIED_BORDERED_RESPONSE","CERTIFIED_ZERO_COMPLEMENT_RESPONSE"}
+            and remainder.get("status")=="CERTIFIED"
+            and saturation.get("status")=="CERTIFIED_INDEPENDENT_SIDES"
+        ) else "CALIBRATION_UNRESOLVED",
+        "derivative":interval_record(bundle["j1"]),
+        "fixed_second":interval_record(bundle["fixed2"]),
+        "remainder":remainder.get("production_remainder"),
+        "balance_delta":saturation.get("delta_sat"),
+        "balance_rhs":saturation.get("kappa_plus_euler"),
+        "identity_overlap":saturation.get("identity_overlap"),
+        "response_status":response.get("status"),
+    }
+
+
+def _interval_width(record:dict|None):
+    if not isinstance(record,dict) or "dyadic_interval" not in record:
+        return None
+    return DyadicInterval.from_json(record["dyadic_interval"]).width()
+
+
 def log2_seam_calibration(prec:int)->dict:
     ctx.prec=int(prec);L=arb(2).log()
-    left=one_dimensional_calibration(L,2,1,"even",prec);right=one_dimensional_calibration(L,2,2,"even",prec)
+    left=one_dimensional_calibration(L,2,1,"even",prec)
+    right=one_dimensional_calibration(L,2,2,"even",prec)
+    left_balance=_calibration_balance_side(L,1,prec)
+    right_balance=_calibration_balance_side(L,2,prec)
     def overlap(field):
         if field not in left or field not in right:return False
-        a=DyadicInterval.from_json(left[field]["dyadic_interval"]);b=DyadicInterval.from_json(right[field]["dyadic_interval"])
+        a=DyadicInterval.from_json(left[field]["dyadic_interval"])
+        b=DyadicInterval.from_json(right[field]["dyadic_interval"])
         return not (a.hi<b.lo or b.hi<a.lo)
+    def balance_overlap(field):
+        a=left_balance.get(field);b=right_balance.get(field)
+        if not isinstance(a,dict) or not isinstance(b,dict):return False
+        aa=DyadicInterval.from_json(a["dyadic_interval"])
+        bb=DyadicInterval.from_json(b["dyadic_interval"])
+        return not (aa.hi<bb.lo or bb.hi<aa.lo)
     energy_pos=left.get("energy",{}).get("sign")=="POSITIVE" and right.get("energy",{}).get("sign")=="POSITIVE"
     j1_neg=left.get("j1",{}).get("sign")=="NEGATIVE" and right.get("j1",{}).get("sign")=="NEGATIVE"
-    widths=[]
-    for side in (left,right):
-        for field in ("energy","j1","fixed_second"):
-            if field in side:widths.append(DyadicInterval.from_json(side[field]["dyadic_interval"]).width())
-    width_ok=bool(widths) and all(w<=1/(1<<80) for w in widths)
+    derivative_widths=[_interval_width(left_balance.get("derivative")),
+                       _interval_width(right_balance.get("derivative"))]
+    remainder_widths=[_interval_width(left_balance.get("remainder")),
+                      _interval_width(right_balance.get("remainder"))]
+    balance_widths=[_interval_width(left_balance.get("balance_delta")),
+                    _interval_width(right_balance.get("balance_delta")),
+                    _interval_width(left_balance.get("balance_rhs")),
+                    _interval_width(right_balance.get("balance_rhs"))]
+    limit=1/(1<<80)
+    derivative_width_ok=all(w is not None and w<=limit for w in derivative_widths)
+    remainder_width_ok=all(w is not None and w<=limit for w in remainder_widths)
+    balance_width_ok=all(w is not None and w<=limit for w in balance_widths)
+    width_ok=derivative_width_ok and remainder_width_ok and balance_width_ok
+    seam_balance_overlap=(
+        balance_overlap("derivative")
+        and balance_overlap("remainder")
+        and balance_overlap("balance_delta")
+        and balance_overlap("balance_rhs")
+    )
+    balance_identity_ok=(
+        left_balance.get("identity_overlap") is True
+        and right_balance.get("identity_overlap") is True
+    )
     return {"name":"K2_LOG2_COMPRESSED_SEAM","K":2,"L_exact":"log(2)",
             "vector_exact":"(1,-4,6,-4,1)/sqrt(70)","precision_bits":prec,
-            "left":left,"right":right,"value_overlap":overlap("energy"),
+            "left":left,"right":right,
+            "left_independent_balance":left_balance,
+            "right_independent_balance":right_balance,
+            "value_overlap":overlap("energy"),
             "first_overlap":overlap("j1"),"second_overlap":overlap("fixed_second"),
+            "derivative_overlap":balance_overlap("derivative"),
+            "remainder_overlap":balance_overlap("remainder"),
+            "balance_overlap":balance_overlap("balance_delta") and balance_overlap("balance_rhs"),
+            "seam_balance_overlap":seam_balance_overlap,
+            "independent_balance_identity_overlap":balance_identity_ok,
             "energy_positive":energy_pos,"first_variation_negative":j1_neg,
+            "derivative_width_le_2^-80":derivative_width_ok,
+            "remainder_width_le_2^-80":remainder_width_ok,
+            "balance_width_le_2^-80":balance_width_ok,
             "width_le_2^-80":width_ok,
-            "qualified":overlap("energy") and overlap("j1") and overlap("fixed_second") and energy_pos and j1_neg and width_ok}
+            "qualified":(
+                overlap("energy") and overlap("j1") and overlap("fixed_second")
+                and energy_pos and j1_neg and width_ok
+                and seam_balance_overlap and balance_identity_ok)}
 
 
 def seam_probe(q:int,K:int,prec:int)->dict:
@@ -530,6 +604,55 @@ def replay_selected_case(cand:dict,precisions:list[int])->dict:
             "first_boundary_claimed":False}
 
 
+def inherited_response_investigation(protocol:dict,balances:list[dict])->dict:
+    """Execute X01 only on rows carrying certified generated inherited-contact metadata."""
+    selected=protocol.get("selected_neighborhoods") or []
+    eligible=[]
+    rejected=[]
+    for i,(cand,row) in enumerate(zip(selected,balances)):
+        meta=cand.get("generated_contact")
+        if not isinstance(meta,dict):
+            rejected.append({"row":i,"reason":"NO_GENERATED_CONTACT_METADATA"})
+            continue
+        n=meta.get("n");k=meta.get("k")
+        if not (isinstance(n,int) and not isinstance(n,bool)
+                and isinstance(k,int) and not isinstance(k,bool) and n<k):
+            rejected.append({"row":i,"reason":"NOT_CERTIFIED_INHERITED_INDEX"})
+            continue
+        if meta.get("certified") is not True:
+            rejected.append({"row":i,"reason":"GENERATED_CONTACT_NOT_CERTIFIED"})
+            continue
+        if row.get("response",{}).get("status") not in {
+            "CERTIFIED_BORDERED_RESPONSE","CERTIFIED_ZERO_COMPLEMENT_RESPONSE"}:
+            rejected.append({"row":i,"reason":"RESPONSE_UNRESOLVED"})
+            continue
+        if row.get("physical_remainder",{}).get("status")!="CERTIFIED":
+            rejected.append({"row":i,"reason":"REMAINDER_UNRESOLVED"})
+            continue
+        eligible.append({
+            "row":i,"n":n,"k":k,
+            "response_status":row["response"]["status"],
+            "saturation_gap":row.get("saturation_gap"),
+            "rho":row.get("rho"),
+        })
+    if not eligible:
+        return {
+            "status":"NO_ELIGIBLE_INHERITED_CONTACT",
+            "eligible_count":0,
+            "rows_examined":len(balances),
+            "rejections":rejected,
+            "theorem_promotion":False,
+        }
+    return {
+        "status":"ELIGIBLE_INHERITED_CONTACTS_EVALUATED",
+        "eligible_count":len(eligible),
+        "rows_examined":len(balances),
+        "eligible_rows":eligible,
+        "rejections":rejected,
+        "theorem_promotion":False,
+    }
+
+
 def campaign(protocol:dict)->dict:
     ladder=[int(x) for x in protocol["precision_bits"]];calibration=None
     for prec in ladder:
@@ -538,11 +661,11 @@ def campaign(protocol:dict)->dict:
     seams=[seam_probe(int(x["q"]),int(x["K"]),ladder[-1]) for x in protocol["seam_controls"]]
     selected=[replay_selected_case(c,ladder) for c in protocol["selected_neighborhoods"]]
     balances=[selected_balance(c,ladder[-1]) for c in protocol["selected_neighborhoods"]]
+    x01=inherited_response_investigation(protocol,balances)
     return {"schema_version":"POST282_CONTACT_BALANCE_ARB_v2","claim_cap":"EXPERIMENTAL_SIGNAL_ONLY",
             "calibration":calibration,"seam_controls":seams,"selected_replay":selected,"balance_rows":balances,
             "hypothesis_dispositions":{
-                "X01_INHERITED_RESPONSE_BALANCE":{"status":"NO_CERTIFIED_GENERATED_INHERITED_CONTACT_IN_FROZEN_PANEL",
-                    "proxy_rows_evaluated":len(balances),"theorem_promotion":False},
+                "X01_INHERITED_RESPONSE_BALANCE":x01,
                 "X02_PROJECTED_DILATION_RESIDUAL":{"status":"NEAR_CONTACT_TRANSPORT_DEFECT_PANEL_COMPLETED",
                     "rows_evaluated":len(balances),"exact_contact_authority":False,"theorem_promotion":False}},
             "summary":{"calibration_qualified":bool(calibration and calibration["qualified"]),
@@ -554,6 +677,7 @@ def campaign(protocol:dict)->dict:
                 "Q_representation_overlap_count":sum(1 for r in balances if r.get("Q",{}).get("overlap") is True),
                 "independent_physical_remainder_certified_count":sum(1 for r in balances if r.get("physical_remainder",{}).get("status")=="CERTIFIED"),
                 "independent_balance_overlap_count":sum(1 for r in balances if r.get("saturation_gap",{}).get("identity_overlap") is True),
+                "x01_eligible_count":x01.get("eligible_count",0),
                 "theorem_promotion":False,"terminal_claim":"RH_OPEN"}}
 
 
