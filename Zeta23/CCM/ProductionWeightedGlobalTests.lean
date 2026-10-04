@@ -183,8 +183,7 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
   by_cases hleft : y < -L
   · have hev : productionEvenCompactLiftReal L f =ᶠ[𝓝 y] fun _ => 0 := by
       filter_upwards [Iio_mem_nhds hleft] with z hz
-      have hzlt : z < -L := hz
-      simp [productionEvenCompactLiftReal, le_of_lt hzlt]
+      simp [productionEvenCompactLiftReal, le_of_lt hz]
     have hc := (hasDerivAt_const y (0 : ℝ)).congr_of_eventuallyEq hev
     simpa [productionEvenCompactLiftRealDerivative, le_of_lt hleft] using hc
   by_cases hleftEq : y = -L
@@ -192,31 +191,32 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
     have hzeroExt :
         HasDerivWithinAt (productionEvenCompactLiftReal L f) 0
           (Iic (-L)) (-L) := by
-      have hc :
-          HasDerivWithinAt (fun _ : ℝ => (0 : ℝ)) (0 : ℝ)
-            (Iic (-L)) (-L) :=
+      have hc :=
         (hasDerivAt_const (-L) (0 : ℝ)).hasDerivWithinAt
       refine hc.congr_of_mem ?_ ?_
       · intro z hz
-        simp [productionEvenCompactLiftReal, hz]
-      · simp [productionEvenCompactLiftReal, h.value_endpoint]
+        have hzle : z ≤ -L := hz
+        simp [productionEvenCompactLiftReal, hzle]
+      · simp [productionEvenCompactLiftReal]
     have hint0 :
         HasDerivAt (fun y : ℝ => f (-y)) (-deriv f L) (-L) := by
       have hf := (productionEvenCompactLiftJets_differentiable h L).hasDerivAt
-      have hn := (hasDerivAt_neg (-L))
-      simpa using (hf.comp (-L) hn)
-    have hint : HasDerivWithinAt (productionEvenCompactLiftReal L f) 0
-        (Icc (-L) 0) (-L) := by
-      have hz : -deriv f L = 0 := by rw [h.deriv_endpoint]; simp
-      rw [hz] at hint0
+      have hh := hf.comp (-L) (hasDerivAt_neg (-L))
+      simpa only [neg_neg] using hh
+    have hint :
+        HasDerivWithinAt (productionEvenCompactLiftReal L f) 0
+          (Icc (-L) 0) (-L) := by
+      have hzder : -deriv f L = 0 := by
+        rw [h.deriv_endpoint]
+        simp
+      rw [hzder] at hint0
       refine hint0.hasDerivWithinAt.congr_of_mem ?_ ?_
-      · intro z hzmem
+      · intro z hz
         by_cases hzL : z = -L
         · subst z
           simp [productionEvenCompactLiftReal, h.value_endpoint]
-        · have hzgt : -L < z := lt_of_le_of_ne hzmem.1 (Ne.symm hzL)
-          simp [productionEvenCompactLiftReal, hL, hzmem.2,
-            not_le.mpr hzgt]
+        · have hzgt : -L < z := lt_of_le_of_ne hz.1 (Ne.symm hzL)
+          exact productionEvenCompactLiftReal_left hL f hzgt hz.2
       · simp [productionEvenCompactLiftReal, h.value_endpoint]
     have hmem : Iic (-L) ∪ Icc (-L) 0 ∈ 𝓝 (-L) := by
       apply mem_of_superset (Iio_mem_nhds (show -L < 0 by linarith))
@@ -232,7 +232,7 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
   · have hev :
         productionEvenCompactLiftReal L f =ᶠ[𝓝 y] fun z => f (-z) := by
       filter_upwards [Ioo_mem_nhds hgtLeft hneg] with z hz
-      simp [productionEvenCompactLiftReal, not_le.mpr hz.1, le_of_lt hz.2]
+      exact productionEvenCompactLiftReal_left hL f hz.1 (le_of_lt hz.2)
     have hf :=
       (productionEvenCompactLiftJets_differentiable h (-y)).hasDerivAt
     have hc := (hf.comp y (hasDerivAt_neg y)).congr_of_eventuallyEq hev
@@ -249,8 +249,11 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
         simpa [h.deriv_zero] using hh
       refine hc.hasDerivWithinAt.congr_of_mem ?_ ?_
       · intro z hz
-        simp [productionEvenCompactLiftReal, hL, hz.1, hz.2,
-          not_le.mpr (by linarith : -L < z)]
+        by_cases hzL : z = -L
+        · subst z
+          simp [productionEvenCompactLiftReal, h.value_endpoint]
+        · have hzgt : -L < z := lt_of_le_of_ne hz.1 (Ne.symm hzL)
+          exact productionEvenCompactLiftReal_left hL f hzgt hz.2
       · simp [productionEvenCompactLiftReal]
     have hright0 :
         HasDerivWithinAt (productionEvenCompactLiftReal L f) 0
@@ -263,8 +266,8 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
         by_cases hzL : z = L
         · subst z
           simp [productionEvenCompactLiftReal, h.value_endpoint]
-        · simp [productionEvenCompactLiftReal, hL, hz.1,
-            lt_of_le_of_ne hz.2 hzL, not_le.mpr (by linarith : -L < z)]
+        · have hzlt : z < L := lt_of_le_of_ne hz.2 hzL
+          exact productionEvenCompactLiftReal_right hL f hz.1 hzlt
       · simp [productionEvenCompactLiftReal]
     have hmem : Icc (-L) 0 ∪ Icc 0 L ∈ 𝓝 (0 : ℝ) := by
       apply mem_of_superset (Ioo_mem_nhds (show -L < 0 by linarith) hL)
@@ -279,13 +282,13 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
   by_cases hright : y < L
   · have hev : productionEvenCompactLiftReal L f =ᶠ[𝓝 y] f := by
       filter_upwards [Ioo_mem_nhds hypos hright] with z hz
-      simp [productionEvenCompactLiftReal, hL, hz.1, hz.2,
-        not_le.mpr (by linarith : -L < z)]
+      exact productionEvenCompactLiftReal_right hL f (le_of_lt hz.1) hz.2
     have hc :=
       (productionEvenCompactLiftJets_differentiable h y).hasDerivAt
         |>.congr_of_eventuallyEq hev
-    simpa [productionEvenCompactLiftRealDerivative, hL, hypos, hright,
-      not_le.mpr (by linarith : -L < y)] using hc
+    have hnleft : ¬ y ≤ -L := by linarith
+    have hnzero : ¬ y ≤ 0 := not_le.mpr hypos
+    simpa [productionEvenCompactLiftRealDerivative, hnleft, hnzero, hright] using hc
   by_cases hrightEq : y = L
   · subst y
     have hint0 : HasDerivAt f 0 L := by
@@ -299,8 +302,8 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
         by_cases hzL : z = L
         · subst z
           simp [productionEvenCompactLiftReal, h.value_endpoint]
-        · simp [productionEvenCompactLiftReal, hL, hz.1,
-            lt_of_le_of_ne hz.2 hzL, not_le.mpr (by linarith : -L < z)]
+        · have hzlt : z < L := lt_of_le_of_ne hz.2 hzL
+          exact productionEvenCompactLiftReal_right hL f hz.1 hzlt
       · simp [productionEvenCompactLiftReal, h.value_endpoint]
     have hext :
         HasDerivWithinAt (productionEvenCompactLiftReal L f) 0
@@ -312,7 +315,7 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
         have hnzero : ¬ z ≤ 0 := by linarith
         have hnlt : ¬ z < L := not_lt.mpr hz
         simp [productionEvenCompactLiftReal, hnleft, hnzero, hnlt]
-      · simp [productionEvenCompactLiftReal, h.value_endpoint]
+      · simp [productionEvenCompactLiftReal]
     have hmem : Icc 0 L ∪ Ici L ∈ 𝓝 L := by
       apply mem_of_superset (Ioi_mem_nhds hL)
       intro z hz
@@ -320,7 +323,10 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
       · exact Or.inl ⟨le_of_lt hz, hh⟩
       · exact Or.inr (le_of_not_ge hh)
     have hh := (hint.union hext).hasDerivAt hmem
-    simpa [productionEvenCompactLiftRealDerivative, hL, h.deriv_endpoint] using hh
+    have hnleft : ¬ L ≤ -L := by linarith
+    have hnzero : ¬ L ≤ 0 := by linarith
+    simpa [productionEvenCompactLiftRealDerivative, hnleft, hnzero,
+      h.deriv_endpoint] using hh
   · have hgt : L < y :=
       lt_of_le_of_ne (le_of_not_gt hright) (Ne.symm hrightEq)
     have hev : productionEvenCompactLiftReal L f =ᶠ[𝓝 y] fun _ => 0 := by
@@ -330,8 +336,10 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
       have hnlt : ¬ z < L := by linarith
       simp [productionEvenCompactLiftReal, hnleft, hnzero, hnlt]
     have hc := (hasDerivAt_const y (0 : ℝ)).congr_of_eventuallyEq hev
-    simpa [productionEvenCompactLiftRealDerivative, not_le.mpr (by linarith : -L < y),
-      not_le.mpr hypos, not_lt.mpr (le_of_lt hgt)] using hc
+    have hnleft : ¬ y ≤ -L := by linarith
+    have hnzero : ¬ y ≤ 0 := by linarith
+    have hnlt : ¬ y < L := by linarith
+    simpa [productionEvenCompactLiftRealDerivative, hnleft, hnzero, hnlt] using hc
 
 private theorem hasDerivAt_productionEvenCompactLiftRealDerivative
     {L : ℝ} (hL : 0 < L) {f : ℝ → ℝ}
