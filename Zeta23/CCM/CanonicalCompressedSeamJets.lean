@@ -195,7 +195,6 @@ theorem enteringPrimeSourceEnergy_secondJet_zero
     rw [deriv_const_mul_field]
     rw [deriv_comp L hg.differentiableAt hc.differentiableAt]
     rw [hg.deriv, hc.deriv]
-    rfl
   rw [Filter.EventuallyEq.deriv_eq hfirstFun]
   have hcoord0 : omega (Real.log q) = 0 := by
     simpa only [omega] using primeSourceCoordinate_log_self q hq
@@ -222,7 +221,9 @@ theorem enteringPrimeSourceEnergy_secondJet_zero
   rw [deriv_fun_mul hleftDiff hright.differentiableAt]
   rw [deriv_comp (Real.log q) hg'.differentiableAt homega.differentiableAt]
   rw [hg'.deriv, homega.deriv, hright.deriv]
-  have hg0 : sourceAtomRealEnergyDerivative K x (omega (Real.log q)) = 0 := by
+  have hg0 :
+      ((sourceAtomRealEnergyDerivative K x) ∘ omega) (Real.log q) = 0 := by
+    simp only [Function.comp_apply]
     rw [hcoord0]
     exact sourceAtomRealEnergyDerivative_zero_of_boundaryFlat K x hflat
   rw [sourceAtomRealEnergySecondDerivative_zero K x, hg0]
