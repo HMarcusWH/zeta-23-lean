@@ -10,6 +10,10 @@ NEW_LEAN=[
  "Zeta23/CCM/CanonicalFrozenApertureC2.lean",
  "Zeta23/CCM/CanonicalCompressedApertureC2.lean",
  "Zeta23/CCM/ProductionWeightedTestCalculus.lean",
+ "Zeta23/CCM/ProductionNormalSourceAuthority.lean",
+ "Zeta23/CCM/FirstCrossingProductionRemainderAuthority.lean",
+ "Zeta23/CCM/ProductionPhysicalFunctionalCongruence.lean",
+ "Zeta23/CCM/FirstCrossingProductionRemainderValueAuthority.lean",
  "Zeta23/CCM/StationarySchurContact.lean",
  "Zeta23/CCM/FirstCrossingInheritedStationarity.lean",
  "Zeta23/RHRC/ContactCalculusContract.lean",
@@ -25,13 +29,38 @@ REQUIRED_SYMBOLS={
    "continuousAt_productionParitySecondJetCLM_pos"],
  "Zeta23/CCM/CanonicalCompressedApertureC2.lean":[
    "canonicalParityCompressedC2_proved","canonicalEvenCompressedC2_proved",
-   "canonicalEvenApertureFirst"],
+   "canonicalEvenApertureFirst","canonicalEvenApertureSecond"],
+ "Zeta23/CCM/ProductionWeightedGlobalTests.lean":[
+   "productionFirstDerivativeTest_authority",
+   "productionSecondDerivativeTest_authority",
+   "productionMixedDerivativeTest_authority",
+   "productionDerivativeWeightedTests_admissible"],
+ "Zeta23/CCM/FirstCrossingProductionRemainderValueAuthority.lean":[
+   "productionContactRemainderValue_eq_physicalTest",
+   "productionContactRemainder_authority"],
+ "Zeta23/CCM/StationarySchurContact.lean":[
+   "stationarySchurComplement","stationarySchurBlock",
+   "stationarySchurBlock_isInvertible_of_kernel_line",
+   "StationarySchurContactCertificate",
+   "curvature_eq_zero"],
  "Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean":[
-   "production_frontier","firstVariation_eq_zero_of_inherited",
-   "production_stationary_saturation"],
+   "production_frontier","completed_production_frontier",
+   "firstVariation_eq_zero_of_inherited",
+   "production_stationary_schur_curvature_eq_zero",
+   "actual_stationary_curvature_eq_zero",
+   "production_stationary_saturation",
+   "inherited_production_saturation"],
  "Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean":[
+   "canonicalFirstVariation_eq_physical",
+   "canonicalFixedSecondEuler_eq_physical",
+   "canonicalMixedFirstVariation_eq_physical",
    "canonicalSecondPairing_euler_eq_productionSaturationGap",
    "canonicalOptimizedContactCurvature"],
+ "Zeta23/RHRC/ContactCalculusContract.lean":[
+   "actual_stationary_curvature_eq_zero",
+   "production_stationary_saturation",
+   "completed_production_frontier",
+   "inherited_production_saturation"],
 }
 
 
@@ -46,8 +75,21 @@ def check_surface()->None:
         if miss: fail("SYMBOL",f"{rel}: {miss}")
     frontier=(ROOT/"Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean").read_text()
     tail=frontier[frontier.find("theorem GeneratedStrictEvenContact.production_frontier"):]
-    for forbidden in ("hbridge :","hkappa :","EvenProductionContactC2Realized"):
+    for forbidden in (
+        "hbridge :", "hkappa :", "EvenProductionContactC2Realized",
+        "ProductionContactCurvatureArithmeticIdentity", "remainderSource :",
+        "sourceQ :", "RiemannHypothesis"
+    ):
         if forbidden in tail: fail("PREMISE",forbidden)
+    obligations=json.loads((ROUTE/"POST282_CONTACT_CALCULUS_OBLIGATIONS.json").read_text())
+    ids=[x.get("id") for x in obligations.get("obligations",[])]
+    for required in ("F01_COMPRESSED_C2","F02_WEIGHTED_TESTS",
+                     "F03_REMAINDER_AUTHORITY","F04_PAIR_BALANCE",
+                     "F05_STATIONARY_CURVATURE","F06_INHERITED_STATIONARITY",
+                     "F07_FRONTIER"):
+        if required not in ids: fail("OBLIGATION",f"missing {required}")
+    if obligations.get("claim_firewall")!="RH_OPEN":
+        fail("FIREWALL","obligation ledger terminal claim drift")
 
 def check_results(path:Path)->None:
     d=json.loads(path.read_text())
