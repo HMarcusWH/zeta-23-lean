@@ -74,6 +74,11 @@ jobs:
           python research/RHRC/tools/axiom_audit.py             Zeta23/CCM/StationarySchurContact.lean             Zeta23/CCM/FirstCrossingProductionResponse.lean             Zeta23/CCM/FirstCrossingInheritedStationarity.lean             Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean             Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean             Zeta23/RHRC/ContactCalculusContract.lean
       - name: Validate exact theorem premise contract
         run: python research/RHRC/routes/R003_ccm_bridge/check_post282_contact_calculus_contract.py
+      - name: Validate candidate claim and binding firewall
+        run: |
+          python research/RHRC/tools/claim_lint.py
+          python research/RHRC/tools/promoted_binding_lint.py
+          python research/RHRC/tools/registered_theorem_binding_lint.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
