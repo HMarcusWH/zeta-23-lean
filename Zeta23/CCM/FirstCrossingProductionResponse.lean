@@ -471,31 +471,40 @@ theorem existsUnique_canonicalStationaryEvenResponse
   exact sub_eq_zero.mp (by rw [←hc,hc0,zero_smul])
 
 noncomputable def canonicalStationaryEvenResponse
-    (c : GeneratedStrictEvenContact)
+    {L : ℝ} (hL : 0 < L)
+    (K : ℕ) (hK : 2 ≤ K)
+    (z : euclideanEvenBoundaryFlatSubspace K)
+    (hzne : z ≠ 0)
+    (hznorm : ‖z‖ = 1)
+    (hzero : evenCompressedCanonical L K z = 0)
+    (hodd : 0 < parityRayleighBottom .odd L K)
     (hstationary :
-      productionContactFirstVariation .even
-        c.generated.shell.Lstar (c.generated.shell.k + 1) c.z = 0) :
-    euclideanEvenBoundaryFlatSubspace (c.generated.shell.k + 1) :=
+      productionContactFirstVariation .even L K z = 0) :
+    euclideanEvenBoundaryFlatSubspace K :=
   Classical.choose
     (existsUnique_canonicalStationaryEvenResponse
-      c.Lstar_pos (c.generated.shell.k+1) c.two_le_K c.z c.z_ne c.z_norm
-      c.z_kernel c.odd_positive hstationary)
+      hL K hK z hzne hznorm hzero hodd hstationary)
 
 theorem canonicalStationaryEvenResponse_spec
-    (c : GeneratedStrictEvenContact)
+    {L : ℝ} (hL : 0 < L)
+    (K : ℕ) (hK : 2 ≤ K)
+    (z : euclideanEvenBoundaryFlatSubspace K)
+    (hzne : z ≠ 0)
+    (hznorm : ‖z‖ = 1)
+    (hzero : evenCompressedCanonical L K z = 0)
+    (hodd : 0 < parityRayleighBottom .odd L K)
     (hstationary :
-      productionContactFirstVariation .even
-        c.generated.shell.Lstar (c.generated.shell.k + 1) c.z = 0) :
-    inner ℂ c.z (canonicalStationaryEvenResponse c hstationary)=0 ∧
-    evenCompressedCanonical c.generated.shell.Lstar
-        (c.generated.shell.k+1)
-        (canonicalStationaryEvenResponse c hstationary) =
-      -(canonicalEvenApertureFirst c.generated.shell.Lstar
-        (c.generated.shell.k+1) c.z) :=
+      productionContactFirstVariation .even L K z = 0) :
+    inner ℂ z
+        (canonicalStationaryEvenResponse
+          hL K hK z hzne hznorm hzero hodd hstationary) = 0 ∧
+      evenCompressedCanonical L K
+        (canonicalStationaryEvenResponse
+          hL K hK z hzne hznorm hzero hodd hstationary) =
+        -(canonicalEvenApertureFirst L K z) :=
   (Classical.choose_spec
     (existsUnique_canonicalStationaryEvenResponse
-      c.Lstar_pos (c.generated.shell.k+1) c.two_le_K c.z c.z_ne c.z_norm
-      c.z_kernel c.odd_positive hstationary)).1
+      hL K hK z hzne hznorm hzero hodd hstationary)).1
 
 end Zeta23.CCM
 

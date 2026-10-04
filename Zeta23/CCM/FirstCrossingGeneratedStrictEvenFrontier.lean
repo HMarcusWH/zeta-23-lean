@@ -280,55 +280,79 @@ theorem GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
       c.generated.shell.seed_ne (by simpa [ha])
   simpa [inheritedSelectedEnergy,ha,ha0] using hseed
 
+/-- Production-authoritative branch type.  Unlike the historical #282 branch,
+the stationary response equation is stated using the compressed-first
+derivative and therefore does not silently identify it with the legacy
+entrywise candidate at a seam. -/
+inductive GeneratedStrictEvenProductionBranch
+    (c : GeneratedStrictEvenContact) : Type
+  | firstOrder
+      (hneg :
+        productionContactFirstVariation .even
+          c.generated.shell.Lstar (c.generated.shell.k + 1) c.z < 0)
+  | stationary
+      (hzero :
+        productionContactFirstVariation .even
+          c.generated.shell.Lstar (c.generated.shell.k + 1) c.z = 0)
+      (w : euclideanEvenBoundaryFlatSubspace (c.generated.shell.k + 1))
+      (hperp : inner ℂ c.z w = 0)
+      (hresponse :
+        evenCompressedCanonical c.generated.shell.Lstar
+            (c.generated.shell.k + 1) w =
+          -(canonicalEvenApertureFirst
+            c.generated.shell.Lstar (c.generated.shell.k + 1) c.z))
+
 /-- Branch split using the actual production derivative and actual response. -/
 theorem GeneratedStrictEvenContact.production_frontier
     (c : GeneratedStrictEvenContact) :
-    Nonempty (GeneratedStrictEvenVariationBranch c) := by
+    Nonempty (GeneratedStrictEvenProductionBranch c) := by
   have hnonpos := c.firstVariation_nonpos_production
   rcases lt_or_eq_of_le hnonpos with hneg | hzero
   · exact ⟨.firstOrder hneg⟩
-  · have hs := canonicalStationaryEvenResponse_spec c hzero
-    exact ⟨.stationary hzero
-      (canonicalStationaryEvenResponse c hzero)
-      hs.1
-      (by
-        simpa [canonicalEvenApertureFirst,
-          canonicalEvenApertureFirstCLM] using hs.2)⟩
+  · let w :=
+      canonicalStationaryEvenResponse
+        c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
+        c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hzero
+    have hs :=
+      canonicalStationaryEvenResponse_spec
+        c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
+        c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hzero
+    exact ⟨.stationary hzero w hs.1 hs.2⟩
 
-/-- The stationary generated contact has zero actual optimized curvature. -/
+/-- The stationary generated contact has zero actual optimized curvature.
+The generic Schur-contact layer is responsible for upgrading right-negative
+ground information to the scalar optimized profile; no fixed-z right-negative
+shortcut is permitted. -/
 theorem GeneratedStrictEvenContact.actual_stationary_curvature_eq_zero
     (c : GeneratedStrictEvenContact)
     (hstationary :
       productionContactFirstVariation .even c.generated.shell.Lstar
-        (c.generated.shell.k+1) c.z = 0) :
-    canonicalOptimizedContactCurvature c hstationary = 0 := by
-  -- Apply the generic stationary first-contact theorem to the scalar Schur
-  -- profile of the simple even kernel.
-  have hC2 := canonicalEvenCompressedC2_proved (c.generated.shell.k+1)
-  exact stationary_firstContact_secondDerivative_eq_zero
-    c.generated.shell.Lsmall_lt_Lstar
-    c.generated.shell.Lstar_lt_Lneg
-    (by simp [productionContactFixedEnergy,c.z_kernel])
-    (fun L hLs hLstar =>
-      c.generated.selectedFixedEnergy_nonnegative .even c.z hLs hLstar)
-    c.generated.shell.successor_right_crossing
-    (hC2 c.generated.shell.Lstar c.Lstar_pos)
-    hstationary
+        (c.generated.shell.k + 1) c.z = 0) :
+    canonicalOptimizedContactCurvature
+      c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
+      c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary = 0 :=
+  production_stationary_schur_curvature_eq_zero
+    c hstationary
 
 /-- Exact positive stationary production saturation balance. -/
 theorem GeneratedStrictEvenContact.production_stationary_saturation
     (c : GeneratedStrictEvenContact)
     (hstationary :
       productionContactFirstVariation .even c.generated.shell.Lstar
-        (c.generated.shell.k+1) c.z = 0) :
+        (c.generated.shell.k + 1) c.z = 0) :
     productionContactRemainderValue c.generated.shell.Lstar
-        (c.generated.shell.k+1) c.z
-        (canonicalStationaryEvenResponse c hstationary) =
-      (2*Real.pi)^2 / c.generated.shell.Lstar^2 *
+        (c.generated.shell.k + 1) c.z
+        (canonicalStationaryEvenResponse
+          c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
+          c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary) =
+      (2 * Real.pi)^2 / c.generated.shell.Lstar^2 *
         productionStrictEvenSourceValue c.generated.shell.Lstar
-          (c.generated.shell.k+1) c.z := by
+          (c.generated.shell.k + 1) c.z := by
   have hk := c.actual_stationary_curvature_eq_zero hstationary
-  have hb := canonicalStationaryCurvature_eq_productionSaturationGap c hstationary
+  have hb :=
+    canonicalStationaryCurvature_eq_productionSaturationGap
+      c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
+      c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary
   unfold productionContactSaturationGap at hb
   linarith
 
@@ -336,10 +360,12 @@ theorem GeneratedStrictEvenContact.production_stationary_remainder_pos
     (c : GeneratedStrictEvenContact)
     (hstationary :
       productionContactFirstVariation .even c.generated.shell.Lstar
-        (c.generated.shell.k+1) c.z = 0) :
+        (c.generated.shell.k + 1) c.z = 0) :
     0 < productionContactRemainderValue c.generated.shell.Lstar
-      (c.generated.shell.k+1) c.z
-      (canonicalStationaryEvenResponse c hstationary) := by
+      (c.generated.shell.k + 1) c.z
+      (canonicalStationaryEvenResponse
+        c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
+        c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary) := by
   rw [c.production_stationary_saturation hstationary]
   positivity [c.sourceValue_pos]
 
@@ -348,12 +374,14 @@ theorem GeneratedStrictEvenContact.inherited_production_saturation
     (c : GeneratedStrictEvenContact)
     (hinh : c.generated.shell.n < c.generated.shell.k) :
     productionContactRemainderValue c.generated.shell.Lstar
-        (c.generated.shell.k+1) c.z
-        (canonicalStationaryEvenResponse c
+        (c.generated.shell.k + 1) c.z
+        (canonicalStationaryEvenResponse
+          c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
+          c.z c.z_ne c.z_norm c.z_kernel c.odd_positive
           (c.firstVariation_eq_zero_of_inherited hinh)) =
-      (2*Real.pi)^2 / c.generated.shell.Lstar^2 *
+      (2 * Real.pi)^2 / c.generated.shell.Lstar^2 *
         productionStrictEvenSourceValue c.generated.shell.Lstar
-          (c.generated.shell.k+1) c.z :=
+          (c.generated.shell.k + 1) c.z :=
   c.production_stationary_saturation
     (c.firstVariation_eq_zero_of_inherited hinh)
 

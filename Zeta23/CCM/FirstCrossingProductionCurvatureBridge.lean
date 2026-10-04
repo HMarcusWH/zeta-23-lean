@@ -209,13 +209,17 @@ def canonicalContactSecondPairing
 /-- Actual optimized curvature: the second pairing evaluated at the unique
 perpendicular response. -/
 def canonicalOptimizedContactCurvature
-    (c : GeneratedStrictEvenContact)
+    {L : ℝ} (hL : 0 < L)
+    (K : ℕ) (hK : 2 ≤ K)
+    (z : euclideanEvenBoundaryFlatSubspace K)
+    (hzne : z ≠ 0) (hznorm : ‖z‖ = 1)
+    (hzero : evenCompressedCanonical L K z = 0)
+    (hodd : 0 < parityRayleighBottom .odd L K)
     (hstationary :
-      productionContactFirstVariation .even
-        c.generated.shell.Lstar (c.generated.shell.k+1) c.z = 0) : ℝ :=
-  canonicalContactSecondPairing c.generated.shell.Lstar
-    (c.generated.shell.k+1) c.z
-    (canonicalStationaryEvenResponse c hstationary)
+      productionContactFirstVariation .even L K z = 0) : ℝ :=
+  canonicalContactSecondPairing L K z
+    (canonicalStationaryEvenResponse
+      hL K hK z hzne hznorm hzero hodd hstationary)
 
 /-- Euler-corrected production balance for arbitrary fixed legal even z,w. -/
 theorem canonicalSecondPairing_euler_eq_productionSaturationGap
@@ -239,19 +243,25 @@ theorem canonicalSecondPairing_euler_eq_productionSaturationGap
 
 /-- Stationary specialization: Euler correction disappears. -/
 theorem canonicalStationaryCurvature_eq_productionSaturationGap
-    (c : GeneratedStrictEvenContact)
+    {L : ℝ} (hL : 0 < L)
+    (K : ℕ) (hK : 2 ≤ K)
+    (z : euclideanEvenBoundaryFlatSubspace K)
+    (hzne : z ≠ 0) (hznorm : ‖z‖ = 1)
+    (hzero : evenCompressedCanonical L K z = 0)
+    (hodd : 0 < parityRayleighBottom .odd L K)
     (hstationary :
-      productionContactFirstVariation .even
-        c.generated.shell.Lstar (c.generated.shell.k+1) c.z = 0) :
-    canonicalOptimizedContactCurvature c hstationary =
-      productionContactSaturationGap c.generated.shell.Lstar
-        (c.generated.shell.k+1) c.z
-        (canonicalStationaryEvenResponse c hstationary) := by
+      productionContactFirstVariation .even L K z = 0) :
+    canonicalOptimizedContactCurvature
+        hL K hK z hzne hznorm hzero hodd hstationary =
+      productionContactSaturationGap L K z
+        (canonicalStationaryEvenResponse
+          hL K hK z hzne hznorm hzero hodd hstationary) := by
   have h :=
     canonicalSecondPairing_euler_eq_productionSaturationGap
-      c.Lstar_pos (c.generated.shell.k+1) c.two_le_K c.z
-        (canonicalStationaryEvenResponse c hstationary)
-  simp [canonicalOptimizedContactCurvature,hstationary] at h
+      hL K hK z
+        (canonicalStationaryEvenResponse
+          hL K hK z hzne hznorm hzero hodd hstationary)
+  simp [canonicalOptimizedContactCurvature, hstationary] at h
   linarith
 
 end Zeta23.CCM

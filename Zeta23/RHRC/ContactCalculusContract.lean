@@ -17,7 +17,7 @@ positivity premise.
 -/
 
 example (c : GeneratedStrictEvenContact) :
-    Nonempty (GeneratedStrictEvenVariationBranch c) :=
+    Nonempty (GeneratedStrictEvenProductionBranch c) :=
   c.production_frontier
 
 example (c : GeneratedStrictEvenContact)
@@ -32,7 +32,9 @@ example (c : GeneratedStrictEvenContact)
         c.generated.shell.Lstar (c.generated.shell.k + 1) c.z = 0) :
     0 < productionContactRemainderValue
       c.generated.shell.Lstar (c.generated.shell.k + 1) c.z
-      (canonicalStationaryEvenResponse c hstationary) :=
+      (canonicalStationaryEvenResponse
+        c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
+        c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary) :=
   c.production_stationary_remainder_pos hstationary
 
 end Zeta23.RHRC
