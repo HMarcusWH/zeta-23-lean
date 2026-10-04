@@ -27,21 +27,18 @@ THEOREM AUTHORITY
 - RH = OPEN
 
 CURRENT RESEARCH FRONTIER
-- current candidate PR = #283 / POST282_COMPLETE_CONTACT_CALCULUS_CANDIDATE
-- candidate implementation state = ALL_PLANNED_SURFACES_IMPLEMENTED_CANDIDATE_PENDING_EXACT_HEAD_VALIDATION
+- current candidate PR = #283 / CANONICAL_COMPRESSED_CONTACT_CALCULUS_CANDIDATE
 - candidate theorem-validation head = RUNTIME_PR_HEAD_REQUIRED
 - candidate theorem-validation status = CI_PENDING_EXACT_HEAD_RUNTIME_RECEIPT_REQUIRED
-- F01-F07 formal contact-calculus package = IMPLEMENTED_CANDIDATE_PENDING_CI
-- N01-N04 certification / adversarial package = IMPLEMENTED_CANDIDATE_PENDING_CI
-- X01 inherited-response and X02 projected-dilation investigations = IMPLEMENTED_BOUNDED_INVESTIGATIONS_PENDING_EXECUTION_VALIDATION
-- OBS-060N compressed production derivative/admissibility bridge = CANDIDATE_IMPLEMENTED_PENDING_CI
-- active obstruction = OBS-060O_CONTACT_CONDITIONED_PRODUCTION_SATURATION_EXCLUSION
-- odd/tie branch-complete exclusion = OPEN
-- next research target = OBS-060O_CANONICAL_CONTACT_CONDITIONED_ARITHMETIC_EXCLUSION
-- required new information = CANONICAL_ARITHMETIC_INCOMPATIBILITY_WITH_EXACT_STATIONARY_SATURATION_OR_BRANCH_COMPLETE_EQUIVALENT
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
+- fixed-N sign opposition = PROVED_MERGED_PR_277
+- global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
+- uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
+- active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
+- active subobligation = OBS-060N_COMPRESSED_PRODUCTION_DERIVATIVE_AND_ADMISSIBILITY_BRIDGE
+- next research target = POST282_CANONICAL_CONTACT_CALCULUS_AND_INHERITED_SATURATION
+- required new information = EXACT_COMPRESSED_C2_WEIGHTED_PRODUCTION_CALCULUS_AND_CONTACT_CONDITIONED_ARITHMETIC_EXCLUSION
 - RH-sufficient terminal formulations are not counted as independent sub-RH progress
-- RH = OPEN
 
 FRAMEWORK / GRAPH STATE
 - PR #270 = FFBBP 1.7 / OoL-MVS 2.7.7 framework architecture authority
@@ -58,7 +55,6 @@ RESEARCH / CONTROL FIREWALL
 - selected formal first break = E4A4-SCHUR-FB-05 (historical/frozen control semantics)
 - R003 phase = DISCOVERY
 - confirmatory execution = NOT AUTHORIZED
-- candidate source presence is not theorem authority until exact-head compiler/CI validation
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
