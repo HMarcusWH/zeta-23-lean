@@ -106,7 +106,6 @@ theorem hasDerivAt_primeSourceCoordinate_first
       -(Real.log q * (2 * L)) / (L ^ 2) ^ 2 =
         -2 * Real.log q / L ^ 3 := by
     field_simp [hL]
-    ring
   rw [hcoeff] at h
   exact h
 
@@ -186,24 +185,17 @@ theorem enteringPrimeSourceEnergy_secondJet_zero
     filter_upwards [eventually_ne_nhds hlog] with L hL
     have hc := hasDerivAt_primeSourceCoordinate q hL
     have hg := hasDerivAt_sourceAtomRealEnergy_transport K x (omega L)
-    have hcomp :
-        HasDerivAt
-          (fun t : ℝ => sourceAtomRealEnergy K x (omega t))
-          (g' (omega L) * omega' L) L := by
-      simpa only [g', omega, omega'] using hg.comp L hc
-    have hscaled :
-        HasDerivAt
-          (fun t : ℝ => c * sourceAtomRealEnergy K x (omega t))
-          (c * (g' (omega L) * omega' L)) L :=
-      hcomp.const_mul c
-    have hd := hscaled.deriv
     have henergy :
         enteringPrimeSourceEnergy q K x =
-          fun t : ℝ => c * sourceAtomRealEnergy K x (omega t) := by
+          fun t : ℝ =>
+            c * (((sourceAtomRealEnergy K x) ∘ omega) t) := by
       funext t
       rfl
     rw [henergy]
-    exact hd
+    rw [deriv_const_mul_field]
+    rw [deriv_comp L hg.differentiableAt hc.differentiableAt]
+    rw [hg.deriv, hc.deriv]
+    rfl
   rw [Filter.EventuallyEq.deriv_eq hfirstFun]
   have hcoord0 : omega (Real.log q) = 0 := by
     simpa only [omega] using primeSourceCoordinate_log_self q hq
@@ -214,31 +206,25 @@ theorem enteringPrimeSourceEnergy_secondJet_zero
         (omega (Real.log q)) := by
     simpa only [hcoord0] using hg'0
   have homega := hasDerivAt_primeSourceCoordinate q hlog
-  have hleft :
-      HasDerivAt (fun L : ℝ => g' (omega L))
-        (sourceAtomRealEnergySecondDerivative K x 0 *
-          (Real.log q / (Real.log q) ^ 2))
-        (Real.log q) := by
-    have hc := hg'.comp (Real.log q) homega
-    simpa only [Function.comp_apply, g', omega] using hc
   have hright : HasDerivAt omega' (-2 * Real.log q / (Real.log q) ^ 3)
       (Real.log q) := by
     simpa only [omega'] using hasDerivAt_primeSourceCoordinate_first q hlog
-  have hscaled :
-      HasDerivAt
-        (fun L : ℝ => c * (g' (omega L) * omega' L))
-        (c * (
-          (sourceAtomRealEnergySecondDerivative K x 0 *
-              (Real.log q / (Real.log q) ^ 2)) * omega' (Real.log q) +
-            g' (omega (Real.log q)) *
-              (-2 * Real.log q / (Real.log q) ^ 3)))
-        (Real.log q) :=
-    (hleft.mul hright).const_mul c
-  have hg0 : g' (omega (Real.log q)) = 0 := by
+  have hleftDiff :=
+    hg'.differentiableAt.comp (Real.log q) homega.differentiableAt
+  have hproduct :
+      (fun L : ℝ => c * (g' (omega L) * omega' L)) =
+        fun L : ℝ =>
+          c * ((((sourceAtomRealEnergyDerivative K x) ∘ omega) L) * omega' L) := by
+    funext L
+    rfl
+  rw [hproduct]
+  rw [deriv_const_mul_field]
+  rw [deriv_fun_mul hleftDiff hright.differentiableAt]
+  rw [deriv_comp (Real.log q) hg'.differentiableAt homega.differentiableAt]
+  rw [hg'.deriv, homega.deriv, hright.deriv]
+  have hg0 : sourceAtomRealEnergyDerivative K x (omega (Real.log q)) = 0 := by
     rw [hcoord0]
-    simpa only [g'] using
-      sourceAtomRealEnergyDerivative_zero_of_boundaryFlat K x hflat
-  rw [hscaled.deriv]
+    exact sourceAtomRealEnergyDerivative_zero_of_boundaryFlat K x hflat
   rw [sourceAtomRealEnergySecondDerivative_zero K x, hg0]
   ring
 
