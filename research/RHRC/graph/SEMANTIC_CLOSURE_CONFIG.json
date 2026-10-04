@@ -76,6 +76,8 @@
     "Zeta23.CCM.ProductionWeightedTestCalculus": "CONTACT_CALCULUS_FORMAL_SUPPORT",
     "Zeta23.CCM.StationarySchurContact": "CONTACT_CALCULUS_FORMAL_SUPPORT",
     "Zeta23.CCM.FirstCrossingInheritedStationarity": "CONTACT_CALCULUS_FORMAL_SUPPORT",
-    "Zeta23.RHRC.ContactCalculusContract": "CONTACT_CALCULUS_SCOPE_AUDIT"
+    "Zeta23.RHRC.ContactCalculusContract": "CONTACT_CALCULUS_SCOPE_AUDIT",
+    "Zeta23.CCM.CanonicalCompressedSeamJets": "CONTACT_CALCULUS_FORMAL_SUPPORT",
+    "Zeta23.CCM.CanonicalFrozenApertureC2": "CONTACT_CALCULUS_FORMAL_SUPPORT"
   }
 }
