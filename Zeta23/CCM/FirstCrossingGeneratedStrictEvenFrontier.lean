@@ -140,6 +140,7 @@ theorem GeneratedGlobalFirstCrossing.exists_generatedStrictEvenContact_of_evenSt
 inductive GeneratedStrictEvenVariationBranch
     (c : GeneratedStrictEvenContact) : Type
   | firstOrder
+      (hfresh : c.generated.shell.k = c.generated.shell.n)
       (hneg :
         productionContactFirstVariation .even
           c.generated.shell.Lstar (c.generated.shell.k + 1) c.z < 0)
@@ -182,7 +183,7 @@ theorem GeneratedStrictEvenContact.frontier
   have _hactual := hoperator c.z
   have hnonpos := c.firstVariation_nonpos hrealized
   rcases lt_or_eq_of_le hnonpos with hneg | hzero
-  · exact ⟨.firstOrder hneg⟩
+  · exact ⟨.firstOrder (c.firstOrder_is_fresh hneg) hneg⟩
   · let w :=
       stationaryEvenResponse
         c.Lstar_pos
@@ -279,6 +280,21 @@ theorem GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
     exact parityPlateauExtend_ne_zero _ _ c.generated.shell.seed
       c.generated.shell.seed_ne (by simpa [ha])
   simpa [inheritedSelectedEnergy,ha,ha0] using hseed
+
+
+/-- A strict negative first variation cannot be inherited: F06 forces every
+inherited strict-even contact to be stationary.  Hence the transverse branch is
+fresh-born at the first zero-plateau index. -/
+theorem GeneratedStrictEvenContact.firstOrder_is_fresh
+    (c : GeneratedStrictEvenContact)
+    (hneg :
+      productionContactFirstVariation .even c.generated.shell.Lstar
+        (c.generated.shell.k + 1) c.z < 0) :
+    c.generated.shell.k = c.generated.shell.n := by
+  rcases c.generated.shell.contactRegime with hfresh | hinh
+  · exact hfresh
+  · have hzero := c.firstVariation_eq_zero_of_inherited hinh
+    linarith
 
 /-- Production-authoritative branch type.  Unlike the historical #282 branch,
 the stationary response equation is stated using the compressed-first
@@ -387,6 +403,7 @@ theorem GeneratedStrictEvenContact.inherited_production_saturation
 
 end Zeta23.CCM
 
+#print axioms Zeta23.CCM.GeneratedStrictEvenContact.firstOrder_is_fresh
 #print axioms Zeta23.CCM.GeneratedStrictEvenContact.production_frontier
 #print axioms Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
 #print axioms Zeta23.CCM.GeneratedStrictEvenContact.production_stationary_saturation
