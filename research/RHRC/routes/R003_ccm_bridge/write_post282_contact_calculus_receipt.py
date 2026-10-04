@@ -33,6 +33,17 @@ TRACKED=[
 "research/RHRC/routes/R003_ccm_bridge/tests/test_post282_contact_calculus.py",
 "research/RHRC/routes/R003_ccm_bridge/POST282_CONTACT_CALCULUS_OBLIGATIONS.json",
 "research/RHRC/routes/R003_ccm_bridge/POST282_CONTACT_CALCULUS_BUILD_MANIFEST.json",
+"research/RHRC/CLAIM_REGISTRY.json",
+"research/RHRC/routes/ROUTE_REGISTRY.json",
+"research/RHRC/R003_PROMOTED_BINDINGS.json",
+"research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+"Zeta23/CCM/ClaimBindings.lean",
+"Zeta23/RHRC/RegisteredClaimBindings.lean",
+"research/RHRC/tools/claim_lint.py",
+"research/RHRC/tools/promoted_binding_lint.py",
+"research/RHRC/tools/registered_theorem_binding_lint.py",
+"research/RHRC/graph/SEMANTIC_CLOSURE_CONFIG.json",
+"research/RHRC/control_v2/CONTROL_STATE.json",
 "research/RHRC/routes/R003_ccm_bridge/fixtures/post282_contact_calculus_v1.json",
 ".github/workflows/rhrc_post282_contact_calculus.yml"]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
