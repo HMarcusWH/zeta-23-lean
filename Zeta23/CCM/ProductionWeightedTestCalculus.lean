@@ -79,6 +79,92 @@ structure ProductionWeightedTestAdmissible
       productionArithmeticComplexValue L (fun t => (physicalTest t : ℂ))
 
 
+
+/-! ### Smoothness of the source-coordinate derivative channels -/
+
+@[fun_prop] theorem contDiff_two_sourceEntryDerivative
+    (n m : ℤ) :
+    ContDiff ℝ 2 (fun ω : ℝ => sourceEntryDerivative ω n m) := by
+  by_cases h : n = m
+  · subst m
+    have hfun :
+        (fun ω : ℝ => sourceEntryDerivative ω n n) =
+          fun ω =>
+            2 * Real.cos (2 * Real.pi * (n : ℝ) * ω) +
+              2 * ω *
+                (-Real.sin (2 * Real.pi * (n : ℝ) * ω) *
+                  (2 * Real.pi * (n : ℝ))) := by
+      funext ω
+      rw [sourceEntryDerivative, if_pos rfl,
+        sourceDiagonalDerivative_formula]
+    rw [hfun]
+    fun_prop
+  · unfold sourceEntryDerivative sourcePotentialDerivative
+    simp only [if_neg h]
+    fun_prop
+
+@[fun_prop] theorem contDiff_two_sourceEntrySecondDerivative
+    (n m : ℤ) :
+    ContDiff ℝ 2 (fun ω : ℝ => sourceEntrySecondDerivative ω n m) := by
+  by_cases h : n = m
+  · subst m
+    have hfun :
+        (fun ω : ℝ => sourceEntrySecondDerivative ω n n) =
+          fun ω =>
+            -8 * Real.pi * (n : ℝ) *
+                Real.sin (2 * Real.pi * (n : ℝ) * ω)
+            - 8 * Real.pi ^ 2 * (n : ℝ) ^ 2 * ω *
+                Real.cos (2 * Real.pi * (n : ℝ) * ω) := by
+      funext ω
+      rw [sourceEntrySecondDerivative, if_pos rfl,
+        sourceDiagonalSecondDerivative_formula]
+    rw [hfun]
+    fun_prop
+  · unfold sourceEntrySecondDerivative sourcePotentialSecondDerivative
+    simp only [if_neg h]
+    fun_prop
+
+@[fun_prop] theorem contDiff_two_sourceContractRealDerivative
+    (K : ℕ) (u : Fin (2 * K + 1) → ℝ) :
+    ContDiff ℝ 2 (sourceContractRealDerivative K u) := by
+  unfold sourceContractRealDerivative
+  fun_prop
+
+@[fun_prop] theorem contDiff_two_sourceContractRealSecondDerivative
+    (K : ℕ) (u : Fin (2 * K + 1) → ℝ) :
+    ContDiff ℝ 2 (sourceContractRealSecondDerivative K u) := by
+  unfold sourceContractRealSecondDerivative
+  fun_prop
+
+@[fun_prop] theorem contDiff_two_sourceAtomRealEnergyDerivative
+    (K : ℕ)
+    (z : EuclideanSpace ℂ (Fin (2 * K + 1))) :
+    ContDiff ℝ 2 (sourceAtomRealEnergyDerivative K z) := by
+  unfold sourceAtomRealEnergyDerivative
+  exact
+    (contDiff_two_sourceContractRealDerivative K
+      (fun i => (((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) z) i).re)).add
+    (contDiff_two_sourceContractRealDerivative K
+      (fun i => (((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) z) i).im))
+
+@[fun_prop] theorem contDiff_two_sourceAtomRealEnergySecondDerivative
+    (K : ℕ)
+    (z : EuclideanSpace ℂ (Fin (2 * K + 1))) :
+    ContDiff ℝ 2 (sourceAtomRealEnergySecondDerivative K z) := by
+  unfold sourceAtomRealEnergySecondDerivative
+  exact
+    (contDiff_two_sourceContractRealSecondDerivative K
+      (fun i => (((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) z) i).re)).add
+    (contDiff_two_sourceContractRealSecondDerivative K
+      (fun i => (((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) z) i).im))
+
+@[fun_prop] theorem contDiff_two_sourceAtomPairingDerivative
+    (K : ℕ)
+    (z w : EuclideanSpace ℂ (Fin (2 * K + 1))) :
+    ContDiff ℝ 2 (sourceAtomPairingDerivative K z w) := by
+  unfold sourceAtomPairingDerivative
+  fun_prop
+
 /-! ### Continuity of the source-coordinate derivative channels -/
 
 @[fun_prop] theorem continuous_sourceEntryDerivative
