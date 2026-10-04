@@ -28,7 +28,8 @@ theorem productionArithmeticComplexValue_congr_on_Icc
           g t * (completeSourcePoleWeight t : ℂ) := by
     apply intervalIntegral.integral_congr
     intro t ht
-    rw [hfg t ⟨le_of_lt ht.1, le_of_lt ht.2⟩]
+    rw [uIcc_of_le hL.le] at ht
+    rw [hfg t ht]
   have harch :
       (∫ t : ℝ in (0 : ℝ)..L,
           f t * (archDensity t : ℂ)) =
@@ -44,18 +45,16 @@ theorem productionArithmeticComplexValue_congr_on_Icc
           primeSourceWeight q * g (Real.log q) := by
     apply Finset.sum_congr rfl
     intro q hq
-    rw [hfg]
-    · rfl
-    · have hqmem := Finset.mem_Icc.mp hq
-      have hq0 : 0 ≤ Real.log q := Real.log_natCast_nonneg q
-      have hqpos : (0 : ℝ) < q := by
-        exact_mod_cast (lt_of_lt_of_le (by norm_num : 0 < 2) hqmem.1)
-      have hqexp : (q : ℝ) ≤ Real.exp L :=
-        (Nat.le_floor_iff (Real.exp_pos L).le).mp hqmem.2
-      have hqL : Real.log q ≤ L := by
-        rw [← Real.log_exp L]
-        exact Real.log_le_log hqpos hqexp
-      exact ⟨hq0, hqL⟩
+    have hqmem := Finset.mem_Icc.mp hq
+    have hq0 : 0 ≤ Real.log q := Real.log_natCast_nonneg q
+    have hqpos : (0 : ℝ) < q := by
+      exact_mod_cast (lt_of_lt_of_le (by norm_num : 0 < 2) hqmem.1)
+    have hqexp : (q : ℝ) ≤ Real.exp L :=
+      (Nat.le_floor_iff (Real.exp_pos L).le).mp hqmem.2
+    have hqL : Real.log q ≤ L := by
+      rw [← Real.log_exp L]
+      exact Real.log_le_log hqpos hqexp
+    rw [hfg (Real.log q) ⟨hq0, hqL⟩]
   rw [hpole, harch, hprime]
 
 theorem productionArithmeticRealValue_congr_on_Icc
