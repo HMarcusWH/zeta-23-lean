@@ -415,6 +415,8 @@ jobs:
             Zeta23.CCM.FirstCrossingSourceDynamics \
             Zeta23.CCM.GlobalParityFirstNegativeBoundary \
             Zeta23.CCM.FirstCrossingGlobalAlignment \
+            Zeta23.CCM.CanonicalCompressedSeamJets \
+            Zeta23.CCM.CanonicalFrozenApertureC2 \
             Zeta23.CCM.CanonicalCompressedApertureC2 \
             Zeta23.CCM.ProductionWeightedTestCalculus \
             Zeta23.CCM.StationarySchurContact \
@@ -482,6 +484,8 @@ jobs:
             Zeta23/CCM/FirstCrossingSourceDynamics.lean \
             Zeta23/CCM/GlobalParityFirstNegativeBoundary.lean \
             Zeta23/CCM/FirstCrossingGlobalAlignment.lean \
+            Zeta23/CCM/CanonicalCompressedSeamJets.lean \
+            Zeta23/CCM/CanonicalFrozenApertureC2.lean \
             Zeta23/CCM/CanonicalCompressedApertureC2.lean \
             Zeta23/CCM/ProductionWeightedTestCalculus.lean \
             Zeta23/CCM/StationarySchurContact.lean \
