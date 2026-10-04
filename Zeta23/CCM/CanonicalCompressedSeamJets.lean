@@ -64,30 +64,20 @@ theorem hasDerivAt_primeSourceCoordinate
     (q : ℕ) {L : ℝ} (hL : L ≠ 0) :
     HasDerivAt (primeSourceCoordinate q)
       (Real.log q / L ^ 2) L := by
-  unfold primeSourceCoordinate
   have h :=
     (hasDerivAt_const L (1 : ℝ)).sub
       ((hasDerivAt_const L (Real.log q)).div
         (hasDerivAt_id L) hL)
-  convert h using 1
-  · funext s
-    rfl
-  · simp
+  simpa [primeSourceCoordinate, Function.id_def] using h
 
 theorem hasDerivAt_primeSourceCoordinate_first
     (q : ℕ) {L : ℝ} (hL : L ≠ 0) :
     HasDerivAt (fun s : ℝ => Real.log q / s ^ 2)
       (-2 * Real.log q / L ^ 3) L := by
-  have hden : HasDerivAt (fun s : ℝ => s ^ 2) (2 * L) L := by
-    simpa [pow_two, two_mul] using
-      (hasDerivAt_id L).mul (hasDerivAt_id L)
+  have hden := (hasDerivAt_id L).pow 2
   have h :=
     (hasDerivAt_const L (Real.log q)).div hden (pow_ne_zero 2 hL)
-  convert h using 1
-  · funext s
-    rfl
-  · field_simp [hL]
-    ring
+  simpa [Function.id_def, pow_two] using h
 
 theorem sourceAtomRealEnergyDerivative_zero_of_boundaryFlat
     (K : ℕ)

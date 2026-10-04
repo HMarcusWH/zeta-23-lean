@@ -553,7 +553,6 @@ theorem ProductionWeightedGlobalLift.half_pole_eq_physical
     rw [show g t = (f t : ℂ) from h.agrees_positive t htIcc]
     dsimp [completeSourcePoleWeight]
     rw [abs_of_nonneg ht.1]
-    push_cast
   rw [hpos]
   ring
 
