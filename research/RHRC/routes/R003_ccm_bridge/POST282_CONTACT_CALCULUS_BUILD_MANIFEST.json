@@ -32,7 +32,12 @@
     "Zeta23/CCM/FirstCrossingInheritedStationarity.lean",
     "Zeta23/RHRC/ContactCalculusContract.lean",
     "Zeta23/CCM/CanonicalCompressedSeamJets.lean",
-    "Zeta23/CCM/CanonicalFrozenApertureC2.lean"
+    "Zeta23/CCM/CanonicalFrozenApertureC2.lean",
+    "Zeta23/CCM/ProductionWeightedGlobalTests.lean",
+    "Zeta23/CCM/ProductionNormalSourceAuthority.lean",
+    "Zeta23/CCM/FirstCrossingProductionRemainderAuthority.lean",
+    "Zeta23/CCM/ProductionPhysicalFunctionalCongruence.lean",
+    "Zeta23/CCM/FirstCrossingProductionRemainderValueAuthority.lean"
   ],
   "lean_modify": [
     "Zeta23/CCM/FirstCrossingProductionTests.lean",
@@ -61,14 +66,14 @@
       "id": "F01",
       "title": "Compressed operator C2",
       "depends_on": [],
-      "status": "PLANNED",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
       "acceptance_kind": "EXACT_COMPILER_AND_SCOPE"
     },
     {
       "id": "F02",
       "title": "Weighted physical-test calculus",
       "depends_on": [],
-      "status": "PLANNED",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
       "acceptance_kind": "EXACT_COMPILER_AND_SCOPE"
     },
     {
@@ -77,7 +82,7 @@
       "depends_on": [
         "F02"
       ],
-      "status": "PLANNED",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
       "acceptance_kind": "EXACT_COMPILER_AND_SCOPE"
     },
     {
@@ -88,7 +93,7 @@
         "F02",
         "F03"
       ],
-      "status": "PLANNED",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
       "acceptance_kind": "EXACT_COMPILER_AND_SCOPE"
     },
     {
@@ -98,7 +103,7 @@
         "F01",
         "F04"
       ],
-      "status": "PLANNED",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
       "acceptance_kind": "EXACT_COMPILER_AND_SCOPE"
     },
     {
@@ -108,7 +113,7 @@
         "F01",
         "F04"
       ],
-      "status": "PLANNED",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
       "acceptance_kind": "EXACT_COMPILER_AND_SCOPE"
     },
     {
@@ -120,14 +125,14 @@
         "F05",
         "F06"
       ],
-      "status": "PLANNED",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
       "acceptance_kind": "EXACT_COMPILER_AND_SCOPE"
     },
     {
       "id": "N01",
       "title": "Exact codec",
       "depends_on": [],
-      "status": "PLANNED",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
       "acceptance_kind": "CERTIFIED_IMPLEMENTATION_AND_REPLAY"
     },
     {
@@ -136,7 +141,7 @@
       "depends_on": [
         "N01"
       ],
-      "status": "PLANNED",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
       "acceptance_kind": "CERTIFIED_IMPLEMENTATION_AND_REPLAY"
     },
     {
@@ -147,7 +152,7 @@
         "N01",
         "N02"
       ],
-      "status": "PLANNED",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
       "acceptance_kind": "CERTIFIED_IMPLEMENTATION_AND_REPLAY"
     },
     {
@@ -157,7 +162,7 @@
         "N01",
         "N03"
       ],
-      "status": "PLANNED",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
       "acceptance_kind": "CERTIFIED_IMPLEMENTATION_AND_REPLAY"
     },
     {
@@ -168,7 +173,7 @@
         "N03",
         "N04"
       ],
-      "status": "PLANNED",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
       "acceptance_kind": "BOUNDED_HYPOTHESIS_TEST_NO_REQUIRED_POSITIVE_SCIENCE_RESULT"
     },
     {
@@ -178,7 +183,7 @@
         "N03",
         "N04"
       ],
-      "status": "PLANNED",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
       "acceptance_kind": "BOUNDED_HYPOTHESIS_TEST_NO_REQUIRED_POSITIVE_SCIENCE_RESULT"
     }
   ],
@@ -280,7 +285,7 @@
   ],
   "closure_extension": "Only if independent branch-complete canonical exclusion is proved, add exact unconditional Mathlib RH endpoint and full claim validation. No placeholder closure theorem in mandatory core.",
   "new_local_lean_build": false,
-  "new_canonical_arb_certificate": false,
+  "new_canonical_arb_certificate": true,
   "repository_write_performed": true,
   "renderer_managed_surfaces": [
     "README.md",
@@ -298,5 +303,6 @@
     "research/RHRC/routes/R003_ccm_bridge/README.md",
     "research/RHRC/countermodels/README.md"
   ],
-  "implementation_note": "Branch implementation created from exact merged PR #282 tree. Exact-head compiler/CI authority pending; no claim promotion is implied by repository presence. Explicit seam-jet and frozen-analytic C2 helpers are now part of the mandatory formal inventory."
+  "implementation_note": "All planned F01-F07, N01-N04, X01 and X02 source/evidence surfaces are implemented as candidates. F03 has explicit normal/remainder admissibility and value authority; F04 exports explicit k1/k2/kM physical identities; F05 contains the arbitrary-dimensional Schur theorem and generated strict-even specialization; F07 exports the completed production frontier. Exact-head compiler/CI authority is still pending and RH remains OPEN.",
+  "implementation_head": "RUNTIME_PR_HEAD_REQUIRED"
 }
