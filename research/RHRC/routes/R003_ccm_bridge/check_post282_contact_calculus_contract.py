@@ -12,12 +12,15 @@ NEW_LEAN=[
  "Zeta23/CCM/CanonicalFrozenApertureC2.lean",
  "Zeta23/CCM/CanonicalCompressedApertureC2.lean",
  "Zeta23/CCM/ProductionWeightedTestCalculus.lean",
+ "Zeta23/CCM/ProductionWeightedGlobalTests.lean",
  "Zeta23/CCM/ProductionNormalSourceAuthority.lean",
  "Zeta23/CCM/FirstCrossingProductionRemainderAuthority.lean",
  "Zeta23/CCM/ProductionPhysicalFunctionalCongruence.lean",
  "Zeta23/CCM/FirstCrossingProductionRemainderValueAuthority.lean",
  "Zeta23/CCM/StationarySchurContact.lean",
  "Zeta23/CCM/FirstCrossingInheritedStationarity.lean",
+ "Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean",
+ "Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean",
  "Zeta23/RHRC/ContactCalculusContract.lean",
 ]
 REQUIRED_SYMBOLS={
@@ -43,6 +46,9 @@ REQUIRED_SYMBOLS={
  "Zeta23/CCM/StationarySchurContact.lean":[
    "stationarySchurComplement","stationarySchurBlock",
    "stationarySchurBlock_isInvertible_of_kernel_line",
+   "stationarySchur_completedSquare",
+   "eventually_stationarySchurBlock_nonnegative",
+   "stationarySchur_contact_secondPairing_eq_zero",
    "StationarySchurContactCertificate",
    "curvature_eq_zero"],
  "Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean":[
@@ -51,7 +57,8 @@ REQUIRED_SYMBOLS={
    "production_stationary_schur_curvature_eq_zero",
    "actual_stationary_curvature_eq_zero",
    "production_stationary_saturation",
-   "inherited_production_saturation"],
+   "inherited_production_saturation",
+   "inherited_completed_production_frontier"],
  "Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean":[
    "canonicalFirstVariation_eq_physical",
    "canonicalFixedSecondEuler_eq_physical",
@@ -59,10 +66,14 @@ REQUIRED_SYMBOLS={
    "canonicalSecondPairing_euler_eq_productionSaturationGap",
    "canonicalOptimizedContactCurvature"],
  "Zeta23/RHRC/ContactCalculusContract.lean":[
+   "canonicalFirstVariation_eq_physical",
+   "canonicalFixedSecondEuler_eq_physical",
+   "canonicalMixedFirstVariation_eq_physical",
    "actual_stationary_curvature_eq_zero",
    "production_stationary_saturation",
    "completed_production_frontier",
-   "inherited_production_saturation"],
+   "inherited_production_saturation",
+   "inherited_completed_production_frontier"],
 }
 
 
@@ -88,8 +99,32 @@ def check_surface()->None:
     for required in ("F01_COMPRESSED_C2","F02_WEIGHTED_TESTS",
                      "F03_REMAINDER_AUTHORITY","F04_PAIR_BALANCE",
                      "F05_STATIONARY_CURVATURE","F06_INHERITED_STATIONARITY",
-                     "F07_FRONTIER"):
+                     "F07_FRONTIER","N01_EXACT_INTERVAL_CODEC",
+                     "N02_INDEPENDENT_CALIBRATION",
+                     "N03_RESPONSE_PHYSICAL_BALANCE",
+                     "N04_MATCHED_ADVERSARIAL_CONTROLS",
+                     "X01_INHERITED_RESPONSE_INVESTIGATION",
+                     "X02_DILATION_RESIDUAL_INVESTIGATION"):
         if required not in ids: fail("OBLIGATION",f"missing {required}")
+    by_id={x.get("id"):x for x in obligations.get("obligations",[])}
+    for required in ("F01_COMPRESSED_C2","F02_WEIGHTED_TESTS",
+                     "F03_REMAINDER_AUTHORITY","F04_PAIR_BALANCE",
+                     "F05_STATIONARY_CURVATURE","F06_INHERITED_STATIONARITY",
+                     "F07_FRONTIER","N01_EXACT_INTERVAL_CODEC",
+                     "N02_INDEPENDENT_CALIBRATION",
+                     "N03_RESPONSE_PHYSICAL_BALANCE",
+                     "N04_MATCHED_ADVERSARIAL_CONTROLS"):
+        if by_id[required].get("status")!="CANDIDATE_IMPLEMENTED_PENDING_CI":
+            fail("OBLIGATION",f"{required} not recorded as implemented candidate")
+    for required in ("X01_INHERITED_RESPONSE_INVESTIGATION",
+                     "X02_DILATION_RESIDUAL_INVESTIGATION"):
+        if by_id[required].get("status") not in {
+            "CANDIDATE_IMPLEMENTED_PENDING_EXECUTION",
+            "CANDIDATE_IMPLEMENTED_PENDING_CI"}:
+            fail("OBLIGATION",f"{required} not recorded as implemented candidate")
+    for required in ("OBS060O_SATURATION_EXCLUSION","ODD_TIE_BRANCHES","RH"):
+        if by_id.get(required,{}).get("status")!="OPEN":
+            fail("FIREWALL",f"{required} must remain OPEN")
     if obligations.get("claim_firewall")!="RH_OPEN":
         fail("FIREWALL","obligation ledger terminal claim drift")
 
