@@ -251,6 +251,8 @@ jobs:
           lake build Zeta23.CCM.FirstCrossingProductionSaturation
           lake build Zeta23.CCM.GlobalParityFirstNegativeBoundary
           lake build Zeta23.CCM.FirstCrossingGlobalAlignment
+          lake build Zeta23.CCM.CanonicalCompressedSeamJets
+          lake build Zeta23.CCM.CanonicalFrozenApertureC2
           lake build Zeta23.CCM.CanonicalCompressedApertureC2
           lake build Zeta23.CCM.ProductionWeightedTestCalculus
           lake build Zeta23.CCM.StationarySchurContact
@@ -292,6 +294,8 @@ jobs:
             Zeta23/CCM/FirstCrossingProductionSaturation.lean \
             Zeta23/CCM/GlobalParityFirstNegativeBoundary.lean \
             Zeta23/CCM/FirstCrossingGlobalAlignment.lean \
+            Zeta23/CCM/CanonicalCompressedSeamJets.lean \
+            Zeta23/CCM/CanonicalFrozenApertureC2.lean \
             Zeta23/CCM/CanonicalCompressedApertureC2.lean \
             Zeta23/CCM/ProductionWeightedTestCalculus.lean \
             Zeta23/CCM/StationarySchurContact.lean \
