@@ -44,34 +44,47 @@ theorem stationary_firstContact_secondDerivative_eq_zero
     (hC2 : ContDiffAt ℝ 2 f x)
     (hstat : deriv f x = 0) :
     deriv (deriv f) x = 0 := by
-  have hfirst : HasDerivAt f 0 x := by
-    simpa [hstat] using hC2.differentiableAt.hasDerivAt
-  have hsecond :
-      HasDerivAt (deriv f) (deriv (deriv f) x) x := by
-    exact hC2.deriv_contDiffAt.differentiableAt.hasDerivAt
   by_contra hne
   rcases lt_or_gt_of_ne hne with hneg | hpos
-  · have hderivPosLeft :
-        ∀ᶠ y in 𝓝[<] x, 0 < deriv f y := by
-      have hlim := hsecond.isLittleO
-      filter_upwards [hlim.eventually] with y hy
-      have hx : y - x < 0 := by
+  · have hlocalNeg : ∀ᶠ y in 𝓝[<] x, f y < 0 := by
+      have hquad := hC2.isLittleO_sub_first
+      filter_upwards [hquad.eventually] with y hy
+      have hyx : y - x < 0 := by
         simpa [mem_Iio] using show y ∈ Iio x from by assumption
-      nlinarith [norm_nonneg (deriv f y - deriv f x -
-        (deriv (deriv f) x) * (y - x))]
-    obtain ⟨y, hyax, hyx, hdy⟩ :
-        ∃ y, a < y ∧ y < x ∧ 0 < deriv f y := by
-      rcases (mem_nhdsWithin_iff_exists_mem_nhds_inter.mp
-        hderivPosLeft).1 with ⟨s, hs, hsx⟩
-      obtain ⟨y, hy⟩ := exists_mem_open_interval_of_mem_nhds hs hax
-      exact ⟨y, hy.1, hy.2, hsx hy.2⟩
-    have hmv :=
-      exists_ratio_hasDerivAt_eq_slope f
-        (min y x) (max y x)
-        (by linarith)
-        (fun z hz => hC2.continuousAt.continuousWithinAt)
-        (fun z hz => hC2.differentiableAt.hasDerivAt)
-    linarith [hleft y (le_of_lt hyax) (le_of_lt hyx)]
+      have hyne : y - x ≠ 0 := ne_of_lt hyx
+      have hsq : 0 < (y - x) ^ 2 := sq_pos_of_ne_zero hyne
+      nlinarith
+    obtain ⟨ε, hε, hball⟩ := eventually_nhdsWithin_iff.1 hlocalNeg
+    let δ : ℝ := min ε (x - a) / 2
+    have hδpos : 0 < δ := by
+      dsimp [δ]
+      have hm : 0 < min ε (x - a) :=
+        lt_min hε (sub_pos.mpr hax)
+      linarith
+    have hδltε : δ < ε := by
+      dsimp [δ]
+      have hm := min_le_left ε (x - a)
+      linarith
+    have hδltxa : δ < x - a := by
+      dsimp [δ]
+      have hm := min_le_right ε (x - a)
+      have hxa : 0 < x - a := sub_pos.mpr hax
+      linarith
+    let y : ℝ := x - δ
+    have hyx : y < x := by
+      dsimp [y]
+      linarith
+    have hay : a < y := by
+      dsimp [y]
+      linarith
+    have hdist : dist y x < ε := by
+      have habs : |y - x| = δ := by
+        dsimp [y]
+        rw [show x - δ - x = -δ by ring, abs_neg, abs_of_pos hδpos]
+      simpa [Real.dist_eq, habs] using hδltε
+    have hyneg : f y < 0 := hball ⟨hdist, hyx⟩
+    have hynonneg := hleft y (le_of_lt hay) (le_of_lt hyx)
+    linarith
   · have hlocalPos : ∀ᶠ y in 𝓝[>] x, 0 < f y := by
       have hquad := hC2.isLittleO_sub_first
       filter_upwards [hquad.eventually] with y hy
@@ -80,7 +93,9 @@ theorem stationary_firstContact_secondDerivative_eq_zero
       nlinarith
     obtain ⟨ε, hε, hball⟩ := eventually_nhdsWithin_iff.1 hlocalPos
     obtain ⟨y, hyx, hyu, hyneg⟩ := hright ε hε
-    have hypos : 0 < f y := hball ⟨by linarith, hyx⟩
+    have hypos : 0 < f y := hball ⟨by
+      rw [Real.dist_eq, abs_of_nonneg (sub_nonneg.mpr (le_of_lt hyx))]
+      linarith, hyx⟩
     linarith
 
 /-! ## Fixed kernel complement and actual Schur objects -/
