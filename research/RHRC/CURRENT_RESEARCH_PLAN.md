@@ -91,6 +91,30 @@ RESEARCH / CONTROL FIREWALL
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#282 / PR #283 complete contact-calculus candidate override
+
+PR #282 remains merged theorem authority. PR #283 now has the **entire planned post-#282 implementation surface in source** as a candidate pending exact-head compiler/CI validation.
+
+Implemented candidate formal chain:
+
+```text
+F01 actual compressed C2 through prime-power seams
+ -> F02 weighted physical/global production-test authority
+ -> F03 concrete normal/remainder admissibility and physical value authority
+ -> F04 explicit k1/k2/kM derivative identities and Euler-corrected pair balance
+ -> F05 arbitrary-dimensional stationary Schur contact theorem
+ -> production specialization: actual stationary optimized curvature = 0
+ -> F06 inherited-kernel stationarity
+ -> F07 completed fresh-born / stationary production frontier
+```
+
+The stationary strict-even branch now has candidate source theorems deriving the unique perpendicular response, zero actual optimized curvature, exact production saturation, and strict positivity of the concrete remainder without caller-supplied legacy realization, curvature bridge, zero-curvature equality, arbitrary remainder, endpoint barrier, or RH premise. The inherited branch supplies stationarity internally.
+
+The numerical/evidence package N01-N04 is also implemented as a candidate: exact directed dyadic Arb intervals, K=2/log(2) derivative/remainder/balance qualification, validated bordered response and independent physical remainder, exact six-case channel ablations, and adversarial result/provenance guards. X01 now derives its inherited-contact disposition from an eligibility scan rather than a hard-coded conclusion; X02 remains a bounded projected-dilation diagnostic.
+
+**Nothing in this section is theorem authority yet.** Exact-head Lean/compiler/axiom/proof-escape and research workflow validation are still required. The next mathematical obstruction after validation is OBS-060O: find a genuinely canonical contact-conditioned arithmetic incompatibility with the exact stationary saturation equality, then close the odd/tie branches separately. RH remains OPEN.
+
+
 ## PR #282 generated production contact candidate override
 
 PR #281 is merged theorem authority. PR #282 constructs the counterexample-generated global first-negative boundary and selected-cutoff alignment, then carries the strict-even lane into explicit first-variation, stationary-response and concrete curvature objects.
