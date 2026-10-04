@@ -67,7 +67,8 @@ theorem hasDerivAt_primeSourceCoordinate
   convert
     (hasDerivAt_const L (1 : ℝ)).sub
       ((hasDerivAt_const L (Real.log q)).div
-        (hasDerivAt_id L) hL) using 1 <;> ring
+        (hasDerivAt_id L) hL) using 1 <;>
+    field_simp [hL] <;> ring
 
 theorem hasDerivAt_primeSourceCoordinate_first
     (q : ℕ) {L : ℝ} (hL : L ≠ 0) :
