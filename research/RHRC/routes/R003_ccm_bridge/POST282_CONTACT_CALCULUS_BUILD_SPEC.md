@@ -636,6 +636,20 @@ Update applicable control/current-state tests without relaxing their semantic as
 
 Proposed new registered supporting claims are compressed production C2, weighted production pair balance, inherited first-variation restriction, and the completed strict-even frontier. Assign final IDs only after checking the live registry for collisions. Bind exact declarations via existing `R003_PROMOTED_BINDINGS.json`, `REGISTERED_THEOREM_BINDINGS.json`, `ClaimBindings.lean` and `RegisteredClaimBindings.lean`, and closure obligation bindings where relevant. Source theorem scope and legitimate contact premises must be recorded even if a registry status label uses the term unconditional for a theorem without extra axioms.
 
+Final collision-checked candidate IDs assigned on PR #283 are:
+
+- `R003_COMPRESSED_PRODUCTION_C2`;
+- `R003_WEIGHTED_PRODUCTION_PAIR_BALANCE`;
+- `R003_INHERITED_FIRST_VARIATION_RESTRICTION`;
+- `R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER`.
+
+Before exact-head validation they remain `OPEN` with `candidate_binding=true` and
+`OPEN_PENDING_CI` audit rows.  They are compiler/axiom audited through the
+existing R003 and registered binding surfaces but are not inserted into the
+ordinary proved-binding inventories.  Promotion to `PROVED_UNCONDITIONAL`
+is a post-green action only.  No terminal closure adapter is added for these
+supporting claims because OBS-060O, odd/tie closure and RH remain OPEN.
+
 Do not register RH or arithmetic exclusion as proved. Generated graph/compiler products must be emitted by the existing transactional materializer, not hand-edited. Actual commit IDs belong in execution receipts; avoid making a checked-in file require its own final commit hash.
 
 ## 8. CI and theorem-admission gates
