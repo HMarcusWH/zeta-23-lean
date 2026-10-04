@@ -755,6 +755,58 @@ theorem productionFirstDerivativeRaw_eq_test_on_Icc
       productionFirstDerivativePhysicalTest L K z t := by
   simp [productionFirstDerivativePhysicalTest, productionPhysicalClamp_eq ht]
 
+/-- The complete production RHS only samples the physical interval and the
+prime logarithms lying in that interval. -/
+private theorem productionArithmeticComplexValue_congr_on_Icc
+    {L : ℝ} (hL : 0 < L) {f g : ℝ → ℂ}
+    (hfg : ∀ t : ℝ, t ∈ Icc (0 : ℝ) L → f t = g t) :
+    productionArithmeticComplexValue L f =
+      productionArithmeticComplexValue L g := by
+  unfold productionArithmeticComplexValue dictionaryCompletePhysicalRHS
+  have hpole :
+      (∫ t in (0 : ℝ)..L,
+        f t * (completeSourcePoleWeight t : ℂ)) =
+      ∫ t in (0 : ℝ)..L,
+        g t * (completeSourcePoleWeight t : ℂ) := by
+    apply intervalIntegral.integral_congr
+    intro t ht
+    rw [uIcc_of_le hL.le] at ht
+    rw [hfg t ht]
+  have harch :
+      (∫ t in (0 : ℝ)..L,
+        f t * (archDensity t : ℂ)) =
+      ∫ t in (0 : ℝ)..L,
+        g t * (archDensity t : ℂ) := by
+    apply intervalIntegral.integral_congr
+    intro t ht
+    rw [uIcc_of_le hL.le] at ht
+    rw [hfg t ht]
+  have hprime :
+      (∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+        primeSourceWeight q * f (Real.log q)) =
+      ∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+        primeSourceWeight q * g (Real.log q) := by
+    apply Finset.sum_congr rfl
+    intro q hq
+    have hqone : 1 ≤ q := by omega
+    have hqpos : (0 : ℝ) < (q : ℝ) := by
+      exact_mod_cast (show 0 < q by omega)
+    have hqfloor :
+        (q : ℝ) ≤ ((⌊Real.exp L⌋₊ : ℕ) : ℝ) := by
+      exact_mod_cast hq.2
+    have hfloorExp :
+        ((⌊Real.exp L⌋₊ : ℕ) : ℝ) ≤ Real.exp L :=
+      Nat.floor_le (Real.exp_pos L).le
+    have hqexp : (q : ℝ) ≤ Real.exp L :=
+      le_trans hqfloor hfloorExp
+    have hlog0 : 0 ≤ Real.log (q : ℝ) :=
+      Real.log_nonneg (by exact_mod_cast hqone)
+    have hlogL : Real.log (q : ℝ) ≤ L := by
+      rw [← Real.exp_le_exp]
+      simpa [Real.exp_log hqpos] using hqexp
+    rw [hfg (Real.log q) ⟨hlog0, hlogL⟩]
+  rw [hpole, harch, hprime]
+
 /-- Full authority for k1. -/
 theorem productionFirstDerivativeTest_authority
     {L : ℝ} (hL : 0 < L) (K : ℕ)
@@ -764,9 +816,17 @@ theorem productionFirstDerivativeTest_authority
       productionArithmeticComplexValue L
         (fun t => (productionFirstDerivativePhysicalTest L K z t : ℂ)) := by
   have hg := (productionFirstDerivativeGlobalLift hL K z).physical_authority hL
-  unfold productionArithmeticComplexValue dictionaryCompletePhysicalRHS at hg ⊢
-  -- Only values on [0,L] and positive prime logs are sampled.
-  simpa [productionFirstDerivativePhysicalTest, productionPhysicalClamp] using hg
+  calc
+    (1 / 2 : ℂ) * Zeta23.EF.literatureRHS
+        (productionFirstDerivativeGlobalTest L K z) =
+        productionArithmeticComplexValue L
+          (fun t => (productionFirstDerivativePhysicalRaw L K z t : ℂ)) := hg
+    _ = productionArithmeticComplexValue L
+          (fun t => (productionFirstDerivativePhysicalTest L K z t : ℂ)) := by
+      apply productionArithmeticComplexValue_congr_on_Icc hL
+      intro t ht
+      exact congrArg (fun x : ℝ => (x : ℂ))
+        (productionFirstDerivativeRaw_eq_test_on_Icc hL K z ht)
 
 
 /-! ## Second and mixed weighted derivative lifts -/
@@ -1020,8 +1080,16 @@ theorem productionSecondDerivativeTest_authority
       productionArithmeticComplexValue L
         (fun t => (productionSecondDerivativePhysicalTest L K z t : ℂ)) := by
   have hg := (productionSecondDerivativeGlobalLift hL K z).physical_authority hL
-  simpa [productionSecondDerivativePhysicalTest, productionPhysicalClamp,
-    productionArithmeticComplexValue, dictionaryCompletePhysicalRHS] using hg
+  calc
+    (1 / 2 : ℂ) * Zeta23.EF.literatureRHS
+        (productionSecondDerivativeGlobalTest L K z) =
+        productionArithmeticComplexValue L
+          (fun t => (productionSecondDerivativePhysicalRaw L K z t : ℂ)) := hg
+    _ = productionArithmeticComplexValue L
+          (fun t => (productionSecondDerivativePhysicalTest L K z t : ℂ)) := by
+      apply productionArithmeticComplexValue_congr_on_Icc hL
+      intro t ht
+      simp [productionSecondDerivativePhysicalTest, productionPhysicalClamp, ht]
 
 theorem productionMixedDerivativeTest_authority
     {L : ℝ} (hL : 0 < L) (K : ℕ)
@@ -1031,8 +1099,16 @@ theorem productionMixedDerivativeTest_authority
       productionArithmeticComplexValue L
         (fun t => (productionMixedDerivativePhysicalTest L K z w t : ℂ)) := by
   have hg := (productionMixedDerivativeGlobalLift hL K z w).physical_authority hL
-  simpa [productionMixedDerivativePhysicalTest, productionPhysicalClamp,
-    productionArithmeticComplexValue, dictionaryCompletePhysicalRHS] using hg
+  calc
+    (1 / 2 : ℂ) * Zeta23.EF.literatureRHS
+        (productionMixedDerivativeGlobalTest L K z w) =
+        productionArithmeticComplexValue L
+          (fun t => (productionMixedDerivativePhysicalRaw L K z w t : ℂ)) := hg
+    _ = productionArithmeticComplexValue L
+          (fun t => (productionMixedDerivativePhysicalTest L K z w t : ℂ)) := by
+      apply productionArithmeticComplexValue_congr_on_Icc hL
+      intro t ht
+      simp [productionMixedDerivativePhysicalTest, productionPhysicalClamp, ht]
 
 /-- Full F02 packages for the actual derivative tests. -/
 theorem productionDerivativeWeightedTests_admissible
