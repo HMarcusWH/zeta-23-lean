@@ -128,6 +128,36 @@ def check_surface()->None:
     if obligations.get("claim_firewall")!="RH_OPEN":
         fail("FIREWALL","obligation ledger terminal claim drift")
 
+    candidate_ids={
+        "R003_COMPRESSED_PRODUCTION_C2":"Zeta23.CCM.canonicalEvenCompressedC2_proved",
+        "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE":"Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap",
+        "R003_INHERITED_FIRST_VARIATION_RESTRICTION":"Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited",
+        "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER":"Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier",
+    }
+    registry=json.loads((ROOT/"research/RHRC/CLAIM_REGISTRY.json").read_text())
+    claims={x.get("id"):x for x in registry.get("claims",[])}
+    for cid,theorem in candidate_ids.items():
+        row=claims.get(cid)
+        if not isinstance(row,dict): fail("CLAIM_BINDING",f"missing {cid}")
+        if row.get("status")!="OPEN" or row.get("promotion_cap")!="OPEN":
+            fail("CLAIM_BINDING",f"{cid} must remain OPEN before exact-head promotion")
+        if row.get("candidate_binding") is not True:
+            fail("CLAIM_BINDING",f"{cid} missing candidate_binding marker")
+        if row.get("theorem")!=theorem:
+            fail("CLAIM_BINDING",f"{cid} theorem drift")
+
+    promoted=json.loads((ROOT/"research/RHRC/R003_PROMOTED_BINDINGS.json").read_text())
+    pc={x.get("id"):x for x in promoted.get("candidate_bindings",[])}
+    registered=json.loads((ROOT/"research/RHRC/REGISTERED_THEOREM_BINDINGS.json").read_text())
+    rc={x.get("id"):x for x in registered.get("candidate_bindings",[])}
+    if set(pc)!=set(candidate_ids): fail("CLAIM_BINDING","R003 candidate binding inventory drift")
+    if set(rc)!=set(candidate_ids): fail("CLAIM_BINDING","registered candidate binding inventory drift")
+    for cid,theorem in candidate_ids.items():
+        if pc[cid].get("theorem")!=theorem or pc[cid].get("status")!="OPEN_PENDING_CI":
+            fail("CLAIM_BINDING",f"{cid} R003 candidate binding drift")
+        if rc[cid].get("theorem")!=theorem or rc[cid].get("status")!="OPEN_PENDING_CI":
+            fail("CLAIM_BINDING",f"{cid} registered candidate binding drift")
+
 def _validate_dyadic_payload(obj,path="results")->None:
     if isinstance(obj,dict):
         if "dyadic_interval" in obj:
