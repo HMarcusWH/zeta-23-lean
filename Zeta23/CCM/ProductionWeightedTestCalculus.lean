@@ -197,14 +197,30 @@ theorem productionArithmeticRealValue_add_of_admissible
     productionArithmeticRealValue L (fun t => f t + g t) =
       productionArithmeticRealValue L f +
         productionArithmeticRealValue L g := by
-  have hfp :=
-    (IntervalIntegrable.ofRealComplex hf.pole_interval_integrable)
-  have hgp :=
-    (IntervalIntegrable.ofRealComplex hg.pole_interval_integrable)
-  have hfa :=
-    (IntervalIntegrable.ofRealComplex hf.arch_interval_integrable)
-  have hga :=
-    (IntervalIntegrable.ofRealComplex hg.arch_interval_integrable)
+  have hfp :
+      IntervalIntegrable
+        (fun t => (f t : ℂ) * (completeSourcePoleWeight t : ℂ))
+        volume 0 L := by
+    simpa only [Complex.ofReal_mul] using
+      (IntervalIntegrable.ofRealComplex hf.pole_interval_integrable)
+  have hgp :
+      IntervalIntegrable
+        (fun t => (g t : ℂ) * (completeSourcePoleWeight t : ℂ))
+        volume 0 L := by
+    simpa only [Complex.ofReal_mul] using
+      (IntervalIntegrable.ofRealComplex hg.pole_interval_integrable)
+  have hfa :
+      IntervalIntegrable
+        (fun t => (f t : ℂ) * (archDensity t : ℂ))
+        volume 0 L := by
+    simpa only [Complex.ofReal_mul] using
+      (IntervalIntegrable.ofRealComplex hf.arch_interval_integrable)
+  have hga :
+      IntervalIntegrable
+        (fun t => (g t : ℂ) * (archDensity t : ℂ))
+        volume 0 L := by
+    simpa only [Complex.ofReal_mul] using
+      (IntervalIntegrable.ofRealComplex hg.arch_interval_integrable)
   unfold productionArithmeticRealValue productionArithmeticComplexValue
     dictionaryCompletePhysicalRHS
   have hp :
@@ -405,7 +421,8 @@ private theorem intervalIntegrable_first_pole
   rw [Filter.EventuallyEq, MeasureTheory.ae_restrict_iff' (by measurability)]
   filter_upwards with t ht
   have ht' : t ∈ Icc (0 : ℝ) L := by
-    simpa only [uIcc_of_le hL.le] using ht
+    rw [uIoc_of_le hL.le] at ht
+    exact ⟨le_of_lt ht.1, ht.2⟩
   simp [productionFirstDerivativePhysicalTest, productionPhysicalClamp_eq ht']
 
 private theorem intervalIntegrable_second_pole
@@ -430,7 +447,8 @@ private theorem intervalIntegrable_second_pole
   rw [Filter.EventuallyEq, MeasureTheory.ae_restrict_iff' (by measurability)]
   filter_upwards with t ht
   have ht' : t ∈ Icc (0 : ℝ) L := by
-    simpa only [uIcc_of_le hL.le] using ht
+    rw [uIoc_of_le hL.le] at ht
+    exact ⟨le_of_lt ht.1, ht.2⟩
   simp [productionSecondDerivativePhysicalTest, productionPhysicalClamp_eq ht']
 
 private theorem intervalIntegrable_mixed_pole
@@ -455,7 +473,8 @@ private theorem intervalIntegrable_mixed_pole
   rw [Filter.EventuallyEq, MeasureTheory.ae_restrict_iff' (by measurability)]
   filter_upwards with t ht
   have ht' : t ∈ Icc (0 : ℝ) L := by
-    simpa only [uIcc_of_le hL.le] using ht
+    rw [uIoc_of_le hL.le] at ht
+    exact ⟨le_of_lt ht.1, ht.2⟩
   simp [productionMixedDerivativePhysicalTest, productionPhysicalClamp_eq ht']
 
 private theorem intervalIntegrable_first_arch
@@ -474,7 +493,8 @@ private theorem intervalIntegrable_first_arch
   rw [Filter.EventuallyEq, MeasureTheory.ae_restrict_iff' (by measurability)]
   filter_upwards [MeasureTheory.volume.ae_ne (0 : ℝ)] with t ht0 ht
   have ht' : t ∈ Icc (0 : ℝ) L := by
-    simpa only [uIcc_of_le hL.le] using ht
+    rw [uIoc_of_le hL.le] at ht
+    exact ⟨le_of_lt ht.1, ht.2⟩
   exact (first_arch_eq_regularized hL ht0 ht' K z).symm
 
 private theorem intervalIntegrable_second_arch
@@ -493,7 +513,8 @@ private theorem intervalIntegrable_second_arch
   rw [Filter.EventuallyEq, MeasureTheory.ae_restrict_iff' (by measurability)]
   filter_upwards [MeasureTheory.volume.ae_ne (0 : ℝ)] with t ht0 ht
   have ht' : t ∈ Icc (0 : ℝ) L := by
-    simpa only [uIcc_of_le hL.le] using ht
+    rw [uIoc_of_le hL.le] at ht
+    exact ⟨le_of_lt ht.1, ht.2⟩
   exact (second_arch_eq_regularized hL ht0 ht' K z).symm
 
 private theorem intervalIntegrable_mixed_arch
@@ -512,7 +533,8 @@ private theorem intervalIntegrable_mixed_arch
   rw [Filter.EventuallyEq, MeasureTheory.ae_restrict_iff' (by measurability)]
   filter_upwards [MeasureTheory.volume.ae_ne (0 : ℝ)] with t ht0 ht
   have ht' : t ∈ Icc (0 : ℝ) L := by
-    simpa only [uIcc_of_le hL.le] using ht
+    rw [uIoc_of_le hL.le] at ht
+    exact ⟨le_of_lt ht.1, ht.2⟩
   exact (mixed_arch_eq_regularized hL ht0 ht' K z w).symm
 
 /-- The three physical derivative tests have genuine support and removable
