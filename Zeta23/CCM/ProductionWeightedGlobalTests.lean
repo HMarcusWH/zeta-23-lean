@@ -1240,13 +1240,25 @@ theorem sourceAtomPairingDerivative_secondDerivative_zero
   have hzeven := evenBoundaryFlatRawCoefficients_mem_even K z
   have hweven := evenBoundaryFlatRawCoefficients_mem_even K w
   have hm1z :
-      centeredMoment K 1 (evenBoundaryFlatRawCoefficients K z) = 0 := hzflat.2.1
+      centeredMoment K 1
+        ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ)
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))) = 0 := by
+    simpa [evenBoundaryFlatRawCoefficients] using hzflat.2.1
   have hm1w :
-      centeredMoment K 1 (evenBoundaryFlatRawCoefficients K w) = 0 := hwflat.2.1
+      centeredMoment K 1
+        ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ)
+          (w : EuclideanSpace ℂ (Fin (2 * K + 1)))) = 0 := by
+    simpa [evenBoundaryFlatRawCoefficients] using hwflat.2.1
   have hm0z :
-      centeredMoment K 0 (evenBoundaryFlatRawCoefficients K z) = 0 := hzflat.1
+      centeredMoment K 0
+        ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ)
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))) = 0 := by
+    simpa [evenBoundaryFlatRawCoefficients] using hzflat.1
   have hm0w :
-      centeredMoment K 0 (evenBoundaryFlatRawCoefficients K w) = 0 := hwflat.1
+      centeredMoment K 0
+        ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ)
+          (w : EuclideanSpace ℂ (Fin (2 * K + 1)))) = 0 := by
+    simpa [evenBoundaryFlatRawCoefficients] using hwflat.1
   have hz3 :
       iteratedDeriv 3
         (sourceAtomPairing K
@@ -1319,7 +1331,8 @@ theorem productionMixedDerivativePhysicalRaw_liftJets
       rw [sourceAtomPairingSecondDerivative_eq_indexActions K
         (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
         (w : EuclideanSpace ℂ (Fin (2 * K + 1))) 0 hsumz hsumw]
-      simp [sourceAtomPairing]
+      unfold sourceAtomPairing sourceEntryReal sourcePotentialReal sourceDiagonalReal
+      simp
     simp [productionMixedDerivativePhysicalRaw, hcoordL, hend.1, hpair2]
   · have h3 := sourceAtomPairingDerivative_secondDerivative_zero K z w
     simp [productionMixedDerivativePhysicalRaw, hcoordL, hend.1, h3]
