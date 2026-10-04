@@ -21,7 +21,7 @@ jobs:
           set +e
           : > /tmp/contact-calculus-targets.txt
           rc=0
-          for target in             Zeta23.CCM.CanonicalCompressedSeamJets             Zeta23.CCM.CanonicalFrozenApertureC2             Zeta23.CCM.CanonicalCompressedApertureC2             Zeta23.CCM.ProductionWeightedTestCalculus             Zeta23.CCM.FirstCrossingProductionTests             Zeta23.CCM.FirstCrossingProductionRemainder             Zeta23.CCM.FirstCrossingProductionFirstVariation
+          for target in             Zeta23.CCM.CanonicalCompressedSeamJets             Zeta23.CCM.CanonicalFrozenApertureC2             Zeta23.CCM.CanonicalCompressedApertureC2             Zeta23.CCM.ProductionWeightedTestCalculus             Zeta23.CCM.ProductionWeightedGlobalTests             Zeta23.CCM.FirstCrossingProductionTests             Zeta23.CCM.FirstCrossingProductionRemainder             Zeta23.CCM.ProductionNormalSourceAuthority             Zeta23.CCM.FirstCrossingProductionRemainderAuthority             Zeta23.CCM.ProductionPhysicalFunctionalCongruence             Zeta23.CCM.FirstCrossingProductionRemainderValueAuthority             Zeta23.CCM.FirstCrossingProductionFirstVariation
           do
             if lake build "$target"; then
               echo "$target PASS" | tee -a /tmp/contact-calculus-targets.txt
@@ -33,7 +33,7 @@ jobs:
           exit $rc
       - name: Audit compressed calculus axioms
         run: |
-          python research/RHRC/tools/axiom_audit.py             Zeta23/CCM/CanonicalCompressedSeamJets.lean             Zeta23/CCM/CanonicalFrozenApertureC2.lean             Zeta23/CCM/CanonicalCompressedApertureC2.lean             Zeta23/CCM/ProductionWeightedTestCalculus.lean             Zeta23/CCM/FirstCrossingProductionTests.lean             Zeta23/CCM/FirstCrossingProductionRemainder.lean             Zeta23/CCM/FirstCrossingProductionFirstVariation.lean
+          python research/RHRC/tools/axiom_audit.py             Zeta23/CCM/CanonicalCompressedSeamJets.lean             Zeta23/CCM/CanonicalFrozenApertureC2.lean             Zeta23/CCM/CanonicalCompressedApertureC2.lean             Zeta23/CCM/ProductionWeightedTestCalculus.lean             Zeta23/CCM/ProductionWeightedGlobalTests.lean             Zeta23/CCM/FirstCrossingProductionTests.lean             Zeta23/CCM/FirstCrossingProductionRemainder.lean             Zeta23/CCM/ProductionNormalSourceAuthority.lean             Zeta23/CCM/FirstCrossingProductionRemainderAuthority.lean             Zeta23/CCM/ProductionPhysicalFunctionalCongruence.lean             Zeta23/CCM/FirstCrossingProductionRemainderValueAuthority.lean             Zeta23/CCM/FirstCrossingProductionFirstVariation.lean
       - name: Reject proof escapes
         run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope closure
       - uses: actions/upload-artifact@v4
