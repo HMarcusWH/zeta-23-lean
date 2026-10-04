@@ -53,6 +53,9 @@ import Zeta23.ExceptionalZero.GlobalFirstBadOneStepDomination
 import Zeta23.ExceptionalZero.GlobalParityBottomSignOpposition
 import Zeta23.CCM.CanonicalGroundContinuity
 import Zeta23.ExceptionalZero.GlobalParityBottomFirstContact
+import Zeta23.CCM.CanonicalCompressedApertureC2
+import Zeta23.CCM.FirstCrossingProductionCurvatureBridge
+import Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier
 
 /-!
 R003 promoted-claim completeness is machine-checked by research/RHRC/tools/promoted_binding_lint.py against research/RHRC/R003_PROMOTED_BINDINGS.json and CLAIM_REGISTRY.json. Supporting #check declarations may exist without registry promotion; every PROVED_UNCONDITIONAL R003 registry theorem must have both #check and #print axioms here.
@@ -617,3 +620,26 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 -- R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE
 #check Zeta23.ExceptionalZero.exists_globalFirstBad_not_canonicalOneStepDomination_of_offLine_zero
 #print axioms Zeta23.ExceptionalZero.exists_globalFirstBad_not_canonicalOneStepDomination_of_offLine_zero
+
+
+-- Post-#282 OPEN candidate bindings.
+-- These declarations are compiler/axiom audited here but are NOT promoted
+-- registered theorem authority until exact-head validation succeeds and the
+-- corresponding registry statuses are explicitly promoted.
+
+-- R003_COMPRESSED_PRODUCTION_C2
+#check Zeta23.CCM.canonicalEvenCompressedC2_proved
+#print axioms Zeta23.CCM.canonicalEvenCompressedC2_proved
+
+-- R003_WEIGHTED_PRODUCTION_PAIR_BALANCE
+#check Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap
+#print axioms Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap
+
+-- R003_INHERITED_FIRST_VARIATION_RESTRICTION
+#check Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
+#print axioms Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
+
+-- R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER
+#check Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier
+#print axioms Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier
+
