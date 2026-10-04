@@ -60,6 +60,8 @@ CLOSURE_ROOTS = [
     Path("Zeta23/CCM/FirstCrossingProductionSaturation.lean"),
     Path("Zeta23/CCM/GlobalParityFirstNegativeBoundary.lean"),
     Path("Zeta23/CCM/FirstCrossingGlobalAlignment.lean"),
+    Path("Zeta23/CCM/CanonicalCompressedSeamJets.lean"),
+    Path("Zeta23/CCM/CanonicalFrozenApertureC2.lean"),
     Path("Zeta23/CCM/CanonicalCompressedApertureC2.lean"),
     Path("Zeta23/CCM/ProductionWeightedTestCalculus.lean"),
     Path("Zeta23/CCM/StationarySchurContact.lean"),
