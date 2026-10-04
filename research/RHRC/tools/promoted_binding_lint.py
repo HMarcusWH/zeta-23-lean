@@ -35,6 +35,9 @@ def main() -> int:
         and c.get("candidate_binding") is True
         and c.get("theorem")
     }
+    candidate_rule = manifest.get("candidate_rule")
+    if not isinstance(candidate_rule, str) or "not promoted theorem authority" not in candidate_rule:
+        fail("candidate binding rule missing fail-closed non-promotion language")
     candidate_rows = manifest.get("candidate_bindings", [])
     candidate_actual = {row["id"]: row for row in candidate_rows}
     if len(candidate_actual) != len(candidate_rows):
