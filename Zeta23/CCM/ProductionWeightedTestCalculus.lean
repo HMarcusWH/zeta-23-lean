@@ -2,6 +2,10 @@ import Zeta23.CCM.FirstCrossingProductionArithmetic
 import Zeta23.CCM.DictionaryResidualSecondOrderGluing
 import Zeta23.CCM.SourceDerivativeTransport
 import Zeta23.CCM.MixedSourceDerivativeTransport
+import Zeta23.CCM.DictionaryPoleSource
+import Zeta23.CCM.DictionaryArchSourceBridge
+import Zeta23.GammaFacts.Complete
+import Zeta23.ExplicitFormula.Bridge
 import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
 
 noncomputable section
@@ -273,6 +277,237 @@ theorem productionArithmeticRealValue_smul_of_admissible
   rw [← Finset.mul_sum]
   norm_cast
   ring
+
+
+/-! ### Global-to-physical authority -/
+
+/-- Verifiable data saying that a global compact C2 test is the even whole-line
+lift of a positive-half physical test on the exact aperture.  No arithmetic
+identity is stored in this structure. -/
+structure ProductionWeightedGlobalLift
+    (L : ℝ) (globalTest : ℝ → ℂ) (physicalTest : ℝ → ℝ) : Prop where
+  contDiff_two : ContDiff ℝ 2 globalTest
+  compact_support : HasCompactSupport globalTest
+  even : ∀ t : ℝ, globalTest (-t) = globalTest t
+  zero : globalTest 0 = 0
+  support_subset : Function.support globalTest ⊆ Icc (-L) L
+  agrees_positive :
+    ∀ t : ℝ, t ∈ Icc (0 : ℝ) L → globalTest t = (physicalTest t : ℂ)
+
+/-- The generic pole channel folds exactly to the positive physical aperture
+for every certified global lift. -/
+theorem ProductionWeightedGlobalLift.half_pole_eq_physical
+    {L : ℝ} (hL : 0 < L)
+    {g : ℝ → ℂ} {f : ℝ → ℝ}
+    (h : ProductionWeightedGlobalLift L g f) :
+    (1 / 2 : ℂ) * dictionaryPoleRHS g =
+      ∫ t : ℝ in (0 : ℝ)..L,
+        (f t : ℂ) * (completeSourcePoleWeight t : ℂ) := by
+  let G : ℝ → ℂ := fun t =>
+    g t * ((Real.exp (-|t| / 2) + Real.exp (|t| / 2) : ℝ) : ℂ)
+  have hg : Continuous g := h.contDiff_two.continuous
+  have hA : Integrable (fun t : ℝ =>
+      g t * (Real.exp (-|t| / 2) : ℂ)) :=
+    (hg.mul (by fun_prop)).integrable_of_hasCompactSupport
+      h.compact_support.mul_right
+  have hB : Integrable (fun t : ℝ =>
+      g t * (Real.exp (|t| / 2) : ℂ)) :=
+    (hg.mul (by fun_prop)).integrable_of_hasCompactSupport
+      h.compact_support.mul_right
+  have hpole := dictionaryPoleRHS_eq_spatial_weights hg h.compact_support
+  have hsum : dictionaryPoleRHS g = ∫ t : ℝ, G t := by
+    rw [hpole, ← integral_add hA hB]
+    apply integral_congr_ae
+    filter_upwards with t
+    dsimp [G]
+    push_cast
+    ring
+  have hGsupp : Function.support G ⊆ Icc (-L) L := by
+    intro t ht
+    apply h.support_subset
+    intro hgt
+    apply ht
+    simp [G, hgt]
+  rw [hsum]
+  rw [← intervalIntegral_eq_integral_of_support_subset_Icc
+    (by linarith : -L ≤ L) hGsupp]
+  have hGcont : Continuous G := by
+    dsimp [G]
+    exact hg.mul (by fun_prop)
+  have hsplit := intervalIntegral.integral_add_adjacent_intervals
+    (μ := volume)
+    (hGcont.intervalIntegrable (-L) 0)
+    (hGcont.intervalIntegrable 0 L)
+  rw [← hsplit]
+  have hleft :
+      (∫ t in -L..(0 : ℝ), G t) =
+        ∫ t in (0 : ℝ)..L, G (-t) := by
+    have hh := intervalIntegral.integral_comp_neg
+      (a := (0 : ℝ)) (b := L) G
+    simpa using hh.symm
+  rw [hleft]
+  have hevenG : ∀ t : ℝ, G (-t) = G t := by
+    intro t
+    dsimp [G]
+    rw [h.even]
+    simp [abs_neg]
+  have hleftEq :
+      (∫ t in (0 : ℝ)..L, G (-t)) =
+        ∫ t in (0 : ℝ)..L, G t := by
+    apply intervalIntegral.integral_congr
+    intro t ht
+    exact hevenG t
+  rw [hleftEq]
+  have hpos :
+      (∫ t in (0 : ℝ)..L, G t) =
+        ∫ t in (0 : ℝ)..L,
+          (f t : ℂ) * (completeSourcePoleWeight t : ℂ) := by
+    apply intervalIntegral.integral_congr
+    intro t ht
+    rw [uIcc_of_le hL.le] at ht
+    have htIcc : t ∈ Icc (0 : ℝ) L := ht
+    rw [show g t = (f t : ℂ) from h.agrees_positive t htIcc]
+    dsimp [G, completeSourcePoleWeight]
+    rw [abs_of_nonneg ht.1]
+    push_cast
+    ring
+  rw [hpos]
+  ring
+
+/-- The generic prime channel truncates at the exact production cutoff and,
+by evenness, reduces to the positive logarithmic samples of the physical
+test. -/
+theorem ProductionWeightedGlobalLift.half_prime_eq_physical
+    {L : ℝ} (hL : 0 < L)
+    {g : ℝ → ℂ} {f : ℝ → ℝ}
+    (h : ProductionWeightedGlobalLift L g f) :
+    (1 / 2 : ℂ) * dictionaryPrimeRHS g =
+      -(∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+          primeSourceWeight q * (f (Real.log q) : ℂ)) := by
+  have htsupp : tsupport g ⊆ Icc (-L) L :=
+    closure_minimal h.support_subset isClosed_Icc
+  rw [dictionaryPrimeRHS_eq_finset htsupp]
+  have hsamples :
+      ∀ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+        g (Real.log q) = (f (Real.log q) : ℂ) := by
+    intro q hq
+    have hqpos : (0 : ℝ) < (q : ℝ) := by
+      exact_mod_cast (lt_of_lt_of_le (by norm_num : 0 < 2) hq.1)
+    have hqfloorR : (q : ℝ) ≤ (⌊Real.exp L⌋₊ : ℝ) := by
+      exact_mod_cast hq.2
+    have hfloorExp : (⌊Real.exp L⌋₊ : ℝ) ≤ Real.exp L := by
+      exact_mod_cast Nat.floor_le (Real.exp_pos L).le
+    have hqexp : (q : ℝ) ≤ Real.exp L :=
+      le_trans hqfloorR hfloorExp
+    have hlog0 : 0 ≤ Real.log (q : ℝ) :=
+      (Real.log_nonneg (by exact_mod_cast hq.1)).2
+    have hlogL : Real.log (q : ℝ) ≤ L := by
+      have hh := Real.strictMonoOn_log.monotoneOn hqpos (Real.exp_pos L) hqexp
+      simpa using hh
+    exact h.agrees_positive (Real.log q) ⟨hlog0, hlogL⟩
+  simp_rw [h.even, hsamples]
+  have hsum :
+      (∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+        ((Λ q / Real.sqrt q : ℝ) : ℂ) *
+          ((f (Real.log q) : ℂ) + (f (Real.log q) : ℂ))) =
+      2 * (∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+        primeSourceWeight q * (f (Real.log q) : ℂ)) := by
+    rw [Finset.mul_sum]
+    apply Finset.sum_congr rfl
+    intro q hq
+    unfold primeSourceWeight
+    ring
+  rw [hsum]
+  ring
+
+/-- The generic archimedean channel reduces to the admitted positive physical
+density integral. -/
+theorem ProductionWeightedGlobalLift.half_arch_eq_physical
+    {L : ℝ} (hL : 0 < L)
+    {g : ℝ → ℂ} {f : ℝ → ℝ}
+    (h : ProductionWeightedGlobalLift L g f) :
+    (1 / 2 : ℂ) * dictionaryArchRHS g =
+      -(∫ t : ℝ in (0 : ℝ)..L,
+        (f t : ℂ) * (archDensity t : ℂ)) := by
+  have hg : Continuous g := h.contDiff_two.continuous
+  have hgi : Integrable g :=
+    hg.integrable_of_hasCompactSupport h.compact_support
+  have hF : Integrable (𝓕 g) :=
+    Zeta23.EF.integrable_fourier_of_contDiff_two
+      h.contDiff_two h.compact_support
+  have hpft : Integrable (fun τ : ℝ => Zeta23.paperFT g (τ : ℂ)) :=
+    Zeta23.EF.integrable_paperFT_ofReal hF
+  have hmuAll :
+      Integrable (fun τ : ℝ =>
+        Zeta23.paperFT g (τ : ℂ) * (Zeta23.mu τ : ℂ)) :=
+    Zeta23.EF.integrable_paperFT_mul_mu
+      h.contDiff_two h.compact_support Zeta23.gammaFacts
+  have hmu0 :
+      Integrable (fun τ : ℝ =>
+        Zeta23.paperFT g (τ : ℂ) * (Zeta23.mu 0 : ℂ)) :=
+    hpft.mul_const _
+  have hmuSub :
+      Integrable (fun τ : ℝ =>
+        Zeta23.paperFT g (τ : ℂ) *
+          ((Zeta23.mu τ - Zeta23.mu 0 : ℝ) : ℂ)) := by
+    refine (hmuAll.sub hmu0).congr (Filter.Eventually.of_forall fun τ => ?_)
+    push_cast
+    ring
+  have harch :=
+    dictionaryArchRHS_eq_neg_two_mul_archDensity_integral_of_zero
+      hg hgi hF h.even hmuSub h.zero
+  rw [harch]
+  let A : ℝ → ℂ := fun t => g t * (archDensity t : ℂ)
+  have hrestrict :
+      (∫ t : ℝ in Ioi 0, A t) =
+        ∫ t : ℝ in Icc 0 L, A t := by
+    rw [integral_Ici_eq_integral_Ioi]
+    apply setIntegral_eq_of_subset_of_forall_sdiff_eq_zero
+      measurableSet_Ici Icc_subset_Ici_self
+    intro t ht
+    have ht0 : 0 ≤ t := ht.1
+    have htL : L < t := by
+      have hn : ¬ t ≤ L := by
+        intro htle
+        exact ht.2 ⟨ht0, htle⟩
+      exact lt_of_not_ge hn
+    have hnot : t ∉ Icc (-L) L := by
+      intro hmem
+      linarith
+    have hgz : g t = 0 := by
+      by_contra hne
+      exact hnot (h.support_subset hne)
+    simp [A, hgz]
+  rw [hrestrict]
+  rw [integral_Icc_eq_integral_Ioc]
+  rw [← intervalIntegral.integral_of_le hL.le]
+  have hpos :
+      (∫ t : ℝ in (0 : ℝ)..L, A t) =
+        ∫ t : ℝ in (0 : ℝ)..L,
+          (f t : ℂ) * (archDensity t : ℂ) := by
+    apply intervalIntegral.integral_congr
+    intro t ht
+    rw [uIcc_of_le hL.le] at ht
+    rw [show g t = (f t : ℂ) from h.agrees_positive t ht]
+    rfl
+  rw [hpos]
+  ring
+
+/-- A global lift with the verifiable analytic fields above has exact
+literature-RHS/physical-RHS authority.  This is the theorem that downstream
+production tests must use; authority is not an input field. -/
+theorem ProductionWeightedGlobalLift.physical_authority
+    {L : ℝ} (hL : 0 < L)
+    {g : ℝ → ℂ} {f : ℝ → ℝ}
+    (h : ProductionWeightedGlobalLift L g f) :
+    (1 / 2 : ℂ) * Zeta23.EF.literatureRHS g =
+      productionArithmeticComplexValue L (fun t => (f t : ℂ)) := by
+  rw [literatureRHS_eq_dictionaryChannels]
+  rw [mul_add, mul_add]
+  rw [h.half_pole_eq_physical hL,
+      h.half_prime_eq_physical hL,
+      h.half_arch_eq_physical hL]
+  rfl
 
 /-- Unclamped first source derivative on the physical half-line. -/
 def productionFirstDerivativePhysicalRaw
