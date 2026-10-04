@@ -84,5 +84,16 @@
       "terminal": true
     }
   ],
-  "implementation_state": "ALL_PLANNED_SURFACES_IMPLEMENTED_CANDIDATE_PENDING_EXACT_HEAD_VALIDATION"
+  "implementation_state": "ALL_PLANNED_SURFACES_IMPLEMENTED_CANDIDATE_PENDING_EXACT_HEAD_VALIDATION",
+  "candidate_claim_bindings": {
+    "status": "OPEN_CANDIDATE_BINDINGS_IMPLEMENTED_PENDING_EXACT_HEAD_CI",
+    "claims": [
+      "R003_COMPRESSED_PRODUCTION_C2",
+      "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE",
+      "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER"
+    ],
+    "promotion_rule": "Do not change these claims to PROVED_UNCONDITIONAL or move them into proved binding inventories until the exact candidate head passes compiler, axiom, proof-escape, premise-contract, registered-binding, and claim-validation gates.",
+    "terminal_effect": "NONE_RH_OPEN"
+  }
 }
