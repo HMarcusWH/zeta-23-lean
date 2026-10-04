@@ -56,6 +56,8 @@ from ordinary continuity of `archDensity` at zero. -/
 structure ProductionWeightedPhysicalAdmissible
     (L : ℝ) (f : ℝ → ℝ) : Prop where
   measurable : AEStronglyMeasurable f
+  pole_interval_integrable :
+    IntervalIntegrable (fun t => f t * completeSourcePoleWeight t) volume 0 L
   arch_interval_integrable :
     IntervalIntegrable (fun t => f t * archDensity t) volume 0 L
   support : Function.support f ⊆ Icc 0 L
@@ -72,13 +74,94 @@ structure ProductionWeightedTestAdmissible
     (1 / 2 : ℂ) * Zeta23.EF.literatureRHS globalTest =
       productionArithmeticComplexValue L (fun t => (physicalTest t : ℂ))
 
+
+/-! ### Continuity of the source-coordinate derivative channels -/
+
+@[fun_prop] theorem continuous_sourceEntryDerivative
+    (n m : ℤ) :
+    Continuous (fun ω : ℝ => sourceEntryDerivative ω n m) := by
+  rw [continuous_iff_continuousAt]
+  intro ω
+  exact (hasDerivAt_sourceEntryDerivative ω n m).continuousAt
+
+@[fun_prop] theorem continuous_sourceEntrySecondDerivative
+    (n m : ℤ) :
+    Continuous (fun ω : ℝ => sourceEntrySecondDerivative ω n m) := by
+  by_cases h : n = m
+  · subst m
+    have heq :
+        (fun ω : ℝ => sourceEntrySecondDerivative ω n n) =
+          fun ω =>
+            -8 * Real.pi * (n : ℝ) *
+                Real.sin (2 * Real.pi * (n : ℝ) * ω)
+            - 8 * Real.pi ^ 2 * (n : ℝ) ^ 2 * ω *
+                Real.cos (2 * Real.pi * (n : ℝ) * ω) := by
+      funext ω
+      rw [sourceEntrySecondDerivative, if_pos rfl,
+        sourceDiagonalSecondDerivative_formula]
+    rw [heq]
+    fun_prop
+  · have heq :
+        (fun ω : ℝ => sourceEntrySecondDerivative ω n m) =
+          fun ω =>
+            (sourcePotentialSecondDerivative ω n -
+              sourcePotentialSecondDerivative ω m) / ((n - m : ℤ) : ℝ) := by
+      funext ω
+      rw [sourceEntrySecondDerivative, if_neg h]
+    rw [heq]
+    unfold sourcePotentialSecondDerivative
+    fun_prop
+
+@[fun_prop] theorem continuous_sourceContractRealSecondDerivative
+    (K : ℕ) (u : Fin (2 * K + 1) → ℝ) :
+    Continuous (sourceContractRealSecondDerivative K u) := by
+  unfold sourceContractRealSecondDerivative
+  fun_prop
+
+@[fun_prop] theorem continuous_sourceAtomRealEnergyDerivative
+    (K : ℕ)
+    (z : EuclideanSpace ℂ (Fin (2 * K + 1))) :
+    Continuous (sourceAtomRealEnergyDerivative K z) := by
+  rw [continuous_iff_continuousAt]
+  intro ω
+  exact
+    (hasDerivAt_sourceAtomRealEnergyDerivative_transport K z ω).continuousAt
+
+@[fun_prop] theorem continuous_sourceAtomRealEnergySecondDerivative
+    (K : ℕ)
+    (z : EuclideanSpace ℂ (Fin (2 * K + 1))) :
+    Continuous (sourceAtomRealEnergySecondDerivative K z) := by
+  unfold sourceAtomRealEnergySecondDerivative
+  exact
+    (continuous_sourceContractRealSecondDerivative K
+      (fun i => (((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) z) i).re)).add
+    (continuous_sourceContractRealSecondDerivative K
+      (fun i => (((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) z) i).im))
+
+@[fun_prop] theorem continuous_sourceAtomPairingDerivative
+    (K : ℕ)
+    (z w : EuclideanSpace ℂ (Fin (2 * K + 1))) :
+    Continuous (sourceAtomPairingDerivative K z w) := by
+  unfold sourceAtomPairingDerivative
+  fun_prop
+
+private theorem IntervalIntegrable.ofRealComplex
+    {f : ℝ → ℝ} {a b : ℝ}
+    (hf : IntervalIntegrable f volume a b) :
+    IntervalIntegrable (fun t => (f t : ℂ)) volume a b := by
+  constructor
+  · exact hf.1.ofReal
+  · exact hf.2.ofReal
+
 /-- Admissibility is stable under addition. -/
 theorem ProductionWeightedPhysicalAdmissible.add
     {L : ℝ} {f g : ℝ → ℝ}
     (hf : ProductionWeightedPhysicalAdmissible L f)
     (hg : ProductionWeightedPhysicalAdmissible L g) :
     ProductionWeightedPhysicalAdmissible L (fun t => f t + g t) := by
-  refine ⟨hf.measurable.add hg.measurable, ?_, ?_⟩
+  refine ⟨hf.measurable.add hg.measurable, ?_, ?_, ?_⟩
+  · simpa [add_mul] using hf.pole_interval_integrable.add
+      hg.pole_interval_integrable
   · simpa [add_mul] using hf.arch_interval_integrable.add
       hg.arch_interval_integrable
   · intro t ht
@@ -96,7 +179,9 @@ theorem ProductionWeightedPhysicalAdmissible.smul
     {L a : ℝ} {f : ℝ → ℝ}
     (hf : ProductionWeightedPhysicalAdmissible L f) :
     ProductionWeightedPhysicalAdmissible L (fun t => a * f t) := by
-  refine ⟨hf.measurable.const_mul a, ?_, ?_⟩
+  refine ⟨hf.measurable.const_mul a, ?_, ?_, ?_⟩
+  · simpa [mul_assoc, mul_left_comm] using
+      hf.pole_interval_integrable.const_mul a
   · simpa [mul_assoc, mul_left_comm] using
       hf.arch_interval_integrable.const_mul a
   · intro t ht
@@ -104,26 +189,74 @@ theorem ProductionWeightedPhysicalAdmissible.smul
     intro hzero
     exact ht (by simp [hzero])
 
-/-- Real production evaluation is additive on admitted tests.  The proof is
-value-level and uses only the actual physical RHS definition. -/
+/-- Real production evaluation is additive on admitted tests. -/
 theorem productionArithmeticRealValue_add_of_admissible
     {L : ℝ} {f g : ℝ → ℝ}
-    (_hf : ProductionWeightedPhysicalAdmissible L f)
-    (_hg : ProductionWeightedPhysicalAdmissible L g) :
+    (hf : ProductionWeightedPhysicalAdmissible L f)
+    (hg : ProductionWeightedPhysicalAdmissible L g) :
     productionArithmeticRealValue L (fun t => f t + g t) =
       productionArithmeticRealValue L f +
         productionArithmeticRealValue L g := by
+  have hfp :=
+    (IntervalIntegrable.ofRealComplex hf.pole_interval_integrable)
+  have hgp :=
+    (IntervalIntegrable.ofRealComplex hg.pole_interval_integrable)
+  have hfa :=
+    (IntervalIntegrable.ofRealComplex hf.arch_interval_integrable)
+  have hga :=
+    (IntervalIntegrable.ofRealComplex hg.arch_interval_integrable)
   unfold productionArithmeticRealValue productionArithmeticComplexValue
-  simp [dictionaryCompletePhysicalRHS, map_add]
+    dictionaryCompletePhysicalRHS
+  have hp :
+      (∫ x in (0 : ℝ)..L,
+        ((f x + g x : ℝ) : ℂ) * (completeSourcePoleWeight x : ℂ)) =
+      (∫ x in (0 : ℝ)..L,
+        (f x : ℂ) * (completeSourcePoleWeight x : ℂ)) +
+      (∫ x in (0 : ℝ)..L,
+        (g x : ℂ) * (completeSourcePoleWeight x : ℂ)) := by
+    rw [← intervalIntegral.integral_add hfp hgp]
+    apply intervalIntegral.integral_congr
+    intro x hx
+    push_cast
+    ring
+  have ha :
+      (∫ x in (0 : ℝ)..L,
+        ((f x + g x : ℝ) : ℂ) * (archDensity x : ℂ)) =
+      (∫ x in (0 : ℝ)..L, (f x : ℂ) * (archDensity x : ℂ)) +
+      (∫ x in (0 : ℝ)..L, (g x : ℂ) * (archDensity x : ℂ)) := by
+    rw [← intervalIntegral.integral_add hfa hga]
+    apply intervalIntegral.integral_congr
+    intro x hx
+    push_cast
+    ring
+  rw [hp, ha]
+  simp_rw [Complex.ofReal_add, add_mul]
+  rw [Finset.sum_add_distrib]
+  ring
 
 /-- Real production evaluation is homogeneous on admitted tests. -/
 theorem productionArithmeticRealValue_smul_of_admissible
     {L a : ℝ} {f : ℝ → ℝ}
-    (_hf : ProductionWeightedPhysicalAdmissible L f) :
+    (hf : ProductionWeightedPhysicalAdmissible L f) :
     productionArithmeticRealValue L (fun t => a * f t) =
       a * productionArithmeticRealValue L f := by
   unfold productionArithmeticRealValue productionArithmeticComplexValue
-  simp [dictionaryCompletePhysicalRHS, mul_assoc]
+    dictionaryCompletePhysicalRHS
+  simp_rw [Complex.ofReal_mul]
+  simp_rw [show ∀ x : ℝ,
+      ((a : ℂ) * (f x : ℂ)) * (completeSourcePoleWeight x : ℂ) =
+        (a : ℂ) * ((f x : ℂ) * (completeSourcePoleWeight x : ℂ)) by
+          intro x; ring]
+  simp_rw [show ∀ x : ℝ,
+      ((a : ℂ) * (f x : ℂ)) * (archDensity x : ℂ) =
+        (a : ℂ) * ((f x : ℂ) * (archDensity x : ℂ)) by
+          intro x; ring]
+  rw [intervalIntegral.integral_const_mul,
+      intervalIntegral.integral_const_mul]
+  simp_rw [← mul_assoc]
+  rw [← Finset.mul_sum]
+  norm_cast
+  ring
 
 /-- Unclamped first source derivative on the physical half-line. -/
 def productionFirstDerivativePhysicalRaw
