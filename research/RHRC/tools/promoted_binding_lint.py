@@ -27,6 +27,32 @@ def main() -> int:
         and c.get("theorem")
     }
     actual = {row["id"]: row["theorem"] for row in manifest["bindings"]}
+    candidate_expected = {
+        c["id"]: c["theorem"]
+        for c in registry["claims"]
+        if c.get("route") == "R003_ccm_bridge"
+        and c.get("status") == "OPEN"
+        and c.get("candidate_binding") is True
+        and c.get("theorem")
+    }
+    candidate_rows = manifest.get("candidate_bindings", [])
+    candidate_actual = {row["id"]: row for row in candidate_rows}
+    if len(candidate_actual) != len(candidate_rows):
+        fail("duplicate candidate claim IDs in R003 candidate bindings")
+    if set(candidate_expected) != set(candidate_actual):
+        missing = sorted(set(candidate_expected) - set(candidate_actual))
+        extra = sorted(set(candidate_actual) - set(candidate_expected))
+        fail(f"candidate manifest/registry ID drift; missing={missing}, extra={extra}")
+    for claim_id, theorem in candidate_expected.items():
+        row = candidate_actual[claim_id]
+        if row.get("theorem") != theorem:
+            fail(f"{claim_id} candidate theorem mismatch: registry={theorem!r}, manifest={row.get('theorem')!r}")
+        if row.get("status") != "OPEN_PENDING_CI":
+            fail(f"{claim_id} candidate binding must remain OPEN_PENDING_CI before promotion")
+        if not re.search(rf"(?m)^#check\s+{re.escape(theorem)}\s*$", lean):
+            fail(f"{claim_id} missing candidate #check for {theorem}")
+        if not re.search(rf"(?m)^#print\s+axioms\s+{re.escape(theorem)}\s*$", lean):
+            fail(f"{claim_id} missing candidate #print axioms for {theorem}")
     if set(expected) != set(actual):
         missing = sorted(set(expected) - set(actual))
         extra = sorted(set(actual) - set(expected))
@@ -38,7 +64,11 @@ def main() -> int:
             fail(f"{claim_id} missing exact #check for {theorem}")
         if not re.search(rf"(?m)^#print\s+axioms\s+{re.escape(theorem)}\s*$", lean):
             fail(f"{claim_id} missing exact #print axioms for {theorem}")
-    print(f"promoted_binding_lint: PASS ({len(expected)} PROVED_UNCONDITIONAL R003 bindings)")
+    print(
+        "promoted_binding_lint: PASS "
+        f"({len(expected)} PROVED_UNCONDITIONAL R003 bindings; "
+        f"{len(candidate_expected)} OPEN candidate bindings audited)"
+    )
     return 0
 
 
