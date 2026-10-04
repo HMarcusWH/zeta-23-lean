@@ -16,7 +16,13 @@ set_option backward.isDefEq.respectTransparency false
 namespace Zeta23.CCM
 
 open Complex Matrix Set Filter
-open scoped Topology BigOperators ComplexConjugate ArithmeticFunction
+open scoped Topology BigOperators ComplexConjugate ArithmeticFunction Matrix.Norms.Elementwise
+
+local instance realContinuousSMulComplexCLM
+    {E F : Type*} [NormedAddCommGroup E] [NormedAddCommGroup F]
+    [NormedSpace ℂ E] [NormedSpace ℂ F] :
+    ContinuousSMul ℝ (E →L[ℂ] F) :=
+  IsScalarTower.continuousSMul ℂ
 
 /-!
 # Post-#282 frozen production aperture calculus
@@ -98,7 +104,7 @@ theorem contDiffAt_frozenCanonicalSourceMatrix_apply_pos
   have hlog :
       ContDiffAt ℝ 2 (fun s : ℝ => (-(Real.log s : ℂ))) L := by
     have hcast := Complex.ofRealCLM.contDiff.contDiffAt.comp L hlogR
-    simpa using hcast
+    simpa only [Function.comp_apply, Complex.ofRealCLM_apply, map_neg] using hcast
   have hid :
       ContDiffAt ℝ 2
         (fun s : ℝ =>
@@ -184,8 +190,6 @@ theorem frozenCanonicalSourceMatrix_eq_pred_sub_entering
   rw [frozenCanonicalPrimeMatrix_eq_pred_add_entering q K hq L]
   abel
 
-/-- At a seam the entering atom contributes zero value, zero first legal
-quadratic jet and zero second legal quadratic jet. -/
 /-! ## Matrix-valued frozen derivatives and legal compression -/
 
 theorem contDiffAt_frozenCanonicalSourceMatrix_pos
@@ -248,7 +252,10 @@ private theorem hasDerivAt_frozenCanonicalSourceEnergy_pos
       (fun s : ℝ => matrixRealEnergy (frozenCanonicalSourceMatrix Q s K) x)
       (matrixRealEnergy (frozenCanonicalSourceFirstMatrix Q L K) x) L := by
   have hM := hasDerivAt_frozenCanonicalSourceMatrix_pos Q K hL
-  have hT := (matrixRealEnergyCLM K x).hasFDerivAt
+  have hT :
+      HasFDerivAt (matrixRealEnergyCLM K x) (matrixRealEnergyCLM K x)
+        (frozenCanonicalSourceMatrix Q L K) :=
+    (matrixRealEnergyCLM K x).hasFDerivAt
   simpa [matrixRealEnergyCLM, matrixRealEnergyLinearMap, Function.comp_def] using
     hT.comp_hasDerivAt L hM
 
@@ -260,7 +267,10 @@ private theorem hasDerivAt_frozenCanonicalSourceFirstEnergy_pos
       (fun s : ℝ => matrixRealEnergy (frozenCanonicalSourceFirstMatrix Q s K) x)
       (matrixRealEnergy (frozenCanonicalSourceSecondMatrix Q L K) x) L := by
   have hM := hasDerivAt_frozenCanonicalSourceFirstMatrix_pos Q K hL
-  have hT := (matrixRealEnergyCLM K x).hasFDerivAt
+  have hT :
+      HasFDerivAt (matrixRealEnergyCLM K x) (matrixRealEnergyCLM K x)
+        (frozenCanonicalSourceFirstMatrix Q L K) :=
+    (matrixRealEnergyCLM K x).hasFDerivAt
   simpa [matrixRealEnergyCLM, matrixRealEnergyLinearMap, Function.comp_def] using
     hT.comp_hasDerivAt L hM
 
@@ -415,8 +425,8 @@ private theorem sourceFirstJetMatrix_zero_energy_of_boundaryFlat
   have hamb :
       Matrix.toEuclideanLin (n := Fin (2 * K + 1)) (𝕜 := ℂ)
         (sourceFirstJetMatrix K 0) x = 0 := by
-    apply (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ).injective
-    simpa using hmul
+    simpa [Matrix.toLpLin_apply] using
+      congrArg (fun v => WithLp.toLp 2 v) hmul
   rw [hamb]
   simp
 
@@ -536,20 +546,19 @@ theorem parityCompressionCLM_primeFirst_log_eq_zero
     (q K : ℕ) (hq : 2 ≤ q) (p : ReversalParity) :
     parityCompressionCLM p K
         (primeSourceMatrixFirstApertureJet q (Real.log q) K) = 0 := by
-  ext x
-  change
-    (euclideanParityBoundaryFlatSubspace p K).orthogonalProjectionOnto
-      (Matrix.toEuclideanCLM (n := Fin (2 * K + 1)) (𝕜 := ℂ)
-        (primeSourceMatrixFirstApertureJet q (Real.log q) K)
-        (x : EuclideanSpace ℂ (Fin (2 * K + 1)))) = 0
+  apply ContinuousLinearMap.ext
+  intro x
+  rw [parityCompressionCLM_apply]
+  dsimp
+  simp only [ContinuousLinearMap.comp_apply]
   have hmul :=
     primeSourceMatrixFirstApertureJet_log_mulVec_zero q K hq p x
   have hamb :
       Matrix.toEuclideanCLM (n := Fin (2 * K + 1)) (𝕜 := ℂ)
         (primeSourceMatrixFirstApertureJet q (Real.log q) K)
         (x : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0 := by
-    apply (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ).injective
-    simpa using hmul
+    simpa [Matrix.toEuclideanCLM, Matrix.toLpLin_apply] using
+      congrArg (fun v => WithLp.toLp 2 v) hmul
   rw [hamb]
   simp
 
@@ -557,20 +566,19 @@ theorem parityCompressionCLM_primeSecond_log_eq_zero
     (q K : ℕ) (hq : 2 ≤ q) (p : ReversalParity) :
     parityCompressionCLM p K
         (primeSourceMatrixSecondApertureJet q (Real.log q) K) = 0 := by
-  ext x
-  change
-    (euclideanParityBoundaryFlatSubspace p K).orthogonalProjectionOnto
-      (Matrix.toEuclideanCLM (n := Fin (2 * K + 1)) (𝕜 := ℂ)
-        (primeSourceMatrixSecondApertureJet q (Real.log q) K)
-        (x : EuclideanSpace ℂ (Fin (2 * K + 1)))) = 0
+  apply ContinuousLinearMap.ext
+  intro x
+  rw [parityCompressionCLM_apply]
+  dsimp
+  simp only [ContinuousLinearMap.comp_apply]
   have hmul :=
     primeSourceMatrixSecondApertureJet_log_mulVec_zero q K hq p x
   have hamb :
       Matrix.toEuclideanCLM (n := Fin (2 * K + 1)) (𝕜 := ℂ)
         (primeSourceMatrixSecondApertureJet q (Real.log q) K)
         (x : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0 := by
-    apply (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ).injective
-    simpa using hmul
+    simpa [Matrix.toEuclideanCLM, Matrix.toLpLin_apply] using
+      congrArg (fun v => WithLp.toLp 2 v) hmul
   rw [hamb]
   simp
 
@@ -581,11 +589,11 @@ theorem frozenParityCompressedFirstCLM_log_eq_pred
       frozenParityCompressedFirstCLM (q - 1) p K (Real.log q) := by
   have hlog : 0 < Real.log (q : ℝ) :=
     Real.log_pos (by exact_mod_cast hq)
-  rw [frozenParityCompressedFirstCLM,
-    frozenCanonicalSourceFirstMatrix_eq_pred_sub_enteringFirst q K hq hlog,
-    map_sub, map_smul,
-    parityCompressionCLM_primeFirst_log_eq_zero q K hq p]
-  simp
+  have hmatrix :=
+    frozenCanonicalSourceFirstMatrix_eq_pred_sub_enteringFirst q K hq hlog
+  have hcompressed := congrArg (parityCompressionCLM p K) hmatrix
+  simpa [frozenParityCompressedFirstCLM, map_sub, map_smul,
+    parityCompressionCLM_primeFirst_log_eq_zero q K hq p] using hcompressed
 
 /-- The two frozen compressed second derivatives also agree at the seam. -/
 theorem frozenParityCompressedSecondCLM_log_eq_pred
@@ -594,11 +602,11 @@ theorem frozenParityCompressedSecondCLM_log_eq_pred
       frozenParityCompressedSecondCLM (q - 1) p K (Real.log q) := by
   have hlog : 0 < Real.log (q : ℝ) :=
     Real.log_pos (by exact_mod_cast hq)
-  rw [frozenParityCompressedSecondCLM,
-    frozenCanonicalSourceSecondMatrix_eq_pred_sub_enteringSecond q K hq hlog,
-    map_sub, map_smul,
-    parityCompressionCLM_primeSecond_log_eq_zero q K hq p]
-  simp
+  have hmatrix :=
+    frozenCanonicalSourceSecondMatrix_eq_pred_sub_enteringSecond q K hq hlog
+  have hcompressed := congrArg (parityCompressionCLM p K) hmatrix
+  simpa [frozenParityCompressedSecondCLM, map_sub, map_smul,
+    parityCompressionCLM_primeSecond_log_eq_zero q K hq p] using hcompressed
 
 
 /-- C2 of the frozen entries makes the selected second frozen matrix continuous. -/
@@ -635,7 +643,7 @@ theorem continuousAt_frozenParityCompressedSecondCLM_pos
       ContinuousAt (parityCompressionCLM p K)
         (frozenCanonicalSourceSecondMatrix Q L K) :=
     (parityCompressionCLM p K).continuous.continuousAt
-  simpa [frozenParityCompressedSecondCLM] using
+  simpa [frozenParityCompressedSecondCLM, Function.comp_def] using
     ContinuousAt.comp hT hM
 
 
