@@ -627,6 +627,29 @@ def productionMixedDerivativePhysicalRaw
           (w : EuclideanSpace ℂ (Fin (2 * K + 1)))
           (1 - t / L))
 
+
+/-- The unclamped derivative channels are genuinely C2 on the real line. -/
+theorem contDiff_two_productionFirstDerivativePhysicalRaw
+    {L : ℝ} (hL : L ≠ 0) (K : ℕ)
+    (z : euclideanEvenBoundaryFlatSubspace K) :
+    ContDiff ℝ 2 (productionFirstDerivativePhysicalRaw L K z) := by
+  unfold productionFirstDerivativePhysicalRaw
+  fun_prop
+
+theorem contDiff_two_productionSecondDerivativePhysicalRaw
+    {L : ℝ} (hL : L ≠ 0) (K : ℕ)
+    (z : euclideanEvenBoundaryFlatSubspace K) :
+    ContDiff ℝ 2 (productionSecondDerivativePhysicalRaw L K z) := by
+  unfold productionSecondDerivativePhysicalRaw
+  fun_prop
+
+theorem contDiff_two_productionMixedDerivativePhysicalRaw
+    {L : ℝ} (hL : L ≠ 0) (K : ℕ)
+    (z w : euclideanEvenBoundaryFlatSubspace K) :
+    ContDiff ℝ 2 (productionMixedDerivativePhysicalRaw L K z w) := by
+  unfold productionMixedDerivativePhysicalRaw
+  fun_prop
+
 /-- Physical first-variation test with honest support. -/
 def productionFirstDerivativePhysicalTest
     (L : ℝ) (K : ℕ)
