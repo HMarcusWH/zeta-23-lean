@@ -56,6 +56,15 @@ RESEARCH / CONTROL FIREWALL
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
 
+## Post-#282 / PR #283 complete candidate route
+
+PR #283 now contains the full planned post-#282 candidate implementation. The formal source chain includes compressed C2 across seams; weighted global/physical k1/k2/kM authority; concrete normal/remainder admissibility and value authority; explicit first/fixed-second/mixed production derivative identities; an arbitrary-dimensional stationary Schur theorem; its generated strict-even specialization; inherited stationarity; and a completed fresh-born/stationary frontier with exact saturation and positive concrete remainder.
+
+The accompanying research package contains exact directed dyadic Arb serialization, independent K=2/log(2) derivative/remainder/balance qualification, validated response/inverse receipts, independent physical remainder evaluation, frozen/reoptimized channel ablations, provenance guards, adversarial result checks, and eligibility-derived X01 disposition.
+
+This is **IMPLEMENTED CANDIDATE / PENDING EXACT-HEAD VALIDATION**, not theorem authority. The merged theorem anchor remains PR #282. The next mathematical target after validation is OBS-060O: a canonical contact-conditioned arithmetic exclusion of the exact stationary saturation equality. Odd/tie closure and RH remain OPEN.
+
+
 ## Post-#281 generated production contact candidate
 
 PR #281 is merged theorem authority for the exact production source value and conditional saturation consequences. Draft PR #282 is the active candidate for constructing the generated global first-negative boundary, aligning the selected parity/cutoff, defining aperture-variation/response/curvature objects, and running the corresponding bounded contact-frontier campaign.
