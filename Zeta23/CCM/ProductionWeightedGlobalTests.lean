@@ -873,17 +873,18 @@ theorem productionFirstDerivativePhysicalRaw_liftJets
   · simp [productionFirstDerivativePhysicalRaw]
   · have hcoord :
         HasDerivAt (fun t : ℝ => 1 - t / L) (-(1 / L)) 0 := by
-      convert (hasDerivAt_const 0 (1 : ℝ)).sub
-        ((hasDerivAt_id 0).div_const L) using 1 <;>
-        field_simp [hL.ne'] <;> ring
+      simpa only [zero_sub] using
+        (hasDerivAt_const 0 (1 : ℝ)).sub
+          ((hasDerivAt_id 0).div_const L)
+    have hcoord0 : 1 - 0 / L = 1 := by simp [hL.ne']
     have hsource :=
       (hasDerivAt_sourceAtomRealEnergyDerivative_transport K
-        (z : EuclideanSpace ℂ (Fin (2 * K + 1))) 1).comp 0 hcoord
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1))) (1 - 0 / L)).comp 0 hcoord
     have hd :=
       (hasDerivAt_id 0).mul
         (((hasDerivAt_const 0 (L ^ 2)).inv
           (pow_ne_zero 2 hL.ne')).mul hsource)
-    simpa [productionFirstDerivativePhysicalRaw, hend.2] using hd.deriv
+    simpa [productionFirstDerivativePhysicalRaw, hcoord0, hend.2] using hd.deriv
   · simp [productionFirstDerivativePhysicalRaw, hcoordL,
       sourceAtomRealEnergyDerivative_zero_of_boundaryFlat K
         (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
