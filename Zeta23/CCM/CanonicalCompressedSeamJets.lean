@@ -198,6 +198,9 @@ theorem hasDerivAt_sourceMatrix_sourceCoordinate
     (K : ℕ) (ω : ℝ) :
     HasDerivAt (fun t : ℝ => sourceMatrix t K)
       (sourceFirstJetMatrix K ω) ω := by
+  change HasDerivAt
+    (fun t : ℝ => fun i j => sourceMatrix t K i j)
+    (fun i j => sourceFirstJetMatrix K ω i j) ω
   apply hasDerivAt_pi.mpr
   intro i
   apply hasDerivAt_pi.mpr
@@ -215,6 +218,9 @@ theorem hasDerivAt_sourceFirstJetMatrix
     (K : ℕ) (ω : ℝ) :
     HasDerivAt (fun t : ℝ => sourceFirstJetMatrix K t)
       (sourceSecondJetMatrix K ω) ω := by
+  change HasDerivAt
+    (fun t : ℝ => fun i j => sourceFirstJetMatrix K t i j)
+    (fun i j => sourceSecondJetMatrix K ω i j) ω
   apply hasDerivAt_pi.mpr
   intro i
   apply hasDerivAt_pi.mpr
@@ -250,7 +256,7 @@ theorem hasDerivAt_sourceMatrix_primeSourceCoordinate
   have hs :=
     hasDerivAt_sourceMatrix_sourceCoordinate K (primeSourceCoordinate q L)
   have hc := hasDerivAt_primeSourceCoordinate q hL
-  simpa [primeSourceMatrixFirstApertureJet] using hs.comp L hc
+  simpa [primeSourceMatrixFirstApertureJet] using hs.scomp L hc
 
 theorem hasDerivAt_primeSourceMatrixFirstApertureJet
     (q K : ℕ) {L : ℝ} (hL : L ≠ 0) :
@@ -260,7 +266,7 @@ theorem hasDerivAt_primeSourceMatrixFirstApertureJet
   have hc := hasDerivAt_primeSourceCoordinate q hL
   have hcoeff := hasDerivAt_primeSourceCoordinate_first q hL
   have hjet :=
-    (hasDerivAt_sourceFirstJetMatrix K (primeSourceCoordinate q L)).comp L hc
+    (hasDerivAt_sourceFirstJetMatrix K (primeSourceCoordinate q L)).scomp L hc
   have hprod := hcoeff.smul hjet
   simpa [primeSourceMatrixFirstApertureJet,
     primeSourceMatrixSecondApertureJet, add_comm, add_left_comm, add_assoc,
