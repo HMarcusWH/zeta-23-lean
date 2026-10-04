@@ -39,6 +39,36 @@
       "target": "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier"
     },
     {
+      "id": "N01_EXACT_INTERVAL_CODEC",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "DyadicInterval.from_arb directed endpoint codec"
+    },
+    {
+      "id": "N02_INDEPENDENT_CALIBRATION",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "K2/log2 derivative remainder balance widths <= 2^-80"
+    },
+    {
+      "id": "N03_RESPONSE_PHYSICAL_BALANCE",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "validated bordered response plus independent physical remainder and Euler-corrected balance"
+    },
+    {
+      "id": "N04_MATCHED_ADVERSARIAL_CONTROLS",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "six matched channel ablations plus protocol/result falsification guards"
+    },
+    {
+      "id": "X01_INHERITED_RESPONSE_INVESTIGATION",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_EXECUTION",
+      "target": "eligibility-derived inherited-contact response balance disposition"
+    },
+    {
+      "id": "X02_DILATION_RESIDUAL_INVESTIGATION",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_EXECUTION",
+      "target": "bounded projected-dilation defect panel"
+    },
+    {
       "id": "OBS060O_SATURATION_EXCLUSION",
       "status": "OPEN",
       "target": "canonical arithmetic exclusion"
@@ -53,5 +83,6 @@
       "status": "OPEN",
       "terminal": true
     }
-  ]
+  ],
+  "implementation_state": "ALL_PLANNED_SURFACES_IMPLEMENTED_CANDIDATE_PENDING_EXACT_HEAD_VALIDATION"
 }
