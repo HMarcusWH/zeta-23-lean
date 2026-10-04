@@ -30,6 +30,46 @@ example (c : GeneratedStrictEvenContact)
     (hstationary :
       productionContactFirstVariation .even
         c.generated.shell.Lstar (c.generated.shell.k + 1) c.z = 0) :
+    canonicalOptimizedContactCurvature
+      c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
+      c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary = 0 :=
+  c.actual_stationary_curvature_eq_zero hstationary
+
+example (c : GeneratedStrictEvenContact)
+    (hstationary :
+      productionContactFirstVariation .even
+        c.generated.shell.Lstar (c.generated.shell.k + 1) c.z = 0) :
+    productionContactRemainderValue c.generated.shell.Lstar
+        (c.generated.shell.k + 1) c.z
+        (canonicalStationaryEvenResponse
+          c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
+          c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary) =
+      (2 * Real.pi)^2 / c.generated.shell.Lstar^2 *
+        productionStrictEvenSourceValue c.generated.shell.Lstar
+          (c.generated.shell.k + 1) c.z :=
+  c.production_stationary_saturation hstationary
+
+example (c : GeneratedStrictEvenContact) :
+    Nonempty (GeneratedStrictEvenCompletedProductionBranch c) :=
+  c.completed_production_frontier
+
+example (c : GeneratedStrictEvenContact)
+    (hinh : c.generated.shell.n < c.generated.shell.k) :
+    productionContactRemainderValue c.generated.shell.Lstar
+        (c.generated.shell.k + 1) c.z
+        (canonicalStationaryEvenResponse
+          c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
+          c.z c.z_ne c.z_norm c.z_kernel c.odd_positive
+          (c.firstVariation_eq_zero_of_inherited hinh)) =
+      (2 * Real.pi)^2 / c.generated.shell.Lstar^2 *
+        productionStrictEvenSourceValue c.generated.shell.Lstar
+          (c.generated.shell.k + 1) c.z :=
+  c.inherited_production_saturation hinh
+
+example (c : GeneratedStrictEvenContact)
+    (hstationary :
+      productionContactFirstVariation .even
+        c.generated.shell.Lstar (c.generated.shell.k + 1) c.z = 0) :
     0 < productionContactRemainderValue
       c.generated.shell.Lstar (c.generated.shell.k + 1) c.z
       (canonicalStationaryEvenResponse
@@ -38,3 +78,8 @@ example (c : GeneratedStrictEvenContact)
   c.production_stationary_remainder_pos hstationary
 
 end Zeta23.RHRC
+
+#print axioms Zeta23.CCM.GeneratedStrictEvenContact.actual_stationary_curvature_eq_zero
+#print axioms Zeta23.CCM.GeneratedStrictEvenContact.production_stationary_saturation
+#print axioms Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier
+#print axioms Zeta23.CCM.GeneratedStrictEvenContact.inherited_production_saturation
