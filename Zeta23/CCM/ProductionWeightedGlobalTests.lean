@@ -183,7 +183,8 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
   by_cases hleft : y < -L
   · have hev : productionEvenCompactLiftReal L f =ᶠ[𝓝 y] fun _ => 0 := by
       filter_upwards [Iio_mem_nhds hleft] with z hz
-      simp [productionEvenCompactLiftReal, le_of_lt hz]
+      have hzlt : z < -L := hz
+      simp [productionEvenCompactLiftReal, le_of_lt hzlt]
     have hc := (hasDerivAt_const y (0 : ℝ)).congr_of_eventuallyEq hev
     simpa [productionEvenCompactLiftRealDerivative, le_of_lt hleft] using hc
   by_cases hleftEq : y = -L
@@ -201,7 +202,9 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
     have hint0 :
         HasDerivAt (fun y : ℝ => f (-y)) (-deriv f L) (-L) := by
       have hf := (productionEvenCompactLiftJets_differentiable h L).hasDerivAt
-      have hh := hf.comp (-L) (hasDerivAt_neg (-L))
+      have hf' : HasDerivAt f (deriv f L) (-(-L)) := by
+        simpa using hf
+      have hh := hf'.comp (-L) (hasDerivAt_neg (-L))
       simpa only [neg_neg] using hh
     have hint :
         HasDerivWithinAt (productionEvenCompactLiftReal L f) 0
@@ -214,10 +217,10 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
       · intro z hz
         by_cases hzL : z = -L
         · subst z
-          simp [productionEvenCompactLiftReal, h.value_endpoint]
+          simp [productionEvenCompactLiftReal, h.value_endpoint, hL.le]
         · have hzgt : -L < z := lt_of_le_of_ne hz.1 (Ne.symm hzL)
           exact productionEvenCompactLiftReal_left hL f hzgt hz.2
-      · simp [productionEvenCompactLiftReal, h.value_endpoint]
+      · simp [productionEvenCompactLiftReal, h.value_endpoint, hL.le]
     have hmem : Iic (-L) ∪ Icc (-L) 0 ∈ 𝓝 (-L) := by
       apply mem_of_superset (Iio_mem_nhds (show -L < 0 by linarith))
       intro z hz
@@ -251,7 +254,7 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
       · intro z hz
         by_cases hzL : z = -L
         · subst z
-          simp [productionEvenCompactLiftReal, h.value_endpoint]
+          simp [productionEvenCompactLiftReal, h.value_endpoint, hL.le]
         · have hzgt : -L < z := lt_of_le_of_ne hz.1 (Ne.symm hzL)
           exact productionEvenCompactLiftReal_left hL f hzgt hz.2
       · simp [productionEvenCompactLiftReal]
@@ -265,7 +268,7 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
       · intro z hz
         by_cases hzL : z = L
         · subst z
-          simp [productionEvenCompactLiftReal, h.value_endpoint]
+          simp [productionEvenCompactLiftReal, h.value_endpoint, hL.le]
         · have hzlt : z < L := lt_of_le_of_ne hz.2 hzL
           exact productionEvenCompactLiftReal_right hL f hz.1 hzlt
       · simp [productionEvenCompactLiftReal]
@@ -301,10 +304,10 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
       · intro z hz
         by_cases hzL : z = L
         · subst z
-          simp [productionEvenCompactLiftReal, h.value_endpoint]
+          simp [productionEvenCompactLiftReal, h.value_endpoint, hL.le]
         · have hzlt : z < L := lt_of_le_of_ne hz.2 hzL
           exact productionEvenCompactLiftReal_right hL f hz.1 hzlt
-      · simp [productionEvenCompactLiftReal, h.value_endpoint]
+      · simp [productionEvenCompactLiftReal, h.value_endpoint, hL.le]
     have hext :
         HasDerivWithinAt (productionEvenCompactLiftReal L f) 0
           (Ici L) L := by
@@ -370,7 +373,8 @@ private theorem hasDerivAt_productionEvenCompactLiftRealDerivative
   · have hev :
         productionEvenCompactLiftRealDerivative L f =ᶠ[𝓝 y] fun _ => 0 := by
       filter_upwards [Iio_mem_nhds hleft] with z hz
-      simp [productionEvenCompactLiftRealDerivative, le_of_lt hz]
+      have hzlt : z < -L := hz
+      simp [productionEvenCompactLiftRealDerivative, le_of_lt hzlt]
     have hc := (hasDerivAt_const y (0 : ℝ)).congr_of_eventuallyEq hev
     simpa [productionEvenCompactLiftRealSecondDerivative, le_of_lt hleft] using hc
   by_cases hleftEq : y = -L
@@ -388,7 +392,10 @@ private theorem hasDerivAt_productionEvenCompactLiftRealDerivative
     have hint0 :
         HasDerivAt (fun y : ℝ => -deriv f (-y))
           (deriv (deriv f) L) (-L) := by
-      have hh := (hdfdiff L).hasDerivAt.comp (-L) (hasDerivAt_neg (-L))
+      have hf := (hdfdiff L).hasDerivAt
+      have hf' : HasDerivAt (deriv f) (deriv (deriv f) L) (-(-L)) := by
+        simpa using hf
+      have hh := hf'.comp (-L) (hasDerivAt_neg (-L))
       simpa [mul_comm] using hh.neg
     have hint :
         HasDerivWithinAt (productionEvenCompactLiftRealDerivative L f) 0
@@ -398,10 +405,10 @@ private theorem hasDerivAt_productionEvenCompactLiftRealDerivative
       · intro z hz
         by_cases hzL : z = -L
         · subst z
-          simp [productionEvenCompactLiftRealDerivative, h.deriv_endpoint]
+          simp [productionEvenCompactLiftRealDerivative, h.deriv_endpoint, hL.le]
         · have hzgt : -L < z := lt_of_le_of_ne hz.1 (Ne.symm hzL)
           exact productionEvenCompactLiftRealDerivative_left f hzgt hz.2
-      · simp [productionEvenCompactLiftRealDerivative, h.deriv_endpoint]
+      · simp [productionEvenCompactLiftRealDerivative, h.deriv_endpoint, hL.le]
     have hmem : Iic (-L) ∪ Icc (-L) 0 ∈ 𝓝 (-L) := by
       apply mem_of_superset (Iio_mem_nhds (show -L < 0 by linarith))
       intro z hz
@@ -436,7 +443,7 @@ private theorem hasDerivAt_productionEvenCompactLiftRealDerivative
       · intro z hz
         by_cases hzL : z = -L
         · subst z
-          simp [productionEvenCompactLiftRealDerivative, h.deriv_endpoint]
+          simp [productionEvenCompactLiftRealDerivative, h.deriv_endpoint, hL.le]
         · have hzgt : -L < z := lt_of_le_of_ne hz.1 (Ne.symm hzL)
           exact productionEvenCompactLiftRealDerivative_left f hzgt hz.2
       · simp [productionEvenCompactLiftRealDerivative, h.deriv_zero]
@@ -447,7 +454,7 @@ private theorem hasDerivAt_productionEvenCompactLiftRealDerivative
       · intro z hz
         by_cases hzL : z = L
         · subst z
-          simp [productionEvenCompactLiftRealDerivative, h.deriv_endpoint]
+          simp [productionEvenCompactLiftRealDerivative, h.deriv_endpoint, hL.le]
         · have hzlt : z < L := lt_of_le_of_ne hz.2 hzL
           exact productionEvenCompactLiftRealDerivative_right hL f hz.1 hzlt
       · simp [productionEvenCompactLiftRealDerivative, h.deriv_zero]
@@ -483,10 +490,10 @@ private theorem hasDerivAt_productionEvenCompactLiftRealDerivative
       · intro z hz
         by_cases hzL : z = L
         · subst z
-          simp [productionEvenCompactLiftRealDerivative, h.deriv_endpoint]
+          simp [productionEvenCompactLiftRealDerivative, h.deriv_endpoint, hL.le]
         · have hzlt : z < L := lt_of_le_of_ne hz.2 hzL
           exact productionEvenCompactLiftRealDerivative_right hL f hz.1 hzlt
-      · simp [productionEvenCompactLiftRealDerivative, h.deriv_endpoint]
+      · simp [productionEvenCompactLiftRealDerivative, h.deriv_endpoint, hL.le]
     have hext :
         HasDerivWithinAt (productionEvenCompactLiftRealDerivative L f) 0
           (Ici L) L := by
@@ -556,7 +563,8 @@ private theorem continuous_productionEvenCompactLiftRealSecondDerivative
   · have hev :
         productionEvenCompactLiftRealSecondDerivative L f =ᶠ[𝓝 y] fun _ => 0 := by
       filter_upwards [Iio_mem_nhds hleft] with z hz
-      simp [productionEvenCompactLiftRealSecondDerivative, le_of_lt hz]
+      have hzlt : z < -L := hz
+      simp [productionEvenCompactLiftRealSecondDerivative, le_of_lt hzlt]
     exact continuousAt_const.congr_of_eventuallyEq hev
   by_cases hleftEq : y = -L
   · subst y
@@ -584,10 +592,10 @@ private theorem continuous_productionEvenCompactLiftRealSecondDerivative
       · intro z hz
         by_cases hzL : z = -L
         · subst z
-          simp [productionEvenCompactLiftRealSecondDerivative, h.second_endpoint]
+          simp [productionEvenCompactLiftRealSecondDerivative, h.second_endpoint, hL.le]
         · have hzgt : -L < z := lt_of_le_of_ne hz.1 (Ne.symm hzL)
           exact productionEvenCompactLiftRealSecondDerivative_left f hzgt hz.2
-      · simp [productionEvenCompactLiftRealSecondDerivative, h.second_endpoint]
+      · simp [productionEvenCompactLiftRealSecondDerivative, h.second_endpoint, hL.le]
     have hmem : Iic (-L) ∪ Icc (-L) 0 ∈ 𝓝 (-L) := by
       apply mem_of_superset (Iio_mem_nhds (show -L < 0 by linarith))
       intro z hz
@@ -622,7 +630,7 @@ private theorem continuous_productionEvenCompactLiftRealSecondDerivative
       · intro z hz
         by_cases hzL : z = -L
         · subst z
-          simp [productionEvenCompactLiftRealSecondDerivative, h.second_endpoint]
+          simp [productionEvenCompactLiftRealSecondDerivative, h.second_endpoint, hL.le]
         · have hzgt : -L < z := lt_of_le_of_ne hz.1 (Ne.symm hzL)
           exact productionEvenCompactLiftRealSecondDerivative_left f hzgt hz.2
       · simp [productionEvenCompactLiftRealSecondDerivative, hL]
@@ -634,7 +642,7 @@ private theorem continuous_productionEvenCompactLiftRealSecondDerivative
       · intro z hz
         by_cases hzL : z = L
         · subst z
-          simp [productionEvenCompactLiftRealSecondDerivative, h.second_endpoint]
+          simp [productionEvenCompactLiftRealSecondDerivative, h.second_endpoint, hL.le]
         · have hzlt : z < L := lt_of_le_of_ne hz.2 hzL
           exact productionEvenCompactLiftRealSecondDerivative_right hL f hz.1 hzlt
       · simp [productionEvenCompactLiftRealSecondDerivative, hL]
@@ -671,10 +679,10 @@ private theorem continuous_productionEvenCompactLiftRealSecondDerivative
       · intro z hz
         by_cases hzL : z = L
         · subst z
-          simp [productionEvenCompactLiftRealSecondDerivative, h.second_endpoint]
+          simp [productionEvenCompactLiftRealSecondDerivative, h.second_endpoint, hL.le]
         · have hzlt : z < L := lt_of_le_of_ne hz.2 hzL
           exact productionEvenCompactLiftRealSecondDerivative_right hL f hz.1 hzlt
-      · simp [productionEvenCompactLiftRealSecondDerivative, h.second_endpoint]
+      · simp [productionEvenCompactLiftRealSecondDerivative, h.second_endpoint, hL.le]
     have hzero' :
         ContinuousWithinAt
           (productionEvenCompactLiftRealSecondDerivative L f)
@@ -803,16 +811,29 @@ theorem sourceAtomRealEnergyDerivative_endpoints_zero
         (z : EuclideanSpace ℂ (Fin (2 * K + 1))) 0 = 0 ∧
       sourceAtomRealEnergyDerivative K
         (z : EuclideanSpace ℂ (Fin (2 * K + 1))) 1 = 0 := by
-  let u := evenBoundaryFlatRawCoefficients K z
-  have hsum : ∑ i, u i = 0 := evenBoundaryFlat_coordinateSum_zero K z
-  have hri :=
-    coefficientSumReal_re_im_eq_zero_of_sum_eq_zero K u hsum
-  dsimp [u] at hri
+  let x : EuclideanSpace ℂ (Fin (2 * K + 1)) := z
+  let u : Fin (2 * K + 1) → ℂ :=
+    (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x
+  have hflat : BoundaryFlatCoefficients K u := by
+    simpa [x, u, evenBoundaryFlatRawCoefficients] using
+      evenBoundaryFlatRawCoefficients_boundaryFlat K z
+  have hsum : ∑ i, u i = 0 := sum_eq_zero_of_boundaryFlat hflat
+  have hri := coefficientSumReal_re_im_eq_zero_of_sum_eq_zero K u hsum
   unfold sourceAtomRealEnergyDerivative
-  constructor <;>
-    simp [sourceContractRealDerivative_zero_eq_two_coefficientSum_sq,
+  change
+    sourceContractRealDerivative K (fun i => (u i).re) 0 +
+          sourceContractRealDerivative K (fun i => (u i).im) 0 = 0 ∧
+      sourceContractRealDerivative K (fun i => (u i).re) 1 +
+          sourceContractRealDerivative K (fun i => (u i).im) 1 = 0
+  constructor
+  · rw [sourceContractRealDerivative_zero_eq_two_coefficientSum_sq,
+      sourceContractRealDerivative_zero_eq_two_coefficientSum_sq,
+      hri.1, hri.2]
+    ring
+  · rw [sourceContractRealDerivative_one_eq_two_coefficientSum_sq,
       sourceContractRealDerivative_one_eq_two_coefficientSum_sq,
       hri.1, hri.2]
+    ring
 
 /-- The first weighted physical derivative has the endpoint jets needed by the
 compact even lift. -/
@@ -910,22 +931,16 @@ private theorem productionArithmeticComplexValue_congr_on_Icc
         primeSourceWeight q * g (Real.log q) := by
     apply Finset.sum_congr rfl
     intro q hq
-    have hqone : 1 ≤ q := by omega
+    have hqmem := Finset.mem_Icc.mp hq
     have hqpos : (0 : ℝ) < (q : ℝ) := by
-      exact_mod_cast (show 0 < q by omega)
-    have hqfloor :
-        (q : ℝ) ≤ ((⌊Real.exp L⌋₊ : ℕ) : ℝ) := by
-      exact_mod_cast hq.2
-    have hfloorExp :
-        ((⌊Real.exp L⌋₊ : ℕ) : ℝ) ≤ Real.exp L :=
-      Nat.floor_le (Real.exp_pos L).le
+      exact_mod_cast (lt_of_lt_of_le (by norm_num : 0 < 2) hqmem.1)
     have hqexp : (q : ℝ) ≤ Real.exp L :=
-      le_trans hqfloor hfloorExp
+      (Nat.le_floor_iff (Real.exp_pos L).le).mp hqmem.2
     have hlog0 : 0 ≤ Real.log (q : ℝ) :=
-      Real.log_nonneg (by exact_mod_cast hqone)
+      Real.log_natCast_nonneg q
     have hlogL : Real.log (q : ℝ) ≤ L := by
-      rw [← Real.exp_le_exp]
-      simpa [Real.exp_log hqpos] using hqexp
+      rw [← Real.log_exp L]
+      exact Real.log_le_log hqpos hqexp
     rw [hfg (Real.log q) ⟨hlog0, hlogL⟩]
   rw [hpole, harch, hprime]
 
@@ -954,11 +969,11 @@ theorem productionFirstDerivativeTest_authority
 /-! ## Second and mixed weighted derivative lifts -/
 
 private theorem hasDerivAt_sourceAtomRealEnergySecondDerivative_from_contDiff
-    (K : ℕ) (z : EuclideanSpace ℂ (Fin (2 * K + 1))) (ω : ℝ) :
+    (K : ℕ) (z : EuclideanSpace ℂ (Fin (2 * K + 1))) (u : ℝ) :
     HasDerivAt (sourceAtomRealEnergySecondDerivative K z)
-      (deriv (sourceAtomRealEnergySecondDerivative K z) ω) ω :=
+      (deriv (sourceAtomRealEnergySecondDerivative K z) u) u :=
   ((contDiff_two_sourceAtomRealEnergySecondDerivative K z).differentiable
-    (by norm_num) ω).hasDerivAt
+    (by norm_num) u).hasDerivAt
 
 /-- Boundary-flat source energy has zero second through fourth source jets at
 the entering endpoint.  This packages exactly the endpoint information used by
@@ -984,13 +999,13 @@ theorem sourceAtomRealEnergy_second_through_four_zero
   have hderiv1 :
       deriv (sourceAtomRealEnergy K x) =
         sourceAtomRealEnergyDerivative K x := by
-    funext ω
-    exact (hasDerivAt_sourceAtomRealEnergy_transport K x ω).deriv
+    funext t
+    exact (hasDerivAt_sourceAtomRealEnergy_transport K x t).deriv
   have hderiv2 :
       deriv (sourceAtomRealEnergyDerivative K x) =
         sourceAtomRealEnergySecondDerivative K x := by
-    funext ω
-    exact (hasDerivAt_sourceAtomRealEnergyDerivative_transport K x ω).deriv
+    funext t
+    exact (hasDerivAt_sourceAtomRealEnergyDerivative_transport K x t).deriv
   have hiter2 :
       iteratedDeriv 2 (sourceAtomRealEnergy K x) =
         sourceAtomRealEnergySecondDerivative K x := by
@@ -1032,12 +1047,14 @@ theorem productionSecondDerivativePhysicalRaw_liftJets
       have hcoord :
           HasDerivAt (fun t : ℝ => 1 - t / L) (-(1 / L)) L := by
         convert (hasDerivAt_const L (1 : ℝ)).sub
-          ((hasDerivAt_id L).div_const L) using 1 <;> field_simp [hL.ne'] <;> ring
-      exact
-        (by
-        simpa [hL.ne', mul_comm] using
-          (hasDerivAt_sourceAtomRealEnergySecondDerivative_from_contDiff K
-            (z : EuclideanSpace ℂ (Fin (2 * K + 1))) (1 - L / L)).comp L hcoord)
+          ((hasDerivAt_id L).div_const L) using 1 <;> ring
+      have hcoordL : 1 - L / L = 0 := by
+        rw [div_self hL.ne']
+        ring
+      have hs :=
+        (hasDerivAt_sourceAtomRealEnergySecondDerivative_from_contDiff K
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1))) 0).comp L hcoord
+      simpa [hcoordL, mul_comm] using hs
     have hp :=
       ((hasDerivAt_id L).pow 2).div_const (L ^ 4) |>.mul hinner
     simpa [productionSecondDerivativePhysicalRaw, hj.1, hj.2.1] using hp.deriv
@@ -1045,7 +1062,7 @@ theorem productionSecondDerivativePhysicalRaw_liftJets
     have hD1 : ContDiff ℝ 1
         (deriv (productionSecondDerivativePhysicalRaw L K z)) := by
       have hC2' :
-          ContDiff ℝ (1 + 1)
+          ContDiff ℝ (1 + 1 : ℕ∞ω)
             (productionSecondDerivativePhysicalRaw L K z) := by
         simpa using hC2
       simpa using hC2'.deriv'
@@ -1202,8 +1219,30 @@ theorem sourceAtomPairingDerivative_secondDerivative_zero
           (w : EuclideanSpace ℂ (Fin (2 * K + 1)))) 0 = 0 := by
     rw [h3]
     simp [hm0z, hm0w, hm1z, hm1w]
-  rw [← hz3]
-  simp [iteratedDeriv_succ', sourceAtomPairingDerivative]
+  have hderiv1 :
+      deriv
+        (sourceAtomPairing K
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (w : EuclideanSpace ℂ (Fin (2 * K + 1)))) =
+        sourceAtomPairingDerivative K
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (w : EuclideanSpace ℂ (Fin (2 * K + 1))) := by
+    funext t
+    exact (hasDerivAt_sourceAtomPairing K
+      (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+      (w : EuclideanSpace ℂ (Fin (2 * K + 1))) t).deriv
+  have hiter3 :
+      iteratedDeriv 3
+        (sourceAtomPairing K
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (w : EuclideanSpace ℂ (Fin (2 * K + 1)))) =
+        deriv (deriv (sourceAtomPairingDerivative K
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (w : EuclideanSpace ℂ (Fin (2 * K + 1))))) := by
+    rw [show 3 = 2 + 1 by norm_num, iteratedDeriv_succ,
+      show 2 = 1 + 1 by norm_num, iteratedDeriv_succ,
+      iteratedDeriv_one, hderiv1]
+  rw [← congrFun hiter3 0, hz3]
 
 theorem productionMixedDerivativePhysicalRaw_liftJets
     {L : ℝ} (hL : 0 < L) (K : ℕ)
@@ -1228,11 +1267,13 @@ theorem productionMixedDerivativePhysicalRaw_liftJets
           (w : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0 := by
         simpa [sourcePairingCoefficientSum, evenBoundaryFlatRawCoefficients] using
           evenBoundaryFlat_coordinateSum_zero K w
-      have hh :=
-        sourceAtomPairingSecondDerivative_eq_indexActions K
-          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
-          (w : EuclideanSpace ℂ (Fin (2 * K + 1))) 0 hsumz hsumw
-      simpa [sourceAtomPairingDerivative] using hh
+      rw [(hasDerivAt_sourceAtomPairingDerivative K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+        (w : EuclideanSpace ℂ (Fin (2 * K + 1))) 0).deriv]
+      rw [sourceAtomPairingSecondDerivative_eq_indexActions K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+        (w : EuclideanSpace ℂ (Fin (2 * K + 1))) 0 hsumz hsumw]
+      simp [sourceAtomPairing]
     simp [productionMixedDerivativePhysicalRaw, hend.1, hpair2]
   · have h3 := sourceAtomPairingDerivative_secondDerivative_zero K z w
     simp [productionMixedDerivativePhysicalRaw, hend.1, h3]
