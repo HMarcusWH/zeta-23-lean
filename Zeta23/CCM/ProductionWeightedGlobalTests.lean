@@ -197,7 +197,7 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
       have hc :
           HasDerivWithinAt (fun _ : ℝ => (0 : ℝ)) 0 (Iic (-L)) (-L) :=
         (hasDerivAt_const (-L) (0 : ℝ)).hasDerivWithinAt
-      refine hc.congr_of_mem ?_ ?_
+      refine hc.congr_of_mem (f₁ := productionEvenCompactLiftReal L f) ?_ ?_
       · intro z hz
         have hzle : z ≤ -L := hz
         simp [productionEvenCompactLiftReal, hzle]
@@ -317,7 +317,7 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
         HasDerivWithinAt (productionEvenCompactLiftReal L f) 0
           (Ici L) L := by
       have hc := (hasDerivAt_const L (0 : ℝ)).hasDerivWithinAt
-      refine hc.congr_of_mem ?_ ?_
+      refine hc.congr_of_mem (f₁ := productionEvenCompactLiftReal L f) ?_ ?_
       · intro z hz
         have hnleft : ¬ z ≤ -L := by linarith
         have hnzero : ¬ z ≤ 0 := by linarith
@@ -389,7 +389,7 @@ private theorem hasDerivAt_productionEvenCompactLiftRealDerivative
       have hc :
           HasDerivWithinAt (fun _ : ℝ => (0 : ℝ)) 0 (Iic (-L)) (-L) :=
         (hasDerivAt_const (-L) (0 : ℝ)).hasDerivWithinAt
-      refine hc.congr_of_mem ?_ ?_
+      refine hc.congr_of_mem (f₁ := productionEvenCompactLiftRealDerivative L f) ?_ ?_
       · intro z hz
         have hzle : z ≤ -L := hz
         simp [productionEvenCompactLiftRealDerivative, hzle]
@@ -516,7 +516,7 @@ private theorem hasDerivAt_productionEvenCompactLiftRealDerivative
         HasDerivWithinAt (productionEvenCompactLiftRealDerivative L f) 0
           (Ici L) L := by
       have hc := (hasDerivAt_const L (0 : ℝ)).hasDerivWithinAt
-      refine hc.congr_of_mem ?_ ?_
+      refine hc.congr_of_mem (f₁ := productionEvenCompactLiftRealDerivative L f) ?_ ?_
       · intro z hz
         have hnleft : ¬ z ≤ -L := by linarith
         have hnzero : ¬ z ≤ 0 := by linarith
@@ -600,7 +600,8 @@ private theorem continuous_productionEvenCompactLiftRealSecondDerivative
         ContinuousWithinAt
           (productionEvenCompactLiftRealSecondDerivative L f)
           (Iic (-L)) (-L) := by
-      refine hzero.congr_of_mem ?_ ?_
+      refine hzero.congr_of_mem
+        (g := productionEvenCompactLiftRealSecondDerivative L f) ?_ ?_
       · intro z hz
         have hzle : z ≤ -L := hz
         simp [productionEvenCompactLiftRealSecondDerivative, hzle]
@@ -708,7 +709,8 @@ private theorem continuous_productionEvenCompactLiftRealSecondDerivative
         ContinuousWithinAt
           (productionEvenCompactLiftRealSecondDerivative L f)
           (Ici L) L := by
-      refine hzero.congr_of_mem ?_ ?_
+      refine hzero.congr_of_mem
+        (g := productionEvenCompactLiftRealSecondDerivative L f) ?_ ?_
       · intro z hz
         by_cases hzL : z = L
         · subst z
