@@ -5,6 +5,8 @@ from pathlib import Path
 ROUTE=Path(__file__).resolve().parent
 ROOT=ROUTE.parents[3]
 TRACKED=[
+"Zeta23/CCM/CanonicalCompressedSeamJets.lean",
+"Zeta23/CCM/CanonicalFrozenApertureC2.lean",
 "Zeta23/CCM/CanonicalCompressedApertureC2.lean","Zeta23/CCM/ProductionWeightedTestCalculus.lean",
 "Zeta23/CCM/StationarySchurContact.lean","Zeta23/CCM/FirstCrossingInheritedStationarity.lean",
 "Zeta23/RHRC/ContactCalculusContract.lean","Zeta23/CCM/FirstCrossingProductionFirstVariation.lean",
