@@ -80,6 +80,63 @@ structure ProductionWeightedTestAdmissible
 
 
 
+/-! ### Reusable mixed-test physical integrability -/
+
+/-- A mixed dictionary test that vanishes at the physical origin has an
+integrable archimedean density on the positive aperture.  This packages the
+same removable-singularity argument used by the complete physical RHS bridge,
+but exposes it as an interval-integrability theorem for F03. -/
+theorem intervalIntegrable_dictionaryMixedTest_mul_archDensity_of_zero
+    (N : ℕ) (x y : Fin (2 * N + 1) → ℂ)
+    {L : ℝ} (hL : 0 < L)
+    (hzero : dictionaryMixedTest N x y L 0 = 0) :
+    IntervalIntegrable
+      (fun t : ℝ =>
+        dictionaryMixedTest N x y L t * (archDensity t : ℂ))
+      volume 0 L := by
+  let k : ℝ → ℂ := dictionaryMixedTest N x y L
+  have hk : Continuous k := continuous_dictionaryMixedTest N x y hL
+  have hki : Integrable k :=
+    hk.integrable_of_hasCompactSupport
+      (dictionaryMixedTest_hasCompactSupport N x y L)
+  have hFk : Integrable (𝓕 k) :=
+    integrable_fourier_dictionaryMixedTest N x y hL
+  have heven : ∀ t : ℝ, k (-t) = k t :=
+    fun t => dictionaryMixedTest_neg N x y L t
+  have hmu : Integrable (fun τ : ℝ =>
+      Zeta23.paperFT k (τ : ℂ) *
+        ((Zeta23.mu τ - Zeta23.mu 0 : ℝ) : ℂ)) :=
+    integrable_paperFT_dictionaryMixedTest_mul_mu_sub_mu_zero N x y hL
+  have hsub :=
+    integrableOn_sub_mul_archDensity_Ioi hk hki hFk heven hmu
+  have hpos : IntegrableOn
+      (fun t : ℝ => k t * (archDensity t : ℂ)) (Ioi 0) := by
+    have hneg := hsub.neg
+    simpa [k, hzero] using hneg
+  constructor
+  · exact hpos.mono_set (by
+      intro t ht
+      rw [uIoc_of_le hL.le] at ht
+      exact ht.1)
+  · exact hpos.mono_set (by
+      intro t ht
+      rw [uIoc_of_le hL.le] at ht
+      exact ht.1)
+
+/-- The pole density of a mixed dictionary test is interval-integrable on the
+physical aperture. -/
+theorem intervalIntegrable_dictionaryMixedTest_mul_pole
+    (N : ℕ) (x y : Fin (2 * N + 1) → ℂ)
+    {L : ℝ} (hL : 0 < L) :
+    IntervalIntegrable
+      (fun t : ℝ =>
+        dictionaryMixedTest N x y L t *
+          (completeSourcePoleWeight t : ℂ))
+      volume 0 L := by
+  exact
+    ((continuous_dictionaryMixedTest N x y hL).mul (by fun_prop))
+      .intervalIntegrable 0 L
+
 /-! ### Smoothness of the source-coordinate derivative channels -/
 
 @[fun_prop] theorem contDiff_two_sourceEntryDerivative
