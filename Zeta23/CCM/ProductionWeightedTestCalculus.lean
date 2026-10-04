@@ -435,7 +435,7 @@ theorem productionArithmeticRealValue_smul_of_admissible
     simpa [mul_assoc] using
       (intervalIntegral.integral_const_mul
         (μ := volume) (a := (0 : ℝ)) (b := L) (a : ℂ)
-        (fun x : ℝ => (f x : ℂ) * (completeSourcePoleWeight x : ℂ))).symm
+        (fun x : ℝ => (f x : ℂ) * (completeSourcePoleWeight x : ℂ)))
   have hfa :
       (∫ x in (0 : ℝ)..L,
         ((a : ℂ) * (f x : ℂ)) * (archDensity x : ℂ)) =
@@ -444,7 +444,7 @@ theorem productionArithmeticRealValue_smul_of_admissible
     simpa [mul_assoc] using
       (intervalIntegral.integral_const_mul
         (μ := volume) (a := (0 : ℝ)) (b := L) (a : ℂ)
-        (fun x : ℝ => (f x : ℂ) * (archDensity x : ℂ))).symm
+        (fun x : ℝ => (f x : ℂ) * (archDensity x : ℂ)))
   have hsum :
       (∑ x ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
         primeSourceWeight x * (a : ℂ) * (f (Real.log x) : ℂ)) =
