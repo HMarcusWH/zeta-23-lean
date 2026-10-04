@@ -6,6 +6,8 @@ import Mathlib.Analysis.Complex.RealDeriv
 
 noncomputable section
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace Zeta23.CCM
 
 open Complex Matrix Set Filter
@@ -68,8 +70,22 @@ theorem hasDerivAt_primeSourceCoordinate
     (hasDerivAt_const L (1 : ℝ)).sub
       ((hasDerivAt_const L (Real.log q)).div
         (hasDerivAt_id L) hL)
-  simpa only [primeSourceCoordinate, Pi.sub_apply, Pi.div_apply, id_eq,
-    zero_mul, mul_one, zero_sub, sub_neg_eq_add, zero_add] using h
+  simp only [Pi.sub_apply, Pi.div_apply, id_eq,
+    zero_mul, mul_one, zero_sub, sub_neg_eq_add, zero_add] at h
+  have hfun :
+      ((fun _ : ℝ => (1 : ℝ)) -
+          (fun _ : ℝ => Real.log q) / (id : ℝ → ℝ)) =
+        (fun s : ℝ => 1 - Real.log q / s) := by
+    funext s
+    rfl
+  rw [hfun] at h
+  have hcoeff :
+      -(-Real.log q / L ^ 2) = Real.log q / L ^ 2 := by
+    ring
+  rw [hcoeff] at h
+  change HasDerivAt (fun s : ℝ => 1 - Real.log q / s)
+    (Real.log q / L ^ 2) L
+  exact h
 
 theorem hasDerivAt_primeSourceCoordinate_first
     (q : ℕ) {L : ℝ} (hL : L ≠ 0) :
@@ -78,8 +94,21 @@ theorem hasDerivAt_primeSourceCoordinate_first
   have hden := (hasDerivAt_id L).pow 2
   have h :=
     (hasDerivAt_const L (Real.log q)).div hden (pow_ne_zero 2 hL)
-  simpa only [Pi.pow_apply, id_eq, Nat.cast_ofNat, Nat.reduceSub,
-    pow_one, mul_one, zero_mul, zero_sub, sub_neg_eq_add, zero_add] using h
+  simp only [Pi.pow_apply, id_eq, Nat.cast_ofNat, Nat.reduceSub,
+    pow_one, mul_one, zero_mul, zero_sub, sub_neg_eq_add, zero_add] at h
+  have hfun :
+      ((fun _ : ℝ => Real.log q) / ((id : ℝ → ℝ) ^ 2)) =
+        (fun s : ℝ => Real.log q / s ^ 2) := by
+    funext s
+    rfl
+  rw [hfun] at h
+  have hcoeff :
+      -(Real.log q * (2 * L)) / (L ^ 2) ^ 2 =
+        -2 * Real.log q / L ^ 3 := by
+    field_simp [hL]
+    ring
+  rw [hcoeff] at h
+  exact h
 
 theorem sourceAtomRealEnergyDerivative_zero_of_boundaryFlat
     (K : ℕ)
@@ -168,7 +197,13 @@ theorem enteringPrimeSourceEnergy_secondJet_zero
           (c * (g' (omega L) * omega' L)) L :=
       hcomp.const_mul c
     have hd := hscaled.deriv
-    simpa only [enteringPrimeSourceEnergy, c, omega] using hd
+    have henergy :
+        enteringPrimeSourceEnergy q K x =
+          fun t : ℝ => c * sourceAtomRealEnergy K x (omega t) := by
+      funext t
+      rfl
+    rw [henergy]
+    exact hd
   rw [Filter.EventuallyEq.deriv_eq hfirstFun]
   have hcoord0 : omega (Real.log q) = 0 := by
     simpa only [omega] using primeSourceCoordinate_log_self q hq
@@ -199,10 +234,13 @@ theorem enteringPrimeSourceEnergy_secondJet_zero
               (-2 * Real.log q / (Real.log q) ^ 3)))
         (Real.log q) :=
     (hleft.mul hright).const_mul c
+  have hg0 : g' (omega (Real.log q)) = 0 := by
+    rw [hcoord0]
+    simpa only [g'] using
+      sourceAtomRealEnergyDerivative_zero_of_boundaryFlat K x hflat
   rw [hscaled.deriv]
-  rw [sourceAtomRealEnergySecondDerivative_zero K x,
-    sourceAtomRealEnergyDerivative_zero_of_boundaryFlat K x hflat]
-  simp [g', omega, omega', hcoord0]
+  rw [sourceAtomRealEnergySecondDerivative_zero K x, hg0]
+  ring
 
 /-! ## Matrix-valued source jets -/
 
