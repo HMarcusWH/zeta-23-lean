@@ -427,44 +427,135 @@ theorem GeneratedGlobalFirstCrossing.firstVariation_nonpos_of_kernel
     exact g.selectedFixedEnergy_nonnegative p z hsmall hstar
   · exact hrealized
 
-/-- Actual compressed first variation equals the scalar derivative used by the
-existing generated-prefix sign theorem. -/
+
+/-- The fixed legal parity energy has the actual compressed first jet as its
+real derivative at every positive aperture. -/
+theorem canonicalParity_fixedEnergy_hasDerivAt
+    (p : ReversalParity) {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (z : euclideanParityBoundaryFlatSubspace p K) :
+    HasDerivAt
+      (fun s : ℝ => productionContactFixedEnergy p s K z)
+      (Complex.re
+        (inner ℂ (canonicalParityApertureFirst p L K z) z)) L := by
+  have hOp :=
+    hasDerivAt_parityCompressedCanonicalCLM_pos p K hL
+  have hz :
+      HasDerivAt
+        (fun s : ℝ => canonicalParityCompressedFamilyCLM p K s z)
+        (canonicalParityApertureFirstCLM p L K z) L := by
+    simpa [canonicalParityCompressedFamilyCLM,
+      canonicalParityApertureFirstCLM] using
+      hOp.clm_apply (hasDerivAt_const L z)
+  have hinner :
+      HasDerivAt
+        (fun s : ℝ =>
+          inner ℂ (canonicalParityCompressedFamilyCLM p K s z) z)
+        (inner ℂ (canonicalParityApertureFirstCLM p L K z) z) L := by
+    simpa using hz.inner ℂ (hasDerivAt_const L z)
+  have hre :=
+    Complex.reCLM.hasFDerivAt.comp_hasDerivAt L hinner
+  simpa [productionContactFixedEnergy, canonicalParityCompressedFamilyCLM,
+    canonicalParityApertureFirst, canonicalParityApertureFirstCLM,
+    Function.comp_def] using hre
+
+/-- Therefore the seam-safe scalar derivative is exactly the quadratic form of
+the actual compressed first jet. -/
+theorem canonicalParity_firstVariation_eq_inner
+    (p : ReversalParity) {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (z : euclideanParityBoundaryFlatSubspace p K) :
+    productionContactFirstVariation p L K z =
+      Complex.re (inner ℂ (canonicalParityApertureFirst p L K z) z) := by
+  unfold productionContactFirstVariation
+  exact (canonicalParity_fixedEnergy_hasDerivAt p hL K z).deriv
+
+/-- The first-variation function itself has the actual compressed second jet as
+its derivative at every positive aperture. -/
+theorem canonicalParity_firstVariation_hasDerivAt
+    (p : ReversalParity) {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (z : euclideanParityBoundaryFlatSubspace p K) :
+    HasDerivAt
+      (fun s : ℝ => productionContactFirstVariation p s K z)
+      (Complex.re
+        (inner ℂ (canonicalParityApertureSecond p L K z) z)) L := by
+  have hOp :=
+    hasDerivAt_productionParityFirstJetCLM_pos p K hL
+  have hz :
+      HasDerivAt
+        (fun s : ℝ => canonicalParityApertureFirstCLM p s K z)
+        (canonicalParityApertureSecondCLM p L K z) L := by
+    simpa [canonicalParityApertureFirstCLM,
+      canonicalParityApertureSecondCLM] using
+      hOp.clm_apply (hasDerivAt_const L z)
+  have hinner :
+      HasDerivAt
+        (fun s : ℝ =>
+          inner ℂ (canonicalParityApertureFirstCLM p s K z) z)
+        (inner ℂ (canonicalParityApertureSecondCLM p L K z) z) L := by
+    simpa using hz.inner ℂ (hasDerivAt_const L z)
+  have hre :=
+    Complex.reCLM.hasFDerivAt.comp_hasDerivAt L hinner
+  have hevent :
+      (fun s : ℝ => productionContactFirstVariation p s K z) =ᶠ[𝓝 L]
+        (fun s : ℝ =>
+          Complex.re (inner ℂ
+            (canonicalParityApertureFirstCLM p s K z) z)) := by
+    filter_upwards [Ioi_mem_nhds hL] with s hs
+    simpa [canonicalParityApertureFirst,
+      canonicalParityApertureFirstCLM] using
+      canonicalParity_firstVariation_eq_inner p hs K z
+  have htarget :
+      HasDerivAt
+        (fun s : ℝ =>
+          Complex.re (inner ℂ
+            (canonicalParityApertureFirstCLM p s K z) z))
+        (Complex.re
+          (inner ℂ (canonicalParityApertureSecondCLM p L K z) z)) L := by
+    simpa [Function.comp_def] using hre
+  have hsame :
+      productionContactFirstVariation p L K z =
+        Complex.re
+          (inner ℂ (canonicalParityApertureFirstCLM p L K z) z) := by
+    simpa [canonicalParityApertureFirst,
+      canonicalParityApertureFirstCLM] using
+      canonicalParity_firstVariation_eq_inner p hL K z
+  exact htarget.congr_of_eventuallyEq hevent.symm hsame.symm
+
+/-- The seam-safe fixed second variation is exactly the actual compressed
+second-jet quadratic form. -/
+theorem canonicalParity_fixedSecond_eq_inner
+    (p : ReversalParity) {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (z : euclideanParityBoundaryFlatSubspace p K) :
+    productionContactFixedSecondVariation p L K z =
+      Complex.re (inner ℂ (canonicalParityApertureSecond p L K z) z) := by
+  unfold productionContactFixedSecondVariation
+  exact (canonicalParity_firstVariation_hasDerivAt p hL K z).deriv
+
+/-- Native-even wrapper for the actual first-variation identity. -/
 theorem canonicalEven_firstVariation_eq_inner
     {L : ℝ} (hL : 0 < L) (K : ℕ)
     (z : euclideanEvenBoundaryFlatSubspace K) :
     productionContactFirstVariation .even L K z =
       Complex.re (inner ℂ (canonicalEvenApertureFirst L K z) z) := by
-  have hC2 := canonicalEvenCompressedC2_proved K
-  have hderiv :=
-    ((hC2 L hL).differentiable le_rfl).hasFDerivAt
-  unfold productionContactFirstVariation productionContactFixedEnergy
   simpa [canonicalEvenApertureFirst, canonicalEvenApertureFirstCLM,
-    canonicalEvenCompressedFamilyCLM] using
-    congrArg (fun x => Complex.re (inner ℂ x z))
-      (hderiv.fderiv)
+    canonicalParityApertureFirst] using
+    canonicalParity_firstVariation_eq_inner .even hL K z
 
- /-- Actual compressed second fixed-vector variation. -/
+/-- Native-even wrapper for the actual fixed second-variation identity. -/
 theorem canonicalEven_fixedSecond_eq_inner
     {L : ℝ} (hL : 0 < L) (K : ℕ)
     (z : euclideanEvenBoundaryFlatSubspace K) :
     productionContactFixedSecondVariation .even L K z =
       Complex.re (inner ℂ (canonicalEvenApertureSecond L K z) z) := by
-  have hC2 := canonicalEvenCompressedC2_proved K
-  unfold productionContactFixedSecondVariation
-  have hfirst := canonicalEven_firstVariation_eq_inner hL K z
-  rw [show (fun s : ℝ => productionContactFirstVariation .even s K z) =
-      (fun s : ℝ => Complex.re
-        (inner ℂ (canonicalEvenApertureFirst s K z) z)) by
-        funext s
-        by_cases hs : 0 < s
-        · exact canonicalEven_firstVariation_eq_inner hs K z
-        · simp [productionContactFirstVariation,
-            canonicalEvenApertureFirst, canonicalEvenApertureFirstCLM,
-            fderiv_zero_of_not_differentiableAt]]
-  rfl
+  simpa [canonicalEvenApertureSecond, canonicalEvenApertureSecondCLM,
+    canonicalParityApertureSecond] using
+    canonicalParity_fixedSecond_eq_inner .even hL K z
 
 end Zeta23.CCM
 
+#print axioms Zeta23.CCM.canonicalParity_fixedEnergy_hasDerivAt
+#print axioms Zeta23.CCM.canonicalParity_firstVariation_eq_inner
+#print axioms Zeta23.CCM.canonicalParity_firstVariation_hasDerivAt
+#print axioms Zeta23.CCM.canonicalParity_fixedSecond_eq_inner
 #print axioms Zeta23.CCM.canonicalEven_firstVariation_eq_inner
 #print axioms Zeta23.CCM.canonicalEven_fixedSecond_eq_inner
 #print axioms Zeta23.CCM.productionApertureFirstMatrix_isHermitian
