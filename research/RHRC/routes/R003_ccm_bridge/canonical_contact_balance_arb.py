@@ -670,7 +670,18 @@ def campaign(protocol:dict)->dict:
     selected=[replay_selected_case(c,ladder) for c in protocol["selected_neighborhoods"]]
     balances=[selected_balance(c,ladder[-1]) for c in protocol["selected_neighborhoods"]]
     x01=inherited_response_investigation(protocol,balances)
+    art=protocol.get("inherited_artifact") or {}
+    provenance={
+        "base_merge":protocol.get("base_merge"),
+        "base_tree":protocol.get("base_tree"),
+        "artifact_id":art.get("artifact_id"),
+        "artifact_zip_sha256":art.get("zip_sha256"),
+        "discovery_sha256":art.get("discovery_sha256"),
+        "arb_sha256":art.get("arb_sha256"),
+        "selected_panel_artifact_id":(protocol.get("selected_panel_provenance") or {}).get("artifact_id"),
+    }
     return {"schema_version":"POST282_CONTACT_BALANCE_ARB_v2","claim_cap":"EXPERIMENTAL_SIGNAL_ONLY",
+            "source_provenance":provenance,
             "calibration":calibration,"seam_controls":seams,"selected_replay":selected,"balance_rows":balances,
             "hypothesis_dispositions":{
                 "X01_INHERITED_RESPONSE_BALANCE":x01,
