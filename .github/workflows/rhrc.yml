@@ -419,6 +419,11 @@ jobs:
             Zeta23.CCM.CanonicalFrozenApertureC2 \
             Zeta23.CCM.CanonicalCompressedApertureC2 \
             Zeta23.CCM.ProductionWeightedTestCalculus \
+            Zeta23.CCM.ProductionWeightedGlobalTests \
+            Zeta23.CCM.ProductionNormalSourceAuthority \
+            Zeta23.CCM.FirstCrossingProductionRemainderAuthority \
+            Zeta23.CCM.ProductionPhysicalFunctionalCongruence \
+            Zeta23.CCM.FirstCrossingProductionRemainderValueAuthority \
             Zeta23.CCM.StationarySchurContact \
             Zeta23.CCM.FirstCrossingInheritedStationarity \
             Zeta23.CCM.FirstCrossingProductionTests \
@@ -488,6 +493,11 @@ jobs:
             Zeta23/CCM/CanonicalFrozenApertureC2.lean \
             Zeta23/CCM/CanonicalCompressedApertureC2.lean \
             Zeta23/CCM/ProductionWeightedTestCalculus.lean \
+            Zeta23/CCM/ProductionWeightedGlobalTests.lean \
+            Zeta23/CCM/ProductionNormalSourceAuthority.lean \
+            Zeta23/CCM/FirstCrossingProductionRemainderAuthority.lean \
+            Zeta23/CCM/ProductionPhysicalFunctionalCongruence.lean \
+            Zeta23/CCM/FirstCrossingProductionRemainderValueAuthority.lean \
             Zeta23/CCM/StationarySchurContact.lean \
             Zeta23/CCM/FirstCrossingInheritedStationarity.lean \
             Zeta23/CCM/FirstCrossingProductionTests.lean \

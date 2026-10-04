@@ -558,19 +558,24 @@ X01/X02 must never block core theorem acceptance solely because an arithmetic ca
 
 ## 7. File inventory and dependency wiring
 
-### 7.1 Seven new Lean modules
+### 7.1 Twelve new Lean modules
 
 | Path | Role |
 |---|---|
 | `Zeta23/CCM/CanonicalCompressedSeamJets.lean` | F01 exact entering-atom value/first/second legal seam jets. |
 | `Zeta23/CCM/CanonicalFrozenApertureC2.lean` | F01 frozen analytic C2 and left/right seam continuation identities. |
 | `Zeta23/CCM/CanonicalCompressedApertureC2.lean` | F01 compressed real-aperture C2 family and actual derivatives. |
-| `Zeta23/CCM/ProductionWeightedTestCalculus.lean` | F02 admissible-span physical calculus. |
+| `Zeta23/CCM/ProductionWeightedTestCalculus.lean` | F02 admitted positive-half physical calculus and global-lift interface. |
+| `Zeta23/CCM/ProductionWeightedGlobalTests.lean` | F02 concrete global compact weighted derivative-test lifts. |
+| `Zeta23/CCM/ProductionNormalSourceAuthority.lean` | F03 exact production authority for the normal/source-Q channel. |
+| `Zeta23/CCM/FirstCrossingProductionRemainderAuthority.lean` | F03 admissibility and pointwise authority for the concrete remainder test. |
+| `Zeta23/CCM/ProductionPhysicalFunctionalCongruence.lean` | F03/F04 congruence of the finite-aperture production functional on its physical domain. |
+| `Zeta23/CCM/FirstCrossingProductionRemainderValueAuthority.lean` | F03 exact equality between the constructed remainder test and production remainder value. |
 | `Zeta23/CCM/StationarySchurContact.lean` | F05 generic arbitrary-complement stationary contact theorem. |
 | `Zeta23/CCM/FirstCrossingInheritedStationarity.lean` | F06 inherited-kernel first variation and strict-even specialization. |
 | `Zeta23/RHRC/ContactCalculusContract.lean` | F07 exact endpoint-type and definition contract. |
 
-F01 is split into the two explicit helper modules above; both are mandatory build/axiom/proof-escape targets. Further splitting requires an updated inventory and import audit. It must not change the mathematical scope or bypass the contract.
+F01 is split into the two explicit seam/frozen helper modules above, while F02/F03 use five authority modules so the global/physical/remainder identifications are theorem-backed rather than hidden in downstream proofs. All twelve new modules are mandatory ordinary/dedicated build, axiom-audit, and proof-escape targets. Further splitting requires an updated inventory and import audit. It must not change the mathematical scope or bypass the contract.
 
 ### 7.2 Six existing Lean modules changed
 
@@ -583,11 +588,23 @@ Keep the global-boundary and selected-shell constructors and fields unchanged. A
 ```text
 existing frozen canonical families + canonical continuity + legal source jets
                                |
+ CanonicalCompressedSeamJets -> CanonicalFrozenApertureC2
+                               |
                   CanonicalCompressedApertureC2
                                |
 existing production RHS -> ProductionWeightedTestCalculus
                                |
-             FirstCrossingProductionTests -> concrete Remainder
+                  ProductionWeightedGlobalTests
+                               |
+                  FirstCrossingProductionTests
+                      /                    \
+     ProductionNormalSourceAuthority   concrete Remainder
+                      \                    /
+        FirstCrossingProductionRemainderAuthority
+                               |
+        ProductionPhysicalFunctionalCongruence
+                               |
+     FirstCrossingProductionRemainderValueAuthority
                                |
                   FirstCrossingProductionFirstVariation
                                |
@@ -665,6 +682,8 @@ Do not register RH or arithmetic exclusion as proved. Generated graph/compiler p
 Retain ordinary Lean, closure, registered-binding, anti-circularity, no-project-axiom, no-placeholder, source normalization, historical numerical, and graph checks. The new targets must be present in ordinary CI as well as the dedicated workflow.
 
 Use an all-target build receipt: a first failing dependency must not prevent later requested targets from being attempted and reported. The job still exits nonzero if any mandatory target fails. Each target receipt records the exact tree and its disposition.
+
+Superseded-head validation runs may be cancelled by workflow concurrency after a newer PR head is pushed. Cancelled superseded runs are neither passes nor scientific failures; theorem admission and post-green harvest use only the exact final-head cohort, and every mandatory final-head job must settle successfully.
 
 The exact contract module tests endpoint applications and expected source objects. A linter that only searches for the spelling `hbridge` cannot prevent a hidden equivalent premise in a record or typeclass. Audit immutable generated-contact constructor fields and transitive theorem assumptions; inspect definitions as well as theorem types.
 

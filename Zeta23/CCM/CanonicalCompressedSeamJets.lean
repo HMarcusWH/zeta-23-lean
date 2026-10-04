@@ -2,13 +2,14 @@ import Zeta23.CCM.CanonicalPrimeSeamTaylor
 import Zeta23.CCM.CanonicalGroundContinuity
 import Zeta23.CCM.ConstrainedParitySpectrum
 import Mathlib.Analysis.Calculus.Deriv.Mul
+import Mathlib.Analysis.Complex.RealDeriv
 
 noncomputable section
 
 namespace Zeta23.CCM
 
-open Complex Matrix Set
-open scoped BigOperators ComplexConjugate ArithmeticFunction
+open Complex Matrix Set Filter
+open scoped BigOperators ComplexConjugate ArithmeticFunction Topology
 
 /-!
 # Post-#282 compressed seam jets
@@ -63,27 +64,28 @@ theorem hasDerivAt_primeSourceCoordinate
     (q : ℕ) {L : ℝ} (hL : L ≠ 0) :
     HasDerivAt (primeSourceCoordinate q)
       (Real.log q / L ^ 2) L := by
+  unfold primeSourceCoordinate
   have h :=
     (hasDerivAt_const L (1 : ℝ)).sub
       ((hasDerivAt_const L (Real.log q)).div
         (hasDerivAt_id L) hL)
   convert h using 1
-  · rfl
-  · ring
+  · funext s
+    rfl
+  · simp
 
 theorem hasDerivAt_primeSourceCoordinate_first
     (q : ℕ) {L : ℝ} (hL : L ≠ 0) :
     HasDerivAt (fun s : ℝ => Real.log q / s ^ 2)
       (-2 * Real.log q / L ^ 3) L := by
   have hden : HasDerivAt (fun s : ℝ => s ^ 2) (2 * L) L := by
-    convert (hasDerivAt_id L).mul (hasDerivAt_id L) using 1
-    · ext s
-      simp [pow_two]
-    · ring
+    simpa [pow_two, two_mul] using
+      (hasDerivAt_id L).mul (hasDerivAt_id L)
   have h :=
     (hasDerivAt_const L (Real.log q)).div hden (pow_ne_zero 2 hL)
   convert h using 1
-  · rfl
+  · funext s
+    rfl
   · field_simp [hL]
     ring
 
@@ -157,7 +159,7 @@ theorem enteringPrimeSourceEnergy_secondJet_zero
   let omega' := fun L : ℝ => Real.log q / L ^ 2
   let g' := sourceAtomRealEnergyDerivative K x
   have hfirstFun :
-      (fun L : ℝ => deriv (enteringPrimeSourceEnergy q K x) L) =ᶠ[𝓝 (Real.log q)]
+      (fun L : ℝ => deriv (enteringPrimeSourceEnergy q K x) L) =ᶠ[nhds (Real.log q)]
         fun L : ℝ =>
           (Λ q / Real.sqrt q : ℝ) *
             (g' (omega L) * omega' L) := by
@@ -208,10 +210,8 @@ theorem hasDerivAt_sourceMatrix_sourceCoordinate
   have hreal :=
     hasDerivAt_sourceEntryReal
       ω (centeredIndex K i) (centeredIndex K j)
-  have hcomplex :=
-    Complex.ofRealCLM.hasFDerivAt.comp_hasDerivAt ω hreal
   simpa [sourceMatrix_apply, sourceEntry_eq_ofReal, sourceFirstJetMatrix] using
-    hcomplex
+    hreal.ofReal_comp
 
 /-- The first source-matrix jet has the exact second source jet as derivative. -/
 theorem hasDerivAt_sourceFirstJetMatrix
@@ -228,9 +228,8 @@ theorem hasDerivAt_sourceFirstJetMatrix
   have hreal :=
     hasDerivAt_sourceEntryDerivative
       ω (centeredIndex K i) (centeredIndex K j)
-  have hcomplex :=
-    Complex.ofRealCLM.hasFDerivAt.comp_hasDerivAt ω hreal
-  simpa [sourceFirstJetMatrix, sourceSecondJetMatrix] using hcomplex
+  simpa [sourceFirstJetMatrix, sourceSecondJetMatrix] using
+    hreal.ofReal_comp
 
 /-- First aperture jet of one frozen entering source atom. -/
 def primeSourceMatrixFirstApertureJet
@@ -256,7 +255,13 @@ theorem hasDerivAt_sourceMatrix_primeSourceCoordinate
   have hs :=
     hasDerivAt_sourceMatrix_sourceCoordinate K (primeSourceCoordinate q L)
   have hc := hasDerivAt_primeSourceCoordinate q hL
-  simpa [primeSourceMatrixFirstApertureJet] using hs.scomp L hc
+  have hcomp :
+      HasDerivAt
+        ((fun t : ℝ => sourceMatrix t K) ∘ primeSourceCoordinate q)
+        ((Real.log q / L ^ 2) •
+          sourceFirstJetMatrix K (primeSourceCoordinate q L)) L :=
+    HasDerivAt.scomp (𝕜 := ℝ) (𝕜' := ℝ) L hs hc
+  simpa [Function.comp_def, primeSourceMatrixFirstApertureJet] using hcomp
 
 theorem hasDerivAt_primeSourceMatrixFirstApertureJet
     (q K : ℕ) {L : ℝ} (hL : L ≠ 0) :
@@ -265,11 +270,17 @@ theorem hasDerivAt_primeSourceMatrixFirstApertureJet
       (primeSourceMatrixSecondApertureJet q L K) L := by
   have hc := hasDerivAt_primeSourceCoordinate q hL
   have hcoeff := hasDerivAt_primeSourceCoordinate_first q hL
-  have hjet :=
-    (hasDerivAt_sourceFirstJetMatrix K (primeSourceCoordinate q L)).scomp L hc
+  have hjet :
+      HasDerivAt
+        ((fun t : ℝ => sourceFirstJetMatrix K t) ∘ primeSourceCoordinate q)
+        ((Real.log q / L ^ 2) •
+          sourceSecondJetMatrix K (primeSourceCoordinate q L)) L :=
+    HasDerivAt.scomp (𝕜 := ℝ) (𝕜' := ℝ) L
+      (hasDerivAt_sourceFirstJetMatrix K (primeSourceCoordinate q L)) hc
   have hprod := hcoeff.smul hjet
-  simpa [primeSourceMatrixFirstApertureJet,
-    primeSourceMatrixSecondApertureJet, add_comm, add_left_comm, add_assoc,
+  simpa [Function.comp_def, primeSourceMatrixFirstApertureJet,
+    primeSourceMatrixSecondApertureJet, pow_two,
+    add_comm, add_left_comm, add_assoc,
     smul_smul, mul_comm, mul_left_comm, mul_assoc] using hprod
 
 /-- Every parity-boundary-flat legal vector has zero coefficient sum. -/

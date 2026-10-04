@@ -13,7 +13,7 @@ noncomputable section
 namespace Zeta23.CCM
 
 open Complex MeasureTheory Set
-open scoped BigOperators ComplexConjugate Interval FourierTransform
+open scoped BigOperators ComplexConjugate Interval FourierTransform ArithmeticFunction
 
 /-!
 # Post-#282 weighted production-test calculus
@@ -117,7 +117,7 @@ theorem intervalIntegrable_dictionaryMixedTest_mul_archDensity_of_zero
   · exact hpos.mono_set (by
       intro t ht
       exact ht.1)
-  · rw [Ioc_eq_empty hL.le]
+  · rw [Ioc_eq_empty (not_lt_of_ge hL.le)]
     exact integrableOn_empty
 
 /-- The pole density of a mixed dictionary test is interval-integrable on the
@@ -416,6 +416,7 @@ theorem productionArithmeticRealValue_add_of_admissible
     push_cast
     ring
   rw [hsum]
+  simp only [Complex.add_re, Complex.sub_re]
   ring
 
 /-- Real production evaluation is homogeneous on admitted tests. -/
@@ -447,7 +448,7 @@ theorem productionArithmeticRealValue_smul_of_admissible
         (fun x : ℝ => (f x : ℂ) * (archDensity x : ℂ)))
   have hsum :
       (∑ x ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
-        primeSourceWeight x * (a : ℂ) * (f (Real.log x) : ℂ)) =
+        primeSourceWeight x * ((a : ℂ) * (f (Real.log x) : ℂ))) =
       (a : ℂ) *
         (∑ x ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
           primeSourceWeight x * (f (Real.log x) : ℂ)) := by
@@ -553,7 +554,6 @@ theorem ProductionWeightedGlobalLift.half_pole_eq_physical
     dsimp [completeSourcePoleWeight]
     rw [abs_of_nonneg ht.1]
     push_cast
-    ring
   rw [hpos]
   ring
 
@@ -598,6 +598,7 @@ theorem ProductionWeightedGlobalLift.half_prime_eq_physical
       exact hpos
     rw [hpos, hneg]
     unfold primeSourceWeight
+    push_cast
     ring
   rw [hsum]
   ring
@@ -633,8 +634,13 @@ theorem ProductionWeightedGlobalLift.half_arch_eq_physical
         Zeta23.paperFT g (τ : ℂ) *
           ((Zeta23.mu τ - Zeta23.mu 0 : ℝ) : ℂ)) := by
     refine (hmuAll.sub hmu0).congr (Filter.Eventually.of_forall fun τ => ?_)
+    change
+      Zeta23.paperFT g (τ : ℂ) * (Zeta23.mu τ : ℂ) -
+          Zeta23.paperFT g (τ : ℂ) * (Zeta23.mu 0 : ℂ) =
+        Zeta23.paperFT g (τ : ℂ) *
+          ((Zeta23.mu τ - Zeta23.mu 0 : ℝ) : ℂ)
     push_cast
-    ring_nf
+    ring
   have harch :=
     dictionaryArchRHS_eq_neg_two_mul_archDensity_integral_of_zero
       hg hgi hF h.even hmuSub h.zero
@@ -652,7 +658,7 @@ theorem ProductionWeightedGlobalLift.half_arch_eq_physical
       exact ht.2 ⟨ht0, le_of_not_gt hn⟩
     have hnot : t ∉ Icc (-L) L := by
       intro hmem
-      linarith
+      exact (not_le_of_gt htL) hmem.2
     have hgz : g t = 0 := by
       by_contra hne
       exact hnot (h.support_subset hne)

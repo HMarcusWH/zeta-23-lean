@@ -29,7 +29,9 @@ theorem productionArithmeticComplexValue_congr_on_Icc
     apply intervalIntegral.integral_congr
     intro t ht
     rw [uIcc_of_le hL.le] at ht
-    rw [hfg t ht]
+    simpa using
+      congrArg (fun z : ℂ => z * (completeSourcePoleWeight t : ℂ))
+        (hfg t ht)
   have harch :
       (∫ t : ℝ in (0 : ℝ)..L,
           f t * (archDensity t : ℂ)) =
@@ -37,7 +39,10 @@ theorem productionArithmeticComplexValue_congr_on_Icc
           g t * (archDensity t : ℂ) := by
     apply intervalIntegral.integral_congr
     intro t ht
-    rw [hfg t ⟨le_of_lt ht.1, le_of_lt ht.2⟩]
+    rw [uIcc_of_le hL.le] at ht
+    simpa using
+      congrArg (fun z : ℂ => z * (archDensity t : ℂ))
+        (hfg t ht)
   have hprime :
       (∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
           primeSourceWeight q * f (Real.log q)) =
@@ -54,7 +59,9 @@ theorem productionArithmeticComplexValue_congr_on_Icc
     have hqL : Real.log q ≤ L := by
       rw [← Real.log_exp L]
       exact Real.log_le_log hqpos hqexp
-    rw [hfg (Real.log q) ⟨hq0, hqL⟩]
+    simpa using
+      congrArg (fun z : ℂ => primeSourceWeight q * z)
+        (hfg (Real.log q) ⟨hq0, hqL⟩)
   rw [hpole, harch, hprime]
 
 theorem productionArithmeticRealValue_congr_on_Icc

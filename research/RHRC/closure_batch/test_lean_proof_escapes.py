@@ -57,6 +57,11 @@ EXPECTED = {
     Path("Zeta23/CCM/CanonicalFrozenApertureC2.lean"),
     Path("Zeta23/CCM/CanonicalCompressedApertureC2.lean"),
     Path("Zeta23/CCM/ProductionWeightedTestCalculus.lean"),
+    Path("Zeta23/CCM/ProductionWeightedGlobalTests.lean"),
+    Path("Zeta23/CCM/ProductionNormalSourceAuthority.lean"),
+    Path("Zeta23/CCM/FirstCrossingProductionRemainderAuthority.lean"),
+    Path("Zeta23/CCM/ProductionPhysicalFunctionalCongruence.lean"),
+    Path("Zeta23/CCM/FirstCrossingProductionRemainderValueAuthority.lean"),
     Path("Zeta23/CCM/StationarySchurContact.lean"),
     Path("Zeta23/CCM/FirstCrossingInheritedStationarity.lean"),
     Path("Zeta23/RHRC/ContactCalculusContract.lean"),
@@ -90,7 +95,7 @@ class LeanProofEscapeScopeTests(unittest.TestCase):
         roots = closure_roots()
         self.assertEqual(len(roots), len(set(roots)))
         self.assertEqual(set(roots), EXPECTED)
-        self.assertEqual(len(roots), 77)
+        self.assertEqual(len(roots), 82)
         for path in roots:
             self.assertTrue(path.is_file(), str(path))
 
