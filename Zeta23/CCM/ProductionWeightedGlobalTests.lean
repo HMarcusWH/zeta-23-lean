@@ -940,6 +940,7 @@ private theorem productionArithmeticComplexValue_congr_on_Icc
     apply intervalIntegral.integral_congr
     intro t ht
     rw [uIcc_of_le hL.le] at ht
+    change f t * _ = g t * _
     rw [hfg t ht]
   have harch :
       (∫ t in (0 : ℝ)..L,
@@ -949,6 +950,7 @@ private theorem productionArithmeticComplexValue_congr_on_Icc
     apply intervalIntegral.integral_congr
     intro t ht
     rw [uIcc_of_le hL.le] at ht
+    change f t * _ = g t * _
     rw [hfg t ht]
   have hprime :
       (∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
@@ -1075,8 +1077,9 @@ theorem productionSecondDerivativePhysicalRaw_liftJets
               (z : EuclideanSpace ℂ (Fin (2 * K + 1)))) 0) L := by
       have hcoord :
           HasDerivAt (fun t : ℝ => 1 - t / L) (-(1 / L)) L := by
-        convert (hasDerivAt_const L (1 : ℝ)).sub
-          ((hasDerivAt_id L).div_const L) using 1 <;> ring
+        simpa only [zero_sub] using
+          (hasDerivAt_const L (1 : ℝ)).sub
+            ((hasDerivAt_id L).div_const L)
       have hcoordL : 1 - L / L = 0 := by
         rw [div_self hL.ne']
         ring
@@ -1093,7 +1096,8 @@ theorem productionSecondDerivativePhysicalRaw_liftJets
       have hC2' :
           ContDiff ℝ (1 + 1 : ℕ∞ω)
             (productionSecondDerivativePhysicalRaw L K z) := by
-        simpa using hC2
+        norm_num
+        exact hC2
       simpa using hC2'.deriv'
     have hsecond := ((hD1.differentiable (by norm_num)) L).hasDerivAt
     have hzero :
@@ -1108,13 +1112,13 @@ theorem productionSecondDerivativePhysicalRaw_liftJets
                 (z : EuclideanSpace ℂ (Fin (2 * K + 1)))) 0) L := by
         have hcoord :
             HasDerivAt (fun t : ℝ => 1 - t / L) (-(1 / L)) L := by
-          convert (hasDerivAt_const L (1 : ℝ)).sub
-            ((hasDerivAt_id L).div_const L) using 1 <;> field_simp [hL.ne'] <;> ring
-        exact
-          (by
-        simpa [hL.ne', mul_comm] using
+          simpa only [zero_sub] using
+            (hasDerivAt_const L (1 : ℝ)).sub
+              ((hasDerivAt_id L).div_const L)
+        have hs :=
           (hasDerivAt_sourceAtomRealEnergySecondDerivative_from_contDiff K
-            (z : EuclideanSpace ℂ (Fin (2 * K + 1))) (1 - L / L)).comp L hcoord)
+            (z : EuclideanSpace ℂ (Fin (2 * K + 1))) 0).comp L hcoord
+        simpa [hcoordL, mul_comm] using hs
       have hp :=
         ((hasDerivAt_id L).pow 2).div_const (L ^ 4) |>.mul hinner
       simpa [productionSecondDerivativePhysicalRaw, hcoordL, hj.1, hj.2.1] using hp.deriv
@@ -1260,18 +1264,26 @@ theorem sourceAtomPairingDerivative_secondDerivative_zero
     exact (hasDerivAt_sourceAtomPairing K
       (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
       (w : EuclideanSpace ℂ (Fin (2 * K + 1))) t).deriv
-  have hiter3 :
-      iteratedDeriv 3
+  have hiter2 :
+      iteratedDeriv 2
         (sourceAtomPairing K
           (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
           (w : EuclideanSpace ℂ (Fin (2 * K + 1)))) =
+        deriv (sourceAtomPairingDerivative K
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (w : EuclideanSpace ℂ (Fin (2 * K + 1)))) := by
+    rw [show 2 = 1 + 1 by norm_num, iteratedDeriv_succ,
+      iteratedDeriv_one, hderiv1]
+  have hiter3_at_zero :
+      iteratedDeriv 3
+        (sourceAtomPairing K
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (w : EuclideanSpace ℂ (Fin (2 * K + 1)))) 0 =
         deriv (deriv (sourceAtomPairingDerivative K
           (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
-          (w : EuclideanSpace ℂ (Fin (2 * K + 1))))) := by
-    rw [show 3 = 2 + 1 by norm_num, iteratedDeriv_succ,
-      show 2 = 1 + 1 by norm_num, iteratedDeriv_succ,
-      iteratedDeriv_one, hderiv1]
-  rw [← congrFun hiter3 0, hz3]
+          (w : EuclideanSpace ℂ (Fin (2 * K + 1))))) 0 := by
+    rw [show 3 = 2 + 1 by norm_num, iteratedDeriv_succ, hiter2]
+  rw [← hiter3_at_zero, hz3]
 
 theorem productionMixedDerivativePhysicalRaw_liftJets
     {L : ℝ} (hL : 0 < L) (K : ℕ)
