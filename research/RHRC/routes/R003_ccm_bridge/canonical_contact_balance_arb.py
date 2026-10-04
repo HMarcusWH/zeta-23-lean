@@ -462,7 +462,15 @@ def selected_balance(cand:dict,prec:int)->dict:
         "physical_remainder":{k:v for k,v in remainder.items() if not k.startswith("_")},
         "saturation_gap":saturation,
         "rho":saturation.get("rho",{"status":"UNRESOLVED"}),
-        "matched_ablations":matched_ablation_records(L,K,Q,bundle,response)})
+        "matched_ablations":matched_ablation_records(L,K,Q,bundle,response),
+        "certification_contract":{
+            "shifted_eigenvalue_subtraction":True,
+            "euler_correction_in_balance":True,
+            "response_gauge":"ORTHOGONAL_TO_CERTIFIED_GROUND",
+            "independent_physical_remainder":True,
+            "midpoint_inverse_requires_rho_lt_one":True,
+            "exact_interval_codec":"DYADIC_DIRECTED_ARB_ENDPOINTS",
+            "theorem_promotion":False}})
     try:
         frow=floating.evaluate(float(L.mid()),K)
         public["floating_crosscheck"]={k:frow.get(k) for k in (
