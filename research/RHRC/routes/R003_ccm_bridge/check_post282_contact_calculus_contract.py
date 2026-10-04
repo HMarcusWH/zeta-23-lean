@@ -48,8 +48,26 @@ def check_results(path:Path)->None:
         fail("FIREWALL","results")
     if s.get("calibration_qualified") is not True:
         fail("VACUOUS","K2/log2 calibration did not qualify")
-    if s.get("selected_count")!=11 or s.get("selected_sign_bracket_count")!=4:\n        fail("SELECTION","frozen #282 selected-panel identity drift")\n    if s.get("balance_row_count")!=11:\n        fail("BALANCE","all selected rows must receive a balance disposition")\n    if s.get("certified_response_count",0)<1:\n        fail("VACUOUS","no response certificate resolved")
-    rows=d.get("selected_replay")\n    if not isinstance(rows,list) or len(rows)!=11:\n        fail("SELECTION","selected replay missing")\n    balances=d.get("balance_rows")\n    if not isinstance(balances,list) or len(balances)!=11:\n        fail("BALANCE","balance rows missing")
+    if s.get("selected_count")!=11 or s.get("selected_sign_bracket_count")!=4:
+        fail("SELECTION","frozen #282 selected-panel identity drift")
+    if s.get("balance_row_count")!=11:
+        fail("BALANCE","all selected rows must receive a balance disposition")
+    if s.get("certified_response_count",0)<1:
+        fail("VACUOUS","no response certificate resolved")
+    if s.get("independent_physical_remainder_certified_count",0)<1:
+        fail("VACUOUS","no independent physical remainder certified")
+    if s.get("independent_balance_overlap_count",0)<1:
+        fail("BALANCE","no independently evaluated balance overlap")
+    rows=d.get("selected_replay")
+    if not isinstance(rows,list) or len(rows)!=11:
+        fail("SELECTION","selected replay missing")
+    balances=d.get("balance_rows")
+    if not isinstance(balances,list) or len(balances)!=11:
+        fail("BALANCE","balance rows missing")
+    if not any(r.get("physical_remainder",{}).get("status")=="CERTIFIED" for r in balances):
+        fail("N03","direct physical remainder lane is vacuous")
+    if not all(isinstance(r.get("matched_ablations"),list) for r in balances if r.get("response")):
+        fail("N04","matched ablation dispositions missing")
     if any(r.get("first_boundary_claimed") is not False for r in rows):
         fail("FIRST_BOUNDARY","finite replay may not claim first boundary")
     cal=d.get("calibration") or {}

@@ -78,7 +78,7 @@ class IntervalCodecTests(unittest.TestCase):
             for text in ["0", "1.25", "-3.5", "1e-40", "-1e30"]:
                 x=arb(text)
                 # add a nonzero radius in Arb syntax
-                b=x + arb("1e-50")
+                b=arb(x.mid(), arb("1e-50"))
                 d=DyadicInterval.from_arb(b)
                 lo=b.lower().man_exp()
                 hi=b.upper().man_exp()

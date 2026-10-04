@@ -68,6 +68,51 @@
       "q": 15,
       "K": 2,
       "kind": "ZERO_WEIGHT_INTEGER_CONTROL"
+    },
+    {
+      "q": 2,
+      "K": 3,
+      "kind": "VON_MANGOLDT_SEAM"
+    },
+    {
+      "q": 4,
+      "K": 3,
+      "kind": "VON_MANGOLDT_SEAM"
+    },
+    {
+      "q": 8,
+      "K": 3,
+      "kind": "VON_MANGOLDT_SEAM"
+    },
+    {
+      "q": 9,
+      "K": 3,
+      "kind": "VON_MANGOLDT_SEAM"
+    },
+    {
+      "q": 16,
+      "K": 3,
+      "kind": "VON_MANGOLDT_SEAM"
+    },
+    {
+      "q": 6,
+      "K": 3,
+      "kind": "ZERO_WEIGHT_INTEGER_CONTROL"
+    },
+    {
+      "q": 10,
+      "K": 3,
+      "kind": "ZERO_WEIGHT_INTEGER_CONTROL"
+    },
+    {
+      "q": 14,
+      "K": 3,
+      "kind": "ZERO_WEIGHT_INTEGER_CONTROL"
+    },
+    {
+      "q": 15,
+      "K": 3,
+      "kind": "ZERO_WEIGHT_INTEGER_CONTROL"
     }
   ],
   "inherited_artifact": {
@@ -239,5 +284,17 @@
     "selected_count": 11,
     "selected_sign_bracket_count": 4,
     "note": "Exact Q/K/rational-fraction identities copied from the frozen #282 artifact; floating L/g values are intentionally non-authoritative."
+  },
+  "n03_requirements": {
+    "independent_physical_remainder": true,
+    "validated_bordered_response": true,
+    "shifted_eigenvalue_subtraction": true,
+    "independent_balance_comparison": true,
+    "minimum_certified_rows": 1
+  },
+  "n04_requirements": {
+    "frozen_state_and_reoptimized_distinguished": true,
+    "unmatched_models_must_be_not_applicable": true,
+    "empty_success_payload_forbidden": true
   }
 }

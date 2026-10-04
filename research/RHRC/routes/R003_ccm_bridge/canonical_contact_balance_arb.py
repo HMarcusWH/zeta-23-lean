@@ -12,7 +12,7 @@ from __future__ import annotations
 import json, math, sys
 from pathlib import Path
 import numpy as np
-from flint import arb, arb_mat, ctx
+from flint import acb, arb, arb_mat, ctx
 
 ROUTE=Path(__file__).resolve().parent
 RHRC=ROUTE.parents[1]
@@ -31,6 +31,7 @@ from post194_fb05_q14_fixed_unit_second_derivative import (
 )
 from certify_post281_generated_contact_frontier import ladder_point
 import post280_saturation_frontier as floating
+import canonical_source_arb as canonical_arb
 
 
 def interval_record(x: arb) -> dict:
@@ -204,6 +205,145 @@ def projected_dilation_defect(K:int,bundle:dict,response:dict,L:arb)->dict:
             "pointwise_exact_contact_law_claimed":False}
 
 
+
+I=acb(0,1)
+
+def _source_matrix_omega_acb(omega:acb,K:int):
+    ns=list(range(-K,K+1));pi=acb(arb.pi())
+    A=[[acb(0) for _ in ns] for _ in ns]
+    for i,n in enumerate(ns):
+        for j,m in enumerate(ns):
+            if n==m:
+                A[i][j]=2*omega*(2*pi*n*omega).cos()
+            else:
+                A[i][j]=((2*pi*n*omega).sin()-(2*pi*m*omega).sin())/(pi*(n-m))
+    return A
+
+def _source_matrix_omega_derivative_acb(omega:acb,K:int):
+    ns=list(range(-K,K+1));pi=acb(arb.pi())
+    A=[[acb(0) for _ in ns] for _ in ns]
+    for i,n in enumerate(ns):
+        for j,m in enumerate(ns):
+            if n==m:
+                u=2*pi*n*omega
+                A[i][j]=2*u.cos()-4*pi*n*omega*u.sin()
+            else:
+                A[i][j]=2*(n*(2*pi*n*omega).cos()-m*(2*pi*m*omega).cos())/(n-m)
+    return A
+
+def _source_matrix_one_sub_over_t_acb(t:acb,L:arb,K:int):
+    """(sourceMatrix(1-t/L)-2I)/t in removable form."""
+    ns=list(range(-K,K+1));pi=acb(arb.pi());Lc=acb(L)
+    B=[[acb(0) for _ in ns] for _ in ns]
+    for i,n in enumerate(ns):
+        cn=2*pi*n/Lc
+        for j,m in enumerate(ns):
+            cm=2*pi*m/Lc
+            if n==m:
+                h=cn*t/2
+                B[i][j]=-(cn*cn)*t*(h.sinc()**2)-2*(cn*t).cos()/Lc
+            else:
+                B[i][j]=(cn*(cn*t).sinc()-cm*(cm*t).sinc())/(pi*(m-n))
+    return B
+
+def _mat_vec_acb(A,x):
+    out=[acb(0) for _ in range(len(A))]
+    for i in range(len(A)):
+        for j in range(len(A)):
+            out[i]+=A[i][j]*acb(x[j,0])
+    return out
+
+def _bilinear_acb(x,A,y):
+    Ay=_mat_vec_acb(A,y);s=acb(0)
+    for i in range(len(Ay)): s+=acb(x[i,0])*Ay[i]
+    return s
+
+def _ambient_contact_vectors(K:int,bundle:dict,response:dict):
+    U=_orthonormal_full_basis(K,"even")
+    return U*bundle["V"],U*response["W"]
+
+def _quadratic_normal_vector(K:int):
+    ns=list(range(-K,K+1));mean=arb(sum(n*n for n in ns))/arb(len(ns))
+    v=arb_mat([[arb(n*n)-mean] for n in ns]);den=(v.transpose()*v)[0,0]
+    return v,den
+
+def _m4(K:int,z:arb_mat)->arb:
+    return sum((arb(n**4)*z[i,0] for i,n in enumerate(range(-K,K+1))),arb(0))
+
+def _remainder_over_t_acb(t:acb,L:arb,K:int,z:arb_mat,w:arb_mat):
+    """R(t)/t in a removable form valid at t=0."""
+    ns=list(range(-K,K+1));a2=acb((2*arb.pi())**2);Lc=acb(L)
+    normal,den=_quadratic_normal_vector(K);m4=acb(_m4(K,z))
+    B=_source_matrix_one_sub_over_t_acb(t,L,K)
+    n_over_t=m4*_bilinear_acb(normal,B,z)/acb(den)
+    omega=acb(1)-t/Lc
+    A=_source_matrix_omega_acb(omega,K)
+    Ap=_source_matrix_omega_derivative_acb(omega,K)
+    Dz=arb_mat([[arb(n)*z[i,0]] for i,n in enumerate(ns)])
+    d=_bilinear_acb(Dz,A,Dz);mixed=_bilinear_acb(z,Ap,w)
+    return a2/(Lc*Lc)*n_over_t-a2*t/(Lc**4)*d+2/(Lc*Lc)*mixed
+
+def _production_kernel_integrand_acb(t:acb,L:arb,K:int,z:arb_mat,w:arb_mat):
+    r_over_t=_remainder_over_t_acb(t,L,K,z,w)
+    pole=(-t/2).exp()+(t/2).exp()
+    reg=(t/2).exp()/(2*(I*t).sinc())
+    return t*r_over_t*pole-r_over_t*reg
+
+def direct_physical_remainder_certificate(L:arb,K:int,Q:int,bundle:dict,response:dict)->dict:
+    if response.get("status") not in {"CERTIFIED_BORDERED_RESPONSE","CERTIFIED_ZERO_COMPLEMENT_RESPONSE"}:
+        return {"status":"RESPONSE_UNRESOLVED"}
+    z,w=_ambient_contact_vectors(K,bundle,response)
+    try:
+        integral=acb.integral(
+            lambda t,_analytic:_production_kernel_integrand_acb(t,L,K,z,w),
+            acb(0),acb(L),abs_tol=arb(2)**(-120),eval_limit=200000,depth_limit=40)
+        if not integral.imag.contains(0):
+            return {"status":"NONREAL_INTEGRAL_ENCLOSURE","integral":str(integral)}
+        prime=acb(0)
+        for q in range(2,Q+1):
+            vm=canonical_arb.von_mangoldt(q)
+            if vm.is_zero(): continue
+            t=acb(arb(q).log())
+            prime+=acb(vm/arb(q).sqrt())*(t*_remainder_over_t_acb(t,L,K,z,w))
+        value=integral-prime
+        if not value.imag.contains(0):
+            return {"status":"NONREAL_RHS_ENCLOSURE","value":str(value)}
+        R=value.real
+        return {"status":"CERTIFIED","production_remainder":interval_record(R),
+                "integral":interval_record(integral.real),
+                "prime_sum":interval_record(prime.real),"_R":R}
+    except Exception as exc:
+        return {"status":"DIRECT_PHYSICAL_INTEGRAL_UNRESOLVED","error":str(exc)}
+
+def saturation_certificate(L:arb,qrep:dict,curv:dict,remainder:dict,bundle:dict)->dict:
+    if remainder.get("status")!="CERTIFIED" or "_q_arith" not in qrep or "_kappa" not in curv:
+        return {"status":"UNRESOLVED"}
+    scale=(2*arb.pi())**2/(L*L)
+    delta=remainder["_R"]-scale*qrep["_q_arith"]
+    rhs=curv["_kappa"]+2*bundle["j1"]/L
+    out={"status":"CERTIFIED_INDEPENDENT_SIDES",
+         "delta_sat":interval_record(delta),"kappa_plus_euler":interval_record(rhs),
+         "identity_overlap":_interval_overlap(delta,rhs)}
+    if bool(qrep["_q_arith"]>0):
+        out["rho"]={"status":"ELIGIBLE",
+                    "value":interval_record(L*L*remainder["_R"]/((2*arb.pi())**2*qrep["_q_arith"]))}
+    else:
+        out["rho"]={"status":"INELIGIBLE_Q_NOT_CERTIFIED_POSITIVE"}
+    return out
+
+def matched_ablation_records(L:arb,K:int,Q:int,bundle:dict,response:dict)->list[dict]:
+    full=direct_physical_remainder_certificate(L,K,Q,bundle,response)
+    out=[{"name":"FULL_CANONICAL","mode":"FROZEN_STATE","status":full.get("status"),
+          "arithmetic_authority":full.get("status")=="CERTIFIED"}]
+    for name in ("NO_PRIME","NO_ARCH","NO_POLE"):
+        out.append({"name":name,"mode":"FROZEN_STATE",
+                    "status":"NOT_APPLICABLE_UNTIL_MATCHED_MATRIX_JETS_AND_ARITHMETIC_ARE_CONSTRUCTED",
+                    "arithmetic_authority":False})
+        out.append({"name":name,"mode":"REOPTIMIZED",
+                    "status":"NOT_APPLICABLE_UNTIL_MATCHED_MODEL_IS_CONSTRUCTED",
+                    "arithmetic_authority":False})
+    return out
+
 def selected_balance(cand:dict,prec:int)->dict:
     Q=int(cand["Q"]);K=int(cand["K"]);frac=cand.get("cell_fraction")
     if frac is None:
@@ -218,13 +358,16 @@ def selected_balance(cand:dict,prec:int)->dict:
         public["status"]="GROUND_UNRESOLVED";return public
     response=validated_bordered_response(bundle);qrep=q_representations(L,K,Q,bundle)
     curv=curvature_enclosure(bundle,response);defect=projected_dilation_defect(K,bundle,response,L)
+    remainder=direct_physical_remainder_certificate(L,K,Q,bundle,response)
+    saturation=saturation_certificate(L,qrep,curv,remainder,bundle)
     public.update({"response":{k:v for k,v in response.items() if k!="W"},
         "Q":{k:v for k,v in qrep.items() if not k.startswith("_")},
         "curvature":{k:v for k,v in curv.items() if not k.startswith("_")},
         "projected_dilation":defect,
-        "physical_remainder":{"status":"RIGOROUS_DIRECT_PHYSICAL_INTEGRAL_NOT_RESOLVED","used_for_certificate":False},
-        "saturation_gap":{"status":"UNRESOLVED_UNTIL_INDEPENDENT_PHYSICAL_REMAINDER","used_for_certificate":False},
-        "rho":{"status":"INELIGIBLE_WITHOUT_INDEPENDENT_REMAINDER"}})
+        "physical_remainder":{k:v for k,v in remainder.items() if not k.startswith("_")},
+        "saturation_gap":saturation,
+        "rho":saturation.get("rho",{"status":"UNRESOLVED"}),
+        "matched_ablations":matched_ablation_records(L,K,Q,bundle,response)})
     try:
         frow=floating.evaluate(float(L.mid()),K)
         public["floating_crosscheck"]={k:frow.get(k) for k in (
@@ -234,7 +377,10 @@ def selected_balance(cand:dict,prec:int)->dict:
         public["floating_crosscheck"]["certificate_authority"]=False
     except Exception as exc:
         public["floating_crosscheck"]={"status":"ERROR","error":str(exc),"certificate_authority":False}
-    public["status"]="PARTIALLY_CERTIFIED_SPECTRAL_RESPONSE_Q";return public
+    public["status"]=("CERTIFIED_RESPONSE_Q_REMAINDER_BALANCE"
+        if remainder.get("status")=="CERTIFIED" and saturation.get("status")=="CERTIFIED_INDEPENDENT_SIDES"
+        else "PARTIALLY_CERTIFIED_SPECTRAL_RESPONSE_Q")
+    return public
 
 
 def one_dimensional_calibration(L:arb,K:int,Q:int,parity:str,prec:int)->dict:
@@ -311,7 +457,8 @@ def campaign(protocol:dict)->dict:
                 "balance_row_count":len(balances),
                 "certified_response_count":sum(1 for r in balances if r.get("response",{}).get("status") in {"CERTIFIED_BORDERED_RESPONSE","CERTIFIED_ZERO_COMPLEMENT_RESPONSE"}),
                 "Q_representation_overlap_count":sum(1 for r in balances if r.get("Q",{}).get("overlap") is True),
-                "independent_physical_remainder_certified_count":0,
+                "independent_physical_remainder_certified_count":sum(1 for r in balances if r.get("physical_remainder",{}).get("status")=="CERTIFIED"),
+                "independent_balance_overlap_count":sum(1 for r in balances if r.get("saturation_gap",{}).get("identity_overlap") is True),
                 "theorem_promotion":False,"terminal_claim":"RH_OPEN"}}
 
 
