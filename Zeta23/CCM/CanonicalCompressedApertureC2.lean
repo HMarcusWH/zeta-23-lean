@@ -157,107 +157,132 @@ theorem canonicalEvenCompressedC2_proved
     CanonicalParityCompressedC2, canonicalParityCompressedFamilyCLM] using
     canonicalParityCompressedC2_proved .even K
 
-/-- The actual first derivative is self-adjoint at every positive aperture. -/
+
+/-- The actual parity-compressed first derivative is self-adjoint at every
+positive aperture. -/
+theorem canonicalParityApertureFirst_isSymmetric
+    (p : ReversalParity) {L : ℝ} (hL : 0 < L) (K : ℕ) :
+    LinearMap.IsSymmetric (𝕜 := ℂ)
+      (E := euclideanParityBoundaryFlatSubspace p K)
+      (canonicalParityApertureFirst p L K) := by
+  intro x y
+  have hOp :=
+    hasDerivAt_parityCompressedCanonicalCLM_pos p K hL
+  have hx :
+      HasDerivAt
+        (fun s : ℝ => canonicalParityCompressedFamilyCLM p K s x)
+        (canonicalParityApertureFirstCLM p L K x) L := by
+    simpa [canonicalParityCompressedFamilyCLM,
+      canonicalParityApertureFirstCLM] using
+      hOp.clm_apply (hasDerivAt_const L x)
+  have hy :
+      HasDerivAt
+        (fun s : ℝ => canonicalParityCompressedFamilyCLM p K s y)
+        (canonicalParityApertureFirstCLM p L K y) L := by
+    simpa [canonicalParityCompressedFamilyCLM,
+      canonicalParityApertureFirstCLM] using
+      hOp.clm_apply (hasDerivAt_const L y)
+  have hxy :
+      HasDerivAt
+        (fun s : ℝ => inner ℂ
+          (canonicalParityCompressedFamilyCLM p K s x) y)
+        (inner ℂ (canonicalParityApertureFirstCLM p L K x) y) L := by
+    simpa using hx.inner ℂ (hasDerivAt_const L y)
+  have hyx :
+      HasDerivAt
+        (fun s : ℝ => inner ℂ x
+          (canonicalParityCompressedFamilyCLM p K s y))
+        (inner ℂ x (canonicalParityApertureFirstCLM p L K y)) L := by
+    simpa using (hasDerivAt_const L x).inner ℂ hy
+  have hfun :
+      (fun s : ℝ => inner ℂ
+        (canonicalParityCompressedFamilyCLM p K s x) y) =
+      (fun s : ℝ => inner ℂ x
+        (canonicalParityCompressedFamilyCLM p K s y)) := by
+    funext t
+    exact parityCompressedCanonical_isSymmetric p t K x y
+  have hyx' :
+      HasDerivAt
+        (fun s : ℝ => inner ℂ
+          (canonicalParityCompressedFamilyCLM p K s x) y)
+        (inner ℂ x (canonicalParityApertureFirstCLM p L K y)) L := by
+    rw [hfun]
+    exact hyx
+  have hEq := hxy.unique hyx'
+  simpa [canonicalParityApertureFirst] using hEq
+
+/-- The actual parity-compressed second derivative is self-adjoint at every
+positive aperture. -/
+theorem canonicalParityApertureSecond_isSymmetric
+    (p : ReversalParity) {L : ℝ} (hL : 0 < L) (K : ℕ) :
+    LinearMap.IsSymmetric (𝕜 := ℂ)
+      (E := euclideanParityBoundaryFlatSubspace p K)
+      (canonicalParityApertureSecond p L K) := by
+  intro x y
+  have hOp :=
+    hasDerivAt_productionParityFirstJetCLM_pos p K hL
+  have hx :
+      HasDerivAt
+        (fun s : ℝ => canonicalParityApertureFirstCLM p s K x)
+        (canonicalParityApertureSecondCLM p L K x) L := by
+    simpa [canonicalParityApertureFirstCLM,
+      canonicalParityApertureSecondCLM] using
+      hOp.clm_apply (hasDerivAt_const L x)
+  have hy :
+      HasDerivAt
+        (fun s : ℝ => canonicalParityApertureFirstCLM p s K y)
+        (canonicalParityApertureSecondCLM p L K y) L := by
+    simpa [canonicalParityApertureFirstCLM,
+      canonicalParityApertureSecondCLM] using
+      hOp.clm_apply (hasDerivAt_const L y)
+  have hxy :
+      HasDerivAt
+        (fun s : ℝ => inner ℂ
+          (canonicalParityApertureFirstCLM p s K x) y)
+        (inner ℂ (canonicalParityApertureSecondCLM p L K x) y) L := by
+    simpa using hx.inner ℂ (hasDerivAt_const L y)
+  have hyx :
+      HasDerivAt
+        (fun s : ℝ => inner ℂ x
+          (canonicalParityApertureFirstCLM p s K y))
+        (inner ℂ x (canonicalParityApertureSecondCLM p L K y)) L := by
+    simpa using (hasDerivAt_const L x).inner ℂ hy
+  have hevent :
+      (fun s : ℝ => inner ℂ
+        (canonicalParityApertureFirstCLM p s K x) y) =ᶠ[𝓝 L]
+      (fun s : ℝ => inner ℂ x
+        (canonicalParityApertureFirstCLM p s K y)) := by
+    filter_upwards [Ioi_mem_nhds hL] with t ht
+    exact canonicalParityApertureFirst_isSymmetric p ht K x y
+  have hyx' := hyx.congr_of_eventuallyEq hevent.symm
+  have hEq := hxy.unique hyx'
+  simpa [canonicalParityApertureSecond] using hEq
+
+/-- Native-even wrapper for first-derivative symmetry. -/
 theorem canonicalEvenApertureFirst_isSymmetric
     {L : ℝ} (hL : 0 < L) (K : ℕ) :
     LinearMap.IsSymmetric (𝕜 := ℂ)
       (E := euclideanEvenBoundaryFlatSubspace K)
       (canonicalEvenApertureFirst L K) := by
-  intro x y
-  have hOp :=
-    hasDerivAt_parityCompressedCanonicalCLM_pos .even K hL
-  have hx :
-      HasDerivAt
-        (fun s : ℝ => canonicalEvenCompressedFamilyCLM K s x)
-        (canonicalEvenApertureFirstCLM L K x) L := by
-    simpa [canonicalEvenCompressedFamilyCLM,
-      canonicalEvenApertureFirstCLM] using
-      hOp.clm_apply (hasDerivAt_const L x)
-  have hy :
-      HasDerivAt
-        (fun s : ℝ => canonicalEvenCompressedFamilyCLM K s y)
-        (canonicalEvenApertureFirstCLM L K y) L := by
-    simpa [canonicalEvenCompressedFamilyCLM,
-      canonicalEvenApertureFirstCLM] using
-      hOp.clm_apply (hasDerivAt_const L y)
-  have hxy :
-      HasDerivAt
-        (fun s : ℝ => inner ℂ
-          (canonicalEvenCompressedFamilyCLM K s x) y)
-        (inner ℂ (canonicalEvenApertureFirstCLM L K x) y) L := by
-    simpa using hx.inner ℂ (hasDerivAt_const L y)
-  have hyx :
-      HasDerivAt
-        (fun s : ℝ => inner ℂ x
-          (canonicalEvenCompressedFamilyCLM K s y))
-        (inner ℂ x (canonicalEvenApertureFirstCLM L K y)) L := by
-    simpa using (hasDerivAt_const L x).inner ℂ hy
-  have hfun :
-      (fun s : ℝ => inner ℂ
-        (canonicalEvenCompressedFamilyCLM K s x) y) =
-      (fun s : ℝ => inner ℂ x
-        (canonicalEvenCompressedFamilyCLM K s y)) := by
-    funext s
-    exact parityCompressedCanonical_isSymmetric .even s K x y
-  have hyx' :
-      HasDerivAt
-        (fun s : ℝ => inner ℂ
-          (canonicalEvenCompressedFamilyCLM K s x) y)
-        (inner ℂ x (canonicalEvenApertureFirstCLM L K y)) L := by
-    rw [hfun]
-    exact hyx
-  have hEq := hxy.unique hyx'
-  simpa [canonicalEvenApertureFirst] using hEq
+  simpa [canonicalEvenApertureFirst, canonicalEvenApertureFirstCLM,
+    canonicalParityApertureFirst] using
+    canonicalParityApertureFirst_isSymmetric .even hL K
 
-/-- The actual second derivative is self-adjoint at every positive aperture. -/
+/-- Native-even wrapper for second-derivative symmetry. -/
 theorem canonicalEvenApertureSecond_isSymmetric
     {L : ℝ} (hL : 0 < L) (K : ℕ) :
     LinearMap.IsSymmetric (𝕜 := ℂ)
       (E := euclideanEvenBoundaryFlatSubspace K)
       (canonicalEvenApertureSecond L K) := by
-  intro x y
-  have hOp :=
-    hasDerivAt_productionParityFirstJetCLM_pos .even K hL
-  have hx :
-      HasDerivAt
-        (fun s : ℝ => canonicalEvenApertureFirstCLM s K x)
-        (canonicalEvenApertureSecondCLM L K x) L := by
-    simpa [canonicalEvenApertureFirstCLM,
-      canonicalEvenApertureSecondCLM] using
-      hOp.clm_apply (hasDerivAt_const L x)
-  have hy :
-      HasDerivAt
-        (fun s : ℝ => canonicalEvenApertureFirstCLM s K y)
-        (canonicalEvenApertureSecondCLM L K y) L := by
-    simpa [canonicalEvenApertureFirstCLM,
-      canonicalEvenApertureSecondCLM] using
-      hOp.clm_apply (hasDerivAt_const L y)
-  have hxy :
-      HasDerivAt
-        (fun s : ℝ => inner ℂ
-          (canonicalEvenApertureFirstCLM s K x) y)
-        (inner ℂ (canonicalEvenApertureSecondCLM L K x) y) L := by
-    simpa using hx.inner ℂ (hasDerivAt_const L y)
-  have hyx :
-      HasDerivAt
-        (fun s : ℝ => inner ℂ x
-          (canonicalEvenApertureFirstCLM s K y))
-        (inner ℂ x (canonicalEvenApertureSecondCLM L K y)) L := by
-    simpa using (hasDerivAt_const L x).inner ℂ hy
-  have hevent :
-      (fun s : ℝ => inner ℂ
-        (canonicalEvenApertureFirstCLM s K x) y) =ᶠ[𝓝 L]
-      (fun s : ℝ => inner ℂ x
-        (canonicalEvenApertureFirstCLM s K y)) := by
-    filter_upwards [Ioi_mem_nhds hL] with s hs
-    exact canonicalEvenApertureFirst_isSymmetric hs K x y
-  have hyx' := hyx.congr_of_eventuallyEq hevent.symm
-  have hEq := hxy.unique hyx'
-  simpa [canonicalEvenApertureSecond] using hEq
+  simpa [canonicalEvenApertureSecond, canonicalEvenApertureSecondCLM,
+    canonicalParityApertureSecond] using
+    canonicalParityApertureSecond_isSymmetric .even hL K
 
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.canonicalParityCompressedC2_proved
 #print axioms Zeta23.CCM.canonicalEvenCompressedC2_proved
+#print axioms Zeta23.CCM.canonicalParityApertureFirst_isSymmetric
+#print axioms Zeta23.CCM.canonicalParityApertureSecond_isSymmetric
 #print axioms Zeta23.CCM.canonicalEvenApertureFirst_isSymmetric
 #print axioms Zeta23.CCM.canonicalEvenApertureSecond_isSymmetric
