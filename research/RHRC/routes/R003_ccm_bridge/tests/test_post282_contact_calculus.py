@@ -60,5 +60,9 @@ class ContactCalculusTests(unittest.TestCase):
         self.assertFalse(out["summary"]["theorem_promotion"])
         self.assertEqual(out["summary"]["terminal_claim"],"RH_OPEN")
 
+    def test_ablation_contract_names(self):
+        required={(f"DROP_{c}",m) for c in ("POLE","ARCH","PRIME")
+                  for m in ("FROZEN_STATE","REOPTIMIZED")}
+        self.assertEqual(len(required),6)
 
 if __name__=="__main__": unittest.main()

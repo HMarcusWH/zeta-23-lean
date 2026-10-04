@@ -28,6 +28,16 @@ from post247_remainder_budget_ratio_scout import (
 )
 from post194_fb05_q14_fixed_unit_second_derivative import (
     fixed_unit_fixed_q_canonical_source_matrix_with_second_derivative_arb,
+    direct_arch_component_second,
+    pole_component_second,
+    prime_component_second,
+    fixed_unit_primitive_second_derivative_caches,
+)
+from post177_fb05_q13_fixed_unit_derivative import (
+    direct_arch_component_prime,
+    pole_component_prime,
+    prime_component_prime,
+    fixed_unit_primitive_derivative_caches,
 )
 from certify_post281_generated_contact_frontier import ladder_point
 import post280_saturation_frontier as floating
@@ -109,6 +119,40 @@ def simple_ground_bundle(L:arb,K:int,Q:int,parity:str,prec:int)->dict:
                   "angle_upper_exact":angle.upper().str(30,radius=False),"dimension":d},
     }
 
+
+def simple_ground_bundle_from_jets(H:arb_mat,Hp:arb_mat,Hpp:arb_mat)->dict:
+    """Certify an isolated ground state for an already matched jet triple."""
+    try:
+        eigs=_eigs(H)
+    except ValueError as exc:
+        return {"status":"EIGENSOLVER_UNRESOLVED","error":str(exc)}
+    d=H.nrows()
+    if d==0:return {"status":"ZERO_DIMENSIONAL_CARRIER"}
+    Hmid=_mid_matrix(H);_,vecs=np.linalg.eigh((Hmid+Hmid.T)/2)
+    v0=np.asarray(vecs[:,0],dtype=float);v0/=np.linalg.norm(v0)
+    V0=_arb_col(v0);theta=_quad_quotient(H,V0)
+    if d==1:
+        angle=arb(0);gap=None;status="CERTIFIED_ONE_DIMENSIONAL"
+    else:
+        gap=eigs[1].lower()-eigs[0].upper()
+        if not bool(gap>0):
+            return {"status":"GROUND_CLUSTER_UNRESOLVED",
+                    "lambda":_ball_record_full(eigs[0]),
+                    "lambda_2":_ball_record_full(eigs[1])}
+        residual=_residual_upper_arb(H,V0,theta)
+        norm_lower=_norm_sq(V0).lower().sqrt()
+        sep=eigs[1].lower()-theta.upper()
+        if not (bool(norm_lower>0) and bool(sep>0)):
+            return {"status":"EIGENVECTOR_ENCLOSURE_UNRESOLVED"}
+        angle=(residual/norm_lower)/sep
+        if bool(angle>1):angle=arb(1)
+        status="SIMPLE_GROUND_RESOLVED"
+    V=_vec_ball(v0,angle);j1=_quad_quotient(Hp,V);fixed2=_quad_quotient(Hpp,V)
+    return {"status":status,"H":H,"Hp":Hp,"Hpp":Hpp,"eigs":eigs,"v0":v0,
+            "V":V,"angle":angle,"lambda":eigs[0],"gap":gap,"j1":j1,"fixed2":fixed2,
+            "record":{"status":status,"lambda":_ball_record_full(eigs[0]),
+                      "j1":_ball_record_full(j1),
+                      "fixed_second":_ball_record_full(fixed2),"dimension":d}}
 
 def validated_bordered_response(bundle:dict)->dict:
     if bundle.get("status") not in {"SIMPLE_GROUND_RESOLVED","CERTIFIED_ONE_DIMENSIONAL"}:
@@ -331,17 +375,68 @@ def saturation_certificate(L:arb,qrep:dict,curv:dict,remainder:dict,bundle:dict)
         out["rho"]={"status":"INELIGIBLE_Q_NOT_CERTIFIED_POSITIVE"}
     return out
 
+
+def direct_signed_channel_jets(L:arb,K:int,Q:int)->dict:
+    """Rigorous value/first/second jets for the three signed production channels."""
+    ns=list(range(-K,K+1));dim=len(ns)
+    vals={
+        "alpha":{n:canonical_arb.alpha_L(n,L) for n in ns},
+        "beta":{n:canonical_arb.beta_L(n,L) for n in ns},
+        "gamma":{n:canonical_arb.source_eq44_gamma_L(n,L) for n in ns},
+    }
+    d1=fixed_unit_primitive_derivative_caches(L,K)
+    d2=fixed_unit_primitive_second_derivative_caches(L,K)
+    out={}
+    for name in ("POLE","ARCH","PRIME"):
+        A=arb_mat(dim,dim);Ap=arb_mat(dim,dim);App=arb_mat(dim,dim)
+        for i,n in enumerate(ns):
+            for j,m in enumerate(ns):
+                if name=="POLE":
+                    a=canonical_arb.pole_component(n,m,L)
+                    ap=pole_component_prime(n,m,L)
+                    app=pole_component_second(n,m,L)
+                elif name=="ARCH":
+                    a=-canonical_arb.direct_arch_component(
+                        n,m,L,vals["alpha"],vals["beta"],vals["gamma"])
+                    ap=-direct_arch_component_prime(
+                        n,m,d1["alpha"],d1["beta"],d1["gamma"])
+                    app=-direct_arch_component_second(
+                        n,m,d2["alpha"],d2["beta"],d2["gamma"])
+                else:
+                    a=-canonical_arb.prime_component(n,m,L,Q)
+                    ap=-prime_component_prime(n,m,L,Q)
+                    app=-prime_component_second(n,m,L,Q)
+                A[i,j]=a;Ap[i,j]=ap;App[i,j]=app
+        out[name]=(A,Ap,App)
+    return out
+
 def matched_ablation_records(L:arb,K:int,Q:int,bundle:dict,response:dict)->list[dict]:
-    full=direct_physical_remainder_certificate(L,K,Q,bundle,response)
-    out=[{"name":"FULL_CANONICAL","mode":"FROZEN_STATE","status":full.get("status"),
-          "arithmetic_authority":full.get("status")=="CERTIFIED"}]
-    for name in ("NO_PRIME","NO_ARCH","NO_POLE"):
-        out.append({"name":name,"mode":"FROZEN_STATE",
-                    "status":"NOT_APPLICABLE_UNTIL_MATCHED_MATRIX_JETS_AND_ARITHMETIC_ARE_CONSTRUCTED",
-                    "arithmetic_authority":False})
-        out.append({"name":name,"mode":"REOPTIMIZED",
-                    "status":"NOT_APPLICABLE_UNTIL_MATCHED_MODEL_IS_CONSTRUCTED",
-                    "arithmetic_authority":False})
+    """Channel deletions with frozen-state and reoptimized operator states kept distinct."""
+    if response.get("status") not in {"CERTIFIED_BORDERED_RESPONSE","CERTIFIED_ZERO_COMPLEMENT_RESPONSE"}:
+        return [{"name":"ALL","status":"RESPONSE_UNRESOLVED"}]
+    U=_orthonormal_full_basis(K,"even");V=bundle["V"];W=response["W"]
+    channels=direct_signed_channel_jets(L,K,Q);out=[]
+    for name,(A,Ap,App) in channels.items():
+        C=U.transpose()*A*U;Cp=U.transpose()*Ap*U;Cpp=U.transpose()*App*U
+        Halt=bundle["H"]-C;Hpalt=bundle["Hp"]-Cp;Hppalt=bundle["Hpp"]-Cpp
+        frozen_kappa=(V.transpose()*Hppalt*V)[0,0]/(V.transpose()*V)[0,0]+2*(V.transpose()*Hpalt*W)[0,0]
+        out.append({"name":"DROP_"+name,"mode":"FROZEN_STATE",
+                    "status":"CERTIFIED_MATCHED_OPERATOR_JETS",
+                    "optimized_curvature":interval_record(frozen_kappa),
+                    "arithmetic_comparison":{"status":"NOT_APPLICABLE_NO_MATCHED_PHYSICAL_FUNCTIONAL"},
+                    "complete_model_inverse_used":True})
+        alt=simple_ground_bundle_from_jets(Halt,Hpalt,Hppalt)
+        alt_pub={"name":"DROP_"+name,"mode":"REOPTIMIZED",
+                 "ground":alt.get("record",{"status":alt.get("status")}),
+                 "arithmetic_comparison":{"status":"NOT_APPLICABLE_NO_MATCHED_PHYSICAL_FUNCTIONAL"}}
+        if "H" in alt:
+            ar=validated_bordered_response(alt);ac=curvature_enclosure(alt,ar)
+            alt_pub["response"]={k:v for k,v in ar.items() if k!="W"}
+            alt_pub["curvature"]={k:v for k,v in ac.items() if not k.startswith("_")}
+            alt_pub["status"]="REOPTIMIZED_OPERATOR_CERTIFIED" if ac.get("status")=="CERTIFIED_FROM_JETS_AND_RESPONSE" else "REOPTIMIZED_RESPONSE_UNRESOLVED"
+        else:
+            alt_pub["status"]="REOPTIMIZED_GROUND_UNRESOLVED"
+        out.append(alt_pub)
     return out
 
 def selected_balance(cand:dict,prec:int)->dict:

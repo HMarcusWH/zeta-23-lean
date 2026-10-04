@@ -68,6 +68,13 @@ def check_results(path:Path)->None:
         fail("N03","direct physical remainder lane is vacuous")
     if not all(isinstance(r.get("matched_ablations"),list) for r in balances if r.get("response")):
         fail("N04","matched ablation dispositions missing")
+    for row in balances:
+        abl=row.get("matched_ablations") or []
+        if abl and abl[0].get("name")!="ALL":
+            modes={(a.get("name"),a.get("mode")) for a in abl}
+            for channel in ("DROP_POLE","DROP_ARCH","DROP_PRIME"):
+                if (channel,"FROZEN_STATE") not in modes or (channel,"REOPTIMIZED") not in modes:
+                    fail("N04",f"ablation modes incomplete for {channel}")
     if any(r.get("first_boundary_claimed") is not False for r in rows):
         fail("FIRST_BOUNDARY","finite replay may not claim first boundary")
     cal=d.get("calibration") or {}
