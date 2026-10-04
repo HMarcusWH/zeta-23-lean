@@ -303,6 +303,27 @@
     "research/RHRC/routes/R003_ccm_bridge/README.md",
     "research/RHRC/countermodels/README.md"
   ],
-  "implementation_note": "All planned F01-F07, N01-N04, X01 and X02 source/evidence surfaces are implemented as candidates. F03 has explicit normal/remainder admissibility and value authority; F04 exports explicit k1/k2/kM physical identities; F05 contains the arbitrary-dimensional Schur theorem and generated strict-even specialization; F07 exports the completed production frontier. Exact-head compiler/CI authority is still pending and RH remains OPEN.",
-  "implementation_head": "RUNTIME_PR_HEAD_REQUIRED"
+  "implementation_note": "All planned F01-F07, N01-N04, X01 and X02 source/evidence surfaces are implemented as candidates. The four proposed post-282 supporting claims are now registered as OPEN candidate bindings and compiler/axiom audited through the existing R003 and registered binding surfaces. They are intentionally not promoted to PROVED_UNCONDITIONAL until exact-head validation succeeds. OBS-060O, odd/tie closure, and RH remain OPEN.",
+  "implementation_head": "RUNTIME_PR_HEAD_REQUIRED",
+  "candidate_binding_state": {
+    "status": "IMPLEMENTED_OPEN_PENDING_EXACT_HEAD_CI",
+    "claim_ids": [
+      "R003_COMPRESSED_PRODUCTION_C2",
+      "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE",
+      "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER"
+    ],
+    "audited_surfaces": [
+      "research/RHRC/CLAIM_REGISTRY.json",
+      "research/RHRC/R003_PROMOTED_BINDINGS.json",
+      "research/RHRC/REGISTERED_THEOREM_BINDINGS.json",
+      "Zeta23/CCM/ClaimBindings.lean",
+      "Zeta23/RHRC/RegisteredClaimBindings.lean"
+    ],
+    "intentionally_not_promoted": [
+      "Zeta23/RHRC/ClosureObligationBindings.lean",
+      "research/RHRC/closure_batch/OBLIGATIONS.json"
+    ],
+    "reason": "No terminal or closure obstruction is discharged by the post-282 supporting claims; OBS-060O, odd/tie closure, and RH remain OPEN. Promotion to PROVED_UNCONDITIONAL is deferred until exact-head compiler/axiom/proof-escape/contract validation succeeds."
+  }
 }
