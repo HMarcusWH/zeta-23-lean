@@ -3,6 +3,8 @@ import Mathlib.Analysis.Calculus.ContDiff.Operations
 import Mathlib.Analysis.InnerProductSpace.Symmetric
 import Mathlib.Analysis.InnerProductSpace.Positive
 import Mathlib.Analysis.Normed.Operator.Banach
+import Mathlib.Analysis.Normed.Operator.BoundedLinearMaps
+import Mathlib.Analysis.InnerProductSpace.Rayleigh
 import Zeta23.CCM.CanonicalCompressedApertureC2
 
 noncomputable section
@@ -260,6 +262,112 @@ theorem stationarySchurVector_complement_residual_zero
       stationarySchurBlock F z s
         (stationarySchurResponse F z s) = 0
   rw [stationarySchurBlock_response hC, sub_self]
+
+
+/-! ## Actual block calculus and completed-square control -/
+
+/-- Compression preserves pairings against vectors already in the fixed
+complement. -/
+theorem stationarySchurBlock_inner
+    {F : ℝ → V →L[ℂ] V} {z : V} {s : ℝ}
+    (u v : stationarySchurComplement z) :
+    inner ℂ (stationarySchurBlock F z s u) v =
+      inner ℂ (F s (u : V)) (v : V) := by
+  change inner ℂ
+      ((stationarySchurComplement z).orthogonalProjectionOnto
+        (F s (u : V))) v =
+    inner ℂ (F s (u : V)) (v : V)
+  exact
+    (stationarySchurComplement z).inner_orthogonalProjectionOnto_eq_of_mem_right
+      v (F s (u : V))
+
+/-- A symmetric ambient family has a symmetric fixed-complement block. -/
+theorem stationarySchurBlock_isSymmetric
+    {F : ℝ → V →L[ℂ] V} {z : V} {s : ℝ}
+    (hF : LinearMap.IsSymmetric (𝕜 := ℂ) (F s).toLinearMap) :
+    LinearMap.IsSymmetric (𝕜 := ℂ)
+      (stationarySchurBlock F z s).toLinearMap := by
+  intro u v
+  rw [stationarySchurBlock_inner, stationarySchurBlock_inner]
+  exact hF (u : V) (v : V)
+
+/-- C2 regularity of the ambient family descends to the fixed complement
+block. -/
+theorem contDiffAt_stationarySchurBlock
+    {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
+    (hF : ContDiffAt ℝ 2 F x) :
+    ContDiffAt ℝ 2 (fun s => stationarySchurBlock F z s) x := by
+  unfold stationarySchurBlock
+  fun_prop
+
+/-- C2 regularity of the ambient family descends to its fixed-complement
+coupling. -/
+theorem contDiffAt_stationarySchurCoupling
+    {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
+    (hF : ContDiffAt ℝ 2 F x) :
+    ContDiffAt ℝ 2 (fun s => stationarySchurCoupling F z s) x := by
+  unfold stationarySchurCoupling
+  fun_prop
+
+/-- An invertible contact block remains invertible in a neighborhood. -/
+theorem eventually_stationarySchurBlock_isInvertible
+    {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
+    (hF : ContDiffAt ℝ 2 F x)
+    (hC : (stationarySchurBlock F z x).IsInvertible) :
+    ∀ᶠ s in 𝓝 x, (stationarySchurBlock F z s).IsInvertible := by
+  have hcont :
+      ContinuousAt (fun s => stationarySchurBlock F z s) x :=
+    (contDiffAt_stationarySchurBlock hF).continuousAt
+  exact hcont.eventually hC.eventually_nhds
+
+/-- The totalized inverse response is genuinely C2 at every point where the
+contact block is invertible. -/
+theorem contDiffAt_stationarySchurResponse
+    {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
+    (hF : ContDiffAt ℝ 2 F x)
+    (hC : (stationarySchurBlock F z x).IsInvertible) :
+    ContDiffAt ℝ 2 (fun s => stationarySchurResponse F z s) x := by
+  have hblock := contDiffAt_stationarySchurBlock hF
+  have hcoupling := contDiffAt_stationarySchurCoupling hF
+  have hinv0 :
+      ContDiffAt ℂ 2
+        (ContinuousLinearMap.inverse :
+          (stationarySchurComplement z →L[ℂ] stationarySchurComplement z) →
+            (stationarySchurComplement z →L[ℂ] stationarySchurComplement z))
+        (stationarySchurBlock F z x) :=
+    hC.contDiffAt_map_inverse
+  have hinvR :
+      ContDiffAt ℝ 2
+        (ContinuousLinearMap.inverse :
+          (stationarySchurComplement z →L[ℂ] stationarySchurComplement z) →
+            (stationarySchurComplement z →L[ℂ] stationarySchurComplement z))
+        (stationarySchurBlock F z x) :=
+    hinv0.restrict_scalars ℝ
+  have hinv :
+      ContDiffAt ℝ 2
+        (fun s => ContinuousLinearMap.inverse (stationarySchurBlock F z s)) x :=
+    hinvR.comp x hblock
+  simpa [stationarySchurResponse] using hinv.clm_apply hcoupling
+
+theorem contDiffAt_stationarySchurVector
+    {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
+    (hF : ContDiffAt ℝ 2 F x)
+    (hC : (stationarySchurBlock F z x).IsInvertible) :
+    ContDiffAt ℝ 2 (fun s => stationarySchurVector F z s) x := by
+  unfold stationarySchurVector
+  fun_prop
+
+/-- The actual scalar Schur profile is C2 whenever the ambient family is C2
+and the contact complement is invertible. -/
+theorem contDiffAt_stationarySchurScalar
+    {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
+    (hF : ContDiffAt ℝ 2 F x)
+    (hC : (stationarySchurBlock F z x).IsInvertible) :
+    ContDiffAt ℝ 2 (fun s => stationarySchurScalar F z s) x := by
+  have hv := contDiffAt_stationarySchurVector hF hC
+  have hFv := hF.clm_apply hv
+  have hi := hFv.inner ℂ hv
+  exact Complex.reCLM.contDiff.contDiffAt.comp x hi
 
 /-! ## Generic arbitrary-complement Schur package -/
 
