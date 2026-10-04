@@ -1074,6 +1074,112 @@ theorem eventually_stationarySchurBlock_nonnegative
   rw [hsum]
   nlinarith
 
+
+/-! ## Generic stationary first-contact theorem from family geometry -/
+
+/-- Full arbitrary-complement Schur contact theorem.  Positivity of the
+complement is derived internally from PSD plus the simple kernel.  Right-side
+negative directions are converted to negative Schur scalar values by the
+completed-square identity. -/
+theorem stationarySchur_contact_secondPairing_eq_zero
+    {F : ℝ → V →L[ℂ] V} {z w : V} {x a b : ℝ}
+    (hax : a < x)
+    (hxb : x < b)
+    (hF : ContDiffAt ℝ 2 F x)
+    (hFsym : ∀ᶠ s in 𝓝 x,
+      LinearMap.IsSymmetric (𝕜 := ℂ) (F s).toLinearMap)
+    (hz : F x z = 0)
+    (hznorm : ‖z‖ = 1)
+    (hker : ∀ v : V, F x v = 0 → ∃ α : ℂ, v = α • z)
+    (hleft :
+      ∀ y, a ≤ y → y ≤ x →
+        ∀ v : V, 0 ≤ Complex.re (inner ℂ (F y v) v))
+    (hright :
+      ∀ ε > 0, ∃ y, x < y ∧ y < x + ε ∧
+        ∃ v : V, Complex.re (inner ℂ (F y v) v) < 0)
+    (hstationary :
+      deriv (fun s => Complex.re (inner ℂ (F s z) z)) x = 0)
+    (hwperp : inner ℂ z w = 0)
+    (hw : F x w = -((deriv F x) z)) :
+    Complex.re (inner ℂ ((deriv (deriv F) x) z) z) +
+        2 * Complex.re (inner ℂ ((deriv F x) w) z) = 0 := by
+  have hFsymx := hFsym.self_of_nhds
+  have hC :=
+    stationarySchurBlock_isInvertible_of_kernel_line
+      (F := F) (z := z) (x := x)
+      hznorm hFsymx hz hker
+  have hcontact :
+      stationarySchurScalar F z x = 0 :=
+    stationarySchurScalar_eq_zero_of_kernel hz
+  have hC2 :
+      ContDiffAt ℝ 2 (fun s => stationarySchurScalar F z s) x :=
+    contDiffAt_stationarySchurScalar hF hC
+  have hstat :
+      deriv (fun s => stationarySchurScalar F z s) x = 0 := by
+    rw [stationarySchurScalar_firstDerivative_eq_fixed hF hFsym hz hC]
+    exact hstationary
+  have hleftSigma :
+      ∀ y, a ≤ y → y ≤ x → 0 ≤ stationarySchurScalar F z y := by
+    intro y hay hyx
+    exact hleft y hay hyx (stationarySchurVector F z y)
+  have hcontactNonneg :
+      ∀ v : V, 0 ≤ Complex.re (inner ℂ (F x v) v) :=
+    hleft x (le_of_lt hax) le_rfl
+  have hCnonnegEv :=
+    eventually_stationarySchurBlock_nonnegative
+      hF hznorm hFsymx hz hker hcontactNonneg
+  have hCinvEv := eventually_stationarySchurBlock_isInvertible hF hC
+  have hgood :
+      ∀ᶠ s in 𝓝 x,
+        LinearMap.IsSymmetric (𝕜 := ℂ) (F s).toLinearMap ∧
+        (stationarySchurBlock F z s).IsInvertible ∧
+        (∀ q : stationarySchurComplement z,
+          0 ≤ Complex.re
+            (inner ℂ (stationarySchurBlock F z s q) q)) := by
+    filter_upwards [hFsym, hCinvEv, hCnonnegEv] with s hs hi hp
+    exact ⟨hs, hi, hp⟩
+  have hgoodSet :
+      {s : ℝ |
+        LinearMap.IsSymmetric (𝕜 := ℂ) (F s).toLinearMap ∧
+        (stationarySchurBlock F z s).IsInvertible ∧
+        (∀ q : stationarySchurComplement z,
+          0 ≤ Complex.re
+            (inner ℂ (stationarySchurBlock F z s q) q))} ∈ 𝓝 x :=
+    hgood
+  rcases Metric.mem_nhds_iff.mp hgoodSet with
+    ⟨δ, hδ, hδball⟩
+  have hrightSigma :
+      ∀ ε > 0, ∃ y, x < y ∧ y < x + ε ∧
+        stationarySchurScalar F z y < 0 := by
+    intro ε hε
+    let η := min ε δ
+    have hη : 0 < η := lt_min hε hδ
+    obtain ⟨y, hyx, hyη, v, hvneg⟩ := hright η hη
+    have hyε : y < x + ε := by
+      dsimp [η] at hyη
+      linarith [min_le_left ε δ]
+    have hyδ : y ∈ Metric.ball x δ := by
+      rw [Metric.mem_ball, Real.dist_eq]
+      have : |y - x| < δ := by
+        rw [abs_of_pos (sub_pos.mpr hyx)]
+        dsimp [η] at hyη
+        linarith [min_le_right ε δ]
+      simpa [abs_sub_comm] using this
+    have hgy := hδball hyδ
+    have hsigmaNeg :=
+      stationarySchurScalar_neg_of_negative_direction
+        (F := F) (z := z) (v := v) (s := y)
+        hznorm hgy.1 hgy.2.1 hgy.2.2 hvneg
+    exact ⟨y, hyx, hyε, hsigmaNeg⟩
+  have hsigma2 :=
+    stationary_firstContact_secondDerivative_eq_zero
+      hax hxb hcontact hleftSigma hrightSigma hC2 hstat
+  have hpair :=
+    stationarySchurScalar_secondDerivative_eq_pair
+      hF hFsym hz hznorm hker hwperp hw
+  rw [hpair] at hsigma2
+  exact hsigma2
+
 /-- Compiler-facing generic Schur certificate.  The complement type is kept in
 the statement, so the theorem is not a disguised 2x2 lemma and also permits
 the zero-dimensional complement.  The production constructor proves the
@@ -1108,6 +1214,7 @@ theorem StationarySchurContactCertificate.curvature_eq_zero
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.stationary_firstContact_secondDerivative_eq_zero
+#print axioms Zeta23.CCM.stationarySchur_contact_secondPairing_eq_zero
 #print axioms Zeta23.CCM.stationarySchurBlock_injective_of_kernel_line
 #print axioms Zeta23.CCM.stationarySchurBlock_isInvertible_of_kernel_line
 #print axioms Zeta23.CCM.contDiffAt_stationarySchurScalar
