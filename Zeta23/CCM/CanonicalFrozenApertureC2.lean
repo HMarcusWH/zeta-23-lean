@@ -505,6 +505,34 @@ theorem frozenParityCompressedSecondCLM_log_eq_pred
   simp
 
 
+/-- C2 of the frozen entries makes the selected second frozen matrix continuous. -/
+theorem continuousAt_frozenCanonicalSourceSecondMatrix_pos
+    (Q K : ℕ) {L : ℝ} (hL : 0 < L) :
+    ContinuousAt
+      (fun s : ℝ => frozenCanonicalSourceSecondMatrix Q s K) L := by
+  rw [continuousAt_pi]
+  intro i
+  rw [continuousAt_pi]
+  intro j
+  have h :=
+    contDiffAt_frozenCanonicalSourceMatrix_apply_pos Q K i j hL
+  have h2 := h.deriv_contDiffAt.deriv_contDiffAt.continuousAt
+  simpa [frozenCanonicalSourceFirstMatrix,
+    frozenCanonicalSourceSecondMatrix] using h2
+
+theorem continuousAt_frozenParityCompressedSecondCLM_pos
+    (Q : ℕ) (p : ReversalParity) (K : ℕ)
+    {L : ℝ} (hL : 0 < L) :
+    ContinuousAt
+      (fun s : ℝ => frozenParityCompressedSecondCLM Q p K s) L := by
+  have hM := continuousAt_frozenCanonicalSourceSecondMatrix_pos Q K hL
+  have hT :
+      ContinuousAt (parityCompressionCLM p K)
+        (frozenCanonicalSourceSecondMatrix Q L K) :=
+    (parityCompressionCLM p K).continuous.continuousAt
+  simpa [frozenParityCompressedSecondCLM] using hT.comp L hM
+
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.contDiffAt_frozenCanonicalSourceMatrix_apply_pos
@@ -515,3 +543,4 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.hasDerivAt_frozenParityCompressedFamilyCLM_pos
 #print axioms Zeta23.CCM.frozenParityCompressedFirstCLM_log_eq_pred
 #print axioms Zeta23.CCM.frozenParityCompressedSecondCLM_log_eq_pred
+#print axioms Zeta23.CCM.continuousAt_frozenParityCompressedSecondCLM_pos
