@@ -244,6 +244,14 @@ private noncomputable def matrixRealEnergyCLM
     Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ →L[ℝ] ℝ :=
   LinearMap.toContinuousLinearMap (matrixRealEnergyLinearMap K x)
 
+private theorem matrixRealEnergy_real_smul
+    (K : ℕ) (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+    (a : ℝ) (A : Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ) :
+    matrixRealEnergy (a • A) x = a * matrixRealEnergy A x := by
+  change matrixRealEnergyLinearMap K x (a • A) =
+    a * matrixRealEnergyLinearMap K x A
+  simpa using (matrixRealEnergyLinearMap K x).map_smul a A
+
 private theorem hasDerivAt_frozenCanonicalSourceEnergy_pos
     (Q K : ℕ)
     (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
@@ -438,8 +446,8 @@ private theorem primeSourceMatrixFirstApertureJet_log_energy_zero
     matrixRealEnergy
       (primeSourceMatrixFirstApertureJet q (Real.log q) K) x = 0 := by
   have hcoord := primeSourceCoordinate_log_self q hq
-  rw [primeSourceMatrixFirstApertureJet, hcoord, Complex.real_smul]
-  rw [matrixRealEnergy_smul_real,
+  rw [primeSourceMatrixFirstApertureJet, hcoord]
+  rw [matrixRealEnergy_real_smul K x,
     sourceFirstJetMatrix_zero_energy_of_boundaryFlat K x hflat]
   ring
 
@@ -452,8 +460,8 @@ private theorem primeSourceMatrixSecondApertureJet_log_energy_zero
       (primeSourceMatrixSecondApertureJet q (Real.log q) K) x = 0 := by
   have hcoord := primeSourceCoordinate_log_self q hq
   rw [primeSourceMatrixSecondApertureJet, hcoord, sourceSecondJetMatrix_zero,
-    Complex.real_smul, matrixRealEnergy_add, matrixRealEnergy_smul_real,
-    matrixRealEnergy_smul_real,
+    matrixRealEnergy_add, matrixRealEnergy_real_smul K x,
+    matrixRealEnergy_real_smul K x,
     sourceFirstJetMatrix_zero_energy_of_boundaryFlat K x hflat]
   simp
 
