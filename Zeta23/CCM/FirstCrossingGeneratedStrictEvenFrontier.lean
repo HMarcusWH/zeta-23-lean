@@ -335,6 +335,216 @@ theorem GeneratedStrictEvenContact.production_frontier
         c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hzero
     exact ⟨.stationary hzero w hs.1 hs.2⟩
 
+
+/-! ## Production specialization of the generic Schur theorem -/
+
+/-- The actual compressed even family has the first derivative exported by
+F01. -/
+theorem canonicalEvenCompressedFamily_deriv
+    {L : ℝ} (hL : 0 < L) (K : ℕ) :
+    deriv (canonicalEvenCompressedFamilyCLM K) L =
+      canonicalEvenApertureFirstCLM L K := by
+  simpa [canonicalEvenCompressedFamilyCLM,
+    canonicalEvenApertureFirstCLM] using
+    (hasDerivAt_parityCompressedCanonicalCLM_pos .even K hL).deriv
+
+/-- The second derivative of the actual compressed even family is the F01
+second jet. -/
+theorem canonicalEvenCompressedFamily_secondDeriv
+    {L : ℝ} (hL : 0 < L) (K : ℕ) :
+    deriv (deriv (canonicalEvenCompressedFamilyCLM K)) L =
+      canonicalEvenApertureSecondCLM L K := by
+  have heq :
+      (fun s => deriv (canonicalEvenCompressedFamilyCLM K) s) =ᶠ[𝓝 L]
+        (canonicalEvenApertureFirstCLM · K) := by
+    filter_upwards [Ioi_mem_nhds hL] with s hs
+    exact canonicalEvenCompressedFamily_deriv hs K
+  rw [Filter.EventuallyEq.deriv_eq heq]
+  simpa [canonicalEvenApertureFirstCLM,
+    canonicalEvenApertureSecondCLM] using
+    (hasDerivAt_productionParityFirstJetCLM_pos .even K hL).deriv
+
+/-- The selected strict-even successor is negative arbitrarily close on the
+right in the actual fixed cutoff carrier. -/
+theorem GeneratedStrictEvenContact.even_negative_direction_right
+    (c : GeneratedStrictEvenContact) :
+    ∀ ε > 0, ∃ L,
+      c.generated.shell.Lstar < L ∧
+      L < c.generated.shell.Lstar + ε ∧
+      ∃ v : euclideanEvenBoundaryFlatSubspace
+          (c.generated.shell.k + 1),
+        Complex.re
+          (inner ℂ
+            (canonicalEvenCompressedFamilyCLM
+              (c.generated.shell.k + 1) L v) v) < 0 := by
+  have hcross :
+      ParityRightCrossesNegative .even
+        c.generated.shell.k c.generated.shell.Lstar := by
+    simpa [c.selected_even] using
+      c.generated.shell.successor_right_crossing
+  intro ε hε
+  obtain ⟨L, hLlo, hLhi, hbottom⟩ := hcross ε hε
+  have hk : 1 ≤ c.generated.shell.k :=
+    le_trans c.generated.shell.one_le_n c.generated.shell.n_le_k
+  obtain ⟨v, hvne, hveig⟩ :=
+    exists_eigenmode_at_parityRayleighBottom_succ
+      .even L c.generated.shell.k hk
+  have hnorm : 0 < ‖v‖ ^ 2 := by positivity
+  have hvneg :
+      Complex.re
+        (inner ℂ
+          (canonicalEvenCompressedFamilyCLM
+            (c.generated.shell.k + 1) L v) v) < 0 := by
+    have happ :
+        canonicalEvenCompressedFamilyCLM
+            (c.generated.shell.k + 1) L v =
+          (parityRayleighBottom .even L
+            (c.generated.shell.k + 1) : ℂ) • v := by
+      simpa [canonicalEvenCompressedFamilyCLM] using hveig
+    rw [happ, inner_smul_real_left]
+    simp only [Complex.smul_re, RCLike.re_to_complex, smul_eq_mul]
+    have hself :
+        Complex.re (inner ℂ v v) = ‖v‖ ^ 2 := by
+      simpa only [RCLike.re_to_complex] using
+        (norm_sq_eq_re_inner (𝕜 := ℂ) v).symm
+    rw [hself]
+    nlinarith
+  exact ⟨L, hLlo, hLhi, v, hvneg⟩
+
+/-- The selected strict-even family is PSD throughout the generated left
+prefix. -/
+theorem GeneratedStrictEvenContact.even_nonnegative_left
+    (c : GeneratedStrictEvenContact) :
+    ∀ L,
+      c.generated.shell.Lsmall ≤ L →
+      L ≤ c.generated.shell.Lstar →
+      ∀ v : euclideanEvenBoundaryFlatSubspace
+          (c.generated.shell.k + 1),
+        0 ≤ Complex.re
+          (inner ℂ
+            (canonicalEvenCompressedFamilyCLM
+              (c.generated.shell.k + 1) L v) v) := by
+  intro L hsmall hstar v
+  have hbottom :=
+    c.generated.selectedParity_prefix_nonnegative
+      .even hsmall hstar
+  have hbound :=
+    parityRayleighBottom_mul_norm_sq_le
+      .even L (c.generated.shell.k + 1) v
+  have hleft :
+      0 ≤ parityRayleighBottom .even L
+          (c.generated.shell.k + 1) * ‖v‖ ^ 2 :=
+    mul_nonneg hbottom (sq_nonneg ‖v‖)
+  have hq :
+      0 ≤ Complex.re
+        (inner ℂ
+          (parityCompressedCanonical .even L
+            (c.generated.shell.k + 1) v) v) :=
+    le_trans hleft hbound
+  simpa [canonicalEvenCompressedFamilyCLM] using hq
+
+/-- The generic arbitrary-complement Schur theorem specializes to the actual
+production family.  No zero-curvature premise is supplied. -/
+theorem production_stationary_schur_curvature_eq_zero
+    (c : GeneratedStrictEvenContact)
+    (hstationary :
+      productionContactFirstVariation .even c.generated.shell.Lstar
+        (c.generated.shell.k + 1) c.z = 0) :
+    canonicalOptimizedContactCurvature
+      c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
+      c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary = 0 := by
+  let K := c.generated.shell.k + 1
+  let L := c.generated.shell.Lstar
+  let F :
+      ℝ → euclideanEvenBoundaryFlatSubspace K →L[ℂ]
+        euclideanEvenBoundaryFlatSubspace K :=
+    canonicalEvenCompressedFamilyCLM K
+  let w : euclideanEvenBoundaryFlatSubspace K :=
+    canonicalStationaryEvenResponse
+      c.Lstar_pos K c.two_le_K
+      c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary
+  have hF :
+      ContDiffAt ℝ 2 F L := by
+    have hC2 := canonicalEvenCompressedC2_proved K
+    exact
+      (hC2 L c.Lstar_pos).contDiffAt
+        (Ioi_mem_nhds c.Lstar_pos)
+  have hsym :
+      ∀ᶠ s in 𝓝 L,
+        LinearMap.IsSymmetric (𝕜 := ℂ) (F s).toLinearMap := by
+    filter_upwards with s
+    simpa [F, canonicalEvenCompressedFamilyCLM] using
+      parityCompressedCanonical_isSymmetric .even s K
+  have hz : F L c.z = 0 := by
+    simpa [F, L, K, canonicalEvenCompressedFamilyCLM] using c.z_kernel
+  have hker :
+      ∀ v : euclideanEvenBoundaryFlatSubspace K,
+        F L v = 0 → ∃ α : ℂ, v = α • c.z := by
+    intro v hv
+    have hv' :
+        evenCompressedCanonical L K v = 0 := by
+      simpa [F, L, K, canonicalEvenCompressedFamilyCLM] using hv
+    exact strictEven_zeroKernel_is_line
+      c.Lstar_pos K c.two_le_K c.z c.z_ne c.z_kernel
+        c.odd_positive v hv'
+  have hstat :
+      deriv (fun s => Complex.re (inner ℂ (F s c.z) c.z)) L = 0 := by
+    simpa [F, L, K, canonicalEvenCompressedFamilyCLM,
+      productionContactFirstVariation, productionContactFixedEnergy] using
+      hstationary
+  have hspec :=
+    canonicalStationaryEvenResponse_spec
+      c.Lstar_pos K c.two_le_K
+      c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary
+  have hF1 :
+      deriv F L = canonicalEvenApertureFirstCLM L K := by
+    simpa [F] using canonicalEvenCompressedFamily_deriv c.Lstar_pos K
+  have hw :
+      F L w = -((deriv F L) c.z) := by
+    rw [hF1]
+    simpa [F, L, K, w, canonicalEvenCompressedFamilyCLM,
+      canonicalEvenApertureFirst, canonicalEvenApertureFirstCLM] using hspec.2
+  have hgeneric :=
+    stationarySchur_contact_secondPairing_eq_zero
+      (F := F) (z := c.z) (w := w)
+      (x := L) (a := c.generated.shell.Lsmall)
+      (b := c.generated.shell.Lneg)
+      c.generated.shell.Lsmall_lt_Lstar
+      c.generated.shell.Lstar_lt_Lneg
+      hF hsym hz c.z_norm hker
+      (by
+        intro y hySmall hyStar v
+        exact c.even_nonnegative_left y hySmall hyStar v)
+      (by
+        intro ε hε
+        simpa [L, K, F] using c.even_negative_direction_right ε hε)
+      hstat hspec.1 hw
+  have hF2 :
+      deriv (deriv F) L = canonicalEvenApertureSecondCLM L K := by
+    simpa [F] using canonicalEvenCompressedFamily_secondDeriv c.Lstar_pos K
+  rw [hF2, hF1] at hgeneric
+  have hfixed :=
+    canonicalEven_fixedSecond_eq_inner c.Lstar_pos K c.z
+  have hmixed :
+      Complex.re
+          (inner ℂ (canonicalEvenApertureFirstCLM L K w) c.z) =
+        Complex.re
+          (inner ℂ c.z (canonicalEvenApertureFirstCLM L K w)) := by
+    exact inner_re_symm _ _
+  unfold canonicalOptimizedContactCurvature canonicalContactSecondPairing
+  change
+    productionContactFixedSecondVariation .even L K c.z +
+      2 * Complex.re
+        (inner ℂ c.z (canonicalEvenApertureFirst L K w)) = 0
+  rw [hfixed]
+  change
+    Complex.re
+        (inner ℂ (canonicalEvenApertureSecondCLM L K c.z) c.z) +
+      2 * Complex.re
+        (inner ℂ c.z (canonicalEvenApertureFirstCLM L K w)) = 0
+  rw [← hmixed]
+  exact hgeneric
+
 /-- The stationary generated contact has zero actual optimized curvature.
 The generic Schur-contact layer is responsible for upgrading right-negative
 ground information to the scalar optimized profile; no fixed-z right-negative
