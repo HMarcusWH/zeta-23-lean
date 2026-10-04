@@ -906,6 +906,174 @@ theorem stationarySchurScalar_neg_of_negative_direction
   have hapos : 0 < ‖α‖ ^ 2 := by positivity
   nlinarith
 
+
+/-! ## Positivity of the simple-kernel complement -/
+
+/-- At a PSD simple zero mode, the fixed Schur complement has a strictly
+positive quadratic lower bound.  This is derived from finite-dimensional
+Rayleigh minimization; it is not an extra spectral-gap assumption. -/
+theorem stationarySchurBlock_exists_pos_coercivity
+    {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
+    (hznorm : ‖z‖ = 1)
+    (hFsym : LinearMap.IsSymmetric (𝕜 := ℂ) (F x).toLinearMap)
+    (hz : F x z = 0)
+    (hker : ∀ v : V, F x v = 0 → ∃ a : ℂ, v = a • z)
+    (hnonneg : ∀ v : V, 0 ≤ Complex.re (inner ℂ (F x v) v)) :
+    ∃ c : ℝ, 0 < c ∧
+      ∀ w : stationarySchurComplement z,
+        c * ‖w‖ ^ 2 ≤
+          Complex.re (inner ℂ (stationarySchurBlock F z x w) w) := by
+  let W := stationarySchurComplement z
+  let T : W →ₗ[ℂ] W := (stationarySchurBlock F z x).toLinearMap
+  let Tc : W →L[ℂ] W := stationarySchurBlock F z x
+  rcases subsingleton_or_nontrivial W with hW | hW
+  · letI := hW
+    refine ⟨1, by norm_num, ?_⟩
+    intro w
+    have hw : w = 0 := Subsingleton.elim _ _
+    simp [hw]
+  · letI := hW
+    let lam : ℝ :=
+      ⨅ q : {q : W // q ≠ 0},
+        RCLike.re (inner ℂ (T q) q) / ‖(q : W)‖ ^ 2
+    have hbdd :
+        BddBelow
+          (Set.range fun q : {q : W // q ≠ 0} =>
+            RCLike.re (inner ℂ (T q) q) / ‖(q : W)‖ ^ 2) := by
+      refine ⟨-‖Tc‖, ?_⟩
+      rintro _ ⟨q, rfl⟩
+      have habs :=
+        ContinuousLinearMap.rayleighQuotient_le_norm
+          (𝕜 := ℂ) Tc (q : W)
+      have habs' :
+          |RCLike.re (inner ℂ (Tc (q : W)) (q : W)) /
+              ‖(q : W)‖ ^ 2| ≤ ‖Tc‖ := by
+        simpa only [ContinuousLinearMap.rayleighQuotient,
+          ContinuousLinearMap.reApplyInnerSelf_apply] using habs
+      exact neg_le_of_abs_le habs'
+    have hsymT : LinearMap.IsSymmetric (𝕜 := ℂ) T := by
+      simpa [T, Tc] using
+        stationarySchurBlock_isSymmetric
+          (F := F) (z := z) (s := x) hFsym
+    have hlameig := hsymT.hasEigenvalue_iInf_of_finiteDimensional
+    obtain ⟨v, hv⟩ := hlameig.exists_hasEigenvector
+    have hvne : v ≠ 0 := hv.2
+    have hlamdef :
+        (lam : ℂ) =
+          ((⨅ q : {q : W // q ≠ 0},
+            RCLike.re (inner ℂ (T q) q) / ‖(q : W)‖ ^ 2 : ℝ) : ℂ) := by
+      rfl
+    have hveig : T v = (lam : ℂ) • v := by
+      rw [hlamdef]
+      exact hv.apply_eq_smul
+    have hvq :
+        0 ≤ RCLike.re (inner ℂ (T v) v) := by
+      have hamb := hnonneg (v : V)
+      simpa [T, Tc, stationarySchurBlock_inner] using hamb
+    have hnormpos : 0 < ‖v‖ ^ 2 := by positivity
+    have hlamnonneg : 0 ≤ lam := by
+      rw [hveig, inner_smul_left] at hvq
+      simp [inner_self_eq_norm_sq] at hvq
+      nlinarith
+    have hinj :=
+      stationarySchurBlock_injective_of_kernel_line
+        (F := F) (z := z) (x := x) hznorm hFsym hz hker
+    have hlamne : lam ≠ 0 := by
+      intro hlam0
+      have hv0 : stationarySchurBlock F z x v = 0 := by
+        change T v = 0
+        rw [hveig, hlam0, zero_smul]
+      have hzv :
+          stationarySchurBlock F z x v =
+            stationarySchurBlock F z x 0 := by simpa using hv0
+      exact hvne (hinj hzv)
+    have hlampos : 0 < lam := lt_of_le_of_ne hlamnonneg (Ne.symm hlamne)
+    refine ⟨lam, hlampos, ?_⟩
+    intro w
+    by_cases hw : w = 0
+    · simp [hw]
+    · have hle :
+          lam ≤ RCLike.re (inner ℂ (T w) w) / ‖(w : W)‖ ^ 2 :=
+        ciInf_le hbdd ⟨w, hw⟩
+      have hden : 0 < ‖(w : W)‖ ^ 2 := by positivity
+      have hmul :
+          lam * ‖(w : W)‖ ^ 2 ≤ RCLike.re (inner ℂ (T w) w) :=
+        (le_div_iff₀ hden).mp hle
+      simpa [T, Tc] using hmul
+
+/-- Positivity of the complement persists locally by operator-norm continuity.
+This includes the zero-dimensional complement without a separate inverse
+failure case. -/
+theorem eventually_stationarySchurBlock_nonnegative
+    {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
+    (hF : ContDiffAt ℝ 2 F x)
+    (hznorm : ‖z‖ = 1)
+    (hFsym : LinearMap.IsSymmetric (𝕜 := ℂ) (F x).toLinearMap)
+    (hz : F x z = 0)
+    (hker : ∀ v : V, F x v = 0 → ∃ a : ℂ, v = a • z)
+    (hnonneg : ∀ v : V, 0 ≤ Complex.re (inner ℂ (F x v) v)) :
+    ∀ᶠ s in 𝓝 x,
+      ∀ w : stationarySchurComplement z,
+        0 ≤ Complex.re
+          (inner ℂ (stationarySchurBlock F z s w) w) := by
+  obtain ⟨c, hc, hgap⟩ :=
+    stationarySchurBlock_exists_pos_coercivity
+      (F := F) (z := z) (x := x)
+      hznorm hFsym hz hker hnonneg
+  have hcont :
+      ContinuousAt (fun s => stationarySchurBlock F z s) x :=
+    (contDiffAt_stationarySchurBlock hF).continuousAt
+  have hball :
+      Metric.ball (stationarySchurBlock F z x) (c / 2) ∈
+        𝓝 (stationarySchurBlock F z x) :=
+    Metric.ball_mem_nhds _ (by linarith)
+  have hclose := hcont hball
+  filter_upwards [hclose] with s hs
+  have hdist :
+      ‖stationarySchurBlock F z s -
+          stationarySchurBlock F z x‖ < c / 2 := by
+    simpa [Metric.mem_ball, dist_eq_norm] using hs
+  intro w
+  by_cases hw : w = 0
+  · simp [hw]
+  have hwnorm : 0 < ‖w‖ ^ 2 := by positivity
+  let D :=
+    stationarySchurBlock F z s -
+      stationarySchurBlock F z x
+  have habs :
+      |Complex.re (inner ℂ (D w) w)| ≤
+        ‖D‖ * ‖w‖ ^ 2 := by
+    calc
+      |Complex.re (inner ℂ (D w) w)| ≤ ‖inner ℂ (D w) w‖ :=
+        abs_re_le_norm _
+      _ ≤ ‖D w‖ * ‖w‖ := norm_inner_le_norm _ _
+      _ ≤ (‖D‖ * ‖w‖) * ‖w‖ := by
+        exact mul_le_mul_of_nonneg_right (le_opNorm D w) (norm_nonneg _)
+      _ = ‖D‖ * ‖w‖ ^ 2 := by ring
+  have hpert :
+      -(‖D‖ * ‖w‖ ^ 2) ≤
+        Complex.re (inner ℂ (D w) w) :=
+    neg_le_of_abs_le habs
+  have hdist' : ‖D‖ < c / 2 := by
+    simpa [D] using hdist
+  have hmul :
+      ‖D‖ * ‖w‖ ^ 2 < (c / 2) * ‖w‖ ^ 2 :=
+    mul_lt_mul_of_pos_right hdist' hwnorm
+  have hbase := hgap w
+  have hsum :
+      Complex.re
+          (inner ℂ (stationarySchurBlock F z s w) w) =
+        Complex.re
+          (inner ℂ (stationarySchurBlock F z x w) w) +
+        Complex.re (inner ℂ (D w) w) := by
+    have happ :
+        stationarySchurBlock F z s w =
+          stationarySchurBlock F z x w + D w := by
+      simp [D]
+    rw [happ, inner_add_left, Complex.add_re]
+  rw [hsum]
+  nlinarith
+
 /-- Compiler-facing generic Schur certificate.  The complement type is kept in
 the statement, so the theorem is not a disguised 2x2 lemma and also permits
 the zero-dimensional complement.  The production constructor proves the
