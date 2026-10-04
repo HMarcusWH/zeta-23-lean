@@ -382,6 +382,82 @@ private theorem mixed_arch_eq_regularized
   field_simp [hL.ne']
   ring
 
+
+private theorem intervalIntegrable_first_pole
+    {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (z : euclideanEvenBoundaryFlatSubspace K) :
+    IntervalIntegrable
+      (fun t =>
+        (productionFirstDerivativePhysicalTest L K z t) *
+          completeSourcePoleWeight t)
+      volume 0 L := by
+  have hraw :
+      Continuous (productionFirstDerivativePhysicalRaw L K z) := by
+    unfold productionFirstDerivativePhysicalRaw
+    fun_prop (disch := exact hL.ne')
+  have hint :
+      IntervalIntegrable
+        (fun t =>
+          productionFirstDerivativePhysicalRaw L K z t *
+            completeSourcePoleWeight t) volume 0 L :=
+    (hraw.mul (by unfold completeSourcePoleWeight; fun_prop)).intervalIntegrable
+  apply hint.congr_ae
+  rw [Filter.EventuallyEq, MeasureTheory.ae_restrict_iff' (by measurability)]
+  filter_upwards with t ht
+  have ht' : t ∈ Icc (0 : ℝ) L := by
+    simpa only [uIcc_of_le hL.le] using ht
+  simp [productionFirstDerivativePhysicalTest, productionPhysicalClamp_eq ht']
+
+private theorem intervalIntegrable_second_pole
+    {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (z : euclideanEvenBoundaryFlatSubspace K) :
+    IntervalIntegrable
+      (fun t =>
+        productionSecondDerivativePhysicalTest L K z t *
+          completeSourcePoleWeight t)
+      volume 0 L := by
+  have hraw :
+      Continuous (productionSecondDerivativePhysicalRaw L K z) := by
+    unfold productionSecondDerivativePhysicalRaw
+    fun_prop (disch := exact hL.ne')
+  have hint :
+      IntervalIntegrable
+        (fun t =>
+          productionSecondDerivativePhysicalRaw L K z t *
+            completeSourcePoleWeight t) volume 0 L :=
+    (hraw.mul (by unfold completeSourcePoleWeight; fun_prop)).intervalIntegrable
+  apply hint.congr_ae
+  rw [Filter.EventuallyEq, MeasureTheory.ae_restrict_iff' (by measurability)]
+  filter_upwards with t ht
+  have ht' : t ∈ Icc (0 : ℝ) L := by
+    simpa only [uIcc_of_le hL.le] using ht
+  simp [productionSecondDerivativePhysicalTest, productionPhysicalClamp_eq ht']
+
+private theorem intervalIntegrable_mixed_pole
+    {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (z w : euclideanEvenBoundaryFlatSubspace K) :
+    IntervalIntegrable
+      (fun t =>
+        productionMixedDerivativePhysicalTest L K z w t *
+          completeSourcePoleWeight t)
+      volume 0 L := by
+  have hraw :
+      Continuous (productionMixedDerivativePhysicalRaw L K z w) := by
+    unfold productionMixedDerivativePhysicalRaw
+    fun_prop (disch := exact hL.ne')
+  have hint :
+      IntervalIntegrable
+        (fun t =>
+          productionMixedDerivativePhysicalRaw L K z w t *
+            completeSourcePoleWeight t) volume 0 L :=
+    (hraw.mul (by unfold completeSourcePoleWeight; fun_prop)).intervalIntegrable
+  apply hint.congr_ae
+  rw [Filter.EventuallyEq, MeasureTheory.ae_restrict_iff' (by measurability)]
+  filter_upwards with t ht
+  have ht' : t ∈ Icc (0 : ℝ) L := by
+    simpa only [uIcc_of_le hL.le] using ht
+  simp [productionMixedDerivativePhysicalTest, productionPhysicalClamp_eq ht']
+
 private theorem intervalIntegrable_first_arch
     {L : ℝ} (hL : 0 < L) (K : ℕ)
     (z : euclideanEvenBoundaryFlatSubspace K) :
@@ -439,8 +515,8 @@ private theorem intervalIntegrable_mixed_arch
     simpa only [uIcc_of_le hL.le] using ht
   exact (mixed_arch_eq_regularized hL ht0 ht' K z w).symm
 
-/-- The three physical derivative tests have genuine support and a removable
-archimedean singularity.  This is the production half of F02. -/
+/-- The three physical derivative tests have genuine support and removable
+pole/archimedean integrands.  This is the physical half of F02. -/
 theorem production_derivative_tests_admissible
     {L : ℝ} (hL : 0 < L)
     (K : ℕ)
@@ -451,19 +527,40 @@ theorem production_derivative_tests_admissible
         (productionSecondDerivativePhysicalTest L K z) ∧
       ProductionWeightedPhysicalAdmissible L
         (productionMixedDerivativePhysicalTest L K z w) := by
+  have hfirstRaw :
+      Continuous (productionFirstDerivativePhysicalRaw L K z) := by
+    unfold productionFirstDerivativePhysicalRaw
+    fun_prop (disch := exact hL.ne')
+  have hsecondRaw :
+      Continuous (productionSecondDerivativePhysicalRaw L K z) := by
+    unfold productionSecondDerivativePhysicalRaw
+    fun_prop (disch := exact hL.ne')
+  have hmixedRaw :
+      Continuous (productionMixedDerivativePhysicalRaw L K z w) := by
+    unfold productionMixedDerivativePhysicalRaw
+    fun_prop (disch := exact hL.ne')
   refine ⟨?_, ?_, ?_⟩
-  · refine ⟨?_, intervalIntegrable_first_arch hL K z,
+  · refine ⟨?_, intervalIntegrable_first_pole hL K z,
+      intervalIntegrable_first_arch hL K z,
       productionPhysicalClamp_support_subset L _⟩
     unfold productionFirstDerivativePhysicalTest productionPhysicalClamp
-    fun_prop
-  · refine ⟨?_, intervalIntegrable_second_arch hL K z,
+    exact
+      (Measurable.ite measurableSet_Icc hfirstRaw.measurable measurable_const)
+        .aestronglyMeasurable
+  · refine ⟨?_, intervalIntegrable_second_pole hL K z,
+      intervalIntegrable_second_arch hL K z,
       productionPhysicalClamp_support_subset L _⟩
     unfold productionSecondDerivativePhysicalTest productionPhysicalClamp
-    fun_prop
-  · refine ⟨?_, intervalIntegrable_mixed_arch hL K z w,
+    exact
+      (Measurable.ite measurableSet_Icc hsecondRaw.measurable measurable_const)
+        .aestronglyMeasurable
+  · refine ⟨?_, intervalIntegrable_mixed_pole hL K z w,
+      intervalIntegrable_mixed_arch hL K z w,
       productionPhysicalClamp_support_subset L _⟩
     unfold productionMixedDerivativePhysicalTest productionPhysicalClamp
-    fun_prop
+    exact
+      (Measurable.ite measurableSet_Icc hmixedRaw.measurable measurable_const)
+        .aestronglyMeasurable
 
 end Zeta23.CCM
 
