@@ -11,7 +11,12 @@
     {
       "id": "F02_WEIGHTED_TESTS",
       "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
-      "target": "Zeta23.CCM.production_derivative_tests_admissible"
+      "target": "Zeta23.CCM.productionContactDerivativeTests_full_admissible"
+    },
+    {
+      "id": "F03_REMAINDER_AUTHORITY",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "Zeta23.CCM.productionContactRemainder_authority"
     },
     {
       "id": "F04_PAIR_BALANCE",
@@ -21,7 +26,7 @@
     {
       "id": "F05_STATIONARY_CURVATURE",
       "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
-      "target": "Zeta23.CCM.GeneratedStrictEvenContact.actual_stationary_curvature_eq_zero"
+      "target": "Zeta23.CCM.production_stationary_schur_curvature_eq_zero"
     },
     {
       "id": "F06_INHERITED_STATIONARITY",
@@ -31,7 +36,7 @@
     {
       "id": "F07_FRONTIER",
       "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
-      "target": "Zeta23.CCM.GeneratedStrictEvenContact.production_frontier"
+      "target": "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier"
     },
     {
       "id": "OBS060O_SATURATION_EXCLUSION",
