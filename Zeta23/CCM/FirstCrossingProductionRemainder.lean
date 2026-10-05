@@ -242,7 +242,8 @@ theorem sourceAtomPairingDerivative_unitPhase
   unfold sourceAtomPairingDerivative
   have hunit := star_mul_self_eq_one_of_norm_eq_one u hu
   simp only [LinearMapClass.map_smul, Pi.smul_apply, map_mul,
-    starRingEnd_apply, smul_eq_mul]
+    starRingEnd_apply, Complex.real_smul]
+  push_cast
   apply Finset.sum_congr rfl
   intro i hi
   apply Finset.sum_congr rfl
