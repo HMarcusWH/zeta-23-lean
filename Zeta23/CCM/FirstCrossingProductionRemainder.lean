@@ -577,7 +577,7 @@ theorem productionContactNormalSourceValue_eq_sourceValue
     intro q hq
     rw [re_star_mul_comm]
     unfold primeSourceWeight
-    simp only [starRingEnd_apply, Complex.mul_re, Complex.mul_im,
+    simp only [map_mul, starRingEnd_apply, Complex.mul_re, Complex.mul_im,
       Complex.conj_re, Complex.conj_im, Complex.ofReal_re,
       Complex.ofReal_im] <;> ring
   rw [productionArithmeticRealValue_eq_real_channels]
