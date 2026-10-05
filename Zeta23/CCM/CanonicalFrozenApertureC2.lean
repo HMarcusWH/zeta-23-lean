@@ -338,9 +338,16 @@ private theorem hasDerivAt_continuousLinearMap_comp_real
     HasDerivAt (fun s : ℝ => T (f s)) (T f') x := by
   unfold HasDerivAt HasDerivAtFilter at hf ⊢
   refine HasFDerivAtFilter.of_isLittleOTVS ?_
-  simpa only [Function.comp_apply, map_sub,
-    ContinuousLinearMap.toSpanSingleton_apply, map_smul] using
-    (T.isBigOTVS_comp.trans_isLittleOTVS hf.isLittleOTVS)
+  have hpush :
+      (fun p : ℝ × ℝ =>
+        T (f p.1 - f p.2 -
+          ContinuousLinearMap.toSpanSingleton ℝ f' (p.1 - p.2))) =o[
+            ℝ; 𝓝 x ×ˢ pure x]
+        (fun p : ℝ × ℝ => p.1 - p.2) := by
+    exact T.isBigOTVS_fun_comp.trans_isLittleOTVS hf.isLittleOTVS
+  refine hpush.congr_left ?_
+  intro p
+  simp only [map_sub, ContinuousLinearMap.toSpanSingleton_apply, map_smul]
 
 def frozenParityCompressedFamilyCLM
     (Q : ℕ) (p : ReversalParity) (K : ℕ) (L : ℝ) :
