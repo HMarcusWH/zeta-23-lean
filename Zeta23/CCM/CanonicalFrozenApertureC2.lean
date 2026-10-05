@@ -357,13 +357,15 @@ theorem hasDerivAt_frozenParityCompressedFamilyCLM_pos
         (euclideanParityBoundaryFlatSubspace p K →L[ℂ]
           euclideanParityBoundaryFlatSubspace p K) :=
     (parityCompressionCLM p K).restrictScalars ℝ
-  have hT :
-      HasFDerivAt T T
-        (frozenCanonicalSourceMatrix Q L K) :=
-    T.hasFDerivAt
+  have hc :
+      HasDerivAt
+        (((parityCompressionCLM p K).restrictScalars ℝ) ∘
+          (fun s : ℝ => frozenCanonicalSourceMatrix Q s K))
+        (((parityCompressionCLM p K).restrictScalars ℝ)
+          (frozenCanonicalSourceFirstMatrix Q L K)) L :=
+    ((parityCompressionCLM p K).restrictScalars ℝ).hasFDerivAt.comp_hasDerivAt L hM
   simpa [T, frozenParityCompressedFamilyCLM,
-    frozenParityCompressedFirstCLM, Function.comp_def] using
-    hT.comp_hasDerivAt L hM
+    frozenParityCompressedFirstCLM, Function.comp_def] using hc
 
 theorem hasDerivAt_frozenParityCompressedFirstCLM_pos
     (Q : ℕ) (p : ReversalParity) (K : ℕ)
@@ -377,13 +379,15 @@ theorem hasDerivAt_frozenParityCompressedFirstCLM_pos
         (euclideanParityBoundaryFlatSubspace p K →L[ℂ]
           euclideanParityBoundaryFlatSubspace p K) :=
     (parityCompressionCLM p K).restrictScalars ℝ
-  have hT :
-      HasFDerivAt T T
-        (frozenCanonicalSourceFirstMatrix Q L K) :=
-    T.hasFDerivAt
+  have hc :
+      HasDerivAt
+        (((parityCompressionCLM p K).restrictScalars ℝ) ∘
+          (fun s : ℝ => frozenCanonicalSourceFirstMatrix Q s K))
+        (((parityCompressionCLM p K).restrictScalars ℝ)
+          (frozenCanonicalSourceSecondMatrix Q L K)) L :=
+    ((parityCompressionCLM p K).restrictScalars ℝ).hasFDerivAt.comp_hasDerivAt L hM
   simpa [T, frozenParityCompressedFirstCLM,
-    frozenParityCompressedSecondCLM, Function.comp_def] using
-    hT.comp_hasDerivAt L hM
+    frozenParityCompressedSecondCLM, Function.comp_def] using hc
 
 /-- First frozen matrix derivative across a q/pred split. -/
 theorem frozenCanonicalSourceFirstMatrix_eq_pred_sub_enteringFirst
