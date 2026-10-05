@@ -189,7 +189,7 @@ private theorem re_star_mul_comm (a b : ℂ) :
 private theorem re_star_finset_sum_mul
     {α : Type*} (s : Finset α) (F : α → ℂ) (m : ℂ) :
     Complex.re (star (∑ i ∈ s, F i) * m) =
-      ∑ i in s, Complex.re (star (F i) * m) := by
+      ∑ i ∈ s, Complex.re (star (F i) * m) := by
   classical
   induction s using Finset.induction_on with
   | empty => simp
