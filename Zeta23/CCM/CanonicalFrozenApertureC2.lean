@@ -327,6 +327,21 @@ noncomputable def parityCompressionCLM
           (V.subtypeL :
             V →L[ℂ] EuclideanSpace ℂ (Fin (2 * K + 1)))) := rfl
 
+private theorem hasDerivAt_continuousLinearMap_comp_real
+    {E F : Type*}
+    [NormedAddCommGroup E] [NormedSpace ℝ E]
+    [NormedAddCommGroup F] [NormedSpace ℝ F]
+    (T : E →L[ℝ] F)
+    {f : ℝ → E} {f' : E} {x : ℝ}
+    (hf : HasDerivAt f f' x) :
+    HasDerivAt (fun s : ℝ => T (f s)) (T f') x := by
+  have hT : HasFDerivAt (fun y : E => T y) T (f x) :=
+    T.hasFDerivAt
+  simpa only [Function.comp_def] using
+    HasFDerivAt.comp_hasDerivAt
+      (𝕜 := ℝ) (x := x) (l := fun y : E => T y) (l' := T)
+      (f := f) (f' := f') hT hf
+
 def frozenParityCompressedFamilyCLM
     (Q : ℕ) (p : ReversalParity) (K : ℕ) (L : ℝ) :
     euclideanParityBoundaryFlatSubspace p K →L[ℂ]
@@ -357,16 +372,10 @@ theorem hasDerivAt_frozenParityCompressedFamilyCLM_pos
         (euclideanParityBoundaryFlatSubspace p K →L[ℂ]
           euclideanParityBoundaryFlatSubspace p K) :=
     (parityCompressionCLM p K).restrictScalars ℝ
-  have hT :
-      HasFDerivAt (fun A => T A) T
-        (frozenCanonicalSourceMatrix Q L K) :=
-    T.hasFDerivAt
-  have hc :=
-    HasFDerivAt.comp_hasDerivAt (x := L) hT hM
   change HasDerivAt
     (fun s : ℝ => T (frozenCanonicalSourceMatrix Q s K))
     (T (frozenCanonicalSourceFirstMatrix Q L K)) L
-  simpa only [Function.comp_def] using hc
+  exact hasDerivAt_continuousLinearMap_comp_real T hM
 
 theorem hasDerivAt_frozenParityCompressedFirstCLM_pos
     (Q : ℕ) (p : ReversalParity) (K : ℕ)
@@ -380,16 +389,10 @@ theorem hasDerivAt_frozenParityCompressedFirstCLM_pos
         (euclideanParityBoundaryFlatSubspace p K →L[ℂ]
           euclideanParityBoundaryFlatSubspace p K) :=
     (parityCompressionCLM p K).restrictScalars ℝ
-  have hT :
-      HasFDerivAt (fun A => T A) T
-        (frozenCanonicalSourceFirstMatrix Q L K) :=
-    T.hasFDerivAt
-  have hc :=
-    HasFDerivAt.comp_hasDerivAt (x := L) hT hM
   change HasDerivAt
     (fun s : ℝ => T (frozenCanonicalSourceFirstMatrix Q s K))
     (T (frozenCanonicalSourceSecondMatrix Q L K)) L
-  simpa only [Function.comp_def] using hc
+  exact hasDerivAt_continuousLinearMap_comp_real T hM
 
 /-- First frozen matrix derivative across a q/pred split. -/
 theorem frozenCanonicalSourceFirstMatrix_eq_pred_sub_enteringFirst
