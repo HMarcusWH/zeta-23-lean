@@ -116,13 +116,14 @@ theorem productionContactNormalPhysical_admissible
                   (centeredQuadraticNormal K)) *
             evenBoundaryFlatRawCoefficients K v j)
         hL
+  have hraw : Continuous (productionContactNormalSourceChannel L K v) := by
+    unfold productionContactNormalSourceChannel
+    fun_prop (disch := exact hL.ne')
   refine ⟨?_, ?_, ?_, productionPhysicalClamp_support_subset L _⟩
   · unfold productionContactNormalPhysicalTest productionPhysicalClamp
     exact
-      (Measurable.ite measurableSet_Icc
-        ((Complex.continuous_re.comp
-          (continuous_const.mul hgcont)).measurable)
-        measurable_const).aestronglyMeasurable
+      (Measurable.ite measurableSet_Icc hraw.measurable measurable_const)
+        .aestronglyMeasurable
   · have h :=
       ((hpole.const_mul (star (productionContactMomentFour K v))).re)
     refine h.congr ?_
