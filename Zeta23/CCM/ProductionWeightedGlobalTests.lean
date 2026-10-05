@@ -318,7 +318,9 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
     have hext :
         HasDerivWithinAt (productionEvenCompactLiftReal L f) 0
           (Ici L) L := by
-      have hc := (hasDerivAt_const L (0 : ℝ)).hasDerivWithinAt
+      have hc :
+          HasDerivWithinAt (fun _ : ℝ => (0 : ℝ)) 0 (Ici L) L :=
+        (hasDerivAt_const L (0 : ℝ)).hasDerivWithinAt
       refine hc.congr_of_mem (f₁ := productionEvenCompactLiftReal L f) ?_ ?_
       · intro z hz
         have hnleft : ¬ z ≤ -L := by linarith
@@ -523,7 +525,9 @@ private theorem hasDerivAt_productionEvenCompactLiftRealDerivative
     have hext :
         HasDerivWithinAt (productionEvenCompactLiftRealDerivative L f) 0
           (Ici L) L := by
-      have hc := (hasDerivAt_const L (0 : ℝ)).hasDerivWithinAt
+      have hc :
+          HasDerivWithinAt (fun _ : ℝ => (0 : ℝ)) 0 (Ici L) L :=
+        (hasDerivAt_const L (0 : ℝ)).hasDerivWithinAt
       refine hc.congr_of_mem (f₁ := productionEvenCompactLiftRealDerivative L f) ?_ ?_
       · intro z hz
         have hnleft : ¬ z ≤ -L := by linarith
@@ -613,8 +617,10 @@ private theorem continuous_productionEvenCompactLiftRealSecondDerivative
     have hzero' :
         ContinuousWithinAt
           (productionEvenCompactLiftRealSecondDerivative L f)
-          (Iic (-L)) (-L) :=
-      hzero.congr_of_mem hzeroEq (by simp)
+          (Iic (-L)) (-L) := by
+      exact hzero.congr
+        (g := productionEvenCompactLiftRealSecondDerivative L f)
+        hzeroEq (hzeroEq (-L) (by simp))
     have hneg' :
         ContinuousWithinAt
           (productionEvenCompactLiftRealSecondDerivative L f)
@@ -731,8 +737,10 @@ private theorem continuous_productionEvenCompactLiftRealSecondDerivative
     have hzero' :
         ContinuousWithinAt
           (productionEvenCompactLiftRealSecondDerivative L f)
-          (Ici L) L :=
-      hzero.congr_of_mem hzeroEq (by simp)
+          (Ici L) L := by
+      exact hzero.congr
+        (g := productionEvenCompactLiftRealSecondDerivative L f)
+        hzeroEq (hzeroEq L (by simp))
     have hmem : Icc 0 L ∪ Ici L ∈ 𝓝 L := by
       apply mem_of_superset (Ioi_mem_nhds hL)
       intro z hz
@@ -931,10 +939,9 @@ theorem sourceAtomRealEnergy_second_through_four_zero
 private theorem hasDerivAt_one_sub_div_const
     (L t : ℝ) :
     HasDerivAt (fun s : ℝ => 1 - s / L) (-(1 / L)) t := by
-  change HasDerivAt
-    ((fun _ : ℝ => (1 : ℝ)) - fun s : ℝ => s / L) (-(1 / L)) t
-  simpa only [zero_sub] using
+  have h :=
     (hasDerivAt_const t (1 : ℝ)).sub ((hasDerivAt_id t).div_const L)
+  simpa only [Pi.sub_apply, id_eq, zero_sub] using h
 
 /-- The first weighted physical derivative has the endpoint jets needed by the
 compact even lift. -/
@@ -960,12 +967,16 @@ theorem productionFirstDerivativePhysicalRaw_liftJets
       (hasDerivAt_id 0).mul
         (((hasDerivAt_const 0 (L ^ 2)).inv
           (pow_ne_zero 2 hL.ne')).mul hsource)
-    change deriv
-      (fun t : ℝ =>
-        t / L ^ 2 *
-          sourceAtomRealEnergyDerivative K
-            (z : EuclideanSpace ℂ (Fin (2 * K + 1))) (1 - t / L)) 0 = 0
-    simpa [hcoord0, hend.2] using hd.deriv
+    have hd0 :
+        HasDerivAt
+          (fun t : ℝ =>
+            t / L ^ 2 *
+              sourceAtomRealEnergyDerivative K
+                (z : EuclideanSpace ℂ (Fin (2 * K + 1))) (1 - t / L))
+          0 0 := by
+      convert hd using 1 <;>
+        simp [Function.comp_def, hcoord0, hend.2, div_eq_mul_inv]
+    exact hd0.deriv
   · simp [productionFirstDerivativePhysicalRaw, hcoordL,
       sourceAtomRealEnergyDerivative_zero_of_boundaryFlat K
         (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
@@ -984,13 +995,17 @@ theorem productionFirstDerivativePhysicalRaw_liftJets
           L hcoord hcoordL.symm
     have hp :=
       ((hasDerivAt_id L).div_const (L ^ 2)).mul hinner
-    change deriv
-      (fun t : ℝ =>
-        t / L ^ 2 *
-          sourceAtomRealEnergyDerivative K
-            (z : EuclideanSpace ℂ (Fin (2 * K + 1))) (1 - t / L)) L = 0
-    simpa [hcoordL, hsource0, hj.1,
-      mul_comm, mul_left_comm, mul_assoc] using hp.deriv
+    have hp0 :
+        HasDerivAt
+          (fun t : ℝ =>
+            t / L ^ 2 *
+              sourceAtomRealEnergyDerivative K
+                (z : EuclideanSpace ℂ (Fin (2 * K + 1))) (1 - t / L))
+          0 L := by
+      convert hp using 1 <;>
+        simp [Function.comp_def, hcoordL, hsource0, hj.1,
+          div_eq_mul_inv, mul_comm, mul_left_comm, mul_assoc]
+    exact hp0.deriv
   · have hj := sourceAtomRealEnergy_second_through_four_zero K z
     let x : EuclideanSpace ℂ (Fin (2 * K + 1)) := z
     let c : ℝ := -(1 / L)
@@ -1010,10 +1025,15 @@ theorem productionFirstDerivativePhysicalRaw_liftJets
         (hasDerivAt_sourceAtomRealEnergyDerivative_transport K x (1 - t / L)).comp
           t (hcoord t)
       have hp := ((hasDerivAt_id t).div_const (L ^ 2)).mul hs
-      change deriv
-        (fun s : ℝ =>
-          s / L ^ 2 * sourceAtomRealEnergyDerivative K x (1 - s / L)) t = d t
-      simpa [d, c, mul_comm, mul_left_comm, mul_assoc] using hp.deriv
+      have hp' :
+          HasDerivAt
+            (fun s : ℝ =>
+              s / L ^ 2 * sourceAtomRealEnergyDerivative K x (1 - s / L))
+            (d t) t := by
+        convert hp using 1 <;>
+          simp [Function.comp_def, d, c, div_eq_mul_inv,
+            mul_comm, mul_left_comm, mul_assoc] <;> ring
+      exact hp'.deriv
     have hs1 :=
       (hasDerivAt_sourceAtomRealEnergyDerivative_transport K x 0).comp_of_eq
         L (hcoord L) hcoordL.symm
@@ -1025,8 +1045,9 @@ theorem productionFirstDerivativePhysicalRaw_liftJets
       ((hasDerivAt_id L).div_const (L ^ 2)).mul (hs2.mul_const c)
     have hd := hterm1.add hterm2
     have hd0 : HasDerivAt d 0 L := by
-      simpa [d, x, c, hcoordL, hj.1, hj.2.1,
-        mul_comm, mul_left_comm, mul_assoc] using hd
+      convert hd using 1 <;>
+        simp [Function.comp_def, d, x, c, hcoordL, hj.1, hj.2.1,
+          div_eq_mul_inv, mul_comm, mul_left_comm, mul_assoc] <;> ring
     rw [hderiv]
     exact hd0.deriv
 
@@ -1150,23 +1171,31 @@ theorem productionSecondDerivativePhysicalRaw_liftJets
         0 (hcoord 0) hcoord0.symm
     have hp :=
       (((hasDerivAt_id 0).pow 2).div_const (L ^ 4)).mul hs
-    change deriv
-      (fun t : ℝ =>
-        t ^ 2 / L ^ 4 *
-          sourceAtomRealEnergySecondDerivative K x (1 - t / L)) 0 = 0
-    simpa [hcoord0] using hp.deriv
+    have hp0 :
+        HasDerivAt
+          (fun t : ℝ =>
+            t ^ 2 / L ^ 4 *
+              sourceAtomRealEnergySecondDerivative K x (1 - t / L))
+          0 0 := by
+      convert hp using 1 <;>
+        simp [Function.comp_def, hcoord0, div_eq_mul_inv]
+    exact hp0.deriv
   · simpa [productionSecondDerivativePhysicalRaw, x, hcoordL, hj.1]
   · have hs :=
       (hasDerivAt_sourceAtomRealEnergySecondDerivative_from_contDiff K x 0).comp_of_eq
         L (hcoord L) hcoordL.symm
     have hp :=
       (((hasDerivAt_id L).pow 2).div_const (L ^ 4)).mul hs
-    change deriv
-      (fun t : ℝ =>
-        t ^ 2 / L ^ 4 *
-          sourceAtomRealEnergySecondDerivative K x (1 - t / L)) L = 0
-    simpa [c, hcoordL, hj.1, hj.2.1,
-      mul_comm, mul_left_comm, mul_assoc] using hp.deriv
+    have hp0 :
+        HasDerivAt
+          (fun t : ℝ =>
+            t ^ 2 / L ^ 4 *
+              sourceAtomRealEnergySecondDerivative K x (1 - t / L))
+          0 L := by
+      convert hp using 1 <;>
+        simp [Function.comp_def, c, hcoordL, hj.1, hj.2.1,
+          div_eq_mul_inv, mul_comm, mul_left_comm, mul_assoc] <;> ring
+    exact hp0.deriv
   · let e2 : ℝ → ℝ := sourceAtomRealEnergySecondDerivative K x
     let d : ℝ → ℝ := fun t =>
       (2 * t / L ^ 4) * e2 (1 - t / L) +
@@ -1179,9 +1208,14 @@ theorem productionSecondDerivativePhysicalRaw_liftJets
           (1 - t / L)).comp t (hcoord t)
       have hp :=
         (((hasDerivAt_id t).pow 2).div_const (L ^ 4)).mul hs
-      change deriv
-        (fun s : ℝ => s ^ 2 / L ^ 4 * e2 (1 - s / L)) t = d t
-      simpa [d, c, pow_two, mul_comm, mul_left_comm, mul_assoc] using hp.deriv
+      have hp' :
+          HasDerivAt
+            (fun s : ℝ => s ^ 2 / L ^ 4 * e2 (1 - s / L))
+            (d t) t := by
+        convert hp using 1 <;>
+          simp [Function.comp_def, d, e2, x, c, pow_two, div_eq_mul_inv,
+            mul_comm, mul_left_comm, mul_assoc] <;> ring
+      exact hp'.deriv
     have hs2 :=
       (hasDerivAt_sourceAtomRealEnergySecondDerivative_from_contDiff K x 0).comp_of_eq
         L (hcoord L) hcoordL.symm
@@ -1201,8 +1235,10 @@ theorem productionSecondDerivativePhysicalRaw_liftJets
     have hterm2 := hw2.mul (hs3.mul_const c)
     have hd := hterm1.add hterm2
     have hd0 : HasDerivAt d 0 L := by
-      simpa [d, e2, x, c, hcoordL, hj.1, hj.2.1, hj.2.2, pow_two,
-        mul_comm, mul_left_comm, mul_assoc] using hd
+      convert hd using 1 <;>
+        simp [Function.comp_def, d, e2, x, c, hcoordL,
+          hj.1, hj.2.1, hj.2.2, pow_two, div_eq_mul_inv,
+          mul_comm, mul_left_comm, mul_assoc] <;> ring
     rw [hderiv]
     exact hd0.deriv
 
