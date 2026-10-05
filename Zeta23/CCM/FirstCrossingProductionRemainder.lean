@@ -187,8 +187,10 @@ private theorem re_star_mul_comm (a b : ℂ) :
     Complex.re (star a * b) =
         Complex.re (star (star a * b)) :=
       (Complex.conj_re (star a * b)).symm
-    _ = Complex.re (star b * a) := by
+    _ = Complex.re (a * star b) := by
       rw [star_mul', star_star]
+    _ = Complex.re (star b * a) := by
+      rw [mul_comm]
 
 private theorem re_star_finset_sum_mul
     {α : Type*} (s : Finset α) (F : α → ℂ) (m : ℂ) :
@@ -198,7 +200,7 @@ private theorem re_star_finset_sum_mul
   induction s using Finset.induction_on with
   | empty => simp
   | @insert a s ha ih =>
-      simp [ha, ih, star_add, add_mul]
+      simp only [Finset.sum_insert ha, star_add, add_mul, Complex.add_re, ih]
 
 private theorem productionArithmeticRealValue_eq_real_channels
     (L : ℝ) (f : ℝ → ℝ) :
@@ -507,8 +509,9 @@ theorem productionContactNormalSourceValue_eq_sourceValue
               (star m * (H t * (completeSourcePoleWeight t : ℂ))) := by
         apply intervalIntegral.integral_congr
         intro t ht
-        simp only [starRingEnd_apply, Complex.mul_re, Complex.conj_re,
-          Complex.conj_im, Complex.ofReal_re, Complex.ofReal_im] <;> ring
+        simp only [starRingEnd_apply, Complex.mul_re, Complex.mul_im,
+          Complex.conj_re, Complex.conj_im, Complex.ofReal_re,
+          Complex.ofReal_im] <;> ring
       _ = Complex.re
           (∫ t in (0 : ℝ)..L,
             star m * (H t * (completeSourcePoleWeight t : ℂ))) :=
@@ -544,8 +547,9 @@ theorem productionContactNormalSourceValue_eq_sourceValue
             Complex.re (star m * (H t * (archDensity t : ℂ))) := by
         apply intervalIntegral.integral_congr
         intro t ht
-        simp only [starRingEnd_apply, Complex.mul_re, Complex.conj_re,
-          Complex.conj_im, Complex.ofReal_re, Complex.ofReal_im] <;> ring
+        simp only [starRingEnd_apply, Complex.mul_re, Complex.mul_im,
+          Complex.conj_re, Complex.conj_im, Complex.ofReal_re,
+          Complex.ofReal_im] <;> ring
       _ = Complex.re
           (∫ t in (0 : ℝ)..L,
             star m * (H t * (archDensity t : ℂ))) :=
@@ -573,8 +577,9 @@ theorem productionContactNormalSourceValue_eq_sourceValue
     intro q hq
     rw [re_star_mul_comm]
     unfold primeSourceWeight
-    simp only [starRingEnd_apply, Complex.mul_re, Complex.conj_re,
-      Complex.conj_im, Complex.ofReal_re, Complex.ofReal_im] <;> ring
+    simp only [starRingEnd_apply, Complex.mul_re, Complex.mul_im,
+      Complex.conj_re, Complex.conj_im, Complex.ofReal_re,
+      Complex.ofReal_im] <;> ring
   rw [productionArithmeticRealValue_eq_real_channels]
   unfold productionContactNormalSourceChannel productionStrictEvenSourceValue
   change
