@@ -183,8 +183,12 @@ private theorem star_mul_self_eq_one_of_norm_eq_one
 
 private theorem re_star_mul_comm (a b : ℂ) :
     Complex.re (star a * b) = Complex.re (star b * a) := by
-  simp only [starRingEnd_apply, Complex.mul_re, Complex.conj_re,
-    Complex.conj_im, Complex.ofReal_re, Complex.ofReal_im] <;> ring
+  calc
+    Complex.re (star a * b) =
+        Complex.re (star (star a * b)) :=
+      (Complex.conj_re (star a * b)).symm
+    _ = Complex.re (star b * a) := by
+      rw [star_mul', star_star]
 
 private theorem re_star_finset_sum_mul
     {α : Type*} (s : Finset α) (F : α → ℂ) (m : ℂ) :
