@@ -8,8 +8,8 @@ noncomputable section
 
 namespace Zeta23.CCM
 
-open Complex Matrix Set
-open scoped BigOperators ComplexConjugate
+open Complex Matrix Set MeasureTheory
+open scoped BigOperators ComplexConjugate ArithmeticFunction Interval
 
 /-!
 # Post-#281 concrete production contact remainder
@@ -172,11 +172,63 @@ invariance proofs below. -/
 private theorem star_mul_self_eq_one_of_norm_eq_one
     (u : ℂ) (hu : ‖u‖ = 1) :
     star u * u = 1 := by
-  change Complex.conj u * u = 1
-  rw [← Complex.normSq_eq_conj_mul_self]
-  norm_cast
-  rw [Complex.normSq_eq_norm_sq, hu]
-  norm_num
+  calc
+    star u * u = (Complex.normSq u : ℂ) := by
+      simpa only [starRingEnd_apply] using
+        (Complex.normSq_eq_conj_mul_self (z := u)).symm
+    _ = 1 := by
+      norm_cast
+      rw [Complex.normSq_eq_norm_sq, hu]
+      norm_num
+
+private theorem re_star_mul_comm (a b : ℂ) :
+    Complex.re (star a * b) = Complex.re (star b * a) := by
+  simp [Complex.mul_re, starRingEnd_apply] <;> ring
+
+private theorem re_star_finset_sum_mul
+    {α : Type*} (s : Finset α) (F : α → ℂ) (m : ℂ) :
+    Complex.re (star (∑ i in s, F i) * m) =
+      ∑ i in s, Complex.re (star (F i) * m) := by
+  classical
+  induction s using Finset.induction_on with
+  | empty => simp
+  | @insert a s ha ih =>
+      simp [ha, ih, star_add, add_mul]
+
+private theorem productionArithmeticRealValue_eq_real_channels
+    (L : ℝ) (f : ℝ → ℝ) :
+    productionArithmeticRealValue L f =
+      (∫ x in (0 : ℝ)..L, f x * completeSourcePoleWeight x) -
+        (∫ x in (0 : ℝ)..L, f x * archDensity x) -
+        ∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+          (Λ q / Real.sqrt q) * f (Real.log q) := by
+  unfold productionArithmeticRealValue productionArithmeticComplexValue
+    dictionaryCompletePhysicalRHS primeSourceWeight
+  have hpole :
+      (∫ x in (0 : ℝ)..L,
+          (f x : ℂ) * (completeSourcePoleWeight x : ℂ)) =
+        ((∫ x in (0 : ℝ)..L,
+          f x * completeSourcePoleWeight x) : ℂ) := by
+    simpa using
+      (intervalIntegral.integral_ofReal
+        (f := fun x : ℝ => f x * completeSourcePoleWeight x)
+        (a := (0 : ℝ)) (b := L))
+  have harch :
+      (∫ x in (0 : ℝ)..L,
+          (f x : ℂ) * (archDensity x : ℂ)) =
+        ((∫ x in (0 : ℝ)..L, f x * archDensity x) : ℂ) := by
+    simpa using
+      (intervalIntegral.integral_ofReal
+        (f := fun x : ℝ => f x * archDensity x)
+        (a := (0 : ℝ)) (b := L))
+  have hprime :
+      (∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+          (((Λ q / Real.sqrt q : ℝ) : ℂ) * (f (Real.log q) : ℂ))) =
+        ((∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+          (Λ q / Real.sqrt q) * f (Real.log q)) : ℂ) := by
+    push_cast
+  rw [hpole, harch, hprime]
+  simp
 
 /-- The complete canonical source moment is linear in the legal carrier. -/
 private theorem explicitCanonicalSourceMoment_smul_right
@@ -248,8 +300,14 @@ theorem sourceAtomPairingDerivative_unitPhase
   intro i hi
   apply Finset.sum_congr rfl
   intro j hj
-  rw [← hunit]
-  ring
+  simp only [smul_eq_mul, star_mul']
+  calc
+    _ = (star u * u) *
+        ((sourceEntryDerivative ω (centeredIndex K i) (centeredIndex K j) : ℂ) *
+          (star (((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) v) i) *
+            (((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) w) j))) := by
+      ring
+    _ = _ := by rw [hunit, one_mul]
 
 /-- Every scalar channel entering the concrete remainder is phase invariant. -/
 theorem productionContactRemainderSource_unitPhase
@@ -269,7 +327,7 @@ theorem productionContactRemainderSource_unitPhase
       quadraticNormalSourceAtom_smul_right]
     have hunit := star_mul_self_eq_one_of_norm_eq_one u hu
     apply congrArg Complex.re
-    rw [map_mul]
+    rw [star_mul']
     calc
       star u * star (productionContactMomentFour K v) *
           (u * quadraticNormalSourceAtom K v (1 - t / L)) =
@@ -332,7 +390,7 @@ theorem productionStrictEvenSourceValue_unitPhase
   rw [hsource, hm4]
   have hunit := star_mul_self_eq_one_of_norm_eq_one u hu
   apply congrArg Complex.re
-  rw [map_mul]
+  rw [star_mul']
   calc
     star u * star (explicitCanonicalSourceMoment L K v) *
         (u * centeredMoment K 4 (evenBoundaryFlatRawCoefficients K v)) =
@@ -361,16 +419,153 @@ theorem productionContactNormalSourceValue_eq_sourceValue
     productionArithmeticRealValue L
         (productionContactNormalSourceChannel L K v) =
       productionStrictEvenSourceValue L K v := by
+  let m : ℂ := productionContactMomentFour K v
+  let H : ℝ → ℂ := productionQuadraticNormalPhysicalSource L K v
+  let xvec : Fin (2 * K + 1) → ℂ :=
+    fun i => centeredQuadraticNormal K i
+  let yvec : Fin (2 * K + 1) → ℂ :=
+    fun j =>
+      (2 / inner ℂ (centeredQuadraticNormal K)
+              (centeredQuadraticNormal K)) *
+        evenBoundaryFlatRawCoefficients K v j
+  have hlift :
+      canonicalSourcePhysicalLift L (quadraticNormalSourceAtom K v) =
+        dictionaryMixedTest K xvec yvec L := by
+    simpa [xvec, yvec] using
+      canonicalSourcePhysicalLift_quadraticNormalSourceAtom_eq_mixedTest
+        hL K hK v
+  have hH_eq_dict :
+      EqOn H (dictionaryMixedTest K xvec yvec L) (Ι (0 : ℝ) L) := by
+    intro t ht
+    rw [uIoc_of_le hL.le] at ht
+    have ht0 : 0 ≤ t := le_of_lt ht.1
+    have htL : t ≤ L := ht.2
+    dsimp [H, productionQuadraticNormalPhysicalSource]
+    rw [← canonicalSourcePhysicalLift_eq_one_sub_of_mem hL ht0 htL]
+    exact congrFun hlift t
+  have hzero : dictionaryMixedTest K xvec yvec L 0 = 0 := by
+    rw [← congrFun hlift 0]
+    exact canonicalSourcePhysicalLift_quadraticNormalSourceAtom_zero hL K v
+  have hpole :
+      IntervalIntegrable
+        (fun t : ℝ => H t * (completeSourcePoleWeight t : ℂ))
+        volume 0 L := by
+    refine
+      (intervalIntegrable_dictionaryMixedTest_mul_pole
+        K xvec yvec hL).congr ?_
+    intro t ht
+    rw [← hH_eq_dict ht]
+  have harch :
+      IntervalIntegrable
+        (fun t : ℝ => H t * (archDensity t : ℂ))
+        volume 0 L := by
+    refine
+      (intervalIntegrable_dictionaryMixedTest_mul_archDensity_of_zero
+        K xvec yvec hL hzero).congr ?_
+    intro t ht
+    rw [← hH_eq_dict ht]
+  have hpolePair :
+      (∫ t in (0 : ℝ)..L,
+          Complex.re (star m * H t) * completeSourcePoleWeight t) =
+        Complex.re
+          (star
+              (∫ t in (0 : ℝ)..L,
+                H t * (completeSourcePoleWeight t : ℂ)) *
+            m) := by
+    have hscaled :
+        IntervalIntegrable
+          (fun t : ℝ =>
+            star m * (H t * (completeSourcePoleWeight t : ℂ)))
+          volume 0 L :=
+      hpole.const_mul (star m)
+    calc
+      (∫ t in (0 : ℝ)..L,
+          Complex.re (star m * H t) * completeSourcePoleWeight t) =
+          ∫ t in (0 : ℝ)..L,
+            Complex.re
+              (star m * (H t * (completeSourcePoleWeight t : ℂ))) := by
+        apply intervalIntegral.integral_congr
+        intro t ht
+        simp [Complex.mul_re, starRingEnd_apply] <;> ring
+      _ = Complex.re
+          (∫ t in (0 : ℝ)..L,
+            star m * (H t * (completeSourcePoleWeight t : ℂ))) :=
+        RCLike.intervalIntegral_re hscaled
+      _ = Complex.re
+          (star m *
+            ∫ t in (0 : ℝ)..L,
+              H t * (completeSourcePoleWeight t : ℂ)) := by
+        rw [intervalIntegral.integral_const_mul]
+      _ = Complex.re
+          (star
+              (∫ t in (0 : ℝ)..L,
+                H t * (completeSourcePoleWeight t : ℂ)) *
+            m) :=
+        re_star_mul_comm m _
+  have harchPair :
+      (∫ t in (0 : ℝ)..L,
+          Complex.re (star m * H t) * archDensity t) =
+        Complex.re
+          (star
+              (∫ t in (0 : ℝ)..L,
+                H t * (archDensity t : ℂ)) *
+            m) := by
+    have hscaled :
+        IntervalIntegrable
+          (fun t : ℝ => star m * (H t * (archDensity t : ℂ)))
+          volume 0 L :=
+      harch.const_mul (star m)
+    calc
+      (∫ t in (0 : ℝ)..L,
+          Complex.re (star m * H t) * archDensity t) =
+          ∫ t in (0 : ℝ)..L,
+            Complex.re (star m * (H t * (archDensity t : ℂ))) := by
+        apply intervalIntegral.integral_congr
+        intro t ht
+        simp [Complex.mul_re, starRingEnd_apply] <;> ring
+      _ = Complex.re
+          (∫ t in (0 : ℝ)..L,
+            star m * (H t * (archDensity t : ℂ))) :=
+        RCLike.intervalIntegral_re hscaled
+      _ = Complex.re
+          (star m *
+            ∫ t in (0 : ℝ)..L, H t * (archDensity t : ℂ)) := by
+        rw [intervalIntegral.integral_const_mul]
+      _ = Complex.re
+          (star
+              (∫ t in (0 : ℝ)..L, H t * (archDensity t : ℂ)) *
+            m) :=
+        re_star_mul_comm m _
+  have hprimePair :
+      (∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+          (Λ q / Real.sqrt q) *
+            Complex.re (star m * H (Real.log q))) =
+        Complex.re
+          (star
+              (∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+                primeSourceWeight q * H (Real.log q)) *
+            m) := by
+    rw [re_star_finset_sum_mul]
+    apply Finset.sum_congr rfl
+    intro q hq
+    rw [re_star_mul_comm]
+    unfold primeSourceWeight
+    simp [Complex.mul_re, starRingEnd_apply] <;> ring
+  rw [productionArithmeticRealValue_eq_real_channels]
   unfold productionContactNormalSourceChannel productionStrictEvenSourceValue
-    productionArithmeticRealValue
-  rw [← explicitCanonicalSourceMoment_eq_productionArithmeticComplexValue
-    hL K hK v]
-  -- The complete physical RHS has real scalar weights, so taking Re after
-  -- multiplying the source test by conj(M4) commutes with evaluation.
+  change
+    (∫ t in (0 : ℝ)..L,
+        Complex.re (star m * H t) * completeSourcePoleWeight t) -
+      (∫ t in (0 : ℝ)..L,
+        Complex.re (star m * H t) * archDensity t) -
+      (∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+        (Λ q / Real.sqrt q) *
+          Complex.re (star m * H (Real.log q))) =
+      Complex.re (star (productionArithmeticComplexValue L H) * m)
+  rw [hpolePair, harchPair, hprimePair]
   unfold productionArithmeticComplexValue dictionaryCompletePhysicalRHS
-  simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im]
-  rw [map_sum]
-  ring
+  rw [star_sub, star_sub, sub_mul, sub_mul]
+  simp only [Complex.sub_re]
 
 end Zeta23.CCM
 
