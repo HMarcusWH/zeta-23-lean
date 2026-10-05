@@ -1,5 +1,6 @@
 import Zeta23.CCM.FirstCrossingProductionRemainder
 import Zeta23.CCM.ProductionWeightedGlobalTests
+import Zeta23.CCM.ProductionPhysicalFunctionalCongruence
 import Zeta23.CCM.CanonicalQuadraticNormalSourceKernel
 
 noncomputable section
@@ -115,8 +116,9 @@ theorem productionContactNormalPhysical_admissible
                   (centeredQuadraticNormal K)) *
             evenBoundaryFlatRawCoefficients K v j)
         hL
-  refine ⟨?_, ?_, ?_, ?_⟩
-  · exact
+  refine ⟨?_, ?_, ?_, productionPhysicalClamp_support_subset L _⟩
+  · unfold productionContactNormalPhysicalTest productionPhysicalClamp
+    exact
       (Measurable.ite measurableSet_Icc
         ((Complex.continuous_re.comp
           (continuous_const.mul hgcont)).measurable)
@@ -139,9 +141,6 @@ theorem productionContactNormalPhysical_admissible
         hL K hK v ht]
       ring
     · simp [productionContactNormalPhysicalTest, productionPhysicalClamp, ht]
-  · intro t ht
-    simp [productionContactNormalPhysicalTest, productionPhysicalClamp, ht]
-
 /-- Clamping does not change the canonical normal-channel production value. -/
 theorem productionContactNormalPhysicalValue_eq_sourceValue
     {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 1 ≤ K)
@@ -150,13 +149,9 @@ theorem productionContactNormalPhysicalValue_eq_sourceValue
         (productionContactNormalPhysicalTest L K v) =
       productionStrictEvenSourceValue L K v := by
   rw [← productionContactNormalSourceValue_eq_sourceValue hL K hK v]
-  unfold productionArithmeticRealValue productionArithmeticComplexValue
-    dictionaryCompletePhysicalRHS
-  simp only [productionContactNormalPhysicalTest]
-  -- All continuous integrals are over [0,L], and every retained prime sample
-  -- has log q in [0,L], so the clamp is invisible to the functional.
-  congr 2 <;>
-    simp_rw [productionPhysicalClamp_eq_of_mem]
+  apply productionArithmeticRealValue_congr_on_Icc hL
+  intro t ht
+  exact productionContactNormalPhysicalTest_eq_source_on_Icc K v ht
 
 end Zeta23.CCM
 
