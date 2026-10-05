@@ -352,18 +352,20 @@ theorem hasDerivAt_frozenParityCompressedFamilyCLM_pos
       (fun s : ℝ => frozenParityCompressedFamilyCLM Q p K s)
       (frozenParityCompressedFirstCLM Q p K L) L := by
   have hM := hasDerivAt_frozenCanonicalSourceMatrix_pos Q K hL
-  let T :=
-    (parityCompressionCLM p K).restrictScalars ℝ
   have hT :
       HasFDerivAt
-        (fun A : Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ => T A)
-        T (frozenCanonicalSourceMatrix Q L K) := by
-    simpa [T] using
-      (T.hasFDerivAt (x := frozenCanonicalSourceMatrix Q L K))
-  have hc :=
-    hT.comp_hasDerivAt
-      (f := fun s : ℝ => frozenCanonicalSourceMatrix Q s K) L hM
-  simpa [T, frozenParityCompressedFamilyCLM,
+        (parityCompressionCLM p K)
+        ((parityCompressionCLM p K).restrictScalars ℝ)
+        (frozenCanonicalSourceMatrix Q L K) :=
+    ((parityCompressionCLM p K).restrictScalars ℝ).hasFDerivAt
+  have hc :
+      HasDerivAt
+        ((parityCompressionCLM p K) ∘
+          (fun s : ℝ => frozenCanonicalSourceMatrix Q s K))
+        ((parityCompressionCLM p K)
+          (frozenCanonicalSourceFirstMatrix Q L K)) L :=
+    hT.comp_hasDerivAt L hM
+  simpa [frozenParityCompressedFamilyCLM,
     frozenParityCompressedFirstCLM, Function.comp_def] using hc
 
 theorem hasDerivAt_frozenParityCompressedFirstCLM_pos
@@ -373,18 +375,20 @@ theorem hasDerivAt_frozenParityCompressedFirstCLM_pos
       (fun s : ℝ => frozenParityCompressedFirstCLM Q p K s)
       (frozenParityCompressedSecondCLM Q p K L) L := by
   have hM := hasDerivAt_frozenCanonicalSourceFirstMatrix_pos Q K hL
-  let T :=
-    (parityCompressionCLM p K).restrictScalars ℝ
   have hT :
       HasFDerivAt
-        (fun A : Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ => T A)
-        T (frozenCanonicalSourceFirstMatrix Q L K) := by
-    simpa [T] using
-      (T.hasFDerivAt (x := frozenCanonicalSourceFirstMatrix Q L K))
-  have hc :=
-    hT.comp_hasDerivAt
-      (f := fun s : ℝ => frozenCanonicalSourceFirstMatrix Q s K) L hM
-  simpa [T, frozenParityCompressedFirstCLM,
+        (parityCompressionCLM p K)
+        ((parityCompressionCLM p K).restrictScalars ℝ)
+        (frozenCanonicalSourceFirstMatrix Q L K) :=
+    ((parityCompressionCLM p K).restrictScalars ℝ).hasFDerivAt
+  have hc :
+      HasDerivAt
+        ((parityCompressionCLM p K) ∘
+          (fun s : ℝ => frozenCanonicalSourceFirstMatrix Q s K))
+        ((parityCompressionCLM p K)
+          (frozenCanonicalSourceSecondMatrix Q L K)) L :=
+    hT.comp_hasDerivAt L hM
+  simpa [frozenParityCompressedFirstCLM,
     frozenParityCompressedSecondCLM, Function.comp_def] using hc
 
 /-- First frozen matrix derivative across a q/pred split. -/
