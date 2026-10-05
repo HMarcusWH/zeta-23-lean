@@ -866,8 +866,14 @@ theorem hasDerivAt_parityCompressedCanonicalCLM_log_nat
       (hasDerivAt_frozenParityCompressedFamilyCLM_pos
         q p K hlog).hasDerivWithinAt.congr_of_eventuallyEq
           heqRight hvalueRight
-  rw [← hasDerivWithinAt_univ]
-  simpa only [Iic_union_Ici] using hleft.union hright
+  have hallWithin :
+      HasDerivWithinAt
+        (fun L : ℝ => parityCompressedCanonicalCLM p L K)
+        (frozenParityCompressedFirstCLM q p K (Real.log q))
+        Set.univ
+        (Real.log q) := by
+    simpa only [Iic_union_Ici] using hleft.union hright
+  exact hasDerivWithinAt_univ.mp hallWithin
 
 /-- The production compressed family is differentiable at every positive
 aperture with derivative equal to the frozen-cutoff first jet. -/
@@ -1024,12 +1030,19 @@ theorem hasDerivAt_productionParityFirstJetCLM_pos
         (hasDerivAt_frozenParityCompressedFirstCLM_pos
           Q p K hlogpos).hasDerivWithinAt.congr_of_eventuallyEq
             heqRight hvalueRight
-    have hall :
-        HasDerivAt (productionParityFirstJetCLM p K)
+    have hallWithin :
+        HasDerivWithinAt
+          (productionParityFirstJetCLM p K)
           (frozenParityCompressedSecondCLM Q p K (Real.log Q))
+          Set.univ
           (Real.log Q) := by
-      rw [← hasDerivWithinAt_univ]
       simpa only [Iic_union_Ici] using hleft.union hright
+    have hall :
+        HasDerivAt
+          (productionParityFirstJetCLM p K)
+          (frozenParityCompressedSecondCLM Q p K (Real.log Q))
+          (Real.log Q) :=
+      hasDerivWithinAt_univ.mp hallWithin
     simpa [productionParitySecondJetCLM, hcut] using hall
   · have hQstrict : (Q : ℝ) < Real.exp L := lt_of_le_of_ne hQlower hseam
     have hQrealpos : (0 : ℝ) < (Q : ℝ) := by exact_mod_cast hQpos
