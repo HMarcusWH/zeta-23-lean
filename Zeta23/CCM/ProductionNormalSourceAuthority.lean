@@ -160,6 +160,11 @@ theorem productionContactNormalPhysical_admissible
     intro t ht
     rw [uIoc_of_le hL.le] at ht
     have htIcc : t ∈ Icc (0 : ℝ) L := ⟨le_of_lt ht.1, ht.2⟩
+    change
+      Complex.re
+          (star m * (g t * (completeSourcePoleWeight t : ℂ))) =
+        productionContactNormalPhysicalTest L K v t *
+          completeSourcePoleWeight t
     rw [productionContactNormalPhysicalTest_eq_dictionary_re hL K hK v htIcc]
     simp [g, m, Complex.mul_re]
     ring
@@ -178,6 +183,9 @@ theorem productionContactNormalPhysical_admissible
     intro t ht
     rw [uIoc_of_le hL.le] at ht
     have htIcc : t ∈ Icc (0 : ℝ) L := ⟨le_of_lt ht.1, ht.2⟩
+    change
+      Complex.re (star m * (g t * (archDensity t : ℂ))) =
+        productionContactNormalPhysicalTest L K v t * archDensity t
     rw [productionContactNormalPhysicalTest_eq_dictionary_re hL K hK v htIcc]
     simp [g, m, Complex.mul_re]
     ring
