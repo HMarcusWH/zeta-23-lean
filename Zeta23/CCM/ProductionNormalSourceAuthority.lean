@@ -83,6 +83,7 @@ theorem productionContactNormalPhysical_admissible
     ProductionWeightedPhysicalAdmissible L
       (productionContactNormalPhysicalTest L K v) := by
   let g := productionContactNormalDictionaryTest L K v
+  let m := productionContactMomentFour K v
   have hgcont : Continuous g := by
     simpa [g, productionContactNormalDictionaryTest] using
       continuous_dictionaryMixedTest K
@@ -116,32 +117,71 @@ theorem productionContactNormalPhysical_admissible
                   (centeredQuadraticNormal K)) *
             evenBoundaryFlatRawCoefficients K v j)
         hL
-  have hraw : Continuous (productionContactNormalSourceChannel L K v) := by
-    unfold productionContactNormalSourceChannel
-    fun_prop (disch := exact hL.ne')
+  have hinter_re
+      {F : ℝ → ℂ}
+      (hF : IntervalIntegrable F volume 0 L) :
+      IntervalIntegrable (fun t => Complex.re (F t)) volume 0 L := by
+    rw [intervalIntegrable_iff] at hF ⊢
+    exact Complex.reCLM.integrable_comp hF
+  have hgre :
+      Measurable (fun t : ℝ => Complex.re (star m * g t)) :=
+    (Complex.continuous_re.comp (continuous_const.mul hgcont)).measurable
+  have hmeas :
+      AEStronglyMeasurable
+        (fun t : ℝ =>
+          if t ∈ Icc (0 : ℝ) L then Complex.re (star m * g t) else 0) :=
+    (Measurable.ite measurableSet_Icc hgre measurable_const).aestronglyMeasurable
+  have hphysical :
+      productionContactNormalPhysicalTest L K v =
+        fun t : ℝ =>
+          if t ∈ Icc (0 : ℝ) L then Complex.re (star m * g t) else 0 := by
+    funext t
+    by_cases ht : t ∈ Icc (0 : ℝ) L
+    · rw [productionContactNormalPhysicalTest_eq_dictionary_re hL K hK v ht]
+      simp [ht, g, m]
+    · simp [productionContactNormalPhysicalTest, productionPhysicalClamp, ht]
   refine ⟨?_, ?_, ?_, productionPhysicalClamp_support_subset L _⟩
-  · unfold productionContactNormalPhysicalTest productionPhysicalClamp
-    exact
-      (Measurable.ite measurableSet_Icc hraw.measurable measurable_const)
-        .aestronglyMeasurable
-  · have h :=
-      ((hpole.const_mul (star (productionContactMomentFour K v))).re)
-    refine h.congr ?_
-    filter_upwards with t
-    by_cases ht : t ∈ Icc (0 : ℝ) L
-    · rw [productionContactNormalPhysicalTest_eq_dictionary_re
-        hL K hK v ht]
-      ring
-    · simp [productionContactNormalPhysicalTest, productionPhysicalClamp, ht]
-  · have h :=
-      ((harch.const_mul (star (productionContactMomentFour K v))).re)
-    refine h.congr ?_
-    filter_upwards with t
-    by_cases ht : t ∈ Icc (0 : ℝ) L
-    · rw [productionContactNormalPhysicalTest_eq_dictionary_re
-        hL K hK v ht]
-      ring
-    · simp [productionContactNormalPhysicalTest, productionPhysicalClamp, ht]
+  · rw [hphysical]
+    exact hmeas
+  · have hcomplex :
+        IntervalIntegrable
+          (fun t : ℝ =>
+            star m * (g t * (completeSourcePoleWeight t : ℂ)))
+          volume 0 L :=
+      hpole.const_mul (star m)
+    have hreal :
+        IntervalIntegrable
+          (fun t : ℝ =>
+            Complex.re
+              (star m * (g t * (completeSourcePoleWeight t : ℂ))))
+          volume 0 L :=
+      hinter_re hcomplex
+    refine hreal.congr ?_
+    intro t ht
+    rw [uIoc_of_le hL.le] at ht
+    have htIcc : t ∈ Icc (0 : ℝ) L := ⟨le_of_lt ht.1, ht.2⟩
+    rw [productionContactNormalPhysicalTest_eq_dictionary_re hL K hK v htIcc]
+    simp [g, m, Complex.mul_re]
+    ring
+  · have hcomplex :
+        IntervalIntegrable
+          (fun t : ℝ => star m * (g t * (archDensity t : ℂ)))
+          volume 0 L :=
+      harch.const_mul (star m)
+    have hreal :
+        IntervalIntegrable
+          (fun t : ℝ =>
+            Complex.re (star m * (g t * (archDensity t : ℂ))))
+          volume 0 L :=
+      hinter_re hcomplex
+    refine hreal.congr ?_
+    intro t ht
+    rw [uIoc_of_le hL.le] at ht
+    have htIcc : t ∈ Icc (0 : ℝ) L := ⟨le_of_lt ht.1, ht.2⟩
+    rw [productionContactNormalPhysicalTest_eq_dictionary_re hL K hK v htIcc]
+    simp [g, m, Complex.mul_re]
+    ring
+
 /-- Clamping does not change the canonical normal-channel production value. -/
 theorem productionContactNormalPhysicalValue_eq_sourceValue
     {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 1 ≤ K)
