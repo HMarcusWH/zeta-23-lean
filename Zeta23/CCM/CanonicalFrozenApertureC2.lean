@@ -804,80 +804,68 @@ theorem hasDerivAt_parityCompressedCanonicalCLM_log_nat
       Real.log (q : ℝ) < Real.log ((q + 1 : ℕ) : ℝ) :=
     Real.strictMonoOn_log hqpos hnextpos
       (by exact_mod_cast Nat.lt_succ_self q)
-  refine (hasDerivAt_iff_tendsto_slope_left_right
-    (𝕜 := ℝ)
-    (f := fun L : ℝ => parityCompressedCanonicalCLM p L K)
-    (f' := frozenParityCompressedFirstCLM q p K (Real.log q))
-    (x := Real.log q)).2 ?_
-  constructor
-  · let g : ℝ →
-        (euclideanParityBoundaryFlatSubspace p K →L[ℂ]
-          euclideanParityBoundaryFlatSubspace p K) :=
-      fun L => frozenParityCompressedFamilyCLM (q - 1) p K L
-    have hg :=
-      hasDerivAt_frozenParityCompressedFamilyCLM_pos
-        (q - 1) p K hlog
-    have ht :
-        Tendsto
-          (slope g (Real.log (q : ℝ)))
-          (𝓝[<] Real.log (q : ℝ))
-          (𝓝 (frozenParityCompressedFirstCLM
-            (q - 1) p K (Real.log q))) :=
-      (hg.tendsto_slope (𝕜 := ℝ)).mono_left
-        (nhdsLT_le_nhdsNE (Real.log (q : ℝ)))
-    have hevent :
-        (fun L : ℝ => parityCompressedCanonicalCLM p L K) =ᶠ[
-          𝓝[<] Real.log (q : ℝ)] g := by
-      filter_upwards [Ioo_mem_nhdsLT hpredlt] with L hL
-      have hsucc : q - 1 + 1 = q := by omega
+  have hfloor :
+      ⌊Real.exp (Real.log (q : ℝ))⌋₊ = q :=
+    natFloor_exp_log_nat q (by omega)
+  have hvalueLeft :
+      parityCompressedCanonicalCLM p (Real.log q) K =
+        frozenParityCompressedFamilyCLM (q - 1) p K (Real.log q) :=
+    parityCompressedFamily_log_eq_frozen_pred q p K hq
+  have hvalueRight :
+      parityCompressedCanonicalCLM p (Real.log q) K =
+        frozenParityCompressedFamilyCLM q p K (Real.log q) :=
+    parityCompressedFamily_eq_frozen_of_floor q p K _ hfloor
+  have heqLeft :
+      (fun L : ℝ => parityCompressedCanonicalCLM p L K) =ᶠ[
+        𝓝[≤] Real.log (q : ℝ)]
+        (fun L : ℝ => frozenParityCompressedFamilyCLM (q - 1) p K L) := by
+    filter_upwards [Ioc_mem_nhdsLE hpredlt] with L hL
+    rcases eq_or_lt_of_le hL.2 with hEq | hLt
+    · subst L
+      exact hvalueLeft
+    · have hsucc : q - 1 + 1 = q := by omega
       have hcell : L ∈ fixedCanonicalCutoffCell (q - 1) := by
-        simpa [fixedCanonicalCutoffCell, hsucc] using hL
-      have hfloor :=
+        simpa [fixedCanonicalCutoffCell, hsucc] using ⟨hL.1, hLt⟩
+      have hfloorL :=
         natFloor_exp_eq_on_fixedCanonicalCutoffCell
           (Q := q - 1) hpred hcell
       exact parityCompressedFamily_eq_frozen_of_floor
-        (q - 1) p K L hfloor
-    have hvalue :
-        parityCompressedCanonicalCLM p (Real.log q) K =
-          g (Real.log q) :=
-      parityCompressedFamily_log_eq_frozen_pred q p K hq
-    refine ht.congr' ?_
-    filter_upwards [hevent] with L hEq
-    simp only [slope_def_module]
-    rw [hEq, hvalue]
-  · let g : ℝ →
-        (euclideanParityBoundaryFlatSubspace p K →L[ℂ]
-          euclideanParityBoundaryFlatSubspace p K) :=
-      fun L => frozenParityCompressedFamilyCLM q p K L
-    have hg :=
-      hasDerivAt_frozenParityCompressedFamilyCLM_pos q p K hlog
-    have ht :
-        Tendsto
-          (slope g (Real.log (q : ℝ)))
-          (𝓝[>] Real.log (q : ℝ))
-          (𝓝 (frozenParityCompressedFirstCLM
-            q p K (Real.log q))) :=
-      (hg.tendsto_slope (𝕜 := ℝ)).mono_left
-        (nhdsGT_le_nhdsNE (Real.log (q : ℝ)))
-    have hevent :
-        (fun L : ℝ => parityCompressedCanonicalCLM p L K) =ᶠ[
-          𝓝[>] Real.log (q : ℝ)] g := by
-      filter_upwards [Ioo_mem_nhdsGT hnextlt] with L hL
-      have hfloor :=
+        (q - 1) p K L hfloorL
+  have heqRight :
+      (fun L : ℝ => parityCompressedCanonicalCLM p L K) =ᶠ[
+        𝓝[≥] Real.log (q : ℝ)]
+        (fun L : ℝ => frozenParityCompressedFamilyCLM q p K L) := by
+    filter_upwards [Ico_mem_nhdsGE hnextlt] with L hL
+    rcases eq_or_lt_of_le hL.1 with hEq | hLt
+    · subst L
+      exact hvalueRight
+    · have hcell : L ∈ fixedCanonicalCutoffCell q := by
+        simpa [fixedCanonicalCutoffCell] using ⟨hLt, hL.2⟩
+      have hfloorR :=
         natFloor_exp_eq_on_fixedCanonicalCutoffCell
-          (Q := q) (by omega) hL
-      exact parityCompressedFamily_eq_frozen_of_floor q p K L hfloor
-    have hfloor :
-        ⌊Real.exp (Real.log (q : ℝ))⌋₊ = q :=
-      natFloor_exp_log_nat q (by omega)
-    have hvalue :
-        parityCompressedCanonicalCLM p (Real.log q) K =
-          g (Real.log q) :=
-      parityCompressedFamily_eq_frozen_of_floor q p K _ hfloor
-    refine ht.congr' ?_
-    filter_upwards [hevent] with L hEq
-    simp only [slope_def_module]
-    rw [hEq, hvalue]
+          (Q := q) (by omega) hcell
+      exact parityCompressedFamily_eq_frozen_of_floor q p K L hfloorR
+  have hleft :
+      HasDerivWithinAt
+        (fun L : ℝ => parityCompressedCanonicalCLM p L K)
+        (frozenParityCompressedFirstCLM q p K (Real.log q))
+        (Iic (Real.log (q : ℝ))) (Real.log q) := by
+    rw [frozenParityCompressedFirstCLM_log_eq_pred q K hq p]
+    exact
+      (hasDerivAt_frozenParityCompressedFamilyCLM_pos
+        (q - 1) p K hlog).hasDerivWithinAt.congr_of_eventuallyEq
+          heqLeft hvalueLeft
+  have hright :
+      HasDerivWithinAt
+        (fun L : ℝ => parityCompressedCanonicalCLM p L K)
+        (frozenParityCompressedFirstCLM q p K (Real.log q))
+        (Ici (Real.log (q : ℝ))) (Real.log q) := by
+    exact
+      (hasDerivAt_frozenParityCompressedFamilyCLM_pos
+        q p K hlog).hasDerivWithinAt.congr_of_eventuallyEq
+          heqRight hvalueRight
+  rw [← hasDerivWithinAt_univ]
+  simpa only [Iic_union_Ici] using hleft.union hright
 
 /-- The production compressed family is differentiable at every positive
 aperture with derivative equal to the frozen-cutoff first jet. -/
@@ -975,77 +963,70 @@ theorem hasDerivAt_productionParityFirstJetCLM_pos
         Real.log (Q : ℝ) < Real.log ((Q + 1 : ℕ) : ℝ) :=
       Real.strictMonoOn_log hQposR hnextpos
         (by exact_mod_cast Nat.lt_succ_self Q)
-    refine (hasDerivAt_iff_tendsto_slope_left_right
-      (𝕜 := ℝ)
-      (f := productionParityFirstJetCLM p K)
-      (f' := productionParitySecondJetCLM p K (Real.log Q))
-      (x := Real.log Q)).2 ?_
-    constructor
-    · have hg :=
-        hasDerivAt_frozenParityCompressedFirstCLM_pos
-          (Q - 1) p K hlogpos
-      have ht :
-          Tendsto
-            (slope
-              (fun s : ℝ => frozenParityCompressedFirstCLM (Q - 1) p K s)
-              (Real.log (Q : ℝ)))
-            (𝓝[<] Real.log (Q : ℝ))
-            (𝓝 (frozenParityCompressedSecondCLM
-              (Q - 1) p K (Real.log Q))) :=
-        (hg.tendsto_slope (𝕜 := ℝ)).mono_left
-          (nhdsLT_le_nhdsNE (Real.log (Q : ℝ)))
-      have hevent :
-          productionParityFirstJetCLM p K =ᶠ[𝓝[<] Real.log (Q : ℝ)]
-            (fun s => frozenParityCompressedFirstCLM (Q - 1) p K s) := by
-        filter_upwards [Ioo_mem_nhdsLT hpredlt] with s hs
-        have hsucc : Q - 1 + 1 = Q := by omega
+    have hcut : canonicalDerivativeCutoff (Real.log (Q : ℝ)) = Q :=
+      natFloor_exp_log_nat Q (by omega)
+    have hvalueLeft :
+        productionParityFirstJetCLM p K (Real.log Q) =
+          frozenParityCompressedFirstCLM (Q - 1) p K (Real.log Q) := by
+      rw [productionParityFirstJetCLM, hcut,
+        frozenParityCompressedFirstCLM_log_eq_pred Q K hQtwo p]
+    have hvalueRight :
+        productionParityFirstJetCLM p K (Real.log Q) =
+          frozenParityCompressedFirstCLM Q p K (Real.log Q) := by
+      simp [productionParityFirstJetCLM, hcut]
+    have heqLeft :
+        productionParityFirstJetCLM p K =ᶠ[𝓝[≤] Real.log (Q : ℝ)]
+          (fun s => frozenParityCompressedFirstCLM (Q - 1) p K s) := by
+      filter_upwards [Ioc_mem_nhdsLE hpredlt] with s hs
+      rcases eq_or_lt_of_le hs.2 with hEq | hLt
+      · subst s
+        exact hvalueLeft
+      · have hsucc : Q - 1 + 1 = Q := by omega
         have hcell : s ∈ fixedCanonicalCutoffCell (Q - 1) := by
-          simpa [fixedCanonicalCutoffCell, hsucc] using hs
+          simpa [fixedCanonicalCutoffCell, hsucc] using ⟨hs.1, hLt⟩
         have hfloor :=
           natFloor_exp_eq_on_fixedCanonicalCutoffCell
             (Q := Q - 1) hpred hcell
         simp [productionParityFirstJetCLM, canonicalDerivativeCutoff, hfloor]
-      have hcut : canonicalDerivativeCutoff (Real.log (Q : ℝ)) = Q :=
-        natFloor_exp_log_nat Q (by omega)
-      have hvalue :
-          productionParityFirstJetCLM p K (Real.log Q) =
-            frozenParityCompressedFirstCLM (Q - 1) p K (Real.log Q) := by
-        rw [productionParityFirstJetCLM, hcut,
-          frozenParityCompressedFirstCLM_log_eq_pred Q K hQtwo p]
-      refine ht.congr' ?_
-      filter_upwards [hevent] with s hs
-      simp only [slope_def_module]
-      rw [hs, hvalue]
-    · have hg :=
-        hasDerivAt_frozenParityCompressedFirstCLM_pos Q p K hlogpos
-      have ht :
-          Tendsto
-            (slope
-              (fun s : ℝ => frozenParityCompressedFirstCLM Q p K s)
-              (Real.log (Q : ℝ)))
-            (𝓝[>] Real.log (Q : ℝ))
-            (𝓝 (frozenParityCompressedSecondCLM
-              Q p K (Real.log Q))) :=
-        (hg.tendsto_slope (𝕜 := ℝ)).mono_left
-          (nhdsGT_le_nhdsNE (Real.log (Q : ℝ)))
-      have hevent :
-          productionParityFirstJetCLM p K =ᶠ[𝓝[>] Real.log (Q : ℝ)]
-            (fun s => frozenParityCompressedFirstCLM Q p K s) := by
-        filter_upwards [Ioo_mem_nhdsGT hnextlt] with s hs
+    have heqRight :
+        productionParityFirstJetCLM p K =ᶠ[𝓝[≥] Real.log (Q : ℝ)]
+          (fun s => frozenParityCompressedFirstCLM Q p K s) := by
+      filter_upwards [Ico_mem_nhdsGE hnextlt] with s hs
+      rcases eq_or_lt_of_le hs.1 with hEq | hLt
+      · subst s
+        exact hvalueRight
+      · have hcell : s ∈ fixedCanonicalCutoffCell Q := by
+          simpa [fixedCanonicalCutoffCell] using ⟨hLt, hs.2⟩
         have hfloor :=
           natFloor_exp_eq_on_fixedCanonicalCutoffCell
-            (Q := Q) (by omega) hs
+            (Q := Q) (by omega) hcell
         simp [productionParityFirstJetCLM, canonicalDerivativeCutoff, hfloor]
-      have hcut : canonicalDerivativeCutoff (Real.log (Q : ℝ)) = Q :=
-        natFloor_exp_log_nat Q (by omega)
-      have hvalue :
-          productionParityFirstJetCLM p K (Real.log Q) =
-            frozenParityCompressedFirstCLM Q p K (Real.log Q) := by
-        simp [productionParityFirstJetCLM, hcut]
-      refine ht.congr' ?_
-      filter_upwards [hevent] with s hs
-      simp only [slope_def_module]
-      rw [hs, hvalue]
+    have hleft :
+        HasDerivWithinAt
+          (productionParityFirstJetCLM p K)
+          (frozenParityCompressedSecondCLM Q p K (Real.log Q))
+          (Iic (Real.log (Q : ℝ))) (Real.log Q) := by
+      rw [frozenParityCompressedSecondCLM_log_eq_pred Q K hQtwo p]
+      exact
+        (hasDerivAt_frozenParityCompressedFirstCLM_pos
+          (Q - 1) p K hlogpos).hasDerivWithinAt.congr_of_eventuallyEq
+            heqLeft hvalueLeft
+    have hright :
+        HasDerivWithinAt
+          (productionParityFirstJetCLM p K)
+          (frozenParityCompressedSecondCLM Q p K (Real.log Q))
+          (Ici (Real.log (Q : ℝ))) (Real.log Q) := by
+      exact
+        (hasDerivAt_frozenParityCompressedFirstCLM_pos
+          Q p K hlogpos).hasDerivWithinAt.congr_of_eventuallyEq
+            heqRight hvalueRight
+    have hall :
+        HasDerivAt (productionParityFirstJetCLM p K)
+          (frozenParityCompressedSecondCLM Q p K (Real.log Q))
+          (Real.log Q) := by
+      rw [← hasDerivWithinAt_univ]
+      simpa only [Iic_union_Ici] using hleft.union hright
+    simpa [productionParitySecondJetCLM, hcut] using hall
   · have hQstrict : (Q : ℝ) < Real.exp L := lt_of_le_of_ne hQlower hseam
     have hQrealpos : (0 : ℝ) < (Q : ℝ) := by exact_mod_cast hQpos
     have hQ1realpos : (0 : ℝ) < ((Q + 1 : ℕ) : ℝ) := by positivity
@@ -1104,47 +1085,61 @@ theorem continuousAt_productionParitySecondJetCLM_pos
         Real.log (Q : ℝ) < Real.log ((Q + 1 : ℕ) : ℝ) :=
       Real.strictMonoOn_log hQposR hnextpos
         (by exact_mod_cast Nat.lt_succ_self Q)
-    rw [continuousAt_iff_continuous_left'_right']
-    constructor
-    · have hf :=
-        continuousAt_frozenParityCompressedSecondCLM_pos
-          (Q - 1) p K hlogpos
-      have hevent :
-          productionParitySecondJetCLM p K =ᶠ[𝓝[<] Real.log (Q : ℝ)]
-            (fun s => frozenParityCompressedSecondCLM (Q - 1) p K s) := by
-        filter_upwards [Ioo_mem_nhdsLT hpredlt] with s hs
-        have hsucc : Q - 1 + 1 = Q := by omega
+    have hcut : canonicalDerivativeCutoff (Real.log (Q : ℝ)) = Q :=
+      natFloor_exp_log_nat Q (by omega)
+    have hvalueLeft :
+        productionParitySecondJetCLM p K (Real.log Q) =
+          frozenParityCompressedSecondCLM (Q - 1) p K (Real.log Q) := by
+      rw [productionParitySecondJetCLM, hcut,
+        frozenParityCompressedSecondCLM_log_eq_pred Q K hQtwo p]
+    have hvalueRight :
+        productionParitySecondJetCLM p K (Real.log Q) =
+          frozenParityCompressedSecondCLM Q p K (Real.log Q) := by
+      simp [productionParitySecondJetCLM, hcut]
+    have heqLeft :
+        productionParitySecondJetCLM p K =ᶠ[𝓝[≤] Real.log (Q : ℝ)]
+          (fun s => frozenParityCompressedSecondCLM (Q - 1) p K s) := by
+      filter_upwards [Ioc_mem_nhdsLE hpredlt] with s hs
+      rcases eq_or_lt_of_le hs.2 with hEq | hLt
+      · subst s
+        exact hvalueLeft
+      · have hsucc : Q - 1 + 1 = Q := by omega
         have hcell : s ∈ fixedCanonicalCutoffCell (Q - 1) := by
-          simpa [fixedCanonicalCutoffCell, hsucc] using hs
+          simpa [fixedCanonicalCutoffCell, hsucc] using ⟨hs.1, hLt⟩
         have hfloor :=
           natFloor_exp_eq_on_fixedCanonicalCutoffCell
             (Q := Q - 1) hpred hcell
         simp [productionParitySecondJetCLM, canonicalDerivativeCutoff, hfloor]
-      have hcut : canonicalDerivativeCutoff (Real.log (Q : ℝ)) = Q :=
-        natFloor_exp_log_nat Q (by omega)
-      have hvalue :
-          productionParitySecondJetCLM p K (Real.log Q) =
-            frozenParityCompressedSecondCLM (Q - 1) p K (Real.log Q) := by
-        rw [productionParitySecondJetCLM, hcut,
-          frozenParityCompressedSecondCLM_log_eq_pred Q K hQtwo p]
-      exact hf.continuousWithinAt.congr_of_eventuallyEq hevent hvalue
-    · have hf :=
-        continuousAt_frozenParityCompressedSecondCLM_pos Q p K hlogpos
-      have hevent :
-          productionParitySecondJetCLM p K =ᶠ[𝓝[>] Real.log (Q : ℝ)]
-            (fun s => frozenParityCompressedSecondCLM Q p K s) := by
-        filter_upwards [Ioo_mem_nhdsGT hnextlt] with s hs
+    have heqRight :
+        productionParitySecondJetCLM p K =ᶠ[𝓝[≥] Real.log (Q : ℝ)]
+          (fun s => frozenParityCompressedSecondCLM Q p K s) := by
+      filter_upwards [Ico_mem_nhdsGE hnextlt] with s hs
+      rcases eq_or_lt_of_le hs.1 with hEq | hLt
+      · subst s
+        exact hvalueRight
+      · have hcell : s ∈ fixedCanonicalCutoffCell Q := by
+          simpa [fixedCanonicalCutoffCell] using ⟨hLt, hs.2⟩
         have hfloor :=
           natFloor_exp_eq_on_fixedCanonicalCutoffCell
-            (Q := Q) (by omega) hs
+            (Q := Q) (by omega) hcell
         simp [productionParitySecondJetCLM, canonicalDerivativeCutoff, hfloor]
-      have hcut : canonicalDerivativeCutoff (Real.log (Q : ℝ)) = Q :=
-        natFloor_exp_log_nat Q (by omega)
-      have hvalue :
-          productionParitySecondJetCLM p K (Real.log Q) =
-            frozenParityCompressedSecondCLM Q p K (Real.log Q) := by
-        simp [productionParitySecondJetCLM, hcut]
-      exact hf.continuousWithinAt.congr_of_eventuallyEq hevent hvalue
+    have hleft :
+        ContinuousWithinAt (productionParitySecondJetCLM p K)
+          (Iic (Real.log (Q : ℝ))) (Real.log Q) :=
+      (continuousAt_frozenParityCompressedSecondCLM_pos
+        (Q - 1) p K hlogpos).continuousWithinAt.congr_of_eventuallyEq
+          heqLeft hvalueLeft
+    have hright :
+        ContinuousWithinAt (productionParitySecondJetCLM p K)
+          (Ici (Real.log (Q : ℝ))) (Real.log Q) :=
+      (continuousAt_frozenParityCompressedSecondCLM_pos
+        Q p K hlogpos).continuousWithinAt.congr_of_eventuallyEq
+          heqRight hvalueRight
+    have hall :
+        ContinuousWithinAt (productionParitySecondJetCLM p K)
+          Set.univ (Real.log Q) := by
+      simpa only [Iic_union_Ici] using hleft.union hright
+    exact (continuousWithinAt_univ _ _).mp hall
   · have hQstrict : (Q : ℝ) < Real.exp L := lt_of_le_of_ne hQlower hseam
     have hQrealpos : (0 : ℝ) < (Q : ℝ) := by exact_mod_cast hQpos
     have hQ1realpos : (0 : ℝ) < ((Q + 1 : ℕ) : ℝ) := by positivity
