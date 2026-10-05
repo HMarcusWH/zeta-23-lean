@@ -608,7 +608,7 @@ private theorem continuous_productionEvenCompactLiftRealSecondDerivative
   by_cases hleftEq : y = -L
   · subst y
     have hzero :
-        ContinuousWithinAt (fun _ : ℝ => 0) (Iic (-L)) (-L) :=
+        ContinuousWithinAt (fun _ : ℝ => (0 : ℝ)) (Iic (-L)) (-L) :=
       continuousAt_const.continuousWithinAt
     have hneg :
         ContinuousWithinAt (fun y : ℝ => deriv (deriv f) (-y))
@@ -712,7 +712,7 @@ private theorem continuous_productionEvenCompactLiftRealSecondDerivative
         ContinuousWithinAt (deriv (deriv f)) (Icc 0 L) L :=
       hdd.continuousAt.continuousWithinAt
     have hzero :
-        ContinuousWithinAt (fun _ : ℝ => 0) (Ici L) L :=
+        ContinuousWithinAt (fun _ : ℝ => (0 : ℝ)) (Ici L) L :=
       continuousAt_const.continuousWithinAt
     have hp' :
         ContinuousWithinAt
@@ -945,9 +945,8 @@ theorem sourceAtomRealEnergy_second_through_four_zero
 private theorem hasDerivAt_one_sub_div_const
     (L t : ℝ) :
     HasDerivAt (fun s : ℝ => 1 - s / L) (-(1 / L)) t := by
-  have h :=
-    (hasDerivAt_const t (1 : ℝ)).sub ((hasDerivAt_id t).div_const L)
-  simpa only [Pi.sub_apply, id_eq, zero_sub] using h
+  simpa only [id_eq] using
+    (((hasDerivAt_id t).div_const L).const_sub (1 : ℝ))
 
 private theorem hasDerivAt_complex_re_comp
     {f : ℝ → ℂ} {f' : ℂ} {t : ℝ}
