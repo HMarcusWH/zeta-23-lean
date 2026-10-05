@@ -1225,7 +1225,13 @@ theorem productionSecondDerivativePhysicalRaw_liftJets
         | ring_nf
     exact hp0.deriv
   · simpa [productionSecondDerivativePhysicalRaw, x, hcoordL, hj.1]
-  · have hs :=
+  · have hj2x :
+        sourceAtomRealEnergySecondDerivative K x 0 = 0 := by
+      simpa [x] using hj.1
+    have hj3x :
+        deriv (sourceAtomRealEnergySecondDerivative K x) 0 = 0 := by
+      simpa [x] using hj.2.1
+    have hs :=
       (hasDerivAt_sourceAtomRealEnergySecondDerivative_from_contDiff K x 0).comp_of_eq
         L (hcoord L) hcoordL.symm
     have hp :=
@@ -1242,8 +1248,8 @@ theorem productionSecondDerivativePhysicalRaw_liftJets
         | (funext s; simp [Function.comp_def, c, hL.ne', hcoordL,
             hj.1, hj.2.1, div_eq_mul_inv,
             mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
-        | (simp [Function.comp_def, x, c, hL.ne', hcoordL,
-            hj.1, hj.2.1, div_eq_mul_inv,
+        | (simp [Function.comp_def, c, hL.ne', hcoordL,
+            hj2x, hj3x, div_eq_mul_inv,
             mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
         | ring_nf
     exact hp0.deriv
