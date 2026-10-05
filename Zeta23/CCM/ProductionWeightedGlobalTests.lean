@@ -943,6 +943,16 @@ private theorem hasDerivAt_one_sub_div_const
     (hasDerivAt_const t (1 : ℝ)).sub ((hasDerivAt_id t).div_const L)
   simpa only [Pi.sub_apply, id_eq, zero_sub] using h
 
+private theorem hasDerivAt_complex_re_comp
+    {f : ℝ → ℂ} {f' : ℂ} {t : ℝ}
+    (hf : HasDerivAt f f' t) :
+    HasDerivAt (fun s : ℝ => Complex.re (f s)) (Complex.re f') t := by
+  have hc :
+      HasDerivAt (Complex.reCLM ∘ f) (Complex.reCLM f') t := by
+    exact
+      (Complex.reCLM.hasFDerivAt (x := f t)).comp_hasDerivAt t hf
+  simpa [Function.comp_def] using hc
+
 /-- The first weighted physical derivative has the endpoint jets needed by the
 compact even lift. -/
 theorem productionFirstDerivativePhysicalRaw_liftJets
@@ -1433,38 +1443,178 @@ theorem productionMixedDerivativePhysicalRaw_liftJets
     (z w : euclideanEvenBoundaryFlatSubspace K) :
     ProductionEvenCompactLiftJets L
       (productionMixedDerivativePhysicalRaw L K z w) := by
+  let p : ℝ → ℂ :=
+    sourceAtomPairingDerivative K
+      (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+      (w : EuclideanSpace ℂ (Fin (2 * K + 1)))
+  let r : ℝ → ℝ := fun u => Complex.re (p u)
+  let c : ℝ := -(1 / L)
+  have hpC2 : ContDiff ℝ 2 p := by
+    dsimp [p]
+    exact contDiff_two_sourceAtomPairingDerivative K
+      (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+      (w : EuclideanSpace ℂ (Fin (2 * K + 1)))
+  have hrC2 : ContDiff ℝ 2 r := by
+    dsimp [r]
+    exact contDiff_two_complex_re_comp hpC2
+  have hrDiff : Differentiable ℝ r :=
+    hrC2.differentiable (by norm_num)
+  have hrDerivDiff : Differentiable ℝ (deriv r) := by
+    have hC1 : ContDiff ℝ 1 (deriv r) := by
+      simpa using hrC2.deriv'
+    exact hC1.differentiable (by norm_num)
   have hend := sourceAtomPairingDerivative_endpoints_zero K z w
   have hcoordL : 1 - L / L = 0 := by
     rw [div_self hL.ne']
     ring
+  have hcoord0 : 1 - 0 / L = 1 := by simp [hL.ne']
+  have hcoord (t : ℝ) :
+      HasDerivAt (fun s : ℝ => 1 - s / L) c t := by
+    dsimp [c]
+    exact hasDerivAt_one_sub_div_const L t
+  have hr0 : r 0 = 0 := by
+    dsimp [r, p]
+    rw [hend.1]
+    simp
+  have hr1 : r 1 = 0 := by
+    dsimp [r, p]
+    rw [hend.2]
+    simp
+  have hsumz : sourcePairingCoefficientSum K
+      (z : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0 := by
+    simpa [sourcePairingCoefficientSum, evenBoundaryFlatRawCoefficients] using
+      evenBoundaryFlat_coordinateSum_zero K z
+  have hsumw : sourcePairingCoefficientSum K
+      (w : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0 := by
+    simpa [sourcePairingCoefficientSum, evenBoundaryFlatRawCoefficients] using
+      evenBoundaryFlat_coordinateSum_zero K w
+  have hpSecond0 :
+      sourceAtomPairingSecondDerivative K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+        (w : EuclideanSpace ℂ (Fin (2 * K + 1))) 0 = 0 := by
+    rw [sourceAtomPairingSecondDerivative_eq_indexActions K
+      (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+      (w : EuclideanSpace ℂ (Fin (2 * K + 1))) 0 hsumz hsumw]
+    unfold sourceAtomPairing sourceEntryReal sourcePotentialReal sourceDiagonalReal
+    simp
+  have hrDeriv0 : deriv r 0 = 0 := by
+    have hp0 :=
+      hasDerivAt_sourceAtomPairingDerivative K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+        (w : EuclideanSpace ℂ (Fin (2 * K + 1))) 0
+    have hre := hasDerivAt_complex_re_comp hp0
+    dsimp [r, p]
+    rw [hre.deriv, hpSecond0]
+    simp
+  have hpDeriv :
+      deriv p =
+        sourceAtomPairingSecondDerivative K
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (w : EuclideanSpace ℂ (Fin (2 * K + 1))) := by
+    funext u
+    dsimp [p]
+    exact
+      (hasDerivAt_sourceAtomPairingDerivative K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+        (w : EuclideanSpace ℂ (Fin (2 * K + 1))) u).deriv
+  have hpSecondDeriv0 :
+      deriv
+        (sourceAtomPairingSecondDerivative K
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (w : EuclideanSpace ℂ (Fin (2 * K + 1)))) 0 = 0 := by
+    rw [← hpDeriv]
+    exact sourceAtomPairingDerivative_secondDerivative_zero K z w
+  have hrDeriv :
+      deriv r =
+        fun u =>
+          Complex.re
+            (sourceAtomPairingSecondDerivative K
+              (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+              (w : EuclideanSpace ℂ (Fin (2 * K + 1))) u) := by
+    funext u
+    have hpU :=
+      hasDerivAt_sourceAtomPairingDerivative K
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+        (w : EuclideanSpace ℂ (Fin (2 * K + 1))) u
+    have hre := hasDerivAt_complex_re_comp hpU
+    dsimp [r, p]
+    exact hre.deriv
+  have hpSecondC1 :
+      ContDiff ℝ 1
+        (sourceAtomPairingSecondDerivative K
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (w : EuclideanSpace ℂ (Fin (2 * K + 1)))) := by
+    have hC1 : ContDiff ℝ 1 (deriv p) := by
+      simpa using hpC2.deriv'
+    simpa [hpDeriv] using hC1
+  have hpSecondAt0 :
+      HasDerivAt
+        (sourceAtomPairingSecondDerivative K
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (w : EuclideanSpace ℂ (Fin (2 * K + 1))))
+        (deriv
+          (sourceAtomPairingSecondDerivative K
+            (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+            (w : EuclideanSpace ℂ (Fin (2 * K + 1)))) 0) 0 :=
+    ((hpSecondC1.differentiable (by norm_num)) 0).hasDerivAt
+  have hreSecondAt0 := hasDerivAt_complex_re_comp hpSecondAt0
+  have hrSecond0 : deriv (deriv r) 0 = 0 := by
+    rw [hrDeriv]
+    rw [hreSecondAt0.deriv, hpSecondDeriv0]
+    simp
   refine ⟨contDiff_two_productionMixedDerivativePhysicalRaw hL.ne' K z w,
     ?_, ?_, ?_, ?_, ?_⟩
   · simp [productionMixedDerivativePhysicalRaw]
-  · simp [productionMixedDerivativePhysicalRaw, hend.2]
-  · simp [productionMixedDerivativePhysicalRaw, hcoordL, hend.1]
-  · have hpair2 :
-        deriv (sourceAtomPairingDerivative K
-          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
-          (w : EuclideanSpace ℂ (Fin (2 * K + 1)))) 0 = 0 := by
-      have hsumz : sourcePairingCoefficientSum K
-          (z : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0 := by
-        simpa [sourcePairingCoefficientSum, evenBoundaryFlatRawCoefficients] using
-          evenBoundaryFlat_coordinateSum_zero K z
-      have hsumw : sourcePairingCoefficientSum K
-          (w : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0 := by
-        simpa [sourcePairingCoefficientSum, evenBoundaryFlatRawCoefficients] using
-          evenBoundaryFlat_coordinateSum_zero K w
-      rw [(hasDerivAt_sourceAtomPairingDerivative K
-        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
-        (w : EuclideanSpace ℂ (Fin (2 * K + 1))) 0).deriv]
-      rw [sourceAtomPairingSecondDerivative_eq_indexActions K
-        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
-        (w : EuclideanSpace ℂ (Fin (2 * K + 1))) 0 hsumz hsumw]
-      unfold sourceAtomPairing sourceEntryReal sourcePotentialReal sourceDiagonalReal
-      simp
-    simp [productionMixedDerivativePhysicalRaw, hcoordL, hend.1, hpair2]
-  · have h3 := sourceAtomPairingDerivative_secondDerivative_zero K z w
-    simp [productionMixedDerivativePhysicalRaw, hcoordL, hend.1, h3]
+  · have hs := (hrDiff 1).hasDerivAt.comp_of_eq 0 (hcoord 0) hcoord0.symm
+    have hp := ((hasDerivAt_id 0).div_const (L ^ 2)).mul hs
+    have hp0 :
+        HasDerivAt
+          (productionMixedDerivativePhysicalRaw L K z w) 0 0 := by
+      convert hp using 1 <;>
+        simp [productionMixedDerivativePhysicalRaw, r, p, Function.comp_def,
+          hcoord0, hr1, div_eq_mul_inv]
+    exact hp0.deriv
+  · simpa [productionMixedDerivativePhysicalRaw, r, p, hcoordL, hr0]
+  · have hs := (hrDiff 0).hasDerivAt.comp_of_eq L (hcoord L) hcoordL.symm
+    have hp := ((hasDerivAt_id L).div_const (L ^ 2)).mul hs
+    have hp0 :
+        HasDerivAt
+          (productionMixedDerivativePhysicalRaw L K z w) 0 L := by
+      convert hp using 1 <;>
+        simp [productionMixedDerivativePhysicalRaw, r, p, Function.comp_def,
+          hcoordL, hr0, hrDeriv0, div_eq_mul_inv,
+          mul_comm, mul_left_comm, mul_assoc]
+    exact hp0.deriv
+  · let d : ℝ → ℝ := fun t =>
+      (1 / L ^ 2) * r (1 - t / L) +
+        (t / L ^ 2) * (deriv r (1 - t / L) * c)
+    have hrawDeriv :
+        deriv (productionMixedDerivativePhysicalRaw L K z w) = d := by
+      funext t
+      have hs := (hrDiff (1 - t / L)).hasDerivAt.comp t (hcoord t)
+      have hp := ((hasDerivAt_id t).div_const (L ^ 2)).mul hs
+      have hp' :
+          HasDerivAt
+            (productionMixedDerivativePhysicalRaw L K z w) (d t) t := by
+        convert hp using 1 <;>
+          simp [productionMixedDerivativePhysicalRaw, d, r, p, c,
+            Function.comp_def, div_eq_mul_inv,
+            mul_comm, mul_left_comm, mul_assoc] <;> ring
+      exact hp'.deriv
+    have hs1 := (hrDiff 0).hasDerivAt.comp_of_eq L (hcoord L) hcoordL.symm
+    have hs2 :=
+      (hrDerivDiff 0).hasDerivAt.comp_of_eq L (hcoord L) hcoordL.symm
+    have hterm1 := hs1.const_mul (1 / L ^ 2)
+    have hterm2 :=
+      ((hasDerivAt_id L).div_const (L ^ 2)).mul (hs2.mul_const c)
+    have hd := hterm1.add hterm2
+    have hd0 : HasDerivAt d 0 L := by
+      convert hd using 1 <;>
+        simp [d, c, hcoordL, hr0, hrDeriv0, hrSecond0,
+          Function.comp_def, div_eq_mul_inv,
+          mul_comm, mul_left_comm, mul_assoc] <;> ring
+    rw [hrawDeriv]
+    exact hd0.deriv
 
 def productionMixedDerivativeGlobalTest
     (L : ℝ) (K : ℕ)
