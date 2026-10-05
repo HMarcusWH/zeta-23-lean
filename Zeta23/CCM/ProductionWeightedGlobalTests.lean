@@ -992,8 +992,11 @@ theorem productionFirstDerivativePhysicalRaw_liftJets
       convert hd using 1 <;>
         first
         | rfl
-        | (simp [Function.comp_def, hcoord0, hend.2, div_eq_mul_inv] <;> ring)
-        | ring
+        | (funext s; simp [Function.comp_def, hcoord0, hend.2,
+            div_eq_mul_inv] <;> ring_nf)
+        | (simp [Function.comp_def, hL.ne', hcoord0, hend.2,
+            div_eq_mul_inv] <;> ring_nf)
+        | ring_nf
     exact hd0.deriv
   · simp [productionFirstDerivativePhysicalRaw, hcoordL,
       sourceAtomRealEnergyDerivative_zero_of_boundaryFlat K
@@ -1023,9 +1026,11 @@ theorem productionFirstDerivativePhysicalRaw_liftJets
       convert hp using 1 <;>
         first
         | rfl
-        | (simp [Function.comp_def, hcoordL, hsource0, hj.1,
-            div_eq_mul_inv, mul_comm, mul_left_comm, mul_assoc] <;> ring)
-        | ring
+        | (funext s; simp [Function.comp_def, hL.ne', hcoordL, hsource0, hj.1,
+            div_eq_mul_inv, mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
+        | (simp [Function.comp_def, hL.ne', hcoordL, hsource0, hj.1,
+            div_eq_mul_inv, mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
+        | ring_nf
     exact hp0.deriv
   · have hj := sourceAtomRealEnergy_second_through_four_zero K z
     let x : EuclideanSpace ℂ (Fin (2 * K + 1)) := z
@@ -1054,9 +1059,11 @@ theorem productionFirstDerivativePhysicalRaw_liftJets
         convert hp using 1 <;>
           first
           | rfl
+          | (funext s; simp [Function.comp_def, d, c, div_eq_mul_inv,
+              mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
           | (simp [Function.comp_def, d, c, div_eq_mul_inv,
-              mul_comm, mul_left_comm, mul_assoc] <;> ring)
-          | ring
+              mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
+          | ring_nf
       exact hp'.deriv
     have hs1 :=
       (hasDerivAt_sourceAtomRealEnergyDerivative_transport K x 0).comp_of_eq
@@ -1072,9 +1079,13 @@ theorem productionFirstDerivativePhysicalRaw_liftJets
       convert hd using 1 <;>
         first
         | rfl
-        | (simp [Function.comp_def, d, x, c, hcoordL, hj.1, hj.2.1,
-            div_eq_mul_inv, mul_comm, mul_left_comm, mul_assoc] <;> ring)
-        | ring
+        | (funext s; simp [Function.comp_def, d, x, c, hL.ne', hcoordL,
+            hj.1, hj.2.1, div_eq_mul_inv,
+            mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
+        | (simp [Function.comp_def, d, x, c, hL.ne', hcoordL,
+            hj.1, hj.2.1, div_eq_mul_inv,
+            mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
+        | ring_nf
     rw [hderiv]
     exact hd0.deriv
 
@@ -1207,8 +1218,11 @@ theorem productionSecondDerivativePhysicalRaw_liftJets
       convert hp using 1 <;>
         first
         | rfl
-        | (simp [Function.comp_def, hcoord0, div_eq_mul_inv] <;> ring)
-        | ring
+        | (funext s; simp [Function.comp_def, hcoord0,
+            div_eq_mul_inv] <;> ring_nf)
+        | (simp [Function.comp_def, hL.ne', hcoord0,
+            div_eq_mul_inv] <;> ring_nf)
+        | ring_nf
     exact hp0.deriv
   · simpa [productionSecondDerivativePhysicalRaw, x, hcoordL, hj.1]
   · have hs :=
@@ -1225,9 +1239,13 @@ theorem productionSecondDerivativePhysicalRaw_liftJets
       convert hp using 1 <;>
         first
         | rfl
-        | (simp [Function.comp_def, c, hcoordL, hj.1, hj.2.1,
-            div_eq_mul_inv, mul_comm, mul_left_comm, mul_assoc] <;> ring)
-        | ring
+        | (funext s; simp [Function.comp_def, c, hL.ne', hcoordL,
+            hj.1, hj.2.1, div_eq_mul_inv,
+            mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
+        | (simp [Function.comp_def, c, hL.ne', hcoordL,
+            hj.1, hj.2.1, div_eq_mul_inv,
+            mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
+        | ring_nf
     exact hp0.deriv
   · let e2 : ℝ → ℝ := sourceAtomRealEnergySecondDerivative K x
     let d : ℝ → ℝ := fun t =>
@@ -1248,9 +1266,11 @@ theorem productionSecondDerivativePhysicalRaw_liftJets
         convert hp using 1 <;>
           first
           | rfl
-          | (simp [Function.comp_def, d, e2, x, c, pow_two, div_eq_mul_inv,
-              mul_comm, mul_left_comm, mul_assoc] <;> ring)
-          | ring
+          | (funext s; simp [Function.comp_def, d, e2, x, c, pow_two,
+              div_eq_mul_inv, mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
+          | (simp [Function.comp_def, d, e2, x, c, pow_two,
+              div_eq_mul_inv, mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
+          | ring_nf
       exact hp'.deriv
     have hs2 :=
       (hasDerivAt_sourceAtomRealEnergySecondDerivative_from_contDiff K x 0).comp_of_eq
@@ -1274,10 +1294,13 @@ theorem productionSecondDerivativePhysicalRaw_liftJets
       convert hd using 1 <;>
         first
         | rfl
-        | (simp [Function.comp_def, d, e2, x, c, hcoordL,
+        | (funext s; simp [Function.comp_def, d, e2, x, c, hL.ne', hcoordL,
             hj.1, hj.2.1, hj.2.2, pow_two, div_eq_mul_inv,
-            mul_comm, mul_left_comm, mul_assoc] <;> ring)
-        | ring
+            mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
+        | (simp [Function.comp_def, d, e2, x, c, hL.ne', hcoordL,
+            hj.1, hj.2.1, hj.2.2, pow_two, div_eq_mul_inv,
+            mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
+        | ring_nf
     rw [hderiv]
     exact hd0.deriv
 
@@ -1602,9 +1625,11 @@ theorem productionMixedDerivativePhysicalRaw_liftJets
       convert hp using 1 <;>
         first
         | rfl
-        | (simp [productionMixedDerivativePhysicalRaw, r, p, Function.comp_def,
-            hcoord0, hr1, div_eq_mul_inv] <;> ring)
-        | ring
+        | (funext s; simp [productionMixedDerivativePhysicalRaw, r, p,
+            Function.comp_def, hcoord0, hr1, div_eq_mul_inv] <;> ring_nf)
+        | (simp [productionMixedDerivativePhysicalRaw, r, p,
+            Function.comp_def, hL.ne', hcoord0, hr1, div_eq_mul_inv] <;> ring_nf)
+        | ring_nf
     exact hp0.deriv
   · simpa [productionMixedDerivativePhysicalRaw, r, p, hcoordL, hr0]
   · have hs := (hrDiff 0).hasDerivAt.comp_of_eq L (hcoord L) hcoordL.symm
@@ -1615,10 +1640,13 @@ theorem productionMixedDerivativePhysicalRaw_liftJets
       convert hp using 1 <;>
         first
         | rfl
-        | (simp [productionMixedDerivativePhysicalRaw, r, p, Function.comp_def,
-            hcoordL, hr0, hrDeriv0, div_eq_mul_inv,
-            mul_comm, mul_left_comm, mul_assoc] <;> ring)
-        | ring
+        | (funext s; simp [productionMixedDerivativePhysicalRaw, r, p,
+            Function.comp_def, hL.ne', hcoordL, hr0, hrDeriv0,
+            div_eq_mul_inv, mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
+        | (simp [productionMixedDerivativePhysicalRaw, r, p,
+            Function.comp_def, hL.ne', hcoordL, hr0, hrDeriv0,
+            div_eq_mul_inv, mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
+        | ring_nf
     exact hp0.deriv
   · let d : ℝ → ℝ := fun t =>
       (1 / L ^ 2) * r (1 - t / L) +
@@ -1634,10 +1662,13 @@ theorem productionMixedDerivativePhysicalRaw_liftJets
         convert hp using 1 <;>
           first
           | rfl
+          | (funext s; simp [productionMixedDerivativePhysicalRaw, d, r, p, c,
+              Function.comp_def, div_eq_mul_inv,
+              mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
           | (simp [productionMixedDerivativePhysicalRaw, d, r, p, c,
               Function.comp_def, div_eq_mul_inv,
-              mul_comm, mul_left_comm, mul_assoc] <;> ring)
-          | ring
+              mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
+          | ring_nf
       exact hp'.deriv
     have hs1 := (hrDiff 0).hasDerivAt.comp_of_eq L (hcoord L) hcoordL.symm
     have hs2 :=
@@ -1650,10 +1681,13 @@ theorem productionMixedDerivativePhysicalRaw_liftJets
       convert hd using 1 <;>
         first
         | rfl
-        | (simp [d, c, hcoordL, hr0, hrDeriv0, hrSecond0,
+        | (funext s; simp [d, c, hL.ne', hcoordL, hr0, hrDeriv0, hrSecond0,
             Function.comp_def, div_eq_mul_inv,
-            mul_comm, mul_left_comm, mul_assoc] <;> ring)
-        | ring
+            mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
+        | (simp [d, c, hL.ne', hcoordL, hr0, hrDeriv0, hrSecond0,
+            Function.comp_def, div_eq_mul_inv,
+            mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
+        | ring_nf
     rw [hrawDeriv]
     exact hd0.deriv
 
