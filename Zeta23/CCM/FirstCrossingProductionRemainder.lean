@@ -183,11 +183,12 @@ private theorem star_mul_self_eq_one_of_norm_eq_one
 
 private theorem re_star_mul_comm (a b : ℂ) :
     Complex.re (star a * b) = Complex.re (star b * a) := by
-  simp [Complex.mul_re, starRingEnd_apply] <;> ring
+  simp only [starRingEnd_apply, Complex.mul_re, Complex.conj_re,
+    Complex.conj_im, Complex.ofReal_re, Complex.ofReal_im] <;> ring
 
 private theorem re_star_finset_sum_mul
     {α : Type*} (s : Finset α) (F : α → ℂ) (m : ℂ) :
-    Complex.re (star (∑ i in s, F i) * m) =
+    Complex.re (star (∑ i ∈ s, F i) * m) =
       ∑ i in s, Complex.re (star (F i) * m) := by
   classical
   induction s using Finset.induction_on with
@@ -205,30 +206,38 @@ private theorem productionArithmeticRealValue_eq_real_channels
   unfold productionArithmeticRealValue productionArithmeticComplexValue
     dictionaryCompletePhysicalRHS primeSourceWeight
   have hpole :
-      (∫ x in (0 : ℝ)..L,
-          (f x : ℂ) * (completeSourcePoleWeight x : ℂ)) =
-        ((∫ x in (0 : ℝ)..L,
-          f x * completeSourcePoleWeight x) : ℂ) := by
-    simpa using
-      (intervalIntegral.integral_ofReal
-        (f := fun x : ℝ => f x * completeSourcePoleWeight x)
-        (a := (0 : ℝ)) (b := L))
+      Complex.re
+          (∫ x in (0 : ℝ)..L,
+            (f x : ℂ) * (completeSourcePoleWeight x : ℂ)) =
+        ∫ x in (0 : ℝ)..L, f x * completeSourcePoleWeight x := by
+    simpa only [Complex.ofReal_mul, Complex.ofReal_re] using
+      congrArg Complex.re
+        (intervalIntegral.integral_ofReal
+          (f := fun x : ℝ => f x * completeSourcePoleWeight x)
+          (a := (0 : ℝ)) (b := L))
   have harch :
-      (∫ x in (0 : ℝ)..L,
-          (f x : ℂ) * (archDensity x : ℂ)) =
-        ((∫ x in (0 : ℝ)..L, f x * archDensity x) : ℂ) := by
-    simpa using
-      (intervalIntegral.integral_ofReal
-        (f := fun x : ℝ => f x * archDensity x)
-        (a := (0 : ℝ)) (b := L))
+      Complex.re
+          (∫ x in (0 : ℝ)..L,
+            (f x : ℂ) * (archDensity x : ℂ)) =
+        ∫ x in (0 : ℝ)..L, f x * archDensity x := by
+    simpa only [Complex.ofReal_mul, Complex.ofReal_re] using
+      congrArg Complex.re
+        (intervalIntegral.integral_ofReal
+          (f := fun x : ℝ => f x * archDensity x)
+          (a := (0 : ℝ)) (b := L))
   have hprime :
-      (∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
-          (((Λ q / Real.sqrt q : ℝ) : ℂ) * (f (Real.log q) : ℂ))) =
-        ((∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
-          (Λ q / Real.sqrt q) * f (Real.log q)) : ℂ) := by
-    push_cast
-  rw [hpole, harch, hprime]
-  simp
+      Complex.re
+          (∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+            (((Λ q / Real.sqrt q : ℝ) : ℂ) *
+              (f (Real.log q) : ℂ))) =
+        ∑ q ∈ Finset.Icc 2 ⌊Real.exp L⌋₊,
+          (Λ q / Real.sqrt q) * f (Real.log q) := by
+    rw [← Complex.reCLM_apply, map_sum]
+    apply Finset.sum_congr rfl
+    intro q hq
+    simp only [Complex.reCLM_apply, Complex.mul_re, Complex.ofReal_re,
+      Complex.ofReal_im, mul_zero, zero_mul, sub_zero]
+  rw [Complex.sub_re, Complex.sub_re, hpole, harch, hprime]
 
 /-- The complete canonical source moment is linear in the legal carrier. -/
 private theorem explicitCanonicalSourceMoment_smul_right
@@ -441,7 +450,8 @@ theorem productionContactNormalSourceValue_eq_sourceValue
     have ht0 : 0 ≤ t := le_of_lt ht.1
     have htL : t ≤ L := ht.2
     dsimp [H, productionQuadraticNormalPhysicalSource]
-    rw [← canonicalSourcePhysicalLift_eq_one_sub_of_mem hL ht0 htL]
+    rw [← canonicalSourcePhysicalLift_eq_one_sub_of_mem
+      hL ht0 htL (quadraticNormalSourceAtom K v)]
     exact congrFun hlift t
   have hzero : dictionaryMixedTest K xvec yvec L 0 = 0 := by
     rw [← congrFun hlift 0]
@@ -454,6 +464,10 @@ theorem productionContactNormalSourceValue_eq_sourceValue
       (intervalIntegrable_dictionaryMixedTest_mul_pole
         K xvec yvec hL).congr ?_
     intro t ht
+    change
+      dictionaryMixedTest K xvec yvec L t *
+          (completeSourcePoleWeight t : ℂ) =
+        H t * (completeSourcePoleWeight t : ℂ)
     rw [← hH_eq_dict ht]
   have harch :
       IntervalIntegrable
@@ -463,6 +477,9 @@ theorem productionContactNormalSourceValue_eq_sourceValue
       (intervalIntegrable_dictionaryMixedTest_mul_archDensity_of_zero
         K xvec yvec hL hzero).congr ?_
     intro t ht
+    change
+      dictionaryMixedTest K xvec yvec L t * (archDensity t : ℂ) =
+        H t * (archDensity t : ℂ)
     rw [← hH_eq_dict ht]
   have hpolePair :
       (∫ t in (0 : ℝ)..L,
@@ -486,11 +503,12 @@ theorem productionContactNormalSourceValue_eq_sourceValue
               (star m * (H t * (completeSourcePoleWeight t : ℂ))) := by
         apply intervalIntegral.integral_congr
         intro t ht
-        simp [Complex.mul_re, starRingEnd_apply] <;> ring
+        simp only [starRingEnd_apply, Complex.mul_re, Complex.conj_re,
+          Complex.conj_im, Complex.ofReal_re, Complex.ofReal_im] <;> ring
       _ = Complex.re
           (∫ t in (0 : ℝ)..L,
             star m * (H t * (completeSourcePoleWeight t : ℂ))) :=
-        RCLike.intervalIntegral_re hscaled
+        intervalIntegral.intervalIntegral_re hscaled
       _ = Complex.re
           (star m *
             ∫ t in (0 : ℝ)..L,
@@ -522,11 +540,12 @@ theorem productionContactNormalSourceValue_eq_sourceValue
             Complex.re (star m * (H t * (archDensity t : ℂ))) := by
         apply intervalIntegral.integral_congr
         intro t ht
-        simp [Complex.mul_re, starRingEnd_apply] <;> ring
+        simp only [starRingEnd_apply, Complex.mul_re, Complex.conj_re,
+          Complex.conj_im, Complex.ofReal_re, Complex.ofReal_im] <;> ring
       _ = Complex.re
           (∫ t in (0 : ℝ)..L,
             star m * (H t * (archDensity t : ℂ))) :=
-        RCLike.intervalIntegral_re hscaled
+        intervalIntegral.intervalIntegral_re hscaled
       _ = Complex.re
           (star m *
             ∫ t in (0 : ℝ)..L, H t * (archDensity t : ℂ)) := by
@@ -550,7 +569,8 @@ theorem productionContactNormalSourceValue_eq_sourceValue
     intro q hq
     rw [re_star_mul_comm]
     unfold primeSourceWeight
-    simp [Complex.mul_re, starRingEnd_apply] <;> ring
+    simp only [starRingEnd_apply, Complex.mul_re, Complex.conj_re,
+      Complex.conj_im, Complex.ofReal_re, Complex.ofReal_im] <;> ring
   rw [productionArithmeticRealValue_eq_real_channels]
   unfold productionContactNormalSourceChannel productionStrictEvenSourceValue
   change
