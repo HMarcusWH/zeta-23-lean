@@ -363,9 +363,13 @@ theorem hasDerivAt_frozenParityCompressedFamilyCLM_pos
     T.hasFDerivAt
   have hc :
       HasDerivAt
-        (T ∘ (fun s : ℝ => frozenCanonicalSourceMatrix Q s K))
+        ((fun A => T A) ∘ (fun s : ℝ => frozenCanonicalSourceMatrix Q s K))
         (T (frozenCanonicalSourceFirstMatrix Q L K)) L := by
-    exact hT.comp_hasDerivAt (𝕜 := ℝ) L hM
+    exact HasFDerivAt.comp_hasDerivAt
+      (l := fun A => T A) (l' := T)
+      (f := fun s : ℝ => frozenCanonicalSourceMatrix Q s K)
+      (f' := frozenCanonicalSourceFirstMatrix Q L K)
+      (x := L) hT hM
   simpa [T, frozenParityCompressedFamilyCLM,
     frozenParityCompressedFirstCLM, Function.comp_def] using hc
 
@@ -387,9 +391,13 @@ theorem hasDerivAt_frozenParityCompressedFirstCLM_pos
     T.hasFDerivAt
   have hc :
       HasDerivAt
-        (T ∘ (fun s : ℝ => frozenCanonicalSourceFirstMatrix Q s K))
+        ((fun A => T A) ∘ (fun s : ℝ => frozenCanonicalSourceFirstMatrix Q s K))
         (T (frozenCanonicalSourceSecondMatrix Q L K)) L := by
-    exact hT.comp_hasDerivAt (𝕜 := ℝ) L hM
+    exact HasFDerivAt.comp_hasDerivAt
+      (l := fun A => T A) (l' := T)
+      (f := fun s : ℝ => frozenCanonicalSourceFirstMatrix Q s K)
+      (f' := frozenCanonicalSourceSecondMatrix Q L K)
+      (x := L) hT hM
   simpa [T, frozenParityCompressedFirstCLM,
     frozenParityCompressedSecondCLM, Function.comp_def] using hc
 
