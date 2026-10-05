@@ -1242,7 +1242,7 @@ theorem productionSecondDerivativePhysicalRaw_liftJets
         | (funext s; simp [Function.comp_def, c, hL.ne', hcoordL,
             hj.1, hj.2.1, div_eq_mul_inv,
             mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
-        | (simp [Function.comp_def, c, hL.ne', hcoordL,
+        | (simp [Function.comp_def, x, c, hL.ne', hcoordL,
             hj.1, hj.2.1, div_eq_mul_inv,
             mul_comm, mul_left_comm, mul_assoc] <;> ring_nf)
         | ring_nf
