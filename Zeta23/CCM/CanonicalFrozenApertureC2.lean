@@ -840,8 +840,9 @@ theorem hasDerivAt_parityCompressedCanonicalCLM_log_nat
     · subst L
       exact hvalueRight
     · have hcell : L ∈ fixedCanonicalCutoffCell q := by
-        simpa [fixedCanonicalCutoffCell, Nat.cast_add, Nat.cast_one] using
-          ⟨hLt, hL.2⟩
+        change Real.log (q : ℝ) < L ∧
+          L < Real.log ((q + 1 : ℕ) : ℝ)
+        exact ⟨hLt, hL.2⟩
       have hfloorR :=
         natFloor_exp_eq_on_fixedCanonicalCutoffCell
           (Q := q) (by omega) hcell
@@ -997,8 +998,9 @@ theorem hasDerivAt_productionParityFirstJetCLM_pos
       · subst s
         exact hvalueRight
       · have hcell : s ∈ fixedCanonicalCutoffCell Q := by
-          simpa [fixedCanonicalCutoffCell, Nat.cast_add, Nat.cast_one] using
-            ⟨hLt, hs.2⟩
+          change Real.log (Q : ℝ) < s ∧
+            s < Real.log ((Q + 1 : ℕ) : ℝ)
+          exact ⟨hLt, hs.2⟩
         have hfloor :=
           natFloor_exp_eq_on_fixedCanonicalCutoffCell
             (Q := Q) (by omega) hcell
@@ -1120,8 +1122,9 @@ theorem continuousAt_productionParitySecondJetCLM_pos
       · subst s
         exact hvalueRight
       · have hcell : s ∈ fixedCanonicalCutoffCell Q := by
-          simpa [fixedCanonicalCutoffCell, Nat.cast_add, Nat.cast_one] using
-            ⟨hLt, hs.2⟩
+          change Real.log (Q : ℝ) < s ∧
+            s < Real.log ((Q + 1 : ℕ) : ℝ)
+          exact ⟨hLt, hs.2⟩
         have hfloor :=
           natFloor_exp_eq_on_fixedCanonicalCutoffCell
             (Q := Q) (by omega) hcell
