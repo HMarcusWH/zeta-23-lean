@@ -323,8 +323,11 @@ private theorem hasDerivAt_productionEvenCompactLiftReal
         (hasDerivAt_const L (0 : ℝ)).hasDerivWithinAt
       refine hc.congr_of_mem (f₁ := productionEvenCompactLiftReal L f) ?_ ?_
       · intro z hz
-        have hnleft : ¬ z ≤ -L := by linarith
-        have hnzero : ¬ z ≤ 0 := by linarith
+        have hnegLltL : -L < L := by linarith
+        have hzpos : 0 < z := lt_of_lt_of_le hL hz
+        have hnleft : ¬ z ≤ -L :=
+          not_le.mpr (lt_of_lt_of_le hnegLltL hz)
+        have hnzero : ¬ z ≤ 0 := not_le.mpr hzpos
         have hnlt : ¬ z < L := not_lt.mpr hz
         simp [productionEvenCompactLiftReal, hnleft, hnzero, hnlt]
       · simp [productionEvenCompactLiftReal, hL.le, hL0, hLL]
