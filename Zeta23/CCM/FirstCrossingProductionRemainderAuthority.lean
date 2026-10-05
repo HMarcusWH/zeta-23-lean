@@ -71,8 +71,8 @@ theorem productionContactRemainderPhysical_admissible
   have hn := productionContactNormalPhysical_admissible hL K hK v
   have hd := production_derivative_tests_admissible hL K v w
   have hs :=
-    (hn.smul (a := (2 * Real.pi) ^ 2 / L ^ 2)).add
-      (hd.2.1.add (hd.2.2.smul (a := 2)))
+    ((hn.smul (a := (2 * Real.pi) ^ 2 / L ^ 2)).add hd.2.1).add
+      (hd.2.2.smul (a := 2))
   rw [productionContactRemainderPhysicalTest_decomposition hL K v w]
   exact hs
 
