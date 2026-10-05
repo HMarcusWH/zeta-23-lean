@@ -365,7 +365,7 @@ theorem hasDerivAt_frozenParityCompressedFamilyCLM_pos
       HasDerivAt
         (T ∘ (fun s : ℝ => frozenCanonicalSourceMatrix Q s K))
         (T (frozenCanonicalSourceFirstMatrix Q L K)) L := by
-    exact HasFDerivAt.comp_hasDerivAt (𝕜 := ℝ) L hT hM
+    exact hT.comp_hasDerivAt (𝕜 := ℝ) L hM
   simpa [T, frozenParityCompressedFamilyCLM,
     frozenParityCompressedFirstCLM, Function.comp_def] using hc
 
@@ -389,7 +389,7 @@ theorem hasDerivAt_frozenParityCompressedFirstCLM_pos
       HasDerivAt
         (T ∘ (fun s : ℝ => frozenCanonicalSourceFirstMatrix Q s K))
         (T (frozenCanonicalSourceSecondMatrix Q L K)) L := by
-    exact HasFDerivAt.comp_hasDerivAt (𝕜 := ℝ) L hT hM
+    exact hT.comp_hasDerivAt (𝕜 := ℝ) L hM
   simpa [T, frozenParityCompressedFirstCLM,
     frozenParityCompressedSecondCLM, Function.comp_def] using hc
 
@@ -815,7 +815,7 @@ theorem hasDerivAt_parityCompressedCanonicalCLM_log_nat
           (𝓝[<] Real.log (q : ℝ))
           (𝓝 (frozenParityCompressedFirstCLM
             (q - 1) p K (Real.log q))) :=
-      hg.tendsto_slope.mono_left
+      (HasDerivAt.tendsto_slope (𝕜 := ℝ) hg).mono_left
         (nhdsLT_le_nhdsNE (Real.log (q : ℝ)))
     have hevent :
         (fun L : ℝ => parityCompressedCanonicalCLM p L K) =ᶠ[
@@ -849,7 +849,7 @@ theorem hasDerivAt_parityCompressedCanonicalCLM_log_nat
           (𝓝[>] Real.log (q : ℝ))
           (𝓝 (frozenParityCompressedFirstCLM
             q p K (Real.log q))) :=
-      hg.tendsto_slope.mono_left
+      (HasDerivAt.tendsto_slope (𝕜 := ℝ) hg).mono_left
         (nhdsGT_le_nhdsNE (Real.log (q : ℝ)))
     have hevent :
         (fun L : ℝ => parityCompressedCanonicalCLM p L K) =ᶠ[
@@ -984,7 +984,7 @@ theorem hasDerivAt_productionParityFirstJetCLM_pos
             (𝓝[<] Real.log (Q : ℝ))
             (𝓝 (frozenParityCompressedSecondCLM
               (Q - 1) p K (Real.log Q))) :=
-        hg.tendsto_slope.mono_left
+        (HasDerivAt.tendsto_slope (𝕜 := ℝ) hg).mono_left
           (nhdsLT_le_nhdsNE (Real.log (Q : ℝ)))
       have hevent :
           productionParityFirstJetCLM p K =ᶠ[𝓝[<] Real.log (Q : ℝ)]
@@ -1018,7 +1018,7 @@ theorem hasDerivAt_productionParityFirstJetCLM_pos
             (𝓝[>] Real.log (Q : ℝ))
             (𝓝 (frozenParityCompressedSecondCLM
               Q p K (Real.log Q))) :=
-        hg.tendsto_slope.mono_left
+        (HasDerivAt.tendsto_slope (𝕜 := ℝ) hg).mono_left
           (nhdsGT_le_nhdsNE (Real.log (Q : ℝ)))
       have hevent :
           productionParityFirstJetCLM p K =ᶠ[𝓝[>] Real.log (Q : ℝ)]
