@@ -358,20 +358,12 @@ theorem hasDerivAt_frozenParityCompressedFamilyCLM_pos
           euclideanParityBoundaryFlatSubspace p K) :=
     (parityCompressionCLM p K).restrictScalars ℝ
   have hT :
-      HasFDerivAt (fun A => T A) T
+      HasFDerivAt T T
         (frozenCanonicalSourceMatrix Q L K) :=
     T.hasFDerivAt
-  have hc :
-      HasDerivAt
-        ((fun A => T A) ∘ (fun s : ℝ => frozenCanonicalSourceMatrix Q s K))
-        (T (frozenCanonicalSourceFirstMatrix Q L K)) L := by
-    exact HasFDerivAt.comp_hasDerivAt
-      (l := fun A => T A) (l' := T)
-      (f := fun s : ℝ => frozenCanonicalSourceMatrix Q s K)
-      (f' := frozenCanonicalSourceFirstMatrix Q L K)
-      (x := L) hT hM
   simpa [T, frozenParityCompressedFamilyCLM,
-    frozenParityCompressedFirstCLM, Function.comp_def] using hc
+    frozenParityCompressedFirstCLM, Function.comp_def] using
+    hT.comp_hasDerivAt L hM
 
 theorem hasDerivAt_frozenParityCompressedFirstCLM_pos
     (Q : ℕ) (p : ReversalParity) (K : ℕ)
@@ -386,20 +378,12 @@ theorem hasDerivAt_frozenParityCompressedFirstCLM_pos
           euclideanParityBoundaryFlatSubspace p K) :=
     (parityCompressionCLM p K).restrictScalars ℝ
   have hT :
-      HasFDerivAt (fun A => T A) T
+      HasFDerivAt T T
         (frozenCanonicalSourceFirstMatrix Q L K) :=
     T.hasFDerivAt
-  have hc :
-      HasDerivAt
-        ((fun A => T A) ∘ (fun s : ℝ => frozenCanonicalSourceFirstMatrix Q s K))
-        (T (frozenCanonicalSourceSecondMatrix Q L K)) L := by
-    exact HasFDerivAt.comp_hasDerivAt
-      (l := fun A => T A) (l' := T)
-      (f := fun s : ℝ => frozenCanonicalSourceFirstMatrix Q s K)
-      (f' := frozenCanonicalSourceSecondMatrix Q L K)
-      (x := L) hT hM
   simpa [T, frozenParityCompressedFirstCLM,
-    frozenParityCompressedSecondCLM, Function.comp_def] using hc
+    frozenParityCompressedSecondCLM, Function.comp_def] using
+    hT.comp_hasDerivAt L hM
 
 /-- First frozen matrix derivative across a q/pred split. -/
 theorem frozenCanonicalSourceFirstMatrix_eq_pred_sub_enteringFirst
@@ -823,7 +807,7 @@ theorem hasDerivAt_parityCompressedCanonicalCLM_log_nat
           (𝓝[<] Real.log (q : ℝ))
           (𝓝 (frozenParityCompressedFirstCLM
             (q - 1) p K (Real.log q))) :=
-      (HasDerivAt.tendsto_slope (𝕜 := ℝ) hg).mono_left
+      (hg.tendsto_slope (𝕜 := ℝ)).mono_left
         (nhdsLT_le_nhdsNE (Real.log (q : ℝ)))
     have hevent :
         (fun L : ℝ => parityCompressedCanonicalCLM p L K) =ᶠ[
@@ -857,7 +841,7 @@ theorem hasDerivAt_parityCompressedCanonicalCLM_log_nat
           (𝓝[>] Real.log (q : ℝ))
           (𝓝 (frozenParityCompressedFirstCLM
             q p K (Real.log q))) :=
-      (HasDerivAt.tendsto_slope (𝕜 := ℝ) hg).mono_left
+      (hg.tendsto_slope (𝕜 := ℝ)).mono_left
         (nhdsGT_le_nhdsNE (Real.log (q : ℝ)))
     have hevent :
         (fun L : ℝ => parityCompressedCanonicalCLM p L K) =ᶠ[
@@ -992,7 +976,7 @@ theorem hasDerivAt_productionParityFirstJetCLM_pos
             (𝓝[<] Real.log (Q : ℝ))
             (𝓝 (frozenParityCompressedSecondCLM
               (Q - 1) p K (Real.log Q))) :=
-        (HasDerivAt.tendsto_slope (𝕜 := ℝ) hg).mono_left
+        (hg.tendsto_slope (𝕜 := ℝ)).mono_left
           (nhdsLT_le_nhdsNE (Real.log (Q : ℝ)))
       have hevent :
           productionParityFirstJetCLM p K =ᶠ[𝓝[<] Real.log (Q : ℝ)]
@@ -1026,7 +1010,7 @@ theorem hasDerivAt_productionParityFirstJetCLM_pos
             (𝓝[>] Real.log (Q : ℝ))
             (𝓝 (frozenParityCompressedSecondCLM
               Q p K (Real.log Q))) :=
-        (HasDerivAt.tendsto_slope (𝕜 := ℝ) hg).mono_left
+        (hg.tendsto_slope (𝕜 := ℝ)).mono_left
           (nhdsGT_le_nhdsNE (Real.log (Q : ℝ)))
       have hevent :
           productionParityFirstJetCLM p K =ᶠ[𝓝[>] Real.log (Q : ℝ)]
