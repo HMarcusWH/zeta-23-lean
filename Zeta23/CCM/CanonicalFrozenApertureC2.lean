@@ -357,20 +357,15 @@ theorem hasDerivAt_frozenParityCompressedFamilyCLM_pos
         (euclideanParityBoundaryFlatSubspace p K →L[ℂ]
           euclideanParityBoundaryFlatSubspace p K) :=
     (parityCompressionCLM p K).restrictScalars ℝ
-  have hT :
-      HasFDerivAt (fun A => T A) T
-        (frozenCanonicalSourceMatrix Q L K) :=
-    T.hasFDerivAt
+  have hT : HasDerivAt (fun _ : ℝ => T) 0 L :=
+    hasDerivAt_const L T
   have hc :
       HasDerivAt
-        (T ∘ (fun s : ℝ => frozenCanonicalSourceMatrix Q s K))
-        (T (frozenCanonicalSourceFirstMatrix Q L K)) L :=
-    HasFDerivAt.comp_hasDerivAt
-      (f := fun s : ℝ => frozenCanonicalSourceMatrix Q s K)
-      (f' := frozenCanonicalSourceFirstMatrix Q L K)
-      (l := fun A => T A) (l' := T) L hT hM
+        (fun s : ℝ => T (frozenCanonicalSourceMatrix Q s K))
+        (T (frozenCanonicalSourceFirstMatrix Q L K)) L := by
+    simpa using hT.clm_apply hM
   simpa [T, frozenParityCompressedFamilyCLM,
-    frozenParityCompressedFirstCLM, Function.comp_def] using hc
+    frozenParityCompressedFirstCLM] using hc
 
 theorem hasDerivAt_frozenParityCompressedFirstCLM_pos
     (Q : ℕ) (p : ReversalParity) (K : ℕ)
@@ -384,20 +379,15 @@ theorem hasDerivAt_frozenParityCompressedFirstCLM_pos
         (euclideanParityBoundaryFlatSubspace p K →L[ℂ]
           euclideanParityBoundaryFlatSubspace p K) :=
     (parityCompressionCLM p K).restrictScalars ℝ
-  have hT :
-      HasFDerivAt (fun A => T A) T
-        (frozenCanonicalSourceFirstMatrix Q L K) :=
-    T.hasFDerivAt
+  have hT : HasDerivAt (fun _ : ℝ => T) 0 L :=
+    hasDerivAt_const L T
   have hc :
       HasDerivAt
-        (T ∘ (fun s : ℝ => frozenCanonicalSourceFirstMatrix Q s K))
-        (T (frozenCanonicalSourceSecondMatrix Q L K)) L :=
-    HasFDerivAt.comp_hasDerivAt
-      (f := fun s : ℝ => frozenCanonicalSourceFirstMatrix Q s K)
-      (f' := frozenCanonicalSourceSecondMatrix Q L K)
-      (l := fun A => T A) (l' := T) L hT hM
+        (fun s : ℝ => T (frozenCanonicalSourceFirstMatrix Q s K))
+        (T (frozenCanonicalSourceSecondMatrix Q L K)) L := by
+    simpa using hT.clm_apply hM
   simpa [T, frozenParityCompressedFirstCLM,
-    frozenParityCompressedSecondCLM, Function.comp_def] using hc
+    frozenParityCompressedSecondCLM] using hc
 
 /-- First frozen matrix derivative across a q/pred split. -/
 theorem frozenCanonicalSourceFirstMatrix_eq_pred_sub_enteringFirst
@@ -781,6 +771,7 @@ private theorem parityCompressedFamily_log_eq_frozen_pred
 
 /-- At a logarithmic integer threshold the production compressed family has the
 common left/right frozen first derivative. -/
+set_option maxHeartbeats 800000 in
 theorem hasDerivAt_parityCompressedCanonicalCLM_log_nat
     (q K : ℕ) (hq : 2 ≤ q) (p : ReversalParity) :
     HasDerivAt
@@ -924,6 +915,7 @@ theorem hasDerivAt_parityCompressedCanonicalCLM_pos
 
 /-- The globally selected first production jet is differentiable at every
 positive aperture, including cutoff seams. -/
+set_option maxHeartbeats 800000 in
 theorem hasDerivAt_productionParityFirstJetCLM_pos
     (p : ReversalParity) (K : ℕ)
     {L : ℝ} (hL : 0 < L) :
