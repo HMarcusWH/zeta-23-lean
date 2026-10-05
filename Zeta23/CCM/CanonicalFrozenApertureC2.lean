@@ -371,7 +371,8 @@ theorem hasDerivAt_frozenParityCompressedFamilyCLM_pos
       Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ →L[ℝ]
         (euclideanParityBoundaryFlatSubspace p K →L[ℂ]
           euclideanParityBoundaryFlatSubspace p K) :=
-    (parityCompressionCLM p K).restrictScalars ℝ
+    LinearMap.toContinuousLinearMap
+      ((parityCompressionLinearMap p K).restrictScalars ℝ)
   change HasDerivAt
     (fun s : ℝ => T (frozenCanonicalSourceMatrix Q s K))
     (T (frozenCanonicalSourceFirstMatrix Q L K)) L
@@ -388,7 +389,8 @@ theorem hasDerivAt_frozenParityCompressedFirstCLM_pos
       Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ →L[ℝ]
         (euclideanParityBoundaryFlatSubspace p K →L[ℂ]
           euclideanParityBoundaryFlatSubspace p K) :=
-    (parityCompressionCLM p K).restrictScalars ℝ
+    LinearMap.toContinuousLinearMap
+      ((parityCompressionLinearMap p K).restrictScalars ℝ)
   change HasDerivAt
     (fun s : ℝ => T (frozenCanonicalSourceFirstMatrix Q s K))
     (T (frozenCanonicalSourceSecondMatrix Q L K)) L
