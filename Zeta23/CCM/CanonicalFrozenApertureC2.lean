@@ -352,17 +352,13 @@ theorem hasDerivAt_frozenParityCompressedFamilyCLM_pos
       (fun s : ℝ => frozenParityCompressedFamilyCLM Q p K s)
       (frozenParityCompressedFirstCLM Q p K L) L := by
   have hM := hasDerivAt_frozenCanonicalSourceMatrix_pos Q K hL
-  have hc :
+  have hconst :
       HasDerivAt
-        (((parityCompressionCLM p K).restrictScalars ℝ) ∘
-          (fun s : ℝ => frozenCanonicalSourceMatrix Q s K))
-        (((parityCompressionCLM p K).restrictScalars ℝ)
-          (frozenCanonicalSourceFirstMatrix Q L K)) L := by
-    exact
-      (((parityCompressionCLM p K).restrictScalars ℝ).hasFDerivAt
-        (x := frozenCanonicalSourceMatrix Q L K)).comp_hasDerivAt L hM
-  simpa [frozenParityCompressedFamilyCLM, frozenParityCompressedFirstCLM,
-    Function.comp_def] using hc
+        (fun _ : ℝ => (parityCompressionCLM p K).restrictScalars ℝ)
+        0 L :=
+    hasDerivAt_const L ((parityCompressionCLM p K).restrictScalars ℝ)
+  have hc := hconst.clm_apply hM
+  simpa [frozenParityCompressedFamilyCLM, frozenParityCompressedFirstCLM] using hc
 
 theorem hasDerivAt_frozenParityCompressedFirstCLM_pos
     (Q : ℕ) (p : ReversalParity) (K : ℕ)
@@ -371,17 +367,13 @@ theorem hasDerivAt_frozenParityCompressedFirstCLM_pos
       (fun s : ℝ => frozenParityCompressedFirstCLM Q p K s)
       (frozenParityCompressedSecondCLM Q p K L) L := by
   have hM := hasDerivAt_frozenCanonicalSourceFirstMatrix_pos Q K hL
-  have hc :
+  have hconst :
       HasDerivAt
-        (((parityCompressionCLM p K).restrictScalars ℝ) ∘
-          (fun s : ℝ => frozenCanonicalSourceFirstMatrix Q s K))
-        (((parityCompressionCLM p K).restrictScalars ℝ)
-          (frozenCanonicalSourceSecondMatrix Q L K)) L := by
-    exact
-      (((parityCompressionCLM p K).restrictScalars ℝ).hasFDerivAt
-        (x := frozenCanonicalSourceFirstMatrix Q L K)).comp_hasDerivAt L hM
-  simpa [frozenParityCompressedFirstCLM, frozenParityCompressedSecondCLM,
-    Function.comp_def] using hc
+        (fun _ : ℝ => (parityCompressionCLM p K).restrictScalars ℝ)
+        0 L :=
+    hasDerivAt_const L ((parityCompressionCLM p K).restrictScalars ℝ)
+  have hc := hconst.clm_apply hM
+  simpa [frozenParityCompressedFirstCLM, frozenParityCompressedSecondCLM] using hc
 
 /-- First frozen matrix derivative across a q/pred split. -/
 theorem frozenCanonicalSourceFirstMatrix_eq_pred_sub_enteringFirst
@@ -662,7 +654,11 @@ theorem frozenParityCompressedFirstCLM_log_eq_pred
           ((Λ q / Real.sqrt q : ℝ) : ℂ) • 0 := by
       simpa [frozenParityCompressedFirstCLM] using hcompressed
     _ = frozenParityCompressedFirstCLM (q - 1) p K (Real.log q) := by
-      simp
+      rw [show (((Λ q / Real.sqrt q : ℝ) : ℂ) •
+        (0 : euclideanParityBoundaryFlatSubspace p K →L[ℂ]
+          euclideanParityBoundaryFlatSubspace p K)) = 0 by
+          exact smul_zero _]
+      exact sub_zero _
 
 /-- The two frozen compressed second derivatives also agree at the seam. -/
 theorem frozenParityCompressedSecondCLM_log_eq_pred
@@ -682,7 +678,11 @@ theorem frozenParityCompressedSecondCLM_log_eq_pred
           ((Λ q / Real.sqrt q : ℝ) : ℂ) • 0 := by
       simpa [frozenParityCompressedSecondCLM] using hcompressed
     _ = frozenParityCompressedSecondCLM (q - 1) p K (Real.log q) := by
-      simp
+      rw [show (((Λ q / Real.sqrt q : ℝ) : ℂ) •
+        (0 : euclideanParityBoundaryFlatSubspace p K →L[ℂ]
+          euclideanParityBoundaryFlatSubspace p K)) = 0 by
+          exact smul_zero _]
+      exact sub_zero _
 
 
 /-- C2 of the frozen entries makes the selected second frozen matrix continuous. -/
