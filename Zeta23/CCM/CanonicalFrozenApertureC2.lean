@@ -329,18 +329,18 @@ noncomputable def parityCompressionCLM
 
 private theorem hasDerivAt_continuousLinearMap_comp_real
     {E F : Type*}
-    [NormedAddCommGroup E] [NormedSpace ℝ E]
-    [NormedAddCommGroup F] [NormedSpace ℝ F]
+    [AddCommGroup E] [Module ℝ E] [TopologicalSpace E]
+    [AddCommGroup F] [Module ℝ F] [TopologicalSpace F]
+    [ContinuousSMul ℝ E] [ContinuousSMul ℝ F]
     (T : E →L[ℝ] F)
     {f : ℝ → E} {f' : E} {x : ℝ}
     (hf : HasDerivAt f f' x) :
     HasDerivAt (fun s : ℝ => T (f s)) (T f') x := by
-  have hT : HasFDerivAt (fun y : E => T y) T (f x) :=
-    T.hasFDerivAt
-  simpa only [Function.comp_def] using
-    HasFDerivAt.comp_hasDerivAt
-      (𝕜 := ℝ) (x := x) (l := fun y : E => T y) (l' := T)
-      (f := f) (f' := f') hT hf
+  unfold HasDerivAt HasDerivAtFilter at hf ⊢
+  refine HasFDerivAtFilter.of_isLittleOTVS ?_
+  simpa only [Function.comp_apply, map_sub,
+    ContinuousLinearMap.toSpanSingleton_apply, map_smul] using
+    (T.isBigOTVS_comp.trans_isLittleOTVS hf.isLittleOTVS)
 
 def frozenParityCompressedFamilyCLM
     (Q : ℕ) (p : ReversalParity) (K : ℕ) (L : ℝ) :
@@ -371,8 +371,7 @@ theorem hasDerivAt_frozenParityCompressedFamilyCLM_pos
       Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ →L[ℝ]
         (euclideanParityBoundaryFlatSubspace p K →L[ℂ]
           euclideanParityBoundaryFlatSubspace p K) :=
-    LinearMap.toContinuousLinearMap
-      ((parityCompressionLinearMap p K).restrictScalars ℝ)
+    (parityCompressionCLM p K).restrictScalars ℝ
   change HasDerivAt
     (fun s : ℝ => T (frozenCanonicalSourceMatrix Q s K))
     (T (frozenCanonicalSourceFirstMatrix Q L K)) L
@@ -389,8 +388,7 @@ theorem hasDerivAt_frozenParityCompressedFirstCLM_pos
       Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ →L[ℝ]
         (euclideanParityBoundaryFlatSubspace p K →L[ℂ]
           euclideanParityBoundaryFlatSubspace p K) :=
-    LinearMap.toContinuousLinearMap
-      ((parityCompressionLinearMap p K).restrictScalars ℝ)
+    (parityCompressionCLM p K).restrictScalars ℝ
   change HasDerivAt
     (fun s : ℝ => T (frozenCanonicalSourceFirstMatrix Q s K))
     (T (frozenCanonicalSourceSecondMatrix Q L K)) L
