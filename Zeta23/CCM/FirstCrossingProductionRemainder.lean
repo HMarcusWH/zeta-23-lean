@@ -145,11 +145,58 @@ theorem productionContactMomentFour_smul
     productionContactMomentFour K (u • v) =
       u * productionContactMomentFour K v := by
   unfold productionContactMomentFour evenBoundaryFlatRawCoefficients centeredMoment
-  simp only [Pi.smul_apply, smul_eq_mul, map_mul, starRingEnd_apply]
+  simp only [Submodule.coe_smul, LinearMapClass.map_smul, Pi.smul_apply,
+    smul_eq_mul]
   rw [Finset.mul_sum]
   apply Finset.sum_congr rfl
   intro i hi
   ring
+
+/-- The generic normalized quadratic-normal matrix moment is linear in
+the legal carrier. -/
+theorem quadraticNormalMatrixMoment_smul_right
+    (K : ℕ)
+    (M : Matrix (Fin (2 * K + 1)) (Fin (2 * K + 1)) ℂ)
+    (u : ℂ)
+    (v : euclideanEvenBoundaryFlatSubspace K) :
+    quadraticNormalMatrixMoment K M (u • v) =
+      u * quadraticNormalMatrixMoment K M v := by
+  unfold quadraticNormalMatrixMoment
+  rw [quadraticNormalMatrixNumerator_eq_inner,
+      quadraticNormalMatrixNumerator_eq_inner]
+  simp only [Submodule.coe_smul, LinearMapClass.map_smul, inner_smul_right]
+  ring
+
+/-- Unit complex phase as the exact algebraic identity used by all phase
+invariance proofs below. -/
+private theorem star_mul_self_eq_one_of_norm_eq_one
+    (u : ℂ) (hu : ‖u‖ = 1) :
+    star u * u = 1 := by
+  change Complex.conj u * u = 1
+  rw [← Complex.normSq_eq_conj_mul_self]
+  norm_cast
+  rw [Complex.normSq_eq_norm_sq, hu]
+  norm_num
+
+/-- The complete canonical source moment is linear in the legal carrier. -/
+private theorem explicitCanonicalSourceMoment_smul_right
+    {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (u : ℂ) (v : euclideanEvenBoundaryFlatSubspace K) :
+    explicitCanonicalSourceMoment L K (u • v) =
+      u * explicitCanonicalSourceMoment L K v := by
+  calc
+    explicitCanonicalSourceMoment L K (u • v) =
+        evenQuadraticSourceMoment L K (u • v) :=
+      (evenQuadraticSourceMoment_eq_explicitCanonicalSourceMoment
+        hL K (u • v)).symm
+    _ = quadraticNormalMatrixMoment K (canonicalSourceMatrix L K) (u • v) :=
+      evenQuadraticSourceMoment_eq_quadraticNormalMatrixMoment L K (u • v)
+    _ = u * quadraticNormalMatrixMoment K (canonicalSourceMatrix L K) v :=
+      quadraticNormalMatrixMoment_smul_right K (canonicalSourceMatrix L K) u v
+    _ = u * evenQuadraticSourceMoment L K v := by
+      rw [evenQuadraticSourceMoment_eq_quadraticNormalMatrixMoment]
+    _ = u * explicitCanonicalSourceMoment L K v := by
+      rw [evenQuadraticSourceMoment_eq_explicitCanonicalSourceMoment hL K v]
 
 /-- The quadratic-normal source atom is linear in the carrier. -/
 theorem quadraticNormalSourceAtom_smul_right
@@ -157,12 +204,8 @@ theorem quadraticNormalSourceAtom_smul_right
     (v : euclideanEvenBoundaryFlatSubspace K) (ω : ℝ) :
     quadraticNormalSourceAtom K (u • v) ω =
       u * quadraticNormalSourceAtom K v ω := by
-  rw [quadraticNormalSourceAtom_eq_sourceAtomPairing_div,
-      quadraticNormalSourceAtom_eq_sourceAtomPairing_div]
-  unfold sourceAtomPairing
-  simp only [Submodule.coe_smul, LinearMapClass.map_smul,
-    inner_smul_right]
-  ring
+  unfold quadraticNormalSourceAtom
+  exact quadraticNormalMatrixMoment_smul_right K (sourceMatrix ω K) u v
 
 /-- Source energy is invariant under a unit complex phase. -/
 theorem sourceAtomRealEnergy_unitPhase
@@ -171,11 +214,13 @@ theorem sourceAtomRealEnergy_unitPhase
     sourceAtomRealEnergy K (u • x) ω =
       sourceAtomRealEnergy K x ω := by
   unfold sourceAtomRealEnergy matrixRealEnergy
-  rw [quadraticForm_smul]
-  have hunit : star u * u = 1 := by
-    rw [← Complex.normSq_eq_abs, Complex.normSq_eq_conj_mul_self]
-    simp [hu]
-  rw [hunit, one_mul]
+  have hcoord :
+      (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) (u • x) =
+        u • (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x := by
+    exact LinearMapClass.map_smul
+      (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) u x
+  rw [hcoord, quadraticForm_smul,
+    star_mul_self_eq_one_of_norm_eq_one u hu, one_mul]
 
 /-- The centered-index action commutes with complex phase. -/
 theorem sourceIndexAction_smul
@@ -183,8 +228,9 @@ theorem sourceIndexAction_smul
     (x : EuclideanSpace ℂ (Fin (2 * K + 1))) :
     sourceIndexAction K (u • x) = u • sourceIndexAction K x := by
   apply (EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ).injective
-  simp [sourceIndexAction_coordinates, Matrix.mulVec, Finset.mul_sum,
-    mul_assoc]
+  simpa only [sourceIndexAction_coordinates, LinearMapClass.map_smul] using
+    (Matrix.mulVec_smul (indexMatrix K) u
+      ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) x))
 
 /-- The mixed source derivative is invariant when both state and response are
 rotated by the same unit phase. -/
@@ -194,17 +240,14 @@ theorem sourceAtomPairingDerivative_unitPhase
     sourceAtomPairingDerivative K (u • v) (u • w) ω =
       sourceAtomPairingDerivative K v w ω := by
   unfold sourceAtomPairingDerivative
-  have hunit : star u * u = 1 := by
-    rw [← Complex.normSq_eq_abs, Complex.normSq_eq_conj_mul_self]
-    simp [hu]
-  simp only [Pi.smul_apply, map_mul, starRingEnd_apply]
-  rw [← Finset.mul_sum]
+  have hunit := star_mul_self_eq_one_of_norm_eq_one u hu
+  simp only [LinearMapClass.map_smul, Pi.smul_apply, map_mul,
+    starRingEnd_apply, smul_eq_mul]
   apply Finset.sum_congr rfl
   intro i hi
-  rw [← Finset.mul_sum]
   apply Finset.sum_congr rfl
   intro j hj
-  simp [hunit]
+  rw [← hunit]
   ring
 
 /-- Every scalar channel entering the concrete remainder is phase invariant. -/
@@ -223,15 +266,29 @@ theorem productionContactRemainderSource_unitPhase
     unfold productionContactNormalSourceChannel
     rw [productionContactMomentFour_smul,
       quadraticNormalSourceAtom_smul_right]
-    have hunit : star u * u = 1 := by
-      rw [← Complex.normSq_eq_abs, Complex.normSq_eq_conj_mul_self]
-      simp [hu]
-    simp [map_mul, hunit]
-    ring
+    have hunit := star_mul_self_eq_one_of_norm_eq_one u hu
+    apply congrArg Complex.re
+    rw [map_mul]
+    calc
+      star u * star (productionContactMomentFour K v) *
+          (u * quadraticNormalSourceAtom K v (1 - t / L)) =
+          (star u * u) *
+            (star (productionContactMomentFour K v) *
+              quadraticNormalSourceAtom K v (1 - t / L)) := by ring
+      _ = _ := by rw [hunit, one_mul]
   have hindex :
       productionContactIndexEnergy L K (u • v) t =
         productionContactIndexEnergy L K v t := by
     unfold productionContactIndexEnergy
+    change
+      sourceAtomRealEnergy K
+          (sourceIndexAction K
+            (u • (v : EuclideanSpace ℂ (Fin (2 * K + 1)))))
+          (1 - t / L) =
+        sourceAtomRealEnergy K
+          (sourceIndexAction K
+            (v : EuclideanSpace ℂ (Fin (2 * K + 1))))
+          (1 - t / L)
     rw [sourceIndexAction_smul]
     exact sourceAtomRealEnergy_unitPhase K u hu _ _
   have hmixed :
@@ -264,24 +321,24 @@ theorem productionStrictEvenSourceValue_unitPhase
   unfold strictEvenSourceMomentPairing
   have hsource :
       explicitCanonicalSourceMoment L K (u • v) =
-        u * explicitCanonicalSourceMoment L K v := by
-    rw [explicitCanonicalSourceMoment_eq_quadraticNormalSourceAtom_sum,
-        explicitCanonicalSourceMoment_eq_quadraticNormalSourceAtom_sum]
-    simp only [Submodule.coe_smul, LinearMapClass.map_smul,
-      quadraticNormalSourceAtom_smul_right,
-      productionContactMomentFour_smul]
-    ring
+        u * explicitCanonicalSourceMoment L K v :=
+    explicitCanonicalSourceMoment_smul_right hL K u v
   have hm4 :
       centeredMoment K 4 (evenBoundaryFlatRawCoefficients K (u • v)) =
         u * centeredMoment K 4 (evenBoundaryFlatRawCoefficients K v) := by
     simpa [productionContactMomentFour] using
       productionContactMomentFour_smul K u v
   rw [hsource, hm4]
-  have hunit : star u * u = 1 := by
-    rw [← Complex.normSq_eq_abs, Complex.normSq_eq_conj_mul_self]
-    simp [hu]
-  simp [map_mul, hunit]
-  ring
+  have hunit := star_mul_self_eq_one_of_norm_eq_one u hu
+  apply congrArg Complex.re
+  rw [map_mul]
+  calc
+    star u * star (explicitCanonicalSourceMoment L K v) *
+        (u * centeredMoment K 4 (evenBoundaryFlatRawCoefficients K v)) =
+        (star u * u) *
+          (star (explicitCanonicalSourceMoment L K v) *
+            centeredMoment K 4 (evenBoundaryFlatRawCoefficients K v)) := by ring
+    _ = _ := by rw [hunit, one_mul]
 
 /-- Consequently the saturation gap is phase invariant. -/
 theorem productionContactSaturationGap_unitPhase
@@ -310,7 +367,7 @@ theorem productionContactNormalSourceValue_eq_sourceValue
   -- The complete physical RHS has real scalar weights, so taking Re after
   -- multiplying the source test by conj(M4) commutes with evaluation.
   unfold productionArithmeticComplexValue dictionaryCompletePhysicalRHS
-  simp_rw [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im]
+  simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im]
   rw [map_sum]
   ring
 
