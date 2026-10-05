@@ -5,6 +5,7 @@ defaultTargets = ["Zeta23"]
 [leanOptions]
 pp.unicode.fun = true
 relaxedAutoImplicit = false
+maxHeartbeats = 800000
 
 [[require]]
 name = "mathlib"
