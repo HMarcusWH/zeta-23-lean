@@ -781,42 +781,63 @@ private theorem parityCompressedFamily_log_eq_frozen_pred
   rw [canonicalSourceMatrix_log_nat_eq_frozen_pred q K hq]
   rfl
 
-/-- Glue matching left and right derivatives without elaborating the concrete
-codomain through a `Set.univ` conversion at every seam call site. -/
+/-! ### Seam gluing in topological-vector-space form
+
+Mathlib states `HasDerivAt.hasDerivWithinAt`, the `congr_of_eventuallyEq`
+lemmas and `HasDerivWithinAt.union` only for a normed codomain. Applied to
+`V →L[ℂ] V`, they make Lean prove that the normed-space instance
+(`ContinuousLinearMap.toNormedSpace` over the real inner-product structure on
+the boundary-flat subspace) agrees with the instances the derivative statements
+were elaborated with. That check unfolds `euclideanParityBoundaryFlatSubspace`
+and the `EuclideanSpace` instance stack, and it exhausted the heartbeat budget
+in both seam proofs below.
+
+The helpers here assume only `[AddCommGroup F] [Module ℝ F] [TopologicalSpace F]`
+`[ContinuousSMul ℝ F]`, the instances `HasDerivAt` itself takes, and go through
+the topological-vector-space Fréchet lemmas. At a call site their instance
+arguments are the ones already in the derivative statements, so no instance
+comparison is needed.
+-/
+
+private theorem hasDerivWithinAt_of_hasDerivAt_tvs
+    {F : Type*} [AddCommGroup F] [Module ℝ F] [TopologicalSpace F]
+    [ContinuousSMul ℝ F]
+    {f : ℝ → F} {f' : F} {s : Set ℝ} {x : ℝ}
+    (h : HasDerivAt f f' x) :
+    HasDerivWithinAt f f' s x :=
+  _root_.hasDerivWithinAt_iff_hasFDerivWithinAt.2
+    h.hasFDerivAt.hasFDerivWithinAt
+
+private theorem hasDerivWithinAt_congr_of_eventuallyEq_tvs
+    {F : Type*} [AddCommGroup F] [Module ℝ F] [TopologicalSpace F]
+    [ContinuousSMul ℝ F]
+    {f f₁ : ℝ → F} {f' : F} {s : Set ℝ} {x : ℝ}
+    (h : HasDerivWithinAt f f' s x)
+    (h₁ : f₁ =ᶠ[𝓝[s] x] f) (hx : f₁ x = f x) :
+    HasDerivWithinAt f₁ f' s x :=
+  _root_.hasDerivWithinAt_iff_hasFDerivWithinAt.2
+    (h.hasFDerivWithinAt.congr_of_eventuallyEq h₁ hx)
+
+private theorem hasDerivAt_congr_of_eventuallyEq_tvs
+    {F : Type*} [AddCommGroup F] [Module ℝ F] [TopologicalSpace F]
+    [ContinuousSMul ℝ F]
+    {f f₁ : ℝ → F} {f' : F} {x : ℝ}
+    (h : HasDerivAt f f' x) (h₁ : f₁ =ᶠ[𝓝 x] f) :
+    HasDerivAt f₁ f' x :=
+  _root_.hasDerivAt_iff_hasFDerivAt.2
+    (h.hasFDerivAt.congr_of_eventuallyEq h₁)
+
 private theorem hasDerivAt_of_Iic_Ici
-    {F : Type*} [NormedAddCommGroup F] [NormedSpace ℝ F]
+    {F : Type*} [AddCommGroup F] [Module ℝ F] [TopologicalSpace F]
+    [ContinuousSMul ℝ F]
     {f : ℝ → F} {f' : F} {x : ℝ}
     (hleft : HasDerivWithinAt f f' (Iic x) x)
     (hright : HasDerivWithinAt f f' (Ici x) x) :
     HasDerivAt f f' x := by
-  have hunion : HasDerivWithinAt f f' (Iic x ∪ Ici x) x :=
-    hleft.union hright
-  apply hunion.hasDerivAt
-  rw [Iic_union_Ici]
-  exact univ_mem
+  have hunion := hleft.hasFDerivWithinAt.union hright.hasFDerivWithinAt
+  rw [Iic_union_Ici] at hunion
+  exact _root_.hasDerivAt_iff_hasFDerivAt.2 hunion.hasFDerivAt_of_univ
 
-/- CI experiment: scoped transparency override for the two seam proofs.
-
-This file sets `backward.isDefEq.respectTransparency false` (top of file), so
-implicit and instance arguments are unified at `.default` transparency and
-ordinary definitions get unfolded during those checks.  The two seam theorems
-(this one and `hasDerivAt_productionParityFirstJetCLM_pos`) are where
-`HasDerivAt` facts about `V →L[ℂ] V`, whose instances were elaborated for the
-topological-vector-space API, are fed to Mathlib's normed-section lemmas
-(`HasDerivWithinAt.congr_of_eventuallyEq`, `.union`, `.hasDerivAt`, and
-`hasDerivAt_of_Iic_Ici` above).  Both theorems failed with `whnf` heartbeat
-timeouts at 200000 and again at 800000 heartbeats, which points to an
-unfolding blow-up rather than a budget that is slightly too small.
-
-Restoring the Lean default (`true`) for just these two declarations tests that
-hypothesis.  `diagnostics` reports unfolding counts, so a failing run still
-shows which definitions were being unfolded.  Reading the result:
-* builds: keep the transparency override and remove `diagnostics`;
-* fails quickly with a type mismatch: the two instance paths agree only at
-  default transparency, so fix how the derivative facts are stated instead;
-* still times out: the hypothesis is wrong; use the diagnostics output. -/
-set_option diagnostics true in
-set_option backward.isDefEq.respectTransparency true in
 /-- At a logarithmic integer threshold the production compressed family has the
 common left/right frozen first derivative. -/
 theorem hasDerivAt_parityCompressedCanonicalCLM_log_nat
@@ -890,18 +911,22 @@ theorem hasDerivAt_parityCompressedCanonicalCLM_log_nat
         (Iic (Real.log (q : ℝ))) (Real.log q) := by
     rw [frozenParityCompressedFirstCLM_log_eq_pred q K hq p]
     exact
-      (hasDerivAt_frozenParityCompressedFamilyCLM_pos
-        (q - 1) p K hlog).hasDerivWithinAt.congr_of_eventuallyEq
-          heqLeft hvalueLeft
+      hasDerivWithinAt_congr_of_eventuallyEq_tvs
+        (hasDerivWithinAt_of_hasDerivAt_tvs
+          (hasDerivAt_frozenParityCompressedFamilyCLM_pos
+            (q - 1) p K hlog))
+        heqLeft hvalueLeft
   have hright :
       HasDerivWithinAt
         (fun L : ℝ => parityCompressedCanonicalCLM p L K)
         (frozenParityCompressedFirstCLM q p K (Real.log q))
         (Ici (Real.log (q : ℝ))) (Real.log q) := by
     exact
-      (hasDerivAt_frozenParityCompressedFamilyCLM_pos
-        q p K hlog).hasDerivWithinAt.congr_of_eventuallyEq
-          heqRight hvalueRight
+      hasDerivWithinAt_congr_of_eventuallyEq_tvs
+        (hasDerivWithinAt_of_hasDerivAt_tvs
+          (hasDerivAt_frozenParityCompressedFamilyCLM_pos
+            q p K hlog))
+        heqRight hvalueRight
   exact hasDerivAt_of_Iic_Ici hleft hright
 
 /-- The production compressed family is differentiable at every positive
@@ -956,13 +981,9 @@ theorem hasDerivAt_parityCompressedCanonicalCLM_pos
         natFloor_exp_eq_on_fixedCanonicalCutoffCell (Q := Q) hQ hs
       exact parityCompressedFamily_eq_frozen_of_floor Q p K s hfloor
     have hf := hasDerivAt_frozenParityCompressedFamilyCLM_pos Q p K hL
-    have hc := hf.congr_of_eventuallyEq hevent
+    have hc := hasDerivAt_congr_of_eventuallyEq_tvs hf hevent
     simpa [productionParityFirstJetCLM, Q] using hc
 
-/- CI experiment: same scoped transparency override as on
-`hasDerivAt_parityCompressedCanonicalCLM_log_nat`; see the comment there. -/
-set_option diagnostics true in
-set_option backward.isDefEq.respectTransparency true in
 /-- The globally selected first production jet is differentiable at every
 positive aperture, including cutoff seams. -/
 theorem hasDerivAt_productionParityFirstJetCLM_pos
@@ -1051,18 +1072,22 @@ theorem hasDerivAt_productionParityFirstJetCLM_pos
           (Iic (Real.log (Q : ℝ))) (Real.log Q) := by
       rw [frozenParityCompressedSecondCLM_log_eq_pred Q K hQtwo p]
       exact
-        (hasDerivAt_frozenParityCompressedFirstCLM_pos
-          (Q - 1) p K hlogpos).hasDerivWithinAt.congr_of_eventuallyEq
-            heqLeft hvalueLeft
+        hasDerivWithinAt_congr_of_eventuallyEq_tvs
+          (hasDerivWithinAt_of_hasDerivAt_tvs
+            (hasDerivAt_frozenParityCompressedFirstCLM_pos
+              (Q - 1) p K hlogpos))
+          heqLeft hvalueLeft
     have hright :
         HasDerivWithinAt
           (productionParityFirstJetCLM p K)
           (frozenParityCompressedSecondCLM Q p K (Real.log Q))
           (Ici (Real.log (Q : ℝ))) (Real.log Q) := by
       exact
-        (hasDerivAt_frozenParityCompressedFirstCLM_pos
-          Q p K hlogpos).hasDerivWithinAt.congr_of_eventuallyEq
-            heqRight hvalueRight
+        hasDerivWithinAt_congr_of_eventuallyEq_tvs
+          (hasDerivWithinAt_of_hasDerivAt_tvs
+            (hasDerivAt_frozenParityCompressedFirstCLM_pos
+              Q p K hlogpos))
+          heqRight hvalueRight
     have hall :
         HasDerivAt
           (productionParityFirstJetCLM p K)
@@ -1087,7 +1112,7 @@ theorem hasDerivAt_productionParityFirstJetCLM_pos
         natFloor_exp_eq_on_fixedCanonicalCutoffCell (Q := Q) hQ hs
       simp [productionParityFirstJetCLM, canonicalDerivativeCutoff, hfloor]
     have hf := hasDerivAt_frozenParityCompressedFirstCLM_pos Q p K hL
-    have hc := hf.congr_of_eventuallyEq hevent
+    have hc := hasDerivAt_congr_of_eventuallyEq_tvs hf hevent
     simpa [productionParitySecondJetCLM, Q] using hc
 
 /-- The global second production jet is continuous at every positive aperture. -/
