@@ -105,6 +105,19 @@ def CanonicalParityCompressedC2 (p : ReversalParity) (K : ℕ) : Prop :=
 def CanonicalEvenCompressedC2 (K : ℕ) : Prop :=
   ContDiffOn ℝ 2 (canonicalEvenCompressedFamilyCLM K) (Ioi (0 : ℝ))
 
+/-- Applying a complex-linear operator family at a fixed vector is real-linear
+in the operator.  This is the correct evaluation rule for real aperture
+derivatives of complex-linear endomorphism-valued families. -/
+private theorem hasDerivAt_complexCLM_apply_const_real
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]
+    {f : ℝ → (E →L[ℂ] E)} {f' : E →L[ℂ] E} {L : ℝ}
+    (h : HasDerivAt f f' L) (x : E) :
+    HasDerivAt (fun s : ℝ => f s x) (f' x) L := by
+  let ev : (E →L[ℂ] E) →L[ℝ] E :=
+    (ContinuousLinearMap.apply ℂ E x).restrictScalars ℝ
+  have hev : HasFDerivAt ev ev (f L) := ev.hasFDerivAt
+  simpa [ev, Function.comp_def] using hev.comp_hasDerivAt L h
+
 /-!
 The following two statements are the critical seam-gluing targets.  They are
 proved by freezing the cutoff on each side, using the existing analytic
@@ -121,33 +134,35 @@ theorem canonicalParityCompressedC2_proved
       DifferentiableOn ℝ
         (fun L : ℝ => parityCompressedCanonicalCLM p L K) (Ioi (0 : ℝ)) := by
     intro L hL
-    exact
-      (hasDerivAt_parityCompressedCanonicalCLM_pos p K hL)
-        .differentiableAt.differentiableWithinAt
+    have hLpos : 0 < L := by simpa only [mem_Ioi] using hL
+    have hderiv := hasDerivAt_parityCompressedCanonicalCLM_pos p K hLpos
+    exact hderiv.differentiableAt.differentiableWithinAt
   have hfirstDiff :
       DifferentiableOn ℝ (productionParityFirstJetCLM p K) (Ioi (0 : ℝ)) := by
     intro L hL
-    exact
-      (hasDerivAt_productionParityFirstJetCLM_pos p K hL)
-        .differentiableAt.differentiableWithinAt
+    have hLpos : 0 < L := by simpa only [mem_Ioi] using hL
+    have hderiv := hasDerivAt_productionParityFirstJetCLM_pos p K hLpos
+    exact hderiv.differentiableAt.differentiableWithinAt
   have hsecondCont :
       ContinuousOn (productionParitySecondJetCLM p K) (Ioi (0 : ℝ)) := by
     intro L hL
-    exact
-      (continuousAt_productionParitySecondJetCLM_pos p K hL)
-        .continuousWithinAt
+    have hLpos : 0 < L := by simpa only [mem_Ioi] using hL
+    have hcont := continuousAt_productionParitySecondJetCLM_pos p K hLpos
+    exact hcont.continuousWithinAt
   have hfirstC1 :
       ContDiffOn ℝ 1 (productionParityFirstJetCLM p K) (Ioi (0 : ℝ)) := by
     rw [contDiffOn_one_iff_derivWithin isOpen_Ioi.uniqueDiffOn]
     refine ⟨hfirstDiff, ?_⟩
     exact hsecondCont.congr fun L hL => by
       rw [derivWithin_of_isOpen isOpen_Ioi hL]
-      exact (hasDerivAt_productionParityFirstJetCLM_pos p K hL).deriv
+      have hLpos : 0 < L := by simpa only [mem_Ioi] using hL
+      exact (hasDerivAt_productionParityFirstJetCLM_pos p K hLpos).deriv
   rw [show (2 : ℕ∞ω) = 1 + 1 by norm_num,
     contDiffOn_succ_iff_deriv_of_isOpen isOpen_Ioi]
   refine ⟨hdiff, by simp, ?_⟩
   exact hfirstC1.congr fun L hL => by
-    exact (hasDerivAt_parityCompressedCanonicalCLM_pos p K hL).deriv
+    have hLpos : 0 < L := by simpa only [mem_Ioi] using hL
+    exact (hasDerivAt_parityCompressedCanonicalCLM_pos p K hLpos).deriv
 
 /-- Native strict-even production compression is C2 on positive aperture. -/
 theorem canonicalEvenCompressedC2_proved
@@ -174,14 +189,14 @@ theorem canonicalParityApertureFirst_isSymmetric
         (canonicalParityApertureFirstCLM p L K x) L := by
     simpa [canonicalParityCompressedFamilyCLM,
       canonicalParityApertureFirstCLM] using
-      hOp.clm_apply (hasDerivAt_const L x)
+      hasDerivAt_complexCLM_apply_const_real hOp x
   have hy :
       HasDerivAt
         (fun s : ℝ => canonicalParityCompressedFamilyCLM p K s y)
         (canonicalParityApertureFirstCLM p L K y) L := by
     simpa [canonicalParityCompressedFamilyCLM,
       canonicalParityApertureFirstCLM] using
-      hOp.clm_apply (hasDerivAt_const L y)
+      hasDerivAt_complexCLM_apply_const_real hOp y
   have hxy :
       HasDerivAt
         (fun s : ℝ => inner ℂ
@@ -227,14 +242,14 @@ theorem canonicalParityApertureSecond_isSymmetric
         (canonicalParityApertureSecondCLM p L K x) L := by
     simpa [canonicalParityApertureFirstCLM,
       canonicalParityApertureSecondCLM] using
-      hOp.clm_apply (hasDerivAt_const L x)
+      hasDerivAt_complexCLM_apply_const_real hOp x
   have hy :
       HasDerivAt
         (fun s : ℝ => canonicalParityApertureFirstCLM p s K y)
         (canonicalParityApertureSecondCLM p L K y) L := by
     simpa [canonicalParityApertureFirstCLM,
       canonicalParityApertureSecondCLM] using
-      hOp.clm_apply (hasDerivAt_const L y)
+      hasDerivAt_complexCLM_apply_const_real hOp y
   have hxy :
       HasDerivAt
         (fun s : ℝ => inner ℂ
@@ -254,7 +269,7 @@ theorem canonicalParityApertureSecond_isSymmetric
         (canonicalParityApertureFirstCLM p s K y)) := by
     filter_upwards [Ioi_mem_nhds hL] with t ht
     exact canonicalParityApertureFirst_isSymmetric p ht K x y
-  have hyx' := hyx.congr_of_eventuallyEq hevent.symm
+  have hyx' := hyx.congr_of_eventuallyEq hevent
   have hEq := hxy.unique hyx'
   simpa [canonicalParityApertureSecond] using hEq
 
