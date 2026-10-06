@@ -313,6 +313,35 @@ private theorem canonicalEvenCompressedFamily_isSymmetric
     (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
     (y : EuclideanSpace ℂ (Fin (2 * K + 1)))
 
+/-- Pointwise first derivative of the native strict-even compressed family.
+The operator-valued derivative is taken on the generic `.even` carrier and is
+evaluated before restating the result natively, avoiding a native CLM
+`ContinuousSMul ℝ` requirement. -/
+private theorem hasDerivAt_canonicalEvenCompressed_apply_pos
+    (K : ℕ) {L : ℝ} (hL : 0 < L)
+    (x : euclideanEvenBoundaryFlatSubspace K) :
+    HasDerivAt
+      (fun s : ℝ => canonicalEvenCompressedFamilyCLM K s x)
+      (canonicalEvenApertureFirstCLM L K x) L := by
+  simpa only [canonicalEvenCompressedFamilyCLM,
+    canonicalEvenApertureFirstCLM] using
+    hasDerivAt_complexCLM_apply_const_real
+      (hasDerivAt_parityCompressedCanonicalCLM_pos .even K hL) x
+
+/-- Pointwise derivative of the native strict-even first aperture jet.  As
+above, evaluation occurs before crossing from the generic `.even` presentation
+to the native carrier. -/
+private theorem hasDerivAt_canonicalEvenApertureFirst_apply_pos
+    (K : ℕ) {L : ℝ} (hL : 0 < L)
+    (x : euclideanEvenBoundaryFlatSubspace K) :
+    HasDerivAt
+      (fun s : ℝ => canonicalEvenApertureFirstCLM s K x)
+      (canonicalEvenApertureSecondCLM L K x) L := by
+  simpa only [canonicalEvenApertureFirstCLM,
+    canonicalEvenApertureSecondCLM] using
+    hasDerivAt_complexCLM_apply_const_real
+      (hasDerivAt_productionParityFirstJetCLM_pos .even K hL) x
+
 /-- Native-even first-aperture symmetry, proved entirely on the native carrier. -/
 theorem canonicalEvenApertureFirst_isSymmetric
     {L : ℝ} (hL : 0 < L) (K : ℕ) :
@@ -320,23 +349,8 @@ theorem canonicalEvenApertureFirst_isSymmetric
       (E := euclideanEvenBoundaryFlatSubspace K)
       (canonicalEvenApertureFirst L K) := by
   intro x y
-  have hOp :
-      HasDerivAt
-        (fun s : ℝ => canonicalEvenCompressedFamilyCLM K s)
-        (canonicalEvenApertureFirstCLM L K) L := by
-    simpa only [canonicalEvenCompressedFamilyCLM,
-      canonicalEvenApertureFirstCLM] using
-      hasDerivAt_parityCompressedCanonicalCLM_pos .even K hL
-  have hx :
-      HasDerivAt
-        (fun s : ℝ => canonicalEvenCompressedFamilyCLM K s x)
-        (canonicalEvenApertureFirstCLM L K x) L :=
-    hasDerivAt_complexCLM_apply_const_real hOp x
-  have hy :
-      HasDerivAt
-        (fun s : ℝ => canonicalEvenCompressedFamilyCLM K s y)
-        (canonicalEvenApertureFirstCLM L K y) L :=
-    hasDerivAt_complexCLM_apply_const_real hOp y
+  have hx := hasDerivAt_canonicalEvenCompressed_apply_pos K hL x
+  have hy := hasDerivAt_canonicalEvenCompressed_apply_pos K hL y
   have hxy :
       HasDerivAt
         (fun s : ℝ => inner ℂ
@@ -373,23 +387,8 @@ theorem canonicalEvenApertureSecond_isSymmetric
       (E := euclideanEvenBoundaryFlatSubspace K)
       (canonicalEvenApertureSecond L K) := by
   intro x y
-  have hOp :
-      HasDerivAt
-        (fun s : ℝ => canonicalEvenApertureFirstCLM s K)
-        (canonicalEvenApertureSecondCLM L K) L := by
-    simpa only [canonicalEvenApertureFirstCLM,
-      canonicalEvenApertureSecondCLM] using
-      hasDerivAt_productionParityFirstJetCLM_pos .even K hL
-  have hx :
-      HasDerivAt
-        (fun s : ℝ => canonicalEvenApertureFirstCLM s K x)
-        (canonicalEvenApertureSecondCLM L K x) L :=
-    hasDerivAt_complexCLM_apply_const_real hOp x
-  have hy :
-      HasDerivAt
-        (fun s : ℝ => canonicalEvenApertureFirstCLM s K y)
-        (canonicalEvenApertureSecondCLM L K y) L :=
-    hasDerivAt_complexCLM_apply_const_real hOp y
+  have hx := hasDerivAt_canonicalEvenApertureFirst_apply_pos K hL x
+  have hy := hasDerivAt_canonicalEvenApertureFirst_apply_pos K hL y
   have hxy :
       HasDerivAt
         (fun s : ℝ => inner ℂ
@@ -408,7 +407,9 @@ theorem canonicalEvenApertureSecond_isSymmetric
       (fun s : ℝ => inner ℂ x
         (canonicalEvenApertureFirstCLM s K y)) := by
     filter_upwards [Ioi_mem_nhds hL] with t ht
-    exact canonicalEvenApertureFirst_isSymmetric ht K x y
+    simpa only [canonicalEvenApertureFirst,
+      canonicalEvenApertureFirstCLM] using
+      canonicalEvenApertureFirst_isSymmetric ht K x y
   have hyx' := hyx.congr_of_eventuallyEq hevent
   have hEq := hxy.unique hyx'
   simpa [canonicalEvenApertureSecond] using hEq
