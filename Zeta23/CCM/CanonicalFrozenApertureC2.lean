@@ -781,6 +781,20 @@ private theorem parityCompressedFamily_log_eq_frozen_pred
   rw [canonicalSourceMatrix_log_nat_eq_frozen_pred q K hq]
   rfl
 
+/-- Glue matching left and right derivatives without elaborating the concrete
+codomain through a `Set.univ` conversion at every seam call site. -/
+private theorem hasDerivAt_of_Iic_Ici
+    {F : Type*} [NormedAddCommGroup F] [NormedSpace ℝ F]
+    {f : ℝ → F} {f' : F} {x : ℝ}
+    (hleft : HasDerivWithinAt f f' (Iic x) x)
+    (hright : HasDerivWithinAt f f' (Ici x) x) :
+    HasDerivAt f f' x := by
+  have hunion : HasDerivWithinAt f f' (Iic x ∪ Ici x) x :=
+    hleft.union hright
+  apply hunion.hasDerivAt
+  rw [Iic_union_Ici]
+  exact univ_mem
+
 /-- At a logarithmic integer threshold the production compressed family has the
 common left/right frozen first derivative. -/
 theorem hasDerivAt_parityCompressedCanonicalCLM_log_nat
@@ -866,15 +880,7 @@ theorem hasDerivAt_parityCompressedCanonicalCLM_log_nat
       (hasDerivAt_frozenParityCompressedFamilyCLM_pos
         q p K hlog).hasDerivWithinAt.congr_of_eventuallyEq
           heqRight hvalueRight
-  have hunion :
-      HasDerivWithinAt
-        (fun L : ℝ => parityCompressedCanonicalCLM p L K)
-        (frozenParityCompressedFirstCLM q p K (Real.log q))
-        (Iic (Real.log (q : ℝ)) ∪ Ici (Real.log (q : ℝ)))
-        (Real.log q) :=
-    hleft.union hright
-  exact hunion.hasDerivAt (by
-    simp only [Iic_union_Ici, univ_mem])
+  exact hasDerivAt_of_Iic_Ici hleft hright
 
 /-- The production compressed family is differentiable at every positive
 aperture with derivative equal to the frozen-cutoff first jet. -/
@@ -1031,20 +1037,12 @@ theorem hasDerivAt_productionParityFirstJetCLM_pos
         (hasDerivAt_frozenParityCompressedFirstCLM_pos
           Q p K hlogpos).hasDerivWithinAt.congr_of_eventuallyEq
             heqRight hvalueRight
-    have hunion :
-        HasDerivWithinAt
-          (productionParityFirstJetCLM p K)
-          (frozenParityCompressedSecondCLM Q p K (Real.log Q))
-          (Iic (Real.log (Q : ℝ)) ∪ Ici (Real.log (Q : ℝ)))
-          (Real.log Q) :=
-      hleft.union hright
     have hall :
         HasDerivAt
           (productionParityFirstJetCLM p K)
           (frozenParityCompressedSecondCLM Q p K (Real.log Q))
           (Real.log Q) :=
-      hunion.hasDerivAt (by
-        simp only [Iic_union_Ici, univ_mem])
+      hasDerivAt_of_Iic_Ici hleft hright
     rw [productionParitySecondJetCLM, hcut]
     exact hall
   · have hQstrict : (Q : ℝ) < Real.exp L := lt_of_le_of_ne hQlower hseam
