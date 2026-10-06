@@ -108,7 +108,7 @@ def CanonicalEvenCompressedC2 (K : ℕ) : Prop :=
 /-- Applying a complex-linear operator family at a fixed vector is real-linear
 in the operator.  This is the correct evaluation rule for real aperture
 derivatives of complex-linear endomorphism-valued families. -/
-private theorem hasDerivAt_complexCLM_apply_const_real
+theorem hasDerivAt_complexCLM_apply_const_real
     {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]
     {f : ℝ → (E →L[ℂ] E)} {f' : E →L[ℂ] E} {L : ℝ}
     (h : HasDerivAt f f' L) (x : E) :
