@@ -1,5 +1,7 @@
 import Mathlib.Analysis.Calculus.Deriv.Mul
+import Mathlib.Analysis.Calculus.DerivativeTest
 import Mathlib.Analysis.Calculus.ContDiff.Operations
+import Mathlib.Analysis.Normed.Module.FiniteDimension
 import Mathlib.Analysis.InnerProductSpace.Symmetric
 import Mathlib.Analysis.InnerProductSpace.Positive
 import Mathlib.Analysis.Normed.Operator.Banach
@@ -37,67 +39,68 @@ arbitrarily negative to the right, and stationary has zero second derivative. -/
 theorem stationary_firstContact_secondDerivative_eq_zero
     {f : ℝ → ℝ} {x a b : ℝ}
     (hax : a < x)
-    (hxb : x < b)
+    (_hxb : x < b)
     (hzero : f x = 0)
     (hleft : ∀ y, a ≤ y → y ≤ x → 0 ≤ f y)
     (hright : ∀ ε > 0, ∃ y, x < y ∧ y < x + ε ∧ f y < 0)
     (hC2 : ContDiffAt ℝ 2 f x)
     (hstat : deriv f x = 0) :
     deriv (deriv f) x = 0 := by
-  by_contra hne
-  rcases lt_or_gt_of_ne hne with hneg | hpos
-  · have hlocalNeg : ∀ᶠ y in 𝓝[<] x, f y < 0 := by
-      have hquad := hC2.isLittleO_sub_first
-      filter_upwards [hquad.eventually] with y hy
-      have hyx : y - x < 0 := by
-        simpa [mem_Iio] using show y ∈ Iio x from by assumption
-      have hyne : y - x ≠ 0 := ne_of_lt hyx
-      have hsq : 0 < (y - x) ^ 2 := sq_pos_of_ne_zero hyne
-      nlinarith
-    obtain ⟨ε, hε, hball⟩ := eventually_nhdsWithin_iff.1 hlocalNeg
-    let δ : ℝ := min ε (x - a) / 2
-    have hδpos : 0 < δ := by
-      dsimp [δ]
-      have hm : 0 < min ε (x - a) :=
-        lt_min hε (sub_pos.mpr hax)
+  apply le_antisymm
+  · by_contra hnot
+    have hpos : 0 < deriv (deriv f) x := lt_of_not_ge hnot
+    have hmin : IsLocalMin f x :=
+      isLocalMin_of_deriv_deriv_pos hpos hstat hC2.continuousAt
+    have hminEv : ∀ᶠ y in 𝓝 x, 0 ≤ f y := by
+      change ∀ᶠ y in 𝓝 x, f x ≤ f y at hmin
+      filter_upwards [hmin] with y hy
+      simpa [hzero] using hy
+    obtain ⟨ε, hε, hball⟩ := Metric.eventually_nhds_iff.mp hminEv
+    obtain ⟨y, hyx, hyε, hyneg⟩ := hright ε hε
+    have hydist : dist y x < ε := by
+      rw [Real.dist_eq, abs_of_pos (sub_pos.mpr hyx)]
       linarith
-    have hδltε : δ < ε := by
-      dsimp [δ]
-      have hm := min_le_left ε (x - a)
-      linarith
-    have hδltxa : δ < x - a := by
-      dsimp [δ]
-      have hm := min_le_right ε (x - a)
-      have hxa : 0 < x - a := sub_pos.mpr hax
-      linarith
-    let y : ℝ := x - δ
-    have hyx : y < x := by
+    exact (not_lt_of_ge (hball y hydist)) hyneg
+  · by_contra hnot
+    have hneg : deriv (deriv f) x < 0 := lt_of_not_ge hnot
+    have hmax : IsLocalMax f x :=
+      isLocalMax_of_deriv_deriv_neg hneg hstat hC2.continuousAt
+    have hmaxEv : ∀ᶠ y in 𝓝 x, f y ≤ f x := by
+      exact hmax
+    have hleftEv : ∀ᶠ y in 𝓝[<] x, 0 ≤ f y := by
+      filter_upwards [
+        (Ioi_mem_nhds hax).filter_mono nhdsWithin_le_nhds,
+        self_mem_nhdsWithin] with y hay hyx
+      exact hleft y (le_of_lt hay) (le_of_lt hyx)
+    have hzeroLeft : ∀ᶠ y in 𝓝[<] x, f y = 0 := by
+      filter_upwards [
+        hleftEv,
+        hmaxEv.filter_mono nhdsWithin_le_nhds] with y hy0 hymax
+      rw [hzero] at hymax
+      exact le_antisymm hymax hy0
+    have hsign :
+        ∀ᶠ y in 𝓝 x, sign (deriv f y) = sign (x - y) :=
+      eventually_nhdsWithin_sign_eq_of_deriv_neg
+        (f := deriv f) hneg hstat
+    have hderivPos : ∀ᶠ y in 𝓝[<] x, deriv f y > 0 :=
+      deriv_pos_left_of_sign_deriv
+        (hsign.filter_mono nhdsWithin_le_nhds)
+    obtain ⟨d, hd⟩ :=
+      (nhdsLT_basis x).eventually_iff.mp (hzeroLeft.and hderivPos)
+    let y := (d + x) / 2
+    have hy : y ∈ Ioo d x := by
       dsimp [y]
-      linarith
-    have hay : a < y := by
-      dsimp [y]
-      linarith
-    have hdist : dist y x < ε := by
-      have habs : |y - x| = δ := by
-        dsimp [y]
-        rw [show x - δ - x = -δ by ring, abs_neg, abs_of_pos hδpos]
-      simpa [Real.dist_eq, habs] using hδltε
-    have hyneg : f y < 0 := hball ⟨hdist, hyx⟩
-    have hynonneg := hleft y (le_of_lt hay) (le_of_lt hyx)
-    linarith
-  · have hlocalPos : ∀ᶠ y in 𝓝[>] x, 0 < f y := by
-      have hquad := hC2.isLittleO_sub_first
-      filter_upwards [hquad.eventually] with y hy
-      have hyx : 0 < y - x := by
-        simpa [mem_Ioi] using show y ∈ Ioi x from by assumption
-      nlinarith
-    obtain ⟨ε, hε, hball⟩ := eventually_nhdsWithin_iff.1 hlocalPos
-    obtain ⟨y, hyx, hyu, hyneg⟩ := hright ε hε
-    have hypos : 0 < f y := hball ⟨by
-      rw [Real.dist_eq, abs_of_nonneg (sub_nonneg.mpr (le_of_lt hyx))]
-      linarith, hyx⟩
+      constructor <;> linarith [hd.1]
+    have hEqOn : Set.EqOn f (fun _ : ℝ => 0) (Ioo d x) := by
+      intro t ht
+      exact (hd.2 ht).1
+    have hderivZero : deriv f y = 0 := by
+      have hEqDeriv := hEqOn.deriv isOpen_Ioo hy
+      simpa using hEqDeriv
+    have hderivPosY : 0 < deriv f y := (hd.2 hy).2
     linarith
 
+/-! ## Fixed kernel complement and actual Schur objects -/
 /-! ## Fixed kernel complement and actual Schur objects -/
 
 variable {V : Type*}
@@ -122,9 +125,7 @@ def stationarySchurBlock
 def stationarySchurCoupling
     (F : ℝ → V →L[ℂ] V) (z : V) (s : ℝ) :
     stationarySchurComplement z :=
-  ⟨(stationarySchurComplement z).orthogonalProjection
-      (F s z),
-    (stationarySchurComplement z).orthogonalProjection_mem _⟩
+  (stationarySchurComplement z).orthogonalProjectionOnto (F s z)
 
 /-- Totalized Schur response `C(s)⁻¹ b(s)`.  At an invertible block this is
 the genuine inverse response; the totalized inverse keeps the definition
@@ -163,7 +164,10 @@ theorem stationarySchur_map_mem_complement
     (w : stationarySchurComplement z) :
     F (w : V) ∈ stationarySchurComplement z := by
   change inner ℂ z (F (w : V)) = 0
-  rw [← hF z (w : V), hz, inner_zero_left]
+  calc
+    inner ℂ z (F (w : V)) =
+        inner ℂ (F z) (w : V) := (hF z (w : V)).symm
+    _ = 0 := by rw [hz, inner_zero_left]
 
 /-- At a zero mode, the Schur coupling vanishes. -/
 theorem stationarySchurCoupling_eq_zero_of_kernel
@@ -223,20 +227,24 @@ theorem stationarySchurBlock_injective_of_kernel_line
         (stationarySchurComplement z).orthogonalProjectionOnto
           (F x (w : V)) =
         ⟨F x (w : V), hmem⟩ := by
-      apply Subtype.ext
-      exact
-        (stationarySchurComplement z).orthogonalProjection_eq_self.2 hmem
+      simpa using
+        (Submodule.orthogonalProjectionOnto_mem_subspace_eq_self
+          (K := stationarySchurComplement z)
+          ⟨F x (w : V), hmem⟩)
     rw [hproj] at hzero
     exact congrArg Subtype.val hzero
   obtain ⟨a, ha⟩ := hker (w : V) hambient
   have horth : inner ℂ z (w : V) = 0 := w.property
-  rw [ha, inner_smul_right, inner_self_eq_norm_sq, hznorm] at horth
+  have hzz : inner ℂ z z = 1 := by
+    rw [inner_self_eq_norm_sq_to_K, hznorm]
+    norm_num
+  rw [ha, inner_smul_right, hzz] at horth
   simp at horth
   have ha0 : a = 0 := by simpa using horth
   apply Subtype.ext
   simp [w, ha, ha0]
 
-/-- In finite dimension the simple-kernel complement block is invertible,
+/-- In finite dimension the simple-kernel complement block is invertible,/-- In finite dimension the simple-kernel complement block is invertible,
 including the zero-dimensional complement. -/
 theorem stationarySchurBlock_isInvertible_of_kernel_line
     {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
@@ -253,7 +261,7 @@ theorem stationarySchurBlock_isInvertible_of_kernel_line
   exact ⟨ContinuousLinearEquiv.ofBijective
     (stationarySchurBlock F z x)
     (LinearMap.ker_eq_bot.mpr hinj)
-    (LinearMap.range_eq_top.mpr hsurj)⟩
+    (LinearMap.range_eq_top.mpr hsurj), rfl⟩
 
 /-- On an invertible block, the response solves the exact complement equation. -/
 theorem stationarySchurBlock_response
@@ -303,17 +311,44 @@ theorem stationarySchurBlock_isSymmetric
     LinearMap.IsSymmetric (𝕜 := ℂ)
       (stationarySchurBlock F z s).toLinearMap := by
   intro u v
-  rw [stationarySchurBlock_inner, stationarySchurBlock_inner]
+  change
+    inner ℂ
+      ((stationarySchurComplement z).orthogonalProjectionOnto
+        (F s (u : V))) v =
+      inner ℂ u
+        ((stationarySchurComplement z).orthogonalProjectionOnto
+          (F s (v : V)))
+  rw [
+    Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right,
+    Submodule.inner_orthogonalProjectionOnto_eq_of_mem_left
+  ]
   exact hF (u : V) (v : V)
 
-/-- C2 regularity of the ambient family descends to the fixed complement
+/-- The fixed block compression is real-linear in the ambient complex-linear
+operator. -/
+noncomputable def stationarySchurBlockTransform (z : V) :
+    (V →L[ℂ] V) →L[ℝ]
+      (stationarySchurComplement z →L[ℂ] stationarySchurComplement z) :=
+  let W := stationarySchurComplement z
+  (((ContinuousLinearMap.compL ℂ W V W W.orthogonalProjectionOnto).comp
+      ((ContinuousLinearMap.compL ℂ W V V).flip W.subtypeL)).restrictScalars ℝ)
+
+/-- The fixed coupling projection is real-linear in the ambient operator. -/
+noncomputable def stationarySchurCouplingTransform (z : V) :
+    (V →L[ℂ] V) →L[ℝ] stationarySchurComplement z :=
+  (((stationarySchurComplement z).orthogonalProjectionOnto.comp
+      (ContinuousLinearMap.apply ℂ V z)).restrictScalars ℝ)
+
+/-- C2 regularity of the ambient family descends to the fixed complement/-- C2 regularity of the ambient family descends to the fixed complement
 block. -/
 theorem contDiffAt_stationarySchurBlock
     {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
     (hF : ContDiffAt ℝ 2 F x) :
     ContDiffAt ℝ 2 (fun s => stationarySchurBlock F z s) x := by
-  unfold stationarySchurBlock
-  fun_prop
+  have hT : ContDiff ℝ 2 (stationarySchurBlockTransform z) :=
+    ContinuousLinearMap.contDiff _
+  simpa [stationarySchurBlockTransform, stationarySchurBlock] using
+    hT.contDiffAt.comp x hF
 
 /-- C2 regularity of the ambient family descends to its fixed-complement
 coupling. -/
@@ -321,8 +356,10 @@ theorem contDiffAt_stationarySchurCoupling
     {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
     (hF : ContDiffAt ℝ 2 F x) :
     ContDiffAt ℝ 2 (fun s => stationarySchurCoupling F z s) x := by
-  unfold stationarySchurCoupling
-  fun_prop
+  have hT : ContDiff ℝ 2 (stationarySchurCouplingTransform z) :=
+    ContinuousLinearMap.contDiff _
+  simpa [stationarySchurCouplingTransform, stationarySchurCoupling] using
+    hT.contDiffAt.comp x hF
 
 /-- An invertible contact block remains invertible in a neighborhood. -/
 theorem eventually_stationarySchurBlock_isInvertible
@@ -333,7 +370,35 @@ theorem eventually_stationarySchurBlock_isInvertible
   have hcont :
       ContinuousAt (fun s => stationarySchurBlock F z s) x :=
     (contDiffAt_stationarySchurBlock hF).continuousAt
-  exact hcont.eventually hC.eventually_nhds
+  have hinj : Function.Injective (stationarySchurBlock F z x) := by
+    rcases hC with ⟨e, he⟩
+    rw [← he]
+    exact e.injective
+  have hdet0 : (stationarySchurBlock F z x).det ≠ 0 := by
+    intro hzero
+    have hkerne :
+        LinearMap.ker (stationarySchurBlock F z x).toLinearMap ≠ ⊥ :=
+      (LinearMap.det_eq_zero_iff_ker_ne_bot).1 hzero
+    exact hkerne (LinearMap.ker_eq_bot.mpr hinj)
+  have hdetcont :
+      ContinuousAt (fun s => (stationarySchurBlock F z s).det) x :=
+    ContinuousLinearMap.continuous_det.continuousAt.comp x hcont
+  have hdetEv :
+      ∀ᶠ s in 𝓝 x, (stationarySchurBlock F z s).det ≠ 0 :=
+    hdetcont.eventually_ne hdet0
+  filter_upwards [hdetEv] with s hs
+  have hkerbot :
+      LinearMap.ker (stationarySchurBlock F z s).toLinearMap = ⊥ := by
+    by_contra hne
+    exact hs ((LinearMap.det_eq_zero_iff_ker_ne_bot).2 hne)
+  have hsInj : Function.Injective (stationarySchurBlock F z s) :=
+    LinearMap.ker_eq_bot.mp hkerbot
+  have hsSurj : Function.Surjective (stationarySchurBlock F z s) :=
+    LinearMap.injective_iff_surjective.mp hsInj
+  exact ⟨ContinuousLinearEquiv.ofBijective
+      (stationarySchurBlock F z s)
+      (LinearMap.ker_eq_bot.mpr hsInj)
+      (LinearMap.range_eq_top.mpr hsSurj), rfl⟩
 
 /-- The totalized inverse response is genuinely C2 at every point where the
 contact block is invertible. -/
@@ -342,35 +407,50 @@ theorem contDiffAt_stationarySchurResponse
     (hF : ContDiffAt ℝ 2 F x)
     (hC : (stationarySchurBlock F z x).IsInvertible) :
     ContDiffAt ℝ 2 (fun s => stationarySchurResponse F z s) x := by
+  let W := stationarySchurComplement z
   have hblock := contDiffAt_stationarySchurBlock hF
   have hcoupling := contDiffAt_stationarySchurCoupling hF
   have hinv0 :
       ContDiffAt ℂ 2
-        (ContinuousLinearMap.inverse :
-          (stationarySchurComplement z →L[ℂ] stationarySchurComplement z) →
-            (stationarySchurComplement z →L[ℂ] stationarySchurComplement z))
+        (ContinuousLinearMap.inverse : (W →L[ℂ] W) → (W →L[ℂ] W))
         (stationarySchurBlock F z x) :=
     hC.contDiffAt_map_inverse
   have hinvR :
       ContDiffAt ℝ 2
-        (ContinuousLinearMap.inverse :
-          (stationarySchurComplement z →L[ℂ] stationarySchurComplement z) →
-            (stationarySchurComplement z →L[ℂ] stationarySchurComplement z))
+        (ContinuousLinearMap.inverse : (W →L[ℂ] W) → (W →L[ℂ] W))
         (stationarySchurBlock F z x) :=
     hinv0.restrict_scalars ℝ
   have hinv :
       ContDiffAt ℝ 2
         (fun s => ContinuousLinearMap.inverse (stationarySchurBlock F z s)) x :=
     hinvR.comp x hblock
-  simpa [stationarySchurResponse] using hinv.clm_apply hcoupling
+  let R : (W →L[ℂ] W) →L[ℝ] (W →L[ℝ] W) :=
+    ContinuousLinearMap.restrictScalarsL ℂ W W ℝ ℝ
+  have hinvReal :
+      ContDiffAt ℝ 2
+        (fun s =>
+          (ContinuousLinearMap.inverse
+            (stationarySchurBlock F z s)).restrictScalars ℝ) x := by
+    have hR : ContDiff ℝ 2 R := ContinuousLinearMap.contDiff _
+    simpa [R] using hR.contDiffAt.comp x hinv
+  simpa [stationarySchurResponse] using
+    hinvReal.clm_apply hcoupling
 
 theorem contDiffAt_stationarySchurVector
     {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
     (hF : ContDiffAt ℝ 2 F x)
     (hC : (stationarySchurBlock F z x).IsInvertible) :
     ContDiffAt ℝ 2 (fun s => stationarySchurVector F z s) x := by
-  unfold stationarySchurVector
-  fun_prop
+  let W := stationarySchurComplement z
+  let incl : W →L[ℝ] V := W.subtypeL.restrictScalars ℝ
+  have hr := contDiffAt_stationarySchurResponse hF hC
+  have hri :
+      ContDiffAt ℝ 2
+        (fun s => incl (stationarySchurResponse F z s)) x := by
+    have hi : ContDiff ℝ 2 incl := ContinuousLinearMap.contDiff _
+    exact hi.contDiffAt.comp x hr
+  simpa [stationarySchurVector, incl] using
+    (contDiffAt_const.sub hri)
 
 /-- The actual scalar Schur profile is C2 whenever the ambient family is C2
 and the contact complement is invertible. -/
@@ -380,10 +460,17 @@ theorem contDiffAt_stationarySchurScalar
     (hC : (stationarySchurBlock F z x).IsInvertible) :
     ContDiffAt ℝ 2 (fun s => stationarySchurScalar F z s) x := by
   have hv := contDiffAt_stationarySchurVector hF hC
-  have hFv := hF.clm_apply hv
+  let R : (V →L[ℂ] V) →L[ℝ] (V →L[ℝ] V) :=
+    ContinuousLinearMap.restrictScalarsL ℂ V V ℝ ℝ
+  have hFR :
+      ContDiffAt ℝ 2 (fun s => (F s).restrictScalars ℝ) x := by
+    have hR : ContDiff ℝ 2 R := ContinuousLinearMap.contDiff _
+    simpa [R] using hR.contDiffAt.comp x hF
+  have hFv := hFR.clm_apply hv
   have hi := hFv.inner ℂ hv
   exact Complex.reCLM.contDiff.contDiffAt.comp x hi
 
+/-! ## Generic arbitrary-complement Schur package -/
 /-! ## Generic arbitrary-complement Schur package -/
 
 variable {W : Type*}
