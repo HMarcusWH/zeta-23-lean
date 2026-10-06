@@ -118,6 +118,19 @@ private theorem hasDerivAt_complexCLM_apply_const_real
   have hev : HasFDerivAt ev ev (f L) := ev.hasFDerivAt
   simpa [ev, Function.comp_def] using hev.comp_hasDerivAt L h
 
+/-- A real one-variable derivative of a complex-linear endomorphism family
+supplies the exact within-set Frechet witness needed by `ContDiffOn`.  Keeping
+this bridge explicit avoids re-elaborating the CLM module instance through
+`HasDerivAt.differentiableAt`. -/
+private theorem differentiableWithinAt_complexCLM_real
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]
+    {f : ℝ → (E →L[ℂ] E)} {f' : E →L[ℂ] E}
+    {s : Set ℝ} {L : ℝ}
+    (h : HasDerivAt f f' L) :
+    DifferentiableWithinAt ℝ f s L := by
+  refine ⟨ContinuousLinearMap.toSpanSingleton ℝ f', ?_⟩
+  exact h.hasFDerivAt.hasFDerivWithinAt
+
 /-!
 The following two statements are the critical seam-gluing targets.  They are
 proved by freezing the cutoff on each side, using the existing analytic
@@ -135,21 +148,14 @@ theorem canonicalParityCompressedC2_proved
         (fun L : ℝ => parityCompressedCanonicalCLM p L K) (Ioi (0 : ℝ)) := by
     intro L hL
     have hLpos : 0 < L := by simpa only [mem_Ioi] using hL
-    have hderiv := hasDerivAt_parityCompressedCanonicalCLM_pos p K hLpos
-    have hdiffAt :
-        DifferentiableAt ℝ
-          (fun s : ℝ => parityCompressedCanonicalCLM p s K) L :=
-      hderiv.differentiableAt
-    exact hdiffAt.differentiableWithinAt
+    exact differentiableWithinAt_complexCLM_real
+      (hasDerivAt_parityCompressedCanonicalCLM_pos p K hLpos)
   have hfirstDiff :
       DifferentiableOn ℝ (productionParityFirstJetCLM p K) (Ioi (0 : ℝ)) := by
     intro L hL
     have hLpos : 0 < L := by simpa only [mem_Ioi] using hL
-    have hderiv := hasDerivAt_productionParityFirstJetCLM_pos p K hLpos
-    have hdiffAt :
-        DifferentiableAt ℝ (productionParityFirstJetCLM p K) L :=
-      hderiv.differentiableAt
-    exact hdiffAt.differentiableWithinAt
+    exact differentiableWithinAt_complexCLM_real
+      (hasDerivAt_productionParityFirstJetCLM_pos p K hLpos)
   have hsecondCont :
       ContinuousOn (productionParitySecondJetCLM p K) (Ioi (0 : ℝ)) := by
     intro L hL
@@ -287,11 +293,11 @@ theorem canonicalEvenApertureFirst_isSymmetric
     LinearMap.IsSymmetric (𝕜 := ℂ)
       (E := euclideanEvenBoundaryFlatSubspace K)
       (canonicalEvenApertureFirst L K) := by
-  unfold canonicalEvenApertureFirst canonicalEvenApertureFirstCLM
-  change LinearMap.IsSymmetric (𝕜 := ℂ)
-    (E := euclideanParityBoundaryFlatSubspace .even K)
-    (canonicalParityApertureFirst .even L K)
-  exact canonicalParityApertureFirst_isSymmetric .even hL K
+  intro x y
+  simpa only [canonicalEvenApertureFirst, canonicalEvenApertureFirstCLM,
+    canonicalParityApertureFirst, canonicalParityApertureFirstCLM,
+    euclideanParityBoundaryFlatSubspace_even] using
+    canonicalParityApertureFirst_isSymmetric .even hL K x y
 
 /-- Native-even wrapper for second-derivative symmetry. -/
 theorem canonicalEvenApertureSecond_isSymmetric
@@ -299,11 +305,11 @@ theorem canonicalEvenApertureSecond_isSymmetric
     LinearMap.IsSymmetric (𝕜 := ℂ)
       (E := euclideanEvenBoundaryFlatSubspace K)
       (canonicalEvenApertureSecond L K) := by
-  unfold canonicalEvenApertureSecond canonicalEvenApertureSecondCLM
-  change LinearMap.IsSymmetric (𝕜 := ℂ)
-    (E := euclideanParityBoundaryFlatSubspace .even K)
-    (canonicalParityApertureSecond .even L K)
-  exact canonicalParityApertureSecond_isSymmetric .even hL K
+  intro x y
+  simpa only [canonicalEvenApertureSecond, canonicalEvenApertureSecondCLM,
+    canonicalParityApertureSecond, canonicalParityApertureSecondCLM,
+    euclideanParityBoundaryFlatSubspace_even] using
+    canonicalParityApertureSecond_isSymmetric .even hL K x y
 
 end Zeta23.CCM
 
