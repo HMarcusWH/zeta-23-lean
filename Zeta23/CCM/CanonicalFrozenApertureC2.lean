@@ -795,6 +795,28 @@ private theorem hasDerivAt_of_Iic_Ici
   rw [Iic_union_Ici]
   exact univ_mem
 
+/- CI experiment: scoped transparency override for the two seam proofs.
+
+This file sets `backward.isDefEq.respectTransparency false` (top of file), so
+implicit and instance arguments are unified at `.default` transparency and
+ordinary definitions get unfolded during those checks.  The two seam theorems
+(this one and `hasDerivAt_productionParityFirstJetCLM_pos`) are where
+`HasDerivAt` facts about `V →L[ℂ] V`, whose instances were elaborated for the
+topological-vector-space API, are fed to Mathlib's normed-section lemmas
+(`HasDerivWithinAt.congr_of_eventuallyEq`, `.union`, `.hasDerivAt`, and
+`hasDerivAt_of_Iic_Ici` above).  Both theorems failed with `whnf` heartbeat
+timeouts at 200000 and again at 800000 heartbeats, which points to an
+unfolding blow-up rather than a budget that is slightly too small.
+
+Restoring the Lean default (`true`) for just these two declarations tests that
+hypothesis.  `diagnostics` reports unfolding counts, so a failing run still
+shows which definitions were being unfolded.  Reading the result:
+* builds: keep the transparency override and remove `diagnostics`;
+* fails quickly with a type mismatch: the two instance paths agree only at
+  default transparency, so fix how the derivative facts are stated instead;
+* still times out: the hypothesis is wrong; use the diagnostics output. -/
+set_option diagnostics true in
+set_option backward.isDefEq.respectTransparency true in
 /-- At a logarithmic integer threshold the production compressed family has the
 common left/right frozen first derivative. -/
 theorem hasDerivAt_parityCompressedCanonicalCLM_log_nat
@@ -937,6 +959,10 @@ theorem hasDerivAt_parityCompressedCanonicalCLM_pos
     have hc := hf.congr_of_eventuallyEq hevent
     simpa [productionParityFirstJetCLM, Q] using hc
 
+/- CI experiment: same scoped transparency override as on
+`hasDerivAt_parityCompressedCanonicalCLM_log_nat`; see the comment there. -/
+set_option diagnostics true in
+set_option backward.isDefEq.respectTransparency true in
 /-- The globally selected first production jet is differentiable at every
 positive aperture, including cutoff seams. -/
 theorem hasDerivAt_productionParityFirstJetCLM_pos
