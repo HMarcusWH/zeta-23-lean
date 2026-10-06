@@ -13,7 +13,7 @@ noncomputable section
 
 namespace Zeta23.CCM
 
-open Set Filter
+open Set Filter SignType
 open Complex
 open scoped Topology ComplexConjugate
 
