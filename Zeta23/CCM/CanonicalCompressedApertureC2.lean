@@ -8,7 +8,7 @@ noncomputable section
 namespace Zeta23.CCM
 
 open Complex Matrix Set
-open scoped Topology ComplexConjugate
+open scoped Topology ComplexConjugate ContDiff
 
 /-!
 # Post-#282 compressed-first aperture calculus
