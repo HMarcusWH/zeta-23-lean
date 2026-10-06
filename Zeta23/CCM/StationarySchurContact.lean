@@ -657,38 +657,43 @@ theorem stationarySchurScalar_firstDerivative_eq_fixed
       eventually_stationarySchurScalar_eq_envelope hF hFsym hC
   have ha : ContDiffAt ℝ 2 a x := by
     have hFz := contDiffAt_complexCLM_apply_const_real hF z
-    have hi := hFz.inner ℂ (contDiffAt_const : ContDiffAt ℝ 2 (fun _ : ℝ => z) x)
-    simpa [a] using Complex.reCLM.contDiff.contDiffAt.comp x hi
+    have hi :=
+      hFz.inner ℂ
+        (contDiffAt_const : ContDiffAt ℝ 2 (fun _ : ℝ => z) x)
+    change
+      ContDiffAt ℝ 2
+        (Complex.reCLM ∘ fun s => inner ℂ (F s z) z) x
+    exact Complex.reCLM.contDiff.contDiffAt.comp x hi
   have hb : ContDiffAt ℝ 2 b x := by
-    simpa [b] using contDiffAt_stationarySchurCoupling hF
+    simpa [b] using
+      contDiffAt_stationarySchurCoupling (F := F) (z := z) (x := x) hF
   have hr : ContDiffAt ℝ 2 r x := by
-    simpa [r] using contDiffAt_stationarySchurResponse hF hC
+    simpa [r] using
+      contDiffAt_stationarySchurResponse (F := F) (z := z) (x := x) hF hC
   have hbx : b x = 0 := by
     simpa [b] using stationarySchurCoupling_eq_zero_of_kernel hz
   have hrx : r x = 0 := by
     simpa [r] using stationarySchurResponse_eq_zero_of_kernel hz
+  have haD : HasDerivAt a (deriv a x) x :=
+    (ha.differentiableAt (by norm_num)).hasDerivAt
   have hpairD :=
     ((hr.differentiableAt (by norm_num)).hasDerivAt).inner ℂ
       ((hb.differentiableAt (by norm_num)).hasDerivAt)
   have hreD :=
     Complex.reCLM.hasFDerivAt.comp_hasDerivAt x hpairD
-  have hpair0 :
-      deriv (fun s => Complex.re (inner ℂ (r s) (b s))) x = 0 := by
-    rw [hreD.deriv]
-    simp [hbx, hrx]
-  have henv :
-      deriv (stationarySchurEnvelope a b r) x = deriv a x := by
+  have hpairD0 :
+      HasDerivAt
+        (fun s => Complex.re (inner ℂ (r s) (b s))) 0 x := by
+    change
+      HasDerivAt
+        (Complex.reCLM ∘ fun s => inner ℂ (r s) (b s)) 0 x
+    convert hreD using 1 <;> simp [hbx, hrx]
+  have henvD :
+      HasDerivAt (stationarySchurEnvelope a b r) (deriv a x) x := by
     unfold stationarySchurEnvelope
-    rw [deriv_sub (ha.differentiableAt (by norm_num))
-      (by
-        exact
-          (show ContDiffAt ℝ 2
-            (fun s => Complex.re (inner ℂ (r s) (b s))) x by
-              fun_prop).differentiableAt (by norm_num)),
-      hpair0, sub_zero]
-  rw [Filter.EventuallyEq.deriv_eq heq, henv]
-  rfl
-
+    simpa using haD.sub hpairD0
+  rw [Filter.EventuallyEq.deriv_eq heq]
+  simpa [a] using henvD.deriv
 
 /-! ## Contact jets of the inverse response -/
 
