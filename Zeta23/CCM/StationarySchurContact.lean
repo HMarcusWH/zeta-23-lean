@@ -101,7 +101,6 @@ theorem stationary_firstContact_secondDerivative_eq_zero
     linarith
 
 /-! ## Fixed kernel complement and actual Schur objects -/
-/-! ## Fixed kernel complement and actual Schur objects -/
 
 variable {V : Type*}
   [NormedAddCommGroup V] [InnerProductSpace ℂ V]
@@ -244,7 +243,7 @@ theorem stationarySchurBlock_injective_of_kernel_line
   apply Subtype.ext
   simp [w, ha, ha0]
 
-/-- In finite dimension the simple-kernel complement block is invertible,/-- In finite dimension the simple-kernel complement block is invertible,
+/-- In finite dimension the simple-kernel complement block is invertible,
 including the zero-dimensional complement. -/
 theorem stationarySchurBlock_isInvertible_of_kernel_line
     {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
@@ -339,7 +338,7 @@ noncomputable def stationarySchurCouplingTransform (z : V) :
   (((stationarySchurComplement z).orthogonalProjectionOnto.comp
       (ContinuousLinearMap.apply ℂ V z)).restrictScalars ℝ)
 
-/-- C2 regularity of the ambient family descends to the fixed complement/-- C2 regularity of the ambient family descends to the fixed complement
+/-- C2 regularity of the ambient family descends to the fixed complement
 block. -/
 theorem contDiffAt_stationarySchurBlock
     {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
@@ -763,7 +762,7 @@ theorem stationarySchurBlock_response_deriv
   have hr0 := stationarySchurResponse_eq_zero_of_kernel hz
   simpa [R, hr0] using hcoeff
 
-/-- Symmetry is inherited by the real aperture derivative/-- Symmetry is inherited by the real aperture derivative of a differentiable
+/-- Symmetry is inherited by the real aperture derivative of a differentiable
 family. -/
 theorem deriv_isSymmetric_of_eventually
     {F : ℝ → V →L[ℂ] V} {x : ℝ}
@@ -785,7 +784,7 @@ theorem deriv_isSymmetric_of_eventually
     exact hs u v
   exact (hFu.congr_of_eventuallyEq heq).unique hFv
 
-/-- The derivative of the inverse response is the negative stationary/-- The derivative of the inverse response is the negative stationary
+/-- The derivative of the inverse response is the negative stationary
 eigenbranch response. -/
 theorem deriv_stationarySchurResponse_eq_neg
     {F : ℝ → V →L[ℂ] V} {z w : V} {x : ℝ}
@@ -854,7 +853,7 @@ theorem stationaryFixedEnergy_secondDerivative
   rw [Filter.EventuallyEq.deriv_eq hformula, ha1]
   rfl
 
-/-- The actual Schur scalar has the optimized second derivative/-- The actual Schur scalar has the optimized second derivative associated
+/-- The actual Schur scalar has the optimized second derivative associated
 with the unique perpendicular response. -/
 theorem stationarySchurScalar_secondDerivative_eq_pair
     {F : ℝ → V →L[ℂ] V} {z w : V} {x : ℝ}
