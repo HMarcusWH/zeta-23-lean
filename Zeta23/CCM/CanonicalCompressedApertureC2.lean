@@ -313,106 +313,75 @@ private theorem canonicalEvenCompressedFamily_isSymmetric
     (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
     (y : EuclideanSpace ℂ (Fin (2 * K + 1)))
 
-/-- Pointwise first derivative of the native strict-even compressed family.
-The operator-valued derivative is taken on the generic `.even` carrier and is
-evaluated before restating the result natively, avoiding a native CLM
-`ContinuousSMul ℝ` requirement. -/
-private theorem hasDerivAt_canonicalEvenCompressed_apply_pos
-    (K : ℕ) {L : ℝ} (hL : 0 < L)
-    (x : euclideanEvenBoundaryFlatSubspace K) :
-    HasDerivAt
-      (fun s : ℝ => canonicalEvenCompressedFamilyCLM K s x)
-      (canonicalEvenApertureFirstCLM L K x) L := by
-  simpa only [canonicalEvenCompressedFamilyCLM,
-    canonicalEvenApertureFirstCLM] using
-    hasDerivAt_complexCLM_apply_const_real
-      (hasDerivAt_parityCompressedCanonicalCLM_pos .even K hL) x
-
-/-- Pointwise derivative of the native strict-even first aperture jet.  As
-above, evaluation occurs before crossing from the generic `.even` presentation
-to the native carrier. -/
-private theorem hasDerivAt_canonicalEvenApertureFirst_apply_pos
-    (K : ℕ) {L : ℝ} (hL : 0 < L)
-    (x : euclideanEvenBoundaryFlatSubspace K) :
-    HasDerivAt
-      (fun s : ℝ => canonicalEvenApertureFirstCLM s K x)
-      (canonicalEvenApertureSecondCLM L K x) L := by
-  simpa only [canonicalEvenApertureFirstCLM,
-    canonicalEvenApertureSecondCLM] using
-    hasDerivAt_complexCLM_apply_const_real
-      (hasDerivAt_productionParityFirstJetCLM_pos .even K hL) x
-
-/-- Native-even first-aperture symmetry, proved entirely on the native carrier. -/
+/-- Native-even first-aperture symmetry.  The generic `.even` theorem is
+first normalized to the ambient Euclidean scalar equality, where the historical
+native-even and parity presentations have no carrier-instance data left to
+transport. -/
 theorem canonicalEvenApertureFirst_isSymmetric
     {L : ℝ} (hL : 0 < L) (K : ℕ) :
     LinearMap.IsSymmetric (𝕜 := ℂ)
       (E := euclideanEvenBoundaryFlatSubspace K)
       (canonicalEvenApertureFirst L K) := by
   intro x y
-  have hx := hasDerivAt_canonicalEvenCompressed_apply_pos K hL x
-  have hy := hasDerivAt_canonicalEvenCompressed_apply_pos K hL y
-  have hxy :
-      HasDerivAt
-        (fun s : ℝ => inner ℂ
-          (canonicalEvenCompressedFamilyCLM K s x) y)
-        (inner ℂ (canonicalEvenApertureFirstCLM L K x) y) L := by
-    simpa using hx.inner ℂ (hasDerivAt_const L y)
-  have hyx :
-      HasDerivAt
-        (fun s : ℝ => inner ℂ x
-          (canonicalEvenCompressedFamilyCLM K s y))
-        (inner ℂ x (canonicalEvenApertureFirstCLM L K y)) L := by
-    simpa using (hasDerivAt_const L x).inner ℂ hy
-  have hfun :
-      (fun s : ℝ => inner ℂ
-        (canonicalEvenCompressedFamilyCLM K s x) y) =
-      (fun s : ℝ => inner ℂ x
-        (canonicalEvenCompressedFamilyCLM K s y)) := by
-    funext t
-    exact canonicalEvenCompressedFamily_isSymmetric t K x y
-  have hyx' :
-      HasDerivAt
-        (fun s : ℝ => inner ℂ
-          (canonicalEvenCompressedFamilyCLM K s x) y)
-        (inner ℂ x (canonicalEvenApertureFirstCLM L K y)) L := by
-    rw [hfun]
-    exact hyx
-  have hEq := hxy.unique hyx'
-  simpa [canonicalEvenApertureFirst] using hEq
+  have h :=
+    canonicalParityApertureFirst_isSymmetric .even hL K x y
+  change
+    inner ℂ
+      (((productionParityFirstJetCLM .even K L) x :
+          euclideanParityBoundaryFlatSubspace .even K) :
+        EuclideanSpace ℂ (Fin (2 * K + 1)))
+      (y : EuclideanSpace ℂ (Fin (2 * K + 1))) =
+    inner ℂ
+      (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+      (((productionParityFirstJetCLM .even K L) y :
+          euclideanParityBoundaryFlatSubspace .even K) :
+        EuclideanSpace ℂ (Fin (2 * K + 1))) at h
+  change
+    inner ℂ
+      (((productionParityFirstJetCLM .even K L) x :
+          euclideanParityBoundaryFlatSubspace .even K) :
+        EuclideanSpace ℂ (Fin (2 * K + 1)))
+      (y : EuclideanSpace ℂ (Fin (2 * K + 1))) =
+    inner ℂ
+      (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+      (((productionParityFirstJetCLM .even K L) y :
+          euclideanParityBoundaryFlatSubspace .even K) :
+        EuclideanSpace ℂ (Fin (2 * K + 1)))
+  exact h
 
-/-- Native-even second-aperture symmetry, proved entirely on the native carrier. -/
+/-- Native-even second-aperture symmetry, transported only after reducing the
+already-proved generic theorem to an ambient Euclidean scalar equality. -/
 theorem canonicalEvenApertureSecond_isSymmetric
     {L : ℝ} (hL : 0 < L) (K : ℕ) :
     LinearMap.IsSymmetric (𝕜 := ℂ)
       (E := euclideanEvenBoundaryFlatSubspace K)
       (canonicalEvenApertureSecond L K) := by
   intro x y
-  have hx := hasDerivAt_canonicalEvenApertureFirst_apply_pos K hL x
-  have hy := hasDerivAt_canonicalEvenApertureFirst_apply_pos K hL y
-  have hxy :
-      HasDerivAt
-        (fun s : ℝ => inner ℂ
-          (canonicalEvenApertureFirstCLM s K x) y)
-        (inner ℂ (canonicalEvenApertureSecondCLM L K x) y) L := by
-    simpa using hx.inner ℂ (hasDerivAt_const L y)
-  have hyx :
-      HasDerivAt
-        (fun s : ℝ => inner ℂ x
-          (canonicalEvenApertureFirstCLM s K y))
-        (inner ℂ x (canonicalEvenApertureSecondCLM L K y)) L := by
-    simpa using (hasDerivAt_const L x).inner ℂ hy
-  have hevent :
-      (fun s : ℝ => inner ℂ
-        (canonicalEvenApertureFirstCLM s K x) y) =ᶠ[𝓝 L]
-      (fun s : ℝ => inner ℂ x
-        (canonicalEvenApertureFirstCLM s K y)) := by
-    filter_upwards [Ioi_mem_nhds hL] with t ht
-    simpa only [canonicalEvenApertureFirst,
-      canonicalEvenApertureFirstCLM] using
-      canonicalEvenApertureFirst_isSymmetric ht K x y
-  have hyx' := hyx.congr_of_eventuallyEq hevent
-  have hEq := hxy.unique hyx'
-  simpa [canonicalEvenApertureSecond] using hEq
+  have h :=
+    canonicalParityApertureSecond_isSymmetric .even hL K x y
+  change
+    inner ℂ
+      (((productionParitySecondJetCLM .even K L) x :
+          euclideanParityBoundaryFlatSubspace .even K) :
+        EuclideanSpace ℂ (Fin (2 * K + 1)))
+      (y : EuclideanSpace ℂ (Fin (2 * K + 1))) =
+    inner ℂ
+      (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+      (((productionParitySecondJetCLM .even K L) y :
+          euclideanParityBoundaryFlatSubspace .even K) :
+        EuclideanSpace ℂ (Fin (2 * K + 1))) at h
+  change
+    inner ℂ
+      (((productionParitySecondJetCLM .even K L) x :
+          euclideanParityBoundaryFlatSubspace .even K) :
+        EuclideanSpace ℂ (Fin (2 * K + 1)))
+      (y : EuclideanSpace ℂ (Fin (2 * K + 1))) =
+    inner ℂ
+      (x : EuclideanSpace ℂ (Fin (2 * K + 1)))
+      (((productionParitySecondJetCLM .even K L) y :
+          euclideanParityBoundaryFlatSubspace .even K) :
+        EuclideanSpace ℂ (Fin (2 * K + 1)))
+  exact h
 
 end Zeta23.CCM
 
