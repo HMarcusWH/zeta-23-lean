@@ -497,9 +497,9 @@ theorem stationarySchurEnvelope_secondDerivative
         2 * Complex.re (inner ℂ (deriv r x) (deriv b x)) := by
   let g : ℝ → ℝ := fun s => Complex.re (inner ℂ (r s) (b s))
   have hrd : HasDerivAt r (deriv r x) x :=
-    hr.differentiableAt.hasDerivAt
+    (hr.differentiableAt (by norm_num)).hasDerivAt
   have hbd : HasDerivAt b (deriv b x) x :=
-    hb.differentiableAt.hasDerivAt
+    (hb.differentiableAt (by norm_num)).hasDerivAt
   have hg0 : deriv g x = 0 := by
     have hinner := hrd.inner ℂ hbd
     have hre := Complex.reCLM.hasFDerivAt.comp_hasDerivAt x hinner
@@ -509,19 +509,21 @@ theorem stationarySchurEnvelope_secondDerivative
             inner ℂ (r x) (deriv b x)) = 0 := by
       simp [hbx, hrx]
     simpa [g, hzero] using hre.deriv
-  have hrdC1 := hr.deriv_contDiffAt
-  have hbdC1 := hb.deriv_contDiffAt
+  have hrdC1 : ContDiffAt ℝ 1 (deriv r) x :=
+    hr.derivWithin (m := 1) (by norm_num)
+  have hbdC1 : ContDiffAt ℝ 1 (deriv b) x :=
+    hb.derivWithin (m := 1) (by norm_num)
   have hformula :
       (fun s => deriv g s) =ᶠ[𝓝 x]
         (fun s =>
           Complex.re
             (inner ℂ (deriv r s) (b s) +
               inner ℂ (r s) (deriv b s))) := by
-    filter_upwards [hr.eventually, hb.eventually] with s hrs hbs
+    filter_upwards [hr.eventually (by norm_num), hb.eventually (by norm_num)] with s hrs hbs
     have hrsD : HasDerivAt r (deriv r s) s :=
-      hrs.differentiableAt.hasDerivAt
+      (hrs.differentiableAt (by norm_num)).hasDerivAt
     have hbsD : HasDerivAt b (deriv b s) s :=
-      hbs.differentiableAt.hasDerivAt
+      (hbs.differentiableAt (by norm_num)).hasDerivAt
     have hi := hrsD.inner ℂ hbsD
     have hre := Complex.reCLM.hasFDerivAt.comp_hasDerivAt s hi
     simpa [g] using hre.deriv
@@ -535,11 +537,11 @@ theorem stationarySchurEnvelope_secondDerivative
     have hdr :
         HasDerivAt (fun s => deriv r s)
           (deriv (deriv r) x) x :=
-      hrdC1.differentiableAt.hasDerivAt
+      hrdC1.differentiableAt_one.hasDerivAt
     have hdb :
         HasDerivAt (fun s => deriv b s)
           (deriv (deriv b) x) x :=
-      hbdC1.differentiableAt.hasDerivAt
+      hbdC1.differentiableAt_one.hasDerivAt
     have h₁ := hdr.inner ℂ hbd
     have h₂ := hrd.inner ℂ hdb
     have hsum := h₁.add h₂
@@ -575,10 +577,12 @@ theorem stationarySchurEnvelope_secondDerivative
           simp
   rw [hsub, deriv_sub]
   · rw [hg2]
-  · exact ha.deriv_contDiffAt.differentiableAt
-  · exact (show ContDiffAt ℝ 2 g x by
-      dsimp [g]
-      fun_prop).deriv_contDiffAt.differentiableAt
+  · exact
+      (ha.derivWithin (m := 1) (by norm_num)).differentiableAt_one
+  · exact
+      ((show ContDiffAt ℝ 2 g x by
+          dsimp [g]
+          fun_prop).derivWithin (m := 1) (by norm_num)).differentiableAt_one
 
 
 /-! ## Identification of the actual scalar with the envelope -/
@@ -669,8 +673,8 @@ theorem stationarySchurScalar_firstDerivative_eq_fixed
   have hrx : r x = 0 := by
     simpa [r] using stationarySchurResponse_eq_zero_of_kernel hz
   have hpairD :=
-    (hr.differentiableAt.hasDerivAt).inner ℂ
-      (hb.differentiableAt.hasDerivAt)
+    ((hr.differentiableAt (by norm_num)).hasDerivAt).inner ℂ
+      ((hb.differentiableAt (by norm_num)).hasDerivAt)
   have hreD :=
     Complex.reCLM.hasFDerivAt.comp_hasDerivAt x hpairD
   have hpair0 :
@@ -680,12 +684,12 @@ theorem stationarySchurScalar_firstDerivative_eq_fixed
   have henv :
       deriv (stationarySchurEnvelope a b r) x = deriv a x := by
     unfold stationarySchurEnvelope
-    rw [deriv_sub ha.differentiableAt
+    rw [deriv_sub (ha.differentiableAt (by norm_num))
       (by
         exact
           (show ContDiffAt ℝ 2
             (fun s => Complex.re (inner ℂ (r s) (b s))) x by
-              fun_prop).differentiableAt),
+              fun_prop).differentiableAt (by norm_num)),
       hpair0, sub_zero]
   rw [Filter.EventuallyEq.deriv_eq heq, henv]
   rfl
@@ -699,14 +703,16 @@ theorem deriv_stationarySchurCoupling
     deriv (fun s => stationarySchurCoupling F z s) x =
       (stationarySchurComplement z).orthogonalProjectionOnto
         ((deriv F x) z) := by
-  have hFz :=
-    (hF.differentiableAt.hasDerivAt).clm_apply
-      (hasDerivAt_const x z)
-  have hp :=
-    (stationarySchurComplement z).orthogonalProjectionOnto.hasFDerivAt
-      |>.comp_hasDerivAt x hFz
-  simpa [stationarySchurCoupling] using hp.deriv
+  let T := stationarySchurCouplingTransform z
+  have hFd : HasDerivAt F (deriv F x) x :=
+    (hF.differentiableAt (by norm_num)).hasDerivAt
+  have hT :
+      HasDerivAt (fun s => T (F s)) (T (deriv F x)) x :=
+    T.hasFDerivAt.comp_hasDerivAt x hFd
+  simpa [T, stationarySchurCouplingTransform, stationarySchurCoupling] using
+    hT.deriv
 
+/-- Differentiating the exact inverse-block equation at a zero mode. -/
 /-- Differentiating the exact inverse-block equation at a zero mode. -/
 theorem stationarySchurBlock_response_deriv
     {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
@@ -716,6 +722,7 @@ theorem stationarySchurBlock_response_deriv
     stationarySchurBlock F z x
         (deriv (fun s => stationarySchurResponse F z s) x) =
       deriv (fun s => stationarySchurCoupling F z s) x := by
+  let W := stationarySchurComplement z
   have hCev := eventually_stationarySchurBlock_isInvertible hF hC
   have heq :
       (fun s =>
@@ -724,19 +731,38 @@ theorem stationarySchurBlock_response_deriv
         (fun s => stationarySchurCoupling F z s) := by
     filter_upwards [hCev] with s hs
     exact stationarySchurBlock_response hs
-  have hblockD :=
-    (contDiffAt_stationarySchurBlock hF).differentiableAt.hasDerivAt
-  have hrespD :=
-    (contDiffAt_stationarySchurResponse hF hC).differentiableAt.hasDerivAt
-  have hlhs := hblockD.clm_apply hrespD
-  have hrhs :=
-    (contDiffAt_stationarySchurCoupling hF).differentiableAt.hasDerivAt
-  have hlhs' := hlhs.congr_of_eventuallyEq heq
+  have hblockD :
+      HasDerivAt (fun s => stationarySchurBlock F z s)
+        (deriv (fun s => stationarySchurBlock F z s) x) x :=
+    ((contDiffAt_stationarySchurBlock hF).differentiableAt (by norm_num)).hasDerivAt
+  have hrespD :
+      HasDerivAt (fun s => stationarySchurResponse F z s)
+        (deriv (fun s => stationarySchurResponse F z s) x) x :=
+    ((contDiffAt_stationarySchurResponse hF hC).differentiableAt (by norm_num)).hasDerivAt
+  let R : (W →L[ℂ] W) →L[ℝ] (W →L[ℝ] W) :=
+    ContinuousLinearMap.restrictScalarsL ℂ W W ℝ ℝ
+  have hblockDR :
+      HasDerivAt
+        (fun s => R (stationarySchurBlock F z s))
+        (R (deriv (fun s => stationarySchurBlock F z s) x)) x :=
+    R.hasFDerivAt.comp_hasDerivAt x hblockD
+  have hlhs := hblockDR.clm_apply hrespD
+  have hrhs :
+      HasDerivAt (fun s => stationarySchurCoupling F z s)
+        (deriv (fun s => stationarySchurCoupling F z s) x) x :=
+    ((contDiffAt_stationarySchurCoupling hF).differentiableAt (by norm_num)).hasDerivAt
+  have heqR :
+      (fun s =>
+        R (stationarySchurBlock F z s)
+          (stationarySchurResponse F z s)) =ᶠ[𝓝 x]
+        (fun s => stationarySchurCoupling F z s) := by
+    simpa [R] using heq
+  have hlhs' := hlhs.congr_of_eventuallyEq heqR
   have hcoeff := hlhs'.unique hrhs
   have hr0 := stationarySchurResponse_eq_zero_of_kernel hz
-  simpa [hr0] using hcoeff
+  simpa [R, hr0] using hcoeff
 
-/-- Symmetry is inherited by the real aperture derivative of a differentiable
+/-- Symmetry is inherited by the real aperture derivative/-- Symmetry is inherited by the real aperture derivative of a differentiable
 family. -/
 theorem deriv_isSymmetric_of_eventually
     {F : ℝ → V →L[ℂ] V} {x : ℝ}
@@ -746,11 +772,11 @@ theorem deriv_isSymmetric_of_eventually
     LinearMap.IsSymmetric (𝕜 := ℂ) (deriv F x).toLinearMap := by
   intro u v
   have hFu :=
-    (hF.hasDerivAt.clm_apply (hasDerivAt_const x u)).inner ℂ
+    (hasDerivAt_complexCLM_apply_const_real hF.hasDerivAt u).inner ℂ
       (hasDerivAt_const x v)
   have hFv :=
     (hasDerivAt_const x u).inner ℂ
-      (hF.hasDerivAt.clm_apply (hasDerivAt_const x v))
+      (hasDerivAt_complexCLM_apply_const_real hF.hasDerivAt v)
   have heq :
       (fun s => inner ℂ (F s u) v) =ᶠ[𝓝 x]
         (fun s => inner ℂ u (F s v)) := by
@@ -758,7 +784,7 @@ theorem deriv_isSymmetric_of_eventually
     exact hs u v
   exact (hFu.congr_of_eventuallyEq heq).unique hFv
 
-/-- The derivative of the inverse response is the negative stationary
+/-- The derivative of the inverse response is the negative stationary/-- The derivative of the inverse response is the negative stationary
 eigenbranch response. -/
 theorem deriv_stationarySchurResponse_eq_neg
     {F : ℝ → V →L[ℂ] V} {z w : V} {x : ℝ}
@@ -806,17 +832,18 @@ theorem stationaryFixedEnergy_secondDerivative
   let a1 : ℝ → ℝ := fun s =>
     Complex.re (inner ℂ ((deriv F s) z) z)
   have hformula : deriv a =ᶠ[𝓝 x] a1 := by
-    filter_upwards [hF.eventually] with s hs
+    filter_upwards [hF.eventually (by norm_num)] with s hs
     have hFz :=
-      (hs.differentiableAt.hasDerivAt).clm_apply
-        (hasDerivAt_const s z)
+      hasDerivAt_complexCLM_apply_const_real
+        ((hs.differentiableAt (by norm_num)).hasDerivAt) z
     have hi := hFz.inner ℂ (hasDerivAt_const s z)
     have hre := Complex.reCLM.hasFDerivAt.comp_hasDerivAt s hi
     simpa [a, a1] using hre.deriv
-  have hFd := hF.deriv_contDiffAt
+  have hFd : ContDiffAt ℝ 1 (deriv F) x :=
+    hF.derivWithin (m := 1) (by norm_num)
   have hFdz :=
-    (hFd.differentiableAt.hasDerivAt).clm_apply
-      (hasDerivAt_const x z)
+    hasDerivAt_complexCLM_apply_const_real
+      hFd.differentiableAt_one.hasDerivAt z
   have hi := hFdz.inner ℂ (hasDerivAt_const x z)
   have hre := Complex.reCLM.hasFDerivAt.comp_hasDerivAt x hi
   have ha1 :
@@ -826,7 +853,7 @@ theorem stationaryFixedEnergy_secondDerivative
   rw [Filter.EventuallyEq.deriv_eq hformula, ha1]
   rfl
 
-/-- The actual Schur scalar has the optimized second derivative associated
+/-- The actual Schur scalar has the optimized second derivative/-- The actual Schur scalar has the optimized second derivative associated
 with the unique perpendicular response. -/
 theorem stationarySchurScalar_secondDerivative_eq_pair
     {F : ℝ → V →L[ℂ] V} {z w : V} {x : ℝ}
@@ -879,7 +906,8 @@ theorem stationarySchurScalar_secondDerivative_eq_pair
           ((deriv F x) z) := by
     simpa [b] using deriv_stationarySchurCoupling hF
   have hsymd :=
-    deriv_isSymmetric_of_eventually hF.differentiableAt hFsym
+    deriv_isSymmetric_of_eventually
+      (hF.differentiableAt (by norm_num)) hFsym
   have hpair :
       Complex.re (inner ℂ (deriv r x) (deriv b x)) =
         -Complex.re (inner ℂ ((deriv F x) w) z) := by
