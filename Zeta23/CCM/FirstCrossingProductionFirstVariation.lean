@@ -586,19 +586,16 @@ theorem productionContactFirstVariation_unitPhase
   rw [canonicalEven_firstVariation_eq_inner hL K (u • z),
       canonicalEven_firstVariation_eq_inner hL K z]
   have hunit : star u * u = 1 := by
-    calc
-      star u * u = Complex.conj u * u := by rfl
-      _ = (Complex.normSq u : ℂ) :=
-        Complex.normSq_eq_conj_mul_self.symm
-      _ = ((‖u‖ ^ 2 : ℝ) : ℂ) := by
-        rw [Complex.normSq_eq_norm_sq]
-      _ = 1 := by simp [hu]
+    change conj u * u = 1
+    rw [← Complex.normSq_eq_conj_mul_self, Complex.normSq_eq_norm_sq]
+    simp [hu]
   have hcomplex :
       inner ℂ (canonicalEvenApertureFirst L K (u • z)) (u • z) =
         inner ℂ (canonicalEvenApertureFirst L K z) z := by
-    rw [map_smul, inner_smul_left, inner_smul_right]
+    rw [map_smul]
+    simp only [inner_smul_left, inner_smul_right]
     calc
-      star u * (inner ℂ (canonicalEvenApertureFirst L K z) z * u) =
+      star u * (u * inner ℂ (canonicalEvenApertureFirst L K z) z) =
           (star u * u) * inner ℂ (canonicalEvenApertureFirst L K z) z := by
         ring
       _ = inner ℂ (canonicalEvenApertureFirst L K z) z := by
