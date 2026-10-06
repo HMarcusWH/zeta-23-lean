@@ -503,19 +503,12 @@ theorem stationarySchurEnvelope_secondDerivative
       deriv (deriv a) x -
         2 * Complex.re (inner ℂ (deriv r x) (deriv b x)) := by
   let g : ℝ → ℝ := fun s => Complex.re (inner ℂ (r s) (b s))
-  have hrd : HasDerivAt r (deriv r x) x :=
-    (hr.differentiableAt (by norm_num)).hasDerivAt
-  have hbd : HasDerivAt b (deriv b x) x :=
-    (hb.differentiableAt (by norm_num)).hasDerivAt
-  have hg0 : deriv g x = 0 := by
-    have hinner := hrd.inner ℂ hbd
-    have hre := Complex.reCLM.hasFDerivAt.comp_hasDerivAt x hinner
-    have hzero :
-        Complex.re
-          (inner ℂ (deriv r x) (b x) +
-            inner ℂ (r x) (deriv b x)) = 0 := by
-      simp [hbx, hrx]
-    simpa [g, hzero] using hre.deriv
+  have hgC2 : ContDiffAt ℝ 2 g x := by
+    have hi := hr.inner ℂ hb
+    change
+      ContDiffAt ℝ 2
+        (Complex.reCLM ∘ fun s => inner ℂ (r s) (b s)) x
+    exact Complex.reCLM.contDiff.contDiffAt.comp x hi
   have hrdC1 : ContDiffAt ℝ 1 (deriv r) x :=
     hr.derivWithin (m := 1) (by norm_num)
   have hbdC1 : ContDiffAt ℝ 1 (deriv b) x :=
@@ -524,8 +517,8 @@ theorem stationarySchurEnvelope_secondDerivative
       (fun s => deriv g s) =ᶠ[𝓝 x]
         (fun s =>
           Complex.re
-            (inner ℂ (deriv r s) (b s) +
-              inner ℂ (r s) (deriv b s))) := by
+            (inner ℂ (r s) (deriv b s) +
+              inner ℂ (deriv r s) (b s))) := by
     filter_upwards [hr.eventually (by norm_num), hb.eventually (by norm_num)] with s hrs hbs
     have hrsD : HasDerivAt r (deriv r s) s :=
       (hrs.differentiableAt (by norm_num)).hasDerivAt
@@ -533,14 +526,23 @@ theorem stationarySchurEnvelope_secondDerivative
       (hbs.differentiableAt (by norm_num)).hasDerivAt
     have hi := hrsD.inner ℂ hbsD
     have hre := Complex.reCLM.hasFDerivAt.comp_hasDerivAt s hi
-    simpa [g] using hre.deriv
+    change
+      deriv (Complex.reCLM ∘ fun t => inner ℂ (r t) (b t)) s =
+        Complex.re
+          (inner ℂ (r s) (deriv b s) +
+            inner ℂ (deriv r s) (b s))
+    exact hre.deriv
   have hright :
       HasDerivAt
         (fun s =>
           Complex.re
-            (inner ℂ (deriv r s) (b s) +
-              inner ℂ (r s) (deriv b s)))
+            (inner ℂ (r s) (deriv b s) +
+              inner ℂ (deriv r s) (b s)))
         (2 * Complex.re (inner ℂ (deriv r x) (deriv b x))) x := by
+    have hrd : HasDerivAt r (deriv r x) x :=
+      (hr.differentiableAt (by norm_num)).hasDerivAt
+    have hbd : HasDerivAt b (deriv b x) x :=
+      (hb.differentiableAt (by norm_num)).hasDerivAt
     have hdr :
         HasDerivAt (fun s => deriv r s)
           (deriv (deriv r) x) x :=
@@ -549,48 +551,33 @@ theorem stationarySchurEnvelope_secondDerivative
         HasDerivAt (fun s => deriv b s)
           (deriv (deriv b) x) x :=
       hbdC1.differentiableAt_one.hasDerivAt
-    have h₁ := hdr.inner ℂ hbd
-    have h₂ := hrd.inner ℂ hdb
+    have h₁ := hrd.inner ℂ hdb
+    have h₂ := hdr.inner ℂ hbd
     have hsum := h₁.add h₂
     have hre := Complex.reCLM.hasFDerivAt.comp_hasDerivAt x hsum
-    simpa [hbx, hrx, add_comm, add_left_comm, add_assoc] using hre
+    simpa [hbx, hrx, two_mul, add_assoc, add_left_comm, add_comm] using hre
   have hg2 :
       deriv (deriv g) x =
         2 * Complex.re (inner ℂ (deriv r x) (deriv b x)) := by
-    have heq := Filter.EventuallyEq.deriv_eq hformula
-    rw [heq]
+    rw [Filter.EventuallyEq.deriv_eq hformula]
     exact hright.deriv
-  unfold stationarySchurEnvelope
-  have hsub :
-      deriv (fun s => a s - g s) =
-        fun s => deriv a s - deriv g s := by
-    funext s
-    by_cases hs : DifferentiableAt ℝ a s ∧ DifferentiableAt ℝ g s
-    · exact deriv_sub hs.1 hs.2
-    · simp only [not_and_or] at hs
-      rcases hs with ha' | hg'
-      · rw [deriv_zero_of_not_differentiableAt ha']
-        by_cases hgd : DifferentiableAt ℝ g s
-        · rw [deriv_sub (differentiableAt_const (c := (0 : ℝ))) hgd]
-          simp
-        · rw [deriv_zero_of_not_differentiableAt hgd]
-          simp
-      · by_cases had : DifferentiableAt ℝ a s
-        · rw [deriv_zero_of_not_differentiableAt hg',
-              deriv_sub had (differentiableAt_const (c := (0 : ℝ)))]
-          simp
-        · rw [deriv_zero_of_not_differentiableAt had,
-              deriv_zero_of_not_differentiableAt hg']
-          simp
-  rw [hsub, deriv_sub]
-  · rw [hg2]
-  · exact
-      (ha.derivWithin (m := 1) (by norm_num)).differentiableAt_one
-  · exact
-      ((show ContDiffAt ℝ 2 g x by
-          dsimp [g]
-          fun_prop).derivWithin (m := 1) (by norm_num)).differentiableAt_one
-
+  have henvFormula :
+      (fun s => deriv (stationarySchurEnvelope a b r) s) =ᶠ[𝓝 x]
+        (fun s => deriv a s - deriv g s) := by
+    filter_upwards [ha.eventually (by norm_num), hgC2.eventually (by norm_num)] with s has hgs
+    have hsub :=
+      deriv_sub
+        (has.differentiableAt (by norm_num))
+        (hgs.differentiableAt (by norm_num))
+    simpa [stationarySchurEnvelope, g] using hsub
+  have hda :
+      HasDerivAt (fun s => deriv a s) (deriv (deriv a) x) x :=
+    (ha.derivWithin (m := 1) (by norm_num)).differentiableAt_one.hasDerivAt
+  have hdg :
+      HasDerivAt (fun s => deriv g s) (deriv (deriv g) x) x :=
+    (hgC2.derivWithin (m := 1) (by norm_num)).differentiableAt_one.hasDerivAt
+  have hsub := hda.sub hdg
+  rw [Filter.EventuallyEq.deriv_eq henvFormula, hsub.deriv, hg2]
 
 /-! ## Identification of the actual scalar with the envelope -/
 
