@@ -662,8 +662,9 @@ theorem stationarySchurScalar_firstDerivative_eq_fixed
     simpa [a, b, r] using
       eventually_stationarySchurScalar_eq_envelope hF hFsym hC
   have ha : ContDiffAt ℝ 2 a x := by
-    dsimp [a]
-    fun_prop
+    have hFz := contDiffAt_complexCLM_apply_const_real hF z
+    have hi := hFz.inner ℂ (contDiffAt_const : ContDiffAt ℝ 2 (fun _ : ℝ => z) x)
+    simpa [a] using Complex.reCLM.contDiff.contDiffAt.comp x hi
   have hb : ContDiffAt ℝ 2 b x := by
     simpa [b] using contDiffAt_stationarySchurCoupling hF
   have hr : ContDiffAt ℝ 2 r x := by
@@ -883,8 +884,9 @@ theorem stationarySchurScalar_secondDerivative_eq_pair
     simpa [a, b, r] using
       eventually_stationarySchurScalar_eq_envelope hF hFsym hC
   have ha : ContDiffAt ℝ 2 a x := by
-    dsimp [a]
-    fun_prop
+    have hFz := contDiffAt_complexCLM_apply_const_real hF z
+    have hi := hFz.inner ℂ (contDiffAt_const : ContDiffAt ℝ 2 (fun _ : ℝ => z) x)
+    simpa [a] using Complex.reCLM.contDiff.contDiffAt.comp x hi
   have hb : ContDiffAt ℝ 2 b x := by
     simpa [b] using contDiffAt_stationarySchurCoupling hF
   have hr : ContDiffAt ℝ 2 r x := by
