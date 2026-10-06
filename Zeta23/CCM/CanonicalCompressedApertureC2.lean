@@ -118,6 +118,19 @@ theorem hasDerivAt_complexCLM_apply_const_real
   have hev : HasFDerivAt ev ev (f L) := ev.hasFDerivAt
   simpa [ev, Function.comp_def] using hev.comp_hasDerivAt L h
 
+/-- Fixed evaluation of a real-smooth family of complex-linear operators is
+real-smooth.  This is the C^n companion to
+`hasDerivAt_complexCLM_apply_const_real`. -/
+theorem contDiffAt_complexCLM_apply_const_real
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]
+    {n} {f : ℝ → (E →L[ℂ] E)} {L : ℝ}
+    (h : ContDiffAt ℝ n f L) (x : E) :
+    ContDiffAt ℝ n (fun s : ℝ => f s x) L := by
+  let ev : (E →L[ℂ] E) →L[ℝ] E :=
+    (ContinuousLinearMap.apply ℂ E x).restrictScalars ℝ
+  have hev : ContDiff ℝ n ev := ContinuousLinearMap.contDiff _
+  simpa [ev, Function.comp_def] using hev.contDiffAt.comp L h
+
 /-- A real one-variable derivative of a complex-linear endomorphism family
 supplies the exact within-set Frechet witness needed by `ContDiffOn`.  Keeping
 this bridge explicit avoids re-elaborating the CLM module instance through
