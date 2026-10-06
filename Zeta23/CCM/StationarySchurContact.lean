@@ -60,16 +60,18 @@ theorem stationary_firstContact_secondDerivative_eq_zero
     have hydist : dist y x < ε := by
       rw [Real.dist_eq, abs_of_pos (sub_pos.mpr hyx)]
       linarith
-    exact (not_lt_of_ge (hball y hydist)) hyneg
+    exact (not_lt_of_ge (hball hydist)) hyneg
   · by_contra hnot
     have hneg : deriv (deriv f) x < 0 := lt_of_not_ge hnot
     have hmax : IsLocalMax f x :=
       isLocalMax_of_deriv_deriv_neg hneg hstat hC2.continuousAt
     have hmaxEv : ∀ᶠ y in 𝓝 x, f y ≤ f x := by
       exact hmax
+    have haEv : ∀ᶠ y in 𝓝 x, a < y :=
+      Ioi_mem_nhds hax
     have hleftEv : ∀ᶠ y in 𝓝[<] x, 0 ≤ f y := by
       filter_upwards [
-        (Ioi_mem_nhds hax).filter_mono nhdsWithin_le_nhds,
+        haEv.filter_mono nhdsWithin_le_nhds,
         self_mem_nhdsWithin] with y hay hyx
       exact hleft y (le_of_lt hay) (le_of_lt hyx)
     have hzeroLeft : ∀ᶠ y in 𝓝[<] x, f y = 0 := by
@@ -278,7 +280,7 @@ theorem stationarySchurVector_complement_residual_zero
     (hC : (stationarySchurBlock F z s).IsInvertible) :
     (stationarySchurComplement z).orthogonalProjectionOnto
         (F s (stationarySchurVector F z s)) = 0 := by
-  rw [stationarySchurVector, map_sub]
+  rw [stationarySchurVector, map_sub, map_sub]
   change
     stationarySchurCoupling F z s -
       stationarySchurBlock F z s
@@ -346,8 +348,10 @@ theorem contDiffAt_stationarySchurBlock
     ContDiffAt ℝ 2 (fun s => stationarySchurBlock F z s) x := by
   have hT : ContDiff ℝ 2 (stationarySchurBlockTransform z) :=
     ContinuousLinearMap.contDiff _
-  simpa [stationarySchurBlockTransform, stationarySchurBlock] using
-    hT.contDiffAt.comp x hF
+  change
+    ContDiffAt ℝ 2
+      (fun s => stationarySchurBlockTransform z (F s)) x
+  exact hT.contDiffAt.comp x hF
 
 /-- C2 regularity of the ambient family descends to its fixed-complement
 coupling. -/
@@ -357,8 +361,10 @@ theorem contDiffAt_stationarySchurCoupling
     ContDiffAt ℝ 2 (fun s => stationarySchurCoupling F z s) x := by
   have hT : ContDiff ℝ 2 (stationarySchurCouplingTransform z) :=
     ContinuousLinearMap.contDiff _
-  simpa [stationarySchurCouplingTransform, stationarySchurCoupling] using
-    hT.contDiffAt.comp x hF
+  change
+    ContDiffAt ℝ 2
+      (fun s => stationarySchurCouplingTransform z (F s)) x
+  exact hT.contDiffAt.comp x hF
 
 /-- An invertible contact block remains invertible in a neighborhood. -/
 theorem eventually_stationarySchurBlock_isInvertible
@@ -381,7 +387,7 @@ theorem eventually_stationarySchurBlock_isInvertible
     exact hkerne (LinearMap.ker_eq_bot.mpr hinj)
   have hdetcont :
       ContinuousAt (fun s => (stationarySchurBlock F z s).det) x :=
-    ContinuousLinearMap.continuous_det.continuousAt.comp x hcont
+    ContinuousLinearMap.continuous_det.continuousAt.comp hcont
   have hdetEv :
       ∀ᶠ s in 𝓝 x, (stationarySchurBlock F z s).det ≠ 0 :=
     hdetcont.eventually_ne hdet0
@@ -407,8 +413,10 @@ theorem contDiffAt_stationarySchurResponse
     (hC : (stationarySchurBlock F z x).IsInvertible) :
     ContDiffAt ℝ 2 (fun s => stationarySchurResponse F z s) x := by
   let W := stationarySchurComplement z
-  have hblock := contDiffAt_stationarySchurBlock hF
-  have hcoupling := contDiffAt_stationarySchurCoupling hF
+  have hblock :=
+    contDiffAt_stationarySchurBlock (F := F) (z := z) (x := x) hF
+  have hcoupling :=
+    contDiffAt_stationarySchurCoupling (F := F) (z := z) (x := x) hF
   have hinv0 :
       ContDiffAt ℂ 2
         (ContinuousLinearMap.inverse : (W →L[ℂ] W) → (W →L[ℂ] W))
@@ -464,12 +472,12 @@ theorem contDiffAt_stationarySchurScalar
   have hFR :
       ContDiffAt ℝ 2 (fun s => (F s).restrictScalars ℝ) x := by
     have hR : ContDiff ℝ 2 R := ContinuousLinearMap.contDiff _
-    simpa [R] using hR.contDiffAt.comp x hF
+    change ContDiffAt ℝ 2 (R ∘ F) x
+    exact hR.contDiffAt.comp x hF
   have hFv := hFR.clm_apply hv
   have hi := hFv.inner ℂ hv
   exact Complex.reCLM.contDiff.contDiffAt.comp x hi
 
-/-! ## Generic arbitrary-complement Schur package -/
 /-! ## Generic arbitrary-complement Schur package -/
 
 variable {W : Type*}
@@ -712,7 +720,6 @@ theorem deriv_stationarySchurCoupling
   simpa [T, stationarySchurCouplingTransform, stationarySchurCoupling] using
     hT.deriv
 
-/-- Differentiating the exact inverse-block equation at a zero mode. -/
 /-- Differentiating the exact inverse-block equation at a zero mode. -/
 theorem stationarySchurBlock_response_deriv
     {F : ℝ → V →L[ℂ] V} {z : V} {x : ℝ}
