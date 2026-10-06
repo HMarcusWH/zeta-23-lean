@@ -136,13 +136,20 @@ theorem canonicalParityCompressedC2_proved
     intro L hL
     have hLpos : 0 < L := by simpa only [mem_Ioi] using hL
     have hderiv := hasDerivAt_parityCompressedCanonicalCLM_pos p K hLpos
-    exact hderiv.differentiableAt.differentiableWithinAt
+    have hdiffAt :
+        DifferentiableAt ℝ
+          (fun s : ℝ => parityCompressedCanonicalCLM p s K) L :=
+      hderiv.differentiableAt
+    exact hdiffAt.differentiableWithinAt
   have hfirstDiff :
       DifferentiableOn ℝ (productionParityFirstJetCLM p K) (Ioi (0 : ℝ)) := by
     intro L hL
     have hLpos : 0 < L := by simpa only [mem_Ioi] using hL
     have hderiv := hasDerivAt_productionParityFirstJetCLM_pos p K hLpos
-    exact hderiv.differentiableAt.differentiableWithinAt
+    have hdiffAt :
+        DifferentiableAt ℝ (productionParityFirstJetCLM p K) L :=
+      hderiv.differentiableAt
+    exact hdiffAt.differentiableWithinAt
   have hsecondCont :
       ContinuousOn (productionParitySecondJetCLM p K) (Ioi (0 : ℝ)) := by
     intro L hL
@@ -168,9 +175,10 @@ theorem canonicalParityCompressedC2_proved
 theorem canonicalEvenCompressedC2_proved
     (K : ℕ) :
     CanonicalEvenCompressedC2 K := by
-  simpa [CanonicalEvenCompressedC2, canonicalEvenCompressedFamilyCLM,
-    CanonicalParityCompressedC2, canonicalParityCompressedFamilyCLM] using
-    canonicalParityCompressedC2_proved .even K
+  unfold CanonicalEvenCompressedC2 canonicalEvenCompressedFamilyCLM
+  change ContDiffOn ℝ 2
+    (canonicalParityCompressedFamilyCLM .even K) (Ioi (0 : ℝ))
+  exact canonicalParityCompressedC2_proved .even K
 
 
 /-- The actual parity-compressed first derivative is self-adjoint at every
@@ -279,9 +287,11 @@ theorem canonicalEvenApertureFirst_isSymmetric
     LinearMap.IsSymmetric (𝕜 := ℂ)
       (E := euclideanEvenBoundaryFlatSubspace K)
       (canonicalEvenApertureFirst L K) := by
-  simpa [canonicalEvenApertureFirst, canonicalEvenApertureFirstCLM,
-    canonicalParityApertureFirst] using
-    canonicalParityApertureFirst_isSymmetric .even hL K
+  unfold canonicalEvenApertureFirst canonicalEvenApertureFirstCLM
+  change LinearMap.IsSymmetric (𝕜 := ℂ)
+    (E := euclideanParityBoundaryFlatSubspace .even K)
+    (canonicalParityApertureFirst .even L K)
+  exact canonicalParityApertureFirst_isSymmetric .even hL K
 
 /-- Native-even wrapper for second-derivative symmetry. -/
 theorem canonicalEvenApertureSecond_isSymmetric
@@ -289,9 +299,11 @@ theorem canonicalEvenApertureSecond_isSymmetric
     LinearMap.IsSymmetric (𝕜 := ℂ)
       (E := euclideanEvenBoundaryFlatSubspace K)
       (canonicalEvenApertureSecond L K) := by
-  simpa [canonicalEvenApertureSecond, canonicalEvenApertureSecondCLM,
-    canonicalParityApertureSecond] using
-    canonicalParityApertureSecond_isSymmetric .even hL K
+  unfold canonicalEvenApertureSecond canonicalEvenApertureSecondCLM
+  change LinearMap.IsSymmetric (𝕜 := ℂ)
+    (E := euclideanParityBoundaryFlatSubspace .even K)
+    (canonicalParityApertureSecond .even L K)
+  exact canonicalParityApertureSecond_isSymmetric .even hL K
 
 end Zeta23.CCM
 
