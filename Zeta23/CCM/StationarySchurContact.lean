@@ -1167,11 +1167,14 @@ theorem stationarySchurBlock_exists_pos_coercivity
     have hvq :
         0 ≤ RCLike.re (inner ℂ (T v) v) := by
       have hamb := hnonneg (v : V)
-      simpa [T, Tc, stationarySchurBlock_inner] using hamb
+      rw [← stationarySchurBlock_inner
+        (F := F) (z := z) (s := x) v v] at hamb
+      simpa [T, Tc] using hamb
     have hnormpos : 0 < ‖v‖ ^ 2 := by positivity
     have hlamnonneg : 0 ≤ lam := by
-      rw [hveig, inner_smul_left] at hvq
-      simp [inner_self_eq_norm_sq] at hvq
+      have hvq' : 0 ≤ lam * ‖v‖ ^ 2 := by
+        rw [hveig, inner_smul_left] at hvq
+        simpa [inner_self_eq_norm_sq] using hvq
       nlinarith
     have hinj :=
       stationarySchurBlock_injective_of_kernel_line
@@ -1220,11 +1223,13 @@ theorem eventually_stationarySchurBlock_nonnegative
       hznorm hFsym hz hker hnonneg
   have hcont :
       ContinuousAt (fun s => stationarySchurBlock F z s) x :=
-    (contDiffAt_stationarySchurBlock hF).continuousAt
+    (contDiffAt_stationarySchurBlock
+      (F := F) (z := z) (x := x) hF).continuousAt
   have hball :
       Metric.ball (stationarySchurBlock F z x) (c / 2) ∈
         𝓝 (stationarySchurBlock F z x) :=
-    Metric.ball_mem_nhds _ (by linarith)
+    Metric.ball_mem_nhds
+      (stationarySchurBlock F z x) (by linarith)
   have hclose := hcont hball
   filter_upwards [hclose] with s hs
   have hdist :
