@@ -764,12 +764,9 @@ theorem stationarySchurBlock_response_deriv
         (deriv (fun s => stationarySchurResponse F z s) x) =
       deriv (fun s => stationarySchurCoupling F z s) x := by
   let W := stationarySchurComplement z
-  let EvalC :
-      (W →L[ℂ] W) →L[ℂ] W →L[ℂ] W :=
-    (ContinuousLinearMap.apply ℂ W).flip
-  let EvalR :
-      (W →L[ℂ] W) →L[ℝ] W →L[ℝ] W :=
-    ContinuousLinearMap.bilinearRestrictScalars ℝ EvalC
+  let R :
+      (W →L[ℂ] W) →L[ℝ] (W →L[ℝ] W) :=
+    ContinuousLinearMap.restrictScalarsL ℂ W W ℝ ℝ
   have hCev :=
     eventually_stationarySchurBlock_isInvertible
       (F := F) (z := z) (x := x) hF hC
@@ -787,6 +784,13 @@ theorem stationarySchurBlock_response_deriv
         (fun s => stationarySchurBlock F z s)
         (deriv (fun s => stationarySchurBlock F z s) x) x :=
     (hblock.differentiableAt (by norm_num)).hasDerivAt
+  have hblockDR :
+      HasDerivAt
+        (fun s => R (stationarySchurBlock F z s))
+        (R (deriv (fun s => stationarySchurBlock F z s) x)) x := by
+    have h :=
+      R.hasFDerivAt.comp_hasDerivAt x hblockD
+    simpa [Function.comp_def] using h
   have hrespD :
       HasDerivAt (fun s => stationarySchurResponse F z s)
         (deriv (fun s => stationarySchurResponse F z s) x) x :=
@@ -796,14 +800,13 @@ theorem stationarySchurBlock_response_deriv
   have hlhsRaw :
       HasDerivAt
         (fun s =>
-          EvalR (stationarySchurBlock F z s)
+          R (stationarySchurBlock F z s)
             (stationarySchurResponse F z s))
-        (EvalR (stationarySchurBlock F z x)
-            (deriv (fun s => stationarySchurResponse F z s) x) +
-          EvalR (deriv (fun s => stationarySchurBlock F z s) x)
-            (stationarySchurResponse F z x)) x :=
-    EvalR.hasDerivAt_of_bilinear
-      (fun _ => hblockD) (fun _ => hrespD)
+        (R (deriv (fun s => stationarySchurBlock F z s) x)
+            (stationarySchurResponse F z x) +
+          R (stationarySchurBlock F z x)
+            (deriv (fun s => stationarySchurResponse F z s) x)) x :=
+    hblockDR.clm_apply hrespD
   have hlhs :
       HasDerivAt
         (fun s =>
@@ -811,7 +814,7 @@ theorem stationarySchurBlock_response_deriv
             (stationarySchurResponse F z s))
         (stationarySchurBlock F z x
           (deriv (fun s => stationarySchurResponse F z s) x)) x := by
-    simpa [EvalR, EvalC, W,
+    simpa [R, W,
       stationarySchurResponse_eq_zero_of_kernel hz] using hlhsRaw
   have hrhs :
       HasDerivAt (fun s => stationarySchurCoupling F z s)
@@ -1279,10 +1282,15 @@ theorem eventually_stationarySchurBlock_nonnegative
       (stationarySchurBlock F z x) (by linarith)
   have hclose := hcont hball
   filter_upwards [hclose] with s hs
+  have hdist' :
+      dist (stationarySchurBlock F z s)
+          (stationarySchurBlock F z x) < c / 2 := by
+    simpa only [Metric.mem_ball] using hs
   have hdist :
       ‖stationarySchurBlock F z s -
           stationarySchurBlock F z x‖ < c / 2 := by
-    simpa [Metric.mem_ball, dist_eq_norm] using hs
+    rw [dist_eq_norm] at hdist'
+    exact hdist'
   intro w
   by_cases hw : w = 0
   · simp [hw]
