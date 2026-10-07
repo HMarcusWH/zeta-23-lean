@@ -1029,7 +1029,8 @@ theorem stationarySchur_completedSquare
       Complex.re
           (inner ℂ (F s (α • q)) (α • q)) =
         ‖α‖ ^ 2 * stationarySchurScalar F z s := by
-    rw [map_smul, inner_smul_left, inner_smul_right]
+    rw [map_smul]
+    simp only [inner_smul_left, inner_smul_right]
     calc
       Complex.re
           (star α * (α * inner ℂ (F s q) q)) =
