@@ -583,37 +583,61 @@ theorem productionContactFirstVariation_unitPhase
     (z : euclideanEvenBoundaryFlatSubspace K) :
     productionContactFirstVariation .even L K (u • z) =
       productionContactFirstVariation .even L K z := by
-  rw [canonicalParity_firstVariation_eq_inner .even hL K (u • z),
-      canonicalParity_firstVariation_eq_inner .even hL K z]
+  rw [canonicalEven_firstVariation_eq_inner hL K (u • z),
+      canonicalEven_firstVariation_eq_inner hL K z]
   have hunit : star u * u = 1 := by
     change conj u * u = 1
     rw [← Complex.normSq_eq_conj_mul_self, Complex.normSq_eq_norm_sq]
     simp [hu]
   have hcomplex :
       inner ℂ
-          (canonicalParityApertureFirst .even L K (u • z)) (u • z) =
-        inner ℂ (canonicalParityApertureFirst .even L K z) z := by
+          ((((productionParityFirstJetCLM .even K L) (u • z) :
+              euclideanParityBoundaryFlatSubspace .even K) :
+            EuclideanSpace ℂ (Fin (2 * K + 1))))
+          ((u • z : euclideanEvenBoundaryFlatSubspace K) :
+            EuclideanSpace ℂ (Fin (2 * K + 1))) =
+        inner ℂ
+          ((((productionParityFirstJetCLM .even K L) z :
+              euclideanParityBoundaryFlatSubspace .even K) :
+            EuclideanSpace ℂ (Fin (2 * K + 1))))
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1))) := by
+    rw [map_smul]
+    simp only [Submodule.coe_smul]
+    rw [inner_smul_left, inner_smul_right]
     calc
-      inner ℂ
-          (canonicalParityApertureFirst .even L K (u • z)) (u • z) =
+      u * (star u *
           inner ℂ
-            (u • canonicalParityApertureFirst .even L K z) (u • z) := by
-        rw [map_smul]
-      _ = star u *
-          inner ℂ (canonicalParityApertureFirst .even L K z) (u • z) :=
-        inner_smul_left (𝕜 := ℂ)
-          (canonicalParityApertureFirst .even L K z) (u • z)
-      _ = star u *
-          (u * inner ℂ (canonicalParityApertureFirst .even L K z) z) := by
-        congr 1
-        exact
-          inner_smul_right (𝕜 := ℂ)
-            (canonicalParityApertureFirst .even L K z) z
-      _ = (star u * u) *
-          inner ℂ (canonicalParityApertureFirst .even L K z) z := by
+            ((((productionParityFirstJetCLM .even K L) z :
+                euclideanParityBoundaryFlatSubspace .even K) :
+              EuclideanSpace ℂ (Fin (2 * K + 1))))
+            (z : EuclideanSpace ℂ (Fin (2 * K + 1)))) =
+          (star u * u) *
+            inner ℂ
+              ((((productionParityFirstJetCLM .even K L) z :
+                  euclideanParityBoundaryFlatSubspace .even K) :
+                EuclideanSpace ℂ (Fin (2 * K + 1))))
+              (z : EuclideanSpace ℂ (Fin (2 * K + 1))) := by
         ring
-      _ = inner ℂ (canonicalParityApertureFirst .even L K z) z := by
+      _ = inner ℂ
+            ((((productionParityFirstJetCLM .even K L) z :
+                euclideanParityBoundaryFlatSubspace .even K) :
+              EuclideanSpace ℂ (Fin (2 * K + 1))))
+            (z : EuclideanSpace ℂ (Fin (2 * K + 1))) := by
         rw [hunit, one_mul]
+  change
+    Complex.re
+        (inner ℂ
+          ((((productionParityFirstJetCLM .even K L) (u • z) :
+              euclideanParityBoundaryFlatSubspace .even K) :
+            EuclideanSpace ℂ (Fin (2 * K + 1))))
+          ((u • z : euclideanEvenBoundaryFlatSubspace K) :
+            EuclideanSpace ℂ (Fin (2 * K + 1)))) =
+      Complex.re
+        (inner ℂ
+          ((((productionParityFirstJetCLM .even K L) z :
+              euclideanParityBoundaryFlatSubspace .even K) :
+            EuclideanSpace ℂ (Fin (2 * K + 1))))
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1))))
   exact congrArg Complex.re hcomplex
 
 end Zeta23.CCM
