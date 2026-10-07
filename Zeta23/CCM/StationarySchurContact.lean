@@ -831,14 +831,9 @@ theorem deriv_stationarySchurResponse_eq_neg
   have hcandidate :
       stationarySchurBlock F z x (-ww) =
         deriv (fun s => stationarySchurCoupling F z s) x := by
-    apply Subtype.ext
     rw [deriv_stationarySchurCoupling hF]
-    change
-      (stationarySchurComplement z).orthogonalProjectionOnto
-          (F x (-w)) =
-        (stationarySchurComplement z).orthogonalProjectionOnto
-          ((deriv F x) z)
-    rw [map_neg, hw, neg_neg]
+    apply Subtype.ext
+    simp [stationarySchurBlock, ww, hw]
   have hinj :=
     stationarySchurBlock_injective_of_kernel_line
       hznorm hFsym hz hker
@@ -863,7 +858,10 @@ theorem stationaryFixedEnergy_secondDerivative
         ((hs.differentiableAt (by norm_num)).hasDerivAt) z
     have hi := hFz.inner ℂ (hasDerivAt_const s z)
     have hre := Complex.reCLM.hasFDerivAt.comp_hasDerivAt s hi
-    simpa [a, a1] using hre.deriv
+    change
+      deriv (Complex.reCLM ∘ fun t => inner ℂ (F t z) z) s =
+        Complex.re (inner ℂ ((deriv F s) z) z)
+    exact hre.deriv
   have hFd : ContDiffAt ℝ 1 (deriv F) x :=
     hF.derivWithin (m := 1) (by norm_num)
   have hFdz :=
@@ -874,9 +872,11 @@ theorem stationaryFixedEnergy_secondDerivative
   have ha1 :
       deriv a1 x =
         Complex.re (inner ℂ ((deriv (deriv F) x) z) z) := by
-    simpa [a1] using hre.deriv
+    change
+      deriv (Complex.reCLM ∘ fun t => inner ℂ ((deriv F t) z) z) x =
+        Complex.re (inner ℂ ((deriv (deriv F) x) z) z)
+    exact hre.deriv
   rw [Filter.EventuallyEq.deriv_eq hformula, ha1]
-  rfl
 
 /-- The actual Schur scalar has the optimized second derivative associated
 with the unique perpendicular response. -/
