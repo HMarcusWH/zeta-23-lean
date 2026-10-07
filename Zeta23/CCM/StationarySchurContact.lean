@@ -740,7 +740,11 @@ theorem stationarySchurBlock_response_deriv
         (deriv (fun s => stationarySchurResponse F z s) x) =
       deriv (fun s => stationarySchurCoupling F z s) x := by
   let W := stationarySchurComplement z
-  have hCev := eventually_stationarySchurBlock_isInvertible hF hC
+  let R : (W →L[ℂ] W) →L[ℝ] (W →L[ℝ] W) :=
+    ContinuousLinearMap.restrictScalarsL ℂ W W ℝ ℝ
+  have hCev :=
+    eventually_stationarySchurBlock_isInvertible
+      (F := F) (z := z) (x := x) hF hC
   have heq :
       (fun s =>
         stationarySchurBlock F z s
@@ -748,33 +752,37 @@ theorem stationarySchurBlock_response_deriv
         (fun s => stationarySchurCoupling F z s) := by
     filter_upwards [hCev] with s hs
     exact stationarySchurBlock_response hs
-  have hblockD :
-      HasDerivAt (fun s => stationarySchurBlock F z s)
-        (deriv (fun s => stationarySchurBlock F z s) x) x :=
-    ((contDiffAt_stationarySchurBlock hF).differentiableAt (by norm_num)).hasDerivAt
-  have hrespD :
-      HasDerivAt (fun s => stationarySchurResponse F z s)
-        (deriv (fun s => stationarySchurResponse F z s) x) x :=
-    ((contDiffAt_stationarySchurResponse hF hC).differentiableAt (by norm_num)).hasDerivAt
-  let R : (W →L[ℂ] W) →L[ℝ] (W →L[ℝ] W) :=
-    ContinuousLinearMap.restrictScalarsL ℂ W W ℝ ℝ
+  have hblock :=
+    contDiffAt_stationarySchurBlock (F := F) (z := z) (x := x) hF
+  have hblockR :
+      ContDiffAt ℝ 2
+        (fun s => R (stationarySchurBlock F z s)) x := by
+    exact (ContinuousLinearMap.contDiff R).contDiffAt.comp x hblock
   have hblockDR :
       HasDerivAt
         (fun s => R (stationarySchurBlock F z s))
-        (R (deriv (fun s => stationarySchurBlock F z s) x)) x :=
-    R.hasFDerivAt.comp_hasDerivAt x hblockD
+        (deriv (fun s => R (stationarySchurBlock F z s)) x) x :=
+    hblockR.differentiableAt_one.hasDerivAt
+  have hrespD :
+      HasDerivAt (fun s => stationarySchurResponse F z s)
+        (deriv (fun s => stationarySchurResponse F z s) x) x :=
+    ((contDiffAt_stationarySchurResponse
+      (F := F) (z := z) (x := x) hF hC).differentiableAt
+        (by norm_num)).hasDerivAt
   have hlhs := hblockDR.clm_apply hrespD
   have hrhs :
       HasDerivAt (fun s => stationarySchurCoupling F z s)
         (deriv (fun s => stationarySchurCoupling F z s) x) x :=
-    ((contDiffAt_stationarySchurCoupling hF).differentiableAt (by norm_num)).hasDerivAt
+    ((contDiffAt_stationarySchurCoupling
+      (F := F) (z := z) (x := x) hF).differentiableAt
+        (by norm_num)).hasDerivAt
   have heqR :
       (fun s =>
         R (stationarySchurBlock F z s)
           (stationarySchurResponse F z s)) =ᶠ[𝓝 x]
         (fun s => stationarySchurCoupling F z s) := by
     simpa [R] using heq
-  have hlhs' := hlhs.congr_of_eventuallyEq heqR
+  have hlhs' := hlhs.congr_of_eventuallyEq heqR.symm
   have hcoeff := hlhs'.unique hrhs
   have hr0 := stationarySchurResponse_eq_zero_of_kernel hz
   simpa [R, hr0] using hcoeff
@@ -799,7 +807,7 @@ theorem deriv_isSymmetric_of_eventually
         (fun s => inner ℂ u (F s v)) := by
     filter_upwards [hsym] with s hs
     exact hs u v
-  exact (hFu.congr_of_eventuallyEq heq).unique hFv
+  exact (hFu.congr_of_eventuallyEq heq.symm).unique hFv
 
 /-- The derivative of the inverse response is the negative stationary
 eigenbranch response. -/
