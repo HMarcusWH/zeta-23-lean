@@ -592,11 +592,15 @@ theorem productionContactFirstVariation_unitPhase
   have hcomplex :
       inner ℂ (canonicalEvenApertureFirst L K (u • z)) (u • z) =
         inner ℂ (canonicalEvenApertureFirst L K z) z := by
-    rw [map_smul]
-    simp only [inner_smul_left, inner_smul_right]
     calc
-      star u * (u * inner ℂ (canonicalEvenApertureFirst L K z) z) =
-          (star u * u) * inner ℂ (canonicalEvenApertureFirst L K z) z := by
+      inner ℂ (canonicalEvenApertureFirst L K (u • z)) (u • z) =
+          inner ℂ (u • canonicalEvenApertureFirst L K z) (u • z) := by
+        rw [map_smul]
+      _ = star u * inner ℂ (canonicalEvenApertureFirst L K z) (u • z) := by
+        rw [inner_smul_left]
+      _ = star u * (u * inner ℂ (canonicalEvenApertureFirst L K z) z) := by
+        rw [inner_smul_right]
+      _ = (star u * u) * inner ℂ (canonicalEvenApertureFirst L K z) z := by
         ring
       _ = inner ℂ (canonicalEvenApertureFirst L K z) z := by
         rw [hunit, one_mul]
