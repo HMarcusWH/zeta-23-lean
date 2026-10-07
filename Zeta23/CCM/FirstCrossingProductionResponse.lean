@@ -445,20 +445,29 @@ theorem existsUnique_canonicalStationaryEvenResponse
     change inner ℂ z (-b) = 0
     rw [inner_neg_right, hzb, neg_zero]
   obtain ⟨w0, hw0⟩ := hb
+  have hzz : inner ℂ z z = 1 := by
+    rw [inner_self_eq_norm_sq_to_K, hznorm]
+    norm_num
+  have hzzAmbient :
+      inner ℂ
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1))) = 1 := by
+    simpa using hzz
   let w := w0 - (inner ℂ z w0) • z
   have hperp : inner ℂ z w = 0 := by
     dsimp [w]
     rw [inner_sub_right, inner_smul_right]
-    have hznormAmbient :
-        ‖(z : EuclideanSpace ℂ (Fin (2 * K + 1)))‖ = 1 := by
-      simpa using hznorm
-    have hzz :
+    change
+      inner ℂ
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (w0 : EuclideanSpace ℂ (Fin (2 * K + 1))) -
         inner ℂ
           (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
-          (z : EuclideanSpace ℂ (Fin (2 * K + 1))) = 1 := by
-      rw [inner_self_eq_norm_sq_to_K, hznormAmbient]
-      norm_num
-    rw [hzz]
+          (w0 : EuclideanSpace ℂ (Fin (2 * K + 1))) *
+        inner ℂ
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0
+    rw [hzzAmbient]
     ring
   have hsolve : E w = -b := by
     dsimp [w]
@@ -472,11 +481,19 @@ theorem existsUnique_canonicalStationaryEvenResponse
     strictEven_zeroKernel_is_line hL K hK z hzne hzero hodd (y-w) hdiff
   have horth : inner ℂ z (y-w)=0 := by
     rw [inner_sub_right,hy.1,hperp,sub_self]
-  have hc0 : c=0 := by
-    have := congrArg (fun q => inner ℂ z q) hc
-    simp [horth,hznorm] at this
-    exact this
-  exact sub_eq_zero.mp (by rw [←hc,hc0,zero_smul])
+  have hcz : inner ℂ z (c • z) = 0 := by
+    rw [hc, horth]
+  have hczAmbient :
+      inner ℂ
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+        (c • (z : EuclideanSpace ℂ (Fin (2 * K + 1)))) = 0 := by
+    simpa using hcz
+  have hc0 : c = 0 := by
+    rw [inner_smul_right, hzzAmbient] at hczAmbient
+    simpa using hczAmbient
+  have hyw : y - w = 0 := by
+    rw [← hc, hc0, zero_smul]
+  exact sub_eq_zero.mp hyw
 
 noncomputable def canonicalStationaryEvenResponse
     {L : ℝ} (hL : 0 < L)
