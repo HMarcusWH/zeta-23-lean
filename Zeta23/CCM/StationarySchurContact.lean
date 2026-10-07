@@ -561,14 +561,28 @@ theorem stationarySchurEnvelope_secondDerivative
         HasDerivAt (fun s => deriv b s)
           (deriv (deriv b) x) x :=
       hbdC1.differentiableAt_one.hasDerivAt
-    have h₁ :=
+    have h₁raw :=
       Complex.reCLM.hasFDerivAt.comp_hasDerivAt x (hrd.inner ℂ hdb)
-    have h₂ :=
+    have h₂raw :=
       Complex.reCLM.hasFDerivAt.comp_hasDerivAt x (hdr.inner ℂ hbd)
-    have hsum := h₁.add h₂
-    convert hsum using 1 <;>
-      simp [Function.comp_def, hbx, hrx, two_mul,
-        add_assoc, add_left_comm, add_comm]
+    have h₁ :
+        HasDerivAt
+          (fun s => Complex.re (inner ℂ (r s) (deriv b s)))
+          (Complex.re (inner ℂ (deriv r x) (deriv b x))) x := by
+      simpa [Function.comp_def, hrx] using h₁raw
+    have h₂ :
+        HasDerivAt
+          (fun s => Complex.re (inner ℂ (deriv r s) (b s)))
+          (Complex.re (inner ℂ (deriv r x) (deriv b x))) x := by
+      simpa [Function.comp_def, hbx] using h₂raw
+    have hsum :
+        HasDerivAt
+          (fun s =>
+            Complex.re (inner ℂ (r s) (deriv b s)) +
+              Complex.re (inner ℂ (deriv r s) (b s)))
+          (2 * Complex.re (inner ℂ (deriv r x) (deriv b x))) x := by
+      simpa [two_mul] using h₁.add h₂
+    simpa only [Complex.add_re] using hsum
   have hg2 :
       deriv (deriv g) x =
         2 * Complex.re (inner ℂ (deriv r x) (deriv b x)) := by
@@ -766,8 +780,12 @@ theorem stationarySchurBlock_response_deriv
         (deriv (fun s => stationarySchurResponse F z s) x) =
       deriv (fun s => stationarySchurCoupling F z s) x := by
   let W := stationarySchurComplement z
-  let R : (W →L[ℂ] W) →L[ℝ] (W →L[ℝ] W) :=
-    ContinuousLinearMap.restrictScalarsL ℂ W W ℝ ℝ
+  let EvalC :
+      (W →L[ℂ] W) →L[ℂ] W →L[ℂ] W :=
+    (ContinuousLinearMap.apply ℂ W).flip
+  let EvalR :
+      (W →L[ℂ] W) →L[ℝ] W →L[ℝ] W :=
+    EvalC.bilinearRestrictScalars ℝ
   have hCev :=
     eventually_stationarySchurBlock_isInvertible
       (F := F) (z := z) (x := x) hF hC
@@ -785,36 +803,40 @@ theorem stationarySchurBlock_response_deriv
         (fun s => stationarySchurBlock F z s)
         (deriv (fun s => stationarySchurBlock F z s) x) x :=
     (hblock.differentiableAt (by norm_num)).hasDerivAt
-  have hblockDR :
-      HasDerivAt
-        (fun s => R (stationarySchurBlock F z s))
-        (R (deriv (fun s => stationarySchurBlock F z s) x)) x := by
-    have h :=
-      R.hasFDerivAt.comp_hasDerivAt x hblockD
-    simpa [Function.comp_def] using h
   have hrespD :
       HasDerivAt (fun s => stationarySchurResponse F z s)
         (deriv (fun s => stationarySchurResponse F z s) x) x :=
     ((contDiffAt_stationarySchurResponse
       (F := F) (z := z) (x := x) hF hC).differentiableAt
         (by norm_num)).hasDerivAt
-  have hlhs := hblockDR.clm_apply hrespD
+  have hlhsRaw :
+      HasDerivAt
+        (fun s =>
+          EvalR (stationarySchurBlock F z s)
+            (stationarySchurResponse F z s))
+        (EvalR (stationarySchurBlock F z x)
+            (deriv (fun s => stationarySchurResponse F z s) x) +
+          EvalR (deriv (fun s => stationarySchurBlock F z s) x)
+            (stationarySchurResponse F z x)) x :=
+    EvalR.hasDerivAt_of_bilinear
+      (fun _ => hblockD) (fun _ => hrespD)
+  have hlhs :
+      HasDerivAt
+        (fun s =>
+          stationarySchurBlock F z s
+            (stationarySchurResponse F z s))
+        (stationarySchurBlock F z x
+          (deriv (fun s => stationarySchurResponse F z s) x)) x := by
+    simpa [EvalR, EvalC, W,
+      stationarySchurResponse_eq_zero_of_kernel hz] using hlhsRaw
   have hrhs :
       HasDerivAt (fun s => stationarySchurCoupling F z s)
         (deriv (fun s => stationarySchurCoupling F z s) x) x :=
     ((contDiffAt_stationarySchurCoupling
       (F := F) (z := z) (x := x) hF).differentiableAt
         (by norm_num)).hasDerivAt
-  have heqR :
-      (fun s =>
-        R (stationarySchurBlock F z s)
-          (stationarySchurResponse F z s)) =ᶠ[𝓝 x]
-        (fun s => stationarySchurCoupling F z s) := by
-    simpa [R] using heq
-  have hlhs' := hlhs.congr_of_eventuallyEq heqR.symm
-  have hcoeff := hlhs'.unique hrhs
-  have hr0 := stationarySchurResponse_eq_zero_of_kernel hz
-  simpa [R, hr0] using hcoeff
+  have hlhs' := hlhs.congr_of_eventuallyEq heq.symm
+  exact hlhs'.unique hrhs
 
 /-- Symmetry is inherited by the real aperture derivative of a differentiable
 family. -/
@@ -1051,7 +1073,9 @@ theorem stationarySchur_completedSquare
   have hnorm : star α * α = ((‖α‖ ^ 2 : ℝ) : ℂ) := by
     change conj α * α = ((‖α‖ ^ 2 : ℝ) : ℂ)
     rw [← Complex.normSq_eq_conj_mul_self, Complex.normSq_eq_norm_sq]
-  have hnorm' : α * star α = ((‖α‖ ^ 2 : ℝ) : ℂ) := by
+  have hnorm' :
+      α * (starRingEnd ℂ) α = ((‖α‖ ^ 2 : ℝ) : ℂ) := by
+    change α * star α = ((‖α‖ ^ 2 : ℝ) : ℂ)
     rw [mul_comm]
     exact hnorm
   have hquad :
@@ -1272,8 +1296,10 @@ theorem eventually_stationarySchurBlock_nonnegative
   have hdist :
       ‖stationarySchurBlock F z s -
           stationarySchurBlock F z x‖ < c / 2 := by
-    rw [Metric.mem_ball] at hs
-    rw [dist_eq_norm] at hs
+    change
+      stationarySchurBlock F z s ∈
+        Metric.ball (stationarySchurBlock F z x) (c / 2) at hs
+    rw [Metric.mem_ball, dist_eq_norm] at hs
     exact hs
   intro w
   by_cases hw : w = 0
