@@ -3,6 +3,7 @@ import Zeta23.CCM.FirstCrossingSchurReduction
 import Zeta23.CCM.FirstCrossingProductionFirstVariation
 import Zeta23.CCM.CanonicalCompressedApertureC2
 import Mathlib.Analysis.InnerProductSpace.LinearMap
+import Mathlib.Analysis.InnerProductSpace.Subspace
 
 noncomputable section
 
