@@ -230,7 +230,8 @@ theorem productionContactRemainderValue_physical_decomposition
     (z w : euclideanEvenBoundaryFlatSubspace K) :
     productionContactRemainderValue L K z w =
       (2 * Real.pi) ^ 2 / L ^ 2 *
-        productionContactNormalPhysicalValue L K z +
+        productionArithmeticRealValue L
+          (productionContactNormalPhysicalTest L K z) +
       productionArithmeticRealValue L
         (productionSecondDerivativePhysicalTest L K z) +
       2 * productionArithmeticRealValue L
