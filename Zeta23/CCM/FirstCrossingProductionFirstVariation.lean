@@ -583,33 +583,38 @@ theorem productionContactFirstVariation_unitPhase
     (z : euclideanEvenBoundaryFlatSubspace K) :
     productionContactFirstVariation .even L K (u • z) =
       productionContactFirstVariation .even L K z := by
-  rw [canonicalEven_firstVariation_eq_inner hL K (u • z),
-      canonicalEven_firstVariation_eq_inner hL K z]
+  rw [canonicalParity_firstVariation_eq_inner .even hL K (u • z),
+      canonicalParity_firstVariation_eq_inner .even hL K z]
   have hunit : star u * u = 1 := by
     change conj u * u = 1
     rw [← Complex.normSq_eq_conj_mul_self, Complex.normSq_eq_norm_sq]
     simp [hu]
   have hcomplex :
-      inner ℂ (canonicalEvenApertureFirst L K (u • z)) (u • z) =
-        inner ℂ (canonicalEvenApertureFirst L K z) z := by
+      inner ℂ
+          (canonicalParityApertureFirst .even L K (u • z)) (u • z) =
+        inner ℂ (canonicalParityApertureFirst .even L K z) z := by
     calc
-      inner ℂ (canonicalEvenApertureFirst L K (u • z)) (u • z) =
-          inner ℂ (u • canonicalEvenApertureFirst L K z) (u • z) := by
+      inner ℂ
+          (canonicalParityApertureFirst .even L K (u • z)) (u • z) =
+          inner ℂ
+            (u • canonicalParityApertureFirst .even L K z) (u • z) := by
         rw [map_smul]
-      _ = star u * inner ℂ (canonicalEvenApertureFirst L K z) (u • z) :=
+      _ = star u *
+          inner ℂ (canonicalParityApertureFirst .even L K z) (u • z) :=
         inner_smul_left (𝕜 := ℂ)
-          (canonicalEvenApertureFirst L K z) (u • z)
-      _ = star u * (u * inner ℂ (canonicalEvenApertureFirst L K z) z) := by
+          (canonicalParityApertureFirst .even L K z) (u • z)
+      _ = star u *
+          (u * inner ℂ (canonicalParityApertureFirst .even L K z) z) := by
         congr 1
         exact
           inner_smul_right (𝕜 := ℂ)
-            (canonicalEvenApertureFirst L K z) z
-      _ = (star u * u) * inner ℂ (canonicalEvenApertureFirst L K z) z := by
+            (canonicalParityApertureFirst .even L K z) z
+      _ = (star u * u) *
+          inner ℂ (canonicalParityApertureFirst .even L K z) z := by
         ring
-      _ = inner ℂ (canonicalEvenApertureFirst L K z) z := by
+      _ = inner ℂ (canonicalParityApertureFirst .even L K z) z := by
         rw [hunit, one_mul]
   exact congrArg Complex.re hcomplex
-
 
 end Zeta23.CCM
 
