@@ -602,13 +602,13 @@ theorem productionContactFirstVariation_unitPhase
           star u *
             inner ℂ (canonicalEvenApertureFirst L K z) (u • z) :=
         inner_smul_left (𝕜 := ℂ)
-          (canonicalEvenApertureFirst L K z) (u • z)
+          (canonicalEvenApertureFirst L K z) (u • z) u
       _ = star u *
             (u * inner ℂ (canonicalEvenApertureFirst L K z) z) := by
         congr 1
         exact
           inner_smul_right (𝕜 := ℂ)
-            (canonicalEvenApertureFirst L K z) z
+            (canonicalEvenApertureFirst L K z) z u
       _ = (star u * u) *
             inner ℂ (canonicalEvenApertureFirst L K z) z := by
         ring
