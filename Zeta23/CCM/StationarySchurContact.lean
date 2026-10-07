@@ -561,11 +561,14 @@ theorem stationarySchurEnvelope_secondDerivative
         HasDerivAt (fun s => deriv b s)
           (deriv (deriv b) x) x :=
       hbdC1.differentiableAt_one.hasDerivAt
-    have h₁ := hrd.inner ℂ hdb
-    have h₂ := hdr.inner ℂ hbd
+    have h₁ :=
+      Complex.reCLM.hasFDerivAt.comp_hasDerivAt x (hrd.inner ℂ hdb)
+    have h₂ :=
+      Complex.reCLM.hasFDerivAt.comp_hasDerivAt x (hdr.inner ℂ hbd)
     have hsum := h₁.add h₂
-    have hre := Complex.reCLM.hasFDerivAt.comp_hasDerivAt x hsum
-    simpa [hbx, hrx, two_mul, add_assoc, add_left_comm, add_comm] using hre
+    convert hsum using 1 <;>
+      simp [Function.comp_def, hbx, hrx, two_mul,
+        add_assoc, add_left_comm, add_comm]
   have hg2 :
       deriv (deriv g) x =
         2 * Complex.re (inner ℂ (deriv r x) (deriv b x)) := by
@@ -579,7 +582,9 @@ theorem stationarySchurEnvelope_secondDerivative
       deriv_sub
         (has.differentiableAt (by norm_num))
         (hgs.differentiableAt (by norm_num))
-    simpa [stationarySchurEnvelope, g] using hsub
+    change deriv (fun t => a t - g t) s =
+      deriv a s - deriv g s
+    exact hsub
   have hda :
       HasDerivAt (fun s => deriv a s) (deriv (deriv a) x) x :=
     (ha.derivWithin (m := 1) (by norm_num)).differentiableAt_one.hasDerivAt
@@ -587,7 +592,14 @@ theorem stationarySchurEnvelope_secondDerivative
       HasDerivAt (fun s => deriv g s) (deriv (deriv g) x) x :=
     (hgC2.derivWithin (m := 1) (by norm_num)).differentiableAt_one.hasDerivAt
   have hsub := hda.sub hdg
-  rw [Filter.EventuallyEq.deriv_eq henvFormula, hsub.deriv, hg2]
+  have hsub' :
+      deriv (fun s => deriv a s - deriv g s) x =
+        deriv (deriv a) x - deriv (deriv g) x := by
+    change
+      deriv ((fun s => deriv a s) - fun s => deriv g s) x =
+        deriv (deriv a) x - deriv (deriv g) x
+    exact hsub.deriv
+  rw [Filter.EventuallyEq.deriv_eq henvFormula, hsub', hg2]
 
 /-! ## Identification of the actual scalar with the envelope -/
 
@@ -715,10 +727,14 @@ theorem stationarySchurScalar_firstDerivative_eq_fixed
     change
       HasDerivAt
         (Complex.reCLM ∘ fun s => inner ℂ (r s) (b s)) 0 x
-    convert hreD using 1 <;> simp [hbx, hrx]
+    simpa [hbx, hrx] using hreD
   have henvD :
       HasDerivAt (stationarySchurEnvelope a b r) (deriv a x) x := by
     unfold stationarySchurEnvelope
+    change
+      HasDerivAt
+        (a - fun s => Complex.re (inner ℂ (r s) (b s)))
+        (deriv a x) x
     simpa using haD.sub hpairD0
   rw [Filter.EventuallyEq.deriv_eq heq]
   simpa [a] using henvD.deriv
@@ -764,15 +780,18 @@ theorem stationarySchurBlock_response_deriv
     exact stationarySchurBlock_response hs
   have hblock :=
     contDiffAt_stationarySchurBlock (F := F) (z := z) (x := x) hF
-  have hblockR :
-      ContDiffAt ℝ 2
-        (fun s => R (stationarySchurBlock F z s)) x := by
-    exact (ContinuousLinearMap.contDiff R).contDiffAt.comp x hblock
+  have hblockD :
+      HasDerivAt
+        (fun s => stationarySchurBlock F z s)
+        (deriv (fun s => stationarySchurBlock F z s) x) x :=
+    (hblock.differentiableAt (by norm_num)).hasDerivAt
   have hblockDR :
       HasDerivAt
         (fun s => R (stationarySchurBlock F z s))
-        (deriv (fun s => R (stationarySchurBlock F z s)) x) x :=
-    hblockR.differentiableAt_one.hasDerivAt
+        (R (deriv (fun s => stationarySchurBlock F z s) x)) x := by
+    have h :=
+      R.hasFDerivAt.comp_hasDerivAt x hblockD
+    simpa [Function.comp_def] using h
   have hrespD :
       HasDerivAt (fun s => stationarySchurResponse F z s)
         (deriv (fun s => stationarySchurResponse F z s) x) x :=
@@ -817,7 +836,8 @@ theorem deriv_isSymmetric_of_eventually
         (fun s => inner ℂ u (F s v)) := by
     filter_upwards [hsym] with s hs
     exact hs u v
-  exact (hFu.congr_of_eventuallyEq heq.symm).unique hFv
+  have h := (hFu.congr_of_eventuallyEq heq.symm).unique hFv
+  simpa using h
 
 /-- The derivative of the inverse response is the negative stationary
 eigenbranch response. -/
@@ -871,7 +891,7 @@ theorem stationaryFixedEnergy_secondDerivative
     change
       deriv (Complex.reCLM ∘ fun t => inner ℂ (F t z) z) s =
         Complex.re (inner ℂ ((deriv F s) z) z)
-    exact hre.deriv
+    simpa using hre.deriv
   have hFd : ContDiffAt ℝ 1 (deriv F) x :=
     hF.derivWithin (m := 1) (by norm_num)
   have hFdz :=
@@ -885,7 +905,7 @@ theorem stationaryFixedEnergy_secondDerivative
     change
       deriv (Complex.reCLM ∘ fun t => inner ℂ ((deriv F t) z) z) x =
         Complex.re (inner ℂ ((deriv (deriv F) x) z) z)
-    exact hre.deriv
+    simpa using hre.deriv
   rw [Filter.EventuallyEq.deriv_eq hformula, ha1]
 
 /-- The actual Schur scalar has the optimized second derivative associated
@@ -965,7 +985,8 @@ theorem stationarySchurScalar_secondDerivative_eq_pair
         (stationarySchurComplement z).inner_orthogonalProjectionOnto_eq_of_mem_left
           (deriv r x) ((deriv F x) z)
     rw [hp, hrder, inner_neg_left, Complex.neg_re]
-    rw [← hsymd w z]
+    have hs := congrArg Complex.re (hsymd w z)
+    simpa using congrArg Neg.neg hs.symm
   have ha2 :
       deriv (deriv a) x =
         Complex.re (inner ℂ ((deriv (deriv F) x) z) z) := by
@@ -1015,8 +1036,13 @@ theorem stationarySchur_completedSquare
       _ = 0 := by rw [hres]; simp
   have hcross' :
       inner ℂ (F s (u : V)) q = 0 := by
-    rw [hFsym, inner_eq_zero_symm]
-    exact hcross
+    calc
+      inner ℂ (F s (u : V)) q =
+          inner ℂ (u : V) (F s q) :=
+        hFsym (u : V) q
+      _ = star (inner ℂ (F s q) (u : V)) :=
+        (inner_conj_symm (𝕜 := ℂ) (u : V) (F s q)).symm
+      _ = 0 := by rw [hcross]; simp
   have hdecomp :
       α • z + (w : V) = α • q + (u : V) := by
     dsimp [q, u, r, stationarySchurVector]
@@ -1025,21 +1051,17 @@ theorem stationarySchur_completedSquare
   have hnorm : star α * α = ((‖α‖ ^ 2 : ℝ) : ℂ) := by
     change conj α * α = ((‖α‖ ^ 2 : ℝ) : ℂ)
     rw [← Complex.normSq_eq_conj_mul_self, Complex.normSq_eq_norm_sq]
+  have hnorm' : α * star α = ((‖α‖ ^ 2 : ℝ) : ℂ) := by
+    rw [mul_comm]
+    exact hnorm
   have hquad :
       Complex.re
           (inner ℂ (F s (α • q)) (α • q)) =
         ‖α‖ ^ 2 * stationarySchurScalar F z s := by
     rw [map_smul]
     simp only [inner_smul_left, inner_smul_right]
-    calc
-      Complex.re
-          (star α * (α * inner ℂ (F s q) q)) =
-          Complex.re
-            (((‖α‖ ^ 2 : ℝ) : ℂ) * inner ℂ (F s q) q) := by
-        rw [← mul_assoc, hnorm]
-      _ = ‖α‖ ^ 2 * Complex.re (inner ℂ (F s q) q) := by simp
-      _ = ‖α‖ ^ 2 * stationarySchurScalar F z s := by
-        simp [stationarySchurScalar, q]
+    rw [← mul_assoc, hnorm']
+    simp [stationarySchurScalar, q]
   have hu :
       Complex.re (inner ℂ (F s (u : V)) (u : V)) =
         Complex.re (inner ℂ (stationarySchurBlock F z s u) u) := by
@@ -1250,7 +1272,9 @@ theorem eventually_stationarySchurBlock_nonnegative
   have hdist :
       ‖stationarySchurBlock F z s -
           stationarySchurBlock F z x‖ < c / 2 := by
-    simpa [Metric.mem_ball, dist_eq_norm] using hs
+    rw [Metric.mem_ball] at hs
+    rw [dist_eq_norm] at hs
+    exact hs
   intro w
   by_cases hw : w = 0
   · simp [hw]
@@ -1266,7 +1290,7 @@ theorem eventually_stationarySchurBlock_nonnegative
         abs_re_le_norm _
       _ ≤ ‖D w‖ * ‖w‖ := norm_inner_le_norm _ _
       _ ≤ (‖D‖ * ‖w‖) * ‖w‖ := by
-        exact mul_le_mul_of_nonneg_right (le_opNorm D w) (norm_nonneg _)
+        exact mul_le_mul_of_nonneg_right (D.le_opNorm w) (norm_nonneg _)
       _ = ‖D‖ * ‖w‖ ^ 2 := by ring
   have hpert :
       -(‖D‖ * ‖w‖ ^ 2) ≤
