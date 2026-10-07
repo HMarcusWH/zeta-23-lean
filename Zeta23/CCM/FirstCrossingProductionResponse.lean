@@ -579,13 +579,36 @@ theorem canonicalStationaryEvenResponse_unitPhase
   have hw :=
     canonicalStationaryEvenResponse_spec
       hL K hK z hzne hznorm hzero hodd hstationary
+  have hunit : star u * u = 1 := by
+    change conj u * u = 1
+    rw [← Complex.normSq_eq_conj_mul_self, Complex.normSq_eq_norm_sq]
+    simp [hu]
   have hcand :
       inner ℂ (u • z) (u • w) = 0 ∧
         evenCompressedCanonical L K (u • w) =
           -(canonicalEvenApertureFirst L K (u • z)) := by
     constructor
-    · simp [inner_smul_left, inner_smul_right, hw.1]
-    · simp [map_smul, hw.2]
+    · calc
+        inner ℂ (u • z) (u • w) =
+            star u * inner ℂ z (u • w) :=
+          inner_smul_left (𝕜 := ℂ) z (u • w) u
+        _ = star u * (u * inner ℂ z w) := by
+          congr 1
+          exact inner_smul_right (𝕜 := ℂ) z w u
+        _ = (star u * u) * inner ℂ z w := by
+          ring
+        _ = 0 := by
+          rw [hunit, one_mul, hw.1]
+    · calc
+        evenCompressedCanonical L K (u • w) =
+            u • evenCompressedCanonical L K w := by
+          rw [map_smul]
+        _ = u • (-(canonicalEvenApertureFirst L K z)) := by
+          rw [hw.2]
+        _ = -(u • canonicalEvenApertureFirst L K z) := by
+          rw [smul_neg]
+        _ = -(canonicalEvenApertureFirst L K (u • z)) := by
+          rw [map_smul]
   have hrot :=
     canonicalStationaryEvenResponse_spec
       hL K hK (u • z) hzne' hznorm' hzero' hodd hstationary'
