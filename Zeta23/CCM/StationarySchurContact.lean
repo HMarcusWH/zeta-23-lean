@@ -375,7 +375,8 @@ theorem eventually_stationarySchurBlock_isInvertible
     ∀ᶠ s in 𝓝 x, (stationarySchurBlock F z s).IsInvertible := by
   have hcont :
       ContinuousAt (fun s => stationarySchurBlock F z s) x :=
-    (contDiffAt_stationarySchurBlock hF).continuousAt
+    (contDiffAt_stationarySchurBlock
+      (F := F) (z := z) (x := x) hF).continuousAt
   have hinj : Function.Injective (stationarySchurBlock F z x) := by
     rcases hC with ⟨e, he⟩
     rw [← he]
@@ -610,8 +611,8 @@ theorem stationarySchurScalar_eq_envelope
       inner ℂ (F s z) (r : V) =
         inner ℂ (stationarySchurCoupling F z s) r := by
     exact
-      ((stationarySchurComplement z)
-        .inner_orthogonalProjectionOnto_eq_of_mem_right r (F s z)).symm
+      ((stationarySchurComplement z).inner_orthogonalProjectionOnto_eq_of_mem_right
+        r (F s z)).symm
   have hrz :
       inner ℂ (F s (r : V)) z =
         inner ℂ (r : V) (F s z) :=
@@ -1009,8 +1010,8 @@ theorem stationarySchur_completedSquare
           inner ℂ
             ((stationarySchurComplement z).orthogonalProjectionOnto (F s q))
             u :=
-        ((stationarySchurComplement z)
-          .inner_orthogonalProjectionOnto_eq_of_mem_right u (F s q)).symm
+        ((stationarySchurComplement z).inner_orthogonalProjectionOnto_eq_of_mem_right
+          u (F s q)).symm
       _ = 0 := by rw [hres]; simp
   have hcross' :
       inner ℂ (F s (u : V)) q = 0 := by
