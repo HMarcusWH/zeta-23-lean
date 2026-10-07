@@ -766,7 +766,8 @@ theorem stationarySchurBlock_response_deriv
   let W := stationarySchurComplement z
   let R :
       (W →L[ℂ] W) →L[ℝ] (W →L[ℝ] W) :=
-    ContinuousLinearMap.restrictScalarsL ℂ W W ℝ ℝ
+    (ContinuousLinearMap.restrictScalarsIsometry
+      ℂ W W ℝ ℝ).toContinuousLinearMap
   have hCev :=
     eventually_stationarySchurBlock_isInvertible
       (F := F) (z := z) (x := x) hF hC
@@ -1282,15 +1283,18 @@ theorem eventually_stationarySchurBlock_nonnegative
       (stationarySchurBlock F z x) (by linarith)
   have hclose := hcont hball
   filter_upwards [hclose] with s hs
+  have hs' :
+      stationarySchurBlock F z s ∈
+        Metric.ball (stationarySchurBlock F z x) (c / 2) := by
+    exact hs
   have hdist' :
       dist (stationarySchurBlock F z s)
-          (stationarySchurBlock F z x) < c / 2 := by
-    simpa only [Metric.mem_ball] using hs
+          (stationarySchurBlock F z x) < c / 2 :=
+    Metric.mem_ball.mp hs'
   have hdist :
       ‖stationarySchurBlock F z s -
           stationarySchurBlock F z x‖ < c / 2 := by
-    rw [dist_eq_norm] at hdist'
-    exact hdist'
+    simpa only [dist_eq_norm] using hdist'
   intro w
   by_cases hw : w = 0
   · simp [hw]
