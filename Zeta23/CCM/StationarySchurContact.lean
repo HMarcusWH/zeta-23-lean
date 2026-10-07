@@ -561,28 +561,12 @@ theorem stationarySchurEnvelope_secondDerivative
         HasDerivAt (fun s => deriv b s)
           (deriv (deriv b) x) x :=
       hbdC1.differentiableAt_one.hasDerivAt
-    have h₁raw :=
-      Complex.reCLM.hasFDerivAt.comp_hasDerivAt x (hrd.inner ℂ hdb)
-    have h₂raw :=
-      Complex.reCLM.hasFDerivAt.comp_hasDerivAt x (hdr.inner ℂ hbd)
-    have h₁ :
-        HasDerivAt
-          (fun s => Complex.re (inner ℂ (r s) (deriv b s)))
-          (Complex.re (inner ℂ (deriv r x) (deriv b x))) x := by
-      simpa [Function.comp_def, hrx] using h₁raw
-    have h₂ :
-        HasDerivAt
-          (fun s => Complex.re (inner ℂ (deriv r s) (b s)))
-          (Complex.re (inner ℂ (deriv r x) (deriv b x))) x := by
-      simpa [Function.comp_def, hbx] using h₂raw
-    have hsum :
-        HasDerivAt
-          (fun s =>
-            Complex.re (inner ℂ (r s) (deriv b s)) +
-              Complex.re (inner ℂ (deriv r s) (b s)))
-          (2 * Complex.re (inner ℂ (deriv r x) (deriv b x))) x := by
-      simpa [two_mul] using h₁.add h₂
-    simpa only [Complex.add_re] using hsum
+    have hinner :=
+      (hrd.inner ℂ hdb).add (hdr.inner ℂ hbd)
+    have hre :=
+      Complex.reCLM.hasFDerivAt.comp_hasDerivAt x hinner
+    simpa [Function.comp_def, hrx, hbx, Complex.add_re, two_mul,
+      add_assoc, add_left_comm, add_comm] using hre
   have hg2 :
       deriv (deriv g) x =
         2 * Complex.re (inner ℂ (deriv r x) (deriv b x)) := by
@@ -783,9 +767,7 @@ theorem stationarySchurBlock_response_deriv
   let EvalC :
       (W →L[ℂ] W) →L[ℂ] W →L[ℂ] W :=
     (ContinuousLinearMap.apply ℂ W).flip
-  let EvalR :
-      (W →L[ℂ] W) →L[ℝ] W →L[ℝ] W :=
-    EvalC.bilinearRestrictScalars ℝ
+  let EvalR := EvalC.bilinearRestrictScalars ℝ
   have hCev :=
     eventually_stationarySchurBlock_isInvertible
       (F := F) (z := z) (x := x) hF hC
@@ -1085,6 +1067,8 @@ theorem stationarySchur_completedSquare
     rw [map_smul]
     simp only [inner_smul_left, inner_smul_right]
     rw [← mul_assoc, hnorm']
+    simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im,
+      zero_mul, sub_zero]
     simp [stationarySchurScalar, q]
   have hu :
       Complex.re (inner ℂ (F s (u : V)) (u : V)) =
@@ -1297,9 +1281,8 @@ theorem eventually_stationarySchurBlock_nonnegative
       ‖stationarySchurBlock F z s -
           stationarySchurBlock F z x‖ < c / 2 := by
     change
-      stationarySchurBlock F z s ∈
-        Metric.ball (stationarySchurBlock F z x) (c / 2) at hs
-    rw [Metric.mem_ball, dist_eq_norm] at hs
+      ‖stationarySchurBlock F z s -
+          stationarySchurBlock F z x‖ < c / 2 at hs
     exact hs
   intro w
   by_cases hw : w = 0
