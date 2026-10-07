@@ -245,6 +245,19 @@ noncomputable def inheritedContactFirstJetRestriction
       g.shell.p g.shell.Lstar (g.shell.k + 1)
   exact P.comp (E₁.comp K.subtype)
 
+/-- Application of the projected first jet without unfolding the full dependent map
+in the main polarization proof. -/
+@[simp] theorem inheritedContactFirstJetRestriction_apply
+    (g : GeneratedGlobalFirstCrossing)
+    (x : inheritedContactKernelSubspace g) :
+    inheritedContactFirstJetRestriction g x =
+      (inheritedContactKernelSubspace g).orthogonalProjectionOnto
+        (canonicalParityApertureFirst
+          g.shell.p g.shell.Lstar (g.shell.k + 1)
+          (x : euclideanParityBoundaryFlatSubspace
+            g.shell.p (g.shell.k + 1))) := by
+  rfl
+
 /-- Polarization conclusion: the projected restriction of the first jet is
 zero. Cross-coupling out of the inherited kernel is deliberately not claimed. -/
 theorem GeneratedGlobalFirstCrossing.inheritedContactFirstJetRestriction_eq_zero
@@ -253,12 +266,7 @@ theorem GeneratedGlobalFirstCrossing.inheritedContactFirstJetRestriction_eq_zero
     inheritedContactFirstJetRestriction g = 0 := by
   apply LinearMap.ext
   intro x
-  change
-    (inheritedContactKernelSubspace g).orthogonalProjectionOnto
-      (canonicalParityApertureFirst g.shell.p g.shell.Lstar
-        (g.shell.k + 1)
-        (x : euclideanParityBoundaryFlatSubspace
-          g.shell.p (g.shell.k + 1))) = 0
+  rw [inheritedContactFirstJetRestriction_apply]
   rw [Submodule.orthogonalProjectionOnto_eq_zero_iff]
   rw [Submodule.mem_orthogonal']
   intro y hy

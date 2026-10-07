@@ -222,6 +222,32 @@ def canonicalOptimizedContactCurvature
     (canonicalStationaryEvenResponse
       hL K hK z hzne hznorm hzero hodd hstationary)
 
+/-- Value-level decomposition of the concrete remainder into admitted normal,
+second-derivative, and mixed channels.  This does not identify the weighted
+evaluations with the compressed aperture derivatives; that is F04's open gate. -/
+theorem productionContactRemainderValue_physical_decomposition
+    {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 2 ≤ K)
+    (z w : euclideanEvenBoundaryFlatSubspace K) :
+    productionContactRemainderValue L K z w =
+      (2 * Real.pi) ^ 2 / L ^ 2 *
+        productionContactNormalPhysicalValue L K z +
+      productionArithmeticRealValue L
+        (productionSecondDerivativePhysicalTest L K z) +
+      2 * productionArithmeticRealValue L
+        (productionMixedDerivativePhysicalTest L K z w) := by
+  have hn := productionContactNormalPhysical_admissible
+    hL K (by omega : 1 ≤ K) z
+  have hd := production_derivative_tests_admissible hL K z w
+  have hc := hn.smul (a := (2 * Real.pi) ^ 2 / L ^ 2)
+  have hm := hd.2.2.smul (a := 2)
+  rw [productionContactRemainderValue_eq_physicalTest hL K z w,
+    productionContactRemainderPhysicalTest_decomposition hL K z w]
+  rw [productionArithmeticRealValue_add_of_admissible (hc.add hd.2.1) hm]
+  rw [productionArithmeticRealValue_add_of_admissible hc hd.2.1]
+  rw [productionArithmeticRealValue_smul_of_admissible hn]
+  rw [productionArithmeticRealValue_smul_of_admissible hd.2.2]
+  ring
+
 /-- Euler-corrected production balance for arbitrary fixed legal even z,w. -/
 theorem canonicalSecondPairing_euler_eq_productionSaturationGap
     {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 2 ≤ K)
@@ -320,7 +346,7 @@ theorem productionContactSaturationGap_zeroResponse_eq_secondPhysical
   rw [hm0]
   simp only [Pi.zero_apply, mul_zero, add_zero]
   rw [productionArithmeticRealValue_add_of_admissible
-    (hn.smul ((2 * Real.pi) ^ 2 / L ^ 2)) hs]
+    (hn.smul (a := (2 * Real.pi) ^ 2 / L ^ 2)) hs]
   rw [productionArithmeticRealValue_smul_of_admissible hn]
   rw [productionContactNormalPhysicalValue_eq_sourceValue
     hL K (by omega : 1 ≤ K) z]
@@ -358,12 +384,11 @@ theorem productionContactRemainderValue_eq_zeroResponse_add_two_mixedPhysical
       hm0]
     funext t
     simp
-    ring
   rw [productionContactRemainderValue_eq_physicalTest hL K z w,
       productionContactRemainderValue_eq_physicalTest hL K z 0,
       hfun]
   rw [productionArithmeticRealValue_add_of_admissible
-    hR0 (hm.smul 2)]
+    hR0 (hm.smul (a := 2))]
   rw [productionArithmeticRealValue_smul_of_admissible hm]
   ring
 
@@ -414,9 +439,12 @@ theorem canonicalFirstVariation_eq_physical
     canonicalMixedFirstVariation_eq_physical hL K hK z z
   rw [productionMixedDerivativePhysicalTest_self_eq_firstDerivativePhysicalTest]
     at hm
-  rw [canonicalEven_firstVariation_eq_inner hL K z]
-  rw [inner_re_symm]
-  exact hm
+  calc
+    (inner ℂ ((canonicalEvenApertureFirst L K) z) z).re =
+        (inner ℂ z ((canonicalEvenApertureFirst L K) z)).re :=
+      inner_re_symm _ _
+    _ = productionArithmeticRealValue L
+          (productionFirstDerivativePhysicalTest L K z) := hm
 
 /-- Explicit F04 Euler-corrected fixed-second identity:
 J2_fixed + 2 J1/L is the admitted complete physical evaluation of k2. -/
@@ -456,8 +484,7 @@ theorem canonicalStationaryCurvature_eq_productionSaturationGap
       hL K hK z
         (canonicalStationaryEvenResponse
           hL K hK z hzne hznorm hzero hodd hstationary)
-  simp [canonicalOptimizedContactCurvature, hstationary] at h
-  linarith
+  simpa [canonicalOptimizedContactCurvature, hstationary] using h.symm
 
 end Zeta23.CCM
 
