@@ -600,21 +600,39 @@ theorem stationarySchurScalar_eq_envelope
   have hzr :
       inner ℂ (F s z) (r : V) =
         inner ℂ (stationarySchurCoupling F z s) r := by
-    rw [← (stationarySchurComplement z)
-      .inner_orthogonalProjectionOnto_eq_of_mem_right r (F s z)]
-    rfl
+    exact
+      ((stationarySchurComplement z)
+        .inner_orthogonalProjectionOnto_eq_of_mem_right r (F s z)).symm
   have hrz :
       inner ℂ (F s (r : V)) z =
-        inner ℂ (r : V) (F s z) := hFsym (r : V) z
+        inner ℂ (r : V) (F s z) :=
+    hFsym (r : V) z
   have hrr :
       inner ℂ (F s (r : V)) (r : V) =
         inner ℂ (stationarySchurCoupling F z s) r := by
     rw [← stationarySchurBlock_inner (F := F) (z := z) (s := s) r r, hr]
+  have hzrRe := congrArg Complex.re hzr
+  have hrzRe := congrArg Complex.re hrz
+  have hrrRe := congrArg Complex.re hrr
+  have hswapF :
+      Complex.re (inner ℂ (r : V) (F s z)) =
+        Complex.re (inner ℂ (F s z) (r : V)) :=
+    inner_re_symm (𝕜 := ℂ) (r : V) (F s z)
+  have hswapB :
+      Complex.re (inner ℂ r (stationarySchurCoupling F z s)) =
+        Complex.re (inner ℂ (stationarySchurCoupling F z s) r) :=
+    inner_re_symm (𝕜 := ℂ) r (stationarySchurCoupling F z s)
   unfold stationarySchurScalar stationarySchurVector stationarySchurEnvelope
+  change
+    Complex.re
+        (inner ℂ
+          (F s (z - (r : V)))
+          (z - (r : V))) =
+      Complex.re (inner ℂ (F s z) z) -
+        Complex.re
+          (inner ℂ r (stationarySchurCoupling F z s))
   simp only [map_sub, inner_sub_left, inner_sub_right, Complex.sub_re]
-  rw [hzr, hrz, hrr]
-  rw [inner_conj_symm (x := (r : V)) (y := F s z)]
-  simp only [map_sub, Complex.sub_re, map_add, map_mul, Complex.conj_re]
+  rw [hzrRe, hrzRe, hrrRe, hswapF, hzrRe, hswapB]
   ring
 
 /-- Near a simple contact the actual Schur scalar and the envelope agree
