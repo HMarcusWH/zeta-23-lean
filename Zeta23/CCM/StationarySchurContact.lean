@@ -996,40 +996,73 @@ theorem stationarySchur_completedSquare
       (F := F) (z := z) (s := s) hC
   have hcross :
       inner ℂ (F s q) (u : V) = 0 := by
-    rw [← (stationarySchurComplement z)
-      .inner_orthogonalProjectionOnto_eq_of_mem_right u (F s q)]
-    rw [hres]
-    simp
+    calc
+      inner ℂ (F s q) (u : V) =
+          inner ℂ
+            ((stationarySchurComplement z).orthogonalProjectionOnto (F s q))
+            u :=
+        ((stationarySchurComplement z)
+          .inner_orthogonalProjectionOnto_eq_of_mem_right u (F s q)).symm
+      _ = 0 := by rw [hres]; simp
   have hcross' :
       inner ℂ (F s (u : V)) q = 0 := by
-    rw [hFsym]
+    rw [hFsym, inner_eq_zero_symm]
     exact hcross
   have hdecomp :
       α • z + (w : V) = α • q + (u : V) := by
     dsimp [q, u, r, stationarySchurVector]
     simp only [smul_sub, Submodule.coe_add, Submodule.coe_smul]
     abel
-  rw [hdecomp, map_add, inner_add_left, inner_add_right]
-  rw [map_smul, inner_smul_left, inner_smul_right]
-  simp only [hcross, hcross', mul_zero, zero_mul, add_zero, zero_add,
-    Complex.add_re]
+  have hnorm : star α * α = ((‖α‖ ^ 2 : ℝ) : ℂ) := by
+    change conj α * α = ((‖α‖ ^ 2 : ℝ) : ℂ)
+    rw [← Complex.normSq_eq_conj_mul_self, Complex.normSq_eq_norm_sq]
   have hquad :
       Complex.re
-        (star α * (inner ℂ (F s q) q * α)) =
+          (inner ℂ (F s (α • q)) (α • q)) =
         ‖α‖ ^ 2 * stationarySchurScalar F z s := by
-    have hnorm : star α * α = ((‖α‖ ^ 2 : ℝ) : ℂ) := by
-      rw [Complex.conj_mul']
-      norm_cast
-    rw [← mul_assoc, hnorm]
-    simp [stationarySchurScalar, q]
-  rw [hquad]
+    rw [map_smul, inner_smul_left, inner_smul_right]
+    calc
+      Complex.re
+          (star α * (α * inner ℂ (F s q) q)) =
+          Complex.re
+            (((‖α‖ ^ 2 : ℝ) : ℂ) * inner ℂ (F s q) q) := by
+        rw [← mul_assoc, hnorm]
+      _ = ‖α‖ ^ 2 * Complex.re (inner ℂ (F s q) q) := by simp
+      _ = ‖α‖ ^ 2 * stationarySchurScalar F z s := by
+        simp [stationarySchurScalar, q]
   have hu :
       Complex.re (inner ℂ (F s (u : V)) (u : V)) =
+        Complex.re (inner ℂ (stationarySchurBlock F z s u) u) := by
+    exact congrArg Complex.re
+      (stationarySchurBlock_inner (F := F) (z := z) (s := s) u u).symm
+  rw [hdecomp]
+  calc
+    Complex.re
+        (inner ℂ
+          (F s (α • q + (u : V)))
+          (α • q + (u : V))) =
+        Complex.re (inner ℂ (F s (α • q)) (α • q)) +
+          Complex.re (inner ℂ (F s (α • q)) (u : V)) +
+          Complex.re (inner ℂ (F s (u : V)) (α • q)) +
+          Complex.re (inner ℂ (F s (u : V)) (u : V)) := by
+      simp only [map_add, inner_add_left, inner_add_right, Complex.add_re]
+      ring
+    _ = Complex.re (inner ℂ (F s (α • q)) (α • q)) +
+          Complex.re (inner ℂ (F s (u : V)) (u : V)) := by
+      simp [map_smul, inner_smul_left, inner_smul_right, hcross, hcross']
+    _ = ‖α‖ ^ 2 * stationarySchurScalar F z s +
+          Complex.re (inner ℂ (F s (u : V)) (u : V)) := by
+      rw [hquad]
+    _ = ‖α‖ ^ 2 * stationarySchurScalar F z s +
+          Complex.re (inner ℂ (stationarySchurBlock F z s u) u) := by
+      rw [hu]
+    _ = ‖α‖ ^ 2 * stationarySchurScalar F z s +
         Complex.re
-          (inner ℂ (stationarySchurBlock F z s u) u) := by
-    rw [stationarySchurBlock_inner]
-  rw [hu]
-  rfl
+          (inner ℂ
+            (stationarySchurBlock F z s
+              (w + α • stationarySchurResponse F z s))
+            (w + α • stationarySchurResponse F z s)) := by
+      rfl
 
 /-- If the complement block is positive, any negative ambient direction forces
 the scalar Schur profile to be negative. -/
