@@ -231,19 +231,16 @@ noncomputable def inheritedContactFirstJetRestriction
     (g : GeneratedGlobalFirstCrossing) :
     inheritedContactKernelSubspace g →ₗ[ℂ]
       inheritedContactKernelSubspace g := by
-  let P :
-      euclideanParityBoundaryFlatSubspace g.shell.p
-          (g.shell.k + 1) →ₗ[ℂ]
-        inheritedContactKernelSubspace g :=
-    ((inheritedContactKernelSubspace g).orthogonalProjectionOnto :
-      euclideanParityBoundaryFlatSubspace g.shell.p
-          (g.shell.k + 1) →L[ℂ]
-        inheritedContactKernelSubspace g).toLinearMap
-  exact
-    P.comp
-      ((canonicalParityApertureFirst
-          g.shell.p g.shell.Lstar (g.shell.k + 1)).comp
-        (inheritedContactKernelSubspace g).subtype)
+  let V :=
+    euclideanParityBoundaryFlatSubspace g.shell.p (g.shell.k + 1)
+  let K : Submodule ℂ V :=
+    inheritedContactKernelSubspace g
+  let P : V →ₗ[ℂ] K :=
+    (K.orthogonalProjectionOnto : V →ₗ[ℂ] K)
+  let E₁ : V →ₗ[ℂ] V :=
+    canonicalParityApertureFirst
+      g.shell.p g.shell.Lstar (g.shell.k + 1)
+  exact P.comp (E₁.comp K.subtype)
 
 /-- Polarization conclusion: the projected restriction of the first jet is
 zero. Cross-coupling out of the inherited kernel is deliberately not claimed. -/
@@ -251,7 +248,9 @@ theorem GeneratedGlobalFirstCrossing.inheritedContactFirstJetRestriction_eq_zero
     (g : GeneratedGlobalFirstCrossing)
     (hinh : g.shell.n < g.shell.k) :
     inheritedContactFirstJetRestriction g = 0 := by
-  rw [← inner_map_self_eq_zero]
+  apply
+    (inner_map_self_eq_zero
+      (inheritedContactFirstJetRestriction g)).mp
   intro x
   change
     inner ℂ
@@ -387,4 +386,5 @@ theorem GeneratedGlobalFirstCrossing.inheritedSeed_firstVariation_zero
 
 end Zeta23.CCM
 
+#print axioms Zeta23.CCM.GeneratedGlobalFirstCrossing.inheritedContactFirstJetRestriction_eq_zero
 #print axioms Zeta23.CCM.GeneratedGlobalFirstCrossing.inheritedSeed_firstVariation_zero
