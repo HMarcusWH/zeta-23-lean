@@ -75,6 +75,12 @@ theorem GeneratedGlobalFirstCrossing.inheritedContactKernel_right_nonnegative
     have hsuccEnergy :=
       re_inner_successor_nonnegative_on_centeredImage
         g.shell.p hLpos g.shell.k hprev y hy
+    change
+      euclideanCenteredZeroExtend (Nat.le_succ g.shell.k) y =
+        ((x :
+          euclideanParityBoundaryFlatSubspace g.shell.p
+            (g.shell.k + 1)) :
+          EuclideanSpace ℂ (Fin (2 * (g.shell.k + 1) + 1))) at hxy
     rw [hxy] at hsuccEnergy
     unfold inheritedContactKernelEnergy productionContactFixedEnergy
     rw [re_inner_parityCompressedCanonical_self]
@@ -129,21 +135,29 @@ theorem GeneratedGlobalFirstCrossing.inheritedContactKernel_firstJet_re_zero
     g.inheritedContactKernel_left_and_contact x
   obtain ⟨δ,hδ,hright⟩ :=
     g.inheritedContactKernel_right_nonnegative hinh x
-  let f : ℝ → ℝ := inheritedContactKernelEnergy g x
-  have hmin : IsLocalMin f g.shell.Lstar := by
-    refine ⟨Ioo
-      (max g.shell.Lsmall (g.shell.Lstar - δ))
-      (g.shell.Lstar + δ), ?_, ?_⟩
-    · exact Ioo_mem_nhds (by simp; linarith) (by linarith)
-    · intro L hL
-      change inheritedContactKernelEnergy g x g.shell.Lstar ≤
-        inheritedContactKernelEnergy g x L
-      rw [hzero]
-      by_cases h : L ≤ g.shell.Lstar
-      · exact hleft L (by simpa using hL.1) h
-      · exact hright L (le_of_not_ge h) (by simpa using hL.2)
+  have hIoo :
+      Ioo
+        (max g.shell.Lsmall (g.shell.Lstar - δ))
+        (g.shell.Lstar + δ) ∈ 𝓝 g.shell.Lstar := by
+    apply Ioo_mem_nhds
+    · simp
+      constructor
+      · exact g.shell.Lsmall_lt_Lstar
+      · linarith
+    · linarith
+  have hmin :
+      IsLocalMin (inheritedContactKernelEnergy g x) g.shell.Lstar := by
+    filter_upwards [hIoo] with L hL
+    change inheritedContactKernelEnergy g x g.shell.Lstar ≤
+      inheritedContactKernelEnergy g x L
+    rw [hzero]
+    by_cases h : L ≤ g.shell.Lstar
+    · have hsmall : g.shell.Lsmall ≤ L :=
+        le_trans (le_max_left _ _) (le_of_lt hL.1)
+      exact hleft L hsmall h
+    · exact hright L (le_of_lt (lt_of_not_ge h)) hL.2
   have hderiv :
-      HasDerivAt f
+      HasDerivAt (inheritedContactKernelEnergy g x)
         (Complex.re
           (inner ℂ
             (canonicalParityApertureFirst g.shell.p g.shell.Lstar
@@ -153,7 +167,22 @@ theorem GeneratedGlobalFirstCrossing.inheritedContactKernel_firstJet_re_zero
             (x : euclideanParityBoundaryFlatSubspace
               g.shell.p (g.shell.k + 1))))
         g.shell.Lstar := by
-    simpa [f, inheritedContactKernelEnergy] using
+    change
+      HasDerivAt
+        (fun s : ℝ =>
+          productionContactFixedEnergy g.shell.p s (g.shell.k + 1)
+            (x : euclideanParityBoundaryFlatSubspace
+              g.shell.p (g.shell.k + 1)))
+        (Complex.re
+          (inner ℂ
+            (canonicalParityApertureFirst g.shell.p g.shell.Lstar
+              (g.shell.k + 1)
+              (x : euclideanParityBoundaryFlatSubspace
+                g.shell.p (g.shell.k + 1)))
+            (x : euclideanParityBoundaryFlatSubspace
+              g.shell.p (g.shell.k + 1))))
+        g.shell.Lstar
+    exact
       canonicalParity_fixedEnergy_hasDerivAt
         g.shell.p
         (lt_trans g.shell.Lsmall_pos g.shell.Lsmall_lt_Lstar)
@@ -202,11 +231,10 @@ noncomputable def inheritedContactFirstJetRestriction
     (g : GeneratedGlobalFirstCrossing) :
     inheritedContactKernelSubspace g →ₗ[ℂ]
       inheritedContactKernelSubspace g :=
-  ((inheritedContactKernelSubspace g).orthogonalProjectionOnto.comp
-    ((LinearMap.toContinuousLinearMap
-      (canonicalParityApertureFirst g.shell.p g.shell.Lstar
-        (g.shell.k + 1))).comp
-      (inheritedContactKernelSubspace g).subtypeL)).toLinearMap
+  (inheritedContactKernelSubspace g).orthogonalProjectionOnto.toLinearMap.comp
+    ((canonicalParityApertureFirst g.shell.p g.shell.Lstar
+      (g.shell.k + 1)).comp
+      (inheritedContactKernelSubspace g).subtype)
 
 /-- Polarization conclusion: the projected restriction of the first jet is
 zero. Cross-coupling out of the inherited kernel is deliberately not claimed. -/
@@ -214,7 +242,7 @@ theorem GeneratedGlobalFirstCrossing.inheritedContactFirstJetRestriction_eq_zero
     (g : GeneratedGlobalFirstCrossing)
     (hinh : g.shell.n < g.shell.k) :
     inheritedContactFirstJetRestriction g = 0 := by
-  rw [← LinearMap.inner_map_self_eq_zero]
+  rw [← inner_map_self_eq_zero]
   intro x
   change
     inner ℂ
@@ -261,46 +289,86 @@ theorem GeneratedGlobalFirstCrossing.inheritedSeed_firstVariation_zero
       shiftedParityCompressed_nonnegative_of_le_bottom
         g.shell.p L (g.shell.k + 1) (lam := 0) hbottom z
     simpa [inheritedSelectedEnergy, z] using hq
-  have hstable := g.shell.predecessorGround_stable
+  have hrightGround :
+      ∃ δ > 0, ∀ L,
+        g.shell.Lstar ≤ L → L < g.shell.Lstar + δ →
+          0 ≤ paritySuccessorGround g.shell.p g.shell.n L := by
+    have hnot :
+        ¬ ParityRightCrossesNegative
+          g.shell.p g.shell.n g.shell.Lstar :=
+      g.shell.earlier_plateau_no_right_crossing
+        g.shell.n le_rfl hinh
+    by_contra hstable
+    push_neg at hstable
+    apply hnot
+    intro ε hε
+    obtain ⟨L,hLo,hHi,hNeg⟩ := hstable ε hε
+    have hstrict : g.shell.Lstar < L := by
+      rcases lt_or_eq_of_le hLo with h | h
+      · exact h
+      · subst L
+        have hnN : g.shell.n ≤ g.shell.N :=
+          le_trans g.shell.n_le_k g.shell.k_le_N
+        have hnzero :
+            paritySuccessorGround g.shell.p g.shell.n
+              g.shell.Lstar = 0 :=
+          g.shell.plateau_zero g.shell.n le_rfl hnN
+        rw [hnzero] at hNeg
+        linarith
+    exact ⟨L,hstrict,hHi,hNeg⟩
+  obtain ⟨δ,hδ,hrightGround⟩ := hrightGround
   have hright :
-      ∃ δ > 0, ∀ L, g.shell.Lstar ≤ L → L < g.shell.Lstar + δ →
+      ∀ L, g.shell.Lstar ≤ L → L < g.shell.Lstar + δ →
         0 ≤ inheritedSelectedEnergy g L := by
-    rcases hstable with hk1 | ⟨δ,hδ,hpred⟩
-    · have : g.shell.k = 1 := hk1
-      omega
-    · refine ⟨δ,hδ,?_⟩
-      intro L hLo hHi
-      have hpred0 := hpred L hLo hHi
-      have htransport :=
-        re_inner_canonicalSourceMatrix_euclideanCenteredZeroExtend
-          (lt_of_lt_of_le g.shell.Lsmall_pos
-            (g.shell.prefix_nonnegative _ (le_refl _) (le_of_lt g.shell.Lsmall_lt_Lstar)))
-          (Nat.le_succ (g.shell.k - 1))
-          (g.shell.seed : EuclideanSpace ℂ
-            (Fin (2 * (g.shell.n + 1) + 1)))
-      simpa [inheritedSelectedEnergy, z] using hpred0
-  have hC2 :=
-    canonicalParityCompressedC2_proved g.shell.p (g.shell.k + 1)
-  have hdiff :
-      HasDerivAt (inheritedSelectedEnergy g)
-        (deriv (inheritedSelectedEnergy g) g.shell.Lstar)
-        g.shell.Lstar :=
-    (hC2 g.shell.Lstar
-      (lt_trans g.shell.Lsmall_pos g.shell.Lsmall_lt_Lstar)).differentiableAt.hasDerivAt
+    intro L hLo hHi
+    have hLpos : 0 < L :=
+      lt_of_lt_of_le
+        (lt_trans g.shell.Lsmall_pos g.shell.Lsmall_lt_Lstar) hLo
+    have hbottom :
+        0 ≤ parityRayleighBottom g.shell.p L (g.shell.n + 1) := by
+      simpa [paritySuccessorGround] using hrightGround L hLo hHi
+    have hq :=
+      parityRayleighBottom_mul_norm_sq_le
+        g.shell.p L (g.shell.n + 1) g.shell.seed
+    have hseed :
+        0 ≤ Complex.re
+          (inner ℂ
+            (parityCompressedCanonical g.shell.p L
+              (g.shell.n + 1) g.shell.seed)
+            g.shell.seed) :=
+      le_trans
+        (mul_nonneg hbottom (sq_nonneg ‖g.shell.seed‖))
+        hq
+    rw [re_inner_parityCompressedCanonical_self] at hseed
+    have htransport :=
+      re_inner_canonicalSourceMatrix_euclideanCenteredZeroExtend
+        hLpos (Nat.succ_le_succ g.shell.n_le_k)
+        (g.shell.seed : EuclideanSpace ℂ
+          (Fin (2 * (g.shell.n + 1) + 1)))
+    rw [← htransport] at hseed
+    simpa [inheritedSelectedEnergy, z, parityPlateauExtend] using hseed
   have hzero : inheritedSelectedEnergy g g.shell.Lstar = 0 := by
     simp [inheritedSelectedEnergy, z, hzker]
+  have hIoo :
+      Ioo
+        (max g.shell.Lsmall (g.shell.Lstar - δ))
+        (g.shell.Lstar + δ) ∈ 𝓝 g.shell.Lstar := by
+    apply Ioo_mem_nhds
+    · simp
+      constructor
+      · exact g.shell.Lsmall_lt_Lstar
+      · linarith
+    · linarith
   have hmin :
       IsLocalMin (inheritedSelectedEnergy g) g.shell.Lstar := by
-    rcases hright with ⟨δ,hδ,hright⟩
-    refine ⟨Ioo (max g.shell.Lsmall (g.shell.Lstar - δ))
-      (g.shell.Lstar + δ), ?_, ?_⟩
-    · exact Ioo_mem_nhds (by simp; linarith) (by linarith)
-    · intro L hL
-      rw [hzero]
-      by_cases h : L ≤ g.shell.Lstar
-      · exact hleft L (by simpa using hL.1) h
-      · exact hright L (le_of_not_ge h) (by simpa using hL.2)
-  exact (hmin.deriv_eq_zero hdiff.differentiableAt)
+    filter_upwards [hIoo] with L hL
+    rw [hzero]
+    by_cases h : L ≤ g.shell.Lstar
+    · have hsmall : g.shell.Lsmall ≤ L :=
+        le_trans (le_max_left _ _) (le_of_lt hL.1)
+      exact hleft L hsmall h
+    · exact hright L (le_of_lt (lt_of_not_ge h)) hL.2
+  exact hmin.deriv_eq_zero
 
 end Zeta23.CCM
 

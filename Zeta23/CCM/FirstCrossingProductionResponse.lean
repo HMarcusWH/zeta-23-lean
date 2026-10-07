@@ -441,14 +441,22 @@ theorem existsUnique_canonicalStationaryEvenResponse
       omega
   have hb : -b ∈ E.range := by
     rw [hrange_eq]
-    exact LinearMap.mem_ker.mpr (by simpa [phi,b] using map_neg hzb)
+    apply LinearMap.mem_ker.mpr
+    change inner ℂ z (-b) = 0
+    rw [inner_neg_right, hzb, neg_zero]
   obtain ⟨w0, hw0⟩ := hb
   let w := w0 - (inner ℂ z w0) • z
   have hperp : inner ℂ z w = 0 := by
     dsimp [w]
     rw [inner_sub_right, inner_smul_right]
-    have hzz : inner ℂ z z = 1 := by
-      rw [inner_self_eq_norm_sq_to_K, hznorm]
+    have hznormAmbient :
+        ‖(z : EuclideanSpace ℂ (Fin (2 * K + 1)))‖ = 1 := by
+      simpa using hznorm
+    have hzz :
+        inner ℂ
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1))) = 1 := by
+      rw [inner_self_eq_norm_sq_to_K, hznormAmbient]
       norm_num
     rw [hzz]
     ring

@@ -767,7 +767,9 @@ theorem stationarySchurBlock_response_deriv
   let EvalC :
       (W →L[ℂ] W) →L[ℂ] W →L[ℂ] W :=
     (ContinuousLinearMap.apply ℂ W).flip
-  let EvalR := EvalC.bilinearRestrictScalars ℝ
+  let EvalR :
+      (W →L[ℂ] W) →L[ℝ] W →L[ℝ] W :=
+    ContinuousLinearMap.bilinearRestrictScalars ℝ EvalC
   have hCev :=
     eventually_stationarySchurBlock_isInvertible
       (F := F) (z := z) (x := x) hF hC
@@ -1280,10 +1282,7 @@ theorem eventually_stationarySchurBlock_nonnegative
   have hdist :
       ‖stationarySchurBlock F z s -
           stationarySchurBlock F z x‖ < c / 2 := by
-    change
-      ‖stationarySchurBlock F z s -
-          stationarySchurBlock F z x‖ < c / 2 at hs
-    exact hs
+    simpa [Metric.mem_ball, dist_eq_norm] using hs
   intro w
   by_cases hw : w = 0
   · simp [hw]
