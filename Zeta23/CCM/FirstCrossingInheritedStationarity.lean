@@ -251,9 +251,10 @@ theorem GeneratedGlobalFirstCrossing.inheritedContactFirstJetRestriction_eq_zero
     (g : GeneratedGlobalFirstCrossing)
     (hinh : g.shell.n < g.shell.k) :
     inheritedContactFirstJetRestriction g = 0 := by
-  apply
+  refine
     (inner_map_self_eq_zero
-      (inheritedContactFirstJetRestriction g)).mp
+      (V := inheritedContactKernelSubspace g)
+      (inheritedContactFirstJetRestriction g)).mp ?_
   intro x
   change
     inner ℂ
