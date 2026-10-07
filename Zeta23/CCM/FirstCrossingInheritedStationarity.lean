@@ -140,10 +140,9 @@ theorem GeneratedGlobalFirstCrossing.inheritedContactKernel_firstJet_re_zero
         (max g.shell.Lsmall (g.shell.Lstar - δ))
         (g.shell.Lstar + δ) ∈ 𝓝 g.shell.Lstar := by
     apply Ioo_mem_nhds
-    · simp
-      constructor
-      · exact g.shell.Lsmall_lt_Lstar
-      · linarith
+    · exact
+        max_lt g.shell.Lsmall_lt_Lstar
+          (sub_lt_self _ hδ)
     · linarith
   have hmin :
       IsLocalMin (inheritedContactKernelEnergy g x) g.shell.Lstar := by
@@ -346,7 +345,14 @@ theorem GeneratedGlobalFirstCrossing.inheritedSeed_firstVariation_zero
         (g.shell.seed : EuclideanSpace ℂ
           (Fin (2 * (g.shell.n + 1) + 1)))
     rw [← htransport] at hseed
-    simpa [inheritedSelectedEnergy, z, parityPlateauExtend] using hseed
+    change
+      0 ≤ Complex.re
+        (inner ℂ
+          (parityCompressedCanonical g.shell.p L
+            (g.shell.k + 1) z)
+          z)
+    rw [re_inner_parityCompressedCanonical_self]
+    simpa [z, parityPlateauExtend] using hseed
   have hzero : inheritedSelectedEnergy g g.shell.Lstar = 0 := by
     simp [inheritedSelectedEnergy, z, hzker]
   have hIoo :
@@ -354,10 +360,9 @@ theorem GeneratedGlobalFirstCrossing.inheritedSeed_firstVariation_zero
         (max g.shell.Lsmall (g.shell.Lstar - δ))
         (g.shell.Lstar + δ) ∈ 𝓝 g.shell.Lstar := by
     apply Ioo_mem_nhds
-    · simp
-      constructor
-      · exact g.shell.Lsmall_lt_Lstar
-      · linarith
+    · exact
+        max_lt g.shell.Lsmall_lt_Lstar
+          (sub_lt_self _ hδ)
     · linarith
   have hmin :
       IsLocalMin (inheritedSelectedEnergy g) g.shell.Lstar := by
