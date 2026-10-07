@@ -3,7 +3,6 @@ import Zeta23.CCM.FirstCrossingSchurReduction
 import Zeta23.CCM.FirstCrossingProductionFirstVariation
 import Zeta23.CCM.CanonicalCompressedApertureC2
 import Mathlib.Analysis.InnerProductSpace.LinearMap
-import Mathlib.Analysis.InnerProductSpace.Subspace
 
 noncomputable section
 
@@ -252,21 +251,70 @@ theorem GeneratedGlobalFirstCrossing.inheritedContactFirstJetRestriction_eq_zero
     (g : GeneratedGlobalFirstCrossing)
     (hinh : g.shell.n < g.shell.k) :
     inheritedContactFirstJetRestriction g = 0 := by
-  refine
-    (inner_map_self_eq_zero
-      (V := inheritedContactKernelSubspace g)
-      (inheritedContactFirstJetRestriction g)).mp ?_
+  apply LinearMap.ext
   intro x
   change
+    (inheritedContactKernelSubspace g).orthogonalProjectionOnto
+      (canonicalParityApertureFirst g.shell.p g.shell.Lstar
+        (g.shell.k + 1)
+        (x : euclideanParityBoundaryFlatSubspace
+          g.shell.p (g.shell.k + 1))) = 0
+  rw [Submodule.orthogonalProjectionOnto_eq_zero_iff]
+  rw [Submodule.mem_orthogonal']
+  intro y hy
+  let yK : inheritedContactKernelSubspace g := ⟨y, hy⟩
+  let E₁ :
+      euclideanParityBoundaryFlatSubspace g.shell.p (g.shell.k + 1) →ₗ[ℂ]
+        euclideanParityBoundaryFlatSubspace g.shell.p (g.shell.k + 1) :=
+    canonicalParityApertureFirst
+      g.shell.p g.shell.Lstar (g.shell.k + 1)
+  have hquad :
+      ∀ u : inheritedContactKernelSubspace g,
+        inner ℂ
+          (E₁ (u : euclideanParityBoundaryFlatSubspace
+            g.shell.p (g.shell.k + 1)))
+          (u : euclideanParityBoundaryFlatSubspace
+            g.shell.p (g.shell.k + 1)) = 0 := by
+    intro u
+    simpa [E₁] using
+      g.inheritedContactKernel_firstJet_inner_zero hinh u
+  have hpp :
+      inner ℂ
+        (E₁ ((x : euclideanParityBoundaryFlatSubspace
+          g.shell.p (g.shell.k + 1)) + y))
+        ((x : euclideanParityBoundaryFlatSubspace
+          g.shell.p (g.shell.k + 1)) + y) = 0 := by
+    simpa [yK] using hquad (x + yK)
+  have hpm :
+      inner ℂ
+        (E₁ ((x : euclideanParityBoundaryFlatSubspace
+          g.shell.p (g.shell.k + 1)) - y))
+        ((x : euclideanParityBoundaryFlatSubspace
+          g.shell.p (g.shell.k + 1)) - y) = 0 := by
+    simpa [yK] using hquad (x - yK)
+  have hip :
+      inner ℂ
+        (E₁ ((x : euclideanParityBoundaryFlatSubspace
+          g.shell.p (g.shell.k + 1)) + Complex.I • y))
+        ((x : euclideanParityBoundaryFlatSubspace
+          g.shell.p (g.shell.k + 1)) + Complex.I • y) = 0 := by
+    simpa [yK] using hquad (x + Complex.I • yK)
+  have him :
+      inner ℂ
+        (E₁ ((x : euclideanParityBoundaryFlatSubspace
+          g.shell.p (g.shell.k + 1)) - Complex.I • y))
+        ((x : euclideanParityBoundaryFlatSubspace
+          g.shell.p (g.shell.k + 1)) - Complex.I • y) = 0 := by
+    simpa [yK] using hquad (x - Complex.I • yK)
+  change
     inner ℂ
-      ((inheritedContactKernelSubspace g).orthogonalProjectionOnto
-        (canonicalParityApertureFirst g.shell.p g.shell.Lstar
-          (g.shell.k + 1)
-          (x : euclideanParityBoundaryFlatSubspace
-            g.shell.p (g.shell.k + 1))))
-      x = 0
-  rw [Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right]
-  exact g.inheritedContactKernel_firstJet_inner_zero hinh x
+      (E₁ (x : euclideanParityBoundaryFlatSubspace
+        g.shell.p (g.shell.k + 1))) y = 0
+  rw [inner_map_polarization' E₁
+    (x : euclideanParityBoundaryFlatSubspace
+      g.shell.p (g.shell.k + 1)) y,
+    hpp, hpm, hip, him]
+  norm_num
 
 /-- Energy of the inherited seed transported to the selected successor. -/
 def inheritedSelectedEnergy

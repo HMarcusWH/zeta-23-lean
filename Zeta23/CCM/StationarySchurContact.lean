@@ -764,12 +764,10 @@ theorem stationarySchurBlock_response_deriv
         (deriv (fun s => stationarySchurResponse F z s) x) =
       deriv (fun s => stationarySchurCoupling F z s) x := by
   let W := stationarySchurComplement z
-  let EvalC :
-      (W →L[ℂ] W) →L[ℂ] W →L[ℂ] W :=
-    (ContinuousLinearMap.apply ℂ W).flip
-  let EvalR :
-      (W →L[ℂ] W) →L[ℝ] W →L[ℝ] W :=
-    ContinuousLinearMap.bilinearRestrictScalars ℝ EvalC
+  let RF : (V →L[ℂ] V) →L[ℝ] (V →L[ℝ] V) :=
+    ContinuousLinearMap.restrictScalarsL ℂ V V ℝ ℝ
+  let incl : W →L[ℝ] V := W.subtypeL.restrictScalars ℝ
+  let proj : V →L[ℝ] W := W.orthogonalProjectionOnto.restrictScalars ℝ
   have hCev :=
     eventually_stationarySchurBlock_isInvertible
       (F := F) (z := z) (x := x) hF hC
@@ -780,30 +778,55 @@ theorem stationarySchurBlock_response_deriv
         (fun s => stationarySchurCoupling F z s) := by
     filter_upwards [hCev] with s hs
     exact stationarySchurBlock_response hs
-  have hblock :=
-    contDiffAt_stationarySchurBlock (F := F) (z := z) (x := x) hF
-  have hblockD :
+  have hFReal :
+      ContDiffAt ℝ 2 (fun s => (F s).restrictScalars ℝ) x := by
+    have hRF : ContDiff ℝ 2 RF := ContinuousLinearMap.contDiff _
+    change ContDiffAt ℝ 2 (RF ∘ F) x
+    exact hRF.contDiffAt.comp x hF
+  have hFRealD :
       HasDerivAt
-        (fun s => stationarySchurBlock F z s)
-        (deriv (fun s => stationarySchurBlock F z s) x) x :=
-    (hblock.differentiableAt (by norm_num)).hasDerivAt
+        (fun s => (F s).restrictScalars ℝ)
+        (deriv (fun s => (F s).restrictScalars ℝ) x) x :=
+    (hFReal.differentiableAt (by norm_num)).hasDerivAt
   have hrespD :
       HasDerivAt (fun s => stationarySchurResponse F z s)
         (deriv (fun s => stationarySchurResponse F z s) x) x :=
     ((contDiffAt_stationarySchurResponse
       (F := F) (z := z) (x := x) hF hC).differentiableAt
         (by norm_num)).hasDerivAt
-  have hlhsRaw :
+  have hrespInclD :
+      HasDerivAt
+        (fun s => incl (stationarySchurResponse F z s))
+        (incl (deriv (fun s => stationarySchurResponse F z s) x)) x := by
+    have h := incl.hasFDerivAt.comp_hasDerivAt x hrespD
+    simpa [Function.comp_def] using h
+  have happlyRaw :
       HasDerivAt
         (fun s =>
-          EvalR (stationarySchurBlock F z s)
-            (stationarySchurResponse F z s))
-        (EvalR (stationarySchurBlock F z x)
-            (deriv (fun s => stationarySchurResponse F z s) x) +
-          EvalR (deriv (fun s => stationarySchurBlock F z s) x)
-            (stationarySchurResponse F z x)) x :=
-    EvalR.hasDerivAt_of_bilinear
-      (fun _ => hblockD) (fun _ => hrespD)
+          (F s).restrictScalars ℝ
+            (incl (stationarySchurResponse F z s)))
+        ((deriv (fun s => (F s).restrictScalars ℝ) x)
+            (incl (stationarySchurResponse F z x)) +
+          (F x).restrictScalars ℝ
+            (incl (deriv (fun s => stationarySchurResponse F z s) x))) x :=
+    hFRealD.clm_apply hrespInclD
+  have happly :
+      HasDerivAt
+        (fun s =>
+          (F s).restrictScalars ℝ
+            (incl (stationarySchurResponse F z s)))
+        ((F x).restrictScalars ℝ
+          (incl (deriv (fun s => stationarySchurResponse F z s) x))) x := by
+    simpa [stationarySchurResponse_eq_zero_of_kernel hz] using happlyRaw
+  have hproj :
+      HasDerivAt
+        (fun s =>
+          proj ((F s).restrictScalars ℝ
+            (incl (stationarySchurResponse F z s))))
+        (proj ((F x).restrictScalars ℝ
+          (incl (deriv (fun s => stationarySchurResponse F z s) x)))) x := by
+    have h := proj.hasFDerivAt.comp_hasDerivAt x happly
+    simpa [Function.comp_def] using h
   have hlhs :
       HasDerivAt
         (fun s =>
@@ -811,8 +834,7 @@ theorem stationarySchurBlock_response_deriv
             (stationarySchurResponse F z s))
         (stationarySchurBlock F z x
           (deriv (fun s => stationarySchurResponse F z s) x)) x := by
-    simpa [EvalR, EvalC, W,
-      stationarySchurResponse_eq_zero_of_kernel hz] using hlhsRaw
+    simpa [stationarySchurBlock, proj, incl, W] using hproj
   have hrhs :
       HasDerivAt (fun s => stationarySchurCoupling F z s)
         (deriv (fun s => stationarySchurCoupling F z s) x) x :=
