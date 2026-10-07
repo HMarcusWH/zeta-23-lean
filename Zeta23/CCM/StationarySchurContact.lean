@@ -770,8 +770,9 @@ theorem stationarySchurBlock_response_deriv
   let R :
       (W →L[ℂ] W) →L[ℝ] (W →L[ℝ] W) :=
     Rₗ.mkContinuous 1 (by
-      intro T
-      change ‖T.restrictScalars ℝ‖ ≤ 1 * ‖T‖
+      intro (T : W →L[ℂ] W)
+      change
+        ‖ContinuousLinearMap.restrictScalars ℝ T‖ ≤ 1 * ‖T‖
       rw [ContinuousLinearMap.norm_restrictScalars, one_mul])
   have hCev :=
     eventually_stationarySchurBlock_isInvertible
@@ -1299,8 +1300,13 @@ theorem eventually_stationarySchurBlock_nonnegative
   have hdist :
       ‖stationarySchurBlock F z s -
           stationarySchurBlock F z x‖ < c / 2 := by
-    rw [dist_eq_norm_sub] at hdist'
-    exact hdist'
+    calc
+      ‖stationarySchurBlock F z s -
+          stationarySchurBlock F z x‖ =
+          dist (stationarySchurBlock F z s)
+            (stationarySchurBlock F z x) :=
+        (dist_eq_norm_sub _ _).symm
+      _ < c / 2 := hdist'
   intro w
   by_cases hw : w = 0
   · simp [hw]

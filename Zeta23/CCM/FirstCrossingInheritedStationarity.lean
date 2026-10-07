@@ -235,8 +235,11 @@ noncomputable def inheritedContactFirstJetRestriction
     euclideanParityBoundaryFlatSubspace g.shell.p (g.shell.k + 1)
   let K : Submodule ℂ V :=
     inheritedContactKernelSubspace g
+  let Pclm : V →L[ℂ] K :=
+    Submodule.orthogonalProjectionOnto
+      (𝕜 := ℂ) (E := V) K
   let P : V →ₗ[ℂ] K :=
-    (K.orthogonalProjectionOnto : V →ₗ[ℂ] K)
+    Pclm.toLinearMap
   let E₁ : V →ₗ[ℂ] V :=
     canonicalParityApertureFirst
       g.shell.p g.shell.Lstar (g.shell.k + 1)
