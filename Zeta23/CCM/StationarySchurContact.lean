@@ -1,5 +1,6 @@
 import Mathlib.Analysis.Calculus.Deriv.Mul
 import Mathlib.Analysis.Calculus.DerivativeTest
+import Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas
 import Mathlib.Analysis.Calculus.ContDiff.Operations
 import Mathlib.Analysis.Normed.Module.FiniteDimension
 import Mathlib.Analysis.InnerProductSpace.Symmetric
@@ -909,12 +910,19 @@ theorem stationarySchurScalar_secondDerivative_eq_pair
       eventually_stationarySchurScalar_eq_envelope hF hFsym hC
   have ha : ContDiffAt ℝ 2 a x := by
     have hFz := contDiffAt_complexCLM_apply_const_real hF z
-    have hi := hFz.inner ℂ (contDiffAt_const : ContDiffAt ℝ 2 (fun _ : ℝ => z) x)
-    simpa [a] using Complex.reCLM.contDiff.contDiffAt.comp x hi
+    have hi :=
+      hFz.inner ℂ
+        (contDiffAt_const : ContDiffAt ℝ 2 (fun _ : ℝ => z) x)
+    change
+      ContDiffAt ℝ 2
+        (Complex.reCLM ∘ fun s => inner ℂ (F s z) z) x
+    exact Complex.reCLM.contDiff.contDiffAt.comp x hi
   have hb : ContDiffAt ℝ 2 b x := by
-    simpa [b] using contDiffAt_stationarySchurCoupling hF
+    simpa [b] using
+      contDiffAt_stationarySchurCoupling (F := F) (z := z) (x := x) hF
   have hr : ContDiffAt ℝ 2 r x := by
-    simpa [r] using contDiffAt_stationarySchurResponse hF hC
+    simpa [r] using
+      contDiffAt_stationarySchurResponse (F := F) (z := z) (x := x) hF hC
   have hbx : b x = 0 := by
     simpa [b] using stationarySchurCoupling_eq_zero_of_kernel hz
   have hrx : r x = 0 := by
@@ -945,18 +953,19 @@ theorem stationarySchurScalar_secondDerivative_eq_pair
           inner ℂ ((deriv r x : stationarySchurComplement z) : V)
             ((deriv F x) z) := by
       exact
-        (stationarySchurComplement z)
-          .inner_orthogonalProjectionOnto_eq_of_mem_left
-            (deriv r x) ((deriv F x) z)
+        (stationarySchurComplement z).inner_orthogonalProjectionOnto_eq_of_mem_left
+          (deriv r x) ((deriv F x) z)
     rw [hp, hrder, inner_neg_left, Complex.neg_re]
-    rw [hsymd w z]
+    rw [← hsymd w z]
   have ha2 :
       deriv (deriv a) x =
         Complex.re (inner ℂ ((deriv (deriv F) x) z) z) := by
     simpa [a] using stationaryFixedEnergy_secondDerivative hF
-  rw [← Filter.EventuallyEq.deriv_eq
-      (Filter.EventuallyEq.deriv_eq heq)]
-  rw [henv, ha2, hpair]
+  have heq2 :
+      deriv (deriv (fun s => stationarySchurScalar F z s)) x =
+        deriv (deriv (stationarySchurEnvelope a b r)) x := by
+    simpa [iteratedDeriv_succ] using heq.iteratedDeriv_eq 2
+  rw [heq2, henv, ha2, hpair]
   ring
 
 
