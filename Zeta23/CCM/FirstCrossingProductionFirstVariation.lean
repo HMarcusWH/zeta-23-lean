@@ -603,20 +603,21 @@ theorem productionContactFirstVariation_unitPhase
           (z : EuclideanSpace ℂ (Fin (2 * K + 1))) := by
     rw [map_smul]
     simp only [Submodule.coe_smul]
-    rw [inner_smul_left, inner_smul_right]
+    let A : EuclideanSpace ℂ (Fin (2 * K + 1)) :=
+      (((productionParityFirstJetCLM .even K L) z :
+          euclideanParityBoundaryFlatSubspace .even K) :
+        EuclideanSpace ℂ (Fin (2 * K + 1)))
+    let Z : EuclideanSpace ℂ (Fin (2 * K + 1)) :=
+      (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+    change inner ℂ (u • A) (u • Z) = inner ℂ A Z
     calc
-      u * (star u *
-          inner ℂ
-            ((((productionParityFirstJetCLM .even K L) z :
-                euclideanParityBoundaryFlatSubspace .even K) :
-              EuclideanSpace ℂ (Fin (2 * K + 1))))
-            (z : EuclideanSpace ℂ (Fin (2 * K + 1)))) =
-          (star u * u) *
-            inner ℂ
-              ((((productionParityFirstJetCLM .even K L) z :
-                  euclideanParityBoundaryFlatSubspace .even K) :
-                EuclideanSpace ℂ (Fin (2 * K + 1))))
-              (z : EuclideanSpace ℂ (Fin (2 * K + 1))) := by
+      inner ℂ (u • A) (u • Z) =
+          star u * inner ℂ A (u • Z) :=
+        inner_smul_left (𝕜 := ℂ) A (u • Z)
+      _ = star u * (u * inner ℂ A Z) := by
+        congr 1
+        exact inner_smul_right (𝕜 := ℂ) A Z
+      _ = (star u * u) * inner ℂ A Z := by
         ring
       _ = inner ℂ
             ((((productionParityFirstJetCLM .even K L) z :
