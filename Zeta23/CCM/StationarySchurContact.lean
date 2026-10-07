@@ -1172,10 +1172,13 @@ theorem stationarySchurBlock_exists_pos_coercivity
       simpa [T, Tc] using hamb
     have hnormpos : 0 < ‖v‖ ^ 2 := by positivity
     have hlamnonneg : 0 ≤ lam := by
-      have hvq' : 0 ≤ lam * ‖v‖ ^ 2 := by
-        rw [hveig, inner_smul_left] at hvq
-        simpa [inner_self_eq_norm_sq] using hvq
-      nlinarith
+      apply eigenvalue_nonneg_of_nonneg hlameig
+      intro q
+      rw [inner_re_symm]
+      have hamb := hnonneg (q : V)
+      rw [← stationarySchurBlock_inner
+        (F := F) (z := z) (s := x) q q] at hamb
+      simpa [T, Tc] using hamb
     have hinj :=
       stationarySchurBlock_injective_of_kernel_line
         (F := F) (z := z) (x := x) hznorm hFsym hz hker
@@ -1183,7 +1186,9 @@ theorem stationarySchurBlock_exists_pos_coercivity
       intro hlam0
       have hv0 : stationarySchurBlock F z x v = 0 := by
         change T v = 0
-        rw [hveig, hlam0, zero_smul]
+        calc
+          T v = (lam : ℂ) • v := hveig
+          _ = 0 := by simp [hlam0]
       have hzv :
           stationarySchurBlock F z x v =
             stationarySchurBlock F z x 0 := by simpa using hv0
