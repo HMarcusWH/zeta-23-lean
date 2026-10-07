@@ -440,7 +440,11 @@ theorem contDiffAt_stationarySchurResponse
           (ContinuousLinearMap.inverse
             (stationarySchurBlock F z s)).restrictScalars ℝ) x := by
     have hR : ContDiff ℝ 2 R := ContinuousLinearMap.contDiff _
-    simpa [R] using hR.contDiffAt.comp x hinv
+    change
+      ContDiffAt ℝ 2
+        (R ∘ fun s =>
+          ContinuousLinearMap.inverse (stationarySchurBlock F z s)) x
+    exact hR.contDiffAt.comp x hinv
   simpa [stationarySchurResponse] using
     hinvReal.clm_apply hcoupling
 
@@ -451,7 +455,9 @@ theorem contDiffAt_stationarySchurVector
     ContDiffAt ℝ 2 (fun s => stationarySchurVector F z s) x := by
   let W := stationarySchurComplement z
   let incl : W →L[ℝ] V := W.subtypeL.restrictScalars ℝ
-  have hr := contDiffAt_stationarySchurResponse hF hC
+  have hr :=
+    contDiffAt_stationarySchurResponse
+      (F := F) (z := z) (x := x) hF hC
   have hri :
       ContDiffAt ℝ 2
         (fun s => incl (stationarySchurResponse F z s)) x := by
@@ -467,7 +473,9 @@ theorem contDiffAt_stationarySchurScalar
     (hF : ContDiffAt ℝ 2 F x)
     (hC : (stationarySchurBlock F z x).IsInvertible) :
     ContDiffAt ℝ 2 (fun s => stationarySchurScalar F z s) x := by
-  have hv := contDiffAt_stationarySchurVector hF hC
+  have hv :=
+    contDiffAt_stationarySchurVector
+      (F := F) (z := z) (x := x) hF hC
   let R : (V →L[ℂ] V) →L[ℝ] (V →L[ℝ] V) :=
     ContinuousLinearMap.restrictScalarsL ℂ V V ℝ ℝ
   have hFR :
