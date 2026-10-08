@@ -271,6 +271,7 @@ theorem GeneratedGlobalFirstCrossing.inheritedContactFirstJetRestriction_eq_zero
   apply LinearMap.ext
   intro x
   rw [inheritedContactFirstJetRestriction_apply]
+  simp only [LinearMap.zero_apply]
   rw [Submodule.orthogonalProjectionOnto_eq_zero_iff]
   rw [Submodule.mem_orthogonal']
   intro y hy
