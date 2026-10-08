@@ -248,26 +248,57 @@ theorem productionContactRemainderValue_physical_decomposition
   rw [productionArithmeticRealValue_smul_of_admissible hn]
   rw [productionArithmeticRealValue_smul_of_admissible hd.2.2]
 
-/-- Euler-corrected production balance for arbitrary fixed legal even z,w. -/
-theorem canonicalSecondPairing_euler_eq_productionSaturationGap
+/-- This is the strongest unconditional value calculation available from the
+admitted physical-test decomposition.  No differentiation under the varying
+aperture or through the prime staircase is asserted. -/
+theorem productionContactSaturationGap_eq_physical_second_mixed
     {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 2 ≤ K)
     (z w : euclideanEvenBoundaryFlatSubspace K) :
     productionContactSaturationGap L K z w =
-      canonicalContactSecondPairing L K z w +
-        2 * productionContactFirstVariation .even L K z / L := by
-  unfold productionContactSaturationGap canonicalContactSecondPairing
-  have hadm := production_derivative_tests_admissible hL K z w
-  have hfirst := canonicalEven_firstVariation_eq_inner hL K z
-  have hsecond := canonicalEven_fixedSecond_eq_inner hL K z
-  rw [productionContactRemainderSource_simplified hL.ne' K z w]
-  -- The weighted physical explicit-formula identities now apply termwise on
-  -- the proved admissible span; source second-derivative transport supplies
-  -- the exact normal-source subtraction.
-  rw [productionArithmeticRealValue_add_of_admissible hadm.1
-      (hadm.2.1.add hadm.2.2)]
-  rw [productionStrictEvenSourceValue_eq_pairing hL K (by omega) z]
+      productionArithmeticRealValue L
+        (productionSecondDerivativePhysicalTest L K z) +
+      2 * productionArithmeticRealValue L
+        (productionMixedDerivativePhysicalTest L K z w) := by
+  unfold productionContactSaturationGap
+  rw [productionContactRemainderValue_physical_decomposition hL K hK z w]
+  rw [productionContactNormalPhysicalValue_eq_sourceValue
+    hL K (by omega : 1 ≤ K) z]
   ring
 
+/-- F04 arithmetic derivative transport is a separate, presently OPEN
+mathematical obligation.  Fixed-L weighted admissibility is not enough to
+differentiate the L-dependent complete physical functional.  This proposition
+is an explicit hypothesis, NOT an axiom and NOT an established theorem. -/
+structure ProductionContactF04DerivativeAuthority
+    (L : ℝ) (K : ℕ) : Prop where
+  first : ∀ z : euclideanEvenBoundaryFlatSubspace K,
+    productionContactFirstVariation .even L K z =
+      productionArithmeticRealValue L
+        (productionFirstDerivativePhysicalTest L K z)
+  fixedSecondEuler : ∀ z : euclideanEvenBoundaryFlatSubspace K,
+    productionContactFixedSecondVariation .even L K z +
+      2 * productionContactFirstVariation .even L K z / L =
+        productionArithmeticRealValue L
+          (productionSecondDerivativePhysicalTest L K z)
+  mixed : ∀ z w : euclideanEvenBoundaryFlatSubspace K,
+    Complex.re (inner ℂ z (canonicalEvenApertureFirst L K w)) =
+      productionArithmeticRealValue L
+        (productionMixedDerivativePhysicalTest L K z w)
+
+/-- The Euler-corrected balance is a genuine implication of F04 derivative
+transport plus the unconditional value decomposition, not a premise-free
+arithmetic identity. -/
+theorem canonicalSecondPairing_euler_eq_productionSaturationGap
+    {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 2 ≤ K)
+    (z w : euclideanEvenBoundaryFlatSubspace K)
+    (hF04 : ProductionContactF04DerivativeAuthority L K) :
+    productionContactSaturationGap L K z w =
+      canonicalContactSecondPairing L K z w +
+        2 * productionContactFirstVariation .even L K z / L := by
+  rw [productionContactSaturationGap_eq_physical_second_mixed hL K hK z w,
+    ← hF04.fixedSecondEuler z, ← hF04.mixed z w]
+  unfold canonicalContactSecondPairing
+  ring
 
 /-! ## F04 explicit physical derivative identities -/
 
@@ -409,60 +440,35 @@ theorem productionContactSaturationGap_eq_zeroResponse_add_two_mixedPhysical
 Re <z,E1 w> is the admitted complete physical evaluation of kM. -/
 theorem canonicalMixedFirstVariation_eq_physical
     {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 2 ≤ K)
-    (z w : euclideanEvenBoundaryFlatSubspace K) :
+    (z w : euclideanEvenBoundaryFlatSubspace K)
+    (hF04 : ProductionContactF04DerivativeAuthority L K) :
     Complex.re (inner ℂ z (canonicalEvenApertureFirst L K w)) =
       productionArithmeticRealValue L
         (productionMixedDerivativePhysicalTest L K z w) := by
-  have hw :=
-    canonicalSecondPairing_euler_eq_productionSaturationGap
-      hL K hK z w
-  have h0 :=
-    canonicalSecondPairing_euler_eq_productionSaturationGap
-      hL K hK z (0 : euclideanEvenBoundaryFlatSubspace K)
-  have hgap :=
-    productionContactSaturationGap_eq_zeroResponse_add_two_mixedPhysical
-      hL K hK z w
-  simp [canonicalContactSecondPairing, canonicalEvenApertureFirst] at h0
-  unfold canonicalContactSecondPairing at hw
-  linarith
+  exact hF04.mixed z w
 
 /-- Explicit F04 first identity:
 J1 is the admitted complete physical evaluation of k1. -/
 theorem canonicalFirstVariation_eq_physical
     {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 2 ≤ K)
-    (z : euclideanEvenBoundaryFlatSubspace K) :
+    (z : euclideanEvenBoundaryFlatSubspace K)
+    (hF04 : ProductionContactF04DerivativeAuthority L K) :
     productionContactFirstVariation .even L K z =
       productionArithmeticRealValue L
         (productionFirstDerivativePhysicalTest L K z) := by
-  have hm :=
-    canonicalMixedFirstVariation_eq_physical hL K hK z z
-  rw [productionMixedDerivativePhysicalTest_self_eq_firstDerivativePhysicalTest]
-    at hm
-  rw [canonicalEven_firstVariation_eq_inner hL K z]
-  calc
-    (inner ℂ ((canonicalEvenApertureFirst L K) z) z).re =
-        (inner ℂ z ((canonicalEvenApertureFirst L K) z)).re :=
-      inner_re_symm _ _
-    _ = productionArithmeticRealValue L
-          (productionFirstDerivativePhysicalTest L K z) := hm
+  exact hF04.first z
 
 /-- Explicit F04 Euler-corrected fixed-second identity:
 J2_fixed + 2 J1/L is the admitted complete physical evaluation of k2. -/
 theorem canonicalFixedSecondEuler_eq_physical
     {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 2 ≤ K)
-    (z : euclideanEvenBoundaryFlatSubspace K) :
+    (z : euclideanEvenBoundaryFlatSubspace K)
+    (hF04 : ProductionContactF04DerivativeAuthority L K) :
     productionContactFixedSecondVariation .even L K z +
         2 * productionContactFirstVariation .even L K z / L =
       productionArithmeticRealValue L
         (productionSecondDerivativePhysicalTest L K z) := by
-  have hpair :=
-    canonicalSecondPairing_euler_eq_productionSaturationGap
-      hL K hK z (0 : euclideanEvenBoundaryFlatSubspace K)
-  have hphysical :=
-    productionContactSaturationGap_zeroResponse_eq_secondPhysical
-      hL K hK z
-  simp [canonicalContactSecondPairing, canonicalEvenApertureFirst] at hpair
-  linarith
+  exact hF04.fixedSecondEuler z
 
 /-- Stationary specialization: Euler correction disappears. -/
 theorem canonicalStationaryCurvature_eq_productionSaturationGap
@@ -473,7 +479,8 @@ theorem canonicalStationaryCurvature_eq_productionSaturationGap
     (hzero : evenCompressedCanonical L K z = 0)
     (hodd : 0 < parityRayleighBottom .odd L K)
     (hstationary :
-      productionContactFirstVariation .even L K z = 0) :
+      productionContactFirstVariation .even L K z = 0)
+    (hF04 : ProductionContactF04DerivativeAuthority L K) :
     canonicalOptimizedContactCurvature
         hL K hK z hzne hznorm hzero hodd hstationary =
       productionContactSaturationGap L K z
@@ -483,7 +490,7 @@ theorem canonicalStationaryCurvature_eq_productionSaturationGap
     canonicalSecondPairing_euler_eq_productionSaturationGap
       hL K hK z
         (canonicalStationaryEvenResponse
-          hL K hK z hzne hznorm hzero hodd hstationary)
+          hL K hK z hzne hznorm hzero hodd hstationary) hF04
   simpa [canonicalOptimizedContactCurvature, hstationary] using h.symm
 
 end Zeta23.CCM
