@@ -586,12 +586,28 @@ theorem canonicalEven_firstVariation_smul
       ‖a‖ ^ 2 * productionContactFirstVariation .even L K z := by
   rw [canonicalEven_firstVariation_eq_inner hL K (a • z),
     canonicalEven_firstVariation_eq_inner hL K z]
-  rw [map_smul, inner_smul_left, inner_smul_right]
+  have hcomplex :
+      inner ℂ (canonicalEvenApertureFirst L K (a • z)) (a • z) =
+        (star a * a) *
+          inner ℂ (canonicalEvenApertureFirst L K z) z := by
+    rw [map_smul]
+    calc
+      inner ℂ (a • canonicalEvenApertureFirst L K z) (a • z) =
+          star a * inner ℂ (canonicalEvenApertureFirst L K z) (a • z) :=
+        inner_smul_left (𝕜 := ℂ)
+          (canonicalEvenApertureFirst L K z) (a • z) a
+      _ = star a * (a * inner ℂ (canonicalEvenApertureFirst L K z) z) := by
+        congr 1
+        exact inner_smul_right (𝕜 := ℂ)
+          (canonicalEvenApertureFirst L K z) z a
+      _ = (star a * a) *
+          inner ℂ (canonicalEvenApertureFirst L K z) z := by
+        ring
   have hn : star a * a = ((‖a‖ ^ 2 : ℝ) : ℂ) := by
     change conj a * a = ((‖a‖ ^ 2 : ℝ) : ℂ)
     rw [← Complex.normSq_eq_conj_mul_self, Complex.normSq_eq_norm_sq]
     rfl
-  rw [← mul_assoc, hn]
+  rw [hcomplex, hn]
   simp
 
 /-- Simultaneous unit-phase rotation preserves the seam-safe first variation. -/
