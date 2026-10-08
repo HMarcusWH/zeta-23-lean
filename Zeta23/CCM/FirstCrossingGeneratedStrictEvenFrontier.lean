@@ -178,10 +178,16 @@ theorem GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
       (c.generated.shell.k+1) c.z = 0 := by
   have hseed :=
     c.generated.inheritedSeed_firstVariation_zero hinh
-  let y : euclideanEvenBoundaryFlatSubspace (c.generated.shell.k + 1) :=
-    c.selected_even ▸
-      parityPlateauExtend c.generated.shell.p c.generated.shell.n_le_k
-        c.generated.shell.seed
+  have hcarrier :
+      euclideanParityBoundaryFlatSubspace c.generated.shell.p
+          (c.generated.shell.k + 1) =
+        euclideanEvenBoundaryFlatSubspace (c.generated.shell.k + 1) := by
+    rw [c.selected_even]
+    rfl
+  let y : euclideanEvenBoundaryFlatSubspace (c.generated.shell.k + 1) := by
+    rw [← hcarrier]
+    exact parityPlateauExtend c.generated.shell.p c.generated.shell.n_le_k
+      c.generated.shell.seed
   have hyker :
       evenCompressedCanonical c.generated.shell.Lstar
         (c.generated.shell.k + 1) y = 0 := by
@@ -381,10 +387,14 @@ theorem canonicalEvenCompressedFamily_deriv
     {L : ℝ} (hL : 0 < L) (K : ℕ) :
     deriv (canonicalEvenCompressedFamilyCLM K) L =
       canonicalEvenApertureFirstCLM L K := by
+  have hderiv :
+      deriv (fun s : ℝ => parityCompressedCanonicalCLM .even s K) L =
+        productionParityFirstJetCLM .even K L :=
+    (hasDerivAt_parityCompressedCanonicalCLM_pos .even K hL).deriv
   change
     deriv (fun s : ℝ => parityCompressedCanonicalCLM .even s K) L =
       productionParityFirstJetCLM .even K L
-  exact (hasDerivAt_parityCompressedCanonicalCLM_pos .even K hL).deriv
+  exact hderiv
 
 /-- The second derivative of the actual compressed even family is the F01
 second jet. -/
@@ -398,9 +408,13 @@ theorem canonicalEvenCompressedFamily_secondDeriv
     filter_upwards [Ioi_mem_nhds hL] with s hs
     exact canonicalEvenCompressedFamily_deriv hs K
   rw [Filter.EventuallyEq.deriv_eq heq]
+  have hderiv :
+      deriv (fun s : ℝ => productionParityFirstJetCLM .even K s) L =
+        productionParitySecondJetCLM .even K L :=
+    (hasDerivAt_productionParityFirstJetCLM_pos .even K hL).deriv
   change deriv (fun s : ℝ => productionParityFirstJetCLM .even K s) L =
     productionParitySecondJetCLM .even K L
-  exact (hasDerivAt_productionParityFirstJetCLM_pos .even K hL).deriv
+  exact hderiv
 
 /-- The selected strict-even successor is negative arbitrarily close on the
 right in the actual fixed cutoff carrier. -/
@@ -424,9 +438,17 @@ theorem GeneratedStrictEvenContact.even_negative_direction_right
   obtain ⟨L, hLlo, hLhi, hbottom⟩ := hcross ε hε
   have hk : 1 ≤ c.generated.shell.k :=
     le_trans c.generated.shell.one_le_n c.generated.shell.n_le_k
-  obtain ⟨v, hvne, hveig⟩ :=
+  obtain ⟨v₀, hv₀ne, hv₀eig⟩ :=
     exists_eigenmode_at_parityRayleighBottom_succ
       .even L c.generated.shell.k hk
+  let v : euclideanEvenBoundaryFlatSubspace (c.generated.shell.k + 1) := v₀
+  have hvne : v ≠ 0 := by
+    simpa [v] using hv₀ne
+  have hveig :
+      parityCompressedCanonical .even L (c.generated.shell.k + 1) v =
+        (parityRayleighBottom .even L
+          (c.generated.shell.k + 1) : ℂ) • v := by
+    simpa [v] using hv₀eig
   have hnorm : 0 < ‖v‖ ^ 2 := by positivity
   have hvneg :
       Complex.re
@@ -493,7 +515,12 @@ theorem GeneratedStrictEvenContact.even_nonnegative_left
           (parityCompressedCanonical .even L
             (c.generated.shell.k + 1) v) v) :=
     le_trans hleft hbound
-  simpa only [canonicalEvenCompressedFamilyCLM_apply_legacy] using hq
+  have hqEven :
+      0 ≤ Complex.re
+        (inner ℂ
+          (evenCompressedCanonical L (c.generated.shell.k + 1) v) v) := by
+    simpa [evenCompressedCanonical] using hq
+  simpa only [canonicalEvenCompressedFamilyCLM_apply_legacy] using hqEven
 
 /-- The generic arbitrary-complement Schur theorem specializes to the actual
 production family.  No zero-curvature premise is supplied. -/
@@ -529,7 +556,8 @@ theorem production_stationary_schur_curvature_eq_zero
       (evenResponseContactOperator_apply s K v).symm
   have hsym :
       ∀ᶠ s in 𝓝 L,
-        LinearMap.IsSymmetric (𝕜 := ℂ) (F s).toLinearMap := by
+        LinearMap.IsSymmetric (𝕜 := ℂ)
+          (E := euclideanEvenBoundaryFlatSubspace K) (F s).toLinearMap := by
     filter_upwards with s
     rw [hop s]
     exact evenResponseContactOperator_isSymmetric s K
