@@ -187,6 +187,7 @@ theorem GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
           (c.generated.shell.k + 1) =
         euclideanEvenBoundaryFlatSubspace (c.generated.shell.k + 1) := by
     rw [c.selected_even]
+    exact euclideanParityBoundaryFlatSubspace_even _
   have hymem :
       (yp : EuclideanSpace ℂ (Fin (2 * (c.generated.shell.k + 1) + 1))) ∈
         euclideanEvenBoundaryFlatSubspace (c.generated.shell.k + 1) := by
@@ -232,8 +233,8 @@ theorem GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
           (y : EuclideanSpace ℂ
             (Fin (2 * (c.generated.shell.k + 1) + 1))))) :
         EuclideanSpace ℂ (Fin (2 * (c.generated.shell.k + 1) + 1))) = 0
-    rw [← hcarrier, hyval]
-    exact hparAmbient
+    simpa only [c.selected_even, euclideanParityBoundaryFlatSubspace_even, hyval]
+      using hparAmbient
   obtain ⟨a, ha⟩ :=
     strictEven_zeroKernel_is_line c.Lstar_pos (c.generated.shell.k + 1)
       c.two_le_K c.z c.z_ne c.z_kernel c.odd_positive y hyker
@@ -258,18 +259,37 @@ theorem GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
       productionContactFixedEnergy .even s
           (c.generated.shell.k + 1) y =
         inheritedSelectedEnergy c.generated s := by
-    change
-      Complex.re
-        (inner ℂ
-          (parityCompressedCanonical .even s
-            (c.generated.shell.k + 1) y) y) =
-      Complex.re
-        (inner ℂ
-          (parityCompressedCanonical c.generated.shell.p s
-            (c.generated.shell.k + 1) yp) yp)
-    rw [re_inner_parityCompressedCanonical_self,
-      re_inner_parityCompressedCanonical_self]
-    simpa only [hyval]
+    have hnative :
+        productionContactFixedEnergy .even s
+            (c.generated.shell.k + 1) y =
+          Complex.re
+            (inner ℂ
+              ((canonicalSourceMatrix s
+                (c.generated.shell.k + 1)).toEuclideanLin
+                (y : EuclideanSpace ℂ
+                  (Fin (2 * (c.generated.shell.k + 1) + 1))))
+              (y : EuclideanSpace ℂ
+                (Fin (2 * (c.generated.shell.k + 1) + 1)))) := by
+      exact re_inner_parityCompressedCanonical_self .even s
+        (c.generated.shell.k + 1) y
+    have hselected :
+        inheritedSelectedEnergy c.generated s =
+          Complex.re
+            (inner ℂ
+              ((canonicalSourceMatrix s
+                (c.generated.shell.k + 1)).toEuclideanLin
+                (yp : EuclideanSpace ℂ
+                  (Fin (2 * (c.generated.shell.k + 1) + 1))))
+              (yp : EuclideanSpace ℂ
+                (Fin (2 * (c.generated.shell.k + 1) + 1)))) := by
+      change
+        Complex.re
+          (inner ℂ
+            (parityCompressedCanonical c.generated.shell.p s
+              (c.generated.shell.k + 1) yp) yp) = _
+      exact re_inner_parityCompressedCanonical_self
+        c.generated.shell.p s (c.generated.shell.k + 1) yp
+    rw [hnative, hselected, hyval]
   have hyfirst :
       productionContactFirstVariation .even c.generated.shell.Lstar
         (c.generated.shell.k + 1) y = 0 := by
@@ -456,14 +476,9 @@ theorem canonicalEvenCompressedFamily_deriv
     {L : ℝ} (hL : 0 < L) (K : ℕ) :
     deriv (canonicalEvenCompressedFamilyCLM K) L =
       canonicalEvenApertureFirstCLM L K := by
-  have hOp :
-      HasDerivAt (canonicalEvenCompressedFamilyCLM K)
-        (canonicalEvenApertureFirstCLM L K) L := by
-    change HasDerivAt
-      (fun s : ℝ => parityCompressedCanonicalCLM .even s K)
-      (productionParityFirstJetCLM .even K L) L
-    exact hasDerivAt_parityCompressedCanonicalCLM_pos .even K hL
-  exact hOp.deriv
+  change deriv (canonicalParityCompressedFamilyCLM .even K) L =
+    canonicalParityApertureFirstCLM .even L K
+  exact canonicalParityCompressedFamily_deriv .even hL K
 
 /-- The second derivative of the actual compressed even family is the F01
 second jet. -/
@@ -471,20 +486,9 @@ theorem canonicalEvenCompressedFamily_secondDeriv
     {L : ℝ} (hL : 0 < L) (K : ℕ) :
     deriv (deriv (canonicalEvenCompressedFamilyCLM K)) L =
       canonicalEvenApertureSecondCLM L K := by
-  have heq :
-      (fun s => deriv (canonicalEvenCompressedFamilyCLM K) s) =ᶠ[𝓝 L]
-        (canonicalEvenApertureFirstCLM · K) := by
-    filter_upwards [Ioi_mem_nhds hL] with s hs
-    exact canonicalEvenCompressedFamily_deriv hs K
-  rw [Filter.EventuallyEq.deriv_eq heq]
-  have hOp :
-      HasDerivAt (fun s : ℝ => canonicalEvenApertureFirstCLM s K)
-        (canonicalEvenApertureSecondCLM L K) L := by
-    change HasDerivAt
-      (fun s : ℝ => productionParityFirstJetCLM .even K s)
-      (productionParitySecondJetCLM .even K L) L
-    exact hasDerivAt_productionParityFirstJetCLM_pos .even K hL
-  exact hOp.deriv
+  change deriv (deriv (canonicalParityCompressedFamilyCLM .even K)) L =
+    canonicalParityApertureSecondCLM .even L K
+  exact canonicalParityCompressedFamily_secondDeriv .even hL K
 
 /-- The selected strict-even successor is negative arbitrarily close on the
 right in the actual fixed cutoff carrier. -/
@@ -546,8 +550,7 @@ theorem GeneratedStrictEvenContact.even_negative_direction_right
           ((canonicalSourceMatrix L (c.generated.shell.k + 1)).toEuclideanLin
             (v : EuclideanSpace ℂ
               (Fin (2 * (c.generated.shell.k + 1) + 1)))))
-        (v : EuclideanSpace ℂ
-          (Fin (2 * (c.generated.shell.k + 1) + 1)))) < 0
+        v) < 0
     rw [Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right]
     simpa only [hvval] using hxAmbientNeg
   exact ⟨L, hLlo, hLhi, v, hvneg⟩
@@ -569,18 +572,26 @@ theorem GeneratedStrictEvenContact.even_nonnegative_left
   have hbottom :=
     c.generated.selectedParity_prefix_nonnegative
       .even hsmall hstar
+  let x : euclideanParityBoundaryFlatSubspace .even
+      (c.generated.shell.k + 1) :=
+    ⟨(v : EuclideanSpace ℂ
+        (Fin (2 * (c.generated.shell.k + 1) + 1))), by
+      simpa only [euclideanParityBoundaryFlatSubspace_even] using v.property⟩
+  have hxval :
+      (x : EuclideanSpace ℂ (Fin (2 * (c.generated.shell.k + 1) + 1))) =
+        (v : EuclideanSpace ℂ (Fin (2 * (c.generated.shell.k + 1) + 1))) := rfl
   have hbound :=
     parityRayleighBottom_mul_norm_sq_le
-      .even L (c.generated.shell.k + 1) v
+      .even L (c.generated.shell.k + 1) x
   have hleft :
       0 ≤ parityRayleighBottom .even L
-          (c.generated.shell.k + 1) * ‖v‖ ^ 2 :=
-    mul_nonneg hbottom (sq_nonneg ‖v‖)
+          (c.generated.shell.k + 1) * ‖x‖ ^ 2 :=
+    mul_nonneg hbottom (sq_nonneg ‖x‖)
   have hq :
       0 ≤ Complex.re
         (inner ℂ
           (parityCompressedCanonical .even L
-            (c.generated.shell.k + 1) v) v) :=
+            (c.generated.shell.k + 1) x) x) :=
     le_trans hleft hbound
   have hqAmbient :
       0 ≤ Complex.re
@@ -591,7 +602,7 @@ theorem GeneratedStrictEvenContact.even_nonnegative_left
           (v : EuclideanSpace ℂ
             (Fin (2 * (c.generated.shell.k + 1) + 1)))) := by
     rw [re_inner_parityCompressedCanonical_self] at hq
-    exact hq
+    simpa only [hxval] using hq
   change 0 ≤ Complex.re
     (inner ℂ
       ((euclideanEvenBoundaryFlatSubspace
@@ -599,8 +610,7 @@ theorem GeneratedStrictEvenContact.even_nonnegative_left
         ((canonicalSourceMatrix L (c.generated.shell.k + 1)).toEuclideanLin
           (v : EuclideanSpace ℂ
             (Fin (2 * (c.generated.shell.k + 1) + 1)))))
-      (v : EuclideanSpace ℂ
-        (Fin (2 * (c.generated.shell.k + 1) + 1))))
+      v)
   rw [Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right]
   exact hqAmbient
 
