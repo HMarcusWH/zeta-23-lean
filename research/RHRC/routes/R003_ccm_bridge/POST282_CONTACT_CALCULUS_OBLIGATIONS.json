@@ -11,7 +11,7 @@
     {
       "id": "F02_WEIGHTED_TESTS",
       "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
-      "target": "Zeta23.CCM.productionContactDerivativeTests_full_admissible"
+      "target": "Zeta23.CCM.productionDerivativeWeightedTests_admissible"
     },
     {
       "id": "F03_REMAINDER_AUTHORITY",
@@ -20,8 +20,9 @@
     },
     {
       "id": "F04_PAIR_BALANCE",
-      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
-      "target": "Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap"
+      "status": "OPEN_DERIVATIVE_TRANSPORT",
+      "target": "Zeta23.CCM.ProductionContactF04DerivativeAuthority (not yet constructed); Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap is conditional on it",
+      "required_hypothesis": "ProductionContactF04DerivativeAuthority L K"
     },
     {
       "id": "F05_STATIONARY_CURVATURE",
@@ -36,7 +37,11 @@
     {
       "id": "F07_FRONTIER",
       "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
-      "target": "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier"
+      "target": "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier",
+      "depends_on": [
+        "F04_PAIR_BALANCE"
+      ],
+      "scope": "F07 geometric branch is a candidate; arithmetic saturation has an explicit OPEN F04 premise"
     },
     {
       "id": "N01_EXACT_INTERVAL_CODEC",
@@ -84,7 +89,7 @@
       "terminal": true
     }
   ],
-  "implementation_state": "ALL_PLANNED_SURFACES_IMPLEMENTED_CANDIDATE_PENDING_EXACT_HEAD_VALIDATION",
+  "implementation_state": "F01_F03_F05_F06_F07_CANDIDATES_WITH_F04_DERIVATIVE_TRANSPORT_OPEN_PENDING_EXACT_HEAD_VALIDATION",
   "candidate_claim_bindings": {
     "status": "OPEN_CANDIDATE_BINDINGS_IMPLEMENTED_PENDING_EXACT_HEAD_CI",
     "claims": [
