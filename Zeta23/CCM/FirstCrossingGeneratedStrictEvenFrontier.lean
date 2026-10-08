@@ -178,22 +178,39 @@ theorem GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
       (c.generated.shell.k+1) c.z = 0 := by
   have hseed :=
     c.generated.inheritedSeed_firstVariation_zero hinh
-  have hline :=
-    strictEven_zeroKernel_is_line c.Lstar_pos (c.generated.shell.k+1)
-      c.two_le_K c.z c.z_ne c.z_kernel c.odd_positive
-      (parityPlateauExtend c.generated.shell.p c.generated.shell.n_le_k
-        c.generated.shell.seed)
-      (by
-        simpa [c.selected_even] using
-          c.generated.shell.extended_kernel c.generated.shell.k
-            c.generated.shell.n_le_k c.generated.shell.k_le_N)
-  obtain ⟨a,ha⟩ := hline
+  let y : euclideanEvenBoundaryFlatSubspace (c.generated.shell.k + 1) :=
+    c.selected_even ▸
+      parityPlateauExtend c.generated.shell.p c.generated.shell.n_le_k
+        c.generated.shell.seed
+  have hyker :
+      evenCompressedCanonical c.generated.shell.Lstar
+        (c.generated.shell.k + 1) y = 0 := by
+    have h :=
+      c.generated.shell.extended_kernel c.generated.shell.k
+        c.generated.shell.n_le_k c.generated.shell.k_le_N
+    simpa [y, c.selected_even] using h
+  obtain ⟨a, ha⟩ :=
+    strictEven_zeroKernel_is_line c.Lstar_pos (c.generated.shell.k + 1)
+      c.two_le_K c.z c.z_ne c.z_kernel c.odd_positive y hyker
+  have hyne : y ≠ 0 := by
+    have h :=
+      parityPlateauExtend_ne_zero c.generated.shell.p c.generated.shell.n_le_k
+        c.generated.shell.seed c.generated.shell.seed_ne
+    simpa [y, c.selected_even] using h
   have ha0 : a ≠ 0 := by
     intro h
-    rw [h,zero_smul] at ha
-    exact parityPlateauExtend_ne_zero _ _ c.generated.shell.seed
-      c.generated.shell.seed_ne (by simpa [ha])
-  simpa [inheritedSelectedEnergy,ha,ha0] using hseed
+    rw [h, zero_smul] at ha
+    exact hyne ha.symm
+  have hyfirst :
+      productionContactFirstVariation .even c.generated.shell.Lstar
+        (c.generated.shell.k + 1) y = 0 := by
+    simpa [productionContactFirstVariation, productionContactFixedEnergy,
+      inheritedSelectedEnergy, y, c.selected_even] using hseed
+  rw [← ha, canonicalEven_firstVariation_smul
+    c.Lstar_pos (c.generated.shell.k + 1) a c.z] at hyfirst
+  have hapos : 0 < ‖a‖ ^ 2 :=
+    sq_pos_of_pos (norm_pos_iff.mpr ha0)
+  exact (mul_eq_zero.mp hyfirst).resolve_left (ne_of_gt hapos)
 
 
 /-- A strict negative first variation cannot be inherited: F06 forces every
