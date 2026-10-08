@@ -5,7 +5,8 @@ noncomputable section
 
 namespace Zeta23.CCM
 
-open Complex
+open Complex Filter Set
+open scoped Topology
 
 /-!
 # Post-#281 generated strict-even frontier
@@ -204,10 +205,10 @@ theorem GeneratedStrictEvenContact.firstOrder_is_fresh
       productionContactFirstVariation .even c.generated.shell.Lstar
         (c.generated.shell.k + 1) c.z < 0) :
     c.generated.shell.k = c.generated.shell.n := by
-  rcases c.generated.shell.contactRegime with hfresh | hinh
-  · exact hfresh
+  rcases lt_or_eq_of_le c.generated.shell.n_le_k with hinh | heq
   · have hzero := c.firstVariation_eq_zero_of_inherited hinh
     linarith
+  · exact heq.symm
 
 /-- Headline branch split: either the actual production first variation is
 strictly negative, or it is stationary and the unique perpendicular response
@@ -288,12 +289,18 @@ theorem GeneratedStrictEvenContact.firstVariation_nonpos_production
     (c : GeneratedStrictEvenContact) :
     productionContactFirstVariation .even c.generated.shell.Lstar
       (c.generated.shell.k+1) c.z ≤ 0 := by
-  have hC2 := canonicalEvenCompressedC2_proved (c.generated.shell.k+1)
   have hreal :
       ProductionContactFirstVariationRealized .even
         c.generated.shell.Lstar (c.generated.shell.k+1) c.z := by
-    exact
-      ((hC2 c.generated.shell.Lstar c.Lstar_pos).differentiable le_rfl).hasDerivAt
+    change HasDerivAt
+      (fun s : ℝ => productionContactFixedEnergy .even s
+        (c.generated.shell.k+1) c.z)
+      (productionContactFirstVariation .even c.generated.shell.Lstar
+        (c.generated.shell.k+1) c.z) c.generated.shell.Lstar
+    rw [canonicalEven_firstVariation_eq_inner
+      c.Lstar_pos (c.generated.shell.k+1) c.z]
+    exact canonicalParity_fixedEnergy_hasDerivAt
+      .even c.Lstar_pos (c.generated.shell.k+1) c.z
   exact c.generated.firstVariation_nonpos_of_kernel .even c.z c.z_kernel hreal
 
 /-- Production-authoritative branch type.  Unlike the historical #282 branch,
@@ -344,9 +351,10 @@ theorem canonicalEvenCompressedFamily_deriv
     {L : ℝ} (hL : 0 < L) (K : ℕ) :
     deriv (canonicalEvenCompressedFamilyCLM K) L =
       canonicalEvenApertureFirstCLM L K := by
-  simpa [canonicalEvenCompressedFamilyCLM,
-    canonicalEvenApertureFirstCLM] using
-    (hasDerivAt_parityCompressedCanonicalCLM_pos .even K hL).deriv
+  change
+    deriv (fun s : ℝ => parityCompressedCanonicalCLM .even s K) L =
+      productionParityFirstJetCLM .even K L
+  exact (hasDerivAt_parityCompressedCanonicalCLM_pos .even K hL).deriv
 
 /-- The second derivative of the actual compressed even family is the F01
 second jet. -/
@@ -360,9 +368,9 @@ theorem canonicalEvenCompressedFamily_secondDeriv
     filter_upwards [Ioi_mem_nhds hL] with s hs
     exact canonicalEvenCompressedFamily_deriv hs K
   rw [Filter.EventuallyEq.deriv_eq heq]
-  simpa [canonicalEvenApertureFirstCLM,
-    canonicalEvenApertureSecondCLM] using
-    (hasDerivAt_productionParityFirstJetCLM_pos .even K hL).deriv
+  change deriv (fun s : ℝ => productionParityFirstJetCLM .even K s) L =
+    productionParitySecondJetCLM .even K L
+  exact (hasDerivAt_productionParityFirstJetCLM_pos .even K hL).deriv
 
 /-- The selected strict-even successor is negative arbitrarily close on the
 right in the actual fixed cutoff carrier. -/
@@ -597,7 +605,11 @@ theorem GeneratedStrictEvenContact.production_stationary_remainder_pos
         c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
         c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary) := by
   rw [c.production_stationary_saturation hF04 hstationary]
-  positivity [c.sourceValue_pos]
+  apply mul_pos
+  · apply div_pos
+    · exact sq_pos_of_pos (mul_pos (by norm_num : (0 : ℝ) < 2) Real.pi_pos)
+    · exact sq_pos_of_pos c.Lstar_pos
+  · exact c.sourceValue_pos
 
 /-- Inherited strict-even contacts satisfy the stationary positive balance. -/
 theorem GeneratedStrictEvenContact.inherited_production_saturation
