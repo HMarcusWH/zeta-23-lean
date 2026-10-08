@@ -362,6 +362,19 @@ theorem GeneratedStrictEvenContact.production_frontier
 
 /-! ## Production specialization of the generic Schur theorem -/
 
+/-- The authoritative native-even continuous map and historical legal
+compression act identically on each vector.  This bridge prevents instance
+elaboration from conflating the generic parity carrier with the native one. -/
+private theorem canonicalEvenCompressedFamilyCLM_apply_legacy
+    (L : ℝ) (K : ℕ)
+    (v : euclideanEvenBoundaryFlatSubspace K) :
+    canonicalEvenCompressedFamilyCLM K L v =
+      evenCompressedCanonical L K v := by
+  apply Subtype.ext
+  rfl
+
+
+
 /-- The actual compressed even family has the first derivative exported by
 F01. -/
 theorem canonicalEvenCompressedFamily_deriv
@@ -425,15 +438,29 @@ theorem GeneratedStrictEvenContact.even_negative_direction_right
             (c.generated.shell.k + 1) L v =
           (parityRayleighBottom .even L
             (c.generated.shell.k + 1) : ℂ) • v := by
-      simpa [canonicalEvenCompressedFamilyCLM] using hveig
-    rw [happ, inner_smul_real_left]
-    simp only [Complex.smul_re, RCLike.re_to_complex, smul_eq_mul]
+      rw [canonicalEvenCompressedFamilyCLM_apply_legacy]
+      simpa [evenCompressedCanonical] using hveig
+    rw [happ, inner_smul_left]
+    have hcoef :
+        star ((parityRayleighBottom .even L
+          (c.generated.shell.k + 1) : ℝ) : ℂ) =
+        ((parityRayleighBottom .even L
+          (c.generated.shell.k + 1) : ℝ) : ℂ) := by simp
+    rw [hcoef]
+    have hmul :
+        Complex.re (((parityRayleighBottom .even L
+            (c.generated.shell.k + 1) : ℝ) : ℂ) *
+          inner ℂ v v) =
+        parityRayleighBottom .even L (c.generated.shell.k + 1) *
+          Complex.re (inner ℂ v v) := by
+      simp [Complex.mul_re]
+    rw [hmul]
     have hself :
         Complex.re (inner ℂ v v) = ‖v‖ ^ 2 := by
       simpa only [RCLike.re_to_complex] using
         (norm_sq_eq_re_inner (𝕜 := ℂ) v).symm
     rw [hself]
-    nlinarith
+    exact mul_neg_of_neg_of_pos hbottom hnorm
   exact ⟨L, hLlo, hLhi, v, hvneg⟩
 
 /-- The selected strict-even family is PSD throughout the generated left
@@ -466,7 +493,7 @@ theorem GeneratedStrictEvenContact.even_nonnegative_left
           (parityCompressedCanonical .even L
             (c.generated.shell.k + 1) v) v) :=
     le_trans hleft hbound
-  simpa [canonicalEvenCompressedFamilyCLM] using hq
+  simpa only [canonicalEvenCompressedFamilyCLM_apply_legacy] using hq
 
 /-- The generic arbitrary-complement Schur theorem specializes to the actual
 production family.  No zero-curvature premise is supplied. -/
@@ -494,27 +521,34 @@ theorem production_stationary_schur_curvature_eq_zero
     exact
       (hC2 L c.Lstar_pos).contDiffAt
         (Ioi_mem_nhds c.Lstar_pos)
+  have hop (s : ℝ) :
+      (F s).toLinearMap = evenResponseContactOperator s K := by
+    apply LinearMap.ext
+    intro v
+    exact (canonicalEvenCompressedFamilyCLM_apply_legacy s K v).trans
+      (evenResponseContactOperator_apply s K v).symm
   have hsym :
       ∀ᶠ s in 𝓝 L,
         LinearMap.IsSymmetric (𝕜 := ℂ) (F s).toLinearMap := by
     filter_upwards with s
-    simpa [F, canonicalEvenCompressedFamilyCLM] using
-      parityCompressedCanonical_isSymmetric .even s K
+    rw [hop s]
+    exact evenResponseContactOperator_isSymmetric s K
   have hz : F L c.z = 0 := by
-    simpa [F, L, K, canonicalEvenCompressedFamilyCLM] using c.z_kernel
+    simpa only [F, L, K, canonicalEvenCompressedFamilyCLM_apply_legacy] using
+      c.z_kernel
   have hker :
       ∀ v : euclideanEvenBoundaryFlatSubspace K,
         F L v = 0 → ∃ α : ℂ, v = α • c.z := by
     intro v hv
     have hv' :
         evenCompressedCanonical L K v = 0 := by
-      simpa [F, L, K, canonicalEvenCompressedFamilyCLM] using hv
+      simpa only [F, L, K, canonicalEvenCompressedFamilyCLM_apply_legacy] using hv
     exact strictEven_zeroKernel_is_line
       c.Lstar_pos K c.two_le_K c.z c.z_ne c.z_kernel
         c.odd_positive v hv'
   have hstat :
       deriv (fun s => Complex.re (inner ℂ (F s c.z) c.z)) L = 0 := by
-    simpa [F, L, K, canonicalEvenCompressedFamilyCLM,
+    simpa only [F, L, K, canonicalEvenCompressedFamilyCLM_apply_legacy,
       productionContactFirstVariation, productionContactFixedEnergy] using
       hstationary
   have hspec :=
