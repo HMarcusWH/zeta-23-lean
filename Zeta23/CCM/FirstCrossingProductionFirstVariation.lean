@@ -606,9 +606,9 @@ theorem canonicalEven_firstVariation_smul
   have hn : star a * a = ((‖a‖ ^ 2 : ℝ) : ℂ) := by
     change conj a * a = ((‖a‖ ^ 2 : ℝ) : ℂ)
     rw [← Complex.normSq_eq_conj_mul_self, Complex.normSq_eq_norm_sq]
-    rfl
   rw [hcomplex, hn]
-  simp
+  simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im,
+    zero_mul, sub_zero]
 
 /-- Simultaneous unit-phase rotation preserves the seam-safe first variation. -/
 theorem productionContactFirstVariation_unitPhase
