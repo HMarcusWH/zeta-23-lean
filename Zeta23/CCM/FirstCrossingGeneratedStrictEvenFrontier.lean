@@ -168,6 +168,47 @@ theorem GeneratedStrictEvenContact.firstVariation_nonpos
   exact c.generated.firstVariation_nonpos_of_kernel
     .even c.z c.z_kernel hrealized
 
+/-- Inherited strict-even contacts are stationary; transverse crossing remains
+only in the fresh-born branch. -/
+theorem GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
+    (c : GeneratedStrictEvenContact)
+    (hinh : c.generated.shell.n < c.generated.shell.k) :
+    productionContactFirstVariation .even c.generated.shell.Lstar
+      (c.generated.shell.k+1) c.z = 0 := by
+  have hseed :=
+    c.generated.inheritedSeed_firstVariation_zero hinh
+  have hline :=
+    strictEven_zeroKernel_is_line c.Lstar_pos (c.generated.shell.k+1)
+      c.two_le_K c.z c.z_ne c.z_kernel c.odd_positive
+      (parityPlateauExtend c.generated.shell.p c.generated.shell.n_le_k
+        c.generated.shell.seed)
+      (by
+        simpa [c.selected_even] using
+          c.generated.shell.extended_kernel c.generated.shell.k
+            c.generated.shell.n_le_k c.generated.shell.k_le_N)
+  obtain ⟨a,ha⟩ := hline
+  have ha0 : a ≠ 0 := by
+    intro h
+    rw [h,zero_smul] at ha
+    exact parityPlateauExtend_ne_zero _ _ c.generated.shell.seed
+      c.generated.shell.seed_ne (by simpa [ha])
+  simpa [inheritedSelectedEnergy,ha,ha0] using hseed
+
+
+/-- A strict negative first variation cannot be inherited: F06 forces every
+inherited strict-even contact to be stationary.  Hence the transverse branch is
+fresh-born at the first zero-plateau index. -/
+theorem GeneratedStrictEvenContact.firstOrder_is_fresh
+    (c : GeneratedStrictEvenContact)
+    (hneg :
+      productionContactFirstVariation .even c.generated.shell.Lstar
+        (c.generated.shell.k + 1) c.z < 0) :
+    c.generated.shell.k = c.generated.shell.n := by
+  rcases c.generated.shell.contactRegime with hfresh | hinh
+  · exact hfresh
+  · have hzero := c.firstVariation_eq_zero_of_inherited hinh
+    linarith
+
 /-- Headline branch split: either the actual production first variation is
 strictly negative, or it is stationary and the unique perpendicular response
 is constructed. -/
@@ -254,47 +295,6 @@ theorem GeneratedStrictEvenContact.firstVariation_nonpos_production
     exact
       ((hC2 c.generated.shell.Lstar c.Lstar_pos).differentiable le_rfl).hasDerivAt
   exact c.generated.firstVariation_nonpos_of_kernel .even c.z c.z_kernel hreal
-
-/-- Inherited strict-even contacts are stationary; transverse crossing remains
-only in the fresh-born branch. -/
-theorem GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
-    (c : GeneratedStrictEvenContact)
-    (hinh : c.generated.shell.n < c.generated.shell.k) :
-    productionContactFirstVariation .even c.generated.shell.Lstar
-      (c.generated.shell.k+1) c.z = 0 := by
-  have hseed :=
-    c.generated.inheritedSeed_firstVariation_zero hinh
-  have hline :=
-    strictEven_zeroKernel_is_line c.Lstar_pos (c.generated.shell.k+1)
-      c.two_le_K c.z c.z_ne c.z_kernel c.odd_positive
-      (parityPlateauExtend c.generated.shell.p c.generated.shell.n_le_k
-        c.generated.shell.seed)
-      (by
-        simpa [c.selected_even] using
-          c.generated.shell.extended_kernel c.generated.shell.k
-            c.generated.shell.n_le_k c.generated.shell.k_le_N)
-  obtain ⟨a,ha⟩ := hline
-  have ha0 : a ≠ 0 := by
-    intro h
-    rw [h,zero_smul] at ha
-    exact parityPlateauExtend_ne_zero _ _ c.generated.shell.seed
-      c.generated.shell.seed_ne (by simpa [ha])
-  simpa [inheritedSelectedEnergy,ha,ha0] using hseed
-
-
-/-- A strict negative first variation cannot be inherited: F06 forces every
-inherited strict-even contact to be stationary.  Hence the transverse branch is
-fresh-born at the first zero-plateau index. -/
-theorem GeneratedStrictEvenContact.firstOrder_is_fresh
-    (c : GeneratedStrictEvenContact)
-    (hneg :
-      productionContactFirstVariation .even c.generated.shell.Lstar
-        (c.generated.shell.k + 1) c.z < 0) :
-    c.generated.shell.k = c.generated.shell.n := by
-  rcases c.generated.shell.contactRegime with hfresh | hinh
-  · exact hfresh
-  · have hzero := c.firstVariation_eq_zero_of_inherited hinh
-    linarith
 
 /-- Production-authoritative branch type.  Unlike the historical #282 branch,
 the stationary response equation is stated using the compressed-first
