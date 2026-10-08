@@ -563,6 +563,8 @@ theorem GeneratedStrictEvenContact.actual_stationary_curvature_eq_zero
 /-- Exact positive stationary production saturation balance. -/
 theorem GeneratedStrictEvenContact.production_stationary_saturation
     (c : GeneratedStrictEvenContact)
+    (hF04 : ProductionContactF04DerivativeAuthority
+      c.generated.shell.Lstar (c.generated.shell.k + 1))
     (hstationary :
       productionContactFirstVariation .even c.generated.shell.Lstar
         (c.generated.shell.k + 1) c.z = 0) :
@@ -578,12 +580,14 @@ theorem GeneratedStrictEvenContact.production_stationary_saturation
   have hb :=
     canonicalStationaryCurvature_eq_productionSaturationGap
       c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
-      c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary
+      c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary hF04
   unfold productionContactSaturationGap at hb
   linarith
 
 theorem GeneratedStrictEvenContact.production_stationary_remainder_pos
     (c : GeneratedStrictEvenContact)
+    (hF04 : ProductionContactF04DerivativeAuthority
+      c.generated.shell.Lstar (c.generated.shell.k + 1))
     (hstationary :
       productionContactFirstVariation .even c.generated.shell.Lstar
         (c.generated.shell.k + 1) c.z = 0) :
@@ -592,12 +596,14 @@ theorem GeneratedStrictEvenContact.production_stationary_remainder_pos
       (canonicalStationaryEvenResponse
         c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
         c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary) := by
-  rw [c.production_stationary_saturation hstationary]
+  rw [c.production_stationary_saturation hF04 hstationary]
   positivity [c.sourceValue_pos]
 
 /-- Inherited strict-even contacts satisfy the stationary positive balance. -/
 theorem GeneratedStrictEvenContact.inherited_production_saturation
     (c : GeneratedStrictEvenContact)
+    (hF04 : ProductionContactF04DerivativeAuthority
+      c.generated.shell.Lstar (c.generated.shell.k + 1))
     (hinh : c.generated.shell.n < c.generated.shell.k) :
     productionContactRemainderValue c.generated.shell.Lstar
         (c.generated.shell.k + 1) c.z
@@ -608,7 +614,7 @@ theorem GeneratedStrictEvenContact.inherited_production_saturation
       (2 * Real.pi)^2 / c.generated.shell.Lstar^2 *
         productionStrictEvenSourceValue c.generated.shell.Lstar
           (c.generated.shell.k + 1) c.z :=
-  c.production_stationary_saturation
+  c.production_stationary_saturation hF04
     (c.firstVariation_eq_zero_of_inherited hinh)
 
 
@@ -662,7 +668,9 @@ inductive GeneratedStrictEvenCompletedProductionBranch
 curvature bridge, supplied kappa, arbitrary remainder, endpoint barrier, or RH
 premise occurs in the theorem type. -/
 theorem GeneratedStrictEvenContact.completed_production_frontier
-    (c : GeneratedStrictEvenContact) :
+    (c : GeneratedStrictEvenContact)
+    (hF04 : ProductionContactF04DerivativeAuthority
+      c.generated.shell.Lstar (c.generated.shell.k + 1)) :
     Nonempty (GeneratedStrictEvenCompletedProductionBranch c) := by
   have hnonpos := c.firstVariation_nonpos_production
   rcases lt_or_eq_of_le hnonpos with hneg | hzero
@@ -690,8 +698,8 @@ theorem GeneratedStrictEvenContact.completed_production_frontier
       intro w' hp hr
       exact hex.unique ⟨hp, hr⟩ hspec
     have hk := c.actual_stationary_curvature_eq_zero hzero
-    have hs := c.production_stationary_saturation hzero
-    have hp := c.production_stationary_remainder_pos hzero
+    have hs := c.production_stationary_saturation hF04 hzero
+    have hp := c.production_stationary_remainder_pos hF04 hzero
     refine ⟨.stationary hzero w hspec.1 hspec.2 huniq hk ?_ ?_⟩
     · simpa [w] using hs
     · simpa [w] using hp
@@ -699,6 +707,8 @@ theorem GeneratedStrictEvenContact.completed_production_frontier
 /-- Inherited contacts enter the completed stationary branch directly. -/
 theorem GeneratedStrictEvenContact.inherited_completed_production_frontier
     (c : GeneratedStrictEvenContact)
+    (hF04 : ProductionContactF04DerivativeAuthority
+      c.generated.shell.Lstar (c.generated.shell.k + 1))
     (hinh : c.generated.shell.n < c.generated.shell.k) :
     ∃ b : GeneratedStrictEvenCompletedProductionBranch c,
       match b with
@@ -731,8 +741,8 @@ theorem GeneratedStrictEvenContact.inherited_completed_production_frontier
   let b : GeneratedStrictEvenCompletedProductionBranch c :=
     .stationary hzero w hspec.1 hspec.2 huniq
       (c.actual_stationary_curvature_eq_zero hzero)
-      (by simpa [w] using c.production_stationary_saturation hzero)
-      (by simpa [w] using c.production_stationary_remainder_pos hzero)
+      (by simpa [w] using c.production_stationary_saturation hF04 hzero)
+      (by simpa [w] using c.production_stationary_remainder_pos hF04 hzero)
   refine ⟨b, ?_⟩
   rfl
 
