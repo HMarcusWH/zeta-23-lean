@@ -182,8 +182,7 @@ theorem GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
       euclideanParityBoundaryFlatSubspace c.generated.shell.p
           (c.generated.shell.k + 1) =
         euclideanEvenBoundaryFlatSubspace (c.generated.shell.k + 1) := by
-    rw [c.selected_even]
-    rfl
+    simpa only [c.selected_even]
   let y : euclideanEvenBoundaryFlatSubspace (c.generated.shell.k + 1) := by
     rw [← hcarrier]
     exact parityPlateauExtend c.generated.shell.p c.generated.shell.n_le_k
