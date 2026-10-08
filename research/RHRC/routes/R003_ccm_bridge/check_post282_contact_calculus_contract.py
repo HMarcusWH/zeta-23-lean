@@ -108,7 +108,7 @@ def check_surface()->None:
         if required not in ids: fail("OBLIGATION",f"missing {required}")
     by_id={x.get("id"):x for x in obligations.get("obligations",[])}
     for required in ("F01_COMPRESSED_C2","F02_WEIGHTED_TESTS",
-                     "F03_REMAINDER_AUTHORITY","F04_PAIR_BALANCE",
+                     "F03_REMAINDER_AUTHORITY",
                      "F05_STATIONARY_CURVATURE","F06_INHERITED_STATIONARITY",
                      "F07_FRONTIER","N01_EXACT_INTERVAL_CODEC",
                      "N02_INDEPENDENT_CALIBRATION",
@@ -116,6 +116,10 @@ def check_surface()->None:
                      "N04_MATCHED_ADVERSARIAL_CONTROLS"):
         if by_id[required].get("status")!="CANDIDATE_IMPLEMENTED_PENDING_CI":
             fail("OBLIGATION",f"{required} not recorded as implemented candidate")
+    if by_id["F04_PAIR_BALANCE"].get("status")!="OPEN_DERIVATIVE_TRANSPORT":
+        fail("FIREWALL","F04 derivative transport must remain OPEN")
+    if by_id["F07_FRONTIER"].get("depends_on")!=["F04_PAIR_BALANCE"]:
+        fail("FIREWALL","F07 must record its explicit F04 dependency")
     for required in ("X01_INHERITED_RESPONSE_INVESTIGATION",
                      "X02_DILATION_RESIDUAL_INVESTIGATION"):
         if by_id[required].get("status") not in {
