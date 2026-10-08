@@ -247,7 +247,6 @@ theorem productionContactRemainderValue_physical_decomposition
   rw [productionArithmeticRealValue_add_of_admissible hc hd.2.1]
   rw [productionArithmeticRealValue_smul_of_admissible hn]
   rw [productionArithmeticRealValue_smul_of_admissible hd.2.2]
-  ring
 
 /-- Euler-corrected production balance for arbitrary fixed legal even z,w. -/
 theorem canonicalSecondPairing_euler_eq_productionSaturationGap
@@ -391,7 +390,6 @@ theorem productionContactRemainderValue_eq_zeroResponse_add_two_mixedPhysical
   rw [productionArithmeticRealValue_add_of_admissible
     hR0 (hm.smul (a := 2))]
   rw [productionArithmeticRealValue_smul_of_admissible hm]
-  ring
 
 /-- Response variation of the saturation gap is exactly the mixed physical
 authority. -/
@@ -440,6 +438,7 @@ theorem canonicalFirstVariation_eq_physical
     canonicalMixedFirstVariation_eq_physical hL K hK z z
   rw [productionMixedDerivativePhysicalTest_self_eq_firstDerivativePhysicalTest]
     at hm
+  rw [canonicalEven_firstVariation_eq_inner hL K z]
   calc
     (inner ℂ ((canonicalEvenApertureFirst L K) z) z).re =
         (inner ℂ z ((canonicalEvenApertureFirst L K) z)).re :=
