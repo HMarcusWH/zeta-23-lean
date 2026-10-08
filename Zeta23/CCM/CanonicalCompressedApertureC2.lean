@@ -200,6 +200,37 @@ theorem canonicalEvenCompressedC2_proved
   exact canonicalParityCompressedC2_proved .even K
 
 
+/-! ### Reusable real-aperture operator derivative identities
+
+These are first established on the generic parity carrier, where the
+seam-safe HasDerivAt witnesses are already formalized.  Downstream native-even
+specializations can then reduce to these identities without constructing a
+second real scalar-module instance for the CLM space. -/
+
+/-- Derivative of the legal parity compression, as a real-aperture CLM family. -/
+theorem canonicalParityCompressedFamily_deriv
+    (p : ReversalParity) {L : ℝ} (hL : 0 < L) (K : ℕ) :
+    deriv (canonicalParityCompressedFamilyCLM p K) L =
+      canonicalParityApertureFirstCLM p L K := by
+  change deriv (fun s : ℝ => parityCompressedCanonicalCLM p s K) L =
+    productionParityFirstJetCLM p K L
+  exact (hasDerivAt_parityCompressedCanonicalCLM_pos p K hL).deriv
+
+/-- Second real-aperture derivative of the legal parity compression. -/
+theorem canonicalParityCompressedFamily_secondDeriv
+    (p : ReversalParity) {L : ℝ} (hL : 0 < L) (K : ℕ) :
+    deriv (deriv (canonicalParityCompressedFamilyCLM p K)) L =
+      canonicalParityApertureSecondCLM p L K := by
+  have hevent :
+      (fun s : ℝ => deriv (canonicalParityCompressedFamilyCLM p K) s) =ᶠ[𝓝 L]
+        (fun s : ℝ => canonicalParityApertureFirstCLM p s K) := by
+    filter_upwards [Ioi_mem_nhds hL] with s hs
+    exact canonicalParityCompressedFamily_deriv p hs K
+  rw [Filter.EventuallyEq.deriv_eq hevent]
+  change deriv (fun s : ℝ => productionParityFirstJetCLM p K s) L =
+    productionParitySecondJetCLM p K L
+  exact (hasDerivAt_productionParityFirstJetCLM_pos p K hL).deriv
+
 /-- The actual parity-compressed first derivative is self-adjoint at every
 positive aperture. -/
 theorem canonicalParityApertureFirst_isSymmetric
