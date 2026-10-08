@@ -5,10 +5,6 @@ import Mathlib.Analysis.InnerProductSpace.Calculus
 
 noncomputable section
 
--- Match the elaboration transparency policy of CanonicalFrozenApertureC2.
--- In particular, derivative proofs consume its CLM-valued HasDerivAt witnesses.
-set_option backward.isDefEq.respectTransparency false
-
 namespace Zeta23.CCM
 
 open Complex Matrix Set
@@ -204,6 +200,30 @@ theorem canonicalEvenCompressedC2_proved
   exact canonicalParityCompressedC2_proved .even K
 
 
+/-- Extract the normed real derivative of a complex-linear-map family from
+an upstream topological-vector-space derivative witness, without assuming
+that the implicit CLM additive/module/topology instance paths are definitionally
+identical.  Evaluation at each vector reduces the comparison to the
+canonical normed derivative on the carrier. -/
+private theorem deriv_complexCLM_real_of_hasDerivAt
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]
+    {f : ℝ → (E →L[ℂ] E)} {f' : E →L[ℂ] E} {L : ℝ}
+    (h : HasDerivAt f f' L) :
+    deriv f L = f' := by
+  have hWithin : DifferentiableWithinAt ℝ f Set.univ L :=
+    differentiableWithinAt_complexCLM_real (s := Set.univ) h
+  have hDiff : DifferentiableAt ℝ f L :=
+    hWithin.differentiableAt (by simp)
+  apply ContinuousLinearMap.ext
+  intro x
+  have hActual :
+      HasDerivAt (fun s : ℝ => f s x) ((deriv f L) x) L :=
+    hasDerivAt_complexCLM_apply_const_real hDiff.hasDerivAt x
+  have hJet :
+      HasDerivAt (fun s : ℝ => f s x) (f' x) L :=
+    hasDerivAt_complexCLM_apply_const_real h x
+  exact hActual.unique hJet
+
 /-! ### Reusable real-aperture operator derivative identities
 
 These are first established on the generic parity carrier, where the
@@ -218,7 +238,8 @@ theorem canonicalParityCompressedFamily_deriv
       canonicalParityApertureFirstCLM p L K := by
   change deriv (fun s : ℝ => parityCompressedCanonicalCLM p s K) L =
     productionParityFirstJetCLM p K L
-  exact (hasDerivAt_parityCompressedCanonicalCLM_pos p K hL).deriv
+  exact deriv_complexCLM_real_of_hasDerivAt
+    (hasDerivAt_parityCompressedCanonicalCLM_pos p K hL)
 
 /-- Second real-aperture derivative of the legal parity compression. -/
 theorem canonicalParityCompressedFamily_secondDeriv
@@ -233,7 +254,8 @@ theorem canonicalParityCompressedFamily_secondDeriv
   rw [Filter.EventuallyEq.deriv_eq hevent]
   change deriv (productionParityFirstJetCLM p K) L =
     productionParitySecondJetCLM p K L
-  exact (hasDerivAt_productionParityFirstJetCLM_pos p K hL).deriv
+  exact deriv_complexCLM_real_of_hasDerivAt
+    (hasDerivAt_productionParityFirstJetCLM_pos p K hL)
 
 /-- The actual parity-compressed first derivative is self-adjoint at every
 positive aperture. -/

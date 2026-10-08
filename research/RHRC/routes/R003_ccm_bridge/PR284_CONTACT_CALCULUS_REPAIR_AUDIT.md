@@ -45,3 +45,11 @@ The `cb10293e` CI cohort identified two `HasDerivAt.deriv` elaboration errors in
 - Add both derivative declarations to `#print axioms` and the R003 contract required-symbol inventory. Source-text checks do not supersede Lean compilation and full axiom auditing.
 
 **Gate:** the new head must compile `CanonicalCompressedApertureC2`, `FirstCrossingGeneratedStrictEvenFrontier`, and `RHRC.ContactCalculusContract`, pass proof-escape/axiom/claim audits, and complete an all-workflow harvest. F04 transport, arithmetic exclusion, odd/tie branches, and RH remain OPEN.
+
+## Follow-up candidate: normed derivative transport (HEAD TO BE VERIFIED)
+
+Previous test `64a485f` failed: both exported `HasDerivAt.deriv` uses retained incompatible instance paths, and global `backward.isDefEq.respectTransparency false` caused extra typeclass/WHNF timeouts. Exact job logs also showed `sorryAx` on the failed derivative exports. This experiment is falsified.
+
+Repair candidate: remove the broad transparency option. Introduce a **private**, fully typed real CLM derivative extraction lemma in `CanonicalCompressedApertureC2.lean`. It uses the already successful differentiable-within-at conversion and vectorwise evaluation of operator derivative candidates, compares vector-valued derivatives by `HasDerivAt.unique`, then concludes operator equality by `ContinuousLinearMap.ext`. Reuse that lemma for the first jet and the second jet after the unchanged local eventual-equality step. No new hypotheses, axioms or proof escapes may be introduced. This paragraph documents candidate implementation only: it is NOT a proof receipt until exact-head Lean and axiom gates complete.
+
+Keep the exported `#print axioms` reports. The next test must compile the compressed module and its symmetry statements before the downstream contact chain; the runner shall reject `sorryAx`. F04 derivative transport is OPEN. The two F04-dependent candidate bindings must **not** be upgraded to unconditional mathematical claims on CI green.
