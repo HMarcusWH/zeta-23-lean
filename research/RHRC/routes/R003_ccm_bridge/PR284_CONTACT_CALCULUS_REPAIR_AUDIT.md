@@ -35,3 +35,13 @@ Formal status is determined only by the synchronized PR head and its compiler /
 no-sorry / axiom / contract gates.
 
 RH remains **OPEN**. These repairs do not upgrade the terminal claim.
+
+## Exact-head follow-up repair (candidate)
+
+The `cb10293e` CI cohort identified two `HasDerivAt.deriv` elaboration errors in `CanonicalCompressedApertureC2.lean` at lines 217/232.
+
+- Carry `set_option backward.isDefEq.respectTransparency false` into the compressed calculus module, matching upstream `CanonicalFrozenApertureC2.lean`. This attempts to reconcile the different Lean instance paths (`ContinuousLinearMap.addCommGroup/module/topologicalSpace` versus `NormedAddCommGroup/NormedSpace/PseudoMetricSpace`), and is **not yet compiler-validated**.
+- Preserve the exact exported derivative theorem statements and their seam-safe upstream witnesses; do not weaken them or use historical ambient-matrix derivative candidates.
+- Add both derivative declarations to `#print axioms` and the R003 contract required-symbol inventory. Source-text checks do not supersede Lean compilation and full axiom auditing.
+
+**Gate:** the new head must compile `CanonicalCompressedApertureC2`, `FirstCrossingGeneratedStrictEvenFrontier`, and `RHRC.ContactCalculusContract`, pass proof-escape/axiom/claim audits, and complete an all-workflow harvest. F04 transport, arithmetic exclusion, odd/tie branches, and RH remain OPEN.

@@ -5,6 +5,10 @@ import Mathlib.Analysis.InnerProductSpace.Calculus
 
 noncomputable section
 
+-- Match the elaboration transparency policy of CanonicalFrozenApertureC2.
+-- In particular, derivative proofs consume its CLM-valued HasDerivAt witnesses.
+set_option backward.isDefEq.respectTransparency false
+
 namespace Zeta23.CCM
 
 open Complex Matrix Set
@@ -431,6 +435,8 @@ end Zeta23.CCM
 
 #print axioms Zeta23.CCM.canonicalParityCompressedC2_proved
 #print axioms Zeta23.CCM.canonicalEvenCompressedC2_proved
+#print axioms Zeta23.CCM.canonicalParityCompressedFamily_deriv
+#print axioms Zeta23.CCM.canonicalParityCompressedFamily_secondDeriv
 #print axioms Zeta23.CCM.canonicalParityApertureFirst_isSymmetric
 #print axioms Zeta23.CCM.canonicalParityApertureSecond_isSymmetric
 #print axioms Zeta23.CCM.canonicalEvenApertureFirst_isSymmetric

@@ -34,6 +34,8 @@ REQUIRED_SYMBOLS={
    "continuousAt_productionParitySecondJetCLM_pos"],
  "Zeta23/CCM/CanonicalCompressedApertureC2.lean":[
    "canonicalParityCompressedC2_proved","canonicalEvenCompressedC2_proved",
+   "canonicalParityCompressedFamily_deriv",
+   "canonicalParityCompressedFamily_secondDeriv",
    "canonicalEvenApertureFirst","canonicalEvenApertureSecond"],
  "Zeta23/CCM/ProductionWeightedGlobalTests.lean":[
    "productionFirstDerivativeTest_authority",
