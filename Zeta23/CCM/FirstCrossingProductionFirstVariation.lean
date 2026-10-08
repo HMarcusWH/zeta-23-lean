@@ -576,6 +576,24 @@ theorem canonicalEven_fixedSecond_eq_inner
   exact h
 
 
+/-- The actual first variation is quadratic in a constant complex scalar.
+This is a derivative fact about the compressed family, not an assertion that
+the ambient entrywise derivative is valid at a prime-power seam. -/
+theorem canonicalEven_firstVariation_smul
+    {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (a : ℂ) (z : euclideanEvenBoundaryFlatSubspace K) :
+    productionContactFirstVariation .even L K (a • z) =
+      ‖a‖ ^ 2 * productionContactFirstVariation .even L K z := by
+  rw [canonicalEven_firstVariation_eq_inner hL K (a • z),
+    canonicalEven_firstVariation_eq_inner hL K z]
+  rw [map_smul, inner_smul_left, inner_smul_right]
+  have hn : star a * a = ((‖a‖ ^ 2 : ℝ) : ℂ) := by
+    change conj a * a = ((‖a‖ ^ 2 : ℝ) : ℂ)
+    rw [← Complex.normSq_eq_conj_mul_self, Complex.normSq_eq_norm_sq]
+    rfl
+  rw [← mul_assoc, hn]
+  simp
+
 /-- Simultaneous unit-phase rotation preserves the seam-safe first variation. -/
 theorem productionContactFirstVariation_unitPhase
     {L : ℝ} (hL : 0 < L) (K : ℕ)
