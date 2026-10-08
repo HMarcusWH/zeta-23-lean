@@ -251,7 +251,11 @@ in the main polarization proof. -/
     (g : GeneratedGlobalFirstCrossing)
     (x : inheritedContactKernelSubspace g) :
     inheritedContactFirstJetRestriction g x =
-      (inheritedContactKernelSubspace g).orthogonalProjectionOnto
+      (Submodule.orthogonalProjectionOnto
+        (𝕜 := ℂ)
+        (E := euclideanParityBoundaryFlatSubspace
+          g.shell.p (g.shell.k + 1))
+        (inheritedContactKernelSubspace g))
         (canonicalParityApertureFirst
           g.shell.p g.shell.Lstar (g.shell.k + 1)
           (x : euclideanParityBoundaryFlatSubspace
