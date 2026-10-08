@@ -212,9 +212,9 @@ theorem canonicalParityCompressedFamily_deriv
     (p : ReversalParity) {L : ℝ} (hL : 0 < L) (K : ℕ) :
     deriv (canonicalParityCompressedFamilyCLM p K) L =
       canonicalParityApertureFirstCLM p L K := by
-  change deriv (fun s : ℝ => parityCompressedCanonicalCLM p s K) L =
-    productionParityFirstJetCLM p K L
-  exact (hasDerivAt_parityCompressedCanonicalCLM_pos p K hL).deriv
+  have hderiv := (hasDerivAt_parityCompressedCanonicalCLM_pos p K hL).deriv
+  simpa only [canonicalParityCompressedFamilyCLM,
+    canonicalParityApertureFirstCLM] using hderiv
 
 /-- Second real-aperture derivative of the legal parity compression. -/
 theorem canonicalParityCompressedFamily_secondDeriv
@@ -227,9 +227,9 @@ theorem canonicalParityCompressedFamily_secondDeriv
     filter_upwards [Ioi_mem_nhds hL] with s hs
     exact canonicalParityCompressedFamily_deriv p hs K
   rw [Filter.EventuallyEq.deriv_eq hevent]
-  change deriv (fun s : ℝ => productionParityFirstJetCLM p K s) L =
-    productionParitySecondJetCLM p K L
-  exact (hasDerivAt_productionParityFirstJetCLM_pos p K hL).deriv
+  have hderiv := (hasDerivAt_productionParityFirstJetCLM_pos p K hL).deriv
+  simpa only [canonicalParityApertureFirstCLM,
+    canonicalParityApertureSecondCLM] using hderiv
 
 /-- The actual parity-compressed first derivative is self-adjoint at every
 positive aperture. -/
