@@ -660,7 +660,6 @@ private theorem production_stationary_schur_scalar_stationary
 /-- The generic stationary Schur geometry, stated at the raw aperture
 derivative pairing before identifying the optimized physical curvature.
 Passing the response explicitly avoids unfolding it in this proof target. -/
-set_option diagnostics true in
 private theorem production_stationary_schur_raw_pair_eq_zero
     (c : GeneratedStrictEvenContact)
     (hstationary :
