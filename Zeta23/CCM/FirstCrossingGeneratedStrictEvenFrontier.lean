@@ -657,9 +657,6 @@ private theorem production_stationary_schur_scalar_stationary
     from funext hscalar]
   simpa only [L, K, productionContactFirstVariation] using hstationary
 
-/-- The generic stationary Schur geometry, stated at the raw aperture
-derivative pairing before identifying the optimized physical curvature.
-Passing the response explicitly avoids unfolding it in this proof target. -/
 /-- Contact geometry for the actual CLM-valued compressed family.
 The generic Schur theorem is applied here without unfolding the canonical
 jet identifications.  F04 remains an independent, explicit obligation. -/
