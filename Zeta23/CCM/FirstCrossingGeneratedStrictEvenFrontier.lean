@@ -623,6 +623,40 @@ theorem GeneratedStrictEvenContact.even_nonnegative_left
   rw [Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right]
   exact hqAmbient
 
+/-- Stationarity of the canonical compressed first-contact scalar.
+Separating this proof avoids re-elaborating the seam-safe energy identification
+inside the generic Schur specialization. -/
+private theorem production_stationary_schur_scalar_stationary
+    (c : GeneratedStrictEvenContact)
+    (hstationary :
+      productionContactFirstVariation .even c.generated.shell.Lstar
+        (c.generated.shell.k + 1) c.z = 0) :
+    deriv (fun s : ℝ => Complex.re
+      (inner ℂ
+        (canonicalEvenCompressedFamilyCLM
+          (c.generated.shell.k + 1) s c.z) c.z))
+      c.generated.shell.Lstar = 0 := by
+  let K := c.generated.shell.k + 1
+  let L := c.generated.shell.Lstar
+  have hscalar (s : ℝ) :
+      Complex.re
+        (inner ℂ (canonicalEvenCompressedFamilyCLM K s c.z) c.z) =
+        productionContactFixedEnergy .even s K c.z := by
+    rw [canonicalEvenCompressedFamilyCLM_apply_legacy]
+    change Complex.re (inner ℂ
+      (evenCompressedCanonical s K c.z) c.z) =
+      Complex.re (inner ℂ
+        (parityCompressedCanonical .even s K c.z) c.z)
+    rfl
+  change deriv (fun s : ℝ => Complex.re
+    (inner ℂ (canonicalEvenCompressedFamilyCLM K s c.z) c.z)) L = 0
+  rw [show
+    (fun s : ℝ => Complex.re
+      (inner ℂ (canonicalEvenCompressedFamilyCLM K s c.z) c.z)) =
+      (fun s : ℝ => productionContactFixedEnergy .even s K c.z)
+    from funext hscalar]
+  simpa only [L, K, productionContactFirstVariation] using hstationary
+
 /-- The generic stationary Schur geometry, stated at the raw aperture
 derivative pairing before identifying the optimized physical curvature.
 Passing the response explicitly avoids unfolding it in this proof target. -/
@@ -686,23 +720,8 @@ private theorem production_stationary_schur_raw_pair_eq_zero
     exact ⟨α, hα.symm⟩
   have hstat :
       deriv (fun s => Complex.re (inner ℂ (F s c.z) c.z)) L = 0 := by
-    have hscalar (s : ℝ) :
-        Complex.re (inner ℂ (F s c.z) c.z) =
-          productionContactFixedEnergy .even s K c.z := by
-      change Complex.re
-        (inner ℂ (canonicalEvenCompressedFamilyCLM K s c.z) c.z) =
-          productionContactFixedEnergy .even s K c.z
-      rw [canonicalEvenCompressedFamilyCLM_apply_legacy]
-      change Complex.re (inner ℂ
-        (evenCompressedCanonical s K c.z) c.z) =
-        Complex.re (inner ℂ
-          (parityCompressedCanonical .even s K c.z) c.z)
-      rfl
-    rw [show
-      (fun s : ℝ => Complex.re (inner ℂ (F s c.z) c.z)) =
-        (fun s : ℝ => productionContactFixedEnergy .even s K c.z)
-      from funext hscalar]
-    simpa only [L, K, productionContactFirstVariation] using hstationary
+    simpa only [F, L, K] using
+      production_stationary_schur_scalar_stationary c hstationary
   have hF1 :
       deriv F L = canonicalEvenApertureFirstCLM L K := by
     simpa [F] using canonicalEvenCompressedFamily_deriv c.Lstar_pos K
@@ -715,7 +734,9 @@ private theorem production_stationary_schur_raw_pair_eq_zero
       _ = -((deriv F L) c.z) := by
         rw [hF1]
         rfl
-  have hgeneric :=
+  have hgeneric :
+      Complex.re (inner ℂ ((deriv (deriv F) L) c.z) c.z) +
+        2 * Complex.re (inner ℂ ((deriv F L) w) c.z) = 0 :=
     stationarySchur_contact_secondPairing_eq_zero
       (F := F) (z := c.z) (w := w)
       (x := L) (a := c.generated.shell.Lsmall)
