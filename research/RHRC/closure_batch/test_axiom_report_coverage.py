@@ -13,7 +13,7 @@ class AxiomReportCoverageTests(unittest.TestCase):
         for filename, expected in EXPECTED_REPORTS.items():
             with self.subTest(filename=filename):
                 source = Path(filename).read_text(encoding="utf-8")
-                actual = set(re.findall(r"(?m)^\\s*#print axioms\\s+(\\S+)", source))
+                actual = set(re.findall(r"(?m)^\s*#print axioms\s+(\S+)", source))
                 self.assertTrue(expected <= actual, sorted(expected - actual))
 
     def test_a_missing_target_is_detected(self):
