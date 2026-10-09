@@ -90,7 +90,9 @@ CLOSURE_ROOTS = [
     Path("Zeta23/Spectral.lean"),
 ]
 
-FORBIDDEN = re.compile(r"(?m)(^|\\W)(axiom|sorry|admit)(?=\\W|$)")
+# Match Lean proof-escape tokens at non-word boundaries, including indented code.
+# The raw regex must use \W, not \\W (which denotes a literal backslash).
+FORBIDDEN = re.compile(r"(?m)(^|\W)(axiom|sorry|admit)(?=\W|$)")
 
 
 def closure_roots() -> list[Path]:
