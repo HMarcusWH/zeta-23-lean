@@ -660,6 +660,7 @@ private theorem production_stationary_schur_scalar_stationary
 /-- The generic stationary Schur geometry, stated at the raw aperture
 derivative pairing before identifying the optimized physical curvature.
 Passing the response explicitly avoids unfolding it in this proof target. -/
+set_option diagnostics true in
 private theorem production_stationary_schur_raw_pair_eq_zero
     (c : GeneratedStrictEvenContact)
     (hstationary :
@@ -724,7 +725,9 @@ private theorem production_stationary_schur_raw_pair_eq_zero
       production_stationary_schur_scalar_stationary c hstationary
   have hF1 :
       deriv F L = canonicalEvenApertureFirstCLM L K := by
-    simpa [F] using canonicalEvenCompressedFamily_deriv c.Lstar_pos K
+    change deriv (canonicalEvenCompressedFamilyCLM K) L =
+      canonicalEvenApertureFirstCLM L K
+    exact canonicalEvenCompressedFamily_deriv c.Lstar_pos K
   have hw :
       F L w = -((deriv F L) c.z) := by
     calc
@@ -738,7 +741,7 @@ private theorem production_stationary_schur_raw_pair_eq_zero
       Complex.re (inner ℂ ((deriv (deriv F) L) c.z) c.z) +
         2 * Complex.re (inner ℂ ((deriv F L) w) c.z) = 0 :=
     stationarySchur_contact_secondPairing_eq_zero
-      (F := F) (z := c.z) (w := w)
+      (V := euclideanEvenBoundaryFlatSubspace K) (F := F) (z := c.z) (w := w)
       (x := L) (a := c.generated.shell.Lsmall)
       (b := c.generated.shell.Lneg)
       c.generated.shell.Lsmall_lt_Lstar
@@ -749,11 +752,13 @@ private theorem production_stationary_schur_raw_pair_eq_zero
         exact c.even_nonnegative_left y hySmall hyStar v)
       (by
         intro ε hε
-        simpa [L, K, F] using c.even_negative_direction_right ε hε)
+        simpa only [L, K, F] using c.even_negative_direction_right ε hε)
       hstat hwperp hw
   have hF2 :
       deriv (deriv F) L = canonicalEvenApertureSecondCLM L K := by
-    simpa [F] using canonicalEvenCompressedFamily_secondDeriv c.Lstar_pos K
+    change deriv (deriv (canonicalEvenCompressedFamilyCLM K)) L =
+      canonicalEvenApertureSecondCLM L K
+    exact canonicalEvenCompressedFamily_secondDeriv c.Lstar_pos K
   rw [hF2, hF1] at hgeneric
   simpa only [L, K] using hgeneric
 
