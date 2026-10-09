@@ -693,12 +693,15 @@ private theorem stationarySchur_fixedEven_secondPairing_eq_zero
     (hw : F x w = -((deriv F x) z)) :
     Complex.re (inner ℂ ((deriv (deriv F) x) z) z) +
       2 * Complex.re (inner ℂ ((deriv F x) w) z) = 0 := by
-  exact stationarySchur_contact_secondPairing_eq_zero
-    (V := euclideanEvenBoundaryFlatSubspace K)
-    (F := F) (z := z) (w := w)
-    (x := x) (a := a) (b := b)
-    hax hxb hF hFsym hz hznorm hker
-    hleft hright hstationary hwperp hw
+  -- Fix the carrier's three instance arguments before any hypothesis is
+  -- unified.  Passing `(V := …)` alone leaves them as pending metavariables
+  -- while `F` and the hypotheses are checked, which defeats the defeq cache
+  -- and times out.
+  have hgeneric := @stationarySchur_contact_secondPairing_eq_zero
+    (euclideanEvenBoundaryFlatSubspace K) inferInstance inferInstance
+    inferInstance
+  exact hgeneric (F := F) (z := z) (w := w) (x := x) (a := a) (b := b)
+    hax hxb hF hFsym hz hznorm hker hleft hright hstationary hwperp hw
 
 /-- Contact geometry for the actual CLM-valued compressed family.
 The generic Schur theorem is applied here without unfolding the canonical
