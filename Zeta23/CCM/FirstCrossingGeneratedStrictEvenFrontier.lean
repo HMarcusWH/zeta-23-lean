@@ -657,6 +657,49 @@ private theorem production_stationary_schur_scalar_stationary
     from funext hscalar]
   simpa only [L, K, productionContactFirstVariation] using hstationary
 
+/-!
+The generic Schur theorem is intentionally instantiated first on a fixed
+strict-even carrier with an *abstract* CLM family.  This adapter has no
+GeneratedStrictEvenContact data and performs no canonical jet rewrite.
+
+It is an elaboration boundary, not an additional mathematical assumption:
+the hypotheses and conclusion are exactly those of the generic theorem.
+-/
+private theorem stationarySchur_fixedEven_secondPairing_eq_zero
+    (K : ℕ)
+    (F : ℝ → euclideanEvenBoundaryFlatSubspace K →L[ℂ]
+      euclideanEvenBoundaryFlatSubspace K)
+    (z w : euclideanEvenBoundaryFlatSubspace K)
+    (x a b : ℝ)
+    (hax : a < x)
+    (hxb : x < b)
+    (hF : ContDiffAt ℝ 2 F x)
+    (hFsym : ∀ᶠ s in 𝓝 x,
+      LinearMap.IsSymmetric (𝕜 := ℂ)
+        (E := euclideanEvenBoundaryFlatSubspace K) (F s).toLinearMap)
+    (hz : F x z = 0)
+    (hznorm : ‖z‖ = 1)
+    (hker : ∀ v : euclideanEvenBoundaryFlatSubspace K,
+      F x v = 0 → ∃ α : ℂ, v = α • z)
+    (hleft : ∀ y, a ≤ y → y ≤ x →
+      ∀ v : euclideanEvenBoundaryFlatSubspace K,
+        0 ≤ Complex.re (inner ℂ (F y v) v))
+    (hright : ∀ ε > 0, ∃ y, x < y ∧ y < x + ε ∧
+      ∃ v : euclideanEvenBoundaryFlatSubspace K,
+        Complex.re (inner ℂ (F y v) v) < 0)
+    (hstationary :
+      deriv (fun s => Complex.re (inner ℂ (F s z) z)) x = 0)
+    (hwperp : inner ℂ z w = 0)
+    (hw : F x w = -((deriv F x) z)) :
+    Complex.re (inner ℂ ((deriv (deriv F) x) z) z) +
+      2 * Complex.re (inner ℂ ((deriv F x) w) z) = 0 := by
+  exact stationarySchur_contact_secondPairing_eq_zero
+    (V := euclideanEvenBoundaryFlatSubspace K)
+    (F := F) (z := z) (w := w)
+    (x := x) (a := a) (b := b)
+    hax hxb hF hFsym hz hznorm hker
+    hleft hright hstationary hwperp hw
+
 /-- Contact geometry for the actual CLM-valued compressed family.
 The generic Schur theorem is applied here without unfolding the canonical
 jet identifications.  F04 remains an independent, explicit obligation. -/
@@ -754,15 +797,11 @@ private theorem production_stationary_schur_generic_pair_eq_zero
   have hgeneric :
       Complex.re (inner ℂ ((deriv (deriv F) L) c.z) c.z) +
         2 * Complex.re (inner ℂ ((deriv F L) w) c.z) = 0 :=
-    stationarySchur_contact_secondPairing_eq_zero
-      (V := euclideanEvenBoundaryFlatSubspace K) (F := F) (z := c.z) (w := w)
-      (x := L) (a := c.generated.shell.Lsmall)
-      (b := c.generated.shell.Lneg)
+    stationarySchur_fixedEven_secondPairing_eq_zero
+      K F c.z w L c.generated.shell.Lsmall c.generated.shell.Lneg
       c.generated.shell.Lsmall_lt_Lstar
       c.generated.shell.Lstar_lt_Lneg
-      hF hsym hz c.z_norm hker
-      hleft hright
-      hstat hwperp hw
+      hF hsym hz c.z_norm hker hleft hright hstat hwperp hw
   simpa only [F, L, K] using hgeneric
 
 /-- Identify the abstract Schur derivative pair with the two canonical aperture jets. -/
