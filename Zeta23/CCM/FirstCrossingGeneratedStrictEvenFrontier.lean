@@ -233,8 +233,7 @@ theorem GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
           (y : EuclideanSpace ℂ
             (Fin (2 * (c.generated.shell.k + 1) + 1))))) :
         EuclideanSpace ℂ (Fin (2 * (c.generated.shell.k + 1) + 1))) = 0
-    rw [← hcarrier]
-    simpa only [hyval] using hparAmbient
+    simpa only [hcarrier, hyval] using hparAmbient
   obtain ⟨a, ha⟩ :=
     strictEven_zeroKernel_is_line c.Lstar_pos (c.generated.shell.k + 1)
       c.two_le_K c.z c.z_ne c.z_kernel c.odd_positive y hyker
@@ -614,8 +613,6 @@ theorem GeneratedStrictEvenContact.even_nonnegative_left
   rw [Submodule.inner_orthogonalProjectionOnto_eq_of_mem_right]
   exact hqAmbient
 
-/-- The generic arbitrary-complement Schur theorem specializes to the actual
-production family.  No zero-curvature premise is supplied. -/
 /-- The generic stationary Schur geometry, stated at the raw aperture
 derivative pairing before identifying the optimized physical curvature.
 Passing the response explicitly avoids unfolding it in this proof target. -/
@@ -629,7 +626,7 @@ private theorem production_stationary_schur_raw_pair_eq_zero
     (hwresponse :
       evenCompressedCanonical c.generated.shell.Lstar
         (c.generated.shell.k + 1) w =
-        -(evenProductionApertureFirst c.generated.shell.Lstar
+        -(canonicalEvenApertureFirst c.generated.shell.Lstar
           (c.generated.shell.k + 1) c.z)) :
     Complex.re (inner ℂ
       (canonicalEvenApertureSecondCLM c.generated.shell.Lstar
@@ -757,7 +754,8 @@ theorem production_stationary_schur_curvature_eq_zero
           (inner ℂ (canonicalEvenApertureFirstCLM L K w) c.z) =
         Complex.re
           (inner ℂ c.z (canonicalEvenApertureFirstCLM L K w)) := by
-    exact inner_re_symm _ _
+    exact inner_re_symm (𝕜 := ℂ)
+      (canonicalEvenApertureFirstCLM L K w) c.z
   unfold canonicalOptimizedContactCurvature canonicalContactSecondPairing
   change
     productionContactFixedSecondVariation .even L K c.z +
