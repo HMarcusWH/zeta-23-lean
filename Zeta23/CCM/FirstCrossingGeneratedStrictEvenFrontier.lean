@@ -233,7 +233,17 @@ theorem GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
           (y : EuclideanSpace ℂ
             (Fin (2 * (c.generated.shell.k + 1) + 1))))) :
         EuclideanSpace ℂ (Fin (2 * (c.generated.shell.k + 1) + 1))) = 0
-    simpa only [hcarrier, hyval] using hparAmbient
+    have hproject (v : EuclideanSpace ℂ
+        (Fin (2 * (c.generated.shell.k + 1) + 1))) :
+        (((euclideanEvenBoundaryFlatSubspace
+            (c.generated.shell.k + 1)).orthogonalProjectionOnto v) :
+          EuclideanSpace ℂ (Fin (2 * (c.generated.shell.k + 1) + 1))) =
+          (((euclideanParityBoundaryFlatSubspace c.generated.shell.p
+              (c.generated.shell.k + 1)).orthogonalProjectionOnto v) :
+            EuclideanSpace ℂ (Fin (2 * (c.generated.shell.k + 1) + 1))) := by
+      rw [← hcarrier]
+    rw [hyval]
+    exact (hproject _).trans hparAmbient
   obtain ⟨a, ha⟩ :=
     strictEven_zeroKernel_is_line c.Lstar_pos (c.generated.shell.k + 1)
       c.two_le_K c.z c.z_ne c.z_kernel c.odd_positive y hyker
