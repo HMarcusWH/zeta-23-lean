@@ -233,8 +233,8 @@ theorem GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
           (y : EuclideanSpace ℂ
             (Fin (2 * (c.generated.shell.k + 1) + 1))))) :
         EuclideanSpace ℂ (Fin (2 * (c.generated.shell.k + 1) + 1))) = 0
-    simpa only [c.selected_even, euclideanParityBoundaryFlatSubspace_even, hyval]
-      using hparAmbient
+    rw [← hcarrier]
+    simpa only [hyval] using hparAmbient
   obtain ⟨a, ha⟩ :=
     strictEven_zeroKernel_is_line c.Lstar_pos (c.generated.shell.k + 1)
       c.two_le_K c.z c.z_ne c.z_kernel c.odd_positive y hyker
@@ -616,24 +616,33 @@ theorem GeneratedStrictEvenContact.even_nonnegative_left
 
 /-- The generic arbitrary-complement Schur theorem specializes to the actual
 production family.  No zero-curvature premise is supplied. -/
-theorem production_stationary_schur_curvature_eq_zero
+/-- The generic stationary Schur geometry, stated at the raw aperture
+derivative pairing before identifying the optimized physical curvature.
+Passing the response explicitly avoids unfolding it in this proof target. -/
+private theorem production_stationary_schur_raw_pair_eq_zero
     (c : GeneratedStrictEvenContact)
     (hstationary :
       productionContactFirstVariation .even c.generated.shell.Lstar
-        (c.generated.shell.k + 1) c.z = 0) :
-    canonicalOptimizedContactCurvature
-      c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
-      c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary = 0 := by
+        (c.generated.shell.k + 1) c.z = 0)
+    (w : euclideanEvenBoundaryFlatSubspace (c.generated.shell.k + 1))
+    (hwperp : inner ℂ c.z w = 0)
+    (hwresponse :
+      evenCompressedCanonical c.generated.shell.Lstar
+        (c.generated.shell.k + 1) w =
+        -(evenProductionApertureFirst c.generated.shell.Lstar
+          (c.generated.shell.k + 1) c.z)) :
+    Complex.re (inner ℂ
+      (canonicalEvenApertureSecondCLM c.generated.shell.Lstar
+        (c.generated.shell.k + 1) c.z) c.z) +
+      2 * Complex.re (inner ℂ
+        (canonicalEvenApertureFirstCLM c.generated.shell.Lstar
+          (c.generated.shell.k + 1) w) c.z) = 0 := by
   let K := c.generated.shell.k + 1
   let L := c.generated.shell.Lstar
   let F :
       ℝ → euclideanEvenBoundaryFlatSubspace K →L[ℂ]
         euclideanEvenBoundaryFlatSubspace K :=
     canonicalEvenCompressedFamilyCLM K
-  let w : euclideanEvenBoundaryFlatSubspace K :=
-    canonicalStationaryEvenResponse
-      c.Lstar_pos K c.two_le_K
-      c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary
   have hF :
       ContDiffAt ℝ 2 F L := by
     have hC2 := canonicalEvenCompressedC2_proved K
@@ -687,10 +696,6 @@ theorem production_stationary_schur_curvature_eq_zero
         (fun s : ℝ => productionContactFixedEnergy .even s K c.z)
       from funext hscalar]
     simpa only [L, K, productionContactFirstVariation] using hstationary
-  have hspec :=
-    canonicalStationaryEvenResponse_spec
-      c.Lstar_pos K c.two_le_K
-      c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary
   have hF1 :
       deriv F L = canonicalEvenApertureFirstCLM L K := by
     simpa [F] using canonicalEvenCompressedFamily_deriv c.Lstar_pos K
@@ -699,7 +704,7 @@ theorem production_stationary_schur_curvature_eq_zero
     calc
       F L w = evenCompressedCanonical L K w := by
         exact canonicalEvenCompressedFamilyCLM_apply_legacy L K w
-      _ = -(canonicalEvenApertureFirst L K c.z) := hspec.2
+      _ = -(canonicalEvenApertureFirst L K c.z) := hwresponse
       _ = -((deriv F L) c.z) := by
         rw [hF1]
         rfl
@@ -717,11 +722,34 @@ theorem production_stationary_schur_curvature_eq_zero
       (by
         intro ε hε
         simpa [L, K, F] using c.even_negative_direction_right ε hε)
-      hstat hspec.1 hw
+      hstat hwperp hw
   have hF2 :
       deriv (deriv F) L = canonicalEvenApertureSecondCLM L K := by
     simpa [F] using canonicalEvenCompressedFamily_secondDeriv c.Lstar_pos K
   rw [hF2, hF1] at hgeneric
+  simpa only [L, K] using hgeneric
+
+theorem production_stationary_schur_curvature_eq_zero
+    (c : GeneratedStrictEvenContact)
+    (hstationary :
+      productionContactFirstVariation .even c.generated.shell.Lstar
+        (c.generated.shell.k + 1) c.z = 0) :
+    canonicalOptimizedContactCurvature
+      c.Lstar_pos (c.generated.shell.k + 1) c.two_le_K
+      c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary = 0 := by
+  let K := c.generated.shell.k + 1
+  let L := c.generated.shell.Lstar
+  let w : euclideanEvenBoundaryFlatSubspace K :=
+    canonicalStationaryEvenResponse
+      c.Lstar_pos K c.two_le_K
+      c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary
+  have hspec :=
+    canonicalStationaryEvenResponse_spec
+      c.Lstar_pos K c.two_le_K
+      c.z c.z_ne c.z_norm c.z_kernel c.odd_positive hstationary
+  have hgeneric :=
+    production_stationary_schur_raw_pair_eq_zero
+      c hstationary w hspec.1 hspec.2
   have hfixed :=
     canonicalEven_fixedSecond_eq_inner c.Lstar_pos K c.z
   have hmixed :
@@ -962,3 +990,6 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.GeneratedStrictEvenContact.frontier
 #print axioms Zeta23.CCM.GeneratedStrictEvenContact.sourceValue_pos
 #print axioms Zeta23.CCM.GeneratedStrictEvenContact.stationary_saturation_frontier
+
+#print axioms Zeta23.CCM.production_stationary_schur_curvature_eq_zero
+#print axioms Zeta23.CCM.GeneratedStrictEvenContact.actual_stationary_curvature_eq_zero
