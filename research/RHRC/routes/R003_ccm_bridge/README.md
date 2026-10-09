@@ -8,10 +8,10 @@
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #281
-- validated final head = d4c6d0804bc642cc6e93dba811cd890d474eb0d0
-- merge commit = 0c22ae4101d7ad3e0b1a81029fff1472c52a5750
-- tree = f729b05e6fee9f6fbeb9d18a65e26742086244f8
+- merged theorem authority = PR #282
+- validated final head = de2869d1614d71b5d851d7088be514901af11b74
+- merge commit = 01871f7d2256b1eac2dbd7967346954367c8eef9
+- tree = c7749d37c4b63270818c3fb0d7fb5dbc22638790
 - status = MERGED_GREEN_THEOREM_STATE
 - PR #275 full-space small-aperture coercive base = PROVED
 - PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
@@ -21,7 +21,7 @@ THEOREM AUTHORITY
 - RH = OPEN
 
 CURRENT RESEARCH FRONTIER
-- current candidate PR = #282 / GENERATED_PRODUCTION_CONTACT_FRONTIER_CANDIDATE
+- current candidate PR = #283 / CANONICAL_COMPRESSED_CONTACT_CALCULUS_CANDIDATE
 - candidate theorem-validation head = RUNTIME_PR_HEAD_REQUIRED
 - candidate theorem-validation status = CI_PENDING_EXACT_HEAD_RUNTIME_RECEIPT_REQUIRED
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
@@ -29,9 +29,9 @@ CURRENT RESEARCH FRONTIER
 - global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
-- active subobligation = GENERATED_PRODUCTION_DERIVATIVE_ADMISSIBILITY_AND_CURVATURE_IDENTITY
-- next research target = GENERATED_PRODUCTION_CONTACT_ARITHMETIC_BRIDGE
-- required new information = EXACT_WEIGHTED_PRODUCTION_DIFFERENTIATION_AND_CONTACT_CONDITIONED_ARITHMETIC_EXCLUSION
+- active subobligation = OBS-060N_COMPRESSED_PRODUCTION_DERIVATIVE_AND_ADMISSIBILITY_BRIDGE
+- next research target = POST282_CANONICAL_CONTACT_CALCULUS_AND_INHERITED_SATURATION
+- required new information = EXACT_COMPRESSED_C2_WEIGHTED_PRODUCTION_CALCULUS_AND_CONTACT_CONDITIONED_ARITHMETIC_EXCLUSION
 - RH-sufficient terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE
@@ -51,6 +51,15 @@ RESEARCH / CONTROL FIREWALL
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#282 / PR #283 complete candidate route
+
+PR #283 now contains the full planned post-#282 candidate implementation. The formal source chain includes compressed C2 across seams; weighted global/physical k1/k2/kM authority; concrete normal/remainder admissibility and value authority; explicit first/fixed-second/mixed production derivative identities; an arbitrary-dimensional stationary Schur theorem; its generated strict-even specialization; inherited stationarity; and a completed fresh-born/stationary frontier with exact saturation and positive concrete remainder.
+
+The accompanying research package contains exact directed dyadic Arb serialization, independent K=2/log(2) derivative/remainder/balance qualification, validated response/inverse receipts, independent physical remainder evaluation, frozen/reoptimized channel ablations, provenance guards, adversarial result checks, and eligibility-derived X01 disposition.
+
+This is **IMPLEMENTED CANDIDATE / PENDING EXACT-HEAD VALIDATION**, not theorem authority. The merged theorem anchor remains PR #282. The next mathematical target after validation is OBS-060O: a canonical contact-conditioned arithmetic exclusion of the exact stationary saturation equality. Odd/tie closure and RH remain OPEN.
+
 
 ## Post-#281 generated production contact candidate
 
@@ -522,3 +531,25 @@ The resonant branch carries exact `1/(-lambda)` kernel-coordinate amplification.
 Pair B remains the independent fallback. R001 scalar prime-upper and universal two-translate determinant-bank positivity are already RH-equivalent formulations, not cheap auxiliary estimates. R004 still lacks its analytic generator/gap/limit chain.
 
 **RH remains OPEN.**
+
+
+## Post-#282 contact-calculus implementation
+
+PR #283 introduces a versioned compressed-first production-calculus lane. New candidate modules are `CanonicalCompressedApertureC2`, `ProductionWeightedTestCalculus`, `StationarySchurContact`, `FirstCrossingInheritedStationarity`, and `RHRC.ContactCalculusContract`. Research qualification lives in `post282_contact_calculus.py` / `canonical_contact_balance_arb.py` with exact dyadic interval serialization. Until exact CI passes these are candidates, not theorem authority. OBS-060O, odd/tie closure, and RH remain OPEN.
+
+## Post-#282 candidate claim bindings
+
+The four post-#282 supporting theorem families now have collision-checked
+registry IDs and fail-closed OPEN candidate bindings:
+
+- `R003_COMPRESSED_PRODUCTION_C2`;
+- `R003_WEIGHTED_PRODUCTION_PAIR_BALANCE`;
+- `R003_INHERITED_FIRST_VARIATION_RESTRICTION`;
+- `R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER`.
+
+Their exact Lean declarations are audited in both `ClaimBindings.lean` and
+`RegisteredClaimBindings.lean`, and both JSON binding manifests carry
+`OPEN_PENDING_CI` candidate rows.  This is integration/audit coverage, not
+theorem promotion.  Exact-head validation is required before any status becomes
+`PROVED_UNCONDITIONAL`.  OBS-060O, odd/tie closure, and RH remain OPEN.
+

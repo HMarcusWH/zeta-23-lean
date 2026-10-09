@@ -43,10 +43,10 @@ The contact route uses the repository's existing IntrinsicPredecessorRegular reg
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #281
-- validated final head = d4c6d0804bc642cc6e93dba811cd890d474eb0d0
-- merge commit = 0c22ae4101d7ad3e0b1a81029fff1472c52a5750
-- tree = f729b05e6fee9f6fbeb9d18a65e26742086244f8
+- merged theorem authority = PR #282
+- validated final head = de2869d1614d71b5d851d7088be514901af11b74
+- merge commit = 01871f7d2256b1eac2dbd7967346954367c8eef9
+- tree = c7749d37c4b63270818c3fb0d7fb5dbc22638790
 - status = MERGED_GREEN_THEOREM_STATE
 - PR #275 full-space small-aperture coercive base = PROVED
 - PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
@@ -56,7 +56,7 @@ THEOREM AUTHORITY
 - RH = OPEN
 
 CURRENT RESEARCH FRONTIER
-- current candidate PR = #282 / GENERATED_PRODUCTION_CONTACT_FRONTIER_CANDIDATE
+- current candidate PR = #283 / CANONICAL_COMPRESSED_CONTACT_CALCULUS_CANDIDATE
 - candidate theorem-validation head = RUNTIME_PR_HEAD_REQUIRED
 - candidate theorem-validation status = CI_PENDING_EXACT_HEAD_RUNTIME_RECEIPT_REQUIRED
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
@@ -64,9 +64,9 @@ CURRENT RESEARCH FRONTIER
 - global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
-- active subobligation = GENERATED_PRODUCTION_DERIVATIVE_ADMISSIBILITY_AND_CURVATURE_IDENTITY
-- next research target = GENERATED_PRODUCTION_CONTACT_ARITHMETIC_BRIDGE
-- required new information = EXACT_WEIGHTED_PRODUCTION_DIFFERENTIATION_AND_CONTACT_CONDITIONED_ARITHMETIC_EXCLUSION
+- active subobligation = OBS-060N_COMPRESSED_PRODUCTION_DERIVATIVE_AND_ADMISSIBILITY_BRIDGE
+- next research target = POST282_CANONICAL_CONTACT_CALCULUS_AND_INHERITED_SATURATION
+- required new information = EXACT_COMPRESSED_C2_WEIGHTED_PRODUCTION_CALCULUS_AND_CONTACT_CONDITIONED_ARITHMETIC_EXCLUSION
 - RH-sufficient terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE
@@ -86,6 +86,30 @@ RESEARCH / CONTROL FIREWALL
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#282 / PR #283 complete contact-calculus candidate override
+
+PR #282 remains merged theorem authority. PR #283 now has the **entire planned post-#282 implementation surface in source** as a candidate pending exact-head compiler/CI validation.
+
+Implemented candidate formal chain:
+
+```text
+F01 actual compressed C2 through prime-power seams
+ -> F02 weighted physical/global production-test authority
+ -> F03 concrete normal/remainder admissibility and physical value authority
+ -> F04 explicit k1/k2/kM derivative identities and Euler-corrected pair balance
+ -> F05 arbitrary-dimensional stationary Schur contact theorem
+ -> production specialization: actual stationary optimized curvature = 0
+ -> F06 inherited-kernel stationarity
+ -> F07 completed fresh-born / stationary production frontier
+```
+
+The stationary strict-even branch now has candidate source theorems deriving the unique perpendicular response, zero actual optimized curvature, exact production saturation, and strict positivity of the concrete remainder without caller-supplied legacy realization, curvature bridge, zero-curvature equality, arbitrary remainder, endpoint barrier, or RH premise. The inherited branch supplies stationarity internally.
+
+The numerical/evidence package N01-N04 is also implemented as a candidate: exact directed dyadic Arb intervals, K=2/log(2) derivative/remainder/balance qualification, validated bordered response and independent physical remainder, exact six-case channel ablations, and adversarial result/provenance guards. X01 now derives its inherited-contact disposition from an eligibility scan rather than a hard-coded conclusion; X02 remains a bounded projected-dilation diagnostic.
+
+**Nothing in this section is theorem authority yet.** Exact-head Lean/compiler/axiom/proof-escape and research workflow validation are still required. The next mathematical obstruction after validation is OBS-060O: find a genuinely canonical contact-conditioned arithmetic incompatibility with the exact stationary saturation equality, then close the odd/tie branches separately. RH remains OPEN.
+
 
 ## PR #282 generated production contact candidate override
 
@@ -1508,3 +1532,8 @@ The first theorem-extraction question for the next PR is whether opposite-good a
 `ExceptionalZero.ApertureFreedom` proves that a hypothetical off-line zero forces canonical badness at every sufficiently large aperture. Therefore an eventual large-`L` incompatibility may suffice; do not impose an unnecessary uniform-in-`L` theorem.
 
 **RH remains OPEN.**
+
+
+## Post-#282 contact-calculus candidate
+
+PR #282 is merged theorem authority. PR #283 is the active candidate for compressed-first real-aperture C2, weighted production-test authority, the Euler-corrected pair balance, actual stationary response, and inherited strict-even stationarity. These are candidate declarations until exact-head CI and axiom/proof-escape gates pass. Arithmetic saturation exclusion (OBS-060O), fresh-born transverse crossing, odd/tie closure, endpoint barriers, and RH remain OPEN.

@@ -4,7 +4,9 @@ RHRC complete registered-theorem compiler audit.
 This file is AUDIT_ONLY. It creates no theorem authority and proves no new
 mathematics. It makes the exact theorem names backing every current
 PROVED_UNCONDITIONAL registered claim explicit to Lean and prints each axiom
-surface. OPEN claims are intentionally absent. RH remains OPEN.
+surface. OPEN claims are absent from proved authority; post-#282 claims marked
+candidate_binding are additionally compiler/axiom audited in an explicit
+OPEN-candidate section and remain non-promoted. RH remains OPEN.
 -/
 
 import Zeta23.CCM.BoundaryFlatApproximation
@@ -80,6 +82,9 @@ import Zeta23.ExceptionalZero.GlobalParityBottomSignOpposition
 import Zeta23.CCM.CanonicalGroundContinuity
 import Zeta23.ExceptionalZero.GlobalParityBottomFirstContact
 import Zeta23.RHRC.ClosureStrengthAudit
+import Zeta23.CCM.CanonicalCompressedApertureC2
+import Zeta23.CCM.FirstCrossingProductionCurvatureBridge
+import Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier
 
 -- AUDIT_CANONICAL_ARITHMETIC_CRITERIA_RH_EQUIVALENCE
 #check Zeta23.ExceptionalZero.canonicalPrimeRemainderDominance_iff_riemannHypothesis
@@ -465,3 +470,26 @@ import Zeta23.RHRC.ClosureStrengthAudit
 -- AUDIT_UNIFORM_DOMINATION_IMPLIES_RH
 #check Zeta23.RHRC.riemannHypothesis_of_canonicalUniformDomination
 #print axioms Zeta23.RHRC.riemannHypothesis_of_canonicalUniformDomination
+
+
+-- Post-#282 OPEN candidate bindings.
+-- These declarations are compiler/axiom audited here but are NOT promoted
+-- registered theorem authority until exact-head validation succeeds and the
+-- corresponding registry statuses are explicitly promoted.
+
+-- R003_COMPRESSED_PRODUCTION_C2
+#check Zeta23.CCM.canonicalEvenCompressedC2_proved
+#print axioms Zeta23.CCM.canonicalEvenCompressedC2_proved
+
+-- R003_WEIGHTED_PRODUCTION_PAIR_BALANCE
+#check Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap
+#print axioms Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap
+
+-- R003_INHERITED_FIRST_VARIATION_RESTRICTION
+#check Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
+#print axioms Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited
+
+-- R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER
+#check Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier
+#print axioms Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier
+

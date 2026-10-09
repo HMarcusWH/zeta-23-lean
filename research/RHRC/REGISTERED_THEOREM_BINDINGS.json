@@ -561,5 +561,36 @@
       "source": "Zeta23/CCM/SourceNormalizationRepair.lean",
       "route": "R004_prolate_v2"
     }
+  ],
+  "candidate_scope": "OPEN_CANDIDATE_BINDINGS_AUDIT_ONLY_NOT_PROVED_AUTHORITY",
+  "candidate_bindings": [
+    {
+      "id": "R003_COMPRESSED_PRODUCTION_C2",
+      "theorem": "Zeta23.CCM.canonicalEvenCompressedC2_proved",
+      "source": "Zeta23/CCM/CanonicalCompressedApertureC2.lean",
+      "route": "R003_ccm_bridge",
+      "status": "OPEN_PENDING_CI"
+    },
+    {
+      "id": "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE",
+      "theorem": "Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap",
+      "source": "Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean",
+      "route": "R003_ccm_bridge",
+      "status": "OPEN_PENDING_CI"
+    },
+    {
+      "id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "theorem": "Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited",
+      "source": "Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean",
+      "route": "R003_ccm_bridge",
+      "status": "OPEN_PENDING_CI"
+    },
+    {
+      "id": "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER",
+      "theorem": "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier",
+      "source": "Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean",
+      "route": "R003_ccm_bridge",
+      "status": "OPEN_PENDING_CI"
+    }
   ]
 }

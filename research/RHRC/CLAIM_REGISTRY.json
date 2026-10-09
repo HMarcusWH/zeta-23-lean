@@ -1330,6 +1330,66 @@
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
       "note": "Merged-green PR #278. This proves counterexample-generated same-N zero contact existence; it does not prove a first-negative boundary, outgoing barrier, or RH."
+    },
+    {
+      "id": "R003_COMPRESSED_PRODUCTION_C2",
+      "statement": "For every finite even boundary-flat carrier size K, the actual parity-compressed canonical production family is C2 on the positive aperture axis, with the production first and second aperture jets as its derivatives.",
+      "status": "OPEN",
+      "dependencies": [
+        "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION"
+      ],
+      "source": "Zeta23/CCM/CanonicalCompressedApertureC2.lean",
+      "theorem": "Zeta23.CCM.canonicalEvenCompressedC2_proved",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "OPEN",
+      "candidate_binding": true,
+      "note": "PR #283 candidate theorem. Exact-head compiler/axiom/proof-escape validation is still pending, so this claim remains OPEN and is candidate-bound only. No RH or all-aperture positivity conclusion is asserted."
+    },
+    {
+      "id": "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE",
+      "statement": "For positive aperture L, K>=2, and arbitrary fixed legal even vectors z,w, the exact production saturation gap equals the actual contact second pairing plus the Euler correction 2*J1/L.",
+      "status": "OPEN",
+      "dependencies": [
+        "R003_COMPRESSED_PRODUCTION_C2",
+        "R003_CCM_RHS_IDENTITY"
+      ],
+      "source": "Zeta23/CCM/FirstCrossingProductionCurvatureBridge.lean",
+      "theorem": "Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "OPEN",
+      "candidate_binding": true,
+      "note": "PR #283 candidate theorem. The claim is intentionally OPEN until the exact PR head passes the dedicated formal gates. The theorem has no contact, response, curvature-bridge, endpoint-barrier, or RH premise."
+    },
+    {
+      "id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "statement": "At a generated strict-even contact with inherited index n<k, the actual production first variation of the selected normalized kernel vector is zero; hence inherited strict-even transverse crossing is excluded.",
+      "status": "OPEN",
+      "dependencies": [
+        "R003_COMPRESSED_PRODUCTION_C2",
+        "R003_SUCCESSOR_PREDECESSOR_NONNEGATIVITY"
+      ],
+      "source": "Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean",
+      "theorem": "Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "OPEN",
+      "candidate_binding": true,
+      "note": "PR #283 candidate theorem. This is a strict-even inherited-contact restriction only; it does not claim E1 annihilates the full inherited subspace, and it remains OPEN pending exact-head validation."
+    },
+    {
+      "id": "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER",
+      "statement": "Every generated strict-even contact lies in the completed production frontier: either a fresh-born first-order branch with negative first variation, or a stationary branch carrying the unique perpendicular actual response, zero optimized curvature, exact production saturation, and positive concrete remainder.",
+      "status": "OPEN",
+      "dependencies": [
+        "R003_COMPRESSED_PRODUCTION_C2",
+        "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE",
+        "R003_INHERITED_FIRST_VARIATION_RESTRICTION"
+      ],
+      "source": "Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean",
+      "theorem": "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier",
+      "route": "R003_ccm_bridge",
+      "promotion_cap": "OPEN",
+      "candidate_binding": true,
+      "note": "PR #283 candidate theorem. The endpoint is candidate-bound but not promoted before exact-head CI. It does not eliminate the stationary saturation branch, odd-selected contacts, parity ties/multiple kernels, or RH."
     }
   ]
 }

@@ -60,6 +60,18 @@ CLOSURE_ROOTS = [
     Path("Zeta23/CCM/FirstCrossingProductionSaturation.lean"),
     Path("Zeta23/CCM/GlobalParityFirstNegativeBoundary.lean"),
     Path("Zeta23/CCM/FirstCrossingGlobalAlignment.lean"),
+    Path("Zeta23/CCM/CanonicalCompressedSeamJets.lean"),
+    Path("Zeta23/CCM/CanonicalFrozenApertureC2.lean"),
+    Path("Zeta23/CCM/CanonicalCompressedApertureC2.lean"),
+    Path("Zeta23/CCM/ProductionWeightedTestCalculus.lean"),
+    Path("Zeta23/CCM/ProductionWeightedGlobalTests.lean"),
+    Path("Zeta23/CCM/ProductionNormalSourceAuthority.lean"),
+    Path("Zeta23/CCM/FirstCrossingProductionRemainderAuthority.lean"),
+    Path("Zeta23/CCM/ProductionPhysicalFunctionalCongruence.lean"),
+    Path("Zeta23/CCM/FirstCrossingProductionRemainderValueAuthority.lean"),
+    Path("Zeta23/CCM/StationarySchurContact.lean"),
+    Path("Zeta23/CCM/FirstCrossingInheritedStationarity.lean"),
+    Path("Zeta23/RHRC/ContactCalculusContract.lean"),
     Path("Zeta23/CCM/FirstCrossingProductionTests.lean"),
     Path("Zeta23/CCM/FirstCrossingProductionRemainder.lean"),
     Path("Zeta23/CCM/FirstCrossingProductionFirstVariation.lean"),
@@ -78,7 +90,9 @@ CLOSURE_ROOTS = [
     Path("Zeta23/Spectral.lean"),
 ]
 
-FORBIDDEN = re.compile(r"(?m)(^|\\W)(axiom|sorry|admit)(?=\\W|$)")
+# Match Lean proof-escape tokens at non-word boundaries, including indented code.
+# The raw regex must use \W, not \\W (which denotes a literal backslash).
+FORBIDDEN = re.compile(r"(?m)(^|\W)(axiom|sorry|admit)(?=\W|$)")
 
 
 def closure_roots() -> list[Path]:

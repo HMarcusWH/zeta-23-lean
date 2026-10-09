@@ -1,0 +1,104 @@
+{
+  "schema_version": "POST282_CONTACT_CALCULUS_OBLIGATIONS_v1",
+  "base_merge": "01871f7d2256b1eac2dbd7967346954367c8eef9",
+  "claim_firewall": "RH_OPEN",
+  "obligations": [
+    {
+      "id": "F01_COMPRESSED_C2",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "Zeta23.CCM.canonicalEvenCompressedC2_proved"
+    },
+    {
+      "id": "F02_WEIGHTED_TESTS",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "Zeta23.CCM.productionDerivativeWeightedTests_admissible"
+    },
+    {
+      "id": "F03_REMAINDER_AUTHORITY",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "Zeta23.CCM.productionContactRemainder_authority"
+    },
+    {
+      "id": "F04_PAIR_BALANCE",
+      "status": "OPEN_DERIVATIVE_TRANSPORT",
+      "target": "Zeta23.CCM.ProductionContactF04DerivativeAuthority (not yet constructed); Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap is conditional on it",
+      "required_hypothesis": "ProductionContactF04DerivativeAuthority L K"
+    },
+    {
+      "id": "F05_STATIONARY_CURVATURE",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "Zeta23.CCM.production_stationary_schur_curvature_eq_zero"
+    },
+    {
+      "id": "F06_INHERITED_STATIONARITY",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited"
+    },
+    {
+      "id": "F07_FRONTIER",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier",
+      "depends_on": [
+        "F04_PAIR_BALANCE"
+      ],
+      "scope": "F07 geometric branch is a candidate; arithmetic saturation has an explicit OPEN F04 premise"
+    },
+    {
+      "id": "N01_EXACT_INTERVAL_CODEC",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "DyadicInterval.from_arb directed endpoint codec"
+    },
+    {
+      "id": "N02_INDEPENDENT_CALIBRATION",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "K2/log2 derivative remainder balance widths <= 2^-80"
+    },
+    {
+      "id": "N03_RESPONSE_PHYSICAL_BALANCE",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "validated bordered response plus independent physical remainder and Euler-corrected balance"
+    },
+    {
+      "id": "N04_MATCHED_ADVERSARIAL_CONTROLS",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_CI",
+      "target": "six matched channel ablations plus protocol/result falsification guards"
+    },
+    {
+      "id": "X01_INHERITED_RESPONSE_INVESTIGATION",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_EXECUTION",
+      "target": "eligibility-derived inherited-contact response balance disposition"
+    },
+    {
+      "id": "X02_DILATION_RESIDUAL_INVESTIGATION",
+      "status": "CANDIDATE_IMPLEMENTED_PENDING_EXECUTION",
+      "target": "bounded projected-dilation defect panel"
+    },
+    {
+      "id": "OBS060O_SATURATION_EXCLUSION",
+      "status": "OPEN",
+      "target": "canonical arithmetic exclusion"
+    },
+    {
+      "id": "ODD_TIE_BRANCHES",
+      "status": "OPEN",
+      "target": "branch-complete contact exclusion"
+    },
+    {
+      "id": "RH",
+      "status": "OPEN",
+      "terminal": true
+    }
+  ],
+  "implementation_state": "F01_F03_F05_F06_F07_CANDIDATES_WITH_F04_DERIVATIVE_TRANSPORT_OPEN_PENDING_EXACT_HEAD_VALIDATION",
+  "candidate_claim_bindings": {
+    "status": "OPEN_CANDIDATE_BINDINGS_IMPLEMENTED_PENDING_EXACT_HEAD_CI",
+    "claims": [
+      "R003_COMPRESSED_PRODUCTION_C2",
+      "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE",
+      "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER"
+    ],
+    "promotion_rule": "Do not change these claims to PROVED_UNCONDITIONAL or move them into proved binding inventories until the exact candidate head passes compiler, axiom, proof-escape, premise-contract, registered-binding, and claim-validation gates.",
+    "terminal_effect": "NONE_RH_OPEN"
+  }
+}

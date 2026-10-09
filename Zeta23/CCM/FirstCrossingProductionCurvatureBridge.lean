@@ -1,5 +1,7 @@
 import Zeta23.CCM.FirstCrossingProductionResponse
 import Zeta23.CCM.FirstCrossingProductionSaturation
+import Zeta23.CCM.FirstCrossingProductionRemainderValueAuthority
+import Zeta23.CCM.StationarySchurContact
 
 noncomputable section
 
@@ -197,8 +199,307 @@ theorem productionContactRemainderValue_pos_of_zeroCurvature_strictEven
   exact productionArithmeticRemainder_pos_of_saturation_strictEven
     (v := z) hL hK hzne hground hzero hodd hb hkappa
 
+/-- Corrected pair second-order quantity built from the actual compressed
+derivatives. -/
+def canonicalContactSecondPairing
+    (L : ℝ) (K : ℕ)
+    (z w : euclideanEvenBoundaryFlatSubspace K) : ℝ :=
+  productionContactFixedSecondVariation .even L K z +
+    2 * Complex.re (inner ℂ z (canonicalEvenApertureFirst L K w))
+
+/-- Actual optimized curvature: the second pairing evaluated at the unique
+perpendicular response. -/
+def canonicalOptimizedContactCurvature
+    {L : ℝ} (hL : 0 < L)
+    (K : ℕ) (hK : 2 ≤ K)
+    (z : euclideanEvenBoundaryFlatSubspace K)
+    (hzne : z ≠ 0) (hznorm : ‖z‖ = 1)
+    (hzero : evenCompressedCanonical L K z = 0)
+    (hodd : 0 < parityRayleighBottom .odd L K)
+    (hstationary :
+      productionContactFirstVariation .even L K z = 0) : ℝ :=
+  canonicalContactSecondPairing L K z
+    (canonicalStationaryEvenResponse
+      hL K hK z hzne hznorm hzero hodd hstationary)
+
+/-- Value-level decomposition of the concrete remainder into admitted normal,
+second-derivative, and mixed channels.  This does not identify the weighted
+evaluations with the compressed aperture derivatives; that is F04's open gate. -/
+theorem productionContactRemainderValue_physical_decomposition
+    {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 2 ≤ K)
+    (z w : euclideanEvenBoundaryFlatSubspace K) :
+    productionContactRemainderValue L K z w =
+      (2 * Real.pi) ^ 2 / L ^ 2 *
+        productionArithmeticRealValue L
+          (productionContactNormalPhysicalTest L K z) +
+      productionArithmeticRealValue L
+        (productionSecondDerivativePhysicalTest L K z) +
+      2 * productionArithmeticRealValue L
+        (productionMixedDerivativePhysicalTest L K z w) := by
+  have hn := productionContactNormalPhysical_admissible
+    hL K (by omega : 1 ≤ K) z
+  have hd := production_derivative_tests_admissible hL K z w
+  have hc := hn.smul (a := (2 * Real.pi) ^ 2 / L ^ 2)
+  have hm := hd.2.2.smul (a := 2)
+  rw [productionContactRemainderValue_eq_physicalTest hL K z w,
+    productionContactRemainderPhysicalTest_decomposition hL K z w]
+  rw [productionArithmeticRealValue_add_of_admissible (hc.add hd.2.1) hm]
+  rw [productionArithmeticRealValue_add_of_admissible hc hd.2.1]
+  rw [productionArithmeticRealValue_smul_of_admissible hn]
+  rw [productionArithmeticRealValue_smul_of_admissible hd.2.2]
+
+/-- This is the strongest unconditional value calculation available from the
+admitted physical-test decomposition.  No differentiation under the varying
+aperture or through the prime staircase is asserted. -/
+theorem productionContactSaturationGap_eq_physical_second_mixed
+    {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 2 ≤ K)
+    (z w : euclideanEvenBoundaryFlatSubspace K) :
+    productionContactSaturationGap L K z w =
+      productionArithmeticRealValue L
+        (productionSecondDerivativePhysicalTest L K z) +
+      2 * productionArithmeticRealValue L
+        (productionMixedDerivativePhysicalTest L K z w) := by
+  unfold productionContactSaturationGap
+  rw [productionContactRemainderValue_physical_decomposition hL K hK z w]
+  rw [productionContactNormalPhysicalValue_eq_sourceValue
+    hL K (by omega : 1 ≤ K) z]
+  ring
+
+/-- F04 arithmetic derivative transport is a separate, presently OPEN
+mathematical obligation.  Fixed-L weighted admissibility is not enough to
+differentiate the L-dependent complete physical functional.  This proposition
+is an explicit hypothesis, NOT an axiom and NOT an established theorem. -/
+structure ProductionContactF04DerivativeAuthority
+    (L : ℝ) (K : ℕ) : Prop where
+  first : ∀ z : euclideanEvenBoundaryFlatSubspace K,
+    productionContactFirstVariation .even L K z =
+      productionArithmeticRealValue L
+        (productionFirstDerivativePhysicalTest L K z)
+  fixedSecondEuler : ∀ z : euclideanEvenBoundaryFlatSubspace K,
+    productionContactFixedSecondVariation .even L K z +
+      2 * productionContactFirstVariation .even L K z / L =
+        productionArithmeticRealValue L
+          (productionSecondDerivativePhysicalTest L K z)
+  mixed : ∀ z w : euclideanEvenBoundaryFlatSubspace K,
+    Complex.re (inner ℂ z (canonicalEvenApertureFirst L K w)) =
+      productionArithmeticRealValue L
+        (productionMixedDerivativePhysicalTest L K z w)
+
+/-- The Euler-corrected balance is a genuine implication of F04 derivative
+transport plus the unconditional value decomposition, not a premise-free
+arithmetic identity. -/
+theorem canonicalSecondPairing_euler_eq_productionSaturationGap
+    {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 2 ≤ K)
+    (z w : euclideanEvenBoundaryFlatSubspace K)
+    (hF04 : ProductionContactF04DerivativeAuthority L K) :
+    productionContactSaturationGap L K z w =
+      canonicalContactSecondPairing L K z w +
+        2 * productionContactFirstVariation .even L K z / L := by
+  rw [productionContactSaturationGap_eq_physical_second_mixed hL K hK z w,
+    ← hF04.fixedSecondEuler z, ← hF04.mixed z w]
+  unfold canonicalContactSecondPairing
+  ring
+
+/-! ## F04 explicit physical derivative identities -/
+
+/-- The real part of the mixed source derivative on the diagonal is the genuine
+real source-energy derivative. -/
+theorem sourceAtomPairingDerivative_self_re_eq_realEnergyDerivative
+    (K : ℕ)
+    (x : EuclideanSpace ℂ (Fin (2 * K + 1))) (ω : ℝ) :
+    Complex.re (sourceAtomPairingDerivative K x x ω) =
+      sourceAtomRealEnergyDerivative K x ω := by
+  have hpair :
+      HasDerivAt
+        (fun s : ℝ => Complex.re (sourceAtomPairing K x x s))
+        (Complex.re (sourceAtomPairingDerivative K x x ω)) ω := by
+    exact Complex.reCLM.hasFDerivAt.comp_hasDerivAt ω
+      (hasDerivAt_sourceAtomPairing K x x ω)
+  have henergy :=
+    hasDerivAt_sourceAtomRealEnergy_transport K x ω
+  have hfun :
+      (fun s : ℝ => Complex.re (sourceAtomPairing K x x s)) =
+        sourceAtomRealEnergy K x := by
+    funext s
+    unfold sourceAtomPairing sourceAtomRealEnergy matrixRealEnergy quadraticForm
+    simp_rw [sourceMatrix_apply, sourceEntry_eq_ofReal]
+    congr 1
+    apply Finset.sum_congr rfl
+    intro i hi
+    apply Finset.sum_congr rfl
+    intro j hj
+    simp [Complex.real_smul]
+    ring
+  rw [hfun] at hpair
+  exact hpair.unique henergy
+
+/-- The mixed physical test specializes to the first-variation physical test
+when the response slot equals the state slot. -/
+theorem productionMixedDerivativePhysicalTest_self_eq_firstDerivativePhysicalTest
+    (L : ℝ) (K : ℕ)
+    (z : euclideanEvenBoundaryFlatSubspace K) :
+    productionMixedDerivativePhysicalTest L K z z =
+      productionFirstDerivativePhysicalTest L K z := by
+  funext t
+  unfold productionMixedDerivativePhysicalTest
+    productionFirstDerivativePhysicalTest productionPhysicalClamp
+  by_cases ht : t ∈ Set.Icc (0 : ℝ) L
+  · simp only [ht, if_pos]
+    unfold productionMixedDerivativePhysicalRaw
+      productionFirstDerivativePhysicalRaw
+    rw [sourceAtomPairingDerivative_self_re_eq_realEnergyDerivative]
+  · simp [ht]
+
+/-- With zero response, the concrete saturation gap is exactly the admitted
+Euler-weighted second physical test.  The normal source cancels against the
+same theorem-authoritative Q term. -/
+theorem productionContactSaturationGap_zeroResponse_eq_secondPhysical
+    {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 2 ≤ K)
+    (z : euclideanEvenBoundaryFlatSubspace K) :
+    productionContactSaturationGap L K z 0 =
+      productionArithmeticRealValue L
+        (productionSecondDerivativePhysicalTest L K z) := by
+  have hn :=
+    productionContactNormalPhysical_admissible hL K (by omega : 1 ≤ K) z
+  have hd := production_derivative_tests_admissible
+    hL K z (0 : euclideanEvenBoundaryFlatSubspace K)
+  have hs := hd.2.1
+  have hm0 :
+      productionMixedDerivativePhysicalTest L K z
+          (0 : euclideanEvenBoundaryFlatSubspace K) = 0 := by
+    funext t
+    simp [productionMixedDerivativePhysicalTest,
+      productionMixedDerivativePhysicalRaw, productionPhysicalClamp,
+      sourceAtomPairingDerivative]
+  unfold productionContactSaturationGap
+  rw [productionContactRemainderValue_eq_physicalTest hL K z 0]
+  rw [productionContactRemainderPhysicalTest_decomposition hL K z 0]
+  rw [hm0]
+  simp only [Pi.zero_apply, mul_zero, add_zero]
+  rw [productionArithmeticRealValue_add_of_admissible
+    (hn.smul (a := (2 * Real.pi) ^ 2 / L ^ 2)) hs]
+  rw [productionArithmeticRealValue_smul_of_admissible hn]
+  rw [productionContactNormalPhysicalValue_eq_sourceValue
+    hL K (by omega : 1 ≤ K) z]
+  ring
+
+/-- Changing only the response slot changes the concrete remainder by exactly
+twice the admitted mixed physical test. -/
+theorem productionContactRemainderValue_eq_zeroResponse_add_two_mixedPhysical
+    {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 2 ≤ K)
+    (z w : euclideanEvenBoundaryFlatSubspace K) :
+    productionContactRemainderValue L K z w =
+      productionContactRemainderValue L K z 0 +
+        2 * productionArithmeticRealValue L
+          (productionMixedDerivativePhysicalTest L K z w) := by
+  have hR0 :=
+    productionContactRemainderPhysical_admissible
+      hL K (by omega : 1 ≤ K) z
+        (0 : euclideanEvenBoundaryFlatSubspace K)
+  have hd := production_derivative_tests_admissible hL K z w
+  have hm := hd.2.2
+  have hm0 :
+      productionMixedDerivativePhysicalTest L K z
+          (0 : euclideanEvenBoundaryFlatSubspace K) = 0 := by
+    funext t
+    simp [productionMixedDerivativePhysicalTest,
+      productionMixedDerivativePhysicalRaw, productionPhysicalClamp,
+      sourceAtomPairingDerivative]
+  have hfun :
+      productionContactRemainderPhysicalTest L K z w =
+        fun t =>
+          productionContactRemainderPhysicalTest L K z 0 t +
+            2 * productionMixedDerivativePhysicalTest L K z w t := by
+    rw [productionContactRemainderPhysicalTest_decomposition hL K z w,
+      productionContactRemainderPhysicalTest_decomposition hL K z 0,
+      hm0]
+    funext t
+    simp
+  rw [productionContactRemainderValue_eq_physicalTest hL K z w,
+      productionContactRemainderValue_eq_physicalTest hL K z 0,
+      hfun]
+  rw [productionArithmeticRealValue_add_of_admissible
+    hR0 (hm.smul (a := 2))]
+  rw [productionArithmeticRealValue_smul_of_admissible hm]
+
+/-- Response variation of the saturation gap is exactly the mixed physical
+authority. -/
+theorem productionContactSaturationGap_eq_zeroResponse_add_two_mixedPhysical
+    {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 2 ≤ K)
+    (z w : euclideanEvenBoundaryFlatSubspace K) :
+    productionContactSaturationGap L K z w =
+      productionContactSaturationGap L K z 0 +
+        2 * productionArithmeticRealValue L
+          (productionMixedDerivativePhysicalTest L K z w) := by
+  unfold productionContactSaturationGap
+  rw [productionContactRemainderValue_eq_zeroResponse_add_two_mixedPhysical
+    hL K hK z w]
+  ring
+
+/-- Explicit F04 mixed identity:
+Re <z,E1 w> is the admitted complete physical evaluation of kM. -/
+theorem canonicalMixedFirstVariation_eq_physical
+    {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 2 ≤ K)
+    (z w : euclideanEvenBoundaryFlatSubspace K)
+    (hF04 : ProductionContactF04DerivativeAuthority L K) :
+    Complex.re (inner ℂ z (canonicalEvenApertureFirst L K w)) =
+      productionArithmeticRealValue L
+        (productionMixedDerivativePhysicalTest L K z w) := by
+  exact hF04.mixed z w
+
+/-- Explicit F04 first identity:
+J1 is the admitted complete physical evaluation of k1. -/
+theorem canonicalFirstVariation_eq_physical
+    {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 2 ≤ K)
+    (z : euclideanEvenBoundaryFlatSubspace K)
+    (hF04 : ProductionContactF04DerivativeAuthority L K) :
+    productionContactFirstVariation .even L K z =
+      productionArithmeticRealValue L
+        (productionFirstDerivativePhysicalTest L K z) := by
+  exact hF04.first z
+
+/-- Explicit F04 Euler-corrected fixed-second identity:
+J2_fixed + 2 J1/L is the admitted complete physical evaluation of k2. -/
+theorem canonicalFixedSecondEuler_eq_physical
+    {L : ℝ} (hL : 0 < L) (K : ℕ) (hK : 2 ≤ K)
+    (z : euclideanEvenBoundaryFlatSubspace K)
+    (hF04 : ProductionContactF04DerivativeAuthority L K) :
+    productionContactFixedSecondVariation .even L K z +
+        2 * productionContactFirstVariation .even L K z / L =
+      productionArithmeticRealValue L
+        (productionSecondDerivativePhysicalTest L K z) := by
+  exact hF04.fixedSecondEuler z
+
+/-- Stationary specialization: Euler correction disappears. -/
+theorem canonicalStationaryCurvature_eq_productionSaturationGap
+    {L : ℝ} (hL : 0 < L)
+    (K : ℕ) (hK : 2 ≤ K)
+    (z : euclideanEvenBoundaryFlatSubspace K)
+    (hzne : z ≠ 0) (hznorm : ‖z‖ = 1)
+    (hzero : evenCompressedCanonical L K z = 0)
+    (hodd : 0 < parityRayleighBottom .odd L K)
+    (hstationary :
+      productionContactFirstVariation .even L K z = 0)
+    (hF04 : ProductionContactF04DerivativeAuthority L K) :
+    canonicalOptimizedContactCurvature
+        hL K hK z hzne hznorm hzero hodd hstationary =
+      productionContactSaturationGap L K z
+        (canonicalStationaryEvenResponse
+          hL K hK z hzne hznorm hzero hodd hstationary) := by
+  have h :=
+    canonicalSecondPairing_euler_eq_productionSaturationGap
+      hL K hK z
+        (canonicalStationaryEvenResponse
+          hL K hK z hzne hznorm hzero hodd hstationary) hF04
+  simpa [canonicalOptimizedContactCurvature, hstationary] using h.symm
+
 end Zeta23.CCM
 
+#print axioms Zeta23.CCM.canonicalFirstVariation_eq_physical
+#print axioms Zeta23.CCM.canonicalFixedSecondEuler_eq_physical
+#print axioms Zeta23.CCM.canonicalMixedFirstVariation_eq_physical
+#print axioms Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap
+#print axioms Zeta23.CCM.canonicalStationaryCurvature_eq_productionSaturationGap
 #print axioms Zeta23.CCM.productionContactOptimizedCurvature_eq_fixedSecond_sub_response
 #print axioms Zeta23.CCM.productionContactResponseCost_nonnegative
 #print axioms Zeta23.CCM.productionOptimizedCurvatureBridge_of_concreteIdentity

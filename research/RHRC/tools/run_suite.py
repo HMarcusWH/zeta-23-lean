@@ -47,6 +47,7 @@ def main() -> int:
     run([sys.executable, "-m", "unittest", "discover", "-s", str(ROOT / "integration" / "tests"), "-p", "test_*.py", "-v"])
     run([sys.executable, str(ROOT / "integration" / "integration_lint.py")])
     run([sys.executable, str(ROOT / "routes" / "R003_ccm_bridge" / "check_post281_generated_contact_build.py")])
+    run([sys.executable, str(ROOT / "routes" / "R003_ccm_bridge" / "check_post282_contact_calculus_contract.py")])
     contact_quotient = ROOT / "routes" / "R003_ccm_bridge" / "contact_quotient"
     # Heavy contact-quotient symbolic/countermodel tests run in the dedicated
     # R003 workflow, which installs the numerical research dependency set.

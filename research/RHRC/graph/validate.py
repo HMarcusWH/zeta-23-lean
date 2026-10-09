@@ -499,6 +499,12 @@ def main() -> int:
         "R001_PRIME_UPPER",
         "R002_WINDOWED_VISIBILITY",
         "R003_COFINAL_CANONICAL_ARITHMETIC_CERTIFICATES",
+        # PR #283 candidate-bound claims: OPEN pending exact-head validation,
+        # kept in lockstep with registered_theorem_binding_lint.EXPECTED_OPEN.
+        "R003_COMPRESSED_PRODUCTION_C2",
+        "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE",
+        "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+        "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER",
     }
     if open_claim_ids != expected_open_claim_ids:
         errors.append(

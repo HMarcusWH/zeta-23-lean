@@ -1,4 +1,5 @@
 import Zeta23.CCM.FirstCrossingProductionFirstVariation
+import Zeta23.CCM.CanonicalCompressedApertureC2
 import Zeta23.CCM.GlobalParityBottomSimplicity
 import Zeta23.CCM.RankOneEigenline
 import Mathlib.Analysis.InnerProductSpace.Symmetric
@@ -368,8 +369,264 @@ theorem stationaryEvenResponse_spec
     (existsUnique_stationaryEvenResponse
       hL K hK z hzne hznorm hzero hodd hoperator hstationary)).1
 
+/-- Stationarity makes the *actual compressed* derivative forcing orthogonal
+to the contact kernel. -/
+theorem inner_canonicalFirst_zero_of_stationary
+    {L : ℝ} (hL : 0 < L) (K : ℕ)
+    (z : euclideanEvenBoundaryFlatSubspace K)
+    (hstationary :
+      productionContactFirstVariation .even L K z = 0) :
+    inner ℂ (canonicalEvenApertureFirst L K z) z = 0 := by
+  have hre :
+      Complex.re (inner ℂ (canonicalEvenApertureFirst L K z) z) = 0 := by
+    rw [← canonicalEven_firstVariation_eq_inner hL K z]
+    exact hstationary
+  have hsym := canonicalEvenApertureFirst_isSymmetric hL K
+  have him :
+      Complex.im (inner ℂ (canonicalEvenApertureFirst L K z) z) = 0 := by
+    simpa using hsym.im_inner_apply_self z
+  apply Complex.ext <;> assumption
+
+/-- Actual stationary response with no legacy realization premise. -/
+theorem existsUnique_canonicalStationaryEvenResponse
+    {L : ℝ} (hL : 0 < L)
+    (K : ℕ) (hK : 2 ≤ K)
+    (z : euclideanEvenBoundaryFlatSubspace K)
+    (hzne : z ≠ 0)
+    (hznorm : ‖z‖ = 1)
+    (hzero : evenCompressedCanonical L K z = 0)
+    (hodd : 0 < parityRayleighBottom .odd L K)
+    (hstationary :
+      productionContactFirstVariation .even L K z = 0) :
+    ∃! w : euclideanEvenBoundaryFlatSubspace K,
+      inner ℂ z w = 0 ∧
+      evenCompressedCanonical L K w =
+        -(canonicalEvenApertureFirst L K z) := by
+  let E := evenCompressedCanonical L K
+  let b := canonicalEvenApertureFirst L K z
+  let phi : euclideanEvenBoundaryFlatSubspace K →ₗ[ℂ] ℂ := innerₛₗ ℂ z
+  have hzb : inner ℂ z b = 0 := by
+    rw [inner_eq_zero_symm]
+    simpa [b] using inner_canonicalFirst_zero_of_stationary hL K z hstationary
+  have hkerSpan : E.ker = ℂ ∙ z := by
+    apply le_antisymm
+    · intro x hx
+      obtain ⟨c,hc⟩ :=
+        strictEven_zeroKernel_is_line hL K hK z hzne hzero hodd x
+          (LinearMap.mem_ker.mp hx)
+      exact Submodule.mem_span_singleton.mpr ⟨c,hc⟩
+    · rw [Submodule.span_singleton_le_iff_mem]
+      exact LinearMap.mem_ker.mpr hzero
+  have hrange_eq : E.range = phi.ker := by
+    apply Submodule.eq_of_le_of_finrank_eq
+    · rintro _ ⟨x,rfl⟩
+      apply LinearMap.mem_ker.mpr
+      have hsym := parityCompressedCanonical_isSymmetric .even L K
+      simpa [E,phi] using
+        (show inner ℂ z (E x) = 0 by
+          calc
+            inner ℂ z (E x) = inner ℂ (E z) x := (hsym z x).symm
+            _ = 0 := by rw [hzero]; simp)
+    · have hker : Module.finrank ℂ E.ker = 1 := by
+        rw [hkerSpan, finrank_span_singleton hzne]
+      have hErank := E.finrank_range_add_finrank_ker
+      rw [hker] at hErank
+      have hphi_ne : phi ≠ 0 := by
+        apply DFunLike.ne_iff.mpr
+        refine ⟨z, ?_⟩
+        change inner ℂ z z ≠ 0
+        exact (inner_self_ne_zero).2 hzne
+      have hphirank :=
+        Module.Dual.finrank_ker_add_one_of_ne_zero (f := phi) hphi_ne
+      omega
+  have hb : -b ∈ E.range := by
+    rw [hrange_eq]
+    apply LinearMap.mem_ker.mpr
+    change inner ℂ z (-b) = 0
+    rw [inner_neg_right, hzb, neg_zero]
+  obtain ⟨w0, hw0⟩ := hb
+  have hzz : inner ℂ z z = 1 := by
+    rw [inner_self_eq_norm_sq_to_K, hznorm]
+    norm_num
+  have hzzAmbient :
+      inner ℂ
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1))) = 1 := by
+    simpa using hzz
+  let w := w0 - (inner ℂ z w0) • z
+  have hperp : inner ℂ z w = 0 := by
+    dsimp [w]
+    rw [inner_sub_right, inner_smul_right]
+    change
+      inner ℂ
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (w0 : EuclideanSpace ℂ (Fin (2 * K + 1))) -
+        inner ℂ
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (w0 : EuclideanSpace ℂ (Fin (2 * K + 1))) *
+        inner ℂ
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+          (z : EuclideanSpace ℂ (Fin (2 * K + 1))) = 0
+    rw [hzzAmbient]
+    ring
+  have hsolve : E w = -b := by
+    dsimp [w]
+    rw [map_sub,map_smul,hzero,smul_zero,sub_zero]
+    exact hw0
+  refine ⟨w,⟨hperp,by simpa [E,b] using hsolve⟩,?_⟩
+  intro y hy
+  have hdiff : E (y-w)=0 := by
+    rw [map_sub,hy.2,hsolve,sub_self]
+  obtain ⟨c,hc⟩ :=
+    strictEven_zeroKernel_is_line hL K hK z hzne hzero hodd (y-w) hdiff
+  have horth : inner ℂ z (y-w)=0 := by
+    rw [inner_sub_right,hy.1,hperp,sub_self]
+  have hcz : inner ℂ z (c • z) = 0 := by
+    rw [hc, horth]
+  have hczAmbient :
+      inner ℂ
+        (z : EuclideanSpace ℂ (Fin (2 * K + 1)))
+        (c • (z : EuclideanSpace ℂ (Fin (2 * K + 1)))) = 0 := by
+    simpa using hcz
+  have hc0 : c = 0 := by
+    rw [inner_smul_right, hzzAmbient] at hczAmbient
+    simpa using hczAmbient
+  have hyw : y - w = 0 := by
+    rw [← hc, hc0, zero_smul]
+  exact sub_eq_zero.mp hyw
+
+noncomputable def canonicalStationaryEvenResponse
+    {L : ℝ} (hL : 0 < L)
+    (K : ℕ) (hK : 2 ≤ K)
+    (z : euclideanEvenBoundaryFlatSubspace K)
+    (hzne : z ≠ 0)
+    (hznorm : ‖z‖ = 1)
+    (hzero : evenCompressedCanonical L K z = 0)
+    (hodd : 0 < parityRayleighBottom .odd L K)
+    (hstationary :
+      productionContactFirstVariation .even L K z = 0) :
+    euclideanEvenBoundaryFlatSubspace K :=
+  Classical.choose
+    (existsUnique_canonicalStationaryEvenResponse
+      hL K hK z hzne hznorm hzero hodd hstationary)
+
+theorem canonicalStationaryEvenResponse_spec
+    {L : ℝ} (hL : 0 < L)
+    (K : ℕ) (hK : 2 ≤ K)
+    (z : euclideanEvenBoundaryFlatSubspace K)
+    (hzne : z ≠ 0)
+    (hznorm : ‖z‖ = 1)
+    (hzero : evenCompressedCanonical L K z = 0)
+    (hodd : 0 < parityRayleighBottom .odd L K)
+    (hstationary :
+      productionContactFirstVariation .even L K z = 0) :
+    inner ℂ z
+        (canonicalStationaryEvenResponse
+          hL K hK z hzne hznorm hzero hodd hstationary) = 0 ∧
+      evenCompressedCanonical L K
+        (canonicalStationaryEvenResponse
+          hL K hK z hzne hznorm hzero hodd hstationary) =
+        -(canonicalEvenApertureFirst L K z) :=
+  (Classical.choose_spec
+    (existsUnique_canonicalStationaryEvenResponse
+      hL K hK z hzne hznorm hzero hodd hstationary)).1
+
+
+/-- The unique actual stationary response is covariant under simultaneous
+unit-phase rotation of the normalized kernel vector. -/
+theorem canonicalStationaryEvenResponse_unitPhase
+    {L : ℝ} (hL : 0 < L)
+    (K : ℕ) (hK : 2 ≤ K)
+    (u : ℂ) (hu : ‖u‖ = 1)
+    (z : euclideanEvenBoundaryFlatSubspace K)
+    (hzne : z ≠ 0)
+    (hznorm : ‖z‖ = 1)
+    (hzero : evenCompressedCanonical L K z = 0)
+    (hodd : 0 < parityRayleighBottom .odd L K)
+    (hstationary :
+      productionContactFirstVariation .even L K z = 0) :
+    canonicalStationaryEvenResponse
+        hL K hK (u • z)
+        (by
+          have hu0 : u ≠ 0 := by
+            intro h
+            rw [h, norm_zero] at hu
+            norm_num at hu
+          exact smul_ne_zero hu0 hzne)
+        (by simp [norm_smul, hu, hznorm])
+        (by simp [map_smul, hzero])
+        hodd
+        (by
+          rw [productionContactFirstVariation_unitPhase hL K u hu z,
+              hstationary]) =
+      u • canonicalStationaryEvenResponse
+        hL K hK z hzne hznorm hzero hodd hstationary := by
+  have hu0 : u ≠ 0 := by
+    intro h
+    rw [h, norm_zero] at hu
+    norm_num at hu
+  have hzne' : u • z ≠ 0 := smul_ne_zero hu0 hzne
+  have hznorm' : ‖u • z‖ = 1 := by
+    simp [norm_smul, hu, hznorm]
+  have hzero' : evenCompressedCanonical L K (u • z) = 0 := by
+    simp [map_smul, hzero]
+  have hstationary' :
+      productionContactFirstVariation .even L K (u • z) = 0 := by
+    rw [productionContactFirstVariation_unitPhase hL K u hu z, hstationary]
+  let w :=
+    canonicalStationaryEvenResponse
+      hL K hK z hzne hznorm hzero hodd hstationary
+  have hw :=
+    canonicalStationaryEvenResponse_spec
+      hL K hK z hzne hznorm hzero hodd hstationary
+  have hunit : star u * u = 1 := by
+    change conj u * u = 1
+    rw [← Complex.normSq_eq_conj_mul_self, Complex.normSq_eq_norm_sq]
+    simp [hu]
+  have hcand :
+      inner ℂ (u • z) (u • w) = 0 ∧
+        evenCompressedCanonical L K (u • w) =
+          -(canonicalEvenApertureFirst L K (u • z)) := by
+    constructor
+    · calc
+        inner ℂ (u • z) (u • w) =
+            star u * inner ℂ z (u • w) :=
+          inner_smul_left (𝕜 := ℂ) z (u • w) u
+        _ = star u * (u * inner ℂ z w) := by
+          congr 1
+          exact inner_smul_right (𝕜 := ℂ) z w u
+        _ = (star u * u) * inner ℂ z w := by
+          ring
+        _ = 0 := by
+          rw [hunit, one_mul, hw.1]
+    · calc
+        evenCompressedCanonical L K (u • w) =
+            u • evenCompressedCanonical L K w := by
+          rw [map_smul]
+        _ = u • (-(canonicalEvenApertureFirst L K z)) := by
+          rw [hw.2]
+        _ = -(u • canonicalEvenApertureFirst L K z) := by
+          rw [smul_neg]
+        _ = -(canonicalEvenApertureFirst L K (u • z)) := by
+          rw [map_smul]
+  have hrot :=
+    canonicalStationaryEvenResponse_spec
+      hL K hK (u • z) hzne' hznorm' hzero' hodd hstationary'
+  have huniq :=
+    existsUnique_canonicalStationaryEvenResponse
+      hL K hK (u • z) hzne' hznorm' hzero' hodd hstationary'
+  change
+    canonicalStationaryEvenResponse
+        hL K hK (u • z) hzne' hznorm' hzero' hodd hstationary' =
+      u • w
+  exact huniq.unique hrot hcand
+
+
 end Zeta23.CCM
 
+#print axioms Zeta23.CCM.existsUnique_canonicalStationaryEvenResponse
+#print axioms Zeta23.CCM.canonicalStationaryEvenResponse_spec
+#print axioms Zeta23.CCM.canonicalStationaryEvenResponse_unitPhase
 #print axioms Zeta23.CCM.evenResponseContactOperator_isSymmetric
 #print axioms Zeta23.CCM.strictEven_zeroKernel_is_line
 #print axioms Zeta23.CCM.inner_firstDerivative_zero_of_stationary

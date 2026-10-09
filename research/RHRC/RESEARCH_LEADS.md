@@ -44,10 +44,10 @@ The broader reusable heuristic survives: search for two genuinely independent co
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #281
-- validated final head = d4c6d0804bc642cc6e93dba811cd890d474eb0d0
-- merge commit = 0c22ae4101d7ad3e0b1a81029fff1472c52a5750
-- tree = f729b05e6fee9f6fbeb9d18a65e26742086244f8
+- merged theorem authority = PR #282
+- validated final head = de2869d1614d71b5d851d7088be514901af11b74
+- merge commit = 01871f7d2256b1eac2dbd7967346954367c8eef9
+- tree = c7749d37c4b63270818c3fb0d7fb5dbc22638790
 - status = MERGED_GREEN_THEOREM_STATE
 - PR #275 full-space small-aperture coercive base = PROVED
 - PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
@@ -57,7 +57,7 @@ THEOREM AUTHORITY
 - RH = OPEN
 
 CURRENT RESEARCH FRONTIER
-- current candidate PR = #282 / GENERATED_PRODUCTION_CONTACT_FRONTIER_CANDIDATE
+- current candidate PR = #283 / CANONICAL_COMPRESSED_CONTACT_CALCULUS_CANDIDATE
 - candidate theorem-validation head = RUNTIME_PR_HEAD_REQUIRED
 - candidate theorem-validation status = CI_PENDING_EXACT_HEAD_RUNTIME_RECEIPT_REQUIRED
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
@@ -65,9 +65,9 @@ CURRENT RESEARCH FRONTIER
 - global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
-- active subobligation = GENERATED_PRODUCTION_DERIVATIVE_ADMISSIBILITY_AND_CURVATURE_IDENTITY
-- next research target = GENERATED_PRODUCTION_CONTACT_ARITHMETIC_BRIDGE
-- required new information = EXACT_WEIGHTED_PRODUCTION_DIFFERENTIATION_AND_CONTACT_CONDITIONED_ARITHMETIC_EXCLUSION
+- active subobligation = OBS-060N_COMPRESSED_PRODUCTION_DERIVATIVE_AND_ADMISSIBILITY_BRIDGE
+- next research target = POST282_CANONICAL_CONTACT_CALCULUS_AND_INHERITED_SATURATION
+- required new information = EXACT_COMPRESSED_C2_WEIGHTED_PRODUCTION_CALCULUS_AND_CONTACT_CONDITIONED_ARITHMETIC_EXCLUSION
 - RH-sufficient terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE
@@ -87,6 +87,27 @@ RESEARCH / CONTROL FIREWALL
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#282 / PR #283 next lead — exclude exact stationary saturation
+
+PR #283 now implements the planned contact calculus as a candidate. The useful question therefore moves downstream. In the stationary strict-even branch, the candidate theorem chain forces
+
+[
+mathcal A_{L_*}[R_{L_*,z,w}]
+=
+rac{(2pi)^2}{L_*^2}mathcal Q(L_*,z),
+qquad
+mathcal Q(L_*,z)>0,
+]
+
+with (w) the unique perpendicular actual response. Re-proving the derivative calculus in another coordinate system would not add information.
+
+**LEAD — contact-conditioned arithmetic exclusion.** Search for an independently theoremizable property of the exact generated contact/remainder forcing the two sides above to differ. Useful candidates must spend canonical pole/archimedean/von-Mangoldt, prime-seam, source-moment, or generated-contact information that is absent from generic Hermitian crossing controls.
+
+**FALSIFICATION RULE.** Any proposed inequality or rigidity law should first be attacked on the matched frozen/reoptimized channel ablations, zero-von-Mangoldt seams, generic touch/crossing controls, and the exact frozen selected panel. A law that merely restates zero curvature or the saturation equality is circular and is not a new lead.
+
+**BRANCH RULE.** Strict-even stationary progress does not close tie or odd-selected branches. Those remain separate obligations. RH remains OPEN.
+
 
 ## Post-#281 / PR #282 generated-contact leads
 
@@ -966,3 +987,10 @@ The resonant branch has exact `1/(-lambda)` amplification. Test composition with
 Do not promote a zero-contact state without a same-state bridge from the retained negative-root certificate. Contact geometry remains a useful laboratory only.
 
 Pair B remains secondary and independent. **RH remains OPEN.**
+
+
+## POST282_COMPRESSED_CONTACT_CALCULUS
+
+**Status:** CANDIDATE / PR #283 / pending exact-head CI.
+
+Use the merged #282 generated global contact to prove compressed-first C2 aperture calculus, the admitted weighted production span, the Euler-corrected second-order pair balance, and inherited strict-even stationarity. The mathematical information target after this calculus is a production-specific saturation/equality exclusion or a branch-complete relative-energy law that survives the existing higher-order crossing countermodels. Arithmetic exclusion itself remains OPEN.

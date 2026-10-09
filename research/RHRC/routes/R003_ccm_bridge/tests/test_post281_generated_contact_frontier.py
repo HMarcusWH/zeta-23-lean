@@ -218,4 +218,10 @@ class GeneratedContactFrontierTests(unittest.TestCase):
         self.assertEqual(legacy["offset_powers"],[8,10,12])
         self.assertEqual(len(legacy["cases"]),11)
 
+    def test_dyadic_interval_codec_rejects_bool(self):
+        sys.path.insert(0,str(ROUTE.parents[3]/"research/RHRC/closure_batch"))
+        from interval_codec import DyadicInterval, IntervalCodecError
+        with self.assertRaises(IntervalCodecError):
+            DyadicInterval.from_json({"lo_num":False,"hi_num":1,"exp2":10})
+
 if __name__=="__main__": unittest.main()

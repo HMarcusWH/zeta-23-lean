@@ -1,0 +1,21 @@
+{
+  "schema_version": "POST282_MERGED_WORKFLOW_HARVEST_v1",
+  "pr": 282,
+  "validated_head": "de2869d1614d71b5d851d7088be514901af11b74",
+  "merge_commit": "01871f7d2256b1eac2dbd7967346954367c8eef9",
+  "tree": "c7749d37c4b63270818c3fb0d7fb5dbc22638790",
+  "original_run_cohort": {
+    "workflow_runs": 16,
+    "jobs": 41,
+    "success": 41,
+    "failure": 0,
+    "running": 0
+  },
+  "additional_same_head_replay": {
+    "run_id": 37157710493,
+    "jobs": 10,
+    "success": 10
+  },
+  "theorem_promotion_from_replays": false,
+  "terminal_claim": "RH_OPEN"
+}

@@ -1,7 +1,9 @@
 from pathlib import Path
+import tempfile
 import unittest
 
-from check_lean_proof_escapes import closure_roots
+from check_lean_proof_escapes import FORBIDDEN, check, closure_roots
+from lean_imports import strip_lean_comments
 
 
 EXPECTED = {
@@ -53,6 +55,18 @@ EXPECTED = {
     Path("Zeta23/CCM/FirstCrossingProductionSaturation.lean"),
     Path("Zeta23/CCM/GlobalParityFirstNegativeBoundary.lean"),
     Path("Zeta23/CCM/FirstCrossingGlobalAlignment.lean"),
+    Path("Zeta23/CCM/CanonicalCompressedSeamJets.lean"),
+    Path("Zeta23/CCM/CanonicalFrozenApertureC2.lean"),
+    Path("Zeta23/CCM/CanonicalCompressedApertureC2.lean"),
+    Path("Zeta23/CCM/ProductionWeightedTestCalculus.lean"),
+    Path("Zeta23/CCM/ProductionWeightedGlobalTests.lean"),
+    Path("Zeta23/CCM/ProductionNormalSourceAuthority.lean"),
+    Path("Zeta23/CCM/FirstCrossingProductionRemainderAuthority.lean"),
+    Path("Zeta23/CCM/ProductionPhysicalFunctionalCongruence.lean"),
+    Path("Zeta23/CCM/FirstCrossingProductionRemainderValueAuthority.lean"),
+    Path("Zeta23/CCM/StationarySchurContact.lean"),
+    Path("Zeta23/CCM/FirstCrossingInheritedStationarity.lean"),
+    Path("Zeta23/RHRC/ContactCalculusContract.lean"),
     Path("Zeta23/CCM/FirstCrossingProductionTests.lean"),
     Path("Zeta23/CCM/FirstCrossingProductionRemainder.lean"),
     Path("Zeta23/CCM/FirstCrossingProductionFirstVariation.lean"),
@@ -83,9 +97,42 @@ class LeanProofEscapeScopeTests(unittest.TestCase):
         roots = closure_roots()
         self.assertEqual(len(roots), len(set(roots)))
         self.assertEqual(set(roots), EXPECTED)
-        self.assertEqual(len(roots), 70)
+        self.assertEqual(len(roots), 82)
         for path in roots:
             self.assertTrue(path.is_file(), str(path))
+
+
+
+class LeanProofEscapeBehaviorTests(unittest.TestCase):
+    def test_rejects_escape_tokens_in_realistic_positions(self):
+        cases = {
+            "inline sorry": "theorem bogus : True := by sorry",
+            "indented sorry": "theorem bogus : True := by\n  sorry",
+            "inline admit": "example : True := by admit",
+            "indented axiom": "  axiom bogus : True",
+            "newline-separated": "theorem bogus : True := by\n    admit",
+        }
+        for label, source in cases.items():
+            with self.subTest(label=label):
+                self.assertIsNotNone(FORBIDDEN.search(strip_lean_comments(source)))
+
+    def test_ignores_comments_and_longer_identifiers(self):
+        source = (
+            "-- sorry admit axiom\n"
+            "/- axiom outside /- sorry nested -/ admit outside -/\n"
+            "def sorryAx := True\n"
+            "def axiomatic := True\n"
+            "def admitted := True\n"
+        )
+        self.assertIsNone(FORBIDDEN.search(strip_lean_comments(source)))
+
+    def test_mutated_lean_file_must_fail_audit(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            path = Path(tmpdir) / "ProofEscapeMutation.lean"
+            path.write_text("theorem injected : True := by\n  sorry\n", encoding="utf-8")
+            with self.assertRaises(SystemExit) as raised:
+                check([path])
+            self.assertIn("CLOSURE PROOF-ESCAPE CHECK: FAIL", str(raised.exception))
 
 
 if __name__ == "__main__":

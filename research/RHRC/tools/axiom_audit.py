@@ -18,6 +18,41 @@ STANDARD = {"propext", "Classical.choice", "Quot.sound"}
 REPORT = re.compile(r"'([^']+)' depends on axioms: \[([^\]]*)\]")
 NO_AXIOMS = re.compile(r"'([^']+)' does not depend on any axioms")
 
+# Require complete proof-authority receipts for the current contact-calculus
+# promotion surface. A successful unrelated #print must not hide a missing
+# frontier theorem report.
+EXPECTED_REPORTS: dict[str, set[str]] = {
+    "Zeta23/CCM/FirstCrossingGeneratedStrictEvenFrontier.lean": {
+        "Zeta23.CCM.GeneratedStrictEvenContact.firstOrder_is_fresh",
+        "Zeta23.CCM.GeneratedStrictEvenContact.production_frontier",
+        "Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited",
+        "Zeta23.CCM.GeneratedStrictEvenContact.production_stationary_saturation",
+        "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier",
+        "Zeta23.CCM.GeneratedStrictEvenContact.inherited_completed_production_frontier",
+        "Zeta23.CCM.GeneratedGlobalFirstCrossing.exists_generatedStrictEvenContact_of_evenStrict",
+        "Zeta23.CCM.GeneratedStrictEvenContact.frontier",
+        "Zeta23.CCM.GeneratedStrictEvenContact.sourceValue_pos",
+        "Zeta23.CCM.GeneratedStrictEvenContact.stationary_saturation_frontier",
+        "Zeta23.CCM.production_stationary_schur_curvature_eq_zero",
+        "Zeta23.CCM.GeneratedStrictEvenContact.actual_stationary_curvature_eq_zero",
+    },
+    "Zeta23/RHRC/ContactCalculusContract.lean": {
+        "Zeta23.CCM.canonicalFirstVariation_eq_physical",
+        "Zeta23.CCM.canonicalFixedSecondEuler_eq_physical",
+        "Zeta23.CCM.canonicalMixedFirstVariation_eq_physical",
+        "Zeta23.CCM.GeneratedStrictEvenContact.actual_stationary_curvature_eq_zero",
+        "Zeta23.CCM.GeneratedStrictEvenContact.production_stationary_saturation",
+        "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier",
+        "Zeta23.CCM.GeneratedStrictEvenContact.inherited_production_saturation",
+        "Zeta23.CCM.GeneratedStrictEvenContact.inherited_completed_production_frontier",
+    },
+}
+
+
+def missing_expected_reports(path: str, printed: set[str]) -> list[str]:
+    return sorted(EXPECTED_REPORTS.get(Path(path).as_posix(), set()) - printed)
+
+
 DEFAULT_MODULES = (
     "Zeta23/CCM/CanonicalPrimeRemainder.lean",
     "Zeta23/ExceptionalZero/CanonicalArithmeticCriterion.lean",
@@ -63,6 +98,10 @@ def audit(path: str) -> list[str]:
     clean = NO_AXIOMS.findall(output)
     if not reports and not clean:
         errors.append(f"{path}: no #print axioms report found")
+    printed = {name for name, _ in reports} | set(clean)
+    missing = missing_expected_reports(path, printed)
+    if missing:
+        errors.append(f"{path}: missing mandatory #print axioms reports: {missing}")
     for name, axioms in reports:
         used = {a.strip() for a in axioms.split(",") if a.strip()}
         extra = sorted(used - STANDARD)

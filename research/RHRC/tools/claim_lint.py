@@ -60,6 +60,18 @@ def lint(path: Path) -> list[str]:
         ancestors = [x for x in closure if x.id != c.id]
         item = by_id[c.id]
 
+        if item.get("candidate_binding") is True:
+            if c.status != "OPEN":
+                errors.append(f"{c.id}: candidate_binding claims must remain OPEN before exact-head promotion")
+            if caps[c.id] != "OPEN":
+                errors.append(f"{c.id}: candidate_binding promotion_cap must remain OPEN before promotion")
+            source = item.get("source")
+            theorem = item.get("theorem")
+            if not isinstance(source, str) or not source.endswith(".lean") or source.startswith("research/"):
+                errors.append(f"{c.id}: candidate_binding requires a non-research Lean source path")
+            if not isinstance(theorem, str) or not theorem:
+                errors.append(f"{c.id}: candidate_binding requires an exact Lean theorem identifier")
+
         if c.status == "PROVED_UNCONDITIONAL":
             bad = [x.id for x in ancestors if x.status != "PROVED_UNCONDITIONAL"]
             if bad:

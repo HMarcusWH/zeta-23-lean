@@ -37,10 +37,10 @@ The optional cubic pole strengthening is no longer on the critical path. All-ape
 ## Current RHRC state
 
 THEOREM AUTHORITY
-- merged theorem authority = PR #281
-- validated final head = d4c6d0804bc642cc6e93dba811cd890d474eb0d0
-- merge commit = 0c22ae4101d7ad3e0b1a81029fff1472c52a5750
-- tree = f729b05e6fee9f6fbeb9d18a65e26742086244f8
+- merged theorem authority = PR #282
+- validated final head = de2869d1614d71b5d851d7088be514901af11b74
+- merge commit = 01871f7d2256b1eac2dbd7967346954367c8eef9
+- tree = c7749d37c4b63270818c3fb0d7fb5dbc22638790
 - status = MERGED_GREEN_THEOREM_STATE
 - PR #275 full-space small-aperture coercive base = PROVED
 - PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
@@ -50,7 +50,7 @@ THEOREM AUTHORITY
 - RH = OPEN
 
 CURRENT RESEARCH FRONTIER
-- current candidate PR = #282 / GENERATED_PRODUCTION_CONTACT_FRONTIER_CANDIDATE
+- current candidate PR = #283 / CANONICAL_COMPRESSED_CONTACT_CALCULUS_CANDIDATE
 - candidate theorem-validation head = RUNTIME_PR_HEAD_REQUIRED
 - candidate theorem-validation status = CI_PENDING_EXACT_HEAD_RUNTIME_RECEIPT_REQUIRED
 - merged experimental research evidence = PR #273 / CERTIFIED_CURRENT_PRIME_GROUND_RESPONSE
@@ -58,9 +58,9 @@ CURRENT RESEARCH FRONTIER
 - global ground propagation strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - uniform domination strength = RH_SUFFICIENT_AUDIT_PROVED_PR_277
 - active obstruction = OBS-060_GROUND_SPECTRUM_FIRST_CROSSING_BARRIER
-- active subobligation = GENERATED_PRODUCTION_DERIVATIVE_ADMISSIBILITY_AND_CURVATURE_IDENTITY
-- next research target = GENERATED_PRODUCTION_CONTACT_ARITHMETIC_BRIDGE
-- required new information = EXACT_WEIGHTED_PRODUCTION_DIFFERENTIATION_AND_CONTACT_CONDITIONED_ARITHMETIC_EXCLUSION
+- active subobligation = OBS-060N_COMPRESSED_PRODUCTION_DERIVATIVE_AND_ADMISSIBILITY_BRIDGE
+- next research target = POST282_CANONICAL_CONTACT_CALCULUS_AND_INHERITED_SATURATION
+- required new information = EXACT_COMPRESSED_C2_WEIGHTED_PRODUCTION_CALCULUS_AND_CONTACT_CONDITIONED_ARITHMETIC_EXCLUSION
 - RH-sufficient terminal formulations are not counted as independent sub-RH progress
 
 FRAMEWORK / GRAPH STATE
@@ -80,6 +80,22 @@ RESEARCH / CONTROL FIREWALL
 - confirmatory execution = NOT AUTHORIZED
 - terminal claim = RH_OPEN
 <!-- RHRC_CURRENT_STATE_END -->
+
+## Post-#282 / PR #283 candidate obstruction refinement
+
+- **OBS-060N — compressed production derivative/admissibility bridge:** **CANDIDATE IMPLEMENTED / PENDING EXACT-HEAD CI.** The candidate source now contains actual compressed C2, weighted k1/k2/kM authority, concrete remainder admissibility/value authority, the Euler-corrected pair balance, and the arbitrary-dimensional stationary Schur specialization.
+- **OBS-060O — contact-conditioned production saturation exclusion:** **OPEN / NEXT MATHEMATICAL OBSTRUCTION.** On the candidate strict-even stationary branch the exact equality
+  [
+  mathcal A_{L_*}[R_{L_*,z,w}]
+  =
+  rac{(2pi)^2}{L_*^2}mathcal Q(L_*,z)
+  ]
+  is derived in source; what is not known is a canonical arithmetic reason this equality cannot occur at a generated contact.
+- **Odd/tie branch-complete exclusion:** **OPEN.**
+- **RH:** **OPEN.**
+
+This reclassification is conditional on exact-head validation of PR #283. Until those gates pass, OBS-060N is not PROVED and cannot be promoted to merged theorem authority. The research campaign is evidence/routing only and cannot supply the missing OBS-060O theorem.
+
 
 ## Post-#281 / PR #282 generated-contact refinement
 
@@ -850,3 +866,10 @@ The q13 research integer shell generator is only known to span the same one-dime
 **Consequence:** the next formal step must spend actual production structure and preserve normalization. Prefer an invariant/Hermitian envelope theorem attached to the proved fixed-cell `-log(L)I + remainder` decomposition. Only a source-specific remainder/contact inequality can supply the missing opposing orientation.
 
 **RH remains OPEN.**
+
+
+### OBS-060N post-#282 migration
+
+**Status: OPEN / ACTIVE; candidate implementation on PR #283 pending CI.**
+
+The current candidate treats derivatives of the legal compressed real-aperture family as the production object and retains the #282 ambient-entry derivatives as historical candidate interfaces. Discharging OBS-060N requires exact-head compiler/axiom evidence for compressed C2, weighted production authority, and the Euler-corrected pair balance. OBS-060O saturation/equality exclusion remains OPEN; no numerical calibration or green infrastructure job promotes it.
