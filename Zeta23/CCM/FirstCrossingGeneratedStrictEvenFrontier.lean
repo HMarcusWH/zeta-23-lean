@@ -660,7 +660,10 @@ private theorem production_stationary_schur_scalar_stationary
 /-- The generic stationary Schur geometry, stated at the raw aperture
 derivative pairing before identifying the optimized physical curvature.
 Passing the response explicitly avoids unfolding it in this proof target. -/
-private theorem production_stationary_schur_raw_pair_eq_zero
+/-- Contact geometry for the actual CLM-valued compressed family.
+The generic Schur theorem is applied here without unfolding the canonical
+jet identifications.  F04 remains an independent, explicit obligation. -/
+private theorem production_stationary_schur_generic_pair_eq_zero
     (c : GeneratedStrictEvenContact)
     (hstationary :
       productionContactFirstVariation .even c.generated.shell.Lstar
@@ -673,11 +676,13 @@ private theorem production_stationary_schur_raw_pair_eq_zero
         -(canonicalEvenApertureFirst c.generated.shell.Lstar
           (c.generated.shell.k + 1) c.z)) :
     Complex.re (inner ℂ
-      (canonicalEvenApertureSecondCLM c.generated.shell.Lstar
-        (c.generated.shell.k + 1) c.z) c.z) +
+      ((deriv (deriv (canonicalEvenCompressedFamilyCLM
+        (c.generated.shell.k + 1)))
+        c.generated.shell.Lstar) c.z) c.z) +
       2 * Complex.re (inner ℂ
-        (canonicalEvenApertureFirstCLM c.generated.shell.Lstar
-          (c.generated.shell.k + 1) w) c.z) = 0 := by
+        ((deriv (canonicalEvenCompressedFamilyCLM
+          (c.generated.shell.k + 1))
+          c.generated.shell.Lstar) w) c.z) = 0 := by
   let K := c.generated.shell.k + 1
   let L := c.generated.shell.Lstar
   let F :
@@ -736,6 +741,19 @@ private theorem production_stationary_schur_raw_pair_eq_zero
       _ = -((deriv F L) c.z) := by
         rw [hF1]
         rfl
+  have hleft :
+      ∀ y, c.generated.shell.Lsmall ≤ y → y ≤ L →
+        ∀ v : euclideanEvenBoundaryFlatSubspace K,
+          0 ≤ Complex.re (inner ℂ (F y v) v) := by
+    intro y hySmall hyStar v
+    change 0 ≤ Complex.re
+      (inner ℂ (canonicalEvenCompressedFamilyCLM K y v) v)
+    exact c.even_nonnegative_left y hySmall hyStar v
+  have hright :
+      ∀ ε > 0, ∃ y, L < y ∧ y < L + ε ∧
+        ∃ v : euclideanEvenBoundaryFlatSubspace K,
+          Complex.re (inner ℂ (F y v) v) < 0 := by
+    simpa only [L, K, F] using c.even_negative_direction_right
   have hgeneric :
       Complex.re (inner ℂ ((deriv (deriv F) L) c.z) c.z) +
         2 * Complex.re (inner ℂ ((deriv F L) w) c.z) = 0 :=
@@ -746,18 +764,47 @@ private theorem production_stationary_schur_raw_pair_eq_zero
       c.generated.shell.Lsmall_lt_Lstar
       c.generated.shell.Lstar_lt_Lneg
       hF hsym hz c.z_norm hker
-      (by
-        intro y hySmall hyStar v
-        exact c.even_nonnegative_left y hySmall hyStar v)
-      (by
-        intro ε hε
-        simpa only [L, K, F] using c.even_negative_direction_right ε hε)
+      hleft hright
       hstat hwperp hw
+  simpa only [F, L, K] using hgeneric
+
+/-- Identify the abstract Schur derivative pair with the two canonical aperture jets. -/
+private theorem production_stationary_schur_raw_pair_eq_zero
+    (c : GeneratedStrictEvenContact)
+    (hstationary :
+      productionContactFirstVariation .even c.generated.shell.Lstar
+        (c.generated.shell.k + 1) c.z = 0)
+    (w : euclideanEvenBoundaryFlatSubspace (c.generated.shell.k + 1))
+    (hwperp : inner ℂ c.z w = 0)
+    (hwresponse :
+      evenCompressedCanonical c.generated.shell.Lstar
+        (c.generated.shell.k + 1) w =
+        -(canonicalEvenApertureFirst c.generated.shell.Lstar
+          (c.generated.shell.k + 1) c.z)) :
+    Complex.re (inner ℂ
+      (canonicalEvenApertureSecondCLM c.generated.shell.Lstar
+        (c.generated.shell.k + 1) c.z) c.z) +
+      2 * Complex.re (inner ℂ
+        (canonicalEvenApertureFirstCLM c.generated.shell.Lstar
+          (c.generated.shell.k + 1) w) c.z) = 0 := by
+  let K := c.generated.shell.k + 1
+  let L := c.generated.shell.Lstar
+  have hgeneric :=
+    production_stationary_schur_generic_pair_eq_zero
+      c hstationary w hwperp hwresponse
+  have hF1 :
+      deriv (canonicalEvenCompressedFamilyCLM K) L =
+        canonicalEvenApertureFirstCLM L K :=
+    canonicalEvenCompressedFamily_deriv c.Lstar_pos K
   have hF2 :
-      deriv (deriv F) L = canonicalEvenApertureSecondCLM L K := by
-    change deriv (deriv (canonicalEvenCompressedFamilyCLM K)) L =
-      canonicalEvenApertureSecondCLM L K
-    exact canonicalEvenCompressedFamily_secondDeriv c.Lstar_pos K
+      deriv (deriv (canonicalEvenCompressedFamilyCLM K)) L =
+        canonicalEvenApertureSecondCLM L K :=
+    canonicalEvenCompressedFamily_secondDeriv c.Lstar_pos K
+  change
+    Complex.re (inner ℂ
+      ((deriv (deriv (canonicalEvenCompressedFamilyCLM K)) L) c.z) c.z) +
+      2 * Complex.re (inner ℂ
+        ((deriv (canonicalEvenCompressedFamilyCLM K) L) w) c.z) = 0 at hgeneric
   rw [hF2, hF1] at hgeneric
   simpa only [L, K] using hgeneric
 
