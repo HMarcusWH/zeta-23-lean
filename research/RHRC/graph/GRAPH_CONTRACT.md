@@ -587,6 +587,11 @@ The five living SSOT documents receive explicit document roles in
 The exact current `standalone_or_auxiliary` module set must equal the keys of
 `SEMANTIC_CLOSURE_CONFIG.json::standalone_module_roles`.
 
+A module that had a reviewed standalone disposition and later becomes
+entrypoint-reachable moves to `SEMANTIC_CLOSURE_CONFIG.json::reachable_module_roles`,
+keeping its reviewed role. That map is informational: it is not part of the
+equality check above and confers no theorem authority.
+
 This converts reachability from an unresolved orphan-like bucket into a reviewed
 operational disposition while preserving the constitutional rule that lack of
 entrypoint reachability does not imply irrelevance.
