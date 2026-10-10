@@ -44,7 +44,10 @@ jobs:
             Zeta23.CCM.SecularDeterminantKernel \
             Zeta23.CCM.CanonicalCenteredIndexCoercivity \
             Zeta23.CCM.CanonicalK2SourceSignInterval \
-            Zeta23.CCM.CanonicalPrimeFreeSecondTest
+            Zeta23.CCM.CanonicalPrimeFreeSecondTest \
+            Zeta23.CCM.CanonicalSecularResolvent \
+            Zeta23.CCM.CanonicalSourceExcursion \
+            Zeta23.CCM.CanonicalCenteredIndexPoincare
           do
             if lake build "$target"; then
               echo "$target PASS" | tee -a /tmp/post284-targets.txt
@@ -71,7 +74,10 @@ jobs:
             Zeta23/CCM/SecularDeterminantKernel.lean \
             Zeta23/CCM/CanonicalCenteredIndexCoercivity.lean \
             Zeta23/CCM/CanonicalK2SourceSignInterval.lean \
-            Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean
+            Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean \
+            Zeta23/CCM/CanonicalSecularResolvent.lean \
+            Zeta23/CCM/CanonicalSourceExcursion.lean \
+            Zeta23/CCM/CanonicalCenteredIndexPoincare.lean
       - name: Reject proof escapes on the promoted surface
         run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
       - uses: actions/upload-artifact@v4
@@ -123,6 +129,10 @@ jobs:
               print(k, got.get(k))
               assert got.get(k) == v, (k, got.get(k))
           EOF
+      - name: Post-285 M74 secular-resolvent regression and negative controls
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m74_secular_falsifier.py \
+            --output /tmp/POST285_M74_SECULAR_FALSIFIER.json > /dev/null
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -131,3 +141,4 @@ jobs:
             /tmp/POST284_SOURCE_FALSIFIER_SUITE.json
             /tmp/POST284_LOG3_K2_CERTIFICATE.txt
             /tmp/POST284_FOLLOWUP_REGRESSIONS.json
+            /tmp/POST285_M74_SECULAR_FALSIFIER.json

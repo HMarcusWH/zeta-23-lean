@@ -259,3 +259,5 @@ import Zeta23.CCM.CanonicalCenteredIndexCoercivity
 import Zeta23.CCM.CanonicalK2SourceSignInterval
 import Zeta23.CCM.CanonicalPrimeFreeSecondTest
 import Zeta23.CCM.CanonicalSecularResolvent
+import Zeta23.CCM.CanonicalSourceExcursion
+import Zeta23.CCM.CanonicalCenteredIndexPoincare
