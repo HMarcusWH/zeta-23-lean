@@ -1339,10 +1339,10 @@
         "R003_PARITY_CONSTRAINED_SPECTRAL_COMPRESSION"
       ],
       "source": "Zeta23/CCM/CanonicalCompressedApertureC2.lean",
-      "theorem": "Zeta23.CCM.canonicalEvenCompressedC2_proved",
+      "theorem": "Zeta23.CCM.canonicalEvenCompressedC2_with_jets",
       "route": "R003_ccm_bridge",
       "promotion_cap": "PROVED_UNCONDITIONAL",
-      "note": "Merged-green PR #284 (checked head 7225489a1d60812743e419d5b9042c8dca7eef53, merge 5e7253bffa570c0e07052b8d59a0949cdbcabdbe; 56/56 jobs green including the dedicated axiom audit of CanonicalCompressedApertureC2.lean). Promoted individually in the post-284 campaign: the bound theorem takes only K and matches the claim text. Fixed-K compressed-family C2 only; no smoothness of the optimized ground value at multiplicities, no all-aperture positivity, no RH."
+      "note": "Promoted individually in the post-284 campaign. Bound to canonicalEvenCompressedC2_with_jets, which conjoins the C2 regularity theorem canonicalEvenCompressedC2_proved with the derivative identities canonicalParityCompressedFamily_deriv and canonicalParityCompressedFamily_secondDeriv (all three merged-green in PR #284, checked head 7225489a1d60812743e419d5b9042c8dca7eef53, 56/56 jobs green including the dedicated axiom audit of CanonicalCompressedApertureC2.lean), so the binding covers both clauses of the claim text: C2 and the production first/second jets as derivatives. Fixed-K compressed-family C2 only; no smoothness of the optimized ground value at multiplicities, no all-aperture positivity, no RH."
     },
     {
       "id": "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE",

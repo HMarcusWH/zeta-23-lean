@@ -628,6 +628,8 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 -- corresponding registry statuses are explicitly promoted.
 
 -- R003_COMPRESSED_PRODUCTION_C2
+#check Zeta23.CCM.canonicalEvenCompressedC2_with_jets
+#print axioms Zeta23.CCM.canonicalEvenCompressedC2_with_jets
 #check Zeta23.CCM.canonicalEvenCompressedC2_proved
 #print axioms Zeta23.CCM.canonicalEvenCompressedC2_proved
 

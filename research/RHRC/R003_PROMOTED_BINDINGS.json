@@ -290,7 +290,7 @@
     },
     {
       "id": "R003_COMPRESSED_PRODUCTION_C2",
-      "theorem": "Zeta23.CCM.canonicalEvenCompressedC2_proved"
+      "theorem": "Zeta23.CCM.canonicalEvenCompressedC2_with_jets"
     },
     {
       "id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",

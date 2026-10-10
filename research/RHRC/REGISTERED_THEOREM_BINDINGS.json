@@ -563,7 +563,7 @@
     },
     {
       "id": "R003_COMPRESSED_PRODUCTION_C2",
-      "theorem": "Zeta23.CCM.canonicalEvenCompressedC2_proved",
+      "theorem": "Zeta23.CCM.canonicalEvenCompressedC2_with_jets",
       "source": "Zeta23/CCM/CanonicalCompressedApertureC2.lean",
       "route": "R003_ccm_bridge"
     },

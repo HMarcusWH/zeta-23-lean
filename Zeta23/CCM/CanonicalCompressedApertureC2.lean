@@ -453,10 +453,26 @@ theorem canonicalEvenApertureSecond_isSymmetric
         EuclideanSpace ℂ (Fin (2 * K + 1)))
   exact h
 
+/-- Registered form of the compressed `C²` claim: the even compressed family is
+`C²` on the positive aperture axis **and** its first and second real aperture
+derivatives are the production first and second jets. -/
+theorem canonicalEvenCompressedC2_with_jets (K : ℕ) :
+    CanonicalEvenCompressedC2 K ∧
+      (∀ L : ℝ, 0 < L →
+        deriv (canonicalEvenCompressedFamilyCLM K) L =
+          canonicalParityApertureFirstCLM .even L K) ∧
+      (∀ L : ℝ, 0 < L →
+        deriv (deriv (canonicalEvenCompressedFamilyCLM K)) L =
+          canonicalParityApertureSecondCLM .even L K) :=
+  ⟨canonicalEvenCompressedC2_proved K,
+    fun _ hL => canonicalParityCompressedFamily_deriv .even hL K,
+    fun _ hL => canonicalParityCompressedFamily_secondDeriv .even hL K⟩
+
 end Zeta23.CCM
 
 #print axioms Zeta23.CCM.canonicalParityCompressedC2_proved
 #print axioms Zeta23.CCM.canonicalEvenCompressedC2_proved
+#print axioms Zeta23.CCM.canonicalEvenCompressedC2_with_jets
 #print axioms Zeta23.CCM.canonicalParityCompressedFamily_deriv
 #print axioms Zeta23.CCM.canonicalParityCompressedFamily_secondDeriv
 #print axioms Zeta23.CCM.canonicalParityApertureFirst_isSymmetric

@@ -132,7 +132,7 @@ class ContactCalculusTests(unittest.TestCase):
 
     def test_post284_premise_free_claims_promoted_individually(self):
         promoted={
-            "R003_COMPRESSED_PRODUCTION_C2":"Zeta23.CCM.canonicalEvenCompressedC2_proved",
+            "R003_COMPRESSED_PRODUCTION_C2":"Zeta23.CCM.canonicalEvenCompressedC2_with_jets",
             "R003_INHERITED_FIRST_VARIATION_RESTRICTION":"Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited",
         }
         registry=json.loads((RHRC/"CLAIM_REGISTRY.json").read_text())
