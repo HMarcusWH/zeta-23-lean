@@ -31,6 +31,7 @@ each root carries a `#print axioms` receipt line, all locally
 | F-M35/M40/M54 | `CanonicalSourceWeightedIntegral` | `∫₀¹ S = P₀`; `∫₀¹(1−ω)S_nm = −(1/(2π²))(1/(nm) + δ_nm/n²)`; for `u₀ = 0`: `∫₀¹(1−ω)e_u = −(1/(2π²))(Σ|u_n|²/n² + |Σu_n/n|²) ≤ −‖u‖²/(2π²K²)`; `= −‖z‖²/(2π²)` for `u = Dz`, `Σz = 0`; every nonzero `u` with `u₀ = 0` has a negative source coordinate and a zero of `Re e_u` in `(0,1)`. |
 | F-M20/M24/M26/M30 | `SecularDeterminantKernel` | Over any field, from `BD − DA = g⊗h`: `det A = det B(1 − T)`, `A x = (1−T)D⁻¹g`, `ker A ⊆ span x`, `T = 1 ⇔ ker A ≠ 0`; shifted version at every `μ`; matched update `(1−T')(1+tγ) = 1−T`; exact `2×2` crossing control with `T(h) = 1 + h³/(12+3h³−4h⁶)` and a surviving negative even eigenvalue. |
 | F-M46 | `CanonicalCenteredIndexCoercivity` | `‖z‖² ≤ C_K‖Dz‖²` for `Σz = 0`, `C_K = 1 + Σ_{0<|n|≤K} n⁻² ≤ 5 − 4/(K+1) < 5`, `C_K ≤ 2K+1`; at an even ground eigenvector with odd–even gap `δ ≥ 0`: `δ‖v‖² ≤ C_K |H(v)| |M₄(v)|` (from the existing parity-gap theorem). |
+| F-M42 | `CanonicalPrimeFreeSecondTest` | For `Σz = 0`, `0 < L ≤ log 2`: `Q_N(L,z) = ∫₀ᴸ t²(W−ρ) Re e_{Dz}(1−t/L) dt ≥ L²‖z‖²[1/(4π²) − L(2N+1)N²/2]`, hence `Q > 0` for `z ≠ 0`, `0 < L < 1/(2π²(2N+1)N²)`. Built from `|S_nm(ω)| ≤ 2ω`, `|t²(W−ρ)+t/2| ≤ 3t²` on `(0, log 2]` and the compiled M40 identity. Fixed-vector test only; its identification with `E″ + (2/L)E′` (M65) is OPEN. |
 | F-M47/M48 | `CanonicalK2SourceSignInterval` | `K = 2`: `Re e_u(ω) < 0` for every nonzero legal odd `u` and `Re e_{Dz}(ω) < 0` for every nonzero legal even `z`, `0 < ω ≤ 3/4` (convolution on `(0,1/2]`, explicit trigonometric form on `[1/2,3/4]`); `e_{u₀}(1) = 20`. For `0 < L ≤ log 16` every sample `2 ≤ q ≤ e^L` has `ω_q ∈ [0,3/4]`, so every K=2 prime term `−β_q e_{Dz}(ω_q)` with `β_q ≥ 0` is nonnegative (source side only). |
 
 Claim registry: `R003_COMPRESSED_PRODUCTION_C2` and
@@ -72,8 +73,8 @@ Follow-up suite (`post284_followup_regressions.py`, `FOLLOWUP_REGRESSIONS.json`)
 * **M43 (interval evidence):** `Q_{3,z₋}(2/3) ∈ [−0.181, −0.174]`,
   `Q_{3,z₊}(2/3) ∈ [0.248, 0.351]`; both vectors legal (`M₀ = M₁ = M₂ = 0`).
   The prime-free second-order physical form is indefinite on fixed vectors.
-* **M42 (numeric sanity):** at `L = 0.9 ε₂` the test is positive and above the
-  derived lower bound.
+* **M42 (numeric sanity, now also a Lean theorem):** at `L = 0.9 ε₂` the test
+  is positive and above the proved lower bound.
 * **M67 (attached log3 script, interval evidence):** `H(log 3, z) ∈
   [0.0344, 0.0483]`; falsifies only a universal nonpositive source-pairing
   claim on arbitrary legal vectors.
@@ -113,9 +114,10 @@ cosine-integral form); they are not Lean/Arb certificates.
 1. **M65 prime-free F04:** differentiate the M05 identity in `L` on
    `0 < L < log 2` (`t = Lx`, removable singularity of the arch integrand,
    `w'(L) = e^{−L/2}ρ(L)`), giving `E'' + (2/L)E' = −(2π)²Q/L⁴`.
-2. **M42 in Lean:** `0 < k(t) < 3` on `(0, log 2)`, `|S_nm(ω)| ≤ 2ω`, and the
-   compiled M40 identity give `Q_K(L,z) ≥ L²‖z‖²[1/(4π²) − L(2K+1)K²/2]`; with
-   M65 this yields (Q-NEG-EULER) and the conditional local exclusion (M66).
+2. **M66 after M65:** the positive side `Q_K(L,z) > 0` below `ε_K` is now a
+   Lean theorem (M42); combined with a proved prime-free F04 identity it would
+   give (Q-NEG-EULER) and the conditional local exclusion. Until M65 is
+   proved, no contact statement follows.
 3. Instantiate M20/M26 on the actual compressed `A_L, B_L, D, g, H_L` and export
    `⟨g, Dz⟩ = M₄(z)` (M21/M58 phase lock).
 4. M17 interior (`0 < ω < 1/2`): Andréief signed minors.

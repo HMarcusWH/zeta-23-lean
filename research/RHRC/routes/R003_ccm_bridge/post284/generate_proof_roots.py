@@ -19,6 +19,7 @@ META = {
  "Zeta23/CCM/SecularDeterminantKernel.lean": ("F-M20/F-M24/F-M26/F-M30","abstract rank-one secular determinant, constructive kernel, shifted secular equation, matched update; exact 2x2 crossing negative control"),
  "Zeta23/CCM/CanonicalCenteredIndexCoercivity.lean": ("F-M46","discrete Poincare coercivity C_K<5 and contact-moment corollary from the existing parity-gap theorem"),
  "Zeta23/CCM/CanonicalK2SourceSignInterval.lean": ("F-M47/F-M48","K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)"),
+ "Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean": ("F-M42/F-M66-source","explicit prime-free positivity radius for the fixed-vector test Q_K(L,z); identification with E''+(2/L)E' (M65) OPEN"),
 }
 CONDITIONAL = {
  "Zeta23.CCM.fourthMoment_lower_bound_of_gap": ["explicit gap premise delta*D2 <= B*M4"],

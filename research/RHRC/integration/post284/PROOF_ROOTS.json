@@ -1134,6 +1134,83 @@
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
       "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.norm_sourceEntry_le",
+      "source": "Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean",
+      "module": "Zeta23.CCM.CanonicalPrimeFreeSecondTest",
+      "package": "F-M42/F-M66-source",
+      "module_scope": "explicit prime-free positivity radius for the fixed-vector test Q_K(L,z); identification with E''+(2/L)E' (M65) OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.norm_quadraticForm_sourceMatrix_le",
+      "source": "Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean",
+      "module": "Zeta23.CCM.CanonicalPrimeFreeSecondTest",
+      "package": "F-M42/F-M66-source",
+      "module_scope": "explicit prime-free positivity radius for the fixed-vector test Q_K(L,z); identification with E''+(2/L)E' (M65) OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.abs_re_quadraticForm_index_le",
+      "source": "Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean",
+      "module": "Zeta23.CCM.CanonicalPrimeFreeSecondTest",
+      "package": "F-M42/F-M66-source",
+      "module_scope": "explicit prime-free positivity radius for the fixed-vector test Q_K(L,z); identification with E''+(2/L)E' (M65) OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.abs_sq_mul_primeFreeKernel_add_le",
+      "source": "Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean",
+      "module": "Zeta23.CCM.CanonicalPrimeFreeSecondTest",
+      "package": "F-M42/F-M66-source",
+      "module_scope": "explicit prime-free positivity radius for the fixed-vector test Q_K(L,z); identification with E''+(2/L)E' (M65) OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.integral_half_mul_re_energy_index",
+      "source": "Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean",
+      "module": "Zeta23.CCM.CanonicalPrimeFreeSecondTest",
+      "package": "F-M42/F-M66-source",
+      "module_scope": "explicit prime-free positivity radius for the fixed-vector test Q_K(L,z); identification with E''+(2/L)E' (M65) OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.primeFreeSecondTest_ge",
+      "source": "Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean",
+      "module": "Zeta23.CCM.CanonicalPrimeFreeSecondTest",
+      "package": "F-M42/F-M66-source",
+      "module_scope": "explicit prime-free positivity radius for the fixed-vector test Q_K(L,z); identification with E''+(2/L)E' (M65) OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.primeFreeSecondTest_pos",
+      "source": "Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean",
+      "module": "Zeta23.CCM.CanonicalPrimeFreeSecondTest",
+      "package": "F-M42/F-M66-source",
+      "module_scope": "explicit prime-free positivity radius for the fixed-vector test Q_K(L,z); identification with E''+(2/L)E' (M65) OPEN",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
     }
   ]
 }

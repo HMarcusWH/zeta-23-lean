@@ -43,7 +43,8 @@ jobs:
             Zeta23.CCM.CanonicalSourceWeightedIntegral \
             Zeta23.CCM.SecularDeterminantKernel \
             Zeta23.CCM.CanonicalCenteredIndexCoercivity \
-            Zeta23.CCM.CanonicalK2SourceSignInterval
+            Zeta23.CCM.CanonicalK2SourceSignInterval \
+            Zeta23.CCM.CanonicalPrimeFreeSecondTest
           do
             if lake build "$target"; then
               echo "$target PASS" | tee -a /tmp/post284-targets.txt
@@ -69,7 +70,8 @@ jobs:
             Zeta23/CCM/CanonicalSourceWeightedIntegral.lean \
             Zeta23/CCM/SecularDeterminantKernel.lean \
             Zeta23/CCM/CanonicalCenteredIndexCoercivity.lean \
-            Zeta23/CCM/CanonicalK2SourceSignInterval.lean
+            Zeta23/CCM/CanonicalK2SourceSignInterval.lean \
+            Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean
       - name: Reject proof escapes on the promoted surface
         run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
       - uses: actions/upload-artifact@v4

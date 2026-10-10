@@ -198,8 +198,8 @@
   {
    "id": "F_M36_M42_SMALL_APERTURE_RADIUS",
    "package": "F-M36/F-M42",
-   "status": "OPEN",
-   "detail": "Q_K(L,z) >= L^2||z||^2[1/(4pi^2) - L(2K+1)K^2/2] for 0<L<eps_K: DERIVED; numeric sanity check passes (FOLLOWUP_REGRESSIONS.json); not Lean-compiled (needs 0<k(t)<3 on (0,log 2) and |S_nm(w)|<=2w)."
+   "status": "FIXED_VECTOR_TEST_PROVED_PENDING_CI",
+   "detail": "CanonicalPrimeFreeSecondTest: for sum z = 0 and 0 < L <= log 2, primeFreeSecondTest N z L = int_0^L t^2 (W - rho) Re e_{Dz}(1 - t/L) dt >= L^2 ||z||^2 [1/(4 pi^2) - L(2N+1)N^2/2], and it is positive for z != 0, 0 < L < 1/(2 pi^2 (2N+1) N^2). Ingredients proved: |S_nm(w)| <= 2w, |e_{Dz}(w)| <= 2w(2N+1)N^2||z||^2, |t^2(W-rho)+t/2| <= 3t^2 on (0, log 2]. OPEN: identification of this test with the production second variation / E_z''+(2/L)E_z' (M65)."
   },
   {
    "id": "F_M37_LOCAL_EXCLUSION",
