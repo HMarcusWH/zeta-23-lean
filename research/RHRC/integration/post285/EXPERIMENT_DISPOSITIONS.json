@@ -1,0 +1,65 @@
+{
+  "schema": "post285.experiment_dispositions.v1",
+  "terminal_claim": "RH_OPEN",
+  "authority": "EXPERIMENTAL/REGRESSION ONLY",
+  "scripts_dir": "research/RHRC/routes/R003_ccm_bridge/post285",
+  "experiments": [
+    {
+      "id": "X285_M74_RANDOM",
+      "script": "post285_m74_secular_falsifier.py",
+      "package": "M74_RANDOM_OFF_CONTACT",
+      "disposition": "EXACT_IDENTITY_REGRESSION_PASS",
+      "summary": "rank-one, ray, relative determinant, gamma real > 0, gauge, Ward, approximate bound on 200 random complex instances with non-unitary D"
+    },
+    {
+      "id": "X285_M74_CONTACT",
+      "script": "post285_m74_secular_falsifier.py",
+      "package": "M74_CONTACT_PHASE",
+      "disposition": "EXACT_IDENTITY_REGRESSION_PASS",
+      "summary": "forced H(x)=1: kernel dimension 1 and Re(conj(Hz)<g,Dz>) = gamma|Hz|^2"
+    },
+    {
+      "id": "X285_M74_CONTROLS",
+      "script": "post285_m74_secular_falsifier.py",
+      "package": "M74_CONVENTION_CONTROLS",
+      "disposition": "NEGATIVE_CONTROL_FAILS_AS_EXPECTED",
+      "summary": "bilinear pairing breaks Ward; D* in place of D^-1 breaks the ray"
+    },
+    {
+      "id": "X285_M30_UNDER_M74",
+      "script": "post285_m74_secular_falsifier.py",
+      "package": "M30_CROSSING_UNDER_M74",
+      "disposition": "COUNTERMODEL_SURVIVES_M74_IDENTITIES",
+      "summary": "2x2 crossing satisfies every M74 identity yet A(s) has a negative eigenvalue for s > 0: the secular algebra alone cannot exclude a crossing"
+    },
+    {
+      "id": "X285_M70",
+      "script": "post285_gate_a_d_falsifier.py",
+      "package": "M70_SOURCE_EXCURSION",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "min/max of pi^2 e/|z|^2 beyond -1/+1; control without zero sum gives e = 0"
+    },
+    {
+      "id": "X285_M73",
+      "script": "post285_gate_a_d_falsifier.py",
+      "package": "M73_QUARTER_POINCARE",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "telescoped mass exact; optimal constant decreasing to 1/4 (signal); 1/4 + 0.01 fails at K = 80"
+    },
+    {
+      "id": "X285_M75",
+      "script": "post285_gate_a_d_falsifier.py",
+      "package": "M75_NEGATIVE_WINDOW",
+      "disposition": "EXACT_THEOREM_REGRESSION_PASS",
+      "summary": "entry derivative <= 2 + 4 pi K; window inside (0,1) and below -|z|^2/(2 pi^2); true negative run >= ~198 x 2 eta (eta is crude)"
+    },
+    {
+      "id": "X285_M76_SECULAR_MARGIN",
+      "script": "post285_m76_secular_margin.py",
+      "package": "M76_SECULAR_MARGIN",
+      "disposition": "EXPERIMENTAL_SIGNAL",
+      "summary": "actual canonical float matrices, K = 2..5, L = 0.25..6: rank-one relation B D - D A = g H holds to 2e-15 (consistent with the Lean theorem); on the 46 float-resolved (K, L) points B > 0, A > 0 and the secular margin 1 - T(L) > 0 (min 4.4e-4 at K = 3, L = 2.75), with det A / det B = 1 - T to 3e-9; the pole and prime channel contributions to T cancel to relative size up to 7e9",
+      "caveat": "50 grid points are below float64 resolution (lambda_min < 1e-10 x matrix scale) and are reported as unresolved, not as signs; no certified enclosure"
+    }
+  ]
+}

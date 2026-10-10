@@ -1,0 +1,324 @@
+{
+  "schema": "post285.workflow_harvest.v1",
+  "authority": "REPORTING_ONLY",
+  "subject": {
+    "pr": 285,
+    "checked_head": "d20653c50e85ed927940ffe7723cf07a1008be7d",
+    "merge_commit": "18a63cc",
+    "source": "2026-10-10, GitHub check-runs API via MCP"
+  },
+  "totals": {
+    "check_runs": 50,
+    "distinct_workflow_runs": 20,
+    "success": 50
+  },
+  "python_rhrc": {
+    "job": "python-rhrc",
+    "check_run_id": 114302586673,
+    "workflow_run_id": 38082653216,
+    "conclusion": "success"
+  },
+  "note": "Green means workflow correctness only. CI runs on pull_request and workflow_dispatch, not on main pushes, so this exact-head PR receipt is the authority for #285.",
+  "check_runs": [
+    {
+      "job": "contact-calculus-complete",
+      "check_run_id": 114309002200,
+      "workflow_run_id": 38082653280,
+      "conclusion": "success"
+    },
+    {
+      "job": "generated-contact-complete",
+      "check_run_id": 114307441595,
+      "workflow_run_id": 38082659398,
+      "conclusion": "success"
+    },
+    {
+      "job": "arb-contact-balance",
+      "check_run_id": 114307175103,
+      "workflow_run_id": 38082653280,
+      "conclusion": "success"
+    },
+    {
+      "job": "campaign-complete",
+      "check_run_id": 114306724649,
+      "workflow_run_id": 38082653200,
+      "conclusion": "success"
+    },
+    {
+      "job": "arb-generated-contact",
+      "check_run_id": 114304661506,
+      "workflow_run_id": 38082659398,
+      "conclusion": "success"
+    },
+    {
+      "job": "Complete 44-check execution harvest",
+      "check_run_id": 114304553066,
+      "workflow_run_id": 38082653213,
+      "conclusion": "success"
+    },
+    {
+      "job": "lean-generated-contact",
+      "check_run_id": 114302607245,
+      "workflow_run_id": 38082659398,
+      "conclusion": "success"
+    },
+    {
+      "job": "lean-production-contact",
+      "check_run_id": 114302607226,
+      "workflow_run_id": 38082659398,
+      "conclusion": "success"
+    },
+    {
+      "job": "research-generated-contact",
+      "check_run_id": 114302607096,
+      "workflow_run_id": 38082659398,
+      "conclusion": "success"
+    },
+    {
+      "job": "lean-production-frontier",
+      "check_run_id": 114302601424,
+      "workflow_run_id": 38082657433,
+      "conclusion": "success"
+    },
+    {
+      "job": "research-frontier-measurement",
+      "check_run_id": 114302601219,
+      "workflow_run_id": 38082657433,
+      "conclusion": "success"
+    },
+    {
+      "job": "first-contact-atlas",
+      "check_run_id": 114302596222,
+      "workflow_run_id": 38082655441,
+      "conclusion": "success"
+    },
+    {
+      "job": "pair-d-c1",
+      "check_run_id": 114302592841,
+      "workflow_run_id": 38082653498,
+      "conclusion": "success"
+    },
+    {
+      "job": "contact-quotient-research",
+      "check_run_id": 114302587137,
+      "workflow_run_id": 38082651379,
+      "conclusion": "success"
+    },
+    {
+      "job": "lean-source-inertia",
+      "check_run_id": 114302586955,
+      "workflow_run_id": 38082653252,
+      "conclusion": "success"
+    },
+    {
+      "job": "lean-contact-completion",
+      "check_run_id": 114302586745,
+      "workflow_run_id": 38082653280,
+      "conclusion": "success"
+    },
+    {
+      "job": "lean-first-crossing",
+      "check_run_id": 114302586691,
+      "workflow_run_id": 38082653200,
+      "conclusion": "success"
+    },
+    {
+      "job": "lean-compressed-calculus",
+      "check_run_id": 114302586683,
+      "workflow_run_id": 38082653280,
+      "conclusion": "success"
+    },
+    {
+      "job": "fast-integrity",
+      "check_run_id": 114302586678,
+      "workflow_run_id": 38082653200,
+      "conclusion": "success"
+    },
+    {
+      "job": "python-rhrc",
+      "check_run_id": 114302586673,
+      "workflow_run_id": 38082653216,
+      "conclusion": "success"
+    },
+    {
+      "job": "rhkg-compiler-receipt",
+      "check_run_id": 114302586672,
+      "workflow_run_id": 38082653216,
+      "conclusion": "success"
+    },
+    {
+      "job": "source-falsifier-research",
+      "check_run_id": 114302586670,
+      "workflow_run_id": 38082653252,
+      "conclusion": "success"
+    },
+    {
+      "job": "lean-a",
+      "check_run_id": 114302586657,
+      "workflow_run_id": 38082653200,
+      "conclusion": "success"
+    },
+    {
+      "job": "lean-c",
+      "check_run_id": 114302586644,
+      "workflow_run_id": 38082653200,
+      "conclusion": "success"
+    },
+    {
+      "job": "lean",
+      "check_run_id": 114302586638,
+      "workflow_run_id": 38082653216,
+      "conclusion": "success"
+    },
+    {
+      "job": "post194-parity-trajectory-sharp-enclosure",
+      "check_run_id": 114302586617,
+      "workflow_run_id": 38082653267,
+      "conclusion": "success"
+    },
+    {
+      "job": "research-calibration",
+      "check_run_id": 114302586609,
+      "workflow_run_id": 38082653280,
+      "conclusion": "success"
+    },
+    {
+      "job": "lean-b",
+      "check_run_id": 114302586596,
+      "workflow_run_id": 38082653200,
+      "conclusion": "success"
+    },
+    {
+      "job": "lean-contact",
+      "check_run_id": 114302586593,
+      "workflow_run_id": 38082653200,
+      "conclusion": "success"
+    },
+    {
+      "job": "post222-biregular-zero-shift-scalar",
+      "check_run_id": 114302586590,
+      "workflow_run_id": 38082653248,
+      "conclusion": "success"
+    },
+    {
+      "job": "lean-d-bindings",
+      "check_run_id": 114302586589,
+      "workflow_run_id": 38082653200,
+      "conclusion": "success"
+    },
+    {
+      "job": "Extended audit shard 4",
+      "check_run_id": 114302586585,
+      "workflow_run_id": 38082653213,
+      "conclusion": "success"
+    },
+    {
+      "job": "Extended audit shard 3",
+      "check_run_id": 114302586558,
+      "workflow_run_id": 38082653213,
+      "conclusion": "success"
+    },
+    {
+      "job": "Extended audit shard 5",
+      "check_run_id": 114302586556,
+      "workflow_run_id": 38082653213,
+      "conclusion": "success"
+    },
+    {
+      "job": "post190-canonical-realizability",
+      "check_run_id": 114302586540,
+      "workflow_run_id": 38082653282,
+      "conclusion": "success"
+    },
+    {
+      "job": "Extended audit shard 7",
+      "check_run_id": 114302586522,
+      "workflow_run_id": 38082653213,
+      "conclusion": "success"
+    },
+    {
+      "job": "post200-q14-discrepancy-mechanism",
+      "check_run_id": 114302586512,
+      "workflow_run_id": 38082653218,
+      "conclusion": "success"
+    },
+    {
+      "job": "post202-q14-composite-parity-gap",
+      "check_run_id": 114302586504,
+      "workflow_run_id": 38082653261,
+      "conclusion": "success"
+    },
+    {
+      "job": "Extended audit shard 0",
+      "check_run_id": 114302586489,
+      "workflow_run_id": 38082653213,
+      "conclusion": "success"
+    },
+    {
+      "job": "Extended audit shard 2",
+      "check_run_id": 114302586480,
+      "workflow_run_id": 38082653213,
+      "conclusion": "success"
+    },
+    {
+      "job": "Extended audit shard 6",
+      "check_run_id": 114302586474,
+      "workflow_run_id": 38082653213,
+      "conclusion": "success"
+    },
+    {
+      "job": "Extended audit shard 1",
+      "check_run_id": 114302586471,
+      "workflow_run_id": 38082653213,
+      "conclusion": "success"
+    },
+    {
+      "job": "r003-normalization-audit",
+      "check_run_id": 114302586468,
+      "workflow_run_id": 38082653216,
+      "conclusion": "success"
+    },
+    {
+      "job": "lean-strength-audit",
+      "check_run_id": 114302586444,
+      "workflow_run_id": 38082653200,
+      "conclusion": "success"
+    },
+    {
+      "job": "lean-permansson",
+      "check_run_id": 114302586426,
+      "workflow_run_id": 38082653291,
+      "conclusion": "success"
+    },
+    {
+      "job": "post192-parity-trajectory-rigidity",
+      "check_run_id": 114302586390,
+      "workflow_run_id": 38082653207,
+      "conclusion": "success"
+    },
+    {
+      "job": "Audit runner adversarial regressions",
+      "check_run_id": 114302586353,
+      "workflow_run_id": 38082653213,
+      "conclusion": "success"
+    },
+    {
+      "job": "post196-q14-residual-cell-replay",
+      "check_run_id": 114302586314,
+      "workflow_run_id": 38082653215,
+      "conclusion": "success"
+    },
+    {
+      "job": "post198-q14-source-mechanism",
+      "check_run_id": 114302586312,
+      "workflow_run_id": 38082653208,
+      "conclusion": "success"
+    },
+    {
+      "job": "post214-kernel-dual-geometry",
+      "check_run_id": 114302586287,
+      "workflow_run_id": 38082653235,
+      "conclusion": "success"
+    }
+  ]
+}

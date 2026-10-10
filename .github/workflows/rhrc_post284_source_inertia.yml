@@ -137,10 +137,16 @@ jobs:
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post285/post285_m74_secular_falsifier.py \
             --output /tmp/POST285_M74_SECULAR_FALSIFIER.json > /dev/null
+      - name: Post-285 ledger firewall (Steps 18-120 matrix, M70-M77 obligations, proof roots)
+        run: python research/RHRC/integration/post285/check_post285_ledgers.py
       - name: Post-285 Gate A/D regressions (M70 excursion, M73 Poincaré, M75 negative window)
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post285/post285_gate_a_d_falsifier.py \
             --output /tmp/POST285_GATE_A_D_FALSIFIER.json > /dev/null
+      - name: Post-285 M76 actual-canonical secular margin probe (experimental signal)
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_m76_secular_margin.py \
+            --kmax 5 --lmax 6 --dl 0.25 --output /tmp/POST285_M76_SECULAR_MARGIN.json > /dev/null
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -151,3 +157,4 @@ jobs:
             /tmp/POST284_FOLLOWUP_REGRESSIONS.json
             /tmp/POST285_M74_SECULAR_FALSIFIER.json
             /tmp/POST285_GATE_A_D_FALSIFIER.json
+            /tmp/POST285_M76_SECULAR_MARGIN.json

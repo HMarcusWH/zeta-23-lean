@@ -1,0 +1,143 @@
+{
+  "schema": "post285.open_obligations.v1",
+  "terminal_claim": "RH_OPEN",
+  "authority": "REPORTING_LEDGER",
+  "note": "The post-284 ledger is not edited by this PR; promotion of its PR #285 *_PENDING_CI rows belongs to the separate #285 cleanup PR.",
+  "obligations": [
+    {
+      "id": "M70_SOURCE_EXCURSIONS",
+      "package": "M70",
+      "steps": "108",
+      "status": "PROVED_PENDING_CI",
+      "detail": "sourceEnergyRe_excursions_of_zeroSum: for nonzero zero-sum z the source energy e_{Dz} exceeds |z|^2/pi^2 and drops below -|z|^2/pi^2 on (0,1)."
+    },
+    {
+      "id": "M71_INTERIOR_ANDREIEF_INERTIA",
+      "package": "M71",
+      "steps": "44, 109",
+      "status": "OPEN",
+      "detail": "Exact parity inertia for 0 < omega < 1/2 (Andreief signed leading minors, Jacobi/Sylvester signature, polynomial-carrier equivalence) is not formalized. Half-aperture inertia stays PROVED from PR #285; interior inertia has numerical evidence only (no authority)."
+    },
+    {
+      "id": "M72_SOURCE_SPECTRAL_FLOW_FIRST_PASSAGE",
+      "package": "M72",
+      "steps": "45, 110",
+      "status": "PROVED_PENDING_CI",
+      "detail": "exists_sourceDegenerate_of_half_neg / parityBoundaryFlat_sourceDegenerate: some omega in (1/2,1) makes the carrier source form PSD and degenerate. Zeros of source compression only."
+    },
+    {
+      "id": "M72_SOURCE_SPECTRAL_FLOW_MULTIPLICITY",
+      "package": "M72",
+      "steps": "110",
+      "status": "OPEN",
+      "detail": "At least as many passages (with multiplicity) as half-aperture negative eigenvalues: DERIVED via continuous eigenvalue branches, not formalized."
+    },
+    {
+      "id": "M73_QUARTER_POINCARE",
+      "package": "M73",
+      "steps": "89, 90, 115",
+      "status": "PROVED_PENDING_CI",
+      "detail": "sum_normSq_le_four_mul (and strict form): sum|z|^2 <= 4 sum n^2|z_n|^2 on the zero-sum carrier, uniform in K, via the telescoped mass 4 - 4/(2K+1). Contact gap delta|v|^2 <= 4|H(v)||M4(v)|."
+    },
+    {
+      "id": "M73_QUARTER_SHARPNESS",
+      "package": "M73",
+      "steps": "115",
+      "status": "EXPERIMENTAL_SIGNAL",
+      "detail": "Optimal constant on the whole zero-sum carrier decreases to 1/4 numerically (0.2513 at K=80). Not proved; no sharpness claimed on the even legal carrier."
+    },
+    {
+      "id": "M74_CANONICAL_SECULAR_RESOLVENT",
+      "package": "M74",
+      "steps": "49-52, 111, 112, 116-118",
+      "status": "PROVED_PENDING_CI",
+      "detail": "Canonical instance of the rank-one secular algebra with the actual A_L, B_L, D, g, H_L: resolvent ray, relative determinant, ker A_L = span(x_L) iff H_L(x_L) = 1, Ward identity, contact phase lock Re(conj S M4) = gamma|S|^2 > 0, approximate-contact bounds, M4 gauge. D is not assumed unitary. H_L(x_L) = 1 is contact-equivalent and is never used as an independent opposite-side input."
+    },
+    {
+      "id": "M75_SOURCE_LIPSCHITZ_AND_WINDOW",
+      "package": "M75",
+      "steps": "119",
+      "status": "PROVED_PENDING_CI",
+      "detail": "abs_sourceEnergyRe_index_sub_le (M_K = (2+4 pi K)(2K+1)K^2) and exists_sourceNegativeWindow (e < -|z|^2/(2 pi^2) on |omega - omega_-| <= 1/(2 pi^2 M_K), window inside (0,1))."
+    },
+    {
+      "id": "M75_OPPOSITE_SIGNED_PRIME_SUMMANDS",
+      "package": "M75",
+      "steps": "120",
+      "status": "PROVED_PENDING_CI",
+      "detail": "exists_prime_physicalSecondPrimeTerm_pos_and_two_neg: for L >= pi^2 M_K log 2 some prime 2 < p < e^L has a strictly positive physical second-test summand -(Lambda(p)(log p)^2/sqrt p) e(1 - log p/L) and the p = 2 summand is strictly negative. Individual summands only; no statement about the prime sum."
+    },
+    {
+      "id": "M65_PRIME_FREE_F04",
+      "package": "M65",
+      "steps": "101, 103, 105",
+      "status": "OPEN",
+      "detail": "Prime-free real-aperture differentiation of the exact production compressed family on 0 < L < log 2 (t = Lx substitution, wCorrection derivative, endpoint cancellation) and its identification with the fixed-vector second test are not formalized."
+    },
+    {
+      "id": "F04_GLOBAL_PRODUCTION_DERIVATIVE_AUTHORITY",
+      "package": "M06/M53",
+      "steps": "21, 24, 93, 105",
+      "status": "OPEN",
+      "detail": "Global F04 across prime seams remains OPEN; no theorem in this PR assumes or supplies it."
+    },
+    {
+      "id": "M76_ARITHMETIC_COMPOSITION",
+      "package": "M76",
+      "steps": "113, 120",
+      "status": "OPEN",
+      "detail": "Contact-conditioned opposite-side inequality for the complete source-moment arithmetic remains OPEN. The M75 mixed individual signs exclude termwise prime positivity; they are not an RH contradiction."
+    },
+    {
+      "id": "OBS060O_STATIONARY_SATURATION_EXCLUSION",
+      "package": "M13",
+      "steps": "74, 104",
+      "status": "OPEN",
+      "detail": "Unchanged by this PR."
+    },
+    {
+      "id": "M77_INTEGRATION",
+      "package": "M77",
+      "steps": "107, 114",
+      "status": "IN_PROGRESS",
+      "detail": "Ledgers, workflow targets, axiom audit and proof-escape receipts for M70-M75 in this PR; claim-registry binding of the new roots deferred until the #285 cleanup PR (which edits the registry) lands."
+    },
+    {
+      "id": "RH",
+      "package": "terminal",
+      "steps": "-",
+      "status": "OPEN",
+      "detail": "RH_OPEN."
+    }
+  ],
+  "post284_cross_references": [
+    {
+      "post284_id": "M17_GENERAL_OMEGA_ANDREIEF_INERTIA",
+      "effect": "unchanged (OPEN); see M71_INTERIOR_ANDREIEF_INERTIA"
+    },
+    {
+      "post284_id": "M18_SPECTRAL_FLOW_PASSAGES",
+      "effect": "first passage proved here (M72_SOURCE_SPECTRAL_FLOW_FIRST_PASSAGE); multiplicity count still OPEN"
+    },
+    {
+      "post284_id": "F_M21_PHASE_LOCK",
+      "effect": "canonical contact phase identity proved here (canonical_contact_phase, M74); contact existence and its sign consequences still OPEN"
+    },
+    {
+      "post284_id": "F_M58_M63_SOURCE_MOMENT_BIRDFISHIE",
+      "effect": "M58 phase-lock component discharged by M74; M61-M63 OPEN"
+    },
+    {
+      "post284_id": "F_M46_COERCIVITY",
+      "effect": "constant improved from C_K < 5 to 4 (M73)"
+    },
+    {
+      "post284_id": "F_M53_M65_F04_DERIVATIVES",
+      "effect": "unchanged (OPEN); see M65_PRIME_FREE_F04"
+    },
+    {
+      "post284_id": "F04_PRODUCTION_DERIVATIVE_AUTHORITY",
+      "effect": "unchanged (OPEN)"
+    }
+  ]
+}
