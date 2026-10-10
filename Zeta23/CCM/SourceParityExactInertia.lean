@@ -173,7 +173,8 @@ theorem evenIndexParam_evenIndexSupported {p : ℕ} (c : Fin p → ℂ) :
   intro k _
   have : ¬ (n = 2 * (k : ℤ) ∨ n = -(2 * (k : ℤ))) := by
     rintro (h | h) <;> (rcases hn with ⟨j, rfl⟩; omega)
-  simp [evenIndexBump, this]
+  simp only [evenIndexBump]
+  rw [if_neg this, mul_zero]
 
 theorem oddIndexParam_oddIndexSupported {p : ℕ} (c : Fin p → ℂ) :
     OddIndexSupported (oddIndexParam c) := by
@@ -182,7 +183,8 @@ theorem oddIndexParam_oddIndexSupported {p : ℕ} (c : Fin p → ℂ) :
   intro k _
   have : ¬ (n = 2 * (k : ℤ) + 1 ∨ n = -(2 * (k : ℤ) + 1)) := by
     rintro (h | h) <;> (rcases hn with ⟨j, rfl⟩; omega)
-  simp [oddIndexBump, this]
+  simp only [oddIndexBump]
+  rw [if_neg this, mul_zero]
 
 theorem evenIndexParam_supported (m : ℕ) (c : Fin (m / 2 + 1) → ℂ) :
     LatticeSupported m (evenIndexParam c) := by
@@ -193,7 +195,8 @@ theorem evenIndexParam_supported (m : ℕ) (c : Fin (m / 2 + 1) → ℂ) :
   have hk := k.2
   have : ¬ (n = 2 * ((k : ℕ) : ℤ) ∨ n = -(2 * ((k : ℕ) : ℤ))) := by
     rintro (h | h) <;> omega
-  simp [evenIndexBump, this]
+  simp only [evenIndexBump]
+  rw [if_neg this, mul_zero]
 
 theorem oddIndexParam_supported (m : ℕ) (c : Fin ((m + 1) / 2) → ℂ) :
     LatticeSupported m (oddIndexParam c) := by
@@ -204,7 +207,8 @@ theorem oddIndexParam_supported (m : ℕ) (c : Fin ((m + 1) / 2) → ℂ) :
   have hk := k.2
   have : ¬ (n = 2 * ((k : ℕ) : ℤ) + 1 ∨ n = -(2 * ((k : ℕ) : ℤ) + 1)) := by
     rintro (h | h) <;> omega
-  simp [oddIndexBump, this]
+  simp only [oddIndexBump]
+  rw [if_neg this, mul_zero]
 
 theorem evenIndexParam_at {p : ℕ} (c : Fin p → ℂ) (k : Fin p) :
     evenIndexParam c (2 * ((k : ℕ) : ℤ)) = c k := by
@@ -217,7 +221,8 @@ theorem evenIndexParam_at {p : ℕ} (c : Fin p → ℂ) (k : Fin p) :
       rintro (h | h)
       · exact hjk (Fin.ext (by omega))
       · exact hjk (Fin.ext (by omega))
-    simp [evenIndexBump, this]
+    simp only [evenIndexBump]
+    rw [if_neg this, mul_zero]
   · intro hk; exact absurd (Finset.mem_univ k) hk
 
 theorem oddIndexParam_at {p : ℕ} (c : Fin p → ℂ) (k : Fin p) :
@@ -231,7 +236,8 @@ theorem oddIndexParam_at {p : ℕ} (c : Fin p → ℂ) (k : Fin p) :
       rintro (h | h)
       · exact hjk (Fin.ext (by omega))
       · omega
-    simp [oddIndexBump, this]
+    simp only [oddIndexBump]
+    rw [if_neg this, mul_zero]
   · intro hk; exact absurd (Finset.mem_univ k) hk
 
 theorem eq_zero_of_evenIndexParam_eq_zero {p : ℕ} {c : Fin p → ℂ}
@@ -282,7 +288,7 @@ theorem evenCarrierMap_mem {m : ℕ} {q : ℤ → ℂ}
     evenCarrierMap m q ∈ evenBoundaryFlatSubspace (m + 2) := by
   have ha : LatticeSupported (m + 1) (latticeOneSubCos q) := hq.oneSubCos
   have hq1 : LatticeSupported (m + 1) q := hq.mono (Nat.le_succ m)
-  refine ⟨?_, ?_⟩
+  refine Submodule.mem_inf.mpr ⟨?_, ?_⟩
   · rw [mem_boundaryFlatSubspace_iff]
     refine ⟨?_, ?_, ?_⟩
     · rw [evenCarrierMap, centeredMoment_ofLattice]
@@ -308,7 +314,7 @@ theorem oddCarrierMap_mem {m : ℕ} {q : ℤ → ℂ}
     oddCarrierMap m q ∈ oddBoundaryFlatSubspace (m + 2) := by
   have ha : LatticeSupported (m + 1) (latticeOneSubCos q) := hq.oneSubCos
   have hq1 : LatticeSupported (m + 1) q := hq.mono (Nat.le_succ m)
-  refine ⟨?_, ?_⟩
+  refine Submodule.mem_inf.mpr ⟨?_, ?_⟩
   · rw [mem_boundaryFlatSubspace_iff]
     refine ⟨?_, ?_, ?_⟩
     · rw [oddCarrierMap, centeredMoment_ofLattice]
@@ -418,7 +424,7 @@ theorem latticeInner_self_re_pos {N : ℕ} {w : ℤ → ℂ}
   rw [latticeInner_self_eq, Complex.ofReal_re]
   obtain ⟨n, hn⟩ : ∃ n, w n ≠ 0 := by
     by_contra h
-    push_neg at h
+    push Not at h
     exact hne (funext h)
   have hmem : n ∈ latticeBox N := by
     by_contra hnot

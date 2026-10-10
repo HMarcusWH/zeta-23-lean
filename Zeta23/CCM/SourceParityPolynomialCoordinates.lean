@@ -157,7 +157,7 @@ theorem LatticeSupported.latticeCos {N : ℕ} {f : ℤ → ℂ}
     (hf : LatticeSupported N f) : LatticeSupported (N + 1) (latticeCos f) := by
   intro n hn
   rw [mem_latticeBox] at hn
-  simp only [latticeCos]
+  simp only [Zeta23.CCM.latticeCos]
   rw [hf (n - 1) (by rw [mem_latticeBox]; omega), hf (n + 1) (by rw [mem_latticeBox]; omega)]
   simp
 
@@ -165,7 +165,7 @@ theorem LatticeSupported.latticeSin {N : ℕ} {f : ℤ → ℂ}
     (hf : LatticeSupported N f) : LatticeSupported (N + 1) (latticeSin f) := by
   intro n hn
   rw [mem_latticeBox] at hn
-  simp only [latticeSin]
+  simp only [Zeta23.CCM.latticeSin]
   rw [hf (n - 1) (by rw [mem_latticeBox]; omega), hf (n + 1) (by rw [mem_latticeBox]; omega)]
   simp
 
@@ -328,11 +328,11 @@ theorem latticeInner_eq_latticePair (N : ℕ) (f g : ℤ → ℂ) :
 
 theorem conj_latticeCos (f : ℤ → ℂ) :
     (fun n => conj (latticeCos f n)) = latticeCos (fun n => conj (f n)) := by
-  funext n; simp [latticeCos, map_add, map_div₀]
+  funext n; simp [latticeCos, map_add, map_div₀, Complex.conj_ofNat]
 
 theorem conj_latticeSin (f : ℤ → ℂ) :
     (fun n => conj (latticeSin f n)) = latticeSin (fun n => conj (f n)) := by
-  funext n; simp [latticeSin, map_sub, map_div₀]
+  funext n; simp [latticeSin, map_sub, map_div₀, Complex.conj_ofNat]
 
 theorem conj_latticeOneSubCos (f : ℤ → ℂ) :
     (fun n => conj (latticeOneSubCos f n)) =
@@ -500,6 +500,7 @@ theorem eq_zero_of_downward_recurrence {N : ℕ} {f : ℤ → ℂ}
           push_cast
           ring
   funext n
+  show f n = 0
   by_cases hn : n ≤ (N : ℤ) + 1
   · have h := (key (N + 1 - n).toNat).1
     convert h using 2
@@ -552,7 +553,7 @@ def LatticeAntisymmetric (f : ℤ → ℂ) : Prop :=
 theorem LatticeSymmetric.latticeCos {f : ℤ → ℂ} (hf : LatticeSymmetric f) :
     LatticeSymmetric (latticeCos f) := by
   intro n
-  simp only [latticeCos]
+  simp only [Zeta23.CCM.latticeCos]
   rw [show -n - 1 = -(n + 1) by ring, show -n + 1 = -(n - 1) by ring, hf, hf]
   ring
 
@@ -565,7 +566,7 @@ theorem LatticeSymmetric.oneSubCos {f : ℤ → ℂ} (hf : LatticeSymmetric f) :
 theorem LatticeSymmetric.latticeSin {f : ℤ → ℂ} (hf : LatticeSymmetric f) :
     LatticeAntisymmetric (latticeSin f) := by
   intro n
-  simp only [latticeSin]
+  simp only [Zeta23.CCM.latticeSin]
   rw [show -n - 1 = -(n + 1) by ring, show -n + 1 = -(n - 1) by ring, hf, hf]
   ring
 

@@ -57,5 +57,16 @@
     "release.lean-lang.org": "BLOCKED_BY_NETWORK_POLICY (toolchain installed from GitHub release asset instead)",
     "lakecache.blob.core.windows.net": "BLOCKED_BY_NETWORK_POLICY (Mathlib compiled from source for the needed import slice)",
     "independent_QRH_receipt_repository": "NOT_INSPECTED (outside this session's repository scope)"
+  },
+  "followup_handoff": {
+    "file": "POST284_CLAUDE_CODE_UNIFIED_FOLLOWUP_STEPS49_107_LOCAL_BIRDFISH_AUDITED_2026-10-10.md",
+    "sha256": "1e7653d8102f20bef871f2e08a58777b35d8526a7f6a7ad688a5eae9cf4dcad6",
+    "role": "EXECUTION_PLAN_ONLY (packages M20-M69)"
+  },
+  "followup_log3_script": {
+    "file": "research/RHRC/routes/R003_ccm_bridge/post284/birdfishie_log3_K2_certificate.py",
+    "sha256": "54531b0ab503e8a5264cc25cb9c99ef915c92128df89e49fc51040e886192855",
+    "stored_verbatim": true,
+    "local_run": "lower 0.0344452849018321708 > 0, upper 0.0483121512466286480; matches the audit output"
   }
 }

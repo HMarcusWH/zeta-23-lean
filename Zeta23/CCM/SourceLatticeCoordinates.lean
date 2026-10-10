@@ -284,7 +284,7 @@ theorem sourceEntry_half (n m : ℤ) :
     sourceEntry (1 / 2) n m = if n = m then latticeSign n else 0 := by
   by_cases h : n = m
   · subst h
-    simp [sourceDiagonal_half]
+    rw [sourceEntry_self, sourceDiagonal_half, if_pos rfl]
   · rw [sourceEntry_of_ne _ h, sourcePotential_half, sourcePotential_half, if_neg h]
     simp
 
@@ -303,9 +303,8 @@ theorem sourceSesq_half_ofLattice (N : ℕ) (f g : ℤ → ℂ) :
 theorem sourceSesq_half (N : ℕ) (u v : Fin (2 * N + 1) → ℂ) :
     sourceSesq (1 / 2) N u v =
       ∑ i, latticeSign (centeredIndex N i) * (conj (u i) * v i) := by
-  rw [← ofLattice_toLattice N u, ← ofLattice_toLattice N v,
-    sourceSesq_half_ofLattice]
-  rw [← sum_centeredIndex_eq_sum_latticeBox]
+  conv_lhs => rw [← ofLattice_toLattice N u, ← ofLattice_toLattice N v]
+  rw [sourceSesq_half_ofLattice, ← sum_centeredIndex_eq_sum_latticeBox]
   apply Finset.sum_congr rfl
   intro i _
   rw [toLattice_centeredIndex, toLattice_centeredIndex]
@@ -316,30 +315,42 @@ theorem quadraticForm_sourceMatrix_half (N : ℕ) (u : Fin (2 * N + 1) → ℂ) 
       ∑ i, latticeSign (centeredIndex N i) * (conj (u i) * u i) := by
   rw [← sourceSesq_self, sourceSesq_half]
 
-/-! ## Centered zero extension -/
+/-! ## Centered zero extension (bridge to `NestedFinite.centeredZeroExtend`) -/
 
-/-- Centered zero extension from `[-K, K]` to `[-K', K']`. -/
-def centeredZeroExtend (K K' : ℕ) (u : Fin (2 * K + 1) → ℂ) :
-    Fin (2 * K' + 1) → ℂ :=
-  ofLattice K' (toLattice K u)
-
-theorem centeredMoment_centeredZeroExtend {K K' : ℕ} (h : K ≤ K')
-    (k : ℕ) (u : Fin (2 * K + 1) → ℂ) :
-    centeredMoment K' k (centeredZeroExtend K K' u) = centeredMoment K k u := by
-  rw [centeredZeroExtend, centeredMoment_ofLattice]
-  conv_rhs => rw [← ofLattice_toLattice K u, centeredMoment_ofLattice]
-  apply sum_latticeBox_eq_of_vanish h
-  intro n hn
-  rw [toLattice_supported K u n hn, mul_zero]
+/-- The lattice zero extension is the repository's `centeredZeroExtend`. -/
+theorem ofLattice_toLattice_eq_centeredZeroExtend {K K' : ℕ} (h : K ≤ K')
+    (u : Fin (2 * K + 1) → ℂ) :
+    ofLattice K' (toLattice K u) = centeredZeroExtend h u := by
+  funext j
+  by_cases hj : j ∈ Set.range (centeredEmbedding K K' h)
+  · obtain ⟨i, rfl⟩ := hj
+    rw [centeredZeroExtend_apply_centeredEmbedding, ofLattice_apply]
+    have hci : centeredIndex K' (centeredEmbedding K K' h i) = centeredIndex K i := by
+      unfold centeredIndex
+      rw [centeredEmbedding_val]
+      omega
+    rw [hci, toLattice_centeredIndex]
+  · rw [centeredZeroExtend_apply_of_not_mem_range h _ j hj, ofLattice_apply]
+    apply toLattice_supported
+    rw [mem_latticeBox]
+    rintro ⟨h1, h2⟩
+    apply hj
+    have hjv := j.2
+    refine ⟨⟨(centeredIndex K' j + K).toNat, by unfold centeredIndex at h1 h2 ⊢; omega⟩, ?_⟩
+    apply Fin.ext
+    rw [centeredEmbedding_val]
+    unfold centeredIndex at h1 h2 ⊢
+    simp only
+    omega
 
 /-- Centered zero extension preserves the complete elementary source form at
 every source coordinate. -/
 theorem sourceSesq_centeredZeroExtend {K K' : ℕ} (h : K ≤ K') (ω : ℝ)
     (u v : Fin (2 * K + 1) → ℂ) :
-    sourceSesq ω K' (centeredZeroExtend K K' u) (centeredZeroExtend K K' v) =
+    sourceSesq ω K' (centeredZeroExtend h u) (centeredZeroExtend h v) =
       sourceSesq ω K u v := by
-  unfold centeredZeroExtend
-  rw [sourceSesq_ofLattice]
+  rw [← ofLattice_toLattice_eq_centeredZeroExtend h u,
+    ← ofLattice_toLattice_eq_centeredZeroExtend h v, sourceSesq_ofLattice]
   conv_rhs => rw [← ofLattice_toLattice K u, ← ofLattice_toLattice K v,
     sourceSesq_ofLattice]
   rw [sum_latticeBox_eq_of_vanish h]
@@ -352,9 +363,9 @@ theorem sourceSesq_centeredZeroExtend {K K' : ℕ} (h : K ≤ K') (ω : ℝ)
     rw [toLattice_supported K u n hn]
     simp
 
-theorem quadraticForm_centeredZeroExtend {K K' : ℕ} (h : K ≤ K') (ω : ℝ)
+theorem quadraticForm_sourceMatrix_centeredZeroExtend {K K' : ℕ} (h : K ≤ K') (ω : ℝ)
     (u : Fin (2 * K + 1) → ℂ) :
-    quadraticForm (sourceMatrix ω K') (centeredZeroExtend K K' u) =
+    quadraticForm (sourceMatrix ω K') (centeredZeroExtend h u) =
       quadraticForm (sourceMatrix ω K) u := by
   rw [← sourceSesq_self, ← sourceSesq_self, sourceSesq_centeredZeroExtend h]
 
@@ -368,48 +379,30 @@ theorem toLattice_reverseCoefficients (K : ℕ) (u : Fin (2 * K + 1) → ℂ) :
   conv_lhs => rw [← ofLattice_toLattice K u, reverseCoefficients_ofLattice]
   exact toLattice_ofLattice hsupp
 
-theorem reverseCoefficients_centeredZeroExtend (K K' : ℕ)
-    (u : Fin (2 * K + 1) → ℂ) :
-    reverseCoefficients K' (centeredZeroExtend K K' u) =
-      centeredZeroExtend K K' (reverseCoefficients K u) := by
-  rw [centeredZeroExtend, centeredZeroExtend, reverseCoefficients_ofLattice,
-    toLattice_reverseCoefficients]
-
-theorem centeredZeroExtend_mem_evenCoefficientSubspace (K K' : ℕ)
+theorem centeredZeroExtend_mem_evenCoefficientSubspace {K K' : ℕ} (h : K ≤ K')
     {u : Fin (2 * K + 1) → ℂ} (hu : u ∈ evenCoefficientSubspace K) :
-    centeredZeroExtend K K' u ∈ evenCoefficientSubspace K' := by
+    centeredZeroExtend h u ∈ evenCoefficientSubspace K' := by
   rw [mem_evenCoefficientSubspace_iff] at hu ⊢
-  rw [reverseCoefficients_centeredZeroExtend, hu]
+  rw [← centeredZeroExtend_reverseCoefficients h, hu]
 
-theorem centeredZeroExtend_mem_oddCoefficientSubspace (K K' : ℕ)
+theorem centeredZeroExtend_mem_oddCoefficientSubspace {K K' : ℕ} (h : K ≤ K')
     {u : Fin (2 * K + 1) → ℂ} (hu : u ∈ oddCoefficientSubspace K) :
-    centeredZeroExtend K K' u ∈ oddCoefficientSubspace K' := by
+    centeredZeroExtend h u ∈ oddCoefficientSubspace K' := by
   rw [mem_oddCoefficientSubspace_iff] at hu ⊢
-  rw [reverseCoefficients_centeredZeroExtend, hu]
-  funext i
-  simp [centeredZeroExtend, ofLattice, toLattice]
-  split_ifs <;> simp
-
-theorem centeredZeroExtend_mem_boundaryFlatSubspace {K K' : ℕ} (h : K ≤ K')
-    {u : Fin (2 * K + 1) → ℂ} (hu : u ∈ boundaryFlatSubspace K) :
-    centeredZeroExtend K K' u ∈ boundaryFlatSubspace K' := by
-  rw [mem_boundaryFlatSubspace_iff] at hu ⊢
-  obtain ⟨h0, h1, h2⟩ := hu
-  exact ⟨by rw [centeredMoment_centeredZeroExtend h, h0],
-    by rw [centeredMoment_centeredZeroExtend h, h1],
-    by rw [centeredMoment_centeredZeroExtend h, h2]⟩
+  rw [← centeredZeroExtend_reverseCoefficients h, hu]
+  exact map_neg (centeredZeroExtendLinearMap h) u
 
 theorem centeredZeroExtend_mem_evenBoundaryFlatSubspace {K K' : ℕ} (h : K ≤ K')
     {u : Fin (2 * K + 1) → ℂ} (hu : u ∈ evenBoundaryFlatSubspace K) :
-    centeredZeroExtend K K' u ∈ evenBoundaryFlatSubspace K' :=
+    centeredZeroExtend h u ∈ evenBoundaryFlatSubspace K' :=
   ⟨centeredZeroExtend_mem_boundaryFlatSubspace h hu.1,
-    centeredZeroExtend_mem_evenCoefficientSubspace K K' hu.2⟩
+    centeredZeroExtend_mem_evenCoefficientSubspace h hu.2⟩
 
 theorem centeredZeroExtend_mem_oddBoundaryFlatSubspace {K K' : ℕ} (h : K ≤ K')
     {u : Fin (2 * K + 1) → ℂ} (hu : u ∈ oddBoundaryFlatSubspace K) :
-    centeredZeroExtend K K' u ∈ oddBoundaryFlatSubspace K' :=
+    centeredZeroExtend h u ∈ oddBoundaryFlatSubspace K' :=
   ⟨centeredZeroExtend_mem_boundaryFlatSubspace h hu.1,
-    centeredZeroExtend_mem_oddCoefficientSubspace K K' hu.2⟩
+    centeredZeroExtend_mem_oddCoefficientSubspace h hu.2⟩
 
 end Zeta23.CCM
 
@@ -417,6 +410,6 @@ end Zeta23.CCM
 #print axioms Zeta23.CCM.sourceEntry_half
 #print axioms Zeta23.CCM.quadraticForm_sourceMatrix_half
 #print axioms Zeta23.CCM.sourceSesq_centeredZeroExtend
-#print axioms Zeta23.CCM.centeredMoment_centeredZeroExtend
+#print axioms Zeta23.CCM.ofLattice_toLattice_eq_centeredZeroExtend
 #print axioms Zeta23.CCM.centeredZeroExtend_mem_evenBoundaryFlatSubspace
 #print axioms Zeta23.CCM.centeredZeroExtend_mem_oddBoundaryFlatSubspace
