@@ -1,0 +1,95 @@
+name: RHRC post-284 source inertia campaign
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rhrc-post284-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lean-source-inertia:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Build post-284 source targets with complete receipt
+        run: |
+          set +e
+          : > /tmp/post284-targets.txt
+          rc=0
+          for target in \
+            Zeta23.CCM.SourceLatticeCoordinates \
+            Zeta23.CCM.SourceSignCountermodels \
+            Zeta23.CCM.SourceParityPolynomialCoordinates \
+            Zeta23.CCM.SourceParityExactInertia \
+            Zeta23.CCM.SourceMomentVandermondeFiltration \
+            Zeta23.CCM.SourceFourierConvolution \
+            Zeta23.CCM.StrictEvenPrimeSeamDichotomy \
+            Zeta23.CCM.ContactNinthJumpGapBound \
+            Zeta23.CCM.CanonicalRegularizedEnergyIdentity
+          do
+            if lake build "$target"; then
+              echo "$target PASS" | tee -a /tmp/post284-targets.txt
+            else
+              echo "$target FAIL" | tee -a /tmp/post284-targets.txt
+              rc=1
+            fi
+          done
+          exit $rc
+      - name: Audit post-284 theorem axioms
+        run: |
+          python research/RHRC/tools/axiom_audit.py \
+            Zeta23/CCM/SourceLatticeCoordinates.lean \
+            Zeta23/CCM/SourceSignCountermodels.lean \
+            Zeta23/CCM/SourceParityPolynomialCoordinates.lean \
+            Zeta23/CCM/SourceParityExactInertia.lean \
+            Zeta23/CCM/SourceMomentVandermondeFiltration.lean \
+            Zeta23/CCM/SourceFourierConvolution.lean \
+            Zeta23/CCM/StrictEvenPrimeSeamDichotomy.lean \
+            Zeta23/CCM/ContactNinthJumpGapBound.lean \
+            Zeta23/CCM/CanonicalRegularizedEnergyIdentity.lean
+      - name: Reject proof escapes on the promoted surface
+        run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post284-source-inertia-lean
+          path: /tmp/post284-targets.txt
+
+  source-falsifier-research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install research requirements
+        run: python -m pip install -r research/RHRC/routes/R003_ccm_bridge/requirements.txt
+      - name: Attached exact SymPy source-inertia falsifier (regression receipt)
+        run: python research/RHRC/routes/R003_ccm_bridge/post284/POST284_SOURCE_INERTIA_EXACT_FALSIFIER_2026-10-10.py
+      - name: Independent post-284 falsifier suite
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post284/post284_source_falsifier_suite.py \
+            --kmax 9 --output /tmp/POST284_SOURCE_FALSIFIER_SUITE.json
+      - name: Check disposition firewall
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post284/check_post284_dispositions.py \
+            --suite /tmp/POST284_SOURCE_FALSIFIER_SUITE.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: post284-source-falsifier-suite
+          path: /tmp/POST284_SOURCE_FALSIFIER_SUITE.json

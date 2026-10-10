@@ -1,6 +1,42 @@
 # Post-#282 contact-calculus post-green report
 
-**Status: PENDING CI / NOT A PROOF RECEIPT.**
+**Status: HARVESTED AFTER MERGED PR #284 (post-284 campaign). NOT AN RH PROOF RECEIPT.**
+
+## Post-284 harvest (current)
+
+- PR #284 checked head `7225489a1d60812743e419d5b9042c8dca7eef53`; merge
+  `5e7253bffa570c0e07052b8d59a0949cdbcabdbe`; tree
+  `96f851b45af4d3b11fef699fbd5cb274f60a9f6c`.
+- Check runs on the checked head: **56/56 success across 18 workflow runs**
+  (GitHub check-runs API). Per-job rows, categories (FORMAL_VALIDITY /
+  REGRESSION / RESEARCH_PRODUCING) and run ids are recorded in
+  `research/RHRC/integration/post284/WORKFLOW_HARVEST.json`. Green means
+  workflow correctness; research jobs may record negative or unknown
+  dispositions.
+- Individual claim audit (`research/RHRC/integration/post284/CLAIM_MIGRATION_MATRIX.json`):
+  - `R003_COMPRESSED_PRODUCTION_C2` — bound theorem
+    `canonicalEvenCompressedC2_proved (K)` has no premise beyond `K`;
+    axiom-audited in the merged lean-compressed-calculus job.
+    **Promoted to PROVED_UNCONDITIONAL** by the deliberate post-284 migration.
+  - `R003_INHERITED_FIRST_VARIATION_RESTRICTION` — bound theorem's
+    hypotheses are exactly the generated strict-even contact and `n < k`;
+    covered by the axiom audit's expected reports.
+    **Promoted to PROVED_UNCONDITIONAL.**
+  - `R003_WEIGHTED_PRODUCTION_PAIR_BALANCE` — takes
+    `hF04 : ProductionContactF04DerivativeAuthority L K`. **Stays OPEN**; the
+    registry note now states the F04 premise explicitly.
+  - `R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER` — takes `hF04` at the
+    contact aperture. **Stays OPEN**.
+- Remaining F04 gap: `ProductionContactF04DerivativeAuthority` still has no
+  proof constructor. The post-284 campaign compiles its prerequisite, the
+  fixed-aperture regularized whole-energy identity
+  (`Zeta23/CCM/CanonicalRegularizedEnergyIdentity.lean`); the moving-aperture
+  differentiation remains OPEN.
+- OBS-060O, odd/tie branches and RH remain OPEN.
+
+## Original pre-merge gate text (historical)
+
+**Historical status: PENDING CI / NOT A PROOF RECEIPT.**
 
 Populate only after the exact final PR head is fully settled. The harvest must
 record every workflow/job disposition, exact head/tree, compiler and axiom

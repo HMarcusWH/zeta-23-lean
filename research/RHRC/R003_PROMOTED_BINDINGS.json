@@ -287,23 +287,21 @@
     {
       "id": "R003_WEIL_PAIR_LITERATURE_BRIDGE",
       "theorem": "Zeta23.ExceptionalZero.zeta_W_literatureRHS_package"
+    },
+    {
+      "id": "R003_COMPRESSED_PRODUCTION_C2",
+      "theorem": "Zeta23.CCM.canonicalEvenCompressedC2_proved"
+    },
+    {
+      "id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "theorem": "Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited"
     }
   ],
   "candidate_rule": "OPEN claims with candidate_binding=true are compiler-audited here but are not promoted theorem authority until exact-head validation changes their registry status.",
   "candidate_bindings": [
     {
-      "id": "R003_COMPRESSED_PRODUCTION_C2",
-      "theorem": "Zeta23.CCM.canonicalEvenCompressedC2_proved",
-      "status": "OPEN_PENDING_CI"
-    },
-    {
       "id": "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE",
       "theorem": "Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap",
-      "status": "OPEN_PENDING_CI"
-    },
-    {
-      "id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
-      "theorem": "Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited",
       "status": "OPEN_PENDING_CI"
     },
     {

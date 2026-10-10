@@ -1,0 +1,121 @@
+{
+  "schema": "post284.open_obligations.v1",
+  "terminal_claim": "RH_OPEN",
+  "authority": "LEDGER_ONLY",
+  "obligations": [
+    {
+      "id": "F04_PRODUCTION_DERIVATIVE_AUTHORITY",
+      "package": "M06",
+      "status": "OPEN",
+      "detail": "ProductionContactF04DerivativeAuthority has no proof constructor. M05 (fixed-L regularized energy identity) is now compiled, which is the prerequisite; moving-aperture differentiation of the prime staircase cells, the pole upper endpoint and the singular regularized arch integral (locally uniform domination near t=0) remains to be proved."
+    },
+    {
+      "id": "M03_TWO_SCALAR_CONTACT_TRANSPORT",
+      "package": "M03",
+      "status": "OPEN",
+      "detail": "conditional two-scalar stationary contact theorem not formalized in this campaign."
+    },
+    {
+      "id": "M03_RANK_TWO_LAPLACE",
+      "package": "M03",
+      "status": "OPEN",
+      "detail": "closed form int_0^inf e^{-t/2} S_K(t/L) dt = (8/L)(uu^T - a^2 vv^T) verified numerically to 5e-29 (falsifier F07); Lean proof (improper oscillatory integrals) not attempted."
+    },
+    {
+      "id": "M03_WEIGHTED_STAIRCASE_REEXPRESSION",
+      "package": "M03",
+      "status": "OPEN",
+      "detail": "B_L(t)=B(t) and D(t)=4 sinh(t/2)-B(t) reexpression of the pole-prime discrepancy not formalized here."
+    },
+    {
+      "id": "M07_OPERATOR_LEVEL_HIGHER_SEAM_GLUING",
+      "package": "M07",
+      "status": "OPEN",
+      "detail": "fixed-K compressed C6/C8 operator gluing and one-sided order-7/9 jumps not formalized; existing merged authority remains C2."
+    },
+    {
+      "id": "M08_ABSTRACT_CUBIC_SCHUR",
+      "package": "M08",
+      "status": "OPEN",
+      "detail": "third-order Schur formula s''' = a''' - 6 Re(b'^T R b'') + 6 b'^T R H' R b' not formalized."
+    },
+    {
+      "id": "M09_WEIGHTED_REMAINDER_IDENTITY",
+      "package": "M09",
+      "status": "OPEN",
+      "detail": "zero-endpoint summation-by-parts identity and the F04-conditional contact-weighted balance not formalized."
+    },
+    {
+      "id": "M10_NINTH_ORDER_OPTIMIZED_SCHUR_JUMP",
+      "package": "M10",
+      "status": "OPEN",
+      "detail": "operator O(h^9) perturbation and resolvent/Schur comparison not proved; ContactNinthJumpGapBound takes the jump formula as an explicit premise."
+    },
+    {
+      "id": "M11_FROZEN_BRANCH_ANALYTICITY",
+      "package": "M11",
+      "status": "OPEN",
+      "detail": "StrictEvenPrimeSeamDichotomy compiles the abstract LOW/HIGH classification from explicit degree-9 expansion premises; real analyticity of the actual frozen canonical branch and the same-zero-mode continuation are not proved."
+    },
+    {
+      "id": "M13_SOURCE_SPECIFIC_CONTACT_EXCLUSION",
+      "package": "M13",
+      "status": "OPEN",
+      "detail": "no LOW/HIGH/interior arithmetic exclusion obtained."
+    },
+    {
+      "id": "M14_OTHER_BRANCHES",
+      "package": "M14",
+      "status": "OPEN",
+      "detail": "fresh-born, odd, tied, interior branches untouched."
+    },
+    {
+      "id": "M16_SMALL_OMEGA_LEGAL_FORM_INDEFINITENESS",
+      "package": "M16",
+      "status": "OPEN",
+      "detail": "moving-vector rational asymptotics are exact SymPy/mpmath controls only; small-omega indefiniteness is not a Lean theorem."
+    },
+    {
+      "id": "M17_GENERAL_OMEGA_ANDREIEF_INERTIA",
+      "package": "M17",
+      "status": "OPEN",
+      "detail": "Exact inertia is Lean-compiled at omega=1/2 for every K>=2 (SourceParityExactInertia). The strict signed-minor (Andreief) lemma for 0<omega<1/2 is OPEN; F06 samples omega in {0.05,0.25,1/3,0.45} for K<=9 and leading-minor signs at a in {2pi*0.05, pi/2, pi}."
+    },
+    {
+      "id": "M18_FILTERED_INERTIA",
+      "package": "M18",
+      "status": "OPEN",
+      "detail": "filtered carriers (1-cos)^s Q and sin(1-cos)^s Q: the shift-operator proof extends (form = +-<q,(1-J^2)^s R q>), but the filtered-carrier dimension identification is not formalized."
+    },
+    {
+      "id": "M18_SPECTRAL_FLOW_PASSAGES",
+      "package": "M18",
+      "status": "OPEN",
+      "detail": "counting-with-multiplicity zero-level passages on (1/2,1) not formalized; F08 grid discovery shows passages are generally NOT monotone (more change points than the lower bound for K>=4)."
+    },
+    {
+      "id": "M19_PARITY_GROUND_IDENTITY",
+      "package": "M19",
+      "status": "OPEN",
+      "detail": "the premise delta*||Dz||^2 <= B*|M4(z)| is not derived from the contact structure here; only the index-mass inequality and the conditional algebra are compiled."
+    },
+    {
+      "id": "OAI_SEVEN_EIGHTHS_LOCAL_IMPORT",
+      "package": "M02",
+      "status": "OPEN",
+      "detail": "provenance-only; see SOURCE_CLOSURE_AUDIT.json."
+    },
+    {
+      "id": "OBS060O_STATIONARY_SATURATION_EXCLUSION",
+      "package": "M13",
+      "status": "OPEN",
+      "detail": "unchanged."
+    },
+    {
+      "id": "RH",
+      "package": "terminal",
+      "status": "OPEN",
+      "detail": "RH_OPEN."
+    }
+  ]
+}

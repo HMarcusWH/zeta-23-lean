@@ -243,3 +243,12 @@ import Zeta23.CCM.CanonicalInteriorFirstCrossingBarrier
 import Zeta23.CCM.CanonicalSeamFirstCrossingBarrier
 import Zeta23.CCM.CanonicalFirstCrossingBarrier
 import Zeta23.CCM.CanonicalArithmeticCofinal
+import Zeta23.CCM.SourceLatticeCoordinates
+import Zeta23.CCM.SourceSignCountermodels
+import Zeta23.CCM.SourceParityPolynomialCoordinates
+import Zeta23.CCM.SourceParityExactInertia
+import Zeta23.CCM.SourceMomentVandermondeFiltration
+import Zeta23.CCM.SourceFourierConvolution
+import Zeta23.CCM.StrictEvenPrimeSeamDichotomy
+import Zeta23.CCM.ContactNinthJumpGapBound
+import Zeta23.CCM.CanonicalRegularizedEnergyIdentity

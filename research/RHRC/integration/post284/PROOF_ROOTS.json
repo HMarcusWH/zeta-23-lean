@@ -1,0 +1,523 @@
+{
+  "schema": "post284.proof_roots.v1",
+  "terminal_claim": "RH_OPEN",
+  "rule": "PROVED = exact clean Lean theorem with its full premises; status becomes PROVED only after the exact PR head passes the post-284 Lean/axiom/proof-escape jobs",
+  "roots": [
+    {
+      "declaration": "Zeta23.CCM.sum_centeredIndex_eq_sum_latticeBox",
+      "source": "Zeta23/CCM/SourceLatticeCoordinates.lean",
+      "module": "Zeta23.CCM.SourceLatticeCoordinates",
+      "package": "M04/M17",
+      "module_scope": "infrastructure: lattice sums, half-aperture diagonal source, centered zero extension",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.sourceEntry_half",
+      "source": "Zeta23/CCM/SourceLatticeCoordinates.lean",
+      "module": "Zeta23.CCM.SourceLatticeCoordinates",
+      "package": "M04/M17",
+      "module_scope": "infrastructure: lattice sums, half-aperture diagonal source, centered zero extension",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.quadraticForm_sourceMatrix_half",
+      "source": "Zeta23/CCM/SourceLatticeCoordinates.lean",
+      "module": "Zeta23.CCM.SourceLatticeCoordinates",
+      "package": "M04/M17",
+      "module_scope": "infrastructure: lattice sums, half-aperture diagonal source, centered zero extension",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.sourceSesq_centeredZeroExtend",
+      "source": "Zeta23/CCM/SourceLatticeCoordinates.lean",
+      "module": "Zeta23.CCM.SourceLatticeCoordinates",
+      "package": "M04/M17",
+      "module_scope": "infrastructure: lattice sums, half-aperture diagonal source, centered zero extension",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.centeredMoment_centeredZeroExtend",
+      "source": "Zeta23/CCM/SourceLatticeCoordinates.lean",
+      "module": "Zeta23.CCM.SourceLatticeCoordinates",
+      "package": "M04/M17",
+      "module_scope": "infrastructure: lattice sums, half-aperture diagonal source, centered zero extension",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.centeredZeroExtend_mem_evenBoundaryFlatSubspace",
+      "source": "Zeta23/CCM/SourceLatticeCoordinates.lean",
+      "module": "Zeta23.CCM.SourceLatticeCoordinates",
+      "package": "M04/M17",
+      "module_scope": "infrastructure: lattice sums, half-aperture diagonal source, centered zero extension",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.centeredZeroExtend_mem_oddBoundaryFlatSubspace",
+      "source": "Zeta23/CCM/SourceLatticeCoordinates.lean",
+      "module": "Zeta23.CCM.SourceLatticeCoordinates",
+      "package": "M04/M17",
+      "module_scope": "infrastructure: lattice sums, half-aperture diagonal source, centered zero extension",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.negativeEvenSourceWitness_control",
+      "source": "Zeta23/CCM/SourceSignCountermodels.lean",
+      "module": "Zeta23.CCM.SourceSignCountermodels",
+      "package": "M04/M15/M18",
+      "module_scope": "exact integer witnesses; fourth-moment firewall at omega=1/2",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.positiveEvenSourceWitness_moments",
+      "source": "Zeta23/CCM/SourceSignCountermodels.lean",
+      "module": "Zeta23.CCM.SourceSignCountermodels",
+      "package": "M04/M15/M18",
+      "module_scope": "exact integer witnesses; fourth-moment firewall at omega=1/2",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.oddSourceWitnessK2_moments",
+      "source": "Zeta23/CCM/SourceSignCountermodels.lean",
+      "module": "Zeta23.CCM.SourceSignCountermodels",
+      "package": "M04/M15/M18",
+      "module_scope": "exact integer witnesses; fourth-moment firewall at omega=1/2",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.evenSixthMomentWitness_moments",
+      "source": "Zeta23/CCM/SourceSignCountermodels.lean",
+      "module": "Zeta23.CCM.SourceSignCountermodels",
+      "package": "M04/M15/M18",
+      "module_scope": "exact integer witnesses; fourth-moment firewall at omega=1/2",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.oddFifthMomentWitness_moments",
+      "source": "Zeta23/CCM/SourceSignCountermodels.lean",
+      "module": "Zeta23.CCM.SourceSignCountermodels",
+      "package": "M04/M15/M18",
+      "module_scope": "exact integer witnesses; fourth-moment firewall at omega=1/2",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.fourthMoment_firewall_even",
+      "source": "Zeta23/CCM/SourceSignCountermodels.lean",
+      "module": "Zeta23.CCM.SourceSignCountermodels",
+      "package": "M04/M15/M18",
+      "module_scope": "exact integer witnesses; fourth-moment firewall at omega=1/2",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.oddSource_half_negative_control",
+      "source": "Zeta23/CCM/SourceSignCountermodels.lean",
+      "module": "Zeta23.CCM.SourceSignCountermodels",
+      "package": "M04/M15/M18",
+      "module_scope": "exact integer witnesses; fourth-moment firewall at omega=1/2",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.exactInertia_of_orthogonal_split",
+      "source": "Zeta23/CCM/SourceParityExactInertia.lean",
+      "module": "Zeta23.CCM.SourceParityExactInertia",
+      "package": "M17",
+      "module_scope": "exact source inertia at omega=1/2 for every K>=2",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.sourceSesq_half_evenCarrierMap",
+      "source": "Zeta23/CCM/SourceParityExactInertia.lean",
+      "module": "Zeta23.CCM.SourceParityExactInertia",
+      "package": "M17",
+      "module_scope": "exact source inertia at omega=1/2 for every K>=2",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.sourceSesq_half_oddCarrierMap",
+      "source": "Zeta23/CCM/SourceParityExactInertia.lean",
+      "module": "Zeta23.CCM.SourceParityExactInertia",
+      "package": "M17",
+      "module_scope": "exact source inertia at omega=1/2 for every K>=2",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.evenBoundaryFlat_sourceHalf_split",
+      "source": "Zeta23/CCM/SourceParityExactInertia.lean",
+      "module": "Zeta23.CCM.SourceParityExactInertia",
+      "package": "M17",
+      "module_scope": "exact source inertia at omega=1/2 for every K>=2",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.oddBoundaryFlat_sourceHalf_split",
+      "source": "Zeta23/CCM/SourceParityExactInertia.lean",
+      "module": "Zeta23.CCM.SourceParityExactInertia",
+      "package": "M17",
+      "module_scope": "exact source inertia at omega=1/2 for every K>=2",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.evenBoundaryFlat_sourceHalf_exactInertia",
+      "source": "Zeta23/CCM/SourceParityExactInertia.lean",
+      "module": "Zeta23.CCM.SourceParityExactInertia",
+      "package": "M17",
+      "module_scope": "exact source inertia at omega=1/2 for every K>=2",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.oddBoundaryFlat_sourceHalf_exactInertia",
+      "source": "Zeta23/CCM/SourceParityExactInertia.lean",
+      "module": "Zeta23.CCM.SourceParityExactInertia",
+      "package": "M17",
+      "module_scope": "exact source inertia at omega=1/2 for every K>=2",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.parityBoundaryFlat_sourceHalf_indefinite",
+      "source": "Zeta23/CCM/SourceParityExactInertia.lean",
+      "module": "Zeta23.CCM.SourceParityExactInertia",
+      "package": "M17",
+      "module_scope": "exact source inertia at omega=1/2 for every K>=2",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.eq_zero_of_centeredMoment_eq_zero",
+      "source": "Zeta23/CCM/SourceMomentVandermondeFiltration.lean",
+      "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
+      "package": "M15",
+      "module_scope": "Vandermonde moment filtration and leading jet signs",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.exists_first_nonzero_centeredMoment",
+      "source": "Zeta23/CCM/SourceMomentVandermondeFiltration.lean",
+      "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
+      "package": "M15",
+      "module_scope": "Vandermonde moment filtration and leading jet signs",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.centeredMoment_even_eq_zero_of_odd",
+      "source": "Zeta23/CCM/SourceMomentVandermondeFiltration.lean",
+      "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
+      "package": "M15",
+      "module_scope": "Vandermonde moment filtration and leading jet signs",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.momentFiltration_top_eq_bot",
+      "source": "Zeta23/CCM/SourceMomentVandermondeFiltration.lean",
+      "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
+      "package": "M15",
+      "module_scope": "Vandermonde moment filtration and leading jet signs",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.finrank_momentFiltration",
+      "source": "Zeta23/CCM/SourceMomentVandermondeFiltration.lean",
+      "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
+      "package": "M15",
+      "module_scope": "Vandermonde moment filtration and leading jet signs",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.finrank_momentFiltration_succ",
+      "source": "Zeta23/CCM/SourceMomentVandermondeFiltration.lean",
+      "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
+      "package": "M15",
+      "module_scope": "Vandermonde moment filtration and leading jet signs",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.sourceAtomRealEnergy_jet_on_momentFiltration",
+      "source": "Zeta23/CCM/SourceMomentVandermondeFiltration.lean",
+      "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
+      "package": "M15",
+      "module_scope": "Vandermonde moment filtration and leading jet signs",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.sourceAtomRealEnergy_first_jet_even_carrier",
+      "source": "Zeta23/CCM/SourceMomentVandermondeFiltration.lean",
+      "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
+      "package": "M15",
+      "module_scope": "Vandermonde moment filtration and leading jet signs",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.sourceAtomRealEnergy_first_jet_odd_carrier",
+      "source": "Zeta23/CCM/SourceMomentVandermondeFiltration.lean",
+      "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
+      "package": "M15",
+      "module_scope": "Vandermonde moment filtration and leading jet signs",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.sourceEntry_eq_cos_integral",
+      "source": "Zeta23/CCM/SourceFourierConvolution.lean",
+      "module": "Zeta23.CCM.SourceFourierConvolution",
+      "package": "M04",
+      "module_scope": "Fourier convolution representation",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.sum_conj_cos_mul_eq_profiles",
+      "source": "Zeta23/CCM/SourceFourierConvolution.lean",
+      "module": "Zeta23.CCM.SourceFourierConvolution",
+      "package": "M04",
+      "module_scope": "Fourier convolution representation",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.quadraticForm_sourceMatrix_eq_convolution",
+      "source": "Zeta23/CCM/SourceFourierConvolution.lean",
+      "module": "Zeta23.CCM.SourceFourierConvolution",
+      "package": "M04",
+      "module_scope": "Fourier convolution representation",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.abs_sub_leading_lt",
+      "source": "Zeta23/CCM/StrictEvenPrimeSeamDichotomy.lean",
+      "module": "Zeta23.CCM.StrictEvenPrimeSeamDichotomy",
+      "package": "M11",
+      "module_scope": "abstract LOW/HIGH seam dichotomy",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.strictEven_seam_dichotomy",
+      "source": "Zeta23/CCM/StrictEvenPrimeSeamDichotomy.lean",
+      "module": "Zeta23.CCM.StrictEvenPrimeSeamDichotomy",
+      "package": "M11",
+      "module_scope": "abstract LOW/HIGH seam dichotomy",
+      "status": "CONDITIONAL_PROVED_PENDING_CI",
+      "premises": [
+        "degree-9 expansion of s- with O(h^10) remainder",
+        "entering continuation s+ = s- - alpha h^9 + O(h^10), alpha>0 (M10, OPEN)",
+        "left nonnegativity",
+        "right negativity at arbitrarily small h"
+      ],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.seam_toy_low",
+      "source": "Zeta23/CCM/StrictEvenPrimeSeamDichotomy.lean",
+      "module": "Zeta23.CCM.StrictEvenPrimeSeamDichotomy",
+      "package": "M11",
+      "module_scope": "abstract LOW/HIGH seam dichotomy",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.seam_toy_high",
+      "source": "Zeta23/CCM/StrictEvenPrimeSeamDichotomy.lean",
+      "module": "Zeta23.CCM.StrictEvenPrimeSeamDichotomy",
+      "package": "M11",
+      "module_scope": "abstract LOW/HIGH seam dichotomy",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.sum_normSq_le_index_weighted",
+      "source": "Zeta23/CCM/ContactNinthJumpGapBound.lean",
+      "module": "Zeta23.CCM.ContactNinthJumpGapBound",
+      "package": "M19",
+      "module_scope": "index-mass inequality and conditional ninth-jump bound",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.one_div_le_norm_sq_sourceIndexAction",
+      "source": "Zeta23/CCM/ContactNinthJumpGapBound.lean",
+      "module": "Zeta23.CCM.ContactNinthJumpGapBound",
+      "package": "M19",
+      "module_scope": "index-mass inequality and conditional ninth-jump bound",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.fourthMoment_lower_bound_of_gap",
+      "source": "Zeta23/CCM/ContactNinthJumpGapBound.lean",
+      "module": "Zeta23.CCM.ContactNinthJumpGapBound",
+      "package": "M19",
+      "module_scope": "index-mass inequality and conditional ninth-jump bound",
+      "status": "CONDITIONAL_PROVED_PENDING_CI",
+      "premises": [
+        "explicit gap premise delta*D2 <= B*M4"
+      ],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.ninthJump_le_of_gap_conditional",
+      "source": "Zeta23/CCM/ContactNinthJumpGapBound.lean",
+      "module": "Zeta23.CCM.ContactNinthJumpGapBound",
+      "package": "M19",
+      "module_scope": "index-mass inequality and conditional ninth-jump bound",
+      "status": "CONDITIONAL_PROVED_PENDING_CI",
+      "premises": [
+        "parity-ground gap premise delta*||Dz||^2 <= B*|M4(z)| (M19 identity, OPEN)",
+        "optimized ninth-jump formula Delta9 = -kappa*|M4|^2 (M10, OPEN)"
+      ],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.half_dictionaryArchRHS_dictionaryMixedTest_eq_regularized",
+      "source": "Zeta23/CCM/CanonicalRegularizedEnergyIdentity.lean",
+      "module": "Zeta23.CCM.CanonicalRegularizedEnergyIdentity",
+      "package": "M05",
+      "module_scope": "canonical nonzero-endpoint regularized energy identity",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.matrixCoefficientPairing_canonicalSourceMatrix_eq_regularized",
+      "source": "Zeta23/CCM/CanonicalRegularizedEnergyIdentity.lean",
+      "module": "Zeta23.CCM.CanonicalRegularizedEnergyIdentity",
+      "package": "M05",
+      "module_scope": "canonical nonzero-endpoint regularized energy identity",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.two_mul_dictionaryMixedTest_eq_sourcePairing",
+      "source": "Zeta23/CCM/CanonicalRegularizedEnergyIdentity.lean",
+      "module": "Zeta23.CCM.CanonicalRegularizedEnergyIdentity",
+      "package": "M05",
+      "module_scope": "canonical nonzero-endpoint regularized energy identity",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.quadraticForm_canonicalSourceMatrix_eq_regularizedEnergy",
+      "source": "Zeta23/CCM/CanonicalRegularizedEnergyIdentity.lean",
+      "module": "Zeta23.CCM.CanonicalRegularizedEnergyIdentity",
+      "package": "M05",
+      "module_scope": "canonical nonzero-endpoint regularized energy identity",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    }
+  ]
+}

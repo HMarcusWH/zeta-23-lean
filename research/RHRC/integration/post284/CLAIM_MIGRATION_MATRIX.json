@@ -1,0 +1,57 @@
+{
+  "schema": "post284.claim_migration_matrix.v1",
+  "terminal_claim": "RH_OPEN",
+  "authority": "AUDIT_LEDGER",
+  "rule": "theorem-by-theorem; no bulk OPEN->PROVED substitution",
+  "post282_candidate_claims": [
+    {
+      "id": "R003_COMPRESSED_PRODUCTION_C2",
+      "theorem": "Zeta23.CCM.canonicalEvenCompressedC2_proved",
+      "signature_premises": [
+        "K : Nat"
+      ],
+      "F04_premise": false,
+      "merged_ci_evidence": "PR #284 lean-compressed-calculus job (axiom_audit over CanonicalCompressedApertureC2.lean) success",
+      "audit": "PREMISE_FREE_MATCHES_CLAIM_TEXT",
+      "action_this_pr": "PROMOTED_PROVED_UNCONDITIONAL",
+      "reason": "deliberate individual migration permitted by POST282_CONTACT_CALCULUS_POST_GREEN.md after the exact head passed every gate; coordinated edits: CLAIM_REGISTRY, R003_PROMOTED_BINDINGS, REGISTERED_THEOREM_BINDINGS, registered_theorem_binding_lint.EXPECTED_OPEN, graph/validate.py expected OPEN set, check_post282_contact_calculus_contract.py, test_post278_sync.py, test_post282_contact_calculus.py; #check/#print axioms lines already present in ClaimBindings.lean and RegisteredClaimBindings.lean"
+    },
+    {
+      "id": "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+      "theorem": "Zeta23.CCM.GeneratedStrictEvenContact.firstVariation_eq_zero_of_inherited",
+      "signature_premises": [
+        "c : GeneratedStrictEvenContact",
+        "hinh : n < k"
+      ],
+      "F04_premise": false,
+      "merged_ci_evidence": "PR #284 axiom_audit EXPECTED_REPORTS covers this declaration; job success",
+      "audit": "PREMISES_MATCH_CLAIM_TEXT",
+      "action_this_pr": "PROMOTED_PROVED_UNCONDITIONAL",
+      "reason": "deliberate individual migration permitted by POST282_CONTACT_CALCULUS_POST_GREEN.md after the exact head passed every gate; coordinated edits: CLAIM_REGISTRY, R003_PROMOTED_BINDINGS, REGISTERED_THEOREM_BINDINGS, registered_theorem_binding_lint.EXPECTED_OPEN, graph/validate.py expected OPEN set, check_post282_contact_calculus_contract.py, test_post278_sync.py, test_post282_contact_calculus.py; #check/#print axioms lines already present in ClaimBindings.lean and RegisteredClaimBindings.lean"
+    },
+    {
+      "id": "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE",
+      "theorem": "Zeta23.CCM.canonicalSecondPairing_euler_eq_productionSaturationGap",
+      "signature_premises": [
+        "hL : 0 < L",
+        "hK : 2 <= K",
+        "hF04 : ProductionContactF04DerivativeAuthority L K"
+      ],
+      "F04_premise": true,
+      "audit": "CONDITIONAL_ON_F04; registry note omitting the F04 premise is corrected in this PR",
+      "action_this_pr": "KEEP_OPEN; NOTE_CORRECTED"
+    },
+    {
+      "id": "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER",
+      "theorem": "Zeta23.CCM.GeneratedStrictEvenContact.completed_production_frontier",
+      "signature_premises": [
+        "c : GeneratedStrictEvenContact",
+        "hF04 : ProductionContactF04DerivativeAuthority Lstar (k+1)"
+      ],
+      "F04_premise": true,
+      "audit": "CONDITIONAL_ON_F04",
+      "action_this_pr": "KEEP_OPEN; NOTE_CORRECTED"
+    }
+  ],
+  "new_post284_roots": "see PROOF_ROOTS.json; recorded as research ledger roots, not registered claims, in this PR"
+}
