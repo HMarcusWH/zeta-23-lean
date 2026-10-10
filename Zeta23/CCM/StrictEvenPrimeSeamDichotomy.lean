@@ -60,7 +60,7 @@ theorem abs_seamPoly_sub_leading_le (c : ℕ → ℝ) {k : ℕ} (hk : k < 10)
 
 /-- Leading-term domination: near `0` the first nonzero coefficient controls
 the sign of any function with the expansion. -/
-theorem abs_sub_leading_lt (c : ℕ → ℝ) {k : ℕ} (hk : k < 10) (hck : c k ≠ 0)
+theorem abs_sub_leading_lt (c : ℕ → ℝ) {k : ℕ} (hk : k < 10) (_hck : c k ≠ 0)
     (hlow : ∀ j, j < k → c j = 0) {C : ℝ} (hC : 0 ≤ C) {f h : ℝ}
     (hh0 : h ≠ 0) (h1 : |h| ≤ 1)
     (hsmall : (C + ∑ j ∈ Finset.range 10, |c j|) * |h| < |c k|)
@@ -153,7 +153,7 @@ theorem strictEven_seam_dichotomy
       exists_leading_radius (enteringCoeff c α) (k := k) (by rw [hck']; exact hck) hC hδ
     have hneg : c k < 0 := by
       by_contra hnn
-      push_neg at hnn
+      push Not at hnn
       have hpos : 0 < c k := lt_of_le_of_ne hnn (Ne.symm hck)
       obtain ⟨h, hh0, hhε, hsp⟩ := hright εp hεp
       have habs : |h| < εp := by rw [abs_of_pos hh0]; exact hhε
@@ -177,7 +177,7 @@ theorem strictEven_seam_dichotomy
         hhneg.ne (by rw [abs_of_neg hhneg, hh]; linarith) (hεmM h habs)
         (hm h (by rw [abs_of_neg hhneg, hh]; linarith))
       have hpowpos : 0 < h ^ k := hev'.pow_pos hhneg.ne
-      have := (sign_of_leading hdom (by rw [abs_mul, abs_pow, abs_of_pos hpowpos])).2
+      have := (sign_of_leading hdom (by rw [abs_mul, abs_pow])).2
         (mul_neg_of_neg_of_pos hneg hpowpos)
       have := hleft h (by rw [hh]; linarith) hhneg
       linarith
@@ -190,7 +190,7 @@ theorem strictEven_seam_dichotomy
     have hlow9 : ∀ j, j < 9 → c j = 0 := hall
     have hc9 : c 9 ≤ 0 := by
       by_contra hpos
-      push_neg at hpos
+      push Not at hpos
       obtain ⟨εm, hεm, hεmδ, hεm1, hεmM⟩ := exists_leading_radius c (k := 9) hpos.ne' hC hδ
       set h := -(εm / 2) with hh
       have hhneg : h < 0 := by rw [hh]; linarith
@@ -199,7 +199,7 @@ theorem strictEven_seam_dichotomy
         hhneg.ne (by rw [abs_of_neg hhneg, hh]; linarith) (hεmM h habs)
         (hm h (by rw [abs_of_neg hhneg, hh]; linarith))
       have hpowneg : h ^ 9 < 0 := Odd.pow_neg ⟨4, by norm_num⟩ hhneg
-      have := (sign_of_leading hdom (by rw [abs_mul])).2
+      have := (sign_of_leading hdom (by rw [abs_mul, abs_pow])).2
         (mul_neg_of_pos_of_neg hpos hpowneg)
       have := hleft h (by rw [hh]; linarith) hhneg
       linarith
@@ -219,7 +219,7 @@ theorem strictEven_seam_dichotomy
       (by rw [abs_of_pos hh0]; linarith) (hεpM h habs)
       (by rw [seamPoly_enteringCoeff]; exact hp h hh0.le (by linarith))
     rw [hk9] at hdom
-    exact (sign_of_leading hdom (by rw [abs_mul])).2
+    exact (sign_of_leading hdom (by rw [abs_mul, abs_pow])).2
       (mul_neg_of_neg_of_pos hc9α (pow_pos hh0 9))
 
 /-! ## Regression toy cases -/
@@ -232,7 +232,7 @@ theorem seam_toy_low {α : ℝ} (hα : 0 < α) :
   intro c
   refine ⟨?_, ?_, ?_⟩
   · intro h
-    simp [seamPoly, c, Finset.sum_range_succ]
+    simp [seamPoly, c]
   · intro h hh
     have : h ^ 3 < 0 := Odd.pow_neg ⟨1, by norm_num⟩ hh
     linarith
@@ -242,7 +242,7 @@ theorem seam_toy_low {α : ℝ} (hα : 0 < α) :
     nlinarith
 
 /-- HIGH toy: `s₋ = h^10`, `s₊ = h^10 - α h^9`, negative on `(0, α)`. -/
-theorem seam_toy_high {α : ℝ} (hα : 0 < α) :
+theorem seam_toy_high {α : ℝ} (_hα : 0 < α) :
     (∀ h, h < 0 → 0 ≤ h ^ 10) ∧ (∀ h, 0 < h → h < α → h ^ 10 - α * h ^ 9 < 0) := by
   refine ⟨fun h _ => by positivity, ?_⟩
   intro h hh hhα

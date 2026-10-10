@@ -628,6 +628,52 @@ def f11_fourth_moment_firewall(report):
     }
 
 
+# ---------------------------------------------------------------------------
+# F12: filtered carriers (M18) at omega = 1/2 and interior samples
+# ---------------------------------------------------------------------------
+
+def filtered_basis(K: int, s: int, parity: str):
+    """Exact rational basis of the moment-filtered parity carrier:
+    even: u_n = u_-n, M_0..M_{2s-1} = 0; odd: u_n = -u_-n, M_0..M_{2s} = 0."""
+    n = 2 * K + 1
+    syms = sp.symbols(f"x0:{n}")
+    eqs = []
+    for i in range(n):
+        j = 2 * K - i
+        eqs.append(syms[i] - syms[j] if parity == "even" else syms[i] + syms[j])
+    top = 2 * s if parity == "even" else 2 * s + 1
+    for k in range(top):
+        eqs.append(sum(sp.Integer(i - K) ** k * syms[i] for i in range(n)))
+    A = sp.Matrix([[sp.diff(e, x) for x in syms] for e in eqs])
+    return [list(v) for v in A.nullspace()]
+
+
+def f12_filtered_inertia(report, kmax: int):
+    rows = []
+    for K in range(2, min(kmax, 8) + 1):
+        for parity in ("even", "odd"):
+            levels = range(1, K + 1) if parity == "even" else range(0, K)
+            for s in levels:
+                basis = filtered_basis(K, s, parity)
+                d = len(basis)
+                expect_d = K - s + 1 if parity == "even" else K - s
+                assert d == expect_d, (K, s, parity, d)
+                if d == 0:
+                    continue
+                expected = ((d + 1) // 2, d // 2) if parity == "even" else (d // 2, (d + 1) // 2)
+                for omega in (mp.mpf("0.5"), mp.mpf("0.25"), mp.mpf("0.1")):
+                    pos, neg, gap, _ = inertia(restricted_gram(omega, K, basis))
+                    assert gap > mp.mpf(10) ** (-(DPS - 15))
+                    assert (pos, neg) == expected, (K, s, parity, omega, pos, neg)
+                rows.append({"K": K, "parity": parity, "level": s, "dimension": d,
+                             "inertia": [expected[0], expected[1], 0]})
+    report["F12_filtered_inertia"] = {
+        "disposition": ("NUMERICAL_SAMPLES (omega=1/2 all-level theorem is Lean-compiled separately; "
+                        "omega in {0.25, 0.1} are interior samples only)"),
+        "rows": rows,
+    }
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--output", type=Path, default=None)
@@ -643,7 +689,8 @@ def main() -> int:
     steps = [f03_fourier, f04_moments_and_jets, f05_moving_vectors,
              lambda r: f06_inertia_and_andreief(r, args.kmax),
              lambda r: f08_spectral_flow(r, args.kmax),
-             f09_dz_bound, f10_schur_toys, f11_fourth_moment_firewall]
+             f09_dz_bound, f10_schur_toys, f11_fourth_moment_firewall,
+             lambda r: f12_filtered_inertia(r, args.kmax)]
     if not args.quick:
         steps = [f01_m05_candidate, f02_pole_identity, f07_laplace] + steps
     for step in steps:
