@@ -41,7 +41,7 @@ theorem eq_zero_of_centeredMoment_eq_zero {K : ℕ} {u : Fin (2 * K + 1) → ℂ
   apply Matrix.eq_zero_of_forall_pow_sum_mul_pow_eq_zero
     (f := fun i => ((centeredIndex K i : ℤ) : ℂ))
   · intro i j hij
-    exact centeredIndex_injective K (by exact_mod_cast hij)
+    exact centeredIndex_injective K (Int.cast_injective hij)
   · intro i
     have hi := i.2
     have hk := h i (by omega)
@@ -59,11 +59,11 @@ theorem exists_first_nonzero_centeredMoment {K : ℕ} {u : Fin (2 * K + 1) → �
   classical
   have hex : ∃ r, centeredMoment K r u ≠ 0 := by
     by_contra h
-    push_neg at h
+    push Not at h
     exact hu (eq_zero_of_centeredMoment_eq_zero (fun k _ => h k))
   refine ⟨Nat.find hex, ?_, Nat.find_spec hex, fun k hk => ?_⟩
   · by_contra hlt
-    push_neg at hlt
+    push Not at hlt
     apply hu
     apply eq_zero_of_centeredMoment_eq_zero
     intro k hk
@@ -138,7 +138,7 @@ theorem centeredMomentMatrix_det_ne_zero (K : ℕ) :
   rw [centeredMomentMatrix, Matrix.det_transpose]
   apply Matrix.det_vandermonde_ne_zero_iff.mpr
   intro i j hij
-  exact centeredIndex_injective K (by exact_mod_cast hij)
+  exact centeredIndex_injective K (Int.cast_injective hij)
 
 /-- The prefix moment map is surjective for `r ≤ 2K+1`. -/
 theorem momentPrefixMap_surjective (K r : ℕ) (hr : r ≤ 2 * K + 1) :
@@ -227,7 +227,7 @@ theorem sourceAtomRealEnergy_first_jet_even_carrier
   have hmem : u ∈ evenBoundaryFlatSubspace K :=
     (mem_euclideanEvenBoundaryFlatSubspace_iff K x).mp hx
   obtain ⟨hflat, heven⟩ := hmem
-  rw [mem_boundaryFlatSubspace_iff] at hflat
+  replace hflat := (mem_boundaryFlatSubspace_iff K u).mp hflat
   obtain ⟨r, hr, hne, hpre⟩ := exists_first_nonzero_centeredMoment (euclideanEquiv_ne_zero hx0)
   have hr_even : Even r := by
     by_contra h
@@ -279,7 +279,7 @@ theorem sourceAtomRealEnergy_first_jet_odd_carrier
   have hmem : u ∈ oddBoundaryFlatSubspace K :=
     (mem_euclideanOddBoundaryFlatSubspace_iff K x).mp hx
   obtain ⟨hflat, hodd⟩ := hmem
-  rw [mem_boundaryFlatSubspace_iff] at hflat
+  replace hflat := (mem_boundaryFlatSubspace_iff K u).mp hflat
   obtain ⟨r, hr, hne, hpre⟩ := exists_first_nonzero_centeredMoment (euclideanEquiv_ne_zero hx0)
   have hr_odd : Odd r := by
     by_contra h

@@ -88,7 +88,7 @@ theorem LatticeSupported.oneSubCosPow {N : ℕ} {f : ℤ → ℂ} (hf : LatticeS
   induction s with
   | zero => simpa using hf
   | succ s ih =>
-      rw [pow_succ', LinearMap.mul_apply]
+      rw [pow_succ', Module.End.mul_apply]
       exact ih.oneSubCos
 
 theorem LatticeSupported.onePlusCosPow {N : ℕ} {f : ℤ → ℂ} (hf : LatticeSupported N f)
@@ -96,7 +96,7 @@ theorem LatticeSupported.onePlusCosPow {N : ℕ} {f : ℤ → ℂ} (hf : Lattice
   induction s with
   | zero => simpa using hf
   | succ s ih =>
-      rw [pow_succ', LinearMap.mul_apply]
+      rw [pow_succ', Module.End.mul_apply]
       exact ih.onePlusCos
 
 theorem LatticeSupported.sinSqPow {N : ℕ} {f : ℤ → ℂ} (hf : LatticeSupported N f)
@@ -104,7 +104,7 @@ theorem LatticeSupported.sinSqPow {N : ℕ} {f : ℤ → ℂ} (hf : LatticeSuppo
   induction s with
   | zero => simpa using hf
   | succ s ih =>
-      rw [pow_succ', LinearMap.mul_apply, sinSqLM_apply]
+      rw [pow_succ', Module.End.mul_apply, sinSqLM_apply]
       have h := ih.sinSq
       rwa [show N + 2 * s + 2 = N + 2 * (s + 1) by ring] at h
 
@@ -113,7 +113,7 @@ theorem EvenIndexSupported.sinSqPow {f : ℤ → ℂ} (hf : EvenIndexSupported f
   induction s with
   | zero => simpa using hf
   | succ s ih =>
-      rw [pow_succ', LinearMap.mul_apply, sinSqLM_apply]
+      rw [pow_succ', Module.End.mul_apply, sinSqLM_apply]
       exact ih.sinSq
 
 theorem OddIndexSupported.sinSqPow {f : ℤ → ℂ} (hf : OddIndexSupported f) (s : ℕ) :
@@ -121,7 +121,7 @@ theorem OddIndexSupported.sinSqPow {f : ℤ → ℂ} (hf : OddIndexSupported f) 
   induction s with
   | zero => simpa using hf
   | succ s ih =>
-      rw [pow_succ', LinearMap.mul_apply, sinSqLM_apply]
+      rw [pow_succ', Module.End.mul_apply, sinSqLM_apply]
       exact ih.sinSq
 
 theorem EvenIndexSupported.signOp {f : ℤ → ℂ} (hf : EvenIndexSupported f) :
@@ -137,7 +137,7 @@ theorem LatticeSymmetric.oneSubCosPow {f : ℤ → ℂ} (hf : LatticeSymmetric f
   induction s with
   | zero => simpa using hf
   | succ s ih =>
-      rw [pow_succ', LinearMap.mul_apply]
+      rw [pow_succ', Module.End.mul_apply]
       exact ih.oneSubCos
 
 /-! ## Box adjointness of powers -/
@@ -172,9 +172,9 @@ theorem latticeInner_oneSubCosPow_left {N M : ℕ} {a : ℤ → ℂ}
   induction s generalizing g with
   | zero => simp
   | succ s ih =>
-      rw [pow_succ', LinearMap.mul_apply, oneSubCosLM_apply,
+      rw [pow_succ', Module.End.mul_apply, oneSubCosLM_apply,
         latticeInner_oneSubCos_left_of_lt (ha.oneSubCosPow s) (by omega),
-        ih (by omega), ← oneSubCosLM_apply, ← LinearMap.mul_apply, ← pow_succ]
+        ih (by omega), ← oneSubCosLM_apply, ← Module.End.mul_apply, ← pow_succ, pow_succ']
 
 theorem latticeInner_onePlusCosPow_left {N M : ℕ} {a : ℤ → ℂ}
     (ha : LatticeSupported N a) (s : ℕ) (hM : N + s ≤ M) (g : ℤ → ℂ) :
@@ -182,9 +182,9 @@ theorem latticeInner_onePlusCosPow_left {N M : ℕ} {a : ℤ → ℂ}
   induction s generalizing g with
   | zero => simp
   | succ s ih =>
-      rw [pow_succ', LinearMap.mul_apply, onePlusCosLM_apply,
+      rw [pow_succ', Module.End.mul_apply, onePlusCosLM_apply,
         latticeInner_onePlusCos_left_of_lt (ha.onePlusCosPow s) (by omega),
-        ih (by omega), ← onePlusCosLM_apply, ← LinearMap.mul_apply, ← pow_succ]
+        ih (by omega), ← onePlusCosLM_apply, ← Module.End.mul_apply, ← pow_succ, pow_succ']
 
 theorem latticeInner_sinSq_left {N M : ℕ} {a : ℤ → ℂ}
     (ha : LatticeSupported N a) (hM : N + 2 ≤ M) (g : ℤ → ℂ) :
@@ -199,9 +199,9 @@ theorem latticeInner_sinSqPow_left {N M : ℕ} {a : ℤ → ℂ}
   induction s generalizing g with
   | zero => simp
   | succ s ih =>
-      rw [pow_succ', LinearMap.mul_apply, sinSqLM_apply,
+      rw [pow_succ', Module.End.mul_apply, sinSqLM_apply,
         latticeInner_sinSq_left (ha.sinSqPow s) (by omega),
-        ih (by omega), ← sinSqLM_apply, ← LinearMap.mul_apply, ← pow_succ]
+        ih (by omega), ← sinSqLM_apply, ← Module.End.mul_apply, ← pow_succ, pow_succ']
 
 /-! ## Positivity of `⟪q, (sin²)^t q⟫` -/
 
@@ -217,7 +217,7 @@ theorem eq_zero_of_sinSqPow_eq_zero {m : ℕ} {q : ℤ → ℂ} (hq : LatticeSup
   induction s with
   | zero => simpa using h
   | succ s ih =>
-      rw [pow_succ', LinearMap.mul_apply, sinSqLM_apply] at h
+      rw [pow_succ', Module.End.mul_apply, sinSqLM_apply] at h
       exact ih (eq_zero_of_latticeSinSq_eq_zero (hq.sinSqPow s) h)
 
 /-- `⟪q, (sin²)^t q⟫ > 0` for every nonzero box-supported `q`. -/
@@ -225,13 +225,13 @@ theorem latticeInner_sinSqPow_self_re_pos {m M : ℕ} {q : ℤ → ℂ}
     (hq : LatticeSupported m q) (hne : q ≠ 0) (t : ℕ) (hM : m + t ≤ M) :
     0 < (latticeInner M q ((sinSqLM ^ t) q)).re := by
   rcases Nat.even_or_odd t with ⟨σ, rfl⟩ | ⟨σ, rfl⟩
-  · rw [pow_add, LinearMap.mul_apply, ← latticeInner_sinSqPow_left hq σ (by omega)]
+  · rw [pow_add, Module.End.mul_apply, ← latticeInner_sinSqPow_left hq σ (by omega)]
     have hw := hq.sinSqPow σ
     apply latticeInner_self_re_pos (hw.mono (by omega))
     intro h0
     exact hne (eq_zero_of_sinSqPow_eq_zero hq σ h0)
   · rw [show 2 * σ + 1 = σ + (1 + σ) by ring, pow_add, pow_add, pow_one,
-      LinearMap.mul_apply, LinearMap.mul_apply,
+      Module.End.mul_apply, Module.End.mul_apply,
       ← latticeInner_sinSqPow_left hq σ (by omega), sinSqLM_apply]
     have hw := hq.sinSqPow σ
     rw [latticeInner_sinSq_self hw (by omega)]
@@ -272,7 +272,7 @@ theorem sourceSesq_half_oneSubCosPow {m s : ℕ} {q₁ q₂ : ℤ → ℂ}
         (ofLattice (m + s) ((oneSubCosLM ^ s) q₂)) =
       latticeInner (m + s) q₁ ((sinSqLM ^ s) (latticeSignOp q₂)) := by
   rw [sourceSesq_half_ofLattice, latticeInner_signOp_eq_sum, latticeSignOp_oneSubCosPow,
-    latticeInner_oneSubCosPow_left h₁ s le_rfl, ← LinearMap.mul_apply,
+    latticeInner_oneSubCosPow_left h₁ s le_rfl, ← Module.End.mul_apply,
     ← commute_oneSubCosLM_onePlusCosLM.mul_pow]
   rfl
 
@@ -289,13 +289,13 @@ theorem sourceSesq_half_sinOneSubCosPow {m s : ℕ} {q₁ q₂ : ℤ → ℂ}
     latticeInner_neg_right, latticeInner_latticeSin_left_of_lt ha (by omega), neg_neg,
     latticeSin_latticeSin, latticeInner_neg_right, latticeSignOp_oneSubCosPow,
     latticeInner_oneSubCosPow_left h₁ s (by omega), ← sinSqLM_apply,
-    ← LinearMap.mul_apply, ← LinearMap.mul_apply, oneSubCosPow_mul_sinSq_mul_onePlusCosPow]
+    ← Module.End.mul_apply, ← Module.End.mul_apply, oneSubCosPow_mul_sinSq_mul_onePlusCosPow]
 
 /-! ## Moments of filtered images -/
 
 theorem latticeOneSubCos_monomial (k : ℕ) :
     latticeOneSubCos (fun n : ℤ => (n : ℂ) ^ k) =
-      fun n => ∑ j ∈ Finset.range (k - 1),
+      fun n : ℤ => ∑ j ∈ Finset.range (k - 1),
         (-((k.choose j : ℂ) * (1 + (-1) ^ (k - j))) / 2) * (n : ℂ) ^ j := by
   funext n
   simp only [latticeOneSubCos, latticeCos]
@@ -315,8 +315,8 @@ theorem latticeOneSubCos_monomial (k : ℕ) :
   rw [h1, h2]
   rcases k with _ | k
   · simp
-  · rw [Finset.sum_range_succ, Finset.sum_range_succ (fun j => (n : ℂ) ^ j * _),
-      Finset.sum_range_succ, Finset.sum_range_succ (fun j => (n : ℂ) ^ j * ((-1) ^ (k + 1 - j) * _))]
+  · rw [Finset.sum_range_succ, Finset.sum_range_succ, Finset.sum_range_succ,
+      Finset.sum_range_succ]
     simp only [Nat.add_sub_cancel, Nat.choose_self, Nat.sub_self, pow_zero,
       Nat.choose_succ_self_right, show k + 1 - k = 1 by omega, pow_one]
     have hsum : ∑ j ∈ Finset.range k,
@@ -324,7 +324,7 @@ theorem latticeOneSubCos_monomial (k : ℕ) :
         -((∑ j ∈ Finset.range k, (n : ℂ) ^ j * (((k + 1).choose j : ℕ) : ℂ)) +
           ∑ j ∈ Finset.range k,
             (n : ℂ) ^ j * ((-1) ^ (k + 1 - j) * (((k + 1).choose j : ℕ) : ℂ))) / 2 := by
-      rw [← Finset.sum_add_distrib, Finset.sum_div, ← Finset.sum_neg_distrib]
+      rw [← Finset.sum_add_distrib, ← Finset.sum_neg_distrib, Finset.sum_div]
       apply Finset.sum_congr rfl
       intro j _
       ring
@@ -334,7 +334,7 @@ theorem latticeOneSubCos_monomial (k : ℕ) :
 
 theorem latticeSin_monomial (k : ℕ) :
     latticeSin (fun n : ℤ => (n : ℂ) ^ k) =
-      fun n => ∑ j ∈ Finset.range k,
+      fun n : ℤ => ∑ j ∈ Finset.range k,
         (-((k.choose j : ℂ) * (1 - (-1) ^ (k - j))) / 2) * (n : ℂ) ^ j := by
   funext n
   simp only [latticeSin]
@@ -387,7 +387,7 @@ theorem latticePair_monomial_oneSubCosPow {m M : ℕ} {q : ℤ → ℂ}
   | zero => intro k hk; omega
   | succ s ih =>
       intro k hk
-      rw [pow_succ', LinearMap.mul_apply, oneSubCosLM_apply,
+      rw [pow_succ', Module.End.mul_apply, oneSubCosLM_apply,
         latticePair_oneSubCos_of_lt (hq.oneSubCosPow s) (by omega),
         latticeOneSubCos_monomial, latticePair_sum_left]
       apply Finset.sum_eq_zero
@@ -427,7 +427,7 @@ theorem centeredMoment_ofLattice_eq_latticePair (N k : ℕ) (f : ℤ → ℂ) :
 theorem evenFilteredMap_mem {m s : ℕ} {q : ℤ → ℂ}
     (hq : LatticeSupported m q) (hsym : LatticeSymmetric q) :
     ofLattice (m + s) ((oneSubCosLM ^ s) q) ∈ evenFilteredCarrier (m + s) s := by
-  refine ⟨?_, ?_⟩
+  refine Submodule.mem_inf.mpr ⟨?_, ?_⟩
   · rw [mem_evenCoefficientSubspace_iff, reverseCoefficients_ofLattice]
     congr 1
     funext n
@@ -441,7 +441,7 @@ theorem oddFilteredMap_mem {m s : ℕ} {q : ℤ → ℂ}
     (hq : LatticeSupported m q) (hsym : LatticeSymmetric q) :
     ofLattice (m + s + 1) (latticeSin ((oneSubCosLM ^ s) q)) ∈
       oddFilteredCarrier (m + s + 1) s := by
-  refine ⟨?_, ?_⟩
+  refine Submodule.mem_inf.mpr ⟨?_, ?_⟩
   · rw [mem_oddCoefficientSubspace_iff, reverseCoefficients_ofLattice]
     funext i
     simp only [ofLattice_apply, Pi.neg_apply]
@@ -482,7 +482,7 @@ theorem finrank_evenFilteredCarrier_le (m s : ℕ) (hs : 1 ≤ s) :
     have hzero : ∀ j : Fin (m + 1), (u : Fin (2 * (m + s) + 1) → ℂ) (idx j) = 0 := by
       intro j
       exact congrFun (LinearMap.mem_ker.mp hu) j
-    obtain ⟨heven, hmom⟩ := u.2
+    obtain ⟨heven, hmom⟩ := Submodule.mem_inf.mp u.2
     rw [mem_evenCoefficientSubspace_iff] at heven
     rw [mem_momentFiltration_iff] at hmom
     have hlat : ∀ n : ℤ, (s : ℤ) ≤ n → n ≤ (m + s : ℕ) →
@@ -494,7 +494,8 @@ theorem finrank_evenFilteredCarrier_le (m s : ℕ) (hs : 1 ≤ s) :
         simp only [idx, centeredIndex]
         push_cast
         omega
-      rw [← toLattice_centeredIndex, hci] at h
+      rw [← toLattice_centeredIndex (m + s) (u : Fin (2 * (m + s) + 1) → ℂ)
+        (idx ⟨(n - s).toNat, hj⟩), hci] at h
       exact h
     have hsym : ∀ n : ℤ, toLattice (m + s) (u : Fin (2 * (m + s) + 1) → ℂ) (-n) =
         toLattice (m + s) (u : Fin (2 * (m + s) + 1) → ℂ) n := by
@@ -530,7 +531,7 @@ theorem finrank_oddFilteredCarrier_le (m s : ℕ) :
     have hzero : ∀ j : Fin (m + 1), (u : Fin (2 * (m + s + 1) + 1) → ℂ) (idx j) = 0 := by
       intro j
       exact congrFun (LinearMap.mem_ker.mp hu) j
-    obtain ⟨hodd, hmom⟩ := u.2
+    obtain ⟨hodd, hmom⟩ := Submodule.mem_inf.mp u.2
     rw [mem_oddCoefficientSubspace_iff] at hodd
     rw [mem_momentFiltration_iff] at hmom
     have hlat : ∀ n : ℤ, (s + 1 : ℤ) ≤ n → n ≤ (m + s + 1 : ℕ) →
@@ -542,7 +543,8 @@ theorem finrank_oddFilteredCarrier_le (m s : ℕ) :
         simp only [idx, centeredIndex]
         push_cast
         omega
-      rw [← toLattice_centeredIndex, hci] at h
+      rw [← toLattice_centeredIndex (m + s + 1) (u : Fin (2 * (m + s + 1) + 1) → ℂ)
+        (idx ⟨(n - s - 1).toNat, hj⟩), hci] at h
       exact h
     have hanti : ∀ n : ℤ, toLattice (m + s + 1) (u : Fin (2 * (m + s + 1) + 1) → ℂ) (-n) =
         -toLattice (m + s + 1) (u : Fin (2 * (m + s + 1) + 1) → ℂ) n := by
@@ -576,7 +578,7 @@ theorem oneSubCosPow_eq_zero {m : ℕ} {q : ℤ → ℂ} (hq : LatticeSupported 
   induction s with
   | zero => simpa using h
   | succ s ih =>
-      rw [pow_succ', LinearMap.mul_apply, oneSubCosLM_apply] at h
+      rw [pow_succ', Module.End.mul_apply, oneSubCosLM_apply] at h
       exact ih (eq_zero_of_latticeOneSubCos_eq_zero (hq.oneSubCosPow s) h)
 
 /-- Even filtered map from even-index parameters. -/

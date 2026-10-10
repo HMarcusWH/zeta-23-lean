@@ -38,7 +38,11 @@ jobs:
             Zeta23.CCM.SourceFourierConvolution \
             Zeta23.CCM.StrictEvenPrimeSeamDichotomy \
             Zeta23.CCM.ContactNinthJumpGapBound \
-            Zeta23.CCM.CanonicalRegularizedEnergyIdentity
+            Zeta23.CCM.CanonicalRegularizedEnergyIdentity \
+            Zeta23.CCM.SourceMomentFilteredInertia \
+            Zeta23.CCM.CanonicalSourceWeightedIntegral \
+            Zeta23.CCM.SecularDeterminantKernel \
+            Zeta23.CCM.CanonicalCenteredIndexCoercivity
           do
             if lake build "$target"; then
               echo "$target PASS" | tee -a /tmp/post284-targets.txt
@@ -59,7 +63,11 @@ jobs:
             Zeta23/CCM/SourceFourierConvolution.lean \
             Zeta23/CCM/StrictEvenPrimeSeamDichotomy.lean \
             Zeta23/CCM/ContactNinthJumpGapBound.lean \
-            Zeta23/CCM/CanonicalRegularizedEnergyIdentity.lean
+            Zeta23/CCM/CanonicalRegularizedEnergyIdentity.lean \
+            Zeta23/CCM/SourceMomentFilteredInertia.lean \
+            Zeta23/CCM/CanonicalSourceWeightedIntegral.lean \
+            Zeta23/CCM/SecularDeterminantKernel.lean \
+            Zeta23/CCM/CanonicalCenteredIndexCoercivity.lean
       - name: Reject proof escapes on the promoted surface
         run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
       - uses: actions/upload-artifact@v4

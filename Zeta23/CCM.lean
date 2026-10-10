@@ -252,3 +252,7 @@ import Zeta23.CCM.SourceFourierConvolution
 import Zeta23.CCM.StrictEvenPrimeSeamDichotomy
 import Zeta23.CCM.ContactNinthJumpGapBound
 import Zeta23.CCM.CanonicalRegularizedEnergyIdentity
+import Zeta23.CCM.SourceMomentFilteredInertia
+import Zeta23.CCM.CanonicalSourceWeightedIntegral
+import Zeta23.CCM.SecularDeterminantKernel
+import Zeta23.CCM.CanonicalCenteredIndexCoercivity

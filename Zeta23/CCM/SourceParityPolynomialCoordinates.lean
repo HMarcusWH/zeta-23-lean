@@ -595,3 +595,12 @@ theorem OddIndexSupported.sinSq {f : ℤ → ℂ} (hf : OddIndexSupported f) :
   ring
 
 end Zeta23.CCM
+
+#print axioms Zeta23.CCM.latticeSin_latticeSin
+#print axioms Zeta23.CCM.latticePair_latticeCos
+#print axioms Zeta23.CCM.latticePair_latticeSin
+#print axioms Zeta23.CCM.latticeInner_oneSubCos_left
+#print axioms Zeta23.CCM.latticeInner_latticeSin_left
+#print axioms Zeta23.CCM.latticePair_sq_oneSubCos
+#print axioms Zeta23.CCM.eq_zero_of_downward_recurrence
+#print axioms Zeta23.CCM.eq_zero_of_latticeSinSq_eq_zero

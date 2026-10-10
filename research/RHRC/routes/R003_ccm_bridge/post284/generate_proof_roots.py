@@ -13,7 +13,11 @@ META = {
  "Zeta23/CCM/SourceFourierConvolution.lean": ("M04","Fourier convolution representation"),
  "Zeta23/CCM/StrictEvenPrimeSeamDichotomy.lean": ("M11","abstract LOW/HIGH seam dichotomy"),
  "Zeta23/CCM/ContactNinthJumpGapBound.lean": ("M19","index-mass inequality and conditional ninth-jump bound"),
- "Zeta23/CCM/CanonicalRegularizedEnergyIdentity.lean": ("M05","canonical nonzero-endpoint regularized energy identity"),
+ "Zeta23/CCM/CanonicalRegularizedEnergyIdentity.lean": ("M05/F-M52/F-M64","canonical nonzero-endpoint regularized energy identity"),
+ "Zeta23/CCM/SourceMomentFilteredInertia.lean": ("M18","moment-filtered carriers at omega=1/2: exact sign splits and indefiniteness"),
+ "Zeta23/CCM/CanonicalSourceWeightedIntegral.lean": ("F-M35/F-M40/F-M54","integrated elementary source identities over omega in [0,1]; averaged negativity and sign reversal"),
+ "Zeta23/CCM/SecularDeterminantKernel.lean": ("F-M20/F-M24/F-M26/F-M30","abstract rank-one secular determinant, constructive kernel, shifted secular equation, matched update; exact 2x2 crossing negative control"),
+ "Zeta23/CCM/CanonicalCenteredIndexCoercivity.lean": ("F-M46","discrete Poincare coercivity C_K<5 and contact-moment corollary from the existing parity-gap theorem"),
 }
 CONDITIONAL = {
  "Zeta23.CCM.fourthMoment_lower_bound_of_gap": ["explicit gap premise delta*D2 <= B*M4"],

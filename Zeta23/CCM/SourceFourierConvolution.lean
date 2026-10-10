@@ -53,10 +53,11 @@ theorem sourceEntry_eq_cos_integral (ω : ℝ) (n m : ℤ) :
       intro t
       have h1 := (((hasDerivAt_id t).const_mul ((n : ℝ) - m)).add_const
         ((m : ℝ) * a)).sin.div_const ((n : ℝ) - m)
-      convert h1 using 1
-      rw [show (n : ℝ) * t + (m : ℝ) * (a - t) = ((n : ℝ) - m) * id t + (m : ℝ) * a by
-        simp only [id]; ring]
-      field_simp
+      refine h1.congr_deriv ?_
+      simp only [id, mul_one]
+      rw [mul_div_assoc, div_self hc, mul_one]
+      congr 1
+      ring
     have hcont : Continuous fun t : ℝ => Real.cos ((n : ℝ) * t + (m : ℝ) * (a - t)) := by
       fun_prop
     rw [intervalIntegral.integral_eq_sub_of_hasDerivAt (fun t _ => hF t)
@@ -135,12 +136,12 @@ theorem quadraticForm_sourceMatrix_eq_convolution (ω : ℝ) (N : ℕ)
       (centeredIndex N j : ℝ) * (a - t)) : ℂ) * u j
   have hsum : ∀ i, ∑ j, (∫ t in (0 : ℝ)..a, g i j t) =
       ∫ t in (0 : ℝ)..a, ∑ j, g i j t := fun i =>
-    (intervalIntegral.integral_finset_sum
+    (intervalIntegral.integral_finsetSum
       (fun j _ => (hcont i j).intervalIntegrable _ _)).symm
   have hsum2 : ∑ i, (∫ t in (0 : ℝ)..a, ∑ j, g i j t) =
       ∫ t in (0 : ℝ)..a, ∑ i, ∑ j, g i j t :=
-    (intervalIntegral.integral_finset_sum
-      (fun i _ => (continuous_finset_sum _ (fun j _ => hcont i j)).intervalIntegrable _ _)).symm
+    (intervalIntegral.integral_finsetSum
+      (fun i _ => (continuous_finsetSum _ (fun j _ => hcont i j)).intervalIntegrable _ _)).symm
   unfold quadraticForm
   calc ∑ i, ∑ j, conj (u i) * sourceMatrix ω N i j * u j
       = ∑ i, ∑ j, ((1 / Real.pi : ℝ) : ℂ) * ∫ t in (0 : ℝ)..a, g i j t := by

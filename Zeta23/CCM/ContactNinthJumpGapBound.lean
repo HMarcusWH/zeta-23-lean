@@ -118,10 +118,9 @@ theorem one_div_le_norm_sq_sourceIndexAction (K : ℕ)
       change ((EuclideanSpace.equiv (Fin (2 * K + 1)) ℂ) (sourceIndexAction K x)) i = _
       rw [sourceIndexAction_coordinates]
       simp [indexMatrix, Matrix.mulVec_diagonal, u]
-    rw [hcoord, norm_mul, mul_pow, ← Complex.normSq_eq_norm_sq]
+    rw [hcoord, norm_mul, mul_pow, Complex.normSq_eq_norm_sq (u i)]
     congr 1
-    rw [Complex.norm_intCast]
-    simp [sq_abs]
+    rw [Complex.norm_intCast, sq_abs]
   have hineq := sum_normSq_le_index_weighted u hsum
   rw [← hnorm, hx, ← hD] at hineq
   have hpos : (0 : ℝ) < 2 * K + 1 := by positivity

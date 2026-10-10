@@ -101,7 +101,7 @@ theorem half_dictionaryArchRHS_dictionaryMixedTest_eq_regularized
       (hD.mono_set hIoiL)]
   have hDtail : (∫ z in Ioi L, (k 0 - k z) * (archDensity z : ℂ)) =
       k 0 * ((∫ z in Ioi L, archDensity z : ℝ) : ℂ) := by
-    rw [← integral_ofReal, ← integral_const_mul]
+    rw [← integral_complex_ofReal, ← integral_const_mul]
     apply setIntegral_congr_fun measurableSet_Ioi
     intro z hz
     have hzL : L < |z| := by
@@ -113,12 +113,13 @@ theorem half_dictionaryArchRHS_dictionaryMixedTest_eq_regularized
         (k z - k 0 * (Real.exp (-z / 2) : ℂ)) * (archDensity z : ℂ)) =
       -(∫ z in Ioc (0 : ℝ) L, (k 0 - k z) * (archDensity z : ℂ)) +
         k 0 * ((∫ z in Ioc (0 : ℝ) L, (1 - Real.exp (-z / 2)) * archDensity z : ℝ) : ℂ) := by
-    rw [intervalIntegral.integral_of_le hL.le, ← integral_ofReal, ← integral_const_mul,
-      ← integral_neg, ← integral_add (hD.mono_set hIoc).neg]
+    rw [intervalIntegral.integral_of_le hL.le, ← integral_complex_ofReal, ← integral_const_mul,
+      ← integral_neg, ← integral_add]
     · apply setIntegral_congr_fun measurableSet_Ioc
       intro z _
       push_cast
       ring
+    · exact (hD.mono_set hIoc).neg
     · exact ((hR.mono_set hIoc).ofReal).const_mul _
   -- cast the real identities
   have htailC : ((2 * Real.pi * Zeta23.mu 0 : ℝ) : ℂ) +
@@ -167,8 +168,7 @@ theorem two_mul_dictionaryMixedTest_eq_sourcePairing
   rw [Finset.mul_sum]
   apply Finset.sum_congr rfl
   intro j _
-  have habs : |t| ≤ L := by rw [abs_of_nonneg ht0]; exact htL
-  simp [dictionaryBasisTest, kernel, habs, abs_of_nonneg ht0,
+  simp [dictionaryBasisTest, kernel, abs_of_nonneg ht0, htL,
     sourceEntry_one_sub_eq_qBasis]
   ring
 
