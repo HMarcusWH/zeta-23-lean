@@ -77,12 +77,17 @@
       "route_mentions": []
     },
     {
-      "claim_mentions": [],
+      "claim_mentions": [
+        "R003_COMPLETED_STRICT_EVEN_CONTACT_FRONTIER",
+        "R003_COMPRESSED_PRODUCTION_C2",
+        "R003_INHERITED_FIRST_VARIATION_RESTRICTION",
+        "R003_WEIGHTED_PRODUCTION_PAIR_BALANCE"
+      ],
       "document_id": "rh:document:research/RHRC/CURRENT_RESEARCH_PLAN.md",
       "document_role": "DOCUMENTATION_ARTIFACT",
       "file_class": "DOCUMENTATION",
       "file_id": "rh:file:research/RHRC/CURRENT_RESEARCH_PLAN.md",
-      "heading_count": 68,
+      "heading_count": 69,
       "path": "research/RHRC/CURRENT_RESEARCH_PLAN.md",
       "route_mentions": [
         "R003_ccm_bridge"
@@ -109,7 +114,7 @@
       "document_role": "LIVING_AUTHORITY_INDEX",
       "file_class": "LIVING_SSOT",
       "file_id": "rh:file:research/RHRC/DOCUMENTATION_AUTHORITY.md",
-      "heading_count": 41,
+      "heading_count": 42,
       "path": "research/RHRC/DOCUMENTATION_AUTHORITY.md",
       "route_mentions": [
         "R003_ccm_bridge"

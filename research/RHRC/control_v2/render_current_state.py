@@ -48,6 +48,8 @@ THEOREM AUTHORITY
 - PR #276 exact legal successor ground >= 1 on 0 < L <= 1/512 = PROVED
 - fixed-N production continuity = {route.get('post278_fixedN_ground_continuity', 'OPEN')}
 - same-N off-line-zero contact = {route.get('post278_sameN_zero_contact', 'OPEN')}
+- PR #284 compressed contact calculus = {route.get('post284_compressed_contact_calculus', 'OPEN')}
+- PR #285 post-284 source-inertia package = {route.get('post285_source_inertia_package', 'OPEN')}
 - PR #272 CofinalCanonicalArithmeticCertificates <-> Mathlib RiemannHypothesis = PROVED / AUDIT-ONLY
 - RH = OPEN
 
@@ -61,6 +63,8 @@ CURRENT RESEARCH FRONTIER
 - uniform domination strength = {route.get('post277_uniform_domination_strength', 'UNAUDITED')}
 - active obstruction = {route['current_obstruction']}
 - active subobligation = {route['current_active_subobligation']}
+- F04 production derivative authority = {route.get('post285_f04_production_derivative_authority', 'OPEN')}
+- M74 canonical secular instantiation = {route.get('post285_m74_canonical_secular_instantiation', 'OPEN')}
 - next research target = {route['current_next_research_target']}
 - required new information = {route['current_required_new_information']}
 - RH-sufficient terminal formulations are not counted as independent sub-RH progress

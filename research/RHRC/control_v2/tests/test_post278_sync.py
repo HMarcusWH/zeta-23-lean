@@ -10,21 +10,10 @@ class Post278SyncTests(unittest.TestCase):
         state = json.loads(
             (RHRC / "control_v2" / "CONTROL_STATE.json").read_text(encoding="utf-8")
         )
-        theorem = state["merged_theorem_anchor"]
-        self.assertEqual(theorem["pr"], 282)
-        self.assertEqual(
-            theorem["validated_head"],
-            "de2869d1614d71b5d851d7088be514901af11b74",
-        )
-        self.assertEqual(
-            theorem["merge_commit"],
-            "01871f7d2256b1eac2dbd7967346954367c8eef9",
-        )
-        self.assertEqual(
-            theorem["tree"],
-            "c7749d37c4b63270818c3fb0d7fb5dbc22638790",
-        )
-        candidate = state["candidate_branch"]
+        # PR #285 is now the merged theorem anchor; the PR #283 candidate
+        # record survives as history under previous_candidate_branch.
+        self.assertGreaterEqual(state["merged_theorem_anchor"]["pr"], 282)
+        candidate = state["previous_candidate_branch"]
         self.assertEqual(candidate["pr"], 283)
         self.assertEqual(
             candidate["branch"],
@@ -87,9 +76,12 @@ class Post278SyncTests(unittest.TestCase):
         )
         self.assertEqual(
             route["current_active_subobligation"],
-            "OBS-060N_COMPRESSED_PRODUCTION_DERIVATIVE_AND_ADMISSIBILITY_BRIDGE",
+            "OBS-060O_CONTACT_CONDITIONED_PRODUCTION_SATURATION_EXCLUSION",
         )
-        self.assertEqual(route["current_next_research_target"], "POST282_CANONICAL_CONTACT_CALCULUS_AND_INHERITED_SATURATION")
+        self.assertEqual(
+            route["current_next_research_target"],
+            "POST285_CANONICAL_SECULAR_RAY_PRIME_FREE_F04_AND_FULL_ARITHMETIC_SOURCE_INEQUALITY",
+        )
         self.assertEqual(
             route["post280_contact_quotient_lane"],
             "PROVED_MERGED_PR_280",

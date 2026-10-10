@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 from collections import Counter
 from pathlib import Path
@@ -11,11 +12,23 @@ REPO = RHRC.parents[1]
 CONFIG = RHRC / "ool" / "configs" / "rhkg_phase_atlas_v2.json"
 REFERENCE = RHRC / "ool" / "OOL_REFERENCE.json"
 SOURCE_ONLY = RHRC / "integration" / "generated" / "RH_CORE_SOURCE_ONLY_THEOREMS.jsonl"
-SOURCE_DEPS = RHRC / "integration" / "generated" / "SOURCE_ONLY_CANDIDATE_DEPENDENCIES.jsonl"
 REGISTERED_DEPS = RHRC / "graph" / "compiler" / "REGISTERED_DECLARATION_DEPENDENCIES.jsonl"
 REGISTERED_BINDINGS = RHRC / "REGISTERED_THEOREM_BINDINGS.json"
 FFBBP = RHRC / "ffbbp" / "generated" / "RHKG_CANDIDATE_REDUCTION_ASSURANCE.json"
 FRONTIERS = RHRC / "graph" / "generated" / "DEPENDENCY_PROJECTION_FRONTIERS.json"
+
+
+def _load_source_only_shards():
+    path = RHRC / "integration" / "source_only_shards.py"
+    spec = importlib.util.spec_from_file_location("rhrc_source_only_shards", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load source-only shard layout from {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+SOURCE_ONLY_SHARDS = _load_source_only_shards()
 CONTACTS = RHRC / "ool" / "generated" / "RHKG_OOL_ROUTE_CONTACTS.jsonl"
 REPORT = RHRC / "ool" / "generated" / "RHKG_OOL_PHASE_ATLAS.json"
 
@@ -196,7 +209,7 @@ def build() -> tuple[list[dict], dict]:
     if ffbbp["reductions"][ffbbp["selected_reduction"]]["assurance_gate"]["passed"] is not True:
         fail("FFBBP selected reduction is not assured")
 
-    candidate_dep_rows = load_jsonl(SOURCE_DEPS)
+    candidate_dep_rows = SOURCE_ONLY_SHARDS.load_rows()
     candidate_index = index_receipt(candidate_dep_rows)
     root_rows = [row for row in candidate_dep_rows if row.get("graph_role") == "SOURCE_ONLY_ROOT"]
     if len(root_rows) != len(candidates):
@@ -310,7 +323,7 @@ def build() -> tuple[list[dict], dict]:
             "ffbbp_selected_reduction": ffbbp["selected_reduction"],
             "ffbbp_source_only_module_cohort_count": ffbbp["source_only_module_cohort_count"],
             "source_only_candidate_sha256": digest_path(SOURCE_ONLY),
-            "source_only_dependency_sha256": digest_path(SOURCE_DEPS),
+            "source_only_dependency_sha256": SOURCE_ONLY_SHARDS.logical_sha256(),
             "registered_dependency_sha256": digest_path(REGISTERED_DEPS),
             "ffbbp_assurance_sha256": digest_path(FFBBP),
             "ool_reference_sha256": digest_path(REFERENCE),

@@ -56,6 +56,15 @@ import Zeta23.ExceptionalZero.GlobalParityBottomFirstContact
 import Zeta23.CCM.CanonicalCompressedApertureC2
 import Zeta23.CCM.FirstCrossingProductionCurvatureBridge
 import Zeta23.CCM.FirstCrossingGeneratedStrictEvenFrontier
+import Zeta23.CCM.CanonicalRegularizedEnergyIdentity
+import Zeta23.CCM.SourceParityExactInertia
+import Zeta23.CCM.SourceMomentFilteredInertia
+import Zeta23.CCM.SourceMomentVandermondeFiltration
+import Zeta23.CCM.SecularDeterminantKernel
+import Zeta23.CCM.CanonicalSourceWeightedIntegral
+import Zeta23.CCM.CanonicalCenteredIndexCoercivity
+import Zeta23.CCM.CanonicalK2SourceSignInterval
+import Zeta23.CCM.CanonicalPrimeFreeSecondTest
 
 /-!
 R003 promoted-claim completeness is machine-checked by research/RHRC/tools/promoted_binding_lint.py against research/RHRC/R003_PROMOTED_BINDINGS.json and CLAIM_REGISTRY.json. Supporting #check declarations may exist without registry promotion; every PROVED_UNCONDITIONAL R003 registry theorem must have both #check and #print axioms here.
@@ -620,6 +629,77 @@ This module pins promoted RHRC claim IDs to concrete Lean theorem names so that
 -- R003_OFFLINE_ZERO_ONE_STEP_DOMINATION_FAILURE
 #check Zeta23.ExceptionalZero.exists_globalFirstBad_not_canonicalOneStepDomination_of_offLine_zero
 #print axioms Zeta23.ExceptionalZero.exists_globalFirstBad_not_canonicalOneStepDomination_of_offLine_zero
+
+-- Post-#285 promoted bindings (merged-green PR #285, head d20653c).
+
+-- R003_CANONICAL_REGULARIZED_ENERGY_IDENTITY
+#check Zeta23.CCM.quadraticForm_canonicalSourceMatrix_eq_regularizedEnergy
+#print axioms Zeta23.CCM.quadraticForm_canonicalSourceMatrix_eq_regularizedEnergy
+
+-- R003_HALF_APERTURE_EVEN_SOURCE_EXACT_INERTIA
+#check Zeta23.CCM.evenBoundaryFlat_sourceHalf_exactInertia
+#print axioms Zeta23.CCM.evenBoundaryFlat_sourceHalf_exactInertia
+
+-- R003_HALF_APERTURE_ODD_SOURCE_EXACT_INERTIA
+#check Zeta23.CCM.oddBoundaryFlat_sourceHalf_exactInertia
+#print axioms Zeta23.CCM.oddBoundaryFlat_sourceHalf_exactInertia
+
+-- R003_HALF_APERTURE_FILTERED_EVEN_SOURCE_SPLIT
+#check Zeta23.CCM.evenFilteredCarrier_sourceHalf_split
+#print axioms Zeta23.CCM.evenFilteredCarrier_sourceHalf_split
+
+-- R003_HALF_APERTURE_FILTERED_ODD_SOURCE_SPLIT
+#check Zeta23.CCM.oddFilteredCarrier_sourceHalf_split
+#print axioms Zeta23.CCM.oddFilteredCarrier_sourceHalf_split
+
+-- R003_SOURCE_MOMENT_FILTRATION_DIMENSION
+#check Zeta23.CCM.finrank_momentFiltration
+#print axioms Zeta23.CCM.finrank_momentFiltration
+
+-- R003_ABSTRACT_RANK_ONE_SECULAR_DETERMINANT
+#check Zeta23.CCM.det_eq_mul_one_sub_secularScalar
+#print axioms Zeta23.CCM.det_eq_mul_one_sub_secularScalar
+
+-- R003_ABSTRACT_SECULAR_KERNEL_CRITERION
+#check Zeta23.CCM.secularScalar_eq_one_iff
+#print axioms Zeta23.CCM.secularScalar_eq_one_iff
+
+-- R003_ABSTRACT_SHIFTED_SECULAR_EQUATION
+#check Zeta23.CCM.shifted_secular
+#print axioms Zeta23.CCM.shifted_secular
+
+-- R003_WEIGHTED_SOURCE_INTEGRAL_NEGATIVITY
+#check Zeta23.CCM.integral_one_sub_mul_re_quadraticForm_le
+#print axioms Zeta23.CCM.integral_one_sub_mul_re_quadraticForm_le
+
+-- R003_CENTERED_SOURCE_SIGN_CHANGE
+#check Zeta23.CCM.exists_source_zero_of_center_zero
+#print axioms Zeta23.CCM.exists_source_zero_of_center_zero
+
+-- R003_CENTERED_INDEX_COERCIVITY
+#check Zeta23.CCM.sum_normSq_lt_five_mul
+#print axioms Zeta23.CCM.sum_normSq_lt_five_mul
+
+-- R003_PARITY_GAP_MOMENT_COERCIVITY_BOUND
+#check Zeta23.CCM.parityGap_mul_norm_sq_le_coercivity_mul_source_mul_momentFour
+#print axioms Zeta23.CCM.parityGap_mul_norm_sq_le_coercivity_mul_source_mul_momentFour
+
+-- R003_K2_ODD_SOURCE_NEGATIVE_INTERVAL
+#check Zeta23.CCM.re_quadraticForm_neg_of_mem_oddBoundaryFlat_two
+#print axioms Zeta23.CCM.re_quadraticForm_neg_of_mem_oddBoundaryFlat_two
+
+-- R003_K2_EVEN_INDEX_SOURCE_NEGATIVE_INTERVAL
+#check Zeta23.CCM.re_quadraticForm_index_neg_of_mem_evenBoundaryFlat_two
+#print axioms Zeta23.CCM.re_quadraticForm_index_neg_of_mem_evenBoundaryFlat_two
+
+-- R003_K2_PRIME_SAMPLE_SOURCE_SIGN
+#check Zeta23.CCM.primeTerm_nonneg_of_primeSample_two
+#print axioms Zeta23.CCM.primeTerm_nonneg_of_primeSample_two
+
+-- R003_PRIME_FREE_SECOND_TEST_RADIUS
+#check Zeta23.CCM.primeFreeSecondTest_pos
+#print axioms Zeta23.CCM.primeFreeSecondTest_pos
+
 
 
 -- Post-#282 OPEN candidate bindings.

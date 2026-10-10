@@ -621,7 +621,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 27,
       "file_id": "rh:file:Zeta23/CCM/CanonicalCenteredIndexCoercivity.lean",
       "module": "Zeta23.CCM.CanonicalCenteredIndexCoercivity",
       "module_id": "rh:module:Zeta23.CCM.CanonicalCenteredIndexCoercivity",
@@ -631,7 +631,7 @@
       "reachable_from": [
         "Zeta23.CCM"
       ],
-      "registered_root_count": 0,
+      "registered_root_count": 2,
       "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
@@ -785,7 +785,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 17,
       "file_id": "rh:file:Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
       "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
       "module_id": "rh:module:Zeta23.CCM.CanonicalK2SourceSignInterval",
@@ -795,7 +795,7 @@
       "reachable_from": [
         "Zeta23.CCM"
       ],
-      "registered_root_count": 0,
+      "registered_root_count": 3,
       "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
@@ -925,7 +925,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 12,
       "file_id": "rh:file:Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean",
       "module": "Zeta23.CCM.CanonicalPrimeFreeSecondTest",
       "module_id": "rh:module:Zeta23.CCM.CanonicalPrimeFreeSecondTest",
@@ -935,7 +935,7 @@
       "reachable_from": [
         "Zeta23.CCM"
       ],
-      "registered_root_count": 0,
+      "registered_root_count": 1,
       "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
@@ -1003,7 +1003,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 7,
       "file_id": "rh:file:Zeta23/CCM/CanonicalRegularizedEnergyIdentity.lean",
       "module": "Zeta23.CCM.CanonicalRegularizedEnergyIdentity",
       "module_id": "rh:module:Zeta23.CCM.CanonicalRegularizedEnergyIdentity",
@@ -1013,7 +1013,7 @@
       "reachable_from": [
         "Zeta23.CCM"
       ],
-      "registered_root_count": 0,
+      "registered_root_count": 1,
       "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
@@ -1235,7 +1235,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 21,
       "file_id": "rh:file:Zeta23/CCM/CanonicalSourceWeightedIntegral.lean",
       "module": "Zeta23.CCM.CanonicalSourceWeightedIntegral",
       "module_id": "rh:module:Zeta23.CCM.CanonicalSourceWeightedIntegral",
@@ -1245,7 +1245,7 @@
       "reachable_from": [
         "Zeta23.CCM"
       ],
-      "registered_root_count": 0,
+      "registered_root_count": 2,
       "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
@@ -4260,7 +4260,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 2,
+      "compiler_dependency_surface_declaration_count": 3,
       "file_id": "rh:file:Zeta23/CCM/QuadraticNormalSourceJets.lean",
       "module": "Zeta23.CCM.QuadraticNormalSourceJets",
       "module_id": "rh:module:Zeta23.CCM.QuadraticNormalSourceJets",
@@ -4685,7 +4685,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 17,
       "file_id": "rh:file:Zeta23/CCM/SecularDeterminantKernel.lean",
       "module": "Zeta23.CCM.SecularDeterminantKernel",
       "module_id": "rh:module:Zeta23.CCM.SecularDeterminantKernel",
@@ -4695,7 +4695,7 @@
       "reachable_from": [
         "Zeta23.CCM"
       ],
-      "registered_root_count": 0,
+      "registered_root_count": 3,
       "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
@@ -4796,7 +4796,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 5,
       "file_id": "rh:file:Zeta23/CCM/SourceFourierConvolution.lean",
       "module": "Zeta23.CCM.SourceFourierConvolution",
       "module_id": "rh:module:Zeta23.CCM.SourceFourierConvolution",
@@ -4826,7 +4826,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 45,
       "file_id": "rh:file:Zeta23/CCM/SourceLatticeCoordinates.lean",
       "module": "Zeta23.CCM.SourceLatticeCoordinates",
       "module_id": "rh:module:Zeta23.CCM.SourceLatticeCoordinates",
@@ -4841,7 +4841,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 21,
+      "compiler_dependency_surface_declaration_count": 22,
       "file_id": "rh:file:Zeta23/CCM/SourceMatrix.lean",
       "module": "Zeta23.CCM.SourceMatrix",
       "module_id": "rh:module:Zeta23.CCM.SourceMatrix",
@@ -4873,7 +4873,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 107,
       "file_id": "rh:file:Zeta23/CCM/SourceMomentFilteredInertia.lean",
       "module": "Zeta23.CCM.SourceMomentFilteredInertia",
       "module_id": "rh:module:Zeta23.CCM.SourceMomentFilteredInertia",
@@ -4883,12 +4883,12 @@
       "reachable_from": [
         "Zeta23.CCM"
       ],
-      "registered_root_count": 0,
+      "registered_root_count": 2,
       "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 14,
       "file_id": "rh:file:Zeta23/CCM/SourceMomentVandermondeFiltration.lean",
       "module": "Zeta23.CCM.SourceMomentVandermondeFiltration",
       "module_id": "rh:module:Zeta23.CCM.SourceMomentVandermondeFiltration",
@@ -4898,7 +4898,7 @@
       "reachable_from": [
         "Zeta23.CCM"
       ],
-      "registered_root_count": 0,
+      "registered_root_count": 1,
       "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
@@ -4919,7 +4919,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 101,
       "file_id": "rh:file:Zeta23/CCM/SourceParityExactInertia.lean",
       "module": "Zeta23.CCM.SourceParityExactInertia",
       "module_id": "rh:module:Zeta23.CCM.SourceParityExactInertia",
@@ -4929,12 +4929,12 @@
       "reachable_from": [
         "Zeta23.CCM"
       ],
-      "registered_root_count": 0,
+      "registered_root_count": 2,
       "standalone_role": null,
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 78,
       "file_id": "rh:file:Zeta23/CCM/SourceParityPolynomialCoordinates.lean",
       "module": "Zeta23.CCM.SourceParityPolynomialCoordinates",
       "module_id": "rh:module:Zeta23.CCM.SourceParityPolynomialCoordinates",
@@ -4949,7 +4949,7 @@
       "trust_zone": "RH_FORMAL_CORE"
     },
     {
-      "compiler_dependency_surface_declaration_count": 0,
+      "compiler_dependency_surface_declaration_count": 2,
       "file_id": "rh:file:Zeta23/CCM/SourceSignCountermodels.lean",
       "module": "Zeta23.CCM.SourceSignCountermodels",
       "module_id": "rh:module:Zeta23.CCM.SourceSignCountermodels",

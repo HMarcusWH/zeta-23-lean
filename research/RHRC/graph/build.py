@@ -82,11 +82,25 @@ DECLARED_GENERATED_PRODUCTS = [
 ]
 
 
+def _load_source_only_shards():
+    path = RHRC / "integration" / "source_only_shards.py"
+    spec = importlib.util.spec_from_file_location("rhrc_source_only_shards", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load source-only shard layout from {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+# The source-only candidate dependency receipt is sharded the same way as the
+# relations (16 fixed shards; see integration/source_only_shards.py).
+SOURCE_ONLY_SHARDS = _load_source_only_shards()
+
 DECLARED_INTEGRATION_GENERATED_PRODUCTS = [
     "research/RHRC/integration/generated/SOURCE_CANDIDATE_RESOLUTION.jsonl",
     "research/RHRC/integration/generated/RH_CORE_SOURCE_ONLY_THEOREMS.jsonl",
     "research/RHRC/integration/generated/SOURCE_CANDIDATE_SUMMARY.json",
-    "research/RHRC/integration/generated/SOURCE_ONLY_CANDIDATE_DEPENDENCIES.jsonl",
+    *SOURCE_ONLY_SHARDS.SHARD_PATHS,
 ]
 
 DECLARED_FFBBP_GENERATED_PRODUCTS = [
@@ -127,7 +141,7 @@ GENERATED_PRODUCT_PRODUCER = {
     **{
         path: (
             "research/RHRC/integration/source_only_dependency_extract.py"
-            if path.endswith("SOURCE_ONLY_CANDIDATE_DEPENDENCIES.jsonl")
+            if path in SOURCE_ONLY_SHARDS.SHARD_PATHS
             else "research/RHRC/integration/candidate_exactify.py"
         )
         for path in DECLARED_INTEGRATION_GENERATED_PRODUCTS
@@ -183,6 +197,11 @@ def tracked_files() -> list[str]:
         raise RuntimeError(
             f"{LEGACY_RELATIONS_PATH} is still tracked; relations are sharded "
             f"under {RELATION_SHARD_DIR}/, so git rm the monolithic file"
+        )
+    if SOURCE_ONLY_SHARDS.LEGACY_PATH in tracked:
+        raise RuntimeError(
+            f"{SOURCE_ONLY_SHARDS.LEGACY_PATH} is still tracked; the receipt is "
+            f"sharded under {SOURCE_ONLY_SHARDS.SHARD_DIR}/, so git rm the monolithic file"
         )
     # Generated RHKG products belong to physical coverage even during the
     # first bootstrap before they have been added to Git.

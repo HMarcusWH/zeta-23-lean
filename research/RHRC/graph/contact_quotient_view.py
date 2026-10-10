@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 from collections import Counter
 from pathlib import Path
@@ -9,9 +10,21 @@ from pathlib import Path
 RHRC = Path(__file__).resolve().parents[1]
 CONFIG = RHRC / "graph" / "CONTACT_QUOTIENT_CONFIG.json"
 CONTACT_DEPS = RHRC / "graph" / "generated" / "CONTACT_QUOTIENT_DECLARATION_DEPENDENCIES.jsonl"
-SOURCE_ONLY = RHRC / "integration" / "generated" / "SOURCE_ONLY_CANDIDATE_DEPENDENCIES.jsonl"
 OUTPUT = RHRC / "graph" / "generated" / "CONTACT_QUOTIENT_VIEW.json"
 PROJECTION = "THEOREM_VALUE_ERASED_SUPPORT"
+
+
+def _load_source_only_shards():
+    path = RHRC / "integration" / "source_only_shards.py"
+    spec = importlib.util.spec_from_file_location("rhrc_source_only_shards", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load source-only shard layout from {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+SOURCE_ONLY_SHARDS = _load_source_only_shards()
 
 
 def fail(message: str) -> None:
@@ -95,7 +108,7 @@ def build() -> dict:
         fail("projection drift")
 
     contact_rows = load_jsonl(CONTACT_DEPS)
-    source_rows = load_jsonl(SOURCE_ONLY)
+    source_rows = SOURCE_ONLY_SHARDS.load_rows()
     index = merge_index(contact_rows, source_rows)
 
     family_supports: dict[str, set[str]] = {}

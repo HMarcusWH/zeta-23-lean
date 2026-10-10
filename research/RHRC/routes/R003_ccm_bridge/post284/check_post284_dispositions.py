@@ -10,6 +10,8 @@ Checks (no network, standard library only):
   inertia lemma, M10, and RH);
 * every PROVED root in PROOF_ROOTS.json names a Lean file that exists and
   contains the declaration name and a matching ``#print axioms`` line;
+* no obligation keeps a pending status, and every discharged obligation names
+  the PROVED roots that discharge it;
 * the attached SymPy falsifier is stored verbatim (SHA-256 pin).
 """
 from __future__ import annotations
@@ -34,6 +36,10 @@ MUST_STAY_OPEN = {
     "M10_NINTH_ORDER_OPTIMIZED_SCHUR_JUMP",
     "RH",
 }
+
+# Statuses that discharge nothing; every other obligation status must cite the
+# PROVED roots (exact-head CI receipt) that discharge it, theorem by theorem.
+NON_DISCHARGED = {"OPEN", "CONDITIONAL_OPEN", "INTERVAL_EVIDENCE"}
 
 
 def fail(msg: str) -> None:
@@ -74,6 +80,19 @@ def check_ledgers() -> None:
     if audit.get("decision") != "PROVENANCE_ONLY_FALLBACK" or audit["adapter"]["created"]:
         fail("external 7/8 theorem must remain provenance-only until locally compiled")
     roots = json.loads((LEDGER / "PROOF_ROOTS.json").read_text(encoding="utf-8"))
+    proved_roots = {row["declaration"] for row in roots["roots"] if row.get("status") == "PROVED"}
+    for row in obligations["obligations"]:
+        status = row.get("status", "")
+        if "PENDING" in status:
+            fail(f"{row['id']} still carries a pending status {status!r}")
+        if status in NON_DISCHARGED:
+            continue
+        decls = row.get("declarations") or []
+        if not decls:
+            fail(f"{row['id']} has discharged status {status!r} but names no declarations")
+        for decl in decls:
+            if decl not in proved_roots:
+                fail(f"{row['id']} cites {decl}, which is not a PROVED root")
     for row in roots["roots"]:
         src = REPO / row["source"]
         if not src.is_file():
@@ -84,7 +103,7 @@ def check_ledgers() -> None:
             fail(f"{row['declaration']} not declared in {row['source']}")
         if not re.search(rf"(?m)^#print\s+axioms\s+{re.escape(row['declaration'])}\s*$", text):
             fail(f"{row['declaration']} has no #print axioms receipt line")
-        if row.get("status") not in {"PROVED_PENDING_CI", "PROVED", "CONDITIONAL_PROVED_PENDING_CI"}:
+        if row.get("status") not in {"PROVED", "CONDITIONAL_PROVED"}:
             fail(f"{row['declaration']} has unexpected status {row.get('status')!r}")
         if row.get("status", "").startswith("CONDITIONAL") and not row.get("premises"):
             fail(f"{row['declaration']} is conditional but lists no premises")

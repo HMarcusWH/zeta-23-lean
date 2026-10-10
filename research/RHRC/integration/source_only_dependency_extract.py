@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
 import os
 import subprocess
@@ -11,7 +12,19 @@ RHRC = Path(__file__).resolve().parents[1]
 REPO = RHRC.parents[1]
 SOURCE_ONLY = RHRC / "integration" / "generated" / "RH_CORE_SOURCE_ONLY_THEOREMS.jsonl"
 SUMMARY = RHRC / "integration" / "generated" / "SOURCE_CANDIDATE_SUMMARY.json"
-RECEIPT = RHRC / "integration" / "generated" / "SOURCE_ONLY_CANDIDATE_DEPENDENCIES.jsonl"
+
+
+def _load_shards():
+    path = RHRC / "integration" / "source_only_shards.py"
+    spec = importlib.util.spec_from_file_location("rhrc_source_only_shards", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load source-only shard layout from {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+SHARDS = _load_shards()
 SCHEMA_VERSION = "RHRC-source-only-candidate-dependencies-1.0"
 
 
@@ -205,11 +218,8 @@ def parse_output(stdout: str, roots: list[dict]) -> list[dict]:
     return result
 
 
-def render(rows: list[dict]) -> bytes:
-    return "".join(
-        json.dumps(row, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n"
-        for row in rows
-    ).encode("utf-8")
+def render(rows: list[dict]) -> dict[str, bytes]:
+    return SHARDS.render_shards(rows)
 
 
 def main() -> int:
@@ -226,17 +236,31 @@ def main() -> int:
     payload = render(rows)
 
     if args.write:
-        RECEIPT.parent.mkdir(parents=True, exist_ok=True)
-        RECEIPT.write_bytes(payload)
+        shard_dir = REPO / SHARDS.SHARD_DIR
+        shard_dir.mkdir(parents=True, exist_ok=True)
+        for path, data in payload.items():
+            (REPO / path).write_bytes(data)
+        for stray in shard_dir.iterdir():
+            if stray.is_file() and stray.relative_to(REPO).as_posix() not in payload:
+                stray.unlink()
+        legacy = REPO / SHARDS.LEGACY_PATH
+        if legacy.exists():
+            legacy.unlink()
+        errors = SHARDS.shard_file_errors()
+        if errors:
+            fail("; ".join(errors))
         print(
             "source_only_dependency_extract: WROTE "
             f"{len(rows)} declarations from {len(roots)} source-only roots"
         )
         return 0
 
-    current = RECEIPT.read_bytes() if RECEIPT.exists() else None
-    if current != payload:
-        fail("checked-in source-only compiler dependency receipt is stale or missing")
+    errors = SHARDS.shard_file_errors()
+    if errors:
+        fail("; ".join(errors))
+    for path, data in payload.items():
+        if (REPO / path).read_bytes() != data:
+            fail(f"checked-in source-only compiler dependency shard {path} is stale")
     print(
         "source_only_dependency_extract: PASS "
         f"({len(rows)} declarations; {len(roots)} source-only roots)"
