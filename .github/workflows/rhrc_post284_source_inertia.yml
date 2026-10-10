@@ -47,7 +47,8 @@ jobs:
             Zeta23.CCM.CanonicalPrimeFreeSecondTest \
             Zeta23.CCM.CanonicalSecularResolvent \
             Zeta23.CCM.CanonicalSourceExcursion \
-            Zeta23.CCM.CanonicalCenteredIndexPoincare
+            Zeta23.CCM.CanonicalCenteredIndexPoincare \
+            Zeta23.CCM.CanonicalSourcePrimeSampling
           do
             if lake build "$target"; then
               echo "$target PASS" | tee -a /tmp/post284-targets.txt
@@ -77,7 +78,8 @@ jobs:
             Zeta23/CCM/CanonicalPrimeFreeSecondTest.lean \
             Zeta23/CCM/CanonicalSecularResolvent.lean \
             Zeta23/CCM/CanonicalSourceExcursion.lean \
-            Zeta23/CCM/CanonicalCenteredIndexPoincare.lean
+            Zeta23/CCM/CanonicalCenteredIndexPoincare.lean \
+            Zeta23/CCM/CanonicalSourcePrimeSampling.lean
       - name: Reject proof escapes on the promoted surface
         run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
       - uses: actions/upload-artifact@v4
@@ -133,6 +135,10 @@ jobs:
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post285/post285_m74_secular_falsifier.py \
             --output /tmp/POST285_M74_SECULAR_FALSIFIER.json > /dev/null
+      - name: Post-285 Gate A/D regressions (M70 excursion, M73 Poincaré, M75 negative window)
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post285/post285_gate_a_d_falsifier.py \
+            --output /tmp/POST285_GATE_A_D_FALSIFIER.json > /dev/null
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -142,3 +148,4 @@ jobs:
             /tmp/POST284_LOG3_K2_CERTIFICATE.txt
             /tmp/POST284_FOLLOWUP_REGRESSIONS.json
             /tmp/POST285_M74_SECULAR_FALSIFIER.json
+            /tmp/POST285_GATE_A_D_FALSIFIER.json
