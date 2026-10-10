@@ -32,6 +32,7 @@ The machine-readable versions are:
 | M73 | `CanonicalCenteredIndexPoincare` | `centeredHalfShiftMass_eq`, `sum_normSq_le_four_mul`, `parityGap_mul_norm_sq_le_four_mul_source_mul_momentFour` | 89, 90, 115 |
 | M75 | `CanonicalSourcePrimeSampling` | `norm_sourceEntry_sub_le`, `exists_sourceNegativeWindow`, `exists_prime_physicalSecondPrimeTerm_pos_and_two_neg` | 119, 120 |
 | M72 | `CanonicalSourceSpectralFlow` | `exists_sourceDegenerate_of_half_neg`, `parityBoundaryFlat_sourceDegenerate` | 45, 110 (first passage) |
+| M26–M28, M14 | `CanonicalShiftedSecular` | `canonical_shifted_det_eq`, `canonical_shifted_eigen_iff`, `canonical_finrank_eigenspace_le_one`, `canonical_contact_overlap`, `canonical_contact_overlap_norm_le`, `canonical_odd_ker_le_span`, `canonical_odd_contact_iff`, `canonical_odd_det_eq`, `canonical_tied_contact_orthogonality` | 58, 59 (simplicity), 60 (identity), 64; branch analysis |
 
 ### What these results do not say
 
@@ -48,6 +49,11 @@ The machine-readable versions are:
 - **M75** proves that individual prime summands have opposite signs. It does
   not bound their sum. The aperture threshold is `L ≥ π² M_K log 2`, about
   `3.7·10³` at `K = 2`, so the theorem only applies at very large apertures.
+- **`CanonicalShiftedSecular`** proves that every even eigenvalue below the odd
+  floor is simple, and the exact Step 60 overlap identity
+  `⟪x_L, D⁻¹g⟫ · S_L(w_L) = ‖x_L‖²` at an even contact. It does not prove
+  the sign of `⟪x_L, D⁻¹g⟫`, and it does not prove the alternating root slopes.
+  The odd-first and tied statements are identities. They exclude no branch.
 - **M72** proves a first degenerate passage on `(1/2, 1)` whenever the
   half-aperture form has a negative vector. The multiplicity count, which needs
   continuous eigenvalue branches, is still OPEN.
@@ -117,20 +123,14 @@ The details are in `FALSIFICATION_REPORT.md`.
 
 ## 4. LEADS
 
-1. **Shifted secular equation and simple even roots (Steps 58–60, 64; M26–M28).**
-   - The rank-one relation does not change under a spectral shift:
-     `(B − λ)D − D(A − λ) = g ⊗ H` for every `λ`. So the M74 algebra applies to
-     `A_L − λ` whenever `λ` is below the odd floor. Every even eigenvalue in that
-     range then has a one-dimensional eigenspace, and
-     `det(A − λ) = det(B − λ)(1 − T(λ))`.
-   - The exact identity `⟨v, d⟩ · H(D⁻¹B⁻¹r) = ‖v‖²` at a contact follows by
-     pairing `A w = v − H(w) d` with the zero mode. This is the Step 60 overlap,
-     with no determinant derivative needed.
-   - This is the next formalization target.
-2. **Odd-first and tied branches (M14, global branch analysis).** See §5.
-3. **Arb resolution of the 50 unresolved M76 points.** Use
+1. **Positivity of the Step 60 overlap.** `⟪x_L, D⁻¹g⟫ > 0` would follow from
+   `S_L(w_L) > 0`. On paper, `S_L(w_L)` is the λ-slope `T_L'(0)`, and at a first
+   contact `1 − T_L(λ) = det(A − λ)/det(B − λ) > 0` for `λ < 0`. Formalizing
+   this needs the determinant of a positive-definite symmetric map to be
+   positive, plus a one-sided limit.
+2. **Arb resolution of the 50 unresolved M76 points.** Use
    `canonical_source_arb.py` with the M76 channel split.
-4. **A sharper M75 window.** The 198× slack in `η_K` suggests that a
+3. **A sharper M75 window.** The 198× slack in `η_K` suggests that a
    second-derivative window could lower the `π² M_K log 2` threshold by orders
    of magnitude.
 
@@ -142,8 +142,9 @@ Three branch types can occur at `L*`:
 | Branch | At `L*` | What is available |
 |---|---|---|
 | Even-first (strict-even) | even bottom = 0, odd bottom > 0 | **PROVED (M74):** `ker A = ℂ ∙ x_L`; contact iff `S_L(x_L) = 1`; phase lock `Re(conj(S z) M4 z) = γ|S z|² > 0`. The opposite-side sign is OPEN (M76). |
-| Odd-first | odd bottom = 0, even bottom > 0 | **DERIVED, a LEAD to formalize:** see the swapped instance below. |
-| Tied | both bottoms = 0 | **DERIVED:** see the tied identity below. Nothing beyond that. |
+| Even-first, eigenvalue structure | odd bottom > 0 | **PROVED (`CanonicalShiftedSecular`):** every even eigenvalue below the odd floor is simple; `det(A − λ) = det(B − λ)(1 − T_L(λ))`. |
+| Odd-first | odd bottom = 0, even bottom > 0 | **PROVED (`CanonicalShiftedSecular`):** see the swapped instance below. |
+| Tied | both bottoms = 0 | **PROVED (`canonical_tied_contact_orthogonality`):** see the tied identity below. Nothing beyond that. |
 
 **Odd-first, swapped instance.** The relation
 `A D⁻¹ − D⁻¹ B = (−D⁻¹ g) ⊗ (H ∘ D⁻¹)` is again a rank-one intertwining, so the
@@ -170,15 +171,17 @@ falls into one of these classes:
 |---|---|---|
 | F04-bound | F04_PRODUCTION_DERIVATIVE_AUTHORITY, M09_WEIGHTED_REMAINDER_IDENTITY, F_M33_M34, F_M37 (conditional), F_M49_M51, F_M53_M65, F_M66 (conditional) | Wait on M65 or global F04 |
 | Operator seam germs | M07, M10, M11, F_M23_M24, F_M44 | Need operator-norm Taylor majorants at frozen prime seams |
-| Abstract algebra, provable now | M08_ABSTRACT_CUBIC_SCHUR, M03_RANK_TWO_LAPLACE, M03_WEIGHTED_STAIRCASE_REEXPRESSION, F_M27 (simplicity part), F_M28, F_M31, F_M38, F_M55 | Candidates for the next pushes. F_M27/F_M28 per LEAD 1. |
-| Partly addressed here | M17 (→M71), M18 (first passage), F_M21 (phase identity), F_M46 (constant 4), F_M58_M63 (phase lock) | See the cross-references |
-| Research or contact-conditioned | M03_TWO_SCALAR, M13, M14, M16, F_M22, F_M25, F_M29, F_M32, F_M39, F_M45, F_M56_M57, F_M68, OBS060O | No viable proof route identified in this PR |
+| Abstract algebra, provable now | M08_ABSTRACT_CUBIC_SCHUR, M03_RANK_TWO_LAPLACE, M03_WEIGHTED_STAIRCASE_REEXPRESSION, F_M31, F_M38, F_M55 | Candidates for the next pushes |
+| Partly addressed here | M17 (→M71), M18 (first passage), F_M21 (phase identity), F_M46 (constant 4), F_M58_M63 (phase lock), F_M27 (simplicity), F_M28 (overlap identity), M14 (odd-first and tied algebra) | See the cross-references |
+| Research or contact-conditioned | M03_TWO_SCALAR, M13, M16, F_M22, F_M25, F_M29, F_M32, F_M39, F_M45, F_M56_M57, F_M68, OBS060O | No viable proof route identified in this PR |
 | Provenance | OAI_SEVEN_EIGHTHS_LOCAL_IMPORT | Audit only |
 | Terminal | RH | RH_OPEN |
 
 ## 7. OPEN, kept open on purpose
 
 `check_post285_ledgers.py` refuses to let any of these leave OPEN:
+- `M14_BRANCH_EXCLUSION`;
+- `M28_OVERLAP_POSITIVITY`;
 - `M65_PRIME_FREE_F04`;
 - `F04_GLOBAL_PRODUCTION_DERIVATIVE_AUTHORITY`;
 - `M76_ARITHMETIC_COMPOSITION`, the opposite-side sign of the canonical complete

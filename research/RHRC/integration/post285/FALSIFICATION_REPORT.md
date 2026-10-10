@@ -105,6 +105,13 @@ This probe uses the production canonical float matrices for `K = 2..5` and
   scalar channels. The pole and prime contributions are huge and opposite. The
   pole term reaches up to 7e9 times the net `T`, so a sign argument has to
   control a cancellation, not a dominant term.
+- **`CanonicalShiftedSecular` regressions on the same matrices.**
+  - At all 46 resolved even eigenvalues `a` below the odd floor, `T(a) = 1`
+    holds to 3e-9.
+  - At the same eigenvalues, the shifted overlap identity
+    `⟨v_a, D⁻¹g⟩ H(D⁻¹(B − a)⁻²g) = ‖v_a‖²` holds to 5e-8.
+  - Where `A > 0`, `det B / det A = 1 + H(A⁻¹D⁻¹g)` holds to 5e-8 relative.
+  - The script fails if any of these residuals exceeds 1e-5.
 - **Unresolved points.** 50 grid points (larger `K` and `L`) fall below float64
   resolution. Their apparent negative eigenvalues are at the 1e-15 level and are
   **not** reported as signs. Resolving them needs the Arb path

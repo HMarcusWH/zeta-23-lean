@@ -14,14 +14,14 @@
     "SCOPE_CONTROL": "bookkeeping/firewall step, no mathematical claim"
   },
   "counts": {
-    "PROVED_MERGED": 33,
-    "OPEN": 36,
+    "PROVED_MERGED": 32,
+    "OPEN": 33,
     "CONDITIONAL": 4,
     "EXPERIMENTAL_SIGNAL": 2,
     "DERIVED": 1,
-    "PARTIAL": 4,
+    "PARTIAL": 6,
     "SCOPE_CONTROL": 3,
-    "PROVED_THIS_PR": 16,
+    "PROVED_THIS_PR": 18,
     "INTERVAL_EVIDENCE": 4
   },
   "steps": [
@@ -309,22 +309,22 @@
       "step": 58,
       "topic": "Shifted spectral-parameter secular equation",
       "package": "M26",
-      "status": "PROVED_MERGED",
-      "anchor_or_note": "abstract shifted secular (#285)"
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "abstract (#285); canonical instance canonical_shifted_det_eq / canonical_shifted_apply_ray"
     },
     {
       "step": 59,
       "topic": "Spectral root derivative and simplicity",
       "package": "M27",
-      "status": "OPEN",
-      "anchor_or_note": ""
+      "status": "PARTIAL",
+      "anchor_or_note": "simplicity PROVED_THIS_PR (canonical_finrank_eigenspace_le_one); alternating root slopes OPEN"
     },
     {
       "step": 60,
       "topic": "Contact resolvent overlap identity",
       "package": "M28",
-      "status": "OPEN",
-      "anchor_or_note": ""
+      "status": "PARTIAL",
+      "anchor_or_note": "exact identity PROVED_THIS_PR (canonical_contact_overlap); positivity OPEN"
     },
     {
       "step": 61,
@@ -351,8 +351,8 @@
       "step": 64,
       "topic": "Simplicity of all even roots below odd floor",
       "package": "M27",
-      "status": "OPEN",
-      "anchor_or_note": ""
+      "status": "PROVED_THIS_PR",
+      "anchor_or_note": "canonical_finrank_eigenspace_le_one (geometric multiplicity <= 1; A_L symmetric)"
     },
     {
       "step": 65,

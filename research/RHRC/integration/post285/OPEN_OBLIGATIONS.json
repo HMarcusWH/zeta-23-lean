@@ -68,6 +68,48 @@
       "detail": "exists_prime_physicalSecondPrimeTerm_pos_and_two_neg: for L >= pi^2 M_K log 2 some prime 2 < p < e^L has a strictly positive physical second-test summand -(Lambda(p)(log p)^2/sqrt p) e(1 - log p/L) and the p = 2 summand is strictly negative. Individual summands only; no statement about the prime sum."
     },
     {
+      "id": "M26_M27_CANONICAL_SHIFTED_SECULAR",
+      "package": "M26/M27",
+      "steps": "58, 59, 64",
+      "status": "PROVED_PENDING_CI",
+      "detail": "For real lambda below the odd Rayleigh bottom: (A_L - lambda) v_L(lambda) = (1 - T_L(lambda)) D^-1 g, det(A_L - lambda) = det(B_L - lambda)(1 - T_L(lambda)), lambda is an even eigenvalue iff T_L(lambda) = 1, and the even eigenspace at lambda has finrank <= 1 (canonical_finrank_eigenspace_le_one). T_L(lambda) = 1 is the eigenvalue condition itself."
+    },
+    {
+      "id": "M27_ALTERNATING_ROOT_SLOPES",
+      "package": "M27",
+      "steps": "59",
+      "status": "OPEN",
+      "detail": "d_lambda T_L(a_j) = prod_{i != j}(a_i - a_j) / prod_k(b_k - a_j) with sign (-1)^(j-1) is not formalized (needs eigenvalue-product determinant expansions). No lambda-monotonicity and no aperture-derivative sign is claimed."
+    },
+    {
+      "id": "M28_CONTACT_OVERLAP_IDENTITY",
+      "package": "M28",
+      "steps": "60",
+      "status": "PROVED_PENDING_CI",
+      "detail": "canonical_contact_overlap: at an even contact with positive odd bottom, <x_L, D^-1 g> * S_L(D^-1 B_L^-1 B_L^-1 g) = |x_L|^2, so both factors are nonzero, and |x_L| <= |D^-1 g| |S_L(w_L)|. Sign-free."
+    },
+    {
+      "id": "M28_OVERLAP_POSITIVITY",
+      "package": "M28",
+      "steps": "60",
+      "status": "OPEN",
+      "detail": "<x_L, D^-1 g> > 0 (equivalently c* = S_L(w_L) > 0) needs determinant-derivative or first-crossing positivity input; not proved."
+    },
+    {
+      "id": "M14_ODD_FIRST_AND_TIED_BRANCH_ALGEBRA",
+      "package": "M14/M77",
+      "steps": "global branch analysis",
+      "status": "PROVED_PENDING_CI",
+      "detail": "Swapped rank-one instance A D^-1 - D^-1 B = (-D^-1 g) (x) (H o D^-1). With positive even bottom: ker B_L lies on span(D A_L^-1 D^-1 g) (finrank <= 1), B_L singular iff S_L(A_L^-1 D^-1 g) = -1, det B_L = det A_L (1 + S_L(A_L^-1 D^-1 g)). Tied: A_L z = 0 and B_L y = 0 imply S_L(z) <g, y> = 0. Identities only; no branch is excluded."
+    },
+    {
+      "id": "M14_BRANCH_EXCLUSION",
+      "package": "M14",
+      "steps": "global branch analysis",
+      "status": "OPEN",
+      "detail": "No even-first, odd-first, tied, fresh-born or interior branch is excluded. The contact criteria above are equivalent to the contacts themselves."
+    },
+    {
       "id": "M65_PRIME_FREE_F04",
       "package": "M65",
       "steps": "101, 103, 105",
@@ -100,7 +142,7 @@
       "package": "M77",
       "steps": "107, 114",
       "status": "IN_PROGRESS",
-      "detail": "Ledgers, workflow targets, axiom audit and proof-escape receipts for M70-M75 in this PR; claim-registry binding of the new roots deferred until the #285 cleanup PR (which edits the registry) lands."
+      "detail": "Ledgers, workflow targets, axiom audit and proof-escape receipts for M70-M75, M26-M28 and the branch algebra in this PR; claim-registry binding of the new roots deferred until the #285 cleanup PR (which edits the registry) lands."
     },
     {
       "id": "RH",
@@ -138,6 +180,18 @@
     {
       "post284_id": "F04_PRODUCTION_DERIVATIVE_AUTHORITY",
       "effect": "unchanged (OPEN)"
+    },
+    {
+      "post284_id": "F_M27_ALTERNATING_SLOPES",
+      "effect": "canonical shifted secular equation and simple even roots below the odd floor proved here (M26_M27_CANONICAL_SHIFTED_SECULAR); alternating slope formula still OPEN"
+    },
+    {
+      "post284_id": "F_M28_RESOLVENT_OVERLAP",
+      "effect": "exact overlap identity proved here (M28_CONTACT_OVERLAP_IDENTITY); positivity still OPEN (M28_OVERLAP_POSITIVITY)"
+    },
+    {
+      "post284_id": "M14_OTHER_BRANCHES",
+      "effect": "odd-first and tied branch algebra proved here (M14_ODD_FIRST_AND_TIED_BRANCH_ALGEBRA); no branch excluded"
     }
   ]
 }

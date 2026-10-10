@@ -263,3 +263,4 @@ import Zeta23.CCM.CanonicalSourceExcursion
 import Zeta23.CCM.CanonicalCenteredIndexPoincare
 import Zeta23.CCM.CanonicalSourcePrimeSampling
 import Zeta23.CCM.CanonicalSourceSpectralFlow
+import Zeta23.CCM.CanonicalShiftedSecular

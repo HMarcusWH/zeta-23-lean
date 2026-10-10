@@ -14,6 +14,11 @@ theorem on the float matrices), lambda_min(A), lambda_min(B), T and the margin,
 the determinant-ratio residual, and the channel split of T (pole, signed arch,
 signed prime, scalar shift) to show the pole/prime cancellation.
 
+It also regresses the CanonicalShiftedSecular identities on the same matrices:
+at every resolved even eigenvalue a below the odd floor, T(a) = 1 and the
+shifted overlap <v_a, D^-1 g> H(D^-1 (B-a)^-2 g) = |v_a|^2; where A_L > 0,
+det B_L / det A_L = 1 + H_L(A_L^-1 D^-1 g) (odd-first branch algebra).
+
 EXPERIMENTAL SIGNAL ONLY: float matrices, no certified enclosure.  A margin
 1 - T > 0 on the sampled grid is consistent with positivity there; it proves
 nothing about other L, other K, contacts, or RH.
@@ -80,9 +85,33 @@ def secular(K: int, L: float, S: np.ndarray, n, E, O, channels=None):
     # float64 cannot resolve eigenvalues below ~1e-10 of the matrix scale
     floor = RESOLVE * scale
     out["float_resolved"] = bool(abs(out["lambda_min_A"]) > floor and abs(out["lambda_min_B"]) > floor)
+    d = np.linalg.solve(D, g)
+    if out["lambda_min_A"] > floor:
+        # odd-first branch algebra: det B = det A (1 + H(A^-1 D^-1 g))
+        u = np.linalg.solve(A, d)
+        lhs = np.linalg.det(B) / np.linalg.det(A)
+        out["odd_first_det_residual"] = float(abs(lhs - (1 + h @ u)) / max(1.0, abs(lhs)))
     if out["lambda_min_B"] <= 0:
         out["T"] = None
         return out
+    # Steps 58-60, 64: shifted secular checks at every even eigenvalue a below
+    # the odd floor (resolved ones only): T(a) = 1, simple spacing, overlap.
+    ev_a, vec_a = np.linalg.eigh(A)
+    shifted = []
+    for j, a in enumerate(ev_a):
+        if a >= out["lambda_min_B"] - floor:
+            break
+        Bs = B - a * np.eye(B.shape[0])
+        ra = np.linalg.solve(Bs, g)
+        va = np.linalg.solve(D, ra)
+        wa = np.linalg.solve(D, np.linalg.solve(Bs, ra))
+        Ta = float(h @ va)
+        overlap = float((va @ d) * (h @ wa) - va @ va)
+        gaps = [abs(a - b) for i, b in enumerate(ev_a) if i != j]
+        shifted.append({"a": float(a), "T_minus_one": Ta - 1,
+                        "overlap_residual": overlap / max(va @ va, 1e-300),
+                        "min_gap": float(min(gaps)) if gaps else None})
+    out["shifted"] = shifted
     r = np.linalg.solve(B, g)
     x = np.linalg.solve(D, r)
     T = float(h @ x)
@@ -127,6 +156,14 @@ def main() -> int:
         "unresolved_float_rows": [(r["K"], r["L"]) for r in rows if not r["float_resolved"]],
         "resolved_A_not_positive": [(r["K"], r["L"]) for r in rows
                                     if r["float_resolved"] and r["lambda_min_A"] <= 0],
+        "max_shifted_T_minus_one": max(
+            (abs(x["T_minus_one"]) for r in with_T for x in r.get("shifted", [])), default=None),
+        "max_shifted_overlap_residual": max(
+            (abs(x["overlap_residual"]) for r in with_T for x in r.get("shifted", [])), default=None),
+        "even_roots_below_odd_floor_checked": sum(len(r.get("shifted", [])) for r in with_T),
+        "max_odd_first_det_residual": max(
+            (r["odd_first_det_residual"] for r in rows
+             if "odd_first_det_residual" in r and r["float_resolved"]), default=None),
         "pole_prime_cancellation_ratio_max": max(
             (abs(r["T_channels"]["pole"]) / max(abs(r["T"]), 1e-300)
              for r in with_T if "T_channels" in r), default=None),
@@ -137,6 +174,10 @@ def main() -> int:
     disposition = "EXPERIMENTAL_SIGNAL"
     if summary["max_rank_one_residual"] > 1e-6 or summary["max_D_leak"] > 1e-9:
         disposition = "FAIL_RANK_ONE_CONSISTENCY"
+    for key in ("max_shifted_T_minus_one", "max_shifted_overlap_residual",
+                "max_odd_first_det_residual"):
+        if summary[key] is not None and summary[key] > 1e-5:
+            disposition = "FAIL_SECULAR_IDENTITY"
     report = {"terminal_claim": "RH_OPEN", "authority": "EXPERIMENTAL_SIGNAL_ONLY",
               "package": "M76_SECULAR_MARGIN", "disposition": disposition,
               "summary": summary, "rows": rows}

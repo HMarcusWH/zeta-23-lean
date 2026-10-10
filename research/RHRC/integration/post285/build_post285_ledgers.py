@@ -39,6 +39,8 @@ MODULES = {
         "source Lipschitz bound, uniform negative window, opposite-signed individual prime summands"),
     "Zeta23/CCM/CanonicalSourceSpectralFlow.lean": ("M72", "Step 110",
         "first degenerate source passage on (1/2,1) for any carrier with a half-aperture negative vector"),
+    "Zeta23/CCM/CanonicalShiftedSecular.lean": ("M26-M28/M14", "Steps 58-60, 64; branch analysis",
+        "canonical shifted secular equation, simple even roots below the odd floor, contact overlap identity, odd-first and tied branch algebra"),
 }
 
 PRINT = re.compile(r"(?m)^#print\s+axioms\s+(\S+)\s*$")
@@ -98,6 +100,24 @@ OBLIGATIONS = [
     {"id": "M75_OPPOSITE_SIGNED_PRIME_SUMMANDS", "package": "M75", "steps": "120",
      "status": "PROVED_PENDING_CI",
      "detail": "exists_prime_physicalSecondPrimeTerm_pos_and_two_neg: for L >= pi^2 M_K log 2 some prime 2 < p < e^L has a strictly positive physical second-test summand -(Lambda(p)(log p)^2/sqrt p) e(1 - log p/L) and the p = 2 summand is strictly negative. Individual summands only; no statement about the prime sum."},
+    {"id": "M26_M27_CANONICAL_SHIFTED_SECULAR", "package": "M26/M27", "steps": "58, 59, 64",
+     "status": "PROVED_PENDING_CI",
+     "detail": "For real lambda below the odd Rayleigh bottom: (A_L - lambda) v_L(lambda) = (1 - T_L(lambda)) D^-1 g, det(A_L - lambda) = det(B_L - lambda)(1 - T_L(lambda)), lambda is an even eigenvalue iff T_L(lambda) = 1, and the even eigenspace at lambda has finrank <= 1 (canonical_finrank_eigenspace_le_one). T_L(lambda) = 1 is the eigenvalue condition itself."},
+    {"id": "M27_ALTERNATING_ROOT_SLOPES", "package": "M27", "steps": "59",
+     "status": "OPEN",
+     "detail": "d_lambda T_L(a_j) = prod_{i != j}(a_i - a_j) / prod_k(b_k - a_j) with sign (-1)^(j-1) is not formalized (needs eigenvalue-product determinant expansions). No lambda-monotonicity and no aperture-derivative sign is claimed."},
+    {"id": "M28_CONTACT_OVERLAP_IDENTITY", "package": "M28", "steps": "60",
+     "status": "PROVED_PENDING_CI",
+     "detail": "canonical_contact_overlap: at an even contact with positive odd bottom, <x_L, D^-1 g> * S_L(D^-1 B_L^-1 B_L^-1 g) = |x_L|^2, so both factors are nonzero, and |x_L| <= |D^-1 g| |S_L(w_L)|. Sign-free."},
+    {"id": "M28_OVERLAP_POSITIVITY", "package": "M28", "steps": "60",
+     "status": "OPEN",
+     "detail": "<x_L, D^-1 g> > 0 (equivalently c* = S_L(w_L) > 0) needs determinant-derivative or first-crossing positivity input; not proved."},
+    {"id": "M14_ODD_FIRST_AND_TIED_BRANCH_ALGEBRA", "package": "M14/M77", "steps": "global branch analysis",
+     "status": "PROVED_PENDING_CI",
+     "detail": "Swapped rank-one instance A D^-1 - D^-1 B = (-D^-1 g) (x) (H o D^-1). With positive even bottom: ker B_L lies on span(D A_L^-1 D^-1 g) (finrank <= 1), B_L singular iff S_L(A_L^-1 D^-1 g) = -1, det B_L = det A_L (1 + S_L(A_L^-1 D^-1 g)). Tied: A_L z = 0 and B_L y = 0 imply S_L(z) <g, y> = 0. Identities only; no branch is excluded."},
+    {"id": "M14_BRANCH_EXCLUSION", "package": "M14", "steps": "global branch analysis",
+     "status": "OPEN",
+     "detail": "No even-first, odd-first, tied, fresh-born or interior branch is excluded. The contact criteria above are equivalent to the contacts themselves."},
     {"id": "M65_PRIME_FREE_F04", "package": "M65", "steps": "101, 103, 105",
      "status": "OPEN",
      "detail": "Prime-free real-aperture differentiation of the exact production compressed family on 0 < L < log 2 (t = Lx substitution, wCorrection derivative, endpoint cancellation) and its identification with the fixed-vector second test are not formalized."},
@@ -111,7 +131,7 @@ OBLIGATIONS = [
      "status": "OPEN", "detail": "Unchanged by this PR."},
     {"id": "M77_INTEGRATION", "package": "M77", "steps": "107, 114",
      "status": "IN_PROGRESS",
-     "detail": "Ledgers, workflow targets, axiom audit and proof-escape receipts for M70-M75 in this PR; claim-registry binding of the new roots deferred until the #285 cleanup PR (which edits the registry) lands."},
+     "detail": "Ledgers, workflow targets, axiom audit and proof-escape receipts for M70-M75, M26-M28 and the branch algebra in this PR; claim-registry binding of the new roots deferred until the #285 cleanup PR (which edits the registry) lands."},
     {"id": "RH", "package": "terminal", "steps": "-", "status": "OPEN", "detail": "RH_OPEN."},
 ]
 
@@ -123,6 +143,9 @@ POST284_CROSS_REFERENCES = [
     {"post284_id": "F_M46_COERCIVITY", "effect": "constant improved from C_K < 5 to 4 (M73)"},
     {"post284_id": "F_M53_M65_F04_DERIVATIVES", "effect": "unchanged (OPEN); see M65_PRIME_FREE_F04"},
     {"post284_id": "F04_PRODUCTION_DERIVATIVE_AUTHORITY", "effect": "unchanged (OPEN)"},
+    {"post284_id": "F_M27_ALTERNATING_SLOPES", "effect": "canonical shifted secular equation and simple even roots below the odd floor proved here (M26_M27_CANONICAL_SHIFTED_SECULAR); alternating slope formula still OPEN"},
+    {"post284_id": "F_M28_RESOLVENT_OVERLAP", "effect": "exact overlap identity proved here (M28_CONTACT_OVERLAP_IDENTITY); positivity still OPEN (M28_OVERLAP_POSITIVITY)"},
+    {"post284_id": "M14_OTHER_BRANCHES", "effect": "odd-first and tied branch algebra proved here (M14_ODD_FIRST_AND_TIED_BRANCH_ALGEBRA); no branch excluded"},
 ]
 
 
@@ -182,13 +205,13 @@ STEPS = {
     55: ("Matched rank-one cancellation", "M24", "PROVED_MERGED", "abstract matched update (SecularDeterminantKernel, #285)"),
     56: ("Surviving ninth-order seam threshold jump", "M24", "OPEN", "one-sided operator germs"),
     57: ("Exact cubic stationary crossing falsifier", "M30", "PROVED_MERGED", "2x2 crossing negative control (#285); re-run against M74 identities here"),
-    58: ("Shifted spectral-parameter secular equation", "M26", "PROVED_MERGED", "abstract shifted secular (#285)"),
-    59: ("Spectral root derivative and simplicity", "M27", "OPEN", ""),
-    60: ("Contact resolvent overlap identity", "M28", "OPEN", ""),
+    58: ("Shifted spectral-parameter secular equation", "M26", "PROVED_THIS_PR", "abstract (#285); canonical instance canonical_shifted_det_eq / canonical_shifted_apply_ray"),
+    59: ("Spectral root derivative and simplicity", "M27", "PARTIAL", "simplicity PROVED_THIS_PR (canonical_finrank_eigenspace_le_one); alternating root slopes OPEN"),
+    60: ("Contact resolvent overlap identity", "M28", "PARTIAL", "exact identity PROVED_THIS_PR (canonical_contact_overlap); positivity OPEN"),
     61: ("Source-resolvent aperture derivative", "M29", "OPEN", ""),
     62: ("Second source-resolvent balance", "M29", "OPEN", ""),
     63: ("Third-order source-resolvent obstruction", "M29", "OPEN", ""),
-    64: ("Simplicity of all even roots below odd floor", "M27", "OPEN", ""),
+    64: ("Simplicity of all even roots below odd floor", "M27", "PROVED_THIS_PR", "canonical_finrank_eigenspace_le_one (geometric multiplicity <= 1; A_L symmetric)"),
     65: ("Abstract stationary cubic crossing countermodel", "M30", "PROVED_MERGED", "(#285)"),
     66: ("Differential Gronwall contact barrier", "M31", "OPEN", ""),
     67: ("Full arithmetic derivative inequality target", "M32", "OPEN", ""),
@@ -310,7 +333,7 @@ DISPOSITIONS = [
      "disposition": "EXACT_THEOREM_REGRESSION_PASS", "summary": "entry derivative <= 2 + 4 pi K; window inside (0,1) and below -|z|^2/(2 pi^2); true negative run >= ~198 x 2 eta (eta is crude)"},
     {"id": "X285_M76_SECULAR_MARGIN", "script": "post285_m76_secular_margin.py", "package": "M76_SECULAR_MARGIN",
      "disposition": "EXPERIMENTAL_SIGNAL",
-     "summary": "actual canonical float matrices, K = 2..5, L = 0.25..6: rank-one relation B D - D A = g H holds to 2e-15 (consistent with the Lean theorem); on the 46 float-resolved (K, L) points B > 0, A > 0 and the secular margin 1 - T(L) > 0 (min 4.4e-4 at K = 3, L = 2.75), with det A / det B = 1 - T to 3e-9; the pole and prime channel contributions to T cancel to relative size up to 7e9",
+     "summary": "actual canonical float matrices, K = 2..5, L = 0.25..6: rank-one relation B D - D A = g H holds to 2e-15 (consistent with the Lean theorem); on the 46 float-resolved (K, L) points B > 0, A > 0 and the secular margin 1 - T(L) > 0 (min 4.4e-4 at K = 3, L = 2.75), with det A / det B = 1 - T to 3e-9; the pole and prime channel contributions to T cancel to relative size up to 7e9; CanonicalShiftedSecular regressions on the same matrices: T(a) = 1 to 3e-9 and the shifted overlap identity to 5e-8 at all 46 resolved even roots below the odd floor, and the odd-first determinant identity det B / det A = 1 + H(A^-1 D^-1 g) to 5e-8 relative",
      "caveat": "50 grid points are below float64 resolution (lambda_min < 1e-10 x matrix scale) and are reported as unresolved, not as signs; no certified enclosure"},
 ]
 
