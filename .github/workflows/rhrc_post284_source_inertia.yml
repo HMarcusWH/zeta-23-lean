@@ -42,7 +42,8 @@ jobs:
             Zeta23.CCM.SourceMomentFilteredInertia \
             Zeta23.CCM.CanonicalSourceWeightedIntegral \
             Zeta23.CCM.SecularDeterminantKernel \
-            Zeta23.CCM.CanonicalCenteredIndexCoercivity
+            Zeta23.CCM.CanonicalCenteredIndexCoercivity \
+            Zeta23.CCM.CanonicalK2SourceSignInterval
           do
             if lake build "$target"; then
               echo "$target PASS" | tee -a /tmp/post284-targets.txt
@@ -67,7 +68,8 @@ jobs:
             Zeta23/CCM/SourceMomentFilteredInertia.lean \
             Zeta23/CCM/CanonicalSourceWeightedIntegral.lean \
             Zeta23/CCM/SecularDeterminantKernel.lean \
-            Zeta23/CCM/CanonicalCenteredIndexCoercivity.lean
+            Zeta23/CCM/CanonicalCenteredIndexCoercivity.lean \
+            Zeta23/CCM/CanonicalK2SourceSignInterval.lean
       - name: Reject proof escapes on the promoted surface
         run: python research/RHRC/closure_batch/check_lean_proof_escapes.py --scope promoted
       - uses: actions/upload-artifact@v4
@@ -96,8 +98,31 @@ jobs:
         run: |
           python research/RHRC/routes/R003_ccm_bridge/post284/check_post284_dispositions.py \
             --suite /tmp/POST284_SOURCE_FALSIFIER_SUITE.json
+      - name: Attached log3 K=2 interval certificate (falsifier receipt; research evidence only)
+        run: python research/RHRC/routes/R003_ccm_bridge/post284/birdfishie_log3_K2_certificate.py | tee /tmp/POST284_LOG3_K2_CERTIFICATE.txt
+      - name: Follow-up regressions (M24/M30 exact, M41/M43 interval signs, M42 sanity, M47 formula)
+        run: |
+          python research/RHRC/routes/R003_ccm_bridge/post284/post284_followup_regressions.py \
+            --n 6000 --output /tmp/POST284_FOLLOWUP_REGRESSIONS.json > /dev/null
+          python - <<'EOF'
+          import json
+          d = json.load(open('/tmp/POST284_FOLLOWUP_REGRESSIONS.json'))
+          assert d['terminal_claim'] == 'RH_OPEN'
+          want = {'M30': 'EXACT_REGRESSION_PASS', 'M24': 'EXACT_REGRESSION_PASS',
+                  'M47': 'EXACT_REGRESSION_PASS',
+                  'M41': 'INTERVAL_EVIDENCE_SIGN_CHANGE_BEFORE_LOG2',
+                  'M43': 'INTERVAL_EVIDENCE_PRIME_FREE_INDEFINITE',
+                  'M42': 'NUMERIC_SANITY_PASS'}
+          got = {r['package']: r['disposition'] for r in d['results']}
+          for k, v in want.items():
+              print(k, got.get(k))
+              assert got.get(k) == v, (k, got.get(k))
+          EOF
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: post284-source-falsifier-suite
-          path: /tmp/POST284_SOURCE_FALSIFIER_SUITE.json
+          path: |
+            /tmp/POST284_SOURCE_FALSIFIER_SUITE.json
+            /tmp/POST284_LOG3_K2_CERTIFICATE.txt
+            /tmp/POST284_FOLLOWUP_REGRESSIONS.json

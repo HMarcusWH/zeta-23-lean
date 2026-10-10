@@ -1,0 +1,172 @@
+{
+  "schema": "post284.followup_regressions.v1",
+  "terminal_claim": "RH_OPEN",
+  "authority": "research evidence only; numerical/interval results are never theorem authority",
+  "results": [
+    {
+      "package": "M30",
+      "disposition": "EXACT_REGRESSION_PASS",
+      "lean_mirror": "Zeta23.CCM.crossing_rankOne / crossing_secular / crossingA_negative",
+      "checks": {
+        "rank_one_identity": true,
+        "det_D": -1,
+        "B0_posdef": true,
+        "T_formula": true,
+        "one_minus_T_eq_detA_over_detB": true,
+        "T0": "1",
+        "T1": "0",
+        "T2": "0",
+        "T3": "1/2",
+        "lambda_slope_at_0": "1/12",
+        "lambda_slope_at_1": "-1/6",
+        "min_eig_A": "-h^3 (diagonal entry) for small h>0"
+      },
+      "interpretation": "rank-one intertwining plus cubic tangency T-1=O(h^3) coexists with a surviving negative even eigenvalue: no universal no-crossing consequence"
+    },
+    {
+      "package": "M24",
+      "disposition": "EXACT_REGRESSION_PASS",
+      "series_through_h10": "-c*h**10 + d*h**9",
+      "interpretation": "no uncancelled seventh-order secular crossing; leading change is order 9"
+    },
+    {
+      "package": "M47",
+      "disposition": "EXACT_REGRESSION_PASS",
+      "lean_mirror": "Zeta23.CCM.quadraticForm_oddSourceWitnessK2",
+      "values": {
+        "1/2": -6.0,
+        "3/4": -3.848826363156775,
+        "1": 20.0
+      }
+    },
+    {
+      "package": "M41",
+      "vector_z": [
+        1,
+        -4,
+        6,
+        -4,
+        1
+      ],
+      "moments_M0_M2": [
+        0,
+        0,
+        0
+      ],
+      "rows": [
+        {
+          "L": "0.1",
+          "enclosure": [
+            "0.014446229735861271114",
+            "0.014627140184393108002"
+          ],
+          "sign": "+",
+          "simpson": 0.014536523875698128
+        },
+        {
+          "L": "0.4",
+          "enclosure": [
+            "0.076939353492892201776",
+            "0.078469494649250244282"
+          ],
+          "sign": "+",
+          "simpson": 0.07770524863859776
+        },
+        {
+          "L": "0.5",
+          "enclosure": [
+            "0.037977102731469471565",
+            "0.040685874019543192855"
+          ],
+          "sign": "+",
+          "simpson": 0.03933315778692301
+        },
+        {
+          "L": "0.6",
+          "enclosure": [
+            "-0.065414980025499928378",
+            "-0.060631203809305979526"
+          ],
+          "sign": "-",
+          "simpson": -0.06302023351648181
+        },
+        {
+          "L": "2/3",
+          "enclosure": [
+            "-0.18087263959241426903",
+            "-0.17404408228793751599"
+          ],
+          "sign": "-",
+          "simpson": -0.17745449400987065
+        }
+      ],
+      "root_bracket": [
+        0.5,
+        0.6
+      ],
+      "disposition": "INTERVAL_EVIDENCE_SIGN_CHANGE_BEFORE_LOG2",
+      "falsifies": "universal prime-free positivity of Q_{K,z}(L) for every legal z on (0, log 2)",
+      "does_not_imply": "anything about actual canonical contact ground states"
+    },
+    {
+      "package": "M43",
+      "L": "2/3",
+      "z_minus": {
+        "vector": [
+          0,
+          1,
+          -4,
+          6,
+          -4,
+          1,
+          0
+        ],
+        "moments_M0_M2": [
+          0,
+          0,
+          0
+        ],
+        "enclosure": [
+          "-0.18087263959241426903",
+          "-0.17404408228793751599"
+        ],
+        "sign": "-",
+        "simpson": -0.17745449400987065
+      },
+      "z_plus": {
+        "vector": [
+          1,
+          -5,
+          11,
+          -14,
+          11,
+          -5,
+          1
+        ],
+        "moments_M0_M2": [
+          0,
+          0,
+          0
+        ],
+        "enclosure": [
+          "0.24843819074352085337",
+          "0.35081557904358628492"
+        ],
+        "sign": "+",
+        "simpson": 0.29965938663327274
+      },
+      "disposition": "INTERVAL_EVIDENCE_PRIME_FREE_INDEFINITE",
+      "scope": "two fixed legal even vectors; not canonical eigenvectors; no contact claim"
+    },
+    {
+      "package": "M42",
+      "K": 2,
+      "radius": 0.0025330295910584444,
+      "L": 0.0022797266319526,
+      "Q_simpson": 9.177365482815707e-06,
+      "derived_lower_bound": 9.215180552480433e-07,
+      "disposition": "NUMERIC_SANITY_PASS",
+      "status": "DERIVED paper-level bound; not Lean-compiled"
+    }
+  ]
+}

@@ -1,312 +1,356 @@
 {
-  "schema": "post284.experiment_dispositions.v1",
-  "terminal_claim": "RH_OPEN",
-  "authority": "EXPERIMENTAL/REGRESSION ONLY",
-  "suite": "research/RHRC/routes/R003_ccm_bridge/post284/post284_source_falsifier_suite.py",
-  "suite_kmax": 9,
-  "local_run": "2026-10-10, all assertions held",
-  "experiments": [
+ "schema": "post284.experiment_dispositions.v1",
+ "terminal_claim": "RH_OPEN",
+ "authority": "EXPERIMENTAL/REGRESSION ONLY",
+ "suite": "research/RHRC/routes/R003_ccm_bridge/post284/post284_source_falsifier_suite.py",
+ "suite_kmax": 9,
+ "local_run": "2026-10-10, all assertions held",
+ "experiments": [
+  {
+   "id": "X01_M05_CANDIDATE",
+   "suite_key": "F01_M05_candidate_whole_energy",
+   "disposition": "DISCOVERY_AGREEMENT (now backed by Lean theorem quadraticForm_canonicalSourceMatrix_eq_regularizedEnergy, pending CI)",
+   "summary": "independent mpmath canonical channels vs candidate regularized energy at 6 (L,K) cases x 2 complex vectors",
+   "max_residual": "1.8669e-60",
+   "negative_control": "re-adding canonicalArchScalarCorrection detected, min residual 3.8937",
+   "caveat": "arch and prime agreement is structurally close to the definitions; the pole channel is the independent closed-form check (X02)"
+  },
+  {
+   "id": "X02_POLE_INTEGRAL",
+   "suite_key": "F02_pole_integral_identity",
+   "disposition": "DISCOVERY_AGREEMENT",
+   "summary": "int_0^L qBasis W = poleComponent for |n|,|m|<=3, L in {0.4,1.2,3}",
+   "max_residual": "6.223e-61"
+  },
+  {
+   "id": "X03_FOURIER_CONVOLUTION",
+   "suite_key": "F03_fourier_convolution",
+   "disposition": "DISCOVERY_AGREEMENT (entry and complex-energy forms also stated as Lean theorems, pending CI)",
+   "summary": "entrywise incl. omega<0 and complex e_u convolution",
+   "residuals": [
+    "9.3345e-61",
+    "1.7123e-60"
+   ]
+  },
+  {
+   "id": "X04_MOMENTS_JETS",
+   "suite_key": "F04_moments_negative_source_jets",
+   "disposition": "EXACT_REGRESSION + NUMERICAL_JET_RATIOS",
+   "summary": "K2/K3 witnesses, K3 negative source e(1/2)=-4, leading odd jets 2(-(2pi)^2)^r|M_r|^2/(2r+1)!"
+  },
+  {
+   "id": "X05_MOVING_VECTORS",
+   "suite_key": "F05_moving_vector_asymptotics",
+   "disposition": "EXACT_RATIONAL + NUMERICAL_CONVERGENCE",
+   "summary": "even -23/(660660 pi) a^13 and odd +19/(24948 pi) a^11; mixing ratios 3/11 and 5/18 are exactly the critical points of the convolution quadratic",
+   "even_ratios": [
+    "0.999992145952",
+    "0.999999921459",
+    "0.999999999215"
+   ],
+   "odd_ratios": [
+    "0.999989819655",
+    "0.999999898196",
+    "0.999999998982"
+   ]
+  },
+  {
+   "id": "X06_INERTIA_SAMPLES",
+   "suite_key": "F06_exact_source_inertia_samples",
+   "disposition": "NUMERICAL_SAMPLES",
+   "summary": "K=2..9, both parities, omega in {0.05,0.25,1/3,0.45,0.5}: inertia (ceil(d/2),floor(d/2)) even / (floor,ceil) odd, all nondegenerate; Andreief leading-minor signs (-1)^(r(r-1)/2) for d=5 at a in {2pi*0.05, pi/2, pi}",
+   "rows": 80
+  },
+  {
+   "id": "X07_RANK_TWO_LAPLACE",
+   "suite_key": "F07_rank_two_laplace",
+   "disposition": "DISCOVERY_AGREEMENT",
+   "summary": "closed form verified to quadrature precision after oscillatory-tail subdivision (first coarse quadrature gave a spurious 2.6e-6 residual; recorded as a numerical-method failure, not a formula failure)",
+   "max_residual": "5.059e-29"
+  },
+  {
+   "id": "X08_SPECTRAL_FLOW",
+   "suite_key": "F08_source_spectral_flow",
+   "disposition": "EXPERIMENTAL_SIGNAL",
+   "summary": "negative count at omega=1/2 equals floor(d/2)/ceil(d/2) and drops to 0 at omega=1, but for K>=4 the grid shows MORE change points than the lower bound (non-monotone passages, e.g. K=4 odd: 0.695,0.775,0.8875,0.9275)",
+   "rows": [
     {
-      "id": "X01_M05_CANDIDATE",
-      "suite_key": "F01_M05_candidate_whole_energy",
-      "disposition": "DISCOVERY_AGREEMENT (now backed by Lean theorem quadraticForm_canonicalSourceMatrix_eq_regularizedEnergy, pending CI)",
-      "summary": "independent mpmath canonical channels vs candidate regularized energy at 6 (L,K) cases x 2 complex vectors",
-      "max_residual": "1.8669e-60",
-      "negative_control": "re-adding canonicalArchScalarCorrection detected, min residual 3.8937",
-      "caveat": "arch and prime agreement is structurally close to the definitions; the pole channel is the independent closed-form check (X02)"
+     "K": 2,
+     "parity": "even",
+     "neg_at_half": 0,
+     "neg_at_one": 0,
+     "grid_change_points": [],
+     "lower_bound_passages": 0
     },
     {
-      "id": "X02_POLE_INTEGRAL",
-      "suite_key": "F02_pole_integral_identity",
-      "disposition": "DISCOVERY_AGREEMENT",
-      "summary": "int_0^L qBasis W = poleComponent for |n|,|m|<=3, L in {0.4,1.2,3}",
-      "max_residual": "6.223e-61"
+     "K": 2,
+     "parity": "odd",
+     "neg_at_half": 1,
+     "neg_at_one": 0,
+     "grid_change_points": [
+      "0.7875"
+     ],
+     "lower_bound_passages": 1
     },
     {
-      "id": "X03_FOURIER_CONVOLUTION",
-      "suite_key": "F03_fourier_convolution",
-      "disposition": "DISCOVERY_AGREEMENT (entry and complex-energy forms also stated as Lean theorems, pending CI)",
-      "summary": "entrywise incl. omega<0 and complex e_u convolution",
-      "residuals": [
-        "9.3345e-61",
-        "1.7123e-60"
-      ]
+     "K": 3,
+     "parity": "even",
+     "neg_at_half": 1,
+     "neg_at_one": 0,
+     "grid_change_points": [
+      "0.87"
+     ],
+     "lower_bound_passages": 1
     },
     {
-      "id": "X04_MOMENTS_JETS",
-      "suite_key": "F04_moments_negative_source_jets",
-      "disposition": "EXACT_REGRESSION + NUMERICAL_JET_RATIOS",
-      "summary": "K2/K3 witnesses, K3 negative source e(1/2)=-4, leading odd jets 2(-(2pi)^2)^r|M_r|^2/(2r+1)!"
+     "K": 3,
+     "parity": "odd",
+     "neg_at_half": 1,
+     "neg_at_one": 0,
+     "grid_change_points": [
+      "0.8925"
+     ],
+     "lower_bound_passages": 1
     },
     {
-      "id": "X05_MOVING_VECTORS",
-      "suite_key": "F05_moving_vector_asymptotics",
-      "disposition": "EXACT_RATIONAL + NUMERICAL_CONVERGENCE",
-      "summary": "even -23/(660660 pi) a^13 and odd +19/(24948 pi) a^11; mixing ratios 3/11 and 5/18 are exactly the critical points of the convolution quadratic",
-      "even_ratios": [
-        "0.999992145952",
-        "0.999999921459",
-        "0.999999999215"
-      ],
-      "odd_ratios": [
-        "0.999989819655",
-        "0.999999898196",
-        "0.999999998982"
-      ]
+     "K": 4,
+     "parity": "even",
+     "neg_at_half": 1,
+     "neg_at_one": 0,
+     "grid_change_points": [
+      "0.765",
+      "0.855",
+      "0.92"
+     ],
+     "lower_bound_passages": 1
     },
     {
-      "id": "X06_INERTIA_SAMPLES",
-      "suite_key": "F06_exact_source_inertia_samples",
-      "disposition": "NUMERICAL_SAMPLES",
-      "summary": "K=2..9, both parities, omega in {0.05,0.25,1/3,0.45,0.5}: inertia (ceil(d/2),floor(d/2)) even / (floor,ceil) odd, all nondegenerate; Andreief leading-minor signs (-1)^(r(r-1)/2) for d=5 at a in {2pi*0.05, pi/2, pi}",
-      "rows": 80
+     "K": 4,
+     "parity": "odd",
+     "neg_at_half": 2,
+     "neg_at_one": 0,
+     "grid_change_points": [
+      "0.695",
+      "0.775",
+      "0.8875",
+      "0.9275"
+     ],
+     "lower_bound_passages": 2
     },
     {
-      "id": "X07_RANK_TWO_LAPLACE",
-      "suite_key": "F07_rank_two_laplace",
-      "disposition": "DISCOVERY_AGREEMENT",
-      "summary": "closed form verified to quadrature precision after oscillatory-tail subdivision (first coarse quadrature gave a spurious 2.6e-6 residual; recorded as a numerical-method failure, not a formula failure)",
-      "max_residual": "5.059e-29"
+     "K": 5,
+     "parity": "even",
+     "neg_at_half": 2,
+     "neg_at_one": 0,
+     "grid_change_points": [
+      "0.915",
+      "0.9425"
+     ],
+     "lower_bound_passages": 2
     },
     {
-      "id": "X08_SPECTRAL_FLOW",
-      "suite_key": "F08_source_spectral_flow",
-      "disposition": "EXPERIMENTAL_SIGNAL",
-      "summary": "negative count at omega=1/2 equals floor(d/2)/ceil(d/2) and drops to 0 at omega=1, but for K>=4 the grid shows MORE change points than the lower bound (non-monotone passages, e.g. K=4 odd: 0.695,0.775,0.8875,0.9275)",
-      "rows": [
-        {
-          "K": 2,
-          "parity": "even",
-          "neg_at_half": 0,
-          "neg_at_one": 0,
-          "grid_change_points": [],
-          "lower_bound_passages": 0
-        },
-        {
-          "K": 2,
-          "parity": "odd",
-          "neg_at_half": 1,
-          "neg_at_one": 0,
-          "grid_change_points": [
-            "0.7875"
-          ],
-          "lower_bound_passages": 1
-        },
-        {
-          "K": 3,
-          "parity": "even",
-          "neg_at_half": 1,
-          "neg_at_one": 0,
-          "grid_change_points": [
-            "0.87"
-          ],
-          "lower_bound_passages": 1
-        },
-        {
-          "K": 3,
-          "parity": "odd",
-          "neg_at_half": 1,
-          "neg_at_one": 0,
-          "grid_change_points": [
-            "0.8925"
-          ],
-          "lower_bound_passages": 1
-        },
-        {
-          "K": 4,
-          "parity": "even",
-          "neg_at_half": 1,
-          "neg_at_one": 0,
-          "grid_change_points": [
-            "0.765",
-            "0.855",
-            "0.92"
-          ],
-          "lower_bound_passages": 1
-        },
-        {
-          "K": 4,
-          "parity": "odd",
-          "neg_at_half": 2,
-          "neg_at_one": 0,
-          "grid_change_points": [
-            "0.695",
-            "0.775",
-            "0.8875",
-            "0.9275"
-          ],
-          "lower_bound_passages": 2
-        },
-        {
-          "K": 5,
-          "parity": "even",
-          "neg_at_half": 2,
-          "neg_at_one": 0,
-          "grid_change_points": [
-            "0.915",
-            "0.9425"
-          ],
-          "lower_bound_passages": 2
-        },
-        {
-          "K": 5,
-          "parity": "odd",
-          "neg_at_half": 2,
-          "neg_at_one": 0,
-          "grid_change_points": [
-            "0.665",
-            "0.6725",
-            "0.835",
-            "0.88",
-            "0.925",
-            "0.945"
-          ],
-          "lower_bound_passages": 2
-        },
-        {
-          "K": 6,
-          "parity": "even",
-          "neg_at_half": 2,
-          "neg_at_one": 0,
-          "grid_change_points": [
-            "0.7075",
-            "0.765",
-            "0.8575",
-            "0.91",
-            "0.9375",
-            "0.9525"
-          ],
-          "lower_bound_passages": 2
-        },
-        {
-          "K": 6,
-          "parity": "odd",
-          "neg_at_half": 3,
-          "neg_at_one": 0,
-          "grid_change_points": [
-            "0.64",
-            "0.65",
-            "0.6825",
-            "0.71",
-            "0.7675",
-            "0.83",
-            "0.9225",
-            "0.9425",
-            "0.955"
-          ],
-          "lower_bound_passages": 3
-        },
-        {
-          "K": 7,
-          "parity": "even",
-          "neg_at_half": 3,
-          "neg_at_one": 0,
-          "grid_change_points": [
-            "0.6875",
-            "0.69",
-            "0.82",
-            "0.85",
-            "0.885",
-            "0.9075",
-            "0.9375",
-            "0.9525",
-            "0.9625"
-          ],
-          "lower_bound_passages": 3
-        },
-        {
-          "K": 7,
-          "parity": "odd",
-          "neg_at_half": 3,
-          "neg_at_one": 0,
-          "grid_change_points": [
-            "0.6225",
-            "0.6325",
-            "0.6625",
-            "0.6725",
-            "0.6875",
-            "0.69",
-            "0.885",
-            "0.92",
-            "0.9425",
-            "0.955",
-            "0.9625"
-          ],
-          "lower_bound_passages": 3
-        }
-      ]
+     "K": 5,
+     "parity": "odd",
+     "neg_at_half": 2,
+     "neg_at_one": 0,
+     "grid_change_points": [
+      "0.665",
+      "0.6725",
+      "0.835",
+      "0.88",
+      "0.925",
+      "0.945"
+     ],
+     "lower_bound_passages": 2
     },
     {
-      "id": "X09_INDEX_MASS",
-      "suite_key": "F09_index_action_lower_bound",
-      "disposition": "NUMERICAL",
-      "summary": "min ||Dz||^2 under sum z=0, |z|=1 is 1/3 at K=1 (sharp) and ~0.27-0.30 for K=2..8, so 1/(2K+1) is far from sharp for K>=2",
-      "rows": [
-        {
-          "K": 1,
-          "min_Dz_sq": "0.333333333333",
-          "bound_1_over_2K+1": "0.333333333333"
-        },
-        {
-          "K": 2,
-          "min_Dz_sq": "0.295840542121",
-          "bound_1_over_2K+1": "0.2"
-        },
-        {
-          "K": 3,
-          "min_Dz_sq": "0.28159437832",
-          "bound_1_over_2K+1": "0.142857142857"
-        },
-        {
-          "K": 4,
-          "min_Dz_sq": "0.274096447052",
-          "bound_1_over_2K+1": "0.111111111111"
-        },
-        {
-          "K": 5,
-          "min_Dz_sq": "0.269472195743",
-          "bound_1_over_2K+1": "0.0909090909091"
-        },
-        {
-          "K": 6,
-          "min_Dz_sq": "0.266335965727",
-          "bound_1_over_2K+1": "0.0769230769231"
-        },
-        {
-          "K": 7,
-          "min_Dz_sq": "0.264069348729",
-          "bound_1_over_2K+1": "0.0666666666667"
-        },
-        {
-          "K": 8,
-          "min_Dz_sq": "0.262354820512",
-          "bound_1_over_2K+1": "0.0588235294118"
-        }
-      ]
+     "K": 6,
+     "parity": "even",
+     "neg_at_half": 2,
+     "neg_at_one": 0,
+     "grid_change_points": [
+      "0.7075",
+      "0.765",
+      "0.8575",
+      "0.91",
+      "0.9375",
+      "0.9525"
+     ],
+     "lower_bound_passages": 2
     },
     {
-      "id": "X10_SCHUR_TOYS",
-      "suite_key": "F10_schur_toy_cases",
-      "disposition": "REGRESSION",
-      "summary": "LOW s-=-h^3 and HIGH s-=h^10 toy cases (also Lean examples)"
+     "K": 6,
+     "parity": "odd",
+     "neg_at_half": 3,
+     "neg_at_one": 0,
+     "grid_change_points": [
+      "0.64",
+      "0.65",
+      "0.6825",
+      "0.71",
+      "0.7675",
+      "0.83",
+      "0.9225",
+      "0.9425",
+      "0.955"
+     ],
+     "lower_bound_passages": 3
     },
     {
-      "id": "X11_FOURTH_MOMENT_FIREWALL",
-      "suite_key": "F11_fourth_moment_firewall",
-      "disposition": "EXACT_REGRESSION",
-      "summary": "Q_z(1)=M4/6 on the even carrier basis; M4!=0 vectors of both strict signs for K=3,4,5"
+     "K": 7,
+     "parity": "even",
+     "neg_at_half": 3,
+     "neg_at_one": 0,
+     "grid_change_points": [
+      "0.6875",
+      "0.69",
+      "0.82",
+      "0.85",
+      "0.885",
+      "0.9075",
+      "0.9375",
+      "0.9525",
+      "0.9625"
+     ],
+     "lower_bound_passages": 3
     },
     {
-      "id": "X12_HISTORICAL_STEP28",
-      "suite_key": "n/a",
-      "disposition": "UNKNOWN_NOT_REPLAYED",
-      "summary": "Step 28 floating values +0.21549446 / -0.52241963 at K=2, L=1.2 were not replayed in this PR; they remain unconfirmed discovery values"
-    },
-    {
-      "id": "X13_PRIOR_DISPOSITIONS",
-      "suite_key": "n/a",
-      "disposition": "PRESERVED",
-      "summary": "899 float brackets / 0 certified sign brackets / 0 eligible inherited contacts among 11 rows / 8 certified evaluations: unchanged, not replayed"
+     "K": 7,
+     "parity": "odd",
+     "neg_at_half": 3,
+     "neg_at_one": 0,
+     "grid_change_points": [
+      "0.6225",
+      "0.6325",
+      "0.6625",
+      "0.6725",
+      "0.6875",
+      "0.69",
+      "0.885",
+      "0.92",
+      "0.9425",
+      "0.955",
+      "0.9625"
+     ],
+     "lower_bound_passages": 3
     }
-  ]
+   ]
+  },
+  {
+   "id": "X09_INDEX_MASS",
+   "suite_key": "F09_index_action_lower_bound",
+   "disposition": "NUMERICAL",
+   "summary": "min ||Dz||^2 under sum z=0, |z|=1 is 1/3 at K=1 (sharp) and ~0.27-0.30 for K=2..8, so 1/(2K+1) is far from sharp for K>=2",
+   "rows": [
+    {
+     "K": 1,
+     "min_Dz_sq": "0.333333333333",
+     "bound_1_over_2K+1": "0.333333333333"
+    },
+    {
+     "K": 2,
+     "min_Dz_sq": "0.295840542121",
+     "bound_1_over_2K+1": "0.2"
+    },
+    {
+     "K": 3,
+     "min_Dz_sq": "0.28159437832",
+     "bound_1_over_2K+1": "0.142857142857"
+    },
+    {
+     "K": 4,
+     "min_Dz_sq": "0.274096447052",
+     "bound_1_over_2K+1": "0.111111111111"
+    },
+    {
+     "K": 5,
+     "min_Dz_sq": "0.269472195743",
+     "bound_1_over_2K+1": "0.0909090909091"
+    },
+    {
+     "K": 6,
+     "min_Dz_sq": "0.266335965727",
+     "bound_1_over_2K+1": "0.0769230769231"
+    },
+    {
+     "K": 7,
+     "min_Dz_sq": "0.264069348729",
+     "bound_1_over_2K+1": "0.0666666666667"
+    },
+    {
+     "K": 8,
+     "min_Dz_sq": "0.262354820512",
+     "bound_1_over_2K+1": "0.0588235294118"
+    }
+   ]
+  },
+  {
+   "id": "X10_SCHUR_TOYS",
+   "suite_key": "F10_schur_toy_cases",
+   "disposition": "REGRESSION",
+   "summary": "LOW s-=-h^3 and HIGH s-=h^10 toy cases (also Lean examples)"
+  },
+  {
+   "id": "X11_FOURTH_MOMENT_FIREWALL",
+   "suite_key": "F11_fourth_moment_firewall",
+   "disposition": "EXACT_REGRESSION",
+   "summary": "Q_z(1)=M4/6 on the even carrier basis; M4!=0 vectors of both strict signs for K=3,4,5"
+  },
+  {
+   "id": "X12_HISTORICAL_STEP28",
+   "suite_key": "n/a",
+   "disposition": "UNKNOWN_NOT_REPLAYED",
+   "summary": "Step 28 floating values +0.21549446 / -0.52241963 at K=2, L=1.2 were not replayed in this PR; they remain unconfirmed discovery values"
+  },
+  {
+   "id": "X13_PRIOR_DISPOSITIONS",
+   "suite_key": "n/a",
+   "disposition": "PRESERVED",
+   "summary": "899 float brackets / 0 certified sign brackets / 0 eligible inherited contacts among 11 rows / 8 certified evaluations: unchanged, not replayed"
+  },
+  {
+   "id": "X14_FOLLOWUP_M30_CROSSING",
+   "suite_key": "M30",
+   "disposition": "EXACT_REGRESSION_PASS",
+   "summary": "2x2 crossing: rank-one identity, det D=-1, T=1+h^3/(12+3h^3-4h^6), T'''(0)=1/2, lambda slopes 1/12 and -1/6; Lean mirror compiled."
+  },
+  {
+   "id": "X15_FOLLOWUP_M24_FALSIFIER",
+   "suite_key": "M24",
+   "disposition": "EXACT_REGRESSION_PASS",
+   "summary": "T+ - T- = d h^9 - c h^10 + O(h^11): no uncancelled seventh-order crossing."
+  },
+  {
+   "id": "X16_FOLLOWUP_M47_FORMULA",
+   "suite_key": "M47",
+   "disposition": "EXACT_REGRESSION_PASS",
+   "summary": "SymPy: e_{u0}(w) = (1/(3pi))[6a(4cos a+cos 2a)+8 sin a-19 sin 2a]; e(1/2)=-6, e(1)=20."
+  },
+  {
+   "id": "X17_FOLLOWUP_M41",
+   "suite_key": "M41",
+   "disposition": "INTERVAL_EVIDENCE_SIGN_CHANGE_BEFORE_LOG2",
+   "summary": "signs + + + - - at L = 0.1, 0.4, 0.5, 0.6, 2/3 (outward-rounded enclosures, analytic origin cell bound); Simpson values reproduce the handoff table to ~1e-12."
+  },
+  {
+   "id": "X18_FOLLOWUP_M43",
+   "suite_key": "M43",
+   "disposition": "INTERVAL_EVIDENCE_PRIME_FREE_INDEFINITE",
+   "summary": "K=3 z_minus negative, z_plus positive at L=2/3; M0=M1=M2=0 exactly for both."
+  },
+  {
+   "id": "X19_FOLLOWUP_M42",
+   "suite_key": "M42",
+   "disposition": "NUMERIC_SANITY_PASS",
+   "summary": "K=2, L=0.9 eps_2: Q>0 and above the derived lower bound."
+  },
+  {
+   "id": "X20_FOLLOWUP_M67_LOG3",
+   "suite_key": "M67",
+   "disposition": "INTERVAL_EVIDENCE",
+   "summary": "attached script asserts lower>0: H(log3,z) in [0.034445, 0.048312]."
+  }
+ ],
+ "followup_suite": "research/RHRC/routes/R003_ccm_bridge/post284/post284_followup_regressions.py",
+ "followup_output": "research/RHRC/integration/post284/FOLLOWUP_REGRESSIONS.json"
 }

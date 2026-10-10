@@ -1013,6 +1013,127 @@
       "premises": [],
       "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
       "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.quadraticForm_oddSourceWitnessK2_eq_integral",
+      "source": "Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
+      "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
+      "package": "F-M47/F-M48",
+      "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.quadraticForm_oddSourceWitnessK2",
+      "source": "Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
+      "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
+      "package": "F-M47/F-M48",
+      "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.re_quadraticForm_oddSourceWitnessK2_neg",
+      "source": "Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
+      "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
+      "package": "F-M47/F-M48",
+      "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.quadraticForm_oddSourceWitnessK2_one",
+      "source": "Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
+      "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
+      "package": "F-M47/F-M48",
+      "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.eq_smul_oddSourceWitnessK2",
+      "source": "Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
+      "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
+      "package": "F-M47/F-M48",
+      "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.re_quadraticForm_neg_of_mem_oddBoundaryFlat_two",
+      "source": "Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
+      "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
+      "package": "F-M47/F-M48",
+      "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.re_quadraticForm_index_neg_of_mem_evenBoundaryFlat_two",
+      "source": "Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
+      "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
+      "package": "F-M47/F-M48",
+      "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.primeSampleCoordinate_mem_of_le_log_sixteen",
+      "source": "Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
+      "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
+      "package": "F-M47/F-M48",
+      "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.re_quadraticForm_index_nonpos_of_primeSample_two",
+      "source": "Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
+      "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
+      "package": "F-M47/F-M48",
+      "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.re_quadraticForm_index_neg_of_primeSample_two",
+      "source": "Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
+      "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
+      "package": "F-M47/F-M48",
+      "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
+    },
+    {
+      "declaration": "Zeta23.CCM.primeTerm_nonneg_of_primeSample_two",
+      "source": "Zeta23/CCM/CanonicalK2SourceSignInterval.lean",
+      "module": "Zeta23.CCM.CanonicalK2SourceSignInterval",
+      "package": "F-M47/F-M48",
+      "module_scope": "K=2 legal odd/even source negativity on 0<omega<=3/4; prime samples sign-controlled for 0<L<=log 16 (source side only)",
+      "status": "PROVED_PENDING_CI",
+      "premises": [],
+      "authority": "exact Lean theorem with its stated hypotheses; research-ledger root, not a registered claim",
+      "axiom_receipt": "LOCAL_PENDING"
     }
   ]
 }
